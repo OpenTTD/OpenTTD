@@ -46,13 +46,13 @@ static const uint MAX_COMPETITORS_INTERVAL = 500; ///< The maximum interval (in 
 
 typedef Owner CompanyID;
 
-typedef uint16 CompanyMask;
+typedef uint16_t CompanyMask;
 
 struct Company;
-typedef uint32 CompanyManagerFace; ///< Company manager face bits, info see in company_manager_face.h
+typedef uint32_t CompanyManagerFace; ///< Company manager face bits, info see in company_manager_face.h
 
 /** The reason why the company was removed. */
-enum CompanyRemoveReason : uint8 {
+enum CompanyRemoveReason : uint8_t {
 	CRR_MANUAL,    ///< The company is manually removed.
 	CRR_AUTOCLEAN, ///< The company is removed due to autoclean.
 	CRR_BANKRUPT,  ///< The company went belly-up.
@@ -63,7 +63,7 @@ enum CompanyRemoveReason : uint8 {
 };
 
 /** The action to do with CMD_COMPANY_CTRL. */
-enum CompanyCtrlAction : uint8 {
+enum CompanyCtrlAction : uint8_t {
 	CCA_NEW,    ///< Create a new company.
 	CCA_NEW_AI, ///< Create a new AI company.
 	CCA_DELETE, ///< Delete a company.

@@ -17,7 +17,7 @@ class SpriteLoaderGrf : public SpriteLoader {
 	byte container_ver;
 public:
 	SpriteLoaderGrf(byte container_ver) : container_ver(container_ver) {}
-	uint8 LoadSprite(SpriteLoader::Sprite *sprite, SpriteFile &file, size_t file_pos, SpriteType sprite_type, bool load_32bpp, byte control_flags);
+	uint8_t LoadSprite(SpriteLoader::SpriteCollection &sprite, SpriteFile &file, size_t file_pos, SpriteType sprite_type, bool load_32bpp, byte control_flags) override;
 };
 
 #endif /* SPRITELOADER_GRF_HPP */

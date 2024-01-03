@@ -43,7 +43,7 @@
 
 ObjectPool _object_pool("Object");
 INSTANTIATE_POOL_METHODS(Object)
-uint16 Object::counts[NUM_OBJECTS];
+uint16_t Object::counts[NUM_OBJECTS];
 
 /**
  * Get the object associated with a tile.
@@ -83,7 +83,7 @@ void InitializeObjects()
  * @pre All preconditions for building the object at that location
  *      are met, e.g. slope and clearness of tiles are checked.
  */
-void BuildObject(ObjectType type, TileIndex tile, CompanyID owner, Town *town, uint8 view)
+void BuildObject(ObjectType type, TileIndex tile, CompanyID owner, Town *town, uint8_t view)
 {
 	const ObjectSpec *spec = ObjectSpec::Get(type);
 
@@ -108,7 +108,7 @@ void BuildObject(ObjectType type, TileIndex tile, CompanyID owner, Town *town, u
 	if ((spec->flags & OBJECT_FLAG_2CC_COLOUR) == 0) o->colour &= 0xF;
 
 	if (HasBit(spec->callback_mask, CBM_OBJ_COLOUR)) {
-		uint16 res = GetObjectCallback(CBID_OBJECT_COLOUR, o->colour, 0, spec, o, tile);
+		uint16_t res = GetObjectCallback(CBID_OBJECT_COLOUR, o->colour, 0, spec, o, tile);
 		if (res != CALLBACK_FAILED) {
 			if (res >= 0x100) ErrorUnknownCallbackResult(spec->grf_prop.grffile->grfid, CBID_OBJECT_COLOUR, res);
 			o->colour = GB(res, 0, 8);
@@ -203,7 +203,7 @@ static CommandCost ClearTile_Object(TileIndex tile, DoCommandFlag flags);
  * @param view the view for the object
  * @return the cost of this operation or an error
  */
-CommandCost CmdBuildObject(DoCommandFlag flags, TileIndex tile, ObjectType type, uint8 view)
+CommandCost CmdBuildObject(DoCommandFlag flags, TileIndex tile, ObjectType type, uint8_t view)
 {
 	CommandCost cost(EXPENSES_CONSTRUCTION);
 
@@ -269,7 +269,7 @@ CommandCost CmdBuildObject(DoCommandFlag flags, TileIndex tile, ObjectType type,
 		if (GetTileSlope(tile, &allowed_z) != SLOPE_FLAT) allowed_z++;
 
 		for (TileIndex t : ta) {
-			uint16 callback = CALLBACK_FAILED;
+			uint16_t callback = CALLBACK_FAILED;
 			if (HasBit(spec->callback_mask, CBM_OBJ_SLOPE_CHECK)) {
 				TileIndex diff = t - tile;
 				callback = GetObjectCallback(CBID_OBJECT_LAND_SLOPE_CHECK, GetTileSlope(t), TileY(diff) << 4 | TileX(diff), spec, nullptr, t, view);
@@ -384,7 +384,7 @@ CommandCost CmdBuildObject(DoCommandFlag flags, TileIndex tile, ObjectType type,
  * @param diagonal Whether to use the Orthogonal (0) or Diagonal (1) iterator.
  * @return the cost of this operation or an error
  */
-CommandCost CmdBuildObjectArea(DoCommandFlag flags, TileIndex tile, TileIndex start_tile, ObjectType type, uint8 view, bool diagonal)
+CommandCost CmdBuildObjectArea(DoCommandFlag flags, TileIndex tile, TileIndex start_tile, ObjectType type, uint8_t view, bool diagonal)
 {
 	if (start_tile >= Map::Size()) return CMD_ERROR;
 
@@ -486,7 +486,7 @@ static void DrawTile_Object(TileInfo *ti)
 	DrawBridgeMiddle(ti);
 }
 
-static int GetSlopePixelZ_Object(TileIndex tile, uint x, uint y, bool ground_vehicle)
+static int GetSlopePixelZ_Object(TileIndex tile, uint x, uint y, bool)
 {
 	if (IsObjectType(tile, OBJECT_OWNED_LAND)) {
 		int z;
@@ -511,7 +511,7 @@ static void ReallyClearObjectTile(Object *o)
 {
 	Object::DecTypeCount(o->type);
 	for (TileIndex tile_cur : o->location) {
-		DeleteNewGRFInspectWindow(GSF_OBJECTS, tile_cur);
+		DeleteNewGRFInspectWindow(GSF_OBJECTS, tile_cur.base());
 
 		MakeWaterKeepingClass(tile_cur, GetTileOwner(tile_cur));
 	}
@@ -700,7 +700,7 @@ static void TileLoop_Object(TileIndex tile)
 }
 
 
-static TrackStatus GetTileTrackStatus_Object(TileIndex tile, TransportType mode, uint sub_mode, DiagDirection side)
+static TrackStatus GetTileTrackStatus_Object(TileIndex, TransportType, uint, DiagDirection)
 {
 	return 0;
 }
@@ -721,10 +721,9 @@ static void AnimateTile_Object(TileIndex tile)
 /**
  * Helper function for \c CircularTileSearch.
  * @param tile The tile to check.
- * @param user Ignored.
  * @return True iff the tile has a radio tower.
  */
-static bool HasTransmitter(TileIndex tile, void *user)
+static bool HasTransmitter(TileIndex tile, void *)
 {
 	return IsObjectTypeTile(tile, OBJECT_TRANSMITTER);
 }
@@ -813,7 +812,7 @@ void GenerateObjects()
 		/* Continue, if the object was never available till now or shall not be placed */
 		if (!spec.WasEverAvailable() || spec.generate_amount == 0) continue;
 
-		uint16 amount = spec.generate_amount;
+		uint16_t amount = spec.generate_amount;
 
 		/* Scale by map size */
 		if ((spec.flags & OBJECT_FLAG_SCALE_BY_WATER) && _settings_game.construction.freeform_edges) {
@@ -839,7 +838,7 @@ void GenerateObjects()
 					break;
 
 				default:
-					uint8 view = RandomRange(spec.views);
+					uint8_t view = RandomRange(spec.views);
 					if (CmdBuildObject(DC_EXEC | DC_AUTO | DC_NO_TEST_TOWN_RATING | DC_NO_MODIFY_TOWN_RATING, RandomTile(), spec.Index(), view).Succeeded()) amount--;
 					break;
 			}
@@ -903,7 +902,7 @@ static CommandCost TerraformTile_Object(TileIndex tile, DoCommandFlag flags, int
 			/* Call callback 'disable autosloping for objects'. */
 			if (HasBit(spec->callback_mask, CBM_OBJ_AUTOSLOPE)) {
 				/* If the callback fails, allow autoslope. */
-				uint16 res = GetObjectCallback(CBID_OBJECT_AUTOSLOPE, 0, 0, spec, Object::GetByTile(tile), tile);
+				uint16_t res = GetObjectCallback(CBID_OBJECT_AUTOSLOPE, 0, 0, spec, Object::GetByTile(tile), tile);
 				if (res == CALLBACK_FAILED || !ConvertBooleanCallback(spec->grf_prop.grffile, CBID_OBJECT_AUTOSLOPE, res)) return CommandCost(EXPENSES_CONSTRUCTION, _price[PR_BUILD_FOUNDATION]);
 			} else if (spec->IsEnabled()) {
 				/* allow autoslope */

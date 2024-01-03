@@ -36,7 +36,7 @@
 
 static ObjectClassID _selected_object_class; ///< Currently selected available object class.
 static int _selected_object_index;           ///< Index of the currently selected object if existing, else \c -1.
-static uint8 _selected_object_view;          ///< the view of the selected object
+static uint8_t _selected_object_view;          ///< the view of the selected object
 
 /** Enum referring to the Hotkeys in the build object window */
 enum BuildObjectHotkeys {
@@ -45,7 +45,7 @@ enum BuildObjectHotkeys {
 
 /** The window used for building objects. */
 class BuildObjectWindow : public Window {
-	typedef GUIList<ObjectClassID, StringFilter &> GUIObjectClassList; ///< Type definition for the list to hold available object classes.
+	typedef GUIList<ObjectClassID, std::nullptr_t, StringFilter &> GUIObjectClassList; ///< Type definition for the list to hold available object classes.
 
 	static const uint EDITBOX_MAX_SIZE = 16; ///< The maximum number of characters for the filter edit box.
 
@@ -85,16 +85,6 @@ class BuildObjectWindow : public Window {
 		if ((int)objclass->GetSpecCount() <= _selected_object_index) return false;
 
 		return objclass->GetSpec(_selected_object_index)->IsAvailable();
-	}
-
-	/**
-	 * Calculate the number of columns of the #WID_BO_SELECT_MATRIX widget.
-	 * @return Number of columns in the matrix.
-	 */
-	uint GetMatrixColumnCount()
-	{
-		const NWidgetBase *matrix = this->GetWidget<NWidgetBase>(WID_BO_SELECT_MATRIX);
-		return 1 + (matrix->current_x - matrix->smallest_x) / matrix->resize_x;
 	}
 
 public:
@@ -194,7 +184,7 @@ public:
 		assert(ObjectClass::Get(_selected_object_class)->GetUISpecCount() > 0); // object GUI should be disabled elsewise
 	}
 
-	void SetStringParameters(int widget) const override
+	void SetStringParameters(WidgetID widget) const override
 	{
 		switch (widget) {
 			case WID_BO_OBJECT_NAME: {
@@ -222,7 +212,7 @@ public:
 		this->object_margin = ScaleGUITrad(4);
 	}
 
-	void UpdateWidgetSize(int widget, Dimension *size, const Dimension &padding, Dimension *fill, Dimension *resize) override
+	void UpdateWidgetSize(WidgetID widget, Dimension *size, [[maybe_unused]] const Dimension &padding, [[maybe_unused]] Dimension *fill, [[maybe_unused]] Dimension *resize) override
 	{
 		switch (widget) {
 			case WID_BO_CLASS_LIST: {
@@ -231,7 +221,7 @@ public:
 					if (objclass->GetUISpecCount() == 0) continue;
 					size->width = std::max(size->width, GetStringBoundingBox(objclass->name).width + padding.width);
 				}
-				this->line_height = FONT_HEIGHT_NORMAL + padding.height;
+				this->line_height = GetCharacterHeight(FS_NORMAL) + padding.height;
 				resize->height = this->line_height;
 				size->height = 5 * this->line_height;
 				break;
@@ -314,9 +304,9 @@ public:
 		}
 	}
 
-	void DrawWidget(const Rect &r, int widget) const override
+	void DrawWidget(const Rect &r, WidgetID widget) const override
 	{
-		switch (GB(widget, 0, 16)) {
+		switch (widget) {
 			case WID_BO_CLASS_LIST: {
 				Rect mr = r.Shrink(WidgetDimensions::scaled.matrix);
 				uint pos = 0;
@@ -343,18 +333,20 @@ public:
 				 * look nice in all layouts, we use the 4x4 layout (smallest previews) as starting point. For the bigger
 				 * previews in the layouts with less views we add space homogeneously on all sides, so the 4x4 preview-rectangle
 				 * is centered in the 2x1, 1x2 resp. 1x1 buttons. */
-				uint matrix_height = this->GetWidget<NWidgetMatrix>(WID_BO_OBJECT_MATRIX)->current_y;
+				const NWidgetMatrix *matrix = this->GetWidget<NWidgetBase>(widget)->GetParentWidget<NWidgetMatrix>();
+				uint matrix_height = matrix->current_y;
 
 				DrawPixelInfo tmp_dpi;
 				/* Set up a clipping area for the preview. */
-				if (FillDrawPixelInfo(&tmp_dpi, r.left, r.top, r.Width(), r.Height())) {
+				Rect ir = r.Shrink(WidgetDimensions::scaled.bevel);
+				if (FillDrawPixelInfo(&tmp_dpi, ir)) {
 					AutoRestoreBackup dpi_backup(_cur_dpi, &tmp_dpi);
 					if (spec->grf_prop.grffile == nullptr) {
 						extern const DrawTileSprites _objects[];
 						const DrawTileSprites *dts = &_objects[spec->grf_prop.local_id];
-						DrawOrigTileSeqInGUI(r.Width() / 2 - 1, (r.Height() + matrix_height / 2) / 2 - this->object_margin - ScaleSpriteTrad(TILE_PIXELS), dts, PAL_NONE);
+						DrawOrigTileSeqInGUI(ir.Width() / 2 - 1, (ir.Height() + matrix_height / 2) / 2 - this->object_margin - ScaleSpriteTrad(TILE_PIXELS), dts, PAL_NONE);
 					} else {
-						DrawNewObjectTileInGUI(r.Width() / 2 - 1, (r.Height() + matrix_height / 2) / 2 - this->object_margin - ScaleSpriteTrad(TILE_PIXELS), spec, GB(widget, 16, 16));
+						DrawNewObjectTileInGUI(ir.Width() / 2 - 1, (ir.Height() + matrix_height / 2) / 2 - this->object_margin - ScaleSpriteTrad(TILE_PIXELS), spec, matrix->GetCurrentElement());
 					}
 				}
 				break;
@@ -362,26 +354,27 @@ public:
 
 			case WID_BO_SELECT_IMAGE: {
 				ObjectClass *objclass = ObjectClass::Get(_selected_object_class);
-				int obj_index = objclass->GetIndexFromUI(GB(widget, 16, 16));
+				int obj_index = objclass->GetIndexFromUI(this->GetWidget<NWidgetBase>(widget)->GetParentWidget<NWidgetMatrix>()->GetCurrentElement());
 				if (obj_index < 0) break;
 				const ObjectSpec *spec = objclass->GetSpec(obj_index);
 				if (spec == nullptr) break;
 
-				if (!spec->IsAvailable()) {
-					GfxFillRect(r.Shrink(WidgetDimensions::scaled.bevel), PC_BLACK, FILLRECT_CHECKER);
-				}
 				DrawPixelInfo tmp_dpi;
 				/* Set up a clipping area for the preview. */
-				if (FillDrawPixelInfo(&tmp_dpi, r.left, r.top, r.Width(), r.Height())) {
+				Rect ir = r.Shrink(WidgetDimensions::scaled.bevel);
+				if (FillDrawPixelInfo(&tmp_dpi, ir)) {
 					AutoRestoreBackup dpi_backup(_cur_dpi, &tmp_dpi);
 					if (spec->grf_prop.grffile == nullptr) {
 						extern const DrawTileSprites _objects[];
 						const DrawTileSprites *dts = &_objects[spec->grf_prop.local_id];
-						DrawOrigTileSeqInGUI(r.Width() / 2 - 1, r.Height() - this->object_margin - ScaleSpriteTrad(TILE_PIXELS), dts, PAL_NONE);
+						DrawOrigTileSeqInGUI(ir.Width() / 2 - 1, ir.Height() - this->object_margin - ScaleSpriteTrad(TILE_PIXELS), dts, PAL_NONE);
 					} else {
-						DrawNewObjectTileInGUI(r.Width() / 2 - 1, r.Height() - this->object_margin - ScaleSpriteTrad(TILE_PIXELS), spec,
+						DrawNewObjectTileInGUI(ir.Width() / 2 - 1, ir.Height() - this->object_margin - ScaleSpriteTrad(TILE_PIXELS), spec,
 								std::min<int>(_selected_object_view, spec->views - 1));
 					}
+				}
+				if (!spec->IsAvailable()) {
+					GfxFillRect(ir, PC_BLACK, FILLRECT_CHECKER);
 				}
 				break;
 			}
@@ -393,7 +386,7 @@ public:
 
 				/* Get the extra message for the GUI */
 				if (HasBit(spec->callback_mask, CBM_OBJ_FUND_MORE_TEXT)) {
-					uint16 callback_res = GetObjectCallback(CBID_OBJECT_FUND_MORE_TEXT, 0, 0, spec, nullptr, INVALID_TILE, _selected_object_view);
+					uint16_t callback_res = GetObjectCallback(CBID_OBJECT_FUND_MORE_TEXT, 0, 0, spec, nullptr, INVALID_TILE, _selected_object_view);
 					if (callback_res != CALLBACK_FAILED && callback_res != 0x400) {
 						if (callback_res > 0x400) {
 							ErrorUnknownCallbackResult(spec->grf_prop.grffile->grfid, CBID_OBJECT_FUND_MORE_TEXT, callback_res);
@@ -480,7 +473,7 @@ public:
 			object_number = -1;
 		} else {
 			view_number = sel_view;
-			ObjectClass *objclass = ObjectClass::Get(_selected_object_class);
+			ObjectClass *objclass = ObjectClass::Get(object_class);
 			object_number = objclass->GetUIFromIndex(sel_index);
 		}
 
@@ -490,7 +483,7 @@ public:
 		this->SetDirty();
 	}
 
-	void OnInvalidateData(int data = 0, bool gui_scope = true) override
+	void OnInvalidateData([[maybe_unused]] int data = 0, [[maybe_unused]] bool gui_scope = true) override
 	{
 		if (!gui_scope) return;
 
@@ -502,9 +495,9 @@ public:
 		this->vscroll->SetCapacityFromWidget(this, WID_BO_CLASS_LIST);
 	}
 
-	void OnClick(Point pt, int widget, int click_count) override
+	void OnClick([[maybe_unused]] Point pt, WidgetID widget, [[maybe_unused]] int click_count) override
 	{
-		switch (GB(widget, 0, 16)) {
+		switch (widget) {
 			case WID_BO_CLASS_LIST: {
 				auto it = this->vscroll->GetScrolledItemFromWidget(this->object_classes, pt.y, this, widget);
 				if (it == this->object_classes.end()) break;
@@ -516,21 +509,21 @@ public:
 
 			case WID_BO_SELECT_IMAGE: {
 				ObjectClass *objclass = ObjectClass::Get(_selected_object_class);
-				int num_clicked = objclass->GetIndexFromUI(GB(widget, 16, 16));
+				int num_clicked = objclass->GetIndexFromUI(this->GetWidget<NWidgetBase>(widget)->GetParentWidget<NWidgetMatrix>()->GetCurrentElement());
 				if (num_clicked >= 0 && objclass->GetSpec(num_clicked)->IsAvailable()) this->SelectOtherObject(num_clicked);
 				break;
 			}
 
 			case WID_BO_OBJECT_SPRITE:
 				if (_selected_object_index != -1) {
-					_selected_object_view = GB(widget, 16, 16);
+					_selected_object_view = this->GetWidget<NWidgetBase>(widget)->GetParentWidget<NWidgetMatrix>()->GetCurrentElement();
 					this->SelectOtherObject(_selected_object_index); // Re-select the object for a different view.
 				}
 				break;
 		}
 	}
 
-	void OnPlaceObject(Point pt, TileIndex tile) override
+	void OnPlaceObject([[maybe_unused]] Point pt, TileIndex tile) override
 	{
 		const ObjectSpec *spec = ObjectClass::Get(_selected_object_class)->GetSpec(_selected_object_index);
 
@@ -541,12 +534,12 @@ public:
 		}
 	}
 
-	void OnPlaceDrag(ViewportPlaceMethod select_method, ViewportDragDropSelectionProcess select_proc, Point pt) override
+	void OnPlaceDrag(ViewportPlaceMethod select_method, [[maybe_unused]] ViewportDragDropSelectionProcess select_proc, [[maybe_unused]] Point pt) override
 	{
 		VpSelectTilesWithMethod(pt.x, pt.y, select_method);
 	}
 
-	void OnPlaceMouseUp(ViewportPlaceMethod select_method, ViewportDragDropSelectionProcess select_proc, Point pt, TileIndex start_tile, TileIndex end_tile) override
+	void OnPlaceMouseUp([[maybe_unused]] ViewportPlaceMethod select_method, [[maybe_unused]] ViewportDragDropSelectionProcess select_proc, [[maybe_unused]] Point pt, TileIndex start_tile, TileIndex end_tile) override
 	{
 		if (pt.x == -1) return;
 
@@ -583,12 +576,14 @@ public:
 		return ES_HANDLED;
 	}
 
-	void OnEditboxChanged(int wid) override
+	void OnEditboxChanged(WidgetID widget) override
 	{
-		string_filter.SetFilterTerm(this->filter_editbox.text.buf);
-		this->object_classes.SetFilterState(!string_filter.IsEmpty());
-		this->object_classes.ForceRebuild();
-		this->InvalidateData();
+		if (widget == WID_BO_FILTER) {
+			string_filter.SetFilterTerm(this->filter_editbox.text.buf);
+			this->object_classes.SetFilterState(!string_filter.IsEmpty());
+			this->object_classes.ForceRebuild();
+			this->InvalidateData();
+		}
 	}
 
 	/**
@@ -675,52 +670,50 @@ static const NWidgetPart _nested_build_object_widgets[] = {
 		NWidget(WWT_DEFSIZEBOX, COLOUR_DARK_GREEN),
 		NWidget(WWT_STICKYBOX, COLOUR_DARK_GREEN),
 	EndContainer(),
-	NWidget(WWT_PANEL, COLOUR_DARK_GREEN),
-		NWidget(NWID_HORIZONTAL), SetPadding(2, 0, 0, 2),
-			NWidget(NWID_VERTICAL), SetPadding(0, 5, 2, 0), SetPIP(0, 2, 0),
-				NWidget(NWID_HORIZONTAL),
-					NWidget(WWT_TEXT, COLOUR_DARK_GREEN), SetFill(0, 1), SetDataTip(STR_LIST_FILTER_TITLE, STR_NULL),
-					NWidget(WWT_EDITBOX, COLOUR_GREY, WID_BO_FILTER), SetFill(1, 0), SetResize(1, 0),
-							SetDataTip(STR_LIST_FILTER_OSKTITLE, STR_LIST_FILTER_TOOLTIP),
-				EndContainer(),
-				NWidget(NWID_HORIZONTAL),
-					NWidget(WWT_MATRIX, COLOUR_GREY, WID_BO_CLASS_LIST), SetFill(1, 0), SetMatrixDataTip(1, 0, STR_OBJECT_BUILD_CLASS_TOOLTIP), SetScrollbar(WID_BO_SCROLLBAR),
-					NWidget(NWID_VSCROLLBAR, COLOUR_GREY, WID_BO_SCROLLBAR),
-				EndContainer(),
-				NWidget(NWID_HORIZONTAL),
-					NWidget(NWID_MATRIX, COLOUR_DARK_GREEN, WID_BO_OBJECT_MATRIX), SetPIP(0, 2, 0),
-						NWidget(WWT_PANEL, COLOUR_GREY, WID_BO_OBJECT_SPRITE), SetDataTip(0x0, STR_OBJECT_BUILD_PREVIEW_TOOLTIP), EndContainer(),
+	NWidget(NWID_HORIZONTAL),
+		NWidget(WWT_PANEL, COLOUR_DARK_GREEN),
+			NWidget(NWID_HORIZONTAL), SetPIP(0, WidgetDimensions::unscaled.hsep_normal, 0), SetPadding(WidgetDimensions::unscaled.picker),
+				NWidget(NWID_VERTICAL), SetPIP(0, WidgetDimensions::unscaled.vsep_picker, 0),
+					NWidget(NWID_HORIZONTAL), SetPIP(0, WidgetDimensions::unscaled.hsep_normal, 0),
+						NWidget(WWT_TEXT, COLOUR_DARK_GREEN), SetFill(0, 1), SetDataTip(STR_LIST_FILTER_TITLE, STR_NULL),
+						NWidget(WWT_EDITBOX, COLOUR_GREY, WID_BO_FILTER), SetFill(1, 0), SetResize(1, 0),
+								SetDataTip(STR_LIST_FILTER_OSKTITLE, STR_LIST_FILTER_TOOLTIP),
 					EndContainer(),
+					NWidget(NWID_HORIZONTAL),
+						NWidget(WWT_MATRIX, COLOUR_GREY, WID_BO_CLASS_LIST), SetFill(1, 0), SetMatrixDataTip(1, 0, STR_OBJECT_BUILD_CLASS_TOOLTIP), SetScrollbar(WID_BO_SCROLLBAR),
+						NWidget(NWID_VSCROLLBAR, COLOUR_GREY, WID_BO_SCROLLBAR),
+					EndContainer(),
+					NWidget(WWT_LABEL, COLOUR_DARK_GREEN), SetDataTip(STR_STATION_BUILD_ORIENTATION, STR_NULL), SetFill(1, 0),
+					NWidget(NWID_HORIZONTAL), SetPIPRatio(1, 0, 1),
+						NWidget(NWID_MATRIX, COLOUR_DARK_GREEN, WID_BO_OBJECT_MATRIX), SetPIP(0, 2, 0),
+							NWidget(WWT_PANEL, COLOUR_GREY, WID_BO_OBJECT_SPRITE), SetDataTip(0x0, STR_OBJECT_BUILD_PREVIEW_TOOLTIP), EndContainer(),
+						EndContainer(),
+					EndContainer(),
+					NWidget(WWT_TEXT, COLOUR_DARK_GREEN, WID_BO_OBJECT_NAME), SetDataTip(STR_JUST_STRING, STR_NULL), SetTextStyle(TC_ORANGE), SetAlignment(SA_CENTER),
+					NWidget(WWT_TEXT, COLOUR_DARK_GREEN, WID_BO_OBJECT_SIZE), SetDataTip(STR_OBJECT_BUILD_SIZE, STR_NULL), SetAlignment(SA_CENTER),
 				EndContainer(),
-				NWidget(WWT_TEXT, COLOUR_DARK_GREEN, WID_BO_OBJECT_NAME), SetDataTip(STR_JUST_STRING, STR_NULL), SetTextStyle(TC_ORANGE),
-				NWidget(WWT_TEXT, COLOUR_DARK_GREEN, WID_BO_OBJECT_SIZE), SetDataTip(STR_OBJECT_BUILD_SIZE, STR_NULL),
-			EndContainer(),
-			NWidget(WWT_PANEL, COLOUR_DARK_GREEN), SetScrollbar(WID_BO_SELECT_SCROLL),
-				NWidget(NWID_HORIZONTAL),
-					NWidget(NWID_MATRIX, COLOUR_DARK_GREEN, WID_BO_SELECT_MATRIX), SetFill(0, 1), SetPIP(0, 2, 0),
+				NWidget(WWT_PANEL, COLOUR_DARK_GREEN), SetScrollbar(WID_BO_SELECT_SCROLL),
+					NWidget(NWID_MATRIX, COLOUR_DARK_GREEN, WID_BO_SELECT_MATRIX), SetPIP(0, 2, 0),
 						NWidget(WWT_PANEL, COLOUR_DARK_GREEN, WID_BO_SELECT_IMAGE), SetMinimalSize(66, 60), SetDataTip(0x0, STR_OBJECT_BUILD_TOOLTIP),
 								SetFill(0, 0), SetResize(0, 0), SetScrollbar(WID_BO_SELECT_SCROLL),
 						EndContainer(),
 					EndContainer(),
-					NWidget(NWID_VSCROLLBAR, COLOUR_DARK_GREEN, WID_BO_SELECT_SCROLL),
 				EndContainer(),
 			EndContainer(),
+			NWidget(WWT_EMPTY, INVALID_COLOUR, WID_BO_INFO), SetPadding(WidgetDimensions::unscaled.framerect), SetFill(1, 0), SetResize(1, 0),
 		EndContainer(),
-		NWidget(NWID_HORIZONTAL),
-			NWidget(WWT_EMPTY, INVALID_COLOUR, WID_BO_INFO), SetPadding(0, 5, 2, 2), SetFill(1, 0), SetResize(1, 0),
-			NWidget(NWID_VERTICAL),
-				NWidget(WWT_PANEL, COLOUR_DARK_GREEN), SetFill(0, 1), EndContainer(),
-				NWidget(WWT_RESIZEBOX, COLOUR_DARK_GREEN),
-			EndContainer(),
+		NWidget(NWID_VERTICAL),
+			NWidget(NWID_VSCROLLBAR, COLOUR_DARK_GREEN, WID_BO_SELECT_SCROLL),
+			NWidget(WWT_RESIZEBOX, COLOUR_DARK_GREEN),
 		EndContainer(),
 	EndContainer(),
 };
 
-static WindowDesc _build_object_desc(
+static WindowDesc _build_object_desc(__FILE__, __LINE__,
 	WDP_AUTO, "build_object", 0, 0,
 	WC_BUILD_OBJECT, WC_BUILD_TOOLBAR,
 	WDF_CONSTRUCTION,
-	_nested_build_object_widgets, lengthof(_nested_build_object_widgets),
+	std::begin(_nested_build_object_widgets), std::end(_nested_build_object_widgets),
 	&BuildObjectWindow::hotkeys
 );
 

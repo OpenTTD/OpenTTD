@@ -180,7 +180,7 @@ switch (a) {
 
 	case 1:
 		DoSomething();
-		/* FALL THROUGH */
+		FALLTHROUGH;
 
 	case 2:
 		DoMore();
@@ -191,7 +191,7 @@ switch (a) {
 		int r = 2;
 
 		DoEvenMore(a);
-		/* FALL THROUGH */
+		FALLTHROUGH;
 	}
 
 	case 4: {
@@ -416,9 +416,7 @@ There is a check-script on the git server (also available for clients, see below
 
 The first line of a message must match:
 ```
-<pre>
 <keyword>( #<issue>| <commit>(, (<keyword> #<issue>|<commit>))*)?: ([<section])? <Details>
-</pre>
 ```
 Keywords are:
 * Add, Feature: Adding new stuff. Difference between "Feature" and "Add" is somewhat subjective. "Feature" for user-point-of-view stuff, "Add" for other.

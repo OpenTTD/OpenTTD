@@ -26,7 +26,7 @@ struct Station;
  * - bits 19-23 Cargo type.
  * - bits 24-31 %Company number.
  */
-typedef uint32 CargoMonitorID; ///< Type of the cargo monitor number.
+typedef uint32_t CargoMonitorID; ///< Type of the cargo monitor number.
 
 /** Map type for storing and updating active cargo monitor numbers and their amounts. */
 typedef std::map<CargoMonitorID, OverflowSafeInt32> CargoMonitorMap;
@@ -63,7 +63,7 @@ static inline CargoMonitorID EncodeCargoIndustryMonitor(CompanyID company, Cargo
 	assert(ctype < (1 << CCB_CARGO_TYPE_LENGTH));
 	assert(company < (1 << CCB_COMPANY_LENGTH));
 
-	uint32 ret = 0;
+	uint32_t ret = 0;
 	SB(ret, CCB_TOWN_IND_NUMBER_START, CCB_TOWN_IND_NUMBER_LENGTH, ind);
 	SetBit(ret, CCB_IS_INDUSTRY_BIT);
 	SB(ret, CCB_CARGO_TYPE_START, CCB_CARGO_TYPE_LENGTH, ctype);
@@ -83,7 +83,7 @@ static inline CargoMonitorID EncodeCargoTownMonitor(CompanyID company, CargoID c
 	assert(ctype < (1 << CCB_CARGO_TYPE_LENGTH));
 	assert(company < (1 << CCB_COMPANY_LENGTH));
 
-	uint32 ret = 0;
+	uint32_t ret = 0;
 	SB(ret, CCB_TOWN_IND_NUMBER_START, CCB_TOWN_IND_NUMBER_LENGTH, town);
 	SB(ret, CCB_CARGO_TYPE_START, CCB_CARGO_TYPE_LENGTH, ctype);
 	SB(ret, CCB_COMPANY_START, CCB_COMPANY_LENGTH, company);
@@ -144,8 +144,8 @@ static inline TownID DecodeMonitorTown(CargoMonitorID num)
 
 void ClearCargoPickupMonitoring(CompanyID company = INVALID_OWNER);
 void ClearCargoDeliveryMonitoring(CompanyID company = INVALID_OWNER);
-int32 GetDeliveryAmount(CargoMonitorID monitor, bool keep_monitoring);
-int32 GetPickupAmount(CargoMonitorID monitor, bool keep_monitoring);
-void AddCargoDelivery(CargoID cargo_type, CompanyID company, uint32 amount, SourceType src_type, SourceID src, const Station *st, IndustryID dest = INVALID_INDUSTRY);
+int32_t GetDeliveryAmount(CargoMonitorID monitor, bool keep_monitoring);
+int32_t GetPickupAmount(CargoMonitorID monitor, bool keep_monitoring);
+void AddCargoDelivery(CargoID cargo_type, CompanyID company, uint32_t amount, SourceType src_type, SourceID src, const Station *st, IndustryID dest = INVALID_INDUSTRY);
 
 #endif /* CARGOMONITOR_H */

@@ -52,8 +52,8 @@ const PalSpriteID tree_sprites[] = {
  */
 static Dimension GetMaxTreeSpriteSize()
 {
-	const uint16 base = _tree_base_by_landscape[_settings_game.game_creation.landscape];
-	const uint16 count = _tree_count_by_landscape[_settings_game.game_creation.landscape];
+	const uint16_t base = _tree_base_by_landscape[_settings_game.game_creation.landscape];
+	const uint16_t count = _tree_count_by_landscape[_settings_game.game_creation.landscape];
 
 	Dimension size, this_size;
 	Point offset;
@@ -141,20 +141,18 @@ class BuildTreesWindow : public Window
 public:
 	BuildTreesWindow(WindowDesc *desc, WindowNumber window_number) : Window(desc), tree_to_plant(-1), mode(PM_NORMAL)
 	{
-		this->InitNested(window_number);
+		this->CreateNestedTree();
 		ResetObjectToPlace();
 
 		this->LowerWidget(WID_BT_MODE_NORMAL);
-
 		/* Show scenario editor tools in editor */
-		auto *se_tools = this->GetWidget<NWidgetStacked>(WID_BT_SE_PANE);
 		if (_game_mode != GM_EDITOR) {
-			se_tools->SetDisplayedPlane(SZSP_HORIZONTAL);
-			this->ReInit();
+			this->GetWidget<NWidgetStacked>(WID_BT_SE_PANE)->SetDisplayedPlane(SZSP_HORIZONTAL);
 		}
+		this->FinishInitNested(window_number);
 	}
 
-	void UpdateWidgetSize(int widget, Dimension *size, const Dimension &padding, Dimension *fill, Dimension *resize) override
+	void UpdateWidgetSize(WidgetID widget, Dimension *size, [[maybe_unused]] const Dimension &padding, [[maybe_unused]] Dimension *fill, [[maybe_unused]] Dimension *resize) override
 	{
 		if (widget >= WID_BT_TYPE_BUTTON_FIRST) {
 			/* Ensure tree type buttons are sized after the largest tree type */
@@ -164,7 +162,7 @@ public:
 		}
 	}
 
-	void DrawWidget(const Rect &r, int widget) const override
+	void DrawWidget(const Rect &r, WidgetID widget) const override
 	{
 		if (widget >= WID_BT_TYPE_BUTTON_FIRST) {
 			const int index = widget - WID_BT_TYPE_BUTTON_FIRST;
@@ -173,7 +171,7 @@ public:
 		}
 	}
 
-	void OnClick(Point pt, int widget, int click_count) override
+	void OnClick([[maybe_unused]] Point pt, WidgetID widget, [[maybe_unused]] int click_count) override
 	{
 		switch (widget) {
 			case WID_BT_TYPE_RANDOM: // tree of random type.
@@ -214,7 +212,7 @@ public:
 		}
 	}
 
-	void OnPlaceObject(Point pt, TileIndex tile) override
+	void OnPlaceObject([[maybe_unused]] Point pt, TileIndex tile) override
 	{
 		if (_game_mode != GM_EDITOR && this->mode == PM_NORMAL) {
 			VpStartPlaceSizing(tile, VPM_X_AND_Y, DDSP_PLANT_TREES);
@@ -223,7 +221,7 @@ public:
 		}
 	}
 
-	void OnPlaceDrag(ViewportPlaceMethod select_method, ViewportDragDropSelectionProcess select_proc, Point pt) override
+	void OnPlaceDrag(ViewportPlaceMethod select_method, [[maybe_unused]] ViewportDragDropSelectionProcess select_proc, [[maybe_unused]] Point pt) override
 	{
 		if (_game_mode != GM_EDITOR && this->mode == PM_NORMAL) {
 			VpSelectTilesWithMethod(pt.x, pt.y, select_method);
@@ -238,7 +236,7 @@ public:
 		}
 	}
 
-	void OnPlaceMouseUp(ViewportPlaceMethod select_method, ViewportDragDropSelectionProcess select_proc, Point pt, TileIndex start_tile, TileIndex end_tile) override
+	void OnPlaceMouseUp([[maybe_unused]] ViewportPlaceMethod select_method, ViewportDragDropSelectionProcess select_proc, [[maybe_unused]] Point pt, TileIndex start_tile, TileIndex end_tile) override
 	{
 		if (_game_mode != GM_EDITOR && this->mode == PM_NORMAL && pt.x != -1 && select_proc == DDSP_PLANT_TREES) {
 			Command<CMD_PLANT_TREE>::Post(STR_ERROR_CAN_T_PLANT_TREE_HERE, end_tile, start_tile, this->tree_to_plant, _ctrl_pressed);
@@ -258,7 +256,7 @@ public:
  * get producing the correct result than dynamically building the widgets is.
  * @see NWidgetFunctionType
  */
-static NWidgetBase *MakeTreeTypeButtons(int *biggest_index)
+static std::unique_ptr<NWidgetBase> MakeTreeTypeButtons()
 {
 	const byte type_base = _tree_base_by_landscape[_settings_game.game_creation.landscape];
 	const byte type_count = _tree_count_by_landscape[_settings_game.game_creation.landscape];
@@ -268,21 +266,20 @@ static NWidgetBase *MakeTreeTypeButtons(int *biggest_index)
 	const int num_rows = CeilDiv(type_count, num_columns);
 	byte cur_type = type_base;
 
-	NWidgetVertical *vstack = new NWidgetVertical(NC_EQUALSIZE);
+	auto vstack = std::make_unique<NWidgetVertical>(NC_EQUALSIZE);
 	vstack->SetPIP(0, 1, 0);
 
 	for (int row = 0; row < num_rows; row++) {
-		NWidgetHorizontal *hstack = new NWidgetHorizontal(NC_EQUALSIZE);
+		auto hstack = std::make_unique<NWidgetHorizontal>(NC_EQUALSIZE);
 		hstack->SetPIP(0, 1, 0);
-		vstack->Add(hstack);
 		for (int col = 0; col < num_columns; col++) {
 			if (cur_type > type_base + type_count) break;
-			NWidgetBackground *button = new NWidgetBackground(WWT_PANEL, COLOUR_GREY, WID_BT_TYPE_BUTTON_FIRST + cur_type);
+			auto button = std::make_unique<NWidgetBackground>(WWT_PANEL, COLOUR_GREY, WID_BT_TYPE_BUTTON_FIRST + cur_type);
 			button->SetDataTip(0x0, STR_PLANT_TREE_TOOLTIP);
-			hstack->Add(button);
-			*biggest_index = WID_BT_TYPE_BUTTON_FIRST + cur_type;
+			hstack->Add(std::move(button));
 			cur_type++;
 		}
+		vstack->Add(std::move(hstack));
 	}
 
 	return vstack;
@@ -316,11 +313,11 @@ static const NWidgetPart _nested_build_trees_widgets[] = {
 	EndContainer(),
 };
 
-static WindowDesc _build_trees_desc(
+static WindowDesc _build_trees_desc(__FILE__, __LINE__,
 	WDP_AUTO, "build_tree", 0, 0,
 	WC_BUILD_TREES, WC_NONE,
 	WDF_CONSTRUCTION,
-	_nested_build_trees_widgets, lengthof(_nested_build_trees_widgets)
+	std::begin(_nested_build_trees_widgets), std::end(_nested_build_trees_widgets)
 );
 
 void ShowBuildTreesToolbar()

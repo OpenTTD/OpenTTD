@@ -13,7 +13,7 @@
 #include "core/enum_type.hpp"
 
 /** Type for the company global vehicle unit number. */
-typedef uint16 UnitID;
+typedef uint16_t UnitID;
 
 /** Available types of transport */
 enum TransportType : byte {

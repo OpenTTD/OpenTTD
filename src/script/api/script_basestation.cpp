@@ -15,6 +15,7 @@
 #include "../../strings_func.h"
 #include "../../station_cmd.h"
 #include "../../waypoint_cmd.h"
+#include "../../timer/timer_game_calendar.h"
 #include "table/strings.h"
 
 #include "../../safeguards.h"
@@ -63,5 +64,5 @@
 {
 	if (!IsValidBaseStation(station_id)) return ScriptDate::DATE_INVALID;
 
-	return (ScriptDate::Date)::BaseStation::Get(station_id)->build_date;
+	return (ScriptDate::Date)::BaseStation::Get(station_id)->build_date.base();
 }

@@ -30,20 +30,20 @@ enum HandleKeyPressResult
 struct Textbuf {
 	CharSetFilter afilter;    ///< Allowed characters
 	char * const buf;         ///< buffer in which text is saved
-	uint16 max_bytes;         ///< the maximum size of the buffer in bytes (including terminating '\0')
-	uint16 max_chars;         ///< the maximum size of the buffer in characters (including terminating '\0')
-	uint16 bytes;             ///< the current size of the string in bytes (including terminating '\0')
-	uint16 chars;             ///< the current size of the string in characters (including terminating '\0')
-	uint16 pixels;            ///< the current size of the string in pixels
+	uint16_t max_bytes;         ///< the maximum size of the buffer in bytes (including terminating '\0')
+	uint16_t max_chars;         ///< the maximum size of the buffer in characters (including terminating '\0')
+	uint16_t bytes;             ///< the current size of the string in bytes (including terminating '\0')
+	uint16_t chars;             ///< the current size of the string in characters (including terminating '\0')
+	uint16_t pixels;            ///< the current size of the string in pixels
 	bool caret;               ///< is the caret ("_") visible or not
-	uint16 caretpos;          ///< the current position of the caret in the buffer, in bytes
-	uint16 caretxoffs;        ///< the current position of the caret in pixels
-	uint16 markpos;           ///< the start position of the marked area in the buffer, in bytes
-	uint16 markend;           ///< the end position of the marked area in the buffer, in bytes
-	uint16 markxoffs;         ///< the start position of the marked area in pixels
-	uint16 marklength;        ///< the length of the marked area in pixels
+	uint16_t caretpos;          ///< the current position of the caret in the buffer, in bytes
+	uint16_t caretxoffs;        ///< the current position of the caret in pixels
+	uint16_t markpos;           ///< the start position of the marked area in the buffer, in bytes
+	uint16_t markend;           ///< the end position of the marked area in the buffer, in bytes
+	uint16_t markxoffs;         ///< the start position of the marked area in pixels
+	uint16_t marklength;        ///< the length of the marked area in pixels
 
-	explicit Textbuf(uint16 max_bytes, uint16 max_chars = UINT16_MAX);
+	explicit Textbuf(uint16_t max_bytes, uint16_t max_chars = UINT16_MAX);
 	~Textbuf();
 
 	void Assign(StringID string);
@@ -52,25 +52,27 @@ struct Textbuf {
 	void DeleteAll();
 	bool InsertClipboard();
 
-	bool InsertChar(WChar key);
+	bool InsertChar(char32_t key);
 	bool InsertString(const char *str, bool marked, const char *caret = nullptr, const char *insert_location = nullptr, const char *replacement_end = nullptr);
 
-	bool DeleteChar(uint16 keycode);
-	bool MovePos(uint16 keycode);
+	bool DeleteChar(uint16_t keycode);
+	bool MovePos(uint16_t keycode);
 
-	HandleKeyPressResult HandleKeyPress(WChar key, uint16 keycode);
+	HandleKeyPressResult HandleKeyPress(char32_t key, uint16_t keycode);
 
 	bool HandleCaret();
 	void UpdateSize();
 
 	void DiscardMarkedText(bool update = true);
 
+	const char *GetText() const;
+
 private:
 	std::unique_ptr<StringIterator> char_iter;
 
 	bool CanDelChar(bool backspace);
 
-	void DeleteText(uint16 from, uint16 to, bool update);
+	void DeleteText(uint16_t from, uint16_t to, bool update);
 
 	void UpdateStringIter();
 	void UpdateWidth();

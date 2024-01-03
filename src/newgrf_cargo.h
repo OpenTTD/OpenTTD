@@ -23,7 +23,7 @@ struct CargoSpec;
 struct GRFFile;
 
 SpriteID GetCustomCargoSprite(const CargoSpec *cs);
-uint16 GetCargoCallback(CallbackID callback, uint32 param1, uint32 param2, const CargoSpec *cs);
-CargoID GetCargoTranslation(uint8 cargo, const GRFFile *grffile, bool usebit = false);
+uint16_t GetCargoCallback(CallbackID callback, uint32_t param1, uint32_t param2, const CargoSpec *cs);
+CargoID GetCargoTranslation(uint8_t cargo, const GRFFile *grffile, bool usebit = false);
 
 #endif /* NEWGRF_CARGO_H */

@@ -21,14 +21,14 @@ void ScriptTileList::AddRectangle(TileIndex t1, TileIndex t2)
 	if (!::IsValidTile(t2)) return;
 
 	TileArea ta(t1, t2);
-	for (TileIndex t : ta) this->AddItem(t);
+	for (TileIndex t : ta) this->AddItem(t.base());
 }
 
 void ScriptTileList::AddTile(TileIndex tile)
 {
 	if (!::IsValidTile(tile)) return;
 
-	this->AddItem(tile);
+	this->AddItem(tile.base());
 }
 
 void ScriptTileList::RemoveRectangle(TileIndex t1, TileIndex t2)
@@ -37,14 +37,14 @@ void ScriptTileList::RemoveRectangle(TileIndex t1, TileIndex t2)
 	if (!::IsValidTile(t2)) return;
 
 	TileArea ta(t1, t2);
-	for (TileIndex t : ta) this->RemoveItem(t);
+	for (TileIndex t : ta) this->RemoveItem(t.base());
 }
 
 void ScriptTileList::RemoveTile(TileIndex tile)
 {
 	if (!::IsValidTile(tile)) return;
 
-	this->RemoveItem(tile);
+	this->RemoveItem(tile.base());
 }
 
 /**

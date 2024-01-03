@@ -140,9 +140,9 @@ public:
 	 * @param port The port to listen on.
 	 * @return true if listening succeeded.
 	 */
-	static bool Listen(uint16 port)
+	static bool Listen(uint16_t port)
 	{
-		assert(sockets.size() == 0);
+		assert(sockets.empty());
 
 		NetworkAddressList addresses;
 		GetBindAddresses(&addresses, port);
@@ -151,7 +151,7 @@ public:
 			address.Listen(SOCK_STREAM, &sockets);
 		}
 
-		if (sockets.size() == 0) {
+		if (sockets.empty()) {
 			Debug(net, 0, "Could not start network: could not create listening socket");
 			ShowNetworkError(STR_NETWORK_ERROR_SERVER_START);
 			return false;

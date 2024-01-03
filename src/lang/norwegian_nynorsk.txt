@@ -190,6 +190,9 @@ STR_COLOUR_BROWN                                                :Brun
 STR_COLOUR_GREY                                                 :Grå
 STR_COLOUR_WHITE                                                :Kvit
 
+###length 17
+
+
 # Units used in OpenTTD
 STR_UNITS_VELOCITY_IMPERIAL                                     :{DECIMAL} mi/t
 STR_UNITS_VELOCITY_METRIC                                       :{DECIMAL} km/t
@@ -223,6 +226,7 @@ STR_UNITS_FORCE_SI                                              :{DECIMAL} kN
 STR_UNITS_HEIGHT_IMPERIAL                                       :{DECIMAL} fot
 STR_UNITS_HEIGHT_METRIC                                         :{DECIMAL} m
 STR_UNITS_HEIGHT_SI                                             :{DECIMAL} m
+
 
 # Common window strings
 STR_LIST_FILTER_TITLE                                           :{BLACK}Søkefilter:
@@ -393,31 +397,25 @@ STR_SETTINGS_MENU_TRANSPARENT_BUILDINGS                         :Gjennomsiktige 
 STR_SETTINGS_MENU_TRANSPARENT_SIGNS                             :Gjennomsiktige skilt
 
 # File menu
-###length 5
 STR_FILE_MENU_SAVE_GAME                                         :Lagre spel
 STR_FILE_MENU_LOAD_GAME                                         :Last inn spel
 STR_FILE_MENU_QUIT_GAME                                         :Avslutt noverande spel
-STR_FILE_MENU_SEPARATOR                                         :
 STR_FILE_MENU_EXIT                                              :Avslutt OpenTTD
 
 # Map menu
-###length 4
 STR_MAP_MENU_MAP_OF_WORLD                                       :Verdskart
 STR_MAP_MENU_EXTRA_VIEWPORT                                     :Ekstra tilleggsvindauge
 STR_MAP_MENU_LINGRAPH_LEGEND                                    :Symbolforklaring for vareflyt
 STR_MAP_MENU_SIGN_LIST                                          :Skiltliste
 
 # Town menu
-###length 2
 STR_TOWN_MENU_TOWN_DIRECTORY                                    :Byoversikt
 STR_TOWN_MENU_FOUND_TOWN                                        :Grunnlegg by
 
 # Subsidies menu
-###length 1
 STR_SUBSIDIES_MENU_SUBSIDIES                                    :Subsidiar
 
 # Graph menu
-###length 6
 STR_GRAPH_MENU_OPERATING_PROFIT_GRAPH                           :Fortenestegraf
 STR_GRAPH_MENU_INCOME_GRAPH                                     :Inntektsgraf
 STR_GRAPH_MENU_DELIVERED_CARGO_GRAPH                            :Graf over leverte varer
@@ -426,56 +424,45 @@ STR_GRAPH_MENU_COMPANY_VALUE_GRAPH                              :Graf over firma
 STR_GRAPH_MENU_CARGO_PAYMENT_RATES                              :Varetakster
 
 # Company league menu
-###length 3
 STR_GRAPH_MENU_COMPANY_LEAGUE_TABLE                             :Firmarangeringstabell
 STR_GRAPH_MENU_DETAILED_PERFORMANCE_RATING                      :Detaljert prestasjonsnivå
 STR_GRAPH_MENU_HIGHSCORE                                        :Poengtavle
 
 # Industry menu
-###length 3
 STR_INDUSTRY_MENU_INDUSTRY_DIRECTORY                            :Oversikt over industriar
 STR_INDUSTRY_MENU_INDUSTRY_CHAIN                                :Næringskjeder
 STR_INDUSTRY_MENU_FUND_NEW_INDUSTRY                             :Finansier ny industri
 
 # URailway construction menu
-###length 4
 STR_RAIL_MENU_RAILROAD_CONSTRUCTION                             :Bygg jernbane
 STR_RAIL_MENU_ELRAIL_CONSTRUCTION                               :Bygg elektrisk jernbane
 STR_RAIL_MENU_MONORAIL_CONSTRUCTION                             :Bygg monorail
 STR_RAIL_MENU_MAGLEV_CONSTRUCTION                               :Bygg maglev
 
 # Road construction menu
-###length 2
 STR_ROAD_MENU_ROAD_CONSTRUCTION                                 :Bygg veg
 STR_ROAD_MENU_TRAM_CONSTRUCTION                                 :Bygg trikkespor
 
 # Waterways construction menu
-###length 1
 STR_WATERWAYS_MENU_WATERWAYS_CONSTRUCTION                       :Bygg vannvegar
 
 # Aairport construction menu
-###length 1
 STR_AIRCRAFT_MENU_AIRPORT_CONSTRUCTION                          :Bygg flyplass
 
 # Landscaping menu
-###length 3
 STR_LANDSCAPING_MENU_LANDSCAPING                                :Landskapsverktøy
 STR_LANDSCAPING_MENU_PLANT_TREES                                :Plant tre
 STR_LANDSCAPING_MENU_PLACE_SIGN                                 :Plasser skilt
 
 # Music menu
-###length 1
 STR_TOOLBAR_SOUND_MUSIC                                         :Lyd/musikk
 
 # Message menu
-###length 3
 STR_NEWS_MENU_LAST_MESSAGE_NEWS_REPORT                          :Siste melding/nyheit
 STR_NEWS_MENU_MESSAGE_HISTORY_MENU                              :Tidlegare meldingar
 
 # About menu
-###length 10
 STR_ABOUT_MENU_LAND_BLOCK_INFO                                  :Informasjon om landområde
-STR_ABOUT_MENU_SEPARATOR                                        :
 STR_ABOUT_MENU_TOGGLE_CONSOLE                                   :Syne/gøym konsoll
 STR_ABOUT_MENU_AI_DEBUG                                         :AI- / Spelscriptfeilsøking
 STR_ABOUT_MENU_SCREENSHOT                                       :Skjermdump
@@ -680,8 +667,6 @@ STR_PLAYLIST_TOOLTIP_CLICK_TO_ADD_TRACK                         :{BLACK}Klikk p�
 STR_PLAYLIST_TOOLTIP_CLICK_TO_REMOVE_TRACK                      :{BLACK}Klikk på eit musikkspor for å fjerne det frå gjeldande program (Gjeld berre eigendefinert 1 og 2)
 
 # Highscore window
-STR_HIGHSCORE_TOP_COMPANIES_WHO_REACHED                         :{BIG_FONT}{BLACK}Beste firma som nådde {NUM}
-STR_HIGHSCORE_TOP_COMPANIES_NETWORK_GAME                        :{BIG_FONT}{BLACK}Firmarangering i {NUM}
 STR_HIGHSCORE_POSITION                                          :{BIG_FONT}{BLACK}{COMMA}.
 STR_HIGHSCORE_PERFORMANCE_TITLE_BUSINESSMAN                     :Forretningsmann
 STR_HIGHSCORE_PERFORMANCE_TITLE_ENTREPRENEUR                    :Entreprenør
@@ -865,10 +850,6 @@ STR_NEWS_NEW_VEHICLE_TYPE                                       :{BIG_FONT}{BLAC
 STR_NEWS_NEW_VEHICLE_NOW_AVAILABLE_WITH_TYPE                    :{BLACK}Ny {STRING}type er tilgjengeleg!  -  {ENGINE}
 
 
-STR_NEWS_STATION_NO_LONGER_ACCEPTS_CARGO                        :{WHITE}{STATION} godtek ikkje lenger {STRING}
-STR_NEWS_STATION_NO_LONGER_ACCEPTS_CARGO_OR_CARGO               :{WHITE}{STATION} godtek ikkje lenger {STRING} eller {STRING}
-STR_NEWS_STATION_NOW_ACCEPTS_CARGO                              :{WHITE}{STATION} godtek no {STRING}
-STR_NEWS_STATION_NOW_ACCEPTS_CARGO_AND_CARGO                    :{WHITE}{STATION} godtek no {STRING} og {STRING}
 
 STR_NEWS_OFFER_OF_SUBSIDY_EXPIRED                               :{BIG_FONT}{BLACK}Tilbod om subsidie har gått ut:{}{}{STRING} frå {STRING} til {STRING} får ikkje lenger subsidiar
 STR_NEWS_SUBSIDY_WITHDRAWN_SERVICE                              :{BIG_FONT}{BLACK}Subsidie trekt attende:{}{}{STRING} teneste frå {STRING} til {STRING} får ikkje lenger subsidiar
@@ -894,41 +875,42 @@ STR_GAME_OPTIONS_CAPTION                                        :{WHITE}Spelinns
 STR_GAME_OPTIONS_CURRENCY_UNITS_FRAME                           :{BLACK}Valutaeining
 STR_GAME_OPTIONS_CURRENCY_UNITS_DROPDOWN_TOOLTIP                :{BLACK}Vel valutaeining
 
+
 ###length 42
-STR_GAME_OPTIONS_CURRENCY_GBP                                   :Pund (£)
-STR_GAME_OPTIONS_CURRENCY_USD                                   :Dollar ($)
-STR_GAME_OPTIONS_CURRENCY_EUR                                   :Euro (€)
-STR_GAME_OPTIONS_CURRENCY_JPY                                   :Yen (¥)
-STR_GAME_OPTIONS_CURRENCY_ATS                                   :Østerriksk shilling (ATS)
-STR_GAME_OPTIONS_CURRENCY_BEF                                   :Belgisk franc (BEF)
-STR_GAME_OPTIONS_CURRENCY_CHF                                   :Sveitsisk franc (CHF)
-STR_GAME_OPTIONS_CURRENCY_CZK                                   :Tsjekkisk koruna (CZK)
-STR_GAME_OPTIONS_CURRENCY_DEM                                   :Tyske mark (DEM)
-STR_GAME_OPTIONS_CURRENCY_DKK                                   :Dansk krone (DKK)
-STR_GAME_OPTIONS_CURRENCY_ESP                                   :Pesetas (ESP)
-STR_GAME_OPTIONS_CURRENCY_FIM                                   :Finske mark (FIM)
-STR_GAME_OPTIONS_CURRENCY_FRF                                   :Franc (FRF)
-STR_GAME_OPTIONS_CURRENCY_GRD                                   :Gresk drakme (GRD)
-STR_GAME_OPTIONS_CURRENCY_HUF                                   :Ungarsk forint (HUF)
-STR_GAME_OPTIONS_CURRENCY_ISK                                   :Islandsk krone (ISK)
-STR_GAME_OPTIONS_CURRENCY_ITL                                   :Italiensk lire (ITL)
-STR_GAME_OPTIONS_CURRENCY_NLG                                   :Hollandsk gylden (NLG)
-STR_GAME_OPTIONS_CURRENCY_NOK                                   :Norsk krone (NOK)
-STR_GAME_OPTIONS_CURRENCY_PLN                                   :Polsk zloty (PLN)
-STR_GAME_OPTIONS_CURRENCY_RON                                   :Rumensk lei (RON)
-STR_GAME_OPTIONS_CURRENCY_RUR                                   :Russisk rubel (RUR)
-STR_GAME_OPTIONS_CURRENCY_SIT                                   :Slovensk tolar (SIT)
-STR_GAME_OPTIONS_CURRENCY_SEK                                   :Svensk krone (SEK)
-STR_GAME_OPTIONS_CURRENCY_TRY                                   :Tyrkiske lira (TRY)
-STR_GAME_OPTIONS_CURRENCY_SKK                                   :Slovakisk koruna (SKK)
-STR_GAME_OPTIONS_CURRENCY_BRL                                   :Brasiliansk real (BRL)
-STR_GAME_OPTIONS_CURRENCY_EEK                                   :Estiske kroner (EEK)
-STR_GAME_OPTIONS_CURRENCY_LTL                                   :Litauiske Litas (LTL)
-STR_GAME_OPTIONS_CURRENCY_KRW                                   :Sør-Koreanske Won (KRW)
-STR_GAME_OPTIONS_CURRENCY_ZAR                                   :Sør-Afrikanske Rand (ZAR)
+STR_GAME_OPTIONS_CURRENCY_GBP                                   :Pund
+STR_GAME_OPTIONS_CURRENCY_USD                                   :Dollar
+STR_GAME_OPTIONS_CURRENCY_EUR                                   :Euro
+STR_GAME_OPTIONS_CURRENCY_JPY                                   :Yen
+STR_GAME_OPTIONS_CURRENCY_ATS                                   :Østerriksk shilling
+STR_GAME_OPTIONS_CURRENCY_BEF                                   :Belgisk franc
+STR_GAME_OPTIONS_CURRENCY_CHF                                   :Sveitsisk franc
+STR_GAME_OPTIONS_CURRENCY_CZK                                   :Tsjekkisk koruna
+STR_GAME_OPTIONS_CURRENCY_DEM                                   :Tyske mark
+STR_GAME_OPTIONS_CURRENCY_DKK                                   :Dansk krone
+STR_GAME_OPTIONS_CURRENCY_ESP                                   :Pesetas
+STR_GAME_OPTIONS_CURRENCY_FIM                                   :Finske mark
+STR_GAME_OPTIONS_CURRENCY_FRF                                   :Franc
+STR_GAME_OPTIONS_CURRENCY_GRD                                   :Gresk drakme
+STR_GAME_OPTIONS_CURRENCY_HUF                                   :Ungarsk forint
+STR_GAME_OPTIONS_CURRENCY_ISK                                   :Islandsk krone
+STR_GAME_OPTIONS_CURRENCY_ITL                                   :Italiensk lire
+STR_GAME_OPTIONS_CURRENCY_NLG                                   :Hollandsk gylden
+STR_GAME_OPTIONS_CURRENCY_NOK                                   :Norsk krone
+STR_GAME_OPTIONS_CURRENCY_PLN                                   :Polsk zloty
+STR_GAME_OPTIONS_CURRENCY_RON                                   :Rumensk lei
+STR_GAME_OPTIONS_CURRENCY_RUR                                   :Russisk rubel
+STR_GAME_OPTIONS_CURRENCY_SIT                                   :Slovensk tolar
+STR_GAME_OPTIONS_CURRENCY_SEK                                   :Svensk krone
+STR_GAME_OPTIONS_CURRENCY_TRY                                   :Tyrkiske lira
+STR_GAME_OPTIONS_CURRENCY_SKK                                   :Slovakisk koruna
+STR_GAME_OPTIONS_CURRENCY_BRL                                   :Brasiliansk real
+STR_GAME_OPTIONS_CURRENCY_EEK                                   :Estiske kroner
+STR_GAME_OPTIONS_CURRENCY_LTL                                   :Litauiske Litas
+STR_GAME_OPTIONS_CURRENCY_KRW                                   :Sør-Koreanske Won
+STR_GAME_OPTIONS_CURRENCY_ZAR                                   :Sør-Afrikanske Rand
 STR_GAME_OPTIONS_CURRENCY_CUSTOM                                :Eigendefinert...
-STR_GAME_OPTIONS_CURRENCY_GEL                                   :Georgiske Lari (GEL)
-STR_GAME_OPTIONS_CURRENCY_IRR                                   :Iranske Rial (IRR)
+STR_GAME_OPTIONS_CURRENCY_GEL                                   :Georgiske Lari
+STR_GAME_OPTIONS_CURRENCY_IRR                                   :Iranske Rial
 
 STR_GAME_OPTIONS_AUTOSAVE_FRAME                                 :{BLACK}Automatisk lagring
 STR_GAME_OPTIONS_AUTOSAVE_DROPDOWN_TOOLTIP                      :{BLACK}Vel intervall for automatisk lagring
@@ -958,7 +940,6 @@ STR_GAME_OPTIONS_RESOLUTION_OTHER                               :anna
 
 STR_GAME_OPTIONS_BASE_GRF                                       :{BLACK}Grafikksett
 STR_GAME_OPTIONS_BASE_GRF_TOOLTIP                               :{BLACK}Vel grafikksett som skal nyttast
-STR_GAME_OPTIONS_BASE_GRF_STATUS                                :{RED}{NUM} manglande/øydelagd{P "" e} fil{P "" er}
 STR_GAME_OPTIONS_BASE_GRF_DESCRIPTION_TOOLTIP                   :{BLACK}Tilleggsinformasjon om grafikksettet
 
 STR_GAME_OPTIONS_BASE_SFX                                       :{BLACK}Lydsett
@@ -967,8 +948,8 @@ STR_GAME_OPTIONS_BASE_SFX_DESCRIPTION_TOOLTIP                   :{BLACK}Tilleggs
 
 STR_GAME_OPTIONS_BASE_MUSIC                                     :{BLACK}Musikksett
 STR_GAME_OPTIONS_BASE_MUSIC_TOOLTIP                             :{BLACK}Vel musikksett som skal nyttast
-STR_GAME_OPTIONS_BASE_MUSIC_STATUS                              :{RED}{NUM} øydelagd{P "" e} fil{P "" er}
 STR_GAME_OPTIONS_BASE_MUSIC_DESCRIPTION_TOOLTIP                 :{BLACK}Tilleggsinformasjon om musikksettet
+
 
 STR_ERROR_RESOLUTION_LIST_FAILED                                :{WHITE}Kunne ikkje henta liste over støtta oppløysingar
 STR_ERROR_FULLSCREEN_FAILED                                     :{WHITE}Fullskjermvising feila
@@ -1125,6 +1106,7 @@ STR_CONFIG_SETTING_HORIZONTAL_POS_LEFT                          :Venstre
 STR_CONFIG_SETTING_HORIZONTAL_POS_CENTER                        :Midtstilt
 STR_CONFIG_SETTING_HORIZONTAL_POS_RIGHT                         :Høgre
 
+
 STR_CONFIG_SETTING_MAXIMUM_INITIAL_LOAN                         :Maksimalt startlån: {STRING}
 STR_CONFIG_SETTING_MAXIMUM_INITIAL_LOAN_HELPTEXT                :Maksimalt lån eit firma kan ta opp (utan å reikne med inflasjon)
 ###setting-zero-is-special
@@ -1271,6 +1253,7 @@ STR_CONFIG_SETTING_PLANE_CRASHES_NONE                           :Ingen
 STR_CONFIG_SETTING_PLANE_CRASHES_REDUCED                        :Redusert
 STR_CONFIG_SETTING_PLANE_CRASHES_NORMAL                         :Normalt
 
+
 STR_CONFIG_SETTING_STOP_ON_TOWN_ROAD                            :Tillet stoppestadar med gjennomkøyring på by-eigde vegar: {STRING}
 STR_CONFIG_SETTING_STOP_ON_TOWN_ROAD_HELPTEXT                   :Tillat bygging av stoppestadar med gjennomkøyring på vegar eigd av byen
 STR_CONFIG_SETTING_STOP_ON_COMPETITOR_ROAD                      :Tillet stoppestadar med gjennomkøyring på konkurent-eigde vegar: {STRING}
@@ -1278,6 +1261,7 @@ STR_CONFIG_SETTING_STOP_ON_COMPETITOR_ROAD_HELPTEXT             :Tillatt bygging
 STR_CONFIG_SETTING_DYNAMIC_ENGINES_EXISTING_VEHICLES            :{WHITE}Endring av denne instillinga er ikkje mogleg når det finst køyretøy
 
 STR_CONFIG_SETTING_INFRASTRUCTURE_MAINTENANCE                   :Vedlikehald av infrastruktur: {STRING}
+
 
 
 STR_CONFIG_SETTING_NEVER_EXPIRE_AIRPORTS                        :Flyplassar utgår aldri: {STRING}
@@ -1305,7 +1289,6 @@ STR_CONFIG_SETTING_AUTORENEW_MONTHS_VALUE_AFTER                 :{COMMA} månad{
 STR_CONFIG_SETTING_AUTORENEW_MONEY                              :Minimum formue for autofornying av køyretøy: {STRING}
 
 STR_CONFIG_SETTING_ERRMSG_DURATION                              :Varighet for feilmelding: {STRING}
-STR_CONFIG_SETTING_ERRMSG_DURATION_VALUE                        :{COMMA} sekund{P 0 "" s}
 
 STR_CONFIG_SETTING_HOVER_DELAY                                  :Syn verktøytips: {STRING}
 STR_CONFIG_SETTING_HOVER_DELAY_VALUE                            :Hold over i {COMMA} sekund{P 0 "" s}
@@ -1432,9 +1415,7 @@ STR_CONFIG_SETTING_RIGHT_MOUSE_BTN_EMU_COMMAND                  :Kommando+klikk
 STR_CONFIG_SETTING_RIGHT_MOUSE_BTN_EMU_CONTROL                  :CTRL+klikk
 STR_CONFIG_SETTING_RIGHT_MOUSE_BTN_EMU_OFF                      :Av
 
-
-STR_CONFIG_SETTING_AUTOSAVE                                     :Autolaging: {STRING}
-STR_CONFIG_SETTING_AUTOSAVE_HELPTEXT                            :Vel intervall for automatisk lagring av spel
+###length 3
 
 STR_CONFIG_SETTING_DATE_FORMAT_IN_SAVE_NAMES                    :Bruk {STRING} datoformat for namning av lagra spel
 STR_CONFIG_SETTING_DATE_FORMAT_IN_SAVE_NAMES_HELPTEXT           :Datoformat i namning av lagra spel
@@ -1457,7 +1438,7 @@ STR_CONFIG_SETTING_ADVANCED_VEHICLE_LISTS                       :Bruk avansert k
 
 STR_CONFIG_SETTING_LOADING_INDICATORS                           :Bruk lasteindikatorar: {STRING}
 
-STR_CONFIG_SETTING_TIMETABLE_IN_TICKS                           :Syne rutetabell i tikk i staden for dagar: {STRING}
+###length 3
 
 STR_CONFIG_SETTING_TIMETABLE_SHOW_ARRIVAL_DEPARTURE             :Syne ankomst og avferd i rutetabellane: {STRING}
 
@@ -1754,28 +1735,28 @@ STR_CONFIG_SETTING_LOCALISATION_UNITS_HEIGHT_IMPERIAL           :Britisk eining 
 STR_CONFIG_SETTING_LOCALISATION_UNITS_HEIGHT_METRIC             :Metrisk (m)
 STR_CONFIG_SETTING_LOCALISATION_UNITS_HEIGHT_SI                 :SI (m)
 
-STR_CONFIG_SETTING_LOCALISATION                                 :{ORANGE}Plassering
-STR_CONFIG_SETTING_GRAPHICS                                     :{ORANGE}Grafikk
-STR_CONFIG_SETTING_SOUND                                        :{ORANGE}Lydar
-STR_CONFIG_SETTING_INTERFACE                                    :{ORANGE}Grensesnitt
-STR_CONFIG_SETTING_INTERFACE_GENERAL                            :{ORANGE}Generelt
-STR_CONFIG_SETTING_INTERFACE_CONSTRUCTION                       :{ORANGE}Konstruksjon
-STR_CONFIG_SETTING_ADVISORS                                     :{ORANGE}Nyhende / Rådgjevarar
-STR_CONFIG_SETTING_COMPANY                                      :{ORANGE}Firma
-STR_CONFIG_SETTING_ACCOUNTING                                   :{ORANGE}Rekneskap
-STR_CONFIG_SETTING_VEHICLES                                     :{ORANGE}Køyretøy
-STR_CONFIG_SETTING_VEHICLES_PHYSICS                             :{ORANGE}Fysikk
-STR_CONFIG_SETTING_VEHICLES_ROUTING                             :{ORANGE}Ruting
-STR_CONFIG_SETTING_LIMITATIONS                                  :{ORANGE}Avgrensingar
-STR_CONFIG_SETTING_ACCIDENTS                                    :{ORANGE}Katastrofar / ulykker
-STR_CONFIG_SETTING_GENWORLD                                     :{ORANGE}Generer ei verd
-STR_CONFIG_SETTING_ENVIRONMENT                                  :{ORANGE}Miljø
-STR_CONFIG_SETTING_ENVIRONMENT_AUTHORITIES                      :{ORANGE}Styremaktane
-STR_CONFIG_SETTING_ENVIRONMENT_TOWNS                            :{ORANGE}Byar
-STR_CONFIG_SETTING_ENVIRONMENT_INDUSTRIES                       :{ORANGE}Industriar
-STR_CONFIG_SETTING_ENVIRONMENT_CARGODIST                        :{ORANGE}Varefordeling
-STR_CONFIG_SETTING_AI                                           :{ORANGE}Motstandarar
-STR_CONFIG_SETTING_AI_NPC                                       :{ORANGE}Datamaskinspelarar
+STR_CONFIG_SETTING_LOCALISATION                                 :Plassering
+STR_CONFIG_SETTING_GRAPHICS                                     :Grafikk
+STR_CONFIG_SETTING_SOUND                                        :Lydar
+STR_CONFIG_SETTING_INTERFACE                                    :Grensesnitt
+STR_CONFIG_SETTING_INTERFACE_GENERAL                            :Generelt
+STR_CONFIG_SETTING_INTERFACE_CONSTRUCTION                       :Konstruksjon
+STR_CONFIG_SETTING_ADVISORS                                     :Nyhende / Rådgjevarar
+STR_CONFIG_SETTING_COMPANY                                      :Firma
+STR_CONFIG_SETTING_ACCOUNTING                                   :Rekneskap
+STR_CONFIG_SETTING_VEHICLES                                     :Køyretøy
+STR_CONFIG_SETTING_VEHICLES_PHYSICS                             :Fysikk
+STR_CONFIG_SETTING_VEHICLES_ROUTING                             :Ruting
+STR_CONFIG_SETTING_LIMITATIONS                                  :Avgrensingar
+STR_CONFIG_SETTING_ACCIDENTS                                    :Katastrofar / ulykker
+STR_CONFIG_SETTING_GENWORLD                                     :Generer ei verd
+STR_CONFIG_SETTING_ENVIRONMENT                                  :Miljø
+STR_CONFIG_SETTING_ENVIRONMENT_AUTHORITIES                      :Styremaktane
+STR_CONFIG_SETTING_ENVIRONMENT_TOWNS                            :Byar
+STR_CONFIG_SETTING_ENVIRONMENT_INDUSTRIES                       :Industriar
+STR_CONFIG_SETTING_ENVIRONMENT_CARGODIST                        :Varefordeling
+STR_CONFIG_SETTING_AI                                           :Motstandarar
+STR_CONFIG_SETTING_AI_NPC                                       :Datamaskinspelarar
 
 STR_CONFIG_SETTING_PATHFINDER_FOR_TRAINS                        :Vegfinnar for tog: {STRING}
 STR_CONFIG_SETTING_PATHFINDER_FOR_TRAINS_HELPTEXT               :Kva for vegfinnar som skal nyttast for tog
@@ -1860,6 +1841,8 @@ STR_QUIT_NO                                                     :{BLACK}Nei
 STR_ABANDON_GAME_CAPTION                                        :{WHITE}Avslutt spel
 STR_ABANDON_GAME_QUERY                                          :{YELLOW}Er du sikker på at du vil forlata spelet?
 STR_ABANDON_SCENARIO_QUERY                                      :{YELLOW}Er du sikker på at du vil avslutte scenariet?
+
+# Help window
 
 # Cheat window
 STR_CHEATS                                                      :{WHITE}Juks
@@ -2259,7 +2242,6 @@ STR_TRANSPARENT_BUILDINGS_TOOLTIP                               :{BLACK}Byt gjen
 STR_TRANSPARENT_BRIDGES_TOOLTIP                                 :{BLACK}Byt gjennomsyn for bruer. Ctrl+klikk for å låsa.
 STR_TRANSPARENT_STRUCTURES_TOOLTIP                              :{BLACK}Byt gjennomsyn for bygningar, som fyrtårn og antenner. Ctrl+klikk for å låsa.
 STR_TRANSPARENT_CATENARY_TOOLTIP                                :{BLACK}Byt gjennomsyn for kjeder. Ctrl+klikk for å låsa.
-STR_TRANSPARENT_LOADING_TOOLTIP                                 :{BLACK}Byt gjennomsyn for lasteindikatorar. Ctrl+klikk for å låsa.
 STR_TRANSPARENT_INVISIBLE_TOOLTIP                               :{BLACK}Gjer objekter usynlege istanden for gjennomsiktige
 
 # Linkgraph legend window
@@ -3931,8 +3913,6 @@ STR_TIMETABLE_TRAVEL_FOR_SPEED                                  :Reis i {STRING}
 STR_TIMETABLE_AND_TRAVEL_FOR_ESTIMATED                          :(reis {STRING}, ikkje på rutetabell)
 STR_TIMETABLE_STAY_FOR                                          :og bli værande i {STRING}
 STR_TIMETABLE_AND_TRAVEL_FOR                                    :og reis i {STRING}
-STR_TIMETABLE_DAYS                                              :{COMMA} dag{P "" ar}
-STR_TIMETABLE_TICKS                                             :{COMMA} tikk
 
 STR_TIMETABLE_TOTAL_TIME                                        :{BLACK}Det vil ta {STRING} å gjere ferdig denne rutetabellen
 STR_TIMETABLE_TOTAL_TIME_INCOMPLETE                             :{BLACK}Det vil ta minst {STRING} å gjere ferdig denne rutetabellen ( ikkje alle på rutetabellen
@@ -3941,10 +3921,8 @@ STR_TIMETABLE_STATUS_ON_TIME                                    :{BLACK}Dette k�
 STR_TIMETABLE_STATUS_LATE                                       :{BLACK}Dette køyretøyet er {STRING} for seint
 STR_TIMETABLE_STATUS_EARLY                                      :{BLACK}Dette køyretøyet er {STRING} for tidleg
 STR_TIMETABLE_STATUS_NOT_STARTED                                :{BLACK}Denne rutetabellen har ikkje starta enda
-STR_TIMETABLE_STATUS_START_AT                                   :{BLACK}Startdato for denne rutetabellen er {STRING}
 
-STR_TIMETABLE_STARTING_DATE                                     :{BLACK}Startdato
-STR_TIMETABLE_STARTING_DATE_TOOLTIP                             :{BLACK}Vel startdato for timeplanen. Ctrl+klikk set starttidspunkt for tabellen og spreier køyretøya jamt utover
+
 
 STR_TIMETABLE_CHANGE_TIME                                       :{BLACK}Byt Tid
 STR_TIMETABLE_WAIT_TIME_TOOLTIP                                 :{BLACK}Byt tida den merka ordra skal bruke
@@ -3968,8 +3946,6 @@ STR_TIMETABLE_EXPECTED                                          :{BLACK}Forventa
 STR_TIMETABLE_SCHEDULED                                         :{BLACK}Planlagt
 STR_TIMETABLE_EXPECTED_TOOLTIP                                  :{BLACK}Byt mellom antatt og planlagt
 
-STR_TIMETABLE_ARRIVAL_ABBREVIATION                              :Ank:
-STR_TIMETABLE_DEPARTURE_ABBREVIATION                            :Avg:
 
 
 # Date window (for timetable)
@@ -4056,7 +4032,7 @@ STR_TEXTFILE_WRAP_TEXT_TOOLTIP                                  :{BLACK}Bryt tek
 STR_TEXTFILE_VIEW_README                                        :{BLACK}Vis lesmeg
 STR_TEXTFILE_VIEW_CHANGELOG                                     :{BLACK}Endringslogg
 STR_TEXTFILE_VIEW_LICENCE                                       :{BLACK}Lisens
-###length 4
+###length 5
 STR_TEXTFILE_README_CAPTION                                     :{WHITE}{STRING} lesmeg for {STRING}
 STR_TEXTFILE_CHANGELOG_CAPTION                                  :{WHITE}{STRING} endringslogg for {STRING}
 STR_TEXTFILE_LICENCE_CAPTION                                    :{WHITE}{STRING} lisens for {STRING}
@@ -4191,7 +4167,6 @@ STR_ERROR_TOO_CLOSE_TO_EDGE_OF_MAP_SUB                          :{WHITE}... for 
 STR_ERROR_TOO_CLOSE_TO_ANOTHER_TOWN                             :{WHITE}... for nær ein annan by
 STR_ERROR_TOO_MANY_TOWNS                                        :{WHITE}... for mange byar
 STR_ERROR_NO_SPACE_FOR_TOWN                                     :{WHITE}... det er ikkje meir plass på kartet
-STR_ERROR_TOWN_EXPAND_WARN_NO_ROADS                             :{WHITE}Byen byggjer ikkje vegar. Du kan tillete veg-bygging i Avanserte innstillingar -> Økonomi -> Byar
 STR_ERROR_ROAD_WORKS_IN_PROGRESS                                :{WHITE}Vegarbeid pågår
 STR_ERROR_TOWN_CAN_T_DELETE                                     :{WHITE}Kan ikkje fjerne denne byen...{}Ein stasjon eller garasje/stall/hangar/dokk refererar til byen eller ei by-egd rute som ikkje kan fjernast
 STR_ERROR_STATUE_NO_SUITABLE_PLACE                              :{WHITE}... det er ingen passande plass til statue i sentrum av denne byen

@@ -86,7 +86,7 @@ public:
 	 * Get the new cost of a bridge, excluding the road and/or rail.
 	 * @param bridge_id The bridge to get the new cost of.
 	 * @param length The length of the bridge.
-	 *               The value will be clamped to 0 .. MAX(int32).
+	 *               The value will be clamped to 0 .. MAX(int32_t).
 	 * @pre IsValidBridge(bridge_id).
 	 * @return The new cost the bridge has.
 	 */

@@ -42,7 +42,6 @@ jobs:
           liblzma-dev \
           liblzo2-dev \
           libsdl2-dev \
-          nlohmann-json3-dev \
           zlib1g-dev \
           # EOF
         echo "::endgroup::"

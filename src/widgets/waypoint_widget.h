@@ -11,7 +11,7 @@
 #define WIDGETS_WAYPOINT_WIDGET_H
 
 /** Widgets of the #WaypointWindow class. */
-enum WaypointWidgets {
+enum WaypointWidgets : WidgetID {
 	WID_W_CAPTION,       ///< Caption of window.
 	WID_W_VIEWPORT,      ///< The viewport on this waypoint.
 	WID_W_CENTER_VIEW,   ///< Center the main view on this waypoint.

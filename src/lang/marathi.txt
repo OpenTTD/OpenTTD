@@ -188,6 +188,9 @@ STR_COLOUR_BROWN                                                :तपकिर
 STR_COLOUR_GREY                                                 :करडा
 STR_COLOUR_WHITE                                                :पांढरा
 
+###length 17
+
+
 # Units used in OpenTTD
 STR_UNITS_VELOCITY_IMPERIAL                                     :{DECIMAL} mph
 STR_UNITS_VELOCITY_METRIC                                       :{DECIMAL} किमी / तास
@@ -210,6 +213,7 @@ STR_UNITS_VOLUME_SHORT_SI                                       :{DECIMAL}m³
 
 STR_UNITS_VOLUME_LONG_METRIC                                    :{DECIMAL} लिटर
 STR_UNITS_VOLUME_LONG_SI                                        :{DECIMAL} m³
+
 
 
 
@@ -362,29 +366,23 @@ STR_SETTINGS_MENU_TRANSPARENT_BUILDINGS                         :इमारत
 STR_SETTINGS_MENU_TRANSPARENT_SIGNS                             :स्थानकांची नावे पारदर्शक
 
 # File menu
-###length 5
 STR_FILE_MENU_SAVE_GAME                                         :खेळ वाचवणे
 STR_FILE_MENU_LOAD_GAME                                         :खेळ उघडा
 STR_FILE_MENU_QUIT_GAME                                         :खेळ सोडून द्या
-STR_FILE_MENU_SEPARATOR                                         :
 STR_FILE_MENU_EXIT                                              :बाहेर पडा
 
 # Map menu
-###length 4
 STR_MAP_MENU_MAP_OF_WORLD                                       :वैश्विक नकाशा
 STR_MAP_MENU_SIGN_LIST                                          :चिन्हांची यादी
 
 # Town menu
-###length 2
 STR_TOWN_MENU_TOWN_DIRECTORY                                    :शहरांची यादी
 STR_TOWN_MENU_FOUND_TOWN                                        :सापडलेलं शहर
 
 # Subsidies menu
-###length 1
 STR_SUBSIDIES_MENU_SUBSIDIES                                    :अनुदान
 
 # Graph menu
-###length 6
 STR_GRAPH_MENU_OPERATING_PROFIT_GRAPH                           :चालू असले नफा आलेख
 STR_GRAPH_MENU_INCOME_GRAPH                                     :आवक आलेख
 STR_GRAPH_MENU_DELIVERED_CARGO_GRAPH                            :वितरित मालवाहू आलेख
@@ -393,55 +391,44 @@ STR_GRAPH_MENU_COMPANY_VALUE_GRAPH                              :कंपनी
 STR_GRAPH_MENU_CARGO_PAYMENT_RATES                              :मालवाहू देयक दर
 
 # Company league menu
-###length 3
 STR_GRAPH_MENU_COMPANY_LEAGUE_TABLE                             :कंपनी लीग तक्ता
 STR_GRAPH_MENU_DETAILED_PERFORMANCE_RATING                      :तपशीलावर कामगिरी रेटिंग
 STR_GRAPH_MENU_HIGHSCORE                                        :उच्च स्कोअर तक्ता
 
 # Industry menu
-###length 3
 STR_INDUSTRY_MENU_INDUSTRY_DIRECTORY                            :उद्योग निर्देशिका
 STR_INDUSTRY_MENU_INDUSTRY_CHAIN                                :इंडस्ट्री बंदिवासात
 STR_INDUSTRY_MENU_FUND_NEW_INDUSTRY                             :नवीन उद्योग फंड
 
 # URailway construction menu
-###length 4
 STR_RAIL_MENU_RAILROAD_CONSTRUCTION                             :लोहमार्ग बांधणी
 STR_RAIL_MENU_ELRAIL_CONSTRUCTION                               :विद्युत लोहमार्ग बांधणी
 STR_RAIL_MENU_MONORAIL_CONSTRUCTION                             :मोनोरेल बांधणी
 STR_RAIL_MENU_MAGLEV_CONSTRUCTION                               :मॅग्लेव बांधणी
 
 # Road construction menu
-###length 2
 STR_ROAD_MENU_ROAD_CONSTRUCTION                                 :रस्तेबांधणी
 STR_ROAD_MENU_TRAM_CONSTRUCTION                                 :ट्रामगाडी बांधणी
 
 # Waterways construction menu
-###length 1
 STR_WATERWAYS_MENU_WATERWAYS_CONSTRUCTION                       :जलमार्ग बांधणी
 
 # Aairport construction menu
-###length 1
 STR_AIRCRAFT_MENU_AIRPORT_CONSTRUCTION                          :विमानतळ बांधणी
 
 # Landscaping menu
-###length 3
 STR_LANDSCAPING_MENU_PLANT_TREES                                :झाडे लावा
 STR_LANDSCAPING_MENU_PLACE_SIGN                                 :चिन्ह लावा
 
 # Music menu
-###length 1
 STR_TOOLBAR_SOUND_MUSIC                                         :ध्वनी/संगीत
 
 # Message menu
-###length 3
 STR_NEWS_MENU_LAST_MESSAGE_NEWS_REPORT                          :शेवटचा संदेश/बातम्या अहवाल
 STR_NEWS_MENU_MESSAGE_HISTORY_MENU                              :निरोपांचा इतिहास
 
 # About menu
-###length 10
 STR_ABOUT_MENU_LAND_BLOCK_INFO                                  :जागाची माहिती
-STR_ABOUT_MENU_SEPARATOR                                        :
 STR_ABOUT_MENU_SCREENSHOT                                       :द्श्य
 STR_ABOUT_MENU_ABOUT_OPENTTD                                    :ओपेन टीटीडी बद्दल
 
@@ -634,7 +621,6 @@ STR_PLAYLIST_PROGRAM                                            :{TINY_FONT}{BLA
 STR_PLAYLIST_CLEAR                                              :{TINY_FONT}{BLACK}स्पष्ट
 
 # Highscore window
-STR_HIGHSCORE_TOP_COMPANIES_WHO_REACHED                         :{BIG_FONT}{BLACK}{NUM} स्थान अव्वल कंपन्या
 STR_HIGHSCORE_POSITION                                          :{BIG_FONT}{BLACK}{COMMA}.
 STR_HIGHSCORE_NAME                                              :{PRESIDENT_NAME}, {COMPANY}
 STR_HIGHSCORE_STATS                                             :{BIG_FONT}'{STRING}'   ({COMMA})
@@ -701,32 +687,33 @@ STR_NEWS_NEW_VEHICLE_TYPE                                       :{BIG_FONT}{BLAC
 
 
 
+
 ###length 42
-STR_GAME_OPTIONS_CURRENCY_GBP                                   :पौंड (£)
-STR_GAME_OPTIONS_CURRENCY_USD                                   :डोल्लर ($)
-STR_GAME_OPTIONS_CURRENCY_EUR                                   :युरो (€)
-STR_GAME_OPTIONS_CURRENCY_JPY                                   :येन (¥)
-STR_GAME_OPTIONS_CURRENCY_ATS                                   :ओस्त्रिअन शिल्लिंग (ATS)
-STR_GAME_OPTIONS_CURRENCY_BEF                                   :बेल्गीअन फ्रांक (BEF)
-STR_GAME_OPTIONS_CURRENCY_CHF                                   :स्विस फ्रांक (CHF)
-STR_GAME_OPTIONS_CURRENCY_CZK                                   :झेख कोरुना (CZK)
-STR_GAME_OPTIONS_CURRENCY_DEM                                   :दोइश्मार्क (DEM)
-STR_GAME_OPTIONS_CURRENCY_DKK                                   :डेनिष क्रोन (DKK)
-STR_GAME_OPTIONS_CURRENCY_ESP                                   :पेसेटा (ESP)
-STR_GAME_OPTIONS_CURRENCY_FIM                                   :फिन्निश मार्क्का (FIM)
-STR_GAME_OPTIONS_CURRENCY_FRF                                   :फ्रांक (FRF)
-STR_GAME_OPTIONS_CURRENCY_GRD                                   :ग्रीक द्रक्मा (GRD)
-STR_GAME_OPTIONS_CURRENCY_HUF                                   :हंगेरियन फोरिन्त (HUF)
-STR_GAME_OPTIONS_CURRENCY_ISK                                   :आईसलेंडीक क्रोना (ISK)
-STR_GAME_OPTIONS_CURRENCY_ITL                                   :ईटेलिअन लिरा (ITL)
-STR_GAME_OPTIONS_CURRENCY_NLG                                   :डच गिल्डर (NLG)
-STR_GAME_OPTIONS_CURRENCY_NOK                                   :नोर्वेगीअन क्रोन (NOK)
-STR_GAME_OPTIONS_CURRENCY_PLN                                   :पोलिश झ्लोटी (PLN)
-STR_GAME_OPTIONS_CURRENCY_RUR                                   :रशिअन रुबल्स (RUR)
-STR_GAME_OPTIONS_CURRENCY_SIT                                   :स्लोवेनिअन तोलार (SIT)
-STR_GAME_OPTIONS_CURRENCY_SEK                                   :स्वीडीश क्रोना (SEK)
-STR_GAME_OPTIONS_CURRENCY_TRY                                   :तुर्की लिरा (TRY)
-STR_GAME_OPTIONS_CURRENCY_SKK                                   :स्लोवाक कोरुना (SKK)
+STR_GAME_OPTIONS_CURRENCY_GBP                                   :पौंड
+STR_GAME_OPTIONS_CURRENCY_USD                                   :डोल्लर
+STR_GAME_OPTIONS_CURRENCY_EUR                                   :युरो
+STR_GAME_OPTIONS_CURRENCY_JPY                                   :येन
+STR_GAME_OPTIONS_CURRENCY_ATS                                   :ओस्त्रिअन शिल्लिंग
+STR_GAME_OPTIONS_CURRENCY_BEF                                   :बेल्गीअन फ्रांक
+STR_GAME_OPTIONS_CURRENCY_CHF                                   :स्विस फ्रांक
+STR_GAME_OPTIONS_CURRENCY_CZK                                   :झेख कोरुना
+STR_GAME_OPTIONS_CURRENCY_DEM                                   :दोइश्मार्क
+STR_GAME_OPTIONS_CURRENCY_DKK                                   :डेनिष क्रोन
+STR_GAME_OPTIONS_CURRENCY_ESP                                   :पेसेटा
+STR_GAME_OPTIONS_CURRENCY_FIM                                   :फिन्निश मार्क्का
+STR_GAME_OPTIONS_CURRENCY_FRF                                   :फ्रांक
+STR_GAME_OPTIONS_CURRENCY_GRD                                   :ग्रीक द्रक्मा
+STR_GAME_OPTIONS_CURRENCY_HUF                                   :हंगेरियन फोरिन्त
+STR_GAME_OPTIONS_CURRENCY_ISK                                   :आईसलेंडीक क्रोना
+STR_GAME_OPTIONS_CURRENCY_ITL                                   :ईटेलिअन लिरा
+STR_GAME_OPTIONS_CURRENCY_NLG                                   :डच गिल्डर
+STR_GAME_OPTIONS_CURRENCY_NOK                                   :नोर्वेगीअन क्रोन
+STR_GAME_OPTIONS_CURRENCY_PLN                                   :पोलिश झ्लोटी
+STR_GAME_OPTIONS_CURRENCY_RUR                                   :रशिअन रुबल्स
+STR_GAME_OPTIONS_CURRENCY_SIT                                   :स्लोवेनिअन तोलार
+STR_GAME_OPTIONS_CURRENCY_SEK                                   :स्वीडीश क्रोना
+STR_GAME_OPTIONS_CURRENCY_TRY                                   :तुर्की लिरा
+STR_GAME_OPTIONS_CURRENCY_SKK                                   :स्लोवाक कोरुना
 
 
 # Autosave dropdown
@@ -736,6 +723,7 @@ STR_GAME_OPTIONS_LANGUAGE                                       :{BLACK}भा�
 
 
 STR_GAME_OPTIONS_RESOLUTION_OTHER                               :अन्य
+
 
 
 
@@ -797,6 +785,7 @@ STR_CONFIG_SETTING_REALISTIC                                    :खरेखु
 
 ###length 3
 
+
 ###setting-zero-is-special
 
 
@@ -851,6 +840,8 @@ STR_CONFIG_SETTING_SMOKE_AMOUNT                                 :वाहना
 
 
 ###length 3
+
+
 
 
 
@@ -917,7 +908,7 @@ STR_CONFIG_SETTING_WARN_LOST_VEHICLE                            : वाहन �
 
 ###length 3
 
-
+###length 3
 
 ###length 3
 
@@ -928,6 +919,7 @@ STR_CONFIG_SETTING_COMMAND_PAUSE_LEVEL_ALL_ACTIONS              :सर्व �
 
 
 
+###length 3
 
 
 
@@ -1053,6 +1045,8 @@ STR_INTRO_CAPTION                                               :{WHITE}ओप�
 # Quit window
 
 # Abandon game
+
+# Help window
 
 # Cheat window
 STR_CHEAT_CHANGE_DATE_QUERY_CAPT                                :{WHITE}चालू वर्ष बदला
@@ -1724,6 +1718,7 @@ STR_ORDER_IMPLICIT                                              :(आपोआ�
 
 
 
+
 STR_TIMETABLE_CHANGE_TIME                                       :{BLACK}वेळ बदला
 
 
@@ -1755,7 +1750,7 @@ STR_AI_SETTINGS_SETTING                                         :{STRING}: {ORAN
 
 
 # Textfile window
-###length 4
+###length 5
 
 
 # Vehicle loading indicators

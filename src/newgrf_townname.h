@@ -24,7 +24,7 @@ struct NamePart {
 struct NamePartList {
 	byte bitstart;  ///< Start of random seed bits to use.
 	byte bitcount;  ///< Number of bits of random seed to use.
-	uint16 maxprob; ///< Total probability of all parts.
+	uint16_t maxprob; ///< Total probability of all parts.
 	std::vector<NamePart> parts; ///< List of parts to choose from.
 };
 
@@ -38,18 +38,18 @@ struct TownNameStyle {
 struct GRFTownName {
 	static const uint MAX_LISTS = 128; ///< Maximum number of town name lists that can be defined per GRF.
 
-	uint32 grfid;                                   ///< GRF ID of NewGRF.
+	uint32_t grfid;                                   ///< GRF ID of NewGRF.
 	std::vector<TownNameStyle> styles;              ///< Style names defined by the Town Name NewGRF.
 	std::vector<NamePartList> partlists[MAX_LISTS]; ///< Lists of town name parts.
 };
 
-GRFTownName *AddGRFTownName(uint32 grfid);
-GRFTownName *GetGRFTownName(uint32 grfid);
-void DelGRFTownName(uint32 grfid);
+GRFTownName *AddGRFTownName(uint32_t grfid);
+GRFTownName *GetGRFTownName(uint32_t grfid);
+void DelGRFTownName(uint32_t grfid);
 void CleanUpGRFTownNames();
-uint32 GetGRFTownNameId(uint16 gen);
-uint16 GetGRFTownNameType(uint16 gen);
-StringID GetGRFTownNameName(uint16 gen);
+uint32_t GetGRFTownNameId(uint16_t gen);
+uint16_t GetGRFTownNameType(uint16_t gen);
+StringID GetGRFTownNameName(uint16_t gen);
 
 const std::vector<StringID>& GetGRFTownNameList();
 

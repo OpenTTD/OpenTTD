@@ -7,7 +7,6 @@
 
 #include <squirrel.h>
 #include "sqpcheader.h"
-#include <stdarg.h>
 #include "sqopcodes.h"
 #include "sqstring.h"
 #include "sqfuncproto.h"
@@ -187,7 +186,7 @@ public:
 				_ss(_vm)->_compilererrorhandler(_vm, compilererror.c_str(), type(_sourcename) == OT_STRING ? _stringval(_sourcename) : "unknown",
 					_lex._currentline, _lex._currentcolumn);
 			}
-			_vm->_lasterror = SQString::Create(_ss(_vm), compilererror.c_str(), -1);
+			_vm->_lasterror = SQString::Create(_ss(_vm), compilererror);
 			return false;
 		}
 	}

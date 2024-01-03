@@ -40,13 +40,14 @@ private:
 	uint word_matches;                             ///< Summary of filter state: Number of words matched.
 
 	const bool *case_sensitive;                    ///< Match case-sensitively (usually a static variable).
+	bool locale_aware;                             ///< Match words using the current locale.
 
 public:
 	/**
 	 * Constructor for filter.
 	 * @param case_sensitive Pointer to a (usually static) variable controlling the case-sensitivity. nullptr means always case-insensitive.
 	 */
-	StringFilter(const bool *case_sensitive = nullptr) : filter_buffer(nullptr), word_matches(0), case_sensitive(case_sensitive) {}
+	StringFilter(const bool *case_sensitive = nullptr, bool locale_aware = true) : filter_buffer(nullptr), word_matches(0), case_sensitive(case_sensitive), locale_aware(locale_aware) {}
 	~StringFilter() { free(this->filter_buffer); }
 
 	void SetFilterTerm(const char *str);
@@ -56,7 +57,7 @@ public:
 	 * Check whether any filter words were entered.
 	 * @return true if no words were entered.
 	 */
-	bool IsEmpty() const { return this->word_index.size() == 0; }
+	bool IsEmpty() const { return this->word_index.empty(); }
 
 	void ResetState();
 	void AddLine(const char *str);

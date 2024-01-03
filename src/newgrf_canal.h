@@ -22,8 +22,8 @@ enum CanalFeatureFlag {
 struct WaterFeature {
 	const SpriteGroup *group; ///< Sprite group to start resolving.
 	const GRFFile *grffile;   ///< NewGRF where 'group' belongs to.
-	uint8 callback_mask;      ///< Bitmask of canal callbacks that have to be called.
-	uint8 flags;              ///< Flags controlling display.
+	uint8_t callback_mask;      ///< Bitmask of canal callbacks that have to be called.
+	uint8_t flags;              ///< Flags controlling display.
 };
 
 

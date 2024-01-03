@@ -51,7 +51,7 @@ void AddChangedPersistentStorage(BasePersistentStorageArray *storage)
  * @param mode Mode switch affecting temporary/persistent changes.
  * @param ignore_prev_mode Disable some sanity checks for exceptional call circumstances.
  */
-/* static */ void BasePersistentStorageArray::SwitchMode(PersistentStorageMode mode, bool ignore_prev_mode)
+/* static */ void BasePersistentStorageArray::SwitchMode(PersistentStorageMode mode, [[maybe_unused]] bool ignore_prev_mode)
 {
 	switch (mode) {
 		case PSM_ENTER_GAMELOOP:

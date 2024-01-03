@@ -132,7 +132,7 @@ void LinkGraphSchedule::SpawnAll()
  * graph jobs by the number of days given.
  * @param interval Number of days to be added or subtracted.
  */
-void LinkGraphSchedule::ShiftDates(int interval)
+void LinkGraphSchedule::ShiftDates(TimerGameCalendar::Date interval)
 {
 	for (LinkGraph *lg : LinkGraph::Iterate()) lg->ShiftDates(interval);
 	for (LinkGraphJob *lgj : LinkGraphJob::Iterate()) lgj->ShiftJoinDate(interval);
@@ -178,7 +178,7 @@ void StateGameLoop_LinkGraphPauseControl()
 		}
 	} else if (_pause_mode == PM_UNPAUSED &&
 			TimerGameCalendar::date_fract == LinkGraphSchedule::SPAWN_JOIN_TICK - 2 &&
-			TimerGameCalendar::date % (_settings_game.linkgraph.recalc_interval / SECONDS_PER_DAY) == (_settings_game.linkgraph.recalc_interval / SECONDS_PER_DAY) / 2 &&
+			TimerGameCalendar::date.base() % (_settings_game.linkgraph.recalc_interval / CalendarTime::SECONDS_PER_DAY) == (_settings_game.linkgraph.recalc_interval / CalendarTime::SECONDS_PER_DAY) / 2 &&
 			LinkGraphSchedule::instance.IsJoinWithUnfinishedJobDue()) {
 		/* Perform check two TimerGameCalendar::date_fract ticks before we would join, to make
 		 * sure it also works in multiplayer. */
@@ -205,10 +205,10 @@ void AfterLoad_LinkGraphPauseControl()
 void OnTick_LinkGraph()
 {
 	if (TimerGameCalendar::date_fract != LinkGraphSchedule::SPAWN_JOIN_TICK) return;
-	TimerGameCalendar::Date offset = TimerGameCalendar::date % (_settings_game.linkgraph.recalc_interval / SECONDS_PER_DAY);
+	TimerGameCalendar::Date offset = TimerGameCalendar::date.base() % (_settings_game.linkgraph.recalc_interval / CalendarTime::SECONDS_PER_DAY);
 	if (offset == 0) {
 		LinkGraphSchedule::instance.SpawnNext();
-	} else if (offset == (_settings_game.linkgraph.recalc_interval / SECONDS_PER_DAY) / 2) {
+	} else if (offset == (_settings_game.linkgraph.recalc_interval / CalendarTime::SECONDS_PER_DAY) / 2) {
 		if (!_networking || _network_server) {
 			PerformanceMeasurer::SetInactive(PFE_GL_LINKGRAPH);
 			LinkGraphSchedule::instance.JoinNext();

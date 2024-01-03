@@ -10,6 +10,13 @@
 #ifndef WINDOW_TYPE_H
 #define WINDOW_TYPE_H
 
+/**
+ * Widget ID.
+ * Even though the ID is signed, actual IDs must be non-negative.
+ * Negative IDs are used for special cases, like denoting 'no widget'.
+ */
+using WidgetID = int;
+
 /** %Window numbers. */
 enum WindowNumberEnum {
 	WN_GAME_OPTIONS_AI = 0,          ///< AI settings.
@@ -657,7 +664,7 @@ enum WindowClass {
 
 	/**
 	 * Script debug window; %Window numbers:
-	 *   - 0 = #ScriptDebugWidgets
+	 *   - Ascending value = #ScriptDebugWidgets
 	 */
 	WC_SCRIPT_DEBUG,
 
@@ -703,6 +710,12 @@ enum WindowClass {
 	 */
 	WC_SCREENSHOT,
 
+	/*
+	 * Help and manuals window; %Window numbers:
+	 *   - 0 = #HelpWindowWidgets
+	 */
+	WC_HELPWIN,
+
 	WC_INVALID = 0xFFFF, ///< Invalid window.
 };
 
@@ -719,7 +732,7 @@ enum GameOptionsInvalidationData {
 struct Window;
 
 /** Number to differentiate different windows of the same class */
-typedef int32 WindowNumber;
+typedef int32_t WindowNumber;
 
 /** State of handling an event. */
 enum EventState {

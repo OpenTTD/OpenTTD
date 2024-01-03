@@ -18,6 +18,7 @@
 #include "../../string_func.h"
 #include "../../economy_cmd.h"
 #include "../../engine_cmd.h"
+#include "../../3rdparty/nlohmann/json.hpp"
 #include "table/strings.h"
 
 #include "../../safeguards.h"
@@ -41,19 +42,13 @@ CargoID ScriptEventEnginePreview::GetCargoType()
 	if (!this->IsEngineValid()) return CT_INVALID;
 	CargoArray cap = ::GetCapacityOfArticulatedParts(this->engine);
 
-	CargoID most_cargo = CT_INVALID;
-	uint amount = 0;
-	for (CargoID cid = 0; cid < NUM_CARGO; cid++) {
-		if (cap[cid] > amount) {
-			amount = cap[cid];
-			most_cargo = cid;
-		}
-	}
+	auto it = std::max_element(std::cbegin(cap), std::cend(cap));
+	if (*it == 0) return CT_INVALID;
 
-	return most_cargo;
+	return CargoID(std::distance(std::cbegin(cap), it));
 }
 
-int32 ScriptEventEnginePreview::GetCapacity()
+int32_t ScriptEventEnginePreview::GetCapacity()
 {
 	if (!this->IsEngineValid()) return -1;
 	const Engine *e = ::Engine::Get(this->engine);
@@ -61,9 +56,8 @@ int32 ScriptEventEnginePreview::GetCapacity()
 		case VEH_ROAD:
 		case VEH_TRAIN: {
 			CargoArray capacities = GetCapacityOfArticulatedParts(this->engine);
-			for (CargoID c = 0; c < NUM_CARGO; c++) {
-				if (capacities[c] == 0) continue;
-				return capacities[c];
+			for (uint &cap : capacities) {
+				if (cap != 0) return cap;
 			}
 			return -1;
 		}
@@ -76,11 +70,11 @@ int32 ScriptEventEnginePreview::GetCapacity()
 	}
 }
 
-int32 ScriptEventEnginePreview::GetMaxSpeed()
+int32_t ScriptEventEnginePreview::GetMaxSpeed()
 {
 	if (!this->IsEngineValid()) return -1;
 	const Engine *e = ::Engine::Get(this->engine);
-	int32 max_speed = e->GetDisplayMaxSpeed(); // km-ish/h
+	int32_t max_speed = e->GetDisplayMaxSpeed(); // km-ish/h
 	if (e->type == VEH_AIRCRAFT) max_speed /= _settings_game.vehicle.plane_speed;
 	return max_speed;
 }
@@ -97,7 +91,7 @@ Money ScriptEventEnginePreview::GetRunningCost()
 	return ::Engine::Get(this->engine)->GetRunningCost();
 }
 
-int32 ScriptEventEnginePreview::GetVehicleType()
+int32_t ScriptEventEnginePreview::GetVehicleType()
 {
 	if (!this->IsEngineValid()) return ScriptVehicle::VT_INVALID;
 	switch (::Engine::Get(this->engine)->type) {
@@ -127,193 +121,89 @@ ScriptEventAdminPort::ScriptEventAdminPort(const std::string &json) :
 		json(json)
 {
 }
+/**
+ * Convert a JSON part fo Squirrel.
+ * @param vm The VM used.
+ * @param json The JSON part to convert to Squirrel.
+ */
+static bool ScriptEventAdminPortReadValue(HSQUIRRELVM vm, nlohmann::json &json)
+{
+	switch (json.type()) {
+		case nlohmann::json::value_t::null:
+			sq_pushnull(vm);
+			break;
 
-#define SKIP_EMPTY(p) while (*(p) == ' ' || *(p) == '\n' || *(p) == '\r') (p)++;
-#define RETURN_ERROR(stack) { ScriptLog::Error("Received invalid JSON data from AdminPort."); if (stack != 0) sq_pop(vm, stack); return nullptr; }
+		case nlohmann::json::value_t::boolean:
+			sq_pushbool(vm, json.get<bool>() ? 1 : 0);
+			break;
+
+		case nlohmann::json::value_t::string: {
+			auto value = json.get<std::string>();
+			sq_pushstring(vm, value.data(), value.size());
+			break;
+		}
+
+		case nlohmann::json::value_t::number_integer:
+		case nlohmann::json::value_t::number_unsigned:
+			sq_pushinteger(vm, json.get<int64_t>());
+			break;
+
+		case nlohmann::json::value_t::object:
+			sq_newtable(vm);
+
+			for (auto &[key, value] : json.items()) {
+				sq_pushstring(vm, key.data(), key.size());
+
+				if (!ScriptEventAdminPortReadValue(vm, value)) {
+					return false;
+				}
+
+				sq_rawset(vm, -3);
+			}
+			break;
+
+		case nlohmann::json::value_t::array:
+			sq_newarray(vm, 0);
+
+			for (auto &value : json) {
+				if (!ScriptEventAdminPortReadValue(vm, value)) {
+					return false;
+				}
+
+				sq_arrayappend(vm, -2);
+			}
+			break;
+
+		/* These types are not supported by Squirrel. */
+		case nlohmann::json::value_t::number_float:
+		default:
+			return false;
+	}
+
+	return true;
+}
 
 SQInteger ScriptEventAdminPort::GetObject(HSQUIRRELVM vm)
 {
-	const char *p = this->json.c_str();
+	auto json = nlohmann::json::parse(this->json, nullptr, false);
 
-	if (this->ReadTable(vm, p) == nullptr) {
+	if (!json.is_object()) {
+		ScriptLog::Error("The root element in the JSON data from AdminPort has to be an object.");
+
+		sq_pushnull(vm);
+		return 1;
+	}
+
+	auto top = sq_gettop(vm);
+	if (!ScriptEventAdminPortReadValue(vm, json)) {
+		/* Rewind the stack, removing anything that might be left on top. */
+		sq_settop(vm, top);
+
+		ScriptLog::Error("Received invalid JSON data from AdminPort.");
+
 		sq_pushnull(vm);
 		return 1;
 	}
 
 	return 1;
 }
-
-const char *ScriptEventAdminPort::ReadString(HSQUIRRELVM vm, const char *p)
-{
-	const char *value = p;
-
-	bool escape = false;
-	for (;;) {
-		if (*p == '\\') {
-			escape = true;
-			p++;
-			continue;
-		}
-		if (*p == '"' && escape) {
-			escape = false;
-			p++;
-			continue;
-		}
-		escape = false;
-
-		if (*p == '"') break;
-		if (*p == '\0') RETURN_ERROR(0);
-
-		p++;
-	}
-
-	size_t len = p - value;
-	sq_pushstring(vm, value, len);
-	p++; // Step past the end-of-string marker (")
-
-	return p;
-}
-
-const char *ScriptEventAdminPort::ReadTable(HSQUIRRELVM vm, const char *p)
-{
-	sq_newtable(vm);
-
-	SKIP_EMPTY(p);
-	if (*p++ != '{') RETURN_ERROR(1);
-
-	for (;;) {
-		SKIP_EMPTY(p);
-		if (*p++ != '"') RETURN_ERROR(1);
-
-		p = ReadString(vm, p);
-		if (p == nullptr) {
-			sq_pop(vm, 1);
-			return nullptr;
-		}
-
-		SKIP_EMPTY(p);
-		if (*p++ != ':') RETURN_ERROR(2);
-
-		p = this->ReadValue(vm, p);
-		if (p == nullptr) {
-			sq_pop(vm, 2);
-			return nullptr;
-		}
-
-		sq_rawset(vm, -3);
-		/* The key (-2) and value (-1) are popped from the stack by squirrel. */
-
-		SKIP_EMPTY(p);
-		if (*p == ',') {
-			p++;
-			continue;
-		}
-		break;
-	}
-
-	SKIP_EMPTY(p);
-	if (*p++ != '}') RETURN_ERROR(1);
-
-	return p;
-}
-
-const char *ScriptEventAdminPort::ReadValue(HSQUIRRELVM vm, const char *p)
-{
-	SKIP_EMPTY(p);
-
-	if (strncmp(p, "false", 5) == 0) {
-		sq_pushinteger(vm, 0);
-		return p + 5;
-	}
-	if (strncmp(p, "true", 4) == 0) {
-		sq_pushinteger(vm, 1);
-		return p + 4;
-	}
-	if (strncmp(p, "null", 4) == 0) {
-		sq_pushnull(vm);
-		return p + 4;
-	}
-
-	switch (*p) {
-		case '"': {
-			/* String */
-			p = ReadString(vm, ++p);
-			if (p == nullptr) return nullptr;
-
-			break;
-		}
-
-		case '{': {
-			/* Table */
-			p = this->ReadTable(vm, p);
-			if (p == nullptr) return nullptr;
-
-			break;
-		}
-
-		case '[': {
-			/* Array */
-			sq_newarray(vm, 0);
-
-			/* Empty array? */
-			const char *p2 = p + 1;
-			SKIP_EMPTY(p2);
-			if (*p2 == ']') {
-				p = p2 + 1;
-				break;
-			}
-
-			while (*p++ != ']') {
-				p = this->ReadValue(vm, p);
-				if (p == nullptr) {
-					sq_pop(vm, 1);
-					return nullptr;
-				}
-				sq_arrayappend(vm, -2);
-
-				SKIP_EMPTY(p);
-				if (*p == ',') continue;
-				if (*p == ']') break;
-				RETURN_ERROR(1);
-			}
-
-			p++;
-
-			break;
-		}
-
-		case '1': case '2': case '3': case '4': case '5':
-		case '6': case '7': case '8': case '9': case '0':
-		case '-': {
-			/* Integer */
-
-			const char *value = p++;
-			for (;;) {
-				switch (*p++) {
-					case '1': case '2': case '3': case '4': case '5':
-					case '6': case '7': case '8': case '9': case '0':
-						continue;
-
-					default:
-						break;
-				}
-
-				p--;
-				break;
-			}
-
-			int res = atoi(value);
-			sq_pushinteger(vm, (SQInteger)res);
-
-			break;
-		}
-
-		default:
-			RETURN_ERROR(0);
-	}
-
-	return p;
-}
-
-#undef SKIP_EMPTY
-#undef RETURN_ERROR

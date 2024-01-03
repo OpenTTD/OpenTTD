@@ -170,6 +170,7 @@ void VehicleServiceInDepot(Vehicle *v)
 
 	do {
 		v->date_of_last_service = TimerGameCalendar::date;
+		v->date_of_last_service_newgrf = TimerGameCalendar::date;
 		v->breakdowns_since_last_service = 0;
 		v->reliability = v->GetEngine()->reliability;
 		/* Prevent vehicles from breaking down directly after exiting the depot. */
@@ -228,13 +229,20 @@ bool Vehicle::NeedsServicing() const
 		/* Is there anything to refit? */
 		if (union_mask != 0) {
 			CargoID cargo_type;
-			/* We cannot refit to mixed cargoes in an automated way */
-			if (IsArticulatedVehicleCarryingDifferentCargoes(v, &cargo_type)) continue;
-
-			/* Did the old vehicle carry anything? */
-			if (IsValidCargoID(cargo_type)) {
-				/* We can't refit the vehicle to carry the cargo we want */
-				if (!HasBit(available_cargo_types, cargo_type)) continue;
+			CargoTypes cargo_mask = GetCargoTypesOfArticulatedVehicle(v, &cargo_type);
+			if (!HasAtMostOneBit(cargo_mask)) {
+				CargoTypes new_engine_default_cargoes = GetCargoTypesOfArticulatedParts(new_engine);
+				if ((cargo_mask & new_engine_default_cargoes) != cargo_mask) {
+					/* We cannot refit to mixed cargoes in an automated way */
+					continue;
+				}
+				/* engine_type is already a mixed cargo type which matches the incoming vehicle by default, no refit required */
+			} else {
+				/* Did the old vehicle carry anything? */
+				if (IsValidCargoID(cargo_type)) {
+					/* We can't refit the vehicle to carry the cargo we want */
+					if (!HasBit(available_cargo_types, cargo_type)) continue;
+				}
 			}
 		}
 
@@ -261,7 +269,7 @@ bool Vehicle::NeedsAutomaticServicing() const
 	return NeedsServicing();
 }
 
-uint Vehicle::Crash(bool flooded)
+uint Vehicle::Crash(bool)
 {
 	assert((this->vehstatus & VS_CRASHED) == 0);
 	assert(this->Previous() == nullptr); // IsPrimaryVehicle fails for free-wagon-chains
@@ -331,7 +339,7 @@ void VehicleLengthChanged(const Vehicle *u)
 {
 	/* show a warning once for each engine in whole game and once for each GRF after each game load */
 	const Engine *engine = u->GetEngine();
-	uint32 grfid = engine->grf_prop.grffile->grfid;
+	uint32_t grfid = engine->grf_prop.grffile->grfid;
 	GRFConfig *grfconfig = GetGRFConfig(grfid);
 	if (_gamelog.GRFBugReverse(grfid, engine->grf_prop.local_id) || !HasBit(grfconfig->grf_bugs, GBUG_VEH_LENGTH)) {
 		ShowNewGrfVehicleError(u->engine_type, STR_NEWGRF_BROKEN, STR_NEWGRF_BROKEN_VEHICLE_LENGTH, GBUG_VEH_LENGTH, true);
@@ -748,7 +756,7 @@ const GRFFile *Vehicle::GetGRF() const
  * This is the GRF providing the Action 3 for the engine type.
  * @return GRF ID of the associated NewGRF.
  */
-uint32 Vehicle::GetGRFID() const
+uint32_t Vehicle::GetGRFID() const
 {
 	return this->GetEngine()->GetGRFID();
 }
@@ -758,9 +766,11 @@ uint32 Vehicle::GetGRFID() const
  * This is useful if the date has been modified with the cheat menu.
  * @param interval Number of days to be added or substracted.
  */
-void Vehicle::ShiftDates(int interval)
+void Vehicle::ShiftDates(TimerGameCalendar::Date interval)
 {
-	this->date_of_last_service = std::max(this->date_of_last_service + interval, 0);
+	this->date_of_last_service = std::max(this->date_of_last_service + interval, TimerGameCalendar::Date(0));
+	/* date_of_last_service_newgrf is not updated here as it must stay stable
+	 * for vehicles outside of a depot. */
 }
 
 /**
@@ -915,13 +925,13 @@ static void RunVehicleDayProc()
 	if (_game_mode != GM_NORMAL) return;
 
 	/* Run the day_proc for every DAY_TICKS vehicle starting at TimerGameCalendar::date_fract. */
-	for (size_t i = TimerGameCalendar::date_fract; i < Vehicle::GetPoolSize(); i += DAY_TICKS) {
+	for (size_t i = TimerGameCalendar::date_fract; i < Vehicle::GetPoolSize(); i += Ticks::DAY_TICKS) {
 		Vehicle *v = Vehicle::Get(i);
 		if (v == nullptr) continue;
 
 		/* Call the 32-day callback if needed */
 		if ((v->day_counter & 0x1F) == 0 && v->HasEngineType()) {
-			uint16 callback = GetVehicleCallback(CBID_VEHICLE_32DAY_CALLBACK, 0, 0, v->engine_type, v);
+			uint16_t callback = GetVehicleCallback(CBID_VEHICLE_32DAY_CALLBACK, 0, 0, v->engine_type, v);
 			if (callback != CALLBACK_FAILED) {
 				if (HasBit(callback, 0)) {
 					TriggerVehicle(v, VEHICLE_TRIGGER_CALLBACK_32); // Trigger vehicle trigger 10
@@ -1270,7 +1280,7 @@ void CheckVehicleBreakdown(Vehicle *v)
 		return;
 	}
 
-	uint32 r = Random();
+	uint32_t r = Random();
 
 	/* increase chance of failure */
 	int chance = v->breakdown_chance + 1;
@@ -1366,17 +1376,19 @@ bool Vehicle::HandleBreakdown()
  */
 void AgeVehicle(Vehicle *v)
 {
-	if (v->age < MAX_DATE) {
+	if (v->age < CalendarTime::MAX_DATE) {
 		v->age++;
 		if (v->IsPrimaryVehicle() && v->age == VEHICLE_PROFIT_MIN_AGE + 1) GroupStatistics::VehicleReachedMinAge(v);
 	}
 
 	if (!v->IsPrimaryVehicle() && (v->type != VEH_TRAIN || !Train::From(v)->IsEngine())) return;
 
-	int age = v->age - v->max_age;
-	if (age == DAYS_IN_LEAP_YEAR * 0 || age == DAYS_IN_LEAP_YEAR * 1 ||
-			age == DAYS_IN_LEAP_YEAR * 2 || age == DAYS_IN_LEAP_YEAR * 3 || age == DAYS_IN_LEAP_YEAR * 4) {
-		v->reliability_spd_dec <<= 1;
+	auto age = v->age - v->max_age;
+	for (int32_t i = 0; i <= 4; i++) {
+		if (age == TimerGameCalendar::DateAtStartOfYear(i)) {
+			v->reliability_spd_dec <<= 1;
+			break;
+		}
 	}
 
 	SetWindowDirty(WC_VEHICLE_DETAILS, v->index);
@@ -1391,11 +1403,11 @@ void AgeVehicle(Vehicle *v)
 	if (EngineHasReplacementForCompany(c, v->engine_type, v->group_id)) return;
 
 	StringID str;
-	if (age == -DAYS_IN_LEAP_YEAR) {
+	if (age == TimerGameCalendar::DateAtStartOfYear(-1)) {
 		str = STR_NEWS_VEHICLE_IS_GETTING_OLD;
-	} else if (age == 0) {
+	} else if (age == TimerGameCalendar::DateAtStartOfYear(0)) {
 		str = STR_NEWS_VEHICLE_IS_GETTING_VERY_OLD;
-	} else if (age > 0 && (age % DAYS_IN_LEAP_YEAR) == 0) {
+	} else if (age > TimerGameCalendar::DateAtStartOfYear(0) && (age.base() % CalendarTime::DAYS_IN_LEAP_YEAR) == 0) {
 		str = STR_NEWS_VEHICLE_IS_GETTING_VERY_OLD_AND;
 	} else {
 		return;
@@ -1414,7 +1426,7 @@ void AgeVehicle(Vehicle *v)
  *         if the vehicle is completely empty or full.
  *         This is useful for both display and conditional orders.
  */
-uint8 CalcPercentVehicleFilled(const Vehicle *front, StringID *colour)
+uint8_t CalcPercentVehicleFilled(const Vehicle *front, StringID *colour)
 {
 	int count = 0;
 	int max = 0;
@@ -1604,7 +1616,7 @@ void Vehicle::UpdatePosition()
 /**
  * Update the bounding box co-ordinates of the vehicle
  * @param update_cache Update the cached values for previous co-ordinate values
-*/
+ */
 void Vehicle::UpdateBoundingBoxCoordinates(bool update_cache) const
 {
 	Rect new_coord;
@@ -1689,7 +1701,7 @@ bool Vehicle::MarkAllViewportsDirty() const
  */
 GetNewVehiclePosResult GetNewVehiclePos(const Vehicle *v)
 {
-	static const int8 _delta_coord[16] = {
+	static const int8_t _delta_coord[16] = {
 		-1,-1,-1, 0, 1, 1, 1, 0, /* x */
 		-1, 0, 1, 1, 1, 0,-1,-1, /* y */
 	};
@@ -1830,7 +1842,7 @@ bool CanBuildVehicleInfrastructure(VehicleType type, byte subtype)
 	UnitID max;
 	switch (type) {
 		case VEH_TRAIN:
-			if (!HasAnyRailtypesAvail(_local_company)) return false;
+			if (!HasAnyRailTypesAvail(_local_company)) return false;
 			max = _settings_game.vehicle.max_trains;
 			break;
 		case VEH_ROAD:
@@ -2000,7 +2012,7 @@ static PaletteID GetEngineColourMap(EngineID engine_type, CompanyID company, Eng
 
 	/* Check if we should use the colour map callback */
 	if (HasBit(e->info.callback_mask, CBM_VEHICLE_COLOUR_REMAP)) {
-		uint16 callback = GetVehicleCallback(CBID_VEHICLE_COLOUR_MAPPING, 0, 0, engine_type, v);
+		uint16_t callback = GetVehicleCallback(CBID_VEHICLE_COLOUR_MAPPING, 0, 0, engine_type, v);
 		/* Failure means "use the default two-colour" */
 		if (callback != CALLBACK_FAILED) {
 			static_assert(PAL_NONE == 0); // Returning 0x4000 (resp. 0xC000) coincidences with default value (PAL_NONE)
@@ -2063,7 +2075,7 @@ PaletteID GetVehiclePalette(const Vehicle *v)
 void Vehicle::DeleteUnreachedImplicitOrders()
 {
 	if (this->IsGroundVehicle()) {
-		uint16 &gv_flags = this->GetGroundVehicleFlags();
+		uint16_t &gv_flags = this->GetGroundVehicleFlags();
 		if (HasBit(gv_flags, GVF_SUPPRESS_IMPLICIT_ORDERS)) {
 			/* Do not delete orders, only skip them */
 			ClrBit(gv_flags, GVF_SUPPRESS_IMPLICIT_ORDERS);
@@ -2103,7 +2115,7 @@ void Vehicle::BeginLoading()
 {
 	assert(IsTileType(this->tile, MP_STATION) || this->type == VEH_SHIP);
 
-	Ticks travel_time = TimerGameTick::counter - this->last_loading_tick;
+	TimerGameTick::Ticks travel_time = TimerGameTick::counter - this->last_loading_tick;
 	if (this->current_order.IsType(OT_GOTO_STATION) &&
 			this->current_order.GetDestination() == this->last_station_visited) {
 		this->DeleteUnreachedImplicitOrders();
@@ -2198,7 +2210,7 @@ void Vehicle::BeginLoading()
 
 					/* InsertOrder disabled creation of implicit orders for all vehicles with the same implicit order.
 					 * Reenable it for this vehicle */
-					uint16 &gv_flags = this->GetGroundVehicleFlags();
+					uint16_t &gv_flags = this->GetGroundVehicleFlags();
 					ClrBit(gv_flags, GVF_SUPPRESS_IMPLICIT_ORDERS);
 				}
 			}
@@ -2236,8 +2248,7 @@ void Vehicle::CancelReservation(StationID next, Station *st)
 		VehicleCargoList &cargo = v->cargo;
 		if (cargo.ActionCount(VehicleCargoList::MTA_LOAD) > 0) {
 			Debug(misc, 1, "cancelling cargo reservation");
-			cargo.Return(UINT_MAX, &st->goods[v->cargo_type].cargo, next);
-			cargo.SetTransferLoadPlace(st->xy);
+			cargo.Return(UINT_MAX, &st->goods[v->cargo_type].cargo, next, v->tile);
 		}
 		cargo.KeepAll();
 	}
@@ -2322,7 +2333,7 @@ void Vehicle::HandleLoading(bool mode)
 {
 	switch (this->current_order.GetType()) {
 		case OT_LOADING: {
-			uint wait_time = std::max(this->current_order.GetTimetabledWait() - this->lateness_counter, 0);
+			TimerGameTick::Ticks wait_time = std::max(this->current_order.GetTimetabledWait() - this->lateness_counter, 0);
 
 			/* Not the first call for this tick, or still loading */
 			if (mode || !HasBit(this->vehicle_flags, VF_LOADING_FINISHED) || this->current_order_time < wait_time) return;
@@ -2347,32 +2358,6 @@ void Vehicle::HandleLoading(bool mode)
 	}
 
 	this->IncrementImplicitOrderIndex();
-}
-
-/**
- * Get a map of cargoes and free capacities in the consist.
- * @param capacities Map to be filled with cargoes and capacities.
- */
-void Vehicle::GetConsistFreeCapacities(std::map<CargoID, uint> &capacities) const
-{
-	for (const Vehicle *v = this; v != nullptr; v = v->Next()) {
-		if (v->cargo_cap == 0) continue;
-		auto pair = capacities.find(v->cargo_type);
-		if (pair == capacities.end()) {
-			capacities[v->cargo_type] = v->cargo_cap - v->cargo.StoredCount();
-		} else {
-			pair->second += v->cargo_cap - v->cargo.StoredCount();
-		}
-	}
-}
-
-uint Vehicle::GetConsistTotalCapacity() const
-{
-	uint result = 0;
-	for (const Vehicle *v = this; v != nullptr; v = v->Next()) {
-		result += v->cargo_cap;
-	}
-	return result;
 }
 
 /**
@@ -2410,7 +2395,7 @@ CommandCost Vehicle::SendToDepot(DoCommandFlag flags, DepotCommand command)
 			if (this->current_order.GetDepotOrderType() & ODTFB_PART_OF_ORDERS) this->IncrementRealOrderIndex();
 
 			if (this->IsGroundVehicle()) {
-				uint16 &gv_flags = this->GetGroundVehicleFlags();
+				uint16_t &gv_flags = this->GetGroundVehicleFlags();
 				SetBit(gv_flags, GVF_SUPPRESS_IMPLICIT_ORDERS);
 			}
 
@@ -2428,7 +2413,7 @@ CommandCost Vehicle::SendToDepot(DoCommandFlag flags, DepotCommand command)
 		if (this->current_order.IsType(OT_LOADING)) this->LeaveStation();
 
 		if (this->IsGroundVehicle() && this->GetNumManualOrders() > 0) {
-			uint16 &gv_flags = this->GetGroundVehicleFlags();
+			uint16_t &gv_flags = this->GetGroundVehicleFlags();
 			SetBit(gv_flags, GVF_SUPPRESS_IMPLICIT_ORDERS);
 		}
 
@@ -2475,7 +2460,7 @@ void Vehicle::UpdateVisualEffect(bool allow_power_change)
 
 	/* Check powered wagon / visual effect callback */
 	if (HasBit(e->info.callback_mask, CBM_VEHICLE_VISUAL_EFFECT)) {
-		uint16 callback = GetVehicleCallback(CBID_VEHICLE_VISUAL_EFFECT, 0, 0, this->engine_type, this);
+		uint16_t callback = GetVehicleCallback(CBID_VEHICLE_VISUAL_EFFECT, 0, 0, this->engine_type, this);
 
 		if (callback != CALLBACK_FAILED) {
 			if (callback >= 0x100 && e->GetGRF()->grf_version >= 8) ErrorUnknownCallbackResult(e->GetGRFID(), CBID_VEHICLE_VISUAL_EFFECT, callback);
@@ -2519,7 +2504,7 @@ void Vehicle::UpdateVisualEffect(bool allow_power_change)
 	}
 }
 
-static const int8 _vehicle_smoke_pos[8] = {
+static const int8_t _vehicle_smoke_pos[8] = {
 	1, 1, 1, 0, -1, -1, -1, 0
 };
 
@@ -2529,14 +2514,14 @@ static const int8 _vehicle_smoke_pos[8] = {
  */
 static void SpawnAdvancedVisualEffect(const Vehicle *v)
 {
-	uint16 callback = GetVehicleCallback(CBID_VEHICLE_SPAWN_VISUAL_EFFECT, 0, Random(), v->engine_type, v);
+	uint16_t callback = GetVehicleCallback(CBID_VEHICLE_SPAWN_VISUAL_EFFECT, 0, Random(), v->engine_type, v);
 	if (callback == CALLBACK_FAILED) return;
 
 	uint count = GB(callback, 0, 2);
 	bool auto_center = HasBit(callback, 13);
 	bool auto_rotate = !HasBit(callback, 14);
 
-	int8 l_center = 0;
+	int8_t l_center = 0;
 	if (auto_center) {
 		/* For road vehicles: Compute offset from vehicle position to vehicle center */
 		if (v->type == VEH_ROAD) l_center = -(int)(VEHICLE_LENGTH - RoadVehicle::From(v)->gcache.cached_veh_length) / 2;
@@ -2549,19 +2534,19 @@ static void SpawnAdvancedVisualEffect(const Vehicle *v)
 	if (v->type == VEH_TRAIN && HasBit(Train::From(v)->flags, VRF_REVERSE_DIRECTION)) l_dir = ReverseDir(l_dir);
 	Direction t_dir = ChangeDir(l_dir, DIRDIFF_90RIGHT);
 
-	int8 x_center = _vehicle_smoke_pos[l_dir] * l_center;
-	int8 y_center = _vehicle_smoke_pos[t_dir] * l_center;
+	int8_t x_center = _vehicle_smoke_pos[l_dir] * l_center;
+	int8_t y_center = _vehicle_smoke_pos[t_dir] * l_center;
 
 	for (uint i = 0; i < count; i++) {
-		uint32 reg = GetRegister(0x100 + i);
+		uint32_t reg = GetRegister(0x100 + i);
 		uint type = GB(reg,  0, 8);
-		int8 x    = GB(reg,  8, 8);
-		int8 y    = GB(reg, 16, 8);
-		int8 z    = GB(reg, 24, 8);
+		int8_t x    = GB(reg,  8, 8);
+		int8_t y    = GB(reg, 16, 8);
+		int8_t z    = GB(reg, 24, 8);
 
 		if (auto_rotate) {
-			int8 l = x;
-			int8 t = y;
+			int8_t l = x;
+			int8_t t = y;
 			x = _vehicle_smoke_pos[l_dir] * l + _vehicle_smoke_pos[t_dir] * t;
 			y = _vehicle_smoke_pos[t_dir] * l - _vehicle_smoke_pos[l_dir] * t;
 		}
@@ -2911,7 +2896,7 @@ StringID GetVehicleCannotUseStationReason(const Vehicle *v, const Station *st)
 
 			for (; rs != nullptr; rs = rs->next) {
 				/* Articulated vehicles cannot use bay road stops, only drive-through. Make sure the vehicle can actually use this bay stop */
-				if (HasTileAnyRoadType(rs->xy, rv->compatible_roadtypes) && IsStandardRoadStopTile(rs->xy) && rv->HasArticulatedPart()) {
+				if (HasTileAnyRoadType(rs->xy, rv->compatible_roadtypes) && IsBayRoadStopTile(rs->xy) && rv->HasArticulatedPart()) {
 					err = STR_ERROR_NO_STOP_ARTICULATED_VEHICLE;
 					continue;
 				}
@@ -2978,7 +2963,7 @@ const GroundVehicleCache *Vehicle::GetGroundVehicleCache() const
  * @pre The vehicle is a #GroundVehicle.
  * @return #GroundVehicleFlags of the vehicle.
  */
-uint16 &Vehicle::GetGroundVehicleFlags()
+uint16_t &Vehicle::GetGroundVehicleFlags()
 {
 	assert(this->IsGroundVehicle());
 	if (this->type == VEH_TRAIN) {
@@ -2993,7 +2978,7 @@ uint16 &Vehicle::GetGroundVehicleFlags()
  * @pre The vehicle is a #GroundVehicle.
  * @return #GroundVehicleFlags of the vehicle.
  */
-const uint16 &Vehicle::GetGroundVehicleFlags() const
+const uint16_t &Vehicle::GetGroundVehicleFlags() const
 {
 	assert(this->IsGroundVehicle());
 	if (this->type == VEH_TRAIN) {
@@ -3011,7 +2996,7 @@ const uint16 &Vehicle::GetGroundVehicleFlags() const
  * @pre \a set must be empty.
  * @post \a set will contain the vehicles that will be refitted.
  */
-void GetVehicleSet(VehicleSet &set, Vehicle *v, uint8 num_vehicles)
+void GetVehicleSet(VehicleSet &set, Vehicle *v, uint8_t num_vehicles)
 {
 	if (v->type == VEH_TRAIN) {
 		Train *u = Train::From(v);
@@ -3037,9 +3022,9 @@ void GetVehicleSet(VehicleSet &set, Vehicle *v, uint8 num_vehicles)
  * Calculates the maximum weight of the ground vehicle when loaded.
  * @return Weight in tonnes
  */
-uint32 Vehicle::GetDisplayMaxWeight() const
+uint32_t Vehicle::GetDisplayMaxWeight() const
 {
-	uint32 max_weight = 0;
+	uint32_t max_weight = 0;
 
 	for (const Vehicle* u = this; u != nullptr; u = u->Next()) {
 		max_weight += u->GetMaxWeight();
@@ -3052,9 +3037,9 @@ uint32 Vehicle::GetDisplayMaxWeight() const
  * Calculates the minimum power-to-weight ratio using the maximum weight of the ground vehicle
  * @return power-to-weight ratio in 10ths of hp(I) per tonne
  */
-uint32 Vehicle::GetDisplayMinPowerToWeight() const
+uint32_t Vehicle::GetDisplayMinPowerToWeight() const
 {
-	uint32 max_weight = GetDisplayMaxWeight();
+	uint32_t max_weight = GetDisplayMaxWeight();
 	if (max_weight == 0) return 0;
 	return GetGroundVehicleCache()->cached_power * 10u / max_weight;
 }

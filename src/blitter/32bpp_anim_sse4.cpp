@@ -7,6 +7,7 @@
 
 /** @file 32bpp_anim_sse4.cpp Implementation of the SSE4 32 bpp blitter with animation support. */
 
+#include "palette_func.h"
 #ifdef WITH_SSE
 
 #include "../stdafx.h"
@@ -34,7 +35,7 @@ inline void Blitter_32bppSSE4_Anim::Draw(const Blitter::BlitterParams *bp, ZoomL
 {
 	const byte * const remap = bp->remap;
 	Colour *dst_line = (Colour *) bp->dst + bp->top * bp->pitch + bp->left;
-	uint16 *anim_line = this->anim_buf + this->ScreenToAnimOffset((uint32 *)bp->dst) + bp->top * this->anim_buf_pitch + bp->left;
+	uint16_t *anim_line = this->anim_buf + this->ScreenToAnimOffset((uint32_t *)bp->dst) + bp->top * this->anim_buf_pitch + bp->left;
 	int effective_width = bp->width;
 
 	/* Find where to start reading in the source sprite. */
@@ -59,7 +60,7 @@ inline void Blitter_32bppSSE4_Anim::Draw(const Blitter::BlitterParams *bp, ZoomL
 		Colour *dst = dst_line;
 		const Colour *src = src_rgba_line + META_LENGTH;
 		if (mode != BM_TRANSPARENT) src_mv = src_mv_line;
-		uint16 *anim = anim_line;
+		uint16_t *anim = anim_line;
 
 		if (read_mode == RM_WITH_MARGIN) {
 			assert(bt_last == BT_NONE); // or you must ensure block type is preserved
@@ -81,7 +82,7 @@ inline void Blitter_32bppSSE4_Anim::Draw(const Blitter::BlitterParams *bp, ZoomL
 					for (uint x = (uint) effective_width; x > 0; x--) {
 						if (src->a) {
 							if (animated) {
-								*anim = *(const uint16*) src_mv;
+								*anim = *(const uint16_t*) src_mv;
 								*dst = (src_mv->m >= PALETTE_ANIM_START) ? AdjustBrightneSSE(this->LookupColourInPalette(src_mv->m), src_mv->v) : src->data;
 							} else {
 								*anim = 0;
@@ -97,7 +98,7 @@ inline void Blitter_32bppSSE4_Anim::Draw(const Blitter::BlitterParams *bp, ZoomL
 				}
 
 				for (uint x = (uint) effective_width/2; x != 0; x--) {
-					uint32 mvX2 = *((uint32 *) const_cast<MapValue *>(src_mv));
+					uint32_t mvX2 = *((uint32_t *) const_cast<MapValue *>(src_mv));
 					__m128i srcABCD = _mm_loadl_epi64((const __m128i*) src);
 					__m128i dstABCD = _mm_loadl_epi64((__m128i*) dst);
 
@@ -117,26 +118,26 @@ inline void Blitter_32bppSSE4_Anim::Draw(const Blitter::BlitterParams *bp, ZoomL
 						/* Update anim buffer. */
 						const byte a0 = src[0].a;
 						const byte a1 = src[1].a;
-						uint32 anim01 = 0;
+						uint32_t anim01 = 0;
 						if (a0 == 255) {
 							if (a1 == 255) {
-								*(uint32*) anim = mvX2;
+								*(uint32_t*) anim = mvX2;
 								goto bmno_full_opacity;
 							}
-							anim01 = (uint16) mvX2;
+							anim01 = (uint16_t) mvX2;
 						} else if (a0 == 0) {
 							if (a1 == 0) {
 								goto bmno_full_transparency;
 							} else {
-								if (a1 == 255) anim[1] = (uint16) (mvX2 >> 16);
+								if (a1 == 255) anim[1] = (uint16_t) (mvX2 >> 16);
 								goto bmno_alpha_blend;
 							}
 						}
 						if (a1 > 0) {
 							if (a1 == 255) anim01 |= mvX2 & 0xFFFF0000;
-							*(uint32*) anim = anim01;
+							*(uint32_t*) anim = anim01;
 						} else {
-							anim[0] = (uint16) anim01;
+							anim[0] = (uint16_t) anim01;
 						}
 					} else {
 						if (src[0].a) anim[0] = 0;
@@ -159,7 +160,7 @@ bmno_full_transparency:
 					if (src->a == 0) {
 						/* Complete transparency. */
 					} else if (src->a == 255) {
-						*anim = *(const uint16*) src_mv;
+						*anim = *(const uint16_t*) src_mv;
 						*dst = (src_mv->m >= PALETTE_ANIM_START) ? AdjustBrightneSSE(LookupColourInPalette(src_mv->m), src_mv->v) : *src;
 					} else {
 						*anim = 0;
@@ -179,7 +180,7 @@ bmno_full_transparency:
 
 			case BM_COLOUR_REMAP:
 				for (uint x = (uint) effective_width / 2; x != 0; x--) {
-					uint32 mvX2 = *((uint32 *) const_cast<MapValue *>(src_mv));
+					uint32_t mvX2 = *((uint32_t *) const_cast<MapValue *>(src_mv));
 					__m128i srcABCD = _mm_loadl_epi64((const __m128i*) src);
 					__m128i dstABCD = _mm_loadl_epi64((__m128i*) dst);
 
@@ -201,14 +202,14 @@ bmno_full_transparency:
 							m_colour = m != 0 ? m_colour : srcm; \
 							}
 #ifdef POINTER_IS_64BIT
-						uint64 srcs = _mm_cvtsi128_si64(srcABCD);
-						uint64 dsts;
+						uint64_t srcs = _mm_cvtsi128_si64(srcABCD);
+						uint64_t dsts;
 						if (animated) dsts = _mm_cvtsi128_si64(dstABCD);
-						uint64 remapped_src = 0;
+						uint64_t remapped_src = 0;
 						CMOV_REMAP(c0, animated ? dsts : 0, srcs, mvX2);
 						remapped_src = c0.data;
 						CMOV_REMAP(c1, animated ? dsts >> 32 : 0, srcs >> 32, mvX2 >> 16);
-						remapped_src |= (uint64) c1.data << 32;
+						remapped_src |= (uint64_t) c1.data << 32;
 						srcABCD = _mm_cvtsi64_si128(remapped_src);
 #else
 						Colour remapped_src[2];
@@ -226,11 +227,11 @@ bmno_full_transparency:
 					if (animated) {
 						const byte a0 = src[0].a;
 						const byte a1 = src[1].a;
-						uint32 anim01 = mvX2 & 0xFF00FF00;
+						uint32_t anim01 = mvX2 & 0xFF00FF00;
 						if (a0 == 255) {
 							anim01 |= r0;
 							if (a1 == 255) {
-								*(uint32*) anim = anim01 | (r1 << 16);
+								*(uint32_t*) anim = anim01 | (r1 << 16);
 								goto bmcr_full_opacity;
 							}
 						} else if (a0 == 0) {
@@ -245,9 +246,9 @@ bmno_full_transparency:
 						}
 						if (a1 > 0) {
 							if (a1 == 255) anim01 |= r1 << 16;
-							*(uint32*) anim = anim01;
+							*(uint32_t*) anim = anim01;
 						} else {
-							anim[0] = (uint16) anim01;
+							anim[0] = (uint16_t) anim01;
 						}
 					} else {
 						if (src[0].a) anim[0] = 0;
@@ -272,7 +273,7 @@ bmcr_full_transparency:
 					if (src->a == 0) break;
 					if (src_mv->m) {
 						const uint r = remap[src_mv->m];
-						*anim = (animated && src->a == 255) ? r | ((uint16) src_mv->v << 8 ) : 0;
+						*anim = (animated && src->a == 255) ? r | ((uint16_t) src_mv->v << 8 ) : 0;
 						if (r != 0) {
 							Colour remapped_colour = AdjustBrightneSSE(this->LookupColourInPalette(r), src_mv->v);
 							if (src->a == 255) {
@@ -317,11 +318,26 @@ bmcr_alpha_blend_single:
 				}
 				break;
 
+			case BM_TRANSPARENT_REMAP:
+				/* Apply custom transparency remap. */
+				for (uint x = (uint) bp->width; x > 0; x--) {
+					if (src->a != 0) {
+						*dst = this->LookupColourInPalette(remap[GetNearestColourIndex(*dst)]);
+						*anim = 0;
+					}
+					src_mv++;
+					dst++;
+					src++;
+					anim++;
+				}
+				break;
+
+
 			case BM_CRASH_REMAP:
 				for (uint x = (uint) bp->width; x > 0; x--) {
 					if (src_mv->m == 0) {
 						if (src->a != 0) {
-							uint8 g = MakeDark(src->r, src->g, src->b);
+							uint8_t g = MakeDark(src->r, src->g, src->b);
 							*dst = ComposeColourRGBA(g, g, g, src->a, *dst);
 							*anim = 0;
 						}
@@ -351,7 +367,7 @@ bmcr_alpha_blend_single:
 		}
 
 next_line:
-		if (mode != BM_TRANSPARENT) src_mv_line += si->sprite_width;
+		if (mode != BM_TRANSPARENT && mode != BM_TRANSPARENT_REMAP) src_mv_line += si->sprite_width;
 		src_rgba_line = (const Colour*) ((const byte*) src_rgba_line + si->sprite_line_size);
 		dst_line += bp->pitch;
 		anim_line += this->anim_buf_pitch;
@@ -414,6 +430,7 @@ bm_normal:
 			}
 			break;
 		case BM_TRANSPARENT:  Draw<BM_TRANSPARENT, RM_NONE, BT_NONE, true, true>(bp, zoom); return;
+		case BM_TRANSPARENT_REMAP: Draw<BM_TRANSPARENT_REMAP, RM_NONE, BT_NONE, true, true>(bp, zoom); return;
 		case BM_CRASH_REMAP:  Draw<BM_CRASH_REMAP, RM_NONE, BT_NONE, true, true>(bp, zoom); return;
 		case BM_BLACK_REMAP:  Draw<BM_BLACK_REMAP, RM_NONE, BT_NONE, true, true>(bp, zoom); return;
 	}

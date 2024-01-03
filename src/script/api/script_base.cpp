@@ -18,7 +18,7 @@
 	return ScriptObject::GetRandomizer().Next();
 }
 
-/* static */ SQInteger ScriptBase::RandItem(SQInteger unused_param)
+/* static */ SQInteger ScriptBase::RandItem(SQInteger)
 {
 	return ScriptBase::Rand();
 }
@@ -29,7 +29,7 @@
 	return ScriptObject::GetRandomizer().Next(max);
 }
 
-/* static */ SQInteger ScriptBase::RandRangeItem(SQInteger unused_param, SQInteger max)
+/* static */ SQInteger ScriptBase::RandRangeItem(SQInteger, SQInteger max)
 {
 	return ScriptBase::RandRange(max);
 }
@@ -42,7 +42,7 @@
 	return ScriptBase::RandRange(max) < out;
 }
 
-/* static */ bool ScriptBase::ChanceItem(SQInteger unused_param, SQInteger out, SQInteger max)
+/* static */ bool ScriptBase::ChanceItem(SQInteger, SQInteger out, SQInteger max)
 {
 	return ScriptBase::Chance(out, max);
 }

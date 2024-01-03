@@ -29,7 +29,7 @@ LinkGraph::BaseNode::BaseNode(TileIndex xy, StationID st, uint demand)
 	this->supply = 0;
 	this->demand = demand;
 	this->station = st;
-	this->last_update = INVALID_DATE;
+	this->last_update = CalendarTime::INVALID_DATE;
 }
 
 /**
@@ -40,8 +40,8 @@ LinkGraph::BaseEdge::BaseEdge(NodeID dest_node)
 	this->capacity = 0;
 	this->usage = 0;
 	this->travel_time_sum = 0;
-	this->last_unrestricted_update = INVALID_DATE;
-	this->last_restricted_update = INVALID_DATE;
+	this->last_unrestricted_update = CalendarTime::INVALID_DATE;
+	this->last_restricted_update = CalendarTime::INVALID_DATE;
 	this->dest_node = dest_node;
 }
 
@@ -50,22 +50,22 @@ LinkGraph::BaseEdge::BaseEdge(NodeID dest_node)
  * This is useful if the date has been modified with the cheat menu.
  * @param interval Number of days to be added or subtracted.
  */
-void LinkGraph::ShiftDates(int interval)
+void LinkGraph::ShiftDates(TimerGameCalendar::Date interval)
 {
 	this->last_compression += interval;
 	for (NodeID node1 = 0; node1 < this->Size(); ++node1) {
 		BaseNode &source = this->nodes[node1];
-		if (source.last_update != INVALID_DATE) source.last_update += interval;
+		if (source.last_update != CalendarTime::INVALID_DATE) source.last_update += interval;
 		for (BaseEdge &edge : this->nodes[node1].edges) {
-			if (edge.last_unrestricted_update != INVALID_DATE) edge.last_unrestricted_update += interval;
-			if (edge.last_restricted_update != INVALID_DATE) edge.last_restricted_update += interval;
+			if (edge.last_unrestricted_update != CalendarTime::INVALID_DATE) edge.last_unrestricted_update += interval;
+			if (edge.last_restricted_update != CalendarTime::INVALID_DATE) edge.last_restricted_update += interval;
 		}
 	}
 }
 
 void LinkGraph::Compress()
 {
-	this->last_compression = (TimerGameCalendar::date + this->last_compression) / 2;
+	this->last_compression = (TimerGameCalendar::date + this->last_compression).base() / 2;
 	for (NodeID node1 = 0; node1 < this->Size(); ++node1) {
 		this->nodes[node1].supply /= 2;
 		for (BaseEdge &edge : this->nodes[node1].edges) {
@@ -74,7 +74,7 @@ void LinkGraph::Compress()
 				if (edge.capacity < (1 << 16)) {
 					edge.travel_time_sum = edge.travel_time_sum * new_capacity / edge.capacity;
 				} else if (edge.travel_time_sum != 0) {
-					edge.travel_time_sum = std::max<uint64>(1, edge.travel_time_sum / 2);
+					edge.travel_time_sum = std::max<uint64_t>(1, edge.travel_time_sum / 2);
 				}
 				edge.capacity = new_capacity;
 				edge.usage /= 2;
@@ -164,14 +164,14 @@ NodeID LinkGraph::AddNode(const Station *st)
  * @param usage Usage to be added.
  * @param mode Update mode to be used.
  */
-void LinkGraph::BaseNode::AddEdge(NodeID to, uint capacity, uint usage, uint32 travel_time, EdgeUpdateMode mode)
+void LinkGraph::BaseNode::AddEdge(NodeID to, uint capacity, uint usage, uint32_t travel_time, EdgeUpdateMode mode)
 {
 	assert(!this->HasEdgeTo(to));
 
 	BaseEdge &edge = *this->edges.emplace(std::upper_bound(this->edges.begin(), this->edges.end(), to), to);
 	edge.capacity = capacity;
 	edge.usage = usage;
-	edge.travel_time_sum = static_cast<uint64>(travel_time) * capacity;
+	edge.travel_time_sum = static_cast<uint64_t>(travel_time) * capacity;
 	if (mode & EUM_UNRESTRICTED)  edge.last_unrestricted_update = TimerGameCalendar::date;
 	if (mode & EUM_RESTRICTED) edge.last_restricted_update = TimerGameCalendar::date;
 }
@@ -183,7 +183,7 @@ void LinkGraph::BaseNode::AddEdge(NodeID to, uint capacity, uint usage, uint32 t
  * @param usage Usage to be added.
  * @param mode Update mode to be used.
  */
-void LinkGraph::BaseNode::UpdateEdge(NodeID to, uint capacity, uint usage, uint32 travel_time, EdgeUpdateMode mode)
+void LinkGraph::BaseNode::UpdateEdge(NodeID to, uint capacity, uint usage, uint32_t travel_time, EdgeUpdateMode mode)
 {
 	assert(capacity > 0);
 	assert(usage <= capacity);
@@ -214,25 +214,25 @@ void LinkGraph::BaseNode::RemoveEdge(NodeID to)
  * @param travel_time Travel time to be added, in ticks.
  * @param mode Update mode to be applied.
  */
-void LinkGraph::BaseEdge::Update(uint capacity, uint usage, uint32 travel_time, EdgeUpdateMode mode)
+void LinkGraph::BaseEdge::Update(uint capacity, uint usage, uint32_t travel_time, EdgeUpdateMode mode)
 {
 	assert(this->capacity > 0);
 	assert(capacity >= usage);
 
 	if (mode & EUM_INCREASE) {
 		if (this->travel_time_sum == 0) {
-			this->travel_time_sum = static_cast<uint64>(this->capacity + capacity) * travel_time;
+			this->travel_time_sum = static_cast<uint64_t>(this->capacity + capacity) * travel_time;
 		} else if (travel_time == 0) {
 			this->travel_time_sum += this->travel_time_sum / this->capacity * capacity;
 		} else {
-			this->travel_time_sum += static_cast<uint64>(travel_time) * capacity;
+			this->travel_time_sum += static_cast<uint64_t>(travel_time) * capacity;
 		}
 		this->capacity += capacity;
 		this->usage += usage;
 	} else if (mode & EUM_REFRESH) {
 		if (this->travel_time_sum == 0) {
 			this->capacity = std::max(this->capacity, capacity);
-			this->travel_time_sum = static_cast<uint64>(travel_time) * this->capacity;
+			this->travel_time_sum = static_cast<uint64_t>(travel_time) * this->capacity;
 		} else if (capacity > this->capacity) {
 			this->travel_time_sum = this->travel_time_sum / this->capacity * capacity;
 			this->capacity = capacity;

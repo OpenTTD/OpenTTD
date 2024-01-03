@@ -11,7 +11,7 @@
 #define WIDGETS_SUBSIDY_WIDGET_H
 
 /** Widgets of the #SubsidyListWindow class. */
-enum SubsidyListWidgets {
+enum SubsidyListWidgets : WidgetID {
 	/* Name starts with SU instead of S, because of collision with SaveLoadWidgets. */
 	WID_SUL_PANEL,     ///< Main panel of window.
 	WID_SUL_SCROLLBAR, ///< Scrollbar of panel.

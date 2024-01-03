@@ -11,7 +11,7 @@
 #define WIDGETS_RAIL_WIDGET_H
 
 /** Widgets of the #BuildRailToolbarWindow class. */
-enum RailToolbarWidgets {
+enum RailToolbarWidgets : WidgetID {
 	/* Name starts with RA instead of R, because of collision with RoadToolbarWidgets */
 	WID_RAT_CAPTION,        ///< Caption of the window.
 	WID_RAT_BUILD_NS,       ///< Build rail along the game view Y axis.
@@ -28,10 +28,12 @@ enum RailToolbarWidgets {
 	WID_RAT_BUILD_TUNNEL,   ///< Build a tunnel.
 	WID_RAT_REMOVE,         ///< Bulldozer to remove rail.
 	WID_RAT_CONVERT_RAIL,   ///< Convert other rail to this type.
+
+	INVALID_WID_RAT = -1,
 };
 
 /** Widgets of the #BuildRailStationWindow class. */
-enum BuildRailStationWidgets {
+enum BuildRailStationWidgets : WidgetID {
 	/* Name starts with BRA instead of BR, because of collision with BuildRoadStationWidgets */
 	WID_BRAS_PLATFORM_DIR_X,       ///< Button to select '/' view.
 	WID_BRAS_PLATFORM_DIR_Y,       ///< Button to select '\' view.
@@ -77,7 +79,7 @@ enum BuildRailStationWidgets {
 };
 
 /** Widgets of the #BuildSignalWindow class. */
-enum BuildSignalWidgets {
+enum BuildSignalWidgets : WidgetID {
 	WID_BS_CAPTION,            ///< Caption for the Signal Selection window.
 	WID_BS_TOGGLE_SIZE,        ///< Toggle showing advanced signal types.
 	WID_BS_SEMAPHORE_NORM,     ///< Build a semaphore normal block signal.
@@ -107,7 +109,7 @@ enum BuildSignalWidgets {
 };
 
 /** Widgets of the #BuildRailDepotWindow class. */
-enum BuildRailDepotWidgets {
+enum BuildRailDepotWidgets : WidgetID {
 	/* Name starts with BRA instead of BR, because of collision with BuildRoadDepotWidgets */
 	WID_BRAD_DEPOT_NE, ///< Build a depot with the entrance in the north east.
 	WID_BRAD_DEPOT_SE, ///< Build a depot with the entrance in the south east.
@@ -116,7 +118,7 @@ enum BuildRailDepotWidgets {
 };
 
 /** Widgets of the #BuildRailWaypointWindow class. */
-enum BuildRailWaypointWidgets {
+enum BuildRailWaypointWidgets : WidgetID {
 	WID_BRW_FILTER,          ///< Text filter.
 	WID_BRW_WAYPOINT_MATRIX, ///< Matrix with waypoints.
 	WID_BRW_WAYPOINT,        ///< A single waypoint.

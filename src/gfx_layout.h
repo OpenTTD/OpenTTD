@@ -110,7 +110,7 @@ public:
 		virtual int GetWidth() const = 0;
 		virtual int CountRuns() const = 0;
 		virtual const VisualRun &GetVisualRun(int run) const = 0;
-		virtual int GetInternalCharLength(WChar c) const = 0;
+		virtual int GetInternalCharLength(char32_t c) const = 0;
 	};
 
 	virtual void Reflow() = 0;
@@ -177,7 +177,7 @@ public:
 	Layouter(std::string_view str, int maxw = INT32_MAX, TextColour colour = TC_FROMSTRING, FontSize fontsize = FS_NORMAL);
 	Dimension GetBounds();
 	Point GetCharPosition(std::string_view::const_iterator ch) const;
-	ptrdiff_t GetCharAtPosition(int x) const;
+	ptrdiff_t GetCharAtPosition(int x, size_t line_index) const;
 
 	static void ResetFontCache(FontSize size);
 	static void ResetLineCache();

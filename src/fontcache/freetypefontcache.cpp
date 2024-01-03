@@ -34,14 +34,14 @@ private:
 	FT_Face face;  ///< The font face associated with this font.
 
 	void SetFontSize(FontSize fs, FT_Face face, int pixels);
-	const void *InternalGetFontTable(uint32 tag, size_t &length) override;
+	const void *InternalGetFontTable(uint32_t tag, size_t &length) override;
 	const Sprite *InternalGetGlyph(GlyphID key, bool aa) override;
 
 public:
 	FreeTypeFontCache(FontSize fs, FT_Face face, int pixels);
 	~FreeTypeFontCache();
 	void ClearFontCache() override;
-	GlyphID MapCharToGlyph(WChar key) override;
+	GlyphID MapCharToGlyph(char32_t key) override;
 	std::string GetFontName() override { return fmt::format("{}, {}", face->family_name, face->style_name); }
 	bool IsBuiltInFont() override { return false; }
 	const void *GetOSHandle() override { return &face; }
@@ -63,7 +63,7 @@ FreeTypeFontCache::FreeTypeFontCache(FontSize fs, FT_Face face, int pixels) : Tr
 	this->SetFontSize(fs, face, pixels);
 }
 
-void FreeTypeFontCache::SetFontSize(FontSize fs, FT_Face face, int pixels)
+void FreeTypeFontCache::SetFontSize(FontSize, FT_Face, int pixels)
 {
 	if (pixels == 0) {
 		/* Try to determine a good height based on the minimal height recommended by the font. */
@@ -141,7 +141,9 @@ void LoadFreeTypeFont(FontSize fs)
 	FT_Face face = nullptr;
 
 	/* If font is an absolute path to a ttf, try loading that first. */
-	FT_Error error = FT_New_Face(_library, font_name, 0, &face);
+	int32_t index = 0;
+	if (settings->os_handle != nullptr) index = *static_cast<const int32_t *>(settings->os_handle);
+	FT_Error error = FT_New_Face(_library, font_name, index, &face);
 
 	if (error != FT_Err_Ok) {
 		/* Check if font is a relative filename in one of our search-paths. */
@@ -233,7 +235,8 @@ const Sprite *FreeTypeFontCache::InternalGetGlyph(GlyphID key, bool aa)
 	if (width > MAX_GLYPH_DIM || height > MAX_GLYPH_DIM) UserError("Font glyph is too large");
 
 	/* FreeType has rendered the glyph, now we allocate a sprite and copy the image into it */
-	SpriteLoader::Sprite sprite;
+	SpriteLoader::SpriteCollection spritecollection;
+	SpriteLoader::Sprite &sprite = spritecollection[ZOOM_LVL_NORMAL];
 	sprite.AllocateData(ZOOM_LVL_NORMAL, static_cast<size_t>(width) * height);
 	sprite.type = SpriteType::Font;
 	sprite.colours = (aa ? SCC_PAL | SCC_ALPHA : SCC_PAL);
@@ -264,7 +267,7 @@ const Sprite *FreeTypeFontCache::InternalGetGlyph(GlyphID key, bool aa)
 	}
 
 	GlyphEntry new_glyph;
-	new_glyph.sprite = BlitterFactory::GetCurrentBlitter()->Encode(&sprite, SimpleSpriteAlloc);
+	new_glyph.sprite = BlitterFactory::GetCurrentBlitter()->Encode(spritecollection, SimpleSpriteAlloc);
 	new_glyph.width  = slot->advance.x >> 6;
 
 	this->SetGlyphPtr(key, &new_glyph);
@@ -273,7 +276,7 @@ const Sprite *FreeTypeFontCache::InternalGetGlyph(GlyphID key, bool aa)
 }
 
 
-GlyphID FreeTypeFontCache::MapCharToGlyph(WChar key)
+GlyphID FreeTypeFontCache::MapCharToGlyph(char32_t key)
 {
 	assert(IsPrintable(key));
 
@@ -284,7 +287,7 @@ GlyphID FreeTypeFontCache::MapCharToGlyph(WChar key)
 	return FT_Get_Char_Index(this->face, key);
 }
 
-const void *FreeTypeFontCache::InternalGetFontTable(uint32 tag, size_t &length)
+const void *FreeTypeFontCache::InternalGetFontTable(uint32_t tag, size_t &length)
 {
 	FT_ULong len = 0;
 	FT_Byte *result = nullptr;

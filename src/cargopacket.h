@@ -20,7 +20,7 @@
 #include "saveload/saveload.h"
 
 /** Unique identifier for a single cargo packet. */
-typedef uint32 CargoPacketID;
+typedef uint32_t CargoPacketID;
 struct CargoPacket;
 
 /** Type of the pool for cargo packets for a little over 16 million packets. */
@@ -34,24 +34,34 @@ template <class Tinst, class Tcont> class CargoList;
 class StationCargoList; // forward-declare, so we can use it in VehicleCargoList.
 extern SaveLoadTable GetCargoPacketDesc();
 
-typedef uint32 TileOrStationID;
-
 /**
  * Container for cargo from the same location and time.
  */
 struct CargoPacket : CargoPacketPool::PoolItem<&_cargopacket_pool> {
 private:
-	Money feeder_share;     ///< Value of feeder pickup to be paid for on delivery of cargo.
-	uint16 count;           ///< The amount of cargo in this packet.
-	uint16 days_in_transit; ///< Amount of days this packet has been in transit.
-	SourceType source_type; ///< Type of \c source_id.
-	SourceID source_id;     ///< Index of source, INVALID_SOURCE if unknown/invalid.
-	StationID source;       ///< The station where the cargo came from first.
-	TileIndex source_xy;    ///< The origin of the cargo (first station in feeder chain).
-	union {
-		TileOrStationID loaded_at_xy; ///< Location where this cargo has been loaded into the vehicle.
-		TileOrStationID next_station; ///< Station where the cargo wants to go next.
+	/* A mathematical vector from (0,0). */
+	struct Vector {
+		int16_t x;
+		int16_t y;
 	};
+
+	uint16_t count{0}; ///< The amount of cargo in this packet.
+	uint16_t periods_in_transit{0}; ///< Amount of cargo aging periods this packet has been in transit.
+
+	Money feeder_share{0}; ///< Value of feeder pickup to be paid for on delivery of cargo.
+
+	TileIndex source_xy{INVALID_TILE}; ///< The origin of the cargo.
+	Vector travelled{0, 0}; ///< If cargo is in station: the vector from the unload tile to the source tile. If in vehicle: an intermediate value.
+
+	SourceID source_id{INVALID_SOURCE}; ///< Index of industry/town/HQ, INVALID_SOURCE if unknown/invalid.
+	SourceType source_type{SourceType::Industry}; ///< Type of \c source_id.
+
+#ifdef WITH_ASSERT
+	bool in_vehicle{false}; ///< NOSAVE: Whether this cargo is in a vehicle or not.
+#endif /* WITH_ASSERT */
+
+	StationID first_station{INVALID_STATION}; ///< The station where the cargo came from first.
+	StationID next_hop{INVALID_STATION}; ///< Station where the cargo wants to go next.
 
 	/** The CargoList caches, thus needs to know about it. */
 	template <class Tinst, class Tcont> friend class CargoList;
@@ -61,11 +71,12 @@ private:
 	friend SaveLoadTable GetCargoPacketDesc();
 public:
 	/** Maximum number of items in a single cargo packet. */
-	static const uint16 MAX_COUNT = UINT16_MAX;
+	static const uint16_t MAX_COUNT = UINT16_MAX;
 
 	CargoPacket();
-	CargoPacket(StationID source, TileIndex source_xy, uint16 count, SourceType source_type, SourceID source_id);
-	CargoPacket(uint16 count, uint16 days_in_transit, StationID source, TileIndex source_xy, TileIndex loaded_at_xy, Money feeder_share = 0, SourceType source_type = SourceType::Industry, SourceID source_id = INVALID_SOURCE);
+	CargoPacket(StationID first_station, uint16_t count, SourceType source_type, SourceID source_id);
+	CargoPacket(uint16_t count, uint16_t periods_in_transit, StationID first_station, TileIndex source_xy, Money feeder_share);
+	CargoPacket(uint16_t count, Money feeder_share, CargoPacket &original);
 
 	/** Destroy the packet. */
 	~CargoPacket() { }
@@ -75,28 +86,76 @@ public:
 	void Reduce(uint count);
 
 	/**
-	 * Sets the tile where the packet was loaded last.
-	 * @param load_place Tile where the packet was loaded last.
+	 * Sets the station where the packet is supposed to go next.
+	 * @param next_hop Next station the packet should go to.
 	 */
-	void SetLoadPlace(TileIndex load_place) { this->loaded_at_xy = load_place; }
+	void SetNextHop(StationID next_hop)
+	{
+		this->next_hop = next_hop;
+	}
 
 	/**
-	 * Sets the station where the packet is supposed to go next.
-	 * @param next_station Next station the packet should go to.
+	 * Update for the cargo being loaded on this tile.
+	 *
+	 * When a CargoPacket is created, it is moved to a station. But at that
+	 * moment in time it is not known yet at which tile the cargo will be
+	 * picked up. As this tile is used for payment information, we delay
+	 * setting the source_xy till first pickup, getting a better idea where
+	 * a cargo started from.
+	 *
+	 * Further more, we keep track of the amount of tiles the cargo moved
+	 * inside a vehicle. This is used in GetDistance() below.
+	 *
+	 * @param tile Tile the cargo is being picked up from.
 	 */
-	void SetNextStation(StationID next_station) { this->next_station = next_station; }
+	void UpdateLoadingTile(TileIndex tile)
+	{
+		if (this->source_xy == INVALID_TILE) {
+			this->source_xy = tile;
+		}
+
+#ifdef WITH_ASSERT
+		assert(!this->in_vehicle);
+		this->in_vehicle = true;
+#endif /* WITH_ASSERT */
+
+		/* We want to calculate the vector from tile-unload to tile-load. As
+		 * we currently only know the latter, add it. When we know where we unload,
+		 * we subtract is, giving us our vector (unload - load). */
+		this->travelled.x += TileX(tile);
+		this->travelled.y += TileY(tile);
+	}
+
+	/**
+	 * Update for the cargo being unloaded on this tile.
+	 *
+	 * @param tile Tile the cargo is being dropped off at.
+	 */
+	void UpdateUnloadingTile(TileIndex tile)
+	{
+#ifdef WITH_ASSERT
+		assert(this->in_vehicle);
+		this->in_vehicle = false;
+#endif /* WITH_ASSERT */
+
+		this->travelled.x -= TileX(tile);
+		this->travelled.y -= TileY(tile);
+	}
 
 	/**
 	 * Adds some feeder share to the packet.
 	 * @param new_share Feeder share to be added.
 	 */
-	void AddFeederShare(Money new_share) { this->feeder_share += new_share; }
+	void AddFeederShare(Money new_share)
+	{
+		this->feeder_share += new_share;
+	}
 
 	/**
 	 * Gets the number of 'items' in this packet.
 	 * @return Item count.
 	 */
-	inline uint16 Count() const
+	inline uint16_t Count() const
 	{
 		return this->count;
 	}
@@ -106,7 +165,7 @@ public:
 	 * the feeder chain.
 	 * @return Feeder share.
 	 */
-	inline Money FeederShare() const
+	inline Money GetFeederShare() const
 	{
 		return this->feeder_share;
 	}
@@ -117,27 +176,28 @@ public:
 	 * @param part Amount of cargo to get the share for.
 	 * @return Feeder share for the given amount of cargo.
 	 */
-	inline Money FeederShare(uint part) const
+	inline Money GetFeederShare(uint part) const
 	{
 		return this->feeder_share * part / static_cast<uint>(this->count);
 	}
 
 	/**
-	 * Gets the number of days this cargo has been in transit.
-	 * This number isn't really in days, but in 2.5 days (CARGO_AGING_TICKS = 185 ticks) and
-	 * it is capped at UINT16_MAX.
+	 * Gets the number of cargo aging periods this cargo has been in transit.
+	 * By default a period is 2.5 days (CARGO_AGING_TICKS = 185 ticks), however
+	 * vehicle NewGRFs can overide the length of the cargo aging period. The
+	 * value is capped at UINT16_MAX.
 	 * @return Length this cargo has been in transit.
 	 */
-	inline uint16 DaysInTransit() const
+	inline uint16_t GetPeriodsInTransit() const
 	{
-		return this->days_in_transit;
+		return this->periods_in_transit;
 	}
 
 	/**
 	 * Gets the type of the cargo's source. industry, town or head quarter.
 	 * @return Source type.
 	 */
-	inline SourceType SourceSubsidyType() const
+	inline SourceType GetSourceType() const
 	{
 		return this->source_type;
 	}
@@ -146,7 +206,7 @@ public:
 	 * Gets the ID of the cargo's source. An IndustryID, TownID or CompanyID.
 	 * @return Source ID.
 	 */
-	inline SourceID SourceSubsidyID() const
+	inline SourceID GetSourceID() const
 	{
 		return this->source_id;
 	}
@@ -155,36 +215,59 @@ public:
 	 * Gets the ID of the station where the cargo was loaded for the first time.
 	 * @return StationID.
 	 */
-	inline StationID SourceStation() const
+	inline StationID GetFirstStation() const
 	{
-		return this->source;
+		return this->first_station;
 	}
 
 	/**
-	 * Gets the coordinates of the cargo's source station.
-	 * @return Source station's coordinates.
+	 * Get the current distance the cargo has traveled.
+	 *
+	 * @param current_tile Current tile of the cargo.
+	 * @return uint The distance (in tiles) traveled.
 	 */
-	inline TileIndex SourceStationXY() const
+	inline uint GetDistance(TileIndex current_tile) const
 	{
-		return this->source_xy;
-	}
+		assert(this->source_xy != INVALID_TILE);
+#ifdef WITH_ASSERT
+		assert(this->in_vehicle);
+#endif /* WITH_ASSERT */
 
-	/**
-	 * Gets the coordinates of the cargo's last loading station.
-	 * @return Last loading station's coordinates.
-	 */
-	inline TileIndex LoadedAtXY() const
-	{
-		return this->loaded_at_xy;
+		/* Distance is always requested when the cargo is still inside the
+		 * vehicle. So first finish the calculation for travelled to
+		 * become a vector. */
+		auto local_travelled = travelled;
+		local_travelled.x -= TileX(current_tile);
+		local_travelled.y -= TileY(current_tile);
+
+		/* Cargo-movement is a vector that indicates how much the cargo has
+		 * actually traveled in a vehicle. This is the distance you get paid
+		 * for. However, one could construct a route where this vector would
+		 * be really long. To not overpay the player, cap out at the distance
+		 * between source and destination.
+		 *
+		 * This way of calculating is to counter people moving cargo for free
+		 * and instantly in stations, where you deliver it in one part of the
+		 * station and pick it up in another. By using the actual distance
+		 * traveled in a vehicle, using this trick doesn't give you more money.
+		 *
+		 * However, especially in large networks with large transfer station,
+		 * etc, one could actually make the route a lot longer. In that case,
+		 * use the actual distance between source and destination.
+		 */
+
+		uint distance_travelled = abs(local_travelled.x) + abs(local_travelled.y);
+		uint distance_source_dest = DistanceManhattan(this->source_xy, current_tile);
+		return std::min(distance_travelled, distance_source_dest);
 	}
 
 	/**
 	 * Gets the ID of station the cargo wants to go next.
 	 * @return Next station for this packets.
 	 */
-	inline StationID NextStation() const
+	inline StationID GetNextHop() const
 	{
-		return this->next_station;
+		return this->next_hop;
 	}
 
 	static void InvalidateAllFrom(SourceType src_type, SourceID src);
@@ -221,7 +304,7 @@ public:
 
 protected:
 	uint count;                   ///< Cache for the number of cargo entities.
-	uint64 cargo_days_in_transit; ///< Cache for the sum of number of days in transit of each entity; comparable to man-hours.
+	uint64_t cargo_periods_in_transit; ///< Cache for the sum of number of cargo aging periods in transit of each entity; comparable to man-hours.
 
 	Tcont packets;              ///< The cargo packets in this list.
 
@@ -249,12 +332,12 @@ public:
 	}
 
 	/**
-	 * Returns average number of days in transit for a cargo entity.
+	 * Returns average number of cargo aging periods in transit for a cargo entity.
 	 * @return The before mentioned number.
 	 */
-	inline uint DaysInTransit() const
+	inline uint PeriodsInTransit() const
 	{
-		return this->count == 0 ? 0 : this->cargo_days_in_transit / this->count;
+		return this->count == 0 ? 0 : this->cargo_periods_in_transit / this->count;
 	}
 
 	void InvalidateCache();
@@ -316,19 +399,19 @@ public:
 	friend class VehicleCargoReroute;
 
 	/**
-	 * Returns source of the first cargo packet in this list.
-	 * @return The before mentioned source.
+	 * Returns the first station of the first cargo packet in this list.
+	 * @return The before mentioned station.
 	 */
-	inline StationID Source() const
+	inline StationID GetFirstStation() const
 	{
-		return this->count == 0 ? INVALID_STATION : this->packets.front()->source;
+		return this->count == 0 ? INVALID_STATION : this->packets.front()->first_station;
 	}
 
 	/**
 	 * Returns total sum of the feeder share for all packets.
 	 * @return The before mentioned number.
 	 */
-	inline Money FeederShare() const
+	inline Money GetFeederShare() const
 	{
 		return this->feeder_share;
 	}
@@ -395,9 +478,7 @@ public:
 
 	void InvalidateCache();
 
-	void SetTransferLoadPlace(TileIndex xy);
-
-	bool Stage(bool accepted, StationID current_station, StationIDStack next_station, uint8 order_flags, const GoodsEntry *ge, CargoPayment *payment);
+	bool Stage(bool accepted, StationID current_station, StationIDStack next_station, uint8_t order_flags, const GoodsEntry *ge, CargoPayment *payment, TileIndex current_tile);
 
 	/**
 	 * Marks all cargo in the vehicle as to be kept. This is mostly useful for
@@ -415,9 +496,9 @@ public:
 	 * applicable), return value is amount of cargo actually moved. */
 
 	template<MoveToAction Tfrom, MoveToAction Tto>
-	uint Reassign(uint max_move, TileOrStationID update = INVALID_TILE);
-	uint Return(uint max_move, StationCargoList *dest, StationID next_station);
-	uint Unload(uint max_move, StationCargoList *dest, CargoPayment *payment);
+	uint Reassign(uint max_move);
+	uint Return(uint max_move, StationCargoList *dest, StationID next_station, TileIndex current_tile);
+	uint Unload(uint max_move, StationCargoList *dest, CargoPayment *payment, TileIndex current_tile);
 	uint Shift(uint max_move, VehicleCargoList *dest);
 	uint Truncate(uint max_move = UINT_MAX);
 	uint Reroute(uint max_move, VehicleCargoList *dest, StationID avoid, StationID avoid2, const GoodsEntry *ge);
@@ -431,11 +512,11 @@ public:
 	 */
 	static bool AreMergable(const CargoPacket *cp1, const CargoPacket *cp2)
 	{
-		return cp1->source_xy    == cp2->source_xy &&
-				cp1->days_in_transit == cp2->days_in_transit &&
-				cp1->source_type     == cp2->source_type &&
-				cp1->source_id       == cp2->source_id &&
-				cp1->loaded_at_xy    == cp2->loaded_at_xy;
+		return cp1->source_xy == cp2->source_xy &&
+				cp1->periods_in_transit == cp2->periods_in_transit &&
+				cp1->source_type == cp2->source_type &&
+				cp1->first_station == cp2->first_station &&
+				cp1->source_id == cp2->source_id;
 	}
 };
 
@@ -491,12 +572,12 @@ public:
 	}
 
 	/**
-	 * Returns source of the first cargo packet in this list.
-	 * @return The before mentioned source.
+	 * Returns first station of the first cargo packet in this list.
+	 * @return The before mentioned station.
 	 */
-	inline StationID Source() const
+	inline StationID GetFirstStation() const
 	{
-		return this->count == 0 ? INVALID_STATION : this->packets.begin()->second.front()->source;
+		return this->count == 0 ? INVALID_STATION : this->packets.begin()->second.front()->first_station;
 	}
 
 	/**
@@ -532,8 +613,8 @@ public:
 	 * amount of cargo to be moved. Second parameter is destination (if
 	 * applicable), return value is amount of cargo actually moved. */
 
-	uint Reserve(uint max_move, VehicleCargoList *dest, TileIndex load_place, StationIDStack next);
-	uint Load(uint max_move, VehicleCargoList *dest, TileIndex load_place, StationIDStack next);
+	uint Reserve(uint max_move, VehicleCargoList *dest, StationIDStack next, TileIndex current_tile);
+	uint Load(uint max_move, VehicleCargoList *dest, StationIDStack next, TileIndex current_tile);
 	uint Truncate(uint max_move = UINT_MAX, StationCargoAmountMap *cargo_per_source = nullptr);
 	uint Reroute(uint max_move, StationCargoList *dest, StationID avoid, StationID avoid2, const GoodsEntry *ge);
 
@@ -546,10 +627,11 @@ public:
 	 */
 	static bool AreMergable(const CargoPacket *cp1, const CargoPacket *cp2)
 	{
-		return cp1->source_xy    == cp2->source_xy &&
-				cp1->days_in_transit == cp2->days_in_transit &&
-				cp1->source_type     == cp2->source_type &&
-				cp1->source_id       == cp2->source_id;
+		return cp1->source_xy == cp2->source_xy &&
+				cp1->periods_in_transit == cp2->periods_in_transit &&
+				cp1->source_type == cp2->source_type &&
+				cp1->first_station == cp2->first_station &&
+				cp1->source_id == cp2->source_id;
 	}
 };
 

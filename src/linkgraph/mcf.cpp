@@ -2,6 +2,7 @@
 
 #include "../stdafx.h"
 #include "../core/math_func.hpp"
+#include "../timer/timer_game_tick.h"
 #include "mcf.h"
 
 #include "../safeguards.h"
@@ -107,10 +108,9 @@ public:
 
 	/**
 	 * Setup the node to start iterating at.
-	 * @param source Unused.
 	 * @param node Node to start iterating at.
 	 */
-	void SetNode(NodeID source, NodeID node)
+	void SetNode(NodeID, NodeID node)
 	{
 		this->i = this->job[node].edges.cbegin();
 		this->end = this->job[node].edges.cend();
@@ -196,7 +196,7 @@ public:
  * @return True if base + the new edge would be better than the path associated
  * with this annotation.
  */
-bool DistanceAnnotation::IsBetter(const DistanceAnnotation *base, uint cap,
+bool DistanceAnnotation::IsBetter(const DistanceAnnotation *base, uint,
 		int free_cap, uint dist) const
 {
 	/* If any of the paths is disconnected, the other one is better. If both
@@ -258,7 +258,7 @@ void MultiCommodityFlow::Dijkstra(NodeID source_node, PathVector &paths)
 {
 	typedef std::set<Tannotation *, typename Tannotation::Comparator> AnnoSet;
 	Tedge_iterator iter(this->job);
-	uint16 size = this->job.Size();
+	uint16_t size = this->job.Size();
 	AnnoSet annos;
 	paths.resize(size, nullptr);
 	for (NodeID node = 0; node < size; ++node) {
@@ -290,7 +290,7 @@ void MultiCommodityFlow::Dijkstra(NodeID source_node, PathVector &paths)
 				IsCargoInClass(this->job.Cargo(), CC_EXPRESS);
 			uint distance = DistanceMaxPlusManhattan(this->job[from].base.xy, this->job[to].base.xy) + 1;
 			/* Compute a default travel time from the distance and an average speed of 1 tile/day. */
-			uint time = (edge.base.TravelTime() != 0) ? edge.base.TravelTime() + DAY_TICKS : distance * DAY_TICKS;
+			uint time = (edge.base.TravelTime() != 0) ? edge.base.TravelTime() + Ticks::DAY_TICKS : distance * Ticks::DAY_TICKS;
 			uint distance_anno = express ? time : distance;
 
 			Tannotation *dest = static_cast<Tannotation *>(paths[to]);
@@ -481,7 +481,7 @@ bool MCF1stPass::EliminateCycles(PathVector &path, NodeID origin_id, NodeID next
 bool MCF1stPass::EliminateCycles()
 {
 	bool cycles_found = false;
-	uint16 size = this->job.Size();
+	uint16_t size = this->job.Size();
 	PathVector path(size, nullptr);
 	for (NodeID node = 0; node < size; ++node) {
 		/* Starting at each node in the graph find all cycles involving this
@@ -499,7 +499,7 @@ bool MCF1stPass::EliminateCycles()
 MCF1stPass::MCF1stPass(LinkGraphJob &job) : MultiCommodityFlow(job)
 {
 	PathVector paths;
-	uint16 size = job.Size();
+	uint16_t size = job.Size();
 	uint accuracy = job.Settings().accuracy;
 	bool more_loops;
 	std::vector<bool> finished_sources(size);
@@ -548,7 +548,7 @@ MCF2ndPass::MCF2ndPass(LinkGraphJob &job) : MultiCommodityFlow(job)
 {
 	this->max_saturation = UINT_MAX; // disable artificial cap on saturation
 	PathVector paths;
-	uint16 size = job.Size();
+	uint16_t size = job.Size();
 	uint accuracy = job.Settings().accuracy;
 	bool demand_left = true;
 	std::vector<bool> finished_sources(size);

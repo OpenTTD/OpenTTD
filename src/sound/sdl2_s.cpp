@@ -22,11 +22,10 @@ static FSoundDriver_SDL iFSoundDriver_SDL;
 
 /**
  * Callback that fills the sound buffer.
- * @param userdata Ignored.
  * @param stream   The stream to put data into.
  * @param len      The length of the stream in bytes.
  */
-static void CDECL fill_sound_buffer(void *userdata, Uint8 *stream, int len)
+static void CDECL fill_sound_buffer(void *, Uint8 *stream, int len)
 {
 	MxMixSamples(stream, len / 4);
 }

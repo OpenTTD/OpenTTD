@@ -70,7 +70,7 @@ std::string CopyFromOldName(StringID id)
 		std::ostringstream tmp;
 		std::ostreambuf_iterator<char> strto(tmp);
 		for (; *strfrom != '\0'; strfrom++) {
-			WChar c = (byte)*strfrom;
+			char32_t c = (byte)*strfrom;
 
 			/* Map from non-ISO8859-15 characters to UTF-8. */
 			switch (c) {

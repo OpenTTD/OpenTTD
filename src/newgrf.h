@@ -37,8 +37,8 @@ enum CanalFeature {
 
 /** Canal properties local to the NewGRF */
 struct CanalProperties {
-	uint8 callback_mask;  ///< Bitmask of canal callbacks that have to be called.
-	uint8 flags;          ///< Flags controlling display.
+	uint8_t callback_mask;  ///< Bitmask of canal callbacks that have to be called.
+	uint8_t flags;          ///< Flags controlling display.
 };
 
 enum GrfLoadingStage {
@@ -93,24 +93,24 @@ enum GrfSpecFeature {
 	GSF_INVALID = 0xFF,       ///< An invalid spec feature
 };
 
-static const uint32 INVALID_GRFID = 0xFFFFFFFF;
+static const uint32_t INVALID_GRFID = 0xFFFFFFFF;
 
 struct GRFLabel {
 	byte label;
-	uint32 nfo_line;
+	uint32_t nfo_line;
 	size_t pos;
 
-	GRFLabel(byte label, uint32 nfo_line, size_t pos) : label(label), nfo_line(nfo_line), pos(pos) {}
+	GRFLabel(byte label, uint32_t nfo_line, size_t pos) : label(label), nfo_line(nfo_line), pos(pos) {}
 };
 
 /** Dynamic data of a loaded NewGRF */
 struct GRFFile : ZeroedMemoryAllocator {
 	std::string filename;
-	uint32 grfid;
+	uint32_t grfid;
 	byte grf_version;
 
 	uint sound_offset;
-	uint16 num_sounds;
+	uint16_t num_sounds;
 
 	std::vector<std::unique_ptr<struct StationSpec>> stations;
 	std::vector<std::unique_ptr<struct HouseSpec>> housespec;
@@ -127,7 +127,7 @@ struct GRFFile : ZeroedMemoryAllocator {
 	std::vector<GRFLabel> labels;                   ///< List of labels
 
 	std::vector<CargoLabel> cargo_list;             ///< Cargo translation table (local ID -> label)
-	uint8 cargo_map[NUM_CARGO];                     ///< Inverse cargo translation table (CargoID -> local ID)
+	std::array<uint8_t, NUM_CARGO> cargo_map{}; ///< Inverse cargo translation table (CargoID -> local ID)
 
 	std::vector<RailTypeLabel> railtype_list;       ///< Railtype translation table
 	RailType railtype_map[RAILTYPE_END];
@@ -145,14 +145,14 @@ struct GRFFile : ZeroedMemoryAllocator {
 	int traininfo_vehicle_pitch;  ///< Vertical offset for drawing train images in depot GUI and vehicle details
 	uint traininfo_vehicle_width; ///< Width (in pixels) of a 8/8 train vehicle in depot GUI and vehicle details
 
-	uint32 grf_features;                     ///< Bitset of GrfSpecFeature the grf uses
+	uint32_t grf_features;                     ///< Bitset of GrfSpecFeature the grf uses
 	PriceMultipliers price_base_multipliers; ///< Price base multipliers as set by the grf.
 
 	GRFFile(const struct GRFConfig *config);
 	~GRFFile();
 
 	/** Get GRF Parameter with range checking */
-	uint32 GetParam(uint number) const
+	uint32_t GetParam(uint number) const
 	{
 		/* Note: We implicitly test for number < this->param.size() and return 0 for invalid parameters.
 		 *       In fact this is the more important test, as param is zeroed anyway. */
@@ -176,7 +176,7 @@ enum TramReplacement {
 
 struct GRFLoadedFeatures {
 	bool has_2CC;             ///< Set if any vehicle is loaded which uses 2cc (two company colours).
-	uint64 used_liveries;     ///< Bitmask of #LiveryScheme used by the defined engines.
+	uint64_t used_liveries;     ///< Bitmask of #LiveryScheme used by the defined engines.
 	ShoreReplacement shore;   ///< In which way shore sprites were replaced.
 	TramReplacement tram;     ///< In which way tram depots were replaced.
 };
@@ -204,9 +204,9 @@ void ResetPersistentNewGRFData();
 void GrfMsgI(int severity, const std::string &msg);
 #define GrfMsg(severity, format_string, ...) GrfMsgI(severity, fmt::format(FMT_STRING(format_string), ## __VA_ARGS__))
 
-bool GetGlobalVariable(byte param, uint32 *value, const GRFFile *grffile);
+bool GetGlobalVariable(byte param, uint32_t *value, const GRFFile *grffile);
 
-StringID MapGRFStringID(uint32 grfid, StringID str);
+StringID MapGRFStringID(uint32_t grfid, StringID str);
 void ShowNewGRFError();
 
 #endif /* NEWGRF_H */

@@ -130,7 +130,7 @@ bool BinaryHeap::Push(void *item, int priority)
  * known, which speeds up the deleting for some queue's. Should be -1
  * if not known.
  */
-bool BinaryHeap::Delete(void *item, int priority)
+bool BinaryHeap::Delete(void *item, int)
 {
 	uint i = 0;
 
@@ -366,9 +366,9 @@ void Hash::Clear(bool free_values)
  * bucket, or nullptr if it is empty. prev can also be nullptr, in which case it is
  * not used for output.
  */
-HashNode *Hash::FindNode(uint key1, uint key2, HashNode** prev_out) const
+HashNode *Hash::FindNode(TileIndex tile, Trackdir dir, HashNode** prev_out) const
 {
-	uint hash = this->hash(key1, key2);
+	uint hash = this->hash(tile, dir);
 	HashNode *result = nullptr;
 
 	/* Check if the bucket is empty */
@@ -376,7 +376,7 @@ HashNode *Hash::FindNode(uint key1, uint key2, HashNode** prev_out) const
 		if (prev_out != nullptr) *prev_out = nullptr;
 		result = nullptr;
 	/* Check the first node specially */
-	} else if (this->buckets[hash].key1 == key1 && this->buckets[hash].key2 == key2) {
+	} else if (this->buckets[hash].tile == tile && this->buckets[hash].dir == dir) {
 		/* Save the value */
 		result = this->buckets + hash;
 		if (prev_out != nullptr) *prev_out = nullptr;
@@ -386,7 +386,7 @@ HashNode *Hash::FindNode(uint key1, uint key2, HashNode** prev_out) const
 		HashNode *node;
 
 		for (node = prev->next; node != nullptr; node = node->next) {
-			if (node->key1 == key1 && node->key2 == key2) {
+			if (node->tile == tile && node->dir == dir) {
 				/* Found it */
 				result = node;
 				break;
@@ -403,11 +403,11 @@ HashNode *Hash::FindNode(uint key1, uint key2, HashNode** prev_out) const
  * that value. Returns nullptr when the value was not present. The value returned
  * is _not_ free()'d!
  */
-void *Hash::DeleteValue(uint key1, uint key2)
+void *Hash::DeleteValue(TileIndex tile, Trackdir dir)
 {
 	void *result;
 	HashNode *prev; // Used as output var for below function call
-	HashNode *node = this->FindNode(key1, key2, &prev);
+	HashNode *node = this->FindNode(tile, dir, &prev);
 
 	if (node == nullptr) {
 		/* not found */
@@ -426,7 +426,7 @@ void *Hash::DeleteValue(uint key1, uint key2)
 		} else {
 			/* This was the last in this bucket
 			 * Mark it as empty */
-			uint hash = this->hash(key1, key2);
+			uint hash = this->hash(tile, dir);
 			this->buckets_in_use[hash] = false;
 		}
 	} else {
@@ -446,10 +446,10 @@ void *Hash::DeleteValue(uint key1, uint key2)
  * Sets the value associated with the given key pair to the given value.
  * Returns the old value if the value was replaced, nullptr when it was not yet present.
  */
-void *Hash::Set(uint key1, uint key2, void *value)
+void *Hash::Set(TileIndex tile, Trackdir dir, void *value)
 {
 	HashNode *prev;
-	HashNode *node = this->FindNode(key1, key2, &prev);
+	HashNode *node = this->FindNode(tile, dir, &prev);
 
 	if (node != nullptr) {
 		/* Found it */
@@ -461,7 +461,7 @@ void *Hash::Set(uint key1, uint key2, void *value)
 	/* It is not yet present, let's add it */
 	if (prev == nullptr) {
 		/* The bucket is still empty */
-		uint hash = this->hash(key1, key2);
+		uint hash = this->hash(tile, dir);
 		this->buckets_in_use[hash] = true;
 		node = this->buckets + hash;
 	} else {
@@ -470,8 +470,8 @@ void *Hash::Set(uint key1, uint key2, void *value)
 		prev->next = node;
 	}
 	node->next = nullptr;
-	node->key1 = key1;
-	node->key2 = key2;
+	node->tile = tile;
+	node->dir = dir;
 	node->value = value;
 	this->size++;
 	return nullptr;
@@ -481,9 +481,9 @@ void *Hash::Set(uint key1, uint key2, void *value)
  * Gets the value associated with the given key pair, or nullptr when it is not
  * present.
  */
-void *Hash::Get(uint key1, uint key2) const
+void *Hash::Get(TileIndex tile, Trackdir dir) const
 {
-	HashNode *node = this->FindNode(key1, key2, nullptr);
+	HashNode *node = this->FindNode(tile, dir, nullptr);
 
 	return (node != nullptr) ? node->value : nullptr;
 }

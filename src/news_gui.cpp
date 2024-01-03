@@ -70,7 +70,7 @@ static const NewsItem *_current_news = nullptr;
  * @param ref     The reference.
  * @return A tile for the referenced object, or INVALID_TILE if none.
  */
-static TileIndex GetReferenceTile(NewsReferenceType reftype, uint32 ref)
+static TileIndex GetReferenceTile(NewsReferenceType reftype, uint32_t ref)
 {
 	switch (reftype) {
 		case NR_TILE:     return (TileIndex)ref;
@@ -96,11 +96,11 @@ static const NWidgetPart _nested_normal_news_widgets[] = {
 	EndContainer(),
 };
 
-static WindowDesc _normal_news_desc(
+static WindowDesc _normal_news_desc(__FILE__, __LINE__,
 	WDP_MANUAL, nullptr, 0, 0,
 	WC_NEWS_WINDOW, WC_NONE,
 	0,
-	_nested_normal_news_widgets, lengthof(_nested_normal_news_widgets)
+	std::begin(_nested_normal_news_widgets), std::end(_nested_normal_news_widgets)
 );
 
 /* New vehicles news items. */
@@ -123,11 +123,11 @@ static const NWidgetPart _nested_vehicle_news_widgets[] = {
 	EndContainer(),
 };
 
-static WindowDesc _vehicle_news_desc(
+static WindowDesc _vehicle_news_desc(__FILE__, __LINE__,
 	WDP_MANUAL, nullptr, 0, 0,
 	WC_NEWS_WINDOW, WC_NONE,
 	0,
-	_nested_vehicle_news_widgets, lengthof(_nested_vehicle_news_widgets)
+	std::begin(_nested_vehicle_news_widgets), std::end(_nested_vehicle_news_widgets)
 );
 
 /* Company news items. */
@@ -151,11 +151,11 @@ static const NWidgetPart _nested_company_news_widgets[] = {
 	EndContainer(),
 };
 
-static WindowDesc _company_news_desc(
+static WindowDesc _company_news_desc(__FILE__, __LINE__,
 	WDP_MANUAL, nullptr, 0, 0,
 	WC_NEWS_WINDOW, WC_NONE,
 	0,
-	_nested_company_news_widgets, lengthof(_nested_company_news_widgets)
+	std::begin(_nested_company_news_widgets), std::end(_nested_company_news_widgets)
 );
 
 /* Thin news items. */
@@ -174,11 +174,11 @@ static const NWidgetPart _nested_thin_news_widgets[] = {
 	EndContainer(),
 };
 
-static WindowDesc _thin_news_desc(
+static WindowDesc _thin_news_desc(__FILE__, __LINE__,
 	WDP_MANUAL, nullptr, 0, 0,
 	WC_NEWS_WINDOW, WC_NONE,
 	0,
-	_nested_thin_news_widgets, lengthof(_nested_thin_news_widgets)
+	std::begin(_nested_thin_news_widgets), std::end(_nested_thin_news_widgets)
 );
 
 /* Small news items. */
@@ -200,11 +200,11 @@ static const NWidgetPart _nested_small_news_widgets[] = {
 	EndContainer(),
 };
 
-static WindowDesc _small_news_desc(
+static WindowDesc _small_news_desc(__FILE__, __LINE__,
 	WDP_MANUAL, nullptr, 0, 0,
 	WC_NEWS_WINDOW, WC_NONE,
 	0,
-	_nested_small_news_widgets, lengthof(_nested_small_news_widgets)
+	std::begin(_nested_small_news_widgets), std::end(_nested_small_news_widgets)
 );
 
 /**
@@ -263,8 +263,8 @@ NewsDisplay NewsTypeData::GetDisplay() const
 
 /** Window class displaying a news item. */
 struct NewsWindow : Window {
-	uint16 chat_height;   ///< Height of the chat window.
-	uint16 status_height; ///< Height of the status bar window
+	uint16_t chat_height;   ///< Height of the chat window.
+	uint16_t status_height; ///< Height of the status bar window
 	const NewsItem *ni;   ///< News item to display.
 	static int duration;  ///< Remaining time for showing the current news message (may only be access while a news item is displayed).
 
@@ -280,7 +280,7 @@ struct NewsWindow : Window {
 		this->CreateNestedTree();
 
 		/* For company news with a face we have a separate headline in param[0] */
-		if (desc == &_company_news_desc) this->GetWidget<NWidgetCore>(WID_N_TITLE)->widget_data = this->ni->params[0];
+		if (desc == &_company_news_desc) this->GetWidget<NWidgetCore>(WID_N_TITLE)->widget_data = this->ni->params[0].data;
 
 		NWidgetCore *nwid = this->GetWidget<NWidgetCore>(WID_N_SHOW_GROUP);
 		if (ni->reftype1 == NR_VEHICLE && nwid != nullptr) {
@@ -308,7 +308,11 @@ struct NewsWindow : Window {
 		/* Initialize viewport if it exists. */
 		NWidgetViewport *nvp = this->GetWidget<NWidgetViewport>(WID_N_VIEWPORT);
 		if (nvp != nullptr) {
-			nvp->InitializeViewport(this, ni->reftype1 == NR_VEHICLE ? 0x80000000 | ni->ref1 : (uint32)GetReferenceTile(ni->reftype1, ni->ref1),ScaleZoomGUI(ZOOM_LVL_NEWS));
+			if (ni->reftype1 == NR_VEHICLE) {
+				nvp->InitializeViewport(this, static_cast<VehicleID>(ni->ref1), ScaleZoomGUI(ZOOM_LVL_NEWS));
+			} else {
+				nvp->InitializeViewport(this, GetReferenceTile(ni->reftype1, ni->ref1), ScaleZoomGUI(ZOOM_LVL_NEWS));
+			}
 			if (this->ni->flags & NF_NO_TRANSPARENT) nvp->disp_flags |= ND_NO_TRANSPARENCY;
 			if ((this->ni->flags & NF_INCOLOUR) == 0) {
 				nvp->disp_flags |= ND_SHADE_GREY;
@@ -332,13 +336,13 @@ struct NewsWindow : Window {
 		GfxFillRect( r.left,  ir.bottom,  r.right,  r.bottom, PC_BLACK);
 	}
 
-	Point OnInitialPosition(int16 sm_width, int16 sm_height, int window_number) override
+	Point OnInitialPosition([[maybe_unused]] int16_t sm_width, [[maybe_unused]] int16_t sm_height, [[maybe_unused]] int window_number) override
 	{
 		Point pt = { 0, _screen.height };
 		return pt;
 	}
 
-	void UpdateWidgetSize(int widget, Dimension *size, const Dimension &padding, Dimension *fill, Dimension *resize) override
+	void UpdateWidgetSize(WidgetID widget, Dimension *size, [[maybe_unused]] const Dimension &padding, [[maybe_unused]] Dimension *fill, [[maybe_unused]] Dimension *resize) override
 	{
 		StringID str = STR_NULL;
 		switch (widget) {
@@ -361,7 +365,7 @@ struct NewsWindow : Window {
 				break;
 
 			case WID_N_MESSAGE:
-				CopyInDParam(0, this->ni->params, lengthof(this->ni->params));
+				CopyInDParam(this->ni->params);
 				str = this->ni->string_id;
 				break;
 
@@ -412,12 +416,12 @@ struct NewsWindow : Window {
 		*size = maxdim(*size, d);
 	}
 
-	void SetStringParameters(int widget) const override
+	void SetStringParameters(WidgetID widget) const override
 	{
 		if (widget == WID_N_DATE) SetDParam(0, this->ni->date);
 	}
 
-	void DrawWidget(const Rect &r, int widget) const override
+	void DrawWidget(const Rect &r, WidgetID widget) const override
 	{
 		switch (widget) {
 			case WID_N_CAPTION:
@@ -429,7 +433,7 @@ struct NewsWindow : Window {
 				break;
 
 			case WID_N_MESSAGE:
-				CopyInDParam(0, this->ni->params, lengthof(this->ni->params));
+				CopyInDParam(this->ni->params);
 				DrawStringMultiLine(r.left, r.right, r.top, r.bottom, this->ni->string_id, TC_FROMSTRING, SA_CENTER);
 				break;
 
@@ -474,7 +478,7 @@ struct NewsWindow : Window {
 		}
 	}
 
-	void OnClick(Point pt, int widget, int click_count) override
+	void OnClick([[maybe_unused]] Point pt, WidgetID widget, [[maybe_unused]] int click_count) override
 	{
 		switch (widget) {
 			case WID_N_CLOSEBOX:
@@ -536,7 +540,7 @@ struct NewsWindow : Window {
 	 * @param data Information about the changed data.
 	 * @param gui_scope Whether the call is done from GUI scope. You may not do everything when not in GUI scope. See #InvalidateWindowData() for details.
 	 */
-	void OnInvalidateData(int data = 0, bool gui_scope = true) override
+	void OnInvalidateData([[maybe_unused]] int data = 0, [[maybe_unused]] bool gui_scope = true) override
 	{
 		if (!gui_scope) return;
 		/* The chatbar has notified us that is was either created or closed */
@@ -545,7 +549,7 @@ struct NewsWindow : Window {
 		this->SetWindowTop(newtop);
 	}
 
-	void OnRealtimeTick(uint delta_ms) override
+	void OnRealtimeTick([[maybe_unused]] uint delta_ms) override
 	{
 		/* Decrement the news timer. We don't need to action an elapsed event here,
 		 * so no need to use TimerElapsed(). */
@@ -555,9 +559,9 @@ struct NewsWindow : Window {
 	/**
 	 * Scroll the news message slowly up from the bottom.
 	 *
-	 * The interval of 210ms is chosen to maintain 15ms at normal zoom: 210 / FONT_HEIGHT_NORMAL = 15ms.
+	 * The interval of 210ms is chosen to maintain 15ms at normal zoom: 210 / GetCharacterHeight(FS_NORMAL) = 15ms.
 	 */
-	IntervalTimer<TimerWindow> scroll_interval = {std::chrono::milliseconds(210) / FONT_HEIGHT_NORMAL, [this](uint count) {
+	IntervalTimer<TimerWindow> scroll_interval = {std::chrono::milliseconds(210) / GetCharacterHeight(FS_NORMAL), [this](uint count) {
 		int newtop = std::max(this->top - 2 * static_cast<int>(count), _screen.height - this->height - this->status_height - this->chat_height);
 		this->SetWindowTop(newtop);
 	}};
@@ -582,11 +586,11 @@ private:
 	StringID GetCompanyMessageString() const
 	{
 		/* Company news with a face have a separate headline, so the normal message is shifted by two params */
-		CopyInDParam(0, this->ni->params + 2, lengthof(this->ni->params) - 2);
-		return this->ni->params[1];
+		CopyInDParam(span(this->ni->params.data() + 2, this->ni->params.size() - 2));
+		return this->ni->params[1].data;
 	}
 
-	StringID GetNewVehicleMessageString(int widget) const
+	StringID GetNewVehicleMessageString(WidgetID widget) const
 	{
 		assert(this->ni->reftype1 == NR_ENGINE);
 		EngineID engine = this->ni->ref1;
@@ -799,12 +803,12 @@ static void DeleteNewsItem(NewsItem *ni)
  *
  * @see NewsSubtype
  */
-NewsItem::NewsItem(StringID string_id, NewsType type, NewsFlag flags, NewsReferenceType reftype1, uint32 ref1, NewsReferenceType reftype2, uint32 ref2, const NewsAllocatedData *data) :
+NewsItem::NewsItem(StringID string_id, NewsType type, NewsFlag flags, NewsReferenceType reftype1, uint32_t ref1, NewsReferenceType reftype2, uint32_t ref2, const NewsAllocatedData *data) :
 	string_id(string_id), date(TimerGameCalendar::date), type(type), flags(flags), reftype1(reftype1), reftype2(reftype2), ref1(ref1), ref2(ref2), data(data)
 {
 	/* show this news message in colour? */
 	if (TimerGameCalendar::year >= _settings_client.gui.coloured_news_year) this->flags |= NF_INCOLOUR;
-	CopyOutDParam(this->params, 0, lengthof(this->params));
+	CopyOutDParam(this->params, 10);
 }
 
 /**
@@ -820,7 +824,7 @@ NewsItem::NewsItem(StringID string_id, NewsType type, NewsFlag flags, NewsRefere
  *
  * @see NewsSubtype
  */
-void AddNewsItem(StringID string, NewsType type, NewsFlag flags, NewsReferenceType reftype1, uint32 ref1, NewsReferenceType reftype2, uint32 ref2, const NewsAllocatedData *data)
+void AddNewsItem(StringID string, NewsType type, NewsFlag flags, NewsReferenceType reftype1, uint32_t ref1, NewsReferenceType reftype2, uint32_t ref2, const NewsAllocatedData *data)
 {
 	if (_game_mode == GM_MENU) return;
 
@@ -858,7 +862,7 @@ void AddNewsItem(StringID string, NewsType type, NewsFlag flags, NewsReferenceTy
  * @param text The text of the news message.
  * @return the cost of this operation or an error
  */
-CommandCost CmdCustomNewsItem(DoCommandFlag flags, NewsType type, NewsReferenceType reftype1, CompanyID company, uint32 reference, const std::string &text)
+CommandCost CmdCustomNewsItem(DoCommandFlag flags, NewsType type, NewsReferenceType reftype1, CompanyID company, uint32_t reference, const std::string &text)
 {
 	if (_current_company != OWNER_DEITY) return CMD_ERROR;
 
@@ -998,7 +1002,7 @@ void ChangeVehicleNews(VehicleID from_index, VehicleID to_index)
 	for (NewsItem *ni = _oldest_news; ni != nullptr; ni = ni->next) {
 		if (ni->reftype1 == NR_VEHICLE && ni->ref1 == from_index) ni->ref1 = to_index;
 		if (ni->reftype2 == NR_VEHICLE && ni->ref2 == from_index) ni->ref2 = to_index;
-		if (ni->flags & NF_VEHICLE_PARAM0 && ni->params[0] == from_index) ni->params[0] = to_index;
+		if (ni->flags & NF_VEHICLE_PARAM0 && ni->params[0].data == from_index) ni->params[0] = to_index;
 	}
 }
 
@@ -1039,7 +1043,8 @@ static void ShowNewsMessage(const NewsItem *ni)
  * Close active news message window
  * @return true if a window was closed.
  */
-bool HideActiveNewsMessage() {
+bool HideActiveNewsMessage()
+{
 	NewsWindow *w = (NewsWindow*)FindWindowById(WC_NEWS_WINDOW, 0);
 	if (w == nullptr) return false;
 	w->Close();
@@ -1099,7 +1104,7 @@ void ShowLastNewsMessage()
  */
 static void DrawNewsString(uint left, uint right, int y, TextColour colour, const NewsItem *ni)
 {
-	CopyInDParam(0, ni->params, lengthof(ni->params));
+	CopyInDParam(ni->params);
 
 	/* Get the string, replaces newlines with spaces and remove control codes from the string. */
 	std::string message = StrMakeValid(GetString(ni->string_id), SVS_REPLACE_TAB_CR_NL_WITH_SPACE);
@@ -1122,15 +1127,15 @@ struct MessageHistoryWindow : Window {
 		this->OnInvalidateData(0);
 	}
 
-	void UpdateWidgetSize(int widget, Dimension *size, const Dimension &padding, Dimension *fill, Dimension *resize) override
+	void UpdateWidgetSize(WidgetID widget, Dimension *size, [[maybe_unused]] const Dimension &padding, [[maybe_unused]] Dimension *fill, [[maybe_unused]] Dimension *resize) override
 	{
 		if (widget == WID_MH_BACKGROUND) {
-			this->line_height = FONT_HEIGHT_NORMAL + WidgetDimensions::scaled.vsep_normal;
+			this->line_height = GetCharacterHeight(FS_NORMAL) + WidgetDimensions::scaled.vsep_normal;
 			resize->height = this->line_height;
 
 			/* Months are off-by-one, so it's actually 8. Not using
 			 * month 12 because the 1 is usually less wide. */
-			SetDParam(0, TimerGameCalendar::ConvertYMDToDate(ORIGINAL_MAX_YEAR, 7, 30));
+			SetDParam(0, TimerGameCalendar::ConvertYMDToDate(CalendarTime::ORIGINAL_MAX_YEAR, 7, 30));
 			this->date_width = GetStringBoundingBox(STR_JUST_DATE_TINY).width + WidgetDimensions::scaled.hsep_wide;
 
 			size->height = 4 * resize->height + WidgetDimensions::scaled.framerect.Vertical(); // At least 4 lines are visible.
@@ -1144,7 +1149,7 @@ struct MessageHistoryWindow : Window {
 		this->DrawWidgets();
 	}
 
-	void DrawWidget(const Rect &r, int widget) const override
+	void DrawWidget(const Rect &r, WidgetID widget) const override
 	{
 		if (widget != WID_MH_BACKGROUND || _total_news == 0) return;
 
@@ -1177,13 +1182,13 @@ struct MessageHistoryWindow : Window {
 	 * @param data Information about the changed data.
 	 * @param gui_scope Whether the call is done from GUI scope. You may not do everything when not in GUI scope. See #InvalidateWindowData() for details.
 	 */
-	void OnInvalidateData(int data = 0, bool gui_scope = true) override
+	void OnInvalidateData([[maybe_unused]] int data = 0, [[maybe_unused]] bool gui_scope = true) override
 	{
 		if (!gui_scope) return;
 		this->vscroll->SetCount(_total_news);
 	}
 
-	void OnClick(Point pt, int widget, int click_count) override
+	void OnClick([[maybe_unused]] Point pt, WidgetID widget, [[maybe_unused]] int click_count) override
 	{
 		if (widget == WID_MH_BACKGROUND) {
 			NewsItem *ni = _latest_news;
@@ -1223,11 +1228,11 @@ static const NWidgetPart _nested_message_history[] = {
 	EndContainer(),
 };
 
-static WindowDesc _message_history_desc(
+static WindowDesc _message_history_desc(__FILE__, __LINE__,
 	WDP_AUTO, "list_news", 400, 140,
 	WC_MESSAGE_HISTORY, WC_NONE,
 	0,
-	_nested_message_history, lengthof(_nested_message_history)
+	std::begin(_nested_message_history), std::end(_nested_message_history)
 );
 
 /** Display window with news messages history */

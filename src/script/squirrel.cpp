@@ -31,7 +31,7 @@
  * If changing the call paths into the scripting engine, define this symbol to enable full debugging of allocations.
  * This lets you track whether the allocator context is being switched correctly in all call paths.
 #define SCRIPT_DEBUG_ALLOCATIONS
-*/
+ */
 
 struct ScriptAllocator {
 	size_t allocated_size;   ///< Sum of allocated data size
@@ -172,7 +172,7 @@ struct ScriptAllocator {
 	~ScriptAllocator()
 	{
 #ifdef SCRIPT_DEBUG_ALLOCATIONS
-		assert(this->allocations.size() == 0);
+		assert(this->allocations.empty());
 #endif
 	}
 };
@@ -568,14 +568,14 @@ public:
 	}
 };
 
-static WChar _io_file_lexfeed_ASCII(SQUserPointer file)
+static char32_t _io_file_lexfeed_ASCII(SQUserPointer file)
 {
 	unsigned char c;
 	if (((SQFile *)file)->Read(&c, sizeof(c), 1) > 0) return c;
 	return 0;
 }
 
-static WChar _io_file_lexfeed_UTF8(SQUserPointer file)
+static char32_t _io_file_lexfeed_UTF8(SQUserPointer file)
 {
 	char buffer[5];
 
@@ -588,25 +588,25 @@ static WChar _io_file_lexfeed_UTF8(SQUserPointer file)
 	if (len > 1 && ((SQFile *)file)->Read(buffer + 1, sizeof(buffer[0]), len - 1) != len - 1) return 0;
 
 	/* Convert the character, and when definitely invalid, bail out as well. */
-	WChar c;
+	char32_t c;
 	if (Utf8Decode(&c, buffer) != len) return -1;
 
 	return c;
 }
 
-static WChar _io_file_lexfeed_UCS2_no_swap(SQUserPointer file)
+static char32_t _io_file_lexfeed_UCS2_no_swap(SQUserPointer file)
 {
 	unsigned short c;
-	if (((SQFile *)file)->Read(&c, sizeof(c), 1) > 0) return (WChar)c;
+	if (((SQFile *)file)->Read(&c, sizeof(c), 1) > 0) return (char32_t)c;
 	return 0;
 }
 
-static WChar _io_file_lexfeed_UCS2_swap(SQUserPointer file)
+static char32_t _io_file_lexfeed_UCS2_swap(SQUserPointer file)
 {
 	unsigned short c;
 	if (((SQFile *)file)->Read(&c, sizeof(c), 1) > 0) {
 		c = ((c >> 8) & 0x00FF)| ((c << 8) & 0xFF00);
-		return (WChar)c;
+		return (char32_t)c;
 	}
 	return 0;
 }

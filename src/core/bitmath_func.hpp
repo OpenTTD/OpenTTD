@@ -29,7 +29,7 @@
  * @return The selected bits, aligned to a LSB.
  */
 template <typename T>
-debug_inline constexpr static uint GB(const T x, const uint8 s, const uint8 n)
+debug_inline constexpr static uint GB(const T x, const uint8_t s, const uint8_t n)
 {
 	return (x >> s) & (((T)1U << n) - 1);
 }
@@ -55,7 +55,7 @@ debug_inline constexpr static uint GB(const T x, const uint8 s, const uint8 n)
  * @return The new value of \a x
  */
 template <typename T, typename U>
-static inline T SB(T &x, const uint8 s, const uint8 n, const U d)
+static inline T SB(T &x, const uint8_t s, const uint8_t n, const U d)
 {
 	x &= (T)(~((((T)1U << n) - 1) << s));
 	x |= (T)(d << s);
@@ -80,7 +80,7 @@ static inline T SB(T &x, const uint8 s, const uint8 n, const U d)
  * @return The new value of \a x
  */
 template <typename T, typename U>
-static inline T AB(T &x, const uint8 s, const uint8 n, const U i)
+static inline T AB(T &x, const uint8_t s, const uint8_t n, const U i)
 {
 	const T mask = ((((T)1U << n) - 1) << s);
 	x = (T)((x & ~mask) | ((x + (i << s)) & mask));
@@ -100,7 +100,7 @@ static inline T AB(T &x, const uint8 s, const uint8 n, const U i)
  * @return True if the bit is set, false else.
  */
 template <typename T>
-debug_inline static bool HasBit(const T x, const uint8 y)
+debug_inline static bool HasBit(const T x, const uint8_t y)
 {
 	return (x & ((T)1U << y)) != 0;
 }
@@ -118,7 +118,7 @@ debug_inline static bool HasBit(const T x, const uint8 y)
  * @return The new value of the old value with the bit set
  */
 template <typename T>
-static inline T SetBit(T &x, const uint8 y)
+static inline T SetBit(T &x, const uint8_t y)
 {
 	return x = (T)(x | ((T)1U << y));
 }
@@ -148,7 +148,7 @@ static inline T SetBit(T &x, const uint8 y)
  * @return The new value of the old value with the bit cleared
  */
 template <typename T>
-static inline T ClrBit(T &x, const uint8 y)
+static inline T ClrBit(T &x, const uint8_t y)
 {
 	return x = (T)(x & ~((T)1U << y));
 }
@@ -178,14 +178,14 @@ static inline T ClrBit(T &x, const uint8 y)
  * @return The new value of the old value with the bit toggled
  */
 template <typename T>
-static inline T ToggleBit(T &x, const uint8 y)
+static inline T ToggleBit(T &x, const uint8_t y)
 {
 	return x = (T)(x ^ ((T)1U << y));
 }
 
 
 /** Lookup table to check which bit is set in a 6 bit variable */
-extern const uint8 _ffb_64[64];
+extern const uint8_t _ffb_64[64];
 
 /**
  * Returns the first non-zero bit in a 6-bit value (from right).
@@ -213,7 +213,7 @@ extern const uint8 _ffb_64[64];
  * @return The position of the first bit which is set
  * @see FIND_FIRST_BIT
  */
-static inline uint8 FindFirstBit2x64(const int value)
+static inline uint8_t FindFirstBit2x64(const int value)
 {
 	if ((value & 0xFF) == 0) {
 		return FIND_FIRST_BIT((value >> 8) & 0x3F) + 8;
@@ -222,8 +222,8 @@ static inline uint8 FindFirstBit2x64(const int value)
 	}
 }
 
-uint8 FindFirstBit(uint64 x);
-uint8 FindLastBit(uint64 x);
+uint8_t FindFirstBit(uint64_t x);
+uint8_t FindLastBit(uint64_t x);
 
 /**
  * Clear the first bit in an integer.
@@ -298,7 +298,7 @@ static inline bool HasAtMostOneBit(T value)
  * @return A bit rotated number
  */
 template <typename T>
-static inline T ROL(const T x, const uint8 n)
+static inline T ROL(const T x, const uint8_t n)
 {
 	if (n == 0) return x;
 	return (T)(x << n | x >> (sizeof(x) * 8 - n));
@@ -314,7 +314,7 @@ static inline T ROL(const T x, const uint8 n)
  * @return A bit rotated number
  */
 template <typename T>
-static inline T ROR(const T x, const uint8 n)
+static inline T ROR(const T x, const uint8_t n)
 {
 	if (n == 0) return x;
 	return (T)(x >> n | x << (sizeof(x) * 8 - n));
@@ -324,7 +324,7 @@ static inline T ROR(const T x, const uint8 n)
  * Iterable ensemble of each set bit in a value.
  * @tparam Tbitpos Type of the position variable.
  * @tparam Tbitset Type of the bitset value.
-*/
+ */
 template <typename Tbitpos = uint, typename Tbitset = uint>
 struct SetBitIterator {
 	struct Iterator {
@@ -373,10 +373,10 @@ private:
 #if defined(__APPLE__)
 	/* Make endian swapping use Apple's macros to increase speed
 	 * (since it will use hardware swapping if available).
-	 * Even though they should return uint16 and uint32, we get
+	 * Even though they should return uint16_t and uint32_t, we get
 	 * warnings if we don't cast those (why?) */
-#	define BSWAP32(x) (static_cast<uint32>(CFSwapInt32(x)))
-#	define BSWAP16(x) (static_cast<uint16>(CFSwapInt16(x)))
+#	define BSWAP32(x) (static_cast<uint32_t>(CFSwapInt32(x)))
+#	define BSWAP16(x) (static_cast<uint16_t>(CFSwapInt16(x)))
 #elif defined(_MSC_VER)
 	/* MSVC has intrinsics for swapping, resulting in faster code */
 #	define BSWAP32(x) (_byteswap_ulong(x))
@@ -387,11 +387,11 @@ private:
 	 * @param x the variable to bitswap
 	 * @return the bitswapped value.
 	 */
-	static inline uint32 BSWAP32(uint32 x)
+	static inline uint32_t BSWAP32(uint32_t x)
 	{
 #if !defined(__ICC) && defined(__GNUC__) && ((__GNUC__ > 4) || ((__GNUC__ == 4)  && __GNUC_MINOR__ >= 3))
 		/* GCC >= 4.3 provides a builtin, resulting in faster code */
-		return static_cast<uint32>(__builtin_bswap32(static_cast<int32>(x)));
+		return static_cast<uint32_t>(__builtin_bswap32(static_cast<int32_t>(x)));
 #else
 		return ((x >> 24) & 0xFF) | ((x >> 8) & 0xFF00) | ((x << 8) & 0xFF0000) | ((x << 24) & 0xFF000000);
 #endif /* defined(__GNUC__) */
@@ -402,7 +402,7 @@ private:
 	 * @param x the variable to bitswap
 	 * @return the bitswapped value.
 	 */
-	static inline uint16 BSWAP16(uint16 x)
+	static inline uint16_t BSWAP16(uint16_t x)
 	{
 		return (x >> 8) | (x << 8);
 	}

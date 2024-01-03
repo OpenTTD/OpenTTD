@@ -18,12 +18,12 @@ static FBlitter_8bppSimple iFBlitter_8bppSimple;
 
 void Blitter_8bppSimple::Draw(Blitter::BlitterParams *bp, BlitterMode mode, ZoomLevel zoom)
 {
-	const uint8 *src, *src_line;
-	uint8 *dst, *dst_line;
+	const uint8_t *src, *src_line;
+	uint8_t *dst, *dst_line;
 
 	/* Find where to start reading in the source sprite */
-	src_line = (const uint8 *)bp->sprite + (bp->skip_top * bp->sprite_width + bp->skip_left) * ScaleByZoom(1, zoom);
-	dst_line = (uint8 *)bp->dst + bp->top * bp->pitch + bp->left;
+	src_line = (const uint8_t *)bp->sprite + (bp->skip_top * bp->sprite_width + bp->skip_left) * ScaleByZoom(1, zoom);
+	dst_line = (uint8_t *)bp->dst + bp->top * bp->pitch + bp->left;
 
 	for (int y = 0; y < bp->height; y++) {
 		dst = dst_line;
@@ -42,6 +42,7 @@ void Blitter_8bppSimple::Draw(Blitter::BlitterParams *bp, BlitterMode mode, Zoom
 					break;
 
 				case BM_TRANSPARENT:
+				case BM_TRANSPARENT_REMAP:
 					if (*src != 0) colour = bp->remap[*dst];
 					break;
 
@@ -60,19 +61,19 @@ void Blitter_8bppSimple::Draw(Blitter::BlitterParams *bp, BlitterMode mode, Zoom
 	}
 }
 
-Sprite *Blitter_8bppSimple::Encode(const SpriteLoader::Sprite *sprite, AllocatorProc *allocator)
+Sprite *Blitter_8bppSimple::Encode(const SpriteLoader::SpriteCollection &sprite, AllocatorProc *allocator)
 {
 	Sprite *dest_sprite;
-	dest_sprite = (Sprite *)allocator(sizeof(*dest_sprite) + (size_t)sprite->height * (size_t)sprite->width);
+	dest_sprite = (Sprite *)allocator(sizeof(*dest_sprite) + (size_t)sprite[ZOOM_LVL_NORMAL].height * (size_t)sprite[ZOOM_LVL_NORMAL].width);
 
-	dest_sprite->height = sprite->height;
-	dest_sprite->width  = sprite->width;
-	dest_sprite->x_offs = sprite->x_offs;
-	dest_sprite->y_offs = sprite->y_offs;
+	dest_sprite->height = sprite[ZOOM_LVL_NORMAL].height;
+	dest_sprite->width  = sprite[ZOOM_LVL_NORMAL].width;
+	dest_sprite->x_offs = sprite[ZOOM_LVL_NORMAL].x_offs;
+	dest_sprite->y_offs = sprite[ZOOM_LVL_NORMAL].y_offs;
 
 	/* Copy over only the 'remap' channel, as that is what we care about in 8bpp */
-	for (int i = 0; i < sprite->height * sprite->width; i++) {
-		dest_sprite->data[i] = sprite->data[i].m;
+	for (int i = 0; i < sprite[ZOOM_LVL_NORMAL].height * sprite[ZOOM_LVL_NORMAL].width; i++) {
+		dest_sprite->data[i] = sprite[ZOOM_LVL_NORMAL].data[i].m;
 	}
 
 	return dest_sprite;

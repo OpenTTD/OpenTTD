@@ -141,6 +141,9 @@ STR_COLOUR_BROWN                                                :Kannella
 STR_COLOUR_GREY                                                 :Griż
 STR_COLOUR_WHITE                                                :Abjad
 
+###length 17
+
+
 # Units used in OpenTTD
 STR_UNITS_VELOCITY_IMPERIAL                                     :{DECIMAL} mph
 STR_UNITS_VELOCITY_METRIC                                       :{DECIMAL} km/h
@@ -167,6 +170,7 @@ STR_UNITS_FORCE_SI                                              :{DECIMAL} kN
 
 STR_UNITS_HEIGHT_IMPERIAL                                       :{DECIMAL} ft
 STR_UNITS_HEIGHT_SI                                             :{DECIMAL} m
+
 
 # Common window strings
 STR_LIST_FILTER_OSKTITLE                                        :{BLACK}Daħħal sentenza għall-iffiltrar
@@ -269,50 +273,34 @@ STR_SCENEDIT_FILE_MENU_SEPARATOR                                :
 ###length 15
 
 # File menu
-###length 5
-STR_FILE_MENU_SEPARATOR                                         :
 
 # Map menu
-###length 4
 
 # Town menu
-###length 2
 
 # Subsidies menu
-###length 1
 
 # Graph menu
-###length 6
 
 # Company league menu
-###length 3
 
 # Industry menu
-###length 3
 
 # URailway construction menu
-###length 4
 
 # Road construction menu
-###length 2
 
 # Waterways construction menu
-###length 1
 
 # Aairport construction menu
-###length 1
 
 # Landscaping menu
-###length 3
 
 # Music menu
-###length 1
 
 # Message menu
-###length 3
 
 # About menu
-###length 10
 
 # Place in highscore window
 ###length 15
@@ -408,6 +396,7 @@ STR_NEWS_VEHICLE_IS_LOST                                        :{WHITE}{VEHICLE
 
 
 
+
 ###length 42
 
 
@@ -417,6 +406,7 @@ STR_NEWS_VEHICLE_IS_LOST                                        :{WHITE}{VEHICLE
 
 
 STR_GAME_OPTIONS_RESOLUTION_OTHER                               :oħrajn
+
 
 
 
@@ -470,6 +460,7 @@ STR_GAME_OPTIONS_RESOLUTION_OTHER                               :oħrajn
 ###length 3
 
 ###length 3
+
 
 ###setting-zero-is-special
 
@@ -546,6 +537,8 @@ STR_CONFIG_SETTING_CITY_APPROVAL_HELPTEXT                       :Iddeċiedi kemm
 
 
 
+
+
 STR_CONFIG_SETTING_WARN_LOST_VEHICLE                            :Avza jekk jintilef il-vehikolu: {STRING}
 
 ###length 3
@@ -607,7 +600,7 @@ STR_CONFIG_SETTING_WARN_LOST_VEHICLE                            :Avza jekk jinti
 
 ###length 3
 
-
+###length 3
 
 ###length 3
 
@@ -620,6 +613,7 @@ STR_CONFIG_SETTING_ADVANCED_VEHICLE_LISTS                       :Uza l-lista avv
 STR_CONFIG_SETTING_ADVANCED_VEHICLE_LISTS_HELPTEXT              :Ippermetti l-uzu tal-listi avvanzati tal-vetturi biex tghaqqad il-vetturi fi gruppi
 
 
+###length 3
 
 
 
@@ -744,6 +738,8 @@ STR_INTRO_CAPTION                                               :{WHITE}OpenTTD 
 # Quit window
 
 # Abandon game
+
+# Help window
 
 # Cheat window
 STR_CHEAT_CHANGE_DATE_QUERY_CAPT                                :{WHITE}Ibdel is-sena
@@ -1299,6 +1295,7 @@ STR_TIMETABLE_TOTAL_TIME                                        :{BLACK}Din l-is
 
 
 
+
 STR_TIMETABLE_CHANGE_SPEED                                      :{BLACK}Промена на брзина
 STR_TIMETABLE_CHANGE_SPEED_TOOLTIP                              :{BLACK}Промена на Максимална брзина од означената цел
 
@@ -1333,7 +1330,7 @@ STR_TIMETABLE_CLEAR_SPEED_TOOLTIP                               :{BLACK}Исчи
 STR_TEXTFILE_VIEW_README                                        :{BLACK}Прикажи ги чита-ми
 STR_TEXTFILE_VIEW_CHANGELOG                                     :{BLACK}Промени се најавите
 STR_TEXTFILE_VIEW_LICENCE                                       :{BLACK}Лиценца
-###length 4
+###length 5
 STR_TEXTFILE_LICENCE_CAPTION                                    :{WHITE}{STRING} лиценца за {STRING}
 
 

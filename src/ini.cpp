@@ -32,9 +32,9 @@
 
 /**
  * Create a new ini file with given group names.
- * @param list_group_names A \c nullptr terminated list with group names that should be loaded as lists instead of variables. @see IGT_LIST
+ * @param list_group_names A list with group names that should be loaded as lists instead of variables. @see IGT_LIST
  */
-IniFile::IniFile(const char * const *list_group_names) : IniLoadFile(list_group_names)
+IniFile::IniFile(const IniGroupNameList &list_group_names) : IniLoadFile(list_group_names)
 {
 }
 
@@ -56,20 +56,20 @@ bool IniFile::SaveToDisk(const std::string &filename)
 	std::ofstream os(OTTD2FS(file_new).c_str());
 	if (os.fail()) return false;
 
-	for (const IniGroup *group = this->group; group != nullptr; group = group->next) {
-		os << group->comment << "[" << group->name << "]\n";
-		for (const IniItem *item = group->item; item != nullptr; item = item->next) {
-			os << item->comment;
+	for (const IniGroup &group : this->groups) {
+		os << group.comment << "[" << group.name << "]\n";
+		for (const IniItem &item : group.items) {
+			os << item.comment;
 
 			/* protect item->name with quotes if needed */
-			if (item->name.find(' ') != std::string::npos ||
-				item->name[0] == '[') {
-				os << "\"" << item->name << "\"";
+			if (item.name.find(' ') != std::string::npos ||
+				item.name[0] == '[') {
+				os << "\"" << item.name << "\"";
 			} else {
-				os << item->name;
+				os << item.name;
 			}
 
-			os << " = " << item->value.value_or("") << "\n";
+			os << " = " << item.value.value_or("") << "\n";
 		}
 	}
 	os << this->comment;

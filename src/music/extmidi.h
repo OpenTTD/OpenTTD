@@ -14,8 +14,8 @@
 
 class MusicDriver_ExtMidi : public MusicDriver {
 private:
-	char **params;
-	char song[MAX_PATH];
+	std::vector<std::string> command_tokens;
+	std::string song;
 	pid_t pid;
 
 	void DoPlay();

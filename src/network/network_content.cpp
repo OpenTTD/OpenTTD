@@ -219,7 +219,7 @@ void ClientNetworkContentSocketHandler::RequestContentList(ContentType type)
 	p->Send_string("patchpack"); // Or what-ever the name of your patchpack is.
 	p->Send_string(_openttd_content_version_patchpack);
 
-	*/
+	 */
 
 	this->SendPacket(p);
 }
@@ -236,9 +236,9 @@ void ClientNetworkContentSocketHandler::RequestContentList(uint count, const Con
 	while (count > 0) {
 		/* We can "only" send a limited number of IDs in a single packet.
 		 * A packet begins with the packet size and a byte for the type.
-		 * Then this packet adds a uint16 for the count in this packet.
+		 * Then this packet adds a uint16_t for the count in this packet.
 		 * The rest of the packet can be used for the IDs. */
-		uint p_count = std::min<uint>(count, (TCP_MTU - sizeof(PacketSize) - sizeof(byte) - sizeof(uint16)) / sizeof(uint32));
+		uint p_count = std::min<uint>(count, (TCP_MTU - sizeof(PacketSize) - sizeof(byte) - sizeof(uint16_t)) / sizeof(uint32_t));
 
 		Packet *p = new Packet(PACKET_CONTENT_CLIENT_INFO_ID, TCP_MTU);
 		p->Send_uint16(p_count);
@@ -265,11 +265,11 @@ void ClientNetworkContentSocketHandler::RequestContentList(ContentVector *cv, bo
 	this->Connect();
 
 	assert(cv->size() < 255);
-	assert(cv->size() < (TCP_MTU - sizeof(PacketSize) - sizeof(byte) - sizeof(uint8)) /
-			(sizeof(uint8) + sizeof(uint32) + (send_md5sum ? MD5_HASH_BYTES : 0)));
+	assert(cv->size() < (TCP_MTU - sizeof(PacketSize) - sizeof(byte) - sizeof(uint8_t)) /
+			(sizeof(uint8_t) + sizeof(uint32_t) + (send_md5sum ? MD5_HASH_BYTES : 0)));
 
 	Packet *p = new Packet(send_md5sum ? PACKET_CONTENT_CLIENT_INFO_EXTID_MD5 : PACKET_CONTENT_CLIENT_INFO_EXTID, TCP_MTU);
-	p->Send_uint8((uint8)cv->size());
+	p->Send_uint8((uint8_t)cv->size());
 
 	for (const ContentInfo *ci : *cv) {
 		p->Send_uint8((byte)ci->type);
@@ -361,9 +361,9 @@ void ClientNetworkContentSocketHandler::DownloadSelectedContentFallback(const Co
 	while (count > 0) {
 		/* We can "only" send a limited number of IDs in a single packet.
 		 * A packet begins with the packet size and a byte for the type.
-		 * Then this packet adds a uint16 for the count in this packet.
+		 * Then this packet adds a uint16_t for the count in this packet.
 		 * The rest of the packet can be used for the IDs. */
-		uint p_count = std::min<uint>(count, (TCP_MTU - sizeof(PacketSize) - sizeof(byte) - sizeof(uint16)) / sizeof(uint32));
+		uint p_count = std::min<uint>(count, (TCP_MTU - sizeof(PacketSize) - sizeof(byte) - sizeof(uint16_t)) / sizeof(uint32_t));
 
 		Packet *p = new Packet(PACKET_CONTENT_CLIENT_CONTENT, TCP_MTU);
 		p->Send_uint16(p_count);
@@ -602,17 +602,21 @@ void ClientNetworkContentSocketHandler::OnFailure()
 	}
 }
 
-void ClientNetworkContentSocketHandler::OnReceiveData(const char *data, size_t length)
+void ClientNetworkContentSocketHandler::OnReceiveData(std::unique_ptr<char[]> data, size_t length)
 {
-	assert(data == nullptr || length != 0);
+	assert(data.get() == nullptr || length != 0);
 
 	/* Ignore any latent data coming from a connection we closed. */
-	if (this->http_response_index == -2) return;
+	if (this->http_response_index == -2) {
+		return;
+	}
+
+	this->lastActivity = std::chrono::steady_clock::now();
 
 	if (this->http_response_index == -1) {
 		if (data != nullptr) {
 			/* Append the rest of the response. */
-			this->http_response.insert(this->http_response.end(), data, data + length);
+			this->http_response.insert(this->http_response.end(), data.get(), data.get() + length);
 			return;
 		} else {
 			/* Make sure the response is properly terminated. */
@@ -625,13 +629,14 @@ void ClientNetworkContentSocketHandler::OnReceiveData(const char *data, size_t l
 
 	if (data != nullptr) {
 		/* We have data, so write it to the file. */
-		if (fwrite(data, 1, length, this->curFile) != length) {
+		if (fwrite(data.get(), 1, length, this->curFile) != length) {
 			/* Writing failed somehow, let try via the old method. */
 			this->OnFailure();
 		} else {
 			/* Just received the data. */
 			this->OnDownloadProgress(this->curInfo, (int)length);
 		}
+
 		/* Nothing more to do now. */
 		return;
 	}
@@ -699,19 +704,19 @@ void ClientNetworkContentSocketHandler::OnReceiveData(const char *data, size_t l
 		check_not_null(p);
 		p++; // Start after the '/'
 
-		char tmp[MAX_PATH];
-		if (strecpy(tmp, p, lastof(tmp)) == lastof(tmp)) {
-			this->OnFailure();
-			return;
-		}
+		std::string filename = p;
 		/* Remove the extension from the string. */
 		for (uint i = 0; i < 2; i++) {
-			p = strrchr(tmp, '.');
-			check_and_terminate(p);
+			auto pos = filename.find_last_of('.');
+			if (pos == std::string::npos) {
+				this->OnFailure();
+				return;
+			}
+			filename.erase(pos);
 		}
 
 		/* Copy the string, without extension, to the filename. */
-		this->curInfo->filename = tmp;
+		this->curInfo->filename = std::move(filename);
 
 		/* Request the next file. */
 		if (!this->BeforeDownload()) {
@@ -792,7 +797,7 @@ void ClientNetworkContentSocketHandler::Connect()
 /**
  * Disconnect from the content server.
  */
-NetworkRecvStatus ClientNetworkContentSocketHandler::CloseConnection(bool error)
+NetworkRecvStatus ClientNetworkContentSocketHandler::CloseConnection(bool)
 {
 	this->isCancelled = true;
 	NetworkContentSocketHandler::CloseConnection();

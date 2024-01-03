@@ -13,7 +13,7 @@
 #include "../news_type.h"
 
 /** Widgets of the #NewsWindow class. */
-enum NewsWidgets {
+enum NewsWidgets : WidgetID {
 	WID_N_PANEL,       ///< Panel of the window.
 	WID_N_TITLE,       ///< Title of the company news.
 	WID_N_HEADLINE,    ///< The news headline.
@@ -35,7 +35,7 @@ enum NewsWidgets {
 };
 
 /** Widgets of the #MessageHistoryWindow class. */
-enum MessageHistoryWidgets {
+enum MessageHistoryWidgets : WidgetID {
 	WID_MH_STICKYBOX,  ///< Stickybox.
 	WID_MH_BACKGROUND, ///< Background of the window.
 	WID_MH_SCROLLBAR,  ///< Scrollbar for the list.

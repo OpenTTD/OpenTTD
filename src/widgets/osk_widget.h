@@ -11,7 +11,7 @@
 #define WIDGETS_OSK_WIDGET_H
 
 /** Widgets of the #OskWindow class. */
-enum OnScreenKeyboardWidgets {
+enum OnScreenKeyboardWidgets : WidgetID {
 	WID_OSK_CAPTION,   ///< Caption of window.
 	WID_OSK_TEXT,      ///< Edit box.
 	WID_OSK_CANCEL,    ///< Cancel key.

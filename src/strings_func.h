@@ -14,6 +14,8 @@
 #include "string_type.h"
 #include "gfx_type.h"
 #include "core/bitmath_func.hpp"
+#include "core/span_type.hpp"
+#include "core/strong_typedef_type.hpp"
 #include "vehicle_type.h"
 
 /**
@@ -58,120 +60,7 @@ static inline StringID MakeStringID(StringTab tab, uint index)
 	return (tab << TAB_SIZE_BITS) + index;
 }
 
-class StringParameters {
-	StringParameters *parent; ///< If not nullptr, this instance references data from this parent instance.
-	uint64 *data;             ///< Array with the actual data.
-	WChar *type;              ///< Array with type information about the data. Can be nullptr when no type information is needed. See #StringControlCode.
-
-public:
-	uint offset;              ///< Current offset in the data/type arrays.
-	uint num_param;           ///< Length of the data array.
-
-	/** Create a new StringParameters instance. */
-	StringParameters(uint64 *data, uint num_param, WChar *type) :
-		parent(nullptr),
-		data(data),
-		type(type),
-		offset(0),
-		num_param(num_param)
-	{ }
-
-	/** Create a new StringParameters instance. */
-	template <size_t Tnum_param>
-	StringParameters(int64 (&data)[Tnum_param]) :
-		parent(nullptr),
-		data((uint64 *)data),
-		type(nullptr),
-		offset(0),
-		num_param(Tnum_param)
-	{
-		static_assert(sizeof(data[0]) == sizeof(uint64));
-	}
-
-	/**
-	 * Create a new StringParameters instance that can reference part of the data of
-	 * the given partent instance.
-	 */
-	StringParameters(StringParameters &parent, uint size) :
-		parent(&parent),
-		data(parent.data + parent.offset),
-		offset(0),
-		num_param(size)
-	{
-		assert(size <= parent.GetDataLeft());
-		if (parent.type == nullptr) {
-			this->type = nullptr;
-		} else {
-			this->type = parent.type + parent.offset;
-		}
-	}
-
-	~StringParameters()
-	{
-		if (this->parent != nullptr) {
-			this->parent->offset += this->num_param;
-		}
-	}
-
-	void ClearTypeInformation();
-
-	int64 GetInt64(WChar type = 0);
-
-	/** Read an int32 from the argument array. @see GetInt64. */
-	int32 GetInt32(WChar type = 0)
-	{
-		return (int32)this->GetInt64(type);
-	}
-
-	/** Get a pointer to the current element in the data array. */
-	uint64 *GetDataPointer() const
-	{
-		return &this->data[this->offset];
-	}
-
-	/** Return the amount of elements which can still be read. */
-	uint GetDataLeft() const
-	{
-		return this->num_param - this->offset;
-	}
-
-	/** Get a pointer to a specific element in the data array. */
-	uint64 *GetPointerToOffset(uint offset) const
-	{
-		assert(offset < this->num_param);
-		return &this->data[offset];
-	}
-
-	/** Does this instance store information about the type of the parameters. */
-	bool HasTypeInformation() const
-	{
-		return this->type != nullptr;
-	}
-
-	/** Get the type of a specific element. */
-	WChar GetTypeAtOffset(uint offset) const
-	{
-		assert(offset < this->num_param);
-		assert(this->HasTypeInformation());
-		return this->type[offset];
-	}
-
-	void SetParam(uint n, uint64 v)
-	{
-		assert(n < this->num_param);
-		this->data[n] = v;
-	}
-
-	uint64 GetParam(uint n) const
-	{
-		assert(n < this->num_param);
-		return this->data[n];
-	}
-};
-extern StringParameters _global_string_params;
-
 std::string GetString(StringID string);
-std::string GetStringWithArgs(StringID string, StringParameters *args);
 const char *GetStringPtr(StringID string);
 
 uint ConvertKmhishSpeedToDisplaySpeed(uint speed, VehicleType type);
@@ -183,72 +72,43 @@ uint ConvertDisplaySpeedToKmhishSpeed(uint speed, VehicleType type);
  * @param type Type of vehicle for parameter.
  * @return Bit-packed velocity and vehicle type, for use with SetDParam().
  */
-static inline int64 PackVelocity(uint speed, VehicleType type)
+static inline int64_t PackVelocity(uint speed, VehicleType type)
 {
 	/* Vehicle type is a byte, so packed into the top 8 bits of the 64-bit
 	 * parameter, although only values from 0-3 are relevant. */
-	return speed | (static_cast<uint64>(type) << 56);
+	return speed | (static_cast<uint64_t>(type) << 56);
 }
 
-/**
- * Set a string parameter \a v at index \a n in a given array \a s.
- * @param s Array of string parameters.
- * @param n Index of the string parameter.
- * @param v Value of the string parameter.
- */
-static inline void SetDParamX(uint64 *s, uint n, uint64 v)
+void SetDParam(size_t n, uint64_t v);
+void SetDParamMaxValue(size_t n, uint64_t max_value, uint min_count = 0, FontSize size = FS_NORMAL);
+void SetDParamMaxDigits(size_t n, uint count, FontSize size = FS_NORMAL);
+
+template <typename T, std::enable_if_t<std::is_base_of<StrongTypedefBase, T>::value, int> = 0>
+void SetDParam(size_t n, T v)
 {
-	s[n] = v;
+	SetDParam(n, v.base());
 }
 
-/**
- * Set a string parameter \a v at index \a n in the global string parameter array.
- * @param n Index of the string parameter.
- * @param v Value of the string parameter.
- */
-static inline void SetDParam(uint n, uint64 v)
+template <typename T, std::enable_if_t<std::is_base_of<StrongTypedefBase, T>::value, int> = 0>
+void SetDParamMaxValue(size_t n, T max_value, uint min_count = 0, FontSize size = FS_NORMAL)
 {
-	_global_string_params.SetParam(n, v);
+	SetDParamMaxValue(n, max_value.base(), min_count, size);
 }
 
-void SetDParamMaxValue(uint n, uint64 max_value, uint min_count = 0, FontSize size = FS_NORMAL);
-void SetDParamMaxDigits(uint n, uint count, FontSize size = FS_NORMAL);
+void SetDParamStr(size_t n, const char *str);
+void SetDParamStr(size_t n, const std::string &str);
+void SetDParamStr(size_t n, std::string &&str);
 
-void SetDParamStr(uint n, const char *str);
-void SetDParamStr(uint n, const std::string &str);
-void SetDParamStr(uint n, std::string &&str) = delete; // block passing temporaries to SetDParamStr
+void CopyInDParam(const span<const StringParameterBackup> backup);
+void CopyOutDParam(std::vector<StringParameterBackup> &backup, size_t num);
+bool HaveDParamChanged(const std::vector<StringParameterBackup> &backup);
 
-void CopyInDParam(int offs, const uint64 *src, int num);
-void CopyOutDParam(uint64 *dst, int offs, int num);
-void CopyOutDParam(uint64 *dst, const char **strings, StringID string, int num);
-
-/**
- * Get the current string parameter at index \a n from parameter array \a s.
- * @param s Array of string parameters.
- * @param n Index of the string parameter.
- * @return Value of the requested string parameter.
- */
-static inline uint64 GetDParamX(const uint64 *s, uint n)
-{
-	return s[n];
-}
-
-/**
- * Get the current string parameter at index \a n from the global string parameter array.
- * @param n Index of the string parameter.
- * @return Value of the requested string parameter.
- */
-static inline uint64 GetDParam(uint n)
-{
-	return _global_string_params.GetParam(n);
-}
+uint64_t GetDParam(size_t n);
 
 extern TextDirection _current_text_dir; ///< Text direction of the currently selected language
 
 void InitializeLanguagePacks();
 const char *GetCurrentLanguageIsoCode();
-
-bool StringIDSorter(const StringID &a, const StringID &b);
 
 /**
  * A searcher for missing glyphs.

@@ -64,7 +64,7 @@ public:
 
 	byte lag_test;               ///< Byte used for lag-testing the client
 	byte last_token;             ///< The last random token we did send to verify the client is listening
-	uint32 last_token_frame;     ///< The last frame we received the right token
+	uint32_t last_token_frame;     ///< The last frame we received the right token
 	ClientStatus status;         ///< Status of this client
 	CommandQueue outgoing_queue; ///< The command-queue awaiting delivery
 	size_t receive_limit;        ///< Amount of bytes that we can receive at this moment
@@ -75,7 +75,7 @@ public:
 	ServerNetworkGameSocketHandler(SOCKET s);
 	~ServerNetworkGameSocketHandler();
 
-	virtual Packet *ReceivePacket() override;
+	Packet *ReceivePacket() override;
 	NetworkRecvStatus CloseConnection(NetworkRecvStatus status) override;
 	std::string GetClientName() const;
 
@@ -87,12 +87,12 @@ public:
 	NetworkRecvStatus SendQuit(ClientID client_id);
 	NetworkRecvStatus SendShutdown();
 	NetworkRecvStatus SendNewGame();
-	NetworkRecvStatus SendRConResult(uint16 colour, const std::string &command);
+	NetworkRecvStatus SendRConResult(uint16_t colour, const std::string &command);
 	NetworkRecvStatus SendMove(ClientID client_id, CompanyID company_id);
 
 	NetworkRecvStatus SendClientInfo(NetworkClientInfo *ci);
 	NetworkRecvStatus SendError(NetworkErrorCode error, const std::string &reason = {});
-	NetworkRecvStatus SendChat(NetworkAction action, ClientID client_id, bool self_send, const std::string &msg, int64 data);
+	NetworkRecvStatus SendChat(NetworkAction action, ClientID client_id, bool self_send, const std::string &msg, int64_t data);
 	NetworkRecvStatus SendExternalChat(const std::string &source, TextColour colour, const std::string &user, const std::string &msg);
 	NetworkRecvStatus SendJoin(ClientID client_id);
 	NetworkRecvStatus SendFrame();

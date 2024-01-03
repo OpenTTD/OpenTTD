@@ -22,24 +22,22 @@
 
 /* static */ ScriptDate::Date ScriptDate::GetCurrentDate()
 {
-	return (ScriptDate::Date)TimerGameCalendar::date;
+	return (ScriptDate::Date)TimerGameCalendar::date.base();
 }
 
 /* static */ SQInteger ScriptDate::GetYear(ScriptDate::Date date)
 {
 	if (date < 0) return DATE_INVALID;
 
-	::TimerGameCalendar::YearMonthDay ymd;
-	::TimerGameCalendar::ConvertDateToYMD(date, &ymd);
-	return ymd.year;
+	::TimerGameCalendar::YearMonthDay ymd = ::TimerGameCalendar::ConvertDateToYMD(date);
+	return ymd.year.base();
 }
 
 /* static */ SQInteger ScriptDate::GetMonth(ScriptDate::Date date)
 {
 	if (date < 0) return DATE_INVALID;
 
-	::TimerGameCalendar::YearMonthDay ymd;
-	::TimerGameCalendar::ConvertDateToYMD(date, &ymd);
+	::TimerGameCalendar::YearMonthDay ymd = ::TimerGameCalendar::ConvertDateToYMD(date);
 	return ymd.month + 1;
 }
 
@@ -47,8 +45,7 @@
 {
 	if (date < 0) return DATE_INVALID;
 
-	::TimerGameCalendar::YearMonthDay ymd;
-	::TimerGameCalendar::ConvertDateToYMD(date, &ymd);
+	::TimerGameCalendar::YearMonthDay ymd = ::TimerGameCalendar::ConvertDateToYMD(date);
 	return ymd.day;
 }
 
@@ -56,9 +53,9 @@
 {
 	if (month < 1 || month > 12) return DATE_INVALID;
 	if (day_of_month < 1 || day_of_month > 31) return DATE_INVALID;
-	if (year < 0 || year > MAX_YEAR) return DATE_INVALID;
+	if (year < 0 || year > CalendarTime::MAX_YEAR) return DATE_INVALID;
 
-	return (ScriptDate::Date)::TimerGameCalendar::ConvertYMDToDate(year, month - 1, day_of_month);
+	return (ScriptDate::Date)::TimerGameCalendar::ConvertYMDToDate(year, month - 1, day_of_month).base();
 }
 
 /* static */ SQInteger ScriptDate::GetSystemTime()

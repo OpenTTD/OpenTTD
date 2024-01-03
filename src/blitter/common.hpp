@@ -50,11 +50,11 @@ void Blitter::DrawLineGeneric(int x1, int y1, int x2, int y2, int screen_width, 
 		/* compute frac_diff = width * sqrt(dx*dx + dy*dy)
 		 * Start interval:
 		 *    max(dx, dy) <= sqrt(dx*dx + dy*dy) <= sqrt(2) * max(dx, dy) <= 3/2 * max(dx, dy) */
-		int64 frac_sq = ((int64) width) * ((int64) width) * (((int64) dx) * ((int64) dx) + ((int64) dy) * ((int64) dy));
+		int64_t frac_sq = ((int64_t) width) * ((int64_t) width) * (((int64_t) dx) * ((int64_t) dx) + ((int64_t) dy) * ((int64_t) dy));
 		int frac_max = 3 * frac_diff / 2;
 		while (frac_diff < frac_max) {
 			int frac_test = (frac_diff + frac_max) / 2;
-			if (((int64) frac_test) * ((int64) frac_test) < frac_sq) {
+			if (((int64_t) frac_test) * ((int64_t) frac_test) < frac_sq) {
 				frac_diff = frac_test + 1;
 			} else {
 				frac_max = frac_test - 1;
@@ -89,8 +89,8 @@ void Blitter::DrawLineGeneric(int x1, int y1, int x2, int y2, int screen_width, 
 
 		if (x1 < 0) {
 			dash_count = (-x1) % (dash + gap);
-			auto adjust_frac = [&](int64 frac, int &y_bound) -> int {
-				frac -= ((int64) dy) * ((int64) x1);
+			auto adjust_frac = [&](int64_t frac, int &y_bound) -> int {
+				frac -= ((int64_t) dy) * ((int64_t) x1);
 				if (frac >= 0) {
 					int quotient = frac / dx;
 					int remainder = frac % dx;
@@ -151,8 +151,8 @@ void Blitter::DrawLineGeneric(int x1, int y1, int x2, int y2, int screen_width, 
 
 		if (y1 < 0) {
 			dash_count = (-y1) % (dash + gap);
-			auto adjust_frac = [&](int64 frac, int &x_bound) -> int {
-				frac -= ((int64) dx) * ((int64) y1);
+			auto adjust_frac = [&](int64_t frac, int &x_bound) -> int {
+				frac -= ((int64_t) dx) * ((int64_t) y1);
 				if (frac >= 0) {
 					int quotient = frac / dy;
 					int remainder = frac % dy;

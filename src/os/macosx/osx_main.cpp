@@ -16,10 +16,6 @@
 #include <time.h>
 #include <signal.h>
 
-#if defined(WITH_SDL)
-/* the mac implementation needs this file included in the same file as main() */
-#	include <SDL.h>
-#endif
 #include "macos.h"
 
 #include "../../safeguards.h"

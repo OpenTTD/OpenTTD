@@ -10,11 +10,11 @@
  * This file implements the timer logic for the Window system.
  */
 
-#include "stdafx.h"
+#include "../stdafx.h"
 #include "timer.h"
 #include "timer_window.h"
 
-#include "safeguards.h"
+#include "../safeguards.h"
 
 template<>
 void IntervalTimer<TimerWindow>::Elapsed(TimerWindow::TElapsed delta)
@@ -61,7 +61,7 @@ void TimerManager<TimerWindow>::Elapsed(TimerWindow::TElapsed delta)
 
 #ifdef WITH_ASSERT
 template<>
-void TimerManager<TimerWindow>::Validate(TimerWindow::TPeriod period)
+void TimerManager<TimerWindow>::Validate(TimerWindow::TPeriod)
 {
 }
 #endif /* WITH_ASSERT */

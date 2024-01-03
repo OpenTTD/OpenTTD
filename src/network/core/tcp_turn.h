@@ -15,7 +15,7 @@
 #include "os_abstraction.h"
 #include "tcp.h"
 #include "packet.h"
-#include "game_info.h"
+#include "network_game_info.h"
 
 /** Enum with all types of TCP TURN packets. The order MUST not be changed. **/
 enum PacketTurnType {
@@ -44,7 +44,7 @@ protected:
 	 * Client or servers wants to connect to the TURN server (on request by
 	 * the Game Coordinator).
 	 *
-	 *  uint8   Game Coordinator protocol version.
+	 *  uint8_t   Game Coordinator protocol version.
 	 *  string  Token to track the current TURN request.
 	 *
 	 * @param p The packet that was just received.

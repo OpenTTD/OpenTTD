@@ -30,7 +30,7 @@ extern LeagueTablePool _league_table_pool;
  **/
 struct LeagueTableElement : LeagueTableElementPool::PoolItem<&_league_table_element_pool> {
 	LeagueTableID table;  ///< Id of the table which this element belongs to
-	int64 rating;         ///< Value that determines ordering of elements in the table (higher=better)
+	int64_t rating;         ///< Value that determines ordering of elements in the table (higher=better)
 	CompanyID company;    ///< Company Id to show the color blob for or INVALID_COMPANY
 	std::string text;     ///< Text of the element
 	std::string score;    ///< String representation of the score associated with the element

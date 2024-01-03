@@ -151,15 +151,15 @@ private:
 struct SettingsIniFile : IniLoadFile {
 	/**
 	 * Construct a new ini loader.
-	 * @param list_group_names A \c nullptr terminated list with group names that should be loaded as lists instead of variables. @see IGT_LIST
-	 * @param seq_group_names  A \c nullptr terminated list with group names that should be loaded as lists of names. @see IGT_SEQUENCE
+	 * @param list_group_names A list with group names that should be loaded as lists instead of variables. @see IGT_LIST
+	 * @param seq_group_names  A list with group names that should be loaded as lists of names. @see IGT_SEQUENCE
 	 */
-	SettingsIniFile(const char * const *list_group_names = nullptr, const char * const *seq_group_names = nullptr) :
+	SettingsIniFile(const IniGroupNameList &list_group_names = {}, const IniGroupNameList &seq_group_names = {}) :
 			IniLoadFile(list_group_names, seq_group_names)
 	{
 	}
 
-	virtual FILE *OpenFile(const std::string &filename, Subdirectory subdir, size_t *size)
+	FILE *OpenFile(const std::string &filename, Subdirectory, size_t *size) override
 	{
 		/* Open the text file in binary mode to prevent end-of-line translations
 		 * done by ftell() and friends, as defined by K&R. */
@@ -173,7 +173,7 @@ struct SettingsIniFile : IniLoadFile {
 		return in;
 	}
 
-	virtual void ReportFileError(const char * const pre, const char * const buffer, const char * const post)
+	void ReportFileError(const char * const pre, const char * const buffer, const char * const post) override
 	{
 		FatalError("{}{}{}", pre, buffer, post);
 	}
@@ -189,31 +189,17 @@ static const char *VALIDATION_GROUP_NAME = "validation"; ///< Name of the group 
 static const char *DEFAULTS_GROUP_NAME  = "defaults"; ///< Name of the group containing default values for the template variables.
 
 /**
- * Load the INI file.
- * @param filename Name of the file to load.
- * @return         Loaded INI data.
- */
-static IniLoadFile *LoadIniFile(const char *filename)
-{
-	static const char * const seq_groups[] = {PREAMBLE_GROUP_NAME, POSTAMBLE_GROUP_NAME, nullptr};
-
-	IniLoadFile *ini = new SettingsIniFile(nullptr, seq_groups);
-	ini->LoadFromDisk(filename, NO_DIRECTORY);
-	return ini;
-}
-
-/**
  * Dump a #IGT_SEQUENCE group into #_stored_output.
  * @param ifile      Loaded INI data.
  * @param group_name Name of the group to copy.
  */
-static void DumpGroup(IniLoadFile *ifile, const char * const group_name)
+static void DumpGroup(const IniLoadFile &ifile, const char * const group_name)
 {
-	IniGroup *grp = ifile->GetGroup(group_name, false);
+	const IniGroup *grp = ifile.GetGroup(group_name);
 	if (grp != nullptr && grp->type == IGT_SEQUENCE) {
-		for (IniItem *item = grp->item; item != nullptr; item = item->next) {
-			if (!item->name.empty()) {
-				_stored_output.Add(item->name.c_str());
+		for (const IniItem &item : grp->items) {
+			if (!item.name.empty()) {
+				_stored_output.Add(item.name.c_str());
 				_stored_output.Add("\n", 1);
 			}
 		}
@@ -227,9 +213,9 @@ static void DumpGroup(IniLoadFile *ifile, const char * const group_name)
  * @param defaults Fallback group to search, \c nullptr skips the search.
  * @return Text of the item if found, else \c nullptr.
  */
-static const char *FindItemValue(const char *name, IniGroup *grp, IniGroup *defaults)
+static const char *FindItemValue(const char *name, const IniGroup *grp, const IniGroup *defaults)
 {
-	IniItem *item = grp->GetItem(name);
+	const IniItem *item = grp->GetItem(name);
 	if (item == nullptr && defaults != nullptr) item = defaults->GetItem(name);
 	if (item == nullptr || !item->value.has_value()) return nullptr;
 	return item->value->c_str();
@@ -242,18 +228,18 @@ static const char *FindItemValue(const char *name, IniGroup *grp, IniGroup *defa
  * @param default_grp Default values for items not set in @grp.
  * @param output Output to use for result.
  */
-static void DumpLine(IniItem *item, IniGroup *grp, IniGroup *default_grp, OutputStore &output)
+static void DumpLine(const IniItem *item, const IniGroup *grp, const IniGroup *default_grp, OutputStore &output)
 {
 	static const int MAX_VAR_LENGTH = 64;
 
 	/* Prefix with #if/#ifdef/#ifndef */
-	static const char * const pp_lines[] = {"if", "ifdef", "ifndef", nullptr};
+	static const auto pp_lines = {"if", "ifdef", "ifndef"};
 	int count = 0;
-	for (const char * const *name = pp_lines; *name != nullptr; name++) {
-		const char *condition = FindItemValue(*name, grp, default_grp);
+	for (const auto &name : pp_lines) {
+		const char *condition = FindItemValue(name, grp, default_grp);
 		if (condition != nullptr) {
 			output.Add("#", 1);
-			output.Add(*name);
+			output.Add(name);
 			output.Add(" ", 1);
 			output.Add(condition);
 			output.Add("\n", 1);
@@ -306,31 +292,30 @@ static void DumpLine(IniItem *item, IniGroup *grp, IniGroup *default_grp, Output
  * Output all non-special sections through the template / template variable expansion system.
  * @param ifile Loaded INI data.
  */
-static void DumpSections(IniLoadFile *ifile)
+static void DumpSections(const IniLoadFile &ifile)
 {
-	static const char * const special_group_names[] = {PREAMBLE_GROUP_NAME, POSTAMBLE_GROUP_NAME, DEFAULTS_GROUP_NAME, TEMPLATES_GROUP_NAME, VALIDATION_GROUP_NAME, nullptr};
+	static const auto special_group_names = {PREAMBLE_GROUP_NAME, POSTAMBLE_GROUP_NAME, DEFAULTS_GROUP_NAME, TEMPLATES_GROUP_NAME, VALIDATION_GROUP_NAME};
 
-	IniGroup *default_grp = ifile->GetGroup(DEFAULTS_GROUP_NAME, false);
-	IniGroup *templates_grp  = ifile->GetGroup(TEMPLATES_GROUP_NAME, false);
-	IniGroup *validation_grp  = ifile->GetGroup(VALIDATION_GROUP_NAME, false);
+	const IniGroup *default_grp = ifile.GetGroup(DEFAULTS_GROUP_NAME);
+	const IniGroup *templates_grp = ifile.GetGroup(TEMPLATES_GROUP_NAME);
+	const IniGroup *validation_grp = ifile.GetGroup(VALIDATION_GROUP_NAME);
 	if (templates_grp == nullptr) return;
 
 	/* Output every group, using its name as template name. */
-	for (IniGroup *grp = ifile->group; grp != nullptr; grp = grp->next) {
-		const char * const *sgn;
-		for (sgn = special_group_names; *sgn != nullptr; sgn++) if (grp->name == *sgn) break;
-		if (*sgn != nullptr) continue;
+	for (const IniGroup &grp : ifile.groups) {
+		/* Exclude special group names. */
+		if (std::find(std::begin(special_group_names), std::end(special_group_names), grp.name) != std::end(special_group_names)) continue;
 
-		IniItem *template_item = templates_grp->GetItem(grp->name); // Find template value.
+		const IniItem *template_item = templates_grp->GetItem(grp.name); // Find template value.
 		if (template_item == nullptr || !template_item->value.has_value()) {
-			FatalError("Cannot find template {}", grp->name);
+			FatalError("Cannot find template {}", grp.name);
 		}
-		DumpLine(template_item, grp, default_grp, _stored_output);
+		DumpLine(template_item, &grp, default_grp, _stored_output);
 
 		if (validation_grp != nullptr) {
-			IniItem *validation_item = validation_grp->GetItem(grp->name); // Find template value.
+			const IniItem *validation_item = validation_grp->GetItem(grp.name); // Find template value.
 			if (validation_item != nullptr && validation_item->value.has_value()) {
-				DumpLine(validation_item, grp, default_grp, _post_amble_output);
+				DumpLine(validation_item, &grp, default_grp, _post_amble_output);
 			}
 		}
 	}
@@ -430,11 +415,14 @@ static const OptionData _opts[] = {
  */
 static void ProcessIniFile(const char *fname)
 {
-	IniLoadFile *ini_data = LoadIniFile(fname);
-	DumpGroup(ini_data, PREAMBLE_GROUP_NAME);
-	DumpSections(ini_data);
-	DumpGroup(ini_data, POSTAMBLE_GROUP_NAME);
-	delete ini_data;
+	static const IniLoadFile::IniGroupNameList seq_groups = {PREAMBLE_GROUP_NAME, POSTAMBLE_GROUP_NAME};
+
+	SettingsIniFile ini{{}, seq_groups};
+	ini.LoadFromDisk(fname, NO_DIRECTORY);
+
+	DumpGroup(ini, PREAMBLE_GROUP_NAME);
+	DumpSections(ini);
+	DumpGroup(ini, POSTAMBLE_GROUP_NAME);
 }
 
 /**

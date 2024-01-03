@@ -26,8 +26,8 @@ void Blitter_8bppOptimized::Draw(Blitter::BlitterParams *bp, BlitterMode mode, Z
 	uint offset = sprite_src->offset[zoom];
 
 	/* Find where to start reading in the source sprite */
-	const uint8 *src = sprite_src->data + offset;
-	uint8 *dst_line = (uint8 *)bp->dst + bp->top * bp->pitch + bp->left;
+	const uint8_t *src = sprite_src->data + offset;
+	uint8_t *dst_line = (uint8_t *)bp->dst + bp->top * bp->pitch + bp->left;
 
 	/* Skip over the top lines in the source image */
 	for (int y = 0; y < bp->skip_top; y++) {
@@ -39,10 +39,10 @@ void Blitter_8bppOptimized::Draw(Blitter::BlitterParams *bp, BlitterMode mode, Z
 		}
 	}
 
-	const uint8 *src_next = src;
+	const uint8_t *src_next = src;
 
 	for (int y = 0; y < bp->height; y++) {
-		uint8 *dst = dst_line;
+		uint8_t *dst = dst_line;
 		dst_line += bp->pitch;
 
 		uint skip_left = bp->skip_left;
@@ -86,7 +86,7 @@ void Blitter_8bppOptimized::Draw(Blitter::BlitterParams *bp, BlitterMode mode, Z
 			switch (mode) {
 				case BM_COLOUR_REMAP:
 				case BM_CRASH_REMAP: {
-					const uint8 *remap = bp->remap;
+					const uint8_t *remap = bp->remap;
 					do {
 						uint m = remap[*src];
 						if (m != 0) *dst = m;
@@ -100,8 +100,9 @@ void Blitter_8bppOptimized::Draw(Blitter::BlitterParams *bp, BlitterMode mode, Z
 					dst += pixels;
 					break;
 
-				case BM_TRANSPARENT: {
-					const uint8 *remap = bp->remap;
+				case BM_TRANSPARENT:
+				case BM_TRANSPARENT_REMAP: {
+					const uint8_t *remap = bp->remap;
 					src += pixels;
 					do {
 						*dst = remap[*dst];
@@ -119,7 +120,7 @@ void Blitter_8bppOptimized::Draw(Blitter::BlitterParams *bp, BlitterMode mode, Z
 	}
 }
 
-Sprite *Blitter_8bppOptimized::Encode(const SpriteLoader::Sprite *sprite, AllocatorProc *allocator)
+Sprite *Blitter_8bppOptimized::Encode(const SpriteLoader::SpriteCollection &sprite, AllocatorProc *allocator)
 {
 	/* Make memory for all zoom-levels */
 	uint memory = sizeof(SpriteData);
@@ -127,7 +128,7 @@ Sprite *Blitter_8bppOptimized::Encode(const SpriteLoader::Sprite *sprite, Alloca
 	ZoomLevel zoom_min;
 	ZoomLevel zoom_max;
 
-	if (sprite->type == SpriteType::Font) {
+	if (sprite[ZOOM_LVL_NORMAL].type == SpriteType::Font) {
 		zoom_min = ZOOM_LVL_NORMAL;
 		zoom_max = ZOOM_LVL_NORMAL;
 	} else {
@@ -220,10 +221,10 @@ Sprite *Blitter_8bppOptimized::Encode(const SpriteLoader::Sprite *sprite, Alloca
 	/* Allocate the exact amount of memory we need */
 	Sprite *dest_sprite = (Sprite *)allocator(sizeof(*dest_sprite) + size);
 
-	dest_sprite->height = sprite->height;
-	dest_sprite->width  = sprite->width;
-	dest_sprite->x_offs = sprite->x_offs;
-	dest_sprite->y_offs = sprite->y_offs;
+	dest_sprite->height = sprite[ZOOM_LVL_NORMAL].height;
+	dest_sprite->width  = sprite[ZOOM_LVL_NORMAL].width;
+	dest_sprite->x_offs = sprite[ZOOM_LVL_NORMAL].x_offs;
+	dest_sprite->y_offs = sprite[ZOOM_LVL_NORMAL].y_offs;
 	memcpy(dest_sprite->data, temp_dst, size);
 
 	return dest_sprite;

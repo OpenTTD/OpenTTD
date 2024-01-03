@@ -24,7 +24,7 @@
 typedef LinkGraph::BaseNode Node;
 typedef LinkGraph::BaseEdge Edge;
 
-static uint16 _num_nodes;
+static uint16_t _num_nodes;
 static LinkGraph *_linkgraph; ///< Contains the current linkgraph being saved/loaded.
 static NodeID _linkgraph_from; ///< Contains the current "from" node being saved/loaded.
 
@@ -52,7 +52,7 @@ public:
 	void Load(Node *bn) const override
 	{
 		if (IsSavegameVersionBefore(SLV_LINKGRAPH_EDGES)) {
-			uint16 max_size = _linkgraph->Size();
+			uint16_t max_size = _linkgraph->Size();
 			std::vector<Edge> edges(max_size);
 
 			if (IsSavegameVersionBefore(SLV_191)) {
@@ -120,7 +120,7 @@ public:
 	{
 		_linkgraph = lg;
 
-		uint16 length = IsSavegameVersionBefore(SLV_SAVELOAD_LIST_LENGTH) ? _num_nodes : (uint16)SlGetStructListLength(UINT16_MAX);
+		uint16_t length = IsSavegameVersionBefore(SLV_SAVELOAD_LIST_LENGTH) ? _num_nodes : (uint16_t)SlGetStructListLength(UINT16_MAX);
 		lg->Init(length);
 		for (NodeID from = 0; from < length; ++from) {
 			_linkgraph_from = from;
@@ -197,7 +197,7 @@ SaveLoadTable GetLinkGraphJobDesc()
 	static SaveLoadAddrProc * const proc = [](void *b, size_t extra) -> void * { return const_cast<void *>(static_cast<const void *>(reinterpret_cast<const char *>(std::addressof(static_cast<LinkGraphJob *>(b)->settings)) + extra)); };
 
 	/* Build the SaveLoad array on first call and don't touch it later on */
-	if (saveloads.size() == 0) {
+	if (saveloads.empty()) {
 		GetSaveLoadFromSettingTable(_linkgraph_settings, saveloads);
 
 		for (auto &sl : saveloads) {

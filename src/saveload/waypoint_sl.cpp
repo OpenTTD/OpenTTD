@@ -28,13 +28,13 @@ struct OldWaypoint {
 	TileIndex xy;
 	TownID town_index;
 	Town *town;
-	uint16 town_cn;
+	uint16_t town_cn;
 	StringID string_id;
 	std::string name;
-	uint8 delete_ctr;
+	uint8_t delete_ctr;
 	TimerGameCalendar::Date build_date;
-	uint8 localidx;
-	uint32 grfid;
+	uint8_t localidx;
+	uint32_t grfid;
 	const StationSpec *spec;
 	Owner owner;
 

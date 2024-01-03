@@ -216,11 +216,11 @@ static inline bool IsRoadStopTile(Tile t)
 }
 
 /**
- * Is tile \a t a standard (non-drive through) road stop station?
+ * Is tile \a t a bay (non-drive through) road stop station?
  * @param t Tile to check
- * @return \c true if the tile is a station tile and a standard road stop
+ * @return \c true if the tile is a station tile and a bay road stop
  */
-static inline bool IsStandardRoadStopTile(Tile t)
+static inline bool IsBayRoadStopTile(Tile t)
 {
 	return IsRoadStopTile(t) && GetStationGfx(t) < GFX_TRUCK_BUS_DRIVETHROUGH_OFFSET;
 }
@@ -330,6 +330,78 @@ static inline bool IsHangarTile(Tile t)
 }
 
 /**
+ * Is tile \a t a blocked tile?
+ * @pre HasStationRail(t)
+ * @param t Tile to check
+ * @return \c true if the tile is blocked
+ */
+static inline bool IsStationTileBlocked(Tile t)
+{
+	assert(HasStationRail(t));
+	return HasBit(t.m6(), 0);
+}
+
+/**
+ * Set the blocked state of the rail station
+ * @pre HasStationRail(t)
+ * @param t the station tile
+ * @param b the blocked state
+ */
+static inline void SetStationTileBlocked(Tile t, bool b)
+{
+	assert(HasStationRail(t));
+	SB(t.m6(), 0, 1, b ? 1 : 0);
+}
+
+/**
+ * Can tile \a t have catenary wires?
+ * @pre HasStationRail(t)
+ * @param t Tile to check
+ * @return \c true if the tile can have catenary wires
+ */
+static inline bool CanStationTileHaveWires(Tile t)
+{
+	assert(HasStationRail(t));
+	return HasBit(t.m6(), 6);
+}
+
+/**
+ * Set the catenary wires state of the rail station
+ * @pre HasStationRail(t)
+ * @param t the station tile
+ * @param b the catenary wires state
+ */
+static inline void SetStationTileHaveWires(Tile t, bool b)
+{
+	assert(HasStationRail(t));
+	SB(t.m6(), 6, 1, b ? 1 : 0);
+}
+
+/**
+ * Can tile \a t have catenary pylons?
+ * @pre HasStationRail(t)
+ * @param t Tile to check
+ * @return \c true if the tile can have catenary pylons
+ */
+static inline bool CanStationTileHavePylons(Tile t)
+{
+	assert(HasStationRail(t));
+	return HasBit(t.m6(), 7);
+}
+
+/**
+ * Set the catenary pylon state of the rail station
+ * @pre HasStationRail(t)
+ * @param t the station tile
+ * @param b the catenary pylons state
+ */
+static inline void SetStationTileHavePylons(Tile t, bool b)
+{
+	assert(HasStationRail(t));
+	SB(t.m6(), 7, 1, b ? 1 : 0);
+}
+
+/**
  * Get the rail direction of a rail station.
  * @param t Tile to query
  * @pre HasStationRail(t)
@@ -379,10 +451,10 @@ static inline TrackBits GetRailStationTrackBits(Tile t)
 static inline bool IsCompatibleTrainStationTile(Tile test_tile, Tile station_tile)
 {
 	assert(IsRailStationTile(station_tile));
-	return IsRailStationTile(test_tile) && IsCompatibleRail(GetRailType(test_tile), GetRailType(station_tile)) &&
+	return IsRailStationTile(test_tile) && !IsStationTileBlocked(test_tile) &&
+			IsCompatibleRail(GetRailType(test_tile), GetRailType(station_tile)) &&
 			GetRailStationAxis(test_tile) == GetRailStationAxis(station_tile) &&
-			GetStationIndex(test_tile) == GetStationIndex(station_tile) &&
-			!IsStationTileBlocked(test_tile);
+			GetStationIndex(test_tile) == GetStationIndex(station_tile);
 }
 
 /**
@@ -435,30 +507,13 @@ static inline DiagDirection GetDockDirection(Tile t)
 }
 
 /**
- * Get the tileoffset from this tile a ship should target to get to this dock.
- * @param t Tile to query
- * @pre IsTileType(t, MP_STATION)
- * @pre IsBuoy(t) || IsOilRig(t) || IsDock(t)
- * @return The offset from this tile that should be used as destination for ships.
+ * Check whether a dock tile is the tile on water.
  */
-static inline TileIndexDiffC GetDockOffset(Tile t)
+static inline bool IsDockWaterPart(Tile t)
 {
-	static const TileIndexDiffC buoy_offset = {0, 0};
-	static const TileIndexDiffC oilrig_offset = {2, 0};
-	static const TileIndexDiffC dock_offset[DIAGDIR_END] = {
-		{-2,  0},
-		{ 0,  2},
-		{ 2,  0},
-		{ 0, -2},
-	};
-	assert(IsTileType(t, MP_STATION));
-
-	if (IsBuoy(t)) return buoy_offset;
-	if (IsOilRig(t)) return oilrig_offset;
-
-	assert(IsDock(t));
-
-	return dock_offset[GetDockDirection(t)];
+	assert(IsDockTile(t));
+	StationGfx gfx = GetStationGfx(t);
+	return gfx >= GFX_DOCK_BASE_WATER_PART;
 }
 
 /**

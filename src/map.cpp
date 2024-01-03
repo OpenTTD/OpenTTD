@@ -82,8 +82,8 @@ TileIndex TileAdd(TileIndex tile, TileIndexDiff add,
 	y = TileY(tile) + dy;
 
 	if (x >= Map::SizeX() || y >= Map::SizeY()) {
-		std::string message = fmt::format("TILE_ADD({}) when adding 0x{:04X} and 0x{%04X} failed",
-			exp, (uint32)tile, add);
+		std::string message = fmt::format("TILE_ADD({}) when adding 0x{:04X} and 0x{:04X} failed",
+			exp, tile, add);
 #if !defined(_MSC_VER)
 		fmt::print(stderr, "{}:{} {}\n", file, line, message);
 #else
@@ -356,8 +356,8 @@ uint GetClosestWaterDistance(TileIndex tile, bool water)
 
 		/* going counter-clockwise around this square */
 		for (DiagDirection dir = DIAGDIR_BEGIN; dir < DIAGDIR_END; dir++) {
-			static const int8 ddx[DIAGDIR_END] = { -1,  1,  1, -1};
-			static const int8 ddy[DIAGDIR_END] = {  1,  1, -1, -1};
+			static const int8_t ddx[DIAGDIR_END] = { -1,  1,  1, -1};
+			static const int8_t ddy[DIAGDIR_END] = {  1,  1, -1, -1};
 
 			int dx = ddx[dir];
 			int dy = ddy[dir];

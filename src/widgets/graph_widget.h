@@ -14,7 +14,7 @@
 #include "../company_type.h"
 
 /** Widgets of the #GraphLegendWindow class. */
-enum GraphLegendWidgets {
+enum GraphLegendWidgets : WidgetID {
 	WID_GL_BACKGROUND,    ///< Background of the window.
 
 	WID_GL_FIRST_COMPANY, ///< First company in the legend.
@@ -22,7 +22,7 @@ enum GraphLegendWidgets {
 };
 
 /** Widgets of the #OperatingProfitGraphWindow class, #IncomeGraphWindow class, #DeliveredCargoGraphWindow class, and #CompanyValueGraphWindow class. */
-enum CompanyValueWidgets {
+enum CompanyValueWidgets : WidgetID {
 	WID_CV_KEY_BUTTON, ///< Key button.
 	WID_CV_BACKGROUND, ///< Background of the window.
 	WID_CV_GRAPH,      ///< Graph itself.
@@ -30,7 +30,7 @@ enum CompanyValueWidgets {
 };
 
 /** Widget of the #PerformanceHistoryGraphWindow class. */
-enum PerformanceHistoryGraphWidgets {
+enum PerformanceHistoryGraphWidgets : WidgetID {
 	WID_PHG_KEY,                  ///< Key button.
 	WID_PHG_DETAILED_PERFORMANCE, ///< Detailed performance.
 	WID_PHG_BACKGROUND,           ///< Background of the window.
@@ -39,7 +39,7 @@ enum PerformanceHistoryGraphWidgets {
 };
 
 /** Widget of the #PaymentRatesGraphWindow class. */
-enum CargoPaymentRatesWidgets {
+enum CargoPaymentRatesWidgets : WidgetID {
 	WID_CPR_BACKGROUND,      ///< Background of the window.
 	WID_CPR_HEADER,          ///< Header.
 	WID_CPR_GRAPH,           ///< Graph itself.
@@ -52,7 +52,7 @@ enum CargoPaymentRatesWidgets {
 };
 
 /** Widget of the #PerformanceRatingDetailWindow class. */
-enum PerformanceRatingDetailsWidgets {
+enum PerformanceRatingDetailsWidgets : WidgetID {
 	WID_PRD_SCORE_FIRST, ///< First entry in the score list.
 	WID_PRD_SCORE_LAST = WID_PRD_SCORE_FIRST + (SCORE_END - SCORE_BEGIN) - 1, ///< Last entry in the score list.
 

@@ -93,7 +93,7 @@ static void _DoCommandReturnBuildTunnel1(class ScriptInstance *instance)
 		/* For rail we do nothing special */
 		return ScriptObject::Command<CMD_BUILD_TUNNEL>::Do(start, TRANSPORT_RAIL, ScriptRail::GetCurrentRailType());
 	} else {
-		ScriptObject::SetCallbackVariable(0, start);
+		ScriptObject::SetCallbackVariable(0, start.base());
 		return ScriptObject::Command<CMD_BUILD_TUNNEL>::Do(&::_DoCommandReturnBuildTunnel1, start, TRANSPORT_ROAD, ScriptRoad::GetCurrentRoadType());
 	}
 }

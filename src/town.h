@@ -11,7 +11,7 @@
 #define TOWN_H
 
 #include "viewport_type.h"
-#include "date_type.h"
+#include "timer/timer_game_tick.h"
 #include "town_map.h"
 #include "subsidy_type.h"
 #include "newgrf_storage.h"
@@ -30,20 +30,20 @@ static const TownID INVALID_TOWN = 0xFFFF;
 
 static const uint TOWN_GROWTH_WINTER = 0xFFFFFFFE; ///< The town only needs this cargo in the winter (any amount)
 static const uint TOWN_GROWTH_DESERT = 0xFFFFFFFF; ///< The town needs the cargo for growth when on desert (any amount)
-static const uint16 TOWN_GROWTH_RATE_NONE = 0xFFFF; ///< Special value for Town::growth_rate to disable town growth.
-static const uint16 MAX_TOWN_GROWTH_TICKS = 930; ///< Max amount of original town ticks that still fit into uint16, about equal to UINT16_MAX / TOWN_GROWTH_TICKS but slightly less to simplify calculations
+static const uint16_t TOWN_GROWTH_RATE_NONE = 0xFFFF; ///< Special value for Town::growth_rate to disable town growth.
+static const uint16_t MAX_TOWN_GROWTH_TICKS = 930; ///< Max amount of original town ticks that still fit into uint16_t, about equal to UINT16_MAX / TOWN_GROWTH_TICKS but slightly less to simplify calculations
 
 typedef Pool<Town, TownID, 64, 64000> TownPool;
 extern TownPool _town_pool;
 
 /** Data structure with cached data of towns. */
 struct TownCache {
-	uint32 num_houses;                        ///< Amount of houses
-	uint32 population;                        ///< Current population of people
+	uint32_t num_houses;                        ///< Amount of houses
+	uint32_t population;                        ///< Current population of people
 	TrackedViewportSign sign;                 ///< Location of name sign, UpdateVirtCoord updates this
 	PartOfSubsidy part_of_subsidy;            ///< Is this town a source/destination of a subsidy?
-	uint32 squared_town_zone_radius[HZB_END]; ///< UpdateTownRadius updates this given the house count
-	BuildingCounts<uint16> building_counts;   ///< The number of each type of building in the town
+	uint32_t squared_town_zone_radius[HZB_END]; ///< UpdateTownRadius updates this given the house count
+	BuildingCounts<uint16_t> building_counts;   ///< The number of each type of building in the town
 };
 
 /** Town data structure. */
@@ -53,28 +53,28 @@ struct Town : TownPool::PoolItem<&_town_pool> {
 	TownCache cache; ///< Container for all cacheable data.
 
 	/* Town name */
-	uint32 townnamegrfid;
-	uint16 townnametype;
-	uint32 townnameparts;
+	uint32_t townnamegrfid;
+	uint16_t townnametype;
+	uint32_t townnameparts;
 	std::string name;                ///< Custom town name. If empty, the town was not renamed and uses the generated name.
 	mutable std::string cached_name; ///< NOSAVE: Cache of the resolved name of the town, if not using a custom town name
 
 	byte flags;                    ///< See #TownFlags.
 
-	uint16 noise_reached;          ///< level of noise that all the airports are generating
+	uint16_t noise_reached;          ///< level of noise that all the airports are generating
 
 	CompanyMask statues;           ///< which companies have a statue?
 
 	/* Company ratings. */
 	CompanyMask have_ratings;      ///< which companies have a rating
-	uint8 unwanted[MAX_COMPANIES]; ///< how many months companies aren't wanted by towns (bribe)
+	uint8_t unwanted[MAX_COMPANIES]; ///< how many months companies aren't wanted by towns (bribe)
 	CompanyID exclusivity;         ///< which company has exclusivity
-	uint8 exclusive_counter;       ///< months till the exclusivity expires
-	int16 ratings[MAX_COMPANIES];  ///< ratings of each company for this town
+	uint8_t exclusive_counter;       ///< months till the exclusivity expires
+	int16_t ratings[MAX_COMPANIES];  ///< ratings of each company for this town
 
-	TransportedCargoStat<uint32> supplied[NUM_CARGO]; ///< Cargo statistics about supplied cargo.
-	TransportedCargoStat<uint16> received[NUM_TE];    ///< Cargo statistics about received cargotypes.
-	uint32 goal[NUM_TE];                              ///< Amount of cargo required for the town to grow.
+	TransportedCargoStat<uint32_t> supplied[NUM_CARGO]; ///< Cargo statistics about supplied cargo.
+	TransportedCargoStat<uint16_t> received[NUM_TE];    ///< Cargo statistics about received cargotypes.
+	uint32_t goal[NUM_TE];                              ///< Amount of cargo required for the town to grow.
 
 	std::string text; ///< General text with additional information.
 
@@ -82,10 +82,10 @@ struct Town : TownPool::PoolItem<&_town_pool> {
 
 	StationList stations_near;       ///< NOSAVE: List of nearby stations.
 
-	uint16 time_until_rebuild;       ///< time until we rebuild a house
+	uint16_t time_until_rebuild;       ///< time until we rebuild a house
 
-	uint16 grow_counter;             ///< counter to count when to grow, value is smaller than or equal to growth_rate
-	uint16 growth_rate;              ///< town growth rate
+	uint16_t grow_counter;             ///< counter to count when to grow, value is smaller than or equal to growth_rate
+	uint16_t growth_rate;              ///< town growth rate
 
 	byte fund_buildings_months;      ///< fund buildings program in action?
 	byte road_build_months;          ///< fund road reconstruction in action?
@@ -114,12 +114,12 @@ struct Town : TownPool::PoolItem<&_town_pool> {
 	 * entry in town_noise_population corresponding to the town's tolerance.
 	 * @return the maximum noise level the town will tolerate.
 	 */
-	inline uint16 MaxTownNoise() const
+	inline uint16_t MaxTownNoise() const
 	{
 		if (this->cache.population == 0) return 0; // no population? no noise
 
 		/* 3 is added (the noise of the lowest airport), so the  user can at least build a small airfield. */
-		return (this->cache.population / _settings_game.economy.town_noise_population[_settings_game.difficulty.town_council_tolerance]) + 3;
+		return ClampTo<uint16_t>((this->cache.population / _settings_game.economy.town_noise_population[_settings_game.difficulty.town_council_tolerance]) + 3);
 	}
 
 	void UpdateVirtCoord();
@@ -143,7 +143,7 @@ private:
 	void FillCachedName() const;
 };
 
-uint32 GetWorldPopulation();
+uint32_t GetWorldPopulation();
 
 void UpdateAllTownVirtCoords();
 void ClearAllTownCachedNames();
@@ -260,10 +260,10 @@ void MakeDefaultName(T *obj)
 	 * If it wasn't using 'used' and 'idx', it would just search for increasing 'next',
 	 * but this way it is faster */
 
-	uint32 used = 0; // bitmap of used waypoint numbers, sliding window with 'next' as base
-	uint32 next = 0; // first number in the bitmap
-	uint32 idx  = 0; // index where we will stop
-	uint32 cid  = 0; // current index, goes to T::GetPoolSize()-1, then wraps to 0
+	uint32_t used = 0; // bitmap of used waypoint numbers, sliding window with 'next' as base
+	uint32_t next = 0; // first number in the bitmap
+	uint32_t idx  = 0; // index where we will stop
+	uint32_t cid  = 0; // current index, goes to T::GetPoolSize()-1, then wraps to 0
 
 	do {
 		T *lobj = T::GetIfValid(cid);
@@ -297,18 +297,19 @@ void MakeDefaultName(T *obj)
 		if (cid == T::GetPoolSize()) cid = 0; // wrap to zero...
 	} while (cid != idx);
 
-	obj->town_cn = (uint16)next; // set index...
+	obj->town_cn = (uint16_t)next; // set index...
 }
 
 /*
  * Converts original town ticks counters to plain game ticks. Note that
  * tick 0 is a valid tick so actual amount is one more than the counter value.
  */
-static inline uint16 TownTicksToGameTicks(uint16 ticks) {
-	return (std::min(ticks, MAX_TOWN_GROWTH_TICKS) + 1) * TOWN_GROWTH_TICKS - 1;
+static inline uint16_t TownTicksToGameTicks(uint16_t ticks)
+{
+	return (std::min(ticks, MAX_TOWN_GROWTH_TICKS) + 1) * Ticks::TOWN_GROWTH_TICKS - 1;
 }
 
 
-RoadType GetTownRoadType(const Town *t);
+RoadType GetTownRoadType();
 
 #endif /* TOWN_H */

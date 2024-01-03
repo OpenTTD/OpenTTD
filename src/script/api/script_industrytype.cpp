@@ -71,8 +71,8 @@
 	const IndustrySpec *ins = ::GetIndustrySpec(industry_type);
 
 	ScriptList *list = new ScriptList();
-	for (size_t i = 0; i < lengthof(ins->produced_cargo); i++) {
-		if (::IsValidCargoID(ins->produced_cargo[i])) list->AddItem(ins->produced_cargo[i]);
+	for (const CargoID &c : ins->produced_cargo) {
+		if (::IsValidCargoID(c)) list->AddItem(c);
 	}
 
 	return list;
@@ -85,8 +85,8 @@
 	const IndustrySpec *ins = ::GetIndustrySpec(industry_type);
 
 	ScriptList *list = new ScriptList();
-	for (size_t i = 0; i < lengthof(ins->accepts_cargo); i++) {
-		if (::IsValidCargoID(ins->accepts_cargo[i])) list->AddItem(ins->accepts_cargo[i]);
+	for (const CargoID &c : ins->accepts_cargo) {
+		if (::IsValidCargoID(c)) list->AddItem(c);
 	}
 
 	return list;
@@ -123,8 +123,8 @@
 	EnforcePrecondition(false, CanBuildIndustry(industry_type));
 	EnforcePrecondition(false, ScriptMap::IsValidTile(tile));
 
-	uint32 seed = ScriptBase::Rand();
-	uint32 layout_index = ScriptBase::RandRange((uint32)::GetIndustrySpec(industry_type)->layouts.size());
+	uint32_t seed = ScriptBase::Rand();
+	uint32_t layout_index = ScriptBase::RandRange((uint32_t)::GetIndustrySpec(industry_type)->layouts.size());
 	return ScriptObject::Command<CMD_BUILD_INDUSTRY>::Do(tile, industry_type, layout_index, true, seed);
 }
 
@@ -133,7 +133,7 @@
 	EnforceDeityOrCompanyModeValid(false);
 	EnforcePrecondition(false, CanProspectIndustry(industry_type));
 
-	uint32 seed = ScriptBase::Rand();
+	uint32_t seed = ScriptBase::Rand();
 	return ScriptObject::Command<CMD_BUILD_INDUSTRY>::Do(0, industry_type, 0, false, seed);
 }
 

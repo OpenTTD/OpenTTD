@@ -245,11 +245,11 @@ static const Direction PPPorder[DIAGDIR_END][TLG_END][DIR_END] = {    //  X  -  
 	}
 };
 /* Geometric placement of the PCP relative to the tile origin */
-static const int8 x_pcp_offsets[DIAGDIR_END] = {0,  8, 16, 8};
-static const int8 y_pcp_offsets[DIAGDIR_END] = {8, 16,  8, 0};
+static const int8_t x_pcp_offsets[DIAGDIR_END] = {0,  8, 16, 8};
+static const int8_t y_pcp_offsets[DIAGDIR_END] = {8, 16,  8, 0};
 /* Geometric placement of the PPP relative to the PCP*/
-static const int8 x_ppp_offsets[DIR_END] = {-2, -4, -2,  0,  2,  4,  2,  0};
-static const int8 y_ppp_offsets[DIR_END] = {-2,  0,  2,  4,  2,  0, -2, -4};
+static const int8_t x_ppp_offsets[DIR_END] = {-2, -4, -2,  0,  2,  4,  2,  0};
+static const int8_t y_ppp_offsets[DIR_END] = {-2,  0,  2,  4,  2,  0, -2, -4};
 
 /**
  * Offset for pylon sprites from the base pylon sprite.
@@ -266,7 +266,7 @@ enum PylonSpriteOffset {
 };
 
 /* The type of pylon to draw at each PPP */
-static const uint8 pylon_sprites[] = {
+static const uint8_t pylon_sprites[] = {
 	PSO_EW_N,
 	PSO_Y_NE,
 	PSO_NS_E,
@@ -315,13 +315,13 @@ enum WireSpriteOffset {
 };
 
 struct SortableSpriteStruct {
-	uint8 image_offset;
-	int8 x_offset;
-	int8 y_offset;
-	int8 x_size;
-	int8 y_size;
-	int8 z_size;
-	int8 z_offset;
+	uint8_t image_offset;
+	int8_t x_offset;
+	int8_t y_offset;
+	int8_t x_size;
+	int8_t y_size;
+	int8_t z_size;
+	int8_t z_offset;
 };
 
 /** Distance between wire and rail */

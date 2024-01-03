@@ -23,7 +23,59 @@
 #include <signal.h>
 #include <psapi.h>
 
+#if defined(_MSC_VER)
+#	include <dbghelp.h>
+#else
+#	include <setjmp.h>
+#endif
+
+#ifdef WITH_UNOFFICIAL_BREAKPAD
+#	include <client/windows/handler/exception_handler.h>
+#endif
+
 #include "../../safeguards.h"
+
+/** Exception code used for custom abort. */
+static constexpr DWORD CUSTOM_ABORT_EXCEPTION = 0xE1212012;
+
+/** A map between exception code and its name. */
+static const std::map<DWORD, std::string> exception_code_to_name{
+	{EXCEPTION_ACCESS_VIOLATION, "EXCEPTION_ACCESS_VIOLATION"},
+	{EXCEPTION_ARRAY_BOUNDS_EXCEEDED, "EXCEPTION_ARRAY_BOUNDS_EXCEEDED"},
+	{EXCEPTION_BREAKPOINT, "EXCEPTION_BREAKPOINT"},
+	{EXCEPTION_DATATYPE_MISALIGNMENT, "EXCEPTION_DATATYPE_MISALIGNMENT"},
+	{EXCEPTION_FLT_DENORMAL_OPERAND, "EXCEPTION_FLT_DENORMAL_OPERAND"},
+	{EXCEPTION_FLT_DIVIDE_BY_ZERO, "EXCEPTION_FLT_DIVIDE_BY_ZERO"},
+	{EXCEPTION_FLT_INEXACT_RESULT, "EXCEPTION_FLT_INEXACT_RESULT"},
+	{EXCEPTION_FLT_INVALID_OPERATION, "EXCEPTION_FLT_INVALID_OPERATION"},
+	{EXCEPTION_FLT_OVERFLOW, "EXCEPTION_FLT_OVERFLOW"},
+	{EXCEPTION_FLT_STACK_CHECK, "EXCEPTION_FLT_STACK_CHECK"},
+	{EXCEPTION_FLT_UNDERFLOW, "EXCEPTION_FLT_UNDERFLOW"},
+	{EXCEPTION_GUARD_PAGE, "EXCEPTION_GUARD_PAGE"},
+	{EXCEPTION_ILLEGAL_INSTRUCTION, "EXCEPTION_ILLEGAL_INSTRUCTION"},
+	{EXCEPTION_IN_PAGE_ERROR, "EXCEPTION_IN_PAGE_ERROR"},
+	{EXCEPTION_INT_DIVIDE_BY_ZERO, "EXCEPTION_INT_DIVIDE_BY_ZERO"},
+	{EXCEPTION_INT_OVERFLOW, "EXCEPTION_INT_OVERFLOW"},
+	{EXCEPTION_INVALID_DISPOSITION, "EXCEPTION_INVALID_DISPOSITION"},
+	{EXCEPTION_INVALID_HANDLE, "EXCEPTION_INVALID_HANDLE"},
+	{EXCEPTION_NONCONTINUABLE_EXCEPTION, "EXCEPTION_NONCONTINUABLE_EXCEPTION"},
+	{EXCEPTION_PRIV_INSTRUCTION, "EXCEPTION_PRIV_INSTRUCTION"},
+	{EXCEPTION_SINGLE_STEP, "EXCEPTION_SINGLE_STEP"},
+	{EXCEPTION_STACK_OVERFLOW, "EXCEPTION_STACK_OVERFLOW"},
+	{STATUS_UNWIND_CONSOLIDATE, "STATUS_UNWIND_CONSOLIDATE"},
+};
+
+/**
+ * Forcefully try to terminate the application.
+ *
+ * @param exit_code The exit code to return.
+ */
+static void NORETURN ImmediateExitProcess(uint exit_code)
+{
+	/* TerminateProcess may fail in some special edge cases; fall back to ExitProcess in this case. */
+	TerminateProcess(GetCurrentProcess(), exit_code);
+	ExitProcess(exit_code);
+}
 
 /**
  * Windows implementation for the crash logger.
@@ -32,311 +84,98 @@ class CrashLogWindows : public CrashLog {
 	/** Information about the encountered exception */
 	EXCEPTION_POINTERS *ep;
 
-	void LogOSVersion(std::back_insert_iterator<std::string> &output_iterator) const override;
-	void LogError(std::back_insert_iterator<std::string> &output_iterator, const std::string_view message) const override;
-	void LogStacktrace(std::back_insert_iterator<std::string> &output_iterator) const override;
-	void LogRegisters(std::back_insert_iterator<std::string> &output_iterator) const override;
-	void LogModules(std::back_insert_iterator<std::string> &output_iterator) const override;
+	void SurveyCrash(nlohmann::json &survey) const override
+	{
+		survey["id"] = ep->ExceptionRecord->ExceptionCode;
+		if (exception_code_to_name.count(ep->ExceptionRecord->ExceptionCode) > 0) {
+			survey["reason"] = exception_code_to_name.at(ep->ExceptionRecord->ExceptionCode);
+		} else {
+			survey["reason"] = "Unknown exception code";
+		}
+	}
+
+	void SurveyStacktrace(nlohmann::json &survey) const override;
 public:
+
+#ifdef WITH_UNOFFICIAL_BREAKPAD
+	static bool MinidumpCallback(const wchar_t *dump_dir, const wchar_t *minidump_id, void *context, EXCEPTION_POINTERS *, MDRawAssertionInfo *, bool succeeded)
+	{
+		CrashLogWindows *crashlog = reinterpret_cast<CrashLogWindows *>(context);
+
+		crashlog->crashdump_filename = crashlog->CreateFileName(".dmp");
+		std::rename(fmt::format("{}/{}.dmp", FS2OTTD(dump_dir), FS2OTTD(minidump_id)).c_str(), crashlog->crashdump_filename.c_str());
+		return succeeded;
+	}
+
+	bool WriteCrashDump() override
+	{
+		return google_breakpad::ExceptionHandler::WriteMinidump(OTTD2FS(_personal_dir), MinidumpCallback, this);
+	}
+#endif
+
 #if defined(_MSC_VER)
-	int WriteCrashDump() override;
-	void AppendDecodedStacktrace(std::back_insert_iterator<std::string> &output_iterator) const;
+	/* virtual */ bool TryExecute(std::string_view section_name, std::function<bool()> &&func) override
+	{
+		this->try_execute_active = true;
+		bool res;
+
+		__try {
+			res = func();
+		} __except (EXCEPTION_EXECUTE_HANDLER) {
+			fmt::print("Something went wrong when attempting to fill {} section of the crash log.\n", section_name);
+			res = false;
+		}
+
+		this->try_execute_active = false;
+		return res;
+	}
 #else
-	void AppendDecodedStacktrace(std::back_insert_iterator<std::string> &output_iterator) const {}
+	/* virtual */ bool TryExecute(std::string_view section_name, std::function<bool()> &&func) override
+	{
+		this->try_execute_active = true;
+
+		/* Setup a longjump in case a crash happens. */
+		if (setjmp(this->internal_fault_jmp_buf) != 0) {
+			fmt::print("Something went wrong when attempting to fill {} section of the crash log.\n", section_name);
+
+			this->try_execute_active = false;
+			return false;
+		}
+
+		bool res = func();
+		this->try_execute_active = false;
+		return res;
+	}
 #endif /* _MSC_VER */
 
 	/**
 	 * A crash log is always generated when it's generated.
 	 * @param ep the data related to the exception.
 	 */
-	CrashLogWindows(EXCEPTION_POINTERS *ep = nullptr) : ep(ep) {}
+	CrashLogWindows(EXCEPTION_POINTERS *ep = nullptr) :
+		ep(ep)
+	{
+	}
 
-	/**
-	 * Points to the current crash log.
-	 */
+#if !defined(_MSC_VER)
+	/** Buffer to track the long jump set setup. */
+	jmp_buf internal_fault_jmp_buf;
+#endif
+
+	/** Whether we are in a TryExecute block. */
+	bool try_execute_active = false;
+
+	/** Points to the current crash log. */
 	static CrashLogWindows *current;
 };
 
 /* static */ CrashLogWindows *CrashLogWindows::current = nullptr;
 
-/* virtual */ void CrashLogWindows::LogOSVersion(std::back_insert_iterator<std::string> &output_iterator) const
-{
-	_OSVERSIONINFOA os;
-	os.dwOSVersionInfoSize = sizeof(os);
-	GetVersionExA(&os);
-
-	fmt::format_to(output_iterator,
-			"Operating system:\n"
-			" Name:     Windows\n"
-			" Release:  {}.{}.{} ({})\n",
-			os.dwMajorVersion,
-			os.dwMinorVersion,
-			os.dwBuildNumber,
-			os.szCSDVersion
-	);
-}
-
-/* virtual */ void CrashLogWindows::LogError(std::back_insert_iterator<std::string> &output_iterator, const std::string_view message) const
-{
-	fmt::format_to(output_iterator,
-			"Crash reason:\n"
-			" Exception: {:08X}\n"
-			" Location:  {:X}\n"
-			" Message:   {}\n\n",
-			ep->ExceptionRecord->ExceptionCode,
-			(size_t)ep->ExceptionRecord->ExceptionAddress,
-			message
-	);
-}
-
-struct DebugFileInfo {
-	uint32 size;
-	uint32 crc32;
-	SYSTEMTIME file_time;
-};
-
-static uint32 _crc_table[256];
-
-static void MakeCRCTable()
-{
-	uint32 crc, poly = 0xEDB88320L;
-	int i;
-	int j;
-
-	for (i = 0; i != 256; i++) {
-		crc = i;
-		for (j = 8; j != 0; j--) {
-			crc = (crc & 1 ? (crc >> 1) ^ poly : crc >> 1);
-		}
-		_crc_table[i] = crc;
-	}
-}
-
-static uint32 CalcCRC(byte *data, uint size, uint32 crc)
-{
-	for (; size > 0; size--) {
-		crc = ((crc >> 8) & 0x00FFFFFF) ^ _crc_table[(crc ^ *data++) & 0xFF];
-	}
-	return crc;
-}
-
-static void GetFileInfo(DebugFileInfo *dfi, const wchar_t *filename)
-{
-	HANDLE file;
-	memset(dfi, 0, sizeof(*dfi));
-
-	file = CreateFile(filename, GENERIC_READ, FILE_SHARE_READ, nullptr, OPEN_EXISTING, 0, 0);
-	if (file != INVALID_HANDLE_VALUE) {
-		byte buffer[1024];
-		DWORD numread;
-		uint32 filesize = 0;
-		FILETIME write_time;
-		uint32 crc = (uint32)-1;
-
-		for (;;) {
-			if (ReadFile(file, buffer, sizeof(buffer), &numread, nullptr) == 0 || numread == 0) {
-				break;
-			}
-			filesize += numread;
-			crc = CalcCRC(buffer, numread, crc);
-		}
-		dfi->size = filesize;
-		dfi->crc32 = crc ^ (uint32)-1;
-
-		if (GetFileTime(file, nullptr, nullptr, &write_time)) {
-			FileTimeToSystemTime(&write_time, &dfi->file_time);
-		}
-		CloseHandle(file);
-	}
-}
-
-
-static void PrintModuleInfo(std::back_insert_iterator<std::string> &output_iterator, HMODULE mod)
-{
-	wchar_t buffer[MAX_PATH];
-	DebugFileInfo dfi;
-
-	GetModuleFileName(mod, buffer, MAX_PATH);
-	GetFileInfo(&dfi, buffer);
-	fmt::format_to(output_iterator, " {:20s} handle: {:X} size: {} crc: {:8X} date: {}-{:02}-{:02} {:02}:{:02}:{:02}\n",
-		FS2OTTD(buffer),
-		(size_t)mod,
-		dfi.size,
-		dfi.crc32,
-		dfi.file_time.wYear,
-		dfi.file_time.wMonth,
-		dfi.file_time.wDay,
-		dfi.file_time.wHour,
-		dfi.file_time.wMinute,
-		dfi.file_time.wSecond
-	);
-}
-
-/* virtual */ void CrashLogWindows::LogModules(std::back_insert_iterator<std::string> &output_iterator) const
-{
-	MakeCRCTable();
-
-	fmt::format_to(output_iterator, "Module information:\n");
-
-	HANDLE proc = OpenProcess(PROCESS_ALL_ACCESS, FALSE, GetCurrentProcessId());
-	if (proc != nullptr) {
-		HMODULE modules[100];
-		DWORD needed;
-		BOOL res = EnumProcessModules(proc, modules, sizeof(modules), &needed);
-		CloseHandle(proc);
-		if (res) {
-			size_t count = std::min<DWORD>(needed / sizeof(HMODULE), lengthof(modules));
-
-			for (size_t i = 0; i != count; i++) PrintModuleInfo(output_iterator, modules[i]);
-			fmt::format_to(output_iterator, "\n");
-			return;
-		}
-	}
-	PrintModuleInfo(output_iterator, nullptr);
-	fmt::format_to(output_iterator, "\n");
-}
-
-/* virtual */ void CrashLogWindows::LogRegisters(std::back_insert_iterator<std::string> &output_iterator) const
-{
-	fmt::format_to(output_iterator, "Registers:\n");
-#ifdef _M_AMD64
-	fmt::format_to(output_iterator,
-		" RAX: {:016X} RBX: {:016X} RCX: {:016X} RDX: {:016X}\n"
-		" RSI: {:016X} RDI: {:016X} RBP: {:016X} RSP: {:016X}\n"
-		" R8:  {:016X} R9:  {:016X} R10: {:016X} R11: {:016X}\n"
-		" R12: {:016X} R13: {:016X} R14: {:016X} R15: {:016X}\n"
-		" RIP: {:016X} EFLAGS: {:08X}\n",
-		ep->ContextRecord->Rax,
-		ep->ContextRecord->Rbx,
-		ep->ContextRecord->Rcx,
-		ep->ContextRecord->Rdx,
-		ep->ContextRecord->Rsi,
-		ep->ContextRecord->Rdi,
-		ep->ContextRecord->Rbp,
-		ep->ContextRecord->Rsp,
-		ep->ContextRecord->R8,
-		ep->ContextRecord->R9,
-		ep->ContextRecord->R10,
-		ep->ContextRecord->R11,
-		ep->ContextRecord->R12,
-		ep->ContextRecord->R13,
-		ep->ContextRecord->R14,
-		ep->ContextRecord->R15,
-		ep->ContextRecord->Rip,
-		ep->ContextRecord->EFlags
-	);
-#elif defined(_M_IX86)
-	fmt::format_to(output_iterator,
-		" EAX: {:08X} EBX: {:08X} ECX: {:08X} EDX: {:08X}\n"
-		" ESI: {:08X} EDI: {:08X} EBP: {:08X} ESP: {:08X}\n"
-		" EIP: {:08X} EFLAGS: {:08X}\n",
-		(int)ep->ContextRecord->Eax,
-		(int)ep->ContextRecord->Ebx,
-		(int)ep->ContextRecord->Ecx,
-		(int)ep->ContextRecord->Edx,
-		(int)ep->ContextRecord->Esi,
-		(int)ep->ContextRecord->Edi,
-		(int)ep->ContextRecord->Ebp,
-		(int)ep->ContextRecord->Esp,
-		(int)ep->ContextRecord->Eip,
-		(int)ep->ContextRecord->EFlags
-	);
-#elif defined(_M_ARM64)
-	fmt::format_to(output_iterator,
-		" X0:  {:016X} X1:  {:016X} X2:  {:016X} X3:  {:016X}\n"
-		" X4:  {:016X} X5:  {:016X} X6:  {:016X} X7:  {:016X}\n"
-		" X8:  {:016X} X9:  {:016X} X10: {:016X} X11: {:016X}\n"
-		" X12: {:016X} X13: {:016X} X14: {:016X} X15: {:016X}\n"
-		" X16: {:016X} X17: {:016X} X18: {:016X} X19: {:016X}\n"
-		" X20: {:016X} X21: {:016X} X22: {:016X} X23: {:016X}\n"
-		" X24: {:016X} X25: {:016X} X26: {:016X} X27: {:016X}\n"
-		" X28: {:016X} Fp:  {:016X} Lr:  {:016X}\n",
-		ep->ContextRecord->X0,
-		ep->ContextRecord->X1,
-		ep->ContextRecord->X2,
-		ep->ContextRecord->X3,
-		ep->ContextRecord->X4,
-		ep->ContextRecord->X5,
-		ep->ContextRecord->X6,
-		ep->ContextRecord->X7,
-		ep->ContextRecord->X8,
-		ep->ContextRecord->X9,
-		ep->ContextRecord->X10,
-		ep->ContextRecord->X11,
-		ep->ContextRecord->X12,
-		ep->ContextRecord->X13,
-		ep->ContextRecord->X14,
-		ep->ContextRecord->X15,
-		ep->ContextRecord->X16,
-		ep->ContextRecord->X17,
-		ep->ContextRecord->X18,
-		ep->ContextRecord->X19,
-		ep->ContextRecord->X20,
-		ep->ContextRecord->X21,
-		ep->ContextRecord->X22,
-		ep->ContextRecord->X23,
-		ep->ContextRecord->X24,
-		ep->ContextRecord->X25,
-		ep->ContextRecord->X26,
-		ep->ContextRecord->X27,
-		ep->ContextRecord->X28,
-		ep->ContextRecord->Fp,
-		ep->ContextRecord->Lr
-	);
-#endif
-
-	fmt::format_to(output_iterator, "\n Bytes at instruction pointer:\n");
-#ifdef _M_AMD64
-	byte *b = (byte*)ep->ContextRecord->Rip;
-#elif defined(_M_IX86)
-	byte *b = (byte*)ep->ContextRecord->Eip;
-#elif defined(_M_ARM64)
-	byte *b = (byte*)ep->ContextRecord->Pc;
-#endif
-	for (int i = 0; i != 24; i++) {
-		if (IsBadReadPtr(b, 1)) {
-			fmt::format_to(output_iterator, " ??"); // OCR: WAS: , 0);
-		} else {
-			fmt::format_to(output_iterator, " {:02X}", *b);
-		}
-		b++;
-	}
-	fmt::format_to(output_iterator, "\n\n");
-}
-
-/* virtual */ void CrashLogWindows::LogStacktrace(std::back_insert_iterator<std::string> &output_iterator) const
-{
-	fmt::format_to(output_iterator, "Stack trace:\n");
-#ifdef _M_AMD64
-	uint32 *b = (uint32*)ep->ContextRecord->Rsp;
-#elif defined(_M_IX86)
-	uint32 *b = (uint32*)ep->ContextRecord->Esp;
-#elif defined(_M_ARM64)
-	uint32 *b = (uint32*)ep->ContextRecord->Sp;
-#endif
-	for (int j = 0; j != 24; j++) {
-		for (int i = 0; i != 8; i++) {
-			if (IsBadReadPtr(b, sizeof(uint32))) {
-				fmt::format_to(output_iterator, " ????????"); // OCR: WAS - , 0);
-			} else {
-				fmt::format_to(output_iterator, " {:08X}", *b);
-			}
-			b++;
-		}
-		fmt::format_to(output_iterator, "\n");
-	}
-	fmt::format_to(output_iterator, "\n");
-}
-
 #if defined(_MSC_VER)
 static const uint MAX_SYMBOL_LEN = 512;
 static const uint MAX_FRAMES     = 64;
 
-#pragma warning(disable:4091)
-#include <dbghelp.h>
-#pragma warning(default:4091)
-
-void CrashLogWindows::AppendDecodedStacktrace(std::back_insert_iterator<std::string> &output_iterator) const
+/* virtual */ void CrashLogWindows::SurveyStacktrace(nlohmann::json &survey) const
 {
 	DllLoader dbghelp(L"dbghelp.dll");
 	struct ProcPtrs {
@@ -361,7 +200,7 @@ void CrashLogWindows::AppendDecodedStacktrace(std::back_insert_iterator<std::str
 		dbghelp.GetProcAddress("SymGetLineFromAddr64"),
 	};
 
-	fmt::format_to(output_iterator, "\nDecoded stack trace:\n");
+	survey = nlohmann::json::array();
 
 	/* Try to load the functions from the DLL, if that fails because of a too old dbghelp.dll, just skip it. */
 	if (dbghelp.Success()) {
@@ -412,7 +251,7 @@ void CrashLogWindows::AppendDecodedStacktrace(std::back_insert_iterator<std::str
 				hCur, GetCurrentThread(), &frame, &ctx, nullptr, proc.pSymFunctionTableAccess64, proc.pSymGetModuleBase64, nullptr)) break;
 
 			if (frame.AddrPC.Offset == frame.AddrReturn.Offset) {
-				fmt::format_to(output_iterator, " <infinite loop>\n");
+				survey.push_back("<infinite loop>");
 				break;
 			}
 
@@ -426,67 +265,31 @@ void CrashLogWindows::AppendDecodedStacktrace(std::back_insert_iterator<std::str
 			}
 
 			/* Print module and instruction pointer. */
-			fmt::format_to(output_iterator, "[{:02}] {:20s} {:X}", num, mod_name, frame.AddrPC.Offset);
+			std::string message = fmt::format("{:20s} {:X}",  mod_name, frame.AddrPC.Offset);
 
 			/* Get symbol name and line info if possible. */
 			DWORD64 offset;
 			if (proc.pSymGetSymFromAddr64(hCur, frame.AddrPC.Offset, &offset, sym_info)) {
-				fmt::format_to(output_iterator, " {} + {}", sym_info->Name, offset);
+				message += fmt::format(" {} + {}", sym_info->Name, offset);
 
 				DWORD line_offs;
 				IMAGEHLP_LINE64 line;
 				line.SizeOfStruct = sizeof(IMAGEHLP_LINE64);
 				if (proc.pSymGetLineFromAddr64(hCur, frame.AddrPC.Offset, &line_offs, &line)) {
-					fmt::format_to(output_iterator, " ({}:{})", line.FileName, line.LineNumber);
+					message += fmt::format(" ({}:{})", line.FileName, line.LineNumber);
 				}
 			}
-			fmt::format_to(output_iterator, "\n");
+
+			survey.push_back(message);
 		}
 
 		proc.pSymCleanup(hCur);
 	}
-
-	fmt::format_to(output_iterator, "\n*** End of additional info ***\n");
 }
-
-/* virtual */ int CrashLogWindows::WriteCrashDump()
+#else
+/* virtual */ void CrashLogWindows::SurveyStacktrace(nlohmann::json &) const
 {
-	int ret = 0;
-	DllLoader dbghelp(L"dbghelp.dll");
-	if (dbghelp.Success()) {
-		typedef BOOL (WINAPI *MiniDumpWriteDump_t)(HANDLE, DWORD, HANDLE,
-				MINIDUMP_TYPE,
-				CONST PMINIDUMP_EXCEPTION_INFORMATION,
-				CONST PMINIDUMP_USER_STREAM_INFORMATION,
-				CONST PMINIDUMP_CALLBACK_INFORMATION);
-		MiniDumpWriteDump_t funcMiniDumpWriteDump = dbghelp.GetProcAddress("MiniDumpWriteDump");
-		if (funcMiniDumpWriteDump != nullptr) {
-			this->crashdump_filename = this->CreateFileName(".dmp");
-			HANDLE file  = CreateFile(OTTD2FS(this->crashdump_filename).c_str(), GENERIC_WRITE, 0, nullptr, CREATE_ALWAYS, 0, 0);
-			HANDLE proc  = GetCurrentProcess();
-			DWORD procid = GetCurrentProcessId();
-			MINIDUMP_EXCEPTION_INFORMATION mdei;
-			MINIDUMP_USER_STREAM userstream;
-			MINIDUMP_USER_STREAM_INFORMATION musi;
-
-			userstream.Type        = LastReservedStream + 1;
-			userstream.Buffer      = (void*)this->crashlog.data();
-			userstream.BufferSize  = (ULONG)this->crashlog.size() + 1;
-
-			musi.UserStreamCount   = 1;
-			musi.UserStreamArray   = &userstream;
-
-			mdei.ThreadId = GetCurrentThreadId();
-			mdei.ExceptionPointers  = ep;
-			mdei.ClientPointers     = false;
-
-			funcMiniDumpWriteDump(proc, procid, file, MiniDumpWithDataSegs, &mdei, &musi, nullptr);
-			ret = 1;
-		} else {
-			ret = -1;
-		}
-	}
-	return ret;
+	/* Not supported. */
 }
 #endif /* _MSC_VER */
 
@@ -509,7 +312,7 @@ static LONG WINAPI ExceptionHandler(EXCEPTION_POINTERS *ep)
 
 	if (CrashLogWindows::current != nullptr) {
 		CrashLog::AfterCrashLogCleanup();
-		ExitProcess(2);
+		ImmediateExitProcess(2);
 	}
 
 	if (_gamelog.TestEmergency()) {
@@ -517,7 +320,7 @@ static LONG WINAPI ExceptionHandler(EXCEPTION_POINTERS *ep)
 			L"A serious fault condition occurred in the game. The game will shut down.\n"
 			L"As you loaded an emergency savegame no crash information will be generated.\n";
 		MessageBox(nullptr, _emergency_crash, L"Fatal Application Failure", MB_ICONERROR);
-		ExitProcess(3);
+		ImmediateExitProcess(3);
 	}
 
 	if (SaveloadCrashWithMissingNewGRFs()) {
@@ -526,18 +329,12 @@ static LONG WINAPI ExceptionHandler(EXCEPTION_POINTERS *ep)
 			L"As you loaded an savegame for which you do not have the required NewGRFs\n"
 			L"no crash information will be generated.\n";
 		MessageBox(nullptr, _saveload_crash, L"Fatal Application Failure", MB_ICONERROR);
-		ExitProcess(3);
+		ImmediateExitProcess(3);
 	}
 
 	CrashLogWindows *log = new CrashLogWindows(ep);
 	CrashLogWindows::current = log;
-	auto output_iterator = std::back_inserter(log->crashlog);
-	log->FillCrashLog(output_iterator);
-	log->WriteCrashDump();
-	log->AppendDecodedStacktrace(output_iterator);
-	log->WriteCrashLog();
-	log->WriteScreenshot();
-	log->SendSurvey();
+	log->MakeCrashLog();
 
 	/* Close any possible log files */
 	CloseConsoleLogIfActive();
@@ -560,9 +357,32 @@ static LONG WINAPI ExceptionHandler(EXCEPTION_POINTERS *ep)
 	return EXCEPTION_EXECUTE_HANDLER;
 }
 
-static void CDECL CustomAbort(int signal)
+static LONG WINAPI VectoredExceptionHandler(EXCEPTION_POINTERS *ep)
 {
-	RaiseException(0xE1212012, 0, 0, nullptr);
+	if (CrashLogWindows::current != nullptr && CrashLogWindows::current->try_execute_active) {
+#if defined(_MSC_VER)
+		return EXCEPTION_CONTINUE_SEARCH;
+#else
+		longjmp(CrashLogWindows::current->internal_fault_jmp_buf, 1);
+#endif
+	}
+
+	if (ep->ExceptionRecord->ExceptionCode == 0xC0000374 /* heap corruption */) {
+		return ExceptionHandler(ep);
+	}
+	if (ep->ExceptionRecord->ExceptionCode == EXCEPTION_STACK_OVERFLOW) {
+		return ExceptionHandler(ep);
+	}
+	if (ep->ExceptionRecord->ExceptionCode == CUSTOM_ABORT_EXCEPTION) {
+		return ExceptionHandler(ep);
+	}
+
+	return EXCEPTION_CONTINUE_SEARCH;
+}
+
+static void CDECL CustomAbort(int)
+{
+	RaiseException(CUSTOM_ABORT_EXCEPTION, 0, 0, nullptr);
 }
 
 /* static */ void CrashLog::InitialiseCrashLog()
@@ -576,6 +396,7 @@ static void CDECL CustomAbort(int signal)
 	_set_abort_behavior(0, _WRITE_ABORT_MSG);
 #endif
 	SetUnhandledExceptionFilter(ExceptionHandler);
+	AddVectoredExceptionHandler(1, VectoredExceptionHandler);
 }
 
 /* static */ void CrashLog::InitThread()
@@ -612,16 +433,10 @@ static bool _expanded;
 
 static const wchar_t _crash_desc[] =
 	L"A serious fault condition occurred in the game. The game will shut down.\n"
-	L"Please send the crash information and the crash.dmp file (if any) to the developers.\n"
-	L"This will greatly help debugging. The correct place to do this is https://github.com/OpenTTD/OpenTTD/issues. "
-	L"The information contained in the report is displayed below.\n"
-	L"Press \"Emergency save\" to attempt saving the game. Generated file(s):\n"
-	L"%s";
-
-static const wchar_t _save_succeeded[] =
-	L"Emergency save succeeded.\nIts location is '%s'.\n"
-	L"Be aware that critical parts of the internal game state may have become "
-	L"corrupted. The saved game is not guaranteed to work.";
+	L"Please send crash.json.log, crash.dmp, and crash.sav to the developers.\n"
+	L"This will greatly help debugging.\n\n"
+	L"https://github.com/OpenTTD/OpenTTD/issues\n\n"
+	L"%s\n%s\n%s\n%s\n";
 
 static const wchar_t * const _expand_texts[] = {L"S&how report >>", L"&Hide report <<" };
 
@@ -646,48 +461,56 @@ static void SetWndSize(HWND wnd, int mode)
 	}
 }
 
-static INT_PTR CALLBACK CrashDialogFunc(HWND wnd, UINT msg, WPARAM wParam, LPARAM lParam)
+static INT_PTR CALLBACK CrashDialogFunc(HWND wnd, UINT msg, WPARAM wParam, LPARAM)
 {
 	switch (msg) {
 		case WM_INITDIALOG: {
+			std::string crashlog = CrashLogWindows::current->survey.dump(4);
+			size_t crashlog_length = crashlog.size() + 1;
+			/* Reserve extra space for LF to CRLF conversion. */
+			crashlog_length += std::count(crashlog.begin(), crashlog.end(), '\n');
+
+			const size_t filename_count = 4;
+			const size_t filename_buf_length = MAX_PATH + 1;
+			const size_t crash_desc_buf_length = lengthof(_crash_desc) + filename_buf_length * filename_count + 1;
+
 			/* We need to put the crash-log in a separate buffer because the default
-			 * buffer in MB_TO_WIDE is not large enough (512 chars) */
-			wchar_t filenamebuf[MAX_PATH * 2];
-			wchar_t crash_msgW[65536];
-			/* Convert unix -> dos newlines because the edit box only supports that properly :( */
-			const char *unix_nl = CrashLogWindows::current->crashlog.data();
-			char dos_nl[65536];
-			char *p = dos_nl;
-			WChar c;
-			while ((c = Utf8Consume(&unix_nl)) && p < lastof(dos_nl) - 4) { // 4 is max number of bytes per character
+			 * buffer in MB_TO_WIDE is not large enough (512 chars).
+			 * Use VirtualAlloc to allocate pages for the buffer to avoid overflowing the stack.
+			 * Avoid the heap in case the crash is because the heap became corrupted. */
+			const size_t total_length = crash_desc_buf_length * sizeof(wchar_t) +
+										crashlog_length * sizeof(wchar_t) +
+										filename_buf_length * sizeof(wchar_t) * filename_count +
+										crashlog_length;
+			void *raw_buffer = VirtualAlloc(nullptr, total_length, MEM_COMMIT | MEM_RESERVE, PAGE_READWRITE);
+
+			wchar_t *crash_desc_buf = reinterpret_cast<wchar_t *>(raw_buffer);
+			wchar_t *crashlog_buf = crash_desc_buf + crash_desc_buf_length;
+			wchar_t *filename_buf = crashlog_buf + crashlog_length;
+			char *crashlog_dos_nl = reinterpret_cast<char *>(filename_buf + filename_buf_length * filename_count);
+
+			/* Convert unix -> dos newlines because the edit box only supports that properly. */
+			const char *crashlog_unix_nl = crashlog.data();
+			char *p = crashlog_dos_nl;
+			char32_t c;
+			while ((c = Utf8Consume(&crashlog_unix_nl))) {
 				if (c == '\n') p += Utf8Encode(p, '\r');
 				p += Utf8Encode(p, c);
 			}
 			*p = '\0';
 
-			/* Add path to crash.log and crash.dmp (if any) to the crash window text */
-			size_t len = wcslen(_crash_desc) + 2;
-			len += wcslen(convert_to_fs(CrashLogWindows::current->crashlog_filename, filenamebuf, lengthof(filenamebuf))) + 2;
-			len += wcslen(convert_to_fs(CrashLogWindows::current->crashdump_filename, filenamebuf, lengthof(filenamebuf))) + 2;
-			len += wcslen(convert_to_fs(CrashLogWindows::current->screenshot_filename, filenamebuf, lengthof(filenamebuf))) + 1;
+			_snwprintf(
+				crash_desc_buf,
+				crash_desc_buf_length,
+				_crash_desc,
+				convert_to_fs(CrashLogWindows::current->crashlog_filename,   filename_buf + filename_buf_length * 0, filename_buf_length),
+				convert_to_fs(CrashLogWindows::current->crashdump_filename,  filename_buf + filename_buf_length * 1, filename_buf_length),
+				convert_to_fs(CrashLogWindows::current->savegame_filename,   filename_buf + filename_buf_length * 2, filename_buf_length),
+				convert_to_fs(CrashLogWindows::current->screenshot_filename, filename_buf + filename_buf_length * 3, filename_buf_length)
+			);
 
-			static wchar_t text[lengthof(_crash_desc) + 3 * MAX_PATH * 2 + 7];
-			int printed = _snwprintf(text, len, _crash_desc, convert_to_fs(CrashLogWindows::current->crashlog_filename, filenamebuf, lengthof(filenamebuf)));
-			if (printed < 0 || (size_t)printed > len) {
-				MessageBox(wnd, L"Catastrophic failure trying to display crash message. Could not perform text formatting.", L"OpenTTD", MB_ICONERROR);
-				return FALSE;
-			}
-			if (convert_to_fs(CrashLogWindows::current->crashdump_filename, filenamebuf, lengthof(filenamebuf))[0] != L'\0') {
-				wcscat(text, L"\n");
-				wcscat(text, filenamebuf);
-			}
-			if (convert_to_fs(CrashLogWindows::current->screenshot_filename, filenamebuf, lengthof(filenamebuf))[0] != L'\0') {
-				wcscat(text, L"\n");
-				wcscat(text, filenamebuf);
-			}
-
-			SetDlgItemText(wnd, 10, text);
-			SetDlgItemText(wnd, 11, convert_to_fs(dos_nl, crash_msgW, lengthof(crash_msgW)));
+			SetDlgItemText(wnd, 10, crash_desc_buf);
+			SetDlgItemText(wnd, 11, convert_to_fs(crashlog_dos_nl, crashlog_buf, crashlog_length));
 			SendDlgItemMessage(wnd, 11, WM_SETFONT, (WPARAM)GetStockObject(ANSI_FIXED_FONT), FALSE);
 			SetWndSize(wnd, -1);
 		} return TRUE;
@@ -695,19 +518,7 @@ static INT_PTR CALLBACK CrashDialogFunc(HWND wnd, UINT msg, WPARAM wParam, LPARA
 			switch (wParam) {
 				case 12: // Close
 					CrashLog::AfterCrashLogCleanup();
-					ExitProcess(2);
-				case 13: // Emergency save
-					wchar_t filenamebuf[MAX_PATH * 2];
-					if (CrashLogWindows::current->WriteSavegame()) {
-						convert_to_fs(CrashLogWindows::current->savegame_filename, filenamebuf, lengthof(filenamebuf));
-						size_t len = lengthof(_save_succeeded) + wcslen(filenamebuf) + 1;
-						static wchar_t text[lengthof(_save_succeeded) + MAX_PATH * 2 + 1];
-						_snwprintf(text, len, _save_succeeded, filenamebuf);
-						MessageBox(wnd, text, L"Save successful", MB_ICONINFORMATION);
-					} else {
-						MessageBox(wnd, L"Save failed", L"Save failed", MB_ICONINFORMATION);
-					}
-					break;
+					ImmediateExitProcess(2);
 				case 15: // Expand window to show crash-message
 					_expanded = !_expanded;
 					SetWndSize(wnd, _expanded);
@@ -716,7 +527,7 @@ static INT_PTR CALLBACK CrashDialogFunc(HWND wnd, UINT msg, WPARAM wParam, LPARA
 			return TRUE;
 		case WM_CLOSE:
 			CrashLog::AfterCrashLogCleanup();
-			ExitProcess(2);
+			ImmediateExitProcess(2);
 	}
 
 	return FALSE;

@@ -26,9 +26,9 @@
  * @pre i < 0x110
  * @return the value of the register
  */
-static inline uint32 GetRegister(uint i)
+static inline uint32_t GetRegister(uint i)
 {
-	extern TemporaryStorageArray<int32, 0x110> _temp_store;
+	extern TemporaryStorageArray<int32_t, 0x110> _temp_store;
 	return _temp_store.GetValue(i);
 }
 
@@ -44,7 +44,7 @@ enum SpriteGroupType {
 };
 
 struct SpriteGroup;
-typedef uint32 SpriteGroupID;
+typedef uint32_t SpriteGroupID;
 struct ResolverObject;
 
 /* SPRITE_WIDTH is 24. ECS has roughly 30 sprite groups per real sprite.
@@ -58,17 +58,17 @@ struct SpriteGroup : SpriteGroupPool::PoolItem<&_spritegroup_pool> {
 protected:
 	SpriteGroup(SpriteGroupType type) : nfo_line(0), type(type) {}
 	/** Base sprite group resolver */
-	virtual const SpriteGroup *Resolve(ResolverObject &object) const { return this; };
+	virtual const SpriteGroup *Resolve([[maybe_unused]] ResolverObject &object) const { return this; };
 
 public:
 	virtual ~SpriteGroup() = default;
 
-	uint32 nfo_line;
+	uint32_t nfo_line;
 	SpriteGroupType type;
 
 	virtual SpriteID GetResult() const { return 0; }
 	virtual byte GetNumResults() const { return 0; }
-	virtual uint16 GetCallbackResult() const { return CALLBACK_FAILED; }
+	virtual uint16_t GetCallbackResult() const { return CALLBACK_FAILED; }
 
 	static const SpriteGroup *Resolve(const SpriteGroup *group, ResolverObject &object, bool top_level = true);
 };
@@ -90,7 +90,7 @@ struct RealSpriteGroup : SpriteGroup {
 	std::vector<const SpriteGroup *> loading; ///< List of loading groups (can be SpriteIDs or Callback results)
 
 protected:
-	const SpriteGroup *Resolve(ResolverObject &object) const;
+	const SpriteGroup *Resolve(ResolverObject &object) const override;
 };
 
 /* Shared by deterministic and random groups. */
@@ -150,17 +150,17 @@ struct DeterministicSpriteGroupAdjust {
 	byte variable;
 	byte parameter; ///< Used for variables between 0x60 and 0x7F inclusive.
 	byte shift_num;
-	uint32 and_mask;
-	uint32 add_val;
-	uint32 divmod_val;
+	uint32_t and_mask;
+	uint32_t add_val;
+	uint32_t divmod_val;
 	const SpriteGroup *subroutine;
 };
 
 
 struct DeterministicSpriteGroupRange {
 	const SpriteGroup *group;
-	uint32 low;
-	uint32 high;
+	uint32_t low;
+	uint32_t high;
 };
 
 
@@ -179,7 +179,7 @@ struct DeterministicSpriteGroup : SpriteGroup {
 	const SpriteGroup *error_group; // was first range, before sorting ranges
 
 protected:
-	const SpriteGroup *Resolve(ResolverObject &object) const;
+	const SpriteGroup *Resolve(ResolverObject &object) const override;
 };
 
 enum RandomizedSpriteGroupCompareMode {
@@ -201,7 +201,7 @@ struct RandomizedSpriteGroup : SpriteGroup {
 	std::vector<const SpriteGroup *> groups; ///< Take the group with appropriate index:
 
 protected:
-	const SpriteGroup *Resolve(ResolverObject &object) const;
+	const SpriteGroup *Resolve(ResolverObject &object) const override;
 };
 
 
@@ -213,7 +213,7 @@ struct CallbackResultSpriteGroup : SpriteGroup {
 	 * @param value The value that was used to represent this callback result
 	 * @param grf_version8 True, if we are dealing with a new NewGRF which uses GRF version >= 8.
 	 */
-	CallbackResultSpriteGroup(uint16 value, bool grf_version8) :
+	CallbackResultSpriteGroup(uint16_t value, bool grf_version8) :
 		SpriteGroup(SGT_CALLBACK),
 		result(value)
 	{
@@ -226,8 +226,8 @@ struct CallbackResultSpriteGroup : SpriteGroup {
 		}
 	}
 
-	uint16 result;
-	uint16 GetCallbackResult() const { return this->result; }
+	uint16_t result;
+	uint16_t GetCallbackResult() const override { return this->result; }
 };
 
 
@@ -249,8 +249,8 @@ struct ResultSpriteGroup : SpriteGroup {
 
 	SpriteID sprite;
 	byte num_sprites;
-	SpriteID GetResult() const { return this->sprite; }
-	byte GetNumResults() const { return this->num_sprites; }
+	SpriteID GetResult() const override { return this->sprite; }
+	byte GetNumResults() const override { return this->num_sprites; }
 };
 
 /**
@@ -262,20 +262,20 @@ struct TileLayoutSpriteGroup : SpriteGroup {
 
 	NewGRFSpriteLayout dts;
 
-	const DrawTileSprites *ProcessRegisters(uint8 *stage) const;
+	const DrawTileSprites *ProcessRegisters(uint8_t *stage) const;
 };
 
 struct IndustryProductionSpriteGroup : SpriteGroup {
 	IndustryProductionSpriteGroup() : SpriteGroup(SGT_INDUSTRY_PRODUCTION) {}
 
-	uint8 version;                              ///< Production callback version used, or 0xFF if marked invalid
-	uint8 num_input;                            ///< How many subtract_input values are valid
-	int16 subtract_input[INDUSTRY_NUM_INPUTS];  ///< Take this much of the input cargo (can be negative, is indirect in cb version 1+)
+	uint8_t version;                              ///< Production callback version used, or 0xFF if marked invalid
+	uint8_t num_input;                            ///< How many subtract_input values are valid
+	int16_t subtract_input[INDUSTRY_NUM_INPUTS];  ///< Take this much of the input cargo (can be negative, is indirect in cb version 1+)
 	CargoID cargo_input[INDUSTRY_NUM_INPUTS];   ///< Which input cargoes to take from (only cb version 2)
-	uint8 num_output;                           ///< How many add_output values are valid
-	uint16 add_output[INDUSTRY_NUM_OUTPUTS];    ///< Add this much output cargo when successful (unsigned, is indirect in cb version 1+)
+	uint8_t num_output;                           ///< How many add_output values are valid
+	uint16_t add_output[INDUSTRY_NUM_OUTPUTS];    ///< Add this much output cargo when successful (unsigned, is indirect in cb version 1+)
 	CargoID cargo_output[INDUSTRY_NUM_OUTPUTS]; ///< Which output cargoes to add to (only cb version 2)
-	uint8 again;
+	uint8_t again;
 
 };
 
@@ -291,11 +291,11 @@ struct ScopeResolver {
 	ScopeResolver(ResolverObject &ro) : ro(ro) {}
 	virtual ~ScopeResolver() = default;
 
-	virtual uint32 GetRandomBits() const;
-	virtual uint32 GetTriggers() const;
+	virtual uint32_t GetRandomBits() const;
+	virtual uint32_t GetTriggers() const;
 
-	virtual uint32 GetVariable(byte variable, uint32 parameter, bool *available) const;
-	virtual void StorePSA(uint reg, int32 value);
+	virtual uint32_t GetVariable(byte variable, [[maybe_unused]] uint32_t parameter, bool *available) const;
+	virtual void StorePSA(uint reg, int32_t value);
 };
 
 /**
@@ -312,7 +312,7 @@ struct ResolverObject {
 	 * @param callback_param1 First parameter (var 10) of the callback (only used when \a callback is also set).
 	 * @param callback_param2 Second parameter (var 18) of the callback (only used when \a callback is also set).
 	 */
-	ResolverObject(const GRFFile *grffile, CallbackID callback = CBID_NO_CALLBACK, uint32 callback_param1 = 0, uint32 callback_param2 = 0)
+	ResolverObject(const GRFFile *grffile, CallbackID callback = CBID_NO_CALLBACK, uint32_t callback_param1 = 0, uint32_t callback_param2 = 0)
 		: default_scope(*this), callback(callback), callback_param1(callback_param1), callback_param2(callback_param2), grffile(grffile), root_spritegroup(nullptr)
 	{
 		this->ResetState();
@@ -323,14 +323,14 @@ struct ResolverObject {
 	ScopeResolver default_scope; ///< Default implementation of the grf scope.
 
 	CallbackID callback;        ///< Callback being resolved.
-	uint32 callback_param1;     ///< First parameter (var 10) of the callback.
-	uint32 callback_param2;     ///< Second parameter (var 18) of the callback.
+	uint32_t callback_param1;     ///< First parameter (var 10) of the callback.
+	uint32_t callback_param2;     ///< Second parameter (var 18) of the callback.
 
-	uint32 last_value;          ///< Result of most recent DeterministicSpriteGroup (including procedure calls)
+	uint32_t last_value;          ///< Result of most recent DeterministicSpriteGroup (including procedure calls)
 
-	uint32 waiting_triggers;    ///< Waiting triggers to be used by any rerandomisation. (scope independent)
-	uint32 used_triggers;       ///< Subset of cur_triggers, which actually triggered some rerandomisation. (scope independent)
-	uint32 reseed[VSG_END];     ///< Collects bits to rerandomise while triggering triggers.
+	uint32_t waiting_triggers;    ///< Waiting triggers to be used by any rerandomisation. (scope independent)
+	uint32_t used_triggers;       ///< Subset of cur_triggers, which actually triggered some rerandomisation. (scope independent)
+	uint32_t reseed[VSG_END];     ///< Collects bits to rerandomise while triggering triggers.
 
 	const GRFFile *grffile;     ///< GRFFile the resolved SpriteGroup belongs to
 	const SpriteGroup *root_spritegroup; ///< Root SpriteGroup to use for resolving
@@ -348,7 +348,7 @@ struct ResolverObject {
 	 * Resolve callback.
 	 * @return Callback result.
 	 */
-	uint16 ResolveCallback()
+	uint16_t ResolveCallback()
 	{
 		const SpriteGroup *result = Resolve();
 		return result != nullptr ? result->GetCallbackResult() : CALLBACK_FAILED;
@@ -361,7 +361,7 @@ struct ResolverObject {
 	/**
 	 * Returns the waiting triggers that did not trigger any rerandomisation.
 	 */
-	uint32 GetRemainingTriggers() const
+	uint32_t GetRemainingTriggers() const
 	{
 		return this->waiting_triggers & ~this->used_triggers;
 	}
@@ -371,9 +371,9 @@ struct ResolverObject {
 	 * independent of the scope they were accessed with.
 	 * @return OR-sum of the bits.
 	 */
-	uint32 GetReseedSum() const
+	uint32_t GetReseedSum() const
 	{
-		uint32 sum = 0;
+		uint32_t sum = 0;
 		for (VarSpriteGroupScope vsg = VSG_BEGIN; vsg < VSG_END; vsg++) {
 			sum |= this->reseed[vsg];
 		}
@@ -402,7 +402,7 @@ struct ResolverObject {
 	 * This function is mainly intended for the callback profiling feature,
 	 * and should return an identifier recognisable by the NewGRF developer.
 	 */
-	virtual uint32 GetDebugID() const { return 0; }
+	virtual uint32_t GetDebugID() const { return 0; }
 };
 
 #endif /* NEWGRF_SPRITEGROUP_H */

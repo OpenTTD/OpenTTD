@@ -24,9 +24,9 @@ extern GroupPool _group_pool; ///< Pool of groups.
 struct GroupStatistics {
 	Money profit_last_year;                 ///< Sum of profits for all vehicles.
 	Money profit_last_year_min_age;         ///< Sum of profits for vehicles considered for profit statistics.
-	uint16 *num_engines;                    ///< Caches the number of engines of each type the company owns.
-	uint16 num_vehicle;                     ///< Number of vehicles.
-	uint16 num_vehicle_min_age;             ///< Number of vehicles considered for profit statistics;
+	uint16_t *num_engines;                    ///< Caches the number of engines of each type the company owns.
+	uint16_t num_vehicle;                     ///< Number of vehicles.
+	uint16_t num_vehicle_min_age;             ///< Number of vehicles considered for profit statistics;
 	bool autoreplace_defined;               ///< Are any autoreplace rules set?
 	bool autoreplace_finished;              ///< Have all autoreplacement finished?
 
@@ -63,7 +63,7 @@ struct GroupStatistics {
 	static void UpdateAutoreplace(CompanyID company);
 };
 
-enum GroupFlags : uint8 {
+enum GroupFlags : uint8_t {
 	GF_REPLACE_PROTECTION,    ///< If set to true, the global autoreplace has no effect on the group
 	GF_REPLACE_WAGON_REMOVAL, ///< If set, autoreplace will perform wagon removal on vehicles in this group.
 	GF_END,
@@ -75,7 +75,7 @@ struct Group : GroupPool::PoolItem<&_group_pool> {
 	Owner owner;                ///< Group Owner
 	VehicleType vehicle_type;   ///< Vehicle type of the group
 
-	uint8 flags;                ///< Group flags
+	uint8_t flags;                ///< Group flags
 	Livery livery;              ///< Custom colour scheme for vehicles in this group
 	GroupStatistics statistics; ///< NOSAVE: Statistics and caches on the vehicles in the group.
 
@@ -110,8 +110,8 @@ Money GetGroupProfitLastYearMinAge(CompanyID company, GroupID id_g, VehicleType 
 
 void SetTrainGroupID(Train *v, GroupID grp);
 void UpdateTrainGroupID(Train *v);
-void RemoveVehicleFromGroup(const Vehicle *v);
 void RemoveAllGroupsForCompany(const CompanyID company);
 bool GroupIsInGroup(GroupID search, GroupID group);
+void UpdateCompanyGroupLiveries(const Company *c);
 
 #endif /* GROUP_H */

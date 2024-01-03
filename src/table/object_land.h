@@ -8,7 +8,7 @@
 /** @file object_land.h Sprites to use and how to display them for object tiles. */
 
 #define TILE_SEQ_LINE(sz, img) { 0, 0, 0, 16, 16, sz, {img, PAL_NONE} },
-#define TILE_SEQ_END() { (int8)0x80, 0, 0, 0, 0, 0, {0, 0} }
+#define TILE_SEQ_END() { (int8_t)0x80, 0, 0, 0, 0, 0, {0, 0} }
 
 static const DrawTileSeqStruct _object_nothing[] = {
 	TILE_SEQ_END()
@@ -121,7 +121,7 @@ static const DrawTileSprites _object_hq[] = {
 
 #undef TILE_SPRITE_LINE
 
-#define M(name, size, build_cost_multiplier, clear_cost_multiplier, height, climate, gen_amount, flags) { GRFFilePropsBase<2>(), {0, 0, 0, 0}, INVALID_OBJECT_CLASS, name, climate, size, build_cost_multiplier, clear_cost_multiplier, 0, MAX_DATE + 1, flags, 0, height, 1, gen_amount }
+#define M(name, size, build_cost_multiplier, clear_cost_multiplier, height, climate, gen_amount, flags) { GRFFilePropsBase<2>(), {0, 0, 0, 0}, INVALID_OBJECT_CLASS, name, climate, size, build_cost_multiplier, clear_cost_multiplier, 0, CalendarTime::MAX_DATE + 1, flags, 0, height, 1, gen_amount }
 
 /* Climates
  * T = Temperate

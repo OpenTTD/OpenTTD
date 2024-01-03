@@ -11,7 +11,7 @@
 #define WIDGETS_DROPDOWN_WIDGET_H
 
 /** Widgets of the #DropdownWindow class. */
-enum DropdownMenuWidgets {
+enum DropdownMenuWidgets : WidgetID {
 	WID_DM_ITEMS,        ///< Panel showing the dropdown items.
 	WID_DM_SHOW_SCROLL,  ///< Hide scrollbar if too few items.
 	WID_DM_SCROLL,       ///< Scrollbar.

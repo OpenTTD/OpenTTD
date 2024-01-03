@@ -1032,16 +1032,16 @@ static const std::vector<IndustryTileLayout> _tile_table_sugar_mine {
 #undef MK
 
 /** Array with saw sound, for sawmill */
-static const uint8 _sawmill_sounds[] = { SND_28_SAWMILL };
+static const uint8_t _sawmill_sounds[] = { SND_28_SAWMILL };
 
 /** Array with whistle sound, for factory */
-static const uint8 _factory_sounds[] = { SND_03_FACTORY };
+static const uint8_t _factory_sounds[] = { SND_03_FACTORY };
 
 /** Array with 3 animal sounds, for farms */
-static const uint8 _farm_sounds[] = { SND_24_FARM_1, SND_25_FARM_2, SND_26_FARM_3 };
+static const uint8_t _farm_sounds[] = { SND_24_FARM_1, SND_25_FARM_2, SND_26_FARM_3 };
 
 /** Array with... hem... a sound of toyland */
-static const uint8 _plastic_mine_sounds[] = { SND_33_PLASTIC_MINE };
+static const uint8_t _plastic_mine_sounds[] = { SND_33_PLASTIC_MINE };
 
 enum IndustryTypes {
 	IT_COAL_MINE           =   0,

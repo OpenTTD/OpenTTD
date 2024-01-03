@@ -33,8 +33,7 @@
 			const CargoPacketList *packets = v->cargo.Packets();
 			for (VehicleCargoList::ConstIterator it(packets->begin()); it != packets->end(); it++) {
 				CargoPacket *cp = *it;
-				cp->source_xy = Station::IsValidID(cp->source) ? Station::Get(cp->source)->xy : v->tile;
-				cp->loaded_at_xy = cp->source_xy;
+				cp->source_xy = Station::IsValidID(cp->first_station) ? Station::Get(cp->first_station)->xy : v->tile;
 			}
 		}
 
@@ -44,14 +43,11 @@
 		 * information is lost. In that case we set it to the position of this
 		 * station */
 		for (Station *st : Station::Iterate()) {
-			for (CargoID c = 0; c < NUM_CARGO; c++) {
-				GoodsEntry *ge = &st->goods[c];
-
-				const StationCargoPacketMap *packets = ge->cargo.Packets();
+			for (GoodsEntry &ge : st->goods) {
+				const StationCargoPacketMap *packets = ge.cargo.Packets();
 				for (StationCargoList::ConstIterator it(packets->begin()); it != packets->end(); it++) {
 					CargoPacket *cp = *it;
-					cp->source_xy = Station::IsValidID(cp->source) ? Station::Get(cp->source)->xy : st->xy;
-					cp->loaded_at_xy = cp->source_xy;
+					cp->source_xy = Station::IsValidID(cp->first_station) ? Station::Get(cp->first_station)->xy : st->xy;
 				}
 			}
 		}
@@ -60,7 +56,7 @@
 	if (IsSavegameVersionBefore(SLV_120)) {
 		/* CargoPacket's source should be either INVALID_STATION or a valid station */
 		for (CargoPacket *cp : CargoPacket::Iterate()) {
-			if (!Station::IsValidID(cp->source)) cp->source = INVALID_STATION;
+			if (!Station::IsValidID(cp->first_station)) cp->first_station = INVALID_STATION;
 		}
 	}
 
@@ -71,13 +67,48 @@
 		for (Vehicle *v : Vehicle::Iterate()) v->cargo.InvalidateCache();
 
 		for (Station *st : Station::Iterate()) {
-			for (CargoID c = 0; c < NUM_CARGO; c++) st->goods[c].cargo.InvalidateCache();
+			for (GoodsEntry &ge : st->goods) ge.cargo.InvalidateCache();
 		}
 	}
 
 	if (IsSavegameVersionBefore(SLV_181)) {
 		for (Vehicle *v : Vehicle::Iterate()) v->cargo.KeepAll();
 	}
+
+	/* Before this version, we didn't track how far cargo actually traveled in vehicles. Make best-effort estimates of this. */
+	if (IsSavegameVersionBefore(SLV_CARGO_TRAVELLED)) {
+		/* Update the cargo-traveled in stations as if they arrived from the source tile. */
+		for (Station *st : Station::Iterate()) {
+			for (GoodsEntry &ge : st->goods) {
+				for (auto it = ge.cargo.Packets()->begin(); it != ge.cargo.Packets()->end(); ++it) {
+					for (CargoPacket *cp : it->second) {
+						if (cp->source_xy != INVALID_TILE && cp->source_xy != st->xy) {
+							cp->travelled.x = TileX(cp->source_xy) - TileX(st->xy);
+							cp->travelled.y = TileY(cp->source_xy) - TileY(st->xy);
+						}
+					}
+				}
+			}
+		}
+
+		/* Update the cargo-traveled in vehicles as if they were loaded at the source tile. */
+		for (Vehicle *v : Vehicle::Iterate()) {
+			for (auto it = v->cargo.Packets()->begin(); it != v->cargo.Packets()->end(); it++) {
+				if ((*it)->source_xy != INVALID_TILE) {
+					(*it)->UpdateLoadingTile((*it)->source_xy);
+				}
+			}
+		}
+	}
+
+#ifdef WITH_ASSERT
+	/* in_vehicle is a NOSAVE; it tells if cargo is in a vehicle or not. Restore the value in here. */
+	for (Vehicle *v : Vehicle::Iterate()) {
+		for (auto it = v->cargo.Packets()->begin(); it != v->cargo.Packets()->end(); it++) {
+			(*it)->in_vehicle = true;
+		}
+	}
+#endif /* WITH_ASSERT */
 }
 
 /**
@@ -88,15 +119,19 @@
 SaveLoadTable GetCargoPacketDesc()
 {
 	static const SaveLoad _cargopacket_desc[] = {
-		SLE_VAR(CargoPacket, source,          SLE_UINT16),
+		SLE_VARNAME(CargoPacket, first_station, "source", SLE_UINT16),
 		SLE_VAR(CargoPacket, source_xy,       SLE_UINT32),
-		SLE_VAR(CargoPacket, loaded_at_xy,    SLE_UINT32),
+		SLE_CONDVARNAME(CargoPacket, next_hop, "loaded_at_xy", SLE_FILE_U32 | SLE_VAR_U16, SL_MIN_VERSION, SLV_REMOVE_LOADED_AT_XY),
+		SLE_CONDVARNAME(CargoPacket, next_hop, "loaded_at_xy", SLE_UINT16, SLV_REMOVE_LOADED_AT_XY, SL_MAX_VERSION),
 		SLE_VAR(CargoPacket, count,           SLE_UINT16),
-		SLE_CONDVAR(CargoPacket, days_in_transit, SLE_FILE_U8 | SLE_VAR_U16, SL_MIN_VERSION, SLV_MORE_CARGO_AGE),
-		SLE_CONDVAR(CargoPacket, days_in_transit, SLE_UINT16, SLV_MORE_CARGO_AGE, SL_MAX_VERSION),
+		SLE_CONDVARNAME(CargoPacket, periods_in_transit, "days_in_transit", SLE_FILE_U8 | SLE_VAR_U16, SL_MIN_VERSION, SLV_MORE_CARGO_AGE),
+		SLE_CONDVARNAME(CargoPacket, periods_in_transit, "days_in_transit", SLE_UINT16, SLV_MORE_CARGO_AGE, SLV_PERIODS_IN_TRANSIT_RENAME),
+		SLE_CONDVAR(CargoPacket, periods_in_transit, SLE_UINT16, SLV_PERIODS_IN_TRANSIT_RENAME, SL_MAX_VERSION),
 		SLE_VAR(CargoPacket, feeder_share,    SLE_INT64),
 		SLE_CONDVAR(CargoPacket, source_type,     SLE_UINT8,  SLV_125, SL_MAX_VERSION),
 		SLE_CONDVAR(CargoPacket, source_id,       SLE_UINT16, SLV_125, SL_MAX_VERSION),
+		SLE_CONDVAR(CargoPacket, travelled.x, SLE_INT16, SLV_CARGO_TRAVELLED, SL_MAX_VERSION),
+		SLE_CONDVAR(CargoPacket, travelled.y, SLE_INT16, SLV_CARGO_TRAVELLED, SL_MAX_VERSION),
 	};
 	return _cargopacket_desc;
 }

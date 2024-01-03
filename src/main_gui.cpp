@@ -60,7 +60,7 @@
  * @param mode Tile highlighting mode, e.g. drawing a rectangle or a dot on the ground
  * @return true if the button is clicked, false if it's unclicked
  */
-bool HandlePlacePushButton(Window *w, int widget, CursorID cursor, HighLightStyle mode)
+bool HandlePlacePushButton(Window *w, WidgetID widget, CursorID cursor, HighLightStyle mode)
 {
 	if (w->IsWidgetDisabled(widget)) return false;
 
@@ -78,7 +78,7 @@ bool HandlePlacePushButton(Window *w, int widget, CursorID cursor, HighLightStyl
 }
 
 
-void CcPlaySound_EXPLOSION(Commands cmd, const CommandCost &result, TileIndex tile)
+void CcPlaySound_EXPLOSION(Commands, const CommandCost &result, TileIndex tile)
 {
 	if (result.Succeeded() && _settings_client.sound.confirm) SndPlayTileFx(SND_12_EXPLOSION, tile);
 }
@@ -186,6 +186,7 @@ enum {
 	GHK_CONSOLE,
 	GHK_BOUNDING_BOXES,
 	GHK_DIRTY_BLOCKS,
+	GHK_WIDGET_OUTLINES,
 	GHK_CENTER,
 	GHK_CENTER_ZOOM,
 	GHK_RESET_OBJECT_TO_PLACE,
@@ -306,6 +307,10 @@ struct MainWindow : Window
 
 			case GHK_DIRTY_BLOCKS:
 				ToggleDirtyBlocks();
+				return ES_HANDLED;
+
+			case GHK_WIDGET_OUTLINES:
+				ToggleWidgetOutlines();
 				return ES_HANDLED;
 		}
 
@@ -443,7 +448,7 @@ struct MainWindow : Window
 		}
 	}
 
-	bool OnTooltip(Point pt, int widget, TooltipCloseCondition close_cond) override
+	bool OnTooltip([[maybe_unused]] Point pt, WidgetID widget, TooltipCloseCondition close_cond) override
 	{
 		if (widget != WID_M_VIEWPORT) return false;
 		return this->viewport->overlay->ShowTooltip(pt, close_cond);
@@ -454,7 +459,7 @@ struct MainWindow : Window
 	 * @param data Information about the changed data.
 	 * @param gui_scope Whether the call is done from GUI scope. You may not do everything when not in GUI scope. See #InvalidateWindowData() for details.
 	 */
-	void OnInvalidateData(int data = 0, bool gui_scope = true) override
+	void OnInvalidateData([[maybe_unused]] int data = 0, [[maybe_unused]] bool gui_scope = true) override
 	{
 		if (!gui_scope) return;
 		/* Forward the message to the appropriate toolbar (ingame or scenario editor) */
@@ -467,6 +472,7 @@ struct MainWindow : Window
 		Hotkey(WKC_BACKQUOTE, "console", GHK_CONSOLE),
 		Hotkey('B' | WKC_CTRL, "bounding_boxes", GHK_BOUNDING_BOXES),
 		Hotkey('I' | WKC_CTRL, "dirty_blocks", GHK_DIRTY_BLOCKS),
+		Hotkey('O' | WKC_CTRL, "widget_outlines", GHK_WIDGET_OUTLINES),
 		Hotkey('C', "center", GHK_CENTER),
 		Hotkey('Z', "center_zoom", GHK_CENTER_ZOOM),
 		Hotkey(WKC_ESC, "reset_object_to_place", GHK_RESET_OBJECT_TO_PLACE),
@@ -507,11 +513,11 @@ struct MainWindow : Window
 	}};
 };
 
-static WindowDesc _main_window_desc(
+static WindowDesc _main_window_desc(__FILE__, __LINE__,
 	WDP_MANUAL, nullptr, 0, 0,
 	WC_MAIN_WINDOW, WC_NONE,
-	0,
-	_nested_main_window_widgets, lengthof(_nested_main_window_widgets),
+	WDF_NO_CLOSE,
+	std::begin(_nested_main_window_widgets), std::end(_nested_main_window_widgets),
 	&MainWindow::hotkeys
 );
 
@@ -520,7 +526,7 @@ static WindowDesc _main_window_desc(
  * @param keycode The keycode that was pressed by the user.
  * @return True iff the keycode matches one of the hotkeys for 'quit'.
  */
-bool IsQuitKey(uint16 keycode)
+bool IsQuitKey(uint16_t keycode)
 {
 	int num = MainWindow::hotkeys.CheckMatch(keycode);
 	return num == GHK_QUIT;

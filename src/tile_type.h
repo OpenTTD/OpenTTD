@@ -81,40 +81,17 @@ enum TropicZone {
 
 /**
  * The index/ID of a Tile.
+ *
+ * It is compatible with int32 / int64 for easy math throughout the code.
  */
-struct TileIndex : StrongIntegralTypedef<uint32, TileIndex> {
-	using StrongIntegralTypedef<uint32, TileIndex>::StrongIntegralTypedef;
+using TileIndex = StrongType::Typedef<uint32_t, struct TileIndexTag, StrongType::Compare, StrongType::Integer, StrongType::Compatible<int32_t>, StrongType::Compatible<int64_t>>;
 
-	debug_inline constexpr TileIndex() = default;
-	debug_inline constexpr TileIndex(const TileIndex &o) = default;
-	debug_inline constexpr TileIndex(TileIndex &&o) = default;
-
-	debug_inline constexpr TileIndex(const uint32 &value) : StrongIntegralTypedef<uint32, TileIndex>(value) {}
-
-	debug_inline constexpr TileIndex &operator =(const TileIndex &rhs) { this->value = rhs.value; return *this; }
-	debug_inline constexpr TileIndex &operator =(TileIndex &&rhs) { this->value = std::move(rhs.value); return *this; }
-	debug_inline constexpr TileIndex &operator =(const uint32 &rhs) { this->value = rhs; return *this; }
-
-	/** Implicit conversion to the base type for e.g. array indexing. */
-	debug_inline constexpr operator uint32() const { return this->value; }
-
-	/* Import operators from the base class into our overload set. */
-	using StrongIntegralTypedef::operator ==;
-	using StrongIntegralTypedef::operator !=;
-	using StrongIntegralTypedef::operator +;
-	using StrongIntegralTypedef::operator -;
-
-	/* Add comparison and add/sub for signed ints as e.g. 0 is signed and will
-	 * match ambiguously when only unsigned overloads are present. */
-	constexpr bool operator ==(int rhs) const { return this->value == (uint32)rhs; }
-	constexpr bool operator !=(int rhs) const { return this->value != (uint32)rhs; }
-	constexpr TileIndex operator +(int rhs) const { return { (uint32)(this->value + rhs) }; }
-	constexpr TileIndex operator -(int rhs) const { return { (uint32)(this->value - rhs) }; }
-};
+/* Make sure the size is as expected. */
+static_assert(sizeof(TileIndex) == 4);
 
 /**
  * The very nice invalid tile marker
  */
-static inline constexpr TileIndex INVALID_TILE = TileIndex{ (uint32)-1 };
+static inline constexpr TileIndex INVALID_TILE = TileIndex{ (uint32_t)-1 };
 
 #endif /* TILE_TYPE_H */

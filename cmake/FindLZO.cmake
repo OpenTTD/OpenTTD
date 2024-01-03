@@ -55,7 +55,7 @@ find_library(LZO_LIBRARY
 # name as the optimized file. This is not always the case, but so far
 # experiences has shown that in those case vcpkg CMake files do the right
 # thing.
-if(VCPKG_TOOLCHAIN AND LZO_LIBRARY)
+if(VCPKG_TOOLCHAIN AND LZO_LIBRARY AND LZO_LIBRARY MATCHES "${VCPKG_INSTALLED_DIR}")
     if(LZO_LIBRARY MATCHES "/debug/")
         set(LZO_LIBRARY_DEBUG ${LZO_LIBRARY})
         string(REPLACE "/debug/lib/" "/lib/" LZO_LIBRARY_RELEASE ${LZO_LIBRARY})

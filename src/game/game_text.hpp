@@ -18,9 +18,9 @@ struct StringParam {
 	};
 
 	ParamType type;
-	uint8 consumes;
+	uint8_t consumes;
 
-	StringParam(ParamType type, uint8 consumes) : type(type), consumes(consumes) {}
+	StringParam(ParamType type, uint8_t consumes) : type(type), consumes(consumes) {}
 };
 using StringParams = std::vector<StringParam>;
 using StringParamsList = std::vector<StringParams>;

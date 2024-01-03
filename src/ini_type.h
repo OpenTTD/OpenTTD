@@ -21,48 +21,48 @@ enum IniGroupType {
 
 /** A single "line" in an ini file. */
 struct IniItem {
-	IniItem *next;                    ///< The next item in this group
 	std::string name;                 ///< The name of this item
 	std::optional<std::string> value; ///< The value of this item
 	std::string comment;              ///< The comment associated with this item
 
-	IniItem(struct IniGroup *parent, const std::string &name);
-	~IniItem();
+	IniItem(const std::string &name);
 
 	void SetValue(const std::string_view value);
 };
 
 /** A group within an ini file. */
 struct IniGroup {
-	IniGroup *next;      ///< the next group within this file
+	std::list<IniItem> items; ///< all items in the group
 	IniGroupType type;   ///< type of group
-	IniItem *item;       ///< the first item in the group
-	IniItem **last_item; ///< the last item in the group
 	std::string name;    ///< name of group
 	std::string comment; ///< comment for group
 
-	IniGroup(struct IniLoadFile *parent, const std::string &name);
-	~IniGroup();
+	IniGroup(const std::string &name, IniGroupType type);
 
-	IniItem *GetItem(const std::string &name) const;
+	const IniItem *GetItem(const std::string &name) const;
 	IniItem &GetOrCreateItem(const std::string &name);
+	IniItem &CreateItem(const std::string &name);
 	void RemoveItem(const std::string &name);
 	void Clear();
 };
 
 /** Ini file that only supports loading. */
 struct IniLoadFile {
-	IniGroup *group;                      ///< the first group in the ini
-	IniGroup **last_group;                ///< the last group in the ini
+	using IniGroupNameList = std::initializer_list<std::string_view>;
+
+	std::list<IniGroup> groups; ///< all groups in the ini
 	std::string comment;                  ///< last comment in file
-	const char * const *list_group_names; ///< nullptr terminated list with group names that are lists
-	const char * const *seq_group_names;  ///< nullptr terminated list with group names that are sequences.
+	const IniGroupNameList list_group_names; ///< list of group names that are lists
+	const IniGroupNameList seq_group_names;  ///< list of group names that are sequences.
 
-	IniLoadFile(const char * const *list_group_names = nullptr, const char * const *seq_group_names = nullptr);
-	virtual ~IniLoadFile();
+	IniLoadFile(const IniGroupNameList &list_group_names = {}, const IniGroupNameList &seq_group_names = {});
+	virtual ~IniLoadFile() { }
 
-	IniGroup *GetGroup(const std::string &name, bool create_new = true);
-	void RemoveGroup(const char *name);
+	const IniGroup *GetGroup(const std::string &name) const;
+	IniGroup *GetGroup(const std::string &name);
+	IniGroup &GetOrCreateGroup(const std::string &name);
+	IniGroup &CreateGroup(const std::string &name);
+	void RemoveGroup(const std::string &name);
 
 	void LoadFromDisk(const std::string &filename, Subdirectory subdir);
 
@@ -86,12 +86,12 @@ struct IniLoadFile {
 
 /** Ini file that supports both loading and saving. */
 struct IniFile : IniLoadFile {
-	IniFile(const char * const *list_group_names = nullptr);
+	IniFile(const IniGroupNameList &list_group_names = {});
 
 	bool SaveToDisk(const std::string &filename);
 
-	virtual FILE *OpenFile(const std::string &filename, Subdirectory subdir, size_t *size);
-	virtual void ReportFileError(const char * const pre, const char * const buffer, const char * const post);
+	FILE *OpenFile(const std::string &filename, Subdirectory subdir, size_t *size) override;
+	void ReportFileError(const char * const pre, const char * const buffer, const char * const post) override;
 };
 
 #endif /* INI_TYPE_H */

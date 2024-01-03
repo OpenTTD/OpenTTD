@@ -16,7 +16,7 @@
 typedef OverflowSafeInt64 Money;
 
 /** Type of the game economy. */
-enum EconomyType : uint8 {
+enum EconomyType : uint8_t {
 	ET_BEGIN = 0,
 	ET_ORIGINAL = 0,
 	ET_SMOOTH = 1,
@@ -27,18 +27,18 @@ enum EconomyType : uint8 {
 /** Data of the economy. */
 struct Economy {
 	Money max_loan;                       ///< NOSAVE: Maximum possible loan
-	int16 fluct;                          ///< Economy fluctuation status
+	int16_t fluct;                          ///< Economy fluctuation status
 	byte interest_rate;                   ///< Interest
 	byte infl_amount;                     ///< inflation amount
 	byte infl_amount_pr;                  ///< inflation rate for payment rates
-	uint32 industry_daily_change_counter; ///< Bits 31-16 are number of industry to be performed, 15-0 are fractional collected daily
-	uint32 industry_daily_increment;      ///< The value which will increment industry_daily_change_counter. Computed value. NOSAVE
-	uint64 inflation_prices;              ///< Cumulated inflation of prices since game start; 16 bit fractional part
-	uint64 inflation_payment;             ///< Cumulated inflation of cargo payment since game start; 16 bit fractional part
+	uint32_t industry_daily_change_counter; ///< Bits 31-16 are number of industry to be performed, 15-0 are fractional collected daily
+	uint32_t industry_daily_increment;      ///< The value which will increment industry_daily_change_counter. Computed value. NOSAVE
+	uint64_t inflation_prices;              ///< Cumulated inflation of prices since game start; 16 bit fractional part
+	uint64_t inflation_payment;             ///< Cumulated inflation of cargo payment since game start; 16 bit fractional part
 
 	/* Old stuff for savegame conversion only */
 	Money old_max_loan_unround;           ///< Old: Unrounded max loan
-	uint16 old_max_loan_unround_fract;    ///< Old: Fraction of the unrounded max loan
+	uint16_t old_max_loan_unround_fract;    ///< Old: Fraction of the unrounded max loan
 };
 
 /** Score categories in the detailed performance rating. */
@@ -151,7 +151,7 @@ enum Price {
 DECLARE_POSTFIX_INCREMENT(Price)
 
 typedef Money Prices[PR_END]; ///< Prices of everything. @see Price
-typedef int8 PriceMultipliers[PR_END];
+typedef int8_t PriceMultipliers[PR_END];
 
 /** Types of expenses. */
 enum ExpensesType : byte {
@@ -171,6 +171,11 @@ enum ExpensesType : byte {
 	EXPENSES_END,                 ///< Number of expense types.
 	INVALID_EXPENSES      = 0xFF, ///< Invalid expense type.
 };
+
+/**
+ * Data type for storage of Money for each #ExpensesType category.
+ */
+using Expenses = std::array<Money, EXPENSES_END>;
 
 /**
  * Categories of a price bases.
@@ -194,17 +199,17 @@ struct PriceBaseSpec {
 /** The "steps" in loan size, in British Pounds! */
 static const int LOAN_INTERVAL = 10000;
 /** The size of loan for a new company, in British Pounds! */
-static const int64 INITIAL_LOAN = 100000;
+static const int64_t INITIAL_LOAN = 100000;
 
 /**
- * Maximum inflation (including fractional part) without causing overflows in int64 price computations.
+ * Maximum inflation (including fractional part) without causing overflows in int64_t price computations.
  * This allows for 32 bit base prices (21 are currently needed).
  * Considering the sign bit and 16 fractional bits, there are 15 bits left.
  * 170 years of 4% inflation result in a inflation of about 822, so 10 bits are actually enough.
  * Note that NewGRF multipliers share the 16 fractional bits.
  * @see MAX_PRICE_MODIFIER
  */
-static const uint64 MAX_INFLATION = (1ull << (63 - 32)) - 1;
+static const uint64_t MAX_INFLATION = (1ull << (63 - 32)) - 1;
 
 /**
  * Maximum NewGRF price modifiers.
@@ -227,6 +232,6 @@ static const uint ROAD_STOP_TRACKBIT_FACTOR = 2;
 static const uint LOCK_DEPOT_TILE_FACTOR = 2;
 
 struct CargoPayment;
-typedef uint32 CargoPaymentID;
+typedef uint32_t CargoPaymentID;
 
 #endif /* ECONOMY_TYPE_H */

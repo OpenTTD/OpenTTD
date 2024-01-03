@@ -78,18 +78,18 @@ struct RoadStopScopeResolver : public ScopeResolver {
 	const struct RoadStopSpec *roadstopspec;    ///< Station (type) specification.
 	CargoID cargo_type;                         ///< Type of cargo of the station.
 	StationType type;                           ///< Station type.
-	uint8 view;                                 ///< Station axis.
+	uint8_t view;                                 ///< Station axis.
 	RoadType roadtype;                          ///< Road type (used when no tile)
 
-	RoadStopScopeResolver(ResolverObject& ro, BaseStation* st, const RoadStopSpec *roadstopspec, TileIndex tile, RoadType roadtype, StationType type, uint8 view = 0)
+	RoadStopScopeResolver(ResolverObject& ro, BaseStation* st, const RoadStopSpec *roadstopspec, TileIndex tile, RoadType roadtype, StationType type, uint8_t view = 0)
 		: ScopeResolver(ro), tile(tile), st(st), roadstopspec(roadstopspec), type(type), view(view), roadtype(roadtype)
 	{
 	}
 
-	uint32 GetRandomBits() const override;
-	uint32 GetTriggers() const override;
+	uint32_t GetRandomBits() const override;
+	uint32_t GetTriggers() const override;
 
-	uint32 GetVariable(byte variable, uint32 parameter, bool *available) const override;
+	uint32_t GetVariable(byte variable, [[maybe_unused]] uint32_t parameter, bool *available) const override;
 };
 
 /** Road stop resolver. */
@@ -97,7 +97,7 @@ struct RoadStopResolverObject : public ResolverObject {
 	RoadStopScopeResolver roadstop_scope; ///< The stop scope resolver.
 	TownScopeResolver *town_scope;        ///< The town scope resolver (created on the first call).
 
-	RoadStopResolverObject(const RoadStopSpec* roadstopspec, BaseStation* st, TileIndex tile, RoadType roadtype, StationType type, uint8 view, CallbackID callback = CBID_NO_CALLBACK, uint32 param1 = 0, uint32 param2 = 0);
+	RoadStopResolverObject(const RoadStopSpec* roadstopspec, BaseStation* st, TileIndex tile, RoadType roadtype, StationType type, uint8_t view, CallbackID callback = CBID_NO_CALLBACK, uint32_t param1 = 0, uint32_t param2 = 0);
 	~RoadStopResolverObject();
 
 	ScopeResolver* GetScope(VarSpriteGroupScope scope = VSG_SCOPE_SELF, byte relative = 0) override
@@ -133,8 +133,8 @@ struct RoadStopSpec {
 
 	RoadStopAvailabilityType stop_type = ROADSTOPTYPE_ALL;
 	RoadStopDrawMode draw_mode = ROADSTOP_DRAW_MODE_ROAD | ROADSTOP_DRAW_MODE_OVERLAY;
-	uint8 callback_mask = 0;
-	uint8 flags = 0;
+	uint8_t callback_mask = 0;
+	uint8_t flags = 0;
 
 	CargoTypes cargo_triggers = 0; ///< Bitmask of cargo types which cause trigger re-randomizing
 
@@ -143,8 +143,8 @@ struct RoadStopSpec {
 	byte bridge_height[6];             ///< Minimum height for a bridge above, 0 for none
 	byte bridge_disallowed_pillars[6]; ///< Disallowed pillar flags for a bridge above
 
-	uint8 build_cost_multiplier = 16;  ///< Build cost multiplier per tile.
-	uint8 clear_cost_multiplier = 16;  ///< Clear cost multiplier per tile.
+	uint8_t build_cost_multiplier = 16;  ///< Build cost multiplier per tile.
+	uint8_t clear_cost_multiplier = 16;  ///< Clear cost multiplier per tile.
 
 	/**
 	 * Get the cost for building a road stop of this type.
@@ -158,17 +158,17 @@ struct RoadStopSpec {
 	 */
 	Money GetClearCost(Price category) const { return GetPrice(category, this->clear_cost_multiplier, this->grf_prop.grffile, -4); }
 
-	static const RoadStopSpec *Get(uint16 index);
+	static const RoadStopSpec *Get(uint16_t index);
 };
 
 typedef NewGRFClass<RoadStopSpec, RoadStopClassID, ROADSTOP_CLASS_MAX> RoadStopClass;
 
 void DrawRoadStopTile(int x, int y, RoadType roadtype, const RoadStopSpec *spec, StationType type, int view);
 
-uint16 GetRoadStopCallback(CallbackID callback, uint32 param1, uint32 param2, const RoadStopSpec *roadstopspec, BaseStation *st, TileIndex tile, RoadType roadtype, StationType type, uint8 view);
+uint16_t GetRoadStopCallback(CallbackID callback, uint32_t param1, uint32_t param2, const RoadStopSpec *roadstopspec, BaseStation *st, TileIndex tile, RoadType roadtype, StationType type, uint8_t view);
 
 void AnimateRoadStopTile(TileIndex tile);
-uint8 GetRoadStopTileAnimationSpeed(TileIndex tile);
+uint8_t GetRoadStopTileAnimationSpeed(TileIndex tile);
 void TriggerRoadStopAnimation(BaseStation *st, TileIndex tile, StationAnimationTrigger trigger, CargoID cargo_type = CT_INVALID);
 void TriggerRoadStopRandomisation(Station *st, TileIndex tile, RoadStopRandomTrigger trigger, CargoID cargo_type = CT_INVALID);
 

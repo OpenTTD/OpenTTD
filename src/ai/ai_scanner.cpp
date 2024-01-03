@@ -94,7 +94,7 @@ AIInfo *AIScannerInfo::SelectRandomAI() const
 
 AIInfo *AIScannerInfo::FindInfo(const std::string &name, int version, bool force_exact_match)
 {
-	if (this->info_list.size() == 0) return nullptr;
+	if (this->info_list.empty()) return nullptr;
 	if (name.empty()) return nullptr;
 
 	if (version == -1) {

@@ -24,7 +24,7 @@
  * and starting X & Y, is entirely predictable. On the face of it, that may not
  * be useful. However, it means that if you want to replay a map in a different
  * terrain, or just vary the sea level, you just re-run the generator with the
- * same seed. The seed is an int32, and is randomised on each run of New Game.
+ * same seed. The seed is an int32_t, and is randomised on each run of New Game.
  * The Scenario Generator does not randomise the value, so that you can
  * experiment with one terrain until you are happy, or click "Random" for a new
  * random seed.
@@ -150,7 +150,7 @@
  */
 
 /** Fixed point type for heights */
-using Height = int16;
+using Height = int16_t;
 static const int height_decimal_bits = 4;
 
 /** Fixed point array for amplitudes (and percent values) */
@@ -419,7 +419,7 @@ static void HeightMapGenerate()
 static void HeightMapGetMinMaxAvg(Height *min_ptr, Height *max_ptr, Height *avg_ptr)
 {
 	Height h_min, h_max, h_avg;
-	int64 h_accu = 0;
+	int64_t h_accu = 0;
 	h_min = h_max = _height_map.height(0, 0);
 
 	/* Get h_min, h_max and accumulate heights into h_accu */
@@ -439,7 +439,7 @@ static void HeightMapGetMinMaxAvg(Height *min_ptr, Height *max_ptr, Height *avg_
 }
 
 /** Dill histogram and return pointer to its base point - to the count of zero heights */
-static int *HeightMapMakeHistogram(Height h_min, Height h_max, int *hist_buf)
+static int *HeightMapMakeHistogram(Height h_min, [[maybe_unused]] Height h_max, int *hist_buf)
 {
 	int *hist = hist_buf - h_min;
 
@@ -675,7 +675,7 @@ static void HeightMapCurves(uint level)
 static void HeightMapAdjustWaterLevel(Amplitude water_percent, Height h_max_new)
 {
 	Height h_min, h_max, h_avg, h_water_level;
-	int64 water_tiles, desired_water_tiles;
+	int64_t water_tiles, desired_water_tiles;
 	int *hist;
 
 	HeightMapGetMinMaxAvg(&h_min, &h_max, &h_avg);
@@ -686,7 +686,7 @@ static void HeightMapAdjustWaterLevel(Amplitude water_percent, Height h_max_new)
 	hist = HeightMapMakeHistogram(h_min, h_max, hist_buf);
 
 	/* How many water tiles do we want? */
-	desired_water_tiles = A2I(((int64)water_percent) * (int64)(_height_map.size_x * _height_map.size_y));
+	desired_water_tiles = A2I(((int64_t)water_percent) * (int64_t)(_height_map.size_x * _height_map.size_y));
 
 	/* Raise water_level and accumulate values from histogram until we reach required number of water tiles */
 	for (h_water_level = h_min, water_tiles = 0; h_water_level < h_max; h_water_level++) {
@@ -733,7 +733,7 @@ static double perlin_coast_noise_2D(const double x, const double y, const double
  * Please note that all the small numbers; 53, 101, 167, etc. are small primes
  * to help give the perlin noise a bit more of a random feel.
  */
-static void HeightMapCoastLines(uint8 water_borders)
+static void HeightMapCoastLines(uint8_t water_borders)
 {
 	int smallest_size = std::min(_settings_game.game_creation.map_x, _settings_game.game_creation.map_y);
 	const int margin = 4;
@@ -826,7 +826,7 @@ static void HeightMapSmoothCoastInDirection(int org_x, int org_y, int dir_x, int
 }
 
 /** Smooth coasts by modulating height of tiles close to map edges with cosine of distance from edge */
-static void HeightMapSmoothCoasts(uint8 water_borders)
+static void HeightMapSmoothCoasts(uint8_t water_borders)
 {
 	int x, y;
 	/* First Smooth NW and SE coasts (y close to 0 and y close to size_y) */

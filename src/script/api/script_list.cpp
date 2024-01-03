@@ -11,7 +11,9 @@
 #include "script_list.hpp"
 #include "script_controller.hpp"
 #include "../../debug.h"
+#include "../../core/backup_type.hpp"
 #include "../../script/squirrel.hpp"
+#include <../squirrel/sqvm.h>
 
 #include "../../safeguards.h"
 
@@ -90,7 +92,7 @@ public:
 		this->End();
 	}
 
-	SQInteger Begin()
+	SQInteger Begin() override
 	{
 		if (this->list->buckets.empty()) return 0;
 		this->has_no_more_items = false;
@@ -105,7 +107,7 @@ public:
 		return item_current;
 	}
 
-	void End()
+	void End() override
 	{
 		this->bucket_list = nullptr;
 		this->has_no_more_items = true;
@@ -135,7 +137,7 @@ public:
 		this->item_next = *this->bucket_list_iter;
 	}
 
-	SQInteger Next()
+	SQInteger Next() override
 	{
 		if (this->IsEnd()) return 0;
 
@@ -144,7 +146,7 @@ public:
 		return item_current;
 	}
 
-	void Remove(SQInteger item)
+	void Remove(SQInteger item) override
 	{
 		if (this->IsEnd()) return;
 
@@ -179,7 +181,7 @@ public:
 		this->End();
 	}
 
-	SQInteger Begin()
+	SQInteger Begin() override
 	{
 		if (this->list->buckets.empty()) return 0;
 		this->has_no_more_items = false;
@@ -199,7 +201,7 @@ public:
 		return item_current;
 	}
 
-	void End()
+	void End() override
 	{
 		this->bucket_list = nullptr;
 		this->has_no_more_items = true;
@@ -232,7 +234,7 @@ public:
 		this->item_next = *this->bucket_list_iter;
 	}
 
-	SQInteger Next()
+	SQInteger Next() override
 	{
 		if (this->IsEnd()) return 0;
 
@@ -241,7 +243,7 @@ public:
 		return item_current;
 	}
 
-	void Remove(SQInteger item)
+	void Remove(SQInteger item) override
 	{
 		if (this->IsEnd()) return;
 
@@ -271,7 +273,7 @@ public:
 		this->End();
 	}
 
-	SQInteger Begin()
+	SQInteger Begin() override
 	{
 		if (this->list->items.empty()) return 0;
 		this->has_no_more_items = false;
@@ -284,7 +286,7 @@ public:
 		return item_current;
 	}
 
-	void End()
+	void End() override
 	{
 		this->has_no_more_items = true;
 	}
@@ -302,7 +304,7 @@ public:
 		if (this->item_iter != this->list->items.end()) item_next = (*this->item_iter).first;
 	}
 
-	SQInteger Next()
+	SQInteger Next() override
 	{
 		if (this->IsEnd()) return 0;
 
@@ -311,7 +313,7 @@ public:
 		return item_current;
 	}
 
-	void Remove(SQInteger item)
+	void Remove(SQInteger item) override
 	{
 		if (this->IsEnd()) return;
 
@@ -344,7 +346,7 @@ public:
 		this->End();
 	}
 
-	SQInteger Begin()
+	SQInteger Begin() override
 	{
 		if (this->list->items.empty()) return 0;
 		this->has_no_more_items = false;
@@ -358,7 +360,7 @@ public:
 		return item_current;
 	}
 
-	void End()
+	void End() override
 	{
 		this->has_no_more_items = true;
 	}
@@ -381,7 +383,7 @@ public:
 		if (this->item_iter != this->list->items.end()) item_next = (*this->item_iter).first;
 	}
 
-	SQInteger Next()
+	SQInteger Next() override
 	{
 		if (this->IsEnd()) return 0;
 
@@ -390,7 +392,7 @@ public:
 		return item_current;
 	}
 
-	void Remove(SQInteger item)
+	void Remove(SQInteger item) override
 	{
 		if (this->IsEnd()) return;
 
@@ -865,6 +867,14 @@ SQInteger ScriptList::Valuate(HSQUIRRELVM vm)
 	 * mid C++-code. */
 	bool backup_allow = ScriptObject::GetAllowDoCommand();
 	ScriptObject::SetAllowDoCommand(false);
+
+	/* Limit the total number of ops that can be consumed by a valuate operation */
+	SQInteger new_ops_error_threshold = vm->_ops_till_suspend_error_threshold;
+	if (vm->_ops_till_suspend_error_threshold == INT64_MIN) {
+		new_ops_error_threshold = vm->_ops_till_suspend - MAX_VALUATE_OPS;
+		vm->_ops_till_suspend_error_label = "valuator function";
+	}
+	AutoRestoreBackup ops_error_threshold_backup(vm->_ops_till_suspend_error_threshold, new_ops_error_threshold);
 
 	/* Push the function to call */
 	sq_push(vm, 2);

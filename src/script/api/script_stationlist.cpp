@@ -179,7 +179,7 @@ void ScriptStationList_CargoWaiting::Add(StationID station_id, CargoID cargo, St
 	StationCargoList::ConstIterator iter = collector.GE()->cargo.Packets()->begin();
 	StationCargoList::ConstIterator end = collector.GE()->cargo.Packets()->end();
 	for (; iter != end; ++iter) {
-		collector.Update<Tselector>((*iter)->SourceStation(), iter.GetKey(), (*iter)->Count());
+		collector.Update<Tselector>((*iter)->GetFirstStation(), iter.GetKey(), (*iter)->Count());
 	}
 }
 
@@ -218,7 +218,7 @@ ScriptStationList_CargoWaitingViaByFrom::ScriptStationList_CargoWaitingViaByFrom
 	std::pair<StationCargoList::ConstIterator, StationCargoList::ConstIterator> range =
 			collector.GE()->cargo.Packets()->equal_range(via);
 	for (StationCargoList::ConstIterator iter = range.first; iter != range.second; ++iter) {
-		collector.Update<CS_VIA_BY_FROM>((*iter)->SourceStation(), iter.GetKey(), (*iter)->Count());
+		collector.Update<CS_VIA_BY_FROM>((*iter)->GetFirstStation(), iter.GetKey(), (*iter)->Count());
 	}
 }
 

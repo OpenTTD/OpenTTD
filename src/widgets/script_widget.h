@@ -13,7 +13,7 @@
 #include "../company_type.h"
 
 /** Widgets of the #ScriptListWindow class. */
-enum ScriptListWidgets {
+enum ScriptListWidgets : WidgetID {
 	WID_SCRL_CAPTION,   ///< Caption of the window.
 	WID_SCRL_LIST,      ///< The matrix with all available Scripts.
 	WID_SCRL_SCROLLBAR, ///< Scrollbar next to the Script list.
@@ -23,23 +23,25 @@ enum ScriptListWidgets {
 };
 
 /** Widgets of the #ScriptSettingsWindow class. */
-enum ScriptSettingsWidgets {
+enum ScriptSettingsWidgets : WidgetID {
 	WID_SCRS_CAPTION,    ///< Caption of the window.
 	WID_SCRS_BACKGROUND, ///< Panel to draw the settings on.
 	WID_SCRS_SCROLLBAR,  ///< Scrollbar to scroll through all settings.
 	WID_SCRS_ACCEPT,     ///< Accept button.
 	WID_SCRS_RESET,      ///< Reset button.
+
+	WID_SCRS_SETTING_DROPDOWN = -1, ///< Dynamically created dropdown for changing setting value.
 };
 
 /** Widgets of the #ScriptDebugWindow class. */
-enum ScriptDebugWidgets {
+enum ScriptDebugWidgets : WidgetID {
 	WID_SCRD_VIEW,                 ///< The row of company buttons.
 	WID_SCRD_NAME_TEXT,            ///< Name of the current selected.
 	WID_SCRD_SETTINGS,             ///< Settings button.
 	WID_SCRD_SCRIPT_GAME,          ///< Game Script button.
 	WID_SCRD_RELOAD_TOGGLE,        ///< Reload button.
 	WID_SCRD_LOG_PANEL,            ///< Panel where the log is in.
-	WID_SCRD_SCROLLBAR,            ///< Scrollbar of the log panel.
+	WID_SCRD_VSCROLLBAR,           ///< Vertical scrollbar of the log panel.
 	WID_SCRD_COMPANY_BUTTON_START, ///< Buttons in the VIEW.
 	WID_SCRD_COMPANY_BUTTON_END = WID_SCRD_COMPANY_BUTTON_START + MAX_COMPANIES - 1, ///< Last possible button in the VIEW.
 	WID_SCRD_BREAK_STRING_WIDGETS, ///< The panel to handle the breaking on string.
@@ -47,6 +49,7 @@ enum ScriptDebugWidgets {
 	WID_SCRD_BREAK_STR_EDIT_BOX,   ///< Edit box for the string to break on.
 	WID_SCRD_MATCH_CASE_BTN,       ///< Checkbox to use match caching or not.
 	WID_SCRD_CONTINUE_BTN,         ///< Continue button.
+	WID_SCRD_HSCROLLBAR,           ///< Horizontal scrollbar of the log panel.
 };
 
 #endif /* WIDGETS_SCRIPT_WIDGET_H */

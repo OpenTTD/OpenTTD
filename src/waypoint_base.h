@@ -14,7 +14,7 @@
 
 /** Representation of a waypoint. */
 struct Waypoint FINAL : SpecializedStation<Waypoint, true> {
-	uint16 town_cn;    ///< The N-1th waypoint for this town (consecutive number)
+	uint16_t town_cn;    ///< The N-1th waypoint for this town (consecutive number)
 
 	/**
 	 * Create a waypoint at the given tile.
@@ -32,16 +32,16 @@ struct Waypoint FINAL : SpecializedStation<Waypoint, true> {
 		return IsRailWaypointTile(tile) && GetStationIndex(tile) == this->index;
 	}
 
-	uint32 GetNewGRFVariable(const struct ResolverObject &object, byte variable, byte parameter, bool *available) const override;
+	uint32_t GetNewGRFVariable(const struct ResolverObject &object, byte variable, byte parameter, bool *available) const override;
 
 	void GetTileArea(TileArea *ta, StationType type) const override;
 
-	uint GetPlatformLength(TileIndex tile, DiagDirection dir) const override
+	uint GetPlatformLength(TileIndex, DiagDirection) const override
 	{
 		return 1;
 	}
 
-	uint GetPlatformLength(TileIndex tile) const override
+	uint GetPlatformLength(TileIndex) const override
 	{
 		return 1;
 	}

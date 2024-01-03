@@ -1,6 +1,6 @@
 .\"                                      Hey, EMACS: -*- nroff -*-
 .\" Please adjust this date whenever revising the manpage.
-.Dd October 13, 2014
+.Dd August 12, 2023
 .Dt OPENTTD 6
 .Os
 .Sh NAME
@@ -8,7 +8,7 @@
 .Nd open source clone of the Microprose game \(lqTransport Tycoon Deluxe\(rq
 .Sh SYNOPSIS
 .Nm
-.Op Fl efhx
+.Op Fl efhQxX
 .Op Fl b Ar blitter
 .Op Fl c Ar config_file
 .Op Fl d Op Ar level | Ar cat Ns = Ns Ar lvl Ns Op , Ns Ar ...
@@ -19,7 +19,7 @@
 .Op Fl l Ar host Ns Op : Ns Ar port
 .Op Fl m Ar driver
 .Op Fl M Ar musicset
-.Op Fl n Ar host Ns Oo : Ns Ar port Oc Ns Op # Ns Ar player
+.Op Fl n Ar host Ns Oo : Ns Ar port Oc Ns Op # Ns Ar company
 .Op Fl p Ar password
 .Op Fl P Ar password
 .Op Fl q Ar savegame
@@ -29,7 +29,7 @@
 .Op Fl t Ar year
 .Op Fl v Ar driver
 .Sh OPTIONS
-.Bl -tag -width "-n host[:port][#player]"
+.Bl -tag -width "-n host[:port][#company]"
 .It Fl b Ar blitter
 Select the blitter
 .Ar blitter ;
@@ -83,10 +83,8 @@ see
 .Fl h
 for a full list.
 .It Fl l Ar host Ns Op : Ns Ar port
-Redirect
-.Fn DEBUG
-output; see
-.Fl D .
+Redirect debug output; see
+.Fl d .
 .It Fl m Ar driver
 Select the music driver
 .Ar driver ;
@@ -99,8 +97,8 @@ Select the music set
 see
 .Fl h
 for a full list.
-.It Fl n Ar host Ns Oo : Ns Ar port Oc Ns Op # Ns Ar player
-Join a network game, optionally specifying a port to connect to and player to
+.It Fl n Ar host Ns Oo : Ns Ar port Oc Ns Op # Ns Ar company
+Join a network game, optionally specifying a port to connect to and company to
 play as.
 .It Fl p Ar password
 Password used to join server.
@@ -112,6 +110,14 @@ Only useful with
 .Fl n .
 .It Fl q Ar savegame
 Write some information about the specified savegame and exit.
+.It Fl Q
+Don't scan for/load NewGRF files on startup.
+.Pp
+Passing
+.Fl Q
+twice (so,
+.Fl QQ
+) will disable NewGRF scanning/loading entirely.
 .It Fl r Ar width Ns x Ns Ar height
 Set the resolution to
 .Ar width
@@ -141,6 +147,8 @@ see
 for a full list.
 .It Fl x
 Do not automatically save to config file on exit.
+.It Fl X
+Do not use global folders to search for files.
 .El
 .Sh SEE ALSO
 .Lk https://wiki.openttd.org "Wiki"

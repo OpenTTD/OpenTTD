@@ -39,7 +39,7 @@ public:
 		this->DrawWidgets();
 	}
 
-	void DrawWidget(const Rect &r, int widget) const override
+	void DrawWidget(const Rect &r, WidgetID widget) const override
 	{
 		switch (widget) {
 			case WID_TT_SIGNS:
@@ -50,15 +50,15 @@ public:
 			case WID_TT_BRIDGES:
 			case WID_TT_STRUCTURES:
 			case WID_TT_CATENARY:
-			case WID_TT_LOADING: {
-				uint i = widget - WID_TT_BEGIN;
+			case WID_TT_TEXT: {
+				int i = widget - WID_TT_BEGIN;
 				if (HasBit(_transparency_lock, i)) DrawSprite(SPR_LOCK, PAL_NONE, r.left + WidgetDimensions::scaled.fullbevel.left, r.top + WidgetDimensions::scaled.fullbevel.top);
 				break;
 			}
 			case WID_TT_BUTTONS: {
 				const Rect fr = r.Shrink(WidgetDimensions::scaled.framerect);
-				for (uint i = WID_TT_BEGIN; i < WID_TT_END; i++) {
-					if (i == WID_TT_LOADING) continue; // Do not draw button for invisible loading indicators.
+				for (WidgetID i = WID_TT_BEGIN; i < WID_TT_END; i++) {
+					if (i == WID_TT_TEXT) continue; // Loading and cost/income text has no invisibility button.
 
 					const Rect wr = this->GetWidget<NWidgetBase>(i)->GetCurrentRect().Shrink(WidgetDimensions::scaled.fullbevel);
 					DrawFrameRect(wr.left, fr.top, wr.right, fr.bottom, COLOUR_PALE_GREEN,
@@ -69,7 +69,7 @@ public:
 		}
 	}
 
-	void OnClick(Point pt, int widget, int click_count) override
+	void OnClick([[maybe_unused]] Point pt, WidgetID widget, [[maybe_unused]] int click_count) override
 	{
 		if (widget >= WID_TT_BEGIN && widget < WID_TT_END) {
 			if (_ctrl_pressed) {
@@ -90,7 +90,7 @@ public:
 					break;
 				}
 			}
-			if (i == WID_TT_LOADING || i == WID_TT_END) return;
+			if (i == WID_TT_TEXT|| i == WID_TT_END) return;
 
 			ToggleInvisibility((TransparencyOption)(i - WID_TT_BEGIN));
 			if (_settings_client.sound.click_beep) SndPlayFx(SND_15_BEEP);
@@ -104,7 +104,7 @@ public:
 		}
 	}
 
-	Point OnInitialPosition(int16 sm_width, int16 sm_height, int window_number) override
+	Point OnInitialPosition([[maybe_unused]] int16_t sm_width, [[maybe_unused]] int16_t sm_height, [[maybe_unused]] int window_number) override
 	{
 		Point pt = GetToolbarAlignedWindowPosition(sm_width);
 		pt.y += 2 * (sm_height - this->GetWidget<NWidgetBase>(WID_TT_BUTTONS)->current_y);
@@ -116,10 +116,10 @@ public:
 	 * @param data Information about the changed data.
 	 * @param gui_scope Whether the call is done from GUI scope. You may not do everything when not in GUI scope. See #InvalidateWindowData() for details.
 	 */
-	void OnInvalidateData(int data = 0, bool gui_scope = true) override
+	void OnInvalidateData([[maybe_unused]] int data = 0, [[maybe_unused]] bool gui_scope = true) override
 	{
 		if (!gui_scope) return;
-		for (uint i = WID_TT_BEGIN; i < WID_TT_END; i++) {
+		for (WidgetID i = WID_TT_BEGIN; i < WID_TT_END; i++) {
 			this->SetWidgetLoweredState(i, IsTransparencySet((TransparencyOption)(i - WID_TT_BEGIN)));
 		}
 	}
@@ -140,7 +140,7 @@ static const NWidgetPart _nested_transparency_widgets[] = {
 		NWidget(WWT_IMGBTN, COLOUR_DARK_GREEN, WID_TT_BRIDGES), SetMinimalSize(43, 22), SetFill(0, 1), SetDataTip(SPR_IMG_BRIDGE, STR_TRANSPARENT_BRIDGES_TOOLTIP),
 		NWidget(WWT_IMGBTN, COLOUR_DARK_GREEN, WID_TT_STRUCTURES), SetMinimalSize(22, 22), SetFill(0, 1), SetDataTip(SPR_IMG_TRANSMITTER, STR_TRANSPARENT_STRUCTURES_TOOLTIP),
 		NWidget(WWT_IMGBTN, COLOUR_DARK_GREEN, WID_TT_CATENARY), SetMinimalSize(22, 22), SetFill(0, 1), SetDataTip(SPR_BUILD_X_ELRAIL, STR_TRANSPARENT_CATENARY_TOOLTIP),
-		NWidget(WWT_IMGBTN, COLOUR_DARK_GREEN, WID_TT_LOADING), SetMinimalSize(22, 22), SetFill(0, 1), SetDataTip(SPR_IMG_TRAINLIST, STR_TRANSPARENT_LOADING_TOOLTIP),
+		NWidget(WWT_IMGBTN, COLOUR_DARK_GREEN, WID_TT_TEXT), SetMinimalSize(22, 22), SetFill(0, 1), SetDataTip(SPR_IMG_TRAINLIST, STR_TRANSPARENT_TEXT_TOOLTIP),
 		NWidget(WWT_PANEL, COLOUR_DARK_GREEN), SetFill(1, 1), EndContainer(),
 	EndContainer(),
 	/* Panel with 'invisibility' buttons. */
@@ -148,11 +148,11 @@ static const NWidgetPart _nested_transparency_widgets[] = {
 	EndContainer(),
 };
 
-static WindowDesc _transparency_desc(
+static WindowDesc _transparency_desc(__FILE__, __LINE__,
 	WDP_MANUAL, "toolbar_transparency", 0, 0,
 	WC_TRANSPARENCY_TOOLBAR, WC_NONE,
 	0,
-	_nested_transparency_widgets, lengthof(_nested_transparency_widgets)
+	std::begin(_nested_transparency_widgets), std::end(_nested_transparency_widgets)
 );
 
 /**

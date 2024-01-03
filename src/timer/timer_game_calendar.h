@@ -10,7 +10,8 @@
 #ifndef TIMER_GAME_CALENDAR_H
 #define TIMER_GAME_CALENDAR_H
 
-#include "stdafx.h"
+#include "../stdafx.h"
+#include "../core/strong_typedef_type.hpp"
 
 /**
  * Timer that is increased every 27ms, and counts towards ticks / days / months / years.
@@ -32,9 +33,34 @@
  */
 class TimerGameCalendar {
 public:
+	/** The type to store our dates in. */
+	using Date = StrongType::Typedef<int32_t, struct DateTag, StrongType::Compare, StrongType::Integer>;
+
+	/** The fraction of a date we're in, i.e. the number of ticks since the last date changeover. */
+	using DateFract = uint16_t;
+
+	/** Type for the year, note: 0 based, i.e. starts at the year 0. */
+	using Year = StrongType::Typedef<int32_t, struct YearTag, StrongType::Compare, StrongType::Integer>;
+	/** Type for the month, note: 0 based, i.e. 0 = January, 11 = December. */
+	using Month = uint8_t;
+	/** Type for the day of the month, note: 1 based, first day of a month is 1. */
+	using Day = uint8_t;
+
+	/**
+	 * Data structure to convert between Date and triplet (year, month, and day).
+	 * @see TimerGameCalendar::ConvertDateToYMD(), TimerGameCalendar::ConvertYMDToDate()
+	 */
+	struct YearMonthDay {
+		Year  year;   ///< Year (0...)
+		Month month;  ///< Month (0..11)
+		Day   day;    ///< Day (1..31)
+	};
+
 	enum Trigger {
 		DAY,
+		WEEK,
 		MONTH,
+		QUARTER,
 		YEAR,
 	};
 	enum Priority {
@@ -74,32 +100,92 @@ public:
 	struct TStorage {
 	};
 
-	using Date = int32; ///< The type to store our dates in
-	using DateFract = uint16; ///< The fraction of a date we're in, i.e. the number of ticks since the last date changeover
-
-	using Year = int32; ///< Type for the year, note: 0 based, i.e. starts at the year 0.
-	using Month = uint8; ///< Type for the month, note: 0 based, i.e. 0 = January, 11 = December.
-	using Day = uint8; ///< Type for the day of the month, note: 1 based, first day of a month is 1.
+	static bool IsLeapYear(Year yr);
+	static YearMonthDay ConvertDateToYMD(Date date);
+	static Date ConvertYMDToDate(Year year, Month month, Day day);
+	static void SetDate(Date date, DateFract fract);
 
 	/**
-	 * Data structure to convert between Date and triplet (year, month, and day).
-	 * @see TimerGameCalendar::ConvertDateToYMD(), TimerGameCalendar::ConvertYMDToDate()
+	 * Calculate the year of a given date.
+	 * @param date The date to consider.
+	 * @return the year.
 	 */
-	struct YearMonthDay {
-		Year  year;   ///< Year (0...)
-		Month month;  ///< Month (0..11)
-		Day   day;    ///< Day (1..31)
-	};
+	static constexpr Year DateToYear(Date date)
+	{
+		/* Hardcode the number of days in a year because we can't access CalendarTime from here. */
+		return date.base() / 366;
+	}
 
-	static bool IsLeapYear(TimerGameCalendar::Year yr);
-	static void ConvertDateToYMD(TimerGameCalendar::Date date, YearMonthDay *ymd);
-	static TimerGameCalendar::Date ConvertYMDToDate(TimerGameCalendar::Year year, TimerGameCalendar::Month month, TimerGameCalendar::Day day);
-	static void SetDate(TimerGameCalendar::Date date, TimerGameCalendar::DateFract fract);
+	/**
+	 * Calculate the date of the first day of a given year.
+	 * @param year the year to get the first day of.
+	 * @return the date.
+	 */
+	static constexpr Date DateAtStartOfYear(Year year)
+	{
+		int32_t year_as_int = year.base();
+		uint number_of_leap_years = (year == 0) ? 0 : ((year_as_int - 1) / 4 - (year_as_int - 1) / 100 + (year_as_int - 1) / 400 + 1);
+
+		/* Hardcode the number of days in a year because we can't access CalendarTime from here. */
+		return (365 * year_as_int) + number_of_leap_years;
+	}
 
 	static Year year; ///< Current year, starting at 0.
 	static Month month; ///< Current month (0..11).
 	static Date date; ///< Current date in days (day counter).
 	static DateFract date_fract; ///< Fractional part of the day.
+};
+
+/**
+ * Storage class for Calendar time constants.
+ */
+class CalendarTime {
+public:
+	static constexpr int DAYS_IN_YEAR = 365; ///< days per year
+	static constexpr int DAYS_IN_LEAP_YEAR = 366; ///< sometimes, you need one day more...
+	static constexpr int MONTHS_IN_YEAR = 12; ///< months per year
+
+	static constexpr int SECONDS_PER_DAY = 2;   ///< approximate seconds per day, not for precise calculations
+
+	/*
+	 * ORIGINAL_BASE_YEAR, ORIGINAL_MAX_YEAR and DAYS_TILL_ORIGINAL_BASE_YEAR are
+	 * primarily used for loading newgrf and savegame data and returning some
+	 * newgrf (callback) functions that were in the original (TTD) inherited
+	 * format, where 'TimerGameCalendar::date == 0' meant that it was 1920-01-01.
+	 */
+
+	/** The minimum starting year/base year of the original TTD */
+	static constexpr TimerGameCalendar::Year ORIGINAL_BASE_YEAR = 1920;
+	/** The original ending year */
+	static constexpr TimerGameCalendar::Year ORIGINAL_END_YEAR = 2051;
+	/** The maximum year of the original TTD */
+	static constexpr TimerGameCalendar::Year ORIGINAL_MAX_YEAR = 2090;
+
+	/** The absolute minimum & maximum years in OTTD */
+	static constexpr TimerGameCalendar::Year MIN_YEAR = 0;
+
+	/** The default starting year */
+	static constexpr TimerGameCalendar::Year DEF_START_YEAR = 1950;
+	/** The default scoring end year */
+	static constexpr TimerGameCalendar::Year DEF_END_YEAR = ORIGINAL_END_YEAR - 1;
+
+	/**
+	 * MAX_YEAR, nicely rounded value of the number of years that can
+	 * be encoded in a single 32 bits date, about 2^31 / 366 years.
+	 */
+	static constexpr TimerGameCalendar::Year MAX_YEAR = 5000000;
+
+	/** The date of the first day of the original base year. */
+	static constexpr TimerGameCalendar::Date DAYS_TILL_ORIGINAL_BASE_YEAR = TimerGameCalendar::DateAtStartOfYear(ORIGINAL_BASE_YEAR);
+
+	/** The absolute minimum date. */
+	static constexpr TimerGameCalendar::Date MIN_DATE = 0;
+
+	/** The date of the last day of the max year. */
+	static constexpr TimerGameCalendar::Date MAX_DATE = TimerGameCalendar::DateAtStartOfYear(CalendarTime::MAX_YEAR + 1) - 1;
+
+	static constexpr TimerGameCalendar::Year INVALID_YEAR = -1; ///< Representation of an invalid year
+	static constexpr TimerGameCalendar::Date INVALID_DATE = -1; ///< Representation of an invalid date
 };
 
 #endif /* TIMER_GAME_CALENDAR_H */

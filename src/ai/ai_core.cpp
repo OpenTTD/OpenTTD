@@ -62,7 +62,7 @@
 
 	cur_company.Restore();
 
-	InvalidateWindowData(WC_SCRIPT_DEBUG, 0, -1);
+	InvalidateWindowClassesData(WC_SCRIPT_DEBUG, -1);
 	return;
 }
 
@@ -113,7 +113,7 @@
 
 	cur_company.Restore();
 
-	InvalidateWindowData(WC_SCRIPT_DEBUG, 0, -1);
+	InvalidateWindowClassesData(WC_SCRIPT_DEBUG, -1);
 	CloseWindowById(WC_SCRIPT_SETTINGS, company);
 }
 

@@ -84,7 +84,11 @@ static bool IsValidSearchPath(Searchpath sp)
 static void FillValidSearchPaths(bool only_local_path)
 {
 	_valid_searchpaths.clear();
+
+	std::set<std::string> seen{};
 	for (Searchpath sp = SP_FIRST_DIR; sp < NUM_SEARCHPATHS; sp++) {
+		if (sp == SP_WORKING_DIR) continue;
+
 		if (only_local_path) {
 			switch (sp) {
 				case SP_WORKING_DIR:      // Can be influence by "-c" option.
@@ -97,7 +101,18 @@ static void FillValidSearchPaths(bool only_local_path)
 			}
 		}
 
-		if (IsValidSearchPath(sp)) _valid_searchpaths.emplace_back(sp);
+		if (IsValidSearchPath(sp)) {
+			if (seen.count(_searchpaths[sp]) != 0) continue;
+			seen.insert(_searchpaths[sp]);
+			_valid_searchpaths.emplace_back(sp);
+		}
+	}
+
+	/* The working-directory is special, as it is controlled by _do_scan_working_directory.
+	 * Only add the search path if it isn't already in the set. To preserve the same order
+	 * as the enum, insert it in the front. */
+	if (IsValidSearchPath(SP_WORKING_DIR) && seen.count(_searchpaths[SP_WORKING_DIR]) == 0) {
+		_valid_searchpaths.insert(_valid_searchpaths.begin(), SP_WORKING_DIR);
 	}
 }
 
@@ -347,8 +362,6 @@ void FioCreateDirectory(const std::string &name)
 	 * of the time they are 'directory already exists' errors anyhow. */
 #if defined(_WIN32)
 	CreateDirectory(OTTD2FS(name).c_str(), nullptr);
-#elif defined(OS2) && !defined(__INNOTEK_LIBC__)
-	mkdir(OTTD2FS(name).c_str());
 #else
 	mkdir(OTTD2FS(name).c_str(), 0755);
 #endif
@@ -473,10 +486,10 @@ static std::string ExtractString(char *buffer, size_t buffer_length)
 {
 	size_t length = 0;
 	for (; length < buffer_length && buffer[length] != '\0'; length++) {}
-	return StrMakeValid(std::string(buffer, length));
+	return StrMakeValid(std::string_view(buffer, length));
 }
 
-bool TarScanner::AddFile(const std::string &filename, size_t basepath_length, const std::string &tar_filename)
+bool TarScanner::AddFile(const std::string &filename, size_t, [[maybe_unused]] const std::string &tar_filename)
 {
 	/* No tar within tar. */
 	assert(tar_filename.empty());
@@ -724,7 +737,7 @@ bool ExtractTar(const std::string &tar_filename, Subdirectory subdir)
 /**
  * Determine the base (personal dir and game data dir) paths
  * @param exe the path from the current path to the executable
- * @note defined in the OS related files (os2.cpp, win32.cpp, unix.cpp etc)
+ * @note defined in the OS related files (win32.cpp, unix.cpp etc)
  */
 extern void DetermineBasePaths(const char *exe);
 #else /* defined(_WIN32) */
@@ -738,26 +751,28 @@ extern void DetermineBasePaths(const char *exe);
  */
 static bool ChangeWorkingDirectoryToExecutable(const char *exe)
 {
-	char tmp[MAX_PATH];
-	strecpy(tmp, exe, lastof(tmp));
+	std::string path = exe;
 
-	bool success = false;
 #ifdef WITH_COCOA
-	char *app_bundle = strchr(tmp, '.');
-	while (app_bundle != nullptr && !StrStartsWithIgnoreCase(app_bundle, ".app")) app_bundle = strchr(&app_bundle[1], '.');
-
-	if (app_bundle != nullptr) *app_bundle = '\0';
-#endif /* WITH_COCOA */
-	char *s = strrchr(tmp, PATHSEPCHAR);
-	if (s != nullptr) {
-		*s = '\0';
-		if (chdir(tmp) != 0) {
-			Debug(misc, 0, "Directory with the binary does not exist?");
-		} else {
-			success = true;
+	for (size_t pos = path.find_first_of('.'); pos != std::string::npos; pos = path.find_first_of('.', pos + 1)) {
+		if (StrEqualsIgnoreCase(path.substr(pos, 4), ".app")) {
+			path.erase(pos);
+			break;
 		}
 	}
-	return success;
+#endif /* WITH_COCOA */
+
+	size_t pos = path.find_last_of(PATHSEPCHAR);
+	if (pos == std::string::npos) return false;
+
+	path.erase(pos);
+
+	if (chdir(path.c_str()) != 0) {
+		Debug(misc, 0, "Directory with the binary does not exist?");
+		return false;
+	}
+
+	return true;
 }
 
 /**
@@ -844,7 +859,7 @@ void DetermineBasePaths(const char *exe)
 	}
 #endif
 
-#if defined(OS2) || !defined(WITH_PERSONAL_DIR)
+#if !defined(WITH_PERSONAL_DIR)
 	_searchpaths[SP_PERSONAL_DIR].clear();
 #else
 	if (!homedir.empty()) {

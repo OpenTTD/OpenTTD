@@ -53,7 +53,7 @@ class Kdtree {
 	/** Create one new node in the tree, return its index in the pool */
 	size_t AddNode(const T &element)
 	{
-		if (this->free_list.size() == 0) {
+		if (this->free_list.empty()) {
 			this->nodes.emplace_back(element);
 			return this->nodes.size() - 1;
 		} else {
@@ -447,14 +447,14 @@ public:
 	}
 
 	/**
-	* Find all items contained within the given rectangle.
-	* @note Start coordinates are inclusive, end coordinates are exclusive. x1<x2 && y1<y2 is a precondition.
-	* @param x1 Start first coordinate, points found are greater or equals to this.
-	* @param y1 Start second coordinate, points found are greater or equals to this.
-	* @param x2 End first coordinate, points found are less than this.
-	* @param y2 End second coordinate, points found are less than this.
-	* @param outputter Callback used to return values from the search.
-	*/
+	 * Find all items contained within the given rectangle.
+	 * @note Start coordinates are inclusive, end coordinates are exclusive. x1<x2 && y1<y2 is a precondition.
+	 * @param x1 Start first coordinate, points found are greater or equals to this.
+	 * @param y1 Start second coordinate, points found are greater or equals to this.
+	 * @param x2 End first coordinate, points found are less than this.
+	 * @param y2 End second coordinate, points found are less than this.
+	 * @param outputter Callback used to return values from the search.
+	 */
 	template <typename Outputter>
 	void FindContained(CoordT x1, CoordT y1, CoordT x2, CoordT y2, const Outputter &outputter) const
 	{

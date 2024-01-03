@@ -26,7 +26,7 @@ SQLexer::~SQLexer()
 	_keywords->Release();
 }
 
-void SQLexer::APPEND_CHAR(WChar c)
+void SQLexer::APPEND_CHAR(char32_t c)
 {
 	char buf[4];
 	size_t chars = Utf8Encode(buf, c);
@@ -101,7 +101,7 @@ NORETURN void SQLexer::Error(const SQChar *err)
 
 void SQLexer::Next()
 {
-	WChar t = _readf(_up);
+	char32_t t = _readf(_up);
 	if(t > MAX_CHAR) Error("Invalid character");
 	if(t != 0) {
 		_currdata = t;
@@ -287,7 +287,7 @@ SQInteger SQLexer::GetIDType(SQChar *s)
 }
 
 
-SQInteger SQLexer::ReadString(WChar ndelim,bool verbatim)
+SQInteger SQLexer::ReadString(char32_t ndelim,bool verbatim)
 {
 	INIT_TEMP_STRING();
 	NEXT();

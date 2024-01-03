@@ -21,7 +21,7 @@
 #include <smmintrin.h>
 #endif
 
-#define META_LENGTH 2 ///< Number of uint32 inserted before each line of pixels in a sprite.
+#define META_LENGTH 2 ///< Number of uint32_t inserted before each line of pixels in a sprite.
 #define MARGIN_NORMAL_THRESHOLD (zoom == ZOOM_LVL_OUT_32X ? 8 : 4) ///< Minimum width to use margins with BM_NORMAL.
 #define MARGIN_REMAP_THRESHOLD 4 ///< Minimum width to use margins with BM_COLOUR_REMAP.
 
@@ -35,10 +35,10 @@
 
 typedef union ALIGN(16) um128i {
 	__m128i m128i;
-	uint8 m128i_u8[16];
-	uint16 m128i_u16[8];
-	uint32 m128i_u32[4];
-	uint64 m128i_u64[2];
+	uint8_t m128i_u8[16];
+	uint16_t m128i_u16[8];
+	uint32_t m128i_u32[4];
+	uint64_t m128i_u64[2];
 } um128i;
 
 #define CLEAR_HIGH_BYTE_MASK        _mm_setr_epi8(-1,  0, -1,  0, -1,  0, -1,  0, -1,  0, -1,  0, -1,  0, -1,  0)

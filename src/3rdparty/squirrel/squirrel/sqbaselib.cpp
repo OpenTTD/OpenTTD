@@ -13,7 +13,6 @@
 #include "sqfuncproto.h"
 #include "sqclosure.h"
 #include "sqclass.h"
-#include <stdarg.h>
 #include <ctype.h>
 
 #include "../../../safeguards.h"
@@ -102,7 +101,7 @@ static SQInteger base_getstackinfos(HSQUIRRELVM v)
 	SQInteger level;
 	SQStackInfos si;
 	SQInteger seq = 0;
-	const SQChar *name = NULL;
+	const SQChar *name = nullptr;
 	sq_getinteger(v, -1, &level);
 	if (SQ_SUCCEEDED(sq_stackinfos(v, level, &si)))
 	{
@@ -181,7 +180,7 @@ static SQInteger base_print(HSQUIRRELVM v)
 static SQInteger base_compilestring(HSQUIRRELVM v)
 {
 	SQInteger nargs=sq_gettop(v);
-	const SQChar *src=NULL,*name="unnamedbuffer";
+	const SQChar *src=nullptr,*name="unnamedbuffer";
 	SQInteger size;
 	sq_getstring(v,2,&src);
 	size=sq_getsize(v,2);
@@ -240,26 +239,26 @@ static SQInteger base_type(HSQUIRRELVM v)
 static SQRegFunction base_funcs[]={
 	//generic
 #ifdef EXPORT_DEFAULT_SQUIRREL_FUNCTIONS
-	{"seterrorhandler",base_seterrorhandler,2, NULL},
-	{"setdebughook",base_setdebughook,2, NULL},
-	{"enabledebuginfo",base_enabledebuginfo,2, NULL},
+	{"seterrorhandler",base_seterrorhandler,2, nullptr},
+	{"setdebughook",base_setdebughook,2, nullptr},
+	{"enabledebuginfo",base_enabledebuginfo,2, nullptr},
 	{"getstackinfos",base_getstackinfos,2, ".n"},
-	{"getroottable",base_getroottable,1, NULL},
-	{"setroottable",base_setroottable,2, NULL},
-	{"getconsttable",base_getconsttable,1, NULL},
-	{"setconsttable",base_setconsttable,2, NULL},
+	{"getroottable",base_getroottable,1, nullptr},
+	{"setroottable",base_setroottable,2, nullptr},
+	{"getconsttable",base_getconsttable,1, nullptr},
+	{"setconsttable",base_setconsttable,2, nullptr},
 #endif
 	{"assert",base_assert,2, nullptr},
 	{"print",base_print,2, nullptr},
 #ifdef EXPORT_DEFAULT_SQUIRREL_FUNCTIONS
 	{"compilestring",base_compilestring,-2, ".ss"},
 	{"newthread",base_newthread,2, ".c"},
-	{"suspend",base_suspend,-1, NULL},
+	{"suspend",base_suspend,-1, nullptr},
 #endif
 	{"array",base_array,-2, ".n"},
 	{"type",base_type,2, nullptr},
 #ifdef EXPORT_DEFAULT_SQUIRREL_FUNCTIONS
-	{"dummy",base_dummy,0,NULL},
+	{"dummy",base_dummy,0,nullptr},
 #ifndef NO_GARBAGE_COLLECTOR
 	{"collectgarbage",base_collectgarbage,1, "t"},
 #endif
@@ -560,7 +559,7 @@ bool _hsort_sift_down(HSQUIRRELVM v,SQArray *arr, SQInteger root, SQInteger bott
 	return true;
 }
 
-bool _hsort(HSQUIRRELVM v,SQObjectPtr &arr, SQInteger l, SQInteger r,SQInteger func)
+bool _hsort(HSQUIRRELVM v,SQObjectPtr &arr, SQInteger, SQInteger,SQInteger func)
 {
 	SQArray *a = _array(arr);
 	SQInteger i;
@@ -764,7 +763,7 @@ static SQInteger closure_getinfos(HSQUIRRELVM v) {
 		res->NewSlot(SQString::Create(_ss(v),"name",-1),nc->_name);
 		res->NewSlot(SQString::Create(_ss(v),"paramscheck",-1),nc->_nparamscheck);
 		SQObjectPtr typecheck;
-		if(nc->_typecheck.size() > 0) {
+		if(!nc->_typecheck.empty()) {
 			typecheck =
 				SQArray::Create(_ss(v), nc->_typecheck.size());
 			for(SQUnsignedInteger n = 0; n<nc->_typecheck.size(); n++) {

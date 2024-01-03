@@ -117,7 +117,6 @@ add_files(
     currency.h
     date_gui.cpp
     date_gui.h
-    date_type.h
     debug.cpp
     debug.h
     dedicated.cpp
@@ -202,6 +201,8 @@ add_files(
     gui.h
     heightmap.cpp
     heightmap.h
+    help_gui.cpp
+    help_gui.h
     highscore.cpp
     highscore.h
     highscore_gui.cpp
@@ -324,6 +325,8 @@ add_files(
     order_gui.cpp
     order_type.h
     osk_gui.cpp
+    palette.cpp
+    palette_func.h
     pbs.cpp
     pbs.h
     progress.cpp
@@ -397,6 +400,7 @@ add_files(
     sprite.h
     spritecache.cpp
     spritecache.h
+    spritecache_internal.h
     station.cpp
     station_base.h
     station_cmd.cpp
@@ -415,7 +419,6 @@ add_files(
     story_cmd.h
     story_gui.cpp
     story_type.h
-    strgen/strgen.h
     string.cpp
     string_base.h
     string_func.h
@@ -432,6 +435,8 @@ add_files(
     subsidy_func.h
     subsidy_gui.cpp
     subsidy_type.h
+    survey.cpp
+    survey.h
     tar_type.h
     terraform_cmd.cpp
     terraform_cmd.h
@@ -504,6 +509,7 @@ add_files(
     vehicle_type.h
     vehiclelist.cpp
     vehiclelist.h
+    vehiclelist_cmd.h
     viewport.cpp
     viewport_cmd.h
     viewport_func.h

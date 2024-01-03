@@ -187,6 +187,9 @@ STR_COLOUR_BROWN                                                :Bruna
 STR_COLOUR_GREY                                                 :Griza
 STR_COLOUR_WHITE                                                :Blanka
 
+###length 17
+
+
 # Units used in OpenTTD
 STR_UNITS_VELOCITY_IMPERIAL                                     :{DECIMAL} mph
 STR_UNITS_VELOCITY_METRIC                                       :{DECIMAL} km/h
@@ -213,6 +216,7 @@ STR_UNITS_FORCE_SI                                              :{DECIMAL} kN
 
 STR_UNITS_HEIGHT_IMPERIAL                                       :{DECIMAL} pd
 STR_UNITS_HEIGHT_SI                                             :{DECIMAL} m
+
 
 # Common window strings
 
@@ -292,58 +296,42 @@ STR_SETTINGS_MENU_FULL_DETAIL                                   :Plene detaloza
 STR_SETTINGS_MENU_TRANSPARENT_BUILDINGS                         :Diafana konstrukturi
 
 # File menu
-###length 5
 STR_FILE_MENU_SAVE_GAME                                         :Salvas ludo
 STR_FILE_MENU_LOAD_GAME                                         :Kargas ludo
 STR_FILE_MENU_QUIT_GAME                                         :Abandonas ludo
-STR_FILE_MENU_SEPARATOR                                         :
 STR_FILE_MENU_EXIT                                              :Ekiras
 
 # Map menu
-###length 4
 STR_MAP_MENU_MAP_OF_WORLD                                       :Mapo di mondo
 STR_MAP_MENU_SIGN_LIST                                          :Listo di signi
 
 # Town menu
-###length 2
 
 # Subsidies menu
-###length 1
 
 # Graph menu
-###length 6
 STR_GRAPH_MENU_INCOME_GRAPH                                     :Revenuo grafiko
 STR_GRAPH_MENU_DELIVERED_CARGO_GRAPH                            :Livrita kargajo grafiko
 
 # Company league menu
-###length 3
 
 # Industry menu
-###length 3
 
 # URailway construction menu
-###length 4
 
 # Road construction menu
-###length 2
 
 # Waterways construction menu
-###length 1
 
 # Aairport construction menu
-###length 1
 
 # Landscaping menu
-###length 3
 
 # Music menu
-###length 1
 
 # Message menu
-###length 3
 
 # About menu
-###length 10
 
 # Place in highscore window
 ###length 15
@@ -475,6 +463,7 @@ STR_GAME_OPTIONS_CAPTION                                        :{WHITE}Ludo Sel
 
 
 
+
 ###length 42
 
 
@@ -484,6 +473,7 @@ STR_GAME_OPTIONS_CAPTION                                        :{WHITE}Ludo Sel
 
 
 STR_GAME_OPTIONS_RESOLUTION_OTHER                               :altra
+
 
 
 
@@ -557,6 +547,7 @@ STR_CONFIG_SETTING_NONE                                         :Nulo
 
 ###length 3
 
+
 ###setting-zero-is-special
 
 
@@ -612,6 +603,8 @@ STR_CONFIG_SETTING_NONE                                         :Nulo
 ###length 3
 STR_CONFIG_SETTING_PLANE_CRASHES_NONE                           :nulo
 STR_CONFIG_SETTING_PLANE_CRASHES_NORMAL                         :normala
+
+
 
 
 
@@ -680,7 +673,7 @@ STR_CONFIG_SETTING_SMALLMAP_LAND_COLOUR_VIOLET                  :Violkolora
 
 ###length 3
 
-
+###length 3
 
 ###length 3
 
@@ -689,6 +682,7 @@ STR_CONFIG_SETTING_SMALLMAP_LAND_COLOUR_VIOLET                  :Violkolora
 
 
 
+###length 3
 
 
 
@@ -819,6 +813,8 @@ STR_QUIT_YES                                                    :{BLACK}Yes
 STR_QUIT_NO                                                     :{BLACK}Ne
 
 # Abandon game
+
+# Help window
 
 # Cheat window
 
@@ -1439,6 +1435,7 @@ STR_ORDER_GO_TO_STATION                                         :{STRING} {STATI
 
 
 
+
 # Date window (for timetable)
 
 
@@ -1461,7 +1458,7 @@ STR_AI_SETTINGS_SETTING                                         :{STRING}: {ORAN
 
 
 # Textfile window
-###length 4
+###length 5
 
 
 # Vehicle loading indicators

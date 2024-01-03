@@ -11,10 +11,11 @@
 #define NEWGRF_AIRPORT_H
 
 #include "airport.h"
-#include "date_type.h"
 #include "timer/timer_game_calendar.h"
 #include "newgrf_class.h"
 #include "newgrf_commons.h"
+#include "newgrf_spritegroup.h"
+#include "newgrf_town.h"
 #include "tilearea_type.h"
 
 /** Copy from station_map.h */
@@ -42,7 +43,7 @@ public:
 	{
 	}
 
-	inline TileIterator& operator ++()
+	inline TileIterator& operator ++() override
 	{
 		this->att++;
 		if (this->att->ti.x == -0x80) {
@@ -59,7 +60,7 @@ public:
 		return this->att->gfx;
 	}
 
-	virtual std::unique_ptr<TileIterator> Clone() const
+	std::unique_ptr<TileIterator> Clone() const override
 	{
 		return std::make_unique<AirportTileTableIterator>(*this);
 	}
@@ -113,7 +114,7 @@ struct AirportSpec {
 	TTDPAirportType ttd_airport_type;      ///< ttdpatch airport type (Small/Large/Helipad/Oilrig)
 	AirportClassID cls_id;                 ///< the class to which this airport type belongs
 	SpriteID preview_sprite;               ///< preview sprite for this airport
-	uint16 maintenance_cost;               ///< maintenance cost multiplier
+	uint16_t maintenance_cost;               ///< maintenance cost multiplier
 	/* Newgrf data */
 	bool enabled;                          ///< Entity still available (by default true). Newgrf can disable it, though.
 	struct GRFFileProps grf_prop;          ///< Properties related to the grf file.
@@ -144,6 +145,60 @@ typedef NewGRFClass<AirportSpec, AirportClassID, APC_MAX> AirportClass;
 
 void BindAirportSpecs();
 
-StringID GetAirportTextCallback(const AirportSpec *as, byte layout, uint16 callback);
+/** Resolver for the airport scope. */
+struct AirportScopeResolver : public ScopeResolver {
+	struct Station *st; ///< Station of the airport for which the callback is run, or \c nullptr for build gui.
+	byte airport_id;    ///< Type of airport for which the callback is run.
+	byte layout;        ///< Layout of the airport to build.
+	TileIndex tile;     ///< Tile for the callback, only valid for airporttile callbacks.
+
+	/**
+	 * Constructor of the scope resolver for an airport.
+	 * @param ro Surrounding resolver.
+	 * @param tile %Tile for the callback, only valid for airporttile callbacks.
+	 * @param st %Station of the airport for which the callback is run, or \c nullptr for build gui.
+	 * @param airport_id Type of airport for which the callback is run.
+	 * @param layout Layout of the airport to build.
+	 */
+	AirportScopeResolver(ResolverObject &ro, TileIndex tile, Station *st, byte airport_id, byte layout)
+		: ScopeResolver(ro), st(st), airport_id(airport_id), layout(layout), tile(tile)
+	{
+	}
+
+	uint32_t GetRandomBits() const override;
+	uint32_t GetVariable(byte variable, [[maybe_unused]] uint32_t parameter, bool *available) const override;
+	void StorePSA(uint pos, int32_t value) override;
+};
+
+
+/** Resolver object for airports. */
+struct AirportResolverObject : public ResolverObject {
+	AirportScopeResolver airport_scope;
+	std::unique_ptr<TownScopeResolver> town_scope; ///< The town scope resolver (created on the first call).
+
+	AirportResolverObject(TileIndex tile, Station *st, byte airport_id, byte layout,
+			CallbackID callback = CBID_NO_CALLBACK, uint32_t callback_param1 = 0, uint32_t callback_param2 = 0);
+
+	TownScopeResolver *GetTown();
+
+	ScopeResolver *GetScope(VarSpriteGroupScope scope = VSG_SCOPE_SELF, byte relative = 0) override
+	{
+		switch (scope) {
+			case VSG_SCOPE_SELF: return &this->airport_scope;
+			case VSG_SCOPE_PARENT:
+			{
+				TownScopeResolver *tsr = this->GetTown();
+				if (tsr != nullptr) return tsr;
+				FALLTHROUGH;
+			}
+			default: return ResolverObject::GetScope(scope, relative);
+		}
+	}
+
+	GrfSpecFeature GetFeature() const override;
+	uint32_t GetDebugID() const override;
+};
+
+StringID GetAirportTextCallback(const AirportSpec *as, byte layout, uint16_t callback);
 
 #endif /* NEWGRF_AIRPORT_H */

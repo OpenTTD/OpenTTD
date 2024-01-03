@@ -62,7 +62,7 @@ struct Object : ObjectPool::PoolItem<&_object_pool> {
 	 * @param type ObjectType to query
 	 * @pre type < NUM_OBJECTS
 	 */
-	static inline uint16 GetTypeCount(ObjectType type)
+	static inline uint16_t GetTypeCount(ObjectType type)
 	{
 		assert(type < NUM_OBJECTS);
 		return counts[type];
@@ -75,7 +75,7 @@ struct Object : ObjectPool::PoolItem<&_object_pool> {
 	}
 
 protected:
-	static uint16 counts[NUM_OBJECTS]; ///< Number of objects per type ingame
+	static uint16_t counts[NUM_OBJECTS]; ///< Number of objects per type ingame
 };
 
 /**

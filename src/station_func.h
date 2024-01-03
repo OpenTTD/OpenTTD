@@ -30,6 +30,8 @@ CargoArray GetProductionAroundTiles(TileIndex tile, int w, int h, int rad);
 CargoArray GetAcceptanceAroundTiles(TileIndex tile, int w, int h, int rad, CargoTypes *always_accepted = nullptr);
 
 void UpdateStationAcceptance(Station *st, bool show_msg);
+CargoTypes GetAcceptanceMask(const Station *st);
+CargoTypes GetEmptyMask(const Station *st);
 
 const DrawTileSprites *GetStationTileLayout(StationType st, byte gfx);
 void StationPickerDrawSprite(int x, int y, StationType st, RailType railtype, RoadType roadtype, int image);
@@ -40,20 +42,13 @@ void DeleteOilRig(TileIndex t);
 void UpdateStationDockingTiles(Station *st);
 void RemoveDockingTile(TileIndex t);
 void ClearDockingTilesCheckingNeighbours(TileIndex tile);
-bool IsValidDockingDirectionForDock(TileIndex t, DiagDirection d);
-
-/* Check if a rail station tile is traversable. */
-bool IsStationTileBlocked(TileIndex tile);
-
-bool CanStationTileHavePylons(TileIndex tile);
-bool CanStationTileHaveWires(TileIndex tile);
 
 void UpdateAirportsNoise();
 
 bool SplitGroundSpriteForOverlay(const TileInfo *ti, SpriteID *ground, RailTrackOffset *overlay_offset);
 
-void IncreaseStats(Station *st, const Vehicle *v, StationID next_station_id, uint32 time);
-void IncreaseStats(Station *st, CargoID cargo, StationID next_station_id, uint capacity, uint usage, uint32 time, EdgeUpdateMode mode);
+void IncreaseStats(Station *st, const Vehicle *v, StationID next_station_id, uint32_t time);
+void IncreaseStats(Station *st, CargoID cargo, StationID next_station_id, uint capacity, uint usage, uint32_t time, EdgeUpdateMode mode);
 void RerouteCargo(Station *st, CargoID c, StationID avoid, StationID avoid2);
 
 /**
@@ -61,7 +56,7 @@ void RerouteCargo(Station *st, CargoID c, StationID avoid, StationID avoid2);
  * @param num Number of station tiles.
  * @return Total cost.
  */
-static inline Money StationMaintenanceCost(uint32 num)
+static inline Money StationMaintenanceCost(uint32_t num)
 {
 	return (_price[PR_INFRASTRUCTURE_STATION] * num * (1 + IntSqrt(num))) >> 7; // 7 bits scaling.
 }

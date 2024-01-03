@@ -18,7 +18,7 @@
 SpriteGroupPool _spritegroup_pool("SpriteGroup");
 INSTANTIATE_POOL_METHODS(SpriteGroup)
 
-TemporaryStorageArray<int32, 0x110> _temp_store;
+TemporaryStorageArray<int32_t, 0x110> _temp_store;
 
 
 /**
@@ -53,9 +53,9 @@ TemporaryStorageArray<int32, 0x110> _temp_store;
 	}
 }
 
-static inline uint32 GetVariable(const ResolverObject &object, ScopeResolver *scope, byte variable, uint32 parameter, bool *available)
+static inline uint32_t GetVariable(const ResolverObject &object, ScopeResolver *scope, byte variable, uint32_t parameter, bool *available)
 {
-	uint32 value;
+	uint32_t value;
 	switch (variable) {
 		case 0x0C: return object.callback;
 		case 0x10: return object.callback_param1;
@@ -82,7 +82,7 @@ static inline uint32 GetVariable(const ResolverObject &object, ScopeResolver *sc
  * Get a few random bits. Default implementation has no random bits.
  * @return Random bits.
  */
-/* virtual */ uint32 ScopeResolver::GetRandomBits() const
+/* virtual */ uint32_t ScopeResolver::GetRandomBits() const
 {
 	return 0;
 }
@@ -91,7 +91,7 @@ static inline uint32 GetVariable(const ResolverObject &object, ScopeResolver *sc
  * Get the triggers. Base class returns \c 0 to prevent trouble.
  * @return The triggers.
  */
-/* virtual */ uint32 ScopeResolver::GetTriggers() const
+/* virtual */ uint32_t ScopeResolver::GetTriggers() const
 {
 	return 0;
 }
@@ -103,7 +103,7 @@ static inline uint32 GetVariable(const ResolverObject &object, ScopeResolver *sc
  * @param[out] available Set to false, in case the variable does not exist.
  * @return Value
  */
-/* virtual */ uint32 ScopeResolver::GetVariable(byte variable, uint32 parameter, bool *available) const
+/* virtual */ uint32_t ScopeResolver::GetVariable(byte variable, [[maybe_unused]] uint32_t parameter, bool *available) const
 {
 	Debug(grf, 1, "Unhandled scope variable 0x{:X}", variable);
 	*available = false;
@@ -112,10 +112,8 @@ static inline uint32 GetVariable(const ResolverObject &object, ScopeResolver *sc
 
 /**
  * Store a value into the persistent storage area (PSA). Default implementation does nothing (for newgrf classes without storage).
- * @param reg Position to store into.
- * @param value Value to store.
  */
-/* virtual */ void ScopeResolver::StorePSA(uint reg, int32 value) {}
+/* virtual */ void ScopeResolver::StorePSA(uint, int32_t) {}
 
 /**
  * Get the real sprites of the grf.
@@ -132,11 +130,9 @@ static inline uint32 GetVariable(const ResolverObject &object, ScopeResolver *sc
 
 /**
  * Get a resolver for the \a scope.
- * @param scope Scope to return.
- * @param relative Additional parameter for #VSG_SCOPE_RELATIVE.
  * @return The resolver for the requested scope.
  */
-/* virtual */ ScopeResolver *ResolverObject::GetScope(VarSpriteGroupScope scope, byte relative)
+/* virtual */ ScopeResolver *ResolverObject::GetScope(VarSpriteGroupScope, byte)
 {
 	return &this->default_scope;
 }
@@ -144,7 +140,7 @@ static inline uint32 GetVariable(const ResolverObject &object, ScopeResolver *sc
 /* Evaluate an adjustment for a variable of the given size.
  * U is the unsigned type and S is the signed type to use. */
 template <typename U, typename S>
-static U EvalAdjustT(const DeterministicSpriteGroupAdjust &adjust, ScopeResolver *scope, U last_value, uint32 value)
+static U EvalAdjustT(const DeterministicSpriteGroupAdjust &adjust, ScopeResolver *scope, U last_value, uint32_t value)
 {
 	value >>= adjust.shift_num;
 	value  &= adjust.and_mask;
@@ -173,26 +169,26 @@ static U EvalAdjustT(const DeterministicSpriteGroupAdjust &adjust, ScopeResolver
 		case DSGA_OP_STO:  _temp_store.StoreValue((U)value, (S)last_value); return last_value;
 		case DSGA_OP_RST:  return value;
 		case DSGA_OP_STOP: scope->StorePSA((U)value, (S)last_value); return last_value;
-		case DSGA_OP_ROR:  return ROR<uint32>((U)last_value, (U)value & 0x1F); // mask 'value' to 5 bits, which should behave the same on all architectures.
+		case DSGA_OP_ROR:  return ROR<uint32_t>((U)last_value, (U)value & 0x1F); // mask 'value' to 5 bits, which should behave the same on all architectures.
 		case DSGA_OP_SCMP: return ((S)last_value == (S)value) ? 1 : ((S)last_value < (S)value ? 0 : 2);
 		case DSGA_OP_UCMP: return ((U)last_value == (U)value) ? 1 : ((U)last_value < (U)value ? 0 : 2);
-		case DSGA_OP_SHL:  return (uint32)(U)last_value << ((U)value & 0x1F); // Same behaviour as in ParamSet, mask 'value' to 5 bits, which should behave the same on all architectures.
-		case DSGA_OP_SHR:  return (uint32)(U)last_value >> ((U)value & 0x1F);
-		case DSGA_OP_SAR:  return (int32)(S)last_value >> ((U)value & 0x1F);
+		case DSGA_OP_SHL:  return (uint32_t)(U)last_value << ((U)value & 0x1F); // Same behaviour as in ParamSet, mask 'value' to 5 bits, which should behave the same on all architectures.
+		case DSGA_OP_SHR:  return (uint32_t)(U)last_value >> ((U)value & 0x1F);
+		case DSGA_OP_SAR:  return (int32_t)(S)last_value >> ((U)value & 0x1F);
 		default:           return value;
 	}
 }
 
 
-static bool RangeHighComparator(const DeterministicSpriteGroupRange& range, uint32 value)
+static bool RangeHighComparator(const DeterministicSpriteGroupRange& range, uint32_t value)
 {
 	return range.high < value;
 }
 
 const SpriteGroup *DeterministicSpriteGroup::Resolve(ResolverObject &object) const
 {
-	uint32 last_value = 0;
-	uint32 value = 0;
+	uint32_t last_value = 0;
+	uint32_t value = 0;
 
 	ScopeResolver *scope = object.GetScope(this->var_scope);
 
@@ -221,9 +217,9 @@ const SpriteGroup *DeterministicSpriteGroup::Resolve(ResolverObject &object) con
 		}
 
 		switch (this->size) {
-			case DSG_SIZE_BYTE:  value = EvalAdjustT<uint8,  int8> (adjust, scope, last_value, value); break;
-			case DSG_SIZE_WORD:  value = EvalAdjustT<uint16, int16>(adjust, scope, last_value, value); break;
-			case DSG_SIZE_DWORD: value = EvalAdjustT<uint32, int32>(adjust, scope, last_value, value); break;
+			case DSG_SIZE_BYTE:  value = EvalAdjustT<uint8_t,  int8_t> (adjust, scope, last_value, value); break;
+			case DSG_SIZE_WORD:  value = EvalAdjustT<uint16_t, int16_t>(adjust, scope, last_value, value); break;
+			case DSG_SIZE_DWORD: value = EvalAdjustT<uint32_t, int32_t>(adjust, scope, last_value, value); break;
 			default: NOT_REACHED();
 		}
 		last_value = value;
@@ -271,7 +267,7 @@ const SpriteGroup *RandomizedSpriteGroup::Resolve(ResolverObject &object) const
 		}
 	}
 
-	uint32 mask = ((uint)this->groups.size() - 1) << this->lowest_randbit;
+	uint32_t mask = ((uint)this->groups.size() - 1) << this->lowest_randbit;
 	byte index = (scope->GetRandomBits() & mask) >> this->lowest_randbit;
 
 	return SpriteGroup::Resolve(this->groups[index], object, false);
@@ -290,7 +286,7 @@ const SpriteGroup *RealSpriteGroup::Resolve(ResolverObject &object) const
  * @param[in,out] stage Construction stage (0-3), or nullptr if not applicable.
  * @return sprite layout to draw.
  */
-const DrawTileSprites *TileLayoutSpriteGroup::ProcessRegisters(uint8 *stage) const
+const DrawTileSprites *TileLayoutSpriteGroup::ProcessRegisters(uint8_t *stage) const
 {
 	if (!this->dts.NeedsPreprocessing()) {
 		if (stage != nullptr && this->dts.consistent_max_offset > 0) *stage = GetConstructionStageOffset(*stage, this->dts.consistent_max_offset);
@@ -298,7 +294,7 @@ const DrawTileSprites *TileLayoutSpriteGroup::ProcessRegisters(uint8 *stage) con
 	}
 
 	static DrawTileSprites result;
-	uint8 actual_stage = stage != nullptr ? *stage : 0;
+	uint8_t actual_stage = stage != nullptr ? *stage : 0;
 	this->dts.PrepareLayout(0, 0, 0, actual_stage, false);
 	this->dts.ProcessRegisters(0, 0, false);
 	result.seq = this->dts.GetLayout(&result.ground);

@@ -35,53 +35,22 @@ struct QueryString {
 	 * @param size Maximum size in bytes.
 	 * @param chars Maximum size in chars.
 	 */
-	QueryString(uint16 size, uint16 chars = UINT16_MAX) : ok_button(ACTION_NOTHING), cancel_button(ACTION_DESELECT), text(size, chars)
+	QueryString(uint16_t size, uint16_t chars = UINT16_MAX) : ok_button(ACTION_NOTHING), cancel_button(ACTION_DESELECT), text(size, chars)
 	{
 	}
 
 public:
-	void DrawEditBox(const Window *w, int wid) const;
-	void ClickEditBox(Window *w, Point pt, int wid, int click_count, bool focus_changed);
-	void HandleEditBox(Window *w, int wid);
+	void DrawEditBox(const Window *w, WidgetID wid) const;
+	void ClickEditBox(Window *w, Point pt, WidgetID wid, int click_count, bool focus_changed);
+	void HandleEditBox(Window *w, WidgetID wid);
 
-	Point GetCaretPosition(const Window *w, int wid) const;
-	Rect GetBoundingRect(const Window *w, int wid, const char *from, const char *to) const;
-	ptrdiff_t GetCharAtPosition(const Window *w, int wid, const Point &pt) const;
-
-	/**
-	 * Get the current text.
-	 * @return Current text.
-	 */
-	const char *GetText() const
-	{
-		return this->text.buf;
-	}
-
-	/**
-	 * Get the position of the caret in the text buffer.
-	 * @return Pointer to the caret in the text buffer.
-	 */
-	const char *GetCaret() const
-	{
-		return this->text.buf + this->text.caretpos;
-	}
-
-	/**
-	 * Get the currently marked text.
-	 * @param[out] length Length of the marked text.
-	 * @return Beginning of the marked area or nullptr if no text is marked.
-	 */
-	const char *GetMarkedText(size_t *length) const
-	{
-		if (this->text.markend == 0) return nullptr;
-
-		*length = this->text.markend - this->text.markpos;
-		return this->text.buf + this->text.markpos;
-	}
+	Point GetCaretPosition(const Window *w, WidgetID wid) const;
+	Rect GetBoundingRect(const Window *w, WidgetID wid, const char *from, const char *to) const;
+	ptrdiff_t GetCharAtPosition(const Window *w, WidgetID wid, const Point &pt) const;
 };
 
-void ShowOnScreenKeyboard(Window *parent, int button);
-void UpdateOSKOriginalText(const Window *parent, int button);
-bool IsOSKOpenedFor(const Window *w, int button);
+void ShowOnScreenKeyboard(Window *parent, WidgetID button);
+void UpdateOSKOriginalText(const Window *parent, WidgetID button);
+bool IsOSKOpenedFor(const Window *w, WidgetID button);
 
 #endif /* QUERYSTRING_GUI_H */

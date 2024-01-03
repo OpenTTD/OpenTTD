@@ -60,7 +60,7 @@ protected:
 	void ClientSizeChanged(int w, int h, bool force = false);
 
 	/** Get screen depth to use for fullscreen mode. */
-	virtual uint8 GetFullscreenBpp();
+	virtual uint8_t GetFullscreenBpp();
 	/** (Re-)create the backing store. */
 	virtual bool AllocateBackingStore(int w, int h, bool force = false) = 0;
 	/** Get a pointer to the video buffer. */
@@ -136,7 +136,7 @@ public:
 	void ClearSystemSprites() override;
 
 	bool HasAnimBuffer() override { return true; }
-	uint8 *GetAnimBuffer() override { return this->anim_buffer; }
+	uint8_t *GetAnimBuffer() override { return this->anim_buffer; }
 
 	void ToggleVsync(bool vsync) override;
 
@@ -147,17 +147,17 @@ public:
 protected:
 	HDC    dc;          ///< Window device context.
 	HGLRC  gl_rc;       ///< OpenGL context.
-	uint8 *anim_buffer; ///< Animation buffer from OpenGL back-end.
+	uint8_t *anim_buffer; ///< Animation buffer from OpenGL back-end.
 	std::string driver_info; ///< Information string about selected driver.
 
-	uint8 GetFullscreenBpp() override { return 32; } // OpenGL is always 32 bpp.
+	uint8_t GetFullscreenBpp() override { return 32; } // OpenGL is always 32 bpp.
 
 	void Paint() override;
 
 	bool AllocateBackingStore(int w, int h, bool force = false) override;
 	void *GetVideoPointer() override;
 	void ReleaseVideoPointer() override;
-	void PaletteChanged(HWND hWnd) override {}
+	void PaletteChanged(HWND) override {}
 
 	const char *AllocateContext();
 	void DestroyContext();

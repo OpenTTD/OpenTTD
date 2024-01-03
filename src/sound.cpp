@@ -75,8 +75,8 @@ static void OpenBankFile(const std::string &filename)
 
 			/* Read riff tags */
 			for (;;) {
-				uint32 tag = original_sound_file->ReadDword();
-				uint32 size = original_sound_file->ReadDword();
+				uint32_t tag = original_sound_file->ReadDword();
+				uint32_t size = original_sound_file->ReadDword();
 
 				if (tag == ' tmf') {
 					original_sound_file->ReadWord();                          // wFormatTag
@@ -119,7 +119,7 @@ static bool SetBankSource(MixerChannel *mc, const SoundEntry *sound)
 	/* Check for valid sound size. */
 	if (sound->file_size == 0 || sound->file_size > ((size_t)-1) - 2) return false;
 
-	int8 *mem = MallocT<int8>(sound->file_size + 2);
+	int8_t *mem = MallocT<int8_t>(sound->file_size + 2);
 	/* Add two extra bytes so rate conversion can read these
 	 * without reading out of its input buffer. */
 	mem[sound->file_size    ] = 0;
@@ -139,7 +139,7 @@ static bool SetBankSource(MixerChannel *mc, const SoundEntry *sound)
 #if TTD_ENDIAN == TTD_BIG_ENDIAN
 	if (sound->bits_per_sample == 16) {
 		uint num_samples = sound->file_size / 2;
-		int16 *samples = (int16 *)mem;
+		int16_t *samples = (int16_t *)mem;
 		for (uint i = 0; i < num_samples; i++) {
 			samples[i] = BSWAP16(samples[i]);
 		}
@@ -195,7 +195,7 @@ static void StartSound(SoundID sound_id, float pan, uint volume)
 
 
 static const byte _vol_factor_by_zoom[] = {255, 255, 255, 190, 134, 87};
-static_assert(lengthof(_vol_factor_by_zoom) == ZOOM_LVL_COUNT);
+static_assert(lengthof(_vol_factor_by_zoom) == ZOOM_LVL_END);
 
 static const byte _sound_base_vol[] = {
 	128,  90, 128, 128, 128, 128, 128, 128,
@@ -258,7 +258,7 @@ static void SndPlayScreenCoordFx(SoundID sound, int left, int right, int top, in
 			StartSound(
 				sound,
 				panning,
-				_vol_factor_by_zoom[vp->zoom - ZOOM_LVL_BEGIN]
+				_vol_factor_by_zoom[vp->zoom]
 			);
 			return;
 		}

@@ -30,18 +30,15 @@ enum CharSetFilter {
 	CS_HEXADECIMAL,       ///< Only hexadecimal characters
 };
 
-/** Type for wide characters, i.e. non-UTF8 encoded unicode characters. */
-typedef char32_t WChar;
-
 /* The following are directional formatting codes used to get the LTR and RTL strings right:
  * http://www.unicode.org/unicode/reports/tr9/#Directional_Formatting_Codes */
-static const WChar CHAR_TD_LRM = 0x200E; ///< The next character acts like a left-to-right character.
-static const WChar CHAR_TD_RLM = 0x200F; ///< The next character acts like a right-to-left character.
-static const WChar CHAR_TD_LRE = 0x202A; ///< The following text is embedded left-to-right.
-static const WChar CHAR_TD_RLE = 0x202B; ///< The following text is embedded right-to-left.
-static const WChar CHAR_TD_LRO = 0x202D; ///< Force the following characters to be treated as left-to-right characters.
-static const WChar CHAR_TD_RLO = 0x202E; ///< Force the following characters to be treated as right-to-left characters.
-static const WChar CHAR_TD_PDF = 0x202C; ///< Restore the text-direction state to before the last LRE, RLE, LRO or RLO.
+static const char32_t CHAR_TD_LRM = 0x200E; ///< The next character acts like a left-to-right character.
+static const char32_t CHAR_TD_RLM = 0x200F; ///< The next character acts like a right-to-left character.
+static const char32_t CHAR_TD_LRE = 0x202A; ///< The following text is embedded left-to-right.
+static const char32_t CHAR_TD_RLE = 0x202B; ///< The following text is embedded right-to-left.
+static const char32_t CHAR_TD_LRO = 0x202D; ///< Force the following characters to be treated as left-to-right characters.
+static const char32_t CHAR_TD_RLO = 0x202E; ///< Force the following characters to be treated as right-to-left characters.
+static const char32_t CHAR_TD_PDF = 0x202C; ///< Restore the text-direction state to before the last LRE, RLE, LRO or RLO.
 
 /** Settings for the string validation. */
 enum StringValidationSettings {

@@ -18,18 +18,18 @@ struct MixerChannel;
  * @param buffer Pointer to interleaved 2-channel signed 16 bit PCM data buffer, guaranteed to be 0-initialized.
  * @param samples number of samples that must be filled into \c buffer.
  */
-typedef void(*MxStreamCallback)(int16 *buffer, size_t samples);
+typedef void(*MxStreamCallback)(int16_t *buffer, size_t samples);
 
 bool MxInitialize(uint rate);
 void MxMixSamples(void *buffer, uint samples);
 
 MixerChannel *MxAllocateChannel();
-void MxSetChannelRawSrc(MixerChannel *mc, int8 *mem, size_t size, uint rate, bool is16bit);
+void MxSetChannelRawSrc(MixerChannel *mc, int8_t *mem, size_t size, uint rate, bool is16bit);
 void MxSetChannelVolume(MixerChannel *mc, uint volume, float pan);
 void MxActivateChannel(MixerChannel*);
 
-uint32 MxSetMusicSource(MxStreamCallback music_callback);
+uint32_t MxSetMusicSource(MxStreamCallback music_callback);
 
-void SetEffectVolume(uint8 volume);
+void SetEffectVolume(uint8_t volume);
 
 #endif /* MIXER_H */

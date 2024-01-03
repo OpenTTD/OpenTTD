@@ -12,7 +12,7 @@
 
 #include "core/enum_type.hpp"
 
-static const uint32 GOAL_QUESTION_BUTTON_COUNT = 18; ///< Amount of buttons available.
+static const uint32_t GOAL_QUESTION_BUTTON_COUNT = 18; ///< Amount of buttons available.
 
 enum GoalQuestionType : byte {
 	GQT_QUESTION = 0,
@@ -32,9 +32,9 @@ enum GoalType : byte {
 	GT_STORY_PAGE,   ///< Destination is a story page
 };
 
-typedef uint32 GoalTypeID; ///< Contains either tile, industry ID, town ID, company ID, or story page ID
+typedef uint32_t GoalTypeID; ///< Contains either tile, industry ID, town ID, company ID, or story page ID
 
-typedef uint16 GoalID; ///< ID of a goal
+typedef uint16_t GoalID; ///< ID of a goal
 struct Goal;
 static const GoalID INVALID_GOAL = 0xFFFF; ///< Constant representing a non-existing goal.
 

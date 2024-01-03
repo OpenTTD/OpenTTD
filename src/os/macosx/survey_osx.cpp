@@ -7,20 +7,16 @@
 
 /** @file survey_osx.cpp OSX implementation of OS-specific survey information. */
 
-#ifdef WITH_NLOHMANN_JSON
-
 #include "../../stdafx.h"
 
 #include "../../3rdparty/fmt/format.h"
+#include "../../survey.h"
 #include "macos.h"
 
 #include <mach-o/arch.h>
-#include <nlohmann/json.hpp>
 #include <thread>
 
 #include "../../safeguards.h"
-
-extern std::string SurveyMemoryToText(uint64_t memory);
 
 void SurveyOS(nlohmann::json &json)
 {
@@ -38,5 +34,3 @@ void SurveyOS(nlohmann::json &json)
 	json["memory"] = SurveyMemoryToText(MacOSGetPhysicalMemory());
 	json["hardware_concurrency"] = std::thread::hardware_concurrency();
 }
-
-#endif /* WITH_NLOHMANN_JSON */

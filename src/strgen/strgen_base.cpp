@@ -189,7 +189,7 @@ struct Buffer : std::vector<byte> {
 	 * Add an Unicode character encoded in UTF-8 to the buffer.
 	 * @param value The character to add.
 	 */
-	void AppendUtf8(uint32 value)
+	void AppendUtf8(uint32_t value)
 	{
 		if (value < 0x80) {
 			this->push_back(value);
@@ -213,7 +213,7 @@ struct Buffer : std::vector<byte> {
 
 size_t Utf8Validate(const char *s)
 {
-	uint32 c;
+	uint32_t c;
 
 	if (!HasBit(s[0], 7)) {
 		/* 1 byte */
@@ -325,7 +325,7 @@ static void EmitWordList(Buffer *buffer, const std::vector<const char *> &words,
 	}
 }
 
-void EmitPlural(Buffer *buffer, char *buf, int value)
+void EmitPlural(Buffer *buffer, char *buf, int)
 {
 	int argidx = _cur_argidx;
 	int offset = -1;
@@ -378,7 +378,7 @@ void EmitPlural(Buffer *buffer, char *buf, int value)
 }
 
 
-void EmitGender(Buffer *buffer, char *buf, int value)
+void EmitGender(Buffer *buffer, char *buf, int)
 {
 	int argidx = _cur_argidx;
 	int offset = 0;
@@ -435,7 +435,7 @@ static uint ResolveCaseName(const char *str, size_t len)
 	memcpy(case_str, str, len);
 	case_str[len] = '\0';
 
-	uint8 case_idx = _lang.GetCaseIndex(case_str);
+	uint8_t case_idx = _lang.GetCaseIndex(case_str);
 	if (case_idx >= MAX_NUM_CASES) StrgenFatal("Invalid case-name '{}'", case_str);
 	return case_idx + 1;
 }
@@ -531,7 +531,7 @@ StringReader::StringReader(StringData &data, const std::string &file, bool maste
 {
 }
 
-ParsedCommandStruct ExtractCommandString(const char *s, bool warnings)
+ParsedCommandStruct ExtractCommandString(const char *s, bool)
 {
 	char param[MAX_COMMAND_PARAM_SIZE];
 	int argno;
@@ -663,7 +663,7 @@ void StringReader::HandleString(char *str)
 		size_t len = Utf8Validate(tmp);
 		if (len == 0) StrgenFatal("Invalid UTF-8 sequence in '{}'", s);
 
-		WChar c;
+		char32_t c;
 		Utf8Decode(&c, tmp);
 		if (c <= 0x001F || // ASCII control character range
 				c == 0x200B || // Zero width space
@@ -739,16 +739,13 @@ void StringReader::HandlePragma(char *str)
 	}
 }
 
-static void rstrip(char *buf)
+static void StripTrailingWhitespace(std::string &str)
 {
-	size_t i = strlen(buf);
-	while (i > 0 && (buf[i - 1] == '\r' || buf[i - 1] == '\n' || buf[i - 1] == ' ')) i--;
-	buf[i] = '\0';
+	str.erase(str.find_last_not_of("\r\n ") + 1);
 }
 
 void StringReader::ParseFile()
 {
-	char buf[2048];
 	_warnings = _errors = 0;
 
 	_translation = this->translation;
@@ -765,9 +762,12 @@ void StringReader::ParseFile()
 	strecpy(_lang.digit_decimal_separator, ".", lastof(_lang.digit_decimal_separator));
 
 	_cur_line = 1;
-	while (this->data.next_string_id < this->data.max_strings && this->ReadLine(buf, lastof(buf)) != nullptr) {
-		rstrip(buf);
-		this->HandleString(buf);
+	while (this->data.next_string_id < this->data.max_strings) {
+		std::optional<std::string> line = this->ReadLine();
+		if (!line.has_value()) return;
+
+		StripTrailingWhitespace(line.value());
+		this->HandleString(line.value().data());
 		_cur_line++;
 	}
 

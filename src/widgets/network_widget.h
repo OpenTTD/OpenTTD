@@ -11,7 +11,7 @@
 #define WIDGETS_NETWORK_WIDGET_H
 
 /** Widgets of the #NetworkGameWindow class. */
-enum NetworkGameWidgets {
+enum NetworkGameWidgets : WidgetID {
 	WID_NG_MAIN,               ///< Main panel.
 
 	WID_NG_CLIENT_LABEL,       ///< Label in front of client name edit box.
@@ -19,7 +19,6 @@ enum NetworkGameWidgets {
 	WID_NG_FILTER_LABEL,       ///< Label in front of the filter/search edit box.
 	WID_NG_FILTER,             ///< Panel with the edit box to enter the search text.
 
-	WID_NG_HEADER,             ///< Header container of the matrix.
 	WID_NG_NAME,               ///< 'Name' button.
 	WID_NG_CLIENTS,            ///< 'Clients' button.
 	WID_NG_MAPSIZE,            ///< 'Map size' button.
@@ -35,7 +34,6 @@ enum NetworkGameWidgets {
 	WID_NG_LASTJOINED_SPACER,  ///< Spacer after last joined server panel.
 
 	WID_NG_DETAILS,            ///< Panel with game details.
-	WID_NG_DETAILS_SPACER,     ///< Spacer for game actual details.
 	WID_NG_JOIN,               ///< 'Join game' button.
 	WID_NG_REFRESH,            ///< 'Refresh server' button.
 	WID_NG_NEWGRF,             ///< 'NewGRF Settings' button.
@@ -51,7 +49,7 @@ enum NetworkGameWidgets {
 };
 
 /** Widgets of the #NetworkStartServerWindow class. */
-enum NetworkStartServerWidgets {
+enum NetworkStartServerWidgets : WidgetID {
 	WID_NSS_BACKGROUND,        ///< Background of the window.
 	WID_NSS_GAMENAME_LABEL,    ///< Label for the game name.
 	WID_NSS_GAMENAME,          ///< Background for editbox to set game name.
@@ -76,7 +74,7 @@ enum NetworkStartServerWidgets {
 };
 
 /** Widgets of the #NetworkClientListWindow class. */
-enum ClientListWidgets {
+enum ClientListWidgets : WidgetID {
 	WID_CL_PANEL,                      ///< Panel of the window.
 	WID_CL_SERVER_SELECTOR,            ///< Selector to hide the server frame.
 	WID_CL_SERVER_NAME,                ///< Server name.
@@ -93,14 +91,14 @@ enum ClientListWidgets {
 };
 
 /** Widgets of the #NetworkJoinStatusWindow class. */
-enum NetworkJoinStatusWidgets {
+enum NetworkJoinStatusWidgets : WidgetID {
 	WID_NJS_PROGRESS_BAR,  ///< Simple progress bar.
 	WID_NJS_PROGRESS_TEXT, ///< Text explaining what is happening.
 	WID_NJS_CANCELOK,      ///< Cancel / OK button.
 };
 
 /** Widgets of the #NetworkCompanyPasswordWindow class. */
-enum NetworkCompanyPasswordWidgets {
+enum NetworkCompanyPasswordWidgets : WidgetID {
 	WID_NCP_BACKGROUND,               ///< Background of the window.
 	WID_NCP_LABEL,                    ///< Label in front of the password field.
 	WID_NCP_PASSWORD,                 ///< Input field for the password.
@@ -111,7 +109,7 @@ enum NetworkCompanyPasswordWidgets {
 };
 
 /** Widgets of the #NetworkAskRelayWindow class. */
-enum NetworkAskRelayWidgets {
+enum NetworkAskRelayWidgets : WidgetID {
 	WID_NAR_CAPTION,    ///< Caption of the window.
 	WID_NAR_TEXT,       ///< Text in the window.
 	WID_NAR_NO,         ///< "No" button.
@@ -120,7 +118,7 @@ enum NetworkAskRelayWidgets {
 };
 
 /** Widgets of the #NetworkAskSurveyWindow class. */
-enum NetworkAskSurveyWidgets {
+enum NetworkAskSurveyWidgets : WidgetID {
 	WID_NAS_CAPTION,    ///< Caption of the window.
 	WID_NAS_TEXT,       ///< Text in the window.
 	WID_NAS_PREVIEW,    ///< "Preview" button.

@@ -11,7 +11,7 @@
 #define WIDGETS_GROUP_WIDGET_H
 
 /** Widgets of the #VehicleGroupWindow class. */
-enum GroupListWidgets {
+enum GroupListWidgets : WidgetID {
 	WID_GL_CAPTION,                  ///< Caption of the window.
 	WID_GL_GROUP_BY_ORDER,           ///< Group order.
 	WID_GL_GROUP_BY_DROPDOWN,        ///< Group by dropdown list.

@@ -39,38 +39,30 @@ jobs:
       run: |
         tar -xf source.tar.gz --strip-components=1
 
+    - name: Install Rust toolchain
+      uses: dtolnay/rust-toolchain@stable
+
+    - name: Enable Rust cache
+      uses: Swatinem/rust-cache@v2
+
+    - name: Setup vcpkg caching
+      uses: actions/github-script@v6
+      with:
+        script: |
+          core.exportVariable('ACTIONS_CACHE_URL', process.env.ACTIONS_CACHE_URL || '');
+          core.exportVariable('ACTIONS_RUNTIME_TOKEN', process.env.ACTIONS_RUNTIME_TOKEN || '');
+          core.exportVariable('VCPKG_BINARY_SOURCES', 'clear;x-gha,readwrite')
+
     - name: Install dependencies
       shell: bash
       run: |
+        echo "::group::Install choco dependencies"
         choco install pandoc
+        echo "::endgroup::"
 
-    - name: Prepare cache key
-      id: key
-      shell: powershell
-      run: |
-        # Work around caching failure with GNU tar
-        New-Item -Type Junction -Path vcpkg -Target c:\vcpkg
-
-        Write-Output "image=$env:ImageOS-$env:ImageVersion" >> $env:GITHUB_OUTPUT
-
-    - name: Enable vcpkg cache
-      uses: actions/cache@v3
-      with:
-        path: vcpkg/installed
-        key: ${{ steps.key.outputs.image }}-vcpkg-${{ matrix.arch }}-1 # Increase the number whenever dependencies are modified
-        restore-keys: |
-          ${{ steps.key.outputs.image }}-vcpkg-${{ matrix.arch }}
-
-    - name: Prepare vcpkg
-      shell: bash
-      run: |
-        vcpkg install --triplet=${{ matrix.arch }}-windows-static \
-          liblzma \
-          libpng \
-          lzo \
-          nlohmann-json \
-          zlib \
-          # EOF
+        echo "::group::Install breakpad dependencies"
+        cargo install dump_syms
+        echo "::endgroup::"
 
     - name: Install MSVC problem matcher
       uses: ammaraskar/msvc-problem-matcher@master
@@ -169,6 +161,12 @@ jobs:
       env:
         WINDOWS_CERTIFICATE_COMMON_NAME: ${{ secrets.WINDOWS_CERTIFICATE_COMMON_NAME }}
 
+    - name: Create breakpad symbols
+      shell: bash
+      run: |
+        cd build
+        dump_syms openttd.pdb --inlines --store symbols
+
     - name: Create bundles
       shell: bash
       run: |
@@ -177,10 +175,13 @@ jobs:
         cpack
         echo "::endgroup::"
 
-        echo "::group::Prepare PDB to be bundled"
-        PDB=$(ls bundles/*.zip | cut -d/ -f2 | sed 's/.zip$/.pdb/')
-        cp openttd.pdb bundles/${PDB}
-        xz -9 bundles/${PDB}
+        echo "::group::Move PDB and exe to symbols"
+        PDB_FOLDER=$(find symbols -mindepth 2 -type d)
+        cp openttd.pdb ${PDB_FOLDER}/
+
+        EXE_FOLDER=symbols/openttd.exe/$(grep "INFO CODE_ID" symbols/*/*/openttd.sym | cut -d\  -f3)
+        mkdir -p ${EXE_FOLDER}
+        cp openttd.exe ${EXE_FOLDER}/
         echo "::endgroup::"
 
         echo "::group::Cleanup"
@@ -205,4 +206,11 @@ jobs:
       with:
         name: openttd-windows-${{ matrix.arch }}
         path: build/bundles
+        retention-days: 5
+
+    - name: Store symbols
+      uses: actions/upload-artifact@v3
+      with:
+        name: symbols-windows-${{ matrix.arch }}
+        path: build/symbols
         retention-days: 5

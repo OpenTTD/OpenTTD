@@ -5922,7 +5922,7 @@ namespace Catch {
         }
         void testCaseEnded(TestCaseStats const& testCaseStats) override {
             auto node = std::make_shared<TestCaseNode>(testCaseStats);
-            assert(m_sectionStack.size() == 0);
+            assert(m_sectionStack.empty());
             node->children.push_back(m_rootSection);
             m_testCases.push_back(node);
             m_rootSection.reset();

@@ -31,7 +31,7 @@ enum PersistentStorageMode {
  * so we have a generalised access to the virtual methods.
  */
 struct BasePersistentStorageArray {
-	uint32 grfid;    ///< GRFID associated to this persistent storage. A value of zero means "default".
+	uint32_t grfid;    ///< GRFID associated to this persistent storage. A value of zero means "default".
 	byte feature;    ///< NOSAVE: Used to identify in the owner of the array in debug output.
 	TileIndex tile;  ///< NOSAVE: Used to identify in the owner of the array in debug output.
 
@@ -65,26 +65,10 @@ private:
  */
 template <typename TYPE, uint SIZE>
 struct PersistentStorageArray : BasePersistentStorageArray {
-	TYPE storage[SIZE]; ///< Memory to for the storage array
-	TYPE *prev_storage; ///< Memory to store "old" states so we can revert them on the performance of test cases for commands etc.
+	using StorageType = std::array<TYPE, SIZE>;
 
-	/** Simply construct the array */
-	PersistentStorageArray() : prev_storage(nullptr)
-	{
-		memset(this->storage, 0, sizeof(this->storage));
-	}
-
-	/** And free all data related to it */
-	~PersistentStorageArray()
-	{
-		free(this->prev_storage);
-	}
-
-	/** Resets all values to zero. */
-	void ResetToZero()
-	{
-		memset(this->storage, 0, sizeof(this->storage));
-	}
+	StorageType storage{}; ///< Memory for the storage array
+	std::unique_ptr<StorageType> prev_storage{}; ///< Temporary memory to store previous state so it can be reverted, e.g. for command tests.
 
 	/**
 	 * Stores some value at a given position.
@@ -93,7 +77,7 @@ struct PersistentStorageArray : BasePersistentStorageArray {
 	 * @param pos   the position to write at
 	 * @param value the value to write
 	 */
-	void StoreValue(uint pos, int32 value)
+	void StoreValue(uint pos, int32_t value)
 	{
 		/* Out of the scope of the array */
 		if (pos >= SIZE) return;
@@ -104,10 +88,9 @@ struct PersistentStorageArray : BasePersistentStorageArray {
 
 		/* We do not have made a backup; lets do so */
 		if (AreChangesPersistent()) {
-			assert(this->prev_storage == nullptr);
-		} else if (this->prev_storage == nullptr) {
-			this->prev_storage = MallocT<TYPE>(SIZE);
-			memcpy(this->prev_storage, this->storage, sizeof(this->storage));
+			assert(!this->prev_storage);
+		} else if (!this->prev_storage) {
+			this->prev_storage = std::make_unique<StorageType>(this->storage);
 
 			/* We only need to register ourselves when we made the backup
 			 * as that is the only time something will have changed */
@@ -130,12 +113,11 @@ struct PersistentStorageArray : BasePersistentStorageArray {
 		return this->storage[pos];
 	}
 
-	void ClearChanges()
+	void ClearChanges() override
 	{
-		if (this->prev_storage != nullptr) {
-			memcpy(this->storage, this->prev_storage, sizeof(this->storage));
-			free(this->prev_storage);
-			this->prev_storage = nullptr;
+		if (this->prev_storage) {
+			this->storage = *this->prev_storage;
+			this->prev_storage.reset();
 		}
 	}
 };
@@ -149,24 +131,19 @@ struct PersistentStorageArray : BasePersistentStorageArray {
  */
 template <typename TYPE, uint SIZE>
 struct TemporaryStorageArray {
-	TYPE storage[SIZE]; ///< Memory to for the storage array
-	uint16 init[SIZE];  ///< Storage has been assigned, if this equals 'init_key'.
-	uint16 init_key;    ///< Magic key to 'init'.
+	using StorageType = std::array<TYPE, SIZE>;
+	using StorageInitType = std::array<uint16_t, SIZE>;
 
-	/** Simply construct the array */
-	TemporaryStorageArray()
-	{
-		memset(this->storage, 0, sizeof(this->storage)); // not exactly needed, but makes code analysers happy
-		memset(this->init, 0, sizeof(this->init));
-		this->init_key = 1;
-	}
+	StorageType storage{}; ///< Memory for the storage array
+	StorageInitType init{}; ///< Storage has been assigned, if this equals 'init_key'.
+	uint16_t init_key{1}; ///< Magic key to 'init'.
 
 	/**
 	 * Stores some value at a given position.
 	 * @param pos   the position to write at
 	 * @param value the value to write
 	 */
-	void StoreValue(uint pos, int32 value)
+	void StoreValue(uint pos, int32_t value)
 	{
 		/* Out of the scope of the array */
 		if (pos >= SIZE) return;
@@ -199,7 +176,7 @@ struct TemporaryStorageArray {
 		this->init_key++;
 		if (this->init_key == 0) {
 			/* When init_key wraps around, we need to reset everything */
-			memset(this->init, 0, sizeof(this->init));
+			this->init = {};
 			this->init_key = 1;
 		}
 	}
@@ -207,9 +184,9 @@ struct TemporaryStorageArray {
 
 void AddChangedPersistentStorage(BasePersistentStorageArray *storage);
 
-typedef PersistentStorageArray<int32, 16> OldPersistentStorage;
+typedef PersistentStorageArray<int32_t, 16> OldPersistentStorage;
 
-typedef uint32 PersistentStorageID;
+typedef uint32_t PersistentStorageID;
 
 struct PersistentStorage;
 typedef Pool<PersistentStorage, PersistentStorageID, 1, 0xFF000> PersistentStoragePool;
@@ -219,9 +196,9 @@ extern PersistentStoragePool _persistent_storage_pool;
 /**
  * Class for pooled persistent storage of data.
  */
-struct PersistentStorage : PersistentStorageArray<int32, 256>, PersistentStoragePool::PoolItem<&_persistent_storage_pool> {
+struct PersistentStorage : PersistentStorageArray<int32_t, 256>, PersistentStoragePool::PoolItem<&_persistent_storage_pool> {
 	/** We don't want GCC to zero our struct! It already is zeroed and has an index! */
-	PersistentStorage(const uint32 new_grfid, byte feature, TileIndex tile)
+	PersistentStorage(const uint32_t new_grfid, byte feature, TileIndex tile)
 	{
 		this->grfid = new_grfid;
 		this->feature = feature;

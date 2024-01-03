@@ -14,7 +14,7 @@
 #include "company_type.h"
 #include "livery.h"
 
-enum ClientID : uint32;
+enum ClientID : uint32_t;
 enum Colours : byte;
 
 CommandCost CmdCompanyCtrl(DoCommandFlag flags, CompanyCtrlAction cca, CompanyID company_id, CompanyRemoveReason reason, ClientID client_id);

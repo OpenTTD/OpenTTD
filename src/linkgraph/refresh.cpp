@@ -106,7 +106,7 @@ bool LinkRefresher::HandleRefit(CargoID refit_cargo)
 		v->cargo_type = this->cargo;
 		v->cargo_subtype = GetBestFittingSubType(v, v, this->cargo);
 
-		uint16 mail_capacity = 0;
+		uint16_t mail_capacity = 0;
 		uint amount = e->DetermineCapacity(v, &mail_capacity);
 
 		/* Restore the original cargo type */
@@ -160,7 +160,7 @@ void LinkRefresher::ResetRefit()
  * @param num_hops Number of hops already taken by recursive calls to this method.
  * @return new next Order.
  */
-const Order *LinkRefresher::PredictNextOrder(const Order *cur, const Order *next, uint8 flags, uint num_hops)
+const Order *LinkRefresher::PredictNextOrder(const Order *cur, const Order *next, uint8_t flags, uint num_hops)
 {
 	/* next is good if it's either nullptr (then the caller will stop the
 	 * evaluation) or if it's not conditional and the caller allows it to be
@@ -224,7 +224,7 @@ void LinkRefresher::RefreshStats(const Order *cur, const Order *next)
 			/* This estimates the travel time of the link as the time needed
 			 * to travel between the stations at half the max speed of the consist.
 			 * The result is in tiles/tick (= 2048 km-ish/h). */
-			uint32 time_estimate = DistanceManhattan(st->xy, st_to->xy) * 4096U / this->vehicle->GetDisplayMaxSpeed();
+			uint32_t time_estimate = DistanceManhattan(st->xy, st_to->xy) * 4096U / this->vehicle->GetDisplayMaxSpeed();
 
 			/* If the vehicle is currently full loading, increase the capacities at the station
 			 * where it is loading by an estimate of what it would have transported if it wasn't
@@ -233,8 +233,7 @@ void LinkRefresher::RefreshStats(const Order *cur, const Order *next)
 			 * probably far off and we'd greatly overestimate the capacity by increasing.*/
 			if (this->is_full_loading && this->vehicle->orders != nullptr &&
 					st->index == vehicle->last_station_visited &&
-					this->vehicle->orders->GetTotalDuration() >
-					(Ticks)this->vehicle->current_order_time) {
+					this->vehicle->orders->GetTotalDuration() > this->vehicle->current_order_time) {
 				uint effective_capacity = cargo_quantity * this->vehicle->load_unload_ticks;
 				if (effective_capacity > (uint)this->vehicle->orders->GetTotalDuration()) {
 					IncreaseStats(st, c, next_station, effective_capacity /
@@ -263,7 +262,7 @@ void LinkRefresher::RefreshStats(const Order *cur, const Order *next)
  * @param flags RefreshFlags to give hints about the previous link and state carried over from that.
  * @param num_hops Number of hops already taken by recursive calls to this method.
  */
-void LinkRefresher::RefreshLinks(const Order *cur, const Order *next, uint8 flags, uint num_hops)
+void LinkRefresher::RefreshLinks(const Order *cur, const Order *next, uint8_t flags, uint num_hops)
 {
 	while (next != nullptr) {
 

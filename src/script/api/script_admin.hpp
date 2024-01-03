@@ -35,16 +35,6 @@ public:
 	 */
 	static bool Send(void *table);
 #endif /* DOXYGEN_API */
-
-private:
-	/**
-	 * Convert a Squirrel structure into a JSON string.
-	 * @param vm The VM to operate on.
-	 * @param index The index we are currently working for.
-	 * @param max_depth The maximal depth to follow the squirrel struct.
-	 * @param data The resulting json string.
-	 */
-	static bool MakeJSON(HSQUIRRELVM vm, SQInteger index, int max_depth, std::string &data);
 };
 
 #endif /* SCRIPT_ADMIN_HPP */

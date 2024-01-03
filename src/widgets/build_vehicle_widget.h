@@ -11,7 +11,7 @@
 #define WIDGETS_BUILD_VEHICLE_WIDGET_H
 
 /** Widgets of the #BuildVehicleWindow class. */
-enum BuildVehicleWidgets {
+enum BuildVehicleWidgets : WidgetID {
 	WID_BV_CAPTION,                   ///< Caption of window.
 	WID_BV_SORT_ASCENDING_DESCENDING, ///< Sort direction.
 	WID_BV_SORT_DROPDOWN,             ///< Criteria of sorting dropdown.

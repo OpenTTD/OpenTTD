@@ -14,11 +14,11 @@ struct SoundEntry {
 	class RandomAccessFile *file;
 	size_t file_offset;
 	size_t file_size;
-	uint16 rate;
-	uint8 bits_per_sample;
-	uint8 channels;
-	uint8 volume;
-	uint8 priority;
+	uint16_t rate;
+	uint8_t bits_per_sample;
+	uint8_t channels;
+	uint8_t volume;
+	uint8_t priority;
 	byte grf_container_ver; ///< NewGRF container version if the sound is from a NewGRF.
 };
 
@@ -115,7 +115,7 @@ enum SoundFx {
 /** The number of sounds in the original sample.cat */
 static const uint ORIGINAL_SAMPLE_COUNT = 73;
 
-typedef uint16 SoundID;
+typedef uint16_t SoundID;
 
 static const SoundID INVALID_SOUND = 0xFFFF;
 

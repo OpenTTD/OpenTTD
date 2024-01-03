@@ -191,6 +191,9 @@ STR_COLOUR_GREY                                                 :Gris
 STR_COLOUR_WHITE                                                :Blanco
 STR_COLOUR_RANDOM                                               :Aleatorio
 
+###length 17
+
+
 # Units used in OpenTTD
 STR_UNITS_VELOCITY_IMPERIAL                                     :{DECIMAL}{NBSP}mph
 STR_UNITS_VELOCITY_METRIC                                       :{DECIMAL}{NBSP}km/h
@@ -234,6 +237,7 @@ STR_UNITS_FORCE_SI                                              :{DECIMAL}{NBSP}
 STR_UNITS_HEIGHT_IMPERIAL                                       :{DECIMAL}{NBSP}pies
 STR_UNITS_HEIGHT_METRIC                                         :{DECIMAL}{NBSP}m
 STR_UNITS_HEIGHT_SI                                             :{DECIMAL}{NBSP}m
+
 
 # Common window strings
 STR_LIST_FILTER_TITLE                                           :{BLACK}Filtro:
@@ -420,31 +424,25 @@ STR_SETTINGS_MENU_TRANSPARENT_BUILDINGS                         :Edificios trans
 STR_SETTINGS_MENU_TRANSPARENT_SIGNS                             :Letreros transparentes
 
 # File menu
-###length 5
 STR_FILE_MENU_SAVE_GAME                                         :Guardar partida
 STR_FILE_MENU_LOAD_GAME                                         :Cargar partida
 STR_FILE_MENU_QUIT_GAME                                         :Abandonar partida
-STR_FILE_MENU_SEPARATOR                                         :
 STR_FILE_MENU_EXIT                                              :Salir
 
 # Map menu
-###length 4
 STR_MAP_MENU_MAP_OF_WORLD                                       :Mapa del mundo
 STR_MAP_MENU_EXTRA_VIEWPORT                                     :Punto de vista extra
 STR_MAP_MENU_LINGRAPH_LEGEND                                    :Leyenda de Flujos de Carga
 STR_MAP_MENU_SIGN_LIST                                          :Lista de letreros
 
 # Town menu
-###length 2
 STR_TOWN_MENU_TOWN_DIRECTORY                                    :Lista de municipios
 STR_TOWN_MENU_FOUND_TOWN                                        :Fundar municipio
 
 # Subsidies menu
-###length 1
 STR_SUBSIDIES_MENU_SUBSIDIES                                    :Subvenciones
 
 # Graph menu
-###length 6
 STR_GRAPH_MENU_OPERATING_PROFIT_GRAPH                           :Gráfica de beneficio operativo
 STR_GRAPH_MENU_INCOME_GRAPH                                     :Gráfica de ingresos
 STR_GRAPH_MENU_DELIVERED_CARGO_GRAPH                            :Gráfica de carga entregada
@@ -453,57 +451,46 @@ STR_GRAPH_MENU_COMPANY_VALUE_GRAPH                              :Gráfica del va
 STR_GRAPH_MENU_CARGO_PAYMENT_RATES                              :Tarifas de pago de cargas
 
 # Company league menu
-###length 3
 STR_GRAPH_MENU_COMPANY_LEAGUE_TABLE                             :Tabla de clasificación de empresas
 STR_GRAPH_MENU_DETAILED_PERFORMANCE_RATING                      :Calificación detallada de desempeño
 STR_GRAPH_MENU_HIGHSCORE                                        :Tabla de puntuaciones
 
 # Industry menu
-###length 3
 STR_INDUSTRY_MENU_INDUSTRY_DIRECTORY                            :Lista de industrias
 STR_INDUSTRY_MENU_INDUSTRY_CHAIN                                :Cadenas de industria
 STR_INDUSTRY_MENU_FUND_NEW_INDUSTRY                             :Fundar nueva industria
 
 # URailway construction menu
-###length 4
 STR_RAIL_MENU_RAILROAD_CONSTRUCTION                             :Construcción de ferrocarril
 STR_RAIL_MENU_ELRAIL_CONSTRUCTION                               :Construcción de ferrocarril eléctrico
 STR_RAIL_MENU_MONORAIL_CONSTRUCTION                             :Construcción de monorraíl
 STR_RAIL_MENU_MAGLEV_CONSTRUCTION                               :Construcción de maglev
 
 # Road construction menu
-###length 2
 STR_ROAD_MENU_ROAD_CONSTRUCTION                                 :Construcción de carretera
 STR_ROAD_MENU_TRAM_CONSTRUCTION                                 :Construcción de tranvía
 
 # Waterways construction menu
-###length 1
 STR_WATERWAYS_MENU_WATERWAYS_CONSTRUCTION                       :Construcción de canales
 
 # Aairport construction menu
-###length 1
 STR_AIRCRAFT_MENU_AIRPORT_CONSTRUCTION                          :Construir aeropuerto
 
 # Landscaping menu
-###length 3
 STR_LANDSCAPING_MENU_LANDSCAPING                                :Terreno
 STR_LANDSCAPING_MENU_PLANT_TREES                                :Plantar árboles
 STR_LANDSCAPING_MENU_PLACE_SIGN                                 :Colocar letrero
 
 # Music menu
-###length 1
 STR_TOOLBAR_SOUND_MUSIC                                         :Sonido/música
 
 # Message menu
-###length 3
 STR_NEWS_MENU_LAST_MESSAGE_NEWS_REPORT                          :Último mensaje/noticia
 STR_NEWS_MENU_MESSAGE_HISTORY_MENU                              :Historial de mensajes
 STR_NEWS_MENU_DELETE_ALL_MESSAGES                               :Borrar todos los mensajes
 
 # About menu
-###length 10
 STR_ABOUT_MENU_LAND_BLOCK_INFO                                  :Información del terreno
-STR_ABOUT_MENU_SEPARATOR                                        :
 STR_ABOUT_MENU_TOGGLE_CONSOLE                                   :Activar consola
 STR_ABOUT_MENU_AI_DEBUG                                         :Depuración de script de juego/IA
 STR_ABOUT_MENU_SCREENSHOT                                       :Captura de pantalla
@@ -713,8 +700,6 @@ STR_PLAYLIST_TOOLTIP_CLICK_TO_ADD_TRACK                         :{BLACK}Clica en
 STR_PLAYLIST_TOOLTIP_CLICK_TO_REMOVE_TRACK                      :{BLACK}Clica sobre la canción para quitarla del programa actual (solo Personalizado1 y 2)
 
 # Highscore window
-STR_HIGHSCORE_TOP_COMPANIES_WHO_REACHED                         :{BIG_FONT}{BLACK}Top de empresas que han alcanzado {NUM}
-STR_HIGHSCORE_TOP_COMPANIES_NETWORK_GAME                        :{BIG_FONT}{BLACK}Tabla clasificatoria de empresas en {NUM}
 STR_HIGHSCORE_POSITION                                          :{BIG_FONT}{BLACK}{COMMA}.
 STR_HIGHSCORE_PERFORMANCE_TITLE_BUSINESSMAN                     :Persona de negocios
 STR_HIGHSCORE_PERFORMANCE_TITLE_ENTREPRENEUR                    :Empresario
@@ -903,10 +888,6 @@ STR_NEWS_NEW_VEHICLE_NOW_AVAILABLE_WITH_TYPE                    :{BLACK}¡Nuev{G
 
 STR_NEWS_SHOW_VEHICLE_GROUP_TOOLTIP                             :{BLACK}Abre la lista de vehículos centrada en el grupo del vehículo
 
-STR_NEWS_STATION_NO_LONGER_ACCEPTS_CARGO                        :{WHITE}{STATION} ya no acepta {STRING}
-STR_NEWS_STATION_NO_LONGER_ACCEPTS_CARGO_OR_CARGO               :{WHITE}{STATION} ya no acepta {STRING} ni {STRING}
-STR_NEWS_STATION_NOW_ACCEPTS_CARGO                              :{WHITE}{STATION} acepta ahora {STRING}
-STR_NEWS_STATION_NOW_ACCEPTS_CARGO_AND_CARGO                    :{WHITE}{STATION} acepta ahora {STRING} y {STRING}
 
 STR_NEWS_OFFER_OF_SUBSIDY_EXPIRED                               :{BIG_FONT}{BLACK}Oferta de subvención terminada:{}{}{STRING} de {STRING} a {STRING} ya no conlleva una subvención
 STR_NEWS_SUBSIDY_WITHDRAWN_SERVICE                              :{BIG_FONT}{BLACK}Subvención retirada:{}{}El servicio de {STRING} desde {STRING} a {STRING} ya no está subvencionado
@@ -937,49 +918,50 @@ STR_GAME_OPTIONS_CAPTION                                        :{WHITE}Opciones
 STR_GAME_OPTIONS_CURRENCY_UNITS_FRAME                           :{BLACK}Unidad monetaria
 STR_GAME_OPTIONS_CURRENCY_UNITS_DROPDOWN_TOOLTIP                :{BLACK}Selecciona la nnidad monetaria
 
+
 ###length 42
-STR_GAME_OPTIONS_CURRENCY_GBP                                   :Libra británica (GBP)
-STR_GAME_OPTIONS_CURRENCY_USD                                   :Dólar estadounidense (USD)
-STR_GAME_OPTIONS_CURRENCY_EUR                                   :Euro (EUR)
-STR_GAME_OPTIONS_CURRENCY_JPY                                   :Yen japonés (¥)
-STR_GAME_OPTIONS_CURRENCY_ATS                                   :Chelín austriaco (ATS)
-STR_GAME_OPTIONS_CURRENCY_BEF                                   :Franco belga (BEF)
-STR_GAME_OPTIONS_CURRENCY_CHF                                   :Franco suizo (CHF)
-STR_GAME_OPTIONS_CURRENCY_CZK                                   :Corona checa (CZK)
-STR_GAME_OPTIONS_CURRENCY_DEM                                   :Marco alemán (DEM)
-STR_GAME_OPTIONS_CURRENCY_DKK                                   :Corona danesa (DKK)
-STR_GAME_OPTIONS_CURRENCY_ESP                                   :Peseta española (ESP)
-STR_GAME_OPTIONS_CURRENCY_FIM                                   :Markka finlandés (FIM)
-STR_GAME_OPTIONS_CURRENCY_FRF                                   :Franco francés (FRF)
-STR_GAME_OPTIONS_CURRENCY_GRD                                   :Dracma griego (GRD)
-STR_GAME_OPTIONS_CURRENCY_HUF                                   :Florín húngaro (HUF)
-STR_GAME_OPTIONS_CURRENCY_ISK                                   :Corona islandesa (ISK)
-STR_GAME_OPTIONS_CURRENCY_ITL                                   :Lira italiana (ITL)
-STR_GAME_OPTIONS_CURRENCY_NLG                                   :Florín holandés (NLG)
-STR_GAME_OPTIONS_CURRENCY_NOK                                   :Corona noruega(NOK)
-STR_GAME_OPTIONS_CURRENCY_PLN                                   :Zloty polaco (PLN)
-STR_GAME_OPTIONS_CURRENCY_RON                                   :Leu rumano (RON)
-STR_GAME_OPTIONS_CURRENCY_RUR                                   :Rublo ruso (RUR)
-STR_GAME_OPTIONS_CURRENCY_SIT                                   :Tólar esloveno (SIT)
-STR_GAME_OPTIONS_CURRENCY_SEK                                   :Corona sueca (SEK)
-STR_GAME_OPTIONS_CURRENCY_TRY                                   :Lira turca (TRY)
+STR_GAME_OPTIONS_CURRENCY_GBP                                   :Libra británica
+STR_GAME_OPTIONS_CURRENCY_USD                                   :Dólar estadounidense
+STR_GAME_OPTIONS_CURRENCY_EUR                                   :Euro
+STR_GAME_OPTIONS_CURRENCY_JPY                                   :Yen japonés
+STR_GAME_OPTIONS_CURRENCY_ATS                                   :Chelín austriaco
+STR_GAME_OPTIONS_CURRENCY_BEF                                   :Franco belga
+STR_GAME_OPTIONS_CURRENCY_CHF                                   :Franco suizo
+STR_GAME_OPTIONS_CURRENCY_CZK                                   :Corona checa
+STR_GAME_OPTIONS_CURRENCY_DEM                                   :Marco alemán
+STR_GAME_OPTIONS_CURRENCY_DKK                                   :Corona danesa
+STR_GAME_OPTIONS_CURRENCY_ESP                                   :Peseta española
+STR_GAME_OPTIONS_CURRENCY_FIM                                   :Markka finlandés
+STR_GAME_OPTIONS_CURRENCY_FRF                                   :Franco francés
+STR_GAME_OPTIONS_CURRENCY_GRD                                   :Dracma griego
+STR_GAME_OPTIONS_CURRENCY_HUF                                   :Florín húngaro
+STR_GAME_OPTIONS_CURRENCY_ISK                                   :Corona islandesa
+STR_GAME_OPTIONS_CURRENCY_ITL                                   :Lira italiana
+STR_GAME_OPTIONS_CURRENCY_NLG                                   :Florín holandés
+STR_GAME_OPTIONS_CURRENCY_NOK                                   :Corona noruega
+STR_GAME_OPTIONS_CURRENCY_PLN                                   :Zloty polaco
+STR_GAME_OPTIONS_CURRENCY_RON                                   :Leu rumano
+STR_GAME_OPTIONS_CURRENCY_RUR                                   :Rublo ruso
+STR_GAME_OPTIONS_CURRENCY_SIT                                   :Tólar esloveno
+STR_GAME_OPTIONS_CURRENCY_SEK                                   :Corona sueca
+STR_GAME_OPTIONS_CURRENCY_TRY                                   :Lira turca
 STR_GAME_OPTIONS_CURRENCY_SKK                                   :Corona eslovaca
-STR_GAME_OPTIONS_CURRENCY_BRL                                   :Real brasileño (BRL)
-STR_GAME_OPTIONS_CURRENCY_EEK                                   :Krooni estonio (EEK)
-STR_GAME_OPTIONS_CURRENCY_LTL                                   :Litas lituana (LTL)
-STR_GAME_OPTIONS_CURRENCY_KRW                                   :Won surcoreano (KRW)
-STR_GAME_OPTIONS_CURRENCY_ZAR                                   :Rand sudafricano (ZAR)
+STR_GAME_OPTIONS_CURRENCY_BRL                                   :Real brasileño
+STR_GAME_OPTIONS_CURRENCY_EEK                                   :Krooni estonio
+STR_GAME_OPTIONS_CURRENCY_LTL                                   :Litas lituana
+STR_GAME_OPTIONS_CURRENCY_KRW                                   :Won surcoreano
+STR_GAME_OPTIONS_CURRENCY_ZAR                                   :Rand sudafricano
 STR_GAME_OPTIONS_CURRENCY_CUSTOM                                :Personalizada...
-STR_GAME_OPTIONS_CURRENCY_GEL                                   :Lari georgiano (GEL)
-STR_GAME_OPTIONS_CURRENCY_IRR                                   :Rial iraní (IRR)
-STR_GAME_OPTIONS_CURRENCY_RUB                                   :Nuevo rublo ruso (RUB)
-STR_GAME_OPTIONS_CURRENCY_MXN                                   :Peso mexicano (MXN)
-STR_GAME_OPTIONS_CURRENCY_NTD                                   :Nuevo dólar taiwanés (NTD)
-STR_GAME_OPTIONS_CURRENCY_CNY                                   :Renminbi chino (CNY)
-STR_GAME_OPTIONS_CURRENCY_HKD                                   :Dólar hongkonés (HKD)
-STR_GAME_OPTIONS_CURRENCY_INR                                   :Rupia india (INR)
-STR_GAME_OPTIONS_CURRENCY_IDR                                   :Rupia indonesia (IDR)
-STR_GAME_OPTIONS_CURRENCY_MYR                                   :Ringgit malasio (MYR)
+STR_GAME_OPTIONS_CURRENCY_GEL                                   :Lari georgiano
+STR_GAME_OPTIONS_CURRENCY_IRR                                   :Rial iraní
+STR_GAME_OPTIONS_CURRENCY_RUB                                   :Nuevo rublo ruso
+STR_GAME_OPTIONS_CURRENCY_MXN                                   :Peso mexicano
+STR_GAME_OPTIONS_CURRENCY_NTD                                   :Nuevo dólar taiwanés
+STR_GAME_OPTIONS_CURRENCY_CNY                                   :Renminbi chino
+STR_GAME_OPTIONS_CURRENCY_HKD                                   :Dólar hongkonés
+STR_GAME_OPTIONS_CURRENCY_INR                                   :Rupia india
+STR_GAME_OPTIONS_CURRENCY_IDR                                   :Rupia indonesia
+STR_GAME_OPTIONS_CURRENCY_MYR                                   :Ringgit malasio
 
 STR_GAME_OPTIONS_AUTOSAVE_FRAME                                 :{BLACK}Autoguardado
 STR_GAME_OPTIONS_AUTOSAVE_DROPDOWN_TOOLTIP                      :{BLACK}Selección del intervalo entre guardados automáticos del juego
@@ -1033,7 +1015,6 @@ STR_GAME_OPTIONS_REFRESH_RATE_WARNING                           :{WHITE}Las frec
 
 STR_GAME_OPTIONS_BASE_GRF                                       :{BLACK}Conjunto de gráficos base
 STR_GAME_OPTIONS_BASE_GRF_TOOLTIP                               :{BLACK}Selecciona el conjunto de gráficos base a usar
-STR_GAME_OPTIONS_BASE_GRF_STATUS                                :{RED}{NUM} archivo{P "" s} perdido{P "" s} o corrupto{P "" s}
 STR_GAME_OPTIONS_BASE_GRF_DESCRIPTION_TOOLTIP                   :{BLACK}Información adicional sobre el set de gráficos base
 
 STR_GAME_OPTIONS_BASE_SFX                                       :{BLACK}Conjunto de sonidos base
@@ -1042,8 +1023,8 @@ STR_GAME_OPTIONS_BASE_SFX_DESCRIPTION_TOOLTIP                   :{BLACK}Informac
 
 STR_GAME_OPTIONS_BASE_MUSIC                                     :{BLACK}Conjunto de música base
 STR_GAME_OPTIONS_BASE_MUSIC_TOOLTIP                             :{BLACK}Seleccionar conjunto de música base a usar
-STR_GAME_OPTIONS_BASE_MUSIC_STATUS                              :{RED}{NUM} archivo{P "" s} corrupto{P "" s}
 STR_GAME_OPTIONS_BASE_MUSIC_DESCRIPTION_TOOLTIP                 :{BLACK}Información adicional sobre el conjunto de música base
+
 
 STR_ERROR_RESOLUTION_LIST_FAILED                                :{WHITE}No se ha podido obtener una lista de resoluciones soportadas
 STR_ERROR_FULLSCREEN_FAILED                                     :{WHITE}El modo de pantalla completa ha fallado
@@ -1205,6 +1186,7 @@ STR_CONFIG_SETTING_REALISTIC                                    :Realista
 STR_CONFIG_SETTING_HORIZONTAL_POS_LEFT                          :Izquierda
 STR_CONFIG_SETTING_HORIZONTAL_POS_CENTER                        :Centro
 STR_CONFIG_SETTING_HORIZONTAL_POS_RIGHT                         :Derecha
+
 
 STR_CONFIG_SETTING_MAXIMUM_INITIAL_LOAN                         :Préstamo máximo inicial: {STRING}
 STR_CONFIG_SETTING_MAXIMUM_INITIAL_LOAN_HELPTEXT                :Cantidad máxima que una empresa puede recibir como préstamo (sin tener en cuenta la inflación)
@@ -1376,6 +1358,7 @@ STR_CONFIG_SETTING_PLANE_CRASHES_NONE                           :Ninguno*
 STR_CONFIG_SETTING_PLANE_CRASHES_REDUCED                        :Reducida
 STR_CONFIG_SETTING_PLANE_CRASHES_NORMAL                         :Normal
 
+
 STR_CONFIG_SETTING_STOP_ON_TOWN_ROAD                            :Permitir construir paradas sobre carreteras de los municipios: {STRING}
 STR_CONFIG_SETTING_STOP_ON_TOWN_ROAD_HELPTEXT                   :Permite construir estaciones de paso en carreteras que sean propiedad de los municipios
 STR_CONFIG_SETTING_STOP_ON_COMPETITOR_ROAD                      :Permitir pasar a través de las paradas de carretera de los competidores: {STRING}
@@ -1387,6 +1370,7 @@ STR_CONFIG_SETTING_INFRASTRUCTURE_MAINTENANCE_HELPTEXT          :Si se activa, l
 
 STR_CONFIG_SETTING_COMPANY_STARTING_COLOUR                      :Color inicial de la empresa: {STRING}
 STR_CONFIG_SETTING_COMPANY_STARTING_COLOUR_HELPTEXT             :Selecciona el color inicial de la empresa
+
 
 STR_CONFIG_SETTING_NEVER_EXPIRE_AIRPORTS                        :Aeropuertos nunca caducan: {STRING}
 STR_CONFIG_SETTING_NEVER_EXPIRE_AIRPORTS_HELPTEXT               :Permite a todos los aeropuertos estar disponibles permanentemente una vez han sido introducidos
@@ -1421,7 +1405,6 @@ STR_CONFIG_SETTING_AUTORENEW_MONEY_HELPTEXT                     :Mínima cantida
 
 STR_CONFIG_SETTING_ERRMSG_DURATION                              :Duración de mensajes de error: {STRING}
 STR_CONFIG_SETTING_ERRMSG_DURATION_HELPTEXT                     :Duración de los mensajes de error mostrados en ventanas rojas. Algunos mensajes de error (críticos) no se cierran automáticamente, y deben de ser cerrados manualmente
-STR_CONFIG_SETTING_ERRMSG_DURATION_VALUE                        :{COMMA} segundo{P 0 "" s}
 
 STR_CONFIG_SETTING_HOVER_DELAY                                  :Mostrar mensajes de ayuda: {STRING}
 STR_CONFIG_SETTING_HOVER_DELAY_HELPTEXT                         :Tiempo necesario del ratón sobre un elemento de la interfaz para que ésta muestre su mensaje de ayuda. De forma alternativa, se puede escoger mostrar estos mensajes al pulsar el botón derecho si el valor de esta opción ha sido establecido a 0.
@@ -1589,9 +1572,7 @@ STR_CONFIG_SETTING_RIGHT_MOUSE_BTN_EMU_OFF                      :Desactivado
 
 STR_CONFIG_SETTING_RIGHT_MOUSE_WND_CLOSE                        :Cerrar ventana con clic derecho: {STRING}
 STR_CONFIG_SETTING_RIGHT_MOUSE_WND_CLOSE_HELPTEXT               :Cierra una ventana al hacer clic derecho dentro. ¡Desactiva la descripción emergente al hacer clic derecho!
-
-STR_CONFIG_SETTING_AUTOSAVE                                     :Autoguardado: {STRING}
-STR_CONFIG_SETTING_AUTOSAVE_HELPTEXT                            :Selecciona el intervalo entre guardados automáticos del juego
+###length 3
 
 STR_CONFIG_SETTING_DATE_FORMAT_IN_SAVE_NAMES                    :Usar formato de fecha {STRING} para los nombres de partidas guardadas
 STR_CONFIG_SETTING_DATE_FORMAT_IN_SAVE_NAMES_HELPTEXT           :Formato de la fecha en el nombre de partidas guardadas
@@ -1617,8 +1598,7 @@ STR_CONFIG_SETTING_ADVANCED_VEHICLE_LISTS_HELPTEXT              :Activa el uso d
 STR_CONFIG_SETTING_LOADING_INDICATORS                           :Usar indicadores de carga: {STRING}
 STR_CONFIG_SETTING_LOADING_INDICATORS_HELPTEXT                  :Permite escoger si se deben de mostrar indicadores de carga encima de los vehículos que están en estaciones
 
-STR_CONFIG_SETTING_TIMETABLE_IN_TICKS                           :Mostrar horario en tics en vez de en días: {STRING}
-STR_CONFIG_SETTING_TIMETABLE_IN_TICKS_HELPTEXT                  :Muestra los tiempos de viaje en los horarios en tics en lugar de en días
+###length 3
 
 STR_CONFIG_SETTING_TIMETABLE_SHOW_ARRIVAL_DEPARTURE             :Mostrar salidas y llegadas en los horarios: {STRING}
 STR_CONFIG_SETTING_TIMETABLE_SHOW_ARRIVAL_DEPARTURE_HELPTEXT    :Muestra fechas de llegada y salida previstas en los horarios
@@ -1986,30 +1966,30 @@ STR_CONFIG_SETTING_LOCALISATION_UNITS_HEIGHT_IMPERIAL           :Imperial (pies)
 STR_CONFIG_SETTING_LOCALISATION_UNITS_HEIGHT_METRIC             :Métrico (m)
 STR_CONFIG_SETTING_LOCALISATION_UNITS_HEIGHT_SI                 :SI (m)
 
-STR_CONFIG_SETTING_LOCALISATION                                 :{ORANGE}Localización
-STR_CONFIG_SETTING_GRAPHICS                                     :{ORANGE}Gráficos
-STR_CONFIG_SETTING_SOUND                                        :{ORANGE}Efectos de sonido
-STR_CONFIG_SETTING_INTERFACE                                    :{ORANGE}Interfaz
-STR_CONFIG_SETTING_INTERFACE_GENERAL                            :{ORANGE}General
-STR_CONFIG_SETTING_INTERFACE_VIEWPORTS                          :{ORANGE}Ventanas de visualización
-STR_CONFIG_SETTING_INTERFACE_CONSTRUCTION                       :{ORANGE}Construcción
-STR_CONFIG_SETTING_ADVISORS                                     :{ORANGE}Noticias / Consejos
-STR_CONFIG_SETTING_COMPANY                                      :{ORANGE}Empresa
-STR_CONFIG_SETTING_ACCOUNTING                                   :{ORANGE}Contabilidad
-STR_CONFIG_SETTING_VEHICLES                                     :{ORANGE}Vehículos
-STR_CONFIG_SETTING_VEHICLES_PHYSICS                             :{ORANGE}Leyes físicas
-STR_CONFIG_SETTING_VEHICLES_ROUTING                             :{ORANGE}Enrutamiento
-STR_CONFIG_SETTING_LIMITATIONS                                  :{ORANGE}Limitaciones
-STR_CONFIG_SETTING_ACCIDENTS                                    :{ORANGE}Desastres / Accidentes
-STR_CONFIG_SETTING_GENWORLD                                     :{ORANGE}Generación de mundo
-STR_CONFIG_SETTING_ENVIRONMENT                                  :{ORANGE}Ambiente
-STR_CONFIG_SETTING_ENVIRONMENT_AUTHORITIES                      :{ORANGE}Autoridades
-STR_CONFIG_SETTING_ENVIRONMENT_TOWNS                            :{ORANGE}Municipios
-STR_CONFIG_SETTING_ENVIRONMENT_INDUSTRIES                       :{ORANGE}Industrias
-STR_CONFIG_SETTING_ENVIRONMENT_CARGODIST                        :{ORANGE}Distribución de carga
-STR_CONFIG_SETTING_AI                                           :{ORANGE}Competidores
-STR_CONFIG_SETTING_AI_NPC                                       :{ORANGE}Jugadores del ordenador (IA)
-STR_CONFIG_SETTING_NETWORK                                      :{ORANGE}Red
+STR_CONFIG_SETTING_LOCALISATION                                 :Localización
+STR_CONFIG_SETTING_GRAPHICS                                     :Gráficos
+STR_CONFIG_SETTING_SOUND                                        :Efectos de sonido
+STR_CONFIG_SETTING_INTERFACE                                    :Interfaz
+STR_CONFIG_SETTING_INTERFACE_GENERAL                            :General
+STR_CONFIG_SETTING_INTERFACE_VIEWPORTS                          :Ventanas de visualización
+STR_CONFIG_SETTING_INTERFACE_CONSTRUCTION                       :Construcción
+STR_CONFIG_SETTING_ADVISORS                                     :Noticias / Consejos
+STR_CONFIG_SETTING_COMPANY                                      :Empresa
+STR_CONFIG_SETTING_ACCOUNTING                                   :Contabilidad
+STR_CONFIG_SETTING_VEHICLES                                     :Vehículos
+STR_CONFIG_SETTING_VEHICLES_PHYSICS                             :Leyes físicas
+STR_CONFIG_SETTING_VEHICLES_ROUTING                             :Enrutamiento
+STR_CONFIG_SETTING_LIMITATIONS                                  :Limitaciones
+STR_CONFIG_SETTING_ACCIDENTS                                    :Desastres / Accidentes
+STR_CONFIG_SETTING_GENWORLD                                     :Generación de mundo
+STR_CONFIG_SETTING_ENVIRONMENT                                  :Ambiente
+STR_CONFIG_SETTING_ENVIRONMENT_AUTHORITIES                      :Autoridades
+STR_CONFIG_SETTING_ENVIRONMENT_TOWNS                            :Municipios
+STR_CONFIG_SETTING_ENVIRONMENT_INDUSTRIES                       :Industrias
+STR_CONFIG_SETTING_ENVIRONMENT_CARGODIST                        :Distribución de carga
+STR_CONFIG_SETTING_AI                                           :Competidores
+STR_CONFIG_SETTING_AI_NPC                                       :Jugadores del ordenador (IA)
+STR_CONFIG_SETTING_NETWORK                                      :Red
 
 STR_CONFIG_SETTING_PATHFINDER_FOR_TRAINS                        :Enrutador para trenes: {STRING}
 STR_CONFIG_SETTING_PATHFINDER_FOR_TRAINS_HELPTEXT               :Enrutador a emplear en trenes
@@ -2102,6 +2082,8 @@ STR_QUIT_NO                                                     :{BLACK}No
 STR_ABANDON_GAME_CAPTION                                        :{WHITE}Abandonar Juego
 STR_ABANDON_GAME_QUERY                                          :{YELLOW}¿Estás seguro de que quieres abandonar esta partida?
 STR_ABANDON_SCENARIO_QUERY                                      :{YELLOW}¿Estás seguro de que quieres salir de este escenario?
+
+# Help window
 
 # Cheat window
 STR_CHEATS                                                      :{WHITE}Trucos
@@ -2582,7 +2564,6 @@ STR_TRANSPARENT_BUILDINGS_TOOLTIP                               :{BLACK}Ajustar 
 STR_TRANSPARENT_BRIDGES_TOOLTIP                                 :{BLACK}Ajustar transparencia para puentes. Ctrl+clic para bloquear
 STR_TRANSPARENT_STRUCTURES_TOOLTIP                              :{BLACK}Ajustar transparencia para estructuras como faros o antenas. Ctrl+clic para bloquear
 STR_TRANSPARENT_CATENARY_TOOLTIP                                :{BLACK}Ajustar transparencia para catenaria. Ctrl+clic para bloquear
-STR_TRANSPARENT_LOADING_TOOLTIP                                 :{BLACK}Ajustar transparencia para los indicadores de carga. Ctrl+clic para bloquear
 STR_TRANSPARENT_INVISIBLE_TOOLTIP                               :{BLACK}Establece los objetos como invisibles en vez de transparentes
 
 # Linkgraph legend window
@@ -4483,8 +4464,6 @@ STR_TIMETABLE_STAY_FOR_ESTIMATED                                :(permanecer {ST
 STR_TIMETABLE_AND_TRAVEL_FOR_ESTIMATED                          :(viajar durante {STRING}, sin programar)
 STR_TIMETABLE_STAY_FOR                                          :y permanecer {STRING}
 STR_TIMETABLE_AND_TRAVEL_FOR                                    :y viajar durante {STRING}
-STR_TIMETABLE_DAYS                                              :{COMMA}{NBSP}día{P "" s}
-STR_TIMETABLE_TICKS                                             :{COMMA}{NBSP}tic{P "" s}
 
 STR_TIMETABLE_TOTAL_TIME                                        :{BLACK}El horario tardará {STRING} en recorrerse
 STR_TIMETABLE_TOTAL_TIME_INCOMPLETE                             :{BLACK}El horario tardará al menos {STRING} en recorrerse (no todas las órdenes)
@@ -4493,10 +4472,8 @@ STR_TIMETABLE_STATUS_ON_TIME                                    :{BLACK}Este veh
 STR_TIMETABLE_STATUS_LATE                                       :{BLACK}Este vehículo actualmente está retrasado {STRING}
 STR_TIMETABLE_STATUS_EARLY                                      :{BLACK}Este vehículo actualmente está adelantado {STRING}
 STR_TIMETABLE_STATUS_NOT_STARTED                                :{BLACK}Este horario no ha comenzado
-STR_TIMETABLE_STATUS_START_AT                                   :{BLACK}Este horario comenzará el {STRING}
 
-STR_TIMETABLE_STARTING_DATE                                     :{BLACK}Fecha de inicio
-STR_TIMETABLE_STARTING_DATE_TOOLTIP                             :{BLACK}Selecciona la fecha de inicio del horario. Ctrl+click distribuye uniformemente todos los vehículos que compartan este horario a partir de la fecha proporcionada, basados en su orden relativo, siempre que el horario esté completamente rellenado
+
 
 STR_TIMETABLE_CHANGE_TIME                                       :{BLACK}Modificar duración
 STR_TIMETABLE_WAIT_TIME_TOOLTIP                                 :{BLACK}Modifica la duración de la orden seleccionada. Ctrl+clic establece la duración para todas las órdenes
@@ -4520,8 +4497,6 @@ STR_TIMETABLE_EXPECTED                                          :{BLACK}Previsto
 STR_TIMETABLE_SCHEDULED                                         :{BLACK}Programado
 STR_TIMETABLE_EXPECTED_TOOLTIP                                  :{BLACK}Alterna entre fechas previstas y programadas
 
-STR_TIMETABLE_ARRIVAL_ABBREVIATION                              :Ll:
-STR_TIMETABLE_DEPARTURE_ABBREVIATION                            :S:
 
 
 # Date window (for timetable)
@@ -4618,7 +4593,7 @@ STR_TEXTFILE_WRAP_TEXT_TOOLTIP                                  :{BLACK}Limitar 
 STR_TEXTFILE_VIEW_README                                        :{BLACK}Ver léeme
 STR_TEXTFILE_VIEW_CHANGELOG                                     :{BLACK}Registro de cambios
 STR_TEXTFILE_VIEW_LICENCE                                       :{BLACK}Licencia
-###length 4
+###length 5
 STR_TEXTFILE_README_CAPTION                                     :{WHITE}Léeme del {STRING} {STRING}
 STR_TEXTFILE_CHANGELOG_CAPTION                                  :{WHITE}Registro de cambios del {STRING} {STRING}
 STR_TEXTFILE_LICENCE_CAPTION                                    :{WHITE}Licencia del {STRING} {STRING}
@@ -4756,7 +4731,6 @@ STR_ERROR_TOO_CLOSE_TO_EDGE_OF_MAP_SUB                          :{WHITE}... dema
 STR_ERROR_TOO_CLOSE_TO_ANOTHER_TOWN                             :{WHITE}... demasiado cerca de otro municipio
 STR_ERROR_TOO_MANY_TOWNS                                        :{WHITE}... demasiados municipios
 STR_ERROR_NO_SPACE_FOR_TOWN                                     :{WHITE}... no hay más espacio en el mapa
-STR_ERROR_TOWN_EXPAND_WARN_NO_ROADS                             :{WHITE}El municipio no construirá carreteras. Puedes activar la función de construcción de carreteras en Configuración->Ambiente->Municipios
 STR_ERROR_ROAD_WORKS_IN_PROGRESS                                :{WHITE}Obras de carretera en progreso
 STR_ERROR_TOWN_CAN_T_DELETE                                     :{WHITE}No se puede borrar este municipio...{}Quedan estaciones o depósitos relacionados con él, o una propiedad suya no puede ser retirada
 STR_ERROR_STATUE_NO_SUITABLE_PLACE                              :{WHITE}... no existe un lugar apropiado para una estatua en el centro de este municipio

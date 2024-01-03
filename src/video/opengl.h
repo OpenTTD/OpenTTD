@@ -101,15 +101,15 @@ public:
 	void ClearCursorCache();
 
 	void *GetVideoBuffer();
-	uint8 *GetAnimBuffer();
+	uint8_t *GetAnimBuffer();
 	void ReleaseVideoBuffer(const Rect &update_rect);
 	void ReleaseAnimBuffer(const Rect &update_rect);
 
 	/* SpriteEncoder */
 
 	bool Is32BppSupported() override { return true; }
-	uint GetSpriteAlignment() override { return 1u << (ZOOM_LVL_COUNT - 1); }
-	Sprite *Encode(const SpriteLoader::Sprite *sprite, AllocatorProc *allocator) override;
+	uint GetSpriteAlignment() override { return 1u << (ZOOM_LVL_END - 1); }
+	Sprite *Encode(const SpriteLoader::SpriteCollection &sprite, AllocatorProc *allocator) override;
 };
 
 

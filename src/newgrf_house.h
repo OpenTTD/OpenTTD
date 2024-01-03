@@ -22,7 +22,7 @@ struct HouseScopeResolver : public ScopeResolver {
 	TileIndex tile;                ///< Tile of this house.
 	Town *town;                    ///< Town of this house.
 	bool not_yet_constructed;      ///< True for construction check.
-	uint16 initial_random_bits;    ///< Random bits during construction checks.
+	uint16_t initial_random_bits;    ///< Random bits during construction checks.
 	CargoTypes watched_cargo_triggers; ///< Cargo types that triggered the watched cargo callback.
 
 	/**
@@ -36,15 +36,15 @@ struct HouseScopeResolver : public ScopeResolver {
 	 * @param watched_cargo_triggers Cargo types that triggered the watched cargo callback.
 	 */
 	HouseScopeResolver(ResolverObject &ro, HouseID house_id, TileIndex tile, Town *town,
-			bool not_yet_constructed, uint8 initial_random_bits, CargoTypes watched_cargo_triggers)
+			bool not_yet_constructed, uint8_t initial_random_bits, CargoTypes watched_cargo_triggers)
 		: ScopeResolver(ro), house_id(house_id), tile(tile), town(town), not_yet_constructed(not_yet_constructed),
 		initial_random_bits(initial_random_bits), watched_cargo_triggers(watched_cargo_triggers)
 	{
 	}
 
-	uint32 GetRandomBits() const override;
-	uint32 GetVariable(byte variable, uint32 parameter, bool *available) const override;
-	uint32 GetTriggers() const override;
+	uint32_t GetRandomBits() const override;
+	uint32_t GetVariable(byte variable, [[maybe_unused]] uint32_t parameter, bool *available) const override;
+	uint32_t GetTriggers() const override;
 };
 
 /** Resolver object to be used for houses (feature 07 spritegroups). */
@@ -53,8 +53,8 @@ struct HouseResolverObject : public ResolverObject {
 	TownScopeResolver  town_scope;
 
 	HouseResolverObject(HouseID house_id, TileIndex tile, Town *town,
-			CallbackID callback = CBID_NO_CALLBACK, uint32 param1 = 0, uint32 param2 = 0,
-			bool not_yet_constructed = false, uint8 initial_random_bits = 0, CargoTypes watched_cargo_triggers = 0);
+			CallbackID callback = CBID_NO_CALLBACK, uint32_t param1 = 0, uint32_t param2 = 0,
+			bool not_yet_constructed = false, uint8_t initial_random_bits = 0, CargoTypes watched_cargo_triggers = 0);
 
 	ScopeResolver *GetScope(VarSpriteGroupScope scope = VSG_SCOPE_SELF, byte relative = 0) override
 	{
@@ -66,7 +66,7 @@ struct HouseResolverObject : public ResolverObject {
 	}
 
 	GrfSpecFeature GetFeature() const override;
-	uint32 GetDebugID() const override;
+	uint32_t GetDebugID() const override;
 };
 
 /**
@@ -83,11 +83,12 @@ struct HouseResolverObject : public ResolverObject {
  * need to be persistent; it just needs to keep class ids unique.
  */
 struct HouseClassMapping {
-	uint32 grfid;     ///< The GRF ID of the file this class belongs to
-	uint8  class_id;  ///< The class id within the grf file
+	uint32_t grfid;     ///< The GRF ID of the file this class belongs to
+	uint8_t  class_id;  ///< The class id within the grf file
 };
 
-HouseClassID AllocateHouseClassID(byte grf_class_id, uint32 grfid);
+void ResetHouseClassIDs();
+HouseClassID AllocateHouseClassID(byte grf_class_id, uint32_t grfid);
 
 void InitializeBuildingCounts();
 void IncreaseBuildingCount(Town *t, HouseID house_id);
@@ -97,8 +98,8 @@ void DrawNewHouseTile(TileInfo *ti, HouseID house_id);
 void AnimateNewHouseTile(TileIndex tile);
 void AnimateNewHouseConstruction(TileIndex tile);
 
-uint16 GetHouseCallback(CallbackID callback, uint32 param1, uint32 param2, HouseID house_id, Town *town, TileIndex tile,
-		bool not_yet_constructed = false, uint8 initial_random_bits = 0, CargoTypes watched_cargo_triggers = 0);
+uint16_t GetHouseCallback(CallbackID callback, uint32_t param1, uint32_t param2, HouseID house_id, Town *town, TileIndex tile,
+		bool not_yet_constructed = false, uint8_t initial_random_bits = 0, CargoTypes watched_cargo_triggers = 0);
 void WatchedCargoCallback(TileIndex tile, CargoTypes trigger_cargoes);
 
 bool CanDeleteHouse(TileIndex tile);

@@ -53,6 +53,21 @@ int FontCache::GetDefaultFontHeight(FontSize fs)
 	return _default_font_height[fs];
 }
 
+/**
+ * Get the font name of a given font size.
+ * @param fs The font size to look up.
+ * @return The font name.
+ */
+std::string FontCache::GetName(FontSize fs)
+{
+	FontCache *fc = FontCache::Get(fs);
+	if (fc != nullptr) {
+		return fc->GetFontName();
+	} else {
+		return "[NULL]";
+	}
+}
+
 
 /**
  * Get height of a character for a given font size.
@@ -189,5 +204,5 @@ bool HasAntialiasedFonts()
 
 #if !defined(_WIN32) && !defined(__APPLE__) && !defined(WITH_FONTCONFIG) && !defined(WITH_COCOA)
 
-bool SetFallbackFont(FontCacheSettings *settings, const std::string &language_isocode, int winlangid, MissingGlyphSearcher *callback) { return false; }
+bool SetFallbackFont(FontCacheSettings *, const std::string &, int, MissingGlyphSearcher *) { return false; }
 #endif /* !defined(_WIN32) && !defined(__APPLE__) && !defined(WITH_FONTCONFIG) && !defined(WITH_COCOA) */

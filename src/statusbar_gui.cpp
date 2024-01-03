@@ -25,7 +25,6 @@
 #include "toolbar_gui.h"
 #include "core/geometry_func.hpp"
 #include "zoom_func.h"
-#include "date_type.h"
 #include "timer/timer.h"
 #include "timer/timer_game_calendar.h"
 #include "timer/timer_window.h"
@@ -39,7 +38,7 @@
 
 static bool DrawScrollingStatusText(const NewsItem *ni, int scroll_pos, int left, int right, int top, int bottom)
 {
-	CopyInDParam(0, ni->params, lengthof(ni->params));
+	CopyInDParam(ni->params);
 
 	/* Replace newlines and the likes with spaces. */
 	std::string message = StrMakeValid(GetString(ni->string_id), SVS_REPLACE_TAB_CR_NL_WITH_SPACE);
@@ -73,29 +72,29 @@ struct StatusBarWindow : Window {
 		PositionStatusbar(this);
 	}
 
-	Point OnInitialPosition(int16 sm_width, int16 sm_height, int window_number) override
+	Point OnInitialPosition([[maybe_unused]] int16_t sm_width, [[maybe_unused]] int16_t sm_height, [[maybe_unused]] int window_number) override
 	{
 		Point pt = { 0, _screen.height - sm_height };
 		return pt;
 	}
 
-	void FindWindowPlacementAndResize(int def_width, int def_height) override
+	void FindWindowPlacementAndResize([[maybe_unused]] int def_width, [[maybe_unused]] int def_height) override
 	{
 		Window::FindWindowPlacementAndResize(_toolbar_width, def_height);
 	}
 
-	void UpdateWidgetSize(int widget, Dimension *size, const Dimension &padding, Dimension *fill, Dimension *resize) override
+	void UpdateWidgetSize(WidgetID widget, Dimension *size, [[maybe_unused]] const Dimension &padding, [[maybe_unused]] Dimension *fill, [[maybe_unused]] Dimension *resize) override
 	{
 		Dimension d;
 		switch (widget) {
 			case WID_S_LEFT:
-				SetDParamMaxValue(0, MAX_YEAR * DAYS_IN_YEAR);
+				SetDParamMaxValue(0, TimerGameCalendar::DateAtStartOfYear(CalendarTime::MAX_YEAR));
 				d = GetStringBoundingBox(STR_JUST_DATE_LONG);
 				break;
 
 			case WID_S_RIGHT: {
-				int64 max_money = UINT32_MAX;
-				for (const Company *c : Company::Iterate()) max_money = std::max<int64>(c->money, max_money);
+				int64_t max_money = UINT32_MAX;
+				for (const Company *c : Company::Iterate()) max_money = std::max<int64_t>(c->money, max_money);
 				SetDParam(0, 100LL * max_money);
 				d = GetStringBoundingBox(STR_JUST_CURRENCY_LONG);
 				break;
@@ -110,10 +109,10 @@ struct StatusBarWindow : Window {
 		*size = maxdim(d, *size);
 	}
 
-	void DrawWidget(const Rect &r, int widget) const override
+	void DrawWidget(const Rect &r, WidgetID widget) const override
 	{
 		Rect tr = r.Shrink(WidgetDimensions::scaled.framerect, RectPadding::zero);
-		tr.top = CenterBounds(r.top, r.bottom, FONT_HEIGHT_NORMAL);
+		tr.top = CenterBounds(r.top, r.bottom, GetCharacterHeight(FS_NORMAL));
 		switch (widget) {
 			case WID_S_LEFT:
 				/* Draw the date */
@@ -175,7 +174,7 @@ struct StatusBarWindow : Window {
 	 * @param data Information about the changed data.
 	 * @param gui_scope Whether the call is done from GUI scope. You may not do everything when not in GUI scope. See #InvalidateWindowData() for details.
 	 */
-	void OnInvalidateData(int data = 0, bool gui_scope = true) override
+	void OnInvalidateData([[maybe_unused]] int data = 0, [[maybe_unused]] bool gui_scope = true) override
 	{
 		if (!gui_scope) return;
 		switch (data) {
@@ -191,7 +190,7 @@ struct StatusBarWindow : Window {
 		}
 	}
 
-	void OnClick(Point pt, int widget, int click_count) override
+	void OnClick([[maybe_unused]] Point pt, WidgetID widget, [[maybe_unused]] int click_count) override
 	{
 		switch (widget) {
 			case WID_S_MIDDLE: ShowLastNewsMessage(); break;
@@ -227,11 +226,11 @@ static const NWidgetPart _nested_main_status_widgets[] = {
 	EndContainer(),
 };
 
-static WindowDesc _main_status_desc(
+static WindowDesc _main_status_desc(__FILE__, __LINE__,
 	WDP_MANUAL, nullptr, 0, 0,
 	WC_STATUS_BAR, WC_NONE,
-	WDF_NO_FOCUS,
-	_nested_main_status_widgets, lengthof(_nested_main_status_widgets)
+	WDF_NO_FOCUS | WDF_NO_CLOSE,
+	std::begin(_nested_main_status_widgets), std::end(_nested_main_status_widgets)
 );
 
 /**

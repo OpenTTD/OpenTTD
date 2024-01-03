@@ -35,7 +35,7 @@ struct LoadCheckData {
 	StringID error;     ///< Error message from loading. INVALID_STRING_ID if no error.
 	std::string error_msg; ///< Data to pass to SetDParamStr when displaying #error.
 
-	uint32 map_size_x, map_size_y;
+	uint32_t map_size_x, map_size_y;
 	TimerGameCalendar::Date current_date;
 
 	GameSettings settings;
@@ -78,7 +78,7 @@ extern LoadCheckData _load_check_data;
 /** Deals with finding savegames */
 struct FiosItem {
 	FiosType type;
-	uint64 mtime;
+	uint64_t mtime;
 	std::string title;
 	std::string name;
 	bool operator< (const FiosItem &other) const;

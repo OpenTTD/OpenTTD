@@ -24,6 +24,9 @@
  * API removals:
  * \li AIError::ERR_PRECONDITION_TOO_MANY_PARAMETERS, that error is never returned anymore.
  *
+ * Other changes:
+ * \li AIVehicleList accepts an optional filter function
+ *
  * \b 13.0
  *
  * API additions:

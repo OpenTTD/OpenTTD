@@ -83,8 +83,8 @@ Station::Station(TileIndex tile) :
 Station::~Station()
 {
 	if (CleaningPool()) {
-		for (CargoID c = 0; c < NUM_CARGO; c++) {
-			this->goods[c].cargo.OnCleanPool();
+		for (GoodsEntry &ge : this->goods) {
+			ge.cargo.OnCleanPool();
 		}
 		return;
 	}
@@ -105,7 +105,7 @@ Station::~Station()
 		for (NodeID node = 0; node < lg->Size(); ++node) {
 			Station *st = Station::Get((*lg)[node].station);
 			st->goods[c].flows.erase(this->index);
-			if ((*lg)[node].HasEdgeTo(this->goods[c].node) && (*lg)[node][this->goods[c].node].LastUpdate() != INVALID_DATE) {
+			if ((*lg)[node].HasEdgeTo(this->goods[c].node) && (*lg)[node][this->goods[c].node].LastUpdate() != CalendarTime::INVALID_DATE) {
 				st->goods[c].flows.DeleteFlows(this->index);
 				RerouteCargo(st, c, this->index, st->index);
 			}
@@ -148,8 +148,8 @@ Station::~Station()
 	/* Remove all news items */
 	DeleteStationNews(this->index);
 
-	for (CargoID c = 0; c < NUM_CARGO; c++) {
-		this->goods[c].cargo.Truncate();
+	for (GoodsEntry &ge : this->goods) {
+		ge.cargo.Truncate();
 	}
 
 	CargoPacket::InvalidateAllFrom(this->index);
@@ -162,9 +162,8 @@ Station::~Station()
 /**
  * Invalidating of the JoinStation window has to be done
  * after removing item from the pool.
- * @param index index of deleted item
  */
-void BaseStation::PostDestructor(size_t index)
+void BaseStation::PostDestructor(size_t)
 {
 	InvalidateWindowData(WC_SELECT_STATION, 0, 0);
 }
@@ -212,7 +211,7 @@ RoadStop *Station::GetPrimaryRoadStop(const RoadVehicle *v) const
 		/* The vehicle cannot go to this roadstop (different roadtype) */
 		if (!HasTileAnyRoadType(rs->xy, v->compatible_roadtypes)) continue;
 		/* The vehicle is articulated and can therefore not go to a standard road stop. */
-		if (IsStandardRoadStopTile(rs->xy) && v->HasArticulatedPart()) continue;
+		if (IsBayRoadStopTile(rs->xy) && v->HasArticulatedPart()) continue;
 
 		/* The vehicle can actually go to this road stop. So, return it! */
 		break;
@@ -254,7 +253,7 @@ void Station::MarkTilesDirty(bool cargo_change) const
 		/* Don't waste time updating if there are no custom station graphics
 		 * that might change. Even if there are custom graphics, they might
 		 * not change. Unfortunately we have no way of telling. */
-		if (this->speclist.size() == 0) return;
+		if (this->speclist.empty()) return;
 	}
 
 	for (h = 0; h < train_station.h; h++) {
@@ -414,7 +413,8 @@ void Station::AddIndustryToDeliver(Industry *ind, TileIndex tile)
  * Remove nearby industry from station's industries_near list.
  * @param ind  Industry
  */
-void Station::RemoveIndustryToDeliver(Industry *ind) {
+void Station::RemoveIndustryToDeliver(Industry *ind)
+{
 	auto pos = std::find_if(this->industries_near.begin(), this->industries_near.end(), [&](const IndustryListEntry &e) { return e.industry->index == ind->index; });
 	if (pos != this->industries_near.end()) {
 		this->industries_near.erase(pos);

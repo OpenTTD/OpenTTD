@@ -19,14 +19,14 @@ your operating system:
     - Windows:
         - `C:\My Documents\OpenTTD` (95, 98, ME)
         - `C:\Documents and Settings\<username>\My Documents\OpenTTD` (2000, XP)
-        - `C:\Users\<username>\Documents\OpenTTD` (Vista, 7, 8.1, 10)
+        - `C:\Users\<username>\Documents\OpenTTD` (7, 8.1, 10, 11)
     - macOS: `~/Documents/OpenTTD`
     - Linux: `$XDG_DATA_HOME/openttd` which is usually `~/.local/share/openttd`
        when built with XDG base directory support, otherwise `~/.openttd`
 3. The shared directory
     - Windows:
         - `C:\Documents and Settings\All Users\Shared Documents\OpenTTD` (2000, XP)
-        - `C:\Users\Public\Documents\OpenTTD` (Vista, 7, 8.1, 10)
+        - `C:\Users\Public\Documents\OpenTTD` (7, 8.1, 10, 11)
     - macOS: `/Library/Application Support/OpenTTD`
     - Linux: not available
 4. The binary directory (where the OpenTTD executable is)

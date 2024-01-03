@@ -52,7 +52,7 @@ public:
 	}
 
 	/** Called by YAPF to detect if node ends in the desired destination */
-	inline bool PfDetectDestination(TileIndex tile, Trackdir td)
+	inline bool PfDetectDestination(TileIndex tile, Trackdir)
 	{
 		bool bDest = IsRailDepotTile(tile);
 		return bDest;

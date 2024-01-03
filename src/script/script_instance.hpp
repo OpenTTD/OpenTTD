@@ -153,6 +153,11 @@ public:
 	inline bool IsDead() const { return this->is_dead; }
 
 	/**
+	 * Return whether the script is alive.
+	 */
+	inline bool IsAlive() const { return !this->IsDead() && !this->in_shutdown; }
+
+	/**
 	 * Call the script Save function and save all data in the savegame.
 	 */
 	void Save();

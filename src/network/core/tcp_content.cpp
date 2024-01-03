@@ -170,13 +170,13 @@ bool NetworkContentSocketHandler::ReceiveInvalidPacket(PacketContentType type)
 	return false;
 }
 
-bool NetworkContentSocketHandler::Receive_CLIENT_INFO_LIST(Packet *p) { return this->ReceiveInvalidPacket(PACKET_CONTENT_CLIENT_INFO_LIST); }
-bool NetworkContentSocketHandler::Receive_CLIENT_INFO_ID(Packet *p) { return this->ReceiveInvalidPacket(PACKET_CONTENT_CLIENT_INFO_ID); }
-bool NetworkContentSocketHandler::Receive_CLIENT_INFO_EXTID(Packet *p) { return this->ReceiveInvalidPacket(PACKET_CONTENT_CLIENT_INFO_EXTID); }
-bool NetworkContentSocketHandler::Receive_CLIENT_INFO_EXTID_MD5(Packet *p) { return this->ReceiveInvalidPacket(PACKET_CONTENT_CLIENT_INFO_EXTID_MD5); }
-bool NetworkContentSocketHandler::Receive_SERVER_INFO(Packet *p) { return this->ReceiveInvalidPacket(PACKET_CONTENT_SERVER_INFO); }
-bool NetworkContentSocketHandler::Receive_CLIENT_CONTENT(Packet *p) { return this->ReceiveInvalidPacket(PACKET_CONTENT_CLIENT_CONTENT); }
-bool NetworkContentSocketHandler::Receive_SERVER_CONTENT(Packet *p) { return this->ReceiveInvalidPacket(PACKET_CONTENT_SERVER_CONTENT); }
+bool NetworkContentSocketHandler::Receive_CLIENT_INFO_LIST(Packet *) { return this->ReceiveInvalidPacket(PACKET_CONTENT_CLIENT_INFO_LIST); }
+bool NetworkContentSocketHandler::Receive_CLIENT_INFO_ID(Packet *) { return this->ReceiveInvalidPacket(PACKET_CONTENT_CLIENT_INFO_ID); }
+bool NetworkContentSocketHandler::Receive_CLIENT_INFO_EXTID(Packet *) { return this->ReceiveInvalidPacket(PACKET_CONTENT_CLIENT_INFO_EXTID); }
+bool NetworkContentSocketHandler::Receive_CLIENT_INFO_EXTID_MD5(Packet *) { return this->ReceiveInvalidPacket(PACKET_CONTENT_CLIENT_INFO_EXTID_MD5); }
+bool NetworkContentSocketHandler::Receive_SERVER_INFO(Packet *) { return this->ReceiveInvalidPacket(PACKET_CONTENT_SERVER_INFO); }
+bool NetworkContentSocketHandler::Receive_CLIENT_CONTENT(Packet *) { return this->ReceiveInvalidPacket(PACKET_CONTENT_CLIENT_CONTENT); }
+bool NetworkContentSocketHandler::Receive_SERVER_CONTENT(Packet *) { return this->ReceiveInvalidPacket(PACKET_CONTENT_SERVER_CONTENT); }
 
 /**
  * Helper to get the subdirectory a #ContentInfo is located in.

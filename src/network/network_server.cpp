@@ -9,7 +9,7 @@
 
 #include "../stdafx.h"
 #include "../strings_func.h"
-#include "core/game_info.h"
+#include "core/network_game_info.h"
 #include "network_admin.h"
 #include "network_server.h"
 #include "network_udp.h"
@@ -197,7 +197,7 @@ struct PacketWriter : SaveFilter {
 
 		/* Fast-track the size to the client. */
 		this->current = new Packet(PACKET_SERVER_MAP_SIZE);
-		this->current->Send_uint32((uint32)this->total_size);
+		this->current->Send_uint32((uint32_t)this->total_size);
 		this->PrependQueue();
 	}
 };
@@ -224,6 +224,8 @@ ServerNetworkGameSocketHandler::ServerNetworkGameSocketHandler(SOCKET s) : Netwo
  */
 ServerNetworkGameSocketHandler::~ServerNetworkGameSocketHandler()
 {
+	delete this->GetInfo();
+
 	if (_redirect_console_to_client == this->client_id) _redirect_console_to_client = INVALID_CLIENT_ID;
 	OrderBackup::ResetUser(this->client_id);
 
@@ -256,7 +258,7 @@ NetworkRecvStatus ServerNetworkGameSocketHandler::CloseConnection(NetworkRecvSta
 	 * connection. This handles that case gracefully without having to make
 	 * that code any more complex or more aware of the validity of the socket.
 	 */
-	if (this->sock == INVALID_SOCKET) return status;
+	if (this->IsPendingDeletion() || this->sock == INVALID_SOCKET) return status;
 
 	if (status != NETWORK_RECV_STATUS_CLIENT_QUIT && status != NETWORK_RECV_STATUS_SERVER_ERROR && !this->HasClientQuit() && this->status >= STATUS_AUTHORIZED) {
 		/* We did not receive a leave message from this client... */
@@ -292,8 +294,7 @@ NetworkRecvStatus ServerNetworkGameSocketHandler::CloseConnection(NetworkRecvSta
 
 	this->SendPackets(true);
 
-	delete this->GetInfo();
-	delete this;
+	this->DeferDeletion();
 
 	InvalidateWindowData(WC_CLIENT_LIST, 0);
 
@@ -657,7 +658,7 @@ NetworkRecvStatus ServerNetworkGameSocketHandler::SendCommand(const CommandPacke
  * @param msg The actual message.
  * @param data Arbitrary extra data.
  */
-NetworkRecvStatus ServerNetworkGameSocketHandler::SendChat(NetworkAction action, ClientID client_id, bool self_send, const std::string &msg, int64 data)
+NetworkRecvStatus ServerNetworkGameSocketHandler::SendChat(NetworkAction action, ClientID client_id, bool self_send, const std::string &msg, int64_t data)
 {
 	if (this->status < STATUS_PRE_ACTIVE) return NETWORK_RECV_STATUS_OKAY;
 
@@ -746,7 +747,7 @@ NetworkRecvStatus ServerNetworkGameSocketHandler::SendNewGame()
  * @param colour The colour of the result.
  * @param command The command that was executed.
  */
-NetworkRecvStatus ServerNetworkGameSocketHandler::SendRConResult(uint16 colour, const std::string &command)
+NetworkRecvStatus ServerNetworkGameSocketHandler::SendRConResult(uint16_t colour, const std::string &command)
 {
 	Packet *p = new Packet(PACKET_SERVER_RCON);
 
@@ -776,7 +777,7 @@ NetworkRecvStatus ServerNetworkGameSocketHandler::SendCompanyUpdate()
 {
 	Packet *p = new Packet(PACKET_SERVER_COMPANY_UPDATE);
 
-	static_assert(sizeof(_network_company_passworded) <= sizeof(uint16));
+	static_assert(sizeof(_network_company_passworded) <= sizeof(uint16_t));
 	p->Send_uint16(_network_company_passworded);
 	this->SendPacket(p);
 	return NETWORK_RECV_STATUS_OKAY;
@@ -798,12 +799,12 @@ NetworkRecvStatus ServerNetworkGameSocketHandler::SendConfigUpdate()
  *   DEF_SERVER_RECEIVE_COMMAND has parameter: NetworkClientSocket *cs, Packet *p
  ************/
 
-NetworkRecvStatus ServerNetworkGameSocketHandler::Receive_CLIENT_GAME_INFO(Packet *p)
+NetworkRecvStatus ServerNetworkGameSocketHandler::Receive_CLIENT_GAME_INFO(Packet *)
 {
 	return this->SendGameInfo();
 }
 
-NetworkRecvStatus ServerNetworkGameSocketHandler::Receive_CLIENT_NEWGRFS_CHECKED(Packet *p)
+NetworkRecvStatus ServerNetworkGameSocketHandler::Receive_CLIENT_NEWGRFS_CHECKED(Packet *)
 {
 	if (this->status != STATUS_NEWGRFS_CHECK) {
 		/* Illegal call, return error and ignore the packet */
@@ -837,7 +838,7 @@ NetworkRecvStatus ServerNetworkGameSocketHandler::Receive_CLIENT_JOIN(Packet *p)
 	}
 
 	std::string client_revision = p->Recv_string(NETWORK_REVISION_LENGTH);
-	uint32 newgrf_version = p->Recv_uint32();
+	uint32_t newgrf_version = p->Recv_uint32();
 
 	/* Check if the client has revision control enabled */
 	if (!IsNetworkCompatibleVersion(client_revision) || _openttd_newgrf_version != newgrf_version) {
@@ -944,7 +945,7 @@ NetworkRecvStatus ServerNetworkGameSocketHandler::Receive_CLIENT_COMPANY_PASSWOR
 	return this->SendWelcome();
 }
 
-NetworkRecvStatus ServerNetworkGameSocketHandler::Receive_CLIENT_GETMAP(Packet *p)
+NetworkRecvStatus ServerNetworkGameSocketHandler::Receive_CLIENT_GETMAP(Packet *)
 {
 	/* The client was never joined.. so this is impossible, right?
 	 *  Ignore the packet, give the client a warning, and close the connection */
@@ -965,7 +966,7 @@ NetworkRecvStatus ServerNetworkGameSocketHandler::Receive_CLIENT_GETMAP(Packet *
 	return this->SendMap();
 }
 
-NetworkRecvStatus ServerNetworkGameSocketHandler::Receive_CLIENT_MAP_OK(Packet *p)
+NetworkRecvStatus ServerNetworkGameSocketHandler::Receive_CLIENT_MAP_OK(Packet *)
 {
 	/* Client has the map, now start syncing */
 	if (this->status == STATUS_DONE_MAP && !this->HasClientQuit()) {
@@ -1106,7 +1107,7 @@ NetworkRecvStatus ServerNetworkGameSocketHandler::Receive_CLIENT_ERROR(Packet *p
 	return this->CloseConnection(NETWORK_RECV_STATUS_CLIENT_QUIT);
 }
 
-NetworkRecvStatus ServerNetworkGameSocketHandler::Receive_CLIENT_QUIT(Packet *p)
+NetworkRecvStatus ServerNetworkGameSocketHandler::Receive_CLIENT_QUIT(Packet *)
 {
 	/* The client was never joined.. thank the client for the packet, but ignore it */
 	if (this->status < STATUS_DONE_MAP || this->HasClientQuit()) {
@@ -1135,12 +1136,12 @@ NetworkRecvStatus ServerNetworkGameSocketHandler::Receive_CLIENT_ACK(Packet *p)
 		return this->SendError(NETWORK_ERROR_NOT_AUTHORIZED);
 	}
 
-	uint32 frame = p->Recv_uint32();
+	uint32_t frame = p->Recv_uint32();
 
 	/* The client is trying to catch up with the server */
 	if (this->status == STATUS_PRE_ACTIVE) {
 		/* The client is not yet caught up? */
-		if (frame + DAY_TICKS < _frame_counter) return NETWORK_RECV_STATUS_OKAY;
+		if (frame + Ticks::DAY_TICKS < _frame_counter) return NETWORK_RECV_STATUS_OKAY;
 
 		/* Now it is! Unpause the game */
 		this->status = STATUS_ACTIVE;
@@ -1151,7 +1152,7 @@ NetworkRecvStatus ServerNetworkGameSocketHandler::Receive_CLIENT_ACK(Packet *p)
 	}
 
 	/* Get, and validate the token. */
-	uint8 token = p->Recv_uint8();
+	uint8_t token = p->Recv_uint8();
 	if (token == this->last_token) {
 		/* We differentiate between last_token_frame and last_frame so the lag
 		 * test uses the actual lag of the client instead of the lag for getting
@@ -1184,7 +1185,7 @@ NetworkRecvStatus ServerNetworkGameSocketHandler::Receive_CLIENT_ACK(Packet *p)
  * @param data Arbitrary data.
  * @param from_admin Whether the origin is an admin or not.
  */
-void NetworkServerSendChat(NetworkAction action, DestType desttype, int dest, const std::string &msg, ClientID from_id, int64 data, bool from_admin)
+void NetworkServerSendChat(NetworkAction action, DestType desttype, int dest, const std::string &msg, ClientID from_id, int64_t data, bool from_admin)
 {
 	const NetworkClientInfo *ci, *ci_own, *ci_to;
 
@@ -1322,7 +1323,7 @@ NetworkRecvStatus ServerNetworkGameSocketHandler::Receive_CLIENT_CHAT(Packet *p)
 	int dest = p->Recv_uint32();
 
 	std::string msg = p->Recv_string(NETWORK_CHAT_LENGTH);
-	int64 data = p->Recv_uint64();
+	int64_t data = p->Recv_uint64();
 
 	NetworkClientInfo *ci = this->GetInfo();
 	switch (action) {
@@ -1401,7 +1402,7 @@ NetworkRecvStatus ServerNetworkGameSocketHandler::Receive_CLIENT_RCON(Packet *p)
 	Debug(net, 3, "[rcon] Client-id {} executed: {}", this->client_id, command);
 
 	_redirect_console_to_client = this->client_id;
-	IConsoleCmdExec(command.c_str());
+	IConsoleCmdExec(command);
 	_redirect_console_to_client = INVALID_CLIENT_ID;
 	return NETWORK_RECV_STATUS_OKAY;
 }
@@ -1723,7 +1724,7 @@ void NetworkServer_Tick(bool send_frame)
 				 * did not receive a packet, then the client is not just
 				 * slow, but the connection is likely severed. Mentioning
 				 * frame_freq is not useful in this case. */
-				if (lag > (uint)DAY_TICKS && cs->lag_test == 0 && cs->last_packet + std::chrono::seconds(2) > std::chrono::steady_clock::now()) {
+				if (lag > (uint)Ticks::DAY_TICKS && cs->lag_test == 0 && cs->last_packet + std::chrono::seconds(2) > std::chrono::steady_clock::now()) {
 					IConsolePrint(CC_WARNING, "[{}] Client #{} is slow, try increasing [network.]frame_freq to a higher value!", _frame_counter, cs->client_id);
 					cs->lag_test = 1;
 				}
@@ -1821,6 +1822,15 @@ static IntervalTimer<TimerGameCalendar> _network_yearly({TimerGameCalendar::YEAR
 	NetworkAdminUpdate(ADMIN_FREQUENCY_ANUALLY);
 });
 
+/** Quarterly "callback". Called whenever the quarter changes. */
+static IntervalTimer<TimerGameCalendar> _network_quarterly({TimerGameCalendar::QUARTER, TimerGameCalendar::Priority::NONE}, [](auto)
+{
+	if (!_network_server) return;
+
+	NetworkAutoCleanCompanies();
+	NetworkAdminUpdate(ADMIN_FREQUENCY_QUARTERLY);
+});
+
 /** Monthly "callback". Called whenever the month changes. */
 static IntervalTimer<TimerGameCalendar> _network_monthly({TimerGameCalendar::MONTH, TimerGameCalendar::Priority::NONE}, [](auto)
 {
@@ -1828,7 +1838,14 @@ static IntervalTimer<TimerGameCalendar> _network_monthly({TimerGameCalendar::MON
 
 	NetworkAutoCleanCompanies();
 	NetworkAdminUpdate(ADMIN_FREQUENCY_MONTHLY);
-	if ((TimerGameCalendar::month % 3) == 0) NetworkAdminUpdate(ADMIN_FREQUENCY_QUARTERLY);
+});
+
+/** Weekly "callback". Called whenever the week changes. */
+static IntervalTimer<TimerGameCalendar> _network_weekly({TimerGameCalendar::WEEK, TimerGameCalendar::Priority::NONE}, [](auto)
+{
+	if (!_network_server) return;
+
+	NetworkAdminUpdate(ADMIN_FREQUENCY_WEEKLY);
 });
 
 /** Daily "callback". Called whenever the date changes. */
@@ -1837,7 +1854,6 @@ static IntervalTimer<TimerGameCalendar> _network_daily({TimerGameCalendar::DAY, 
 	if (!_network_server) return;
 
 	NetworkAdminUpdate(ADMIN_FREQUENCY_DAILY);
-	if ((TimerGameCalendar::date % 7) == 3) NetworkAdminUpdate(ADMIN_FREQUENCY_WEEKLY);
 });
 
 /**
@@ -1874,7 +1890,7 @@ void NetworkServerShowStatusToConsole()
 
 		status = (cs->status < (ptrdiff_t)lengthof(stat_str) ? stat_str[cs->status] : "unknown");
 		IConsolePrint(CC_INFO, "Client #{}  name: '{}'  status: '{}'  frame-lag: {}  company: {}  IP: {}",
-			cs->client_id, ci->client_name.c_str(), status, lag,
+			cs->client_id, ci->client_name, status, lag,
 			ci->client_playas + (Company::IsValidID(ci->client_playas) ? 1 : 0),
 			cs->GetClientIP());
 	}

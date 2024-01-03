@@ -24,7 +24,7 @@
 
 #include "safeguards.h"
 
-bool SetFallbackFont(FontCacheSettings *settings, const std::string &language_isocode, int winlangid, MissingGlyphSearcher *callback)
+bool SetFallbackFont(FontCacheSettings *settings, const std::string &language_isocode, int, MissingGlyphSearcher *callback)
 {
 	/* Determine fallback font using CoreText. This uses the language isocode
 	 * to find a suitable font. CoreText is available from 10.5 onwards. */
@@ -180,7 +180,7 @@ void CoreTextFontCache::SetFontSize(int pixels)
 	Debug(fontcache, 2, "Loaded font '{}' with size {}", this->font_name, pixels);
 }
 
-GlyphID CoreTextFontCache::MapCharToGlyph(WChar key)
+GlyphID CoreTextFontCache::MapCharToGlyph(char32_t key)
 {
 	assert(IsPrintable(key));
 
@@ -205,7 +205,7 @@ GlyphID CoreTextFontCache::MapCharToGlyph(WChar key)
 	return 0;
 }
 
-const void *CoreTextFontCache::InternalGetFontTable(uint32 tag, size_t &length)
+const void *CoreTextFontCache::InternalGetFontTable(uint32_t tag, size_t &length)
 {
 	CFAutoRelease<CFDataRef> data(CTFontCopyTable(this->font.get(), (CTFontTableTag)tag, kCTFontTableOptionNoOptions));
 	if (!data) return nullptr;
@@ -240,14 +240,15 @@ const Sprite *CoreTextFontCache::InternalGetGlyph(GlyphID key, bool use_aa)
 	/* Limit glyph size to prevent overflows later on. */
 	if (width > MAX_GLYPH_DIM || height > MAX_GLYPH_DIM) UserError("Font glyph is too large");
 
-	SpriteLoader::Sprite sprite;
+	SpriteLoader::SpriteCollection spritecollection;
+	SpriteLoader::Sprite &sprite = spritecollection[ZOOM_LVL_NORMAL];
 	sprite.AllocateData(ZOOM_LVL_NORMAL, width * height);
 	sprite.type = SpriteType::Font;
 	sprite.colours = (use_aa ? SCC_PAL | SCC_ALPHA : SCC_PAL);
 	sprite.width = width;
 	sprite.height = height;
-	sprite.x_offs = (int16)std::round(CGRectGetMinX(bounds));
-	sprite.y_offs = this->ascender - (int16)std::ceil(CGRectGetMaxY(bounds));
+	sprite.x_offs = (int16_t)std::round(CGRectGetMinX(bounds));
+	sprite.y_offs = this->ascender - (int16_t)std::ceil(CGRectGetMaxY(bounds));
 
 	if (bounds.size.width > 0) {
 		/* Glyph is not a white-space glyph. Render it to a bitmap context. */
@@ -290,7 +291,7 @@ const Sprite *CoreTextFontCache::InternalGetGlyph(GlyphID key, bool use_aa)
 	}
 
 	GlyphEntry new_glyph;
-	new_glyph.sprite = BlitterFactory::GetCurrentBlitter()->Encode(&sprite, SimpleSpriteAlloc);
+	new_glyph.sprite = BlitterFactory::GetCurrentBlitter()->Encode(spritecollection, SimpleSpriteAlloc);
 	new_glyph.width = (byte)std::round(CTFontGetAdvancesForGlyphs(this->font.get(), kCTFontOrientationDefault, &glyph, nullptr, 1));
 	this->SetGlyphPtr(key, &new_glyph);
 
@@ -326,7 +327,7 @@ void LoadCoreTextFont(FontSize fs)
 			path.reset(CFStringCreateWithCString(kCFAllocatorDefault, settings->font.c_str(), kCFStringEncodingUTF8));
 		} else {
 			/* Scan the search-paths to see if it can be found. */
-			std::string full_font = FioFindFullPath(BASE_DIR, settings->font.c_str());
+			std::string full_font = FioFindFullPath(BASE_DIR, settings->font);
 			if (!full_font.empty()) {
 				path.reset(CFStringCreateWithCString(kCFAllocatorDefault, full_font.c_str(), kCFStringEncodingUTF8));
 			}

@@ -22,6 +22,20 @@
 
 extern FT_Library _library;
 
+/**
+ * Split the font name into the font family and style. These fields are separated by a comma,
+ * but the style does not necessarily need to exist.
+ * @param font_name The font name.
+ * @return The font family and style.
+ */
+static std::tuple<std::string, std::string> SplitFontFamilyAndStyle(std::string_view font_name)
+{
+	auto separator = font_name.find(',');
+	if (separator == std::string_view::npos) return { std::string(font_name), std::string() };
+
+	auto begin = font_name.find_first_not_of("\t ", separator + 1);
+	return { std::string(font_name.substr(0, separator)), std::string(font_name.substr(begin)) };
+}
 
 FT_Error GetFontByFaceName(const char *font_name, FT_Face *face)
 {
@@ -35,39 +49,26 @@ FT_Error GetFontByFaceName(const char *font_name, FT_Face *face)
 	auto fc_instance = FcConfigReference(nullptr);
 	assert(fc_instance != nullptr);
 
-	FcPattern *match;
-	FcPattern *pat;
-	FcFontSet *fs;
-	FcResult  result;
-	char *font_style;
-	char *font_family;
-
 	/* Split & strip the font's style */
-	font_family = stredup(font_name);
-	font_style = strchr(font_family, ',');
-	if (font_style != nullptr) {
-		font_style[0] = '\0';
-		font_style++;
-		while (*font_style == ' ' || *font_style == '\t') font_style++;
-	}
+	auto [font_family, font_style] = SplitFontFamilyAndStyle(font_name);
 
 	/* Resolve the name and populate the information structure */
-	pat = FcNameParse((FcChar8 *)font_family);
-	if (font_style != nullptr) FcPatternAddString(pat, FC_STYLE, (FcChar8 *)font_style);
+	FcPattern *pat = FcNameParse((FcChar8 *)font_family.data());
+	if (!font_style.empty()) FcPatternAddString(pat, FC_STYLE, (FcChar8 *)font_style.data());
 	FcConfigSubstitute(nullptr, pat, FcMatchPattern);
 	FcDefaultSubstitute(pat);
-	fs = FcFontSetCreate();
-	match = FcFontMatch(nullptr, pat, &result);
+	FcFontSet *fs = FcFontSetCreate();
+	FcResult  result;
+	FcPattern *match = FcFontMatch(nullptr, pat, &result);
 
 	if (fs != nullptr && match != nullptr) {
-		int i;
 		FcChar8 *family;
 		FcChar8 *style;
 		FcChar8 *file;
 		int32_t index;
 		FcFontSetAdd(fs, match);
 
-		for (i = 0; err != FT_Err_Ok && i < fs->nfont; i++) {
+		for (int i = 0; err != FT_Err_Ok && i < fs->nfont; i++) {
 			/* Try the new filename */
 			if (FcPatternGetString(fs->fonts[i], FC_FILE, 0, &file) == FcResultMatch &&
 				FcPatternGetString(fs->fonts[i], FC_FAMILY, 0, &family) == FcResultMatch &&
@@ -75,11 +76,11 @@ FT_Error GetFontByFaceName(const char *font_name, FT_Face *face)
 				FcPatternGetInteger(fs->fonts[i], FC_INDEX, 0, &index) == FcResultMatch) {
 
 				/* The correct style? */
-				if (font_style != nullptr && !StrEqualsIgnoreCase(font_style, (char *)style)) continue;
+				if (!font_style.empty() && !StrEqualsIgnoreCase(font_style, (char *)style)) continue;
 
 				/* Font config takes the best shot, which, if the family name is spelled
-					* wrongly a 'random' font, so check whether the family name is the
-					* same as the supplied name */
+				 * wrongly a 'random' font, so check whether the family name is the
+				 * same as the supplied name */
 				if (StrEqualsIgnoreCase(font_family, (char *)family)) {
 					err = FT_New_Face(_library, (char *)file, index, face);
 				}
@@ -87,7 +88,6 @@ FT_Error GetFontByFaceName(const char *font_name, FT_Face *face)
 		}
 	}
 
-	free(font_family);
 	FcPatternDestroy(pat);
 	FcFontSetDestroy(fs);
 	FcConfigDestroy(fc_instance);
@@ -95,7 +95,7 @@ FT_Error GetFontByFaceName(const char *font_name, FT_Face *face)
 	return err;
 }
 
-bool SetFallbackFont(FontCacheSettings *settings, const std::string &language_isocode, int winlangid, MissingGlyphSearcher *callback)
+bool SetFallbackFont(FontCacheSettings *settings, const std::string &language_isocode, int, MissingGlyphSearcher *callback)
 {
 	bool ret = false;
 
@@ -111,8 +111,8 @@ bool SetFallbackFont(FontCacheSettings *settings, const std::string &language_is
 
 	/* First create a pattern to match the wanted language. */
 	FcPattern *pat = FcNameParse((const FcChar8 *)lang.c_str());
-	/* We only want to know the filename. */
-	FcObjectSet *os = FcObjectSetBuild(FC_FILE, FC_SPACING, FC_SLANT, FC_WEIGHT, nullptr);
+	/* We only want to know these attributes. */
+	FcObjectSet *os = FcObjectSetBuild(FC_FILE, FC_INDEX, FC_SPACING, FC_SLANT, FC_WEIGHT, nullptr);
 	/* Get the list of filenames matching the wanted language. */
 	FcFontSet *fs = FcFontList(nullptr, pat, os);
 
@@ -123,6 +123,7 @@ bool SetFallbackFont(FontCacheSettings *settings, const std::string &language_is
 	if (fs != nullptr) {
 		int best_weight = -1;
 		const char *best_font = nullptr;
+		int best_index = 0;
 
 		for (int i = 0; i < fs->nfont; i++) {
 			FcPattern *font = fs->fonts[i];
@@ -146,7 +147,12 @@ bool SetFallbackFont(FontCacheSettings *settings, const std::string &language_is
 			FcPatternGetInteger(font, FC_WEIGHT, 0, &value);
 			if (value <= best_weight) continue;
 
-			callback->SetFontNames(settings, (const char *)file);
+			/* Possible match based on attributes, get index. */
+			int32_t index;
+			res = FcPatternGetInteger(font, FC_INDEX, 0, &index);
+			if (res != FcResultMatch) continue;
+
+			callback->SetFontNames(settings, (const char *)file, &index);
 
 			bool missing = callback->FindMissingGlyphs();
 			Debug(fontcache, 1, "Font \"{}\" misses{} glyphs", (char *)file, missing ? "" : " no");
@@ -154,12 +160,13 @@ bool SetFallbackFont(FontCacheSettings *settings, const std::string &language_is
 			if (!missing) {
 				best_weight = value;
 				best_font = (const char *)file;
+				best_index = index;
 			}
 		}
 
 		if (best_font != nullptr) {
 			ret = true;
-			callback->SetFontNames(settings, best_font);
+			callback->SetFontNames(settings, best_font, &best_index);
 			InitFontCache(callback->Monospace());
 		}
 

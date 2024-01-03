@@ -18,6 +18,7 @@
  * This version is not yet released. The following changes are not set in stone yet.
  *
  * API additions:
+ * \li GSIndustry::GetConstructionDate
  * \li GSAsyncMode
  * \li GSCompanyMode::IsValid
  * \li GSCompanyMode::IsDeity
@@ -77,9 +78,14 @@
  * \li GSVehicleList_DefaultGroup
  * \li GSGoal::IsValidGoalDestination
  * \li GSGoal::SetDestination
+ * \li GSIndustry::GetProductionLevel
+ * \li GSIndustry::SetProductionLevel
  *
  * API removals:
  * \li GSError::ERR_PRECONDITION_TOO_MANY_PARAMETERS, that error is never returned anymore.
+ *
+ * Other changes:
+ * \li GSVehicleList accepts an optional filter function
  *
  * \b 13.0
  *

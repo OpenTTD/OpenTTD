@@ -126,7 +126,7 @@ void ResetObjects()
 	/* And add our originals. */
 	_object_specs.reserve(lengthof(_original_objects));
 
-	for (uint16 i = 0; i < lengthof(_original_objects); i++) {
+	for (uint16_t i = 0; i < lengthof(_original_objects); i++) {
 		ObjectSpec &spec = _object_specs.emplace_back(_original_objects[i]);
 		spec.grf_prop.local_id = i;
 	}
@@ -151,7 +151,7 @@ bool NewGRFClass<Tspec, Tid, Tmax>::IsUIAvailable(uint index) const
 
 INSTANTIATE_NEWGRF_CLASS_METHODS(ObjectClass, ObjectSpec, ObjectClassID, OBJECT_CLASS_MAX)
 
-/* virtual */ uint32 ObjectScopeResolver::GetRandomBits() const
+/* virtual */ uint32_t ObjectScopeResolver::GetRandomBits() const
 {
 	return IsValidTile(this->tile) && IsTileType(this->tile, MP_OBJECT) ? GetObjectRandomBits(this->tile) : 0;
 }
@@ -162,7 +162,7 @@ INSTANTIATE_NEWGRF_CLASS_METHODS(ObjectClass, ObjectSpec, ObjectClassID, OBJECT_
  * @param cur_grfid GRFID of the current callback chain
  * @return value encoded as per NFO specs
  */
-static uint32 GetObjectIDAtOffset(TileIndex tile, uint32 cur_grfid)
+static uint32_t GetObjectIDAtOffset(TileIndex tile, uint32_t cur_grfid)
 {
 	if (!IsTileType(tile, MP_OBJECT)) {
 		return 0xFFFF;
@@ -191,7 +191,7 @@ static uint32 GetObjectIDAtOffset(TileIndex tile, uint32 cur_grfid)
  * @param grf_version8 True, if we are dealing with a new NewGRF which uses GRF version >= 8.
  * @return a construction of bits obeying the newgrf format
  */
-static uint32 GetNearbyObjectTileInformation(byte parameter, TileIndex tile, ObjectID index, bool grf_version8)
+static uint32_t GetNearbyObjectTileInformation(byte parameter, TileIndex tile, ObjectID index, bool grf_version8)
 {
 	if (parameter != 0) tile = GetNearbyTile(parameter, tile); // only perform if it is required
 	bool is_same_object = (IsTileType(tile, MP_OBJECT) && GetObjectIndex(tile) == index);
@@ -206,9 +206,9 @@ static uint32 GetNearbyObjectTileInformation(byte parameter, TileIndex tile, Obj
  * @param current The current object (to ignore).
  * @return The distance to the closest object.
  */
-static uint32 GetClosestObject(TileIndex tile, ObjectType type, const Object *current)
+static uint32_t GetClosestObject(TileIndex tile, ObjectType type, const Object *current)
 {
-	uint32 best_dist = UINT32_MAX;
+	uint32_t best_dist = UINT32_MAX;
 	for (const Object *o : Object::Iterate()) {
 		if (o->type != type || o == current) continue;
 
@@ -226,10 +226,10 @@ static uint32 GetClosestObject(TileIndex tile, ObjectType type, const Object *cu
  * @param current  Object for which the inquiry is made
  * @return The formatted answer to the callback : rr(reserved) cc(count) dddd(manhattan distance of closest sister)
  */
-static uint32 GetCountAndDistanceOfClosestInstance(byte local_id, uint32 grfid, TileIndex tile, const Object *current)
+static uint32_t GetCountAndDistanceOfClosestInstance(byte local_id, uint32_t grfid, TileIndex tile, const Object *current)
 {
-	uint32 grf_id = GetRegister(0x100);  // Get the GRFID of the definition to look for in register 100h
-	uint32 idx;
+	uint32_t grf_id = GetRegister(0x100);  // Get the GRFID of the definition to look for in register 100h
+	uint32_t idx;
 
 	/* Determine what will be the object type to look for */
 	switch (grf_id) {
@@ -253,7 +253,7 @@ static uint32 GetCountAndDistanceOfClosestInstance(byte local_id, uint32 grfid, 
 }
 
 /** Used by the resolver to get values for feature 0F deterministic spritegroups. */
-/* virtual */ uint32 ObjectScopeResolver::GetVariable(byte variable, uint32 parameter, bool *available) const
+/* virtual */ uint32_t ObjectScopeResolver::GetVariable(byte variable, [[maybe_unused]] uint32_t parameter, bool *available) const
 {
 	/* We get the town from the object, or we calculate the closest
 	 * town if we need to when there's no object. */
@@ -277,7 +277,7 @@ static uint32 GetCountAndDistanceOfClosestInstance(byte local_id, uint32 grfid, 
 				break;
 
 			/* Construction date */
-			case 0x42: return TimerGameCalendar::date;
+			case 0x42: return TimerGameCalendar::date.base();
 
 			/* Object founder information */
 			case 0x44: return _current_company;
@@ -305,7 +305,7 @@ static uint32 GetCountAndDistanceOfClosestInstance(byte local_id, uint32 grfid, 
 	switch (variable) {
 		/* Relative position. */
 		case 0x40: {
-			uint offset = this->tile - this->obj->location.tile;
+			TileIndex offset = this->tile - this->obj->location.tile;
 			uint offset_x = TileX(offset);
 			uint offset_y = TileY(offset);
 			return offset_y << 20 | offset_x << 16 | offset_y << 8 | offset_x;
@@ -315,7 +315,7 @@ static uint32 GetCountAndDistanceOfClosestInstance(byte local_id, uint32 grfid, 
 		case 0x41: return GetTileSlope(this->tile) << 8 | GetTerrainType(this->tile);
 
 		/* Construction date */
-		case 0x42: return this->obj->build_date;
+		case 0x42: return this->obj->build_date.base();
 
 		/* Animation counter */
 		case 0x43: return GetAnimationFrame(this->tile);
@@ -373,8 +373,8 @@ unhandled:
  * @param param1 First parameter (var 10) of the callback.
  * @param param2 Second parameter (var 18) of the callback.
  */
-ObjectResolverObject::ObjectResolverObject(const ObjectSpec *spec, Object *obj, TileIndex tile, uint8 view,
-		CallbackID callback, uint32 param1, uint32 param2)
+ObjectResolverObject::ObjectResolverObject(const ObjectSpec *spec, Object *obj, TileIndex tile, uint8_t view,
+		CallbackID callback, uint32_t param1, uint32_t param2)
 	: ResolverObject(spec->grf_prop.grffile, callback, param1, param2), object_scope(*this, obj, spec, tile, view)
 {
 	this->town_scope = nullptr;
@@ -412,7 +412,7 @@ GrfSpecFeature ObjectResolverObject::GetFeature() const
 	return GSF_OBJECTS;
 }
 
-uint32 ObjectResolverObject::GetDebugID() const
+uint32_t ObjectResolverObject::GetDebugID() const
 {
 	return this->object_scope.spec->grf_prop.local_id;
 }
@@ -428,7 +428,7 @@ uint32 ObjectResolverObject::GetDebugID() const
  * @param view     The view of the object (only used when o == nullptr).
  * @return The result of the callback.
  */
-uint16 GetObjectCallback(CallbackID callback, uint32 param1, uint32 param2, const ObjectSpec *spec, Object *o, TileIndex tile, uint8 view)
+uint16_t GetObjectCallback(CallbackID callback, uint32_t param1, uint32_t param2, const ObjectSpec *spec, Object *o, TileIndex tile, uint8_t view)
 {
 	ObjectResolverObject object(spec, o, tile, view, callback, param1, param2);
 	return object.ResolveCallback();
@@ -484,7 +484,7 @@ void DrawNewObjectTile(TileInfo *ti, const ObjectSpec *spec)
  * @param spec Object spec to draw.
  * @param view The object's view.
  */
-void DrawNewObjectTileInGUI(int x, int y, const ObjectSpec *spec, uint8 view)
+void DrawNewObjectTileInGUI(int x, int y, const ObjectSpec *spec, uint8_t view)
 {
 	ObjectResolverObject object(spec, nullptr, INVALID_TILE, view);
 	const SpriteGroup *group = object.Resolve();
@@ -524,10 +524,9 @@ void DrawNewObjectTileInGUI(int x, int y, const ObjectSpec *spec, uint8 view)
  * @param spec     The specification of the object / the entry point.
  * @param o        The object to call the callback for.
  * @param tile     The tile the callback is called for.
- * @param extra_data Ignored.
  * @return The result of the callback.
  */
-uint16 StubGetObjectCallback(CallbackID callback, uint32 param1, uint32 param2, const ObjectSpec *spec, Object *o, TileIndex tile, int extra_data)
+uint16_t StubGetObjectCallback(CallbackID callback, uint32_t param1, uint32_t param2, const ObjectSpec *spec, Object *o, TileIndex tile, int)
 {
 	return GetObjectCallback(callback, param1, param2, spec, o, tile);
 }

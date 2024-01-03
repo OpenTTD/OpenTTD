@@ -202,6 +202,9 @@ STR_COLOUR_BROWN                                                :חום
 STR_COLOUR_GREY                                                 :אפור
 STR_COLOUR_WHITE                                                :לבן
 
+###length 17
+
+
 # Units used in OpenTTD
 STR_UNITS_VELOCITY_IMPERIAL                                     :{DECIMAL} מייל לשעה
 STR_UNITS_VELOCITY_METRIC                                       :{DECIMAL} קמ"ש
@@ -236,6 +239,7 @@ STR_UNITS_FORCE_SI                                              :{DECIMAL} קי�
 STR_UNITS_HEIGHT_IMPERIAL                                       :{DECIMAL} רגל
 STR_UNITS_HEIGHT_METRIC                                         :{DECIMAL} מ'
 STR_UNITS_HEIGHT_SI                                             :{DECIMAL} מ'
+
 
 # Common window strings
 STR_LIST_FILTER_TITLE                                           :{BLACK}מחרוזת סינון:
@@ -408,31 +412,25 @@ STR_SETTINGS_MENU_TRANSPARENT_BUILDINGS                         :בניינים 
 STR_SETTINGS_MENU_TRANSPARENT_SIGNS                             :שלטים שקופים
 
 # File menu
-###length 5
 STR_FILE_MENU_SAVE_GAME                                         :שמור משחק
 STR_FILE_MENU_LOAD_GAME                                         :טען משחק
 STR_FILE_MENU_QUIT_GAME                                         :עזוב משחק
-STR_FILE_MENU_SEPARATOR                                         :
 STR_FILE_MENU_EXIT                                              :יציאה
 
 # Map menu
-###length 4
 STR_MAP_MENU_MAP_OF_WORLD                                       :מפת העולם
 STR_MAP_MENU_EXTRA_VIEWPORT                                     :השקפה נוספת
 STR_MAP_MENU_LINGRAPH_LEGEND                                    :מקרא זרימת מטענים
 STR_MAP_MENU_SIGN_LIST                                          :רשימת שלטים
 
 # Town menu
-###length 2
 STR_TOWN_MENU_TOWN_DIRECTORY                                    :מדריך הערים
 STR_TOWN_MENU_FOUND_TOWN                                        :ייסד עיר
 
 # Subsidies menu
-###length 1
 STR_SUBSIDIES_MENU_SUBSIDIES                                    :סובסידיות
 
 # Graph menu
-###length 6
 STR_GRAPH_MENU_OPERATING_PROFIT_GRAPH                           :גרף רווח תפעולי
 STR_GRAPH_MENU_INCOME_GRAPH                                     :גרף הכנסות
 STR_GRAPH_MENU_DELIVERED_CARGO_GRAPH                            :גרף שינוע מטענים
@@ -441,56 +439,45 @@ STR_GRAPH_MENU_COMPANY_VALUE_GRAPH                              :גרף שווי
 STR_GRAPH_MENU_CARGO_PAYMENT_RATES                              :שערי תשלום עבור שירותי הובלה
 
 # Company league menu
-###length 3
 STR_GRAPH_MENU_COMPANY_LEAGUE_TABLE                             :טבלת ליגת החברות
 STR_GRAPH_MENU_DETAILED_PERFORMANCE_RATING                      :דירוג ביצועים מפורט
 STR_GRAPH_MENU_HIGHSCORE                                        :טבלת ניקוד מירבי
 
 # Industry menu
-###length 3
 STR_INDUSTRY_MENU_INDUSTRY_DIRECTORY                            :ספריית תעשיות
 STR_INDUSTRY_MENU_INDUSTRY_CHAIN                                :שרשראות תעשיה
 STR_INDUSTRY_MENU_FUND_NEW_INDUSTRY                             :ממן תעשיה חדשה
 
 # URailway construction menu
-###length 4
 STR_RAIL_MENU_RAILROAD_CONSTRUCTION                             :בניית מסילות
 STR_RAIL_MENU_ELRAIL_CONSTRUCTION                               :בניית מסילות רכבת מחושמלות
 STR_RAIL_MENU_MONORAIL_CONSTRUCTION                             :בניית מסילות חד פסיות
 STR_RAIL_MENU_MAGLEV_CONSTRUCTION                               :בניית מסילות מגנטיות
 
 # Road construction menu
-###length 2
 STR_ROAD_MENU_ROAD_CONSTRUCTION                                 :סלילת כבישים
 STR_ROAD_MENU_TRAM_CONSTRUCTION                                 :בניית מסילה חשמלית
 
 # Waterways construction menu
-###length 1
 STR_WATERWAYS_MENU_WATERWAYS_CONSTRUCTION                       :בניית נתיבי מים
 
 # Aairport construction menu
-###length 1
 STR_AIRCRAFT_MENU_AIRPORT_CONSTRUCTION                          :בניית שדה תעופה
 
 # Landscaping menu
-###length 3
 STR_LANDSCAPING_MENU_LANDSCAPING                                :עיצוב פני השטח
 STR_LANDSCAPING_MENU_PLANT_TREES                                :נטע עצים
 STR_LANDSCAPING_MENU_PLACE_SIGN                                 :מקם סימניות
 
 # Music menu
-###length 1
 STR_TOOLBAR_SOUND_MUSIC                                         :צלילים/מנגינה
 
 # Message menu
-###length 3
 STR_NEWS_MENU_LAST_MESSAGE_NEWS_REPORT                          :הודעה אחרונה/מבזק חדשות אחרון
 STR_NEWS_MENU_MESSAGE_HISTORY_MENU                              :היסטורית הודעות
 
 # About menu
-###length 10
 STR_ABOUT_MENU_LAND_BLOCK_INFO                                  :מידע על שטח קרקע
-STR_ABOUT_MENU_SEPARATOR                                        :
 STR_ABOUT_MENU_TOGGLE_CONSOLE                                   :פתח/סגור קונסולה
 STR_ABOUT_MENU_AI_DEBUG                                         :דיבאג של סקריפטים של בינה מלאכותית או של המשחק
 STR_ABOUT_MENU_SCREENSHOT                                       :צילום מסך
@@ -699,8 +686,6 @@ STR_PLAYLIST_TOOLTIP_CLICK_TO_ADD_TRACK                         :{BLACK}(לחץ 
 STR_PLAYLIST_TOOLTIP_CLICK_TO_REMOVE_TRACK                      :{BLACK}(לחץ על רצועה כדי להסיר אותה מהתוכנית הנוחכית(מותאם אישית 1 או מותאם אישית 2 בלבד
 
 # Highscore window
-STR_HIGHSCORE_TOP_COMPANIES_WHO_REACHED                         :{BIG_FONT}{BLACK}חמש החברות שהגיעו לשנת {NUM}
-STR_HIGHSCORE_TOP_COMPANIES_NETWORK_GAME                        :{BIG_FONT}{BLACK}טבלת ליגה של חברות ב {NUM}
 STR_HIGHSCORE_POSITION                                          :{BIG_FONT}{BLACK}.{COMMA}
 STR_HIGHSCORE_PERFORMANCE_TITLE_BUSINESSMAN                     :איש עסקים
 STR_HIGHSCORE_PERFORMANCE_TITLE_ENTREPRENEUR                    :יזם
@@ -884,10 +869,6 @@ STR_NEWS_NEW_VEHICLE_TYPE                                       :{BIG_FONT}{BLAC
 STR_NEWS_NEW_VEHICLE_NOW_AVAILABLE_WITH_TYPE                    :{BLACK}{STRING} חדש זמין כעת  -  {ENGINE}!
 
 
-STR_NEWS_STATION_NO_LONGER_ACCEPTS_CARGO                        :{WHITE}{STATION} אינה מקבלת יותר {STRING}
-STR_NEWS_STATION_NO_LONGER_ACCEPTS_CARGO_OR_CARGO               :{WHITE}{STATION} אינה מקבלת יותר {STRING} או {STRING}
-STR_NEWS_STATION_NOW_ACCEPTS_CARGO                              :{WHITE}{STATION} מקבלת כעת {STRING}
-STR_NEWS_STATION_NOW_ACCEPTS_CARGO_AND_CARGO                    :{WHITE}{STATION} מקבלת כעת {STRING} ו{STRING}
 
 STR_NEWS_OFFER_OF_SUBSIDY_EXPIRED                               :{BIG_FONT}{BLACK}פג תוקף הצעת סובסידיה:{}{}סובסידיה של הובלת {STRING.plural} מ{STRING} אל {STRING} לא תזכה עוד בסיבסוד.
 STR_NEWS_SUBSIDY_WITHDRAWN_SERVICE                              :{BIG_FONT}{BLACK}סובסידיה הוסרה:{}{}שירות הובלת {STRING.plural} מ{STRING} אל {STRING} אינו מסובסד יותר.
@@ -913,43 +894,44 @@ STR_GAME_OPTIONS_CAPTION                                        :{WHITE}אפשר
 STR_GAME_OPTIONS_CURRENCY_UNITS_FRAME                           :{BLACK}מטבע
 STR_GAME_OPTIONS_CURRENCY_UNITS_DROPDOWN_TOOLTIP                :{BLACK}בחירת מטבע
 
+
 ###length 42
-STR_GAME_OPTIONS_CURRENCY_GBP                                   :(GBP) לירה שטרלינג
-STR_GAME_OPTIONS_CURRENCY_USD                                   :(USD) דולר אמריקאי
-STR_GAME_OPTIONS_CURRENCY_EUR                                   :(EUR) יורו
-STR_GAME_OPTIONS_CURRENCY_JPY                                   :(JPY) ין יפני
-STR_GAME_OPTIONS_CURRENCY_ATS                                   :(ATS) שילינג אוסטרלי
-STR_GAME_OPTIONS_CURRENCY_BEF                                   :(BEF) פרנק בולגרי
-STR_GAME_OPTIONS_CURRENCY_CHF                                   :(CHF) פרנק שוודי
-STR_GAME_OPTIONS_CURRENCY_CZK                                   :(CZK) קרונה צ'כית
-STR_GAME_OPTIONS_CURRENCY_DEM                                   :(DEM) מרק גרמני
-STR_GAME_OPTIONS_CURRENCY_DKK                                   :(DKK) קרונה דנית
-STR_GAME_OPTIONS_CURRENCY_ESP                                   :(ESP) פזטה ספרדית
-STR_GAME_OPTIONS_CURRENCY_FIM                                   :(FIM) מרק פיני
-STR_GAME_OPTIONS_CURRENCY_FRF                                   :(FRF) פרנק צרפתי
-STR_GAME_OPTIONS_CURRENCY_GRD                                   :(GRD) דרכמה יוונית
-STR_GAME_OPTIONS_CURRENCY_HUF                                   :(HUF) פורינט הונגרי
-STR_GAME_OPTIONS_CURRENCY_ISK                                   :(ISK) קרונה איסלנדית
-STR_GAME_OPTIONS_CURRENCY_ITL                                   :(ITL) לירה איטלקית
-STR_GAME_OPTIONS_CURRENCY_NLG                                   :(NLG) גילדן הולנדי
-STR_GAME_OPTIONS_CURRENCY_NOK                                   :(NOK) קרונה נורווגית
-STR_GAME_OPTIONS_CURRENCY_PLN                                   :(PLN) זלוטי פולני
-STR_GAME_OPTIONS_CURRENCY_RON                                   :(RON) ליו רומני
-STR_GAME_OPTIONS_CURRENCY_RUR                                   :(RUR) רובל רוסי
-STR_GAME_OPTIONS_CURRENCY_SIT                                   :(SIT) טולר סלובני
-STR_GAME_OPTIONS_CURRENCY_SEK                                   :(SEK) קרונה שוודית
-STR_GAME_OPTIONS_CURRENCY_TRY                                   :(TRY) לירה טורקית
-STR_GAME_OPTIONS_CURRENCY_SKK                                   :(SKK) קורונה סלובקית
-STR_GAME_OPTIONS_CURRENCY_BRL                                   :(BRL) ריל ברזילאי
-STR_GAME_OPTIONS_CURRENCY_EEK                                   :(EEK) קרוני אסטוני
-STR_GAME_OPTIONS_CURRENCY_LTL                                   :(LTL) ליטאס ליטאי
-STR_GAME_OPTIONS_CURRENCY_KRW                                   :(KRW) וון דרום קוריאני
-STR_GAME_OPTIONS_CURRENCY_ZAR                                   :(ZAR) ראנד דרום אפריקאי
+STR_GAME_OPTIONS_CURRENCY_GBP                                   :לירה שטרלינג
+STR_GAME_OPTIONS_CURRENCY_USD                                   :דולר אמריקאי
+STR_GAME_OPTIONS_CURRENCY_EUR                                   :יורו
+STR_GAME_OPTIONS_CURRENCY_JPY                                   :ין יפני
+STR_GAME_OPTIONS_CURRENCY_ATS                                   :שילינג אוסטרלי
+STR_GAME_OPTIONS_CURRENCY_BEF                                   :פרנק בולגרי
+STR_GAME_OPTIONS_CURRENCY_CHF                                   :פרנק שוודי
+STR_GAME_OPTIONS_CURRENCY_CZK                                   :קרונה צ'כית
+STR_GAME_OPTIONS_CURRENCY_DEM                                   :מרק גרמני
+STR_GAME_OPTIONS_CURRENCY_DKK                                   :קרונה דנית
+STR_GAME_OPTIONS_CURRENCY_ESP                                   :פזטה ספרדית
+STR_GAME_OPTIONS_CURRENCY_FIM                                   :מרק פיני
+STR_GAME_OPTIONS_CURRENCY_FRF                                   :פרנק צרפתי
+STR_GAME_OPTIONS_CURRENCY_GRD                                   :דרכמה יוונית
+STR_GAME_OPTIONS_CURRENCY_HUF                                   :פורינט הונגרי
+STR_GAME_OPTIONS_CURRENCY_ISK                                   :קרונה איסלנדית
+STR_GAME_OPTIONS_CURRENCY_ITL                                   :לירה איטלקית
+STR_GAME_OPTIONS_CURRENCY_NLG                                   :גילדן הולנדי
+STR_GAME_OPTIONS_CURRENCY_NOK                                   :קרונה נורווגית
+STR_GAME_OPTIONS_CURRENCY_PLN                                   :זלוטי פולני
+STR_GAME_OPTIONS_CURRENCY_RON                                   :ליו רומני
+STR_GAME_OPTIONS_CURRENCY_RUR                                   :רובל רוסי
+STR_GAME_OPTIONS_CURRENCY_SIT                                   :טולר סלובני
+STR_GAME_OPTIONS_CURRENCY_SEK                                   :קרונה שוודית
+STR_GAME_OPTIONS_CURRENCY_TRY                                   :לירה טורקית
+STR_GAME_OPTIONS_CURRENCY_SKK                                   :קורונה סלובקית
+STR_GAME_OPTIONS_CURRENCY_BRL                                   :ריל ברזילאי
+STR_GAME_OPTIONS_CURRENCY_EEK                                   :קרוני אסטוני
+STR_GAME_OPTIONS_CURRENCY_LTL                                   :ליטאס ליטאי
+STR_GAME_OPTIONS_CURRENCY_KRW                                   :וון דרום קוריאני
+STR_GAME_OPTIONS_CURRENCY_ZAR                                   :ראנד דרום אפריקאי
 STR_GAME_OPTIONS_CURRENCY_CUSTOM                                :אחר...
-STR_GAME_OPTIONS_CURRENCY_GEL                                   :לארי גאורגי (GEL)
-STR_GAME_OPTIONS_CURRENCY_IRR                                   :ריאל איראני (IRR)
-STR_GAME_OPTIONS_CURRENCY_RUB                                   :רובל רוסי (RUB)
-STR_GAME_OPTIONS_CURRENCY_INR                                   :רופי הודי (INR)
+STR_GAME_OPTIONS_CURRENCY_GEL                                   :לארי גאורגי
+STR_GAME_OPTIONS_CURRENCY_IRR                                   :ריאל איראני
+STR_GAME_OPTIONS_CURRENCY_RUB                                   :רובל רוסי
+STR_GAME_OPTIONS_CURRENCY_INR                                   :רופי הודי
 
 STR_GAME_OPTIONS_AUTOSAVE_FRAME                                 :{BLACK}שמירה אוטומטית
 STR_GAME_OPTIONS_AUTOSAVE_DROPDOWN_TOOLTIP                      :{BLACK}בחר פרק זמן בין שמירות אוטומטיות
@@ -987,7 +969,6 @@ STR_GAME_OPTIONS_REFRESH_RATE_WARNING                           :{WHITE}עדכו
 
 STR_GAME_OPTIONS_BASE_GRF                                       :{BLACK}ערכת גרפיקה בסיסית
 STR_GAME_OPTIONS_BASE_GRF_TOOLTIP                               :{BLACK}בחר בערכת גרפיקה בסיסית לשימוש
-STR_GAME_OPTIONS_BASE_GRF_STATUS                                :{RED}{P 0 "קובץ " ""}{NUM}{P "" " קבצים"} חסר{P 0 "" ים}/הושחט{P 0 "" ו}
 STR_GAME_OPTIONS_BASE_GRF_DESCRIPTION_TOOLTIP                   :{BLACK}מידע נוסף אודות ערכת הגרפיקה הבסיסית
 
 STR_GAME_OPTIONS_BASE_SFX                                       :{BLACK}ערכת צלילים בסיסיים
@@ -996,8 +977,8 @@ STR_GAME_OPTIONS_BASE_SFX_DESCRIPTION_TOOLTIP                   :{BLACK}מידע
 
 STR_GAME_OPTIONS_BASE_MUSIC                                     :{BLACK}ערכת מוזיקת בסיס
 STR_GAME_OPTIONS_BASE_MUSIC_TOOLTIP                             :{BLACK}בחר בערכת מוזיקת הבסיס לשימוש
-STR_GAME_OPTIONS_BASE_MUSIC_STATUS                              :{RED}{NUM} קובץ פגום{P "" s}
 STR_GAME_OPTIONS_BASE_MUSIC_DESCRIPTION_TOOLTIP                 :{BLACK}מידע נוסף אודות ערכת המוזיקה הבסיסית
+
 
 STR_ERROR_RESOLUTION_LIST_FAILED                                :{WHITE}שגיאה ביצירת רשימה של רזולוציות אפשריות
 STR_ERROR_FULLSCREEN_FAILED                                     :{WHITE}נכשל בשינויי למסך מלא
@@ -1156,6 +1137,7 @@ STR_CONFIG_SETTING_REALISTIC                                    :מציאותי
 STR_CONFIG_SETTING_HORIZONTAL_POS_LEFT                          :שמאל
 STR_CONFIG_SETTING_HORIZONTAL_POS_CENTER                        :מרכז
 STR_CONFIG_SETTING_HORIZONTAL_POS_RIGHT                         :ימין
+
 
 STR_CONFIG_SETTING_MAXIMUM_INITIAL_LOAN                         :סכום הלוואה ראשוני: {STRING}
 STR_CONFIG_SETTING_MAXIMUM_INITIAL_LOAN_HELPTEXT                :סכום מירבי שחברה יכולה ללוות (מבלי לקחת בחשבון אינפלציה)
@@ -1319,6 +1301,7 @@ STR_CONFIG_SETTING_PLANE_CRASHES_NONE                           :ללא
 STR_CONFIG_SETTING_PLANE_CRASHES_REDUCED                        :מופחת
 STR_CONFIG_SETTING_PLANE_CRASHES_NORMAL                         :רגיל
 
+
 STR_CONFIG_SETTING_STOP_ON_TOWN_ROAD                            :{STRING} :אפשר מעבר דרך תחנות על כבישים בבעלות עירונית
 STR_CONFIG_SETTING_STOP_ON_TOWN_ROAD_HELPTEXT                   :אפשר בנייה של תחנות "על הדרך" בכבישים בבעלות עיירות
 STR_CONFIG_SETTING_STOP_ON_COMPETITOR_ROAD                      :אפשר נסיעה דרך תמרורי-עצירה על דרכים בבעלות מתחרים: {STRING}
@@ -1329,6 +1312,7 @@ STR_CONFIG_SETTING_INFRASTRUCTURE_MAINTENANCE                   :תחזוקת ת
 STR_CONFIG_SETTING_INFRASTRUCTURE_MAINTENANCE_HELPTEXT          :כאשר מאופשר, תשתיות גורמות לעלויות תחזוקה. העלות גדלה באופן שהוא מעבר ליחסי לעומת גודל הרשת, וכך משפיע יותר על חברות גדולות מאשר על חברות קטנות
 
 STR_CONFIG_SETTING_COMPANY_STARTING_COLOUR_HELPTEXT             :בחר צבע התחלתי לחברה
+
 
 STR_CONFIG_SETTING_NEVER_EXPIRE_AIRPORTS                        :בטל התיישנות נמלי תעופה: {STRING}
 STR_CONFIG_SETTING_NEVER_EXPIRE_AIRPORTS_HELPTEXT               :אפשור הגדרה זו גורם לכל סוג נמל תעופה להישאר זמין לעד אחרי השקתו
@@ -1363,7 +1347,6 @@ STR_CONFIG_SETTING_AUTORENEW_MONEY_HELPTEXT                     :סכום כסף
 
 STR_CONFIG_SETTING_ERRMSG_DURATION                              :משך הצגת הודעת שגיאה: {STRING}
 STR_CONFIG_SETTING_ERRMSG_DURATION_HELPTEXT                     :פרק הזמן להצגת הודעות שגיאה בחלון אדום. יש לשים לב כי כמה הודעות שגיאה (קריטיות) אינן נסגרות אוטומטית אחרי פרק זמן זה, אלא יש לסגור אותן ידנית
-STR_CONFIG_SETTING_ERRMSG_DURATION_VALUE                        :{P 0 "שנייה " ""}{COMMA}{P "" " שניות"}
 
 STR_CONFIG_SETTING_HOVER_DELAY                                  :הצג רמזים צצים: {STRING}
 STR_CONFIG_SETTING_HOVER_DELAY_HELPTEXT                         :השהייה טרם הצגת רמזים צצים כאשר העכבר מרחף מעל חלק ממשק. לחלופין, ניתן לקשר רמזים צצים לכפתור העכבר הימני כאשר מוגדר 0.
@@ -1511,9 +1494,7 @@ STR_CONFIG_SETTING_RIGHT_MOUSE_BTN_EMU_OFF                      :כבוי
 
 STR_CONFIG_SETTING_RIGHT_MOUSE_WND_CLOSE                        :סגירת חלון בכפתור ימני: {STRING}
 STR_CONFIG_SETTING_RIGHT_MOUSE_WND_CLOSE_HELPTEXT               :סוגר חלון על-ידי לחיצה ימנית בתוכו. מבטל הצגת מידע בלחיצה ימנית!
-
-STR_CONFIG_SETTING_AUTOSAVE                                     :שמירה אוטומטית: {STRING}
-STR_CONFIG_SETTING_AUTOSAVE_HELPTEXT                            :בחר פרק זמן בין שמירות אוטומטיות
+###length 3
 
 STR_CONFIG_SETTING_DATE_FORMAT_IN_SAVE_NAMES                    :השתמש במבנה התאריך {STRING} בשביל שמות קבצי השמירה.
 STR_CONFIG_SETTING_DATE_FORMAT_IN_SAVE_NAMES_HELPTEXT           :פורמט התאריך בשמות קבצים של משחקים שמורים
@@ -1539,8 +1520,7 @@ STR_CONFIG_SETTING_ADVANCED_VEHICLE_LISTS_HELPTEXT              :אפשר שימ
 STR_CONFIG_SETTING_LOADING_INDICATORS                           :{STRING} :הצג מצביעי הטענה
 STR_CONFIG_SETTING_LOADING_INDICATORS_HELPTEXT                  :בחר האם מדדי טעינה יוצגו מעל רכבים בעת טעינתם או פריקתם
 
-STR_CONFIG_SETTING_TIMETABLE_IN_TICKS                           :{STRING} :הצג לוח זמנים בפעימות במקום בימים
-STR_CONFIG_SETTING_TIMETABLE_IN_TICKS_HELPTEXT                  :הצג זמני נסיעה בלוחות זמנים בפעימות משחק במקום בימים
+###length 3
 
 STR_CONFIG_SETTING_TIMETABLE_SHOW_ARRIVAL_DEPARTURE             :הצג לוחות זמנים של הגעות ועזיבות: {STRING}
 STR_CONFIG_SETTING_TIMETABLE_SHOW_ARRIVAL_DEPARTURE_HELPTEXT    :הצג זמני הגעה ויציאה צפויים בלוחות זמנים
@@ -1880,29 +1860,29 @@ STR_CONFIG_SETTING_LOCALISATION_UNITS_HEIGHT_IMPERIAL           :בריטית (�
 STR_CONFIG_SETTING_LOCALISATION_UNITS_HEIGHT_METRIC             :מטרי (מטר)
 STR_CONFIG_SETTING_LOCALISATION_UNITS_HEIGHT_SI                 :SI (מטר)
 
-STR_CONFIG_SETTING_LOCALISATION                                 :{ORANGE}הגדרות מיקום
-STR_CONFIG_SETTING_GRAPHICS                                     :{ORANGE}גרפיקה
-STR_CONFIG_SETTING_SOUND                                        :{ORANGE}צלילים
-STR_CONFIG_SETTING_INTERFACE                                    :{ORANGE}ממשק חזותי
-STR_CONFIG_SETTING_INTERFACE_GENERAL                            :{ORANGE}כללי
-STR_CONFIG_SETTING_INTERFACE_VIEWPORTS                          :{ORANGE}נקודות מבט
-STR_CONFIG_SETTING_INTERFACE_CONSTRUCTION                       :{ORANGE}בנייה
-STR_CONFIG_SETTING_ADVISORS                                     :{ORANGE}חדשות / יועצים
-STR_CONFIG_SETTING_COMPANY                                      :{ORANGE}חברה
-STR_CONFIG_SETTING_ACCOUNTING                                   :{ORANGE}חשבונאות
-STR_CONFIG_SETTING_VEHICLES                                     :{ORANGE}כלי תחבורה
-STR_CONFIG_SETTING_VEHICLES_PHYSICS                             :{ORANGE}פיזיקה
-STR_CONFIG_SETTING_VEHICLES_ROUTING                             :{ORANGE}ניתוב
-STR_CONFIG_SETTING_LIMITATIONS                                  :{ORANGE}מגבלות
-STR_CONFIG_SETTING_ACCIDENTS                                    :{ORANGE}אסונות / תאונות
-STR_CONFIG_SETTING_GENWORLD                                     :{ORANGE}יצירת עולם
-STR_CONFIG_SETTING_ENVIRONMENT                                  :{ORANGE}סביבה
-STR_CONFIG_SETTING_ENVIRONMENT_AUTHORITIES                      :{ORANGE}רשויות
-STR_CONFIG_SETTING_ENVIRONMENT_TOWNS                            :{ORANGE}ערים
-STR_CONFIG_SETTING_ENVIRONMENT_INDUSTRIES                       :{ORANGE}תעשיות
-STR_CONFIG_SETTING_ENVIRONMENT_CARGODIST                        :{ORANGE}התפלגות המטען
-STR_CONFIG_SETTING_AI                                           :{ORANGE}מתחרים
-STR_CONFIG_SETTING_AI_NPC                                       :{ORANGE}שחקני מחשב
+STR_CONFIG_SETTING_LOCALISATION                                 :הגדרות מיקום
+STR_CONFIG_SETTING_GRAPHICS                                     :גרפיקה
+STR_CONFIG_SETTING_SOUND                                        :צלילים
+STR_CONFIG_SETTING_INTERFACE                                    :ממשק חזותי
+STR_CONFIG_SETTING_INTERFACE_GENERAL                            :כללי
+STR_CONFIG_SETTING_INTERFACE_VIEWPORTS                          :נקודות מבט
+STR_CONFIG_SETTING_INTERFACE_CONSTRUCTION                       :בנייה
+STR_CONFIG_SETTING_ADVISORS                                     :חדשות / יועצים
+STR_CONFIG_SETTING_COMPANY                                      :חברה
+STR_CONFIG_SETTING_ACCOUNTING                                   :חשבונאות
+STR_CONFIG_SETTING_VEHICLES                                     :כלי תחבורה
+STR_CONFIG_SETTING_VEHICLES_PHYSICS                             :פיזיקה
+STR_CONFIG_SETTING_VEHICLES_ROUTING                             :ניתוב
+STR_CONFIG_SETTING_LIMITATIONS                                  :מגבלות
+STR_CONFIG_SETTING_ACCIDENTS                                    :אסונות / תאונות
+STR_CONFIG_SETTING_GENWORLD                                     :יצירת עולם
+STR_CONFIG_SETTING_ENVIRONMENT                                  :סביבה
+STR_CONFIG_SETTING_ENVIRONMENT_AUTHORITIES                      :רשויות
+STR_CONFIG_SETTING_ENVIRONMENT_TOWNS                            :ערים
+STR_CONFIG_SETTING_ENVIRONMENT_INDUSTRIES                       :תעשיות
+STR_CONFIG_SETTING_ENVIRONMENT_CARGODIST                        :התפלגות המטען
+STR_CONFIG_SETTING_AI                                           :מתחרים
+STR_CONFIG_SETTING_AI_NPC                                       :שחקני מחשב
 
 STR_CONFIG_SETTING_PATHFINDER_FOR_TRAINS                        :{STRING} :אלגוריתם איתור נתיב עבור רכבות
 STR_CONFIG_SETTING_PATHFINDER_FOR_TRAINS_HELPTEXT               :אלגוריתם איתור נתיב עבור רכבות
@@ -1991,6 +1971,8 @@ STR_QUIT_NO                                                     :{BLACK}לא
 STR_ABANDON_GAME_CAPTION                                        :{WHITE}עזיבת משחק
 STR_ABANDON_GAME_QUERY                                          :{YELLOW}?האם אתה בטוח שברצונך לעזוב את המשחק
 STR_ABANDON_SCENARIO_QUERY                                      :{YELLOW}האם אתה בטוח שברצונך לצאת משלב זה?
+
+# Help window
 
 # Cheat window
 STR_CHEATS                                                      :{WHITE}(cheats) טריקים
@@ -2422,7 +2404,6 @@ STR_TRANSPARENT_BUILDINGS_TOOLTIP                               :{BLACK}שנה �
 STR_TRANSPARENT_BRIDGES_TOOLTIP                                 :{BLACK}שנה שקיפות עבור גשרים. Ctrl+לחיצה לנעילה
 STR_TRANSPARENT_STRUCTURES_TOOLTIP                              :{BLACK}שנה שקיפות עבור מבנים כגון מיגדלור ואנטנה. Ctrl+לחיצה לנעילה
 STR_TRANSPARENT_CATENARY_TOOLTIP                                :{BLACK}שנה שקיפות עבור עמודי חשמל. Ctrl+לחיצה לנעילה
-STR_TRANSPARENT_LOADING_TOOLTIP                                 :{BLACK}שנה שקיפות עבור מצביעי הטענה. Ctrl+לחיצה לנעילה
 STR_TRANSPARENT_INVISIBLE_TOOLTIP                               :{BLACK}הסתר במקום הפוך לשקוף
 
 # Linkgraph legend window
@@ -4198,8 +4179,6 @@ STR_TIMETABLE_STAY_FOR_ESTIMATED                                :(נשאר ל-{S
 STR_TIMETABLE_AND_TRAVEL_FOR_ESTIMATED                          :(מסע עבור {STRING} ללא טבלת זמנים)
 STR_TIMETABLE_STAY_FOR                                          :{STRING} והמתן למשך
 STR_TIMETABLE_AND_TRAVEL_FOR                                    :{STRING} וערוך מסע ל
-STR_TIMETABLE_DAYS                                              :{P 0 "יום " ""}{COMMA}{P "" " ימים"}
-STR_TIMETABLE_TICKS                                             :{P 0 "פעימה " ""}{COMMA}{P "" " פעימות"}
 
 STR_TIMETABLE_TOTAL_TIME                                        :{BLACK}{STRING} להשלמת לוח זמנים זה נדרשים
 STR_TIMETABLE_TOTAL_TIME_INCOMPLETE                             :{BLACK}.(לא כל היעדים תוזמנו) {STRING} להשלמת לוח זמנים זה ידרשו לפחות
@@ -4208,10 +4187,8 @@ STR_TIMETABLE_STATUS_ON_TIME                                    :{BLACK}כלי �
 STR_TIMETABLE_STATUS_LATE                                       :{BLACK}{STRING} רכב זה מאחר ב
 STR_TIMETABLE_STATUS_EARLY                                      :{BLACK}{STRING} רכב זה מקדים ב
 STR_TIMETABLE_STATUS_NOT_STARTED                                :{BLACK}לוח זמנים זה עדיין לא התחיל
-STR_TIMETABLE_STATUS_START_AT                                   :{BLACK}לוח זמנים זה יתחיל ב-{STRING}
 
-STR_TIMETABLE_STARTING_DATE                                     :{BLACK}תאריך התחלה
-STR_TIMETABLE_STARTING_DATE_TOOLTIP                             :{BLACK}בחר תאריך כנקודת ההתחלה ללוח הזמנים. Ctrl+לחיצה קובע את נקודת ההתחלה של לוח זמנים זה ומפזר בצורה אחידה בין כל כלי התחבורה המשותפים בלוח זמנים זה לפי סדרם, במידה וכל ההוראות כפופות ללוח הזמנים.
+
 
 STR_TIMETABLE_CHANGE_TIME                                       :{BLACK}שנה זמן
 STR_TIMETABLE_WAIT_TIME_TOOLTIP                                 :{BLACK}שנה את פרק הזמן לשהייה ביעד שנבחר
@@ -4235,8 +4212,6 @@ STR_TIMETABLE_EXPECTED                                          :{BLACK}צפוי
 STR_TIMETABLE_SCHEDULED                                         :{BLACK}מתוכנן
 STR_TIMETABLE_EXPECTED_TOOLTIP                                  :{BLACK}החלף בין מתוכנן וצפוי
 
-STR_TIMETABLE_ARRIVAL_ABBREVIATION                              :A:
-STR_TIMETABLE_DEPARTURE_ABBREVIATION                            :D:
 
 
 # Date window (for timetable)
@@ -4329,7 +4304,7 @@ STR_TEXTFILE_WRAP_TEXT_TOOLTIP                                  :{BLACK}אפשר
 STR_TEXTFILE_VIEW_README                                        :{BLACK}צפה ב-"קרא אותי"
 STR_TEXTFILE_VIEW_CHANGELOG                                     :{BLACK}רשימת שינויים
 STR_TEXTFILE_VIEW_LICENCE                                       :{BLACK}רשיון
-###length 4
+###length 5
 STR_TEXTFILE_README_CAPTION                                     :{WHITE}{STRING} "קרא אותי" של {STRING}
 STR_TEXTFILE_CHANGELOG_CAPTION                                  :{WHITE}{STRING} רשימת שינויים של {STRING}
 STR_TEXTFILE_LICENCE_CAPTION                                    :{WHITE}{STRING} רשיון של {STRING}
@@ -4465,7 +4440,6 @@ STR_ERROR_TOO_CLOSE_TO_EDGE_OF_MAP_SUB                          :{WHITE}... קר
 STR_ERROR_TOO_CLOSE_TO_ANOTHER_TOWN                             :{WHITE}... קרוב מידי לעיר אחרת
 STR_ERROR_TOO_MANY_TOWNS                                        :{WHITE}... יותר מידי ערים
 STR_ERROR_NO_SPACE_FOR_TOWN                                     :{WHITE}... אין יותר מקום על המפה
-STR_ERROR_TOWN_EXPAND_WARN_NO_ROADS                             :{WHITE}העיר לא תבנה כבישים. באפשרותך לאפשר בניית כבישים בעזרת תפריט הגדרות מתקמדות->כלכלה->ערים
 STR_ERROR_ROAD_WORKS_IN_PROGRESS                                :{WHITE}עבודות כביש בפעולה
 STR_ERROR_TOWN_CAN_T_DELETE                                     :{WHITE}לא ניתן למחוק עיר זו...{}תחנה או מוסך מקושר לעיר או שמשבצת בבעלות העיר לא ניתנת להסרה
 STR_ERROR_STATUE_NO_SUITABLE_PLACE                              :{WHITE}... אין אף מיקום מתאים לפסל במרכז עיירה זו

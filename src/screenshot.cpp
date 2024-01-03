@@ -81,19 +81,19 @@ struct ScreenshotFormat {
 
 /** BMP File Header (stored in little endian) */
 PACK(struct BitmapFileHeader {
-	uint16 type;
-	uint32 size;
-	uint32 reserved;
-	uint32 off_bits;
+	uint16_t type;
+	uint32_t size;
+	uint32_t reserved;
+	uint32_t off_bits;
 });
 static_assert(sizeof(BitmapFileHeader) == 14);
 
 /** BMP Info Header (stored in little endian) */
 struct BitmapInfoHeader {
-	uint32 size;
-	int32 width, height;
-	uint16 planes, bitcount;
-	uint32 compression, sizeimage, xpels, ypels, clrused, clrimp;
+	uint32_t size;
+	int32_t width, height;
+	uint16_t planes, bitcount;
+	uint32_t compression, sizeimage, xpels, ypels, clrused, clrimp;
 };
 static_assert(sizeof(BitmapInfoHeader) == 40);
 
@@ -181,8 +181,8 @@ static bool MakeBMPImage(const char *name, ScreenshotCallback *callb, void *user
 	/* Try to use 64k of memory, store between 16 and 128 lines */
 	uint maxlines = Clamp(65536 / (w * pixelformat / 8), 16, 128); // number of lines per iteration
 
-	uint8 *buff = MallocT<uint8>(maxlines * w * pixelformat / 8); // buffer which is rendered to
-	uint8 *line = CallocT<uint8>(bytewidth); // one line, stored to file
+	uint8_t *buff = MallocT<uint8_t>(maxlines * w * pixelformat / 8); // buffer which is rendered to
+	uint8_t *line = CallocT<uint8_t>(bytewidth); // one line, stored to file
 
 	/* Start at the bottom, since bitmaps are stored bottom up */
 	do {
@@ -374,7 +374,7 @@ static bool MakePNGImage(const char *name, ScreenshotCallback *callb, void *user
 	maxlines = Clamp(65536 / w, 16, 128);
 
 	/* now generate the bitmap bits */
-	void *buff = CallocT<uint8>(static_cast<size_t>(w) * maxlines * bpp); // by default generate 128 lines at a time.
+	void *buff = CallocT<uint8_t>(static_cast<size_t>(w) * maxlines * bpp); // by default generate 128 lines at a time.
 
 	y = 0;
 	do {
@@ -411,16 +411,16 @@ struct PcxHeader {
 	byte version;
 	byte rle;
 	byte bpp;
-	uint32 unused;
-	uint16 xmax, ymax;
-	uint16 hdpi, vdpi;
+	uint32_t unused;
+	uint16_t xmax, ymax;
+	uint16_t hdpi, vdpi;
 	byte pal_small[16 * 3];
 	byte reserved;
 	byte planes;
-	uint16 pitch;
-	uint16 cpal;
-	uint16 width;
-	uint16 height;
+	uint16_t pitch;
+	uint16_t cpal;
+	uint16_t width;
+	uint16_t height;
 	byte filler[54];
 };
 static_assert(sizeof(PcxHeader) == 128);
@@ -481,7 +481,7 @@ static bool MakePCXImage(const char *name, ScreenshotCallback *callb, void *user
 	maxlines = Clamp(65536 / w, 16, 128);
 
 	/* now generate the bitmap bits */
-	uint8 *buff = CallocT<uint8>(static_cast<size_t>(w) * maxlines); // by default generate 128 lines at a time.
+	uint8_t *buff = CallocT<uint8_t>(static_cast<size_t>(w) * maxlines); // by default generate 128 lines at a time.
 
 	y = 0;
 	do {
@@ -495,14 +495,14 @@ static bool MakePCXImage(const char *name, ScreenshotCallback *callb, void *user
 
 		/* write them to pcx */
 		for (i = 0; i != n; i++) {
-			const uint8 *bufp = buff + i * w;
+			const uint8_t *bufp = buff + i * w;
 			byte runchar = bufp[0];
 			uint runcount = 1;
 			uint j;
 
 			/* for each pixel... */
 			for (j = 1; j < w; j++) {
-				uint8 ch = bufp[j];
+				uint8_t ch = bufp[j];
 
 				if (ch != runchar || runcount >= 0x3f) {
 					if (runcount > 1 || (runchar & 0xC0) == 0xC0) {
@@ -599,7 +599,7 @@ void InitializeScreenshotFormats()
  * Callback of the screenshot generator that dumps the current video buffer.
  * @see ScreenshotCallback
  */
-static void CurrentScreenCallback(void *userdata, void *buf, uint y, uint pitch, uint n)
+static void CurrentScreenCallback(void *, void *buf, uint y, uint pitch, uint n)
 {
 	Blitter *blitter = BlitterFactory::GetCurrentBlitter();
 	void *src = blitter->MoveTo(_screen.dst_ptr, 0, y);
@@ -718,7 +718,7 @@ static bool MakeSmallScreenshot(bool crashlog)
  * @param height the height of the screenshot, or 0 for current viewport height (needs to be 0 with SC_VIEWPORT, SC_CRASHLOG, and SC_WORLD).
  * @param[out] vp Result viewport
  */
-void SetupScreenshotViewport(ScreenshotType t, Viewport *vp, uint32 width, uint32 height)
+void SetupScreenshotViewport(ScreenshotType t, Viewport *vp, uint32_t width, uint32_t height)
 {
 	switch(t) {
 		case SC_VIEWPORT:
@@ -799,7 +799,7 @@ void SetupScreenshotViewport(ScreenshotType t, Viewport *vp, uint32 width, uint3
  * @param height the height of the screenshot of, or 0 for current viewport height.
  * @return true on success
  */
-static bool MakeLargeWorldScreenshot(ScreenshotType t, uint32 width = 0, uint32 height = 0)
+static bool MakeLargeWorldScreenshot(ScreenshotType t, uint32_t width = 0, uint32_t height = 0)
 {
 	Viewport vp;
 	SetupScreenshotViewport(t, &vp, width, height);
@@ -811,14 +811,12 @@ static bool MakeLargeWorldScreenshot(ScreenshotType t, uint32 width = 0, uint32 
 
 /**
  * Callback for generating a heightmap. Supports 8bpp grayscale only.
- * @param userdata Pointer to user data.
  * @param buffer   Destination buffer.
  * @param y        Line number of the first line to write.
- * @param pitch    Number of pixels to write (1 byte for 8bpp, 4 bytes for 32bpp). @see Colour
  * @param n        Number of lines to write.
  * @see ScreenshotCallback
  */
-static void HeightmapCallback(void *userdata, void *buffer, uint y, uint pitch, uint n)
+static void HeightmapCallback(void *, void *buffer, uint y, uint, uint n)
 {
 	byte *buf = (byte *)buffer;
 	while (n > 0) {
@@ -862,10 +860,9 @@ static ScreenshotType _confirmed_screenshot_type; ///< Screenshot type the curre
 
 /**
  * Callback on the confirmation window for huge screenshots.
- * @param w Window with viewport
  * @param confirmed true on confirmation
  */
-static void ScreenshotConfirmationCallback(Window *w, bool confirmed)
+static void ScreenshotConfirmationCallback(Window *, bool confirmed)
 {
 	if (confirmed) MakeScreenshot(_confirmed_screenshot_type, {});
 }
@@ -905,7 +902,7 @@ void MakeScreenshotWithConfirm(ScreenshotType t)
  * @param height the height of the screenshot of, or 0 for current viewport height (only works for SC_ZOOMEDIN and SC_DEFAULTZOOM).
  * @return true iff the screenshot was made successfully
  */
-static bool RealMakeScreenshot(ScreenshotType t, std::string name, uint32 width, uint32 height)
+static bool RealMakeScreenshot(ScreenshotType t, std::string name, uint32_t width, uint32_t height)
 {
 	if (t == SC_VIEWPORT) {
 		/* First draw the dirty parts of the screen and only then change the name
@@ -979,7 +976,7 @@ static bool RealMakeScreenshot(ScreenshotType t, std::string name, uint32 width,
  * @return true iff the screenshot was successfully made.
  * @see MakeScreenshotWithConfirm
  */
-bool MakeScreenshot(ScreenshotType t, std::string name, uint32 width, uint32 height)
+bool MakeScreenshot(ScreenshotType t, std::string name, uint32_t width, uint32_t height)
 {
 	if (t == SC_CRASHLOG) {
 		/* Video buffer might or might not be locked. */
@@ -996,9 +993,9 @@ bool MakeScreenshot(ScreenshotType t, std::string name, uint32 width, uint32 hei
 }
 
 
-static void MinimapScreenCallback(void *userdata, void *buf, uint y, uint pitch, uint n)
+static void MinimapScreenCallback(void *, void *buf, uint y, uint pitch, uint n)
 {
-	uint32 *ubuf = (uint32 *)buf;
+	uint32_t *ubuf = (uint32_t *)buf;
 	uint num = (pitch * n);
 	for (uint i = 0; i < num; i++) {
 		uint row = y + (int)(i / pitch);
@@ -1007,7 +1004,7 @@ static void MinimapScreenCallback(void *userdata, void *buf, uint y, uint pitch,
 		TileIndex tile = TileXY(col, row);
 		byte val = GetSmallMapOwnerPixels(tile, GetTileType(tile), IncludeHeightmap::Never) & 0xFF;
 
-		uint32 colour_buf = 0;
+		uint32_t colour_buf = 0;
 		colour_buf  = (_cur_palette.palette[val].b << 0);
 		colour_buf |= (_cur_palette.palette[val].g << 8);
 		colour_buf |= (_cur_palette.palette[val].r << 16);

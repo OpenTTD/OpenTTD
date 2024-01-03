@@ -12,7 +12,7 @@
 #include "../../stdafx.h"
 #include "../../timer/timer_game_calendar.h"
 #include "../../debug.h"
-#include "game_info.h"
+#include "network_game_info.h"
 #include "udp.h"
 
 #include "../../safeguards.h"
@@ -50,7 +50,7 @@ bool NetworkUDPSocketHandler::Listen()
 		addr.Listen(SOCK_DGRAM, &this->sockets);
 	}
 
-	return this->sockets.size() != 0;
+	return !this->sockets.empty();
 }
 
 /**
@@ -73,7 +73,7 @@ void NetworkUDPSocketHandler::CloseSocket()
  */
 void NetworkUDPSocketHandler::SendPacket(Packet *p, NetworkAddress *recv, bool all, bool broadcast)
 {
-	if (this->sockets.size() == 0) this->Listen();
+	if (this->sockets.empty()) this->Listen();
 
 	for (auto &s : this->sockets) {
 		/* Make a local copy because if we resolve it we cannot
@@ -183,5 +183,5 @@ void NetworkUDPSocketHandler::ReceiveInvalidPacket(PacketUDPType type, NetworkAd
 	Debug(net, 0, "[udp] Received packet type {} on wrong port from {}", type, client_addr->GetAddressAsString());
 }
 
-void NetworkUDPSocketHandler::Receive_CLIENT_FIND_SERVER(Packet *p, NetworkAddress *client_addr) { this->ReceiveInvalidPacket(PACKET_UDP_CLIENT_FIND_SERVER, client_addr); }
-void NetworkUDPSocketHandler::Receive_SERVER_RESPONSE(Packet *p, NetworkAddress *client_addr) { this->ReceiveInvalidPacket(PACKET_UDP_SERVER_RESPONSE, client_addr); }
+void NetworkUDPSocketHandler::Receive_CLIENT_FIND_SERVER(Packet *, NetworkAddress *client_addr) { this->ReceiveInvalidPacket(PACKET_UDP_CLIENT_FIND_SERVER, client_addr); }
+void NetworkUDPSocketHandler::Receive_SERVER_RESPONSE(Packet *, NetworkAddress *client_addr) { this->ReceiveInvalidPacket(PACKET_UDP_SERVER_RESPONSE, client_addr); }

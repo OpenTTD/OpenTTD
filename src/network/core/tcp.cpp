@@ -62,7 +62,7 @@ void NetworkTCPSocketHandler::CloseSocket()
  * @param error Whether we quit under an error condition or not.
  * @return new status of the connection.
  */
-NetworkRecvStatus NetworkTCPSocketHandler::CloseConnection(bool error)
+NetworkRecvStatus NetworkTCPSocketHandler::CloseConnection([[maybe_unused]] bool error)
 {
 	this->MarkClosed();
 	this->writable = false;

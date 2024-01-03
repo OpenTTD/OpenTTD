@@ -10,14 +10,14 @@
  * This file implements the timer logic for the game-calendar-timer.
  */
 
-#include "stdafx.h"
-#include "openttd.h"
+#include "../stdafx.h"
+#include "../openttd.h"
 #include "timer.h"
 #include "timer_game_calendar.h"
-#include "vehicle_base.h"
-#include "linkgraph/linkgraph.h"
+#include "../vehicle_base.h"
+#include "../linkgraph/linkgraph.h"
 
-#include "safeguards.h"
+#include "../safeguards.h"
 
 TimerGameCalendar::Year TimerGameCalendar::year = {};
 TimerGameCalendar::Month TimerGameCalendar::month = {};
@@ -25,7 +25,7 @@ TimerGameCalendar::Date TimerGameCalendar::date = {};
 TimerGameCalendar::DateFract TimerGameCalendar::date_fract = {};
 
 #define M(a, b) ((a << 5) | b)
-static const uint16 _month_date_from_year_day[] = {
+static const uint16_t _month_date_from_year_day[] = {
 	M(0, 1), M(0, 2), M(0, 3), M(0, 4), M(0, 5), M(0, 6), M(0, 7), M(0, 8), M(0, 9), M(0, 10), M(0, 11), M(0, 12), M(0, 13), M(0, 14), M(0, 15), M(0, 16), M(0, 17), M(0, 18), M(0, 19), M(0, 20), M(0, 21), M(0, 22), M(0, 23), M(0, 24), M(0, 25), M(0, 26), M(0, 27), M(0, 28), M(0, 29), M(0, 30), M(0, 31),
 	M(1, 1), M(1, 2), M(1, 3), M(1, 4), M(1, 5), M(1, 6), M(1, 7), M(1, 8), M(1, 9), M(1, 10), M(1, 11), M(1, 12), M(1, 13), M(1, 14), M(1, 15), M(1, 16), M(1, 17), M(1, 18), M(1, 19), M(1, 20), M(1, 21), M(1, 22), M(1, 23), M(1, 24), M(1, 25), M(1, 26), M(1, 27), M(1, 28), M(1, 29),
 	M(2, 1), M(2, 2), M(2, 3), M(2, 4), M(2, 5), M(2, 6), M(2, 7), M(2, 8), M(2, 9), M(2, 10), M(2, 11), M(2, 12), M(2, 13), M(2, 14), M(2, 15), M(2, 16), M(2, 17), M(2, 18), M(2, 19), M(2, 20), M(2, 21), M(2, 22), M(2, 23), M(2, 24), M(2, 25), M(2, 26), M(2, 27), M(2, 28), M(2, 29), M(2, 30), M(2, 31),
@@ -57,7 +57,7 @@ enum DaysTillMonth {
 };
 
 /** Number of days to pass from the first day in the year before reaching the first of a month. */
-static const uint16 _accum_days_for_month[] = {
+static const uint16_t _accum_days_for_month[] = {
 	ACCUM_JAN, ACCUM_FEB, ACCUM_MAR, ACCUM_APR,
 	ACCUM_MAY, ACCUM_JUN, ACCUM_JUL, ACCUM_AUG,
 	ACCUM_SEP, ACCUM_OCT, ACCUM_NOV, ACCUM_DEC,
@@ -66,55 +66,56 @@ static const uint16 _accum_days_for_month[] = {
 /**
  * Converts a Date to a Year, Month & Day.
  * @param date the date to convert from
- * @param ymd  the year, month and day to write to
+ * @returns YearMonthDay representation of the Date.
  */
-/* static */ void TimerGameCalendar::ConvertDateToYMD(TimerGameCalendar::Date date, YearMonthDay *ymd)
+/* static */ TimerGameCalendar::YearMonthDay TimerGameCalendar::ConvertDateToYMD(TimerGameCalendar::Date date)
 {
 	/* Year determination in multiple steps to account for leap
 	 * years. First do the large steps, then the smaller ones.
 	 */
 
 	/* There are 97 leap years in 400 years */
-	TimerGameCalendar::Year yr = 400 * (date / (DAYS_IN_YEAR * 400 + 97));
-	int rem = date % (DAYS_IN_YEAR * 400 + 97);
-	uint16 x;
+	TimerGameCalendar::Year yr = 400 * (date.base() / (CalendarTime::DAYS_IN_YEAR * 400 + 97));
+	int rem = date.base() % (CalendarTime::DAYS_IN_YEAR * 400 + 97);
 
-	if (rem >= DAYS_IN_YEAR * 100 + 25) {
+	if (rem >= CalendarTime::DAYS_IN_YEAR * 100 + 25) {
 		/* There are 25 leap years in the first 100 years after
 		 * every 400th year, as every 400th year is a leap year */
 		yr += 100;
-		rem -= DAYS_IN_YEAR * 100 + 25;
+		rem -= CalendarTime::DAYS_IN_YEAR * 100 + 25;
 
 		/* There are 24 leap years in the next couple of 100 years */
-		yr += 100 * (rem / (DAYS_IN_YEAR * 100 + 24));
-		rem = (rem % (DAYS_IN_YEAR * 100 + 24));
+		yr += 100 * (rem / (CalendarTime::DAYS_IN_YEAR * 100 + 24));
+		rem = (rem % (CalendarTime::DAYS_IN_YEAR * 100 + 24));
 	}
 
-	if (!TimerGameCalendar::IsLeapYear(yr) && rem >= DAYS_IN_YEAR * 4) {
+	if (!TimerGameCalendar::IsLeapYear(yr) && rem >= CalendarTime::DAYS_IN_YEAR * 4) {
 		/* The first 4 year of the century are not always a leap year */
 		yr += 4;
-		rem -= DAYS_IN_YEAR * 4;
+		rem -= CalendarTime::DAYS_IN_YEAR * 4;
 	}
 
 	/* There is 1 leap year every 4 years */
-	yr += 4 * (rem / (DAYS_IN_YEAR * 4 + 1));
-	rem = rem % (DAYS_IN_YEAR * 4 + 1);
+	yr += 4 * (rem / (CalendarTime::DAYS_IN_YEAR * 4 + 1));
+	rem = rem % (CalendarTime::DAYS_IN_YEAR * 4 + 1);
 
 	/* The last (max 3) years to account for; the first one
 	 * can be, but is not necessarily a leap year */
-	while (rem >= (TimerGameCalendar::IsLeapYear(yr) ? DAYS_IN_LEAP_YEAR : DAYS_IN_YEAR)) {
-		rem -= TimerGameCalendar::IsLeapYear(yr) ? DAYS_IN_LEAP_YEAR : DAYS_IN_YEAR;
+	while (rem >= (TimerGameCalendar::IsLeapYear(yr) ? CalendarTime::DAYS_IN_LEAP_YEAR : CalendarTime::DAYS_IN_YEAR)) {
+		rem -= TimerGameCalendar::IsLeapYear(yr) ? CalendarTime::DAYS_IN_LEAP_YEAR : CalendarTime::DAYS_IN_YEAR;
 		yr++;
 	}
 
 	/* Skip the 29th of February in non-leap years */
 	if (!TimerGameCalendar::IsLeapYear(yr) && rem >= ACCUM_MAR - 1) rem++;
 
-	ymd->year = yr;
+	uint16_t x = _month_date_from_year_day[rem];
 
-	x = _month_date_from_year_day[rem];
-	ymd->month = x >> 5;
-	ymd->day = x & 0x1F;
+	YearMonthDay ymd;
+	ymd.year = yr;
+	ymd.month = x >> 5;
+	ymd.day = x & 0x1F;
+	return ymd;
 }
 
 /**
@@ -131,7 +132,7 @@ static const uint16 _accum_days_for_month[] = {
 	/* Account for the missing of the 29th of February in non-leap years */
 	if (!TimerGameCalendar::IsLeapYear(year) && days >= ACCUM_MAR) days--;
 
-	return DateAtStartOfYear(year) + days;
+	return TimerGameCalendar::DateAtStartOfYear(year) + days;
 }
 
 /**
@@ -141,7 +142,7 @@ static const uint16 _accum_days_for_month[] = {
  */
 /* static */ bool TimerGameCalendar::IsLeapYear(TimerGameCalendar::Year yr)
 {
-	return yr % 4 == 0 && (yr % 100 != 0 || yr % 400 == 0);
+	return yr.base() % 4 == 0 && (yr.base() % 100 != 0 || yr.base() % 400 == 0);
 }
 
 /**
@@ -151,13 +152,11 @@ static const uint16 _accum_days_for_month[] = {
  */
 /* static */ void TimerGameCalendar::SetDate(TimerGameCalendar::Date date, TimerGameCalendar::DateFract fract)
 {
-	assert(fract < DAY_TICKS);
-
-	YearMonthDay ymd;
+	assert(fract < Ticks::DAY_TICKS);
 
 	TimerGameCalendar::date = date;
 	TimerGameCalendar::date_fract = fract;
-	TimerGameCalendar::ConvertDateToYMD(date, &ymd);
+	TimerGameCalendar::YearMonthDay ymd = TimerGameCalendar::ConvertDateToYMD(date);
 	TimerGameCalendar::year = ymd.year;
 	TimerGameCalendar::month = ymd.month;
 }
@@ -182,21 +181,20 @@ void TimeoutTimer<TimerGameCalendar>::Elapsed(TimerGameCalendar::TElapsed trigge
 }
 
 template<>
-void TimerManager<TimerGameCalendar>::Elapsed(TimerGameCalendar::TElapsed delta)
+void TimerManager<TimerGameCalendar>::Elapsed([[maybe_unused]] TimerGameCalendar::TElapsed delta)
 {
 	assert(delta == 1);
 
 	if (_game_mode == GM_MENU) return;
 
 	TimerGameCalendar::date_fract++;
-	if (TimerGameCalendar::date_fract < DAY_TICKS) return;
+	if (TimerGameCalendar::date_fract < Ticks::DAY_TICKS) return;
 	TimerGameCalendar::date_fract = 0;
 
 	/* increase day counter */
 	TimerGameCalendar::date++;
 
-	TimerGameCalendar::YearMonthDay ymd;
-	TimerGameCalendar::ConvertDateToYMD(TimerGameCalendar::date, &ymd);
+	TimerGameCalendar::YearMonthDay ymd = TimerGameCalendar::ConvertDateToYMD(TimerGameCalendar::date);
 
 	/* check if we entered a new month? */
 	bool new_month = ymd.month != TimerGameCalendar::month;
@@ -215,9 +213,21 @@ void TimerManager<TimerGameCalendar>::Elapsed(TimerGameCalendar::TElapsed delta)
 		timer->Elapsed(TimerGameCalendar::DAY);
 	}
 
+	if ((TimerGameCalendar::date.base() % 7) == 3) {
+		for (auto timer : timers) {
+			timer->Elapsed(TimerGameCalendar::WEEK);
+		}
+	}
+
 	if (new_month) {
 		for (auto timer : timers) {
 			timer->Elapsed(TimerGameCalendar::MONTH);
+		}
+
+		if ((TimerGameCalendar::month % 3) == 0) {
+			for (auto timer : timers) {
+				timer->Elapsed(TimerGameCalendar::QUARTER);
+			}
 		}
 	}
 
@@ -228,11 +238,11 @@ void TimerManager<TimerGameCalendar>::Elapsed(TimerGameCalendar::TElapsed delta)
 	}
 
 	/* check if we reached the maximum year, decrement dates by a year */
-	if (TimerGameCalendar::year == MAX_YEAR + 1) {
+	if (TimerGameCalendar::year == CalendarTime::MAX_YEAR + 1) {
 		int days_this_year;
 
 		TimerGameCalendar::year--;
-		days_this_year = TimerGameCalendar::IsLeapYear(TimerGameCalendar::year) ? DAYS_IN_LEAP_YEAR : DAYS_IN_YEAR;
+		days_this_year = TimerGameCalendar::IsLeapYear(TimerGameCalendar::year) ? CalendarTime::DAYS_IN_LEAP_YEAR : CalendarTime::DAYS_IN_YEAR;
 		TimerGameCalendar::date -= days_this_year;
 		for (Vehicle *v : Vehicle::Iterate()) v->ShiftDates(-days_this_year);
 		for (LinkGraph *lg : LinkGraph::Iterate()) lg->ShiftDates(-days_this_year);

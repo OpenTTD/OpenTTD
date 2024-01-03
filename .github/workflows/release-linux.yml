@@ -12,7 +12,7 @@ jobs:
   linux:
     name: Linux (Generic)
 
-    runs-on: ubuntu-20.04
+    runs-on: ubuntu-latest
     container:
       # manylinux2014 is based on CentOS 7, but already has a lot of things
       # installed and preconfigured. It makes it easier to build OpenTTD.
@@ -28,13 +28,37 @@ jobs:
       run: |
         tar -xf source.tar.gz --strip-components=1
 
-    - name: Enable vcpkg cache
-      uses: actions/cache@v3
+    # curl is too old for most of the tools to work properly. For example,
+    # rust-toolchain doesn't work properly, neither vcpkg caching.
+    # The easier solution here is to upgrade curl.
+    - name: Update curl
+      run: |
+        yum install -y \
+          openssl-devel \
+          # EOF
+
+        mkdir /curl
+        cd /curl
+        curl -o curl-7.81.0.zip https://curl.se/download/curl-7.81.0.zip
+        unzip curl-7.81.0.zip
+        cd curl-7.81.0
+        ./configure --with-ssl --with-zlib --prefix=/usr --libdir=/usr/lib64
+        make -j $(nproc)
+        make install
+
+    - name: Install Rust toolchain
+      uses: dtolnay/rust-toolchain@stable
+
+    - name: Enable Rust cache
+      uses: Swatinem/rust-cache@v2
+
+    - name: Setup vcpkg caching
+      uses: actions/github-script@v6
       with:
-        path: /vcpkg/installed
-        key: ubuntu-20.04-vcpkg-release-1 # Increase the number whenever dependencies are modified
-        restore-keys: |
-          ubuntu-20.04-vcpkg-release
+        script: |
+          core.exportVariable('ACTIONS_CACHE_URL', process.env.ACTIONS_CACHE_URL || '');
+          core.exportVariable('ACTIONS_RUNTIME_TOKEN', process.env.ACTIONS_RUNTIME_TOKEN || '');
+          core.exportVariable('VCPKG_BINARY_SOURCES', 'clear;x-gha,readwrite')
 
     - name: Install dependencies
       run: |
@@ -55,61 +79,69 @@ jobs:
         cp /usr/share/aclocal/* /usr/local/share/aclocal/
         echo "::endgroup::"
 
-        # We use vcpkg for our dependencies, to get more up-to-date version.
-        echo "::group::Install vcpkg and dependencies"
-
-        # We do a little dance to make sure we copy the cached install folder
-        # into our new clone.
-        git clone --depth=1 https://github.com/microsoft/vcpkg /vcpkg-clone
-        if [ -e /vcpkg/installed ]; then
-          mv /vcpkg/installed /vcpkg-clone/
-          rm -rf /vcpkg
-        fi
-        mv /vcpkg-clone /vcpkg
-
-        (
-          cd /vcpkg
-          ./bootstrap-vcpkg.sh -disableMetrics
-
-          # Make Python3 available for other packages.
-          ./vcpkg install python3
-          ln -sf $(pwd)/installed/x64-linux/tools/python3/python3.[0-9][0-9] /usr/bin/python3
-
-          ./vcpkg install \
-            curl[http2] \
-            fontconfig \
-            freetype \
-            harfbuzz \
-            icu \
-            liblzma \
-            libpng \
-            lzo \
-            nlohmann-json \
-            sdl2 \
-            zlib \
-            # EOF
-        )
-        echo "::endgroup::"
-
         # The yum variant of fluidsynth depends on all possible audio drivers,
         # like jack, ALSA, pulseaudio, etc. This is not really useful for us,
         # as we route the output of fluidsynth back via our sound driver, and
         # as such do not use these audio driver outputs at all.
         # The vcpkg variant of fluidsynth depends on ALSA. Similar issue here.
         # So instead, we compile fluidsynth ourselves, with as few
-        # dependencies as possible. This currently means it picks up SDL2, but
-        # this is fine, as we need SDL2 anyway.
+        # dependencies as possible. We do it before anything else is installed,
+        # to make sure it doesn't pick up on any of the drivers.
         echo "::group::Install fluidsynth"
-        wget https://github.com/FluidSynth/fluidsynth/archive/v2.1.6.tar.gz
-        tar xf v2.1.6.tar.gz
+        wget https://github.com/FluidSynth/fluidsynth/archive/v2.3.3.tar.gz
+        tar xf v2.3.3.tar.gz
         (
-          cd fluidsynth-2.1.6
+          cd fluidsynth-2.3.3
           mkdir build
           cd build
           cmake .. -DCMAKE_BUILD_TYPE=RelWithDebInfo -DCMAKE_INSTALL_PREFIX=/usr
           cmake --build . -j $(nproc)
           cmake --install .
         )
+
+        # The container we use is old enough, that it doesn't know SHF_COMPRESSED.
+        # But, breakpad needs this symbol to exist. So we patch it in our system
+        # libraries.
+        (
+          cd /
+          patch -p1 < ${GITHUB_WORKSPACE}/os/linux/shf-compressed.patch
+        )
+        echo "::endgroup::"
+
+        echo "::group::Install audio drivers"
+        # These audio libs are to make sure the SDL version of vcpkg adds
+        # sound-support; these libraries are not added to the resulting
+        # binary, but the headers are used to enable them in SDL.
+        yum install -y \
+          alsa-lib-devel \
+          jack-audio-connection-kit-devel \
+          pulseaudio-libs-devel \
+          # EOF
+        echo "::endgroup::"
+
+        # We use vcpkg for our dependencies, to get more up-to-date version.
+        echo "::group::Install vcpkg and dependencies"
+
+        git clone https://github.com/microsoft/vcpkg /vcpkg
+
+        (
+          cd /vcpkg
+          ./bootstrap-vcpkg.sh -disableMetrics
+        )
+
+        # Make Python3 available for other packages. This needs to be done
+        # first, as otherwise dependencies fail to build because Python3 is
+        # not available.
+        (
+          cd /
+
+          /vcpkg/vcpkg install python3
+          ln -sf /vcpkg/installed/x64-linux/tools/python3/python3.[0-9][0-9] /usr/bin/python3
+        )
+        echo "::endgroup::"
+
+        echo "::group::Install breakpad dependencies"
+        cargo install dump_syms
         echo "::endgroup::"
 
     - name: Install GCC problem matcher
@@ -134,6 +166,11 @@ jobs:
         cmake --build . -j $(nproc) --target openttd
         echo "::endgroup::"
 
+    - name: Create breakpad symbols
+      run: |
+        cd build
+        dump_syms ./openttd --inlines --store symbols
+
     - name: Create bundles
       run: |
         cd ${GITHUB_WORKSPACE}/build
@@ -152,4 +189,11 @@ jobs:
       with:
         name: openttd-linux-generic
         path: build/bundles
+        retention-days: 5
+
+    - name: Store symbols
+      uses: actions/upload-artifact@v3
+      with:
+        name: symbols-linux-generic
+        path: build/symbols
         retention-days: 5

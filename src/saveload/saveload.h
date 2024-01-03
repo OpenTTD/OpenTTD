@@ -28,7 +28,7 @@
  *
  * Note that this list must not be reordered.
  */
-enum SaveLoadVersion : uint16 {
+enum SaveLoadVersion : uint16_t {
 	SL_MIN_VERSION,                         ///< First savegame version
 
 	SLV_1,                                  ///<   1.0         0.1.x, 0.2.x
@@ -282,7 +282,7 @@ enum SaveLoadVersion : uint16 {
 	SLV_198,                                ///< 198  PR#6763 Switch town growth rate and counter to actual game ticks
 	SLV_EXTEND_CARGOTYPES,                  ///< 199  PR#6802 Extend cargotypes to 64
 
-	SLV_EXTEND_RAILTYPES,                   ///< 200  PR#6805 Extend railtypes to 64, adding uint16 to map array.
+	SLV_EXTEND_RAILTYPES,                   ///< 200  PR#6805 Extend railtypes to 64, adding uint16_t to map array.
 	SLV_EXTEND_PERSISTENT_STORAGE,          ///< 201  PR#6885 Extend NewGRF persistent storages.
 	SLV_EXTEND_INDUSTRY_CARGO_SLOTS,        ///< 202  PR#6867 Increase industry cargo slots to 16 in, 16 out
 	SLV_SHIP_PATH_CACHE,                    ///< 203  PR#7072 Add path cache for ships
@@ -342,7 +342,7 @@ enum SaveLoadVersion : uint16 {
 	SLV_LAST_LOADING_TICK,                  ///< 301  PR#9693 Store tick of last loading for vehicles.
 	SLV_MULTITRACK_LEVEL_CROSSINGS,         ///< 302  PR#9931 v13.0  Multi-track level crossings.
 	SLV_NEWGRF_ROAD_STOPS,                  ///< 303  PR#10144 NewGRF road stops.
-	SLV_LINKGRAPH_EDGES,                    ///< 304  PR#10314 Explicitly store link graph edges destination, PR#10471 int64 instead of uint64 league rating
+	SLV_LINKGRAPH_EDGES,                    ///< 304  PR#10314 Explicitly store link graph edges destination, PR#10471 int64_t instead of uint64_t league rating
 
 	SLV_VELOCITY_NAUTICAL,                  ///< 305  PR#10594 Separation of land and nautical velocity (knots!)
 	SLV_CONSISTENT_PARTIAL_Z,               ///< 306  PR#10570 Conversion from an inconsistent partial Z calculation for slopes, to one that is (more) consistent.
@@ -357,6 +357,15 @@ enum SaveLoadVersion : uint16 {
 	SLV_STRING_GAMELOG,                     ///< 314  PR#10801 Use std::string in gamelog.
 
 	SLV_INDUSTRY_CARGO_REORGANISE,          ///< 315  PR#10853 Industry accepts/produced data reorganised.
+	SLV_PERIODS_IN_TRANSIT_RENAME,          ///< 316  PR#11112 Rename days in transit to (cargo) periods in transit.
+	SLV_NEWGRF_LAST_SERVICE,                ///< 317  PR#11124 Added stable date_of_last_service to avoid NewGRF trouble.
+	SLV_REMOVE_LOADED_AT_XY,                ///< 318  PR#11276 Remove loaded_at_xy variable from CargoPacket.
+	SLV_CARGO_TRAVELLED,                    ///< 319  PR#11283 CargoPacket now tracks how far it travelled inside a vehicle.
+
+	SLV_STATION_RATING_CHEAT,               ///< 320  PR#11346 Add cheat to fix station ratings at 100%.
+	SLV_TIMETABLE_START_TICKS,              ///< 321  PR#11468 Convert timetable start from a date to ticks.
+	SLV_TIMETABLE_START_TICKS_FIX,          ///< 322  PR#11557 Fix for missing convert timetable start from a date to ticks.
+	SLV_TIMETABLE_TICKS_TYPE,               ///< 323  PR#11435 Convert timetable current order time to ticks.
 
 	SL_MAX_VERSION,                         ///< Highest possible saveload version
 };
@@ -422,10 +431,10 @@ enum ChunkType {
 
 /** Handlers and description of chunk. */
 struct ChunkHandler {
-	uint32 id;                          ///< Unique ID (4 letters).
+	uint32_t id;                          ///< Unique ID (4 letters).
 	ChunkType type;                     ///< Type of the chunk. @see ChunkType
 
-	ChunkHandler(uint32 id, ChunkType type) : id(id), type(type) {}
+	ChunkHandler(uint32_t id, ChunkType type) : id(id), type(type) {}
 
 	virtual ~ChunkHandler() = default;
 
@@ -489,25 +498,25 @@ public:
 	 * Save the object to disk.
 	 * @param object The object to store.
 	 */
-	virtual void Save(void *object) const {}
+	virtual void Save([[maybe_unused]] void *object) const {}
 
 	/**
 	 * Load the object from disk.
 	 * @param object The object to load.
 	 */
-	virtual void Load(void *object) const {}
+	virtual void Load([[maybe_unused]] void *object) const {}
 
 	/**
 	 * Similar to load, but used only to validate savegames.
 	 * @param object The object to load.
 	 */
-	virtual void LoadCheck(void *object) const {}
+	virtual void LoadCheck([[maybe_unused]] void *object) const {}
 
 	/**
 	 * A post-load callback to fix #SL_REF integers into pointers.
 	 * @param object The object to fix.
 	 */
-	virtual void FixPointers(void *object) const {}
+	virtual void FixPointers([[maybe_unused]] void *object) const {}
 
 	/**
 	 * Get the description of the fields in the savegame.
@@ -544,16 +553,16 @@ public:
 	SaveLoadTable GetDescription() const override { return static_cast<const TImpl *>(this)->description; }
 	SaveLoadCompatTable GetCompatDescription() const override { return static_cast<const TImpl *>(this)->compat_description; }
 
-	virtual void Save(TObject *object) const {}
+	virtual void Save([[maybe_unused]] TObject *object) const {}
 	void Save(void *object) const override { this->Save(static_cast<TObject *>(object)); }
 
-	virtual void Load(TObject *object) const {}
+	virtual void Load([[maybe_unused]] TObject *object) const {}
 	void Load(void *object) const override { this->Load(static_cast<TObject *>(object)); }
 
-	virtual void LoadCheck(TObject *object) const {}
+	virtual void LoadCheck([[maybe_unused]] TObject *object) const {}
 	void LoadCheck(void *object) const override { this->LoadCheck(static_cast<TObject *>(object)); }
 
-	virtual void FixPointers(TObject *object) const {}
+	virtual void FixPointers([[maybe_unused]] TObject *object) const {}
 	void FixPointers(void *object) const override { this->FixPointers(static_cast<TObject *>(object)); }
 };
 
@@ -650,7 +659,7 @@ enum VarTypes {
 	SLF_ALLOW_NEWLINE   = 1 << 9, ///< Allow new lines in the strings.
 };
 
-typedef uint32 VarType;
+typedef uint32_t VarType;
 
 /** Type of data saved. */
 enum SaveLoadType : byte {
@@ -677,7 +686,7 @@ struct SaveLoad {
 	std::string name;    ///< Name of this field (optional, used for tables).
 	SaveLoadType cmd;    ///< The action to take with the saved/loaded type, All types need different action.
 	VarType conv;        ///< Type of the variable to be saved; this field combines both FileVarType and MemVarType.
-	uint16 length;       ///< (Conditional) length of the variable (eg. arrays) (max array size is 65536 elements).
+	uint16_t length;       ///< (Conditional) length of the variable (eg. arrays) (max array size is 65536 elements).
 	SaveLoadVersion version_from;   ///< Save/load the variable starting from this savegame version.
 	SaveLoadVersion version_to;     ///< Save/load the variable before this savegame version.
 	size_t size;                    ///< The sizeof size.
@@ -696,10 +705,90 @@ struct SaveLoad {
  */
 struct SaveLoadCompat {
 	std::string name;             ///< Name of the field.
-	uint16 length;                ///< Length of the NULL field.
+	uint16_t length;                ///< Length of the NULL field.
 	SaveLoadVersion version_from; ///< Save/load the variable starting from this savegame version.
 	SaveLoadVersion version_to;   ///< Save/load the variable before this savegame version.
 };
+
+/**
+ * Get the NumberType of a setting. This describes the integer type
+ * as it is represented in memory
+ * @param type VarType holding information about the variable-type
+ * @return the SLE_VAR_* part of a variable-type description
+ */
+static inline constexpr VarType GetVarMemType(VarType type)
+{
+	return GB(type, 4, 4) << 4;
+}
+
+/**
+ * Get the FileType of a setting. This describes the integer type
+ * as it is represented in a savegame/file
+ * @param type VarType holding information about the file-type
+ * @return the SLE_FILE_* part of a variable-type description
+ */
+static inline constexpr VarType GetVarFileType(VarType type)
+{
+	return GB(type, 0, 4);
+}
+
+/**
+ * Check if the given saveload type is a numeric type.
+ * @param conv the type to check
+ * @return True if it's a numeric type.
+ */
+static inline constexpr bool IsNumericType(VarType conv)
+{
+	return GetVarMemType(conv) <= SLE_VAR_U64;
+}
+
+/**
+ * Return expect size in bytes of a VarType
+ * @param type VarType to get size of.
+ * @return size of type in bytes.
+ */
+static inline constexpr size_t SlVarSize(VarType type)
+{
+	switch (GetVarMemType(type)) {
+		case SLE_VAR_BL: return sizeof(bool);
+		case SLE_VAR_I8: return sizeof(int8_t);
+		case SLE_VAR_U8: return sizeof(uint8_t);
+		case SLE_VAR_I16: return sizeof(int16_t);
+		case SLE_VAR_U16: return sizeof(uint16_t);
+		case SLE_VAR_I32: return sizeof(int32_t);
+		case SLE_VAR_U32: return sizeof(uint32_t);
+		case SLE_VAR_I64: return sizeof(int64_t);
+		case SLE_VAR_U64: return sizeof(uint64_t);
+		case SLE_VAR_NULL: return sizeof(void *);
+		case SLE_VAR_STR: return sizeof(std::string);
+		case SLE_VAR_STRQ: return sizeof(std::string);
+		case SLE_VAR_NAME: return sizeof(std::string);
+		default: NOT_REACHED();
+	}
+}
+
+/**
+ * Check if a saveload cmd/type/length entry matches the size of the variable.
+ * @param cmd SaveLoadType of entry.
+ * @param type VarType of entry.
+ * @param length Array length of entry.
+ * @param size Actual size of variable.
+ * @return true iff the sizes match.
+ */
+static inline constexpr bool SlCheckVarSize(SaveLoadType cmd, VarType type, size_t length, size_t size)
+{
+	switch (cmd) {
+		case SL_VAR: return SlVarSize(type) == size;
+		case SL_REF: return sizeof(void *) == size;
+		case SL_STDSTR: return SlVarSize(type) == size;
+		case SL_ARR: return SlVarSize(type) * length <= size; // Partial load of array is permitted.
+		case SL_DEQUE: return sizeof(std::deque<void *>) == size;
+		case SL_VECTOR: return sizeof(std::vector<void *>) == size;
+		case SL_REFLIST: return sizeof(std::list<void *>) == size;
+		case SL_SAVEBYTE: return true;
+		default: NOT_REACHED();
+	}
+}
 
 /**
  * Storage of simple variables, references (pointers), and arrays.
@@ -708,12 +797,18 @@ struct SaveLoadCompat {
  * @param base     Name of the class or struct containing the variable.
  * @param variable Name of the variable in the class or struct referenced by \a base.
  * @param type     Storage of the data in memory and in the savegame.
+ * @param length   Number of elements in the array.
  * @param from     First savegame version that has the field.
  * @param to       Last savegame version that has the field.
  * @param extra    Extra data to pass to the address callback function.
  * @note In general, it is better to use one of the SLE_* macros below.
  */
-#define SLE_GENERAL_NAME(cmd, name, base, variable, type, length, from, to, extra) SaveLoad {name, cmd, type, length, from, to, cpp_sizeof(base, variable), [] (void *b, size_t) -> void * { assert(b != nullptr); return const_cast<void *>(static_cast<const void *>(std::addressof(static_cast<base *>(b)->variable))); }, extra, nullptr}
+#define SLE_GENERAL_NAME(cmd, name, base, variable, type, length, from, to, extra) \
+	SaveLoad {name, cmd, type, length, from, to, cpp_sizeof(base, variable), [] (void *b, size_t) -> void * { \
+		static_assert(SlCheckVarSize(cmd, type, length, sizeof(static_cast<base *>(b)->variable))); \
+		assert(b != nullptr); \
+		return const_cast<void *>(static_cast<const void *>(std::addressof(static_cast<base *>(b)->variable))); \
+	}, extra, nullptr}
 
 /**
  * Storage of simple variables, references (pointers), and arrays with a custom name.
@@ -721,6 +816,7 @@ struct SaveLoadCompat {
  * @param base     Name of the class or struct containing the variable.
  * @param variable Name of the variable in the class or struct referenced by \a base.
  * @param type     Storage of the data in memory and in the savegame.
+ * @param length   Number of elements in the array.
  * @param from     First savegame version that has the field.
  * @param to       Last savegame version that has the field.
  * @param extra    Extra data to pass to the address callback function.
@@ -926,7 +1022,10 @@ struct SaveLoadCompat {
  * @param extra    Extra data to pass to the address callback function.
  * @note In general, it is better to use one of the SLEG_* macros below.
  */
-#define SLEG_GENERAL(name, cmd, variable, type, length, from, to, extra) SaveLoad {name, cmd, type, length, from, to, sizeof(variable), [] (void *, size_t) -> void * { return static_cast<void *>(std::addressof(variable)); }, extra, nullptr}
+#define SLEG_GENERAL(name, cmd, variable, type, length, from, to, extra) \
+	SaveLoad {name, cmd, type, length, from, to, sizeof(variable), [] (void *, size_t) -> void * { \
+		static_assert(SlCheckVarSize(cmd, type, length, sizeof(variable))); \
+		return static_cast<void *>(std::addressof(variable)); }, extra, nullptr}
 
 /**
  * Storage of a global variable in some savegame versions.
@@ -1126,38 +1225,6 @@ static inline bool SlIsObjectCurrentlyValid(SaveLoadVersion version_from, SaveLo
 }
 
 /**
- * Get the NumberType of a setting. This describes the integer type
- * as it is represented in memory
- * @param type VarType holding information about the variable-type
- * @return the SLE_VAR_* part of a variable-type description
- */
-static inline VarType GetVarMemType(VarType type)
-{
-	return GB(type, 4, 4) << 4;
-}
-
-/**
- * Get the FileType of a setting. This describes the integer type
- * as it is represented in a savegame/file
- * @param type VarType holding information about the file-type
- * @return the SLE_FILE_* part of a variable-type description
- */
-static inline VarType GetVarFileType(VarType type)
-{
-	return GB(type, 0, 4);
-}
-
-/**
- * Check if the given saveload type is a numeric type.
- * @param conv the type to check
- * @return True if it's a numeric type.
- */
-static inline bool IsNumericType(VarType conv)
-{
-	return GetVarMemType(conv) <= SLE_VAR_U64;
-}
-
-/**
  * Get the address of the variable. Null-variables don't have an address,
  * everything else has a callback function that returns the address based
  * on the saveload data and the current object for non-globals.
@@ -1175,8 +1242,8 @@ static inline void *GetVariableAddress(const void *object, const SaveLoad &sld)
 	return sld.address_proc(const_cast<void *>(object), sld.extra_data);
 }
 
-int64 ReadValue(const void *ptr, VarType conv);
-void WriteValue(void *ptr, VarType conv, int64 val);
+int64_t ReadValue(const void *ptr, VarType conv);
+void WriteValue(void *ptr, VarType conv, int64_t val);
 
 void SlSetArrayIndex(uint index);
 int SlIterateArray();

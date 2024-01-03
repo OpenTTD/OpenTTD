@@ -190,11 +190,32 @@ STR_COLOUR_GREY                                                 :Grå
 STR_COLOUR_WHITE                                                :Vit
 STR_COLOUR_RANDOM                                               :Slumpmässig
 
+###length 17
+STR_COLOUR_SECONDARY_DARK_BLUE                                  :Mörkblå
+STR_COLOUR_SECONDARY_PALE_GREEN                                 :Blekgrön
+STR_COLOUR_SECONDARY_SECONDARY_PINK                             :Rosa
+STR_COLOUR_SECONDARY_YELLOW                                     :Gul
+STR_COLOUR_SECONDARY_RED                                        :Röd
+STR_COLOUR_SECONDARY_LIGHT_BLUE                                 :Ljusblå
+STR_COLOUR_SECONDARY_GREEN                                      :Grön
+STR_COLOUR_SECONDARY_DARK_GREEN                                 :Mörkgrön
+STR_COLOUR_SECONDARY_BLUE                                       :Blå
+STR_COLOUR_SECONDARY_CREAM                                      :Gräddvit
+STR_COLOUR_SECONDARY_MAUVE                                      :Lila
+STR_COLOUR_SECONDARY_PURPLE                                     :Purpur
+STR_COLOUR_SECONDARY_ORANGE                                     :Orange
+STR_COLOUR_SECONDARY_BROWN                                      :Brun
+STR_COLOUR_SECONDARY_GREY                                       :Grå
+STR_COLOUR_SECONDARY_WHITE                                      :Vit
+STR_COLOUR_SECONDARY_SAME_AS_PRIMARY                            :Samma som huvudfärgen
+
+
 # Units used in OpenTTD
 STR_UNITS_VELOCITY_IMPERIAL                                     :{DECIMAL}{NBSP}mph
 STR_UNITS_VELOCITY_METRIC                                       :{DECIMAL}{NBSP}km/h
 STR_UNITS_VELOCITY_SI                                           :{DECIMAL}{NBSP}m/s
 STR_UNITS_VELOCITY_GAMEUNITS                                    :{DECIMAL}{NBSP}rutor/dag
+STR_UNITS_VELOCITY_KNOTS                                        :{DECIMAL}{NBSP}knop
 
 STR_UNITS_POWER_IMPERIAL                                        :{DECIMAL}{NBSP}hk
 STR_UNITS_POWER_METRIC                                          :{DECIMAL}{NBSP}hk
@@ -233,6 +254,7 @@ STR_UNITS_FORCE_SI                                              :{DECIMAL}{NBSP}
 STR_UNITS_HEIGHT_IMPERIAL                                       :{DECIMAL}{NBSP}fot
 STR_UNITS_HEIGHT_METRIC                                         :{DECIMAL}{NBSP}m
 STR_UNITS_HEIGHT_SI                                             :{DECIMAL}{NBSP}m
+
 
 # Common window strings
 STR_LIST_FILTER_TITLE                                           :{BLACK}Sökfilter:
@@ -344,8 +366,8 @@ STR_GOTO_ORDER_VIEW_TOOLTIP                                     :{BLACK}Öppna o
 STR_TOOLBAR_TOOLTIP_PAUSE_GAME                                  :{BLACK}Pausa spelet
 STR_TOOLBAR_TOOLTIP_FORWARD                                     :{BLACK}Snabbspola spelet
 STR_TOOLBAR_TOOLTIP_OPTIONS                                     :{BLACK}Inställningar
-STR_TOOLBAR_TOOLTIP_SAVE_GAME_ABANDON_GAME                      :{BLACK}Spara spelet, avsluta spelet, avsluta
-STR_TOOLBAR_TOOLTIP_DISPLAY_MAP                                 :{BLACK}Visa karta, extra vyfönster eller skyltlista
+STR_TOOLBAR_TOOLTIP_SAVE_GAME_ABANDON_GAME                      :{BLACK}Spara spelet, öppna spel, avsluta spelet eller avsluta programmet
+STR_TOOLBAR_TOOLTIP_DISPLAY_MAP                                 :{BLACK}Visa karta, extra vyfönster, godsflöden eller skyltlista
 STR_TOOLBAR_TOOLTIP_DISPLAY_TOWN_DIRECTORY                      :{BLACK}Visa lista över städer
 STR_TOOLBAR_TOOLTIP_DISPLAY_SUBSIDIES                           :{BLACK}Visa subventioner
 STR_TOOLBAR_TOOLTIP_DISPLAY_LIST_OF_COMPANY_STATIONS            :{BLACK}Visa lista över företagets stationer
@@ -353,9 +375,9 @@ STR_TOOLBAR_TOOLTIP_DISPLAY_COMPANY_FINANCES                    :{BLACK}Visa fin
 STR_TOOLBAR_TOOLTIP_DISPLAY_COMPANY_GENERAL                     :{BLACK}Visa allmän företagsinformation
 STR_TOOLBAR_TOOLTIP_DISPLAY_STORY_BOOK                          :{BLACK}Visa berättelsebok
 STR_TOOLBAR_TOOLTIP_DISPLAY_GOALS_LIST                          :{BLACK}Visa lista över mål
-STR_TOOLBAR_TOOLTIP_DISPLAY_GRAPHS                              :{BLACK}Visa grafer
+STR_TOOLBAR_TOOLTIP_DISPLAY_GRAPHS                              :{BLACK}Visa företagsgrafer och fraktförtjänster
 STR_TOOLBAR_TOOLTIP_DISPLAY_COMPANY_LEAGUE                      :{BLACK}Visa topplista över företag
-STR_TOOLBAR_TOOLTIP_FUND_CONSTRUCTION_OF_NEW                    :{BLACK}Bekosta konstruktion av en ny industri eller lista alla industrier
+STR_TOOLBAR_TOOLTIP_FUND_CONSTRUCTION_OF_NEW                    :{BLACK}Inspektera industrier eller finansiera anläggning av en ny industri
 STR_TOOLBAR_TOOLTIP_DISPLAY_LIST_OF_COMPANY_TRAINS              :{BLACK}Visa lista över företagets tåg. Ctrl+klick döljer listan över grupper
 STR_TOOLBAR_TOOLTIP_DISPLAY_LIST_OF_COMPANY_ROAD_VEHICLES       :{BLACK}Visa lista över företagets vägfordon. Ctrl+klick döljer listan över grupper
 STR_TOOLBAR_TOOLTIP_DISPLAY_LIST_OF_COMPANY_SHIPS               :{BLACK}Visa lista över företagets skepp. Ctrl+klick döljer listan över grupper
@@ -369,8 +391,8 @@ STR_TOOLBAR_TOOLTIP_BUILD_SHIP_DOCKS                            :{BLACK}Bygg ham
 STR_TOOLBAR_TOOLTIP_BUILD_AIRPORTS                              :{BLACK}Bygg flygplatser
 STR_TOOLBAR_TOOLTIP_LANDSCAPING                                 :{BLACK}Öppna landskapsarkitektursverktygen för att höja/sänka land, plantera träd, etc.
 STR_TOOLBAR_TOOLTIP_SHOW_SOUND_MUSIC_WINDOW                     :{BLACK}Visa ljud-/musikfönster
-STR_TOOLBAR_TOOLTIP_SHOW_LAST_MESSAGE_NEWS                      :{BLACK}Visa senaste meddelandet/nyheten, visa meddelandeinställningar
-STR_TOOLBAR_TOOLTIP_LAND_BLOCK_INFORMATION                      :{BLACK}Markinformation, konsol, felsökning av skript, skärmdumpar, om OpenTTD
+STR_TOOLBAR_TOOLTIP_SHOW_LAST_MESSAGE_NEWS                      :{BLACK}Visa senaste meddelandet/nyheten, meddelandehistorik eller ta bort alla meddelanden
+STR_TOOLBAR_TOOLTIP_LAND_BLOCK_INFORMATION                      :{BLACK}Markinformation, skärmdump, om OpenTTD och utvecklingsverktyg
 STR_TOOLBAR_TOOLTIP_SWITCH_TOOLBAR                              :{BLACK}Byt verktygsrad
 
 # Extra tooltips for the scenario editor toolbar
@@ -419,31 +441,25 @@ STR_SETTINGS_MENU_TRANSPARENT_BUILDINGS                         :Genomskinliga b
 STR_SETTINGS_MENU_TRANSPARENT_SIGNS                             :Genomskinliga skyltar
 
 # File menu
-###length 5
 STR_FILE_MENU_SAVE_GAME                                         :Spara spelet
 STR_FILE_MENU_LOAD_GAME                                         :Ladda ett spel
 STR_FILE_MENU_QUIT_GAME                                         :Avsluta spelet
-STR_FILE_MENU_SEPARATOR                                         :
 STR_FILE_MENU_EXIT                                              :Avsluta
 
 # Map menu
-###length 4
 STR_MAP_MENU_MAP_OF_WORLD                                       :Världskarta
 STR_MAP_MENU_EXTRA_VIEWPORT                                     :Nytt vyfönster
 STR_MAP_MENU_LINGRAPH_LEGEND                                    :Legend för godsflöden
 STR_MAP_MENU_SIGN_LIST                                          :Skyltlista
 
 # Town menu
-###length 2
 STR_TOWN_MENU_TOWN_DIRECTORY                                    :Lista med städer
 STR_TOWN_MENU_FOUND_TOWN                                        :Grunda stad
 
 # Subsidies menu
-###length 1
 STR_SUBSIDIES_MENU_SUBSIDIES                                    :Subventioner
 
 # Graph menu
-###length 6
 STR_GRAPH_MENU_OPERATING_PROFIT_GRAPH                           :Graf över gångbar inkomst
 STR_GRAPH_MENU_INCOME_GRAPH                                     :Graf över inkomster
 STR_GRAPH_MENU_DELIVERED_CARGO_GRAPH                            :Graf över levererat gods
@@ -452,57 +468,46 @@ STR_GRAPH_MENU_COMPANY_VALUE_GRAPH                              :Graf över för
 STR_GRAPH_MENU_CARGO_PAYMENT_RATES                              :Fraktförtjänster
 
 # Company league menu
-###length 3
 STR_GRAPH_MENU_COMPANY_LEAGUE_TABLE                             :Tabell över ledande företag
 STR_GRAPH_MENU_DETAILED_PERFORMANCE_RATING                      :Detaljerad prestationsvärdering
 STR_GRAPH_MENU_HIGHSCORE                                        :Bästa spelresultat
 
 # Industry menu
-###length 3
 STR_INDUSTRY_MENU_INDUSTRY_DIRECTORY                            :Industriförteckning
 STR_INDUSTRY_MENU_INDUSTRY_CHAIN                                :Industrikedjor
 STR_INDUSTRY_MENU_FUND_NEW_INDUSTRY                             :Bekosta ny industri
 
 # URailway construction menu
-###length 4
 STR_RAIL_MENU_RAILROAD_CONSTRUCTION                             :Bygg järnväg
 STR_RAIL_MENU_ELRAIL_CONSTRUCTION                               :Bygg elektrifierad järnväg
 STR_RAIL_MENU_MONORAIL_CONSTRUCTION                             :Bygg monorail
 STR_RAIL_MENU_MAGLEV_CONSTRUCTION                               :Bygg maglev
 
 # Road construction menu
-###length 2
 STR_ROAD_MENU_ROAD_CONSTRUCTION                                 :Bygg väg
 STR_ROAD_MENU_TRAM_CONSTRUCTION                                 :Bygg spårväg
 
 # Waterways construction menu
-###length 1
 STR_WATERWAYS_MENU_WATERWAYS_CONSTRUCTION                       :Bygg kanal
 
 # Aairport construction menu
-###length 1
 STR_AIRCRAFT_MENU_AIRPORT_CONSTRUCTION                          :Bygg flygplats
 
 # Landscaping menu
-###length 3
 STR_LANDSCAPING_MENU_LANDSCAPING                                :Landskapsarkitektur
 STR_LANDSCAPING_MENU_PLANT_TREES                                :Plantera träd
 STR_LANDSCAPING_MENU_PLACE_SIGN                                 :Placera skylt
 
 # Music menu
-###length 1
 STR_TOOLBAR_SOUND_MUSIC                                         :Ljud/musik
 
 # Message menu
-###length 3
 STR_NEWS_MENU_LAST_MESSAGE_NEWS_REPORT                          :Senaste meddelandet/nyheten
 STR_NEWS_MENU_MESSAGE_HISTORY_MENU                              :Meddelandehistorik
 STR_NEWS_MENU_DELETE_ALL_MESSAGES                               :Ta bort alla meddelanden
 
 # About menu
-###length 10
 STR_ABOUT_MENU_LAND_BLOCK_INFO                                  :Information om mark
-STR_ABOUT_MENU_SEPARATOR                                        :
 STR_ABOUT_MENU_TOGGLE_CONSOLE                                   :Visa/dölj konsolen
 STR_ABOUT_MENU_AI_DEBUG                                         :Felsökning av datorspelare/spelskript
 STR_ABOUT_MENU_SCREENSHOT                                       :Skärmdump
@@ -603,7 +608,7 @@ STR_GRAPH_OPERATING_PROFIT_CAPTION                              :{WHITE}Graf öv
 STR_GRAPH_INCOME_CAPTION                                        :{WHITE}Graf över inkomster
 STR_GRAPH_CARGO_DELIVERED_CAPTION                               :{WHITE}Enheter levererat gods
 STR_GRAPH_COMPANY_PERFORMANCE_RATINGS_CAPTION                   :{WHITE}Företagets prestationsvärderingar (maxvärdering=1000)
-STR_GRAPH_COMPANY_VALUES_CAPTION                                :{WHITE}Företagsvärde
+STR_GRAPH_COMPANY_VALUES_CAPTION                                :{WHITE}Företagsvärdesgraf
 
 STR_GRAPH_CARGO_PAYMENT_RATES_CAPTION                           :{WHITE}Fraktförtjänster
 STR_GRAPH_CARGO_PAYMENT_RATES_X_LABEL                           :{TINY_FONT}{BLACK}Dagar under transport
@@ -712,8 +717,6 @@ STR_PLAYLIST_TOOLTIP_CLICK_TO_ADD_TRACK                         :{BLACK}Klicka p
 STR_PLAYLIST_TOOLTIP_CLICK_TO_REMOVE_TRACK                      :{BLACK}Klicka på ett musikstycke för att ta bort det från spellistan (endast Personlig1 och Personlig2)
 
 # Highscore window
-STR_HIGHSCORE_TOP_COMPANIES_WHO_REACHED                         :{BIG_FONT}{BLACK}De bästa företagen som nådde {NUM}
-STR_HIGHSCORE_TOP_COMPANIES_NETWORK_GAME                        :{BIG_FONT}{BLACK}Företagslista för {NUM}
 STR_HIGHSCORE_POSITION                                          :{BIG_FONT}{BLACK}{COMMA}.
 STR_HIGHSCORE_PERFORMANCE_TITLE_BUSINESSMAN                     :Affärsman
 STR_HIGHSCORE_PERFORMANCE_TITLE_ENTREPRENEUR                    :Entreprenör
@@ -845,7 +848,7 @@ STR_NEWS_COMPANY_BANKRUPT_TITLE                                 :{BIG_FONT}{BLAC
 STR_NEWS_COMPANY_BANKRUPT_DESCRIPTION                           :{BIG_FONT}{BLACK}{STRING} har avvecklats av investerarna och alla tillgångar har sålts ut!
 STR_NEWS_COMPANY_LAUNCH_TITLE                                   :{BIG_FONT}{BLACK}Nytt transportföretag startat!
 STR_NEWS_COMPANY_LAUNCH_DESCRIPTION                             :{BIG_FONT}{BLACK}{STRING} börjar bygga nära {TOWN}!
-STR_NEWS_MERGER_TAKEOVER_TITLE                                  :{BIG_FONT}{BLACK}{STRING} har tagits över av {STRING}!
+STR_NEWS_MERGER_TAKEOVER_TITLE                                  :{BIG_FONT}{BLACK}{STRING} har tagits över av {STRING} för en hemlig summa!
 STR_PRESIDENT_NAME_MANAGER                                      :{BLACK}{PRESIDENT_NAME}{}(VD)
 
 STR_NEWS_NEW_TOWN                                               :{BLACK}{BIG_FONT}{STRING} har sponsrat byggnationen av den nya staden {TOWN}!
@@ -902,10 +905,6 @@ STR_NEWS_NEW_VEHICLE_NOW_AVAILABLE_WITH_TYPE                    :{BLACK}Ny {STRI
 
 STR_NEWS_SHOW_VEHICLE_GROUP_TOOLTIP                             :{BLACK}Öppna gruppfönstret fokuserat på fordonets grupp
 
-STR_NEWS_STATION_NO_LONGER_ACCEPTS_CARGO                        :{WHITE}{STATION} tar inte längre emot {STRING}
-STR_NEWS_STATION_NO_LONGER_ACCEPTS_CARGO_OR_CARGO               :{WHITE}{STATION} tar inte längre emot {STRING} eller {STRING}
-STR_NEWS_STATION_NOW_ACCEPTS_CARGO                              :{WHITE}{STATION} tar nu emot {STRING}
-STR_NEWS_STATION_NOW_ACCEPTS_CARGO_AND_CARGO                    :{WHITE}{STATION} tar nu emot {STRING} och {STRING}
 
 STR_NEWS_OFFER_OF_SUBSIDY_EXPIRED                               :{BIG_FONT}{BLACK}Subventionen har gått ut:{}{}{STRING} från {STRING} till {STRING} är inte längre subventionerad
 STR_NEWS_SUBSIDY_WITHDRAWN_SERVICE                              :{BIG_FONT}{BLACK}Subventionen gäller inte längre:{}{}{STRING} från {STRING} till {STRING} är inte längre subventionerad
@@ -930,55 +929,71 @@ STR_EXTRA_VIEW_MOVE_MAIN_TO_VIEW_TT                             :{BLACK}Kopiera 
 # Game options window
 STR_GAME_OPTIONS_CAPTION                                        :{WHITE}Spelinställningar
 
+STR_GAME_OPTIONS_TAB_GENERAL                                    :Allmänt
+STR_GAME_OPTIONS_TAB_GENERAL_TT                                 :{BLACK}Välj generella inställningar
+STR_GAME_OPTIONS_TAB_GRAPHICS                                   :Grafik
+STR_GAME_OPTIONS_TAB_GRAPHICS_TT                                :{BLACK}Välj grafik inställningar
+STR_GAME_OPTIONS_TAB_SOUND                                      :Ljud
+STR_GAME_OPTIONS_TAB_SOUND_TT                                   :{BLACK}Väljd ljud- och musikinställningar
 
+STR_GAME_OPTIONS_VOLUME                                         :Volym
+STR_GAME_OPTIONS_SFX_VOLUME                                     :Ljudeffekter
+STR_GAME_OPTIONS_MUSIC_VOLUME                                   :Musik
 
+STR_GAME_OPTIONS_VOLUME_0                                       :0%
+STR_GAME_OPTIONS_VOLUME_25                                      :25%
+STR_GAME_OPTIONS_VOLUME_50                                      :50%
+STR_GAME_OPTIONS_VOLUME_75                                      :75%
+STR_GAME_OPTIONS_VOLUME_100                                     :100%
 
 STR_GAME_OPTIONS_CURRENCY_UNITS_FRAME                           :{BLACK}Valutaenheter
 STR_GAME_OPTIONS_CURRENCY_UNITS_DROPDOWN_TOOLTIP                :{BLACK}Välj valutaenhet
 
+STR_GAME_OPTIONS_CURRENCY_CODE                                  :{STRING} ({STRING})
+
 ###length 42
-STR_GAME_OPTIONS_CURRENCY_GBP                                   :Brittiskt pund (£)
-STR_GAME_OPTIONS_CURRENCY_USD                                   :Amerikansk dollar (USD)
-STR_GAME_OPTIONS_CURRENCY_EUR                                   :Euro (EUR)
-STR_GAME_OPTIONS_CURRENCY_JPY                                   :Japansk yen (¥)
-STR_GAME_OPTIONS_CURRENCY_ATS                                   :Österrikisk shilling (ATS)
-STR_GAME_OPTIONS_CURRENCY_BEF                                   :Belgisk franc (BEF)
-STR_GAME_OPTIONS_CURRENCY_CHF                                   :Schweizisk franc (CHF)
-STR_GAME_OPTIONS_CURRENCY_CZK                                   :Tjeckisk krona (CZK)
-STR_GAME_OPTIONS_CURRENCY_DEM                                   :D-mark (DEM)
-STR_GAME_OPTIONS_CURRENCY_DKK                                   :Dansk krona (DKK)
-STR_GAME_OPTIONS_CURRENCY_ESP                                   :Spansk peseta (ESP)
-STR_GAME_OPTIONS_CURRENCY_FIM                                   :Finsk mark (FIM)
-STR_GAME_OPTIONS_CURRENCY_FRF                                   :Fransk franc (FRF)
-STR_GAME_OPTIONS_CURRENCY_GRD                                   :Grekisk drachme (GRD)
-STR_GAME_OPTIONS_CURRENCY_HUF                                   :Ungersk forint (HUF)
-STR_GAME_OPTIONS_CURRENCY_ISK                                   :Isländsk krona (ISK)
-STR_GAME_OPTIONS_CURRENCY_ITL                                   :Italiensk lira (ITL)
-STR_GAME_OPTIONS_CURRENCY_NLG                                   :Nederländsk gulden (NLG)
-STR_GAME_OPTIONS_CURRENCY_NOK                                   :Norsk krona (NOK)
-STR_GAME_OPTIONS_CURRENCY_PLN                                   :Polsk złoty (PLN)
-STR_GAME_OPTIONS_CURRENCY_RON                                   :Rumänsk leu (RON)
-STR_GAME_OPTIONS_CURRENCY_RUR                                   :Rysk rubel (RUR)
-STR_GAME_OPTIONS_CURRENCY_SIT                                   :Slovensk tolar (SIT)
-STR_GAME_OPTIONS_CURRENCY_SEK                                   :Svensk krona (SEK)
-STR_GAME_OPTIONS_CURRENCY_TRY                                   :Turkisk lira (TRY)
-STR_GAME_OPTIONS_CURRENCY_SKK                                   :Slovakisk krona (SKK)
-STR_GAME_OPTIONS_CURRENCY_BRL                                   :Brasiliansk real (BRL)
-STR_GAME_OPTIONS_CURRENCY_EEK                                   :Estnisk krona (EEK)
-STR_GAME_OPTIONS_CURRENCY_LTL                                   :Litauisk litas (LTL)
-STR_GAME_OPTIONS_CURRENCY_KRW                                   :Sydkoreansk won (KRW)
-STR_GAME_OPTIONS_CURRENCY_ZAR                                   :Sydafrikansk rand (ZAR)
+STR_GAME_OPTIONS_CURRENCY_GBP                                   :Brittiskt pund
+STR_GAME_OPTIONS_CURRENCY_USD                                   :Amerikansk dollar
+STR_GAME_OPTIONS_CURRENCY_EUR                                   :Euro
+STR_GAME_OPTIONS_CURRENCY_JPY                                   :Japansk yen
+STR_GAME_OPTIONS_CURRENCY_ATS                                   :Österrikisk shilling
+STR_GAME_OPTIONS_CURRENCY_BEF                                   :Belgisk franc
+STR_GAME_OPTIONS_CURRENCY_CHF                                   :Schweizisk franc
+STR_GAME_OPTIONS_CURRENCY_CZK                                   :Tjeckisk krona
+STR_GAME_OPTIONS_CURRENCY_DEM                                   :D-mark
+STR_GAME_OPTIONS_CURRENCY_DKK                                   :Dansk krona
+STR_GAME_OPTIONS_CURRENCY_ESP                                   :Spansk peseta
+STR_GAME_OPTIONS_CURRENCY_FIM                                   :Finsk mark
+STR_GAME_OPTIONS_CURRENCY_FRF                                   :Fransk franc
+STR_GAME_OPTIONS_CURRENCY_GRD                                   :Grekisk drachme
+STR_GAME_OPTIONS_CURRENCY_HUF                                   :Ungersk forint
+STR_GAME_OPTIONS_CURRENCY_ISK                                   :Isländsk krona
+STR_GAME_OPTIONS_CURRENCY_ITL                                   :Italiensk lira
+STR_GAME_OPTIONS_CURRENCY_NLG                                   :Nederländsk gulden
+STR_GAME_OPTIONS_CURRENCY_NOK                                   :Norsk krona
+STR_GAME_OPTIONS_CURRENCY_PLN                                   :Polsk złoty
+STR_GAME_OPTIONS_CURRENCY_RON                                   :Rumänsk leu
+STR_GAME_OPTIONS_CURRENCY_RUR                                   :Rysk rubel
+STR_GAME_OPTIONS_CURRENCY_SIT                                   :Slovensk tolar
+STR_GAME_OPTIONS_CURRENCY_SEK                                   :Svensk krona
+STR_GAME_OPTIONS_CURRENCY_TRY                                   :Turkisk lira
+STR_GAME_OPTIONS_CURRENCY_SKK                                   :Slovakisk krona
+STR_GAME_OPTIONS_CURRENCY_BRL                                   :Brasiliansk real
+STR_GAME_OPTIONS_CURRENCY_EEK                                   :Estnisk krona
+STR_GAME_OPTIONS_CURRENCY_LTL                                   :Litauisk litas
+STR_GAME_OPTIONS_CURRENCY_KRW                                   :Sydkoreansk won
+STR_GAME_OPTIONS_CURRENCY_ZAR                                   :Sydafrikansk rand
 STR_GAME_OPTIONS_CURRENCY_CUSTOM                                :Egen...
-STR_GAME_OPTIONS_CURRENCY_GEL                                   :Georgisk lari (GEL)
-STR_GAME_OPTIONS_CURRENCY_IRR                                   :Iransk rial (IRR)
-STR_GAME_OPTIONS_CURRENCY_RUB                                   :Ny rysk rubel (RUB)
-STR_GAME_OPTIONS_CURRENCY_MXN                                   :Mexikansk peso (MXN)
-STR_GAME_OPTIONS_CURRENCY_NTD                                   :Ny taiwanesisk dollar (NTD)
-STR_GAME_OPTIONS_CURRENCY_CNY                                   :Kinesisk renminbi (CNY)
-STR_GAME_OPTIONS_CURRENCY_HKD                                   :Hongkongdollar (HKD)
-STR_GAME_OPTIONS_CURRENCY_INR                                   :Indisk rupie (INR)
-STR_GAME_OPTIONS_CURRENCY_IDR                                   :Indonesisk rupie (IDR)
-STR_GAME_OPTIONS_CURRENCY_MYR                                   :Malaysisk ringgit (MYR)
+STR_GAME_OPTIONS_CURRENCY_GEL                                   :Georgisk lari
+STR_GAME_OPTIONS_CURRENCY_IRR                                   :Iransk rial
+STR_GAME_OPTIONS_CURRENCY_RUB                                   :Ny rysk rubel
+STR_GAME_OPTIONS_CURRENCY_MXN                                   :Mexikansk peso
+STR_GAME_OPTIONS_CURRENCY_NTD                                   :Ny taiwanesisk dollar
+STR_GAME_OPTIONS_CURRENCY_CNY                                   :Kinesisk renminbi
+STR_GAME_OPTIONS_CURRENCY_HKD                                   :Hongkongdollar
+STR_GAME_OPTIONS_CURRENCY_INR                                   :Indisk rupie
+STR_GAME_OPTIONS_CURRENCY_IDR                                   :Indonesisk rupie
+STR_GAME_OPTIONS_CURRENCY_MYR                                   :Malaysisk ringgit
 
 STR_GAME_OPTIONS_AUTOSAVE_FRAME                                 :{BLACK}Spara automatiskt
 STR_GAME_OPTIONS_AUTOSAVE_DROPDOWN_TOOLTIP                      :{BLACK}Välj intervall mellan automatiskt sparande
@@ -986,6 +1001,10 @@ STR_GAME_OPTIONS_AUTOSAVE_DROPDOWN_TOOLTIP                      :{BLACK}Välj in
 # Autosave dropdown
 ###length 5
 STR_GAME_OPTIONS_AUTOSAVE_DROPDOWN_OFF                          :Avstängd
+STR_GAME_OPTIONS_AUTOSAVE_DROPDOWN_EVERY_10_MINUTES             :Var 10:e minut
+STR_GAME_OPTIONS_AUTOSAVE_DROPDOWN_EVERY_30_MINUTES             :Var 30:e minut
+STR_GAME_OPTIONS_AUTOSAVE_DROPDOWN_EVERY_60_MINUTES             :Var 60:e minut
+STR_GAME_OPTIONS_AUTOSAVE_DROPDOWN_EVERY_120_MINUTES            :Var 120:e minut
 
 STR_GAME_OPTIONS_LANGUAGE                                       :{BLACK}Språk
 STR_GAME_OPTIONS_LANGUAGE_TOOLTIP                               :{BLACK}Välj vilket språk som ska användas
@@ -1022,6 +1041,13 @@ STR_GAME_OPTIONS_GUI_SCALE_3X                                   :3x
 STR_GAME_OPTIONS_GUI_SCALE_4X                                   :4x
 STR_GAME_OPTIONS_GUI_SCALE_5X                                   :5x
 
+STR_GAME_OPTIONS_PARTICIPATE_SURVEY_FRAME                       :{BLACK}Automatisk undersökning
+STR_GAME_OPTIONS_PARTICIPATE_SURVEY                             :{BLACK}Delta i en automatisk undersökning
+STR_GAME_OPTIONS_PARTICIPATE_SURVEY_TOOLTIP                     :{BLACK}Om aktiverat, kommer OpenTTD att skicka en enkät när du lämnar ett spel
+STR_GAME_OPTIONS_PARTICIPATE_SURVEY_LINK                        :{BLACK}Om undersökning och integritet
+STR_GAME_OPTIONS_PARTICIPATE_SURVEY_LINK_TOOLTIP                :{BLACK}Detta öppnar en länk i webbläsaren med mer information om den automatiska undersökningen.
+STR_GAME_OPTIONS_PARTICIPATE_SURVEY_PREVIEW                     :{BLACK}Förhandsgranska enkätresultat
+STR_GAME_OPTIONS_PARTICIPATE_SURVEY_PREVIEW_TOOLTIP             :{BLACK}Visa enkätresultatet från det nu pågående spelet
 
 STR_GAME_OPTIONS_GRAPHICS                                       :{BLACK}Grafik
 
@@ -1031,18 +1057,17 @@ STR_GAME_OPTIONS_REFRESH_RATE_ITEM                              :{NUM}Hz
 STR_GAME_OPTIONS_REFRESH_RATE_WARNING                           :{WHITE}uppdateringsfrekvenser högre än 60Hz kan påverka prestandan.
 
 STR_GAME_OPTIONS_BASE_GRF                                       :{BLACK}Grafikpaket som standard
-STR_GAME_OPTIONS_BASE_GRF_TOOLTIP                               :{BLACK}Välj vilket grafikpaket som ska användas som standard
-STR_GAME_OPTIONS_BASE_GRF_STATUS                                :{RED}{NUM} saknad{P "" e}/trasig{P "" a} fil{P "" er}
+STR_GAME_OPTIONS_BASE_GRF_TOOLTIP                               :{BLACK}Välj vilket grafikpaket som ska användas som standard (kan ej ändras under spel, utan endast från huvudmenyn)
 STR_GAME_OPTIONS_BASE_GRF_DESCRIPTION_TOOLTIP                   :{BLACK}Ytterligare information om basgrafik-settet
 
 STR_GAME_OPTIONS_BASE_SFX                                       :{BLACK}Grundljudspaket
-STR_GAME_OPTIONS_BASE_SFX_TOOLTIP                               :{BLACK}Välj vilket grundljudspaket som ska användas
+STR_GAME_OPTIONS_BASE_SFX_TOOLTIP                               :{BLACK}Välj vilket grundljudspaket som ska användas (kan inte ändras under spel, utan endast från huvudmenyn)
 STR_GAME_OPTIONS_BASE_SFX_DESCRIPTION_TOOLTIP                   :{BLACK}Ytterligare information om grundljudpaketet
 
 STR_GAME_OPTIONS_BASE_MUSIC                                     :{BLACK}Musikpaket valt
 STR_GAME_OPTIONS_BASE_MUSIC_TOOLTIP                             :{BLACK}Välj vilket musikpaket som ska användas
-STR_GAME_OPTIONS_BASE_MUSIC_STATUS                              :{RED}{NUM} fil{P "" er} korrupt{P "" a}
 STR_GAME_OPTIONS_BASE_MUSIC_DESCRIPTION_TOOLTIP                 :{BLACK}Yttligare information om musikpaketet
+
 
 STR_ERROR_RESOLUTION_LIST_FAILED                                :{WHITE}Det gick inte att hämta en lista över upplösningar som stöds
 STR_ERROR_FULLSCREEN_FAILED                                     :{WHITE}Fullskärmsläge misslyckades
@@ -1152,6 +1177,7 @@ STR_CONFIG_SETTING_EXPAND_ALL                                   :{BLACK}Utöka a
 STR_CONFIG_SETTING_COLLAPSE_ALL                                 :{BLACK}Stäng alla
 STR_CONFIG_SETTING_RESET_ALL                                    :{BLACK}Återställ alla värden
 STR_CONFIG_SETTING_NO_EXPLANATION_AVAILABLE_HELPTEXT            :(ingen förklaring tillgänglig)
+STR_CONFIG_SETTING_VALUE                                        :{PUSH_COLOUR}{ORANGE}{STRING}{POP_COLOUR}
 STR_CONFIG_SETTING_DEFAULT_VALUE                                :{LTBLUE}Standardvärde: {ORANGE}{STRING}
 STR_CONFIG_SETTING_TYPE                                         :{LTBLUE}Typ av inställning: {ORANGE}{STRING}
 STR_CONFIG_SETTING_TYPE_CLIENT                                  :Klientinställning (sparas ej i spel-filer och påverkar alla spel)
@@ -1204,6 +1230,8 @@ STR_CONFIG_SETTING_REALISTIC                                    :Realistisk
 STR_CONFIG_SETTING_HORIZONTAL_POS_LEFT                          :Vänster
 STR_CONFIG_SETTING_HORIZONTAL_POS_CENTER                        :Centrerad
 STR_CONFIG_SETTING_HORIZONTAL_POS_RIGHT                         :Höger
+
+STR_CONFIG_SETTING_SECONDS_VALUE                                :{COMMA}{NBSP}sekund{P 0 "" er}
 
 STR_CONFIG_SETTING_MAXIMUM_INITIAL_LOAN                         :Maximalt startlån: {STRING}
 STR_CONFIG_SETTING_MAXIMUM_INITIAL_LOAN_HELPTEXT                :Maximalt belopp ett företag kan låna (där inflationen inte tas med i beräkningen)
@@ -1262,7 +1290,7 @@ STR_CONFIG_SETTING_CATCHMENT                                    :Tillåt mer rea
 STR_CONFIG_SETTING_CATCHMENT_HELPTEXT                           :Ha olika stora uppsamlingsområden för olika typer av stationer och flygplatser
 
 STR_CONFIG_SETTING_SERVE_NEUTRAL_INDUSTRIES                     :Företagsstationerna kan betjäna industrier med tillhörande neutrala stationer: {STRING}
-STR_CONFIG_SETTING_SERVE_NEUTRAL_INDUSTRIES_HELPTEXT            :När aktiverat, kan industrier med tillhörande stationer (t.ex. oljeplattformar) också betjänas av företagsägda stationer som är byggda i närheten. När inaktiverat kan dessa industrier endast betjänas av deras tillhörande stationer. Några närliggande företagsstationer kommer inte att kunna tjäna dem, inte heller kommer den tillhörande stationen att tjäna något annat än industrin
+STR_CONFIG_SETTING_SERVE_NEUTRAL_INDUSTRIES_HELPTEXT            :När det är aktiverat kan industrier med anslutna stationer (t.ex. oljeplattformar) också betjänas av företagsägda stationer som är byggda i närheten. När det är inaktiverat kan dessa industrier endast betjänas av deras anslutna stationer. Inga närliggande företagsstationer kommer att kunna betjäna dem och inte heller kommer den anslutna stationen att betjäna något annat än sin industri
 
 STR_CONFIG_SETTING_EXTRADYNAMITE                                :Tillåt borttagning av fler stadsägda vägar, broar och tunnlar: {STRING}
 STR_CONFIG_SETTING_EXTRADYNAMITE_HELPTEXT                       :Underlätta borttagning av stadsägd infrastruktur och byggnader
@@ -1332,7 +1360,7 @@ STR_CONFIG_SETTING_NONSTOP_BY_DEFAULT                           :Nya order är '
 STR_CONFIG_SETTING_NONSTOP_BY_DEFAULT_HELPTEXT                  :I normala fall stannar ett fordon vid varje station det passerar. Aktiveras den här inställningen kommer det istället att köra igenom alla stationer på väg till dess slutdestination utan att stanna. Tänk på att den här inställningen bara definierar ett förinställt värde för nya order. Individuella order kan uttryckligen definiera båda typerna av beteende oavsett inställning
 
 STR_CONFIG_SETTING_STOP_LOCATION                                :Nya tåg-order stannar som standard vid {STRING} av platformen
-STR_CONFIG_SETTING_STOP_LOCATION_HELPTEXT                       :Grundinställning för var tåg stannar utmed plattformar. 'början' betyder i början av plattformen sett från var tåget kommer ifrån. 'mitten' betyder i mitten av plattformen och 'slutet' betyder så långt bort som möjligt. Notera att denna inställning endast anger grundvärdet för nya ordrar. Individuella instruktioner kan ges per orderrad explicit till valfritt värde oberoende av denna inställning.
+STR_CONFIG_SETTING_STOP_LOCATION_HELPTEXT                       :Grundinställning för var tåg stannar utmed plattformar. 'början' betyder i början av plattformen sett från var tåget kommer ifrån. 'mitten' betyder i mitten av plattformen och 'slutet' betyder så långt bort som möjligt. Notera att denna inställning endast anger grundvärdet för nya order. Stoppläge kan ställas in för individuella order genom att klicka på deras orderrad
 ###length 3
 STR_CONFIG_SETTING_STOP_LOCATION_NEAR_END                       :början
 STR_CONFIG_SETTING_STOP_LOCATION_MIDDLE                         :mitten
@@ -1375,8 +1403,11 @@ STR_CONFIG_SETTING_PLANE_CRASHES_NONE                           :Inga*
 STR_CONFIG_SETTING_PLANE_CRASHES_REDUCED                        :Reducerad
 STR_CONFIG_SETTING_PLANE_CRASHES_NORMAL                         :Normal
 
-STR_CONFIG_SETTING_STOP_ON_TOWN_ROAD                            :Tillåt genomfartshållplatser på stadsägda vägar: {STRING}
-STR_CONFIG_SETTING_STOP_ON_TOWN_ROAD_HELPTEXT                   :Tillåt konstruktion av genomfartshållplatser på stadsägda vägar
+STR_CONFIG_SETTING_CROSSING_WITH_COMPETITOR                     :Tillåt korsningar med vägar och räls ägda av andra företag: {STRING}
+STR_CONFIG_SETTING_CROSSING_WITH_COMPETITOR_HELPTEXT            :Tillåt konstruktion av korsningar på vägar och järnvägar som ägs av motståndare
+
+STR_CONFIG_SETTING_STOP_ON_TOWN_ROAD                            :Tillåt genomfartshållplatser på vägar som ägs av städer: {STRING}
+STR_CONFIG_SETTING_STOP_ON_TOWN_ROAD_HELPTEXT                   :Tillåt konstruktion av genomfartshållplatser på vägar som ägs av städer
 STR_CONFIG_SETTING_STOP_ON_COMPETITOR_ROAD                      :Tillåt dina fordon att köra genom motståndarens hållplatser: {STRING}
 STR_CONFIG_SETTING_STOP_ON_COMPETITOR_ROAD_HELPTEXT             :Tillåt konstruktion av genomfartshållplatser på vägar som ägs av andra företag
 STR_CONFIG_SETTING_DYNAMIC_ENGINES_EXISTING_VEHICLES            :{WHITE}Det är inte möjligt att ändra denna inställning när det finns fordon
@@ -1386,6 +1417,9 @@ STR_CONFIG_SETTING_INFRASTRUCTURE_MAINTENANCE_HELPTEXT          :Om det är akti
 
 STR_CONFIG_SETTING_COMPANY_STARTING_COLOUR                      :Företagets startfärg: {STRING}
 STR_CONFIG_SETTING_COMPANY_STARTING_COLOUR_HELPTEXT             :Välj startfärg för företaget
+
+STR_CONFIG_SETTING_COMPANY_STARTING_COLOUR_SECONDARY            :Företagets andravalsstartfärg: {STRING}
+STR_CONFIG_SETTING_COMPANY_STARTING_COLOUR_SECONDARY_HELPTEXT   :Välj andravalsfärg för företaget att starta med, om du använder en NewGRF som stöder det.
 
 STR_CONFIG_SETTING_NEVER_EXPIRE_AIRPORTS                        :Flygplatser blir aldrig gamla: {STRING}
 STR_CONFIG_SETTING_NEVER_EXPIRE_AIRPORTS_HELPTEXT               :Aktivering av denna inställning gör så att alla flygplatstyper finns kvar i obegränsad tid efter att de blivit tillgängliga
@@ -1420,7 +1454,6 @@ STR_CONFIG_SETTING_AUTORENEW_MONEY_HELPTEXT                     :Minsta belopp s
 
 STR_CONFIG_SETTING_ERRMSG_DURATION                              :Visningstid för felmeddelanden: {STRING}
 STR_CONFIG_SETTING_ERRMSG_DURATION_HELPTEXT                     :Tid som felmeddelanden i ett rött fönster ska visas. Notera att vissa (kritiska) felmeddelanden inte stängs automatiskt efter denna tid, utan måste stängas manuellt
-STR_CONFIG_SETTING_ERRMSG_DURATION_VALUE                        :{COMMA} sekund{P 0 "" er}
 
 STR_CONFIG_SETTING_HOVER_DELAY                                  :Visa tooltips: {STRING}
 STR_CONFIG_SETTING_HOVER_DELAY_HELPTEXT                         :Fördröjning innan tooltips visas när muspekaren hålls över ett gränssnittselement. Alternativt kan tooltips bindas till den högra musknappen när detta värde är satt till 0.
@@ -1531,7 +1564,7 @@ STR_CONFIG_SETTING_LINKGRAPH_COLOURS_GREY_TO_RED                :Grå till röd
 STR_CONFIG_SETTING_LINKGRAPH_COLOURS_GREYSCALE                  :Gråskala
 
 STR_CONFIG_SETTING_SCROLLMODE                                   :Vyfönsters skrollningsbeteende: {STRING}
-STR_CONFIG_SETTING_SCROLLMODE_HELPTEXT                          :Beteende vid scrollning av kartan
+STR_CONFIG_SETTING_SCROLLMODE_HELPTEXT                          :Beteende vid scrollning av kartan. Muspositionen låst valet funkar inte på alla system, som tillexempel webbaserade versioner, pekskärmar, Linux med Wayland, med mera
 ###length 4
 STR_CONFIG_SETTING_SCROLLMODE_DEFAULT                           :Rör vyn med höger musknapp, musens position låst
 STR_CONFIG_SETTING_SCROLLMODE_RMB_LOCKED                        :Rör kartan med höger musknapp, musens position låst
@@ -1588,9 +1621,10 @@ STR_CONFIG_SETTING_RIGHT_MOUSE_BTN_EMU_OFF                      :Av
 
 STR_CONFIG_SETTING_RIGHT_MOUSE_WND_CLOSE                        :Stäng fönster med högerklick: {STRING}
 STR_CONFIG_SETTING_RIGHT_MOUSE_WND_CLOSE_HELPTEXT               :Stänger fönster när man högerklickar inuti dem. Denna inställning inaktiverar tooltips vid högerklick!
-
-STR_CONFIG_SETTING_AUTOSAVE                                     :Autospara: {STRING}
-STR_CONFIG_SETTING_AUTOSAVE_HELPTEXT                            :Välj intervall mellan automatisk sparande
+###length 3
+STR_CONFIG_SETTING_RIGHT_MOUSE_WND_CLOSE_NO                     :Nej
+STR_CONFIG_SETTING_RIGHT_MOUSE_WND_CLOSE_YES                    :Ja
+STR_CONFIG_SETTING_RIGHT_MOUSE_WND_CLOSE_YES_EXCEPT_STICKY      :Ja, förutom klistrade
 
 STR_CONFIG_SETTING_DATE_FORMAT_IN_SAVE_NAMES                    :Använd {STRING} som datumformat för sparfilsnamn
 STR_CONFIG_SETTING_DATE_FORMAT_IN_SAVE_NAMES_HELPTEXT           :Format för datum i filnamnen för sparade spel
@@ -1616,8 +1650,7 @@ STR_CONFIG_SETTING_ADVANCED_VEHICLE_LISTS_HELPTEXT              :Möjliggör anv
 STR_CONFIG_SETTING_LOADING_INDICATORS                           :Använd lastningsindikatorer: {STRING}
 STR_CONFIG_SETTING_LOADING_INDICATORS_HELPTEXT                  :Välj om lastningsindikatorer visas ovanför lastande och avlastande fordon, eller ej
 
-STR_CONFIG_SETTING_TIMETABLE_IN_TICKS                           :Visa tidtabeller räknat i ticks istället för dagar: {STRING}
-STR_CONFIG_SETTING_TIMETABLE_IN_TICKS_HELPTEXT                  :Visa restider i tidtabeller i antal tick istället för dagar
+###length 3
 
 STR_CONFIG_SETTING_TIMETABLE_SHOW_ARRIVAL_DEPARTURE             :Visa ankomster och avgångar i tidtabeller: {STRING}
 STR_CONFIG_SETTING_TIMETABLE_SHOW_ARRIVAL_DEPARTURE_HELPTEXT    :Visa förväntade ankomst- och avgångstider i tidtabeller
@@ -1712,7 +1745,7 @@ STR_CONFIG_SETTING_SCRIPT_MAX_MEMORY_HELPTEXT                   :Hur mycket minn
 STR_CONFIG_SETTING_SCRIPT_MAX_MEMORY_VALUE                      :{COMMA} MiB
 
 STR_CONFIG_SETTING_SERVINT_ISPERCENT                            :Visa serviceintervall i procent: {STRING}
-STR_CONFIG_SETTING_SERVINT_ISPERCENT_HELPTEXT                   :Välj om fordonsservice ska triggas av hur lång tid som har gått sedan senaste service eller av att tillförlitligheten faller med en viss procentsats av den maximala tillförlitligheten
+STR_CONFIG_SETTING_SERVINT_ISPERCENT_HELPTEXT                   :När det är aktiverat försöker fordon bli servade när deras tillförlitlighet har fallit med en viss procentsats av den maximala tillförlitligheten.{}{}Till exempel, om ett fordons maximala tillförlitlighet är 90% och serviceintervallet är 20% kommer fordonet söka service när tillförlitligheten är 72%.Välj om fordonsservice ska triggas av hur lång tid som har gått sedan senaste service eller av att tillförlitligheten faller med
 
 STR_CONFIG_SETTING_SERVINT_TRAINS                               :Normalt serviceintervall för tåg: {STRING}
 STR_CONFIG_SETTING_SERVINT_TRAINS_HELPTEXT                      :Välj vilket serviceintervall som normalt sett ska användas för nya tåg, om inget annat serviceintervall uttryckligen anges
@@ -1842,8 +1875,8 @@ STR_CONFIG_SETTING_ALLOW_TOWN_ROADS_HELPTEXT                    :Tillåt städer
 STR_CONFIG_SETTING_ALLOW_TOWN_LEVEL_CROSSINGS                   :Städer tillåts bygga plankorsningar: {STRING}
 STR_CONFIG_SETTING_ALLOW_TOWN_LEVEL_CROSSINGS_HELPTEXT          :Om denna inställning aktiveras så blir det tillåtet för städer att bygga plankorsningar
 
-STR_CONFIG_SETTING_NOISE_LEVEL                                  :Tillåt stadskontrollerade bullernivåer för flygplatser: {STRING}
-STR_CONFIG_SETTING_NOISE_LEVEL_HELPTEXT                         :Med denna inställning avstängd kan det finnas max två flygplatser i varje stad. Med inställningen påslagen begränsas antalet flygplatser i en stad istället av vilken bullernivå staden accepterar, vilket styrs av populationen, flygplatsens storlek och avstånd till staden
+STR_CONFIG_SETTING_NOISE_LEVEL                                  :Begränsa var flygplatser kan placeras baserat på ljudnivå: {STRING}
+STR_CONFIG_SETTING_NOISE_LEVEL_HELPTEXT                         :Tillåt städer att stoppa flygplatsbyggen med hänvisning till den bullernivå staden accepterar, vilket styrs av populationen, flygplatsens storlek och avstånd till staden. Om denna inställning inaktiveras tillåter städer endast två flygplatser, såvida de lokala myndigheternas inställning inte är satt till "Tillåtande"
 
 STR_CONFIG_SETTING_TOWN_FOUNDING                                :Grunda städer i spelet: {STRING}
 STR_CONFIG_SETTING_TOWN_FOUNDING_HELPTEXT                       :Om denna inställning aktiveras blir det möjligt för spelare att grunda nya städer i spelet
@@ -1917,6 +1950,10 @@ STR_CONFIG_SETTING_LARGER_TOWNS_DISABLED                        :Inga
 STR_CONFIG_SETTING_CITY_SIZE_MULTIPLIER                         :Initial stadsstorleks-multiplikator: {STRING}
 STR_CONFIG_SETTING_CITY_SIZE_MULTIPLIER_HELPTEXT                :Storstäders genomsnittliga storlek i relation till vanliga städers vid spelets början
 
+STR_CONFIG_SETTING_LINKGRAPH_RECALC_INTERVAL                    :Uppdatera distributionsdiagram var {STRING}
+STR_CONFIG_SETTING_LINKGRAPH_RECALC_INTERVAL_HELPTEXT           :Tid mellan efterföljande omräkningar av länkgrafen. Varje omräkning beräknar planerna för en komponent i grafen. Det betyder att ett värde X för den här inställningen inte betyder att hela grafen kommer att uppdateras var X:e sekund. Bara viss komponent kommer att göra det. Ju kortare du ställer in den desto mer CPU-tid kommer att behövas för att beräkna den. Ju längre du ställer in den desto längre tid tar det tills lastdistributionen startar på nya rutter.
+STR_CONFIG_SETTING_LINKGRAPH_RECALC_TIME                        :Ta {STRING} för omräkning av distributionsdiagrammet
+STR_CONFIG_SETTING_LINKGRAPH_RECALC_TIME_HELPTEXT               :Tid som det tar för varje omräkning av en länkdiagramkomponent. När en omräkning startas skapas en tråd som tillåts köra i detta antal sekunder. Ju kortare du ställer in detta desto mer sannolikt är det att tråden inte är färdig när den ska. Sedan stannar spelet tills det är ("lag"). Ju längre du ställer in den desto längre tid tar det för distributionen att uppdateras när rutter ändras.
 
 STR_CONFIG_SETTING_DISTRIBUTION_PAX                             :Distributionssätt för passagerare: {STRING}
 STR_CONFIG_SETTING_DISTRIBUTION_PAX_HELPTEXT                    :"Symmetriskt" innebär att ungefär samma antal passagerare färdas från station A till station B som från B till A. "Asymmetriskt" innebär att en godtycklig mängd passagerare kan färdas i vardera riktningen. "Manuellt" innebär att ingen automatisk distribution av passagerare sker.
@@ -1942,13 +1979,15 @@ STR_CONFIG_SETTING_DEMAND_SIZE_HELPTEXT                         :Genom att sätt
 STR_CONFIG_SETTING_SHORT_PATH_SATURATION                        :Belastning av korta rutter innan rutter med hög kapacitet används: {STRING}
 STR_CONFIG_SETTING_SHORT_PATH_SATURATION_HELPTEXT               :Ofta finns det flera rutter mellan två givna stationer. Godsdistributionen kommer att fylla upp den första rutten först och därefter den näst kortaste tills den är mättad osv. Mättnadsgraden bestäms utifrån en uppskattning av kapaciteten och planerad användning. När godsdristributionen har belastat samtliga rutter, och om det finns kvarvarande behov, då kommer samtliga rutter att överbelastas med preferens för rutterna med högst kapacitet. Uppskattningen av kapaciteten kommer oftast inte ske med hög noggrannhet. Denna inställning tillåter dig att ställa in hur många procent som en kort rutt ska belastas innan algoritmen ska välja nästa längre rutt. Sätt värdet till under 100 % om du vill undvika överfulla stationer i händelse av överskattad kapacitet.
 
-STR_CONFIG_SETTING_LOCALISATION_UNITS_VELOCITY                  :Hastighetsenhet: {STRING}
+STR_CONFIG_SETTING_LOCALISATION_UNITS_VELOCITY                  :Hastighetsenhet (land)t: {STRING}
+STR_CONFIG_SETTING_LOCALISATION_UNITS_VELOCITY_NAUTICAL         :Hastighetsenheter (nautical): {STRING}
 STR_CONFIG_SETTING_LOCALISATION_UNITS_VELOCITY_HELPTEXT         :Närhelst en hastighet visas i användargränssnittet, visa den i den valda enheten
 ###length 5
 STR_CONFIG_SETTING_LOCALISATION_UNITS_VELOCITY_IMPERIAL         :Brittisk (mph)
 STR_CONFIG_SETTING_LOCALISATION_UNITS_VELOCITY_METRIC           :Metrisk (km/h)
 STR_CONFIG_SETTING_LOCALISATION_UNITS_VELOCITY_SI               :SI (m/s)
 STR_CONFIG_SETTING_LOCALISATION_UNITS_VELOCITY_GAMEUNITS        :Spel enheter (rutor/dag)
+STR_CONFIG_SETTING_LOCALISATION_UNITS_VELOCITY_KNOTS            :Knop
 
 STR_CONFIG_SETTING_LOCALISATION_UNITS_POWER                     :Enhet för fordons motoreffekt: {STRING}
 STR_CONFIG_SETTING_LOCALISATION_UNITS_POWER_HELPTEXT            :Närhelst ett fordons motoreffekt visas i användargränssnittet, visa den i den valda enheten
@@ -1985,30 +2024,30 @@ STR_CONFIG_SETTING_LOCALISATION_UNITS_HEIGHT_IMPERIAL           :Brittisk (ft)
 STR_CONFIG_SETTING_LOCALISATION_UNITS_HEIGHT_METRIC             :Metrisk (m)
 STR_CONFIG_SETTING_LOCALISATION_UNITS_HEIGHT_SI                 :SI (m)
 
-STR_CONFIG_SETTING_LOCALISATION                                 :{ORANGE}Lokalisering
-STR_CONFIG_SETTING_GRAPHICS                                     :{ORANGE}Grafik
-STR_CONFIG_SETTING_SOUND                                        :{ORANGE}Ljud
-STR_CONFIG_SETTING_INTERFACE                                    :{ORANGE}Gränssnitt
-STR_CONFIG_SETTING_INTERFACE_GENERAL                            :{ORANGE}Generellt
-STR_CONFIG_SETTING_INTERFACE_VIEWPORTS                          :{ORANGE}Vyfönster
-STR_CONFIG_SETTING_INTERFACE_CONSTRUCTION                       :{ORANGE}Konstruktion
-STR_CONFIG_SETTING_ADVISORS                                     :{ORANGE} Nyheter / Rådgivare
-STR_CONFIG_SETTING_COMPANY                                      :{ORANGE}Företag
-STR_CONFIG_SETTING_ACCOUNTING                                   :{ORANGE} Redovisning
-STR_CONFIG_SETTING_VEHICLES                                     :{ORANGE}Fordon
-STR_CONFIG_SETTING_VEHICLES_PHYSICS                             :{ORANGE} Fysik
-STR_CONFIG_SETTING_VEHICLES_ROUTING                             :{ORANGE}Planering av resrutt
-STR_CONFIG_SETTING_LIMITATIONS                                  :{ORANGE} Begränsningar
-STR_CONFIG_SETTING_ACCIDENTS                                    :{ORANGE} Katastrofer / Olyckor
-STR_CONFIG_SETTING_GENWORLD                                     :{ORANGE}Världsgenerering
-STR_CONFIG_SETTING_ENVIRONMENT                                  :{ORANGE}Miljö
-STR_CONFIG_SETTING_ENVIRONMENT_AUTHORITIES                      :{ORANGE}Mydigheter
-STR_CONFIG_SETTING_ENVIRONMENT_TOWNS                            :{ORANGE}Städer
-STR_CONFIG_SETTING_ENVIRONMENT_INDUSTRIES                       :{ORANGE}Industrier
-STR_CONFIG_SETTING_ENVIRONMENT_CARGODIST                        :{ORANGE}Godsdistribution
-STR_CONFIG_SETTING_AI                                           :{ORANGE}Motståndare
-STR_CONFIG_SETTING_AI_NPC                                       :{ORANGE}Datorspelare
-STR_CONFIG_SETTING_NETWORK                                      :{ORANGE}Nätverk
+STR_CONFIG_SETTING_LOCALISATION                                 :Lokalisering
+STR_CONFIG_SETTING_GRAPHICS                                     :Grafik
+STR_CONFIG_SETTING_SOUND                                        :Ljud
+STR_CONFIG_SETTING_INTERFACE                                    :Gränssnitt
+STR_CONFIG_SETTING_INTERFACE_GENERAL                            :Generellt
+STR_CONFIG_SETTING_INTERFACE_VIEWPORTS                          :Vyfönster
+STR_CONFIG_SETTING_INTERFACE_CONSTRUCTION                       :Konstruktion
+STR_CONFIG_SETTING_ADVISORS                                     : Nyheter / Rådgivare
+STR_CONFIG_SETTING_COMPANY                                      :Företag
+STR_CONFIG_SETTING_ACCOUNTING                                   : Redovisning
+STR_CONFIG_SETTING_VEHICLES                                     :Fordon
+STR_CONFIG_SETTING_VEHICLES_PHYSICS                             : Fysik
+STR_CONFIG_SETTING_VEHICLES_ROUTING                             :Planering av resrutt
+STR_CONFIG_SETTING_LIMITATIONS                                  : Begränsningar
+STR_CONFIG_SETTING_ACCIDENTS                                    : Katastrofer / Olyckor
+STR_CONFIG_SETTING_GENWORLD                                     :Världsgenerering
+STR_CONFIG_SETTING_ENVIRONMENT                                  :Miljö
+STR_CONFIG_SETTING_ENVIRONMENT_AUTHORITIES                      :Mydigheter
+STR_CONFIG_SETTING_ENVIRONMENT_TOWNS                            :Städer
+STR_CONFIG_SETTING_ENVIRONMENT_INDUSTRIES                       :Industrier
+STR_CONFIG_SETTING_ENVIRONMENT_CARGODIST                        :Godsdistribution
+STR_CONFIG_SETTING_AI                                           :Motståndare
+STR_CONFIG_SETTING_AI_NPC                                       :Datorspelare
+STR_CONFIG_SETTING_NETWORK                                      :Nätverk
 
 STR_CONFIG_SETTING_PATHFINDER_FOR_TRAINS                        :Vägfinnare för tåg: {STRING}
 STR_CONFIG_SETTING_PATHFINDER_FOR_TRAINS_HELPTEXT               :Vägfinnare som tåg ska använda
@@ -2047,6 +2086,7 @@ STR_CONFIG_ERROR_SPRITECACHE_TOO_BIG                            :{WHITE}Allokera
 # Video initalization errors
 STR_VIDEO_DRIVER_ERROR                                          :{WHITE}Fel med video inställningarna...
 STR_VIDEO_DRIVER_ERROR_NO_HARDWARE_ACCELERATION                 :{WHITE}... Inget kompatibelt grafikkort hittat. Hårdvaruacceleration inaktiverad
+STR_VIDEO_DRIVER_ERROR_HARDWARE_ACCELERATION_CRASH              :{WHITE}... GPU-drivrutinen kraschade spelet. Maskinvaruacceleration inaktiverad
 
 # Intro window
 STR_INTRO_CAPTION                                               :{WHITE}OpenTTD {REV}
@@ -2101,6 +2141,8 @@ STR_QUIT_NO                                                     :{BLACK}Nej
 STR_ABANDON_GAME_CAPTION                                        :{WHITE}Avsluta spelet
 STR_ABANDON_GAME_QUERY                                          :{YELLOW}Är du säker på att du vill avsluta spelet?
 STR_ABANDON_SCENARIO_QUERY                                      :{YELLOW}Är du säker på att du vill avsluta detta scenario?
+
+# Help window
 
 # Cheat window
 STR_CHEATS                                                      :{WHITE}Fusk
@@ -2288,7 +2330,7 @@ STR_NETWORK_START_SERVER_VISIBILITY_TOOLTIP                     :{BLACK}Huruvida
 STR_NETWORK_START_SERVER_CLIENTS_SELECT                         :{BLACK}{NUM} klient{P "" er}
 STR_NETWORK_START_SERVER_NUMBER_OF_CLIENTS                      :{BLACK}Max antal tillåtna klienter:
 STR_NETWORK_START_SERVER_NUMBER_OF_CLIENTS_TOOLTIP              :{BLACK}Välj max antal tillåtna klienter. Alla platser måste inte fyllas.
-STR_NETWORK_START_SERVER_COMPANIES_SELECT                       :{BLACK}{NUM} företag{P y ies}
+STR_NETWORK_START_SERVER_COMPANIES_SELECT                       :{BLACK}{NUM} företag
 STR_NETWORK_START_SERVER_NUMBER_OF_COMPANIES                    :{BLACK}Max antal företag:
 STR_NETWORK_START_SERVER_NUMBER_OF_COMPANIES_TOOLTIP            :{BLACK}Begränsa antalet företag på servern
 
@@ -2377,6 +2419,12 @@ STR_NETWORK_ASK_RELAY_NO                                        :{BLACK}Nej
 STR_NETWORK_ASK_RELAY_YES_ONCE                                  :{BLACK}Ja, den här gången
 STR_NETWORK_ASK_RELAY_YES_ALWAYS                                :{BLACK}Ja, fråga inte igen
 
+STR_NETWORK_ASK_SURVEY_CAPTION                                  :Delta i automatiserad undersökning?
+STR_NETWORK_ASK_SURVEY_TEXT                                     :Vill du delta i den automatiska undersökningen?{}OpenTTD kommer att skicka en undersökning när du lämnar ett spel.{}Du kan ändra detta när som helst under "Spelalternativ".
+STR_NETWORK_ASK_SURVEY_PREVIEW                                  :Förhandsgranska enkätresultat
+STR_NETWORK_ASK_SURVEY_LINK                                     :Om undersökning och integritet
+STR_NETWORK_ASK_SURVEY_NO                                       :Nej
+STR_NETWORK_ASK_SURVEY_YES                                      :Ja
 
 STR_NETWORK_SPECTATORS                                          :Åskådare
 
@@ -2583,7 +2631,7 @@ STR_TRANSPARENT_BUILDINGS_TOOLTIP                               :{BLACK}Växla g
 STR_TRANSPARENT_BRIDGES_TOOLTIP                                 :{BLACK}Växla genomskinlighet för broar. Ctrl+klick för att låsa
 STR_TRANSPARENT_STRUCTURES_TOOLTIP                              :{BLACK}Växla genomskinlighet för byggnader såsom fyrar och antenner. Ctrl+klick för att låsa
 STR_TRANSPARENT_CATENARY_TOOLTIP                                :{BLACK}Växla genomskinlighet för kontaktledning. Ctrl+klick för att låsa
-STR_TRANSPARENT_LOADING_TOOLTIP                                 :{BLACK}Växla genomskinlighet för lastningsindikatorer. Ctrl+klick för att låsa
+STR_TRANSPARENT_TEXT_TOOLTIP                                    :{BLACK} Växla genomskinlighet för pålastnings, kostnads och inkomsttext. Ctrl+klick för att låsa
 STR_TRANSPARENT_INVISIBLE_TOOLTIP                               :{BLACK}Gör object osynliga istället för genomskinliga
 
 # Linkgraph legend window
@@ -2667,8 +2715,11 @@ STR_STATION_BUILD_DRAG_DROP_TOOLTIP                             :{BLACK}Bygg en 
 STR_STATION_BUILD_STATION_CLASS_TOOLTIP                         :{BLACK}Välj vilken stationsklass som ska visas
 STR_STATION_BUILD_STATION_TYPE_TOOLTIP                          :{BLACK}Välj stationstyp att bygga
 
-STR_STATION_CLASS_DFLT                                          :Grundinställd station
+STR_STATION_CLASS_DFLT                                          :Original
+STR_STATION_CLASS_DFLT_STATION                                  :Standardstation
+STR_STATION_CLASS_DFLT_ROADSTOP                                 :Standardvägstopp
 STR_STATION_CLASS_WAYP                                          :Riktmärken
+STR_STATION_CLASS_WAYP_WAYPOINT                                 :Standard vägpunkt
 
 # Signal window
 STR_BUILD_SIGNAL_CAPTION                                        :{WHITE}Signalval
@@ -2876,7 +2927,7 @@ STR_FOUND_TOWN_SELECT_LAYOUT_3X3_GRID                           :{BLACK}3x3 rutn
 STR_FOUND_TOWN_SELECT_LAYOUT_RANDOM                             :{BLACK}Slumpa
 
 # Fund new industry window
-STR_FUND_INDUSTRY_CAPTION                                       :{WHITE}Bekosta ny industri
+STR_FUND_INDUSTRY_CAPTION                                       :{WHITE}Industrifinansiering
 STR_FUND_INDUSTRY_SELECTION_TOOLTIP                             :{BLACK}Välj lämplig industri från denna lista
 STR_FUND_INDUSTRY_MANY_RANDOM_INDUSTRIES                        :{BLACK}Skapa slumpmässiga industrier
 STR_FUND_INDUSTRY_MANY_RANDOM_INDUSTRIES_TOOLTIP                :{BLACK}Täck kartan med slumpmässigt placerade industrier
@@ -2892,14 +2943,14 @@ STR_FUND_INDUSTRY_REMOVE_ALL_INDUSTRIES_CAPTION                 :{WHITE}Ta bort 
 STR_FUND_INDUSTRY_REMOVE_ALL_INDUSTRIES_QUERY                   :{YELLOW}Är du säker på att du vill ta bort alla industrier?
 
 # Industry cargoes window
-STR_INDUSTRY_CARGOES_INDUSTRY_CAPTION                           :{WHITE}Industrikedja för industrin {STRING}
-STR_INDUSTRY_CARGOES_CARGO_CAPTION                              :{WHITE}Industrikedja för godset {STRING}
+STR_INDUSTRY_CARGOES_INDUSTRY_CAPTION                           :{WHITE}Industrikedja - {STRING}
+STR_INDUSTRY_CARGOES_CARGO_CAPTION                              :{WHITE}Godskedja - {STRING}
 STR_INDUSTRY_CARGOES_PRODUCERS                                  :{WHITE}Producerande industrier
 STR_INDUSTRY_CARGOES_CUSTOMERS                                  :{WHITE}Mottagande industrier
 STR_INDUSTRY_CARGOES_HOUSES                                     :{WHITE}Hus
 STR_INDUSTRY_CARGOES_INDUSTRY_TOOLTIP                           :{BLACK}Klicka på industrin för att se dess leverantörer och kunder
 STR_INDUSTRY_CARGOES_CARGO_TOOLTIP                              :{BLACK}{STRING}{}Klicka på godset för att se dess leverantörer och kunder
-STR_INDUSTRY_DISPLAY_CHAIN                                      :{BLACK}Visa kedja
+STR_INDUSTRY_DISPLAY_CHAIN                                      :{BLACK}Industrikedja
 STR_INDUSTRY_DISPLAY_CHAIN_TOOLTIP                              :{BLACK}Visa industrier som levererar och tar emot gods
 STR_INDUSTRY_CARGOES_NOTIFY_SMALLMAP                            :{BLACK}Koppla till minikartan
 STR_INDUSTRY_CARGOES_NOTIFY_SMALLMAP_TOOLTIP                    :{BLACK}Markera visade industrier även på minikartan
@@ -3394,7 +3445,7 @@ STR_NEWGRF_BROKEN                                               :{WHITE}'Beteend
 STR_NEWGRF_BROKEN_POWERED_WAGON                                 :{WHITE}Power wagon-tillstånd för '{1:ENGINE}' ändrades utanför en depå
 STR_NEWGRF_BROKEN_VEHICLE_LENGTH                                :{WHITE}Fordonslängd för '{1:ENGINE}' ändrades utanför en depå
 STR_NEWGRF_BROKEN_CAPACITY                                      :{WHITE}Kapaciteten ändrades för '{1:ENGINE}' utan att vara i depå eller anpassning
-STR_BROKEN_VEHICLE_LENGTH                                       :{WHITE}Tåg '{VEHICLE}' som tillhör '{COMPANY}' har ogiltig längd. Detta orsakas förmodligen av problem med en NewGRF. Spelet kan desynkroniseras eller krascha
+STR_BROKEN_VEHICLE_LENGTH                                       :{WHITE}Tåget '{VEHICLE}' som tillhör '{COMPANY}' har ogiltig längd. Detta orsakas förmodligen av problem med en NewGRF. Spelet kan desynkroniseras eller krascha
 
 STR_NEWGRF_BUGGY                                                :{WHITE}NewGRF '{0:STRING}' ger felaktig information
 STR_NEWGRF_BUGGY_ARTICULATED_CARGO                              :{WHITE}Last-/återställningsinformationen för '{1:ENGINE}' skiljer sig från köplistan efter konstruktion. Detta kan leda till att automatisk förnyelse/uppgradering misslyckas med att anpassa fordonen/vagnarna korrekt
@@ -3494,8 +3545,8 @@ STR_LOCAL_AUTHORITY_ACTION_TOOLTIP_LARGE_ADVERTISING            :{PUSH_COLOUR}{Y
 STR_LOCAL_AUTHORITY_ACTION_TOOLTIP_ROAD_RECONSTRUCTION          :{PUSH_COLOUR}{YELLOW}Bekosta ombyggnad av stadens vägnätverk.{}Orsakar ansenliga störningar för vägtrafik i upp till 6 månader.{}{POP_COLOUR}Kostnad: {CURRENCY_LONG}
 STR_LOCAL_AUTHORITY_ACTION_TOOLTIP_STATUE_OF_COMPANY            :{PUSH_COLOUR}{YELLOW}Bygg en staty till ditt företags ära.{}Ger en permanent boost till stationers betyg i staden.{}{POP_COLOUR}Cost: {CURRENCY_LONG}
 STR_LOCAL_AUTHORITY_ACTION_TOOLTIP_NEW_BUILDINGS                :{PUSH_COLOUR}{YELLOW}Bekosta konstruktion av nya byggnader i staden.{}Ger en temporär boost till stadens tillväxt.{}{POP_COLOUR}Kostnad: {CURRENCY_LONG}
-STR_LOCAL_AUTHORITY_ACTION_TOOLTIP_EXCLUSIVE_TRANSPORT          :{PUSH_COLOUR}{YELLOW}Köp 1 års exklusiva transporträttigheter i staden.{}De lokala myndigheterna kommer inte tillåta passagerare och gods att använda dina motståndares stationer.{}{POP_COLOUR}Kostnad: {CURRENCY_LONG}
-STR_LOCAL_AUTHORITY_ACTION_TOOLTIP_BRIBE                        :{PUSH_COLOUR}{YELLOW} Muta de lokala myndigheterna för att öka din värdering, med risk för att få höga böter om du blir upptäckt.{}{POP_COLOUR}Kostnad: {CURRENCY_LONG}
+STR_LOCAL_AUTHORITY_ACTION_TOOLTIP_EXCLUSIVE_TRANSPORT          :{PUSH_COLOUR}{YELLOW}Köp 1 års exklusiva transporträttigheter i staden.{}De lokala myndigheterna kommer inte tillåta passagerare och gods att använda dina motståndares stationer. En framgångsrik muta från en motståndare gör att kontraktet bryts.{}{POP_COLOUR}Kostnad: {CURRENCY_LONG}
+STR_LOCAL_AUTHORITY_ACTION_TOOLTIP_BRIBE                        :{PUSH_COLOUR}{YELLOW} Muta de lokala myndigheterna för att öka din värdering och återkalla en motståndares exklusiva transporträttigheter, med risk för att få höga böter om du blir upptäckt.{}{POP_COLOUR}Kostnad: {CURRENCY_LONG}
 
 # Goal window
 STR_GOALS_CAPTION                                               :{WHITE}{COMPANY} Mål
@@ -3717,6 +3768,8 @@ STR_COMPANY_VIEW_INFRASTRUCTURE_BUTTON                          :{BLACK}Detaljer
 STR_COMPANY_VIEW_INFRASTRUCTURE_TOOLTIP                         :{BLACK}Visa detaljerat antal infrastruktur-element
 STR_COMPANY_VIEW_GIVE_MONEY_BUTTON                              :{BLACK}Ge pengar
 STR_COMPANY_VIEW_GIVE_MONEY_TOOLTIP                             :{BLACK}Ge pengar till detta företaget
+STR_COMPANY_VIEW_HOSTILE_TAKEOVER_BUTTON                        :{BLACK}Fientligt övertagande
+STR_COMPANY_VIEW_HOSTILE_TAKEOVER_TOOLTIP                       :{BLACK}Gör ett fientligt övertagande av det här företaget
 
 STR_COMPANY_VIEW_NEW_FACE_BUTTON                                :{BLACK}Nytt ansikte
 STR_COMPANY_VIEW_NEW_FACE_TOOLTIP                               :{BLACK}Välj nytt ansikte på VD:n
@@ -3732,6 +3785,7 @@ STR_COMPANY_VIEW_PRESIDENT_S_NAME_QUERY_CAPTION                 :Namn på VD
 STR_COMPANY_VIEW_GIVE_MONEY_QUERY_CAPTION                       :Ange hur mycket pengar du vill ge
 
 STR_BUY_COMPANY_MESSAGE                                         :{WHITE}Vi letar efter någon som vill köpa och ta över vårt företag{}{}Vill du köpa {COMPANY} för {CURRENCY_LONG}?
+STR_BUY_COMPANY_HOSTILE_TAKEOVER                                :{WHITE} vid ett fientligt övertagande av {COMPANY} kommer du att köpa alla tillgångar, betala av alla lån och betala två års vinst.{}{}Den totala summan uppskattas till {CURRENCY_LONG}.{}{}Vill du fortsätta detta fientliga övertagande?
 
 # Company infrastructure window
 STR_COMPANY_INFRASTRUCTURE_VIEW_CAPTION                         :{WHITE}Infrastruktur för {COMPANY}
@@ -3803,7 +3857,10 @@ STR_VEHICLE_LIST_MANAGE_LIST                                    :{BLACK}Hantera 
 STR_VEHICLE_LIST_MANAGE_LIST_TOOLTIP                            :{BLACK}Skicka instruktioner till alla fordon på denna lista
 STR_VEHICLE_LIST_REPLACE_VEHICLES                               :Byt ut fordon
 STR_VEHICLE_LIST_SEND_FOR_SERVICING                             :Skicka på service
+STR_VEHICLE_LIST_CREATE_GROUP                                   :Skapa grupp
 STR_VEHICLE_LIST_PROFIT_THIS_YEAR_LAST_YEAR                     :{TINY_FONT}{BLACK}Vinst detta år: {CURRENCY_LONG} (förra året: {CURRENCY_LONG})
+STR_VEHICLE_LIST_CARGO                                          :[{CARGO_LIST}]
+STR_VEHICLE_LIST_NAME_AND_CARGO                                 :{STRING} {STRING}
 
 STR_VEHICLE_LIST_SEND_TRAIN_TO_DEPOT                            :Skicka till depå
 STR_VEHICLE_LIST_SEND_ROAD_VEHICLE_TO_DEPOT                     :Skicka till depå
@@ -4378,7 +4435,7 @@ STR_ORDER_CONDITIONAL_COMPARATOR_IS_FALSE                       :falskt
 STR_ORDER_CONDITIONAL_VALUE_TOOLTIP                             :{BLACK}Värde att jämföra fordonsdata mot
 STR_ORDER_CONDITIONAL_VALUE_CAPT                                :{WHITE}Skriv in värde att jämföra mot
 
-STR_ORDERS_SKIP_BUTTON                                          :{BLACK}Skippa
+STR_ORDERS_SKIP_BUTTON                                          :{BLACK}Hoppa över
 STR_ORDERS_SKIP_TOOLTIP                                         :{BLACK}Hoppa över nuvarande order och starta nästa. Ctrl+klick hoppar över till vald order
 
 STR_ORDERS_DELETE_BUTTON                                        :{BLACK}Ta bort
@@ -4486,8 +4543,6 @@ STR_TIMETABLE_STAY_FOR_ESTIMATED                                :(stanna {STRING
 STR_TIMETABLE_AND_TRAVEL_FOR_ESTIMATED                          :(resor för {STRING}, ej schemalagd)
 STR_TIMETABLE_STAY_FOR                                          :och stanna i {STRING}
 STR_TIMETABLE_AND_TRAVEL_FOR                                    :och res i {STRING}
-STR_TIMETABLE_DAYS                                              :{COMMA}{NBSP}dag{P "" ar}
-STR_TIMETABLE_TICKS                                             :{COMMA}{NBSP}tick
 
 STR_TIMETABLE_TOTAL_TIME                                        :{BLACK}Den här tidtabellen kommer ta {STRING} att slutföra
 STR_TIMETABLE_TOTAL_TIME_INCOMPLETE                             :{BLACK}Denna tidtabell kommer att ta åtminstone {STRING} att slutföra (allt är inte inlagt i en tidtabell)
@@ -4496,10 +4551,8 @@ STR_TIMETABLE_STATUS_ON_TIME                                    :{BLACK}Detta fo
 STR_TIMETABLE_STATUS_LATE                                       :{BLACK}Detta fordon är för tillfället {STRING} sen
 STR_TIMETABLE_STATUS_EARLY                                      :{BLACK}Detta fordon är för tillfället {STRING} tidig
 STR_TIMETABLE_STATUS_NOT_STARTED                                :{BLACK}Den här tidtabellen har inte startat ännu
-STR_TIMETABLE_STATUS_START_AT                                   :{BLACK}Den här tidtabellen kommer starta {STRING}
 
-STR_TIMETABLE_STARTING_DATE                                     :{BLACK}Startdatum
-STR_TIMETABLE_STARTING_DATE_TOOLTIP                             :{BLACK}Välj ett datum som startpunkt för den här tidtabellen. Om tidtabellen är fullt tidssatt så gör ett Ctrl+klick alla fordon som delar dessa order fördelas jämt från det givna datumet, baserat på deras relativa ordning
+
 
 STR_TIMETABLE_CHANGE_TIME                                       :{BLACK}Ändra tid
 STR_TIMETABLE_WAIT_TIME_TOOLTIP                                 :{BLACK}Ändra hur lång tid den markerade ordern bör ta. Ctrl+klick ställer in tiden för alla ordrar
@@ -4523,8 +4576,6 @@ STR_TIMETABLE_EXPECTED                                          :{BLACK}Förvän
 STR_TIMETABLE_SCHEDULED                                         :{BLACK}Schemalagt
 STR_TIMETABLE_EXPECTED_TOOLTIP                                  :{BLACK}Ändra mellan förväntat och schemalagt
 
-STR_TIMETABLE_ARRIVAL_ABBREVIATION                              :A:
-STR_TIMETABLE_DEPARTURE_ABBREVIATION                            :D:
 
 
 # Date window (for timetable)
@@ -4568,7 +4619,9 @@ STR_AI_CONFIG_AILIST_TOOLTIP                                    :{BLACK}Datorspe
 STR_AI_CONFIG_HUMAN_PLAYER                                      :Mänsklig spelare
 STR_AI_CONFIG_RANDOM_AI                                         :Slumpa datorspelare
 STR_AI_CONFIG_NONE                                              :(inget)
+STR_AI_CONFIG_NAME_VERSION                                      :{STRING} {YELLOW}v{NUM}
 STR_AI_CONFIG_MAX_COMPETITORS                                   :{LTBLUE}Max antal motståndare: {ORANGE}{COMMA}
+STR_AI_CONFIG_COMPETITORS_INTERVAL                              :{LTBLUE}Intervall mellan start av motståndare: {ORANGE}{COMMA} minut{P "" er}
 
 STR_AI_CONFIG_MOVE_UP                                           :{BLACK}Flytta upp
 STR_AI_CONFIG_MOVE_UP_TOOLTIP                                   :{BLACK}Flytta upp vald datorspelare i listan
@@ -4581,7 +4634,7 @@ STR_AI_CONFIG_AI                                                :{SILVER}Datorsp
 
 STR_AI_CONFIG_CHANGE_AI                                         :{BLACK}Välj datorspelare
 STR_AI_CONFIG_CHANGE_GAMESCRIPT                                 :{BLACK}Välj spelskript
-STR_AI_CONFIG_CHANGE_TOOLTIP                                    :{BLACK}Läs in ett annat skript
+STR_AI_CONFIG_CHANGE_TOOLTIP                                    :{BLACK}Läs in ett annat skript. Ctrl+klick visar alla tillgängliga versioner
 STR_AI_CONFIG_CONFIGURE                                         :{BLACK}Konfigurera
 STR_AI_CONFIG_CONFIGURE_TOOLTIP                                 :{BLACK}Konfigurera datorspelarens parametrar
 
@@ -4623,10 +4676,11 @@ STR_TEXTFILE_WRAP_TEXT_TOOLTIP                                  :{BLACK}Bryt rad
 STR_TEXTFILE_VIEW_README                                        :{BLACK}Visa manual
 STR_TEXTFILE_VIEW_CHANGELOG                                     :{BLACK}Ändringshistorik
 STR_TEXTFILE_VIEW_LICENCE                                       :{BLACK}Licens
-###length 4
+###length 5
 STR_TEXTFILE_README_CAPTION                                     :{WHITE} {STRING}-manual för {STRING}
 STR_TEXTFILE_CHANGELOG_CAPTION                                  :{WHITE}Ändringshistorik för {STRING} {STRING}
 STR_TEXTFILE_LICENCE_CAPTION                                    :{WHITE}Licens för {STRING}{STRING}
+STR_TEXTFILE_SURVEY_RESULT_CAPTION                              :{WHITE}Förhandsgranskning av enkätresultat.
 
 
 # Vehicle loading indicators
@@ -4761,7 +4815,6 @@ STR_ERROR_TOO_CLOSE_TO_EDGE_OF_MAP_SUB                          :{WHITE}... för
 STR_ERROR_TOO_CLOSE_TO_ANOTHER_TOWN                             :{WHITE}... för nära en annan stad
 STR_ERROR_TOO_MANY_TOWNS                                        :{WHITE}... för många städer
 STR_ERROR_NO_SPACE_FOR_TOWN                                     :{WHITE}... det finns ingen plats kvar på kartan
-STR_ERROR_TOWN_EXPAND_WARN_NO_ROADS                             :{WHITE}Staden kommer inte bygga vägar. Du kan tillåta att staden bygger vägar via Inställningar->Miljö->Städer
 STR_ERROR_ROAD_WORKS_IN_PROGRESS                                :{WHITE}Vägarbete pågår
 STR_ERROR_TOWN_CAN_T_DELETE                                     :{WHITE}Kan inte ta bort den här staden...{}En station eller depå refererar till staden eller så kan inte en stadsägd ruta tas bort.
 STR_ERROR_STATUE_NO_SUITABLE_PLACE                              :{WHITE}... det finns ingen lämplig plats för en staty i stadens centrum
@@ -4809,7 +4862,7 @@ STR_ERROR_TOO_MANY_TRUCK_STOPS                                  :{WHITE}För må
 STR_ERROR_TOO_CLOSE_TO_ANOTHER_DOCK                             :{WHITE}För nära en annan hamn
 STR_ERROR_TOO_CLOSE_TO_ANOTHER_AIRPORT                          :{WHITE}För nära en annan flygplats
 STR_ERROR_CAN_T_RENAME_STATION                                  :{WHITE}Kan inte byta namn på station...
-STR_ERROR_DRIVE_THROUGH_ON_TOWN_ROAD                            :{WHITE}... detta är en stadsägd väg
+STR_ERROR_DRIVE_THROUGH_ON_TOWN_ROAD                            :{WHITE}... detta är en väg som ägs av en stad
 STR_ERROR_DRIVE_THROUGH_DIRECTION                               :{WHITE}... vägen pekar i fel riktning
 STR_ERROR_DRIVE_THROUGH_CORNER                                  :{WHITE}... genomfartshållplatser kan inte ha gatuhörn
 STR_ERROR_DRIVE_THROUGH_JUNCTION                                :{WHITE}... genomfartshållplatser kan inte ha korsningar
@@ -5083,6 +5136,7 @@ STR_ERROR_NO_BUOY                                               :{WHITE}Det finn
 STR_ERROR_CAN_T_TIMETABLE_VEHICLE                               :{WHITE}Kan inte lägga till fordonet i en tidtabell...
 STR_ERROR_TIMETABLE_ONLY_WAIT_AT_STATIONS                       :{WHITE}Fordon kan enbart vänta vid stationer
 STR_ERROR_TIMETABLE_NOT_STOPPING_HERE                           :{WHITE}Detta fordon stannar inte vid denna station
+STR_ERROR_TIMETABLE_INCOMPLETE                                  :{WHITE}... tidtabellen är ofullständig
 
 # Sign related errors
 STR_ERROR_TOO_MANY_SIGNS                                        :{WHITE}... för många skyltar
@@ -5562,17 +5616,21 @@ STR_VEHICLE_NAME                                                :{VEHICLE}
 STR_WAYPOINT_NAME                                               :{WAYPOINT}
 
 STR_JUST_CARGO                                                  :{CARGO_LONG}
+STR_JUST_RIGHT_ARROW                                            :{RIGHT_ARROW}
 STR_JUST_CHECKMARK                                              :{CHECKMARK}
 STR_JUST_COMMA                                                  :{COMMA}
 STR_JUST_CURRENCY_SHORT                                         :{CURRENCY_SHORT}
 STR_JUST_CURRENCY_LONG                                          :{CURRENCY_LONG}
 STR_JUST_CARGO_LIST                                             :{CARGO_LIST}
+STR_JUST_DECIMAL                                                :{DECIMAL}
 STR_JUST_INT                                                    :{NUM}
 STR_JUST_DATE_TINY                                              :{DATE_TINY}
 STR_JUST_DATE_SHORT                                             :{DATE_SHORT}
 STR_JUST_DATE_LONG                                              :{DATE_LONG}
 STR_JUST_DATE_ISO                                               :{DATE_ISO}
 STR_JUST_STRING                                                 :{STRING}
+STR_JUST_STRING1                                                :{STRING}
+STR_JUST_STRING2                                                :{STRING}
 STR_JUST_STRING_STRING                                          :{STRING}{STRING}
 STR_JUST_RAW_STRING                                             :{STRING}
 STR_JUST_BIG_RAW_STRING                                         :{BIG_FONT}{STRING}

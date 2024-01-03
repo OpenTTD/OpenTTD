@@ -50,13 +50,13 @@ SpriteFontCache::~SpriteFontCache()
 	this->ClearGlyphToSpriteMap();
 }
 
-SpriteID SpriteFontCache::GetUnicodeGlyph(WChar key)
+SpriteID SpriteFontCache::GetUnicodeGlyph(char32_t key)
 {
 	if (this->glyph_to_spriteid_map[GB(key, 8, 8)] == nullptr) return 0;
 	return this->glyph_to_spriteid_map[GB(key, 8, 8)][GB(key, 0, 8)];
 }
 
-void SpriteFontCache::SetUnicodeGlyph(WChar key, SpriteID sprite)
+void SpriteFontCache::SetUnicodeGlyph(char32_t key, SpriteID sprite)
 {
 	if (this->glyph_to_spriteid_map == nullptr) this->glyph_to_spriteid_map = CallocT<SpriteID*>(256);
 	if (this->glyph_to_spriteid_map[GB(key, 8, 8)] == nullptr) this->glyph_to_spriteid_map[GB(key, 8, 8)] = CallocT<SpriteID>(256);

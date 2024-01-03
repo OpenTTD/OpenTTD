@@ -74,10 +74,10 @@ int DivideApprox(int a, int b)
  * @return Rounded integer square root.
  * @note Algorithm taken from http://en.wikipedia.org/wiki/Methods_of_computing_square_roots
  */
-uint32 IntSqrt(uint32 num)
+uint32_t IntSqrt(uint32_t num)
 {
-	uint32 res = 0;
-	uint32 bit = 1UL << 30; // Second to top bit number.
+	uint32_t res = 0;
+	uint32_t bit = 1UL << 30; // Second to top bit number.
 
 	/* 'bit' starts at the highest power of four <= the argument. */
 	while (bit > num) bit >>= 2;

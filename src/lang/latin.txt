@@ -378,6 +378,9 @@ STR_COLOUR_GREY                                                 :Canus
 STR_COLOUR_WHITE                                                :Albus
 STR_COLOUR_RANDOM                                               :Fortuitus
 
+###length 17
+
+
 # Units used in OpenTTD
 STR_UNITS_VELOCITY_IMPERIAL                                     :{DECIMAL}{NBSP}mph
 STR_UNITS_VELOCITY_METRIC                                       :{DECIMAL}{NBSP}km/h
@@ -411,6 +414,7 @@ STR_UNITS_FORCE_SI                                              :{DECIMAL}{NBSP}
 STR_UNITS_HEIGHT_IMPERIAL                                       :{DECIMAL}{NBSP}pedes
 STR_UNITS_HEIGHT_METRIC                                         :{DECIMAL}{NBSP}m
 STR_UNITS_HEIGHT_SI                                             :{DECIMAL}{NBSP}m
+
 
 # Common window strings
 STR_LIST_FILTER_TITLE                                           :{BLACK}Series colans:
@@ -581,31 +585,25 @@ STR_SETTINGS_MENU_TRANSPARENT_BUILDINGS                         :Aedificia perlu
 STR_SETTINGS_MENU_TRANSPARENT_SIGNS                             :Signa perlucida
 
 # File menu
-###length 5
 STR_FILE_MENU_SAVE_GAME                                         :Servare ludum
 STR_FILE_MENU_LOAD_GAME                                         :Legere ludum
 STR_FILE_MENU_QUIT_GAME                                         :Relinquere ludum
-STR_FILE_MENU_SEPARATOR                                         :
 STR_FILE_MENU_EXIT                                              :Exire
 
 # Map menu
-###length 4
 STR_MAP_MENU_MAP_OF_WORLD                                       :Orbis tabula
 STR_MAP_MENU_EXTRA_VIEWPORT                                     :Fenestra conspectus additicia
 STR_MAP_MENU_LINGRAPH_LEGEND                                    :Formula graphica onerum cursus
 STR_MAP_MENU_SIGN_LIST                                          :Index signorum
 
 # Town menu
-###length 2
 STR_TOWN_MENU_TOWN_DIRECTORY                                    :Index oppidorum
 STR_TOWN_MENU_FOUND_TOWN                                        :Condere oppidum
 
 # Subsidies menu
-###length 1
 STR_SUBSIDIES_MENU_SUBSIDIES                                    :Subsidia
 
 # Graph menu
-###length 6
 STR_GRAPH_MENU_OPERATING_PROFIT_GRAPH                           :Formula lucri operationis graphica
 STR_GRAPH_MENU_INCOME_GRAPH                                     :Formula reditus graphica
 STR_GRAPH_MENU_DELIVERED_CARGO_GRAPH                            :Formula oneris traditi graphica
@@ -614,57 +612,46 @@ STR_GRAPH_MENU_COMPANY_VALUE_GRAPH                              :Formula aestima
 STR_GRAPH_MENU_CARGO_PAYMENT_RATES                              :Tabula mercedum onerum
 
 # Company league menu
-###length 3
 STR_GRAPH_MENU_COMPANY_LEAGUE_TABLE                             :Album foederis societatum
 STR_GRAPH_MENU_DETAILED_PERFORMANCE_RATING                      :Censio effectus descripta
 STR_GRAPH_MENU_HIGHSCORE                                        :Album punctorum supremorum
 
 # Industry menu
-###length 3
 STR_INDUSTRY_MENU_INDUSTRY_DIRECTORY                            :Index industriarum
 STR_INDUSTRY_MENU_INDUSTRY_CHAIN                                :Catenae industriarum
 STR_INDUSTRY_MENU_FUND_NEW_INDUSTRY                             :Condere novam industriam
 
 # URailway construction menu
-###length 4
 STR_RAIL_MENU_RAILROAD_CONSTRUCTION                             :Constructio ferriviarum
 STR_RAIL_MENU_ELRAIL_CONSTRUCTION                               :Constructio electricarum ferriviarum
 STR_RAIL_MENU_MONORAIL_CONSTRUCTION                             :Constructio monoorbitarum
 STR_RAIL_MENU_MAGLEV_CONSTRUCTION                               :Constructio maglev
 
 # Road construction menu
-###length 2
 STR_ROAD_MENU_ROAD_CONSTRUCTION                                 :Constructio viarum
 STR_ROAD_MENU_TRAM_CONSTRUCTION                                 :Constructio ferriviarum stratarium
 
 # Waterways construction menu
-###length 1
 STR_WATERWAYS_MENU_WATERWAYS_CONSTRUCTION                       :Constructio viarum aquariarum
 
 # Aairport construction menu
-###length 1
 STR_AIRCRAFT_MENU_AIRPORT_CONSTRUCTION                          :Constructio aeroportuum
 
 # Landscaping menu
-###length 3
 STR_LANDSCAPING_MENU_LANDSCAPING                                :Plasmatio terrae
 STR_LANDSCAPING_MENU_PLANT_TREES                                :Serere arbores
 STR_LANDSCAPING_MENU_PLACE_SIGN                                 :Ponere signum
 
 # Music menu
-###length 1
 STR_TOOLBAR_SOUND_MUSIC                                         :Sonus musicave
 
 # Message menu
-###length 3
 STR_NEWS_MENU_LAST_MESSAGE_NEWS_REPORT                          :Monstrare nuntium novissimum
 STR_NEWS_MENU_MESSAGE_HISTORY_MENU                              :Historia nuntiorum
 STR_NEWS_MENU_DELETE_ALL_MESSAGES                               :Delere omnia nuntia
 
 # About menu
-###length 10
 STR_ABOUT_MENU_LAND_BLOCK_INFO                                  :Terrae regionis indicia
-STR_ABOUT_MENU_SEPARATOR                                        :
 STR_ABOUT_MENU_TOGGLE_CONSOLE                                   :Monstrare celareve consolam
 STR_ABOUT_MENU_AI_DEBUG                                         :Emendatio IA/Ludi scriptorum
 STR_ABOUT_MENU_SCREENSHOT                                       :Imago conspectus
@@ -873,8 +860,6 @@ STR_PLAYLIST_TOOLTIP_CLICK_TO_ADD_TRACK                         :{BLACK}Preme in
 STR_PLAYLIST_TOOLTIP_CLICK_TO_REMOVE_TRACK                      :{BLACK}Preme in carmen ut ex compositione removeatur (modo Propria I aut Propria II)
 
 # Highscore window
-STR_HIGHSCORE_TOP_COMPANIES_WHO_REACHED                         :{BIG_FONT}{BLACK}Societates supremae quae attigerunt {NUM}
-STR_HIGHSCORE_TOP_COMPANIES_NETWORK_GAME                        :{BIG_FONT}{BLACK}Album Foederis Societatum in {NUM}
 STR_HIGHSCORE_POSITION                                          :{BIG_FONT}{BLACK}{COMMA}.
 STR_HIGHSCORE_PERFORMANCE_TITLE_BUSINESSMAN                     :Laborator
 STR_HIGHSCORE_PERFORMANCE_TITLE_ENTREPRENEUR                    :Venditor
@@ -1059,10 +1044,6 @@ STR_NEWS_NEW_VEHICLE_TYPE                                       :{BIG_FONT}{BLAC
 STR_NEWS_NEW_VEHICLE_NOW_AVAILABLE_WITH_TYPE                    :{BLACK}Nov{G us a um i ae a} {STRING} parabil{G 0 is is e es es ia}!  -  {ENGINE}
 
 
-STR_NEWS_STATION_NO_LONGER_ACCEPTS_CARGO                        :{WHITE}{STATION} non diutius {STRING.acc} accipit
-STR_NEWS_STATION_NO_LONGER_ACCEPTS_CARGO_OR_CARGO               :{WHITE}{STATION} non diutius {STRING.acc} {STRING.acc}que accipit
-STR_NEWS_STATION_NOW_ACCEPTS_CARGO                              :{WHITE}{STATION} nunc {STRING.acc} accipit
-STR_NEWS_STATION_NOW_ACCEPTS_CARGO_AND_CARGO                    :{WHITE}{STATION} nunc {STRING.acc} {STRING.acc}que accipit
 
 STR_NEWS_OFFER_OF_SUBSIDY_EXPIRED                               :{BIG_FONT}{BLACK}Condicio subsidii discedit:{}{}Vectura {STRING.gen} a {STRING.abl} ad {STRING.acc} non diutius subveniatur
 STR_NEWS_SUBSIDY_WITHDRAWN_SERVICE                              :{BIG_FONT}{BLACK}Subsidium retractum:{}{}Vectura {STRING.gen} a {STRING.abl} ad {STRING.acc} non diutius subvenietur
@@ -1088,42 +1069,43 @@ STR_GAME_OPTIONS_CAPTION                                        :{WHITE}Ludi opt
 STR_GAME_OPTIONS_CURRENCY_UNITS_FRAME                           :{BLACK}Unitates nummi
 STR_GAME_OPTIONS_CURRENCY_UNITS_DROPDOWN_TOOLTIP                :{BLACK}Electio unitatum nummi
 
+
 ###length 42
-STR_GAME_OPTIONS_CURRENCY_GBP                                   :Libra Britannica (GBP)
-STR_GAME_OPTIONS_CURRENCY_USD                                   :Dollarium CFA (USD)
-STR_GAME_OPTIONS_CURRENCY_EUR                                   :Euro (EUR)
-STR_GAME_OPTIONS_CURRENCY_JPY                                   :Ien Iaponicus (JPY)
-STR_GAME_OPTIONS_CURRENCY_ATS                                   :Scellinus Austriacus (ATS)
-STR_GAME_OPTIONS_CURRENCY_BEF                                   :Francus Belgicus (BEF)
-STR_GAME_OPTIONS_CURRENCY_CHF                                   :Francus Helveticus (CHF)
-STR_GAME_OPTIONS_CURRENCY_CZK                                   :Corona Cecha (CZK)
-STR_GAME_OPTIONS_CURRENCY_DEM                                   :Marca Germanica (DEM)
-STR_GAME_OPTIONS_CURRENCY_DKK                                   :Corona Danica (DKK)
-STR_GAME_OPTIONS_CURRENCY_ESP                                   :Peseta Hispanica (ESP)
-STR_GAME_OPTIONS_CURRENCY_FIM                                   :Marca Finnica (FIM)
-STR_GAME_OPTIONS_CURRENCY_FRF                                   :Francus Francogallicus (FRF)
-STR_GAME_OPTIONS_CURRENCY_GRD                                   :Drachma Graeca (GRD)
-STR_GAME_OPTIONS_CURRENCY_HUF                                   :Florenus Hungaricus (HUF)
-STR_GAME_OPTIONS_CURRENCY_ISK                                   :Corona Islandica (ISK)
-STR_GAME_OPTIONS_CURRENCY_ITL                                   :Libra Italiana (ITL)
-STR_GAME_OPTIONS_CURRENCY_NLG                                   :Florenus Batavicus (NLG)
-STR_GAME_OPTIONS_CURRENCY_NOK                                   :Corona Norvegica (NOK)
-STR_GAME_OPTIONS_CURRENCY_PLN                                   :Złoty Polonica (PLN)
-STR_GAME_OPTIONS_CURRENCY_RON                                   :Leu Romanicus (RON)
-STR_GAME_OPTIONS_CURRENCY_RUR                                   :Rubelus Russicus (RUR)
-STR_GAME_OPTIONS_CURRENCY_SIT                                   :Dollarium Slovenicum (SIT)
-STR_GAME_OPTIONS_CURRENCY_SEK                                   :Corona Suecica (SEK)
-STR_GAME_OPTIONS_CURRENCY_TRY                                   :Libra Turcica (TRY)
-STR_GAME_OPTIONS_CURRENCY_SKK                                   :Corona Slovaca (SKK)
-STR_GAME_OPTIONS_CURRENCY_BRL                                   :Regalis Brasilica (BRL)
-STR_GAME_OPTIONS_CURRENCY_EEK                                   :Corona Estonica (EEK)
-STR_GAME_OPTIONS_CURRENCY_LTL                                   :Litas Lithuanica (LTL)
-STR_GAME_OPTIONS_CURRENCY_KRW                                   :Von Coreanus (KRW)
-STR_GAME_OPTIONS_CURRENCY_ZAR                                   :Randum Africae Australis (ZAR)
+STR_GAME_OPTIONS_CURRENCY_GBP                                   :Libra Britannica
+STR_GAME_OPTIONS_CURRENCY_USD                                   :Dollarium CFA
+STR_GAME_OPTIONS_CURRENCY_EUR                                   :Euro
+STR_GAME_OPTIONS_CURRENCY_JPY                                   :Ien Iaponicus
+STR_GAME_OPTIONS_CURRENCY_ATS                                   :Scellinus Austriacus
+STR_GAME_OPTIONS_CURRENCY_BEF                                   :Francus Belgicus
+STR_GAME_OPTIONS_CURRENCY_CHF                                   :Francus Helveticus
+STR_GAME_OPTIONS_CURRENCY_CZK                                   :Corona Cecha
+STR_GAME_OPTIONS_CURRENCY_DEM                                   :Marca Germanica
+STR_GAME_OPTIONS_CURRENCY_DKK                                   :Corona Danica
+STR_GAME_OPTIONS_CURRENCY_ESP                                   :Peseta Hispanica
+STR_GAME_OPTIONS_CURRENCY_FIM                                   :Marca Finnica
+STR_GAME_OPTIONS_CURRENCY_FRF                                   :Francus Francogallicus
+STR_GAME_OPTIONS_CURRENCY_GRD                                   :Drachma Graeca
+STR_GAME_OPTIONS_CURRENCY_HUF                                   :Florenus Hungaricus
+STR_GAME_OPTIONS_CURRENCY_ISK                                   :Corona Islandica
+STR_GAME_OPTIONS_CURRENCY_ITL                                   :Libra Italiana
+STR_GAME_OPTIONS_CURRENCY_NLG                                   :Florenus Batavicus
+STR_GAME_OPTIONS_CURRENCY_NOK                                   :Corona Norvegica
+STR_GAME_OPTIONS_CURRENCY_PLN                                   :Złoty Polonica
+STR_GAME_OPTIONS_CURRENCY_RON                                   :Leu Romanicus
+STR_GAME_OPTIONS_CURRENCY_RUR                                   :Rubelus Russicus
+STR_GAME_OPTIONS_CURRENCY_SIT                                   :Dollarium Slovenicum
+STR_GAME_OPTIONS_CURRENCY_SEK                                   :Corona Suecica
+STR_GAME_OPTIONS_CURRENCY_TRY                                   :Libra Turcica
+STR_GAME_OPTIONS_CURRENCY_SKK                                   :Corona Slovaca
+STR_GAME_OPTIONS_CURRENCY_BRL                                   :Regalis Brasilica
+STR_GAME_OPTIONS_CURRENCY_EEK                                   :Corona Estonica
+STR_GAME_OPTIONS_CURRENCY_LTL                                   :Litas Lithuanica
+STR_GAME_OPTIONS_CURRENCY_KRW                                   :Von Coreanus
+STR_GAME_OPTIONS_CURRENCY_ZAR                                   :Randum Africae Australis
 STR_GAME_OPTIONS_CURRENCY_CUSTOM                                :Propria...
-STR_GAME_OPTIONS_CURRENCY_GEL                                   :Lari Georgiana (GEL)
-STR_GAME_OPTIONS_CURRENCY_IRR                                   :Regalis Iranica (IRR)
-STR_GAME_OPTIONS_CURRENCY_RUB                                   :Novus Rubelus Russicus (RUB)
+STR_GAME_OPTIONS_CURRENCY_GEL                                   :Lari Georgiana
+STR_GAME_OPTIONS_CURRENCY_IRR                                   :Regalis Iranica
+STR_GAME_OPTIONS_CURRENCY_RUB                                   :Novus Rubelus Russicus
 
 STR_GAME_OPTIONS_AUTOSAVE_FRAME                                 :{BLACK}Servare automatice
 STR_GAME_OPTIONS_AUTOSAVE_DROPDOWN_TOOLTIP                      :{BLACK}Eligere crebritatem automatice ludum servandi
@@ -1153,7 +1135,6 @@ STR_GAME_OPTIONS_RESOLUTION_OTHER                               :alia
 
 STR_GAME_OPTIONS_BASE_GRF                                       :{BLACK}Fundamentum graphicum
 STR_GAME_OPTIONS_BASE_GRF_TOOLTIP                               :{BLACK}Eligere fundamentum graphicum adhibendum
-STR_GAME_OPTIONS_BASE_GRF_STATUS                                :{RED}{NUM} fascicul{P us i} absen{P s tes}/corrupt{P us i}
 STR_GAME_OPTIONS_BASE_GRF_DESCRIPTION_TOOLTIP                   :{BLACK}Indicia additicia de hoc fundamento graphico
 
 STR_GAME_OPTIONS_BASE_SFX                                       :{BLACK}Fundamentum sonicum
@@ -1162,8 +1143,8 @@ STR_GAME_OPTIONS_BASE_SFX_DESCRIPTION_TOOLTIP                   :{BLACK}Indicia 
 
 STR_GAME_OPTIONS_BASE_MUSIC                                     :{BLACK}Fundamentum musicum
 STR_GAME_OPTIONS_BASE_MUSIC_TOOLTIP                             :{BLACK}Eligere fundamentum musicum adhibendum
-STR_GAME_OPTIONS_BASE_MUSIC_STATUS                              :{RED}{NUM} fascicul{P us i} corrupt{P us i}
 STR_GAME_OPTIONS_BASE_MUSIC_DESCRIPTION_TOOLTIP                 :{BLACK}Indicia additicia de hoc fundamento musico
+
 
 STR_ERROR_RESOLUTION_LIST_FAILED                                :{WHITE}Non potuit repperire indicem resolutionum
 STR_ERROR_FULLSCREEN_FAILED                                     :{WHITE}Mutatio ad cunctum scrinium defecit
@@ -1319,6 +1300,7 @@ STR_CONFIG_SETTING_REALISTIC                                    :Realisticus
 STR_CONFIG_SETTING_HORIZONTAL_POS_LEFT                          :Laevo
 STR_CONFIG_SETTING_HORIZONTAL_POS_CENTER                        :Medio
 STR_CONFIG_SETTING_HORIZONTAL_POS_RIGHT                         :Dextro
+
 
 STR_CONFIG_SETTING_MAXIMUM_INITIAL_LOAN                         :Creditum maximum in initio: {STRING}
 STR_CONFIG_SETTING_MAXIMUM_INITIAL_LOAN_HELPTEXT                :Copia crediti maxima (sine inflatione)
@@ -1479,6 +1461,7 @@ STR_CONFIG_SETTING_PLANE_CRASHES_NONE                           :Numquam*
 STR_CONFIG_SETTING_PLANE_CRASHES_REDUCED                        :Raro
 STR_CONFIG_SETTING_PLANE_CRASHES_NORMAL                         :Mediocriter
 
+
 STR_CONFIG_SETTING_STOP_ON_TOWN_ROAD                            :Sinere stationes viarias pervias esse in viis oppidorum: {STRING}
 STR_CONFIG_SETTING_STOP_ON_TOWN_ROAD_HELPTEXT                   :Sinere struere stationes viarias pervias in viis quas oppida possident
 STR_CONFIG_SETTING_STOP_ON_COMPETITOR_ROAD                      :Sinere stationes viarias pervias esse in viis competitorum: {STRING}
@@ -1490,6 +1473,7 @@ STR_CONFIG_SETTING_INFRASTRUCTURE_MAINTENANCE_HELPTEXT          :Electa, infrast
 
 STR_CONFIG_SETTING_COMPANY_STARTING_COLOUR                      :Societatis color initialis: {STRING}
 STR_CONFIG_SETTING_COMPANY_STARTING_COLOUR_HELPTEXT             :Eligere colorem initialem societatis
+
 
 STR_CONFIG_SETTING_NEVER_EXPIRE_AIRPORTS                        :Aeroportus numquam recedunt: {STRING}
 STR_CONFIG_SETTING_NEVER_EXPIRE_AIRPORTS_HELPTEXT               :Electa, omnes aeroportuum typi permanent post introductionem
@@ -1524,7 +1508,6 @@ STR_CONFIG_SETTING_AUTORENEW_MONEY_HELPTEXT                     :Copia pecuniae 
 
 STR_CONFIG_SETTING_ERRMSG_DURATION                              :Duratio nuntiorum errorum: {STRING}
 STR_CONFIG_SETTING_ERRMSG_DURATION_HELPTEXT                     :Duratio nuntia errorum in fenestra rubra ostendendi. Cave, aliquae (severa) nuntia errorum non automatice clauditur, et necesse est lusori claudere
-STR_CONFIG_SETTING_ERRMSG_DURATION_VALUE                        :{COMMA} secund{P um a}
 
 STR_CONFIG_SETTING_HOVER_DELAY                                  :Ostendere nuntia adiuvantia: {STRING}
 STR_CONFIG_SETTING_HOVER_DELAY_HELPTEXT                         :Mora antequam nuntia adiuvantia ostenduntur cum mus elemento interfaciei superponitur. Etiam adiuvantia nuntia possunt ostendi globulo muris dextro cum hic valor 0 est
@@ -1671,9 +1654,7 @@ STR_CONFIG_SETTING_RIGHT_MOUSE_BTN_EMU_OFF                      :Neglecta
 
 STR_CONFIG_SETTING_RIGHT_MOUSE_WND_CLOSE                        :Claudere fenestras globulo muris dextro: {STRING}
 STR_CONFIG_SETTING_RIGHT_MOUSE_WND_CLOSE_HELPTEXT               :Facit ut globulus muris dexter fenestras claudat. Cave: hac electa, non apparent nuntia adiuvantia globulo dextro.
-
-STR_CONFIG_SETTING_AUTOSAVE                                     :Servare automatice: {STRING}
-STR_CONFIG_SETTING_AUTOSAVE_HELPTEXT                            :Eligere crebritatem automatice ludum servandi
+###length 3
 
 STR_CONFIG_SETTING_DATE_FORMAT_IN_SAVE_NAMES                    :Forma {STRING} diei adhibenda in nominibus ludorum servatorum
 STR_CONFIG_SETTING_DATE_FORMAT_IN_SAVE_NAMES_HELPTEXT           :Forma diei in nominibus ludorum servatorum
@@ -1699,8 +1680,7 @@ STR_CONFIG_SETTING_ADVANCED_VEHICLE_LISTS_HELPTEXT              :Annuere indices
 STR_CONFIG_SETTING_LOADING_INDICATORS                           :Signa onerandi adhibenda: {STRING}
 STR_CONFIG_SETTING_LOADING_INDICATORS_HELPTEXT                  :Annuere signa onerandi monstrari super vehicula onerantia/exonerantia
 
-STR_CONFIG_SETTING_TIMETABLE_IN_TICKS                           :Monstrare horarium cum punctis et non cum diebus: {STRING}
-STR_CONFIG_SETTING_TIMETABLE_IN_TICKS_HELPTEXT                  :Monstrare tempora navigandi in horariis punctis ludi et non diebus
+###length 3
 
 STR_CONFIG_SETTING_TIMETABLE_SHOW_ARRIVAL_DEPARTURE             :Monstrare adventum atque exitum in horariis: {STRING}
 STR_CONFIG_SETTING_TIMETABLE_SHOW_ARRIVAL_DEPARTURE_HELPTEXT    :Monstrare in horariis adventum atque exitum aestimatum
@@ -2034,29 +2014,29 @@ STR_CONFIG_SETTING_LOCALISATION_UNITS_HEIGHT_IMPERIAL           :Anglicae (ft)
 STR_CONFIG_SETTING_LOCALISATION_UNITS_HEIGHT_METRIC             :Metricae (m)
 STR_CONFIG_SETTING_LOCALISATION_UNITS_HEIGHT_SI                 :SI (m)
 
-STR_CONFIG_SETTING_LOCALISATION                                 :{ORANGE}Localizatio
-STR_CONFIG_SETTING_GRAPHICS                                     :{ORANGE}Res Graphicae
-STR_CONFIG_SETTING_SOUND                                        :{ORANGE}Soni
-STR_CONFIG_SETTING_INTERFACE                                    :{ORANGE}Interfacies
-STR_CONFIG_SETTING_INTERFACE_GENERAL                            :{ORANGE}Res Generales
-STR_CONFIG_SETTING_INTERFACE_VIEWPORTS                          :{ORANGE}Fenestrae Conspectus
-STR_CONFIG_SETTING_INTERFACE_CONSTRUCTION                       :{ORANGE}Constructio
-STR_CONFIG_SETTING_ADVISORS                                     :{ORANGE}Nuntia / Admonitio
-STR_CONFIG_SETTING_COMPANY                                      :{ORANGE}Societas
-STR_CONFIG_SETTING_ACCOUNTING                                   :{ORANGE}Ratiocinium
-STR_CONFIG_SETTING_VEHICLES                                     :{ORANGE}Vehicula
-STR_CONFIG_SETTING_VEHICLES_PHYSICS                             :{ORANGE}Physica
-STR_CONFIG_SETTING_VEHICLES_ROUTING                             :{ORANGE}Itinera
-STR_CONFIG_SETTING_LIMITATIONS                                  :{ORANGE}Fines
-STR_CONFIG_SETTING_ACCIDENTS                                    :{ORANGE}Calamitates / Accidentes
-STR_CONFIG_SETTING_GENWORLD                                     :{ORANGE}Generatio Mundi
-STR_CONFIG_SETTING_ENVIRONMENT                                  :{ORANGE}Circumiecta
-STR_CONFIG_SETTING_ENVIRONMENT_AUTHORITIES                      :{ORANGE}Auctoritates
-STR_CONFIG_SETTING_ENVIRONMENT_TOWNS                            :{ORANGE}Oppida
-STR_CONFIG_SETTING_ENVIRONMENT_INDUSTRIES                       :{ORANGE}Industriae
-STR_CONFIG_SETTING_ENVIRONMENT_CARGODIST                        :{ORANGE}Partitio onerum
-STR_CONFIG_SETTING_AI                                           :{ORANGE}Competitores
-STR_CONFIG_SETTING_AI_NPC                                       :{ORANGE}Lusores computatrales
+STR_CONFIG_SETTING_LOCALISATION                                 :Localizatio
+STR_CONFIG_SETTING_GRAPHICS                                     :Res Graphicae
+STR_CONFIG_SETTING_SOUND                                        :Soni
+STR_CONFIG_SETTING_INTERFACE                                    :Interfacies
+STR_CONFIG_SETTING_INTERFACE_GENERAL                            :Res Generales
+STR_CONFIG_SETTING_INTERFACE_VIEWPORTS                          :Fenestrae Conspectus
+STR_CONFIG_SETTING_INTERFACE_CONSTRUCTION                       :Constructio
+STR_CONFIG_SETTING_ADVISORS                                     :Nuntia / Admonitio
+STR_CONFIG_SETTING_COMPANY                                      :Societas
+STR_CONFIG_SETTING_ACCOUNTING                                   :Ratiocinium
+STR_CONFIG_SETTING_VEHICLES                                     :Vehicula
+STR_CONFIG_SETTING_VEHICLES_PHYSICS                             :Physica
+STR_CONFIG_SETTING_VEHICLES_ROUTING                             :Itinera
+STR_CONFIG_SETTING_LIMITATIONS                                  :Fines
+STR_CONFIG_SETTING_ACCIDENTS                                    :Calamitates / Accidentes
+STR_CONFIG_SETTING_GENWORLD                                     :Generatio Mundi
+STR_CONFIG_SETTING_ENVIRONMENT                                  :Circumiecta
+STR_CONFIG_SETTING_ENVIRONMENT_AUTHORITIES                      :Auctoritates
+STR_CONFIG_SETTING_ENVIRONMENT_TOWNS                            :Oppida
+STR_CONFIG_SETTING_ENVIRONMENT_INDUSTRIES                       :Industriae
+STR_CONFIG_SETTING_ENVIRONMENT_CARGODIST                        :Partitio onerum
+STR_CONFIG_SETTING_AI                                           :Competitores
+STR_CONFIG_SETTING_AI_NPC                                       :Lusores computatrales
 
 STR_CONFIG_SETTING_PATHFINDER_FOR_TRAINS                        :Inventrum itineris traminum: {STRING}
 STR_CONFIG_SETTING_PATHFINDER_FOR_TRAINS_HELPTEXT               :Inventrum itineris hamaxostichis adhibendum
@@ -2142,6 +2122,8 @@ STR_QUIT_NO                                                     :{BLACK}Non
 STR_ABANDON_GAME_CAPTION                                        :{WHITE}Relinquere Ludum
 STR_ABANDON_GAME_QUERY                                          :{YELLOW}Esne certus te velle ludum relinquere?
 STR_ABANDON_SCENARIO_QUERY                                      :{YELLOW}Esne certus te velle scaenarium relinquere?
+
+# Help window
 
 # Cheat window
 STR_CHEATS                                                      :{WHITE}Tricae
@@ -2552,7 +2534,6 @@ STR_TRANSPARENT_BUILDINGS_TOOLTIP                               :{BLACK}Mutare p
 STR_TRANSPARENT_BRIDGES_TOOLTIP                                 :{BLACK}Mutare perluciditatem pontium. Ctrl+Preme ut figatur (non mutabitur globulo perluciditatem mutandi presso)
 STR_TRANSPARENT_STRUCTURES_TOOLTIP                              :{BLACK}Mutare perluciditatem ornamentorum sicut phari et emissoria. Ctrl+Preme ut figatur (non mutabitur globulo perluciditatem mutandi presso)
 STR_TRANSPARENT_CATENARY_TOOLTIP                                :{BLACK}Mutare perluciditatem catenariae. Ctrl+Preme ut figatur (non mutabitur globulo perluciditatem mutandi presso)
-STR_TRANSPARENT_LOADING_TOOLTIP                                 :{BLACK}Mutare perluciditatem signorum onerandi. Ctrl+Preme ut figatur (non mutabitur globulo perluciditatem mutandi presso)
 STR_TRANSPARENT_INVISIBLE_TOOLTIP                               :{BLACK}Facere ut res invisibles sint, non tantum perlucidae
 
 # Linkgraph legend window
@@ -4293,10 +4274,6 @@ STR_TIMETABLE_STAY_FOR_ESTIMATED                                :(mora {STRING},
 STR_TIMETABLE_AND_TRAVEL_FOR_ESTIMATED                          :(iter {STRING}, sine horario)
 STR_TIMETABLE_STAY_FOR                                          :cum mora {STRING}
 STR_TIMETABLE_AND_TRAVEL_FOR                                    :cum itinere {STRING}
-STR_TIMETABLE_DAYS                                              :{COMMA}{NBSP}die{P i rum}
-STR_TIMETABLE_DAYS.acc                                          :{COMMA}{NBSP}die{P m s}
-STR_TIMETABLE_TICKS                                             :{COMMA}{NBSP}punct{P i orum}
-STR_TIMETABLE_TICKS.acc                                         :{COMMA}{NBSP}punct{P um a}
 
 STR_TIMETABLE_TOTAL_TIME                                        :{BLACK}Hic horarius peragitur {STRING.acc}
 STR_TIMETABLE_TOTAL_TIME_INCOMPLETE                             :{BLACK}Hic horarius peragitur saltem {STRING.acc} (omnia non in horario)
@@ -4305,10 +4282,8 @@ STR_TIMETABLE_STATUS_ON_TIME                                    :{BLACK}Hoc vehi
 STR_TIMETABLE_STATUS_LATE                                       :{BLACK}Hoc vehiculum est {STRING.acc} tardum
 STR_TIMETABLE_STATUS_EARLY                                      :{BLACK}Hoc vehiculum est {STRING.acc} citum
 STR_TIMETABLE_STATUS_NOT_STARTED                                :{BLACK}Hic horarius adhuc non incipitur
-STR_TIMETABLE_STATUS_START_AT                                   :{BLACK}Hic horarius incipietur {STRING}
 
-STR_TIMETABLE_STARTING_DATE                                     :{BLACK}Dies Initii
-STR_TIMETABLE_STARTING_DATE_TOOLTIP                             :{BLACK}Elige diem ad initium huius horarii. Ctrl+Preme ut dies initialis huius horarii eligatur ac aequaliter partiuntur omnia vehicula quae hoc iussum communicant secundum ordinem eorum, si iussa tota in horariis sunt
+
 
 STR_TIMETABLE_CHANGE_TIME                                       :{BLACK}Mutare Tempus
 STR_TIMETABLE_WAIT_TIME_TOOLTIP                                 :{BLACK}Mutare durationem iussi electi
@@ -4332,8 +4307,6 @@ STR_TIMETABLE_EXPECTED                                          :{BLACK}Aestimat
 STR_TIMETABLE_SCHEDULED                                         :{BLACK}Secundum horarium
 STR_TIMETABLE_EXPECTED_TOOLTIP                                  :{BLACK}Mutare inter tempora quae aestimata sunt ac secundum horarium sunt
 
-STR_TIMETABLE_ARRIVAL_ABBREVIATION                              :A:
-STR_TIMETABLE_DEPARTURE_ABBREVIATION                            :E:
 
 
 # Date window (for timetable)
@@ -4420,7 +4393,7 @@ STR_TEXTFILE_WRAP_TEXT_TOOLTIP                                  :{BLACK}Volvere 
 STR_TEXTFILE_VIEW_README                                        :{BLACK}Inspicere LegeMe
 STR_TEXTFILE_VIEW_CHANGELOG                                     :{BLACK}Index Mutationum
 STR_TEXTFILE_VIEW_LICENCE                                       :{BLACK}Licentia
-###length 4
+###length 5
 STR_TEXTFILE_README_CAPTION                                     :{WHITE}{STRING} - {STRING} LegeMe
 STR_TEXTFILE_CHANGELOG_CAPTION                                  :{WHITE}{STRING} - {STRING} Index Mutationum
 STR_TEXTFILE_LICENCE_CAPTION                                    :{WHITE}{STRING} - {STRING} Licentia
@@ -4555,7 +4528,6 @@ STR_ERROR_TOO_CLOSE_TO_EDGE_OF_MAP_SUB                          :{WHITE}... nimi
 STR_ERROR_TOO_CLOSE_TO_ANOTHER_TOWN                             :{WHITE}... nimis prope aliud oppidum
 STR_ERROR_TOO_MANY_TOWNS                                        :{WHITE}... nimis oppida adsunt
 STR_ERROR_NO_SPACE_FOR_TOWN                                     :{WHITE}... plus spatium tabulae deest
-STR_ERROR_TOWN_EXPAND_WARN_NO_ROADS                             :{WHITE}Oppidum non vias struet. Potes hanc optionem mutare in Electionibus->Circumiecta->Oppida
 STR_ERROR_ROAD_WORKS_IN_PROGRESS                                :{WHITE}Constructio viaria agitur
 STR_ERROR_TOWN_CAN_T_DELETE                                     :{WHITE}Non licet oppidum delere...{}Statio receptaculumve est oppido sive non licet tegulam oppidi removere
 STR_ERROR_STATUE_NO_SUITABLE_PLACE                              :{WHITE}... non est locus effigiei idoneus in medio oppidi

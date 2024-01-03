@@ -45,7 +45,7 @@ RoadStop *RoadStop::GetNextRoadStop(const RoadVehicle *v) const
 		/* The vehicle cannot go to this roadstop (different roadtype) */
 		if (!HasTileAnyRoadType(rs->xy, v->compatible_roadtypes)) continue;
 		/* The vehicle is articulated and can therefore not go to a standard road stop. */
-		if (IsStandardRoadStopTile(rs->xy) && v->HasArticulatedPart()) continue;
+		if (IsBayRoadStopTile(rs->xy) && v->HasArticulatedPart()) continue;
 
 		/* The vehicle can actually go to this road stop. So, return it! */
 		return rs;
@@ -215,7 +215,7 @@ void RoadStop::ClearDriveThrough()
  */
 void RoadStop::Leave(RoadVehicle *rv)
 {
-	if (IsStandardRoadStopTile(rv->tile)) {
+	if (IsBayRoadStopTile(rv->tile)) {
 		/* Vehicle is leaving a road stop tile, mark bay as free */
 		this->FreeBay(HasBit(rv->state, RVS_USING_SECOND_BAY));
 		this->SetEntranceBusy(false);
@@ -232,7 +232,7 @@ void RoadStop::Leave(RoadVehicle *rv)
  */
 bool RoadStop::Enter(RoadVehicle *rv)
 {
-	if (IsStandardRoadStopTile(this->xy)) {
+	if (IsBayRoadStopTile(this->xy)) {
 		/* For normal (non drive-through) road stops
 		 * Check if station is busy or if there are no free bays or whether it is a articulated vehicle. */
 		if (this->IsEntranceBusy() || !this->HasFreeBay() || rv->HasArticulatedPart()) return false;

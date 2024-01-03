@@ -18,7 +18,7 @@
 struct AirportFTAbuildup {
 	byte position; ///< The position that an airplane is at.
 	byte heading;  ///< The current orders (eg. TAKEOFF, HANGAR, ENDLANDING, etc.).
-	uint64 block;  ///< The block this position is on on the airport (st->airport.flags).
+	uint64_t block;  ///< The block this position is on on the airport (st->airport.flags).
 	byte next;     ///< Next position from this position.
 };
 

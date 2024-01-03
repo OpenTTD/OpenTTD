@@ -60,15 +60,15 @@ INSTANTIATE_POOL_METHODS(Company)
  * @param name_1 Name of the company.
  * @param is_ai  A computer program is running for this company.
  */
-Company::Company(uint16 name_1, bool is_ai)
+Company::Company(uint16_t name_1, bool is_ai)
 {
 	this->name_1 = name_1;
 	this->location_of_HQ = INVALID_TILE;
 	this->is_ai = is_ai;
-	this->terraform_limit    = (uint32)_settings_game.construction.terraform_frame_burst << 16;
-	this->clear_limit        = (uint32)_settings_game.construction.clear_frame_burst << 16;
-	this->tree_limit         = (uint32)_settings_game.construction.tree_frame_burst << 16;
-	this->build_object_limit = (uint32)_settings_game.construction.build_object_frame_burst << 16;
+	this->terraform_limit    = (uint32_t)_settings_game.construction.terraform_frame_burst << 16;
+	this->clear_limit        = (uint32_t)_settings_game.construction.clear_frame_burst << 16;
+	this->tree_limit         = (uint32_t)_settings_game.construction.tree_frame_burst << 16;
+	this->build_object_limit = (uint32_t)_settings_game.construction.build_object_frame_burst << 16;
 
 	InvalidateWindowData(WC_PERFORMANCE_DETAIL, 0, INVALID_COMPANY);
 }
@@ -285,14 +285,14 @@ void UpdateLandscapingLimits()
 }
 
 /**
- * Set the right DParams to get the name of an owner.
+ * Set the right DParams for STR_ERROR_OWNED_BY.
  * @param owner the owner to get the name of.
  * @param tile  optional tile to get the right town.
  * @pre if tile == 0, then owner can't be OWNER_TOWN.
  */
-void GetNameOfOwner(Owner owner, TileIndex tile)
+void SetDParamsForOwnedBy(Owner owner, TileIndex tile)
 {
-	SetDParam(2, owner);
+	SetDParam(OWNED_BY_OWNER_IN_PARAMETERS_OFFSET, owner);
 
 	if (owner != OWNER_TOWN) {
 		if (!Company::IsValidID(owner)) {
@@ -326,7 +326,7 @@ CommandCost CheckOwnership(Owner owner, TileIndex tile)
 
 	if (owner == _current_company) return CommandCost();
 
-	GetNameOfOwner(owner, tile);
+	SetDParamsForOwnedBy(owner, tile);
 	return_cmd_error(STR_ERROR_OWNED_BY);
 }
 
@@ -346,7 +346,7 @@ CommandCost CheckTileOwnership(TileIndex tile)
 	if (owner == _current_company) return CommandCost();
 
 	/* no need to get the name of the owner unless we're the local company (saves some time) */
-	if (IsLocalCompany()) GetNameOfOwner(owner, tile);
+	if (IsLocalCompany()) SetDParamsForOwnedBy(owner, tile);
 	return_cmd_error(STR_ERROR_OWNED_BY);
 }
 
@@ -362,7 +362,7 @@ static void GenerateCompanyName(Company *c)
 	Town *t = ClosestTownFromTile(c->last_build_coordinate, UINT_MAX);
 
 	StringID str;
-	uint32 strp;
+	uint32_t strp;
 	std::string name;
 	if (t->name.empty() && IsInsideMM(t->townnametype, SPECSTR_TOWNNAME_START, SPECSTR_TOWNNAME_LAST + 1)) {
 		str = t->townnametype - SPECSTR_TOWNNAME_START + SPECSTR_COMPANY_NAME_START;
@@ -389,7 +389,7 @@ set_name:;
 			SetDParam(1, STR_NEWS_COMPANY_LAUNCH_DESCRIPTION);
 			SetDParamStr(2, cni->company_name);
 			SetDParam(3, t->index);
-			AddNewsItem(STR_MESSAGE_NEWS_FORMAT, NT_COMPANY_INFO, NF_COMPANY, NR_TILE, c->last_build_coordinate, NR_NONE, UINT32_MAX, cni);
+			AddNewsItem(STR_MESSAGE_NEWS_FORMAT, NT_COMPANY_INFO, NF_COMPANY, NR_TILE, c->last_build_coordinate.base(), NR_NONE, UINT32_MAX, cni);
 		}
 		return;
 	}
@@ -561,9 +561,9 @@ Company *DoStartupNewCompany(bool is_ai, CompanyID company = INVALID_COMPANY)
 	_company_colours[c->index] = (Colours)c->colour;
 
 	/* Scale the initial loan based on the inflation rounded down to the loan interval. The maximum loan has already been inflation adjusted. */
-	c->money = c->current_loan = std::min<int64>((INITIAL_LOAN * _economy.inflation_prices >> 16) / LOAN_INTERVAL * LOAN_INTERVAL, _economy.max_loan);
+	c->money = c->current_loan = std::min<int64_t>((INITIAL_LOAN * _economy.inflation_prices >> 16) / LOAN_INTERVAL * LOAN_INTERVAL, _economy.max_loan);
 
-	c->avail_railtypes = GetCompanyRailtypes(c->index);
+	c->avail_railtypes = GetCompanyRailTypes(c->index);
 	c->avail_roadtypes = GetCompanyRoadTypes(c->index);
 	c->inaugurated_year = TimerGameCalendar::year;
 
@@ -600,12 +600,12 @@ TimeoutTimer<TimerGameTick> _new_competitor_timeout(0, []() {
 	if (_networking && Company::GetNumItems() >= _settings_client.network.max_companies) return;
 
 	/* count number of competitors */
-	uint n = 0;
+	uint8_t n = 0;
 	for (const Company *c : Company::Iterate()) {
 		if (c->is_ai) n++;
 	}
 
-	if (n >= (uint)_settings_game.difficulty.max_no_competitors) return;
+	if (n >= _settings_game.difficulty.max_no_competitors) return;
 
 	/* Send a command to all clients to start up a new AI.
 	 * Works fine for Multiplayer and Singleplayer */
@@ -617,14 +617,6 @@ void StartupCompanies()
 {
 	/* Ensure the timeout is aborted, so it doesn't fire based on information of the last game. */
 	_new_competitor_timeout.Abort();
-
-	/* If there is no delay till the start of the next competitor, start all competitors at the start of the game. */
-	if (_settings_game.difficulty.competitors_interval == 0 && _game_mode != GM_MENU && AI::CanStartNew()) {
-		for (auto i = 0; i < _settings_game.difficulty.max_no_competitors; i++) {
-			if (_networking && Company::GetNumItems() >= _settings_client.network.max_companies) break;
-			Command<CMD_COMPANY_CTRL>::Post(CCA_NEW_AI, INVALID_COMPANY, CRR_NONE, INVALID_CLIENT_ID);
-		}
-	}
 }
 
 /** Initialize the pool of companies. */
@@ -667,7 +659,7 @@ static void HandleBankruptcyTakeover(Company *c)
 	 * number of companies. The minimum number of days in a quarter
 	 * is 90: 31 in January, 28 in February and 31 in March.
 	 * Note that the company going bankrupt can't buy itself. */
-	static const int TAKE_OVER_TIMEOUT = 3 * 30 * DAY_TICKS / (MAX_COMPANIES - 1);
+	static const int TAKE_OVER_TIMEOUT = 3 * 30 * Ticks::DAY_TICKS / (MAX_COMPANIES - 1);
 
 	assert(c->bankrupt_asked != 0);
 
@@ -684,7 +676,7 @@ static void HandleBankruptcyTakeover(Company *c)
 	if (c->bankrupt_asked == MAX_UVALUE(CompanyMask)) return;
 
 	Company *best = nullptr;
-	int32 best_performance = -1;
+	int32_t best_performance = -1;
 
 	/* Ask the company with the highest performance history first */
 	for (Company *c2 : Company::Iterate()) {
@@ -725,10 +717,22 @@ void OnTick_Companies()
 	}
 
 	if (_new_competitor_timeout.HasFired() && _game_mode != GM_MENU && AI::CanStartNew()) {
-		int32 timeout = _settings_game.difficulty.competitors_interval * 60 * TICKS_PER_SECOND;
-		/* If the interval is zero, check every ~10 minutes if a company went bankrupt and needs replacing. */
-		if (timeout == 0) timeout = 10 * 60 * TICKS_PER_SECOND;
+		int32_t timeout = _settings_game.difficulty.competitors_interval * 60 * Ticks::TICKS_PER_SECOND;
+		/* If the interval is zero, start as many competitors as needed then check every ~10 minutes if a company went bankrupt and needs replacing. */
+		if (timeout == 0) {
+			/* count number of competitors */
+			uint8_t n = 0;
+			for (const Company *cc : Company::Iterate()) {
+				if (cc->is_ai) n++;
+			}
 
+			for (auto i = 0; i < _settings_game.difficulty.max_no_competitors; i++) {
+				if (_networking && Company::GetNumItems() >= _settings_client.network.max_companies) break;
+				if (n++ >= _settings_game.difficulty.max_no_competitors) break;
+				Command<CMD_COMPANY_CTRL>::Post(CCA_NEW_AI, INVALID_COMPANY, CRR_NONE, INVALID_CLIENT_ID);
+			}
+			timeout = 10 * 60 * Ticks::TICKS_PER_SECOND;
+		}
 		/* Randomize a bit when the AI is actually going to start; ranges from 87.5% .. 112.5% of indicated value. */
 		timeout += ScriptObject::GetRandomizer(OWNER_NONE).Next(timeout / 4) - timeout / 8;
 
@@ -746,8 +750,9 @@ static IntervalTimer<TimerGameCalendar> _companies_yearly({TimerGameCalendar::YE
 {
 	/* Copy statistics */
 	for (Company *c : Company::Iterate()) {
-		memmove(&c->yearly_expenses[1], &c->yearly_expenses[0], sizeof(c->yearly_expenses) - sizeof(c->yearly_expenses[0]));
-		memset(&c->yearly_expenses[0], 0, sizeof(c->yearly_expenses[0]));
+		/* Move expenses to previous years. */
+		std::rotate(std::rbegin(c->yearly_expenses), std::rbegin(c->yearly_expenses) + 1, std::rend(c->yearly_expenses));
+		c->yearly_expenses[0] = {};
 		SetWindowDirty(WC_FINANCES, c->index);
 	}
 
@@ -945,6 +950,20 @@ CommandCost CmdSetCompanyManagerFace(DoCommandFlag flags, CompanyManagerFace cmf
 }
 
 /**
+ * Update liveries for a company. This is called when the LS_DEFAULT scheme is changed, to update schemes with colours
+ * set to default.
+ * @param c Company to update.
+ */
+void UpdateCompanyLiveries(Company *c)
+{
+	for (int i = 1; i < LS_END; i++) {
+		if (!HasBit(c->livery[i].in_use, 0)) c->livery[i].colour1 = c->livery[LS_DEFAULT].colour1;
+		if (!HasBit(c->livery[i].in_use, 1)) c->livery[i].colour2 = c->livery[LS_DEFAULT].colour2;
+	}
+	UpdateCompanyGroupLiveries(c);
+}
+
+/**
  * Change the company's company-colour
  * @param flags operation to perform
  * @param scheme scheme to set
@@ -977,9 +996,7 @@ CommandCost CmdSetCompanyColour(DoCommandFlag flags, LiveryScheme scheme, bool p
 			/* If setting the first colour of the default scheme, adjust the
 			 * original and cached company colours too. */
 			if (scheme == LS_DEFAULT) {
-				for (int i = 1; i < LS_END; i++) {
-					if (!HasBit(c->livery[i].in_use, 0)) c->livery[i].colour1 = colour;
-				}
+				UpdateCompanyLiveries(c);
 				_company_colours[_current_company] = colour;
 				c->colour = colour;
 				CompanyAdminUpdate(c);
@@ -990,9 +1007,7 @@ CommandCost CmdSetCompanyColour(DoCommandFlag flags, LiveryScheme scheme, bool p
 			c->livery[scheme].colour2 = colour;
 
 			if (scheme == LS_DEFAULT) {
-				for (int i = 1; i < LS_END; i++) {
-					if (!HasBit(c->livery[i].in_use, 1)) c->livery[i].colour2 = colour;
-				}
+				UpdateCompanyGroupLiveries(c);
 			}
 		}
 
@@ -1149,9 +1164,9 @@ int CompanyServiceInterval(const Company *c, VehicleType type)
  * Get total sum of all owned road bits.
  * @return Combined total road road bits.
  */
-uint32 CompanyInfrastructure::GetRoadTotal() const
+uint32_t CompanyInfrastructure::GetRoadTotal() const
 {
-	uint32 total = 0;
+	uint32_t total = 0;
 	for (RoadType rt = ROADTYPE_BEGIN; rt != ROADTYPE_END; rt++) {
 		if (RoadTypeIsRoad(rt)) total += this->road[rt];
 	}
@@ -1162,9 +1177,9 @@ uint32 CompanyInfrastructure::GetRoadTotal() const
  * Get total sum of all owned tram bits.
  * @return Combined total of tram road bits.
  */
-uint32 CompanyInfrastructure::GetTramTotal() const
+uint32_t CompanyInfrastructure::GetTramTotal() const
 {
-	uint32 total = 0;
+	uint32_t total = 0;
 	for (RoadType rt = ROADTYPE_BEGIN; rt != ROADTYPE_END; rt++) {
 		if (RoadTypeIsTram(rt)) total += this->road[rt];
 	}

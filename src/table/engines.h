@@ -24,7 +24,7 @@
  * @param f Bitmask of the climates
  * @note the 5 between b and f is the load amount
  */
-#define MT(a, b, c, d, e, f) { DAYS_TILL_ORIGINAL_BASE_YEAR + a, c, d, b, 5, f, e, 0, 8, 0, 0, 0, STR_EMPTY, CARGO_AGING_TICKS, INVALID_ENGINE, ExtraEngineFlags::None }
+#define MT(a, b, c, d, e, f) { CalendarTime::DAYS_TILL_ORIGINAL_BASE_YEAR + a, c, d, b, 5, f, e, 0, 8, 0, 0, 0, STR_EMPTY, Ticks::CARGO_AGING_TICKS, INVALID_ENGINE, ExtraEngineFlags::None }
 
 /**
  * Writes the properties of a multiple-unit train into the EngineInfo struct.
@@ -37,7 +37,7 @@
  * @param f Bitmask of the climates
  * @note the 5 between b and f is the load amount
  */
-#define MM(a, b, c, d, e, f) { DAYS_TILL_ORIGINAL_BASE_YEAR + a, c, d, b, 5, f, e, 0, 8, 1 << EF_RAIL_IS_MU, 0, 0, STR_EMPTY, CARGO_AGING_TICKS, INVALID_ENGINE, ExtraEngineFlags::None }
+#define MM(a, b, c, d, e, f) { CalendarTime::DAYS_TILL_ORIGINAL_BASE_YEAR + a, c, d, b, 5, f, e, 0, 8, 1 << EF_RAIL_IS_MU, 0, 0, STR_EMPTY, Ticks::CARGO_AGING_TICKS, INVALID_ENGINE, ExtraEngineFlags::None }
 
 /**
  * Writes the properties of a train carriage into the EngineInfo struct.
@@ -50,7 +50,7 @@
  * @see MT
  * @note the 5 between b and f is the load amount
  */
-#define MW(a, b, c, d, e, f) { DAYS_TILL_ORIGINAL_BASE_YEAR + a, c, d, b, 5, f, e, 0, 8, 0, 0, 0, STR_EMPTY, CARGO_AGING_TICKS, INVALID_ENGINE, ExtraEngineFlags::None }
+#define MW(a, b, c, d, e, f) { CalendarTime::DAYS_TILL_ORIGINAL_BASE_YEAR + a, c, d, b, 5, f, e, 0, 8, 0, 0, 0, STR_EMPTY, Ticks::CARGO_AGING_TICKS, INVALID_ENGINE, ExtraEngineFlags::None }
 
 /**
  * Writes the properties of a road vehicle into the EngineInfo struct.
@@ -63,7 +63,7 @@
  * @param f Bitmask of the climates
  * @note the 5 between b and f is the load amount
  */
-#define MR(a, b, c, d, e, f) { DAYS_TILL_ORIGINAL_BASE_YEAR + a, c, d, b, 5, f, e, 0, 8, 0, 0, 0, STR_EMPTY, CARGO_AGING_TICKS, INVALID_ENGINE, ExtraEngineFlags::None }
+#define MR(a, b, c, d, e, f) { CalendarTime::DAYS_TILL_ORIGINAL_BASE_YEAR + a, c, d, b, 5, f, e, 0, 8, 0, 0, 0, STR_EMPTY, Ticks::CARGO_AGING_TICKS, INVALID_ENGINE, ExtraEngineFlags::None }
 
 /**
  * Writes the properties of a ship into the EngineInfo struct.
@@ -75,7 +75,7 @@
  * @param f Bitmask of the climates
  * @note the 10 between b and f is the load amount
  */
-#define MS(a, b, c, d, e, f) { DAYS_TILL_ORIGINAL_BASE_YEAR + a, c, d, b, 10, f, e, 0, 8, 0, 0, 0, STR_EMPTY, CARGO_AGING_TICKS, INVALID_ENGINE, ExtraEngineFlags::None }
+#define MS(a, b, c, d, e, f) { CalendarTime::DAYS_TILL_ORIGINAL_BASE_YEAR + a, c, d, b, 10, f, e, 0, 8, 0, 0, 0, STR_EMPTY, Ticks::CARGO_AGING_TICKS, INVALID_ENGINE, ExtraEngineFlags::None }
 
 /**
  * Writes the properties of an aeroplane into the EngineInfo struct.
@@ -86,7 +86,7 @@
  * @param e Bitmask of the climates
  * @note the 20 between b and e is the load amount
  */
-#define MA(a, b, c, d, e) { DAYS_TILL_ORIGINAL_BASE_YEAR + a, c, d, b, 20, e, CT_INVALID, 0, 8, 0, 0, 0, STR_EMPTY, CARGO_AGING_TICKS, INVALID_ENGINE, ExtraEngineFlags::None }
+#define MA(a, b, c, d, e) { CalendarTime::DAYS_TILL_ORIGINAL_BASE_YEAR + a, c, d, b, 20, e, CT_INVALID, 0, 8, 0, 0, 0, STR_EMPTY, Ticks::CARGO_AGING_TICKS, INVALID_ENGINE, ExtraEngineFlags::None }
 
 /* Climates
  * T = Temperate

@@ -20,7 +20,7 @@
 class NetworkSurveyHandler : public HTTPCallback {
 protected:
 	void OnFailure() override;
-	void OnReceiveData(const char *data, size_t length) override;
+	void OnReceiveData(std::unique_ptr<char[]> data, size_t length) override;
 	bool IsCancelled() const override { return false; }
 
 public:
@@ -36,12 +36,7 @@ public:
 
 	constexpr static bool IsSurveyPossible()
 	{
-#ifndef WITH_NLOHMANN_JSON
-		/* Without JSON library, we cannot send a payload; so we disable the survey. */
-		return false;
-#else
 		return true;
-#endif /* WITH_NLOHMANN_JSON */
 	}
 
 private:

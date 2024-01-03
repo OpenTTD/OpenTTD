@@ -282,13 +282,13 @@ private:
 	QueryString filter_editbox; ///< Filter editbox;
 	std::vector<FiosItem *> display_list; ///< Filtered display list
 
-	static void SaveGameConfirmationCallback(Window *w, bool confirmed)
+	static void SaveGameConfirmationCallback(Window *, bool confirmed)
 	{
 		/* File name has already been written to _file_to_saveload */
 		if (confirmed) _switch_mode = SM_SAVE_GAME;
 	}
 
-	static void SaveHeightmapConfirmationCallback(Window *w, bool confirmed)
+	static void SaveHeightmapConfirmationCallback(Window *, bool confirmed)
 	{
 		/* File name has already been written to _file_to_saveload */
 		if (confirmed) _switch_mode = SM_SAVE_HEIGHTMAP;
@@ -326,7 +326,7 @@ public:
 		this->querystrings[WID_SL_SAVE_OSK_TITLE] = &this->filename_editbox;
 		this->filename_editbox.ok_button = WID_SL_SAVE_GAME;
 
-		this->CreateNestedTree(true);
+		this->CreateNestedTree();
 		if (this->fop == SLO_LOAD && this->abstract_filetype == FT_SAVEGAME) {
 			this->GetWidget<NWidgetStacked>(WID_SL_CONTENT_DOWNLOAD_SEL)->SetDisplayedPlane(SZSP_HORIZONTAL);
 		}
@@ -399,7 +399,7 @@ public:
 		}
 	}
 
-	void Close() override
+	void Close([[maybe_unused]] int data = 0) override
 	{
 		/* pause is only used in single-player, non-editor mode, non menu mode */
 		if (!_networking && _game_mode != GM_EDITOR && _game_mode != GM_MENU) {
@@ -408,7 +408,7 @@ public:
 		this->Window::Close();
 	}
 
-	void DrawWidget(const Rect &r, int widget) const override
+	void DrawWidget(const Rect &r, WidgetID widget) const override
 	{
 		switch (widget) {
 			case WID_SL_SORT_BYNAME:
@@ -431,7 +431,7 @@ public:
 				Rect ir = r.Shrink(WidgetDimensions::scaled.framerect);
 
 				if (free_space.has_value()) SetDParam(0, free_space.value());
-				DrawString(ir.left, ir.right, ir.top + FONT_HEIGHT_NORMAL, free_space.has_value() ? STR_SAVELOAD_BYTES_FREE : STR_ERROR_UNABLE_TO_READ_DRIVE);
+				DrawString(ir.left, ir.right, ir.top + GetCharacterHeight(FS_NORMAL), free_space.has_value() ? STR_SAVELOAD_BYTES_FREE : STR_ERROR_UNABLE_TO_READ_DRIVE);
 				DrawString(ir.left, ir.right, ir.top, path, TC_BLACK);
 				break;
 			}
@@ -465,7 +465,7 @@ public:
 	void DrawDetails(const Rect &r) const
 	{
 		/* Header panel */
-		int HEADER_HEIGHT = FONT_HEIGHT_NORMAL + WidgetDimensions::scaled.frametext.Vertical();
+		int HEADER_HEIGHT = GetCharacterHeight(FS_NORMAL) + WidgetDimensions::scaled.frametext.Vertical();
 
 		Rect hr = r.WithHeight(HEADER_HEIGHT).Shrink(WidgetDimensions::scaled.frametext);
 		Rect tr = r.Shrink(WidgetDimensions::scaled.frametext);
@@ -478,13 +478,13 @@ public:
 		if (this->selected == nullptr) return;
 
 		/* Details panel */
-		tr.bottom -= FONT_HEIGHT_NORMAL - 1;
+		tr.bottom -= GetCharacterHeight(FS_NORMAL) - 1;
 		if (tr.top > tr.bottom) return;
 
 		if (!_load_check_data.checkable) {
 			/* Old savegame, no information available */
 			DrawString(tr, STR_SAVELOAD_DETAIL_NOT_AVAILABLE);
-			tr.top += FONT_HEIGHT_NORMAL;
+			tr.top += GetCharacterHeight(FS_NORMAL);
 		} else if (_load_check_data.error != INVALID_STRING_ID) {
 			/* Incompatible / broken savegame */
 			SetDParamStr(0, _load_check_data.error_msg);
@@ -494,7 +494,7 @@ public:
 			SetDParam(0, _load_check_data.map_size_x);
 			SetDParam(1, _load_check_data.map_size_y);
 			DrawString(tr, STR_NETWORK_SERVER_LIST_MAP_SIZE);
-			tr.top += FONT_HEIGHT_NORMAL;
+			tr.top += GetCharacterHeight(FS_NORMAL);
 			if (tr.top > tr.bottom) return;
 
 			/* Climate */
@@ -502,7 +502,7 @@ public:
 			if (landscape < NUM_LANDSCAPE) {
 				SetDParam(0, STR_CLIMATE_TEMPERATE_LANDSCAPE + landscape);
 				DrawString(tr, STR_NETWORK_SERVER_LIST_LANDSCAPE);
-				tr.top += FONT_HEIGHT_NORMAL;
+				tr.top += GetCharacterHeight(FS_NORMAL);
 			}
 
 			tr.top += WidgetDimensions::scaled.vsep_normal;
@@ -512,7 +512,7 @@ public:
 			if (_load_check_data.settings.game_creation.starting_year != 0) {
 				SetDParam(0, TimerGameCalendar::ConvertYMDToDate(_load_check_data.settings.game_creation.starting_year, 0, 1));
 				DrawString(tr, STR_NETWORK_SERVER_LIST_START_DATE);
-				tr.top += FONT_HEIGHT_NORMAL;
+				tr.top += GetCharacterHeight(FS_NORMAL);
 			}
 			if (tr.top > tr.bottom) return;
 
@@ -521,7 +521,7 @@ public:
 				/* Current date */
 				SetDParam(0, _load_check_data.current_date);
 				DrawString(tr, STR_NETWORK_SERVER_LIST_CURRENT_DATE);
-				tr.top += FONT_HEIGHT_NORMAL;
+				tr.top += GetCharacterHeight(FS_NORMAL);
 			}
 
 			/* Hide the NewGRF stuff when saving. We also hide the button. */
@@ -533,7 +533,7 @@ public:
 				SetDParam(0, _load_check_data.grfconfig == nullptr ? STR_NEWGRF_LIST_NONE :
 						STR_NEWGRF_LIST_ALL_FOUND + _load_check_data.grf_compatibility);
 				DrawString(tr, STR_SAVELOAD_DETAIL_GRFSTATUS);
-				tr.top += FONT_HEIGHT_NORMAL;
+				tr.top += GetCharacterHeight(FS_NORMAL);
 			}
 			if (tr.top > tr.bottom) return;
 
@@ -554,22 +554,22 @@ public:
 						SetDParam(2, c.name_2);
 					}
 					DrawString(tr, STR_SAVELOAD_DETAIL_COMPANY_INDEX);
-					tr.top += FONT_HEIGHT_NORMAL;
+					tr.top += GetCharacterHeight(FS_NORMAL);
 					if (tr.top > tr.bottom) break;
 				}
 			}
 		}
 	}
 
-	void UpdateWidgetSize(int widget, Dimension *size, const Dimension &padding, Dimension *fill, Dimension *resize) override
+	void UpdateWidgetSize(WidgetID widget, Dimension *size, [[maybe_unused]] const Dimension &padding, [[maybe_unused]] Dimension *fill, [[maybe_unused]] Dimension *resize) override
 	{
 		switch (widget) {
 			case WID_SL_BACKGROUND:
-				size->height = 2 * FONT_HEIGHT_NORMAL + padding.height;
+				size->height = 2 * GetCharacterHeight(FS_NORMAL) + padding.height;
 				break;
 
 			case WID_SL_DRIVES_DIRECTORIES_LIST:
-				resize->height = FONT_HEIGHT_NORMAL;
+				resize->height = GetCharacterHeight(FS_NORMAL);
 				size->height = resize->height * 10 + padding.height;
 				break;
 			case WID_SL_SORT_BYNAME:
@@ -594,7 +594,7 @@ public:
 		this->DrawWidgets();
 	}
 
-	void OnClick(Point pt, int widget, int click_count) override
+	void OnClick([[maybe_unused]] Point pt, WidgetID widget, [[maybe_unused]] int click_count) override
 	{
 		switch (widget) {
 			case WID_SL_SORT_BYNAME: // Sort save names by name
@@ -673,7 +673,7 @@ public:
 					}
 					if (this->fop == SLO_SAVE) {
 						/* Copy clicked name to editbox */
-						this->filename_editbox.text.Assign(file->title.c_str());
+						this->filename_editbox.text.Assign(file->title);
 						this->SetWidgetDirty(WID_SL_SAVE_OSK_TITLE);
 					}
 				} else if (!_load_check_data.HasErrors()) {
@@ -716,7 +716,7 @@ public:
 		}
 	}
 
-	void OnMouseOver(Point pt, int widget) override
+	void OnMouseOver([[maybe_unused]] Point pt, WidgetID widget) override
 	{
 		if (widget == WID_SL_DRIVES_DIRECTORIES_LIST) {
 			auto it = this->vscroll->GetScrolledItemFromWidget(this->display_list, pt.y, this, WID_SL_DRIVES_DIRECTORIES_LIST, WidgetDimensions::scaled.inset.top);
@@ -735,7 +735,7 @@ public:
 		}
 	}
 
-	EventState OnKeyPress(WChar key, uint16 keycode) override
+	EventState OnKeyPress([[maybe_unused]] char32_t key, uint16_t keycode) override
 	{
 		if (keycode == WKC_ESC) {
 			this->Close();
@@ -873,7 +873,7 @@ public:
 		}
 	}
 
-	void OnEditboxChanged(int wid) override
+	void OnEditboxChanged(WidgetID wid) override
 	{
 		if (wid == WID_SL_FILTER) {
 			this->string_filter.SetFilterTerm(this->filter_editbox.text.buf);
@@ -883,27 +883,27 @@ public:
 };
 
 /** Load game/scenario */
-static WindowDesc _load_dialog_desc(
+static WindowDesc _load_dialog_desc(__FILE__, __LINE__,
 	WDP_CENTER, "load_game", 500, 294,
 	WC_SAVELOAD, WC_NONE,
 	0,
-	_nested_load_dialog_widgets, lengthof(_nested_load_dialog_widgets)
+	std::begin(_nested_load_dialog_widgets), std::end(_nested_load_dialog_widgets)
 );
 
 /** Load heightmap */
-static WindowDesc _load_heightmap_dialog_desc(
+static WindowDesc _load_heightmap_dialog_desc(__FILE__, __LINE__,
 	WDP_CENTER, "load_heightmap", 257, 320,
 	WC_SAVELOAD, WC_NONE,
 	0,
-	_nested_load_heightmap_dialog_widgets, lengthof(_nested_load_heightmap_dialog_widgets)
+	std::begin(_nested_load_heightmap_dialog_widgets), std::end(_nested_load_heightmap_dialog_widgets)
 );
 
 /** Save game/scenario */
-static WindowDesc _save_dialog_desc(
+static WindowDesc _save_dialog_desc(__FILE__, __LINE__,
 	WDP_CENTER, "save_game", 500, 294,
 	WC_SAVELOAD, WC_NONE,
 	0,
-	_nested_save_dialog_widgets, lengthof(_nested_save_dialog_widgets)
+	std::begin(_nested_save_dialog_widgets), std::end(_nested_save_dialog_widgets)
 );
 
 /**

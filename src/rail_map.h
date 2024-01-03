@@ -530,19 +530,37 @@ static inline void MakeRailNormal(Tile t, Owner o, TrackBits b, RailType r)
 	t.m8() = r;
 }
 
-
-static inline void MakeRailDepot(Tile t, Owner o, DepotID did, DiagDirection d, RailType r)
+/**
+ * Sets the exit direction of a rail depot.
+ * @param tile Tile of the depot.
+ * @param dir  Direction of the depot exit.
+ */
+static inline void SetRailDepotExitDirection(Tile tile, DiagDirection dir)
 {
-	SetTileType(t, MP_RAILWAY);
-	SetTileOwner(t, o);
-	SetDockingTile(t, false);
-	t.m2() = did;
-	t.m3() = 0;
-	t.m4() = 0;
-	t.m5() = RAIL_TILE_DEPOT << 6 | d;
-	SB(t.m6(), 2, 4, 0);
-	t.m7() = 0;
-	t.m8() = r;
+	assert(IsRailDepotTile(tile));
+	SB(tile.m5(), 0, 2, dir);
+}
+
+/**
+ * Make a rail depot.
+ * @param tile      Tile to make a depot on.
+ * @param owner     New owner of the depot.
+ * @param depot_id  New depot ID.
+ * @param dir       Direction of the depot exit.
+ * @param rail_type Rail type of the depot.
+ */
+static inline void MakeRailDepot(Tile tile, Owner owner, DepotID depot_id, DiagDirection dir, RailType rail_type)
+{
+	SetTileType(tile, MP_RAILWAY);
+	SetTileOwner(tile, owner);
+	SetDockingTile(tile, false);
+	tile.m2() = depot_id;
+	tile.m3() = 0;
+	tile.m4() = 0;
+	tile.m5() = RAIL_TILE_DEPOT << 6 | dir;
+	SB(tile.m6(), 2, 4, 0);
+	tile.m7() = 0;
+	tile.m8() = rail_type;
 }
 
 #endif /* RAIL_MAP_H */

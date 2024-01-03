@@ -42,14 +42,8 @@
  * does not have stdint.h.
  * For OSX the inclusion is already done in osx_stdafx.h. */
 #if !defined(__APPLE__) && (!defined(_MSC_VER) || _MSC_VER >= 1600)
-#	if defined(SUNOS)
-		/* SunOS/Solaris does not have stdint.h, but inttypes.h defines everything
-		 * stdint.h defines and we need. */
-#		include <inttypes.h>
-#	else
-#		define __STDC_LIMIT_MACROS
-#		include <stdint.h>
-#	endif
+#	define __STDC_LIMIT_MACROS
+#	include <stdint.h>
 #endif
 
 #include <algorithm>
@@ -59,7 +53,6 @@
 #include <cerrno>
 #include <climits>
 #include <cmath>
-#include <cstdarg>
 #include <cstddef>
 #include <cstdint>
 #include <cstdio>
@@ -80,6 +73,7 @@
 #include <stdexcept>
 #include <string>
 #include <type_traits>
+#include <variant>
 #include <vector>
 
 #if defined(UNIX) || defined(__MINGW32__)
@@ -121,16 +115,15 @@
 #      define NODISCARD [[nodiscard]]
 #endif
 
-#if defined(__WATCOMC__)
-#	define NORETURN
-#	define CDECL
-#	define FINAL
-#	define FALLTHROUGH
-#	include <malloc.h>
-#endif /* __WATCOMC__ */
-
 #if defined(_WIN32)
 #	define WIN32_LEAN_AND_MEAN     // Exclude rarely-used stuff from Windows headers
+#endif
+
+#if defined(_MSC_VER)
+	// See https://learn.microsoft.com/en-us/cpp/cpp/empty-bases?view=msvc-170
+#	define EMPTY_BASES __declspec(empty_bases)
+#else
+#	define EMPTY_BASES
 #endif
 
 /* Stuff for MSVC */
@@ -236,7 +229,7 @@
 #	endif /* _WIN32 or WITH_ICONV */
 #endif /* STRGEN || SETTINGSGEN */
 
-#if defined(_WIN32) || defined(__OS2__) && !defined(__INNOTEK_LIBC__)
+#if defined(_WIN32)
 #	define PATHSEP "\\"
 #	define PATHSEPCHAR '\\'
 #else
@@ -244,7 +237,7 @@
 #	define PATHSEPCHAR '/'
 #endif
 
-#if defined(_MSC_VER) || defined(__WATCOMC__)
+#if defined(_MSC_VER)
 #	define PACK_N(type_dec, n) __pragma(pack(push, n)) type_dec; __pragma(pack(pop))
 #elif defined(__MINGW32__)
 #	define PRAGMA(x) _Pragma(#x)
@@ -306,15 +299,6 @@ typedef uint8_t byte;
 	typedef unsigned int uint;
 #endif
 
-typedef uint8_t  uint8;
-typedef  int8_t   int8;
-typedef uint16_t uint16;
-typedef  int16_t  int16;
-typedef uint32_t uint32;
-typedef  int32_t  int32;
-typedef uint64_t uint64;
-typedef  int64_t  int64;
-
 #if !defined(WITH_PERSONAL_DIR)
 #	define PERSONAL_DIR ""
 #endif
@@ -325,10 +309,10 @@ typedef  int64_t  int64;
 #endif
 
 /* Check if the types have the bitsizes like we are using them */
-static_assert(sizeof(uint64) == 8);
-static_assert(sizeof(uint32) == 4);
-static_assert(sizeof(uint16) == 2);
-static_assert(sizeof(uint8)  == 1);
+static_assert(sizeof(uint64_t) == 8);
+static_assert(sizeof(uint32_t) == 4);
+static_assert(sizeof(uint16_t) == 2);
+static_assert(sizeof(uint8_t)  == 1);
 static_assert(SIZE_MAX >= UINT32_MAX);
 
 #ifndef M_PI_2
@@ -408,6 +392,10 @@ void NORETURN AssertFailedError(int line, const char *file, const char *expressi
 #	undef assert
 #	define assert(expression) if (unlikely(!(expression))) AssertFailedError(__LINE__, __FILE__, #expression);
 #endif
+
+/* Define JSON_ASSERT, which is used by nlohmann-json. Otherwise the header-file
+ * will re-include assert.h, and reset the assert macro. */
+#define JSON_ASSERT(x) assert(x)
 
 #if defined(MAX_PATH)
 	/* It's already defined, no need to override */

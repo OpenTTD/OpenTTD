@@ -235,7 +235,7 @@ public:
 	 * @param town_id The index of the town.
 	 * @param towneffect_id The index of the towneffect.
 	 * @param goal The new goal.
-	 *             The value will be clamped to 0 .. MAX(uint32).
+	 *             The value will be clamped to 0 .. MAX(uint32_t).
 	 * @pre IsValidTown(town_id).
 	 * @pre ScriptCargo::IsValidTownEffect(towneffect_id).
 	 * @pre ScriptCompanyMode::IsDeity().
@@ -392,7 +392,7 @@ public:
 	 * Expand the town.
 	 * @param town_id The town to expand.
 	 * @param houses The amount of houses to grow the town with.
-	 *               The value will be clamped to 0 .. MAX(uint32).
+	 *               The value will be clamped to 0 .. MAX(uint32_t).
 	 * @pre IsValidTown(town_id).
 	 * @pre houses > 0.
 	 * @pre ScriptCompanyMode::IsDeity().

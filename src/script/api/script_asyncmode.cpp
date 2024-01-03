@@ -39,8 +39,8 @@ ScriptAsyncMode::ScriptAsyncMode(HSQUIRRELVM vm)
 		throw sq_throwerror(vm, "Argument must be a boolean");
 	}
 
-	this->last_mode     = this->GetDoCommandMode();
-	this->last_instance = this->GetDoCommandModeInstance();
+	this->last_mode     = this->GetDoCommandAsyncMode();
+	this->last_instance = this->GetDoCommandAsyncModeInstance();
 
 	this->SetDoCommandAsyncMode(sqasync ? &ScriptAsyncMode::AsyncModeProc : &ScriptAsyncMode::NonAsyncModeProc, this);
 }
@@ -48,8 +48,8 @@ ScriptAsyncMode::ScriptAsyncMode(HSQUIRRELVM vm)
 void ScriptAsyncMode::FinalRelease()
 {
 	if (this->GetDoCommandAsyncModeInstance() != this) {
-		/* Ignore this error if the script already died. */
-		if (!ScriptObject::GetActiveInstance()->IsDead()) {
+		/* Ignore this error if the script is not alive. */
+		if (ScriptObject::GetActiveInstance()->IsAlive()) {
 			throw Script_FatalError("Asyncmode object was removed while it was not the latest *Mode object created.");
 		}
 	}

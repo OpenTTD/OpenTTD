@@ -17,10 +17,10 @@
 struct CargoResolverObject : public ResolverObject {
 	const CargoSpec *cargospec;
 
-	CargoResolverObject(const CargoSpec *cs, CallbackID callback = CBID_NO_CALLBACK, uint32 callback_param1 = 0, uint32 callback_param2 = 0);
+	CargoResolverObject(const CargoSpec *cs, CallbackID callback = CBID_NO_CALLBACK, uint32_t callback_param1 = 0, uint32_t callback_param2 = 0);
 
 	GrfSpecFeature GetFeature() const override;
-	uint32 GetDebugID() const override;
+	uint32_t GetDebugID() const override;
 };
 
 GrfSpecFeature CargoResolverObject::GetFeature() const
@@ -28,7 +28,7 @@ GrfSpecFeature CargoResolverObject::GetFeature() const
 	return GSF_CARGOES;
 }
 
-uint32 CargoResolverObject::GetDebugID() const
+uint32_t CargoResolverObject::GetDebugID() const
 {
 	return this->cargospec->label;
 }
@@ -40,7 +40,7 @@ uint32 CargoResolverObject::GetDebugID() const
  * @param callback_param1 First parameter (var 10) of the callback.
  * @param callback_param2 Second parameter (var 18) of the callback.
  */
-CargoResolverObject::CargoResolverObject(const CargoSpec *cs, CallbackID callback, uint32 callback_param1, uint32 callback_param2)
+CargoResolverObject::CargoResolverObject(const CargoSpec *cs, CallbackID callback, uint32_t callback_param1, uint32_t callback_param2)
 		: ResolverObject(cs->grffile, callback, callback_param1, callback_param2), cargospec(cs)
 {
 	this->root_spritegroup = cs->group;
@@ -61,7 +61,7 @@ SpriteID GetCustomCargoSprite(const CargoSpec *cs)
 }
 
 
-uint16 GetCargoCallback(CallbackID callback, uint32 param1, uint32 param2, const CargoSpec *cs)
+uint16_t GetCargoCallback(CallbackID callback, uint32_t param1, uint32_t param2, const CargoSpec *cs)
 {
 	CargoResolverObject object(cs, callback, param1, param2);
 	return object.ResolveCallback();
@@ -76,7 +76,7 @@ uint16 GetCargoCallback(CallbackID callback, uint32 param1, uint32 param2, const
  *                For GRF version >= 7 \a cargo is always a translated cargo bit.
  * @return CargoID or CT_INVALID if the cargo is not available.
  */
-CargoID GetCargoTranslation(uint8 cargo, const GRFFile *grffile, bool usebit)
+CargoID GetCargoTranslation(uint8_t cargo, const GRFFile *grffile, bool usebit)
 {
 	/* Pre-version 7 uses the 'climate dependent' ID in callbacks and properties, i.e. cargo is the cargo ID */
 	if (grffile->grf_version < 7 && !usebit) {
@@ -86,7 +86,7 @@ CargoID GetCargoTranslation(uint8 cargo, const GRFFile *grffile, bool usebit)
 
 	/* Other cases use (possibly translated) cargobits */
 
-	if (grffile->cargo_list.size() > 0) {
+	if (!grffile->cargo_list.empty()) {
 		/* ...and the cargo is in bounds, then get the cargo ID for
 		 * the label */
 		if (cargo < grffile->cargo_list.size()) return GetCargoIDByLabel(grffile->cargo_list[cargo]);

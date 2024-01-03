@@ -133,7 +133,7 @@ SQInteger ScriptText::AddParam(HSQUIRRELVM vm)
 
 SQInteger ScriptText::_set(HSQUIRRELVM vm)
 {
-	int32 k;
+	int32_t k;
 
 	if (sq_gettype(vm, 2) == OT_STRING) {
 		const SQChar *key_string;
@@ -146,7 +146,7 @@ SQInteger ScriptText::_set(HSQUIRRELVM vm)
 	} else if (sq_gettype(vm, 2) == OT_INTEGER) {
 		SQInteger key;
 		sq_getinteger(vm, 2, &key);
-		k = (int32)key;
+		k = (int32_t)key;
 	} else {
 		return SQ_ERROR;
 	}
@@ -158,7 +158,7 @@ SQInteger ScriptText::_set(HSQUIRRELVM vm)
 	return this->_SetParam(k, vm);
 }
 
-const std::string ScriptText::GetEncodedText()
+std::string ScriptText::GetEncodedText()
 {
 	static StringIDList seen_ids;
 	int param_count = 0;
@@ -193,7 +193,7 @@ void ScriptText::_GetEncodedText(std::back_insert_iterator<std::string> &output,
 			/* The previous substring added more parameters than expected, means we will consume them but can't properly validate them. */
 			for (int i = 0; i < cur_param.consumes; i++) {
 				if (prev_idx < prev_count) {
-					ScriptLog::Warning(fmt::format("{}: Parameter {} uses parameter {} from substring {} and cannot be validated", name, param_count + i, prev_idx++, prev_string).c_str());
+					ScriptLog::Warning(fmt::format("{}: Parameter {} uses parameter {} from substring {} and cannot be validated", name, param_count + i, prev_idx++, prev_string));
 				} else {
 					/* No more extra parameters, assume SQInteger are expected. */
 					if (cur_idx >= this->paramc) throw Script_FatalError(fmt::format("{}: Not enough parameters", name));
@@ -209,7 +209,7 @@ void ScriptText::_GetEncodedText(std::back_insert_iterator<std::string> &output,
 			switch (cur_param.type) {
 				case StringParam::RAW_STRING:
 					if (!std::holds_alternative<std::string>(this->param[cur_idx])) throw Script_FatalError(fmt::format("{}: Parameter {} expects a raw string", name, param_count));
-					fmt::format_to(output, ":\"%s\"", std::get<std::string>(this->param[cur_idx++]));
+					fmt::format_to(output, ":\"{}\"", std::get<std::string>(this->param[cur_idx++]));
 					break;
 
 				case StringParam::STRING: {
@@ -218,7 +218,7 @@ void ScriptText::_GetEncodedText(std::back_insert_iterator<std::string> &output,
 					fmt::format_to(output, ":");
 					std::get<ScriptTextRef>(this->param[cur_idx++])->_GetEncodedText(output, count, seen_ids);
 					if (++count != cur_param.consumes) {
-						ScriptLog::Error(fmt::format("{}: Parameter {} substring consumes {}, but expected {} to be consumed", name, param_count, count - 1, cur_param.consumes - 1).c_str());
+						ScriptLog::Error(fmt::format("{}: Parameter {} substring consumes {}, but expected {} to be consumed", name, param_count, count - 1, cur_param.consumes - 1));
 						/* Fill missing params if needed. */
 						for (int i = count; i < cur_param.consumes; i++) fmt::format_to(output, ":0");
 						/* Disable validation for the extra params if any. */
@@ -248,8 +248,6 @@ void ScriptText::_GetEncodedText(std::back_insert_iterator<std::string> &output,
 
 const std::string Text::GetDecodedText()
 {
-	const std::string &encoded_text = this->GetEncodedText();
-
-	::SetDParamStr(0, encoded_text);
+	::SetDParamStr(0, this->GetEncodedText());
 	return ::GetString(STR_JUST_RAW_STRING);
 }

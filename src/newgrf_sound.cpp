@@ -76,11 +76,11 @@ bool LoadNewGRFSound(SoundEntry *sound)
 
 	/* Format: <num> <FF> <FF> <name_len> <name> '\0' <data> */
 
-	uint32 num = sound->grf_container_ver >= 2 ? file.ReadDword() : file.ReadWord();
+	uint32_t num = sound->grf_container_ver >= 2 ? file.ReadDword() : file.ReadWord();
 	if (file.ReadByte() != 0xFF) return false;
 	if (file.ReadByte() != 0xFF) return false;
 
-	uint8 name_len = file.ReadByte();
+	uint8_t name_len = file.ReadByte();
 	std::string name(name_len + 1, '\0');
 	file.ReadBlock(name.data(), name_len + 1);
 
@@ -97,7 +97,7 @@ bool LoadNewGRFSound(SoundEntry *sound)
 		return false;
 	}
 
-	uint32 total_size = file.ReadDword();
+	uint32_t total_size = file.ReadDword();
 	uint header_size = 11;
 	if (sound->grf_container_ver >= 2) header_size++; // The first FF in the sprite is only counted for container version >= 2.
 	if (total_size + name_len + header_size > num) {
@@ -111,8 +111,8 @@ bool LoadNewGRFSound(SoundEntry *sound)
 	}
 
 	while (total_size >= 8) {
-		uint32 tag  = file.ReadDword();
-		uint32 size = file.ReadDword();
+		uint32_t tag  = file.ReadDword();
+		uint32_t size = file.ReadDword();
 		total_size -= 8;
 		if (total_size < size) {
 			Debug(grf, 1, "LoadNewGRFSound [{}]: Invalid RIFF", file.GetSimplifiedFilename());
@@ -189,7 +189,7 @@ bool PlayVehicleSound(const Vehicle *v, VehicleSoundEvent event, bool force)
 	if (!_settings_client.sound.vehicle && !force) return true;
 
 	const GRFFile *file = v->GetGRF();
-	uint16 callback;
+	uint16_t callback;
 
 	/* If the engine has no GRF ID associated it can't ever play any new sounds */
 	if (file == nullptr) return false;

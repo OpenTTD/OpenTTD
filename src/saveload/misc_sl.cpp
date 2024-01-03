@@ -20,14 +20,13 @@
 #include "../gfx_func.h"
 #include "../core/random_func.hpp"
 #include "../fios.h"
-#include "../date_type.h"
 #include "../timer/timer.h"
 #include "../timer/timer_game_tick.h"
 
 #include "../safeguards.h"
 
 extern TileIndex _cur_tileloop_tile;
-extern uint16 _disaster_delay;
+extern uint16_t _disaster_delay;
 extern byte _trees_tick_ctr;
 extern std::string _savegame_id;
 
@@ -38,11 +37,18 @@ ZoomLevel _saved_scrollpos_zoom;
 
 void SaveViewportBeforeSaveGame()
 {
-	const Window *w = GetMainWindow();
-
-	_saved_scrollpos_x = w->viewport->scrollpos_x;
-	_saved_scrollpos_y = w->viewport->scrollpos_y;
-	_saved_scrollpos_zoom = w->viewport->zoom;
+	/* Don't use GetMainWindow() in case the window does not exist. */
+	const Window *w = FindWindowById(WC_MAIN_WINDOW, 0);
+	if (w == nullptr || w->viewport == nullptr) {
+		/* Ensure saved position is clearly invalid. */
+		_saved_scrollpos_x = INT_MAX;
+		_saved_scrollpos_y = INT_MAX;
+		_saved_scrollpos_zoom = ZOOM_LVL_END;
+	} else {
+		_saved_scrollpos_x = w->viewport->scrollpos_x;
+		_saved_scrollpos_y = w->viewport->scrollpos_y;
+		_saved_scrollpos_zoom = w->viewport->zoom;
+	}
 }
 
 void ResetViewportAfterLoadGame()
@@ -135,7 +141,7 @@ struct DATEChunkHandler : ChunkHandler {
 		this->LoadCommon(_date_check_desc, _date_check_sl_compat);
 
 		if (IsSavegameVersionBefore(SLV_31)) {
-			_load_check_data.current_date += DAYS_TILL_ORIGINAL_BASE_YEAR;
+			_load_check_data.current_date += CalendarTime::DAYS_TILL_ORIGINAL_BASE_YEAR;
 		}
 	}
 };

@@ -341,6 +341,9 @@ STR_COLOUR_BROWN                                                :Rjava
 STR_COLOUR_GREY                                                 :Siva
 STR_COLOUR_WHITE                                                :Bela
 
+###length 17
+
+
 # Units used in OpenTTD
 STR_UNITS_VELOCITY_IMPERIAL                                     :{DECIMAL} mph
 STR_UNITS_VELOCITY_METRIC                                       :{DECIMAL} km/h
@@ -374,6 +377,7 @@ STR_UNITS_FORCE_SI                                              :{DECIMAL} kN
 STR_UNITS_HEIGHT_IMPERIAL                                       :{DECIMAL} ft
 STR_UNITS_HEIGHT_METRIC                                         :{DECIMAL} m
 STR_UNITS_HEIGHT_SI                                             :{DECIMAL} m
+
 
 # Common window strings
 STR_LIST_FILTER_TITLE                                           :{BLACK}Filtriraj niz:
@@ -545,31 +549,25 @@ STR_SETTINGS_MENU_TRANSPARENT_BUILDINGS                         :Prosojne stavbe
 STR_SETTINGS_MENU_TRANSPARENT_SIGNS                             :Prosojni napisi postaj
 
 # File menu
-###length 5
 STR_FILE_MENU_SAVE_GAME                                         :Shrani igro
 STR_FILE_MENU_LOAD_GAME                                         :Naloži igro
 STR_FILE_MENU_QUIT_GAME                                         :Zapusti igro
-STR_FILE_MENU_SEPARATOR                                         :
 STR_FILE_MENU_EXIT                                              :Izhod
 
 # Map menu
-###length 4
 STR_MAP_MENU_MAP_OF_WORLD                                       :Zemljevid sveta
 STR_MAP_MENU_EXTRA_VIEWPORT                                     :Dodaten pogled
 STR_MAP_MENU_LINGRAPH_LEGEND                                    :Legenda pretoka tovora
 STR_MAP_MENU_SIGN_LIST                                          :Seznam napisov
 
 # Town menu
-###length 2
 STR_TOWN_MENU_TOWN_DIRECTORY                                    :Imenik mest
 STR_TOWN_MENU_FOUND_TOWN                                        :Ustanovi mesto
 
 # Subsidies menu
-###length 1
 STR_SUBSIDIES_MENU_SUBSIDIES                                    :Subvencije
 
 # Graph menu
-###length 6
 STR_GRAPH_MENU_OPERATING_PROFIT_GRAPH                           :Graf dobička
 STR_GRAPH_MENU_INCOME_GRAPH                                     :Graf prihodkov
 STR_GRAPH_MENU_DELIVERED_CARGO_GRAPH                            :Graf dostavljenega tovora
@@ -578,56 +576,45 @@ STR_GRAPH_MENU_COMPANY_VALUE_GRAPH                              :Graf vrednosti 
 STR_GRAPH_MENU_CARGO_PAYMENT_RATES                              :Graf plačila za tovore
 
 # Company league menu
-###length 3
 STR_GRAPH_MENU_COMPANY_LEAGUE_TABLE                             :Tabela lige podjetij
 STR_GRAPH_MENU_DETAILED_PERFORMANCE_RATING                      :Podrobna ocena uspeha
 STR_GRAPH_MENU_HIGHSCORE                                        :Tabela najboljših rezultatov
 
 # Industry menu
-###length 3
 STR_INDUSTRY_MENU_INDUSTRY_DIRECTORY                            :Imenik industrij
 STR_INDUSTRY_MENU_INDUSTRY_CHAIN                                :Industrijske verige
 STR_INDUSTRY_MENU_FUND_NEW_INDUSTRY                             :Financiraj novo industrijo
 
 # URailway construction menu
-###length 4
 STR_RAIL_MENU_RAILROAD_CONSTRUCTION                             :Gradnja železnice
 STR_RAIL_MENU_ELRAIL_CONSTRUCTION                               :Gradnja elektrificirane železnice
 STR_RAIL_MENU_MONORAIL_CONSTRUCTION                             :Enotirna železnica
 STR_RAIL_MENU_MAGLEV_CONSTRUCTION                               :Magnetna železnica
 
 # Road construction menu
-###length 2
 STR_ROAD_MENU_ROAD_CONSTRUCTION                                 :Gradnja ceste
 STR_ROAD_MENU_TRAM_CONSTRUCTION                                 :Gradnja tramvaj proge
 
 # Waterways construction menu
-###length 1
 STR_WATERWAYS_MENU_WATERWAYS_CONSTRUCTION                       :Gradnja vodnih poti
 
 # Aairport construction menu
-###length 1
 STR_AIRCRAFT_MENU_AIRPORT_CONSTRUCTION                          :Gradnja letališča
 
 # Landscaping menu
-###length 3
 STR_LANDSCAPING_MENU_LANDSCAPING                                :Oblikovanje terena
 STR_LANDSCAPING_MENU_PLANT_TREES                                :Posadi drevesa
 STR_LANDSCAPING_MENU_PLACE_SIGN                                 :Postavi znak
 
 # Music menu
-###length 1
 STR_TOOLBAR_SOUND_MUSIC                                         :Zvok/glasba
 
 # Message menu
-###length 3
 STR_NEWS_MENU_LAST_MESSAGE_NEWS_REPORT                          :Zadnje sporočilo/novica
 STR_NEWS_MENU_MESSAGE_HISTORY_MENU                              :Zgodovina sporočil
 
 # About menu
-###length 10
 STR_ABOUT_MENU_LAND_BLOCK_INFO                                  :Informacije o terenu
-STR_ABOUT_MENU_SEPARATOR                                        :
 STR_ABOUT_MENU_TOGGLE_CONSOLE                                   :Vklopi/Izklopi konzolo
 STR_ABOUT_MENU_AI_DEBUG                                         :Razhročevanje UI / skript
 STR_ABOUT_MENU_SCREENSHOT                                       :Zajemi sliko
@@ -833,8 +820,6 @@ STR_PLAYLIST_TOOLTIP_CLICK_TO_ADD_TRACK                         :{BLACK}Klikni n
 STR_PLAYLIST_TOOLTIP_CLICK_TO_REMOVE_TRACK                      :{BLACK}Klikni na skladbo, če jo želiš odstraniti iz programa (samo Poljubno1 ali Poljubno2)
 
 # Highscore window
-STR_HIGHSCORE_TOP_COMPANIES_WHO_REACHED                         :{BIG_FONT}{BLACK}Najboljša podjetja, ki so dosegla {NUM}
-STR_HIGHSCORE_TOP_COMPANIES_NETWORK_GAME                        :{BIG_FONT}{BLACK}Seznam najboljših podjetij v {NUM}
 STR_HIGHSCORE_POSITION                                          :{BIG_FONT}{BLACK}{COMMA}.
 STR_HIGHSCORE_PERFORMANCE_TITLE_BUSINESSMAN                     :Poslovnež
 STR_HIGHSCORE_PERFORMANCE_TITLE_ENTREPRENEUR                    :Podjetnik
@@ -1019,10 +1004,6 @@ STR_NEWS_NEW_VEHICLE_TYPE                                       :{BIG_FONT}{BLAC
 STR_NEWS_NEW_VEHICLE_NOW_AVAILABLE_WITH_TYPE                    :{BLACK}Novo! {STRING} sedaj na razpolago!  -  {ENGINE}
 
 
-STR_NEWS_STATION_NO_LONGER_ACCEPTS_CARGO                        :{WHITE}{STATION} ne sprejema več {STRING.r}
-STR_NEWS_STATION_NO_LONGER_ACCEPTS_CARGO_OR_CARGO               :{WHITE}{STATION} ne sprejema več {STRING.r} ali {STRING.r}
-STR_NEWS_STATION_NOW_ACCEPTS_CARGO                              :{WHITE}{STATION} sedaj sprejema {STRING.t}
-STR_NEWS_STATION_NOW_ACCEPTS_CARGO_AND_CARGO                    :{WHITE}{STATION} sedaj sprejema {STRING.t} in {STRING.t}
 
 STR_NEWS_OFFER_OF_SUBSIDY_EXPIRED                               :{BIG_FONT}{BLACK}Ponudba subvencije potekla:{}{}Prevoz {STRING.r} od {STRING} do {STRING} ni več subvencioniran
 STR_NEWS_SUBSIDY_WITHDRAWN_SERVICE                              :{BIG_FONT}{BLACK}Subvencija zaključena:{}{}Prevoz {STRING.r} od {STRING} do {STRING} ni več subvencioniran
@@ -1048,42 +1029,43 @@ STR_GAME_OPTIONS_CAPTION                                        :{WHITE}Možnost
 STR_GAME_OPTIONS_CURRENCY_UNITS_FRAME                           :{BLACK}Valute
 STR_GAME_OPTIONS_CURRENCY_UNITS_DROPDOWN_TOOLTIP                :{BLACK}Izbira valut
 
+
 ###length 42
-STR_GAME_OPTIONS_CURRENCY_GBP                                   :Funt (£)
-STR_GAME_OPTIONS_CURRENCY_USD                                   :Dolar ($)
-STR_GAME_OPTIONS_CURRENCY_EUR                                   :Euro (€)
-STR_GAME_OPTIONS_CURRENCY_JPY                                   :Jen (¥)
-STR_GAME_OPTIONS_CURRENCY_ATS                                   :Avstrijski Šiling (ATS)
-STR_GAME_OPTIONS_CURRENCY_BEF                                   :Belgijski Frank (BEF)
-STR_GAME_OPTIONS_CURRENCY_CHF                                   :Švicarski Frank (CHF)
-STR_GAME_OPTIONS_CURRENCY_CZK                                   :Češka Krona (CZK)
-STR_GAME_OPTIONS_CURRENCY_DEM                                   :Nemška Marka (DEM)
-STR_GAME_OPTIONS_CURRENCY_DKK                                   :Danska Krona (DKK)
-STR_GAME_OPTIONS_CURRENCY_ESP                                   :Pezeta (ESP)
-STR_GAME_OPTIONS_CURRENCY_FIM                                   :Finska Marka (FIM)
-STR_GAME_OPTIONS_CURRENCY_FRF                                   :Frank (FRF)
-STR_GAME_OPTIONS_CURRENCY_GRD                                   :Grška Drahma (GRD)
-STR_GAME_OPTIONS_CURRENCY_HUF                                   :Madžarski Forint (HUF)
-STR_GAME_OPTIONS_CURRENCY_ISK                                   :Islandska Krona (ISK)
-STR_GAME_OPTIONS_CURRENCY_ITL                                   :Italijanska Lira (ITL)
-STR_GAME_OPTIONS_CURRENCY_NLG                                   :Nizozemski Gulden (NLG)
-STR_GAME_OPTIONS_CURRENCY_NOK                                   :Norveška Krona (NOK)
-STR_GAME_OPTIONS_CURRENCY_PLN                                   :Poljski Zlot (PLN)
-STR_GAME_OPTIONS_CURRENCY_RON                                   :Romunski Lej (RON)
-STR_GAME_OPTIONS_CURRENCY_RUR                                   :Ruski Rubelj (RUR)
-STR_GAME_OPTIONS_CURRENCY_SIT                                   :Slovenski tolar (SIT)
-STR_GAME_OPTIONS_CURRENCY_SEK                                   :Švedska Krona (SEK)
-STR_GAME_OPTIONS_CURRENCY_TRY                                   :Turška lira (TRY)
-STR_GAME_OPTIONS_CURRENCY_SKK                                   :Slovaška krona (SKK)
-STR_GAME_OPTIONS_CURRENCY_BRL                                   :Brazilski Real (BRL)
-STR_GAME_OPTIONS_CURRENCY_EEK                                   :estonske krone (EEK)
-STR_GAME_OPTIONS_CURRENCY_LTL                                   :Litvijske Lite (LTL)
-STR_GAME_OPTIONS_CURRENCY_KRW                                   :Južnokorejski Won (KRW)
-STR_GAME_OPTIONS_CURRENCY_ZAR                                   :Južnoafriški Rant (ZAR)
+STR_GAME_OPTIONS_CURRENCY_GBP                                   :Funt
+STR_GAME_OPTIONS_CURRENCY_USD                                   :Dolar
+STR_GAME_OPTIONS_CURRENCY_EUR                                   :Euro
+STR_GAME_OPTIONS_CURRENCY_JPY                                   :Jen
+STR_GAME_OPTIONS_CURRENCY_ATS                                   :Avstrijski Šiling
+STR_GAME_OPTIONS_CURRENCY_BEF                                   :Belgijski Frank
+STR_GAME_OPTIONS_CURRENCY_CHF                                   :Švicarski Frank
+STR_GAME_OPTIONS_CURRENCY_CZK                                   :Češka Krona
+STR_GAME_OPTIONS_CURRENCY_DEM                                   :Nemška Marka
+STR_GAME_OPTIONS_CURRENCY_DKK                                   :Danska Krona
+STR_GAME_OPTIONS_CURRENCY_ESP                                   :Pezeta
+STR_GAME_OPTIONS_CURRENCY_FIM                                   :Finska Marka
+STR_GAME_OPTIONS_CURRENCY_FRF                                   :Frank
+STR_GAME_OPTIONS_CURRENCY_GRD                                   :Grška Drahma
+STR_GAME_OPTIONS_CURRENCY_HUF                                   :Madžarski Forint
+STR_GAME_OPTIONS_CURRENCY_ISK                                   :Islandska Krona
+STR_GAME_OPTIONS_CURRENCY_ITL                                   :Italijanska Lira
+STR_GAME_OPTIONS_CURRENCY_NLG                                   :Nizozemski Gulden
+STR_GAME_OPTIONS_CURRENCY_NOK                                   :Norveška Krona
+STR_GAME_OPTIONS_CURRENCY_PLN                                   :Poljski Zlot
+STR_GAME_OPTIONS_CURRENCY_RON                                   :Romunski Lej
+STR_GAME_OPTIONS_CURRENCY_RUR                                   :Ruski Rubelj
+STR_GAME_OPTIONS_CURRENCY_SIT                                   :Slovenski tolar
+STR_GAME_OPTIONS_CURRENCY_SEK                                   :Švedska Krona
+STR_GAME_OPTIONS_CURRENCY_TRY                                   :Turška lira
+STR_GAME_OPTIONS_CURRENCY_SKK                                   :Slovaška krona
+STR_GAME_OPTIONS_CURRENCY_BRL                                   :Brazilski Real
+STR_GAME_OPTIONS_CURRENCY_EEK                                   :estonske krone
+STR_GAME_OPTIONS_CURRENCY_LTL                                   :Litvijske Lite
+STR_GAME_OPTIONS_CURRENCY_KRW                                   :Južnokorejski Won
+STR_GAME_OPTIONS_CURRENCY_ZAR                                   :Južnoafriški Rant
 STR_GAME_OPTIONS_CURRENCY_CUSTOM                                :Po meri...
-STR_GAME_OPTIONS_CURRENCY_GEL                                   :Gruzijski Lari (GEL)
-STR_GAME_OPTIONS_CURRENCY_IRR                                   :Iranski Rial (IRR)
-STR_GAME_OPTIONS_CURRENCY_HKD                                   :Hong Kongški dolar (HKD)
+STR_GAME_OPTIONS_CURRENCY_GEL                                   :Gruzijski Lari
+STR_GAME_OPTIONS_CURRENCY_IRR                                   :Iranski Rial
+STR_GAME_OPTIONS_CURRENCY_HKD                                   :Hong Kongški dolar
 
 STR_GAME_OPTIONS_AUTOSAVE_FRAME                                 :{BLACK}Samodejno shrani
 STR_GAME_OPTIONS_AUTOSAVE_DROPDOWN_TOOLTIP                      :{BLACK}Izberi časovni interval samodejnega shranjevanja igre
@@ -1113,7 +1095,6 @@ STR_GAME_OPTIONS_RESOLUTION_OTHER                               :drugo
 
 STR_GAME_OPTIONS_BASE_GRF                                       :{BLACK}Osnovni komplet grafik
 STR_GAME_OPTIONS_BASE_GRF_TOOLTIP                               :{BLACK}Izberi osnovni komplet grafik za uporabo
-STR_GAME_OPTIONS_BASE_GRF_STATUS                                :{RED}{NUM} manjkajoč{P a i e ih}/okvarjen{P a i e ih} datotek{P a i e ""}
 STR_GAME_OPTIONS_BASE_GRF_DESCRIPTION_TOOLTIP                   :{BLACK}Dodatne informacije o osnovnem kompletu grafik
 
 STR_GAME_OPTIONS_BASE_SFX                                       :{BLACK}Osnovni komplet zvokov
@@ -1122,8 +1103,8 @@ STR_GAME_OPTIONS_BASE_SFX_DESCRIPTION_TOOLTIP                   :{BLACK}Dodatne 
 
 STR_GAME_OPTIONS_BASE_MUSIC                                     :{BLACK}Osnovni komplet glasbe
 STR_GAME_OPTIONS_BASE_MUSIC_TOOLTIP                             :{BLACK}Izberi osnovni komplet glasbe za uporabo
-STR_GAME_OPTIONS_BASE_MUSIC_STATUS                              :{RED}{NUM} poškodovan{P a i e ih} datotek{P a i e ""}
 STR_GAME_OPTIONS_BASE_MUSIC_DESCRIPTION_TOOLTIP                 :{BLACK}Dodatne informacije o osnovnem kompletu glasbe
+
 
 STR_ERROR_RESOLUTION_LIST_FAILED                                :{WHITE}Nalaganje seznama podprtih resolucij ni uspelo
 STR_ERROR_FULLSCREEN_FAILED                                     :{WHITE}Celozaslonski način spodletel
@@ -1279,6 +1260,7 @@ STR_CONFIG_SETTING_REALISTIC                                    :Realistično
 STR_CONFIG_SETTING_HORIZONTAL_POS_LEFT                          :Levo
 STR_CONFIG_SETTING_HORIZONTAL_POS_CENTER                        :Sredina
 STR_CONFIG_SETTING_HORIZONTAL_POS_RIGHT                         :Desno
+
 
 STR_CONFIG_SETTING_MAXIMUM_INITIAL_LOAN                         :Najvišje začetno posojilo: {STRING}
 STR_CONFIG_SETTING_MAXIMUM_INITIAL_LOAN_HELPTEXT                :Najvišji znesek, ki si ga podjetje lahko izposodi (ni vključen izračun inflacije)
@@ -1438,6 +1420,7 @@ STR_CONFIG_SETTING_PLANE_CRASHES_NONE                           :Brez
 STR_CONFIG_SETTING_PLANE_CRASHES_REDUCED                        :Zmanjšano
 STR_CONFIG_SETTING_PLANE_CRASHES_NORMAL                         :Normalno
 
+
 STR_CONFIG_SETTING_STOP_ON_TOWN_ROAD                            :Dovoli prehodne postaje na cestah v lasti mest: {STRING}
 STR_CONFIG_SETTING_STOP_ON_TOWN_ROAD_HELPTEXT                   :Dovoli gradnjo pretočnih postaj na cesti, ki je v lasti mesta.
 STR_CONFIG_SETTING_STOP_ON_COMPETITOR_ROAD                      :Dovoli prevoženja postaj na tekmečevih cestah: {STRING}
@@ -1446,6 +1429,7 @@ STR_CONFIG_SETTING_DYNAMIC_ENGINES_EXISTING_VEHICLES            :{WHITE}Sprememb
 
 STR_CONFIG_SETTING_INFRASTRUCTURE_MAINTENANCE                   :Vzdrževanje infrastrukture: {STRING}
 STR_CONFIG_SETTING_INFRASTRUCTURE_MAINTENANCE_HELPTEXT          :Če je omogočeno, infrastruktura upošteva vzdrževalne stroške, ki rastejo skozi čas proporcionalno z velikostjo omrežja.
+
 
 
 STR_CONFIG_SETTING_NEVER_EXPIRE_AIRPORTS                        :Letališča nikoli ne potečejo: {STRING}
@@ -1481,7 +1465,6 @@ STR_CONFIG_SETTING_AUTORENEW_MONEY_HELPTEXT                     :Minimalna vsota
 
 STR_CONFIG_SETTING_ERRMSG_DURATION                              :Trajanje poročila o napaki: {STRING}
 STR_CONFIG_SETTING_ERRMSG_DURATION_HELPTEXT                     :Trajanje sporočil o napakah v rdečem kvadratu. Kritična opozorila se ne zaprejo sama po tem času, ampak ročno.
-STR_CONFIG_SETTING_ERRMSG_DURATION_VALUE                        :{COMMA} sekund{P 0 o i e ""}
 
 STR_CONFIG_SETTING_HOVER_DELAY                                  :Prikaz nasvetov orodij: {STRING}
 STR_CONFIG_SETTING_HOVER_DELAY_HELPTEXT                         :Čas do prikaza nasvetov orodij, ko je miška na orodju. Lahko se nasvete vidi tudi z desno tipko miške.
@@ -1622,9 +1605,7 @@ STR_CONFIG_SETTING_RIGHT_MOUSE_BTN_EMU_CONTROL                  :Kontrola-klik
 STR_CONFIG_SETTING_RIGHT_MOUSE_BTN_EMU_OFF                      :Izklop
 
 STR_CONFIG_SETTING_RIGHT_MOUSE_WND_CLOSE                        :Zapri okno z desnim klikom: {STRING}
-
-STR_CONFIG_SETTING_AUTOSAVE                                     :Samodejno shrani: {STRING}
-STR_CONFIG_SETTING_AUTOSAVE_HELPTEXT                            :Izberi časovni interval samodejnega shranjevanja igre
+###length 3
 
 STR_CONFIG_SETTING_DATE_FORMAT_IN_SAVE_NAMES                    :Uporabi {STRING} format datuma za imena shranjevanja igre
 STR_CONFIG_SETTING_DATE_FORMAT_IN_SAVE_NAMES_HELPTEXT           :Format datuma v imenih shranjenih iger
@@ -1650,8 +1631,7 @@ STR_CONFIG_SETTING_ADVANCED_VEHICLE_LISTS_HELPTEXT              :Omogoči uporab
 STR_CONFIG_SETTING_LOADING_INDICATORS                           :Uporabi pregledno polnenje: {STRING}
 STR_CONFIG_SETTING_LOADING_INDICATORS_HELPTEXT                  :Izbira prikaza stanja med polnjenjem vozil.
 
-STR_CONFIG_SETTING_TIMETABLE_IN_TICKS                           :Prikaz urnikov v pikah namesto dneh: {STRING}
-STR_CONFIG_SETTING_TIMETABLE_IN_TICKS_HELPTEXT                  :Prikaži čase potovanja v časovnih tabelah kot enote igre namesto dni.
+###length 3
 
 STR_CONFIG_SETTING_TIMETABLE_SHOW_ARRIVAL_DEPARTURE             :Prikaži prihod in odhod v urnikih: {STRING}
 STR_CONFIG_SETTING_TIMETABLE_SHOW_ARRIVAL_DEPARTURE_HELPTEXT    :Prikaži pričakovane čase odhodov in prihodov v časovnih tabelah.
@@ -1984,29 +1964,29 @@ STR_CONFIG_SETTING_LOCALISATION_UNITS_HEIGHT_IMPERIAL           :Imperične (ft)
 STR_CONFIG_SETTING_LOCALISATION_UNITS_HEIGHT_METRIC             :Metrične (m)
 STR_CONFIG_SETTING_LOCALISATION_UNITS_HEIGHT_SI                 :SI (m)
 
-STR_CONFIG_SETTING_LOCALISATION                                 :{ORANGE}Lokalno
-STR_CONFIG_SETTING_GRAPHICS                                     :{ORANGE}Grafike
-STR_CONFIG_SETTING_SOUND                                        :{ORANGE}Zvočni učinki
-STR_CONFIG_SETTING_INTERFACE                                    :{ORANGE}Vmesnik
-STR_CONFIG_SETTING_INTERFACE_GENERAL                            :{ORANGE}Splošno
-STR_CONFIG_SETTING_INTERFACE_VIEWPORTS                          :{ORANGE}Pogledi
-STR_CONFIG_SETTING_INTERFACE_CONSTRUCTION                       :{ORANGE}Gradnja
-STR_CONFIG_SETTING_ADVISORS                                     :{ORANGE}Novice/Nasveti
-STR_CONFIG_SETTING_COMPANY                                      :{ORANGE}Podjetje
-STR_CONFIG_SETTING_ACCOUNTING                                   :{ORANGE}Računi
-STR_CONFIG_SETTING_VEHICLES                                     :{ORANGE}Vozila
-STR_CONFIG_SETTING_VEHICLES_PHYSICS                             :{ORANGE}Fizika
-STR_CONFIG_SETTING_VEHICLES_ROUTING                             :{ORANGE}Usmerjanje
-STR_CONFIG_SETTING_LIMITATIONS                                  :{ORANGE}Omejitve
-STR_CONFIG_SETTING_ACCIDENTS                                    :{ORANGE}Katastrofe / Nesreče
-STR_CONFIG_SETTING_GENWORLD                                     :{ORANGE}Ustvarjanje sveta
-STR_CONFIG_SETTING_ENVIRONMENT                                  :{ORANGE}Okolje
-STR_CONFIG_SETTING_ENVIRONMENT_AUTHORITIES                      :{ORANGE}Oblasti
-STR_CONFIG_SETTING_ENVIRONMENT_TOWNS                            :{ORANGE}Mesta
-STR_CONFIG_SETTING_ENVIRONMENT_INDUSTRIES                       :{ORANGE}Industrije
-STR_CONFIG_SETTING_ENVIRONMENT_CARGODIST                        :{ORANGE}Razpored tovora
-STR_CONFIG_SETTING_AI                                           :{ORANGE}Tekmeci
-STR_CONFIG_SETTING_AI_NPC                                       :{ORANGE}Računalniški igralci
+STR_CONFIG_SETTING_LOCALISATION                                 :Lokalno
+STR_CONFIG_SETTING_GRAPHICS                                     :Grafike
+STR_CONFIG_SETTING_SOUND                                        :Zvočni učinki
+STR_CONFIG_SETTING_INTERFACE                                    :Vmesnik
+STR_CONFIG_SETTING_INTERFACE_GENERAL                            :Splošno
+STR_CONFIG_SETTING_INTERFACE_VIEWPORTS                          :Pogledi
+STR_CONFIG_SETTING_INTERFACE_CONSTRUCTION                       :Gradnja
+STR_CONFIG_SETTING_ADVISORS                                     :Novice/Nasveti
+STR_CONFIG_SETTING_COMPANY                                      :Podjetje
+STR_CONFIG_SETTING_ACCOUNTING                                   :Računi
+STR_CONFIG_SETTING_VEHICLES                                     :Vozila
+STR_CONFIG_SETTING_VEHICLES_PHYSICS                             :Fizika
+STR_CONFIG_SETTING_VEHICLES_ROUTING                             :Usmerjanje
+STR_CONFIG_SETTING_LIMITATIONS                                  :Omejitve
+STR_CONFIG_SETTING_ACCIDENTS                                    :Katastrofe / Nesreče
+STR_CONFIG_SETTING_GENWORLD                                     :Ustvarjanje sveta
+STR_CONFIG_SETTING_ENVIRONMENT                                  :Okolje
+STR_CONFIG_SETTING_ENVIRONMENT_AUTHORITIES                      :Oblasti
+STR_CONFIG_SETTING_ENVIRONMENT_TOWNS                            :Mesta
+STR_CONFIG_SETTING_ENVIRONMENT_INDUSTRIES                       :Industrije
+STR_CONFIG_SETTING_ENVIRONMENT_CARGODIST                        :Razpored tovora
+STR_CONFIG_SETTING_AI                                           :Tekmeci
+STR_CONFIG_SETTING_AI_NPC                                       :Računalniški igralci
 
 STR_CONFIG_SETTING_PATHFINDER_FOR_TRAINS                        :Iskalnik poti za vlake: {STRING}
 STR_CONFIG_SETTING_PATHFINDER_FOR_TRAINS_HELPTEXT               :Iskalnik poti za vlake.
@@ -2091,6 +2071,8 @@ STR_QUIT_NO                                                     :{BLACK}Ne
 STR_ABANDON_GAME_CAPTION                                        :{WHITE}Zapusti igro
 STR_ABANDON_GAME_QUERY                                          :{YELLOW}Zagotovo želiš zapustiti igro?
 STR_ABANDON_SCENARIO_QUERY                                      :{YELLOW}Zagotovo želiš zapustiti ta scenarij?
+
+# Help window
 
 # Cheat window
 STR_CHEATS                                                      :{WHITE}Goljufije
@@ -2497,7 +2479,6 @@ STR_TRANSPARENT_BUILDINGS_TOOLTIP                               :{BLACK}Prozoren
 STR_TRANSPARENT_BRIDGES_TOOLTIP                                 :{BLACK}Prozoren ali navaden pogled mostov. Ctrl+Klik za zaklepanje
 STR_TRANSPARENT_STRUCTURES_TOOLTIP                              :{BLACK}Prozoren ali navaden pogled struktur kot so antene, svetilniki... Ctrl+Klik za zaklepanje
 STR_TRANSPARENT_CATENARY_TOOLTIP                                :{BLACK}Preklop prosojnosti za pogone. Ctrl+Klik za zaklepanje
-STR_TRANSPARENT_LOADING_TOOLTIP                                 :{BLACK}Preklop na prosojnost za prikaz polnenja. Ctrl+Klik za zaklepanje
 STR_TRANSPARENT_INVISIBLE_TOOLTIP                               :{BLACK}Nastavi predmete nevidne namesto prosojne
 
 # Linkgraph legend window
@@ -4184,8 +4165,6 @@ STR_TIMETABLE_STAY_FOR_ESTIMATED                                :(počakaj najve
 STR_TIMETABLE_AND_TRAVEL_FOR_ESTIMATED                          :(Potuj z največ {STRING}, brez časovne tabele)
 STR_TIMETABLE_STAY_FOR                                          :in ostani za {STRING}
 STR_TIMETABLE_AND_TRAVEL_FOR                                    :s potovanjem za {STRING}
-STR_TIMETABLE_DAYS                                              :{COMMA} d{P an neva nevi ni}
-STR_TIMETABLE_TICKS                                             :{COMMA} pik{P a i e ""}
 
 STR_TIMETABLE_TOTAL_TIME                                        :{BLACK}Ta urnik bo potreboval {STRING} do zaključka
 STR_TIMETABLE_TOTAL_TIME_INCOMPLETE                             :{BLACK}Ta urnik bo potreboval vsaj {STRING} do zaključka (ni vse zajeto v urniku)
@@ -4194,10 +4173,8 @@ STR_TIMETABLE_STATUS_ON_TIME                                    :{BLACK}To vozil
 STR_TIMETABLE_STATUS_LATE                                       :{BLACK}To vozilo zamuja za {STRING}
 STR_TIMETABLE_STATUS_EARLY                                      :{BLACK}To vozilo prehiteva za {STRING} .
 STR_TIMETABLE_STATUS_NOT_STARTED                                :{BLACK}Ta urnik se še ni začel
-STR_TIMETABLE_STATUS_START_AT                                   :{BLACK}Ta urnik se bo začel ob {STRING}
 
-STR_TIMETABLE_STARTING_DATE                                     :{BLACK}Začetni datum
-STR_TIMETABLE_STARTING_DATE_TOOLTIP                             :{BLACK}Izberi datum za začetek te časovne tabele. Ctrl+klik nastavi začetek te časovne tabele in razporedi vsa vozila, ki si delijo ta ukaz, enakomerno glede na njihov relativni ukaz, če je ta popolnoma naravnan po časovni tabeli
+
 
 STR_TIMETABLE_CHANGE_TIME                                       :{BLACK}Spremeni čas
 STR_TIMETABLE_WAIT_TIME_TOOLTIP                                 :{BLACK}Spremeni čas, ki naj bi ga označeni ukaz porabil
@@ -4221,8 +4198,6 @@ STR_TIMETABLE_EXPECTED                                          :{BLACK}Pričako
 STR_TIMETABLE_SCHEDULED                                         :{BLACK}Določen
 STR_TIMETABLE_EXPECTED_TOOLTIP                                  :{BLACK}Preklopi med pričakovanim in določenim
 
-STR_TIMETABLE_ARRIVAL_ABBREVIATION                              :A:
-STR_TIMETABLE_DEPARTURE_ABBREVIATION                            :D:
 
 
 # Date window (for timetable)
@@ -4309,7 +4284,7 @@ STR_TEXTFILE_WRAP_TEXT_TOOLTIP                                  :{BLACK}Prilagod
 STR_TEXTFILE_VIEW_README                                        :{BLACK}Prikaži preberi-me datoteko
 STR_TEXTFILE_VIEW_CHANGELOG                                     :{BLACK}Zamenjaj dnevnik
 STR_TEXTFILE_VIEW_LICENCE                                       :{BLACK}Licenca
-###length 4
+###length 5
 STR_TEXTFILE_README_CAPTION                                     :{WHITE}{STRING} preberi-me od {STRING}
 STR_TEXTFILE_CHANGELOG_CAPTION                                  :{WHITE}{STRING} zamenjaj dnevnik od {STRING}
 STR_TEXTFILE_LICENCE_CAPTION                                    :{WHITE}{STRING} licenca od {STRING}
@@ -4444,7 +4419,6 @@ STR_ERROR_TOO_CLOSE_TO_EDGE_OF_MAP_SUB                          :{WHITE}... preb
 STR_ERROR_TOO_CLOSE_TO_ANOTHER_TOWN                             :{WHITE}... preblizu drugemu mestu
 STR_ERROR_TOO_MANY_TOWNS                                        :{WHITE}... preveliko število mest
 STR_ERROR_NO_SPACE_FOR_TOWN                                     :{WHITE}... ni več prostora na zemljevidu
-STR_ERROR_TOWN_EXPAND_WARN_NO_ROADS                             :{WHITE}Mesta ne bodo gradila cest. Lahko omogočiš gradnjo cest v Napredne nastavitve->Ekonomija->Mesta
 STR_ERROR_ROAD_WORKS_IN_PROGRESS                                :{WHITE}Cestna dela napredujejo
 STR_ERROR_TOWN_CAN_T_DELETE                                     :{WHITE}Ni mogoče zbrisati mesta...{}Postaja ali garaža se nanaša na to mesto ali pa področje v lastnini mesta ne more biti odstranjeno
 STR_ERROR_STATUE_NO_SUITABLE_PLACE                              :{WHITE}... ni primernega mesta za kip v centru tega mesta

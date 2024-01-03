@@ -11,7 +11,7 @@
 #define WIDGETS_NETWORK_CHAT_WIDGET_H
 
 /** Widgets of the #NetworkChatWindow class. */
-enum NetWorkChatWidgets {
+enum NetWorkChatWidgets : WidgetID {
 	WID_NC_CLOSE,       ///< Close button.
 	WID_NC_BACKGROUND,  ///< Background of the window.
 	WID_NC_DESTINATION, ///< Destination.

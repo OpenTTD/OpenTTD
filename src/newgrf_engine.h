@@ -38,9 +38,9 @@ struct VehicleScopeResolver : public ScopeResolver {
 
 	void SetVehicle(const Vehicle *v) { this->v = v; }
 
-	uint32 GetRandomBits() const override;
-	uint32 GetVariable(byte variable, uint32 parameter, bool *available) const override;
-	uint32 GetTriggers() const override;
+	uint32_t GetRandomBits() const override;
+	uint32_t GetVariable(byte variable, [[maybe_unused]] uint32_t parameter, bool *available) const override;
+	uint32_t GetTriggers() const override;
 };
 
 /** Resolver for a vehicle (chain) */
@@ -60,14 +60,14 @@ struct VehicleResolverObject : public ResolverObject {
 	byte cached_relative_count;          ///< Relative position of the other vehicle.
 
 	VehicleResolverObject(EngineID engine_type, const Vehicle *v, WagonOverride wagon_override, bool rotor_in_gui = false,
-			CallbackID callback = CBID_NO_CALLBACK, uint32 callback_param1 = 0, uint32 callback_param2 = 0);
+			CallbackID callback = CBID_NO_CALLBACK, uint32_t callback_param1 = 0, uint32_t callback_param2 = 0);
 
 	ScopeResolver *GetScope(VarSpriteGroupScope scope = VSG_SCOPE_SELF, byte relative = 0) override;
 
 	const SpriteGroup *ResolveReal(const RealSpriteGroup *group) const override;
 
 	GrfSpecFeature GetFeature() const override;
-	uint32 GetDebugID() const override;
+	uint32_t GetDebugID() const override;
 };
 
 static const uint TRAININFO_DEFAULT_VEHICLE_WIDTH   = 29;
@@ -94,14 +94,20 @@ struct GRFFile;
 
 void SetEngineGRF(EngineID engine, const struct GRFFile *file);
 
-uint16 GetVehicleCallback(CallbackID callback, uint32 param1, uint32 param2, EngineID engine, const Vehicle *v);
-uint16 GetVehicleCallbackParent(CallbackID callback, uint32 param1, uint32 param2, EngineID engine, const Vehicle *v, const Vehicle *parent);
+uint16_t GetVehicleCallback(CallbackID callback, uint32_t param1, uint32_t param2, EngineID engine, const Vehicle *v);
+uint16_t GetVehicleCallbackParent(CallbackID callback, uint32_t param1, uint32_t param2, EngineID engine, const Vehicle *v, const Vehicle *parent);
 bool UsesWagonOverride(const Vehicle *v);
 
 /* Handler to Evaluate callback 36. If the callback fails (i.e. most of the
  * time) orig_value is returned */
 int GetVehicleProperty(const Vehicle *v, PropertyID property, int orig_value, bool is_signed = false);
 int GetEngineProperty(EngineID engine, PropertyID property, int orig_value, const Vehicle *v = nullptr, bool is_signed = false);
+
+enum class BuildProbabilityType {
+	Reversed = 0,
+};
+
+bool TestVehicleBuildProbability(Vehicle *v, EngineID engine, BuildProbabilityType type);
 
 enum VehicleTrigger {
 	VEHICLE_TRIGGER_NEW_CARGO     = 0x01,
@@ -119,7 +125,7 @@ void TriggerVehicle(Vehicle *veh, VehicleTrigger trigger);
 void AlterVehicleListOrder(EngineID engine, uint target);
 void CommitVehicleListOrderChanges();
 
-EngineID GetNewEngineID(const GRFFile *file, VehicleType type, uint16 internal_id);
+EngineID GetNewEngineID(const GRFFile *file, VehicleType type, uint16_t internal_id);
 
 void FillNewGRFVehicleCache(const Vehicle *v);
 

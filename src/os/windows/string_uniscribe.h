@@ -28,23 +28,24 @@ public:
 	static const bool SUPPORTS_RTL = true;
 
 	/**
-	* Get the actual ParagraphLayout for the given buffer.
-	* @param buff The begin of the buffer.
-	* @param buff_end The location after the last element in the buffer.
-	* @param fontMapping THe mapping of the fonts.
-	* @return The ParagraphLayout instance.
-	*/
+	 * Get the actual ParagraphLayout for the given buffer.
+	 * @param buff The begin of the buffer.
+	 * @param buff_end The location after the last element in the buffer.
+	 * @param fontMapping THe mapping of the fonts.
+	 * @return The ParagraphLayout instance.
+	 */
 	static ParagraphLayouter *GetParagraphLayout(CharType *buff, CharType *buff_end, FontMap &fontMapping);
 
 	/**
-	* Append a wide character to the internal buffer.
-	* @param buff        The buffer to append to.
-	* @param buffer_last The end of the buffer.
-	* @param c           The character to add.
-	* @return The number of buffer spaces that were used.
-	*/
-	static size_t AppendToBuffer(CharType *buff, const CharType *buffer_last, WChar c)
+	 * Append a wide character to the internal buffer.
+	 * @param buff        The buffer to append to.
+	 * @param buffer_last The end of the buffer.
+	 * @param c           The character to add.
+	 * @return The number of buffer spaces that were used.
+	 */
+	static size_t AppendToBuffer(CharType *buff, const CharType *buffer_last, char32_t c)
 	{
+		assert(buff < buffer_last);
 		if (c >= 0x010000U) {
 			/* Character is encoded using surrogates in UTF-16. */
 			if (buff + 1 <= buffer_last) {

@@ -49,6 +49,13 @@
 	return GetString(STR_INDUSTRY_NAME);
 }
 
+/* static */ ScriptDate::Date ScriptIndustry::GetConstructionDate(IndustryID industry_id)
+{
+	Industry *i = Industry::GetIfValid(industry_id);
+	if (i == nullptr) return ScriptDate::DATE_INVALID;
+	return (ScriptDate::Date)i->construction_date.base();
+}
+
 /* static */ bool ScriptIndustry::SetText(IndustryID industry_id, Text *text)
 {
 	CCountedPtr<Text> counter(text);
@@ -215,7 +222,7 @@
 {
 	Industry *i = Industry::GetIfValid(industry_id);
 	if (i == nullptr) return 0;
-	return i->last_prod_year;
+	return i->last_prod_year.base();
 }
 
 /* static */ ScriptDate::Date ScriptIndustry::GetCargoLastAcceptedDate(IndustryID industry_id, CargoID cargo_type)
@@ -225,11 +232,11 @@
 
 	if (!::IsValidCargoID(cargo_type)) {
 		auto it = std::max_element(std::begin(i->accepted), std::end(i->accepted), [](const auto &a, const auto &b) { return a.last_accepted < b.last_accepted; });
-		return (ScriptDate::Date)it->last_accepted;
+		return (ScriptDate::Date)it->last_accepted.base();
 	} else {
 		auto it = i->GetCargoAccepted(cargo_type);
 		if (it == std::end(i->accepted)) return ScriptDate::DATE_INVALID;
-		return (ScriptDate::Date)it->last_accepted;
+		return (ScriptDate::Date)it->last_accepted.base();
 	}
 }
 
@@ -286,4 +293,22 @@
 	auto company = ScriptCompany::ResolveCompanyID(company_id);
 	::Owner owner = (company == ScriptCompany::COMPANY_INVALID ? ::INVALID_OWNER : (::Owner)company);
 	return ScriptObject::Command<CMD_INDUSTRY_SET_EXCLUSIVITY>::Do(industry_id, owner, true);
+}
+
+/* static */ SQInteger ScriptIndustry::GetProductionLevel(IndustryID industry_id)
+{
+	Industry *i = Industry::GetIfValid(industry_id);
+	if (i == nullptr) return 0;
+	return i->prod_level;
+}
+
+/* static */ bool ScriptIndustry::SetProductionLevel(IndustryID industry_id, SQInteger prod_level, bool show_news, Text *custom_news)
+{
+	CCountedPtr<Text> counter(custom_news);
+
+	EnforceDeityMode(false);
+	EnforcePrecondition(false, IsValidIndustry(industry_id));
+	EnforcePrecondition(false, prod_level >= PRODLEVEL_MINIMUM && prod_level <= PRODLEVEL_MAXIMUM);
+
+	return ScriptObject::Command<CMD_INDUSTRY_SET_PRODUCTION>::Do(industry_id, prod_level, show_news, custom_news != nullptr ? custom_news->GetEncodedText() : std::string{});
 }

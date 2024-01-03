@@ -132,7 +132,7 @@
 	EnforcePrecondition(false, IsValidGroup(group_id) || group_id == GROUP_DEFAULT);
 	EnforcePrecondition(false, ScriptVehicle::IsPrimaryVehicle(vehicle_id));
 
-	return ScriptObject::Command<CMD_ADD_VEHICLE_GROUP>::Do(group_id, vehicle_id, false);
+	return ScriptObject::Command<CMD_ADD_VEHICLE_GROUP>::Do(group_id, vehicle_id, false, VehicleListIdentifier{});
 }
 
 /* static */ bool ScriptGroup::EnableWagonRemoval(bool enable_removal)
@@ -201,8 +201,8 @@
 {
 	if (!IsValidGroup(group_id)) return -1;
 
-	uint32 occupancy = 0;
-	uint32 vehicle_count = 0;
+	uint32_t occupancy = 0;
+	uint32_t vehicle_count = 0;
 
 	for (const Vehicle *v : Vehicle::Iterate()) {
 		if (v->group_id != group_id) continue;

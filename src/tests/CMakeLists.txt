@@ -1,6 +1,13 @@
 add_test_files(
     landscape_partial_pixel_z.cpp
     math_func.cpp
+    mock_environment.h
+    mock_fontcache.h
+    mock_spritecache.cpp
+    mock_spritecache.h
     string_func.cpp
+    strings_func.cpp
     test_main.cpp
+    test_script_admin.cpp
+    test_window_desc.cpp
 )

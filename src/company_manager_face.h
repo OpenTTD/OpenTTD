@@ -93,7 +93,7 @@ static_assert(lengthof(_cmf_info) == CMFV_END);
  * @pre _cmf_info[cmfv].valid_values[ge] != 0
  * @return the requested bits
  */
-static inline uint GetCompanyManagerFaceBits(CompanyManagerFace cmf, CompanyManagerFaceVariable cmfv, GenderEthnicity ge)
+static inline uint GetCompanyManagerFaceBits(CompanyManagerFace cmf, CompanyManagerFaceVariable cmfv, [[maybe_unused]] GenderEthnicity ge)
 {
 	assert(_cmf_info[cmfv].valid_values[ge] != 0);
 
@@ -108,7 +108,7 @@ static inline uint GetCompanyManagerFaceBits(CompanyManagerFace cmf, CompanyMana
  * @param val  the new value
  * @pre val < _cmf_info[cmfv].valid_values[ge]
  */
-static inline void SetCompanyManagerFaceBits(CompanyManagerFace &cmf, CompanyManagerFaceVariable cmfv, GenderEthnicity ge, uint val)
+static inline void SetCompanyManagerFaceBits(CompanyManagerFace &cmf, CompanyManagerFaceVariable cmfv, [[maybe_unused]] GenderEthnicity ge, uint val)
 {
 	assert(val < _cmf_info[cmfv].valid_values[ge]);
 
@@ -127,9 +127,9 @@ static inline void SetCompanyManagerFaceBits(CompanyManagerFace &cmf, CompanyMan
  *
  * @pre 0 <= val < _cmf_info[cmfv].valid_values[ge]
  */
-static inline void IncreaseCompanyManagerFaceBits(CompanyManagerFace &cmf, CompanyManagerFaceVariable cmfv, GenderEthnicity ge, int8 amount)
+static inline void IncreaseCompanyManagerFaceBits(CompanyManagerFace &cmf, CompanyManagerFaceVariable cmfv, GenderEthnicity ge, int8_t amount)
 {
-	int8 val = GetCompanyManagerFaceBits(cmf, cmfv, ge) + amount; // the new value for the cmfv
+	int8_t val = GetCompanyManagerFaceBits(cmf, cmfv, ge) + amount; // the new value for the cmfv
 
 	/* scales the new value to the correct scope */
 	if (val >= _cmf_info[cmfv].valid_values[ge]) {

@@ -10,9 +10,9 @@
 #ifndef INDUSTRY_TYPE_H
 #define INDUSTRY_TYPE_H
 
-typedef uint16 IndustryID;
-typedef uint16 IndustryGfx;
-typedef uint8 IndustryType;
+typedef uint16_t IndustryID;
+typedef uint16_t IndustryGfx;
+typedef uint8_t IndustryType;
 struct Industry;
 
 struct IndustrySpec;

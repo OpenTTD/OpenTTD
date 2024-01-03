@@ -47,6 +47,7 @@
 #include "../subsidy_base.h"
 #include "../subsidy_func.h"
 #include "../newgrf.h"
+#include "../newgrf_station.h"
 #include "../engine_func.h"
 #include "../rail_gui.h"
 #include "../core/backup_type.hpp"
@@ -259,7 +260,7 @@ static void InitializeWindowsAndCaches()
 		/* For each company, verify (while loading a scenario) that the inauguration date is the current year and set it
 		 * accordingly if it is not the case.  No need to set it on companies that are not been used already,
 		 * thus the MIN_YEAR (which is really nothing more than Zero, initialized value) test */
-		if (_file_to_saveload.abstract_ftype == FT_SCENARIO && c->inaugurated_year != MIN_YEAR) {
+		if (_file_to_saveload.abstract_ftype == FT_SCENARIO && c->inaugurated_year != CalendarTime::MIN_YEAR) {
 			c->inaugurated_year = TimerGameCalendar::year;
 		}
 	}
@@ -727,7 +728,7 @@ bool AfterLoadGame()
 	}
 
 	/* The value of TimerGameCalendar::date_fract got divided, so make sure that old games are converted correctly. */
-	if (IsSavegameVersionBefore(SLV_11, 1) || (IsSavegameVersionBefore(SLV_147) && TimerGameCalendar::date_fract > DAY_TICKS)) TimerGameCalendar::date_fract /= 885;
+	if (IsSavegameVersionBefore(SLV_11, 1) || (IsSavegameVersionBefore(SLV_147) && TimerGameCalendar::date_fract > Ticks::DAY_TICKS)) TimerGameCalendar::date_fract /= 885;
 
 	/* Update current year
 	 * must be done before loading sprites as some newgrfs check it */
@@ -776,13 +777,13 @@ bool AfterLoadGame()
 	}
 
 	if (IsSavegameVersionBefore(SLV_ENDING_YEAR)) {
-		_settings_game.game_creation.ending_year = DEF_END_YEAR;
+		_settings_game.game_creation.ending_year = CalendarTime::DEF_END_YEAR;
 	}
 
 	/* Convert linkgraph update settings from days to seconds. */
 	if (IsSavegameVersionBefore(SLV_LINKGRAPH_SECONDS)) {
-		_settings_game.linkgraph.recalc_interval *= SECONDS_PER_DAY;
-		_settings_game.linkgraph.recalc_time     *= SECONDS_PER_DAY;
+		_settings_game.linkgraph.recalc_interval *= CalendarTime::SECONDS_PER_DAY;
+		_settings_game.linkgraph.recalc_time     *= CalendarTime::SECONDS_PER_DAY;
 	}
 
 	/* Load the sprites */
@@ -1413,7 +1414,7 @@ bool AfterLoadGame()
 	}
 
 	for (Company *c : Company::Iterate()) {
-		c->avail_railtypes = GetCompanyRailtypes(c->index);
+		c->avail_railtypes = GetCompanyRailTypes(c->index);
 		c->avail_roadtypes = GetCompanyRoadTypes(c->index);
 	}
 
@@ -1422,18 +1423,18 @@ bool AfterLoadGame()
 	/* Time starts at 0 instead of 1920.
 	 * Account for this in older games by adding an offset */
 	if (IsSavegameVersionBefore(SLV_31)) {
-		TimerGameCalendar::date += DAYS_TILL_ORIGINAL_BASE_YEAR;
-		TimerGameCalendar::year += ORIGINAL_BASE_YEAR;
+		TimerGameCalendar::date += CalendarTime::DAYS_TILL_ORIGINAL_BASE_YEAR;
+		TimerGameCalendar::year += CalendarTime::ORIGINAL_BASE_YEAR;
 
-		for (Station *st : Station::Iterate())   st->build_date      += DAYS_TILL_ORIGINAL_BASE_YEAR;
-		for (Waypoint *wp : Waypoint::Iterate()) wp->build_date      += DAYS_TILL_ORIGINAL_BASE_YEAR;
-		for (Engine *e : Engine::Iterate())      e->intro_date       += DAYS_TILL_ORIGINAL_BASE_YEAR;
-		for (Company *c : Company::Iterate()) c->inaugurated_year += ORIGINAL_BASE_YEAR;
-		for (Industry *i : Industry::Iterate())  i->last_prod_year   += ORIGINAL_BASE_YEAR;
+		for (Station *st : Station::Iterate())   st->build_date      += CalendarTime::DAYS_TILL_ORIGINAL_BASE_YEAR;
+		for (Waypoint *wp : Waypoint::Iterate()) wp->build_date      += CalendarTime::DAYS_TILL_ORIGINAL_BASE_YEAR;
+		for (Engine *e : Engine::Iterate())      e->intro_date       += CalendarTime::DAYS_TILL_ORIGINAL_BASE_YEAR;
+		for (Company *c : Company::Iterate()) c->inaugurated_year += CalendarTime::ORIGINAL_BASE_YEAR;
+		for (Industry *i : Industry::Iterate())  i->last_prod_year   += CalendarTime::ORIGINAL_BASE_YEAR;
 
 		for (Vehicle *v : Vehicle::Iterate()) {
-			v->date_of_last_service += DAYS_TILL_ORIGINAL_BASE_YEAR;
-			v->build_year += ORIGINAL_BASE_YEAR;
+			v->date_of_last_service += CalendarTime::DAYS_TILL_ORIGINAL_BASE_YEAR;
+			v->build_year += CalendarTime::ORIGINAL_BASE_YEAR;
 		}
 	}
 
@@ -1689,9 +1690,9 @@ bool AfterLoadGame()
 
 	if (IsSavegameVersionBefore(SLV_74)) {
 		for (Station *st : Station::Iterate()) {
-			for (CargoID c = 0; c < NUM_CARGO; c++) {
-				st->goods[c].last_speed = 0;
-				if (st->goods[c].cargo.AvailableCount() != 0) SetBit(st->goods[c].status, GoodsEntry::GES_RATING);
+			for (GoodsEntry &ge : st->goods) {
+				ge.last_speed = 0;
+				if (ge.cargo.AvailableCount() != 0) SetBit(ge.status, GoodsEntry::GES_RATING);
 			}
 		}
 	}
@@ -1925,7 +1926,7 @@ bool AfterLoadGame()
 
 			/* Replace "house construction year" with "house age" */
 			if (IsTileType(t, MP_HOUSE) && IsHouseCompleted(t)) {
-				t.m5() = ClampTo<uint8_t>(TimerGameCalendar::year - (t.m5() + ORIGINAL_BASE_YEAR));
+				t.m5() = ClampTo<uint8_t>(TimerGameCalendar::year - (t.m5() + CalendarTime::ORIGINAL_BASE_YEAR));
 			}
 		}
 	}
@@ -2143,7 +2144,7 @@ bool AfterLoadGame()
 		/* Delete small ufos heading for non-existing vehicles */
 		for (DisasterVehicle *v : DisasterVehicle::Iterate()) {
 			if (v->subtype == 2 /* ST_SMALL_UFO */ && v->state != 0) {
-				const Vehicle *u = Vehicle::GetIfValid(v->dest_tile);
+				const Vehicle *u = Vehicle::GetIfValid(v->dest_tile.base());
 				if (u == nullptr || u->type != VEH_ROAD || !RoadVehicle::From(u)->IsFrontEngine()) {
 					delete v;
 				}
@@ -2271,7 +2272,7 @@ bool AfterLoadGame()
 		 *       So taking the 16 bit fractional part into account there are plenty of bits left
 		 *       for unmodified savegames ...
 		 */
-		uint64 aimed_inflation = (_economy.old_max_loan_unround << 16 | _economy.old_max_loan_unround_fract) / _settings_game.difficulty.max_loan;
+		uint64_t aimed_inflation = (_economy.old_max_loan_unround << 16 | _economy.old_max_loan_unround_fract) / _settings_game.difficulty.max_loan;
 
 		/* ... well, just clamp it then. */
 		if (aimed_inflation > MAX_INFLATION) aimed_inflation = MAX_INFLATION;
@@ -2708,7 +2709,7 @@ bool AfterLoadGame()
 		_settings_game.pf.reverse_at_signals = IsSavegameVersionBefore(SLV_100) || (_settings_game.pf.wait_oneway_signal != 255 && _settings_game.pf.wait_twoway_signal != 255 && _settings_game.pf.wait_for_pbs_path != 255);
 
 		for (Train *t : Train::Iterate()) {
-			_settings_game.vehicle.max_train_length = std::max<uint8>(_settings_game.vehicle.max_train_length, CeilDiv(t->gcache.cached_total_length, TILE_SIZE));
+			_settings_game.vehicle.max_train_length = std::max<uint8_t>(_settings_game.vehicle.max_train_length, CeilDiv(t->gcache.cached_total_length, TILE_SIZE));
 		}
 	}
 
@@ -2827,7 +2828,7 @@ bool AfterLoadGame()
 	/* The road owner of standard road stops was not properly accounted for. */
 	if (IsSavegameVersionBefore(SLV_172)) {
 		for (auto t : Map::Iterate()) {
-			if (!IsStandardRoadStopTile(t)) continue;
+			if (!IsBayRoadStopTile(t)) continue;
 			Owner o = GetTileOwner(t);
 			SetRoadOwner(t, RTT_ROAD, o);
 			SetRoadOwner(t, RTT_TRAM, o);
@@ -2851,9 +2852,29 @@ bool AfterLoadGame()
 	}
 
 	if (IsSavegameVersionBefore(SLV_178)) {
-		extern uint8 _old_diff_level;
+		extern uint8_t _old_diff_level;
 		/* Initialise script settings profile */
 		_settings_game.script.settings_profile = IsInsideMM(_old_diff_level, SP_BEGIN, SP_END) ? _old_diff_level : (uint)SP_MEDIUM;
+	}
+
+	{
+		/* Station blocked, wires and pylon flags need to be stored in the map. This is effectively cached data, so no
+		 * version check is necessary. This is done here as the SLV_182 check below needs the blocked status. */
+		for (auto t : Map::Iterate()) {
+			if (HasStationTileRail(t)) {
+				StationGfx gfx = GetStationGfx(t);
+				const StationSpec *statspec = GetStationSpec(t);
+
+				bool blocked = statspec != nullptr && HasBit(statspec->blocked, gfx);
+				/* Default stations do not draw pylons under roofs (gfx >= 4) */
+				bool pylons = statspec != nullptr ? HasBit(statspec->pylons, gfx) : gfx < 4;
+				bool wires = statspec == nullptr || !HasBit(statspec->wires, gfx);
+
+				SetStationTileBlocked(t, blocked);
+				SetStationTileHavePylons(t, pylons);
+				SetStationTileHaveWires(t, wires);
+			}
+		}
 	}
 
 	if (IsSavegameVersionBefore(SLV_182)) {
@@ -2876,7 +2897,7 @@ bool AfterLoadGame()
 
 	if (IsSavegameVersionBefore(SLV_184)) {
 		/* The global units configuration is split up in multiple configurations. */
-		extern uint8 _old_units;
+		extern uint8_t _old_units;
 		_settings_game.locale.units_velocity = Clamp(_old_units, 0, 2);
 		_settings_game.locale.units_power    = Clamp(_old_units, 0, 2);
 		_settings_game.locale.units_weight   = Clamp(_old_units, 1, 2);
@@ -2999,7 +3020,7 @@ bool AfterLoadGame()
 				t->growth_rate = TownTicksToGameTicks(t->growth_rate & ~0x8000);
 			}
 			/* Add t->index % TOWN_GROWTH_TICKS to spread growth across ticks. */
-			t->grow_counter = TownTicksToGameTicks(t->grow_counter) + t->index % TOWN_GROWTH_TICKS;
+			t->grow_counter = TownTicksToGameTicks(t->grow_counter) + t->index % Ticks::TOWN_GROWTH_TICKS;
 		}
 	}
 
@@ -3134,7 +3155,7 @@ bool AfterLoadGame()
 	if (IsSavegameVersionBefore(SLV_GROUP_REPLACE_WAGON_REMOVAL)) {
 		/* Propagate wagon removal flag for compatibility */
 		/* Temporary bitmask of company wagon removal setting */
-		uint16 wagon_removal = 0;
+		uint16_t wagon_removal = 0;
 		for (const Company *c : Company::Iterate()) {
 			if (c->settings.renew_keep_length) SetBit(wagon_removal, c->index);
 		}
@@ -3151,7 +3172,7 @@ bool AfterLoadGame()
 	/* Use current order time to approximate last loading time */
 	if (IsSavegameVersionBefore(SLV_LAST_LOADING_TICK)) {
 		for (Vehicle *v : Vehicle::Iterate()) {
-			v->last_loading_tick = std::max(TimerGameTick::counter, static_cast<uint64>(v->current_order_time)) - v->current_order_time;
+			v->last_loading_tick = std::max(TimerGameTick::counter, static_cast<uint64_t>(v->current_order_time)) - v->current_order_time;
 		}
 	}
 
@@ -3232,6 +3253,17 @@ bool AfterLoadGame()
 		extern TimeoutTimer<TimerGameTick> _new_competitor_timeout;
 		_new_competitor_timeout.storage.elapsed = 0;
 		_new_competitor_timeout.fired = _new_competitor_timeout.period == 0;
+	}
+
+	if (IsSavegameVersionBefore(SLV_NEWGRF_LAST_SERVICE)) {
+		/* Set service date provided to NewGRF. */
+		for (Vehicle *v : Vehicle::Iterate()) {
+			v->date_of_last_service_newgrf = v->date_of_last_service;
+		}
+	}
+
+	for (Company *c : Company::Iterate()) {
+		UpdateCompanyLiveries(c);
 	}
 
 	AfterLoadLabelMaps();

@@ -66,7 +66,7 @@ SQRESULT sq_stackinfos(HSQUIRRELVM v, SQInteger level, SQStackInfos *si)
 
 void SQVM::Raise_Error(const std::string &msg)
 {
-	_lasterror = SQString::Create(_ss(this),msg.c_str(),-1);
+	_lasterror = SQString::Create(_ss(this),msg);
 }
 
 void SQVM::Raise_Error(SQObjectPtr &desc)
@@ -79,9 +79,9 @@ SQString *SQVM::PrintObjVal(const SQObject &o)
 	switch(type(o)) {
 	case OT_STRING: return _string(o);
 	case OT_INTEGER:
-		return SQString::Create(_ss(this), fmt::format("{}", _integer(o)).c_str());
+		return SQString::Create(_ss(this), fmt::format("{}", _integer(o)));
 	case OT_FLOAT:
-		return SQString::Create(_ss(this), fmt::format("{:.14g}", _float(o)).c_str());
+		return SQString::Create(_ss(this), fmt::format("{:.14g}", _float(o)));
 	default:
 		return SQString::Create(_ss(this), GetTypeName(o));
 	}

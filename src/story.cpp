@@ -29,8 +29,8 @@
 #include "safeguards.h"
 
 
-uint32 _story_page_element_next_sort_value;
-uint32 _story_page_next_sort_value;
+uint32_t _story_page_element_next_sort_value;
+uint32_t _story_page_next_sort_value;
 
 StoryPageElementPool _story_page_element_pool("StoryPageElement");
 StoryPagePool _story_page_pool("StoryPage");
@@ -47,7 +47,7 @@ INSTANTIATE_POOL_METHODS(StoryPage)
  * @param text The text parameter of the DoCommand proc
  * @return true, if and only if the given parameters are valid for the given page element type and page id.
  */
-static bool VerifyElementContentParameters(StoryPageID page_id, StoryPageElementType type, TileIndex tile, uint32 reference, const std::string &text)
+static bool VerifyElementContentParameters(StoryPageID page_id, StoryPageElementType type, TileIndex tile, uint32_t reference, const std::string &text)
 {
 	StoryPageButtonData button_data{ reference };
 
@@ -91,7 +91,7 @@ static bool VerifyElementContentParameters(StoryPageID page_id, StoryPageElement
  * @param reference The reference parameter of the DoCommand proc (p2)
  * @param text The text parameter of the DoCommand proc
  */
-static void UpdateElement(StoryPageElement &pe, TileIndex tile, uint32 reference, const std::string &text)
+static void UpdateElement(StoryPageElement &pe, TileIndex tile, uint32_t reference, const std::string &text)
 {
 	switch (pe.type) {
 		case SPET_TEXT:
@@ -99,7 +99,7 @@ static void UpdateElement(StoryPageElement &pe, TileIndex tile, uint32 reference
 			break;
 		case SPET_LOCATION:
 			pe.text = text;
-			pe.referenced_id = tile;
+			pe.referenced_id = tile.base();
 			break;
 		case SPET_GOAL:
 			pe.referenced_id = (GoalID)reference;
@@ -242,12 +242,12 @@ std::tuple<CommandCost, StoryPageID> CmdCreateStoryPage(DoCommandFlag flags, Com
  * @param text Text content in case it is a text or location page element
  * @return the cost of this operation or an error
  */
-std::tuple<CommandCost, StoryPageElementID> CmdCreateStoryPageElement(DoCommandFlag flags, TileIndex tile, StoryPageID page_id, StoryPageElementType type, uint32 reference, const std::string &text)
+std::tuple<CommandCost, StoryPageElementID> CmdCreateStoryPageElement(DoCommandFlag flags, TileIndex tile, StoryPageID page_id, StoryPageElementType type, uint32_t reference, const std::string &text)
 {
 	if (!StoryPageElement::CanAllocateItem()) return { CMD_ERROR, INVALID_STORY_PAGE_ELEMENT };
 
 	/* Allow at most 128 elements per page. */
-	uint16 element_count = 0;
+	uint16_t element_count = 0;
 	for (StoryPageElement *iter : StoryPageElement::Iterate()) {
 		if (iter->page == page_id) element_count++;
 	}
@@ -288,7 +288,7 @@ std::tuple<CommandCost, StoryPageElementID> CmdCreateStoryPageElement(DoCommandF
  * @param text Text content in case it is a text or location page element
  * @return the cost of this operation or an error
  */
-CommandCost CmdUpdateStoryPageElement(DoCommandFlag flags, TileIndex tile, StoryPageElementID page_element_id, uint32 reference, const std::string &text)
+CommandCost CmdUpdateStoryPageElement(DoCommandFlag flags, TileIndex tile, StoryPageElementID page_element_id, uint32_t reference, const std::string &text)
 {
 	if (_current_company != OWNER_DEITY) return CMD_ERROR;
 	if (!StoryPageElement::IsValidID(page_element_id)) return CMD_ERROR;

@@ -71,7 +71,8 @@ struct DLSFile {
 		WSMPL wave_sample;
 		std::vector<WLOOP> wave_loops;
 
-		bool operator ==(long offset) const {
+		bool operator ==(long offset) const
+		{
 			return this->file_offset == offset;
 		}
 	};
@@ -115,7 +116,7 @@ PACK_N(struct WAVE_DOWNLOAD {
 }, 2);
 
 struct PlaybackSegment {
-	uint32 start, end;
+	uint32_t start, end;
 	size_t start_block;
 	bool loop;
 };
@@ -565,19 +566,19 @@ static void TransmitStandardSysex(IDirectMusicBuffer *buffer, REFERENCE_TIME rt,
 static void TransmitNotesOff(IDirectMusicBuffer *buffer, REFERENCE_TIME block_time, REFERENCE_TIME cur_time)
 {
 	for (int ch = 0; ch < 16; ch++) {
-		TransmitChannelMsg(_buffer, block_time + 10, MIDIST_CONTROLLER | ch, MIDICT_MODE_ALLNOTESOFF, 0);
-		TransmitChannelMsg(_buffer, block_time + 10, MIDIST_CONTROLLER | ch, MIDICT_SUSTAINSW, 0);
-		TransmitChannelMsg(_buffer, block_time + 10, MIDIST_CONTROLLER | ch, MIDICT_MODE_RESETALLCTRL, 0);
+		TransmitChannelMsg(buffer, block_time + 10, MIDIST_CONTROLLER | ch, MIDICT_MODE_ALLNOTESOFF, 0);
+		TransmitChannelMsg(buffer, block_time + 10, MIDIST_CONTROLLER | ch, MIDICT_SUSTAINSW, 0);
+		TransmitChannelMsg(buffer, block_time + 10, MIDIST_CONTROLLER | ch, MIDICT_MODE_RESETALLCTRL, 0);
 	}
 
 	/* Performing a GM reset stops all sound and resets all parameters. */
-	TransmitStandardSysex(_buffer, block_time + 20, MidiSysexMessage::ResetGM);
-	TransmitStandardSysex(_buffer, block_time + 30, MidiSysexMessage::RolandSetReverb);
+	TransmitStandardSysex(buffer, block_time + 20, MidiSysexMessage::ResetGM);
+	TransmitStandardSysex(buffer, block_time + 30, MidiSysexMessage::RolandSetReverb);
 
 	/* Explicitly flush buffer to make sure the messages are processed,
 	 * as we want sound to stop immediately. */
-	_port->PlayBuffer(_buffer);
-	_buffer->Flush();
+	_port->PlayBuffer(buffer);
+	buffer->Flush();
 
 	/* Wait until message time has passed. */
 	Sleep(Clamp((block_time - cur_time) / MS_TO_REFTIME, 5, 1000));
@@ -722,7 +723,7 @@ static void MidiThreadProc()
 				REFERENCE_TIME playback_time = current_time - playback_start_time;
 				if (block.realtime * MIDITIME_TO_REFTIME > playback_time +  3 *_playback.preload_time * MS_TO_REFTIME) {
 					/* Stop the thread loop until we are at the preload time of the next block. */
-					next_timeout = Clamp(((int64)block.realtime * MIDITIME_TO_REFTIME - playback_time) / MS_TO_REFTIME - _playback.preload_time, 0, 1000);
+					next_timeout = Clamp(((int64_t)block.realtime * MIDITIME_TO_REFTIME - playback_time) / MS_TO_REFTIME - _playback.preload_time, 0, 1000);
 					Debug(driver, 9, "DMusic thread: Next event in {} ms (music {}, ref {})", next_timeout, block.realtime * MIDITIME_TO_REFTIME, playback_time);
 					break;
 				}
@@ -873,7 +874,7 @@ static const char *LoadDefaultDLSFile(const char *user_dls)
 			}
 
 			/* If we couldn't load the file from the registry, try again at the default install path of the GM DLS file. */
-			if (dls_file.instruments.size() == 0) {
+			if (dls_file.instruments.empty()) {
 				static const wchar_t *DLS_GM_FILE = L"%windir%\\System32\\drivers\\gm.dls";
 				wchar_t path[MAX_PATH];
 				ExpandEnvironmentStrings(DLS_GM_FILE, path, lengthof(path));
@@ -939,14 +940,14 @@ static const char *LoadDefaultDLSFile(const char *user_dls)
 
 			/* Calculate download size for the instrument. */
 			size_t i_size = sizeof(DMUS_DOWNLOADINFO) + sizeof(DMUS_INSTRUMENT);
-			if (dls_file.instruments[i].articulators.size() > 0) {
+			if (!dls_file.instruments[i].articulators.empty()) {
 				/* Articulations are stored as two chunks, one containing meta data and one with the actual articulation data. */
 				offsets += 2;
 				i_size += sizeof(DMUS_ARTICULATION2) + sizeof(CONNECTIONLIST) + sizeof(CONNECTION) * dls_file.instruments[i].articulators.size();
 			}
 
 			for (std::vector<DLSFile::DLSRegion>::iterator rgn = dls_file.instruments[i].regions.begin(); rgn != dls_file.instruments[i].regions.end(); rgn++) {
-				if (rgn->articulators.size() > 0) {
+				if (!rgn->articulators.empty()) {
 					offsets += 2;
 					i_size += sizeof(DMUS_ARTICULATION2) + sizeof(CONNECTIONLIST) + sizeof(CONNECTION) * rgn->articulators.size();
 				}
@@ -999,7 +1000,7 @@ static const char *LoadDefaultDLSFile(const char *user_dls)
 			instrument = inst_data + 1;
 
 			/* Write global articulations. */
-			if (dls_file.instruments[i].articulators.size() > 0) {
+			if (!dls_file.instruments[i].articulators.empty()) {
 				inst_data->ulGlobalArtIdx = last_offset;
 				offset_table[last_offset++] = (char *)instrument - inst_base;
 				offset_table[last_offset++] = (char *)instrument + sizeof(DMUS_ARTICULATION2) - inst_base;
@@ -1028,18 +1029,18 @@ static const char *LoadDefaultDLSFile(const char *user_dls)
 				/* The wave sample data will be taken from the region, if defined, otherwise from the wave itself. */
 				if (rgn.wave_sample.cbSize != 0) {
 					inst_region->WSMP = rgn.wave_sample;
-					if (rgn.wave_loops.size() > 0) MemCpyT(inst_region->WLOOP, &rgn.wave_loops.front(), rgn.wave_loops.size());
+					if (!rgn.wave_loops.empty()) MemCpyT(inst_region->WLOOP, &rgn.wave_loops.front(), rgn.wave_loops.size());
 
 					instrument = (char *)(inst_region + 1) - sizeof(DMUS_REGION::WLOOP) + sizeof(WLOOP) * rgn.wave_loops.size();
 				} else {
 					inst_region->WSMP = rgn.wave_sample;
-					if (dls_file.waves[wave_id].wave_loops.size() > 0) MemCpyT(inst_region->WLOOP, &dls_file.waves[wave_id].wave_loops.front(), dls_file.waves[wave_id].wave_loops.size());
+					if (!dls_file.waves[wave_id].wave_loops.empty()) MemCpyT(inst_region->WLOOP, &dls_file.waves[wave_id].wave_loops.front(), dls_file.waves[wave_id].wave_loops.size());
 
 					instrument = (char *)(inst_region + 1) - sizeof(DMUS_REGION::WLOOP) + sizeof(WLOOP) * dls_file.waves[wave_id].wave_loops.size();
 				}
 
 				/* Write local articulator data. */
-				if (rgn.articulators.size() > 0) {
+				if (!rgn.articulators.empty()) {
 					inst_region->ulRegionArtIdx = last_offset;
 					offset_table[last_offset++] = (char *)instrument - inst_base;
 					offset_table[last_offset++] = (char *)instrument + sizeof(DMUS_ARTICULATION2) - inst_base;
@@ -1168,7 +1169,7 @@ void MusicDriver_DMusic::Stop()
 	}
 
 	/* Unloaded any instruments we loaded. */
-	if (_dls_downloads.size() > 0) {
+	if (!_dls_downloads.empty()) {
 		IDirectMusicPortDownload *download_port = nullptr;
 		_port->QueryInterface(IID_IDirectMusicPortDownload, (LPVOID *)&download_port);
 

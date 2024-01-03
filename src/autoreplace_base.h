@@ -15,7 +15,7 @@
 #include "engine_type.h"
 #include "group_type.h"
 
-typedef uint16 EngineRenewID;
+typedef uint16_t EngineRenewID;
 
 /**
  * Memory pool for engine renew elements. DO NOT USE outside of engine.c. Is

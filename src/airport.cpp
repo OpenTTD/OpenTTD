@@ -65,7 +65,7 @@ AIRPORT_GENERIC(dummy, nullptr, 0, AirportFTAClass::ALL, 0)
 #include "table/airport_defaults.h"
 
 
-static uint16 AirportGetNofElements(const AirportFTAbuildup *apFA);
+static uint16_t AirportGetNofElements(const AirportFTAbuildup *apFA);
 static AirportFTA *AirportBuildAutomata(uint nofelements, const AirportFTAbuildup *apFA);
 
 
@@ -147,9 +147,9 @@ AirportFTAClass::~AirportFTAClass()
  * Since it is actually just a big array of AirportFTA types, we only
  * know one element from the other by differing 'position' identifiers
  */
-static uint16 AirportGetNofElements(const AirportFTAbuildup *apFA)
+static uint16_t AirportGetNofElements(const AirportFTAbuildup *apFA)
 {
-	uint16 nofelements = 0;
+	uint16_t nofelements = 0;
 	int temp = apFA[0].position;
 
 	for (uint i = 0; i < MAX_ELEMENTS; i++) {
@@ -171,7 +171,7 @@ static uint16 AirportGetNofElements(const AirportFTAbuildup *apFA)
 static AirportFTA *AirportBuildAutomata(uint nofelements, const AirportFTAbuildup *apFA)
 {
 	AirportFTA *FAutomata = MallocT<AirportFTA>(nofelements);
-	uint16 internalcounter = 0;
+	uint16_t internalcounter = 0;
 
 	for (uint i = 0; i < nofelements; i++) {
 		AirportFTA *current = &FAutomata[i];

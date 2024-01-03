@@ -31,9 +31,9 @@ protected:
 	 * Send a STUN request to the STUN server letting the Game Coordinator know
 	 * what our actually public IP:port is.
 	 *
-	 *  uint8   Game Coordinator protocol version.
+	 *  uint8_t   Game Coordinator protocol version.
 	 *  string  Token to track the current STUN request.
-	 *  uint8   Which interface number this is (for example, IPv4 or IPv6).
+	 *  uint8_t   Which interface number this is (for example, IPv4 or IPv6).
 	 *          The Game Coordinator relays this number back in later packets.
 	 *
 	 * @param p The packet that was just received.

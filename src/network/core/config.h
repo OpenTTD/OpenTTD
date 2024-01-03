@@ -18,15 +18,15 @@ const char *NetworkContentServerConnectionString();
 const char *NetworkContentMirrorUriString();
 const char *NetworkSurveyUriString();
 
-static const uint16 NETWORK_COORDINATOR_SERVER_PORT = 3976;           ///< The default port of the Game Coordinator server (TCP)
-static const uint16 NETWORK_STUN_SERVER_PORT        = 3975;           ///< The default port of the STUN server (TCP)
-static const uint16 NETWORK_TURN_SERVER_PORT        = 3974;           ///< The default port of the TURN server (TCP)
-static const uint16 NETWORK_CONTENT_SERVER_PORT     = 3978;           ///< The default port of the content server (TCP)
-static const uint16 NETWORK_DEFAULT_PORT            = 3979;           ///< The default port of the game server (TCP & UDP)
-static const uint16 NETWORK_ADMIN_PORT              = 3977;           ///< The default port for admin network
-static const uint16 NETWORK_DEFAULT_DEBUGLOG_PORT   = 3982;           ///< The default port debug-log is sent to (TCP)
+static const uint16_t NETWORK_COORDINATOR_SERVER_PORT = 3976;           ///< The default port of the Game Coordinator server (TCP)
+static const uint16_t NETWORK_STUN_SERVER_PORT        = 3975;           ///< The default port of the STUN server (TCP)
+static const uint16_t NETWORK_TURN_SERVER_PORT        = 3974;           ///< The default port of the TURN server (TCP)
+static const uint16_t NETWORK_CONTENT_SERVER_PORT     = 3978;           ///< The default port of the content server (TCP)
+static const uint16_t NETWORK_DEFAULT_PORT            = 3979;           ///< The default port of the game server (TCP & UDP)
+static const uint16_t NETWORK_ADMIN_PORT              = 3977;           ///< The default port for admin network
+static const uint16_t NETWORK_DEFAULT_DEBUGLOG_PORT   = 3982;           ///< The default port debug-log is sent to (TCP)
 
-static const uint16 UDP_MTU                         = 1460;           ///< Number of bytes we can pack in a single UDP packet
+static const uint16_t UDP_MTU                         = 1460;           ///< Number of bytes we can pack in a single UDP packet
 
 static const std::string NETWORK_SURVEY_DETAILS_LINK = "https://survey.openttd.org/participate"; ///< Link with more details & privacy statement of the survey.
 /*
@@ -37,14 +37,14 @@ static const std::string NETWORK_SURVEY_DETAILS_LINK = "https://survey.openttd.o
  * 00000000 00000000 0bbbbbbb aaaaaaaa -> aaaaaaaa 0bbbbbbb
  * Send_uint16(GB(size, 0, 15)
  *
- * Packets up to 1 GiB, first uint16 has high bit set so it knows to read a
- * next uint16 for the remaining bits of the size.
+ * Packets up to 1 GiB, first uint16_t has high bit set so it knows to read a
+ * next uint16_t for the remaining bits of the size.
  * 00dddddd cccccccc bbbbbbbb aaaaaaaa -> cccccccc 10dddddd aaaaaaaa bbbbbbbb
  * Send_uint16(GB(size, 16, 14) | 0b10 << 14)
  * Send_uint16(GB(size,  0, 16))
  */
-static const uint16 TCP_MTU                         = 32767;          ///< Number of bytes we can pack in a single TCP packet
-static const uint16 COMPAT_MTU                      = 1460;           ///< Number of bytes we can pack in a single packet for backward compatibility
+static const uint16_t TCP_MTU                         = 32767;          ///< Number of bytes we can pack in a single TCP packet
+static const uint16_t COMPAT_MTU                      = 1460;           ///< Number of bytes we can pack in a single packet for backward compatibility
 
 static const byte NETWORK_GAME_ADMIN_VERSION        =    3;           ///< What version of the admin network do we use?
 static const byte NETWORK_GAME_INFO_VERSION         =    6;           ///< What version of game-info do we use?
@@ -60,7 +60,7 @@ static const uint NETWORK_REVISION_LENGTH           =   33;           ///< The m
 static const uint NETWORK_PASSWORD_LENGTH           =   33;           ///< The maximum length of the password, in bytes including '\0' (must be >= NETWORK_SERVER_ID_LENGTH)
 static const uint NETWORK_CLIENT_NAME_LENGTH        =   25;           ///< The maximum length of a client's name, in bytes including '\0'
 static const uint NETWORK_RCONCOMMAND_LENGTH        =  500;           ///< The maximum length of a rconsole command, in bytes including '\0'
-static const uint NETWORK_GAMESCRIPT_JSON_LENGTH    = COMPAT_MTU - 3; ///< The maximum length of a gamescript json string, in bytes including '\0'. Must not be longer than COMPAT_MTU including header (3 bytes)
+static const uint NETWORK_GAMESCRIPT_JSON_LENGTH    = 9000;           ///< The maximum length of a receiving gamescript json string, in bytes including '\0'.
 static const uint NETWORK_CHAT_LENGTH               =  900;           ///< The maximum length of a chat message, in bytes including '\0'
 static const uint NETWORK_CONTENT_FILENAME_LENGTH   =   48;           ///< The maximum length of a content's filename, in bytes including '\0'.
 static const uint NETWORK_CONTENT_NAME_LENGTH       =   32;           ///< The maximum length of a content's name, in bytes including '\0'.

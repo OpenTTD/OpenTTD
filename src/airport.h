@@ -85,7 +85,7 @@ enum AirportMovementStates {
 };
 
 /** Movement Blocks on Airports blocks (eg_airport_flags). */
-static const uint64
+static const uint64_t
 	TERM1_block              = 1ULL <<  0, ///< Block belonging to terminal 1.
 	TERM2_block              = 1ULL <<  1, ///< Block belonging to terminal 2.
 	TERM3_block              = 1ULL <<  2, ///< Block belonging to terminal 3.
@@ -129,9 +129,9 @@ static const uint64
 
 /** A single location on an airport where aircraft can move to. */
 struct AirportMovingData {
-	int16 x;             ///< x-coordinate of the destination.
-	int16 y;             ///< y-coordinate of the destination.
-	uint16 flag;         ///< special flags when moving towards the destination.
+	int16_t x;             ///< x-coordinate of the destination.
+	int16_t y;             ///< y-coordinate of the destination.
+	uint16_t flag;         ///< special flags when moving towards the destination.
 	Direction direction; ///< Direction to turn the aircraft after reaching the destination.
 };
 
@@ -189,7 +189,7 @@ DECLARE_ENUM_AS_BIT_SET(AirportFTAClass::Flags)
 /** Internal structure used in openttd - Finite sTate mAchine --> FTA */
 struct AirportFTA {
 	AirportFTA *next;        ///< possible extra movement choices from this position
-	uint64 block;            ///< 64 bit blocks (st->airport.flags), should be enough for the most complex airports
+	uint64_t block;            ///< 64 bit blocks (st->airport.flags), should be enough for the most complex airports
 	byte position;           ///< the position that an airplane is at
 	byte next_position;      ///< next position from this position
 	byte heading;            ///< heading (current orders), guiding an airplane to its target on an airport

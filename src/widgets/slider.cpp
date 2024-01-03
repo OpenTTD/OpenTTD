@@ -8,6 +8,7 @@
 /** @file slider.cpp Implementation of the horizontal slider widget. */
 
 #include "../stdafx.h"
+#include "../palette_func.h"
 #include "../window_gui.h"
 #include "../window_func.h"
 #include "../strings_func.h"
@@ -29,7 +30,7 @@ static const int SLIDER_WIDTH = 3;
 void DrawSliderWidget(Rect r, int min_value, int max_value, int value, const std::map<int, StringID> &labels)
 {
 	/* Allow space for labels. We assume they are in the small font. */
-	if (labels.size() > 0) r.bottom -= FONT_HEIGHT_SMALL + WidgetDimensions::scaled.hsep_normal;
+	if (!labels.empty()) r.bottom -= GetCharacterHeight(FS_SMALL) + WidgetDimensions::scaled.hsep_normal;
 
 	max_value -= min_value;
 

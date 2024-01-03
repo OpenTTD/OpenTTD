@@ -301,4 +301,7 @@ void AyStar::Init(Hash_HashProc hash, uint num_buckets)
 	 *  When that one gets full it reserves another one, till this number
 	 *  That is why it can stay this high */
 	this->openlist_queue.Init(102400);
+
+	/* Set a reasonable default limit */
+	this->max_search_nodes = AYSTAR_DEF_MAX_SEARCH_NODES;
 }

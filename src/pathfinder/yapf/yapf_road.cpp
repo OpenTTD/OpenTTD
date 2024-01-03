@@ -35,7 +35,7 @@ protected:
 		return *static_cast<Tpf *>(this);
 	}
 
-	int SlopeCost(TileIndex tile, TileIndex next_tile, Trackdir trackdir)
+	int SlopeCost(TileIndex tile, TileIndex next_tile, Trackdir)
 	{
 		/* height of the center of the current tile */
 		int x1 = TileX(tile) * TILE_SIZE;
@@ -109,7 +109,7 @@ public:
 	 *  Calculates only the cost of given node, adds it to the parent node cost
 	 *  and stores the result into Node::m_cost member
 	 */
-	inline bool PfCalcCost(Node &n, const TrackFollower *tf)
+	inline bool PfCalcCost(Node &n, const TrackFollower *)
 	{
 		int segment_cost = 0;
 		uint tiles = 0;
@@ -202,7 +202,7 @@ public:
 		return IsRoadDepotTile(n.m_segment_last_tile);
 	}
 
-	inline bool PfDetectDestinationTile(TileIndex tile, Trackdir trackdir)
+	inline bool PfDetectDestinationTile(TileIndex tile, Trackdir)
 	{
 		return IsRoadDepotTile(tile);
 	}
@@ -425,12 +425,6 @@ public:
 			}
 		}
 		return next_trackdir;
-	}
-
-	static uint stDistanceToTile(const RoadVehicle *v, TileIndex tile)
-	{
-		Tpf pf;
-		return pf.DistanceToTile(v, tile);
 	}
 
 	inline uint DistanceToTile(const RoadVehicle *v, TileIndex dst_tile)

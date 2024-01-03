@@ -50,7 +50,7 @@ static OGLProc GetOGLProcAddressCallback(const char *proc)
 
 bool VideoDriver_SDL_OpenGL::CreateMainWindow(uint w, uint h, uint flags)
 {
-	return this->VideoDriver_SDL_Base::CreateMainWindow(w, h, SDL_WINDOW_OPENGL);
+	return this->VideoDriver_SDL_Base::CreateMainWindow(w, h, flags | SDL_WINDOW_OPENGL);
 }
 
 const char *VideoDriver_SDL_OpenGL::Start(const StringList &param)

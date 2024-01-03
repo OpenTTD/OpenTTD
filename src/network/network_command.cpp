@@ -392,6 +392,10 @@ static void DistributeQueue(CommandQueue *queue, const NetworkClientSocket *owne
 	int to_go = UINT16_MAX;
 #else
 	int to_go = _settings_client.network.commands_per_frame;
+	if (owner == nullptr) {
+		/* This is the server, use the commands_per_frame_server setting if higher */
+		to_go = std::max<int>(to_go, _settings_client.network.commands_per_frame_server);
+	}
 #endif
 
 	CommandPacket *cp;
@@ -453,7 +457,7 @@ void NetworkGameSocketHandler::SendCommand(Packet *p, const CommandPacket *cp)
 		Debug(net, 0, "Unknown callback for command; no callback sent (command: {})", cp->cmd);
 		callback = 0; // _callback_table[0] == nullptr
 	}
-	p->Send_uint8 ((uint8)callback);
+	p->Send_uint8 ((uint8_t)callback);
 }
 
 /** Helper to process a single ClientID argument. */

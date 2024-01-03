@@ -18,12 +18,12 @@
 class FallbackParagraphLayoutFactory {
 public:
 	/** Helper for GetLayouter, to get the right type. */
-	typedef WChar CharType;
+	typedef char32_t CharType;
 	/** Helper for GetLayouter, to get whether the layouter supports RTL. */
 	static const bool SUPPORTS_RTL = false;
 
-	static ParagraphLayouter *GetParagraphLayout(WChar *buff, WChar *buff_end, FontMap &fontMapping);
-	static size_t AppendToBuffer(WChar *buff, const WChar *buffer_last, WChar c);
+	static ParagraphLayouter *GetParagraphLayout(char32_t *buff, char32_t *buff_end, FontMap &fontMapping);
+	static size_t AppendToBuffer(char32_t *buff, const char32_t *buffer_last, char32_t c);
 };
 
 

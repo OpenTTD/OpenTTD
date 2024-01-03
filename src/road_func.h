@@ -122,7 +122,7 @@ static inline RoadBits AxisToRoadBits(Axis a)
  * @param total_num Total number of road bits of all road/tram-types.
  * @return Total cost.
  */
-static inline Money RoadMaintenanceCost(RoadType roadtype, uint32 num, uint32 total_num)
+static inline Money RoadMaintenanceCost(RoadType roadtype, uint32_t num, uint32_t total_num)
 {
 	assert(roadtype < ROADTYPE_END);
 	return (_price[PR_INFRASTRUCTURE_ROAD] * GetRoadTypeInfo(roadtype)->maintenance_multiplier * num * (1 + IntSqrt(total_num))) >> 12;

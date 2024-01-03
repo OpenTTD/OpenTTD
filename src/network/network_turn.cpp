@@ -45,7 +45,7 @@ public:
 	}
 };
 
-bool ClientNetworkTurnSocketHandler::Receive_TURN_ERROR(Packet *p)
+bool ClientNetworkTurnSocketHandler::Receive_TURN_ERROR(Packet *)
 {
 	this->ConnectFailure();
 
@@ -86,7 +86,7 @@ void ClientNetworkTurnSocketHandler::Connect()
  * @param connection_string Connection string of the TURN server.
  * @return The handler for this TURN connection.
  */
-/* static */ std::unique_ptr<ClientNetworkTurnSocketHandler> ClientNetworkTurnSocketHandler::Turn(const std::string &token, uint8 tracking_number, const std::string &ticket, const std::string &connection_string)
+/* static */ std::unique_ptr<ClientNetworkTurnSocketHandler> ClientNetworkTurnSocketHandler::Turn(const std::string &token, uint8_t tracking_number, const std::string &ticket, const std::string &connection_string)
 {
 	auto turn_handler = std::make_unique<ClientNetworkTurnSocketHandler>(token, tracking_number, connection_string);
 

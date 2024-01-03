@@ -11,7 +11,7 @@
 #define WIDGETS_BRIDGE_WIDGET_H
 
 /** Widgets of the #BuildBridgeWindow class. */
-enum BuildBridgeSelectionWidgets {
+enum BuildBridgeSelectionWidgets : WidgetID {
 	WID_BBS_CAPTION,           ///< Caption of the window.
 	WID_BBS_DROPDOWN_ORDER,    ///< Direction of sort dropdown.
 	WID_BBS_DROPDOWN_CRITERIA, ///< Criteria of sort dropdown.

@@ -99,10 +99,10 @@ TEST_CASE("ClampTo")
 	CHECK(127 == ClampTo<int8_t>(127));
 	CHECK(126 == ClampTo<int8_t>(126));
 
-	CHECK(126 == ClampTo<int64_t>(static_cast<uint8>(126)));
-	CHECK(126 == ClampTo<uint64_t>(static_cast<int8>(126)));
-	CHECK(0 == ClampTo<uint64_t>(static_cast<int8>(-126)));
-	CHECK(0 == ClampTo<uint8_t>(static_cast<int8>(-126)));
+	CHECK(126 == ClampTo<int64_t>(static_cast<uint8_t>(126)));
+	CHECK(126 == ClampTo<uint64_t>(static_cast<int8_t>(126)));
+	CHECK(0 == ClampTo<uint64_t>(static_cast<int8_t>(-126)));
+	CHECK(0 == ClampTo<uint8_t>(static_cast<int8_t>(-126)));
 
 	/* The realm around 64 bits types is tricky as there is not one type/method that works for all. */
 

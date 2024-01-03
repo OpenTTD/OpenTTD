@@ -84,7 +84,7 @@ public:
 
 	constexpr size_t size() const noexcept { return static_cast<size_t>( last - first ); }
 	constexpr std::ptrdiff_t ssize() const noexcept { return static_cast<std::ptrdiff_t>( last - first ); }
-	constexpr bool empty() const noexcept { return size() == 0; }
+	constexpr bool empty() const noexcept { return this->size() == 0; }
 
 	constexpr iterator begin() const noexcept { return iterator(first); }
 	constexpr iterator end() const noexcept { return iterator(last); }
@@ -95,6 +95,12 @@ public:
 	constexpr reference operator[](size_type idx) const { return first[idx]; }
 
 	constexpr pointer data() const noexcept { return first; }
+
+	constexpr span<element_type> subspan(size_t offset, size_t count)
+	{
+		assert(offset + count <= size());
+		return span(this->data() + offset, count);
+	}
 
 private:
 	pointer first;

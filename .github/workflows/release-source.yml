@@ -152,13 +152,18 @@ jobs:
     - name: Generate survey key
       id: survey_key
       run: |
-        PAYLOAD='{"version":"${{ steps.metadata.outputs.version }}","type":"${{ vars.SURVEY_TYPE }}"}'
+        if [ -z "${{ vars.SURVEY_TYPE }}" ]; then
+          echo "SURVEY_TYPE variable not found; most likely running in a fork. Skipping step."
+          SURVEY_KEY=""
+        else
+          PAYLOAD='{"version":"${{ steps.metadata.outputs.version }}","type":"${{ vars.SURVEY_TYPE }}"}'
 
-        echo "${{ secrets.SURVEY_SIGNING_KEY }}" > survey_signing_key.pem
-        SIGNATURE=$(echo -n "${PAYLOAD}" | openssl dgst -sha256 -sign survey_signing_key.pem | base64 -w0)
-        rm -f survey_signing_key.pem
+          echo "${{ secrets.SURVEY_SIGNING_KEY }}" > survey_signing_key.pem
+          SIGNATURE=$(echo -n "${PAYLOAD}" | openssl dgst -sha256 -sign survey_signing_key.pem | base64 -w0)
+          rm -f survey_signing_key.pem
 
-        SURVEY_KEY=$(curl -f -s -X POST -d "${PAYLOAD}" -H "Content-Type: application/json" -H "X-Signature: ${SIGNATURE}" https://survey-participate.openttd.org/create-survey-key/${{ vars.SURVEY_TYPE }})
+          SURVEY_KEY=$(curl -f -s -X POST -d "${PAYLOAD}" -H "Content-Type: application/json" -H "X-Signature: ${SIGNATURE}" https://survey-participate.openttd.org/create-survey-key/${{ vars.SURVEY_TYPE }})
+        fi
 
         echo "survey_key=${SURVEY_KEY}" >> $GITHUB_OUTPUT
 

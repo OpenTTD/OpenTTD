@@ -26,4 +26,4 @@ bool NetworkStunSocketHandler::ReceiveInvalidPacket(PacketStunType type)
 	return false;
 }
 
-bool NetworkStunSocketHandler::Receive_SERCLI_STUN(Packet *p) { return this->ReceiveInvalidPacket(PACKET_STUN_SERCLI_STUN); }
+bool NetworkStunSocketHandler::Receive_SERCLI_STUN(Packet *) { return this->ReceiveInvalidPacket(PACKET_STUN_SERCLI_STUN); }

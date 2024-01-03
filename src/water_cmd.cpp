@@ -47,7 +47,7 @@
 /**
  * Describes from which directions a specific slope can be flooded (if the tile is floodable at all).
  */
-static const uint8 _flood_from_dirs[] = {
+static const uint8_t _flood_from_dirs[] = {
 	(1 << DIR_NW) | (1 << DIR_SW) | (1 << DIR_SE) | (1 << DIR_NE), // SLOPE_FLAT
 	(1 << DIR_NE) | (1 << DIR_SE),                                 // SLOPE_W
 	(1 << DIR_NW) | (1 << DIR_NE),                                 // SLOPE_S
@@ -186,7 +186,7 @@ void CheckForDockingTile(TileIndex t)
 		TileIndex tile = t + TileOffsByDiagDir(d);
 		if (!IsValidTile(tile)) continue;
 
-		if (IsDockTile(tile) && IsValidDockingDirectionForDock(tile, d)) {
+		if (IsDockTile(tile) && IsDockWaterPart(tile)) {
 			Station::GetByTile(tile)->docking_station.Add(t);
 			SetDockingTile(t, true);
 		}
@@ -434,7 +434,8 @@ bool RiverModifyDesertZone(TileIndex tile, void *)
  * Make a river tile and remove desert directly around it.
  * @param tile The tile to change into river and create non-desert around
  */
-void MakeRiverAndModifyDesertZoneAround(TileIndex tile) {
+void MakeRiverAndModifyDesertZoneAround(TileIndex tile)
+{
 	MakeRiver(tile, Random());
 	MarkTileDirtyByTile(tile);
 
@@ -751,7 +752,7 @@ static void DrawWaterEdges(bool canal, uint offset, TileIndex tile)
 }
 
 /** Draw a plain sea water tile with no edges */
-static void DrawSeaWater(TileIndex tile)
+static void DrawSeaWater(TileIndex)
 {
 	DrawGroundSprite(SPR_FLAT_WATER_TILE, PAL_NONE);
 }
@@ -829,7 +830,7 @@ static void DrawWaterLock(const TileInfo *ti)
 	if (base == 0) {
 		/* If no custom graphics, use defaults. */
 		base = SPR_LOCK_BASE;
-		uint8 z_threshold = part == LOCK_PART_UPPER ? 8 : 0;
+		uint8_t z_threshold = part == LOCK_PART_UPPER ? 8 : 0;
 		zoffs = ti->z > z_threshold ? 24 : 0;
 	}
 
@@ -941,7 +942,7 @@ void DrawShipDepotSprite(int x, int y, Axis axis, DepotPart part)
 }
 
 
-static int GetSlopePixelZ_Water(TileIndex tile, uint x, uint y, bool ground_vehicle)
+static int GetSlopePixelZ_Water(TileIndex tile, uint x, uint y, bool)
 {
 	int z;
 	Slope tileh = GetTilePixelSlope(tile, &z);
@@ -949,7 +950,7 @@ static int GetSlopePixelZ_Water(TileIndex tile, uint x, uint y, bool ground_vehi
 	return z + GetPartialPixelZ(x & 0xF, y & 0xF, tileh);
 }
 
-static Foundation GetFoundation_Water(TileIndex tile, Slope tileh)
+static Foundation GetFoundation_Water(TileIndex, Slope)
 {
 	return FOUNDATION_NONE;
 }
@@ -1301,7 +1302,7 @@ void ConvertGroundTilesIntoWaterTiles()
 	}
 }
 
-static TrackStatus GetTileTrackStatus_Water(TileIndex tile, TransportType mode, uint sub_mode, DiagDirection side)
+static TrackStatus GetTileTrackStatus_Water(TileIndex tile, TransportType mode, uint, DiagDirection)
 {
 	static const TrackBits coast_tracks[] = {TRACK_BIT_NONE, TRACK_BIT_RIGHT, TRACK_BIT_UPPER, TRACK_BIT_NONE, TRACK_BIT_LEFT, TRACK_BIT_NONE, TRACK_BIT_NONE,
 		TRACK_BIT_NONE, TRACK_BIT_LOWER, TRACK_BIT_NONE, TRACK_BIT_NONE, TRACK_BIT_NONE, TRACK_BIT_NONE, TRACK_BIT_NONE, TRACK_BIT_NONE, TRACK_BIT_NONE};
@@ -1373,12 +1374,12 @@ static void ChangeTileOwner_Water(TileIndex tile, Owner old_owner, Owner new_own
 	}
 }
 
-static VehicleEnterTileStatus VehicleEnter_Water(Vehicle *v, TileIndex tile, int x, int y)
+static VehicleEnterTileStatus VehicleEnter_Water(Vehicle *, TileIndex, int, int)
 {
 	return VETSB_CONTINUE;
 }
 
-static CommandCost TerraformTile_Water(TileIndex tile, DoCommandFlag flags, int z_new, Slope tileh_new)
+static CommandCost TerraformTile_Water(TileIndex tile, DoCommandFlag flags, int, Slope)
 {
 	/* Canals can't be terraformed */
 	if (IsWaterTile(tile) && IsCanal(tile)) return_cmd_error(STR_ERROR_MUST_DEMOLISH_CANAL_FIRST);

@@ -132,23 +132,23 @@ static uint NPFDistanceTrack(TileIndex t0, TileIndex t1)
 
 /**
  * Calculates a hash value for use in the NPF.
- * @param key1 The TileIndex of the tile to hash
- * @param key2 The Trackdir of the track on the tile.
+ * @param tile The TileIndex of the tile to hash
+ * @param dir The Trackdir of the track on the tile.
  *
  * @todo Think of a better hash.
  */
-static uint NPFHash(uint key1, uint key2)
+static uint NPFHash(TileIndex tile, Trackdir dir)
 {
 	/* TODO: think of a better hash? */
-	uint part1 = TileX(key1) & NPF_HASH_HALFMASK;
-	uint part2 = TileY(key1) & NPF_HASH_HALFMASK;
+	uint part1 = TileX(tile) & NPF_HASH_HALFMASK;
+	uint part2 = TileY(tile) & NPF_HASH_HALFMASK;
 
-	assert(IsValidTrackdir((Trackdir)key2));
-	assert(IsValidTile((TileIndex)key1));
-	return ((part1 << NPF_HASH_HALFBITS | part2) + (NPF_HASH_SIZE * key2 / TRACKDIR_END)) % NPF_HASH_SIZE;
+	assert(IsValidTrackdir(dir));
+	assert(IsValidTile(tile));
+	return ((part1 << NPF_HASH_HALFBITS | part2) + (NPF_HASH_SIZE * dir / TRACKDIR_END)) % NPF_HASH_SIZE;
 }
 
-static int32 NPFCalcZero(AyStar *as, AyStarNode *current, OpenListNode *parent)
+static int32_t NPFCalcZero(AyStar *, AyStarNode *, OpenListNode *)
 {
 	return 0;
 }
@@ -156,7 +156,7 @@ static int32 NPFCalcZero(AyStar *as, AyStarNode *current, OpenListNode *parent)
 /* Calculates the heuristic to the target station or tile. For train stations, it
  * takes into account the direction of approach.
  */
-static int32 NPFCalcStationOrTileHeuristic(AyStar *as, AyStarNode *current, OpenListNode *parent)
+static int32_t NPFCalcStationOrTileHeuristic(AyStar *as, AyStarNode *current, OpenListNode *)
 {
 	NPFFindStationOrTileData *fstd = (NPFFindStationOrTileData*)as->user_target;
 	NPFFoundTargetData *ftd = (NPFFoundTargetData*)as->user_path;
@@ -312,9 +312,9 @@ static Vehicle *CountShipProc(Vehicle *v, void *data)
 	return nullptr;
 }
 
-static int32 NPFWaterPathCost(AyStar *as, AyStarNode *current, OpenListNode *parent)
+static int32_t NPFWaterPathCost(AyStar *, AyStarNode *current, OpenListNode *parent)
 {
-	int32 cost = 0;
+	int32_t cost = 0;
 	Trackdir trackdir = current->direction;
 
 	cost = _trackdir_length[trackdir]; // Should be different for diagonal tracks
@@ -340,10 +340,10 @@ static int32 NPFWaterPathCost(AyStar *as, AyStarNode *current, OpenListNode *par
 }
 
 /* Determine the cost of this node, for road tracks */
-static int32 NPFRoadPathCost(AyStar *as, AyStarNode *current, OpenListNode *parent)
+static int32_t NPFRoadPathCost(AyStar *, AyStarNode *current, OpenListNode *)
 {
 	TileIndex tile = current->tile;
-	int32 cost = 0;
+	int32_t cost = 0;
 
 	/* Determine base length */
 	switch (GetTileType(tile)) {
@@ -399,11 +399,11 @@ static int32 NPFRoadPathCost(AyStar *as, AyStarNode *current, OpenListNode *pare
 
 
 /* Determine the cost of this node, for railway tracks */
-static int32 NPFRailPathCost(AyStar *as, AyStarNode *current, OpenListNode *parent)
+static int32_t NPFRailPathCost(AyStar *as, AyStarNode *current, OpenListNode *parent)
 {
 	TileIndex tile = current->tile;
 	Trackdir trackdir = current->direction;
-	int32 cost = 0;
+	int32_t cost = 0;
 	/* HACK: We create a OpenListNode manually, so we can call EndNodeCheck */
 	OpenListNode new_node;
 
@@ -550,7 +550,7 @@ static int32 NPFRailPathCost(AyStar *as, AyStarNode *current, OpenListNode *pare
 }
 
 /* Will find any depot */
-static int32 NPFFindDepot(const AyStar *as, const OpenListNode *current)
+static int32_t NPFFindDepot(const AyStar *as, const OpenListNode *current)
 {
 	AyStarUserData *user = (AyStarUserData *)as->user_data;
 	/* It's not worth caching the result with NPF_FLAG_IS_TARGET here as below,
@@ -560,7 +560,7 @@ static int32 NPFFindDepot(const AyStar *as, const OpenListNode *current)
 }
 
 /** Find any safe and free tile. */
-static int32 NPFFindSafeTile(const AyStar *as, const OpenListNode *current)
+static int32_t NPFFindSafeTile(const AyStar *as, const OpenListNode *current)
 {
 	const Train *v = Train::From(((NPFFindStationOrTileData *)as->user_target)->v);
 
@@ -570,7 +570,7 @@ static int32 NPFFindSafeTile(const AyStar *as, const OpenListNode *current)
 }
 
 /* Will find a station identified using the NPFFindStationOrTileData */
-static int32 NPFFindStationOrTile(const AyStar *as, const OpenListNode *current)
+static int32_t NPFFindStationOrTile(const AyStar *as, const OpenListNode *current)
 {
 	NPFFindStationOrTileData *fstd = (NPFFindStationOrTileData*)as->user_target;
 	const AyStarNode *node = &current->path.node;
@@ -695,7 +695,7 @@ static bool CanEnterTileOwnerCheck(Owner owner, TileIndex tile, DiagDirection en
 	if (IsTileType(tile, MP_RAILWAY) || // Rail tile (also rail depot)
 			HasStationTileRail(tile) ||     // Rail station tile/waypoint
 			IsRoadDepotTile(tile) ||        // Road depot tile
-			IsStandardRoadStopTile(tile)) { // Road station tile (but not drive-through stops)
+			IsBayRoadStopTile(tile)) { // Road station tile (but not drive-through stops)
 		return IsTileOwner(tile, owner);  // You need to own these tiles entirely to use them
 	}
 
@@ -768,7 +768,7 @@ static DiagDirection GetTileSingleEntry(TileIndex tile, TransportType type, uint
 	if (type != TRANSPORT_WATER && IsDepotTypeTile(tile, type)) return GetDepotDirection(tile, type);
 
 	if (type == TRANSPORT_ROAD) {
-		if (IsStandardRoadStopTile(tile)) return GetRoadStopDir(tile);
+		if (IsBayRoadStopTile(tile)) return GetRoadStopDir(tile);
 		if ((RoadTramType)subtype == RTT_TRAM) return GetSingleTramBit(tile);
 	}
 

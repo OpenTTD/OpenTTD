@@ -30,6 +30,7 @@
 #include "error.h"
 #include "engine_base.h"
 #include "timer/timer.h"
+#include "timer/timer_game_tick.h"
 #include "timer/timer_game_calendar.h"
 
 #include "table/strings.h"
@@ -49,7 +50,7 @@ EngineOverrideManager _engine_mngr;
 static TimerGameCalendar::Year _year_engine_aging_stops;
 
 /** Number of engines of each vehicle type in original engine data */
-const uint8 _engine_counts[4] = {
+const uint8_t _engine_counts[4] = {
 	lengthof(_orig_rail_vehicle_info),
 	lengthof(_orig_road_vehicle_info),
 	lengthof(_orig_ship_vehicle_info),
@@ -57,7 +58,7 @@ const uint8 _engine_counts[4] = {
 };
 
 /** Offset of the first engine of each vehicle type in original engine data */
-const uint8 _engine_offsets[4] = {
+const uint8_t _engine_offsets[4] = {
 	0,
 	lengthof(_orig_rail_vehicle_info),
 	lengthof(_orig_rail_vehicle_info) + lengthof(_orig_road_vehicle_info),
@@ -94,7 +95,7 @@ Engine::Engine(VehicleType type, EngineID base)
 			default: break; // The aircraft, disasters and especially visual effects have no NewGRF configured visual effects
 		}
 		/* Set cargo aging period to the default value. */
-		this->info.cargo_age_period = CARGO_AGING_TICKS;
+		this->info.cargo_age_period = Ticks::CARGO_AGING_TICKS;
 		/* Not a variant */
 		this->info.variant_id = INVALID_ENGINE;
 		return;
@@ -151,7 +152,7 @@ bool Engine::IsEnabled() const
  * This is the GRF providing the Action 3.
  * @return GRF ID of the associated NewGRF.
  */
-uint32 Engine::GetGRFID() const
+uint32_t Engine::GetGRFID() const
 {
 	const GRFFile *file = this->GetGRF();
 	return file == nullptr ? 0 : file->grfid;
@@ -195,7 +196,7 @@ bool Engine::CanCarryCargo() const
  * @param mail_capacity returns secondary cargo (mail) capacity of aircraft
  * @return Capacity
  */
-uint Engine::DetermineCapacity(const Vehicle *v, uint16 *mail_capacity) const
+uint Engine::DetermineCapacity(const Vehicle *v, uint16_t *mail_capacity) const
 {
 	assert(v == nullptr || this->index == v->engine_type);
 	if (mail_capacity != nullptr) *mail_capacity = 0;
@@ -213,7 +214,7 @@ uint Engine::DetermineCapacity(const Vehicle *v, uint16 *mail_capacity) const
 	/* Check the refit capacity callback if we are not in the default configuration, or if we are using the new multiplier algorithm. */
 	if (HasBit(this->info.callback_mask, CBM_VEHICLE_REFIT_CAPACITY) &&
 			(new_multipliers || default_cargo != cargo_type || (v != nullptr && v->cargo_subtype != 0))) {
-		uint16 callback = GetVehicleCallback(CBID_VEHICLE_REFIT_CAPACITY, 0, 0, this->index, v);
+		uint16_t callback = GetVehicleCallback(CBID_VEHICLE_REFIT_CAPACITY, 0, 0, this->index, v);
 		if (callback != CALLBACK_FAILED) return callback;
 	}
 
@@ -256,8 +257,8 @@ uint Engine::DetermineCapacity(const Vehicle *v, uint16 *mail_capacity) const
 
 	/* Apply multipliers depending on cargo- and vehicletype. */
 	if (new_multipliers || (this->type != VEH_SHIP && default_cargo != cargo_type)) {
-		uint16 default_multiplier = new_multipliers ? 0x100 : CargoSpec::Get(default_cargo)->multiplier;
-		uint16 cargo_multiplier = CargoSpec::Get(cargo_type)->multiplier;
+		uint16_t default_multiplier = new_multipliers ? 0x100 : CargoSpec::Get(default_cargo)->multiplier;
+		uint16_t cargo_multiplier = CargoSpec::Get(cargo_type)->multiplier;
 		capacity *= cargo_multiplier;
 		if (extra_mail_cap > 0) {
 			uint mail_multiplier = CargoSpec::Get(CT_MAIL)->multiplier;
@@ -438,14 +439,14 @@ uint Engine::GetDisplayMaxTractiveEffort() const
 TimerGameCalendar::Date Engine::GetLifeLengthInDays() const
 {
 	/* Assume leap years; this gives the player a bit more than the given amount of years, but never less. */
-	return (this->info.lifelength + _settings_game.vehicle.extend_vehicle_life) * DAYS_IN_LEAP_YEAR;
+	return (this->info.lifelength + _settings_game.vehicle.extend_vehicle_life).base() * CalendarTime::DAYS_IN_LEAP_YEAR;
 }
 
 /**
  * Get the range of an aircraft type.
  * @return Range of the aircraft type in tiles or 0 if unlimited range.
  */
-uint16 Engine::GetRange() const
+uint16_t Engine::GetRange() const
 {
 	switch (this->type) {
 		case VEH_AIRCRAFT:
@@ -491,7 +492,7 @@ bool Engine::IsVariantHidden(CompanyID c) const
 	 * the last display variant rather than the actual parent variant. */
 	const Engine *re = this;
 	const Engine *ve = re->GetDisplayVariant();
-	while (!(ve->IsHidden(c)) && re->info.variant_id != INVALID_ENGINE && re->info.variant_id != re->index) {
+	while (!(ve->IsHidden(c)) && re->info.variant_id != INVALID_ENGINE) {
 		re = Engine::Get(re->info.variant_id);
 		ve = re->GetDisplayVariant();
 	}
@@ -524,7 +525,7 @@ void EngineOverrideManager::ResetToDefaultMapping()
  *              If dynnamic_engines is disabled, all newgrf share the same ID scope identified by INVALID_GRFID.
  * @return The engine ID if present, or INVALID_ENGINE if not.
  */
-EngineID EngineOverrideManager::GetID(VehicleType type, uint16 grf_local_id, uint32 grfid)
+EngineID EngineOverrideManager::GetID(VehicleType type, uint16_t grf_local_id, uint32_t grfid)
 {
 	EngineID index = 0;
 	for (const EngineIDMapping &eid : *this) {
@@ -607,11 +608,11 @@ void CalcEngineReliability(Engine *e, bool new_month)
 {
 	/* Get source engine for reliability age. This is normally our engine unless variant reliability syncing is requested. */
 	Engine *re = e;
-	while (re->info.variant_id != INVALID_ENGINE && re->info.variant_id != re->index && (re->info.extra_flags & ExtraEngineFlags::SyncReliability) != ExtraEngineFlags::None) {
+	while (re->info.variant_id != INVALID_ENGINE && (re->info.extra_flags & ExtraEngineFlags::SyncReliability) != ExtraEngineFlags::None) {
 		re = Engine::Get(re->info.variant_id);
 	}
 
-	uint32 age = re->age;
+	uint32_t age = re->age;
 	if (new_month && re->index > e->index && age != INT32_MAX) age++; /* parent variant's age has not yet updated. */
 
 	/* Check for early retirement */
@@ -662,8 +663,7 @@ void SetYearEngineAgingStops()
 		if (e->type == VEH_TRAIN && e->u.rail.railveh_type == RAILVEH_WAGON) continue;
 
 		/* Base year ending date on half the model life */
-		TimerGameCalendar::YearMonthDay ymd;
-		TimerGameCalendar::ConvertDateToYMD(ei->base_intro + (ei->lifelength * DAYS_IN_LEAP_YEAR) / 2, &ymd);
+		TimerGameCalendar::YearMonthDay ymd = TimerGameCalendar::ConvertDateToYMD(ei->base_intro + (ei->lifelength.base() * CalendarTime::DAYS_IN_LEAP_YEAR) / 2);
 
 		_year_engine_aging_stops = std::max(_year_engine_aging_stops, ymd.year);
 	}
@@ -675,7 +675,7 @@ void SetYearEngineAgingStops()
  * @param aging_date The date used for age calculations.
  * @param seed Random seed.
  */
-void StartupOneEngine(Engine *e, TimerGameCalendar::Date aging_date, uint32 seed)
+void StartupOneEngine(Engine *e, const TimerGameCalendar::YearMonthDay &aging_ymd, uint32_t seed)
 {
 	const EngineInfo *ei = &e->info;
 
@@ -689,41 +689,56 @@ void StartupOneEngine(Engine *e, TimerGameCalendar::Date aging_date, uint32 seed
 	SavedRandomSeeds saved_seeds;
 	SaveRandomSeeds(&saved_seeds);
 	SetRandomSeed(_settings_game.game_creation.generation_seed ^ seed ^
-	              ei->base_intro ^
+	              ei->base_intro.base() ^
 	              e->type ^
 	              e->GetGRFID());
-	uint32 r = Random();
+	uint32_t r = Random();
 
 	/* Don't randomise the start-date in the first two years after gamestart to ensure availability
 	 * of engines in early starting games.
 	 * Note: TTDP uses fixed 1922 */
 	e->intro_date = ei->base_intro <= TimerGameCalendar::ConvertYMDToDate(_settings_game.game_creation.starting_year + 2, 0, 1) ? ei->base_intro : (TimerGameCalendar::Date)GB(r, 0, 9) + ei->base_intro;
 	if (e->intro_date <= TimerGameCalendar::date) {
-		e->age = (aging_date - e->intro_date) >> 5;
+		TimerGameCalendar::YearMonthDay intro_ymd = TimerGameCalendar::ConvertDateToYMD(e->intro_date);
+		int aging_months = aging_ymd.year.base() * 12 + aging_ymd.month;
+		int intro_months = intro_ymd.year.base() * 12 + intro_ymd.month;
+		if (intro_ymd.day > 1) intro_months++; // Engines are introduced at the first month start at/after intro date.
+		e->age = aging_months - intro_months;
 		e->company_avail = MAX_UVALUE(CompanyMask);
 		e->flags |= ENGINE_AVAILABLE;
 	}
 
 	/* Get parent variant index for syncing reliability via random seed. */
 	const Engine *re = e;
-	while (re->info.variant_id != INVALID_ENGINE && re->info.variant_id != re->index && (re->info.extra_flags & ExtraEngineFlags::SyncReliability) != ExtraEngineFlags::None) {
+	while (re->info.variant_id != INVALID_ENGINE && (re->info.extra_flags & ExtraEngineFlags::SyncReliability) != ExtraEngineFlags::None) {
 		re = Engine::Get(re->info.variant_id);
 	}
 
 	SetRandomSeed(_settings_game.game_creation.generation_seed ^ seed ^
-	              (re->index << 16) ^ (re->info.base_intro << 12) ^ (re->info.decay_speed << 8) ^
-	              (re->info.lifelength << 4) ^ re->info.retire_early ^
+	              (re->index << 16) ^ (re->info.base_intro.base() << 12) ^ (re->info.decay_speed << 8) ^
+	              (re->info.lifelength.base() << 4) ^ re->info.retire_early ^
 	              e->type ^
 	              e->GetGRFID());
 
-	r = Random();
-	e->reliability_start = GB(r, 16, 14) + 0x7AE0;
-	e->reliability_max   = GB(r,  0, 14) + 0xBFFF;
+	/* Base reliability defined as a percentage of UINT16_MAX. */
+	const uint16_t RELIABILITY_START = UINT16_MAX * 48 / 100;
+	const uint16_t RELIABILITY_MAX   = UINT16_MAX * 75 / 100;
+	const uint16_t RELIABILITY_FINAL = UINT16_MAX * 25 / 100;
+
+	static_assert(RELIABILITY_START == 0x7AE0);
+	static_assert(RELIABILITY_MAX   == 0xBFFF);
+	static_assert(RELIABILITY_FINAL == 0x3FFF);
 
 	r = Random();
-	e->reliability_final = GB(r, 16, 14) + 0x3FFF;
+	/* 14 bits gives a value between 0 and 16383, which is up to an additional 25%p reliability on top of the base reliability. */
+	e->reliability_start = GB(r, 16, 14) + RELIABILITY_START;
+	e->reliability_max   = GB(r,  0, 14) + RELIABILITY_MAX;
+
+	r = Random();
+	e->reliability_final = GB(r, 16, 14) + RELIABILITY_FINAL;
+
 	e->duration_phase_1 = GB(r, 0, 5) + 7;
-	e->duration_phase_2 = GB(r, 5, 4) + ei->base_life * 12 - 96;
+	e->duration_phase_2 = std::max(0, int(GB(r, 5, 4)) + ei->base_life.base() * 12 - 96);
 	e->duration_phase_3 = GB(r, 9, 7) + 120;
 
 	RestoreRandomSeeds(saved_seeds);
@@ -745,10 +760,11 @@ void StartupEngines()
 {
 	/* Aging of vehicles stops, so account for that when starting late */
 	const TimerGameCalendar::Date aging_date = std::min(TimerGameCalendar::date, TimerGameCalendar::ConvertYMDToDate(_year_engine_aging_stops, 0, 1));
-	uint32 seed = Random();
+	TimerGameCalendar::YearMonthDay aging_ymd = TimerGameCalendar::ConvertDateToYMD(aging_date);
+	uint32_t seed = Random();
 
 	for (Engine *e : Engine::Iterate()) {
-		StartupOneEngine(e, aging_date, seed);
+		StartupOneEngine(e, aging_ymd, seed);
 	}
 	for (Engine *e : Engine::Iterate()) {
 		CalcEngineReliability(e, false);
@@ -756,7 +772,7 @@ void StartupEngines()
 
 	/* Update the bitmasks for the vehicle lists */
 	for (Company *c : Company::Iterate()) {
-		c->avail_railtypes = GetCompanyRailtypes(c->index);
+		c->avail_railtypes = GetCompanyRailTypes(c->index);
 		c->avail_roadtypes = GetCompanyRoadTypes(c->index);
 	}
 
@@ -779,7 +795,7 @@ static void EnableEngineForCompany(EngineID eid, CompanyID company)
 
 	SetBit(e->company_avail, company);
 	if (e->type == VEH_TRAIN) {
-		c->avail_railtypes = GetCompanyRailtypes(c->index);
+		c->avail_railtypes = GetCompanyRailTypes(c->index);
 	} else if (e->type == VEH_ROAD) {
 		c->avail_roadtypes = GetCompanyRoadTypes(c->index);
 	}
@@ -807,7 +823,7 @@ static void DisableEngineForCompany(EngineID eid, CompanyID company)
 
 	ClrBit(e->company_avail, company);
 	if (e->type == VEH_TRAIN) {
-		c->avail_railtypes = GetCompanyRailtypes(c->index);
+		c->avail_railtypes = GetCompanyRailTypes(c->index);
 	} else if (e->type == VEH_ROAD) {
 		c->avail_roadtypes = GetCompanyRoadTypes(c->index);
 	}
@@ -863,7 +879,7 @@ static CompanyID GetPreviewCompany(Engine *e)
 	/* For trains the cargomask has no useful meaning, since you can attach other wagons */
 	CargoTypes cargomask = e->type != VEH_TRAIN ? GetUnionOfArticulatedRefitMasks(e->index, true) : ALL_CARGOTYPES;
 
-	int32 best_hist = -1;
+	int32_t best_hist = -1;
 	for (const Company *c : Company::Iterate()) {
 		if (c->block_preview == 0 && !HasBit(e->preview_asked, c->index) &&
 				c->old_economy[0].performance_history > best_hist) {
@@ -1103,7 +1119,7 @@ void EnginesMonthlyLoop()
 			/* Do not introduce invalid engines */
 			if (!e->IsEnabled()) continue;
 
-			if (!(e->flags & ENGINE_AVAILABLE) && TimerGameCalendar::date >= (e->intro_date + DAYS_IN_YEAR)) {
+			if (!(e->flags & ENGINE_AVAILABLE) && TimerGameCalendar::date >= (e->intro_date + CalendarTime::DAYS_IN_YEAR)) {
 				/* Introduce it to all companies */
 				NewVehicleAvailable(e);
 			} else if (!(e->flags & (ENGINE_AVAILABLE | ENGINE_EXCLUSIVE_PREVIEW)) && TimerGameCalendar::date >= e->intro_date) {

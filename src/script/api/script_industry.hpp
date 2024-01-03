@@ -47,6 +47,10 @@ public:
 		 * This does not prevent a closure already announced.
 		 */
 		INDCTL_NO_CLOSURE             = ::INDCTL_NO_CLOSURE,
+		/**
+		 * Indicates that the production level of the industry is controlled by a game script.
+		 */
+		INDCTL_EXTERNAL_PROD_LEVEL    = ::INDCTL_EXTERNAL_PROD_LEVEL,
 	};
 
 	/**
@@ -80,6 +84,15 @@ public:
 	 * @return The name of the industry.
 	 */
 	static std::optional<std::string> GetName(IndustryID industry_id);
+
+	/**
+	 * Get the construction date of an industry.
+	 * @param industry_id The index of the industry.
+	 * @pre IsValidIndustry(industry_id).
+	 * @return Date the industry was constructed.
+	 * @api -ai
+	 */
+	static ScriptDate::Date GetConstructionDate(IndustryID industry_id);
 
 	/**
 	 * Set the custom text of an industry, shown in the GUI.
@@ -314,6 +327,28 @@ public:
 	 */
 	static bool SetExclusiveConsumer(IndustryID industry_id, ScriptCompany::CompanyID company_id);
 
+	/**
+	 * Gets the current production level of an industry.
+	 * @param industry_id The index of the industry.
+	 * @api -ai
+	 */
+	static SQInteger GetProductionLevel(IndustryID industry_id);
+
+	/**
+	 * Sets the current production level of an industry.
+	 * @note Setting the production level automatically sets the control flag INDCTL_EXTERNAL_PROD_LEVEL if it wasn't already set.
+	 *     Normal production behaviour can be restored by clearing the control flag.
+	 * @param industry_id The index of the industry.
+	 * @param prod_level The production level to set.
+	 * @param show_news If set to true and the production changed, generate a production change news message. If set to false, no news message is shown.
+	 * @param custom_news Custom news message text to override the default news text with. Pass null to use the default text. Only used if \c show_news is set to true.
+	 * @pre IsValidIndustry(industry_id).
+	 * @pre ScriptCompanyMode::IsDeity().
+	 * @pre prod_level >= 4 && prod_level <= 128.
+	 * @return True if the action succeeded.
+	 * @api -ai
+	 */
+	static bool SetProductionLevel(IndustryID industry_id, SQInteger prod_level, bool show_news, Text *custom_news);
 };
 
 #endif /* SCRIPT_INDUSTRY_HPP */

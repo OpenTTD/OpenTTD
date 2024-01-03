@@ -10,12 +10,12 @@
  * This file implements the timer logic for the real time game-timer.
  */
 
-#include "stdafx.h"
-#include "openttd.h"
+#include "../stdafx.h"
+#include "../openttd.h"
 #include "timer.h"
 #include "timer_game_realtime.h"
 
-#include "safeguards.h"
+#include "../safeguards.h"
 
 template<>
 void IntervalTimer<TimerGameRealtime>::Elapsed(TimerGameRealtime::TElapsed delta)
@@ -63,7 +63,7 @@ void TimerManager<TimerGameRealtime>::Elapsed(TimerGameRealtime::TElapsed delta)
 
 #ifdef WITH_ASSERT
 template<>
-void TimerManager<TimerGameRealtime>::Validate(TimerGameRealtime::TPeriod period)
+void TimerManager<TimerGameRealtime>::Validate(TimerGameRealtime::TPeriod)
 {
 }
 #endif /* WITH_ASSERT */

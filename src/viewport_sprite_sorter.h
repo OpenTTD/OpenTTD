@@ -16,26 +16,26 @@
 /** Parent sprite that should be drawn */
 struct ParentSpriteToDraw {
 	/* Block of 16B loadable in xmm register */
-	int32 xmin;                     ///< minimal world X coordinate of bounding box
-	int32 ymin;                     ///< minimal world Y coordinate of bounding box
-	int32 zmin;                     ///< minimal world Z coordinate of bounding box
-	int32 x;                        ///< screen X coordinate of sprite
+	int32_t xmin;                     ///< minimal world X coordinate of bounding box
+	int32_t ymin;                     ///< minimal world Y coordinate of bounding box
+	int32_t zmin;                     ///< minimal world Z coordinate of bounding box
+	int32_t x;                        ///< screen X coordinate of sprite
 
 	/* Second block of 16B loadable in xmm register */
-	int32 xmax;                     ///< maximal world X coordinate of bounding box
-	int32 ymax;                     ///< maximal world Y coordinate of bounding box
-	int32 zmax;                     ///< maximal world Z coordinate of bounding box
-	int32 y;                        ///< screen Y coordinate of sprite
+	int32_t xmax;                     ///< maximal world X coordinate of bounding box
+	int32_t ymax;                     ///< maximal world Y coordinate of bounding box
+	int32_t zmax;                     ///< maximal world Z coordinate of bounding box
+	int32_t y;                        ///< screen Y coordinate of sprite
 
 	SpriteID image;                 ///< sprite to draw
 	PaletteID pal;                  ///< palette to use
 	const SubSprite *sub;           ///< only draw a rectangular part of the sprite
 
-	int32 left;                     ///< minimal screen X coordinate of sprite (= x + sprite->x_offs), reference point for child sprites
-	int32 top;                      ///< minimal screen Y coordinate of sprite (= y + sprite->y_offs), reference point for child sprites
+	int32_t left;                     ///< minimal screen X coordinate of sprite (= x + sprite->x_offs), reference point for child sprites
+	int32_t top;                      ///< minimal screen Y coordinate of sprite (= y + sprite->y_offs), reference point for child sprites
 
-	int32 first_child;              ///< the first child to draw.
-	uint32 order;                   ///< Used during sprite sorting
+	int32_t first_child;              ///< the first child to draw.
+	uint32_t order;                   ///< Used during sprite sorting
 };
 
 typedef std::vector<ParentSpriteToDraw*> ParentSpriteToSortVector;

@@ -272,19 +272,18 @@ void CommandHelperBase::InternalPostResult(const CommandCost &res, TileIndex til
 }
 
 /** Helper to make a desync log for a command. */
-void CommandHelperBase::LogCommandExecution(Commands cmd, StringID err_message, TileIndex tile, const CommandDataBuffer &args, bool failed)
+void CommandHelperBase::LogCommandExecution(Commands cmd, StringID err_message, const CommandDataBuffer &args, bool failed)
 {
-	Debug(desync, 1, "{}: {:08x}; {:02x}; {:02x}; {:08x}; {:08x}; {:06x}; {} ({})", failed ? "cmdf" : "cmd", TimerGameCalendar::date, TimerGameCalendar::date_fract, (int)_current_company, cmd, err_message, tile, FormatArrayAsHex(args), GetCommandName(cmd));
+	Debug(desync, 1, "{}: {:08x}; {:02x}; {:02x}; {:08x}; {:08x}; {} ({})", failed ? "cmdf" : "cmd", (uint32_t)TimerGameCalendar::date.base(), TimerGameCalendar::date_fract, (int)_current_company, cmd, err_message, FormatArrayAsHex(args), GetCommandName(cmd));
 }
 
 /**
  * Prepare for the test run of a command proc call.
  * @param cmd_flags Command flags.
- * @param tile Tile of command execution.
  * @param[in,out] cur_company Backup of current company at start of command execution.
  * @return True if test run can go ahead, false on error.
  */
-bool CommandHelperBase::InternalExecutePrepTest(CommandFlags cmd_flags, TileIndex tile, Backup<CompanyID> &cur_company)
+bool CommandHelperBase::InternalExecutePrepTest(CommandFlags cmd_flags, TileIndex, Backup<CompanyID> &cur_company)
 {
 	/* Always execute server and spectator commands as spectator */
 	bool exec_as_spectator = (cmd_flags & (CMD_SPECTATOR | CMD_SERVER)) != 0;
@@ -314,7 +313,7 @@ bool CommandHelperBase::InternalExecutePrepTest(CommandFlags cmd_flags, TileInde
  * @param[in,out] cur_company Backup of current company at start of command execution.
  * @return True if test run can go ahead, false on error.
  */
-std::tuple<bool, bool, bool> CommandHelperBase::InternalExecuteValidateTestAndPrepExec(CommandCost &res, CommandFlags cmd_flags, bool estimate_only, bool network_command, Backup<CompanyID> &cur_company)
+std::tuple<bool, bool, bool> CommandHelperBase::InternalExecuteValidateTestAndPrepExec(CommandCost &res, CommandFlags cmd_flags, bool estimate_only, bool network_command, [[maybe_unused]] Backup<CompanyID> &cur_company)
 {
 	BasePersistentStorageArray::SwitchMode(PSM_LEAVE_TESTMODE);
 	SetTownRatingTestMode(false);
@@ -354,7 +353,7 @@ std::tuple<bool, bool, bool> CommandHelperBase::InternalExecuteValidateTestAndPr
  * @param[in,out] cur_company Backup of current company at start of command execution.
  * @return Final command result.
  */
-CommandCost CommandHelperBase::InternalExecuteProcessResult(Commands cmd, CommandFlags cmd_flags, const CommandCost &res_test, const CommandCost &res_exec, Money extra_cash, TileIndex tile, Backup<CompanyID> &cur_company)
+CommandCost CommandHelperBase::InternalExecuteProcessResult(Commands cmd, CommandFlags cmd_flags, [[maybe_unused]] const CommandCost &res_test, const CommandCost &res_exec, Money extra_cash, TileIndex tile, Backup<CompanyID> &cur_company)
 {
 	BasePersistentStorageArray::SwitchMode(PSM_LEAVE_COMMAND);
 
@@ -428,7 +427,7 @@ void CommandCost::AddCost(const CommandCost &ret)
  * There is only one static instance of the array, just like there is only one
  * instance of normal DParams.
  */
-uint32 CommandCost::textref_stack[16];
+uint32_t CommandCost::textref_stack[16];
 
 /**
  * Activate usage of the NewGRF #TextRefStack for the error message.
@@ -437,7 +436,7 @@ uint32 CommandCost::textref_stack[16];
  */
 void CommandCost::UseTextRefStack(const GRFFile *grffile, uint num_registers)
 {
-	extern TemporaryStorageArray<int32, 0x110> _temp_store;
+	extern TemporaryStorageArray<int32_t, 0x110> _temp_store;
 
 	assert(num_registers < lengthof(textref_stack));
 	this->textref_stack_grffile = grffile;

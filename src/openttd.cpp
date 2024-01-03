@@ -22,6 +22,7 @@
 
 #include "base_media_base.h"
 #include "saveload/saveload.h"
+#include "company_cmd.h"
 #include "company_func.h"
 #include "command_func.h"
 #include "news_func.h"
@@ -88,13 +89,12 @@
 void CallLandscapeTick();
 void DoPaletteAnimations();
 void MusicLoop();
-void ResetMusic();
 void CallWindowGameTickEvent();
 bool HandleBootstrap();
 
 extern void AfterLoadCompanyStats();
 extern Company *DoStartupNewCompany(bool is_ai, CompanyID company = INVALID_COMPANY);
-extern void OSOpenBrowser(const char *url);
+extern void OSOpenBrowser(const std::string &url);
 extern void RebuildTownCaches();
 extern void ShowOSErrorBox(const char *buf, bool system);
 extern std::string _config_file;
@@ -102,15 +102,6 @@ extern std::string _config_file;
 bool _save_config = false;
 bool _request_newgrf_scan = false;
 NewGRFScanCallback *_request_newgrf_scan_callback = nullptr;
-
-/** Available settings for autosave intervals. */
-static const std::chrono::milliseconds _autosave_ticks[] = {
-	std::chrono::minutes::zero(), ///< never
-	std::chrono::minutes(10),
-	std::chrono::minutes(30),
-	std::chrono::minutes(60),
-	std::chrono::minutes(120),
-};
 
 /**
  * Error handling for fatal user errors.
@@ -127,11 +118,10 @@ void UserErrorI(const std::string &str)
 	/* In effect, the game ends here. As emscripten_set_main_loop() caused
 	 * the stack to be unwound, the code after MainLoop() in
 	 * openttd_main() is never executed. */
-	EM_ASM(if (window["openttd_syncfs"]) openttd_syncfs());
 	EM_ASM(if (window["openttd_abort"]) openttd_abort());
 #endif
 
-	exit(1);
+	_exit(1);
 }
 
 /**
@@ -175,11 +165,11 @@ static void ShowHelp()
 		"  -e                  = Start Editor\n"
 		"  -g [savegame]       = Start new/save game immediately\n"
 		"  -G seed             = Set random seed\n"
-		"  -n [ip:port#company]= Join network game\n"
+		"  -n host[:port][#company]= Join network game\n"
 		"  -p password         = Password to join server\n"
 		"  -P password         = Password to join company\n"
-		"  -D [ip][:port]      = Start dedicated server\n"
-		"  -l ip[:port]        = Redirect Debug()\n"
+		"  -D [host][:port]    = Start dedicated server\n"
+		"  -l host[:port]      = Redirect Debug()\n"
 #if !defined(_WIN32)
 		"  -f                  = Fork into the background (dedicated only)\n"
 #endif
@@ -234,7 +224,7 @@ static void ShowHelp()
 static void WriteSavegameInfo(const std::string &name)
 {
 	extern SaveLoadVersion _sl_version;
-	uint32 last_ottd_rev = 0;
+	uint32_t last_ottd_rev = 0;
 	byte ever_modified = 0;
 	bool removed_newgrfs = false;
 
@@ -380,7 +370,7 @@ void MakeNewgameSettingsLive()
 	}
 }
 
-void OpenBrowser(const char *url)
+void OpenBrowser(const std::string &url)
 {
 	/* Make sure we only accept urls that are sure to open a browser. */
 	if (StrStartsWith(url, "http://") || StrStartsWith(url, "https://")) {
@@ -390,10 +380,10 @@ void OpenBrowser(const char *url)
 
 /** Callback structure of statements to be executed after the NewGRF scan. */
 struct AfterNewGRFScan : NewGRFScanCallback {
-	TimerGameCalendar::Year startyear = INVALID_YEAR; ///< The start year.
-	uint32 generation_seed = GENERATE_NEW_SEED; ///< Seed for the new game.
+	TimerGameCalendar::Year startyear = CalendarTime::INVALID_YEAR; ///< The start year.
+	uint32_t generation_seed = GENERATE_NEW_SEED; ///< Seed for the new game.
 	std::string dedicated_host;                 ///< Hostname for the dedicated server.
-	uint16 dedicated_port = 0;                  ///< Port for the dedicated server.
+	uint16_t dedicated_port = 0;                  ///< Port for the dedicated server.
 	std::string connection_string;              ///< Information about the server to connect to
 	std::string join_server_password;           ///< The password to join the server with.
 	std::string join_company_password;          ///< The password to join the company with.
@@ -409,7 +399,7 @@ struct AfterNewGRFScan : NewGRFScanCallback {
 		static_assert(sizeof(generation_seed) == sizeof(_settings_game.game_creation.generation_seed));
 	}
 
-	virtual void OnNewGRFsScanned()
+	void OnNewGRFsScanned() override
 	{
 		ResetGRFConfig(false);
 
@@ -439,7 +429,7 @@ struct AfterNewGRFScan : NewGRFScanCallback {
 		MusicDriver::GetInstance()->SetVolume(_settings_client.music.music_vol);
 		SetEffectVolume(_settings_client.music.effect_vol);
 
-		if (startyear != INVALID_YEAR) IConsoleSetSetting("game_creation.starting_year", startyear);
+		if (startyear != CalendarTime::INVALID_YEAR) IConsoleSetSetting("game_creation.starting_year", startyear.base());
 		if (generation_seed != GENERATE_NEW_SEED) _settings_newgame.game_creation.generation_seed = generation_seed;
 
 		if (!dedicated_host.empty()) {
@@ -468,6 +458,22 @@ struct AfterNewGRFScan : NewGRFScanCallback {
 	}
 };
 
+void PostMainLoop()
+{
+	WaitTillSaved();
+
+	/* only save config if we have to */
+	if (_save_config) {
+		SaveToConfig();
+		SaveHotkeysToConfig();
+		WindowDesc::SaveToConfig();
+		SaveToHighScore();
+	}
+
+	/* Reset windowing system, stop drivers, free used memory, ... */
+	ShutdownGame();
+}
+
 #if defined(UNIX)
 extern void DedicatedFork();
 #endif
@@ -482,7 +488,7 @@ static const OptionData _options[] = {
 	 GETOPT_SHORT_VALUE('v'),
 	 GETOPT_SHORT_VALUE('b'),
 	GETOPT_SHORT_OPTVAL('D'),
-	GETOPT_SHORT_OPTVAL('n'),
+	 GETOPT_SHORT_VALUE('n'),
 	 GETOPT_SHORT_VALUE('l'),
 	 GETOPT_SHORT_VALUE('p'),
 	 GETOPT_SHORT_VALUE('P'),
@@ -557,7 +563,7 @@ int openttd_main(int argc, char *argv[])
 			break;
 		case 'f': _dedicated_forks = true; break;
 		case 'n':
-			scanner->connection_string = mgo.opt; // optional IP:port#company parameter
+			scanner->connection_string = mgo.opt; // host:port#company parameter
 			break;
 		case 'l':
 			debuglog_conn = mgo.opt;
@@ -694,15 +700,31 @@ int openttd_main(int argc, char *argv[])
 	InitWindowSystem();
 
 	BaseGraphics::FindSets();
-	if (graphics_set.empty() && !BaseGraphics::ini_set.empty()) graphics_set = BaseGraphics::ini_set;
-	if (!BaseGraphics::SetSet(graphics_set)) {
-		if (!graphics_set.empty()) {
-			BaseGraphics::SetSet({});
-
-			ErrorMessageData msg(STR_CONFIG_ERROR, STR_CONFIG_ERROR_INVALID_BASE_GRAPHICS_NOT_FOUND);
-			msg.SetDParamStr(0, graphics_set);
-			ScheduleErrorMessage(msg);
+	bool valid_graphics_set;
+	if (!graphics_set.empty()) {
+		valid_graphics_set = BaseGraphics::SetSetByName(graphics_set);
+	} else if (BaseGraphics::ini_data.shortname != 0) {
+		graphics_set = BaseGraphics::ini_data.name;
+		valid_graphics_set = BaseGraphics::SetSetByShortname(BaseGraphics::ini_data.shortname);
+		if (valid_graphics_set && !BaseGraphics::ini_data.extra_params.empty()) {
+			GRFConfig &extra_cfg = BaseGraphics::GetUsedSet()->GetOrCreateExtraConfig();
+			if (extra_cfg.IsCompatible(BaseGraphics::ini_data.extra_version)) {
+				extra_cfg.SetParams(BaseGraphics::ini_data.extra_params);
+			}
 		}
+	} else if (!BaseGraphics::ini_data.name.empty()) {
+		graphics_set = BaseGraphics::ini_data.name;
+		valid_graphics_set = BaseGraphics::SetSetByName(BaseGraphics::ini_data.name);
+	} else {
+		valid_graphics_set = true;
+		BaseGraphics::SetSet(nullptr); // ignore error, continue to bootstrap GUI
+	}
+	if (!valid_graphics_set) {
+		BaseGraphics::SetSet(nullptr);
+
+		ErrorMessageData msg(STR_CONFIG_ERROR, STR_CONFIG_ERROR_INVALID_BASE_GRAPHICS_NOT_FOUND);
+		msg.SetDParamStr(0, graphics_set);
+		ScheduleErrorMessage(msg);
 	}
 
 	/* Initialize game palette */
@@ -723,7 +745,7 @@ int openttd_main(int argc, char *argv[])
 		if (BlitterFactory::SelectBlitter(blitter) == nullptr) {
 			blitter.empty() ?
 				UserError("Failed to autoprobe blitter") :
-				UserError("Failed to select requested blitter '{}'; does it exist?", blitter.c_str());
+				UserError("Failed to select requested blitter '{}'; does it exist?", blitter);
 		}
 	}
 
@@ -756,7 +778,7 @@ int openttd_main(int argc, char *argv[])
 
 	BaseSounds::FindSets();
 	if (sounds_set.empty() && !BaseSounds::ini_set.empty()) sounds_set = BaseSounds::ini_set;
-	if (!BaseSounds::SetSet(sounds_set)) {
+	if (!BaseSounds::SetSetByName(sounds_set)) {
 		if (sounds_set.empty() || !BaseSounds::SetSet({})) {
 			UserError("Failed to find a sounds set. Please acquire a sounds set for OpenTTD. See section 1.4 of README.md.");
 		} else {
@@ -768,7 +790,7 @@ int openttd_main(int argc, char *argv[])
 
 	BaseMusic::FindSets();
 	if (music_set.empty() && !BaseMusic::ini_set.empty()) music_set = BaseMusic::ini_set;
-	if (!BaseMusic::SetSet(music_set)) {
+	if (!BaseMusic::SetSetByName(music_set)) {
 		if (music_set.empty() || !BaseMusic::SetSet({})) {
 			UserError("Failed to find a music set. Please acquire a music set for OpenTTD. See section 1.4 of README.md.");
 		} else {
@@ -794,18 +816,7 @@ int openttd_main(int argc, char *argv[])
 
 	VideoDriver::GetInstance()->MainLoop();
 
-	WaitTillSaved();
-
-	/* only save config if we have to */
-	if (_save_config) {
-		SaveToConfig();
-		SaveHotkeysToConfig();
-		WindowDesc::SaveToConfig();
-		SaveToHighScore();
-	}
-
-	/* Reset windowing system, stop drivers, free used memory, ... */
-	ShutdownGame();
+	PostMainLoop();
 	return ret;
 }
 
@@ -871,10 +882,15 @@ static void MakeNewGameDone()
 
 	/* Overwrite color from settings if needed
 	 * COLOUR_END corresponds to Random colour */
+
 	if (_settings_client.gui.starting_colour != COLOUR_END) {
 		c->colour = _settings_client.gui.starting_colour;
 		ResetCompanyLivery(c);
 		_company_colours[c->index] = (Colours)c->colour;
+	}
+
+	if (_settings_client.gui.starting_colour_secondary != COLOUR_END && HasBit(_loaded_newgrf_features.used_liveries, LS_DEFAULT)) {
+		Command<CMD_SET_COMPANY_COLOUR>::Post(LS_DEFAULT, false, (Colours)_settings_client.gui.starting_colour_secondary);
 	}
 
 	OnStartGame(false);
@@ -1204,7 +1220,7 @@ static void CheckCaches()
 
 	/* Strict checking of the road stop cache entries */
 	for (const RoadStop *rs : RoadStop::Iterate()) {
-		if (IsStandardRoadStopTile(rs->xy)) continue;
+		if (IsBayRoadStopTile(rs->xy)) continue;
 
 		assert(rs->GetEntry(DIAGDIR_NE) != rs->GetEntry(DIAGDIR_NW));
 		rs->GetEntry(DIAGDIR_NE)->CheckIntegrity(rs);
@@ -1300,11 +1316,11 @@ static void CheckCaches()
 	for (Industry *ind : Industry::Iterate())  old_industry_stations_near.push_back(ind->stations_near);
 
 	for (Station *st : Station::Iterate()) {
-		for (CargoID c = 0; c < NUM_CARGO; c++) {
+		for (GoodsEntry &ge : st->goods) {
 			byte buff[sizeof(StationCargoList)];
-			memcpy(buff, &st->goods[c].cargo, sizeof(StationCargoList));
-			st->goods[c].cargo.InvalidateCache();
-			assert(memcmp(&st->goods[c].cargo, buff, sizeof(StationCargoList)) == 0);
+			memcpy(buff, &ge.cargo, sizeof(StationCargoList));
+			ge.cargo.InvalidateCache();
+			assert(memcmp(&ge.cargo, buff, sizeof(StationCargoList)) == 0);
 		}
 
 		/* Check docking tiles */
@@ -1393,7 +1409,7 @@ void StateGameLoop()
 		CallWindowGameTickEvent();
 		NewsLoop();
 	} else {
-		if (_debug_desync_level > 2 && TimerGameCalendar::date_fract == 0 && (TimerGameCalendar::date & 0x1F) == 0) {
+		if (_debug_desync_level > 2 && TimerGameCalendar::date_fract == 0 && (TimerGameCalendar::date.base() & 0x1F) == 0) {
 			/* Save the desync savegame if needed. */
 			std::string name = fmt::format("dmp_cmds_{:08x}_{:08x}.sav", _settings_game.game_creation.generation_seed, TimerGameCalendar::date);
 			SaveOrLoad(name, SLO_SAVE, DFT_GAME_FILE, AUTOSAVE_DIR, false);
@@ -1459,7 +1475,7 @@ static IntervalTimer<TimerGameRealtime> _autosave_interval({std::chrono::millise
  */
 void ChangeAutosaveFrequency(bool reset)
 {
-	_autosave_interval.SetInterval({_autosave_ticks[_settings_client.gui.autosave], TimerGameRealtime::AUTOSAVE}, reset);
+	_autosave_interval.SetInterval({std::chrono::minutes(_settings_client.gui.autosave_interval), TimerGameRealtime::AUTOSAVE}, reset);
 }
 
 /**
@@ -1511,6 +1527,7 @@ void GameLoop()
 	if (_switch_mode != SM_NONE && !HasModalProgress()) {
 		SwitchToMode(_switch_mode);
 		_switch_mode = SM_NONE;
+		if (_exit_game) return;
 	}
 
 	IncreaseSpriteLRU();

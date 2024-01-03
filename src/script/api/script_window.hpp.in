@@ -81,7 +81,7 @@ public:
 	 * Close a window.
 	 * @param window The class of the window to close.
 	 * @param number The number of the window to close, or NUMBER_ALL to close all of this class.
-	 *               The value will be clamped to 0 .. MAX(int32) when value is not NUMBER_ALL.
+	 *               The value will be clamped to 0 .. MAX(int32_t) when value is not NUMBER_ALL.
 	 * @pre !ScriptGame::IsMultiplayer().
 	 */
 	static void Close(WindowClass window, SQInteger number);
@@ -90,7 +90,7 @@ public:
 	 * Check if a window is open.
 	 * @param window The class of the window to check for.
 	 * @param number The number of the window to check for, or NUMBER_ALL to check for any in the class.
-	 *               The value will be clamped to 0 .. MAX(int32) when value is not NUMBER_ALL.
+	 *               The value will be clamped to 0 .. MAX(int32_t) when value is not NUMBER_ALL.
 	 * @pre !ScriptGame::IsMultiplayer().
 	 * @return True if the window is open.
 	 */
@@ -100,9 +100,9 @@ public:
 	 * Highlight a widget in a window.
 	 * @param window The class of the window to highlight a widget in.
 	 * @param number The number of the window to highlight a widget in.
-	 *               The value will be clamped to 0 .. MAX(int32) when value is not NUMBER_ALL.
+	 *               The value will be clamped to 0 .. MAX(int32_t) when value is not NUMBER_ALL.
 	 * @param widget The widget in the window to highlight, or WIDGET_ALL (in combination with TC_INVALID) to disable all widget highlighting on this window.
-	 *               The value will be clamped to 0 .. MAX(uint8) when value is not WIDGET_ALL.
+	 *               The value will be clamped to 0 .. MAX(uint8_t) when value is not WIDGET_ALL.
 	 * @param colour The colour of the highlight, or TC_INVALID for disabling.
 	 * @pre !ScriptGame::IsMultiplayer().
 	 * @pre number != NUMBER_ALL.

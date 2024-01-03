@@ -112,16 +112,16 @@ public:
 #endif
 
 #ifndef NO_GARBAGE_COLLECTOR
-	void EnqueueMarkObjectForChildren(SQGCMarkerQueue &queue);
+	void EnqueueMarkObjectForChildren(SQGCMarkerQueue &queue) override;
 #endif
-	void Finalize();
+	void Finalize() override;
 	void GrowCallStack() {
 		SQInteger newsize = _alloccallsstacksize*2;
 		_callstackdata.resize(newsize);
 		_callsstack = &_callstackdata[0];
 		_alloccallsstacksize = newsize;
 	}
-	void Release(){ sq_delete(this,SQVM); } //does nothing
+	void Release() override { sq_delete(this,SQVM); } //does nothing
 ////////////////////////////////////////////////////////////////////////////
 	//stack functions for the api
 	void Remove(SQInteger n);
@@ -168,11 +168,18 @@ public:
 
 	SQBool _can_suspend;
 	SQInteger _ops_till_suspend;
+	SQInteger _ops_till_suspend_error_threshold;
+	const char *_ops_till_suspend_error_label;
 	SQBool _in_stackoverflow;
 
 	bool ShouldSuspend()
 	{
 		return _can_suspend && _ops_till_suspend <= 0;
+	}
+
+	bool IsOpsTillSuspendError()
+	{
+		return _ops_till_suspend < _ops_till_suspend_error_threshold;
 	}
 
 	void DecreaseOps(SQInteger amount)
@@ -194,7 +201,7 @@ inline SQObjectPtr &stack_get(HSQUIRRELVM v,SQInteger idx){return ((idx>=0)?(v->
 #ifndef NO_GARBAGE_COLLECTOR
 #define _opt_ss(_vm_) (_vm_)->_sharedstate
 #else
-#define _opt_ss(_vm_) NULL
+#define _opt_ss(_vm_) nullptr
 #endif
 
 #define PUSH_CALLINFO(v,nci){ \
@@ -218,6 +225,6 @@ inline SQObjectPtr &stack_get(HSQUIRRELVM v,SQInteger idx){return ((idx>=0)?(v->
 	if(v->_callsstacksize)	\
 		v->ci = &v->_callsstack[v->_callsstacksize-1] ; \
 	else	\
-		v->ci = NULL; \
+		v->ci = nullptr; \
 }
 #endif //_SQVM_H_

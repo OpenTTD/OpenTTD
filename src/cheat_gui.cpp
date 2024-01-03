@@ -44,18 +44,17 @@
  * This variable is semantically a constant value, but because the cheat
  * code requires to be able to write to the variable it is not constified.
  */
-static int32 _money_cheat_amount = 10000000;
+static int32_t _money_cheat_amount = 10000000;
 
 /**
  * Handle cheating of money.
  * Note that the amount of money of a company must be changed through a command
  * rather than by setting a variable. Since the cheat data structure expects a
  * variable, the amount of given/taken money is used for this purpose.
- * @param new_value not used.
  * @param change_direction is -1 or +1 (down/up)
  * @return Amount of money cheat.
  */
-static int32 ClickMoneyCheat(int32 new_value, int32 change_direction)
+static int32_t ClickMoneyCheat(int32_t, int32_t change_direction)
 {
 	Command<CMD_MONEY_CHEAT>::Post(Money(_money_cheat_amount) * change_direction);
 	return _money_cheat_amount;
@@ -67,7 +66,7 @@ static int32 ClickMoneyCheat(int32 new_value, int32 change_direction)
  * @param change_direction is -1 or +1 (down/up)
  * @return The new company.
  */
-static int32 ClickChangeCompanyCheat(int32 new_value, int32 change_direction)
+static int32_t ClickChangeCompanyCheat(int32_t new_value, int32_t change_direction)
 {
 	while ((uint)new_value < Company::GetPoolSize()) {
 		if (Company::IsValidID((CompanyID)new_value)) {
@@ -83,10 +82,9 @@ static int32 ClickChangeCompanyCheat(int32 new_value, int32 change_direction)
 /**
  * Allow (or disallow) changing production of all industries.
  * @param new_value new value
- * @param change_direction unused
  * @return New value allowing change of industry production.
  */
-static int32 ClickSetProdCheat(int32 new_value, int32 change_direction)
+static int32_t ClickSetProdCheat(int32_t new_value, int32_t)
 {
 	_cheats.setup_prod.value = (new_value != 0);
 	InvalidateWindowClassesData(WC_INDUSTRY_VIEW);
@@ -98,18 +96,16 @@ extern void EnginesMonthlyLoop();
 /**
  * Handle changing of the current year.
  * @param new_value The chosen year to change to.
- * @param change_direction +1 (increase) or -1 (decrease).
  * @return New year.
  */
-static int32 ClickChangeDateCheat(int32 new_value, int32 change_direction)
+static int32_t ClickChangeDateCheat(int32_t new_value, int32_t)
 {
 	/* Don't allow changing to an invalid year, or the current year. */
-	new_value = Clamp(new_value, MIN_YEAR, MAX_YEAR);
-	if (new_value == TimerGameCalendar::year) return TimerGameCalendar::year;
+	auto new_year = Clamp(TimerGameCalendar::Year(new_value), CalendarTime::MIN_YEAR, CalendarTime::MAX_YEAR);
+	if (new_year == TimerGameCalendar::year) return TimerGameCalendar::year.base();
 
-	TimerGameCalendar::YearMonthDay ymd;
-	TimerGameCalendar::ConvertDateToYMD(TimerGameCalendar::date, &ymd);
-	TimerGameCalendar::Date new_date = TimerGameCalendar::ConvertYMDToDate(new_value, ymd.month, ymd.day);
+	TimerGameCalendar::YearMonthDay ymd = TimerGameCalendar::ConvertDateToYMD(TimerGameCalendar::date);
+	TimerGameCalendar::Date new_date = TimerGameCalendar::ConvertYMDToDate(new_year, ymd.month, ymd.day);
 
 	/* Shift cached dates before we change the date. */
 	for (auto v : Vehicle::Iterate()) v->ShiftDates(new_date - TimerGameCalendar::date);
@@ -125,24 +121,23 @@ static int32 ClickChangeDateCheat(int32 new_value, int32 change_direction)
 	InvalidateWindowClassesData(WC_TRUCK_STATION, 0);
 	InvalidateWindowClassesData(WC_BUILD_OBJECT, 0);
 	ResetSignalVariant();
-	return TimerGameCalendar::year;
+	return TimerGameCalendar::year.base();
 }
 
 /**
  * Allow (or disallow) a change of the maximum allowed heightlevel.
  * @param new_value new value
- * @param change_direction unused
  * @return New value (or unchanged old value) of the maximum
  *         allowed heightlevel value.
  */
-static int32 ClickChangeMaxHlCheat(int32 new_value, int32 change_direction)
+static int32_t ClickChangeMaxHlCheat(int32_t new_value, int32_t)
 {
 	new_value = Clamp(new_value, MIN_MAP_HEIGHT_LIMIT, MAX_MAP_HEIGHT_LIMIT);
 
 	/* Check if at least one mountain on the map is higher than the new value.
 	 * If yes, disallow the change. */
 	for (TileIndex t = 0; t < Map::Size(); t++) {
-		if ((int32)TileHeight(t) > new_value) {
+		if ((int32_t)TileHeight(t) > new_value) {
 			ShowErrorMessage(STR_CONFIG_SETTING_TOO_HIGH_MOUNTAIN, INVALID_STRING_ID, WL_ERROR);
 			/* Return old, unchanged value */
 			return _settings_game.construction.map_height_limit;
@@ -167,6 +162,7 @@ enum CheatNumbers {
 	CHT_CROSSINGTUNNELS, ///< Allow tunnels to cross each other.
 	CHT_NO_JETCRASH,     ///< Disable jet-airplane crashes.
 	CHT_SETUP_PROD,      ///< Allow manually editing of industry production.
+	CHT_STATION_RATING,  ///< Fix station ratings at 100%.
 	CHT_EDIT_MAX_HL,     ///< Edit maximum allowed heightlevel
 	CHT_CHANGE_DATE,     ///< Do time traveling.
 
@@ -178,7 +174,7 @@ enum CheatNumbers {
  * @param new_value The new value.
  * @param change_direction Change direction (+1, +1), \c 0 for boolean settings.
  */
-typedef int32 CheckButtonClick(int32 new_value, int32 change_direction);
+typedef int32_t CheckButtonClick(int32_t new_value, int32_t change_direction);
 
 /** Information of a cheat. */
 struct CheatEntry {
@@ -200,6 +196,7 @@ static const CheatEntry _cheats_ui[] = {
 	{SLE_BOOL,  STR_CHEAT_CROSSINGTUNNELS, &_cheats.crossing_tunnels.value,               &_cheats.crossing_tunnels.been_used, nullptr                  },
 	{SLE_BOOL,  STR_CHEAT_NO_JETCRASH,     &_cheats.no_jetcrash.value,                    &_cheats.no_jetcrash.been_used,      nullptr                  },
 	{SLE_BOOL,  STR_CHEAT_SETUP_PROD,      &_cheats.setup_prod.value,                     &_cheats.setup_prod.been_used,       &ClickSetProdCheat       },
+	{SLE_BOOL,  STR_CHEAT_STATION_RATING,  &_cheats.station_rating.value,                 &_cheats.station_rating.been_used,   nullptr                  },
 	{SLE_UINT8, STR_CHEAT_EDIT_MAX_HL,     &_settings_game.construction.map_height_limit, &_cheats.edit_max_hl.been_used,      &ClickChangeMaxHlCheat   },
 	{SLE_INT32, STR_CHEAT_CHANGE_DATE,     &TimerGameCalendar::year,                      &_cheats.change_date.been_used,      &ClickChangeDateCheat    },
 };
@@ -239,7 +236,7 @@ struct CheatWindow : Window {
 		this->icon = GetSpriteSize(SPR_COMPANY_ICON);
 	}
 
-	void DrawWidget(const Rect &r, int widget) const override
+	void DrawWidget(const Rect &r, WidgetID widget) const override
 	{
 		if (widget != WID_C_PANEL) return;
 
@@ -252,7 +249,7 @@ struct CheatWindow : Window {
 		uint text_left   = ir.left + (rtl ? 0 : WidgetDimensions::scaled.hsep_wide * 4 + this->box.width + SETTING_BUTTON_WIDTH);
 		uint text_right  = ir.right - (rtl ? WidgetDimensions::scaled.hsep_wide * 4 + this->box.width + SETTING_BUTTON_WIDTH : 0);
 
-		int text_y_offset = (this->line_height - FONT_HEIGHT_NORMAL) / 2;
+		int text_y_offset = (this->line_height - GetCharacterHeight(FS_NORMAL)) / 2;
 		int box_y_offset = (this->line_height - this->box.height) / 2;
 		int button_y_offset = (this->line_height - SETTING_BUTTON_HEIGHT) / 2;
 		int icon_y_offset = (this->line_height - this->icon.height) / 2;
@@ -272,7 +269,7 @@ struct CheatWindow : Window {
 				}
 
 				default: {
-					int32 val = (int32)ReadValue(ce->variable, ce->type);
+					int32_t val = (int32_t)ReadValue(ce->variable, ce->type);
 
 					/* Draw [<][>] boxes for settings of an integer-type */
 					DrawArrowButtons(button_left, y + button_y_offset, COLOUR_YELLOW, clicked - (i * 2), true, true);
@@ -301,7 +298,7 @@ struct CheatWindow : Window {
 		}
 	}
 
-	void UpdateWidgetSize(int widget, Dimension *size, const Dimension &padding, Dimension *fill, Dimension *resize) override
+	void UpdateWidgetSize(WidgetID widget, Dimension *size, [[maybe_unused]] const Dimension &padding, [[maybe_unused]] Dimension *fill, [[maybe_unused]] Dimension *resize) override
 	{
 		if (widget != WID_C_PANEL) return;
 
@@ -320,7 +317,7 @@ struct CheatWindow : Window {
 					switch (ce->str) {
 						/* Display date for change date cheat */
 						case STR_CHEAT_CHANGE_DATE:
-							SetDParam(0, TimerGameCalendar::ConvertYMDToDate(MAX_YEAR, 11, 31));
+							SetDParam(0, TimerGameCalendar::ConvertYMDToDate(CalendarTime::MAX_YEAR, 11, 31));
 							width = std::max(width, GetStringBoundingBox(ce->str).width);
 							break;
 
@@ -341,14 +338,16 @@ struct CheatWindow : Window {
 
 		this->line_height = std::max(this->box.height, this->icon.height);
 		this->line_height = std::max<uint>(this->line_height, SETTING_BUTTON_HEIGHT);
-		this->line_height = std::max<uint>(this->line_height, FONT_HEIGHT_NORMAL) + WidgetDimensions::scaled.framerect.Vertical();
+		this->line_height = std::max<uint>(this->line_height, GetCharacterHeight(FS_NORMAL)) + WidgetDimensions::scaled.framerect.Vertical();
 
 		size->width = width + WidgetDimensions::scaled.hsep_wide * 4 + this->box.width + SETTING_BUTTON_WIDTH /* stuff on the left */ + WidgetDimensions::scaled.hsep_wide * 2 /* extra spacing on right */;
 		size->height = WidgetDimensions::scaled.framerect.Vertical() + this->line_height * lengthof(_cheats_ui);
 	}
 
-	void OnClick(Point pt, int widget, int click_count) override
+	void OnClick([[maybe_unused]] Point pt, WidgetID widget, [[maybe_unused]] int click_count) override
 	{
+		if (widget != WID_C_PANEL) return;
+
 		Rect r = this->GetWidget<NWidgetBase>(WID_C_PANEL)->GetCurrentRect().Shrink(WidgetDimensions::scaled.framerect);
 		uint btn = (pt.y - r.top) / this->line_height;
 		uint x = pt.x - r.left;
@@ -358,7 +357,7 @@ struct CheatWindow : Window {
 		if (btn >= lengthof(_cheats_ui)) return;
 
 		const CheatEntry *ce = &_cheats_ui[btn];
-		int value = (int32)ReadValue(ce->variable, ce->type);
+		int value = (int32_t)ReadValue(ce->variable, ce->type);
 		int oldvalue = value;
 
 		if (btn == CHT_CHANGE_DATE && x >= WidgetDimensions::scaled.hsep_wide * 2 + this->box.width + SETTING_BUTTON_WIDTH) {
@@ -394,7 +393,7 @@ struct CheatWindow : Window {
 				break;
 		}
 
-		if (value != oldvalue) WriteValue(ce->variable, ce->type, (int64)value);
+		if (value != oldvalue) WriteValue(ce->variable, ce->type, (int64_t)value);
 
 		this->SetTimeout();
 
@@ -413,12 +412,12 @@ struct CheatWindow : Window {
 		if (str == nullptr || StrEmpty(str)) return;
 
 		const CheatEntry *ce = &_cheats_ui[clicked_widget];
-		int oldvalue = (int32)ReadValue(ce->variable, ce->type);
+		int oldvalue = (int32_t)ReadValue(ce->variable, ce->type);
 		int value = atoi(str);
 		*ce->been_used = true;
 		value = ce->proc(value, value - oldvalue);
 
-		if (value != oldvalue) WriteValue(ce->variable, ce->type, (int64)value);
+		if (value != oldvalue) WriteValue(ce->variable, ce->type, (int64_t)value);
 		this->SetDirty();
 	}
 
@@ -428,11 +427,11 @@ struct CheatWindow : Window {
 };
 
 /** Window description of the cheats GUI. */
-static WindowDesc _cheats_desc(
+static WindowDesc _cheats_desc(__FILE__, __LINE__,
 	WDP_AUTO, "cheats", 0, 0,
 	WC_CHEATS, WC_NONE,
 	0,
-	_nested_cheat_widgets, lengthof(_nested_cheat_widgets)
+	std::begin(_nested_cheat_widgets), std::end(_nested_cheat_widgets)
 );
 
 /** Open cheat window. */

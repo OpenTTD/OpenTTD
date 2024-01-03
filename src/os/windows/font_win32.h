@@ -23,17 +23,17 @@ private:
 	SIZE glyph_size;      ///< Maximum size of regular glyphs.
 	std::string fontname; ///< Cached copy of loaded font facename
 
-	void SetFontSize(FontSize fs, int pixels);
+	void SetFontSize(int pixels);
 
 protected:
-	const void *InternalGetFontTable(uint32 tag, size_t &length) override;
+	const void *InternalGetFontTable(uint32_t tag, size_t &length) override;
 	const Sprite *InternalGetGlyph(GlyphID key, bool aa) override;
 
 public:
 	Win32FontCache(FontSize fs, const LOGFONT &logfont, int pixels);
 	~Win32FontCache();
 	void ClearFontCache() override;
-	GlyphID MapCharToGlyph(WChar key) override;
+	GlyphID MapCharToGlyph(char32_t key) override;
 	std::string GetFontName() override { return this->fontname; }
 	const void *GetOSHandle() override { return &this->logfont; }
 };

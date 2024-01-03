@@ -95,4 +95,4 @@ const char _openttd_content_version[] = "${REV_MAJOR}.${REV_MINOR}";
  * the "patch" part of the version. To make sure "1.11.0" is smaller than "12.0", we
  * have to adjust the major by 16.
  */
-const uint32 _openttd_newgrf_version = (${REV_MAJOR} + 16) << 24 | ${REV_MINOR} << 20 | ${REV_ISSTABLETAG} << 19 | 28004;
+const uint32_t _openttd_newgrf_version = (${REV_MAJOR} + 16) << 24 | ${REV_MINOR} << 20 | ${REV_ISSTABLETAG} << 19 | 28004;

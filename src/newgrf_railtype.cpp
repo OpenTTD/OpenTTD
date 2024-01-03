@@ -17,20 +17,20 @@
 
 #include "safeguards.h"
 
-/* virtual */ uint32 RailTypeScopeResolver::GetRandomBits() const
+/* virtual */ uint32_t RailTypeScopeResolver::GetRandomBits() const
 {
-	uint tmp = CountBits(static_cast<uint32>(this->tile + (TileX(this->tile) + TileY(this->tile)) * TILE_SIZE));
+	uint tmp = CountBits(this->tile.base() + (TileX(this->tile) + TileY(this->tile)) * TILE_SIZE);
 	return GB(tmp, 0, 2);
 }
 
-/* virtual */ uint32 RailTypeScopeResolver::GetVariable(byte variable, uint32 parameter, bool *available) const
+/* virtual */ uint32_t RailTypeScopeResolver::GetVariable(byte variable, [[maybe_unused]] uint32_t parameter, bool *available) const
 {
 	if (this->tile == INVALID_TILE) {
 		switch (variable) {
 			case 0x40: return 0;
 			case 0x41: return 0;
 			case 0x42: return 0;
-			case 0x43: return TimerGameCalendar::date;
+			case 0x43: return TimerGameCalendar::date.base();
 			case 0x44: return HZB_TOWN_EDGE;
 		}
 	}
@@ -40,8 +40,8 @@
 		case 0x41: return 0;
 		case 0x42: return IsLevelCrossingTile(this->tile) && IsCrossingBarred(this->tile);
 		case 0x43:
-			if (IsRailDepotTile(this->tile)) return Depot::GetByTile(this->tile)->build_date;
-			return TimerGameCalendar::date;
+			if (IsRailDepotTile(this->tile)) return Depot::GetByTile(this->tile)->build_date.base();
+			return TimerGameCalendar::date.base();
 		case 0x44: {
 			const Town *t = nullptr;
 			if (IsRailDepotTile(this->tile)) {
@@ -64,7 +64,7 @@ GrfSpecFeature RailTypeResolverObject::GetFeature() const
 	return GSF_RAILTYPES;
 }
 
-uint32 RailTypeResolverObject::GetDebugID() const
+uint32_t RailTypeResolverObject::GetDebugID() const
 {
 	return this->railtype_scope.rti->label;
 }
@@ -78,7 +78,7 @@ uint32 RailTypeResolverObject::GetDebugID() const
  * @param param1 Extra parameter (first parameter of the callback, except railtypes do not have callbacks).
  * @param param2 Extra parameter (second parameter of the callback, except railtypes do not have callbacks).
  */
-RailTypeResolverObject::RailTypeResolverObject(const RailtypeInfo *rti, TileIndex tile, TileContext context, RailTypeSpriteGroup rtsg, uint32 param1, uint32 param2)
+RailTypeResolverObject::RailTypeResolverObject(const RailTypeInfo *rti, TileIndex tile, TileContext context, RailTypeSpriteGroup rtsg, uint32_t param1, uint32_t param2)
 	: ResolverObject(rti != nullptr ? rti->grffile[rtsg] : nullptr, CBID_NO_CALLBACK, param1, param2), railtype_scope(*this, rti, tile, context)
 {
 	this->root_spritegroup = rti != nullptr ? rti->group[rtsg] : nullptr;
@@ -93,7 +93,7 @@ RailTypeResolverObject::RailTypeResolverObject(const RailtypeInfo *rti, TileInde
  * @param[out] num_results If not nullptr, return the number of sprites in the spriteset.
  * @return The sprite to draw.
  */
-SpriteID GetCustomRailSprite(const RailtypeInfo *rti, TileIndex tile, RailTypeSpriteGroup rtsg, TileContext context, uint *num_results)
+SpriteID GetCustomRailSprite(const RailTypeInfo *rti, TileIndex tile, RailTypeSpriteGroup rtsg, TileContext context, uint *num_results)
 {
 	assert(rtsg < RTSG_END);
 
@@ -118,12 +118,12 @@ SpriteID GetCustomRailSprite(const RailtypeInfo *rti, TileIndex tile, RailTypeSp
  * @param gui Is the sprite being used on the map or in the GUI?
  * @return The sprite to draw.
  */
-SpriteID GetCustomSignalSprite(const RailtypeInfo *rti, TileIndex tile, SignalType type, SignalVariant var, SignalState state, bool gui)
+SpriteID GetCustomSignalSprite(const RailTypeInfo *rti, TileIndex tile, SignalType type, SignalVariant var, SignalState state, bool gui)
 {
 	if (rti->group[RTSG_SIGNALS] == nullptr) return 0;
 
-	uint32 param1 = gui ? 0x10 : 0x00;
-	uint32 param2 = (type << 16) | (var << 8) | state;
+	uint32_t param1 = gui ? 0x10 : 0x00;
+	uint32_t param2 = (type << 16) | (var << 8) | state;
 	RailTypeResolverObject object(rti, tile, TCX_NORMAL, RTSG_SIGNALS, param1, param2);
 
 	const SpriteGroup *group = object.Resolve();
@@ -138,9 +138,9 @@ SpriteID GetCustomSignalSprite(const RailtypeInfo *rti, TileIndex tile, SignalTy
  * @param grffile   Originating GRF file.
  * @return RailType or INVALID_RAILTYPE if the railtype is unknown.
  */
-RailType GetRailTypeTranslation(uint8 railtype, const GRFFile *grffile)
+RailType GetRailTypeTranslation(uint8_t railtype, const GRFFile *grffile)
 {
-	if (grffile == nullptr || grffile->railtype_list.size() == 0) {
+	if (grffile == nullptr || grffile->railtype_list.empty()) {
 		/* No railtype table present. Return railtype as-is (if valid), so it works for original railtypes. */
 		if (railtype >= RAILTYPE_END || GetRailTypeInfo(static_cast<RailType>(railtype))->label == 0) return INVALID_RAILTYPE;
 
@@ -160,10 +160,10 @@ RailType GetRailTypeTranslation(uint8 railtype, const GRFFile *grffile)
  * @param grffile The GRF to do the lookup for.
  * @return the GRF internal ID.
  */
-uint8 GetReverseRailTypeTranslation(RailType railtype, const GRFFile *grffile)
+uint8_t GetReverseRailTypeTranslation(RailType railtype, const GRFFile *grffile)
 {
 	/* No rail type table present, return rail type as-is */
-	if (grffile == nullptr || grffile->railtype_list.size() == 0) return railtype;
+	if (grffile == nullptr || grffile->railtype_list.empty()) return railtype;
 
 	/* Look for a matching rail type label in the table */
 	RailTypeLabel label = GetRailTypeInfo(railtype)->label;

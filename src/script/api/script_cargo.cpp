@@ -41,11 +41,11 @@
 	if (!IsValidCargo(cargo_type)) return std::nullopt;
 	const CargoSpec *cargo = ::CargoSpec::Get(cargo_type);
 
-	/* cargo->label is a uint32 packing a 4 character non-terminated string,
+	/* cargo->label is a uint32_t packing a 4 character non-terminated string,
 	 * like "PASS", "COAL", "OIL_". New ones can be defined by NewGRFs */
 	std::string cargo_label;
 	for (uint i = 0; i < sizeof(cargo->label); i++) {
-		cargo_label.push_back(GB(cargo->label, (uint8)(sizeof(cargo->label) - i - 1) * 8, 8));
+		cargo_label.push_back(GB(cargo->label, (uint8_t)(sizeof(cargo->label) - i - 1) * 8, 8));
 	}
 	return cargo_label;
 }

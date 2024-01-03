@@ -1,0 +1,54 @@
+{
+  "$schema": "https://raw.githubusercontent.com/microsoft/vcpkg-tool/main/docs/vcpkg.schema.json",
+  "dependencies": [
+    {
+      "name": "breakpad",
+      "platform": "!(windows & arm)"
+    },
+    {
+      "name": "curl",
+      "platform": "linux",
+      "features": [
+        "http2"
+      ]
+    },
+    {
+      "name": "dbus",
+      "platform": "linux",
+      "default-features": false
+    },
+    {
+      "name": "fontconfig",
+      "platform": "linux"
+    },
+    {
+      "name": "freetype",
+      "platform": "linux"
+    },
+    {
+      "name": "harfbuzz",
+      "platform": "linux"
+    },
+    {
+      "name": "icu",
+      "platform": "linux"
+    },
+    {
+      "name": "liblzma"
+    },
+    {
+      "name": "libpng"
+    },
+    {
+      "name": "lzo"
+    },
+    {
+      "name": "sdl2",
+      "platform": "linux"
+    },
+    {
+      "name": "zlib"
+    }
+  ],
+  "builtin-baseline": "94cf042e6b7713913a3b3150f3ca3d0f4550f7c4"
+}

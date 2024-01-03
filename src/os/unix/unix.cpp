@@ -20,6 +20,7 @@
 #include <sys/stat.h>
 #include <time.h>
 #include <signal.h>
+#include <pthread.h>
 
 #ifdef WITH_SDL2
 #include <SDL.h>
@@ -47,10 +48,6 @@
 #include <sys/sysctl.h>
 #endif
 
-#ifndef NO_THREADS
-#include <pthread.h>
-#endif
-
 #if defined(__APPLE__)
 #	include "../macosx/macos.h"
 #endif
@@ -62,7 +59,7 @@ bool FiosIsRoot(const std::string &path)
 	return path == PATHSEP;
 }
 
-void FiosGetDrives(FileList &file_list)
+void FiosGetDrives(FileList &)
 {
 	return;
 }
@@ -127,29 +124,30 @@ static const char *GetLocalCode()
  * Convert between locales, which from and which to is set in the calling
  * functions OTTD2FS() and FS2OTTD().
  */
-static const char *convert_tofrom_fs(iconv_t convd, const char *name, char *outbuf, size_t outlen)
+static std::string convert_tofrom_fs(iconv_t convd, const std::string &name)
 {
 	/* There are different implementations of iconv. The older ones,
 	 * e.g. SUSv2, pass a const pointer, whereas the newer ones, e.g.
 	 * IEEE 1003.1 (2004), pass a non-const pointer. */
 #ifdef HAVE_NON_CONST_ICONV
-	char *inbuf = const_cast<char*>(name);
+	char *inbuf = const_cast<char*>(name.data());
 #else
-	const char *inbuf = name;
+	const char *inbuf = name.data();
 #endif
 
-	size_t inlen  = strlen(name);
-	char *buf = outbuf;
+	/* If the output is UTF-32, then 1 ASCII character becomes 4 bytes. */
+	size_t inlen = name.size();
+	std::string buf(inlen * 4, '\0');
 
-	strecpy(outbuf, name, outbuf + outlen);
-
+	size_t outlen = buf.size();
+	char *outbuf = buf.data();
 	iconv(convd, nullptr, nullptr, nullptr, nullptr);
 	if (iconv(convd, &inbuf, &inlen, &outbuf, &outlen) == (size_t)(-1)) {
 		Debug(misc, 0, "[iconv] error converting '{}'. Errno {}", name, errno);
+		return name;
 	}
 
-	*outbuf = '\0';
-	/* FIX: invalid characters will abort conversion, but they shouldn't occur? */
+	buf.resize(outbuf - buf.data());
 	return buf;
 }
 
@@ -161,8 +159,6 @@ static const char *convert_tofrom_fs(iconv_t convd, const char *name, char *outb
 std::string OTTD2FS(const std::string &name)
 {
 	static iconv_t convd = (iconv_t)(-1);
-	char buf[1024] = {};
-
 	if (convd == (iconv_t)(-1)) {
 		const char *env = GetLocalCode();
 		convd = iconv_open(env, INTERNALCODE);
@@ -172,7 +168,7 @@ std::string OTTD2FS(const std::string &name)
 		}
 	}
 
-	return convert_tofrom_fs(convd, name.c_str(), buf, lengthof(buf));
+	return convert_tofrom_fs(convd, name);
 }
 
 /**
@@ -183,8 +179,6 @@ std::string OTTD2FS(const std::string &name)
 std::string FS2OTTD(const std::string &name)
 {
 	static iconv_t convd = (iconv_t)(-1);
-	char buf[1024] = {};
-
 	if (convd == (iconv_t)(-1)) {
 		const char *env = GetLocalCode();
 		convd = iconv_open(INTERNALCODE, env);
@@ -194,7 +188,7 @@ std::string FS2OTTD(const std::string &name)
 		}
 	}
 
-	return convert_tofrom_fs(convd, name.c_str(), buf, lengthof(buf));
+	return convert_tofrom_fs(convd, name);
 }
 
 #endif /* WITH_ICONV */
@@ -205,7 +199,7 @@ void ShowInfoI(const std::string &str)
 }
 
 #if !defined(__APPLE__)
-void ShowOSErrorBox(const char *buf, bool system)
+void ShowOSErrorBox(const char *buf, bool)
 {
 	/* All unix systems, except OSX. Only use escape codes on a TTY. */
 	if (isatty(fileno(stderr))) {
@@ -236,20 +230,20 @@ std::optional<std::string> GetClipboardContents()
 
 
 #if defined(__EMSCRIPTEN__)
-void OSOpenBrowser(const char *url)
+void OSOpenBrowser(const std::string &url)
 {
 	/* Implementation in pre.js */
-	EM_ASM({ if(window["openttd_open_url"]) window.openttd_open_url($0, $1) }, url, strlen(url));
+	EM_ASM({ if (window["openttd_open_url"]) window.openttd_open_url($0, $1) }, url.c_str(), url.size());
 }
 #elif !defined( __APPLE__)
-void OSOpenBrowser(const char *url)
+void OSOpenBrowser(const std::string &url)
 {
 	pid_t child_pid = fork();
 	if (child_pid != 0) return;
 
 	const char *args[3];
 	args[0] = "xdg-open";
-	args[1] = url;
+	args[1] = url.c_str();
 	args[2] = nullptr;
 	execvp(args[0], const_cast<char * const *>(args));
 	Debug(misc, 0, "Failed to open url: {}", url);
@@ -257,12 +251,11 @@ void OSOpenBrowser(const char *url)
 }
 #endif /* __APPLE__ */
 
-void SetCurrentThreadName(const char *threadName) {
-#if !defined(NO_THREADS) && defined(__GLIBC__)
-#if __GLIBC_PREREQ(2, 12)
+void SetCurrentThreadName([[maybe_unused]] const char *threadName)
+{
+#if defined(__GLIBC__)
 	if (threadName) pthread_setname_np(pthread_self(), threadName);
-#endif /* __GLIBC_PREREQ(2, 12) */
-#endif /* !defined(NO_THREADS) && defined(__GLIBC__) */
+#endif /* defined(__GLIBC__) */
 #if defined(__APPLE__)
 	MacOSSetThreadName(threadName);
 #endif /* defined(__APPLE__) */

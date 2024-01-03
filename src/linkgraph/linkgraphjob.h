@@ -178,7 +178,7 @@ public:
 	 * settings have to be brutally const-casted in order to populate them.
 	 */
 	LinkGraphJob() : settings(_settings_game.linkgraph),
-			join_date(INVALID_DATE), job_completed(false), job_aborted(false) {}
+			join_date(CalendarTime::INVALID_DATE), job_completed(false), job_aborted(false) {}
 
 	LinkGraphJob(const LinkGraph &orig);
 	~LinkGraphJob();
@@ -223,7 +223,7 @@ public:
 	 * Change the join date on date cheating.
 	 * @param interval Number of days to add.
 	 */
-	inline void ShiftJoinDate(int interval) { this->join_date += interval; }
+	inline void ShiftJoinDate(TimerGameCalendar::Date interval) { this->join_date += interval; }
 
 	/**
 	 * Get the link graph settings for this component.

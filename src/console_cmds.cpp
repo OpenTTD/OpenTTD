@@ -13,7 +13,7 @@
 #include "engine_func.h"
 #include "landscape.h"
 #include "saveload/saveload.h"
-#include "network/core/game_info.h"
+#include "network/core/network_game_info.h"
 #include "network/network.h"
 #include "network/network_func.h"
 #include "network/network_base.h"
@@ -86,7 +86,7 @@ public:
 static ConsoleFileList _console_file_list; ///< File storage cache for the console.
 
 /* console command defines */
-#define DEF_CONSOLE_CMD(function) static bool function(byte argc, char *argv[])
+#define DEF_CONSOLE_CMD(function) static bool function([[maybe_unused]] byte argc, [[maybe_unused]] char *argv[])
 #define DEF_CONSOLE_HOOK(function) static ConsoleHookResult function(bool echo)
 
 
@@ -245,7 +245,7 @@ DEF_CONSOLE_CMD(ConResetTile)
 	}
 
 	if (argc == 2) {
-		uint32 result;
+		uint32_t result;
 		if (GetArgumentInteger(&result, argv[1])) {
 			DoClearSquare((TileIndex)result);
 			return true;
@@ -284,7 +284,7 @@ DEF_CONSOLE_CMD(ConZoomToLevel)
 			return true;
 
 		case 2: {
-			uint32 level;
+			uint32_t level;
 			if (GetArgumentInteger(&level, argv[1])) {
 				/* In case ZOOM_LVL_MIN is more than 0, the next if statement needs to be amended.
 				 * A simple check for less than ZOOM_LVL_MIN does not work here because we are
@@ -333,7 +333,7 @@ DEF_CONSOLE_CMD(ConScrollToTile)
 	}
 	if (argc < 2) return false;
 
-	uint32 arg_index = 1;
+	uint32_t arg_index = 1;
 	bool instant = false;
 	if (strcmp(argv[arg_index], "instant") == 0) {
 		++arg_index;
@@ -342,7 +342,7 @@ DEF_CONSOLE_CMD(ConScrollToTile)
 
 	switch (argc - arg_index) {
 		case 1: {
-			uint32 result;
+			uint32_t result;
 			if (GetArgumentInteger(&result, argv[arg_index])) {
 				if (result >= Map::Size()) {
 					IConsolePrint(CC_ERROR, "Tile does not exist.");
@@ -355,7 +355,7 @@ DEF_CONSOLE_CMD(ConScrollToTile)
 		}
 
 		case 2: {
-			uint32 x, y;
+			uint32_t x, y;
 			if (GetArgumentInteger(&x, argv[arg_index]) && GetArgumentInteger(&y, argv[arg_index + 1])) {
 				if (x >= Map::SizeX() || y >= Map::SizeY()) {
 					IConsolePrint(CC_ERROR, "Tile does not exist.");
@@ -1173,7 +1173,7 @@ static void PrintLineByLine(const std::string &full_string)
 	std::istringstream in(full_string);
 	std::string line;
 	while (std::getline(in, line)) {
-		IConsolePrint(CC_DEFAULT, line.c_str());
+		IConsolePrint(CC_DEFAULT, line);
 	}
 }
 
@@ -1275,16 +1275,14 @@ DEF_CONSOLE_CMD(ConStartAI)
 		 * try again with the assumption everything right of the dot is
 		 * the version the user wants to load. */
 		if (!config->HasScript()) {
-			char *name = stredup(argv[1]);
-			char *e = strrchr(name, '.');
+			const char *e = strrchr(argv[1], '.');
 			if (e != nullptr) {
-				*e = '\0';
+				size_t name_length = e - argv[1];
 				e++;
 
 				int version = atoi(e);
-				config->Change(name, version, true);
+				config->Change(std::string(argv[1], name_length), version, true);
 			}
-			free(name);
 		}
 
 		if (!config->HasScript()) {
@@ -1444,8 +1442,7 @@ DEF_CONSOLE_CMD(ConGetDate)
 		return true;
 	}
 
-	TimerGameCalendar::YearMonthDay ymd;
-	TimerGameCalendar::ConvertDateToYMD(TimerGameCalendar::date, &ymd);
+	TimerGameCalendar::YearMonthDay ymd = TimerGameCalendar::ConvertDateToYMD(TimerGameCalendar::date);
 	IConsolePrint(CC_DEFAULT, "Date: {:04d}-{:02d}-{:02d}", ymd.year, ymd.month + 1, ymd.day);
 	return true;
 }
@@ -1501,10 +1498,10 @@ DEF_CONSOLE_CMD(ConScreenShot)
 	if (argc > 7) return false;
 
 	ScreenshotType type = SC_VIEWPORT;
-	uint32 width = 0;
-	uint32 height = 0;
+	uint32_t width = 0;
+	uint32_t height = 0;
 	std::string name{};
-	uint32 arg_index = 1;
+	uint32_t arg_index = 1;
 
 	if (argc > arg_index) {
 		if (strcmp(argv[arg_index], "viewport") == 0) {
@@ -1725,7 +1722,7 @@ DEF_CONSOLE_CMD(ConCompanies)
 		std::string colour = GetString(STR_COLOUR_DARK_BLUE + _company_colours[c->index]);
 		IConsolePrint(CC_INFO, "#:{}({}) Company Name: '{}'  Year Founded: {}  Money: {}  Loan: {}  Value: {}  (T:{}, R:{}, P:{}, S:{}) {}",
 			c->index + 1, colour, company_name,
-			c->inaugurated_year, (int64)c->money, (int64)c->current_loan, (int64)CalculateCompanyValue(c),
+			c->inaugurated_year, (int64_t)c->money, (int64_t)c->current_loan, (int64_t)CalculateCompanyValue(c),
 			c->group_all[VEH_TRAIN].num_vehicle,
 			c->group_all[VEH_ROAD].num_vehicle,
 			c->group_all[VEH_AIRCRAFT].num_vehicle,
@@ -1864,17 +1861,17 @@ static ContentType StringToContentType(const char *str)
 
 /** Asynchronous callback */
 struct ConsoleContentCallback : public ContentCallback {
-	void OnConnect(bool success)
+	void OnConnect(bool success) override
 	{
 		IConsolePrint(CC_DEFAULT, "Content server connection {}.", success ? "established" : "failed");
 	}
 
-	void OnDisconnect()
+	void OnDisconnect() override
 	{
 		IConsolePrint(CC_DEFAULT, "Content server connection closed.");
 	}
 
-	void OnDownloadComplete(ContentID cid)
+	void OnDownloadComplete(ContentID cid) override
 	{
 		IConsolePrint(CC_DEFAULT, "Completed download of {}.", cid);
 	}
@@ -2105,6 +2102,11 @@ DEF_CONSOLE_CMD(ConListSettings)
 
 DEF_CONSOLE_CMD(ConGamelogPrint)
 {
+	if (argc == 0) {
+		IConsolePrint(CC_HELP, "Print logged fundamental changes to the game since the start. Usage: 'gamelog'.");
+		return true;
+	}
+
 	_gamelog.PrintConsole();
 	return true;
 }
@@ -2269,14 +2271,14 @@ DEF_CONSOLE_CMD(ConNewGRFProfile)
 				started++;
 
 				if (!grfids.empty()) grfids += ", ";
-				fmt::format_to(std::back_inserter(grfids), "[{%:08X}]", BSWAP32(pr.grffile->grfid));
+				fmt::format_to(std::back_inserter(grfids), "[{:08X}]", BSWAP32(pr.grffile->grfid));
 			}
 		}
 		if (started > 0) {
 			IConsolePrint(CC_DEBUG, "Started profiling for GRFID{} {}.", (started > 1) ? "s" : "", grfids);
 
 			if (argc >= 3) {
-				uint64 ticks = std::max(atoi(argv[2]), 1);
+				uint64_t ticks = std::max(atoi(argv[2]), 1);
 				NewGRFProfiler::StartTimer(ticks);
 				IConsolePrint(CC_DEBUG, "Profiling will automatically stop after {} ticks.", ticks);
 			}
@@ -2355,11 +2357,11 @@ static void ConDumpRoadTypes()
 	IConsolePrint(CC_DEFAULT, "    h = hidden");
 	IConsolePrint(CC_DEFAULT, "    T = buildable by towns");
 
-	std::map<uint32, const GRFFile *> grfs;
+	std::map<uint32_t, const GRFFile *> grfs;
 	for (RoadType rt = ROADTYPE_BEGIN; rt < ROADTYPE_END; rt++) {
 		const RoadTypeInfo *rti = GetRoadTypeInfo(rt);
 		if (rti->label == 0) continue;
-		uint32 grfid = 0;
+		uint32_t grfid = 0;
 		const GRFFile *grf = rti->grffile[ROTSG_GROUND];
 		if (grf != nullptr) {
 			grfid = grf->grfid;
@@ -2393,11 +2395,11 @@ static void ConDumpRailTypes()
 	IConsolePrint(CC_DEFAULT, "    a = always allow 90 degree turns");
 	IConsolePrint(CC_DEFAULT, "    d = always disallow 90 degree turns");
 
-	std::map<uint32, const GRFFile *> grfs;
+	std::map<uint32_t, const GRFFile *> grfs;
 	for (RailType rt = RAILTYPE_BEGIN; rt < RAILTYPE_END; rt++) {
-		const RailtypeInfo *rti = GetRailTypeInfo(rt);
+		const RailTypeInfo *rti = GetRailTypeInfo(rt);
 		if (rti->label == 0) continue;
-		uint32 grfid = 0;
+		uint32_t grfid = 0;
 		const GRFFile *grf = rti->grffile[RTSG_GROUND];
 		if (grf != nullptr) {
 			grfid = grf->grfid;
@@ -2436,18 +2438,17 @@ static void ConDumpCargoTypes()
 	IConsolePrint(CC_DEFAULT, "    c = covered/sheltered");
 	IConsolePrint(CC_DEFAULT, "    S = special");
 
-	std::map<uint32, const GRFFile *> grfs;
-	for (CargoID i = 0; i < NUM_CARGO; i++) {
-		const CargoSpec *spec = CargoSpec::Get(i);
+	std::map<uint32_t, const GRFFile *> grfs;
+	for (const CargoSpec *spec : CargoSpec::Iterate()) {
 		if (!spec->IsValid()) continue;
-		uint32 grfid = 0;
+		uint32_t grfid = 0;
 		const GRFFile *grf = spec->grffile;
 		if (grf != nullptr) {
 			grfid = grf->grfid;
 			grfs.emplace(grfid, grf);
 		}
 		IConsolePrint(CC_DEFAULT, "  {:02d} Bit: {:2d}, Label: {:c}{:c}{:c}{:c}, Callback mask: 0x{:02X}, Cargo class: {}{}{}{}{}{}{}{}{}{}{}, GRF: {:08X}, {}",
-				(uint)i,
+				spec->Index(),
 				spec->bitnum,
 				spec->label >> 24, spec->label >> 16, spec->label >> 8, spec->label,
 				spec->callback_mask,

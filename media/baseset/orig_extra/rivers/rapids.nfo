@@ -5,115 +5,243 @@
 //
    -1 * 0	 0C "Rapid graphics"
    -1 * 4	 01 05 01 04
-   -1 sprites/rapids.png 8bpp  10   10  64  23 -31   0 normal
-   -1 sprites/rapids.png 8bpp  90   10  64  39 -31  -8 normal
-   -1 sprites/rapids.png 8bpp 170   10  64  23 -31   0 normal
-   -1 sprites/rapids.png 8bpp 250   10  64  39 -31  -8 normal
+   -1 sprites/rapids.png          8bpp  10   10  64  23 -31   0 normal
+    | sprites/rapids_shading.png 32bpp  10   10  64  23 -31   0 normal
+    | sprites/rapids.png          mask  10   10
+   -1 sprites/rapids.png          8bpp  90   10  64  39 -31  -8 normal
+    | sprites/rapids_shading.png 32bpp  90   10  64  39 -31  -8 normal
+    | sprites/rapids.png          mask  90   10
+   -1 sprites/rapids.png          8bpp 170   10  64  23 -31   0 normal
+    | sprites/rapids_shading.png 32bpp 170   10  64  23 -31   0 normal
+    | sprites/rapids.png          mask 170   10
+   -1 sprites/rapids.png          8bpp 250   10  64  39 -31  -8 normal
+    | sprites/rapids_shading.png 32bpp 250   10  64  39 -31  -8 normal
+    | sprites/rapids.png          mask 250   10
    -1 * 7	 02 05 00 01 00 00 00
 
    -1 * 4	 01 05 01 04
-   -1 sprites/rapids.png 8bpp  10   60  64  23 -31   0 normal
-   -1 sprites/rapids.png 8bpp  90   60  64  39 -31  -8 normal
-   -1 sprites/rapids.png 8bpp 170   60  64  23 -31   0 normal
-   -1 sprites/rapids.png 8bpp 250   60  64  39 -31  -8 normal
+   -1 sprites/rapids.png          8bpp  10   60  64  23 -31   0 normal
+    | sprites/rapids_shading.png 32bpp  10   60  64  23 -31   0 normal
+    | sprites/rapids.png          mask  10   60
+   -1 sprites/rapids.png          8bpp  90   60  64  39 -31  -8 normal
+    | sprites/rapids_shading.png 32bpp  90   60  64  39 -31  -8 normal
+    | sprites/rapids.png          mask  90   60
+   -1 sprites/rapids.png          8bpp 170   60  64  23 -31   0 normal
+    | sprites/rapids_shading.png 32bpp 170   60  64  23 -31   0 normal
+    | sprites/rapids.png          mask 170   60
+   -1 sprites/rapids.png          8bpp 250   60  64  39 -31  -8 normal
+    | sprites/rapids_shading.png 32bpp 250   60  64  39 -31  -8 normal
+    | sprites/rapids.png          mask 250   60
    -1 * 7	 02 05 01 01 00 00 00
 
    -1 * 4	 01 05 01 04
-   -1 sprites/rapids.png 8bpp  10  110  64  23 -31   0 normal
-   -1 sprites/rapids.png 8bpp  90  110  64  39 -31  -8 normal
-   -1 sprites/rapids.png 8bpp 170  110  64  23 -31   0 normal
-   -1 sprites/rapids.png 8bpp 250  110  64  39 -31  -8 normal
+   -1 sprites/rapids.png          8bpp  10  110  64  23 -31   0 normal
+    | sprites/rapids_shading.png 32bpp  10  110  64  23 -31   0 normal
+    | sprites/rapids.png          mask  10  110
+   -1 sprites/rapids.png          8bpp  90  110  64  39 -31  -8 normal
+    | sprites/rapids_shading.png 32bpp  90  110  64  39 -31  -8 normal
+    | sprites/rapids.png          mask  90  110
+   -1 sprites/rapids.png          8bpp 170  110  64  23 -31   0 normal
+    | sprites/rapids_shading.png 32bpp 170  110  64  23 -31   0 normal
+    | sprites/rapids.png          mask 170  110
+   -1 sprites/rapids.png          8bpp 250  110  64  39 -31  -8 normal
+    | sprites/rapids_shading.png 32bpp 250  110  64  39 -31  -8 normal
+    | sprites/rapids.png          mask 250  110
    -1 * 7	 02 05 02 01 00 00 00
 
    -1 * 4	 01 05 01 04
-   -1 sprites/rapids.png 8bpp  10  160  64  23 -31   0 normal
-   -1 sprites/rapids.png 8bpp  90  160  64  39 -31  -8 normal
-   -1 sprites/rapids.png 8bpp 170  160  64  23 -31   0 normal
-   -1 sprites/rapids.png 8bpp 250  160  64  39 -31  -8 normal
+   -1 sprites/rapids.png          8bpp  10  160  64  23 -31   0 normal
+    | sprites/rapids_shading.png 32bpp  10  160  64  23 -31   0 normal
+    | sprites/rapids.png          mask  10  160
+   -1 sprites/rapids.png          8bpp  90  160  64  39 -31  -8 normal
+    | sprites/rapids_shading.png 32bpp  90  160  64  39 -31  -8 normal
+    | sprites/rapids.png          mask  90  160
+   -1 sprites/rapids.png          8bpp 170  160  64  23 -31   0 normal
+    | sprites/rapids_shading.png 32bpp 170  160  64  23 -31   0 normal
+    | sprites/rapids.png          mask 170  160
+   -1 sprites/rapids.png          8bpp 250  160  64  39 -31  -8 normal
+    | sprites/rapids_shading.png 32bpp 250  160  64  39 -31  -8 normal
+    | sprites/rapids.png          mask 250  160
    -1 * 7	 02 05 03 01 00 00 00
 
    -1 * 4	 01 05 01 04
-   -1 sprites/rapids.png 8bpp  10  210  64  23 -31   0 normal
-   -1 sprites/rapids.png 8bpp  90  210  64  39 -31  -8 normal
-   -1 sprites/rapids.png 8bpp 170  210  64  23 -31   0 normal
-   -1 sprites/rapids.png 8bpp 250  210  64  39 -31  -8 normal
+   -1 sprites/rapids.png          8bpp  10  210  64  23 -31   0 normal
+    | sprites/rapids_shading.png 32bpp  10  210  64  23 -31   0 normal
+    | sprites/rapids.png          mask  10  210
+   -1 sprites/rapids.png          8bpp  90  210  64  39 -31  -8 normal
+    | sprites/rapids_shading.png 32bpp  90  210  64  39 -31  -8 normal
+    | sprites/rapids.png          mask  90  210
+   -1 sprites/rapids.png          8bpp 170  210  64  23 -31   0 normal
+    | sprites/rapids_shading.png 32bpp 170  210  64  23 -31   0 normal
+    | sprites/rapids.png          mask 170  210
+   -1 sprites/rapids.png          8bpp 250  210  64  39 -31  -8 normal
+    | sprites/rapids_shading.png 32bpp 250  210  64  39 -31  -8 normal
+    | sprites/rapids.png          mask 250  210
    -1 * 7	 02 05 04 01 00 00 00
 
    -1 * 4	 01 05 01 04
-   -1 sprites/rapids.png 8bpp  10  260  64  23 -31   0 normal
-   -1 sprites/rapids.png 8bpp  90  260  64  39 -31  -8 normal
-   -1 sprites/rapids.png 8bpp 170  260  64  23 -31   0 normal
-   -1 sprites/rapids.png 8bpp 250  260  64  39 -31  -8 normal
+   -1 sprites/rapids.png          8bpp  10  260  64  23 -31   0 normal
+    | sprites/rapids_shading.png 32bpp  10  260  64  23 -31   0 normal
+    | sprites/rapids.png          mask  10  260
+   -1 sprites/rapids.png          8bpp  90  260  64  39 -31  -8 normal
+    | sprites/rapids_shading.png 32bpp  90  260  64  39 -31  -8 normal
+    | sprites/rapids.png          mask  90  260
+   -1 sprites/rapids.png          8bpp 170  260  64  23 -31   0 normal
+    | sprites/rapids_shading.png 32bpp 170  260  64  23 -31   0 normal
+    | sprites/rapids.png          mask 170  260
+   -1 sprites/rapids.png          8bpp 250  260  64  39 -31  -8 normal
+    | sprites/rapids_shading.png 32bpp 250  260  64  39 -31  -8 normal
+    | sprites/rapids.png          mask 250  260
    -1 * 7	 02 05 05 01 00 00 00
 
    -1 * 4	 01 05 01 04
-   -1 sprites/rapids.png 8bpp  10  310  64  23 -31   0 normal
-   -1 sprites/rapids.png 8bpp  90  310  64  39 -31  -8 normal
-   -1 sprites/rapids.png 8bpp 170  310  64  23 -31   0 normal
-   -1 sprites/rapids.png 8bpp 250  310  64  39 -31  -8 normal
+   -1 sprites/rapids.png          8bpp  10  310  64  23 -31   0 normal
+    | sprites/rapids_shading.png 32bpp  10  310  64  23 -31   0 normal
+    | sprites/rapids.png          mask  10  310
+   -1 sprites/rapids.png          8bpp  90  310  64  39 -31  -8 normal
+    | sprites/rapids_shading.png 32bpp  90  310  64  39 -31  -8 normal
+    | sprites/rapids.png          mask  90  310
+   -1 sprites/rapids.png          8bpp 170  310  64  23 -31   0 normal
+    | sprites/rapids_shading.png 32bpp 170  310  64  23 -31   0 normal
+    | sprites/rapids.png          mask 170  310
+   -1 sprites/rapids.png          8bpp 250  310  64  39 -31  -8 normal
+    | sprites/rapids_shading.png 32bpp 250  310  64  39 -31  -8 normal
+    | sprites/rapids.png          mask 250  310
    -1 * 7	 02 05 06 01 00 00 00
 
    -1 * 4	 01 05 01 04
-   -1 sprites/rapids.png 8bpp  10  360  64  23 -31   0 normal
-   -1 sprites/rapids.png 8bpp  90  360  64  39 -31  -8 normal
-   -1 sprites/rapids.png 8bpp 170  360  64  23 -31   0 normal
-   -1 sprites/rapids.png 8bpp 250  360  64  39 -31  -8 normal
+   -1 sprites/rapids.png          8bpp  10  360  64  23 -31   0 normal
+    | sprites/rapids_shading.png 32bpp  10  360  64  23 -31   0 normal
+    | sprites/rapids.png          mask  10  360
+   -1 sprites/rapids.png          8bpp  90  360  64  39 -31  -8 normal
+    | sprites/rapids_shading.png 32bpp  90  360  64  39 -31  -8 normal
+    | sprites/rapids.png          mask  90  360
+   -1 sprites/rapids.png          8bpp 170  360  64  23 -31   0 normal
+    | sprites/rapids_shading.png 32bpp 170  360  64  23 -31   0 normal
+    | sprites/rapids.png          mask 170  360
+   -1 sprites/rapids.png          8bpp 250  360  64  39 -31  -8 normal
+    | sprites/rapids_shading.png 32bpp 250  360  64  39 -31  -8 normal
+    | sprites/rapids.png          mask 250  360
    -1 * 7	 02 05 07 01 00 00 00
 
    -1 * 4	 01 05 01 04
-   -1 sprites/rapids.png 8bpp  10  410  64  23 -31   0 normal
-   -1 sprites/rapids.png 8bpp  90  410  64  39 -31  -8 normal
-   -1 sprites/rapids.png 8bpp 170  410  64  23 -31   0 normal
-   -1 sprites/rapids.png 8bpp 250  410  64  39 -31  -8 normal
+   -1 sprites/rapids.png          8bpp  10  410  64  23 -31   0 normal
+    | sprites/rapids_shading.png 32bpp  10  410  64  23 -31   0 normal
+    | sprites/rapids.png          mask  10  410
+   -1 sprites/rapids.png          8bpp  90  410  64  39 -31  -8 normal
+    | sprites/rapids_shading.png 32bpp  90  410  64  39 -31  -8 normal
+    | sprites/rapids.png          mask  90  410
+   -1 sprites/rapids.png          8bpp 170  410  64  23 -31   0 normal
+    | sprites/rapids_shading.png 32bpp 170  410  64  23 -31   0 normal
+    | sprites/rapids.png          mask 170  410
+   -1 sprites/rapids.png          8bpp 250  410  64  39 -31  -8 normal
+    | sprites/rapids_shading.png 32bpp 250  410  64  39 -31  -8 normal
+    | sprites/rapids.png          mask 250  410
    -1 * 7	 02 05 08 01 00 00 00
 
    -1 * 4	 01 05 01 04
-   -1 sprites/rapids.png 8bpp  10  460  64  23 -31   0 normal
-   -1 sprites/rapids.png 8bpp  90  460  64  39 -31  -8 normal
-   -1 sprites/rapids.png 8bpp 170  460  64  23 -31   0 normal
-   -1 sprites/rapids.png 8bpp 250  460  64  39 -31  -8 normal
+   -1 sprites/rapids.png          8bpp  10  460  64  23 -31   0 normal
+    | sprites/rapids_shading.png 32bpp  10  460  64  23 -31   0 normal
+    | sprites/rapids.png          mask  10  460
+   -1 sprites/rapids.png          8bpp  90  460  64  39 -31  -8 normal
+    | sprites/rapids_shading.png 32bpp  90  460  64  39 -31  -8 normal
+    | sprites/rapids.png          mask  90  460
+   -1 sprites/rapids.png          8bpp 170  460  64  23 -31   0 normal
+    | sprites/rapids_shading.png 32bpp 170  460  64  23 -31   0 normal
+    | sprites/rapids.png          mask 170  460
+   -1 sprites/rapids.png          8bpp 250  460  64  39 -31  -8 normal
+    | sprites/rapids_shading.png 32bpp 250  460  64  39 -31  -8 normal
+    | sprites/rapids.png          mask 250  460
    -1 * 7	 02 05 09 01 00 00 00
 
    -1 * 4	 01 05 01 04
-   -1 sprites/rapids.png 8bpp  10  510  64  23 -31   0 normal
-   -1 sprites/rapids.png 8bpp  90  510  64  39 -31  -8 normal
-   -1 sprites/rapids.png 8bpp 170  510  64  23 -31   0 normal
-   -1 sprites/rapids.png 8bpp 250  510  64  39 -31  -8 normal
+   -1 sprites/rapids.png          8bpp  10  510  64  23 -31   0 normal
+    | sprites/rapids_shading.png 32bpp  10  510  64  23 -31   0 normal
+    | sprites/rapids.png          mask  10  510
+   -1 sprites/rapids.png          8bpp  90  510  64  39 -31  -8 normal
+    | sprites/rapids_shading.png 32bpp  90  510  64  39 -31  -8 normal
+    | sprites/rapids.png          mask  90  510
+   -1 sprites/rapids.png          8bpp 170  510  64  23 -31   0 normal
+    | sprites/rapids_shading.png 32bpp 170  510  64  23 -31   0 normal
+    | sprites/rapids.png          mask 170  510
+   -1 sprites/rapids.png          8bpp 250  510  64  39 -31  -8 normal
+    | sprites/rapids_shading.png 32bpp 250  510  64  39 -31  -8 normal
+    | sprites/rapids.png          mask 250  510
    -1 * 7	 02 05 0A 01 00 00 00
 
    -1 * 4	 01 05 01 04
-   -1 sprites/rapids.png 8bpp  10  560  64  23 -31   0 normal
-   -1 sprites/rapids.png 8bpp  90  560  64  39 -31  -8 normal
-   -1 sprites/rapids.png 8bpp 170  560  64  23 -31   0 normal
-   -1 sprites/rapids.png 8bpp 250  560  64  39 -31  -8 normal
+   -1 sprites/rapids.png          8bpp  10  560  64  23 -31   0 normal
+    | sprites/rapids_shading.png 32bpp  10  560  64  23 -31   0 normal
+    | sprites/rapids.png          mask  10  560
+   -1 sprites/rapids.png          8bpp  90  560  64  39 -31  -8 normal
+    | sprites/rapids_shading.png 32bpp  90  560  64  39 -31  -8 normal
+    | sprites/rapids.png          mask  90  560
+   -1 sprites/rapids.png          8bpp 170  560  64  23 -31   0 normal
+    | sprites/rapids_shading.png 32bpp 170  560  64  23 -31   0 normal
+    | sprites/rapids.png          mask 170  560
+   -1 sprites/rapids.png          8bpp 250  560  64  39 -31  -8 normal
+    | sprites/rapids_shading.png 32bpp 250  560  64  39 -31  -8 normal
+    | sprites/rapids.png          mask 250  560
    -1 * 7	 02 05 0B 01 00 00 00
 
    -1 * 4	 01 05 01 04
-   -1 sprites/rapids.png 8bpp  10  610  64  23 -31   0 normal
-   -1 sprites/rapids.png 8bpp  90  610  64  39 -31  -8 normal
-   -1 sprites/rapids.png 8bpp 170  610  64  23 -31   0 normal
-   -1 sprites/rapids.png 8bpp 250  610  64  39 -31  -8 normal
+   -1 sprites/rapids.png          8bpp  10  610  64  23 -31   0 normal
+    | sprites/rapids_shading.png 32bpp  10  610  64  23 -31   0 normal
+    | sprites/rapids.png          mask  10  610
+   -1 sprites/rapids.png          8bpp  90  610  64  39 -31  -8 normal
+    | sprites/rapids_shading.png 32bpp  90  610  64  39 -31  -8 normal
+    | sprites/rapids.png          mask  90  610
+   -1 sprites/rapids.png          8bpp 170  610  64  23 -31   0 normal
+    | sprites/rapids_shading.png 32bpp 170  610  64  23 -31   0 normal
+    | sprites/rapids.png          mask 170  610
+   -1 sprites/rapids.png          8bpp 250  610  64  39 -31  -8 normal
+    | sprites/rapids_shading.png 32bpp 250  610  64  39 -31  -8 normal
+    | sprites/rapids.png          mask 250  610
    -1 * 7	 02 05 0C 01 00 00 00
 
    -1 * 4	 01 05 01 04
-   -1 sprites/rapids.png 8bpp  10  660  64  23 -31   0 normal
-   -1 sprites/rapids.png 8bpp  90  660  64  39 -31  -8 normal
-   -1 sprites/rapids.png 8bpp 170  660  64  23 -31   0 normal
-   -1 sprites/rapids.png 8bpp 250  660  64  39 -31  -8 normal
+   -1 sprites/rapids.png          8bpp  10  660  64  23 -31   0 normal
+    | sprites/rapids_shading.png 32bpp  10  660  64  23 -31   0 normal
+    | sprites/rapids.png          mask  10  660
+   -1 sprites/rapids.png          8bpp  90  660  64  39 -31  -8 normal
+    | sprites/rapids_shading.png 32bpp  90  660  64  39 -31  -8 normal
+    | sprites/rapids.png          mask  90  660
+   -1 sprites/rapids.png          8bpp 170  660  64  23 -31   0 normal
+    | sprites/rapids_shading.png 32bpp 170  660  64  23 -31   0 normal
+    | sprites/rapids.png          mask 170  660
+   -1 sprites/rapids.png          8bpp 250  660  64  39 -31  -8 normal
+    | sprites/rapids_shading.png 32bpp 250  660  64  39 -31  -8 normal
+    | sprites/rapids.png          mask 250  660
    -1 * 7	 02 05 0D 01 00 00 00
 
    -1 * 4	 01 05 01 04
-   -1 sprites/rapids.png 8bpp  10  710  64  23 -31   0 normal
-   -1 sprites/rapids.png 8bpp  90  710  64  39 -31  -8 normal
-   -1 sprites/rapids.png 8bpp 170  710  64  23 -31   0 normal
-   -1 sprites/rapids.png 8bpp 250  710  64  39 -31  -8 normal
+   -1 sprites/rapids.png          8bpp  10  710  64  23 -31   0 normal
+    | sprites/rapids_shading.png 32bpp  10  710  64  23 -31   0 normal
+    | sprites/rapids.png          mask  10  710
+   -1 sprites/rapids.png          8bpp  90  710  64  39 -31  -8 normal
+    | sprites/rapids_shading.png 32bpp  90  710  64  39 -31  -8 normal
+    | sprites/rapids.png          mask  90  710
+   -1 sprites/rapids.png          8bpp 170  710  64  23 -31   0 normal
+    | sprites/rapids_shading.png 32bpp 170  710  64  23 -31   0 normal
+    | sprites/rapids.png          mask 170  710
+   -1 sprites/rapids.png          8bpp 250  710  64  39 -31  -8 normal
+    | sprites/rapids_shading.png 32bpp 250  710  64  39 -31  -8 normal
+    | sprites/rapids.png          mask 250  710
    -1 * 7	 02 05 0E 01 00 00 00
 
    -1 * 4	 01 05 01 04
-   -1 sprites/rapids.png 8bpp  10  760  64  23 -31   0 normal
-   -1 sprites/rapids.png 8bpp  90  760  64  39 -31  -8 normal
-   -1 sprites/rapids.png 8bpp 170  760  64  23 -31   0 normal
-   -1 sprites/rapids.png 8bpp 250  760  64  39 -31  -8 normal
+   -1 sprites/rapids.png          8bpp  10  760  64  23 -31   0 normal
+    | sprites/rapids_shading.png 32bpp  10  760  64  23 -31   0 normal
+    | sprites/rapids.png          mask  10  760
+   -1 sprites/rapids.png          8bpp  90  760  64  39 -31  -8 normal
+    | sprites/rapids_shading.png 32bpp  90  760  64  39 -31  -8 normal
+    | sprites/rapids.png          mask  90  760
+   -1 sprites/rapids.png          8bpp 170  760  64  23 -31   0 normal
+    | sprites/rapids_shading.png 32bpp 170  760  64  23 -31   0 normal
+    | sprites/rapids.png          mask 170  760
+   -1 sprites/rapids.png          8bpp 250  760  64  39 -31  -8 normal
+    | sprites/rapids_shading.png 32bpp 250  760  64  39 -31  -8 normal
+    | sprites/rapids.png          mask 250  760
    -1 * 7	 02 05 0F 01 00 00 00
 
    -1 * 39	 02 05 10 80 00 01 10

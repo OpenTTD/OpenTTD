@@ -45,7 +45,7 @@ void Subsidy::AwardTo(CompanyID company)
 	assert(!this->IsAwarded());
 
 	this->awarded = company;
-	this->remaining = _settings_game.difficulty.subsidy_duration * MONTHS_IN_YEAR;
+	this->remaining = _settings_game.difficulty.subsidy_duration * CalendarTime::MONTHS_IN_YEAR;
 
 	SetDParam(0, company);
 	NewsStringData *company_name = new NewsStringData(GetString(STR_COMPANY_NAME));
@@ -334,13 +334,13 @@ bool FindSubsidyTownCargoRoute()
 	/* Passenger subsidies are not handled here. */
 	town_cargo_produced[CT_PASSENGERS] = 0;
 
-	uint8 cargo_count = town_cargo_produced.GetCount();
+	uint8_t cargo_count = town_cargo_produced.GetCount();
 
 	/* No cargo produced at all? */
 	if (cargo_count == 0) return false;
 
 	/* Choose a random cargo that is produced in the town. */
-	uint8 cargo_number = RandomRange(cargo_count);
+	uint8_t cargo_number = RandomRange(cargo_count);
 	CargoID cid;
 	for (cid = 0; cid < NUM_CARGO; cid++) {
 		if (town_cargo_produced[cid] > 0) {

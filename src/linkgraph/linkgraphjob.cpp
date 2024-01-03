@@ -37,7 +37,7 @@ LinkGraphJob::LinkGraphJob(const LinkGraph &orig) :
 		 * This is on purpose. */
 		link_graph(orig),
 		settings(_settings_game.linkgraph),
-		join_date(TimerGameCalendar::date + (_settings_game.linkgraph.recalc_time / SECONDS_PER_DAY)),
+		join_date(TimerGameCalendar::date + (_settings_game.linkgraph.recalc_time / CalendarTime::SECONDS_PER_DAY)),
 		job_completed(false),
 		job_aborted(false)
 {
@@ -101,7 +101,7 @@ LinkGraphJob::~LinkGraphJob()
 	/* Link graph has been merged into another one. */
 	if (!LinkGraph::IsValidID(this->link_graph.index)) return;
 
-	uint16 size = this->Size();
+	uint16_t size = this->Size();
 	for (NodeID node_id = 0; node_id < size; ++node_id) {
 		NodeAnnotation &from = this->nodes[node_id];
 
@@ -131,14 +131,14 @@ LinkGraphJob::~LinkGraphJob()
 			if (st2 == nullptr || st2->goods[this->Cargo()].link_graph != this->link_graph.index ||
 					st2->goods[this->Cargo()].node != dest_id ||
 					!(*lg)[node_id].HasEdgeTo(dest_id) ||
-					(*lg)[node_id][dest_id].LastUpdate() == INVALID_DATE) {
+					(*lg)[node_id][dest_id].LastUpdate() == CalendarTime::INVALID_DATE) {
 				/* Edge has been removed. Delete flows. */
 				StationIDStack erased = flows.DeleteFlows(to);
 				/* Delete old flows for source stations which have been deleted
 				 * from the new flows. This avoids flow cycles between old and
 				 * new flows. */
 				while (!erased.IsEmpty()) ge.flows.erase(erased.Pop());
-			} else if ((*lg)[node_id][dest_id].last_restricted_update == INVALID_DATE) {
+			} else if ((*lg)[node_id][dest_id].last_unrestricted_update == CalendarTime::INVALID_DATE) {
 				/* Edge is fully restricted. */
 				flows.RestrictFlows(to);
 			}
@@ -221,7 +221,7 @@ void Path::Fork(Path *base, uint cap, int free_cap, uint dist)
 uint Path::AddFlow(uint new_flow, LinkGraphJob &job, uint max_saturation)
 {
 	if (this->parent != nullptr) {
-		LinkGraphJob::EdgeAnnotation edge = job[this->parent->node][this->node];
+		LinkGraphJob::EdgeAnnotation &edge = job[this->parent->node][this->node];
 		if (max_saturation != UINT_MAX) {
 			uint usable_cap = edge.base.capacity * max_saturation / 100;
 			if (usable_cap > edge.Flow()) {

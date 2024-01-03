@@ -11,9 +11,10 @@
     - 1.6) [OpenTTD directories](#16-openttd-directories)
     - 1.7) [Compiling OpenTTD](#17-compiling-openttd)
 - 2.0) [Contact and community](#20-contact-and-community)
-    - 2.1) [Contributing to OpenTTD](#21-contributing-to-openttd)
-    - 2.2) [Reporting bugs](#22-reporting-bugs)
-    - 2.3) [Translating](#23-translating)
+    - 2.1) [Multiplayer games](#21-multiplayer-games)
+    - 2.2) [Contributing to OpenTTD](#22-contributing-to-openttd)
+    - 2.3) [Reporting bugs](#23-reporting-bugs)
+    - 2.4) [Translating](#24-translating)
 - 3.0) [Licensing](#30-licensing)
 - 4.0) [Credits](#40-credits)
 
@@ -77,9 +78,9 @@ For some platforms, you will need to refer to [the installation guide](https://w
 The free data files, split into OpenGFX for graphics, OpenSFX for sounds and
 OpenMSX for music can be found at:
 
-- https://www.openttd.org/downloads/opengfx-releases/latest for OpenGFX
-- https://www.openttd.org/downloads/opensfx-releases/latest for OpenSFX
-- https://www.openttd.org/downloads/openmsx-releases/latest for OpenMSX
+- [OpenGFX](https://www.openttd.org/downloads/opengfx-releases/latest)
+- [OpenSFX](https://www.openttd.org/downloads/opensfx-releases/latest)
+- [OpenMSX](https://www.openttd.org/downloads/openmsx-releases/latest)
 
 Please follow the readme of these packages about the installation procedure.
 The Windows installer can optionally download and install these packages.
@@ -144,12 +145,19 @@ If you want to compile OpenTTD from source, instructions can be found in [COMPIL
 - the OpenTTD wiki has a [page listing OpenTTD communities](https://wiki.openttd.org/en/Community/Community) including some in languages other than English
 
 
-### 2.1) Contributing to OpenTTD
+### 2.1) Multiplayer games
+
+You can play OpenTTD with others, either cooperatively or competitively.
+
+See the [multiplayer documentation](./docs/multiplayer.md) for more details.
+
+
+### 2.2) Contributing to OpenTTD
 
 We welcome contributors to OpenTTD.  More information for contributors can be found in [CONTRIBUTING.md](./CONTRIBUTING.md)
 
 
-### 2.2) Reporting bugs
+### 2.3) Reporting bugs
 
 Good bug reports are very helpful.  We have a [guide to reporting bugs](./CONTRIBUTING.md#bug-reports) to help with this.
 
@@ -157,7 +165,7 @@ Desyncs in multiplayer are complex to debug and report (some software developmen
 Instructions can be found in [debugging and reporting desyncs](./docs/debugging_desyncs.md).
 
 
-### 2.3) Translating
+### 2.4) Translating
 
 OpenTTD is translated into many languages.  Translations are added and updated via the [online translation tool](https://translator.openttd.org).
 
@@ -174,11 +182,14 @@ See `src/3rdparty/squirrel/COPYRIGHT` for the complete license text.
 The md5 implementation in `src/3rdparty/md5` is licensed under the Zlib license.
 See the comments in the source files in `src/3rdparty/md5` for the complete license text.
 
-The implementations of Posix `getaddrinfo` and `getnameinfo` for OS/2 in `src/3rdparty/os2` are distributed partly under the GNU Lesser General Public License 2.1, and partly under the (3-clause) BSD license.
-The exact licensing terms can be found in `src/3rdparty/os2/getaddrinfo.c` resp. `src/3rdparty/os2/getnameinfo.c`.
-
 The fmt implementation in `src/3rdparty/fmt` is licensed under the MIT license.
 See `src/3rdparty/fmt/LICENSE.rst` for the complete license text.
+
+The nlohmann json implementation in `src/3rdparty/nlohmann` is licensed under the MIT license.
+See `src/3rdparty/nlohmann/LICENSE.MIT` for the complete license text.
+
+The OpenGL API in `src/3rdparty/opengl` is licensed under the MIT license.
+See `src/3rdparty/opengl/khrplatform.h` for the complete license text.
 
 The catch2 implementation in `src/3rdparty/catch2` is licensed under the Boost Software License, Version 1.0.
 See `src/3rdparty/catch2/LICENSE.txt` for the complete license text.

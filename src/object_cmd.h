@@ -13,8 +13,8 @@
 #include "command_type.h"
 #include "object_type.h"
 
-CommandCost CmdBuildObject(DoCommandFlag flags, TileIndex tile, ObjectType type, uint8 view);
-CommandCost CmdBuildObjectArea(DoCommandFlag flags, TileIndex tile, TileIndex start_tile, ObjectType type, uint8 view, bool diagonal);
+CommandCost CmdBuildObject(DoCommandFlag flags, TileIndex tile, ObjectType type, uint8_t view);
+CommandCost CmdBuildObjectArea(DoCommandFlag flags, TileIndex tile, TileIndex start_tile, ObjectType type, uint8_t view, bool diagonal);
 
 DEF_CMD_TRAIT(CMD_BUILD_OBJECT, CmdBuildObject, CMD_DEITY | CMD_NO_WATER | CMD_AUTO, CMDT_LANDSCAPE_CONSTRUCTION)
 DEF_CMD_TRAIT(CMD_BUILD_OBJECT_AREA, CmdBuildObjectArea, CMD_DEITY | CMD_NO_WATER | CMD_NO_TEST | CMD_AUTO, CMDT_LANDSCAPE_CONSTRUCTION)

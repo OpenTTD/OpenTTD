@@ -204,7 +204,7 @@
 {
 	EnforceCompanyModeValid(false);
 	EnforcePrecondition(false, loan >= 0);
-	EnforcePrecondition(false, ((int64)loan % GetLoanInterval()) == 0);
+	EnforcePrecondition(false, ((int64_t)loan % GetLoanInterval()) == 0);
 	EnforcePrecondition(false, loan <= GetMaxLoanAmount());
 	EnforcePrecondition(false, (loan - GetLoanAmount() + GetBankBalance(COMPANY_SELF)) >= 0);
 
@@ -224,7 +224,7 @@
 	EnforceCompanyModeValid(false);
 	EnforcePrecondition(false, loan >= 0);
 
-	Money over_interval = (int64)loan % GetLoanInterval();
+	Money over_interval = (int64_t)loan % GetLoanInterval();
 	if (over_interval != 0) loan += GetLoanInterval() - over_interval;
 
 	EnforcePrecondition(false, loan <= GetMaxLoanAmount());
@@ -298,7 +298,7 @@
 {
 	EnforceCompanyModeValid(false);
 	EnforcePrecondition(false, money >= 0);
-	EnforcePrecondition(false, (int64)money <= UINT32_MAX);
+	EnforcePrecondition(false, (int64_t)money <= UINT32_MAX);
 	return ScriptObject::Command<CMD_CHANGE_COMPANY_SETTING>::Do("company.engine_renew_money", money);
 }
 

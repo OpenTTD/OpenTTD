@@ -11,7 +11,6 @@
 #define VEHICLE_FUNC_H
 
 #include "gfx_type.h"
-#include "date_type.h"
 #include "direction_type.h"
 #include "command_type.h"
 #include "vehicle_type.h"
@@ -25,7 +24,7 @@
 #define IS_CUSTOM_FIRSTHEAD_SPRITE(x) (x == 0xFD)
 #define IS_CUSTOM_SECONDHEAD_SPRITE(x) (x == 0xFE)
 
-static const int VEHICLE_PROFIT_MIN_AGE = DAYS_IN_YEAR * 2; ///< Only vehicles older than this have a meaningful profit.
+static const int VEHICLE_PROFIT_MIN_AGE = CalendarTime::DAYS_IN_YEAR * 2; ///< Only vehicles older than this have a meaningful profit.
 static const Money VEHICLE_PROFIT_THRESHOLD = 10000;        ///< Threshold for a vehicle to be considered making good profit.
 
 /**
@@ -35,7 +34,7 @@ static const Money VEHICLE_PROFIT_THRESHOLD = 10000;        ///< Threshold for a
  * @return True iff the image index is valid.
  */
 template <VehicleType T>
-bool IsValidImageIndex(uint8 image_index);
+bool IsValidImageIndex(uint8_t image_index);
 
 typedef Vehicle *VehicleFromPosProc(Vehicle *v, void *data);
 
@@ -46,7 +45,7 @@ void FindVehicleOnPosXY(int x, int y, void *data, VehicleFromPosProc *proc);
 bool HasVehicleOnPos(TileIndex tile, void *data, VehicleFromPosProc *proc);
 bool HasVehicleOnPosXY(int x, int y, void *data, VehicleFromPosProc *proc);
 void CallVehicleTicks();
-uint8 CalcPercentVehicleFilled(const Vehicle *v, StringID *colour);
+uint8_t CalcPercentVehicleFilled(const Vehicle *v, StringID *colour);
 
 void VehicleLengthChanged(const Vehicle *u);
 
@@ -171,11 +170,13 @@ StringID GetVehicleCannotUseStationReason(const Vehicle *v, const Station *st);
 void ReleaseDisastersTargetingVehicle(VehicleID vehicle);
 
 typedef std::vector<VehicleID> VehicleSet;
-void GetVehicleSet(VehicleSet &set, Vehicle *v, uint8 num_vehicles);
+void GetVehicleSet(VehicleSet &set, Vehicle *v, uint8_t num_vehicles);
 
 void CheckCargoCapacity(Vehicle *v);
 
 bool VehiclesHaveSameEngineList(const Vehicle *v1, const Vehicle *v2);
 bool VehiclesHaveSameOrderList(const Vehicle *v1, const Vehicle *v2);
+
+bool IsUniqueVehicleName(const std::string &name);
 
 #endif /* VEHICLE_FUNC_H */

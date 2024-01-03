@@ -51,6 +51,7 @@ struct TileInfo {
 /** Tile description for the 'land area information' tool */
 struct TileDesc {
 	StringID str;               ///< Description of the tile
+	uint64_t dparam;            ///< Parameter of the \a str string
 	Owner owner[4];             ///< Name of the owner(s)
 	StringID owner_type[4];     ///< Type of each owner
 	TimerGameCalendar::Date build_date; ///< Date of construction of tile contents
@@ -60,13 +61,12 @@ struct TileDesc {
 	StringID airport_name;      ///< Name of the airport
 	StringID airport_tile_name; ///< Name of the airport tile
 	const char *grf;            ///< newGRF used for the tile contents
-	uint64 dparam[2];           ///< Parameters of the \a str string
 	StringID railtype;          ///< Type of rail on the tile.
-	uint16 rail_speed;          ///< Speed limit of rail (bridges and track)
+	uint16_t rail_speed;          ///< Speed limit of rail (bridges and track)
 	StringID roadtype;          ///< Type of road on the tile.
-	uint16 road_speed;          ///< Speed limit of road (bridges and track)
+	uint16_t road_speed;          ///< Speed limit of road (bridges and track)
 	StringID tramtype;          ///< Type of tram on the tile.
-	uint16 tram_speed;          ///< Speed limit of tram (bridges and track)
+	uint16_t tram_speed;          ///< Speed limit of tram (bridges and track)
 };
 
 /**

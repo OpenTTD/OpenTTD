@@ -12,7 +12,7 @@
 
 /** Widgets of the #ScreenshotWindow class. */
 
-enum ScreenshotWindowWidgets {
+enum ScreenshotWindowWidgets : WidgetID {
 	WID_SC_TAKE,             ///< Button for taking a normal screenshot
 	WID_SC_TAKE_ZOOMIN,      ///< Button for taking a zoomed in screenshot
 	WID_SC_TAKE_DEFAULTZOOM, ///< Button for taking a screenshot at normal zoom

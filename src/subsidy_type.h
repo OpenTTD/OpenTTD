@@ -20,7 +20,7 @@ enum PartOfSubsidy : byte {
 };
 DECLARE_ENUM_AS_BIT_SET(PartOfSubsidy)
 
-typedef uint16 SubsidyID; ///< ID of a subsidy
+typedef uint16_t SubsidyID; ///< ID of a subsidy
 struct Subsidy;
 
 #endif /* SUBSIDY_TYPE_H */

@@ -28,7 +28,7 @@ extern NetworkCompanyState *_network_company_states;
 
 extern ClientID _network_own_client_id;
 extern ClientID _redirect_console_to_client;
-extern uint8 _network_reconnect;
+extern uint8_t _network_reconnect;
 extern StringList _network_bind_list;
 extern StringList _network_host_list;
 extern StringList _network_ban_list;
@@ -43,10 +43,10 @@ void NetworkUpdateServerGameType();
 bool NetworkCompanyHasClients(CompanyID company);
 std::string NetworkChangeCompanyPassword(CompanyID company_id, std::string password);
 void NetworkReboot();
-void NetworkDisconnect(bool blocking = false, bool close_admins = true);
+void NetworkDisconnect(bool close_admins = true);
 void NetworkGameLoop();
 void NetworkBackgroundLoop();
-std::string_view ParseFullConnectionString(const std::string &connection_string, uint16 &port, CompanyID *company_id = nullptr);
+std::string_view ParseFullConnectionString(const std::string &connection_string, uint16_t &port, CompanyID *company_id = nullptr);
 void NetworkStartDebugLog(const std::string &connection_string);
 void NetworkPopulateCompanyStats(NetworkCompanyStats *stats);
 
@@ -56,7 +56,7 @@ bool NetworkClientConnectGame(const std::string &connection_string, CompanyID de
 void NetworkClientJoinGame();
 void NetworkClientRequestMove(CompanyID company, const std::string &pass = "");
 void NetworkClientSendRcon(const std::string &password, const std::string &command);
-void NetworkClientSendChat(NetworkAction action, DestType type, int dest, const std::string &msg, int64 data = 0);
+void NetworkClientSendChat(NetworkAction action, DestType type, int dest, const std::string &msg, int64_t data = 0);
 bool NetworkClientPreferTeamChat(const NetworkClientInfo *cio);
 bool NetworkCompanyIsPassworded(CompanyID company_id);
 uint NetworkMaxCompaniesAllowed();
@@ -75,7 +75,7 @@ bool NetworkServerChangeClientName(ClientID client_id, const std::string &new_na
 
 void NetworkServerDoMove(ClientID client_id, CompanyID company_id);
 void NetworkServerSendRcon(ClientID client_id, TextColour colour_code, const std::string &string);
-void NetworkServerSendChat(NetworkAction action, DestType type, int dest, const std::string &msg, ClientID from_id, int64 data = 0, bool from_admin = false);
+void NetworkServerSendChat(NetworkAction action, DestType type, int dest, const std::string &msg, ClientID from_id, int64_t data = 0, bool from_admin = false);
 void NetworkServerSendExternalChat(const std::string &source, TextColour colour, const std::string &user, const std::string &msg);
 
 void NetworkServerKickClient(ClientID client_id, const std::string &reason);

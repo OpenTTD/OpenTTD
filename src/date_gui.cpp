@@ -13,7 +13,6 @@
 #include "window_func.h"
 #include "window_gui.h"
 #include "date_gui.h"
-#include "date_type.h"
 #include "core/geometry_func.hpp"
 
 #include "widgets/dropdown_type.h"
@@ -44,19 +43,19 @@ struct SetDateWindow : Window {
 			Window(desc),
 			callback(callback),
 			callback_data(callback_data),
-			min_year(std::max(MIN_YEAR, min_year)),
-			max_year(std::min(MAX_YEAR, max_year))
+			min_year(std::max(CalendarTime::MIN_YEAR, min_year)),
+			max_year(std::min(CalendarTime::MAX_YEAR, max_year))
 	{
 		assert(this->min_year <= this->max_year);
 		this->parent = parent;
 		this->InitNested(window_number);
 
 		if (initial_date == 0) initial_date = TimerGameCalendar::date;
-		TimerGameCalendar::ConvertDateToYMD(initial_date, &this->date);
+		this->date = TimerGameCalendar::ConvertDateToYMD(initial_date);
 		this->date.year = Clamp(this->date.year, min_year, max_year);
 	}
 
-	Point OnInitialPosition(int16 sm_width, int16 sm_height, int window_number) override
+	Point OnInitialPosition([[maybe_unused]] int16_t sm_width, [[maybe_unused]] int16_t sm_height, [[maybe_unused]] int window_number) override
 	{
 		Point pt = { this->parent->left + this->parent->width / 2 - sm_width / 2, this->parent->top + this->parent->height / 2 - sm_height / 2 };
 		return pt;
@@ -66,7 +65,7 @@ struct SetDateWindow : Window {
 	 * Helper function to construct the dropdown.
 	 * @param widget the dropdown widget to create the dropdown for
 	 */
-	void ShowDateDropDown(int widget)
+	void ShowDateDropDown(WidgetID widget)
 	{
 		int selected;
 		DropDownList list;
@@ -76,32 +75,31 @@ struct SetDateWindow : Window {
 
 			case WID_SD_DAY:
 				for (uint i = 0; i < 31; i++) {
-					list.emplace_back(new DropDownListStringItem(STR_DAY_NUMBER_1ST + i, i + 1, false));
+					list.push_back(std::make_unique<DropDownListStringItem>(STR_DAY_NUMBER_1ST + i, i + 1, false));
 				}
 				selected = this->date.day;
 				break;
 
 			case WID_SD_MONTH:
 				for (uint i = 0; i < 12; i++) {
-					list.emplace_back(new DropDownListStringItem(STR_MONTH_JAN + i, i, false));
+					list.push_back(std::make_unique<DropDownListStringItem>(STR_MONTH_JAN + i, i, false));
 				}
 				selected = this->date.month;
 				break;
 
 			case WID_SD_YEAR:
 				for (TimerGameCalendar::Year i = this->min_year; i <= this->max_year; i++) {
-					DropDownListParamStringItem *item = new DropDownListParamStringItem(STR_JUST_INT, i, false);
-					item->SetParam(0, i);
-					list.emplace_back(item);
+					SetDParam(0, i);
+					list.push_back(std::make_unique<DropDownListStringItem>(STR_JUST_INT, i.base(), false));
 				}
-				selected = this->date.year;
+				selected = this->date.year.base();
 				break;
 		}
 
 		ShowDropDownList(this, std::move(list), selected, widget);
 	}
 
-	void UpdateWidgetSize(int widget, Dimension *size, const Dimension &padding, Dimension *fill, Dimension *resize) override
+	void UpdateWidgetSize(WidgetID widget, Dimension *size, [[maybe_unused]] const Dimension &padding, [[maybe_unused]] Dimension *fill, [[maybe_unused]] Dimension *resize) override
 	{
 		Dimension d = {0, 0};
 		switch (widget) {
@@ -130,7 +128,7 @@ struct SetDateWindow : Window {
 		*size = d;
 	}
 
-	void SetStringParameters(int widget) const override
+	void SetStringParameters(WidgetID widget) const override
 	{
 		switch (widget) {
 			case WID_SD_DAY:   SetDParam(0, this->date.day - 1 + STR_DAY_NUMBER_1ST); break;
@@ -139,7 +137,7 @@ struct SetDateWindow : Window {
 		}
 	}
 
-	void OnClick(Point pt, int widget, int click_count) override
+	void OnClick([[maybe_unused]] Point pt, WidgetID widget, [[maybe_unused]] int click_count) override
 	{
 		switch (widget) {
 			case WID_SD_DAY:
@@ -155,7 +153,7 @@ struct SetDateWindow : Window {
 		}
 	}
 
-	void OnDropdownSelect(int widget, int index) override
+	void OnDropdownSelect(WidgetID widget, int index) override
 	{
 		switch (widget) {
 			case WID_SD_DAY:
@@ -197,11 +195,11 @@ static const NWidgetPart _nested_set_date_widgets[] = {
 };
 
 /** Description of the date setting window. */
-static WindowDesc _set_date_desc(
+static WindowDesc _set_date_desc(__FILE__, __LINE__,
 	WDP_CENTER, nullptr, 0, 0,
 	WC_SET_DATE, WC_NONE,
 	0,
-	_nested_set_date_widgets, lengthof(_nested_set_date_widgets)
+	std::begin(_nested_set_date_widgets), std::end(_nested_set_date_widgets)
 );
 
 /**

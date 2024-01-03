@@ -38,10 +38,11 @@ public:
 /** Action of final delivery of cargo. */
 class CargoDelivery : public CargoRemoval<VehicleCargoList> {
 protected:
+	TileIndex current_tile; ///< Current tile cargo delivery is happening.
 	CargoPayment *payment; ///< Payment object where payments will be registered.
 public:
-	CargoDelivery(VehicleCargoList *source, uint max_move, CargoPayment *payment) :
-			CargoRemoval<VehicleCargoList>(source, max_move), payment(payment) {}
+	CargoDelivery(VehicleCargoList *source, uint max_move, CargoPayment *payment, TileIndex current_tile) :
+			CargoRemoval<VehicleCargoList>(source, max_move), current_tile(current_tile), payment(payment) {}
 	bool operator()(CargoPacket *cp);
 };
 
@@ -69,36 +70,40 @@ public:
 
 /** Action of transferring cargo from a vehicle to a station. */
 class CargoTransfer : public CargoMovement<VehicleCargoList, StationCargoList> {
+protected:
+	TileIndex current_tile; ///< Current tile cargo unloading is happening.
 public:
-	CargoTransfer(VehicleCargoList *source, StationCargoList *destination, uint max_move) :
-			CargoMovement<VehicleCargoList, StationCargoList>(source, destination, max_move) {}
+	CargoTransfer(VehicleCargoList *source, StationCargoList *destination, uint max_move, TileIndex current_tile) :
+			CargoMovement<VehicleCargoList, StationCargoList>(source, destination, max_move), current_tile(current_tile) {}
 	bool operator()(CargoPacket *cp);
 };
 
 /** Action of loading cargo from a station onto a vehicle. */
 class CargoLoad : public CargoMovement<StationCargoList, VehicleCargoList> {
 protected:
-	TileIndex load_place; ///< TileIndex to be saved in the packets' loaded_at_xy.
+	TileIndex current_tile; ///< Current tile cargo loading is happening.
 public:
-	CargoLoad(StationCargoList *source, VehicleCargoList *destination, uint max_move, TileIndex load_place) :
-			CargoMovement<StationCargoList, VehicleCargoList>(source, destination, max_move), load_place(load_place) {}
+	CargoLoad(StationCargoList *source, VehicleCargoList *destination, uint max_move, TileIndex current_tile) :
+			CargoMovement<StationCargoList, VehicleCargoList>(source, destination, max_move), current_tile(current_tile) {}
 	bool operator()(CargoPacket *cp);
 };
 
 /** Action of reserving cargo from a station to be loaded onto a vehicle. */
 class CargoReservation : public CargoLoad {
 public:
-	CargoReservation(StationCargoList *source, VehicleCargoList *destination, uint max_move, TileIndex load_place) :
-			CargoLoad(source, destination, max_move, load_place) {}
+	CargoReservation(StationCargoList *source, VehicleCargoList *destination, uint max_move, TileIndex current_tile) :
+			CargoLoad(source, destination, max_move, current_tile) {}
 	bool operator()(CargoPacket *cp);
 };
 
 /** Action of returning previously reserved cargo from the vehicle to the station. */
 class CargoReturn : public CargoMovement<VehicleCargoList, StationCargoList> {
+protected:
+	TileIndex current_tile; ///< Current tile cargo unloading is happening.
 	StationID next;
 public:
-	CargoReturn(VehicleCargoList *source, StationCargoList *destination, uint max_move, StationID next) :
-			CargoMovement<VehicleCargoList, StationCargoList>(source, destination, max_move), next(next) {}
+	CargoReturn(VehicleCargoList *source, StationCargoList *destination, uint max_move, StationID next, TileIndex current_tile) :
+			CargoMovement<VehicleCargoList, StationCargoList>(source, destination, max_move), current_tile(current_tile), next(next) {}
 	bool operator()(CargoPacket *cp);
 };
 

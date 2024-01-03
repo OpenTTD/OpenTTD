@@ -63,7 +63,7 @@ std::string ValueStr(SignalType t)
 std::string TileStr(TileIndex tile)
 {
 	std::stringstream ss;
-	ss << "0x" << std::setfill('0') << std::setw(4) << std::hex << tile; // 0x%04X
+	ss << "0x" << std::setfill('0') << std::setw(4) << std::hex << tile.base(); // 0x%04X
 	ss << " (" << TileX(tile) << ", " << TileY(tile) << ")";
 	return ss.str();
 }
@@ -139,7 +139,7 @@ void DumpTarget::BeginStruct(size_t type_id, const std::string &name, const void
 {
 	/* make composite name */
 	std::string cur_name = GetCurrentStructName();
-	if (cur_name.size() > 0) {
+	if (!cur_name.empty()) {
 		/* add name delimiter (we use structured names) */
 		cur_name += ".";
 	}

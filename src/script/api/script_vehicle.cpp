@@ -311,7 +311,7 @@
 {
 	if (!IsValidVehicle(vehicle_id)) return -1;
 
-	return ::Vehicle::Get(vehicle_id)->age;
+	return ::Vehicle::Get(vehicle_id)->age.base();
 }
 
 /* static */ SQInteger ScriptVehicle::GetWagonAge(VehicleID vehicle_id, SQInteger wagon)
@@ -323,21 +323,21 @@
 	if (v->type == VEH_TRAIN) {
 		while (wagon-- > 0) v = ::Train::From(v)->GetNextUnit();
 	}
-	return v->age;
+	return v->age.base();
 }
 
 /* static */ SQInteger ScriptVehicle::GetMaxAge(VehicleID vehicle_id)
 {
 	if (!IsPrimaryVehicle(vehicle_id)) return -1;
 
-	return ::Vehicle::Get(vehicle_id)->max_age;
+	return ::Vehicle::Get(vehicle_id)->max_age.base();
 }
 
 /* static */ SQInteger ScriptVehicle::GetAgeLeft(VehicleID vehicle_id)
 {
 	if (!IsPrimaryVehicle(vehicle_id)) return -1;
 
-	return ::Vehicle::Get(vehicle_id)->max_age - ::Vehicle::Get(vehicle_id)->age;
+	return (::Vehicle::Get(vehicle_id)->max_age - ::Vehicle::Get(vehicle_id)->age).base();
 }
 
 /* static */ SQInteger ScriptVehicle::GetCurrentSpeed(VehicleID vehicle_id)
@@ -417,7 +417,7 @@
 	if (!IsValidVehicle(vehicle_id)) return -1;
 	if (!ScriptCargo::IsValidCargo(cargo)) return -1;
 
-	uint32 amount = 0;
+	uint32_t amount = 0;
 	for (const Vehicle *v = ::Vehicle::Get(vehicle_id); v != nullptr; v = v->Next()) {
 		if (v->cargo_type == cargo) amount += v->cargo_cap;
 	}
@@ -430,7 +430,7 @@
 	if (!IsValidVehicle(vehicle_id)) return -1;
 	if (!ScriptCargo::IsValidCargo(cargo)) return -1;
 
-	uint32 amount = 0;
+	uint32_t amount = 0;
 	for (const Vehicle *v = ::Vehicle::Get(vehicle_id); v != nullptr; v = v->Next()) {
 		if (v->cargo_type == cargo) amount += v->cargo.StoredCount();
 	}

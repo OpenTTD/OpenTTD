@@ -11,7 +11,7 @@ struct SQLexer
 	const SQChar *Tok2Str(SQInteger tok);
 private:
 	SQInteger GetIDType(SQChar *s);
-	SQInteger ReadString(WChar ndelim,bool verbatim);
+	SQInteger ReadString(char32_t ndelim,bool verbatim);
 	SQInteger ReadNumber();
 	void LexBlockComment();
 	SQInteger ReadID();
@@ -19,7 +19,7 @@ private:
 	SQInteger _curtoken;
 	SQTable *_keywords;
 	void INIT_TEMP_STRING() { _longstr.resize(0); }
-	void APPEND_CHAR(WChar c);
+	void APPEND_CHAR(char32_t c);
 	void TERMINATE_BUFFER() { _longstr.push_back('\0'); }
 
 public:
@@ -32,7 +32,7 @@ public:
 	SQFloat _fvalue;
 	SQLEXREADFUNC _readf;
 	SQUserPointer _up;
-	WChar _currdata;
+	char32_t _currdata;
 	SQSharedState *_sharedstate;
 	sqvector<SQChar> _longstr;
 	CompilerErrorFunc _errfunc;

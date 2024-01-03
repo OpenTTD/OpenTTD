@@ -7,18 +7,14 @@
 
 /** @file survey_unix.cpp Unix implementation of OS-specific survey information. */
 
-#ifdef WITH_NLOHMANN_JSON
-
 #include "../../stdafx.h"
+#include "../../survey.h"
 
-#include <nlohmann/json.hpp>
 #include <sys/utsname.h>
 #include <thread>
 #include <unistd.h>
 
 #include "../../safeguards.h"
-
-extern std::string SurveyMemoryToText(uint64_t memory);
 
 void SurveyOS(nlohmann::json &json)
 {
@@ -38,5 +34,3 @@ void SurveyOS(nlohmann::json &json)
 	json["memory"] = SurveyMemoryToText(pages * page_size);
 	json["hardware_concurrency"] = std::thread::hardware_concurrency();
 }
-
-#endif /* WITH_NLOHMANN_JSON */

@@ -12,8 +12,8 @@
 
 #include "command_type.h"
 
-CommandCost CmdChangeSetting(DoCommandFlag flags, const std::string &name, int32 value);
-CommandCost CmdChangeCompanySetting(DoCommandFlag flags, const std::string &name, int32 value);
+CommandCost CmdChangeSetting(DoCommandFlag flags, const std::string &name, int32_t value);
+CommandCost CmdChangeCompanySetting(DoCommandFlag flags, const std::string &name, int32_t value);
 
 DEF_CMD_TRAIT(CMD_CHANGE_SETTING,         CmdChangeSetting,        CMD_SERVER, CMDT_SERVER_SETTING)
 DEF_CMD_TRAIT(CMD_CHANGE_COMPANY_SETTING, CmdChangeCompanySetting, 0,          CMDT_COMPANY_SETTING)

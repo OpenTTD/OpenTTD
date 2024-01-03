@@ -19,6 +19,7 @@
 #define NO_SHOBJIDL_SORTDIRECTION // Avoid multiple definition of SORT_ASCENDING
 #include <shlobj.h> /* SHGetFolderPath */
 #include <shellapi.h>
+#include <WinNls.h>
 #include "win32.h"
 #include "../../fios.h"
 #include "../../core/alloc_func.hpp"
@@ -45,13 +46,13 @@ bool MyShowCursor(bool show, bool toggle)
 	return !show;
 }
 
-void ShowOSErrorBox(const char *buf, bool system)
+void ShowOSErrorBox(const char *buf, bool)
 {
 	MyShowCursor(true);
 	MessageBox(GetActiveWindow(), OTTD2FS(buf).c_str(), L"Error!", MB_ICONSTOP | MB_TASKMODAL);
 }
 
-void OSOpenBrowser(const char *url)
+void OSOpenBrowser(const std::string &url)
 {
 	ShellExecute(GetActiveWindow(), L"open", OTTD2FS(url).c_str(), nullptr, nullptr, SW_SHOWNORMAL);
 }
@@ -190,19 +191,19 @@ void FiosGetDrives(FileList &file_list)
 	}
 }
 
-bool FiosIsValidFile(const std::string &path, const struct dirent *ent, struct stat *sb)
+bool FiosIsValidFile(const std::string &, const struct dirent *ent, struct stat *sb)
 {
 	/* hectonanoseconds between Windows and POSIX epoch */
-	static const int64 posix_epoch_hns = 0x019DB1DED53E8000LL;
+	static const int64_t posix_epoch_hns = 0x019DB1DED53E8000LL;
 	const WIN32_FIND_DATA *fd = &ent->dir->fd;
 
-	sb->st_size  = ((uint64) fd->nFileSizeHigh << 32) + fd->nFileSizeLow;
+	sb->st_size  = ((uint64_t) fd->nFileSizeHigh << 32) + fd->nFileSizeLow;
 	/* UTC FILETIME to seconds-since-1970 UTC
 	 * we just have to subtract POSIX epoch and scale down to units of seconds.
 	 * http://www.gamedev.net/community/forums/topic.asp?topic_id=294070&whichpage=1&#1860504
 	 * XXX - not entirely correct, since filetimes on FAT aren't UTC but local,
 	 * this won't entirely be correct, but we use the time only for comparison. */
-	sb->st_mtime = (time_t)((*(const uint64*)&fd->ftLastWriteTime - posix_epoch_hns) / 1E7);
+	sb->st_mtime = (time_t)((*(const uint64_t*)&fd->ftLastWriteTime - posix_epoch_hns) / 1E7);
 	sb->st_mode  = (fd->dwFileAttributes & FILE_ATTRIBUTE_DIRECTORY)? S_IFDIR : S_IFREG;
 
 	return true;
@@ -283,7 +284,7 @@ void CreateConsole()
 static const char *_help_msg;
 
 /** Callback function to handle the window */
-static INT_PTR CALLBACK HelpDialogFunc(HWND wnd, UINT msg, WPARAM wParam, LPARAM lParam)
+static INT_PTR CALLBACK HelpDialogFunc(HWND wnd, UINT msg, WPARAM wParam, LPARAM)
 {
 	switch (msg) {
 		case WM_INITDIALOG: {
@@ -599,6 +600,44 @@ int OTTDStringCompare(std::string_view s1, std::string_view s2)
 	convert_to_fs(s2, s2_buf, lengthof(s2_buf));
 
 	return CompareString(MAKELCID(_current_language->winlangid, SORT_DEFAULT), NORM_IGNORECASE, s1_buf, -1, s2_buf, -1);
+}
+
+/**
+ * Search if a string is contained in another string using the current locale.
+ *
+ * @param str String to search in.
+ * @param value String to search for.
+ * @param case_insensitive Search case-insensitive.
+ * @return 1 if value was found, 0 if it was not found, or -1 if not supported by the OS.
+ */
+int Win32StringContains(const std::string_view str, const std::string_view value, bool case_insensitive)
+{
+	typedef int (WINAPI *PFNFINDNLSSTRINGEX)(LPCWSTR, DWORD, LPCWSTR, int, LPCWSTR, int, LPINT, LPNLSVERSIONINFO, LPVOID, LPARAM);
+	static PFNFINDNLSSTRINGEX _FindNLSStringEx = nullptr;
+	static bool first_time = true;
+
+	if (first_time) {
+		static DllLoader _kernel32(L"Kernel32.dll");
+		_FindNLSStringEx = _kernel32.GetProcAddress("FindNLSStringEx");
+		first_time = false;
+	}
+
+	if (_FindNLSStringEx != nullptr) {
+		int len_str = MultiByteToWideChar(CP_UTF8, 0, str.data(), (int)str.size(), nullptr, 0);
+		int len_value = MultiByteToWideChar(CP_UTF8, 0, value.data(), (int)value.size(), nullptr, 0);
+
+		if (len_str != 0 && len_value != 0) {
+			std::wstring str_str(len_str, L'\0'); // len includes terminating null
+			std::wstring str_value(len_value, L'\0');
+
+			MultiByteToWideChar(CP_UTF8, 0, str.data(), (int)str.size(), str_str.data(), len_str);
+			MultiByteToWideChar(CP_UTF8, 0, value.data(), (int)value.size(), str_value.data(), len_value);
+
+			return _FindNLSStringEx(_cur_iso_locale, FIND_FROMSTART | (case_insensitive ? LINGUISTIC_IGNORECASE : 0), str_str.data(), -1, str_value.data(), -1, nullptr, nullptr, nullptr, 0) >= 0 ? 1 : 0;
+		}
+	}
+
+	return -1; // Failure indication.
 }
 
 #ifdef _MSC_VER

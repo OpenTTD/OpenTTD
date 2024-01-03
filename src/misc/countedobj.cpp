@@ -13,14 +13,14 @@
 
 #include "../safeguards.h"
 
-int32 SimpleCountedObject::AddRef()
+int32_t SimpleCountedObject::AddRef()
 {
 	return ++m_ref_cnt;
 }
 
-int32 SimpleCountedObject::Release()
+int32_t SimpleCountedObject::Release()
 {
-	int32 res = --m_ref_cnt;
+	int32_t res = --m_ref_cnt;
 	assert(res >= 0);
 	if (res == 0) {
 		try {

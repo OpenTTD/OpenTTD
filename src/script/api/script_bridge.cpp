@@ -83,8 +83,8 @@ static void _DoCommandReturnBuildBridge1(class ScriptInstance *instance)
 
 	switch (vehicle_type) {
 		case ScriptVehicle::VT_ROAD:
-			ScriptObject::SetCallbackVariable(0, start);
-			ScriptObject::SetCallbackVariable(1, end);
+			ScriptObject::SetCallbackVariable(0, start.base());
+			ScriptObject::SetCallbackVariable(1, end.base());
 			return ScriptObject::Command<CMD_BUILD_BRIDGE>::Do(&::_DoCommandReturnBuildBridge1, end, start, TRANSPORT_ROAD, bridge_id, ScriptRoad::GetCurrentRoadType());
 		case ScriptVehicle::VT_RAIL:
 			return ScriptObject::Command<CMD_BUILD_BRIDGE>::Do(end, start, TRANSPORT_RAIL, bridge_id, ScriptRail::GetCurrentRailType());

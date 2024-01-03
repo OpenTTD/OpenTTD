@@ -11,7 +11,7 @@
 #define OBJECT_TYPE_H
 
 /** Types of objects. */
-typedef uint16 ObjectType;
+typedef uint16_t ObjectType;
 
 static const ObjectType OBJECT_TRANSMITTER  =   0;    ///< The large antenna
 static const ObjectType OBJECT_LIGHTHOUSE   =   1;    ///< The nice lighthouse
@@ -25,7 +25,7 @@ static const ObjectType NUM_OBJECTS_PER_GRF = NUM_OBJECTS; ///< Number of suppor
 static const ObjectType INVALID_OBJECT_TYPE = 0xFFFF; ///< An invalid object
 
 /** Unique identifier for an object. */
-typedef uint32 ObjectID;
+typedef uint32_t ObjectID;
 
 struct Object;
 struct ObjectSpec;

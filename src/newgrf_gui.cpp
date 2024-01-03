@@ -30,6 +30,7 @@
 #include "fios.h"
 #include "timer/timer.h"
 #include "timer/timer_window.h"
+#include "zoom_func.h"
 
 #include "widgets/newgrf_widget.h"
 #include "widgets/misc_widget.h"
@@ -48,7 +49,7 @@ void ShowNewGRFError()
 
 	for (const GRFConfig *c = _grfconfig; c != nullptr; c = c->next) {
 		/* Only show Fatal and Error level messages */
-		if (c->error == nullptr || (c->error->severity != STR_NEWGRF_ERROR_MSG_FATAL && c->error->severity != STR_NEWGRF_ERROR_MSG_ERROR)) continue;
+		if (!c->error.has_value() || (c->error->severity != STR_NEWGRF_ERROR_MSG_FATAL && c->error->severity != STR_NEWGRF_ERROR_MSG_ERROR)) continue;
 
 		SetDParamStr(0, c->GetName());
 		SetDParam   (1, c->error->message != STR_NULL ? c->error->message : STR_JUST_RAW_STRING);
@@ -70,16 +71,15 @@ void ShowNewGRFError()
 static void ShowNewGRFInfo(const GRFConfig *c, const Rect &r, bool show_params)
 {
 	Rect tr = r.Shrink(WidgetDimensions::scaled.frametext);
-	if (c->error != nullptr) {
+	if (c->error.has_value()) {
 		SetDParamStr(0, c->error->custom_message); // is skipped by built-in messages
 		SetDParamStr(1, c->filename);
 		SetDParamStr(2, c->error->data);
 		for (uint i = 0; i < c->error->param_value.size(); i++) {
 			SetDParam(3 + i, c->error->param_value[i]);
 		}
-		std::string message = GetString(c->error->message != STR_NULL ? c->error->message : STR_JUST_RAW_STRING);
 
-		SetDParamStr(0, message);
+		SetDParamStr(0, GetString(c->error->message != STR_NULL ? c->error->message : STR_JUST_RAW_STRING));
 		tr.top = DrawStringMultiLine(tr, c->error->severity);
 	}
 
@@ -90,8 +90,7 @@ static void ShowNewGRFInfo(const GRFConfig *c, const Rect &r, bool show_params)
 	}
 
 	/* Prepare and draw GRF ID */
-	std::string tmp = fmt::format("{:08X}", BSWAP32(c->ident.grfid));
-	SetDParamStr(0, tmp);
+	SetDParamStr(0, fmt::format("{:08X}", BSWAP32(c->ident.grfid)));
 	tr.top = DrawStringMultiLine(tr, STR_NEWGRF_SETTINGS_GRF_ID);
 
 	if ((_settings_client.gui.newgrf_developer_tools || _settings_client.gui.newgrf_show_old_versions) && c->version != 0) {
@@ -104,17 +103,14 @@ static void ShowNewGRFInfo(const GRFConfig *c, const Rect &r, bool show_params)
 	}
 
 	/* Prepare and draw MD5 sum */
-	tmp = FormatArrayAsHex(c->ident.md5sum);
-	SetDParamStr(0, tmp);
+	SetDParamStr(0, FormatArrayAsHex(c->ident.md5sum));
 	tr.top = DrawStringMultiLine(tr, STR_NEWGRF_SETTINGS_MD5SUM);
 
 	/* Show GRF parameter list */
 	if (show_params) {
-		std::string params;
 		if (c->num_params > 0) {
-			params = GRFBuildParamList(c);
 			SetDParam(0, STR_JUST_RAW_STRING);
-			SetDParamStr(1, params);
+			SetDParamStr(1, GRFBuildParamList(c));
 		} else {
 			SetDParam(0, STR_NEWGRF_SETTINGS_PARAMETER_NONE);
 		}
@@ -160,7 +156,7 @@ struct NewGRFParametersWindow : public Window {
 	bool action14present;  ///< True if action14 information is present.
 	bool editable;         ///< Allow editing parameters.
 
-	NewGRFParametersWindow(WindowDesc *desc, GRFConfig *c, bool editable) : Window(desc),
+	NewGRFParametersWindow(WindowDesc *desc, bool is_baseset, GRFConfig *c, bool editable) : Window(desc),
 		grf_config(c),
 		clicked_button(UINT_MAX),
 		clicked_dropdown(false),
@@ -168,9 +164,10 @@ struct NewGRFParametersWindow : public Window {
 		clicked_row(UINT_MAX),
 		editable(editable)
 	{
-		this->action14present = (c->num_valid_params != c->param.size() || c->param_info.size() != 0);
+		this->action14present = (c->num_valid_params != c->param.size() || !c->param_info.empty());
 
 		this->CreateNestedTree();
+		this->GetWidget<NWidgetCore>(WID_NP_CAPTION)->SetDataTip(is_baseset ? STR_BASEGRF_PARAMETERS_CAPTION : STR_NEWGRF_PARAMETERS_CAPTION, STR_TOOLTIP_WINDOW_TITLE_DRAG_THIS);
 		this->vscroll = this->GetScrollbar(WID_NP_SCROLLBAR);
 		this->GetWidget<NWidgetStacked>(WID_NP_SHOW_NUMPAR)->SetDisplayedPlane(this->action14present ? SZSP_HORIZONTAL : 0);
 		this->GetWidget<NWidgetStacked>(WID_NP_SHOW_DESCRIPTION)->SetDisplayedPlane(this->action14present ? 0 : SZSP_HORIZONTAL);
@@ -213,13 +210,13 @@ struct NewGRFParametersWindow : public Window {
 		return this->HasParameterInfo(nr) ? this->grf_config->param_info[nr].value() : GetDummyParameterInfo(nr);
 	}
 
-	void UpdateWidgetSize(int widget, Dimension *size, const Dimension &padding, Dimension *fill, Dimension *resize) override
+	void UpdateWidgetSize(WidgetID widget, Dimension *size, [[maybe_unused]] const Dimension &padding, [[maybe_unused]] Dimension *fill, [[maybe_unused]] Dimension *resize) override
 	{
 		switch (widget) {
 			case WID_NP_NUMPAR_DEC:
 			case WID_NP_NUMPAR_INC: {
-				size->width  = std::max(SETTING_BUTTON_WIDTH / 2, FONT_HEIGHT_NORMAL);
-				size->height = std::max(SETTING_BUTTON_HEIGHT, FONT_HEIGHT_NORMAL);
+				size->width  = std::max(SETTING_BUTTON_WIDTH / 2, GetCharacterHeight(FS_NORMAL));
+				size->height = std::max(SETTING_BUTTON_HEIGHT, GetCharacterHeight(FS_NORMAL));
 				break;
 			}
 
@@ -233,7 +230,7 @@ struct NewGRFParametersWindow : public Window {
 			}
 
 			case WID_NP_BACKGROUND:
-				this->line_height = std::max(SETTING_BUTTON_HEIGHT, FONT_HEIGHT_NORMAL) + padding.height;
+				this->line_height = std::max(SETTING_BUTTON_HEIGHT, GetCharacterHeight(FS_NORMAL)) + padding.height;
 
 				resize->width = 1;
 				resize->height = this->line_height;
@@ -242,7 +239,7 @@ struct NewGRFParametersWindow : public Window {
 
 			case WID_NP_DESCRIPTION:
 				/* Minimum size of 4 lines. The 500 is the default size of the window. */
-				Dimension suggestion = {500U - WidgetDimensions::scaled.frametext.Horizontal(), (uint)FONT_HEIGHT_NORMAL * 4 + WidgetDimensions::scaled.frametext.Vertical()};
+				Dimension suggestion = {500U - WidgetDimensions::scaled.frametext.Horizontal(), (uint)GetCharacterHeight(FS_NORMAL) * 4 + WidgetDimensions::scaled.frametext.Vertical()};
 				for (const auto &par_info : this->grf_config->param_info) {
 					if (!par_info.has_value()) continue;
 					const char *desc = GetGRFStringFromGRFText(par_info->desc);
@@ -256,7 +253,7 @@ struct NewGRFParametersWindow : public Window {
 		}
 	}
 
-	void SetStringParameters(int widget) const override
+	void SetStringParameters(WidgetID widget) const override
 	{
 		switch (widget) {
 			case WID_NP_NUMPAR:
@@ -265,7 +262,7 @@ struct NewGRFParametersWindow : public Window {
 		}
 	}
 
-	void DrawWidget(const Rect &r, int widget) const override
+	void DrawWidget(const Rect &r, WidgetID widget) const override
 	{
 		if (widget == WID_NP_DESCRIPTION) {
 			if (!this->HasParameterInfo(this->clicked_row)) return;
@@ -284,10 +281,10 @@ struct NewGRFParametersWindow : public Window {
 		Rect tr = ir.Indent(SETTING_BUTTON_WIDTH + WidgetDimensions::scaled.hsep_wide, rtl);
 
 		int button_y_offset = (this->line_height - SETTING_BUTTON_HEIGHT) / 2;
-		int text_y_offset = (this->line_height - FONT_HEIGHT_NORMAL) / 2;
+		int text_y_offset = (this->line_height - GetCharacterHeight(FS_NORMAL)) / 2;
 		for (uint i = this->vscroll->GetPosition(); this->vscroll->IsVisible(i) && i < this->vscroll->GetCount(); i++) {
 			GRFParameterInfo &par_info = this->GetParameterInfo(i);
-			uint32 current_value = par_info.GetValue(this->grf_config);
+			uint32_t current_value = par_info.GetValue(this->grf_config);
 			bool selected = (i == this->clicked_row);
 
 			if (par_info.type == PTYPE_BOOL) {
@@ -334,7 +331,7 @@ struct NewGRFParametersWindow : public Window {
 		this->DrawWidgets();
 	}
 
-	void OnClick(Point pt, int widget, int click_count) override
+	void OnClick([[maybe_unused]] Point pt, WidgetID widget, [[maybe_unused]] int click_count) override
 	{
 		switch (widget) {
 			case WID_NP_NUMPAR_DEC:
@@ -357,10 +354,9 @@ struct NewGRFParametersWindow : public Window {
 
 			case WID_NP_BACKGROUND: {
 				if (!this->editable) break;
-				auto it = this->vscroll->GetScrolledItemFromWidget(this->grf_config->param_info, pt.y, this, WID_NP_BACKGROUND);
-				if (it == this->grf_config->param_info.end()) break;
+				uint num = this->vscroll->GetScrolledRowFromWidget(pt.y, this, WID_NP_BACKGROUND);
+				if (num >= this->vscroll->GetCount()) break;
 
-				uint num = it - this->grf_config->param_info.begin();
 				if (this->clicked_row != num) {
 					this->CloseChildWindows(WC_QUERY_STRING);
 					this->CloseChildWindows(WC_DROPDOWN_MENU);
@@ -372,10 +368,10 @@ struct NewGRFParametersWindow : public Window {
 				int x = pt.x - r.left;
 				if (_current_text_dir == TD_RTL) x = r.Width() - 1 - x;
 
-				GRFParameterInfo &par_info = it->has_value() ? it->value() : GetDummyParameterInfo(num);
+				GRFParameterInfo &par_info = this->GetParameterInfo(num);
 
 				/* One of the arrows is clicked */
-				uint32 old_val = par_info.GetValue(this->grf_config);
+				uint32_t old_val = par_info.GetValue(this->grf_config);
 				if (par_info.type != PTYPE_BOOL && IsInsideMM(x, 0, SETTING_BUTTON_WIDTH) && par_info.complete_labels) {
 					if (this->clicked_dropdown) {
 						/* unclick the dropdown */
@@ -397,15 +393,15 @@ struct NewGRFParametersWindow : public Window {
 							this->closing_dropdown = false;
 
 							DropDownList list;
-							for (uint32 i = par_info.min_value; i <= par_info.max_value; i++) {
-								list.emplace_back(new DropDownListCharStringItem(GetGRFStringFromGRFText(par_info.value_names.find(i)->second), i, false));
+							for (uint32_t i = par_info.min_value; i <= par_info.max_value; i++) {
+								list.push_back(std::make_unique<DropDownListStringItem>(GetGRFStringFromGRFText(par_info.value_names.find(i)->second), i, false));
 							}
 
-							ShowDropDownListAt(this, std::move(list), old_val, -1, wi_rect, COLOUR_ORANGE);
+							ShowDropDownListAt(this, std::move(list), old_val, WID_NP_SETTING_DROPDOWN, wi_rect, COLOUR_ORANGE);
 						}
 					}
 				} else if (IsInsideMM(x, 0, SETTING_BUTTON_WIDTH)) {
-					uint32 val = old_val;
+					uint32_t val = old_val;
 					if (par_info.type == PTYPE_BOOL) {
 						val = !val;
 					} else {
@@ -450,23 +446,25 @@ struct NewGRFParametersWindow : public Window {
 	void OnQueryTextFinished(char *str) override
 	{
 		if (StrEmpty(str)) return;
-		int32 value = atoi(str);
+		int32_t value = atoi(str);
 		GRFParameterInfo &par_info = this->GetParameterInfo(this->clicked_row);
-		uint32 val = Clamp<uint32>(value, par_info.min_value, par_info.max_value);
+		uint32_t val = Clamp<uint32_t>(value, par_info.min_value, par_info.max_value);
 		par_info.SetValue(this->grf_config, val);
 		this->SetDirty();
 	}
 
-	void OnDropdownSelect(int widget, int index) override
+	void OnDropdownSelect(WidgetID widget, int index) override
 	{
+		if (widget != WID_NP_SETTING_DROPDOWN) return;
 		assert(this->clicked_dropdown);
 		GRFParameterInfo &par_info = this->GetParameterInfo(this->clicked_row);
 		par_info.SetValue(this->grf_config, index);
 		this->SetDirty();
 	}
 
-	void OnDropdownClose(Point pt, int widget, int index, bool instant_close) override
+	void OnDropdownClose(Point, WidgetID widget, int, bool) override
 	{
+		if (widget != WID_NP_SETTING_DROPDOWN) return;
 		/* We cannot raise the dropdown button just yet. OnClick needs some hint, whether
 		 * the same dropdown button was clicked again, and then not open the dropdown again.
 		 * So, we only remember that it was closed, and process it on the next OnPaint, which is
@@ -486,7 +484,7 @@ struct NewGRFParametersWindow : public Window {
 	 * @param data Information about the changed data.
 	 * @param gui_scope Whether the call is done from GUI scope. You may not do everything when not in GUI scope. See #InvalidateWindowData() for details.
 	 */
-	void OnInvalidateData(int data = 0, bool gui_scope = true) override
+	void OnInvalidateData([[maybe_unused]] int data = 0, [[maybe_unused]] bool gui_scope = true) override
 	{
 		if (!gui_scope) return;
 		if (!this->action14present) {
@@ -513,7 +511,7 @@ GRFParameterInfo NewGRFParametersWindow::dummy_parameter_info(0);
 static const NWidgetPart _nested_newgrf_parameter_widgets[] = {
 	NWidget(NWID_HORIZONTAL),
 		NWidget(WWT_CLOSEBOX, COLOUR_MAUVE),
-		NWidget(WWT_CAPTION, COLOUR_MAUVE), SetDataTip(STR_NEWGRF_PARAMETERS_CAPTION, STR_TOOLTIP_WINDOW_TITLE_DRAG_THIS),
+		NWidget(WWT_CAPTION, COLOUR_MAUVE, WID_NP_CAPTION),
 		NWidget(WWT_DEFSIZEBOX, COLOUR_MAUVE),
 	EndContainer(),
 	NWidget(NWID_SELECTION, INVALID_COLOUR, WID_NP_SHOW_NUMPAR),
@@ -543,17 +541,17 @@ static const NWidgetPart _nested_newgrf_parameter_widgets[] = {
 };
 
 /** Window definition for the change grf parameters window */
-static WindowDesc _newgrf_parameters_desc(
+static WindowDesc _newgrf_parameters_desc(__FILE__, __LINE__,
 	WDP_CENTER, "settings_newgrf_config", 500, 208,
 	WC_GRF_PARAMETERS, WC_NONE,
 	0,
-	_nested_newgrf_parameter_widgets, lengthof(_nested_newgrf_parameter_widgets)
+	std::begin(_nested_newgrf_parameter_widgets), std::end(_nested_newgrf_parameter_widgets)
 );
 
-static void OpenGRFParameterWindow(GRFConfig *c, bool editable)
+void OpenGRFParameterWindow(bool is_baseset, GRFConfig *c, bool editable)
 {
 	CloseWindowByClass(WC_GRF_PARAMETERS);
-	new NewGRFParametersWindow(&_newgrf_parameters_desc, c, editable);
+	new NewGRFParametersWindow(&_newgrf_parameters_desc, is_baseset, c, editable);
 }
 
 /** Window for displaying the textfile of a NewGRF. */
@@ -566,7 +564,7 @@ struct NewGRFTextfileWindow : public TextfileWindow {
 		this->LoadTextfile(textfile.value(), NEWGRF_DIR);
 	}
 
-	void SetStringParameters(int widget) const override
+	void SetStringParameters(WidgetID widget) const override
 	{
 		if (widget == WID_TF_CAPTION) {
 			SetDParam(0, STR_CONTENT_TYPE_NEWGRF);
@@ -581,7 +579,7 @@ void ShowNewGRFTextfileWindow(TextfileType file_type, const GRFConfig *c)
 	new NewGRFTextfileWindow(file_type, c);
 }
 
-typedef std::map<uint32, const GRFConfig *> GrfIdMap; ///< Map of grfid to the grf config.
+typedef std::map<uint32_t, const GRFConfig *> GrfIdMap; ///< Map of grfid to the grf config.
 
 /**
  * Add all grf configs from \a c into the map.
@@ -591,7 +589,7 @@ typedef std::map<uint32, const GRFConfig *> GrfIdMap; ///< Map of grfid to the g
 static void FillGrfidMap(const GRFConfig *c, GrfIdMap *grfid_map)
 {
 	while (c != nullptr) {
-		std::pair<uint32, const GRFConfig *> p(c->ident.grfid, c);
+		std::pair<uint32_t, const GRFConfig *> p(c->ident.grfid, c);
 		grfid_map->insert(p);
 		c = c->next;
 	}
@@ -604,7 +602,7 @@ static void ShowSavePresetWindow(const char *initial_text);
  * Window for showing NewGRF files
  */
 struct NewGRFWindow : public Window, NewGRFScanCallback {
-	typedef GUIList<const GRFConfig *, StringFilter &> GUIGRFConfigList;
+	typedef GUIList<const GRFConfig *, std::nullptr_t, StringFilter &> GUIGRFConfigList;
 
 	static const uint EDITBOX_MAX_SIZE   =  50;
 
@@ -676,7 +674,7 @@ struct NewGRFWindow : public Window, NewGRFScanCallback {
 		this->OnInvalidateData(GOID_NEWGRF_CURRENT_LOADED);
 	}
 
-	void Close() override
+	void Close([[maybe_unused]] int data = 0) override
 	{
 		CloseWindowByClass(WC_GRF_PARAMETERS);
 		CloseWindowByClass(WC_TEXTFILE);
@@ -727,7 +725,11 @@ struct NewGRFWindow : public Window, NewGRFScanCallback {
 			while (*c != iter->second) c = &(*c)->next;
 			GRFConfig *d = new GRFConfig(*a);
 			d->next = (*c)->next;
-			d->CopyParams(**c);
+			if (d->IsCompatible((*c)->version)) {
+				d->CopyParams(**c);
+			} else {
+				d->SetParameterDefaults();
+			}
 			if (this->active_sel == *c) {
 				CloseWindowByClass(WC_GRF_PARAMETERS);
 				CloseWindowByClass(WC_TEXTFILE);
@@ -739,13 +741,13 @@ struct NewGRFWindow : public Window, NewGRFScanCallback {
 		}
 	}
 
-	void UpdateWidgetSize(int widget, Dimension *size, const Dimension &padding, Dimension *fill, Dimension *resize) override
+	void UpdateWidgetSize(WidgetID widget, Dimension *size, [[maybe_unused]] const Dimension &padding, [[maybe_unused]] Dimension *fill, [[maybe_unused]] Dimension *resize) override
 	{
 		switch (widget) {
 			case WID_NS_FILE_LIST:
 			{
 				Dimension d = maxdim(GetScaledSpriteSize(SPR_SQUARE), GetScaledSpriteSize(SPR_WARNING_SIGN));
-				resize->height = std::max<uint>(d.height + 2U, FONT_HEIGHT_NORMAL);
+				resize->height = std::max<uint>(d.height + 2U, GetCharacterHeight(FS_NORMAL));
 				size->height = std::max(size->height, padding.height + 6 * resize->height);
 				break;
 			}
@@ -753,7 +755,7 @@ struct NewGRFWindow : public Window, NewGRFScanCallback {
 			case WID_NS_AVAIL_LIST:
 			{
 				Dimension d = maxdim(GetScaledSpriteSize(SPR_SQUARE), GetScaledSpriteSize(SPR_WARNING_SIGN));
-				resize->height = std::max<uint>(d.height + 2U, FONT_HEIGHT_NORMAL);
+				resize->height = std::max<uint>(d.height + 2U, GetCharacterHeight(FS_NORMAL));
 				size->height = std::max(size->height, padding.height + 8 * resize->height);
 				break;
 			}
@@ -766,7 +768,7 @@ struct NewGRFWindow : public Window, NewGRFScanCallback {
 			}
 
 			case WID_NS_NEWGRF_INFO:
-				size->height = std::max<uint>(size->height, WidgetDimensions::scaled.framerect.Vertical() + 10 * FONT_HEIGHT_NORMAL);
+				size->height = std::max<uint>(size->height, WidgetDimensions::scaled.framerect.Vertical() + 10 * GetCharacterHeight(FS_NORMAL));
 				break;
 
 			case WID_NS_PRESET_LIST: {
@@ -797,7 +799,7 @@ struct NewGRFWindow : public Window, NewGRFScanCallback {
 		this->vscroll2->SetCapacityFromWidget(this, WID_NS_AVAIL_LIST);
 	}
 
-	void SetStringParameters(int widget) const override
+	void SetStringParameters(WidgetID widget) const override
 	{
 		switch (widget) {
 			case WID_NS_PRESET_LIST:
@@ -846,7 +848,7 @@ struct NewGRFWindow : public Window, NewGRFScanCallback {
 		return pal;
 	}
 
-	void DrawWidget(const Rect &r, int widget) const override
+	void DrawWidget(const Rect &r, WidgetID widget) const override
 	{
 		switch (widget) {
 			case WID_NS_FILE_LIST: {
@@ -859,7 +861,7 @@ struct NewGRFWindow : public Window, NewGRFScanCallback {
 				Dimension warning = GetSpriteSize(SPR_WARNING_SIGN);
 				int square_offset_y = (step_height - square.height) / 2;
 				int warning_offset_y = (step_height - warning.height) / 2;
-				int offset_y = (step_height - FONT_HEIGHT_NORMAL) / 2;
+				int offset_y = (step_height - GetCharacterHeight(FS_NORMAL)) / 2;
 
 				bool rtl = _current_text_dir == TD_RTL;
 				uint text_left    = rtl ? tr.left : tr.left + square.width + 13;
@@ -886,8 +888,8 @@ struct NewGRFWindow : public Window, NewGRFScanCallback {
 							}
 						}
 						DrawSprite(SPR_SQUARE, pal, square_left, tr.top + square_offset_y);
-						if (c->error != nullptr) DrawSprite(SPR_WARNING_SIGN, 0, warning_left, tr.top + warning_offset_y);
-						uint txtoffset = c->error == nullptr ? 0 : warning.width;
+						if (c->error.has_value()) DrawSprite(SPR_WARNING_SIGN, 0, warning_left, tr.top + warning_offset_y);
+						uint txtoffset = !c->error.has_value() ? 0 : warning.width;
 						DrawString(text_left + (rtl ? 0 : txtoffset), text_right - (rtl ? txtoffset : 0), tr.top + offset_y, text, h ? TC_WHITE : TC_ORANGE);
 						tr.top += step_height;
 					}
@@ -904,7 +906,7 @@ struct NewGRFWindow : public Window, NewGRFScanCallback {
 
 				Rect tr = r.Shrink(WidgetDimensions::scaled.framerect);
 				uint step_height = this->GetWidget<NWidgetBase>(WID_NS_AVAIL_LIST)->resize_y;
-				int offset_y = (step_height - FONT_HEIGHT_NORMAL) / 2;
+				int offset_y = (step_height - GetCharacterHeight(FS_NORMAL)) / 2;
 				uint min_index = this->vscroll2->GetPosition();
 				uint max_index = std::min(min_index + this->vscroll2->GetCapacity(), (uint)this->avails.size());
 
@@ -923,7 +925,7 @@ struct NewGRFWindow : public Window, NewGRFScanCallback {
 			case WID_NS_NEWGRF_INFO_TITLE: {
 				/* Create the nice grayish rectangle at the details top. */
 				GfxFillRect(r.Shrink(WidgetDimensions::scaled.bevel), PC_DARK_BLUE);
-				DrawString(r.left, r.right, CenterBounds(r.top, r.bottom, FONT_HEIGHT_NORMAL), STR_NEWGRF_SETTINGS_INFO_TITLE, TC_FROMSTRING, SA_HOR_CENTER);
+				DrawString(r.left, r.right, CenterBounds(r.top, r.bottom, GetCharacterHeight(FS_NORMAL)), STR_NEWGRF_SETTINGS_INFO_TITLE, TC_FROMSTRING, SA_HOR_CENTER);
 				break;
 			}
 
@@ -938,7 +940,7 @@ struct NewGRFWindow : public Window, NewGRFScanCallback {
 		}
 	}
 
-	void OnClick(Point pt, int widget, int click_count) override
+	void OnClick([[maybe_unused]] Point pt, WidgetID widget, [[maybe_unused]] int click_count) override
 	{
 		if (widget >= WID_NS_NEWGRF_TEXTFILE && widget < WID_NS_NEWGRF_TEXTFILE + TFT_CONTENT_END) {
 			if (this->active_sel == nullptr && this->avail_sel == nullptr) return;
@@ -952,10 +954,10 @@ struct NewGRFWindow : public Window, NewGRFScanCallback {
 				DropDownList list;
 
 				/* Add 'None' option for clearing list */
-				list.emplace_back(new DropDownListStringItem(STR_NONE, -1, false));
+				list.push_back(std::make_unique<DropDownListStringItem>(STR_NONE, -1, false));
 
 				for (uint i = 0; i < this->grf_presets.size(); i++) {
-					list.emplace_back(new DropDownListCharStringItem(this->grf_presets[i], i, false));
+					list.push_back(std::make_unique<DropDownListStringItem>(this->grf_presets[i], i, false));
 				}
 
 				this->CloseChildWindows(WC_QUERY_STRING); // Remove the parameter query window
@@ -1133,7 +1135,7 @@ struct NewGRFWindow : public Window, NewGRFScanCallback {
 			case WID_NS_SET_PARAMETERS: { // Edit parameters
 				if (this->active_sel == nullptr || !this->show_params || this->active_sel->num_valid_params == 0) break;
 
-				OpenGRFParameterWindow(this->active_sel, this->editable);
+				OpenGRFParameterWindow(false, this->active_sel, this->editable);
 				this->InvalidateData(GOID_NEWGRF_CHANGES_MADE);
 				break;
 			}
@@ -1173,8 +1175,9 @@ struct NewGRFWindow : public Window, NewGRFScanCallback {
 		this->CloseChildWindows(WC_QUERY_STRING); // Remove the parameter query window
 	}
 
-	void OnDropdownSelect(int widget, int index) override
+	void OnDropdownSelect(WidgetID widget, int index) override
 	{
+		if (widget != WID_NS_PRESET_LIST) return;
 		if (!this->editable) return;
 
 		ClearGRFConfigList(&this->actives);
@@ -1229,7 +1232,7 @@ struct NewGRFWindow : public Window, NewGRFScanCallback {
 	 * @param data Information about the changed data. @see GameOptionsInvalidationData
 	 * @param gui_scope Whether the call is done from GUI scope. You may not do everything when not in GUI scope. See #InvalidateWindowData() for details.
 	 */
-	void OnInvalidateData(int data = 0, bool gui_scope = true) override
+	void OnInvalidateData([[maybe_unused]] int data = 0, [[maybe_unused]] bool gui_scope = true) override
 	{
 		if (!gui_scope) return;
 		switch (data) {
@@ -1286,8 +1289,7 @@ struct NewGRFWindow : public Window, NewGRFScanCallback {
 		this->SetWidgetDisabledState(WID_NS_APPLY_CHANGES, !((this->editable && this->modified) || _settings_client.gui.newgrf_developer_tools));
 		this->SetWidgetsDisabledState(!this->editable,
 			WID_NS_PRESET_LIST,
-			WID_NS_TOGGLE_PALETTE,
-			WIDGET_LIST_END
+			WID_NS_TOGGLE_PALETTE
 		);
 		this->SetWidgetDisabledState(WID_NS_ADD, !this->editable || this->avail_sel == nullptr || HasBit(this->avail_sel->flags, GCF_INVALID));
 		this->SetWidgetDisabledState(WID_NS_UPGRADE, !this->editable || this->actives == nullptr || !this->CanUpgradeCurrent());
@@ -1296,8 +1298,7 @@ struct NewGRFWindow : public Window, NewGRFScanCallback {
 		this->SetWidgetsDisabledState(disable_all,
 			WID_NS_REMOVE,
 			WID_NS_MOVE_UP,
-			WID_NS_MOVE_DOWN,
-			WIDGET_LIST_END
+			WID_NS_MOVE_DOWN
 		);
 
 		const GRFConfig *selected_config = (this->avail_sel == nullptr) ? this->active_sel : this->avail_sel;
@@ -1325,7 +1326,7 @@ struct NewGRFWindow : public Window, NewGRFScanCallback {
 			has_missing    |= c->status == GCS_NOT_FOUND;
 			has_compatible |= HasBit(c->flags, GCF_COMPATIBLE);
 		}
-		uint32 widget_data;
+		uint32_t widget_data;
 		StringID tool_tip;
 		if (has_missing || has_compatible) {
 			widget_data = STR_NEWGRF_SETTINGS_FIND_MISSING_CONTENT_BUTTON;
@@ -1342,7 +1343,7 @@ struct NewGRFWindow : public Window, NewGRFScanCallback {
 		this->SetWidgetDisabledState(WID_NS_PRESET_SAVE, has_missing);
 	}
 
-	EventState OnKeyPress(WChar key, uint16 keycode) override
+	EventState OnKeyPress([[maybe_unused]] char32_t key, uint16_t keycode) override
 	{
 		if (!this->editable) return ES_NOT_HANDLED;
 
@@ -1360,17 +1361,19 @@ struct NewGRFWindow : public Window, NewGRFScanCallback {
 		return ES_HANDLED;
 	}
 
-	void OnEditboxChanged(int wid) override
+	void OnEditboxChanged(WidgetID widget) override
 	{
 		if (!this->editable) return;
 
-		string_filter.SetFilterTerm(this->filter_editbox.text.buf);
-		this->avails.SetFilterState(!string_filter.IsEmpty());
-		this->avails.ForceRebuild();
-		this->InvalidateData(0);
+		if (widget == WID_NS_FILTER) {
+			string_filter.SetFilterTerm(this->filter_editbox.text.buf);
+			this->avails.SetFilterState(!string_filter.IsEmpty());
+			this->avails.ForceRebuild();
+			this->InvalidateData(0);
+		}
 	}
 
-	void OnDragDrop(Point pt, int widget) override
+	void OnDragDrop(Point pt, WidgetID widget) override
 	{
 		if (!this->editable) return;
 
@@ -1418,7 +1421,7 @@ struct NewGRFWindow : public Window, NewGRFScanCallback {
 		}
 	}
 
-	void OnMouseDrag(Point pt, int widget) override
+	void OnMouseDrag(Point pt, WidgetID widget) override
 	{
 		if (!this->editable) return;
 
@@ -1459,7 +1462,7 @@ private:
 	{
 		filter.ResetState();
 		filter.AddLine((*a)->GetName());
-		filter.AddLine((*a)->filename.c_str());
+		filter.AddLine((*a)->filename);
 		filter.AddLine((*a)->GetDescription());
 		return filter.GetState();;
 	}
@@ -1577,7 +1580,7 @@ void ShowMissingContentWindow(const GRFConfig *list)
 		ci->md5sum = HasBit(c->flags, GCF_COMPATIBLE) ? c->original_md5sum : c->ident.md5sum;
 		cv.push_back(ci);
 	}
-	ShowNetworkContentListWindow(cv.size() == 0 ? nullptr : &cv, CONTENT_TYPE_NEWGRF);
+	ShowNetworkContentListWindow(cv.empty() ? nullptr : &cv, CONTENT_TYPE_NEWGRF);
 }
 
 Listing NewGRFWindow::last_sorting     = {false, 0};
@@ -1597,41 +1600,34 @@ NewGRFWindow::GUIGRFConfigList::FilterFunction * const NewGRFWindow::filter_func
  * - two column mode, put the #acs and the #avs underneath each other and the #inf next to it, or
  * - three column mode, put the #avs, #acs, and #inf each in its own column.
  */
-class NWidgetNewGRFDisplay : public NWidgetContainer {
+class NWidgetNewGRFDisplay : public NWidgetBase {
 public:
-	static const uint INTER_LIST_SPACING;      ///< Empty vertical space between both lists in the 2 column mode.
-	static const uint INTER_COLUMN_SPACING;    ///< Empty horizontal space between two columns.
 	static const uint MAX_EXTRA_INFO_WIDTH;    ///< Maximal additional width given to the panel.
 	static const uint MIN_EXTRA_FOR_3_COLUMNS; ///< Minimal additional width needed before switching to 3 columns.
 
-	NWidgetBase *avs; ///< Widget with the available grfs list and buttons.
-	NWidgetBase *acs; ///< Widget with the active grfs list and buttons.
-	NWidgetBase *inf; ///< Info panel.
+	std::unique_ptr<NWidgetBase> avs; ///< Widget with the available grfs list and buttons.
+	std::unique_ptr<NWidgetBase> acs; ///< Widget with the active grfs list and buttons.
+	std::unique_ptr<NWidgetBase> inf; ///< Info panel.
 	bool editable;    ///< Editable status of the parent NewGRF window (if \c false, drop all widgets that make the window editable).
 
-	NWidgetNewGRFDisplay(NWidgetBase *avs, NWidgetBase *acs, NWidgetBase *inf) : NWidgetContainer(NWID_HORIZONTAL)
+	NWidgetNewGRFDisplay(std::unique_ptr<NWidgetBase> &&avs, std::unique_ptr<NWidgetBase> &&acs, std::unique_ptr<NWidgetBase> &&inf) : NWidgetBase(NWID_CUSTOM)
+		, avs(std::move(avs))
+		, acs(std::move(acs))
+		, inf(std::move(inf))
+		, editable(true) // Temporary setting, 'real' value is set in SetupSmallestSize().
 	{
-		this->avs = avs;
-		this->acs = acs;
-		this->inf = inf;
-
-		this->Add(this->avs);
-		this->Add(this->acs);
-		this->Add(this->inf);
-
-		this->editable = true; // Temporary setting, 'real' value is set in SetupSmallestSize().
 	}
 
-	void SetupSmallestSize(Window *w, bool init_array) override
+	void SetupSmallestSize(Window *w) override
 	{
 		/* Copy state flag from the window. */
 		assert(dynamic_cast<NewGRFWindow *>(w) != nullptr);
 		NewGRFWindow *ngw = (NewGRFWindow *)w;
 		this->editable = ngw->editable;
 
-		this->avs->SetupSmallestSize(w, init_array);
-		this->acs->SetupSmallestSize(w, init_array);
-		this->inf->SetupSmallestSize(w, init_array);
+		this->avs->SetupSmallestSize(w);
+		this->acs->SetupSmallestSize(w);
+		this->inf->SetupSmallestSize(w);
 
 		uint min_avs_width = this->avs->smallest_x + this->avs->padding.Horizontal();
 		uint min_acs_width = this->acs->smallest_x + this->acs->padding.Horizontal();
@@ -1642,8 +1638,8 @@ public:
 		uint min_inf_height = this->inf->smallest_y + this->inf->padding.Vertical();
 
 		/* Smallest window is in two column mode. */
-		this->smallest_x = std::max(min_avs_width, min_acs_width) + INTER_COLUMN_SPACING + min_inf_width;
-		this->smallest_y = std::max(min_inf_height, min_acs_height + INTER_LIST_SPACING + min_avs_height);
+		this->smallest_x = std::max(min_avs_width, min_acs_width) + WidgetDimensions::scaled.hsep_wide + min_inf_width;
+		this->smallest_y = std::max(min_inf_height, min_acs_height + WidgetDimensions::scaled.vsep_wide + min_avs_height);
 
 		/* Filling. */
 		this->fill_x = LeastCommonMultiple(this->avs->fill_x, this->acs->fill_x);
@@ -1665,7 +1661,7 @@ public:
 		this->smallest_y = ComputeMaxSize(min_acs_height, this->smallest_y + this->resize_y - 1, this->resize_y);
 	}
 
-	void AssignSizePosition(SizingType sizing, uint x, uint y, uint given_width, uint given_height, bool rtl) override
+	void AssignSizePosition(SizingType sizing, int x, int y, uint given_width, uint given_height, bool rtl) override
 	{
 		this->StoreSizePosition(sizing, x, y, given_width, given_height);
 
@@ -1678,18 +1674,18 @@ public:
 		uint acs_extra_width = min_list_width - min_acs_width;   // Additional width needed for acs to reach min_list_width.
 
 		/* Use 2 or 3 columns? */
-		uint min_three_columns = min_avs_width + min_acs_width + min_inf_width + 2 * INTER_COLUMN_SPACING;
-		uint min_two_columns   = min_list_width + min_inf_width + INTER_COLUMN_SPACING;
-		bool use_three_columns = this->editable && (min_three_columns + MIN_EXTRA_FOR_3_COLUMNS <= given_width);
+		uint min_three_columns = min_avs_width + min_acs_width + min_inf_width + 2 * WidgetDimensions::scaled.hsep_wide;
+		uint min_two_columns   = min_list_width + min_inf_width + WidgetDimensions::scaled.hsep_wide;
+		bool use_three_columns = this->editable && (min_three_columns + ScaleGUITrad(MIN_EXTRA_FOR_3_COLUMNS) <= given_width);
 
 		/* Info panel is a separate column in both modes. Compute its width first. */
 		uint extra_width, inf_width;
 		if (use_three_columns) {
 			extra_width = given_width - min_three_columns;
-			inf_width = std::min(MAX_EXTRA_INFO_WIDTH, extra_width / 2);
+			inf_width = std::min<uint>(ScaleGUITrad(MAX_EXTRA_INFO_WIDTH), extra_width / 2);
 		} else {
 			extra_width = given_width - min_two_columns;
-			inf_width = std::min(MAX_EXTRA_INFO_WIDTH, extra_width / 2);
+			inf_width = std::min<uint>(ScaleGUITrad(MAX_EXTRA_INFO_WIDTH), extra_width / 2);
 		}
 		inf_width = ComputeMaxSize(this->inf->smallest_x, this->inf->smallest_x + inf_width, this->inf->GetHorizontalStepSize(sizing));
 		extra_width -= inf_width - this->inf->smallest_x;
@@ -1708,7 +1704,7 @@ public:
 
 			uint acs_width = given_width - // Remaining space, including horizontal padding.
 					inf_width - this->inf->padding.Horizontal() -
-					avs_width - this->avs->padding.Horizontal() - 2 * INTER_COLUMN_SPACING;
+					avs_width - this->avs->padding.Horizontal() - 2 * WidgetDimensions::scaled.hsep_wide;
 			acs_width = ComputeMaxSize(min_acs_width, acs_width, this->acs->GetHorizontalStepSize(sizing)) -
 					this->acs->padding.Horizontal();
 
@@ -1720,16 +1716,16 @@ public:
 			if (rtl) {
 				x += this->inf->padding.left;
 				this->inf->AssignSizePosition(sizing, x, y + this->inf->padding.top, inf_width, inf_height, rtl);
-				x += inf_width + this->inf->padding.right + INTER_COLUMN_SPACING;
+				x += inf_width + this->inf->padding.right + WidgetDimensions::scaled.hsep_wide;
 			} else {
 				x += this->avs->padding.left;
 				this->avs->AssignSizePosition(sizing, x, y + this->avs->padding.top, avs_width, avs_height, rtl);
-				x += avs_width + this->avs->padding.right + INTER_COLUMN_SPACING;
+				x += avs_width + this->avs->padding.right + WidgetDimensions::scaled.hsep_wide;
 			}
 
 			x += this->acs->padding.left;
 			this->acs->AssignSizePosition(sizing, x, y + this->acs->padding.top, acs_width, acs_height, rtl);
-			x += acs_width + this->acs->padding.right + INTER_COLUMN_SPACING;
+			x += acs_width + this->acs->padding.right + WidgetDimensions::scaled.hsep_wide;
 
 			if (rtl) {
 				x += this->avs->padding.left;
@@ -1746,11 +1742,11 @@ public:
 			uint acs_width = ComputeMaxSize(this->acs->smallest_x, this->acs->smallest_x + acs_extra_width + extra_width,
 					this->acs->GetHorizontalStepSize(sizing));
 
-			uint min_avs_height = (!this->editable) ? 0 : this->avs->smallest_y + this->avs->padding.Vertical() + INTER_LIST_SPACING;
+			uint min_avs_height = (!this->editable) ? 0 : this->avs->smallest_y + this->avs->padding.Vertical() + WidgetDimensions::scaled.vsep_wide;
 			uint min_acs_height = this->acs->smallest_y + this->acs->padding.Vertical();
 			uint extra_height = given_height - min_acs_height - min_avs_height;
 
-			/* Never use fill_y on these; instead use the INTER_LIST_SPACING as filler */
+			/* Never use fill_y on these; instead use WidgetDimensions::scaled.vsep_wide as filler */
 			uint avs_height = ComputeMaxSize(this->avs->smallest_y, this->avs->smallest_y + extra_height / 2, this->avs->resize_y);
 			if (this->editable) extra_height -= avs_height - this->avs->smallest_y;
 			uint acs_height = ComputeMaxSize(this->acs->smallest_y, this->acs->smallest_y + extra_height, this->acs->resize_y);
@@ -1759,7 +1755,7 @@ public:
 			if (rtl) {
 				x += this->inf->padding.left;
 				this->inf->AssignSizePosition(sizing, x, y + this->inf->padding.top, inf_width, inf_height, rtl);
-				x += inf_width + this->inf->padding.right + INTER_COLUMN_SPACING;
+				x += inf_width + this->inf->padding.right + WidgetDimensions::scaled.hsep_wide;
 
 				this->acs->AssignSizePosition(sizing, x + this->acs->padding.left, y + this->acs->padding.top, acs_width, acs_height, rtl);
 				if (this->editable) {
@@ -1778,10 +1774,17 @@ public:
 				if (this->editable) {
 					dx = std::max(dx, this->avs->current_x + this->avs->padding.Horizontal());
 				}
-				x += dx + INTER_COLUMN_SPACING + this->inf->padding.left;
+				x += dx + WidgetDimensions::scaled.hsep_wide + this->inf->padding.left;
 				this->inf->AssignSizePosition(sizing, x, y + this->inf->padding.top, inf_width, inf_height, rtl);
 			}
 		}
+	}
+
+	void FillWidgetLookup(WidgetLookup &widget_lookup) override
+	{
+		this->avs->FillWidgetLookup(widget_lookup);
+		this->acs->FillWidgetLookup(widget_lookup);
+		this->inf->FillWidgetLookup(widget_lookup);
 	}
 
 	NWidgetCore *GetWidgetFromPos(int x, int y) override
@@ -1802,86 +1805,85 @@ public:
 	}
 };
 
-const uint NWidgetNewGRFDisplay::INTER_COLUMN_SPACING    = 12;
-const uint NWidgetNewGRFDisplay::INTER_LIST_SPACING      = NWidgetNewGRFDisplay::INTER_COLUMN_SPACING + 1;
 const uint NWidgetNewGRFDisplay::MAX_EXTRA_INFO_WIDTH    = 150;
 const uint NWidgetNewGRFDisplay::MIN_EXTRA_FOR_3_COLUMNS = 50;
 
 static const NWidgetPart _nested_newgrf_actives_widgets[] = {
-	/* Left side, presets. */
-	NWidget(NWID_HORIZONTAL),
-		NWidget(WWT_TEXT, COLOUR_MAUVE), SetDataTip(STR_NEWGRF_SETTINGS_SELECT_PRESET, STR_NULL),
-				SetPadding(0, WidgetDimensions::unscaled.frametext.right, 0, 0),
-		NWidget(WWT_DROPDOWN, COLOUR_YELLOW, WID_NS_PRESET_LIST), SetFill(1, 0), SetResize(1, 0),
-				SetDataTip(STR_JUST_STRING, STR_NEWGRF_SETTINGS_PRESET_LIST_TOOLTIP),
-	EndContainer(),
-	NWidget(NWID_HORIZONTAL, NC_EQUALSIZE),
-		NWidget(WWT_PUSHTXTBTN, COLOUR_YELLOW, WID_NS_PRESET_SAVE), SetFill(1, 0), SetResize(1, 0),
-				SetDataTip(STR_NEWGRF_SETTINGS_PRESET_SAVE, STR_NEWGRF_SETTINGS_PRESET_SAVE_TOOLTIP),
-		NWidget(WWT_PUSHTXTBTN, COLOUR_YELLOW, WID_NS_PRESET_DELETE), SetFill(1, 0), SetResize(1, 0),
-				SetDataTip(STR_NEWGRF_SETTINGS_PRESET_DELETE, STR_NEWGRF_SETTINGS_PRESET_DELETE_TOOLTIP),
-	EndContainer(),
-
-	NWidget(NWID_SPACER), SetMinimalSize(0, NWidgetNewGRFDisplay::INTER_COLUMN_SPACING), SetResize(1, 0), SetFill(1, 0),
-	NWidget(WWT_PANEL, COLOUR_MAUVE),
-		NWidget(WWT_LABEL, COLOUR_MAUVE), SetDataTip(STR_NEWGRF_SETTINGS_ACTIVE_LIST, STR_NULL),
-				SetFill(1, 0), SetResize(1, 0), SetPadding(3, WidgetDimensions::unscaled.frametext.right, 0, WidgetDimensions::unscaled.frametext.left),
-		/* Left side, active grfs. */
-		NWidget(NWID_HORIZONTAL), SetPadding(0, 2, 0, 2),
-			NWidget(WWT_PANEL, COLOUR_MAUVE),
-				NWidget(WWT_INSET, COLOUR_MAUVE, WID_NS_FILE_LIST), SetMinimalSize(100, 1), SetPadding(2, 2, 2, 2),
-						SetFill(1, 1), SetResize(1, 1), SetScrollbar(WID_NS_SCROLLBAR), SetDataTip(STR_NULL, STR_NEWGRF_SETTINGS_FILE_TOOLTIP),
-				EndContainer(),
+	NWidget(NWID_VERTICAL), SetPIP(0, WidgetDimensions::unscaled.vsep_wide, 0),
+		/* Left side, presets. */
+		NWidget(NWID_VERTICAL),
+			NWidget(NWID_HORIZONTAL),
+				NWidget(WWT_TEXT, COLOUR_MAUVE), SetDataTip(STR_NEWGRF_SETTINGS_SELECT_PRESET, STR_NULL),
+						SetPadding(0, WidgetDimensions::unscaled.hsep_wide, 0, 0),
+				NWidget(WWT_DROPDOWN, COLOUR_YELLOW, WID_NS_PRESET_LIST), SetFill(1, 0), SetResize(1, 0),
+						SetDataTip(STR_JUST_STRING1, STR_NEWGRF_SETTINGS_PRESET_LIST_TOOLTIP),
 			EndContainer(),
-			NWidget(NWID_VSCROLLBAR, COLOUR_MAUVE, WID_NS_SCROLLBAR),
+			NWidget(NWID_HORIZONTAL, NC_EQUALSIZE),
+				NWidget(WWT_PUSHTXTBTN, COLOUR_YELLOW, WID_NS_PRESET_SAVE), SetFill(1, 0), SetResize(1, 0),
+						SetDataTip(STR_NEWGRF_SETTINGS_PRESET_SAVE, STR_NEWGRF_SETTINGS_PRESET_SAVE_TOOLTIP),
+				NWidget(WWT_PUSHTXTBTN, COLOUR_YELLOW, WID_NS_PRESET_DELETE), SetFill(1, 0), SetResize(1, 0),
+						SetDataTip(STR_NEWGRF_SETTINGS_PRESET_DELETE, STR_NEWGRF_SETTINGS_PRESET_DELETE_TOOLTIP),
+			EndContainer(),
 		EndContainer(),
-		/* Buttons. */
-		NWidget(NWID_SELECTION, INVALID_COLOUR, WID_NS_SHOW_REMOVE),
-			NWidget(NWID_HORIZONTAL, NC_EQUALSIZE), SetPadding(2, 2, 2, 2), SetPIP(0, NWidgetNewGRFDisplay::INTER_COLUMN_SPACING, 0),
-				NWidget(WWT_PUSHTXTBTN, COLOUR_YELLOW, WID_NS_REMOVE), SetFill(1, 0), SetResize(1, 0),
-						SetDataTip(STR_NEWGRF_SETTINGS_REMOVE, STR_NEWGRF_SETTINGS_REMOVE_TOOLTIP),
-				NWidget(NWID_VERTICAL),
-					NWidget(WWT_PUSHTXTBTN, COLOUR_YELLOW, WID_NS_MOVE_UP), SetFill(1, 0), SetResize(1, 0),
-							SetDataTip(STR_NEWGRF_SETTINGS_MOVEUP, STR_NEWGRF_SETTINGS_MOVEUP_TOOLTIP),
-					NWidget(WWT_PUSHTXTBTN, COLOUR_YELLOW, WID_NS_MOVE_DOWN), SetFill(1, 0), SetResize(1, 0),
-							SetDataTip(STR_NEWGRF_SETTINGS_MOVEDOWN, STR_NEWGRF_SETTINGS_MOVEDOWN_TOOLTIP),
+
+		NWidget(WWT_FRAME, COLOUR_MAUVE), SetDataTip(STR_NEWGRF_SETTINGS_ACTIVE_LIST, STR_NULL), SetPIP(0, WidgetDimensions::unscaled.vsep_wide, 0),
+			/* Left side, active grfs. */
+			NWidget(NWID_HORIZONTAL),
+				NWidget(WWT_PANEL, COLOUR_MAUVE),
+					NWidget(WWT_INSET, COLOUR_MAUVE, WID_NS_FILE_LIST), SetMinimalSize(100, 1), SetPadding(2),
+							SetFill(1, 1), SetResize(1, 1), SetScrollbar(WID_NS_SCROLLBAR), SetDataTip(STR_NULL, STR_NEWGRF_SETTINGS_FILE_TOOLTIP),
+					EndContainer(),
 				EndContainer(),
-				NWidget(WWT_PUSHTXTBTN, COLOUR_YELLOW, WID_NS_UPGRADE), SetFill(1, 0), SetResize(1, 0),
-						SetDataTip(STR_NEWGRF_SETTINGS_UPGRADE, STR_NEWGRF_SETTINGS_UPGRADE_TOOLTIP),
+				NWidget(NWID_VSCROLLBAR, COLOUR_MAUVE, WID_NS_SCROLLBAR),
 			EndContainer(),
 
-			NWidget(NWID_VERTICAL, NC_EQUALSIZE), SetPadding(2, 2, 2, 2),
-				NWidget(WWT_PUSHTXTBTN, COLOUR_YELLOW, WID_NS_RESCAN_FILES2), SetFill(1, 0), SetResize(1, 0),
-						SetDataTip(STR_NEWGRF_SETTINGS_RESCAN_FILES, STR_NEWGRF_SETTINGS_RESCAN_FILES_TOOLTIP),
-				NWidget(WWT_PUSHTXTBTN, COLOUR_YELLOW, WID_NS_CONTENT_DOWNLOAD2), SetFill(1, 0), SetResize(1, 0),
-						SetDataTip(STR_INTRO_ONLINE_CONTENT, STR_INTRO_TOOLTIP_ONLINE_CONTENT),
+			/* Buttons. */
+			NWidget(NWID_SELECTION, INVALID_COLOUR, WID_NS_SHOW_REMOVE),
+				NWidget(NWID_HORIZONTAL, NC_EQUALSIZE), SetPIP(0, WidgetDimensions::unscaled.hsep_wide, 0),
+					NWidget(WWT_PUSHTXTBTN, COLOUR_YELLOW, WID_NS_REMOVE), SetFill(1, 0), SetResize(1, 0),
+							SetDataTip(STR_NEWGRF_SETTINGS_REMOVE, STR_NEWGRF_SETTINGS_REMOVE_TOOLTIP),
+					NWidget(NWID_VERTICAL),
+						NWidget(WWT_PUSHTXTBTN, COLOUR_YELLOW, WID_NS_MOVE_UP), SetFill(1, 0), SetResize(1, 0),
+								SetDataTip(STR_NEWGRF_SETTINGS_MOVEUP, STR_NEWGRF_SETTINGS_MOVEUP_TOOLTIP),
+						NWidget(WWT_PUSHTXTBTN, COLOUR_YELLOW, WID_NS_MOVE_DOWN), SetFill(1, 0), SetResize(1, 0),
+								SetDataTip(STR_NEWGRF_SETTINGS_MOVEDOWN, STR_NEWGRF_SETTINGS_MOVEDOWN_TOOLTIP),
+					EndContainer(),
+					NWidget(WWT_PUSHTXTBTN, COLOUR_YELLOW, WID_NS_UPGRADE), SetFill(1, 0), SetResize(1, 0),
+							SetDataTip(STR_NEWGRF_SETTINGS_UPGRADE, STR_NEWGRF_SETTINGS_UPGRADE_TOOLTIP),
+				EndContainer(),
+
+				NWidget(NWID_VERTICAL, NC_EQUALSIZE),
+					NWidget(WWT_PUSHTXTBTN, COLOUR_YELLOW, WID_NS_RESCAN_FILES2), SetFill(1, 0), SetResize(1, 0),
+							SetDataTip(STR_NEWGRF_SETTINGS_RESCAN_FILES, STR_NEWGRF_SETTINGS_RESCAN_FILES_TOOLTIP),
+					NWidget(WWT_PUSHTXTBTN, COLOUR_YELLOW, WID_NS_CONTENT_DOWNLOAD2), SetFill(1, 0), SetResize(1, 0),
+							SetDataTip(STR_INTRO_ONLINE_CONTENT, STR_INTRO_TOOLTIP_ONLINE_CONTENT),
+				EndContainer(),
 			EndContainer(),
 		EndContainer(),
 	EndContainer(),
 };
 
 static const NWidgetPart _nested_newgrf_availables_widgets[] = {
-	NWidget(WWT_PANEL, COLOUR_MAUVE),
-		NWidget(WWT_LABEL, COLOUR_MAUVE), SetDataTip(STR_NEWGRF_SETTINGS_INACTIVE_LIST, STR_NULL),
-				SetFill(1, 0), SetResize(1, 0), SetPadding(3, WidgetDimensions::unscaled.frametext.right, 0, WidgetDimensions::unscaled.frametext.left),
+	NWidget(WWT_FRAME, COLOUR_MAUVE), SetDataTip(STR_NEWGRF_SETTINGS_INACTIVE_LIST, STR_NULL), SetPIP(0, WidgetDimensions::unscaled.vsep_wide, 0),
 		/* Left side, available grfs, filter edit box. */
-		NWidget(NWID_HORIZONTAL), SetPadding(WidgetDimensions::unscaled.frametext.top, 0, WidgetDimensions::unscaled.frametext.bottom, 0),
-				SetPIP(WidgetDimensions::unscaled.frametext.left, WidgetDimensions::unscaled.frametext.right, WidgetDimensions::unscaled.frametext.right),
+		NWidget(NWID_HORIZONTAL), SetPIP(0, WidgetDimensions::unscaled.hsep_wide, 0),
 			NWidget(WWT_TEXT, COLOUR_MAUVE), SetFill(0, 1), SetDataTip(STR_NEWGRF_FILTER_TITLE, STR_NULL),
 			NWidget(WWT_EDITBOX, COLOUR_MAUVE, WID_NS_FILTER), SetFill(1, 0), SetMinimalSize(50, 12), SetResize(1, 0),
 					SetDataTip(STR_LIST_FILTER_OSKTITLE, STR_LIST_FILTER_TOOLTIP),
 		EndContainer(),
+
 		/* Left side, available grfs. */
-		NWidget(NWID_HORIZONTAL), SetPadding(0, 2, 0, 2),
+		NWidget(NWID_HORIZONTAL),
 			NWidget(WWT_PANEL, COLOUR_MAUVE),
-				NWidget(WWT_INSET, COLOUR_MAUVE, WID_NS_AVAIL_LIST), SetMinimalSize(100, 1), SetPadding(2, 2, 2, 2),
+				NWidget(WWT_INSET, COLOUR_MAUVE, WID_NS_AVAIL_LIST), SetMinimalSize(100, 1), SetPadding(2),
 						SetFill(1, 1), SetResize(1, 1), SetScrollbar(WID_NS_SCROLL2BAR),
 				EndContainer(),
 			EndContainer(),
 			NWidget(NWID_VSCROLLBAR, COLOUR_MAUVE, WID_NS_SCROLL2BAR),
 		EndContainer(),
+
 		/* Left side, available grfs, buttons. */
-		NWidget(NWID_HORIZONTAL, NC_EQUALSIZE), SetPadding(2, 2, 2, 2), SetPIP(0, NWidgetNewGRFDisplay::INTER_COLUMN_SPACING, 0),
+		NWidget(NWID_HORIZONTAL, NC_EQUALSIZE), SetPIP(0, WidgetDimensions::unscaled.hsep_wide, 0),
 			NWidget(WWT_PUSHTXTBTN, COLOUR_YELLOW, WID_NS_ADD), SetFill(1, 0), SetResize(1, 0),
 					SetDataTip(STR_NEWGRF_SETTINGS_ADD, STR_NEWGRF_SETTINGS_ADD_FILE_TOOLTIP),
 			NWidget(NWID_VERTICAL),
@@ -1895,53 +1897,55 @@ static const NWidgetPart _nested_newgrf_availables_widgets[] = {
 };
 
 static const NWidgetPart _nested_newgrf_infopanel_widgets[] = {
-	/* Right side, info panel. */
-	NWidget(NWID_VERTICAL), SetPadding(0, 0, 2, 0),
-		NWidget(WWT_PANEL, COLOUR_MAUVE), SetPadding(0, 0, 2, 0),
+	NWidget(NWID_VERTICAL), SetPIP(0, WidgetDimensions::unscaled.vsep_wide, 0),
+		/* Right side, info panel. */
+		NWidget(WWT_PANEL, COLOUR_MAUVE),
 			NWidget(WWT_EMPTY, COLOUR_MAUVE, WID_NS_NEWGRF_INFO_TITLE), SetFill(1, 0), SetResize(1, 0),
 			NWidget(WWT_EMPTY, COLOUR_MAUVE, WID_NS_NEWGRF_INFO), SetFill(1, 1), SetResize(1, 1), SetMinimalSize(150, 100),
 		EndContainer(),
-		NWidget(WWT_PUSHTXTBTN, COLOUR_YELLOW, WID_NS_OPEN_URL), SetFill(1, 0), SetResize(1, 0),
-				SetDataTip(STR_CONTENT_OPEN_URL, STR_CONTENT_OPEN_URL_TOOLTIP),
-		NWidget(WWT_PUSHTXTBTN, COLOUR_YELLOW, WID_NS_NEWGRF_TEXTFILE + TFT_README), SetFill(1, 0), SetResize(1, 0),
-				SetDataTip(STR_TEXTFILE_VIEW_README, STR_NULL),
-		NWidget(NWID_HORIZONTAL, NC_EQUALSIZE),
-			NWidget(WWT_PUSHTXTBTN, COLOUR_YELLOW, WID_NS_NEWGRF_TEXTFILE + TFT_CHANGELOG), SetFill(1, 0), SetResize(1, 0),
-					SetDataTip(STR_TEXTFILE_VIEW_CHANGELOG, STR_NULL),
-			NWidget(WWT_PUSHTXTBTN, COLOUR_YELLOW, WID_NS_NEWGRF_TEXTFILE + TFT_LICENSE), SetFill(1, 0), SetResize(1, 0),
-					SetDataTip(STR_TEXTFILE_VIEW_LICENCE, STR_NULL),
-		EndContainer(),
-	EndContainer(),
-	NWidget(NWID_SELECTION, INVALID_COLOUR, WID_NS_SHOW_APPLY),
-		/* Right side, buttons. */
-		NWidget(NWID_HORIZONTAL, NC_EQUALSIZE), SetPIP(0, NWidgetNewGRFDisplay::INTER_COLUMN_SPACING, 0),
-			NWidget(NWID_VERTICAL),
-				NWidget(WWT_PUSHTXTBTN, COLOUR_YELLOW, WID_NS_SET_PARAMETERS), SetFill(1, 0), SetResize(1, 0),
-						SetDataTip(STR_NEWGRF_SETTINGS_SET_PARAMETERS, STR_NULL),
-				NWidget(WWT_PUSHTXTBTN, COLOUR_YELLOW, WID_NS_TOGGLE_PALETTE), SetFill(1, 0), SetResize(1, 0),
-						SetDataTip(STR_NEWGRF_SETTINGS_TOGGLE_PALETTE, STR_NEWGRF_SETTINGS_TOGGLE_PALETTE_TOOLTIP),
+
+		/* Right side, info buttons. */
+		NWidget(NWID_VERTICAL),
+			NWidget(NWID_HORIZONTAL, NC_EQUALSIZE),
+				NWidget(WWT_PUSHTXTBTN, COLOUR_YELLOW, WID_NS_OPEN_URL), SetFill(1, 0), SetResize(1, 0),
+						SetDataTip(STR_CONTENT_OPEN_URL, STR_CONTENT_OPEN_URL_TOOLTIP),
+				NWidget(WWT_PUSHTXTBTN, COLOUR_YELLOW, WID_NS_NEWGRF_TEXTFILE + TFT_README), SetFill(1, 0), SetResize(1, 0),
+						SetDataTip(STR_TEXTFILE_VIEW_README, STR_TEXTFILE_VIEW_README_TOOLTIP),
 			EndContainer(),
-			NWidget(WWT_PUSHTXTBTN, COLOUR_YELLOW, WID_NS_APPLY_CHANGES), SetFill(1, 0), SetResize(1, 0),
-					SetDataTip(STR_NEWGRF_SETTINGS_APPLY_CHANGES, STR_NULL),
+			NWidget(NWID_HORIZONTAL, NC_EQUALSIZE),
+				NWidget(WWT_PUSHTXTBTN, COLOUR_YELLOW, WID_NS_NEWGRF_TEXTFILE + TFT_CHANGELOG), SetFill(1, 0), SetResize(1, 0),
+						SetDataTip(STR_TEXTFILE_VIEW_CHANGELOG, STR_TEXTFILE_VIEW_CHANGELOG_TOOLTIP),
+				NWidget(WWT_PUSHTXTBTN, COLOUR_YELLOW, WID_NS_NEWGRF_TEXTFILE + TFT_LICENSE), SetFill(1, 0), SetResize(1, 0),
+						SetDataTip(STR_TEXTFILE_VIEW_LICENCE, STR_TEXTFILE_VIEW_LICENCE_TOOLTIP),
+			EndContainer(),
 		EndContainer(),
-		NWidget(WWT_PUSHTXTBTN, COLOUR_YELLOW, WID_NS_VIEW_PARAMETERS), SetFill(1, 0), SetResize(1, 0),
-			SetDataTip(STR_NEWGRF_SETTINGS_SHOW_PARAMETERS, STR_NULL),
+
+		/* Right side, config buttons. */
+		NWidget(NWID_SELECTION, INVALID_COLOUR, WID_NS_SHOW_APPLY),
+			NWidget(NWID_HORIZONTAL, NC_EQUALSIZE), SetPIP(0, WidgetDimensions::unscaled.hsep_wide, 0),
+				NWidget(NWID_VERTICAL),
+					NWidget(WWT_PUSHTXTBTN, COLOUR_YELLOW, WID_NS_SET_PARAMETERS), SetFill(1, 0), SetResize(1, 0),
+							SetDataTip(STR_NEWGRF_SETTINGS_SET_PARAMETERS, STR_NULL),
+					NWidget(WWT_PUSHTXTBTN, COLOUR_YELLOW, WID_NS_TOGGLE_PALETTE), SetFill(1, 0), SetResize(1, 0),
+							SetDataTip(STR_NEWGRF_SETTINGS_TOGGLE_PALETTE, STR_NEWGRF_SETTINGS_TOGGLE_PALETTE_TOOLTIP),
+				EndContainer(),
+				NWidget(WWT_PUSHTXTBTN, COLOUR_YELLOW, WID_NS_APPLY_CHANGES), SetFill(1, 0), SetResize(1, 0),
+						SetDataTip(STR_NEWGRF_SETTINGS_APPLY_CHANGES, STR_NULL),
+			EndContainer(),
+			NWidget(WWT_PUSHTXTBTN, COLOUR_YELLOW, WID_NS_VIEW_PARAMETERS), SetFill(1, 0), SetResize(1, 0),
+					SetDataTip(STR_NEWGRF_SETTINGS_SHOW_PARAMETERS, STR_NULL),
+		EndContainer(),
 	EndContainer(),
 };
 
 /** Construct nested container widget for managing the lists and the info panel of the NewGRF GUI. */
-NWidgetBase* NewGRFDisplay(int *biggest_index)
+std::unique_ptr<NWidgetBase> NewGRFDisplay()
 {
-	NWidgetBase *avs = MakeNWidgets(_nested_newgrf_availables_widgets, lengthof(_nested_newgrf_availables_widgets), biggest_index, nullptr);
+	std::unique_ptr<NWidgetBase> avs = MakeNWidgets(std::begin(_nested_newgrf_availables_widgets), std::end(_nested_newgrf_availables_widgets), nullptr);
+	std::unique_ptr<NWidgetBase> acs = MakeNWidgets(std::begin(_nested_newgrf_actives_widgets), std::end(_nested_newgrf_actives_widgets), nullptr);
+	std::unique_ptr<NWidgetBase> inf = MakeNWidgets(std::begin(_nested_newgrf_infopanel_widgets), std::end(_nested_newgrf_infopanel_widgets), nullptr);
 
-	int biggest2;
-	NWidgetBase *acs = MakeNWidgets(_nested_newgrf_actives_widgets, lengthof(_nested_newgrf_actives_widgets), &biggest2, nullptr);
-	*biggest_index = std::max(*biggest_index, biggest2);
-
-	NWidgetBase *inf = MakeNWidgets(_nested_newgrf_infopanel_widgets, lengthof(_nested_newgrf_infopanel_widgets), &biggest2, nullptr);
-	*biggest_index = std::max(*biggest_index, biggest2);
-
-	return new NWidgetNewGRFDisplay(avs, acs, inf);
+	return std::make_unique<NWidgetNewGRFDisplay>(std::move(avs), std::move(acs), std::move(inf));
 }
 
 /* Widget definition of the manage newgrfs window */
@@ -1952,21 +1956,21 @@ static const NWidgetPart _nested_newgrf_widgets[] = {
 		NWidget(WWT_DEFSIZEBOX, COLOUR_MAUVE),
 	EndContainer(),
 	NWidget(WWT_PANEL, COLOUR_MAUVE),
-		NWidgetFunction(NewGRFDisplay), SetPadding(NWidgetNewGRFDisplay::INTER_COLUMN_SPACING, NWidgetNewGRFDisplay::INTER_COLUMN_SPACING, 2, NWidgetNewGRFDisplay::INTER_COLUMN_SPACING),
+		NWidgetFunction(NewGRFDisplay), SetPadding(WidgetDimensions::unscaled.sparse_resize),
 		/* Resize button. */
 		NWidget(NWID_HORIZONTAL),
 			NWidget(NWID_SPACER), SetFill(1, 0), SetResize(1, 0),
-			NWidget(WWT_RESIZEBOX, COLOUR_MAUVE),
+			NWidget(WWT_RESIZEBOX, COLOUR_MAUVE), SetDataTip(RWV_HIDE_BEVEL, STR_TOOLTIP_RESIZE),
 		EndContainer(),
 	EndContainer(),
 };
 
 /* Window definition of the manage newgrfs window */
-static WindowDesc _newgrf_desc(
+static WindowDesc _newgrf_desc(__FILE__, __LINE__,
 	WDP_CENTER, "settings_newgrf", 300, 263,
 	WC_GAME_OPTIONS, WC_NONE,
 	0,
-	_nested_newgrf_widgets, lengthof(_nested_newgrf_widgets)
+	std::begin(_nested_newgrf_widgets), std::end(_nested_newgrf_widgets)
 );
 
 /**
@@ -2046,11 +2050,11 @@ static const NWidgetPart _nested_save_preset_widgets[] = {
 };
 
 /** Window description of the preset save window. */
-static WindowDesc _save_preset_desc(
+static WindowDesc _save_preset_desc(__FILE__, __LINE__,
 	WDP_CENTER, "save_preset", 140, 110,
 	WC_SAVE_PRESET, WC_GAME_OPTIONS,
 	WDF_MODAL,
-	_nested_save_preset_widgets, lengthof(_nested_save_preset_widgets)
+	std::begin(_nested_save_preset_widgets), std::end(_nested_save_preset_widgets)
 );
 
 /** Class for the save preset window. */
@@ -2094,14 +2098,14 @@ struct SavePresetWindow : public Window {
 	{
 	}
 
-	void UpdateWidgetSize(int widget, Dimension *size, const Dimension &padding, Dimension *fill, Dimension *resize) override
+	void UpdateWidgetSize(WidgetID widget, Dimension *size, [[maybe_unused]] const Dimension &padding, [[maybe_unused]] Dimension *fill, [[maybe_unused]] Dimension *resize) override
 	{
 		switch (widget) {
 			case WID_SVP_PRESET_LIST: {
-				resize->height = FONT_HEIGHT_NORMAL;
+				resize->height = GetCharacterHeight(FS_NORMAL);
 				size->height = 0;
 				for (uint i = 0; i < this->presets.size(); i++) {
-					Dimension d = GetStringBoundingBox(this->presets[i].c_str());
+					Dimension d = GetStringBoundingBox(this->presets[i]);
 					size->width = std::max(size->width, d.width + padding.width);
 					resize->height = std::max(resize->height, d.height);
 				}
@@ -2111,7 +2115,7 @@ struct SavePresetWindow : public Window {
 		}
 	}
 
-	void DrawWidget(const Rect &r, int widget) const override
+	void DrawWidget(const Rect &r, WidgetID widget) const override
 	{
 		switch (widget) {
 			case WID_SVP_PRESET_LIST: {
@@ -2119,7 +2123,7 @@ struct SavePresetWindow : public Window {
 				GfxFillRect(br, PC_BLACK);
 
 				uint step_height = this->GetWidget<NWidgetBase>(WID_SVP_PRESET_LIST)->resize_y;
-				int offset_y = (step_height - FONT_HEIGHT_NORMAL) / 2;
+				int offset_y = (step_height - GetCharacterHeight(FS_NORMAL)) / 2;
 				Rect tr = r.Shrink(WidgetDimensions::scaled.framerect);
 				uint min_index = this->vscroll->GetPosition();
 				uint max_index = std::min(min_index + this->vscroll->GetCapacity(), (uint)this->presets.size());
@@ -2127,8 +2131,7 @@ struct SavePresetWindow : public Window {
 				for (uint i = min_index; i < max_index; i++) {
 					if ((int)i == this->selected) GfxFillRect(br.left, tr.top, br.right, tr.top + step_height - 1, PC_DARK_BLUE);
 
-					const char *text = this->presets[i].c_str();
-					DrawString(tr.left, tr.right, tr.top + offset_y, text, ((int)i == this->selected) ? TC_WHITE : TC_SILVER);
+					DrawString(tr.left, tr.right, tr.top + offset_y, this->presets[i], ((int)i == this->selected) ? TC_WHITE : TC_SILVER);
 					tr.top += step_height;
 				}
 				break;
@@ -2136,14 +2139,14 @@ struct SavePresetWindow : public Window {
 		}
 	}
 
-	void OnClick(Point pt, int widget, int click_count) override
+	void OnClick([[maybe_unused]] Point pt, WidgetID widget, [[maybe_unused]] int click_count) override
 	{
 		switch (widget) {
 			case WID_SVP_PRESET_LIST: {
 				auto it = this->vscroll->GetScrolledItemFromWidget(this->presets, pt.y, this, WID_SVP_PRESET_LIST);
 				if (it != this->presets.end()) {
 					this->selected = it - this->presets.begin();
-					this->presetname_editbox.text.Assign(it->c_str());
+					this->presetname_editbox.text.Assign(*it);
 					this->SetWidgetDirty(WID_SVP_PRESET_LIST);
 					this->SetWidgetDirty(WID_SVP_EDITBOX);
 				}
@@ -2192,11 +2195,11 @@ static const NWidgetPart _nested_scan_progress_widgets[] = {
 };
 
 /** Description of the widgets and other settings of the window. */
-static WindowDesc _scan_progress_desc(
+static WindowDesc _scan_progress_desc(__FILE__, __LINE__,
 	WDP_CENTER, nullptr, 0, 0,
 	WC_MODAL_PROGRESS, WC_NONE,
 	0,
-	_nested_scan_progress_widgets, lengthof(_nested_scan_progress_widgets)
+	std::begin(_nested_scan_progress_widgets), std::end(_nested_scan_progress_widgets)
 );
 
 /** Window for showing the progress of NewGRF scanning. */
@@ -2210,7 +2213,7 @@ struct ScanProgressWindow : public Window {
 		this->InitNested(1);
 	}
 
-	void UpdateWidgetSize(int widget, Dimension *size, const Dimension &padding, Dimension *fill, Dimension *resize) override
+	void UpdateWidgetSize(WidgetID widget, Dimension *size, [[maybe_unused]] const Dimension &padding, [[maybe_unused]] Dimension *fill, [[maybe_unused]] Dimension *resize) override
 	{
 		switch (widget) {
 			case WID_SP_PROGRESS_BAR: {
@@ -2228,12 +2231,12 @@ struct ScanProgressWindow : public Window {
 				/* We really don't know the width. We could determine it by scanning the NewGRFs,
 				 * but this is the status window for scanning them... */
 				size->width = std::max<uint>(size->width, GetStringBoundingBox(STR_NEWGRF_SCAN_STATUS).width + padding.width);
-				size->height = FONT_HEIGHT_NORMAL * 2 + WidgetDimensions::scaled.vsep_normal;
+				size->height = GetCharacterHeight(FS_NORMAL) * 2 + WidgetDimensions::scaled.vsep_normal;
 				break;
 		}
 	}
 
-	void DrawWidget(const Rect &r, int widget) const override
+	void DrawWidget(const Rect &r, WidgetID widget) const override
 	{
 		switch (widget) {
 			case WID_SP_PROGRESS_BAR: {
@@ -2243,7 +2246,7 @@ struct ScanProgressWindow : public Window {
 				uint percent = scanned * 100 / std::max(1U, _settings_client.gui.last_newgrf_count);
 				DrawFrameRect(ir.WithWidth(ir.Width() * percent / 100, false), COLOUR_MAUVE, FR_NONE);
 				SetDParam(0, percent);
-				DrawString(ir.left, ir.right, CenterBounds(ir.top, ir.bottom, FONT_HEIGHT_NORMAL), STR_GENERATION_PROGRESS, TC_FROMSTRING, SA_HOR_CENTER);
+				DrawString(ir.left, ir.right, CenterBounds(ir.top, ir.bottom, GetCharacterHeight(FS_NORMAL)), STR_GENERATION_PROGRESS, TC_FROMSTRING, SA_HOR_CENTER);
 				break;
 			}
 
@@ -2252,7 +2255,7 @@ struct ScanProgressWindow : public Window {
 				SetDParam(1, _settings_client.gui.last_newgrf_count);
 				DrawString(r.left, r.right, r.top, STR_NEWGRF_SCAN_STATUS, TC_FROMSTRING, SA_HOR_CENTER);
 
-				DrawString(r.left, r.right, r.top + FONT_HEIGHT_NORMAL + WidgetDimensions::scaled.vsep_normal, this->last_name, TC_BLACK, SA_HOR_CENTER);
+				DrawString(r.left, r.right, r.top + GetCharacterHeight(FS_NORMAL) + WidgetDimensions::scaled.vsep_normal, this->last_name, TC_BLACK, SA_HOR_CENTER);
 				break;
 		}
 	}

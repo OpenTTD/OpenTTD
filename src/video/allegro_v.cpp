@@ -246,7 +246,7 @@ std::vector<int> VideoDriver_Allegro::GetListOfMonitorRefreshRates()
 }
 
 struct AllegroVkMapping {
-	uint16 vk_from;
+	uint16_t vk_from;
 	byte vk_count;
 	byte map_to;
 };
@@ -307,7 +307,7 @@ static const AllegroVkMapping _vk_mapping[] = {
 	AS(KEY_TILDE,   WKC_BACKQUOTE),
 };
 
-static uint32 ConvertAllegroKeyIntoMy(WChar *character)
+static uint32_t ConvertAllegroKeyIntoMy(char32_t *character)
 {
 	int scancode;
 	int unicode = ureadkey(&scancode);
@@ -407,7 +407,7 @@ bool VideoDriver_Allegro::PollEvent()
 	if ((key_shifts & KB_ALT_FLAG) && (key[KEY_ENTER] || key[KEY_F])) {
 		ToggleFullScreen(!_fullscreen);
 	} else if (keypressed()) {
-		WChar character;
+		char32_t character;
 		uint keycode = ConvertAllegroKeyIntoMy(&character);
 		HandleKeypress(keycode, character);
 	}

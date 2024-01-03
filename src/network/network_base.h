@@ -14,7 +14,6 @@
 #include "core/address.h"
 #include "../core/pool_type.hpp"
 #include "../company_type.h"
-#include "../date_type.h"
 #include "../timer/timer_game_calendar.h"
 
 /** Type for the pool with client information. */

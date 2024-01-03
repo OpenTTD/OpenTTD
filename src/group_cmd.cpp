@@ -29,7 +29,7 @@ INSTANTIATE_POOL_METHODS(Group)
 
 GroupStatistics::GroupStatistics()
 {
-	this->num_engines = CallocT<uint16>(Engine::GetPoolSize());
+	this->num_engines = CallocT<uint16_t>(Engine::GetPoolSize());
 }
 
 GroupStatistics::~GroupStatistics()
@@ -49,7 +49,7 @@ void GroupStatistics::Clear()
 
 	/* This is also called when NewGRF change. So the number of engines might have changed. Reallocate. */
 	free(this->num_engines);
-	this->num_engines = CallocT<uint16>(Engine::GetPoolSize());
+	this->num_engines = CallocT<uint16_t>(Engine::GetPoolSize());
 }
 
 /**
@@ -275,17 +275,20 @@ const Livery *GetParentLivery(const Group *g)
 
 
 /**
- * Propagate a livery change to a group's children.
- * @param g Group.
+ * Propagate a livery change to a group's children, and optionally update cached vehicle colourmaps.
+ * @param g Group to propagate colours to children.
+ * @param reset_cache Reset colourmap of vehicles in this group.
  */
-void PropagateChildLivery(const Group *g)
+static void PropagateChildLivery(const Group *g, bool reset_cache)
 {
-	/* Company colour data is indirectly cached. */
-	for (Vehicle *v : Vehicle::Iterate()) {
-		if (v->group_id == g->index && (!v->IsGroundVehicle() || v->IsFrontEngine())) {
-			for (Vehicle *u = v; u != nullptr; u = u->Next()) {
-				u->colourmap = PAL_NONE;
-				u->InvalidateNewGRFCache();
+	if (reset_cache) {
+		/* Company colour data is indirectly cached. */
+		for (Vehicle *v : Vehicle::Iterate()) {
+			if (v->group_id == g->index && (!v->IsGroundVehicle() || v->IsFrontEngine())) {
+				for (Vehicle *u = v; u != nullptr; u = u->Next()) {
+					u->colourmap = PAL_NONE;
+					u->InvalidateNewGRFCache();
+				}
 			}
 		}
 	}
@@ -294,11 +297,26 @@ void PropagateChildLivery(const Group *g)
 		if (cg->parent == g->index) {
 			if (!HasBit(cg->livery.in_use, 0)) cg->livery.colour1 = g->livery.colour1;
 			if (!HasBit(cg->livery.in_use, 1)) cg->livery.colour2 = g->livery.colour2;
-			PropagateChildLivery(cg);
+			PropagateChildLivery(cg, reset_cache);
 		}
 	}
 }
 
+/**
+ * Update group liveries for a company. This is called when the LS_DEFAULT scheme is changed, to update groups with
+ * colours set to default.
+ * @param c Company to update.
+ */
+void UpdateCompanyGroupLiveries(const Company *c)
+{
+	for (Group *g : Group::Iterate()) {
+		if (g->owner == c->index && g->parent == INVALID_GROUP) {
+			if (!HasBit(g->livery.in_use, 0)) g->livery.colour1 = c->livery[LS_DEFAULT].colour1;
+			if (!HasBit(g->livery.in_use, 1)) g->livery.colour2 = c->livery[LS_DEFAULT].colour2;
+			PropagateChildLivery(g, false);
+		}
+	}
+}
 
 Group::Group(Owner owner)
 {
@@ -448,12 +466,13 @@ CommandCost CmdAlterGroup(DoCommandFlag flags, AlterGroupMode mode, GroupID grou
 			g->parent = (pg == nullptr) ? INVALID_GROUP : pg->index;
 			GroupStatistics::UpdateAutoreplace(g->owner);
 
-			if (g->livery.in_use == 0) {
+			if (!HasBit(g->livery.in_use, 0) || !HasBit(g->livery.in_use, 1)) {
+				/* Update livery with new parent's colours if either colour is default. */
 				const Livery *livery = GetParentLivery(g);
-				g->livery.colour1 = livery->colour1;
-				g->livery.colour2 = livery->colour2;
+				if (!HasBit(g->livery.in_use, 0)) g->livery.colour1 = livery->colour1;
+				if (!HasBit(g->livery.in_use, 1)) g->livery.colour2 = livery->colour2;
 
-				PropagateChildLivery(g);
+				PropagateChildLivery(g, true);
 				MarkWholeScreenDirty();
 			}
 		}
@@ -512,48 +531,63 @@ static void AddVehicleToGroup(Vehicle *v, GroupID new_g)
  * @param add_shared Add shared vehicles as well.
  * @return the cost of this operation or an error
  */
-std::tuple<CommandCost, GroupID> CmdAddVehicleGroup(DoCommandFlag flags, GroupID group_id, VehicleID veh_id, bool add_shared)
+std::tuple<CommandCost, GroupID> CmdAddVehicleGroup(DoCommandFlag flags, GroupID group_id, VehicleID veh_id, bool add_shared, const VehicleListIdentifier &vli)
 {
-	Vehicle *v = Vehicle::GetIfValid(veh_id);
 	GroupID new_g = group_id;
+	if (!Group::IsValidID(new_g) && !IsDefaultGroupID(new_g) && new_g != NEW_GROUP) return { CMD_ERROR, INVALID_GROUP };
 
-	if (v == nullptr || (!Group::IsValidID(new_g) && !IsDefaultGroupID(new_g) && new_g != NEW_GROUP)) return { CMD_ERROR, INVALID_GROUP };
+	VehicleList list;
+	if (veh_id == INVALID_VEHICLE && vli.Valid()) {
+		if (!GenerateVehicleSortList(&list, vli) || list.empty()) return { CMD_ERROR, INVALID_GROUP };
+	} else {
+		Vehicle *v = Vehicle::GetIfValid(veh_id);
+		if (v == nullptr) return { CMD_ERROR, INVALID_GROUP };
+		list.push_back(v);
+	}
+
+	VehicleType vtype = list.front()->type;
+	for (const Vehicle *v : list) {
+		if (v->owner != _current_company || !v->IsPrimaryVehicle()) return { CMD_ERROR, INVALID_GROUP };
+	}
 
 	if (Group::IsValidID(new_g)) {
 		Group *g = Group::Get(new_g);
-		if (g->owner != _current_company || g->vehicle_type != v->type) return { CMD_ERROR, INVALID_GROUP };
+		if (g->owner != _current_company || g->vehicle_type != vtype) return { CMD_ERROR, INVALID_GROUP };
 	}
-
-	if (v->owner != _current_company || !v->IsPrimaryVehicle()) return { CMD_ERROR, INVALID_GROUP };
 
 	if (new_g == NEW_GROUP) {
 		/* Create new group. */
-		auto [ret, new_group_id] = CmdCreateGroup(flags, v->type, INVALID_GROUP);
+		auto [ret, new_group_id] = CmdCreateGroup(flags, vtype, INVALID_GROUP);
 		if (ret.Failed()) return { ret, new_group_id };
 
 		new_g = new_group_id;
 	}
 
 	if (flags & DC_EXEC) {
-		AddVehicleToGroup(v, new_g);
+		for (const Vehicle *vc : list) {
+			/* VehicleList is const but we need to modify the vehicle. */
+			Vehicle *v = Vehicle::Get(vc->index);
+			AddVehicleToGroup(v, new_g);
 
-		if (add_shared) {
-			/* Add vehicles in the shared order list as well. */
-			for (Vehicle *v2 = v->FirstShared(); v2 != nullptr; v2 = v2->NextShared()) {
-				if (v2->group_id != new_g) AddVehicleToGroup(v2, new_g);
+			if (add_shared) {
+				/* Add vehicles in the shared order list as well. */
+				for (Vehicle *v2 = v->FirstShared(); v2 != nullptr; v2 = v2->NextShared()) {
+					if (v2->group_id != new_g) AddVehicleToGroup(v2, new_g);
+				}
 			}
+
+			SetWindowDirty(WC_VEHICLE_DEPOT, v->tile);
+			SetWindowDirty(WC_VEHICLE_VIEW, v->index);
+			SetWindowDirty(WC_VEHICLE_DETAILS, v->index);
+			InvalidateWindowData(WC_VEHICLE_VIEW, v->index);
+			InvalidateWindowData(WC_VEHICLE_DETAILS, v->index);
 		}
 
-		GroupStatistics::UpdateAutoreplace(v->owner);
+		GroupStatistics::UpdateAutoreplace(_current_company);
 
 		/* Update the Replace Vehicle Windows */
-		SetWindowDirty(WC_REPLACE_VEHICLE, v->type);
-		SetWindowDirty(WC_VEHICLE_DEPOT, v->tile);
-		SetWindowDirty(WC_VEHICLE_VIEW, v->index);
-		SetWindowDirty(WC_VEHICLE_DETAILS, v->index);
-		InvalidateWindowData(GetWindowClassForVehicleType(v->type), VehicleListIdentifier(VL_GROUP_LIST, v->type, _current_company).Pack());
-		InvalidateWindowData(WC_VEHICLE_VIEW, v->index);
-		InvalidateWindowData(WC_VEHICLE_DETAILS, v->index);
+		SetWindowDirty(WC_REPLACE_VEHICLE, vtype);
+		InvalidateWindowData(GetWindowClassForVehicleType(vtype), VehicleListIdentifier(VL_GROUP_LIST, vtype, _current_company).Pack());
 	}
 
 	return { CommandCost(), new_g };
@@ -579,7 +613,7 @@ CommandCost CmdAddSharedVehicleGroup(DoCommandFlag flags, GroupID id_g, VehicleT
 
 				/* For each shared vehicles add it to the group */
 				for (Vehicle *v2 = v->FirstShared(); v2 != nullptr; v2 = v2->NextShared()) {
-					if (v2->group_id != id_g) Command<CMD_ADD_VEHICLE_GROUP>::Do(flags, id_g, v2->index, false);
+					if (v2->group_id != id_g) Command<CMD_ADD_VEHICLE_GROUP>::Do(flags, id_g, v2->index, false, VehicleListIdentifier{});
 				}
 			}
 		}
@@ -610,7 +644,7 @@ CommandCost CmdRemoveAllVehiclesGroup(DoCommandFlag flags, GroupID group_id)
 				if (v->group_id != group_id) continue;
 
 				/* Add The Vehicle to the default group */
-				Command<CMD_ADD_VEHICLE_GROUP>::Do(flags, DEFAULT_GROUP, v->index, false);
+				Command<CMD_ADD_VEHICLE_GROUP>::Do(flags, DEFAULT_GROUP, v->index, false, VehicleListIdentifier{});
 			}
 		}
 
@@ -646,7 +680,7 @@ CommandCost CmdSetGroupLivery(DoCommandFlag flags, GroupID group_id, bool primar
 			g->livery.colour2 = colour;
 		}
 
-		PropagateChildLivery(g);
+		PropagateChildLivery(g, true);
 		MarkWholeScreenDirty();
 	}
 
@@ -698,19 +732,6 @@ CommandCost CmdSetGroupFlag(DoCommandFlag flags, GroupID group_id, GroupFlags fl
 
 	return CommandCost();
 }
-
-/**
- * Decrease the num_vehicle variable before delete an front engine from a group
- * @note Called in CmdSellRailWagon and DeleteLasWagon,
- * @param v     FrontEngine of the train we want to remove.
- */
-void RemoveVehicleFromGroup(const Vehicle *v)
-{
-	if (!v->IsPrimaryVehicle()) return;
-
-	if (!IsDefaultGroupID(v->group_id)) GroupStatistics::CountVehicle(v, -1);
-}
-
 
 /**
  * Affect the groupID of a train to new_g.

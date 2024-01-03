@@ -100,13 +100,13 @@ public:
 		this->DrawWidgets();
 	}
 
-	void DrawWidget(const Rect &r, int widget) const override
+	void DrawWidget(const Rect &r, WidgetID widget) const override
 	{
 		if (widget != WID_PLT_BACKGROUND) return;
 
 		Rect ir = r.Shrink(WidgetDimensions::scaled.framerect);
 		int icon_y_offset = (this->line_height - this->icon.height) / 2;
-		int text_y_offset = (this->line_height - FONT_HEIGHT_NORMAL) / 2;
+		int text_y_offset = (this->line_height - GetCharacterHeight(FS_NORMAL)) / 2;
 
 		bool rtl = _current_text_dir == TD_RTL;
 		Rect ordinal = ir.WithWidth(this->ordinal_width, rtl);
@@ -127,7 +127,7 @@ public:
 		}
 	}
 
-	void UpdateWidgetSize(int widget, Dimension *size, const Dimension &padding, Dimension *fill, Dimension *resize) override
+	void UpdateWidgetSize(WidgetID widget, Dimension *size, [[maybe_unused]] const Dimension &padding, [[maybe_unused]] Dimension *fill, [[maybe_unused]] Dimension *resize) override
 	{
 		if (widget != WID_PLT_BACKGROUND) return;
 
@@ -148,7 +148,7 @@ public:
 		}
 
 		this->icon = GetSpriteSize(SPR_COMPANY_ICON);
-		this->line_height = std::max<int>(this->icon.height + WidgetDimensions::scaled.vsep_normal, FONT_HEIGHT_NORMAL);
+		this->line_height = std::max<int>(this->icon.height + WidgetDimensions::scaled.vsep_normal, GetCharacterHeight(FS_NORMAL));
 
 		for (const Company *c : Company::Iterate()) {
 			SetDParam(0, c->index);
@@ -175,7 +175,7 @@ public:
 	 * @param data Information about the changed data.
 	 * @param gui_scope Whether the call is done from GUI scope. You may not do everything when not in GUI scope. See #InvalidateWindowData() for details.
 	 */
-	void OnInvalidateData(int data = 0, bool gui_scope = true) override
+	void OnInvalidateData([[maybe_unused]] int data = 0, [[maybe_unused]] bool gui_scope = true) override
 	{
 		if (data == 0) {
 			/* This needs to be done in command-scope to enforce rebuilding before resorting invalid data */
@@ -194,13 +194,14 @@ static const NWidgetPart _nested_performance_league_widgets[] = {
 		NWidget(WWT_STICKYBOX, COLOUR_BROWN),
 	EndContainer(),
 	NWidget(WWT_PANEL, COLOUR_BROWN, WID_PLT_BACKGROUND), SetMinimalSize(400, 0), SetMinimalTextLines(15, WidgetDimensions::unscaled.framerect.Vertical()),
+	EndContainer(),
 };
 
-static WindowDesc _performance_league_desc(
-	WDP_AUTO, "league", 0, 0,
+static WindowDesc _performance_league_desc(__FILE__, __LINE__,
+	WDP_AUTO, "performance_league", 0, 0,
 	WC_COMPANY_LEAGUE, WC_NONE,
 	0,
-	_nested_performance_league_widgets, lengthof(_nested_performance_league_widgets)
+	std::begin(_nested_performance_league_widgets), std::end(_nested_performance_league_widgets)
 );
 
 void ShowPerformanceLeagueTable()
@@ -277,7 +278,7 @@ private:
 		this->title = lt->title;
 
 		std::vector<const LeagueTableElement *> elements;
-		for(LeagueTableElement *lte : LeagueTableElement::Iterate()) {
+		for (LeagueTableElement *lte : LeagueTableElement::Iterate()) {
 			if (lte->table == this->table) {
 				elements.push_back(lte);
 			}
@@ -301,7 +302,7 @@ public:
 		this->InitNested(table);
 	}
 
-	void SetStringParameters(int widget) const override
+	void SetStringParameters(WidgetID widget) const override
 	{
 		if (widget != WID_SLT_CAPTION) return;
 		SetDParamStr(0, this->title);
@@ -312,7 +313,7 @@ public:
 		this->DrawWidgets();
 	}
 
-	void DrawWidget(const Rect &r, int widget) const override
+	void DrawWidget(const Rect &r, WidgetID widget) const override
 	{
 		if (widget != WID_SLT_BACKGROUND) return;
 
@@ -327,7 +328,7 @@ public:
 		}
 
 		int icon_y_offset = (this->line_height - this->icon_size.height) / 2;
-		int text_y_offset = (this->line_height - FONT_HEIGHT_NORMAL) / 2;
+		int text_y_offset = (this->line_height - GetCharacterHeight(FS_NORMAL)) / 2;
 
 		/* Calculate positions.of the columns */
 		bool rtl = _current_text_dir == TD_RTL;
@@ -354,7 +355,7 @@ public:
 		}
 	}
 
-	void UpdateWidgetSize(int widget, Dimension *size, const Dimension &padding, Dimension *fill, Dimension *resize) override
+	void UpdateWidgetSize(WidgetID widget, Dimension *size, [[maybe_unused]] const Dimension &padding, [[maybe_unused]] Dimension *fill, [[maybe_unused]] Dimension *resize) override
 	{
 		if (widget != WID_SLT_BACKGROUND) return;
 
@@ -362,7 +363,7 @@ public:
 		if (lt == nullptr) return;
 
 		this->icon_size = GetSpriteSize(SPR_COMPANY_ICON);
-		this->line_height = std::max<int>(this->icon_size.height + WidgetDimensions::scaled.fullbevel.Vertical(), FONT_HEIGHT_NORMAL);
+		this->line_height = std::max<int>(this->icon_size.height + WidgetDimensions::scaled.fullbevel.Vertical(), GetCharacterHeight(FS_NORMAL));
 
 		/* Calculate maximum width of every column */
 		this->rank_width = this->text_width = this->score_width = 0;
@@ -394,7 +395,7 @@ public:
 		}
 	}
 
-	void OnClick(Point pt, int widget, int click_count) override
+	void OnClick([[maybe_unused]] Point pt, WidgetID widget, [[maybe_unused]] int click_count) override
 	{
 		if (widget != WID_SLT_BACKGROUND) return;
 
@@ -411,7 +412,7 @@ public:
 	 * @param data Information about the changed data.
 	 * @param gui_scope Whether the call is done from GUI scope. You may not do everything when not in GUI scope. See #InvalidateWindowData() for details.
 	 */
-	void OnInvalidateData(int data = 0, bool gui_scope = true) override
+	void OnInvalidateData([[maybe_unused]] int data = 0, [[maybe_unused]] bool gui_scope = true) override
 	{
 		this->BuildTable();
 		this->ReInit();
@@ -426,13 +427,14 @@ static const NWidgetPart _nested_script_league_widgets[] = {
 		NWidget(WWT_STICKYBOX, COLOUR_BROWN),
 	EndContainer(),
 	NWidget(WWT_PANEL, COLOUR_BROWN, WID_SLT_BACKGROUND), SetMinimalSize(400, 0), SetMinimalTextLines(15, WidgetDimensions::scaled.framerect.Vertical()),
+	EndContainer(),
 };
 
-static WindowDesc _script_league_desc(
-	WDP_AUTO, "league", 0, 0,
+static WindowDesc _script_league_desc(__FILE__, __LINE__,
+	WDP_AUTO, "script_league", 0, 0,
 	WC_COMPANY_LEAGUE, WC_NONE,
 	0,
-	_nested_script_league_widgets, lengthof(_nested_script_league_widgets)
+	std::begin(_nested_script_league_widgets), std::end(_nested_script_league_widgets)
 );
 
 void ShowScriptLeagueTable(LeagueTableID table)

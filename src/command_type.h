@@ -26,10 +26,10 @@ class CommandCost {
 	StringID message;                           ///< Warning message for when success is unset
 	bool success;                               ///< Whether the command went fine up to this moment
 	const GRFFile *textref_stack_grffile;       ///< NewGRF providing the #TextRefStack content.
-	uint textref_stack_size;                    ///< Number of uint32 values to put on the #TextRefStack for the error message.
+	uint textref_stack_size;                    ///< Number of uint32_t values to put on the #TextRefStack for the error message.
 	StringID extra_message = INVALID_STRING_ID; ///< Additional warning message for when success is unset
 
-	static uint32 textref_stack[16];
+	static uint32_t textref_stack[16];
 
 public:
 	/**
@@ -118,8 +118,8 @@ public:
 	}
 
 	/**
-	 * Returns the number of uint32 values for the #TextRefStack of the error message.
-	 * @return number of uint32 values.
+	 * Returns the number of uint32_t values for the #TextRefStack of the error message.
+	 * @return number of uint32_t values.
 	 */
 	uint GetTextRefStackSize() const
 	{
@@ -128,9 +128,9 @@ public:
 
 	/**
 	 * Returns a pointer to the values for the #TextRefStack of the error message.
-	 * @return uint32 values for the #TextRefStack
+	 * @return uint32_t values for the #TextRefStack
 	 */
-	const uint32 *GetTextRefStack() const
+	const uint32_t *GetTextRefStack() const
 	{
 		return textref_stack;
 	}
@@ -184,7 +184,7 @@ public:
  *
  * @see _command_proc_table
  */
-enum Commands : uint16 {
+enum Commands : uint16_t {
 	CMD_BUILD_RAILROAD_TRACK,         ///< build a rail track
 	CMD_REMOVE_RAILROAD_TRACK,        ///< remove a rail track
 	CMD_BUILD_SINGLE_RAIL,            ///< build a single rail track
@@ -246,6 +246,7 @@ enum Commands : uint16 {
 	CMD_INDUSTRY_SET_FLAGS,           ///< change industry control flags
 	CMD_INDUSTRY_SET_EXCLUSIVITY,     ///< change industry exclusive consumer/supplier
 	CMD_INDUSTRY_SET_TEXT,            ///< change additional text for the industry
+	CMD_INDUSTRY_SET_PRODUCTION,      ///< change industry production
 
 	CMD_SET_COMPANY_MANAGER_FACE,     ///< set the manager's face of the company
 	CMD_SET_COMPANY_COLOUR,           ///< set the colour of the company

@@ -1,7 +1,6 @@
 /* see copyright notice in squirrel.h */
 #include <squirrel.h>
 #include <sqstdstring.h>
-#include <stdarg.h>
 
 #define scstrchr strchr
 #define scatoi atoi
@@ -113,16 +112,16 @@ static SQInteger _string_split(HSQUIRRELVM v)
 	memcpy(stemp,str,memsize);
 	tok = scstrtok(stemp,seps);
 	sq_newarray(v,0);
-	while( tok != NULL ) {
+	while( tok != nullptr ) {
 		sq_pushstring(v,tok,-1);
 		sq_arrayappend(v,-2);
-		tok = scstrtok( NULL, seps );
+		tok = scstrtok( nullptr, seps );
 	}
 	return 1;
 }
 
 #define SETUP_REX(v) \
-	SQRex *self = NULL; \
+	SQRex *self = nullptr; \
 	sq_getinstanceup(v,1,(SQUserPointer *)&self,0);
 
 static SQInteger _rexobj_releasehook(SQUserPointer p, SQInteger size)

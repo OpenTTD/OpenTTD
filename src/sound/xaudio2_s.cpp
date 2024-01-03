@@ -41,9 +41,9 @@ typedef HRESULT(__stdcall *API_XAudio2Create)(_Outptr_ IXAudio2** ppXAudio2, UIN
 static FSoundDriver_XAudio2 iFSoundDriver_XAudio2;
 
 /**
-* Implementation of the IXAudio2VoiceCallback interface.
-* Provides buffered audio to XAudio2 from the OpenTTD mixer.
-*/
+ * Implementation of the IXAudio2VoiceCallback interface.
+ * Provides buffered audio to XAudio2 from the OpenTTD mixer.
+ */
 class StreamingVoiceContext : public IXAudio2VoiceCallback
 {
 private:
@@ -132,12 +132,12 @@ static HRESULT CreateXAudio(API_XAudio2Create xAudio2Create)
 }
 
 /**
-* Initialises the XAudio2 driver.
-*
-* @param parm Driver parameters.
-* @return An error message if unsuccessful, or nullptr otherwise.
-*
-*/
+ * Initialises the XAudio2 driver.
+ *
+ * @param parm Driver parameters.
+ * @return An error message if unsuccessful, or nullptr otherwise.
+ *
+ */
 const char *SoundDriver_XAudio2::Start(const StringList &parm)
 {
 	HRESULT hr = CoInitializeEx(nullptr, COINIT_MULTITHREADED);
@@ -261,8 +261,8 @@ const char *SoundDriver_XAudio2::Start(const StringList &parm)
 }
 
 /**
-* Terminates the XAudio2 driver.
-*/
+ * Terminates the XAudio2 driver.
+ */
 void SoundDriver_XAudio2::Stop()
 {
 	// Clean up XAudio2

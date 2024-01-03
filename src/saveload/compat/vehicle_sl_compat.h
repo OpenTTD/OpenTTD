@@ -82,7 +82,7 @@ const SaveLoadCompat _vehicle_common_sl_compat[] = {
 	SLC_VAR("profit_this_year"),
 	SLC_VAR("profit_last_year"),
 	SLC_VAR("cargo_feeder_share"),
-	SLC_VAR("cargo_loaded_at_xy"),
+	SLC_NULL(4, SLV_51, SLV_68),
 	SLC_VAR("value"),
 	SLC_VAR("random_bits"),
 	SLC_VAR("waiting_triggers"),

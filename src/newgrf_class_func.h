@@ -50,7 +50,7 @@ DEFINE_NEWGRF_CLASS_METHOD(void)::Reset()
  * @note Upon allocating the same global class ID for a
  *       second time, this first allocation will be given.
  */
-DEFINE_NEWGRF_CLASS_METHOD(Tid)::Allocate(uint32 global_id)
+DEFINE_NEWGRF_CLASS_METHOD(Tid)::Allocate(uint32_t global_id)
 {
 	for (Tid i = (Tid)0; i < Tmax; i++) {
 		if (classes[i].global_id == global_id) {
@@ -187,7 +187,7 @@ DEFINE_NEWGRF_CLASS_METHOD(int)::GetUIFromIndex(int index) const
  * @param index    Pointer to return the index of the spec in its class. If nullptr then not used.
  * @return The spec.
  */
-DEFINE_NEWGRF_CLASS_METHOD(const Tspec *)::GetByGrf(uint32 grfid, uint16_t local_id, int *index)
+DEFINE_NEWGRF_CLASS_METHOD(const Tspec *)::GetByGrf(uint32_t grfid, uint16_t local_id, int *index)
 {
 	uint j;
 
@@ -212,7 +212,7 @@ DEFINE_NEWGRF_CLASS_METHOD(const Tspec *)::GetByGrf(uint32 grfid, uint16_t local
 #define INSTANTIATE_NEWGRF_CLASS_METHODS(name, Tspec, Tid, Tmax) \
 	template void name::ResetClass(); \
 	template void name::Reset(); \
-	template Tid name::Allocate(uint32 global_id); \
+	template Tid name::Allocate(uint32_t global_id); \
 	template void name::Insert(Tspec *spec); \
 	template void name::Assign(Tspec *spec); \
 	template NewGRFClass<Tspec, Tid, Tmax> *name::Get(Tid cls_id); \
@@ -222,4 +222,4 @@ DEFINE_NEWGRF_CLASS_METHOD(const Tspec *)::GetByGrf(uint32 grfid, uint16_t local
 	template const Tspec *name::GetSpec(uint index) const; \
 	template int name::GetUIFromIndex(int index) const; \
 	template int name::GetIndexFromUI(int ui_index) const; \
-	template const Tspec *name::GetByGrf(uint32 grfid, uint16_t local_id, int *index);
+	template const Tspec *name::GetByGrf(uint32_t grfid, uint16_t local_id, int *index);

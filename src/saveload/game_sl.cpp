@@ -34,7 +34,7 @@ static const SaveLoad _game_script_desc[] = {
 	    SLEG_VAR("is_random", _game_saveload_is_random,   SLE_BOOL),
 };
 
-static void SaveReal_GSDT(int *index_ptr)
+static void SaveReal_GSDT(int *)
 {
 	GameConfig *config = GameConfig::GetConfig();
 
@@ -119,7 +119,7 @@ struct GSDTChunkHandler : ChunkHandler {
 extern GameStrings *_current_data;
 
 static std::string _game_saveload_string;
-static uint32 _game_saveload_strings;
+static uint32_t _game_saveload_strings;
 
 class SlGameLanguageString : public DefaultSaveLoadHandler<SlGameLanguageString, LanguageStrings> {
 public:
@@ -140,9 +140,9 @@ public:
 
 	void Load(LanguageStrings *ls) const override
 	{
-		uint32 length = IsSavegameVersionBefore(SLV_SAVELOAD_LIST_LENGTH) ? _game_saveload_strings : (uint32)SlGetStructListLength(UINT32_MAX);
+		uint32_t length = IsSavegameVersionBefore(SLV_SAVELOAD_LIST_LENGTH) ? _game_saveload_strings : (uint32_t)SlGetStructListLength(UINT32_MAX);
 
-		for (uint32 i = 0; i < length; i++) {
+		for (uint32_t i = 0; i < length; i++) {
 			SlObject(nullptr, this->GetLoadDescription());
 			ls->lines.emplace_back(_game_saveload_string);
 		}
@@ -172,7 +172,7 @@ struct GSTRChunkHandler : ChunkHandler {
 		}
 
 		/* If there were no strings in the savegame, set GameStrings to nullptr */
-		if (_current_data->raw_strings.size() == 0) {
+		if (_current_data->raw_strings.empty()) {
 			delete _current_data;
 			_current_data = nullptr;
 			return;

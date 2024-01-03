@@ -10,13 +10,13 @@
 #ifndef LINKGRAPH_TYPE_H
 #define LINKGRAPH_TYPE_H
 
-typedef uint16 LinkGraphID;
+typedef uint16_t LinkGraphID;
 static const LinkGraphID INVALID_LINK_GRAPH = UINT16_MAX;
 
-typedef uint16 LinkGraphJobID;
+typedef uint16_t LinkGraphJobID;
 static const LinkGraphJobID INVALID_LINK_GRAPH_JOB = UINT16_MAX;
 
-typedef uint16 NodeID;
+typedef uint16_t NodeID;
 static const NodeID INVALID_NODE = UINT16_MAX;
 
 enum DistributionType : byte {

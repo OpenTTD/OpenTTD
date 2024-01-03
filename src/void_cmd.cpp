@@ -25,7 +25,7 @@ static void DrawTile_Void(TileInfo *ti)
 }
 
 
-static int GetSlopePixelZ_Void(TileIndex tile, uint x, uint y, bool ground_vehicle)
+static int GetSlopePixelZ_Void(TileIndex, uint x, uint y, bool)
 {
 	/* This function may be called on tiles outside the map, don't assume
 	 * that 'tile' is a valid tile index. See GetSlopePixelZOutsideMap. */
@@ -35,18 +35,18 @@ static int GetSlopePixelZ_Void(TileIndex tile, uint x, uint y, bool ground_vehic
 	return z + GetPartialPixelZ(x & 0xF, y & 0xF, tileh);
 }
 
-static Foundation GetFoundation_Void(TileIndex tile, Slope tileh)
+static Foundation GetFoundation_Void(TileIndex, Slope)
 {
 	return FOUNDATION_NONE;
 }
 
-static CommandCost ClearTile_Void(TileIndex tile, DoCommandFlag flags)
+static CommandCost ClearTile_Void(TileIndex, DoCommandFlag)
 {
 	return_cmd_error(STR_ERROR_OFF_EDGE_OF_MAP);
 }
 
 
-static void GetTileDesc_Void(TileIndex tile, TileDesc *td)
+static void GetTileDesc_Void(TileIndex, TileDesc *td)
 {
 	td->str = STR_EMPTY;
 	td->owner[0] = OWNER_NONE;
@@ -58,17 +58,17 @@ static void TileLoop_Void(TileIndex tile)
 	TileLoop_Water(tile);
 }
 
-static void ChangeTileOwner_Void(TileIndex tile, Owner old_owner, Owner new_owner)
+static void ChangeTileOwner_Void(TileIndex, Owner, Owner)
 {
 	/* not used */
 }
 
-static TrackStatus GetTileTrackStatus_Void(TileIndex tile, TransportType mode, uint sub_mode, DiagDirection side)
+static TrackStatus GetTileTrackStatus_Void(TileIndex, TransportType, uint, DiagDirection)
 {
 	return 0;
 }
 
-static CommandCost TerraformTile_Void(TileIndex tile, DoCommandFlag flags, int z_new, Slope tileh_new)
+static CommandCost TerraformTile_Void(TileIndex, DoCommandFlag, int, Slope)
 {
 	return_cmd_error(STR_ERROR_OFF_EDGE_OF_MAP);
 }

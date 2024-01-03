@@ -21,26 +21,26 @@ struct RoadTypeScopeResolver : public ScopeResolver {
 	const RoadTypeInfo *rti;
 
 	/**
-	* Constructor of the roadtype scope resolvers.
-	* @param ro Surrounding resolver.
-	* @param rti Associated RoadTypeInfo.
-	* @param tile %Tile containing the track. For track on a bridge this is the southern bridgehead.
-	* @param context Are we resolving sprites for the upper halftile, or on a bridge?
-	*/
+	 * Constructor of the roadtype scope resolvers.
+	 * @param ro Surrounding resolver.
+	 * @param rti Associated RoadTypeInfo.
+	 * @param tile %Tile containing the track. For track on a bridge this is the southern bridgehead.
+	 * @param context Are we resolving sprites for the upper halftile, or on a bridge?
+	 */
 	RoadTypeScopeResolver(ResolverObject &ro, const RoadTypeInfo *rti, TileIndex tile, TileContext context)
 		: ScopeResolver(ro), tile(tile), context(context), rti(rti)
 	{
 	}
 
-	/* virtual */ uint32 GetRandomBits() const;
-	/* virtual */ uint32 GetVariable(byte variable, uint32 parameter, bool *available) const;
+	uint32_t GetRandomBits() const override;
+	uint32_t GetVariable(byte variable, [[maybe_unused]] uint32_t parameter, bool *available) const override;
 };
 
 /** Resolver object for road types. */
 struct RoadTypeResolverObject : public ResolverObject {
 	RoadTypeScopeResolver roadtype_scope; ///< Resolver for the roadtype scope.
 
-	RoadTypeResolverObject(const RoadTypeInfo *rti, TileIndex tile, TileContext context, RoadTypeSpriteGroup rtsg, uint32 param1 = 0, uint32 param2 = 0);
+	RoadTypeResolverObject(const RoadTypeInfo *rti, TileIndex tile, TileContext context, RoadTypeSpriteGroup rtsg, uint32_t param1 = 0, uint32_t param2 = 0);
 
 	ScopeResolver *GetScope(VarSpriteGroupScope scope = VSG_SCOPE_SELF, byte relative = 0) override
 	{
@@ -51,12 +51,12 @@ struct RoadTypeResolverObject : public ResolverObject {
 	}
 
 	GrfSpecFeature GetFeature() const override;
-	uint32 GetDebugID() const override;
+	uint32_t GetDebugID() const override;
 };
 
 SpriteID GetCustomRoadSprite(const RoadTypeInfo *rti, TileIndex tile, RoadTypeSpriteGroup rtsg, TileContext context = TCX_NORMAL, uint *num_results = nullptr);
 
-RoadType GetRoadTypeTranslation(RoadTramType rtt, uint8 tracktype, const GRFFile *grffile);
-uint8 GetReverseRoadTypeTranslation(RoadType roadtype, const GRFFile *grffile);
+RoadType GetRoadTypeTranslation(RoadTramType rtt, uint8_t tracktype, const GRFFile *grffile);
+uint8_t GetReverseRoadTypeTranslation(RoadType roadtype, const GRFFile *grffile);
 
 #endif /* NEWGRF_ROADTYPE_H */

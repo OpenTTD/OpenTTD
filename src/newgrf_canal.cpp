@@ -29,8 +29,8 @@ struct CanalScopeResolver : public ScopeResolver {
 	{
 	}
 
-	uint32 GetRandomBits() const override;
-	uint32 GetVariable(byte variable, uint32 parameter, bool *available) const override;
+	uint32_t GetRandomBits() const override;
+	uint32_t GetVariable(byte variable, [[maybe_unused]] uint32_t parameter, bool *available) const override;
 };
 
 /** Resolver object for canals. */
@@ -39,7 +39,7 @@ struct CanalResolverObject : public ResolverObject {
 	CanalFeature feature;
 
 	CanalResolverObject(CanalFeature feature, TileIndex tile,
-			CallbackID callback = CBID_NO_CALLBACK, uint32 callback_param1 = 0, uint32 callback_param2 = 0);
+			CallbackID callback = CBID_NO_CALLBACK, uint32_t callback_param1 = 0, uint32_t callback_param2 = 0);
 
 	ScopeResolver *GetScope(VarSpriteGroupScope scope = VSG_SCOPE_SELF, byte relative = 0) override
 	{
@@ -50,16 +50,16 @@ struct CanalResolverObject : public ResolverObject {
 	}
 
 	GrfSpecFeature GetFeature() const override;
-	uint32 GetDebugID() const override;
+	uint32_t GetDebugID() const override;
 };
 
-/* virtual */ uint32 CanalScopeResolver::GetRandomBits() const
+/* virtual */ uint32_t CanalScopeResolver::GetRandomBits() const
 {
 	/* Return random bits only for water tiles, not station tiles */
 	return IsTileType(this->tile, MP_WATER) ? GetWaterTileRandomBits(this->tile) : 0;
 }
 
-/* virtual */ uint32 CanalScopeResolver::GetVariable(byte variable, uint32 parameter, bool *available) const
+/* virtual */ uint32_t CanalScopeResolver::GetVariable(byte variable, [[maybe_unused]] uint32_t parameter, bool *available) const
 {
 	switch (variable) {
 		/* Height of tile */
@@ -84,7 +84,7 @@ struct CanalResolverObject : public ResolverObject {
 		 *         5
 		 */
 		case 0x82: {
-			uint32 connectivity =
+			uint32_t connectivity =
 				  (!IsWateredTile(TILE_ADDXY(tile, -1,  0), DIR_SW) << 0)  // NE
 				+ (!IsWateredTile(TILE_ADDXY(tile,  0,  1), DIR_NW) << 1)  // SE
 				+ (!IsWateredTile(TILE_ADDXY(tile,  1,  0), DIR_NE) << 2)  // SW
@@ -111,7 +111,7 @@ GrfSpecFeature CanalResolverObject::GetFeature() const
 	return GSF_CANALS;
 }
 
-uint32 CanalResolverObject::GetDebugID() const
+uint32_t CanalResolverObject::GetDebugID() const
 {
 	return this->feature;
 }
@@ -125,7 +125,7 @@ uint32 CanalResolverObject::GetDebugID() const
  * @param callback_param2 Second parameter (var 18) of the callback.
  */
 CanalResolverObject::CanalResolverObject(CanalFeature feature, TileIndex tile,
-		CallbackID callback, uint32 callback_param1, uint32 callback_param2)
+		CallbackID callback, uint32_t callback_param1, uint32_t callback_param2)
 		: ResolverObject(_water_feature[feature].grffile, callback, callback_param1, callback_param2), canal_scope(*this, tile), feature(feature)
 {
 	this->root_spritegroup = _water_feature[feature].group;
@@ -155,7 +155,7 @@ SpriteID GetCanalSprite(CanalFeature feature, TileIndex tile)
  * @param tile     Tile index of canal.
  * @return Callback result or #CALLBACK_FAILED if the callback failed.
  */
-static uint16 GetCanalCallback(CallbackID callback, uint32 param1, uint32 param2, CanalFeature feature, TileIndex tile)
+static uint16_t GetCanalCallback(CallbackID callback, uint32_t param1, uint32_t param2, CanalFeature feature, TileIndex tile)
 {
 	CanalResolverObject object(feature, tile, callback, param1, param2);
 	return object.ResolveCallback();
@@ -171,7 +171,7 @@ static uint16 GetCanalCallback(CallbackID callback, uint32 param1, uint32 param2
 uint GetCanalSpriteOffset(CanalFeature feature, TileIndex tile, uint cur_offset)
 {
 	if (HasBit(_water_feature[feature].callback_mask, CBM_CANAL_SPRITE_OFFSET)) {
-		uint16 cb = GetCanalCallback(CBID_CANALS_SPRITE_OFFSET, cur_offset, 0, feature, tile);
+		uint16_t cb = GetCanalCallback(CBID_CANALS_SPRITE_OFFSET, cur_offset, 0, feature, tile);
 		if (cb != CALLBACK_FAILED) return cur_offset + cb;
 	}
 	return cur_offset;

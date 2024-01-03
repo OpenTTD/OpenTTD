@@ -13,7 +13,7 @@
 #include <variant>
 #include "saveload/saveload.h"
 
-enum SettingFlag : uint16 {
+enum SettingFlag : uint16_t {
 	SF_NONE = 0,
 	SF_GUI_0_IS_SPECIAL        = 1 <<  0, ///< A value of zero is possible and has a custom string (the one after "strval").
 	SF_GUI_NEGATIVE_IS_SPECIAL = 1 <<  1, ///< A negative value has another string (the one after "strval").
@@ -130,6 +130,14 @@ struct SettingDesc {
 	 * @return True if the value is definitely the same (might be false when the same).
 	 */
 	virtual bool IsSameValue(const IniItem *item, void *object) const = 0;
+
+	/**
+	 * Check whether the value is the same as the default value.
+	 *
+	 * @param object The object the setting is in.
+	 * @return true iff the value is the default value.
+	 */
+	virtual bool IsDefaultValue(void *object) const = 0;
 };
 
 /** Base integer type, including boolean, settings. Only these are shown in the settings UI. */
@@ -142,24 +150,58 @@ struct IntSettingDesc : SettingDesc {
 	 * @param value The prospective new value for the setting.
 	 * @return True when the setting is accepted.
 	 */
-	typedef bool PreChangeCheck(int32 &value);
+	typedef bool PreChangeCheck(int32_t &value);
 	/**
 	 * A callback to denote that a setting has been changed.
 	 * @param The new value for the setting.
 	 */
-	typedef void PostChangeCallback(int32 value);
+	typedef void PostChangeCallback(int32_t value);
 
-	IntSettingDesc(const SaveLoad &save, SettingFlag flags, bool startup, int32 def,
-			int32 min, uint32 max, int32 interval, StringID str, StringID str_help, StringID str_val,
+	template <
+		typename Tdef,
+		typename Tmin,
+		typename Tmax,
+		typename Tinterval,
+		std::enable_if_t<std::disjunction_v<std::is_convertible<Tdef, int32_t>, std::is_base_of<StrongTypedefBase, Tdef>>, int> = 0,
+		std::enable_if_t<std::disjunction_v<std::is_convertible<Tmin, int32_t>, std::is_base_of<StrongTypedefBase, Tmin>>, int> = 0,
+		std::enable_if_t<std::disjunction_v<std::is_convertible<Tmax, uint32_t>, std::is_base_of<StrongTypedefBase, Tmax>>, int> = 0,
+		std::enable_if_t<std::disjunction_v<std::is_convertible<Tinterval, int32_t>, std::is_base_of<StrongTypedefBase, Tinterval>>, int> = 0
+	>
+	IntSettingDesc(const SaveLoad &save, SettingFlag flags, bool startup, Tdef def,
+			Tmin min, Tmax max, Tinterval interval, StringID str, StringID str_help, StringID str_val,
 			SettingCategory cat, PreChangeCheck pre_check, PostChangeCallback post_callback) :
-		SettingDesc(save, flags, startup), def(def), min(min), max(max), interval(interval),
+		SettingDesc(save, flags, startup),
 			str(str), str_help(str_help), str_val(str_val), cat(cat), pre_check(pre_check),
-			post_callback(post_callback) {}
+			post_callback(post_callback) {
+		if constexpr (std::is_base_of_v<StrongTypedefBase, Tdef>) {
+			this->def = def.base();
+		} else {
+			this->def = def;
+		}
 
-	int32 def;              ///< default value given when none is present
-	int32 min;              ///< minimum values
-	uint32 max;             ///< maximum values
-	int32 interval;         ///< the interval to use between settings in the 'settings' window. If interval is '0' the interval is dynamically determined
+		if constexpr (std::is_base_of_v<StrongTypedefBase, Tmin>) {
+			this->min = min.base();
+		} else {
+			this->min = min;
+		}
+
+		if constexpr (std::is_base_of_v<StrongTypedefBase, Tmax>) {
+			this->max = max.base();
+		} else {
+			this->max = max;
+		}
+
+		if constexpr (std::is_base_of_v<StrongTypedefBase, Tinterval>) {
+			this->interval = interval.base();
+		} else {
+			this->interval = interval;
+		}
+	}
+
+	int32_t def;              ///< default value given when none is present
+	int32_t min;              ///< minimum values
+	uint32_t max;             ///< maximum values
+	int32_t interval;         ///< the interval to use between settings in the 'settings' window. If interval is '0' the interval is dynamically determined
 	StringID str;           ///< (translated) string with descriptive text; gui and console
 	StringID str_help;      ///< (Translated) string with help text; gui only.
 	StringID str_val;       ///< (Translated) first string describing the value.
@@ -174,18 +216,19 @@ struct IntSettingDesc : SettingDesc {
 	virtual bool IsBoolSetting() const { return false; }
 	bool IsIntSetting() const override { return true; }
 
-	void ChangeValue(const void *object, int32 newvalue) const;
-	void MakeValueValidAndWrite(const void *object, int32 value) const;
+	void ChangeValue(const void *object, int32_t newvalue) const;
+	void MakeValueValidAndWrite(const void *object, int32_t value) const;
 
 	virtual size_t ParseValue(const char *str) const;
 	std::string FormatValue(const void *object) const override;
 	void ParseValue(const IniItem *item, void *object) const override;
 	bool IsSameValue(const IniItem *item, void *object) const override;
-	int32 Read(const void *object) const;
+	bool IsDefaultValue(void *object) const override;
+	int32_t Read(const void *object) const;
 
 private:
-	void MakeValueValid(int32 &value) const;
-	void Write(const void *object, int32 value) const;
+	void MakeValueValid(int32_t &value) const;
+	void Write(const void *object, int32_t value) const;
 };
 
 /** Boolean setting. */
@@ -193,8 +236,10 @@ struct BoolSettingDesc : IntSettingDesc {
 	BoolSettingDesc(const SaveLoad &save, SettingFlag flags, bool startup, bool def,
 			StringID str, StringID str_help, StringID str_val, SettingCategory cat,
 			PreChangeCheck pre_check, PostChangeCallback post_callback) :
-		IntSettingDesc(save, flags, startup, def, 0, 1, 0, str, str_help, str_val, cat,
+		IntSettingDesc(save, flags, startup, def ? 1 : 0, 0, 1, 0, str, str_help, str_val, cat,
 			pre_check, post_callback) {}
+
+	static std::optional<bool> ParseSingleValue(const char *str);
 
 	bool IsBoolSetting() const override { return true; }
 	size_t ParseValue(const char *str) const override;
@@ -205,8 +250,8 @@ struct BoolSettingDesc : IntSettingDesc {
 struct OneOfManySettingDesc : IntSettingDesc {
 	typedef size_t OnConvert(const char *value); ///< callback prototype for conversion error
 
-	OneOfManySettingDesc(const SaveLoad &save, SettingFlag flags, bool startup, int32 def,
-			int32 max, StringID str, StringID str_help, StringID str_val, SettingCategory cat,
+	OneOfManySettingDesc(const SaveLoad &save, SettingFlag flags, bool startup, int32_t def,
+			int32_t max, StringID str, StringID str_help, StringID str_val, SettingCategory cat,
 			PreChangeCheck pre_check, PostChangeCallback post_callback,
 			std::initializer_list<const char *> many, OnConvert *many_cnvt) :
 		IntSettingDesc(save, flags, startup, def, 0, max, 0, str, str_help, str_val, cat,
@@ -228,7 +273,7 @@ struct OneOfManySettingDesc : IntSettingDesc {
 /** Many of many setting. */
 struct ManyOfManySettingDesc : OneOfManySettingDesc {
 	ManyOfManySettingDesc(const SaveLoad &save, SettingFlag flags, bool startup,
-		int32 def, StringID str, StringID str_help, StringID str_val, SettingCategory cat,
+		int32_t def, StringID str, StringID str_help, StringID str_val, SettingCategory cat,
 		PreChangeCheck pre_check, PostChangeCallback post_callback,
 		std::initializer_list<const char *> many, OnConvert *many_cnvt) :
 		OneOfManySettingDesc(save, flags, startup, def, (1 << many.size()) - 1, str, str_help,
@@ -256,12 +301,12 @@ struct StringSettingDesc : SettingDesc {
 	typedef void PostChangeCallback(const std::string &value);
 
 	StringSettingDesc(const SaveLoad &save, SettingFlag flags, bool startup, const char *def,
-			uint32 max_length, PreChangeCheck pre_check, PostChangeCallback post_callback) :
+			uint32_t max_length, PreChangeCheck pre_check, PostChangeCallback post_callback) :
 		SettingDesc(save, flags, startup), def(def == nullptr ? "" : def), max_length(max_length),
 			pre_check(pre_check), post_callback(post_callback) {}
 
 	std::string def;                   ///< Default value given when none is present
-	uint32 max_length;                 ///< Maximum length of the string, 0 means no maximum length
+	uint32_t max_length;                 ///< Maximum length of the string, 0 means no maximum length
 	PreChangeCheck *pre_check;         ///< Callback to check for the validity of the setting.
 	PostChangeCallback *post_callback; ///< Callback when the setting has been changed.
 
@@ -271,6 +316,7 @@ struct StringSettingDesc : SettingDesc {
 	std::string FormatValue(const void *object) const override;
 	void ParseValue(const IniItem *item, void *object) const override;
 	bool IsSameValue(const IniItem *item, void *object) const override;
+	bool IsDefaultValue(void *object) const override;
 	const std::string &Read(const void *object) const;
 
 private:
@@ -288,6 +334,7 @@ struct ListSettingDesc : SettingDesc {
 	std::string FormatValue(const void *object) const override;
 	void ParseValue(const IniItem *item, void *object) const override;
 	bool IsSameValue(const IniItem *item, void *object) const override;
+	bool IsDefaultValue(void *object) const override;
 };
 
 /** Placeholder for settings that have been removed, but might still linger in the savegame. */
@@ -295,9 +342,10 @@ struct NullSettingDesc : SettingDesc {
 	NullSettingDesc(const SaveLoad &save) :
 		SettingDesc(save, SF_NOT_IN_CONFIG, false) {}
 
-	std::string FormatValue(const void *object) const override { NOT_REACHED(); }
-	void ParseValue(const IniItem *item, void *object) const override { NOT_REACHED(); }
-	bool IsSameValue(const IniItem *item, void *object) const override { NOT_REACHED(); }
+	std::string FormatValue(const void *) const override { NOT_REACHED(); }
+	void ParseValue(const IniItem *, void *) const override { NOT_REACHED(); }
+	bool IsSameValue(const IniItem *, void *) const override { NOT_REACHED(); }
+	bool IsDefaultValue(void *) const override { NOT_REACHED(); }
 };
 
 typedef std::variant<IntSettingDesc, BoolSettingDesc, OneOfManySettingDesc, ManyOfManySettingDesc, StringSettingDesc, ListSettingDesc, NullSettingDesc> SettingVariant;
@@ -316,7 +364,7 @@ typedef span<const SettingVariant> SettingTable;
 
 const SettingDesc *GetSettingFromName(const std::string_view name);
 void GetSaveLoadFromSettingTable(SettingTable settings, std::vector<SaveLoad> &saveloads);
-bool SetSettingValue(const IntSettingDesc *sd, int32 value, bool force_newgame = false);
+bool SetSettingValue(const IntSettingDesc *sd, int32_t value, bool force_newgame = false);
 bool SetSettingValue(const StringSettingDesc *sd, const std::string value, bool force_newgame = false);
 
 #endif /* SETTINGS_INTERNAL_H */

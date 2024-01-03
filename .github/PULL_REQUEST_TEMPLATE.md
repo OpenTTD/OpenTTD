@@ -42,7 +42,7 @@ Some things are not automated, and forgotten often. This list is a reminder for 
 * This PR touches english.txt or translations? Check the [guidelines](https://github.com/OpenTTD/OpenTTD/blob/master/docs/eints.md)
 * This PR affects the save game format? (label 'savegame upgrade')
 * This PR affects the GS/AI API? (label 'needs review: Script API')
-    * ai_changelog.hpp, gs_changelog.hpp need updating.
+    * ai_changelog.hpp, game_changelog.hpp need updating.
     * The compatibility wrappers (compat_*.nut) need updating.
 * This PR affects the NewGRF API? (label 'needs review: NewGRF')
     * newgrf_debug_data.h may need updating.

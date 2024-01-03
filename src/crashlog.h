@@ -10,6 +10,8 @@
 #ifndef CRASHLOG_H
 #define CRASHLOG_H
 
+#include "3rdparty/nlohmann/json.hpp"
+
 /**
  * Helper class for creating crash logs.
  */
@@ -17,82 +19,56 @@ class CrashLog {
 private:
 	/** Error message coming from #FatalError(format, ...). */
 	static std::string message;
+
+	/**
+	 * Convert system crash reason to JSON.
+	 *
+	 * @param survey The JSON object.
+	 */
+	virtual void SurveyCrash(nlohmann::json &survey) const = 0;
+
+	/**
+	 * Convert stacktrace to JSON.
+	 *
+	 * @param survey The JSON object.
+	 */
+	virtual void SurveyStacktrace(nlohmann::json &survey) const = 0;
+
+	/**
+	 * Execute the func() and return its value. If any exception / signal / crash happens,
+	 * catch it and return false. This function should, in theory, never not return, even
+	 * in the worst conditions.
+	 *
+	 * @param section_name The name of the section to be executed. Printed when a crash happens.
+	 * @param func The function to call.
+	 * @return true iff the function returned true.
+	 */
+	virtual bool TryExecute(std::string_view section_name, std::function<bool()> &&func) = 0;
+
 protected:
-	/**
-	 * Writes OS' version to the buffer.
-	 * @param output_iterator Iterator to write the output to.
-	 */
-	virtual void LogOSVersion(std::back_insert_iterator<std::string> &output_iterator) const = 0;
-
-	/**
-	 * Writes compiler (and its version, if available) to the buffer.
-	 * @param output_iterator Iterator to write the output to.
-	 */
-	virtual void LogCompiler(std::back_insert_iterator<std::string> &output_iterator) const;
-
-	/**
-	 * Writes actually encountered error to the buffer.
-	 * @param output_iterator Iterator to write the output to.
-	 * @param message Message passed to use for errors.
-	 */
-	virtual void LogError(std::back_insert_iterator<std::string> &output_iterator, const std::string_view message) const = 0;
-
-	/**
-	 * Writes the stack trace to the buffer, if there is information about it
-	 * available.
-	 * @param output_iterator Iterator to write the output to.
-	 */
-	virtual void LogStacktrace(std::back_insert_iterator<std::string> &output_iterator) const = 0;
-
-	/**
-	 * Writes information about the data in the registers, if there is
-	 * information about it available.
-	 * @param output_iterator Iterator to write the output to.
-	 */
-	virtual void LogRegisters(std::back_insert_iterator<std::string> &output_iterator) const;
-
-	/**
-	 * Writes the dynamically linked libraries/modules to the buffer, if there
-	 * is information about it available.
-	 * @param output_iterator Iterator to write the output to.
-	 */
-	virtual void LogModules(std::back_insert_iterator<std::string> &output_iterator) const;
-
-
-	void LogOpenTTDVersion(std::back_insert_iterator<std::string> &output_iterator) const;
-	void LogConfiguration(std::back_insert_iterator<std::string> &output_iterator) const;
-	void LogLibraries(std::back_insert_iterator<std::string> &output_iterator) const;
-	void LogGamelog(std::back_insert_iterator<std::string> &output_iterator) const;
-	void LogRecentNews(std::back_insert_iterator<std::string> &output_iterator) const;
-
 	std::string CreateFileName(const char *ext, bool with_dir = true) const;
 
 public:
 	/** Stub destructor to silence some compilers. */
 	virtual ~CrashLog() = default;
 
-	std::string crashlog;
+	nlohmann::json survey;
 	std::string crashlog_filename;
 	std::string crashdump_filename;
 	std::string savegame_filename;
 	std::string screenshot_filename;
 
-	void FillCrashLog(std::back_insert_iterator<std::string> &output_iterator) const;
-	bool WriteCrashLog();
+	void FillCrashLog();
+	void PrintCrashLog() const;
 
-	/**
-	 * Write the (crash) dump to a file.
-	 * @note Sets \c crashdump_filename when there is a successful return.
-	 * @return if less than 0, error. If 0 no dump is made, otherwise the dump
-	 *         was successful (not all OSes support dumping files).
-	 */
-	virtual int WriteCrashDump();
+	bool WriteCrashLog();
+	virtual bool WriteCrashDump();
 	bool WriteSavegame();
 	bool WriteScreenshot();
 
 	void SendSurvey() const;
 
-	bool MakeCrashLog();
+	void MakeCrashLog();
 
 	/**
 	 * Initialiser for crash logs; do the appropriate things so crashes are

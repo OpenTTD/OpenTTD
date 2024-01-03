@@ -11,7 +11,7 @@
 #define WIDGETS_SMALLMAP_WIDGET_H
 
 /** Widgets of the #SmallMapWindow class. */
-enum SmallMapWidgets {
+enum SmallMapWidgets : WidgetID {
 	WID_SM_CAPTION,        ///< Caption of the window.
 	WID_SM_MAP_BORDER,     ///< Border around the smallmap.
 	WID_SM_MAP,            ///< Panel containing the smallmap.

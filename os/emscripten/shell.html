@@ -75,7 +75,6 @@
       }
       #message {
         color: #101010;
-        height: 54px;
         padding: 4px 4px;
       }
 
@@ -144,6 +143,8 @@
         })(),
 
         setStatus: function(text) {
+          if (document.getElementById("canvas").style.display == "none") return;
+
           var m = text.match(/^([^(]+)\((\d+(\.\d+)?)\/(\d+)\)$/);
 
           if (m) {
@@ -169,6 +170,27 @@
 
           document.getElementById("title").innerHTML = "(" + doing + " / " + total + ") Loading ...";
           document.getElementById("message").innerHTML = "Preparing game ...";
+        },
+
+        onBootstrap: function(current, total) {
+          document.getElementById("canvas").style.display = "none";
+
+          document.getElementById("title").innerHTML = "Missing base graphics";
+          document.getElementById("message").innerHTML = "OpenTTD is downloading base graphics.<br/><br/>" + current + " / " + total + " bytes downloaded.";
+        },
+
+        onBootstrapFailed: function(current, total) {
+          document.getElementById("canvas").style.display = "none";
+
+          document.getElementById("title").innerHTML = "Missing base graphics";
+          document.getElementById("message").innerHTML = "Failed to download base graphics.<br/>The game cannot start without base graphics.<br/><br/>Please check your Internet connection and/or the console log.<br/>Reload your browser to try again.";
+        },
+
+        onBootstrapReload: function() {
+          document.getElementById("canvas").style.display = "none";
+
+          document.getElementById("title").innerHTML = "Missing base graphics";
+          document.getElementById("message").innerHTML = "Downloading base graphics done.<br/><br/>Your browser will reload to start the game.";
         },
 
         onExit: function() {

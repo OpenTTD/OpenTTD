@@ -10,12 +10,10 @@
 #ifndef DEPOT_TYPE_H
 #define DEPOT_TYPE_H
 
-#include "station_type.h"
-
-typedef uint16 DepotID; ///< Type for the unique identifier of depots.
+typedef uint16_t DepotID; ///< Type for the unique identifier of depots.
 struct Depot;
 
-static const DepotID INVALID_DEPOT = (DepotID)INVALID_STATION;
+static const DepotID INVALID_DEPOT = UINT16_MAX;
 
 static const uint MAX_LENGTH_DEPOT_NAME_CHARS = 32; ///< The maximum length of a depot name in characters including '\0'
 

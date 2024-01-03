@@ -50,5 +50,5 @@ static NetworkClientInfo *FindClientInfo(ScriptClient::ClientID client)
 {
 	NetworkClientInfo *ci = FindClientInfo(client);
 	if (ci == nullptr) return ScriptDate::DATE_INVALID;
-	return (ScriptDate::Date)ci->join_date;
+	return (ScriptDate::Date)ci->join_date.base();
 }

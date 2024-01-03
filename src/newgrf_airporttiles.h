@@ -37,27 +37,29 @@ struct AirportTileScopeResolver : public ScopeResolver {
 		this->airport_id = st->airport.type;
 	}
 
-	uint32 GetRandomBits() const override;
-	uint32 GetVariable(byte variable, uint32 parameter, bool *available) const override;
+	uint32_t GetRandomBits() const override;
+	uint32_t GetVariable(byte variable, [[maybe_unused]] uint32_t parameter, bool *available) const override;
 };
 
 /** Resolver for tiles of an airport. */
 struct AirportTileResolverObject : public ResolverObject {
 	AirportTileScopeResolver tiles_scope; ///< Scope resolver for the tiles.
+	AirportScopeResolver airport_scope;   ///< Scope resolver for the airport owning the tile.
 
 	AirportTileResolverObject(const AirportTileSpec *ats, TileIndex tile, Station *st,
-			CallbackID callback = CBID_NO_CALLBACK, uint32 callback_param1 = 0, uint32 callback_param2 = 0);
+			CallbackID callback = CBID_NO_CALLBACK, uint32_t callback_param1 = 0, uint32_t callback_param2 = 0);
 
 	ScopeResolver *GetScope(VarSpriteGroupScope scope = VSG_SCOPE_SELF, byte relative = 0) override
 	{
 		switch (scope) {
 			case VSG_SCOPE_SELF: return &tiles_scope;
+			case VSG_SCOPE_PARENT: return &airport_scope;
 			default: return ResolverObject::GetScope(scope, relative);
 		}
 	}
 
 	GrfSpecFeature GetFeature() const override;
-	uint32 GetDebugID() const override;
+	uint32_t GetDebugID() const override;
 };
 
 /**
@@ -66,8 +68,8 @@ struct AirportTileResolverObject : public ResolverObject {
 struct AirportTileSpec {
 	AnimationInfo animation;              ///< Information about the animation.
 	StringID name;                        ///< Tile Subname string, land information on this tile will give you "AirportName (TileSubname)"
-	uint8 callback_mask;                  ///< Bitmask telling which grf callback is set
-	uint8 animation_special_flags;        ///< Extra flags to influence the animation
+	uint8_t callback_mask;                  ///< Bitmask telling which grf callback is set
+	uint8_t animation_special_flags;        ///< Extra flags to influence the animation
 	bool enabled;                         ///< entity still available (by default true). newgrf can disable it, though
 	GRFFileProps grf_prop;                ///< properties related the the grf file
 
@@ -85,6 +87,6 @@ private:
 void AnimateAirportTile(TileIndex tile);
 void AirportTileAnimationTrigger(Station *st, TileIndex tile, AirpAnimationTrigger trigger, CargoID cargo_type = CT_INVALID);
 void AirportAnimationTrigger(Station *st, AirpAnimationTrigger trigger, CargoID cargo_type = CT_INVALID);
-bool DrawNewAirportTile(TileInfo *ti, Station *st, StationGfx gfx, const AirportTileSpec *airts);
+bool DrawNewAirportTile(TileInfo *ti, Station *st, const AirportTileSpec *airts);
 
 #endif /* NEWGRF_AIRPORTTILES_H */

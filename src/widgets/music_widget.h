@@ -11,7 +11,7 @@
 #define WIDGETS_MUSIC_WIDGET_H
 
 /** Widgets of the #MusicTrackSelectionWindow class. */
-enum MusicTrackSelectionWidgets {
+enum MusicTrackSelectionWidgets : WidgetID {
 	WID_MTS_CAPTION,    ///< Window caption.
 	WID_MTS_LIST_LEFT,  ///< Left button.
 	WID_MTS_PLAYLIST,   ///< Playlist.
@@ -27,7 +27,7 @@ enum MusicTrackSelectionWidgets {
 };
 
 /** Widgets of the #MusicWindow class. */
-enum MusicWidgets {
+enum MusicWidgets : WidgetID {
 	WID_M_PREV,        ///< Previous button.
 	WID_M_NEXT,        ///< Next button.
 	WID_M_STOP,        ///< Stop button.

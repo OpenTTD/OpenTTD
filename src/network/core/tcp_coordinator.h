@@ -15,7 +15,7 @@
 #include "os_abstraction.h"
 #include "tcp.h"
 #include "packet.h"
-#include "game_info.h"
+#include "network_game_info.h"
 
 /**
  * Enum with all types of TCP Game Coordinator packets. The order MUST not be changed.
@@ -77,7 +77,7 @@ protected:
 	 * permanent error causing the connection to be dropped, or in response
 	 * to a request that is invalid.
 	 *
-	 *  uint8   Type of error (see NetworkCoordinatorErrorType).
+	 *  uint8_t   Type of error (see NetworkCoordinatorErrorType).
 	 *  string  Details of the error.
 	 *
 	 * @param p The packet that was just received.
@@ -89,9 +89,9 @@ protected:
 	 * Server is starting a multiplayer game and wants to let the
 	 * Game Coordinator know.
 	 *
-	 *  uint8   Game Coordinator protocol version.
-	 *  uint8   Type of game (see ServerGameType).
-	 *  uint16  Local port of the server.
+	 *  uint8_t   Game Coordinator protocol version.
+	 *  uint8_t   Type of game (see ServerGameType).
+	 *  uint16_t  Local port of the server.
 	 *  string  Invite code the server wants to use (can be empty; coordinator will assign a new invite code).
 	 *  string  Secret that belongs to the invite code (empty if invite code is empty).
 	 *
@@ -105,7 +105,7 @@ protected:
 	 *
 	 *  string  Invite code that can be used to join this server.
 	 *  string  Secret that belongs to the invite code (only needed if reusing the invite code on next SERVER_REGISTER).
-	 *  uint8   Type of connection was detected (see ConnectionType).
+	 *  uint8_t   Type of connection was detected (see ConnectionType).
 	 *
 	 * @param p The packet that was just received.
 	 * @return True upon success, otherwise false.
@@ -115,7 +115,7 @@ protected:
 	/**
 	 * Send an update of the current state of the server to the Game Coordinator.
 	 *
-	 *  uint8   Game Coordinator protocol version.
+	 *  uint8_t   Game Coordinator protocol version.
 	 *  Serialized NetworkGameInfo. See game_info.hpp for details.
 	 *
 	 * @param p The packet that was just received.
@@ -126,10 +126,10 @@ protected:
 	/**
 	 * Client requests a list of all public servers.
 	 *
-	 *  uint8   Game Coordinator protocol version.
-	 *  uint8   Game-info version used by this client.
+	 *  uint8_t   Game Coordinator protocol version.
+	 *  uint8_t   Game-info version used by this client.
 	 *  string  Revision of the client.
-	 *  uint32  (Game Coordinator protocol >= 4) Cursor as received from GC_NEWGRF_LOOKUP, or zero.
+	 *  uint32_t  (Game Coordinator protocol >= 4) Cursor as received from GC_NEWGRF_LOOKUP, or zero.
 	 *
 	 * @param p The packet that was just received.
 	 * @return True upon success, otherwise false.
@@ -141,7 +141,7 @@ protected:
 	 * of these packets are received after a request till all servers are
 	 * sent over. Last packet will have server count of 0.
 	 *
-	 *  uint16  Amount of public servers in this packet.
+	 *  uint16_t  Amount of public servers in this packet.
 	 *  For each server:
 	 *    string  Connection string for this server.
 	 *    Serialized NetworkGameInfo. See game_info.hpp for details.
@@ -154,7 +154,7 @@ protected:
 	/**
 	 * Client wants to connect to a Server.
 	 *
-	 *  uint8   Game Coordinator protocol version.
+	 *  uint8_t   Game Coordinator protocol version.
 	 *  string  Invite code of the Server to join.
 	 *
 	 * @param p The packet that was just received.
@@ -177,9 +177,9 @@ protected:
 	/**
 	 * Client or Server failed to connect to the remote side.
 	 *
-	 *  uint8   Game Coordinator protocol version.
+	 *  uint8_t   Game Coordinator protocol version.
 	 *  string  Token to track the current connect request.
-	 *  uint8   Tracking number to track current connect request.
+	 *  uint8_t   Tracking number to track current connect request.
 	 *
 	 * @param p The packet that was just received.
 	 * @return True upon success, otherwise false.
@@ -202,7 +202,7 @@ protected:
 	 * Client informs the Game Coordinator the connection with the Server is
 	 * established. The Client will disconnect from the Game Coordinator next.
 	 *
-	 *  uint8   Game Coordinator protocol version.
+	 *  uint8_t   Game Coordinator protocol version.
 	 *  string  Token to track the current connect request.
 	 *
 	 * @param p The packet that was just received.
@@ -215,9 +215,9 @@ protected:
 	 * the indicated peer, which is a Server.
 	 *
 	 *  string  Token to track the current connect request.
-	 *  uint8   Tracking number to track current connect request.
+	 *  uint8_t   Tracking number to track current connect request.
 	 *  string  Hostname of the peer.
-	 *  uint16  Port of the peer.
+	 *  uint16_t  Port of the peer.
 	 *
 	 * @param p The packet that was just received.
 	 * @return True upon success, otherwise false.
@@ -242,9 +242,9 @@ protected:
 	/**
 	 * Client/server informs the Game Coordinator the result of a STUN request.
 	 *
-	 *  uint8   Game Coordinator protocol version.
+	 *  uint8_t   Game Coordinator protocol version.
 	 *  string  Token to track the current connect request.
-	 *  uint8   Interface number, as given during STUN request.
+	 *  uint8_t   Interface number, as given during STUN request.
 	 *  bool    Whether the STUN connection was successful.
 	 *
 	 * @param p The packet that was just received.
@@ -258,10 +258,10 @@ protected:
 	 * the local address as used with the STUN request.
 	 *
 	 *  string  Token to track the current connect request.
-	 *  uint8   Tracking number to track current connect request.
-	 *  uint8   Interface number, as given during STUN request.
+	 *  uint8_t   Tracking number to track current connect request.
+	 *  uint8_t   Interface number, as given during STUN request.
 	 *  string  Host of the peer.
-	 *  uint16  Port of the peer.
+	 *  uint16_t  Port of the peer.
 	 *
 	 * @param p The packet that was just received.
 	 * @return True upon success, otherwise false.
@@ -273,10 +273,10 @@ protected:
 	 * as used by the NewGRF deserialization in GC_LISTING.
 	 * This packet is sent after a CLIENT_LISTING request, but before GC_LISTING.
 	 *
-	 *  uint32   Lookup table cursor.
-	 *  uint16   Number of NewGRFs in the packet, with for each of the NewGRFs:
-	 *      uint32   Lookup table index for the NewGRF.
-	 *      uint32   Unique NewGRF ID.
+	 *  uint32_t   Lookup table cursor.
+	 *  uint16_t   Number of NewGRFs in the packet, with for each of the NewGRFs:
+	 *      uint32_t   Lookup table index for the NewGRF.
+	 *      uint32_t   Unique NewGRF ID.
 	 *      byte[16] MD5 checksum of the NewGRF
 	 *      string   Name of the NewGRF.
 	 *
@@ -296,7 +296,7 @@ protected:
 	 * peer, which is a TURN server.
 	 *
 	 *  string  Token to track the current connect request.
-	 *  uint8   Tracking number to track current connect request.
+	 *  uint8_t   Tracking number to track current connect request.
 	 *  string  Ticket to hand over to the TURN server.
 	 *  string  Connection string of the TURN server.
 	 *

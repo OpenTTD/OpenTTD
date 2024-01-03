@@ -150,7 +150,7 @@
  * @param end The part that will be build second.
  * @return True if and only if the road bits can be build.
  */
-static bool CheckAutoExpandedRoadBits(const Array<> &existing, int32 start, int32 end)
+static bool CheckAutoExpandedRoadBits(const Array<> &existing, int32_t start, int32_t end)
 {
 	return (start + end == 0) && (existing.empty() || existing[0] == start || existing[0] == end);
 }
@@ -165,7 +165,7 @@ static bool CheckAutoExpandedRoadBits(const Array<> &existing, int32 start, int3
  *         they are build or 2 when building the first part automatically
  *         builds the second part.
  */
-static int32 LookupWithoutBuildOnSlopes(::Slope slope, const Array<> &existing, int32 start, int32 end)
+static int32_t LookupWithoutBuildOnSlopes(::Slope slope, const Array<> &existing, int32_t start, int32_t end)
 {
 	switch (slope) {
 		/* Flat slopes can always be build. */
@@ -192,7 +192,7 @@ static int32 LookupWithoutBuildOnSlopes(::Slope slope, const Array<> &existing, 
  * @param neighbour The neighbour.
  * @return The rotate neighbour data.
  */
-static int32 RotateNeighbour(int32 neighbour)
+static int32_t RotateNeighbour(int32_t neighbour)
 {
 	switch (neighbour) {
 		case -2: return -1;
@@ -208,7 +208,7 @@ static int32 RotateNeighbour(int32 neighbour)
  * @param neighbour The neighbour.
  * @return The bits representing the direction.
  */
-static RoadBits NeighbourToRoadBits(int32 neighbour)
+static RoadBits NeighbourToRoadBits(int32_t neighbour)
 {
 	switch (neighbour) {
 		case -2: return ROAD_NW;
@@ -229,7 +229,7 @@ static RoadBits NeighbourToRoadBits(int32 neighbour)
  *         they are build or 2 when building the first part automatically
  *         builds the second part.
  */
-static int32 LookupWithBuildOnSlopes(::Slope slope, const Array<> &existing, int32 start, int32 end)
+static int32_t LookupWithBuildOnSlopes(::Slope slope, const Array<> &existing, int32_t start, int32_t end)
 {
 	/* Steep slopes behave the same as slopes with one corner raised. */
 	if (IsSteepSlope(slope)) {
@@ -287,7 +287,7 @@ static int32 LookupWithBuildOnSlopes(::Slope slope, const Array<> &existing, int
 	RoadBits start_roadbits    = NeighbourToRoadBits(start);
 	RoadBits new_roadbits      = start_roadbits | NeighbourToRoadBits(end);
 	RoadBits existing_roadbits = ROAD_NONE;
-	for (int32 neighbour : existing) {
+	for (int32_t neighbour : existing) {
 		for (int j = 0; j < base_rotate; j++) {
 			neighbour = RotateNeighbour(neighbour);
 		}
@@ -365,7 +365,7 @@ static int32 LookupWithBuildOnSlopes(::Slope slope, const Array<> &existing, int
  * @param tile The tile to normalise.
  * @return True if and only if the tile offset is valid.
  */
-static bool NormaliseTileOffset(int32 *tile)
+static bool NormaliseTileOffset(int32_t *tile)
 {
 		if (*tile == 1 || *tile == -1) return true;
 		if (*tile == ::TileDiffXY(0, -1)) {
@@ -382,8 +382,8 @@ static bool NormaliseTileOffset(int32 *tile)
 /* static */ SQInteger ScriptRoad::CanBuildConnectedRoadParts(ScriptTile::Slope slope_, Array<> &&existing, TileIndex start_, TileIndex end_)
 {
 	::Slope slope = (::Slope)slope_;
-	int32 start = start_;
-	int32 end = end_;
+	int32_t start = start_.base();
+	int32_t end = end_.base();
 
 	/* The start tile and end tile cannot be the same tile either. */
 	if (start == end) return -1;
@@ -457,7 +457,7 @@ static bool NeighbourHasReachableRoad(::RoadType rt, TileIndex start_tile, DiagD
 	if (!IsRoadTypeAvailable(GetCurrentRoadType())) return -1;
 
 	::RoadType rt = (::RoadType)GetCurrentRoadType();
-	int32 neighbour = 0;
+	int32_t neighbour = 0;
 
 	if (TileX(tile) > 0 && NeighbourHasReachableRoad(rt, tile, DIAGDIR_NE)) neighbour++;
 	if (NeighbourHasReachableRoad(rt, tile, DIAGDIR_SE)) neighbour++;

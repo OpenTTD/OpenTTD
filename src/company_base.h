@@ -23,28 +23,28 @@ struct CompanyEconomyEntry {
 	Money income;               ///< The amount of income.
 	Money expenses;             ///< The amount of expenses.
 	CargoArray delivered_cargo{}; ///< The amount of delivered cargo.
-	int32 performance_history;  ///< Company score (scale 0-1000)
+	int32_t performance_history;  ///< Company score (scale 0-1000)
 	Money company_value;        ///< The value of the company.
 };
 
 struct CompanyInfrastructure {
-	uint32 road[ROADTYPE_END]; ///< Count of company owned track bits for each road type.
-	uint32 signal;             ///< Count of company owned signals.
-	uint32 rail[RAILTYPE_END]; ///< Count of company owned track bits for each rail type.
-	uint32 water;              ///< Count of company owned track bits for canals.
-	uint32 station;            ///< Count of company owned station tiles.
-	uint32 airport;            ///< Count of company owned airports.
+	uint32_t road[ROADTYPE_END]; ///< Count of company owned track bits for each road type.
+	uint32_t signal;             ///< Count of company owned signals.
+	uint32_t rail[RAILTYPE_END]; ///< Count of company owned track bits for each rail type.
+	uint32_t water;              ///< Count of company owned track bits for canals.
+	uint32_t station;            ///< Count of company owned station tiles.
+	uint32_t airport;            ///< Count of company owned airports.
 
 	/** Get total sum of all owned track bits. */
-	uint32 GetRailTotal() const
+	uint32_t GetRailTotal() const
 	{
-		uint32 total = 0;
+		uint32_t total = 0;
 		for (RailType rt =  RAILTYPE_BEGIN; rt < RAILTYPE_END; rt++) total += this->rail[rt];
 		return total;
 	}
 
-	uint32 GetRoadTotal() const;
-	uint32 GetTramTotal() const;
+	uint32_t GetRoadTotal() const;
+	uint32_t GetTramTotal() const;
 };
 
 typedef Pool<Company, CompanyID, 1, MAX_COMPANIES> CompanyPool;
@@ -53,12 +53,12 @@ extern CompanyPool _company_pool;
 
 /** Statically loadable part of Company pool item */
 struct CompanyProperties {
-	uint32 name_2;                   ///< Parameter of #name_1.
+	uint32_t name_2;                   ///< Parameter of #name_1.
 	StringID name_1;                 ///< Name of the company if the user did not change it.
 	std::string name;                ///< Name of the company if the user changed it.
 
 	StringID president_name_1;       ///< Name of the president if the user did not change it.
-	uint32 president_name_2;         ///< Parameter of #president_name_1
+	uint32_t president_name_2;         ///< Parameter of #president_name_1
 	std::string president_name;      ///< Name of the president if the user changed it.
 
 	CompanyManagerFace face;         ///< Face description of the president.
@@ -78,13 +78,13 @@ struct CompanyProperties {
 
 	byte months_of_bankruptcy;       ///< Number of months that the company is unable to pay its debts
 	CompanyMask bankrupt_asked;      ///< which companies were asked about buying it?
-	int16 bankrupt_timeout;          ///< If bigger than \c 0, amount of time to wait for an answer on an offer to buy this company.
+	int16_t bankrupt_timeout;          ///< If bigger than \c 0, amount of time to wait for an answer on an offer to buy this company.
 	Money bankrupt_value;
 
-	uint32 terraform_limit;          ///< Amount of tileheights we can (still) terraform (times 65536).
-	uint32 clear_limit;              ///< Amount of tiles we can (still) clear (times 65536).
-	uint32 tree_limit;               ///< Amount of trees we can (still) plant (times 65536).
-	uint32 build_object_limit;       ///< Amount of tiles we can (still) build objects on (times 65536). Also applies to buying land.
+	uint32_t terraform_limit;          ///< Amount of tileheights we can (still) terraform (times 65536).
+	uint32_t clear_limit;              ///< Amount of tiles we can (still) clear (times 65536).
+	uint32_t tree_limit;               ///< Amount of trees we can (still) plant (times 65536).
+	uint32_t build_object_limit;       ///< Amount of tiles we can (still) build objects on (times 65536). Also applies to buying land.
 
 	/**
 	 * If \c true, the company is (also) controlled by the computer (a NoAI program).
@@ -92,7 +92,7 @@ struct CompanyProperties {
 	 */
 	bool is_ai;
 
-	Money yearly_expenses[3][EXPENSES_END];                ///< Expenses of the company for the last three years, in every #ExpensesType category.
+	std::array<Expenses, 3> yearly_expenses{}; ///< Expenses of the company for the last three years.
 	CompanyEconomyEntry cur_economy;                       ///< Economic data of the company of this quarter.
 	CompanyEconomyEntry old_economy[MAX_HISTORY_QUARTERS]; ///< Economic data of the company of the last #MAX_HISTORY_QUARTERS quarters.
 	byte num_valid_stat_ent;                               ///< Number of valid statistical entries in #old_economy.
@@ -112,7 +112,7 @@ struct CompanyProperties {
 };
 
 struct Company : CompanyProperties, CompanyPool::PoolItem<&_company_pool> {
-	Company(uint16 name_1 = 0, bool is_ai = false);
+	Company(uint16_t name_1 = 0, bool is_ai = false);
 	~Company();
 
 	RailTypes avail_railtypes;         ///< Rail types available to this company.

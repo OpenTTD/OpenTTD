@@ -253,7 +253,7 @@ public:
 	 *  returns the first/main.
 	 * @return The capacity of the engine.
 	 */
-	int32 GetCapacity();
+	int32_t GetCapacity();
 
 	/**
 	 * Get the maximum speed of the offered engine.
@@ -262,7 +262,7 @@ public:
 	 *       This is mph / 1.6, which is roughly km/h.
 	 *       To get km/h multiply this number by 1.00584.
 	 */
-	int32 GetMaxSpeed();
+	int32_t GetMaxSpeed();
 
 	/**
 	 * Get the new cost of the offered engine.
@@ -284,7 +284,7 @@ public:
 #ifdef DOXYGEN_API
 	ScriptVehicle::VehicleType GetVehicleType();
 #else
-	int32 GetVehicleType();
+	int32_t GetVehicleType();
 #endif /* DOXYGEN_API */
 
 	/**
@@ -910,27 +910,6 @@ public:
 
 private:
 	std::string json; ///< The JSON string.
-
-	/**
-	 * Read a table from a JSON string.
-	 * @param vm The VM used.
-	 * @param p The (part of the) JSON string reading.
-	 */
-	const char *ReadTable(HSQUIRRELVM vm, const char *p);
-
-	/**
-	 * Read a value from a JSON string.
-	 * @param vm The VM used.
-	 * @param p The (part of the) JSON string reading.
-	 */
-	const char *ReadValue(HSQUIRRELVM vm, const char *p);
-
-	/**
-	 * Read a string from a JSON string.
-	 * @param vm The VM used.
-	 * @param p The (part of the) JSON string reading.
-	 */
-	const char *ReadString(HSQUIRRELVM vm, const char *p);
 };
 
 /**
@@ -945,7 +924,7 @@ public:
 	 * @param number The windownumber that was clicked.
 	 * @param widget The widget in the window that was clicked.
 	 */
-	ScriptEventWindowWidgetClick(ScriptWindow::WindowClass window, uint32 number, uint8 widget) :
+	ScriptEventWindowWidgetClick(ScriptWindow::WindowClass window, uint32_t number, WidgetID widget) :
 		ScriptEvent(ET_WINDOW_WIDGET_CLICK),
 		window(window),
 		number(number),
@@ -970,18 +949,18 @@ public:
 	 * Get the number of the window that was clicked.
 	 * @return The clicked identifying number of the widget within the class.
 	 */
-	uint32 GetWindowNumber() { return this->number; }
+	uint32_t GetWindowNumber() { return this->number; }
 
 	/**
 	 * Get the number of the widget that was clicked.
 	 * @return The number of the clicked widget.
 	 */
-	uint8 GetWidgetNumber() { return this->widget; }
+	int GetWidgetNumber() { return this->widget; }
 
 private:
 	ScriptWindow::WindowClass window; ///< Window of the click.
-	uint32 number;                    ///< Number of the click.
-	uint8 widget;                     ///< Widget of the click.
+	uint32_t number;                  ///< Number of the click.
+	WidgetID widget;                       ///< Widget of the click.
 };
 
 /**
@@ -998,7 +977,7 @@ public:
 	 * @param company The company that is replying.
 	 * @param button The button the company pressed.
 	 */
-	ScriptEventGoalQuestionAnswer(uint16 uniqueid, ScriptCompany::CompanyID company, ScriptGoal::QuestionButton button) :
+	ScriptEventGoalQuestionAnswer(uint16_t uniqueid, ScriptCompany::CompanyID company, ScriptGoal::QuestionButton button) :
 		ScriptEvent(ET_GOAL_QUESTION_ANSWER),
 		uniqueid(uniqueid),
 		company(company),
@@ -1017,7 +996,7 @@ public:
 	 * Get the unique id of the question.
 	 * @return The unique id.
 	 */
-	uint16 GetUniqueID() { return this->uniqueid; }
+	uint16_t GetUniqueID() { return this->uniqueid; }
 
 	/**
 	 * Get the company that pressed a button.
@@ -1032,7 +1011,7 @@ public:
 	ScriptGoal::QuestionButton GetButton() { return this->button; }
 
 private:
-	uint16 uniqueid;                   ///< The uniqueid of the question.
+	uint16_t uniqueid;                   ///< The uniqueid of the question.
 	ScriptCompany::CompanyID company;  ///< The company given the answer.
 	ScriptGoal::QuestionButton button; ///< The button that was pressed.
 };

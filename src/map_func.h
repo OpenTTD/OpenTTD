@@ -32,7 +32,7 @@ private:
 	struct TileBase {
 		byte   type;   ///< The type (bits 4..7), bridges (2..3), rainforest/desert (0..1)
 		byte   height; ///< The height of the northern corner.
-		uint16 m2;     ///< Primarily used for indices to towns, industries and stations
+		uint16_t m2;     ///< Primarily used for indices to towns, industries and stations
 		byte   m1;     ///< Primarily used for ownership information
 		byte   m3;     ///< General purpose
 		byte   m4;     ///< General purpose
@@ -48,7 +48,7 @@ private:
 	struct TileExtended {
 		byte m6;   ///< General purpose
 		byte m7;   ///< Primarily used for newgrf support
-		uint16 m8; ///< General purpose
+		uint16_t m8; ///< General purpose
 	};
 
 	static TileBase *base_tiles;         ///< Pointer to the tile-array.
@@ -77,7 +77,7 @@ public:
 	/**
 	 * Implicit conversion to the uint for bounds checking.
 	 */
-	debug_inline constexpr operator uint() const { return tile; }
+	debug_inline constexpr operator uint() const { return tile.base(); }
 
 	/**
 	 * The type (bits 4..7), bridges (2..3), rainforest/desert (0..1)
@@ -88,7 +88,7 @@ public:
 	 */
 	debug_inline byte &type()
 	{
-		return base_tiles[tile].type;
+		return base_tiles[tile.base()].type;
 	}
 
 	/**
@@ -100,7 +100,7 @@ public:
 	 */
 	debug_inline byte &height()
 	{
-		return base_tiles[tile].height;
+		return base_tiles[tile.base()].height;
 	}
 
 	/**
@@ -112,7 +112,7 @@ public:
 	 */
 	debug_inline byte &m1()
 	{
-		return base_tiles[tile].m1;
+		return base_tiles[tile.base()].m1;
 	}
 
 	/**
@@ -120,11 +120,11 @@ public:
 	 *
 	 * Look at docs/landscape.html for the exact meaning of the data.
 	 * @param tile The tile to get the data for.
-	 * @return reference to the uint16 holding the data.
+	 * @return reference to the uint16_t holding the data.
 	 */
-	debug_inline uint16 &m2()
+	debug_inline uint16_t &m2()
 	{
-		return base_tiles[tile].m2;
+		return base_tiles[tile.base()].m2;
 	}
 
 	/**
@@ -136,7 +136,7 @@ public:
 	 */
 	debug_inline byte &m3()
 	{
-		return base_tiles[tile].m3;
+		return base_tiles[tile.base()].m3;
 	}
 
 	/**
@@ -148,7 +148,7 @@ public:
 	 */
 	debug_inline byte &m4()
 	{
-		return base_tiles[tile].m4;
+		return base_tiles[tile.base()].m4;
 	}
 
 	/**
@@ -160,7 +160,7 @@ public:
 	 */
 	debug_inline byte &m5()
 	{
-		return base_tiles[tile].m5;
+		return base_tiles[tile.base()].m5;
 	}
 
 	/**
@@ -172,7 +172,7 @@ public:
 	 */
 	debug_inline byte &m6()
 	{
-		return extended_tiles[tile].m6;
+		return extended_tiles[tile.base()].m6;
 	}
 
 	/**
@@ -184,7 +184,7 @@ public:
 	 */
 	debug_inline byte &m7()
 	{
-		return extended_tiles[tile].m7;
+		return extended_tiles[tile.base()].m7;
 	}
 
 	/**
@@ -192,11 +192,11 @@ public:
 	 *
 	 * Look at docs/landscape.html for the exact meaning of the data.
 	 * @param tile The tile to get the data for.
-	 * @return reference to the uint16 holding the data.
+	 * @return reference to the uint16_t holding the data.
 	 */
-	debug_inline uint16 &m8()
+	debug_inline uint16_t &m8()
 	{
-		return extended_tiles[tile].m8;
+		return extended_tiles[tile.base()].m8;
 	}
 };
 
@@ -314,9 +314,9 @@ public:
 	 * It does this by masking the 'high' bits of.
 	 * @param tile the tile to 'wrap'
 	 */
-	static inline TileIndex WrapToMap(uint tile)
+	static inline TileIndex WrapToMap(TileIndex tile)
 	{
-		return tile & Map::tile_mask;
+		return tile.base() & Map::tile_mask;
 	}
 
 	/**
@@ -373,7 +373,7 @@ public:
  *
  * @see TileDiffXY(int, int)
  */
-typedef int32 TileIndexDiff;
+typedef int32_t TileIndexDiff;
 
 /**
  * Returns the TileIndex of a coordinate.
@@ -426,7 +426,7 @@ debug_inline static TileIndex TileVirtXY(uint x, uint y)
  */
 debug_inline static uint TileX(TileIndex tile)
 {
-	return tile.value & Map::MaxX();
+	return tile.base() & Map::MaxX();
 }
 
 /**
@@ -436,7 +436,7 @@ debug_inline static uint TileX(TileIndex tile)
  */
 debug_inline static uint TileY(TileIndex tile)
 {
-	return tile.value >> Map::LogX();
+	return tile.base() >> Map::LogX();
 }
 
 /**
@@ -643,7 +643,7 @@ bool CircularTileSearch(TileIndex *tile, uint radius, uint w, uint h, TestTileOn
  * @param r the random 'seed'
  * @return a valid tile
  */
-static inline TileIndex RandomTileSeed(uint32 r)
+static inline TileIndex RandomTileSeed(uint32_t r)
 {
 	return Map::WrapToMap(r);
 }

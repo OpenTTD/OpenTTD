@@ -29,11 +29,11 @@ struct VehicleListIdentifier {
 	VehicleListType type; ///< The type of vehicle list.
 	VehicleType vtype;    ///< The vehicle type associated with this list.
 	CompanyID company;    ///< The company associated with this list.
-	uint32 index;         ///< A vehicle list type specific index.
+	uint32_t index;         ///< A vehicle list type specific index.
 
-	uint32 Pack() const;
-	bool UnpackIfValid(uint32 data);
-	static VehicleListIdentifier UnPack(uint32 data);
+	uint32_t Pack() const;
+	bool UnpackIfValid(uint32_t data);
+	static VehicleListIdentifier UnPack(uint32_t data);
 
 	bool Valid() const { return this->type < VLT_END; }
 

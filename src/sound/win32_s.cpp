@@ -40,7 +40,7 @@ static void PrepareHeader(WAVEHDR *hdr)
 	if (waveOutPrepareHeader(_waveout, hdr, sizeof(WAVEHDR)) != MMSYSERR_NOERROR) throw "waveOutPrepareHeader failed";
 }
 
-static DWORD WINAPI SoundThread(LPVOID arg)
+static DWORD WINAPI SoundThread(LPVOID)
 {
 	SetCurrentThreadName("ottd:win-sound");
 
@@ -70,7 +70,7 @@ const char *SoundDriver_Win32::Start(const StringList &parm)
 	wfex.nAvgBytesPerSec = wfex.nSamplesPerSec * wfex.nBlockAlign;
 
 	/* Limit buffer size to prevent overflows. */
-	_bufsize = GetDriverParamInt(parm, "bufsize", IsWindowsVistaOrGreater() ? 8192 : 4096);
+	_bufsize = GetDriverParamInt(parm, "bufsize", 8192);
 	_bufsize = std::min<int>(_bufsize, UINT16_MAX);
 
 	try {
@@ -98,8 +98,7 @@ void SoundDriver_Win32::Stop()
 
 	/* Stop the sound thread. */
 	_waveout = nullptr;
-	SetEvent(_event);
-	WaitForSingleObject(_thread, INFINITE);
+	SignalObjectAndWait(_event, _thread, INFINITE, FALSE);
 
 	/* Close the sound device. */
 	waveOutReset(waveout);

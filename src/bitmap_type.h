@@ -116,7 +116,7 @@ public:
 		if (!this->bitmap->HasTile(TileIndex(this->tile))) ++(*this);
 	}
 
-	inline TileIterator& operator ++()
+	inline TileIterator& operator ++() override
 	{
 		(*this).OrthogonalTileIterator::operator++();
 		while (this->tile != INVALID_TILE && !this->bitmap->HasTile(TileIndex(this->tile))) {
@@ -125,7 +125,7 @@ public:
 		return *this;
 	}
 
-	virtual std::unique_ptr<TileIterator> Clone() const
+	std::unique_ptr<TileIterator> Clone() const override
 	{
 		return std::make_unique<BitmapTileIterator>(*this);
 	}

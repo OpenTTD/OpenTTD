@@ -29,7 +29,7 @@ static bool NeedRailTypeConversion()
 {
 	for (uint i = 0; i < _railtype_list.size(); i++) {
 		if ((RailType)i < RAILTYPE_END) {
-			const RailtypeInfo *rti = GetRailTypeInfo((RailType)i);
+			const RailTypeInfo *rti = GetRailTypeInfo((RailType)i);
 			if (rti->label != _railtype_list[i]) return true;
 		} else {
 			if (_railtype_list[i] != 0) return true;
@@ -92,7 +92,7 @@ void ResetLabelMaps()
 
 /** Container for a label for SaveLoad system */
 struct LabelObject {
-	uint32 label;
+	uint32_t label;
 };
 
 static const SaveLoad _label_object_desc[] = {

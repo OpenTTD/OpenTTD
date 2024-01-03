@@ -136,8 +136,8 @@ protected:
 
 	/**
 	 * Register updates to be sent at certain frequencies (as announced in the PROTOCOL packet):
-	 * uint16  Update type (see #AdminUpdateType). Note integer type - see "Certain Packet Information" in docs/admin_network.md.
-	 * uint16  Update frequency (see #AdminUpdateFrequency), setting #ADMIN_FREQUENCY_POLL is always ignored.
+	 * uint16_t  Update type (see #AdminUpdateType). Note integer type - see "Certain Packet Information" in docs/admin_network.md.
+	 * uint16_t  Update frequency (see #AdminUpdateFrequency), setting #ADMIN_FREQUENCY_POLL is always ignored.
 	 * @param p The packet that was just received.
 	 * @return The state the network should have.
 	 */
@@ -145,8 +145,8 @@ protected:
 
 	/**
 	 * Poll the server for certain updates, an invalid poll (e.g. not existent id) gets silently dropped:
-	 * uint8   #AdminUpdateType the server should answer for, only if #AdminUpdateFrequency #ADMIN_FREQUENCY_POLL is advertised in the PROTOCOL packet. Note integer type - see "Certain Packet Information" in docs/admin_network.md.
-	 * uint32  ID relevant to the packet type, e.g.
+	 * uint8_t   #AdminUpdateType the server should answer for, only if #AdminUpdateFrequency #ADMIN_FREQUENCY_POLL is advertised in the PROTOCOL packet. Note integer type - see "Certain Packet Information" in docs/admin_network.md.
+	 * uint32_t  ID relevant to the packet type, e.g.
 	 *          - the client ID for #ADMIN_UPDATE_CLIENT_INFO. Use UINT32_MAX to show all clients.
 	 *          - the company ID for #ADMIN_UPDATE_COMPANY_INFO. Use UINT32_MAX to show all companies.
 	 * @param p The packet that was just received.
@@ -156,9 +156,9 @@ protected:
 
 	/**
 	 * Send chat as the server:
-	 * uint8   Action such as NETWORK_ACTION_CHAT_CLIENT (see #NetworkAction).
-	 * uint8   Destination type such as DESTTYPE_BROADCAST (see #DestType).
-	 * uint32  ID of the destination such as company or client id.
+	 * uint8_t   Action such as NETWORK_ACTION_CHAT_CLIENT (see #NetworkAction).
+	 * uint8_t   Destination type such as DESTTYPE_BROADCAST (see #DestType).
+	 * uint32_t  ID of the destination such as company or client id.
 	 * string  Message.
 	 * @param p The packet that was just received.
 	 * @return The state the network should have.
@@ -168,7 +168,7 @@ protected:
 	/**
 	 * Send chat from the external source:
 	 * string  Name of the source this message came from.
-	 * uint16  TextColour to use for the message.
+	 * uint16_t  TextColour to use for the message.
 	 * string  Name of the user who sent the messsage.
 	 * string  Message.
 	 * @param p The packet that was just received.
@@ -194,7 +194,7 @@ protected:
 
 	/**
 	 * Ping the server, requiring the server to reply with a pong packet.
-	 * uint32 Integer value to pass to the server, which is quoted in the reply.
+	 * uint32_t Integer value to pass to the server, which is quoted in the reply.
 	 * @param p The packet that was just received.
 	 * @return The state the network should have.
 	 */
@@ -216,7 +216,7 @@ protected:
 
 	/**
 	 * An error was caused by this admin connection (connection gets closed).
-	 * uint8  NetworkErrorCode the error caused.
+	 * uint8_t  NetworkErrorCode the error caused.
 	 * @param p The packet that was just received.
 	 * @return The state the network should have.
 	 */
@@ -224,10 +224,10 @@ protected:
 
 	/**
 	 * Inform a just joined admin about the protocol specifics:
-	 * uint8   Protocol version.
+	 * uint8_t   Protocol version.
 	 * bool    Further protocol data follows (repeats through all update packet types).
-	 * uint16  Update packet type.
-	 * uint16  Frequencies allowed for this update packet (bitwise).
+	 * uint16_t  Update packet type.
+	 * uint16_t  Frequencies allowed for this update packet (bitwise).
 	 * @param p The packet that was just received.
 	 * @return The state the network should have.
 	 */
@@ -239,11 +239,11 @@ protected:
 	 * string  OpenTTD version string.
 	 * bool    Server is dedicated.
 	 * string  Name of the Map.
-	 * uint32  Random seed of the Map.
-	 * uint8   Landscape of the Map.
-	 * uint32  Start date of the Map.
-	 * uint16  Map width.
-	 * uint16  Map height.
+	 * uint32_t  Random seed of the Map.
+	 * uint8_t   Landscape of the Map.
+	 * uint32_t  Start date of the Map.
+	 * uint16_t  Map width.
+	 * uint16_t  Map height.
 	 * @param p The packet that was just received.
 	 * @return The state the network should have.
 	 */
@@ -265,7 +265,7 @@ protected:
 
 	/**
 	 * Send the current date of the game:
-	 * uint32  Current game date.
+	 * uint32_t  Current game date.
 	 * @param p The packet that was just received.
 	 * @return The state the network should have.
 	 */
@@ -273,7 +273,7 @@ protected:
 
 	/**
 	 * Notification of a new client:
-	 * uint32  ID of the new client.
+	 * uint32_t  ID of the new client.
 	 * @param p The packet that was just received.
 	 * @return The state the network should have.
 	 */
@@ -281,12 +281,12 @@ protected:
 
 	/**
 	 * Client information of a specific client:
-	 * uint32  ID of the client.
+	 * uint32_t  ID of the client.
 	 * string  Network address of the client.
 	 * string  Name of the client.
-	 * uint8   Language of the client.
-	 * uint32  Date the client joined the game.
-	 * uint8   ID of the company the client is playing as (255 for spectators).
+	 * uint8_t   Language of the client.
+	 * uint32_t  Date the client joined the game.
+	 * uint8_t   ID of the company the client is playing as (255 for spectators).
 	 * @param p The packet that was just received.
 	 * @return The state the network should have.
 	 */
@@ -294,9 +294,9 @@ protected:
 
 	/**
 	 * Client update details on a specific client (e.g. after rename or move):
-	 * uint32  ID of the client.
+	 * uint32_t  ID of the client.
 	 * string  Name of the client.
-	 * uint8   ID of the company the client is playing as (255 for spectators).
+	 * uint8_t   ID of the company the client is playing as (255 for spectators).
 	 * @param p The packet that was just received.
 	 * @return The state the network should have.
 	 */
@@ -304,7 +304,7 @@ protected:
 
 	/**
 	 * Notification about a client leaving the game.
-	 * uint32  ID of the client that just left.
+	 * uint32_t  ID of the client that just left.
 	 * @param p The packet that was just received.
 	 * @return The state the network should have.
 	 */
@@ -312,8 +312,8 @@ protected:
 
 	/**
 	 * Notification about a client error (and thus the clients disconnection).
-	 * uint32  ID of the client that made the error.
-	 * uint8   Error the client made (see NetworkErrorCode).
+	 * uint32_t  ID of the client that made the error.
+	 * uint8_t   Error the client made (see NetworkErrorCode).
 	 * @param p The packet that was just received.
 	 * @return The state the network should have.
 	 */
@@ -321,7 +321,7 @@ protected:
 
 	/**
 	 * Notification of a new company:
-	 * uint8   ID of the new company.
+	 * uint8_t   ID of the new company.
 	 * @param p The packet that was just received.
 	 * @return The state the network should have.
 	 */
@@ -329,12 +329,12 @@ protected:
 
 	/**
 	 * Company information on a specific company:
-	 * uint8   ID of the company.
+	 * uint8_t   ID of the company.
 	 * string  Name of the company.
 	 * string  Name of the companies manager.
-	 * uint8   Main company colour.
+	 * uint8_t   Main company colour.
 	 * bool    Company is password protected.
-	 * uint32  Year the company was inaugurated.
+	 * uint32_t  Year the company was inaugurated.
 	 * bool    Company is an AI.
 	 * @param p The packet that was just received.
 	 * @return The state the network should have.
@@ -343,16 +343,16 @@ protected:
 
 	/**
 	 * Company information of a specific company:
-	 * uint8   ID of the company.
+	 * uint8_t   ID of the company.
 	 * string  Name of the company.
 	 * string  Name of the companies manager.
-	 * uint8   Main company colour.
+	 * uint8_t   Main company colour.
 	 * bool    Company is password protected.
-	 * uint8   Quarters of bankruptcy.
-	 * uint8   Owner of share 1.
-	 * uint8   Owner of share 2.
-	 * uint8   Owner of share 3.
-	 * uint8   Owner of share 4.
+	 * uint8_t   Quarters of bankruptcy.
+	 * uint8_t   Owner of share 1.
+	 * uint8_t   Owner of share 2.
+	 * uint8_t   Owner of share 3.
+	 * uint8_t   Owner of share 4.
 	 * @param p The packet that was just received.
 	 * @return The state the network should have.
 	 */
@@ -360,8 +360,8 @@ protected:
 
 	/**
 	 * Notification about a removed company (e.g. due to bankruptcy).
-	 * uint8   ID of the company.
-	 * uint8   Reason for being removed (see #AdminCompanyRemoveReason).
+	 * uint8_t   ID of the company.
+	 * uint8_t   Reason for being removed (see #AdminCompanyRemoveReason).
 	 * @param p The packet that was just received.
 	 * @return The state the network should have.
 	 */
@@ -369,17 +369,17 @@ protected:
 
 	/**
 	 * Economy update of a specific company:
-	 * uint8   ID of the company.
-	 * uint64  Money.
-	 * uint64  Loan.
-	 * int64   Income.
-	 * uint16  Delivered cargo (this quarter).
-	 * uint64  Company value (last quarter).
-	 * uint16  Performance (last quarter).
-	 * uint16  Delivered cargo (last quarter).
-	 * uint64  Company value (previous quarter).
-	 * uint16  Performance (previous quarter).
-	 * uint16  Delivered cargo (previous quarter).
+	 * uint8_t   ID of the company.
+	 * uint64_t  Money.
+	 * uint64_t  Loan.
+	 * int64_t   Income.
+	 * uint16_t  Delivered cargo (this quarter).
+	 * uint64_t  Company value (last quarter).
+	 * uint16_t  Performance (last quarter).
+	 * uint16_t  Delivered cargo (last quarter).
+	 * uint64_t  Company value (previous quarter).
+	 * uint16_t  Performance (previous quarter).
+	 * uint16_t  Delivered cargo (previous quarter).
 	 * @param p The packet that was just received.
 	 * @return The state the network should have.
 	 */
@@ -387,17 +387,17 @@ protected:
 
 	/**
 	 * Company statistics on stations and vehicles:
-	 * uint8   ID of the company.
-	 * uint16  Number of trains.
-	 * uint16  Number of lorries.
-	 * uint16  Number of busses.
-	 * uint16  Number of planes.
-	 * uint16  Number of ships.
-	 * uint16  Number of train stations.
-	 * uint16  Number of lorry stations.
-	 * uint16  Number of bus stops.
-	 * uint16  Number of airports and heliports.
-	 * uint16  Number of harbours.
+	 * uint8_t   ID of the company.
+	 * uint16_t  Number of trains.
+	 * uint16_t  Number of lorries.
+	 * uint16_t  Number of busses.
+	 * uint16_t  Number of planes.
+	 * uint16_t  Number of ships.
+	 * uint16_t  Number of train stations.
+	 * uint16_t  Number of lorry stations.
+	 * uint16_t  Number of bus stops.
+	 * uint16_t  Number of airports and heliports.
+	 * uint16_t  Number of harbours.
 	 * @param p The packet that was just received.
 	 * @return The state the network should have.
 	 */
@@ -405,11 +405,11 @@ protected:
 
 	/**
 	 * Send chat from the game into the admin network:
-	 * uint8   Action such as NETWORK_ACTION_CHAT_CLIENT (see #NetworkAction).
-	 * uint8   Destination type such as DESTTYPE_BROADCAST (see #DestType).
-	 * uint32  ID of the client who sent this message.
+	 * uint8_t   Action such as NETWORK_ACTION_CHAT_CLIENT (see #NetworkAction).
+	 * uint8_t   Destination type such as DESTTYPE_BROADCAST (see #DestType).
+	 * uint32_t  ID of the client who sent this message.
 	 * string  Message.
-	 * uint64  Money (only when it is a 'give money' action).
+	 * uint64_t  Money (only when it is a 'give money' action).
 	 * @param p The packet that was just received.
 	 * @return The state the network should have.
 	 */
@@ -417,7 +417,7 @@ protected:
 
 	/**
 	 * Result of an rcon command:
-	 * uint16  Colour as it would be used on the server or a client.
+	 * uint16_t  Colour as it would be used on the server or a client.
 	 * string  Output of the executed command.
 	 * @param p The packet that was just received.
 	 * @return The state the network should have.
@@ -445,7 +445,7 @@ protected:
 	 *
 	 * These three fields are repeated until the packet is full:
 	 * bool    Data to follow.
-	 * uint16  ID of the DoCommand.
+	 * uint16_t  ID of the DoCommand.
 	 * string  Name of DoCommand.
 	 * @param p The packet that was just received.
 	 * @return The state the network should have.
@@ -461,12 +461,12 @@ protected:
 	 *         across different versions / revisions of OpenTTD.
 	 *         Data provided in this packet is for logging purposes only.
 	 *
-	 * uint32  ID of the client sending the command.
-	 * uint8   ID of the company (0..MAX_COMPANIES-1).
-	 * uint16  ID of the command.
+	 * uint32_t  ID of the client sending the command.
+	 * uint8_t   ID of the company (0..MAX_COMPANIES-1).
+	 * uint16_t  ID of the command.
 	 * <var>   Command specific buffer with encoded parameters of variable length.
 	 *         The content differs per command and can change without notification.
-	 * uint32  Frame of execution.
+	 * uint32_t  Frame of execution.
 	 * @param p The packet that was just received.
 	 * @return The state the network should have.
 	 */
@@ -474,7 +474,7 @@ protected:
 
 	/**
 	 * Send a ping-reply (pong) to the admin that sent us the ping packet.
-	 * uint32  Integer identifier - should be the same as read from the admins ping packet.
+	 * uint32_t  Integer identifier - should be the same as read from the admins ping packet.
 	 * @param p The packet that was just received.
 	 * @return The state the network should have.
 	 */

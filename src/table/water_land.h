@@ -20,7 +20,7 @@
 #define TILE_SEQ_LINE(dx, dy, dz, sx, sy, sz, img) { dx, dy, dz, sx, sy, sz, {img, PAL_NONE} },
 
 /** Constructor macro for a terminating DrawTileSeqStruct entry in an array */
-#define TILE_SEQ_END() { (int8)0x80, 0, 0, 0, 0, 0, {0, 0} }
+#define TILE_SEQ_END() { (int8_t)0x80, 0, 0, 0, 0, 0, {0, 0} }
 
 /**
  * Constructor macro of a DrawTileSprites structure

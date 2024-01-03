@@ -37,7 +37,7 @@ void SoundDriver_Allegro::MainLoop()
 	MxMixSamples(data, _buffer_size);
 
 	/* Allegro sound is always unsigned, so we need to correct that */
-	uint16 *snd = (uint16*)data;
+	uint16_t *snd = (uint16_t*)data;
 	for (int i = 0; i < _buffer_size * 2; i++) snd[i] ^= 0x8000;
 
 	/* Tell we've filled the stream */

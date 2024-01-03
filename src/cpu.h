@@ -14,7 +14,7 @@
  * Get the tick counter from the CPU (high precision timing).
  * @return The count.
  */
-uint64 ottd_rdtsc();
+uint64_t ottd_rdtsc();
 
 /**
  * Get the CPUID information from the CPU.

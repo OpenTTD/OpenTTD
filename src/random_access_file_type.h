@@ -47,11 +47,11 @@ public:
 	void SeekTo(size_t pos, int mode);
 
 	byte ReadByte();
-	uint16 ReadWord();
-	uint32 ReadDword();
+	uint16_t ReadWord();
+	uint32_t ReadDword();
 
 	void ReadBlock(void *ptr, size_t size);
-	void SkipBytes(int n);
+	void SkipBytes(size_t n);
 };
 
 #endif /* RANDOM_ACCESS_FILE_TYPE_H */

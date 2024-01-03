@@ -66,17 +66,17 @@ void ClearCargoDeliveryMonitoring(CompanyID company)
  * @param keep_monitoring After returning from this call, continue monitoring.
  * @return Amount collected since last query/activation for the monitored combination.
  */
-static int32 GetAmount(CargoMonitorMap &monitor_map, CargoMonitorID monitor, bool keep_monitoring)
+static int32_t GetAmount(CargoMonitorMap &monitor_map, CargoMonitorID monitor, bool keep_monitoring)
 {
 	CargoMonitorMap::iterator iter = monitor_map.find(monitor);
 	if (iter == monitor_map.end()) {
 		if (keep_monitoring) {
-			std::pair<CargoMonitorID, uint32> p(monitor, 0);
+			std::pair<CargoMonitorID, uint32_t> p(monitor, 0);
 			monitor_map.insert(p);
 		}
 		return 0;
 	} else {
-		int32 result = iter->second;
+		int32_t result = iter->second;
 		iter->second = 0;
 		if (!keep_monitoring) monitor_map.erase(iter);
 		return result;
@@ -89,7 +89,7 @@ static int32 GetAmount(CargoMonitorMap &monitor_map, CargoMonitorID monitor, boo
  * @param keep_monitoring After returning from this call, continue monitoring.
  * @return Amount of delivered cargo for the monitored combination.
  */
-int32 GetDeliveryAmount(CargoMonitorID monitor, bool keep_monitoring)
+int32_t GetDeliveryAmount(CargoMonitorID monitor, bool keep_monitoring)
 {
 	return GetAmount(_cargo_deliveries, monitor, keep_monitoring);
 }
@@ -101,7 +101,7 @@ int32 GetDeliveryAmount(CargoMonitorID monitor, bool keep_monitoring)
  * @return Amount of picked up cargo for the monitored combination.
  * @note Cargo pick up is counted on final delivery, to prevent users getting credit for picking up cargo without delivering it.
  */
-int32 GetPickupAmount(CargoMonitorID monitor, bool keep_monitoring)
+int32_t GetPickupAmount(CargoMonitorID monitor, bool keep_monitoring)
 {
 	return GetAmount(_cargo_pickups, monitor, keep_monitoring);
 }
@@ -116,7 +116,7 @@ int32 GetPickupAmount(CargoMonitorID monitor, bool keep_monitoring)
  * @param st station where the cargo is delivered to.
  * @param dest industry index where the cargo is delivered to.
  */
-void AddCargoDelivery(CargoID cargo_type, CompanyID company, uint32 amount, SourceType src_type, SourceID src, const Station *st, IndustryID dest)
+void AddCargoDelivery(CargoID cargo_type, CompanyID company, uint32_t amount, SourceType src_type, SourceID src, const Station *st, IndustryID dest)
 {
 	if (amount == 0) return;
 

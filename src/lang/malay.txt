@@ -188,6 +188,9 @@ STR_COLOUR_BROWN                                                :Perang
 STR_COLOUR_GREY                                                 :Kelabu
 STR_COLOUR_WHITE                                                :Putih
 
+###length 17
+
+
 # Units used in OpenTTD
 STR_UNITS_VELOCITY_IMPERIAL                                     :{DECIMAL} bp/j
 STR_UNITS_VELOCITY_METRIC                                       :{DECIMAL} km/j
@@ -216,6 +219,7 @@ STR_UNITS_FORCE_SI                                              :{DECIMAL} kN
 STR_UNITS_HEIGHT_IMPERIAL                                       :{DECIMAL} ka
 STR_UNITS_HEIGHT_METRIC                                         :{DECIMAL}{NBSP}m
 STR_UNITS_HEIGHT_SI                                             :{DECIMAL} m
+
 
 # Common window strings
 STR_LIST_FILTER_TITLE                                           :{BLACK}Tapis barisan:
@@ -374,30 +378,24 @@ STR_SETTINGS_MENU_TRANSPARENT_BUILDINGS                         :Bangunan-bangun
 STR_SETTINGS_MENU_TRANSPARENT_SIGNS                             :Teluskan tanda arah
 
 # File menu
-###length 5
 STR_FILE_MENU_SAVE_GAME                                         :Simpan Permainan
 STR_FILE_MENU_LOAD_GAME                                         :Buka Permainan
 STR_FILE_MENU_QUIT_GAME                                         :Tinggalkan Permainan
-STR_FILE_MENU_SEPARATOR                                         :
 STR_FILE_MENU_EXIT                                              :Keluar
 
 # Map menu
-###length 4
 STR_MAP_MENU_MAP_OF_WORLD                                       :Peta Dunia
 STR_MAP_MENU_EXTRA_VIEWPORT                                     :Tetingkap pemandangan tambahan
 STR_MAP_MENU_SIGN_LIST                                          :Senarai papan tanda
 
 # Town menu
-###length 2
 STR_TOWN_MENU_TOWN_DIRECTORY                                    :Senarai Nama Bandar
 STR_TOWN_MENU_FOUND_TOWN                                        :Binakan bandar
 
 # Subsidies menu
-###length 1
 STR_SUBSIDIES_MENU_SUBSIDIES                                    :Subsidi
 
 # Graph menu
-###length 6
 STR_GRAPH_MENU_OPERATING_PROFIT_GRAPH                           :Graf keuntungan operasi
 STR_GRAPH_MENU_INCOME_GRAPH                                     :Graf Pendapatan
 STR_GRAPH_MENU_DELIVERED_CARGO_GRAPH                            :Graf Penghantaran Kargo
@@ -406,56 +404,45 @@ STR_GRAPH_MENU_COMPANY_VALUE_GRAPH                              :Graf nilai syar
 STR_GRAPH_MENU_CARGO_PAYMENT_RATES                              :Kadar bayaran kargo
 
 # Company league menu
-###length 3
 STR_GRAPH_MENU_COMPANY_LEAGUE_TABLE                             :Jadual liga syarikat
 STR_GRAPH_MENU_DETAILED_PERFORMANCE_RATING                      :Penarafan prestasi secara terperinci
 STR_GRAPH_MENU_HIGHSCORE                                        :Carta mata tertinggi
 
 # Industry menu
-###length 3
 STR_INDUSTRY_MENU_INDUSTRY_DIRECTORY                            :Direktori Industri
 STR_INDUSTRY_MENU_INDUSTRY_CHAIN                                :Rantaian industri
 STR_INDUSTRY_MENU_FUND_NEW_INDUSTRY                             :Biaya industri baru
 
 # URailway construction menu
-###length 4
 STR_RAIL_MENU_RAILROAD_CONSTRUCTION                             :Pembinaan landasan keretapi
 STR_RAIL_MENU_ELRAIL_CONSTRUCTION                               :Pembinaan landasan keretapi berelektrik
 STR_RAIL_MENU_MONORAIL_CONSTRUCTION                             :Pembinaan landasan monorel
 STR_RAIL_MENU_MAGLEV_CONSTRUCTION                               :Pembinaan landasan maglev
 
 # Road construction menu
-###length 2
 STR_ROAD_MENU_ROAD_CONSTRUCTION                                 :Pembinaan jalanraya
 STR_ROAD_MENU_TRAM_CONSTRUCTION                                 :Pembinaan laluan trem
 
 # Waterways construction menu
-###length 1
 STR_WATERWAYS_MENU_WATERWAYS_CONSTRUCTION                       :Pembinaan tali air
 
 # Aairport construction menu
-###length 1
 STR_AIRCRAFT_MENU_AIRPORT_CONSTRUCTION                          :Pembinaan lapangan terbang
 
 # Landscaping menu
-###length 3
 STR_LANDSCAPING_MENU_LANDSCAPING                                :Pemindaan lanskap
 STR_LANDSCAPING_MENU_PLANT_TREES                                :Tanam pokok-pokok
 STR_LANDSCAPING_MENU_PLACE_SIGN                                 :Letakkan papan tanda
 
 # Music menu
-###length 1
 STR_TOOLBAR_SOUND_MUSIC                                         :Bunyi/muzik
 
 # Message menu
-###length 3
 STR_NEWS_MENU_LAST_MESSAGE_NEWS_REPORT                          :Pesanan/laporan berita terkini
 STR_NEWS_MENU_MESSAGE_HISTORY_MENU                              :Pesanan sebelumnya
 
 # About menu
-###length 10
 STR_ABOUT_MENU_LAND_BLOCK_INFO                                  :Maklumat kawasan tanah
-STR_ABOUT_MENU_SEPARATOR                                        :
 STR_ABOUT_MENU_TOGGLE_CONSOLE                                   :Papar atau padamkan konsol
 STR_ABOUT_MENU_AI_DEBUG                                         :Al/Skrip pepijat permainan
 STR_ABOUT_MENU_SCREENSHOT                                       :Tangkapan skrin (Ctrl+S)
@@ -660,8 +647,6 @@ STR_PLAYLIST_TOOLTIP_CLICK_TO_ADD_TRACK                         :{BLACK}Klik pad
 STR_PLAYLIST_TOOLTIP_CLICK_TO_REMOVE_TRACK                      :{BLACK}Klik pada lagu untuk mengeluarkan daripada rancangan semasa (Pilihan Diri 1 atau Pilihan Diri 2 sahaja)
 
 # Highscore window
-STR_HIGHSCORE_TOP_COMPANIES_WHO_REACHED                         :{BIG_FONT}{BLACK}Syarikat-syarikat utama yang mencapai {NUM}
-STR_HIGHSCORE_TOP_COMPANIES_NETWORK_GAME                        :{BIG_FONT}{BLACK}Jadual Liga Syarikat dalam {NUM}
 STR_HIGHSCORE_POSITION                                          :{BIG_FONT}{BLACK}{COMMA}.
 STR_HIGHSCORE_PERFORMANCE_TITLE_BUSINESSMAN                     :Ahli perniagaan
 STR_HIGHSCORE_PERFORMANCE_TITLE_ENTREPRENEUR                    :Usahawan
@@ -839,10 +824,6 @@ STR_NEWS_NEW_VEHICLE_TYPE                                       :{BIG_FONT}{BLAC
 STR_NEWS_NEW_VEHICLE_NOW_AVAILABLE_WITH_TYPE                    :{BLACK}{STRING} baru kini boleh boleh dibeli!  -  {ENGINE}
 
 
-STR_NEWS_STATION_NO_LONGER_ACCEPTS_CARGO                        :{WHITE}{STATION} tidak lagi menerima {STRING}
-STR_NEWS_STATION_NO_LONGER_ACCEPTS_CARGO_OR_CARGO               :{WHITE}{STATION} tidak lagi menerima {STRING} or {STRING}
-STR_NEWS_STATION_NOW_ACCEPTS_CARGO                              :{WHITE}{STATION} kini menerima {STRING}
-STR_NEWS_STATION_NOW_ACCEPTS_CARGO_AND_CARGO                    :{WHITE}{STATION} kini menerima {STRING} dan {STRING}
 
 STR_NEWS_OFFER_OF_SUBSIDY_EXPIRED                               :{BIG_FONT}{BLACK}Tempoh tawaran subsidi tamat:{}{}{STRING} dari {STRING} ke {STRING} tidak akan diberi subsidi.
 STR_NEWS_SUBSIDY_WITHDRAWN_SERVICE                              :{BIG_FONT}{BLACK}Subsidi ditarik:{}{}Servis {STRING} dari {STRING} ke {STRING} tidak akan diberi subsidi.
@@ -868,40 +849,41 @@ STR_GAME_OPTIONS_CAPTION                                        :{WHITE}Pilihan 
 STR_GAME_OPTIONS_CURRENCY_UNITS_FRAME                           :{BLACK}Unit kewangan
 STR_GAME_OPTIONS_CURRENCY_UNITS_DROPDOWN_TOOLTIP                :{BLACK}Pilihan unit kewangan
 
+
 ###length 42
-STR_GAME_OPTIONS_CURRENCY_GBP                                   :Paun British (GBP)
-STR_GAME_OPTIONS_CURRENCY_USD                                   :Dolar Amerika (USD)
-STR_GAME_OPTIONS_CURRENCY_EUR                                   :Euro (EUR)
-STR_GAME_OPTIONS_CURRENCY_JPY                                   :Yen Jepun (JPY)
-STR_GAME_OPTIONS_CURRENCY_ATS                                   :Syiling Austria (ATS)
-STR_GAME_OPTIONS_CURRENCY_BEF                                   :Frank Belgium (BEF)
-STR_GAME_OPTIONS_CURRENCY_CHF                                   :Frank Swiss (CHF)
-STR_GAME_OPTIONS_CURRENCY_CZK                                   :Koruna Czech (CZK)
-STR_GAME_OPTIONS_CURRENCY_DEM                                   :Mark Jerman (DEM)
-STR_GAME_OPTIONS_CURRENCY_DKK                                   :Krone Denmark (DKK)
-STR_GAME_OPTIONS_CURRENCY_ESP                                   :Peseta Sepanyol (ESP)
-STR_GAME_OPTIONS_CURRENCY_FIM                                   :Markka Finland (FIM)
-STR_GAME_OPTIONS_CURRENCY_FRF                                   :Franc Perancis (FRF)
-STR_GAME_OPTIONS_CURRENCY_GRD                                   :Drachma Yunani (GRD)
-STR_GAME_OPTIONS_CURRENCY_HUF                                   :Forint Hungary (HUF)
-STR_GAME_OPTIONS_CURRENCY_ISK                                   :Krona Iceland (ISK)
-STR_GAME_OPTIONS_CURRENCY_ITL                                   :Lira Itali (ITL)
-STR_GAME_OPTIONS_CURRENCY_NLG                                   :Guilder Belanda (NLG)
-STR_GAME_OPTIONS_CURRENCY_NOK                                   :Krone Norway (NOK)
-STR_GAME_OPTIONS_CURRENCY_PLN                                   :Złoty Poland (PLN)
-STR_GAME_OPTIONS_CURRENCY_RON                                   :Leu Romania (RON)
-STR_GAME_OPTIONS_CURRENCY_RUR                                   :Ruble Rusia (RUR)
-STR_GAME_OPTIONS_CURRENCY_SIT                                   :Tolar Slovenia (SIT)
-STR_GAME_OPTIONS_CURRENCY_SEK                                   :Krona Sweden (SEK)
-STR_GAME_OPTIONS_CURRENCY_TRY                                   :Lira Turki (TRY)
-STR_GAME_OPTIONS_CURRENCY_SKK                                   :Koruna Slovak (SKK)
-STR_GAME_OPTIONS_CURRENCY_BRL                                   :Real Brazil (BRL)
-STR_GAME_OPTIONS_CURRENCY_EEK                                   :Krooni Estonia (EEK)
-STR_GAME_OPTIONS_CURRENCY_LTL                                   :Lithuanian Litas (LTL)
-STR_GAME_OPTIONS_CURRENCY_KRW                                   :South Korean Won (KRW)
-STR_GAME_OPTIONS_CURRENCY_ZAR                                   :South African Rand (ZAR)
+STR_GAME_OPTIONS_CURRENCY_GBP                                   :Paun British
+STR_GAME_OPTIONS_CURRENCY_USD                                   :Dolar Amerika
+STR_GAME_OPTIONS_CURRENCY_EUR                                   :Euro
+STR_GAME_OPTIONS_CURRENCY_JPY                                   :Yen Jepun
+STR_GAME_OPTIONS_CURRENCY_ATS                                   :Syiling Austria
+STR_GAME_OPTIONS_CURRENCY_BEF                                   :Frank Belgium
+STR_GAME_OPTIONS_CURRENCY_CHF                                   :Frank Swiss
+STR_GAME_OPTIONS_CURRENCY_CZK                                   :Koruna Czech
+STR_GAME_OPTIONS_CURRENCY_DEM                                   :Mark Jerman
+STR_GAME_OPTIONS_CURRENCY_DKK                                   :Krone Denmark
+STR_GAME_OPTIONS_CURRENCY_ESP                                   :Peseta Sepanyol
+STR_GAME_OPTIONS_CURRENCY_FIM                                   :Markka Finland
+STR_GAME_OPTIONS_CURRENCY_FRF                                   :Franc Perancis
+STR_GAME_OPTIONS_CURRENCY_GRD                                   :Drachma Yunani
+STR_GAME_OPTIONS_CURRENCY_HUF                                   :Forint Hungary
+STR_GAME_OPTIONS_CURRENCY_ISK                                   :Krona Iceland
+STR_GAME_OPTIONS_CURRENCY_ITL                                   :Lira Itali
+STR_GAME_OPTIONS_CURRENCY_NLG                                   :Guilder Belanda
+STR_GAME_OPTIONS_CURRENCY_NOK                                   :Krone Norway
+STR_GAME_OPTIONS_CURRENCY_PLN                                   :Złoty Poland
+STR_GAME_OPTIONS_CURRENCY_RON                                   :Leu Romania
+STR_GAME_OPTIONS_CURRENCY_RUR                                   :Ruble Rusia
+STR_GAME_OPTIONS_CURRENCY_SIT                                   :Tolar Slovenia
+STR_GAME_OPTIONS_CURRENCY_SEK                                   :Krona Sweden
+STR_GAME_OPTIONS_CURRENCY_TRY                                   :Lira Turki
+STR_GAME_OPTIONS_CURRENCY_SKK                                   :Koruna Slovak
+STR_GAME_OPTIONS_CURRENCY_BRL                                   :Real Brazil
+STR_GAME_OPTIONS_CURRENCY_EEK                                   :Krooni Estonia
+STR_GAME_OPTIONS_CURRENCY_LTL                                   :Lithuanian Litas
+STR_GAME_OPTIONS_CURRENCY_KRW                                   :South Korean Won
+STR_GAME_OPTIONS_CURRENCY_ZAR                                   :South African Rand
 STR_GAME_OPTIONS_CURRENCY_CUSTOM                                :Sesuaikan...
-STR_GAME_OPTIONS_CURRENCY_GEL                                   :Georgian Lari (GEL)
+STR_GAME_OPTIONS_CURRENCY_GEL                                   :Georgian Lari
 
 STR_GAME_OPTIONS_AUTOSAVE_FRAME                                 :{BLACK}Simpanan automatik
 STR_GAME_OPTIONS_AUTOSAVE_DROPDOWN_TOOLTIP                      :{BLACK}Pilih tempoh untuk simpanan permainan automatik
@@ -931,7 +913,6 @@ STR_GAME_OPTIONS_RESOLUTION_OTHER                               :lain
 
 STR_GAME_OPTIONS_BASE_GRF                                       :{BLACK}Set grafik asas
 STR_GAME_OPTIONS_BASE_GRF_TOOLTIP                               :{BLACK}Pilih set grafik asas untuk digunakan
-STR_GAME_OPTIONS_BASE_GRF_STATUS                                :{RED}{NUM} fail hilang/rosak
 STR_GAME_OPTIONS_BASE_GRF_DESCRIPTION_TOOLTIP                   :{BLACK}Maklumat tambahan tentang set grafik asas ini
 
 STR_GAME_OPTIONS_BASE_SFX                                       :{BLACK}Set bunyi asas
@@ -940,8 +921,8 @@ STR_GAME_OPTIONS_BASE_SFX_DESCRIPTION_TOOLTIP                   :{BLACK}Maklumat
 
 STR_GAME_OPTIONS_BASE_MUSIC                                     :{BLACK}Set muzik asas
 STR_GAME_OPTIONS_BASE_MUSIC_TOOLTIP                             :{BLACK}Pilih set muzik asas yang akan digunakan
-STR_GAME_OPTIONS_BASE_MUSIC_STATUS                              :{RED}{NUM} fail sudah rosak
 STR_GAME_OPTIONS_BASE_MUSIC_DESCRIPTION_TOOLTIP                 :{BLACK}Maklumat lebih tentang set muzik asas
+
 
 STR_ERROR_RESOLUTION_LIST_FAILED                                :{WHITE}Gagal untuk mendapat senarai resolusi yang disokong
 STR_ERROR_FULLSCREEN_FAILED                                     :{WHITE}Mod skrin penuh gagal dilakukan
@@ -1086,6 +1067,7 @@ STR_CONFIG_SETTING_REALISTIC                                    :Realistik
 STR_CONFIG_SETTING_HORIZONTAL_POS_LEFT                          :Kiri
 STR_CONFIG_SETTING_HORIZONTAL_POS_CENTER                        :Tengah
 STR_CONFIG_SETTING_HORIZONTAL_POS_RIGHT                         :Kanan
+
 
 STR_CONFIG_SETTING_MAXIMUM_INITIAL_LOAN                         :Maksimum pinjaman permulaan: {STRING}
 STR_CONFIG_SETTING_MAXIMUM_INITIAL_LOAN_HELPTEXT                :Rantaian industri
@@ -1238,6 +1220,7 @@ STR_CONFIG_SETTING_PLANE_CRASHES_NONE                           :Tiada
 STR_CONFIG_SETTING_PLANE_CRASHES_REDUCED                        :Dikurangkan
 STR_CONFIG_SETTING_PLANE_CRASHES_NORMAL                         :Normal
 
+
 STR_CONFIG_SETTING_STOP_ON_TOWN_ROAD                            :Benarkan hentian pandu-lalu di jalanraya bandar: {STRING}
 STR_CONFIG_SETTING_STOP_ON_TOWN_ROAD_HELPTEXT                   :Benarkan pembinaan untuk jalan pemanduan berhenti di jalan milik bandaran
 STR_CONFIG_SETTING_STOP_ON_COMPETITOR_ROAD                      :Benarkan hentian pandu-lalu di jalanraya yang dimiliki oleh pesaing: {STRING}
@@ -1246,6 +1229,7 @@ STR_CONFIG_SETTING_DYNAMIC_ENGINES_EXISTING_VEHICLES            :{WHITE}Menukar 
 
 STR_CONFIG_SETTING_INFRASTRUCTURE_MAINTENANCE                   :Penyelenggaraan Infrastruktur: {STRING}
 STR_CONFIG_SETTING_INFRASTRUCTURE_MAINTENANCE_HELPTEXT          :Apabila diupayakan,infrastuktur menyebabkan kos penyelenggaraan. Kadar kos tumbuh berdasarkan saiz rangkaian, sekaligus menjejaskan syarikat yang lebih besar daripada yang kecil
+
 
 
 STR_CONFIG_SETTING_NEVER_EXPIRE_AIRPORTS                        :Lapangan terbang tidak akan tamat tempohnya: {STRING}
@@ -1377,9 +1361,7 @@ STR_CONFIG_SETTING_RIGHT_MOUSE_BTN_EMU_COMMAND                  :Command+Klik
 STR_CONFIG_SETTING_RIGHT_MOUSE_BTN_EMU_CONTROL                  :Ctrl+Klik
 STR_CONFIG_SETTING_RIGHT_MOUSE_BTN_EMU_OFF                      :Matikan
 
-
-STR_CONFIG_SETTING_AUTOSAVE                                     :Simpanan automatik:{STRING}
-STR_CONFIG_SETTING_AUTOSAVE_HELPTEXT                            :Pilih jarak waktu antara menyimpankan permainan automatik
+###length 3
 
 STR_CONFIG_SETTING_DATE_FORMAT_IN_SAVE_NAMES                    :Gunakan format tarikh {STRING} untuk simpanan permainan.
 ###length 3
@@ -1400,7 +1382,7 @@ STR_CONFIG_SETTING_ADVANCED_VEHICLE_LISTS                       :Gunakan senarai
 
 STR_CONFIG_SETTING_LOADING_INDICATORS                           :Gunakan penunjuk muatan: {STRING}
 
-STR_CONFIG_SETTING_TIMETABLE_IN_TICKS                           :Tunjukkan jadual menggunakan tanda rait dan bukan hari: {STRING}
+###length 3
 
 STR_CONFIG_SETTING_TIMETABLE_SHOW_ARRIVAL_DEPARTURE             :Tunjukkan ketibaan dan pelepasan dalam jadual: {STRING}
 STR_CONFIG_SETTING_TIMETABLE_SHOW_ARRIVAL_DEPARTURE_HELPTEXT    :Tunjukkan jangkaan waktu ketibaan dan pelepasan dalam jadual
@@ -1609,18 +1591,18 @@ STR_CONFIG_SETTING_LOCALISATION_UNITS_VOLUME_SI                 :Unit SI (m³)
 
 ###length 3
 
-STR_CONFIG_SETTING_SOUND                                        :{ORANGE}Bunyi
-STR_CONFIG_SETTING_INTERFACE                                    :{ORANGE}Antaramuka (Interface)
-STR_CONFIG_SETTING_INTERFACE_CONSTRUCTION                       :{ORANGE}Pembinaan
-STR_CONFIG_SETTING_ADVISORS                                     :{ORANGE}Berita / Penasihat
-STR_CONFIG_SETTING_COMPANY                                      :{ORANGE}Syarikat
-STR_CONFIG_SETTING_VEHICLES                                     :{ORANGE}Kenderaan
-STR_CONFIG_SETTING_VEHICLES_ROUTING                             :{ORANGE}Laluan
-STR_CONFIG_SETTING_ACCIDENTS                                    :{ORANGE}Kecelakaan / Kemalangan
-STR_CONFIG_SETTING_ENVIRONMENT_TOWNS                            :{ORANGE}Bandar-bandar
-STR_CONFIG_SETTING_ENVIRONMENT_INDUSTRIES                       :{ORANGE}Industri-industri
-STR_CONFIG_SETTING_AI                                           :{ORANGE}Pesaing
-STR_CONFIG_SETTING_AI_NPC                                       :{ORANGE}Pemain komputer
+STR_CONFIG_SETTING_SOUND                                        :Bunyi
+STR_CONFIG_SETTING_INTERFACE                                    :Antaramuka (Interface)
+STR_CONFIG_SETTING_INTERFACE_CONSTRUCTION                       :Pembinaan
+STR_CONFIG_SETTING_ADVISORS                                     :Berita / Penasihat
+STR_CONFIG_SETTING_COMPANY                                      :Syarikat
+STR_CONFIG_SETTING_VEHICLES                                     :Kenderaan
+STR_CONFIG_SETTING_VEHICLES_ROUTING                             :Laluan
+STR_CONFIG_SETTING_ACCIDENTS                                    :Kecelakaan / Kemalangan
+STR_CONFIG_SETTING_ENVIRONMENT_TOWNS                            :Bandar-bandar
+STR_CONFIG_SETTING_ENVIRONMENT_INDUSTRIES                       :Industri-industri
+STR_CONFIG_SETTING_AI                                           :Pesaing
+STR_CONFIG_SETTING_AI_NPC                                       :Pemain komputer
 
 STR_CONFIG_SETTING_PATHFINDER_FOR_TRAINS                        :Pencari laluan untuk keretapi: {STRING}
 STR_CONFIG_SETTING_PATHFINDER_FOR_ROAD_VEHICLES                 :Pencari laluan untuk kenderaan jalanraya: {STRING}
@@ -1700,6 +1682,8 @@ STR_QUIT_NO                                                     :{BLACK}Tidak
 STR_ABANDON_GAME_CAPTION                                        :{WHITE}Tinggalkan Permainan
 STR_ABANDON_GAME_QUERY                                          :{YELLOW}Pastikah anda mahu keluar dari permainan ini?
 STR_ABANDON_SCENARIO_QUERY                                      :{YELLOW}Pastikah anda untuk keluar dari senario ini?
+
+# Help window
 
 # Cheat window
 STR_CHEATS                                                      :{WHITE}Penipuan (Cheats)
@@ -2096,7 +2080,6 @@ STR_TRANSPARENT_BUILDINGS_TOOLTIP                               :{BLACK}Teluskan
 STR_TRANSPARENT_BRIDGES_TOOLTIP                                 :{BLACK}Teluskan jambatan atau tidak. Ctrl+Klik untuk mengunci
 STR_TRANSPARENT_STRUCTURES_TOOLTIP                              :{BLACK}Teluskan objek seperti rumah api atau menara pemancar. Ctrl+Klik untuk mengunci
 STR_TRANSPARENT_CATENARY_TOOLTIP                                :{BLACK}Teluskan sistem aliran elektrik atau tidak. Ctrl+Klik untuk mengunci
-STR_TRANSPARENT_LOADING_TOOLTIP                                 :{BLACK}Teluskan penunjuk muatan atau tidak. Ctrl+Klik untuk mengunci
 STR_TRANSPARENT_INVISIBLE_TOOLTIP                               :{BLACK}Ghaibkan objek dan bukan telus
 
 # Linkgraph legend window
@@ -3709,8 +3692,6 @@ STR_TIMETABLE_TRAVEL_NOT_TIMETABLED                             :Kembara (tanpa 
 STR_TIMETABLE_TRAVEL_FOR                                        :Kembara ke {STRING}
 STR_TIMETABLE_STAY_FOR                                          :dan tinggal untuk {STRING}
 STR_TIMETABLE_AND_TRAVEL_FOR                                    :dan kembara untuk {STRING}
-STR_TIMETABLE_DAYS                                              :{COMMA} hari
-STR_TIMETABLE_TICKS                                             :{COMMA} detik
 
 STR_TIMETABLE_TOTAL_TIME                                        :{BLACK}Jadual waktu ini akan mengambil {STRING} untuk menghabis
 STR_TIMETABLE_TOTAL_TIME_INCOMPLETE                             :{BLACK}Jadual waktu ini akan mengambil sekurangnya {STRING} untuk dilengkapi (bukan semua dijadualkan)
@@ -3719,9 +3700,8 @@ STR_TIMETABLE_STATUS_ON_TIME                                    :{BLACK}Kenderaa
 STR_TIMETABLE_STATUS_LATE                                       :{BLACK}Kenderaan ini sedang bergerak {STRING} lewat
 STR_TIMETABLE_STATUS_EARLY                                      :{BLACK}Kenderaan ini sedang bergerak {STRING} awal
 STR_TIMETABLE_STATUS_NOT_STARTED                                :{BLACK}Jadual waktu ini belum bermula
-STR_TIMETABLE_STATUS_START_AT                                   :{BLACK}Jadual waktu ini akan bermula pada {STRING}
 
-STR_TIMETABLE_STARTING_DATE                                     :{BLACK}Tarikh mula
+
 
 STR_TIMETABLE_CHANGE_TIME                                       :{BLACK}Tukar Masa
 STR_TIMETABLE_WAIT_TIME_TOOLTIP                                 :{BLACK}Tukar tempoh masa bagi jadual waktu yang terpilih
@@ -3745,8 +3725,6 @@ STR_TIMETABLE_EXPECTED                                          :{BLACK}Dijangka
 STR_TIMETABLE_SCHEDULED                                         :{BLACK}Dijadualkan
 STR_TIMETABLE_EXPECTED_TOOLTIP                                  :{BLACK}Tukar di antara dijangkakan dan dijadualkan
 
-STR_TIMETABLE_ARRIVAL_ABBREVIATION                              :T:
-STR_TIMETABLE_DEPARTURE_ABBREVIATION                            :B:
 
 
 # Date window (for timetable)
@@ -3831,7 +3809,7 @@ STR_AI_SETTINGS_SETTING                                         :{STRING}: {ORAN
 STR_TEXTFILE_VIEW_README                                        :{BLACK}Lihat readme
 STR_TEXTFILE_VIEW_CHANGELOG                                     :{BLACK}LogUbah
 STR_TEXTFILE_VIEW_LICENCE                                       :{BLACK}Lesen
-###length 4
+###length 5
 STR_TEXTFILE_README_CAPTION                                     :{WHITE}{STRING} readme untuk {STRING}
 STR_TEXTFILE_CHANGELOG_CAPTION                                  :{WHITE}{STRING} LogUbah untuk {STRING}
 STR_TEXTFILE_LICENCE_CAPTION                                    :{WHITE}{STRING} lesen untuk {STRING}
@@ -3961,7 +3939,6 @@ STR_ERROR_TOO_CLOSE_TO_EDGE_OF_MAP_SUB                          :{WHITE}... terl
 STR_ERROR_TOO_CLOSE_TO_ANOTHER_TOWN                             :{WHITE}... terlalu hampir ke bandar lain
 STR_ERROR_TOO_MANY_TOWNS                                        :{WHITE}... bandar terlalu banyak
 STR_ERROR_NO_SPACE_FOR_TOWN                                     :{WHITE}... ruang tidak mencukupi di dalam peta
-STR_ERROR_TOWN_EXPAND_WARN_NO_ROADS                             :{WHITE}Bandar ini tidak akan membina jalan. Anda boleh membenarkan pembinaan jalan melalui Tetapan Lanjutan->Ekonomi->Bandar
 STR_ERROR_ROAD_WORKS_IN_PROGRESS                                :{WHITE}Kerja-kerja jalanraya sedang berjalan
 STR_ERROR_TOWN_CAN_T_DELETE                                     :{WHITE}Tidak boleh padam bandar ini...{}Tidak boleh dipadamkan kerana terdapat sebuah stesen atau depoh yang dipunyai bandar atau petak bandar
 STR_ERROR_STATUE_NO_SUITABLE_PLACE                              :{WHITE}... tiada lokasi sesuai untuk arca di tengah bandar

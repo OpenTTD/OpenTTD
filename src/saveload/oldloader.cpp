@@ -27,7 +27,7 @@ static const int TTD_HEADER_SIZE = 49;
 /** The size of the checksum in the name/header of the TTD/TTO savegames. */
 static const int HEADER_CHECKSUM_SIZE = 2;
 
-uint32 _bump_assert_value;
+uint32_t _bump_assert_value;
 
 static inline OldChunkType GetOldChunkType(OldChunkType type)     {return (OldChunkType)GB(type, 0, 4);}
 static inline OldChunkType GetOldChunkVarType(OldChunkType type)  {return (OldChunkType)(GB(type, 8, 8) << 8);}
@@ -83,7 +83,7 @@ byte ReadByte(LoadgameState *ls)
 
 	if (ls->chunk_size == 0) {
 		/* Read new chunk */
-		int8 new_byte = ReadByteFromFile(ls);
+		int8_t new_byte = ReadByteFromFile(ls);
 
 		if (new_byte < 0) {
 			/* Repeat next char for new_byte times */
@@ -138,15 +138,15 @@ bool LoadChunk(LoadgameState *ls, void *base, const OldChunks *chunks)
 					default: break;
 				}
 			} else {
-				uint64 res = 0;
+				uint64_t res = 0;
 
 				/* Reading from the file: bits 16 to 23 have the FILE type */
 				switch (GetOldChunkFileType(chunk->type)) {
-					case OC_FILE_I8:  res = (int8)ReadByte(ls); break;
+					case OC_FILE_I8:  res = (int8_t)ReadByte(ls); break;
 					case OC_FILE_U8:  res = ReadByte(ls); break;
-					case OC_FILE_I16: res = (int16)ReadUint16(ls); break;
+					case OC_FILE_I16: res = (int16_t)ReadUint16(ls); break;
 					case OC_FILE_U16: res = ReadUint16(ls); break;
-					case OC_FILE_I32: res = (int32)ReadUint32(ls); break;
+					case OC_FILE_I32: res = (int32_t)ReadUint32(ls); break;
 					case OC_FILE_U32: res = ReadUint32(ls); break;
 					default: NOT_REACHED();
 				}
@@ -159,14 +159,14 @@ bool LoadChunk(LoadgameState *ls, void *base, const OldChunks *chunks)
 
 				/* Write the data */
 				switch (GetOldChunkVarType(chunk->type)) {
-					case OC_VAR_I8: *(int8  *)ptr = GB(res, 0, 8); break;
-					case OC_VAR_U8: *(uint8 *)ptr = GB(res, 0, 8); break;
-					case OC_VAR_I16:*(int16 *)ptr = GB(res, 0, 16); break;
-					case OC_VAR_U16:*(uint16*)ptr = GB(res, 0, 16); break;
-					case OC_VAR_I32:*(int32 *)ptr = res; break;
-					case OC_VAR_U32:*(uint32*)ptr = res; break;
-					case OC_VAR_I64:*(int64 *)ptr = res; break;
-					case OC_VAR_U64:*(uint64*)ptr = res; break;
+					case OC_VAR_I8: *(int8_t  *)ptr = GB(res, 0, 8); break;
+					case OC_VAR_U8: *(uint8_t *)ptr = GB(res, 0, 8); break;
+					case OC_VAR_I16:*(int16_t *)ptr = GB(res, 0, 16); break;
+					case OC_VAR_U16:*(uint16_t*)ptr = GB(res, 0, 16); break;
+					case OC_VAR_I32:*(int32_t *)ptr = res; break;
+					case OC_VAR_U32:*(uint32_t*)ptr = res; break;
+					case OC_VAR_I64:*(int64_t *)ptr = res; break;
+					case OC_VAR_U64:*(uint64_t*)ptr = res; break;
 					default: NOT_REACHED();
 				}
 
@@ -209,7 +209,7 @@ static void InitLoading(LoadgameState *ls)
  */
 static bool VerifyOldNameChecksum(char *title, uint len)
 {
-	uint16 sum = 0;
+	uint16_t sum = 0;
 	for (uint i = 0; i < len - HEADER_CHECKSUM_SIZE; i++) {
 		sum += title[i];
 		sum = ROL(sum, 1);
@@ -217,7 +217,7 @@ static bool VerifyOldNameChecksum(char *title, uint len)
 
 	sum ^= 0xAAAA; // computed checksum
 
-	uint16 sum2 = title[len - HEADER_CHECKSUM_SIZE]; // checksum in file
+	uint16_t sum2 = title[len - HEADER_CHECKSUM_SIZE]; // checksum in file
 	SB(sum2, 8, 8, title[len - HEADER_CHECKSUM_SIZE + 1]);
 
 	return sum == sum2;

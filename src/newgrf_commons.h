@@ -89,17 +89,17 @@ static inline uint GetConstructionStageOffset(uint construction_stage, uint num_
  */
 struct TileLayoutRegisters {
 	TileLayoutFlags flags; ///< Flags defining which members are valid and to be used.
-	uint8 dodraw;          ///< Register deciding whether the sprite shall be drawn at all. Non-zero means drawing.
-	uint8 sprite;          ///< Register specifying a signed offset for the sprite.
-	uint8 palette;         ///< Register specifying a signed offset for the palette.
-	uint16 max_sprite_offset;  ///< Maximum offset to add to the sprite. (limited by size of the spriteset)
-	uint16 max_palette_offset; ///< Maximum offset to add to the palette. (limited by size of the spriteset)
+	uint8_t dodraw;          ///< Register deciding whether the sprite shall be drawn at all. Non-zero means drawing.
+	uint8_t sprite;          ///< Register specifying a signed offset for the sprite.
+	uint8_t palette;         ///< Register specifying a signed offset for the palette.
+	uint16_t max_sprite_offset;  ///< Maximum offset to add to the sprite. (limited by size of the spriteset)
+	uint16_t max_palette_offset; ///< Maximum offset to add to the palette. (limited by size of the spriteset)
 	union {
-		uint8 parent[3];   ///< Registers for signed offsets for the bounding box position of parent sprites.
-		uint8 child[2];    ///< Registers for signed offsets for the position of child sprites.
+		uint8_t parent[3];   ///< Registers for signed offsets for the bounding box position of parent sprites.
+		uint8_t child[2];    ///< Registers for signed offsets for the position of child sprites.
 	} delta;
-	uint8 sprite_var10;    ///< Value for variable 10 when resolving the sprite.
-	uint8 palette_var10;   ///< Value for variable 10 when resolving the palette.
+	uint8_t sprite_var10;    ///< Value for variable 10 when resolving the sprite.
+	uint8_t palette_var10;   ///< Value for variable 10 when resolving the palette.
 };
 
 static const uint TLR_MAX_VAR10 = 7; ///< Maximum value for var 10.
@@ -151,8 +151,8 @@ struct NewGRFSpriteLayout : ZeroedMemoryAllocator, DrawTileSprites {
 		return this->registers != nullptr;
 	}
 
-	uint32 PrepareLayout(uint32 orig_offset, uint32 newgrf_ground_offset, uint32 newgrf_offset, uint constr_stage, bool separate_ground) const;
-	void ProcessRegisters(uint8 resolved_var10, uint32 resolved_sprite, bool separate_ground) const;
+	uint32_t PrepareLayout(uint32_t orig_offset, uint32_t newgrf_ground_offset, uint32_t newgrf_offset, uint constr_stage, bool separate_ground) const;
+	void ProcessRegisters(uint8_t resolved_var10, uint32_t resolved_sprite, bool separate_ground) const;
 
 	/**
 	 * Returns the result spritelayout after preprocessing.
@@ -183,47 +183,47 @@ private:
  * if the GRF containing the new entity is not available.
  */
 struct EntityIDMapping {
-	uint32 grfid;          ///< The GRF ID of the file the entity belongs to
+	uint32_t grfid;          ///< The GRF ID of the file the entity belongs to
 	uint16_t entity_id; ///< The entity ID within the GRF file
 	uint16_t substitute_id; ///< The (original) entity ID to use if this GRF is not available
 };
 
 class OverrideManagerBase {
 protected:
-	std::vector<uint16> entity_overrides;
-	std::vector<uint32> grfid_overrides;
+	std::vector<uint16_t> entity_overrides;
+	std::vector<uint32_t> grfid_overrides;
 
-	uint16 max_offset;   ///< what is the length of the original entity's array of specs
-	uint16 max_entities; ///< what is the amount of entities, old and new summed
+	uint16_t max_offset;   ///< what is the length of the original entity's array of specs
+	uint16_t max_entities; ///< what is the amount of entities, old and new summed
 
-	uint16 invalid_id;   ///< ID used to detected invalid entities
-	virtual bool CheckValidNewID(uint16 testid) { return true; }
+	uint16_t invalid_id;   ///< ID used to detected invalid entities
+	virtual bool CheckValidNewID([[maybe_unused]] uint16_t testid) { return true; }
 
 public:
 	std::vector<EntityIDMapping> mappings; ///< mapping of ids from grf files.  Public out of convenience
 
-	OverrideManagerBase(uint16 offset, uint16 maximum, uint16 invalid);
+	OverrideManagerBase(uint16_t offset, uint16_t maximum, uint16_t invalid);
 	virtual ~OverrideManagerBase() = default;
 
 	void ResetOverride();
 	void ResetMapping();
 
-	void Add(uint16_t local_id, uint32 grfid, uint entity_type);
-	virtual uint16 AddEntityID(uint16_t grf_local_id, uint32 grfid, uint16_t substitute_id);
+	void Add(uint16_t local_id, uint32_t grfid, uint entity_type);
+	virtual uint16_t AddEntityID(uint16_t grf_local_id, uint32_t grfid, uint16_t substitute_id);
 
-	uint32 GetGRFID(uint16 entity_id) const;
-	uint16 GetSubstituteID(uint16 entity_id) const;
-	virtual uint16 GetID(uint16_t grf_local_id, uint32 grfid) const;
+	uint32_t GetGRFID(uint16_t entity_id) const;
+	uint16_t GetSubstituteID(uint16_t entity_id) const;
+	virtual uint16_t GetID(uint16_t grf_local_id, uint32_t grfid) const;
 
-	inline uint16 GetMaxMapping() const { return this->max_entities; }
-	inline uint16 GetMaxOffset() const { return this->max_offset; }
+	inline uint16_t GetMaxMapping() const { return this->max_entities; }
+	inline uint16_t GetMaxOffset() const { return this->max_offset; }
 };
 
 
 struct HouseSpec;
 class HouseOverrideManager : public OverrideManagerBase {
 public:
-	HouseOverrideManager(uint16 offset, uint16 maximum, uint16 invalid) :
+	HouseOverrideManager(uint16_t offset, uint16_t maximum, uint16_t invalid) :
 			OverrideManagerBase(offset, maximum, invalid) {}
 
 	void SetEntitySpec(const HouseSpec *hs);
@@ -233,11 +233,11 @@ public:
 struct IndustrySpec;
 class IndustryOverrideManager : public OverrideManagerBase {
 public:
-	IndustryOverrideManager(uint16 offset, uint16 maximum, uint16 invalid) :
+	IndustryOverrideManager(uint16_t offset, uint16_t maximum, uint16_t invalid) :
 			OverrideManagerBase(offset, maximum, invalid) {}
 
-	uint16 AddEntityID(uint16_t grf_local_id, uint32 grfid, uint16_t substitute_id) override;
-	uint16 GetID(uint16_t grf_local_id, uint32 grfid) const override;
+	uint16_t AddEntityID(uint16_t grf_local_id, uint32_t grfid, uint16_t substitute_id) override;
+	uint16_t GetID(uint16_t grf_local_id, uint32_t grfid) const override;
 
 	void SetEntitySpec(IndustrySpec *inds);
 };
@@ -246,9 +246,9 @@ public:
 struct IndustryTileSpec;
 class IndustryTileOverrideManager : public OverrideManagerBase {
 protected:
-	virtual bool CheckValidNewID(uint16 testid) { return testid != 0xFF; }
+	bool CheckValidNewID(uint16_t testid) override { return testid != 0xFF; }
 public:
-	IndustryTileOverrideManager(uint16 offset, uint16 maximum, uint16 invalid) :
+	IndustryTileOverrideManager(uint16_t offset, uint16_t maximum, uint16_t invalid) :
 			OverrideManagerBase(offset, maximum, invalid) {}
 
 	void SetEntitySpec(const IndustryTileSpec *indts);
@@ -257,7 +257,7 @@ public:
 struct AirportSpec;
 class AirportOverrideManager : public OverrideManagerBase {
 public:
-	AirportOverrideManager(uint16 offset, uint16 maximum, uint16 invalid) :
+	AirportOverrideManager(uint16_t offset, uint16_t maximum, uint16_t invalid) :
 			OverrideManagerBase(offset, maximum, invalid) {}
 
 	void SetEntitySpec(AirportSpec *inds);
@@ -266,9 +266,9 @@ public:
 struct AirportTileSpec;
 class AirportTileOverrideManager : public OverrideManagerBase {
 protected:
-	virtual bool CheckValidNewID(uint16 testid) override { return testid != 0xFF; }
+	bool CheckValidNewID(uint16_t testid) override { return testid != 0xFF; }
 public:
-	AirportTileOverrideManager(uint16 offset, uint16 maximum, uint16 invalid) :
+	AirportTileOverrideManager(uint16_t offset, uint16_t maximum, uint16_t invalid) :
 			OverrideManagerBase(offset, maximum, invalid) {}
 
 	void SetEntitySpec(const AirportTileSpec *ats);
@@ -277,9 +277,9 @@ public:
 struct ObjectSpec;
 class ObjectOverrideManager : public OverrideManagerBase {
 protected:
-	virtual bool CheckValidNewID(uint16 testid) override { return testid != 0xFF; }
+	bool CheckValidNewID(uint16_t testid) override { return testid != 0xFF; }
 public:
-	ObjectOverrideManager(uint16 offset, uint16 maximum, uint16 invalid) :
+	ObjectOverrideManager(uint16_t offset, uint16_t maximum, uint16_t invalid) :
 			OverrideManagerBase(offset, maximum, invalid) {}
 
 	void SetEntitySpec(ObjectSpec *spec);
@@ -292,15 +292,15 @@ extern AirportOverrideManager _airport_mngr;
 extern AirportTileOverrideManager _airporttile_mngr;
 extern ObjectOverrideManager _object_mngr;
 
-uint32 GetTerrainType(TileIndex tile, TileContext context = TCX_NORMAL);
+uint32_t GetTerrainType(TileIndex tile, TileContext context = TCX_NORMAL);
 TileIndex GetNearbyTile(byte parameter, TileIndex tile, bool signed_offsets = true, Axis axis = INVALID_AXIS);
-uint32 GetNearbyTileInformation(TileIndex tile, bool grf_version8);
-uint32 GetCompanyInfo(CompanyID owner, const struct Livery *l = nullptr);
-CommandCost GetErrorMessageFromLocationCallbackResult(uint16 cb_res, const GRFFile *grffile, StringID default_error);
+uint32_t GetNearbyTileInformation(TileIndex tile, bool grf_version8);
+uint32_t GetCompanyInfo(CompanyID owner, const struct Livery *l = nullptr);
+CommandCost GetErrorMessageFromLocationCallbackResult(uint16_t cb_res, const GRFFile *grffile, StringID default_error);
 
-void ErrorUnknownCallbackResult(uint32 grfid, uint16 cbid, uint16 cb_res);
-bool ConvertBooleanCallback(const struct GRFFile *grffile, uint16 cbid, uint16 cb_res);
-bool Convert8bitBooleanCallback(const struct GRFFile *grffile, uint16 cbid, uint16 cb_res);
+void ErrorUnknownCallbackResult(uint32_t grfid, uint16_t cbid, uint16_t cb_res);
+bool ConvertBooleanCallback(const struct GRFFile *grffile, uint16_t cbid, uint16_t cb_res);
+bool Convert8bitBooleanCallback(const struct GRFFile *grffile, uint16_t cbid, uint16_t cb_res);
 
 /**
  * Data related to the handling of grf files.
@@ -315,7 +315,7 @@ struct GRFFilePropsBase {
 		memset(spritegroup, 0, sizeof(spritegroup));
 	}
 
-	uint16 local_id;                             ///< id defined by the grf file for this entity
+	uint16_t local_id;                             ///< id defined by the grf file for this entity
 	const struct GRFFile *grffile;               ///< grf file that introduced this entity
 	const struct SpriteGroup *spritegroup[Tcnt]; ///< pointer to the different sprites of the entity
 };
@@ -323,13 +323,13 @@ struct GRFFilePropsBase {
 /** Data related to the handling of grf files. */
 struct GRFFileProps : GRFFilePropsBase<1> {
 	/** Set all default data constructor for the props. */
-	GRFFileProps(uint16 subst_id = 0) :
+	GRFFileProps(uint16_t subst_id = 0) :
 			GRFFilePropsBase<1>(), subst_id(subst_id), override(subst_id)
 	{
 	}
 
-	uint16 subst_id;
-	uint16 override;                      ///< id of the entity been replaced by
+	uint16_t subst_id;
+	uint16_t override;                      ///< id of the entity been replaced by
 };
 
 #endif /* NEWGRF_COMMONS_H */

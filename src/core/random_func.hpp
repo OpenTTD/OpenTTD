@@ -20,11 +20,11 @@
  */
 struct Randomizer {
 	/** The state of the randomizer */
-	uint32 state[2];
+	uint32_t state[2];
 
-	uint32 Next();
-	uint32 Next(uint32 limit);
-	void SetSeed(uint32 seed);
+	uint32_t Next();
+	uint32_t Next(uint32_t limit);
+	void SetSeed(uint32_t seed);
 };
 extern Randomizer _random; ///< Random used in the game state calculations
 extern Randomizer _interactive_random; ///< Random used everywhere else, where it does not (directly) influence the game state
@@ -55,18 +55,18 @@ static inline void RestoreRandomSeeds(const SavedRandomSeeds &storage)
 	_interactive_random = storage.interactive_random;
 }
 
-void SetRandomSeed(uint32 seed);
+void SetRandomSeed(uint32_t seed);
 #ifdef RANDOM_DEBUG
 #	ifdef __APPLE__
 #		define OTTD_Random() DoRandom(__LINE__, __FILE__)
 #	else
 #		define Random() DoRandom(__LINE__, __FILE__)
 #	endif
-	uint32 DoRandom(int line, const char *file);
+	uint32_t DoRandom(int line, const char *file);
 #	define RandomRange(limit) DoRandomRange(limit, __LINE__, __FILE__)
-	uint32 DoRandomRange(uint32 limit, int line, const char *file);
+	uint32_t DoRandomRange(uint32_t limit, int line, const char *file);
 #else
-	static inline uint32 Random()
+	static inline uint32_t Random()
 	{
 		return _random.Next();
 	}
@@ -78,18 +78,18 @@ void SetRandomSeed(uint32 seed);
 	 * @param limit Limit for the range to be picked from.
 	 * @return A random number in [0,\a limit).
 	 */
-	static inline uint32 RandomRange(uint32 limit)
+	static inline uint32_t RandomRange(uint32_t limit)
 	{
 		return _random.Next(limit);
 	}
 #endif
 
-static inline uint32 InteractiveRandom()
+static inline uint32_t InteractiveRandom()
 {
 	return _interactive_random.Next();
 }
 
-static inline uint32 InteractiveRandomRange(uint32 limit)
+static inline uint32_t InteractiveRandomRange(uint32_t limit)
 {
 	return _interactive_random.Next(limit);
 }
@@ -109,10 +109,10 @@ static inline uint32 InteractiveRandomRange(uint32 limit)
  * @param r The given randomize-number
  * @return True if the probability given by r is less or equal to (a/b)
  */
-static inline bool Chance16I(const uint a, const uint b, const uint32 r)
+static inline bool Chance16I(const uint a, const uint b, const uint32_t r)
 {
 	assert(b != 0);
-	return (((uint16)r * b + b / 2) >> 16) < a;
+	return (((uint16_t)r * b + b / 2) >> 16) < a;
 }
 
 /**
@@ -152,7 +152,7 @@ static inline bool Chance16(const uint a, const uint b)
 #ifdef RANDOM_DEBUG
 #	define Chance16R(a, b, r) (r = DoRandom(__LINE__, __FILE__), Chance16I(a, b, r))
 #else
-static inline bool Chance16R(const uint a, const uint b, uint32 &r)
+static inline bool Chance16R(const uint a, const uint b, uint32_t &r)
 {
 	r = Random();
 	return Chance16I(a, b, r);

@@ -49,6 +49,7 @@ foreach(BASESET_SOURCE_FILE IN LISTS BASESET_SOURCE_FILES)
             MAIN_DEPENDENCY ${BASESET_SOURCE_FILE}
             DEPENDS ${LANG_SOURCE_FILES}
                     ${BASESET_EXTRAGRF_FILE}
+                    ${BASESET_EXTRAGRF_FILE}.hash
                     ${CMAKE_SOURCE_DIR}/cmake/scripts/Baseset.cmake
             WORKING_DIRECTORY ${CMAKE_CURRENT_BINARY_DIR}
             COMMENT "Generating ${BASESET_SOURCE_FILE_NAME} baseset metadata file"

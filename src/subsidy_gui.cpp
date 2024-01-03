@@ -36,7 +36,7 @@ struct SubsidyListWindow : Window {
 		this->OnInvalidateData(0);
 	}
 
-	void OnClick(Point pt, int widget, int click_count) override
+	void OnClick([[maybe_unused]] Point pt, WidgetID widget, [[maybe_unused]] int click_count) override
 	{
 		if (widget != WID_SUL_PANEL) return;
 
@@ -125,12 +125,12 @@ struct SubsidyListWindow : Window {
 		return 3 + num_awarded + num_not_awarded;
 	}
 
-	void UpdateWidgetSize(int widget, Dimension *size, const Dimension &padding, Dimension *fill, Dimension *resize) override
+	void UpdateWidgetSize(WidgetID widget, Dimension *size, [[maybe_unused]] const Dimension &padding, [[maybe_unused]] Dimension *fill, [[maybe_unused]] Dimension *resize) override
 	{
 		if (widget != WID_SUL_PANEL) return;
 		Dimension d = maxdim(GetStringBoundingBox(STR_SUBSIDIES_OFFERED_TITLE), GetStringBoundingBox(STR_SUBSIDIES_SUBSIDISED_TITLE));
 
-		resize->height = FONT_HEIGHT_NORMAL;
+		resize->height = GetCharacterHeight(FS_NORMAL);
 
 		d.height *= 5;
 		d.width += WidgetDimensions::scaled.framerect.Horizontal();
@@ -138,12 +138,11 @@ struct SubsidyListWindow : Window {
 		*size = maxdim(*size, d);
 	}
 
-	void DrawWidget(const Rect &r, int widget) const override
+	void DrawWidget(const Rect &r, WidgetID widget) const override
 	{
 		if (widget != WID_SUL_PANEL) return;
 
-		TimerGameCalendar::YearMonthDay ymd;
-		TimerGameCalendar::ConvertDateToYMD(TimerGameCalendar::date, &ymd);
+		TimerGameCalendar::YearMonthDay ymd = TimerGameCalendar::ConvertDateToYMD(TimerGameCalendar::date);
 
 		Rect tr = r.Shrink(WidgetDimensions::scaled.framerect);
 
@@ -151,7 +150,7 @@ struct SubsidyListWindow : Window {
 		const int cap = this->vscroll->GetCapacity();
 
 		/* Section for drawing the offered subsidies */
-		if (IsInsideMM(pos, 0, cap)) DrawString(tr.left, tr.right, tr.top + pos * FONT_HEIGHT_NORMAL, STR_SUBSIDIES_OFFERED_TITLE);
+		if (IsInsideMM(pos, 0, cap)) DrawString(tr.left, tr.right, tr.top + pos * GetCharacterHeight(FS_NORMAL), STR_SUBSIDIES_OFFERED_TITLE);
 		pos++;
 
 		uint num = 0;
@@ -161,7 +160,7 @@ struct SubsidyListWindow : Window {
 					/* Displays the two offered towns */
 					SetupSubsidyDecodeParam(s, SubsidyDecodeParamType::Gui);
 					SetDParam(7, TimerGameCalendar::date - ymd.day + s->remaining * 32);
-					DrawString(tr.left, tr.right, tr.top + pos * FONT_HEIGHT_NORMAL, STR_SUBSIDIES_OFFERED_FROM_TO);
+					DrawString(tr.left, tr.right, tr.top + pos * GetCharacterHeight(FS_NORMAL), STR_SUBSIDIES_OFFERED_FROM_TO);
 				}
 				pos++;
 				num++;
@@ -169,13 +168,13 @@ struct SubsidyListWindow : Window {
 		}
 
 		if (num == 0) {
-			if (IsInsideMM(pos, 0, cap)) DrawString(tr.left, tr.right, tr.top + pos * FONT_HEIGHT_NORMAL, STR_SUBSIDIES_NONE);
+			if (IsInsideMM(pos, 0, cap)) DrawString(tr.left, tr.right, tr.top + pos * GetCharacterHeight(FS_NORMAL), STR_SUBSIDIES_NONE);
 			pos++;
 		}
 
 		/* Section for drawing the already granted subsidies */
 		pos++;
-		if (IsInsideMM(pos, 0, cap)) DrawString(tr.left, tr.right, tr.top + pos * FONT_HEIGHT_NORMAL, STR_SUBSIDIES_SUBSIDISED_TITLE);
+		if (IsInsideMM(pos, 0, cap)) DrawString(tr.left, tr.right, tr.top + pos * GetCharacterHeight(FS_NORMAL), STR_SUBSIDIES_SUBSIDISED_TITLE);
 		pos++;
 		num = 0;
 
@@ -187,7 +186,7 @@ struct SubsidyListWindow : Window {
 					SetDParam(8, TimerGameCalendar::date - ymd.day + s->remaining * 32);
 
 					/* Displays the two connected stations */
-					DrawString(tr.left, tr.right, tr.top + pos * FONT_HEIGHT_NORMAL, STR_SUBSIDIES_SUBSIDISED_FROM_TO);
+					DrawString(tr.left, tr.right, tr.top + pos * GetCharacterHeight(FS_NORMAL), STR_SUBSIDIES_SUBSIDISED_FROM_TO);
 				}
 				pos++;
 				num++;
@@ -195,7 +194,7 @@ struct SubsidyListWindow : Window {
 		}
 
 		if (num == 0) {
-			if (IsInsideMM(pos, 0, cap)) DrawString(tr.left, tr.right, tr.top + pos * FONT_HEIGHT_NORMAL, STR_SUBSIDIES_NONE);
+			if (IsInsideMM(pos, 0, cap)) DrawString(tr.left, tr.right, tr.top + pos * GetCharacterHeight(FS_NORMAL), STR_SUBSIDIES_NONE);
 			pos++;
 		}
 	}
@@ -210,7 +209,7 @@ struct SubsidyListWindow : Window {
 	 * @param data Information about the changed data.
 	 * @param gui_scope Whether the call is done from GUI scope. You may not do everything when not in GUI scope. See #InvalidateWindowData() for details.
 	 */
-	void OnInvalidateData(int data = 0, bool gui_scope = true) override
+	void OnInvalidateData([[maybe_unused]] int data = 0, [[maybe_unused]] bool gui_scope = true) override
 	{
 		if (!gui_scope) return;
 		this->vscroll->SetCount(this->CountLines());
@@ -234,11 +233,11 @@ static const NWidgetPart _nested_subsidies_list_widgets[] = {
 	EndContainer(),
 };
 
-static WindowDesc _subsidies_list_desc(
+static WindowDesc _subsidies_list_desc(__FILE__, __LINE__,
 	WDP_AUTO, "list_subsidies", 500, 127,
 	WC_SUBSIDIES_LIST, WC_NONE,
 	0,
-	_nested_subsidies_list_widgets, lengthof(_nested_subsidies_list_widgets)
+	std::begin(_nested_subsidies_list_widgets), std::end(_nested_subsidies_list_widgets)
 );
 
 

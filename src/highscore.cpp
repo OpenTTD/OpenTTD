@@ -60,7 +60,7 @@ int8_t SaveHighScoreValue(const Company *c)
 	if (CheatHasBeenUsed()) return -1;
 
 	auto &highscores = _highscore_table[SP_CUSTOM];
-	uint16 score = c->old_economy[0].performance_history;
+	uint16_t score = c->old_economy[0].performance_history;
 
 	auto it = std::find_if(highscores.begin(), highscores.end(), [&score](auto &highscore) { return highscore.score <= score; });
 

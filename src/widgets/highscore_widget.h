@@ -11,7 +11,7 @@
 #define WIDGETS_HIGHSCORE_WIDGET_H
 
 /** Widgets of the #EndGameHighScoreBaseWindow class and #HighScoreWindow class. */
-enum HighscoreWidgets {
+enum HighscoreWidgets : WidgetID {
 	WID_H_BACKGROUND, ///< Background of the window.
 };
 

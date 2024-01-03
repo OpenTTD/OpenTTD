@@ -25,7 +25,7 @@ enum RoadTramType : bool {
 	RTT_TRAM,
 };
 
-enum RoadTramTypes : uint8 {
+enum RoadTramTypes : uint8_t {
 	RTTB_ROAD = 1 << RTT_ROAD,
 	RTTB_TRAM = 1 << RTT_TRAM,
 };
@@ -64,7 +64,7 @@ enum RoadTypeSpriteGroup {
 	ROTSG_reserved2,      ///<           Placeholder, if we need specific level crossing sprites.
 	ROTSG_DEPOT,          ///< Optional: Depot images
 	ROTSG_reserved3,      ///<           Placeholder, if we add road fences (for highways).
-	ROTSG_ROADSTOP,       ///< Required: Drive-in stop surface
+	ROTSG_ROADSTOP,       ///< Required: Bay stop surface
 	ROTSG_ONEWAY,         ///< Optional: One-way indicator images
 	ROTSG_END,
 };
@@ -126,17 +126,17 @@ public:
 	/**
 	 * Cost multiplier for building this road type
 	 */
-	uint16 cost_multiplier;
+	uint16_t cost_multiplier;
 
 	/**
 	 * Cost multiplier for maintenance of this road type
 	 */
-	uint16 maintenance_multiplier;
+	uint16_t maintenance_multiplier;
 
 	/**
 	 * Maximum speed for vehicles travelling on this road type
 	 */
-	uint16 max_speed;
+	uint16_t max_speed;
 
 	/**
 	 * Unique 32 bit road type identifier

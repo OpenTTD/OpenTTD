@@ -190,6 +190,9 @@ STR_COLOUR_GREY                                                 :Gro
 STR_COLOUR_WHITE                                                :Wäiss
 STR_COLOUR_RANDOM                                               :Zoufälleg
 
+###length 17
+
+
 # Units used in OpenTTD
 STR_UNITS_VELOCITY_IMPERIAL                                     :{DECIMAL}{NBSP}mph
 STR_UNITS_VELOCITY_METRIC                                       :{DECIMAL}{NBSP}km/h
@@ -233,6 +236,7 @@ STR_UNITS_FORCE_SI                                              :{DECIMAL}{NBSP}
 STR_UNITS_HEIGHT_IMPERIAL                                       :{DECIMAL}{NBSP}ft
 STR_UNITS_HEIGHT_METRIC                                         :{DECIMAL}{NBSP}m
 STR_UNITS_HEIGHT_SI                                             :{DECIMAL}{NBSP}m
+
 
 # Common window strings
 STR_LIST_FILTER_TITLE                                           :{BLACK}Filter:
@@ -419,31 +423,25 @@ STR_SETTINGS_MENU_TRANSPARENT_BUILDINGS                         :Transparent Geb
 STR_SETTINGS_MENU_TRANSPARENT_SIGNS                             :Transparent Schëlder
 
 # File menu
-###length 5
 STR_FILE_MENU_SAVE_GAME                                         :Spill späicheren
 STR_FILE_MENU_LOAD_GAME                                         :Spill lueden
 STR_FILE_MENU_QUIT_GAME                                         :Spill ophalen
-STR_FILE_MENU_SEPARATOR                                         :
 STR_FILE_MENU_EXIT                                              :Eraus
 
 # Map menu
-###length 4
 STR_MAP_MENU_MAP_OF_WORLD                                       :Weltkaart
 STR_MAP_MENU_EXTRA_VIEWPORT                                     :Extra Usiicht
 STR_MAP_MENU_LINGRAPH_LEGEND                                    :Cargo Flow Legend
 STR_MAP_MENU_SIGN_LIST                                          :Schëlderlëscht
 
 # Town menu
-###length 2
 STR_TOWN_MENU_TOWN_DIRECTORY                                    :Stiedverzeeschnëss
 STR_TOWN_MENU_FOUND_TOWN                                        :Stad grënnen
 
 # Subsidies menu
-###length 1
 STR_SUBSIDIES_MENU_SUBSIDIES                                    :Subside
 
 # Graph menu
-###length 6
 STR_GRAPH_MENU_OPERATING_PROFIT_GRAPH                           :Grafik: Operative Gewënn
 STR_GRAPH_MENU_INCOME_GRAPH                                     :Grafik: Akommes
 STR_GRAPH_MENU_DELIVERED_CARGO_GRAPH                            :Grafik: Geliwwert Luedungen
@@ -452,57 +450,46 @@ STR_GRAPH_MENU_COMPANY_VALUE_GRAPH                              :Grafik: Betribs
 STR_GRAPH_MENU_CARGO_PAYMENT_RATES                              :Luedungs Bezuelraten
 
 # Company league menu
-###length 3
 STR_GRAPH_MENU_COMPANY_LEAGUE_TABLE                             :Betribsranglëscht
 STR_GRAPH_MENU_DETAILED_PERFORMANCE_RATING                      :Detailléiert Leeschtungsbewäertung
 STR_GRAPH_MENU_HIGHSCORE                                        :Beschtelëscht
 
 # Industry menu
-###length 3
 STR_INDUSTRY_MENU_INDUSTRY_DIRECTORY                            :Industrielëscht
 STR_INDUSTRY_MENU_INDUSTRY_CHAIN                                :Industrieketten
 STR_INDUSTRY_MENU_FUND_NEW_INDUSTRY                             :Finanzéiert eng nei Industrie
 
 # URailway construction menu
-###length 4
 STR_RAIL_MENU_RAILROAD_CONSTRUCTION                             :Schinnebau
 STR_RAIL_MENU_ELRAIL_CONSTRUCTION                               :Elektrësche Schinnebau
 STR_RAIL_MENU_MONORAIL_CONSTRUCTION                             :Monorailbau
 STR_RAIL_MENU_MAGLEV_CONSTRUCTION                               :Magnéitbunnbau
 
 # Road construction menu
-###length 2
 STR_ROAD_MENU_ROAD_CONSTRUCTION                                 :Stroossebau
 STR_ROAD_MENU_TRAM_CONSTRUCTION                                 :Trambau
 
 # Waterways construction menu
-###length 1
 STR_WATERWAYS_MENU_WATERWAYS_CONSTRUCTION                       :Waasserstroosse bauen
 
 # Aairport construction menu
-###length 1
 STR_AIRCRAFT_MENU_AIRPORT_CONSTRUCTION                          :Fluchhafebau
 
 # Landscaping menu
-###length 3
 STR_LANDSCAPING_MENU_LANDSCAPING                                :Landschaftsbau
 STR_LANDSCAPING_MENU_PLANT_TREES                                :Beem planzen
 STR_LANDSCAPING_MENU_PLACE_SIGN                                 :Schëld opstellen
 
 # Music menu
-###length 1
 STR_TOOLBAR_SOUND_MUSIC                                         :Sound/Musik
 
 # Message menu
-###length 3
 STR_NEWS_MENU_LAST_MESSAGE_NEWS_REPORT                          :Lescht Meldung/Neiegkeet
 STR_NEWS_MENU_MESSAGE_HISTORY_MENU                              :Meldungshistorie
 STR_NEWS_MENU_DELETE_ALL_MESSAGES                               :All Message läschen
 
 # About menu
-###length 10
 STR_ABOUT_MENU_LAND_BLOCK_INFO                                  :Landinformatiounen
-STR_ABOUT_MENU_SEPARATOR                                        :
 STR_ABOUT_MENU_TOGGLE_CONSOLE                                   :Konsole un/aus
 STR_ABOUT_MENU_AI_DEBUG                                         :KI / Spill-Script Debug
 STR_ABOUT_MENU_SCREENSHOT                                       :Screenshot (Ctrl+S)
@@ -712,8 +699,6 @@ STR_PLAYLIST_TOOLTIP_CLICK_TO_ADD_TRACK                         :{BLACK}Klick op
 STR_PLAYLIST_TOOLTIP_CLICK_TO_REMOVE_TRACK                      :{BLACK}Klick op d'Lidd fir et vum aktuellen Programm ze läschen (Benotzerdefinéiert 1 an 2 nëmmen)
 
 # Highscore window
-STR_HIGHSCORE_TOP_COMPANIES_WHO_REACHED                         :{BIG_FONT}{BLACK}Top Firmen déi {NUM} erreecht hunn
-STR_HIGHSCORE_TOP_COMPANIES_NETWORK_GAME                        :{BIG_FONT}{BLACK}Firmeligatabell {NUM}
 STR_HIGHSCORE_POSITION                                          :{BIG_FONT}{BLACK}{COMMA}.
 STR_HIGHSCORE_PERFORMANCE_TITLE_BUSINESSMAN                     :Businesspersoun
 STR_HIGHSCORE_PERFORMANCE_TITLE_ENTREPRENEUR                    :Entrepreneur
@@ -902,10 +887,6 @@ STR_NEWS_NEW_VEHICLE_NOW_AVAILABLE_WITH_TYPE                    :{BLACK}Neie/Nei
 
 STR_NEWS_SHOW_VEHICLE_GROUP_TOOLTIP                             :{BLACK}Maach d'Gruppefenster op, fokusséiert op der Gefiergrupp
 
-STR_NEWS_STATION_NO_LONGER_ACCEPTS_CARGO                        :{WHITE}{STATION} akzeptéiert {STRING} net méi
-STR_NEWS_STATION_NO_LONGER_ACCEPTS_CARGO_OR_CARGO               :{WHITE}{STATION} akzeptéiert {STRING} oder {STRING} net méi
-STR_NEWS_STATION_NOW_ACCEPTS_CARGO                              :{WHITE}{STATION} akzeptéiert elo {STRING}
-STR_NEWS_STATION_NOW_ACCEPTS_CARGO_AND_CARGO                    :{WHITE}{STATION} akzeptéiert elo {STRING} an {STRING}
 
 STR_NEWS_OFFER_OF_SUBSIDY_EXPIRED                               :{BIG_FONT}{BLACK}Subside ofgelaaf:{}{}{STRING} vun {STRING} op {STRING} gëtt net méi subventionéiert
 STR_NEWS_SUBSIDY_WITHDRAWN_SERVICE                              :{BIG_FONT}{BLACK}Subside entzunn:{}{}{STRING} Service vun {STRING} op {STRING} gëtt net méi subventionéiert
@@ -936,49 +917,50 @@ STR_GAME_OPTIONS_CAPTION                                        :{WHITE}Spill Op
 STR_GAME_OPTIONS_CURRENCY_UNITS_FRAME                           :{BLACK}Währungseenheet
 STR_GAME_OPTIONS_CURRENCY_UNITS_DROPDOWN_TOOLTIP                :{BLACK}Währungseenheet wielen
 
+
 ###length 42
-STR_GAME_OPTIONS_CURRENCY_GBP                                   :Pond (£)
-STR_GAME_OPTIONS_CURRENCY_USD                                   :Dollar ($)
-STR_GAME_OPTIONS_CURRENCY_EUR                                   :Euro (€)
-STR_GAME_OPTIONS_CURRENCY_JPY                                   :Yen (¥)
-STR_GAME_OPTIONS_CURRENCY_ATS                                   :Eisträichesche Schilling (ATS)
-STR_GAME_OPTIONS_CURRENCY_BEF                                   :Belsch Frang (BEF)
-STR_GAME_OPTIONS_CURRENCY_CHF                                   :Schwäizer Frang (CHF)
-STR_GAME_OPTIONS_CURRENCY_CZK                                   :Tschechesch Kroun (CZK)
-STR_GAME_OPTIONS_CURRENCY_DEM                                   :Däitsch Mark (DM)
-STR_GAME_OPTIONS_CURRENCY_DKK                                   :Dänesch Kroun (DKK)
-STR_GAME_OPTIONS_CURRENCY_ESP                                   :Peseten (ESP)
-STR_GAME_OPTIONS_CURRENCY_FIM                                   :Finnesch Mark (FIM)
-STR_GAME_OPTIONS_CURRENCY_FRF                                   :Franséische Frang (FRF)
-STR_GAME_OPTIONS_CURRENCY_GRD                                   :Griechësch Drachme (GRD)
-STR_GAME_OPTIONS_CURRENCY_HUF                                   :Ungaresche Forint (HUF)
-STR_GAME_OPTIONS_CURRENCY_ISK                                   :Isländesch Kroun (ISK)
-STR_GAME_OPTIONS_CURRENCY_ITL                                   :Italienesch Lire (ITL)
-STR_GAME_OPTIONS_CURRENCY_NLG                                   :Holländesche Gulden (NLG)
-STR_GAME_OPTIONS_CURRENCY_NOK                                   :Norwegesch Kroun (NOK)
-STR_GAME_OPTIONS_CURRENCY_PLN                                   :Polnesch Zloty (PLN)
-STR_GAME_OPTIONS_CURRENCY_RON                                   :Rumänesch Leu (RON)
-STR_GAME_OPTIONS_CURRENCY_RUR                                   :Russesche Rubel (RUR)
-STR_GAME_OPTIONS_CURRENCY_SIT                                   :Sloweneschen Tolar (SIT)
-STR_GAME_OPTIONS_CURRENCY_SEK                                   :Schwedesch Kroun (SEK)
-STR_GAME_OPTIONS_CURRENCY_TRY                                   :Türkesch Lire (TRY)
-STR_GAME_OPTIONS_CURRENCY_SKK                                   :Slovakesch Kroun (SKK)
-STR_GAME_OPTIONS_CURRENCY_BRL                                   :Brasilianesche Real (BRL)
-STR_GAME_OPTIONS_CURRENCY_EEK                                   :Estnesch Kroun (EEK)
-STR_GAME_OPTIONS_CURRENCY_LTL                                   :Litauesch Litas (LTL)
-STR_GAME_OPTIONS_CURRENCY_KRW                                   :Südkoreanesche Won (KRW)
-STR_GAME_OPTIONS_CURRENCY_ZAR                                   :Südafrikanesche Rand (ZAR)
+STR_GAME_OPTIONS_CURRENCY_GBP                                   :Pond
+STR_GAME_OPTIONS_CURRENCY_USD                                   :Dollar
+STR_GAME_OPTIONS_CURRENCY_EUR                                   :Euro
+STR_GAME_OPTIONS_CURRENCY_JPY                                   :Yen
+STR_GAME_OPTIONS_CURRENCY_ATS                                   :Eisträichesche Schilling
+STR_GAME_OPTIONS_CURRENCY_BEF                                   :Belsch Frang
+STR_GAME_OPTIONS_CURRENCY_CHF                                   :Schwäizer Frang
+STR_GAME_OPTIONS_CURRENCY_CZK                                   :Tschechesch Kroun
+STR_GAME_OPTIONS_CURRENCY_DEM                                   :Däitsch Mark
+STR_GAME_OPTIONS_CURRENCY_DKK                                   :Dänesch Kroun
+STR_GAME_OPTIONS_CURRENCY_ESP                                   :Peseten
+STR_GAME_OPTIONS_CURRENCY_FIM                                   :Finnesch Mark
+STR_GAME_OPTIONS_CURRENCY_FRF                                   :Franséische Frang
+STR_GAME_OPTIONS_CURRENCY_GRD                                   :Griechësch Drachme
+STR_GAME_OPTIONS_CURRENCY_HUF                                   :Ungaresche Forint
+STR_GAME_OPTIONS_CURRENCY_ISK                                   :Isländesch Kroun
+STR_GAME_OPTIONS_CURRENCY_ITL                                   :Italienesch Lire
+STR_GAME_OPTIONS_CURRENCY_NLG                                   :Holländesche Gulden
+STR_GAME_OPTIONS_CURRENCY_NOK                                   :Norwegesch Kroun
+STR_GAME_OPTIONS_CURRENCY_PLN                                   :Polnesch Zloty
+STR_GAME_OPTIONS_CURRENCY_RON                                   :Rumänesch Leu
+STR_GAME_OPTIONS_CURRENCY_RUR                                   :Russesche Rubel
+STR_GAME_OPTIONS_CURRENCY_SIT                                   :Sloweneschen Tolar
+STR_GAME_OPTIONS_CURRENCY_SEK                                   :Schwedesch Kroun
+STR_GAME_OPTIONS_CURRENCY_TRY                                   :Türkesch Lire
+STR_GAME_OPTIONS_CURRENCY_SKK                                   :Slovakesch Kroun
+STR_GAME_OPTIONS_CURRENCY_BRL                                   :Brasilianesche Real
+STR_GAME_OPTIONS_CURRENCY_EEK                                   :Estnesch Kroun
+STR_GAME_OPTIONS_CURRENCY_LTL                                   :Litauesch Litas
+STR_GAME_OPTIONS_CURRENCY_KRW                                   :Südkoreanesche Won
+STR_GAME_OPTIONS_CURRENCY_ZAR                                   :Südafrikanesche Rand
 STR_GAME_OPTIONS_CURRENCY_CUSTOM                                :Eegen...
-STR_GAME_OPTIONS_CURRENCY_GEL                                   :Georgesche Lari (GEL)
-STR_GAME_OPTIONS_CURRENCY_IRR                                   :Iranësche Rial (IRR)
-STR_GAME_OPTIONS_CURRENCY_RUB                                   :Neie Russesche Rubel (RUB)
-STR_GAME_OPTIONS_CURRENCY_MXN                                   :Mexikanesche Peso (MXN)
-STR_GAME_OPTIONS_CURRENCY_NTD                                   :New Taiwan Dollar (NTD)
-STR_GAME_OPTIONS_CURRENCY_CNY                                   :Chinesesch Renminbi (CNY)
-STR_GAME_OPTIONS_CURRENCY_HKD                                   :Hong Kong Dollar (HKD)
-STR_GAME_OPTIONS_CURRENCY_INR                                   :Indiesch Rupee (INR)
-STR_GAME_OPTIONS_CURRENCY_IDR                                   :Indonesesch Rupiah (IDR)
-STR_GAME_OPTIONS_CURRENCY_MYR                                   :Malaysesche Ringgit (MYR)
+STR_GAME_OPTIONS_CURRENCY_GEL                                   :Georgesche Lari
+STR_GAME_OPTIONS_CURRENCY_IRR                                   :Iranësche Rial
+STR_GAME_OPTIONS_CURRENCY_RUB                                   :Neie Russesche Rubel
+STR_GAME_OPTIONS_CURRENCY_MXN                                   :Mexikanesche Peso
+STR_GAME_OPTIONS_CURRENCY_NTD                                   :New Taiwan Dollar
+STR_GAME_OPTIONS_CURRENCY_CNY                                   :Chinesesch Renminbi
+STR_GAME_OPTIONS_CURRENCY_HKD                                   :Hong Kong Dollar
+STR_GAME_OPTIONS_CURRENCY_INR                                   :Indiesch Rupee
+STR_GAME_OPTIONS_CURRENCY_IDR                                   :Indonesesch Rupiah
+STR_GAME_OPTIONS_CURRENCY_MYR                                   :Malaysesche Ringgit
 
 STR_GAME_OPTIONS_AUTOSAVE_FRAME                                 :{BLACK}Autospäicheren
 STR_GAME_OPTIONS_AUTOSAVE_DROPDOWN_TOOLTIP                      :{BLACK}Wiel den Intervall aus fir d'Autospäicherung
@@ -1032,7 +1014,6 @@ STR_GAME_OPTIONS_REFRESH_RATE_WARNING                           :{WHITE}Bildfreq
 
 STR_GAME_OPTIONS_BASE_GRF                                       :{BLACK}Basis Grafikset
 STR_GAME_OPTIONS_BASE_GRF_TOOLTIP                               :{BLACK}Wielt de Basis Grafikset dee soll benotzt ginn
-STR_GAME_OPTIONS_BASE_GRF_STATUS                                :{RED}{NUM} fehlend/korrupt Datei{P "" en}
 STR_GAME_OPTIONS_BASE_GRF_DESCRIPTION_TOOLTIP                   :{BLACK}Méi Infos iwwert de Basis Grafikset
 
 STR_GAME_OPTIONS_BASE_SFX                                       :{BLACK}Basis Soundset
@@ -1041,8 +1022,8 @@ STR_GAME_OPTIONS_BASE_SFX_DESCRIPTION_TOOLTIP                   :{BLACK}Méi Inf
 
 STR_GAME_OPTIONS_BASE_MUSIC                                     :{BLACK}Basis Musikset
 STR_GAME_OPTIONS_BASE_MUSIC_TOOLTIP                             :{BLACK}Wiel de Basis Musikset dee soll benotzt ginn
-STR_GAME_OPTIONS_BASE_MUSIC_STATUS                              :{RED}{NUM} korrupt Datei{P "" en}
 STR_GAME_OPTIONS_BASE_MUSIC_DESCRIPTION_TOOLTIP                 :{BLACK}Méi Informatiounen iwwer de Basis Musikset
+
 
 STR_ERROR_RESOLUTION_LIST_FAILED                                :{WHITE}Konnt keng Lëscht vun supportéierten Opléisunge fannen
 STR_ERROR_FULLSCREEN_FAILED                                     :{WHITE}Fehler beim Vollbild
@@ -1204,6 +1185,7 @@ STR_CONFIG_SETTING_REALISTIC                                    :Realistesch
 STR_CONFIG_SETTING_HORIZONTAL_POS_LEFT                          :Lénks
 STR_CONFIG_SETTING_HORIZONTAL_POS_CENTER                        :Zentréiert
 STR_CONFIG_SETTING_HORIZONTAL_POS_RIGHT                         :Riets
+
 
 STR_CONFIG_SETTING_MAXIMUM_INITIAL_LOAN                         :Maximalen Ufanksloun: {STRING}
 STR_CONFIG_SETTING_MAXIMUM_INITIAL_LOAN_HELPTEXT                :Maximalwäert den eng Firma kann léinen (ouni Inflatioun matzerechnen)
@@ -1375,6 +1357,7 @@ STR_CONFIG_SETTING_PLANE_CRASHES_NONE                           :Keng*
 STR_CONFIG_SETTING_PLANE_CRASHES_REDUCED                        :Reduzéiert
 STR_CONFIG_SETTING_PLANE_CRASHES_NORMAL                         :Normal
 
+
 STR_CONFIG_SETTING_STOP_ON_TOWN_ROAD                            :Erlaabt d'Iwwerfueren vu Stopschëlder op Stroossen vun der Stad: {STRING}
 STR_CONFIG_SETTING_STOP_ON_TOWN_ROAD_HELPTEXT                   :Erlaabt d'Bauen vu säitlechen Busarrêten op Stroossen déi der Stad gehéieren
 STR_CONFIG_SETTING_STOP_ON_COMPETITOR_ROAD                      :Erlaabt d'Iwwerfueren vu Stopschëlder op Stroossen vun der Konkurrenz: {STRING}
@@ -1386,6 +1369,7 @@ STR_CONFIG_SETTING_INFRASTRUCTURE_MAINTENANCE_HELPTEXT          :Wann ugeschalt,
 
 STR_CONFIG_SETTING_COMPANY_STARTING_COLOUR                      :Firmefaarw um Start: {STRING}
 STR_CONFIG_SETTING_COMPANY_STARTING_COLOUR_HELPTEXT             :Wiel d'Startfaarw vun der Firma
+
 
 STR_CONFIG_SETTING_NEVER_EXPIRE_AIRPORTS                        :Fluchhäfen lafen nie of: {STRING}
 STR_CONFIG_SETTING_NEVER_EXPIRE_AIRPORTS_HELPTEXT               :Wann ugeschalt, bleift all Fluchhafentyp säit senger Aféierung bestoen
@@ -1420,7 +1404,6 @@ STR_CONFIG_SETTING_AUTORENEW_MONEY_HELPTEXT                     :Minimalt Geld w
 
 STR_CONFIG_SETTING_ERRMSG_DURATION                              :Dauer vun der Feelermeldung: {STRING}
 STR_CONFIG_SETTING_ERRMSG_DURATION_HELPTEXT                     :Zäit déi eng Feelermeldung an enger rouder Fënster ugewisen gëtt. E puer kritesch Meldungen ginn net zougemeet
-STR_CONFIG_SETTING_ERRMSG_DURATION_VALUE                        :{COMMA} Sekonn{P 0 "" en}
 
 STR_CONFIG_SETTING_HOVER_DELAY                                  :Weis Tooltips: {STRING}
 STR_CONFIG_SETTING_HOVER_DELAY_HELPTEXT                         :Verzögerung bis d'Tooltips ugewisen ginn, wann een mat der Maus iwwert en Element geet. Alternativ kënnen d'Tooltips och op d'riets Maustast geluet ginn wann dësen Wäert op 0 gesat gouf.
@@ -1588,9 +1571,7 @@ STR_CONFIG_SETTING_RIGHT_MOUSE_BTN_EMU_OFF                      :Aus
 
 STR_CONFIG_SETTING_RIGHT_MOUSE_WND_CLOSE                        :Fënster mat rietsem Mausklick zouman: {STRING}
 STR_CONFIG_SETTING_RIGHT_MOUSE_WND_CLOSE_HELPTEXT               :Mécht eng Fenster mat engem Rietsklick zou, wann een an d'Fënster klickt. Schalt Tooltips aus déi per Rietsklick gemet ginn!
-
-STR_CONFIG_SETTING_AUTOSAVE                                     :Autospäicheren: {STRING}
-STR_CONFIG_SETTING_AUTOSAVE_HELPTEXT                            :Setz den Interval tëschend automateschen Späicherstänn
+###length 3
 
 STR_CONFIG_SETTING_DATE_FORMAT_IN_SAVE_NAMES                    :Datumsformat fir Späichernimm: {STRING}
 STR_CONFIG_SETTING_DATE_FORMAT_IN_SAVE_NAMES_HELPTEXT           :Format vum Datum am Numm vum Späicherstand
@@ -1616,8 +1597,7 @@ STR_CONFIG_SETTING_ADVANCED_VEHICLE_LISTS_HELPTEXT              :Schalt d'erweid
 STR_CONFIG_SETTING_LOADING_INDICATORS                           :Weist de Luedstatus un: {STRING}
 STR_CONFIG_SETTING_LOADING_INDICATORS_HELPTEXT                  :Wielt aus, ob Luedindikatoren iwwert engem Gefier ugewise ginn oder net, wann et beluede gëtt
 
-STR_CONFIG_SETTING_TIMETABLE_IN_TICKS                           :Weis den Zäitplang an Ticken amplaz vun Deeg: {STRING}
-STR_CONFIG_SETTING_TIMETABLE_IN_TICKS_HELPTEXT                  :Weist d'Transportdauer an der Zäittafel als Gameticks un, amplaz an Deeg
+###length 3
 
 STR_CONFIG_SETTING_TIMETABLE_SHOW_ARRIVAL_DEPARTURE             :Weis Arrivée an Départ am Zäitplang un: {STRING}
 STR_CONFIG_SETTING_TIMETABLE_SHOW_ARRIVAL_DEPARTURE_HELPTEXT    :Weis d'geplangten Departen an Arrivéeën an der Zäittafel un
@@ -1985,30 +1965,30 @@ STR_CONFIG_SETTING_LOCALISATION_UNITS_HEIGHT_IMPERIAL           :Britesch (ft)
 STR_CONFIG_SETTING_LOCALISATION_UNITS_HEIGHT_METRIC             :Metresch (m)
 STR_CONFIG_SETTING_LOCALISATION_UNITS_HEIGHT_SI                 :SI (m)
 
-STR_CONFIG_SETTING_LOCALISATION                                 :{ORANGE}Lokaliséirung
-STR_CONFIG_SETTING_GRAPHICS                                     :{ORANGE}Grafik
-STR_CONFIG_SETTING_SOUND                                        :{ORANGE}Soundeffekter
-STR_CONFIG_SETTING_INTERFACE                                    :{ORANGE}Interface
-STR_CONFIG_SETTING_INTERFACE_GENERAL                            :{ORANGE}Generell
-STR_CONFIG_SETTING_INTERFACE_VIEWPORTS                          :{ORANGE}Usiicht
-STR_CONFIG_SETTING_INTERFACE_CONSTRUCTION                       :{ORANGE}Konstruktioun
-STR_CONFIG_SETTING_ADVISORS                                     :{ORANGE}News / Meldungen
-STR_CONFIG_SETTING_COMPANY                                      :{ORANGE}Firma
-STR_CONFIG_SETTING_ACCOUNTING                                   :{ORANGE}Compta
-STR_CONFIG_SETTING_VEHICLES                                     :{ORANGE}Gefierer
-STR_CONFIG_SETTING_VEHICLES_PHYSICS                             :{ORANGE}Physik
-STR_CONFIG_SETTING_VEHICLES_ROUTING                             :{ORANGE}Routeplangung
-STR_CONFIG_SETTING_LIMITATIONS                                  :{ORANGE}Limitatiounen
-STR_CONFIG_SETTING_ACCIDENTS                                    :{ORANGE}Katastrophen / Accidenter
-STR_CONFIG_SETTING_GENWORLD                                     :{ORANGE}Welt Generatioun
-STR_CONFIG_SETTING_ENVIRONMENT                                  :{ORANGE}Emwelt
-STR_CONFIG_SETTING_ENVIRONMENT_AUTHORITIES                      :{ORANGE}Autoritéiten
-STR_CONFIG_SETTING_ENVIRONMENT_TOWNS                            :{ORANGE}Stied
-STR_CONFIG_SETTING_ENVIRONMENT_INDUSTRIES                       :{ORANGE}Industrien
-STR_CONFIG_SETTING_ENVIRONMENT_CARGODIST                        :{ORANGE}Wuereverdeelung
-STR_CONFIG_SETTING_AI                                           :{ORANGE}Géigner
-STR_CONFIG_SETTING_AI_NPC                                       :{ORANGE}Computerspiller
-STR_CONFIG_SETTING_NETWORK                                      :{ORANGE}Netzwierk
+STR_CONFIG_SETTING_LOCALISATION                                 :Lokaliséirung
+STR_CONFIG_SETTING_GRAPHICS                                     :Grafik
+STR_CONFIG_SETTING_SOUND                                        :Soundeffekter
+STR_CONFIG_SETTING_INTERFACE                                    :Interface
+STR_CONFIG_SETTING_INTERFACE_GENERAL                            :Generell
+STR_CONFIG_SETTING_INTERFACE_VIEWPORTS                          :Usiicht
+STR_CONFIG_SETTING_INTERFACE_CONSTRUCTION                       :Konstruktioun
+STR_CONFIG_SETTING_ADVISORS                                     :News / Meldungen
+STR_CONFIG_SETTING_COMPANY                                      :Firma
+STR_CONFIG_SETTING_ACCOUNTING                                   :Compta
+STR_CONFIG_SETTING_VEHICLES                                     :Gefierer
+STR_CONFIG_SETTING_VEHICLES_PHYSICS                             :Physik
+STR_CONFIG_SETTING_VEHICLES_ROUTING                             :Routeplangung
+STR_CONFIG_SETTING_LIMITATIONS                                  :Limitatiounen
+STR_CONFIG_SETTING_ACCIDENTS                                    :Katastrophen / Accidenter
+STR_CONFIG_SETTING_GENWORLD                                     :Welt Generatioun
+STR_CONFIG_SETTING_ENVIRONMENT                                  :Emwelt
+STR_CONFIG_SETTING_ENVIRONMENT_AUTHORITIES                      :Autoritéiten
+STR_CONFIG_SETTING_ENVIRONMENT_TOWNS                            :Stied
+STR_CONFIG_SETTING_ENVIRONMENT_INDUSTRIES                       :Industrien
+STR_CONFIG_SETTING_ENVIRONMENT_CARGODIST                        :Wuereverdeelung
+STR_CONFIG_SETTING_AI                                           :Géigner
+STR_CONFIG_SETTING_AI_NPC                                       :Computerspiller
+STR_CONFIG_SETTING_NETWORK                                      :Netzwierk
 
 STR_CONFIG_SETTING_PATHFINDER_FOR_TRAINS                        :Pfadfinder fir Zich: {STRING}
 STR_CONFIG_SETTING_PATHFINDER_FOR_TRAINS_HELPTEXT               :Pfadfinder dee fir Zich benotzt gëtt
@@ -2101,6 +2081,8 @@ STR_QUIT_NO                                                     :{BLACK}Nee
 STR_ABANDON_GAME_CAPTION                                        :{WHITE}Spill ofbriechen
 STR_ABANDON_GAME_QUERY                                          :{YELLOW}Bass du sécher, dass du des Partie ofbrieche wëlls?
 STR_ABANDON_SCENARIO_QUERY                                      :{YELLOW}Bass du sécher, dass du dëse Szenario ofbrieche wëlls?
+
+# Help window
 
 # Cheat window
 STR_CHEATS                                                      :{WHITE}Cheater
@@ -2581,7 +2563,6 @@ STR_TRANSPARENT_BUILDINGS_TOOLTIP                               :{BLACK}Wiesselt
 STR_TRANSPARENT_BRIDGES_TOOLTIP                                 :{BLACK}Wiesselt d'Transparenz fir d'Brécken. Ctrl+Klick fir festzesetzen
 STR_TRANSPARENT_STRUCTURES_TOOLTIP                              :{BLACK}Wiesselt d'Transparenz fir d'Gebaier wéi d'Liichttierm oder Antennen. Ctrl+Klick fir festzesetzen
 STR_TRANSPARENT_CATENARY_TOOLTIP                                :{BLACK}Wiesselt d'Transparenz fir d'Catenaire. Ctrl+Klick fir festzesetzen
-STR_TRANSPARENT_LOADING_TOOLTIP                                 :{BLACK}Wiesselt d'Transparenz fir d'Luedungsindikatoren. Ctrl+Klick fir festzesetzen
 STR_TRANSPARENT_INVISIBLE_TOOLTIP                               :{BLACK}Setzt d'Objeten op onsichtbar amplaz transparent
 
 # Linkgraph legend window
@@ -4484,8 +4465,6 @@ STR_TIMETABLE_STAY_FOR_ESTIMATED                                :(bleif während
 STR_TIMETABLE_AND_TRAVEL_FOR_ESTIMATED                          :(fuer während {STRING}, ouni Zäitplang)
 STR_TIMETABLE_STAY_FOR                                          :an bleif fir {STRING}
 STR_TIMETABLE_AND_TRAVEL_FOR                                    :an ënnerwee während {STRING}
-STR_TIMETABLE_DAYS                                              :{COMMA}{NBSP}D{P ag eeg}
-STR_TIMETABLE_TICKS                                             :{COMMA}{NBSP}Tick{P "" er}
 
 STR_TIMETABLE_TOTAL_TIME                                        :{BLACK}Dësen Zäitplang brauch {STRING} fir faërdeg ze ginn
 STR_TIMETABLE_TOTAL_TIME_INCOMPLETE                             :{BLACK}Dësen Zäitplang brauch op manst {STRING} (net all geplangt)
@@ -4494,10 +4473,8 @@ STR_TIMETABLE_STATUS_ON_TIME                                    :{BLACK}D'Gefier
 STR_TIMETABLE_STATUS_LATE                                       :{BLACK}D'Gefier ass grad {STRING} ze spéit
 STR_TIMETABLE_STATUS_EARLY                                      :{BLACK}D'Gefier ass grad {STRING} ze fréi
 STR_TIMETABLE_STATUS_NOT_STARTED                                :{BLACK}Dësen Zäitplang gouf nach net gestart
-STR_TIMETABLE_STATUS_START_AT                                   :{BLACK}Dësen Zäitplang start um {STRING}
 
-STR_TIMETABLE_STARTING_DATE                                     :{BLACK}Start Datum
-STR_TIMETABLE_STARTING_DATE_TOOLTIP                             :{BLACK}Wiel en Datum als Startpunkt fir dësen Zäitplang. Ctrl+Klick verdeelt all Gefierer mat dësem Optrag gläichméisseg vum Startpunkt op hierem relativen Optrag aus, wann den Optrag komplett mat engem Zäitplang versinn ass
+
 
 STR_TIMETABLE_CHANGE_TIME                                       :{BLACK}Zäit wiesselen
 STR_TIMETABLE_WAIT_TIME_TOOLTIP                                 :{BLACK}Änner Zäit déi den ugewielten Optrag brauche soll. Ctrl+Klick ännert d'Zäit fir all Opträg
@@ -4521,8 +4498,6 @@ STR_TIMETABLE_EXPECTED                                          :{BLACK}Erwaard
 STR_TIMETABLE_SCHEDULED                                         :{BLACK}Geplangt
 STR_TIMETABLE_EXPECTED_TOOLTIP                                  :{BLACK}Tëschent erwaard a geplangt wiesselen
 
-STR_TIMETABLE_ARRIVAL_ABBREVIATION                              :A:
-STR_TIMETABLE_DEPARTURE_ABBREVIATION                            :D:
 
 
 # Date window (for timetable)
@@ -4621,7 +4596,7 @@ STR_TEXTFILE_WRAP_TEXT_TOOLTIP                                  :{BLACK}Ännert 
 STR_TEXTFILE_VIEW_README                                        :{BLACK}Readme liesen
 STR_TEXTFILE_VIEW_CHANGELOG                                     :{BLACK}Changelog
 STR_TEXTFILE_VIEW_LICENCE                                       :{BLACK}Lizenz
-###length 4
+###length 5
 STR_TEXTFILE_README_CAPTION                                     :{WHITE}{STRING} readme vun {STRING}
 STR_TEXTFILE_CHANGELOG_CAPTION                                  :{WHITE}{STRING} Changelog vun {STRING}
 STR_TEXTFILE_LICENCE_CAPTION                                    :{WHITE}{STRING} Lizenz vun {STRING}
@@ -4759,7 +4734,6 @@ STR_ERROR_TOO_CLOSE_TO_EDGE_OF_MAP_SUB                          :{WHITE}... ze n
 STR_ERROR_TOO_CLOSE_TO_ANOTHER_TOWN                             :{WHITE}... ze no un enger anerer Stad
 STR_ERROR_TOO_MANY_TOWNS                                        :{WHITE}... ze vill Stied
 STR_ERROR_NO_SPACE_FOR_TOWN                                     :{WHITE}... et ass keng Plaz méi op der Kaart
-STR_ERROR_TOWN_EXPAND_WARN_NO_ROADS                             :{WHITE}Stied bauen keng Stroossen. Du kanns de Bau iwwert Astellungen->Economie->Stied aschalten
 STR_ERROR_ROAD_WORKS_IN_PROGRESS                                :{WHITE}Stroossenarbeschten amgaangen
 STR_ERROR_TOWN_CAN_T_DELETE                                     :{WHITE}Kann des Stad net läschen...{}Eng Statioun oder Schapp huet den Numm vun dëser Stad oder en Stéck dat der Stad gehéiert kann net ewechgeholl ginn
 STR_ERROR_STATUE_NO_SUITABLE_PLACE                              :{WHITE}... et gëtt keng gëeegent Plaz fir eng Statu am Stadzentrum

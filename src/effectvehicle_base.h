@@ -22,7 +22,7 @@
  *  - bubbles (industry)
  */
 struct EffectVehicle FINAL : public SpecializedVehicle<EffectVehicle, VEH_EFFECT> {
-	uint16 animation_state;  ///< State primarily used to change the graphics/behaviour.
+	uint16_t animation_state;  ///< State primarily used to change the graphics/behaviour.
 	byte animation_substate; ///< Sub state to time the change of the graphics/behaviour.
 
 	/** We don't want GCC to zero our struct! It already is zeroed and has an index! */
@@ -30,8 +30,8 @@ struct EffectVehicle FINAL : public SpecializedVehicle<EffectVehicle, VEH_EFFECT
 	/** We want to 'destruct' the right class. */
 	virtual ~EffectVehicle() = default;
 
-	void UpdateDeltaXY();
-	bool Tick();
+	void UpdateDeltaXY() override;
+	bool Tick() override;
 	TransparencyOption GetTransparencyOption() const;
 };
 

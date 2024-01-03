@@ -96,7 +96,7 @@ void DriverFactoryBase::SelectDriver(const std::string &name, Driver::Type type)
 	if (!DriverFactoryBase::SelectDriverImpl(name, type)) {
 		name.empty() ?
 			UserError("Failed to autoprobe {} driver", GetDriverTypeName(type)) :
-			UserError("Failed to select requested {} driver '{}'", GetDriverTypeName(type), name.c_str());
+			UserError("Failed to select requested {} driver '{}'", GetDriverTypeName(type), name);
 	}
 }
 
@@ -109,7 +109,7 @@ void DriverFactoryBase::SelectDriver(const std::string &name, Driver::Type type)
  */
 bool DriverFactoryBase::SelectDriverImpl(const std::string &name, Driver::Type type)
 {
-	if (GetDrivers().size() == 0) return false;
+	if (GetDrivers().empty()) return false;
 
 	if (name.empty()) {
 		/* Probe for this driver, but do not fall back to dedicated/null! */

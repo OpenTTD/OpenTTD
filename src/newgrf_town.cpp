@@ -11,10 +11,11 @@
 #include "debug.h"
 #include "town.h"
 #include "newgrf_town.h"
+#include "timer/timer_game_tick.h"
 
 #include "safeguards.h"
 
-/* virtual */ uint32 TownScopeResolver::GetVariable(byte variable, uint32 parameter, bool *available) const
+/* virtual */ uint32_t TownScopeResolver::GetVariable(byte variable, [[maybe_unused]] uint32_t parameter, bool *available) const
 {
 	switch (variable) {
 		/* Larger towns */
@@ -29,7 +30,7 @@
 		/* Get a variable from the persistent storage */
 		case 0x7C: {
 			/* Check the persistent storage for the GrfID stored in register 100h. */
-			uint32 grfid = GetRegister(0x100);
+			uint32_t grfid = GetRegister(0x100);
 			if (grfid == 0xFFFFFFFF) {
 				if (this->ro.grffile == nullptr) return 0;
 				grfid = this->ro.grffile->grfid;
@@ -43,23 +44,23 @@
 		}
 
 		/* Town properties */
-		case 0x80: return this->t->xy;
-		case 0x81: return GB(this->t->xy, 8, 8);
+		case 0x80: return this->t->xy.base();
+		case 0x81: return GB(this->t->xy.base(), 8, 8);
 		case 0x82: return ClampTo<uint16_t>(this->t->cache.population);
 		case 0x83: return GB(ClampTo<uint16_t>(this->t->cache.population), 8, 8);
-		case 0x8A: return this->t->grow_counter / TOWN_GROWTH_TICKS;
+		case 0x8A: return this->t->grow_counter / Ticks::TOWN_GROWTH_TICKS;
 		case 0x92: return this->t->flags;  // In original game, 0x92 and 0x93 are really one word. Since flags is a byte, this is to adjust
 		case 0x93: return 0;
-		case 0x94: return ClampTo<uint16_t>(this->t->cache.squared_town_zone_radius[0]);
-		case 0x95: return GB(ClampTo<uint16_t>(this->t->cache.squared_town_zone_radius[0]), 8, 8);
-		case 0x96: return ClampTo<uint16_t>(this->t->cache.squared_town_zone_radius[1]);
-		case 0x97: return GB(ClampTo<uint16_t>(this->t->cache.squared_town_zone_radius[1]), 8, 8);
-		case 0x98: return ClampTo<uint16_t>(this->t->cache.squared_town_zone_radius[2]);
-		case 0x99: return GB(ClampTo<uint16_t>(this->t->cache.squared_town_zone_radius[2]), 8, 8);
-		case 0x9A: return ClampTo<uint16_t>(this->t->cache.squared_town_zone_radius[3]);
-		case 0x9B: return GB(ClampTo<uint16_t>(this->t->cache.squared_town_zone_radius[3]), 8, 8);
-		case 0x9C: return ClampTo<uint16_t>(this->t->cache.squared_town_zone_radius[4]);
-		case 0x9D: return GB(ClampTo<uint16_t>(this->t->cache.squared_town_zone_radius[4]), 8, 8);
+		case 0x94: return ClampTo<uint16_t>(this->t->cache.squared_town_zone_radius[HZB_TOWN_EDGE]);
+		case 0x95: return GB(ClampTo<uint16_t>(this->t->cache.squared_town_zone_radius[HZB_TOWN_EDGE]), 8, 8);
+		case 0x96: return ClampTo<uint16_t>(this->t->cache.squared_town_zone_radius[HZB_TOWN_OUTSKIRT]);
+		case 0x97: return GB(ClampTo<uint16_t>(this->t->cache.squared_town_zone_radius[HZB_TOWN_OUTSKIRT]), 8, 8);
+		case 0x98: return ClampTo<uint16_t>(this->t->cache.squared_town_zone_radius[HZB_TOWN_OUTER_SUBURB]);
+		case 0x99: return GB(ClampTo<uint16_t>(this->t->cache.squared_town_zone_radius[HZB_TOWN_OUTER_SUBURB]), 8, 8);
+		case 0x9A: return ClampTo<uint16_t>(this->t->cache.squared_town_zone_radius[HZB_TOWN_INNER_SUBURB]);
+		case 0x9B: return GB(ClampTo<uint16_t>(this->t->cache.squared_town_zone_radius[HZB_TOWN_INNER_SUBURB]), 8, 8);
+		case 0x9C: return ClampTo<uint16_t>(this->t->cache.squared_town_zone_radius[HZB_TOWN_CENTRE]);
+		case 0x9D: return GB(ClampTo<uint16_t>(this->t->cache.squared_town_zone_radius[HZB_TOWN_CENTRE]), 8, 8);
 		case 0x9E: return this->t->ratings[0];
 		case 0x9F: return GB(this->t->ratings[0], 8, 8);
 		case 0xA0: return this->t->ratings[1];
@@ -79,7 +80,7 @@
 		case 0xAE: return this->t->have_ratings;
 		case 0xB2: return this->t->statues;
 		case 0xB6: return ClampTo<uint16_t>(this->t->cache.num_houses);
-		case 0xB9: return this->t->growth_rate / TOWN_GROWTH_TICKS;
+		case 0xB9: return this->t->growth_rate / Ticks::TOWN_GROWTH_TICKS;
 		case 0xBA: return ClampTo<uint16_t>(this->t->supplied[CT_PASSENGERS].new_max);
 		case 0xBB: return GB(ClampTo<uint16_t>(this->t->supplied[CT_PASSENGERS].new_max), 8, 8);
 		case 0xBC: return ClampTo<uint16_t>(this->t->supplied[CT_MAIL].new_max);
@@ -116,7 +117,7 @@
 	return UINT_MAX;
 }
 
-/* virtual */ void TownScopeResolver::StorePSA(uint pos, int32 value)
+/* virtual */ void TownScopeResolver::StorePSA(uint pos, int32_t value)
 {
 	if (this->readonly) return;
 
@@ -125,7 +126,7 @@
 	if (this->ro.grffile == nullptr) return;
 
 	/* Check the persistent storage for the GrfID stored in register 100h. */
-	uint32 grfid = GetRegister(0x100);
+	uint32_t grfid = GetRegister(0x100);
 
 	/* A NewGRF can only write in the persistent storage associated to its own GRFID. */
 	if (grfid == 0xFFFFFFFF) grfid = this->ro.grffile->grfid;
