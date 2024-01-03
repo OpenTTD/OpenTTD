@@ -14,6 +14,7 @@
 #include "script_station.hpp"
 #include "../../depot_map.h"
 #include "../../vehicle_base.h"
+#include "../../vehiclelist_func.h"
 #include "../../train.h"
 #include "../../core/backup_type.hpp"
 #include <../squirrel/sqvm.h>
@@ -111,16 +112,12 @@ ScriptVehicleList_Station::ScriptVehicleList_Station(StationID station_id)
 
 	bool is_deity = ScriptCompanyMode::IsDeity();
 	CompanyID owner = ScriptObject::GetCompany();
-	for (const Vehicle *v : Vehicle::Iterate()) {
-		if ((v->owner == owner || is_deity) && v->IsPrimaryVehicle()) {
-			for (const Order *order : v->Orders()) {
-				if ((order->IsType(OT_GOTO_STATION) || order->IsType(OT_GOTO_WAYPOINT)) && order->GetDestination() == station_id) {
-					this->AddItem(v->index);
-					break;
-				}
-			}
-		}
-	}
+
+	FindVehiclesWithOrder(
+		[is_deity, owner](const Vehicle *v) { return is_deity || v->owner == owner; },
+		[station_id](const Order *order) { return (order->IsType(OT_GOTO_STATION) || order->IsType(OT_GOTO_WAYPOINT)) && order->GetDestination() == station_id; },
+		[this](const Vehicle *v) { this->AddItem(v->index); }
+	);
 }
 
 ScriptVehicleList_Depot::ScriptVehicleList_Depot(TileIndex tile)
@@ -162,16 +159,12 @@ ScriptVehicleList_Depot::ScriptVehicleList_Depot(TileIndex tile)
 
 	bool is_deity = ScriptCompanyMode::IsDeity();
 	CompanyID owner = ScriptObject::GetCompany();
-	for (const Vehicle *v : Vehicle::Iterate()) {
-		if ((v->owner == owner || is_deity) && v->IsPrimaryVehicle() && v->type == type) {
-			for (const Order *order : v->Orders()) {
-				if (order->IsType(OT_GOTO_DEPOT) && order->GetDestination() == dest) {
-					this->AddItem(v->index);
-					break;
-				}
-			}
-		}
-	}
+
+	FindVehiclesWithOrder(
+		[is_deity, owner, type](const Vehicle *v) { return (is_deity || v->owner == owner) && v->type == type; },
+		[dest](const Order *order) { return order->IsType(OT_GOTO_DEPOT) && order->GetDestination() == dest; },
+		[this](const Vehicle *v) { this->AddItem(v->index); }
+	);
 }
 
 ScriptVehicleList_SharedOrders::ScriptVehicleList_SharedOrders(VehicleID vehicle_id)
