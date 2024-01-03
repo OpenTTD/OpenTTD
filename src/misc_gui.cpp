@@ -604,6 +604,23 @@ void ShowFeederIncomeAnimation(int x, int y, int z, Money transfer, Money income
 }
 
 /**
+ * Display animated text on the map.
+ * @param x    World X position of the animation location.
+ * @param y    World Y position of the animation location.
+ * @param z    World Z position of the animation location.
+ * @param string String which is drawn on the map.
+ */
+void ShowTextAnimation(int x, int y, int z, const std::string &text)
+{
+	Point pt = RemapCoords(x, y, z);
+
+	// @TODO This only accepts StringID, but no string
+	// make similiar for string?
+	// 
+	// AddTextEffect(string, pt.x, pt.y, DAY_TICKS, TE_RISING);
+}
+
+/**
  * Display vehicle loading indicators.
  * @param x       World X position of the animation location.
  * @param y       World Y position of the animation location.

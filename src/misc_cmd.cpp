@@ -22,6 +22,9 @@
 #include "texteff.hpp"
 #include "core/backup_type.hpp"
 #include "misc_cmd.h"
+#include "landscape.h"
+#include "texteff.hpp"
+#include "string_func.h"
 
 #include "table/strings.h"
 
@@ -229,4 +232,26 @@ CommandCost CmdChangeBankBalance(DoCommandFlag flags, TileIndex tile, Money delt
 	/* This command doesn't cost anything for deity. */
 	CommandCost zero_cost(expenses_type, (Money)0);
 	return zero_cost;
+}
+
+/**
+ * Spawns animated text on the map
+ * @param flags type of operation
+ * @param tile tile to spawn animated text on
+ * @param text text to put on the map
+ * @return the cost of this operation or an error
+ */
+CommandCost CmdSpawnAnimatedText(DoCommandFlag flags, TileIndex tile, const std::string &text)
+{	
+	if (Utf8StringLength(text) >= MAX_LENGTH_ANIMATED_TEXT_CHARS) return CMD_ERROR;
+
+	if (flags & DC_EXEC) {
+		int x = TileX(tile) * TILE_SIZE;
+		int y = TileY(tile) * TILE_SIZE;		
+		int z = GetSlopePixelZ(x, y);
+
+		ShowTextAnimation(x, y, z, text);
+	}
+
+	return CommandCost();
 }

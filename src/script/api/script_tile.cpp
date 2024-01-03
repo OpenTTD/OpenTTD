@@ -20,6 +20,7 @@
 #include "../../landscape_cmd.h"
 #include "../../terraform_cmd.h"
 #include "../../tree_cmd.h"
+#include "../../misc_cmd.h"
 
 #include "../../safeguards.h"
 
@@ -342,4 +343,18 @@
 		case BT_CLEAR_WATER:  return ::GetPrice(PR_CLEAR_WATER, 1, nullptr);
 		default: return -1;
 	}
+}
+
+/* static */ bool ScriptTile::SpawnAnimatedText(TileIndex tile, Text *text)
+{
+	EnforceCompanyModeValid(false);
+	EnforcePrecondition(false, ::IsValidTile(tile));
+	EnforcePrecondition(false, text != nullptr);
+
+	const std::string &textAsString = text->GetDecodedText();
+
+	EnforcePreconditionEncodedText(false, textAsString);
+	EnforcePreconditionCustomError(false, ::Utf8StringLength(textAsString) < MAX_LENGTH_ANIMATED_TEXT_CHARS, ScriptError::ERR_PRECONDITION_STRING_TOO_LONG);
+	
+	return ScriptObject::Command<CMD_SPAWN_ANIMATED_TEXT>::Do(tile, textAsString);
 }

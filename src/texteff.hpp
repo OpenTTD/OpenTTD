@@ -40,5 +40,6 @@ void HideFillingPercent(TextEffectID *te_id);
 
 void ShowCostOrIncomeAnimation(int x, int y, int z, Money cost);
 void ShowFeederIncomeAnimation(int x, int y, int z, Money transfer, Money income);
+void ShowTextAnimation(int x, int y, int z, const std::string &text);
 
 #endif /* TEXTEFF_HPP */

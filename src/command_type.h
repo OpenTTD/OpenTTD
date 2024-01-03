@@ -356,6 +356,8 @@ enum Commands : uint16 {
 	CMD_UPDATE_LEAGUE_TABLE_ELEMENT_SCORE, ///< update the score of a league table element
 	CMD_REMOVE_LEAGUE_TABLE_ELEMENT,       ///< remove a league table element
 
+	CMD_SPAWN_ANIMATED_TEXT,          ///< spawn animated text on the tile
+
 	CMD_END,                          ///< Must ALWAYS be on the end of this list!! (period)
 };
 
