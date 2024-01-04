@@ -230,8 +230,10 @@ void HttpThread()
 			request->callback.OnFailure();
 		}
 
-		/* Wait till the callback tells us all data is dequeued. */
-		request->callback.WaitTillEmpty();
+		/* Wait till the callback tells us all data is dequeued, or _http_thread_exit has been set. */
+		request->callback.WaitTillEmptyOrCondition([]() -> bool {
+			return _http_thread_exit;
+		});
 	}
 
 	curl_easy_cleanup(curl);
@@ -277,6 +279,11 @@ void NetworkHTTPUninitialize()
 	curl_global_cleanup();
 
 	_http_thread_exit = true;
+
+	/* Queues must be cleared (and the queue CV signalled) after _http_thread_exit is set to ensure that the HTTP thread can exit */
+	for (auto &callback : _http_callbacks) {
+		callback->ClearQueue();
+	}
 
 	{
 		std::lock_guard<std::mutex> lock(_http_mutex);
