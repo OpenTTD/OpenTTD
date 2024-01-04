@@ -95,7 +95,7 @@ public:
 	T GetNextParameter()
 	{
 		auto ptr = GetNextParameterPointer();
-		return static_cast<T>(ptr == nullptr ? 0 : ptr->data);
+		return static_cast<T>(ptr->data);
 	}
 
 	/**
@@ -107,7 +107,6 @@ public:
 	const char *GetNextParameterString()
 	{
 		auto ptr = GetNextParameterPointer();
-		if (ptr == nullptr) return nullptr;
 		return ptr->string != nullptr ? ptr->string->c_str() : ptr->string_view;
 	}
 
