@@ -1728,6 +1728,7 @@ STR_CONFIG_SETTING_SERVINT_DISABLED                             :点検なし
 STR_CONFIG_SETTING_NOSERVICE                                    :故障切ならば点検無効化: {STRING}
 STR_CONFIG_SETTING_NOSERVICE_HELPTEXT                           :有効にすると、故障が起こらない設定の時には点検も行わなくなります
 
+
 STR_CONFIG_SETTING_WAGONSPEEDLIMITS                             :貨車の上限速度: {STRING}
 STR_CONFIG_SETTING_WAGONSPEEDLIMITS_HELPTEXT                    :有効にすると、上限速度が設定されている貨車を使用した場合、列車はその速度以上出せなくなります
 

@@ -1777,6 +1777,7 @@ STR_CONFIG_SETTING_SERVINT_DISABLED                             :tắt
 STR_CONFIG_SETTING_NOSERVICE                                    :Tắt bảo trì khi đặt tắt tuỳ chọn hỏng hóc: {STRING}
 STR_CONFIG_SETTING_NOSERVICE_HELPTEXT                           :Nếu bật, phương tiện sẽ không cần bảo trì nếu chúng không thể bị hỏng
 
+
 STR_CONFIG_SETTING_WAGONSPEEDLIMITS                             :Bật giới hạn tốc độ toa tàu: {STRING}
 STR_CONFIG_SETTING_WAGONSPEEDLIMITS_HELPTEXT                    :Nếu bật, sử dụng giới hạn tốc độ của toa xe để hạn chế tốc độ của cả đoàn tàu
 

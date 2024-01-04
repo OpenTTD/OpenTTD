@@ -1777,6 +1777,7 @@ STR_CONFIG_SETTING_SERVINT_DISABLED                             :Deaktiveret
 STR_CONFIG_SETTING_NOSERVICE                                    :Slå service fra, når nedbrud er sat til ingen: {STRING}
 STR_CONFIG_SETTING_NOSERVICE_HELPTEXT                           :Når tilladt, bliver køretøjer ikke serviceret, hvis de ikke kan bryde ned
 
+
 STR_CONFIG_SETTING_WAGONSPEEDLIMITS                             :Aktiver hastighedsbegrænsning for vogne: {STRING}
 STR_CONFIG_SETTING_WAGONSPEEDLIMITS_HELPTEXT                    :Når tilladt, brug også fartgrænse på vogne, for at bestemme makshastigheden på tog
 

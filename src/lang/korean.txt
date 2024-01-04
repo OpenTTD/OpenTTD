@@ -1778,6 +1778,7 @@ STR_CONFIG_SETTING_SERVINT_DISABLED                             :사용 안 함
 STR_CONFIG_SETTING_NOSERVICE                                    :차량 고장 설정을 껐으면 점검을 하지 않음: {STRING}
 STR_CONFIG_SETTING_NOSERVICE_HELPTEXT                           :이 설정을 켜면, 차량이 고장나지 않도록 설정되어 있는 경우 차량이 자동으로 점검을 하러 가지 않습니다
 
+
 STR_CONFIG_SETTING_WAGONSPEEDLIMITS                             :화물차 속력 제한 적용: {STRING}
 STR_CONFIG_SETTING_WAGONSPEEDLIMITS_HELPTEXT                    :이 설정을 켜면, 화물차의 속력 제한값에 따라 열차의 최대 속력을 제한합니다.
 

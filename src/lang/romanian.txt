@@ -1771,6 +1771,7 @@ STR_CONFIG_SETTING_SERVINT_DISABLED                             :Dezactivat
 STR_CONFIG_SETTING_NOSERVICE                                    :Deactivare service când defecțiunile nu sunt active: {STRING}
 STR_CONFIG_SETTING_NOSERVICE_HELPTEXT                           :Dacă este activată, vehiculele nu vor întreținute dacă nu se pot defecta
 
+
 STR_CONFIG_SETTING_WAGONSPEEDLIMITS                             :Activează limite de viteză pentru vagoane: {STRING}
 STR_CONFIG_SETTING_WAGONSPEEDLIMITS_HELPTEXT                    :Dacă este activată, folosește și limita de viteză a vagoanelor pentru a stabili viteza maximă a trenului
 

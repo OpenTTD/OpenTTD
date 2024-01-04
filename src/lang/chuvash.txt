@@ -767,6 +767,7 @@ STR_CONFIG_SETTING_DATE_FORMAT_IN_SAVE_NAMES_ISO                :ISO (2008-12-31
 
 
 
+
 STR_CONFIG_SETTING_NEWS_SUBSIDIES                               :Грантсем: {STRING}
 
 ###length 3

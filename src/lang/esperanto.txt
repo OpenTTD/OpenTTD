@@ -1784,6 +1784,7 @@ STR_CONFIG_SETTING_SERVINT_DISABLED                             :Malaktiva
 STR_CONFIG_SETTING_NOSERVICE                                    :Malŝaltu prizorgadon se rompiĝoj ne okazas: {STRING}
 STR_CONFIG_SETTING_NOSERVICE_HELPTEXT                           :Kiam tiu ĉi agordo estas aktiva, veturiloj kiuj ne povas panei ne estos priservataj
 
+
 STR_CONFIG_SETTING_WAGONSPEEDLIMITS                             :Aktivigu vagonajn rapideclimojn: {STRING}
 STR_CONFIG_SETTING_WAGONSPEEDLIMITS_HELPTEXT                    :Kiam ebligita, ankaŭ uzu rapideco-limigojn de vagonoj por decidi la maksimuman rapidecon de trajno
 

@@ -1777,6 +1777,7 @@ STR_CONFIG_SETTING_SERVINT_DISABLED                             :Disabled
 STR_CONFIG_SETTING_NOSERVICE                                    :Disable maintenance when breakdowns are set to none: {STRING}
 STR_CONFIG_SETTING_NOSERVICE_HELPTEXT                           :When enabled, vehicles do not get maintained if they cannot break down
 
+
 STR_CONFIG_SETTING_WAGONSPEEDLIMITS                             :Enable railroad car speed limits: {STRING}
 STR_CONFIG_SETTING_WAGONSPEEDLIMITS_HELPTEXT                    :When enabled, also use speed limits of wagons for deciding the maximum speed of a train
 
@@ -4475,9 +4476,9 @@ STR_ORDER_CONDITIONAL_COMPARATOR_TOOLTIP                        :{BLACK}How to c
 STR_ORDER_CONDITIONAL_COMPARATOR_EQUALS                         :is equal to
 STR_ORDER_CONDITIONAL_COMPARATOR_NOT_EQUALS                     :is not equal to
 STR_ORDER_CONDITIONAL_COMPARATOR_LESS_THAN                      :is less than
-STR_ORDER_CONDITIONAL_COMPARATOR_LESS_EQUALS                    :is less or equal to
+STR_ORDER_CONDITIONAL_COMPARATOR_LESS_EQUALS                    :is less than or equal to
 STR_ORDER_CONDITIONAL_COMPARATOR_MORE_THAN                      :is more than
-STR_ORDER_CONDITIONAL_COMPARATOR_MORE_EQUALS                    :is more or equal to
+STR_ORDER_CONDITIONAL_COMPARATOR_MORE_EQUALS                    :is more than or equal to
 STR_ORDER_CONDITIONAL_COMPARATOR_IS_TRUE                        :is true
 STR_ORDER_CONDITIONAL_COMPARATOR_IS_FALSE                       :is false
 

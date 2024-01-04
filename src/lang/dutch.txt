@@ -1777,6 +1777,7 @@ STR_CONFIG_SETTING_SERVINT_DISABLED                             :Uitgeschakeld
 STR_CONFIG_SETTING_NOSERVICE                                    :Onderhoud uitschakelen wanneer defecten uit staan: {STRING}
 STR_CONFIG_SETTING_NOSERVICE_HELPTEXT                           :Als deze optie is ingeschakeld worden voertuigen niet onderhouden als ze niet kapot kunnen gaan.
 
+
 STR_CONFIG_SETTING_WAGONSPEEDLIMITS                             :Snelheidslimieten voor wagons inschakelen: {STRING}
 STR_CONFIG_SETTING_WAGONSPEEDLIMITS_HELPTEXT                    :Wanneer ingeschakeld, ook gebruik maken van snelheidsbeperkingen van wagons voor het bepalen van de maximale snelheid van een trein
 

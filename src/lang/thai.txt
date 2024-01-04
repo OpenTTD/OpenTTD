@@ -1596,6 +1596,7 @@ STR_CONFIG_SETTING_SERVINT_DISABLED                             :ไม่ตั
 STR_CONFIG_SETTING_NOSERVICE                                    :ไม่ใช้งานการซ่อมบำรุงเมื่อตั้งเป็นไม่มีการขัดข้อง: {STRING}
 STR_CONFIG_SETTING_NOSERVICE_HELPTEXT                           :เมื่อเปิดใช้งาน ยานพาหนะจะไม่เข้ารับการซ่อมบำรุงหากตั้งค่าไว้ไม่ให้มีการชำรุด
 
+
 STR_CONFIG_SETTING_WAGONSPEEDLIMITS                             :จำกัดความเร็วของรถจักร/รถพ่วง: {STRING}
 STR_CONFIG_SETTING_WAGONSPEEDLIMITS_HELPTEXT                    :เมื่อเปิดใช้งาน จะทำให้มีจำกัดความเร็วสูงสุดของยานพาหนะและรถพ่วงต่างๆ
 

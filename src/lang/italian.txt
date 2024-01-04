@@ -1812,6 +1812,7 @@ STR_CONFIG_SETTING_SERVINT_DISABLED                             :Disabilitato
 STR_CONFIG_SETTING_NOSERVICE                                    :Disabilita manutenzione con i guasti veicoli disattivati: {STRING}
 STR_CONFIG_SETTING_NOSERVICE_HELPTEXT                           :Se abilitata, non vengono manutenuti i veicoli che non possono guastarsi.
 
+
 STR_CONFIG_SETTING_WAGONSPEEDLIMITS                             :Abilita limiti di velocità dei vagoni: {STRING}
 STR_CONFIG_SETTING_WAGONSPEEDLIMITS_HELPTEXT                    :Quando abilitata, tiene conto anche dei limiti di velocità dei vagoni per determinare la velocità massima di un treno.
 

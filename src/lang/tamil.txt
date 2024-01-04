@@ -1549,6 +1549,7 @@ STR_CONFIG_SETTING_SERVINT_DISABLED                             :செயலி
 STR_CONFIG_SETTING_NOSERVICE                                    :பழுதுகள் இல்லையெனில் பழுதுபார்த்தலினை செயலிழக்கவும்: {STRING}
 STR_CONFIG_SETTING_NOSERVICE_HELPTEXT                           :இயக்கப்படும் போது, வாகனங்கள் உடைக்க முடியாவிட்டால் சேவை செய்யப்படாது
 
+
 STR_CONFIG_SETTING_WAGONSPEEDLIMITS                             :பெட்டி வேக கட்டுப்பாட்டினை செயல்படுத்தவும்: {STRING}
 
 STR_CONFIG_SETTING_DISABLE_ELRAILS                              :மின்சார இரயில்களை அனுமதிக்காதே: {STRING}

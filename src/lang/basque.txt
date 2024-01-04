@@ -1538,6 +1538,7 @@ STR_CONFIG_SETTING_SERVINT_DISABLED                             :Desgaitua
 STR_CONFIG_SETTING_NOSERVICE                                    :Mantenimendua desgaitu ibilgailuen matxurak kenduta daudenean: {STRING}
 STR_CONFIG_SETTING_NOSERVICE_HELPTEXT                           :Gaitua dagoenean, ibilgailuek ez dute mantenimendurik jasoko ezin badira matxuratu
 
+
 STR_CONFIG_SETTING_WAGONSPEEDLIMITS                             :Bagoiaren abiadura mugak aktibatu: {STRING}
 STR_CONFIG_SETTING_WAGONSPEEDLIMITS_HELPTEXT                    :Gaitua dagoenean, bagoien gehienezko abiadura erabili trenen geheienezko abiadura zehazteko
 

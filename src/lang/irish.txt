@@ -1671,6 +1671,7 @@ STR_CONFIG_SETTING_SERVINT_DISABLED                             :Díchumasaithe
 STR_CONFIG_SETTING_NOSERVICE                                    :Díchumasaigh seirbhísiú nuair nach mbíonn aon bhriseadh síos: {STRING}
 STR_CONFIG_SETTING_NOSERVICE_HELPTEXT                           :Má tá sé cumasaithe, ní dhéantar feithiclí a sheirbhísí má rud é nach féidir leo briseadh síos
 
+
 STR_CONFIG_SETTING_WAGONSPEEDLIMITS                             :Cumasaigh teorainneacha luais vaigíní: {STRING}
 STR_CONFIG_SETTING_WAGONSPEEDLIMITS_HELPTEXT                    :Má tá sé cumasaithe, úsáid teorainneacha luais na vaigíní freisin chun luas uasta traenacha a shocrú
 

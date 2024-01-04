@@ -1783,6 +1783,7 @@ STR_CONFIG_SETTING_SERVINT_DISABLED                             :Neglectum
 STR_CONFIG_SETTING_NOSERVICE                                    :Neglegere ministrationem cum nullae sunt defectiones vehiculorum: {STRING}
 STR_CONFIG_SETTING_NOSERVICE_HELPTEXT                           :Electa, vehicula non ministrantur defectionibus vetatis
 
+
 STR_CONFIG_SETTING_WAGONSPEEDLIMITS                             :Annuere currus ferriviarios habere velocitates maximas: {STRING}
 STR_CONFIG_SETTING_WAGONSPEEDLIMITS_HELPTEXT                    :Electa, velocitates maximae curruum afficiunt velocitatem maximam traminis
 

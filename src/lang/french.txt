@@ -1778,6 +1778,7 @@ STR_CONFIG_SETTING_SERVINT_DISABLED                             :Désactivé
 STR_CONFIG_SETTING_NOSERVICE                                    :Désactiver l'entretien quand les pannes sont inactives{NBSP}: {STRING}
 STR_CONFIG_SETTING_NOSERVICE_HELPTEXT                           :Lorsqu'il est activé, les véhicules ne sont pas entretenus s'ils ne peuvent pas tomber en panne
 
+
 STR_CONFIG_SETTING_WAGONSPEEDLIMITS                             :Activer la vitesse limite des wagons{NBSP}: {STRING}
 STR_CONFIG_SETTING_WAGONSPEEDLIMITS_HELPTEXT                    :Lorsqu'il est activé, utiliser la vitesse limite des wagons pour déterminer la vitesse maximum d'un train
 

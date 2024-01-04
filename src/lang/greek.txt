@@ -1813,6 +1813,7 @@ STR_CONFIG_SETTING_SERVINT_DISABLED                             :Απενεργ�
 STR_CONFIG_SETTING_NOSERVICE                                    :Απενεργοποίηση επισκευών όταν οι καταρρεύσεις είναι απενεργοποιημένες: {STRING}
 STR_CONFIG_SETTING_NOSERVICE_HELPTEXT                           :Όταν είναι ενεργοποιημένη, τα οχήματα δεν συντηρούνται όταν δεν είναι δυνατό να χαλάσουν
 
+
 STR_CONFIG_SETTING_WAGONSPEEDLIMITS                             :Ενεργοποίηση ορίων ταχύτητας βαγονιών: {STRING}
 STR_CONFIG_SETTING_WAGONSPEEDLIMITS_HELPTEXT                    :Όταν είναι ενεργοποιημένο, χρησιμοποιούνται και τα όρια ταχύτητας των βαγονιών όταν αποφασίζεται η μέγιστη ταχύτητα ενός τρένου
 

@@ -1526,6 +1526,7 @@ STR_CONFIG_SETTING_SERVINT_DISABLED                             :Deaktivert
 
 STR_CONFIG_SETTING_NOSERVICE                                    :Deaktiver vedlikehald når havari er slått av: {STRING}
 
+
 STR_CONFIG_SETTING_WAGONSPEEDLIMITS                             :Aktiver fartsgrenser for vogner: {STRING}
 
 STR_CONFIG_SETTING_DISABLE_ELRAILS                              :Deaktiver elektriske tog: {STRING}

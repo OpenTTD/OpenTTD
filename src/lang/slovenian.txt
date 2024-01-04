@@ -1735,6 +1735,7 @@ STR_CONFIG_SETTING_SERVINT_DISABLED                             :Onemogočeno
 STR_CONFIG_SETTING_NOSERVICE                                    :Onemogoči servisiranje, če so onemogočene okvare: {STRING}
 STR_CONFIG_SETTING_NOSERVICE_HELPTEXT                           :Če je omogočeno, se vozila ne servisirajo, če ni okvar.
 
+
 STR_CONFIG_SETTING_WAGONSPEEDLIMITS                             :Omogoči omejitve hitrosti vagonov: {STRING}
 STR_CONFIG_SETTING_WAGONSPEEDLIMITS_HELPTEXT                    :Če je omogočeno, se upošteva tudi omejitve hitrosti posameznih vagonov pri najvišji hitrosti vlaka.
 

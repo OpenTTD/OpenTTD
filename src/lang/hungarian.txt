@@ -1830,6 +1830,7 @@ STR_CONFIG_SETTING_SERVINT_DISABLED                             :kikapcsolva
 STR_CONFIG_SETTING_NOSERVICE                                    :Ne legyen javítás ha lerobbanások sincsenek: {STRING}
 STR_CONFIG_SETTING_NOSERVICE_HELPTEXT                           :Bekapcsolva a járművek nem kerülnek javításra, ha nem tudnak lerobbanni
 
+
 STR_CONFIG_SETTING_WAGONSPEEDLIMITS                             :A vagonok sebessége korlátozható: {STRING}
 STR_CONFIG_SETTING_WAGONSPEEDLIMITS_HELPTEXT                    :Bekapcsolva a szerelvényben lévő vasúti kocsik maximális sebessége is korlátozza a vonat maximális sebességét
 

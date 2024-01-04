@@ -1710,6 +1710,7 @@ STR_CONFIG_SETTING_SERVINT_DISABLED                             :Deshabilitado
 STR_CONFIG_SETTING_NOSERVICE                                    :Desactivar mantenimiento cuando las averías están desactivadas: {STRING}
 STR_CONFIG_SETTING_NOSERVICE_HELPTEXT                           :Cuando se activa, los vehículos no reciben mantenimiento si no pueden averiarse
 
+
 STR_CONFIG_SETTING_WAGONSPEEDLIMITS                             :Activar límites de velocidad en vagones: {STRING}
 STR_CONFIG_SETTING_WAGONSPEEDLIMITS_HELPTEXT                    :Si se activa, se tienen en cuenta los límites de velocidad de los vagones a la hora de establecer la velocidad máxima de un tren
 

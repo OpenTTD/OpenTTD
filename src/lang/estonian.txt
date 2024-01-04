@@ -1765,6 +1765,7 @@ STR_CONFIG_SETTING_SERVINT_DISABLED                             :Väljas
 STR_CONFIG_SETTING_NOSERVICE                                    :Hoolduse keelamine rikete väljalülitamisel: {STRING}
 STR_CONFIG_SETTING_NOSERVICE_HELPTEXT                           :Kui on aktiveeritud, siis ei teostata hooldust sõidukitele mille tõrkumine ei ole võimalik
 
+
 STR_CONFIG_SETTING_WAGONSPEEDLIMITS                             :Vagunite kiiruspiirangud: {STRING}
 STR_CONFIG_SETTING_WAGONSPEEDLIMITS_HELPTEXT                    :Kui on aktiveeritud siis kasutatakse rongi maksimaalse kiiruse arvutamiseks ka vagunite kiiruse piirangut
 

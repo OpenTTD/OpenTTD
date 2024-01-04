@@ -634,6 +634,9 @@ STR_UNITS_HEIGHT_IMPERIAL                                       :{DECIMAL}{NBSP}
 STR_UNITS_HEIGHT_METRIC                                         :{DECIMAL}{NBSP}m
 STR_UNITS_HEIGHT_SI                                             :{DECIMAL}{NBSP}m
 
+STR_UNITS_DAYS                                                  :{COMMA}{NBSP}d{P zień ni ni}
+STR_UNITS_SECONDS                                               :{COMMA}{NBSP}sekund{P a y ""}
+STR_UNITS_TICKS                                                 :{COMMA}{NBSP}tyknię{P cie cia ć}
 
 # Common window strings
 STR_LIST_FILTER_TITLE                                           :{BLACK}Filtr:
@@ -1098,6 +1101,7 @@ STR_PLAYLIST_TOOLTIP_CLICK_TO_ADD_TRACK                         :{BLACK}Kliknij 
 STR_PLAYLIST_TOOLTIP_CLICK_TO_REMOVE_TRACK                      :{BLACK}Kliknij na ścieżce muzycznej aby usunąć ją z wybranego programu (Wlasny1 lub Wlasny2)
 
 # Highscore window
+STR_HIGHSCORE_TOP_COMPANIES                                     :{BIG_FONT}{BLACK}Najlepsze firmy
 STR_HIGHSCORE_POSITION                                          :{BIG_FONT}{BLACK}{COMMA}.
 STR_HIGHSCORE_PERFORMANCE_TITLE_BUSINESSMAN                     :Biznesmen
 STR_HIGHSCORE_PERFORMANCE_TITLE_ENTREPRENEUR                    :Przedsiębiorca
@@ -1915,6 +1919,7 @@ STR_CONFIG_SETTING_ROAD_SIDE_LEFT                               :Jazda po lewej
 STR_CONFIG_SETTING_ROAD_SIDE_RIGHT                              :Jazda po prawej
 
 STR_CONFIG_SETTING_HEIGHTMAP_ROTATION                           :Obrót mapy wysokości: {STRING}
+STR_CONFIG_SETTING_HEIGHTMAP_ROTATION_TOOLTIP                   :Wybierz kierunek obrotu mapy wysokości, aby dopasować ją do świata gry
 ###length 2
 STR_CONFIG_SETTING_HEIGHTMAP_ROTATION_COUNTER_CLOCKWISE         :Przeciwnie do wsk. zegara
 STR_CONFIG_SETTING_HEIGHTMAP_ROTATION_CLOCKWISE                 :Zgodnie ze wsk. zegara
@@ -2035,7 +2040,12 @@ STR_CONFIG_SETTING_ADVANCED_VEHICLE_LISTS_HELPTEXT              :Wlącz obsług�
 STR_CONFIG_SETTING_LOADING_INDICATORS                           :Pokazuj wskaźniki załadunku: {STRING}
 STR_CONFIG_SETTING_LOADING_INDICATORS_HELPTEXT                  :Wybierz, czy wskaźnik załadunku pokazuje się nad ładowanym/rozładowywanym pojazdem
 
+STR_CONFIG_SETTING_TIMETABLE_MODE                               :Jednostki czasu w rozkładach jazdy: {STRING}
+STR_CONFIG_SETTING_TIMETABLE_MODE_HELPTEXT                      :Wybierz jednostki czasu używane w rozkładach jazdy pojazdów
 ###length 3
+STR_CONFIG_SETTING_TIMETABLE_MODE_DAYS                          :Dni
+STR_CONFIG_SETTING_TIMETABLE_MODE_SECONDS                       :Sekundy
+STR_CONFIG_SETTING_TIMETABLE_MODE_TICKS                         :Tyknięcia
 
 STR_CONFIG_SETTING_TIMETABLE_SHOW_ARRIVAL_DEPARTURE             :Pokazuj przyjazdy i odjazdy w rozkładach: {STRING}
 STR_CONFIG_SETTING_TIMETABLE_SHOW_ARRIVAL_DEPARTURE_HELPTEXT    :Wyświetlanie przewidywanego przyjazdu i odjazdu w rozkładach
@@ -2146,6 +2156,7 @@ STR_CONFIG_SETTING_SERVINT_DISABLED                             :Wyłączone
 
 STR_CONFIG_SETTING_NOSERVICE                                    :Wyłącz serwisowanie jeśli awarie pojazdów są wyłączone: {STRING}
 STR_CONFIG_SETTING_NOSERVICE_HELPTEXT                           :Kiedy włączone, pojazdy nie są serwisowane, jeśli nie mogą się popsuć
+
 
 STR_CONFIG_SETTING_WAGONSPEEDLIMITS                             :Włącz limity prędkości wagonów: {STRING}
 STR_CONFIG_SETTING_WAGONSPEEDLIMITS_HELPTEXT                    :Kiedy włączone, użyj także ograniczenia prędkości dla wagonów do obliczenia maksymalnej prędkości pociągu
@@ -3579,11 +3590,15 @@ STR_MAPGEN_MAPSIZE                                              :{BLACK}Rozmiar 
 STR_MAPGEN_MAPSIZE_TOOLTIP                                      :{BLACK}Wybierz rozmiar mapy w kwadratach. Liczba dostępnych kwadratów będzie nieco mniejsza
 STR_MAPGEN_BY                                                   :{BLACK}*
 STR_MAPGEN_NUMBER_OF_TOWNS                                      :{BLACK}Liczba miast:
+STR_MAPGEN_NUMBER_OF_TOWNS_TOOLTIP                              :{BLACK}Wybierz gęstość rozmieszczenia miast lub podaj ich określoną liczbę
 STR_MAPGEN_TOWN_NAME_LABEL                                      :{BLACK}Nazwy miast:
 STR_MAPGEN_TOWN_NAME_DROPDOWN_TOOLTIP                           :{BLACK}Wybierz styl nazw miast
 STR_MAPGEN_DATE                                                 :{BLACK}Data:
+STR_MAPGEN_DATE_TOOLTIP                                         :{BLACK}Wybierz datę początkową
 STR_MAPGEN_NUMBER_OF_INDUSTRIES                                 :{BLACK}Liczba przedsiębiorstw:
+STR_MAPGEN_NUMBER_OF_INDUSTRIES_TOOLTIP                         :{BLACK}Wybierz gęstość rozmieszczenia przedsiębiorstw lub podaj ich określoną liczbę
 STR_MAPGEN_HEIGHTMAP_HEIGHT                                     :{BLACK}Najwyższy szczyt:
+STR_MAPGEN_HEIGHTMAP_HEIGHT_TOOLTIP                             :{BLACK}Wybierz najwyższy szczyt, który gra spróbuje utworzyć, mierzony wysokością nad poziomem wody
 STR_MAPGEN_HEIGHTMAP_HEIGHT_UP                                  :{BLACK}Zwiększ wysokość najwyższego szczytu na mapie o jeden poziom
 STR_MAPGEN_HEIGHTMAP_HEIGHT_DOWN                                :{BLACK}Zmniejsz wysokość najwyższego szczytu na mapie o jeden poziom
 STR_MAPGEN_SNOW_COVERAGE                                        :{BLACK}Pokrycie śniegiem:
@@ -3596,10 +3611,12 @@ STR_MAPGEN_DESERT_COVERAGE_DOWN                                 :{BLACK}Zmniejsz
 STR_MAPGEN_DESERT_COVERAGE_TEXT                                 :{BLACK}{NUM}%
 STR_MAPGEN_TERRAIN_TYPE                                         :{BLACK}Typ terenu:
 STR_MAPGEN_SEA_LEVEL                                            :{BLACK}Poziom wody:
+STR_MAPGEN_SEA_LEVEL_TOOLTIP                                    :{BLACK}Określ wysokość poziomu wody
 STR_MAPGEN_QUANTITY_OF_RIVERS                                   :{BLACK}Liczba rzek:
 STR_MAPGEN_SMOOTHNESS                                           :{BLACK}Gładkość:
 STR_MAPGEN_VARIETY                                              :{BLACK}Różnorodność:
 STR_MAPGEN_GENERATE                                             :{WHITE}Stwórz
+STR_MAPGEN_GENERATE_TOOLTIP                                     :{BLACK}Stwórz świat i graj w OpenTTD!
 STR_MAPGEN_NEWGRF_SETTINGS                                      :{BLACK}Ustawienia NewGRF
 STR_MAPGEN_NEWGRF_SETTINGS_TOOLTIP                              :{BLACK}Wyświetl ustawienia NewGRF
 STR_MAPGEN_AI_SETTINGS                                          :{BLACK}Ustawienia SI
@@ -3632,6 +3649,7 @@ STR_MAPGEN_TOWN_NAME_CATALAN                                    :Katalońskie
 
 # Strings for map borders at game generation
 STR_MAPGEN_BORDER_TYPE                                          :{BLACK}Krańce mapy:
+STR_MAPGEN_BORDER_TYPE_TOOLTIP                                  :{BLACK}Wybierz obrzeża świata gry
 STR_MAPGEN_NORTHWEST                                            :{BLACK}Płn.-zach.
 STR_MAPGEN_NORTHEAST                                            :{BLACK}Płn.-wsch.
 STR_MAPGEN_SOUTHEAST                                            :{BLACK}Płd.-wsch.
@@ -3644,7 +3662,9 @@ STR_MAPGEN_BORDER_MANUAL                                        :{BLACK}Użytkow
 
 STR_MAPGEN_HEIGHTMAP_ROTATION                                   :{BLACK}Obrót mapy wysokości:
 STR_MAPGEN_HEIGHTMAP_NAME                                       :{BLACK}Nazwa mapy wysokosci:
+STR_MAPGEN_HEIGHTMAP_NAME_TOOLTIP                               :{BLACK}Nazwa pliku obrazu mapy wysokości
 STR_MAPGEN_HEIGHTMAP_SIZE_LABEL                                 :{BLACK}Rozmiar:
+STR_MAPGEN_HEIGHTMAP_SIZE_LABEL_TOOLTIP                         :{BLACK}Rozmiar źródłowego obrazu mapy wysokości. Aby uzyskać najlepsze wyniki, każda krawędź powinna odpowiadać dostępnej długości krawędzi mapy w OpenTTD, takiej jak 256, 512, 1024 itd.
 STR_MAPGEN_HEIGHTMAP_SIZE                                       :{ORANGE}{NUM} x {NUM}
 
 STR_MAPGEN_TERRAIN_TYPE_QUERY_CAPT                              :{WHITE}Żądana wysokość najwyższego szczytu
@@ -3659,6 +3679,7 @@ STR_SE_MAPGEN_FLAT_WORLD                                        :{WHITE}Płaski 
 STR_SE_MAPGEN_FLAT_WORLD_TOOLTIP                                :{BLACK}Stwórz płaski świat
 STR_SE_MAPGEN_RANDOM_LAND                                       :{WHITE}Losowy teren
 STR_SE_MAPGEN_FLAT_WORLD_HEIGHT                                 :{BLACK}Wysokość płaskiego świata:
+STR_SE_MAPGEN_FLAT_WORLD_HEIGHT_TOOLTIP                         :{BLACK}Wybierz wysokość terenu nad poziomem morza
 STR_SE_MAPGEN_FLAT_WORLD_HEIGHT_DOWN                            :{BLACK}Obniż wysokość terenu o jeden w dół
 STR_SE_MAPGEN_FLAT_WORLD_HEIGHT_UP                              :{BLACK}Podnieś wysokość terenu o jeden w górę
 
@@ -4958,8 +4979,13 @@ STR_TIMETABLE_STATUS_ON_TIME                                    :{BLACK}Ten poja
 STR_TIMETABLE_STATUS_LATE                                       :{BLACK}Ten pojazd jest teraz spóźniony o {STRING}
 STR_TIMETABLE_STATUS_EARLY                                      :{BLACK}Ten pojazd spieszy się teraz o {STRING}
 STR_TIMETABLE_STATUS_NOT_STARTED                                :{BLACK}Ten rozkład jazdy jeszcze się nie rozpoczął
+STR_TIMETABLE_STATUS_START_AT_DATE                              :{BLACK}Ten rozkład jazdy rozpocznie się {STRING}
+STR_TIMETABLE_STATUS_START_IN_SECONDS                           :{BLACK}Ten rozkład jazdy rozpocznie się za {COMMA} sekund{P ę y ""}
 
+STR_TIMETABLE_START                                             :{BLACK}Początek rozkładu
+STR_TIMETABLE_START_TOOLTIP                                     :{BLACK}Wybierz moment rozpoczęcia tego rozkładu jazdy. Ctrl+klik rozłoży równomiernie momenty startu wszystkich pojazdów współdzielących te polecenia w oparciu o ich względną kolejność, o ile rozkład jest w pełni zaplanowany
 
+STR_TIMETABLE_START_SECONDS_QUERY                               :Sekundy do uruchomienia rozkładu jazdy
 
 STR_TIMETABLE_CHANGE_TIME                                       :{BLACK}Zmień czas
 STR_TIMETABLE_WAIT_TIME_TOOLTIP                                 :{BLACK}Zmień ilość czasu, jaką powinno zająć zaznaczone polecenie. Ctrl+klik ustala czas dla wszystkich poleceń
@@ -4983,6 +5009,10 @@ STR_TIMETABLE_EXPECTED                                          :{BLACK}Wymagany
 STR_TIMETABLE_SCHEDULED                                         :{BLACK}Zaplanowany
 STR_TIMETABLE_EXPECTED_TOOLTIP                                  :{BLACK}Przełącz między spodziewanymi i zaplanowanymi
 
+STR_TIMETABLE_ARRIVAL_DATE                                      :P: {COLOUR}{DATE_TINY}
+STR_TIMETABLE_DEPARTURE_DATE                                    :O: {COLOUR}{DATE_TINY}
+STR_TIMETABLE_ARRIVAL_SECONDS_IN_FUTURE                         :P: {COLOUR}{COMMA} s
+STR_TIMETABLE_DEPARTURE_SECONDS_IN_FUTURE                       :O: {COLOUR}{COMMA} s
 
 
 # Date window (for timetable)

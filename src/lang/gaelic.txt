@@ -1785,6 +1785,7 @@ STR_CONFIG_SETTING_SERVINT_DISABLED                             :À comas
 STR_CONFIG_SETTING_NOSERVICE                                    :Cuir obair-chàraidh à comas ma chaidh briseadh a chur gu “Cha tachair seo idir”: {STRING}
 STR_CONFIG_SETTING_NOSERVICE_HELPTEXT                           :Ma tha seo air, chan fhaigh carbadan obair-chàraidh mur urrainn dhaibh briseadh
 
+
 STR_CONFIG_SETTING_WAGONSPEEDLIMITS                             :Cuir crìochan-luaiths nan carbadan-rèile an comas: {STRING}
 STR_CONFIG_SETTING_WAGONSPEEDLIMITS_HELPTEXT                    :Ma tha seo air, cleachd crìochan-luaiths nan carbadan cuideachd gus an luaths as motha aig trèan a shuidheachadh
 

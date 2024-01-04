@@ -1815,6 +1815,7 @@ STR_CONFIG_SETTING_SERVINT_DISABLED                             :vypnuté
 STR_CONFIG_SETTING_NOSERVICE                                    :Vypnúť servisy, ak sú vypnuté poruchy: {STRING}
 STR_CONFIG_SETTING_NOSERVICE_HELPTEXT                           :Ak je zapnuté, vozidlá nebudú servisované ak sú vypnuté poruchy.
 
+
 STR_CONFIG_SETTING_WAGONSPEEDLIMITS                             :Obmedzenie rýchlosti pre vagóny: {STRING}
 STR_CONFIG_SETTING_WAGONSPEEDLIMITS_HELPTEXT                    :Ak je zapnuté, použijú sa tiež rýchlostné obmedzenia pre vagóny na obmedzenie celkovej rýchlosti vlakov.
 

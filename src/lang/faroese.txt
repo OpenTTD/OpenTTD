@@ -1519,6 +1519,7 @@ STR_CONFIG_SETTING_SERVINT_DISABLED                             :Ikki sligi til
 STR_CONFIG_SETTING_NOSERVICE                                    :Ógilda eftirlit tá maskinskaðar eru ásettir til eingir: {STRING}
 STR_CONFIG_SETTING_NOSERVICE_HELPTEXT                           :Um gilda fáa flutningstól einki eftirlit um tey ikki kunnu fáa maskinskaða
 
+
 STR_CONFIG_SETTING_WAGONSPEEDLIMITS                             :Gilda hámarksferð fyri vognar: {STRING}
 STR_CONFIG_SETTING_WAGONSPEEDLIMITS_HELPTEXT                    :Um gilda, verður hámarksferðin hjá vognum eisini nýtt fyri at avgerða mest loydu ferðina á tokum
 

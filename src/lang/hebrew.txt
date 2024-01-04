@@ -1624,6 +1624,7 @@ STR_CONFIG_SETTING_SERVINT_DISABLED                             :מבוטל
 STR_CONFIG_SETTING_NOSERVICE                                    :{STRING} :בטל טיפולים כאשר האפשרות לביטול תקלות נבחרה
 STR_CONFIG_SETTING_NOSERVICE_HELPTEXT                           :כאשר מאופשר, כלי רכב אינם מתוחזקים אם הם אינם יכולים להתקלקל
 
+
 STR_CONFIG_SETTING_WAGONSPEEDLIMITS                             :{STRING} :אפשר הגבלת מהירות עבור קרונות רכבת
 STR_CONFIG_SETTING_WAGONSPEEDLIMITS_HELPTEXT                    :כאשר מאופשר, השתמש גם במגבלות מהירות של קרונות לצורך קביעות המהירות המירבית של רכבת
 

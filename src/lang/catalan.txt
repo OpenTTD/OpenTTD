@@ -1778,6 +1778,7 @@ STR_CONFIG_SETTING_SERVINT_DISABLED                             :Desactivat
 STR_CONFIG_SETTING_NOSERVICE                                    :Desactiva les revisions quan les avaries s'estableixen a cap: {STRING}
 STR_CONFIG_SETTING_NOSERVICE_HELPTEXT                           :Quan està activat, els vehicles no són revisats si no es poden espatllar
 
+
 STR_CONFIG_SETTING_WAGONSPEEDLIMITS                             :Activa límits de velocitat per als vagons: {STRING}
 STR_CONFIG_SETTING_WAGONSPEEDLIMITS_HELPTEXT                    :Quan està activat, també utilitza els límits de velocitat dels vagons per decidir la velocitat màxima del tren
 

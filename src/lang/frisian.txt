@@ -1592,6 +1592,7 @@ STR_CONFIG_SETTING_SERVINT_DISABLED                             :Útskeakele
 STR_CONFIG_SETTING_NOSERVICE                                    :Gjin ûnderhald as stikken gean út steat: {STRING}
 STR_CONFIG_SETTING_NOSERVICE_HELPTEXT                           :By ynskeakeljen sille fiertugen gjin ûnderhâld krije at sy net kapot gean kinne
 
+
 STR_CONFIG_SETTING_WAGONSPEEDLIMITS                             :Wagon snelheids limiet: {STRING}
 STR_CONFIG_SETTING_WAGONSPEEDLIMITS_HELPTEXT                    :By ynskeakeljen sille de faasjelimyten fan de weinen meinaam wurde by it bepalen fan de maksimale faasje foar in trein
 

@@ -1755,6 +1755,7 @@ STR_CONFIG_SETTING_SERVINT_DISABLED                             :停用
 STR_CONFIG_SETTING_NOSERVICE                                    :如果停用故障，車輛不會進行自動維護：{STRING}
 STR_CONFIG_SETTING_NOSERVICE_HELPTEXT                           :如啟用此選項，而且車輛設定為不故障，它們將不會進入機廠接受維護。
 
+
 STR_CONFIG_SETTING_WAGONSPEEDLIMITS                             :開啟列車車廂速限：{STRING}
 STR_CONFIG_SETTING_WAGONSPEEDLIMITS_HELPTEXT                    :如啟用此選項，無動力車廂的限速會影響列車的最高速度。
 

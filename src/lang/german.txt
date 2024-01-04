@@ -1768,6 +1768,7 @@ STR_CONFIG_SETTING_SERVINT_DISABLED                             :Deaktiviert
 STR_CONFIG_SETTING_NOSERVICE                                    :Wartung deaktivieren, wenn Pannen abgeschaltet: {STRING}
 STR_CONFIG_SETTING_NOSERVICE_HELPTEXT                           :Schicke Fahrzeuge nicht zur Wartung, wenn Pannen ausgeschaltet sind
 
+
 STR_CONFIG_SETTING_WAGONSPEEDLIMITS                             :Berücksichtige Waggonhöchstgeschwindigkeit: {STRING}
 STR_CONFIG_SETTING_WAGONSPEEDLIMITS_HELPTEXT                    :Begrenze die Höchstgeschwindigkeit eines Zuges durch die jeweiligen Höchstgeschwindigkeiten der mitgeführten Waggons
 

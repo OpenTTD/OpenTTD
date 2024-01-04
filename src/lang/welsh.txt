@@ -1627,6 +1627,7 @@ STR_CONFIG_SETTING_SERVINT_DISABLED                             :Analluogwyd
 STR_CONFIG_SETTING_NOSERVICE                                    :Analluogi gwasanaethau pan fydd torri i lawr wedi ei osod i Ddim: {STRING}
 STR_CONFIG_SETTING_NOSERVICE_HELPTEXT                           :Pan y galluogir, ni wasanaethir cerbydau os na allent dorri i lawr
 
+
 STR_CONFIG_SETTING_WAGONSPEEDLIMITS                             :Galluogi terfynau cyflymder wagenni: {STRING}
 STR_CONFIG_SETTING_WAGONSPEEDLIMITS_HELPTEXT                    :Pan y galluogir, fe ddefnyddir terfynnau cyflymder pob cerbyd mewn trên pan yn cyfrifo ei gyflymder uchafsymol
 

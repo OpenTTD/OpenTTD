@@ -1762,6 +1762,7 @@ STR_CONFIG_SETTING_SERVINT_DISABLED                             :Inaktiverat
 STR_CONFIG_SETTING_NOSERVICE                                    :Inaktivera service när motorstopp är av: {STRING}
 STR_CONFIG_SETTING_NOSERVICE_HELPTEXT                           :När det är aktiverat servas inte fordon om de inte kan få motorstopp
 
+
 STR_CONFIG_SETTING_WAGONSPEEDLIMITS                             :Använd hastighetsbegränsningar för tågvagnar: {STRING}
 STR_CONFIG_SETTING_WAGONSPEEDLIMITS_HELPTEXT                    :När det är aktiverat tas även hänsyn till vagnarnas hastighetsbegränsningar när ett tågs maxhastighet beräknas
 

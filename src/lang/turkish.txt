@@ -1777,6 +1777,7 @@ STR_CONFIG_SETTING_SERVINT_DISABLED                             :Etkisiz
 STR_CONFIG_SETTING_NOSERVICE                                    :Bozulmalar kapalıysa sevisler kapalı olsun: {STRING}
 STR_CONFIG_SETTING_NOSERVICE_HELPTEXT                           :Etkinleştirildiğinde, araçlar bozulmuyorlarsa bakıma gönderilmezler
 
+
 STR_CONFIG_SETTING_WAGONSPEEDLIMITS                             :Vagonların treni yavaşlatması izinli: {STRING}
 STR_CONFIG_SETTING_WAGONSPEEDLIMITS_HELPTEXT                    :Etkinleştirildiğinde, bir trenin azami hızına karar verirken vagonların hız limitleri de göz önünde bulundurulur
 

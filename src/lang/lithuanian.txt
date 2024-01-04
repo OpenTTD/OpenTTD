@@ -1896,6 +1896,7 @@ STR_CONFIG_SETTING_SERVINT_DISABLED                             :Išjungta
 STR_CONFIG_SETTING_NOSERVICE                                    :Atjungti techninę apžiūrą, jei gedimai nenaudojami: {STRING}
 STR_CONFIG_SETTING_NOSERVICE_HELPTEXT                           :Jeigu įjungta, tada automobiliams nebus atliekama techninė apžiūra, jeigu jie negalės sugesti
 
+
 STR_CONFIG_SETTING_WAGONSPEEDLIMITS                             :Aktyvinti vagonų greičio apribojimą: {STRING}
 STR_CONFIG_SETTING_WAGONSPEEDLIMITS_HELPTEXT                    :Įgalinus šią nuostatą, vagonų didžiausias leistinas greitis įtakos viso traukinio greitį
 

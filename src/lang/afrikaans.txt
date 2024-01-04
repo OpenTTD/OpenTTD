@@ -1606,6 +1606,7 @@ STR_CONFIG_SETTING_SERVINT_DISABLED                             :Gedeaktiveer
 STR_CONFIG_SETTING_NOSERVICE                                    :Sper diens wanneer komplikasies is na geen gestel: {STRING}
 STR_CONFIG_SETTING_NOSERVICE_HELPTEXT                           :As dit geaktiveerd is, word voertuie nie gediens as hulle nie kan onklaar raak nie
 
+
 STR_CONFIG_SETTING_WAGONSPEEDLIMITS                             :Laat wa spoed beperkings toe: {STRING}
 STR_CONFIG_SETTING_WAGONSPEEDLIMITS_HELPTEXT                    :As dit geaktiveer is bepaal die spoedbeperking van treinwaens ook die maksimum spoed van die hele trein
 

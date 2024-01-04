@@ -1767,6 +1767,7 @@ STR_CONFIG_SETTING_SERVINT_DISABLED                             :Di non-aktifkan
 STR_CONFIG_SETTING_NOSERVICE                                    :Tidak perlu perbaikan jika tidak pernah mogok: {STRING}
 STR_CONFIG_SETTING_NOSERVICE_HELPTEXT                           :Jika diaktifkan, kendaraan tidak akan diperbaiki jika tidak pernah mogok
 
+
 STR_CONFIG_SETTING_WAGONSPEEDLIMITS                             :Aktifkan batas kecepatan gerbong: {STRING}
 STR_CONFIG_SETTING_WAGONSPEEDLIMITS_HELPTEXT                    :Jika diaktifkan, batas kecepatan gerbong juga digunakan untuk menentukan kecepatan maksimum kereta
 

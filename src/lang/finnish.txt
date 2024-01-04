@@ -1777,6 +1777,7 @@ STR_CONFIG_SETTING_SERVINT_DISABLED                             :Pois käytöst�
 STR_CONFIG_SETTING_NOSERVICE                                    :Poista huollot käytöstä kun kulkuneuvojen rikkoutuminen on poistettu käytöstä: {STRING}
 STR_CONFIG_SETTING_NOSERVICE_HELPTEXT                           :Mikäli käytössä, kulkuneuvoja ei huolleta, jos ne eivät voi rikkoutua
 
+
 STR_CONFIG_SETTING_WAGONSPEEDLIMITS                             :Ota käyttöön vaunujen nopeusrajoitukset: {STRING}
 STR_CONFIG_SETTING_WAGONSPEEDLIMITS_HELPTEXT                    :Mikäli käytössä, vaunujen nopeusrajoitusta käytetään junan maksiminopeuden määrittämisessä
 

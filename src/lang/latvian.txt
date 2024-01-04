@@ -1779,6 +1779,7 @@ STR_CONFIG_SETTING_SERVINT_DISABLED                             :izslēgts
 STR_CONFIG_SETTING_NOSERVICE                                    :Aizliegt apkopi, kad bojāšanās ir izslēgta: {STRING}
 STR_CONFIG_SETTING_NOSERVICE_HELPTEXT                           :Ja ieslēgts, transportlīdzekļiem netiek veikta apkope. Jo tie nebojājas
 
+
 STR_CONFIG_SETTING_WAGONSPEEDLIMITS                             :Ieslēgt vagonu ātruma ierobežojumus: {STRING}
 STR_CONFIG_SETTING_WAGONSPEEDLIMITS_HELPTEXT                    :Ja ieslēgts, var izmantot vagonu ātruma ierobežojumus, lai lemtu par vilcienu maksimālo ātrumu
 

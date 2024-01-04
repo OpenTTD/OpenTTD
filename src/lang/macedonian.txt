@@ -1024,6 +1024,7 @@ STR_CONFIG_SETTING_SCRIPT_MAX_OPCODES                           :#ОПкодов
 
 
 
+
 STR_CONFIG_SETTING_NEWS_ARRIVAL_FIRST_VEHICLE_OWN               :Пристигнување на првото возило на станицата на играчот: {STRING}
 
 STR_CONFIG_SETTING_NEWS_ARRIVAL_FIRST_VEHICLE_OTHER             :Пристигнување на прво возило на конкурентска станица: {STRING}

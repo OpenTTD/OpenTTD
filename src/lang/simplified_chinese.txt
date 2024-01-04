@@ -349,7 +349,7 @@ STR_SORT_BY_POWER_VS_RUNNING_COST                               :功率/运行�
 STR_SORT_BY_CARGO_CAPACITY                                      :运载能力
 STR_SORT_BY_RANGE                                               :航行距离
 STR_SORT_BY_POPULATION                                          :人口
-STR_SORT_BY_RATING                                              :等级
+STR_SORT_BY_RATING                                              :评价
 STR_SORT_BY_NUM_VEHICLES                                        :交通工具数量
 STR_SORT_BY_TOTAL_PROFIT_LAST_YEAR                              :去年总利润
 STR_SORT_BY_TOTAL_PROFIT_THIS_YEAR                              :今年总利润
@@ -367,7 +367,7 @@ STR_GOTO_ORDER_VIEW_TOOLTIP                                     :{BLACK}打开�
 # Tooltips for the main toolbar
 ###length 31
 STR_TOOLBAR_TOOLTIP_PAUSE_GAME                                  :{BLACK}暂停游戏
-STR_TOOLBAR_TOOLTIP_FORWARD                                     :{BLACK}快速游戏模式
+STR_TOOLBAR_TOOLTIP_FORWARD                                     :{BLACK}快进游戏
 STR_TOOLBAR_TOOLTIP_OPTIONS                                     :{BLACK}选项和设置
 STR_TOOLBAR_TOOLTIP_SAVE_GAME_ABANDON_GAME                      :{BLACK}保存游戏、读取游戏、放弃游戏、退出
 STR_TOOLBAR_TOOLTIP_DISPLAY_MAP                                 :{BLACK}显示地图、附加视点、客货流或标志列表
@@ -378,8 +378,8 @@ STR_TOOLBAR_TOOLTIP_DISPLAY_COMPANY_FINANCES                    :{BLACK}显示�
 STR_TOOLBAR_TOOLTIP_DISPLAY_COMPANY_GENERAL                     :{BLACK}显示公司综合信息
 STR_TOOLBAR_TOOLTIP_DISPLAY_STORY_BOOK                          :{BLACK}显示公司历史纪录
 STR_TOOLBAR_TOOLTIP_DISPLAY_GOALS_LIST                          :{BLACK}显示游戏目标选单
-STR_TOOLBAR_TOOLTIP_DISPLAY_GRAPHS                              :{BLACK}显示图表和货物运费表
-STR_TOOLBAR_TOOLTIP_DISPLAY_COMPANY_LEAGUE                      :{BLACK}显示公司名次表
+STR_TOOLBAR_TOOLTIP_DISPLAY_GRAPHS                              :{BLACK}显示公司图表和货物运费表
+STR_TOOLBAR_TOOLTIP_DISPLAY_COMPANY_LEAGUE                      :{BLACK}显示公司排行榜
 STR_TOOLBAR_TOOLTIP_FUND_CONSTRUCTION_OF_NEW                    :{BLACK}查看工业设施或投资工业设施建设
 STR_TOOLBAR_TOOLTIP_DISPLAY_LIST_OF_COMPANY_TRAINS              :{BLACK}显示公司的火车列表。按住 Ctrl 键单击可以切换组群和车辆列表。
 STR_TOOLBAR_TOOLTIP_DISPLAY_LIST_OF_COMPANY_ROAD_VEHICLES       :{BLACK}显示公司的汽车列表。按住 Ctrl 键单击可以切换组群和汽车列表。
@@ -388,10 +388,10 @@ STR_TOOLBAR_TOOLTIP_DISPLAY_LIST_OF_COMPANY_AIRCRAFT            :{BLACK}显示�
 STR_TOOLBAR_TOOLTIP_ZOOM_THE_VIEW_IN                            :{BLACK}放大视图
 STR_TOOLBAR_TOOLTIP_ZOOM_THE_VIEW_OUT                           :{BLACK}缩小视图
 STR_TOOLBAR_TOOLTIP_BUILD_RAILROAD_TRACK                        :{BLACK}显示铁路建设工具
-STR_TOOLBAR_TOOLTIP_BUILD_ROADS                                 :{BLACK}显示公路建设工具
-STR_TOOLBAR_TOOLTIP_BUILD_TRAMWAYS                              :{BLACK}建造电车道
-STR_TOOLBAR_TOOLTIP_BUILD_SHIP_DOCKS                            :{BLACK}显示水运建设工具
-STR_TOOLBAR_TOOLTIP_BUILD_AIRPORTS                              :{BLACK}显示机场建设工具
+STR_TOOLBAR_TOOLTIP_BUILD_ROADS                                 :{BLACK}建设道路
+STR_TOOLBAR_TOOLTIP_BUILD_TRAMWAYS                              :{BLACK}建造电车轨道
+STR_TOOLBAR_TOOLTIP_BUILD_SHIP_DOCKS                            :{BLACK}建设码头
+STR_TOOLBAR_TOOLTIP_BUILD_AIRPORTS                              :{BLACK}建设机场
 STR_TOOLBAR_TOOLTIP_LANDSCAPING                                 :{BLACK}打开景观美化工具栏{}以修改地形、设置地貌等
 STR_TOOLBAR_TOOLTIP_SHOW_SOUND_MUSIC_WINDOW                     :{BLACK}显示 声音/音乐 控制菜单
 STR_TOOLBAR_TOOLTIP_SHOW_LAST_MESSAGE_NEWS                      :{BLACK}显示最新消息、新闻，消息历史或删除所有消息
@@ -717,7 +717,7 @@ STR_PLAYLIST_PROGRAM                                            :{TINY_FONT}{BLA
 STR_PLAYLIST_CLEAR                                              :{TINY_FONT}{BLACK}清除
 STR_PLAYLIST_CHANGE_SET                                         :更改设置
 STR_PLAYLIST_TOOLTIP_CLEAR_CURRENT_PROGRAM_CUSTOM1              :{BLACK}清除当前列表中曲目{}（仅限自定义1或自定义2）
-STR_PLAYLIST_TOOLTIP_CHANGE_SET                                 :{BLACK}选择另一种已安装的音乐
+STR_PLAYLIST_TOOLTIP_CHANGE_SET                                 :{BLACK}选择其他已安装的音乐包
 STR_PLAYLIST_TOOLTIP_CLICK_TO_ADD_TRACK                         :{BLACK}点击音乐曲目以加入当前播放列表{}(仅限自定义1或自定义2)
 STR_PLAYLIST_TOOLTIP_CLICK_TO_REMOVE_TRACK                      :{BLACK}点击音乐曲目以从当前播放列表中删除{}(仅限自定义1或自定义2)
 
@@ -809,7 +809,7 @@ STR_SMALLMAP_TOOLTIP_ENABLE_ALL_CARGOS                          :{BLACK}地图�
 # Status bar messages
 STR_STATUSBAR_TOOLTIP_SHOW_LAST_NEWS                            :{BLACK}显示最后一条消息或新闻
 STR_STATUSBAR_COMPANY_NAME                                      :{SILVER}- -  {COMPANY}  - -
-STR_STATUSBAR_PAUSED                                            :{YELLOW}* *  暂停中  *  *
+STR_STATUSBAR_PAUSED                                            :{YELLOW}* *  已暂停  *  *
 STR_STATUSBAR_PAUSED_LINK_GRAPH                                 :{ORANGE}*  *  已暂停 (等待货物分配图更新) *  *
 STR_STATUSBAR_AUTOSAVE                                          :{RED}自动保存
 STR_STATUSBAR_SAVING_GAME                                       :{RED}*  *  保存游戏中  *  *
@@ -842,7 +842,7 @@ STR_NEWS_DISASTER_ZEPPELIN                                      :{BIG_FONT}{BLAC
 STR_NEWS_DISASTER_SMALL_UFO                                     :{BIG_FONT}{BLACK}汽车被 'UFO' 炸毁！
 STR_NEWS_DISASTER_AIRPLANE_OIL_REFINERY                         :{BIG_FONT}{BLACK}在 {TOWN} 附近的炼油厂泄漏！
 STR_NEWS_DISASTER_HELICOPTER_FACTORY                            :{BIG_FONT}{BLACK}在 {TOWN} 附近的工厂神秘被毁！
-STR_NEWS_DISASTER_BIG_UFO                                       :{BIG_FONT}{BLACK}'UFO' 在 {TOWN} 附近降落！
+STR_NEWS_DISASTER_BIG_UFO                                       :{BIG_FONT}{BLACK}UFO 在 {TOWN} 附近降落！
 STR_NEWS_DISASTER_COAL_MINE_SUBSIDENCE                          :{BIG_FONT}{BLACK}在 {TOWN} 附近的煤矿发生塌方！
 STR_NEWS_DISASTER_FLOOD_VEHICLE                                 :{BIG_FONT}{BLACK}洪水！{}至少 {COMMA} 人失踪，据推测凶多吉少！
 
@@ -1172,7 +1172,7 @@ STR_TERRAIN_TYPE_CUSTOM                                         :自定义高度
 STR_TERRAIN_TYPE_CUSTOM_VALUE                                   :自定义高度 ({NUM})
 
 ###length 4
-STR_CITY_APPROVAL_LENIENT                                       :宽容的
+STR_CITY_APPROVAL_LENIENT                                       :宽容
 STR_CITY_APPROVAL_TOLERANT                                      :隐忍
 STR_CITY_APPROVAL_HOSTILE                                       :对立
 STR_CITY_APPROVAL_PERMISSIVE                                    :宽容（对公司行为没有影响 ）
@@ -1777,6 +1777,7 @@ STR_CONFIG_SETTING_SERVINT_DISABLED                             :关闭
 STR_CONFIG_SETTING_NOSERVICE                                    :在无故障模式下禁用保养周期：{STRING}
 STR_CONFIG_SETTING_NOSERVICE_HELPTEXT                           :“打开”时，在无故障模式下，车辆禁用保养周期
 
+
 STR_CONFIG_SETTING_WAGONSPEEDLIMITS                             :启动车辆限速：{STRING}
 STR_CONFIG_SETTING_WAGONSPEEDLIMITS_HELPTEXT                    :“打开“时，还要根据车辆的限速来决定一列火车的最高速度
 
@@ -1923,8 +1924,8 @@ STR_CONFIG_SETTING_SNAP_RADIUS_HELPTEXT                         :移动一个窗
 STR_CONFIG_SETTING_SNAP_RADIUS_VALUE                            :{COMMA} 像素
 ###setting-zero-is-special
 STR_CONFIG_SETTING_SNAP_RADIUS_DISABLED                         :关闭
-STR_CONFIG_SETTING_SOFT_LIMIT                                   :窗口软性限制（非粘滞）： {STRING}
-STR_CONFIG_SETTING_SOFT_LIMIT_HELPTEXT                          :设置为腾出位置显示新的窗口，在打开多少个窗口后自动关闭非锁定窗口
+STR_CONFIG_SETTING_SOFT_LIMIT                                   :窗口数量上限： {STRING}
+STR_CONFIG_SETTING_SOFT_LIMIT_HELPTEXT                          :设定窗口数量上限。超出此限值时游戏会自动关闭最早打开的窗口。已固定的窗口不受此项限制。
 STR_CONFIG_SETTING_SOFT_LIMIT_VALUE                             :{COMMA}
 ###setting-zero-is-special
 STR_CONFIG_SETTING_SOFT_LIMIT_DISABLED                          :关闭
@@ -2196,12 +2197,20 @@ STR_LIVERY_TRAIN_TOOLTIP                                        :{BLACK}显示�
 STR_LIVERY_ROAD_VEHICLE_TOOLTIP                                 :{BLACK}显示汽车配色方案
 STR_LIVERY_SHIP_TOOLTIP                                         :{BLACK}显示船只配色方案
 STR_LIVERY_AIRCRAFT_TOOLTIP                                     :{BLACK}显示飞机配色方案
+STR_LIVERY_TRAIN_GROUP_TOOLTIP                                  :{BLACK}显示列车分组配色
+STR_LIVERY_ROAD_VEHICLE_GROUP_TOOLTIP                           :{BLACK}显示汽车分组配色
+STR_LIVERY_SHIP_GROUP_TOOLTIP                                   :{BLACK}显示船只分组配色
+STR_LIVERY_AIRCRAFT_GROUP_TOOLTIP                               :{BLACK}显示飞机分组配色
 STR_LIVERY_PRIMARY_TOOLTIP                                      :{BLACK}为选定的配色方案指定主色调
 STR_LIVERY_SECONDARY_TOOLTIP                                    :{BLACK}为选定的配色方案指定副色调
 STR_LIVERY_PANEL_TOOLTIP                                        :{BLACK}选择一个或多个(CTRL+单击){}要更改的配色方案{}点击方块可以切换不同的方案
+STR_LIVERY_TRAIN_GROUP_EMPTY                                    :尚未为列车分组
+STR_LIVERY_ROAD_VEHICLE_GROUP_EMPTY                             :尚未为汽车分组
+STR_LIVERY_SHIP_GROUP_EMPTY                                     :尚未为船只分组
+STR_LIVERY_AIRCRAFT_GROUP_EMPTY                                 :尚未为飞机分组
 
 ###length 23
-STR_LIVERY_DEFAULT                                              :标准外观
+STR_LIVERY_DEFAULT                                              :默认配色
 STR_LIVERY_STEAM                                                :蒸汽机车
 STR_LIVERY_DIESEL                                               :内燃机车
 STR_LIVERY_ELECTRIC                                             :电力机车
@@ -2861,10 +2870,10 @@ STR_STATION_BUILD_AIRPORT_LAYOUT_NAME                           :{BLACK}配置 {
 
 STR_AIRPORT_SMALL                                               :小型机场
 STR_AIRPORT_CITY                                                :城市机场
-STR_AIRPORT_METRO                                               :国内机场
+STR_AIRPORT_METRO                                               :都会机场
 STR_AIRPORT_INTERNATIONAL                                       :国际机场
 STR_AIRPORT_COMMUTER                                            :通勤机场
-STR_AIRPORT_INTERCONTINENTAL                                    :全球机场
+STR_AIRPORT_INTERCONTINENTAL                                    :洲际机场
 STR_AIRPORT_HELIPORT                                            :直升机停机楼
 STR_AIRPORT_HELIDEPOT                                           :直升机专用机场
 STR_AIRPORT_HELISTATION                                         :直升机小型机场
@@ -3325,7 +3334,7 @@ STR_GENERATION_PREPARING_GAME                                   :{BLACK}准备�
 STR_NEWGRF_SETTINGS_CAPTION                                     :{WHITE}NewGRF 设置
 STR_NEWGRF_SETTINGS_INFO_TITLE                                  :{WHITE}NewGRF 详细信息
 STR_NEWGRF_SETTINGS_ACTIVE_LIST                                 :{WHITE}已激活 NewGRF
-STR_NEWGRF_SETTINGS_INACTIVE_LIST                               :{WHITE}停用 NewGRF
+STR_NEWGRF_SETTINGS_INACTIVE_LIST                               :{WHITE}已停用 NewGRF
 STR_NEWGRF_SETTINGS_SELECT_PRESET                               :{ORANGE}选择预设
 STR_NEWGRF_FILTER_TITLE                                         :{ORANGE}关键字词搜索：
 STR_NEWGRF_SETTINGS_PRESET_LIST_TOOLTIP                         :{BLACK}装载选定的预定义
@@ -3337,8 +3346,8 @@ STR_NEWGRF_SETTINGS_ADD                                         :{BLACK}增加
 STR_NEWGRF_SETTINGS_ADD_FILE_TOOLTIP                            :{BLACK}将选定的 NewGRF 文件添加到你的配置中
 STR_NEWGRF_SETTINGS_RESCAN_FILES                                :{BLACK}重新检索文件
 STR_NEWGRF_SETTINGS_RESCAN_FILES_TOOLTIP                        :{BLACK}刷新可用的 NewGRF 文件列表
-STR_NEWGRF_SETTINGS_REMOVE                                      :{BLACK}删除
-STR_NEWGRF_SETTINGS_REMOVE_TOOLTIP                              :{BLACK}从列表中删除一个 NewGRF 文件
+STR_NEWGRF_SETTINGS_REMOVE                                      :{BLACK}停用
+STR_NEWGRF_SETTINGS_REMOVE_TOOLTIP                              :{BLACK}从列表中停用选定的 NewGRF 文件
 STR_NEWGRF_SETTINGS_MOVEUP                                      :{BLACK}上移
 STR_NEWGRF_SETTINGS_MOVEUP_TOOLTIP                              :{BLACK}将选定的 NewGRF 文件向上移动
 STR_NEWGRF_SETTINGS_MOVEDOWN                                    :{BLACK}下移
@@ -3350,7 +3359,7 @@ STR_NEWGRF_SETTINGS_FILE_TOOLTIP                                :{BLACK}已经�
 STR_NEWGRF_SETTINGS_SET_PARAMETERS                              :{BLACK}设置参数
 STR_NEWGRF_SETTINGS_SHOW_PARAMETERS                             :{BLACK}显示参数
 STR_NEWGRF_SETTINGS_TOGGLE_PALETTE                              :{BLACK}切换调色板
-STR_NEWGRF_SETTINGS_TOGGLE_PALETTE_TOOLTIP                      :{BLACK}切换选定GRF的调色.{}本功能用于游戏使用时GRF呈粉色
+STR_NEWGRF_SETTINGS_TOGGLE_PALETTE_TOOLTIP                      :{BLACK}切换选定GRF的调色盘。{}如果该GRF在游戏中看起来是一片粉色，您可以尝试调整此项以解决问题。若没有问题，请不要调整此项
 STR_NEWGRF_SETTINGS_APPLY_CHANGES                               :{BLACK}应用
 
 STR_NEWGRF_SETTINGS_FIND_MISSING_CONTENT_BUTTON                 :{BLACK}在线查找缺失的扩展包
@@ -3362,10 +3371,10 @@ STR_NEWGRF_SETTINGS_VERSION                                     :{BLACK}版本: 
 STR_NEWGRF_SETTINGS_MIN_VERSION                                 :{BLACK}最低兼容版本: {SILVER}{NUM}
 STR_NEWGRF_SETTINGS_MD5SUM                                      :{BLACK}MD5 码：{SILVER}{STRING}
 STR_NEWGRF_SETTINGS_PALETTE                                     :{BLACK}调色板: {SILVER}{STRING}
-STR_NEWGRF_SETTINGS_PALETTE_DEFAULT                             :默认 (D)
-STR_NEWGRF_SETTINGS_PALETTE_DEFAULT_32BPP                       :默认 (D) / 32 bpp
-STR_NEWGRF_SETTINGS_PALETTE_LEGACY                              :传统 (W)
-STR_NEWGRF_SETTINGS_PALETTE_LEGACY_32BPP                        :传统 (W) / 32 bpp
+STR_NEWGRF_SETTINGS_PALETTE_DEFAULT                             :默认 (DOS)
+STR_NEWGRF_SETTINGS_PALETTE_DEFAULT_32BPP                       :默认 (DOS) / 32 bpp
+STR_NEWGRF_SETTINGS_PALETTE_LEGACY                              :传统 (Windows)
+STR_NEWGRF_SETTINGS_PALETTE_LEGACY_32BPP                        :传统 (Windows) / 32 bpp
 STR_NEWGRF_SETTINGS_PARAMETER                                   :{BLACK}参数：{SILVER}{STRING}
 STR_NEWGRF_SETTINGS_PARAMETER_NONE                              :无
 
@@ -3661,7 +3670,7 @@ STR_STATION_LIST_WAYPOINT                                       :{YELLOW}{WAYPOI
 STR_STATION_LIST_NONE                                           :{YELLOW}- 没有 -
 STR_STATION_LIST_SELECT_ALL_FACILITIES                          :{BLACK}选择全部运输工具种类
 STR_STATION_LIST_SELECT_ALL_TYPES                               :{BLACK}选择所有货物类型{}（包括不在等待列表中的）
-STR_STATION_LIST_NO_WAITING_CARGO                               :{BLACK}选择无等待货物车站
+STR_STATION_LIST_NO_WAITING_CARGO                               :{BLACK}无任何货物等待运送
 
 # Station view window
 STR_STATION_VIEW_CAPTION                                        :{WHITE}{STATION} {STATION_FEATURES}
@@ -4277,7 +4286,7 @@ STR_VEHICLE_VIEW_AIRCRAFT_STATUS_START_STOP_TOOLTIP             :{BLACK}当前�
 # Messages in the start stop button in the vehicle view
 STR_VEHICLE_STATUS_LOADING_UNLOADING                            :{LTBLUE}装载/卸货
 STR_VEHICLE_STATUS_LEAVING                                      :{LTBLUE}发车
-STR_VEHICLE_STATUS_CRASHED                                      :{RED}撞毁!
+STR_VEHICLE_STATUS_CRASHED                                      :{RED}已撞毁!
 STR_VEHICLE_STATUS_BROKEN_DOWN                                  :{RED}抛锚
 STR_VEHICLE_STATUS_STOPPED                                      :{RED}停运
 STR_VEHICLE_STATUS_TRAIN_STOPPING_VEL                           :{RED}正在停止，{VELOCITY}
@@ -4288,11 +4297,11 @@ STR_VEHICLE_STATUS_AIRCRAFT_TOO_FAR                             :{ORANGE}距离�
 STR_VEHICLE_STATUS_HEADING_FOR_STATION_VEL                      :{LTBLUE}正在前往 {STATION}，{VELOCITY}
 STR_VEHICLE_STATUS_NO_ORDERS_VEL                                :{LTBLUE}没有目标，{VELOCITY}
 STR_VEHICLE_STATUS_HEADING_FOR_WAYPOINT_VEL                     :{LTBLUE}正在前往{WAYPOINT}，{VELOCITY}
-STR_VEHICLE_STATUS_HEADING_FOR_DEPOT_VEL                        :{ORANGE}正前往 {DEPOT}, {VELOCITY}
+STR_VEHICLE_STATUS_HEADING_FOR_DEPOT_VEL                        :{ORANGE}正在前往 {DEPOT}, {VELOCITY}
 STR_VEHICLE_STATUS_HEADING_FOR_DEPOT_SERVICE_VEL                :{LTBLUE}正在服务于 {DEPOT}, {VELOCITY}
 
 STR_VEHICLE_STATUS_CANNOT_REACH_STATION_VEL                     :{LTBLUE}不能到达 {STATION}, {VELOCITY}
-STR_VEHICLE_STATUS_CANNOT_REACH_WAYPOINT_VEL                    :{LTBLUE}不能到达路点 {WAYPOINT}, {VELOCITY}
+STR_VEHICLE_STATUS_CANNOT_REACH_WAYPOINT_VEL                    :{LTBLUE}不能到达 {WAYPOINT}, {VELOCITY}
 STR_VEHICLE_STATUS_CANNOT_REACH_DEPOT_VEL                       :{ORANGE}不能到达 {DEPOT}, {VELOCITY}
 STR_VEHICLE_STATUS_CANNOT_REACH_DEPOT_SERVICE_VEL               :{LTBLUE}不能到达 {DEPOT}, {VELOCITY}
 
@@ -4653,9 +4662,9 @@ STR_AI_DEBUG_MATCH_CASE                                         :{BLACK}符合�
 STR_AI_DEBUG_MATCH_CASE_TOOLTIP                                 :{BLACK}切换对比AI 记录信息是否与断点字符串相符时是否要符合大小写
 STR_AI_DEBUG_CONTINUE                                           :{BLACK}继续
 STR_AI_DEBUG_CONTINUE_TOOLTIP                                   :{BLACK}取消暂停AI
-STR_AI_DEBUG_SELECT_AI_TOOLTIP                                  :{BLACK}查看此AI的调试输出
+STR_AI_DEBUG_SELECT_AI_TOOLTIP                                  :{BLACK}查看此AI的调试输出。按住Ctrl键点选以打开新窗口
 STR_AI_GAME_SCRIPT                                              :{BLACK}游戏脚本
-STR_AI_GAME_SCRIPT_TOOLTIP                                      :{BLACK}查看脚本记录
+STR_AI_GAME_SCRIPT_TOOLTIP                                      :{BLACK}检查游戏脚本日志。按住Ctrl键点选以打开新窗口
 
 STR_ERROR_AI_NO_AI_FOUND                                        :找不到可用的AI。{}本AI是一个演示AI，并不会在游戏中做任何动作，{}您可以通过“在线查找扩展包”功能下载新的AI。
 STR_ERROR_AI_PLEASE_REPORT_CRASH                                :{WHITE}您使用的一个AI崩溃了。请附上一张AI调试窗口的截图，将此错误通报AI作者。

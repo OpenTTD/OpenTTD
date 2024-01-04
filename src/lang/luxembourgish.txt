@@ -1709,6 +1709,7 @@ STR_CONFIG_SETTING_SERVINT_DISABLED                             :Ausgeschalt
 STR_CONFIG_SETTING_NOSERVICE                                    :Revisiounen ausschalten wann Pannen op "Keng" gestallt sinn: {STRING}
 STR_CONFIG_SETTING_NOSERVICE_HELPTEXT                           :Wann ugeschalt, ginn Gefierer net an d'Revisioun geschéckt, wann se keng Pann kënne kréien
 
+
 STR_CONFIG_SETTING_WAGONSPEEDLIMITS                             :Geschwindegkeetsbegrenzungen fir Waggonen: {STRING}
 STR_CONFIG_SETTING_WAGONSPEEDLIMITS_HELPTEXT                    :Wann ugeschalt, benotz och Geschwindegkeetslimitatiounen fir Waggonen fir d'maximal Geschwindegkeet vun engem Zuch ze definéiren
 
