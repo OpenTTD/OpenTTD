@@ -276,8 +276,6 @@ void NetworkHTTPInitialize()
 
 void NetworkHTTPUninitialize()
 {
-	curl_global_cleanup();
-
 	_http_thread_exit = true;
 
 	/* Queues must be cleared (and the queue CV signalled) after _http_thread_exit is set to ensure that the HTTP thread can exit */
@@ -293,4 +291,6 @@ void NetworkHTTPUninitialize()
 	if (_http_thread.joinable()) {
 		_http_thread.join();
 	}
+
+	curl_global_cleanup();
 }
