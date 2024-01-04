@@ -1895,8 +1895,6 @@ static SettingsContainer &GetSettingsTree()
 				orders->Add(new SettingEntry("gui.quick_goto"));
 				orders->Add(new SettingEntry("gui.stop_location"));
 			}
-			vehicles->Add(new SettingEntry("order.no_servicing_if_no_breakdowns"));
-			vehicles->Add(new SettingEntry("order.serviceathelipad"));
 		}
 
 		SettingsPage *limitations = main->Add(new SettingsPage(STR_CONFIG_SETTING_LIMITATIONS));
@@ -1927,8 +1925,10 @@ static SettingsContainer &GetSettingsTree()
 		{
 			disasters->Add(new SettingEntry("difficulty.disasters"));
 			disasters->Add(new SettingEntry("difficulty.economy"));
-			disasters->Add(new SettingEntry("difficulty.vehicle_breakdowns"));
 			disasters->Add(new SettingEntry("vehicle.plane_crashes"));
+			disasters->Add(new SettingEntry("difficulty.vehicle_breakdowns"));
+			disasters->Add(new SettingEntry("order.no_servicing_if_no_breakdowns"));
+			disasters->Add(new SettingEntry("order.serviceathelipad"));
 		}
 
 		SettingsPage *genworld = main->Add(new SettingsPage(STR_CONFIG_SETTING_GENWORLD));
