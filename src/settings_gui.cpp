@@ -1943,9 +1943,6 @@ static SettingsContainer &GetSettingsTree()
 			genworld->Add(new SettingEntry("game_creation.snow_line_height"));
 			genworld->Add(new SettingEntry("game_creation.desert_coverage"));
 			genworld->Add(new SettingEntry("game_creation.amount_of_rivers"));
-			genworld->Add(new SettingEntry("economy.larger_towns"));
-			genworld->Add(new SettingEntry("economy.initial_city_size"));
-			genworld->Add(new SettingEntry("economy.town_layout"));
 		}
 
 		SettingsPage *environment = main->Add(new SettingsPage(STR_CONFIG_SETTING_ENVIRONMENT));
@@ -1956,6 +1953,7 @@ static SettingsContainer &GetSettingsTree()
 				time->Add(new SettingEntry("gui.pause_on_newgame"));
 				time->Add(new SettingEntry("gui.fast_forward_speed_limit"));
 			}
+
 			SettingsPage *authorities = environment->Add(new SettingsPage(STR_CONFIG_SETTING_ENVIRONMENT_AUTHORITIES));
 			{
 				authorities->Add(new SettingEntry("difficulty.town_council_tolerance"));
@@ -1972,6 +1970,9 @@ static SettingsContainer &GetSettingsTree()
 				towns->Add(new SettingEntry("economy.allow_town_roads"));
 				towns->Add(new SettingEntry("economy.allow_town_level_crossings"));
 				towns->Add(new SettingEntry("economy.found_town"));
+				towns->Add(new SettingEntry("economy.town_layout"));
+				towns->Add(new SettingEntry("economy.larger_towns"));
+				towns->Add(new SettingEntry("economy.initial_city_size"));
 				towns->Add(new SettingEntry("economy.town_cargogen_mode"));
 			}
 
