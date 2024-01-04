@@ -2057,6 +2057,7 @@ STR_CONFIG_SETTING_LIMITATIONS                                  :Limitations
 STR_CONFIG_SETTING_ACCIDENTS                                    :Disasters / Accidents
 STR_CONFIG_SETTING_GENWORLD                                     :World generation
 STR_CONFIG_SETTING_ENVIRONMENT                                  :Environment
+STR_CONFIG_SETTING_ENVIRONMENT_TIME                             :Time
 STR_CONFIG_SETTING_ENVIRONMENT_AUTHORITIES                      :Authorities
 STR_CONFIG_SETTING_ENVIRONMENT_TOWNS                            :Towns
 STR_CONFIG_SETTING_ENVIRONMENT_INDUSTRIES                       :Industries

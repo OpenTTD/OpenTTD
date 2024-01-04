@@ -1802,7 +1802,6 @@ static SettingsContainer &GetSettingsTree()
 				construction->Add(new SettingEntry("gui.auto_remove_signals"));
 			}
 
-			interface->Add(new SettingEntry("gui.fast_forward_speed_limit"));
 			interface->Add(new SettingEntry("gui.toolbar_pos"));
 			interface->Add(new SettingEntry("gui.statusbar_pos"));
 			interface->Add(new SettingEntry("gui.prefer_teamchat"));
@@ -1948,12 +1947,16 @@ static SettingsContainer &GetSettingsTree()
 			genworld->Add(new SettingEntry("economy.initial_city_size"));
 			genworld->Add(new SettingEntry("economy.town_layout"));
 			genworld->Add(new SettingEntry("difficulty.industry_density"));
-			genworld->Add(new SettingEntry("gui.pause_on_newgame"));
-			genworld->Add(new SettingEntry("game_creation.ending_year"));
 		}
 
 		SettingsPage *environment = main->Add(new SettingsPage(STR_CONFIG_SETTING_ENVIRONMENT));
 		{
+			SettingsPage *time = environment->Add(new SettingsPage(STR_CONFIG_SETTING_ENVIRONMENT_TIME));
+			{
+				time->Add(new SettingEntry("game_creation.ending_year"));
+				time->Add(new SettingEntry("gui.pause_on_newgame"));
+				time->Add(new SettingEntry("gui.fast_forward_speed_limit"));
+			}
 			SettingsPage *authorities = environment->Add(new SettingsPage(STR_CONFIG_SETTING_ENVIRONMENT_AUTHORITIES));
 			{
 				authorities->Add(new SettingEntry("difficulty.town_council_tolerance"));
