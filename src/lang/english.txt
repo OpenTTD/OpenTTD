@@ -1777,6 +1777,9 @@ STR_CONFIG_SETTING_SERVINT_DISABLED                             :Disabled
 STR_CONFIG_SETTING_NOSERVICE                                    :Disable servicing when breakdowns set to none: {STRING2}
 STR_CONFIG_SETTING_NOSERVICE_HELPTEXT                           :When enabled, vehicles do not get serviced if they cannot break down
 
+STR_CONFIG_SETTING_STATION_LENGTH_LOADING_PENALTY               :Loading speed penalty for trains that are longer than the station: {STRING2}
+STR_CONFIG_SETTING_STATION_LENGTH_LOADING_PENALTY_HELPTEXT      :When enabled, trains which are too long for the station load more slowly than a train which fits the station. This setting does not affect pathfinding.
+
 STR_CONFIG_SETTING_WAGONSPEEDLIMITS                             :Enable wagon speed limits: {STRING2}
 STR_CONFIG_SETTING_WAGONSPEEDLIMITS_HELPTEXT                    :When enabled, also use speed limits of wagons for deciding the maximum speed of a train
 
