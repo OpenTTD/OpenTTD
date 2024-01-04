@@ -1794,7 +1794,6 @@ static SettingsContainer &GetSettingsTree()
 			{
 				construction->Add(new SettingEntry("gui.link_terraform_toolbar"));
 				construction->Add(new SettingEntry("gui.persistent_buildingtools"));
-				construction->Add(new SettingEntry("gui.quick_goto"));
 				construction->Add(new SettingEntry("gui.default_rail_type"));
 			}
 
@@ -1841,8 +1840,6 @@ static SettingsContainer &GetSettingsTree()
 			company->Add(new SettingEntry("gui.signal_gui_mode"));
 			company->Add(new SettingEntry("gui.drag_signals_fixed_distance"));
 			company->Add(new SettingEntry("gui.auto_remove_signals"));
-			company->Add(new SettingEntry("gui.new_nonstop"));
-			company->Add(new SettingEntry("gui.stop_location"));
 			company->Add(new SettingEntry("gui.starting_colour"));
 			company->Add(new SettingEntry("gui.starting_colour_secondary"));
 			company->Add(new SettingEntry("company.engine_renew"));
@@ -1892,6 +1889,12 @@ static SettingsContainer &GetSettingsTree()
 				routing->Add(new SettingEntry("pf.pathfinder_for_ships"));
 			}
 
+			SettingsPage *orders = vehicles->Add(new SettingsPage(STR_CONFIG_SETTING_VEHICLES_ORDERS));
+			{
+				orders->Add(new SettingEntry("gui.new_nonstop"));
+				orders->Add(new SettingEntry("gui.quick_goto"));
+				orders->Add(new SettingEntry("gui.stop_location"));
+			}
 			vehicles->Add(new SettingEntry("order.no_servicing_if_no_breakdowns"));
 			vehicles->Add(new SettingEntry("order.serviceathelipad"));
 		}
