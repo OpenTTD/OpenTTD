@@ -1140,6 +1140,7 @@ static void FormatString(StringBuilder &builder, const char *str_arg, StringPara
 				} else {
 					StringParameters sub_args(args, size);
 					GetStringWithArgs(builder, string_id, sub_args, next_substr_case_index, game_script);
+					args.AdvanceOffset(size);
 				}
 				next_substr_case_index = 0;
 				break;
