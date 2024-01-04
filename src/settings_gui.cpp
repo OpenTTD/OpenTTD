@@ -1795,6 +1795,11 @@ static SettingsContainer &GetSettingsTree()
 				construction->Add(new SettingEntry("gui.link_terraform_toolbar"));
 				construction->Add(new SettingEntry("gui.persistent_buildingtools"));
 				construction->Add(new SettingEntry("gui.default_rail_type"));
+				construction->Add(new SettingEntry("gui.semaphore_build_before"));
+				construction->Add(new SettingEntry("gui.signal_gui_mode"));
+				construction->Add(new SettingEntry("gui.cycle_signal_types"));
+				construction->Add(new SettingEntry("gui.drag_signals_fixed_distance"));
+				construction->Add(new SettingEntry("gui.auto_remove_signals"));
 			}
 
 			interface->Add(new SettingEntry("gui.fast_forward_speed_limit"));
@@ -1835,11 +1840,6 @@ static SettingsContainer &GetSettingsTree()
 
 		SettingsPage *company = main->Add(new SettingsPage(STR_CONFIG_SETTING_COMPANY));
 		{
-			company->Add(new SettingEntry("gui.semaphore_build_before"));
-			company->Add(new SettingEntry("gui.cycle_signal_types"));
-			company->Add(new SettingEntry("gui.signal_gui_mode"));
-			company->Add(new SettingEntry("gui.drag_signals_fixed_distance"));
-			company->Add(new SettingEntry("gui.auto_remove_signals"));
 			company->Add(new SettingEntry("gui.starting_colour"));
 			company->Add(new SettingEntry("gui.starting_colour_secondary"));
 			company->Add(new SettingEntry("company.engine_renew"));
