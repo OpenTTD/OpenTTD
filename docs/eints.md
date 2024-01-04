@@ -25,6 +25,10 @@ The translators will decide whether, where and how to apply your suggestion.
 
 Sorry, we don't offer this option.
 
+Only when there is a consistency problem that needs addressing, this can be done via a PR.
+We are very strict about this, and in general all PRs making translation changes will be closed.
+But if it is really needed, and the change is not a revert of any older change, a PR can be created to do mass changes to a translation.
+
 ### I want to change the language definition (plural form, genders, cases) of a translation.
 
 Please [create an issue](https://github.com/OpenTTD/OpenTTD/issues/new/choose) for this.
