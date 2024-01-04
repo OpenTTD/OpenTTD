@@ -1880,6 +1880,7 @@ static SettingsContainer &GetSettingsTree()
 
 			SettingsPage *routing = vehicles->Add(new SettingsPage(STR_CONFIG_SETTING_VEHICLES_ROUTING));
 			{
+				routing->Add(new SettingEntry("vehicle.road_side"));
 				routing->Add(new SettingEntry("pf.pathfinder_for_trains"));
 				routing->Add(new SettingEntry("difficulty.line_reverse_mode"));
 				routing->Add(new SettingEntry("pf.reverse_at_signals"));
@@ -1942,7 +1943,6 @@ static SettingsContainer &GetSettingsTree()
 			genworld->Add(new SettingEntry("game_creation.snow_line_height"));
 			genworld->Add(new SettingEntry("game_creation.desert_coverage"));
 			genworld->Add(new SettingEntry("game_creation.amount_of_rivers"));
-			genworld->Add(new SettingEntry("vehicle.road_side"));
 			genworld->Add(new SettingEntry("economy.larger_towns"));
 			genworld->Add(new SettingEntry("economy.initial_city_size"));
 			genworld->Add(new SettingEntry("economy.town_layout"));
