@@ -1946,7 +1946,6 @@ static SettingsContainer &GetSettingsTree()
 			genworld->Add(new SettingEntry("economy.larger_towns"));
 			genworld->Add(new SettingEntry("economy.initial_city_size"));
 			genworld->Add(new SettingEntry("economy.town_layout"));
-			genworld->Add(new SettingEntry("difficulty.industry_density"));
 		}
 
 		SettingsPage *environment = main->Add(new SettingsPage(STR_CONFIG_SETTING_ENVIRONMENT));
@@ -1978,6 +1977,7 @@ static SettingsContainer &GetSettingsTree()
 
 			SettingsPage *industries = environment->Add(new SettingsPage(STR_CONFIG_SETTING_ENVIRONMENT_INDUSTRIES));
 			{
+				industries->Add(new SettingEntry("difficulty.industry_density"));
 				industries->Add(new SettingEntry("construction.raw_industry_construction"));
 				industries->Add(new SettingEntry("construction.industry_platform"));
 				industries->Add(new SettingEntry("economy.multiple_industry_per_town"));
