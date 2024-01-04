@@ -1914,6 +1914,7 @@ static SettingsContainer &GetSettingsTree()
 			limitations->Add(new SettingEntry("vehicle.max_train_length"));
 			limitations->Add(new SettingEntry("station.station_spread"));
 			limitations->Add(new SettingEntry("station.distant_join_stations"));
+			limitations->Add(new SettingEntry("station.modified_catchment"));
 			limitations->Add(new SettingEntry("construction.road_stop_on_town_road"));
 			limitations->Add(new SettingEntry("construction.road_stop_on_competitor_road"));
 			limitations->Add(new SettingEntry("construction.crossing_with_competitor"));
@@ -2004,7 +2005,6 @@ static SettingsContainer &GetSettingsTree()
 				trees->Add(new SettingEntry("game_creation.tree_placer"));
 				trees->Add(new SettingEntry("construction.extra_tree_placement"));
 			}
-			environment->Add(new SettingEntry("station.modified_catchment"));
 		}
 
 		SettingsPage *ai = main->Add(new SettingsPage(STR_CONFIG_SETTING_AI));
