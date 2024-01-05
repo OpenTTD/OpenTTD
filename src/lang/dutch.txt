@@ -1777,6 +1777,8 @@ STR_CONFIG_SETTING_SERVINT_DISABLED                             :Uitgeschakeld
 STR_CONFIG_SETTING_NOSERVICE                                    :Onderhoud uitschakelen wanneer defecten uit staan: {STRING}
 STR_CONFIG_SETTING_NOSERVICE_HELPTEXT                           :Als deze optie is ingeschakeld worden voertuigen niet onderhouden als ze niet kapot kunnen gaan.
 
+STR_CONFIG_SETTING_STATION_LENGTH_LOADING_PENALTY               :Verminderde laadsnelheid voor treinen langer dan het station: {STRING}
+STR_CONFIG_SETTING_STATION_LENGTH_LOADING_PENALTY_HELPTEXT      :Indien ingeschakeld worden treinen die te lang zijn voor het station langzamer geladen dan treinen die in het station passen. Deze instelling is niet van invloed op het zoeken van de route.
 
 STR_CONFIG_SETTING_WAGONSPEEDLIMITS                             :Snelheidslimieten voor wagons inschakelen: {STRING}
 STR_CONFIG_SETTING_WAGONSPEEDLIMITS_HELPTEXT                    :Wanneer ingeschakeld, ook gebruik maken van snelheidsbeperkingen van wagons voor het bepalen van de maximale snelheid van een trein
@@ -1969,7 +1971,7 @@ STR_CONFIG_SETTING_CITY_SIZE_MULTIPLIER_HELPTEXT                :Gemiddelde groo
 STR_CONFIG_SETTING_LINKGRAPH_RECALC_INTERVAL                    :Distributiegrafiek elke {STRING} bijwerken
 STR_CONFIG_SETTING_LINKGRAPH_RECALC_INTERVAL_HELPTEXT           :De tijd tussen opeenvolgende herberekeningen van de koppeling-grafiek. Elke berekening berekent de plannen voor één component van de grafiek. Dat betekent dat een waarde X voor deze instelling niet betekent dat de hele grafiek elke X seconden wordt bijgewerkt. Dat geldt alleen voor één component. Hoe korter je deze waarde instelt, hoe meer CPU-tijd er nodig is voor de berekening. Hoe langer je deze waarde instelt, hoe langer het duurt voordat de vrachtdistributie start op nieuwe routes.
 STR_CONFIG_SETTING_LINKGRAPH_RECALC_TIME                        :{STRING} per herberekening van de distributiegrafiek besteden
-STR_CONFIG_SETTING_LINKGRAPH_RECALC_TIME_HELPTEXT               :De benodigde tijd voor een herbereking van een koppeling-grafiekcomponent. Wanneer een herberekening wordt gestart, start een draad die dit aantal seconden mag lopen. Hoe korter je deze waarde maakt, hoe groter de kans dat de draad is niet op tijd is afgelopen. Het spel stopt dan totdat dit alsnog gebeurt (het 'hikt'). Hoe langer je deze waarde maakt, hoe langer het duurt voor de distributie wordt bijgewerkt wanneer een route wijzigt.
+STR_CONFIG_SETTING_LINKGRAPH_RECALC_TIME_HELPTEXT               :De benodigde tijd voor een herbereking van een koppeling-grafiekcomponent. Wanneer een herberekening wordt gestart, start een draad die dit aantal seconden mag lopen. Hoe korter je deze waarde maakt, hoe groter de kans dat de draad niet op tijd is afgelopen. Het spel stopt dan totdat dit alsnog gebeurt (het 'hikt'). Hoe langer je deze waarde maakt, hoe langer het duurt voor de distributie wordt bijgewerkt wanneer een route wijzigt.
 
 STR_CONFIG_SETTING_DISTRIBUTION_PAX                             :Distributiemodus voor passagiers: {STRING}
 STR_CONFIG_SETTING_DISTRIBUTION_PAX_HELPTEXT                    :'Symmetrisch' betekent dat ongeveer hetzelfde aantal passagiers van station A naar station B gaat als van B naar A. 'Asymmetrisch' betekent dat willekeurige aantallen passagiers reizen in beide richtingen. 'Handmatig' betekent dat er geen automatische distributie plaatsvindt voor passagiers.
@@ -1990,7 +1992,7 @@ STR_CONFIG_SETTING_LINKGRAPH_ACCURACY_HELPTEXT                  :Hoe hoger de in
 STR_CONFIG_SETTING_DEMAND_DISTANCE                              :Effect van afstand op de vraag: {STRING}
 STR_CONFIG_SETTING_DEMAND_DISTANCE_HELPTEXT                     :Als je dit op een waarde hoger dan 0 zet, dan zal de afstand tussen het station van herkomst A met enige vracht en een mogelijke bestemming B effect hebben op de hoeveelheid lading verzonden van A naar B. Hoe verder weg B is van A, des te minder lading wordt verzonden. Hoe hoger je deze instelt, hoe minder lading wordt verzonden naar verder geleden stations en meer lading zal worden verzonden naar dichtbij gelegen stations.
 STR_CONFIG_SETTING_DEMAND_SIZE                                  :Hoeveelheid terugkerende vracht voor symmetrische modus: {STRING}
-STR_CONFIG_SETTING_DEMAND_SIZE_HELPTEXT                         :Door dit op minder dan 100% te zetten lijkt de symmetrische verdeling meer op de asymmetrische verdeling. Minder vracht zal geforceerd worden om zich terug te sturen als er een bepaalde hoeveelheid wordt verzonden naar een station. Op 0% van de symmetrische verdeling gedraagt deze zicht als de asymmetrische verdeling.
+STR_CONFIG_SETTING_DEMAND_SIZE_HELPTEXT                         :Door dit op minder dan 100% te zetten lijkt de symmetrische verdeling meer op de asymmetrische verdeling. Minder vracht zal geforceerd worden om zich terug te sturen als er een bepaalde hoeveelheid wordt verzonden naar een station. Op 0% van de symmetrische verdeling gedraagt deze zich als de asymmetrische verdeling.
 
 STR_CONFIG_SETTING_SHORT_PATH_SATURATION                        :Verzadiging van korte routes voordat routes met hoge capaciteit worden gebruikt: {STRING}
 STR_CONFIG_SETTING_SHORT_PATH_SATURATION_HELPTEXT               :Vaak zijn er meerdere routes mogelijk tussen twee stations. De vrachtdistributie verzadigt eerst de kortste route, gebruikt dan de op één na kortste route tot die verzadigd is enzovoort. Verzadiging wordt bepaald door een schatting van de capaciteit en het geplande gebruik. Wanneer alle routes verzadigd zijn, maar er is meer vraag, raken alle wegen overbelast, die met hoge capaciteit als eerste. In veel gevallen schat het algoritme helaas de capaciteit niet nauwkeurig in. Met deze instelling kun je aangeven tot welk percentage een korter pad moet worden verzadigd voordat de eerstvolgende, langere route wordt gekozen. Stel dit in op minder dan 100% om overvolle stations in geval van overschatte capaciteit te voorkomen.
@@ -4476,9 +4478,9 @@ STR_ORDER_CONDITIONAL_COMPARATOR_TOOLTIP                        :{BLACK}Bepaalt 
 STR_ORDER_CONDITIONAL_COMPARATOR_EQUALS                         :is gelijk aan
 STR_ORDER_CONDITIONAL_COMPARATOR_NOT_EQUALS                     :is niet gelijk aan
 STR_ORDER_CONDITIONAL_COMPARATOR_LESS_THAN                      :is minder dan
-STR_ORDER_CONDITIONAL_COMPARATOR_LESS_EQUALS                    :is minder of gelijk aan
+STR_ORDER_CONDITIONAL_COMPARATOR_LESS_EQUALS                    :is minder dan of gelijk aan
 STR_ORDER_CONDITIONAL_COMPARATOR_MORE_THAN                      :is meer dan
-STR_ORDER_CONDITIONAL_COMPARATOR_MORE_EQUALS                    :is meer of gelijk aan
+STR_ORDER_CONDITIONAL_COMPARATOR_MORE_EQUALS                    :is meer dan of gelijk aan
 STR_ORDER_CONDITIONAL_COMPARATOR_IS_TRUE                        :is waar
 STR_ORDER_CONDITIONAL_COMPARATOR_IS_FALSE                       :is niet waar
 

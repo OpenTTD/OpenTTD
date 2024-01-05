@@ -904,7 +904,7 @@ STR_NEWS_VEHICLE_IS_UNPROFITABLE                                :{WHITE}{VEHICLE
 STR_NEWS_AIRCRAFT_DEST_TOO_FAR                                  :{WHITE}{VEHICLE} não consegue chegar ao próximo destino pois está fora de alcance
 
 STR_NEWS_ORDER_REFIT_FAILED                                     :{WHITE}{VEHICLE} parou porque a ordem de adaptação falhou
-STR_NEWS_VEHICLE_AUTORENEW_FAILED                               :{WHITE}{VEHICLE} falhou na Auto-renovação{}{STRING}
+STR_NEWS_VEHICLE_AUTORENEW_FAILED                               :{WHITE}Auto-renovação falhou para {VEHICLE}{}{STRING}
 
 STR_NEWS_NEW_VEHICLE_NOW_AVAILABLE                              :{BIG_FONT}{BLACK}Novo modelo de {STRING} agora disponível!
 STR_NEWS_NEW_VEHICLE_TYPE                                       :{BIG_FONT}{BLACK}{ENGINE}
@@ -1778,6 +1778,8 @@ STR_CONFIG_SETTING_SERVINT_DISABLED                             :Desativado
 STR_CONFIG_SETTING_NOSERVICE                                    :Não fazer manutenção quando não há avarias: {STRING}
 STR_CONFIG_SETTING_NOSERVICE_HELPTEXT                           :Quando ativo, os veículos não farão manutenção se não puderem avariar
 
+STR_CONFIG_SETTING_STATION_LENGTH_LOADING_PENALTY               :Penalidade de velocidade de carregamento para comboios mais compridos do que a estação: {STRING}
+STR_CONFIG_SETTING_STATION_LENGTH_LOADING_PENALTY_HELPTEXT      :Quando ativo, os comboios que são muito compridos para a estação demoram mais tempo a carregar/encher do que um comboio que caiba na estação. Esta definição não afeta a procura de itinerários.
 
 STR_CONFIG_SETTING_WAGONSPEEDLIMITS                             :Ativar limites de velocidade para vagões: {STRING}
 STR_CONFIG_SETTING_WAGONSPEEDLIMITS_HELPTEXT                    :Quando ativo, aplica também os limites de velocidade dos vagões para decidir a velocidade máxima do comboio
@@ -4477,9 +4479,9 @@ STR_ORDER_CONDITIONAL_COMPARATOR_TOOLTIP                        :{BLACK}Como com
 STR_ORDER_CONDITIONAL_COMPARATOR_EQUALS                         :é igual a
 STR_ORDER_CONDITIONAL_COMPARATOR_NOT_EQUALS                     :é diferente de
 STR_ORDER_CONDITIONAL_COMPARATOR_LESS_THAN                      :é menos que
-STR_ORDER_CONDITIONAL_COMPARATOR_LESS_EQUALS                    :é menos que ou igual a
+STR_ORDER_CONDITIONAL_COMPARATOR_LESS_EQUALS                    :é menor que ou igual a
 STR_ORDER_CONDITIONAL_COMPARATOR_MORE_THAN                      :é mais que
-STR_ORDER_CONDITIONAL_COMPARATOR_MORE_EQUALS                    :é mais que ou igual a
+STR_ORDER_CONDITIONAL_COMPARATOR_MORE_EQUALS                    :é maior que ou igual a
 STR_ORDER_CONDITIONAL_COMPARATOR_IS_TRUE                        :é verdadeiro
 STR_ORDER_CONDITIONAL_COMPARATOR_IS_FALSE                       :é falso
 

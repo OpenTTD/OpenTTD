@@ -1446,8 +1446,8 @@ STR_CONFIG_SETTING_ORDER_REVIEW_ON                              :检查 所有�
 STR_CONFIG_SETTING_WARN_INCOME_LESS                             :若线路亏损时发出提示： {STRING}
 STR_CONFIG_SETTING_WARN_INCOME_LESS_HELPTEXT                    :“打开”，当一辆车在一年内总体亏损，发出提示
 
-STR_CONFIG_SETTING_NEVER_EXPIRE_VEHICLES                        :车辆永不报废：{STRING}
-STR_CONFIG_SETTING_NEVER_EXPIRE_VEHICLES_HELPTEXT               :“打开”时，所有的车辆在它出现后一直可用
+STR_CONFIG_SETTING_NEVER_EXPIRE_VEHICLES                        :载具永不过期：{STRING}
+STR_CONFIG_SETTING_NEVER_EXPIRE_VEHICLES_HELPTEXT               :启用时，所有载具一经面世，就可以永远选择购买使用。
 
 STR_CONFIG_SETTING_AUTORENEW_VEHICLE                            :当车辆报废时自动更新：{STRING}
 STR_CONFIG_SETTING_AUTORENEW_VEHICLE_HELPTEXT                   :“打开”时，车辆在临近它的报废期限时自动更新
@@ -1777,6 +1777,8 @@ STR_CONFIG_SETTING_SERVINT_DISABLED                             :关闭
 STR_CONFIG_SETTING_NOSERVICE                                    :在无故障模式下禁用保养周期：{STRING}
 STR_CONFIG_SETTING_NOSERVICE_HELPTEXT                           :“打开”时，在无故障模式下，车辆禁用保养周期
 
+STR_CONFIG_SETTING_STATION_LENGTH_LOADING_PENALTY               :站台长度装卸惩罚：{STRING}
+STR_CONFIG_SETTING_STATION_LENGTH_LOADING_PENALTY_HELPTEXT      :启用站台长度装卸惩罚。过长的火车将会在站台中装卸得更慢。此项设置不会影响寻路。
 
 STR_CONFIG_SETTING_WAGONSPEEDLIMITS                             :启动车辆限速：{STRING}
 STR_CONFIG_SETTING_WAGONSPEEDLIMITS_HELPTEXT                    :“打开“时，还要根据车辆的限速来决定一列火车的最高速度
@@ -1971,7 +1973,7 @@ STR_CONFIG_SETTING_LINKGRAPH_RECALC_INTERVAL_HELPTEXT           :两次连结图
 STR_CONFIG_SETTING_LINKGRAPH_RECALC_TIME                        :在货物分配的重新计算上花费 {STRING}
 STR_CONFIG_SETTING_LINKGRAPH_RECALC_TIME_HELPTEXT               :每一个连结图的重新计算时间。当一次重新计算开始，一个线程会被允许运行这个秒数。此设定赋值越小，则线程无法按时结束的可能性越大，从而导致游戏运行延迟。此设定赋值越大，则在线路改变时货物再分配所需时间会变长。
 
-STR_CONFIG_SETTING_DISTRIBUTION_PAX                             :乗客分配方式：{STRING}
+STR_CONFIG_SETTING_DISTRIBUTION_PAX                             :乘客分配方式：{STRING}
 STR_CONFIG_SETTING_DISTRIBUTION_PAX_HELPTEXT                    :假设有交通路线连接甲、乙两站。“对称”指甲站往乙站的乗客数量与乙站往甲站的乘客数量大致相同。“不对称”指任何一站往另一站的乘客数量皆由系统随意决定。“手动”指系统不会自动分配乘客的目的地。
 STR_CONFIG_SETTING_DISTRIBUTION_MAIL                            :邮件分配方式：{STRING}
 STR_CONFIG_SETTING_DISTRIBUTION_MAIL_HELPTEXT                   :假设有交通路线连接甲、乙两站。“对称”指甲站往乙站的邮件数量与乙站往甲站的邮件数量大致相同。“不对称”指任何一站往另一站的邮件数量皆由系统随意决定。“手动”指系统不会自动分配邮件的目的地。
@@ -2593,7 +2595,7 @@ STR_CONTENT_SELECT_UPDATES_CAPTION                              :{BLACK}选择�
 STR_CONTENT_SELECT_UPDATES_CAPTION_TOOLTIP                      :{BLACK}更新所有已下载的扩展包
 STR_CONTENT_UNSELECT_ALL_CAPTION                                :{BLACK}取消全选
 STR_CONTENT_UNSELECT_ALL_CAPTION_TOOLTIP                        :{BLACK}取消全部选择
-STR_CONTENT_SEARCH_EXTERNAL                                     :{BLACK}搜索整个网络
+STR_CONTENT_SEARCH_EXTERNAL                                     :{BLACK}在外部网站搜索
 STR_CONTENT_SEARCH_EXTERNAL_TOOLTIP                             :{BLACK}在与OpenTTD没有联系的网站搜寻没有纳入OpenTTD內容服务的內容
 STR_CONTENT_SEARCH_EXTERNAL_DISCLAIMER_CAPTION                  :{WHITE}正在离开游戏！
 STR_CONTENT_SEARCH_EXTERNAL_DISCLAIMER                          :{WHITE}在外部网站下载內容的规则及条款可能跟OpenTTD引用的规则及条款不同。{}您需要参照有关网站以取得在OpenTTD安装有关內容的资讯。{}您要継续吗？

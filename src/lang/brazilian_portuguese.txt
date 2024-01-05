@@ -1778,6 +1778,8 @@ STR_CONFIG_SETTING_SERVINT_DISABLED                             :Desativado
 STR_CONFIG_SETTING_NOSERVICE                                    :Desativar manutenção quando as quebras estão desativadas: {STRING}
 STR_CONFIG_SETTING_NOSERVICE_HELPTEXT                           :Quando ativado, veículos não sofrem manutenção se não puderem quebrar
 
+STR_CONFIG_SETTING_STATION_LENGTH_LOADING_PENALTY               :Penalidade de velocidade de carregamento para trens que são mais longos que a estação: {STRING}
+STR_CONFIG_SETTING_STATION_LENGTH_LOADING_PENALTY_HELPTEXT      :Quando ativado, os trens que são muito longos para a estação carregam mais lentamente do que um trem que cabe na estação. Esta configuração não afeta o itinerário.
 
 STR_CONFIG_SETTING_WAGONSPEEDLIMITS                             :Ativar limite de velocidade dos vagões: {STRING}
 STR_CONFIG_SETTING_WAGONSPEEDLIMITS_HELPTEXT                    :Ativado, usa limites de velocidade para vagões para decidir a velocidade máxima de um trem
