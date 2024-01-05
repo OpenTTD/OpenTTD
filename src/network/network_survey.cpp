@@ -11,6 +11,7 @@
 #include "network_survey.h"
 #include "settings_table.h"
 #include "network.h"
+#include "network_func.h"
 #include "../debug.h"
 #include "../survey.h"
 #include "../3rdparty/fmt/chrono.h"
@@ -99,21 +100,29 @@ void NetworkSurveyHandler::Transmit(Reason reason, bool blocking)
 
 	if (blocking) {
 		std::unique_lock<std::mutex> lock(this->mutex);
+
 		/* Block no longer than 2 seconds. If we failed to send the survey in that time, so be it. */
-		this->loaded.wait_for(lock, std::chrono::seconds(2));
+		std::chrono::steady_clock::time_point end = std::chrono::steady_clock::now() + std::chrono::seconds(2);
+
+		while (!this->transmitted && std::chrono::steady_clock::now() < end) {
+			NetworkBackgroundLoop();
+			this->transmitted_cv.wait_for(lock, std::chrono::milliseconds(30));
+		}
 	}
 }
 
 void NetworkSurveyHandler::OnFailure()
 {
 	Debug(net, 1, "Survey: failed to send survey results");
-	this->loaded.notify_all();
+	this->transmitted = true;
+	this->transmitted_cv.notify_all();
 }
 
 void NetworkSurveyHandler::OnReceiveData(std::unique_ptr<char[]> data, size_t)
 {
 	if (data == nullptr) {
 		Debug(net, 1, "Survey: survey results sent");
-		this->loaded.notify_all();
+		this->transmitted = true;
+		this->transmitted_cv.notify_all();
 	}
 }

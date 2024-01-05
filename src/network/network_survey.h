@@ -41,7 +41,8 @@ public:
 
 private:
 	std::mutex mutex; ///< Mutex for the condition variable.
-	std::condition_variable loaded; ///< Condition variable to wait for the survey to be sent.
+	std::atomic<bool> transmitted; ///< Whether the survey has been transmitted.
+	std::condition_variable transmitted_cv; ///< Condition variable to inform changes to transmitted.
 };
 
 extern NetworkSurveyHandler _survey;
