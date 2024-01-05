@@ -330,6 +330,7 @@ public:
 	/**
 	 * Gets the current production level of an industry.
 	 * @param industry_id The index of the industry.
+	 * @return The current production level of the industry.
 	 * @api -ai
 	 */
 	static SQInteger GetProductionLevel(IndustryID industry_id);
