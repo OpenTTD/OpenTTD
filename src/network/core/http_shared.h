@@ -97,20 +97,6 @@ public:
 		return this->queue.empty();
 	}
 
-
-	/**
-	 * Clear everything in the queue.
-	 *
-	 * Should be called from the Game Thread.
-	 */
-	void ClearQueue()
-	{
-		std::lock_guard<std::mutex> lock(this->mutex);
-
-		this->queue.clear();
-		this->queue_cv.notify_all();
-	}
-
 	HTTPThreadSafeCallback(HTTPCallback *callback) : callback(callback) {}
 
 	~HTTPThreadSafeCallback()
