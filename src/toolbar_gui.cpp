@@ -145,9 +145,9 @@ static const int CTMN_SPECTATOR   = -3; ///< Show a company window as spectator
  * Pop up a generic company list menu.
  * @param w The toolbar window.
  * @param widget The button widget id.
- * @param grey A bitbask of which items to mark as disabled.
+ * @param grey A bitmask of which companies to mark as disabled.
  */
-static void PopupMainCompanyToolbMenu(Window *w, WidgetID widget, int grey = 0)
+static void PopupMainCompanyToolbMenu(Window *w, WidgetID widget, CompanyMask grey = 0)
 {
 	DropDownList list;
 
@@ -728,7 +728,7 @@ static CallBackFunction MenuClickIndustry(int index)
 
 static void ToolbarVehicleClick(Window *w, VehicleType veh)
 {
-	int dis = 0;
+	CompanyMask dis = 0;
 
 	for (const Company *c : Company::Iterate()) {
 		if (c->group_all[veh].num_vehicle == 0) SetBit(dis, c->index);
