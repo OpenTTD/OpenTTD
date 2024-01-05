@@ -334,8 +334,8 @@ static bool DisasterTick_Ufo(DisasterVehicle *v)
 		v->state = 1;
 
 		uint n = 0; // Total number of targetable road vehicles.
-		for (const RoadVehicle *u : RoadVehicle::Iterate()) {
-			if (u->IsFrontEngine()) n++;
+		for (const Company *c : Company::Iterate()) {
+			n += c->group_all[VEH_ROAD].num_vehicle;
 		}
 
 		if (n == 0) {
