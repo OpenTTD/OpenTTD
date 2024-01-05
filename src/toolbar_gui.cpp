@@ -728,10 +728,10 @@ static CallBackFunction MenuClickIndustry(int index)
 
 static void ToolbarVehicleClick(Window *w, VehicleType veh)
 {
-	int dis = ~0;
+	int dis = 0;
 
-	for (const Vehicle *v : Vehicle::Iterate()) {
-		if (v->type == veh && v->IsPrimaryVehicle()) ClrBit(dis, v->owner);
+	for (const Company *c : Company::Iterate()) {
+		if (c->group_all[veh].num_vehicle == 0) SetBit(dis, c->index);
 	}
 	PopupMainCompanyToolbMenu(w, WID_TN_VEHICLE_START + veh, dis);
 }
