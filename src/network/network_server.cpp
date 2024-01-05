@@ -1521,30 +1521,25 @@ static void NetworkCheckRestartMap()
  */
 static void NetworkAutoCleanCompanies()
 {
-	bool clients_in_company[MAX_COMPANIES];
-	int vehicles_in_company[MAX_COMPANIES];
+	CompanyMask has_clients = 0;
+	CompanyMask has_vehicles = 0;
 
 	if (!_settings_client.network.autoclean_companies) return;
 
-	memset(clients_in_company, 0, sizeof(clients_in_company));
-
 	/* Detect the active companies */
 	for (const NetworkClientInfo *ci : NetworkClientInfo::Iterate()) {
-		if (Company::IsValidID(ci->client_playas)) clients_in_company[ci->client_playas] = true;
+		if (Company::IsValidID(ci->client_playas)) SetBit(has_clients, ci->client_playas);
 	}
 
 	if (!_network_dedicated) {
 		const NetworkClientInfo *ci = NetworkClientInfo::GetByClientID(CLIENT_ID_SERVER);
 		assert(ci != nullptr);
-		if (Company::IsValidID(ci->client_playas)) clients_in_company[ci->client_playas] = true;
+		if (Company::IsValidID(ci->client_playas)) SetBit(has_clients, ci->client_playas);
 	}
 
 	if (_settings_client.network.autoclean_novehicles != 0) {
-		memset(vehicles_in_company, 0, sizeof(vehicles_in_company));
-
-		for (const Vehicle *v : Vehicle::Iterate()) {
-			if (!Company::IsValidID(v->owner) || !v->IsPrimaryVehicle()) continue;
-			vehicles_in_company[v->owner]++;
+		for (const Company *c : Company::Iterate()) {
+			if (std::any_of(std::begin(c->group_all), std::end(c->group_all), [](const GroupStatistics &gs) { return gs.num_vehicle != 0; })) SetBit(has_vehicles, c->index);
 		}
 	}
 
@@ -1553,7 +1548,7 @@ static void NetworkAutoCleanCompanies()
 		/* Skip the non-active once */
 		if (c->is_ai) continue;
 
-		if (!clients_in_company[c->index]) {
+		if (!HasBit(has_clients, c->index)) {
 			/* The company is empty for one month more */
 			_network_company_states[c->index].months_empty++;
 
@@ -1572,7 +1567,7 @@ static void NetworkAutoCleanCompanies()
 				NetworkServerUpdateCompanyPassworded(c->index, false);
 			}
 			/* Is the company empty for autoclean_novehicles-months, and has no vehicles? */
-			if (_settings_client.network.autoclean_novehicles != 0 && _network_company_states[c->index].months_empty > _settings_client.network.autoclean_novehicles && vehicles_in_company[c->index] == 0) {
+			if (_settings_client.network.autoclean_novehicles != 0 && _network_company_states[c->index].months_empty > _settings_client.network.autoclean_novehicles && !HasBit(has_vehicles, c->index)) {
 				/* Shut the company down */
 				Command<CMD_COMPANY_CTRL>::Post(CCA_DELETE, c->index, CRR_AUTOCLEAN, INVALID_CLIENT_ID);
 				IConsolePrint(CC_INFO, "Auto-cleaned company #{} with no vehicles.", c->index + 1);
