@@ -51,8 +51,10 @@ ScriptVehicleList::ScriptVehicleList(HSQUIRRELVM vm)
 	}
 	AutoRestoreBackup ops_error_threshold_backup(vm->_ops_till_suspend_error_threshold, new_ops_error_threshold);
 
+	bool is_deity = ScriptCompanyMode::IsDeity();
+	CompanyID owner = ScriptObject::GetCompany();
 	for (const Vehicle *v : Vehicle::Iterate()) {
-		if (v->owner != ScriptObject::GetCompany() && !ScriptCompanyMode::IsDeity()) continue;
+		if (v->owner != owner && !is_deity) continue;
 		if (!v->IsPrimaryVehicle() && !(v->type == VEH_TRAIN && ::Train::From(v)->IsFreeWagon())) continue;
 
 		if (nparam < 1) {
@@ -107,8 +109,10 @@ ScriptVehicleList_Station::ScriptVehicleList_Station(StationID station_id)
 	EnforceDeityOrCompanyModeValid_Void();
 	if (!ScriptBaseStation::IsValidBaseStation(station_id)) return;
 
+	bool is_deity = ScriptCompanyMode::IsDeity();
+	CompanyID owner = ScriptObject::GetCompany();
 	for (const Vehicle *v : Vehicle::Iterate()) {
-		if ((v->owner == ScriptObject::GetCompany() || ScriptCompanyMode::IsDeity()) && v->IsPrimaryVehicle()) {
+		if ((v->owner == owner || is_deity) && v->IsPrimaryVehicle()) {
 			for (const Order *order : v->Orders()) {
 				if ((order->IsType(OT_GOTO_STATION) || order->IsType(OT_GOTO_WAYPOINT)) && order->GetDestination() == station_id) {
 					this->AddItem(v->index);
@@ -156,8 +160,10 @@ ScriptVehicleList_Depot::ScriptVehicleList_Depot(TileIndex tile)
 			return;
 	}
 
+	bool is_deity = ScriptCompanyMode::IsDeity();
+	CompanyID owner = ScriptObject::GetCompany();
 	for (const Vehicle *v : Vehicle::Iterate()) {
-		if ((v->owner == ScriptObject::GetCompany() || ScriptCompanyMode::IsDeity()) && v->IsPrimaryVehicle() && v->type == type) {
+		if ((v->owner == owner || is_deity) && v->IsPrimaryVehicle() && v->type == type) {
 			for (const Order *order : v->Orders()) {
 				if (order->IsType(OT_GOTO_DEPOT) && order->GetDestination() == dest) {
 					this->AddItem(v->index);
@@ -182,8 +188,9 @@ ScriptVehicleList_Group::ScriptVehicleList_Group(GroupID group_id)
 	EnforceCompanyModeValid_Void();
 	if (!ScriptGroup::IsValidGroup((ScriptGroup::GroupID)group_id)) return;
 
+	CompanyID owner = ScriptObject::GetCompany();
 	for (const Vehicle *v : Vehicle::Iterate()) {
-		if (v->owner == ScriptObject::GetCompany() && v->IsPrimaryVehicle()) {
+		if (v->owner == owner && v->IsPrimaryVehicle()) {
 			if (v->group_id == group_id) this->AddItem(v->index);
 		}
 	}
@@ -194,8 +201,9 @@ ScriptVehicleList_DefaultGroup::ScriptVehicleList_DefaultGroup(ScriptVehicle::Ve
 	EnforceCompanyModeValid_Void();
 	if (vehicle_type < ScriptVehicle::VT_RAIL || vehicle_type > ScriptVehicle::VT_AIR) return;
 
+	CompanyID owner = ScriptObject::GetCompany();
 	for (const Vehicle *v : Vehicle::Iterate()) {
-		if (v->owner == ScriptObject::GetCompany() && v->IsPrimaryVehicle()) {
+		if (v->owner == owner && v->IsPrimaryVehicle()) {
 			if (v->type == (::VehicleType)vehicle_type && v->group_id == ScriptGroup::GROUP_DEFAULT) this->AddItem(v->index);
 		}
 	}

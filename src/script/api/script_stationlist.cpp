@@ -19,8 +19,10 @@
 ScriptStationList::ScriptStationList(ScriptStation::StationType station_type)
 {
 	EnforceDeityOrCompanyModeValid_Void();
+	bool is_deity = ScriptCompanyMode::IsDeity();
+	CompanyID owner = ScriptObject::GetCompany();
 	for (Station *st : Station::Iterate()) {
-		if ((st->owner == ScriptObject::GetCompany() || ScriptCompanyMode::IsDeity()) && (st->facilities & station_type) != 0) this->AddItem(st->index);
+		if ((is_deity || st->owner == owner) && (st->facilities & station_type) != 0) this->AddItem(st->index);
 	}
 }
 
