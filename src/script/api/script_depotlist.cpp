@@ -27,8 +27,10 @@ ScriptDepotList::ScriptDepotList(ScriptTile::TransportType transport_type)
 
 		case ScriptTile::TRANSPORT_AIR: {
 			/* Hangars are not seen as real depots by the depot code. */
+			bool is_deity = ScriptCompanyMode::IsDeity();
+			CompanyID owner = ScriptObject::GetCompany();
 			for (const Station *st : Station::Iterate()) {
-				if (st->owner == ScriptObject::GetCompany() || ScriptCompanyMode::IsDeity()) {
+				if (is_deity || st->owner == owner) {
 					for (uint i = 0; i < st->airport.GetNumHangars(); i++) {
 						this->AddItem(st->airport.GetHangarTile(i).base());
 					}
@@ -39,7 +41,9 @@ ScriptDepotList::ScriptDepotList(ScriptTile::TransportType transport_type)
 	}
 
 	/* Handle 'standard' depots. */
+	bool is_deity = ScriptCompanyMode::IsDeity();
+	CompanyID owner = ScriptObject::GetCompany();
 	for (const Depot *depot : Depot::Iterate()) {
-		if ((::GetTileOwner(depot->xy) == ScriptObject::GetCompany() || ScriptCompanyMode::IsDeity()) && ::IsTileType(depot->xy, tile_type)) this->AddItem(depot->xy.base());
+		if ((is_deity || ::GetTileOwner(depot->xy) == owner) && ::IsTileType(depot->xy, tile_type)) this->AddItem(depot->xy.base());
 	}
 }

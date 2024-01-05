@@ -17,7 +17,8 @@
 ScriptGroupList::ScriptGroupList()
 {
 	EnforceCompanyModeValid_Void();
+	CompanyID owner = ScriptObject::GetCompany();
 	for (const Group *g : Group::Iterate()) {
-		if (g->owner == ScriptObject::GetCompany()) this->AddItem(g->index);
+		if (g->owner == owner) this->AddItem(g->index);
 	}
 }
