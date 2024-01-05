@@ -510,6 +510,7 @@ add_files(
     vehiclelist.cpp
     vehiclelist.h
     vehiclelist_cmd.h
+    vehiclelist_func.h
     viewport.cpp
     viewport_cmd.h
     viewport_func.h
