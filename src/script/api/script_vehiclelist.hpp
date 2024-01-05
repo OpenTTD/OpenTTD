@@ -45,7 +45,7 @@ public:
 	 * The constructor wrapper from Squirrel.
 	 */
 	ScriptVehicleList(HSQUIRRELVM vm);
-#endif
+#endif /* DOXYGEN_API */
 };
 
 /**
