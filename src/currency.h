@@ -66,6 +66,7 @@ enum Currencies {
 	CURRENCY_INR,       ///< Indian Rupee
 	CURRENCY_IDR,       ///< Indonesian Rupiah
 	CURRENCY_MYR,       ///< Malaysian Ringgit
+	CURRENCY_LVL,       ///< Latvian Lats
 	CURRENCY_END,       ///< always the last item
 };
 
