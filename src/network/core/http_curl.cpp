@@ -278,10 +278,9 @@ void NetworkHTTPUninitialize()
 {
 	_http_thread_exit = true;
 
-	/* Queues must be cleared (and the queue CV signalled) after _http_thread_exit is set to ensure that the HTTP thread can exit */
-	for (auto &callback : _http_callbacks) {
-		callback->ClearQueue();
-	}
+	/* Ensure the callbacks are handled. This is mostly needed as we send
+	 * a survey just before close, and that might be pending here. */
+	NetworkHTTPSocketHandler::HTTPReceive();
 
 	{
 		std::lock_guard<std::mutex> lock(_http_mutex);
