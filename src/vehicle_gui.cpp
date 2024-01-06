@@ -245,16 +245,16 @@ void BaseVehicleListWindow::BuildVehicleList()
  */
 static bool CargoFilterSingle(const Vehicle *v, const CargoID cid)
 {
-	if (cid == BaseVehicleListWindow::CF_ANY) {
+	if (cid == CargoFilterCriteria::CF_ANY) {
 		return true;
-	} else if (cid == BaseVehicleListWindow::CF_NONE) {
+	} else if (cid == CargoFilterCriteria::CF_NONE) {
 		for (const Vehicle *w = v; w != nullptr; w = w->Next()) {
 			if (w->cargo_cap > 0) {
 				return false;
 			}
 		}
 		return true;
-	} else if (cid == BaseVehicleListWindow::CF_FREIGHT) {
+	} else if (cid == CargoFilterCriteria::CF_FREIGHT) {
 		bool have_capacity = false;
 		for (const Vehicle *w = v; w != nullptr; w = w->Next()) {
 			if (w->cargo_cap > 0) {
@@ -308,7 +308,7 @@ void BaseVehicleListWindow::SetCargoFilter(CargoID cid)
 	if (this->cargo_filter_criteria != cid) {
 		this->cargo_filter_criteria = cid;
 		/* Deactivate filter if criteria is 'Show All', activate it otherwise. */
-		this->vehgroups.SetFilterState(this->cargo_filter_criteria != CF_ANY);
+		this->vehgroups.SetFilterState(this->cargo_filter_criteria != CargoFilterCriteria::CF_ANY);
 		this->vehgroups.SetFilterType(0);
 		this->vehgroups.ForceRebuild();
 	}
@@ -319,9 +319,9 @@ void BaseVehicleListWindow::SetCargoFilter(CargoID cid)
  */
 void BaseVehicleListWindow::SetCargoFilterArray()
 {
-	this->cargo_filter_criteria = CF_ANY;
+	this->cargo_filter_criteria = CargoFilterCriteria::CF_ANY;
 	this->vehgroups.SetFilterFuncs(_filter_funcs);
-	this->vehgroups.SetFilterState(this->cargo_filter_criteria != CF_ANY);
+	this->vehgroups.SetFilterState(this->cargo_filter_criteria != CargoFilterCriteria::CF_ANY);
 }
 
 /**
@@ -372,9 +372,9 @@ void BaseVehicleListWindow::OnInit()
 StringID BaseVehicleListWindow::GetCargoFilterLabel(CargoID cid) const
 {
 	switch (cid) {
-		case CF_ANY: return STR_CARGO_TYPE_FILTER_ALL;
-		case CF_FREIGHT: return STR_CARGO_TYPE_FILTER_FREIGHT;
-		case CF_NONE: return STR_CARGO_TYPE_FILTER_NONE;
+		case CargoFilterCriteria::CF_ANY: return STR_CARGO_TYPE_FILTER_ALL;
+		case CargoFilterCriteria::CF_FREIGHT: return STR_CARGO_TYPE_FILTER_FREIGHT;
+		case CargoFilterCriteria::CF_NONE: return STR_CARGO_TYPE_FILTER_NONE;
 		default: return CargoSpec::Get(cid)->name;
 	}
 }
@@ -389,11 +389,11 @@ DropDownList BaseVehicleListWindow::BuildCargoDropDownList(bool full) const
 	DropDownList list;
 
 	/* Add item for disabling filtering. */
-	list.push_back(std::make_unique<DropDownListStringItem>(this->GetCargoFilterLabel(CF_ANY), CF_ANY, false));
+	list.push_back(std::make_unique<DropDownListStringItem>(this->GetCargoFilterLabel(CargoFilterCriteria::CF_ANY), CargoFilterCriteria::CF_ANY, false));
 	/* Add item for freight (i.e. vehicles with cargo capacity and with no passenger capacity). */
-	list.push_back(std::make_unique<DropDownListStringItem>(this->GetCargoFilterLabel(CF_FREIGHT), CF_FREIGHT, false));
+	list.push_back(std::make_unique<DropDownListStringItem>(this->GetCargoFilterLabel(CargoFilterCriteria::CF_FREIGHT), CargoFilterCriteria::CF_FREIGHT, false));
 	/* Add item for vehicles not carrying anything, e.g. train engines. */
-	list.push_back(std::make_unique<DropDownListStringItem>(this->GetCargoFilterLabel(CF_NONE), CF_NONE, false));
+	list.push_back(std::make_unique<DropDownListStringItem>(this->GetCargoFilterLabel(CargoFilterCriteria::CF_NONE), CargoFilterCriteria::CF_NONE, false));
 
 	/* Add cargos */
 	Dimension d = GetLargestCargoIconSize();

@@ -58,7 +58,7 @@ private:
 public:
 	Order *next;          ///< Pointer to next order. If nullptr, end of list
 
-	Order() : flags(0), refit_cargo(CT_NO_REFIT), wait_time(0), travel_time(0), max_speed(UINT16_MAX) {}
+	Order() : flags(0), refit_cargo(CARGO_NO_REFIT), wait_time(0), travel_time(0), max_speed(UINT16_MAX) {}
 	~Order();
 
 	Order(uint32_t packed);
@@ -79,7 +79,7 @@ public:
 	void Free();
 
 	void MakeGoToStation(StationID destination);
-	void MakeGoToDepot(DepotID destination, OrderDepotTypeFlags order, OrderNonStopFlags non_stop_type = ONSF_NO_STOP_AT_INTERMEDIATE_STATIONS, OrderDepotActionFlags action = ODATF_SERVICE_ONLY, CargoID cargo = CT_NO_REFIT);
+	void MakeGoToDepot(DepotID destination, OrderDepotTypeFlags order, OrderNonStopFlags non_stop_type = ONSF_NO_STOP_AT_INTERMEDIATE_STATIONS, OrderDepotActionFlags action = ODATF_SERVICE_ONLY, CargoID cargo = CARGO_NO_REFIT);
 	void MakeGoToWaypoint(StationID destination);
 	void MakeLoading(bool ordered);
 	void MakeLeaveStation();
@@ -115,14 +115,14 @@ public:
 	 * @pre IsType(OT_GOTO_DEPOT) || IsType(OT_GOTO_STATION)
 	 * @return true if a refit should happen.
 	 */
-	inline bool IsRefit() const { return this->refit_cargo < NUM_CARGO || this->refit_cargo == CT_AUTO_REFIT; }
+	inline bool IsRefit() const { return this->refit_cargo < NUM_CARGO || this->refit_cargo == CARGO_AUTO_REFIT; }
 
 	/**
 	 * Is this order a auto-refit order.
 	 * @pre IsType(OT_GOTO_DEPOT) || IsType(OT_GOTO_STATION)
 	 * @return true if a auto-refit should happen.
 	 */
-	inline bool IsAutoRefit() const { return this->refit_cargo == CT_AUTO_REFIT; }
+	inline bool IsAutoRefit() const { return this->refit_cargo == CARGO_AUTO_REFIT; }
 
 	/**
 	 * Get the cargo to to refit to.
