@@ -237,7 +237,7 @@ Order::Order(uint32_t packed)
 	this->flags   = GB(packed,  8,  8);
 	this->dest    = GB(packed, 16, 16);
 	this->next    = nullptr;
-	this->refit_cargo   = CT_NO_REFIT;
+	this->refit_cargo   = CARGO_NO_REFIT;
 	this->wait_time     = 0;
 	this->travel_time   = 0;
 	this->max_speed     = UINT16_MAX;
@@ -719,7 +719,7 @@ CommandCost CmdInsertOrder(DoCommandFlag flags, VehicleID veh, VehicleOrderID se
 	if (ret.Failed()) return ret;
 
 	/* Validate properties we don't want to have different from default as they are set by other commands. */
-	if (new_order.GetRefitCargo() != CT_NO_REFIT || new_order.GetWaitTime() != 0 || new_order.GetTravelTime() != 0 || new_order.GetMaxSpeed() != UINT16_MAX) return CMD_ERROR;
+	if (new_order.GetRefitCargo() != CARGO_NO_REFIT || new_order.GetWaitTime() != 0 || new_order.GetTravelTime() != 0 || new_order.GetMaxSpeed() != UINT16_MAX) return CMD_ERROR;
 
 	/* Check if the inserted order is to the correct destination (owner, type),
 	 * and has the correct flags if any */
@@ -1326,7 +1326,7 @@ CommandCost CmdModifyOrder(DoCommandFlag flags, VehicleID veh, VehicleOrderID se
 			case MOF_NON_STOP:
 				order->SetNonStopType((OrderNonStopFlags)data);
 				if (data & ONSF_NO_STOP_AT_DESTINATION_STATION) {
-					order->SetRefit(CT_NO_REFIT);
+					order->SetRefit(CARGO_NO_REFIT);
 					order->SetLoadType(OLF_LOAD_IF_POSSIBLE);
 					order->SetUnloadType(OUF_UNLOAD_IF_POSSIBLE);
 				}
@@ -1342,7 +1342,7 @@ CommandCost CmdModifyOrder(DoCommandFlag flags, VehicleID veh, VehicleOrderID se
 
 			case MOF_LOAD:
 				order->SetLoadType((OrderLoadFlags)data);
-				if (data & OLFB_NO_LOAD) order->SetRefit(CT_NO_REFIT);
+				if (data & OLFB_NO_LOAD) order->SetRefit(CARGO_NO_REFIT);
 				break;
 
 			case MOF_DEPOT_ACTION: {
@@ -1355,13 +1355,13 @@ CommandCost CmdModifyOrder(DoCommandFlag flags, VehicleID veh, VehicleOrderID se
 					case DA_SERVICE:
 						order->SetDepotOrderType((OrderDepotTypeFlags)(order->GetDepotOrderType() | ODTFB_SERVICE));
 						order->SetDepotActionType((OrderDepotActionFlags)(order->GetDepotActionType() & ~ODATFB_HALT));
-						order->SetRefit(CT_NO_REFIT);
+						order->SetRefit(CARGO_NO_REFIT);
 						break;
 
 					case DA_STOP:
 						order->SetDepotOrderType((OrderDepotTypeFlags)(order->GetDepotOrderType() & ~ODTFB_SERVICE));
 						order->SetDepotActionType((OrderDepotActionFlags)(order->GetDepotActionType() | ODATFB_HALT));
-						order->SetRefit(CT_NO_REFIT);
+						order->SetRefit(CARGO_NO_REFIT);
 						break;
 
 					default:
@@ -1618,7 +1618,7 @@ CommandCost CmdCloneOrder(DoCommandFlag flags, CloneOptions action, VehicleID ve
  */
 CommandCost CmdOrderRefit(DoCommandFlag flags, VehicleID veh, VehicleOrderID order_number, CargoID cargo)
 {
-	if (cargo >= NUM_CARGO && cargo != CT_NO_REFIT && cargo != CT_AUTO_REFIT) return CMD_ERROR;
+	if (cargo >= NUM_CARGO && cargo != CARGO_NO_REFIT && cargo != CARGO_AUTO_REFIT) return CMD_ERROR;
 
 	const Vehicle *v = Vehicle::GetIfValid(veh);
 	if (v == nullptr || !v->IsPrimaryVehicle()) return CMD_ERROR;
@@ -1630,7 +1630,7 @@ CommandCost CmdOrderRefit(DoCommandFlag flags, VehicleID veh, VehicleOrderID ord
 	if (order == nullptr) return CMD_ERROR;
 
 	/* Automatic refit cargo is only supported for goto station orders. */
-	if (cargo == CT_AUTO_REFIT && !order->IsType(OT_GOTO_STATION)) return CMD_ERROR;
+	if (cargo == CARGO_AUTO_REFIT && !order->IsType(OT_GOTO_STATION)) return CMD_ERROR;
 
 	if (order->GetLoadType() & OLFB_NO_LOAD) return CMD_ERROR;
 
@@ -1638,7 +1638,7 @@ CommandCost CmdOrderRefit(DoCommandFlag flags, VehicleID veh, VehicleOrderID ord
 		order->SetRefit(cargo);
 
 		/* Make the depot order an 'always go' order. */
-		if (cargo != CT_NO_REFIT && order->IsType(OT_GOTO_DEPOT)) {
+		if (cargo != CARGO_NO_REFIT && order->IsType(OT_GOTO_DEPOT)) {
 			order->SetDepotOrderType((OrderDepotTypeFlags)(order->GetDepotOrderType() & ~ODTFB_SERVICE));
 			order->SetDepotActionType((OrderDepotActionFlags)(order->GetDepotActionType() & ~ODATFB_HALT));
 		}

@@ -61,15 +61,28 @@ enum CargoType {
 	CT_PLASTIC      = 10,
 	CT_FIZZY_DRINKS = 11,
 
-	NUM_ORIGINAL_CARGO = 12,
-	NUM_CARGO       = 64,   ///< Maximal number of cargo types in a game.
-
-	CT_AUTO_REFIT   = 0xFD, ///< Automatically choose cargo type when doing auto refitting.
-	CT_NO_REFIT     = 0xFE, ///< Do not refit cargo of a vehicle (used in vehicle orders and auto-replace/auto-new).
 	CT_INVALID      = 0xFF, ///< Invalid cargo type.
 };
 
+static const CargoID NUM_ORIGINAL_CARGO = 12; ///< Original number of cargo types.
+static const CargoID NUM_CARGO = 64; ///< Maximum number of cargo types in a game.
+
+/* CARGO_AUTO_REFIT and CARGO_NO_REFIT are stored in save-games for refit-orders, so should not be changed. */
+static const CargoID CARGO_AUTO_REFIT = 0xFD; ///< Automatically choose cargo type when doing auto refitting.
+static const CargoID CARGO_NO_REFIT = 0xFE; ///< Do not refit cargo of a vehicle (used in vehicle orders and auto-replace/auto-renew).
+
 static const CargoID INVALID_CARGO = UINT8_MAX;
+
+/**
+ * Special cargo filter criteria.
+ * These are used by user interface code only and must not be assigned to any entity. Not all values are valid for every UI filter.
+ */
+namespace CargoFilterCriteria {
+	static constexpr CargoID CF_ANY     = NUM_CARGO;     ///< Show all items independent of carried cargo (i.e. no filtering)
+	static constexpr CargoID CF_NONE    = NUM_CARGO + 1; ///< Show only items which do not carry cargo (e.g. train engines)
+	static constexpr CargoID CF_ENGINES = NUM_CARGO + 2; ///< Show only engines (for rail vehicles only)
+	static constexpr CargoID CF_FREIGHT = NUM_CARGO + 3; ///< Show only vehicles which carry any freight (non-passenger) cargo
+};
 
 /** Test whether cargo type is not CT_INVALID */
 inline bool IsValidCargoType(CargoType t) { return t != CT_INVALID; }

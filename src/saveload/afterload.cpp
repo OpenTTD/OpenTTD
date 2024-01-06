@@ -1462,11 +1462,11 @@ bool AfterLoadGame()
 	/* Setting no refit flags to all orders in savegames from before refit in orders were added */
 	if (IsSavegameVersionBefore(SLV_36)) {
 		for (Order *order : Order::Iterate()) {
-			order->SetRefit(CT_NO_REFIT);
+			order->SetRefit(CARGO_NO_REFIT);
 		}
 
 		for (Vehicle *v : Vehicle::Iterate()) {
-			v->current_order.SetRefit(CT_NO_REFIT);
+			v->current_order.SetRefit(CARGO_NO_REFIT);
 		}
 	}
 

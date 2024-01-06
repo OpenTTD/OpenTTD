@@ -73,13 +73,6 @@ struct BaseVehicleListWindow : public Window {
 		GB_END,
 	};
 
-	/** Special cargo filter criteria */
-	enum CargoFilterSpecialType {
-		CF_NONE = INVALID_CARGO,    ///< Show only vehicles which do not carry cargo (e.g. train engines)
-		CF_ANY = CT_NO_REFIT,       ///< Show all vehicles independent of carried cargo (i.e. no filtering)
-		CF_FREIGHT = CT_AUTO_REFIT, ///< Show only vehicles which carry any freight (non-passenger) cargo
-	};
-
 	GroupBy grouping;                           ///< How we want to group the list.
 	VehicleList vehicles;                       ///< List of vehicles.  This is the buffer for `vehgroups` to point into; if this is structurally modified, `vehgroups` must be rebuilt.
 	GUIVehicleGroupList vehgroups;              ///< List of (groups of) vehicles.  This stores iterators of `vehicles`, and should be rebuilt if `vehicles` is structurally changed.

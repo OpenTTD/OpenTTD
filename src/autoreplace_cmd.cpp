@@ -226,7 +226,7 @@ static int GetIncompatibleRefitOrderIdForAutoreplace(const Vehicle *v, EngineID 
  * @param engine_type The EngineID of the vehicle that is being replaced to
  * @param part_of_chain The vehicle is part of a train
  * @return The cargo type to replace to
- *    CT_NO_REFIT is returned if no refit is needed
+ *    CARGO_NO_REFIT is returned if no refit is needed
  *    INVALID_CARGO is returned when both old and new vehicle got cargo capacity and refitting the new one to the old one's cargo type isn't possible
  */
 static CargoID GetNewCargoTypeForReplace(Vehicle *v, EngineID engine_type, bool part_of_chain)
@@ -234,23 +234,23 @@ static CargoID GetNewCargoTypeForReplace(Vehicle *v, EngineID engine_type, bool 
 	CargoTypes available_cargo_types, union_mask;
 	GetArticulatedRefitMasks(engine_type, true, &union_mask, &available_cargo_types);
 
-	if (union_mask == 0) return CT_NO_REFIT; // Don't try to refit an engine with no cargo capacity
+	if (union_mask == 0) return CARGO_NO_REFIT; // Don't try to refit an engine with no cargo capacity
 
 	CargoID cargo_type;
 	CargoTypes cargo_mask = GetCargoTypesOfArticulatedVehicle(v, &cargo_type);
 	if (!HasAtMostOneBit(cargo_mask)) {
 		CargoTypes new_engine_default_cargoes = GetCargoTypesOfArticulatedParts(engine_type);
 		if ((cargo_mask & new_engine_default_cargoes) == cargo_mask) {
-			return CT_NO_REFIT; // engine_type is already a mixed cargo type which matches the incoming vehicle by default, no refit required
+			return CARGO_NO_REFIT; // engine_type is already a mixed cargo type which matches the incoming vehicle by default, no refit required
 		}
 
 		return INVALID_CARGO; // We cannot refit to mixed cargoes in an automated way
 	}
 
 	if (!IsValidCargoID(cargo_type)) {
-		if (v->type != VEH_TRAIN) return CT_NO_REFIT; // If the vehicle does not carry anything at all, every replacement is fine.
+		if (v->type != VEH_TRAIN) return CARGO_NO_REFIT; // If the vehicle does not carry anything at all, every replacement is fine.
 
-		if (!part_of_chain) return CT_NO_REFIT;
+		if (!part_of_chain) return CARGO_NO_REFIT;
 
 		/* the old engine didn't have cargo capacity, but the new one does
 		 * now we will figure out what cargo the train is carrying and refit to fit this */
@@ -261,7 +261,7 @@ static CargoID GetNewCargoTypeForReplace(Vehicle *v, EngineID engine_type, bool 
 			if (HasBit(available_cargo_types, v->cargo_type)) return v->cargo_type;
 		}
 
-		return CT_NO_REFIT; // We failed to find a cargo type on the old vehicle and we will not refit the new one
+		return CARGO_NO_REFIT; // We failed to find a cargo type on the old vehicle and we will not refit the new one
 	} else {
 		if (!HasBit(available_cargo_types, cargo_type)) return INVALID_CARGO; // We can't refit the vehicle to carry the cargo we want
 
@@ -359,7 +359,7 @@ static CommandCost BuildReplacementVehicle(Vehicle *old_veh, Vehicle **new_vehic
 	*new_vehicle = new_veh;
 
 	/* Refit the vehicle if needed */
-	if (refit_cargo != CT_NO_REFIT) {
+	if (refit_cargo != CARGO_NO_REFIT) {
 		byte subtype = GetBestFittingSubType(old_veh, new_veh, refit_cargo);
 
 		cost.AddCost(std::get<0>(Command<CMD_REFIT_VEHICLE>::Do(DC_EXEC, new_veh->index, refit_cargo, subtype, false, false, 0)));

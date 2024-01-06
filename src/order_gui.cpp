@@ -749,10 +749,10 @@ private:
 	{
 		if (_ctrl_pressed) {
 			/* Cancel refitting */
-			Command<CMD_ORDER_REFIT>::Post(this->vehicle->tile, this->vehicle->index, this->OrderGetSel(), CT_NO_REFIT);
+			Command<CMD_ORDER_REFIT>::Post(this->vehicle->tile, this->vehicle->index, this->OrderGetSel(), CARGO_NO_REFIT);
 		} else {
 			if (i == 1) { // Auto-refit to available cargo type.
-				Command<CMD_ORDER_REFIT>::Post(this->vehicle->tile, this->vehicle->index, this->OrderGetSel(), CT_AUTO_REFIT);
+				Command<CMD_ORDER_REFIT>::Post(this->vehicle->tile, this->vehicle->index, this->OrderGetSel(), CARGO_AUTO_REFIT);
 			} else {
 				ShowVehicleRefitWindow(this->vehicle, this->OrderGetSel(), this, auto_refit);
 			}

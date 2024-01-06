@@ -1500,7 +1500,7 @@ static void HandleStationRefit(Vehicle *v, CargoArray &consist_capleft, Station 
 	/* Remove old capacity from consist capacity and collect refit mask. */
 	IterateVehicleParts(v_start, PrepareRefitAction(consist_capleft, refit_mask));
 
-	bool is_auto_refit = new_cid == CT_AUTO_REFIT;
+	bool is_auto_refit = new_cid == CARGO_AUTO_REFIT;
 	if (is_auto_refit) {
 		/* Get a refittable cargo type with waiting cargo for next_station or INVALID_STATION. */
 		new_cid = v_start->cargo_type;
@@ -1636,7 +1636,7 @@ static void LoadUnloadVehicle(Vehicle *front)
 	Station *st = Station::Get(last_visited);
 
 	StationIDStack next_station = front->GetNextStoppingStation();
-	bool use_autorefit = front->current_order.IsRefit() && front->current_order.GetRefitCargo() == CT_AUTO_REFIT;
+	bool use_autorefit = front->current_order.IsRefit() && front->current_order.GetRefitCargo() == CARGO_AUTO_REFIT;
 	CargoArray consist_capleft{};
 	if (_settings_game.order.improved_load && use_autorefit ?
 			front->cargo_payment == nullptr : (front->current_order.GetLoadType() & OLFB_FULL_LOAD) != 0) {
