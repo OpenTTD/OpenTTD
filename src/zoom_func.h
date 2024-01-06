@@ -19,7 +19,7 @@
  * @param zoom  zoom level to shift to
  * @return shifted value
  */
-static inline int ScaleByZoom(int value, ZoomLevel zoom)
+inline int ScaleByZoom(int value, ZoomLevel zoom)
 {
 	return value << zoom;
 }
@@ -31,7 +31,7 @@ static inline int ScaleByZoom(int value, ZoomLevel zoom)
  * @param zoom  zoom level to shift to
  * @return shifted value
  */
-static inline int UnScaleByZoom(int value, ZoomLevel zoom)
+inline int UnScaleByZoom(int value, ZoomLevel zoom)
 {
 	return (value + (1 << zoom) - 1) >> zoom;
 }
@@ -42,7 +42,7 @@ static inline int UnScaleByZoom(int value, ZoomLevel zoom)
  * @param zoom zoom level to shift to
  * @return shifted value
  */
-static inline int AdjustByZoom(int value, int zoom)
+inline int AdjustByZoom(int value, int zoom)
 {
 	return zoom < 0 ? UnScaleByZoom(value, ZoomLevel(-zoom)) : ScaleByZoom(value, ZoomLevel(zoom));
 }
@@ -53,7 +53,7 @@ static inline int AdjustByZoom(int value, int zoom)
  * @param zoom  zoom level to shift to
  * @return shifted value
  */
-static inline int ScaleByZoomLower(int value, ZoomLevel zoom)
+inline int ScaleByZoomLower(int value, ZoomLevel zoom)
 {
 	return value << zoom;
 }
@@ -64,7 +64,7 @@ static inline int ScaleByZoomLower(int value, ZoomLevel zoom)
  * @param zoom  zoom level to shift to
  * @return shifted value
  */
-static inline int UnScaleByZoomLower(int value, ZoomLevel zoom)
+inline int UnScaleByZoomLower(int value, ZoomLevel zoom)
 {
 	return value >> zoom;
 }
@@ -74,7 +74,7 @@ static inline int UnScaleByZoomLower(int value, ZoomLevel zoom)
  * @param value Pixel amount at #ZOOM_LVL_BEGIN (full zoom in).
  * @return Pixel amount at #ZOOM_LVL_GUI (current interface size).
  */
-static inline int UnScaleGUI(int value)
+inline int UnScaleGUI(int value)
 {
 	return UnScaleByZoom(value, ZOOM_LVL_GUI);
 }
@@ -84,7 +84,7 @@ static inline int UnScaleGUI(int value)
  * @param value zoom level to scale
  * @return scaled zoom level
  */
-static inline ZoomLevel ScaleZoomGUI(ZoomLevel value)
+inline ZoomLevel ScaleZoomGUI(ZoomLevel value)
 {
 	return std::clamp(ZoomLevel(value + (ZOOM_LVL_GUI - ZOOM_LVL_OUT_4X)), ZOOM_LVL_MIN, ZOOM_LVL_MAX);
 }
@@ -94,7 +94,7 @@ static inline ZoomLevel ScaleZoomGUI(ZoomLevel value)
  * @param value zoom level to scale
  * @return un-scaled zoom level
  */
-static inline ZoomLevel UnScaleZoomGUI(ZoomLevel value)
+inline ZoomLevel UnScaleZoomGUI(ZoomLevel value)
 {
 	return std::clamp(ZoomLevel(value - (ZOOM_LVL_GUI - ZOOM_LVL_OUT_4X)), ZOOM_LVL_MIN, ZOOM_LVL_MAX);
 }
@@ -104,7 +104,7 @@ static inline ZoomLevel UnScaleZoomGUI(ZoomLevel value)
  * @param value Pixel amount at #ZOOM_LVL_BASE (traditional "normal" interface size).
  * @return Pixel amount at #ZOOM_LVL_GUI (current interface size).
  */
-static inline int ScaleSpriteTrad(int value)
+inline int ScaleSpriteTrad(int value)
 {
 	return UnScaleGUI(value * ZOOM_LVL_BASE);
 }
@@ -114,7 +114,7 @@ static inline int ScaleSpriteTrad(int value)
  * @param value Pixel amount at #ZOOM_LVL_BASE (traditional "normal" interface size).
  * @return Pixel amount at #ZOOM_LVL_GUI (current interface size).
  */
-static inline int ScaleGUITrad(int value)
+inline int ScaleGUITrad(int value)
 {
 	return value * _gui_scale / 100;
 }

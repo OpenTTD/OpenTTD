@@ -121,7 +121,7 @@ typedef unsigned long in_addr_t;
  * @param address The address returned by those four functions.
  * @return The correct value for addrlen.
  */
-static inline socklen_t FixAddrLenForEmscripten(struct sockaddr_storage &address)
+inline socklen_t FixAddrLenForEmscripten(struct sockaddr_storage &address)
 {
 	switch (address.ss_family) {
 		case AF_INET6: return sizeof(struct sockaddr_in6);

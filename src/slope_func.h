@@ -73,7 +73,7 @@ static constexpr inline Slope RemoveHalftileSlope(Slope s)
  * @param s The #Slope to get the complement.
  * @return a complement Slope of the given slope.
  */
-static inline Slope ComplementSlope(Slope s)
+inline Slope ComplementSlope(Slope s)
 {
 	assert(!IsSteepSlope(s) && !IsHalftileSlope(s));
 	return s ^ SLOPE_ELEVATED;
@@ -85,7 +85,7 @@ static inline Slope ComplementSlope(Slope s)
  * @param s The #Slope
  * @return true iff exactly one corner is raised
  */
-static inline bool IsSlopeWithOneCornerRaised(Slope s)
+inline bool IsSlopeWithOneCornerRaised(Slope s)
 {
 	return (s == SLOPE_W) || (s == SLOPE_S) || (s == SLOPE_E) || (s == SLOPE_N);
 }
@@ -96,7 +96,7 @@ static inline bool IsSlopeWithOneCornerRaised(Slope s)
  * @param corner The #Corner.
  * @return The #Slope with corner "corner" raised.
  */
-static inline Slope SlopeWithOneCornerRaised(Corner corner)
+inline Slope SlopeWithOneCornerRaised(Corner corner)
 {
 	assert(IsValidCorner(corner));
 	return (Slope)(1 << corner);
@@ -110,7 +110,7 @@ static inline Slope SlopeWithOneCornerRaised(Corner corner)
  * @param s The #Slope.
  * @return  true iff the slope has a highest corner.
  */
-static inline bool HasSlopeHighestCorner(Slope s)
+inline bool HasSlopeHighestCorner(Slope s)
 {
 	s = RemoveHalftileSlope(s);
 	return IsSteepSlope(s) || IsSlopeWithOneCornerRaised(s);
@@ -123,7 +123,7 @@ static inline bool HasSlopeHighestCorner(Slope s)
  * @param s  The #Slope.
  * @return   Highest corner.
  */
-static inline Corner GetHighestSlopeCorner(Slope s)
+inline Corner GetHighestSlopeCorner(Slope s)
 {
 	switch (RemoveHalftileSlope(s)) {
 		case SLOPE_W:
@@ -181,7 +181,7 @@ static constexpr inline int GetSlopeMaxPixelZ(Slope s)
  * @param corner A #Corner.
  * @return The opposite corner to "corner".
  */
-static inline Corner OppositeCorner(Corner corner)
+inline Corner OppositeCorner(Corner corner)
 {
 	return (Corner)(corner ^ 2);
 }
@@ -192,7 +192,7 @@ static inline Corner OppositeCorner(Corner corner)
  * @param s The #Slope
  * @return true iff exactly three corners are raised
  */
-static inline bool IsSlopeWithThreeCornersRaised(Slope s)
+inline bool IsSlopeWithThreeCornersRaised(Slope s)
 {
 	return !IsHalftileSlope(s) && !IsSteepSlope(s) && IsSlopeWithOneCornerRaised(ComplementSlope(s));
 }
@@ -203,7 +203,7 @@ static inline bool IsSlopeWithThreeCornersRaised(Slope s)
  * @param corner The #Corner.
  * @return The #Slope with all corners but "corner" raised.
  */
-static inline Slope SlopeWithThreeCornersRaised(Corner corner)
+inline Slope SlopeWithThreeCornersRaised(Corner corner)
 {
 	return ComplementSlope(SlopeWithOneCornerRaised(corner));
 }
@@ -214,7 +214,7 @@ static inline Slope SlopeWithThreeCornersRaised(Corner corner)
  * @param corner A #Corner.
  * @return The steep #Slope with "corner" as highest corner.
  */
-static inline Slope SteepSlope(Corner corner)
+inline Slope SteepSlope(Corner corner)
 {
 	return SLOPE_STEEP | SlopeWithThreeCornersRaised(OppositeCorner(corner));
 }
@@ -225,7 +225,7 @@ static inline Slope SteepSlope(Corner corner)
  * @param s The #Slope
  * @return true iff the slope is inclined.
  */
-static inline bool IsInclinedSlope(Slope s)
+inline bool IsInclinedSlope(Slope s)
 {
 	return (s == SLOPE_NW) || (s == SLOPE_SW) || (s == SLOPE_SE) || (s == SLOPE_NE);
 }
@@ -236,7 +236,7 @@ static inline bool IsInclinedSlope(Slope s)
  * @param s A #Slope
  * @return The direction the slope goes up in. Or INVALID_DIAGDIR if the slope is not an inclined slope.
  */
-static inline DiagDirection GetInclinedSlopeDirection(Slope s)
+inline DiagDirection GetInclinedSlopeDirection(Slope s)
 {
 	switch (s) {
 		case SLOPE_NE: return DIAGDIR_NE;
@@ -253,7 +253,7 @@ static inline DiagDirection GetInclinedSlopeDirection(Slope s)
  * @param dir A #DiagDirection
  * @return The #Slope that goes up in direction dir.
  */
-static inline Slope InclinedSlope(DiagDirection dir)
+inline Slope InclinedSlope(DiagDirection dir)
 {
 	switch (dir) {
 		case DIAGDIR_NE: return SLOPE_NE;
@@ -284,7 +284,7 @@ static constexpr inline Slope HalftileSlope(Slope s, Corner corner)
  * @param f  Maybe a #Foundation.
  * @return   true iff f is a foundation.
  */
-static inline bool IsFoundation(Foundation f)
+inline bool IsFoundation(Foundation f)
 {
 	return f != FOUNDATION_NONE;
 }
@@ -295,7 +295,7 @@ static inline bool IsFoundation(Foundation f)
  * @param f  The #Foundation.
  * @return   true iff f is a leveled foundation.
  */
-static inline bool IsLeveledFoundation(Foundation f)
+inline bool IsLeveledFoundation(Foundation f)
 {
 	return f == FOUNDATION_LEVELED;
 }
@@ -306,7 +306,7 @@ static inline bool IsLeveledFoundation(Foundation f)
  * @param f  The #Foundation.
  * @return   true iff f is an inclined foundation.
  */
-static inline bool IsInclinedFoundation(Foundation f)
+inline bool IsInclinedFoundation(Foundation f)
 {
 	return (f == FOUNDATION_INCLINED_X) || (f == FOUNDATION_INCLINED_Y);
 }
@@ -317,7 +317,7 @@ static inline bool IsInclinedFoundation(Foundation f)
  * @param f  The #Foundation.
  * @return   true iff f is a non-continuous foundation
  */
-static inline bool IsNonContinuousFoundation(Foundation f)
+inline bool IsNonContinuousFoundation(Foundation f)
 {
 	return IsInsideMM(f, FOUNDATION_STEEP_BOTH, FOUNDATION_HALFTILE_N + 1);
 }
@@ -330,7 +330,7 @@ static inline bool IsNonContinuousFoundation(Foundation f)
  * @param f  The #Foundation.
  * @return   The #Corner with track.
  */
-static inline Corner GetHalftileFoundationCorner(Foundation f)
+inline Corner GetHalftileFoundationCorner(Foundation f)
 {
 	assert(IsInsideMM(f, FOUNDATION_HALFTILE_W, FOUNDATION_HALFTILE_N + 1));
 	return (Corner)(f - FOUNDATION_HALFTILE_W);
@@ -342,7 +342,7 @@ static inline Corner GetHalftileFoundationCorner(Foundation f)
  * @param f  The #Foundation.
  * @return   true iff f is a special rail foundation for single horizontal/vertical track.
  */
-static inline bool IsSpecialRailFoundation(Foundation f)
+inline bool IsSpecialRailFoundation(Foundation f)
 {
 	return IsInsideMM(f, FOUNDATION_RAIL_W, FOUNDATION_RAIL_N + 1);
 }
@@ -353,7 +353,7 @@ static inline bool IsSpecialRailFoundation(Foundation f)
  * @param f  The #Foundation.
  * @return   The #Corner with track.
  */
-static inline Corner GetRailFoundationCorner(Foundation f)
+inline Corner GetRailFoundationCorner(Foundation f)
 {
 	assert(IsSpecialRailFoundation(f));
 	return (Corner)(f - FOUNDATION_RAIL_W);
@@ -366,7 +366,7 @@ static inline Corner GetRailFoundationCorner(Foundation f)
  * @param s  The current #Slope.
  * @return   The needed #Foundation.
  */
-static inline Foundation FlatteningFoundation(Slope s)
+inline Foundation FlatteningFoundation(Slope s)
 {
 	return (s == SLOPE_FLAT ? FOUNDATION_NONE : FOUNDATION_LEVELED);
 }
@@ -377,7 +377,7 @@ static inline Foundation FlatteningFoundation(Slope s)
  * @param axis  The #Axis.
  * @return      The needed #Foundation.
  */
-static inline Foundation InclinedFoundation(Axis axis)
+inline Foundation InclinedFoundation(Axis axis)
 {
 	return (axis == AXIS_X ? FOUNDATION_INCLINED_X : FOUNDATION_INCLINED_Y);
 }
@@ -388,7 +388,7 @@ static inline Foundation InclinedFoundation(Axis axis)
  * @param corner The #Corner with the track.
  * @return       The wanted #Foundation.
  */
-static inline Foundation HalftileFoundation(Corner corner)
+inline Foundation HalftileFoundation(Corner corner)
 {
 	assert(IsValidCorner(corner));
 	return (Foundation)(FOUNDATION_HALFTILE_W + corner);
@@ -400,7 +400,7 @@ static inline Foundation HalftileFoundation(Corner corner)
  * @param corner The #Corner with the track.
  * @return       The wanted #Foundation.
  */
-static inline Foundation SpecialRailFoundation(Corner corner)
+inline Foundation SpecialRailFoundation(Corner corner)
 {
 	assert(IsValidCorner(corner));
 	return (Foundation)(FOUNDATION_RAIL_W + corner);
@@ -412,7 +412,7 @@ static inline Foundation SpecialRailFoundation(Corner corner)
  * @param s The #Slope to get the offset for.
  * @return The sprite offset for this #Slope.
  */
-static inline uint SlopeToSpriteOffset(Slope s)
+inline uint SlopeToSpriteOffset(Slope s)
 {
 	extern const byte _slope_to_sprite_offset[32];
 	return _slope_to_sprite_offset[s];

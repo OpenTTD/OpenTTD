@@ -70,7 +70,7 @@ void ShowVehicleListWindow(CompanyID company, VehicleType vehicle_type, TileInde
  * @param type the vehicle type to look at
  * @return the height
  */
-static inline uint GetVehicleHeight(VehicleType type)
+inline uint GetVehicleHeight(VehicleType type)
 {
 	return (type == VEH_TRAIN || type == VEH_ROAD) ? 14 : 24;
 }
@@ -93,7 +93,7 @@ VehicleCellSize GetVehicleImageCellSize(VehicleType type, EngineImageType image_
  * @return corresponding window class
  * @note works only for company buildable vehicle types
  */
-static inline WindowClass GetWindowClassForVehicleType(VehicleType vt)
+inline WindowClass GetWindowClassForVehicleType(VehicleType vt)
 {
 	switch (vt) {
 		default: NOT_REACHED();

@@ -70,7 +70,7 @@ struct WidgetDimensions {
 /* widget.cpp */
 void DrawFrameRect(int left, int top, int right, int bottom, Colours colour, FrameFlags flags);
 
-static inline void DrawFrameRect(const Rect &r, Colours colour, FrameFlags flags)
+inline void DrawFrameRect(const Rect &r, Colours colour, FrameFlags flags)
 {
 	DrawFrameRect(r.left, r.top, r.right, r.bottom, colour, flags);
 }

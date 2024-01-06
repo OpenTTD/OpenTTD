@@ -19,7 +19,7 @@
  * Maps a trackdir to the bit that stores its status in the map arrays, in the
  * direction along with the trackdir.
  */
-static inline byte SignalAlongTrackdir(Trackdir trackdir)
+inline byte SignalAlongTrackdir(Trackdir trackdir)
 {
 	extern const byte _signal_along_trackdir[TRACKDIR_END];
 	return _signal_along_trackdir[trackdir];
@@ -29,7 +29,7 @@ static inline byte SignalAlongTrackdir(Trackdir trackdir)
  * Maps a trackdir to the bit that stores its status in the map arrays, in the
  * direction against the trackdir.
  */
-static inline byte SignalAgainstTrackdir(Trackdir trackdir)
+inline byte SignalAgainstTrackdir(Trackdir trackdir)
 {
 	extern const byte _signal_against_trackdir[TRACKDIR_END];
 	return _signal_against_trackdir[trackdir];
@@ -39,7 +39,7 @@ static inline byte SignalAgainstTrackdir(Trackdir trackdir)
  * Maps a Track to the bits that store the status of the two signals that can
  * be present on the given track.
  */
-static inline byte SignalOnTrack(Track track)
+inline byte SignalOnTrack(Track track)
 {
 	extern const byte _signal_on_track[TRACK_END];
 	return _signal_on_track[track];

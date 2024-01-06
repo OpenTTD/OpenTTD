@@ -19,7 +19,7 @@ Dimension maxdim(const Dimension &d1, const Dimension &d2);
  * @param r Rectangle to check.
  * @return True if and only if the rectangle doesn't define space.
  */
-static inline bool IsEmptyRect(const Rect &r)
+inline bool IsEmptyRect(const Rect &r)
 {
 	return (r.left | r.top | r.right | r.bottom) == 0;
 }

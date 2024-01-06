@@ -106,27 +106,27 @@ void DrawBox(int x, int y, int dx1, int dy1, int dx2, int dy2, int dx3, int dy3)
 void DrawRectOutline(const Rect &r, int colour, int width = 1, int dash = 0);
 
 /* Versions of DrawString/DrawStringMultiLine that accept a Rect instead of separate left, right, top and bottom parameters. */
-static inline int DrawString(const Rect &r, std::string_view str, TextColour colour = TC_FROMSTRING, StringAlignment align = SA_LEFT, bool underline = false, FontSize fontsize = FS_NORMAL)
+inline int DrawString(const Rect &r, std::string_view str, TextColour colour = TC_FROMSTRING, StringAlignment align = SA_LEFT, bool underline = false, FontSize fontsize = FS_NORMAL)
 {
 	return DrawString(r.left, r.right, r.top, str, colour, align, underline, fontsize);
 }
 
-static inline int DrawString(const Rect &r, StringID str, TextColour colour = TC_FROMSTRING, StringAlignment align = SA_LEFT, bool underline = false, FontSize fontsize = FS_NORMAL)
+inline int DrawString(const Rect &r, StringID str, TextColour colour = TC_FROMSTRING, StringAlignment align = SA_LEFT, bool underline = false, FontSize fontsize = FS_NORMAL)
 {
 	return DrawString(r.left, r.right, r.top, str, colour, align, underline, fontsize);
 }
 
-static inline int DrawStringMultiLine(const Rect &r, std::string_view str, TextColour colour = TC_FROMSTRING, StringAlignment align = (SA_TOP | SA_LEFT), bool underline = false, FontSize fontsize = FS_NORMAL)
+inline int DrawStringMultiLine(const Rect &r, std::string_view str, TextColour colour = TC_FROMSTRING, StringAlignment align = (SA_TOP | SA_LEFT), bool underline = false, FontSize fontsize = FS_NORMAL)
 {
 	return DrawStringMultiLine(r.left, r.right, r.top, r.bottom, str, colour, align, underline, fontsize);
 }
 
-static inline int DrawStringMultiLine(const Rect &r, StringID str, TextColour colour = TC_FROMSTRING, StringAlignment align = (SA_TOP | SA_LEFT), bool underline = false, FontSize fontsize = FS_NORMAL)
+inline int DrawStringMultiLine(const Rect &r, StringID str, TextColour colour = TC_FROMSTRING, StringAlignment align = (SA_TOP | SA_LEFT), bool underline = false, FontSize fontsize = FS_NORMAL)
 {
 	return DrawStringMultiLine(r.left, r.right, r.top, r.bottom, str, colour, align, underline, fontsize);
 }
 
-static inline void GfxFillRect(const Rect &r, int colour, FillRectMode mode = FILLRECT_OPAQUE)
+inline void GfxFillRect(const Rect &r, int colour, FillRectMode mode = FILLRECT_OPAQUE)
 {
 	GfxFillRect(r.left, r.top, r.right, r.bottom, colour, mode);
 }
@@ -151,7 +151,7 @@ void CheckBlitter();
 
 bool FillDrawPixelInfo(DrawPixelInfo *n, int left, int top, int width, int height);
 
-static inline bool FillDrawPixelInfo(DrawPixelInfo *n, const Rect &r)
+inline bool FillDrawPixelInfo(DrawPixelInfo *n, const Rect &r)
 {
 	return FillDrawPixelInfo(n, r.left, r.top, r.Width(), r.Height());
 }
@@ -163,7 +163,7 @@ static inline bool FillDrawPixelInfo(DrawPixelInfo *n, const Rect &r)
  * @param size The height or width of the object to draw.
  * @return Offset of where to start drawing the object.
  */
-static inline int CenterBounds(int min, int max, int size)
+inline int CenterBounds(int min, int max, int size)
 {
 	return (min + max - size + 1) / 2;
 }

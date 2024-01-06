@@ -55,7 +55,7 @@ debug_inline constexpr static uint GB(const T x, const uint8_t s, const uint8_t 
  * @return The new value of \a x
  */
 template <typename T, typename U>
-static inline T SB(T &x, const uint8_t s, const uint8_t n, const U d)
+inline T SB(T &x, const uint8_t s, const uint8_t n, const U d)
 {
 	x &= (T)(~((((T)1U << n) - 1) << s));
 	x |= (T)(d << s);
@@ -80,7 +80,7 @@ static inline T SB(T &x, const uint8_t s, const uint8_t n, const U d)
  * @return The new value of \a x
  */
 template <typename T, typename U>
-static inline T AB(T &x, const uint8_t s, const uint8_t n, const U i)
+inline T AB(T &x, const uint8_t s, const uint8_t n, const U i)
 {
 	const T mask = ((((T)1U << n) - 1) << s);
 	x = (T)((x & ~mask) | ((x + (i << s)) & mask));
@@ -118,7 +118,7 @@ debug_inline static bool HasBit(const T x, const uint8_t y)
  * @return The new value of the old value with the bit set
  */
 template <typename T>
-static inline T SetBit(T &x, const uint8_t y)
+inline T SetBit(T &x, const uint8_t y)
 {
 	return x = (T)(x | ((T)1U << y));
 }
@@ -148,7 +148,7 @@ static inline T SetBit(T &x, const uint8_t y)
  * @return The new value of the old value with the bit cleared
  */
 template <typename T>
-static inline T ClrBit(T &x, const uint8_t y)
+inline T ClrBit(T &x, const uint8_t y)
 {
 	return x = (T)(x & ~((T)1U << y));
 }
@@ -178,7 +178,7 @@ static inline T ClrBit(T &x, const uint8_t y)
  * @return The new value of the old value with the bit toggled
  */
 template <typename T>
-static inline T ToggleBit(T &x, const uint8_t y)
+inline T ToggleBit(T &x, const uint8_t y)
 {
 	return x = (T)(x ^ ((T)1U << y));
 }
@@ -213,7 +213,7 @@ extern const uint8_t _ffb_64[64];
  * @return The position of the first bit which is set
  * @see FIND_FIRST_BIT
  */
-static inline uint8_t FindFirstBit2x64(const int value)
+inline uint8_t FindFirstBit2x64(const int value)
 {
 	if ((value & 0xFF) == 0) {
 		return FIND_FIRST_BIT((value >> 8) & 0x3F) + 8;
@@ -236,7 +236,7 @@ uint8_t FindLastBit(uint64_t x);
  * @return The new value with the first bit cleared
  */
 template <typename T>
-static inline T KillFirstBit(T value)
+inline T KillFirstBit(T value)
 {
 	return value &= (T)(value - 1);
 }
@@ -248,7 +248,7 @@ static inline T KillFirstBit(T value)
  * @return the number of bits.
  */
 template <typename T>
-static inline uint CountBits(T value)
+inline uint CountBits(T value)
 {
 	uint num;
 
@@ -271,7 +271,7 @@ static inline uint CountBits(T value)
  * @return does \a value have exactly 1 bit set?
  */
 template <typename T>
-static inline bool HasExactlyOneBit(T value)
+inline bool HasExactlyOneBit(T value)
 {
 	return value != 0 && (value & (value - 1)) == 0;
 }
@@ -283,7 +283,7 @@ static inline bool HasExactlyOneBit(T value)
  * @return does \a value have at most 1 bit set?
  */
 template <typename T>
-static inline bool HasAtMostOneBit(T value)
+inline bool HasAtMostOneBit(T value)
 {
 	return (value & (value - 1)) == 0;
 }
@@ -298,7 +298,7 @@ static inline bool HasAtMostOneBit(T value)
  * @return A bit rotated number
  */
 template <typename T>
-static inline T ROL(const T x, const uint8_t n)
+inline T ROL(const T x, const uint8_t n)
 {
 	if (n == 0) return x;
 	return (T)(x << n | x >> (sizeof(x) * 8 - n));
@@ -314,7 +314,7 @@ static inline T ROL(const T x, const uint8_t n)
  * @return A bit rotated number
  */
 template <typename T>
-static inline T ROR(const T x, const uint8_t n)
+inline T ROR(const T x, const uint8_t n)
 {
 	if (n == 0) return x;
 	return (T)(x >> n | x << (sizeof(x) * 8 - n));

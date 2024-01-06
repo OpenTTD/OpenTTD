@@ -16,7 +16,7 @@
  * Make a nice void tile ;)
  * @param t the tile to make void
  */
-static inline void MakeVoid(Tile t)
+inline void MakeVoid(Tile t)
 {
 	SetTileType(t, MP_VOID);
 	SetTileHeight(t, 0);

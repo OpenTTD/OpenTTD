@@ -186,7 +186,7 @@ struct GRFLoadedFeatures {
  * @param bit The bit to check.
  * @return Whether the bit is set.
  */
-static inline bool HasGrfMiscBit(GrfMiscBit bit)
+inline bool HasGrfMiscBit(GrfMiscBit bit)
 {
 	extern byte _misc_grf_features;
 	return HasBit(_misc_grf_features, bit);

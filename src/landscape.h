@@ -50,7 +50,7 @@ void GetSlopePixelZOnEdge(Slope tileh, DiagDirection edge, int *z1, int *z2);
  * @param corner The corner.
  * @return Z position of corner relative to TileZ.
  */
-static inline int GetSlopePixelZInCorner(Slope tileh, Corner corner)
+inline int GetSlopePixelZInCorner(Slope tileh, Corner corner)
 {
 	return GetSlopeZInCorner(tileh, corner) * TILE_HEIGHT;
 }
@@ -63,7 +63,7 @@ static inline int GetSlopePixelZInCorner(Slope tileh, Corner corner)
  * @param z returns the z of the foundation slope. (Can be nullptr, if not needed)
  * @return The slope on top of the foundation.
  */
-static inline Slope GetFoundationPixelSlope(TileIndex tile, int *z)
+inline Slope GetFoundationPixelSlope(TileIndex tile, int *z)
 {
 	assert(z != nullptr);
 	Slope s = GetFoundationSlope(tile, z);
@@ -79,7 +79,7 @@ static inline Slope GetFoundationPixelSlope(TileIndex tile, int *z)
  * @return Equivalent coordinate in the 2D view.
  * @see RemapCoords2
  */
-static inline Point RemapCoords(int x, int y, int z)
+inline Point RemapCoords(int x, int y, int z)
 {
 	Point pt;
 	pt.x = (y - x) * 2 * ZOOM_LVL_BASE;
@@ -95,7 +95,7 @@ static inline Point RemapCoords(int x, int y, int z)
  * @return Equivalent coordinate in the 2D view.
  * @see RemapCoords
  */
-static inline Point RemapCoords2(int x, int y)
+inline Point RemapCoords2(int x, int y)
 {
 	return RemapCoords(x, y, GetSlopePixelZ(x, y, false));
 }
@@ -109,7 +109,7 @@ static inline Point RemapCoords2(int x, int y)
  * @note Inverse of #RemapCoords function. Smaller values may get rounded.
  * @see InverseRemapCoords2
  */
-static inline Point InverseRemapCoords(int x, int y)
+inline Point InverseRemapCoords(int x, int y)
 {
 	Point pt = {(y * 2 - x) >> (2 + ZOOM_LVL_SHIFT), (y * 2 + x) >> (2 + ZOOM_LVL_SHIFT)};
 	return pt;
@@ -126,7 +126,7 @@ uint ApplyFoundationToSlope(Foundation f, Slope *s);
  * @param s  The #Slope to modify.
  * @return   Increment to the tile Z coordinate.
  */
-static inline uint ApplyPixelFoundationToSlope(Foundation f, Slope *s)
+inline uint ApplyPixelFoundationToSlope(Foundation f, Slope *s)
 {
 	return ApplyFoundationToSlope(f, s) * TILE_HEIGHT;
 }

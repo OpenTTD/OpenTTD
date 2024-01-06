@@ -54,7 +54,7 @@ struct CaseInsensitiveComparator {
  * @return true if the buffer starts with the terminating null-character or
  *         if the given pointer points to nullptr else return false
  */
-static inline bool StrEmpty(const char *s)
+inline bool StrEmpty(const char *s)
 {
 	return s == nullptr || s[0] == '\0';
 }
@@ -66,7 +66,7 @@ static inline bool StrEmpty(const char *s)
  * @param maxlen The maximum size of the buffer
  * @return The length of the string
  */
-static inline size_t ttd_strnlen(const char *str, size_t maxlen)
+inline size_t ttd_strnlen(const char *str, size_t maxlen)
 {
 	const char *t;
 	for (t = str; (size_t)(t - str) < maxlen && *t != '\0'; t++) {}
@@ -82,7 +82,7 @@ size_t Utf8Encode(std::back_insert_iterator<std::string> &buf, char32_t c);
 size_t Utf8TrimString(char *s, size_t maxlen);
 
 
-static inline char32_t Utf8Consume(const char **s)
+inline char32_t Utf8Consume(const char **s)
 {
 	char32_t c;
 	*s += Utf8Decode(&c, *s);
@@ -90,7 +90,7 @@ static inline char32_t Utf8Consume(const char **s)
 }
 
 template <class Titr>
-static inline char32_t Utf8Consume(Titr &s)
+inline char32_t Utf8Consume(Titr &s)
 {
 	char32_t c;
 	s += Utf8Decode(&c, &*s);
@@ -102,7 +102,7 @@ static inline char32_t Utf8Consume(Titr &s)
  * @param c Unicode character.
  * @return Length of UTF-8 encoding for character.
  */
-static inline int8_t Utf8CharLen(char32_t c)
+inline int8_t Utf8CharLen(char32_t c)
 {
 	if (c < 0x80)       return 1;
 	if (c < 0x800)      return 2;
@@ -121,7 +121,7 @@ static inline int8_t Utf8CharLen(char32_t c)
  * @param c char to query length of
  * @return requested size
  */
-static inline int8_t Utf8EncodedCharLen(char c)
+inline int8_t Utf8EncodedCharLen(char c)
 {
 	if (GB(c, 3, 5) == 0x1E) return 4;
 	if (GB(c, 4, 4) == 0x0E) return 3;
@@ -134,7 +134,7 @@ static inline int8_t Utf8EncodedCharLen(char c)
 
 
 /* Check if the given character is part of a UTF8 sequence */
-static inline bool IsUtf8Part(char c)
+inline bool IsUtf8Part(char c)
 {
 	return GB(c, 6, 2) == 2;
 }
@@ -146,14 +146,14 @@ static inline bool IsUtf8Part(char c)
  * @note The function should not be used to determine the length of the previous
  * encoded char because it might be an invalid/corrupt start-sequence
  */
-static inline char *Utf8PrevChar(char *s)
+inline char *Utf8PrevChar(char *s)
 {
 	char *ret = s;
 	while (IsUtf8Part(*--ret)) {}
 	return ret;
 }
 
-static inline const char *Utf8PrevChar(const char *s)
+inline const char *Utf8PrevChar(const char *s)
 {
 	const char *ret = s;
 	while (IsUtf8Part(*--ret)) {}
@@ -168,7 +168,7 @@ size_t Utf8StringLength(const std::string &str);
  * @param c The character to test.
  * @return True if the character is a lead surrogate code point.
  */
-static inline bool Utf16IsLeadSurrogate(uint c)
+inline bool Utf16IsLeadSurrogate(uint c)
 {
 	return c >= 0xD800 && c <= 0xDBFF;
 }
@@ -178,7 +178,7 @@ static inline bool Utf16IsLeadSurrogate(uint c)
  * @param c The character to test.
  * @return True if the character is a lead surrogate code point.
  */
-static inline bool Utf16IsTrailSurrogate(uint c)
+inline bool Utf16IsTrailSurrogate(uint c)
 {
 	return c >= 0xDC00 && c <= 0xDFFF;
 }
@@ -189,7 +189,7 @@ static inline bool Utf16IsTrailSurrogate(uint c)
  * @param trail Trail surrogate code point.
  * @return Decoded Unicode character.
  */
-static inline char32_t Utf16DecodeSurrogate(uint lead, uint trail)
+inline char32_t Utf16DecodeSurrogate(uint lead, uint trail)
 {
 	return 0x10000 + (((lead - 0xD800) << 10) | (trail - 0xDC00));
 }
@@ -199,7 +199,7 @@ static inline char32_t Utf16DecodeSurrogate(uint lead, uint trail)
  * @param c Pointer to one or two UTF-16 code points.
  * @return Decoded Unicode character.
  */
-static inline char32_t Utf16DecodeChar(const uint16_t *c)
+inline char32_t Utf16DecodeChar(const uint16_t *c)
 {
 	if (Utf16IsLeadSurrogate(c[0])) {
 		return Utf16DecodeSurrogate(c[0], c[1]);
@@ -214,7 +214,7 @@ static inline char32_t Utf16DecodeChar(const uint16_t *c)
  * @return true iff the character is used to influence
  *         the text direction.
  */
-static inline bool IsTextDirectionChar(char32_t c)
+inline bool IsTextDirectionChar(char32_t c)
 {
 	switch (c) {
 		case CHAR_TD_LRM:
@@ -231,7 +231,7 @@ static inline bool IsTextDirectionChar(char32_t c)
 	}
 }
 
-static inline bool IsPrintable(char32_t c)
+inline bool IsPrintable(char32_t c)
 {
 	if (c < 0x20)   return false;
 	if (c < 0xE000) return true;
@@ -246,7 +246,7 @@ static inline bool IsPrintable(char32_t c)
  * @return a boolean value whether 'c' is a whitespace character or not
  * @see http://www.fileformat.info/info/unicode/category/Zs/list.htm
  */
-static inline bool IsWhitespace(char32_t c)
+inline bool IsWhitespace(char32_t c)
 {
 	return c == 0x0020 /* SPACE */ || c == 0x3000; /* IDEOGRAPHIC SPACE */
 }

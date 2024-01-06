@@ -646,7 +646,7 @@ extern VehicleDefaultSettings _old_vds;
  * Get the settings-object applicable for the current situation: the newgame settings
  * when we're in the main menu and otherwise the settings of the current game.
  */
-static inline GameSettings &GetGameSettings()
+inline GameSettings &GetGameSettings()
 {
 	return (_game_mode == GM_MENU) ? _settings_newgame : _settings_game;
 }

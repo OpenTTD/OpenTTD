@@ -909,7 +909,7 @@ private:
  * @param step      Stepsize of the widget.
  * @return Biggest possible size of the widget, assuming that \a base may only be incremented by \a step size steps.
  */
-static inline uint ComputeMaxSize(uint base, uint max_space, uint step)
+inline uint ComputeMaxSize(uint base, uint max_space, uint step)
 {
 	if (base >= max_space || step == 0) return base;
 	if (step == 1) return max_space;
@@ -1057,7 +1057,7 @@ struct NWidgetPart {
  * @param dy Vertical resize step. 0 means no vertical resizing.
  * @ingroup NestedWidgetParts
  */
-static inline NWidgetPart SetResize(int16_t dx, int16_t dy)
+inline NWidgetPart SetResize(int16_t dx, int16_t dy)
 {
 	NWidgetPart part;
 
@@ -1074,7 +1074,7 @@ static inline NWidgetPart SetResize(int16_t dx, int16_t dy)
  * @param y Vertical minimal size.
  * @ingroup NestedWidgetParts
  */
-static inline NWidgetPart SetMinimalSize(int16_t x, int16_t y)
+inline NWidgetPart SetMinimalSize(int16_t x, int16_t y)
 {
 	NWidgetPart part;
 
@@ -1092,7 +1092,7 @@ static inline NWidgetPart SetMinimalSize(int16_t x, int16_t y)
  * @param size    Font size of text.
  * @ingroup NestedWidgetParts
  */
-static inline NWidgetPart SetMinimalTextLines(uint8_t lines, uint8_t spacing, FontSize size = FS_NORMAL)
+inline NWidgetPart SetMinimalTextLines(uint8_t lines, uint8_t spacing, FontSize size = FS_NORMAL)
 {
 	NWidgetPart part;
 
@@ -1110,7 +1110,7 @@ static inline NWidgetPart SetMinimalTextLines(uint8_t lines, uint8_t spacing, Fo
  * @param size Font size to draw string within widget.
  * @ingroup NestedWidgetParts
  */
-static inline NWidgetPart SetTextStyle(TextColour colour, FontSize size = FS_NORMAL)
+inline NWidgetPart SetTextStyle(TextColour colour, FontSize size = FS_NORMAL)
 {
 	NWidgetPart part;
 
@@ -1126,7 +1126,7 @@ static inline NWidgetPart SetTextStyle(TextColour colour, FontSize size = FS_NOR
  * @param align  Alignment of text/image within widget.
  * @ingroup NestedWidgetParts
  */
-static inline NWidgetPart SetAlignment(StringAlignment align)
+inline NWidgetPart SetAlignment(StringAlignment align)
 {
 	NWidgetPart part;
 
@@ -1142,7 +1142,7 @@ static inline NWidgetPart SetAlignment(StringAlignment align)
  * @param fill_y Vertical filling step from minimal size.
  * @ingroup NestedWidgetParts
  */
-static inline NWidgetPart SetFill(uint fill_x, uint fill_y)
+inline NWidgetPart SetFill(uint fill_x, uint fill_y)
 {
 	NWidgetPart part;
 
@@ -1158,7 +1158,7 @@ static inline NWidgetPart SetFill(uint fill_x, uint fill_y)
  * (horizontal, vertical, WWT_FRAME, WWT_INSET, or WWT_PANEL).
  * @ingroup NestedWidgetParts
  */
-static inline NWidgetPart EndContainer()
+inline NWidgetPart EndContainer()
 {
 	NWidgetPart part;
 
@@ -1173,7 +1173,7 @@ static inline NWidgetPart EndContainer()
  * @param tip  Tooltip of the widget.
  * @ingroup NestedWidgetParts
  */
-static inline NWidgetPart SetDataTip(uint32_t data, StringID tip)
+inline NWidgetPart SetDataTip(uint32_t data, StringID tip)
 {
 	NWidgetPart part;
 
@@ -1191,7 +1191,7 @@ static inline NWidgetPart SetDataTip(uint32_t data, StringID tip)
  * @param tip  Tooltip of the widget.
  * @ingroup NestedWidgetParts
  */
-static inline NWidgetPart SetMatrixDataTip(uint8_t cols, uint8_t rows, StringID tip)
+inline NWidgetPart SetMatrixDataTip(uint8_t cols, uint8_t rows, StringID tip)
 {
 	return SetDataTip((rows << MAT_ROW_START) | (cols << MAT_COL_START), tip);
 }
@@ -1205,7 +1205,7 @@ static inline NWidgetPart SetMatrixDataTip(uint8_t cols, uint8_t rows, StringID 
  * @param left The padding left of the widget.
  * @ingroup NestedWidgetParts
  */
-static inline NWidgetPart SetPadding(uint8_t top, uint8_t right, uint8_t bottom, uint8_t left)
+inline NWidgetPart SetPadding(uint8_t top, uint8_t right, uint8_t bottom, uint8_t left)
 {
 	NWidgetPart part;
 
@@ -1223,7 +1223,7 @@ static inline NWidgetPart SetPadding(uint8_t top, uint8_t right, uint8_t bottom,
  * @param r The padding around the widget.
  * @ingroup NestedWidgetParts
  */
-static inline NWidgetPart SetPadding(const RectPadding &padding)
+inline NWidgetPart SetPadding(const RectPadding &padding)
 {
 	NWidgetPart part;
 
@@ -1241,7 +1241,7 @@ static inline NWidgetPart SetPadding(const RectPadding &padding)
  * @param padding The padding to use for all directions.
  * @ingroup NestedWidgetParts
  */
-static inline NWidgetPart SetPadding(uint8_t padding)
+inline NWidgetPart SetPadding(uint8_t padding)
 {
 	return SetPadding(padding, padding, padding, padding);
 }
@@ -1253,7 +1253,7 @@ static inline NWidgetPart SetPadding(uint8_t padding)
  * @param post The amount of space after the last widget.
  * @ingroup NestedWidgetParts
  */
-static inline NWidgetPart SetPIP(uint8_t pre, uint8_t inter, uint8_t post)
+inline NWidgetPart SetPIP(uint8_t pre, uint8_t inter, uint8_t post)
 {
 	NWidgetPart part;
 
@@ -1272,7 +1272,7 @@ static inline NWidgetPart SetPIP(uint8_t pre, uint8_t inter, uint8_t post)
  * @param post The ratio of space after the last widget.
  * @ingroup NestedWidgetParts
  */
-static inline NWidgetPart SetPIPRatio(uint8_t ratio_pre, uint8_t ratio_inter, uint8_t ratio_post)
+inline NWidgetPart SetPIPRatio(uint8_t ratio_pre, uint8_t ratio_inter, uint8_t ratio_post)
 {
 	NWidgetPart part;
 
@@ -1291,7 +1291,7 @@ static inline NWidgetPart SetPIPRatio(uint8_t ratio_pre, uint8_t ratio_inter, ui
  * @param index Widget index of the scrollbar.
  * @ingroup NestedWidgetParts
  */
-static inline NWidgetPart SetScrollbar(WidgetID index)
+inline NWidgetPart SetScrollbar(WidgetID index)
 {
 	NWidgetPart part;
 
@@ -1310,7 +1310,7 @@ static inline NWidgetPart SetScrollbar(WidgetID index)
  *       Child widgets must have a index bigger than the parent index.
  * @ingroup NestedWidgetParts
  */
-static inline NWidgetPart NWidget(WidgetType tp, Colours col, int idx = -1)
+inline NWidgetPart NWidget(WidgetType tp, Colours col, int idx = -1)
 {
 	NWidgetPart part;
 
@@ -1327,7 +1327,7 @@ static inline NWidgetPart NWidget(WidgetType tp, Colours col, int idx = -1)
  * @param cont_flags Flags for the containers (#NWID_HORIZONTAL and #NWID_VERTICAL).
  * @ingroup NestedWidgetParts
  */
-static inline NWidgetPart NWidget(WidgetType tp, NWidContainerFlags cont_flags = NC_NONE)
+inline NWidgetPart NWidget(WidgetType tp, NWidContainerFlags cont_flags = NC_NONE)
 {
 	NWidgetPart part;
 
@@ -1342,7 +1342,7 @@ static inline NWidgetPart NWidget(WidgetType tp, NWidContainerFlags cont_flags =
  * @param func_ptr Pointer to function that returns the tree.
  * @ingroup NestedWidgetParts
  */
-static inline NWidgetPart NWidgetFunction(NWidgetFunctionType *func_ptr)
+inline NWidgetPart NWidgetFunction(NWidgetFunctionType *func_ptr)
 {
 	NWidgetPart part;
 

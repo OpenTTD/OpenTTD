@@ -238,7 +238,7 @@ void sq_newclosure(HSQUIRRELVM v,SQFUNCTION func,SQUnsignedInteger nfreevars);
 SQRESULT sq_setparamscheck(HSQUIRRELVM v,SQInteger nparamscheck,const SQChar *typemask);
 SQRESULT sq_bindenv(HSQUIRRELVM v,SQInteger idx);
 void sq_pushstring(HSQUIRRELVM v,const SQChar *s,SQInteger len);
-static inline void sq_pushstring(HSQUIRRELVM v, const std::string &str, SQInteger len = -1) { sq_pushstring(v, str.data(), len == -1 ? str.size() : len); }
+inline void sq_pushstring(HSQUIRRELVM v, const std::string &str, SQInteger len = -1) { sq_pushstring(v, str.data(), len == -1 ? str.size() : len); }
 void sq_pushfloat(HSQUIRRELVM v,SQFloat f);
 void sq_pushinteger(HSQUIRRELVM v,SQInteger n);
 void sq_pushbool(HSQUIRRELVM v,SQBool b);
@@ -308,7 +308,7 @@ SQRESULT sq_resume(HSQUIRRELVM v,SQBool retval,SQBool raiseerror);
 const SQChar *sq_getlocal(HSQUIRRELVM v,SQUnsignedInteger level,SQUnsignedInteger idx);
 const SQChar *sq_getfreevariable(HSQUIRRELVM v,SQInteger idx,SQUnsignedInteger nval);
 SQRESULT sq_throwerror(HSQUIRRELVM v,const SQChar *err, SQInteger len = -1);
-static inline SQRESULT sq_throwerror(HSQUIRRELVM v, const std::string_view err) { return sq_throwerror(v, err.data(), err.size()); }
+inline SQRESULT sq_throwerror(HSQUIRRELVM v, const std::string_view err) { return sq_throwerror(v, err.data(), err.size()); }
 void sq_reseterror(HSQUIRRELVM v);
 void sq_getlasterror(HSQUIRRELVM v);
 

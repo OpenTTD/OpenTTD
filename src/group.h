@@ -87,7 +87,7 @@ struct Group : GroupPool::PoolItem<&_group_pool> {
 };
 
 
-static inline bool IsDefaultGroupID(GroupID index)
+inline bool IsDefaultGroupID(GroupID index)
 {
 	return index == DEFAULT_GROUP;
 }
@@ -97,7 +97,7 @@ static inline bool IsDefaultGroupID(GroupID index)
  * @param id_g The GroupID to check
  * @return true is id_g is identical to ALL_GROUP
  */
-static inline bool IsAllGroupID(GroupID id_g)
+inline bool IsAllGroupID(GroupID id_g)
 {
 	return id_g == ALL_GROUP;
 }

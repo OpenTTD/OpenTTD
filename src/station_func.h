@@ -56,7 +56,7 @@ void RerouteCargo(Station *st, CargoID c, StationID avoid, StationID avoid2);
  * @param num Number of station tiles.
  * @return Total cost.
  */
-static inline Money StationMaintenanceCost(uint32_t num)
+inline Money StationMaintenanceCost(uint32_t num)
 {
 	return (_price[PR_INFRASTRUCTURE_STATION] * num * (1 + IntSqrt(num))) >> 7; // 7 bits scaling.
 }
