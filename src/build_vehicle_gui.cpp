@@ -95,7 +95,7 @@ static const NWidgetPart _nested_build_vehicle_widgets[] = {
 
 /** Special cargo filter criteria */
 static const CargoID CF_ANY     = CT_NO_REFIT;   ///< Show all vehicles independent of carried cargo (i.e. no filtering)
-static const CargoID CF_NONE    = CT_INVALID;    ///< Show only vehicles which do not carry cargo (e.g. train engines)
+static const CargoID CF_NONE    = INVALID_CARGO; ///< Show only vehicles which do not carry cargo (e.g. train engines)
 static const CargoID CF_ENGINES = CT_AUTO_REFIT; ///< Show only engines (for rail vehicles only)
 
 bool _engine_sort_direction; ///< \c false = descending, \c true = ascending.
@@ -908,7 +908,7 @@ void TestedEngineDetails::FillDefaultCapacities(const Engine *e)
 		this->all_capacities[this->cargo] = this->capacity;
 		this->all_capacities[CT_MAIL] = this->mail_capacity;
 	}
-	if (this->all_capacities.GetCount() == 0) this->cargo = CT_INVALID;
+	if (this->all_capacities.GetCount() == 0) this->cargo = INVALID_CARGO;
 }
 
 /**
@@ -954,7 +954,7 @@ int DrawVehiclePurchaseInfo(int left, int right, int y, EngineID engine_number, 
 		int new_y = DrawCargoCapacityInfo(left, right, y, te, refittable);
 
 		if (new_y == y) {
-			SetDParam(0, CT_INVALID);
+			SetDParam(0, INVALID_CARGO);
 			SetDParam(2, STR_EMPTY);
 			DrawString(left, right, y, STR_PURCHASE_INFO_CAPACITY);
 			y += GetCharacterHeight(FS_NORMAL);
@@ -1293,7 +1293,7 @@ struct BuildVehicleWindow : Window {
 	void SelectEngine(EngineID engine)
 	{
 		CargoID cargo = this->cargo_filter_criteria;
-		if (cargo == CF_ANY || cargo == CF_ENGINES || cargo == CF_NONE) cargo = CT_INVALID;
+		if (cargo == CF_ANY || cargo == CF_ENGINES || cargo == CF_NONE) cargo = INVALID_CARGO;
 
 		this->sel_engine = engine;
 		this->SetBuyVehicleText();
@@ -1652,7 +1652,7 @@ struct BuildVehicleWindow : Window {
 				EngineID sel_eng = this->sel_engine;
 				if (sel_eng != INVALID_ENGINE) {
 					CargoID cargo = this->cargo_filter_criteria;
-					if (cargo == CF_ANY || cargo == CF_ENGINES || cargo == CF_NONE) cargo = CT_INVALID;
+					if (cargo == CF_ANY || cargo == CF_ENGINES || cargo == CF_NONE) cargo = INVALID_CARGO;
 					if (this->vehicle_type == VEH_TRAIN && RailVehInfo(sel_eng)->railveh_type == RAILVEH_WAGON) {
 						Command<CMD_BUILD_VEHICLE>::Post(GetCmdBuildVehMsg(this->vehicle_type), CcBuildWagon, this->window_number, sel_eng, true, cargo, INVALID_CLIENT_ID);
 					} else {

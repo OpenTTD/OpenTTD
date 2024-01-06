@@ -39,11 +39,11 @@ std::optional<std::string> ScriptEventEnginePreview::GetName()
 
 CargoID ScriptEventEnginePreview::GetCargoType()
 {
-	if (!this->IsEngineValid()) return CT_INVALID;
+	if (!this->IsEngineValid()) return INVALID_CARGO;
 	CargoArray cap = ::GetCapacityOfArticulatedParts(this->engine);
 
 	auto it = std::max_element(std::cbegin(cap), std::cend(cap));
-	if (*it == 0) return CT_INVALID;
+	if (*it == 0) return INVALID_CARGO;
 
 	return CargoID(std::distance(std::cbegin(cap), it));
 }

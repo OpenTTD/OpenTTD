@@ -67,7 +67,7 @@ bool LinkRefresher::Hop::operator<(const Hop &other) const
  * @param is_full_loading If the vehicle is full loading.
  */
 LinkRefresher::LinkRefresher(Vehicle *vehicle, HopSet *seen_hops, bool allow_merge, bool is_full_loading) :
-	vehicle(vehicle), seen_hops(seen_hops), cargo(CT_INVALID), allow_merge(allow_merge),
+	vehicle(vehicle), seen_hops(seen_hops), cargo(INVALID_CARGO), allow_merge(allow_merge),
 	is_full_loading(is_full_loading)
 {
 	memset(this->capacities, 0, sizeof(this->capacities));

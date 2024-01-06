@@ -183,7 +183,7 @@ static StringID GetTrainEngineInfoString(const Engine *e)
 		SetDParam(5, e->GetDefaultCargoType());
 		SetDParam(6, capacity);
 	} else {
-		SetDParam(5, CT_INVALID);
+		SetDParam(5, INVALID_CARGO);
 	}
 	return (_settings_game.vehicle.train_acceleration_model != AM_ORIGINAL && GetRailTypeInfo(e->u.rail.railtype)->acceleration_type != 2) ? STR_ENGINE_PREVIEW_COST_WEIGHT_SPEED_POWER_MAX_TE : STR_ENGINE_PREVIEW_COST_WEIGHT_SPEED_POWER;
 }
@@ -224,7 +224,7 @@ static StringID GetRoadVehEngineInfoString(const Engine *e)
 			SetDParam(2, e->GetDefaultCargoType());
 			SetDParam(3, capacity);
 		} else {
-			SetDParam(2, CT_INVALID);
+			SetDParam(2, INVALID_CARGO);
 		}
 		SetDParam(4, e->GetRunningCost());
 		return STR_ENGINE_PREVIEW_COST_MAX_SPEED_CAP_RUNCOST;
@@ -242,7 +242,7 @@ static StringID GetRoadVehEngineInfoString(const Engine *e)
 			SetDParam(5, e->GetDefaultCargoType());
 			SetDParam(6, capacity);
 		} else {
-			SetDParam(5, CT_INVALID);
+			SetDParam(5, INVALID_CARGO);
 		}
 		return STR_ENGINE_PREVIEW_COST_WEIGHT_SPEED_POWER_MAX_TE;
 	}

@@ -148,7 +148,7 @@ enum CargoSuffixInOut {
  * @param ind the industry (nullptr if in fund window)
  * @param ind_type the industry type
  * @param indspec the industry spec
- * @param cargoes array with cargotypes. for CT_INVALID no suffix will be determined
+ * @param cargoes array with cargotypes. for INVALID_CARGO no suffix will be determined
  * @param suffixes is filled with the suffixes
  */
 template <typename TC, typename TS>
@@ -197,7 +197,7 @@ static inline void GetAllCargoSuffixes(CargoSuffixInOut use_input, CargoSuffixTy
  * @param ind the industry (nullptr if in fund window)
  * @param ind_type the industry type
  * @param indspec the industry spec
- * @param cargo cargotype. for CT_INVALID no suffix will be determined
+ * @param cargo cargotype. for INVALID_CARGO no suffix will be determined
  * @param slot accepts/produced slot number, used for old-style 3-in/2-out industries.
  * @param suffix is filled with the suffix
  */
@@ -1248,7 +1248,7 @@ typedef GUIList<const Industry *, const CargoID &, const std::pair<CargoID, Carg
 /** Special cargo filter criteria */
 enum CargoFilterSpecialType {
 	CF_ANY  = CT_NO_REFIT, ///< Show all industries (i.e. no filtering)
-	CF_NONE = CT_INVALID,  ///< Show only industries which do not produce/accept cargo
+	CF_NONE = INVALID_CARGO, ///< Show only industries which do not produce/accept cargo
 };
 
 /** Cargo filter functions */
@@ -1995,15 +1995,15 @@ struct CargoesField {
 			CargoID other_accepted[MAX_CARGOES];   ///< Cargoes accepted but not used in this figure.
 		} industry; ///< Industry data (for #CFT_INDUSTRY).
 		struct {
-			CargoID vertical_cargoes[MAX_CARGOES]; ///< Cargoes running from top to bottom (cargo ID or #CT_INVALID).
+			CargoID vertical_cargoes[MAX_CARGOES]; ///< Cargoes running from top to bottom (cargo ID or #INVALID_CARGO).
 			uint8_t num_cargoes;                   ///< Number of cargoes.
-			CargoID supp_cargoes[MAX_CARGOES];     ///< Cargoes entering from the left (index in #vertical_cargoes, or #CT_INVALID).
+			CargoID supp_cargoes[MAX_CARGOES];     ///< Cargoes entering from the left (index in #vertical_cargoes, or #INVALID_CARGO).
 			uint8_t top_end;                       ///< Stop at the top of the vertical cargoes.
-			CargoID cust_cargoes[MAX_CARGOES];     ///< Cargoes leaving to the right (index in #vertical_cargoes, or #CT_INVALID).
+			CargoID cust_cargoes[MAX_CARGOES];     ///< Cargoes leaving to the right (index in #vertical_cargoes, or #INVALID_CARGO).
 			uint8_t bottom_end;                    ///< Stop at the bottom of the vertical cargoes.
 		} cargo; ///< Cargo data (for #CFT_CARGO).
 		struct {
-			CargoID cargoes[MAX_CARGOES];          ///< Cargoes to display (or #CT_INVALID).
+			CargoID cargoes[MAX_CARGOES];          ///< Cargoes to display (or #INVALID_CARGO).
 			bool left_align;                       ///< Align all cargo texts to the left (else align to the right).
 		} cargo_label;   ///< Label data (for #CFT_CARGO_LABEL).
 		StringID header; ///< Header text (for #CFT_HEADER).
@@ -2027,8 +2027,8 @@ struct CargoesField {
 	{
 		this->type = CFT_INDUSTRY;
 		this->u.industry.ind_type = ind_type;
-		std::fill(std::begin(this->u.industry.other_accepted), std::end(this->u.industry.other_accepted), CT_INVALID);
-		std::fill(std::begin(this->u.industry.other_produced), std::end(this->u.industry.other_produced), CT_INVALID);
+		std::fill(std::begin(this->u.industry.other_accepted), std::end(this->u.industry.other_accepted), INVALID_CARGO);
+		std::fill(std::begin(this->u.industry.other_produced), std::end(this->u.industry.other_produced), INVALID_CARGO);
 	}
 
 	/**
@@ -2079,7 +2079,7 @@ struct CargoesField {
 
 	/**
 	 * Make a piece of cargo column.
-	 * @param cargoes    Array of #CargoID (may contain #CT_INVALID).
+	 * @param cargoes    Array of #CargoID (may contain #INVALID_CARGO).
 	 * @param length     Number of cargoes in \a cargoes.
 	 * @param count      Number of cargoes to display (should be at least the number of valid cargoes, or \c -1 to let the method compute it).
 	 * @param top_end    This is the first cargo field of this column.
@@ -2099,16 +2099,16 @@ struct CargoesField {
 		this->u.cargo.num_cargoes = (count < 0) ? static_cast<uint8_t>(insert - std::begin(this->u.cargo.vertical_cargoes)) : count;
 		CargoIDComparator comparator;
 		std::sort(std::begin(this->u.cargo.vertical_cargoes), insert, comparator);
-		std::fill(insert, std::end(this->u.cargo.vertical_cargoes), CT_INVALID);
+		std::fill(insert, std::end(this->u.cargo.vertical_cargoes), INVALID_CARGO);
 		this->u.cargo.top_end = top_end;
 		this->u.cargo.bottom_end = bottom_end;
-		std::fill(std::begin(this->u.cargo.supp_cargoes), std::end(this->u.cargo.supp_cargoes), CT_INVALID);
-		std::fill(std::begin(this->u.cargo.cust_cargoes), std::end(this->u.cargo.cust_cargoes), CT_INVALID);
+		std::fill(std::begin(this->u.cargo.supp_cargoes), std::end(this->u.cargo.supp_cargoes), INVALID_CARGO);
+		std::fill(std::begin(this->u.cargo.cust_cargoes), std::end(this->u.cargo.cust_cargoes), INVALID_CARGO);
 	}
 
 	/**
 	 * Make a field displaying cargo type names.
-	 * @param cargoes    Array of #CargoID (may contain #CT_INVALID).
+	 * @param cargoes    Array of #CargoID (may contain #INVALID_CARGO).
 	 * @param length     Number of cargoes in \a cargoes.
 	 * @param left_align ALign texts to the left (else to the right).
 	 */
@@ -2117,7 +2117,7 @@ struct CargoesField {
 		this->type = CFT_CARGO_LABEL;
 		uint i;
 		for (i = 0; i < MAX_CARGOES && i < length; i++) this->u.cargo_label.cargoes[i] = cargoes[i];
-		for (; i < MAX_CARGOES; i++) this->u.cargo_label.cargoes[i] = CT_INVALID;
+		for (; i < MAX_CARGOES; i++) this->u.cargo_label.cargoes[i] = INVALID_CARGO;
 		this->u.cargo_label.left_align = left_align;
 	}
 
@@ -2290,7 +2290,7 @@ struct CargoesField {
 	 * @param left  Left industry neighbour if available (else \c nullptr should be supplied).
 	 * @param right Right industry neighbour if available (else \c nullptr should be supplied).
 	 * @param pt    Click position in the cargo field.
-	 * @return Cargo clicked at, or #CT_INVALID if none.
+	 * @return Cargo clicked at, or #INVALID_CARGO if none.
 	 */
 	CargoID CargoClickedAt(const CargoesField *left, const CargoesField *right, Point pt) const
 	{
@@ -2309,11 +2309,11 @@ struct CargoesField {
 		int vpos = vert_inter_industry_space / 2 + CargoesField::cargo_border.width;
 		uint row;
 		for (row = 0; row < MAX_CARGOES; row++) {
-			if (pt.y < vpos) return CT_INVALID;
+			if (pt.y < vpos) return INVALID_CARGO;
 			if (pt.y < vpos + GetCharacterHeight(FS_NORMAL)) break;
 			vpos += GetCharacterHeight(FS_NORMAL) + CargoesField::cargo_space.width;
 		}
-		if (row == MAX_CARGOES) return CT_INVALID;
+		if (row == MAX_CARGOES) return INVALID_CARGO;
 
 		/* row = 0 -> at first horizontal row, row = 1 -> second horizontal row, 2 = 3rd horizontal row. */
 		if (col == 0) {
@@ -2322,7 +2322,7 @@ struct CargoesField {
 				if (left->type == CFT_INDUSTRY) return left->u.industry.other_produced[row];
 				if (left->type == CFT_CARGO_LABEL && !left->u.cargo_label.left_align) return left->u.cargo_label.cargoes[row];
 			}
-			return CT_INVALID;
+			return INVALID_CARGO;
 		}
 		if (col == this->u.cargo.num_cargoes) {
 			if (IsValidCargoID(this->u.cargo.cust_cargoes[row])) return this->u.cargo.vertical_cargoes[this->u.cargo.cust_cargoes[row]];
@@ -2330,7 +2330,7 @@ struct CargoesField {
 				if (right->type == CFT_INDUSTRY) return right->u.industry.other_accepted[row];
 				if (right->type == CFT_CARGO_LABEL && right->u.cargo_label.left_align) return right->u.cargo_label.cargoes[row];
 			}
-			return CT_INVALID;
+			return INVALID_CARGO;
 		}
 		if (row >= col) {
 			/* Clicked somewhere in-between vertical cargo connection.
@@ -2338,17 +2338,17 @@ struct CargoesField {
 			 * ensures we are left-below the main diagonal, thus at the supplying side.
 			 */
 			if (IsValidCargoID(this->u.cargo.supp_cargoes[row])) return this->u.cargo.vertical_cargoes[this->u.cargo.supp_cargoes[row]];
-			return CT_INVALID;
+			return INVALID_CARGO;
 		}
 		/* Clicked at a customer connection. */
 		if (IsValidCargoID(this->u.cargo.cust_cargoes[row])) return this->u.cargo.vertical_cargoes[this->u.cargo.cust_cargoes[row]];
-		return CT_INVALID;
+		return INVALID_CARGO;
 	}
 
 	/**
 	 * Decide what cargo the user clicked in the cargo label field.
 	 * @param pt Click position in the cargo label field.
-	 * @return Cargo clicked at, or #CT_INVALID if none.
+	 * @return Cargo clicked at, or #INVALID_CARGO if none.
 	 */
 	CargoID CargoLabelClickedAt(Point pt) const
 	{
@@ -2357,11 +2357,11 @@ struct CargoesField {
 		int vpos = vert_inter_industry_space / 2 + CargoesField::cargo_border.height;
 		uint row;
 		for (row = 0; row < MAX_CARGOES; row++) {
-			if (pt.y < vpos) return CT_INVALID;
+			if (pt.y < vpos) return INVALID_CARGO;
 			if (pt.y < vpos + GetCharacterHeight(FS_NORMAL)) break;
 			vpos += GetCharacterHeight(FS_NORMAL) + CargoesField::cargo_space.height;
 		}
-		if (row == MAX_CARGOES) return CT_INVALID;
+		if (row == MAX_CARGOES) return INVALID_CARGO;
 		return this->u.cargo_label.cargoes[row];
 	}
 
@@ -2416,7 +2416,7 @@ struct CargoesRow {
 		CargoesField *cargo_fld = this->columns + column + 1;
 		assert(ind_fld->type == CFT_INDUSTRY && cargo_fld->type == CFT_CARGO);
 
-		std::fill(std::begin(ind_fld->u.industry.other_produced), std::end(ind_fld->u.industry.other_produced), CT_INVALID);
+		std::fill(std::begin(ind_fld->u.industry.other_produced), std::end(ind_fld->u.industry.other_produced), INVALID_CARGO);
 
 		if (ind_fld->u.industry.ind_type < NUM_INDUSTRYTYPES) {
 			CargoID others[MAX_CARGOES]; // Produced cargoes not carried in the cargo column.
@@ -2450,7 +2450,7 @@ struct CargoesRow {
 	void MakeCargoLabel(int column, bool accepting)
 	{
 		CargoID cargoes[MAX_CARGOES];
-		std::fill(std::begin(cargoes), std::end(cargoes), CT_INVALID);
+		std::fill(std::begin(cargoes), std::end(cargoes), INVALID_CARGO);
 
 		CargoesField *label_fld = this->columns + column;
 		CargoesField *cargo_fld = this->columns + (accepting ? column - 1 : column + 1);
@@ -2474,7 +2474,7 @@ struct CargoesRow {
 		CargoesField *cargo_fld = this->columns + column - 1;
 		assert(ind_fld->type == CFT_INDUSTRY && cargo_fld->type == CFT_CARGO);
 
-		std::fill(std::begin(ind_fld->u.industry.other_accepted), std::end(ind_fld->u.industry.other_accepted), CT_INVALID);
+		std::fill(std::begin(ind_fld->u.industry.other_accepted), std::end(ind_fld->u.industry.other_accepted), INVALID_CARGO);
 
 		if (ind_fld->u.industry.ind_type < NUM_INDUSTRYTYPES) {
 			CargoID others[MAX_CARGOES]; // Accepted cargoes not carried in the cargo column.
@@ -3157,7 +3157,7 @@ struct IndustryCargoesWindow : public Window {
 		if (!CalculatePositionInWidget(pt, &fieldxy, &xy)) return false;
 
 		const CargoesField *fld = this->fields[fieldxy.y].columns + fieldxy.x;
-		CargoID cid = CT_INVALID;
+		CargoID cid = INVALID_CARGO;
 		switch (fld->type) {
 			case CFT_CARGO: {
 				CargoesField *lft = (fieldxy.x > 0) ? this->fields[fieldxy.y].columns + fieldxy.x - 1 : nullptr;

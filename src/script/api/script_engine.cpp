@@ -52,12 +52,12 @@
 
 /* static */ CargoID ScriptEngine::GetCargoType(EngineID engine_id)
 {
-	if (!IsValidEngine(engine_id)) return CT_INVALID;
+	if (!IsValidEngine(engine_id)) return INVALID_CARGO;
 
 	CargoArray cap = ::GetCapacityOfArticulatedParts(engine_id);
 
 	auto it = std::max_element(std::cbegin(cap), std::cend(cap));
-	if (*it == 0) return CT_INVALID;
+	if (*it == 0) return INVALID_CARGO;
 
 	return CargoID(std::distance(std::cbegin(cap), it));
 }

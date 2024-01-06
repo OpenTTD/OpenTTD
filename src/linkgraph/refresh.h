@@ -56,7 +56,7 @@ protected:
 	struct Hop {
 		OrderID from;  ///< Last order where vehicle could interact with cargo or absolute first order.
 		OrderID to;    ///< Next order to be processed.
-		CargoID cargo; ///< Cargo the consist is probably carrying or CT_INVALID if unknown.
+		CargoID cargo; ///< Cargo the consist is probably carrying or INVALID_CARGO if unknown.
 
 		/**
 		 * Default constructor should not be called but has to be visible for

@@ -69,10 +69,12 @@ enum CargoType {
 	CT_INVALID      = 0xFF, ///< Invalid cargo type.
 };
 
+static const CargoID INVALID_CARGO = UINT8_MAX;
+
 /** Test whether cargo type is not CT_INVALID */
 inline bool IsValidCargoType(CargoType t) { return t != CT_INVALID; }
-/** Test whether cargo type is not CT_INVALID */
-inline bool IsValidCargoID(CargoID t) { return t != CT_INVALID; }
+/** Test whether cargo type is not INVALID_CARGO */
+inline bool IsValidCargoID(CargoID t) { return t != INVALID_CARGO; }
 
 typedef uint64_t CargoTypes;
 

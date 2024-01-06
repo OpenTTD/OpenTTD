@@ -257,9 +257,9 @@ public:
 	/**
 	 * Get the last date this industry accepted any cargo delivery.
 	 * @param industry_id The index of the industry.
-	 * @param cargo_type The cargo to query, or CT_INVALID to query latest of all accepted cargoes.
+	 * @param cargo_type The cargo to query, or INVALID_CARGO to query latest of all accepted cargoes.
 	 * @pre IsValidIndustry(industry_id).
-	 * @pre IsValidCargo(cargo_type) || cargo_type == CT_INVALID.
+	 * @pre IsValidCargo(cargo_type) || cargo_type == INVALID_CARGO.
 	 * @return Date the industry last received cargo from a delivery, or ScriptDate::DATE_INVALID on error.
 	 * @api -ai
 	 */

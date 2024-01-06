@@ -74,13 +74,13 @@ uint16_t GetCargoCallback(CallbackID callback, uint32_t param1, uint32_t param2,
  * @param usebit  Defines the meaning of \a cargo for GRF version < 7.
  *                If true, then \a cargo is a bitnum. If false, then \a cargo is a cargoslot.
  *                For GRF version >= 7 \a cargo is always a translated cargo bit.
- * @return CargoID or CT_INVALID if the cargo is not available.
+ * @return CargoID or INVALID_CARGO if the cargo is not available.
  */
 CargoID GetCargoTranslation(uint8_t cargo, const GRFFile *grffile, bool usebit)
 {
 	/* Pre-version 7 uses the 'climate dependent' ID in callbacks and properties, i.e. cargo is the cargo ID */
 	if (grffile->grf_version < 7 && !usebit) {
-		if (cargo >= CargoSpec::GetArraySize() || !CargoSpec::Get(cargo)->IsValid()) return CT_INVALID;
+		if (cargo >= CargoSpec::GetArraySize() || !CargoSpec::Get(cargo)->IsValid()) return INVALID_CARGO;
 		return cargo;
 	}
 
@@ -94,5 +94,5 @@ CargoID GetCargoTranslation(uint8_t cargo, const GRFFile *grffile, bool usebit)
 		/* Else the cargo value is a 'climate independent' 'bitnum' */
 		return GetCargoIDByBitnum(cargo);
 	}
-	return CT_INVALID;
+	return INVALID_CARGO;
 }
