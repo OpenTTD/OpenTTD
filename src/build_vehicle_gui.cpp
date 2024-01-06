@@ -820,7 +820,7 @@ static int DrawAircraftPurchaseInfo(int left, int right, int y, EngineID engine_
 	if (te.mail_capacity > 0) {
 		SetDParam(0, te.cargo);
 		SetDParam(1, te.capacity);
-		SetDParam(2, CT_MAIL);
+		SetDParam(2, GetCargoIDByLabel(CT_MAIL));
 		SetDParam(3, te.mail_capacity);
 		DrawString(left, right, y, STR_PURCHASE_INFO_AIRCRAFT_CAPACITY);
 	} else {
@@ -902,7 +902,11 @@ void TestedEngineDetails::FillDefaultCapacities(const Engine *e)
 	} else {
 		this->capacity = e->GetDisplayDefaultCapacity(&this->mail_capacity);
 		this->all_capacities[this->cargo] = this->capacity;
-		this->all_capacities[CT_MAIL] = this->mail_capacity;
+		if (IsValidCargoID(GetCargoIDByLabel(CT_MAIL))) {
+			this->all_capacities[GetCargoIDByLabel(CT_MAIL)] = this->mail_capacity;
+		} else {
+			this->mail_capacity = 0;
+		}
 	}
 	if (this->all_capacities.GetCount() == 0) this->cargo = INVALID_CARGO;
 }

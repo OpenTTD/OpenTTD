@@ -167,7 +167,8 @@ std::tuple<CommandCost, VehicleID, uint, uint16_t, CargoArray> CmdBuildVehicle(D
 			} else {
 				refitted_capacity = e->GetDisplayDefaultCapacity(&refitted_mail_capacity);
 				cargo_capacities[default_cargo] = refitted_capacity;
-				cargo_capacities[CT_MAIL] = refitted_mail_capacity;
+				CargoID mail = GetCargoIDByLabel(CT_MAIL);
+				if (IsValidCargoID(mail)) cargo_capacities[mail] = refitted_mail_capacity;
 			}
 		}
 
@@ -410,7 +411,8 @@ static std::tuple<CommandCost, uint, uint16_t, CargoArray> RefitVehicle(Vehicle 
 		total_mail_capacity += mail_capacity;
 
 		cargo_capacities[new_cid] += amount;
-		cargo_capacities[CT_MAIL] += mail_capacity;
+		CargoID mail = GetCargoIDByLabel(CT_MAIL);
+		if (IsValidCargoID(mail)) cargo_capacities[mail] += mail_capacity;
 
 		if (!refittable) continue;
 

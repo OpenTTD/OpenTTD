@@ -17,9 +17,6 @@
 #include "landscape_type.h"
 #include "core/bitmath_func.hpp"
 
-/** Globally unique label of a cargo type. */
-typedef uint32_t CargoLabel;
-
 /** Town growth effect when delivering cargo. */
 enum TownAcceptanceEffect : byte {
 	TAE_BEGIN = 0,
@@ -191,8 +188,11 @@ struct CargoSpec {
 
 private:
 	static CargoSpec array[NUM_CARGO]; ///< Array holding all CargoSpecs
+	static inline std::map<CargoLabel, CargoID> label_map{}; ///< Translation map from CargoLabel to Cargo ID.
 
 	friend void SetupCargoForClimate(LandscapeID l);
+	friend void BuildCargoLabelMap();
+	friend inline CargoID GetCargoIDByLabel(CargoLabel ct);
 	friend void FinaliseCargoArray();
 };
 
@@ -200,9 +200,17 @@ extern CargoTypes _cargo_mask;
 extern CargoTypes _standard_cargo_mask;
 
 void SetupCargoForClimate(LandscapeID l);
-CargoID GetCargoIDByLabel(CargoLabel cl);
+bool IsDefaultCargo(CargoID cid);
+void BuildCargoLabelMap();
 CargoID GetCargoIDByBitnum(uint8_t bitnum);
-CargoID GetDefaultCargoID(LandscapeID l, CargoType ct);
+
+inline CargoID GetCargoIDByLabel(CargoLabel label)
+{
+	auto found = CargoSpec::label_map.find(label);
+	if (found != std::end(CargoSpec::label_map)) return found->second;
+	return INVALID_CARGO;
+}
+
 Dimension GetLargestCargoIconSize();
 
 void InitializeSortedCargoSpecs();

@@ -211,7 +211,7 @@ static StringID GetAircraftEngineInfoString(const Engine *e)
 	SetDParam(9, mail_capacity > 0 ? STR_ENGINE_PREVIEW_CAPACITY_2 : STR_ENGINE_PREVIEW_CAPACITY);
 	SetDParam(10, cargo);
 	SetDParam(11, capacity);
-	SetDParam(12, CT_MAIL);
+	SetDParam(12, GetCargoIDByLabel(CT_MAIL));
 	SetDParam(13, mail_capacity);
 
 	return STR_ENGINE_PREVIEW_TEXT4;

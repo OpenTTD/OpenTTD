@@ -17,6 +17,7 @@
 
 /* virtual */ uint32_t TownScopeResolver::GetVariable(byte variable, [[maybe_unused]] uint32_t parameter, bool *available) const
 {
+	CargoID cid;
 	switch (variable) {
 		/* Larger towns */
 		case 0x40:
@@ -81,24 +82,24 @@
 		case 0xB2: return this->t->statues;
 		case 0xB6: return ClampTo<uint16_t>(this->t->cache.num_houses);
 		case 0xB9: return this->t->growth_rate / Ticks::TOWN_GROWTH_TICKS;
-		case 0xBA: return ClampTo<uint16_t>(this->t->supplied[CT_PASSENGERS].new_max);
-		case 0xBB: return GB(ClampTo<uint16_t>(this->t->supplied[CT_PASSENGERS].new_max), 8, 8);
-		case 0xBC: return ClampTo<uint16_t>(this->t->supplied[CT_MAIL].new_max);
-		case 0xBD: return GB(ClampTo<uint16_t>(this->t->supplied[CT_MAIL].new_max), 8, 8);
-		case 0xBE: return ClampTo<uint16_t>(this->t->supplied[CT_PASSENGERS].new_act);
-		case 0xBF: return GB(ClampTo<uint16_t>(this->t->supplied[CT_PASSENGERS].new_act), 8, 8);
-		case 0xC0: return ClampTo<uint16_t>(this->t->supplied[CT_MAIL].new_act);
-		case 0xC1: return GB(ClampTo<uint16_t>(this->t->supplied[CT_MAIL].new_act), 8, 8);
-		case 0xC2: return ClampTo<uint16_t>(this->t->supplied[CT_PASSENGERS].old_max);
-		case 0xC3: return GB(ClampTo<uint16_t>(this->t->supplied[CT_PASSENGERS].old_max), 8, 8);
-		case 0xC4: return ClampTo<uint16_t>(this->t->supplied[CT_MAIL].old_max);
-		case 0xC5: return GB(ClampTo<uint16_t>(this->t->supplied[CT_MAIL].old_max), 8, 8);
-		case 0xC6: return ClampTo<uint16_t>(this->t->supplied[CT_PASSENGERS].old_act);
-		case 0xC7: return GB(ClampTo<uint16_t>(this->t->supplied[CT_PASSENGERS].old_act), 8, 8);
-		case 0xC8: return ClampTo<uint16_t>(this->t->supplied[CT_MAIL].old_act);
-		case 0xC9: return GB(ClampTo<uint16_t>(this->t->supplied[CT_MAIL].old_act), 8, 8);
-		case 0xCA: return this->t->GetPercentTransported(CT_PASSENGERS);
-		case 0xCB: return this->t->GetPercentTransported(CT_MAIL);
+		case 0xBA: cid = GetCargoIDByLabel(CT_PASSENGERS); return IsValidCargoID(cid) ? ClampTo<uint16_t>(this->t->supplied[cid].new_max) : 0;
+		case 0xBB: cid = GetCargoIDByLabel(CT_PASSENGERS); return IsValidCargoID(cid) ? GB(ClampTo<uint16_t>(this->t->supplied[cid].new_max), 8, 8) : 0;
+		case 0xBC: cid = GetCargoIDByLabel(CT_MAIL); return IsValidCargoID(cid) ? ClampTo<uint16_t>(this->t->supplied[cid].new_max) : 0;
+		case 0xBD: cid = GetCargoIDByLabel(CT_MAIL); return IsValidCargoID(cid) ? GB(ClampTo<uint16_t>(this->t->supplied[cid].new_max), 8, 8) : 0;
+		case 0xBE: cid = GetCargoIDByLabel(CT_PASSENGERS); return IsValidCargoID(cid) ? ClampTo<uint16_t>(this->t->supplied[cid].new_act) : 0;
+		case 0xBF: cid = GetCargoIDByLabel(CT_PASSENGERS); return IsValidCargoID(cid) ? GB(ClampTo<uint16_t>(this->t->supplied[cid].new_act), 8, 8) : 0;
+		case 0xC0: cid = GetCargoIDByLabel(CT_MAIL); return IsValidCargoID(cid) ? ClampTo<uint16_t>(this->t->supplied[cid].new_act) : 0;
+		case 0xC1: cid = GetCargoIDByLabel(CT_MAIL); return IsValidCargoID(cid) ? GB(ClampTo<uint16_t>(this->t->supplied[cid].new_act), 8, 8) : 0;
+		case 0xC2: cid = GetCargoIDByLabel(CT_PASSENGERS); return IsValidCargoID(cid) ? ClampTo<uint16_t>(this->t->supplied[cid].old_max) : 0;
+		case 0xC3: cid = GetCargoIDByLabel(CT_PASSENGERS); return IsValidCargoID(cid) ? GB(ClampTo<uint16_t>(this->t->supplied[cid].old_max), 8, 8) : 0;
+		case 0xC4: cid = GetCargoIDByLabel(CT_MAIL); return IsValidCargoID(cid) ? ClampTo<uint16_t>(this->t->supplied[cid].old_max) : 0;
+		case 0xC5: cid = GetCargoIDByLabel(CT_MAIL); return IsValidCargoID(cid) ? GB(ClampTo<uint16_t>(this->t->supplied[cid].old_max), 8, 8) : 0;
+		case 0xC6: cid = GetCargoIDByLabel(CT_PASSENGERS); return IsValidCargoID(cid) ? ClampTo<uint16_t>(this->t->supplied[cid].old_act) : 0;
+		case 0xC7: cid = GetCargoIDByLabel(CT_PASSENGERS); return IsValidCargoID(cid) ? GB(ClampTo<uint16_t>(this->t->supplied[cid].old_act), 8, 8) : 0;
+		case 0xC8: cid = GetCargoIDByLabel(CT_MAIL); return IsValidCargoID(cid) ? ClampTo<uint16_t>(this->t->supplied[cid].old_act) : 0;
+		case 0xC9: cid = GetCargoIDByLabel(CT_MAIL); return IsValidCargoID(cid) ? GB(ClampTo<uint16_t>(this->t->supplied[cid].old_act), 8, 8) : 0;
+		case 0xCA: return this->t->GetPercentTransported(GetCargoIDByLabel(CT_PASSENGERS));
+		case 0xCB: return this->t->GetPercentTransported(GetCargoIDByLabel(CT_MAIL));
 		case 0xCC: return this->t->received[TAE_FOOD].new_act;
 		case 0xCD: return GB(this->t->received[TAE_FOOD].new_act, 8, 8);
 		case 0xCE: return this->t->received[TAE_WATER].new_act;

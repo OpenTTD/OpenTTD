@@ -630,23 +630,31 @@ static void AddAcceptedCargo_Object(TileIndex tile, CargoArray &acceptance, Carg
 
 	/* Top town building generates 10, so to make HQ interesting, the top
 	 * type makes 20. */
-	acceptance[CT_PASSENGERS] += std::max(1U, level);
-	SetBit(*always_accepted, CT_PASSENGERS);
+	CargoID pass = GetCargoIDByLabel(CT_PASSENGERS);
+	if (IsValidCargoID(pass)) {
+		acceptance[pass] += std::max(1U, level);
+		SetBit(*always_accepted, pass);
+	}
 
 	/* Top town building generates 4, HQ can make up to 8. The
 	 * proportion passengers:mail is different because such a huge
 	 * commercial building generates unusually high amount of mail
 	 * correspondence per physical visitor. */
-	acceptance[CT_MAIL] += std::max(1U, level / 2);
-	SetBit(*always_accepted, CT_MAIL);
+	CargoID mail = GetCargoIDByLabel(CT_MAIL);
+	if (IsValidCargoID(mail)) {
+		acceptance[mail] += std::max(1U, level / 2);
+		SetBit(*always_accepted, mail);
+	}
 }
 
 static void AddProducedCargo_Object(TileIndex tile, CargoArray &produced)
 {
 	if (!IsObjectType(tile, OBJECT_HQ)) return;
 
-	produced[CT_PASSENGERS]++;
-	produced[CT_MAIL]++;
+	CargoID pass = GetCargoIDByLabel(CT_PASSENGERS);
+	if (IsValidCargoID(pass)) produced[pass]++;
+	CargoID mail = GetCargoIDByLabel(CT_MAIL);
+	if (IsValidCargoID(mail)) produced[mail]++;
 }
 
 
@@ -686,7 +694,8 @@ static void TileLoop_Object(TileIndex tile)
 
 	uint r = Random();
 	/* Top town buildings generate 250, so the top HQ type makes 256. */
-	if (GB(r, 0, 8) < (256 / 4 / (6 - level))) {
+	CargoID pass = GetCargoIDByLabel(CT_PASSENGERS);
+	if (IsValidCargoID(pass) && GB(r, 0, 8) < (256 / 4 / (6 - level))) {
 		uint amt = GB(r, 0, 8) / 8 / 4 + 1;
 
 		/* Production is halved during recessions. */
@@ -695,13 +704,14 @@ static void TileLoop_Object(TileIndex tile)
 		/* Scale by cargo scale setting. */
 		amt = ScaleByCargoScale(amt, true);
 
-		MoveGoodsToStation(CT_PASSENGERS, amt, SourceType::Headquarters, GetTileOwner(tile), stations.GetStations());
+		MoveGoodsToStation(pass, amt, SourceType::Headquarters, GetTileOwner(tile), stations.GetStations());
 	}
 
 	/* Top town building generates 90, HQ can make up to 196. The
 	 * proportion passengers:mail is about the same as in the acceptance
 	 * equations. */
-	if (GB(r, 8, 8) < (196 / 4 / (6 - level))) {
+	 CargoID mail = GetCargoIDByLabel(CT_MAIL);
+	if (IsValidCargoID(mail) && GB(r, 8, 8) < (196 / 4 / (6 - level))) {
 		uint amt = GB(r, 8, 8) / 8 / 4 + 1;
 
 		/* Production is halved during recessions. */
@@ -710,7 +720,7 @@ static void TileLoop_Object(TileIndex tile)
 		/* Scale by cargo scale setting. */
 		amt = ScaleByCargoScale(amt, true);
 
-		MoveGoodsToStation(CT_MAIL, amt, SourceType::Headquarters, GetTileOwner(tile), stations.GetStations());
+		MoveGoodsToStation(mail, amt, SourceType::Headquarters, GetTileOwner(tile), stations.GetStations());
 	}
 }
 

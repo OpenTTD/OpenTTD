@@ -306,11 +306,16 @@ CommandCost CmdBuildAircraft(DoCommandFlag flags, TileIndex tile, const Engine *
 
 		v->cargo_cap = avi->passenger_capacity;
 		v->refit_cap = 0;
-		u->cargo_cap = avi->mail_capacity;
 		u->refit_cap = 0;
 
 		v->cargo_type = e->GetDefaultCargoType();
-		u->cargo_type = CT_MAIL;
+		assert(IsValidCargoID(v->cargo_type));
+
+		CargoID mail = GetCargoIDByLabel(CT_MAIL);
+		if (IsValidCargoID(mail)) {
+			u->cargo_type = mail;
+			u->cargo_cap = avi->mail_capacity;
+		}
 
 		v->name.clear();
 		v->last_station_visited = INVALID_STATION;
