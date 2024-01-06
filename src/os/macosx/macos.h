@@ -22,7 +22,7 @@ void GetMacOSVersion(int *return_major, int *return_minor, int *return_bugfix);
  * @param bugfix bugfix version of the os. This would be 11 in the case of 10.4.11.
  * @return true if the running os is at least what we asked, false otherwise.
  */
-static inline bool MacOSVersionIsAtLeast(long major, long minor, long bugfix)
+inline bool MacOSVersionIsAtLeast(long major, long minor, long bugfix)
 {
 	int version_major, version_minor, version_bugfix;
 	GetMacOSVersion(&version_major, &version_minor, &version_bugfix);

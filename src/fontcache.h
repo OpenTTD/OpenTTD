@@ -163,20 +163,20 @@ public:
 };
 
 /** Map a SpriteID to the font size and key */
-static inline void SetUnicodeGlyph(FontSize size, char32_t key, SpriteID sprite)
+inline void SetUnicodeGlyph(FontSize size, char32_t key, SpriteID sprite)
 {
 	FontCache::Get(size)->SetUnicodeGlyph(key, sprite);
 }
 
 /** Initialize the glyph map */
-static inline void InitializeUnicodeGlyphMap()
+inline void InitializeUnicodeGlyphMap()
 {
 	for (FontSize fs = FS_BEGIN; fs < FS_END; fs++) {
 		FontCache::Get(fs)->InitializeUnicodeGlyphMap();
 	}
 }
 
-static inline void ClearFontCache()
+inline void ClearFontCache()
 {
 	for (FontSize fs = FS_BEGIN; fs < FS_END; fs++) {
 		FontCache::Get(fs)->ClearFontCache();
@@ -184,20 +184,20 @@ static inline void ClearFontCache()
 }
 
 /** Get the Sprite for a glyph */
-static inline const Sprite *GetGlyph(FontSize size, char32_t key)
+inline const Sprite *GetGlyph(FontSize size, char32_t key)
 {
 	FontCache *fc = FontCache::Get(size);
 	return fc->GetGlyph(fc->MapCharToGlyph(key));
 }
 
 /** Get the width of a glyph */
-static inline uint GetGlyphWidth(FontSize size, char32_t key)
+inline uint GetGlyphWidth(FontSize size, char32_t key)
 {
 	FontCache *fc = FontCache::Get(size);
 	return fc->GetGlyphWidth(fc->MapCharToGlyph(key));
 }
 
-static inline bool GetDrawGlyphShadow(FontSize size)
+inline bool GetDrawGlyphShadow(FontSize size)
 {
 	return FontCache::Get(size)->GetDrawGlyphShadow();
 }
@@ -226,7 +226,7 @@ extern FontCacheSettings _fcsettings;
  * @param fs The font size to look up.
  * @return The settings.
  */
-static inline FontCacheSubSetting *GetFontCacheSubSetting(FontSize fs)
+inline FontCacheSubSetting *GetFontCacheSubSetting(FontSize fs)
 {
 	switch (fs) {
 		default: NOT_REACHED();

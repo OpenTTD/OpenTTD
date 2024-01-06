@@ -20,7 +20,7 @@
  * @return The unsigned value
  */
 template <typename T>
-static inline T abs(const T a)
+inline T abs(const T a)
 {
 	return (a < (T)0) ? -a : a;
 }
@@ -34,7 +34,7 @@ static inline T abs(const T a)
  * @return The smallest multiple of n equal or greater than x
  */
 template <typename T>
-static inline T Align(const T x, uint n)
+inline T Align(const T x, uint n)
 {
 	assert((n & (n - 1)) == 0 && n != 0);
 	n--;
@@ -52,7 +52,7 @@ static inline T Align(const T x, uint n)
  * @see Align()
  */
 template <typename T>
-static inline T *AlignPtr(T *x, uint n)
+inline T *AlignPtr(T *x, uint n)
 {
 	static_assert(sizeof(size_t) == sizeof(void *));
 	return reinterpret_cast<T *>(Align((size_t)x, n));
@@ -76,7 +76,7 @@ static inline T *AlignPtr(T *x, uint n)
  * @see Clamp(int, int, int)
  */
 template <typename T>
-static inline T Clamp(const T a, const T min, const T max)
+inline T Clamp(const T a, const T min, const T max)
 {
 	assert(min <= max);
 	if (a <= min) return min;
@@ -99,7 +99,7 @@ static inline T Clamp(const T a, const T min, const T max)
  * @returns A value between min and max which is closest to a.
  */
 template <typename T>
-static inline T SoftClamp(const T a, const T min, const T max)
+inline T SoftClamp(const T a, const T min, const T max)
 {
 	if (min > max) {
 		using U = std::make_unsigned_t<T>;
@@ -126,7 +126,7 @@ static inline T SoftClamp(const T a, const T min, const T max)
  * @returns A value between min and max which is closest to a.
  * @see ClampU(uint, uint, uint)
  */
-static inline int Clamp(const int a, const int min, const int max)
+inline int Clamp(const int a, const int min, const int max)
 {
 	return Clamp<int>(a, min, max);
 }
@@ -147,7 +147,7 @@ static inline int Clamp(const int a, const int min, const int max)
  * @returns A value between min and max which is closest to a.
  * @see Clamp(int, int, int)
  */
-static inline uint ClampU(const uint a, const uint min, const uint max)
+inline uint ClampU(const uint a, const uint min, const uint max)
 {
 	return Clamp<uint>(a, min, max);
 }
@@ -231,7 +231,7 @@ constexpr To ClampTo(From value)
  * @return The absolute difference between the given scalars
  */
 template <typename T>
-static inline T Delta(const T a, const T b)
+inline T Delta(const T a, const T b)
 {
 	return (a < b) ? b - a : a - b;
 }
@@ -249,7 +249,7 @@ static inline T Delta(const T a, const T b)
  * @return True if the value is in the interval, false else.
  */
 template <typename T>
-static inline bool IsInsideBS(const T x, const size_t base, const size_t size)
+inline bool IsInsideBS(const T x, const size_t base, const size_t size)
 {
 	return (size_t)(x - base) < size;
 }
@@ -280,7 +280,7 @@ static constexpr inline bool IsInsideMM(const T x, const size_t min, const size_
  * @param b variable to swap with a
  */
 template <typename T>
-static inline void Swap(T &a, T &b)
+inline void Swap(T &a, T &b)
 {
 	T t = a;
 	a = b;
@@ -292,7 +292,7 @@ static inline void Swap(T &a, T &b)
  * @param i value to convert, range 0..255
  * @return value in range 0..100
  */
-static inline uint ToPercent8(uint i)
+inline uint ToPercent8(uint i)
 {
 	assert(i < 256);
 	return i * 101 >> 8;
@@ -303,7 +303,7 @@ static inline uint ToPercent8(uint i)
  * @param i value to convert, range 0..65535
  * @return value in range 0..100
  */
-static inline uint ToPercent16(uint i)
+inline uint ToPercent16(uint i)
 {
 	assert(i < 65536);
 	return i * 101 >> 16;
@@ -319,7 +319,7 @@ int DivideApprox(int a, int b);
  * @param b Denominator
  * @return Quotient, rounded up
  */
-static inline uint CeilDiv(uint a, uint b)
+inline uint CeilDiv(uint a, uint b)
 {
 	return (a + b - 1) / b;
 }
@@ -330,7 +330,7 @@ static inline uint CeilDiv(uint a, uint b)
  * @param b Denominator
  * @return a rounded up to the nearest multiple of b.
  */
-static inline uint Ceil(uint a, uint b)
+inline uint Ceil(uint a, uint b)
 {
 	return CeilDiv(a, b) * b;
 }
@@ -341,7 +341,7 @@ static inline uint Ceil(uint a, uint b)
  * @param b Denominator
  * @return Quotient, rounded to nearest
  */
-static inline int RoundDivSU(int a, uint b)
+inline int RoundDivSU(int a, uint b)
 {
 	if (a > 0) {
 		/* 0.5 is rounded to 1 */
@@ -358,7 +358,7 @@ static inline int RoundDivSU(int a, uint b)
  * @param b Denominator
  * @return Quotient, rounded away from zero
  */
-static inline int DivAwayFromZero(int a, uint b)
+inline int DivAwayFromZero(int a, uint b)
 {
 	const int _b = static_cast<int>(b);
 	if (a > 0) {

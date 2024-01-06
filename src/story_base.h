@@ -113,7 +113,7 @@ enum StoryPageButtonCursor : byte {
  * @param wc The value to check
  * @return true if the given value is a valid StoryPageButtonCursor.
  */
-static inline bool IsValidStoryPageButtonCursor(StoryPageButtonCursor cursor)
+inline bool IsValidStoryPageButtonCursor(StoryPageButtonCursor cursor)
 {
 	return cursor < SPBC_END;
 }

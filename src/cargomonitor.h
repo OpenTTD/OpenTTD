@@ -58,7 +58,7 @@ static_assert(MAX_COMPANIES <= (1 << CCB_COMPANY_LENGTH));
  * @param ind %Industry providing or accepting the cargo.
  * @return The encoded cargo/company/industry number.
  */
-static inline CargoMonitorID EncodeCargoIndustryMonitor(CompanyID company, CargoID ctype, IndustryID ind)
+inline CargoMonitorID EncodeCargoIndustryMonitor(CompanyID company, CargoID ctype, IndustryID ind)
 {
 	assert(ctype < (1 << CCB_CARGO_TYPE_LENGTH));
 	assert(company < (1 << CCB_COMPANY_LENGTH));
@@ -78,7 +78,7 @@ static inline CargoMonitorID EncodeCargoIndustryMonitor(CompanyID company, Cargo
  * @param town %Town providing or accepting the cargo.
  * @return The encoded cargo/company/town number.
  */
-static inline CargoMonitorID EncodeCargoTownMonitor(CompanyID company, CargoID ctype, TownID town)
+inline CargoMonitorID EncodeCargoTownMonitor(CompanyID company, CargoID ctype, TownID town)
 {
 	assert(ctype < (1 << CCB_CARGO_TYPE_LENGTH));
 	assert(company < (1 << CCB_COMPANY_LENGTH));
@@ -95,7 +95,7 @@ static inline CargoMonitorID EncodeCargoTownMonitor(CompanyID company, CargoID c
  * @param num Cargo monitoring number to decode.
  * @return The extracted company id.
  */
-static inline CompanyID DecodeMonitorCompany(CargoMonitorID num)
+inline CompanyID DecodeMonitorCompany(CargoMonitorID num)
 {
 	return static_cast<CompanyID>(GB(num, CCB_COMPANY_START, CCB_COMPANY_LENGTH));
 }
@@ -105,7 +105,7 @@ static inline CompanyID DecodeMonitorCompany(CargoMonitorID num)
  * @param num Cargo monitoring number to decode.
  * @return The extracted cargo type.
  */
-static inline CargoID DecodeMonitorCargoType(CargoMonitorID num)
+inline CargoID DecodeMonitorCargoType(CargoMonitorID num)
 {
 	return GB(num, CCB_CARGO_TYPE_START, CCB_CARGO_TYPE_LENGTH);
 }
@@ -115,7 +115,7 @@ static inline CargoID DecodeMonitorCargoType(CargoMonitorID num)
  * @param num Cargo monitoring number to decode.
  * @return true if monitoring an industry, false if monitoring a town.
  */
-static inline bool MonitorMonitorsIndustry(CargoMonitorID num)
+inline bool MonitorMonitorsIndustry(CargoMonitorID num)
 {
 	return HasBit(num, CCB_IS_INDUSTRY_BIT);
 }
@@ -125,7 +125,7 @@ static inline bool MonitorMonitorsIndustry(CargoMonitorID num)
  * @param num Cargo monitoring number to decode.
  * @return The extracted industry id, or #INVALID_INDUSTRY if the number does not monitor an industry.
  */
-static inline IndustryID DecodeMonitorIndustry(CargoMonitorID num)
+inline IndustryID DecodeMonitorIndustry(CargoMonitorID num)
 {
 	if (!MonitorMonitorsIndustry(num)) return INVALID_INDUSTRY;
 	return GB(num, CCB_TOWN_IND_NUMBER_START, CCB_TOWN_IND_NUMBER_LENGTH);
@@ -136,7 +136,7 @@ static inline IndustryID DecodeMonitorIndustry(CargoMonitorID num)
  * @param num Cargo monitoring number to decode.
  * @return The extracted town id, or #INVALID_TOWN if the number does not monitor a town.
  */
-static inline TownID DecodeMonitorTown(CargoMonitorID num)
+inline TownID DecodeMonitorTown(CargoMonitorID num)
 {
 	if (MonitorMonitorsIndustry(num)) return INVALID_TOWN;
 	return GB(num, CCB_TOWN_IND_NUMBER_START, CCB_TOWN_IND_NUMBER_LENGTH);

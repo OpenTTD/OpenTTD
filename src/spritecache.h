@@ -44,13 +44,13 @@ uint GetSpriteCountForFile(const std::string &filename, SpriteID begin, SpriteID
 uint GetMaxSpriteID();
 
 
-static inline const Sprite *GetSprite(SpriteID sprite, SpriteType type)
+inline const Sprite *GetSprite(SpriteID sprite, SpriteType type)
 {
 	assert(type != SpriteType::Recolour);
 	return (Sprite*)GetRawSprite(sprite, type);
 }
 
-static inline const byte *GetNonSprite(SpriteID sprite, SpriteType type)
+inline const byte *GetNonSprite(SpriteID sprite, SpriteType type)
 {
 	assert(type == SpriteType::Recolour);
 	return (byte*)GetRawSprite(sprite, type);

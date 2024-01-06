@@ -17,7 +17,7 @@
 
 void AddNewsItem(StringID string, NewsType type, NewsFlag flags, NewsReferenceType reftype1 = NR_NONE, uint32_t ref1 = UINT32_MAX, NewsReferenceType reftype2 = NR_NONE, uint32_t ref2 = UINT32_MAX, const NewsAllocatedData *data = nullptr);
 
-static inline void AddCompanyNewsItem(StringID string, CompanyNewsInformation *cni)
+inline void AddCompanyNewsItem(StringID string, CompanyNewsInformation *cni)
 {
 	AddNewsItem(string, NT_COMPANY_INFO, NF_COMPANY, NR_NONE, UINT32_MAX, NR_NONE, UINT32_MAX, cni);
 }
@@ -27,7 +27,7 @@ static inline void AddCompanyNewsItem(StringID string, CompanyNewsInformation *c
  *
  * @warning The DParams may not reference the vehicle due to autoreplace stuff. See AddVehicleAdviceNewsItem for how that can be done.
  */
-static inline void AddVehicleNewsItem(StringID string, NewsType type, VehicleID vehicle, StationID station = INVALID_STATION)
+inline void AddVehicleNewsItem(StringID string, NewsType type, VehicleID vehicle, StationID station = INVALID_STATION)
 {
 	AddNewsItem(string, type, NF_NO_TRANSPARENT | NF_SHADE | NF_THIN, NR_VEHICLE, vehicle, station == INVALID_STATION ? NR_NONE : NR_STATION, station);
 }
@@ -37,17 +37,17 @@ static inline void AddVehicleNewsItem(StringID string, NewsType type, VehicleID 
  *
  * @warning DParam 0 must reference the vehicle!
  */
-static inline void AddVehicleAdviceNewsItem(StringID string, VehicleID vehicle)
+inline void AddVehicleAdviceNewsItem(StringID string, VehicleID vehicle)
 {
 	AddNewsItem(string, NT_ADVICE, NF_INCOLOUR | NF_SMALL | NF_VEHICLE_PARAM0, NR_VEHICLE, vehicle);
 }
 
-static inline void AddTileNewsItem(StringID string, NewsType type, TileIndex tile, const NewsAllocatedData *data = nullptr, StationID station = INVALID_STATION)
+inline void AddTileNewsItem(StringID string, NewsType type, TileIndex tile, const NewsAllocatedData *data = nullptr, StationID station = INVALID_STATION)
 {
 	AddNewsItem(string, type, NF_NO_TRANSPARENT | NF_SHADE | NF_THIN, NR_TILE, tile.base(), station == INVALID_STATION ? NR_NONE : NR_STATION, station, data);
 }
 
-static inline void AddIndustryNewsItem(StringID string, NewsType type, IndustryID industry, const NewsAllocatedData *data = nullptr)
+inline void AddIndustryNewsItem(StringID string, NewsType type, IndustryID industry, const NewsAllocatedData *data = nullptr)
 {
 	AddNewsItem(string, type, NF_NO_TRANSPARENT | NF_SHADE | NF_THIN, NR_INDUSTRY, industry, NR_NONE, UINT32_MAX, data);
 }

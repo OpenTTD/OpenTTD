@@ -30,7 +30,7 @@ enum RoadTileType {
  * @param t Tile to query.
  * @return true if tile can be queried about road/tram types.
  */
-static inline bool MayHaveRoad(Tile t)
+inline bool MayHaveRoad(Tile t)
 {
 	switch (GetTileType(t)) {
 		case MP_ROAD:
@@ -82,7 +82,7 @@ debug_inline static bool IsNormalRoadTile(Tile t)
  * @pre IsTileType(t, MP_ROAD)
  * @return True if level crossing.
  */
-static inline bool IsLevelCrossing(Tile t)
+inline bool IsLevelCrossing(Tile t)
 {
 	return GetRoadTileType(t) == ROAD_TILE_CROSSING;
 }
@@ -92,7 +92,7 @@ static inline bool IsLevelCrossing(Tile t)
  * @param t Tile to query.
  * @return True if level crossing tile.
  */
-static inline bool IsLevelCrossingTile(Tile t)
+inline bool IsLevelCrossingTile(Tile t)
 {
 	return IsTileType(t, MP_ROAD) && IsLevelCrossing(t);
 }
@@ -125,7 +125,7 @@ debug_inline static bool IsRoadDepotTile(Tile t)
  * @pre IsNormalRoad(t)
  * @return The present road bits for the road type.
  */
-static inline RoadBits GetRoadBits(Tile t, RoadTramType rtt)
+inline RoadBits GetRoadBits(Tile t, RoadTramType rtt)
 {
 	assert(IsNormalRoad(t));
 	if (rtt == RTT_TRAM) return (RoadBits)GB(t.m3(), 0, 4);
@@ -138,7 +138,7 @@ static inline RoadBits GetRoadBits(Tile t, RoadTramType rtt)
  * @param tile The tile from which we want to get the RoadBits
  * @return all set RoadBits of the tile
  */
-static inline RoadBits GetAllRoadBits(Tile tile)
+inline RoadBits GetAllRoadBits(Tile tile)
 {
 	return GetRoadBits(tile, RTT_ROAD) | GetRoadBits(tile, RTT_TRAM);
 }
@@ -150,7 +150,7 @@ static inline RoadBits GetAllRoadBits(Tile tile)
  * @param rt Road type.
  * @pre IsNormalRoad(t)
  */
-static inline void SetRoadBits(Tile t, RoadBits r, RoadTramType rtt)
+inline void SetRoadBits(Tile t, RoadBits r, RoadTramType rtt)
 {
 	assert(IsNormalRoad(t)); // XXX incomplete
 	if (rtt == RTT_TRAM) {
@@ -160,19 +160,19 @@ static inline void SetRoadBits(Tile t, RoadBits r, RoadTramType rtt)
 	}
 }
 
-static inline RoadType GetRoadTypeRoad(Tile t)
+inline RoadType GetRoadTypeRoad(Tile t)
 {
 	assert(MayHaveRoad(t));
 	return (RoadType)GB(t.m4(), 0, 6);
 }
 
-static inline RoadType GetRoadTypeTram(Tile t)
+inline RoadType GetRoadTypeTram(Tile t)
 {
 	assert(MayHaveRoad(t));
 	return (RoadType)GB(t.m8(), 6, 6);
 }
 
-static inline RoadType GetRoadType(Tile t, RoadTramType rtt)
+inline RoadType GetRoadType(Tile t, RoadTramType rtt)
 {
 	return (rtt == RTT_TRAM) ? GetRoadTypeTram(t) : GetRoadTypeRoad(t);
 }
@@ -182,7 +182,7 @@ static inline RoadType GetRoadType(Tile t, RoadTramType rtt)
  * @param t The tile to query.
  * @return Present road types.
  */
-static inline RoadTypes GetPresentRoadTypes(Tile t)
+inline RoadTypes GetPresentRoadTypes(Tile t)
 {
 	RoadTypes result = ROADTYPES_NONE;
 	if (MayHaveRoad(t)) {
@@ -192,12 +192,12 @@ static inline RoadTypes GetPresentRoadTypes(Tile t)
 	return result;
 }
 
-static inline bool HasRoadTypeRoad(Tile t)
+inline bool HasRoadTypeRoad(Tile t)
 {
 	return GetRoadTypeRoad(t) != INVALID_ROADTYPE;
 }
 
-static inline bool HasRoadTypeTram(Tile t)
+inline bool HasRoadTypeTram(Tile t)
 {
 	return GetRoadTypeTram(t) != INVALID_ROADTYPE;
 }
@@ -208,7 +208,7 @@ static inline bool HasRoadTypeTram(Tile t)
  * @param tram True to check tram, false to check road.
  * @return True if the tile has the specified road type.
  */
-static inline bool HasTileRoadType(Tile t, RoadTramType rtt)
+inline bool HasTileRoadType(Tile t, RoadTramType rtt)
 {
 	return GetRoadType(t, rtt) != INVALID_ROADTYPE;
 }
@@ -219,7 +219,7 @@ static inline bool HasTileRoadType(Tile t, RoadTramType rtt)
  * @param rts Allowed road types.
  * @return True if the tile has one of the specified road types.
  */
-static inline bool HasTileAnyRoadType(Tile t, RoadTypes rts)
+inline bool HasTileAnyRoadType(Tile t, RoadTypes rts)
 {
 	if (!MayHaveRoad(t)) return false;
 	return (GetPresentRoadTypes(t) & rts);
@@ -231,7 +231,7 @@ static inline bool HasTileAnyRoadType(Tile t, RoadTypes rts)
  * @param rtt RoadTramType.
  * @return Owner of the given road type.
  */
-static inline Owner GetRoadOwner(Tile t, RoadTramType rtt)
+inline Owner GetRoadOwner(Tile t, RoadTramType rtt)
 {
 	assert(MayHaveRoad(t));
 	if (rtt == RTT_ROAD) return (Owner)GB(IsNormalRoadTile(t) ? t.m1() : t.m7(), 0, 5);
@@ -248,7 +248,7 @@ static inline Owner GetRoadOwner(Tile t, RoadTramType rtt)
  * @param rtt RoadTramType.
  * @param o  New owner of the given road type.
  */
-static inline void SetRoadOwner(Tile t, RoadTramType rtt, Owner o)
+inline void SetRoadOwner(Tile t, RoadTramType rtt, Owner o)
 {
 	if (rtt == RTT_ROAD) {
 		SB(IsNormalRoadTile(t) ? t.m1() : t.m7(), 0, 5, o);
@@ -265,7 +265,7 @@ static inline void SetRoadOwner(Tile t, RoadTramType rtt, Owner o)
  * @pre HasTileRoadType(t, rt)
  * @return True if the road type is owned by the given owner.
  */
-static inline bool IsRoadOwner(Tile t, RoadTramType rtt, Owner o)
+inline bool IsRoadOwner(Tile t, RoadTramType rtt, Owner o)
 {
 	assert(HasTileRoadType(t, rtt));
 	return (GetRoadOwner(t, rtt) == o);
@@ -277,7 +277,7 @@ static inline bool IsRoadOwner(Tile t, RoadTramType rtt, Owner o)
  * @pre IsTileType(t, MP_ROAD)
  * @return true iff tile has road and the road is owned by a town
  */
-static inline bool HasTownOwnedRoad(Tile t)
+inline bool HasTownOwnedRoad(Tile t)
 {
 	return HasTileRoadType(t, RTT_ROAD) && IsRoadOwner(t, RTT_ROAD, OWNER_TOWN);
 }
@@ -288,7 +288,7 @@ static inline bool HasTownOwnedRoad(Tile t)
  * @param wc The value to check
  * @return true if the given value is a valid DisallowedRoadDirections.
  */
-static inline bool IsValidDisallowedRoadDirections(DisallowedRoadDirections drt)
+inline bool IsValidDisallowedRoadDirections(DisallowedRoadDirections drt)
 {
 	return drt < DRD_END;
 }
@@ -298,7 +298,7 @@ static inline bool IsValidDisallowedRoadDirections(DisallowedRoadDirections drt)
  * @param t the tile to get the directions from
  * @return the disallowed directions
  */
-static inline DisallowedRoadDirections GetDisallowedRoadDirections(Tile t)
+inline DisallowedRoadDirections GetDisallowedRoadDirections(Tile t)
 {
 	assert(IsNormalRoad(t));
 	return (DisallowedRoadDirections)GB(t.m5(), 4, 2);
@@ -309,7 +309,7 @@ static inline DisallowedRoadDirections GetDisallowedRoadDirections(Tile t)
  * @param t   the tile to set the directions for
  * @param drd the disallowed directions
  */
-static inline void SetDisallowedRoadDirections(Tile t, DisallowedRoadDirections drd)
+inline void SetDisallowedRoadDirections(Tile t, DisallowedRoadDirections drd)
 {
 	assert(IsNormalRoad(t));
 	assert(drd < DRD_END);
@@ -322,7 +322,7 @@ static inline void SetDisallowedRoadDirections(Tile t, DisallowedRoadDirections 
  * @pre IsLevelCrossing(t)
  * @return The axis of the road.
  */
-static inline Axis GetCrossingRoadAxis(Tile t)
+inline Axis GetCrossingRoadAxis(Tile t)
 {
 	assert(IsLevelCrossing(t));
 	return (Axis)GB(t.m5(), 0, 1);
@@ -334,7 +334,7 @@ static inline Axis GetCrossingRoadAxis(Tile t)
  * @pre IsLevelCrossing(t)
  * @return The axis of the rail.
  */
-static inline Axis GetCrossingRailAxis(Tile t)
+inline Axis GetCrossingRailAxis(Tile t)
 {
 	assert(IsLevelCrossing(t));
 	return OtherAxis((Axis)GetCrossingRoadAxis(t));
@@ -345,7 +345,7 @@ static inline Axis GetCrossingRailAxis(Tile t)
  * @param tile The tile to query.
  * @return The present road bits.
  */
-static inline RoadBits GetCrossingRoadBits(Tile tile)
+inline RoadBits GetCrossingRoadBits(Tile tile)
 {
 	return GetCrossingRoadAxis(tile) == AXIS_X ? ROAD_X : ROAD_Y;
 }
@@ -355,7 +355,7 @@ static inline RoadBits GetCrossingRoadBits(Tile tile)
  * @param tile The tile to query.
  * @return The rail track.
  */
-static inline Track GetCrossingRailTrack(Tile tile)
+inline Track GetCrossingRailTrack(Tile tile)
 {
 	return AxisToTrack(GetCrossingRailAxis(tile));
 }
@@ -365,7 +365,7 @@ static inline Track GetCrossingRailTrack(Tile tile)
  * @param tile The tile to query.
  * @return The rail track bits.
  */
-static inline TrackBits GetCrossingRailBits(Tile tile)
+inline TrackBits GetCrossingRailBits(Tile tile)
 {
 	return AxisToTrackBits(GetCrossingRailAxis(tile));
 }
@@ -377,7 +377,7 @@ static inline TrackBits GetCrossingRailBits(Tile tile)
  * @return reservation state
  * @pre IsLevelCrossingTile(t)
  */
-static inline bool HasCrossingReservation(Tile t)
+inline bool HasCrossingReservation(Tile t)
 {
 	assert(IsLevelCrossingTile(t));
 	return HasBit(t.m5(), 4);
@@ -390,7 +390,7 @@ static inline bool HasCrossingReservation(Tile t)
  * @param b the reservation state
  * @pre IsLevelCrossingTile(t)
  */
-static inline void SetCrossingReservation(Tile t, bool b)
+inline void SetCrossingReservation(Tile t, bool b)
 {
 	assert(IsLevelCrossingTile(t));
 	SB(t.m5(), 4, 1, b ? 1 : 0);
@@ -402,7 +402,7 @@ static inline void SetCrossingReservation(Tile t, bool b)
  * @pre IsLevelCrossingTile(t)
  * @return reserved track bits
  */
-static inline TrackBits GetCrossingReservationTrackBits(Tile t)
+inline TrackBits GetCrossingReservationTrackBits(Tile t)
 {
 	return HasCrossingReservation(t) ? GetCrossingRailBits(t) : TRACK_BIT_NONE;
 }
@@ -413,7 +413,7 @@ static inline TrackBits GetCrossingReservationTrackBits(Tile t)
  * @pre IsLevelCrossing(t)
  * @return True if the level crossing is barred.
  */
-static inline bool IsCrossingBarred(Tile t)
+inline bool IsCrossingBarred(Tile t)
 {
 	assert(IsLevelCrossing(t));
 	return HasBit(t.m5(), 5);
@@ -425,7 +425,7 @@ static inline bool IsCrossingBarred(Tile t)
  * @param barred True if the crossing should be barred, false otherwise.
  * @pre IsLevelCrossing(t)
  */
-static inline void SetCrossingBarred(Tile t, bool barred)
+inline void SetCrossingBarred(Tile t, bool barred)
 {
 	assert(IsLevelCrossing(t));
 	SB(t.m5(), 5, 1, barred ? 1 : 0);
@@ -435,7 +435,7 @@ static inline void SetCrossingBarred(Tile t, bool barred)
  * Unbar a level crossing.
  * @param t The tile to change.
  */
-static inline void UnbarCrossing(Tile t)
+inline void UnbarCrossing(Tile t)
 {
 	SetCrossingBarred(t, false);
 }
@@ -444,7 +444,7 @@ static inline void UnbarCrossing(Tile t)
  * Bar a level crossing.
  * @param t The tile to change.
  */
-static inline void BarCrossing(Tile t)
+inline void BarCrossing(Tile t)
 {
 	SetCrossingBarred(t, true);
 }
@@ -456,7 +456,7 @@ static inline void BarCrossing(Tile t)
  * @param t The tile to query.
  * @return True if the tile has snow/desert.
  */
-static inline bool IsOnSnow(Tile t)
+inline bool IsOnSnow(Tile t)
 {
 	return HasBit(t.m7(), 5);
 }
@@ -467,7 +467,7 @@ static inline bool IsOnSnow(Tile t)
  * Toggle the snow/desert state of a road tile.
  * @param t The tile to change.
  */
-static inline void ToggleSnow(Tile t)
+inline void ToggleSnow(Tile t)
 {
 	ToggleBit(t.m7(), 5);
 }
@@ -490,7 +490,7 @@ enum Roadside {
  * @param tile The tile to query.
  * @return The road decoration of the tile.
  */
-static inline Roadside GetRoadside(Tile tile)
+inline Roadside GetRoadside(Tile tile)
 {
 	return (Roadside)GB(tile.m6(), 3, 3);
 }
@@ -500,7 +500,7 @@ static inline Roadside GetRoadside(Tile tile)
  * @param tile The tile to change.
  * @param s    The new road decoration of the tile.
  */
-static inline void SetRoadside(Tile tile, Roadside s)
+inline void SetRoadside(Tile tile, Roadside s)
 {
 	SB(tile.m6(), 3, 3, s);
 }
@@ -510,7 +510,7 @@ static inline void SetRoadside(Tile tile, Roadside s)
  * @param t The tile to check.
  * @return True if the tile has road works in progress.
  */
-static inline bool HasRoadWorks(Tile t)
+inline bool HasRoadWorks(Tile t)
 {
 	return GetRoadside(t) >= ROADSIDE_GRASS_ROAD_WORKS;
 }
@@ -520,7 +520,7 @@ static inline bool HasRoadWorks(Tile t)
  * @param t The tile to modify.
  * @return True if the road works are in the last stage.
  */
-static inline bool IncreaseRoadWorksCounter(Tile t)
+inline bool IncreaseRoadWorksCounter(Tile t)
 {
 	AB(t.m7(), 0, 4, 1);
 
@@ -532,7 +532,7 @@ static inline bool IncreaseRoadWorksCounter(Tile t)
  * @param t The tile to start the work on.
  * @pre !HasRoadWorks(t)
  */
-static inline void StartRoadWorks(Tile t)
+inline void StartRoadWorks(Tile t)
 {
 	assert(!HasRoadWorks(t));
 	/* Remove any trees or lamps in case or roadwork */
@@ -548,7 +548,7 @@ static inline void StartRoadWorks(Tile t)
  * @param t Tile to stop the road works on.
  * @pre HasRoadWorks(t)
  */
-static inline void TerminateRoadWorks(Tile t)
+inline void TerminateRoadWorks(Tile t)
 {
 	assert(HasRoadWorks(t));
 	SetRoadside(t, (Roadside)(GetRoadside(t) - ROADSIDE_GRASS_ROAD_WORKS + ROADSIDE_GRASS));
@@ -562,7 +562,7 @@ static inline void TerminateRoadWorks(Tile t)
  * @param t The tile to query.
  * @return Diagonal direction of the depot exit.
  */
-static inline DiagDirection GetRoadDepotDirection(Tile t)
+inline DiagDirection GetRoadDepotDirection(Tile t)
 {
 	assert(IsRoadDepot(t));
 	return (DiagDirection)GB(t.m5(), 0, 2);
@@ -576,7 +576,7 @@ RoadBits GetAnyRoadBits(Tile tile, RoadTramType rtt, bool straight_tunnel_bridge
  * @param t The tile to change.
  * @param rt The road type to set.
  */
-static inline void SetRoadTypeRoad(Tile t, RoadType rt)
+inline void SetRoadTypeRoad(Tile t, RoadType rt)
 {
 	assert(MayHaveRoad(t));
 	assert(rt == INVALID_ROADTYPE || RoadTypeIsRoad(rt));
@@ -588,7 +588,7 @@ static inline void SetRoadTypeRoad(Tile t, RoadType rt)
  * @param t The tile to change.
  * @param rt The road type to set.
  */
-static inline void SetRoadTypeTram(Tile t, RoadType rt)
+inline void SetRoadTypeTram(Tile t, RoadType rt)
 {
 	assert(MayHaveRoad(t));
 	assert(rt == INVALID_ROADTYPE || RoadTypeIsTram(rt));
@@ -601,7 +601,7 @@ static inline void SetRoadTypeTram(Tile t, RoadType rt)
  * @param rtt Set road or tram type.
  * @param rt The road type to set.
  */
-static inline void SetRoadType(Tile t, RoadTramType rtt, RoadType rt)
+inline void SetRoadType(Tile t, RoadTramType rtt, RoadType rt)
 {
 	if (rtt == RTT_TRAM) {
 		SetRoadTypeTram(t, rt);
@@ -616,7 +616,7 @@ static inline void SetRoadType(Tile t, RoadTramType rtt, RoadType rt)
  * @param road_rt The road roadtype to set for the tile.
  * @param tram_rt The tram roadtype to set for the tile.
  */
-static inline void SetRoadTypes(Tile t, RoadType road_rt, RoadType tram_rt)
+inline void SetRoadTypes(Tile t, RoadType road_rt, RoadType tram_rt)
 {
 	SetRoadTypeRoad(t, road_rt);
 	SetRoadTypeTram(t, tram_rt);
@@ -632,7 +632,7 @@ static inline void SetRoadTypes(Tile t, RoadType road_rt, RoadType tram_rt)
  * @param road    New owner of road.
  * @param tram    New owner of tram tracks.
  */
-static inline void MakeRoadNormal(Tile t, RoadBits bits, RoadType road_rt, RoadType tram_rt, TownID town, Owner road, Owner tram)
+inline void MakeRoadNormal(Tile t, RoadBits bits, RoadType road_rt, RoadType tram_rt, TownID town, Owner road, Owner tram)
 {
 	SetTileType(t, MP_ROAD);
 	SetTileOwner(t, road);
@@ -657,7 +657,7 @@ static inline void MakeRoadNormal(Tile t, RoadBits bits, RoadType road_rt, RoadT
  * @param tram_rt The tram roadtype to set for the tile.
  * @param town    Town ID if the road is a town-owned road.
  */
-static inline void MakeRoadCrossing(Tile t, Owner road, Owner tram, Owner rail, Axis roaddir, RailType rat, RoadType road_rt, RoadType tram_rt, uint town)
+inline void MakeRoadCrossing(Tile t, Owner road, Owner tram, Owner rail, Axis roaddir, RailType rat, RoadType road_rt, RoadType tram_rt, uint town)
 {
 	SetTileType(t, MP_ROAD);
 	SetTileOwner(t, rail);
@@ -677,7 +677,7 @@ static inline void MakeRoadCrossing(Tile t, Owner road, Owner tram, Owner rail, 
  * @param tile Tile of the depot.
  * @param dir  Direction of the depot exit.
  */
-static inline void SetRoadDepotExitDirection(Tile tile, DiagDirection dir)
+inline void SetRoadDepotExitDirection(Tile tile, DiagDirection dir)
 {
 	assert(IsRoadDepotTile(tile));
 	SB(tile.m5(), 0, 2, dir);
@@ -691,7 +691,7 @@ static inline void SetRoadDepotExitDirection(Tile tile, DiagDirection dir)
  * @param dir       Direction of the depot exit.
  * @param rt        Road type of the depot.
  */
-static inline void MakeRoadDepot(Tile tile, Owner owner, DepotID depot_id, DiagDirection dir, RoadType rt)
+inline void MakeRoadDepot(Tile tile, Owner owner, DepotID depot_id, DiagDirection dir, RoadType rt)
 {
 	SetTileType(tile, MP_ROAD);
 	SetTileOwner(tile, owner);

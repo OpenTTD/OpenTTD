@@ -51,7 +51,7 @@ uint16_t GetAiPurchaseCallbackResult(uint8_t feature, CargoID cargo_type, uint8_
 void AmbientSoundEffectCallback(TileIndex tile);
 
 /** Play an ambient sound effect for an empty tile. */
-static inline void AmbientSoundEffect(TileIndex tile)
+inline void AmbientSoundEffect(TileIndex tile)
 {
 	/* Only run callback if enabled. */
 	if (!HasGrfMiscBit(GMB_AMBIENT_SOUND_CALLBACK)) return;

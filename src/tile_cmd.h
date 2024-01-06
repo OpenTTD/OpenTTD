@@ -179,7 +179,7 @@ VehicleEnterTileStatus VehicleEnterTile(Vehicle *v, TileIndex tile, int x, int y
 void ChangeTileOwner(TileIndex tile, Owner old_owner, Owner new_owner);
 void GetTileDesc(TileIndex tile, TileDesc *td);
 
-static inline void AddAcceptedCargo(TileIndex tile, CargoArray &acceptance, CargoTypes *always_accepted)
+inline void AddAcceptedCargo(TileIndex tile, CargoArray &acceptance, CargoTypes *always_accepted)
 {
 	AddAcceptedCargoProc *proc = _tile_type_procs[GetTileType(tile)]->add_accepted_cargo_proc;
 	if (proc == nullptr) return;
@@ -187,21 +187,21 @@ static inline void AddAcceptedCargo(TileIndex tile, CargoArray &acceptance, Carg
 	proc(tile, acceptance, always_accepted == nullptr ? &dummy : always_accepted);
 }
 
-static inline void AddProducedCargo(TileIndex tile, CargoArray &produced)
+inline void AddProducedCargo(TileIndex tile, CargoArray &produced)
 {
 	AddProducedCargoProc *proc = _tile_type_procs[GetTileType(tile)]->add_produced_cargo_proc;
 	if (proc == nullptr) return;
 	proc(tile, produced);
 }
 
-static inline void AnimateTile(TileIndex tile)
+inline void AnimateTile(TileIndex tile)
 {
 	AnimateTileProc *proc = _tile_type_procs[GetTileType(tile)]->animate_tile_proc;
 	assert(proc != nullptr);
 	proc(tile);
 }
 
-static inline bool ClickTile(TileIndex tile)
+inline bool ClickTile(TileIndex tile)
 {
 	ClickTileProc *proc = _tile_type_procs[GetTileType(tile)]->click_tile_proc;
 	if (proc == nullptr) return false;

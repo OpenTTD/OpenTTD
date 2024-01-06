@@ -71,7 +71,7 @@ DECLARE_ENUM_AS_BIT_SET(TileLayoutFlags)
  * @param num_sprites Number of available sprites to select stage from.
  * @return Sprite to use
  */
-static inline uint GetConstructionStageOffset(uint construction_stage, uint num_sprites)
+inline uint GetConstructionStageOffset(uint construction_stage, uint num_sprites)
 {
 	assert(num_sprites > 0);
 	if (num_sprites > 4) num_sprites = 4;

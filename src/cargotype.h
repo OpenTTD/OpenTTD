@@ -198,7 +198,7 @@ extern span<const CargoSpec *> _sorted_standard_cargo_specs;
  * @param cc Cargo class.
  * @return The type fits in the class.
  */
-static inline bool IsCargoInClass(CargoID c, CargoClass cc)
+inline bool IsCargoInClass(CargoID c, CargoClass cc)
 {
 	return (CargoSpec::Get(c)->classes & cc) != 0;
 }

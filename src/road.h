@@ -196,22 +196,22 @@ public:
 
 extern RoadTypes _roadtypes_type;
 
-static inline bool RoadTypeIsRoad(RoadType roadtype)
+inline bool RoadTypeIsRoad(RoadType roadtype)
 {
 	return !HasBit(_roadtypes_type, roadtype);
 }
 
-static inline bool RoadTypeIsTram(RoadType roadtype)
+inline bool RoadTypeIsTram(RoadType roadtype)
 {
 	return HasBit(_roadtypes_type, roadtype);
 }
 
-static inline RoadTramType GetRoadTramType(RoadType roadtype)
+inline RoadTramType GetRoadTramType(RoadType roadtype)
 {
 	return RoadTypeIsTram(roadtype) ? RTT_TRAM : RTT_ROAD;
 }
 
-static inline RoadTramType OtherRoadTramType(RoadTramType rtt)
+inline RoadTramType OtherRoadTramType(RoadTramType rtt)
 {
 	return rtt == RTT_ROAD ? RTT_TRAM : RTT_ROAD;
 }
@@ -221,7 +221,7 @@ static inline RoadTramType OtherRoadTramType(RoadTramType rtt)
  * @param roadtype the road type which the information is requested for
  * @return The pointer to the RoadTypeInfo
  */
-static inline const RoadTypeInfo *GetRoadTypeInfo(RoadType roadtype)
+inline const RoadTypeInfo *GetRoadTypeInfo(RoadType roadtype)
 {
 	extern RoadTypeInfo _roadtypes[ROADTYPE_END];
 	assert(roadtype < ROADTYPE_END);
@@ -236,7 +236,7 @@ static inline const RoadTypeInfo *GetRoadTypeInfo(RoadType roadtype)
  * @param  enginetype The RoadType of the engine we are considering.
  * @param  tiletype   The RoadType of the tile we are considering.
  */
-static inline bool HasPowerOnRoad(RoadType enginetype, RoadType tiletype)
+inline bool HasPowerOnRoad(RoadType enginetype, RoadType tiletype)
 {
 	return HasBit(GetRoadTypeInfo(enginetype)->powered_roadtypes, tiletype);
 }
@@ -246,7 +246,7 @@ static inline bool HasPowerOnRoad(RoadType enginetype, RoadType tiletype)
  * @param roadtype The roadtype being built.
  * @return The cost multiplier.
  */
-static inline Money RoadBuildCost(RoadType roadtype)
+inline Money RoadBuildCost(RoadType roadtype)
 {
 	assert(roadtype < ROADTYPE_END);
 	return (_price[PR_BUILD_ROAD] * GetRoadTypeInfo(roadtype)->cost_multiplier) >> 3;
@@ -257,7 +257,7 @@ static inline Money RoadBuildCost(RoadType roadtype)
  * @param roadtype The roadtype being removed.
  * @return The cost.
  */
-static inline Money RoadClearCost(RoadType roadtype)
+inline Money RoadClearCost(RoadType roadtype)
 {
 	assert(roadtype < ROADTYPE_END);
 
@@ -275,7 +275,7 @@ static inline Money RoadClearCost(RoadType roadtype)
  * @param to   The roadtype we are converting to
  * @return Cost per RoadBit
  */
-static inline Money RoadConvertCost(RoadType from, RoadType to)
+inline Money RoadConvertCost(RoadType from, RoadType to)
 {
 	/* Don't apply convert costs when converting to the same roadtype (ex. building a roadstop over existing road) */
 	if (from == to) return (Money)0;
@@ -289,7 +289,7 @@ static inline Money RoadConvertCost(RoadType from, RoadType to)
  * @param roadtype The roadtype we are testing
  * @return True iff the roadtype disallows level crossings
  */
-static inline bool RoadNoLevelCrossing(RoadType roadtype)
+inline bool RoadNoLevelCrossing(RoadType roadtype)
 {
 	assert(roadtype < ROADTYPE_END);
 	return HasBit(GetRoadTypeInfo(roadtype)->flags, ROTF_NO_LEVEL_CROSSING);

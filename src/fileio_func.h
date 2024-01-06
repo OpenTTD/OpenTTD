@@ -108,7 +108,7 @@ int closedir(DIR *d);
  * @param path string to open directory of
  * @return DIR pointer
  */
-static inline DIR *ttd_opendir(const char *path)
+inline DIR *ttd_opendir(const char *path)
 {
 	return opendir(OTTD2FS(path).c_str());
 }

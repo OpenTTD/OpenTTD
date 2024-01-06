@@ -39,7 +39,7 @@ struct SavedRandomSeeds {
  * Saves the current seeds
  * @param storage Storage for saving
  */
-static inline void SaveRandomSeeds(SavedRandomSeeds *storage)
+inline void SaveRandomSeeds(SavedRandomSeeds *storage)
 {
 	storage->random = _random;
 	storage->interactive_random = _interactive_random;
@@ -49,7 +49,7 @@ static inline void SaveRandomSeeds(SavedRandomSeeds *storage)
  * Restores previously saved seeds
  * @param storage Storage where SaveRandomSeeds() stored th seeds
  */
-static inline void RestoreRandomSeeds(const SavedRandomSeeds &storage)
+inline void RestoreRandomSeeds(const SavedRandomSeeds &storage)
 {
 	_random = storage.random;
 	_interactive_random = storage.interactive_random;
@@ -84,12 +84,12 @@ void SetRandomSeed(uint32_t seed);
 	}
 #endif
 
-static inline uint32_t InteractiveRandom()
+inline uint32_t InteractiveRandom()
 {
 	return _interactive_random.Next();
 }
 
-static inline uint32_t InteractiveRandomRange(uint32_t limit)
+inline uint32_t InteractiveRandomRange(uint32_t limit)
 {
 	return _interactive_random.Next(limit);
 }
@@ -109,7 +109,7 @@ static inline uint32_t InteractiveRandomRange(uint32_t limit)
  * @param r The given randomize-number
  * @return True if the probability given by r is less or equal to (a/b)
  */
-static inline bool Chance16I(const uint a, const uint b, const uint32_t r)
+inline bool Chance16I(const uint a, const uint b, const uint32_t r)
 {
 	assert(b != 0);
 	return (((uint16_t)r * b + b / 2) >> 16) < a;
@@ -128,7 +128,7 @@ static inline bool Chance16I(const uint a, const uint b, const uint32_t r)
 #ifdef RANDOM_DEBUG
 #	define Chance16(a, b) Chance16I(a, b, DoRandom(__LINE__, __FILE__))
 #else
-static inline bool Chance16(const uint a, const uint b)
+inline bool Chance16(const uint a, const uint b)
 {
 	return Chance16I(a, b, Random());
 }
@@ -152,7 +152,7 @@ static inline bool Chance16(const uint a, const uint b)
 #ifdef RANDOM_DEBUG
 #	define Chance16R(a, b, r) (r = DoRandom(__LINE__, __FILE__), Chance16I(a, b, r))
 #else
-static inline bool Chance16R(const uint a, const uint b, uint32_t &r)
+inline bool Chance16R(const uint a, const uint b, uint32_t &r)
 {
 	r = Random();
 	return Chance16I(a, b, r);

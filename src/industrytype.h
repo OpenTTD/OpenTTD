@@ -189,7 +189,7 @@ extern std::array<IndustryType, NUM_INDUSTRYTYPES> _sorted_industry_types;
  * @param gfx the type to get the override for.
  * @return the gfx to actually work with.
  */
-static inline IndustryGfx GetTranslatedIndustryTileID(IndustryGfx gfx)
+inline IndustryGfx GetTranslatedIndustryTileID(IndustryGfx gfx)
 {
 	/* the 0xFF should be GFX_WATERTILE_SPECIALCHECK but for reasons of include mess,
 	 * we'll simplify the writing.

@@ -211,27 +211,27 @@ struct EngineOverrideManager : std::vector<EngineIDMapping> {
 
 extern EngineOverrideManager _engine_mngr;
 
-static inline const EngineInfo *EngInfo(EngineID e)
+inline const EngineInfo *EngInfo(EngineID e)
 {
 	return &Engine::Get(e)->info;
 }
 
-static inline const RailVehicleInfo *RailVehInfo(EngineID e)
+inline const RailVehicleInfo *RailVehInfo(EngineID e)
 {
 	return &Engine::Get(e)->u.rail;
 }
 
-static inline const RoadVehicleInfo *RoadVehInfo(EngineID e)
+inline const RoadVehicleInfo *RoadVehInfo(EngineID e)
 {
 	return &Engine::Get(e)->u.road;
 }
 
-static inline const ShipVehicleInfo *ShipVehInfo(EngineID e)
+inline const ShipVehicleInfo *ShipVehInfo(EngineID e)
 {
 	return &Engine::Get(e)->u.ship;
 }
 
-static inline const AircraftVehicleInfo *AircraftVehInfo(EngineID e)
+inline const AircraftVehicleInfo *AircraftVehInfo(EngineID e)
 {
 	return &Engine::Get(e)->u.air;
 }

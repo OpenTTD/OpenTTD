@@ -301,7 +301,7 @@ public:
  * @param railtype the rail type which the information is requested for
  * @return The pointer to the RailTypeInfo
  */
-static inline const RailTypeInfo *GetRailTypeInfo(RailType railtype)
+inline const RailTypeInfo *GetRailTypeInfo(RailType railtype)
 {
 	extern RailTypeInfo _railtypes[RAILTYPE_END];
 	assert(railtype < RAILTYPE_END);
@@ -316,7 +316,7 @@ static inline const RailTypeInfo *GetRailTypeInfo(RailType railtype)
  * @param  enginetype The RailType of the engine we are considering.
  * @param  tiletype   The RailType of the tile we are considering.
  */
-static inline bool IsCompatibleRail(RailType enginetype, RailType tiletype)
+inline bool IsCompatibleRail(RailType enginetype, RailType tiletype)
 {
 	return HasBit(GetRailTypeInfo(enginetype)->compatible_railtypes, tiletype);
 }
@@ -329,7 +329,7 @@ static inline bool IsCompatibleRail(RailType enginetype, RailType tiletype)
  * @param  enginetype The RailType of the engine we are considering.
  * @param  tiletype   The RailType of the tile we are considering.
  */
-static inline bool HasPowerOnRail(RailType enginetype, RailType tiletype)
+inline bool HasPowerOnRail(RailType enginetype, RailType tiletype)
 {
 	return HasBit(GetRailTypeInfo(enginetype)->powered_railtypes, tiletype);
 }
@@ -339,7 +339,7 @@ static inline bool HasPowerOnRail(RailType enginetype, RailType tiletype)
  * @param rt The RailType to check.
  * @return Whether level crossings are not allowed.
  */
-static inline bool RailNoLevelCrossings(RailType rt)
+inline bool RailNoLevelCrossings(RailType rt)
 {
 	return HasBit(GetRailTypeInfo(rt)->flags, RTF_NO_LEVEL_CROSSING);
 }
@@ -351,7 +351,7 @@ static inline bool RailNoLevelCrossings(RailType rt)
  * @param def Default value to use if the rail type doesn't specify anything.
  * @return True if 90 degree turns are disallowed between the two rail types.
  */
-static inline bool Rail90DegTurnDisallowed(RailType rt1, RailType rt2, bool def = _settings_game.pf.forbid_90_deg)
+inline bool Rail90DegTurnDisallowed(RailType rt1, RailType rt2, bool def = _settings_game.pf.forbid_90_deg)
 {
 	if (rt1 == INVALID_RAILTYPE || rt2 == INVALID_RAILTYPE) return def;
 
@@ -369,7 +369,7 @@ static inline bool Rail90DegTurnDisallowed(RailType rt1, RailType rt2, bool def 
  * @param railtype The railtype being built.
  * @return The cost multiplier.
  */
-static inline Money RailBuildCost(RailType railtype)
+inline Money RailBuildCost(RailType railtype)
 {
 	assert(railtype < RAILTYPE_END);
 	return (_price[PR_BUILD_RAIL] * GetRailTypeInfo(railtype)->cost_multiplier) >> 3;
@@ -380,7 +380,7 @@ static inline Money RailBuildCost(RailType railtype)
  * @param railtype The railtype being removed.
  * @return The cost.
  */
-static inline Money RailClearCost(RailType railtype)
+inline Money RailClearCost(RailType railtype)
 {
 	/* Clearing rail in fact earns money, but if the build cost is set
 	 * very low then a loophole exists where money can be made.
@@ -397,7 +397,7 @@ static inline Money RailClearCost(RailType railtype)
  * @param to   The railtype we are converting to
  * @return Cost per TrackBit
  */
-static inline Money RailConvertCost(RailType from, RailType to)
+inline Money RailConvertCost(RailType from, RailType to)
 {
 	/* Get the costs for removing and building anew
 	 * A conversion can never be more costly */
@@ -424,7 +424,7 @@ static inline Money RailConvertCost(RailType from, RailType to)
  * @param total_num Total number of track bits of all railtypes.
  * @return Total cost.
  */
-static inline Money RailMaintenanceCost(RailType railtype, uint32_t num, uint32_t total_num)
+inline Money RailMaintenanceCost(RailType railtype, uint32_t num, uint32_t total_num)
 {
 	assert(railtype < RAILTYPE_END);
 	return (_price[PR_INFRASTRUCTURE_RAIL] * GetRailTypeInfo(railtype)->maintenance_multiplier * num * (1 + IntSqrt(total_num))) >> 11; // 4 bits fraction for the multiplier and 7 bits scaling.
@@ -435,7 +435,7 @@ static inline Money RailMaintenanceCost(RailType railtype, uint32_t num, uint32_
  * @param num Number of signals.
  * @return Total cost.
  */
-static inline Money SignalMaintenanceCost(uint32_t num)
+inline Money SignalMaintenanceCost(uint32_t num)
 {
 	return (_price[PR_INFRASTRUCTURE_RAIL] * 15 * num * (1 + IntSqrt(num))) >> 8; // 1 bit fraction for the multiplier and 7 bits scaling.
 }

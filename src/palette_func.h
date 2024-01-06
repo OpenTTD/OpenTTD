@@ -21,7 +21,7 @@ void GfxInitPalettes();
 
 uint8_t GetNearestColourIndex(uint8_t r, uint8_t g, uint8_t b);
 
-static inline uint8_t GetNearestColourIndex(const Colour colour)
+inline uint8_t GetNearestColourIndex(const Colour colour)
 {
 	return GetNearestColourIndex(colour.r, colour.g, colour.b);
 }
@@ -32,7 +32,7 @@ static inline uint8_t GetNearestColourIndex(const Colour colour)
  * @param colours The value to check
  * @return true if the given value is a valid Colours.
  */
-static inline bool IsValidColours(Colours colours)
+inline bool IsValidColours(Colours colours)
 {
 	return colours < COLOUR_END;
 }

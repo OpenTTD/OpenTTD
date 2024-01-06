@@ -31,7 +31,7 @@ struct SpriteCache {
 	byte control_flags;  ///< Control flags, see SpriteCacheCtrlFlags
 };
 
-static inline bool IsMapgenSpriteID(SpriteID sprite)
+inline bool IsMapgenSpriteID(SpriteID sprite)
 {
 	return IsInsideMM(sprite, SPR_MAPGEN_BEGIN, SPR_MAPGEN_END);
 }

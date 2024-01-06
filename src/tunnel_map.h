@@ -20,7 +20,7 @@
  * @pre IsTileType(t, MP_TUNNELBRIDGE)
  * @return true if and only if this tile is a tunnel (entrance)
  */
-static inline bool IsTunnel(Tile t)
+inline bool IsTunnel(Tile t)
 {
 	assert(IsTileType(t, MP_TUNNELBRIDGE));
 	return !HasBit(t.m5(), 7);
@@ -31,7 +31,7 @@ static inline bool IsTunnel(Tile t)
  * @param t the tile that might be a tunnel
  * @return true if and only if this tile is a tunnel (entrance)
  */
-static inline bool IsTunnelTile(Tile t)
+inline bool IsTunnelTile(Tile t)
 {
 	return IsTileType(t, MP_TUNNELBRIDGE) && IsTunnel(t);
 }
@@ -47,7 +47,7 @@ bool IsTunnelInWayDir(TileIndex tile, int z, DiagDirection dir);
  * @param d the direction facing out of the tunnel
  * @param r the road type used in the tunnel
  */
-static inline void MakeRoadTunnel(Tile t, Owner o, DiagDirection d, RoadType road_rt, RoadType tram_rt)
+inline void MakeRoadTunnel(Tile t, Owner o, DiagDirection d, RoadType road_rt, RoadType tram_rt)
 {
 	SetTileType(t, MP_TUNNELBRIDGE);
 	SetTileOwner(t, o);
@@ -70,7 +70,7 @@ static inline void MakeRoadTunnel(Tile t, Owner o, DiagDirection d, RoadType roa
  * @param d the direction facing out of the tunnel
  * @param r the rail type used in the tunnel
  */
-static inline void MakeRailTunnel(Tile t, Owner o, DiagDirection d, RailType r)
+inline void MakeRailTunnel(Tile t, Owner o, DiagDirection d, RailType r)
 {
 	SetTileType(t, MP_TUNNELBRIDGE);
 	SetTileOwner(t, o);

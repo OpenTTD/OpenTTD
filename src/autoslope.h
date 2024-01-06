@@ -28,7 +28,7 @@
  * @param entrance Entrance edge.
  * @return true iff terraforming is allowed.
  */
-static inline bool AutoslopeCheckForEntranceEdge(TileIndex tile, int z_new, Slope tileh_new, DiagDirection entrance)
+inline bool AutoslopeCheckForEntranceEdge(TileIndex tile, int z_new, Slope tileh_new, DiagDirection entrance)
 {
 	if (GetTileMaxZ(tile) != z_new + GetSlopeMaxZ(tileh_new)) return false;
 	return ((tileh_new == SLOPE_FLAT) || CanBuildDepotByTileh(entrance, tileh_new));
@@ -41,7 +41,7 @@ static inline bool AutoslopeCheckForEntranceEdge(TileIndex tile, int z_new, Slop
  *
  * @return true iff autoslope is enabled.
  */
-static inline bool AutoslopeEnabled()
+inline bool AutoslopeEnabled()
 {
 	return (_settings_game.construction.autoslope &&
 	        (_current_company < MAX_COMPANIES ||

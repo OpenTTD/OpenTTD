@@ -20,7 +20,7 @@
  * @param num number of items to be copied. (!not number of bytes!)
  */
 template <typename T>
-static inline void MemCpyT(T *destination, const T *source, size_t num = 1)
+inline void MemCpyT(T *destination, const T *source, size_t num = 1)
 {
 	memcpy(destination, source, num * sizeof(T));
 }
@@ -33,7 +33,7 @@ static inline void MemCpyT(T *destination, const T *source, size_t num = 1)
  * @param num number of items to be copied. (!not number of bytes!)
  */
 template <typename T>
-static inline void MemMoveT(T *destination, const T *source, size_t num = 1)
+inline void MemMoveT(T *destination, const T *source, size_t num = 1)
 {
 	memmove(destination, source, num * sizeof(T));
 }
@@ -46,7 +46,7 @@ static inline void MemMoveT(T *destination, const T *source, size_t num = 1)
  * @param num number of items to be set (!not number of bytes!)
  */
 template <typename T>
-static inline void MemSetT(T *ptr, byte value, size_t num = 1)
+inline void MemSetT(T *ptr, byte value, size_t num = 1)
 {
 	memset(ptr, value, num * sizeof(T));
 }
@@ -60,7 +60,7 @@ static inline void MemSetT(T *ptr, byte value, size_t num = 1)
  * @return an int value indicating the relationship between the content of the two buffers
  */
 template <typename T>
-static inline int MemCmpT(const T *ptr1, const T *ptr2, size_t num = 1)
+inline int MemCmpT(const T *ptr1, const T *ptr2, size_t num = 1)
 {
 	return memcmp(ptr1, ptr2, num * sizeof(T));
 }

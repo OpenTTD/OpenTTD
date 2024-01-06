@@ -42,7 +42,7 @@ extern CompanyManagerFace _company_manager_face;
  * Is the current company the local company?
  * @return \c true of the current company is the local company, \c false otherwise.
  */
-static inline bool IsLocalCompany()
+inline bool IsLocalCompany()
 {
 	return _local_company == _current_company;
 }
@@ -52,7 +52,7 @@ static inline bool IsLocalCompany()
  * @param company Company where interaction is needed with.
  * @return Gives \c true if the user can answer questions interactively as representative of \a company, else \c false
  */
-static inline bool IsInteractiveCompany(CompanyID company)
+inline bool IsInteractiveCompany(CompanyID company)
 {
 	return company == _local_company;
 }

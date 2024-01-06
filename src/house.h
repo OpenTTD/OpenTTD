@@ -137,7 +137,7 @@ struct HouseSpec {
  * @param hid the HouseID to get the override for.
  * @return the HouseID to actually work with.
  */
-static inline HouseID GetTranslatedHouseID(HouseID hid)
+inline HouseID GetTranslatedHouseID(HouseID hid)
 {
 	const HouseSpec *hs = HouseSpec::Get(hid);
 	return hs->grf_prop.override == INVALID_HOUSE_ID ? hid : hs->grf_prop.override;

@@ -210,7 +210,7 @@ enum FontSize {
 };
 DECLARE_POSTFIX_INCREMENT(FontSize)
 
-static inline const char *FontSizeToName(FontSize fs)
+inline const char *FontSizeToName(FontSize fs)
 {
 	static const char *SIZE_TO_NAME[] = { "medium", "small", "large", "mono" };
 	assert(fs < FS_END);

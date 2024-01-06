@@ -411,7 +411,7 @@ void NORETURN AssertFailedError(int line, const char *file, const char *expressi
  * Version of the standard free that accepts const pointers.
  * @param ptr The data to free.
  */
-static inline void free(const void *ptr)
+inline void free(const void *ptr)
 {
 	free(const_cast<void *>(ptr));
 }

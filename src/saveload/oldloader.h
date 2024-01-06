@@ -100,13 +100,13 @@ bool LoadChunk(LoadgameState *ls, void *base, const OldChunks *chunks);
 bool LoadTTDMain(LoadgameState *ls);
 bool LoadTTOMain(LoadgameState *ls);
 
-static inline uint16_t ReadUint16(LoadgameState *ls)
+inline uint16_t ReadUint16(LoadgameState *ls)
 {
 	byte x = ReadByte(ls);
 	return x | ReadByte(ls) << 8;
 }
 
-static inline uint32_t ReadUint32(LoadgameState *ls)
+inline uint32_t ReadUint32(LoadgameState *ls)
 {
 	uint16_t x = ReadUint16(ls);
 	return x | ReadUint16(ls) << 16;

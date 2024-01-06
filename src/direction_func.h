@@ -18,7 +18,7 @@
  * @param d The value to check
  * @return True if the value belongs to a DiagDirection, else false
  */
-static inline bool IsValidDiagDirection(DiagDirection d)
+inline bool IsValidDiagDirection(DiagDirection d)
 {
 	return d < DIAGDIR_END;
 }
@@ -29,7 +29,7 @@ static inline bool IsValidDiagDirection(DiagDirection d)
  * @param d The value to check
  * @return True if the value belongs to a Direction, else false
  */
-static inline bool IsValidDirection(Direction d)
+inline bool IsValidDirection(Direction d)
 {
 	return d < DIR_END;
 }
@@ -40,7 +40,7 @@ static inline bool IsValidDirection(Direction d)
  * @param d The value to check
  * @return True if the value belongs to an Axis, else false
  */
-static inline bool IsValidAxis(Axis d)
+inline bool IsValidAxis(Axis d)
 {
 	return d < AXIS_END;
 }
@@ -51,7 +51,7 @@ static inline bool IsValidAxis(Axis d)
  * @param d The direction to get the reverse from
  * @return The reverse Direction
  */
-static inline Direction ReverseDir(Direction d)
+inline Direction ReverseDir(Direction d)
 {
 	assert(IsValidDirection(d));
 	return (Direction)(4 ^ d);
@@ -65,7 +65,7 @@ static inline Direction ReverseDir(Direction d)
  * @param d1 The second direction as the offset from the base
  * @return The difference how the second direction drifts of the first one.
  */
-static inline DirDiff DirDifference(Direction d0, Direction d1)
+inline DirDiff DirDifference(Direction d0, Direction d1)
 {
 	assert(IsValidDirection(d0));
 	assert(IsValidDirection(d1));
@@ -85,7 +85,7 @@ static inline DirDiff DirDifference(Direction d0, Direction d1)
  * @param delta The second difference to add on
  * @return The resulting difference
  */
-static inline DirDiff ChangeDirDiff(DirDiff d, DirDiff delta)
+inline DirDiff ChangeDirDiff(DirDiff d, DirDiff delta)
 {
 	/* Cast to uint so compiler can use bitmask. Result can never be negative. */
 	return (DirDiff)((uint)(d + delta) % 8);
@@ -101,7 +101,7 @@ static inline DirDiff ChangeDirDiff(DirDiff d, DirDiff delta)
  * @param delta The offset/drift applied to the direction
  * @return The new direction
  */
-static inline Direction ChangeDir(Direction d, DirDiff delta)
+inline Direction ChangeDir(Direction d, DirDiff delta)
 {
 	assert(IsValidDirection(d));
 	/* Cast to uint so compiler can use bitmask. Result can never be negative. */
@@ -115,7 +115,7 @@ static inline Direction ChangeDir(Direction d, DirDiff delta)
  * @param d The DiagDirection to get the reverse from
  * @return The reverse direction
  */
-static inline DiagDirection ReverseDiagDir(DiagDirection d)
+inline DiagDirection ReverseDiagDir(DiagDirection d)
 {
 	assert(IsValidDiagDirection(d));
 	return (DiagDirection)(2 ^ d);
@@ -128,7 +128,7 @@ static inline DiagDirection ReverseDiagDir(DiagDirection d)
  * @param d1 The second direction as the offset from the base
  * @return The difference how the second direction drifts of the first one.
  */
-static inline DiagDirDiff DiagDirDifference(DiagDirection d0, DiagDirection d1)
+inline DiagDirDiff DiagDirDifference(DiagDirection d0, DiagDirection d1)
 {
 	assert(IsValidDiagDirection(d0));
 	assert(IsValidDiagDirection(d1));
@@ -146,7 +146,7 @@ static inline DiagDirDiff DiagDirDifference(DiagDirection d0, DiagDirection d1)
  * @param delta The difference to apply on
  * @return The new direction which was calculated
  */
-static inline DiagDirection ChangeDiagDir(DiagDirection d, DiagDirDiff delta)
+inline DiagDirection ChangeDiagDir(DiagDirection d, DiagDirDiff delta)
 {
 	assert(IsValidDiagDirection(d));
 	/* Cast to uint so compiler can use bitmask. Result can never be negative. */
@@ -163,7 +163,7 @@ static inline DiagDirection ChangeDiagDir(DiagDirection d, DiagDirDiff delta)
  * @param dir The direction to convert
  * @return The resulting DiagDirection, maybe "rounded clockwise".
  */
-static inline DiagDirection DirToDiagDir(Direction dir)
+inline DiagDirection DirToDiagDir(Direction dir)
 {
 	assert(IsValidDirection(dir));
 	return (DiagDirection)(dir >> 1);
@@ -179,7 +179,7 @@ static inline DiagDirection DirToDiagDir(Direction dir)
  * @param dir The direction to convert
  * @return The resulting Direction
  */
-static inline Direction DiagDirToDir(DiagDirection dir)
+inline Direction DiagDirToDir(DiagDirection dir)
 {
 	assert(IsValidDiagDirection(dir));
 	return (Direction)(dir * 2 + 1);
@@ -194,7 +194,7 @@ static inline Direction DiagDirToDir(DiagDirection dir)
  * @param a The given axis
  * @return The other axis
  */
-static inline Axis OtherAxis(Axis a)
+inline Axis OtherAxis(Axis a)
 {
 	assert(IsValidAxis(a));
 	return (Axis)(a ^ 1);
@@ -211,7 +211,7 @@ static inline Axis OtherAxis(Axis a)
  * @param d The DiagDirection
  * @return The axis which belongs to the direction
  */
-static inline Axis DiagDirToAxis(DiagDirection d)
+inline Axis DiagDirToAxis(DiagDirection d)
 {
 	assert(IsValidDiagDirection(d));
 	return (Axis)(d & 1);
@@ -229,7 +229,7 @@ static inline Axis DiagDirToAxis(DiagDirection d)
  * @param a The axis
  * @return The direction pointed to south
  */
-static inline DiagDirection AxisToDiagDir(Axis a)
+inline DiagDirection AxisToDiagDir(Axis a)
 {
 	assert(IsValidAxis(a));
 	return (DiagDirection)(2 - a);
@@ -246,7 +246,7 @@ static inline DiagDirection AxisToDiagDir(Axis a)
  * @param a The axis
  * @return The direction pointed to south
  */
-static inline Direction AxisToDirection(Axis a)
+inline Direction AxisToDirection(Axis a)
 {
 	assert(IsValidAxis(a));
 	return (Direction)(5 - 2 * a);
@@ -258,7 +258,7 @@ static inline Direction AxisToDirection(Axis a)
  * @param ns north -> 0, south -> 1
  * @return the desired DiagDirection
  */
-static inline DiagDirection XYNSToDiagDir(Axis xy, uint ns)
+inline DiagDirection XYNSToDiagDir(Axis xy, uint ns)
 {
 	assert(IsValidAxis(xy));
 	return (DiagDirection)(xy * 3 ^ ns * 2);
@@ -270,7 +270,7 @@ static inline DiagDirection XYNSToDiagDir(Axis xy, uint ns)
  * @param dir The given direction.
  * @return True if the direction is diagonal.
  */
-static inline bool IsDiagonalDirection(Direction dir)
+inline bool IsDiagonalDirection(Direction dir)
 {
 	assert(IsValidDirection(dir));
 	return (dir & 1) != 0;

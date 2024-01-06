@@ -39,7 +39,7 @@ void IConsolePrint(TextColour colour_code, const std::string &string);
  * @tparam Args The types of the other arguments.
  */
 template <typename T, typename A, typename ... Args>
-static inline void IConsolePrint(TextColour colour_code, const T &format, A first_arg, Args&&... other_args)
+inline void IConsolePrint(TextColour colour_code, const T &format, A first_arg, Args&&... other_args)
 {
 	/* The separate first_arg argument is added to aid overloading.
 	 * Otherwise the calls that do no need formatting will still use this function. */

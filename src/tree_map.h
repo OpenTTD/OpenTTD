@@ -70,7 +70,7 @@ enum TreeGround {
  * @return The treetype of the given tile with trees
  * @pre Tile t must be of type MP_TREES
  */
-static inline TreeType GetTreeType(Tile t)
+inline TreeType GetTreeType(Tile t)
 {
 	assert(IsTileType(t, MP_TREES));
 	return (TreeType)t.m3();
@@ -85,7 +85,7 @@ static inline TreeType GetTreeType(Tile t)
  * @return The groundtype of the tile
  * @pre Tile must be of type MP_TREES
  */
-static inline TreeGround GetTreeGround(Tile t)
+inline TreeGround GetTreeGround(Tile t)
 {
 	assert(IsTileType(t, MP_TREES));
 	return (TreeGround)GB(t.m2(), 6, 3);
@@ -110,7 +110,7 @@ static inline TreeGround GetTreeGround(Tile t)
  * @pre Tile must be of type MP_TREES
  * @see GetTreeCount
  */
-static inline uint GetTreeDensity(Tile t)
+inline uint GetTreeDensity(Tile t)
 {
 	assert(IsTileType(t, MP_TREES));
 	return GB(t.m2(), 4, 2);
@@ -127,7 +127,7 @@ static inline uint GetTreeDensity(Tile t)
  * @param d The density to save with
  * @pre Tile must be of type MP_TREES
  */
-static inline void SetTreeGroundDensity(Tile t, TreeGround g, uint d)
+inline void SetTreeGroundDensity(Tile t, TreeGround g, uint d)
 {
 	assert(IsTileType(t, MP_TREES)); // XXX incomplete
 	SB(t.m2(), 4, 2, d);
@@ -146,7 +146,7 @@ static inline void SetTreeGroundDensity(Tile t, TreeGround g, uint d)
  * @return The number of trees (1-4)
  * @pre Tile must be of type MP_TREES
  */
-static inline uint GetTreeCount(Tile t)
+inline uint GetTreeCount(Tile t)
 {
 	assert(IsTileType(t, MP_TREES));
 	return GB(t.m5(), 6, 2) + 1;
@@ -163,7 +163,7 @@ static inline uint GetTreeCount(Tile t)
  * @param c The value to add (or reduce) on the tree-count value
  * @pre Tile must be of type MP_TREES
  */
-static inline void AddTreeCount(Tile t, int c)
+inline void AddTreeCount(Tile t, int c)
 {
 	assert(IsTileType(t, MP_TREES)); // XXX incomplete
 	t.m5() += c << 6;
@@ -178,7 +178,7 @@ static inline void AddTreeCount(Tile t, int c)
  * @return The tree growth status
  * @pre Tile must be of type MP_TREES
  */
-static inline uint GetTreeGrowth(Tile t)
+inline uint GetTreeGrowth(Tile t)
 {
 	assert(IsTileType(t, MP_TREES));
 	return GB(t.m5(), 0, 3);
@@ -193,7 +193,7 @@ static inline uint GetTreeGrowth(Tile t)
  * @param a The value to add on the tree growth status
  * @pre Tile must be of type MP_TREES
  */
-static inline void AddTreeGrowth(Tile t, int a)
+inline void AddTreeGrowth(Tile t, int a)
 {
 	assert(IsTileType(t, MP_TREES)); // XXX incomplete
 	t.m5() += a;
@@ -209,7 +209,7 @@ static inline void AddTreeGrowth(Tile t, int a)
  * @param g The new value
  * @pre Tile must be of type MP_TREES
  */
-static inline void SetTreeGrowth(Tile t, uint g)
+inline void SetTreeGrowth(Tile t, uint g)
 {
 	assert(IsTileType(t, MP_TREES)); // XXX incomplete
 	SB(t.m5(), 0, 3, g);
@@ -227,7 +227,7 @@ static inline void SetTreeGrowth(Tile t, uint g)
  * @param ground the ground type
  * @param density the density (not the number of trees)
  */
-static inline void MakeTree(Tile t, TreeType type, uint count, uint growth, TreeGround ground, uint density)
+inline void MakeTree(Tile t, TreeType type, uint count, uint growth, TreeGround ground, uint density)
 {
 	SetTileType(t, MP_TREES);
 	SetTileOwner(t, OWNER_NONE);

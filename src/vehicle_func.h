@@ -85,7 +85,7 @@ Direction GetDirectionTowards(const Vehicle *v, int x, int y);
  * @param type Vehicle type being queried.
  * @return Vehicle type is buildable by a company.
  */
-static inline bool IsCompanyBuildableVehicleType(VehicleType type)
+inline bool IsCompanyBuildableVehicleType(VehicleType type)
 {
 	switch (type) {
 		case VEH_TRAIN:
@@ -103,7 +103,7 @@ static inline bool IsCompanyBuildableVehicleType(VehicleType type)
  * @param v Vehicle being queried.
  * @return Vehicle is buildable by a company.
  */
-static inline bool IsCompanyBuildableVehicleType(const BaseVehicle *v)
+inline bool IsCompanyBuildableVehicleType(const BaseVehicle *v)
 {
 	return IsCompanyBuildableVehicleType(v->type);
 }
@@ -120,42 +120,42 @@ extern const StringID _veh_refit_msg_table[];
 extern const StringID _send_to_depot_msg_table[];
 
 /* Functions to find the right command for certain vehicle type */
-static inline StringID GetCmdBuildVehMsg(VehicleType type)
+inline StringID GetCmdBuildVehMsg(VehicleType type)
 {
 	return _veh_build_msg_table[type];
 }
 
-static inline StringID GetCmdBuildVehMsg(const BaseVehicle *v)
+inline StringID GetCmdBuildVehMsg(const BaseVehicle *v)
 {
 	return GetCmdBuildVehMsg(v->type);
 }
 
-static inline StringID GetCmdSellVehMsg(VehicleType type)
+inline StringID GetCmdSellVehMsg(VehicleType type)
 {
 	return _veh_sell_msg_table[type];
 }
 
-static inline StringID GetCmdSellVehMsg(const BaseVehicle *v)
+inline StringID GetCmdSellVehMsg(const BaseVehicle *v)
 {
 	return GetCmdSellVehMsg(v->type);
 }
 
-static inline StringID GetCmdRefitVehMsg(VehicleType type)
+inline StringID GetCmdRefitVehMsg(VehicleType type)
 {
 	return _veh_refit_msg_table[type];
 }
 
-static inline StringID GetCmdRefitVehMsg(const BaseVehicle *v)
+inline StringID GetCmdRefitVehMsg(const BaseVehicle *v)
 {
 	return GetCmdRefitVehMsg(v->type);
 }
 
-static inline StringID GetCmdSendToDepotMsg(VehicleType type)
+inline StringID GetCmdSendToDepotMsg(VehicleType type)
 {
 	return _send_to_depot_msg_table[type];
 }
 
-static inline StringID GetCmdSendToDepotMsg(const BaseVehicle *v)
+inline StringID GetCmdSendToDepotMsg(const BaseVehicle *v)
 {
 	return GetCmdSendToDepotMsg(v->type);
 }

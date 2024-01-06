@@ -24,7 +24,7 @@ void DeleteDepotHighlightOfVehicle(const Vehicle *v);
  * @param tileh The slope of the tile in question
  * @return true if the construction is possible
  */
-static inline bool CanBuildDepotByTileh(DiagDirection direction, Slope tileh)
+inline bool CanBuildDepotByTileh(DiagDirection direction, Slope tileh)
 {
 	assert(tileh != SLOPE_FLAT);
 	Slope entrance_corners = InclinedSlope(direction);

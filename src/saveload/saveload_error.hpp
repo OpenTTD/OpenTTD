@@ -26,7 +26,7 @@ void NORETURN SlErrorCorrupt(const std::string &msg);
  *       break out of all the saveload code.
  */
 template <typename T, typename ... Args>
-static inline void NORETURN SlErrorCorruptFmt(const T &format, Args&&... fmt_args)
+inline void NORETURN SlErrorCorruptFmt(const T &format, Args&&... fmt_args)
 {
 	SlErrorCorrupt(fmt::format(format, fmt_args...));
 }

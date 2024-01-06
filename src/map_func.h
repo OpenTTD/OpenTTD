@@ -398,7 +398,7 @@ debug_inline static TileIndex TileXY(uint x, uint y)
  * @return The resulting offset value of the given coordinate
  * @see ToTileIndexDiff(TileIndexDiffC)
  */
-static inline TileIndexDiff TileDiffXY(int x, int y)
+inline TileIndexDiff TileDiffXY(int x, int y)
 {
 	/* Multiplication gives much better optimization on MSVC than shifting.
 	 * 0 << shift isn't optimized to 0 properly.
@@ -449,7 +449,7 @@ debug_inline static uint TileY(TileIndex tile)
  * @return The difference between two tiles.
  * @see TileDiffXY(int, int)
  */
-static inline TileIndexDiff ToTileIndexDiff(TileIndexDiffC tidc)
+inline TileIndexDiff ToTileIndexDiff(TileIndexDiffC tidc)
 {
 	return (tidc.y << Map::LogX()) + tidc.x;
 }
@@ -487,7 +487,7 @@ TileIndex TileAddWrap(TileIndex tile, int addx, int addy);
  * @param dir The given direction
  * @return The offset as TileIndexDiffC value
  */
-static inline TileIndexDiffC TileIndexDiffCByDiagDir(DiagDirection dir)
+inline TileIndexDiffC TileIndexDiffCByDiagDir(DiagDirection dir)
 {
 	extern const TileIndexDiffC _tileoffs_by_diagdir[DIAGDIR_END];
 
@@ -501,7 +501,7 @@ static inline TileIndexDiffC TileIndexDiffCByDiagDir(DiagDirection dir)
  * @param dir The given direction
  * @return The offset as TileIndexDiffC value
  */
-static inline TileIndexDiffC TileIndexDiffCByDir(Direction dir)
+inline TileIndexDiffC TileIndexDiffCByDir(Direction dir)
 {
 	extern const TileIndexDiffC _tileoffs_by_dir[DIR_END];
 
@@ -519,7 +519,7 @@ static inline TileIndexDiffC TileIndexDiffCByDir(Direction dir)
  * @param diff The offset to add on the tile
  * @return The resulting TileIndex
  */
-static inline TileIndex AddTileIndexDiffCWrap(TileIndex tile, TileIndexDiffC diff)
+inline TileIndex AddTileIndexDiffCWrap(TileIndex tile, TileIndexDiffC diff)
 {
 	int x = TileX(tile) + diff.x;
 	int y = TileY(tile) + diff.y;
@@ -535,7 +535,7 @@ static inline TileIndex AddTileIndexDiffCWrap(TileIndex tile, TileIndexDiffC dif
  * @param tile_b to tile
  * @return the difference between tila_a and tile_b
  */
-static inline TileIndexDiffC TileIndexToTileIndexDiffC(TileIndex tile_a, TileIndex tile_b)
+inline TileIndexDiffC TileIndexToTileIndexDiffC(TileIndex tile_a, TileIndex tile_b)
 {
 	TileIndexDiffC difference;
 
@@ -560,7 +560,7 @@ uint DistanceFromEdgeDir(TileIndex, DiagDirection); ///< distance from the map e
  * @return The resulting TileIndexDiff
  * @see TileIndexDiffCByDiagDir
  */
-static inline TileIndexDiff TileOffsByDiagDir(DiagDirection dir)
+inline TileIndexDiff TileOffsByDiagDir(DiagDirection dir)
 {
 	extern const TileIndexDiffC _tileoffs_by_diagdir[DIAGDIR_END];
 
@@ -574,7 +574,7 @@ static inline TileIndexDiff TileOffsByDiagDir(DiagDirection dir)
  * @param dir The direction to convert from
  * @return The resulting TileIndexDiff
  */
-static inline TileIndexDiff TileOffsByDir(Direction dir)
+inline TileIndexDiff TileOffsByDir(Direction dir)
 {
 	extern const TileIndexDiffC _tileoffs_by_dir[DIR_END];
 
@@ -589,7 +589,7 @@ static inline TileIndexDiff TileOffsByDir(Direction dir)
  * @param dir The direction in which we want to step
  * @return the moved tile
  */
-static inline TileIndex TileAddByDir(TileIndex tile, Direction dir)
+inline TileIndex TileAddByDir(TileIndex tile, Direction dir)
 {
 	return TILE_ADD(tile, TileOffsByDir(dir));
 }
@@ -601,7 +601,7 @@ static inline TileIndex TileAddByDir(TileIndex tile, Direction dir)
  * @param dir The direction in which we want to step
  * @return the moved tile
  */
-static inline TileIndex TileAddByDiagDir(TileIndex tile, DiagDirection dir)
+inline TileIndex TileAddByDiagDir(TileIndex tile, DiagDirection dir)
 {
 	return TILE_ADD(tile, TileOffsByDiagDir(dir));
 }
@@ -613,7 +613,7 @@ static inline TileIndex TileAddByDiagDir(TileIndex tile, DiagDirection dir)
  * @param tile_to Destination tile
  * @return DiagDirection from tile_from towards tile_to, or INVALID_DIAGDIR if the tiles are not on an axis
  */
-static inline DiagDirection DiagdirBetweenTiles(TileIndex tile_from, TileIndex tile_to)
+inline DiagDirection DiagdirBetweenTiles(TileIndex tile_from, TileIndex tile_to)
 {
 	int dx = (int)TileX(tile_to) - (int)TileX(tile_from);
 	int dy = (int)TileY(tile_to) - (int)TileY(tile_from);
@@ -643,7 +643,7 @@ bool CircularTileSearch(TileIndex *tile, uint radius, uint w, uint h, TestTileOn
  * @param r the random 'seed'
  * @return a valid tile
  */
-static inline TileIndex RandomTileSeed(uint32_t r)
+inline TileIndex RandomTileSeed(uint32_t r)
 {
 	return Map::WrapToMap(r);
 }

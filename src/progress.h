@@ -14,7 +14,7 @@
  * Check if we are currently in a modal progress state.
  * @return Are we in the modal state?
  */
-static inline bool HasModalProgress()
+inline bool HasModalProgress()
 {
 	extern bool _in_modal_progress;
 	return _in_modal_progress;
