@@ -1779,6 +1779,8 @@ STR_CONFIG_SETTING_SERVINT_DISABLED                             :izslēgts
 STR_CONFIG_SETTING_NOSERVICE                                    :Aizliegt apkopi, kad bojāšanās ir izslēgta: {STRING}
 STR_CONFIG_SETTING_NOSERVICE_HELPTEXT                           :Ja ieslēgts, transportlīdzekļiem netiek veikta apkope. Jo tie nebojājas
 
+STR_CONFIG_SETTING_STATION_LENGTH_LOADING_PENALTY               :Iekraušanas ātruma sods vilcieniem, kas ir garāki par staciju: {STRING}
+STR_CONFIG_SETTING_STATION_LENGTH_LOADING_PENALTY_HELPTEXT      :Ja aktīs, vilcieni, kas ir pārāk gari stacijai, iekraujas lēnāk nekā vilcieni, kas atbilst stacijai. Šis iestatījums neietekmē ceļa meklēšanu.
 
 STR_CONFIG_SETTING_WAGONSPEEDLIMITS                             :Ieslēgt vagonu ātruma ierobežojumus: {STRING}
 STR_CONFIG_SETTING_WAGONSPEEDLIMITS_HELPTEXT                    :Ja ieslēgts, var izmantot vagonu ātruma ierobežojumus, lai lemtu par vilcienu maksimālo ātrumu
