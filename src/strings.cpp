@@ -1469,14 +1469,14 @@ static void FormatString(StringBuilder &builder, const char *str_arg, StringPara
 					if (i == nullptr) break;
 
 					static bool use_cache = true;
-					if (use_cache) { // Use cached version if first call
-						AutoRestoreBackup cache_backup(use_cache, false);
-						builder += i->GetCachedName();
-					} else if (_scan_for_gender_data) {
+					if (_scan_for_gender_data) {
 						/* Gender is defined by the industry type.
 						 * STR_FORMAT_INDUSTRY_NAME may have the town first, so it would result in the gender of the town name */
 						auto tmp_params = ArrayStringParameters<0>();
 						FormatString(builder, GetStringPtr(GetIndustrySpec(i->type)->name), tmp_params, next_substr_case_index);
+					} else if (use_cache) { // Use cached version if first call
+						AutoRestoreBackup cache_backup(use_cache, false);
+						builder += i->GetCachedName();
 					} else {
 						/* First print the town name and the industry type name. */
 						auto tmp_params = MakeParameters(i->town->index, GetIndustrySpec(i->type)->name);
