@@ -347,7 +347,7 @@ void TriggerRoadStopAnimation(BaseStation *st, TileIndex trigger_tile, StationAn
 		if (ss != nullptr && HasBit(ss->animation.triggers, trigger)) {
 			CargoID cargo;
 			if (!IsValidCargoID(cargo_type)) {
-				cargo = CT_INVALID;
+				cargo = INVALID_CARGO;
 			} else {
 				cargo = ss->grf_prop.grffile->cargo_map[cargo_type];
 			}

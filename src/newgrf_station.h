@@ -36,7 +36,7 @@ struct StationScopeResolver : public ScopeResolver {
 	 * @param tile %Tile of the station.
 	 */
 	StationScopeResolver(ResolverObject &ro, const StationSpec *statspec, BaseStation *st, TileIndex tile)
-		: ScopeResolver(ro), tile(tile), st(st), statspec(statspec), cargo_type(CT_INVALID), axis(INVALID_AXIS)
+		: ScopeResolver(ro), tile(tile), st(st), statspec(statspec), cargo_type(INVALID_CARGO), axis(INVALID_AXIS)
 	{
 	}
 
@@ -198,8 +198,8 @@ void DeallocateSpecFromStation(BaseStation *st, byte specindex);
 bool DrawStationTile(int x, int y, RailType railtype, Axis axis, StationClassID sclass, uint station);
 
 void AnimateStationTile(TileIndex tile);
-void TriggerStationAnimation(BaseStation *st, TileIndex tile, StationAnimationTrigger trigger, CargoID cargo_type = CT_INVALID);
-void TriggerStationRandomisation(Station *st, TileIndex tile, StationRandomTrigger trigger, CargoID cargo_type = CT_INVALID);
+void TriggerStationAnimation(BaseStation *st, TileIndex tile, StationAnimationTrigger trigger, CargoID cargo_type = INVALID_CARGO);
+void TriggerStationRandomisation(Station *st, TileIndex tile, StationRandomTrigger trigger, CargoID cargo_type = INVALID_CARGO);
 void StationUpdateCachedTriggers(BaseStation *st);
 
 #endif /* NEWGRF_STATION_H */

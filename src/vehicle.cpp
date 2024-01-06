@@ -1902,7 +1902,7 @@ bool CanBuildVehicleInfrastructure(VehicleType type, byte subtype)
  */
 LiveryScheme GetEngineLiveryScheme(EngineID engine_type, EngineID parent_engine_type, const Vehicle *v)
 {
-	CargoID cargo_type = v == nullptr ? (CargoID)CT_INVALID : v->cargo_type;
+	CargoID cargo_type = v == nullptr ? INVALID_CARGO : v->cargo_type;
 	const Engine *e = Engine::Get(engine_type);
 	switch (e->type) {
 		default: NOT_REACHED();

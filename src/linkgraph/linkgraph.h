@@ -189,7 +189,7 @@ public:
 	}
 
 	/** Bare constructor, only for save/load. */
-	LinkGraph() : cargo(CT_INVALID), last_compression(0) {}
+	LinkGraph() : cargo(INVALID_CARGO), last_compression(0) {}
 	/**
 	 * Real constructor.
 	 * @param cargo Cargo the link graph is about.

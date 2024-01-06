@@ -451,8 +451,8 @@ static uint32_t VehicleGetVariable(Vehicle *v, const VehicleScopeResolver *objec
 
 				/* Pick the most common cargo type */
 				auto cargo_it = std::max_element(std::begin(common_cargoes), std::end(common_cargoes));
-				/* Return CT_INVALID if nothing is carried */
-				CargoID common_cargo_type = (*cargo_it == 0) ? (CargoID)CT_INVALID : static_cast<CargoID>(std::distance(std::begin(common_cargoes), cargo_it));
+				/* Return INVALID_CARGO if nothing is carried */
+				CargoID common_cargo_type = (*cargo_it == 0) ? INVALID_CARGO : static_cast<CargoID>(std::distance(std::begin(common_cargoes), cargo_it));
 
 				/* Count subcargo types of common_cargo_type */
 				std::array<uint8_t, UINT8_MAX + 1> common_subtypes{};
@@ -486,7 +486,7 @@ static uint32_t VehicleGetVariable(Vehicle *v, const VehicleScopeResolver *objec
 			 *    And this is only done by CheckCaches().
 			 */
 			const GRFFile *grffile = object->ro.grffile;
-			uint8_t common_bitnum = (common_cargo_type == CT_INVALID) ? 0xFF :
+			uint8_t common_bitnum = (common_cargo_type == INVALID_CARGO) ? 0xFF :
 				(grffile == nullptr || grffile->grf_version < 8) ? CargoSpec::Get(common_cargo_type)->bitnum : grffile->cargo_map[common_cargo_type];
 
 			return (v->grf_cache.consist_cargo_information & 0xFFFF00FF) | common_bitnum << 8;

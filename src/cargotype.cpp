@@ -88,13 +88,13 @@ Dimension GetLargestCargoIconSize()
  * Get the cargo ID of a default cargo, if present.
  * @param l Landscape
  * @param ct Default cargo type.
- * @return ID number if the cargo exists, else #CT_INVALID
+ * @return ID number if the cargo exists, else #INVALID_CARGO
  */
 CargoID GetDefaultCargoID(LandscapeID l, CargoType ct)
 {
 	assert(l < lengthof(_default_climate_cargo));
 
-	if (!IsValidCargoType(ct)) return CT_INVALID;
+	if (!IsValidCargoType(ct)) return INVALID_CARGO;
 
 	assert(ct < lengthof(_default_climate_cargo[0]));
 	CargoLabel cl = _default_climate_cargo[l][ct];
@@ -109,7 +109,7 @@ CargoID GetDefaultCargoID(LandscapeID l, CargoType ct)
 /**
  * Get the cargo ID by cargo label.
  * @param cl Cargo type to get.
- * @return ID number if the cargo exists, else #CT_INVALID
+ * @return ID number if the cargo exists, else #INVALID_CARGO
  */
 CargoID GetCargoIDByLabel(CargoLabel cl)
 {
@@ -118,25 +118,25 @@ CargoID GetCargoIDByLabel(CargoLabel cl)
 	}
 
 	/* No matching label was found, so it is invalid */
-	return CT_INVALID;
+	return INVALID_CARGO;
 }
 
 
 /**
  * Find the CargoID of a 'bitnum' value.
  * @param bitnum 'bitnum' to find.
- * @return First CargoID with the given bitnum, or #CT_INVALID if not found or if the provided \a bitnum is invalid.
+ * @return First CargoID with the given bitnum, or #INVALID_CARGO if not found or if the provided \a bitnum is invalid.
  */
 CargoID GetCargoIDByBitnum(uint8_t bitnum)
 {
-	if (bitnum == INVALID_CARGO_BITNUM) return CT_INVALID;
+	if (bitnum == INVALID_CARGO_BITNUM) return INVALID_CARGO;
 
 	for (const CargoSpec *cs : CargoSpec::Iterate()) {
 		if (cs->bitnum == bitnum) return cs->Index();
 	}
 
 	/* No matching label was found, so it is invalid */
-	return CT_INVALID;
+	return INVALID_CARGO;
 }
 
 /**

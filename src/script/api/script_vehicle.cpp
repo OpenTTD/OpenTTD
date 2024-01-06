@@ -89,7 +89,7 @@
 
 /* static */ VehicleID ScriptVehicle::BuildVehicle(TileIndex depot, EngineID engine_id)
 {
-	return _BuildVehicleInternal(depot, engine_id, CT_INVALID);
+	return _BuildVehicleInternal(depot, engine_id, INVALID_CARGO);
 }
 
 /* static */ VehicleID ScriptVehicle::BuildVehicleWithRefit(TileIndex depot, EngineID engine_id, CargoID cargo)

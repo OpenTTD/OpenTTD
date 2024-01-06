@@ -424,7 +424,7 @@ static void AddAcceptedCargo_Industry(TileIndex tile, CargoArray &acceptance, Ca
 			auto pos = std::find(std::begin(accepts_cargo), std::end(accepts_cargo), a.cargo);
 			if (pos == std::end(accepts_cargo)) {
 				/* Not found, insert */
-				pos = std::find(std::begin(accepts_cargo), std::end(accepts_cargo), CT_INVALID);
+				pos = std::find(std::begin(accepts_cargo), std::end(accepts_cargo), INVALID_CARGO);
 				if (pos == std::end(accepts_cargo)) continue; // nowhere to place, give up on this one
 				*pos = a.cargo;
 			}
@@ -436,7 +436,7 @@ static void AddAcceptedCargo_Industry(TileIndex tile, CargoArray &acceptance, Ca
 		/* Try callback for accepts list, if success override all existing accepts */
 		uint16_t res = GetIndustryTileCallback(CBID_INDTILE_ACCEPT_CARGO, 0, 0, gfx, Industry::GetByTile(tile), tile);
 		if (res != CALLBACK_FAILED) {
-			accepts_cargo.fill(CT_INVALID);
+			accepts_cargo.fill(INVALID_CARGO);
 			for (uint i = 0; i < 3; i++) accepts_cargo[i] = GetCargoTranslation(GB(res, i * 5, 5), itspec->grf_prop.grffile);
 		}
 	}
@@ -1838,7 +1838,7 @@ static void DoCreateNewIndustry(Industry *i, TileIndex tile, IndustryType type, 
 
 	if (HasBit(indspec->callback_mask, CBM_IND_INPUT_CARGO_TYPES)) {
 		/* Clear all input cargo types */
-		for (auto &a : i->accepted) a.cargo = CT_INVALID;
+		for (auto &a : i->accepted) a.cargo = INVALID_CARGO;
 		/* Query actual types */
 		uint maxcargoes = (indspec->behaviour & INDUSTRYBEH_CARGOTYPES_UNLIMITED) ? static_cast<uint>(i->accepted.size()) : 3;
 		for (uint j = 0; j < maxcargoes; j++) {
@@ -1870,7 +1870,7 @@ static void DoCreateNewIndustry(Industry *i, TileIndex tile, IndustryType type, 
 
 	if (HasBit(indspec->callback_mask, CBM_IND_OUTPUT_CARGO_TYPES)) {
 		/* Clear all output cargo types */
-		for (auto &p : i->produced) p.cargo = CT_INVALID;
+		for (auto &p : i->produced) p.cargo = INVALID_CARGO;
 		/* Query actual types */
 		uint maxcargoes = (indspec->behaviour & INDUSTRYBEH_CARGOTYPES_UNLIMITED) ? static_cast<uint>(i->produced.size()) : 2;
 		for (uint j = 0; j < maxcargoes; j++) {

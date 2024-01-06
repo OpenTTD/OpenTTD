@@ -88,7 +88,7 @@ struct Engine : EnginePool::PoolItem<&_engine_pool> {
 	 * Usually a valid cargo is returned, even though the vehicle has zero capacity, and can therefore not carry anything. But the cargotype is still used
 	 * for livery selection etc..
 	 *
-	 * Vehicles with CT_INVALID as default cargo are usually not available, but it can appear as default cargo of articulated parts.
+	 * Vehicles with INVALID_CARGO as default cargo are usually not available, but it can appear as default cargo of articulated parts.
 	 *
 	 * @return The default cargo type.
 	 * @see CanCarryCargo

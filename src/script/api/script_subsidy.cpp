@@ -67,7 +67,7 @@
 
 /* static */ CargoID ScriptSubsidy::GetCargoType(SubsidyID subsidy_id)
 {
-	if (!IsValidSubsidy(subsidy_id)) return CT_INVALID;
+	if (!IsValidSubsidy(subsidy_id)) return INVALID_CARGO;
 
 	return ::Subsidy::Get(subsidy_id)->cargo_type;
 }

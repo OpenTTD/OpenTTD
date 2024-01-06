@@ -495,7 +495,7 @@ uint32_t Waypoint::GetNewGRFVariable(const ResolverObject &, byte variable, [[ma
 	const Station *st = Station::From(this->station_scope.st);
 
 	switch (this->station_scope.cargo_type) {
-		case CT_INVALID:
+		case INVALID_CARGO:
 		case CT_DEFAULT_NA:
 		case CT_PURCHASE:
 			cargo = 0;
@@ -887,7 +887,7 @@ void TriggerStationAnimation(BaseStation *st, TileIndex trigger_tile, StationAni
 			if (ss != nullptr && HasBit(ss->animation.triggers, trigger)) {
 				CargoID cargo;
 				if (!IsValidCargoID(cargo_type)) {
-					cargo = CT_INVALID;
+					cargo = INVALID_CARGO;
 				} else {
 					cargo = ss->grf_prop.grffile->cargo_map[cargo_type];
 				}

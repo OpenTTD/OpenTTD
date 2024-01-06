@@ -1140,15 +1140,15 @@ static ChangeInfoResult RailVehicleChangeInfo(uint engine, int numinfo, int prop
 
 				if (ctype == 0xFF) {
 					/* 0xFF is specified as 'use first refittable' */
-					ei->cargo_type = CT_INVALID;
+					ei->cargo_type = INVALID_CARGO;
 				} else if (_cur.grffile->grf_version >= 8) {
-					/* Use translated cargo. Might result in CT_INVALID (first refittable), if cargo is not defined. */
+					/* Use translated cargo. Might result in INVALID_CARGO (first refittable), if cargo is not defined. */
 					ei->cargo_type = GetCargoTranslation(ctype, _cur.grffile);
 				} else if (ctype < NUM_CARGO) {
 					/* Use untranslated cargo. */
 					ei->cargo_type = ctype;
 				} else {
-					ei->cargo_type = CT_INVALID;
+					ei->cargo_type = INVALID_CARGO;
 					GrfMsg(2, "RailVehicleChangeInfo: Invalid cargo type {}, using first refittable", ctype);
 				}
 				break;
@@ -1401,15 +1401,15 @@ static ChangeInfoResult RoadVehicleChangeInfo(uint engine, int numinfo, int prop
 
 				if (ctype == 0xFF) {
 					/* 0xFF is specified as 'use first refittable' */
-					ei->cargo_type = CT_INVALID;
+					ei->cargo_type = INVALID_CARGO;
 				} else if (_cur.grffile->grf_version >= 8) {
-					/* Use translated cargo. Might result in CT_INVALID (first refittable), if cargo is not defined. */
+					/* Use translated cargo. Might result in INVALID_CARGO (first refittable), if cargo is not defined. */
 					ei->cargo_type = GetCargoTranslation(ctype, _cur.grffile);
 				} else if (ctype < NUM_CARGO) {
 					/* Use untranslated cargo. */
 					ei->cargo_type = ctype;
 				} else {
-					ei->cargo_type = CT_INVALID;
+					ei->cargo_type = INVALID_CARGO;
 					GrfMsg(2, "RailVehicleChangeInfo: Invalid cargo type {}, using first refittable", ctype);
 				}
 				break;
@@ -1596,15 +1596,15 @@ static ChangeInfoResult ShipVehicleChangeInfo(uint engine, int numinfo, int prop
 
 				if (ctype == 0xFF) {
 					/* 0xFF is specified as 'use first refittable' */
-					ei->cargo_type = CT_INVALID;
+					ei->cargo_type = INVALID_CARGO;
 				} else if (_cur.grffile->grf_version >= 8) {
-					/* Use translated cargo. Might result in CT_INVALID (first refittable), if cargo is not defined. */
+					/* Use translated cargo. Might result in INVALID_CARGO (first refittable), if cargo is not defined. */
 					ei->cargo_type = GetCargoTranslation(ctype, _cur.grffile);
 				} else if (ctype < NUM_CARGO) {
 					/* Use untranslated cargo. */
 					ei->cargo_type = ctype;
 				} else {
-					ei->cargo_type = CT_INVALID;
+					ei->cargo_type = INVALID_CARGO;
 					GrfMsg(2, "ShipVehicleChangeInfo: Invalid cargo type {}, using first refittable", ctype);
 				}
 				break;
@@ -2588,7 +2588,7 @@ static ChangeInfoResult TownHouseChangeInfo(uint hid, int numinfo, int prop, Byt
 						housespec->accepts_cargo[i] = GetCargoTranslation(buf->ReadByte(), _cur.grffile);
 						housespec->cargo_acceptance[i] = buf->ReadByte();
 					} else {
-						housespec->accepts_cargo[i] = CT_INVALID;
+						housespec->accepts_cargo[i] = INVALID_CARGO;
 						housespec->cargo_acceptance[i] = 0;
 					}
 				}
@@ -3306,7 +3306,7 @@ static ChangeInfoResult IndustrytilesChangeInfo(uint indtid, int numinfo, int pr
 						/* Tile acceptance can be negative to counteract the INDTILE_SPECIAL_ACCEPTS_ALL_CARGO flag */
 						tsp->acceptance[i] = (int8_t)buf->ReadByte();
 					} else {
-						tsp->accepts_cargo[i] = CT_INVALID;
+						tsp->accepts_cargo[i] = INVALID_CARGO;
 						tsp->acceptance[i] = 0;
 					}
 				}
@@ -3753,7 +3753,7 @@ static ChangeInfoResult IndustriesChangeInfo(uint indid, int numinfo, int prop, 
 						CargoID cargo = GetCargoTranslation(buf->ReadByte(), _cur.grffile);
 						indsp->produced_cargo[i] = cargo;
 					} else {
-						indsp->produced_cargo[i] = CT_INVALID;
+						indsp->produced_cargo[i] = INVALID_CARGO;
 					}
 				}
 				break;
@@ -3771,7 +3771,7 @@ static ChangeInfoResult IndustriesChangeInfo(uint indid, int numinfo, int prop, 
 						CargoID cargo = GetCargoTranslation(buf->ReadByte(), _cur.grffile);
 						indsp->accepts_cargo[i] = cargo;
 					} else {
-						indsp->accepts_cargo[i] = CT_INVALID;
+						indsp->accepts_cargo[i] = INVALID_CARGO;
 					}
 				}
 				break;
@@ -5515,7 +5515,7 @@ static CargoID TranslateCargo(uint8_t feature, uint8_t ctype)
 		/* No cargo table, so use bitnum values */
 		if (ctype >= 32) {
 			GrfMsg(1, "TranslateCargo: Cargo bitnum {} out of range (max 31), skipping.", ctype);
-			return CT_INVALID;
+			return INVALID_CARGO;
 		}
 
 		for (const CargoSpec *cs : CargoSpec::Iterate()) {
@@ -5526,30 +5526,30 @@ static CargoID TranslateCargo(uint8_t feature, uint8_t ctype)
 		}
 
 		GrfMsg(5, "TranslateCargo: Cargo bitnum {} not available in this climate, skipping.", ctype);
-		return CT_INVALID;
+		return INVALID_CARGO;
 	}
 
 	/* Check if the cargo type is out of bounds of the cargo translation table */
 	if (ctype >= _cur.grffile->cargo_list.size()) {
 		GrfMsg(1, "TranslateCargo: Cargo type {} out of range (max {}), skipping.", ctype, (unsigned int)_cur.grffile->cargo_list.size() - 1);
-		return CT_INVALID;
+		return INVALID_CARGO;
 	}
 
 	/* Look up the cargo label from the translation table */
 	CargoLabel cl = _cur.grffile->cargo_list[ctype];
 	if (cl == 0) {
 		GrfMsg(5, "TranslateCargo: Cargo type {} not available in this climate, skipping.", ctype);
-		return CT_INVALID;
+		return INVALID_CARGO;
 	}
 
-	ctype = GetCargoIDByLabel(cl);
-	if (!IsValidCargoID(ctype)) {
+	CargoID cid = GetCargoIDByLabel(cl);
+	if (!IsValidCargoID(cid)) {
 		GrfMsg(5, "TranslateCargo: Cargo '{:c}{:c}{:c}{:c}' unsupported, skipping.", GB(cl, 24, 8), GB(cl, 16, 8), GB(cl, 8, 8), GB(cl, 0, 8));
-		return CT_INVALID;
+		return INVALID_CARGO;
 	}
 
-	GrfMsg(6, "TranslateCargo: Cargo '{:c}{:c}{:c}{:c}' mapped to cargo type {}.", GB(cl, 24, 8), GB(cl, 16, 8), GB(cl, 8, 8), GB(cl, 0, 8), ctype);
-	return ctype;
+	GrfMsg(6, "TranslateCargo: Cargo '{:c}{:c}{:c}{:c}' mapped to cargo type {}.", GB(cl, 24, 8), GB(cl, 16, 8), GB(cl, 8, 8), GB(cl, 0, 8), cid);
+	return cid;
 }
 
 
@@ -5612,8 +5612,8 @@ static void VehicleMapSpriteGroup(ByteReader *buf, byte feature, uint8_t idcount
 
 		GrfMsg(8, "VehicleMapSpriteGroup: * [{}] Cargo type 0x{:X}, group id 0x{:02X}", c, ctype, groupid);
 
-		ctype = TranslateCargo(feature, ctype);
-		if (!IsValidCargoID(ctype)) continue;
+		CargoID cid = TranslateCargo(feature, ctype);
+		if (!IsValidCargoID(cid)) continue;
 
 		for (uint i = 0; i < idcount; i++) {
 			EngineID engine = engines[i];
@@ -5621,9 +5621,9 @@ static void VehicleMapSpriteGroup(ByteReader *buf, byte feature, uint8_t idcount
 			GrfMsg(7, "VehicleMapSpriteGroup: [{}] Engine {}...", i, engine);
 
 			if (wagover) {
-				SetWagonOverrideSprites(engine, ctype, _cur.spritegroups[groupid], last_engines, last_engines_count);
+				SetWagonOverrideSprites(engine, cid, _cur.spritegroups[groupid], last_engines, last_engines_count);
 			} else {
-				SetCustomEngineSprites(engine, ctype, _cur.spritegroups[groupid]);
+				SetCustomEngineSprites(engine, cid, _cur.spritegroups[groupid]);
 			}
 		}
 	}
@@ -9055,12 +9055,12 @@ static void CalculateRefitMasks()
 		}
 
 		/* Clear invalid cargoslots (from default vehicles or pre-NewCargo GRFs) */
-		if (IsValidCargoID(ei->cargo_type) && !HasBit(_cargo_mask, ei->cargo_type)) ei->cargo_type = CT_INVALID;
+		if (IsValidCargoID(ei->cargo_type) && !HasBit(_cargo_mask, ei->cargo_type)) ei->cargo_type = INVALID_CARGO;
 
 		/* Ensure that the vehicle is either not refittable, or that the default cargo is one of the refittable cargoes.
 		 * Note: Vehicles refittable to no cargo are handle differently to vehicle refittable to a single cargo. The latter might have subtypes. */
 		if (!only_defaultcargo && (e->type != VEH_SHIP || e->u.ship.old_refittable) && IsValidCargoID(ei->cargo_type) && !HasBit(ei->refit_mask, ei->cargo_type)) {
-			ei->cargo_type = CT_INVALID;
+			ei->cargo_type = INVALID_CARGO;
 		}
 
 		/* Check if this engine's cargo type is valid. If not, set to the first refittable

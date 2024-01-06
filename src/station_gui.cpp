@@ -1750,7 +1750,7 @@ struct StationViewWindow : public Window {
 	 * @param cargo Current cargo being drawn (if cargo column has been passed).
 	 * @return row (in "pos" counting) after the one we have last drawn to.
 	 */
-	int DrawEntries(CargoDataEntry *entry, const Rect &r, int pos, int maxrows, int column, CargoID cargo = CT_INVALID)
+	int DrawEntries(CargoDataEntry *entry, const Rect &r, int pos, int maxrows, int column, CargoID cargo = INVALID_CARGO)
 	{
 		if (this->sortings[column] == CargoSortType::AsGrouping) {
 			if (this->groupings[column] != GR_CARGO) {
