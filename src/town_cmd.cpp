@@ -558,7 +558,7 @@ static void TownGenerateCargoOriginal(Town *t, TownProductionEffect tpe, uint8_t
 		uint32_t r = Random();
 		if (GB(r, 0, 8) < rate) {
 			CargoID cid = cs->Index();
-			uint amt = GB(r, 0, 8) / 8 + 1;
+			uint amt = (GB(r, 0, 8) * cs->town_production_multiplier / TOWN_PRODUCTION_DIVISOR) / 8 + 1;
 
 			TownGenerateCargo(t, cid, amt, stations, true);
 		}
@@ -583,7 +583,7 @@ static void TownGenerateCargoBinominal(Town *t, TownProductionEffect tpe, uint8_
 		uint32_t genmask = (genmax >= 32) ? 0xFFFFFFFF : ((1 << genmax) - 1);
 
 		/* Mask random value by potential pax and count number of actual pax. */
-		uint amt = CountBits(r & genmask);
+		uint amt = CountBits(r & genmask) * cs->town_production_multiplier / TOWN_PRODUCTION_DIVISOR;
 
 		TownGenerateCargo(t, cid, amt, stations, true);
 	}

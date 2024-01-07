@@ -65,6 +65,8 @@ enum CargoClass {
 
 static const byte INVALID_CARGO_BITNUM = 0xFF; ///< Constant representing invalid cargo
 
+static const uint TOWN_PRODUCTION_DIVISOR = 256;
+
 /** Specification of a cargo type. */
 struct CargoSpec {
 	CargoLabel label;                ///< Unique label of the cargo type.
@@ -80,6 +82,7 @@ struct CargoSpec {
 	bool is_freight;                 ///< Cargo type is considered to be freight (affects train freight multiplier).
 	TownAcceptanceEffect town_acceptance_effect; ///< The effect that delivering this cargo type has on towns. Also affects destination of subsidies.
 	TownProductionEffect town_production_effect{INVALID_TPE}; ///< The effect on town cargo production.
+	uint16_t town_production_multiplier{TOWN_PRODUCTION_DIVISOR}; ///< Town production multipler, if commanded by TownProductionEffect.
 	uint8_t callback_mask;             ///< Bitmask of cargo callbacks that have to be called
 
 	StringID name;                   ///< Name of this type of cargo.
