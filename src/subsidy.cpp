@@ -286,9 +286,13 @@ bool FindSubsidyPassengerRoute()
 {
 	if (!Subsidy::CanAllocateItem()) return false;
 
+	/* Pick a random TPE_PASSENGER type */
+	uint32_t r = RandomRange(static_cast<uint>(CargoSpec::town_production_cargoes[TPE_PASSENGERS].size()));
+	CargoID cid = CargoSpec::town_production_cargoes[TPE_PASSENGERS][r]->Index();
+
 	const Town *src = Town::GetRandom();
 	if (src->cache.population < SUBSIDY_PAX_MIN_POPULATION ||
-			src->GetPercentTransported(CT_PASSENGERS) > SUBSIDY_MAX_PCT_TRANSPORTED) {
+			src->GetPercentTransported(cid) > SUBSIDY_MAX_PCT_TRANSPORTED) {
 		return false;
 	}
 
@@ -298,9 +302,9 @@ bool FindSubsidyPassengerRoute()
 	}
 
 	if (DistanceManhattan(src->xy, dst->xy) > SUBSIDY_MAX_DISTANCE) return false;
-	if (CheckSubsidyDuplicate(CT_PASSENGERS, SourceType::Town, src->index, SourceType::Town, dst->index)) return false;
+	if (CheckSubsidyDuplicate(cid, SourceType::Town, src->index, SourceType::Town, dst->index)) return false;
 
-	CreateSubsidy(CT_PASSENGERS, SourceType::Town, src->index, SourceType::Town, dst->index);
+	CreateSubsidy(cid, SourceType::Town, src->index, SourceType::Town, dst->index);
 
 	return true;
 }
@@ -332,7 +336,9 @@ bool FindSubsidyTownCargoRoute()
 	}
 
 	/* Passenger subsidies are not handled here. */
-	town_cargo_produced[CT_PASSENGERS] = 0;
+	for (const CargoSpec *cs : CargoSpec::town_production_cargoes[TPE_PASSENGERS]) {
+		town_cargo_produced[cs->Index()] = 0;
+	}
 
 	uint8_t cargo_count = town_cargo_produced.GetCount();
 
