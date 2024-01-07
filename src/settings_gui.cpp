@@ -1794,11 +1794,14 @@ static SettingsContainer &GetSettingsTree()
 			{
 				construction->Add(new SettingEntry("gui.link_terraform_toolbar"));
 				construction->Add(new SettingEntry("gui.persistent_buildingtools"));
-				construction->Add(new SettingEntry("gui.quick_goto"));
 				construction->Add(new SettingEntry("gui.default_rail_type"));
+				construction->Add(new SettingEntry("gui.semaphore_build_before"));
+				construction->Add(new SettingEntry("gui.signal_gui_mode"));
+				construction->Add(new SettingEntry("gui.cycle_signal_types"));
+				construction->Add(new SettingEntry("gui.drag_signals_fixed_distance"));
+				construction->Add(new SettingEntry("gui.auto_remove_signals"));
 			}
 
-			interface->Add(new SettingEntry("gui.fast_forward_speed_limit"));
 			interface->Add(new SettingEntry("gui.toolbar_pos"));
 			interface->Add(new SettingEntry("gui.statusbar_pos"));
 			interface->Add(new SettingEntry("gui.prefer_teamchat"));
@@ -1836,13 +1839,6 @@ static SettingsContainer &GetSettingsTree()
 
 		SettingsPage *company = main->Add(new SettingsPage(STR_CONFIG_SETTING_COMPANY));
 		{
-			company->Add(new SettingEntry("gui.semaphore_build_before"));
-			company->Add(new SettingEntry("gui.cycle_signal_types"));
-			company->Add(new SettingEntry("gui.signal_gui_mode"));
-			company->Add(new SettingEntry("gui.drag_signals_fixed_distance"));
-			company->Add(new SettingEntry("gui.auto_remove_signals"));
-			company->Add(new SettingEntry("gui.new_nonstop"));
-			company->Add(new SettingEntry("gui.stop_location"));
 			company->Add(new SettingEntry("gui.starting_colour"));
 			company->Add(new SettingEntry("gui.starting_colour_secondary"));
 			company->Add(new SettingEntry("company.engine_renew"));
@@ -1884,6 +1880,7 @@ static SettingsContainer &GetSettingsTree()
 
 			SettingsPage *routing = vehicles->Add(new SettingsPage(STR_CONFIG_SETTING_VEHICLES_ROUTING));
 			{
+				routing->Add(new SettingEntry("vehicle.road_side"));
 				routing->Add(new SettingEntry("pf.pathfinder_for_trains"));
 				routing->Add(new SettingEntry("difficulty.line_reverse_mode"));
 				routing->Add(new SettingEntry("pf.reverse_at_signals"));
@@ -1892,8 +1889,12 @@ static SettingsContainer &GetSettingsTree()
 				routing->Add(new SettingEntry("pf.pathfinder_for_ships"));
 			}
 
-			vehicles->Add(new SettingEntry("order.no_servicing_if_no_breakdowns"));
-			vehicles->Add(new SettingEntry("order.serviceathelipad"));
+			SettingsPage *orders = vehicles->Add(new SettingsPage(STR_CONFIG_SETTING_VEHICLES_ORDERS));
+			{
+				orders->Add(new SettingEntry("gui.new_nonstop"));
+				orders->Add(new SettingEntry("gui.quick_goto"));
+				orders->Add(new SettingEntry("gui.stop_location"));
+			}
 		}
 
 		SettingsPage *limitations = main->Add(new SettingsPage(STR_CONFIG_SETTING_LIMITATIONS));
@@ -1914,6 +1915,7 @@ static SettingsContainer &GetSettingsTree()
 			limitations->Add(new SettingEntry("vehicle.max_train_length"));
 			limitations->Add(new SettingEntry("station.station_spread"));
 			limitations->Add(new SettingEntry("station.distant_join_stations"));
+			limitations->Add(new SettingEntry("station.modified_catchment"));
 			limitations->Add(new SettingEntry("construction.road_stop_on_town_road"));
 			limitations->Add(new SettingEntry("construction.road_stop_on_competitor_road"));
 			limitations->Add(new SettingEntry("construction.crossing_with_competitor"));
@@ -1925,8 +1927,10 @@ static SettingsContainer &GetSettingsTree()
 		{
 			disasters->Add(new SettingEntry("difficulty.disasters"));
 			disasters->Add(new SettingEntry("difficulty.economy"));
-			disasters->Add(new SettingEntry("difficulty.vehicle_breakdowns"));
 			disasters->Add(new SettingEntry("vehicle.plane_crashes"));
+			disasters->Add(new SettingEntry("difficulty.vehicle_breakdowns"));
+			disasters->Add(new SettingEntry("order.no_servicing_if_no_breakdowns"));
+			disasters->Add(new SettingEntry("order.serviceathelipad"));
 		}
 
 		SettingsPage *genworld = main->Add(new SettingsPage(STR_CONFIG_SETTING_GENWORLD));
@@ -1940,18 +1944,17 @@ static SettingsContainer &GetSettingsTree()
 			genworld->Add(new SettingEntry("game_creation.snow_line_height"));
 			genworld->Add(new SettingEntry("game_creation.desert_coverage"));
 			genworld->Add(new SettingEntry("game_creation.amount_of_rivers"));
-			genworld->Add(new SettingEntry("game_creation.tree_placer"));
-			genworld->Add(new SettingEntry("vehicle.road_side"));
-			genworld->Add(new SettingEntry("economy.larger_towns"));
-			genworld->Add(new SettingEntry("economy.initial_city_size"));
-			genworld->Add(new SettingEntry("economy.town_layout"));
-			genworld->Add(new SettingEntry("difficulty.industry_density"));
-			genworld->Add(new SettingEntry("gui.pause_on_newgame"));
-			genworld->Add(new SettingEntry("game_creation.ending_year"));
 		}
 
 		SettingsPage *environment = main->Add(new SettingsPage(STR_CONFIG_SETTING_ENVIRONMENT));
 		{
+			SettingsPage *time = environment->Add(new SettingsPage(STR_CONFIG_SETTING_ENVIRONMENT_TIME));
+			{
+				time->Add(new SettingEntry("game_creation.ending_year"));
+				time->Add(new SettingEntry("gui.pause_on_newgame"));
+				time->Add(new SettingEntry("gui.fast_forward_speed_limit"));
+			}
+
 			SettingsPage *authorities = environment->Add(new SettingsPage(STR_CONFIG_SETTING_ENVIRONMENT_AUTHORITIES));
 			{
 				authorities->Add(new SettingEntry("difficulty.town_council_tolerance"));
@@ -1968,11 +1971,15 @@ static SettingsContainer &GetSettingsTree()
 				towns->Add(new SettingEntry("economy.allow_town_roads"));
 				towns->Add(new SettingEntry("economy.allow_town_level_crossings"));
 				towns->Add(new SettingEntry("economy.found_town"));
+				towns->Add(new SettingEntry("economy.town_layout"));
+				towns->Add(new SettingEntry("economy.larger_towns"));
+				towns->Add(new SettingEntry("economy.initial_city_size"));
 				towns->Add(new SettingEntry("economy.town_cargogen_mode"));
 			}
 
 			SettingsPage *industries = environment->Add(new SettingsPage(STR_CONFIG_SETTING_ENVIRONMENT_INDUSTRIES));
 			{
+				industries->Add(new SettingEntry("difficulty.industry_density"));
 				industries->Add(new SettingEntry("construction.raw_industry_construction"));
 				industries->Add(new SettingEntry("construction.industry_platform"));
 				industries->Add(new SettingEntry("economy.multiple_industry_per_town"));
@@ -1995,8 +2002,11 @@ static SettingsContainer &GetSettingsTree()
 				cdist->Add(new SettingEntry("linkgraph.short_path_saturation"));
 			}
 
-			environment->Add(new SettingEntry("station.modified_catchment"));
-			environment->Add(new SettingEntry("construction.extra_tree_placement"));
+			SettingsPage *trees = environment->Add(new SettingsPage(STR_CONFIG_SETTING_ENVIRONMENT_TREES));
+			{
+				trees->Add(new SettingEntry("game_creation.tree_placer"));
+				trees->Add(new SettingEntry("construction.extra_tree_placement"));
+			}
 		}
 
 		SettingsPage *ai = main->Add(new SettingsPage(STR_CONFIG_SETTING_AI));
