@@ -33,6 +33,20 @@ enum TownAcceptanceEffect : byte {
 	NUM_TAE = TAE_END, ///< Amount of town effects.
 };
 
+/** Town effect when producing cargo. */
+enum TownProductionEffect : byte {
+	TPE_NONE, ///< Town will not produce this cargo type.
+	TPE_PASSENGERS, ///< Cargo behaves passenger-like for production.
+	TPE_MAIL, ///< Cargo behaves mail-like for production.
+	NUM_TPE,
+
+	/**
+	 * Invalid town production effect. Used as a sentinel to indicate if a NewGRF has explicitly set an effect.
+	 * This does not 'exist' after cargo types are finalised.
+	 */
+	INVALID_TPE,
+};
+
 /** Cargo classes. */
 enum CargoClass {
 	CC_NOAVAILABLE  = 0,       ///< No cargo class has been specified
@@ -65,6 +79,7 @@ struct CargoSpec {
 
 	bool is_freight;                 ///< Cargo type is considered to be freight (affects train freight multiplier).
 	TownAcceptanceEffect town_acceptance_effect; ///< The effect that delivering this cargo type has on towns. Also affects destination of subsidies.
+	TownProductionEffect town_production_effect{INVALID_TPE}; ///< The effect on town cargo production.
 	uint8_t callback_mask;             ///< Bitmask of cargo callbacks that have to be called
 
 	StringID name;                   ///< Name of this type of cargo.
@@ -170,6 +185,9 @@ struct CargoSpec {
 	 * @return an iterable ensemble of all valid CargoSpec
 	 */
 	static IterateWrapper Iterate(size_t from = 0) { return IterateWrapper(from); }
+
+	/** List of cargo specs for each Town Product Effect. */
+	static std::array<std::vector<const CargoSpec *>, NUM_TPE> town_production_cargoes;
 
 private:
 	static CargoSpec array[NUM_CARGO]; ///< Array holding all CargoSpecs

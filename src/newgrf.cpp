@@ -9186,6 +9186,14 @@ static void FinaliseEngineArray()
 void FinaliseCargoArray()
 {
 	for (CargoSpec &cs : CargoSpec::array) {
+		if (cs.town_production_effect == INVALID_TPE) {
+			/* Set default town production effect by cargo label. */
+			switch (cs.label) {
+				case 'PASS': cs.town_production_effect = TPE_PASSENGERS; break;
+				case 'MAIL': cs.town_production_effect = TPE_MAIL; break;
+				default:     cs.town_production_effect = TPE_NONE; break;
+			}
+		}
 		if (!cs.IsValid()) {
 			cs.name = cs.name_single = cs.units_volume = STR_NEWGRF_INVALID_CARGO;
 			cs.quantifier = STR_NEWGRF_INVALID_CARGO_QUANTITY;
