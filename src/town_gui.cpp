@@ -408,17 +408,17 @@ public:
 		tr.top += GetCharacterHeight(FS_NORMAL);
 
 		StringID str_last_period = TimerGameEconomy::UsingWallclockUnits() ? STR_TOWN_VIEW_CARGO_LAST_MINUTE_MAX : STR_TOWN_VIEW_CARGO_LAST_MONTH_MAX;
-		SetDParam(0, 1 << CT_PASSENGERS);
-		SetDParam(1, this->town->supplied[CT_PASSENGERS].old_act);
-		SetDParam(2, this->town->supplied[CT_PASSENGERS].old_max);
-		DrawString(tr, str_last_period);
-		tr.top += GetCharacterHeight(FS_NORMAL);
 
-		SetDParam(0, 1 << CT_MAIL);
-		SetDParam(1, this->town->supplied[CT_MAIL].old_act);
-		SetDParam(2, this->town->supplied[CT_MAIL].old_max);
-		DrawString(tr, str_last_period);
-		tr.top += GetCharacterHeight(FS_NORMAL);
+		for (auto tpe : {TPE_PASSENGERS, TPE_MAIL}) {
+			for (const CargoSpec *cs : CargoSpec::town_production_cargoes[tpe]) {
+				CargoID cid = cs->Index();
+				SetDParam(0, 1ULL << cid);
+				SetDParam(1, this->town->supplied[cid].old_act);
+				SetDParam(2, this->town->supplied[cid].old_max);
+				DrawString(tr, str_last_period);
+				tr.top += GetCharacterHeight(FS_NORMAL);
+			}
+		}
 
 		bool first = true;
 		for (int i = TAE_BEGIN; i < TAE_END; i++) {
@@ -539,7 +539,7 @@ public:
 	 */
 	uint GetDesiredInfoHeight(int width) const
 	{
-		uint aimed_height = 3 * GetCharacterHeight(FS_NORMAL);
+		uint aimed_height = static_cast<uint>(1 + CargoSpec::town_production_cargoes[TPE_PASSENGERS].size() + CargoSpec::town_production_cargoes[TPE_MAIL].size()) * GetCharacterHeight(FS_NORMAL);
 
 		bool first = true;
 		for (int i = TAE_BEGIN; i < TAE_END; i++) {
