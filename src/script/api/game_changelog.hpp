@@ -85,6 +85,11 @@
  * \li GSError::ERR_PRECONDITION_TOO_MANY_PARAMETERS, that error is never returned anymore.
  *
  * Other changes:
+ * \li GSGroupList accepts an optional filter function
+ * \li GSIndustryList accepts an optional filter function
+ * \li GSSignList accepts an optional filter function
+ * \li GSSubsidyList accepts an optional filter function
+ * \li GSTownList accepts an optional filter function
  * \li GSVehicleList accepts an optional filter function
  *
  * \b 13.0

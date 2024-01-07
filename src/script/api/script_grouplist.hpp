@@ -20,10 +20,35 @@
  */
 class ScriptGroupList : public ScriptList {
 public:
+#ifdef DOXYGEN_API
 	/**
 	 * @game @pre ScriptCompanyMode::IsValid().
 	 */
 	ScriptGroupList();
+
+	/**
+	 * Apply a filter when building the list.
+	 * @param filter_function The function which will be doing the filtering.
+	 * @param params The params to give to the filters (minus the first param,
+	 *  which is always the index-value).
+	 * @game @pre ScriptCompanyMode::IsValid().
+	 * @note You can write your own filters and use them. Just remember that
+	 *  the first parameter should be the index-value, and it should return
+	 *  a bool.
+	 * @note Example:
+	 *  function IsType(group_id, type)
+	 *  {
+	 *    return ScriptGroup.GetVehicleType(group_id) == type;
+	 *  }
+	 *  ScriptGroupList(IsType, ScriptVehicle.VT_ROAD);
+	 */
+	ScriptGroupList(void *filter_function, int params, ...);
+#else
+	/**
+	 * The constructor wrapper from Squirrel.
+	 */
+	ScriptGroupList(HSQUIRRELVM vm);
+#endif /* DOXYGEN_API */
 };
 
 #endif /* SCRIPT_GROUPLIST_HPP */

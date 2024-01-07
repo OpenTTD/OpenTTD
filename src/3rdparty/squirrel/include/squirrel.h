@@ -361,6 +361,15 @@ void sq_setdebughook(HSQUIRRELVM v);
 #define sq_isweakref(o) ((o)._type==OT_WEAKREF)
 #define sq_type(o) ((o)._type)
 
+/* Limit the total number of ops that can be consumed by an operation */
+struct SQOpsLimiter {
+	SQOpsLimiter(HSQUIRRELVM v, SQInteger ops, const char *label);
+	~SQOpsLimiter();
+private:
+	HSQUIRRELVM _v;
+	SQInteger _ops;
+};
+
 /* deprecated */
 #define sq_createslot(v,n) sq_newslot(v,n,SQFalse)
 
