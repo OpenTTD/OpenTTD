@@ -541,9 +541,52 @@ static void TownGenerateCargo(Town *t, CargoID ct, uint amount, StationFinder &s
 	amount = ScaleByCargoScale(amount, true);
 
 	/* Actually generate cargo and update town statistics. */
-	uint moved = MoveGoodsToStation(ct, amount, SourceType::Town, t->index, stations.GetStations());
 	t->supplied[ct].new_max += amount;
-	t->supplied[ct].new_act += moved;
+	t->supplied[ct].new_act += MoveGoodsToStation(ct, amount, SourceType::Town, t->index, stations.GetStations());;
+}
+
+/**
+ * Generate cargo for a house using the original algorithm.
+ * @param t The current town.
+ * @param tpe The town production effect.
+ * @param rate The town's product rate for this production.
+ * @param stations Available stations for this house.
+ */
+static void TownGenerateCargoOriginal(Town *t, TownProductionEffect tpe, uint8_t rate, StationFinder &stations)
+{
+	for (const CargoSpec *cs : CargoSpec::town_production_cargoes[tpe]) {
+		uint32_t r = Random();
+		if (GB(r, 0, 8) < rate) {
+			CargoID cid = cs->Index();
+			uint amt = GB(r, 0, 8) / 8 + 1;
+
+			TownGenerateCargo(t, cid, amt, stations, true);
+		}
+	}
+}
+
+/**
+ * Generate cargo for a house using the binominal algorithm.
+ * @param t The current town.
+ * @param tpe The town production effect.
+ * @param rate The town's product rate for this production.
+ * @param stations Available stations for this house.
+ */
+static void TownGenerateCargoBinominal(Town *t, TownProductionEffect tpe, uint8_t rate, StationFinder &stations)
+{
+	for (const CargoSpec *cs : CargoSpec::town_production_cargoes[tpe]) {
+		CargoID cid = cs->Index();
+		uint32_t r = Random();
+
+		/* Make a bitmask with up to 32 bits set, one for each potential pax. */
+		int genmax = (rate + 7) / 8;
+		uint32_t genmask = (genmax >= 32) ? 0xFFFFFFFF : ((1 << genmax) - 1);
+
+		/* Mask random value by potential pax and count number of actual pax. */
+		uint amt = CountBits(r & genmask);
+
+		TownGenerateCargo(t, cid, amt, stations, true);
+	}
 }
 
 /**
@@ -600,15 +643,8 @@ static void TileLoop_Town(TileIndex tile)
 		switch (_settings_game.economy.town_cargogen_mode) {
 			case TCGM_ORIGINAL:
 				/* Original (quadratic) cargo generation algorithm */
-				if (GB(r, 0, 8) < hs->population) {
-					uint amt = GB(r, 0, 8) / 8 + 1;
-					TownGenerateCargo(t, CT_PASSENGERS, amt, stations, true);
-				}
-
-				if (GB(r, 8, 8) < hs->mail_generation) {
-					uint amt = GB(r, 8, 8) / 8 + 1;
-					TownGenerateCargo(t, CT_MAIL, amt, stations, true);
-				}
+				TownGenerateCargoOriginal(t, TPE_PASSENGERS, hs->population, stations);
+				TownGenerateCargoOriginal(t, TPE_MAIL, hs->mail_generation, stations);
 				break;
 
 			case TCGM_BITCOUNT:
@@ -616,20 +652,8 @@ static void TileLoop_Town(TileIndex tile)
 				/* Reduce generation rate to a 1/4, using tile bits to spread out distribution.
 				 * As tick counter is incremented by 256 between each call, we ignore the lower 8 bits. */
 				if (GB(TimerGameTick::counter, 8, 2) == GB(tile.base(), 0, 2)) {
-					/* Make a bitmask with up to 32 bits set, one for each potential pax */
-					int genmax = (hs->population + 7) / 8;
-					uint32_t genmask = (genmax >= 32) ? 0xFFFFFFFF : ((1 << genmax) - 1);
-					/* Mask random value by potential pax and count number of actual pax */
-					uint amt = CountBits(r & genmask);
-					/* Adjust and apply */
-					TownGenerateCargo(t, CT_PASSENGERS, amt, stations, true);
-
-					/* Do the same for mail, with a fresh random */
-					r = Random();
-					genmax = (hs->mail_generation + 7) / 8;
-					genmask = (genmax >= 32) ? 0xFFFFFFFF : ((1 << genmax) - 1);
-					amt = CountBits(r & genmask);
-					TownGenerateCargo(t, CT_MAIL, amt, stations, true);
+					TownGenerateCargoBinominal(t, TPE_PASSENGERS, hs->population, stations);
+					TownGenerateCargoBinominal(t, TPE_MAIL, hs->mail_generation, stations);
 				}
 				break;
 
@@ -731,10 +755,14 @@ static void AddProducedCargo_Town(TileIndex tile, CargoArray &produced)
 		}
 	} else {
 		if (hs->population > 0) {
-			produced[CT_PASSENGERS]++;
+			for (const CargoSpec *cs : CargoSpec::town_production_cargoes[TPE_PASSENGERS]) {
+				produced[cs->Index()]++;
+			}
 		}
 		if (hs->mail_generation > 0) {
-			produced[CT_MAIL]++;
+			for (const CargoSpec *cs : CargoSpec::town_production_cargoes[TPE_MAIL]) {
+				produced[cs->Index()]++;
+			}
 		}
 	}
 }
@@ -1883,8 +1911,12 @@ void UpdateTownRadius(Town *t)
  */
 void UpdateTownMaxPass(Town *t)
 {
-	t->supplied[CT_PASSENGERS].old_max = ScaleByCargoScale(t->cache.population >> 3, true);
-	t->supplied[CT_MAIL].old_max = ScaleByCargoScale(t->cache.population >> 4, true);
+	for (const CargoSpec *cs : CargoSpec::town_production_cargoes[TPE_PASSENGERS]) {
+		t->supplied[cs->Index()].old_max = ScaleByCargoScale(t->cache.population >> 3, true);
+	}
+	for (const CargoSpec *cs : CargoSpec::town_production_cargoes[TPE_MAIL]) {
+		t->supplied[cs->Index()].old_max = ScaleByCargoScale(t->cache.population >> 4, true);
+	}
 }
 
 static void UpdateTownGrowthRate(Town *t);
