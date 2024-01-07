@@ -2225,15 +2225,15 @@ bool AfterLoadGame()
 				s->remaining = 12 - s->remaining; // convert "age" to "remaining"
 				s->awarded = INVALID_COMPANY; // not awarded to anyone
 				const CargoSpec *cs = CargoSpec::Get(s->cargo_type);
-				switch (cs->town_effect) {
-					case TE_PASSENGERS:
-					case TE_MAIL:
+				switch (cs->town_acceptance_effect) {
+					case TAE_PASSENGERS:
+					case TAE_MAIL:
 						/* Town -> Town */
 						s->src_type = s->dst_type = SourceType::Town;
 						if (Town::IsValidID(s->src) && Town::IsValidID(s->dst)) continue;
 						break;
-					case TE_GOODS:
-					case TE_FOOD:
+					case TAE_GOODS:
+					case TAE_FOOD:
 						/* Industry -> Town */
 						s->src_type = SourceType::Industry;
 						s->dst_type = SourceType::Town;
@@ -2251,9 +2251,9 @@ bool AfterLoadGame()
 				 * Town -> Town subsidies are converted using simple heuristic */
 				s->remaining = 24 - s->remaining; // convert "age of awarded subsidy" to "remaining"
 				const CargoSpec *cs = CargoSpec::Get(s->cargo_type);
-				switch (cs->town_effect) {
-					case TE_PASSENGERS:
-					case TE_MAIL: {
+				switch (cs->town_acceptance_effect) {
+					case TAE_PASSENGERS:
+					case TAE_MAIL: {
 						/* Town -> Town */
 						const Station *ss = Station::GetIfValid(s->src);
 						const Station *sd = Station::GetIfValid(s->dst);
@@ -2813,12 +2813,12 @@ bool AfterLoadGame()
 			/* Set the default cargo requirement for town growth */
 			switch (_settings_game.game_creation.landscape) {
 				case LT_ARCTIC:
-					if (FindFirstCargoWithTownEffect(TE_FOOD) != nullptr) t->goal[TE_FOOD] = TOWN_GROWTH_WINTER;
+					if (FindFirstCargoWithTownAcceptanceEffect(TAE_FOOD) != nullptr) t->goal[TAE_FOOD] = TOWN_GROWTH_WINTER;
 					break;
 
 				case LT_TROPIC:
-					if (FindFirstCargoWithTownEffect(TE_FOOD) != nullptr) t->goal[TE_FOOD] = TOWN_GROWTH_DESERT;
-					if (FindFirstCargoWithTownEffect(TE_WATER) != nullptr) t->goal[TE_WATER] = TOWN_GROWTH_DESERT;
+					if (FindFirstCargoWithTownAcceptanceEffect(TAE_FOOD) != nullptr) t->goal[TAE_FOOD] = TOWN_GROWTH_DESERT;
+					if (FindFirstCargoWithTownAcceptanceEffect(TAE_WATER) != nullptr) t->goal[TAE_WATER] = TOWN_GROWTH_DESERT;
 					break;
 			}
 		}

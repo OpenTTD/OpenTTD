@@ -99,14 +99,14 @@
 		case 0xC9: return GB(ClampTo<uint16_t>(this->t->supplied[CT_MAIL].old_act), 8, 8);
 		case 0xCA: return this->t->GetPercentTransported(CT_PASSENGERS);
 		case 0xCB: return this->t->GetPercentTransported(CT_MAIL);
-		case 0xCC: return this->t->received[TE_FOOD].new_act;
-		case 0xCD: return GB(this->t->received[TE_FOOD].new_act, 8, 8);
-		case 0xCE: return this->t->received[TE_WATER].new_act;
-		case 0xCF: return GB(this->t->received[TE_WATER].new_act, 8, 8);
-		case 0xD0: return this->t->received[TE_FOOD].old_act;
-		case 0xD1: return GB(this->t->received[TE_FOOD].old_act, 8, 8);
-		case 0xD2: return this->t->received[TE_WATER].old_act;
-		case 0xD3: return GB(this->t->received[TE_WATER].old_act, 8, 8);
+		case 0xCC: return this->t->received[TAE_FOOD].new_act;
+		case 0xCD: return GB(this->t->received[TAE_FOOD].new_act, 8, 8);
+		case 0xCE: return this->t->received[TAE_WATER].new_act;
+		case 0xCF: return GB(this->t->received[TAE_WATER].new_act, 8, 8);
+		case 0xD0: return this->t->received[TAE_FOOD].old_act;
+		case 0xD1: return GB(this->t->received[TAE_FOOD].old_act, 8, 8);
+		case 0xD2: return this->t->received[TAE_WATER].old_act;
+		case 0xD3: return GB(this->t->received[TAE_WATER].old_act, 8, 8);
 		case 0xD4: return this->t->road_build_months;
 		case 0xD5: return this->t->fund_buildings_months;
 	}

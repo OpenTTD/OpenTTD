@@ -20,7 +20,7 @@ ScriptTownList::ScriptTownList(HSQUIRRELVM vm)
 
 ScriptTownEffectList::ScriptTownEffectList()
 {
-	for (int i = TE_BEGIN; i < TE_END; i++) {
+	for (int i = TAE_BEGIN; i < TAE_END; i++) {
 		this->AddItem(i);
 	}
 }

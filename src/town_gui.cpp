@@ -421,7 +421,7 @@ public:
 		tr.top += GetCharacterHeight(FS_NORMAL);
 
 		bool first = true;
-		for (int i = TE_BEGIN; i < TE_END; i++) {
+		for (int i = TAE_BEGIN; i < TAE_END; i++) {
 			if (this->town->goal[i] == 0) continue;
 			if (this->town->goal[i] == TOWN_GROWTH_WINTER && (TileHeight(this->town->xy) < LowestSnowLine() || this->town->cache.population <= 90)) continue;
 			if (this->town->goal[i] == TOWN_GROWTH_DESERT && (GetTropicZone(this->town->xy) != TROPICZONE_DESERT || this->town->cache.population <= 60)) continue;
@@ -434,7 +434,7 @@ public:
 
 			bool rtl = _current_text_dir == TD_RTL;
 
-			const CargoSpec *cargo = FindFirstCargoWithTownEffect((TownEffect)i);
+			const CargoSpec *cargo = FindFirstCargoWithTownAcceptanceEffect((TownAcceptanceEffect)i);
 			assert(cargo != nullptr);
 
 			StringID string;
@@ -542,7 +542,7 @@ public:
 		uint aimed_height = 3 * GetCharacterHeight(FS_NORMAL);
 
 		bool first = true;
-		for (int i = TE_BEGIN; i < TE_END; i++) {
+		for (int i = TAE_BEGIN; i < TAE_END; i++) {
 			if (this->town->goal[i] == 0) continue;
 			if (this->town->goal[i] == TOWN_GROWTH_WINTER && (TileHeight(this->town->xy) < LowestSnowLine() || this->town->cache.population <= 90)) continue;
 			if (this->town->goal[i] == TOWN_GROWTH_DESERT && (GetTropicZone(this->town->xy) != TROPICZONE_DESERT || this->town->cache.population <= 60)) continue;
