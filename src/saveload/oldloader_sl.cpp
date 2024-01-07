@@ -601,10 +601,10 @@ static const OldChunks town_chunk[] = {
 
 	OCL_NULL( 2 ),         ///< pct_pass_transported / pct_mail_transported, now computed on the fly
 
-	OCL_SVAR( OC_TTD | OC_UINT16, Town, received[TE_FOOD].new_act ),
-	OCL_SVAR( OC_TTD | OC_UINT16, Town, received[TE_WATER].new_act ),
-	OCL_SVAR( OC_TTD | OC_UINT16, Town, received[TE_FOOD].old_act ),
-	OCL_SVAR( OC_TTD | OC_UINT16, Town, received[TE_WATER].old_act ),
+	OCL_SVAR( OC_TTD | OC_UINT16, Town, received[TAE_FOOD].new_act ),
+	OCL_SVAR( OC_TTD | OC_UINT16, Town, received[TAE_WATER].new_act ),
+	OCL_SVAR( OC_TTD | OC_UINT16, Town, received[TAE_FOOD].old_act ),
+	OCL_SVAR( OC_TTD | OC_UINT16, Town, received[TAE_WATER].old_act ),
 
 	OCL_SVAR(  OC_UINT8, Town, road_build_months ),
 	OCL_SVAR(  OC_UINT8, Town, fund_buildings_months ),

@@ -1136,7 +1136,7 @@ static Money DeliverGoods(int num_pieces, CargoID cargo_type, StationID dest, ui
 
 	/* Increase town's counter for town effects */
 	const CargoSpec *cs = CargoSpec::Get(cargo_type);
-	st->town->received[cs->town_effect].new_act += accepted_total;
+	st->town->received[cs->town_acceptance_effect].new_act += accepted_total;
 
 	/* Determine profit */
 	Money profit = GetTransportedGoodsIncome(accepted_total, distance, periods_in_transit, cargo_type);

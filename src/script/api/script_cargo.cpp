@@ -25,7 +25,7 @@
 
 /* static */ bool ScriptCargo::IsValidTownEffect(TownEffect towneffect_type)
 {
-	return (towneffect_type >= (TownEffect)TE_BEGIN && towneffect_type < (TownEffect)TE_END);
+	return (towneffect_type >= (TownEffect)TAE_BEGIN && towneffect_type < (TownEffect)TAE_END);
 }
 
 /* static */ std::optional<std::string> ScriptCargo::GetName(CargoID cargo_type)
@@ -67,7 +67,7 @@
 {
 	if (!IsValidCargo(cargo_type)) return TE_NONE;
 
-	return (ScriptCargo::TownEffect)::CargoSpec::Get(cargo_type)->town_effect;
+	return (ScriptCargo::TownEffect)::CargoSpec::Get(cargo_type)->town_acceptance_effect;
 }
 
 /* static */ Money ScriptCargo::GetCargoIncome(CargoID cargo_type, SQInteger distance, SQInteger days_in_transit)

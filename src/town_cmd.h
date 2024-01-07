@@ -14,14 +14,14 @@
 #include "company_type.h"
 #include "town_type.h"
 
-enum TownEffect : byte;
+enum TownAcceptanceEffect : byte;
 
 std::tuple<CommandCost, Money, TownID> CmdFoundTown(DoCommandFlag flags, TileIndex tile, TownSize size, bool city, TownLayout layout, bool random_location, uint32_t townnameparts, const std::string &text);
 CommandCost CmdRenameTown(DoCommandFlag flags, TownID town_id, const std::string &text);
 CommandCost CmdDoTownAction(DoCommandFlag flags, TownID town_id, uint8_t action);
 CommandCost CmdTownGrowthRate(DoCommandFlag flags, TownID town_id, uint16_t growth_rate);
 CommandCost CmdTownRating(DoCommandFlag flags, TownID town_id, CompanyID company_id, int16_t rating);
-CommandCost CmdTownCargoGoal(DoCommandFlag flags, TownID town_id, TownEffect te, uint32_t goal);
+CommandCost CmdTownCargoGoal(DoCommandFlag flags, TownID town_id, TownAcceptanceEffect tae, uint32_t goal);
 CommandCost CmdTownSetText(DoCommandFlag flags, TownID town_id, const std::string &text);
 CommandCost CmdExpandTown(DoCommandFlag flags, TownID town_id, uint32_t grow_amount);
 CommandCost CmdDeleteTown(DoCommandFlag flags, TownID town_id);

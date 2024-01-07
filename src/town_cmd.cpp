@@ -1920,12 +1920,12 @@ static void DoCreateTown(Town *t, TileIndex tile, uint32_t townnameparts, TownSi
 	/* Set the default cargo requirement for town growth */
 	switch (_settings_game.game_creation.landscape) {
 		case LT_ARCTIC:
-			if (FindFirstCargoWithTownEffect(TE_FOOD) != nullptr) t->goal[TE_FOOD] = TOWN_GROWTH_WINTER;
+			if (FindFirstCargoWithTownAcceptanceEffect(TAE_FOOD) != nullptr) t->goal[TAE_FOOD] = TOWN_GROWTH_WINTER;
 			break;
 
 		case LT_TROPIC:
-			if (FindFirstCargoWithTownEffect(TE_FOOD) != nullptr) t->goal[TE_FOOD] = TOWN_GROWTH_DESERT;
-			if (FindFirstCargoWithTownEffect(TE_WATER) != nullptr) t->goal[TE_WATER] = TOWN_GROWTH_DESERT;
+			if (FindFirstCargoWithTownAcceptanceEffect(TAE_FOOD) != nullptr) t->goal[TAE_FOOD] = TOWN_GROWTH_DESERT;
+			if (FindFirstCargoWithTownAcceptanceEffect(TAE_WATER) != nullptr) t->goal[TAE_WATER] = TOWN_GROWTH_DESERT;
 			break;
 	}
 
@@ -2874,10 +2874,10 @@ CommandCost CmdRenameTown(DoCommandFlag flags, TownID town_id, const std::string
  * @param effect Town effect of interest
  * @return first active cargo slot with that effect
  */
-const CargoSpec *FindFirstCargoWithTownEffect(TownEffect effect)
+const CargoSpec *FindFirstCargoWithTownAcceptanceEffect(TownAcceptanceEffect effect)
 {
 	for (const CargoSpec *cs : CargoSpec::Iterate()) {
-		if (cs->town_effect == effect) return cs;
+		if (cs->town_acceptance_effect == effect) return cs;
 	}
 	return nullptr;
 }
@@ -2886,25 +2886,25 @@ const CargoSpec *FindFirstCargoWithTownEffect(TownEffect effect)
  * Change the cargo goal of a town.
  * @param flags Type of operation.
  * @param town_id Town ID to cargo game of.
- * @param te TownEffect to change the game of.
+ * @param tae TownEffect to change the game of.
  * @param goal The new goal value.
  * @return Empty cost or an error.
  */
-CommandCost CmdTownCargoGoal(DoCommandFlag flags, TownID town_id, TownEffect te, uint32_t goal)
+CommandCost CmdTownCargoGoal(DoCommandFlag flags, TownID town_id, TownAcceptanceEffect tae, uint32_t goal)
 {
 	if (_current_company != OWNER_DEITY) return CMD_ERROR;
 
-	if (te < TE_BEGIN || te >= TE_END) return CMD_ERROR;
+	if (tae < TAE_BEGIN || tae >= TAE_END) return CMD_ERROR;
 
 	Town *t = Town::GetIfValid(town_id);
 	if (t == nullptr) return CMD_ERROR;
 
 	/* Validate if there is a cargo which is the requested TownEffect */
-	const CargoSpec *cargo = FindFirstCargoWithTownEffect(te);
+	const CargoSpec *cargo = FindFirstCargoWithTownAcceptanceEffect(tae);
 	if (cargo == nullptr) return CMD_ERROR;
 
 	if (flags & DC_EXEC) {
-		t->goal[te] = goal;
+		t->goal[tae] = goal;
 		UpdateTownGrowth(t);
 		InvalidateWindowData(WC_TOWN_VIEW, town_id);
 	}
@@ -3634,7 +3634,7 @@ static void UpdateTownGrowth(Town *t)
 
 	if (t->fund_buildings_months == 0) {
 		/* Check if all goals are reached for this town to grow (given we are not funding it) */
-		for (int i = TE_BEGIN; i < TE_END; i++) {
+		for (int i = TAE_BEGIN; i < TAE_END; i++) {
 			switch (t->goal[i]) {
 				case TOWN_GROWTH_WINTER:
 					if (TileHeight(t->xy) >= GetSnowLine() && t->received[i].old_act == 0 && t->cache.population > 90) return;

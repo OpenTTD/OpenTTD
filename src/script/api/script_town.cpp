@@ -133,7 +133,7 @@
 
 	goal = Clamp<SQInteger>(goal, 0, UINT32_MAX);
 
-	return ScriptObject::Command<CMD_TOWN_CARGO_GOAL>::Do(town_id, (::TownEffect)towneffect_id, goal);
+	return ScriptObject::Command<CMD_TOWN_CARGO_GOAL>::Do(town_id, (::TownAcceptanceEffect)towneffect_id, goal);
 }
 
 /* static */ SQInteger ScriptTown::GetCargoGoal(TownID town_id, ScriptCargo::TownEffect towneffect_id)
