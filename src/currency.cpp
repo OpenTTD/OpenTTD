@@ -69,6 +69,7 @@ static const CurrencySpec origin_currency_specs[CURRENCY_END] = {
 	{   90, "", CF_NOEURO, u8"\u20b9",     "",               "INR", 0, STR_GAME_OPTIONS_CURRENCY_INR    }, ///< Indian Rupee
 	{   19, "", CF_NOEURO, "Rp",           "",               "IDR", 0, STR_GAME_OPTIONS_CURRENCY_IDR    }, ///< Indonesian Rupiah
 	{    5, "", CF_NOEURO, "RM",           "",               "MYR", 0, STR_GAME_OPTIONS_CURRENCY_MYR    }, ///< Malaysian Ringgit
+	{    1, "", 2014,      "",             NBSP "Ls",        "LVL", 1, STR_GAME_OPTIONS_CURRENCY_LVL    }, ///< latvian lats
 };
 
 /** Array of currencies used by the system */
