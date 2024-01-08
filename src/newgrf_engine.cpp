@@ -31,7 +31,7 @@ void SetWagonOverrideSprites(EngineID engine, CargoID cargo, const SpriteGroup *
 {
 	Engine *e = Engine::Get(engine);
 
-	assert(cargo < NUM_CARGO + 2); // Include CT_DEFAULT and CT_PURCHASE pseudo cargoes.
+	assert(cargo < NUM_CARGO + 2); // Include SpriteGroupCargo::SG_DEFAULT and SpriteGroupCargo::SG_PURCHASE pseudo cargoes.
 
 	WagonOverride *wo = &e->overrides.emplace_back();
 	wo->group = group;
@@ -44,7 +44,7 @@ const SpriteGroup *GetWagonOverrideSpriteSet(EngineID engine, CargoID cargo, Eng
 	const Engine *e = Engine::Get(engine);
 
 	for (const WagonOverride &wo : e->overrides) {
-		if (wo.cargo != cargo && wo.cargo != CT_DEFAULT) continue;
+		if (wo.cargo != cargo && wo.cargo != SpriteGroupCargo::SG_DEFAULT) continue;
 		if (std::find(wo.engines.begin(), wo.engines.end(), overriding_engine) != wo.engines.end()) return wo.group;
 	}
 	return nullptr;
@@ -1044,7 +1044,7 @@ VehicleResolverObject::VehicleResolverObject(EngineID engine_type, const Vehicle
 	cached_relative_count(0)
 {
 	if (wagon_override == WO_SELF) {
-		this->root_spritegroup = GetWagonOverrideSpriteSet(engine_type, CT_DEFAULT, engine_type);
+		this->root_spritegroup = GetWagonOverrideSpriteSet(engine_type, SpriteGroupCargo::SG_DEFAULT, engine_type);
 	} else {
 		if (wagon_override != WO_NONE && v != nullptr && v->IsGroundVehicle()) {
 			assert(v->engine_type == engine_type); // overrides make little sense with fake scopes
@@ -1061,9 +1061,9 @@ VehicleResolverObject::VehicleResolverObject(EngineID engine_type, const Vehicle
 
 		if (this->root_spritegroup == nullptr) {
 			const Engine *e = Engine::Get(engine_type);
-			CargoID cargo = v != nullptr ? v->cargo_type : CT_PURCHASE;
+			CargoID cargo = v != nullptr ? v->cargo_type : SpriteGroupCargo::SG_PURCHASE;
 			assert(cargo < lengthof(e->grf_prop.spritegroup));
-			this->root_spritegroup = e->grf_prop.spritegroup[cargo] != nullptr ? e->grf_prop.spritegroup[cargo] : e->grf_prop.spritegroup[CT_DEFAULT];
+			this->root_spritegroup = e->grf_prop.spritegroup[cargo] != nullptr ? e->grf_prop.spritegroup[cargo] : e->grf_prop.spritegroup[SpriteGroupCargo::SG_DEFAULT];
 		}
 	}
 }

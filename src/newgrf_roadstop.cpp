@@ -196,11 +196,11 @@ RoadStopResolverObject::RoadStopResolverObject(const RoadStopSpec *roadstopspec,
 
 	this->town_scope = nullptr;
 
-	CargoID ctype = CT_DEFAULT_NA;
+	CargoID ctype = SpriteGroupCargo::SG_DEFAULT_NA;
 
 	if (st == nullptr) {
 		/* No station, so we are in a purchase list */
-		ctype = CT_PURCHASE;
+		ctype = SpriteGroupCargo::SG_PURCHASE;
 	} else if (Station::IsExpected(st)) {
 		const Station *station = Station::From(st);
 		/* Pick the first cargo that we have waiting */
@@ -214,7 +214,7 @@ RoadStopResolverObject::RoadStopResolverObject(const RoadStopSpec *roadstopspec,
 	}
 
 	if (roadstopspec->grf_prop.spritegroup[ctype] == nullptr) {
-		ctype = CT_DEFAULT;
+		ctype = SpriteGroupCargo::SG_DEFAULT;
 	}
 
 	/* Remember the cargo type we've picked */
