@@ -35,6 +35,7 @@
 #include "string_func.h"
 #include "thread.h"
 #include "tgp.h"
+#include "pathfinder/water_regions.h"
 
 #include "safeguards.h"
 
@@ -173,6 +174,8 @@ static void _GenerateWorld()
 				}
 			}
 		}
+
+		InitializeWaterRegions();
 
 		BasePersistentStorageArray::SwitchMode(PSM_LEAVE_GAMELOOP);
 

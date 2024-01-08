@@ -16,5 +16,7 @@ add_files(
     yapf_rail.cpp
     yapf_road.cpp
     yapf_ship.cpp
+    yapf_ship_regions.h
+    yapf_ship_regions.cpp
     yapf_type.hpp
 )

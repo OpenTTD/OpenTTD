@@ -20,6 +20,7 @@
 #include "ship.h"
 #include "roadveh.h"
 #include "pathfinder/yapf/yapf_cache.h"
+#include "pathfinder/water_regions.h"
 #include "newgrf_sound.h"
 #include "autoslope.h"
 #include "tunnelbridge_map.h"
@@ -561,6 +562,8 @@ CommandCost CmdBuildBridge(DoCommandFlag flags, TileIndex tile_end, TileIndex ti
 				MakeAqueductBridgeRamp(tile_end,   owner, ReverseDiagDir(dir));
 				CheckForDockingTile(tile_start);
 				CheckForDockingTile(tile_end);
+				InvalidateWaterRegion(tile_start);
+				InvalidateWaterRegion(tile_end);
 				break;
 
 			default:
