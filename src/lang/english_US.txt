@@ -959,7 +959,7 @@ STR_GAME_OPTIONS_CURRENCY_UNITS_DROPDOWN_TOOLTIP                :{BLACK}Currency
 
 STR_GAME_OPTIONS_CURRENCY_CODE                                  :{STRING} ({STRING})
 
-###length 42
+###length 43
 STR_GAME_OPTIONS_CURRENCY_GBP                                   :British Pound
 STR_GAME_OPTIONS_CURRENCY_USD                                   :American Dollar
 STR_GAME_OPTIONS_CURRENCY_EUR                                   :Euro
@@ -2055,14 +2055,17 @@ STR_CONFIG_SETTING_ACCOUNTING                                   :Accounting
 STR_CONFIG_SETTING_VEHICLES                                     :Vehicles
 STR_CONFIG_SETTING_VEHICLES_PHYSICS                             :Physics
 STR_CONFIG_SETTING_VEHICLES_ROUTING                             :Routing
+STR_CONFIG_SETTING_VEHICLES_ORDERS                              :Orders
 STR_CONFIG_SETTING_LIMITATIONS                                  :Limitations
 STR_CONFIG_SETTING_ACCIDENTS                                    :Disasters / Accidents
 STR_CONFIG_SETTING_GENWORLD                                     :World generation
 STR_CONFIG_SETTING_ENVIRONMENT                                  :Environment
+STR_CONFIG_SETTING_ENVIRONMENT_TIME                             :Time
 STR_CONFIG_SETTING_ENVIRONMENT_AUTHORITIES                      :Authorities
 STR_CONFIG_SETTING_ENVIRONMENT_TOWNS                            :Towns
 STR_CONFIG_SETTING_ENVIRONMENT_INDUSTRIES                       :Industries
 STR_CONFIG_SETTING_ENVIRONMENT_CARGODIST                        :Cargo distribution
+STR_CONFIG_SETTING_ENVIRONMENT_TREES                            :Trees
 STR_CONFIG_SETTING_AI                                           :Competitors
 STR_CONFIG_SETTING_AI_NPC                                       :Computer players
 STR_CONFIG_SETTING_NETWORK                                      :Network

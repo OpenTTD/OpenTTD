@@ -1024,7 +1024,7 @@ STR_GAME_OPTIONS_CURRENCY_UNITS_FRAME                           :{BLACK}Νομι
 STR_GAME_OPTIONS_CURRENCY_UNITS_DROPDOWN_TOOLTIP                :{BLACK}Επιλογή νομισματικών μονάδων
 
 
-###length 42
+###length 43
 STR_GAME_OPTIONS_CURRENCY_GBP                                   :Στερλίνα Ηνωμένου Βασιλείου
 STR_GAME_OPTIONS_CURRENCY_USD                                   :Δολλάριο Η.Π.Α.
 STR_GAME_OPTIONS_CURRENCY_EUR                                   :Ευρώ

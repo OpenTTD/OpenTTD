@@ -960,7 +960,7 @@ STR_GAME_OPTIONS_CURRENCY_UNITS_DROPDOWN_TOOLTIP                :{BLACK}화폐 �
 
 STR_GAME_OPTIONS_CURRENCY_CODE                                  :{STRING} ({STRING})
 
-###length 42
+###length 43
 STR_GAME_OPTIONS_CURRENCY_GBP                                   :영국 파운드
 STR_GAME_OPTIONS_CURRENCY_USD                                   :미국 달러
 STR_GAME_OPTIONS_CURRENCY_EUR                                   :유로
@@ -2056,14 +2056,17 @@ STR_CONFIG_SETTING_ACCOUNTING                                   :회계
 STR_CONFIG_SETTING_VEHICLES                                     :차량
 STR_CONFIG_SETTING_VEHICLES_PHYSICS                             :물리
 STR_CONFIG_SETTING_VEHICLES_ROUTING                             :경로
+STR_CONFIG_SETTING_VEHICLES_ORDERS                              :경로
 STR_CONFIG_SETTING_LIMITATIONS                                  :제한
 STR_CONFIG_SETTING_ACCIDENTS                                    :재앙 / 사고
 STR_CONFIG_SETTING_GENWORLD                                     :세계 제작
 STR_CONFIG_SETTING_ENVIRONMENT                                  :환경
+STR_CONFIG_SETTING_ENVIRONMENT_TIME                             :시간
 STR_CONFIG_SETTING_ENVIRONMENT_AUTHORITIES                      :지역 당국
 STR_CONFIG_SETTING_ENVIRONMENT_TOWNS                            :도시
 STR_CONFIG_SETTING_ENVIRONMENT_INDUSTRIES                       :산업시설
 STR_CONFIG_SETTING_ENVIRONMENT_CARGODIST                        :화물 분배
+STR_CONFIG_SETTING_ENVIRONMENT_TREES                            :나무
 STR_CONFIG_SETTING_AI                                           :경쟁자
 STR_CONFIG_SETTING_AI_NPC                                       :컴퓨터 플레이어
 STR_CONFIG_SETTING_NETWORK                                      :네트워크

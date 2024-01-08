@@ -1104,7 +1104,7 @@ STR_GAME_OPTIONS_CURRENCY_UNITS_DROPDOWN_TOOLTIP                :{BLACK}Смен
 
 STR_GAME_OPTIONS_CURRENCY_CODE                                  :{STRING} ({STRING})
 
-###length 42
+###length 43
 STR_GAME_OPTIONS_CURRENCY_GBP                                   :Английский фунт
 STR_GAME_OPTIONS_CURRENCY_USD                                   :Доллар США
 STR_GAME_OPTIONS_CURRENCY_EUR                                   :Евро
@@ -2206,14 +2206,17 @@ STR_CONFIG_SETTING_ACCOUNTING                                   :Финансы
 STR_CONFIG_SETTING_VEHICLES                                     :Транспорт
 STR_CONFIG_SETTING_VEHICLES_PHYSICS                             :Физическая модель
 STR_CONFIG_SETTING_VEHICLES_ROUTING                             :Маршруты
+STR_CONFIG_SETTING_VEHICLES_ORDERS                              :Задания
 STR_CONFIG_SETTING_LIMITATIONS                                  :Ограничения
 STR_CONFIG_SETTING_ACCIDENTS                                    :Аварии и катастрофы
 STR_CONFIG_SETTING_GENWORLD                                     :Создание карты
 STR_CONFIG_SETTING_ENVIRONMENT                                  :Окружение
+STR_CONFIG_SETTING_ENVIRONMENT_TIME                             :Время
 STR_CONFIG_SETTING_ENVIRONMENT_AUTHORITIES                      :Городская администрация
 STR_CONFIG_SETTING_ENVIRONMENT_TOWNS                            :Города
 STR_CONFIG_SETTING_ENVIRONMENT_INDUSTRIES                       :Предприятия
 STR_CONFIG_SETTING_ENVIRONMENT_CARGODIST                        :Распределение грузов
+STR_CONFIG_SETTING_ENVIRONMENT_TREES                            :Деревья
 STR_CONFIG_SETTING_AI                                           :Конкуренты
 STR_CONFIG_SETTING_AI_NPC                                       :Искусственный интеллект
 STR_CONFIG_SETTING_NETWORK                                      :Сеть

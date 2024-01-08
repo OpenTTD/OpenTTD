@@ -878,7 +878,7 @@ STR_GAME_OPTIONS_CURRENCY_UNITS_FRAME                           :{BLACK}நா�
 STR_GAME_OPTIONS_CURRENCY_UNITS_DROPDOWN_TOOLTIP                :{BLACK}நாணய பிரிவு தேர்ந்தெடுத்தல்
 
 
-###length 42
+###length 43
 STR_GAME_OPTIONS_CURRENCY_GBP                                   :பிரித்தானிய பவுண்டு
 STR_GAME_OPTIONS_CURRENCY_USD                                   :அமெரிக்கன் டாலர்
 STR_GAME_OPTIONS_CURRENCY_EUR                                   :யுரோ

@@ -960,7 +960,7 @@ STR_GAME_OPTIONS_CURRENCY_UNITS_DROPDOWN_TOOLTIP                :{BLACK}Seleçã
 
 STR_GAME_OPTIONS_CURRENCY_CODE                                  :{STRING} ({STRING})
 
-###length 42
+###length 43
 STR_GAME_OPTIONS_CURRENCY_GBP                                   :Libras Britânicas
 STR_GAME_OPTIONS_CURRENCY_USD                                   :Dólares Norte Americanos
 STR_GAME_OPTIONS_CURRENCY_EUR                                   :Euro

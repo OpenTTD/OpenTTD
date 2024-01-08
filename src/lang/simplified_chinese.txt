@@ -441,7 +441,7 @@ STR_SETTINGS_MENU_SHOW_COMPETITOR_SIGNS                         :显示其他公
 STR_SETTINGS_MENU_FULL_ANIMATION                                :完全动画
 STR_SETTINGS_MENU_FULL_DETAIL                                   :完全细节
 STR_SETTINGS_MENU_TRANSPARENT_BUILDINGS                         :透明建筑
-STR_SETTINGS_MENU_TRANSPARENT_SIGNS                             :透明车站标志
+STR_SETTINGS_MENU_TRANSPARENT_SIGNS                             :透明标志
 
 # File menu
 STR_FILE_MENU_SAVE_GAME                                         :保存游戏
@@ -959,7 +959,7 @@ STR_GAME_OPTIONS_CURRENCY_UNITS_DROPDOWN_TOOLTIP                :{BLACK}货币�
 
 STR_GAME_OPTIONS_CURRENCY_CODE                                  :{STRING} ({STRING})
 
-###length 42
+###length 43
 STR_GAME_OPTIONS_CURRENCY_GBP                                   :英镑
 STR_GAME_OPTIONS_CURRENCY_USD                                   :美元
 STR_GAME_OPTIONS_CURRENCY_EUR                                   :欧元
@@ -2055,14 +2055,17 @@ STR_CONFIG_SETTING_ACCOUNTING                                   :财务管理
 STR_CONFIG_SETTING_VEHICLES                                     :车辆
 STR_CONFIG_SETTING_VEHICLES_PHYSICS                             :物理
 STR_CONFIG_SETTING_VEHICLES_ROUTING                             :经由
+STR_CONFIG_SETTING_VEHICLES_ORDERS                              :调度命令
 STR_CONFIG_SETTING_LIMITATIONS                                  :限制
 STR_CONFIG_SETTING_ACCIDENTS                                    :灾难/事故
 STR_CONFIG_SETTING_GENWORLD                                     :生成地图
 STR_CONFIG_SETTING_ENVIRONMENT                                  :环境
+STR_CONFIG_SETTING_ENVIRONMENT_TIME                             :时间
 STR_CONFIG_SETTING_ENVIRONMENT_AUTHORITIES                      :政府监管
 STR_CONFIG_SETTING_ENVIRONMENT_TOWNS                            :城镇
 STR_CONFIG_SETTING_ENVIRONMENT_INDUSTRIES                       :工业设施
 STR_CONFIG_SETTING_ENVIRONMENT_CARGODIST                        :货物分配
+STR_CONFIG_SETTING_ENVIRONMENT_TREES                            :树木
 STR_CONFIG_SETTING_AI                                           :竞争
 STR_CONFIG_SETTING_AI_NPC                                       :电脑玩家
 STR_CONFIG_SETTING_NETWORK                                      :网络
@@ -2784,7 +2787,7 @@ STR_BUILD_SIGNAL_DRAG_SIGNALS_DENSITY_INCREASE_TOOLTIP          :{BLACK}增加�
 # Bridge selection window
 STR_SELECT_RAIL_BRIDGE_CAPTION                                  :{WHITE}选择铁路桥
 STR_SELECT_ROAD_BRIDGE_CAPTION                                  :{WHITE}选择公路桥梁
-STR_SELECT_BRIDGE_SELECTION_TOOLTIP                             :{BLACK}选择桥梁 - 点击选择喜欢的桥梁进行建设
+STR_SELECT_BRIDGE_SELECTION_TOOLTIP                             :{BLACK}选择桥梁 - 点击选择桥梁进行建设
 STR_SELECT_BRIDGE_INFO_NAME                                     :{GOLD}{STRING}
 STR_SELECT_BRIDGE_INFO_NAME_MAX_SPEED                           :{GOLD}{STRING},{} {VELOCITY}
 STR_SELECT_BRIDGE_INFO_NAME_COST                                :{GOLD}{0:STRING},{} {WHITE}{2:CURRENCY_LONG}

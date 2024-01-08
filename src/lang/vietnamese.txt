@@ -959,7 +959,7 @@ STR_GAME_OPTIONS_CURRENCY_UNITS_DROPDOWN_TOOLTIP                :{BLACK}Lựa ch
 
 STR_GAME_OPTIONS_CURRENCY_CODE                                  :{STRING} ({STRING})
 
-###length 42
+###length 43
 STR_GAME_OPTIONS_CURRENCY_GBP                                   :Bảng Anh
 STR_GAME_OPTIONS_CURRENCY_USD                                   :Đô-la Mỹ
 STR_GAME_OPTIONS_CURRENCY_EUR                                   :Euro

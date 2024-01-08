@@ -959,7 +959,7 @@ STR_GAME_OPTIONS_CURRENCY_UNITS_DROPDOWN_TOOLTIP                :{BLACK}Rahayksi
 
 STR_GAME_OPTIONS_CURRENCY_CODE                                  :{STRING} ({STRING})
 
-###length 42
+###length 43
 STR_GAME_OPTIONS_CURRENCY_GBP                                   :Englannin punta
 STR_GAME_OPTIONS_CURRENCY_USD                                   :Yhdysvaltain dollari
 STR_GAME_OPTIONS_CURRENCY_EUR                                   :Euro
@@ -2055,14 +2055,17 @@ STR_CONFIG_SETTING_ACCOUNTING                                   :Talous
 STR_CONFIG_SETTING_VEHICLES                                     :Kulkuneuvot
 STR_CONFIG_SETTING_VEHICLES_PHYSICS                             :Fysiikka
 STR_CONFIG_SETTING_VEHICLES_ROUTING                             :Reititys
+STR_CONFIG_SETTING_VEHICLES_ORDERS                              :Käskyt
 STR_CONFIG_SETTING_LIMITATIONS                                  :Rajoitukset
 STR_CONFIG_SETTING_ACCIDENTS                                    :Onnettomuudet
 STR_CONFIG_SETTING_GENWORLD                                     :Maailman luominen
 STR_CONFIG_SETTING_ENVIRONMENT                                  :Ympäristö
+STR_CONFIG_SETTING_ENVIRONMENT_TIME                             :Aika
 STR_CONFIG_SETTING_ENVIRONMENT_AUTHORITIES                      :Viranomaiset
 STR_CONFIG_SETTING_ENVIRONMENT_TOWNS                            :Kunnat
 STR_CONFIG_SETTING_ENVIRONMENT_INDUSTRIES                       :Laitokset
 STR_CONFIG_SETTING_ENVIRONMENT_CARGODIST                        :Rahdin jakautuminen
+STR_CONFIG_SETTING_ENVIRONMENT_TREES                            :Puut
 STR_CONFIG_SETTING_AI                                           :Kilpailijat
 STR_CONFIG_SETTING_AI_NPC                                       :Tietokonepelaajat
 STR_CONFIG_SETTING_NETWORK                                      :Verkko

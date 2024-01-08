@@ -959,7 +959,7 @@ STR_GAME_OPTIONS_CURRENCY_UNITS_DROPDOWN_TOOLTIP                :{BLACK}Valg af 
 
 STR_GAME_OPTIONS_CURRENCY_CODE                                  :{STRING} ({STRING})
 
-###length 42
+###length 43
 STR_GAME_OPTIONS_CURRENCY_GBP                                   :Britiske Pund
 STR_GAME_OPTIONS_CURRENCY_USD                                   :Amerikanske dollars
 STR_GAME_OPTIONS_CURRENCY_EUR                                   :Euro

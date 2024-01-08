@@ -961,7 +961,7 @@ STR_GAME_OPTIONS_CURRENCY_UNITS_DROPDOWN_TOOLTIP                :{BLACK}Selezion
 
 STR_GAME_OPTIONS_CURRENCY_CODE                                  :{STRING} ({STRING})
 
-###length 42
+###length 43
 STR_GAME_OPTIONS_CURRENCY_GBP                                   :Sterlina britannica
 STR_GAME_OPTIONS_CURRENCY_USD                                   :Dollaro americano
 STR_GAME_OPTIONS_CURRENCY_EUR                                   :Euro

@@ -895,7 +895,7 @@ STR_GAME_OPTIONS_CURRENCY_UNITS_FRAME                           :{BLACK}מטבע
 STR_GAME_OPTIONS_CURRENCY_UNITS_DROPDOWN_TOOLTIP                :{BLACK}בחירת מטבע
 
 
-###length 42
+###length 43
 STR_GAME_OPTIONS_CURRENCY_GBP                                   :לירה שטרלינג
 STR_GAME_OPTIONS_CURRENCY_USD                                   :דולר אמריקאי
 STR_GAME_OPTIONS_CURRENCY_EUR                                   :יורו
