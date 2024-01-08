@@ -5508,8 +5508,8 @@ static void NewSpriteGroup(ByteReader *buf)
 static CargoID TranslateCargo(uint8_t feature, uint8_t ctype)
 {
 	/* Special cargo types for purchase list and stations */
-	if ((feature == GSF_STATIONS || feature == GSF_ROADSTOPS) && ctype == 0xFE) return CT_DEFAULT_NA;
-	if (ctype == 0xFF) return CT_PURCHASE;
+	if ((feature == GSF_STATIONS || feature == GSF_ROADSTOPS) && ctype == 0xFE) return SpriteGroupCargo::SG_DEFAULT_NA;
+	if (ctype == 0xFF) return SpriteGroupCargo::SG_PURCHASE;
 
 	if (_cur.grffile->cargo_list.empty()) {
 		/* No cargo table, so use bitnum values */
@@ -5637,9 +5637,9 @@ static void VehicleMapSpriteGroup(ByteReader *buf, byte feature, uint8_t idcount
 		EngineID engine = engines[i];
 
 		if (wagover) {
-			SetWagonOverrideSprites(engine, CT_DEFAULT, _cur.spritegroups[groupid], last_engines, last_engines_count);
+			SetWagonOverrideSprites(engine, SpriteGroupCargo::SG_DEFAULT, _cur.spritegroups[groupid], last_engines, last_engines_count);
 		} else {
-			SetCustomEngineSprites(engine, CT_DEFAULT, _cur.spritegroups[groupid]);
+			SetCustomEngineSprites(engine, SpriteGroupCargo::SG_DEFAULT, _cur.spritegroups[groupid]);
 			SetEngineGRF(engine, _cur.grffile);
 		}
 	}
@@ -5722,7 +5722,7 @@ static void StationMapSpriteGroup(ByteReader *buf, uint8_t idcount)
 			continue;
 		}
 
-		statspec->grf_prop.spritegroup[CT_DEFAULT] = _cur.spritegroups[groupid];
+		statspec->grf_prop.spritegroup[SpriteGroupCargo::SG_DEFAULT] = _cur.spritegroups[groupid];
 		statspec->grf_prop.grffile = _cur.grffile;
 		statspec->grf_prop.local_id = station;
 		StationClass::Assign(statspec);
@@ -6092,7 +6092,7 @@ static void RoadStopMapSpriteGroup(ByteReader *buf, uint8_t idcount)
 			continue;
 		}
 
-		roadstopspec->grf_prop.spritegroup[CT_DEFAULT] = _cur.spritegroups[groupid];
+		roadstopspec->grf_prop.spritegroup[SpriteGroupCargo::SG_DEFAULT] = _cur.spritegroups[groupid];
 		roadstopspec->grf_prop.grffile = _cur.grffile;
 		roadstopspec->grf_prop.local_id = roadstop;
 		RoadStopClass::Assign(roadstopspec);

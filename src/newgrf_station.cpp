@@ -496,12 +496,12 @@ uint32_t Waypoint::GetNewGRFVariable(const ResolverObject &, byte variable, [[ma
 
 	switch (this->station_scope.cargo_type) {
 		case INVALID_CARGO:
-		case CT_DEFAULT_NA:
-		case CT_PURCHASE:
+		case SpriteGroupCargo::SG_DEFAULT_NA:
+		case SpriteGroupCargo::SG_PURCHASE:
 			cargo = 0;
 			break;
 
-		case CT_DEFAULT:
+		case SpriteGroupCargo::SG_DEFAULT:
 			for (const GoodsEntry &ge : st->goods) {
 				cargo += ge.cargo.TotalCount();
 			}
@@ -557,11 +557,11 @@ StationResolverObject::StationResolverObject(const StationSpec *statspec, BaseSt
 	/* Invalidate all cached vars */
 	_svc.valid = 0;
 
-	CargoID ctype = CT_DEFAULT_NA;
+	CargoID ctype = SpriteGroupCargo::SG_DEFAULT_NA;
 
 	if (this->station_scope.st == nullptr) {
 		/* No station, so we are in a purchase list */
-		ctype = CT_PURCHASE;
+		ctype = SpriteGroupCargo::SG_PURCHASE;
 	} else if (Station::IsExpected(this->station_scope.st)) {
 		const Station *st = Station::From(this->station_scope.st);
 		/* Pick the first cargo that we have waiting */
@@ -575,7 +575,7 @@ StationResolverObject::StationResolverObject(const StationSpec *statspec, BaseSt
 	}
 
 	if (this->station_scope.statspec->grf_prop.spritegroup[ctype] == nullptr) {
-		ctype = CT_DEFAULT;
+		ctype = SpriteGroupCargo::SG_DEFAULT;
 	}
 
 	/* Remember the cargo type we've picked */
