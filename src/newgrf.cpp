@@ -3433,8 +3433,8 @@ static bool ValidateIndustryLayout(const IndustryTileLayout &layout)
 	}
 
 	bool have_regular_tile = false;
-	for (size_t i = 0; i < size; i++) {
-		if (layout[i].gfx != GFX_WATERTILE_SPECIALCHECK) {
+	for (const auto &tilelayout : layout) {
+		if (tilelayout.gfx != GFX_WATERTILE_SPECIALCHECK) {
 			have_regular_tile = true;
 			break;
 		}
@@ -9382,15 +9382,14 @@ static void FinaliseIndustriesArray()
 		}
 	}
 
-	for (uint j = 0; j < NUM_INDUSTRYTYPES; j++) {
-		IndustrySpec *indsp = &_industry_specs[j];
-		if (indsp->enabled && indsp->grf_prop.grffile != nullptr) {
-			for (uint i = 0; i < 3; i++) {
-				indsp->conflicting[i] = MapNewGRFIndustryType(indsp->conflicting[i], indsp->grf_prop.grffile->grfid);
+	for (auto &indsp : _industry_specs) {
+		if (indsp.enabled && indsp.grf_prop.grffile != nullptr) {
+			for (auto &conflicting : indsp.conflicting) {
+				conflicting = MapNewGRFIndustryType(conflicting, indsp.grf_prop.grffile->grfid);
 			}
 		}
-		if (!indsp->enabled) {
-			indsp->name = STR_NEWGRF_INVALID_INDUSTRYTYPE;
+		if (!indsp.enabled) {
+			indsp.name = STR_NEWGRF_INVALID_INDUSTRYTYPE;
 		}
 	}
 }
