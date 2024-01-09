@@ -191,7 +191,7 @@ std::vector<WaterRegion> _water_regions;
 
 TileIndex GetTileIndexFromLocalCoordinate(int region_x, int region_y, int local_x, int local_y)
 {
-	assert(local_x >= 0 && local_y < WATER_REGION_EDGE_LENGTH);
+	assert(local_x >= 0 && local_x < WATER_REGION_EDGE_LENGTH);
 	assert(local_y >= 0 && local_y < WATER_REGION_EDGE_LENGTH);
 	return TileXY(WATER_REGION_EDGE_LENGTH * region_x + local_x, WATER_REGION_EDGE_LENGTH * region_y + local_y);
 }
