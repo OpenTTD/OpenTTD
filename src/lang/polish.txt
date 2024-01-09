@@ -1151,7 +1151,7 @@ STR_SMALLMAP_LEGENDA_TRANSPORT_ROUTES                           :{TINY_FONT}{BLA
 STR_SMALLMAP_LEGENDA_FOREST                                     :{G=m}{TINY_FONT}{BLACK}Las
 STR_SMALLMAP_LEGENDA_FOREST.d                                   :{TINY_FONT}{BLACK}Lasu
 STR_SMALLMAP_LEGENDA_RAILROAD_STATION                           :{TINY_FONT}{BLACK}Stacja kolejowa
-STR_SMALLMAP_LEGENDA_TRUCK_LOADING_BAY                          :{TINY_FONT}{BLACK}Załadunek ciężarówek
+STR_SMALLMAP_LEGENDA_TRUCK_LOADING_BAY                          :{TINY_FONT}{BLACK}Stacja ciężarówek
 STR_SMALLMAP_LEGENDA_BUS_STATION                                :{TINY_FONT}{BLACK}Przystanek
 STR_SMALLMAP_LEGENDA_AIRPORT_HELIPORT                           :{TINY_FONT}{BLACK}Lotnisko
 STR_SMALLMAP_LEGENDA_DOCK                                       :{TINY_FONT}{BLACK}Port
@@ -1382,6 +1382,7 @@ STR_GAME_OPTIONS_CURRENCY_HKD                                   :Dolar hongkońs
 STR_GAME_OPTIONS_CURRENCY_INR                                   :Rupia Indyjska
 STR_GAME_OPTIONS_CURRENCY_IDR                                   :Rupia Indonezyjska
 STR_GAME_OPTIONS_CURRENCY_MYR                                   :Ringgit malezyjski
+STR_GAME_OPTIONS_CURRENCY_LVL                                   :Łat łotewski
 
 STR_GAME_OPTIONS_AUTOSAVE_FRAME                                 :{BLACK}Autozapis
 STR_GAME_OPTIONS_AUTOSAVE_DROPDOWN_TOOLTIP                      :{BLACK}Częstotliwość automatycznego zapisu stanu gry
@@ -1748,7 +1749,7 @@ STR_CONFIG_SETTING_SHOWFINANCES_HELPTEXT                        :Jeśli włączo
 STR_CONFIG_SETTING_NONSTOP_BY_DEFAULT                           :Nowe polecenia są domyślnie „bez zatrzymywania się”: {STRING}
 STR_CONFIG_SETTING_NONSTOP_BY_DEFAULT_HELPTEXT                  :Normalnie pojazd zatrzyma się na każdej stacji, przez którą przejeżdża. Po włączeniu tej opcji, pojazd przejedzie do swojego celu bez zatrzymywania się. Zwróć uwagę na to, że to ustawienie ma wpływ tylko na nowe polecenia. Pojedyncze polecenia mogą być ustalane bez względu na wartość tej opcji
 
-STR_CONFIG_SETTING_STOP_LOCATION                                :Nowe rozkazy pociągu kończą się domyślnie na {STRING} peronu
+STR_CONFIG_SETTING_STOP_LOCATION                                :Nowe polecenia pociągu domyślnie kończą się na {STRING} peronu
 STR_CONFIG_SETTING_STOP_LOCATION_HELPTEXT                       :Miejsce, w którym pociąg domyślnie zatrzyma się na peronie. „Początek” oznacza blisko wjazdu, „środek” oznacza środkową część peronu, a „koniec” oznacza daleko od wjazdu. Pamiętaj, że to ustawienie określa tylko domyślną wartość dla nowych poleceń. Miejsce zatrzymania poszczególnych poleceń można ustawić, klikając na tekst danego polecenia
 ###length 3
 STR_CONFIG_SETTING_STOP_LOCATION_NEAR_END                       :początku
@@ -1817,7 +1818,7 @@ STR_CONFIG_SETTING_WARN_LOST_VEHICLE                            :Ostrzeż, jeśl
 STR_CONFIG_SETTING_WARN_LOST_VEHICLE_HELPTEXT                   :Pokazuj wiadomości o pojazdach, które nie są w stanie znaleźć ścieżki do swoich wyznaczonych celów
 
 STR_CONFIG_SETTING_ORDER_REVIEW                                 :Kontroluj polecenia pojazdów: {STRING}
-STR_CONFIG_SETTING_ORDER_REVIEW_HELPTEXT                        :Kiedy włączone, rozkazy wszystkich pojazdów są sprawdzane co jakiś czas, a wykryte nieprawidłowości są zgłaszane w oknach wiadomości
+STR_CONFIG_SETTING_ORDER_REVIEW_HELPTEXT                        :Kiedy włączone, polecenia wszystkich pojazdów są sprawdzane co jakiś czas, a wykryte nieprawidłowości są zgłaszane w oknach wiadomości
 ###length 3
 STR_CONFIG_SETTING_ORDER_REVIEW_OFF                             :Nie
 STR_CONFIG_SETTING_ORDER_REVIEW_EXDEPOT                         :Tak, ale wyklucz zatrzymane
@@ -1871,7 +1872,7 @@ STR_CONFIG_SETTING_LAND_GENERATOR_ORIGINAL                      :Oryginalny
 STR_CONFIG_SETTING_LAND_GENERATOR_TERRA_GENESIS                 :TerraGenesis
 
 STR_CONFIG_SETTING_TERRAIN_TYPE                                 :Typ terenu: {STRING}
-STR_CONFIG_SETTING_TERRAIN_TYPE_HELPTEXT                        :Określa ukształtowanie terenu (tylko dla TerraGenesis)
+STR_CONFIG_SETTING_TERRAIN_TYPE_HELPTEXT                        :Wybierz wysokość wzgórz i gór w krajobrazie
 
 STR_CONFIG_SETTING_INDUSTRY_DENSITY                             :Liczba przedsiębiorstw: {STRING}
 STR_CONFIG_SETTING_INDUSTRY_DENSITY_HELPTEXT                    :Określa liczbę przedsiębiorstw na początku i w trakcie gry
@@ -1880,18 +1881,18 @@ STR_CONFIG_SETTING_OIL_REF_EDGE_DISTANCE                        :Maksymalna odle
 STR_CONFIG_SETTING_OIL_REF_EDGE_DISTANCE_HELPTEXT               :Rafinerie są budowane tylko w pobliżu krawędzi map, to znaczy na wybrzeżach dla map wyspiarskich. To ustawienie pozwala ograniczyć jak daleko od krawędzi mapy mogą być budowane rafinerie i platformy wiertnicze. Na mapach większych niż 256 pól, wartość ta jest skalowana w górę.
 
 STR_CONFIG_SETTING_SNOWLINE_HEIGHT                              :Wysokość granicy wiecznych śniegów: {STRING}
-STR_CONFIG_SETTING_SNOWLINE_HEIGHT_HELPTEXT                     :Wysokość linii śniegu w klimacie arktycznym. Poziom pokrywy śnieżnej wpływa na rozmieszczenie przedsiębiorstw i na warunki rozwoju miast. Może być zmodyfikowana poprzez Edytor Scenariuszy, w innym przypadku jest obliczana za pomocą ustawienia „pokrycie śniegiem”
+STR_CONFIG_SETTING_SNOWLINE_HEIGHT_HELPTEXT                     :Wybierz, na jakiej wysokości zaczyna zalegać śnieg w krajobrazie arktycznym. Poziom pokrywy śnieżnej wpływa na rozmieszczenie przedsiębiorstw i na warunki rozwoju miast. Może być zmodyfikowana poprzez Edytor Scenariuszy, w innym przypadku jest obliczana za pomocą ustawienia „pokrycie śniegiem”
 
 STR_CONFIG_SETTING_SNOW_COVERAGE                                :Pokrycie śniegiem: {STRING}
-STR_CONFIG_SETTING_SNOW_COVERAGE_HELPTEXT                       :Ustawia przybliżoną ilość śniegu w krajobrazie arktycznym. Śnieg wpływa również wpływa na rozmieszczenie przedsiębiorstw i na warunki rozwoju miast. Używane tylko podczas generowania mapy. Teren tuż ponad poziomem morza jest zawsze bez śniegu
+STR_CONFIG_SETTING_SNOW_COVERAGE_HELPTEXT                       :Wybierz przybliżoną ilość śniegu w krajobrazie arktycznym. Śnieg wpływa również wpływa na rozmieszczenie przedsiębiorstw i na warunki rozwoju miast. Używane tylko podczas generowania mapy. Teren tuż ponad poziomem wody jest zawsze bez śniegu
 STR_CONFIG_SETTING_SNOW_COVERAGE_VALUE                          :{NUM}%
 
 STR_CONFIG_SETTING_DESERT_COVERAGE                              :Pokrycie pustynią: {STRING}
-STR_CONFIG_SETTING_DESERT_COVERAGE_HELPTEXT                     :Ustawia przybliżoną ilość pustyni w krajobrazie tropikalnym. Pustynia wpływa również wpływa na rozmieszczenie przedsiębiorstw i na warunki rozwoju miast. Używane tylko podczas generowania mapy.
+STR_CONFIG_SETTING_DESERT_COVERAGE_HELPTEXT                     :Wybierz przybliżoną ilość pustyni w krajobrazie tropikalnym. Pustynia wpływa również na rozmieszczenie przedsiębiorstw i na warunki rozwoju miast. Używane tylko podczas generowania mapy
 STR_CONFIG_SETTING_DESERT_COVERAGE_VALUE                        :{NUM}%
 
 STR_CONFIG_SETTING_ROUGHNESS_OF_TERRAIN                         :Gładkość terenu: {STRING}
-STR_CONFIG_SETTING_ROUGHNESS_OF_TERRAIN_HELPTEXT                :(Tylko dla TerraGenesis) Określa liczbę wzgórz na mapie. Łagodne krajobrazy posiadają nieliczne, bardzo rozległe wzgórza, natomiast na terenach pofałdowanych jest ich znacznie więcej i mogą wyglądać podobnie
+STR_CONFIG_SETTING_ROUGHNESS_OF_TERRAIN_HELPTEXT                :Wybierz kształt i ilość wzniesień. Łagodny teren ma mniejszą liczbę szerszych wzniesień, natomiast teren pofałdowany ma więcej mniejszych wzniesień.
 ###length 4
 STR_CONFIG_SETTING_ROUGHNESS_OF_TERRAIN_VERY_SMOOTH             :Bardzo łagodny
 STR_CONFIG_SETTING_ROUGHNESS_OF_TERRAIN_SMOOTH                  :Łagodny
@@ -1899,7 +1900,7 @@ STR_CONFIG_SETTING_ROUGHNESS_OF_TERRAIN_ROUGH                   :Pofałdowany
 STR_CONFIG_SETTING_ROUGHNESS_OF_TERRAIN_VERY_ROUGH              :Bardzo pofałdowany
 
 STR_CONFIG_SETTING_VARIETY                                      :Różnorodność terenu: {STRING}
-STR_CONFIG_SETTING_VARIETY_HELPTEXT                             :(Tylko dla TerraGenesis) Umożliwia jednoczesne występowanie obszarów górskich i płaskich. Działa na zasadzie obniżania powierzchni, dlatego inny parametr powinien definiować teren górzysty
+STR_CONFIG_SETTING_VARIETY_HELPTEXT                             :Wybierz, czy mapa ma zawierać zarówno obszary górskie, jak i płaskie. Im większa różnorodność, tym większe różnice wysokości między obszarami górskimi i płaskimi.
 
 STR_CONFIG_SETTING_RIVER_AMOUNT                                 :Liczba rzek: {STRING}
 STR_CONFIG_SETTING_RIVER_AMOUNT_HELPTEXT                        :Określa liczbę rzek na mapie
@@ -2435,14 +2436,17 @@ STR_CONFIG_SETTING_ACCOUNTING                                   :Finanse
 STR_CONFIG_SETTING_VEHICLES                                     :Pojazdy
 STR_CONFIG_SETTING_VEHICLES_PHYSICS                             :Fizyka
 STR_CONFIG_SETTING_VEHICLES_ROUTING                             :Wyznaczanie trasy
+STR_CONFIG_SETTING_VEHICLES_ORDERS                              :Polecenia
 STR_CONFIG_SETTING_LIMITATIONS                                  :Ograniczenia
 STR_CONFIG_SETTING_ACCIDENTS                                    :Awarie i katastrofy
 STR_CONFIG_SETTING_GENWORLD                                     :Tworzenie mapy
 STR_CONFIG_SETTING_ENVIRONMENT                                  :Środowisko
+STR_CONFIG_SETTING_ENVIRONMENT_TIME                             :Czas
 STR_CONFIG_SETTING_ENVIRONMENT_AUTHORITIES                      :Władze lokalne
 STR_CONFIG_SETTING_ENVIRONMENT_TOWNS                            :Miasta
 STR_CONFIG_SETTING_ENVIRONMENT_INDUSTRIES                       :Przedsiębiorstwa
 STR_CONFIG_SETTING_ENVIRONMENT_CARGODIST                        :Dystrybucja ładunków
+STR_CONFIG_SETTING_ENVIRONMENT_TREES                            :Drzewa
 STR_CONFIG_SETTING_AI                                           :Rywale
 STR_CONFIG_SETTING_AI_NPC                                       :Gracze komputerowi
 STR_CONFIG_SETTING_NETWORK                                      :Sieć
@@ -2579,12 +2583,20 @@ STR_LIVERY_TRAIN_TOOLTIP                                        :{BLACK}Pokaż s
 STR_LIVERY_ROAD_VEHICLE_TOOLTIP                                 :{BLACK}Pokaż schematy koloru pojazdów
 STR_LIVERY_SHIP_TOOLTIP                                         :{BLACK}Pokaż schematy koloru statków
 STR_LIVERY_AIRCRAFT_TOOLTIP                                     :{BLACK}Pokaż schematy koloru samolotów
+STR_LIVERY_TRAIN_GROUP_TOOLTIP                                  :{BLACK}Pokaż kolory grup pociągów
+STR_LIVERY_ROAD_VEHICLE_GROUP_TOOLTIP                           :{BLACK}Pokaż kolory grup pojazdów
+STR_LIVERY_SHIP_GROUP_TOOLTIP                                   :{BLACK}Pokaż kolory grup statków
+STR_LIVERY_AIRCRAFT_GROUP_TOOLTIP                               :{BLACK}Pokaż kolory grup samolotów
 STR_LIVERY_PRIMARY_TOOLTIP                                      :{BLACK}Wybierz główny kolor dla wybranego schematu. Ctrl+klik ustawi ten kolor dla wszystkich schematów
 STR_LIVERY_SECONDARY_TOOLTIP                                    :{BLACK}Wybierz dodatkowy kolor dla wybranego schematu. Ctrl+klik ustawi ten kolor dla wszystkich schematów
 STR_LIVERY_PANEL_TOOLTIP                                        :{BLACK}Wybierz schemat kolorów do zmiany, albo wiele schematów z CTRL+klik. Kliknij na okienku aby wł./wył. używanie schematu.
+STR_LIVERY_TRAIN_GROUP_EMPTY                                    :Nie utworzono żadnych grup pociągów
+STR_LIVERY_ROAD_VEHICLE_GROUP_EMPTY                             :Nie utworzono żadnych grup pojazdów
+STR_LIVERY_SHIP_GROUP_EMPTY                                     :Nie utworzono żadnych grup statków
+STR_LIVERY_AIRCRAFT_GROUP_EMPTY                                 :Nie utworzono żadnych grup samolotów
 
 ###length 23
-STR_LIVERY_DEFAULT                                              :Standardowy wygląd
+STR_LIVERY_DEFAULT                                              :Domyślne malowanie
 STR_LIVERY_STEAM                                                :Parowóz
 STR_LIVERY_DIESEL                                               :Lokomotywa spalinowa
 STR_LIVERY_ELECTRIC                                             :Lokomotywa elektryczna
@@ -3092,9 +3104,9 @@ STR_RAIL_TOOLBAR_MAGLEV_CONSTRUCTION_CAPTION                    :Konstrukcja lin
 STR_RAIL_TOOLBAR_TOOLTIP_BUILD_RAILROAD_TRACK                   :{BLACK}Budowa torów kolejowych. Ctrl przełącza buduj/usuń dla konstrukcji kolejowych. Shift przełącza pomiędzy trybem budowania a szacowaniem jego kosztów
 STR_RAIL_TOOLBAR_TOOLTIP_BUILD_AUTORAIL                         :{BLACK}Zbuduj tory kolejowe za pomocą trybu Autotory. Ctrl przełącza buduj/usuń dla konstrukcji kolejowych. Shift przełącza pomiędzy trybem budowania a szacowaniem jego kosztów
 STR_RAIL_TOOLBAR_TOOLTIP_BUILD_TRAIN_DEPOT_FOR_BUILDING         :{BLACK}Budowa warsztatów (do kupowania i serwisowania pociągów). Shift przełącza pomiędzy trybem budowania a szacowaniem jego kosztów
-STR_RAIL_TOOLBAR_TOOLTIP_CONVERT_RAIL_TO_WAYPOINT               :{BLACK}Zamiana torów na posterunek. Ctrl umożliwia łączenie posterunków. Shift przełącza pomiędzy trybem budowania a szacowaniem jego kosztów
+STR_RAIL_TOOLBAR_TOOLTIP_CONVERT_RAIL_TO_WAYPOINT               :{BLACK}Zbuduj posterunek na torach. Ctrl umożliwia łączenie posterunków. Shift przełącza pomiędzy trybem budowania a szacowaniem jego kosztów
 STR_RAIL_TOOLBAR_TOOLTIP_BUILD_RAILROAD_STATION                 :{BLACK}Zbuduj stację kolejową. Ctrl umożliwia łączenie stacji. Shift przełącza pomiędzy trybem budowania a szacowaniem jego kosztów
-STR_RAIL_TOOLBAR_TOOLTIP_BUILD_RAILROAD_SIGNALS                 :{BLACK}Zbuduj sygnały kolejowe. Ctrl przełącza semafory/sygnały świetlne{}Przeciągnięcie pozwala na budowę sygnałów wzdłuż prostej linii torów. Ctrl pozwala na budowę sygnałów do następnego skrzyżowania{}Ctrl+klik przełącza do okna wyboru sygnałów. Shift przełącza pomiędzy budowaniem a szacowaniem kosztów
+STR_RAIL_TOOLBAR_TOOLTIP_BUILD_RAILROAD_SIGNALS                 :{BLACK}Zbuduj sygnały na torach. Ctrl przełącza semafory/sygnały świetlne{}Przeciąganie buduje sygnały wzdłuż prostej linii torów, z Ctrl buduje sygnały aż do najbliższego skrzyżowania lub sygnału{}Ctrl+klik przełącza wyświetlanie okna wyboru sygnałów. Shift przełącza pomiędzy budowaniem a szacowaniem jego kosztów
 STR_RAIL_TOOLBAR_TOOLTIP_BUILD_RAILROAD_BRIDGE                  :{BLACK}Zbuduj most kolejowy. Shift przełącza pomiędzy trybem budowania a szacowaniem jego kosztów
 STR_RAIL_TOOLBAR_TOOLTIP_BUILD_RAILROAD_TUNNEL                  :{BLACK}Zbuduj tunel kolejowy. Shift przełącza pomiędzy trybem budowania a szacowaniem jego kosztów
 STR_RAIL_TOOLBAR_TOOLTIP_TOGGLE_BUILD_REMOVE_FOR                :{BLACK}Przełącz buduj/usuń dla torów kolejowych, sygnałów, posterunków i stacji. Przetrzymanie Ctrl usuwa także tory kolejowe z posterunków i stacji
@@ -3182,7 +3194,7 @@ STR_ROAD_TOOLBAR_TOOLTIP_BUILD_ROAD_VEHICLE_DEPOT               :{BLACK}Wybuduj 
 STR_ROAD_TOOLBAR_TOOLTIP_BUILD_TRAM_VEHICLE_DEPOT               :{BLACK}Wybuduj zajezdnię tramwajową (do kupowania i serwisowania pojazdów). Shift przełącza pomiędzy trybem budowania a szacowaniem jego kosztów
 STR_ROAD_TOOLBAR_TOOLTIP_BUILD_BUS_STATION                      :{BLACK}Zbuduj przystanek autobusowy. Ctrl umożliwia łączenie stacji. Shift przełącza pomiędzy trybem budowania a szacowaniem jego kosztów
 STR_ROAD_TOOLBAR_TOOLTIP_BUILD_PASSENGER_TRAM_STATION           :{BLACK}Zbuduj pasażerski przystanek tramwajowy. Ctrl umożliwia łączenie stacji. Shift przełącza pomiędzy trybem budowania a szacowaniem jego kosztów
-STR_ROAD_TOOLBAR_TOOLTIP_BUILD_TRUCK_LOADING_BAY                :{BLACK}Zbuduj stację załadunku ciężarówek. Ctrl umożliwia łączenie stacji. Shift przełącza pomiędzy trybem budowania a szacowaniem jego kosztów
+STR_ROAD_TOOLBAR_TOOLTIP_BUILD_TRUCK_LOADING_BAY                :{BLACK}Zbuduj stację ciężarówek. Ctrl umożliwia łączenie stacji. Shift przełącza pomiędzy trybem budowania a szacowaniem jego kosztów
 STR_ROAD_TOOLBAR_TOOLTIP_BUILD_CARGO_TRAM_STATION               :{BLACK}Zbuduj tramwajową stację załadunkową. Ctrl umożliwia łączenie stacji. Shift przełącza pomiędzy trybem budowania a szacowaniem jego kosztów
 STR_ROAD_TOOLBAR_TOOLTIP_TOGGLE_ONE_WAY_ROAD                    :{BLACK}Włącz/wyłącz drogi jednokierunkowe
 STR_ROAD_TOOLBAR_TOOLTIP_BUILD_ROAD_BRIDGE                      :{BLACK}Zbuduj most drogowy. Shift przełącza pomiędzy trybem budowania a szacowaniem jego kosztów
@@ -3207,7 +3219,7 @@ STR_BUILD_DEPOT_TRAM_ORIENTATION_SELECT_TOOLTIP                 :{BLACK}Wybierz 
 STR_STATION_BUILD_BUS_ORIENTATION                               :{WHITE}Ukierunkowanie przystanku
 STR_STATION_BUILD_BUS_ORIENTATION_TOOLTIP                       :{BLACK}Wybierz ukierunkowanie przystanku
 STR_STATION_BUILD_TRUCK_ORIENTATION                             :{WHITE}Ukierunkowanie stacji załadunku ciężarówek
-STR_STATION_BUILD_TRUCK_ORIENTATION_TOOLTIP                     :{BLACK}Wybierz ukierunkowanie stacji załadunku ciężarówek
+STR_STATION_BUILD_TRUCK_ORIENTATION_TOOLTIP                     :{BLACK}Wybierz ukierunkowanie stacji ciężarówek
 STR_STATION_BUILD_PASSENGER_TRAM_ORIENTATION                    :{WHITE}Ukierunkowanie przystanku tramwajowego
 STR_STATION_BUILD_PASSENGER_TRAM_ORIENTATION_TOOLTIP            :{BLACK}Wybierz ukierunkowanie przystanku tramwajowego
 STR_STATION_BUILD_CARGO_TRAM_ORIENTATION                        :{WHITE}Ukierunkowanie tramwajowej stacji załadunkowej
@@ -3451,7 +3463,7 @@ STR_LAI_TREE_NAME_CACTUS_PLANTS                                 :Kaktusy
 STR_LAI_STATION_DESCRIPTION_RAILROAD_STATION                    :Stacja kolejowa
 STR_LAI_STATION_DESCRIPTION_AIRCRAFT_HANGAR                     :Hangar
 STR_LAI_STATION_DESCRIPTION_AIRPORT                             :Lotnisko
-STR_LAI_STATION_DESCRIPTION_TRUCK_LOADING_AREA                  :Stacja załadunku ciężarówek
+STR_LAI_STATION_DESCRIPTION_TRUCK_LOADING_AREA                  :Stacja ciężarówek
 STR_LAI_STATION_DESCRIPTION_BUS_STATION                         :Przystanek
 STR_LAI_STATION_DESCRIPTION_SHIP_DOCK                           :Port
 STR_LAI_STATION_DESCRIPTION_BUOY                                :Boja
@@ -4948,21 +4960,21 @@ STR_ORDER_STOP_LOCATION_FAR_END                                 :[dalszy koniec]
 
 STR_ORDER_OUT_OF_RANGE                                          :{RED} (Kolejny punkt docelowy jest poza zasięgiem)
 
-STR_ORDER_CONDITIONAL_UNCONDITIONAL                             :Skocz do rozkazu {COMMA}
-STR_ORDER_CONDITIONAL_NUM                                       :Skocz do rozkazu {COMMA} kiedy {STRING} {STRING} {COMMA}
-STR_ORDER_CONDITIONAL_TRUE_FALSE                                :Skocz do rozkazu {0:COMMA} kiedy {2:STRING} że {1:STRING}
+STR_ORDER_CONDITIONAL_UNCONDITIONAL                             :Skocz do polecenia {COMMA}
+STR_ORDER_CONDITIONAL_NUM                                       :Skocz do polecenia {COMMA}, kiedy {STRING} {STRING} {COMMA}
+STR_ORDER_CONDITIONAL_TRUE_FALSE                                :Skocz do polecenia {0:COMMA}, kiedy {2:STRING}, że {1:STRING}
 
 STR_INVALID_ORDER                                               :{RED} (Błędne polecenie)
 
 # Time table window
 STR_TIMETABLE_TITLE                                             :{WHITE}{VEHICLE} (Rozkład jazdy)
-STR_TIMETABLE_ORDER_VIEW                                        :{BLACK}Rozkazy
+STR_TIMETABLE_ORDER_VIEW                                        :{BLACK}Polecenia
 STR_TIMETABLE_ORDER_VIEW_TOOLTIP                                :{BLACK}Przełącz do okna poleceń
 
 STR_TIMETABLE_TOOLTIP                                           :{BLACK}Rozkład jazdy - kliknij na poleceniu aby je zaznaczyć
 
 STR_TIMETABLE_NO_TRAVEL                                         :Nie podróżuje
-STR_TIMETABLE_NOT_TIMETABLEABLE                                 :Podróż (automatycznie; zaplanowana przez następny ręczny rozkaz)
+STR_TIMETABLE_NOT_TIMETABLEABLE                                 :Podróż (automatycznie; zaplanowana przez następne ręczne polecenie)
 STR_TIMETABLE_TRAVEL_NOT_TIMETABLED                             :Przejazd (bez ustalonego czasu)
 STR_TIMETABLE_TRAVEL_NOT_TIMETABLED_SPEED                       :Podróżuj (poza rozkładem) z maksymalną prędkością {2:VELOCITY}
 STR_TIMETABLE_TRAVEL_FOR                                        :Przejazd przez {STRING}
@@ -5319,7 +5331,7 @@ STR_ERROR_DRIVE_THROUGH_JUNCTION                                :{WHITE}... przy
 STR_ERROR_CAN_T_REMOVE_PART_OF_STATION                          :{WHITE}Nie można usunąć części stacji...
 STR_ERROR_MUST_REMOVE_RAILWAY_STATION_FIRST                     :{WHITE}Należy najpierw usunąć stację kolejową
 STR_ERROR_CAN_T_REMOVE_BUS_STATION                              :{WHITE}Nie można usunąć przystanku...
-STR_ERROR_CAN_T_REMOVE_TRUCK_STATION                            :{WHITE}Nie można usunąć stacji załadunkowej...
+STR_ERROR_CAN_T_REMOVE_TRUCK_STATION                            :{WHITE}Nie można usunąć stacji ciężarówek...
 STR_ERROR_CAN_T_REMOVE_PASSENGER_TRAM_STATION                   :{WHITE}Nie można usunąć przystanku tramwajowego...
 STR_ERROR_CAN_T_REMOVE_CARGO_TRAM_STATION                       :{WHITE}Nie można usunąć tramwajowej stacji załadunkowej...
 STR_ERROR_MUST_REMOVE_ROAD_STOP_FIRST                           :{WHITE}Należy najpierw usunąć przystanek
@@ -5556,7 +5568,7 @@ STR_ERROR_CAN_T_SKIP_ORDER                                      :{WHITE}Nie moż
 STR_ERROR_CAN_T_SKIP_TO_ORDER                                   :{WHITE}Nie można przejść do wybranego polecenia...
 STR_ERROR_CAN_T_COPY_SHARE_ORDER                                :{WHITE}... pojazd nie może jechać do wszystkich stacji
 STR_ERROR_CAN_T_ADD_ORDER                                       :{WHITE}... pojazd nie może jechać do tej stacji
-STR_ERROR_CAN_T_ADD_ORDER_SHARED                                :{WHITE}... pojazd dzielący ten rozkaz nie może jechać do tej stacji
+STR_ERROR_CAN_T_ADD_ORDER_SHARED                                :{WHITE}... pojazd współdzielący to polecenie nie może jechać do tej stacji
 STR_ERROR_CAN_T_COPY_ORDER_VEHICLE_LIST                         :{WHITE}... nie wszystkie pojazdy mają takie same polecenia
 STR_ERROR_CAN_T_SHARE_ORDER_VEHICLE_LIST                        :{WHITE}... nie wszystkie pojazdy współdzielą polecenia
 

@@ -1002,6 +1002,7 @@ STR_GAME_OPTIONS_CURRENCY_HKD                                   :Hongkongin doll
 STR_GAME_OPTIONS_CURRENCY_INR                                   :Intian rupia
 STR_GAME_OPTIONS_CURRENCY_IDR                                   :Indonesian rupia
 STR_GAME_OPTIONS_CURRENCY_MYR                                   :Malesian ringgit
+STR_GAME_OPTIONS_CURRENCY_LVL                                   :Latvian lati
 
 STR_GAME_OPTIONS_AUTOSAVE_FRAME                                 :{BLACK}Automaattitallennus
 STR_GAME_OPTIONS_AUTOSAVE_DROPDOWN_TOOLTIP                      :{BLACK}Valitse aikaväli automaattisille pelitallennuksille
@@ -2723,9 +2724,9 @@ STR_RAIL_TOOLBAR_MAGLEV_CONSTRUCTION_CAPTION                    :Maglevin rakent
 STR_RAIL_TOOLBAR_TOOLTIP_BUILD_RAILROAD_TRACK                   :{BLACK}Rakenna rautateitä. Ctrl vaihtaa rakennus-/poistotilan välillä. Shift vaihtaa rakennustilan ja kustannusarvion välillä
 STR_RAIL_TOOLBAR_TOOLTIP_BUILD_AUTORAIL                         :{BLACK}Rakenna rautatietä automaattisesti valittuun suuntaan. Ctrl vaihtaa rakennus-/poistotilan välillä. Shift vaihtaa rakennustilan ja kustannusarvion välillä
 STR_RAIL_TOOLBAR_TOOLTIP_BUILD_TRAIN_DEPOT_FOR_BUILDING         :{BLACK}Rakenna veturitalli (junien ostamista ja huoltoa varten). Shift vaihtaa rakennustilan ja kustannusarvion välillä
-STR_RAIL_TOOLBAR_TOOLTIP_CONVERT_RAIL_TO_WAYPOINT               :{BLACK}Muunna raide reittipisteeksi. Ctrl liittää reittipisteet. Shift vaihtaa muuntotilan ja kustannusarvion välillä
+STR_RAIL_TOOLBAR_TOOLTIP_CONVERT_RAIL_TO_WAYPOINT               :{BLACK}Rakenna reittipiste rautatielle. Ctrl mahdollistaa reittipisteiden yhdistämisen. Shift vaihtaa rakennustilan ja kustannusarvion välillä
 STR_RAIL_TOOLBAR_TOOLTIP_BUILD_RAILROAD_STATION                 :{BLACK}Rakenna rautatieasema. Ctrl liittää asemat. Shift vaihtaa rakennustilan ja kustannusarvion välillä
-STR_RAIL_TOOLBAR_TOOLTIP_BUILD_RAILROAD_SIGNALS                 :{BLACK}Rakenna opastimia. Ctrl vaihtaa siipi- ja valo-opastimien välillä{}Vetäminen rakentaa opastimia suoralle rataosuudelle. Ctrl rakentaa opastimia seuraavaan risteykseen tai opastimeen saakka{}Ctrl+napsautus avaa opastimenvalintaikkunan. Shift vaihtaa rakennustilan ja kustannusarvion välillä
+STR_RAIL_TOOLBAR_TOOLTIP_BUILD_RAILROAD_SIGNALS                 :{BLACK}Rakenna opastin rautatielle. Ctrl vaihtaa siipi- ja valo-opastimien välillä{}Vetäminen rakentaa opastimia suoralle rataosuudelle. Ctrl rakentaa opastimia seuraavaan risteykseen tai opastimeen saakka{}Ctrl+napsautus avaa opastimenvalintaikkunan. Shift vaihtaa rakennustilan ja kustannusarvion välillä
 STR_RAIL_TOOLBAR_TOOLTIP_BUILD_RAILROAD_BRIDGE                  :{BLACK}Rakenna rautatiesilta. Shift vaihtaa rakennustilan ja kustannusarvion välillä
 STR_RAIL_TOOLBAR_TOOLTIP_BUILD_RAILROAD_TUNNEL                  :{BLACK}Rakenna rautatietunneli. Shift vaihtaa rakennustilan ja kustannusarvion välillä
 STR_RAIL_TOOLBAR_TOOLTIP_TOGGLE_BUILD_REMOVE_FOR                :{BLACK}Rautatien, opastimien, reittipisteiden ja asemien rakentaminen/poisto päälle/pois. Pidä pohjassa Ctrl-näppäintä poistaaksesi myös aseman tai reittipisteen alla olevat raiteet
@@ -2813,7 +2814,7 @@ STR_ROAD_TOOLBAR_TOOLTIP_BUILD_ROAD_VEHICLE_DEPOT               :{BLACK}Rakenna 
 STR_ROAD_TOOLBAR_TOOLTIP_BUILD_TRAM_VEHICLE_DEPOT               :{BLACK}Rakenna raitiotievarikko (vaunujen ostamiseen ja korjaamiseen). Shift vaihtaa rakennustilan ja kustannusarvion välillä
 STR_ROAD_TOOLBAR_TOOLTIP_BUILD_BUS_STATION                      :{BLACK}Rakenna linja-autoasema. Ctrl liittää asemat. Shift vaihtaa rakennustilan ja kustannusarvion välillä
 STR_ROAD_TOOLBAR_TOOLTIP_BUILD_PASSENGER_TRAM_STATION           :{BLACK}Rakenna raitiotien matkustaja-asema. Ctrl liittää asemat. Shift vaihtaa rakennustilan ja kustannusarvion välillä
-STR_ROAD_TOOLBAR_TOOLTIP_BUILD_TRUCK_LOADING_BAY                :{BLACK}Rakenna lastauslaituri. Ctrl liittää asemat. Shift vaihtaa rakennustilan ja kustannusarvion välillä
+STR_ROAD_TOOLBAR_TOOLTIP_BUILD_TRUCK_LOADING_BAY                :{BLACK}Rakenna lastauslaituri. Ctrl mahdollistaa laitureiden yhdistämisen yhdeksi asemaksi. Shift vaihtaa rakennustilan ja kustannusarvion välillä
 STR_ROAD_TOOLBAR_TOOLTIP_BUILD_CARGO_TRAM_STATION               :{BLACK}Rakenna raitiotien rahtiasema. Ctrl liittää asemat. Shift vaihtaa rakennustilan ja kustannusarvion välillä
 STR_ROAD_TOOLBAR_TOOLTIP_TOGGLE_ONE_WAY_ROAD                    :{BLACK}Ota yksisuuntaiset tiet käyttöön/pois käytöstä
 STR_ROAD_TOOLBAR_TOOLTIP_BUILD_ROAD_BRIDGE                      :{BLACK}Rakenna maantiesilta. Shift vaihtaa rakennustilan ja kustannusarvion välillä

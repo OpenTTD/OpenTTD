@@ -207,7 +207,7 @@ STR_COLOUR_SECONDARY_ORANGE                                     :橘黄色
 STR_COLOUR_SECONDARY_BROWN                                      :棕　色
 STR_COLOUR_SECONDARY_GREY                                       :浅灰色
 STR_COLOUR_SECONDARY_WHITE                                      :白　色
-STR_COLOUR_SECONDARY_SAME_AS_PRIMARY                            :与主色调相同
+STR_COLOUR_SECONDARY_SAME_AS_PRIMARY                            :主色调
 
 
 # Units used in OpenTTD
@@ -1002,6 +1002,7 @@ STR_GAME_OPTIONS_CURRENCY_HKD                                   :港币
 STR_GAME_OPTIONS_CURRENCY_INR                                   :印度卢布
 STR_GAME_OPTIONS_CURRENCY_IDR                                   :印尼盾
 STR_GAME_OPTIONS_CURRENCY_MYR                                   :马来西亚林吉特
+STR_GAME_OPTIONS_CURRENCY_LVL                                   :拉脱维亚拉特
 
 STR_GAME_OPTIONS_AUTOSAVE_FRAME                                 :{BLACK}自动保存
 STR_GAME_OPTIONS_AUTOSAVE_DROPDOWN_TOOLTIP                      :{BLACK}选择自动保存的周期
@@ -1359,7 +1360,7 @@ STR_CONFIG_SETTING_SIGNALSIDE                                   :显示信号灯
 STR_CONFIG_SETTING_SIGNALSIDE_HELPTEXT                          :选择在铁路哪一边放置信号灯
 ###length 3
 STR_CONFIG_SETTING_SIGNALSIDE_LEFT                              :在左边
-STR_CONFIG_SETTING_SIGNALSIDE_DRIVING_SIDE                      :在前进方向
+STR_CONFIG_SETTING_SIGNALSIDE_DRIVING_SIDE                      :道路通行方向
 STR_CONFIG_SETTING_SIGNALSIDE_RIGHT                             :在右侧
 
 STR_CONFIG_SETTING_SHOWFINANCES                                 :在年终显示财务报表：{STRING}
@@ -1549,8 +1550,8 @@ STR_CONFIG_SETTING_SE_FLAT_WORLD_HEIGHT                         :由水面场景
 STR_CONFIG_SETTING_EDGES_NOT_EMPTY                              :{WHITE}一个或多个北边的地块不是闲置的
 STR_CONFIG_SETTING_EDGES_NOT_WATER                              :{WHITE}一个或多个地图某边的地块不是水域
 
-STR_CONFIG_SETTING_STATION_SPREAD                               :车站占地上限格数： {STRING}
-STR_CONFIG_SETTING_STATION_SPREAD_HELPTEXT                      :设置车站最大占地面积，注意：太大影响游戏速度
+STR_CONFIG_SETTING_STATION_SPREAD                               :最大车站范围： {STRING}
+STR_CONFIG_SETTING_STATION_SPREAD_HELPTEXT                      :设置车站的最大范围，即最大长宽。请注意较高数值会使游戏变慢。
 
 STR_CONFIG_SETTING_SERVICEATHELIPAD                             :直升机在降落平台自动保养：{STRING}
 STR_CONFIG_SETTING_SERVICEATHELIPAD_HELPTEXT                    :直升飞机在降落平台自动保养，即使机场没有机库
@@ -2723,7 +2724,7 @@ STR_RAIL_TOOLBAR_MAGLEV_CONSTRUCTION_CAPTION                    :磁悬浮铁路
 STR_RAIL_TOOLBAR_TOOLTIP_BUILD_RAILROAD_TRACK                   :{BLACK}建设轨道。按住 Ctrl 键切换建设/移除轨道。按住 Shift 键显示预计费用。
 STR_RAIL_TOOLBAR_TOOLTIP_BUILD_AUTORAIL                         :{BLACK}使用多向路轨工具铺设轨道。按住 Ctrl 键切换建设/移除轨道。按住 Shift 键显示预计费用。
 STR_RAIL_TOOLBAR_TOOLTIP_BUILD_TRAIN_DEPOT_FOR_BUILDING         :{BLACK}建设列车车库（可以购买或维护列车）按住 Shift 键显示预计费用。
-STR_RAIL_TOOLBAR_TOOLTIP_CONVERT_RAIL_TO_WAYPOINT               :{BLACK}将铁路变为路点。按住 Ctrl 键允许合并路点。按住 Shift 键显示预计费用。
+STR_RAIL_TOOLBAR_TOOLTIP_CONVERT_RAIL_TO_WAYPOINT               :{BLACK}建设铁路路点。按住 Ctrl 键允许合并路点。按住 Shift 键显示预计费用。
 STR_RAIL_TOOLBAR_TOOLTIP_BUILD_RAILROAD_STATION                 :{BLACK}建设火车站。按住 Ctrl 键允许合并站台。按住 Shift 键显示预计费用。
 STR_RAIL_TOOLBAR_TOOLTIP_BUILD_RAILROAD_SIGNALS                 :{BLACK}建造铁路信号。{} 按住 Ctrl 键点选铁路，系统会切换悬臂式/电子式信号灯，或者更改被点选信号灯的种类{} 在一段直线铁路上拖拽，系统会依照设置的信号间距，沿铁路建立信号灯。如果按住 Ctrl 键拖拽，系统会建造信号灯至拖拽方向前的下一个道岔{} 如果按住 Shift 键点击铁路或在铁路上拖拽，系统会显示建置成本但不设置信号灯{} 如果按住 Ctrl 键点击此键，系统会切换信号灯选择窗口的显示状态
 STR_RAIL_TOOLBAR_TOOLTIP_BUILD_RAILROAD_BRIDGE                  :{BLACK}建设铁路桥梁。按住 Shift 键显示预计费用。
