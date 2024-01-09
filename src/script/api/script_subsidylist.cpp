@@ -13,9 +13,7 @@
 
 #include "../../safeguards.h"
 
-ScriptSubsidyList::ScriptSubsidyList()
+ScriptSubsidyList::ScriptSubsidyList(HSQUIRRELVM vm)
 {
-	for (const Subsidy *s : Subsidy::Iterate()) {
-		this->AddItem(s->index);
-	}
+	ScriptList::FillList<Subsidy>(vm, this);
 }

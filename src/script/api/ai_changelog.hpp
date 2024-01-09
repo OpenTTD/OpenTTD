@@ -25,6 +25,11 @@
  * \li AIError::ERR_PRECONDITION_TOO_MANY_PARAMETERS, that error is never returned anymore.
  *
  * Other changes:
+ * \li AIGroupList accepts an optional filter function
+ * \li AIIndustryList accepts an optional filter function
+ * \li AISignList accepts an optional filter function
+ * \li AISubsidyList accepts an optional filter function
+ * \li AITownList accepts an optional filter function
  * \li AIVehicleList accepts an optional filter function
  *
  * \b 13.0

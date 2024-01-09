@@ -1323,3 +1323,16 @@ void sq_free(void *p,SQUnsignedInteger size)
 	SQ_FREE(p,size);
 }
 
+SQOpsLimiter::SQOpsLimiter(HSQUIRRELVM v, SQInteger ops, const char *label) : _v(v)
+{
+	this->_ops = v->_ops_till_suspend_error_threshold;
+	if (this->_ops == INT64_MIN) {
+		v->_ops_till_suspend_error_threshold = v->_ops_till_suspend - ops;
+		v->_ops_till_suspend_error_label = label;
+	}
+}
+
+SQOpsLimiter::~SQOpsLimiter()
+{
+	this->_v->_ops_till_suspend_error_threshold = this->_ops;
+}

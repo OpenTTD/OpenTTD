@@ -19,7 +19,32 @@
  */
 class ScriptIndustryList : public ScriptList {
 public:
+#ifdef DOXYGEN_API
 	ScriptIndustryList();
+
+	/**
+	 * Apply a filter when building the list.
+	 * @param filter_function The function which will be doing the filtering.
+	 * @param params The params to give to the filters (minus the first param,
+	 *  which is always the index-value).
+	 * @note You can write your own filters and use them. Just remember that
+	 *  the first parameter should be the index-value, and it should return
+	 *  a bool.
+	 * @note Example:
+	 *  ScriptIndustryList(ScriptIndustry.HasDock);
+	 *  function IsType(industry_id, type)
+	 *  {
+	 *    return ScriptIndustry.GetIndustryType(industry_id) == type;
+	 *  }
+	 *  ScriptIndustryList(IsType, 0);
+	 */
+	ScriptIndustryList(void *filter_function, int params, ...);
+#else
+	/**
+	 * The constructor wrapper from Squirrel.
+	 */
+	ScriptIndustryList(HSQUIRRELVM vm);
+#endif /* DOXYGEN_API */
 };
 
 /**
