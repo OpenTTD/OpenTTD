@@ -27,6 +27,7 @@
 #include <sys/stat.h>
 #include "../../language.h"
 #include "../../thread.h"
+#include "../../library_loader.h"
 
 #include "../../safeguards.h"
 
@@ -573,8 +574,8 @@ int OTTDStringCompare(std::string_view s1, std::string_view s2)
 #endif
 
 	if (first_time) {
-		static DllLoader _kernel32(L"Kernel32.dll");
-		_CompareStringEx = _kernel32.GetProcAddress("CompareStringEx");
+		static LibraryLoader _kernel32("Kernel32.dll");
+		_CompareStringEx = _kernel32.GetFunction("CompareStringEx");
 		first_time = false;
 	}
 
@@ -617,8 +618,8 @@ int Win32StringContains(const std::string_view str, const std::string_view value
 	static bool first_time = true;
 
 	if (first_time) {
-		static DllLoader _kernel32(L"Kernel32.dll");
-		_FindNLSStringEx = _kernel32.GetProcAddress("FindNLSStringEx");
+		static LibraryLoader _kernel32("Kernel32.dll");
+		_FindNLSStringEx = _kernel32.GetFunction("FindNLSStringEx");
 		first_time = false;
 	}
 

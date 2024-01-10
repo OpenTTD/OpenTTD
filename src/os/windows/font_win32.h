@@ -13,6 +13,8 @@
 #include "../../fontcache/truetypefontcache.h"
 #include "win32.h"
 
+#include <windows.h>
+
 /** Font cache for fonts that are based on a Win32 font. */
 class Win32FontCache : public TrueTypeFontCache {
 private:

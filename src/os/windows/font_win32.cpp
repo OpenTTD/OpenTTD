@@ -15,9 +15,10 @@
 #include "../../core/mem_func.hpp"
 #include "../../error_func.h"
 #include "../../fileio_func.h"
-#include "../../fontdetection.h"
 #include "../../fontcache.h"
 #include "../../fontcache/truetypefontcache.h"
+#include "../../fontdetection.h"
+#include "../../library_loader.h"
 #include "../../string_func.h"
 #include "../../strings_func.h"
 #include "../../zoom_func.h"
@@ -361,9 +362,9 @@ void LoadWin32Font(FontSize fs)
 			if (AddFontResourceEx(fontPath, FR_PRIVATE, 0) != 0) {
 				/* Try a nice little undocumented function first for getting the internal font name.
 				 * Some documentation is found at: http://www.undocprint.org/winspool/getfontresourceinfo */
-				static DllLoader _gdi32(L"gdi32.dll");
+				static LibraryLoader _gdi32("gdi32.dll");
 				typedef BOOL(WINAPI *PFNGETFONTRESOURCEINFO)(LPCTSTR, LPDWORD, LPVOID, DWORD);
-				static PFNGETFONTRESOURCEINFO GetFontResourceInfo = _gdi32.GetProcAddress("GetFontResourceInfoW");
+				static PFNGETFONTRESOURCEINFO GetFontResourceInfo = _gdi32.GetFunction("GetFontResourceInfoW");
 
 				if (GetFontResourceInfo != nullptr) {
 					/* Try to query an array of LOGFONTs that describe the file. */
