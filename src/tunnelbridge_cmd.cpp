@@ -562,8 +562,6 @@ CommandCost CmdBuildBridge(DoCommandFlag flags, TileIndex tile_end, TileIndex ti
 				MakeAqueductBridgeRamp(tile_end,   owner, ReverseDiagDir(dir));
 				CheckForDockingTile(tile_start);
 				CheckForDockingTile(tile_end);
-				InvalidateWaterRegion(tile_start);
-				InvalidateWaterRegion(tile_end);
 				break;
 
 			default:

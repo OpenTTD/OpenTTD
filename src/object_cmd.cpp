@@ -35,6 +35,7 @@
 #include "station_func.h"
 #include "object_cmd.h"
 #include "landscape_cmd.h"
+#include "pathfinder/water_regions.h"
 
 #include "table/strings.h"
 #include "table/object_land.h"
@@ -362,6 +363,7 @@ CommandCost CmdBuildObject(DoCommandFlag flags, TileIndex tile, ObjectType type,
 
 	if (flags & DC_EXEC) {
 		BuildObject(type, tile, _current_company == OWNER_DEITY ? OWNER_NONE : _current_company, nullptr, view);
+		for (TileIndex t : ta) InvalidateWaterRegion(t);
 
 		/* Make sure the HQ starts at the right size. */
 		if (type == OBJECT_HQ) UpdateCompanyHQ(tile, hq_score);

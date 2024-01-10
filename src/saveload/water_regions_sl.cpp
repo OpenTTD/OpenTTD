@@ -10,45 +10,23 @@
 #include "../stdafx.h"
 
 #include "saveload.h"
-#include "pathfinder/water_regions.h"
 
 #include "../safeguards.h"
 
-static const SaveLoad _water_region_desc[] = {
-	SLE_VAR(WaterRegionSaveLoadInfo, initialized, SLE_BOOL),
-};
+extern void SlSkipArray();
 
-struct WRGNChunkHandler : ChunkHandler {
-	WRGNChunkHandler() : ChunkHandler('WRGN', CH_TABLE) {}
-
-	void Save() const override
-	{
-		SlTableHeader(_water_region_desc);
-
-		int index = 0;
-		for (WaterRegionSaveLoadInfo &region : GetWaterRegionSaveLoadInfo()) {
-			SlSetArrayIndex(index++);
-			SlObject(&region, _water_region_desc);
-		}
-	}
+/* Water Region savegame data is no longer used, but still needed for old savegames to load without errors. */
+struct WaterRegionChunkHandler : ChunkHandler {
+	WaterRegionChunkHandler() : ChunkHandler('WRGN', CH_READONLY)
+	{}
 
 	void Load() const override
 	{
-		const std::vector<SaveLoad> slt = SlTableHeader(_water_region_desc);
-
-		int index;
-
-		std::vector<WaterRegionSaveLoadInfo> loaded_info;
-		while ((index = SlIterateArray()) != -1) {
-			WaterRegionSaveLoadInfo region_info;
-			SlObject(&region_info, slt);
-			loaded_info.push_back(std::move(region_info));
-		}
-
-		LoadWaterRegions(loaded_info);
-	}
+		SlTableHeader({});
+		SlSkipArray();
+	};
 };
 
-static const WRGNChunkHandler WRGN;
+static const WaterRegionChunkHandler WRGN;
 static const ChunkHandlerRef water_region_chunk_handlers[] = { WRGN };
 extern const ChunkHandlerTable _water_region_chunk_handlers(water_region_chunk_handlers);

@@ -347,7 +347,6 @@ CommandCost CmdBuildBuoy(DoCommandFlag flags, TileIndex tile)
 		if (wp->town == nullptr) MakeDefaultName(wp);
 
 		MakeBuoy(tile, wp->index, GetWaterClass(tile));
-		InvalidateWaterRegion(tile);
 		CheckForDockingTile(tile);
 		MarkTileDirtyByTile(tile);
 

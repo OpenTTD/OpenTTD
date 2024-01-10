@@ -134,9 +134,6 @@ CommandCost CmdBuildShipDepot(DoCommandFlag flags, TileIndex tile, Axis axis)
 	}
 
 	if (flags & DC_EXEC) {
-		InvalidateWaterRegion(tile);
-		InvalidateWaterRegion(tile2);
-
 		Depot *depot = new Depot(tile);
 		depot->build_date = TimerGameCalendar::date;
 
@@ -247,7 +244,6 @@ void MakeWaterKeepingClass(TileIndex tile, Owner o)
 
 	/* Zero map array and terminate animation */
 	DoClearSquare(tile);
-	InvalidateWaterRegion(tile);
 
 	/* Maybe change to water */
 	switch (wc) {
@@ -345,10 +341,6 @@ static CommandCost DoBuildLock(TileIndex tile, DiagDirection dir, DoCommandFlag 
 	}
 
 	if (flags & DC_EXEC) {
-		InvalidateWaterRegion(tile);
-		InvalidateWaterRegion(tile + delta);
-		InvalidateWaterRegion(tile - delta);
-
 		/* Update company infrastructure counts. */
 		Company *c = Company::GetIfValid(_current_company);
 		if (c != nullptr) {
@@ -491,8 +483,6 @@ CommandCost CmdBuildCanal(DoCommandFlag flags, TileIndex tile, TileIndex start_t
 		if (!water) cost.AddCost(ret);
 
 		if (flags & DC_EXEC) {
-			InvalidateWaterRegion(current_tile);
-
 			if (IsTileType(current_tile, MP_WATER) && IsCanal(current_tile)) {
 				Owner owner = GetTileOwner(current_tile);
 				if (Company::IsValidID(owner)) {
@@ -543,8 +533,6 @@ CommandCost CmdBuildCanal(DoCommandFlag flags, TileIndex tile, TileIndex start_t
 
 static CommandCost ClearTile_Water(TileIndex tile, DoCommandFlag flags)
 {
-	if (flags & DC_EXEC) InvalidateWaterRegion(tile);
-
 	switch (GetWaterTileType(tile)) {
 		case WATER_TILE_CLEAR: {
 			if (flags & DC_NO_WATER) return_cmd_error(STR_ERROR_CAN_T_BUILD_ON_WATER);
@@ -1175,8 +1163,6 @@ void DoFloodTile(TileIndex target)
 	}
 
 	if (flooded) {
-		InvalidateWaterRegion(target);
-
 		/* Mark surrounding canal tiles dirty too to avoid glitches */
 		MarkCanalsAndRiversAroundDirty(target);
 

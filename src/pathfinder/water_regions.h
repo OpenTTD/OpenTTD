@@ -60,14 +60,6 @@ void InvalidateWaterRegion(TileIndex tile);
 using TVisitWaterRegionPatchCallBack = std::function<void(const WaterRegionPatchDesc &)>;
 void VisitWaterRegionPatchNeighbors(const WaterRegionPatchDesc &water_region_patch, TVisitWaterRegionPatchCallBack &callback);
 
-void InitializeWaterRegions();
-
-struct WaterRegionSaveLoadInfo
-{
-	bool initialized;
-};
-
-std::vector<WaterRegionSaveLoadInfo> GetWaterRegionSaveLoadInfo();
-void LoadWaterRegions(const std::vector<WaterRegionSaveLoadInfo> &save_load_info);
+void AllocateWaterRegions();
 
 #endif /* WATER_REGIONS_H */

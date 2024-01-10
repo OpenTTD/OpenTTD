@@ -36,6 +36,7 @@
 #include "landscape_cmd.h"
 #include "terraform_cmd.h"
 #include "station_func.h"
+#include "pathfinder/water_regions.h"
 
 #include "table/strings.h"
 #include "table/sprites.h"
@@ -538,6 +539,8 @@ void DoClearSquare(TileIndex tile)
 	MakeClear(tile, CLEAR_GRASS, _generating_world ? 3 : 0);
 	MarkTileDirtyByTile(tile);
 	if (remove) RemoveDockingTile(tile);
+
+	InvalidateWaterRegion(tile);
 }
 
 /**
