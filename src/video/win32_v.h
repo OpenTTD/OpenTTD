@@ -13,6 +13,7 @@
 #include "video_driver.hpp"
 #include <mutex>
 #include <condition_variable>
+#include <windows.h>
 
 /** Base class for Windows video drivers. */
 class VideoDriver_Win32Base : public VideoDriver {

@@ -311,6 +311,7 @@ link_package(LZO)
 
 if(NOT WIN32 AND NOT EMSCRIPTEN)
     link_package(CURL ENCOURAGED)
+    target_link_libraries(openttd_lib ${CMAKE_DL_LIBS})
 endif()
 
 if(NOT EMSCRIPTEN)
