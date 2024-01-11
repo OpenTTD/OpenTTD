@@ -256,6 +256,11 @@ std::unique_ptr<const ParagraphLayouter::Line> FallbackParagraphLayout::NextLine
 
 			next_run = this->buffer_begin + iter->first;
 			begin = this->buffer;
+			/* Since a next run is started, there is already some text that
+			 * will be shown for this line. However, we do not want to break
+			 * this line at the previous space, so pretend we passed a space
+			 * just before this next run. */
+			last_space = begin - 1;
 		}
 
 		if (IsWhitespace(c)) last_space = this->buffer;
