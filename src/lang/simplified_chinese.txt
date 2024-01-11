@@ -1356,12 +1356,12 @@ STR_CONFIG_SETTING_INDUSTRY_PLATFORM_HELPTEXT                   :设置工厂周
 STR_CONFIG_SETTING_MULTIPINDTOWN                                :允许在一个城镇中建设多个同类工业设施：{STRING}
 STR_CONFIG_SETTING_MULTIPINDTOWN_HELPTEXT                       :通常，城市不希望有多个相同类型工业，本设置“打开”时允许多个同类型工厂在同一个城市
 
-STR_CONFIG_SETTING_SIGNALSIDE                                   :显示信号灯：{STRING}
-STR_CONFIG_SETTING_SIGNALSIDE_HELPTEXT                          :选择在铁路哪一边放置信号灯
+STR_CONFIG_SETTING_SIGNALSIDE                                   :铁路信号位置：{STRING}
+STR_CONFIG_SETTING_SIGNALSIDE_HELPTEXT                          :选择在铁路的哪一侧放置信号。
 ###length 3
-STR_CONFIG_SETTING_SIGNALSIDE_LEFT                              :在左边
+STR_CONFIG_SETTING_SIGNALSIDE_LEFT                              :左侧
 STR_CONFIG_SETTING_SIGNALSIDE_DRIVING_SIDE                      :道路通行方向
-STR_CONFIG_SETTING_SIGNALSIDE_RIGHT                             :在右侧
+STR_CONFIG_SETTING_SIGNALSIDE_RIGHT                             :右侧
 
 STR_CONFIG_SETTING_SHOWFINANCES                                 :在年终显示财务报表：{STRING}
 STR_CONFIG_SETTING_SHOWFINANCES_HELPTEXT                        :“打开”时，在年底显示财务报表窗口，方便查看公司财务状况
@@ -1369,7 +1369,7 @@ STR_CONFIG_SETTING_SHOWFINANCES_HELPTEXT                        :“打开”时
 STR_CONFIG_SETTING_NONSTOP_BY_DEFAULT                           :新的调度命令默认为“不停车”： {STRING}
 STR_CONFIG_SETTING_NONSTOP_BY_DEFAULT_HELPTEXT                  :通常，车辆在它经过的每一个车站都会停车。“打开”本选项时，车辆会不停车的通过所有中间车站前往最终目的地。注意：这只是为每一条新调度命令设置一个默认信息，仍然可以为每条调度命令设置明确的信息
 
-STR_CONFIG_SETTING_STOP_LOCATION                                :新列车调度计划中默认命令为停靠在站台{STRING} 位置
+STR_CONFIG_SETTING_STOP_LOCATION                                :新列车调度计划中默认命令为停靠在站台 {STRING} 位置
 STR_CONFIG_SETTING_STOP_LOCATION_HELPTEXT                       :设置车辆在站台的默认停靠位置，“近端”是靠近车辆进入的那一端，“中间”是站台中间位置，“远端”是远离车辆进入的那一端。注意：本设定只改变新指令的默认设定。玩家仍可通过点击指令文字改变列车在某车站的停车位置。
 ###length 3
 STR_CONFIG_SETTING_STOP_LOCATION_NEAR_END                       :近端
@@ -1675,11 +1675,11 @@ STR_CONFIG_SETTING_QUICKGOTO                                    :快速创建车
 STR_CONFIG_SETTING_QUICKGOTO_HELPTEXT                           :启用时，打开调度计划窗口时预先选定“前往”命令
 
 STR_CONFIG_SETTING_DEFAULT_RAIL_TYPE                            :默认铁路类型 (新建/读取游戏后)： {STRING}
-STR_CONFIG_SETTING_DEFAULT_RAIL_TYPE_HELPTEXT                   :设置开启或者载入游戏时的默认铁路类型，“第一可用的”是最老的铁路类型，“最后一个可用”的是最新的铁路类型，“最常用的”是当前用的最多的铁路类型
+STR_CONFIG_SETTING_DEFAULT_RAIL_TYPE_HELPTEXT                   :设置开启或者载入游戏时的默认铁路类型，“最先可用的类型”是最老的铁路类型，“最新可用的类型”的是最新的铁路类型，“最常用的类型”是当前用的最多的铁路类型
 ###length 3
-STR_CONFIG_SETTING_DEFAULT_RAIL_TYPE_FIRST                      :第一个可用的
-STR_CONFIG_SETTING_DEFAULT_RAIL_TYPE_LAST                       :第后一个可用的
-STR_CONFIG_SETTING_DEFAULT_RAIL_TYPE_MOST_USED                  :最常用的
+STR_CONFIG_SETTING_DEFAULT_RAIL_TYPE_FIRST                      :最先可用的类型
+STR_CONFIG_SETTING_DEFAULT_RAIL_TYPE_LAST                       :最新可用的类型
+STR_CONFIG_SETTING_DEFAULT_RAIL_TYPE_MOST_USED                  :最常用的类型
 
 STR_CONFIG_SETTING_SHOW_TRACK_RESERVATION                       :显示预留的轨道： {STRING}
 STR_CONFIG_SETTING_SHOW_TRACK_RESERVATION_HELPTEXT              :让预留的铁路轨道显示不同的颜色，以帮助查找列车拒绝进入路径轨道的原因
@@ -1754,10 +1754,10 @@ STR_CONFIG_SETTING_AI_PROFILE_HARD                              :困难
 STR_CONFIG_SETTING_AI_IN_MULTIPLAYER                            :联机游戏时允许电脑玩家(AI)： {STRING}
 STR_CONFIG_SETTING_AI_IN_MULTIPLAYER_HELPTEXT                   :“打开”时联机游戏允许电脑玩家
 
-STR_CONFIG_SETTING_SCRIPT_MAX_OPCODES                           :可允许的最大的代码量(如超过则会令脚本被禁用):{STRING}
-STR_CONFIG_SETTING_SCRIPT_MAX_OPCODES_HELPTEXT                  :脚本在一个回合中可进行计算步数的最大值
+STR_CONFIG_SETTING_SCRIPT_MAX_OPCODES                           :不令脚本停运的最大代码数量：{STRING}
+STR_CONFIG_SETTING_SCRIPT_MAX_OPCODES_HELPTEXT                  :设定在每个计算循环中，脚本（AI与游戏脚本）的每一句代码最多可进行多少个计算步骤。
 STR_CONFIG_SETTING_SCRIPT_MAX_MEMORY                            :每个脚本的内存上限: {STRING}
-STR_CONFIG_SETTING_SCRIPT_MAX_MEMORY_HELPTEXT                   :单个脚本强制终止前可占用的最大内存量。对于大地图可能需要增加。
+STR_CONFIG_SETTING_SCRIPT_MAX_MEMORY_HELPTEXT                   :单个脚本（AI与游戏脚本）可使用的最大内存量，在游玩大型地图时可能需要增加。
 STR_CONFIG_SETTING_SCRIPT_MAX_MEMORY_VALUE                      :{COMMA} MiB
 
 STR_CONFIG_SETTING_SERVINT_ISPERCENT                            :维护间隔以百分比(%)计算： {STRING}
@@ -1914,7 +1914,7 @@ STR_CONFIG_SETTING_EXTRA_TREE_PLACEMENT                         :树木自动生
 STR_CONFIG_SETTING_EXTRA_TREE_PLACEMENT_HELPTEXT                :控制游戏中数目的随机生长，这将影响依赖树木的工业，比如木材厂
 ###length 4
 STR_CONFIG_SETTING_EXTRA_TREE_PLACEMENT_NO_SPREAD               :生长但不扩散 {RED}(损坏伐木场)
-STR_CONFIG_SETTING_EXTRA_TREE_PLACEMENT_SPREAD_RAINFOREST       :只生长在雨林
+STR_CONFIG_SETTING_EXTRA_TREE_PLACEMENT_SPREAD_RAINFOREST       :仅在雨林扩散
 STR_CONFIG_SETTING_EXTRA_TREE_PLACEMENT_SPREAD_ALL              :生长并四处扩散
 STR_CONFIG_SETTING_EXTRA_TREE_PLACEMENT_NO_GROWTH_NO_SPREAD     :不生长，不扩散 {RED}(损坏伐木场)
 
@@ -3239,7 +3239,7 @@ STR_MAPGEN_SNOW_COVERAGE                                        :{BLACK}雪地�
 STR_MAPGEN_SNOW_COVERAGE_UP                                     :{BLACK}将雪地比率增加10%
 STR_MAPGEN_SNOW_COVERAGE_DOWN                                   :{BLACK}将雪地比率减少10%
 STR_MAPGEN_SNOW_COVERAGE_TEXT                                   :{BLACK}{NUM}%
-STR_MAPGEN_DESERT_COVERAGE                                      :{BLACK}沙漠覆盖率：
+STR_MAPGEN_DESERT_COVERAGE                                      :{BLACK}沙漠比率：
 STR_MAPGEN_DESERT_COVERAGE_UP                                   :{BLACK}将沙漠比率增加10%
 STR_MAPGEN_DESERT_COVERAGE_DOWN                                 :{BLACK}将沙漠比率减少10%
 STR_MAPGEN_DESERT_COVERAGE_TEXT                                 :{BLACK}{NUM}%
@@ -3304,7 +3304,7 @@ STR_MAPGEN_HEIGHTMAP_SIZE                                       :{ORANGE}{NUM} �
 STR_MAPGEN_TERRAIN_TYPE_QUERY_CAPT                              :{WHITE}最高峰目标高度
 STR_MAPGEN_HEIGHTMAP_HEIGHT_QUERY_CAPT                          :{WHITE}最高峰
 STR_MAPGEN_SNOW_COVERAGE_QUERY_CAPT                             :{WHITE}积雪覆盖率 (百分比)
-STR_MAPGEN_DESERT_COVERAGE_QUERY_CAPT                           :{WHITE}沙漠覆盖率 (百分比)
+STR_MAPGEN_DESERT_COVERAGE_QUERY_CAPT                           :{WHITE}沙漠比率 (百分比)
 STR_MAPGEN_START_DATE_QUERY_CAPT                                :{WHITE}改变游戏开始的日期
 
 # SE Map generation
@@ -3375,7 +3375,7 @@ STR_NEWGRF_SETTINGS_FILENAME                                    :{BLACK}文件�
 STR_NEWGRF_SETTINGS_GRF_ID                                      :{BLACK}GRF ID：{SILVER}{STRING}
 STR_NEWGRF_SETTINGS_VERSION                                     :{BLACK}版本: {SILVER}{NUM}
 STR_NEWGRF_SETTINGS_MIN_VERSION                                 :{BLACK}最低兼容版本: {SILVER}{NUM}
-STR_NEWGRF_SETTINGS_MD5SUM                                      :{BLACK}MD5 码：{SILVER}{STRING}
+STR_NEWGRF_SETTINGS_MD5SUM                                      :{BLACK}MD5码：{SILVER}{STRING}
 STR_NEWGRF_SETTINGS_PALETTE                                     :{BLACK}调色板: {SILVER}{STRING}
 STR_NEWGRF_SETTINGS_PALETTE_DEFAULT                             :默认 (DOS)
 STR_NEWGRF_SETTINGS_PALETTE_DEFAULT_32BPP                       :默认 (DOS) / 32 bpp
