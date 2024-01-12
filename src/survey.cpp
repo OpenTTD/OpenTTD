@@ -338,12 +338,7 @@ void SurveyGrfs(nlohmann::json &survey)
 		if ((c->palette & GRFP_BLT_MASK) == GRFP_BLT_32BPP) grf["blitter"] = "32bpp";
 
 		grf["is_static"] = HasBit(c->flags, GCF_STATIC);
-
-		std::vector<uint32_t> parameters;
-		for (int i = 0; i < c->num_params; i++) {
-			parameters.push_back(c->param[i]);
-		}
-		grf["parameters"] = parameters;
+		grf["parameters"] = span<const uint32_t>(c->param.data(), c->num_params);
 	}
 }
 
