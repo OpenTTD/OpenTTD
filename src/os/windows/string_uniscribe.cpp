@@ -415,7 +415,7 @@ static std::vector<SCRIPT_ITEM> UniscribeItemizeString(UniscribeParagraphLayoutF
 		UniscribeRun run = *i_run;
 
 		/* Partial run after line break (either start or end)? Reshape run to get the first/last glyphs right. */
-		if (i_run == last_run - 1 && remaining_offset < (last_run - 1)->len) {
+		if (i_run == last_run - 1 && remaining_offset <= (last_run - 1)->len) {
 			run.len = remaining_offset - 1;
 
 			if (!UniscribeShapeRun(this->text_buffer, run)) return nullptr;
