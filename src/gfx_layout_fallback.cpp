@@ -49,10 +49,10 @@ public:
 		FallbackVisualRun(Font *font, const char32_t *chars, int glyph_count, int char_offset, int x);
 		const Font *GetFont() const override { return this->font; }
 		int GetGlyphCount() const override { return static_cast<int>(this->glyphs.size()); }
-		const GlyphID *GetGlyphs() const override { return this->glyphs.data(); }
-		const float *GetPositions() const override { return this->positions.data(); }
+		const std::vector<GlyphID> &GetGlyphs() const override { return this->glyphs; }
+		const std::vector<float> &GetPositions() const override { return this->positions; }
 		int GetLeading() const override { return this->GetFont()->fc->GetHeight(); }
-		const int *GetGlyphToCharMap() const override { return this->glyph_to_char.data(); }
+		const std::vector<int> &GetGlyphToCharMap() const override { return this->glyph_to_char; }
 	};
 
 	/** A single line worth of VisualRuns. */

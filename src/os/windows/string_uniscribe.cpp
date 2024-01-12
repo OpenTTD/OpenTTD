@@ -82,19 +82,15 @@ public:
 		int num_glyphs;
 		Font *font;
 
-		mutable int *glyph_to_char = nullptr;
+		mutable std::vector<int> glyph_to_char;
 
 	public:
 		UniscribeVisualRun(const UniscribeRun &range, int x);
 		UniscribeVisualRun(UniscribeVisualRun &&other) noexcept;
-		~UniscribeVisualRun() override
-		{
-			free(this->glyph_to_char);
-		}
 
-		const GlyphID *GetGlyphs() const override { return &this->glyphs[0]; }
-		const float *GetPositions() const override { return &this->positions[0]; }
-		const int *GetGlyphToCharMap() const override;
+		const std::vector<GlyphID> &GetGlyphs() const override { return this->glyphs; }
+		const std::vector<float> &GetPositions() const override { return this->positions; }
+		const std::vector<int> &GetGlyphToCharMap() const override;
 
 		const Font *GetFont() const override { return this->font;  }
 		int GetLeading() const override { return this->font->fc->GetHeight(); }
@@ -492,16 +488,15 @@ UniscribeParagraphLayout::UniscribeVisualRun::UniscribeVisualRun(const Uniscribe
 
 UniscribeParagraphLayout::UniscribeVisualRun::UniscribeVisualRun(UniscribeVisualRun&& other) noexcept
 								: glyphs(std::move(other.glyphs)), positions(std::move(other.positions)), char_to_glyph(std::move(other.char_to_glyph)),
-								  start_pos(other.start_pos), total_advance(other.total_advance), num_glyphs(other.num_glyphs), font(other.font)
+								  start_pos(other.start_pos), total_advance(other.total_advance), num_glyphs(other.num_glyphs), font(other.font),
+								  glyph_to_char(std::move(other.glyph_to_char))
 {
-	this->glyph_to_char = other.glyph_to_char;
-	other.glyph_to_char = nullptr;
 }
 
-const int *UniscribeParagraphLayout::UniscribeVisualRun::GetGlyphToCharMap() const
+const std::vector<int> &UniscribeParagraphLayout::UniscribeVisualRun::GetGlyphToCharMap() const
 {
-	if (this->glyph_to_char == nullptr) {
-		this->glyph_to_char = CallocT<int>(this->GetGlyphCount());
+	if (this->glyph_to_char.empty()) {
+		this->glyph_to_char.resize(this->GetGlyphCount());
 
 		/* The char to glyph array contains the first glyph index of the cluster that is associated
 		 * with each character. It is possible for a cluster to be formed of several chars. */
