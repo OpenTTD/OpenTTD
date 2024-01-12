@@ -81,9 +81,9 @@ public:
 		CoreTextVisualRun(CTRunRef run, Font *font, const CoreTextParagraphLayoutFactory::CharType *buff);
 		CoreTextVisualRun(CoreTextVisualRun &&other) = default;
 
-		const GlyphID *GetGlyphs() const override { return &this->glyphs[0]; }
-		const float *GetPositions() const override { return &this->positions[0]; }
-		const int *GetGlyphToCharMap() const override { return &this->glyph_to_char[0]; }
+		const std::vector<GlyphID> &GetGlyphs() const override { return this->glyphs; }
+		const std::vector<float> &GetPositions() const override { return this->positions; }
+		const std::vector<int> &GetGlyphToCharMap() const override { return this->glyph_to_char; }
 
 		const Font *GetFont() const override { return this->font;  }
 		int GetLeading() const override { return this->font->fc->GetHeight(); }
