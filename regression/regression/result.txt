@@ -9587,4 +9587,23 @@ ERROR: IsEnd() is invalid as Begin() is never called
   -1          >  2147483647:   false
   -2147483648 >  2147483647:   false
    13725      > -2147483648:   true
+--Valuate() with excessive CPU usage--
+Your script made an error: excessive CPU usage in valuator function
+
+*FUNCTION [unknown()] regression/main.nut line [2034]
+*FUNCTION [Valuate()] NATIVE line [-1]
+*FUNCTION [Start()] regression/main.nut line [2035]
+
+[id] 0
+[this] TABLE
+[Infinite] CLOSURE
+[list] INSTANCE
+[this] INSTANCE
+Your script made an error: excessive CPU usage in valuator function
+
+*FUNCTION [Start()] regression/main.nut line [2035]
+
+[Infinite] CLOSURE
+[list] INSTANCE
+[this] INSTANCE
 ERROR: The script died unexpectedly.

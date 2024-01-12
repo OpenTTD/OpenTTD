@@ -2026,5 +2026,12 @@ function Regression::Start()
 	print("  IsEventWaiting:        false");
 
 	this.Math();
+
+	/* Check Valuate() is actually limited, MUST BE THE LAST TEST. */
+	print("--Valuate() with excessive CPU usage--")
+	local list = AIList();
+	list.AddItem(0, 0);
+	local Infinite = function(id) { while(true); }
+	list.Valuate(Infinite);
 }
 
