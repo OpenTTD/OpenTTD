@@ -50,7 +50,7 @@ jobs:
       uses: dtolnay/rust-toolchain@stable
 
     - name: Enable Rust cache
-      uses: Swatinem/rust-cache@v2
+      uses: Swatinem/rust-cache@v2.7.0
 
     - name: Setup vcpkg caching
       uses: actions/github-script@v6
