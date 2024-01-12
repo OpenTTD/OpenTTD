@@ -22,6 +22,7 @@
 #include "../window_gui.h"
 #include "../window_func.h"
 #include "../framerate_type.h"
+#include "../library_loader.h"
 #include "win32_v.h"
 #include <windows.h>
 #include <imm.h>
@@ -976,11 +977,11 @@ float VideoDriver_Win32Base::GetDPIScale()
 	static bool init_done = false;
 	if (!init_done) {
 		init_done = true;
-		static DllLoader _user32(L"user32.dll");
-		static DllLoader _shcore(L"shcore.dll");
-		_GetDpiForWindow = _user32.GetProcAddress("GetDpiForWindow");
-		_GetDpiForSystem = _user32.GetProcAddress("GetDpiForSystem");
-		_GetDpiForMonitor = _shcore.GetProcAddress("GetDpiForMonitor");
+		static LibraryLoader _user32("user32.dll");
+		static LibraryLoader _shcore("shcore.dll");
+		_GetDpiForWindow = _user32.GetFunction("GetDpiForWindow");
+		_GetDpiForSystem = _user32.GetFunction("GetDpiForSystem");
+		_GetDpiForMonitor = _shcore.GetFunction("GetDpiForMonitor");
 	}
 
 	UINT cur_dpi = 0;

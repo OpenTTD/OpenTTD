@@ -202,6 +202,7 @@ STR_UNITS_POWER_IMPERIAL                                        :{DECIMAL}{NBSP}
 STR_UNITS_POWER_METRIC                                          :{DECIMAL}{NBSP}حصان
 STR_UNITS_POWER_SI                                              :{DECIMAL}{NBSP}ك واط
 
+STR_UNITS_POWER_METRIC_TO_WEIGHT_IMPERIAL                       :{DECIMAL}{NBSP}hp/t
 STR_UNITS_POWER_METRIC_TO_WEIGHT_SI                             :{DECIMAL}{NBSP}hp/Mg
 
 STR_UNITS_WEIGHT_SHORT_IMPERIAL                                 :{DECIMAL}{NBSP} طن
@@ -390,6 +391,7 @@ STR_SCENEDIT_FILE_MENU_QUIT                                     :انهاء
 ###length 15
 STR_SETTINGS_MENU_GAME_OPTIONS                                  :إعدادات اللعبه
 STR_SETTINGS_MENU_CONFIG_SETTINGS_TREE                          :الإعدادات
+STR_SETTINGS_MENU_AI_SETTINGS                                   :اعدادات االذكاء الاصطناعي
 STR_SETTINGS_MENU_NEWGRF_SETTINGS                               :إعدادات اﻹضافات
 STR_SETTINGS_MENU_TRANSPARENCY_OPTIONS                          :خيارات الشفافية
 STR_SETTINGS_MENU_TOWN_NAMES_DISPLAYED                          :عرض اسماء المدن
@@ -752,6 +754,7 @@ STR_SMALLMAP_TOOLTIP_SHOW_HEIGHT                                :{BLACK}بدل �
 STR_SMALLMAP_TOOLTIP_DISABLE_ALL_COMPANIES                      :{BLACK}عدم عرض ممتلكات اي شركة على الخارطة
 STR_SMALLMAP_TOOLTIP_ENABLE_ALL_COMPANIES                       :{BLACK}عرض جميع املاك الشركة على الخريطة
 STR_SMALLMAP_TOOLTIP_DISABLE_ALL_CARGOS                         :{BLACK}عدم عرض أي بضائع على الخريطة
+STR_SMALLMAP_TOOLTIP_ENABLE_ALL_CARGOS                          :{BLACK}عرض جميع البضائع على الخريطة
 
 # Status bar messages
 STR_STATUSBAR_TOOLTIP_SHOW_LAST_NEWS                            :{BLACK}اظهر اخر رسالة / تقرير
@@ -948,6 +951,7 @@ STR_GAME_OPTIONS_VIDEO_VSYNC                                    :{BLACK}VSync
 STR_GAME_OPTIONS_VIDEO_VSYNC_TOOLTIP                            :{BLACK}حدد هذا المربع لمزامنة الشاشة (v-sync). سيتم تطبيق الإعداد الذي تم تغييره فقط عند إعادة تشغيل اللعبة. يعمل فقط مع تمكين تسريع الأجهزة (hardware acceleration)
 
 
+STR_GAME_OPTIONS_GUI_SCALE_TOOLTIP                              :{BLACK}اسحب شريط التمرير لتعيين حجم الواجهة. اضغط مع الاستمرار على Ctrl للتعديل المستمر
 STR_GAME_OPTIONS_GUI_SCALE_AUTO                                 :{BLACK}الكشف التلقائي عن الحجم
 STR_GAME_OPTIONS_GUI_SCALE_AUTO_TOOLTIP                         :{BLACK}اختر هذا المربع لكشف حجم الواجهة تلقائيا
 
@@ -1252,6 +1256,7 @@ STR_CONFIG_SETTING_ORDER_REVIEW_EXDEPOT                         :نعم, بست�
 STR_CONFIG_SETTING_ORDER_REVIEW_ON                              :لكل العربات
 
 STR_CONFIG_SETTING_WARN_INCOME_LESS                             :حذر عندما يكون الدخل سالبا :{STRING}
+STR_CONFIG_SETTING_WARN_INCOME_LESS_HELPTEXT                    :عند التمكين ، يتم إرسال رسالة إخبارية عندما لا تحقق السيارة أي ربح خلال سنة تقويمية واحدة
 
 STR_CONFIG_SETTING_NEVER_EXPIRE_VEHICLES                        :المركبات لا تنتهي صلاحيتها ابدا : {STRING}
 
@@ -1406,6 +1411,7 @@ STR_CONFIG_SETTING_ADVANCED_VEHICLE_LISTS                       :استخدام 
 STR_CONFIG_SETTING_LOADING_INDICATORS                           :تفعيل مؤشر التحميل: {STRING}
 STR_CONFIG_SETTING_LOADING_INDICATORS_HELPTEXT                  :حدد ما إذا كانت مؤشرات التحميل معروضة فوق تحميل المركبات أو تفريغها
 
+STR_CONFIG_SETTING_TIMETABLE_MODE_HELPTEXT                      :حدد الوحدات الزمنية المستخدمة في جداول مواعيد المركبات
 ###length 3
 
 STR_CONFIG_SETTING_TIMETABLE_SHOW_ARRIVAL_DEPARTURE             :عرض الوصول و المغادرة في جدولة الاعمال: {STRING}
@@ -1469,6 +1475,7 @@ STR_CONFIG_SETTING_AI_BUILDS_AIRCRAFT                           :حظر الطا
 
 STR_CONFIG_SETTING_AI_BUILDS_SHIPS                              :حظر السفن على الحاسوب: {STRING}
 
+STR_CONFIG_SETTING_AI_PROFILE                                   :الملف الشخصي للإعدادات الافتراضية: {STRING}
 ###length 3
 STR_CONFIG_SETTING_AI_PROFILE_EASY                              :سهل
 
@@ -1480,8 +1487,10 @@ STR_CONFIG_SETTING_SCRIPT_MAX_MEMORY_VALUE                      :{COMMA} MiB
 
 STR_CONFIG_SETTING_SERVINT_ISPERCENT                            :فترات الصيانة بالنسبة المئوية : {STRING}
 
-STR_CONFIG_SETTING_SERVINT_AIRCRAFT                             ::مدة فحص الطائرة الإفتراضي{STRING}
+STR_CONFIG_SETTING_SERVINT_AIRCRAFT                             :مدة فحص الإفتراضي للطائرة: {STRING}
+STR_CONFIG_SETTING_SERVINT_SHIPS                                :مدة فحص الإفتراضي للسفن: {STRING}
 ###setting-zero-is-special
+STR_CONFIG_SETTING_SERVINT_DISABLED                             :غير مفعل
 
 STR_CONFIG_SETTING_NOSERVICE                                    :الغاء الصيانة عندما يكون التعطيل للمركبات غير مفعل: {STRING}
 
@@ -1624,6 +1633,7 @@ STR_CONFIG_SETTING_LARGER_TOWNS_VALUE                           :1 في {COMMA}
 STR_CONFIG_SETTING_CITY_SIZE_MULTIPLIER                         :مضاعف المدن المبدئي: {STRING}
 
 
+STR_CONFIG_SETTING_DISTRIBUTION_PAX                             :وضع التوزيع للركاب: {STRING}
 ###length 3
 
 STR_CONFIG_SETTING_LINKGRAPH_ACCURACY_HELPTEXT                  :كلما قمت بتعليت هذا بشكل اكثر، كلما ازداد وقت الCPU في حساب الرسم البياني الرابط. إذا استغرق الأمر وقتًا طويلاً فقد تلاحظ تأخير في الاستجبة. إذا قمت بتغيره إلى قيمة منخفضة، فسيكون التوزيع غير دقيق، وقد تلاحظ عدم إرسال البضائع إلى الأماكن التي تتوقع أن تذهب إليها.
@@ -1648,6 +1658,7 @@ STR_CONFIG_SETTING_LOCALISATION_UNITS_WEIGHT_METRIC             :متري (طن)
 
 STR_CONFIG_SETTING_LOCALISATION_UNITS_FORCE                     ::وحدات جهد الجر {STRING}
 ###length 3
+STR_CONFIG_SETTING_LOCALISATION_UNITS_FORCE_IMPERIAL            :إمبراطوري (lbf)
 STR_CONFIG_SETTING_LOCALISATION_UNITS_FORCE_METRIC              :متري (كغ - قوة)
 
 ###length 3
@@ -1979,6 +1990,7 @@ STR_NETWORK_CLIENT_LIST_ADMIN_CLIENT_BAN                        :منع
 STR_NETWORK_CLIENT_LIST_ASK_CLIENT_KICK                         :{YELLOW}هل أنت متأكد أنك تريد طرد اللاعب '{STRING}'؟
 STR_NETWORK_CLIENT_LIST_ASK_CLIENT_BAN                          :{YELLOW}هل أنت متأكد أنك تريد حظر اللاعب '{STRING}'؟
 STR_NETWORK_CLIENT_LIST_ASK_COMPANY_RESET                       :{YELLOW}هل أنت متأكد أنك تريد حذف شركة '{COMPANY}'؟
+STR_NETWORK_CLIENT_LIST_ASK_COMPANY_UNLOCK                      :{YELLOW}هل أنت متأكد أنك تريد محو كلمة السر الخاصة بالشركة '{COMPANY}'?
 
 STR_NETWORK_ASK_RELAY_NO                                        :{BLACK}لا
 
@@ -2600,6 +2612,7 @@ STR_ABOUT_VERSION                                               :{BLACK}النس
 STR_ABOUT_COPYRIGHT_OPENTTD                                     :{BLACK}النسخة المفتوحة {COPYRIGHT}2002-{STRING} فريق النسخة المفتوحة
 
 # Framerate display window
+STR_FRAMERATE_CURRENT                                           :{WHITE}الحالي
 STR_FRAMERATE_MS_GOOD                                           :{LTBLUE}{DECIMAL} ms
 STR_FRAMERATE_MS_BAD                                            :{RED}{DECIMAL} ms
 STR_FRAMERATE_FPS_GOOD                                          :{LTBLUE}{DECIMAL} صورة في الثانية
@@ -2845,6 +2858,7 @@ STR_NEWGRF_ERROR_MSG_INFO                                       :{SILVER}{STRING
 STR_NEWGRF_ERROR_MSG_WARNING                                    :{RED} تحذير: {SILVER}{STRING}
 STR_NEWGRF_ERROR_MSG_ERROR                                      :{RED} خطأ: {SILVER}{STRING}
 STR_NEWGRF_ERROR_MSG_FATAL                                      :{RED} خطأ قاتل: {SILVER}{STRING}
+STR_NEWGRF_ERROR_FATAL_POPUP                                    :{WHITE}ال NewGRF "{STRING}" قام باعادة خطء فادح:{}{STRING}
 STR_NEWGRF_ERROR_VERSION_NUMBER                                 :{1:STRING} لن يعمل مع اصدار الباتش المسجل في النسخة المفتوحة
 STR_NEWGRF_ERROR_DOS_OR_WINDOWS                                 :{1:STRING} يعمل مع {STRING} اصدار من TTD.
 STR_NEWGRF_ERROR_UNSET_SWITCH                                   :{1:STRING} مصمم ليستخدم مع {STRING}
@@ -3114,6 +3128,7 @@ STR_FINANCES_NEGATIVE_INCOME                                    :-{CURRENCY_LONG
 STR_FINANCES_POSITIVE_INCOME                                    :+{CURRENCY_LONG}
 STR_FINANCES_BANK_BALANCE_TITLE                                 :{WHITE}السيولة المتاحة
 STR_FINANCES_LOAN_TITLE                                         :{WHITE}القرض
+STR_FINANCES_INTEREST_RATE                                      :{WHITE}فائدة القرض: {BLACK}{NUM}%
 STR_FINANCES_MAX_LOAN                                           :{WHITE}اقصى حد للقرض: {BLACK}{CURRENCY_LONG}
 STR_FINANCES_TOTAL_CURRENCY                                     :{BLACK}{CURRENCY_LONG}
 STR_FINANCES_BORROW_BUTTON                                      :{BLACK}اقتراض{CURRENCY_LONG}
@@ -3333,6 +3348,7 @@ STR_BUY_VEHICLE_SHIP_BUY_VEHICLE_BUTTON                         :{BLACK}شراء
 STR_BUY_VEHICLE_AIRCRAFT_BUY_VEHICLE_BUTTON                     :{BLACK}شراء طائرة
 
 ###length VEHICLE_TYPES
+STR_BUY_VEHICLE_TRAIN_BUY_REFIT_VEHICLE_BUTTON                  :{BLACK}شراء العربة وتجديد بضائعها
 STR_BUY_VEHICLE_ROAD_VEHICLE_BUY_REFIT_VEHICLE_BUTTON           :{BLACK}شراء العربة وتجديد بضائعها
 STR_BUY_VEHICLE_SHIP_BUY_REFIT_VEHICLE_BUTTON                   :{BLACK}شراء وإعادة تجهيز السفينة
 
@@ -3496,6 +3512,7 @@ STR_REPLACE_HELP_LEFT_ARRAY                                     :{BLACK} اخت�
 STR_REPLACE_HELP_RIGHT_ARRAY                                    :{BLACK} اختر نوع المحرك المراد إحلاله محل المحرك المختار في القائمة اليسرى
 
 STR_REPLACE_VEHICLES_START                                      :{BLACK} بدأ تبديل العربات
+STR_REPLACE_VEHICLES_NOW                                        :استبدل جميع المركبات الآن
 STR_REPLACE_HELP_START_BUTTON                                   :{BLACK}اضغط لبدأ عملية تبديل المحركات المختارة في القائمة اليسرى بالمحركات المختارة في القائمة اليمنى
 STR_REPLACE_NOT_REPLACING                                       :{BLACK}لم يتم التبديل
 STR_REPLACE_NOT_REPLACING_VEHICLE_SELECTED                      :{BLACK}لم يتم اختيار اي عربة
@@ -3865,13 +3882,13 @@ STR_TIMETABLE_STAY_FOR_ESTIMATED                                :(البقاء �
 STR_TIMETABLE_STAY_FOR                                          :ويبقى لـ {STRING}
 STR_TIMETABLE_AND_TRAVEL_FOR                                    :ويسافر لـ {STRING}
 
-STR_TIMETABLE_TOTAL_TIME                                        :{BLACK}جدولة الاوامر هذه ستأخذ {STRING} لنهاية
-STR_TIMETABLE_TOTAL_TIME_INCOMPLETE                             :{BLACK}جدولة الاوامر هذه ستأخذ على الاقل {STRING} لتكتمل (لايشمل كل الجدولة)
+STR_TIMETABLE_TOTAL_TIME                                        :{BLACK}جدول الاوامر هذه ستأخذ {STRING} للانتهاء
+STR_TIMETABLE_TOTAL_TIME_INCOMPLETE                             :{BLACK}جدول الاوامر هذا سيأخذ على الاقل {STRING} للانتهاء (ليست جميعها مجدولة)
 
 STR_TIMETABLE_STATUS_ON_TIME                                    :{BLACK}هذه العربة تعمل حسب الجدولة في الوقت المُحَدَد
 STR_TIMETABLE_STATUS_LATE                                       :{BLACK}هذه العربه {STRING} مُتاخِرة حاليا عن الجدوله
 STR_TIMETABLE_STATUS_EARLY                                      :{BLACK}هذه العربه {STRING} مُتَقَدِمه عن الجدوله
-STR_TIMETABLE_STATUS_NOT_STARTED                                :{BLACK}جدولة الاعمال لم تبدأ بعد
+STR_TIMETABLE_STATUS_NOT_STARTED                                :{BLACK}جدول الاعمال لم تبدأ بعد
 
 
 
@@ -4070,6 +4087,7 @@ STR_ERROR_OWNED_BY                                              :{WHITE}مملو
 STR_ERROR_AREA_IS_OWNED_BY_ANOTHER                              :{WHITE}... المنطقة مملوكة لشركة منافسة
 STR_ERROR_TERRAFORM_LIMIT_REACHED                               :{WHITE}... تم الوصول لاقصى حدود للتضاريس
 STR_ERROR_CLEARING_LIMIT_REACHED                                :{WHITE}... تم الوصول لاقصى عدد ازالة
+STR_ERROR_TREE_PLANT_LIMIT_REACHED                              :{WHITE}... تم الوصول للحد الاقصى لزرع الاشجار
 STR_ERROR_NAME_MUST_BE_UNIQUE                                   :{WHITE}السم يجب ان يكون فريدا - غير مستخدم
 STR_ERROR_GENERIC_OBJECT_IN_THE_WAY                             :{WHITE}{1:STRING} على الطريق
 STR_ERROR_NOT_ALLOWED_WHILE_PAUSED                              :{WHITE}غير مسموح في حين توقفت
@@ -4405,6 +4423,7 @@ STR_ERROR_AIRCRAFT_NOT_ENOUGH_RANGE                             :{WHITE}... ال
 STR_ERROR_CAN_T_TIMETABLE_VEHICLE                               :{WHITE}لا يمكن جدولة العربة ...
 STR_ERROR_TIMETABLE_ONLY_WAIT_AT_STATIONS                       :{WHITE}يمكن للعربات الانتظار في المحطات فقط.
 STR_ERROR_TIMETABLE_NOT_STOPPING_HERE                           :{WHITE}هذه العربة لا تتوقف في هذه المحطة.
+STR_ERROR_TIMETABLE_NOT_STARTED                                 :{WHITE}... جدول الاعمال لم تبدأ بعد
 
 # Sign related errors
 STR_ERROR_TOO_MANY_SIGNS                                        :{WHITE}... العلامات كثيرة جدا

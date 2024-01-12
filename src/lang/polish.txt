@@ -1884,7 +1884,7 @@ STR_CONFIG_SETTING_SNOWLINE_HEIGHT                              :Wysokość gran
 STR_CONFIG_SETTING_SNOWLINE_HEIGHT_HELPTEXT                     :Wybierz, na jakiej wysokości zaczyna zalegać śnieg w krajobrazie arktycznym. Poziom pokrywy śnieżnej wpływa na rozmieszczenie przedsiębiorstw i na warunki rozwoju miast. Może być zmodyfikowana poprzez Edytor Scenariuszy, w innym przypadku jest obliczana za pomocą ustawienia „pokrycie śniegiem”
 
 STR_CONFIG_SETTING_SNOW_COVERAGE                                :Pokrycie śniegiem: {STRING}
-STR_CONFIG_SETTING_SNOW_COVERAGE_HELPTEXT                       :Wybierz przybliżoną ilość śniegu w krajobrazie arktycznym. Śnieg wpływa również wpływa na rozmieszczenie przedsiębiorstw i na warunki rozwoju miast. Używane tylko podczas generowania mapy. Teren tuż ponad poziomem wody jest zawsze bez śniegu
+STR_CONFIG_SETTING_SNOW_COVERAGE_HELPTEXT                       :Wybierz przybliżoną ilość śniegu w krajobrazie arktycznym. Śnieg wpływa również wpływa na rozmieszczenie przedsiębiorstw i na warunki rozwoju miast. Używane tylko podczas generowania mapy. Teren tuż ponad poziomem morza jest zawsze bez śniegu
 STR_CONFIG_SETTING_SNOW_COVERAGE_VALUE                          :{NUM}%
 
 STR_CONFIG_SETTING_DESERT_COVERAGE                              :Pokrycie pustynią: {STRING}
@@ -3612,7 +3612,7 @@ STR_MAPGEN_DATE_TOOLTIP                                         :{BLACK}Wybierz 
 STR_MAPGEN_NUMBER_OF_INDUSTRIES                                 :{BLACK}Liczba przedsiębiorstw:
 STR_MAPGEN_NUMBER_OF_INDUSTRIES_TOOLTIP                         :{BLACK}Wybierz gęstość rozmieszczenia przedsiębiorstw lub podaj ich określoną liczbę
 STR_MAPGEN_HEIGHTMAP_HEIGHT                                     :{BLACK}Najwyższy szczyt:
-STR_MAPGEN_HEIGHTMAP_HEIGHT_TOOLTIP                             :{BLACK}Wybierz najwyższy szczyt, który gra spróbuje utworzyć, mierzony wysokością nad poziomem wody
+STR_MAPGEN_HEIGHTMAP_HEIGHT_TOOLTIP                             :{BLACK}Wybierz najwyższy szczyt, który gra spróbuje utworzyć, mierzony wysokością nad poziomem morza
 STR_MAPGEN_HEIGHTMAP_HEIGHT_UP                                  :{BLACK}Zwiększ wysokość najwyższego szczytu na mapie o jeden poziom
 STR_MAPGEN_HEIGHTMAP_HEIGHT_DOWN                                :{BLACK}Zmniejsz wysokość najwyższego szczytu na mapie o jeden poziom
 STR_MAPGEN_SNOW_COVERAGE                                        :{BLACK}Pokrycie śniegiem:
@@ -3624,8 +3624,8 @@ STR_MAPGEN_DESERT_COVERAGE_UP                                   :{BLACK}Zwiększ
 STR_MAPGEN_DESERT_COVERAGE_DOWN                                 :{BLACK}Zmniejsz pokrycie pustynią o 10%
 STR_MAPGEN_DESERT_COVERAGE_TEXT                                 :{BLACK}{NUM}%
 STR_MAPGEN_TERRAIN_TYPE                                         :{BLACK}Typ terenu:
-STR_MAPGEN_SEA_LEVEL                                            :{BLACK}Poziom wody:
-STR_MAPGEN_SEA_LEVEL_TOOLTIP                                    :{BLACK}Określ wysokość poziomu wody
+STR_MAPGEN_SEA_LEVEL                                            :{BLACK}Poziom morza:
+STR_MAPGEN_SEA_LEVEL_TOOLTIP                                    :{BLACK}Określ wysokość poziomu morza
 STR_MAPGEN_QUANTITY_OF_RIVERS                                   :{BLACK}Liczba rzek:
 STR_MAPGEN_SMOOTHNESS                                           :{BLACK}Gładkość:
 STR_MAPGEN_VARIETY                                              :{BLACK}Różnorodność:

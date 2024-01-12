@@ -1003,6 +1003,7 @@ STR_GAME_OPTIONS_CURRENCY_HKD                                   :홍콩 달러
 STR_GAME_OPTIONS_CURRENCY_INR                                   :인도 루피
 STR_GAME_OPTIONS_CURRENCY_IDR                                   :인도네시아 루피아
 STR_GAME_OPTIONS_CURRENCY_MYR                                   :말레이시아 링깃
+STR_GAME_OPTIONS_CURRENCY_LVL                                   :라트비아 라츠
 
 STR_GAME_OPTIONS_AUTOSAVE_FRAME                                 :{BLACK}자동 저장
 STR_GAME_OPTIONS_AUTOSAVE_DROPDOWN_TOOLTIP                      :{BLACK}게임 자동 저장 간격을 선택

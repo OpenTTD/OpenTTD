@@ -17,6 +17,7 @@
 #include "../../gamelog.h"
 #include "../../saveload/saveload.h"
 #include "../../video/video_driver.hpp"
+#include "../../library_loader.h"
 
 #include <windows.h>
 #include <mmsystem.h>
@@ -177,7 +178,7 @@ static const uint MAX_FRAMES     = 64;
 
 /* virtual */ void CrashLogWindows::SurveyStacktrace(nlohmann::json &survey) const
 {
-	DllLoader dbghelp(L"dbghelp.dll");
+	LibraryLoader dbghelp("dbghelp.dll");
 	struct ProcPtrs {
 		BOOL (WINAPI * pSymInitialize)(HANDLE, PCSTR, BOOL);
 		BOOL (WINAPI * pSymSetOptions)(DWORD);
@@ -189,21 +190,21 @@ static const uint MAX_FRAMES     = 64;
 		BOOL (WINAPI * pSymGetSymFromAddr64)(HANDLE, DWORD64, PDWORD64, PIMAGEHLP_SYMBOL64);
 		BOOL (WINAPI * pSymGetLineFromAddr64)(HANDLE, DWORD64, PDWORD, PIMAGEHLP_LINE64);
 	} proc = {
-		dbghelp.GetProcAddress("SymInitialize"),
-		dbghelp.GetProcAddress("SymSetOptions"),
-		dbghelp.GetProcAddress("SymCleanup"),
-		dbghelp.GetProcAddress("StackWalk64"),
-		dbghelp.GetProcAddress("SymFunctionTableAccess64"),
-		dbghelp.GetProcAddress("SymGetModuleBase64"),
-		dbghelp.GetProcAddress("SymGetModuleInfo64"),
-		dbghelp.GetProcAddress("SymGetSymFromAddr64"),
-		dbghelp.GetProcAddress("SymGetLineFromAddr64"),
+		dbghelp.GetFunction("SymInitialize"),
+		dbghelp.GetFunction("SymSetOptions"),
+		dbghelp.GetFunction("SymCleanup"),
+		dbghelp.GetFunction("StackWalk64"),
+		dbghelp.GetFunction("SymFunctionTableAccess64"),
+		dbghelp.GetFunction("SymGetModuleBase64"),
+		dbghelp.GetFunction("SymGetModuleInfo64"),
+		dbghelp.GetFunction("SymGetSymFromAddr64"),
+		dbghelp.GetFunction("SymGetLineFromAddr64"),
 	};
 
 	survey = nlohmann::json::array();
 
 	/* Try to load the functions from the DLL, if that fails because of a too old dbghelp.dll, just skip it. */
-	if (dbghelp.Success()) {
+	if (!dbghelp.HasError()) {
 		/* Initialize symbol handler. */
 		HANDLE hCur = GetCurrentProcess();
 		proc.pSymInitialize(hCur, nullptr, TRUE);
