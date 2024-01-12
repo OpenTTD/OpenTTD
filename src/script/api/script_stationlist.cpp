@@ -21,9 +21,11 @@ ScriptStationList::ScriptStationList(ScriptStation::StationType station_type)
 	EnforceDeityOrCompanyModeValid_Void();
 	bool is_deity = ScriptCompanyMode::IsDeity();
 	CompanyID owner = ScriptObject::GetCompany();
-	for (Station *st : Station::Iterate()) {
-		if ((is_deity || st->owner == owner) && (st->facilities & station_type) != 0) this->AddItem(st->index);
-	}
+	ScriptList::FillList<Station>(this,
+		[is_deity, owner, station_type](const Station *st) {
+			return (is_deity || st->owner == owner) && (st->facilities & station_type) != 0;
+		}
+	);
 }
 
 ScriptStationList_Vehicle::ScriptStationList_Vehicle(VehicleID vehicle_id)
