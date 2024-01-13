@@ -772,7 +772,7 @@ STR_SMALLMAP_LEGENDA_AIRCRAFT                                   :{TINY_FONT}{BLA
 STR_SMALLMAP_LEGENDA_TRANSPORT_ROUTES                           :{TINY_FONT}{BLACK}Routes de transport
 STR_SMALLMAP_LEGENDA_FOREST                                     :{TINY_FONT}{BLACK}Forêts
 STR_SMALLMAP_LEGENDA_RAILROAD_STATION                           :{TINY_FONT}{BLACK}Gares ferroviaires
-STR_SMALLMAP_LEGENDA_TRUCK_LOADING_BAY                          :{TINY_FONT}{BLACK}Aires de chargement
+STR_SMALLMAP_LEGENDA_TRUCK_LOADING_BAY                          :{TINY_FONT}{BLACK}Aire de chargement
 STR_SMALLMAP_LEGENDA_BUS_STATION                                :{TINY_FONT}{BLACK}Arrêts d'autobus
 STR_SMALLMAP_LEGENDA_AIRPORT_HELIPORT                           :{TINY_FONT}{BLACK}Aéroports/Héliports
 STR_SMALLMAP_LEGENDA_DOCK                                       :{TINY_FONT}{BLACK}Ports maritimes
@@ -1003,6 +1003,7 @@ STR_GAME_OPTIONS_CURRENCY_HKD                                   :Dollar de Hong 
 STR_GAME_OPTIONS_CURRENCY_INR                                   :Roupie indienne
 STR_GAME_OPTIONS_CURRENCY_IDR                                   :Roupie indonésienne
 STR_GAME_OPTIONS_CURRENCY_MYR                                   :Malaysian Ringgit
+STR_GAME_OPTIONS_CURRENCY_LVL                                   :Lats
 
 STR_GAME_OPTIONS_AUTOSAVE_FRAME                                 :{BLACK}Sauvegarde automatique
 STR_GAME_OPTIONS_AUTOSAVE_DROPDOWN_TOOLTIP                      :{BLACK}Sélectionner l'intervalle de temps entre les sauvegardes automatiques

@@ -1564,7 +1564,7 @@ STR_CONFIG_SETTING_PLANE_CRASHES_NONE                           :отсутст�
 STR_CONFIG_SETTING_PLANE_CRASHES_REDUCED                        :сниженная
 STR_CONFIG_SETTING_PLANE_CRASHES_NORMAL                         :обычная
 
-STR_CONFIG_SETTING_CROSSING_WITH_COMPETITOR                     :Ж/Д переезды на дорогах и путях конкурентов: {STRING}
+STR_CONFIG_SETTING_CROSSING_WITH_COMPETITOR                     :Ж/д переезды на дорогах и путях конкурентов: {STRING}
 STR_CONFIG_SETTING_CROSSING_WITH_COMPETITOR_HELPTEXT            :Разрешить строить железнодорожные пути сквозь автомобильные и железные дороги конкурентов
 
 STR_CONFIG_SETTING_STOP_ON_TOWN_ROAD                            :Позволять строить остановки на муниципальных дорогах: {STRING}
@@ -4406,7 +4406,7 @@ STR_REPLACE_ENGINE_WAGON_SELECT_HELP                            :{BLACK}Пере
 STR_REPLACE_ENGINES                                             :Локомотивы
 STR_REPLACE_WAGONS                                              :Вагоны
 STR_REPLACE_ALL_RAILTYPE                                        :Весь ж/д транспорт
-STR_REPLACE_ALL_ROADTYPE                                        :Весь дорожный транспорт
+STR_REPLACE_ALL_ROADTYPE                                        :Все автомобили
 
 ###length 2
 STR_REPLACE_HELP_RAILTYPE                                       :{BLACK}Тип ж/д транспорта, подлежащего замене
@@ -5395,7 +5395,7 @@ STR_ERROR_NO_BUOY                                               :{WHITE}Буи �
 
 # Timetable related errors
 STR_ERROR_CAN_T_TIMETABLE_VEHICLE                               :{WHITE}Не удалось составить график движения для этого транспорта...
-STR_ERROR_TIMETABLE_ONLY_WAIT_AT_STATIONS                       :{WHITE}Транспорт может ждать только на станции
+STR_ERROR_TIMETABLE_ONLY_WAIT_AT_STATIONS                       :{WHITE}Транспортное средство может ожидать только на станции
 STR_ERROR_TIMETABLE_NOT_STOPPING_HERE                           :{WHITE}Это транспортное средство не останавливается на этой станции
 STR_ERROR_TIMETABLE_INCOMPLETE                                  :{WHITE}... график движения неполный
 STR_ERROR_TIMETABLE_NOT_STARTED                                 :{WHITE}... график движения не установлен

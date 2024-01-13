@@ -2055,14 +2055,17 @@ STR_CONFIG_SETTING_ACCOUNTING                                   :Regnskab
 STR_CONFIG_SETTING_VEHICLES                                     :Køretøjer
 STR_CONFIG_SETTING_VEHICLES_PHYSICS                             :Fysik / Tilstand
 STR_CONFIG_SETTING_VEHICLES_ROUTING                             :Ruteplanlægning
+STR_CONFIG_SETTING_VEHICLES_ORDERS                              :Ordre
 STR_CONFIG_SETTING_LIMITATIONS                                  :Begrænsninger
 STR_CONFIG_SETTING_ACCIDENTS                                    :Katastrofer / Ulykker
 STR_CONFIG_SETTING_GENWORLD                                     :Verden generation
 STR_CONFIG_SETTING_ENVIRONMENT                                  :Miljø
+STR_CONFIG_SETTING_ENVIRONMENT_TIME                             :tid
 STR_CONFIG_SETTING_ENVIRONMENT_AUTHORITIES                      :Myndigheder
 STR_CONFIG_SETTING_ENVIRONMENT_TOWNS                            :Byer
 STR_CONFIG_SETTING_ENVIRONMENT_INDUSTRIES                       :Industrier
 STR_CONFIG_SETTING_ENVIRONMENT_CARGODIST                        :Fragtdistribution
+STR_CONFIG_SETTING_ENVIRONMENT_TREES                            :Træer
 STR_CONFIG_SETTING_AI                                           :Modstandere
 STR_CONFIG_SETTING_AI_NPC                                       :Computerstyrede spillere
 STR_CONFIG_SETTING_NETWORK                                      :Netværk
@@ -2722,7 +2725,7 @@ STR_RAIL_TOOLBAR_TOOLTIP_BUILD_AUTORAIL                         :{BLACK}Byg jern
 STR_RAIL_TOOLBAR_TOOLTIP_BUILD_TRAIN_DEPOT_FOR_BUILDING         :{BLACK}Byg en remise (til køb og servicering af tog). Shift skifter mellem at bygge og vise prisoverslag.
 STR_RAIL_TOOLBAR_TOOLTIP_CONVERT_RAIL_TO_WAYPOINT               :{BLACK}Ombyg jernbane til rutepunkt. Ctrl muliggør sammenslutning af rutepunkt. Shift skifter mellem at bygge og vise prisoverslag.
 STR_RAIL_TOOLBAR_TOOLTIP_BUILD_RAILROAD_STATION                 :{BLACK}Byg en banegård. Ctrl muliggør sammenslutning af stationer. Shift skifter mellem at bygge og vise prisoverslag.
-STR_RAIL_TOOLBAR_TOOLTIP_BUILD_RAILROAD_SIGNALS                 :{BLACK}Byg jernbanesignaler. Ctrl skifter mellem semaforer og lyssignaler.{}Hvis musen trækkes langs en lige strækning, bygges signaler med jævne mellemrum. Hold Ctrl nede for at bygge signaler indtil næste kryds.{}Ctrl+klik skifter mellem at åbne eller ikke åbne signalvælgeren. Shift skifter mellem at bygge og vise prisoverslag.
+STR_RAIL_TOOLBAR_TOOLTIP_BUILD_RAILROAD_SIGNALS                 :{BLACK}Byg signal på jernbane. Ctrl skifter semafor-/lyssignaler{}Hvis du trækker, opbygges signaler langs en lige jernbanestrækning. Ctrl bygger signaler op til næste vejkryds eller signal{}Ctrl+klik skifter til at åbne vinduet til valg af signal. Shift skifter mellem at bygge/vise omkostningsestimat
 STR_RAIL_TOOLBAR_TOOLTIP_BUILD_RAILROAD_BRIDGE                  :{BLACK}Byg jernbanebro. Shift skifter mellem at bygge og vise prisoverslag.
 STR_RAIL_TOOLBAR_TOOLTIP_BUILD_RAILROAD_TUNNEL                  :{BLACK}Byg jernbanetunnel. Shift skifter mellem at bygge og vise prisoverslag.
 STR_RAIL_TOOLBAR_TOOLTIP_TOGGLE_BUILD_REMOVE_FOR                :{BLACK}Skift mellem at bygge og fjerne jernbaneskinner, signaler, rutepunkter og stationer. Hold Ctrl nede for også at fjerne togspor fra rutepunkter og stationer.
@@ -2810,7 +2813,7 @@ STR_ROAD_TOOLBAR_TOOLTIP_BUILD_ROAD_VEHICLE_DEPOT               :{BLACK}Byg vær
 STR_ROAD_TOOLBAR_TOOLTIP_BUILD_TRAM_VEHICLE_DEPOT               :{BLACK}Byg sporvognsremise (til køb og serviceing af sporvogne). Shift skifter mellem at bygge og vise prisoverslag.
 STR_ROAD_TOOLBAR_TOOLTIP_BUILD_BUS_STATION                      :{BLACK}Byg en rutebilstation. Ctrl muliggør sammenslutning af stationer. Shift skifter mellem at bygge og vise prisoverslag.
 STR_ROAD_TOOLBAR_TOOLTIP_BUILD_PASSENGER_TRAM_STATION           :{BLACK}Byg en passager-sporvognsstation. Ctrl muliggør sammenslutning af stationer. Shift skifter mellem at bygge og vise prisoverslag.
-STR_ROAD_TOOLBAR_TOOLTIP_BUILD_TRUCK_LOADING_BAY                :{BLACK}Byg en fragtcentral. Ctrl muliggør sammenslutning af stationer. Shift skifter mellem at bygge og vise prisoverslag.
+STR_ROAD_TOOLBAR_TOOLTIP_BUILD_TRUCK_LOADING_BAY                :{BLACK}Byg lastbilstation. Ctrl gør det muligt at tilslutte stationer. Shift skifter mellem at bygge/vise omkostningsestimat
 STR_ROAD_TOOLBAR_TOOLTIP_BUILD_CARGO_TRAM_STATION               :{BLACK}Byg en fragt-sporvognsstation. Ctrl muliggør sammenslutning af stationer. Shift skifter mellem at bygge og vise prisoverslag.
 STR_ROAD_TOOLBAR_TOOLTIP_TOGGLE_ONE_WAY_ROAD                    :{BLACK}Aktiver/Deaktiver ensrettede veje
 STR_ROAD_TOOLBAR_TOOLTIP_BUILD_ROAD_BRIDGE                      :{BLACK}Byg en bro. Shift skifter mellem at bygge og vise prisoverslag.
@@ -3079,7 +3082,7 @@ STR_LAI_TREE_NAME_CACTUS_PLANTS                                 :Kaktusplanter
 STR_LAI_STATION_DESCRIPTION_RAILROAD_STATION                    :Banegård
 STR_LAI_STATION_DESCRIPTION_AIRCRAFT_HANGAR                     :Flyhangar
 STR_LAI_STATION_DESCRIPTION_AIRPORT                             :Lufthavn
-STR_LAI_STATION_DESCRIPTION_TRUCK_LOADING_AREA                  :Fragtcentral
+STR_LAI_STATION_DESCRIPTION_TRUCK_LOADING_AREA                  :Lastbil station
 STR_LAI_STATION_DESCRIPTION_BUS_STATION                         :Rutebilstation
 STR_LAI_STATION_DESCRIPTION_SHIP_DOCK                           :Havn
 STR_LAI_STATION_DESCRIPTION_BUOY                                :Bøje

@@ -773,7 +773,7 @@ STR_SMALLMAP_LEGENDA_AIRCRAFT                                   :{TINY_FONT}{BLA
 STR_SMALLMAP_LEGENDA_TRANSPORT_ROUTES                           :{TINY_FONT}{BLACK}Pārvadājumu maršruti
 STR_SMALLMAP_LEGENDA_FOREST                                     :{TINY_FONT}{BLACK}Mežs
 STR_SMALLMAP_LEGENDA_RAILROAD_STATION                           :{TINY_FONT}{BLACK}Dzelzsceļa stacija
-STR_SMALLMAP_LEGENDA_TRUCK_LOADING_BAY                          :{TINY_FONT}{BLACK}Kravas automobiļu iekrautuve
+STR_SMALLMAP_LEGENDA_TRUCK_LOADING_BAY                          :{TINY_FONT}{BLACK}Kravas automašīnu stacija
 STR_SMALLMAP_LEGENDA_BUS_STATION                                :{TINY_FONT}{BLACK}Autobusa stacija
 STR_SMALLMAP_LEGENDA_AIRPORT_HELIPORT                           :{TINY_FONT}{BLACK}Lidosta/Helikopteru osta
 STR_SMALLMAP_LEGENDA_DOCK                                       :{TINY_FONT}{BLACK}Piestātne
@@ -1004,6 +1004,7 @@ STR_GAME_OPTIONS_CURRENCY_HKD                                   :Honkongas dolā
 STR_GAME_OPTIONS_CURRENCY_INR                                   :Indijas rūpija
 STR_GAME_OPTIONS_CURRENCY_IDR                                   :Indonēzijas rūpija
 STR_GAME_OPTIONS_CURRENCY_MYR                                   :Malaizijas Ringits
+STR_GAME_OPTIONS_CURRENCY_LVL                                   :Latvijas lati
 
 STR_GAME_OPTIONS_AUTOSAVE_FRAME                                 :{BLACK}Automātiskā saglabāšana
 STR_GAME_OPTIONS_AUTOSAVE_DROPDOWN_TOOLTIP                      :{BLACK}Izvēlēties spēles automātiskās saglabāšanas starplaikus
@@ -2059,14 +2060,17 @@ STR_CONFIG_SETTING_ACCOUNTING                                   :Grāmatvedība
 STR_CONFIG_SETTING_VEHICLES                                     :Transportlīdzekļi
 STR_CONFIG_SETTING_VEHICLES_PHYSICS                             :Fizika
 STR_CONFIG_SETTING_VEHICLES_ROUTING                             :Pārvietošanās
+STR_CONFIG_SETTING_VEHICLES_ORDERS                              :Pasūtījumi
 STR_CONFIG_SETTING_LIMITATIONS                                  :Ierobežojumi
 STR_CONFIG_SETTING_ACCIDENTS                                    :Katastrofas / negadījumi
 STR_CONFIG_SETTING_GENWORLD                                     :Pasaules radīšana
 STR_CONFIG_SETTING_ENVIRONMENT                                  :Apkārtējā vide
+STR_CONFIG_SETTING_ENVIRONMENT_TIME                             :Laiks
 STR_CONFIG_SETTING_ENVIRONMENT_AUTHORITIES                      :Pašvaldības
 STR_CONFIG_SETTING_ENVIRONMENT_TOWNS                            :Pilsētas
 STR_CONFIG_SETTING_ENVIRONMENT_INDUSTRIES                       :Ražotnes
 STR_CONFIG_SETTING_ENVIRONMENT_CARGODIST                        :Kravu sadale
+STR_CONFIG_SETTING_ENVIRONMENT_TREES                            :Koki
 STR_CONFIG_SETTING_AI                                           :Sāncenši
 STR_CONFIG_SETTING_AI_NPC                                       :Nespēlētāju tēli (datora vadīti)
 STR_CONFIG_SETTING_NETWORK                                      :Tīkls
@@ -2724,9 +2728,9 @@ STR_RAIL_TOOLBAR_MAGLEV_CONSTRUCTION_CAPTION                    :Magleva būvē�
 STR_RAIL_TOOLBAR_TOOLTIP_BUILD_RAILROAD_TRACK                   :{BLACK}Būvēt sliedes. Ctrl pārslēdz sliežu būvniecību/nojaukšanu. Shift pārslēdz būve/rādīt izmaksu tāmi
 STR_RAIL_TOOLBAR_TOOLTIP_BUILD_AUTORAIL                         :{BLACK}Būvēt dzelzceļu, izmantojot automātisko sliežu režīmu. Ctrl pārslēdz sliežu būvniecību/demolēšanu
 STR_RAIL_TOOLBAR_TOOLTIP_BUILD_TRAIN_DEPOT_FOR_BUILDING         :{BLACK}Būvēt vilcienu depo (vilcienu pirkšanai un apkopei). Shift pārslēdz būvi/rādīt izmaksu tāmi
-STR_RAIL_TOOLBAR_TOOLTIP_CONVERT_RAIL_TO_WAYPOINT               :{BLACK}Pārveidot sliedes par pieturas punktu. Ctrl iespējo pieturas punktu apvienošanu. Shift pārslēdz būvēšanu/izmaksu tāmes rādīšanu
+STR_RAIL_TOOLBAR_TOOLTIP_CONVERT_RAIL_TO_WAYPOINT               :{BLACK}Izveidojiet ceļa punktu uz dzelzceļa. Ctrl ļauj pievienot vairākus pieturas punktus. Shift rāda izmaksu tāmi
 STR_RAIL_TOOLBAR_TOOLTIP_BUILD_RAILROAD_STATION                 :{BLACK}Būvēt dzelzceļa staciju. Ctrl iespējo staciju apvienošanu. Shift pārslēdz būve/rādīt izmaksu tāmi
-STR_RAIL_TOOLBAR_TOOLTIP_BUILD_RAILROAD_SIGNALS                 :{BLACK}Būvēt dzelzceļa signālus. Ctrl pārslēdz semaforus/luksoforus{}Vilkšana uzbūvē signālus uz taisna sliežu posma. Ctrl uzbūvē signālus līdz nākamajam sazarojumam vai signālam{}Ctrl+Klikšķis pārslēdz signālu izvēles loga atvēršanu. Shift pārslēdz starp būvet/rādīt izmaksu tāmi
+STR_RAIL_TOOLBAR_TOOLTIP_BUILD_RAILROAD_SIGNALS                 :{BLACK}Būvēt signālu uz dzelzceļa. Ctrl pārslēdz semaforu/gaismas signālus{}Velkot, signāli tiek veidoti taisnā sliedes posmā. Ctrl veido signālus līdz nākamajam krustojumam vai signālam{}Ctrl+Click pārslēdz signāla atlases loga atvēršanu. Shift rāda izmaksu tāmi
 STR_RAIL_TOOLBAR_TOOLTIP_BUILD_RAILROAD_BRIDGE                  :{BLACK}Būvēt dzelzceļa tiltu. Shift pārslēdz būvēšanu/izmaksu tāmes rādīšanu
 STR_RAIL_TOOLBAR_TOOLTIP_BUILD_RAILROAD_TUNNEL                  :{BLACK}Būvēt dzelzceļa tuneli. Shift pārslēdz būvēšanu/izmaksu tāmes rādīšanu
 STR_RAIL_TOOLBAR_TOOLTIP_TOGGLE_BUILD_REMOVE_FOR                :{BLACK}Pārslēgties starp sliežu, signālierīču, pieturas punktu būvēšanu/noņemšanu. Aizturēt Ctrl, lai noņemtu arī sliedes no pieturas punktiem un stacijām
@@ -2814,7 +2818,7 @@ STR_ROAD_TOOLBAR_TOOLTIP_BUILD_ROAD_VEHICLE_DEPOT               :{BLACK}Būvēt 
 STR_ROAD_TOOLBAR_TOOLTIP_BUILD_TRAM_VEHICLE_DEPOT               :{BLACK}Būvēt tramvaju depo (tramvaju pirkšanai un apkopei). Shift pārslēdz būvēšanu/izmaksu tāmes rādīšanu
 STR_ROAD_TOOLBAR_TOOLTIP_BUILD_BUS_STATION                      :{BLACK}Būvēt autobusu pieturvietu. Ctrl ieslēdz pieturvietu apvienošanu. Shift pārslēdz būvēšanu/izmaksu tāmes rādīšanu
 STR_ROAD_TOOLBAR_TOOLTIP_BUILD_PASSENGER_TRAM_STATION           :{BLACK}Būvēt pasažieru tramvaju pieturvietu. Ctrl ieslēdz pieturvietu apvienošanu. Shift pārslēdz būvēšanu/izmaksu tāmes rādīšanu
-STR_ROAD_TOOLBAR_TOOLTIP_BUILD_TRUCK_LOADING_BAY                :{BLACK}Būvēt kravas automobiļu iekraušanas laukumu. Ctrl ieslēdz iekraušanas laukumu apvienošanu. Shift pārslēdz būvēšanu/izmaksu tāmes rādīšanu
+STR_ROAD_TOOLBAR_TOOLTIP_BUILD_TRUCK_LOADING_BAY                :{BLACK}Uzbūvēt kravas automašīnu staciju. Ctrl ļauj buvēt stacijas. Shift rāda izmaksu tāmi
 STR_ROAD_TOOLBAR_TOOLTIP_BUILD_CARGO_TRAM_STATION               :{BLACK}Būvēt kravas tramvaju pieturvietu. Ctrl ieslēdz pieturvietu apvienošanu. Shift pārslēdz būvēšanu/izmaksu tāmes rādīšanu
 STR_ROAD_TOOLBAR_TOOLTIP_TOGGLE_ONE_WAY_ROAD                    :{BLACK}Ieslēgt/izslēgt vienvirziena ceļus
 STR_ROAD_TOOLBAR_TOOLTIP_BUILD_ROAD_BRIDGE                      :{BLACK}Būvēt ceļa tiltu. Shift pārslēdz būvēšanu/izmaksu tāmes rādīšanu
@@ -2839,7 +2843,7 @@ STR_BUILD_DEPOT_TRAM_ORIENTATION_SELECT_TOOLTIP                 :{BLACK}Izvēlē
 STR_STATION_BUILD_BUS_ORIENTATION                               :{WHITE}Autoostas virziens
 STR_STATION_BUILD_BUS_ORIENTATION_TOOLTIP                       :{BLACK}Izvēlēties autoostas virzienu
 STR_STATION_BUILD_TRUCK_ORIENTATION                             :{WHITE}Kravas stacijas virziens
-STR_STATION_BUILD_TRUCK_ORIENTATION_TOOLTIP                     :{BLACK}Izvēlēties kravas iekraušanas laukuma virzienu
+STR_STATION_BUILD_TRUCK_ORIENTATION_TOOLTIP                     :{BLACK}Izvēlieties kravas automašīnas stacijas virzienu
 STR_STATION_BUILD_PASSENGER_TRAM_ORIENTATION                    :{WHITE}Pasažieru tramvaju pieturvietasas virziens
 STR_STATION_BUILD_PASSENGER_TRAM_ORIENTATION_TOOLTIP            :{BLACK}Izvēlēties pasažieru tramvaju pieturvietas virzienu
 STR_STATION_BUILD_CARGO_TRAM_ORIENTATION                        :{WHITE}Kravas tramvaju pieturvietas virziens
@@ -3084,7 +3088,7 @@ STR_LAI_TREE_NAME_CACTUS_PLANTS                                 :Kaktusi
 STR_LAI_STATION_DESCRIPTION_RAILROAD_STATION                    :Dzelzceļa stacija
 STR_LAI_STATION_DESCRIPTION_AIRCRAFT_HANGAR                     :Lidaparātu angārs
 STR_LAI_STATION_DESCRIPTION_AIRPORT                             :Lidosta
-STR_LAI_STATION_DESCRIPTION_TRUCK_LOADING_AREA                  :Kravas iekraušanas zona
+STR_LAI_STATION_DESCRIPTION_TRUCK_LOADING_AREA                  :Kravas automašīnu stacija
 STR_LAI_STATION_DESCRIPTION_BUS_STATION                         :Autoosta
 STR_LAI_STATION_DESCRIPTION_SHIP_DOCK                           :Kuģu piestātne
 STR_LAI_STATION_DESCRIPTION_BUOY                                :Boja

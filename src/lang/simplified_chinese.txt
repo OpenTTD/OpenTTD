@@ -140,7 +140,7 @@ STR_ABBREV_IRON_ORE                                             :铁
 STR_ABBREV_STEEL                                                :钢
 STR_ABBREV_VALUABLES                                            :贵
 STR_ABBREV_COPPER_ORE                                           :铜
-STR_ABBREV_MAIZE                                                :黍
+STR_ABBREV_MAIZE                                                :玉
 STR_ABBREV_FRUIT                                                :果
 STR_ABBREV_DIAMONDS                                             :钻
 STR_ABBREV_FOOD                                                 :食
@@ -214,19 +214,19 @@ STR_COLOUR_SECONDARY_SAME_AS_PRIMARY                            :主色调
 STR_UNITS_VELOCITY_IMPERIAL                                     :{DECIMAL}{NBSP}英里/小时
 STR_UNITS_VELOCITY_METRIC                                       :{DECIMAL}{NBSP}千米/小时
 STR_UNITS_VELOCITY_SI                                           :{DECIMAL}{NBSP}米/秒
-STR_UNITS_VELOCITY_GAMEUNITS                                    :{DECIMAL}{NBSP}格/天
+STR_UNITS_VELOCITY_GAMEUNITS                                    :{DECIMAL}{NBSP}格/日
 STR_UNITS_VELOCITY_KNOTS                                        :{DECIMAL}{NBSP}节
 
-STR_UNITS_POWER_IMPERIAL                                        :{DECIMAL}{NBSP}匹马力
-STR_UNITS_POWER_METRIC                                          :{DECIMAL}{NBSP}匹马力
+STR_UNITS_POWER_IMPERIAL                                        :{DECIMAL}{NBSP}匹
+STR_UNITS_POWER_METRIC                                          :{DECIMAL}{NBSP}匹
 STR_UNITS_POWER_SI                                              :{DECIMAL}{NBSP}千瓦
 
 STR_UNITS_POWER_IMPERIAL_TO_WEIGHT_IMPERIAL                     :{DECIMAL}{NBSP}匹/英吨
 STR_UNITS_POWER_IMPERIAL_TO_WEIGHT_METRIC                       :{DECIMAL}{NBSP}匹/吨
 STR_UNITS_POWER_IMPERIAL_TO_WEIGHT_SI                           :{DECIMAL}{NBSP}匹/兆克
-STR_UNITS_POWER_METRIC_TO_WEIGHT_IMPERIAL                       :{DECIMAL}{NBSP}马力/英吨
-STR_UNITS_POWER_METRIC_TO_WEIGHT_METRIC                         :{DECIMAL}{NBSP}马力/吨
-STR_UNITS_POWER_METRIC_TO_WEIGHT_SI                             :{DECIMAL}{NBSP}马力/兆克
+STR_UNITS_POWER_METRIC_TO_WEIGHT_IMPERIAL                       :{DECIMAL}{NBSP}匹/英吨
+STR_UNITS_POWER_METRIC_TO_WEIGHT_METRIC                         :{DECIMAL}{NBSP}匹/吨
+STR_UNITS_POWER_METRIC_TO_WEIGHT_SI                             :{DECIMAL}{NBSP}匹/兆克
 STR_UNITS_POWER_SI_TO_WEIGHT_IMPERIAL                           :{DECIMAL}{NBSP}千瓦/英吨
 STR_UNITS_POWER_SI_TO_WEIGHT_METRIC                             :{DECIMAL}{NBSP}千瓦/吨
 STR_UNITS_POWER_SI_TO_WEIGHT_SI                                 :{DECIMAL}{NBSP}瓦/千克
@@ -516,7 +516,7 @@ STR_ABOUT_MENU_TOGGLE_CONSOLE                                   :切换到控制
 STR_ABOUT_MENU_AI_DEBUG                                         :AI /游戏脚本调试
 STR_ABOUT_MENU_SCREENSHOT                                       :屏幕截图
 STR_ABOUT_MENU_SHOW_FRAMERATE                                   :显示帧率
-STR_ABOUT_MENU_ABOUT_OPENTTD                                    :关于 'OpenTTD'
+STR_ABOUT_MENU_ABOUT_OPENTTD                                    :关于 OpenTTD
 STR_ABOUT_MENU_SPRITE_ALIGNER                                   :Sprite 对齐
 STR_ABOUT_MENU_TOGGLE_BOUNDING_BOXES                            :切换边界框
 STR_ABOUT_MENU_TOGGLE_DIRTY_BLOCKS                              :切换脏方块的颜色
@@ -541,65 +541,65 @@ STR_ORDINAL_NUMBER_14TH                                         :14号
 STR_ORDINAL_NUMBER_15TH                                         :15号
 
 ###length 31
-STR_DAY_NUMBER_1ST                                              :1号
-STR_DAY_NUMBER_2ND                                              :2号
-STR_DAY_NUMBER_3RD                                              :3号
-STR_DAY_NUMBER_4TH                                              :4号
-STR_DAY_NUMBER_5TH                                              :5号
-STR_DAY_NUMBER_6TH                                              :6号
-STR_DAY_NUMBER_7TH                                              :7号
-STR_DAY_NUMBER_8TH                                              :8号
-STR_DAY_NUMBER_9TH                                              :9号
-STR_DAY_NUMBER_10TH                                             :10号
-STR_DAY_NUMBER_11TH                                             :11号
-STR_DAY_NUMBER_12TH                                             :12号
-STR_DAY_NUMBER_13TH                                             :13号
-STR_DAY_NUMBER_14TH                                             :14号
-STR_DAY_NUMBER_15TH                                             :15号
-STR_DAY_NUMBER_16TH                                             :16号
-STR_DAY_NUMBER_17TH                                             :17号
-STR_DAY_NUMBER_18TH                                             :18号
-STR_DAY_NUMBER_19TH                                             :19号
-STR_DAY_NUMBER_20TH                                             :20号
-STR_DAY_NUMBER_21ST                                             :21号
-STR_DAY_NUMBER_22ND                                             :22号
-STR_DAY_NUMBER_23RD                                             :23号
-STR_DAY_NUMBER_24TH                                             :24号
-STR_DAY_NUMBER_25TH                                             :25号
-STR_DAY_NUMBER_26TH                                             :26号
-STR_DAY_NUMBER_27TH                                             :27号
-STR_DAY_NUMBER_28TH                                             :28号
-STR_DAY_NUMBER_29TH                                             :29号
-STR_DAY_NUMBER_30TH                                             :30号
-STR_DAY_NUMBER_31ST                                             :31号
+STR_DAY_NUMBER_1ST                                              :1
+STR_DAY_NUMBER_2ND                                              :2
+STR_DAY_NUMBER_3RD                                              :3
+STR_DAY_NUMBER_4TH                                              :4
+STR_DAY_NUMBER_5TH                                              :5
+STR_DAY_NUMBER_6TH                                              :6
+STR_DAY_NUMBER_7TH                                              :7
+STR_DAY_NUMBER_8TH                                              :8
+STR_DAY_NUMBER_9TH                                              :9
+STR_DAY_NUMBER_10TH                                             :10
+STR_DAY_NUMBER_11TH                                             :11
+STR_DAY_NUMBER_12TH                                             :12
+STR_DAY_NUMBER_13TH                                             :13
+STR_DAY_NUMBER_14TH                                             :14
+STR_DAY_NUMBER_15TH                                             :15
+STR_DAY_NUMBER_16TH                                             :16
+STR_DAY_NUMBER_17TH                                             :17
+STR_DAY_NUMBER_18TH                                             :18
+STR_DAY_NUMBER_19TH                                             :19
+STR_DAY_NUMBER_20TH                                             :20
+STR_DAY_NUMBER_21ST                                             :21
+STR_DAY_NUMBER_22ND                                             :22
+STR_DAY_NUMBER_23RD                                             :23
+STR_DAY_NUMBER_24TH                                             :24
+STR_DAY_NUMBER_25TH                                             :25
+STR_DAY_NUMBER_26TH                                             :26
+STR_DAY_NUMBER_27TH                                             :27
+STR_DAY_NUMBER_28TH                                             :28
+STR_DAY_NUMBER_29TH                                             :29
+STR_DAY_NUMBER_30TH                                             :30
+STR_DAY_NUMBER_31ST                                             :31
 
 ###length 12
-STR_MONTH_ABBREV_JAN                                            :1月
-STR_MONTH_ABBREV_FEB                                            :2月
-STR_MONTH_ABBREV_MAR                                            :3月
-STR_MONTH_ABBREV_APR                                            :4月
-STR_MONTH_ABBREV_MAY                                            :5月
-STR_MONTH_ABBREV_JUN                                            :6月
-STR_MONTH_ABBREV_JUL                                            :7月
-STR_MONTH_ABBREV_AUG                                            :8月
-STR_MONTH_ABBREV_SEP                                            :9月
-STR_MONTH_ABBREV_OCT                                            :10月
-STR_MONTH_ABBREV_NOV                                            :11月
-STR_MONTH_ABBREV_DEC                                            :12月
+STR_MONTH_ABBREV_JAN                                            :1
+STR_MONTH_ABBREV_FEB                                            :2
+STR_MONTH_ABBREV_MAR                                            :3
+STR_MONTH_ABBREV_APR                                            :4
+STR_MONTH_ABBREV_MAY                                            :5
+STR_MONTH_ABBREV_JUN                                            :6
+STR_MONTH_ABBREV_JUL                                            :7
+STR_MONTH_ABBREV_AUG                                            :8
+STR_MONTH_ABBREV_SEP                                            :9
+STR_MONTH_ABBREV_OCT                                            :10
+STR_MONTH_ABBREV_NOV                                            :11
+STR_MONTH_ABBREV_DEC                                            :12
 
 ###length 12
-STR_MONTH_JAN                                                   :1月
-STR_MONTH_FEB                                                   :2月
-STR_MONTH_MAR                                                   :3月
-STR_MONTH_APR                                                   :4月
-STR_MONTH_MAY                                                   :5月
-STR_MONTH_JUN                                                   :6月
-STR_MONTH_JUL                                                   :7月
-STR_MONTH_AUG                                                   :8月
-STR_MONTH_SEP                                                   :9月
-STR_MONTH_OCT                                                   :10月
-STR_MONTH_NOV                                                   :11月
-STR_MONTH_DEC                                                   :12月
+STR_MONTH_JAN                                                   :一月
+STR_MONTH_FEB                                                   :二月
+STR_MONTH_MAR                                                   :三月
+STR_MONTH_APR                                                   :四月
+STR_MONTH_MAY                                                   :五月
+STR_MONTH_JUN                                                   :六月
+STR_MONTH_JUL                                                   :七月
+STR_MONTH_AUG                                                   :八月
+STR_MONTH_SEP                                                   :九月
+STR_MONTH_OCT                                                   :十月
+STR_MONTH_NOV                                                   :十一月
+STR_MONTH_DEC                                                   :十二月
 
 # Graph window
 STR_GRAPH_KEY_BUTTON                                            :{BLACK}索引
@@ -938,11 +938,11 @@ STR_EXTRA_VIEW_MOVE_MAIN_TO_VIEW_TT                             :{BLACK}将主�
 STR_GAME_OPTIONS_CAPTION                                        :{WHITE}游戏选项
 
 STR_GAME_OPTIONS_TAB_GENERAL                                    :通用
-STR_GAME_OPTIONS_TAB_GENERAL_TT                                 :{BLACK}选择通用设定
+STR_GAME_OPTIONS_TAB_GENERAL_TT                                 :{BLACK}通用设置
 STR_GAME_OPTIONS_TAB_GRAPHICS                                   :图像
-STR_GAME_OPTIONS_TAB_GRAPHICS_TT                                :{BLACK}选择图形组设定
+STR_GAME_OPTIONS_TAB_GRAPHICS_TT                                :{BLACK}图像设置
 STR_GAME_OPTIONS_TAB_SOUND                                      :音效
-STR_GAME_OPTIONS_TAB_SOUND_TT                                   :{BLACK}选择音乐和音效的设定
+STR_GAME_OPTIONS_TAB_SOUND_TT                                   :{BLACK}声音设置
 
 STR_GAME_OPTIONS_VOLUME                                         :音量
 STR_GAME_OPTIONS_SFX_VOLUME                                     :音效
@@ -964,7 +964,7 @@ STR_GAME_OPTIONS_CURRENCY_GBP                                   :英镑
 STR_GAME_OPTIONS_CURRENCY_USD                                   :美元
 STR_GAME_OPTIONS_CURRENCY_EUR                                   :欧元
 STR_GAME_OPTIONS_CURRENCY_JPY                                   :日元
-STR_GAME_OPTIONS_CURRENCY_ATS                                   :澳大利亚先令
+STR_GAME_OPTIONS_CURRENCY_ATS                                   :奥地利先令
 STR_GAME_OPTIONS_CURRENCY_BEF                                   :比利时法郎
 STR_GAME_OPTIONS_CURRENCY_CHF                                   :瑞士法郎
 STR_GAME_OPTIONS_CURRENCY_CZK                                   :捷克克朗
@@ -1098,11 +1098,11 @@ STR_CURRENCY_SET_CUSTOM_CURRENCY_PREFIX_TOOLTIP                 :{BLACK}设置�
 STR_CURRENCY_SUFFIX                                             :{LTBLUE}后缀： {ORANGE}{STRING}
 STR_CURRENCY_SET_CUSTOM_CURRENCY_SUFFIX_TOOLTIP                 :{BLACK}设置自定义货币的尾字
 
-STR_CURRENCY_SWITCH_TO_EURO                                     :{LTBLUE}转换为欧元： {ORANGE}{NUM} 年后
-STR_CURRENCY_SWITCH_TO_EURO_NEVER                               :{LTBLUE}转换为欧元： {ORANGE}不转换
-STR_CURRENCY_SET_CUSTOM_CURRENCY_TO_EURO_TOOLTIP                :{BLACK}设置转换为欧元货币的起始年份
-STR_CURRENCY_DECREASE_CUSTOM_CURRENCY_TO_EURO_TOOLTIP           :{BLACK}提早转换为欧元货币的起始年份
-STR_CURRENCY_INCREASE_CUSTOM_CURRENCY_TO_EURO_TOOLTIP           :{BLACK}延后转换为欧元货币的起始年份
+STR_CURRENCY_SWITCH_TO_EURO                                     :{LTBLUE}改用欧元： {ORANGE}{NUM}
+STR_CURRENCY_SWITCH_TO_EURO_NEVER                               :{LTBLUE}改用欧元： {ORANGE}不改用
+STR_CURRENCY_SET_CUSTOM_CURRENCY_TO_EURO_TOOLTIP                :{BLACK}设定改用欧元的年份
+STR_CURRENCY_DECREASE_CUSTOM_CURRENCY_TO_EURO_TOOLTIP           :{BLACK}提早改用欧元
+STR_CURRENCY_INCREASE_CUSTOM_CURRENCY_TO_EURO_TOOLTIP           :{BLACK}延后改用欧元
 
 STR_CURRENCY_PREVIEW                                            :{LTBLUE}预览：{ORANGE}{CURRENCY_LONG}
 STR_CURRENCY_CUSTOM_CURRENCY_PREVIEW_TOOLTIP                    :{BLACK}10000 英磅(£) 兑换自定义货币的数量
@@ -1519,7 +1519,7 @@ STR_CONFIG_SETTING_ROUGHNESS_OF_TERRAIN_SMOOTH                  :光滑
 STR_CONFIG_SETTING_ROUGHNESS_OF_TERRAIN_ROUGH                   :粗糙
 STR_CONFIG_SETTING_ROUGHNESS_OF_TERRAIN_VERY_ROUGH              :非常粗糙
 
-STR_CONFIG_SETTING_VARIETY                                      :多样的分发: {STRING}
+STR_CONFIG_SETTING_VARIETY                                      :多样地形: {STRING}
 STR_CONFIG_SETTING_VARIETY_HELPTEXT                             :此设置控制地图是否同时包含多山及平坦的地带。由于此设置只会使地图的一部份変得较平坦，请把其他相关设置（如 "地形特点"）的值设为 "山地"
 
 STR_CONFIG_SETTING_RIVER_AMOUNT                                 :河流数量: {STRING}
@@ -1545,7 +1545,7 @@ STR_CONFIG_SETTING_HEIGHTMAP_ROTATION_TOOLTIP                   :选择高度图
 STR_CONFIG_SETTING_HEIGHTMAP_ROTATION_COUNTER_CLOCKWISE         :逆时针
 STR_CONFIG_SETTING_HEIGHTMAP_ROTATION_CLOCKWISE                 :顺时针
 
-STR_CONFIG_SETTING_SE_FLAT_WORLD_HEIGHT                         :由水面场景得到的高度：{STRING}
+STR_CONFIG_SETTING_SE_FLAT_WORLD_HEIGHT                         :平面地图高度：{STRING}
 ###length 2
 STR_CONFIG_SETTING_EDGES_NOT_EMPTY                              :{WHITE}一个或多个北边的地块不是闲置的
 STR_CONFIG_SETTING_EDGES_NOT_WATER                              :{WHITE}一个或多个地图某边的地块不是水域
@@ -1566,8 +1566,8 @@ STR_CONFIG_SETTING_SMALLMAP_LAND_COLOUR_GREEN                   :绿色
 STR_CONFIG_SETTING_SMALLMAP_LAND_COLOUR_DARK_GREEN              :深绿色
 STR_CONFIG_SETTING_SMALLMAP_LAND_COLOUR_VIOLET                  :紫色
 
-STR_CONFIG_SETTING_LINKGRAPH_COLOURS                            :货物分配图配色：{STRING}
-STR_CONFIG_SETTING_LINKGRAPH_COLOURS_HELPTEXT                   :设置货物分配图的配色。
+STR_CONFIG_SETTING_LINKGRAPH_COLOURS                            :客货流配色：{STRING}
+STR_CONFIG_SETTING_LINKGRAPH_COLOURS_HELPTEXT                   :设置客货流配色。
 ###length 4
 STR_CONFIG_SETTING_LINKGRAPH_COLOURS_GREEN_TO_RED               :绿色到红色（原版）
 STR_CONFIG_SETTING_LINKGRAPH_COLOURS_GREEN_TO_BLUE              :绿色到蓝色
@@ -1962,11 +1962,11 @@ STR_CONFIG_SETTING_TOWN_GROWTH_FAST                             :快
 STR_CONFIG_SETTING_TOWN_GROWTH_VERY_FAST                        :非常快
 
 STR_CONFIG_SETTING_LARGER_TOWNS                                 :都市比例: {STRING}
-STR_CONFIG_SETTING_LARGER_TOWNS_HELPTEXT                        :随机生成城镇时，有可能生成大都市的数量，这些大都市起始人口较多、发展也较快。
+STR_CONFIG_SETTING_LARGER_TOWNS_HELPTEXT                        :设定生成城镇时，城镇中都市的比例。都市的起始人口和增长速度均较一般城镇而言高。
 STR_CONFIG_SETTING_LARGER_TOWNS_VALUE                           :1 / {COMMA}
 ###setting-zero-is-special
 STR_CONFIG_SETTING_LARGER_TOWNS_DISABLED                        :没有
-STR_CONFIG_SETTING_CITY_SIZE_MULTIPLIER                         :初始城市规模因子：{STRING}
+STR_CONFIG_SETTING_CITY_SIZE_MULTIPLIER                         :初始都市规模因子：{STRING}
 STR_CONFIG_SETTING_CITY_SIZE_MULTIPLIER_HELPTEXT                :游戏开局时，城市的平均规模相对于普通城镇的比值
 
 STR_CONFIG_SETTING_LINKGRAPH_RECALC_INTERVAL                    :每 {STRING} 更新货物分配
@@ -2059,7 +2059,7 @@ STR_CONFIG_SETTING_VEHICLES_ROUTING                             :经由
 STR_CONFIG_SETTING_VEHICLES_ORDERS                              :调度命令
 STR_CONFIG_SETTING_LIMITATIONS                                  :限制
 STR_CONFIG_SETTING_ACCIDENTS                                    :灾难/事故
-STR_CONFIG_SETTING_GENWORLD                                     :生成地图
+STR_CONFIG_SETTING_GENWORLD                                     :地图生成
 STR_CONFIG_SETTING_ENVIRONMENT                                  :环境
 STR_CONFIG_SETTING_ENVIRONMENT_TIME                             :时间
 STR_CONFIG_SETTING_ENVIRONMENT_AUTHORITIES                      :政府监管
@@ -2153,7 +2153,7 @@ STR_INTRO_TOOLTIP_GAMESCRIPT_SETTINGS                           :{BLACK}显示�
 STR_INTRO_TOOLTIP_QUIT                                          :{BLACK}退出 'OpenTTD'
 
 STR_INTRO_BASESET                                               :{BLACK}当前选定的基础图形组缺少 {NUM} 个子画面。请检查基础图形组有无更新。
-STR_INTRO_TRANSLATION                                           :{BLACK}中文语言版本缺失了 {NUM} 条翻译。 请注册成为翻译人员，以帮助OpenTTD发展。{}详见readme.txt。
+STR_INTRO_TRANSLATION                                           :{BLACK}简体中文翻译缺失了 {NUM} 条翻译。 请注册成为翻译人员以帮助OpenTTD发展。{}详见readme.txt。
 
 # Quit window
 STR_QUIT_CAPTION                                                :{WHITE}退出
@@ -2658,7 +2658,7 @@ STR_CONTENT_ERROR_COULD_NOT_EXTRACT                             :{WHITE}无法�
 
 STR_MISSING_GRAPHICS_SET_CAPTION                                :{WHITE}缺失图形组
 STR_MISSING_GRAPHICS_SET_MESSAGE                                :{BLACK}OpenTTD 需要基础图形组用以绘制界面。您是否希望 OpenTTD 下载并安装以下图形组？
-STR_MISSING_GRAPHICS_YES_DOWNLOAD                               :{BLACK}好，开始下载
+STR_MISSING_GRAPHICS_YES_DOWNLOAD                               :{BLACK}是，开始下载
 STR_MISSING_GRAPHICS_NO_QUIT                                    :{BLACK}不，退出OpenTTD
 
 STR_MISSING_GRAPHICS_ERROR_TITLE                                :{WHITE}下载失败
@@ -2766,7 +2766,7 @@ STR_STATION_CLASS_WAYP                                          :路标
 STR_STATION_CLASS_WAYP_WAYPOINT                                 :默认路点
 
 # Signal window
-STR_BUILD_SIGNAL_CAPTION                                        :{WHITE}信号灯
+STR_BUILD_SIGNAL_CAPTION                                        :{WHITE}信号选择
 STR_BUILD_SIGNAL_TOGGLE_ADVANCED_SIGNAL_TOOLTIP                 :{BLACK}选择是否显示高级信号灯类型
 STR_BUILD_SIGNAL_SEMAPHORE_NORM_TOOLTIP                         :{BLACK}通过信号灯（悬臂）{}是最基本的信号灯，只允许一列车进入该信号灯以后的区间
 STR_BUILD_SIGNAL_SEMAPHORE_ENTRY_TOOLTIP                        :{BLACK}入口信号灯（悬臂）{}在下一轨道区间上至少有一个出口信号灯是绿色时此信号亮绿灯,否则亮红灯
@@ -2780,9 +2780,9 @@ STR_BUILD_SIGNAL_ELECTRIC_EXIT_TOOLTIP                          :{BLACK}出口�
 STR_BUILD_SIGNAL_ELECTRIC_COMBO_TOOLTIP                         :{BLACK}复合信号（电子）{}复合信号灯是入口和出口信号灯的组合,这样允许建立大型“树状”预警信号灯系统
 STR_BUILD_SIGNAL_ELECTRIC_PBS_TOOLTIP                           :{BLACK}路径信号灯（电子）{}路径信号灯为列车预留一条到安全停车位的路径，而其它路径仍然可以使用，从而允许一列以上的列车同时进入一个信号区间
 STR_BUILD_SIGNAL_ELECTRIC_PBS_OWAY_TOOLTIP                      :{BLACK}单向路径信号灯（电子）{}路径信号灯为列车预留一条到安全停车位的路径，而其它路径仍然可以使用，从而允许一列以上的列车同时进入一个信号区间
-STR_BUILD_SIGNAL_CONVERT_TOOLTIP                                :{BLACK}信号灯转换工具{}按下此按钮，可以将已存在的信号灯转化为选择的信号灯类型，按下Ctrl键单击，可以在电子信号和悬臂信号之间转换。按下Shift键单击，将显示估计的转换费用。
+STR_BUILD_SIGNAL_CONVERT_TOOLTIP                                :{BLACK}信号转换工具{}按下此按钮，可以将已存在的信号转化为选择的信号类型，按下Ctrl键单击，可以在电子信号和悬臂信号之间转换。按住Shift键单击显示预估成本。
 STR_BUILD_SIGNAL_DRAG_SIGNALS_DENSITY_TOOLTIP                   :{BLACK}拖拽布置信号灯的间隔距离
-STR_BUILD_SIGNAL_DRAG_SIGNALS_DENSITY_DECREASE_TOOLTIP          :{BLACK}减少拖拽布置信号灯的间隔距离
+STR_BUILD_SIGNAL_DRAG_SIGNALS_DENSITY_DECREASE_TOOLTIP          :{BLACK}减少拖拽布置信号的间隔距离
 STR_BUILD_SIGNAL_DRAG_SIGNALS_DENSITY_INCREASE_TOOLTIP          :{BLACK}增加拖拽布置信号灯的间隔距离
 
 # Bridge selection window
@@ -2793,14 +2793,14 @@ STR_SELECT_BRIDGE_INFO_NAME                                     :{GOLD}{STRING}
 STR_SELECT_BRIDGE_INFO_NAME_MAX_SPEED                           :{GOLD}{STRING},{} {VELOCITY}
 STR_SELECT_BRIDGE_INFO_NAME_COST                                :{GOLD}{0:STRING},{} {WHITE}{2:CURRENCY_LONG}
 STR_SELECT_BRIDGE_INFO_NAME_MAX_SPEED_COST                      :{GOLD}{STRING},{} {VELOCITY} {WHITE}{CURRENCY_LONG}
-STR_BRIDGE_NAME_SUSPENSION_STEEL                                :钢制悬索
+STR_BRIDGE_NAME_SUSPENSION_STEEL                                :钢制悬索桥
 STR_BRIDGE_NAME_GIRDER_STEEL                                    :钢制桁桥
-STR_BRIDGE_NAME_CANTILEVER_STEEL                                :钢制悬臂
-STR_BRIDGE_NAME_SUSPENSION_CONCRETE                             :混凝土悬索
-STR_BRIDGE_NAME_WOODEN                                          :木制
-STR_BRIDGE_NAME_CONCRETE                                        :混凝土
-STR_BRIDGE_NAME_TUBULAR_STEEL                                   :钢制函梁
-STR_BRIDGE_TUBULAR_SILICON                                      :硅制函梁
+STR_BRIDGE_NAME_CANTILEVER_STEEL                                :钢制悬臂桥
+STR_BRIDGE_NAME_SUSPENSION_CONCRETE                             :混凝土悬索桥
+STR_BRIDGE_NAME_WOODEN                                          :木桥
+STR_BRIDGE_NAME_CONCRETE                                        :混凝土桥
+STR_BRIDGE_NAME_TUBULAR_STEEL                                   :钢制函梁桥
+STR_BRIDGE_TUBULAR_SILICON                                      :硅制函梁桥
 
 
 # Road construction toolbar
@@ -2959,8 +2959,8 @@ STR_FOUND_TOWN_INITIAL_SIZE_MEDIUM_BUTTON                       :{BLACK}中
 STR_FOUND_TOWN_INITIAL_SIZE_LARGE_BUTTON                        :{BLACK}大
 STR_FOUND_TOWN_SIZE_RANDOM                                      :{BLACK}随机
 STR_FOUND_TOWN_INITIAL_SIZE_TOOLTIP                             :{BLACK}选择城镇规模
-STR_FOUND_TOWN_CITY                                             :{BLACK}城市
-STR_FOUND_TOWN_CITY_TOOLTIP                                     :{BLACK}城市增长速度高于一般城镇{}它们建立时规模更大
+STR_FOUND_TOWN_CITY                                             :{BLACK}都市
+STR_FOUND_TOWN_CITY_TOOLTIP                                     :{BLACK}都市增长速度高于一般城镇{}它们建立时规模更大
 
 STR_FOUND_TOWN_ROAD_LAYOUT                                      :{YELLOW}城镇道路布局：
 STR_FOUND_TOWN_SELECT_TOWN_ROAD_LAYOUT                          :{BLACK}为此城镇选择使用的道路布局
@@ -3122,7 +3122,7 @@ STR_LAI_BRIDGE_DESCRIPTION_AQUEDUCT                             :水渠
 STR_LAI_OBJECT_DESCRIPTION_TRANSMITTER                          :转播塔
 STR_LAI_OBJECT_DESCRIPTION_LIGHTHOUSE                           :灯塔
 STR_LAI_OBJECT_DESCRIPTION_COMPANY_HEADQUARTERS                 :公司总部
-STR_LAI_OBJECT_DESCRIPTION_COMPANY_OWNED_LAND                   :公司属地
+STR_LAI_OBJECT_DESCRIPTION_COMPANY_OWNED_LAND                   :公司所有土地
 
 # About OpenTTD window
 STR_ABOUT_OPENTTD                                               :{WHITE}关于 OpenTTD
@@ -3134,7 +3134,7 @@ STR_ABOUT_COPYRIGHT_OPENTTD                                     :{BLACK}OpenTTD 
 STR_FRAMERATE_CAPTION                                           :{WHITE}帧率
 STR_FRAMERATE_CAPTION_SMALL                                     :{STRING}{WHITE} ({DECIMAL}x)
 STR_FRAMERATE_RATE_GAMELOOP                                     :{BLACK}模拟速率: {STRING}
-STR_FRAMERATE_RATE_GAMELOOP_TOOLTIP                             :{BLACK}每秒仿真的游戏时刻数。
+STR_FRAMERATE_RATE_GAMELOOP_TOOLTIP                             :{BLACK}每秒模拟的游戏时刻数。
 STR_FRAMERATE_RATE_BLITTER                                      :{BLACK}帧率：{STRING}
 STR_FRAMERATE_RATE_BLITTER_TOOLTIP                              :{BLACK}每秒渲染更新的图像帧。
 STR_FRAMERATE_SPEED_FACTOR                                      :{BLACK}当前游戏速度：{DECIMAL}x
@@ -3247,10 +3247,10 @@ STR_MAPGEN_TERRAIN_TYPE                                         :{BLACK}地形�
 STR_MAPGEN_SEA_LEVEL                                            :{BLACK}海洋面积：
 STR_MAPGEN_SEA_LEVEL_TOOLTIP                                    :{BLACK}选择海洋覆盖率
 STR_MAPGEN_QUANTITY_OF_RIVERS                                   :{BLACK}河流数量:
-STR_MAPGEN_SMOOTHNESS                                           :{BLACK}平滑度：
-STR_MAPGEN_VARIETY                                              :{BLACK}多样的分发：
+STR_MAPGEN_SMOOTHNESS                                           :{BLACK}平滑程度：
+STR_MAPGEN_VARIETY                                              :{BLACK}多样地形：
 STR_MAPGEN_GENERATE                                             :{WHITE}生成
-STR_MAPGEN_GENERATE_TOOLTIP                                     :{BLACK} 创建世界并开始游玩OpenTTD！
+STR_MAPGEN_GENERATE_TOOLTIP                                     :{BLACK}创建世界并开始游玩OpenTTD！
 STR_MAPGEN_NEWGRF_SETTINGS                                      :{BLACK}NewGRF设置
 STR_MAPGEN_NEWGRF_SETTINGS_TOOLTIP                              :{BLACK}显示NewGRF设置
 STR_MAPGEN_AI_SETTINGS                                          :{BLACK}AI 设置
@@ -3272,7 +3272,7 @@ STR_MAPGEN_TOWN_NAME_POLISH                                     :波兰
 STR_MAPGEN_TOWN_NAME_SLOVAK                                     :斯洛伐克
 STR_MAPGEN_TOWN_NAME_NORWEGIAN                                  :挪威
 STR_MAPGEN_TOWN_NAME_HUNGARIAN                                  :匈牙利
-STR_MAPGEN_TOWN_NAME_AUSTRIAN                                   :澳大利亚
+STR_MAPGEN_TOWN_NAME_AUSTRIAN                                   :奥地利
 STR_MAPGEN_TOWN_NAME_ROMANIAN                                   :罗马尼亚
 STR_MAPGEN_TOWN_NAME_CZECH                                      :捷克
 STR_MAPGEN_TOWN_NAME_SWISS                                      :瑞士
@@ -3365,7 +3365,7 @@ STR_NEWGRF_SETTINGS_FILE_TOOLTIP                                :{BLACK}已经�
 STR_NEWGRF_SETTINGS_SET_PARAMETERS                              :{BLACK}设置参数
 STR_NEWGRF_SETTINGS_SHOW_PARAMETERS                             :{BLACK}显示参数
 STR_NEWGRF_SETTINGS_TOGGLE_PALETTE                              :{BLACK}切换调色板
-STR_NEWGRF_SETTINGS_TOGGLE_PALETTE_TOOLTIP                      :{BLACK}切换选定GRF的调色盘。{}如果该GRF在游戏中看起来是一片粉色，您可以尝试调整此项以解决问题。若没有问题，请不要调整此项
+STR_NEWGRF_SETTINGS_TOGGLE_PALETTE_TOOLTIP                      :{BLACK}切换选定GRF的调色盘。{}如果该GRF在游戏中看起来是一片粉色，您可以尝试调整此项以解决问题。
 STR_NEWGRF_SETTINGS_APPLY_CHANGES                               :{BLACK}应用
 
 STR_NEWGRF_SETTINGS_FIND_MISSING_CONTENT_BUTTON                 :{BLACK}在线查找缺失的扩展包
@@ -3544,7 +3544,7 @@ STR_TOWN_DIRECTORY_NONE                                         :{ORANGE}- 没�
 STR_TOWN_DIRECTORY_TOWN                                         :{ORANGE}{TOWN}{BLACK} ({COMMA})
 STR_TOWN_DIRECTORY_CITY                                         :{ORANGE}{TOWN}{YELLOW} (都市){BLACK} ({COMMA})
 STR_TOWN_DIRECTORY_LIST_TOOLTIP                                 :{BLACK} 城镇名称 点击名称可以将屏幕中心{}移动到城镇所在的位置. 单击的同时按住Ctrl会在新视点中显示城镇位置
-STR_TOWN_POPULATION                                             :{BLACK}所有城镇人口总数：{COMMA}
+STR_TOWN_POPULATION                                             :{BLACK}地图人口总数：{COMMA}
 
 # Town view window
 STR_TOWN_VIEW_TOWN_CAPTION                                      :{WHITE}{TOWN}
@@ -3566,7 +3566,7 @@ STR_TOWN_VIEW_LOCAL_AUTHORITY_BUTTON                            :{BLACK}地方�
 STR_TOWN_VIEW_LOCAL_AUTHORITY_TOOLTIP                           :{BLACK}显示地方政府的信息
 STR_TOWN_VIEW_RENAME_TOOLTIP                                    :{BLACK}城镇改名
 
-STR_TOWN_VIEW_EXPAND_BUTTON                                     :{BLACK}扩大规模
+STR_TOWN_VIEW_EXPAND_BUTTON                                     :{BLACK}扩展
 STR_TOWN_VIEW_EXPAND_TOOLTIP                                    :{BLACK}增加城镇人口和面积
 STR_TOWN_VIEW_DELETE_BUTTON                                     :{BLACK}删除
 STR_TOWN_VIEW_DELETE_TOOLTIP                                    :{BLACK}完全删除这座城镇
@@ -3762,16 +3762,16 @@ STR_FINANCES_CAPITAL_EXPENSES_TITLE                             :{WHITE}资本�
 
 ###length 13
 STR_FINANCES_SECTION_CONSTRUCTION                               :{GOLD}建设费用
-STR_FINANCES_SECTION_NEW_VEHICLES                               :{GOLD}购置新载具
-STR_FINANCES_SECTION_TRAIN_RUNNING_COSTS                        :{GOLD}列车
-STR_FINANCES_SECTION_ROAD_VEHICLE_RUNNING_COSTS                 :{GOLD}公路车辆
-STR_FINANCES_SECTION_AIRCRAFT_RUNNING_COSTS                     :{GOLD}航空运行成本
-STR_FINANCES_SECTION_SHIP_RUNNING_COSTS                         :{GOLD}船舶
-STR_FINANCES_SECTION_INFRASTRUCTURE                             :{GOLD}基础设施
-STR_FINANCES_SECTION_TRAIN_REVENUE                              :{GOLD}列车
-STR_FINANCES_SECTION_ROAD_VEHICLE_REVENUE                       :{GOLD}公路车辆
-STR_FINANCES_SECTION_AIRCRAFT_REVENUE                           :{GOLD}飞机
-STR_FINANCES_SECTION_SHIP_REVENUE                               :{GOLD}船只
+STR_FINANCES_SECTION_NEW_VEHICLES                               :{GOLD}购置载具
+STR_FINANCES_SECTION_TRAIN_RUNNING_COSTS                        :{GOLD}铁路
+STR_FINANCES_SECTION_ROAD_VEHICLE_RUNNING_COSTS                 :{GOLD}公路
+STR_FINANCES_SECTION_AIRCRAFT_RUNNING_COSTS                     :{GOLD}航空
+STR_FINANCES_SECTION_SHIP_RUNNING_COSTS                         :{GOLD}水运
+STR_FINANCES_SECTION_INFRASTRUCTURE                             :{GOLD}基建维护
+STR_FINANCES_SECTION_TRAIN_REVENUE                              :{GOLD}铁路
+STR_FINANCES_SECTION_ROAD_VEHICLE_REVENUE                       :{GOLD}公路
+STR_FINANCES_SECTION_AIRCRAFT_REVENUE                           :{GOLD}航空
+STR_FINANCES_SECTION_SHIP_REVENUE                               :{GOLD}水运
 STR_FINANCES_SECTION_LOAN_INTEREST                              :{GOLD}贷款利息
 STR_FINANCES_SECTION_OTHER                                      :{GOLD}其他费用
 
@@ -3779,19 +3779,19 @@ STR_FINANCES_TOTAL_CAPTION                                      :{WHITE}总计
 STR_FINANCES_NEGATIVE_INCOME                                    :-{CURRENCY_LONG}
 STR_FINANCES_ZERO_INCOME                                        :{CURRENCY_LONG}
 STR_FINANCES_POSITIVE_INCOME                                    :+{CURRENCY_LONG}
-STR_FINANCES_PROFIT                                             :{WHITE}利润
+STR_FINANCES_PROFIT                                             :{WHITE}本期损益
 STR_FINANCES_BANK_BALANCE_TITLE                                 :{WHITE}流动资金
 STR_FINANCES_OWN_FUNDS_TITLE                                    :{WHITE}自有资金
 STR_FINANCES_LOAN_TITLE                                         :{WHITE}已贷款额
-STR_FINANCES_INTEREST_RATE                                      :{WHITE}贷款利息: {BLACK}{NUM}%
-STR_FINANCES_MAX_LOAN                                           :{WHITE}最大贷款额度：{BLACK}{CURRENCY_LONG}
+STR_FINANCES_INTEREST_RATE                                      :{WHITE}贷款利息：{BLACK}{NUM}%
+STR_FINANCES_MAX_LOAN                                           :{WHITE}贷款额度：{BLACK}{CURRENCY_LONG}
 STR_FINANCES_TOTAL_CURRENCY                                     :{BLACK}{CURRENCY_LONG}
 STR_FINANCES_BANK_BALANCE                                       :{WHITE}{CURRENCY_LONG}
 STR_FINANCES_BORROW_BUTTON                                      :{BLACK}贷款 {CURRENCY_LONG}
-STR_FINANCES_BORROW_TOOLTIP                                     :{BLACK}贷款{}Ctrl+点击 可贷款最大额度
+STR_FINANCES_BORROW_TOOLTIP                                     :{BLACK}增加贷款。Ctrl+点击可一次性贷款所有额度。
 STR_FINANCES_REPAY_BUTTON                                       :{BLACK}还款 {CURRENCY_LONG}
-STR_FINANCES_REPAY_TOOLTIP                                      :{BLACK}偿还贷款{}Ctrl+点击 可最大额度偿还贷款
-STR_FINANCES_INFRASTRUCTURE_BUTTON                              :{BLACK}设施
+STR_FINANCES_REPAY_TOOLTIP                                      :{BLACK}偿还贷款。Ctrl+点击可一次性偿还最大额度。
+STR_FINANCES_INFRASTRUCTURE_BUTTON                              :{BLACK}基础建设
 
 # Company view
 STR_COMPANY_VIEW_CAPTION                                        :{WHITE}{COMPANY} {BLACK}{COMPANY_NUM}
@@ -3824,8 +3824,8 @@ STR_COMPANY_VIEW_INFRASTRUCTURE_BUTTON                          :{BLACK}固定�
 STR_COMPANY_VIEW_INFRASTRUCTURE_TOOLTIP                         :{BLACK}显示详细的设施情况
 STR_COMPANY_VIEW_GIVE_MONEY_BUTTON                              :{BLACK}给予资金
 STR_COMPANY_VIEW_GIVE_MONEY_TOOLTIP                             :{BLACK}给予该公司资金
-STR_COMPANY_VIEW_HOSTILE_TAKEOVER_BUTTON                        :{BLACK}不受其欢迎的收购
-STR_COMPANY_VIEW_HOSTILE_TAKEOVER_TOOLTIP                       :{BLACK}对此公司进行不受其欢迎的收购
+STR_COMPANY_VIEW_HOSTILE_TAKEOVER_BUTTON                        :{BLACK}恶意收购
+STR_COMPANY_VIEW_HOSTILE_TAKEOVER_TOOLTIP                       :{BLACK}恶意收购此公司
 
 STR_COMPANY_VIEW_NEW_FACE_BUTTON                                :{BLACK}新的头像
 STR_COMPANY_VIEW_NEW_FACE_TOOLTIP                               :{BLACK}为总裁选择新头像
@@ -3841,7 +3841,7 @@ STR_COMPANY_VIEW_PRESIDENT_S_NAME_QUERY_CAPTION                 :总裁姓名
 STR_COMPANY_VIEW_GIVE_MONEY_QUERY_CAPTION                       :输入你要给予的金额
 
 STR_BUY_COMPANY_MESSAGE                                         :{WHITE}我们正在寻找一家愿意收购我们的公司。{}{}您愿意收购 {COMPANY} ({CURRENCY_LONG}) 吗？
-STR_BUY_COMPANY_HOSTILE_TAKEOVER                                :{WHITE}当不受其欢迎地收购 {COMPANY} 时，您会买下其所有的资产，还清其所有的债务，并支付其两年的利润。{}{}总价预计为 {CURRENCY_LONG}.{}{}您想继续此收购吗？
+STR_BUY_COMPANY_HOSTILE_TAKEOVER                                :{WHITE}恶意收购 {COMPANY} 时，您会买下其所有的资产，还清其所有的债务，并支付其两年的利润。{}{}总价预计为 {CURRENCY_LONG}.{}{}您想继续此收购吗？
 
 # Company infrastructure window
 STR_COMPANY_INFRASTRUCTURE_VIEW_CAPTION                         :{WHITE}{COMPANY} 的设施
@@ -3876,7 +3876,7 @@ STR_INDUSTRY_VIEW_CAPTION                                       :{WHITE}{INDUSTR
 STR_INDUSTRY_VIEW_PRODUCTION_LAST_MONTH_TITLE                   :{BLACK}上月产量：
 STR_INDUSTRY_VIEW_TRANSPORTED                                   :{YELLOW}{CARGO_LONG}{STRING}{BLACK} ({COMMA}% 已运输)
 STR_INDUSTRY_VIEW_LOCATION_TOOLTIP                              :{BLACK}将屏幕中心移动到工厂所在的位置. 单击的同时按住Ctrl会在新视点中显示工厂位置
-STR_INDUSTRY_VIEW_PRODUCTION_LEVEL                              :{BLACK}生产程度: {YELLOW}{COMMA}%
+STR_INDUSTRY_VIEW_PRODUCTION_LEVEL                              :{BLACK}生产等级: {YELLOW}{COMMA}%
 STR_INDUSTRY_VIEW_INDUSTRY_ANNOUNCED_CLOSURE                    :{YELLOW}此工业已经宣布即刻停业倒闭!
 
 STR_INDUSTRY_VIEW_REQUIRES_N_CARGO                              :{BLACK}需要: {YELLOW}{STRING}{STRING}
@@ -4419,8 +4419,8 @@ STR_REFIT_AIRCRAFT_REFIT_TOOLTIP                                :{BLACK}改装�
 
 # Order view
 STR_ORDERS_CAPTION                                              :{WHITE}{VEHICLE} (调度计划)
-STR_ORDERS_TIMETABLE_VIEW                                       :{BLACK}时间表
-STR_ORDERS_TIMETABLE_VIEW_TOOLTIP                               :{BLACK}切换到时间表视图
+STR_ORDERS_TIMETABLE_VIEW                                       :{BLACK}时刻表
+STR_ORDERS_TIMETABLE_VIEW_TOOLTIP                               :{BLACK}切换到时刻表视图
 
 STR_ORDERS_LIST_TOOLTIP                                         :{BLACK}调度列表{}单击一个调度指令以选定{}CTRL+左键{}将视点移动到相应的车站
 STR_ORDER_INDEX                                                 :{COMMA}:{NBSP}
@@ -4581,27 +4581,27 @@ STR_ORDER_CONDITIONAL_TRUE_FALSE                                :跳至 {COMMA} 
 STR_INVALID_ORDER                                               :{RED} (非法的调度计划)
 
 # Time table window
-STR_TIMETABLE_TITLE                                             :{WHITE}{VEHICLE} (时间表)
+STR_TIMETABLE_TITLE                                             :{WHITE}{VEHICLE} (时刻表)
 STR_TIMETABLE_ORDER_VIEW                                        :{BLACK}命令
 STR_TIMETABLE_ORDER_VIEW_TOOLTIP                                :{BLACK}切换到调度计划视图
 
-STR_TIMETABLE_TOOLTIP                                           :{BLACK}时间表 - 单击一个命令以选定。
+STR_TIMETABLE_TOOLTIP                                           :{BLACK}时刻表 - 单击一个命令以选定。
 
 STR_TIMETABLE_NO_TRAVEL                                         :原地待命
-STR_TIMETABLE_NOT_TIMETABLEABLE                                 :行驶 (自动; 时间表按下一手动命令)
-STR_TIMETABLE_TRAVEL_NOT_TIMETABLED                             :行驶 (无时间表)
-STR_TIMETABLE_TRAVEL_NOT_TIMETABLED_SPEED                       :限速 {2:VELOCITY} (无时间表)
+STR_TIMETABLE_NOT_TIMETABLEABLE                                 :行驶 (自动；由下个手动指令指定时间)
+STR_TIMETABLE_TRAVEL_NOT_TIMETABLED                             :行驶 (无时刻表)
+STR_TIMETABLE_TRAVEL_NOT_TIMETABLED_SPEED                       :限速 {2:VELOCITY} (无时刻表)
 STR_TIMETABLE_TRAVEL_FOR                                        :途中行驶 {STRING}
 STR_TIMETABLE_TRAVEL_FOR_SPEED                                  :开往{STRING} ，限速为 {VELOCITY}
-STR_TIMETABLE_TRAVEL_FOR_ESTIMATED                              :行驶 ({STRING}, 无时间表)
+STR_TIMETABLE_TRAVEL_FOR_ESTIMATED                              :行驶 ({STRING}, 无时刻表)
 STR_TIMETABLE_TRAVEL_FOR_SPEED_ESTIMATED                        :前往 {STRING},以最大速度 {VELOCITY}
-STR_TIMETABLE_STAY_FOR_ESTIMATED                                :(停靠 {STRING}, 无时间表)
-STR_TIMETABLE_AND_TRAVEL_FOR_ESTIMATED                          :(驶往 {STRING}, 无时间表)
+STR_TIMETABLE_STAY_FOR_ESTIMATED                                :(停靠 {STRING}, 无时刻表)
+STR_TIMETABLE_AND_TRAVEL_FOR_ESTIMATED                          :(驶往 {STRING}, 无时刻表)
 STR_TIMETABLE_STAY_FOR                                          :并且停留 {STRING}
 STR_TIMETABLE_AND_TRAVEL_FOR                                    :并行驶{STRING}
 
-STR_TIMETABLE_TOTAL_TIME                                        :{BLACK}该时间表需要 {STRING} 完成
-STR_TIMETABLE_TOTAL_TIME_INCOMPLETE                             :{BLACK}该时间表至少需要 {STRING} 完成（并非全部计划的时间）
+STR_TIMETABLE_TOTAL_TIME                                        :{BLACK}完成该时刻表需要 {STRING}
+STR_TIMETABLE_TOTAL_TIME_INCOMPLETE                             :{BLACK}完成该时刻表至少需要 {STRING} （时刻表尚未完成）
 
 STR_TIMETABLE_STATUS_ON_TIME                                    :{BLACK}该车辆目前正点运行
 STR_TIMETABLE_STATUS_LATE                                       :{BLACK}该车辆目前晚点 {STRING}
@@ -4631,7 +4631,7 @@ STR_TIMETABLE_RESET_LATENESS                                    :{BLACK}清除�
 STR_TIMETABLE_RESET_LATENESS_TOOLTIP                            :{BLACK}重置晚点计数器，从而使车辆被视为准时到达。CTRL+点击会重置全分组的计数器，从而使晚点最多的载具被视为准点而其他被视为早点
 
 STR_TIMETABLE_AUTOFILL                                          :{BLACK}自动填充
-STR_TIMETABLE_AUTOFILL_TOOLTIP                                  :{BLACK}根据下一次运行的时间自动填充时间表。按住Ctrl单击可保持等候时间
+STR_TIMETABLE_AUTOFILL_TOOLTIP                                  :{BLACK}根据下一次运行的时间自动填充时刻表。按住Ctrl单击可保持等候时间
 
 STR_TIMETABLE_EXPECTED                                          :{BLACK}预期时间
 STR_TIMETABLE_SCHEDULED                                         :{BLACK}表定时间
@@ -4746,7 +4746,7 @@ STR_TEXTFILE_WRAP_TEXT_TOOLTIP                                  :{BLACK}強迫�
 STR_TEXTFILE_VIEW_README                                        :{BLACK}查看说明
 STR_TEXTFILE_VIEW_README_TOOLTIP                                :查看此项目的说明文件
 STR_TEXTFILE_VIEW_CHANGELOG                                     :{BLACK}更新日志
-STR_TEXTFILE_VIEW_CHANGELOG_TOOLTIP                             :查看此项目的许可证
+STR_TEXTFILE_VIEW_CHANGELOG_TOOLTIP                             :查看此项目的更新日志
 STR_TEXTFILE_VIEW_LICENCE                                       :{BLACK}版权信息
 STR_TEXTFILE_VIEW_LICENCE_TOOLTIP                               :查看此项目的许可证
 ###length 5
@@ -5153,7 +5153,7 @@ STR_ERROR_CAN_T_SELL_AIRCRAFT                                   :{WHITE}不能�
 STR_ERROR_TOO_MANY_VEHICLES_IN_GAME                             :{WHITE}游戏中的车辆过多
 STR_ERROR_CAN_T_CHANGE_SERVICING                                :{WHITE}不能改变保养周期……
 
-STR_ERROR_VEHICLE_IS_DESTROYED                                  :{WHITE}... 运具已撞毁
+STR_ERROR_VEHICLE_IS_DESTROYED                                  :{WHITE}... 载具已撞毁
 
 STR_ERROR_CAN_T_CLONE_VEHICLE_LIST                              :{WHITE}...并非所有车辆都相同
 
@@ -5207,11 +5207,11 @@ STR_ERROR_NO_RAIL_WAYPOINT                                      :{WHITE}没有�
 STR_ERROR_NO_BUOY                                               :{WHITE}没有浮标
 
 # Timetable related errors
-STR_ERROR_CAN_T_TIMETABLE_VEHICLE                               :{WHITE}不能给车辆编制时间表…
+STR_ERROR_CAN_T_TIMETABLE_VEHICLE                               :{WHITE}不能给车辆编制时刻表…
 STR_ERROR_TIMETABLE_ONLY_WAIT_AT_STATIONS                       :{WHITE}车辆只能在站内等候。
 STR_ERROR_TIMETABLE_NOT_STOPPING_HERE                           :{WHITE}此车辆将不停靠本站。
-STR_ERROR_TIMETABLE_INCOMPLETE                                  :{WHITE}... 时间表不完整
-STR_ERROR_TIMETABLE_NOT_STARTED                                 :{WHITE}……时间表尚未开始
+STR_ERROR_TIMETABLE_INCOMPLETE                                  :{WHITE}... 时刻表不完整
+STR_ERROR_TIMETABLE_NOT_STARTED                                 :{WHITE}……时刻表尚未开始
 
 # Sign related errors
 STR_ERROR_TOO_MANY_SIGNS                                        :{WHITE}……标志太多了
@@ -5625,7 +5625,7 @@ STR_VEHICLE_NAME_AIRCRAFT_POWERNAUT_HELICOPTER                  :Powernaut 直�
 # Formatting of some strings
 STR_FORMAT_DATE_TINY                                            :{ZEROFILL_NUM}-{ZEROFILL_NUM}-{NUM}
 STR_FORMAT_DATE_SHORT                                           :{STRING} {NUM}
-STR_FORMAT_DATE_LONG                                            :{STRING} {STRING} {NUM}
+STR_FORMAT_DATE_LONG                                            :{2:NUM}年 {1:STRING}月 {0:STRING}日
 STR_FORMAT_DATE_ISO                                             :{2:NUM}-{1:ZEROFILL_NUM}-{0:ZEROFILL_NUM}
 
 STR_FORMAT_COMPANY_NUM                                          :(公司 {COMMA})

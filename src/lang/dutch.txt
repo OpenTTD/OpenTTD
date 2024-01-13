@@ -771,7 +771,7 @@ STR_SMALLMAP_LEGENDA_AIRCRAFT                                   :{TINY_FONT}{BLA
 STR_SMALLMAP_LEGENDA_TRANSPORT_ROUTES                           :{TINY_FONT}{BLACK}Transportroutes
 STR_SMALLMAP_LEGENDA_FOREST                                     :{TINY_FONT}{BLACK}Bos
 STR_SMALLMAP_LEGENDA_RAILROAD_STATION                           :{TINY_FONT}{BLACK}Treinstation
-STR_SMALLMAP_LEGENDA_TRUCK_LOADING_BAY                          :{TINY_FONT}{BLACK}Laadperron voor vrachtwagens
+STR_SMALLMAP_LEGENDA_TRUCK_LOADING_BAY                          :{TINY_FONT}{BLACK}Vrachtwagenstation
 STR_SMALLMAP_LEGENDA_BUS_STATION                                :{TINY_FONT}{BLACK}Bushalte
 STR_SMALLMAP_LEGENDA_AIRPORT_HELIPORT                           :{TINY_FONT}{BLACK}Vliegveld/heliplatform
 STR_SMALLMAP_LEGENDA_DOCK                                       :{TINY_FONT}{BLACK}Haven
@@ -1002,6 +1002,7 @@ STR_GAME_OPTIONS_CURRENCY_HKD                                   :Hong Kong Dolla
 STR_GAME_OPTIONS_CURRENCY_INR                                   :Indiase rupee
 STR_GAME_OPTIONS_CURRENCY_IDR                                   :Indonesische roepia
 STR_GAME_OPTIONS_CURRENCY_MYR                                   :Maleisische Ringgit
+STR_GAME_OPTIONS_CURRENCY_LVL                                   :Letse lats
 
 STR_GAME_OPTIONS_AUTOSAVE_FRAME                                 :{BLACK}Automatisch opslaan
 STR_GAME_OPTIONS_AUTOSAVE_DROPDOWN_TOOLTIP                      :{BLACK}Tijdsduur kiezen tussen automatisch opgeslagen spellen
@@ -2055,14 +2056,17 @@ STR_CONFIG_SETTING_ACCOUNTING                                   :Boekhouding
 STR_CONFIG_SETTING_VEHICLES                                     :Voertuigen
 STR_CONFIG_SETTING_VEHICLES_PHYSICS                             :Natuurkundige eigenschappen
 STR_CONFIG_SETTING_VEHICLES_ROUTING                             :Routebepaling
+STR_CONFIG_SETTING_VEHICLES_ORDERS                              :Orders
 STR_CONFIG_SETTING_LIMITATIONS                                  :Beperkingen
 STR_CONFIG_SETTING_ACCIDENTS                                    :Rampen/ongelukken
 STR_CONFIG_SETTING_GENWORLD                                     :Wereldontwikkeling
 STR_CONFIG_SETTING_ENVIRONMENT                                  :Omgeving
+STR_CONFIG_SETTING_ENVIRONMENT_TIME                             :Tijd
 STR_CONFIG_SETTING_ENVIRONMENT_AUTHORITIES                      :Autoriteiten
 STR_CONFIG_SETTING_ENVIRONMENT_TOWNS                            :Steden
 STR_CONFIG_SETTING_ENVIRONMENT_INDUSTRIES                       :Industrieën
 STR_CONFIG_SETTING_ENVIRONMENT_CARGODIST                        :Vrachtdistributie
+STR_CONFIG_SETTING_ENVIRONMENT_TREES                            :Bomen
 STR_CONFIG_SETTING_AI                                           :Tegenstanders
 STR_CONFIG_SETTING_AI_NPC                                       :Computerspelers
 STR_CONFIG_SETTING_NETWORK                                      :Netwerk
@@ -2720,9 +2724,9 @@ STR_RAIL_TOOLBAR_MAGLEV_CONSTRUCTION_CAPTION                    :Bouw magneetzwe
 STR_RAIL_TOOLBAR_TOOLTIP_BUILD_RAILROAD_TRACK                   :{BLACK}Spoor bouwen. Ctrl schakelt tussen bouwen/verwijderen van het spoor. Shift schakelt tussen bouwen/inschatting van de kosten
 STR_RAIL_TOOLBAR_TOOLTIP_BUILD_AUTORAIL                         :{BLACK}Spoor bouwen met de automatische methode. Ctrl schakelt tussen bouwen/verwijderen van het spoor. Shift schakelt tussen bouwen/inschatting van de kosten.
 STR_RAIL_TOOLBAR_TOOLTIP_BUILD_TRAIN_DEPOT_FOR_BUILDING         :{BLACK}Remise bouwen (om treinen te kopen en te onderhouden). Shift schakelt tussen bouwen/kosten weergeven.
-STR_RAIL_TOOLBAR_TOOLTIP_CONVERT_RAIL_TO_WAYPOINT               :{BLACK}Spoor ombouwen naar routepunt. Ctrl om samen te voegen met ander routepunt. Shift schakelt tussen bouwen/kosten weergeven.
+STR_RAIL_TOOLBAR_TOOLTIP_CONVERT_RAIL_TO_WAYPOINT               :{BLACK}Routepunt bouwen op spoor. Ctrl om samen te voegen met ander routepunt. Shift schakelt tussen bouwen/kosten weergeven.
 STR_RAIL_TOOLBAR_TOOLTIP_BUILD_RAILROAD_STATION                 :{BLACK}Treinstation bouwen. Houd Ctrl ingedrukt om samen te voegen met ander station. Shift schakelt tussen bouwen/inschatting van de kosten.
-STR_RAIL_TOOLBAR_TOOLTIP_BUILD_RAILROAD_SIGNALS                 :{BLACK}Seinen bouwen. Ctrl wisselt tussen armseinen/lichtseinen{}Slepen plaatst seinen langs een recht stuk spoor. Ctrl bouwt seinen tot de volgende wissel{}Ctrl+klik schakelt het openen van seinkeuzelijst aan-uit. Shift schakelt tussen bouwen/kosten weergeven.
+STR_RAIL_TOOLBAR_TOOLTIP_BUILD_RAILROAD_SIGNALS                 :{BLACK}Seinen bouwen op spoor. Ctrl wisselt tussen armseinen/lichtseinen{}Slepen plaatst seinen langs een recht stuk spoor. Ctrl bouwt seinen tot de volgende wissel{}Ctrl+klik schakelt het openen van seinkeuzelijst aan-uit. Shift schakelt tussen bouwen/kosten weergeven.
 STR_RAIL_TOOLBAR_TOOLTIP_BUILD_RAILROAD_BRIDGE                  :{BLACK}Spoorbrug bouwen. Shift schakelt tussen bouwen/inschatting van de kosten
 STR_RAIL_TOOLBAR_TOOLTIP_BUILD_RAILROAD_TUNNEL                  :{BLACK}Graaf spoortunnel. Shift schakelt tussen bouwen/inschatting van de kosten
 STR_RAIL_TOOLBAR_TOOLTIP_TOGGLE_BUILD_REMOVE_FOR                :{BLACK}Schakelt tussen bouwen en verwijderen van sporen, seinen, routepunten en stations. Ctrl verwijdert ook het spoor van routepunten en stations.
@@ -2810,7 +2814,7 @@ STR_ROAD_TOOLBAR_TOOLTIP_BUILD_ROAD_VEHICLE_DEPOT               :{BLACK}Garage b
 STR_ROAD_TOOLBAR_TOOLTIP_BUILD_TRAM_VEHICLE_DEPOT               :{BLACK}Tramremise bouwen (voor het kopen en onderhouden van trams). Shift schakelt tussen bouwen/inschatting van de kosten.
 STR_ROAD_TOOLBAR_TOOLTIP_BUILD_BUS_STATION                      :{BLACK}Busstation bouwen. Houd Ctrl ingedrukt om samen te voegen met ander station. Shift schakelt tussen bouwen/inschatting van de kosten.
 STR_ROAD_TOOLBAR_TOOLTIP_BUILD_PASSENGER_TRAM_STATION           :{BLACK}Bouw passagierstramhalte. Houd Ctrl ingedrukt om samen te voegen met ander station. Shift schakelt tussen bouwen/inschatting van de kosten
-STR_ROAD_TOOLBAR_TOOLTIP_BUILD_TRUCK_LOADING_BAY                :{BLACK}Laadperron bouwen. Houd Ctrl ingedrukt om samen te voegen met ander station. Shift schakelt tussen bouwen/inschatting van de kosten.
+STR_ROAD_TOOLBAR_TOOLTIP_BUILD_TRUCK_LOADING_BAY                :{BLACK}Vrachtwagenstation bouwen. Houd Ctrl ingedrukt om samen te voegen met ander station. Shift schakelt tussen bouwen/inschatting van de kosten.
 STR_ROAD_TOOLBAR_TOOLTIP_BUILD_CARGO_TRAM_STATION               :{BLACK}Vrachttramhalte bouwen. Houd Ctrl ingedrukt om samen te voegen met ander station. Shift schakelt tussen bouwen/inschatting van de kosten.
 STR_ROAD_TOOLBAR_TOOLTIP_TOGGLE_ONE_WAY_ROAD                    :{BLACK}Hiermee schakel je eenrichtingswegen in-uit
 STR_ROAD_TOOLBAR_TOOLTIP_BUILD_ROAD_BRIDGE                      :{BLACK}Bouw wegbrug. Shift schakelt tussen bouwen/inschatting van de kosten
@@ -2834,8 +2838,8 @@ STR_BUILD_DEPOT_TRAM_ORIENTATION_SELECT_TOOLTIP                 :{BLACK}Selectee
 # Road vehicle station construction window
 STR_STATION_BUILD_BUS_ORIENTATION                               :{WHITE}Richting van bushalte
 STR_STATION_BUILD_BUS_ORIENTATION_TOOLTIP                       :{BLACK}Selecteer richting van bushalte
-STR_STATION_BUILD_TRUCK_ORIENTATION                             :{WHITE}Richting van vrachtwagenperron
-STR_STATION_BUILD_TRUCK_ORIENTATION_TOOLTIP                     :{BLACK}Selecteer richting van vrachtwagenperron
+STR_STATION_BUILD_TRUCK_ORIENTATION                             :{WHITE}Richting van vrachtwagenstation
+STR_STATION_BUILD_TRUCK_ORIENTATION_TOOLTIP                     :{BLACK}Selecteer richting van vrachtwagenstation
 STR_STATION_BUILD_PASSENGER_TRAM_ORIENTATION                    :{WHITE}Richting van passagierstramhalte
 STR_STATION_BUILD_PASSENGER_TRAM_ORIENTATION_TOOLTIP            :{BLACK}Selecteer richting van passagierstramhalte
 STR_STATION_BUILD_CARGO_TRAM_ORIENTATION                        :{WHITE}Richting van vrachttramhalte
@@ -3079,7 +3083,7 @@ STR_LAI_TREE_NAME_CACTUS_PLANTS                                 :Cactussen
 STR_LAI_STATION_DESCRIPTION_RAILROAD_STATION                    :Treinstation
 STR_LAI_STATION_DESCRIPTION_AIRCRAFT_HANGAR                     :Hangar
 STR_LAI_STATION_DESCRIPTION_AIRPORT                             :Vliegveld
-STR_LAI_STATION_DESCRIPTION_TRUCK_LOADING_AREA                  :Vrachtwagenlaadgebied
+STR_LAI_STATION_DESCRIPTION_TRUCK_LOADING_AREA                  :Vrachtwagenstation
 STR_LAI_STATION_DESCRIPTION_BUS_STATION                         :Busstation
 STR_LAI_STATION_DESCRIPTION_SHIP_DOCK                           :Haven
 STR_LAI_STATION_DESCRIPTION_BUOY                                :Boei
@@ -4917,7 +4921,7 @@ STR_ERROR_NO_SUITABLE_PLACES_FOR_INDUSTRIES_EXPLANATION         :{WHITE}Wijzig d
 # Station construction related errors
 STR_ERROR_CAN_T_BUILD_RAILROAD_STATION                          :{WHITE}Kan hier geen treinstation bouwen...
 STR_ERROR_CAN_T_BUILD_BUS_STATION                               :{WHITE}Kan hier geen busstation bouwen...
-STR_ERROR_CAN_T_BUILD_TRUCK_STATION                             :{WHITE}Kan hier geen vrachtwagenlaadstation bouwen...
+STR_ERROR_CAN_T_BUILD_TRUCK_STATION                             :{WHITE}Kan hier geen vrachtwagenstation bouwen...
 STR_ERROR_CAN_T_BUILD_PASSENGER_TRAM_STATION                    :{WHITE}Kan geen passagierstramstation bouwen...
 STR_ERROR_CAN_T_BUILD_CARGO_TRAM_STATION                        :{WHITE}Kan geen vrachttramhalte bouwen...
 STR_ERROR_CAN_T_BUILD_DOCK_HERE                                 :{WHITE}Kan hier geen haven bouwen...
@@ -4928,7 +4932,7 @@ STR_ERROR_STATION_TOO_SPREAD_OUT                                :{WHITE}... stat
 STR_ERROR_TOO_MANY_STATIONS_LOADING                             :{WHITE}Te veel (laad)stations
 STR_ERROR_TOO_MANY_STATION_SPECS                                :{WHITE}Te veel treinstationsdelen
 STR_ERROR_TOO_MANY_BUS_STOPS                                    :{WHITE}Te veel bushaltes
-STR_ERROR_TOO_MANY_TRUCK_STOPS                                  :{WHITE}Te veel vrachtwagenlaadstations
+STR_ERROR_TOO_MANY_TRUCK_STOPS                                  :{WHITE}Te veel vrachtwagenstations
 STR_ERROR_TOO_CLOSE_TO_ANOTHER_DOCK                             :{WHITE}Te dicht bij een andere haven
 STR_ERROR_TOO_CLOSE_TO_ANOTHER_AIRPORT                          :{WHITE}Te dicht bij een ander vliegveld
 STR_ERROR_CAN_T_RENAME_STATION                                  :{WHITE}Kan stationsnaam niet veranderen...
@@ -4941,7 +4945,7 @@ STR_ERROR_DRIVE_THROUGH_JUNCTION                                :{WHITE}... door
 STR_ERROR_CAN_T_REMOVE_PART_OF_STATION                          :{WHITE}Kan deel van station niet verwijderen...
 STR_ERROR_MUST_REMOVE_RAILWAY_STATION_FIRST                     :{WHITE}Verwijder eerst treinstation
 STR_ERROR_CAN_T_REMOVE_BUS_STATION                              :{WHITE}Kan busstation niet verwijderen...
-STR_ERROR_CAN_T_REMOVE_TRUCK_STATION                            :{WHITE}Kan vrachtwagenlaadstation niet verwijderen...
+STR_ERROR_CAN_T_REMOVE_TRUCK_STATION                            :{WHITE}Kan vrachtwagenstation niet verwijderen...
 STR_ERROR_CAN_T_REMOVE_PASSENGER_TRAM_STATION                   :{WHITE}Kan passagierstramstation niet verwijderen...
 STR_ERROR_CAN_T_REMOVE_CARGO_TRAM_STATION                       :{WHITE}Kan vrachttramhalte niet verwijderen...
 STR_ERROR_MUST_REMOVE_ROAD_STOP_FIRST                           :{WHITE}Moet halte eerst verwijderen
@@ -4949,7 +4953,7 @@ STR_ERROR_THERE_IS_NO_STATION                                   :{WHITE}...er is
 
 STR_ERROR_MUST_DEMOLISH_RAILROAD                                :{WHITE}Verwijder eerst treinstation
 STR_ERROR_MUST_DEMOLISH_BUS_STATION_FIRST                       :{WHITE}Verwijder eerst busstation
-STR_ERROR_MUST_DEMOLISH_TRUCK_STATION_FIRST                     :{WHITE}Verwijder eerst vrachtwagenperron
+STR_ERROR_MUST_DEMOLISH_TRUCK_STATION_FIRST                     :{WHITE}Verwijder eerst vrachtwagenstation
 STR_ERROR_MUST_DEMOLISH_PASSENGER_TRAM_STATION_FIRST            :{WHITE}Verwijder eerst passagierstramstation
 STR_ERROR_MUST_DEMOLISH_CARGO_TRAM_STATION_FIRST                :{WHITE}Verwijder eerst vrachttramhalte
 STR_ERROR_MUST_DEMOLISH_DOCK_FIRST                              :{WHITE}Verwijder eerst haven
@@ -5191,7 +5195,7 @@ STR_ERROR_AIRCRAFT_NOT_ENOUGH_RANGE                             :{WHITE}... vlie
 # Extra messages which go on the third line of errors, explaining why orders failed
 STR_ERROR_NO_RAIL_STATION                                       :{WHITE}Er is geen station
 STR_ERROR_NO_BUS_STATION                                        :{WHITE}Er is geen bussstation
-STR_ERROR_NO_TRUCK_STATION                                      :{WHITE}Er is geen vrachtwagenlaadstation
+STR_ERROR_NO_TRUCK_STATION                                      :{WHITE}Er is geen vrachtwagenstation
 STR_ERROR_NO_DOCK                                               :{WHITE}Er is geen dok
 STR_ERROR_NO_AIRPORT                                            :{WHITE}Er is geen vliegveld/heliplatform
 STR_ERROR_NO_STOP_COMPATIBLE_ROAD_TYPE                          :{WHITE}Er zijn geen haltes met een compatibel wegtype
