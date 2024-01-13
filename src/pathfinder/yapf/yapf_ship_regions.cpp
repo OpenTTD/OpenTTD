@@ -24,14 +24,12 @@ constexpr int MAX_NUMBER_OF_NODES = 65536;
 struct CYapfRegionPatchNodeKey {
 	WaterRegionPatchDesc m_water_region_patch;
 
-	static_assert(sizeof(TWaterRegionPatchLabel) == sizeof(byte)); // Important for the hash calculation.
-
 	inline void Set(const WaterRegionPatchDesc &water_region_patch)
 	{
 		m_water_region_patch = water_region_patch;
 	}
 
-	inline int CalcHash() const { return m_water_region_patch.label | GetWaterRegionIndex(m_water_region_patch) << 8; }
+	inline int CalcHash() const { return CalculateWaterRegionPatchHash(m_water_region_patch); }
 	inline bool operator==(const CYapfRegionPatchNodeKey &other) const { return CalcHash() == other.CalcHash(); }
 };
 

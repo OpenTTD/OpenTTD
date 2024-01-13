@@ -24,6 +24,7 @@ constexpr TWaterRegionPatchLabel FIRST_REGION_LABEL = 1;
 constexpr TWaterRegionPatchLabel INVALID_WATER_REGION_PATCH = 0;
 
 static_assert(sizeof(TWaterRegionTraversabilityBits) * 8 == WATER_REGION_EDGE_LENGTH);
+static_assert(sizeof(TWaterRegionPatchLabel) == sizeof(byte)); // Important for the hash calculation.
 
 static inline TrackBits GetWaterTracks(TileIndex tile) { return TrackStatusToTrackBits(GetTileTrackStatus(tile, TRANSPORT_WATER, 0)); }
 static inline bool IsAqueductTile(TileIndex tile) { return IsBridgeTile(tile) && GetTunnelBridgeTransportType(tile) == TRANSPORT_WATER; }
@@ -223,12 +224,21 @@ WaterRegion &GetUpdatedWaterRegion(TileIndex tile)
 }
 
 /**
- * Returns the index of the water region
- * @param water_region The Water region to return the index for
+ * Returns the index of the water region.
+ * @param water_region The water region to return the index for.
  */
 TWaterRegionIndex GetWaterRegionIndex(const WaterRegionDesc &water_region)
 {
 	return GetWaterRegionIndex(water_region.x, water_region.y);
+}
+
+/**
+ * Calculates a number that uniquely identifies the provided water region patch.
+ * @param water_region_patch The Water region to calculate the hash for.
+ */
+int CalculateWaterRegionPatchHash(const WaterRegionPatchDesc &water_region_patch)
+{
+	return water_region_patch.label | GetWaterRegionIndex(water_region_patch) << 8;
 }
 
 /**
