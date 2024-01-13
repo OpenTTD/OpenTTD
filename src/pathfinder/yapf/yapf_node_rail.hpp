@@ -142,7 +142,7 @@ struct CYapfRailNodeT
 		if (parent == nullptr) {
 			m_num_signals_passed      = 0;
 			flags_u.m_inherited_flags = 0;
-			m_last_red_signal_type    = SIGTYPE_NORMAL;
+			m_last_red_signal_type    = SIGTYPE_BLOCK;
 			/* We use PBS as initial signal type because if we are in
 			 * a PBS section and need to route, i.e. we're at a safe
 			 * waiting point of a station, we need to account for the
