@@ -390,9 +390,14 @@ struct GameOptionsWindow : Window {
 		this->LowerWidget(widget);
 		GameOptionsWindow::active_tab = widget;
 
-		int pane = 0;
-		if (widget == WID_GO_TAB_GRAPHICS) pane = 1;
-		else if (widget == WID_GO_TAB_SOUND) pane = 2;
+		int pane;
+		switch (widget) {
+			case WID_GO_TAB_GENERAL: pane = 0; break;
+			case WID_GO_TAB_GRAPHICS: pane = 1; break;
+			case WID_GO_TAB_SOUND: pane = 2; break;
+			default: NOT_REACHED();
+		}
+
 		this->GetWidget<NWidgetStacked>(WID_GO_TAB_SELECTION)->SetDisplayedPlane(pane);
 		this->SetDirty();
 	}
