@@ -254,11 +254,13 @@ Point Layouter::GetCharPosition(std::string_view::const_iterator ch) const
 	/* Scan all runs until we've found our code point index. */
 	for (int run_index = 0; run_index < line->CountRuns(); run_index++) {
 		const ParagraphLayouter::VisualRun &run = line->GetVisualRun(run_index);
+		const auto &positions = run.GetPositions();
+		const auto &charmap = run.GetGlyphToCharMap();
 
 		for (int i = 0; i < run.GetGlyphCount(); i++) {
 			/* Matching glyph? Return position. */
-			if ((size_t)run.GetGlyphToCharMap()[i] == index) {
-				Point p = { (int)run.GetPositions()[i * 2], (int)run.GetPositions()[i * 2 + 1] };
+			if ((size_t)charmap[i] == index) {
+				Point p = { (int)positions[i * 2], (int)positions[i * 2 + 1] };
 				return p;
 			}
 		}
@@ -281,17 +283,20 @@ ptrdiff_t Layouter::GetCharAtPosition(int x, size_t line_index) const
 
 	for (int run_index = 0; run_index < line->CountRuns(); run_index++) {
 		const ParagraphLayouter::VisualRun &run = line->GetVisualRun(run_index);
+		const auto &glyphs = run.GetGlyphs();
+		const auto &positions = run.GetPositions();
+		const auto &charmap = run.GetGlyphToCharMap();
 
 		for (int i = 0; i < run.GetGlyphCount(); i++) {
 			/* Not a valid glyph (empty). */
-			if (run.GetGlyphs()[i] == 0xFFFF) continue;
+			if (glyphs[i] == 0xFFFF) continue;
 
-			int begin_x = (int)run.GetPositions()[i * 2];
-			int end_x   = (int)run.GetPositions()[i * 2 + 2];
+			int begin_x = (int)positions[i * 2];
+			int end_x   = (int)positions[i * 2 + 2];
 
 			if (IsInsideMM(x, begin_x, end_x)) {
 				/* Found our glyph, now convert to UTF-8 string index. */
-				size_t index = run.GetGlyphToCharMap()[i];
+				size_t index = charmap[i];
 
 				size_t cur_idx = 0;
 				for (auto str = this->string.begin(); str != this->string.end();) {

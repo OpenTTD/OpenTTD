@@ -579,6 +579,8 @@ static int DrawLayoutLine(const ParagraphLayouter::Line &line, int y, int left, 
 	bool draw_shadow = false;
 	for (int run_index = 0; run_index < line.CountRuns(); run_index++) {
 		const ParagraphLayouter::VisualRun &run = line.GetVisualRun(run_index);
+		const auto &glyphs = run.GetGlyphs();
+		const auto &positions = run.GetPositions();
 		const Font *f = run.GetFont();
 
 		FontCache *fc = f->fc;
@@ -592,14 +594,14 @@ static int DrawLayoutLine(const ParagraphLayouter::Line &line, int y, int left, 
 		draw_shadow = fc->GetDrawGlyphShadow() && (colour & TC_NO_SHADE) == 0 && colour != TC_BLACK;
 
 		for (int i = 0; i < run.GetGlyphCount(); i++) {
-			GlyphID glyph = run.GetGlyphs()[i];
+			GlyphID glyph = glyphs[i];
 
 			/* Not a valid glyph (empty) */
 			if (glyph == 0xFFFF) continue;
 
-			int begin_x = (int)run.GetPositions()[i * 2]     + left - offset_x;
-			int end_x   = (int)run.GetPositions()[i * 2 + 2] + left - offset_x  - 1;
-			int top     = (int)run.GetPositions()[i * 2 + 1] + y;
+			int begin_x = (int)positions[i * 2]     + left - offset_x;
+			int end_x   = (int)positions[i * 2 + 2] + left - offset_x  - 1;
+			int top     = (int)positions[i * 2 + 1] + y;
 
 			/* Truncated away. */
 			if (truncation && (begin_x < min_x || end_x > max_x)) continue;
