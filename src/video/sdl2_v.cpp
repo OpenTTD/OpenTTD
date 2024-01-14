@@ -665,7 +665,7 @@ bool VideoDriver_SDL_Base::ToggleFullscreen(bool fullscreen)
 	if (fullscreen) {
 		/* Find fullscreen window size */
 		SDL_DisplayMode dm;
-		if (SDL_GetCurrentDisplayMode(0, &dm) < 0) {
+		if (SDL_GetCurrentDisplayMode(SDL_GetWindowDisplayIndex(this->sdl_window), &dm) < 0) {
 			Debug(driver, 0, "SDL_GetCurrentDisplayMode() failed: {}", SDL_GetError());
 		} else {
 			SDL_SetWindowSize(this->sdl_window, dm.w, dm.h);
