@@ -106,7 +106,7 @@ void IConsolePrint(TextColour colour_code, const std::string &string)
 
 	/* Create a copy of the string, strip it of colours and invalid
 	 * characters and (when applicable) assign it to the console buffer */
-	std::string str = StrMakeValid(string);
+	std::string str = StrMakeValid(string, SVS_NONE);
 
 	if (_network_dedicated) {
 		NetworkAdminConsole("console", str);
