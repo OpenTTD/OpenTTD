@@ -43,25 +43,38 @@ void ShowHeightmapLoad();
 /* misc_gui.cpp */
 void ShowLandInfo(TileIndex tile);
 void ShowAboutWindow();
-void ShowBuildTreesToolbar();
-void ShowTownDirectory();
-void ShowIndustryDirectory();
-void ShowIndustryCargoesWindow();
-void ShowSubsidiesList();
-void ShowGoalsList(CompanyID company);
-void ShowGoalQuestion(uint16_t id, byte type, uint32_t button_mask, const std::string &question);
-void ShowStoryBook(CompanyID company, uint16_t page_id = INVALID_STORY_PAGE);
-
 void ShowEstimatedCostOrIncome(Money cost, int x, int y);
 
+/* tree_gui.cpp */
+void ShowBuildTreesToolbar();
+
+/* town_gui.cpp */
+void ShowTownDirectory();
+void ShowFoundTownWindow();
+
+/* industry_gui.cpp */
+void ShowIndustryDirectory();
+void ShowIndustryCargoesWindow();
+void ShowBuildIndustryWindow();
+
+/* subsidy_gui.cpp */
+void ShowSubsidiesList();
+
+/* goal_gui.cpp */
+void ShowGoalsList(CompanyID company);
+void ShowGoalQuestion(uint16_t id, byte type, uint32_t button_mask, const std::string &question);
+
+/* story_gui.cpp */
+void ShowStoryBook(CompanyID company, uint16_t page_id = INVALID_STORY_PAGE);
+
+/* viewport_gui.cpp */
 void ShowExtraViewportWindow(TileIndex tile = INVALID_TILE);
 void ShowExtraViewportWindowForTileUnderCursor();
 
 /* bridge_gui.cpp */
 void ShowBuildBridgeWindow(TileIndex start, TileIndex end, TransportType transport_type, byte bridge_type);
 
-void ShowBuildIndustryWindow();
-void ShowFoundTownWindow();
+/* music_gui.cpp */
 void ShowMusicWindow();
 
 #endif /* GUI_H */
