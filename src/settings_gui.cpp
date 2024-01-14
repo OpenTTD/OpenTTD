@@ -1861,7 +1861,6 @@ static SettingsContainer &GetSettingsTree()
 				construction->Add(new SettingEntry("gui.default_rail_type"));
 				construction->Add(new SettingEntry("gui.semaphore_build_before"));
 				construction->Add(new SettingEntry("gui.signal_gui_mode"));
-				construction->Add(new SettingEntry("gui.cycle_signal_types"));
 				construction->Add(new SettingEntry("gui.drag_signals_fixed_distance"));
 				construction->Add(new SettingEntry("gui.auto_remove_signals"));
 			}
