@@ -1779,6 +1779,10 @@ bool ToggleFullScreen(bool fs)
 void SortResolutions()
 {
 	std::sort(_resolutions.begin(), _resolutions.end());
+
+	/* Remove any duplicates from the list. */
+	auto last = std::unique(_resolutions.begin(), _resolutions.end());
+	_resolutions.erase(last, _resolutions.end());
 }
 
 /**
