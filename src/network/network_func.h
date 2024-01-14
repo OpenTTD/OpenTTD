@@ -47,7 +47,6 @@ void NetworkDisconnect(bool close_admins = true);
 void NetworkGameLoop();
 void NetworkBackgroundLoop();
 std::string_view ParseFullConnectionString(const std::string &connection_string, uint16_t &port, CompanyID *company_id = nullptr);
-void NetworkStartDebugLog(const std::string &connection_string);
 void NetworkPopulateCompanyStats(NetworkCompanyStats *stats);
 
 void NetworkUpdateClientInfo(ClientID client_id);

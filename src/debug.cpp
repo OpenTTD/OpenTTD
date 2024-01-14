@@ -22,7 +22,6 @@
 #include "3rdparty/fmt/chrono.h"
 
 #include "network/network_admin.h"
-SOCKET _debug_socket = INVALID_SOCKET;
 
 #include "safeguards.h"
 
@@ -111,18 +110,6 @@ void DumpDebugFacilityNames(std::back_insert_iterator<std::string> &output_itera
  */
 void DebugPrint(const char *level, const std::string &message)
 {
-	if (_debug_socket != INVALID_SOCKET) {
-		std::string msg = fmt::format("{}dbg: [{}] {}\n", GetLogPrefix(), level, message);
-
-		/* Prevent sending a message concurrently, as that might cause interleaved messages. */
-		static std::mutex _debug_socket_mutex;
-		std::lock_guard<std::mutex> lock(_debug_socket_mutex);
-
-		/* Sending out an error when this fails would be nice, however... the error
-		 * would have to be send over this failing socket which won't work. */
-		send(_debug_socket, msg.c_str(), (int)msg.size(), 0);
-		return;
-	}
 	if (strcmp(level, "desync") == 0) {
 		static FILE *f = FioFOpenFile("commands-out.log", "wb", AUTOSAVE_DIR);
 		if (f == nullptr) return;

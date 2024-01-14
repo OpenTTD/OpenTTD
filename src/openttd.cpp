@@ -169,7 +169,6 @@ static void ShowHelp()
 		"  -p password         = Password to join server\n"
 		"  -P password         = Password to join company\n"
 		"  -D [host][:port]    = Start dedicated server\n"
-		"  -l host[:port]      = Redirect Debug()\n"
 #if !defined(_WIN32)
 		"  -f                  = Fork into the background (dedicated only)\n"
 #endif
@@ -489,7 +488,6 @@ static const OptionData _options[] = {
 	 GETOPT_SHORT_VALUE('b'),
 	GETOPT_SHORT_OPTVAL('D'),
 	 GETOPT_SHORT_VALUE('n'),
-	 GETOPT_SHORT_VALUE('l'),
 	 GETOPT_SHORT_VALUE('p'),
 	 GETOPT_SHORT_VALUE('P'),
 #if !defined(_WIN32)
@@ -528,7 +526,6 @@ int openttd_main(int argc, char *argv[])
 	Dimension resolution = {0, 0};
 	std::unique_ptr<AfterNewGRFScan> scanner(new AfterNewGRFScan());
 	bool dedicated = false;
-	char *debuglog_conn = nullptr;
 	bool only_local_path = false;
 
 	extern bool _dedicated_forks;
@@ -564,9 +561,6 @@ int openttd_main(int argc, char *argv[])
 		case 'f': _dedicated_forks = true; break;
 		case 'n':
 			scanner->connection_string = mgo.opt; // host:port#company parameter
-			break;
-		case 'l':
-			debuglog_conn = mgo.opt;
 			break;
 		case 'p':
 			scanner->join_server_password = mgo.opt;
@@ -761,10 +755,6 @@ int openttd_main(int argc, char *argv[])
 	AdjustGUIZoom(false);
 
 	NetworkStartUp(); // initialize network-core
-
-	if (debuglog_conn != nullptr && _network_available) {
-		NetworkStartDebugLog(debuglog_conn);
-	}
 
 	if (!HandleBootstrap()) {
 		ShutdownGame();

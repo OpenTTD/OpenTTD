@@ -1218,32 +1218,6 @@ static void NetworkGenerateServerId()
 	_settings_client.network.network_id = GenerateUid("OpenTTD Server ID");
 }
 
-class TCPNetworkDebugConnecter : TCPConnecter {
-private:
-	std::string connection_string;
-
-public:
-	TCPNetworkDebugConnecter(const std::string &connection_string) : TCPConnecter(connection_string, NETWORK_DEFAULT_DEBUGLOG_PORT), connection_string(connection_string) {}
-
-	void OnFailure() override
-	{
-		Debug(net, 0, "Failed to open connection to {} for redirecting Debug()", this->connection_string);
-	}
-
-	void OnConnect(SOCKET s) override
-	{
-		Debug(net, 3, "Redirecting Debug() to {}", this->connection_string);
-
-		extern SOCKET _debug_socket;
-		_debug_socket = s;
-	}
-};
-
-void NetworkStartDebugLog(const std::string &connection_string)
-{
-	new TCPNetworkDebugConnecter(connection_string);
-}
-
 /** This tries to launch the network for a given OS */
 void NetworkStartUp()
 {
