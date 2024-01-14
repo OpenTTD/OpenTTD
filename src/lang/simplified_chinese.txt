@@ -350,7 +350,7 @@ STR_SORT_BY_CARGO_CAPACITY                                      :运载能力
 STR_SORT_BY_RANGE                                               :航行距离
 STR_SORT_BY_POPULATION                                          :人口
 STR_SORT_BY_RATING                                              :评价
-STR_SORT_BY_NUM_VEHICLES                                        :交通工具数量
+STR_SORT_BY_NUM_VEHICLES                                        :载具数量
 STR_SORT_BY_TOTAL_PROFIT_LAST_YEAR                              :去年总利润
 STR_SORT_BY_TOTAL_PROFIT_THIS_YEAR                              :今年总利润
 STR_SORT_BY_AVERAGE_PROFIT_LAST_YEAR                            :去年平均利润
@@ -1325,7 +1325,7 @@ STR_CONFIG_SETTING_PERCENTAGE                                   :{COMMA}%
 STR_CONFIG_SETTING_ROAD_VEHICLE_SLOPE_STEEPNESS                 :汽车斜坡坡度: {STRING}
 STR_CONFIG_SETTING_ROAD_VEHICLE_SLOPE_STEEPNESS_HELPTEXT        :设置对汽车而言，一格斜坡的坡度大小。数值越高，坡度越大，汽车越难爬上斜坡。
 
-STR_CONFIG_SETTING_FORBID_90_DEG                                :禁止列车 90 度转弯：{STRING}
+STR_CONFIG_SETTING_FORBID_90_DEG                                :禁止列车直角转向：{STRING}
 STR_CONFIG_SETTING_FORBID_90_DEG_HELPTEXT                       :当水平方向轨道与垂直方向轨道交叉时，没有采用45度的轨道组合连接，而是采用轨道90度直接连接时，列车通过时需要90度转弯，当本设置”打开“时，将禁止火车90度转弯。
 
 STR_CONFIG_SETTING_DISTANT_JOIN_STATIONS                        :允许非毗邻站台合并：{STRING}
@@ -1344,7 +1344,7 @@ STR_CONFIG_SETTING_MAX_TUNNEL_LENGTH                            :隧道最大长
 STR_CONFIG_SETTING_MAX_TUNNEL_LENGTH_HELPTEXT                   :建设隧道时允许的最大长度
 
 STR_CONFIG_SETTING_RAW_INDUSTRY_CONSTRUCTION_METHOD             :原料工业建设方式： {STRING}
-STR_CONFIG_SETTING_RAW_INDUSTRY_CONSTRUCTION_METHOD_HELPTEXT    :建立重工业企业的的设定. '禁止'表示不能建立; '勘探'表示可以建立但是只能在地图上一随机处, 并可能会失败; '像别的工业一样'表示采矿业也能像其它加工业那样可以随意在任何地方建立.
+STR_CONFIG_SETTING_RAW_INDUSTRY_CONSTRUCTION_METHOD_HELPTEXT    :设定原料工业的建造方式。“禁止”表示不能建造；“勘探”表示可以建立但是只能在地图上一随机处，并可能会失败；“同其他工业”表示可以和随意建造。
 ###length 3
 STR_CONFIG_SETTING_RAW_INDUSTRY_CONSTRUCTION_METHOD_NONE        :不允许
 STR_CONFIG_SETTING_RAW_INDUSTRY_CONSTRUCTION_METHOD_NORMAL      :同其他工业
@@ -1911,7 +1911,7 @@ STR_CONFIG_SETTING_TOWN_CARGOGENMODE_ORIGINAL                   :四倍（原版
 STR_CONFIG_SETTING_TOWN_CARGOGENMODE_BITCOUNT                   :线性
 
 STR_CONFIG_SETTING_EXTRA_TREE_PLACEMENT                         :树木自动生长： {STRING}
-STR_CONFIG_SETTING_EXTRA_TREE_PLACEMENT_HELPTEXT                :控制游戏中数目的随机生长，这将影响依赖树木的工业，比如木材厂
+STR_CONFIG_SETTING_EXTRA_TREE_PLACEMENT_HELPTEXT                :控制游戏内树木的生长。此选项可能会影响一些依赖树木的工业，例如伐木场。
 ###length 4
 STR_CONFIG_SETTING_EXTRA_TREE_PLACEMENT_NO_SPREAD               :生长但不扩散 {RED}(损坏伐木场)
 STR_CONFIG_SETTING_EXTRA_TREE_PLACEMENT_SPREAD_RAINFOREST       :仅在雨林扩散
@@ -2826,7 +2826,7 @@ STR_ROAD_TOOLBAR_TOOLTIP_TOGGLE_BUILD_REMOVE_FOR_TRAMWAYS       :{BLACK}建设/�
 STR_ROAD_TOOLBAR_TOOLTIP_CONVERT_ROAD                           :{BLACK}转换/升级 公路类型。按住 Shift 键显示预计费用。
 STR_ROAD_TOOLBAR_TOOLTIP_CONVERT_TRAM                           :转换/升级 电车道类型。按住 Shift 键显示预计费用。
 
-STR_ROAD_NAME_ROAD                                              :路
+STR_ROAD_NAME_ROAD                                              :公路
 STR_ROAD_NAME_TRAM                                              :电车轨道
 
 # Road depot construction window
@@ -3017,7 +3017,7 @@ STR_LAND_AREA_INFORMATION_RAIL_OWNER                            :{BLACK}铁路�
 STR_LAND_AREA_INFORMATION_LOCAL_AUTHORITY                       :{BLACK}地方政府：{LTBLUE}{STRING}
 STR_LAND_AREA_INFORMATION_LOCAL_AUTHORITY_NONE                  :没有
 STR_LAND_AREA_INFORMATION_LANDINFO_COORDS                       :{BLACK}坐标： {LTBLUE}{NUM} × {NUM} × {NUM} ({STRING})
-STR_LAND_AREA_INFORMATION_BUILD_DATE                            :{BLACK}建造时间：{LTBLUE}{DATE_LONG}
+STR_LAND_AREA_INFORMATION_BUILD_DATE                            :{BLACK}建造/翻新于：{LTBLUE}{DATE_LONG}
 STR_LAND_AREA_INFORMATION_STATION_CLASS                         :{BLACK}车站分类: {LTBLUE}{STRING}
 STR_LAND_AREA_INFORMATION_STATION_TYPE                          :{BLACK}车站类型: {LTBLUE}{STRING}
 STR_LAND_AREA_INFORMATION_AIRPORT_CLASS                         :{BLACK}飞机场分类: {LTBLUE}{STRING}
@@ -3246,7 +3246,7 @@ STR_MAPGEN_DESERT_COVERAGE_TEXT                                 :{BLACK}{NUM}%
 STR_MAPGEN_TERRAIN_TYPE                                         :{BLACK}地形特点：
 STR_MAPGEN_SEA_LEVEL                                            :{BLACK}海洋面积：
 STR_MAPGEN_SEA_LEVEL_TOOLTIP                                    :{BLACK}选择海洋覆盖率
-STR_MAPGEN_QUANTITY_OF_RIVERS                                   :{BLACK}河流数量:
+STR_MAPGEN_QUANTITY_OF_RIVERS                                   :{BLACK}河流数量：
 STR_MAPGEN_SMOOTHNESS                                           :{BLACK}平滑程度：
 STR_MAPGEN_VARIETY                                              :{BLACK}多样地形：
 STR_MAPGEN_GENERATE                                             :{WHITE}生成
@@ -3854,7 +3854,7 @@ STR_COMPANY_INFRASTRUCTURE_VIEW_CANALS                          :{WHITE}运河
 STR_COMPANY_INFRASTRUCTURE_VIEW_STATION_SECT                    :{GOLD}站台：
 STR_COMPANY_INFRASTRUCTURE_VIEW_STATIONS                        :{WHITE}车站
 STR_COMPANY_INFRASTRUCTURE_VIEW_AIRPORTS                        :{WHITE}机场
-STR_COMPANY_INFRASTRUCTURE_VIEW_TOTAL                           :{WHITE}每年{CURRENCY_LONG}
+STR_COMPANY_INFRASTRUCTURE_VIEW_TOTAL                           :{WHITE}{CURRENCY_LONG}/年
 
 # Industry directory
 STR_INDUSTRY_DIRECTORY_CAPTION                                  :{WHITE}工业设施
@@ -5625,7 +5625,7 @@ STR_VEHICLE_NAME_AIRCRAFT_POWERNAUT_HELICOPTER                  :Powernaut 直�
 # Formatting of some strings
 STR_FORMAT_DATE_TINY                                            :{ZEROFILL_NUM}-{ZEROFILL_NUM}-{NUM}
 STR_FORMAT_DATE_SHORT                                           :{STRING} {NUM}
-STR_FORMAT_DATE_LONG                                            :{2:NUM}年 {1:STRING}月 {0:STRING}日
+STR_FORMAT_DATE_LONG                                            :{2:NUM} 年 {1:STRING} 月 {0:STRING} 日
 STR_FORMAT_DATE_ISO                                             :{2:NUM}-{1:ZEROFILL_NUM}-{0:ZEROFILL_NUM}
 
 STR_FORMAT_COMPANY_NUM                                          :(公司 {COMMA})

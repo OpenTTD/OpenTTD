@@ -2727,7 +2727,7 @@ STR_RAIL_TOOLBAR_TOOLTIP_BUILD_AUTORAIL                         :{BLACK}자동�
 STR_RAIL_TOOLBAR_TOOLTIP_BUILD_TRAIN_DEPOT_FOR_BUILDING         :{BLACK}차량기지를 건설합니다. 차량을 구입하거나 점검을 할 수 있습니다. SHIFT 키를 누른 채로 사용하면 예상 비용을 볼 수 있습니다
 STR_RAIL_TOOLBAR_TOOLTIP_CONVERT_RAIL_TO_WAYPOINT               :{BLACK}선로에 경유지를 설치합니다. CTRL 키를 사용하면 같은 이름의 경유지를 서로 떨어진 곳에 지을 수 있습니다. SHIFT 키를 누른 채로 사용하면 예상 비용을 볼 수 있습니다
 STR_RAIL_TOOLBAR_TOOLTIP_BUILD_RAILROAD_STATION                 :{BLACK}철도역을 짓습니다. CTRL 키를 사용하면 같은 이름의 역을 서로 떨어진 곳에 지을 수 있습니다. SHIFT 키를 누른 채로 사용하면 예상 비용을 볼 수 있습니다
-STR_RAIL_TOOLBAR_TOOLTIP_BUILD_RAILROAD_SIGNALS                 :{BLACK}신호기를 설치합니다. CTRL 키를 누르면 구식/전자식으로 전환합니다.{}선로를 따라 드래그해서 설치할 수 있습니다. CTRL 키를 누른 채로 드래그하면 다음 분기점이나 다음 신호기까지 신호기를 설치합니다.{}CTRL 키를 누른 채 클릭하면 신호기 선택 창을 전환합니다. SHIFT 키를 누른 채로 사용하면 예상 비용을 볼 수 있습니다
+STR_RAIL_TOOLBAR_TOOLTIP_BUILD_RAILROAD_SIGNALS                 :{BLACK}선로에 신호기를 설치합니다. CTRL 키를 누르면 구식/전자식으로 전환합니다.{}선로를 따라 드래그해서 설치할 수 있습니다. CTRL 키를 누른 채로 드래그하면 다음 분기점이나 다음 신호기까지 신호기를 설치합니다.{}CTRL 키를 누른 채 클릭하면 신호기 선택 창을 전환합니다. SHIFT 키를 누른 채로 사용하면 예상 비용을 볼 수 있습니다
 STR_RAIL_TOOLBAR_TOOLTIP_BUILD_RAILROAD_BRIDGE                  :{BLACK}철교를 짓습니다. SHIFT 키를 누른 채로 사용하면 예상 비용을 볼 수 있습니다
 STR_RAIL_TOOLBAR_TOOLTIP_BUILD_RAILROAD_TUNNEL                  :{BLACK}터널을 짓습니다. SHIFT 키를 누른 채로 사용하면 예상 비용을 볼 수 있습니다
 STR_RAIL_TOOLBAR_TOOLTIP_TOGGLE_BUILD_REMOVE_FOR                :{BLACK}선로, 신호기, 경유지, 역 등의 철도 시설 건설/철거 모드를 켜거나 끌 수 있습니다. CTRL 키를 누르고 있어도 선로에서 경유지와 역을 제거할 수 있습니다
