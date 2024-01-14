@@ -24,7 +24,6 @@ static const uint16_t NETWORK_TURN_SERVER_PORT        = 3974;           ///< The
 static const uint16_t NETWORK_CONTENT_SERVER_PORT     = 3978;           ///< The default port of the content server (TCP)
 static const uint16_t NETWORK_DEFAULT_PORT            = 3979;           ///< The default port of the game server (TCP & UDP)
 static const uint16_t NETWORK_ADMIN_PORT              = 3977;           ///< The default port for admin network
-static const uint16_t NETWORK_DEFAULT_DEBUGLOG_PORT   = 3982;           ///< The default port debug-log is sent to (TCP)
 
 static const uint16_t UDP_MTU                         = 1460;           ///< Number of bytes we can pack in a single UDP packet
 
