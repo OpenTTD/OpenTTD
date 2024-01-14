@@ -258,7 +258,7 @@ public:
 
 	ViewportData *viewport;          ///< Pointer to viewport data, if present.
 	const NWidgetCore *nested_focus; ///< Currently focused nested widget, or \c nullptr if no nested widget has focus.
-	std::map<int, QueryString*> querystrings; ///< QueryString associated to WWT_EDITBOX widgets.
+	std::map<WidgetID, QueryString*> querystrings; ///< QueryString associated to WWT_EDITBOX widgets.
 	std::unique_ptr<NWidgetBase> nested_root; ///< Root of the nested tree.
 	WidgetLookup widget_lookup; ///< Indexed access to the nested widget tree. Do not access directly, use #Window::GetWidget() instead.
 	NWidgetStacked *shade_select;    ///< Selection widget (#NWID_SELECTION) to use for shading the window. If \c nullptr, window cannot shade.

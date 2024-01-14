@@ -42,7 +42,7 @@ struct OskWindow : public Window {
 	std::string orig_str;  ///< Original string.
 	bool shift;            ///< Is the shift effectively pressed?
 
-	OskWindow(WindowDesc *desc, Window *parent, int button) : Window(desc)
+	OskWindow(WindowDesc *desc, Window *parent, WidgetID button) : Window(desc)
 	{
 		this->parent = parent;
 		assert(parent != nullptr);
