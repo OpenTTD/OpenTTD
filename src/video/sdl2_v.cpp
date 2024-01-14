@@ -59,13 +59,15 @@ static void FindResolutions()
 {
 	_resolutions.clear();
 
-	for (int i = 0; i < SDL_GetNumDisplayModes(0); i++) {
-		SDL_DisplayMode mode;
-		SDL_GetDisplayMode(0, i, &mode);
+	for (int display = 0; display < SDL_GetNumVideoDisplays(); display++) {
+		for (int i = 0; i < SDL_GetNumDisplayModes(display); i++) {
+			SDL_DisplayMode mode;
+			SDL_GetDisplayMode(display, i, &mode);
 
-		if (mode.w < 640 || mode.h < 480) continue;
-		if (std::find(_resolutions.begin(), _resolutions.end(), Dimension(mode.w, mode.h)) != _resolutions.end()) continue;
-		_resolutions.emplace_back(mode.w, mode.h);
+			if (mode.w < 640 || mode.h < 480) continue;
+			if (std::find(_resolutions.begin(), _resolutions.end(), Dimension(mode.w, mode.h)) != _resolutions.end()) continue;
+			_resolutions.emplace_back(mode.w, mode.h);
+		}
 	}
 
 	/* We have found no resolutions, show the default list */
