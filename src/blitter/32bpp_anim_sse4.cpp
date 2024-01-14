@@ -7,10 +7,10 @@
 
 /** @file 32bpp_anim_sse4.cpp Implementation of the SSE4 32 bpp blitter with animation support. */
 
-#include "palette_func.h"
 #ifdef WITH_SSE
 
 #include "../stdafx.h"
+#include "../palette_func.h"
 #include "../video/video_driver.hpp"
 #include "../table/sprites.h"
 #include "32bpp_anim_sse4.hpp"

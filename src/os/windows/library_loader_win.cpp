@@ -12,6 +12,7 @@
 #include <windows.h>
 
 #include "../../library_loader.h"
+#include "../../3rdparty/fmt/format.h"
 
 #include "../../safeguards.h"
 
