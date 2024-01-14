@@ -450,7 +450,14 @@ struct GameOptionsWindow : Window {
 				break;
 			}
 
-			default: {
+			case WID_GO_CURRENCY_DROPDOWN:
+			case WID_GO_AUTOSAVE_DROPDOWN:
+			case WID_GO_LANG_DROPDOWN:
+			case WID_GO_RESOLUTION_DROPDOWN:
+			case WID_GO_REFRESH_RATE_DROPDOWN:
+			case WID_GO_BASE_GRF_DROPDOWN:
+			case WID_GO_BASE_SFX_DROPDOWN:
+			case WID_GO_BASE_MUSIC_DROPDOWN: {
 				int selected;
 				size->width = std::max(size->width, GetDropDownListDimension(this->BuildDropDownList(widget, &selected)).width + padding.width);
 				break;
@@ -623,7 +630,14 @@ struct GameOptionsWindow : Window {
 				OpenBrowser(BaseMusic::GetUsedSet()->url);
 				break;
 
-			default: {
+			case WID_GO_CURRENCY_DROPDOWN:
+			case WID_GO_AUTOSAVE_DROPDOWN:
+			case WID_GO_LANG_DROPDOWN:
+			case WID_GO_RESOLUTION_DROPDOWN:
+			case WID_GO_REFRESH_RATE_DROPDOWN:
+			case WID_GO_BASE_GRF_DROPDOWN:
+			case WID_GO_BASE_SFX_DROPDOWN:
+			case WID_GO_BASE_MUSIC_DROPDOWN: {
 				int selected;
 				DropDownList list = this->BuildDropDownList(widget, &selected);
 				if (!list.empty()) {
