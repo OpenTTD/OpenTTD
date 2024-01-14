@@ -51,6 +51,6 @@ extern const StringID _engine_sort_listing[][12];
 extern EngList_SortTypeFunction * const _engine_sort_functions[][11];
 
 uint GetEngineListHeight(VehicleType type);
-void DisplayVehicleSortDropDown(Window *w, VehicleType vehicle_type, int selected, int button);
+void DisplayVehicleSortDropDown(Window *w, VehicleType vehicle_type, int selected, WidgetID button);
 
 #endif /* ENGINE_GUI_H */

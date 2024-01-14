@@ -160,7 +160,7 @@ struct HelpWindow : public Window {
 	}
 
 private:
-	void EnableTextfileButton(std::string_view filename, int button_widget)
+	void EnableTextfileButton(std::string_view filename, WidgetID button_widget)
 	{
 		this->GetWidget<NWidgetLeaf>(button_widget)->SetDisabled(!FindGameManualFilePath(filename).has_value());
 	}

@@ -1095,7 +1095,7 @@ void DrawEngineList(VehicleType type, const Rect &r, const GUIEngineList &eng_li
  * @param selected Currently selected sort criterium.
  * @param button Widget button.
  */
-void DisplayVehicleSortDropDown(Window *w, VehicleType vehicle_type, int selected, int button)
+void DisplayVehicleSortDropDown(Window *w, VehicleType vehicle_type, int selected, WidgetID button)
 {
 	uint32_t hidden_mask = 0;
 	/* Disable sorting by power or tractive effort when the original acceleration model for road vehicles is being used. */
