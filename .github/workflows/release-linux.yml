@@ -119,6 +119,22 @@ jobs:
           # EOF
         echo "::endgroup::"
 
+        echo "::group::Install video drivers"
+        # These video libs are to make sure the SDL version of vcpkg adds
+        # video-support; these libraries are not added to the resulting
+        # binary, but the headers are used to enable them in SDL.
+        yum install -y \
+          libX11-devel \
+          libXcursor-devel \
+          libXext-devel \
+          libXfixes-devel \
+          libXi-devel \
+          libxkbcommon-devel \
+          libXrandr-devel \
+          libXScrnSaver-devel \
+          # EOF
+        echo "::endgroup::"
+
         # We use vcpkg for our dependencies, to get more up-to-date version.
         echo "::group::Install vcpkg and dependencies"
 
