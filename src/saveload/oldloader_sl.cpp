@@ -43,8 +43,6 @@ static bool _read_ttdpatch_flags;    ///< Have we (tried to) read TTDPatch extra
 static uint16_t _old_extra_chunk_nums; ///< Number of extra TTDPatch chunks
 static byte _old_vehicle_multiplier; ///< TTDPatch vehicle multiplier
 
-static uint8_t *_old_map3;
-
 void FixOldMapArray()
 {
 	/* TTO/TTD/TTDP savegames could have buoys at tile 0
@@ -54,13 +52,6 @@ void FixOldMapArray()
 
 static void FixTTDMapArray()
 {
-	/* _old_map3 is moved to _m::m3 and _m::m4 */
-	for (TileIndex t = 0; t < OLD_MAP_SIZE; t++) {
-		Tile tile(t);
-		tile.m3() = _old_map3[t.base() * 2];
-		tile.m4() = _old_map3[t.base() * 2 + 1];
-	}
-
 	for (TileIndex t = 0; t < OLD_MAP_SIZE; t++) {
 		Tile tile(t);
 		switch (GetTileType(tile)) {
@@ -499,6 +490,13 @@ static uint32_t _old_town_index;
 static uint16_t _old_string_id;
 static uint16_t _old_string_id_2;
 
+static void ClearOldMap3(TileIndex t)
+{
+	Tile tile(t);
+	tile.m3() = 0;
+	tile.m4() = 0;
+}
+
 static void ReadTTDPatchFlags()
 {
 	if (_read_ttdpatch_flags) return;
@@ -513,8 +511,8 @@ static void ReadTTDPatchFlags()
 
 	if (_savegame_type == SGT_TTO) return;
 
-	/* TTDPatch misuses _old_map3 for flags.. read them! */
-	_old_vehicle_multiplier = _old_map3[0];
+	/* TTDPatch misuses old map3 (now m3/m4) for flags.. read them! */
+	_old_vehicle_multiplier = Tile(0).m3();
 	/* Somehow.... there was an error in some savegames, so 0 becomes 1
 	 * and 1 becomes 2. The rest of the values are okay */
 	if (_old_vehicle_multiplier < 2) _old_vehicle_multiplier++;
@@ -528,18 +526,26 @@ static void ReadTTDPatchFlags()
 	 * 1 vehicle   == 128 bytes */
 	_bump_assert_value = (_old_vehicle_multiplier - 1) * 850 * 128;
 
-	for (uint i = 0; i < 17; i++) { // check tile 0, too
-		if (_old_map3[i] != 0) _savegame_type = SGT_TTDP1;
+	/* The first 17 bytes are used by TTDP1, which translates to the first 9 m3s and first 8 m4s. */
+	for (TileIndex i = 0; i <= 8; i++) { // check tile 0, too
+		Tile tile(i);
+		if (tile.m3() != 0 || (i != 8 && tile.m4() != 0)) _savegame_type = SGT_TTDP1;
 	}
 
 	/* Check if we have a modern TTDPatch savegame (has extra data all around) */
-	if (memcmp(&_old_map3[0x1FFFA], "TTDp", 4) == 0) _savegame_type = SGT_TTDP2;
+	Tile ttdp2_header_first(Map::Size() - 3);
+	Tile ttdp2_header_second(Map::Size() - 2);
+	if (ttdp2_header_first.m3() == 'T' && ttdp2_header_first.m4() == 'T' &&
+		ttdp2_header_second.m3() == 'D' && ttdp2_header_second.m4() == 'p') {
+		_savegame_type = SGT_TTDP2;
+	}
 
-	_old_extra_chunk_nums = _old_map3[_savegame_type == SGT_TTDP2 ? 0x1FFFE : 0x2];
+	Tile extra_chunk_tile = Tile(_savegame_type == SGT_TTDP2 ? Map::Size() - 1 : 1);
+	_old_extra_chunk_nums = extra_chunk_tile.m3() | extra_chunk_tile.m4() << 8;
 
 	/* Clean the misused places */
-	for (uint i = 0;       i < 17;      i++) _old_map3[i] = 0;
-	for (uint i = 0x1FE00; i < 0x20000; i++) _old_map3[i] = 0;
+	for (TileIndex i = 0; i < 9; i++) ClearOldMap3(i);
+	for (TileIndex i = TileXY(0, Map::MaxY()); i < Map::Size(); i++) ClearOldMap3(i);
 
 	if (_savegame_type == SGT_TTDP2) Debug(oldloader, 2, "Found TTDPatch game");
 
@@ -1486,9 +1492,10 @@ static bool LoadOldMapPart1(LoadgameState *ls, int)
 	}
 
 	if (_savegame_type != SGT_TTO) {
+		/* old map3 is split into to m3 and m4 */
 		for (uint i = 0; i < OLD_MAP_SIZE; i++) {
-			_old_map3[i * 2] = ReadByte(ls);
-			_old_map3[i * 2 + 1] = ReadByte(ls);
+			Tile(i).m3() = ReadByte(ls);
+			Tile(i).m4() = ReadByte(ls);
 		}
 		for (uint i = 0; i < OLD_MAP_SIZE / 4; i++) {
 			byte b = ReadByte(ls);
@@ -1755,8 +1762,6 @@ bool LoadTTDMain(LoadgameState *ls)
 	_read_ttdpatch_flags = false;
 
 	/* Load the biggest chunk */
-	std::array<byte, OLD_MAP_SIZE * 2> map3;
-	_old_map3 = map3.data();
 	_old_vehicle_names = nullptr;
 	try {
 		if (!LoadChunk(ls, nullptr, main_chunk)) {
