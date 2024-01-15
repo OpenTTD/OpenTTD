@@ -52,8 +52,7 @@ void FixOldMapArray()
 
 static void FixTTDMapArray()
 {
-	for (TileIndex t = 0; t < OLD_MAP_SIZE; t++) {
-		Tile tile(t);
+	for (auto tile : Map::Iterate()) {
 		switch (GetTileType(tile)) {
 			case MP_STATION:
 				tile.m4() = 0; // We do not understand this TTDP station mapping (yet)
@@ -213,8 +212,7 @@ void FixOldVehicles()
 
 static bool FixTTOMapArray()
 {
-	for (TileIndex t = 0; t < OLD_MAP_SIZE; t++) {
-		Tile tile(t);
+	for (auto tile : Map::Iterate()) {
 		TileType tt = GetTileType(tile);
 		if (tt == 11) {
 			/* TTO has a different way of storing monorail.
@@ -1484,25 +1482,23 @@ static bool LoadOldMapPart1(LoadgameState *ls, int)
 		Map::Allocate(OLD_MAP_SIZE, OLD_MAP_SIZE);
 	}
 
-	for (uint i = 0; i < OLD_MAP_SIZE; i++) {
-		Tile(i).m1() = ReadByte(ls);
+	for (auto t : Map::Iterate()) {
+		t.m1() = ReadByte(ls);
 	}
-	for (uint i = 0; i < OLD_MAP_SIZE; i++) {
-		Tile(i).m2() = ReadByte(ls);
+	for (auto t : Map::Iterate()) {
+		t.m2() = ReadByte(ls);
 	}
 
 	if (_savegame_type != SGT_TTO) {
 		/* old map3 is split into to m3 and m4 */
-		for (uint i = 0; i < OLD_MAP_SIZE; i++) {
-			Tile(i).m3() = ReadByte(ls);
-			Tile(i).m4() = ReadByte(ls);
+		for (auto t : Map::Iterate()) {
+			t.m3() = ReadByte(ls);
+			t.m4() = ReadByte(ls);
 		}
-		for (uint i = 0; i < OLD_MAP_SIZE / 4; i++) {
+		auto range = Map::Iterate();
+		for (auto it = range.begin(); it != range.end(); /* nothing. */) {
 			byte b = ReadByte(ls);
-			Tile(i * 4 + 0).m6() = GB(b, 0, 2);
-			Tile(i * 4 + 1).m6() = GB(b, 2, 2);
-			Tile(i * 4 + 2).m6() = GB(b, 4, 2);
-			Tile(i * 4 + 3).m6() = GB(b, 6, 2);
+			for (int i = 0; i < 8; i += 2, ++it) (*it).m6() = GB(b, i, 2);
 		}
 	}
 
@@ -1511,13 +1507,11 @@ static bool LoadOldMapPart1(LoadgameState *ls, int)
 
 static bool LoadOldMapPart2(LoadgameState *ls, int)
 {
-	uint i;
-
-	for (i = 0; i < OLD_MAP_SIZE; i++) {
-		Tile(i).type() = ReadByte(ls);
+	for (auto t : Map::Iterate()) {
+		t.type() = ReadByte(ls);
 	}
-	for (i = 0; i < OLD_MAP_SIZE; i++) {
-		Tile(i).m5() = ReadByte(ls);
+	for (auto t : Map::Iterate()) {
+		t.m5() = ReadByte(ls);
 	}
 
 	return true;
