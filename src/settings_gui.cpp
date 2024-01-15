@@ -573,6 +573,7 @@ struct GameOptionsWindow : Window {
 
 				InitFontCache(false);
 				InitFontCache(true);
+				ClearFontCache();
 				SetupWidgetDimensions();
 				ReInitAllWindows(true);
 				break;
