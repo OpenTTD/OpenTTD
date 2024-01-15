@@ -21,7 +21,7 @@ enum SignalVariant : byte {
 
 /** Type of signal, i.e. how does the signal behave? */
 enum SignalType : byte {
-	SIGTYPE_NORMAL     = 0, ///< normal signal
+	SIGTYPE_BLOCK      = 0, ///< block signal
 	SIGTYPE_ENTRY      = 1, ///< presignal block entry
 	SIGTYPE_EXIT       = 2, ///< presignal block exit
 	SIGTYPE_COMBO      = 3, ///< presignal inter-block

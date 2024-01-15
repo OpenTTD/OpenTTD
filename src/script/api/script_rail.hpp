@@ -64,7 +64,7 @@ public:
 	 */
 	enum SignalType {
 		/* Note: these values represent part of the in-game SignalType enum */
-		SIGNALTYPE_NORMAL        = ::SIGTYPE_NORMAL,     ///< Normal signal.
+		SIGNALTYPE_NORMAL        = ::SIGTYPE_BLOCK,      ///< Block signal.
 		SIGNALTYPE_ENTRY         = ::SIGTYPE_ENTRY,      ///< Entry presignal.
 		SIGNALTYPE_EXIT          = ::SIGTYPE_EXIT,       ///< Exit signal.
 		SIGNALTYPE_COMBO         = ::SIGTYPE_COMBO,      ///< Combo signal.
