@@ -1044,6 +1044,7 @@ STR_GAME_OPTIONS_GUI_SCALE_AUTO_TOOLTIP                         :{BLACK}Marqueu 
 STR_GAME_OPTIONS_GUI_SCALE_BEVELS                               :{BLACK}Escala els bisells
 STR_GAME_OPTIONS_GUI_SCALE_BEVELS_TOOLTIP                       :{BLACK}Marqueu aquesta opció si voleu que s'escalin els bisells segons la mida de la interfície.
 
+
 STR_GAME_OPTIONS_GUI_SCALE_1X                                   :x1
 STR_GAME_OPTIONS_GUI_SCALE_2X                                   :x2
 STR_GAME_OPTIONS_GUI_SCALE_3X                                   :x3

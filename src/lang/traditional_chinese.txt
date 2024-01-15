@@ -1035,6 +1035,7 @@ STR_GAME_OPTIONS_GUI_SCALE_AUTO_TOOLTIP                         :{BLACK}勾選�
 STR_GAME_OPTIONS_GUI_SCALE_BEVELS                               :{BLACK}縮放邊框
 STR_GAME_OPTIONS_GUI_SCALE_BEVELS_TOOLTIP                       :{BLACK}勾選此方框以令邊框隨界面大小而縮放
 
+
 STR_GAME_OPTIONS_GUI_SCALE_1X                                   :1倍
 STR_GAME_OPTIONS_GUI_SCALE_2X                                   :2倍
 STR_GAME_OPTIONS_GUI_SCALE_3X                                   :3倍

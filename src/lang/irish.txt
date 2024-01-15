@@ -982,6 +982,7 @@ STR_GAME_OPTIONS_VIDEO_VSYNC_TOOLTIP                            :{BLACK}Cuir tic
 
 
 
+
 STR_GAME_OPTIONS_GRAPHICS                                       :{BLACK}Grafaicí
 
 STR_GAME_OPTIONS_REFRESH_RATE                                   :{BLACK}Ráta athnuachana na taispeána

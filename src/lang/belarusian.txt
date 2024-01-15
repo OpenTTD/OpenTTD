@@ -1265,6 +1265,7 @@ STR_GAME_OPTIONS_RESOLUTION_OTHER                               :Iншае
 
 
 
+
 STR_GAME_OPTIONS_REFRESH_RATE                                   :{BLACK}Чашчыня абнаўлення экрана
 
 STR_GAME_OPTIONS_BASE_GRF                                       :{BLACK}Набор базавай ґрафікі

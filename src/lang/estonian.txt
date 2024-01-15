@@ -1054,6 +1054,7 @@ STR_GAME_OPTIONS_GUI_SCALE_AUTO_TOOLTIP                         :{BLACK}Märgi s
 STR_GAME_OPTIONS_GUI_SCALE_BEVELS                               :{BLACK}Skaleeri kaldeid
 STR_GAME_OPTIONS_GUI_SCALE_BEVELS_TOOLTIP                       :{BLACK}Skaleeri kaldeid liidese suuruse järgi
 
+
 STR_GAME_OPTIONS_GUI_SCALE_1X                                   :1x
 STR_GAME_OPTIONS_GUI_SCALE_2X                                   :2x
 STR_GAME_OPTIONS_GUI_SCALE_3X                                   :3x

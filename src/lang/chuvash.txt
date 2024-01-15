@@ -504,6 +504,7 @@ STR_GAME_OPTIONS_RESOLUTION_OTHER                               :расна
 
 
 
+
 # Custom currency window
 
 

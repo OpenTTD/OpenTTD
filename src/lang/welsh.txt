@@ -961,6 +961,7 @@ STR_GAME_OPTIONS_GUI_SCALE_AUTO                                 :{BLACK}Awto-gan
 STR_GAME_OPTIONS_GUI_SCALE_AUTO_TOOLTIP                         :{BLACK}Marciwch y blwch hwn i ganfod maint y rhyngwyneb yn awtomatig
 
 
+
 STR_GAME_OPTIONS_GUI_SCALE_1X                                   :1x
 STR_GAME_OPTIONS_GUI_SCALE_2X                                   :2x
 STR_GAME_OPTIONS_GUI_SCALE_3X                                   :3x

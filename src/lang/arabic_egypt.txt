@@ -958,6 +958,7 @@ STR_GAME_OPTIONS_GUI_SCALE_AUTO_TOOLTIP                         :{BLACK}اختر
 
 
 
+
 STR_GAME_OPTIONS_GRAPHICS                                       :{BLACK}الرسومات
 
 STR_GAME_OPTIONS_REFRESH_RATE                                   :{BLACK}معدل تحديث الشاشة

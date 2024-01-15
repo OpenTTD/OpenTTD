@@ -936,6 +936,7 @@ STR_GAME_OPTIONS_RESOLUTION_OTHER                               :друго
 
 
 
+
 STR_GAME_OPTIONS_BASE_GRF                                       :{BLACK}Базов графичен набор
 STR_GAME_OPTIONS_BASE_GRF_TOOLTIP                               :{BLACK}Изберете базов графичен набор
 STR_GAME_OPTIONS_BASE_GRF_DESCRIPTION_TOOLTIP                   :{BLACK}Допълнителна информация за базовия графичен пакет
