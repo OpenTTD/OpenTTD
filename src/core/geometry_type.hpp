@@ -57,13 +57,13 @@ struct RectPadding {
 	 * Get total horizontal padding of RectPadding.
 	 * @return total horizontal padding.
 	 */
-	inline uint Horizontal() const { return this->left + this->right; }
+	constexpr uint Horizontal() const { return this->left + this->right; }
 
 	/**
 	 * Get total vertical padding of RectPadding.
 	 * @return total vertical padding.
 	 */
-	inline uint Vertical() const { return this->top + this->bottom; }
+	constexpr uint Vertical() const { return this->top + this->bottom; }
 };
 
 inline const RectPadding RectPadding::zero{};
