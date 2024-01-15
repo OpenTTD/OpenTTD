@@ -31,6 +31,16 @@ jobs:
     with:
       version: ${{ needs.source.outputs.version }}
 
+  linux-legacy:
+    name: Linux (Legacy)
+    needs: source
+
+    uses: ./.github/workflows/release-linux-legacy.yml
+    secrets: inherit
+
+    with:
+      survey_key: ${{ needs.source.outputs.survey_key }}
+
   linux:
     name: Linux (Generic)
     needs: source
@@ -81,6 +91,7 @@ jobs:
     needs:
     - source
     - docs
+    - linux-legacy
     - linux
     - macos
     - windows
@@ -88,7 +99,7 @@ jobs:
 
     # As windows-store is condition, we need to check ourselves if we need to run.
     # The always() makes sure the rest is always evaluated.
-    if: always() && needs.source.result == 'success' && needs.docs.result == 'success' && needs.linux.result == 'success' && needs.macos.result == 'success' && needs.windows.result == 'success' && (needs.windows-store.result == 'success' || needs.windows-store.result == 'skipped')
+    if: always() && needs.source.result == 'success' && needs.docs.result == 'success' && needs.linux-legacy.result == 'success' && needs.linux.result == 'success' && needs.macos.result == 'success' && needs.windows.result == 'success' && (needs.windows-store.result == 'success' || needs.windows-store.result == 'skipped')
 
     uses: ./.github/workflows/upload-cdn.yml
     secrets: inherit
