@@ -575,6 +575,7 @@ struct GameOptionsWindow : Window {
 				InitFontCache(true);
 				ClearFontCache();
 				SetupWidgetDimensions();
+				UpdateAllVirtCoords();
 				ReInitAllWindows(true);
 				break;
 
