@@ -957,9 +957,9 @@ static const OldChunks _company_chunk[] = {
 	OCL_CNULL( OC_TTD, 1 ), // avail_railtypes
 	OCL_SVAR(   OC_TILE, Company, location_of_HQ ),
 
-	OCL_NULL( 4 ),           // Shares
+	OCL_CNULL( OC_TTD, 4 ), // Shares
 
-	OCL_CNULL( OC_TTD, 8 ), ///< junk at end of chunk
+	OCL_CNULL( OC_TTD, 8 ), // junk at end of chunk
 
 	OCL_END()
 };
