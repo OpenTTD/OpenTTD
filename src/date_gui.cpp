@@ -173,7 +173,7 @@ struct SetDateWindow : Window {
 };
 
 /** Widgets for the date setting window. */
-static const NWidgetPart _nested_set_date_widgets[] = {
+static constexpr NWidgetPart _nested_set_date_widgets[] = {
 	NWidget(NWID_HORIZONTAL),
 		NWidget(WWT_CLOSEBOX, COLOUR_BROWN),
 		NWidget(WWT_CAPTION, COLOUR_BROWN), SetDataTip(STR_DATE_CAPTION, STR_TOOLTIP_WINDOW_TITLE_DRAG_THIS),

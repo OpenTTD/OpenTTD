@@ -186,7 +186,7 @@ public:
 	}
 };
 
-static const NWidgetPart _nested_performance_league_widgets[] = {
+static constexpr NWidgetPart _nested_performance_league_widgets[] = {
 	NWidget(NWID_HORIZONTAL),
 		NWidget(WWT_CLOSEBOX, COLOUR_BROWN),
 		NWidget(WWT_CAPTION, COLOUR_BROWN), SetDataTip(STR_COMPANY_LEAGUE_TABLE_CAPTION, STR_TOOLTIP_WINDOW_TITLE_DRAG_THIS),
@@ -419,7 +419,7 @@ public:
 	}
 };
 
-static const NWidgetPart _nested_script_league_widgets[] = {
+static constexpr NWidgetPart _nested_script_league_widgets[] = {
 	NWidget(NWID_HORIZONTAL),
 		NWidget(WWT_CLOSEBOX, COLOUR_BROWN),
 		NWidget(WWT_CAPTION, COLOUR_BROWN, WID_SLT_CAPTION), SetDataTip(STR_JUST_RAW_STRING, STR_TOOLTIP_WINDOW_TITLE_DRAG_THIS),

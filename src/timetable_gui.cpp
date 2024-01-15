@@ -800,7 +800,7 @@ struct TimetableWindow : Window {
 	}};
 };
 
-static const NWidgetPart _nested_timetable_widgets[] = {
+static constexpr NWidgetPart _nested_timetable_widgets[] = {
 	NWidget(NWID_HORIZONTAL),
 		NWidget(WWT_CLOSEBOX, COLOUR_GREY),
 		NWidget(WWT_CAPTION, COLOUR_GREY, WID_VT_CAPTION), SetDataTip(STR_TIMETABLE_TITLE, STR_TOOLTIP_WINDOW_TITLE_DRAG_THIS),

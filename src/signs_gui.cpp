@@ -356,7 +356,7 @@ struct SignListWindow : Window, SignList {
 	}, SignListGlobalHotkeys};
 };
 
-static const NWidgetPart _nested_sign_list_widgets[] = {
+static constexpr NWidgetPart _nested_sign_list_widgets[] = {
 	NWidget(NWID_HORIZONTAL),
 		NWidget(WWT_CLOSEBOX, COLOUR_BROWN),
 		NWidget(WWT_CAPTION, COLOUR_BROWN, WID_SIL_CAPTION), SetDataTip(STR_SIGN_LIST_CAPTION, STR_TOOLTIP_WINDOW_TITLE_DRAG_THIS),
@@ -530,7 +530,7 @@ struct SignWindow : Window, SignList {
 	}
 };
 
-static const NWidgetPart _nested_query_sign_edit_widgets[] = {
+static constexpr NWidgetPart _nested_query_sign_edit_widgets[] = {
 	NWidget(NWID_HORIZONTAL),
 		NWidget(WWT_CLOSEBOX, COLOUR_GREY),
 		NWidget(WWT_CAPTION, COLOUR_GREY, WID_QES_CAPTION), SetDataTip(STR_JUST_STRING, STR_TOOLTIP_WINDOW_TITLE_DRAG_THIS), SetTextStyle(TC_WHITE),

@@ -318,7 +318,7 @@ static std::unique_ptr<NWidgetBase> MakeSpacebarKeys()
 }
 
 
-static const NWidgetPart _nested_osk_widgets[] = {
+static constexpr NWidgetPart _nested_osk_widgets[] = {
 	NWidget(WWT_CAPTION, COLOUR_GREY, WID_OSK_CAPTION), SetDataTip(STR_JUST_STRING, STR_NULL), SetTextStyle(TC_WHITE),
 	NWidget(WWT_PANEL, COLOUR_GREY),
 		NWidget(WWT_EDITBOX, COLOUR_GREY, WID_OSK_TEXT), SetMinimalSize(252, 12), SetPadding(2, 2, 2, 2),

@@ -125,7 +125,7 @@ public:
 	}
 };
 
-static const NWidgetPart _nested_transparency_widgets[] = {
+static constexpr NWidgetPart _nested_transparency_widgets[] = {
 	NWidget(NWID_HORIZONTAL),
 		NWidget(WWT_CLOSEBOX, COLOUR_DARK_GREEN),
 		NWidget(WWT_CAPTION, COLOUR_DARK_GREEN), SetDataTip(STR_TRANSPARENCY_CAPTION, STR_TOOLTIP_WINDOW_TITLE_DRAG_THIS),

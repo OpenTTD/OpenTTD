@@ -947,7 +947,7 @@ GUIStoryPageElementList::SortFunction * const StoryBookWindow::page_element_sort
 	&PageElementOrderSorter,
 };
 
-static const NWidgetPart _nested_story_book_widgets[] = {
+static constexpr NWidgetPart _nested_story_book_widgets[] = {
 	NWidget(NWID_HORIZONTAL),
 		NWidget(WWT_CLOSEBOX, COLOUR_BROWN),
 		NWidget(WWT_CAPTION, COLOUR_BROWN, WID_SB_CAPTION), SetDataTip(STR_JUST_STRING1, STR_TOOLTIP_WINDOW_TITLE_DRAG_THIS),

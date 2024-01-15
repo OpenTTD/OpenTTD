@@ -372,7 +372,7 @@ static const char * GetAIName(int ai_index)
 }
 
 /** @hideinitializer */
-static const NWidgetPart _framerate_window_widgets[] = {
+static constexpr NWidgetPart _framerate_window_widgets[] = {
 	NWidget(NWID_HORIZONTAL),
 		NWidget(WWT_CLOSEBOX, COLOUR_GREY),
 		NWidget(WWT_CAPTION, COLOUR_GREY, WID_FRW_CAPTION), SetDataTip(STR_FRAMERATE_CAPTION, STR_TOOLTIP_WINDOW_TITLE_DRAG_THIS),
@@ -735,7 +735,7 @@ static WindowDesc _framerate_display_desc(__FILE__, __LINE__,
 
 
 /** @hideinitializer */
-static const NWidgetPart _frametime_graph_window_widgets[] = {
+static constexpr NWidgetPart _frametime_graph_window_widgets[] = {
 	NWidget(NWID_HORIZONTAL),
 		NWidget(WWT_CLOSEBOX, COLOUR_GREY),
 		NWidget(WWT_CAPTION, COLOUR_GREY, WID_FGW_CAPTION), SetDataTip(STR_JUST_STRING2, STR_TOOLTIP_WINDOW_TITLE_DRAG_THIS), SetTextStyle(TC_WHITE),

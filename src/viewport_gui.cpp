@@ -23,7 +23,7 @@
 #include "safeguards.h"
 
 /* Extra Viewport Window Stuff */
-static const NWidgetPart _nested_extra_viewport_widgets[] = {
+static constexpr NWidgetPart _nested_extra_viewport_widgets[] = {
 	NWidget(NWID_HORIZONTAL),
 		NWidget(WWT_CLOSEBOX, COLOUR_GREY),
 		NWidget(WWT_CAPTION, COLOUR_GREY, WID_EV_CAPTION), SetDataTip(STR_EXTRA_VIEWPORT_TITLE, STR_TOOLTIP_WINDOW_TITLE_DRAG_THIS),

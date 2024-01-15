@@ -261,7 +261,7 @@ void CcBuildIndustry(Commands, const CommandCost &result, TileIndex tile, Indust
 	}
 }
 
-static const NWidgetPart _nested_build_industry_widgets[] = {
+static constexpr NWidgetPart _nested_build_industry_widgets[] = {
 	NWidget(NWID_HORIZONTAL),
 		NWidget(WWT_CLOSEBOX, COLOUR_DARK_GREEN),
 		NWidget(WWT_CAPTION, COLOUR_DARK_GREEN), SetDataTip(STR_FUND_INDUSTRY_CAPTION, STR_TOOLTIP_WINDOW_TITLE_DRAG_THIS),
@@ -1175,7 +1175,7 @@ static void UpdateIndustryProduction(Industry *i)
 }
 
 /** Widget definition of the view industry gui */
-static const NWidgetPart _nested_industry_view_widgets[] = {
+static constexpr NWidgetPart _nested_industry_view_widgets[] = {
 	NWidget(NWID_HORIZONTAL),
 		NWidget(WWT_CLOSEBOX, COLOUR_CREAM),
 		NWidget(WWT_CAPTION, COLOUR_CREAM, WID_IV_CAPTION), SetDataTip(STR_INDUSTRY_VIEW_CAPTION, STR_TOOLTIP_WINDOW_TITLE_DRAG_THIS),
@@ -1212,7 +1212,7 @@ void ShowIndustryViewWindow(int industry)
 }
 
 /** Widget definition of the industry directory gui */
-static const NWidgetPart _nested_industry_directory_widgets[] = {
+static constexpr NWidgetPart _nested_industry_directory_widgets[] = {
 	NWidget(NWID_HORIZONTAL),
 		NWidget(WWT_CLOSEBOX, COLOUR_BROWN),
 		NWidget(WWT_CAPTION, COLOUR_BROWN), SetDataTip(STR_INDUSTRY_DIRECTORY_CAPTION, STR_TOOLTIP_WINDOW_TITLE_DRAG_THIS),
@@ -1918,7 +1918,7 @@ void ShowIndustryDirectory()
 }
 
 /** Widgets of the industry cargoes window. */
-static const NWidgetPart _nested_industry_cargoes_widgets[] = {
+static constexpr NWidgetPart _nested_industry_cargoes_widgets[] = {
 	NWidget(NWID_HORIZONTAL),
 		NWidget(WWT_CLOSEBOX, COLOUR_BROWN),
 		NWidget(WWT_CAPTION, COLOUR_BROWN, WID_IC_CAPTION), SetDataTip(STR_INDUSTRY_CARGOES_INDUSTRY_CAPTION, STR_TOOLTIP_WINDOW_TITLE_DRAG_THIS),

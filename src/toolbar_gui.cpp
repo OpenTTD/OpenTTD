@@ -2179,7 +2179,7 @@ static std::unique_ptr<NWidgetBase> MakeMainToolbar()
 	return hor;
 }
 
-static const NWidgetPart _nested_toolbar_normal_widgets[] = {
+static constexpr NWidgetPart _nested_toolbar_normal_widgets[] = {
 	NWidgetFunction(MakeMainToolbar),
 };
 
@@ -2479,7 +2479,7 @@ struct ScenarioEditorToolbarWindow : Window {
 	}};
 };
 
-static const NWidgetPart _nested_toolb_scen_inner_widgets[] = {
+static constexpr NWidgetPart _nested_toolb_scen_inner_widgets[] = {
 	NWidget(WWT_IMGBTN, COLOUR_GREY, WID_TE_PAUSE), SetDataTip(SPR_IMG_PAUSE, STR_TOOLBAR_TOOLTIP_PAUSE_GAME),
 	NWidget(WWT_IMGBTN, COLOUR_GREY, WID_TE_FAST_FORWARD), SetDataTip(SPR_IMG_FASTFORWARD, STR_TOOLBAR_TOOLTIP_FORWARD),
 	NWidget(WWT_IMGBTN, COLOUR_GREY, WID_TE_SETTINGS), SetDataTip(SPR_IMG_SETTINGS, STR_TOOLBAR_TOOLTIP_OPTIONS),
@@ -2519,7 +2519,7 @@ static std::unique_ptr<NWidgetBase> MakeScenarioToolbar()
 	return MakeNWidgets(std::begin(_nested_toolb_scen_inner_widgets), std::end(_nested_toolb_scen_inner_widgets), std::make_unique<NWidgetScenarioToolbarContainer>());
 }
 
-static const NWidgetPart _nested_toolb_scen_widgets[] = {
+static constexpr NWidgetPart _nested_toolb_scen_widgets[] = {
 	NWidgetFunction(MakeScenarioToolbar),
 };
 

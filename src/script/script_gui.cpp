@@ -239,7 +239,7 @@ struct ScriptListWindow : public Window {
 };
 
 /** Widgets for the AI list window. */
-static const NWidgetPart _nested_script_list_widgets[] = {
+static constexpr NWidgetPart _nested_script_list_widgets[] = {
 	NWidget(NWID_HORIZONTAL),
 		NWidget(WWT_CLOSEBOX, COLOUR_MAUVE),
 		NWidget(WWT_CAPTION, COLOUR_MAUVE, WID_SCRL_CAPTION), SetDataTip(STR_AI_LIST_CAPTION, STR_TOOLTIP_WINDOW_TITLE_DRAG_THIS),
@@ -586,7 +586,7 @@ private:
 };
 
 /** Widgets for the Script settings window. */
-static const NWidgetPart _nested_script_settings_widgets[] = {
+static constexpr NWidgetPart _nested_script_settings_widgets[] = {
 	NWidget(NWID_HORIZONTAL),
 		NWidget(WWT_CLOSEBOX, COLOUR_MAUVE),
 		NWidget(WWT_CAPTION, COLOUR_MAUVE, WID_SCRS_CAPTION), SetDataTip(STR_AI_SETTINGS_CAPTION, STR_TOOLTIP_WINDOW_TITLE_DRAG_THIS),
@@ -1237,7 +1237,7 @@ std::unique_ptr<NWidgetBase> MakeCompanyButtonRowsScriptDebug()
 }
 
 /** Widgets for the Script debug window. */
-static const NWidgetPart _nested_script_debug_widgets[] = {
+static constexpr NWidgetPart _nested_script_debug_widgets[] = {
 	NWidget(NWID_HORIZONTAL),
 		NWidget(WWT_CLOSEBOX, COLOUR_GREY),
 		NWidget(WWT_CAPTION, COLOUR_GREY), SetDataTip(STR_AI_DEBUG, STR_TOOLTIP_WINDOW_TITLE_DRAG_THIS),

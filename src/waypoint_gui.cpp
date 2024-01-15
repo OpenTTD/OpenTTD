@@ -160,7 +160,7 @@ public:
 };
 
 /** The widgets of the waypoint view. */
-static const NWidgetPart _nested_waypoint_view_widgets[] = {
+static constexpr NWidgetPart _nested_waypoint_view_widgets[] = {
 	NWidget(NWID_HORIZONTAL),
 		NWidget(WWT_CLOSEBOX, COLOUR_GREY),
 		NWidget(WWT_PUSHIMGBTN, COLOUR_GREY, WID_W_RENAME), SetMinimalSize(12, 14), SetDataTip(SPR_RENAME, STR_BUOY_VIEW_CHANGE_BUOY_NAME),

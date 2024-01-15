@@ -204,7 +204,7 @@ static const CheatEntry _cheats_ui[] = {
 static_assert(CHT_NUM_CHEATS == lengthof(_cheats_ui));
 
 /** Widget definitions of the cheat GUI. */
-static const NWidgetPart _nested_cheat_widgets[] = {
+static constexpr NWidgetPart _nested_cheat_widgets[] = {
 	NWidget(NWID_HORIZONTAL),
 		NWidget(WWT_CLOSEBOX, COLOUR_GREY),
 		NWidget(WWT_CAPTION, COLOUR_GREY), SetDataTip(STR_CHEATS, STR_TOOLTIP_WINDOW_TITLE_DRAG_THIS),

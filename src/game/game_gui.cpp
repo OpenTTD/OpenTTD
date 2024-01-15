@@ -30,7 +30,7 @@
 
 
 /** Widgets for the configure GS window. */
-static const NWidgetPart _nested_gs_config_widgets[] = {
+static constexpr NWidgetPart _nested_gs_config_widgets[] = {
 	NWidget(NWID_HORIZONTAL),
 		NWidget(WWT_CLOSEBOX, COLOUR_MAUVE),
 		NWidget(WWT_CAPTION, COLOUR_MAUVE), SetDataTip(STR_AI_CONFIG_CAPTION_GAMESCRIPT, STR_TOOLTIP_WINDOW_TITLE_DRAG_THIS),

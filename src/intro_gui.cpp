@@ -377,7 +377,7 @@ struct SelectGameWindow : public Window {
 	}
 };
 
-static const NWidgetPart _nested_select_game_widgets[] = {
+static constexpr NWidgetPart _nested_select_game_widgets[] = {
 	NWidget(WWT_CAPTION, COLOUR_BROWN), SetDataTip(STR_INTRO_CAPTION, STR_NULL),
 	NWidget(WWT_PANEL, COLOUR_BROWN),
 		NWidget(NWID_VERTICAL), SetPIP(0, WidgetDimensions::unscaled.vsep_wide, 0), SetPadding(WidgetDimensions::unscaled.sparse),
