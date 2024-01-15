@@ -3329,9 +3329,10 @@ std::unique_ptr<NWidgetBase> MakeWindowNWidgetTree(const NWidgetPart *nwid_begin
  * @param colour The colour in which to draw the button.
  * @param max_length Maximal number of company buttons in one row.
  * @param button_tooltip The tooltip-string of every button.
+ * @param resizable Whether the rows are resizable.
  * @return Panel with rows of company buttons.
  */
-std::unique_ptr<NWidgetBase> MakeCompanyButtonRows(WidgetID widget_first, WidgetID widget_last, Colours button_colour, int max_length, StringID button_tooltip)
+std::unique_ptr<NWidgetBase> MakeCompanyButtonRows(WidgetID widget_first, WidgetID widget_last, Colours button_colour, int max_length, StringID button_tooltip, bool resizable)
 {
 	assert(max_length >= 1);
 	std::unique_ptr<NWidgetVertical> vert = nullptr; // Storage for all rows.
@@ -3358,7 +3359,7 @@ std::unique_ptr<NWidgetBase> MakeCompanyButtonRows(WidgetID widget_first, Widget
 		auto panel = std::make_unique<NWidgetBackground>(WWT_PANEL, button_colour, widnum);
 		panel->SetMinimalSize(sprite_size.width, sprite_size.height);
 		panel->SetFill(1, 1);
-		panel->SetResize(1, 0);
+		if (resizable) panel->SetResize(1, 0);
 		panel->SetDataTip(0x0, button_tooltip);
 		hor->Add(std::move(panel));
 		hor_length++;
@@ -3369,7 +3370,7 @@ std::unique_ptr<NWidgetBase> MakeCompanyButtonRows(WidgetID widget_first, Widget
 		/* Last row is partial, add a spacer at the end to force all buttons to the left. */
 		auto spc = std::make_unique<NWidgetSpacer>(sprite_size.width, sprite_size.height);
 		spc->SetFill(1, 1);
-		spc->SetResize(1, 0);
+		if (resizable) spc->SetResize(1, 0);
 		hor->Add(std::move(spc));
 	}
 	if (hor != nullptr) vert->Add(std::move(hor));
