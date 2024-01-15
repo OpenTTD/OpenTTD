@@ -1,4 +1,4 @@
-name: Release (Linux)
+name: Release (Linux, Legacy)
 
 on:
   workflow_call:
@@ -10,14 +10,14 @@ on:
 
 jobs:
   linux:
-    name: Linux (Generic)
+    name: Linux (Legacy)
 
     runs-on: ubuntu-latest
     container:
-      # manylinux_2_28 is based on AlmaLinux 8, and already has a lot of things
+      # manylinux2014 is based on CentOS 7, and already has a lot of things
       # installed and preconfigured. It makes it easier to build OpenTTD.
-      # This distro is based on glibc 2.28, released in 2018.
-      image: quay.io/pypa/manylinux_2_28_x86_64
+      # This distro is based on glibc 2.17, released in 2012.
+      image: quay.io/pypa/manylinux2014_x86_64
 
     steps:
     - name: Download source
@@ -29,11 +29,29 @@ jobs:
       run: |
         tar -xf source.tar.gz --strip-components=1
 
+    # curl is too old for most of the tools to work properly. For example,
+    # rust-toolchain doesn't work properly, neither vcpkg caching.
+    # The easier solution here is to upgrade curl.
+    - name: Update curl
+      run: |
+        yum install -y \
+          openssl-devel \
+          # EOF
+
+        mkdir /curl
+        cd /curl
+        curl -o curl-7.81.0.zip https://curl.se/download/curl-7.81.0.zip
+        unzip curl-7.81.0.zip
+        cd curl-7.81.0
+        ./configure --with-ssl --with-zlib --prefix=/usr --libdir=/usr/lib64
+        make -j $(nproc)
+        make install
+
     - name: Install Rust toolchain
       uses: dtolnay/rust-toolchain@stable
 
     - name: Enable Rust cache
-      uses: Swatinem/rust-cache@v2
+      uses: Swatinem/rust-cache@v2.7.0
 
     - name: Setup vcpkg caching
       uses: actions/github-script@v6
@@ -82,12 +100,22 @@ jobs:
           cmake --install .
         )
 
+        # The container we use is old enough, that it doesn't know SHF_COMPRESSED.
+        # But, breakpad needs this symbol to exist. So we patch it in our system
+        # libraries.
+        (
+          cd /
+          patch -p1 < ${GITHUB_WORKSPACE}/os/linux/shf-compressed.patch
+        )
+        echo "::endgroup::"
+
         echo "::group::Install audio drivers"
         # These audio libs are to make sure the SDL version of vcpkg adds
         # sound-support; these libraries are not added to the resulting
         # binary, but the headers are used to enable them in SDL.
         yum install -y \
           alsa-lib-devel \
+          jack-audio-connection-kit-devel \
           pulseaudio-libs-devel \
           # EOF
         echo "::endgroup::"
@@ -105,11 +133,6 @@ jobs:
           libxkbcommon-devel \
           libXrandr-devel \
           libXScrnSaver-devel \
-          mesa-libEGL-devel \
-          mesa-libGL-devel \
-          mesa-libGLES-devel \
-          wayland-devel \
-          wayland-protocols-devel \
           # EOF
         echo "::endgroup::"
 
@@ -123,9 +146,24 @@ jobs:
           ./bootstrap-vcpkg.sh -disableMetrics
         )
 
+        # Make Python3 available for other packages. This needs to be done
+        # first, as otherwise dependencies fail to build because Python3 is
+        # not available.
+        (
+          cd /
+
+          /vcpkg/vcpkg install python3
+          ln -sf /vcpkg/installed/x64-linux/tools/python3/python3.[0-9][0-9] /usr/bin/python3
+        )
+        echo "::endgroup::"
+
         echo "::group::Install breakpad dependencies"
         cargo install dump_syms
         echo "::endgroup::"
+
+    - name: Patch bundle name
+      run: |
+        sed -i 's/generic/legacy/g' cmake/InstallAndPackage.cmake
 
     - name: Install GCC problem matcher
       uses: ammaraskar/gcc-problem-matcher@master
@@ -170,13 +208,13 @@ jobs:
     - name: Store bundles
       uses: actions/upload-artifact@v3
       with:
-        name: openttd-linux-generic
+        name: openttd-linux-legacy
         path: build/bundles
         retention-days: 5
 
     - name: Store symbols
       uses: actions/upload-artifact@v3
       with:
-        name: symbols-linux-generic
+        name: symbols-linux-legacy
         path: build/symbols
         retention-days: 5
