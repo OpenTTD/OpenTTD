@@ -225,16 +225,17 @@ static bool VerifyOldNameChecksum(char *title, uint len)
 
 static std::tuple<SavegameType, std::string> DetermineOldSavegameTypeAndName(FILE *f)
 {
+	long pos = ftell(f);
 	char buffer[std::max(TTO_HEADER_SIZE, TTD_HEADER_SIZE)];
-	if (fread(buffer, 1, lengthof(buffer), f) != lengthof(buffer)) {
+	if (pos < 0 || fread(buffer, 1, lengthof(buffer), f) != lengthof(buffer)) {
 		return { SGT_INVALID, "(broken) Unable to read file" };
 	}
 
-	if (VerifyOldNameChecksum(buffer, TTO_HEADER_SIZE)) {
+	if (VerifyOldNameChecksum(buffer, TTO_HEADER_SIZE) && fseek(f, pos + TTO_HEADER_SIZE, SEEK_SET) == 0) {
 		return { SGT_TTO, "(TTO)" + StrMakeValid({buffer, TTO_HEADER_SIZE - HEADER_CHECKSUM_SIZE}) };
 	}
 
-	if (VerifyOldNameChecksum(buffer, TTD_HEADER_SIZE)) {
+	if (VerifyOldNameChecksum(buffer, TTD_HEADER_SIZE) && fseek(f, pos + TTD_HEADER_SIZE, SEEK_SET) == 0) {
 		return { SGT_TTD, "(TTD)" + StrMakeValid({buffer, TTD_HEADER_SIZE - HEADER_CHECKSUM_SIZE}) };
 	}
 
@@ -267,7 +268,9 @@ bool LoadOldSaveGame(const std::string &file)
 	switch (type) {
 		case SGT_TTO: proc = &LoadTTOMain; break;
 		case SGT_TTD: proc = &LoadTTDMain; break;
-		default: break;
+		default:
+			Debug(oldloader, 0, "Unknown savegame type; cannot be loaded");
+			break;
 	}
 
 	_savegame_type = type;
