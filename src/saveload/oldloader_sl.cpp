@@ -495,6 +495,14 @@ static void ClearOldMap3(TileIndex t)
 	tile.m4() = 0;
 }
 
+static Town *RemapTown(TileIndex fallback)
+{
+	/* In some cases depots, industries and stations could refer to a missing town. */
+	Town *t = Town::GetIfValid(RemapTownIndex(_old_town_index));
+	if (t == nullptr) t = CalcClosestTownFromTile(fallback);
+	return t;
+}
+
 static void ReadTTDPatchFlags()
 {
 	if (_read_ttdpatch_flags) return;
@@ -674,10 +682,7 @@ static bool LoadOldDepot(LoadgameState *ls, int num)
 	if (!LoadChunk(ls, d, depot_chunk)) return false;
 
 	if (d->xy != 0) {
-		/* In some cases, there could be depots referencing invalid town. */
-		Town *t = Town::GetIfValid(RemapTownIndex(_old_town_index));
-		if (t == nullptr) t = Town::GetRandom();
-		d->town = t;
+		d->town = RemapTown(d->xy);
 	} else {
 		delete d;
 	}
@@ -767,7 +772,7 @@ static bool LoadOldStation(LoadgameState *ls, int num)
 	if (!LoadChunk(ls, st, station_chunk)) return false;
 
 	if (st->xy != 0) {
-		st->town = Town::Get(RemapTownIndex(_old_town_index));
+		st->town = RemapTown(st->xy);
 
 		if (_savegame_type == SGT_TTO) {
 			if (IsInsideBS(_old_string_id, 0x180F, 32)) {
@@ -843,7 +848,7 @@ static bool LoadOldIndustry(LoadgameState *ls, int num)
 	if (!LoadChunk(ls, i, industry_chunk)) return false;
 
 	if (i->location.tile != 0) {
-		i->town = Town::Get(RemapTownIndex(_old_town_index));
+		i->town = RemapTown(i->location.tile);
 
 		if (_savegame_type == SGT_TTO) {
 			if (i->type > 0x06) i->type++; // Printing Works were added
