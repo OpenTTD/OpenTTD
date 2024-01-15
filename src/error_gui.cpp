@@ -33,7 +33,7 @@
 
 #include "safeguards.h"
 
-static const NWidgetPart _nested_errmsg_widgets[] = {
+static constexpr NWidgetPart _nested_errmsg_widgets[] = {
 	NWidget(NWID_HORIZONTAL),
 		NWidget(WWT_CLOSEBOX, COLOUR_RED),
 		NWidget(WWT_CAPTION, COLOUR_RED, WID_EM_CAPTION), SetDataTip(STR_ERROR_MESSAGE_CAPTION, STR_NULL),
@@ -50,7 +50,7 @@ static WindowDesc _errmsg_desc(__FILE__, __LINE__,
 	std::begin(_nested_errmsg_widgets), std::end(_nested_errmsg_widgets)
 );
 
-static const NWidgetPart _nested_errmsg_face_widgets[] = {
+static constexpr NWidgetPart _nested_errmsg_face_widgets[] = {
 	NWidget(NWID_HORIZONTAL),
 		NWidget(WWT_CLOSEBOX, COLOUR_RED),
 		NWidget(WWT_CAPTION, COLOUR_RED, WID_EM_CAPTION), SetDataTip(STR_ERROR_MESSAGE_CAPTION_OTHER_COMPANY, STR_NULL),

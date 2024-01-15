@@ -63,7 +63,7 @@ void LoadCheckData::Clear()
 }
 
 /** Load game/scenario with optional content download */
-static const NWidgetPart _nested_load_dialog_widgets[] = {
+static constexpr NWidgetPart _nested_load_dialog_widgets[] = {
 	NWidget(NWID_HORIZONTAL),
 		NWidget(WWT_CLOSEBOX, COLOUR_GREY),
 		NWidget(WWT_CAPTION, COLOUR_GREY, WID_SL_CAPTION),
@@ -124,7 +124,7 @@ static const NWidgetPart _nested_load_dialog_widgets[] = {
 };
 
 /** Load heightmap with content download */
-static const NWidgetPart _nested_load_heightmap_dialog_widgets[] = {
+static constexpr NWidgetPart _nested_load_heightmap_dialog_widgets[] = {
 	NWidget(NWID_HORIZONTAL),
 		NWidget(WWT_CLOSEBOX, COLOUR_GREY),
 		NWidget(WWT_CAPTION, COLOUR_GREY, WID_SL_CAPTION),
@@ -169,7 +169,7 @@ static const NWidgetPart _nested_load_heightmap_dialog_widgets[] = {
 };
 
 /** Save game/scenario */
-static const NWidgetPart _nested_save_dialog_widgets[] = {
+static constexpr NWidgetPart _nested_save_dialog_widgets[] = {
 	NWidget(NWID_HORIZONTAL),
 		NWidget(WWT_CLOSEBOX, COLOUR_GREY),
 		NWidget(WWT_CAPTION, COLOUR_GREY, WID_SL_CAPTION),

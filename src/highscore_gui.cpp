@@ -210,7 +210,7 @@ struct HighScoreWindow : EndGameHighScoreBaseWindow {
 	}
 };
 
-static const NWidgetPart _nested_highscore_widgets[] = {
+static constexpr NWidgetPart _nested_highscore_widgets[] = {
 	NWidget(WWT_PANEL, COLOUR_BROWN, WID_H_BACKGROUND), SetResize(1, 1), EndContainer(),
 };
 

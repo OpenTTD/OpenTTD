@@ -43,7 +43,7 @@ struct ScreenshotWindow : Window {
 	}
 };
 
-static const NWidgetPart _nested_screenshot[] = {
+static constexpr NWidgetPart _nested_screenshot[] = {
 	NWidget(NWID_HORIZONTAL),
 		NWidget(WWT_CLOSEBOX, COLOUR_GREY),
 		NWidget(WWT_CAPTION, COLOUR_GREY), SetDataTip(STR_SCREENSHOT_CAPTION, 0),

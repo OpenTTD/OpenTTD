@@ -313,7 +313,7 @@ const StringID BuildBridgeWindow::sorter_names[] = {
 };
 
 /** Widgets of the bridge gui. */
-static const NWidgetPart _nested_build_bridge_widgets[] = {
+static constexpr NWidgetPart _nested_build_bridge_widgets[] = {
 	/* Header */
 	NWidget(NWID_HORIZONTAL),
 		NWidget(WWT_CLOSEBOX, COLOUR_DARK_GREEN),

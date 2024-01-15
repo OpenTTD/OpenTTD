@@ -280,7 +280,7 @@ struct GoalListWindow : public Window {
 };
 
 /** Widgets of the #GoalListWindow. */
-static const NWidgetPart _nested_goals_list_widgets[] = {
+static constexpr NWidgetPart _nested_goals_list_widgets[] = {
 	NWidget(NWID_HORIZONTAL),
 		NWidget(WWT_CLOSEBOX, COLOUR_BROWN),
 		NWidget(WWT_CAPTION, COLOUR_BROWN, WID_GOAL_CAPTION), SetDataTip(STR_JUST_STRING1, STR_TOOLTIP_WINDOW_TITLE_DRAG_THIS),
@@ -406,7 +406,7 @@ struct GoalQuestionWindow : public Window {
 };
 
 /** Widgets of the goal question window. */
-static const NWidgetPart _nested_goal_question_widgets_question[] = {
+static constexpr NWidgetPart _nested_goal_question_widgets_question[] = {
 	NWidget(NWID_HORIZONTAL),
 		NWidget(WWT_CLOSEBOX, COLOUR_LIGHT_BLUE),
 		NWidget(WWT_CAPTION, COLOUR_LIGHT_BLUE, WID_GQ_CAPTION), SetDataTip(STR_GOAL_QUESTION_CAPTION_QUESTION, STR_TOOLTIP_WINDOW_TITLE_DRAG_THIS),
@@ -432,7 +432,7 @@ static const NWidgetPart _nested_goal_question_widgets_question[] = {
 	EndContainer(),
 };
 
-static const NWidgetPart _nested_goal_question_widgets_info[] = {
+static constexpr NWidgetPart _nested_goal_question_widgets_info[] = {
 	NWidget(NWID_HORIZONTAL),
 		NWidget(WWT_CLOSEBOX, COLOUR_LIGHT_BLUE),
 		NWidget(WWT_CAPTION, COLOUR_LIGHT_BLUE, WID_GQ_CAPTION), SetDataTip(STR_GOAL_QUESTION_CAPTION_INFORMATION, STR_TOOLTIP_WINDOW_TITLE_DRAG_THIS),
@@ -458,7 +458,7 @@ static const NWidgetPart _nested_goal_question_widgets_info[] = {
 	EndContainer(),
 };
 
-static const NWidgetPart _nested_goal_question_widgets_warning[] = {
+static constexpr NWidgetPart _nested_goal_question_widgets_warning[] = {
 	NWidget(NWID_HORIZONTAL),
 		NWidget(WWT_CLOSEBOX, COLOUR_YELLOW),
 		NWidget(WWT_CAPTION, COLOUR_YELLOW, WID_GQ_CAPTION), SetDataTip(STR_GOAL_QUESTION_CAPTION_WARNING, STR_TOOLTIP_WINDOW_TITLE_DRAG_THIS),
@@ -484,7 +484,7 @@ static const NWidgetPart _nested_goal_question_widgets_warning[] = {
 	EndContainer(),
 };
 
-static const NWidgetPart _nested_goal_question_widgets_error[] = {
+static constexpr NWidgetPart _nested_goal_question_widgets_error[] = {
 	NWidget(NWID_HORIZONTAL),
 		NWidget(WWT_CLOSEBOX, COLOUR_RED),
 		NWidget(WWT_CAPTION, COLOUR_RED, WID_GQ_CAPTION), SetDataTip(STR_GOAL_QUESTION_CAPTION_ERROR, STR_TOOLTIP_WINDOW_TITLE_DRAG_THIS),

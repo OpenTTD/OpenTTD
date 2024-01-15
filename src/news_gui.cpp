@@ -82,7 +82,7 @@ static TileIndex GetReferenceTile(NewsReferenceType reftype, uint32_t ref)
 }
 
 /* Normal news items. */
-static const NWidgetPart _nested_normal_news_widgets[] = {
+static constexpr NWidgetPart _nested_normal_news_widgets[] = {
 	NWidget(WWT_PANEL, COLOUR_WHITE, WID_N_PANEL),
 		NWidget(NWID_HORIZONTAL), SetPadding(1, 1, 0, 1),
 			NWidget(WWT_CLOSEBOX, COLOUR_WHITE, WID_N_CLOSEBOX), SetPadding(0, 0, 0, 1),
@@ -104,7 +104,7 @@ static WindowDesc _normal_news_desc(__FILE__, __LINE__,
 );
 
 /* New vehicles news items. */
-static const NWidgetPart _nested_vehicle_news_widgets[] = {
+static constexpr NWidgetPart _nested_vehicle_news_widgets[] = {
 	NWidget(WWT_PANEL, COLOUR_WHITE, WID_N_PANEL),
 		NWidget(NWID_HORIZONTAL), SetPadding(1, 1, 0, 1),
 			NWidget(NWID_VERTICAL),
@@ -131,7 +131,7 @@ static WindowDesc _vehicle_news_desc(__FILE__, __LINE__,
 );
 
 /* Company news items. */
-static const NWidgetPart _nested_company_news_widgets[] = {
+static constexpr NWidgetPart _nested_company_news_widgets[] = {
 	NWidget(WWT_PANEL, COLOUR_WHITE, WID_N_PANEL),
 		NWidget(NWID_HORIZONTAL), SetPadding(1, 1, 0, 1),
 			NWidget(NWID_VERTICAL),
@@ -159,7 +159,7 @@ static WindowDesc _company_news_desc(__FILE__, __LINE__,
 );
 
 /* Thin news items. */
-static const NWidgetPart _nested_thin_news_widgets[] = {
+static constexpr NWidgetPart _nested_thin_news_widgets[] = {
 	NWidget(WWT_PANEL, COLOUR_WHITE, WID_N_PANEL),
 		NWidget(NWID_HORIZONTAL), SetPadding(1, 1, 0, 1),
 			NWidget(WWT_CLOSEBOX, COLOUR_WHITE, WID_N_CLOSEBOX), SetPadding(0, 0, 0, 1),
@@ -182,7 +182,7 @@ static WindowDesc _thin_news_desc(__FILE__, __LINE__,
 );
 
 /* Small news items. */
-static const NWidgetPart _nested_small_news_widgets[] = {
+static constexpr NWidgetPart _nested_small_news_widgets[] = {
 	/* Caption + close box. The caption is no WWT_CAPTION as the window shall not be moveable and so on. */
 	NWidget(NWID_HORIZONTAL),
 		NWidget(WWT_CLOSEBOX, COLOUR_LIGHT_BLUE, WID_N_CLOSEBOX),
@@ -1209,7 +1209,7 @@ struct MessageHistoryWindow : Window {
 	}
 };
 
-static const NWidgetPart _nested_message_history[] = {
+static constexpr NWidgetPart _nested_message_history[] = {
 	NWidget(NWID_HORIZONTAL),
 		NWidget(WWT_CLOSEBOX, COLOUR_BROWN),
 		NWidget(WWT_CAPTION, COLOUR_BROWN), SetDataTip(STR_MESSAGE_HISTORY, STR_TOOLTIP_WINDOW_TITLE_DRAG_THIS),

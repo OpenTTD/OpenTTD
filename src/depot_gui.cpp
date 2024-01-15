@@ -46,7 +46,7 @@
  */
 
 /** Nested widget definition for train depots. */
-static const NWidgetPart _nested_train_depot_widgets[] = {
+static constexpr NWidgetPart _nested_train_depot_widgets[] = {
 	NWidget(NWID_HORIZONTAL),
 		NWidget(WWT_CLOSEBOX, COLOUR_GREY),
 		NWidget(NWID_SELECTION, INVALID_COLOUR, WID_D_SHOW_RENAME), // rename button

@@ -285,7 +285,7 @@ static std::unique_ptr<NWidgetBase> MakeTreeTypeButtons()
 	return vstack;
 }
 
-static const NWidgetPart _nested_build_trees_widgets[] = {
+static constexpr NWidgetPart _nested_build_trees_widgets[] = {
 	NWidget(NWID_HORIZONTAL),
 		NWidget(WWT_CLOSEBOX, COLOUR_DARK_GREEN),
 		NWidget(WWT_CAPTION, COLOUR_DARK_GREEN), SetDataTip(STR_PLANT_TREE_CAPTION, STR_TOOLTIP_WINDOW_TITLE_DRAG_THIS),

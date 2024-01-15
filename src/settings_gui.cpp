@@ -803,7 +803,7 @@ struct GameOptionsWindow : Window {
 	}
 };
 
-static const NWidgetPart _nested_game_options_widgets[] = {
+static constexpr NWidgetPart _nested_game_options_widgets[] = {
 	NWidget(NWID_HORIZONTAL),
 		NWidget(WWT_CLOSEBOX, COLOUR_GREY),
 		NWidget(WWT_CAPTION, COLOUR_GREY), SetDataTip(STR_GAME_OPTIONS_CAPTION, STR_TOOLTIP_WINDOW_TITLE_DRAG_THIS),
@@ -2670,7 +2670,7 @@ struct GameSettingsWindow : Window {
 
 GameSettings *GameSettingsWindow::settings_ptr = nullptr;
 
-static const NWidgetPart _nested_settings_selection_widgets[] = {
+static constexpr NWidgetPart _nested_settings_selection_widgets[] = {
 	NWidget(NWID_HORIZONTAL),
 		NWidget(WWT_CLOSEBOX, COLOUR_MAUVE),
 		NWidget(WWT_CAPTION, COLOUR_MAUVE), SetDataTip(STR_CONFIG_SETTING_TREE_CAPTION, STR_TOOLTIP_WINDOW_TITLE_DRAG_THIS),
@@ -2977,7 +2977,7 @@ struct CustomCurrencyWindow : Window {
 	}
 };
 
-static const NWidgetPart _nested_cust_currency_widgets[] = {
+static constexpr NWidgetPart _nested_cust_currency_widgets[] = {
 	NWidget(NWID_HORIZONTAL),
 		NWidget(WWT_CLOSEBOX, COLOUR_GREY),
 		NWidget(WWT_CAPTION, COLOUR_GREY), SetDataTip(STR_CURRENCY_WINDOW, STR_TOOLTIP_WINDOW_TITLE_DRAG_THIS),

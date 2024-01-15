@@ -491,7 +491,7 @@ struct NetworkChatWindow : public Window {
 };
 
 /** The widgets of the chat window. */
-static const NWidgetPart _nested_chat_window_widgets[] = {
+static constexpr NWidgetPart _nested_chat_window_widgets[] = {
 	NWidget(NWID_HORIZONTAL),
 		NWidget(WWT_CLOSEBOX, COLOUR_GREY, WID_NC_CLOSE),
 		NWidget(WWT_PANEL, COLOUR_GREY, WID_NC_BACKGROUND),

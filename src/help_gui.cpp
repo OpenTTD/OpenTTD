@@ -166,7 +166,7 @@ private:
 	}
 };
 
-static const NWidgetPart _nested_helpwin_widgets[] = {
+static constexpr NWidgetPart _nested_helpwin_widgets[] = {
 	NWidget(NWID_HORIZONTAL),
 		NWidget(WWT_CLOSEBOX, COLOUR_DARK_GREEN),
 		NWidget(WWT_CAPTION, COLOUR_DARK_GREEN), SetDataTip(STR_HELP_WINDOW_CAPTION, STR_NULL),
