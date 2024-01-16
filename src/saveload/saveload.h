@@ -13,7 +13,6 @@
 #include "saveload_error.hpp"
 #include "../fileio_type.h"
 #include "../fios.h"
-#include "../core/span_type.hpp"
 
 /** SaveLoad versions
  * Previous savegame versions, the trunk revision where they were
@@ -480,13 +479,13 @@ struct ChunkHandler {
 using ChunkHandlerRef = std::reference_wrapper<const ChunkHandler>;
 
 /** A table of ChunkHandler entries. */
-using ChunkHandlerTable = span<const ChunkHandlerRef>;
+using ChunkHandlerTable = std::span<const ChunkHandlerRef>;
 
 /** A table of SaveLoad entries. */
-using SaveLoadTable = span<const struct SaveLoad>;
+using SaveLoadTable = std::span<const struct SaveLoad>;
 
 /** A table of SaveLoadCompat entries. */
-using SaveLoadCompatTable = span<const struct SaveLoadCompat>;
+using SaveLoadCompatTable = std::span<const struct SaveLoadCompat>;
 
 /** Handler for saving/loading an object to/from disk. */
 class SaveLoadHandler {

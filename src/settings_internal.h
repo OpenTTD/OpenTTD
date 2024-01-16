@@ -360,7 +360,7 @@ static constexpr const SettingDesc *GetSettingDesc(const SettingVariant &desc)
 	return std::visit([](auto&& arg) -> const SettingDesc * { return &arg; }, desc);
 }
 
-typedef span<const SettingVariant> SettingTable;
+typedef std::span<const SettingVariant> SettingTable;
 
 const SettingDesc *GetSettingFromName(const std::string_view name);
 void GetSaveLoadFromSettingTable(SettingTable settings, std::vector<SaveLoad> &saveloads);

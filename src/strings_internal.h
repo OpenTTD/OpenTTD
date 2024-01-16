@@ -12,7 +12,6 @@
 
 #include "strings_func.h"
 #include "string_func.h"
-#include "core/span_type.hpp"
 
 /** The data required to format and validate a single parameter of a string. */
 struct StringParameter {
@@ -25,12 +24,12 @@ struct StringParameter {
 class StringParameters {
 protected:
 	StringParameters *parent = nullptr; ///< If not nullptr, this instance references data from this parent instance.
-	span<StringParameter> parameters = {}; ///< Array with the actual parameters.
+	std::span<StringParameter> parameters = {}; ///< Array with the actual parameters.
 
 	size_t offset = 0; ///< Current offset in the parameters span.
 	char32_t next_type = 0; ///< The type of the next data that is retrieved.
 
-	StringParameters(span<StringParameter> parameters = {}) :
+	StringParameters(std::span<StringParameter> parameters = {}) :
 		parameters(parameters)
 	{}
 
@@ -211,7 +210,7 @@ class ArrayStringParameters : public StringParameters {
 public:
 	ArrayStringParameters()
 	{
-		this->parameters = span(params.data(), params.size());
+		this->parameters = std::span(params.data(), params.size());
 	}
 
 	ArrayStringParameters(ArrayStringParameters&& other) noexcept
@@ -224,7 +223,7 @@ public:
 		this->offset = other.offset;
 		this->next_type = other.next_type;
 		this->params = std::move(other.params);
-		this->parameters = span(params.data(), params.size());
+		this->parameters = std::span(params.data(), params.size());
 		return *this;
 	}
 
