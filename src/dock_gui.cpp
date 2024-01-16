@@ -525,7 +525,7 @@ public:
 	BuildDocksDepotWindow(WindowDesc *desc, Window *parent) : PickerWindowBase(desc, parent)
 	{
 		this->InitNested(TRANSPORT_WATER);
-		this->LowerWidget(_ship_depot_direction + WID_BDD_X);
+		this->LowerWidget(WID_BDD_X + _ship_depot_direction);
 		UpdateDocksDirection();
 	}
 
@@ -569,9 +569,9 @@ public:
 		switch (widget) {
 			case WID_BDD_X:
 			case WID_BDD_Y:
-				this->RaiseWidget(_ship_depot_direction + WID_BDD_X);
+				this->RaiseWidget(WID_BDD_X + _ship_depot_direction);
 				_ship_depot_direction = (widget == WID_BDD_X ? AXIS_X : AXIS_Y);
-				this->LowerWidget(_ship_depot_direction + WID_BDD_X);
+				this->LowerWidget(WID_BDD_X + _ship_depot_direction);
 				if (_settings_client.sound.click_beep) SndPlayFx(SND_15_BEEP);
 				UpdateDocksDirection();
 				this->SetDirty();

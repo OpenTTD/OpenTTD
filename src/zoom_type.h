@@ -45,6 +45,7 @@ enum ZoomLevel : byte {
 
 };
 DECLARE_POSTFIX_INCREMENT(ZoomLevel)
+DECLARE_ENUM_AS_ADDABLE(ZoomLevel)
 
 extern int _gui_scale;
 extern int _gui_scale_cfg;

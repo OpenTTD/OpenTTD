@@ -24,6 +24,7 @@ enum TownSize : byte {
 
 	TSZ_END,    ///< Number of available town sizes.
 };
+DECLARE_ENUM_AS_ADDABLE(TownSize)
 
 enum Ratings {
 	/* These refer to the maximums, so Appalling is -1000 to -400
@@ -87,6 +88,7 @@ enum TownLayout : byte {
 
 	NUM_TLS,             ///< Number of town layouts
 };
+DECLARE_ENUM_AS_ADDABLE(TownLayout)
 
 /** Town founding setting values. It needs to be 8bits, because we save and load it as such */
 enum TownFounding : byte {

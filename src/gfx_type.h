@@ -247,6 +247,7 @@ enum Colours : byte {
 	COLOUR_END,
 	INVALID_COLOUR = 0xFF,
 };
+DECLARE_ENUM_AS_ADDABLE(Colours)
 
 /** Colour of the strings, see _string_colourmap in table/string_colours.h or docs/ottd-colourtext-palette.png */
 enum TextColour {

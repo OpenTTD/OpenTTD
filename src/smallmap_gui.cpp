@@ -611,20 +611,21 @@ static const byte _vehicle_type_colours[6] = {
 	PC_RED, PC_YELLOW, PC_LIGHT_BLUE, PC_WHITE, PC_BLACK, PC_RED
 };
 
+/** Types of legends in the #WID_SM_LEGEND widget. */
+enum SmallMapType : byte {
+	SMT_CONTOUR,
+	SMT_VEHICLES,
+	SMT_INDUSTRY,
+	SMT_LINKSTATS,
+	SMT_ROUTES,
+	SMT_VEGETATION,
+	SMT_OWNER,
+};
+DECLARE_ENUM_AS_ADDABLE(SmallMapType)
+
 /** Class managing the smallmap window. */
 class SmallMapWindow : public Window {
 protected:
-	/** Types of legends in the #WID_SM_LEGEND widget. */
-	enum SmallMapType {
-		SMT_CONTOUR,
-		SMT_VEHICLES,
-		SMT_INDUSTRY,
-		SMT_LINKSTATS,
-		SMT_ROUTES,
-		SMT_VEGETATION,
-		SMT_OWNER,
-	};
-
 	/** Available kinds of zoomlevel changes. */
 	enum ZoomLevelChange {
 		ZLC_INITIALIZE, ///< Initialize zoom level.
@@ -820,9 +821,9 @@ protected:
 	 */
 	void SwitchMapType(SmallMapType map_type)
 	{
-		this->RaiseWidget(this->map_type + WID_SM_CONTOUR);
+		this->RaiseWidget(WID_SM_CONTOUR + this->map_type);
 		this->map_type = map_type;
-		this->LowerWidget(this->map_type + WID_SM_CONTOUR);
+		this->LowerWidget(WID_SM_CONTOUR + this->map_type);
 
 		this->SetupWidgetData();
 
@@ -1404,7 +1405,7 @@ public:
 		_smallmap_industry_highlight = INVALID_INDUSTRYTYPE;
 		this->overlay = std::make_unique<LinkGraphOverlay>(this, WID_SM_MAP, 0, this->GetOverlayCompanyMask(), 1);
 		this->InitNested(window_number);
-		this->LowerWidget(this->map_type + WID_SM_CONTOUR);
+		this->LowerWidget(WID_SM_CONTOUR + this->map_type);
 
 		this->RebuildColourIndexIfNecessary();
 
@@ -1830,7 +1831,7 @@ public:
 
 };
 
-SmallMapWindow::SmallMapType SmallMapWindow::map_type = SMT_CONTOUR;
+SmallMapType SmallMapWindow::map_type = SMT_CONTOUR;
 bool SmallMapWindow::show_towns = true;
 int SmallMapWindow::map_height_limit = -1;
 
