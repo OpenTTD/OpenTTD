@@ -1704,12 +1704,14 @@ void NetworkServer_Tick(bool send_frame)
 			case NetworkClientSocket::STATUS_ACTIVE:
 				if (lag > _settings_client.network.max_lag_time) {
 					/* Client did still not report in within the specified limit. */
-					IConsolePrint(CC_WARNING, cs->last_packet + std::chrono::milliseconds(lag * MILLISECONDS_PER_TICK) > std::chrono::steady_clock::now() ?
-							/* A packet was received in the last three game days, so the client is likely lagging behind. */
-								"Client #{} (IP: {}) is dropped because the client's game state is more than {} ticks behind." :
-							/* No packet was received in the last three game days; sounds like a lost connection. */
-								"Client #{} (IP: {}) is dropped because the client did not respond for more than {} ticks.",
-							cs->client_id, cs->GetClientIP(), lag);
+
+					if (cs->last_packet + std::chrono::milliseconds(lag * MILLISECONDS_PER_TICK) > std::chrono::steady_clock::now()) {
+						/* A packet was received in the last three game days, so the client is likely lagging behind. */
+						IConsolePrint(CC_WARNING, "Client #{} (IP: {}) is dropped because the client's game state is more than {} ticks behind.", cs->client_id, cs->GetClientIP(), lag);
+					} else {
+						/* No packet was received in the last three game days; sounds like a lost connection. */
+						IConsolePrint(CC_WARNING, "Client #{} (IP: {}) is dropped because the client did not respond for more than {} ticks.", cs->client_id, cs->GetClientIP(), lag);
+					}
 					cs->SendError(NETWORK_ERROR_TIMEOUT_COMPUTER);
 					continue;
 				}

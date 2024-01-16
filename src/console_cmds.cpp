@@ -267,20 +267,18 @@ DEF_CONSOLE_CMD(ConZoomToLevel)
 		case 0:
 			IConsolePrint(CC_HELP, "Set the current zoom level of the main viewport.");
 			IConsolePrint(CC_HELP, "Usage: 'zoomto <level>'.");
-			IConsolePrint(
-				CC_HELP,
-				ZOOM_LVL_MIN < _settings_client.gui.zoom_min ?
-					"The lowest zoom-in level allowed by current client settings is {}." :
-					"The lowest supported zoom-in level is {}.",
-				std::max(ZOOM_LVL_MIN, _settings_client.gui.zoom_min)
-			);
-			IConsolePrint(
-				CC_HELP,
-				_settings_client.gui.zoom_max < ZOOM_LVL_MAX ?
-					"The highest zoom-out level allowed by current client settings is {}." :
-					"The highest supported zoom-out level is {}.",
-				std::min(_settings_client.gui.zoom_max, ZOOM_LVL_MAX)
-			);
+
+			if (ZOOM_LVL_MIN < _settings_client.gui.zoom_min) {
+				IConsolePrint(CC_HELP, "The lowest zoom-in level allowed by current client settings is {}.", std::max(ZOOM_LVL_MIN, _settings_client.gui.zoom_min));
+			} else {
+				IConsolePrint(CC_HELP, "The lowest supported zoom-in level is {}.", std::max(ZOOM_LVL_MIN, _settings_client.gui.zoom_min));
+			}
+
+			if (_settings_client.gui.zoom_max < ZOOM_LVL_MAX) {
+				IConsolePrint(CC_HELP, "The highest zoom-out level allowed by current client settings is {}.", std::min(_settings_client.gui.zoom_max, ZOOM_LVL_MAX));
+			} else {
+				IConsolePrint(CC_HELP, "The highest supported zoom-out level is {}.", std::min(_settings_client.gui.zoom_max, ZOOM_LVL_MAX));
+			}
 			return true;
 
 		case 2: {
