@@ -801,15 +801,21 @@ struct FrametimeGraphWindow : Window {
 
 	void SelectHorizontalScale(TimingMeasurement range)
 	{
+		/* 60 Hz graphical drawing results in a value of approximately TIMESTAMP_PRECISION,
+		 * this lands exactly on the scale = 2 vs scale = 4 boundary.
+		 * To avoid excessive switching of the horizontal scale, bias these performance
+		 * categories away from this scale boundary. */
+		if (this->element == PFE_DRAWING || this->element == PFE_DRAWWORLD) range += (range / 2);
+
 		/* Determine horizontal scale based on period covered by 60 points
 		 * (slightly less than 2 seconds at full game speed) */
 		struct ScaleDef { TimingMeasurement range; int scale; };
 		static const ScaleDef hscales[] = {
-			{ 120, 60 },
-			{  10, 20 },
-			{   5, 10 },
-			{   3,  4 },
-			{   1,  2 },
+			{ TIMESTAMP_PRECISION * 120, 60 },
+			{ TIMESTAMP_PRECISION *  10, 20 },
+			{ TIMESTAMP_PRECISION *   5, 10 },
+			{ TIMESTAMP_PRECISION *   3,  4 },
+			{ TIMESTAMP_PRECISION *   1,  2 },
 		};
 		for (const ScaleDef *sc = hscales; sc < hscales + lengthof(hscales); sc++) {
 			if (range < sc->range) this->horizontal_scale = sc->scale;
@@ -869,7 +875,7 @@ struct FrametimeGraphWindow : Window {
 			lastts = timestamps[point];
 
 			/* Enough data to select a range and get decent data density */
-			if (count == 60) this->SelectHorizontalScale(time_sum / TIMESTAMP_PRECISION);
+			if (count == 60) this->SelectHorizontalScale(time_sum);
 
 			/* End when enough points have been collected and the horizontal scale has been exceeded */
 			if (count >= 60 && time_sum >= (this->horizontal_scale + 2) * TIMESTAMP_PRECISION / 2) break;
