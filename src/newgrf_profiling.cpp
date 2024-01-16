@@ -131,7 +131,7 @@ void NewGRFProfiler::Abort()
  */
 std::string NewGRFProfiler::GetOutputFilename() const
 {
-	return fmt::format("{}grfprofile-{%Y%m%d-%H%M}-{:08X}.csv", FiosGetScreenshotDir(), fmt::localtime(time(nullptr)), BSWAP32(this->grffile->grfid));
+	return fmt::format("{}grfprofile-{:%Y%m%d-%H%M}-{:08X}.csv", FiosGetScreenshotDir(), fmt::localtime(time(nullptr)), BSWAP32(this->grffile->grfid));
 }
 
 /* static */ uint32_t NewGRFProfiler::FinishAll()

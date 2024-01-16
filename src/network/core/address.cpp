@@ -93,7 +93,7 @@ static const char *GetAddressFormatString(uint16_t family, bool with_family)
  */
 std::string NetworkAddress::GetAddressAsString(bool with_family)
 {
-	return fmt::format(GetAddressFormatString(this->GetAddress()->ss_family, with_family), this->GetHostname(), this->GetPort());
+	return fmt::format(fmt::runtime(GetAddressFormatString(this->GetAddress()->ss_family, with_family)), this->GetHostname(), this->GetPort());
 }
 
 /**

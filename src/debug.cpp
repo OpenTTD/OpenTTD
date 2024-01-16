@@ -95,7 +95,7 @@ void DumpDebugFacilityNames(std::back_insert_iterator<std::string> &output_itera
 		} else {
 			fmt::format_to(output_iterator, ", ");
 		}
-		fmt::format_to(output_iterator, i->name);
+		fmt::format_to(output_iterator, "{}", i->name);
 		written = true;
 	}
 	if (written) {

@@ -242,7 +242,11 @@ void Gamelog::Print(std::function<void(const std::string &)> proc)
 {
 	/* A NewGRF got removed from the game, either manually or by it missing when loading the game. */
 	auto gm = grf_names.find(this->grfid);
-	fmt::format_to(output_iterator, action_type == GLAT_LOAD ? "Missing NewGRF: " : "Removed NewGRF: ");
+	if (action_type == GLAT_LOAD) {
+		fmt::format_to(output_iterator, "Missing NewGRF: ");
+	} else {
+		fmt::format_to(output_iterator, "Removed NewGRF: ");
+	}
 	AddGrfInfo(output_iterator, this->grfid, nullptr, gm != grf_names.end() ? gm->second.gc : nullptr);
 	if (gm == grf_names.end()) {
 		fmt::format_to(output_iterator, ". Gamelog inconsistency: GrfID was never added!");
