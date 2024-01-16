@@ -35,6 +35,7 @@ enum VehicleType : byte {
 	VEH_INVALID = 0xFF,           ///< Non-existing type of vehicle.
 };
 DECLARE_POSTFIX_INCREMENT(VehicleType)
+DECLARE_ENUM_AS_ADDABLE(VehicleType)
 
 struct Vehicle;
 struct Train;

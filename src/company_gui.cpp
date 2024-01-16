@@ -747,7 +747,7 @@ public:
 
 	void SetSelectedGroup(CompanyID company, GroupID group)
 	{
-		this->RaiseWidget(this->livery_class + WID_SCL_CLASS_GENERAL);
+		this->RaiseWidget(WID_SCL_CLASS_GENERAL + this->livery_class);
 		const Group *g = Group::Get(group);
 		switch (g->vehicle_type) {
 			case VEH_TRAIN: this->livery_class = LC_GROUP_RAIL; break;
@@ -757,7 +757,7 @@ public:
 			default: NOT_REACHED();
 		}
 		this->sel = group;
-		this->LowerWidget(this->livery_class + WID_SCL_CLASS_GENERAL);
+		this->LowerWidget(WID_SCL_CLASS_GENERAL + this->livery_class);
 
 		this->groups.ForceRebuild();
 		this->BuildGroupList(company);
@@ -963,9 +963,9 @@ public:
 			case WID_SCL_GROUPS_ROAD:
 			case WID_SCL_GROUPS_SHIP:
 			case WID_SCL_GROUPS_AIRCRAFT:
-				this->RaiseWidget(this->livery_class + WID_SCL_CLASS_GENERAL);
+				this->RaiseWidget(WID_SCL_CLASS_GENERAL + this->livery_class);
 				this->livery_class = (LiveryClass)(widget - WID_SCL_CLASS_GENERAL);
-				this->LowerWidget(this->livery_class + WID_SCL_CLASS_GENERAL);
+				this->LowerWidget(WID_SCL_CLASS_GENERAL + this->livery_class);
 
 				/* Select the first item in the list */
 				if (this->livery_class < LC_GROUP_RAIL) {

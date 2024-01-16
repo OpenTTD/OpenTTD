@@ -37,5 +37,11 @@
 	inline constexpr enum_type& operator ^= (enum_type& m1, enum_type m2) {m1 = m1 ^ m2; return m1;} \
 	inline constexpr enum_type operator ~(enum_type m) {return (enum_type)(~(std::underlying_type<enum_type>::type)m);}
 
+/** Operator that allows this enumeration to be added to any other enumeration. */
+#define DECLARE_ENUM_AS_ADDABLE(EnumType) \
+	template <typename OtherEnumType, typename = typename std::enable_if<std::is_enum_v<OtherEnumType>, OtherEnumType>::type> \
+	constexpr OtherEnumType operator + (OtherEnumType m1, EnumType m2) { \
+		return static_cast<OtherEnumType>(static_cast<typename std::underlying_type<OtherEnumType>::type>(m1) + static_cast<typename std::underlying_type<EnumType>::type>(m2)); \
+	}
 
 #endif /* ENUM_TYPE_HPP */

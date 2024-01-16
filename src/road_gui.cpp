@@ -1007,7 +1007,7 @@ struct BuildRoadDepotWindow : public PickerWindowBase {
 	{
 		this->CreateNestedTree();
 
-		this->LowerWidget(_road_depot_orientation + WID_BROD_DEPOT_NE);
+		this->LowerWidget(WID_BROD_DEPOT_NE + _road_depot_orientation);
 		if (RoadTypeIsTram(_cur_roadtype)) {
 			this->GetWidget<NWidgetCore>(WID_BROD_CAPTION)->widget_data = STR_BUILD_DEPOT_TRAM_ORIENTATION_CAPTION;
 			for (WidgetID i = WID_BROD_DEPOT_NE; i <= WID_BROD_DEPOT_NW; i++) {
@@ -1047,9 +1047,9 @@ struct BuildRoadDepotWindow : public PickerWindowBase {
 			case WID_BROD_DEPOT_NE:
 			case WID_BROD_DEPOT_SW:
 			case WID_BROD_DEPOT_SE:
-				this->RaiseWidget(_road_depot_orientation + WID_BROD_DEPOT_NE);
+				this->RaiseWidget(WID_BROD_DEPOT_NE + _road_depot_orientation);
 				_road_depot_orientation = (DiagDirection)(widget - WID_BROD_DEPOT_NE);
-				this->LowerWidget(_road_depot_orientation + WID_BROD_DEPOT_NE);
+				this->LowerWidget(WID_BROD_DEPOT_NE + _road_depot_orientation);
 				if (_settings_client.sound.click_beep) SndPlayFx(SND_15_BEEP);
 				this->SetDirty();
 				break;
@@ -1132,9 +1132,9 @@ private:
 		if (_roadstop_gui_settings.orientation >= DIAGDIR_END) return;
 		const RoadStopSpec *spec = RoadStopClass::Get(_roadstop_gui_settings.roadstop_class)->GetSpec(_roadstop_gui_settings.roadstop_type);
 		if (spec != nullptr && HasBit(spec->flags, RSF_DRIVE_THROUGH_ONLY)) {
-			this->RaiseWidget(_roadstop_gui_settings.orientation + WID_BROS_STATION_NE);
+			this->RaiseWidget(WID_BROS_STATION_NE + _roadstop_gui_settings.orientation);
 			_roadstop_gui_settings.orientation = DIAGDIR_END;
-			this->LowerWidget(_roadstop_gui_settings.orientation + WID_BROS_STATION_NE);
+			this->LowerWidget(WID_BROS_STATION_NE + _roadstop_gui_settings.orientation);
 			this->SetDirty();
 			CloseWindowById(WC_SELECT_STATION, 0);
 		}
@@ -1184,8 +1184,8 @@ public:
 			this->GetWidget<NWidgetCore>(i)->tool_tip = rti->strings.picker_tooltip[rs];
 		}
 
-		this->LowerWidget(_roadstop_gui_settings.orientation + WID_BROS_STATION_NE);
-		this->LowerWidget(_settings_client.gui.station_show_coverage + WID_BROS_LT_OFF);
+		this->LowerWidget(WID_BROS_STATION_NE + _roadstop_gui_settings.orientation);
+		this->LowerWidget(WID_BROS_LT_OFF + _settings_client.gui.station_show_coverage);
 
 		this->FinishInitNested(TRANSPORT_ROAD);
 
@@ -1508,9 +1508,9 @@ public:
 					const RoadStopSpec *spec = RoadStopClass::Get(_roadstop_gui_settings.roadstop_class)->GetSpec(_roadstop_gui_settings.roadstop_type);
 					if (spec != nullptr && HasBit(spec->flags, RSF_DRIVE_THROUGH_ONLY)) return;
 				}
-				this->RaiseWidget(_roadstop_gui_settings.orientation + WID_BROS_STATION_NE);
+				this->RaiseWidget(WID_BROS_STATION_NE + _roadstop_gui_settings.orientation);
 				_roadstop_gui_settings.orientation = (DiagDirection)(widget - WID_BROS_STATION_NE);
-				this->LowerWidget(_roadstop_gui_settings.orientation + WID_BROS_STATION_NE);
+				this->LowerWidget(WID_BROS_STATION_NE + _roadstop_gui_settings.orientation);
 				if (_settings_client.sound.click_beep) SndPlayFx(SND_15_BEEP);
 				this->SetDirty();
 				CloseWindowById(WC_SELECT_STATION, 0);

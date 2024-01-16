@@ -26,5 +26,6 @@ enum TextfileType {
 	TFT_END,
 };
 DECLARE_POSTFIX_INCREMENT(TextfileType)
+DECLARE_ENUM_AS_ADDABLE(TextfileType)
 
 #endif /* TEXTFILE_TYPE_H */
