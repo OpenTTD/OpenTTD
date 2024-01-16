@@ -203,7 +203,7 @@ template<bool Tfrom, bool Tvia>
 	if (!IsValidStation(station_id)) return false;
 	if (!HasExactlyOneBit(station_type)) return false;
 
-	return (::Station::Get(station_id)->facilities & station_type) != 0;
+	return (::Station::Get(station_id)->facilities & static_cast<StationFacility>(station_type)) != 0;
 }
 
 /* static */ bool ScriptStation::HasRoadType(StationID station_id, ScriptRoad::RoadType road_type)

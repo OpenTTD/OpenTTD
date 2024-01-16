@@ -74,12 +74,12 @@ jobs:
       matrix:
         include:
         - name: Clang - Debug
-          compiler: clang
-          cxxcompiler: clang++
+          compiler: clang-15
+          cxxcompiler: clang++-15
           libraries: libsdl2-dev
         - name: Clang - Release
-          compiler: clang
-          cxxcompiler: clang++
+          compiler: clang-15
+          cxxcompiler: clang++-15
           libraries: libsdl2-dev
           extra-cmake-parameters: -DCMAKE_BUILD_TYPE=RelWithDebInfo -DOPTION_USE_ASSERTS=OFF
         - name: GCC - SDL2

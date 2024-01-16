@@ -23,7 +23,7 @@ ScriptStationList::ScriptStationList(ScriptStation::StationType station_type)
 	CompanyID owner = ScriptObject::GetCompany();
 	ScriptList::FillList<Station>(this,
 		[is_deity, owner, station_type](const Station *st) {
-			return (is_deity || st->owner == owner) && (st->facilities & station_type) != 0;
+			return (is_deity || st->owner == owner) && (st->facilities & static_cast<StationFacility>(station_type)) != 0;
 		}
 	);
 }
