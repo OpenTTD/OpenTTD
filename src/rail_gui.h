@@ -27,8 +27,8 @@ enum SignalGUISettings : uint8_t {
 
 /** Settings for which signals are cycled through by control-clicking on the signal with the signal tool. */
 enum SignalCycleSettings : uint8_t {
-	SIGNAL_CYCLE_PATH = 0, ///< Cycle through path signals only.
-	SIGNAL_CYCLE_ALL = 1,  ///< Cycle through all signals visible.
+	SIGNAL_CYCLE_GROUP = 0, ///< Cycle through current signal group (block or path) only.
+	SIGNAL_CYCLE_ALL = 1,   ///< Cycle through all signals visible to the player.
 };
 
 #endif /* RAIL_GUI_H */

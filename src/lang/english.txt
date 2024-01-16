@@ -1946,7 +1946,7 @@ STR_CONFIG_SETTING_SEMAPHORE_BUILD_BEFORE_DATE_HELPTEXT         :Set the year wh
 STR_CONFIG_SETTING_CYCLE_SIGNAL_TYPES                           :Cycle through signal types: {STRING2}
 STR_CONFIG_SETTING_CYCLE_SIGNAL_TYPES_HELPTEXT                  :Select which signal types to cycle through when Ctrl+Clicking on a built signal with the signal tool
 ###length 2
-STR_CONFIG_SETTING_CYCLE_SIGNAL_PBS                             :Path signals only
+STR_CONFIG_SETTING_CYCLE_SIGNAL_GROUP                           :Current group only
 STR_CONFIG_SETTING_CYCLE_SIGNAL_ALL                             :All visible
 
 STR_CONFIG_SETTING_SIGNAL_GUI_MODE                              :Show signal types: {STRING2}
