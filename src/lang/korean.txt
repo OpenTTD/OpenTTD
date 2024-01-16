@@ -1045,6 +1045,10 @@ STR_GAME_OPTIONS_GUI_SCALE_AUTO_TOOLTIP                         :{BLACK}인터�
 STR_GAME_OPTIONS_GUI_SCALE_BEVELS                               :{BLACK}크기 조절
 STR_GAME_OPTIONS_GUI_SCALE_BEVELS_TOOLTIP                       :{BLACK}인터페이스 크기를 슬라이더로 조절하려면 이 박스에 체크하세요
 
+STR_GAME_OPTIONS_GUI_FONT_SPRITE                                :{BLACK}원본 그래픽 글꼴 사용
+STR_GAME_OPTIONS_GUI_FONT_SPRITE_TOOLTIP                        :{BLACK}기존 영어의 고정폭 글꼴을 사용하는 것을 선호하는 경우 이 박스에 체크하세요. 한국어 사용자는 체크하면 안 됩니다.
+STR_GAME_OPTIONS_GUI_FONT_AA                                    :{BLACK}글씨체 테두리를 부드럽게
+STR_GAME_OPTIONS_GUI_FONT_AA_TOOLTIP                            :{BLACK}크기 조절이 가능한 글씨체에 안티 에일리어싱을 적용하여 테두리를 부드럽게 표현하려면 이 박스에 체크하세요.
 
 STR_GAME_OPTIONS_GUI_SCALE_1X                                   :1x
 STR_GAME_OPTIONS_GUI_SCALE_2X                                   :2x

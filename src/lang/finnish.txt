@@ -1044,6 +1044,10 @@ STR_GAME_OPTIONS_GUI_SCALE_AUTO_TOOLTIP                         :{BLACK}Valitse 
 STR_GAME_OPTIONS_GUI_SCALE_BEVELS                               :{BLACK}Skaalaa viisteet
 STR_GAME_OPTIONS_GUI_SCALE_BEVELS_TOOLTIP                       :{BLACK}Valitse tämä ruutu reunusten skaalaamiseksi käyttöliittymän koon mukaan
 
+STR_GAME_OPTIONS_GUI_FONT_SPRITE                                :{BLACK}Käytä perinteistä sprite-fonttia
+STR_GAME_OPTIONS_GUI_FONT_SPRITE_TOOLTIP                        :{BLACK}Valitse tämä ruutu käyttääksesi perinteistä kiinteäkokoista sprite-kirjasintyyppiä.
+STR_GAME_OPTIONS_GUI_FONT_AA                                    :{BLACK}Pehmennä kirjasinten reunoja
+STR_GAME_OPTIONS_GUI_FONT_AA_TOOLTIP                            :{BLACK}Valitse tämä ruutu pehmentääksesi muuttuvan kokoisten fonttien reunoja.
 
 STR_GAME_OPTIONS_GUI_SCALE_1X                                   :1×
 STR_GAME_OPTIONS_GUI_SCALE_2X                                   :2×

@@ -1189,6 +1189,10 @@ STR_GAME_OPTIONS_GUI_SCALE_AUTO_TOOLTIP                         :{BLACK}Нажм
 STR_GAME_OPTIONS_GUI_SCALE_BEVELS                               :{BLACK}Рельефные элементы
 STR_GAME_OPTIONS_GUI_SCALE_BEVELS_TOOLTIP                       :{BLACK}Масштабировать рельефные элементы интерфейса
 
+STR_GAME_OPTIONS_GUI_FONT_SPRITE                                :{BLACK}Использовать растровый шрифт
+STR_GAME_OPTIONS_GUI_FONT_SPRITE_TOOLTIP                        :{BLACK}Поставьте отметку, чтобы использовать классический растровый шрифт фиксированного размера
+STR_GAME_OPTIONS_GUI_FONT_AA                                    :{BLACK}Сглаживание шрифтов
+STR_GAME_OPTIONS_GUI_FONT_AA_TOOLTIP                            :{BLACK}Поставьте отметку, чтобы включить сглаживание масштабируемых шрифтов
 
 STR_GAME_OPTIONS_GUI_SCALE_1X                                   :1x
 STR_GAME_OPTIONS_GUI_SCALE_2X                                   :2x

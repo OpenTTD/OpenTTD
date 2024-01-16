@@ -905,9 +905,9 @@ STR_NEWS_AIRCRAFT_DEST_TOO_FAR                                  :{WHITE}{VEHICLE
 STR_NEWS_ORDER_REFIT_FAILED                                     :{WHITE}适配调度计划失败，已终止 {VEHICLE}
 STR_NEWS_VEHICLE_AUTORENEW_FAILED                               :{WHITE}无法自动更新 {VEHICLE}{}{STRING}
 
-STR_NEWS_NEW_VEHICLE_NOW_AVAILABLE                              :{BIG_FONT}{BLACK}新 {STRING} 上市了！
+STR_NEWS_NEW_VEHICLE_NOW_AVAILABLE                              :{BIG_FONT}{BLACK}新{STRING}上市了！
 STR_NEWS_NEW_VEHICLE_TYPE                                       :{BIG_FONT}{BLACK}{ENGINE}
-STR_NEWS_NEW_VEHICLE_NOW_AVAILABLE_WITH_TYPE                    :{BLACK}新 {STRING} 上市了！  -  {ENGINE}
+STR_NEWS_NEW_VEHICLE_NOW_AVAILABLE_WITH_TYPE                    :{BLACK}新{STRING}上市了！  -  {ENGINE}
 
 STR_NEWS_SHOW_VEHICLE_GROUP_TOOLTIP                             :{BLACK}打开该载具所属的组
 
@@ -1044,6 +1044,10 @@ STR_GAME_OPTIONS_GUI_SCALE_AUTO_TOOLTIP                         :{BLACK}选中�
 STR_GAME_OPTIONS_GUI_SCALE_BEVELS                               :{BLACK}适应边框大小
 STR_GAME_OPTIONS_GUI_SCALE_BEVELS_TOOLTIP                       :{BLACK}选中此框使边框大小随界面大小而缩放
 
+STR_GAME_OPTIONS_GUI_FONT_SPRITE                                :使用位图字体
+STR_GAME_OPTIONS_GUI_FONT_SPRITE_TOOLTIP                        :如果您想使用固定大小的传统位图字体，请勾选此框。
+STR_GAME_OPTIONS_GUI_FONT_AA                                    :字体抗锯齿
+STR_GAME_OPTIONS_GUI_FONT_AA_TOOLTIP                            :勾选此框以对游戏字体应用抗锯齿。
 
 STR_GAME_OPTIONS_GUI_SCALE_1X                                   :1倍
 STR_GAME_OPTIONS_GUI_SCALE_2X                                   :2倍
@@ -4004,7 +4008,7 @@ STR_PURCHASE_INFO_REFITTABLE_TO                                 :{BLACK}可改�
 STR_PURCHASE_INFO_ALL_TYPES                                     :所有类型
 STR_PURCHASE_INFO_NONE                                          :无
 STR_PURCHASE_INFO_ENGINES_ONLY                                  :仅机车
-STR_PURCHASE_INFO_ALL_BUT                                       :除了 {CARGO_LIST}
+STR_PURCHASE_INFO_ALL_BUT                                       :所有货物但 {CARGO_LIST} 除外
 STR_PURCHASE_INFO_MAX_TE                                        :{BLACK}最大牵引力：{GOLD}{FORCE}
 STR_PURCHASE_INFO_AIRCRAFT_RANGE                                :{BLACK}航行距离: {GOLD}{COMMA} 格
 STR_PURCHASE_INFO_AIRCRAFT_TYPE                                 :{BLACK}飞机类型： {GOLD}{STRING}
@@ -4992,7 +4996,7 @@ STR_ERROR_CAN_T_REVERSE_DIRECTION_RAIL_VEHICLE                  :{WHITE}无法�
 STR_ERROR_CAN_T_REVERSE_DIRECTION_RAIL_VEHICLE_MULTIPLE_UNITS   :{WHITE}... 含有多节车辆
 STR_ERROR_INCOMPATIBLE_RAIL_TYPES                               :铁路类型不匹配
 
-STR_ERROR_CAN_T_MOVE_VEHICLE                                    :{WHITE}不能移动这项调度计划……
+STR_ERROR_CAN_T_MOVE_VEHICLE                                    :{WHITE}无法移动载具……
 STR_ERROR_REAR_ENGINE_FOLLOW_FRONT                              :{WHITE}尾部的列车机车必须和头部的一起协作……
 STR_ERROR_UNABLE_TO_FIND_ROUTE_TO                               :{WHITE}找不到附近的车库……
 STR_ERROR_UNABLE_TO_FIND_LOCAL_DEPOT                            :{WHITE}在附近找不到车库
