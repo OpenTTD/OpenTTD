@@ -13,10 +13,10 @@
 #include "core/enum_type.hpp"
 
 /** A non-breaking space. */
-#define NBSP u8"\u00a0"
+#define NBSP "\u00a0"
 
 /** A left-to-right marker, marks the next character as left-to-right. */
-#define LRM u8"\u200e"
+#define LRM "\u200e"
 
 /**
  * Valid filter types for IsValidChar.

@@ -501,7 +501,7 @@ static void MakeFinnishTownName(StringBuilder &builder, uint32_t seed)
 		if (view.find_first_of("aouAOU") != std::string_view::npos) {
 			builder += "la";
 		} else {
-			builder += u8"l\u00e4";
+			builder += "l\u00e4";
 		}
 		return;
 	}

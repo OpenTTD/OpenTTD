@@ -796,7 +796,7 @@ static void Xunzip(byte **bufp, size_t *sizep)
 	std::string_view sv_buf(buf, filesize);
 
 	/* Check for the byte-order-mark, and skip it if needed. */
-	if (StrStartsWith(sv_buf, u8"\ufeff")) sv_buf.remove_prefix(3);
+	if (StrStartsWith(sv_buf, "\ufeff")) sv_buf.remove_prefix(3);
 
 	/* Update the filename. */
 	this->filepath = textfile;

@@ -16,6 +16,13 @@ macro(compile_flags)
         endif()
     endif()
 
+    # Our strings are UTF-8.
+    if(MSVC)
+        add_compile_options(/utf-8)
+    else()
+        add_compile_options(-finput-charset=utf-8)
+    endif()
+
     # Add some -D flags for Debug builds. We cannot use add_definitions(), because
     # it does not appear to support the $<> tags.
     add_compile_options(
