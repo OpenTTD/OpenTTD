@@ -250,7 +250,7 @@
 	EnforceCompanyModeValid(false);
 	EnforcePrecondition(false, ::IsValidTile(tile));
 	EnforcePrecondition(false, rail_track != 0);
-	EnforcePrecondition(false, (rail_track & ~::TRACK_BIT_ALL) == 0);
+	EnforcePrecondition(false, (static_cast<uint>(rail_track) & ~static_cast<uint>(::TRACK_BIT_ALL)) == 0);
 	EnforcePrecondition(false, KillFirstBit((uint)rail_track) == 0);
 	EnforcePrecondition(false, IsRailTypeAvailable(GetCurrentRailType()));
 

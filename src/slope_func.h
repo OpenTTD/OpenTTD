@@ -391,7 +391,7 @@ inline Foundation InclinedFoundation(Axis axis)
 inline Foundation HalftileFoundation(Corner corner)
 {
 	assert(IsValidCorner(corner));
-	return (Foundation)(FOUNDATION_HALFTILE_W + corner);
+	return static_cast<Foundation>(static_cast<uint>(FOUNDATION_HALFTILE_W) + static_cast<uint>(corner));
 }
 
 /**
@@ -403,7 +403,7 @@ inline Foundation HalftileFoundation(Corner corner)
 inline Foundation SpecialRailFoundation(Corner corner)
 {
 	assert(IsValidCorner(corner));
-	return (Foundation)(FOUNDATION_RAIL_W + corner);
+	return static_cast<Foundation>(static_cast<uint>(FOUNDATION_RAIL_W) + static_cast<uint>(corner));
 }
 
 /**
