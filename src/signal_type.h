@@ -32,6 +32,7 @@ enum SignalType : byte {
 	SIGTYPE_LAST       = SIGTYPE_PBS_ONEWAY,
 	SIGTYPE_LAST_NOPBS = SIGTYPE_COMBO,
 };
+DECLARE_ENUM_AS_ADDABLE(SignalType)
 
 /**
  * These are states in which a signal can be. Currently these are only two, so

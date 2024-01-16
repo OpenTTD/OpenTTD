@@ -983,7 +983,7 @@ struct ScriptDebugWindow : public Window {
 			bool dead = valid && Company::Get(i)->ai_instance->IsDead();
 			bool paused = valid && Company::Get(i)->ai_instance->IsPaused();
 
-			NWidgetCore *button = this->GetWidget<NWidgetCore>(i + WID_SCRD_COMPANY_BUTTON_START);
+			NWidgetCore *button = this->GetWidget<NWidgetCore>(WID_SCRD_COMPANY_BUTTON_START + i);
 			button->SetDisabled(!valid);
 			button->SetLowered(this->filter.script_debug_company == i);
 			SetScriptButtonColour(*button, dead, paused);

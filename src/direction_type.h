@@ -79,9 +79,8 @@ enum DiagDirection : byte {
 	DIAGDIR_END,            ///< Used for iterations
 	INVALID_DIAGDIR = 0xFF, ///< Flag for an invalid DiagDirection
 };
-
-/** Allow incrementing of DiagDirection variables */
 DECLARE_POSTFIX_INCREMENT(DiagDirection)
+DECLARE_ENUM_AS_ADDABLE(DiagDirection)
 
 /**
  * Enumeration for the difference between to DiagDirection.
@@ -120,5 +119,6 @@ enum Axis : byte {
 	AXIS_END,            ///< Used for iterations
 	INVALID_AXIS = 0xFF, ///< Flag for an invalid Axis
 };
+DECLARE_ENUM_AS_ADDABLE(Axis)
 
 #endif /* DIRECTION_TYPE_H */

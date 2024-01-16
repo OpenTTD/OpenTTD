@@ -35,6 +35,7 @@ enum Owner : byte {
 	COMPANY_SPECTATOR       = 255, ///< The client is spectating
 };
 DECLARE_POSTFIX_INCREMENT(Owner)
+DECLARE_ENUM_AS_ADDABLE(Owner)
 
 static const uint MAX_LENGTH_PRESIDENT_NAME_CHARS = 32; ///< The maximum length of a president name in characters including '\0'
 static const uint MAX_LENGTH_COMPANY_NAME_CHARS   = 32; ///< The maximum length of a company name in characters including '\0'
