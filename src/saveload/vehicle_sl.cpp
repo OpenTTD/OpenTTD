@@ -23,6 +23,7 @@
 #include "../company_base.h"
 #include "../company_func.h"
 #include "../disaster_vehicle.h"
+#include "../economy_base.h"
 
 #include "../safeguards.h"
 
@@ -205,6 +206,7 @@ void UpdateOldAircraft()
 			Vehicle *v = *iter;
 			if (v->type == VEH_AIRCRAFT && !v->current_order.IsType(OT_LOADING)) {
 				iter = st->loading_vehicles.erase(iter);
+				delete v->cargo_payment;
 			} else {
 				++iter;
 			}
