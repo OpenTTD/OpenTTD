@@ -71,7 +71,7 @@ inline DirDiff DirDifference(Direction d0, Direction d1)
 	assert(IsValidDirection(d1));
 	/* Cast to uint so compiler can use bitmask. If the difference is negative
 	 * and we used int instead of uint, further "+ 8" would have to be added. */
-	return (DirDiff)((uint)(d0 - d1) % 8);
+	return static_cast<DirDiff>(static_cast<uint>(d0) - static_cast<uint>(d1) % 8);
 }
 
 /**
@@ -88,7 +88,7 @@ inline DirDiff DirDifference(Direction d0, Direction d1)
 inline DirDiff ChangeDirDiff(DirDiff d, DirDiff delta)
 {
 	/* Cast to uint so compiler can use bitmask. Result can never be negative. */
-	return (DirDiff)((uint)(d + delta) % 8);
+	return static_cast<DirDiff>((static_cast<uint>(d) + static_cast<uint>(delta)) % 8);
 }
 
 /**
@@ -105,7 +105,7 @@ inline Direction ChangeDir(Direction d, DirDiff delta)
 {
 	assert(IsValidDirection(d));
 	/* Cast to uint so compiler can use bitmask. Result can never be negative. */
-	return (Direction)((uint)(d + delta) % 8);
+	return static_cast<Direction>((static_cast<uint>(d) + static_cast<uint>(delta)) % 8);
 }
 
 
@@ -150,7 +150,7 @@ inline DiagDirection ChangeDiagDir(DiagDirection d, DiagDirDiff delta)
 {
 	assert(IsValidDiagDirection(d));
 	/* Cast to uint so compiler can use bitmask. Result can never be negative. */
-	return (DiagDirection)((uint)(d + delta) % 4);
+	return static_cast<DiagDirection>((static_cast<uint>(d) + static_cast<uint>(delta)) % 4);
 }
 
 /**

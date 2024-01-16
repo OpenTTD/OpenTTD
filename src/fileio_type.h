@@ -89,7 +89,7 @@ enum FiosType {
  */
 inline AbstractFileType GetAbstractFileType(FiosType fios_type)
 {
-	return static_cast<AbstractFileType>(fios_type & FT_MASK);
+	return static_cast<AbstractFileType>(static_cast<uint>(fios_type) & FT_MASK);
 }
 
 /**
