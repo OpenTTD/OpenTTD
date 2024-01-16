@@ -20,15 +20,14 @@ void NORETURN SlErrorCorrupt(const std::string &msg);
  * Issue an SlErrorCorrupt with a format string.
  * @param format_string The formatting string to tell what to do with the remaining arguments.
  * @param fmt_args The arguments to be passed to fmt.
- * @tparam T The type of formatting parameter.
  * @tparam Args The types of the fmt arguments.
  * @note This function does never return as it throws an exception to
  *       break out of all the saveload code.
  */
-template <typename T, typename ... Args>
-inline void NORETURN SlErrorCorruptFmt(const T &format, Args&&... fmt_args)
+template <typename ... Args>
+inline void NORETURN SlErrorCorruptFmt(const fmt::format_string<Args...> format, Args&&... fmt_args)
 {
-	SlErrorCorrupt(fmt::format(format, fmt_args...));
+	SlErrorCorrupt(fmt::format(format, std::forward<Args>(fmt_args)...));
 }
 
 #endif /* SAVELOAD_ERROR_HPP */
