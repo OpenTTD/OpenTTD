@@ -11,7 +11,6 @@
 #define ENDIAN_BUFFER_HPP
 
 #include <string_view>
-#include "../core/span_type.hpp"
 #include "../core/bitmath_func.hpp"
 #include "../core/overflowsafe_type.hpp"
 
@@ -119,12 +118,12 @@ private:
  */
 class EndianBufferReader {
 	/** Reference to storage buffer. */
-	span<const byte> buffer;
+	std::span<const byte> buffer;
 	/** Current read position. */
 	size_t read_pos = 0;
 
 public:
-	EndianBufferReader(span<const byte> buffer) : buffer(buffer) {}
+	EndianBufferReader(std::span<const byte> buffer) : buffer(buffer) {}
 
 	void rewind() { this->read_pos = 0; }
 
@@ -155,7 +154,7 @@ public:
 	}
 
 	template <typename Tvalue>
-	static Tvalue ToValue(span<const byte> buffer)
+	static Tvalue ToValue(std::span<const byte> buffer)
 	{
 		Tvalue result{};
 		EndianBufferReader reader{ buffer };
