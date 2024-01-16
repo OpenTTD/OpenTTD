@@ -16,7 +16,6 @@
 #include "strings_type.h"
 #include "landscape_type.h"
 #include "core/bitmath_func.hpp"
-#include "core/span_type.hpp"
 
 /** Globally unique label of a cargo type. */
 typedef uint32_t CargoLabel;
@@ -190,7 +189,7 @@ Dimension GetLargestCargoIconSize();
 void InitializeSortedCargoSpecs();
 extern std::array<uint8_t, NUM_CARGO> _sorted_cargo_types;
 extern std::vector<const CargoSpec *> _sorted_cargo_specs;
-extern span<const CargoSpec *> _sorted_standard_cargo_specs;
+extern std::span<const CargoSpec *> _sorted_standard_cargo_specs;
 
 /**
  * Does cargo \a c have cargo class \a cc?

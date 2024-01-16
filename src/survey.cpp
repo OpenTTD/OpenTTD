@@ -250,9 +250,9 @@ void SurveyConfiguration(nlohmann::json &survey)
 		survey["graphics_set"] = fmt::format("{}.{}", BaseGraphics::GetUsedSet()->name, BaseGraphics::GetUsedSet()->version);
 		const GRFConfig *extra_cfg = BaseGraphics::GetUsedSet()->GetExtraConfig();
 		if (extra_cfg != nullptr && extra_cfg->num_params > 0) {
-			survey["graphics_set_parameters"] = span<const uint32_t>(extra_cfg->param.data(), extra_cfg->num_params);
+			survey["graphics_set_parameters"] = std::span<const uint32_t>(extra_cfg->param.data(), extra_cfg->num_params);
 		} else {
-			survey["graphics_set_parameters"] = span<const uint32_t>();
+			survey["graphics_set_parameters"] = std::span<const uint32_t>();
 		}
 	}
 	if (BaseMusic::GetUsedSet() != nullptr) {
@@ -344,7 +344,7 @@ void SurveyGrfs(nlohmann::json &survey)
 		if ((c->palette & GRFP_BLT_MASK) == GRFP_BLT_32BPP) grf["blitter"] = "32bpp";
 
 		grf["is_static"] = HasBit(c->flags, GCF_STATIC);
-		grf["parameters"] = span<const uint32_t>(c->param.data(), c->num_params);
+		grf["parameters"] = std::span<const uint32_t>(c->param.data(), c->num_params);
 	}
 }
 

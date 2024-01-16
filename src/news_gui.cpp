@@ -586,7 +586,7 @@ private:
 	StringID GetCompanyMessageString() const
 	{
 		/* Company news with a face have a separate headline, so the normal message is shifted by two params */
-		CopyInDParam(span(this->ni->params.data() + 2, this->ni->params.size() - 2));
+		CopyInDParam(std::span(this->ni->params.data() + 2, this->ni->params.size() - 2));
 		return this->ni->params[1].data;
 	}
 

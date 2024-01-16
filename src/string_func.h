@@ -15,12 +15,11 @@
 #include <iosfwd>
 
 #include "core/bitmath_func.hpp"
-#include "core/span_type.hpp"
 #include "string_type.h"
 
 char *strecpy(char *dst, const char *src, const char *last) NOACCESS(3);
 
-std::string FormatArrayAsHex(span<const byte> data);
+std::string FormatArrayAsHex(std::span<const byte> data);
 
 void StrMakeValidInPlace(char *str, const char *last, StringValidationSettings settings = SVS_REPLACE_WITH_QUESTION_MARK) NOACCESS(2);
 [[nodiscard]] std::string StrMakeValid(std::string_view str, StringValidationSettings settings = SVS_REPLACE_WITH_QUESTION_MARK);

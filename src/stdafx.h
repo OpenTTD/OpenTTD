@@ -70,6 +70,7 @@
 #include <numeric>
 #include <optional>
 #include <set>
+#include <span>
 #include <stdexcept>
 #include <string>
 #include <type_traits>
