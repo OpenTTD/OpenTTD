@@ -94,36 +94,36 @@ STR_CARGO_SINGULAR_FIZZY_DRINK                                  :汽水
 # Quantity of cargo
 STR_QUANTITY_NOTHING                                            :
 STR_QUANTITY_PASSENGERS                                         :{COMMA}{NBSP}位旅客
-STR_QUANTITY_COAL                                               :{WEIGHT_LONG} 煤炭
+STR_QUANTITY_COAL                                               :{WEIGHT_LONG}煤炭
 STR_QUANTITY_MAIL                                               :{COMMA}{NBSP}包邮件
-STR_QUANTITY_OIL                                                :{VOLUME_LONG} 原油
+STR_QUANTITY_OIL                                                :{VOLUME_LONG}原油
 STR_QUANTITY_LIVESTOCK                                          :{COMMA}{NBSP}头牲畜
 STR_QUANTITY_GOODS                                              :{COMMA}{NBSP}件货物
-STR_QUANTITY_GRAIN                                              :{WEIGHT_LONG} 谷物
-STR_QUANTITY_WOOD                                               :{WEIGHT_LONG} 木材
-STR_QUANTITY_IRON_ORE                                           :{WEIGHT_LONG} 铁矿石
-STR_QUANTITY_STEEL                                              :{WEIGHT_LONG} 钢材
+STR_QUANTITY_GRAIN                                              :{WEIGHT_LONG}谷物
+STR_QUANTITY_WOOD                                               :{WEIGHT_LONG}木材
+STR_QUANTITY_IRON_ORE                                           :{WEIGHT_LONG}铁矿石
+STR_QUANTITY_STEEL                                              :{WEIGHT_LONG}钢材
 STR_QUANTITY_VALUABLES                                          :{COMMA}{NBSP}包贵重品
 STR_QUANTITY_COPPER_ORE                                         :{WEIGHT_LONG} 铜矿石
-STR_QUANTITY_MAIZE                                              :{WEIGHT_LONG} 玉米
-STR_QUANTITY_FRUIT                                              :{WEIGHT_LONG} 水果
+STR_QUANTITY_MAIZE                                              :{WEIGHT_LONG}玉米
+STR_QUANTITY_FRUIT                                              :{WEIGHT_LONG}水果
 STR_QUANTITY_DIAMONDS                                           :{COMMA}{NBSP}包钻石
-STR_QUANTITY_FOOD                                               :{WEIGHT_LONG} 食品
-STR_QUANTITY_PAPER                                              :{WEIGHT_LONG} 纸张
+STR_QUANTITY_FOOD                                               :{WEIGHT_LONG}食品
+STR_QUANTITY_PAPER                                              :{WEIGHT_LONG}纸张
 STR_QUANTITY_GOLD                                               :{COMMA}{NBSP}包黄金
-STR_QUANTITY_WATER                                              :{VOLUME_LONG} 饮用水
-STR_QUANTITY_WHEAT                                              :{WEIGHT_LONG} 小麦
-STR_QUANTITY_RUBBER                                             :{VOLUME_LONG} 橡胶
-STR_QUANTITY_SUGAR                                              :{WEIGHT_LONG} 蔗糖
+STR_QUANTITY_WATER                                              :{VOLUME_LONG}饮用水
+STR_QUANTITY_WHEAT                                              :{WEIGHT_LONG}小麦
+STR_QUANTITY_RUBBER                                             :{VOLUME_LONG}橡胶
+STR_QUANTITY_SUGAR                                              :{WEIGHT_LONG}蔗糖
 STR_QUANTITY_TOYS                                               :{COMMA}{NBSP}件玩具
 STR_QUANTITY_SWEETS                                             :{COMMA}{NBSP}包糖果
-STR_QUANTITY_COLA                                               :{VOLUME_LONG} 可乐
-STR_QUANTITY_CANDYFLOSS                                         :{WEIGHT_LONG} 棉花糖
+STR_QUANTITY_COLA                                               :{VOLUME_LONG}可乐
+STR_QUANTITY_CANDYFLOSS                                         :{WEIGHT_LONG}棉花糖
 STR_QUANTITY_BUBBLES                                            :{COMMA} 个泡泡
-STR_QUANTITY_TOFFEE                                             :{WEIGHT_LONG} 太妃糖
+STR_QUANTITY_TOFFEE                                             :{WEIGHT_LONG}太妃糖
 STR_QUANTITY_BATTERIES                                          :{COMMA} 箱电池
-STR_QUANTITY_PLASTIC                                            :{VOLUME_LONG} 塑料
-STR_QUANTITY_FIZZY_DRINKS                                       :{COMMA} 瓶汽水
+STR_QUANTITY_PLASTIC                                            :{VOLUME_LONG}塑料
+STR_QUANTITY_FIZZY_DRINKS                                       :{COMMA}瓶汽水
 STR_QUANTITY_N_A                                                :N/A
 
 # Two letter abbreviation of cargo name
@@ -1045,7 +1045,7 @@ STR_GAME_OPTIONS_GUI_SCALE_BEVELS                               :{BLACK}适应�
 STR_GAME_OPTIONS_GUI_SCALE_BEVELS_TOOLTIP                       :{BLACK}选中此框使边框大小随界面大小而缩放
 
 STR_GAME_OPTIONS_GUI_FONT_SPRITE                                :使用位图字体
-STR_GAME_OPTIONS_GUI_FONT_SPRITE_TOOLTIP                        :如果您想使用固定大小的传统位图字体，请勾选此框。
+STR_GAME_OPTIONS_GUI_FONT_SPRITE_TOOLTIP                        :{BLACK}如果您想使用固定大小的传统位图字体，请勾选此框。
 STR_GAME_OPTIONS_GUI_FONT_AA                                    :字体抗锯齿
 STR_GAME_OPTIONS_GUI_FONT_AA_TOOLTIP                            :勾选此框以对游戏字体应用抗锯齿。
 
@@ -4658,7 +4658,7 @@ STR_DATE_YEAR_TOOLTIP                                           :{BLACK}选择�
 
 
 # AI debug window
-STR_AI_DEBUG                                                    :{WHITE}AI/脚本 调试
+STR_AI_DEBUG                                                    :{WHITE}AI/脚本调试
 STR_AI_DEBUG_NAME_AND_VERSION                                   :{BLACK}{STRING} (v{NUM})
 STR_AI_DEBUG_NAME_TOOLTIP                                       :{BLACK}AI名称
 STR_AI_DEBUG_SETTINGS                                           :{BLACK}AI 设置
