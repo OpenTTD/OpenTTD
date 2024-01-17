@@ -173,10 +173,25 @@ public:
 		const int top_x = TileX(tile_area.tile);
 		const int top_y = TileY(tile_area.tile);
 		for (int i = 0; i < WATER_REGION_EDGE_LENGTH; ++i) {
-			if (GetWaterTracks(TileXY(top_x + i, top_y)) & TRACK_BIT_3WAY_NW) SetBit(this->edge_traversability_bits[DIAGDIR_NW], i); // NW edge
-			if (GetWaterTracks(TileXY(top_x + i, top_y + WATER_REGION_EDGE_LENGTH - 1)) & TRACK_BIT_3WAY_SE) SetBit(this->edge_traversability_bits[DIAGDIR_SE], i); // SE edge
-			if (GetWaterTracks(TileXY(top_x, top_y + i)) & TRACK_BIT_3WAY_NE) SetBit(this->edge_traversability_bits[DIAGDIR_NE], i); // NE edge
-			if (GetWaterTracks(TileXY(top_x + WATER_REGION_EDGE_LENGTH - 1, top_y + i)) & TRACK_BIT_3WAY_SW) SetBit(this->edge_traversability_bits[DIAGDIR_SW], i); // SW edge
+			TileIndex edge_tile = TileXY(top_x + i, top_y); // NW edge
+			if ((GetWaterTracks(edge_tile) & TRACK_BIT_3WAY_NW) != 0 && (!IsAqueductTile(edge_tile) || GetTunnelBridgeDirection(edge_tile) != DIAGDIR_NW)) {
+				SetBit(this->edge_traversability_bits[DIAGDIR_NW], i);
+			}
+
+			edge_tile = TileXY(top_x + i, top_y + WATER_REGION_EDGE_LENGTH - 1); // SE edge
+			if ((GetWaterTracks(edge_tile) & TRACK_BIT_3WAY_SE) != 0 && (!IsAqueductTile(edge_tile) || GetTunnelBridgeDirection(edge_tile) != DIAGDIR_SE)) {
+				SetBit(this->edge_traversability_bits[DIAGDIR_SE], i);
+			}
+
+			edge_tile = TileXY(top_x, top_y + i); // NE edge
+			if ((GetWaterTracks(edge_tile) & TRACK_BIT_3WAY_NE) != 0 && (!IsAqueductTile(edge_tile) || GetTunnelBridgeDirection(edge_tile) != DIAGDIR_NE)) {
+				SetBit(this->edge_traversability_bits[DIAGDIR_NE], i);
+			}
+
+			edge_tile = TileXY(top_x + WATER_REGION_EDGE_LENGTH - 1, top_y + i); // SW edge
+			if ((GetWaterTracks(edge_tile) & TRACK_BIT_3WAY_SW) != 0 && (!IsAqueductTile(edge_tile) || GetTunnelBridgeDirection(edge_tile) != DIAGDIR_SW)) {
+				SetBit(this->edge_traversability_bits[DIAGDIR_SW], i);
+			}
 		}
 	}
 
