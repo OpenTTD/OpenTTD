@@ -1065,7 +1065,7 @@ void CallVehicleTicks()
 		}
 	}
 
-	Backup<CompanyID> cur_company(_current_company, FILE_LINE);
+	Backup<CompanyID> cur_company(_current_company);
 	for (auto &it : _vehicles_to_autoreplace) {
 		Vehicle *v = it.first;
 		/* Autoreplace needs the current company set as the vehicle owner */
@@ -1618,7 +1618,7 @@ void VehicleEnterDepot(Vehicle *v)
 		}
 
 		if (v->current_order.IsRefit()) {
-			Backup<CompanyID> cur_company(_current_company, v->owner, FILE_LINE);
+			Backup<CompanyID> cur_company(_current_company, v->owner);
 			CommandCost cost = std::get<0>(Command<CMD_REFIT_VEHICLE>::Do(DC_EXEC, v->index, v->current_order.GetRefitCargo(), 0xFF, false, false, 0));
 			cur_company.Restore();
 

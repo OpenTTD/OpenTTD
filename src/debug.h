@@ -60,9 +60,6 @@ void DumpDebugFacilityNames(std::back_insert_iterator<std::string> &output_itera
 void SetDebugString(const char *s, void (*error_func)(const std::string &));
 std::string GetDebugString();
 
-/* Shorter form for passing filename and linenumber */
-#define FILE_LINE __FILE__, __LINE__
-
 /** TicToc profiling.
  * Usage:
  * static TicToc::State state("A name", 1);

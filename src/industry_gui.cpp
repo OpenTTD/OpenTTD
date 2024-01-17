@@ -603,7 +603,7 @@ public:
 		if (Town::GetNumItems() == 0) {
 			ShowErrorMessage(STR_ERROR_CAN_T_GENERATE_INDUSTRIES, STR_ERROR_MUST_FOUND_TOWN_FIRST, WL_INFO);
 		} else {
-			Backup<bool> old_generating_world(_generating_world, true, FILE_LINE);
+			Backup<bool> old_generating_world(_generating_world, true);
 			BasePersistentStorageArray::SwitchMode(PSM_ENTER_GAMELOOP);
 			GenerateIndustries();
 			BasePersistentStorageArray::SwitchMode(PSM_LEAVE_GAMELOOP);
@@ -707,8 +707,8 @@ public:
 				return;
 			}
 
-			Backup<CompanyID> cur_company(_current_company, OWNER_NONE, FILE_LINE);
-			Backup<bool> old_generating_world(_generating_world, true, FILE_LINE);
+			Backup<CompanyID> cur_company(_current_company, OWNER_NONE);
+			Backup<bool> old_generating_world(_generating_world, true);
 			_ignore_restrictions = true;
 
 			Command<CMD_BUILD_INDUSTRY>::Post(STR_ERROR_CAN_T_CONSTRUCT_THIS_INDUSTRY, &CcBuildIndustry, tile, this->selected_type, layout_index, false, seed);

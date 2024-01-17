@@ -40,7 +40,7 @@
 	/* Clients shouldn't start AIs */
 	if (_networking && !_network_server) return;
 
-	Backup<CompanyID> cur_company(_current_company, company, FILE_LINE);
+	Backup<CompanyID> cur_company(_current_company, company);
 	Company *c = Company::Get(company);
 
 	AIConfig *config = c->ai_config.get();
@@ -81,7 +81,7 @@
 	assert(_settings_game.difficulty.competitor_speed <= 4);
 	if ((AI::frame_counter & ((1 << (4 - _settings_game.difficulty.competitor_speed)) - 1)) != 0) return;
 
-	Backup<CompanyID> cur_company(_current_company, FILE_LINE);
+	Backup<CompanyID> cur_company(_current_company);
 	for (const Company *c : Company::Iterate()) {
 		if (c->is_ai) {
 			PerformanceMeasurer framerate((PerformanceElement)(PFE_AI0 + c->index));
@@ -109,7 +109,7 @@
 	if (_networking && !_network_server) return;
 	PerformanceMeasurer::SetInactive((PerformanceElement)(PFE_AI0 + company));
 
-	Backup<CompanyID> cur_company(_current_company, company, FILE_LINE);
+	Backup<CompanyID> cur_company(_current_company, company);
 	Company *c = Company::Get(company);
 
 	delete c->ai_instance;
@@ -129,7 +129,7 @@
 	 * for the server owner to unpause the script again. */
 	if (_network_dedicated) return;
 
-	Backup<CompanyID> cur_company(_current_company, company, FILE_LINE);
+	Backup<CompanyID> cur_company(_current_company, company);
 	Company::Get(company)->ai_instance->Pause();
 
 	cur_company.Restore();
@@ -137,7 +137,7 @@
 
 /* static */ void AI::Unpause(CompanyID company)
 {
-	Backup<CompanyID> cur_company(_current_company, company, FILE_LINE);
+	Backup<CompanyID> cur_company(_current_company, company);
 	Company::Get(company)->ai_instance->Unpause();
 
 	cur_company.Restore();
@@ -145,7 +145,7 @@
 
 /* static */ bool AI::IsPaused(CompanyID company)
 {
-	Backup<CompanyID> cur_company(_current_company, company, FILE_LINE);
+	Backup<CompanyID> cur_company(_current_company, company);
 	bool paused = Company::Get(company)->ai_instance->IsPaused();
 
 	cur_company.Restore();
@@ -259,7 +259,7 @@
 	}
 
 	/* Queue the event */
-	Backup<CompanyID> cur_company(_current_company, company, FILE_LINE);
+	Backup<CompanyID> cur_company(_current_company, company);
 	Company::Get(_current_company)->ai_instance->InsertEvent(event);
 	cur_company.Restore();
 
@@ -293,7 +293,7 @@
 
 		/* When doing emergency saving, an AI can be not fully initialised. */
 		if (c->ai_instance != nullptr) {
-			Backup<CompanyID> cur_company(_current_company, company, FILE_LINE);
+			Backup<CompanyID> cur_company(_current_company, company);
 			c->ai_instance->Save();
 			cur_company.Restore();
 			return;
