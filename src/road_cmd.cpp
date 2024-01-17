@@ -1665,8 +1665,18 @@ static void DrawRoadBits(TileInfo *ti)
 	/* If there are no road bits, return, as there is nothing left to do */
 	if (HasAtMostOneBit(road)) return;
 
+	/* Do not draw details when invisible. */
 	if (roadside == ROADSIDE_TREES && IsInvisibilitySet(TO_TREES)) return;
-	bool is_transparent = roadside == ROADSIDE_TREES && IsTransparencySet(TO_TREES);
+	if (roadside == ROADSIDE_STREET_LIGHTS && IsInvisibilitySet(TO_HOUSES)) return;
+
+	/* Check whether details should be transparent. */
+	bool is_transparent = false;
+	if (roadside == ROADSIDE_TREES && IsTransparencySet(TO_TREES)) {
+		is_transparent = true;
+	}
+	if (roadside == ROADSIDE_STREET_LIGHTS && IsTransparencySet(TO_HOUSES)) {
+		is_transparent = true;
+	}
 
 	/* Draw extra details. */
 	for (const DrawRoadTileStruct *drts = _road_display_table[roadside][road | tram]; drts->image != 0; drts++) {
