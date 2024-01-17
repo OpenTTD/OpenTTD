@@ -71,7 +71,7 @@ inline DirDiff DirDifference(Direction d0, Direction d1)
 	assert(IsValidDirection(d1));
 	/* Cast to uint so compiler can use bitmask. If the difference is negative
 	 * and we used int instead of uint, further "+ 8" would have to be added. */
-	return static_cast<DirDiff>(static_cast<uint>(d0) - static_cast<uint>(d1) % 8);
+	return static_cast<DirDiff>((static_cast<uint>(d0) - static_cast<uint>(d1)) % 8);
 }
 
 /**
