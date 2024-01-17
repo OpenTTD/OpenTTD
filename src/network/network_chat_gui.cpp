@@ -506,7 +506,7 @@ static constexpr NWidgetPart _nested_chat_window_widgets[] = {
 };
 
 /** The description of the chat window. */
-static WindowDesc _chat_window_desc(__FILE__, __LINE__,
+static WindowDesc _chat_window_desc(
 	WDP_MANUAL, nullptr, 0, 0,
 	WC_SEND_NETWORK_MSG, WC_NONE,
 	0,

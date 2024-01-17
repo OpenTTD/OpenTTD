@@ -1003,14 +1003,14 @@ struct GenerateLandscapeWindow : public Window {
 	}
 };
 
-static WindowDesc _generate_landscape_desc(__FILE__, __LINE__,
+static WindowDesc _generate_landscape_desc(
 	WDP_CENTER, nullptr, 0, 0,
 	WC_GENERATE_LANDSCAPE, WC_NONE,
 	0,
 	std::begin(_nested_generate_landscape_widgets), std::end(_nested_generate_landscape_widgets)
 );
 
-static WindowDesc _heightmap_load_desc(__FILE__, __LINE__,
+static WindowDesc _heightmap_load_desc(
 	WDP_CENTER, nullptr, 0, 0,
 	WC_GENERATE_LANDSCAPE, WC_NONE,
 	0,
@@ -1313,7 +1313,7 @@ static constexpr NWidgetPart _nested_create_scenario_widgets[] = {
 	EndContainer(),
 };
 
-static WindowDesc _create_scenario_desc(__FILE__, __LINE__,
+static WindowDesc _create_scenario_desc(
 	WDP_CENTER, nullptr, 0, 0,
 	WC_GENERATE_LANDSCAPE, WC_NONE,
 	0,
@@ -1339,7 +1339,7 @@ static constexpr NWidgetPart _nested_generate_progress_widgets[] = {
 };
 
 
-static WindowDesc _generate_progress_desc(__FILE__, __LINE__,
+static WindowDesc _generate_progress_desc(
 	WDP_CENTER, nullptr, 0, 0,
 	WC_MODAL_PROGRESS, WC_NONE,
 	0,

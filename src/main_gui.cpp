@@ -513,7 +513,7 @@ struct MainWindow : Window
 	}};
 };
 
-static WindowDesc _main_window_desc(__FILE__, __LINE__,
+static WindowDesc _main_window_desc(
 	WDP_MANUAL, nullptr, 0, 0,
 	WC_MAIN_WINDOW, WC_NONE,
 	WDF_NO_CLOSE,

@@ -383,7 +383,7 @@ static constexpr NWidgetPart _nested_sign_list_widgets[] = {
 	EndContainer(),
 };
 
-static WindowDesc _sign_list_desc(__FILE__, __LINE__,
+static WindowDesc _sign_list_desc(
 	WDP_AUTO, "list_signs", 358, 138,
 	WC_SIGN_LIST, WC_NONE,
 	0,
@@ -549,7 +549,7 @@ static constexpr NWidgetPart _nested_query_sign_edit_widgets[] = {
 	EndContainer(),
 };
 
-static WindowDesc _query_sign_edit_desc(__FILE__, __LINE__,
+static WindowDesc _query_sign_edit_desc(
 	WDP_CENTER, nullptr, 0, 0,
 	WC_QUERY_STRING, WC_NONE,
 	WDF_CONSTRUCTION,

@@ -267,7 +267,7 @@ static constexpr NWidgetPart _nested_subsidies_list_widgets[] = {
 	EndContainer(),
 };
 
-static WindowDesc _subsidies_list_desc(__FILE__, __LINE__,
+static WindowDesc _subsidies_list_desc(
 	WDP_AUTO, "list_subsidies", 500, 127,
 	WC_SUBSIDIES_LIST, WC_NONE,
 	0,

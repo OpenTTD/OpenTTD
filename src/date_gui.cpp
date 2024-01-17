@@ -195,7 +195,7 @@ static constexpr NWidgetPart _nested_set_date_widgets[] = {
 };
 
 /** Description of the date setting window. */
-static WindowDesc _set_date_desc(__FILE__, __LINE__,
+static WindowDesc _set_date_desc(
 	WDP_CENTER, nullptr, 0, 0,
 	WC_SET_DATE, WC_NONE,
 	0,
