@@ -408,7 +408,7 @@ struct NetworkChatWindow : public Window {
 				/* Now any match we make on _chat_tab_completion_buf after this, is perfect */
 			}
 
-			if (tb_buf.size() < cur_name.size() && StrStartsWith(cur_name, tb_buf)) {
+			if (tb_buf.size() < cur_name.size() && cur_name.starts_with(tb_buf)) {
 				/* Save the data it was before completion */
 				if (!second_scan) _chat_tab_completion_buf = tb->buf;
 				_chat_tab_completion_active = true;

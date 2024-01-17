@@ -679,7 +679,7 @@ static const char *MakeScreenshotName(const char *default_fn, const char *ext, b
 	}
 
 	/* Handle user-specified filenames ending in # with automatic numbering */
-	if (StrEndsWith(_screenshot_name, "#")) {
+	if (_screenshot_name.ends_with("#")) {
 		generate = true;
 		_screenshot_name.pop_back();
 	}

@@ -449,7 +449,7 @@ void NetworkAddress::Listen(int socktype, SocketList *sockets)
  */
 /* static */ ServerAddress ServerAddress::Parse(const std::string &connection_string, uint16_t default_port, CompanyID *company_id)
 {
-	if (StrStartsWith(connection_string, "+")) {
+	if (connection_string.starts_with("+")) {
 		std::string_view invite_code = ParseCompanyFromConnectionString(connection_string, company_id);
 		return ServerAddress(SERVER_ADDRESS_INVITE_CODE, std::string(invite_code));
 	}

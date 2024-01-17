@@ -514,7 +514,7 @@ void ClientNetworkCoordinatorSocketHandler::GetListing()
  */
 void ClientNetworkCoordinatorSocketHandler::ConnectToServer(const std::string &invite_code, TCPServerConnecter *connecter)
 {
-	assert(StrStartsWith(invite_code, "+"));
+	assert(invite_code.starts_with("+"));
 
 	if (this->connecter_pre.find(invite_code) != this->connecter_pre.end()) {
 		/* If someone is hammering the refresh key, one can sent out two

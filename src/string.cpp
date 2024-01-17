@@ -292,19 +292,6 @@ void StrTrimInPlace(std::string &str)
 }
 
 /**
- * Check whether the given string starts with the given prefix.
- * @param str    The string to look at.
- * @param prefix The prefix to look for.
- * @return True iff the begin of the string is the same as the prefix.
- */
-bool StrStartsWith(const std::string_view str, const std::string_view prefix)
-{
-	size_t prefix_len = prefix.size();
-	if (str.size() < prefix_len) return false;
-	return str.compare(0, prefix_len, prefix, 0, prefix_len) == 0;
-}
-
-/**
  * Check whether the given string starts with the given prefix, ignoring case.
  * @param str    The string to look at.
  * @param prefix The prefix to look for.
@@ -314,19 +301,6 @@ bool StrStartsWithIgnoreCase(std::string_view str, const std::string_view prefix
 {
 	if (str.size() < prefix.size()) return false;
 	return StrEqualsIgnoreCase(str.substr(0, prefix.size()), prefix);
-}
-
-/**
- * Check whether the given string ends with the given suffix.
- * @param str    The string to look at.
- * @param suffix The suffix to look for.
- * @return True iff the end of the string is the same as the suffix.
- */
-bool StrEndsWith(const std::string_view str, const std::string_view suffix)
-{
-	size_t suffix_len = suffix.size();
-	if (str.size() < suffix_len) return false;
-	return str.compare(str.size() - suffix_len, suffix_len, suffix, 0, suffix_len) == 0;
 }
 
 /** Case insensitive implementation of the standard character type traits. */

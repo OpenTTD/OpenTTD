@@ -177,14 +177,14 @@ enum class HyperlinkType {
 static HyperlinkType ClassifyHyperlink(const std::string &destination, bool trusted)
 {
 	if (destination.empty()) return HyperlinkType::Unknown;
-	if (StrStartsWith(destination, "#")) return HyperlinkType::Internal;
+	if (destination.starts_with("#")) return HyperlinkType::Internal;
 
 	/* Only allow external / internal links for sources we trust. */
 	if (!trusted) return HyperlinkType::Unknown;
 
-	if (StrStartsWith(destination, "http://")) return HyperlinkType::Web;
-	if (StrStartsWith(destination, "https://")) return HyperlinkType::Web;
-	if (StrStartsWith(destination, "./")) return HyperlinkType::File;
+	if (destination.starts_with("http://")) return HyperlinkType::Web;
+	if (destination.starts_with("https://")) return HyperlinkType::Web;
+	if (destination.starts_with("./")) return HyperlinkType::File;
 	return HyperlinkType::Unknown;
 }
 
@@ -428,7 +428,7 @@ void TextfileWindow::NavigateHistory(int delta)
 void TextfileWindow::NavigateToFile(std::string newfile, size_t line)
 {
 	/* Double-check that the file link begins with ./ as a relative path. */
-	if (!StrStartsWith(newfile, "./")) return;
+	if (!newfile.starts_with("./")) return;
 
 	/* Get the path portion of the current file path. */
 	std::string newpath = this->filepath;
@@ -783,12 +783,12 @@ static void Xunzip(byte **bufp, size_t *sizep)
 
 #if defined(WITH_ZLIB)
 	/* In-place gunzip */
-	if (StrEndsWith(textfile, ".gz")) Gunzip((byte**)&buf, &filesize);
+	if (textfile.ends_with(".gz")) Gunzip((byte**)&buf, &filesize);
 #endif
 
 #if defined(WITH_LIBLZMA)
 	/* In-place xunzip */
-	if (StrEndsWith(textfile, ".xz")) Xunzip((byte**)&buf, &filesize);
+	if (textfile.ends_with(".xz")) Xunzip((byte**)&buf, &filesize);
 #endif
 
 	if (buf == nullptr) return;
@@ -796,7 +796,7 @@ static void Xunzip(byte **bufp, size_t *sizep)
 	std::string_view sv_buf(buf, filesize);
 
 	/* Check for the byte-order-mark, and skip it if needed. */
-	if (StrStartsWith(sv_buf, "\ufeff")) sv_buf.remove_prefix(3);
+	if (sv_buf.starts_with("\ufeff")) sv_buf.remove_prefix(3);
 
 	/* Update the filename. */
 	this->filepath = textfile;

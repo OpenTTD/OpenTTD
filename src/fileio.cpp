@@ -608,7 +608,7 @@ bool TarScanner::AddFile(const std::string &filename, size_t, [[maybe_unused]] c
 				/* Process relative path.
 				 * Note: The destination of links must not contain any directory-links. */
 				std::string dest = (std::filesystem::path(name).remove_filename() /= link).lexically_normal().string();
-				if (dest[0] == PATHSEPCHAR || StrStartsWith(dest, "..")) {
+				if (dest[0] == PATHSEPCHAR || dest.starts_with("..")) {
 					Debug(misc, 5, "Ignoring link pointing outside of data directory: {} -> {}", name, link);
 					break;
 				}
