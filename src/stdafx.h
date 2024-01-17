@@ -349,14 +349,13 @@ static_assert(SIZE_MAX >= UINT32_MAX);
 /* For the FMT library we only want to use the headers, not link to some library. */
 #define FMT_HEADER_ONLY
 
-[[noreturn]] void NotReachedError(int line, const char *file);
-[[noreturn]] void AssertFailedError(int line, const char *file, const char *expression);
-#define NOT_REACHED() NotReachedError(__LINE__, __FILE__)
+[[noreturn]] void NOT_REACHED(const std::source_location location = std::source_location::current());
+[[noreturn]] void AssertFailedError(const char *expression, const std::source_location location = std::source_location::current());
 
 /* For non-debug builds with assertions enabled use the special assertion handler. */
 #if defined(NDEBUG) && defined(WITH_ASSERT)
 #	undef assert
-#	define assert(expression) do { if (!(expression)) [[unlikely]] AssertFailedError(__LINE__, __FILE__, #expression); } while (false)
+#	define assert(expression) do { if (!(expression)) [[unlikely]] AssertFailedError(#expression); } while (false)
 #endif
 
 /* Define JSON_ASSERT, which is used by nlohmann-json. Otherwise the header-file

@@ -10,12 +10,12 @@
 #include "stdafx.h"
 #include "error_func.h"
 
-[[noreturn]] void NotReachedError(int line, const char *file)
+[[noreturn]] void NOT_REACHED(const std::source_location location)
 {
-	FatalError("NOT_REACHED triggered at line {} of {}", line, file);
+	FatalError("NOT_REACHED triggered at line {} of {}", location.line(), location.file_name());
 }
 
-[[noreturn]] void AssertFailedError(int line, const char *file, const char *expression)
+[[noreturn]] void AssertFailedError(const char *expression, const std::source_location location)
 {
-	FatalError("Assertion failed at line {} of {}: {}", line, file, expression);
+	FatalError("Assertion failed at line {} of {}: {}", location.line(), location.file_name(), expression);
 }
