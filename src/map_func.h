@@ -465,9 +465,8 @@ inline TileIndexDiff ToTileIndexDiff(TileIndexDiffC tidc)
 	 */
 #	define TILE_ADD(x, y) ((x) + (y))
 #else
-	extern TileIndex TileAdd(TileIndex tile, TileIndexDiff add,
-		const char *exp, const char *file, int line);
-#	define TILE_ADD(x, y) (TileAdd((x), (y), #x " + " #y, __FILE__, __LINE__))
+	extern TileIndex TileAdd(TileIndex tile, TileIndexDiff offset);
+#	define TILE_ADD(x, y) (TileAdd((x), (y))
 #endif
 
 /**
