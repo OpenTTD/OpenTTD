@@ -71,6 +71,7 @@
 #include <numeric>
 #include <optional>
 #include <set>
+#include <source_location>
 #include <span>
 #include <stdexcept>
 #include <string>
