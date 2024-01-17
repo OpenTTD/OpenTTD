@@ -214,14 +214,14 @@ static constexpr NWidgetPart _nested_highscore_widgets[] = {
 	NWidget(WWT_PANEL, COLOUR_BROWN, WID_H_BACKGROUND), SetResize(1, 1), EndContainer(),
 };
 
-static WindowDesc _highscore_desc(__FILE__, __LINE__,
+static WindowDesc _highscore_desc(
 	WDP_MANUAL, nullptr, 0, 0,
 	WC_HIGHSCORE, WC_NONE,
 	0,
 	std::begin(_nested_highscore_widgets), std::end(_nested_highscore_widgets)
 );
 
-static WindowDesc _endgame_desc(__FILE__, __LINE__,
+static WindowDesc _endgame_desc(
 	WDP_MANUAL, nullptr, 0, 0,
 	WC_ENDSCREEN, WC_NONE,
 	0,

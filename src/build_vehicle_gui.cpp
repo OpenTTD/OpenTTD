@@ -1895,7 +1895,7 @@ struct BuildVehicleWindow : Window {
 	}};
 };
 
-static WindowDesc _build_vehicle_desc(__FILE__, __LINE__,
+static WindowDesc _build_vehicle_desc(
 	WDP_AUTO, "build_vehicle", 240, 268,
 	WC_BUILD_VEHICLE, WC_NONE,
 	WDF_CONSTRUCTION,

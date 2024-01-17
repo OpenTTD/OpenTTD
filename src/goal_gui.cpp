@@ -302,7 +302,7 @@ static constexpr NWidgetPart _nested_goals_list_widgets[] = {
 	EndContainer(),
 };
 
-static WindowDesc _goals_list_desc(__FILE__, __LINE__,
+static WindowDesc _goals_list_desc(
 	WDP_AUTO, "list_goals", 500, 127,
 	WC_GOALS_LIST, WC_NONE,
 	0,
@@ -512,28 +512,24 @@ static constexpr NWidgetPart _nested_goal_question_widgets_error[] = {
 
 static WindowDesc _goal_question_list_desc[] = {
 	{
-		__FILE__, __LINE__,
 		WDP_CENTER, nullptr, 0, 0,
 		WC_GOAL_QUESTION, WC_NONE,
 		WDF_CONSTRUCTION,
 		std::begin(_nested_goal_question_widgets_question), std::end(_nested_goal_question_widgets_question),
 	},
 	{
-		__FILE__, __LINE__,
 		WDP_CENTER, nullptr, 0, 0,
 		WC_GOAL_QUESTION, WC_NONE,
 		WDF_CONSTRUCTION,
 		std::begin(_nested_goal_question_widgets_info), std::end(_nested_goal_question_widgets_info),
 	},
 	{
-		__FILE__, __LINE__,
 		WDP_CENTER, nullptr, 0, 0,
 		WC_GOAL_QUESTION, WC_NONE,
 		WDF_CONSTRUCTION,
 		std::begin(_nested_goal_question_widgets_warning), std::end(_nested_goal_question_widgets_warning),
 	},
 	{
-		__FILE__, __LINE__,
 		WDP_CENTER, nullptr, 0, 0,
 		WC_GOAL_QUESTION, WC_NONE,
 		WDF_CONSTRUCTION,

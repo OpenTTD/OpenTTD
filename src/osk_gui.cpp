@@ -333,7 +333,7 @@ static constexpr NWidgetPart _nested_osk_widgets[] = {
 	EndContainer(),
 };
 
-static WindowDesc _osk_desc(__FILE__, __LINE__,
+static WindowDesc _osk_desc(
 	WDP_CENTER, nullptr, 0, 0,
 	WC_OSK, WC_NONE,
 	0,

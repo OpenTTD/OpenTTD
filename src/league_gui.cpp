@@ -197,7 +197,7 @@ static constexpr NWidgetPart _nested_performance_league_widgets[] = {
 	EndContainer(),
 };
 
-static WindowDesc _performance_league_desc(__FILE__, __LINE__,
+static WindowDesc _performance_league_desc(
 	WDP_AUTO, "performance_league", 0, 0,
 	WC_COMPANY_LEAGUE, WC_NONE,
 	0,
@@ -430,7 +430,7 @@ static constexpr NWidgetPart _nested_script_league_widgets[] = {
 	EndContainer(),
 };
 
-static WindowDesc _script_league_desc(__FILE__, __LINE__,
+static WindowDesc _script_league_desc(
 	WDP_AUTO, "script_league", 0, 0,
 	WC_COMPANY_LEAGUE, WC_NONE,
 	0,

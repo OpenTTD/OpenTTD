@@ -50,7 +50,7 @@ TEST_CASE("WindowDesc - ini_key validity")
 	bool has_inikey = window_desc->ini_key != nullptr;
 	bool has_widget = std::any_of(window_desc->nwid_begin, window_desc->nwid_end, [](const NWidgetPart &part) { return part.type == WWT_DEFSIZEBOX || part.type == WWT_STICKYBOX; });
 
-	INFO(fmt::format("{}:{}", window_desc->file, window_desc->line));
+	INFO(fmt::format("{}:{}", window_desc->source_location.file_name(), window_desc->source_location.line()));
 	CAPTURE(has_inikey);
 	CAPTURE(has_widget);
 
@@ -78,7 +78,7 @@ TEST_CASE("WindowDesc - NWidgetParts properly closed")
 {
 	const WindowDesc *window_desc = GENERATE(from_range(std::begin(*_window_descs), std::end(*_window_descs)));
 
-	INFO(fmt::format("{}:{}", window_desc->file, window_desc->line));
+	INFO(fmt::format("{}:{}", window_desc->source_location.file_name(), window_desc->source_location.line()));
 
 	CHECK(IsNWidgetTreeClosed(window_desc->nwid_begin, window_desc->nwid_end));
 }
@@ -87,7 +87,7 @@ TEST_CASE_METHOD(WindowDescTestsFixture, "WindowDesc - NWidgetPart validity")
 {
 	const WindowDesc *window_desc = GENERATE(from_range(std::begin(*_window_descs), std::end(*_window_descs)));
 
-	INFO(fmt::format("{}:{}", window_desc->file, window_desc->line));
+	INFO(fmt::format("{}:{}", window_desc->source_location.file_name(), window_desc->source_location.line()));
 
 	NWidgetStacked *shade_select = nullptr;
 	std::unique_ptr<NWidgetBase> root = nullptr;

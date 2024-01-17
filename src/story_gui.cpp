@@ -968,7 +968,7 @@ static constexpr NWidgetPart _nested_story_book_widgets[] = {
 	EndContainer(),
 };
 
-static WindowDesc _story_book_desc(__FILE__, __LINE__,
+static WindowDesc _story_book_desc(
 	WDP_CENTER, "view_story", 400, 300,
 	WC_STORY_BOOK, WC_NONE,
 	0,

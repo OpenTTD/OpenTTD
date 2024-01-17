@@ -539,7 +539,7 @@ static constexpr NWidgetPart _nested_linkgraph_legend_widgets[] = {
 static_assert(WID_LGL_SATURATION_LAST - WID_LGL_SATURATION_FIRST ==
 		lengthof(LinkGraphOverlay::LINK_COLOURS[0]) - 1);
 
-static WindowDesc _linkgraph_legend_desc(__FILE__, __LINE__,
+static WindowDesc _linkgraph_legend_desc(
 	WDP_AUTO, "toolbar_linkgraph", 0, 0,
 	WC_LINKGRAPH_LEGEND, WC_NONE,
 	0,

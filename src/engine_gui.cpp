@@ -144,7 +144,7 @@ struct EnginePreviewWindow : Window {
 	}
 };
 
-static WindowDesc _engine_preview_desc(__FILE__, __LINE__,
+static WindowDesc _engine_preview_desc(
 	WDP_CENTER, nullptr, 0, 0,
 	WC_ENGINE_PREVIEW, WC_NONE,
 	WDF_CONSTRUCTION,

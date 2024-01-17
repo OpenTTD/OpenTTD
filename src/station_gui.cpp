@@ -767,7 +767,7 @@ static constexpr NWidgetPart _nested_company_stations_widgets[] = {
 	EndContainer(),
 };
 
-static WindowDesc _company_stations_desc(__FILE__, __LINE__,
+static WindowDesc _company_stations_desc(
 	WDP_AUTO, "list_stations", 358, 162,
 	WC_STATION_LIST, WC_NONE,
 	0,
@@ -2135,7 +2135,7 @@ const StringID StationViewWindow::_group_names[] = {
 	INVALID_STRING_ID
 };
 
-static WindowDesc _station_view_desc(__FILE__, __LINE__,
+static WindowDesc _station_view_desc(
 	WDP_AUTO, "view_station", 249, 117,
 	WC_STATION_VIEW, WC_NONE,
 	0,
@@ -2392,7 +2392,7 @@ struct SelectStationWindow : Window {
 	}
 };
 
-static WindowDesc _select_station_desc(__FILE__, __LINE__,
+static WindowDesc _select_station_desc(
 	WDP_AUTO, "build_station_join", 200, 180,
 	WC_SELECT_STATION, WC_NONE,
 	WDF_CONSTRUCTION,

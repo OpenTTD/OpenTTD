@@ -709,7 +709,7 @@ static constexpr NWidgetPart _nested_build_object_widgets[] = {
 	EndContainer(),
 };
 
-static WindowDesc _build_object_desc(__FILE__, __LINE__,
+static WindowDesc _build_object_desc(
 	WDP_AUTO, "build_object", 0, 0,
 	WC_BUILD_OBJECT, WC_BUILD_TOOLBAR,
 	WDF_CONSTRUCTION,

@@ -138,7 +138,7 @@ static constexpr NWidgetPart _nested_graph_legend_widgets[] = {
 	EndContainer(),
 };
 
-static WindowDesc _graph_legend_desc(__FILE__, __LINE__,
+static WindowDesc _graph_legend_desc(
 	WDP_AUTO, "graph_legend", 0, 0,
 	WC_GRAPH_LEGEND, WC_NONE,
 	0,
@@ -650,7 +650,7 @@ static constexpr NWidgetPart _nested_operating_profit_widgets[] = {
 	EndContainer(),
 };
 
-static WindowDesc _operating_profit_desc(__FILE__, __LINE__,
+static WindowDesc _operating_profit_desc(
 	WDP_AUTO, "graph_operating_profit", 0, 0,
 	WC_OPERATING_PROFIT, WC_NONE,
 	0,
@@ -701,7 +701,7 @@ static constexpr NWidgetPart _nested_income_graph_widgets[] = {
 	EndContainer(),
 };
 
-static WindowDesc _income_graph_desc(__FILE__, __LINE__,
+static WindowDesc _income_graph_desc(
 	WDP_AUTO, "graph_income", 0, 0,
 	WC_INCOME_GRAPH, WC_NONE,
 	0,
@@ -750,7 +750,7 @@ static constexpr NWidgetPart _nested_delivered_cargo_graph_widgets[] = {
 	EndContainer(),
 };
 
-static WindowDesc _delivered_cargo_graph_desc(__FILE__, __LINE__,
+static WindowDesc _delivered_cargo_graph_desc(
 	WDP_AUTO, "graph_delivered_cargo", 0, 0,
 	WC_DELIVERED_CARGO, WC_NONE,
 	0,
@@ -806,7 +806,7 @@ static constexpr NWidgetPart _nested_performance_history_widgets[] = {
 	EndContainer(),
 };
 
-static WindowDesc _performance_history_desc(__FILE__, __LINE__,
+static WindowDesc _performance_history_desc(
 	WDP_AUTO, "graph_performance", 0, 0,
 	WC_PERFORMANCE_HISTORY, WC_NONE,
 	0,
@@ -855,7 +855,7 @@ static constexpr NWidgetPart _nested_company_value_graph_widgets[] = {
 	EndContainer(),
 };
 
-static WindowDesc _company_value_graph_desc(__FILE__, __LINE__,
+static WindowDesc _company_value_graph_desc(
 	WDP_AUTO, "graph_company_value", 0, 0,
 	WC_COMPANY_VALUE, WC_NONE,
 	0,
@@ -1091,7 +1091,7 @@ static constexpr NWidgetPart _nested_cargo_payment_rates_widgets[] = {
 	EndContainer(),
 };
 
-static WindowDesc _cargo_payment_rates_desc(__FILE__, __LINE__,
+static WindowDesc _cargo_payment_rates_desc(
 	WDP_AUTO, "graph_cargo_payment_rates", 0, 0,
 	WC_PAYMENT_RATES, WC_NONE,
 	0,
@@ -1383,7 +1383,7 @@ static constexpr NWidgetPart _nested_performance_rating_detail_widgets[] = {
 	NWidgetFunction(MakePerformanceDetailPanels),
 };
 
-static WindowDesc _performance_rating_detail_desc(__FILE__, __LINE__,
+static WindowDesc _performance_rating_detail_desc(
 	WDP_AUTO, "league_details", 0, 0,
 	WC_PERFORMANCE_DETAIL, WC_NONE,
 	0,

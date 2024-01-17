@@ -43,7 +43,7 @@ static constexpr NWidgetPart _nested_errmsg_widgets[] = {
 	EndContainer(),
 };
 
-static WindowDesc _errmsg_desc(__FILE__, __LINE__,
+static WindowDesc _errmsg_desc(
 	WDP_MANUAL, nullptr, 0, 0,
 	WC_ERRMSG, WC_NONE,
 	0,
@@ -63,7 +63,7 @@ static constexpr NWidgetPart _nested_errmsg_face_widgets[] = {
 	EndContainer(),
 };
 
-static WindowDesc _errmsg_face_desc(__FILE__, __LINE__,
+static WindowDesc _errmsg_face_desc(
 	WDP_MANUAL, nullptr, 0, 0,
 	WC_ERRMSG, WC_NONE,
 	0,

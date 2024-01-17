@@ -2183,7 +2183,7 @@ static constexpr NWidgetPart _nested_toolbar_normal_widgets[] = {
 	NWidgetFunction(MakeMainToolbar),
 };
 
-static WindowDesc _toolb_normal_desc(__FILE__, __LINE__,
+static WindowDesc _toolb_normal_desc(
 	WDP_MANUAL, nullptr, 0, 0,
 	WC_MAIN_TOOLBAR, WC_NONE,
 	WDF_NO_FOCUS | WDF_NO_CLOSE,
@@ -2523,7 +2523,7 @@ static constexpr NWidgetPart _nested_toolb_scen_widgets[] = {
 	NWidgetFunction(MakeScenarioToolbar),
 };
 
-static WindowDesc _toolb_scen_desc(__FILE__, __LINE__,
+static WindowDesc _toolb_scen_desc(
 	WDP_MANUAL, nullptr, 0, 0,
 	WC_MAIN_TOOLBAR, WC_NONE,
 	WDF_NO_FOCUS | WDF_NO_CLOSE,
