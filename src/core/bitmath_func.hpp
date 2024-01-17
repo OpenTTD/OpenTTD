@@ -288,38 +288,6 @@ inline bool HasAtMostOneBit(T value)
 	return (value & (value - 1)) == 0;
 }
 
-/**
- * ROtate \a x Left by \a n
- *
- * @note Assumes a byte has 8 bits
- * @param x The value which we want to rotate
- * @param n The number how many we want to rotate
- * @pre n < sizeof(T) * 8
- * @return A bit rotated number
- */
-template <typename T>
-inline T ROL(const T x, const uint8_t n)
-{
-	if (n == 0) return x;
-	return (T)(x << n | x >> (sizeof(x) * 8 - n));
-}
-
-/**
- * ROtate \a x Right by \a n
- *
- * @note Assumes a byte has 8 bits
- * @param x The value which we want to rotate
- * @param n The number how many we want to rotate
- * @pre n < sizeof(T) * 8
- * @return A bit rotated number
- */
-template <typename T>
-inline T ROR(const T x, const uint8_t n)
-{
-	if (n == 0) return x;
-	return (T)(x >> n | x << (sizeof(x) * 8 - n));
-}
-
  /**
  * Iterable ensemble of each set bit in a value.
  * @tparam Tbitpos Type of the position variable.

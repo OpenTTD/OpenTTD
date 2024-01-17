@@ -212,7 +212,7 @@ static bool VerifyOldNameChecksum(char *title, uint len)
 	uint16_t sum = 0;
 	for (uint i = 0; i < len - HEADER_CHECKSUM_SIZE; i++) {
 		sum += title[i];
-		sum = ROL(sum, 1);
+		sum = std::rotl(sum, 1);
 	}
 
 	sum ^= 0xAAAA; // computed checksum

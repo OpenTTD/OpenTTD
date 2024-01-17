@@ -130,14 +130,14 @@ static inline void Md5Set1(const uint32_t *X, uint32_t *a, const uint32_t *b, co
 {
 	uint32_t t = (*b & *c) | (~*b & *d);
 	t += *a + X[k] + Ti;
-	*a = ROL(t, s) + *b;
+	*a = std::rotl(t, s) + *b;
 }
 
 static inline void Md5Set2(const uint32_t *X, uint32_t *a, const uint32_t *b, const uint32_t *c, const uint32_t *d, const uint8_t k, const uint8_t s, const uint32_t Ti)
 {
 	uint32_t t = (*b & *d) | (*c & ~*d);
 	t += *a + X[k] + Ti;
-	*a = ROL(t, s) + *b;
+	*a = std::rotl(t, s) + *b;
 }
 
 
@@ -145,14 +145,14 @@ static inline void Md5Set3(const uint32_t *X, uint32_t *a, const uint32_t *b, co
 {
 	uint32_t t = *b ^ *c ^ *d;
 	t += *a + X[k] + Ti;
-	*a = ROL(t, s) + *b;
+	*a = std::rotl(t, s) + *b;
 }
 
 static inline void Md5Set4(const uint32_t *X, uint32_t *a, const uint32_t *b, const uint32_t *c, const uint32_t *d, const uint8_t k, const uint8_t s, const uint32_t Ti)
 {
 	uint32_t t = *c ^ (*b | ~*d);
 	t += *a + X[k] + Ti;
-	*a = ROL(t, s) + *b;
+	*a = std::rotl(t, s) + *b;
 }
 
 Md5::Md5()
