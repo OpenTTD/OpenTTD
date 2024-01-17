@@ -680,7 +680,7 @@ void LinkGraphLegendWindow::UpdateOverlayCompanies()
 void LinkGraphLegendWindow::UpdateOverlayCargoes()
 {
 	CargoTypes mask = 0;
-	for (CompanyID c = COMPANY_FIRST; c < MAX_COMPANIES; c++) {
+	for (uint c = 0; c < num_cargo; c++) {
 		if (!this->IsWidgetLowered(WID_LGL_CARGO_FIRST + c)) continue;
 		SetBit(mask, _sorted_cargo_specs[c]->Index());
 	}
