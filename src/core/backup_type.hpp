@@ -22,20 +22,18 @@ struct Backup {
 	/**
 	 * Backup variable.
 	 * @param original Variable to backup.
-	 * @param file Filename for debug output. Use FILE_LINE macro.
-	 * @param line Linenumber for debug output. Use FILE_LINE macro.
+	 * @param location Source location for debug output.
 	 */
-	Backup(T &original, const char * const file, const int line) : original(original), valid(true), original_value(original), file(file), line(line) {}
+	Backup(T &original, const std::source_location location = std::source_location::current()) : original(original), valid(true), original_value(original), location(location) {}
 
 	/**
 	 * Backup variable and switch to new value.
 	 * @param original Variable to backup.
 	 * @param new_value New value for variable.
-	 * @param file Filename for debug output. Use FILE_LINE macro.
-	 * @param line Linenumber for debug output. Use FILE_LINE macro.
+	 * @param location Source location for debug output.
 	 */
 	template <typename U>
-	Backup(T &original, const U &new_value, const char * const file, const int line) : original(original), valid(true), original_value(original), file(file), line(line)
+	Backup(T &original, const U &new_value, const std::source_location location = std::source_location::current()) : original(original), valid(true), original_value(original), location(location)
 	{
 		/* Note: We use a separate typename U, so type conversions are handled by assignment operator. */
 		original = new_value;
@@ -51,7 +49,7 @@ struct Backup {
 		{
 			/* We cannot assert here, as missing restoration is 'normal' when exceptions are thrown.
 			 * Exceptions are especially used to abort world generation. */
-			Debug(misc, 0, "{}:{}: Backed-up value was not restored!", this->file, this->line);
+			Debug(misc, 0, "{}:{}: Backed-up value was not restored!", this->location.file_name(), this->location.line());
 			this->Restore();
 		}
 	}
@@ -140,8 +138,7 @@ private:
 	bool valid;
 	T original_value;
 
-	const char * const file;
-	const int line;
+	const std::source_location location;
 };
 
 /**

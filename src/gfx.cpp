@@ -1200,7 +1200,7 @@ std::unique_ptr<uint32_t[]> DrawSpriteToRgbaBuffer(SpriteID spriteId, ZoomLevel 
 	}
 
 	/* Temporarily disable screen animations while blitting - This prevents 40bpp_anim from writing to the animation buffer. */
-	Backup<bool> disable_anim(_screen_disable_anim, true, FILE_LINE);
+	Backup<bool> disable_anim(_screen_disable_anim, true);
 	GfxBlitter<1, true>(sprite, 0, 0, BM_NORMAL, nullptr, real_sprite, zoom, &dpi);
 	disable_anim.Restore();
 

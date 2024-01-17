@@ -1210,7 +1210,7 @@ CommandCost CmdGiveMoney(DoCommandFlag flags, Money money, CompanyID dest_compan
 
 	if (flags & DC_EXEC) {
 		/* Add money to company */
-		Backup<CompanyID> cur_company(_current_company, dest_company, FILE_LINE);
+		Backup<CompanyID> cur_company(_current_company, dest_company);
 		SubtractMoneyFromCompany(CommandCost(EXPENSES_OTHER, -amount.GetCost()));
 		cur_company.Restore();
 

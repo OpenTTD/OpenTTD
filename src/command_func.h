@@ -373,7 +373,7 @@ protected:
 			assert(AllClientIdsSet(args, std::index_sequence_for<Targs...>{}));
 		}
 
-		Backup<CompanyID> cur_company(_current_company, FILE_LINE);
+		Backup<CompanyID> cur_company(_current_company);
 		if (!InternalExecutePrepTest(cmd_flags, tile, cur_company)) {
 			cur_company.Trash();
 			return MakeResult(CMD_ERROR);

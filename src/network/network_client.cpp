@@ -1196,7 +1196,7 @@ void NetworkClientRequestMove(CompanyID company_id, const std::string &pass)
  */
 void NetworkClientsToSpectators(CompanyID cid)
 {
-	Backup<CompanyID> cur_company(_current_company, FILE_LINE);
+	Backup<CompanyID> cur_company(_current_company);
 	/* If our company is changing owner, go to spectators */
 	if (cid == _local_company) SetLocalCompany(COMPANY_SPECTATOR);
 

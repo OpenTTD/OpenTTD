@@ -59,7 +59,7 @@ static void GenerateDesertArea(TileIndex end, TileIndex start)
 {
 	if (_game_mode != GM_EDITOR) return;
 
-	Backup<bool> old_generating_world(_generating_world, true, FILE_LINE);
+	Backup<bool> old_generating_world(_generating_world, true);
 
 	TileArea ta(start, end);
 	for (TileIndex tile : ta) {
@@ -507,7 +507,7 @@ static void ResetLandscapeConfirmationCallback(Window *, bool confirmed)
 	if (confirmed) {
 		/* Set generating_world to true to get instant-green grass after removing
 		 * company property. */
-		Backup<bool> old_generating_world(_generating_world, true, FILE_LINE);
+		Backup<bool> old_generating_world(_generating_world, true);
 
 		/* Delete all companies */
 		for (Company *c : Company::Iterate()) {

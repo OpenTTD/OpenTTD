@@ -268,7 +268,7 @@ std::tuple<CommandCost, Money, TileIndex> CmdTerraformLand(DoCommandFlag flags, 
 			bool indirectly_cleared = coa != nullptr && coa->first_tile != t;
 
 			/* Check tiletype-specific things, and add extra-cost */
-			Backup<bool> old_generating_world(_generating_world, FILE_LINE);
+			Backup<bool> old_generating_world(_generating_world);
 			if (_game_mode == GM_EDITOR) old_generating_world.Change(true); // used to create green terraformed land
 			DoCommandFlag tile_flags = flags | DC_AUTO | DC_FORCE_CLEAR_TILE;
 			if (pass == 0) {

@@ -1099,7 +1099,7 @@ static bool SearchLumberMillTrees(TileIndex tile, void *)
 	if (IsTileType(tile, MP_TREES) && GetTreeGrowth(tile) > 2) { ///< 3 and up means all fully grown trees
 		/* found a tree */
 
-		Backup<CompanyID> cur_company(_current_company, OWNER_NONE, FILE_LINE);
+		Backup<CompanyID> cur_company(_current_company, OWNER_NONE);
 
 		_industry_sound_ctr = 1;
 		_industry_sound_tile = tile;
@@ -1469,7 +1469,7 @@ static CommandCost CheckIfIndustryTilesAreFree(TileIndex tile, const IndustryTil
 				}
 
 				/* Clear the tiles as OWNER_TOWN to not affect town rating, and to not clear protected buildings */
-				Backup<CompanyID> cur_company(_current_company, OWNER_TOWN, FILE_LINE);
+				Backup<CompanyID> cur_company(_current_company, OWNER_TOWN);
 				ret = Command<CMD_LANDSCAPE_CLEAR>::Do(DC_NONE, cur_tile);
 				cur_company.Restore();
 
@@ -1611,7 +1611,7 @@ static bool CheckIfCanLevelIndustryPlatform(TileIndex tile, DoCommandFlag flags,
 
 	/* _current_company is OWNER_NONE for randomly generated industries and in editor, or the company who funded or prospected the industry.
 	 * Perform terraforming as OWNER_TOWN to disable autoslope and town ratings. */
-	Backup<CompanyID> cur_company(_current_company, OWNER_TOWN, FILE_LINE);
+	Backup<CompanyID> cur_company(_current_company, OWNER_TOWN);
 
 	for (TileIndex tile_walk : ta) {
 		uint curh = TileHeight(tile_walk);
@@ -2050,7 +2050,7 @@ CommandCost CmdBuildIndustry(DoCommandFlag flags, TileIndex tile, IndustryType i
 			if (prospect_success) {
 				/* Prospected industries are build as OWNER_TOWN to not e.g. be build on owned land of the founder */
 				IndustryAvailabilityCallType calltype = _current_company == OWNER_DEITY ? IACT_RANDOMCREATION : IACT_PROSPECTCREATION;
-				Backup<CompanyID> cur_company(_current_company, OWNER_TOWN, FILE_LINE);
+				Backup<CompanyID> cur_company(_current_company, OWNER_TOWN);
 				for (int i = 0; i < 5000; i++) {
 					/* We should not have more than one Random() in a function call
 					 * because parameter evaluation order is not guaranteed in the c++ standard
@@ -2352,7 +2352,7 @@ static Industry *PlaceIndustry(IndustryType type, IndustryAvailabilityCallType c
  */
 static void PlaceInitialIndustry(IndustryType type, bool try_hard)
 {
-	Backup<CompanyID> cur_company(_current_company, OWNER_NONE, FILE_LINE);
+	Backup<CompanyID> cur_company(_current_company, OWNER_NONE);
 
 	IncreaseGeneratingWorldProgress(GWP_INDUSTRY);
 	PlaceIndustry(type, IACT_MAPGENERATION, try_hard);
@@ -2992,7 +2992,7 @@ static IntervalTimer<TimerGameCalendar> _industries_daily({TimerGameCalendar::DA
 		return;  // Nothing to do? get out
 	}
 
-	Backup<CompanyID> cur_company(_current_company, OWNER_NONE, FILE_LINE);
+	Backup<CompanyID> cur_company(_current_company, OWNER_NONE);
 
 	/* perform the required industry changes for the day */
 
@@ -3020,7 +3020,7 @@ static IntervalTimer<TimerGameCalendar> _industries_daily({TimerGameCalendar::DA
 
 static IntervalTimer<TimerGameCalendar> _industries_monthly({TimerGameCalendar::MONTH, TimerGameCalendar::Priority::INDUSTRY}, [](auto)
 {
-	Backup<CompanyID> cur_company(_current_company, OWNER_NONE, FILE_LINE);
+	Backup<CompanyID> cur_company(_current_company, OWNER_NONE);
 
 	_industry_builder.MonthlyLoop();
 

@@ -1271,7 +1271,7 @@ void HandleMissingAircraftOrders(Aircraft *v)
 	 */
 	const Station *st = GetTargetAirportIfValid(v);
 	if (st == nullptr) {
-		Backup<CompanyID> cur_company(_current_company, v->owner, FILE_LINE);
+		Backup<CompanyID> cur_company(_current_company, v->owner);
 		CommandCost ret = Command<CMD_SEND_VEHICLE_TO_DEPOT>::Do(DC_EXEC, v->index, DepotCommand::None, {});
 		cur_company.Restore();
 
@@ -1633,7 +1633,7 @@ static void AircraftEventHandler_HeliTakeOff(Aircraft *v, const AirportFTAClass 
 
 	/* Send the helicopter to a hangar if needed for replacement */
 	if (v->NeedsAutomaticServicing()) {
-		Backup<CompanyID> cur_company(_current_company, v->owner, FILE_LINE);
+		Backup<CompanyID> cur_company(_current_company, v->owner);
 		Command<CMD_SEND_VEHICLE_TO_DEPOT>::Do(DC_EXEC, v->index, DepotCommand::Service | DepotCommand::LocateHangar, {});
 		cur_company.Restore();
 	}
@@ -1684,7 +1684,7 @@ static void AircraftEventHandler_Landing(Aircraft *v, const AirportFTAClass *)
 
 	/* check if the aircraft needs to be replaced or renewed and send it to a hangar if needed */
 	if (v->NeedsAutomaticServicing()) {
-		Backup<CompanyID> cur_company(_current_company, v->owner, FILE_LINE);
+		Backup<CompanyID> cur_company(_current_company, v->owner);
 		Command<CMD_SEND_VEHICLE_TO_DEPOT>::Do(DC_EXEC, v->index, DepotCommand::Service, {});
 		cur_company.Restore();
 	}

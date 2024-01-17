@@ -1836,7 +1836,7 @@ bool AfterLoadGame()
 			if (IsBuoyTile(t) || IsDriveThroughStopTile(t) || IsTileType(t, MP_WATER)) {
 				Owner o = GetTileOwner(t);
 				if (o < MAX_COMPANIES && !Company::IsValidID(o)) {
-					Backup<CompanyID> cur_company(_current_company, o, FILE_LINE);
+					Backup<CompanyID> cur_company(_current_company, o);
 					ChangeTileOwner(t, o, INVALID_OWNER);
 					cur_company.Restore();
 				}

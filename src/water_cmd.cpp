@@ -1129,7 +1129,7 @@ void DoFloodTile(TileIndex target)
 
 	bool flooded = false; // Will be set to true if something is changed.
 
-	Backup<CompanyID> cur_company(_current_company, OWNER_WATER, FILE_LINE);
+	Backup<CompanyID> cur_company(_current_company, OWNER_WATER);
 
 	Slope tileh = GetTileSlope(target);
 	if (tileh != SLOPE_FLAT) {
@@ -1194,7 +1194,7 @@ void DoFloodTile(TileIndex target)
  */
 static void DoDryUp(TileIndex tile)
 {
-	Backup<CompanyID> cur_company(_current_company, OWNER_WATER, FILE_LINE);
+	Backup<CompanyID> cur_company(_current_company, OWNER_WATER);
 
 	switch (GetTileType(tile)) {
 		case MP_RAILWAY:
