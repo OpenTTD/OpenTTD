@@ -50,17 +50,6 @@ uint32_t Randomizer::Next()
 }
 
 /**
- * Generate the next pseudo random number scaled to \a limit, excluding \a limit
- * itself.
- * @param limit Limit of the range to be generated from.
- * @return Random number in [0,\a limit)
- */
-uint32_t Randomizer::Next(uint32_t limit)
-{
-	return ((uint64_t)this->Next() * (uint64_t)limit) >> 32;
-}
-
-/**
  * (Re)set the state of the random number generator.
  * @param seed the new state
  */
@@ -81,18 +70,13 @@ void SetRandomSeed(uint32_t seed)
 }
 
 #ifdef RANDOM_DEBUG
-uint32_t DoRandom(int line, const char *file)
+uint32_t Random(const std::source_location location)
 {
 	if (_networking && (!_network_server || (NetworkClientSocket::IsValidID(0) && NetworkClientSocket::Get(0)->status != NetworkClientSocket::STATUS_INACTIVE))) {
-		Debug(random, 0, "{:08x}; {:02x}; {:04x}; {:02x}; {}:{}", TimerGameEconomy::date, TimerGameEconomy::date_fract, _frame_counter, (byte)_current_company, file, line);
+		Debug(random, 0, "{:08x}; {:02x}; {:04x}; {:02x}; {}:{}", TimerGameEconomy::date, TimerGameEconomy::date_fract, _frame_counter, (byte)_current_company, location.file_name(), location.line());
 	}
 
 	return _random.Next();
-}
-
-uint32_t DoRandomRange(uint32_t limit, int line, const char *file)
-{
-	return ((uint64_t)DoRandom(line, file) * (uint64_t)limit) >> 32;
 }
 #endif /* RANDOM_DEBUG */
 

@@ -10,10 +10,16 @@
 #ifndef RANDOM_FUNC_HPP
 #define RANDOM_FUNC_HPP
 
-#if defined(__APPLE__)
-	/* Apple already has Random declared */
-#	define Random OTTD_Random
-#endif /* __APPLE__ */
+/**
+ * Scale a uint32_t number to be within the range [0,\a limit).
+ * @param value The value to scale.
+ * @param limit The limit to scale to.
+ * @return The scaled value.
+ */
+static constexpr uint32_t ScaleToLimit(uint32_t value, uint32_t limit)
+{
+	return ((uint64_t)value * (uint64_t)limit) >> 32;
+}
 
 /**
  * Structure to encapsulate the pseudo random number generators.
@@ -23,8 +29,15 @@ struct Randomizer {
 	uint32_t state[2];
 
 	uint32_t Next();
-	uint32_t Next(uint32_t limit);
 	void SetSeed(uint32_t seed);
+
+	/**
+	 * Generate the next pseudo random number scaled to \a limit, excluding \a limit
+	 * itself.
+	 * @param limit Limit of the range to be generated from.
+	 * @return Random number in [0,\a limit)
+	 */
+	inline uint32_t Next(uint32_t limit) { return ScaleToLimit(this->Next(), limit); }
 };
 extern Randomizer _random; ///< Random used in the game state calculations
 extern Randomizer _interactive_random; ///< Random used everywhere else, where it does not (directly) influence the game state
@@ -57,32 +70,25 @@ inline void RestoreRandomSeeds(const SavedRandomSeeds &storage)
 
 void SetRandomSeed(uint32_t seed);
 #ifdef RANDOM_DEBUG
-#	ifdef __APPLE__
-#		define OTTD_Random() DoRandom(__LINE__, __FILE__)
-#	else
-#		define Random() DoRandom(__LINE__, __FILE__)
-#	endif
-	uint32_t DoRandom(int line, const char *file);
-#	define RandomRange(limit) DoRandomRange(limit, __LINE__, __FILE__)
-	uint32_t DoRandomRange(uint32_t limit, int line, const char *file);
+	uint32_t Random(const std::source_location location = std::source_location::current());
 #else
-	static inline uint32_t Random()
+	inline uint32_t Random([[maybe_unused]] const std::source_location location = std::source_location::current())
 	{
 		return _random.Next();
 	}
-
-	/**
-	 * Pick a random number between 0 and \a limit - 1, inclusive. That means 0
-	 * can be returned and \a limit - 1 can be returned, but \a limit can not be
-	 * returned.
-	 * @param limit Limit for the range to be picked from.
-	 * @return A random number in [0,\a limit).
-	 */
-	static inline uint32_t RandomRange(uint32_t limit)
-	{
-		return _random.Next(limit);
-	}
 #endif
+
+/**
+ * Pick a random number between 0 and \a limit - 1, inclusive. That means 0
+ * can be returned and \a limit - 1 can be returned, but \a limit can not be
+ * returned.
+ * @param limit Limit for the range to be picked from.
+ * @return A random number in [0,\a limit).
+ */
+inline uint32_t RandomRange(uint32_t limit, const std::source_location location = std::source_location::current())
+{
+	return ScaleToLimit(Random(location), limit);
+}
 
 inline uint32_t InteractiveRandom()
 {
@@ -109,7 +115,7 @@ inline uint32_t InteractiveRandomRange(uint32_t limit)
  * @param r The given randomize-number
  * @return True if the probability given by r is less or equal to (a/b)
  */
-inline bool Chance16I(const uint a, const uint b, const uint32_t r)
+inline bool Chance16I(const uint32_t a, const uint32_t b, const uint32_t r)
 {
 	assert(b != 0);
 	return (((uint16_t)r * b + b / 2) >> 16) < a;
@@ -125,14 +131,10 @@ inline bool Chance16I(const uint a, const uint b, const uint32_t r)
  * @param b The denominator of the fraction
  * @return True with (a/b) probability
  */
-#ifdef RANDOM_DEBUG
-#	define Chance16(a, b) Chance16I(a, b, DoRandom(__LINE__, __FILE__))
-#else
-inline bool Chance16(const uint a, const uint b)
+inline bool Chance16(const uint32_t a, const uint32_t b, const std::source_location location = std::source_location::current())
 {
-	return Chance16I(a, b, Random());
+	return Chance16I(a, b, Random(location));
 }
-#endif /* RANDOM_DEBUG */
 
 /**
  * Flips a coin with a given probability and saves the randomize-number in a variable.
@@ -149,15 +151,11 @@ inline bool Chance16(const uint a, const uint b)
  * @param r The variable to save the randomize-number from Random()
  * @return True in (a/b) percent
  */
-#ifdef RANDOM_DEBUG
-#	define Chance16R(a, b, r) (r = DoRandom(__LINE__, __FILE__), Chance16I(a, b, r))
-#else
-inline bool Chance16R(const uint a, const uint b, uint32_t &r)
+inline bool Chance16R(const uint32_t a, const uint32_t b, uint32_t &r, const std::source_location location = std::source_location::current())
 {
-	r = Random();
+	r = Random(location);
 	return Chance16I(a, b, r);
 }
-#endif /* RANDOM_DEBUG */
 
 void RandomBytesWithFallback(std::span<uint8_t> buf);
 
