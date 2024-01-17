@@ -584,7 +584,7 @@ struct GameOptionsWindow : Window {
 				_fcsettings.global_aa = !_fcsettings.global_aa;
 
 				this->SetWidgetLoweredState(WID_GO_GUI_FONT_AA, _fcsettings.global_aa);
-				this->SetDirty();
+				MarkWholeScreenDirty();
 
 				ClearFontCache();
 				break;
