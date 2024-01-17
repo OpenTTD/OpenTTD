@@ -69,32 +69,26 @@ extern "C" _CRTIMP void __cdecl _assert(void *, void *, unsigned);
 
 
 #ifdef _DEBUG
-TileIndex TileAdd(TileIndex tile, TileIndexDiff add,
-	const char *exp, const char *file, int line)
+TileIndex TILE_ADD(TileIndex tile, TileIndexDiff offset, std::source_location location)
 {
-	int dx;
-	int dy;
-	uint x;
-	uint y;
-
-	dx = add & Map::MaxX();
+	int dx = offset & Map::MaxX();
 	if (dx >= (int)Map::SizeX() / 2) dx -= Map::SizeX();
-	dy = (add - dx) / (int)Map::SizeX();
+	int dy = (offset - dx) / (int)Map::SizeX();
 
-	x = TileX(tile) + dx;
-	y = TileY(tile) + dy;
+	uint x = TileX(tile) + dx;
+	uint y = TileY(tile) + dy;
 
 	if (x >= Map::SizeX() || y >= Map::SizeY()) {
-		std::string message = fmt::format("TILE_ADD({}) when adding 0x{:04X} and 0x{:04X} failed",
-			exp, tile, add);
+		std::string message = fmt::format("TILE_ADD when adding 0x{:04X} and 0x{:04X} failed",
+			tile, offset);
 #if !defined(_MSC_VER)
-		fmt::print(stderr, "{}:{} {}\n", file, line, message);
+		fmt::print(stderr, "{}:{}:{} {}\n", location.file_name(), location.line(), location.column(), message);
 #else
-		_assert(message.data(), (char*)file, line);
+		_assert(message.data(), (char*)location.file_name(), location.line());
 #endif
 	}
 
-	assert(TileXY(x, y) == Map::WrapToMap(tile + add));
+	assert(TileXY(x, y) == Map::WrapToMap(tile + offset));
 
 	return TileXY(x, y);
 }

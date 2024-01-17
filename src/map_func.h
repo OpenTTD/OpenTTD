@@ -455,29 +455,31 @@ inline TileIndexDiff ToTileIndexDiff(TileIndexDiffC tidc)
 }
 
 
+/**
+ * Adds a given offset to a tile.
+ *
+ * @param tile The tile to add an offset to.
+ * @param offset The offset to add.
+ * @return The resulting tile.
+ */
 #ifndef _DEBUG
-	/**
-	 * Adds two tiles together.
-	 *
-	 * @param x One tile
-	 * @param y Another tile to add
-	 * @return The resulting tile(index)
-	 */
-#	define TILE_ADD(x, y) ((x) + (y))
+	constexpr TileIndex TILE_ADD(TileIndex tile, TileIndexDiff offset, [[maybe_unused]] const std::source_location location = std::source_location::current()) { return tile + offset; }
 #else
-	extern TileIndex TileAdd(TileIndex tile, TileIndexDiff add,
-		const char *exp, const char *file, int line);
-#	define TILE_ADD(x, y) (TileAdd((x), (y), #x " + " #y, __FILE__, __LINE__))
+	TileIndex TILE_ADD(TileIndex tile, TileIndexDiff offset, const std::source_location location = std::source_location::current());
 #endif
 
 /**
  * Adds a given offset to a tile.
  *
- * @param tile The tile to add an offset on it
- * @param x The x offset to add to the tile
- * @param y The y offset to add to the tile
+ * @param tile The tile to add an offset to.
+ * @param x The x offset to add to the tile.
+ * @param y The y offset to add to the tile.
+ * @return The resulting tile.
  */
-#define TILE_ADDXY(tile, x, y) TILE_ADD(tile, TileDiffXY(x, y))
+inline TileIndex TILE_ADDXY(TileIndex tile, int x, int y, const std::source_location location = std::source_location::current())
+{
+	return TILE_ADD(tile, TileDiffXY(x, y), location);
+}
 
 TileIndex TileAddWrap(TileIndex tile, int addx, int addy);
 
