@@ -529,7 +529,7 @@ struct CompanyFinancesWindow : Window {
 /** First conservative estimate of the maximum amount of money */
 Money CompanyFinancesWindow::max_money = INT32_MAX;
 
-static WindowDesc _company_finances_desc(__FILE__, __LINE__,
+static WindowDesc _company_finances_desc(
 	WDP_AUTO, "company_finances", 0, 0,
 	WC_FINANCES, WC_NONE,
 	0,
@@ -1139,7 +1139,7 @@ static constexpr NWidgetPart _nested_select_company_livery_widgets[] = {
 	EndContainer(),
 };
 
-static WindowDesc _select_company_livery_desc(__FILE__, __LINE__,
+static WindowDesc _select_company_livery_desc(
 	WDP_AUTO, "company_color_scheme", 0, 0,
 	WC_COMPANY_COLOUR, WC_NONE,
 	0,
@@ -1764,7 +1764,7 @@ public:
 };
 
 /** Company manager face selection window description */
-static WindowDesc _select_company_manager_face_desc(__FILE__, __LINE__,
+static WindowDesc _select_company_manager_face_desc(
 	WDP_AUTO, nullptr, 0, 0,
 	WC_COMPANY_MANAGER_FACE, WC_NONE,
 	WDF_CONSTRUCTION,
@@ -2141,7 +2141,7 @@ struct CompanyInfrastructureWindow : Window
 	}
 };
 
-static WindowDesc _company_infrastructure_desc(__FILE__, __LINE__,
+static WindowDesc _company_infrastructure_desc(
 	WDP_AUTO, "company_infrastructure", 0, 0,
 	WC_COMPANY_INFRASTRUCTURE, WC_NONE,
 	0,
@@ -2629,7 +2629,7 @@ struct CompanyWindow : Window
 	}
 };
 
-static WindowDesc _company_desc(__FILE__, __LINE__,
+static WindowDesc _company_desc(
 	WDP_AUTO, "company", 0, 0,
 	WC_COMPANY, WC_NONE,
 	0,
@@ -2763,7 +2763,7 @@ static constexpr NWidgetPart _nested_buy_company_widgets[] = {
 	EndContainer(),
 };
 
-static WindowDesc _buy_company_desc(__FILE__, __LINE__,
+static WindowDesc _buy_company_desc(
 	WDP_AUTO, nullptr, 0, 0,
 	WC_BUY_COMPANY, WC_NONE,
 	WDF_CONSTRUCTION,

@@ -152,14 +152,14 @@ struct HotkeyList;
  */
 struct WindowDesc : ZeroedMemoryAllocator {
 
-	WindowDesc(const char * const file, const int line, WindowPosition default_pos, const char *ini_key, int16_t def_width_trad, int16_t def_height_trad,
+	WindowDesc(WindowPosition default_pos, const char *ini_key, int16_t def_width_trad, int16_t def_height_trad,
 			WindowClass window_class, WindowClass parent_class, uint32_t flags,
-			const NWidgetPart *nwid_begin, const NWidgetPart *nwid_end, HotkeyList *hotkeys = nullptr);
+			const NWidgetPart *nwid_begin, const NWidgetPart *nwid_end, HotkeyList *hotkeys = nullptr,
+			const std::source_location location = std::source_location::current());
 
 	~WindowDesc();
 
-	const char * const file; ///< Source file of this definition
-	const int line; ///< Source line of this definition
+	const std::source_location source_location; ///< Source location of this definition
 	WindowPosition default_pos;    ///< Preferred position of the window. @see WindowPosition()
 	WindowClass cls;               ///< Class of the window, @see WindowClass.
 	WindowClass parent_cls;        ///< Class of the parent window. @see WindowClass
@@ -184,10 +184,11 @@ private:
 	int16_t default_height_trad;     ///< Preferred initial height of the window (pixels at 1x zoom).
 
 	/**
-	 * Dummy private copy constructor to prevent compilers from
+	 * Delete copy constructor to prevent compilers from
 	 * copying the structure, which fails due to _window_descs.
 	 */
-	WindowDesc(const WindowDesc &other);
+	WindowDesc(const WindowDesc &) = delete;
+	WindowDesc& operator=(const WindowDesc &) = delete;
 };
 
 /**

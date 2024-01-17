@@ -102,11 +102,11 @@ std::vector<WindowDesc*> *_window_descs = nullptr;
 std::string _windows_file;
 
 /** Window description constructor. */
-WindowDesc::WindowDesc(const char * const file, const int line, WindowPosition def_pos, const char *ini_key, int16_t def_width_trad, int16_t def_height_trad,
+WindowDesc::WindowDesc(WindowPosition def_pos, const char *ini_key, int16_t def_width_trad, int16_t def_height_trad,
 			WindowClass window_class, WindowClass parent_class, uint32_t flags,
-			const NWidgetPart *nwid_begin, const NWidgetPart *nwid_end, HotkeyList *hotkeys) :
-	file(file),
-	line(line),
+			const NWidgetPart *nwid_begin, const NWidgetPart *nwid_end, HotkeyList *hotkeys,
+			const std::source_location location) :
+	source_location(location),
 	default_pos(def_pos),
 	cls(window_class),
 	parent_cls(parent_class),

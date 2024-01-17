@@ -1271,7 +1271,7 @@ static constexpr NWidgetPart _nested_vehicle_refit_widgets[] = {
 	EndContainer(),
 };
 
-static WindowDesc _vehicle_refit_desc(__FILE__, __LINE__,
+static WindowDesc _vehicle_refit_desc(
 	WDP_AUTO, "view_vehicle_refit", 240, 174,
 	WC_VEHICLE_REFIT, WC_VEHICLE_VIEW,
 	WDF_CONSTRUCTION,
@@ -2200,14 +2200,14 @@ public:
 	}
 };
 
-static WindowDesc _vehicle_list_other_desc(__FILE__, __LINE__,
+static WindowDesc _vehicle_list_other_desc(
 	WDP_AUTO, "list_vehicles", 260, 246,
 	WC_INVALID, WC_NONE,
 	0,
 	std::begin(_nested_vehicle_list), std::end(_nested_vehicle_list)
 );
 
-static WindowDesc _vehicle_list_train_desc(__FILE__, __LINE__,
+static WindowDesc _vehicle_list_train_desc(
 	WDP_AUTO, "list_vehicles_train", 325, 246,
 	WC_TRAINS_LIST, WC_NONE,
 	0,
@@ -2766,7 +2766,7 @@ struct VehicleDetailsWindow : Window {
 };
 
 /** Vehicle details window descriptor. */
-static WindowDesc _train_vehicle_details_desc(__FILE__, __LINE__,
+static WindowDesc _train_vehicle_details_desc(
 	WDP_AUTO, "view_vehicle_details_train", 405, 178,
 	WC_VEHICLE_DETAILS, WC_VEHICLE_VIEW,
 	0,
@@ -2774,7 +2774,7 @@ static WindowDesc _train_vehicle_details_desc(__FILE__, __LINE__,
 );
 
 /** Vehicle details window descriptor for other vehicles than a train. */
-static WindowDesc _nontrain_vehicle_details_desc(__FILE__, __LINE__,
+static WindowDesc _nontrain_vehicle_details_desc(
 	WDP_AUTO, "view_vehicle_details", 405, 113,
 	WC_VEHICLE_DETAILS, WC_VEHICLE_VIEW,
 	0,
@@ -3373,7 +3373,7 @@ public:
 };
 
 /** Vehicle view window descriptor for all vehicles but trains. */
-static WindowDesc _vehicle_view_desc(__FILE__, __LINE__,
+static WindowDesc _vehicle_view_desc(
 	WDP_AUTO, "view_vehicle", 250, 116,
 	WC_VEHICLE_VIEW, WC_NONE,
 	0,
@@ -3385,7 +3385,7 @@ static WindowDesc _vehicle_view_desc(__FILE__, __LINE__,
  * Vehicle view window descriptor for trains. Only minimum_height and
  *  default_height are different for train view.
  */
-static WindowDesc _train_view_desc(__FILE__, __LINE__,
+static WindowDesc _train_view_desc(
 	WDP_AUTO, "view_vehicle_train", 250, 134,
 	WC_VEHICLE_VIEW, WC_NONE,
 	0,
