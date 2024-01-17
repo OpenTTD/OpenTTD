@@ -1138,18 +1138,14 @@ struct QueryWindow : public Window {
 	{
 		if (widget != WID_Q_TEXT) return;
 
-		Dimension d = GetStringMultiLineBoundingBox(this->message, *size);
-		d.width += WidgetDimensions::scaled.frametext.Horizontal();
-		d.height += WidgetDimensions::scaled.framerect.Vertical();
-		*size = d;
+		*size = GetStringMultiLineBoundingBox(this->message, *size);
 	}
 
 	void DrawWidget(const Rect &r, WidgetID widget) const override
 	{
 		if (widget != WID_Q_TEXT) return;
 
-		DrawStringMultiLine(r.Shrink(WidgetDimensions::scaled.frametext, WidgetDimensions::scaled.framerect),
-				this->message, TC_FROMSTRING, SA_CENTER);
+		DrawStringMultiLine(r, this->message, TC_FROMSTRING, SA_CENTER);
 	}
 
 	void OnClick([[maybe_unused]] Point pt, WidgetID widget, [[maybe_unused]] int click_count) override
