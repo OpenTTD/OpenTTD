@@ -176,7 +176,7 @@ void HttpThread()
 		/* Prepare POST body and URI. */
 		if (!request->data.empty()) {
 			/* When the payload starts with a '{', it is a JSON payload. */
-			if (StrStartsWith(request->data, "{")) {
+			if (request->data.starts_with("{")) {
 				headers = curl_slist_append(headers, "Content-Type: application/json");
 			} else {
 				headers = curl_slist_append(headers, "Content-Type: application/x-www-form-urlencoded");

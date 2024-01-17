@@ -649,7 +649,7 @@ public:
 			tr.top = DrawStringMultiLine(tr, STR_NETWORK_SERVER_LIST_SERVER_VERSION); // server version
 
 			SetDParamStr(0, sel->connection_string);
-			StringID invite_or_address = StrStartsWith(sel->connection_string, "+") ? STR_NETWORK_SERVER_LIST_INVITE_CODE : STR_NETWORK_SERVER_LIST_SERVER_ADDRESS;
+			StringID invite_or_address = sel->connection_string.starts_with("+") ? STR_NETWORK_SERVER_LIST_INVITE_CODE : STR_NETWORK_SERVER_LIST_SERVER_ADDRESS;
 			tr.top = DrawStringMultiLine(tr, invite_or_address); // server address / invite code
 
 			SetDParam(0, sel->info.start_date);

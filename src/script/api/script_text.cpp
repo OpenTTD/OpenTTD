@@ -140,7 +140,7 @@ SQInteger ScriptText::_set(HSQUIRRELVM vm)
 		sq_getstring(vm, 2, &key_string);
 
 		std::string str = StrMakeValid(key_string);
-		if (!StrStartsWith(str, "param_") || str.size() > 8) return SQ_ERROR;
+		if (!str.starts_with("param_") || str.size() > 8) return SQ_ERROR;
 
 		k = stoi(str.substr(6));
 	} else if (sq_gettype(vm, 2) == OT_INTEGER) {

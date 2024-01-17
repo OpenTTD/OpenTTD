@@ -372,7 +372,7 @@ void MakeNewgameSettingsLive()
 void OpenBrowser(const std::string &url)
 {
 	/* Make sure we only accept urls that are sure to open a browser. */
-	if (StrStartsWith(url, "http://") || StrStartsWith(url, "https://")) {
+	if (url.starts_with("http://") || url.starts_with("https://")) {
 		OSOpenBrowser(url);
 	}
 }

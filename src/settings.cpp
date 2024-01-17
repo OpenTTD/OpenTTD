@@ -1604,7 +1604,7 @@ static const SettingDesc *GetSettingFromName(const std::string_view name, const 
 	for (auto &desc : settings) {
 		const SettingDesc *sd = GetSettingDesc(desc);
 		if (!SlIsObjectCurrentlyValid(sd->save.version_from, sd->save.version_to)) continue;
-		if (StrEndsWith(sd->GetName(), short_name_suffix)) return sd;
+		if (sd->GetName().ends_with(short_name_suffix)) return sd;
 	}
 
 	return nullptr;
@@ -1633,7 +1633,7 @@ void GetSaveLoadFromSettingTable(SettingTable settings, std::vector<SaveLoad> &s
 static const SettingDesc *GetCompanySettingFromName(std::string_view name)
 {
 	static const std::string_view company_prefix = "company.";
-	if (StrStartsWith(name, company_prefix)) name.remove_prefix(company_prefix.size());
+	if (name.starts_with(company_prefix)) name.remove_prefix(company_prefix.size());
 	return GetSettingFromName(name, _company_settings);
 }
 
