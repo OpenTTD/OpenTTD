@@ -26,7 +26,7 @@
 
 #include "safeguards.h"
 
-/** harfbuzz doesn't use floats, so we need a value to scale position with to get sub-pixel precision. */
+/** HarfBuzz FreeType integration sets the font scaling, which is always in 1/64th of a pixel. */
 constexpr float FONT_SCALE = 64.0;
 
 /**
@@ -157,7 +157,6 @@ ICUParagraphLayout::ICUVisualRun::ICUVisualRun(const ICURun &run, int x) :
 void ICURun::Shape(UChar *buff, size_t buff_length)
 {
 	auto hbfont = hb_ft_font_create_referenced(*(static_cast<const FT_Face *>(font->fc->GetOSHandle())));
-	hb_font_set_scale(hbfont, this->font->fc->GetFontSize() * FONT_SCALE, this->font->fc->GetFontSize() * FONT_SCALE);
 
 	/* ICU buffer is in UTF-16. */
 	auto hbbuf = hb_buffer_create();
