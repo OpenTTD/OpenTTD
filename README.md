@@ -197,6 +197,9 @@ See `src/3rdparty/catch2/LICENSE.txt` for the complete license text.
 The icu scriptrun implementation in `src/3rdparty/icu` is licensed under the Unicode license.
 See `src/3rdparty/icu/LICENSE` for the complete license text.
 
+The monocypher implementation in `src/3rdparty/monocypher` is licensed under the 2-clause BSD and CC-0 license.
+See src/3rdparty/monocypher/LICENSE.md` for the complete license text.
+
 ## 4.0 Credits
 
 See [CREDITS.md](./CREDITS.md)
