@@ -74,7 +74,7 @@ public:
 	class UniscribeVisualRun : public ParagraphLayouter::VisualRun {
 	private:
 		std::vector<GlyphID> glyphs;
-		std::vector<float> positions;
+		std::vector<Point> positions;
 		std::vector<WORD> char_to_glyph;
 
 		int start_pos;
@@ -89,7 +89,7 @@ public:
 		UniscribeVisualRun(UniscribeVisualRun &&other) noexcept;
 
 		const std::vector<GlyphID> &GetGlyphs() const override { return this->glyphs; }
-		const std::vector<float> &GetPositions() const override { return this->positions; }
+		const std::vector<Point> &GetPositions() const override { return this->positions; }
 		const std::vector<int> &GetGlyphToCharMap() const override;
 
 		const Font *GetFont() const override { return this->font;  }
@@ -474,16 +474,16 @@ int UniscribeParagraphLayout::UniscribeLine::GetWidth() const
 UniscribeParagraphLayout::UniscribeVisualRun::UniscribeVisualRun(const UniscribeRun &range, int x) : glyphs(range.ft_glyphs), char_to_glyph(range.char_to_glyph), start_pos(range.pos), total_advance(range.total_advance), font(range.font)
 {
 	this->num_glyphs = (int)glyphs.size();
-	this->positions.resize(this->num_glyphs * 2 + 2);
+	this->positions.reserve(this->num_glyphs + 1);
 
-	int advance = 0;
+	int advance = x;
 	for (int i = 0; i < this->num_glyphs; i++) {
-		this->positions[i * 2 + 0] = range.offsets[i].du + advance + x;
-		this->positions[i * 2 + 1] = range.offsets[i].dv;
+		this->positions.emplace_back(range.offsets[i].du + advance, range.offsets[i].dv);
 
 		advance += range.advances[i];
 	}
-	this->positions[this->num_glyphs * 2] = advance + x;
+	/* End-of-run position. */
+	this->positions.emplace_back(advance, 0);
 }
 
 UniscribeParagraphLayout::UniscribeVisualRun::UniscribeVisualRun(UniscribeVisualRun&& other) noexcept

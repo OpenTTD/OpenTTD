@@ -260,8 +260,7 @@ Point Layouter::GetCharPosition(std::string_view::const_iterator ch) const
 		for (int i = 0; i < run.GetGlyphCount(); i++) {
 			/* Matching glyph? Return position. */
 			if ((size_t)charmap[i] == index) {
-				Point p = { (int)positions[i * 2], (int)positions[i * 2 + 1] };
-				return p;
+				return positions[i];
 			}
 		}
 	}
@@ -291,8 +290,8 @@ ptrdiff_t Layouter::GetCharAtPosition(int x, size_t line_index) const
 			/* Not a valid glyph (empty). */
 			if (glyphs[i] == 0xFFFF) continue;
 
-			int begin_x = (int)positions[i * 2];
-			int end_x   = (int)positions[i * 2 + 2];
+			int begin_x = positions[i].x;
+			int end_x   = positions[i + 1].x;
 
 			if (IsInsideMM(x, begin_x, end_x)) {
 				/* Found our glyph, now convert to UTF-8 string index. */

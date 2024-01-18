@@ -599,9 +599,9 @@ static int DrawLayoutLine(const ParagraphLayouter::Line &line, int y, int left, 
 			/* Not a valid glyph (empty) */
 			if (glyph == 0xFFFF) continue;
 
-			int begin_x = (int)positions[i * 2]     + left - offset_x;
-			int end_x   = (int)positions[i * 2 + 2] + left - offset_x  - 1;
-			int top     = (int)positions[i * 2 + 1] + y;
+			int begin_x = positions[i].x     + left - offset_x;
+			int end_x   = positions[i + 1].x + left - offset_x  - 1;
+			int top     = positions[i].y + y;
 
 			/* Truncated away. */
 			if (truncation && (begin_x < min_x || end_x > max_x)) continue;
