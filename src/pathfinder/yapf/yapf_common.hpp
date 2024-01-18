@@ -42,7 +42,7 @@ public:
 	{
 		bool is_choice = (KillFirstBit(m_orgTrackdirs) != TRACKDIR_BIT_NONE);
 		for (TrackdirBits tdb = m_orgTrackdirs; tdb != TRACKDIR_BIT_NONE; tdb = KillFirstBit(tdb)) {
-			Trackdir td = (Trackdir)FindFirstBit2x64(tdb);
+			Trackdir td = (Trackdir)FindFirstBit(tdb);
 			Node &n1 = Yapf().CreateNewNode();
 			n1.Set(nullptr, m_orgTile, td, is_choice);
 			Yapf().AddStartupNode(n1);

@@ -183,45 +183,6 @@ inline T ToggleBit(T &x, const uint8_t y)
 	return x = (T)(x ^ ((T)1U << y));
 }
 
-
-/** Lookup table to check which bit is set in a 6 bit variable */
-extern const uint8_t _ffb_64[64];
-
-/**
- * Returns the first non-zero bit in a 6-bit value (from right).
- *
- * Returns the position of the first bit that is not zero, counted from the
- * LSB. Ie, 110100 returns 2, 000001 returns 0, etc. When x == 0 returns
- * 0.
- *
- * @param x The 6-bit value to check the first zero-bit
- * @return The first position of a bit started from the LSB or 0 if x is 0.
- */
-#define FIND_FIRST_BIT(x) _ffb_64[(x)]
-
-/**
- * Finds the position of the first non-zero bit in an integer.
- *
- * This function returns the position of the first bit set in the
- * integer. It does only check the bits of the bitmask
- * 0x3F3F (0011111100111111) and checks only the
- * bits of the bitmask 0x3F00 if and only if the
- * lower part 0x00FF is 0. This results the bits at 0x00C0 must
- * be also zero to check the bits at 0x3F00.
- *
- * @param value The value to check the first bits
- * @return The position of the first bit which is set
- * @see FIND_FIRST_BIT
- */
-inline uint8_t FindFirstBit2x64(const int value)
-{
-	if ((value & 0xFF) == 0) {
-		return FIND_FIRST_BIT((value >> 8) & 0x3F) + 8;
-	} else {
-		return FIND_FIRST_BIT(value & 0x3F);
-	}
-}
-
 /**
  * Search the first set bit in a value.
  * When no bit is set, it returns 0.
@@ -234,7 +195,11 @@ constexpr uint8_t FindFirstBit(T x)
 {
 	if (x == 0) return 0;
 
-	return std::countr_zero(x);
+	if constexpr (std::is_enum_v<T>) {
+		return std::countr_zero<std::underlying_type_t<T>>(x);
+	} else {
+		return std::countr_zero(x);
+	}
 }
 
 /**
