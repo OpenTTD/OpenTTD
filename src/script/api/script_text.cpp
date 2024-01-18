@@ -160,17 +160,28 @@ SQInteger ScriptText::_set(HSQUIRRELVM vm)
 
 std::string ScriptText::GetEncodedText()
 {
-	static StringIDList seen_ids;
+	StringIDList seen_ids;
+	ParamList params;
 	int param_count = 0;
-	seen_ids.clear();
 	std::string result;
 	auto output = std::back_inserter(result);
-	this->_GetEncodedText(output, param_count, seen_ids);
+	this->_FillParamList(params);
+	this->_GetEncodedText(output, param_count, seen_ids, params);
 	if (param_count > SCRIPT_TEXT_MAX_PARAMETERS) throw Script_FatalError(fmt::format("{}: Too many parameters", GetGameStringName(this->string)));
 	return result;
 }
 
-void ScriptText::_GetEncodedText(std::back_insert_iterator<std::string> &output, int &param_count, StringIDList &seen_ids)
+void ScriptText::_FillParamList(ParamList &params)
+{
+	for (int i = 0; i < this->paramc; i++) {
+		Param *p = &this->param[i];
+		params.emplace_back(this->string, i, p);
+		if (!std::holds_alternative<ScriptTextRef>(*p)) continue;
+		std::get<ScriptTextRef>(*p)->_FillParamList(params);
+	}
+}
+
+void ScriptText::_GetEncodedText(std::back_insert_iterator<std::string> &output, int &param_count, StringIDList &seen_ids, ParamSpan args)
 {
 	const std::string &name = GetGameStringName(this->string);
 
@@ -181,63 +192,51 @@ void ScriptText::_GetEncodedText(std::back_insert_iterator<std::string> &output,
 	fmt::format_to(output, "{:X}", this->string);
 
 	const StringParams &params = GetGameStringParams(this->string);
-	int cur_idx = 0;
-	int prev_string = -1;
-	int prev_idx = -1;
-	int prev_count = -1;
+
+	size_t idx = 0;
+	auto get_next_arg = [&]() {
+		if (idx >= args.size()) throw Script_FatalError(fmt::format("{}({}): Not enough parameters", name, param_count + 1));
+		ParamCheck &pc = args[idx++];
+		if (pc.owner != this->string) ScriptLog::Warning(fmt::format("{}({}): Consumes {}({})", name, param_count + 1, GetGameStringName(pc.owner), pc.idx + 1));
+		return pc.param;
+	};
+	auto skip_args = [&](size_t nb) { idx += nb; };
 
 	for (const StringParam &cur_param : params) {
-		if (cur_idx >= this->paramc) throw Script_FatalError(fmt::format("{}: Not enough parameters", name));
+		switch (cur_param.type) {
+			case StringParam::UNUSED:
+				skip_args(cur_param.consumes);
+				break;
 
-		if (prev_string != -1) {
-			/* The previous substring added more parameters than expected, means we will consume them but can't properly validate them. */
-			for (int i = 0; i < cur_param.consumes; i++) {
-				if (prev_idx < prev_count) {
-					ScriptLog::Warning(fmt::format("{}: Parameter {} uses parameter {} from substring {} and cannot be validated", name, param_count + i, prev_idx++, prev_string));
-				} else {
-					/* No more extra parameters, assume SQInteger are expected. */
-					if (cur_idx >= this->paramc) throw Script_FatalError(fmt::format("{}: Not enough parameters", name));
-					if (!std::holds_alternative<SQInteger>(this->param[cur_idx])) throw Script_FatalError(fmt::format("{}: Parameter {} expects an integer", name, param_count + i));
-					fmt::format_to(output, ":{:X}", std::get<SQInteger>(this->param[cur_idx++]));
+			case StringParam::RAW_STRING: {
+				Param *p = get_next_arg();
+				if (!std::holds_alternative<std::string>(*p)) throw Script_FatalError(fmt::format("{}({}): {{{}}} expects a raw string", name, param_count + 1, cur_param.cmd));
+				fmt::format_to(output, ":\"{}\"", std::get<std::string>(*p));
+				break;
+			}
+
+			case StringParam::STRING: {
+				Param *p = get_next_arg();
+				if (!std::holds_alternative<ScriptTextRef>(*p)) throw Script_FatalError(fmt::format("{}({}): {{{}}} expects a GSText", name, param_count + 1, cur_param.cmd));
+				int count = 0;
+				fmt::format_to(output, ":");
+				ScriptTextRef &ref = std::get<ScriptTextRef>(*p);
+				ref->_GetEncodedText(output, count, seen_ids, args.subspan(idx));
+				if (++count != cur_param.consumes) {
+					ScriptLog::Error(fmt::format("{}({}): {{{}}} expects {} to be consumed, but {} consumes {}", name, param_count + 1, cur_param.cmd, cur_param.consumes - 1, GetGameStringName(ref->string), count - 1));
+					/* Fill missing params if needed. */
+					for (int i = count; i < cur_param.consumes; i++) fmt::format_to(output, ":0");
 				}
+				skip_args(cur_param.consumes - 1);
+				break;
 			}
-			if (prev_idx == prev_count) {
-				/* Re-enable validation. */
-				prev_string = -1;
-			}
-		} else {
-			switch (cur_param.type) {
-				case StringParam::RAW_STRING:
-					if (!std::holds_alternative<std::string>(this->param[cur_idx])) throw Script_FatalError(fmt::format("{}: Parameter {} expects a raw string", name, param_count));
-					fmt::format_to(output, ":\"{}\"", std::get<std::string>(this->param[cur_idx++]));
-					break;
 
-				case StringParam::STRING: {
-					if (!std::holds_alternative<ScriptTextRef>(this->param[cur_idx])) throw Script_FatalError(fmt::format("{}: Parameter {} expects a substring", name, param_count));
-					int count = 0;
-					fmt::format_to(output, ":");
-					std::get<ScriptTextRef>(this->param[cur_idx++])->_GetEncodedText(output, count, seen_ids);
-					if (++count != cur_param.consumes) {
-						ScriptLog::Error(fmt::format("{}: Parameter {} substring consumes {}, but expected {} to be consumed", name, param_count, count - 1, cur_param.consumes - 1));
-						/* Fill missing params if needed. */
-						for (int i = count; i < cur_param.consumes; i++) fmt::format_to(output, ":0");
-						/* Disable validation for the extra params if any. */
-						if (count > cur_param.consumes) {
-							prev_string = param_count;
-							prev_idx = cur_param.consumes - 1;
-							prev_count = count - 1;
-						}
-					}
-					break;
+			default:
+				for (int i = 0; i < cur_param.consumes; i++) {
+					Param *p = get_next_arg();
+					if (!std::holds_alternative<SQInteger>(*p)) throw Script_FatalError(fmt::format("{}({}): {{{}}} expects an integer", name, param_count + i + 1, cur_param.cmd));
+					fmt::format_to(output, ":{:X}", std::get<SQInteger>(*p));
 				}
-
-				default:
-					if (cur_idx + cur_param.consumes > this->paramc) throw Script_FatalError(fmt::format("{}: Not enough parameters", name));
-					for (int i = 0; i < cur_param.consumes; i++) {
-						if (!std::holds_alternative<SQInteger>(this->param[cur_idx])) throw Script_FatalError(fmt::format("{}: Parameter {} expects an integer", name, param_count + i));
-						fmt::format_to(output, ":{:X}", std::get<SQInteger>(this->param[cur_idx++]));
-					}
-			}
 		}
 
 		param_count += cur_param.consumes;
