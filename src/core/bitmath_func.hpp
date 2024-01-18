@@ -248,20 +248,13 @@ inline T KillFirstBit(T value)
  * @return the number of bits.
  */
 template <typename T>
-inline uint CountBits(T value)
+constexpr uint CountBits(T value)
 {
-	uint num;
-
-	/* This loop is only called once for every bit set by clearing the lowest
-	 * bit in each loop. The number of bits is therefore equal to the number of
-	 * times the loop was called. It was found at the following website:
-	 * http://graphics.stanford.edu/~seander/bithacks.html */
-
-	for (num = 0; value != 0; num++) {
-		value &= (T)(value - 1);
+	if constexpr (std::is_enum_v<T>) {
+		return std::popcount<std::underlying_type_t<T>>(value);
+	} else {
+		return std::popcount(value);
 	}
-
-	return num;
 }
 
 /**
