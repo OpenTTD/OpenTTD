@@ -71,7 +71,7 @@ public:
 	class CoreTextVisualRun : public ParagraphLayouter::VisualRun {
 	private:
 		std::vector<GlyphID> glyphs;
-		std::vector<float> positions;
+		std::vector<Point> positions;
 		std::vector<int> glyph_to_char;
 
 		int total_advance = 0;
@@ -82,7 +82,7 @@ public:
 		CoreTextVisualRun(CoreTextVisualRun &&other) = default;
 
 		const std::vector<GlyphID> &GetGlyphs() const override { return this->glyphs; }
-		const std::vector<float> &GetPositions() const override { return this->positions; }
+		const std::vector<Point> &GetPositions() const override { return this->positions; }
 		const std::vector<int> &GetGlyphToCharMap() const override { return this->glyph_to_char; }
 
 		const Font *GetFont() const override { return this->font;  }
@@ -240,7 +240,7 @@ CoreTextParagraphLayout::CoreTextVisualRun::CoreTextVisualRun(CTRunRef run, Font
 
 	CGPoint pts[this->glyphs.size()];
 	CTRunGetPositions(run, CFRangeMake(0, 0), pts);
-	this->positions.resize(this->glyphs.size() * 2 + 2);
+	this->positions.reserve(this->glyphs.size() + 1);
 
 	/* Convert glyph array to our data type. At the same time, substitute
 	 * the proper glyphs for our private sprite glyphs. */
@@ -250,16 +250,15 @@ CoreTextParagraphLayout::CoreTextVisualRun::CoreTextVisualRun(CTRunRef run, Font
 		if (buff[this->glyph_to_char[i]] >= SCC_SPRITE_START && buff[this->glyph_to_char[i]] <= SCC_SPRITE_END && (gl[i] == 0 || gl[i] == 3)) {
 			/* A glyph of 0 indidicates not found, while apparently 3 is what char 0xFFFC maps to. */
 			this->glyphs[i] = font->fc->MapCharToGlyph(buff[this->glyph_to_char[i]]);
-			this->positions[i * 2 + 0] = pts[i].x;
-			this->positions[i * 2 + 1] = (font->fc->GetHeight() - ScaleSpriteTrad(FontCache::GetDefaultFontHeight(font->fc->GetSize()))) / 2; // Align sprite font to centre
+			this->positions.emplace_back(pts[i].x, (font->fc->GetHeight() - ScaleSpriteTrad(FontCache::GetDefaultFontHeight(font->fc->GetSize()))) / 2); // Align sprite font to centre
 		} else {
 			this->glyphs[i] = gl[i];
-			this->positions[i * 2 + 0] = pts[i].x;
-			this->positions[i * 2 + 1] = pts[i].y;
+			this->positions.emplace_back(pts[i].x, pts[i].y);
 		}
 	}
 	this->total_advance = (int)std::ceil(CTRunGetTypographicBounds(run, CFRangeMake(0, 0), nullptr, nullptr, nullptr));
-	this->positions[this->glyphs.size() * 2] = this->positions[0] + this->total_advance;
+	/* End-of-run position. */
+	this->positions.emplace_back(this->positions.front().x + this->total_advance, 0);
 }
 
 /**

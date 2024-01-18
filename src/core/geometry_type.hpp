@@ -21,6 +21,9 @@
 struct Point {
 	int x;
 	int y;
+
+	constexpr Point() : x(0), y(0) {}
+	constexpr Point(int x, int y) : x(x), y(y) {}
 };
 
 /** Dimensions (a width and height) of a rectangle in 2D */
