@@ -66,8 +66,8 @@ namespace MONOCYPHER_CPP_NAMESPACE {
 #define ZERO(buf, size)            FOR(_i_, 0, size) (buf)[_i_] = 0
 #define WIPE_CTX(ctx)              crypto_wipe(ctx   , sizeof(*(ctx)))
 #define WIPE_BUFFER(buffer)        crypto_wipe(buffer, sizeof(buffer))
-#define MIN(a, b)                  ((a) <= (b) ? (a) : (b))
-#define MAX(a, b)                  ((a) >= (b) ? (a) : (b))
+#define MC_MIN(a, b)               ((a) <= (b) ? (a) : (b))
+#define MC_MAX(a, b)               ((a) >= (b) ? (a) : (b))
 
 typedef int8_t   i8;
 typedef uint8_t  u8;
@@ -383,7 +383,7 @@ void crypto_poly1305_update(crypto_poly1305_ctx *ctx,
 	}
 
 	// Align ourselves with block boundaries
-	size_t aligned = MIN(gap(ctx->c_idx, 16), message_size);
+	size_t aligned = MC_MIN(gap(ctx->c_idx, 16), message_size);
 	FOR (i, 0, aligned) {
 		ctx->c[ctx->c_idx] = *message;
 		ctx->c_idx++;
@@ -565,7 +565,7 @@ void crypto_blake2b_update(crypto_blake2b_ctx *ctx,
 
 	// Align with word boundaries
 	if ((ctx->input_idx & 7) != 0) {
-		size_t nb_bytes = MIN(gap(ctx->input_idx, 8), message_size);
+		size_t nb_bytes = MC_MIN(gap(ctx->input_idx, 8), message_size);
 		size_t word     = ctx->input_idx >> 3;
 		size_t byte     = ctx->input_idx & 7;
 		FOR (i, 0, nb_bytes) {
@@ -578,7 +578,7 @@ void crypto_blake2b_update(crypto_blake2b_ctx *ctx,
 
 	// Align with block boundaries (faster than byte by byte)
 	if ((ctx->input_idx & 127) != 0) {
-		size_t nb_words = MIN(gap(ctx->input_idx, 128), message_size) >> 3;
+		size_t nb_words = MC_MIN(gap(ctx->input_idx, 128), message_size) >> 3;
 		load64_le_buf(ctx->input + (ctx->input_idx >> 3), message, nb_words);
 		ctx->input_idx += nb_words << 3;
 		message        += nb_words << 3;
@@ -626,7 +626,7 @@ void crypto_blake2b_update(crypto_blake2b_ctx *ctx,
 void crypto_blake2b_final(crypto_blake2b_ctx *ctx, u8 *hash)
 {
 	blake2b_compress(ctx, 1); // compress the last block
-	size_t hash_size = MIN(ctx->hash_size, 64);
+	size_t hash_size = MC_MIN(ctx->hash_size, 64);
 	size_t nb_words  = hash_size >> 3;
 	store64_le_buf(hash, ctx->hash, nb_words);
 	FOR (i, nb_words << 3, hash_size) {
@@ -687,7 +687,7 @@ static void extended_hash(u8       *digest, u32 digest_size,
                           const u8 *input , u32 input_size)
 {
 	crypto_blake2b_ctx ctx;
-	crypto_blake2b_init  (&ctx, MIN(digest_size, 64));
+	crypto_blake2b_init  (&ctx, MC_MIN(digest_size, 64));
 	blake_update_32      (&ctx, digest_size);
 	crypto_blake2b_update(&ctx, input, input_size);
 	crypto_blake2b_final (&ctx, digest);
@@ -1942,7 +1942,7 @@ static int slide_step(slide_ctx *ctx, int width, int i, const u8 scalar[32])
 			ctx->next_check--;
 		} else {
 			// compute digit of next window
-			int w = MIN(width, i + 1);
+			int w = MC_MIN(width, i + 1);
 			int v = -(scalar_bit(scalar, i) << (w-1));
 			FOR_T (int, j, 0, w-1) {
 				v += scalar_bit(scalar, i-(w-1)+j) << j;
@@ -2001,7 +2001,7 @@ int crypto_eddsa_check_equation(const u8 signature[64], const u8 public_key[32],
 	// Merged double and add ladder, fused with sliding
 	slide_ctx h_slide;  slide_init(&h_slide, h);
 	slide_ctx s_slide;  slide_init(&s_slide, s);
-	int i = MAX(h_slide.next_check, s_slide.next_check);
+	int i = MC_MAX(h_slide.next_check, s_slide.next_check);
 	ge *sum = &minus_A; // reuse minus_A for the sum
 	ge_zero(sum);
 	while (i >= 0) {
