@@ -65,7 +65,7 @@ namespace MONOCYPHER_CPP_NAMESPACE {
 #define ZERO(buf, size)      FOR(_i_, 0, size) (buf)[_i_] = 0
 #define WIPE_CTX(ctx)        crypto_wipe(ctx   , sizeof(*(ctx)))
 #define WIPE_BUFFER(buffer)  crypto_wipe(buffer, sizeof(buffer))
-#define MIN(a, b)            ((a) <= (b) ? (a) : (b))
+#define MC_MIN(a, b)         ((a) <= (b) ? (a) : (b))
 typedef uint8_t u8;
 typedef uint64_t u64;
 
@@ -219,7 +219,7 @@ void crypto_sha512_update(crypto_sha512_ctx *ctx,
 
 	// Align ourselves with word boundaries
 	if ((ctx->input_idx & 7) != 0) {
-		size_t nb_bytes = MIN(align(ctx->input_idx, 8), message_size);
+		size_t nb_bytes = MC_MIN(align(ctx->input_idx, 8), message_size);
 		FOR (i, 0, nb_bytes) {
 			sha512_set_input(ctx, message[i]);
 			ctx->input_idx++;
@@ -230,7 +230,7 @@ void crypto_sha512_update(crypto_sha512_ctx *ctx,
 
 	// Align ourselves with block boundaries
 	if ((ctx->input_idx & 127) != 0) {
-		size_t nb_words = MIN(align(ctx->input_idx, 128), message_size) >> 3;
+		size_t nb_words = MC_MIN(align(ctx->input_idx, 128), message_size) >> 3;
 		load64_be_buf(ctx->input + (ctx->input_idx >> 3), message, nb_words);
 		ctx->input_idx += nb_words << 3;
 		message        += nb_words << 3;
@@ -372,7 +372,7 @@ void crypto_sha512_hkdf_expand(u8       *okm,  size_t okm_size,
 	u8 blk[64];
 
 	while (okm_size > 0) {
-		size_t out_size = MIN(okm_size, sizeof(blk));
+		size_t out_size = MC_MIN(okm_size, sizeof(blk));
 
 		crypto_sha512_hmac_ctx ctx;
 		crypto_sha512_hmac_init(&ctx, prk , prk_size);
