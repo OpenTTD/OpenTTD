@@ -157,6 +157,8 @@ ICUParagraphLayout::ICUVisualRun::ICUVisualRun(const ICURun &run, int x) :
 void ICURun::Shape(UChar *buff, size_t buff_length)
 {
 	auto hbfont = hb_ft_font_create_referenced(*(static_cast<const FT_Face *>(font->fc->GetOSHandle())));
+	/* Match the flags with how we render the glyphs. */
+	hb_ft_font_set_load_flags(hbfont, GetFontAAState(this->font->fc->GetSize()) ? FT_LOAD_TARGET_NORMAL : FT_LOAD_TARGET_MONO);
 
 	/* ICU buffer is in UTF-16. */
 	auto hbbuf = hb_buffer_create();
