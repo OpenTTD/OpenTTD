@@ -31,7 +31,7 @@
 #include "town_kdtree.h"
 #include "viewport_kdtree.h"
 #include "newgrf_profiling.h"
-#include "3rdparty/md5/md5.h"
+#include "3rdparty/monocypher/monocypher.h"
 
 #include "safeguards.h"
 
@@ -61,25 +61,24 @@ void InitializeOldNames();
 /**
  * Generate an unique ID.
  *
- * It isn't as much of an unique ID as we would like, but our random generator
- * can only produce 32bit random numbers.
- * That is why we combine InteractiveRandom with the current (steady) clock.
- * The first to add a bit of randomness, the second to ensure you can't get
- * the same unique ID when you run it twice from the same state at different
- * times.
- *
- * This makes it unlikely that two users generate the same ID for different
- * subjects. But as this is not an UUID, so it can't be ruled out either.
+ * It isn't as much of an unique ID but more a hashed digest of a random
+ * string and a time. It is very likely to be unique, but it does not follow
+ * any UUID standard.
  */
 std::string GenerateUid(std::string_view subject)
 {
-	auto current_time = std::chrono::duration_cast<std::chrono::nanoseconds>(std::chrono::steady_clock::now().time_since_epoch()).count();
-	std::string coding_string = fmt::format("{}{}{}", InteractiveRandom(), current_time, subject);
+	std::array<uint8_t, 32> random_bytes;
+	RandomBytesWithFallback(random_bytes);
 
-	Md5 checksum;
-	MD5Hash digest;
-	checksum.Append(coding_string.c_str(), coding_string.length());
-	checksum.Finish(digest);
+	auto current_time = std::chrono::duration_cast<std::chrono::nanoseconds>(std::chrono::steady_clock::now().time_since_epoch()).count();
+	std::string coding_string = fmt::format("{}{}", current_time, subject);
+
+	std::array<uint8_t, 16> digest;
+	crypto_blake2b_ctx ctx;
+	crypto_blake2b_init(&ctx, digest.size());
+	crypto_blake2b_update(&ctx, random_bytes.data(), random_bytes.size());
+	crypto_blake2b_update(&ctx, reinterpret_cast<const uint8_t *>(coding_string.data()), coding_string.size());
+	crypto_blake2b_final(&ctx, digest.data());
 
 	return FormatArrayAsHex(digest);
 }

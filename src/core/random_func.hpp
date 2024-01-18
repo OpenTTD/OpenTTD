@@ -159,4 +159,6 @@ inline bool Chance16R(const uint a, const uint b, uint32_t &r)
 }
 #endif /* RANDOM_DEBUG */
 
+void RandomBytesWithFallback(std::span<uint8_t> buf);
+
 #endif /* RANDOM_FUNC_HPP */
