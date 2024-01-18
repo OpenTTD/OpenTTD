@@ -651,6 +651,9 @@ static void MidiThreadProc()
 				TransmitNotesOff(_buffer, block_time, cur_time);
 
 				MemSetT<byte>(channel_volumes, 127, lengthof(channel_volumes));
+				/* Invalidate current volume. */
+				current_volume = UINT8_MAX;
+				last_volume_time = 0;
 
 				/* Take the current time plus the preload time as the music start time. */
 				clock->GetTime(&playback_start_time);
