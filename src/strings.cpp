@@ -1840,17 +1840,11 @@ bool ReadLanguagePack(const LanguageMetadata *lang)
 		return false;
 	}
 
-#if TTD_ENDIAN == TTD_BIG_ENDIAN
-	for (uint i = 0; i < TEXT_TAB_END; i++) {
-		lang_pack->offsets[i] = ReadLE16Aligned(&lang_pack->offsets[i]);
-	}
-#endif /* TTD_ENDIAN == TTD_BIG_ENDIAN */
-
 	std::array<uint, TEXT_TAB_END> tab_start, tab_num;
 
 	uint count = 0;
 	for (uint i = 0; i < TEXT_TAB_END; i++) {
-		uint16_t num = lang_pack->offsets[i];
+		uint16_t num = FROM_LE16(lang_pack->offsets[i]);
 		if (num > TAB_SIZE) return false;
 
 		tab_start[i] = count;
