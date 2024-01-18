@@ -222,8 +222,35 @@ inline uint8_t FindFirstBit2x64(const int value)
 	}
 }
 
-uint8_t FindFirstBit(uint64_t x);
-uint8_t FindLastBit(uint64_t x);
+/**
+ * Search the first set bit in a value.
+ * When no bit is set, it returns 0.
+ *
+ * @param x The value to search.
+ * @return The position of the first bit set.
+ */
+template <typename T>
+constexpr uint8_t FindFirstBit(T x)
+{
+	if (x == 0) return 0;
+
+	return std::countr_zero(x);
+}
+
+/**
+ * Search the last set bit in a value.
+ * When no bit is set, it returns 0.
+ *
+ * @param x The value to search.
+ * @return The position of the last bit set.
+ */
+template <typename T>
+constexpr uint8_t FindLastBit(T x)
+{
+	if (x == 0) return 0;
+
+	return std::numeric_limits<T>::digits - std::countl_zero(x) - 1;
+}
 
 /**
  * Clear the first bit in an integer.
