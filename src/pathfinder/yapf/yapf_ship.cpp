@@ -206,7 +206,7 @@ public:
 
 			/* use vehicle's current direction if that's possible, otherwise use first usable one. */
 			Trackdir veh_dir = v->GetVehicleTrackdir();
-			return (HasTrackdir(trackdirs, veh_dir)) ? veh_dir : (Trackdir)FindFirstBit2x64(trackdirs);
+			return (HasTrackdir(trackdirs, veh_dir)) ? veh_dir : (Trackdir)FindFirstBit(trackdirs);
 		}
 
 		/* Move back to the old tile/trackdir (where ship is coming from). */

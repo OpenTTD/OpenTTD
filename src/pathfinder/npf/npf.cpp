@@ -1225,11 +1225,11 @@ bool NPFShipCheckReverse(const Ship *v, Trackdir *best_td)
 	if (best_td != nullptr) {
 		DiagDirection entry = ReverseDiagDir(VehicleExitDir(v->direction, v->state));
 		TrackdirBits rtds = DiagdirReachesTrackdirs(entry) & TrackStatusToTrackdirBits(GetTileTrackStatus(v->tile, TRANSPORT_WATER, 0, entry));
-		Trackdir best = (Trackdir)FindFirstBit2x64(rtds);
+		Trackdir best = (Trackdir)FindFirstBit(rtds);
 		rtds = KillFirstBit(rtds);
 		if (rtds == TRACKDIR_BIT_NONE) return false; /* At most one choice. */
 		for (; rtds != TRACKDIR_BIT_NONE; rtds = KillFirstBit(rtds)) {
-			Trackdir td = (Trackdir)FindFirstBit2x64(rtds);
+			Trackdir td = (Trackdir)FindFirstBit(rtds);
 			ftd = NPFRouteToStationOrTileTwoWay(v->tile, best, false, v->tile, td, false, &fstd, &user);
 			if (ftd.best_bird_dist == 0 && NPFGetFlag(&ftd.node, NPF_FLAG_REVERSE)) best = td;
 		}

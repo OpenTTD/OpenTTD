@@ -132,7 +132,7 @@ inline Track RemoveFirstTrack(TrackBits *tracks)
 {
 	if (*tracks != TRACK_BIT_NONE && *tracks != INVALID_TRACK_BIT) {
 		assert((*tracks & ~TRACK_BIT_MASK) == TRACK_BIT_NONE);
-		Track first = (Track)FIND_FIRST_BIT(*tracks);
+		Track first = (Track)FindFirstBit(*tracks);
 		ClrBit(*tracks, first);
 		return first;
 	}
@@ -157,7 +157,7 @@ inline Trackdir RemoveFirstTrackdir(TrackdirBits *trackdirs)
 {
 	if (*trackdirs != TRACKDIR_BIT_NONE && *trackdirs != INVALID_TRACKDIR_BIT) {
 		assert((*trackdirs & ~TRACKDIR_BIT_MASK) == TRACKDIR_BIT_NONE);
-		Trackdir first = (Trackdir)FindFirstBit2x64(*trackdirs);
+		Trackdir first = (Trackdir)FindFirstBit(*trackdirs);
 		ClrBit(*trackdirs, first);
 		return first;
 	}
@@ -176,7 +176,7 @@ inline Trackdir RemoveFirstTrackdir(TrackdirBits *trackdirs)
  */
 inline Track FindFirstTrack(TrackBits tracks)
 {
-	return (tracks != TRACK_BIT_NONE && tracks != INVALID_TRACK_BIT) ? (Track)FIND_FIRST_BIT(tracks) : INVALID_TRACK;
+	return (tracks != TRACK_BIT_NONE && tracks != INVALID_TRACK_BIT) ? (Track)FindFirstBit(tracks) : INVALID_TRACK;
 }
 
 /**
@@ -193,7 +193,7 @@ inline Track FindFirstTrack(TrackBits tracks)
 inline Track TrackBitsToTrack(TrackBits tracks)
 {
 	assert(tracks == INVALID_TRACK_BIT || (tracks != TRACK_BIT_NONE && KillFirstBit(tracks & TRACK_BIT_MASK) == TRACK_BIT_NONE));
-	return tracks != INVALID_TRACK_BIT ? (Track)FIND_FIRST_BIT(tracks & TRACK_BIT_MASK) : INVALID_TRACK;
+	return tracks != INVALID_TRACK_BIT ? (Track)FindFirstBit(tracks & TRACK_BIT_MASK) : INVALID_TRACK;
 }
 
 /**
@@ -211,7 +211,7 @@ inline Track TrackBitsToTrack(TrackBits tracks)
 inline Trackdir FindFirstTrackdir(TrackdirBits trackdirs)
 {
 	assert((trackdirs & ~TRACKDIR_BIT_MASK) == TRACKDIR_BIT_NONE);
-	return (trackdirs != TRACKDIR_BIT_NONE) ? (Trackdir)FindFirstBit2x64(trackdirs) : INVALID_TRACKDIR;
+	return (trackdirs != TRACKDIR_BIT_NONE) ? (Trackdir)FindFirstBit(trackdirs) : INVALID_TRACKDIR;
 }
 
 /*

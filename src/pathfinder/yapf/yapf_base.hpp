@@ -192,7 +192,7 @@ public:
 	{
 		bool is_choice = (KillFirstBit(tf.m_new_td_bits) != TRACKDIR_BIT_NONE);
 		for (TrackdirBits rtds = tf.m_new_td_bits; rtds != TRACKDIR_BIT_NONE; rtds = KillFirstBit(rtds)) {
-			Trackdir td = (Trackdir)FindFirstBit2x64(rtds);
+			Trackdir td = (Trackdir)FindFirstBit(rtds);
 			Node &n = Yapf().CreateNewNode();
 			n.Set(parent, tf.m_new_tile, td, is_choice);
 			Yapf().AddNewNode(n, tf);

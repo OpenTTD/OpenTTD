@@ -145,7 +145,7 @@ public:
 			/* if there are more trackdirs available & reachable, we are at the end of segment */
 			if (KillFirstBit(F.m_new_td_bits) != TRACKDIR_BIT_NONE) break;
 
-			Trackdir new_td = (Trackdir)FindFirstBit2x64(F.m_new_td_bits);
+			Trackdir new_td = (Trackdir)FindFirstBit(F.m_new_td_bits);
 
 			/* stop if RV is on simple loop with no junctions */
 			if (F.m_new_tile == n.m_key.m_tile && new_td == n.m_key.m_td) return false;
@@ -535,7 +535,7 @@ Trackdir YapfRoadVehicleChooseTrack(const RoadVehicle *v, TileIndex tile, DiagDi
 	}
 
 	Trackdir td_ret = pfnChooseRoadTrack(v, tile, enterdir, path_found, path_cache);
-	return (td_ret != INVALID_TRACKDIR) ? td_ret : (Trackdir)FindFirstBit2x64(trackdirs);
+	return (td_ret != INVALID_TRACKDIR) ? td_ret : (Trackdir)FindFirstBit(trackdirs);
 }
 
 FindDepotData YapfRoadVehicleFindNearestDepot(const RoadVehicle *v, int max_distance)
