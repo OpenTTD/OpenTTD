@@ -34,6 +34,8 @@ static std::tuple<std::string, std::string> SplitFontFamilyAndStyle(std::string_
 	if (separator == std::string_view::npos) return { std::string(font_name), std::string() };
 
 	auto begin = font_name.find_first_not_of("\t ", separator + 1);
+	if (begin == std::string_view::npos) return { std::string(font_name.substr(0, separator)), std::string() };
+
 	return { std::string(font_name.substr(0, separator)), std::string(font_name.substr(begin)) };
 }
 
