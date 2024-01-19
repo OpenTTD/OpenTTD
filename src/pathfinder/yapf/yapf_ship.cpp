@@ -244,14 +244,14 @@ public:
 			path_found = pf.FindPath(v);
 			Node *node = pf.GetBestNode();
 			if (attempt == 0 && !path_found) continue; // Try again with restricted search area.
-			if (!path_found || !node) return INVALID_TRACKDIR;
+			if (!path_found && node == nullptr) break;
 
 			/* Return only the path within the current water region if an intermediate destination was returned. If not, cache the entire path
 			 * to the final destination tile. The low-level pathfinder might actually prefer a different docking tile in a nearby region. Without
 			 * caching the full path the ship can get stuck in a loop. */
 			const WaterRegionPatchDesc end_water_patch = GetWaterRegionPatchInfo(node->GetTile());
 			const WaterRegionPatchDesc start_water_patch = GetWaterRegionPatchInfo(tile);
-			while (node->m_parent) {
+			while (node->m_parent != nullptr) {
 				const WaterRegionPatchDesc node_water_patch = GetWaterRegionPatchInfo(node->GetTile());
 				if (node_water_patch == start_water_patch || (!is_intermediate_destination && node_water_patch != end_water_patch)) {
 					path_cache.push_front(node->GetTrackdir());
