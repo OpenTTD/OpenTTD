@@ -768,7 +768,7 @@ STR_SMALLMAP_LEGENDA_AIRCRAFT                                   :{TINY_FONT}{BLA
 STR_SMALLMAP_LEGENDA_TRANSPORT_ROUTES                           :{TINY_FONT}{BLACK}Rute de transport
 STR_SMALLMAP_LEGENDA_FOREST                                     :{TINY_FONT}{BLACK}Pădure
 STR_SMALLMAP_LEGENDA_RAILROAD_STATION                           :{TINY_FONT}{BLACK}Gară
-STR_SMALLMAP_LEGENDA_TRUCK_LOADING_BAY                          :{TINY_FONT}{BLACK}Loc încărcare camioane
+STR_SMALLMAP_LEGENDA_TRUCK_LOADING_BAY                          :{TINY_FONT}{BLACK}Stația de camioane
 STR_SMALLMAP_LEGENDA_BUS_STATION                                :{TINY_FONT}{BLACK}Stație de autobuz
 STR_SMALLMAP_LEGENDA_AIRPORT_HELIPORT                           :{TINY_FONT}{BLACK}Aeroport/Heliport
 STR_SMALLMAP_LEGENDA_DOCK                                       :{TINY_FONT}{BLACK}Port
@@ -999,6 +999,7 @@ STR_GAME_OPTIONS_CURRENCY_HKD                                   :Dolar Hong Kong
 STR_GAME_OPTIONS_CURRENCY_INR                                   :Rupia Indiană
 STR_GAME_OPTIONS_CURRENCY_IDR                                   :Rupia indoneziană
 STR_GAME_OPTIONS_CURRENCY_MYR                                   :Ringgit Malaysian
+STR_GAME_OPTIONS_CURRENCY_LVL                                   :Lats leton
 
 STR_GAME_OPTIONS_AUTOSAVE_FRAME                                 :{BLACK}Salvare automată
 STR_GAME_OPTIONS_AUTOSAVE_DROPDOWN_TOOLTIP                      :{BLACK}Alege intervalul de timp dintre salvările automate
@@ -1040,6 +1041,10 @@ STR_GAME_OPTIONS_GUI_SCALE_AUTO_TOOLTIP                         :{BLACK}Bifați 
 STR_GAME_OPTIONS_GUI_SCALE_BEVELS                               :{BLACK}Scalează marginile
 STR_GAME_OPTIONS_GUI_SCALE_BEVELS_TOOLTIP                       :{BLACK}Bifați această casetă pentru a scala marginile în funcție de dimensiunea interfeței
 
+STR_GAME_OPTIONS_GUI_FONT_SPRITE                                :{BLACK}Folosiți fontul tradițional al sprite-ului
+STR_GAME_OPTIONS_GUI_FONT_SPRITE_TOOLTIP                        :{BLACK}Bifați această casetă dacă preferați să utilizați fontul sprite tradițional cu dimensiune fixă.
+STR_GAME_OPTIONS_GUI_FONT_AA                                    :{BLACK}Fonturi anti-alias
+STR_GAME_OPTIONS_GUI_FONT_AA_TOOLTIP                            :{BLACK}Bifați această casetă pentru anti-alias fonturi redimensionabile.
 
 STR_GAME_OPTIONS_GUI_SCALE_1X                                   :1x
 STR_GAME_OPTIONS_GUI_SCALE_2X                                   :2x
@@ -1487,7 +1492,7 @@ STR_CONFIG_SETTING_LAND_GENERATOR_ORIGINAL                      :Original
 STR_CONFIG_SETTING_LAND_GENERATOR_TERRA_GENESIS                 :TerraGenesis
 
 STR_CONFIG_SETTING_TERRAIN_TYPE                                 :Tip teren: {STRING}
-STR_CONFIG_SETTING_TERRAIN_TYPE_HELPTEXT                        :(Doar TerraGenesis) Frecvența dealurilor din peisaj
+STR_CONFIG_SETTING_TERRAIN_TYPE_HELPTEXT                        :Alegeți înălțimea dealurilor și munților din peisaj
 
 STR_CONFIG_SETTING_INDUSTRY_DENSITY                             :Densitatea industriei: {STRING}
 STR_CONFIG_SETTING_INDUSTRY_DENSITY_HELPTEXT                    :Stabilește câte industrii ar trebui generate și ce nivel ar trebui întreținut pe durata jocului
@@ -1496,18 +1501,18 @@ STR_CONFIG_SETTING_OIL_REF_EDGE_DISTANCE                        :Distanța maxim
 STR_CONFIG_SETTING_OIL_REF_EDGE_DISTANCE_HELPTEXT               :Rafinăriile de petrol vor fi construite doar la marginea hărții, sau pe coastă, în cazul harților insulare
 
 STR_CONFIG_SETTING_SNOWLINE_HEIGHT                              :Grosimea stratului de zăpadă: {STRING}
-STR_CONFIG_SETTING_SNOWLINE_HEIGHT_HELPTEXT                     :Controlează înălțimea de la care zăpada apare în peisajul sub-arctic. Zăpada afectează și generarea industriilor și cerințele de creștere a orașelor. Se poate modifica doar prin Editorul de scenarii sau este calculat prin „acoperirea cu zăpadă”
+STR_CONFIG_SETTING_SNOWLINE_HEIGHT_HELPTEXT                     :Alegeți la ce înălțime începe zăpada în peisajul subarctic. Zăpada afectează, de asemenea, generarea industriei și cerințele de creștere a orașului. Poate fi modificat numai prin Editorul de scenarii sau este calculat în alt mod prin „acoperire cu zăpadă”
 
 STR_CONFIG_SETTING_SNOW_COVERAGE                                :Acoperire cu zăpadă: {STRING}
 STR_CONFIG_SETTING_SNOW_COVERAGE_HELPTEXT                       :Controlează cantitatea aproximativă de zăpadă în peisajul subarctic. Zăpada afectează și generarea industriilor și cerințele de creștere a orașelor. Se folosește doar la generarea hărții. Terenul apropiat de nivelul mării este întotdeauna fără zăpadă
 STR_CONFIG_SETTING_SNOW_COVERAGE_VALUE                          :{NUM}%
 
 STR_CONFIG_SETTING_DESERT_COVERAGE                              :Acoperire cu deșert: {STRING}
-STR_CONFIG_SETTING_DESERT_COVERAGE_HELPTEXT                     :Controlează întinderea aproximativă de deșert din peisajul tropical. Deșert afectează și generarea industriilor. Parametrul se folosește doar la generarea hărții
+STR_CONFIG_SETTING_DESERT_COVERAGE_HELPTEXT                     :Controlează întinderea aproximativă de deșert din peisajul tropical. Deșertul afectează și generarea industriilor. Parametrul se folosește doar la generarea hărții
 STR_CONFIG_SETTING_DESERT_COVERAGE_VALUE                        :{NUM}%
 
 STR_CONFIG_SETTING_ROUGHNESS_OF_TERRAIN                         :Duritatea terenului (doar pt TerraGenesis) : {STRING}
-STR_CONFIG_SETTING_ROUGHNESS_OF_TERRAIN_HELPTEXT                :(Doar TerraGenesis) Alegeți frecvența dealurilor: Peisajele line au dealuri mai puține și mai întinse. Peisajele dure au multe dealuri și pot arăta repetitiv
+STR_CONFIG_SETTING_ROUGHNESS_OF_TERRAIN_HELPTEXT                :Alegeți forma și numărul de dealuri. Peisajele netede au mai puține dealuri, dealuri mai largi, în timp ce peisajele accidentate au dealuri mai multe dar mai mici.
 ###length 4
 STR_CONFIG_SETTING_ROUGHNESS_OF_TERRAIN_VERY_SMOOTH             :Foarte fin
 STR_CONFIG_SETTING_ROUGHNESS_OF_TERRAIN_SMOOTH                  :Fin
@@ -1515,7 +1520,7 @@ STR_CONFIG_SETTING_ROUGHNESS_OF_TERRAIN_ROUGH                   :Dur
 STR_CONFIG_SETTING_ROUGHNESS_OF_TERRAIN_VERY_ROUGH              :Foarte dur
 
 STR_CONFIG_SETTING_VARIETY                                      :Distribuția varietății: {STRING}
-STR_CONFIG_SETTING_VARIETY_HELPTEXT                             :(TerraGenesis only) Specifică dacă harta conține și zone muntoase și teren plat. Deoarece aceasta face harta mai plată, alte setări ar trebui să adauge zone muntoase
+STR_CONFIG_SETTING_VARIETY_HELPTEXT                             :Alegeți dacă harta conține atât munți, cât și zone plane. Cu cât varietatea este mai mare, cu atât mai multe diferențe de altitudine între zonele muntoase și cele plate.
 
 STR_CONFIG_SETTING_RIVER_AMOUNT                                 :Numărul de râuri: {STRING}
 STR_CONFIG_SETTING_RIVER_AMOUNT_HELPTEXT                        :Alege câte râuri să fie generate
@@ -1661,6 +1666,7 @@ STR_CONFIG_SETTING_TIMETABLE_MODE_HELPTEXT                      :Selectați unit
 ###length 3
 STR_CONFIG_SETTING_TIMETABLE_MODE_DAYS                          :Zile
 STR_CONFIG_SETTING_TIMETABLE_MODE_SECONDS                       :Secunde
+STR_CONFIG_SETTING_TIMETABLE_MODE_TICKS                         :Tick-uri
 
 STR_CONFIG_SETTING_TIMETABLE_SHOW_ARRIVAL_DEPARTURE             :Afișează plecările și sosirile din orare: {STRING}
 STR_CONFIG_SETTING_TIMETABLE_SHOW_ARRIVAL_DEPARTURE_HELPTEXT    :Arată timpii estimați de plecare și sosire din orar
@@ -1772,6 +1778,8 @@ STR_CONFIG_SETTING_SERVINT_DISABLED                             :Dezactivat
 STR_CONFIG_SETTING_NOSERVICE                                    :Deactivare service când defecțiunile nu sunt active: {STRING}
 STR_CONFIG_SETTING_NOSERVICE_HELPTEXT                           :Dacă este activată, vehiculele nu vor întreținute dacă nu se pot defecta
 
+STR_CONFIG_SETTING_STATION_LENGTH_LOADING_PENALTY               :Penalizarea vitezei de încărcare pentru trenurile care sunt mai lungi decât gara: {STRING}
+STR_CONFIG_SETTING_STATION_LENGTH_LOADING_PENALTY_HELPTEXT      :Când este activat, trenurile care sunt prea lungi pentru gară se încarcă mai lent decât un tren care se potrivește cu stația. Această setare nu afectează identificarea traseului.
 
 STR_CONFIG_SETTING_WAGONSPEEDLIMITS                             :Activează limite de viteză pentru vagoane: {STRING}
 STR_CONFIG_SETTING_WAGONSPEEDLIMITS_HELPTEXT                    :Dacă este activată, folosește și limita de viteză a vagoanelor pentru a stabili viteza maximă a trenului
@@ -2048,14 +2056,17 @@ STR_CONFIG_SETTING_ACCOUNTING                                   :Contabilitate
 STR_CONFIG_SETTING_VEHICLES                                     :Vehicule
 STR_CONFIG_SETTING_VEHICLES_PHYSICS                             :Fizică
 STR_CONFIG_SETTING_VEHICLES_ROUTING                             :Direcționare
+STR_CONFIG_SETTING_VEHICLES_ORDERS                              :Comenzi
 STR_CONFIG_SETTING_LIMITATIONS                                  :Limitări
 STR_CONFIG_SETTING_ACCIDENTS                                    :Dezastre / Accidente
 STR_CONFIG_SETTING_GENWORLD                                     :Generare lume
 STR_CONFIG_SETTING_ENVIRONMENT                                  :Mediu
+STR_CONFIG_SETTING_ENVIRONMENT_TIME                             :Timp
 STR_CONFIG_SETTING_ENVIRONMENT_AUTHORITIES                      :Autorități
 STR_CONFIG_SETTING_ENVIRONMENT_TOWNS                            :Orașe
 STR_CONFIG_SETTING_ENVIRONMENT_INDUSTRIES                       :Industrii
 STR_CONFIG_SETTING_ENVIRONMENT_CARGODIST                        :Distribuție cargo
+STR_CONFIG_SETTING_ENVIRONMENT_TREES                            :Copaci
 STR_CONFIG_SETTING_AI                                           :Concurenți
 STR_CONFIG_SETTING_AI_NPC                                       :Jucători virtuali
 STR_CONFIG_SETTING_NETWORK                                      :Rețea
@@ -2192,12 +2203,20 @@ STR_LIVERY_TRAIN_TOOLTIP                                        :{BLACK}Arată s
 STR_LIVERY_ROAD_VEHICLE_TOOLTIP                                 :{BLACK}Arată schemele de culori pentru autovehicule
 STR_LIVERY_SHIP_TOOLTIP                                         :{BLACK}Arată schemele de culori pentru nave
 STR_LIVERY_AIRCRAFT_TOOLTIP                                     :{BLACK}Arată schemele de culori pentru aeronave
+STR_LIVERY_TRAIN_GROUP_TOOLTIP                                  :{BLACK}Afișați culorile grupurilor de trenuri
+STR_LIVERY_ROAD_VEHICLE_GROUP_TOOLTIP                           :{BLACK}Afișați culorile grupurilor de vehicule rutiere
+STR_LIVERY_SHIP_GROUP_TOOLTIP                                   :{BLACK}Afișați culorile grupurilor de nave
+STR_LIVERY_AIRCRAFT_GROUP_TOOLTIP                               :{BLACK}Afișați culorile grupurilor de avioane
 STR_LIVERY_PRIMARY_TOOLTIP                                      :{BLACK}Alege culoarea principală pentru schema selectată. Ctrl+Click va seta această culoare pentru toate schemele
 STR_LIVERY_SECONDARY_TOOLTIP                                    :{BLACK}Alege culoarea secundară pentru schema selectată. Ctrl+Click va seta această culoare pentru toate schemele
 STR_LIVERY_PANEL_TOOLTIP                                        :{BLACK}Alege o schemă de culori pentru modificare sau mai multe scheme, folosind Ctrl+Click. Apasă pe căsuță pentru a comuta schema
+STR_LIVERY_TRAIN_GROUP_EMPTY                                    :Nu sunt create grupuri de trenuri
+STR_LIVERY_ROAD_VEHICLE_GROUP_EMPTY                             :Nu sunt create grupuri de vehicule rutiere
+STR_LIVERY_SHIP_GROUP_EMPTY                                     :Nu sunt create grupuri de nave
+STR_LIVERY_AIRCRAFT_GROUP_EMPTY                                 :Nu sunt create grupuri de avioane
 
 ###length 23
-STR_LIVERY_DEFAULT                                              :Uniforma standard
+STR_LIVERY_DEFAULT                                              :Vopsire standard
 STR_LIVERY_STEAM                                                :Locomotivă cu abur
 STR_LIVERY_DIESEL                                               :Locomotivă diesel
 STR_LIVERY_ELECTRIC                                             :Locomotivă electrică
@@ -2350,7 +2369,7 @@ STR_NETWORK_START_SERVER_NEW_GAME_NAME_TOOLTIP                  :{BLACK}Numele j
 STR_NETWORK_START_SERVER_SET_PASSWORD                           :{BLACK}Pune parolă
 STR_NETWORK_START_SERVER_PASSWORD_TOOLTIP                       :{BLACK}Protejează-ți jocul cu o parolă dacă nu vrei să intre jucători neautorizați
 
-STR_NETWORK_START_SERVER_VISIBILITY_LABEL                       :{BLACK}Vizibilitate
+STR_NETWORK_START_SERVER_VISIBILITY_LABEL                       :{BLACK}Vizibilitate:
 STR_NETWORK_START_SERVER_VISIBILITY_TOOLTIP                     :{BLACK}Dacă alți oameni îți pot vedea serverul în lista publică
 STR_NETWORK_START_SERVER_CLIENTS_SELECT                         :{BLACK}{NUM} {P client clienți "de clienți"}
 STR_NETWORK_START_SERVER_NUMBER_OF_CLIENTS                      :{BLACK}Număr maxim de clienți:
@@ -2585,7 +2604,7 @@ STR_CONTENT_SEARCH_EXTERNAL_TOOLTIP                             :{BLACK}Caută c
 STR_CONTENT_SEARCH_EXTERNAL_DISCLAIMER_CAPTION                  :{WHITE}Ești pe cale de a ieși din OpenTTD!
 STR_CONTENT_SEARCH_EXTERNAL_DISCLAIMER                          :{WHITE}Termenii și condițiile impuse la descărcarea de pe site-uri web externe pot varia:{}Va trebui să accesezi site-urile externe pentru informații referitoare la modul de instalare a conținutului în OpenTTD.{}Dorești să continui?
 STR_CONTENT_FILTER_TITLE                                        :{BLACK}Filtru nume/etichetă:
-STR_CONTENT_OPEN_URL                                            :{BLACK}Vizitează site-ul web
+STR_CONTENT_OPEN_URL                                            :{BLACK}Site-ul web
 STR_CONTENT_OPEN_URL_TOOLTIP                                    :{BLACK}Vizitează site-ul web al acestei resurse
 STR_CONTENT_DOWNLOAD_CAPTION                                    :{BLACK}Descarcă
 STR_CONTENT_DOWNLOAD_CAPTION_TOOLTIP                            :{BLACK}Pornește descărcarea resurselor selectate
@@ -2705,9 +2724,9 @@ STR_RAIL_TOOLBAR_MAGLEV_CONSTRUCTION_CAPTION                    :Construcție pe
 STR_RAIL_TOOLBAR_TOOLTIP_BUILD_RAILROAD_TRACK                   :{BLACK}Construiește o cale ferată. Ctrl comută construirea/eliminarea căii ferate. Shift comută între construire/afișare cost estimat
 STR_RAIL_TOOLBAR_TOOLTIP_BUILD_AUTORAIL                         :{BLACK}Construiește cale ferată în modul automat. Ctrl comută construirea/eliminarea căii ferate. Shift comută între construire/afișare cost estimat
 STR_RAIL_TOOLBAR_TOOLTIP_BUILD_TRAIN_DEPOT_FOR_BUILDING         :{BLACK}Construiește un depou feroviar (pentru achiziție și service de trenuri). Shift comută între construire/afișare cost estimat
-STR_RAIL_TOOLBAR_TOOLTIP_CONVERT_RAIL_TO_WAYPOINT               :{BLACK}Convertește linia în punct de tranzit. Ctrl permite alipirea punctelor de tranzit distante. Shift comută între convertire/afișare cost estimat
+STR_RAIL_TOOLBAR_TOOLTIP_CONVERT_RAIL_TO_WAYPOINT               :{BLACK}Construiți un punct de tranzit pe calea ferată. Ctrl permite alăturarea punctelor de tranzit. Shift comută construirea/afișarea estimării costurilor
 STR_RAIL_TOOLBAR_TOOLTIP_BUILD_RAILROAD_STATION                 :{BLACK}Construiește gară. Ctrl permite alipirea stațiilor. Shift comută între construire/afișare cost estimat
-STR_RAIL_TOOLBAR_TOOLTIP_BUILD_RAILROAD_SIGNALS                 :{BLACK}Plasează semnale feroviare. Ctrl comută între semafoare/semnale electrice{}Trage cu mausul pentru a construi automat semnale pe o porțiune de șină dreaptă. Apasă Ctrl pentru a construi semnale până la următoarea joncțiune{}Ctrl+Clic comută deschiderea ferestrei de selecție a tipului de semnal. Shift comută între construire/afișare cost estimat
+STR_RAIL_TOOLBAR_TOOLTIP_BUILD_RAILROAD_SIGNALS                 :{BLACK}Construiți semnal pe calea ferată. Ctrl comută semnalele semafor/luminoase{}Trasarea generează semnale de-a lungul unei porțiuni drepte de șină. Ctrl generează semnale până la următoarea intersecție sau semnal{}Ctrl+Click comută deschiderea ferestrei de selectare a semnalului. Shift comută construirea/afișarea estimării costurilor
 STR_RAIL_TOOLBAR_TOOLTIP_BUILD_RAILROAD_BRIDGE                  :{BLACK}Construiește un pod de cale ferată. Shift comută între construire/afișare cost estimat
 STR_RAIL_TOOLBAR_TOOLTIP_BUILD_RAILROAD_TUNNEL                  :{BLACK}Construiește un tunel feroviar. Shift comută între construire/afișare cost estimat
 STR_RAIL_TOOLBAR_TOOLTIP_TOGGLE_BUILD_REMOVE_FOR                :{BLACK}Comută construcția/înlăturarea căilor ferate, semnalelor, punctelor de tranzit și a stațiilor. Ctrl+Click înlătură șinele din punctele de tranzit și din stații
@@ -2820,7 +2839,7 @@ STR_BUILD_DEPOT_TRAM_ORIENTATION_SELECT_TOOLTIP                 :{BLACK}Alege or
 STR_STATION_BUILD_BUS_ORIENTATION                               :{WHITE}Orientarea stației de autobuz
 STR_STATION_BUILD_BUS_ORIENTATION_TOOLTIP                       :{BLACK}Alege orientarea stației de autobuz
 STR_STATION_BUILD_TRUCK_ORIENTATION                             :{WHITE}Orientarea platformei pentru camioane
-STR_STATION_BUILD_TRUCK_ORIENTATION_TOOLTIP                     :{BLACK}Alege orientarea platformei pentru camioane
+STR_STATION_BUILD_TRUCK_ORIENTATION_TOOLTIP                     :{BLACK}Selectați orientarea stației de camion
 STR_STATION_BUILD_PASSENGER_TRAM_ORIENTATION                    :{WHITE}Orientarea stației de tramvai pentru călători
 STR_STATION_BUILD_PASSENGER_TRAM_ORIENTATION_TOOLTIP            :{BLACK}Alege orientarea stației de tramvai pentru călători
 STR_STATION_BUILD_CARGO_TRAM_ORIENTATION                        :{WHITE}Orientarea stației de tramvai pentru marfă
@@ -2998,7 +3017,7 @@ STR_LAND_AREA_INFORMATION_RAIL_OWNER                            :{BLACK}Propriet
 STR_LAND_AREA_INFORMATION_LOCAL_AUTHORITY                       :{BLACK}Autoritatea locală: {LTBLUE}{STRING}
 STR_LAND_AREA_INFORMATION_LOCAL_AUTHORITY_NONE                  :Niciuna
 STR_LAND_AREA_INFORMATION_LANDINFO_COORDS                       :{BLACK}Coordonate: {LTBLUE}{NUM} x {NUM} x {NUM} ({STRING})
-STR_LAND_AREA_INFORMATION_BUILD_DATE                            :{BLACK}Data construcției: {LTBLUE}{DATE_LONG}
+STR_LAND_AREA_INFORMATION_BUILD_DATE                            :{BLACK}Construit/renovat: {LTBLUE}{DATE_LONG}
 STR_LAND_AREA_INFORMATION_STATION_CLASS                         :{BLACK}Clasa stației: {LTBLUE}{STRING}
 STR_LAND_AREA_INFORMATION_STATION_TYPE                          :{BLACK}Tip stație: {LTBLUE}{STRING}
 STR_LAND_AREA_INFORMATION_AIRPORT_CLASS                         :{BLACK}Clasă aeroport: {LTBLUE}{STRING}
@@ -3064,7 +3083,7 @@ STR_LAI_TREE_NAME_CACTUS_PLANTS                                 :Cactuși
 STR_LAI_STATION_DESCRIPTION_RAILROAD_STATION                    :Gară
 STR_LAI_STATION_DESCRIPTION_AIRCRAFT_HANGAR                     :Hangar
 STR_LAI_STATION_DESCRIPTION_AIRPORT                             :Aeroport
-STR_LAI_STATION_DESCRIPTION_TRUCK_LOADING_AREA                  :Platformă pentru camioane
+STR_LAI_STATION_DESCRIPTION_TRUCK_LOADING_AREA                  :Stația de camioane
 STR_LAI_STATION_DESCRIPTION_BUS_STATION                         :Stație de autobuz
 STR_LAI_STATION_DESCRIPTION_SHIP_DOCK                           :Port
 STR_LAI_STATION_DESCRIPTION_BUOY                                :Baliză
@@ -3141,7 +3160,7 @@ STR_FRAMERATE_GL_TRAINS                                         :Bilete de tren:
 STR_FRAMERATE_GL_ROADVEHS                                       :Tifurile vehiculelor rutiere:
 STR_FRAMERATE_GL_SHIPS                                          :Căpușele navei:
 STR_FRAMERATE_GL_AIRCRAFT                                       :Tickurile aeronavei:
-STR_FRAMERATE_GL_LANDSCAPE                                      :Căpușe mondiale:
+STR_FRAMERATE_GL_LANDSCAPE                                      :Tick-urile lumii:
 STR_FRAMERATE_GL_LINKGRAPH                                      :{BLACK}  Decalaj grafic de conexiuni:
 STR_FRAMERATE_DRAWING                                           :{BLACK}Randare grafică:
 STR_FRAMERATE_DRAWING_VIEWPORTS                                 :{BLACK}  Vizoare globale:
@@ -4649,9 +4668,9 @@ STR_AI_DEBUG_MATCH_CASE                                         :{BLACK}Potrivir
 STR_AI_DEBUG_MATCH_CASE_TOOLTIP                                 :{BLACK}Comută potrivirea pe majuscule/minuscule când se compară fișierele log ale AI cu string-ul de oprire
 STR_AI_DEBUG_CONTINUE                                           :{BLACK}Continuă
 STR_AI_DEBUG_CONTINUE_TOOLTIP                                   :{BLACK}Continuă execuția modulului de Inteligență Artificială
-STR_AI_DEBUG_SELECT_AI_TOOLTIP                                  :{BLACK}Vizualizează datele de debug ale acestui modul de IA
+STR_AI_DEBUG_SELECT_AI_TOOLTIP                                  :{BLACK}Vizualizați rezultatul de debug al acestui AI. Ctrl-Clic pentru a deschide într-o fereastră nouă
 STR_AI_GAME_SCRIPT                                              :{BLACK}Game Script
-STR_AI_GAME_SCRIPT_TOOLTIP                                      :{BLACK}Verifică log-ul Game Script
+STR_AI_GAME_SCRIPT_TOOLTIP                                      :{BLACK}Verificați jurnalul Scriptului de joc. Ctrl-Clic pentru a deschide într-o fereastră nouă
 
 STR_ERROR_AI_NO_AI_FOUND                                        :Nici o IA potrivită a fost găsită{}Această IA este nefuncțională.{}Poți descărca IA-uri folsind opțiunea "Resurse online" din meniul principal.
 STR_ERROR_AI_PLEASE_REPORT_CRASH                                :{WHITE}O Inteligentă Artificială/Script Joc s-a oprit în mod eronat. Raportează această problemă autorului împreună cu o captură de ecran a ferestrei Depanare IA/Script Joc
@@ -4724,7 +4743,7 @@ STR_TEXTFILE_NAVBACK_TOOLTIP                                    :{BLACK}Reveniț
 STR_TEXTFILE_NAVFORWARD_TOOLTIP                                 :{BLACK}Reveniți înainte în istoricul navigației
 STR_TEXTFILE_WRAP_TEXT                                          :{WHITE}Încadrează textul
 STR_TEXTFILE_WRAP_TEXT_TOOLTIP                                  :{BLACK}Încadrează textul ferestrei ca să fie vizibil integral, fără derulare
-STR_TEXTFILE_VIEW_README                                        :{BLACK}Vezi fișierul readme
+STR_TEXTFILE_VIEW_README                                        :{BLACK}Vezi fișierul read-me
 STR_TEXTFILE_VIEW_README_TOOLTIP                                :Vizualizați "citiți-mă / readme" pentru acest conținut
 STR_TEXTFILE_VIEW_CHANGELOG                                     :{BLACK}Listă modificări
 STR_TEXTFILE_VIEW_CHANGELOG_TOOLTIP                             :Vizualizați jurnalul de modificări pentru acest conținut

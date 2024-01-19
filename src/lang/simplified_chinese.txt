@@ -1084,7 +1084,7 @@ STR_GAME_OPTIONS_BASE_MUSIC_DESCRIPTION_TOOLTIP                 :{BLACK}有关�
 
 STR_BASESET_STATUS                                              :{STRING} {RED}（共有{NUM}份缺失或损坏的文件）
 
-STR_ERROR_RESOLUTION_LIST_FAILED                                :{WHITE}无法撷取可用的屏幕分辨率清单
+STR_ERROR_RESOLUTION_LIST_FAILED                                :{WHITE}检索支持的分辨率列表失败
 STR_ERROR_FULLSCREEN_FAILED                                     :{WHITE}无法切换到全屏模式{}尝试使用不同的分辨率
 
 # Custom currency window
@@ -1405,7 +1405,7 @@ STR_CONFIG_SETTING_ALLOW_GIVE_MONEY                             :允许向其他
 STR_CONFIG_SETTING_ALLOW_GIVE_MONEY_HELPTEXT                    :“打开”时，允许联机游戏模式下公司之间转移资金
 
 STR_CONFIG_SETTING_FREIGHT_TRAINS                               :货物重量倍数：{STRING}
-STR_CONFIG_SETTING_FREIGHT_TRAINS_HELPTEXT                      :设置列车所载货物的重量倍数。设定的数值越高，货物对列车而言月中，并影响其加速、转弯及上坡的效率。
+STR_CONFIG_SETTING_FREIGHT_TRAINS_HELPTEXT                      :设置列车所载货物的重量倍数。设定的数值越高，货物对列车而言越重，并影响其加速、转弯及上坡的效率。
 
 STR_CONFIG_SETTING_PLANE_SPEED                                  :飞机速度因子：{STRING}
 STR_CONFIG_SETTING_PLANE_SPEED_HELPTEXT                         :设置飞机与其它车辆类型的相对速率，使飞机运输收入减少
@@ -1645,9 +1645,9 @@ STR_CONFIG_SETTING_RIGHT_MOUSE_WND_CLOSE_YES_EXCEPT_STICKY      :是（非粘滞
 STR_CONFIG_SETTING_DATE_FORMAT_IN_SAVE_NAMES                    :使用 {STRING} 形式的文件名存档
 STR_CONFIG_SETTING_DATE_FORMAT_IN_SAVE_NAMES_HELPTEXT           :游戏存档文件名中日期的格式
 ###length 3
-STR_CONFIG_SETTING_DATE_FORMAT_IN_SAVE_NAMES_LONG               :完整时间 (2008年12月31日)
+STR_CONFIG_SETTING_DATE_FORMAT_IN_SAVE_NAMES_LONG               :长格式 (2008 年 12 月 31 日)
 STR_CONFIG_SETTING_DATE_FORMAT_IN_SAVE_NAMES_SHORT              :英式时间 (31-12-2008)
-STR_CONFIG_SETTING_DATE_FORMAT_IN_SAVE_NAMES_ISO                :简短形式 (2008-12-31)
+STR_CONFIG_SETTING_DATE_FORMAT_IN_SAVE_NAMES_ISO                :国际格式 (2008-12-31)
 
 STR_CONFIG_SETTING_PAUSE_ON_NEW_GAME                            :开始新游戏时自动暂停： {STRING}
 STR_CONFIG_SETTING_PAUSE_ON_NEW_GAME_HELPTEXT                   :“打开”时，为了让玩家有时间研究地图，开启新游戏自动暂停游戏
@@ -2858,7 +2858,7 @@ STR_WATERWAYS_TOOLBAR_BUILD_LOCKS_TOOLTIP                       :{BLACK}建设�
 STR_WATERWAYS_TOOLBAR_BUILD_DEPOT_TOOLTIP                       :{BLACK}建造船坞（可以购买或保养船只），按住 Shift 键操作可以显示所需资金
 STR_WATERWAYS_TOOLBAR_BUILD_DOCK_TOOLTIP                        :{BLACK}建造码头。按住 Ctrl 键允许合并站台，按住 Shift 键操作可以显示所需资金
 STR_WATERWAYS_TOOLBAR_BUOY_TOOLTIP                              :{BLACK}放置一个浮标，该浮标可以用作路点，按住 Shift 键操作可以显示所需资金
-STR_WATERWAYS_TOOLBAR_BUILD_AQUEDUCT_TOOLTIP                    :{BLACK}建设水渠，按住 Shift 键操作可以显示所需资金
+STR_WATERWAYS_TOOLBAR_BUILD_AQUEDUCT_TOOLTIP                    :{BLACK}建设渡槽，按住 Shift 键操作可以显示所需资金
 STR_WATERWAYS_TOOLBAR_CREATE_LAKE_TOOLTIP                       :{BLACK}修建运河{}当地形处于海平面时{}按住 Ctrl键 可以定义水域
 STR_WATERWAYS_TOOLBAR_CREATE_RIVER_TOOLTIP                      :{BLACK}放置河流。按住Ctrl键选择对角线区域
 
@@ -3025,9 +3025,9 @@ STR_LAND_AREA_INFORMATION_LANDINFO_COORDS                       :{BLACK}坐标�
 STR_LAND_AREA_INFORMATION_BUILD_DATE                            :{BLACK}建造/翻新于：{LTBLUE}{DATE_LONG}
 STR_LAND_AREA_INFORMATION_STATION_CLASS                         :{BLACK}车站分类: {LTBLUE}{STRING}
 STR_LAND_AREA_INFORMATION_STATION_TYPE                          :{BLACK}车站类型: {LTBLUE}{STRING}
-STR_LAND_AREA_INFORMATION_AIRPORT_CLASS                         :{BLACK}飞机场分类: {LTBLUE}{STRING}
-STR_LAND_AREA_INFORMATION_AIRPORT_NAME                          :{BLACK}飞机场名字: {LTBLUE}{STRING}
-STR_LAND_AREA_INFORMATION_AIRPORTTILE_NAME                      :{BLACK}机场区域名称: {LTBLUE}{STRING}
+STR_LAND_AREA_INFORMATION_AIRPORT_CLASS                         :{BLACK}机场等级：{LTBLUE}{STRING}
+STR_LAND_AREA_INFORMATION_AIRPORT_NAME                          :{BLACK}机场名称：{LTBLUE}{STRING}
+STR_LAND_AREA_INFORMATION_AIRPORTTILE_NAME                      :{BLACK}机场区域名称：{LTBLUE}{STRING}
 STR_LAND_AREA_INFORMATION_NEWGRF_NAME                           :{BLACK}NewGRF: {LTBLUE}{STRING}
 STR_LAND_AREA_INFORMATION_CARGO_ACCEPTED                        :{BLACK}接受货物：{LTBLUE}
 STR_LAND_AREA_INFORMATION_CARGO_EIGHTS                          :({COMMA}/8 {STRING})
@@ -3605,7 +3605,7 @@ STR_LOCAL_AUTHORITY_ACTION_TOOLTIP_MEDIUM_ADVERTISING           :{PUSH_COLOUR}{Y
 STR_LOCAL_AUTHORITY_ACTION_TOOLTIP_LARGE_ADVERTISING            :{PUSH_COLOUR}{YELLOW}进行大型的广告宣传，以吸引更多的旅客和货物选择贵公司的服务。{}为位于该城镇中心较远距离内的车站提供暂时的评分增益。{}{POP_COLOUR}费用：{CURRENCY_LONG}
 STR_LOCAL_AUTHORITY_ACTION_TOOLTIP_ROAD_RECONSTRUCTION          :{PUSH_COLOUR}{YELLOW}资助市政道路进行重建。{}将造成市内交通阻断 6 个月。{}{POP_COLOUR}费用：{CURRENCY_LONG}
 STR_LOCAL_AUTHORITY_ACTION_TOOLTIP_STATUE_OF_COMPANY            :{PUSH_COLOUR}{YELLOW}以公司的名义设立一尊塑像。{}为位于该城镇的车站提供永久的评分增益。{}{POP_COLOUR}费用：{CURRENCY_LONG}
-STR_LOCAL_AUTHORITY_ACTION_TOOLTIP_NEW_BUILDINGS                :{PUSH_COLOUR}{YELLOW}资助市内建设新的商业设施。{}为城镇提供暂时的成长速度增益。{}{POP_COLOUR}费用：{CURRENCY_LONG}
+STR_LOCAL_AUTHORITY_ACTION_TOOLTIP_NEW_BUILDINGS                :{PUSH_COLOUR}{YELLOW}资助市内建设新的房屋建筑。{}为城镇提供暂时的成长速度增益。{}{POP_COLOUR}费用：{CURRENCY_LONG}
 STR_LOCAL_AUTHORITY_ACTION_TOOLTIP_EXCLUSIVE_TRANSPORT          :{PUSH_COLOUR}{YELLOW}购买该市一年的运输专营权。{}其间该市的乘客及货物只允许选用贵公司的运输服务。若竞争对手对该市的贿赂成功，此合同将被取消。{}{POP_COLOUR}费用：{CURRENCY_LONG}
 STR_LOCAL_AUTHORITY_ACTION_TOOLTIP_BRIBE                        :{PUSH_COLOUR}{YELLOW}贿赂地方政府以提高评价，并终止竞争者的运输专营权，但有被发现后严厉惩罚的风险。{}{POP_COLOUR}费用：{CURRENCY_LONG}
 
@@ -4846,9 +4846,9 @@ STR_ERROR_BUILDING_MUST_BE_DEMOLISHED                           :{WHITE}必须�
 STR_ERROR_CAN_T_CLEAR_THIS_AREA                                 :{WHITE}无法清除这个区域……
 STR_ERROR_SITE_UNSUITABLE                                       :{WHITE}... 地点不合适
 STR_ERROR_ALREADY_BUILT                                         :{WHITE}... 已经建好了
-STR_ERROR_OWNED_BY                                              :{WHITE}归 {STRING} 所有
+STR_ERROR_OWNED_BY                                              :{WHITE}……所有者是 {STRING}
 STR_ERROR_AREA_IS_OWNED_BY_ANOTHER                              :{WHITE}... 此区域由另一公司所有
-STR_ERROR_TERRAFORM_LIMIT_REACHED                               :{WHITE}... 景观数量限制已达上限
+STR_ERROR_TERRAFORM_LIMIT_REACHED                               :{WHITE}……已达地形限制
 STR_ERROR_CLEARING_LIMIT_REACHED                                :{WHITE}... 已达地块清理限制
 STR_ERROR_TREE_PLANT_LIMIT_REACHED                              :{WHITE}... 已经达最大植树量
 STR_ERROR_NAME_MUST_BE_UNIQUE                                   :{WHITE}名称重复!请重新命名.
@@ -4920,7 +4920,7 @@ STR_ERROR_CAN_ONLY_BE_BUILT_BELOW_SNOW_LINE                     :{WHITE}... 只�
 
 STR_ERROR_PROSPECTING_WAS_UNLUCKY                               :{WHITE}由于运气不好，勘探失败了；请再试一次
 STR_ERROR_NO_SUITABLE_PLACES_FOR_PROSPECTING                    :{WHITE}没有合适的地方勘探这种工业
-STR_ERROR_NO_SUITABLE_PLACES_FOR_INDUSTRIES                     :{WHITE}没有合适的地方建设 “{STRING}” 工业设施
+STR_ERROR_NO_SUITABLE_PLACES_FOR_INDUSTRIES                     :{WHITE}没有合适的地方建设 “{STRING}” 工业
 STR_ERROR_NO_SUITABLE_PLACES_FOR_INDUSTRIES_EXPLANATION         :{WHITE}请更改参数以生成较好的场景
 
 # Station construction related errors
@@ -4933,7 +4933,7 @@ STR_ERROR_CAN_T_BUILD_DOCK_HERE                                 :{WHITE}不能�
 STR_ERROR_CAN_T_BUILD_AIRPORT_HERE                              :{WHITE}不能在这里兴建机场……
 
 STR_ERROR_ADJOINS_MORE_THAN_ONE_EXISTING                        :{WHITE}与另一车站相连
-STR_ERROR_STATION_TOO_SPREAD_OUT                                :{WHITE}站区太大了……
+STR_ERROR_STATION_TOO_SPREAD_OUT                                :{WHITE}……车站范围过大
 STR_ERROR_TOO_MANY_STATIONS_LOADING                             :{WHITE}车站过多
 STR_ERROR_TOO_MANY_STATION_SPECS                                :{WHITE}分体站台太多
 STR_ERROR_TOO_MANY_BUS_STOPS                                    :{WHITE}公共汽车站过多
@@ -4997,7 +4997,7 @@ STR_ERROR_CAN_T_REVERSE_DIRECTION_RAIL_VEHICLE_MULTIPLE_UNITS   :{WHITE}... 含�
 STR_ERROR_INCOMPATIBLE_RAIL_TYPES                               :铁路类型不匹配
 
 STR_ERROR_CAN_T_MOVE_VEHICLE                                    :{WHITE}无法移动载具……
-STR_ERROR_REAR_ENGINE_FOLLOW_FRONT                              :{WHITE}尾部的列车机车必须和头部的一起协作……
+STR_ERROR_REAR_ENGINE_FOLLOW_FRONT                              :{WHITE}后端车头一定要跟着前端车头
 STR_ERROR_UNABLE_TO_FIND_ROUTE_TO                               :{WHITE}找不到附近的车库……
 STR_ERROR_UNABLE_TO_FIND_LOCAL_DEPOT                            :{WHITE}在附近找不到车库
 
@@ -5030,7 +5030,7 @@ STR_ERROR_CAN_T_CONVERT_RAIL                                    :{WHITE}不能�
 
 # Road construction errors
 STR_ERROR_MUST_REMOVE_ROAD_FIRST                                :{WHITE}必须先拆除公路
-STR_ERROR_ONEWAY_ROADS_CAN_T_HAVE_JUNCTION                      :{WHITE}... 单行道无法连接路口
+STR_ERROR_ONEWAY_ROADS_CAN_T_HAVE_JUNCTION                      :{WHITE}... 单行道不能有交叉路口
 STR_ERROR_CAN_T_BUILD_ROAD_HERE                                 :{WHITE}不能在这里修筑公路……
 STR_ERROR_CAN_T_BUILD_TRAMWAY_HERE                              :{WHITE}此处无法建造电车道...
 STR_ERROR_CAN_T_REMOVE_ROAD_FROM                                :{WHITE}不能拆除这里的公路……
@@ -5052,7 +5052,7 @@ STR_ERROR_CAN_T_BUILD_ON_SEA                                    :{WHITE}...不�
 STR_ERROR_CAN_T_BUILD_ON_CANAL                                  :{WHITE}... 不能在运河上建设
 STR_ERROR_CAN_T_BUILD_ON_RIVER                                  :{WHITE}... 不能在河流上建造……
 STR_ERROR_MUST_DEMOLISH_CANAL_FIRST                             :{WHITE}请先移除运河
-STR_ERROR_CAN_T_BUILD_AQUEDUCT_HERE                             :{WHITE}无法在此建设水渠……
+STR_ERROR_CAN_T_BUILD_AQUEDUCT_HERE                             :{WHITE}无法在此建设渡槽……
 
 # Tree related errors
 STR_ERROR_TREE_ALREADY_HERE                                     :{WHITE}……此处已经有树木了
@@ -5081,13 +5081,13 @@ STR_ERROR_UNABLE_TO_EXCAVATE_LAND                               :{WHITE}隧道�
 STR_ERROR_TUNNEL_TOO_LONG                                       :{WHITE}... 隧道过长
 
 # Object related errors
-STR_ERROR_TOO_MANY_OBJECTS                                      :{WHITE}... 对象物太多
+STR_ERROR_TOO_MANY_OBJECTS                                      :{WHITE}……已有太多物件
 STR_ERROR_CAN_T_BUILD_OBJECT                                    :{WHITE}无法建立物件...
 STR_ERROR_OBJECT_IN_THE_WAY                                     :{WHITE}目标处有其他物体
 STR_ERROR_COMPANY_HEADQUARTERS_IN                               :{WHITE}目标处有公司总部
 STR_ERROR_CAN_T_PURCHASE_THIS_LAND                              :{WHITE}不能购买这个地块！
 STR_ERROR_YOU_ALREADY_OWN_IT                                    :{WHITE}你已经拥有此地块！
-STR_ERROR_BUILD_OBJECT_LIMIT_REACHED                            :{WHITE}...对象构造达到极限
+STR_ERROR_BUILD_OBJECT_LIMIT_REACHED                            :{WHITE}……已达物件建造上限
 
 # Group related errors
 STR_ERROR_GROUP_CAN_T_CREATE                                    :{WHITE}无法新建分组……
@@ -5109,7 +5109,7 @@ STR_ERROR_AIRCRAFT_IN_THE_WAY                                   :{WHITE}指定�
 
 ###length VEHICLE_TYPES
 STR_ERROR_RAIL_VEHICLE_NOT_AVAILABLE                            :{WHITE}列车不可用
-STR_ERROR_ROAD_VEHICLE_NOT_AVAILABLE                            :{WHITE}车辆不可用
+STR_ERROR_ROAD_VEHICLE_NOT_AVAILABLE                            :{WHITE}载具已经停产
 STR_ERROR_SHIP_NOT_AVAILABLE                                    :{WHITE}船只不可用
 STR_ERROR_AIRCRAFT_NOT_AVAILABLE                                :{WHITE}飞机不可用
 
@@ -5203,7 +5203,7 @@ STR_ERROR_NO_BUS_STATION                                        :{WHITE}没有�
 STR_ERROR_NO_TRUCK_STATION                                      :{WHITE}没有货车站
 STR_ERROR_NO_DOCK                                               :{WHITE}这里没有码头
 STR_ERROR_NO_AIRPORT                                            :{WHITE}没有机场/直升机场
-STR_ERROR_NO_STOP_COMPATIBLE_ROAD_TYPE                          :{WHITE}没有兼容此道路类型的站点
+STR_ERROR_NO_STOP_COMPATIBLE_ROAD_TYPE                          :{WHITE}没有兼容载具对应道路类型的站点
 STR_ERROR_NO_STOP_COMPATIBLE_TRAM_TYPE                          :{WHITE}没有兼容此有轨电车道路类型的站点
 STR_ERROR_NO_STOP_ARTICULATED_VEHICLE                           :{WHITE}没有适合铰接式道路车辆的站点.{}铰接式道路车辆需要通过式车站，而不是港湾式车站
 STR_ERROR_AIRPORT_NO_PLANES                                     :{WHITE}这架飞机不能降落在这个直升机场
@@ -5213,7 +5213,7 @@ STR_ERROR_NO_BUOY                                               :{WHITE}没有�
 
 # Timetable related errors
 STR_ERROR_CAN_T_TIMETABLE_VEHICLE                               :{WHITE}不能给车辆编制时刻表…
-STR_ERROR_TIMETABLE_ONLY_WAIT_AT_STATIONS                       :{WHITE}车辆只能在站内等候。
+STR_ERROR_TIMETABLE_ONLY_WAIT_AT_STATIONS                       :{WHITE}载具只能在车站停靠等候
 STR_ERROR_TIMETABLE_NOT_STOPPING_HERE                           :{WHITE}此车辆将不停靠本站。
 STR_ERROR_TIMETABLE_INCOMPLETE                                  :{WHITE}... 时刻表不完整
 STR_ERROR_TIMETABLE_NOT_STARTED                                 :{WHITE}……时刻表尚未开始
@@ -5629,7 +5629,7 @@ STR_VEHICLE_NAME_AIRCRAFT_POWERNAUT_HELICOPTER                  :Powernaut 直�
 ##id 0x8800
 # Formatting of some strings
 STR_FORMAT_DATE_TINY                                            :{ZEROFILL_NUM}-{ZEROFILL_NUM}-{NUM}
-STR_FORMAT_DATE_SHORT                                           :{STRING} {NUM}
+STR_FORMAT_DATE_SHORT                                           :{1:NUM} {0:STRING}
 STR_FORMAT_DATE_LONG                                            :{2:NUM} 年 {1:STRING} 月 {0:STRING} 日
 STR_FORMAT_DATE_ISO                                             :{2:NUM}-{1:ZEROFILL_NUM}-{0:ZEROFILL_NUM}
 
