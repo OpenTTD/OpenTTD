@@ -110,6 +110,8 @@ static void TransmitStandardSysex(MidiSysexMessage msg)
  */
 void CALLBACK TimerCallback(UINT uTimerID, UINT, DWORD_PTR, DWORD_PTR, DWORD_PTR)
 {
+	static int volume_throttle = 0;
+
 	/* Ensure only one timer callback is running at once, and prevent races on status flags */
 	std::unique_lock<std::mutex> mutex_lock(_midi.lock, std::defer_lock);
 	if (!mutex_lock.try_lock()) return;
@@ -163,6 +165,9 @@ void CALLBACK TimerCallback(UINT uTimerID, UINT, DWORD_PTR, DWORD_PTR, DWORD_PTR
 			_midi.current_block = 0;
 
 			MemSetT<byte>(_midi.channel_volumes, 127, lengthof(_midi.channel_volumes));
+			/* Invalidate current volume. */
+			_midi.current_volume = UINT8_MAX;
+			volume_throttle = 0;
 		}
 	} else if (!_midi.playing) {
 		/* not playing, stop the timer */
@@ -173,7 +178,6 @@ void CALLBACK TimerCallback(UINT uTimerID, UINT, DWORD_PTR, DWORD_PTR, DWORD_PTR
 	}
 
 	/* check for volume change */
-	static int volume_throttle = 0;
 	if (_midi.current_volume != _midi.new_volume) {
 		if (volume_throttle == 0) {
 			Debug(driver, 2, "Win32-MIDI: timer: volume change");
