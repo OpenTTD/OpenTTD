@@ -90,6 +90,7 @@ NLOHMANN_JSON_SERIALIZE_ENUM(SocialIntegrationPlugin::State, {
 	{SocialIntegrationPlugin::State::UNLOADED, "unloaded"},
 	{SocialIntegrationPlugin::State::DUPLICATE, "duplicate"},
 	{SocialIntegrationPlugin::State::UNSUPPORTED_API, "unsupported_api"},
+	{SocialIntegrationPlugin::State::INVALID_SIGNATURE, "invalid_signature"},
 })
 
 

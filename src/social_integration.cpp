@@ -17,6 +17,7 @@
 #include "library_loader.h"
 #include "rev.h"
 #include "string_func.h"
+#include "signature.h"
 
 #include "safeguards.h"
 
@@ -25,16 +26,23 @@
  */
 class InternalSocialIntegrationPlugin {
 public:
-	InternalSocialIntegrationPlugin(const std::string &filename, const std::string &basepath) : library(filename), external(basepath)
+	InternalSocialIntegrationPlugin(const std::string &filename, const std::string &basepath) : library(nullptr), external(basepath)
 	{
 		openttd_info.openttd_version = _openttd_revision;
+
+		if (!ValidateSignatureFile(fmt::format("{}.sig", filename))) {
+			external.state = SocialIntegrationPlugin::INVALID_SIGNATURE;
+			return;
+		}
+
+		this->library = std::make_unique<LibraryLoader>(filename);
 	}
 
 	OpenTTD_SocialIntegration_v1_PluginInfo plugin_info = {}; ///< Information supplied by plugin.
 	OpenTTD_SocialIntegration_v1_PluginApi plugin_api = {}; ///< API supplied by plugin.
 	OpenTTD_SocialIntegration_v1_OpenTTDInfo openttd_info = {}; ///< Information supplied by OpenTTD.
 
-	LibraryLoader library; ///< Library handle.
+	std::unique_ptr<LibraryLoader> library = nullptr; ///< Library handle.
 
 	SocialIntegrationPlugin external; ///< Information of the plugin to be used by other parts of our codebase.
 };
@@ -65,26 +73,31 @@ public:
 
 		auto &plugin = _plugins.emplace_back(std::make_unique<InternalSocialIntegrationPlugin>(filename, basepath));
 
-		if (plugin->library.HasError()) {
+		/* Validation failed, so no library was loaded. */
+		if (plugin->library == nullptr) {
+			return false;
+		}
+
+		if (plugin->library->HasError()) {
 			plugin->external.state = SocialIntegrationPlugin::FAILED;
 
-			Debug(misc, 0, "[Social Integration: {}] Failed to load library: {}", basepath, plugin->library.GetLastError());
+			Debug(misc, 0, "[Social Integration: {}] Failed to load library: {}", basepath, plugin->library->GetLastError());
 			return false;
 		}
 
-		OpenTTD_SocialIntegration_v1_GetInfo getinfo_func = plugin->library.GetFunction("SocialIntegration_v1_GetInfo");
-		if (plugin->library.HasError()) {
+		OpenTTD_SocialIntegration_v1_GetInfo getinfo_func = plugin->library->GetFunction("SocialIntegration_v1_GetInfo");
+		if (plugin->library->HasError()) {
 			plugin->external.state = SocialIntegrationPlugin::UNSUPPORTED_API;
 
-			Debug(misc, 0, "[Social Integration: {}] Failed to find symbol SocialPlugin_v1_GetInfo: {}", basepath, plugin->library.GetLastError());
+			Debug(misc, 0, "[Social Integration: {}] Failed to find symbol SocialPlugin_v1_GetInfo: {}", basepath, plugin->library->GetLastError());
 			return false;
 		}
 
-		OpenTTD_SocialIntegration_v1_Init init_func = plugin->library.GetFunction("SocialIntegration_v1_Init");
-		if (plugin->library.HasError()) {
+		OpenTTD_SocialIntegration_v1_Init init_func = plugin->library->GetFunction("SocialIntegration_v1_Init");
+		if (plugin->library->HasError()) {
 			plugin->external.state = SocialIntegrationPlugin::UNSUPPORTED_API;
 
-			Debug(misc, 0, "[Social Integration: {}] Failed to find symbol SocialPlugin_v1_Init: {}", basepath, plugin->library.GetLastError());
+			Debug(misc, 0, "[Social Integration: {}] Failed to find symbol SocialPlugin_v1_Init: {}", basepath, plugin->library->GetLastError());
 			return false;
 		}
 

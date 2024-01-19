@@ -67,6 +67,7 @@ function(set_options)
     option(OPTION_USE_NSIS "Use NSIS to create windows installer; enable only for stable releases" OFF)
     option(OPTION_TOOLS_ONLY "Build only tools target" OFF)
     option(OPTION_DOCS_ONLY "Build only docs target" OFF)
+    option(OPTION_ALLOW_INVALID_SIGNATURE "Allow loading of content with invalid signatures" OFF)
 
     if (OPTION_DOCS_ONLY)
         set(OPTION_TOOLS_ONLY ON PARENT_SCOPE)
@@ -92,6 +93,11 @@ function(show_options)
     else()
         message(STATUS "Option Survey Key - NOT USED")
     endif()
+
+    if(OPTION_ALLOW_INVALID_SIGNATURE)
+        message(STATUS "Option Allow Invalid Signature - USED")
+        message(WARNING "Ignoring invalid signatures is a security risk! Use with care!")
+    endif()
 endfunction()
 
 # Add the definitions for the options that are selected.
@@ -115,5 +121,9 @@ function(add_definitions_based_on_options)
 
     if(OPTION_SURVEY_KEY)
         add_definitions(-DSURVEY_KEY="${OPTION_SURVEY_KEY}")
+    endif()
+
+    if(OPTION_ALLOW_INVALID_SIGNATURE)
+        add_definitions(-DALLOW_INVALID_SIGNATURE)
     endif()
 endfunction()

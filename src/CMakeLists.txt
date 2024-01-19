@@ -382,6 +382,8 @@ add_files(
     signal.cpp
     signal_func.h
     signal_type.h
+    signature.cpp
+    signature.h
     signs.cpp
     signs_base.h
     signs_cmd.cpp

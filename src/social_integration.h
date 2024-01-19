@@ -20,6 +20,7 @@ public:
 		UNLOADED, ///< The plugin is unloaded upon request.
 		DUPLICATE, ///< Another plugin of the same Social Platform is already loaded.
 		UNSUPPORTED_API, ///< The plugin does not support the current API version.
+		INVALID_SIGNATURE, ///< The signature of the plugin is invalid.
 	};
 
 	std::string basepath; ///< Base path of the plugin.
