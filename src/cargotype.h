@@ -175,6 +175,7 @@ private:
 	static CargoSpec array[NUM_CARGO]; ///< Array holding all CargoSpecs
 
 	friend void SetupCargoForClimate(LandscapeID l);
+	friend void FinaliseCargoArray();
 };
 
 extern CargoTypes _cargo_mask;

@@ -9174,13 +9174,13 @@ static void FinaliseEngineArray()
 }
 
 /** Check for invalid cargoes */
-static void FinaliseCargoArray()
+void FinaliseCargoArray()
 {
-	for (CargoSpec *cs : CargoSpec::Iterate()) {
-		if (!cs->IsValid()) {
-			cs->name = cs->name_single = cs->units_volume = STR_NEWGRF_INVALID_CARGO;
-			cs->quantifier = STR_NEWGRF_INVALID_CARGO_QUANTITY;
-			cs->abbrev = STR_NEWGRF_INVALID_CARGO_ABBREV;
+	for (CargoSpec &cs : CargoSpec::array) {
+		if (!cs.IsValid()) {
+			cs.name = cs.name_single = cs.units_volume = STR_NEWGRF_INVALID_CARGO;
+			cs.quantifier = STR_NEWGRF_INVALID_CARGO_QUANTITY;
+			cs.abbrev = STR_NEWGRF_INVALID_CARGO_ABBREV;
 		}
 	}
 }
