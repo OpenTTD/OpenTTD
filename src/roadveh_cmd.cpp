@@ -1706,10 +1706,16 @@ static void CheckIfRoadVehNeedsService(RoadVehicle *v)
 	SetWindowWidgetDirty(WC_VEHICLE_VIEW, v->index, WID_VV_START_STOP);
 }
 
+/** Calandar day handler */
+void RoadVehicle::OnNewCalendarDay()
+{
+	if (!this->IsFrontEngine()) return;
+	AgeVehicle(this);
+}
+
+/** Economy day handler. */
 void RoadVehicle::OnNewEconomyDay()
 {
-	AgeVehicle(this);
-
 	if (!this->IsFrontEngine()) return;
 
 	if ((++this->day_counter & 7) == 0) DecreaseVehicleValue(this);

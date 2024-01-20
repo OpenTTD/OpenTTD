@@ -223,6 +223,13 @@ Money Ship::GetRunningCost() const
 	return GetPrice(PR_RUNNING_SHIP, cost_factor, e->GetGRF());
 }
 
+/** Calendar day handler. */
+void Ship::OnNewCalendarDay()
+{
+	AgeVehicle(this);
+}
+
+/** Economy day handler. */
 void Ship::OnNewEconomyDay()
 {
 	if ((++this->day_counter & 7) == 0) {
@@ -230,7 +237,6 @@ void Ship::OnNewEconomyDay()
 	}
 
 	CheckVehicleBreakdown(this);
-	AgeVehicle(this);
 	CheckIfShipNeedsService(this);
 
 	CheckOrders(this);

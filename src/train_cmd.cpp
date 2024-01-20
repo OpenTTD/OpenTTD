@@ -4164,11 +4164,15 @@ static void CheckIfTrainNeedsService(Train *v)
 	SetWindowWidgetDirty(WC_VEHICLE_VIEW, v->index, WID_VV_START_STOP);
 }
 
-/** Update day counters of the train vehicle. */
-void Train::OnNewEconomyDay()
+/** Calendar day handler. */
+void Train::OnNewCalendarDay()
 {
 	AgeVehicle(this);
+}
 
+/** Economy day handler. */
+void Train::OnNewEconomyDay()
+{
 	if ((++this->day_counter & 7) == 0) DecreaseVehicleValue(this);
 
 	if (this->IsFrontEngine()) {

@@ -917,6 +917,21 @@ void VehicleEnteredDepotThisTick(Vehicle *v)
 }
 
 /**
+ * Age all vehicles, spreading out the action using the current TimerGameCalendar::date_fract.
+ */
+void RunVehicleCalendarDayProc()
+{
+	if (_game_mode != GM_NORMAL) return;
+
+	/* Run the calendar day proc for every DAY_TICKS vehicle starting at TimerGameCalendar::date_fract. */
+	for (size_t i = TimerGameCalendar::date_fract; i < Vehicle::GetPoolSize(); i += Ticks::DAY_TICKS) {
+		Vehicle *v = Vehicle::Get(i);
+		if (v == nullptr) continue;
+		v->OnNewCalendarDay();
+	}
+}
+
+/**
  * Increases the day counter for all vehicles and calls 1-day and 32-day handlers.
  * Each tick, it processes vehicles with "index % DAY_TICKS == TimerGameEconomy::date_fract",
  * so each day, all vehicles are processes in DAY_TICKS steps.

@@ -567,7 +567,12 @@ public:
 	virtual bool Tick() { return true; };
 
 	/**
-	 * Calls the new economy day handler of the vehicle
+	 * Calls the new calendar day handler of the vehicle.
+	 */
+	virtual void OnNewCalendarDay() {};
+
+	/**
+	 * Calls the new economy day handler of the vehicle.
 	 */
 	virtual void OnNewEconomyDay() {};
 

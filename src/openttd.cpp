@@ -1415,6 +1415,7 @@ void StateGameLoop()
 		TimerManager<TimerGameEconomy>::Elapsed(1);
 		TimerManager<TimerGameTick>::Elapsed(1);
 		RunTileLoop();
+		RunVehicleCalendarDayProc();
 		CallVehicleTicks();
 		CallLandscapeTick();
 		BasePersistentStorageArray::SwitchMode(PSM_LEAVE_GAMELOOP);
