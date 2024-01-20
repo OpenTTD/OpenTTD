@@ -24,14 +24,11 @@ extern GroupPool _group_pool; ///< Pool of groups.
 struct GroupStatistics {
 	Money profit_last_year;                 ///< Sum of profits for all vehicles.
 	Money profit_last_year_min_age;         ///< Sum of profits for vehicles considered for profit statistics.
-	uint16_t *num_engines;                    ///< Caches the number of engines of each type the company owns.
+	std::map<EngineID, uint16_t> num_engines; ///< Caches the number of engines of each type the company owns.
 	uint16_t num_vehicle;                     ///< Number of vehicles.
 	uint16_t num_vehicle_min_age;             ///< Number of vehicles considered for profit statistics;
 	bool autoreplace_defined;               ///< Are any autoreplace rules set?
 	bool autoreplace_finished;              ///< Have all autoreplacement finished?
-
-	GroupStatistics();
-	~GroupStatistics();
 
 	void Clear();
 
@@ -48,6 +45,8 @@ struct GroupStatistics {
 		this->autoreplace_defined = false;
 		this->autoreplace_finished = false;
 	}
+
+	uint16_t GetNumEngines(EngineID engine) const;
 
 	static GroupStatistics &Get(CompanyID company, GroupID id_g, VehicleType type);
 	static GroupStatistics &Get(const Vehicle *v);

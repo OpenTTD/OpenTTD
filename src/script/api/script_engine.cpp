@@ -32,7 +32,7 @@
 	/* AIs have only access to engines they can purchase or still have in use.
 	 * Deity has access to all engined that will be or were available ever. */
 	CompanyID company = ScriptObject::GetCompany();
-	return ScriptCompanyMode::IsDeity() || ::IsEngineBuildable(engine_id, e->type, company) || ::Company::Get(company)->group_all[e->type].num_engines[engine_id] > 0;
+	return ScriptCompanyMode::IsDeity() || ::IsEngineBuildable(engine_id, e->type, company) || ::Company::Get(company)->group_all[e->type].GetNumEngines(engine_id) > 0;
 }
 
 /* static */ bool ScriptEngine::IsBuildable(EngineID engine_id)

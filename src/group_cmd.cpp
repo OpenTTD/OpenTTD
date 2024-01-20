@@ -27,16 +27,6 @@
 GroupPool _group_pool("Group");
 INSTANTIATE_POOL_METHODS(Group)
 
-GroupStatistics::GroupStatistics()
-{
-	this->num_engines = CallocT<uint16_t>(Engine::GetPoolSize());
-}
-
-GroupStatistics::~GroupStatistics()
-{
-	free(this->num_engines);
-}
-
 /**
  * Clear all caches.
  */
@@ -47,9 +37,20 @@ void GroupStatistics::Clear()
 	this->num_vehicle_min_age = 0;
 	this->profit_last_year_min_age = 0;
 
-	/* This is also called when NewGRF change. So the number of engines might have changed. Reallocate. */
-	free(this->num_engines);
-	this->num_engines = CallocT<uint16_t>(Engine::GetPoolSize());
+	/* This is also called when NewGRF change. So the number of engines might have changed. Reset. */
+	this->num_engines.clear();
+}
+
+/**
+ * Get number of vehicles of a specific engine ID.
+ * @param engine Engine ID.
+ * @returns number of vehicles of this engine ID.
+ */
+uint16_t GroupStatistics::GetNumEngines(EngineID engine) const
+{
+	auto found = this->num_engines.find(engine);
+	if (found != std::end(this->num_engines)) return found->second;
+	return 0;
 }
 
 /**
@@ -800,7 +801,7 @@ uint GetGroupNumEngines(CompanyID company, GroupID id_g, EngineID id_e)
 	for (const Group *g : Group::Iterate()) {
 		if (g->parent == id_g) count += GetGroupNumEngines(company, g->index, id_e);
 	}
-	return count + GroupStatistics::Get(company, id_g, e->type).num_engines[id_e];
+	return count + GroupStatistics::Get(company, id_g, e->type).GetNumEngines(id_e);
 }
 
 /**
