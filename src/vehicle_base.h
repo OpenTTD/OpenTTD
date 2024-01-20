@@ -567,9 +567,9 @@ public:
 	virtual bool Tick() { return true; };
 
 	/**
-	 * Calls the new day handler of the vehicle
+	 * Calls the new economy day handler of the vehicle
 	 */
-	virtual void OnNewDay() {};
+	virtual void OnNewEconomyDay() {};
 
 	void ShiftDates(TimerGameEconomy::Date interval);
 

@@ -4165,7 +4165,7 @@ static void CheckIfTrainNeedsService(Train *v)
 }
 
 /** Update day counters of the train vehicle. */
-void Train::OnNewDay()
+void Train::OnNewEconomyDay()
 {
 	AgeVehicle(this);
 

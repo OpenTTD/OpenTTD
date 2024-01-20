@@ -1706,7 +1706,7 @@ static void CheckIfRoadVehNeedsService(RoadVehicle *v)
 	SetWindowWidgetDirty(WC_VEHICLE_VIEW, v->index, WID_VV_START_STOP);
 }
 
-void RoadVehicle::OnNewDay()
+void RoadVehicle::OnNewEconomyDay()
 {
 	AgeVehicle(this);
 

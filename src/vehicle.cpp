@@ -918,15 +918,15 @@ void VehicleEnteredDepotThisTick(Vehicle *v)
 
 /**
  * Increases the day counter for all vehicles and calls 1-day and 32-day handlers.
- * Each tick, it processes vehicles with "index % DAY_TICKS == TimerGameCalendar::date_fract",
+ * Each tick, it processes vehicles with "index % DAY_TICKS == TimerGameEconomy::date_fract",
  * so each day, all vehicles are processes in DAY_TICKS steps.
  */
-static void RunVehicleDayProc()
+static void RunEconomyVehicleDayProc()
 {
 	if (_game_mode != GM_NORMAL) return;
 
-	/* Run the day_proc for every DAY_TICKS vehicle starting at TimerGameCalendar::date_fract. */
-	for (size_t i = TimerGameCalendar::date_fract; i < Vehicle::GetPoolSize(); i += Ticks::DAY_TICKS) {
+	/* Run the economy day proc for every DAY_TICKS vehicle starting at TimerGameEconomy::date_fract. */
+	for (size_t i = TimerGameEconomy::date_fract; i < Vehicle::GetPoolSize(); i += Ticks::DAY_TICKS) {
 		Vehicle *v = Vehicle::Get(i);
 		if (v == nullptr) continue;
 
@@ -947,7 +947,7 @@ static void RunVehicleDayProc()
 		}
 
 		/* This is called once per day for each vehicle, but not in the first tick of the day */
-		v->OnNewDay();
+		v->OnNewEconomyDay();
 	}
 }
 
@@ -955,7 +955,7 @@ void CallVehicleTicks()
 {
 	_vehicles_to_autoreplace.clear();
 
-	RunVehicleDayProc();
+	RunEconomyVehicleDayProc();
 
 	{
 		PerformanceMeasurer framerate(PFE_GL_ECONOMY);

@@ -440,7 +440,7 @@ Money Aircraft::GetRunningCost() const
 	return GetPrice(PR_RUNNING_AIRCRAFT, cost_factor, e->GetGRF());
 }
 
-void Aircraft::OnNewDay()
+void Aircraft::OnNewEconomyDay()
 {
 	if (!this->IsNormalAircraft()) return;
 

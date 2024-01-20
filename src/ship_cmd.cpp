@@ -223,7 +223,7 @@ Money Ship::GetRunningCost() const
 	return GetPrice(PR_RUNNING_SHIP, cost_factor, e->GetGRF());
 }
 
-void Ship::OnNewDay()
+void Ship::OnNewEconomyDay()
 {
 	if ((++this->day_counter & 7) == 0) {
 		DecreaseVehicleValue(this);
