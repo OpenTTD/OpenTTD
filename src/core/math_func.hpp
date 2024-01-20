@@ -309,8 +309,6 @@ inline uint ToPercent16(uint i)
 	return i * 101 >> 16;
 }
 
-int LeastCommonMultiple(int a, int b);
-int GreatestCommonDivisor(int a, int b);
 int DivideApprox(int a, int b);
 
 /**
