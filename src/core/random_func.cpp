@@ -24,10 +24,12 @@
 #if defined(_WIN32)
 #	include <windows.h>
 #	include <bcrypt.h>
+#elif defined(__APPLE__) || defined(__NetBSD__) || defined(__FreeBSD__)
+// No includes required.
+#elif defined(__GLIBC__) && ((__GLIBC__ > 2) || ((__GLIBC__ == 2) && (__GLIBC_MINOR__ >= 25)))
+#	include <sys/random.h>
 #elif defined(__EMSCRIPTEN__)
 #	include <emscripten.h>
-#elif !defined(__APPLE__) && !defined(__NetBSD__) && !defined(__FreeBSD__)
-#	include <sys/random.h>
 #endif
 
 #include "../safeguards.h"
