@@ -370,21 +370,21 @@ STR_TOOLBAR_TOOLTIP_PAUSE_GAME                                  :{BLACK}Pause ga
 STR_TOOLBAR_TOOLTIP_FORWARD                                     :{BLACK}Fast forward the game
 STR_TOOLBAR_TOOLTIP_OPTIONS                                     :{BLACK}Options and settings
 STR_TOOLBAR_TOOLTIP_SAVE_GAME_ABANDON_GAME                      :{BLACK}Save, load or abandon game, exit program
-STR_TOOLBAR_TOOLTIP_DISPLAY_MAP                                 :{BLACK}Display map, extra viewport, cargo flow or list of signs
-STR_TOOLBAR_TOOLTIP_DISPLAY_TOWN_DIRECTORY                      :{BLACK}Display town directory
-STR_TOOLBAR_TOOLTIP_DISPLAY_SUBSIDIES                           :{BLACK}Display subsidies
-STR_TOOLBAR_TOOLTIP_DISPLAY_LIST_OF_COMPANY_STATIONS            :{BLACK}Display list of company's stations
-STR_TOOLBAR_TOOLTIP_DISPLAY_COMPANY_FINANCES                    :{BLACK}Display company finances information
-STR_TOOLBAR_TOOLTIP_DISPLAY_COMPANY_GENERAL                     :{BLACK}Display general company information
-STR_TOOLBAR_TOOLTIP_DISPLAY_STORY_BOOK                          :{BLACK}Display story book
-STR_TOOLBAR_TOOLTIP_DISPLAY_GOALS_LIST                          :{BLACK}Display goal list
-STR_TOOLBAR_TOOLTIP_DISPLAY_GRAPHS                              :{BLACK}Display company graphs and cargo payment rates
-STR_TOOLBAR_TOOLTIP_DISPLAY_COMPANY_LEAGUE                      :{BLACK}Display company league table
-STR_TOOLBAR_TOOLTIP_FUND_CONSTRUCTION_OF_NEW                    :{BLACK}Examine industries or fund construction of a new industry
-STR_TOOLBAR_TOOLTIP_DISPLAY_LIST_OF_COMPANY_TRAINS              :{BLACK}Display list of company's trains. Ctrl+Click toggles opening the group/vehicle list
-STR_TOOLBAR_TOOLTIP_DISPLAY_LIST_OF_COMPANY_ROAD_VEHICLES       :{BLACK}Display list of company's road vehicles. Ctrl+Click toggles opening the group/vehicle list
-STR_TOOLBAR_TOOLTIP_DISPLAY_LIST_OF_COMPANY_SHIPS               :{BLACK}Display list of company's ships. Ctrl+Click toggles opening the group/vehicle list
-STR_TOOLBAR_TOOLTIP_DISPLAY_LIST_OF_COMPANY_AIRCRAFT            :{BLACK}Display list of company's aircraft. Ctrl+Click toggles opening the group/vehicle list
+STR_TOOLBAR_TOOLTIP_DISPLAY_MAP                                 :{BLACK}Open map, extra viewport, cargo flow or list of signs
+STR_TOOLBAR_TOOLTIP_DISPLAY_TOWN_DIRECTORY                      :{BLACK}Open town directory or found town
+STR_TOOLBAR_TOOLTIP_DISPLAY_SUBSIDIES                           :{BLACK}Open subsidy list
+STR_TOOLBAR_TOOLTIP_DISPLAY_LIST_OF_COMPANY_STATIONS            :{BLACK}Open list of company's stations
+STR_TOOLBAR_TOOLTIP_DISPLAY_COMPANY_FINANCES                    :{BLACK}Open company finances information
+STR_TOOLBAR_TOOLTIP_DISPLAY_COMPANY_GENERAL                     :{BLACK}Open general company information
+STR_TOOLBAR_TOOLTIP_DISPLAY_STORY_BOOK                          :{BLACK}Open story book
+STR_TOOLBAR_TOOLTIP_DISPLAY_GOALS_LIST                          :{BLACK}Open goal list
+STR_TOOLBAR_TOOLTIP_DISPLAY_GRAPHS                              :{BLACK}Open company graphs and cargo payment rates
+STR_TOOLBAR_TOOLTIP_DISPLAY_COMPANY_LEAGUE                      :{BLACK}Open company league table
+STR_TOOLBAR_TOOLTIP_FUND_CONSTRUCTION_OF_NEW                    :{BLACK}Open industry directory, industry chain, or fund construction of a new industry
+STR_TOOLBAR_TOOLTIP_DISPLAY_LIST_OF_COMPANY_TRAINS              :{BLACK}Open list of company's trains. Ctrl+Click toggles opening the group/vehicle list
+STR_TOOLBAR_TOOLTIP_DISPLAY_LIST_OF_COMPANY_ROAD_VEHICLES       :{BLACK}Open list of company's road vehicles. Ctrl+Click toggles opening the group/vehicle list
+STR_TOOLBAR_TOOLTIP_DISPLAY_LIST_OF_COMPANY_SHIPS               :{BLACK}Open list of company's ships. Ctrl+Click toggles opening the group/vehicle list
+STR_TOOLBAR_TOOLTIP_DISPLAY_LIST_OF_COMPANY_AIRCRAFT            :{BLACK}Open list of company's aircraft. Ctrl+Click toggles opening the group/vehicle list
 STR_TOOLBAR_TOOLTIP_ZOOM_THE_VIEW_IN                            :{BLACK}Zoom in
 STR_TOOLBAR_TOOLTIP_ZOOM_THE_VIEW_OUT                           :{BLACK}Zoom out
 STR_TOOLBAR_TOOLTIP_BUILD_RAILROAD_TRACK                        :{BLACK}Build railway infrastructure
@@ -392,10 +392,10 @@ STR_TOOLBAR_TOOLTIP_BUILD_ROADS                                 :{BLACK}Build ro
 STR_TOOLBAR_TOOLTIP_BUILD_TRAMWAYS                              :{BLACK}Build tramway infrastructure
 STR_TOOLBAR_TOOLTIP_BUILD_SHIP_DOCKS                            :{BLACK}Build waterway infrastructure
 STR_TOOLBAR_TOOLTIP_BUILD_AIRPORTS                              :{BLACK}Build airports
-STR_TOOLBAR_TOOLTIP_LANDSCAPING                                 :{BLACK}Open the landscaping toolbar to raise/lower land, plant trees, etc.
-STR_TOOLBAR_TOOLTIP_SHOW_SOUND_MUSIC_WINDOW                     :{BLACK}Show sound/music window
-STR_TOOLBAR_TOOLTIP_SHOW_LAST_MESSAGE_NEWS                      :{BLACK}Show last message/news report, messages history or delete all messages
-STR_TOOLBAR_TOOLTIP_LAND_BLOCK_INFORMATION                      :{BLACK}Land area information, screenshot, about OpenTTD and developer tools
+STR_TOOLBAR_TOOLTIP_LANDSCAPING                                 :{BLACK}Open landscaping menu, tree menu, or place a sign
+STR_TOOLBAR_TOOLTIP_SHOW_SOUND_MUSIC_WINDOW                     :{BLACK}Open sound/music window
+STR_TOOLBAR_TOOLTIP_SHOW_LAST_MESSAGE_NEWS                      :{BLACK}Open last message/news report, messages history or delete all messages
+STR_TOOLBAR_TOOLTIP_LAND_BLOCK_INFORMATION                      :{BLACK}Open land information, screenshot menu, OpenTTD credits, or developer tools
 STR_TOOLBAR_TOOLTIP_SWITCH_TOOLBAR                              :{BLACK}Switch toolbars
 
 # Extra tooltips for the scenario editor toolbar
@@ -405,7 +405,7 @@ STR_SCENEDIT_TOOLBAR_SCENARIO_EDITOR                            :{YELLOW}Scenari
 STR_SCENEDIT_TOOLBAR_TOOLTIP_MOVE_THE_STARTING_DATE_BACKWARD    :{BLACK}Move the starting date backward 1 year
 STR_SCENEDIT_TOOLBAR_TOOLTIP_MOVE_THE_STARTING_DATE_FORWARD     :{BLACK}Move the starting date forward 1 year
 STR_SCENEDIT_TOOLBAR_TOOLTIP_SET_DATE                           :{BLACK}Click to enter the starting year
-STR_SCENEDIT_TOOLBAR_TOOLTIP_DISPLAY_MAP_TOWN_DIRECTORY         :{BLACK}Display map, town directory
+STR_SCENEDIT_TOOLBAR_TOOLTIP_DISPLAY_MAP_TOWN_DIRECTORY         :{BLACK}Open map, extra viewport, sign list, or town or industry directory
 STR_SCENEDIT_TOOLBAR_LANDSCAPE_GENERATION                       :{BLACK}Open landscaping menu or generate a new world
 STR_SCENEDIT_TOOLBAR_TOWN_GENERATION                            :{BLACK}Build or generate towns
 STR_SCENEDIT_TOOLBAR_INDUSTRY_GENERATION                        :{BLACK}Build or generate industries
@@ -2147,14 +2147,14 @@ STR_INTRO_TOOLTIP_SUB_ARCTIC_LANDSCAPE                          :{BLACK}Select '
 STR_INTRO_TOOLTIP_SUB_TROPICAL_LANDSCAPE                        :{BLACK}Select 'sub-tropical' landscape style
 STR_INTRO_TOOLTIP_TOYLAND_LANDSCAPE                             :{BLACK}Select 'toyland' landscape style
 
-STR_INTRO_TOOLTIP_GAME_OPTIONS                                  :{BLACK}Display game options
-STR_INTRO_TOOLTIP_HIGHSCORE                                     :{BLACK}Display highscore table
+STR_INTRO_TOOLTIP_GAME_OPTIONS                                  :{BLACK}Open game options
+STR_INTRO_TOOLTIP_HIGHSCORE                                     :{BLACK}Open highscore table
 STR_INTRO_TOOLTIP_HELP                                          :{BLACK}Get access to documentation and online resources
-STR_INTRO_TOOLTIP_CONFIG_SETTINGS_TREE                          :{BLACK}Display settings
-STR_INTRO_TOOLTIP_NEWGRF_SETTINGS                               :{BLACK}Display NewGRF settings
+STR_INTRO_TOOLTIP_CONFIG_SETTINGS_TREE                          :{BLACK}Open settings
+STR_INTRO_TOOLTIP_NEWGRF_SETTINGS                               :{BLACK}Open NewGRF settings
 STR_INTRO_TOOLTIP_ONLINE_CONTENT                                :{BLACK}Check for new and updated content to download
-STR_INTRO_TOOLTIP_AI_SETTINGS                                   :{BLACK}Display AI settings
-STR_INTRO_TOOLTIP_GAMESCRIPT_SETTINGS                           :{BLACK}Display Game script settings
+STR_INTRO_TOOLTIP_AI_SETTINGS                                   :{BLACK}Open AI settings
+STR_INTRO_TOOLTIP_GAMESCRIPT_SETTINGS                           :{BLACK}Open Game script settings
 STR_INTRO_TOOLTIP_QUIT                                          :{BLACK}Exit 'OpenTTD'
 
 STR_INTRO_BASESET                                               :{BLACK}The currently selected base graphics set is missing {NUM} sprite{P "" s}. Please check for updates for the baseset.
@@ -3257,11 +3257,11 @@ STR_MAPGEN_VARIETY                                              :{BLACK}Variety 
 STR_MAPGEN_GENERATE                                             :{WHITE}Generate
 STR_MAPGEN_GENERATE_TOOLTIP                                     :{BLACK}Create the world and play OpenTTD!
 STR_MAPGEN_NEWGRF_SETTINGS                                      :{BLACK}NewGRF Settings
-STR_MAPGEN_NEWGRF_SETTINGS_TOOLTIP                              :{BLACK}Display NewGRF settings
+STR_MAPGEN_NEWGRF_SETTINGS_TOOLTIP                              :{BLACK}Open NewGRF settings
 STR_MAPGEN_AI_SETTINGS                                          :{BLACK}AI Settings
-STR_MAPGEN_AI_SETTINGS_TOOLTIP                                  :{BLACK}Display AI settings
+STR_MAPGEN_AI_SETTINGS_TOOLTIP                                  :{BLACK}Open AI settings
 STR_MAPGEN_GS_SETTINGS                                          :{BLACK}Game Script Settings
-STR_MAPGEN_GS_SETTINGS_TOOLTIP                                  :{BLACK}Display game script settings
+STR_MAPGEN_GS_SETTINGS_TOOLTIP                                  :{BLACK}Open game script settings
 
 ###length 21
 STR_MAPGEN_TOWN_NAME_ORIGINAL_ENGLISH                           :English (Original)
