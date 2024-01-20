@@ -839,8 +839,6 @@ static void ShipController(Ship *v)
 
 bool Ship::Tick()
 {
-	PerformanceAccumulator framerate(PFE_GL_SHIPS);
-
 	if (!(this->vehstatus & VS_STOPPED)) this->running_ticks++;
 
 	ShipController(this);

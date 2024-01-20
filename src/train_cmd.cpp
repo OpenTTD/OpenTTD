@@ -4097,8 +4097,6 @@ bool Train::Tick()
 	this->tick_counter++;
 
 	if (this->IsFrontEngine()) {
-		PerformanceAccumulator framerate(PFE_GL_TRAINS);
-
 		if (!(this->vehstatus & VS_STOPPED) || this->cur_speed > 0) this->running_ticks++;
 
 		this->current_order_time++;

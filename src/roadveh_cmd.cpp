@@ -1643,8 +1643,6 @@ Money RoadVehicle::GetRunningCost() const
 
 bool RoadVehicle::Tick()
 {
-	PerformanceAccumulator framerate(PFE_GL_ROADVEHS);
-
 	this->tick_counter++;
 
 	if (this->IsFrontEngine()) {

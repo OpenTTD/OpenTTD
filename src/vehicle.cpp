@@ -9,6 +9,7 @@
 
 #include "stdafx.h"
 #include "error.h"
+#include "disaster_vehicle.h"
 #include "roadveh.h"
 #include "ship.h"
 #include "spritecache.h"
@@ -950,6 +951,96 @@ static void RunVehicleDayProc()
 	}
 }
 
+static void SpecialVehicleTick(Vehicle *v)
+{
+	[[maybe_unused]] size_t vehicle_index = v->index;
+
+	/* Vehicle could be deleted in this tick */
+	if (!v->Tick()) {
+		assert(Vehicle::Get(vehicle_index) == nullptr);
+		return;
+	}
+
+	assert(Vehicle::Get(vehicle_index) == v);
+}
+
+static void CommonVehicleTick(Vehicle *v)
+{
+	[[maybe_unused]] size_t vehicle_index = v->index;
+
+	/* Vehicle could be deleted in this tick */
+	if (!v->Tick()) {
+		assert(Vehicle::Get(vehicle_index) == nullptr);
+		return;
+	}
+
+	assert(Vehicle::Get(vehicle_index) == v);
+
+	Vehicle *front = v->First();
+
+	if (v->vcache.cached_cargo_age_period != 0) {
+		v->cargo_age_counter = std::min(v->cargo_age_counter, v->vcache.cached_cargo_age_period);
+		if (--v->cargo_age_counter == 0) {
+			v->cargo.AgeCargo();
+			v->cargo_age_counter = v->vcache.cached_cargo_age_period;
+		}
+	}
+
+	/* Do not play any sound when crashed */
+	if (front->vehstatus & VS_CRASHED) return;
+
+	/* Do not play any sound when in depot or tunnel */
+	if (v->vehstatus & VS_HIDDEN) return;
+
+	/* Do not play any sound when stopped */
+	if ((front->vehstatus & VS_STOPPED) && (front->type != VEH_TRAIN || front->cur_speed == 0)) return;
+
+	/* Check vehicle type specifics */
+	switch (v->type) {
+		case VEH_TRAIN:
+			if (Train::From(v)->IsWagon()) return;
+			break;
+
+		case VEH_ROAD:
+			if (!RoadVehicle::From(v)->IsFrontEngine()) return;
+			break;
+
+		case VEH_AIRCRAFT:
+			if (!Aircraft::From(v)->IsNormalAircraft()) return;
+			break;
+
+		default:
+			break;
+	}
+
+	v->motion_counter += front->cur_speed;
+	/* Play a running sound if the motion counter passes 256 (Do we not skip sounds?) */
+	if (GB(v->motion_counter, 0, 8) < front->cur_speed) PlayVehicleSound(v, VSE_RUNNING);
+
+	/* Play an alternating running sound every 16 ticks */
+	if (GB(v->tick_counter, 0, 4) == 0) {
+		/* Play running sound when speed > 0 and not braking */
+		bool running = (front->cur_speed > 0) && !(front->vehstatus & (VS_STOPPED | VS_TRAIN_SLOWING));
+		PlayVehicleSound(v, running ? VSE_RUNNING_16 : VSE_STOPPED_16);
+	}
+}
+
+template <class T, typename Pred>
+static void IterateTickable(Pred pred)
+{
+	for (auto it = std::begin(T::tickable_vehicles), next_it = it; it != std::end(T::tickable_vehicles); it = next_it) {
+		++next_it;
+		pred(it->second);
+	}
+}
+
+template <class T, typename Pred>
+static void IterateTickable(PerformanceElement pfe, Pred pred)
+{
+	PerformanceMeasurer framerate(pfe);
+	IterateTickable<T>(pred);
+}
+
 void CallVehicleTicks()
 {
 	_vehicles_to_autoreplace.clear();
@@ -960,81 +1051,14 @@ void CallVehicleTicks()
 		PerformanceMeasurer framerate(PFE_GL_ECONOMY);
 		for (Station *st : Station::Iterate()) LoadUnloadStation(st);
 	}
-	PerformanceAccumulator::Reset(PFE_GL_TRAINS);
-	PerformanceAccumulator::Reset(PFE_GL_ROADVEHS);
-	PerformanceAccumulator::Reset(PFE_GL_SHIPS);
-	PerformanceAccumulator::Reset(PFE_GL_AIRCRAFT);
 
-	for (Vehicle *v : Vehicle::Iterate()) {
-		[[maybe_unused]] size_t vehicle_index = v->index;
+	IterateTickable<DisasterVehicle>(SpecialVehicleTick);
+	IterateTickable<EffectVehicle>(SpecialVehicleTick);
 
-		/* Vehicle could be deleted in this tick */
-		if (!v->Tick()) {
-			assert(Vehicle::Get(vehicle_index) == nullptr);
-			continue;
-		}
-
-		assert(Vehicle::Get(vehicle_index) == v);
-
-		switch (v->type) {
-			default: break;
-
-			case VEH_TRAIN:
-			case VEH_ROAD:
-			case VEH_AIRCRAFT:
-			case VEH_SHIP: {
-				Vehicle *front = v->First();
-
-				if (v->vcache.cached_cargo_age_period != 0) {
-					v->cargo_age_counter = std::min(v->cargo_age_counter, v->vcache.cached_cargo_age_period);
-					if (--v->cargo_age_counter == 0) {
-						v->cargo.AgeCargo();
-						v->cargo_age_counter = v->vcache.cached_cargo_age_period;
-					}
-				}
-
-				/* Do not play any sound when crashed */
-				if (front->vehstatus & VS_CRASHED) continue;
-
-				/* Do not play any sound when in depot or tunnel */
-				if (v->vehstatus & VS_HIDDEN) continue;
-
-				/* Do not play any sound when stopped */
-				if ((front->vehstatus & VS_STOPPED) && (front->type != VEH_TRAIN || front->cur_speed == 0)) continue;
-
-				/* Check vehicle type specifics */
-				switch (v->type) {
-					case VEH_TRAIN:
-						if (Train::From(v)->IsWagon()) continue;
-						break;
-
-					case VEH_ROAD:
-						if (!RoadVehicle::From(v)->IsFrontEngine()) continue;
-						break;
-
-					case VEH_AIRCRAFT:
-						if (!Aircraft::From(v)->IsNormalAircraft()) continue;
-						break;
-
-					default:
-						break;
-				}
-
-				v->motion_counter += front->cur_speed;
-				/* Play a running sound if the motion counter passes 256 (Do we not skip sounds?) */
-				if (GB(v->motion_counter, 0, 8) < front->cur_speed) PlayVehicleSound(v, VSE_RUNNING);
-
-				/* Play an alternating running sound every 16 ticks */
-				if (GB(v->tick_counter, 0, 4) == 0) {
-					/* Play running sound when speed > 0 and not braking */
-					bool running = (front->cur_speed > 0) && !(front->vehstatus & (VS_STOPPED | VS_TRAIN_SLOWING));
-					PlayVehicleSound(v, running ? VSE_RUNNING_16 : VSE_STOPPED_16);
-				}
-
-				break;
-			}
-		}
-	}
+	IterateTickable<Train>(PFE_GL_TRAINS, CommonVehicleTick);
+	IterateTickable<RoadVehicle>(PFE_GL_ROADVEHS, CommonVehicleTick);
+	IterateTickable<Ship>(PFE_GL_SHIPS, CommonVehicleTick);
+	IterateTickable<Aircraft>(PFE_GL_AIRCRAFT, CommonVehicleTick);
 
 	Backup<CompanyID> cur_company(_current_company, FILE_LINE);
 	for (auto &it : _vehicles_to_autoreplace) {

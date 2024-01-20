@@ -1062,6 +1062,9 @@ public:
 
 	uint32_t GetDisplayMaxWeight() const;
 	uint32_t GetDisplayMinPowerToWeight() const;
+
+	virtual void AddTickable() {}
+	virtual void RemoveTickable() {}
 };
 
 /**
@@ -1080,6 +1083,12 @@ struct SpecializedVehicle : public Vehicle {
 	inline SpecializedVehicle<T, Type>() : Vehicle(Type)
 	{
 		this->sprite_cache.sprite_seq.count = 1;
+		this->AddTickable();
+	}
+
+	inline ~SpecializedVehicle<T, Type>()
+	{
+		this->RemoveTickable();
 	}
 
 	/**
@@ -1259,6 +1268,21 @@ struct SpecializedVehicle : public Vehicle {
 	 * @return an iterable ensemble of all valid vehicles of type T
 	 */
 	static Pool::IterateWrapper<T> Iterate(size_t from = 0) { return Pool::IterateWrapper<T>(from); }
+
+	/**
+	 * List of tickable vehicles for this type.
+	 */
+	static inline std::map<VehicleID, SpecializedVehicle<T, Type> *> tickable_vehicles;
+
+	void AddTickable() override
+	{
+		tickable_vehicles.insert(std::make_pair(this->index, this));
+	}
+
+	void RemoveTickable() override
+	{
+		tickable_vehicles.erase(this->index);
+	}
 };
 
 /** Generates sequence of free UnitID numbers */
