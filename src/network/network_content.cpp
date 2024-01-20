@@ -756,7 +756,7 @@ ClientNetworkContentSocketHandler::~ClientNetworkContentSocketHandler()
 }
 
 /** Connect to the content server. */
-class NetworkContentConnecter : TCPConnecter {
+class NetworkContentConnecter : public TCPConnecter {
 public:
 	/**
 	 * Initiate the connecting.
@@ -791,7 +791,7 @@ void ClientNetworkContentSocketHandler::Connect()
 	this->isCancelled = false;
 	this->isConnecting = true;
 
-	new NetworkContentConnecter(NetworkContentServerConnectionString());
+	TCPConnecter::Create<NetworkContentConnecter>(NetworkContentServerConnectionString());
 }
 
 /**

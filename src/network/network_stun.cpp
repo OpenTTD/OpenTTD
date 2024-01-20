@@ -71,7 +71,7 @@ void ClientNetworkStunSocketHandler::Connect(const std::string &token, uint8_t f
 	this->token = token;
 	this->family = family;
 
-	this->connecter = new NetworkStunConnecter(this, NetworkStunConnectionString(), token, family);
+	this->connecter = TCPConnecter::Create<NetworkStunConnecter>(this, NetworkStunConnectionString(), token, family);
 }
 
 /**

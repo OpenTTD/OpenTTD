@@ -18,8 +18,7 @@
 
 #include "../../safeguards.h"
 
-/** List of connections that are currently being created */
-static std::vector<TCPConnecter *> _tcp_connecters;
+/* static */ std::vector<std::shared_ptr<TCPConnecter>> TCPConnecter::connecters;
 
 /**
  * Create a new connecter for the given address.
@@ -32,8 +31,6 @@ TCPConnecter::TCPConnecter(const std::string &connection_string, uint16_t defaul
 	family(family)
 {
 	this->connection_string = NormalizeConnectionString(connection_string, default_port);
-
-	_tcp_connecters.push_back(this);
 }
 
 /**
@@ -57,8 +54,6 @@ TCPServerConnecter::TCPServerConnecter(const std::string &connection_string, uin
 		default:
 			NOT_REACHED();
 	}
-
-	_tcp_connecters.push_back(this);
 }
 
 TCPConnecter::~TCPConnecter()
@@ -467,24 +462,14 @@ void TCPServerConnecter::SetFailure()
  */
 /* static */ void TCPConnecter::CheckCallbacks()
 {
-	for (auto iter = _tcp_connecters.begin(); iter < _tcp_connecters.end(); /* nothing */) {
-		TCPConnecter *cur = *iter;
-
-		if (cur->CheckActivity()) {
-			iter = _tcp_connecters.erase(iter);
-			delete cur;
-		} else {
-			iter++;
-		}
-	}
+	TCPConnecter::connecters.erase(
+		std::remove_if(TCPConnecter::connecters.begin(), TCPConnecter::connecters.end(),
+				   [](auto &connecter) { return connecter->CheckActivity(); }),
+		TCPConnecter::connecters.end());
 }
 
 /** Kill all connection attempts. */
 /* static */ void TCPConnecter::KillAll()
 {
-	for (auto iter = _tcp_connecters.begin(); iter < _tcp_connecters.end(); /* nothing */) {
-		TCPConnecter *cur = *iter;
-		iter = _tcp_connecters.erase(iter);
-		delete cur;
-	}
+	TCPConnecter::connecters.clear();
 }

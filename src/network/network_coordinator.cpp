@@ -100,7 +100,7 @@ public:
 };
 
 /** Connect to the Game Coordinator server. */
-class NetworkCoordinatorConnecter : TCPConnecter {
+class NetworkCoordinatorConnecter : public TCPConnecter {
 public:
 	/**
 	 * Initiate the connecting.
@@ -306,7 +306,7 @@ bool ClientNetworkCoordinatorSocketHandler::Receive_GC_DIRECT_CONNECT(Packet *p)
 		this->game_connecter = nullptr;
 	}
 
-	this->game_connecter = new NetworkDirectConnecter(hostname, port, token, tracking_number);
+	this->game_connecter = TCPConnecter::Create<NetworkDirectConnecter>(hostname, port, token, tracking_number);
 	return true;
 }
 
@@ -349,7 +349,7 @@ bool ClientNetworkCoordinatorSocketHandler::Receive_GC_STUN_CONNECT(Packet *p)
 	 * STUN server. This means that if there is any NAT in the local network,
 	 * the public ip:port is still pointing to the local address, and as such
 	 * a connection can be established. */
-	this->game_connecter = new NetworkReuseStunConnecter(host, port, family_it->second->local_addr, token, tracking_number, family);
+	this->game_connecter = TCPConnecter::Create<NetworkReuseStunConnecter>(host, port, family_it->second->local_addr, token, tracking_number, family);
 	return true;
 }
 
@@ -426,7 +426,7 @@ void ClientNetworkCoordinatorSocketHandler::Connect()
 	this->connecting = true;
 	this->last_activity = std::chrono::steady_clock::now();
 
-	new NetworkCoordinatorConnecter(NetworkCoordinatorConnectionString());
+	TCPConnecter::Create<NetworkCoordinatorConnecter>(NetworkCoordinatorConnectionString());
 }
 
 NetworkRecvStatus ClientNetworkCoordinatorSocketHandler::CloseConnection(bool error)

@@ -100,6 +100,8 @@ private:
 	NetworkAddress bind_address;                        ///< Address we're binding to, if any.
 	int family = AF_UNSPEC;                             ///< Family we are using to connect with.
 
+	static std::vector<std::shared_ptr<TCPConnecter>> connecters; ///< List of connections that are currently being created.
+
 	void Resolve();
 	void OnResolved(addrinfo *ai);
 	bool TryNextAddress();
@@ -132,6 +134,18 @@ public:
 
 	static void CheckCallbacks();
 	static void KillAll();
+
+	/**
+	 * Create the connecter, and initiate connecting by putting it in the collection of TCP connections to make.
+	 * @tparam T The type of connecter to create.
+	 * @param args The arguments to the constructor of T.
+	 * @return Shared pointer to the connecter.
+	 */
+	template <class T, typename... Args>
+	static std::shared_ptr<TCPConnecter> Create(Args&& ... args)
+	{
+		return TCPConnecter::connecters.emplace_back(std::make_shared<T>(std::forward<Args>(args)...));
+	}
 };
 
 class TCPServerConnecter : public TCPConnecter {
