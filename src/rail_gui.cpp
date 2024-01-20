@@ -414,6 +414,7 @@ struct BuildRailToolbarWindow : Window {
 		this->InitNested(TRANSPORT_RAIL);
 		this->SetupRailToolbar(railtype);
 		this->DisableWidget(WID_RAT_REMOVE);
+		this->OnInvalidateData();
 		this->last_user_action = INVALID_WID_RAT;
 
 		if (_settings_client.gui.link_terraform_toolbar) ShowTerraformToolbar(this);
@@ -426,6 +427,39 @@ struct BuildRailToolbarWindow : Window {
 		if (_settings_client.gui.link_terraform_toolbar) CloseWindowById(WC_SCEN_LAND_GEN, 0, false);
 		CloseWindowById(WC_SELECT_STATION, 0);
 		this->Window::Close();
+	}
+
+	/** List of widgets to be disabled if infrastructure limit prevents building. */
+	static inline const std::initializer_list<WidgetID> can_build_widgets = {
+		WID_RAT_BUILD_NS, WID_RAT_BUILD_X, WID_RAT_BUILD_EW, WID_RAT_BUILD_Y, WID_RAT_AUTORAIL,
+		WID_RAT_BUILD_DEPOT, WID_RAT_BUILD_WAYPOINT, WID_RAT_BUILD_STATION, WID_RAT_BUILD_SIGNALS,
+		WID_RAT_BUILD_BRIDGE, WID_RAT_BUILD_TUNNEL, WID_RAT_CONVERT_RAIL,
+	};
+
+	void OnInvalidateData([[maybe_unused]] int data = 0, [[maybe_unused]] bool gui_scope = true) override
+	{
+		if (!gui_scope) return;
+
+		bool can_build = CanBuildVehicleInfrastructure(VEH_TRAIN);
+		for (const WidgetID widget : can_build_widgets) this->SetWidgetDisabledState(widget, !can_build);
+		if (!can_build) {
+			CloseWindowById(WC_BUILD_SIGNAL, TRANSPORT_RAIL);
+			CloseWindowById(WC_BUILD_STATION, TRANSPORT_RAIL);
+			CloseWindowById(WC_BUILD_DEPOT, TRANSPORT_RAIL);
+			CloseWindowById(WC_BUILD_WAYPOINT, TRANSPORT_RAIL);
+			CloseWindowById(WC_SELECT_STATION, 0);
+		}
+	}
+
+	bool OnTooltip([[maybe_unused]] Point pt, WidgetID widget, TooltipCloseCondition close_cond) override
+	{
+		bool can_build = CanBuildVehicleInfrastructure(VEH_TRAIN);
+		if (can_build) return false;
+
+		if (std::find(std::begin(can_build_widgets), std::end(can_build_widgets), widget) == std::end(can_build_widgets)) return false;
+
+		GuiShowTooltips(this, STR_TOOLBAR_DISABLED_NO_VEHICLE_AVAILABLE, close_cond);
+		return true;
 	}
 
 	/**
