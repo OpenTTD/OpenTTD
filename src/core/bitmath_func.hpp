@@ -55,7 +55,7 @@ debug_inline constexpr static uint GB(const T x, const uint8_t s, const uint8_t 
  * @return The new value of \a x
  */
 template <typename T, typename U>
-inline T SB(T &x, const uint8_t s, const uint8_t n, const U d)
+constexpr T SB(T &x, const uint8_t s, const uint8_t n, const U d)
 {
 	x &= (T)(~((((T)1U << n) - 1) << s));
 	x |= (T)(d << s);
@@ -80,7 +80,7 @@ inline T SB(T &x, const uint8_t s, const uint8_t n, const U d)
  * @return The new value of \a x
  */
 template <typename T, typename U>
-inline T AB(T &x, const uint8_t s, const uint8_t n, const U i)
+constexpr T AB(T &x, const uint8_t s, const uint8_t n, const U i)
 {
 	const T mask = ((((T)1U << n) - 1) << s);
 	x = (T)((x & ~mask) | ((x + (i << s)) & mask));
@@ -100,7 +100,7 @@ inline T AB(T &x, const uint8_t s, const uint8_t n, const U i)
  * @return True if the bit is set, false else.
  */
 template <typename T>
-debug_inline static bool HasBit(const T x, const uint8_t y)
+debug_inline constexpr bool HasBit(const T x, const uint8_t y)
 {
 	return (x & ((T)1U << y)) != 0;
 }
@@ -118,7 +118,7 @@ debug_inline static bool HasBit(const T x, const uint8_t y)
  * @return The new value of the old value with the bit set
  */
 template <typename T>
-inline T SetBit(T &x, const uint8_t y)
+constexpr T SetBit(T &x, const uint8_t y)
 {
 	return x = (T)(x | ((T)1U << y));
 }
@@ -148,7 +148,7 @@ inline T SetBit(T &x, const uint8_t y)
  * @return The new value of the old value with the bit cleared
  */
 template <typename T>
-inline T ClrBit(T &x, const uint8_t y)
+constexpr T ClrBit(T &x, const uint8_t y)
 {
 	return x = (T)(x & ~((T)1U << y));
 }
@@ -178,7 +178,7 @@ inline T ClrBit(T &x, const uint8_t y)
  * @return The new value of the old value with the bit toggled
  */
 template <typename T>
-inline T ToggleBit(T &x, const uint8_t y)
+constexpr T ToggleBit(T &x, const uint8_t y)
 {
 	return x = (T)(x ^ ((T)1U << y));
 }
@@ -228,7 +228,7 @@ constexpr uint8_t FindLastBit(T x)
  * @return The new value with the first bit cleared
  */
 template <typename T>
-inline T KillFirstBit(T value)
+constexpr T KillFirstBit(T value)
 {
 	return value &= (T)(value - 1);
 }
@@ -256,7 +256,7 @@ constexpr uint CountBits(T value)
  * @return does \a value have exactly 1 bit set?
  */
 template <typename T>
-inline bool HasExactlyOneBit(T value)
+constexpr bool HasExactlyOneBit(T value)
 {
 	return value != 0 && (value & (value - 1)) == 0;
 }
@@ -268,7 +268,7 @@ inline bool HasExactlyOneBit(T value)
  * @return does \a value have at most 1 bit set?
  */
 template <typename T>
-inline bool HasAtMostOneBit(T value)
+constexpr bool HasAtMostOneBit(T value)
 {
 	return (value & (value - 1)) == 0;
 }
