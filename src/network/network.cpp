@@ -624,7 +624,7 @@ static void NetworkInitialize(bool close_admins = true)
 }
 
 /** Non blocking connection to query servers for their game info. */
-class TCPQueryConnecter : TCPServerConnecter {
+class TCPQueryConnecter : public TCPServerConnecter {
 private:
 	std::string connection_string;
 
@@ -658,7 +658,7 @@ void NetworkQueryServer(const std::string &connection_string)
 	NetworkGameList *item = NetworkGameListAddItem(connection_string);
 	item->refreshing = true;
 
-	new TCPQueryConnecter(connection_string);
+	TCPConnecter::Create<TCPQueryConnecter>(connection_string);
 }
 
 /**
@@ -721,7 +721,7 @@ void NetworkRebuildHostList()
 }
 
 /** Non blocking connection create to actually connect to servers */
-class TCPClientConnecter : TCPServerConnecter {
+class TCPClientConnecter : public TCPServerConnecter {
 private:
 	std::string connection_string;
 
@@ -800,7 +800,7 @@ void NetworkClientJoinGame()
 	_network_join_status = NETWORK_JOIN_STATUS_CONNECTING;
 	ShowJoinStatusWindow();
 
-	new TCPClientConnecter(_network_join.connection_string);
+	TCPConnecter::Create<TCPClientConnecter>(_network_join.connection_string);
 }
 
 static void NetworkInitGameInfo()

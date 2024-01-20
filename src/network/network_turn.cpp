@@ -73,7 +73,7 @@ bool ClientNetworkTurnSocketHandler::Receive_TURN_CONNECTED(Packet *p)
 void ClientNetworkTurnSocketHandler::Connect()
 {
 	this->connect_started = true;
-	this->connecter = new NetworkTurnConnecter(this, this->connection_string);
+	this->connecter = TCPConnecter::Create<NetworkTurnConnecter>(this, this->connection_string);
 }
 
 /**

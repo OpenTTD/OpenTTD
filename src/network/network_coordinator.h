@@ -57,7 +57,7 @@ private:
 	std::map<std::string, TCPServerConnecter *> connecter_pre; ///< Based on invite codes, the current connecters that are pending.
 	std::map<std::string, std::map<int, std::unique_ptr<ClientNetworkStunSocketHandler>>> stun_handlers; ///< All pending STUN handlers, stored by token:family.
 	std::map<std::string, std::unique_ptr<ClientNetworkTurnSocketHandler>> turn_handlers; ///< Pending TURN handler (if any), stored by token.
-	TCPConnecter *game_connecter = nullptr; ///< Pending connecter to the game server.
+	std::shared_ptr<TCPConnecter> game_connecter{}; ///< Pending connecter to the game server.
 
 	uint32_t newgrf_lookup_table_cursor = 0; ///< Last received cursor for the #GameInfoNewGRFLookupTable updates.
 	GameInfoNewGRFLookupTable newgrf_lookup_table; ///< Table to look up NewGRFs in the GC_LISTING packets.
