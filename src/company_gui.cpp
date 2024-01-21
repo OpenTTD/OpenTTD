@@ -26,7 +26,7 @@
 #include "widgets/dropdown_type.h"
 #include "tilehighlight_func.h"
 #include "company_base.h"
-#include "core/geometry_func.hpp"
+#include "core/geometry_func.h"
 #include "object_type.h"
 #include "rail.h"
 #include "road.h"

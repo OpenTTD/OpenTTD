@@ -12,7 +12,7 @@
 
 #include "fontcache.h"
 #include "gfx_func.h"
-#include "core/math_func.hpp"
+#include "core/math_func.h"
 
 #include <stack>
 #include <string_view>

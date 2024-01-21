@@ -10,7 +10,7 @@
 #ifndef VIEWPORT_KDTREE_H
 #define VIEWPORT_KDTREE_H
 
-#include "core/kdtree.hpp"
+#include "core/kdtree.h"
 #include "viewport_type.h"
 #include "station_base.h"
 #include "town_type.h"

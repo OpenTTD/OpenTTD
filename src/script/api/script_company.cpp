@@ -8,9 +8,9 @@
 /** @file script_company.cpp Implementation of ScriptCompany. */
 
 #include "../../stdafx.h"
-#include "script_company.hpp"
-#include "script_error.hpp"
-#include "script_companymode.hpp"
+#include "script_company.h"
+#include "script_error.h"
+#include "script_companymode.h"
 #include "../../company_func.h"
 #include "../../company_base.h"
 #include "../../company_manager_face.h"

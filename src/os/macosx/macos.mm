@@ -8,7 +8,7 @@
 /** @file macos.mm Code related to MacOSX. */
 
 #include "../../stdafx.h"
-#include "../../core/bitmath_func.hpp"
+#include "../../core/bitmath_func.h"
 #include "../../rev.h"
 #include "macos.h"
 #include "../../string_func.h"

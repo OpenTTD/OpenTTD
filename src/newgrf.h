@@ -14,9 +14,9 @@
 #include "rail_type.h"
 #include "road_type.h"
 #include "fileio_type.h"
-#include "core/bitmath_func.hpp"
-#include "core/alloc_type.hpp"
-#include "core/mem_func.hpp"
+#include "core/bitmath_func.h"
+#include "core/alloc_type.h"
+#include "core/mem_func.h"
 
 /**
  * List of different canal 'features'.

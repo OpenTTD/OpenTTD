@@ -16,7 +16,7 @@
 #include "transport_type.h"
 #include "landscape.h"
 #include "tunnelbridge_map.h"
-#include "follow_track.hpp"
+#include "follow_track.h"
 #include "ship.h"
 
 using TWaterRegionTraversabilityBits = uint16_t;

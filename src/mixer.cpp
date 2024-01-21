@@ -10,7 +10,7 @@
 #include "stdafx.h"
 #include <mutex>
 #include <atomic>
-#include "core/math_func.hpp"
+#include "core/math_func.h"
 #include "framerate_type.h"
 #include "mixer.h"
 #include "settings_type.h"

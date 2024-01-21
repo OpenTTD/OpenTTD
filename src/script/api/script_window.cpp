@@ -9,7 +9,7 @@
 
 #include "../../stdafx.h"
 #include "script_window.h"
-#include "script_game.hpp"
+#include "script_game.h"
 #include "../../window_func.h"
 #include "../../window_gui.h"
 

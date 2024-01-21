@@ -10,7 +10,7 @@
 #ifndef SUBSIDY_TYPE_H
 #define SUBSIDY_TYPE_H
 
-#include "core/enum_type.hpp"
+#include "core/enum_type.h"
 
 /** What part of a subsidy is something? */
 enum PartOfSubsidy : byte {

@@ -14,7 +14,7 @@
 
 #include "tcp.h"
 #include "../network.h"
-#include "../../core/pool_type.hpp"
+#include "../../core/pool_type.h"
 #include "../../debug.h"
 #include "table/strings.h"
 

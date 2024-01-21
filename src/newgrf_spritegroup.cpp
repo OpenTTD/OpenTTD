@@ -11,7 +11,7 @@
 #include "debug.h"
 #include "newgrf_spritegroup.h"
 #include "newgrf_profiling.h"
-#include "core/pool_func.hpp"
+#include "core/pool_func.h"
 
 #include "safeguards.h"
 

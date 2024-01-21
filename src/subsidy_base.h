@@ -13,7 +13,7 @@
 #include "cargo_type.h"
 #include "company_type.h"
 #include "subsidy_type.h"
-#include "core/pool_type.hpp"
+#include "core/pool_type.h"
 
 typedef Pool<Subsidy, SubsidyID, 1, 256> SubsidyPool;
 extern SubsidyPool _subsidy_pool;

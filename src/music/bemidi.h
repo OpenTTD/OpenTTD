@@ -10,7 +10,7 @@
 #ifndef MUSIC_BEMIDI_H
 #define MUSIC_BEMIDI_H
 
-#include "music_driver.hpp"
+#include "music_driver.h"
 
 /* For BMidiSynthFile */
 #include <MidiSynthFile.h>

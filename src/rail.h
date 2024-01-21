@@ -13,7 +13,7 @@
 #include "rail_type.h"
 #include "track_type.h"
 #include "gfx_type.h"
-#include "core/bitmath_func.hpp"
+#include "core/bitmath_func.h"
 #include "economy_func.h"
 #include "slope_type.h"
 #include "strings_type.h"

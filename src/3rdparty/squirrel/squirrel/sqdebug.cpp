@@ -12,7 +12,7 @@
 #include "sqclosure.h"
 #include "sqstring.h"
 
-#include "../../../core/alloc_func.hpp"
+#include "../../../core/alloc_func.h"
 #include "../../../string_func.h"
 
 #include "../../../safeguards.h"

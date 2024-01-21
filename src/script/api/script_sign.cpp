@@ -8,9 +8,9 @@
 /** @file script_sign.cpp Implementation of ScriptSign. */
 
 #include "../../stdafx.h"
-#include "script_sign.hpp"
+#include "script_sign.h"
 #include "table/strings.h"
-#include "../script_instance.hpp"
+#include "../script_instance.h"
 #include "../../signs_base.h"
 #include "../../string_func.h"
 #include "../../strings_func.h"

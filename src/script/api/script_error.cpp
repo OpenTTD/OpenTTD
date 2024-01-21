@@ -8,8 +8,8 @@
 /** @file script_error.cpp Implementation of ScriptError. */
 
 #include "../../stdafx.h"
-#include "script_error.hpp"
-#include "../../core/bitmath_func.hpp"
+#include "script_error.h"
+#include "../../core/bitmath_func.h"
 #include "../../string_func.h"
 #include "../../strings_func.h"
 

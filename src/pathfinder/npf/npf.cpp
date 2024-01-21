@@ -16,7 +16,7 @@
 #include "../../vehicle_func.h"
 #include "../pathfinder_func.h"
 #include "../pathfinder_type.h"
-#include "../follow_track.hpp"
+#include "../follow_track.h"
 #include "aystar.h"
 
 #include "../../safeguards.h"

@@ -31,7 +31,7 @@
 #include "depot_cmd.h"
 #include "train_cmd.h"
 #include "vehicle_cmd.h"
-#include "core/geometry_func.hpp"
+#include "core/geometry_func.h"
 
 #include "widgets/depot_widget.h"
 

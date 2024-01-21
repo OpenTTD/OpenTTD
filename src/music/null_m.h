@@ -10,7 +10,7 @@
 #ifndef MUSIC_NULL_H
 #define MUSIC_NULL_H
 
-#include "music_driver.hpp"
+#include "music_driver.h"
 
 /** The music player that does nothing. */
 class MusicDriver_Null : public MusicDriver {

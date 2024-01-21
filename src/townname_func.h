@@ -10,7 +10,7 @@
 #ifndef TOWNNAME_FUNC_H
 #define TOWNNAME_FUNC_H
 
-#include "core/random_func.hpp"
+#include "core/random_func.h"
 #include "townname_type.h"
 
 std::string GetTownName(const TownNameParams *par, uint32_t townnameparts);

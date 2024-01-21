@@ -10,8 +10,8 @@
 #ifndef ECONOMY_TYPE_H
 #define ECONOMY_TYPE_H
 
-#include "core/overflowsafe_type.hpp"
-#include "core/enum_type.hpp"
+#include "core/overflowsafe_type.h"
+#include "core/enum_type.h"
 
 typedef OverflowSafeInt64 Money;
 

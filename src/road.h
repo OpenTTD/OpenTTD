@@ -12,10 +12,10 @@
 
 #include "road_type.h"
 #include "gfx_type.h"
-#include "core/bitmath_func.hpp"
+#include "core/bitmath_func.h"
 #include "strings_type.h"
 #include "timer/timer_game_calendar.h"
-#include "core/enum_type.hpp"
+#include "core/enum_type.h"
 #include "newgrf.h"
 #include "economy_func.h"
 

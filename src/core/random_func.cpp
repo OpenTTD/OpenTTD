@@ -8,8 +8,8 @@
 /** @file random_func.cpp Implementation of the pseudo random generator. */
 
 #include "../stdafx.h"
-#include "random_func.hpp"
-#include "bitmath_func.hpp"
+#include "random_func.h"
+#include "bitmath_func.h"
 #include "../debug.h"
 
 #ifdef RANDOM_DEBUG

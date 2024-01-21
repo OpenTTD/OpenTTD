@@ -3,7 +3,7 @@
 #define _SQUTILS_H_
 
 #include "../../fmt/format.h"
-#include "../../../script/script_fatalerror.hpp"
+#include "../../../script/script_fatalerror.h"
 
 void *sq_vm_malloc(SQUnsignedInteger size);
 void *sq_vm_realloc(void *p,SQUnsignedInteger oldsize,SQUnsignedInteger size);

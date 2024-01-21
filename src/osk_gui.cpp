@@ -14,7 +14,7 @@
 #include "window_func.h"
 #include "gfx_func.h"
 #include "querystring_gui.h"
-#include "video/video_driver.hpp"
+#include "video/video_driver.h"
 #include "zoom_func.h"
 
 #include "widgets/osk_widget.h"

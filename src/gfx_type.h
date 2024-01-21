@@ -10,8 +10,8 @@
 #ifndef GFX_TYPE_H
 #define GFX_TYPE_H
 
-#include "core/endian_type.hpp"
-#include "core/geometry_type.hpp"
+#include "core/endian_type.h"
+#include "core/geometry_type.h"
 #include "zoom_type.h"
 
 typedef uint32_t SpriteID;  ///< The number of a sprite, without mapping bits and colourtables

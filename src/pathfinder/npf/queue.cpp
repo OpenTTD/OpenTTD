@@ -8,7 +8,7 @@
 /** @file queue.cpp Implementation of the #BinaryHeap/#Hash. */
 
 #include "../../stdafx.h"
-#include "../../core/alloc_func.hpp"
+#include "../../core/alloc_func.h"
 #include "queue.h"
 
 #include "../../safeguards.h"

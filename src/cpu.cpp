@@ -8,7 +8,7 @@
 /** @file cpu.cpp OS/CPU/compiler dependent CPU specific calls. */
 
 #include "stdafx.h"
-#include "core/bitmath_func.hpp"
+#include "core/bitmath_func.h"
 
 #include "safeguards.h"
 

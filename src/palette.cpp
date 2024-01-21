@@ -8,8 +8,8 @@
 /** @file palette.cpp Handling of palettes. */
 
 #include "stdafx.h"
-#include "blitter/base.hpp"
-#include "blitter/factory.hpp"
+#include "blitter/base.h"
+#include "blitter/factory.h"
 #include "fileio_func.h"
 #include "gfx_type.h"
 #include "landscape_type.h"

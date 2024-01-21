@@ -12,7 +12,7 @@
 
 #include "company_type.h"
 #include "goal_type.h"
-#include "core/pool_type.hpp"
+#include "core/pool_type.h"
 
 typedef Pool<Goal, GoalID, 64, 64000> GoalPool;
 extern GoalPool _goal_pool;

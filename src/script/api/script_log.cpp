@@ -8,9 +8,9 @@
 /** @file script_log.cpp Implementation of ScriptLog. */
 
 #include "../../stdafx.h"
-#include "script_log_types.hpp"
-#include "script_log.hpp"
-#include "../../core/alloc_func.hpp"
+#include "script_log_types.h"
+#include "script_log.h"
+#include "../../core/alloc_func.h"
 #include "../../debug.h"
 #include "../../window_func.h"
 #include "../../string_func.h"

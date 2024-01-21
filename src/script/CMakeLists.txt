@@ -7,24 +7,24 @@ endif()
 add_files(
     script_cmd.h
     script_config.cpp
-    script_config.hpp
-    script_fatalerror.hpp
+    script_config.h
+    script_fatalerror.h
     script_gui.h
     script_gui.cpp
     script_info.cpp
-    script_info.hpp
+    script_info.h
     script_info_dummy.cpp
     script_instance.cpp
-    script_instance.hpp
+    script_instance.h
     script_scanner.cpp
-    script_scanner.hpp
-    script_storage.hpp
-    script_suspend.hpp
+    script_scanner.h
+    script_storage.h
+    script_suspend.h
     squirrel.cpp
-    squirrel.hpp
-    squirrel_class.hpp
-    squirrel_helper.hpp
-    squirrel_helper_type.hpp
+    squirrel.h
+    squirrel_class.h
+    squirrel_helper.h
+    squirrel_helper_type.h
     squirrel_std.cpp
-    squirrel_std.hpp
+    squirrel_std.h
 )

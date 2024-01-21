@@ -10,7 +10,7 @@
 #ifndef STRING_TYPE_H
 #define STRING_TYPE_H
 
-#include "core/enum_type.hpp"
+#include "core/enum_type.h"
 
 /** A non-breaking space. */
 #define NBSP "\u00a0"

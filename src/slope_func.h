@@ -10,7 +10,7 @@
 #ifndef SLOPE_FUNC_H
 #define SLOPE_FUNC_H
 
-#include "core/math_func.hpp"
+#include "core/math_func.h"
 #include "slope_type.h"
 #include "direction_type.h"
 #include "tile_type.h"

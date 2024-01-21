@@ -8,8 +8,8 @@
 /** @file script_storypagelist.cpp Implementation of ScriptStoryPageList and friends. */
 
 #include "../../stdafx.h"
-#include "script_storypagelist.hpp"
-#include "script_story_page.hpp"
+#include "script_storypagelist.h"
+#include "script_story_page.h"
 #include "../../story_base.h"
 
 #include "../../safeguards.h"

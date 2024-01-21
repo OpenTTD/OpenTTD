@@ -10,7 +10,7 @@
 #include "../stdafx.h"
 #include "../zoom_func.h"
 #include "../palette_func.h"
-#include "32bpp_simple.hpp"
+#include "32bpp_simple.h"
 
 #include "../table/sprites.h"
 

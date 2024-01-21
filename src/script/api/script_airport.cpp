@@ -8,8 +8,8 @@
 /** @file script_airport.cpp Implementation of ScriptAirport. */
 
 #include "../../stdafx.h"
-#include "script_airport.hpp"
-#include "script_station.hpp"
+#include "script_airport.h"
+#include "script_station.h"
 #include "../../station_base.h"
 #include "../../town.h"
 #include "../../landscape_cmd.h"

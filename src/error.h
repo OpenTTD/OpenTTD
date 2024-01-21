@@ -13,7 +13,7 @@
 #include "strings_type.h"
 #include "company_type.h"
 #include "command_type.h"
-#include "core/geometry_type.hpp"
+#include "core/geometry_type.h"
 
 #include <chrono>
 

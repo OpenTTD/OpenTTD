@@ -12,7 +12,7 @@
 
 #include "command_type.h"
 #include "order_base.h"
-#include "misc/endian_buffer.hpp"
+#include "misc/endian_buffer.h"
 
 CommandCost CmdModifyOrder(DoCommandFlag flags, VehicleID veh, VehicleOrderID sel_ord, ModifyOrderFlags mof, uint16_t data);
 CommandCost CmdSkipToOrder(DoCommandFlag flags, VehicleID veh_id, VehicleOrderID sel_ord);

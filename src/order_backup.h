@@ -10,7 +10,7 @@
 #ifndef ORDER_BACKUP_H
 #define ORDER_BACKUP_H
 
-#include "core/pool_type.hpp"
+#include "core/pool_type.h"
 #include "group_type.h"
 #include "tile_type.h"
 #include "vehicle_type.h"

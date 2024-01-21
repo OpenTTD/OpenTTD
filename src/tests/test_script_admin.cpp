@@ -11,11 +11,11 @@
 
 #include "../3rdparty/catch2/catch.hpp"
 
-#include "../game/game_instance.hpp"
-#include "../script/api/script_admin.hpp"
-#include "../script/api/script_event_types.hpp"
-#include "../script/script_instance.hpp"
-#include "../script/squirrel.hpp"
+#include "../game/game_instance.h"
+#include "../script/api/script_admin.h"
+#include "../script/api/script_event_types.h"
+#include "../script/script_instance.h"
+#include "../script/squirrel.h"
 
 #include "../3rdparty/fmt/format.h"
 #include "../3rdparty/nlohmann/json.hpp"

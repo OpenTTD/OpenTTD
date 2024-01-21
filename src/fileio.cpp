@@ -9,7 +9,7 @@
 
 #include "stdafx.h"
 #include "fileio_func.h"
-#include "spriteloader/spriteloader.hpp"
+#include "spriteloader/spriteloader.h"
 #include "debug.h"
 #include "fios.h"
 #include "string_func.h"

@@ -14,7 +14,7 @@
 #ifndef SLOPE_TYPE_H
 #define SLOPE_TYPE_H
 
-#include "core/enum_type.hpp"
+#include "core/enum_type.h"
 
 /**
  * Enumeration of tile corners

@@ -11,8 +11,8 @@
 #include <squirrel.h>
 #include <sqstdmath.h>
 #include "../debug.h"
-#include "squirrel_std.hpp"
-#include "../core/math_func.hpp"
+#include "squirrel_std.h"
+#include "../core/math_func.h"
 #include "../string_func.h"
 
 #include "../safeguards.h"

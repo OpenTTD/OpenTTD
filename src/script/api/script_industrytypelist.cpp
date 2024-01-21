@@ -8,7 +8,7 @@
 /** @file script_industrytypelist.cpp Implementation of ScriptIndustryTypeList. */
 
 #include "../../stdafx.h"
-#include "script_industrytypelist.hpp"
+#include "script_industrytypelist.h"
 #include "../../industry.h"
 
 #include "../../safeguards.h"

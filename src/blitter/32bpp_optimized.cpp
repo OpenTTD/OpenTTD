@@ -11,7 +11,7 @@
 #include "../zoom_func.h"
 #include "../settings_type.h"
 #include "../palette_func.h"
-#include "32bpp_optimized.hpp"
+#include "32bpp_optimized.h"
 
 #include "../safeguards.h"
 

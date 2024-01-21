@@ -16,7 +16,7 @@
 #include "../stdafx.h"
 #include "../os/macosx/macos.h"
 #include "cocoa_m.h"
-#include "midifile.hpp"
+#include "midifile.h"
 #include "../debug.h"
 #include "../base_media_base.h"
 

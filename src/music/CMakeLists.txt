@@ -41,8 +41,8 @@ endif()
 add_files(
     midi.h
     midifile.cpp
-    midifile.hpp
-    music_driver.hpp
+    midifile.h
+    music_driver.h
     null_m.cpp
     null_m.h
 )

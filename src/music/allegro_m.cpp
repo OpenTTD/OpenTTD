@@ -12,7 +12,7 @@
 #include "../stdafx.h"
 #include "../debug.h"
 #include "allegro_m.h"
-#include "midifile.hpp"
+#include "midifile.h"
 #include <allegro.h>
 
 #include "../safeguards.h"

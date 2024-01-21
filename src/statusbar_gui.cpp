@@ -8,7 +8,7 @@
 /** @file statusbar_gui.cpp The GUI for the bottom status bar. */
 
 #include "stdafx.h"
-#include "core/backup_type.hpp"
+#include "core/backup_type.h"
 #include "gfx_func.h"
 #include "news_func.h"
 #include "company_func.h"
@@ -23,7 +23,7 @@
 #include "window_func.h"
 #include "statusbar_gui.h"
 #include "toolbar_gui.h"
-#include "core/geometry_func.hpp"
+#include "core/geometry_func.h"
 #include "zoom_func.h"
 #include "timer/timer.h"
 #include "timer/timer_game_calendar.h"

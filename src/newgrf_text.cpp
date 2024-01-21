@@ -25,7 +25,7 @@
 #include "string_func.h"
 #include "timer/timer_game_calendar.h"
 #include "debug.h"
-#include "core/alloc_type.hpp"
+#include "core/alloc_type.h"
 #include "language.h"
 #include <sstream>
 

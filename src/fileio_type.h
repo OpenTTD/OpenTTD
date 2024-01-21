@@ -10,7 +10,7 @@
 #ifndef FILEIO_TYPE_H
 #define FILEIO_TYPE_H
 
-#include "core/enum_type.hpp"
+#include "core/enum_type.h"
 
 /** The different abstract types of files that the system knows about. */
 enum AbstractFileType {

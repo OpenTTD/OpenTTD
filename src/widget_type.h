@@ -10,9 +10,9 @@
 #ifndef WIDGET_TYPE_H
 #define WIDGET_TYPE_H
 
-#include "core/alloc_type.hpp"
-#include "core/bitmath_func.hpp"
-#include "core/math_func.hpp"
+#include "core/alloc_type.h"
+#include "core/bitmath_func.h"
+#include "core/math_func.h"
 #include "strings_type.h"
 #include "gfx_type.h"
 #include "window_type.h"

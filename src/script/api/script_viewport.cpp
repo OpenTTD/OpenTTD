@@ -8,11 +8,11 @@
 /** @file script_viewport.cpp Implementation of ScriptViewport. */
 
 #include "../../stdafx.h"
-#include "script_error.hpp"
-#include "script_viewport.hpp"
-#include "script_game.hpp"
-#include "script_map.hpp"
-#include "../script_instance.hpp"
+#include "script_error.h"
+#include "script_viewport.h"
+#include "script_game.h"
+#include "script_map.h"
+#include "../script_instance.h"
 #include "../../viewport_func.h"
 #include "../../viewport_cmd.h"
 

@@ -14,12 +14,12 @@
 #include "../network/network.h"
 #include "../settings_func.h"
 #include "../network/network_content.h"
-#include "../core/geometry_func.hpp"
+#include "../core/geometry_func.h"
 
-#include "ai.hpp"
-#include "ai_gui.hpp"
-#include "ai_config.hpp"
-#include "ai_info.hpp"
+#include "ai.h"
+#include "ai_gui.h"
+#include "ai_config.h"
+#include "ai_info.h"
 #include "../script/script_gui.h"
 #include "table/strings.h"
 

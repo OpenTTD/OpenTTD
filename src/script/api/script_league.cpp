@@ -9,10 +9,10 @@
 
 #include "../../stdafx.h"
 
-#include "script_league.hpp"
+#include "script_league.h"
 
-#include "../script_instance.hpp"
-#include "script_error.hpp"
+#include "../script_instance.h"
+#include "script_error.h"
 #include "../../league_base.h"
 #include "../../league_cmd.h"
 

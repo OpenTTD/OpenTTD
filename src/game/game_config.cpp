@@ -9,9 +9,9 @@
 
 #include "../stdafx.h"
 #include "../settings_type.h"
-#include "game.hpp"
-#include "game_config.hpp"
-#include "game_info.hpp"
+#include "game.h"
+#include "game_config.h"
+#include "game_info.h"
 
 #include "../safeguards.h"
 

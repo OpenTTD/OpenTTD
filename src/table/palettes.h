@@ -7,7 +7,7 @@
 
 /** @file palettes.h The colour translation of the GRF palettes. */
 
-#include "../core/endian_type.hpp"
+#include "../core/endian_type.h"
 
 #define M(r, g, b) Colour(r, g, b)
 

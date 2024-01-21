@@ -16,7 +16,7 @@
 #include "story_base.h"
 #include "town.h"
 #include "window_func.h"
-#include "core/pool_func.hpp"
+#include "core/pool_func.h"
 
 #include "safeguards.h"
 

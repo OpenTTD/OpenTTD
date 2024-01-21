@@ -10,13 +10,13 @@
 #include "../../stdafx.h"
 #include "../../crashlog.h"
 #include "win32.h"
-#include "../../core/math_func.hpp"
+#include "../../core/math_func.h"
 #include "../../string_func.h"
 #include "../../fileio_func.h"
 #include "../../strings_func.h"
 #include "../../gamelog.h"
 #include "../../saveload/saveload.h"
-#include "../../video/video_driver.hpp"
+#include "../../video/video_driver.h"
 #include "../../library_loader.h"
 
 #include <windows.h>

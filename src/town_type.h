@@ -10,7 +10,7 @@
 #ifndef TOWN_TYPE_H
 #define TOWN_TYPE_H
 
-#include "core/enum_type.hpp"
+#include "core/enum_type.h"
 
 typedef uint16_t TownID;
 struct Town;

@@ -16,7 +16,7 @@
 
 #include "../command_type.h"
 #include "../command_func.h"
-#include "../misc/endian_buffer.hpp"
+#include "../misc/endian_buffer.h"
 
 #ifdef RANDOM_DEBUG
 /**

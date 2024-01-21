@@ -22,7 +22,7 @@
  */
 
 #include "../../stdafx.h"
-#include "../../core/alloc_func.hpp"
+#include "../../core/alloc_func.h"
 #include "aystar.h"
 
 #include "../../safeguards.h"

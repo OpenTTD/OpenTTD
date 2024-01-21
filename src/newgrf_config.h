@@ -11,8 +11,8 @@
 #define NEWGRF_CONFIG_H
 
 #include "strings_type.h"
-#include "core/alloc_type.hpp"
-#include "misc/countedptr.hpp"
+#include "core/alloc_type.h"
+#include "misc/countedptr.h"
 #include "fileio_type.h"
 #include "textfile_type.h"
 #include "newgrf_text.h"

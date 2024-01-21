@@ -8,8 +8,8 @@
 /** @file script_bridgelist.cpp Implementation of ScriptBridgeList and friends. */
 
 #include "../../stdafx.h"
-#include "script_bridgelist.hpp"
-#include "script_bridge.hpp"
+#include "script_bridgelist.h"
+#include "script_bridge.h"
 #include "../../bridge.h"
 
 #include "../../safeguards.h"

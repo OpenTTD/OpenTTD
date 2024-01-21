@@ -10,7 +10,7 @@
 #ifndef SCRIPT_WINDOW_HPP
 #define SCRIPT_WINDOW_HPP
 
-#include "script_object.hpp"
+#include "script_object.h"
 
 ${INCLUDES}
 

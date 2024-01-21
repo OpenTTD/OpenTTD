@@ -9,7 +9,7 @@
 
 #include "stdafx.h"
 #include "cargotype.h"
-#include "core/geometry_func.hpp"
+#include "core/geometry_func.h"
 #include "newgrf_cargo.h"
 #include "string_func.h"
 #include "strings_func.h"

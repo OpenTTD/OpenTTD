@@ -37,7 +37,7 @@ if(NOT OPTION_DEDICATED)
 endif()
 
 add_files(
-    sound_driver.hpp
+    sound_driver.h
     null_s.cpp
     null_s.h
 )

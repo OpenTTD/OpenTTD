@@ -5,7 +5,7 @@
  * See the GNU General Public License for more details. You should have received a copy of the GNU General Public License along with OpenTTD. If not, see <http://www.gnu.org/licenses/>.
  */
 
- /** @file script_gui.hpp %Window for configuring the scripts  */
+ /** @file script_gui.h %Window for configuring the scripts  */
 
 #ifndef SCRIPT_GUI_HPP
 #define SCRIPT_GUI_HPP

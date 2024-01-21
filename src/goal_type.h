@@ -10,7 +10,7 @@
 #ifndef GOAL_TYPE_H
 #define GOAL_TYPE_H
 
-#include "core/enum_type.hpp"
+#include "core/enum_type.h"
 
 static const uint32_t GOAL_QUESTION_BUTTON_COUNT = 18; ///< Amount of buttons available.
 

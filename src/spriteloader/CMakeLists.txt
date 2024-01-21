@@ -1,7 +1,7 @@
 add_files(
     grf.cpp
-    grf.hpp
+    grf.h
     sprite_file.cpp
-    sprite_file_type.hpp
-    spriteloader.hpp
+    sprite_file_type.h
+    spriteloader.h
 )

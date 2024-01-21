@@ -7,7 +7,7 @@
 
 /** @file table/townname.h Namepart tables for the town name generator */
 
-#include "../core/enum_type.hpp"
+#include "../core/enum_type.h"
 
 static const char * const _name_original_english_1[] = {
 	"Great ",

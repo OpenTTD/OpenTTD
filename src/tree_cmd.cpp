@@ -20,7 +20,7 @@
 #include "sound_func.h"
 #include "water.h"
 #include "company_base.h"
-#include "core/random_func.hpp"
+#include "core/random_func.h"
 #include "newgrf_generic.h"
 #include "timer/timer_game_tick.h"
 #include "tree_cmd.h"

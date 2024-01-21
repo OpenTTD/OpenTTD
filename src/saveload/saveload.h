@@ -10,7 +10,7 @@
 #ifndef SAVELOAD_H
 #define SAVELOAD_H
 
-#include "saveload_error.hpp"
+#include "saveload_error.h"
 #include "../fileio_type.h"
 #include "../fios.h"
 

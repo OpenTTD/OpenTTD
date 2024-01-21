@@ -10,13 +10,13 @@
 #ifndef CARGOPACKET_H
 #define CARGOPACKET_H
 
-#include "core/pool_type.hpp"
+#include "core/pool_type.h"
 #include "economy_type.h"
 #include "station_type.h"
 #include "order_type.h"
 #include "cargo_type.h"
 #include "vehicle_type.h"
-#include "core/multimap.hpp"
+#include "core/multimap.h"
 #include "saveload/saveload.h"
 
 /** Unique identifier for a single cargo packet. */

@@ -10,7 +10,7 @@
 #ifndef MUSIC_FLUIDSYNTH_H
 #define MUSIC_FLUIDSYNTH_H
 
-#include "music_driver.hpp"
+#include "music_driver.h"
 
 /** Music driver making use of FluidSynth. */
 class MusicDriver_FluidSynth : public MusicDriver {

@@ -9,15 +9,15 @@
 
 #include "../stdafx.h"
 #include "../debug.h"
-#include "squirrel_std.hpp"
+#include "squirrel_std.h"
 #include "../fileio_func.h"
 #include "../string_func.h"
-#include "script_fatalerror.hpp"
+#include "script_fatalerror.h"
 #include "../settings_type.h"
 #include <sqstdaux.h>
 #include <../squirrel/sqpcheader.h>
 #include <../squirrel/sqvm.h>
-#include "../core/alloc_func.hpp"
+#include "../core/alloc_func.h"
 
 /**
  * In the memory allocator for Squirrel we want to directly use malloc/realloc, so when the OS

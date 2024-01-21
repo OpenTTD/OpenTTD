@@ -10,7 +10,7 @@
 #ifndef SOUND_ALLEGRO_H
 #define SOUND_ALLEGRO_H
 
-#include "sound_driver.hpp"
+#include "sound_driver.h"
 
 /** Implementation of the allegro sound driver. */
 class SoundDriver_Allegro : public SoundDriver {

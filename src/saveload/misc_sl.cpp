@@ -18,7 +18,7 @@
 #include "../window_func.h"
 #include "../viewport_func.h"
 #include "../gfx_func.h"
-#include "../core/random_func.hpp"
+#include "../core/random_func.h"
 #include "../fios.h"
 #include "../timer/timer.h"
 #include "../timer/timer_game_tick.h"

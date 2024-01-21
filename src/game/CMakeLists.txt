@@ -1,16 +1,16 @@
 add_files(
-    game.hpp
+    game.h
     game_config.cpp
-    game_config.hpp
+    game_config.h
     game_core.cpp
     game_gui.cpp
-    game_gui.hpp
+    game_gui.h
     game_info.cpp
-    game_info.hpp
+    game_info.h
     game_instance.cpp
-    game_instance.hpp
+    game_instance.h
     game_scanner.cpp
-    game_scanner.hpp
+    game_scanner.h
     game_text.cpp
-    game_text.hpp
+    game_text.h
 )

@@ -8,7 +8,7 @@
 /** @file script_subsidylist.cpp Implementation of ScriptSubsidyList. */
 
 #include "../../stdafx.h"
-#include "script_subsidylist.hpp"
+#include "script_subsidylist.h"
 #include "../../subsidy_base.h"
 
 #include "../../safeguards.h"

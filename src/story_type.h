@@ -10,7 +10,7 @@
 #ifndef STORY_TYPE_H
 #define STORY_TYPE_H
 
-#include "core/enum_type.hpp"
+#include "core/enum_type.h"
 
 typedef uint16_t StoryPageElementID; ///< ID of a story page element
 typedef uint16_t StoryPageID; ///< ID of a story page

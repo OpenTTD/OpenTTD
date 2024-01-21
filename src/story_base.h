@@ -15,7 +15,7 @@
 #include "timer/timer_game_calendar.h"
 #include "gfx_type.h"
 #include "vehicle_type.h"
-#include "core/pool_type.hpp"
+#include "core/pool_type.h"
 
 typedef Pool<StoryPageElement, StoryPageElementID, 64, 64000> StoryPageElementPool;
 typedef Pool<StoryPage, StoryPageID, 64, 64000> StoryPagePool;

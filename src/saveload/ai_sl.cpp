@@ -16,10 +16,10 @@
 #include "../company_base.h"
 #include "../string_func.h"
 
-#include "../ai/ai.hpp"
-#include "../ai/ai_config.hpp"
+#include "../ai/ai.h"
+#include "../ai/ai_config.h"
 #include "../network/network.h"
-#include "../ai/ai_instance.hpp"
+#include "../ai/ai_instance.h"
 
 #include "../safeguards.h"
 

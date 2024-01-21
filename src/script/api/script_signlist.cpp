@@ -8,8 +8,8 @@
 /** @file script_signlist.cpp Implementation of ScriptSignList and friends. */
 
 #include "../../stdafx.h"
-#include "script_signlist.hpp"
-#include "script_sign.hpp"
+#include "script_signlist.h"
+#include "script_sign.h"
 #include "../../signs_base.h"
 
 #include "../../safeguards.h"

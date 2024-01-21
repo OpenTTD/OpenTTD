@@ -12,7 +12,7 @@
 
 #include <atomic>
 #include <chrono>
-#include "core/enum_type.hpp"
+#include "core/enum_type.h"
 
 /** Mode which defines the state of the game. */
 enum GameMode {

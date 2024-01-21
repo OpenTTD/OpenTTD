@@ -10,7 +10,7 @@
 #ifndef STATION_BASE_H
 #define STATION_BASE_H
 
-#include "core/random_func.hpp"
+#include "core/random_func.h"
 #include "base_station_base.h"
 #include "newgrf_airport.h"
 #include "cargopacket.h"

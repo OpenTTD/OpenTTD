@@ -8,7 +8,7 @@
 /** @file newgrf_debug_gui.cpp GUIs for debugging NewGRFs. */
 
 #include "stdafx.h"
-#include "core/backup_type.hpp"
+#include "core/backup_type.h"
 #include "window_gui.h"
 #include "window_func.h"
 #include "random_access_file_type.h"

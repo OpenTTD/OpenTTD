@@ -9,7 +9,7 @@
 
 #include "../../stdafx.h"
 #include "../../company_base.h"
-#include "script_companymode.hpp"
+#include "script_companymode.h"
 
 #include "../../safeguards.h"
 

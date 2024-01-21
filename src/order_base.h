@@ -11,8 +11,8 @@
 #define ORDER_BASE_H
 
 #include "order_type.h"
-#include "core/pool_type.hpp"
-#include "core/bitmath_func.hpp"
+#include "core/pool_type.h"
+#include "core/bitmath_func.h"
 #include "cargo_type.h"
 #include "depot_type.h"
 #include "station_type.h"

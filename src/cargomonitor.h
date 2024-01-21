@@ -14,7 +14,7 @@
 #include "company_func.h"
 #include "industry.h"
 #include "town.h"
-#include "core/overflowsafe_type.hpp"
+#include "core/overflowsafe_type.h"
 
 struct Station;
 

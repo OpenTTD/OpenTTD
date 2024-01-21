@@ -10,14 +10,14 @@
 #ifndef TRAIN_H
 #define TRAIN_H
 
-#include "core/enum_type.hpp"
+#include "core/enum_type.h"
 
 #include "newgrf_engine.h"
 #include "cargotype.h"
 #include "rail.h"
 #include "engine_base.h"
 #include "rail_map.h"
-#include "ground_vehicle.hpp"
+#include "ground_vehicle.h"
 
 struct Train;
 

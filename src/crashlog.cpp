@@ -12,9 +12,9 @@
 #include "survey.h"
 #include "gamelog.h"
 #include "map_func.h"
-#include "music/music_driver.hpp"
-#include "sound/sound_driver.hpp"
-#include "video/video_driver.hpp"
+#include "music/music_driver.h"
+#include "sound/sound_driver.h"
+#include "video/video_driver.h"
 #include "saveload/saveload.h"
 #include "screenshot.h"
 #include "network/network_survey.h"
@@ -25,7 +25,7 @@
 #include "company_func.h"
 #include "3rdparty/fmt/chrono.h"
 #include "3rdparty/fmt/std.h"
-#include "core/format.hpp"
+#include "core/format.h"
 
 #include "safeguards.h"
 

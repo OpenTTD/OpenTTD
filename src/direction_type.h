@@ -10,7 +10,7 @@
 #ifndef DIRECTION_TYPE_H
 #define DIRECTION_TYPE_H
 
-#include "core/enum_type.hpp"
+#include "core/enum_type.h"
 
 /**
  * Defines the 8 directions on the map.

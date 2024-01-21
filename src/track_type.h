@@ -10,7 +10,7 @@
 #ifndef TRACK_TYPE_H
 #define TRACK_TYPE_H
 
-#include "core/enum_type.hpp"
+#include "core/enum_type.h"
 
 /**
  * These are used to specify a single track.

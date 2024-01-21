@@ -6,7 +6,7 @@
 
 #include "sqpcheader.h"
 
-#include "../../../core/alloc_func.hpp"
+#include "../../../core/alloc_func.h"
 #include "../../../safeguards.h"
 
 #ifdef SQUIRREL_DEFAULT_ALLOCATOR

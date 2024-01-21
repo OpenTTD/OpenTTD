@@ -28,7 +28,7 @@
 #include "ship.h"
 #include "newgrf.h"
 #include "company_base.h"
-#include "core/random_func.hpp"
+#include "core/random_func.h"
 #include "vehicle_cmd.h"
 #include "aircraft_cmd.h"
 #include "autoreplace_cmd.h"

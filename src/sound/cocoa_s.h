@@ -10,7 +10,7 @@
 #ifndef SOUND_COCOA_H
 #define SOUND_COCOA_H
 
-#include "sound_driver.hpp"
+#include "sound_driver.h"
 
 class SoundDriver_Cocoa : public SoundDriver {
 public:

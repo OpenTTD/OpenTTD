@@ -21,7 +21,7 @@
 #include "network_internal.h"
 #include "network_udp.h"
 #include "network.h"
-#include "../core/endian_func.hpp"
+#include "../core/endian_func.h"
 #include "../company_base.h"
 #include "../rev.h"
 #include "../newgrf_text.h"

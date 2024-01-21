@@ -10,9 +10,9 @@
 #ifndef SORTLIST_TYPE_H
 #define SORTLIST_TYPE_H
 
-#include "core/enum_type.hpp"
-#include "core/bitmath_func.hpp"
-#include "core/mem_func.hpp"
+#include "core/enum_type.h"
+#include "core/bitmath_func.h"
+#include "core/mem_func.h"
 #include "timer/timer_game_tick.h"
 
 /** Flags of the sort list. */

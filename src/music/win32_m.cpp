@@ -14,10 +14,10 @@
 #include <mmsystem.h>
 #include "../os/windows/win32.h"
 #include "../debug.h"
-#include "midifile.hpp"
+#include "midifile.h"
 #include "midi.h"
 #include "../base_media_base.h"
-#include "../core/mem_func.hpp"
+#include "../core/mem_func.h"
 #include <mutex>
 
 #include "../safeguards.h"

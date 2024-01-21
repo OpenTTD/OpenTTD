@@ -8,8 +8,8 @@
 /** @file script_waypointlist.cpp Implementation of ScriptWaypointList and friends. */
 
 #include "../../stdafx.h"
-#include "script_waypointlist.hpp"
-#include "script_vehicle.hpp"
+#include "script_waypointlist.h"
+#include "script_vehicle.h"
 #include "../../vehicle_base.h"
 #include "../../waypoint_base.h"
 

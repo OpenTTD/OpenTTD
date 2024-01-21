@@ -7,12 +7,12 @@
 
 /* @file midifile.cpp Parser for standard MIDI files */
 
-#include "midifile.hpp"
+#include "midifile.h"
 #include "../fileio_func.h"
 #include "../fileio_type.h"
 #include "../string_func.h"
-#include "../core/endian_func.hpp"
-#include "../core/mem_func.hpp"
+#include "../core/endian_func.h"
+#include "../core/mem_func.h"
 #include "../base_media_base.h"
 #include "midi.h"
 

@@ -10,7 +10,7 @@
 #ifndef DRIVER_H
 #define DRIVER_H
 
-#include "core/enum_type.hpp"
+#include "core/enum_type.h"
 #include "string_type.h"
 
 const char *GetDriverParam(const StringList &parm, const char *name);

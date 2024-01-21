@@ -10,7 +10,7 @@
 #ifndef TILEHIGHLIGHT_TYPE_H
 #define TILEHIGHLIGHT_TYPE_H
 
-#include "core/geometry_type.hpp"
+#include "core/geometry_type.h"
 #include "window_type.h"
 #include "tile_type.h"
 #include "viewport_type.h"

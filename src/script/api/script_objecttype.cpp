@@ -9,10 +9,10 @@
 
 #include "../../stdafx.h"
 
-#include "script_objecttype.hpp"
+#include "script_objecttype.h"
 
-#include "script_error.hpp"
-#include "script_map.hpp"
+#include "script_error.h"
+#include "script_map.h"
 #include "../../object_cmd.h"
 
 #include "../../safeguards.h"

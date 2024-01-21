@@ -36,7 +36,7 @@
 #define FRAMERATE_TYPE_H
 
 #include "stdafx.h"
-#include "core/enum_type.hpp"
+#include "core/enum_type.h"
 
 /**
  * Elements of game performance that can be measured.

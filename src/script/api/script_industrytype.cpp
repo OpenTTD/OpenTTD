@@ -8,14 +8,14 @@
 /** @file script_industrytype.cpp Implementation of ScriptIndustryType. */
 
 #include "../../stdafx.h"
-#include "script_industrytype.hpp"
-#include "script_base.hpp"
-#include "script_map.hpp"
-#include "script_error.hpp"
+#include "script_industrytype.h"
+#include "script_base.h"
+#include "script_map.h"
+#include "script_error.h"
 #include "../../strings_func.h"
 #include "../../industry.h"
 #include "../../newgrf_industries.h"
-#include "../../core/random_func.hpp"
+#include "../../core/random_func.h"
 #include "../../industry_cmd.h"
 
 #include "../../safeguards.h"

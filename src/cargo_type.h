@@ -10,7 +10,7 @@
 #ifndef CARGO_TYPE_H
 #define CARGO_TYPE_H
 
-#include "core/enum_type.hpp"
+#include "core/enum_type.h"
 
 /**
  * Cargo slots to indicate a cargo type within a game.

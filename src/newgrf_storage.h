@@ -10,8 +10,8 @@
 #ifndef NEWGRF_STORAGE_H
 #define NEWGRF_STORAGE_H
 
-#include "core/alloc_func.hpp"
-#include "core/pool_type.hpp"
+#include "core/alloc_func.h"
+#include "core/pool_type.h"
 #include "tile_type.h"
 
 /**

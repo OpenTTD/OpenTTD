@@ -9,9 +9,9 @@
 
 #include "../stdafx.h"
 
-#include "../script/squirrel_class.hpp"
-#include "ai_info.hpp"
-#include "ai_scanner.hpp"
+#include "../script/squirrel_class.h"
+#include "ai_info.h"
+#include "ai_scanner.h"
 #include "../debug.h"
 #include "../string_func.h"
 #include "../rev.h"

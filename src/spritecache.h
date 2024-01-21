@@ -11,7 +11,7 @@
 #define SPRITECACHE_H
 
 #include "gfx_type.h"
-#include "spriteloader/spriteloader.hpp"
+#include "spriteloader/spriteloader.h"
 
 /** Data structure describing a sprite. */
 struct Sprite {

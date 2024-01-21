@@ -8,9 +8,9 @@
 /** @file video_driver.cpp Common code between video driver implementations. */
 
 #include "../stdafx.h"
-#include "../core/random_func.hpp"
+#include "../core/random_func.h"
 #include "../network/network.h"
-#include "../blitter/factory.hpp"
+#include "../blitter/factory.h"
 #include "../debug.h"
 #include "../driver.h"
 #include "../fontcache.h"
@@ -20,7 +20,7 @@
 #include "../rev.h"
 #include "../thread.h"
 #include "../window_func.h"
-#include "video_driver.hpp"
+#include "video_driver.h"
 
 bool _video_hw_accel; ///< Whether to consider hardware accelerated video drivers.
 bool _video_vsync; ///< Whether we should use vsync (only if _video_hw_accel is enabled).

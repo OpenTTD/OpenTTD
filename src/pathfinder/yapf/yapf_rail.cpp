@@ -11,9 +11,9 @@
 
 #include "yapf_includes.h"
 #include "yapf_cache.h"
-#include "yapf_node_rail.hpp"
-#include "yapf_costrail.hpp"
-#include "yapf_destrail.hpp"
+#include "yapf_node_rail.h"
+#include "yapf_costrail.h"
+#include "yapf_destrail.h"
 #include "../../viewport_func.h"
 #include "../../newgrf_station.h"
 

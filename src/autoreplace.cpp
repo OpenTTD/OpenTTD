@@ -11,8 +11,8 @@
 #include "command_func.h"
 #include "group.h"
 #include "autoreplace_base.h"
-#include "core/bitmath_func.hpp"
-#include "core/pool_func.hpp"
+#include "core/bitmath_func.h"
+#include "core/pool_func.h"
 
 #include "safeguards.h"
 

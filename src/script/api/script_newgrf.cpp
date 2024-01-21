@@ -8,8 +8,8 @@
 /** @file script_newgrf.cpp Implementation of ScriptNewGRF and friends. */
 
 #include "../../stdafx.h"
-#include "script_newgrf.hpp"
-#include "../../core/bitmath_func.hpp"
+#include "script_newgrf.h"
+#include "../../core/bitmath_func.h"
 #include "../../newgrf_config.h"
 #include "../../string_func.h"
 

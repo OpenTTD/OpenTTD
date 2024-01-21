@@ -11,7 +11,7 @@
 
 #include "../3rdparty/catch2/catch.hpp"
 
-#include "../core/math_func.hpp"
+#include "../core/math_func.h"
 
 TEST_CASE("DivideApproxTest - Negative")
 {

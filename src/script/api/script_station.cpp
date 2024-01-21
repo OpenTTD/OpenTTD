@@ -8,10 +8,10 @@
 /** @file script_station.cpp Implementation of ScriptStation. */
 
 #include "../../stdafx.h"
-#include "script_station.hpp"
-#include "script_map.hpp"
-#include "script_town.hpp"
-#include "script_cargo.hpp"
+#include "script_station.h"
+#include "script_map.h"
+#include "script_town.h"
+#include "script_cargo.h"
 #include "../../station_base.h"
 #include "../../roadstop_base.h"
 #include "../../town.h"

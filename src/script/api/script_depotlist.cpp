@@ -8,7 +8,7 @@
 /** @file script_depotlist.cpp Implementation of ScriptDepotList and friends. */
 
 #include "../../stdafx.h"
-#include "script_depotlist.hpp"
+#include "script_depotlist.h"
 #include "../../depot_base.h"
 #include "../../station_base.h"
 

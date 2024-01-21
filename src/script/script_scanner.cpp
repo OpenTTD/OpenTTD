@@ -12,10 +12,10 @@
 #include "../string_func.h"
 #include "../settings_type.h"
 
-#include "../script/squirrel.hpp"
-#include "script_scanner.hpp"
-#include "script_info.hpp"
-#include "script_fatalerror.hpp"
+#include "../script/squirrel.h"
+#include "script_scanner.h"
+#include "script_info.h"
+#include "script_fatalerror.h"
 
 #include "../network/network_content.h"
 #include "../3rdparty/md5/md5.h"

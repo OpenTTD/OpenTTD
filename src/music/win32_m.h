@@ -10,7 +10,7 @@
 #ifndef MUSIC_WIN32_H
 #define MUSIC_WIN32_H
 
-#include "music_driver.hpp"
+#include "music_driver.h"
 
 /** The Windows music player. */
 class MusicDriver_Win32 : public MusicDriver {

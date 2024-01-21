@@ -92,8 +92,8 @@ WARN_LOGFILE           =
 #---------------------------------------------------------------------------
 INPUT                  = . ${FIND_VERSION_BINARY_DIR}/script/api
 INPUT_ENCODING         = UTF-8
-FILE_PATTERNS          = script_*.hpp \
-                         ai_*.hpp
+FILE_PATTERNS          = script_*.h \
+                         ai_*.h
 RECURSIVE              = YES
 EXCLUDE                =
 EXCLUDE_SYMLINKS       = NO

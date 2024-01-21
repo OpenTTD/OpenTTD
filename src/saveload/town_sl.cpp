@@ -18,7 +18,7 @@
 #include "../landscape.h"
 #include "../subsidy_func.h"
 #include "../strings_func.h"
-#include "../tilematrix_type.hpp"
+#include "../tilematrix_type.h"
 
 #include "../safeguards.h"
 

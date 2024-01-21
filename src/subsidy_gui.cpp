@@ -17,7 +17,7 @@
 #include "gui.h"
 #include "subsidy_func.h"
 #include "subsidy_base.h"
-#include "core/geometry_func.hpp"
+#include "core/geometry_func.h"
 
 #include "widgets/subsidy_widget.h"
 

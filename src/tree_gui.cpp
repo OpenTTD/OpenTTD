@@ -14,7 +14,7 @@
 #include "company_func.h"
 #include "company_base.h"
 #include "command_func.h"
-#include "core/random_func.hpp"
+#include "core/random_func.h"
 #include "sound_func.h"
 #include "strings_func.h"
 #include "zoom_func.h"

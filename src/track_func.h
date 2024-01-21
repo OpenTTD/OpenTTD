@@ -10,7 +10,7 @@
 #ifndef TRACK_FUNC_H
 #define TRACK_FUNC_H
 
-#include "core/bitmath_func.hpp"
+#include "core/bitmath_func.h"
 #include "track_type.h"
 #include "direction_func.h"
 #include "slope_func.h"

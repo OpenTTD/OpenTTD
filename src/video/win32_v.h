@@ -10,7 +10,7 @@
 #ifndef VIDEO_WIN32_H
 #define VIDEO_WIN32_H
 
-#include "video_driver.hpp"
+#include "video_driver.h"
 #include <mutex>
 #include <condition_variable>
 #include <windows.h>

@@ -12,7 +12,7 @@
 #include "townname_type.h"
 #include "town.h"
 #include "strings_func.h"
-#include "core/random_func.hpp"
+#include "core/random_func.h"
 #include "genworld.h"
 #include "gfx_layout.h"
 #include "strings_internal.h"

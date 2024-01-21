@@ -8,9 +8,9 @@
 /** @file script_list.cpp Implementation of ScriptList. */
 
 #include "../../stdafx.h"
-#include "script_list.hpp"
+#include "script_list.h"
 #include "../../debug.h"
-#include "../../script/squirrel.hpp"
+#include "../../script/squirrel.h"
 
 #include "../../safeguards.h"
 

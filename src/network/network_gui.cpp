@@ -29,7 +29,7 @@
 #include "../sortlist_type.h"
 #include "../company_func.h"
 #include "../command_func.h"
-#include "../core/geometry_func.hpp"
+#include "../core/geometry_func.h"
 #include "../genworld.h"
 #include "../map_type.h"
 #include "../zoom_func.h"

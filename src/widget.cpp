@@ -8,14 +8,14 @@
 /** @file widget.cpp Handling of the default/simple widgets. */
 
 #include "stdafx.h"
-#include "core/backup_type.hpp"
+#include "core/backup_type.h"
 #include "company_func.h"
 #include "window_gui.h"
 #include "viewport_func.h"
 #include "zoom_func.h"
 #include "strings_func.h"
 #include "transparency.h"
-#include "core/geometry_func.hpp"
+#include "core/geometry_func.h"
 #include "settings_type.h"
 #include "querystring_gui.h"
 

@@ -10,8 +10,8 @@
 #ifndef VIDEO_COCOA_H
 #define VIDEO_COCOA_H
 
-#include "../video_driver.hpp"
-#include "../../core/geometry_type.hpp"
+#include "../video_driver.h"
+#include "../../core/geometry_type.h"
 
 
 extern bool _cocoa_video_started;

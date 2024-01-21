@@ -29,7 +29,7 @@
 #include "zoom_func.h"
 #include "engine_base.h"
 #include "strings_func.h"
-#include "core/geometry_func.hpp"
+#include "core/geometry_func.h"
 #include "station_cmd.h"
 #include "road_cmd.h"
 #include "tunnelbridge_cmd.h"

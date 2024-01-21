@@ -12,7 +12,7 @@
 #include "../sound_type.h"
 #include "../debug.h"
 #include "fluidsynth.h"
-#include "midifile.hpp"
+#include "midifile.h"
 #include <fluidsynth.h>
 #include "../mixer.h"
 #include <mutex>

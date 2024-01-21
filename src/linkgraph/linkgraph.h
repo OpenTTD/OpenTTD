@@ -10,7 +10,7 @@
 #ifndef LINKGRAPH_H
 #define LINKGRAPH_H
 
-#include "../core/pool_type.hpp"
+#include "../core/pool_type.h"
 #include "../station_base.h"
 #include "../cargotype.h"
 #include "../timer/timer_game_calendar.h"

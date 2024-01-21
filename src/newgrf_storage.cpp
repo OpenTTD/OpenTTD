@@ -9,8 +9,8 @@
 
 #include "stdafx.h"
 #include "newgrf_storage.h"
-#include "core/pool_func.hpp"
-#include "core/endian_func.hpp"
+#include "core/pool_func.h"
+#include "core/endian_func.h"
 #include "debug.h"
 
 #include "safeguards.h"

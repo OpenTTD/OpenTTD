@@ -8,7 +8,7 @@
 /** @file textfile_gui.cpp Implementation of textfile window. */
 
 #include "stdafx.h"
-#include "core/backup_type.hpp"
+#include "core/backup_type.h"
 #include "fileio_func.h"
 #include "fontcache.h"
 #include "gfx_type.h"

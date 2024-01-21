@@ -11,7 +11,7 @@
 #define TIMER_GAME_CALENDAR_H
 
 #include "../stdafx.h"
-#include "../core/strong_typedef_type.hpp"
+#include "../core/strong_typedef_type.h"
 
 /**
  * Timer that is increased every 27ms, and counts towards ticks / days / months / years.

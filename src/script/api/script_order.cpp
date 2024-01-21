@@ -8,10 +8,10 @@
 /** @file script_order.cpp Implementation of ScriptOrder. */
 
 #include "../../stdafx.h"
-#include "script_order.hpp"
-#include "script_cargo.hpp"
-#include "script_map.hpp"
-#include "../script_instance.hpp"
+#include "script_order.h"
+#include "script_cargo.h"
+#include "script_map.h"
+#include "../script_instance.h"
 #include "../../debug.h"
 #include "../../vehicle_base.h"
 #include "../../roadstop_base.h"

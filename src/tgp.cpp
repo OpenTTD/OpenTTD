@@ -11,7 +11,7 @@
 #include "clear_map.h"
 #include "void_map.h"
 #include "genworld.h"
-#include "core/random_func.hpp"
+#include "core/random_func.h"
 #include "landscape_type.h"
 
 #include "safeguards.h"

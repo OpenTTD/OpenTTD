@@ -12,7 +12,7 @@
 
 #include "engine_type.h"
 #include "vehicle_type.h"
-#include "core/pool_type.hpp"
+#include "core/pool_type.h"
 #include "newgrf_commons.h"
 #include "timer/timer_game_calendar.h"
 

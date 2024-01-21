@@ -8,9 +8,9 @@
 /** @file script_group.cpp Implementation of ScriptGroup. */
 
 #include "../../stdafx.h"
-#include "script_group.hpp"
-#include "script_engine.hpp"
-#include "../script_instance.hpp"
+#include "script_group.h"
+#include "script_engine.h"
+#include "../script_instance.h"
 #include "../../string_func.h"
 #include "../../strings_func.h"
 #include "../../autoreplace_func.h"

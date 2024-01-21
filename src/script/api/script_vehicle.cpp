@@ -8,12 +8,12 @@
 /** @file script_vehicle.cpp Implementation of ScriptVehicle. */
 
 #include "../../stdafx.h"
-#include "script_engine.hpp"
-#include "script_cargo.hpp"
-#include "script_gamesettings.hpp"
-#include "script_group.hpp"
-#include "script_map.hpp"
-#include "../script_instance.hpp"
+#include "script_engine.h"
+#include "script_cargo.h"
+#include "script_gamesettings.h"
+#include "script_group.h"
+#include "script_map.h"
+#include "../script_instance.h"
 #include "../../string_func.h"
 #include "../../strings_func.h"
 #include "../../command_func.h"

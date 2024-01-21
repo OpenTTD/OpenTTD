@@ -10,7 +10,7 @@
 #ifndef SMALLMAP_GUI_H
 #define SMALLMAP_GUI_H
 
-#include "core/geometry_type.hpp"
+#include "core/geometry_type.h"
 #include "station_type.h"
 #include "tile_type.h"
 #include "window_type.h"

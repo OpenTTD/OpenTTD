@@ -10,7 +10,7 @@
 #ifndef MUSIC_MACOSX_COCOA_H
 #define MUSIC_MACOSX_COCOA_H
 
-#include "music_driver.hpp"
+#include "music_driver.h"
 
 class MusicDriver_Cocoa : public MusicDriver {
 public:

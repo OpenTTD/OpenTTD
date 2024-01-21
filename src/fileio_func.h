@@ -10,7 +10,7 @@
 #ifndef FILEIO_FUNC_H
 #define FILEIO_FUNC_H
 
-#include "core/enum_type.hpp"
+#include "core/enum_type.h"
 #include "fileio_type.h"
 
 void FioFCloseFile(FILE *f);

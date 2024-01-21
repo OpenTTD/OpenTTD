@@ -12,7 +12,7 @@
 
 #include "signs_type.h"
 #include "viewport_type.h"
-#include "core/pool_type.hpp"
+#include "core/pool_type.h"
 #include "company_type.h"
 
 typedef Pool<Sign, SignID, 16, 64000> SignPool;

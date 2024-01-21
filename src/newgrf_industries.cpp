@@ -18,7 +18,7 @@
 #include "company_base.h"
 #include "error.h"
 #include "strings_func.h"
-#include "core/random_func.hpp"
+#include "core/random_func.h"
 #include "timer/timer_game_calendar.h"
 
 #include "table/strings.h"

@@ -8,7 +8,7 @@
 /** @file stringfilter.cpp Searching and filtering using a stringterm. */
 
 #include "stdafx.h"
-#include "core/alloc_func.hpp"
+#include "core/alloc_func.h"
 #include "string_func.h"
 #include "strings_func.h"
 #include "stringfilter_type.h"

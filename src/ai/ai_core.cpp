@@ -8,18 +8,18 @@
 /** @file ai_core.cpp Implementation of AI. */
 
 #include "../stdafx.h"
-#include "../core/backup_type.hpp"
-#include "../core/bitmath_func.hpp"
+#include "../core/backup_type.h"
+#include "../core/bitmath_func.h"
 #include "../company_base.h"
 #include "../company_func.h"
 #include "../network/network.h"
 #include "../window_func.h"
 #include "../framerate_type.h"
-#include "ai_scanner.hpp"
-#include "ai_instance.hpp"
-#include "ai_config.hpp"
-#include "ai_info.hpp"
-#include "ai.hpp"
+#include "ai_scanner.h"
+#include "ai_instance.h"
+#include "ai_config.h"
+#include "ai_info.h"
+#include "ai.h"
 
 #include "../safeguards.h"
 

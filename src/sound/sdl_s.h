@@ -10,7 +10,7 @@
 #ifndef SOUND_SDL_H
 #define SOUND_SDL_H
 
-#include "sound_driver.hpp"
+#include "sound_driver.h"
 
 /** Implementation of the SDL sound driver. */
 class SoundDriver_SDL : public SoundDriver {

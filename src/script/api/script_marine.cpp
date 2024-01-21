@@ -8,8 +8,8 @@
 /** @file script_marine.cpp Implementation of ScriptMarine. */
 
 #include "../../stdafx.h"
-#include "script_marine.hpp"
-#include "script_station.hpp"
+#include "script_marine.h"
+#include "script_station.h"
 #include "../../station_base.h"
 #include "../../dock_cmd.h"
 #include "../../landscape_cmd.h"

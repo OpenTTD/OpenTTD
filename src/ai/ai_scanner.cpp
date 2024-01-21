@@ -11,12 +11,12 @@
 #include "../debug.h"
 #include "../network/network.h"
 #include "../openttd.h"
-#include "../core/random_func.hpp"
+#include "../core/random_func.h"
 
-#include "../script/squirrel_class.hpp"
-#include "../script/api/script_object.hpp"
-#include "ai_info.hpp"
-#include "ai_scanner.hpp"
+#include "../script/squirrel_class.h"
+#include "../script/api/script_object.h"
+#include "ai_info.h"
+#include "ai_scanner.h"
 
 #include "../safeguards.h"
 

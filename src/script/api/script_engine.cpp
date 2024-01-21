@@ -8,8 +8,8 @@
 /** @file script_engine.cpp Implementation of ScriptEngine. */
 
 #include "../../stdafx.h"
-#include "script_engine.hpp"
-#include "script_cargo.hpp"
+#include "script_engine.h"
+#include "script_cargo.h"
 #include "../../company_base.h"
 #include "../../strings_func.h"
 #include "../../rail.h"

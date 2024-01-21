@@ -1,14 +1,14 @@
 add_files(
-    ai.hpp
+    ai.h
     ai_config.cpp
-    ai_config.hpp
+    ai_config.h
     ai_core.cpp
     ai_gui.cpp
-    ai_gui.hpp
+    ai_gui.h
     ai_info.cpp
-    ai_info.hpp
+    ai_info.h
     ai_instance.cpp
-    ai_instance.hpp
+    ai_instance.h
     ai_scanner.cpp
-    ai_scanner.hpp
+    ai_scanner.h
 )

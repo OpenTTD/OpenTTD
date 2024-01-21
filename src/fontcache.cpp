@@ -10,7 +10,7 @@
 #include "stdafx.h"
 #include "fontcache.h"
 #include "fontdetection.h"
-#include "blitter/factory.hpp"
+#include "blitter/factory.h"
 #include "gfx_layout.h"
 #include "fontcache/spritefontcache.h"
 #include "openttd.h"

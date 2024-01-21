@@ -8,8 +8,8 @@
 /** @file 32bpp_base.cpp Implementation of base for 32 bpp blitters. */
 
 #include "../stdafx.h"
-#include "32bpp_base.hpp"
-#include "common.hpp"
+#include "32bpp_base.h"
+#include "common.h"
 
 #include "../safeguards.h"
 

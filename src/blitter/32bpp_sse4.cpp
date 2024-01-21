@@ -12,8 +12,8 @@
 #include "../stdafx.h"
 #include "../zoom_func.h"
 #include "../settings_type.h"
-#include "32bpp_sse4.hpp"
-#include "32bpp_sse_func.hpp"
+#include "32bpp_sse4.h"
+#include "32bpp_sse_func.h"
 
 #include "../safeguards.h"
 

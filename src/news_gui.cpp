@@ -27,7 +27,7 @@
 #include "company_func.h"
 #include "engine_base.h"
 #include "engine_gui.h"
-#include "core/geometry_func.hpp"
+#include "core/geometry_func.h"
 #include "command_func.h"
 #include "company_base.h"
 #include "settings_internal.h"

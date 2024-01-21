@@ -25,7 +25,7 @@
 #include "tunnelbridge.h"
 #include "tilehighlight_func.h"
 #include "spritecache.h"
-#include "core/geometry_func.hpp"
+#include "core/geometry_func.h"
 #include "hotkeys.h"
 #include "engine_base.h"
 #include "vehicle_func.h"

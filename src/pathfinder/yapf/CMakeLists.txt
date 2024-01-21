@@ -1,22 +1,22 @@
 add_files(
-    nodelist.hpp
+    nodelist.h
     yapf.h
-    yapf_base.hpp
+    yapf_base.h
     yapf_cache.h
-    yapf_common.hpp
-    yapf_costbase.hpp
-    yapf_costcache.hpp
-    yapf_costrail.hpp
-    yapf_destrail.hpp
+    yapf_common.h
+    yapf_costbase.h
+    yapf_costcache.h
+    yapf_costrail.h
+    yapf_destrail.h
     yapf_includes.h
-    yapf_node.hpp
-    yapf_node_rail.hpp
-    yapf_node_road.hpp
-    yapf_node_ship.hpp
+    yapf_node.h
+    yapf_node_rail.h
+    yapf_node_road.h
+    yapf_node_ship.h
     yapf_rail.cpp
     yapf_road.cpp
     yapf_ship.cpp
     yapf_ship_regions.h
     yapf_ship_regions.cpp
-    yapf_type.hpp
+    yapf_type.h
 )

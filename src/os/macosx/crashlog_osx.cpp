@@ -13,7 +13,7 @@
 #include "../../string_func.h"
 #include "../../gamelog.h"
 #include "../../saveload/saveload.h"
-#include "../../video/video_driver.hpp"
+#include "../../video/video_driver.h"
 #include "macos.h"
 
 #include <setjmp.h>

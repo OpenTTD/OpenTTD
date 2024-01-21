@@ -26,7 +26,7 @@
 #include "tilehighlight_func.h"
 #include "company_base.h"
 #include "sortlist_type.h"
-#include "core/geometry_func.hpp"
+#include "core/geometry_func.h"
 #include "vehiclelist.h"
 #include "town.h"
 #include "linkgraph/linkgraph.h"

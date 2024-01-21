@@ -14,11 +14,11 @@
 #include "../strings_func.h"
 #include "table/strings.h"
 #include "../error.h"
-#include "../core/math_func.hpp"
-#include "../core/alloc_type.hpp"
-#include "../core/bitmath_func.hpp"
+#include "../core/math_func.h"
+#include "../core/alloc_type.h"
+#include "../core/bitmath_func.h"
 #include "../spritecache.h"
-#include "grf.hpp"
+#include "grf.h"
 
 #include "../safeguards.h"
 

@@ -10,9 +10,9 @@
 #ifdef WITH_SSE
 
 #include "../stdafx.h"
-#include "../video/video_driver.hpp"
-#include "32bpp_anim_sse2.hpp"
-#include "32bpp_sse_func.hpp"
+#include "../video/video_driver.h"
+#include "32bpp_anim_sse2.h"
+#include "32bpp_sse_func.h"
 
 #include "../safeguards.h"
 

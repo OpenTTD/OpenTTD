@@ -10,7 +10,7 @@
 #ifndef VIDEO_NULL_H
 #define VIDEO_NULL_H
 
-#include "video_driver.hpp"
+#include "video_driver.h"
 
 /** The null video driver. */
 class VideoDriver_Null : public VideoDriver {

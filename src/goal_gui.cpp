@@ -15,7 +15,7 @@
 #include "viewport_func.h"
 #include "gui.h"
 #include "goal_base.h"
-#include "core/geometry_func.hpp"
+#include "core/geometry_func.h"
 #include "company_func.h"
 #include "company_base.h"
 #include "company_gui.h"

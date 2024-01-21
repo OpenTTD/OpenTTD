@@ -10,7 +10,7 @@
 #ifndef SOUND_XAUDIO2_H
 #define SOUND_XAUDIO2_H
 
-#include "sound_driver.hpp"
+#include "sound_driver.h"
 
 /** Implementation of the XAudio2 sound driver. */
 class SoundDriver_XAudio2 : public SoundDriver {

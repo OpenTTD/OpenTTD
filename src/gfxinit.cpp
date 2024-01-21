@@ -14,8 +14,8 @@
 #include "fontcache.h"
 #include "gfx_func.h"
 #include "transparency.h"
-#include "blitter/factory.hpp"
-#include "video/video_driver.hpp"
+#include "blitter/factory.h"
+#include "video/video_driver.h"
 #include "window_func.h"
 #include "palette_func.h"
 

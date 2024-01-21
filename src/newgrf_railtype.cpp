@@ -8,7 +8,7 @@
 /** @file newgrf_railtype.cpp NewGRF handling of rail types. */
 
 #include "stdafx.h"
-#include "core/container_func.hpp"
+#include "core/container_func.h"
 #include "debug.h"
 #include "newgrf_railtype.h"
 #include "timer/timer_game_calendar.h"

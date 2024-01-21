@@ -10,7 +10,7 @@
 #ifndef ROAD_FUNC_H
 #define ROAD_FUNC_H
 
-#include "core/bitmath_func.hpp"
+#include "core/bitmath_func.h"
 #include "road.h"
 #include "economy_func.h"
 #include "transparency.h"

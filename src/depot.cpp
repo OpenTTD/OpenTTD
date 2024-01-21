@@ -12,7 +12,7 @@
 #include "order_backup.h"
 #include "order_func.h"
 #include "window_func.h"
-#include "core/pool_func.hpp"
+#include "core/pool_func.h"
 #include "vehicle_gui.h"
 #include "vehiclelist.h"
 

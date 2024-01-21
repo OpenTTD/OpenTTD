@@ -11,7 +11,7 @@
 #define DEPOT_BASE_H
 
 #include "depot_map.h"
-#include "core/pool_type.hpp"
+#include "core/pool_type.h"
 #include "timer/timer_game_calendar.h"
 
 typedef Pool<Depot, DepotID, 64, 64000> DepotPool;

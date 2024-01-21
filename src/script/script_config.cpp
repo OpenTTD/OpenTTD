@@ -9,9 +9,9 @@
 
 #include "../stdafx.h"
 #include "../settings_type.h"
-#include "../core/random_func.hpp"
-#include "script_info.hpp"
-#include "api/script_object.hpp"
+#include "../core/random_func.h"
+#include "script_info.h"
+#include "api/script_object.h"
 #include "../textfile_gui.h"
 #include "../string_func.h"
 #include <charconv>

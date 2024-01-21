@@ -12,7 +12,7 @@
 
 #ifdef WITH_SSE
 
-#include "32bpp_simple.hpp"
+#include "32bpp_simple.h"
 #if (SSE_VERSION == 2)
 #include <emmintrin.h>
 #elif (SSE_VERSION == 3)

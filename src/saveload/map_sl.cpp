@@ -13,7 +13,7 @@
 #include "compat/map_sl_compat.h"
 
 #include "../map_func.h"
-#include "../core/bitmath_func.hpp"
+#include "../core/bitmath_func.h"
 #include "../fios.h"
 
 #include "../safeguards.h"

@@ -8,7 +8,7 @@
 /** @file roadveh_gui.cpp GUI for road vehicles. */
 
 #include "stdafx.h"
-#include "core/backup_type.hpp"
+#include "core/backup_type.h"
 #include "roadveh.h"
 #include "window_gui.h"
 #include "strings_func.h"

@@ -8,7 +8,7 @@
 /** @file script_storypageelementlist.cpp Implementation of ScriptStoryPageElementList and friends. */
 
 #include "../../stdafx.h"
-#include "script_storypageelementlist.hpp"
+#include "script_storypageelementlist.h"
 #include "../../story_base.h"
 
 #include "../../safeguards.h"

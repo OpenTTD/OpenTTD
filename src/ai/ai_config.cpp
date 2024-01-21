@@ -10,9 +10,9 @@
 #include "../stdafx.h"
 #include "../settings_type.h"
 #include "../string_func.h"
-#include "ai.hpp"
-#include "ai_config.hpp"
-#include "ai_info.hpp"
+#include "ai.h"
+#include "ai_config.h"
+#include "ai_info.h"
 
 #include "../safeguards.h"
 

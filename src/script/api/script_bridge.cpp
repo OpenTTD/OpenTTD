@@ -8,9 +8,9 @@
 /** @file script_bridge.cpp Implementation of ScriptBridge. */
 
 #include "../../stdafx.h"
-#include "script_bridge.hpp"
-#include "script_rail.hpp"
-#include "../script_instance.hpp"
+#include "script_bridge.h"
+#include "script_rail.h"
+#include "../script_instance.h"
 #include "../../bridge_map.h"
 #include "../../strings_func.h"
 #include "../../landscape_cmd.h"

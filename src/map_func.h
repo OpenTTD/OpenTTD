@@ -10,7 +10,7 @@
 #ifndef MAP_FUNC_H
 #define MAP_FUNC_H
 
-#include "core/math_func.hpp"
+#include "core/math_func.h"
 #include "tile_type.h"
 #include "map_type.h"
 #include "direction_func.h"

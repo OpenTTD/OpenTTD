@@ -8,12 +8,12 @@
 /** @file script_news.cpp Implementation of ScriptNews. */
 
 #include "../../stdafx.h"
-#include "script_news.hpp"
-#include "script_industry.hpp"
-#include "script_station.hpp"
-#include "script_map.hpp"
-#include "script_town.hpp"
-#include "script_error.hpp"
+#include "script_news.h"
+#include "script_industry.h"
+#include "script_station.h"
+#include "script_map.h"
+#include "script_town.h"
+#include "script_error.h"
 #include "../../command_type.h"
 #include "../../string_func.h"
 #include "../../news_cmd.h"

@@ -11,19 +11,19 @@
 #include "../debug.h"
 #include "../error.h"
 
-#include "../script/squirrel_class.hpp"
+#include "../script/squirrel_class.h"
 
-#include "ai_config.hpp"
-#include "ai.hpp"
+#include "ai_config.h"
+#include "ai.h"
 
-#include "../script/script_storage.hpp"
+#include "../script/script_storage.h"
 #include "../script/script_cmd.h"
 #include "../script/script_gui.h"
-#include "ai_info.hpp"
-#include "ai_instance.hpp"
+#include "ai_info.h"
+#include "ai_instance.h"
 
 /* Manually include the Text glue. */
-#include "../script/api/template/template_text.hpp.sq"
+#include "../script/api/template/template_text.h.sq"
 
 /* Convert all AI related classes to Squirrel data. */
 #include "../script/api/ai/ai_includes.h"

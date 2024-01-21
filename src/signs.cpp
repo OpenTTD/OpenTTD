@@ -13,7 +13,7 @@
 #include "signs_base.h"
 #include "signs_func.h"
 #include "strings_func.h"
-#include "core/pool_func.hpp"
+#include "core/pool_func.h"
 #include "viewport_kdtree.h"
 
 #include "table/strings.h"

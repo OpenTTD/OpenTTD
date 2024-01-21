@@ -16,7 +16,7 @@
 #include "autoreplace_func.h"
 #include "string_func.h"
 #include "company_func.h"
-#include "core/pool_func.hpp"
+#include "core/pool_func.h"
 #include "order_backup.h"
 #include "group_cmd.h"
 

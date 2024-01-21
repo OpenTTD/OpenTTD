@@ -11,24 +11,24 @@
 #include "../debug.h"
 #include "../saveload/saveload.h"
 
-#include "../script/squirrel_class.hpp"
-#include "../script/squirrel_std.hpp"
+#include "../script/squirrel_class.h"
+#include "../script/squirrel_std.h"
 
-#include "script_fatalerror.hpp"
-#include "script_storage.hpp"
-#include "script_info.hpp"
-#include "script_instance.hpp"
+#include "script_fatalerror.h"
+#include "script_storage.h"
+#include "script_info.h"
+#include "script_instance.h"
 
-#include "api/script_controller.hpp"
-#include "api/script_error.hpp"
-#include "api/script_event.hpp"
-#include "api/script_log.hpp"
+#include "api/script_controller.h"
+#include "api/script_error.h"
+#include "api/script_event.h"
+#include "api/script_log.h"
 
 #include "../company_base.h"
 #include "../company_func.h"
 #include "../fileio_func.h"
 #include "../league_type.h"
-#include "../misc/endian_buffer.hpp"
+#include "../misc/endian_buffer.h"
 
 #include "../safeguards.h"
 

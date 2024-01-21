@@ -22,7 +22,7 @@
 #include "error_func.h"
 #include "strings_func.h"
 #include "rev.h"
-#include "core/endian_func.hpp"
+#include "core/endian_func.h"
 #include "timer/timer_game_calendar.h"
 #include "vehicle_base.h"
 #include "engine_base.h"
@@ -33,10 +33,10 @@
 #include "smallmap_gui.h"
 #include "window_func.h"
 #include "debug.h"
-#include "game/game_text.hpp"
+#include "game/game_text.h"
 #include "network/network_content_gui.h"
 #include "newgrf_engine.h"
-#include "core/backup_type.hpp"
+#include "core/backup_type.h"
 #include <stack>
 #include <charconv>
 

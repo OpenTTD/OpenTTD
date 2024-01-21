@@ -14,11 +14,11 @@
 #include "compat/game_sl_compat.h"
 
 #include "../string_func.h"
-#include "../game/game.hpp"
-#include "../game/game_config.hpp"
+#include "../game/game.h"
+#include "../game/game_config.h"
 #include "../network/network.h"
-#include "../game/game_instance.hpp"
-#include "../game/game_text.hpp"
+#include "../game/game_instance.h"
+#include "../game/game_text.h"
 
 #include "../safeguards.h"
 

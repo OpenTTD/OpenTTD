@@ -8,7 +8,7 @@
 /** @file animated_tile.cpp Everything related to animated tiles. */
 
 #include "stdafx.h"
-#include "core/container_func.hpp"
+#include "core/container_func.h"
 #include "tile_cmd.h"
 #include "viewport_func.h"
 #include "framerate_type.h"

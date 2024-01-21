@@ -10,7 +10,7 @@
 #ifndef VIDEO_DEDICATED_H
 #define VIDEO_DEDICATED_H
 
-#include "video_driver.hpp"
+#include "video_driver.h"
 
 /** The dedicated server video driver. */
 class VideoDriver_Dedicated : public VideoDriver {

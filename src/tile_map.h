@@ -12,7 +12,7 @@
 
 #include "slope_type.h"
 #include "map_func.h"
-#include "core/bitmath_func.hpp"
+#include "core/bitmath_func.h"
 #include "settings_type.h"
 
 /**

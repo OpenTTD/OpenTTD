@@ -12,7 +12,7 @@
 #include "strings_func.h"
 #include "gui.h"
 #include "story_base.h"
-#include "core/geometry_func.hpp"
+#include "core/geometry_func.h"
 #include "company_func.h"
 #include "command_func.h"
 #include "widgets/dropdown_type.h"

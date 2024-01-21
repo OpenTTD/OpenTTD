@@ -116,7 +116,7 @@ protected:
 	 * Send an update of the current state of the server to the Game Coordinator.
 	 *
 	 *  uint8_t   Game Coordinator protocol version.
-	 *  Serialized NetworkGameInfo. See game_info.hpp for details.
+	 *  Serialized NetworkGameInfo. See game_info.h for details.
 	 *
 	 * @param p The packet that was just received.
 	 * @return True upon success, otherwise false.
@@ -144,7 +144,7 @@ protected:
 	 *  uint16_t  Amount of public servers in this packet.
 	 *  For each server:
 	 *    string  Connection string for this server.
-	 *    Serialized NetworkGameInfo. See game_info.hpp for details.
+	 *    Serialized NetworkGameInfo. See game_info.h for details.
 	 *
 	 * @param p The packet that was just received.
 	 * @return True upon success, otherwise false.

@@ -9,9 +9,9 @@
 
 #include "stdafx.h"
 #include "bmp.h"
-#include "core/bitmath_func.hpp"
-#include "core/alloc_func.hpp"
-#include "core/mem_func.hpp"
+#include "core/bitmath_func.h"
+#include "core/alloc_func.h"
+#include "core/mem_func.h"
 
 #include "safeguards.h"
 

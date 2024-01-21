@@ -10,10 +10,10 @@
 #include "../stdafx.h"
 #include "../zoom_func.h"
 #include "../settings_type.h"
-#include "../video/video_driver.hpp"
+#include "../video/video_driver.h"
 #include "../palette_func.h"
-#include "40bpp_anim.hpp"
-#include "common.hpp"
+#include "40bpp_anim.h"
+#include "common.h"
 
 #include "../table/sprites.h"
 

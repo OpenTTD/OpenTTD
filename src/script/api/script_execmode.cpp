@@ -8,9 +8,9 @@
 /** @file script_execmode.cpp Implementation of ScriptExecMode. */
 
 #include "../../stdafx.h"
-#include "script_execmode.hpp"
-#include "../script_instance.hpp"
-#include "../script_fatalerror.hpp"
+#include "script_execmode.h"
+#include "../script_instance.h"
+#include "../script_fatalerror.h"
 
 #include "../../safeguards.h"
 

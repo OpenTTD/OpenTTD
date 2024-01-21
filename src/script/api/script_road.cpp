@@ -8,15 +8,15 @@
 /** @file script_road.cpp Implementation of ScriptRoad. */
 
 #include "../../stdafx.h"
-#include "script_map.hpp"
-#include "script_station.hpp"
-#include "script_cargo.hpp"
+#include "script_map.h"
+#include "script_station.h"
+#include "script_cargo.h"
 #include "../../station_base.h"
 #include "../../landscape_cmd.h"
 #include "../../road_cmd.h"
 #include "../../station_cmd.h"
 #include "../../newgrf_roadstop.h"
-#include "../../script/squirrel_helper_type.hpp"
+#include "../../script/squirrel_helper_type.h"
 
 #include "../../safeguards.h"
 

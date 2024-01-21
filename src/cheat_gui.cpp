@@ -28,7 +28,7 @@
 #include "newgrf.h"
 #include "error.h"
 #include "misc_cmd.h"
-#include "core/geometry_func.hpp"
+#include "core/geometry_func.h"
 #include "timer/timer.h"
 #include "timer/timer_game_calendar.h"
 

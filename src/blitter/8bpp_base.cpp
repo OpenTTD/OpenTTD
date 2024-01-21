@@ -9,8 +9,8 @@
 
 #include "../stdafx.h"
 #include "../gfx_func.h"
-#include "8bpp_base.hpp"
-#include "common.hpp"
+#include "8bpp_base.h"
+#include "common.h"
 
 #include "../safeguards.h"
 

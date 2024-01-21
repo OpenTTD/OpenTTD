@@ -21,7 +21,7 @@
 #include "window_gui.h"
 #include "engine_gui.h"
 #include "settings_func.h"
-#include "core/geometry_func.hpp"
+#include "core/geometry_func.h"
 #include "rail_gui.h"
 #include "road_gui.h"
 #include "widgets/dropdown_func.h"

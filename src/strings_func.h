@@ -13,8 +13,8 @@
 #include "strings_type.h"
 #include "string_type.h"
 #include "gfx_type.h"
-#include "core/bitmath_func.hpp"
-#include "core/strong_typedef_type.hpp"
+#include "core/bitmath_func.h"
+#include "core/strong_typedef_type.h"
 #include "vehicle_type.h"
 
 /**

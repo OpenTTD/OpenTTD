@@ -7,7 +7,7 @@
 
 /** @file table/strgen_tables.h Tables of commands for strgen */
 
-#include "../core/enum_type.hpp"
+#include "../core/enum_type.h"
 
 enum CmdFlags {
 	C_NONE      = 0x0, ///< Nothing special about this command

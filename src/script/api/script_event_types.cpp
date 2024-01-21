@@ -8,9 +8,9 @@
 /** @file script_event_types.cpp Implementation of all EventTypes. */
 
 #include "../../stdafx.h"
-#include "script_event_types.hpp"
-#include "script_vehicle.hpp"
-#include "script_log.hpp"
+#include "script_event_types.h"
+#include "script_vehicle.h"
+#include "script_log.h"
 #include "../../strings_func.h"
 #include "../../settings_type.h"
 #include "../../engine_base.h"

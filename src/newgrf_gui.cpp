@@ -23,7 +23,7 @@
 #include "sortlist_type.h"
 #include "stringfilter_type.h"
 #include "querystring_gui.h"
-#include "core/geometry_func.hpp"
+#include "core/geometry_func.h"
 #include "newgrf_text.h"
 #include "textfile_gui.h"
 #include "tilehighlight_func.h"

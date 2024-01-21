@@ -10,7 +10,7 @@
 #ifndef LANDSCAPE_H
 #define LANDSCAPE_H
 
-#include "core/geometry_type.hpp"
+#include "core/geometry_type.h"
 #include "tile_cmd.h"
 
 static const uint SNOW_LINE_MONTHS = 12; ///< Number of months in the snow line table.

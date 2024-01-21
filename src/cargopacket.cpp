@@ -9,8 +9,8 @@
 
 #include "stdafx.h"
 #include "station_base.h"
-#include "core/pool_func.hpp"
-#include "core/random_func.hpp"
+#include "core/pool_func.h"
+#include "core/random_func.h"
 #include "economy_base.h"
 #include "cargoaction.h"
 #include "order_type.h"

@@ -8,8 +8,8 @@
 /** @file articulated_vehicles.cpp Implementation of articulated vehicles. */
 
 #include "stdafx.h"
-#include "core/bitmath_func.hpp"
-#include "core/random_func.hpp"
+#include "core/bitmath_func.h"
+#include "core/random_func.h"
 #include "train.h"
 #include "roadveh.h"
 #include "vehicle_func.h"

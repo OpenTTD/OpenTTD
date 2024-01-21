@@ -8,7 +8,7 @@
 /** @file script_infrastructure.cpp Implementation of ScriptInfrastructure. */
 
 #include "../../stdafx.h"
-#include "script_infrastructure.hpp"
+#include "script_infrastructure.h"
 #include "../../company_base.h"
 #include "../../rail.h"
 #include "../../road_func.h"

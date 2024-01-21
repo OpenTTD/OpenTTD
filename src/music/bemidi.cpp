@@ -11,7 +11,7 @@
 #include "../openttd.h"
 #include "bemidi.h"
 #include "../base_media_base.h"
-#include "midifile.hpp"
+#include "midifile.h"
 
 #include "../safeguards.h"
 

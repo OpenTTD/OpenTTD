@@ -8,7 +8,7 @@
 /** @file script_industrylist.cpp Implementation of ScriptIndustryList and friends. */
 
 #include "../../stdafx.h"
-#include "script_industrylist.hpp"
+#include "script_industrylist.h"
 #include "../../industry.h"
 
 #include "../../safeguards.h"

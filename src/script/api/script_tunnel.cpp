@@ -8,9 +8,9 @@
 /** @file script_tunnel.cpp Implementation of ScriptTunnel. */
 
 #include "../../stdafx.h"
-#include "script_tunnel.hpp"
-#include "script_rail.hpp"
-#include "../script_instance.hpp"
+#include "script_tunnel.h"
+#include "script_rail.h"
+#include "../script_instance.h"
 #include "../../tunnel_map.h"
 #include "../../landscape_cmd.h"
 #include "../../road_cmd.h"

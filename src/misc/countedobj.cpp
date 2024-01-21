@@ -9,7 +9,7 @@
 
 #include "../stdafx.h"
 
-#include "countedptr.hpp"
+#include "countedptr.h"
 
 #include "../safeguards.h"
 

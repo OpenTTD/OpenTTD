@@ -9,7 +9,7 @@
 
 #include "stdafx.h"
 #include "roadveh.h"
-#include "core/pool_func.hpp"
+#include "core/pool_func.h"
 #include "roadstop_base.h"
 #include "station_base.h"
 #include "vehicle_func.h"

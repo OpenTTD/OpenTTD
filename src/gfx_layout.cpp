@@ -8,7 +8,7 @@
 /** @file gfx_layout.cpp Handling of laying out text. */
 
 #include "stdafx.h"
-#include "core/math_func.hpp"
+#include "core/math_func.h"
 #include "gfx_layout.h"
 #include "string_func.h"
 #include "debug.h"

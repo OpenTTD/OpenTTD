@@ -10,7 +10,7 @@
 #ifndef NETWORK_TYPE_H
 #define NETWORK_TYPE_H
 
-#include "../core/enum_type.hpp"
+#include "../core/enum_type.h"
 
 /** How many clients can we have */
 static const uint MAX_CLIENTS = 255;

@@ -10,7 +10,7 @@
 #ifndef VEHICLE_TYPE_H
 #define VEHICLE_TYPE_H
 
-#include "core/enum_type.hpp"
+#include "core/enum_type.h"
 
 /** The type all our vehicle IDs have. */
 typedef uint32_t VehicleID;

@@ -9,7 +9,7 @@
 
 #include "../stdafx.h"
 #include "../zoom_func.h"
-#include "8bpp_simple.hpp"
+#include "8bpp_simple.h"
 
 #include "../safeguards.h"
 

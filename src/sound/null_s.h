@@ -10,7 +10,7 @@
 #ifndef SOUND_NULL_H
 #define SOUND_NULL_H
 
-#include "sound_driver.hpp"
+#include "sound_driver.h"
 
 /** Implementation of the null sound driver. */
 class SoundDriver_Null : public SoundDriver {

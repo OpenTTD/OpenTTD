@@ -12,9 +12,9 @@
 
 #include "stdafx.h"
 
-#include "core/math_func.hpp"
+#include "core/math_func.h"
 #include "gfx_type.h"
-#include "spriteloader/spriteloader.hpp"
+#include "spriteloader/spriteloader.h"
 
 #include "table/sprites.h"
 

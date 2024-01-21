@@ -15,7 +15,7 @@
 #include "gfx_type.h"
 #include "gfx_func.h"
 #include "window_func.h"
-#include "core/alloc_func.hpp"
+#include "core/alloc_func.h"
 
 #include "safeguards.h"
 

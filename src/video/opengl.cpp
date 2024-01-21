@@ -28,13 +28,13 @@
 #include "../3rdparty/opengl/glext.h"
 
 #include "opengl.h"
-#include "../core/geometry_func.hpp"
-#include "../core/mem_func.hpp"
-#include "../core/math_func.hpp"
-#include "../core/mem_func.hpp"
+#include "../core/geometry_func.h"
+#include "../core/mem_func.h"
+#include "../core/math_func.h"
+#include "../core/mem_func.h"
 #include "../gfx_func.h"
 #include "../debug.h"
-#include "../blitter/factory.hpp"
+#include "../blitter/factory.h"
 #include "../zoom_func.h"
 
 #include "../table/opengl_shader.h"

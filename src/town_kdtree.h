@@ -10,7 +10,7 @@
 #ifndef TOWN_KDTREE_H
 #define TOWN_KDTREE_H
 
-#include "core/kdtree.hpp"
+#include "core/kdtree.h"
 #include "town.h"
 
 inline uint16_t Kdtree_TownXYFunc(TownID tid, int dim) { return (dim == 0) ? TileX(Town::Get(tid)->xy) : TileY(Town::Get(tid)->xy); }

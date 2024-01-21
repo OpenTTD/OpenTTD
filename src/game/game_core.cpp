@@ -8,17 +8,17 @@
 /** @file game_core.cpp Implementation of Game. */
 
 #include "../stdafx.h"
-#include "../core/backup_type.hpp"
+#include "../core/backup_type.h"
 #include "../company_base.h"
 #include "../company_func.h"
 #include "../network/network.h"
 #include "../window_func.h"
 #include "../framerate_type.h"
-#include "game.hpp"
-#include "game_scanner.hpp"
-#include "game_config.hpp"
-#include "game_instance.hpp"
-#include "game_info.hpp"
+#include "game.h"
+#include "game_scanner.h"
+#include "game_config.h"
+#include "game_instance.h"
+#include "game_info.h"
 
 #include "../safeguards.h"
 

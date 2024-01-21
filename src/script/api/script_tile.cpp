@@ -8,9 +8,9 @@
 /** @file script_tile.cpp Implementation of ScriptTile. */
 
 #include "../../stdafx.h"
-#include "script_tile.hpp"
-#include "script_map.hpp"
-#include "script_town.hpp"
+#include "script_tile.h"
+#include "script_map.h"
+#include "script_town.h"
 #include "../../station_func.h"
 #include "../../water_map.h"
 #include "../../clear_map.h"

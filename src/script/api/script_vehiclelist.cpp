@@ -8,10 +8,10 @@
 /** @file script_vehiclelist.cpp Implementation of ScriptVehicleList and friends. */
 
 #include "../../stdafx.h"
-#include "script_vehiclelist.hpp"
-#include "script_group.hpp"
-#include "script_map.hpp"
-#include "script_station.hpp"
+#include "script_vehiclelist.h"
+#include "script_group.h"
+#include "script_map.h"
+#include "script_station.h"
 #include "../../depot_map.h"
 #include "../../vehicle_base.h"
 #include "../../vehiclelist_func.h"

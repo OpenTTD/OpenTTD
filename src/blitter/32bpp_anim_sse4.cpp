@@ -11,10 +11,10 @@
 
 #include "../stdafx.h"
 #include "../palette_func.h"
-#include "../video/video_driver.hpp"
+#include "../video/video_driver.h"
 #include "../table/sprites.h"
-#include "32bpp_anim_sse4.hpp"
-#include "32bpp_sse_func.hpp"
+#include "32bpp_anim_sse4.h"
+#include "32bpp_sse_func.h"
 
 #include "../safeguards.h"
 

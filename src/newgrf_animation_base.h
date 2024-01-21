@@ -10,7 +10,7 @@
 /* No inclusion guards as this file must only be included from .cpp files. */
 
 #include "animated_tile_func.h"
-#include "core/random_func.hpp"
+#include "core/random_func.h"
 #include "timer/timer_game_tick.h"
 #include "viewport_func.h"
 #include "newgrf_animation_type.h"

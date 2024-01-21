@@ -25,7 +25,7 @@
 #ifdef _WIN32
 # include <windows.h>
 # include <shellapi.h>
-# include "core/mem_func.hpp"
+# include "core/mem_func.h"
 #endif
 
 #include "safeguards.h"

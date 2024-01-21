@@ -8,9 +8,9 @@
 /** @file script_asyncmode.cpp Implementation of ScriptAsyncMode. */
 
 #include "../../stdafx.h"
-#include "script_asyncmode.hpp"
-#include "../script_instance.hpp"
-#include "../script_fatalerror.hpp"
+#include "script_asyncmode.h"
+#include "../script_instance.h"
+#include "../script_fatalerror.h"
 
 #include "../../safeguards.h"
 

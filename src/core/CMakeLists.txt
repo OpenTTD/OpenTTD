@@ -1,28 +1,28 @@
 add_files(
     alloc_func.cpp
-    alloc_func.hpp
-    alloc_type.hpp
-    backup_type.hpp
-    bitmath_func.hpp
-    endian_func.hpp
-    endian_type.hpp
-    enum_type.hpp
-    format.hpp
+    alloc_func.h
+    alloc_type.h
+    backup_type.h
+    bitmath_func.h
+    endian_func.h
+    endian_type.h
+    enum_type.h
+    format.h
     geometry_func.cpp
-    geometry_func.hpp
-    geometry_type.hpp
-    kdtree.hpp
+    geometry_func.h
+    geometry_type.h
+    kdtree.h
     math_func.cpp
-    math_func.hpp
-    mem_func.hpp
-    multimap.hpp
-    overflowsafe_type.hpp
+    math_func.h
+    mem_func.h
+    multimap.h
+    overflowsafe_type.h
     pool_func.cpp
-    pool_func.hpp
-    pool_type.hpp
+    pool_func.h
+    pool_type.h
     random_func.cpp
-    random_func.hpp
-    smallstack_type.hpp
-    container_func.hpp
-    strong_typedef_type.hpp
+    random_func.h
+    smallstack_type.h
+    container_func.h
+    strong_typedef_type.h
 )

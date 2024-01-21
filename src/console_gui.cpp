@@ -19,7 +19,7 @@
 #include "settings_type.h"
 #include "console_func.h"
 #include "rev.h"
-#include "video/video_driver.hpp"
+#include "video/video_driver.h"
 #include "timer/timer.h"
 #include "timer/timer_window.h"
 

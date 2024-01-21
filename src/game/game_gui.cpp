@@ -18,12 +18,12 @@
 #include "../timer/timer.h"
 #include "../timer/timer_window.h"
 
-#include "game.hpp"
-#include "game_gui.hpp"
-#include "game_config.hpp"
-#include "game_info.hpp"
+#include "game.h"
+#include "game_gui.h"
+#include "game_config.h"
+#include "game_info.h"
 #include "../script/script_gui.h"
-#include "../script_config.hpp"
+#include "../script_config.h"
 #include "../table/strings.h"
 
 #include "../safeguards.h"

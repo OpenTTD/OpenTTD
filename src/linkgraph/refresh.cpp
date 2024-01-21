@@ -8,7 +8,7 @@
 /** @file refresh.h Definition of link refreshing utility. */
 
 #include "../stdafx.h"
-#include "../core/bitmath_func.hpp"
+#include "../core/bitmath_func.h"
 #include "../station_func.h"
 #include "../engine_base.h"
 #include "../vehicle_func.h"

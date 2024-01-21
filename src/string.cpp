@@ -9,8 +9,8 @@
 
 #include "stdafx.h"
 #include "debug.h"
-#include "core/alloc_func.hpp"
-#include "core/math_func.hpp"
+#include "core/alloc_func.h"
+#include "core/math_func.h"
 #include "error_func.h"
 #include "string_func.h"
 #include "string_base.h"

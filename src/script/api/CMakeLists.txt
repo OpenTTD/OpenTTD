@@ -32,7 +32,7 @@ target_include_directories(script_api
         ${CMAKE_CURRENT_SOURCE_DIR}
 )
 
-file(GLOB SCRIPT_API_FILES "script_*.hpp")
+file(GLOB SCRIPT_API_FILES "script_*.h")
 list(APPEND SCRIPT_API_FILES ${CMAKE_BINARY_DIR}/generated/script/api/script_window.h)
 
 foreach(API "ai;AI" "game;GS" "template;Template")
@@ -141,82 +141,82 @@ add_library(openttd::script_api ALIAS script_api)
 
 
 add_files(
-    ai_changelog.hpp
-    game_changelog.hpp
-    script_accounting.hpp
-    script_admin.hpp
-    script_airport.hpp
-    script_asyncmode.hpp
-    script_base.hpp
-    script_basestation.hpp
-    script_bridge.hpp
-    script_bridgelist.hpp
-    script_cargo.hpp
-    script_cargolist.hpp
-    script_cargomonitor.hpp
-    script_client.hpp
-    script_clientlist.hpp
-    script_company.hpp
-    script_companymode.hpp
-    script_controller.hpp
-    script_date.hpp
-    script_depotlist.hpp
-    script_engine.hpp
-    script_enginelist.hpp
-    script_error.hpp
-    script_event.hpp
-    script_event_types.hpp
-    script_execmode.hpp
-    script_game.hpp
-    script_gamesettings.hpp
-    script_goal.hpp
-    script_group.hpp
-    script_grouplist.hpp
-    script_industry.hpp
-    script_industrylist.hpp
-    script_industrytype.hpp
-    script_industrytypelist.hpp
-    script_info_docs.hpp
-    script_infrastructure.hpp
-    script_league.hpp
-    script_list.hpp
-    script_log.hpp
-    script_log_types.hpp
-    script_map.hpp
-    script_marine.hpp
-    script_newgrf.hpp
-    script_news.hpp
-    script_object.hpp
-    script_objecttype.hpp
-    script_objecttypelist.hpp
-    script_order.hpp
-    script_priorityqueue.hpp
-    script_rail.hpp
-    script_railtypelist.hpp
-    script_road.hpp
-    script_roadtypelist.hpp
-    script_sign.hpp
-    script_signlist.hpp
-    script_station.hpp
-    script_stationlist.hpp
-    script_story_page.hpp
-    script_storypagelist.hpp
-    script_storypageelementlist.hpp
-    script_subsidy.hpp
-    script_subsidylist.hpp
-    script_testmode.hpp
-    script_text.hpp
-    script_tile.hpp
-    script_tilelist.hpp
-    script_town.hpp
-    script_townlist.hpp
-    script_tunnel.hpp
-    script_types.hpp
-    script_vehicle.hpp
-    script_vehiclelist.hpp
-    script_viewport.hpp
-    script_waypoint.hpp
-    script_waypointlist.hpp
+    ai_changelog.h
+    game_changelog.h
+    script_accounting.h
+    script_admin.h
+    script_airport.h
+    script_asyncmode.h
+    script_base.h
+    script_basestation.h
+    script_bridge.h
+    script_bridgelist.h
+    script_cargo.h
+    script_cargolist.h
+    script_cargomonitor.h
+    script_client.h
+    script_clientlist.h
+    script_company.h
+    script_companymode.h
+    script_controller.h
+    script_date.h
+    script_depotlist.h
+    script_engine.h
+    script_enginelist.h
+    script_error.h
+    script_event.h
+    script_event_types.h
+    script_execmode.h
+    script_game.h
+    script_gamesettings.h
+    script_goal.h
+    script_group.h
+    script_grouplist.h
+    script_industry.h
+    script_industrylist.h
+    script_industrytype.h
+    script_industrytypelist.h
+    script_info_docs.h
+    script_infrastructure.h
+    script_league.h
+    script_list.h
+    script_log.h
+    script_log_types.h
+    script_map.h
+    script_marine.h
+    script_newgrf.h
+    script_news.h
+    script_object.h
+    script_objecttype.h
+    script_objecttypelist.h
+    script_order.h
+    script_priorityqueue.h
+    script_rail.h
+    script_railtypelist.h
+    script_road.h
+    script_roadtypelist.h
+    script_sign.h
+    script_signlist.h
+    script_station.h
+    script_stationlist.h
+    script_story_page.h
+    script_storypagelist.h
+    script_storypageelementlist.h
+    script_subsidy.h
+    script_subsidylist.h
+    script_testmode.h
+    script_text.h
+    script_tile.h
+    script_tilelist.h
+    script_town.h
+    script_townlist.h
+    script_tunnel.h
+    script_types.h
+    script_vehicle.h
+    script_vehiclelist.h
+    script_viewport.h
+    script_waypoint.h
+    script_waypointlist.h
     script_accounting.cpp
     script_admin.cpp
     script_airport.cpp

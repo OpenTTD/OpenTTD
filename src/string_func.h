@@ -14,7 +14,7 @@
 
 #include <iosfwd>
 
-#include "core/bitmath_func.hpp"
+#include "core/bitmath_func.h"
 #include "string_type.h"
 
 char *strecpy(char *dst, const char *src, const char *last) NOACCESS(3);

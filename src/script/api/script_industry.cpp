@@ -8,11 +8,11 @@
 /** @file script_industry.cpp Implementation of ScriptIndustry. */
 
 #include "../../stdafx.h"
-#include "script_industry.hpp"
-#include "script_cargo.hpp"
-#include "script_company.hpp"
-#include "script_error.hpp"
-#include "script_map.hpp"
+#include "script_industry.h"
+#include "script_cargo.h"
+#include "script_company.h"
+#include "script_error.h"
+#include "script_map.h"
 #include "../../company_base.h"
 #include "../../industry.h"
 #include "../../string_func.h"

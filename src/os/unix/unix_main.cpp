@@ -10,7 +10,7 @@
 #include "../../stdafx.h"
 #include "../../openttd.h"
 #include "../../crashlog.h"
-#include "../../core/random_func.hpp"
+#include "../../core/random_func.h"
 #include "../../string_func.h"
 
 #include <time.h>

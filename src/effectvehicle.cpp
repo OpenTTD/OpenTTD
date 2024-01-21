@@ -9,7 +9,7 @@
 
 #include "stdafx.h"
 #include "landscape.h"
-#include "core/random_func.hpp"
+#include "core/random_func.h"
 #include "industry_map.h"
 #include "vehicle_func.h"
 #include "sound_func.h"

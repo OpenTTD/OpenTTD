@@ -8,8 +8,8 @@
 /** @file ini_load.cpp Definition of the #IniLoadFile class, related to reading and storing '*.ini' files. */
 
 #include "stdafx.h"
-#include "core/alloc_func.hpp"
-#include "core/mem_func.hpp"
+#include "core/alloc_func.h"
+#include "core/mem_func.h"
 #include "ini_type.h"
 #include "string_func.h"
 

@@ -13,7 +13,7 @@
 #include "landscape.h"
 #include "genworld.h"
 #include "viewport_func.h"
-#include "core/random_func.hpp"
+#include "core/random_func.h"
 #include "newgrf_generic.h"
 #include "landscape_cmd.h"
 

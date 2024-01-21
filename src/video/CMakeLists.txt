@@ -46,5 +46,5 @@ add_files(
     null_v.cpp
     null_v.h
     video_driver.cpp
-    video_driver.hpp
+    video_driver.h
 )

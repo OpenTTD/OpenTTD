@@ -19,8 +19,8 @@
 #include "company_gui.h"
 #include "company_base.h"
 #include "tile_map.h"
-#include "texteff.hpp"
-#include "core/backup_type.hpp"
+#include "texteff.h"
+#include "core/backup_type.h"
 #include "misc_cmd.h"
 
 #include "table/strings.h"

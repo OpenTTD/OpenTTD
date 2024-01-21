@@ -9,7 +9,7 @@
 
 #include "stdafx.h"
 #include "command_func.h"
-#include "core/pool_func.hpp"
+#include "core/pool_func.h"
 #include "network/network.h"
 #include "network/network_func.h"
 #include "order_backup.h"

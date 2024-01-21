@@ -9,8 +9,8 @@
 
 #include "../stdafx.h"
 #include "../rev.h"
-#include "../ai/ai.hpp"
-#include "../game/game.hpp"
+#include "../ai/ai.h"
+#include "../game/game.h"
 #include "../window_func.h"
 #include "../error.h"
 #include "../base_media_base.h"

@@ -11,7 +11,7 @@
 #include <windows.h>
 #include <mmsystem.h>
 #include "../../openttd.h"
-#include "../../core/random_func.hpp"
+#include "../../core/random_func.h"
 #include "../../string_func.h"
 #include "../../crashlog.h"
 #include "../../debug.h"

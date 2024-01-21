@@ -10,7 +10,7 @@
 #ifndef SOUND_WIN32_H
 #define SOUND_WIN32_H
 
-#include "sound_driver.hpp"
+#include "sound_driver.h"
 
 /** Implementation of the sound driver for Windows. */
 class SoundDriver_Win32 : public SoundDriver {

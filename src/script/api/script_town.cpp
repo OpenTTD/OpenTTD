@@ -8,9 +8,9 @@
 /** @file script_town.cpp Implementation of ScriptTown. */
 
 #include "../../stdafx.h"
-#include "script_town.hpp"
-#include "script_map.hpp"
-#include "script_error.hpp"
+#include "script_town.h"
+#include "script_map.h"
+#include "script_error.h"
 #include "../../town.h"
 #include "../../townname_func.h"
 #include "../../string_func.h"

@@ -18,10 +18,10 @@
 #include "../command_func.h"
 #include "../company_base.h"
 #include "../console_func.h"
-#include "../core/pool_func.hpp"
+#include "../core/pool_func.h"
 #include "../map_func.h"
 #include "../rev.h"
-#include "../game/game.hpp"
+#include "../game/game.h"
 
 #include "../safeguards.h"
 

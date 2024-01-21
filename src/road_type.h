@@ -10,7 +10,7 @@
 #ifndef ROAD_TYPE_H
 #define ROAD_TYPE_H
 
-#include "core/enum_type.hpp"
+#include "core/enum_type.h"
 
 typedef uint32_t RoadTypeLabel;
 

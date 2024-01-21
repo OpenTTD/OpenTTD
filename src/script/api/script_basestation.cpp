@@ -8,8 +8,8 @@
 /** @file script_basestation.cpp Implementation of ScriptBaseStation. */
 
 #include "../../stdafx.h"
-#include "script_basestation.hpp"
-#include "script_error.hpp"
+#include "script_basestation.h"
+#include "script_error.h"
 #include "../../station_base.h"
 #include "../../string_func.h"
 #include "../../strings_func.h"

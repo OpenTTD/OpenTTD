@@ -8,8 +8,8 @@
 /** @file script_grouplist.cpp Implementation of ScriptGroupList and friends. */
 
 #include "../../stdafx.h"
-#include "script_grouplist.hpp"
-#include "script_error.hpp"
+#include "script_grouplist.h"
+#include "script_error.h"
 #include "../../group.h"
 
 #include "../../safeguards.h"

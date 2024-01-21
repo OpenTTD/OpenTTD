@@ -10,7 +10,7 @@
 #ifndef NEWS_TYPE_H
 #define NEWS_TYPE_H
 
-#include "core/enum_type.hpp"
+#include "core/enum_type.h"
 #include "gfx_type.h"
 #include "timer/timer_game_calendar.h"
 #include "strings_type.h"

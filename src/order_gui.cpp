@@ -24,7 +24,7 @@
 #include "station_base.h"
 #include "industry.h"
 #include "waypoint_base.h"
-#include "core/geometry_func.hpp"
+#include "core/geometry_func.h"
 #include "hotkeys.h"
 #include "aircraft.h"
 #include "engine_func.h"

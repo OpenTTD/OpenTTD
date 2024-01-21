@@ -20,7 +20,7 @@
 #include "../debug.h"
 #include "../driver.h"
 #include "../mixer.h"
-#include "../core/endian_type.hpp"
+#include "../core/endian_type.h"
 #include "cocoa_s.h"
 
 #define Rect        OTTDRect

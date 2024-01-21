@@ -24,7 +24,7 @@
 #include "engine_func.h"
 #include "landscape_type.h"
 #include "timer/timer_game_calendar.h"
-#include "core/geometry_func.hpp"
+#include "core/geometry_func.h"
 #include "gamelog.h"
 #include "stringfilter_type.h"
 #include "misc_cmd.h"

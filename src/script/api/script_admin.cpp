@@ -8,10 +8,10 @@
 /** @file script_admin.cpp Implementation of ScriptAdmin. */
 
 #include "../../stdafx.h"
-#include "script_admin.hpp"
-#include "script_log.hpp"
+#include "script_admin.h"
+#include "script_log.h"
 #include "../../network/network_admin.h"
-#include "../script_instance.hpp"
+#include "../script_instance.h"
 #include "../../string_func.h"
 #include "../../3rdparty/nlohmann/json.hpp"
 

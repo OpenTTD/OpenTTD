@@ -8,7 +8,7 @@
 /** @file null.cpp A blitter that doesn't blit. */
 
 #include "../stdafx.h"
-#include "null.hpp"
+#include "null.h"
 
 #include "../safeguards.h"
 

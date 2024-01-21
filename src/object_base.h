@@ -10,7 +10,7 @@
 #ifndef OBJECT_BASE_H
 #define OBJECT_BASE_H
 
-#include "core/pool_type.hpp"
+#include "core/pool_type.h"
 #include "object_type.h"
 #include "tilearea_type.h"
 #include "town_type.h"

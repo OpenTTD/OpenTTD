@@ -17,7 +17,7 @@
 #include "strings_func.h"
 #include "window_func.h"
 #include "gfx_func.h"
-#include "core/geometry_func.hpp"
+#include "core/geometry_func.h"
 #include "currency.h"
 #include "timer/timer.h"
 #include "timer/timer_window.h"

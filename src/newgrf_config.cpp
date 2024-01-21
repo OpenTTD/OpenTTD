@@ -16,7 +16,7 @@
 #include "newgrf_text.h"
 #include "window_func.h"
 #include "progress.h"
-#include "video/video_driver.hpp"
+#include "video/video_driver.h"
 #include "string_func.h"
 #include "strings_func.h"
 #include "textfile_gui.h"

@@ -22,7 +22,7 @@
 #include <WinNls.h>
 #include "win32.h"
 #include "../../fios.h"
-#include "../../core/alloc_func.hpp"
+#include "../../core/alloc_func.h"
 #include "../../string_func.h"
 #include <sys/stat.h>
 #include "../../language.h"

@@ -9,7 +9,7 @@
 
 #include "stdafx.h"
 
-#include "core/container_func.hpp"
+#include "core/container_func.h"
 #include "debug.h"
 #include "fileio_func.h"
 #include "engine_func.h"

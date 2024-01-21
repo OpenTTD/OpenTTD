@@ -10,7 +10,7 @@
 #ifndef TRANSPORT_TYPE_H
 #define TRANSPORT_TYPE_H
 
-#include "core/enum_type.hpp"
+#include "core/enum_type.h"
 
 /** Type for the company global vehicle unit number. */
 typedef uint16_t UnitID;

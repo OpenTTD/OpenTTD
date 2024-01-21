@@ -28,7 +28,7 @@
 #include "widgets/dropdown_func.h"
 #include "engine_gui.h"
 #include "cargotype.h"
-#include "core/geometry_func.hpp"
+#include "core/geometry_func.h"
 #include "autoreplace_func.h"
 #include "engine_cmd.h"
 #include "train_cmd.h"

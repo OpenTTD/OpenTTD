@@ -8,10 +8,10 @@
 /** @file script_priorityqueue.cpp Implementation of ScriptPriorityQueue. */
 
 #include "../../stdafx.h"
-#include "script_priorityqueue.hpp"
-#include "script_error.hpp"
-#include "../squirrel_helper.hpp"
-#include "../script_instance.hpp"
+#include "script_priorityqueue.h"
+#include "script_error.h"
+#include "../squirrel_helper.h"
+#include "../script_instance.h"
 #include "../../debug.h"
 
 #include "../../safeguards.h"

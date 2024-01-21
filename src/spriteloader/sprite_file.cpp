@@ -8,7 +8,7 @@
 /** @file sprite_file.cpp Implementation of logic specific to the SpriteFile class. */
 
 #include "../stdafx.h"
-#include "sprite_file_type.hpp"
+#include "sprite_file_type.h"
 
 /** Signature of a container version 2 GRF. */
 extern const byte _grf_cont_v2_sig[8] = {'G', 'R', 'F', 0x82, 0x0D, 0x0A, 0x1A, 0x0A};

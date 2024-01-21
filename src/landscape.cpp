@@ -27,7 +27,7 @@
 #include "effectvehicle_func.h"
 #include "landscape_type.h"
 #include "animated_tile_func.h"
-#include "core/random_func.hpp"
+#include "core/random_func.h"
 #include "object_base.h"
 #include "company_func.h"
 #include "pathfinder/npf/aystar.h"

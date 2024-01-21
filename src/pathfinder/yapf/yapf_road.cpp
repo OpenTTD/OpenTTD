@@ -9,7 +9,7 @@
 
 #include "../../stdafx.h"
 #include "yapf_includes.h"
-#include "yapf_node_road.hpp"
+#include "yapf_node_road.h"
 #include "../../roadstop_base.h"
 
 #include "../../safeguards.h"

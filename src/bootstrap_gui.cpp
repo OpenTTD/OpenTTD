@@ -9,12 +9,12 @@
 
 #include "stdafx.h"
 #include "base_media_base.h"
-#include "blitter/factory.hpp"
+#include "blitter/factory.h"
 #include "error_func.h"
 
 #if defined(WITH_FREETYPE) || defined(WITH_UNISCRIBE) || defined(WITH_COCOA)
 
-#include "core/geometry_func.hpp"
+#include "core/geometry_func.h"
 #include "error.h"
 #include "fontcache.h"
 #include "gfx_func.h"
@@ -22,7 +22,7 @@
 #include "network/network_content_gui.h"
 #include "openttd.h"
 #include "strings_func.h"
-#include "video/video_driver.hpp"
+#include "video/video_driver.h"
 #include "window_func.h"
 
 #include "widgets/bootstrap_widget.h"
@@ -288,7 +288,7 @@ public:
 #	include "network/network.h"
 #	include "network/network_content.h"
 #	include "openttd.h"
-#	include "video/video_driver.hpp"
+#	include "video/video_driver.h"
 
 class BootstrapEmscripten : public ContentCallback {
 	bool downloading{false};

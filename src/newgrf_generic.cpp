@@ -11,7 +11,7 @@
 #include "debug.h"
 #include "newgrf_spritegroup.h"
 #include "industrytype.h"
-#include "core/random_func.hpp"
+#include "core/random_func.h"
 #include "newgrf_sound.h"
 #include "water_map.h"
 

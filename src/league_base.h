@@ -13,7 +13,7 @@
 #include "company_type.h"
 #include "goal_type.h"
 #include "league_type.h"
-#include "core/pool_type.hpp"
+#include "core/pool_type.h"
 
 bool IsValidLink(Link link);
 

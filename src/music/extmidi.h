@@ -10,7 +10,7 @@
 #ifndef MUSIC_EXTERNAL_H
 #define MUSIC_EXTERNAL_H
 
-#include "music_driver.hpp"
+#include "music_driver.h"
 
 class MusicDriver_ExtMidi : public MusicDriver {
 private:

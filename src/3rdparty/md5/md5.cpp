@@ -55,7 +55,7 @@
  */
 
 #include "../../stdafx.h"
-#include "../../core/endian_func.hpp"
+#include "../../core/endian_func.h"
 #include "md5.h"
 
 #include "../../safeguards.h"

@@ -28,7 +28,7 @@
 #include "../network/network.h"
 #include "../window_func.h"
 #include "../strings_func.h"
-#include "../core/endian_func.hpp"
+#include "../core/endian_func.h"
 #include "../vehicle_base.h"
 #include "../company_func.h"
 #include "../timer/timer_game_calendar.h"

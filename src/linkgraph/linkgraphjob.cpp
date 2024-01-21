@@ -8,7 +8,7 @@
 /** @file linkgraphjob.cpp Definition of link graph job classes used for cargo distribution. */
 
 #include "../stdafx.h"
-#include "../core/pool_func.hpp"
+#include "../core/pool_func.h"
 #include "../window_func.h"
 #include "linkgraphjob.h"
 #include "linkgraphschedule.h"

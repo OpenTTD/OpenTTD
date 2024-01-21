@@ -10,11 +10,11 @@
 #ifndef VIDEO_OPENGL_H
 #define VIDEO_OPENGL_H
 
-#include "../core/alloc_type.hpp"
-#include "../core/geometry_type.hpp"
+#include "../core/alloc_type.h"
+#include "../core/geometry_type.h"
 #include "../gfx_type.h"
-#include "../spriteloader/spriteloader.hpp"
-#include "../misc/lrucache.hpp"
+#include "../spriteloader/spriteloader.h"
+#include "../misc/lrucache.h"
 
 typedef void (*OGLProc)();
 typedef OGLProc (*GetOGLProcAddressProc)(const char *proc);

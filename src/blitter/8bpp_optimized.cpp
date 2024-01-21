@@ -10,9 +10,9 @@
 #include "../stdafx.h"
 #include "../zoom_func.h"
 #include "../settings_type.h"
-#include "../core/math_func.hpp"
-#include "../core/mem_func.hpp"
-#include "8bpp_optimized.hpp"
+#include "../core/math_func.h"
+#include "../core/mem_func.h"
+#include "8bpp_optimized.h"
 
 #include "../safeguards.h"
 

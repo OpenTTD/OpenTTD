@@ -8,11 +8,11 @@
 /** @file script_rail.cpp Implementation of ScriptRail. */
 
 #include "../../stdafx.h"
-#include "script_rail.hpp"
-#include "script_map.hpp"
-#include "script_station.hpp"
-#include "script_industrytype.hpp"
-#include "script_cargo.hpp"
+#include "script_rail.h"
+#include "script_map.h"
+#include "script_station.h"
+#include "script_industrytype.h"
+#include "script_cargo.h"
 #include "../../debug.h"
 #include "../../station_base.h"
 #include "../../newgrf_generic.h"

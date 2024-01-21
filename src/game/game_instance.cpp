@@ -10,16 +10,16 @@
 #include "../stdafx.h"
 #include "../error.h"
 
-#include "../script/squirrel_class.hpp"
+#include "../script/squirrel_class.h"
 
-#include "../script/script_storage.hpp"
+#include "../script/script_storage.h"
 #include "../script/script_cmd.h"
 #include "../script/script_gui.h"
-#include "game_config.hpp"
-#include "game_info.hpp"
-#include "game_instance.hpp"
-#include "game_text.hpp"
-#include "game.hpp"
+#include "game_config.h"
+#include "game_info.h"
+#include "game_instance.h"
+#include "game_text.h"
+#include "game.h"
 
 /* Convert all Game related classes to Squirrel data. */
 #include "../script/api/game/game_includes.h"

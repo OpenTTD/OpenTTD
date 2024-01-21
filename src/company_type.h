@@ -10,7 +10,7 @@
 #ifndef COMPANY_TYPE_H
 #define COMPANY_TYPE_H
 
-#include "core/enum_type.hpp"
+#include "core/enum_type.h"
 
 /**
  * Enum for all companies/owners.

@@ -11,7 +11,7 @@
 #include "viewport_func.h"
 #include "vehicle_func.h"
 #include "newgrf_station.h"
-#include "pathfinder/follow_track.hpp"
+#include "pathfinder/follow_track.h"
 
 #include "safeguards.h"
 

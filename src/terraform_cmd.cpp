@@ -16,7 +16,7 @@
 #include "object_base.h"
 #include "company_base.h"
 #include "company_func.h"
-#include "core/backup_type.hpp"
+#include "core/backup_type.h"
 #include "terraform_cmd.h"
 #include "landscape_cmd.h"
 

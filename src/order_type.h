@@ -10,7 +10,7 @@
 #ifndef ORDER_TYPE_H
 #define ORDER_TYPE_H
 
-#include "core/enum_type.hpp"
+#include "core/enum_type.h"
 
 typedef byte VehicleOrderID;  ///< The index of an order within its current vehicle (not pool related)
 typedef uint32_t OrderID;

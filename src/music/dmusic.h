@@ -10,7 +10,7 @@
 #ifndef MUSIC_DMUSIC_H
 #define MUSIC_DMUSIC_H
 
-#include "music_driver.hpp"
+#include "music_driver.h"
 
 /** Music player making use of DirectX. */
 class MusicDriver_DMusic : public MusicDriver {

@@ -8,8 +8,8 @@
 /** @file geometry_func.cpp Geometry functions. */
 
 #include "../stdafx.h"
-#include "geometry_func.hpp"
-#include "math_func.hpp"
+#include "geometry_func.h"
+#include "math_func.h"
 
 #include "../safeguards.h"
 

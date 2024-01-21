@@ -10,7 +10,7 @@
 #ifndef STATION_TYPE_H
 #define STATION_TYPE_H
 
-#include "core/smallstack_type.hpp"
+#include "core/smallstack_type.h"
 #include "tilearea_type.h"
 
 typedef uint16_t StationID;

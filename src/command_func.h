@@ -14,8 +14,8 @@
 #include "network/network_type.h"
 #include "company_type.h"
 #include "company_func.h"
-#include "core/backup_type.hpp"
-#include "misc/endian_buffer.hpp"
+#include "core/backup_type.h"
+#include "misc/endian_buffer.h"
 #include "tile_map.h"
 
 /**

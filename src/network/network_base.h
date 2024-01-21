@@ -12,7 +12,7 @@
 
 #include "network_type.h"
 #include "core/address.h"
-#include "../core/pool_type.hpp"
+#include "../core/pool_type.h"
 #include "../company_type.h"
 #include "../timer/timer_game_calendar.h"
 

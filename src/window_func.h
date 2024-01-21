@@ -12,8 +12,8 @@
 
 #include "window_type.h"
 #include "company_type.h"
-#include "core/geometry_type.hpp"
-#include "core/strong_typedef_type.hpp"
+#include "core/geometry_type.h"
+#include "core/strong_typedef_type.h"
 
 Window *FindWindowById(WindowClass cls, WindowNumber number);
 Window *FindWindowByClass(WindowClass cls);

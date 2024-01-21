@@ -13,8 +13,8 @@
 #include "../../textfile_gui.h"
 #include "../../newgrf_config.h"
 #include "../../base_media_base.h"
-#include "../../ai/ai.hpp"
-#include "../../game/game.hpp"
+#include "../../ai/ai.h"
+#include "../../game/game.h"
 #include "../../fios.h"
 #include "tcp_content.h"
 

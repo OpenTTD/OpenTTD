@@ -8,7 +8,7 @@
 /** @file script_object.cpp Implementation of ScriptObject. */
 
 #include "../../stdafx.h"
-#include "../../script/squirrel.hpp"
+#include "../../script/squirrel.h"
 #include "../../company_func.h"
 #include "../../company_base.h"
 #include "../../network/network.h"
@@ -17,10 +17,10 @@
 #include "../../strings_func.h"
 #include "../../command_func.h"
 
-#include "../script_storage.hpp"
-#include "../script_instance.hpp"
-#include "../script_fatalerror.hpp"
-#include "script_error.hpp"
+#include "../script_storage.h"
+#include "../script_instance.h"
+#include "../script_fatalerror.h"
+#include "script_error.h"
 #include "../../debug.h"
 
 #include "../../safeguards.h"

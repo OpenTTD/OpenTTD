@@ -191,7 +191,7 @@ add_files(
     graph_gui.cpp
     graph_gui.h
     ground_vehicle.cpp
-    ground_vehicle.hpp
+    ground_vehicle.h
     group.h
     group_cmd.cpp
     group_cmd.h
@@ -447,7 +447,7 @@ add_files(
     textbuf_gui.h
     textbuf_type.h
     texteff.cpp
-    texteff.hpp
+    texteff.h
     textfile_gui.cpp
     textfile_gui.h
     textfile_type.h
@@ -462,7 +462,7 @@ add_files(
     tilearea_type.h
     tilehighlight_func.h
     tilehighlight_type.h
-    tilematrix_type.hpp
+    tilematrix_type.h
     timetable.h
     timetable_cmd.cpp
     timetable_cmd.h

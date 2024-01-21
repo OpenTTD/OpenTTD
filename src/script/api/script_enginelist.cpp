@@ -8,7 +8,7 @@
 /** @file script_enginelist.cpp Implementation of ScriptEngineList and friends. */
 
 #include "../../stdafx.h"
-#include "script_enginelist.hpp"
+#include "script_enginelist.h"
 #include "../../engine_base.h"
 
 #include "../../safeguards.h"

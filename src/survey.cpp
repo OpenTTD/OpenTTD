@@ -21,16 +21,16 @@
 #include "fontcache.h"
 #include "language.h"
 
-#include "ai/ai_info.hpp"
-#include "game/game.hpp"
-#include "game/game_info.hpp"
+#include "ai/ai_info.h"
+#include "game/game.h"
+#include "game/game_info.h"
 
-#include "music/music_driver.hpp"
-#include "sound/sound_driver.hpp"
-#include "video/video_driver.hpp"
+#include "music/music_driver.h"
+#include "sound/sound_driver.h"
+#include "video/video_driver.h"
 
 #include "base_media_base.h"
-#include "blitter/factory.hpp"
+#include "blitter/factory.h"
 
 #ifdef WITH_ALLEGRO
 #	include <allegro.h>

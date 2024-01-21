@@ -11,8 +11,8 @@
 #define ROADSTOP_BASE_H
 
 #include "station_type.h"
-#include "core/pool_type.hpp"
-#include "core/bitmath_func.hpp"
+#include "core/pool_type.h"
+#include "core/bitmath_func.h"
 #include "vehicle_type.h"
 
 typedef Pool<RoadStop, RoadStopID, 32, 64000> RoadStopPool;

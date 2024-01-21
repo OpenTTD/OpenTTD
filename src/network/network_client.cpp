@@ -19,7 +19,7 @@
 #include "../company_base.h"
 #include "../company_gui.h"
 #include "../company_cmd.h"
-#include "../core/random_func.hpp"
+#include "../core/random_func.h"
 #include "../timer/timer_game_tick.h"
 #include "../timer/timer_game_calendar.h"
 #include "../gfx_func.h"
@@ -29,7 +29,7 @@
 #include "network_base.h"
 #include "network_client.h"
 #include "network_gamelist.h"
-#include "../core/backup_type.hpp"
+#include "../core/backup_type.h"
 #include "../thread.h"
 
 #include "table/strings.h"

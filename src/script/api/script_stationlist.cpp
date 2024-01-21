@@ -8,9 +8,9 @@
 /** @file script_stationlist.cpp Implementation of ScriptStationList and friends. */
 
 #include "../../stdafx.h"
-#include "script_stationlist.hpp"
-#include "script_vehicle.hpp"
-#include "script_cargo.hpp"
+#include "script_stationlist.h"
+#include "script_vehicle.h"
+#include "script_cargo.h"
 #include "../../station_base.h"
 #include "../../vehicle_base.h"
 

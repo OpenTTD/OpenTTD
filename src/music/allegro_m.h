@@ -10,7 +10,7 @@
 #ifndef MUSIC_ALLEGRO_H
 #define MUSIC_ALLEGRO_H
 
-#include "music_driver.hpp"
+#include "music_driver.h"
 
 /** Allegro's music player. */
 class MusicDriver_Allegro : public MusicDriver {

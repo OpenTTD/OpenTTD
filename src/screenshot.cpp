@@ -8,15 +8,15 @@
 /** @file screenshot.cpp The creation of screenshots! */
 
 #include "stdafx.h"
-#include "core/backup_type.hpp"
+#include "core/backup_type.h"
 #include "fileio_func.h"
 #include "viewport_func.h"
 #include "gfx_func.h"
 #include "screenshot.h"
 #include "screenshot_gui.h"
-#include "blitter/factory.hpp"
+#include "blitter/factory.h"
 #include "zoom_func.h"
-#include "core/endian_func.hpp"
+#include "core/endian_func.h"
 #include "saveload/saveload.h"
 #include "company_base.h"
 #include "company_func.h"
@@ -27,7 +27,7 @@
 #include "window_func.h"
 #include "tile_map.h"
 #include "landscape.h"
-#include "video/video_driver.hpp"
+#include "video/video_driver.h"
 #include "smallmap_gui.h"
 
 #include "table/strings.h"
@@ -234,7 +234,7 @@ static bool MakeBMPImage(const char *name, ScreenshotCallback *callb, void *user
 #ifdef PNG_TEXT_SUPPORTED
 #include "rev.h"
 #include "newgrf_config.h"
-#include "ai/ai_info.hpp"
+#include "ai/ai_info.h"
 #include "company_base.h"
 #include "base_media_base.h"
 #endif /* PNG_TEXT_SUPPORTED */

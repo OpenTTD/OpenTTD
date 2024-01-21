@@ -10,8 +10,8 @@
 #ifndef COMPANY_MANAGER_FACE_H
 #define COMPANY_MANAGER_FACE_H
 
-#include "core/random_func.hpp"
-#include "core/bitmath_func.hpp"
+#include "core/random_func.h"
+#include "core/bitmath_func.h"
 #include "table/sprites.h"
 #include "company_type.h"
 

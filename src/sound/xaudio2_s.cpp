@@ -12,9 +12,9 @@
 #include "../driver.h"
 #include "../mixer.h"
 #include "../debug.h"
-#include "../core/alloc_func.hpp"
-#include "../core/bitmath_func.hpp"
-#include "../core/math_func.hpp"
+#include "../core/alloc_func.h"
+#include "../core/bitmath_func.h"
+#include "../core/math_func.h"
 
 // Windows 8 SDK required for XAudio2
 #undef NTDDI_VERSION

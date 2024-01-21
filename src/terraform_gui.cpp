@@ -8,7 +8,7 @@
 /** @file terraform_gui.cpp GUI related to terraforming the map. */
 
 #include "stdafx.h"
-#include "core/backup_type.hpp"
+#include "core/backup_type.h"
 #include "clear_map.h"
 #include "company_func.h"
 #include "company_base.h"

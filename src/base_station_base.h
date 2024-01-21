@@ -10,7 +10,7 @@
 #ifndef BASE_STATION_BASE_H
 #define BASE_STATION_BASE_H
 
-#include "core/pool_type.hpp"
+#include "core/pool_type.h"
 #include "command_type.h"
 #include "viewport_type.h"
 #include "station_map.h"

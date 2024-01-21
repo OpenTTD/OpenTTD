@@ -8,7 +8,7 @@
 /** @file pool_func.cpp Implementation of PoolBase methods. */
 
 #include "../stdafx.h"
-#include "pool_type.hpp"
+#include "pool_type.h"
 
 #include "../safeguards.h"
 

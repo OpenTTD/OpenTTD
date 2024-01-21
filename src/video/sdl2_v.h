@@ -12,7 +12,7 @@
 
 #include <condition_variable>
 
-#include "video_driver.hpp"
+#include "video_driver.h"
 
 /** The SDL video driver. */
 class VideoDriver_SDL_Base : public VideoDriver {

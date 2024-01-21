@@ -8,11 +8,11 @@
 /** @file script_subsidy.cpp Implementation of ScriptSubsidy. */
 
 #include "../../stdafx.h"
-#include "script_subsidy.hpp"
-#include "script_date.hpp"
-#include "script_industry.hpp"
-#include "script_town.hpp"
-#include "script_error.hpp"
+#include "script_subsidy.h"
+#include "script_date.h"
+#include "script_industry.h"
+#include "script_town.h"
+#include "script_error.h"
 #include "../../subsidy_base.h"
 #include "../../station_base.h"
 #include "../../subsidy_cmd.h"

@@ -8,7 +8,7 @@
 /** @file script_event.cpp Implementation of ScriptEvent. */
 
 #include "../../stdafx.h"
-#include "script_event_types.hpp"
+#include "script_event_types.h"
 
 #include <queue>
 

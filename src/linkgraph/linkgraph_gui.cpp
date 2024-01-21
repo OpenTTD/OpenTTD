@@ -17,7 +17,7 @@
 #include "../viewport_func.h"
 #include "../zoom_func.h"
 #include "../smallmap_gui.h"
-#include "../core/geometry_func.hpp"
+#include "../core/geometry_func.h"
 #include "../widgets/link_graph_legend_widget.h"
 #include "../strings_func.h"
 #include "linkgraph_gui.h"

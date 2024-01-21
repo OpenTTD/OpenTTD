@@ -9,9 +9,9 @@
 
 #include "../stdafx.h"
 
-#include "../script/squirrel_class.hpp"
-#include "game_info.hpp"
-#include "game_scanner.hpp"
+#include "../script/squirrel_class.h"
+#include "game_info.h"
+#include "game_scanner.h"
 #include "../debug.h"
 
 #include "../safeguards.h"

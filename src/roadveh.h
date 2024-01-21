@@ -10,7 +10,7 @@
 #ifndef ROADVEH_H
 #define ROADVEH_H
 
-#include "ground_vehicle.hpp"
+#include "ground_vehicle.h"
 #include "engine_base.h"
 #include "cargotype.h"
 #include "track_func.h"

@@ -10,7 +10,7 @@
 #ifndef VIDEO_SDL_H
 #define VIDEO_SDL_H
 
-#include "video_driver.hpp"
+#include "video_driver.h"
 
 /** The SDL video driver. */
 class VideoDriver_SDL : public VideoDriver {

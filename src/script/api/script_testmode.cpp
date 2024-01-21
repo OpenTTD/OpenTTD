@@ -8,9 +8,9 @@
 /** @file script_testmode.cpp Implementation of ScriptTestMode. */
 
 #include "../../stdafx.h"
-#include "script_testmode.hpp"
-#include "../script_instance.hpp"
-#include "../script_fatalerror.hpp"
+#include "script_testmode.h"
+#include "../script_instance.h"
+#include "../script_fatalerror.h"
 
 #include "../../safeguards.h"
 

@@ -8,7 +8,7 @@
 /** @file math_func.cpp Math functions. */
 
 #include "../stdafx.h"
-#include "math_func.hpp"
+#include "math_func.h"
 
 #include "../safeguards.h"
 

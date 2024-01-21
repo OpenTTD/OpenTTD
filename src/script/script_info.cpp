@@ -10,10 +10,10 @@
 #include "../stdafx.h"
 #include "../settings_type.h"
 
-#include "squirrel_helper.hpp"
+#include "squirrel_helper.h"
 
-#include "script_info.hpp"
-#include "script_scanner.hpp"
+#include "script_info.h"
+#include "script_scanner.h"
 #include "../3rdparty/fmt/format.h"
 
 #include "../safeguards.h"

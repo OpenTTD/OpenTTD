@@ -8,7 +8,7 @@
 /** @file script_gamesettings.cpp Implementation of ScriptGameSettings. */
 
 #include "../../stdafx.h"
-#include "script_gamesettings.hpp"
+#include "script_gamesettings.h"
 #include "../../settings_internal.h"
 #include "../../settings_type.h"
 #include "../../command_type.h"

@@ -14,7 +14,7 @@
 #include "command_type.h"
 #include "order_base.h"
 #include "cargopacket.h"
-#include "texteff.hpp"
+#include "texteff.h"
 #include "engine_type.h"
 #include "order_func.h"
 #include "transport_type.h"
@@ -23,7 +23,7 @@
 #include "network/network.h"
 #include "saveload/saveload.h"
 #include "timer/timer_game_calendar.h"
-#include "core/mem_func.hpp"
+#include "core/mem_func.h"
 
 const uint TILE_AXIAL_DISTANCE = 192;  // Logical length of the tile in any DiagDirection used in vehicle movement.
 const uint TILE_CORNER_DISTANCE = 128;  // Logical length of the tile corner crossing in any non-diagonal direction used in vehicle movement.

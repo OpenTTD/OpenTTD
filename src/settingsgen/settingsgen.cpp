@@ -12,7 +12,7 @@
 #include "../strings_type.h"
 #include "../misc/getoptdata.h"
 #include "../ini_type.h"
-#include "../core/mem_func.hpp"
+#include "../core/mem_func.h"
 #include "../error_func.h"
 
 #if !defined(_WIN32) || defined(__CYGWIN__)

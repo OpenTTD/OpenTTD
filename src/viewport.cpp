@@ -61,7 +61,7 @@
  */
 
 #include "stdafx.h"
-#include "core/backup_type.hpp"
+#include "core/backup_type.h"
 #include "landscape.h"
 #include "viewport_func.h"
 #include "station_base.h"
@@ -71,7 +71,7 @@
 #include "signs_func.h"
 #include "vehicle_base.h"
 #include "vehicle_gui.h"
-#include "blitter/factory.hpp"
+#include "blitter/factory.h"
 #include "strings_func.h"
 #include "zoom_func.h"
 #include "vehicle_func.h"

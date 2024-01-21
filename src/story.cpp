@@ -9,7 +9,7 @@
 
 #include "stdafx.h"
 #include "story_base.h"
-#include "core/pool_func.hpp"
+#include "core/pool_func.h"
 #include "command_func.h"
 #include "company_base.h"
 #include "company_func.h"
@@ -21,9 +21,9 @@
 #include "window_func.h"
 #include "gui.h"
 #include "vehicle_base.h"
-#include "game/game.hpp"
-#include "script/api/script_story_page.hpp"
-#include "script/api/script_event_types.hpp"
+#include "game/game.h"
+#include "script/api/script_story_page.h"
+#include "script/api/script_event_types.h"
 #include "story_cmd.h"
 
 #include "safeguards.h"

@@ -10,7 +10,7 @@
 #ifndef VIDEO_ALLEGRO_H
 #define VIDEO_ALLEGRO_H
 
-#include "video_driver.hpp"
+#include "video_driver.h"
 
 /** The allegro video driver. */
 class VideoDriver_Allegro : public VideoDriver {

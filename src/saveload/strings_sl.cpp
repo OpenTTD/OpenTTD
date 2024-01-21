@@ -8,7 +8,7 @@
 /** @file strings_sl.cpp Code handling saving and loading of strings */
 
 #include "../stdafx.h"
-#include "../core/alloc_func.hpp"
+#include "../core/alloc_func.h"
 #include "../string_func.h"
 #include "../strings_func.h"
 #include "saveload_internal.h"

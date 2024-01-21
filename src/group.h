@@ -11,7 +11,7 @@
 #define GROUP_H
 
 #include "group_type.h"
-#include "core/pool_type.hpp"
+#include "core/pool_type.h"
 #include "company_type.h"
 #include "vehicle_type.h"
 #include "engine_type.h"

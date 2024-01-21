@@ -8,7 +8,7 @@
 /** @file texteff.cpp Handling of text effects. */
 
 #include "stdafx.h"
-#include "texteff.hpp"
+#include "texteff.h"
 #include "transparency.h"
 #include "strings_func.h"
 #include "viewport_func.h"

@@ -8,8 +8,8 @@
 /** @file script_tilelist.cpp Implementation of ScriptTileList and friends. */
 
 #include "../../stdafx.h"
-#include "script_tilelist.hpp"
-#include "script_industry.hpp"
+#include "script_tilelist.h"
+#include "script_industry.h"
 #include "../../industry.h"
 #include "../../station_base.h"
 
