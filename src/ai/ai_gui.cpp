@@ -289,7 +289,7 @@ struct AIConfigWindow : public Window {
 
 		if (!gui_scope) return;
 
-		AIConfig *config = AIConfig::GetConfig(this->selected_slot);
+		AIConfig *config = this->selected_slot == INVALID_COMPANY ? nullptr : AIConfig::GetConfig(this->selected_slot);
 
 		this->SetWidgetDisabledState(WID_AIC_DECREASE_NUMBER, GetGameSettings().difficulty.max_no_competitors == 0);
 		this->SetWidgetDisabledState(WID_AIC_INCREASE_NUMBER, GetGameSettings().difficulty.max_no_competitors == MAX_COMPANIES - 1);
