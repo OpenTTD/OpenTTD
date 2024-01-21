@@ -34,6 +34,8 @@
 #include "base_media_base.h"
 #include "blitter/factory.hpp"
 
+#include "social_integration.h"
+
 #ifdef WITH_ALLEGRO
 #	include <allegro.h>
 #endif /* WITH_ALLEGRO */
@@ -80,6 +82,16 @@ NLOHMANN_JSON_SERIALIZE_ENUM(GRFStatus, {
 	{GRFStatus::GCS_INITIALISED, "initialised"},
 	{GRFStatus::GCS_ACTIVATED, "activated"},
 })
+
+NLOHMANN_JSON_SERIALIZE_ENUM(SocialIntegrationPlugin::State, {
+	{SocialIntegrationPlugin::State::RUNNING, "running"},
+	{SocialIntegrationPlugin::State::FAILED, "failed"},
+	{SocialIntegrationPlugin::State::PLATFORM_NOT_RUNNING, "platform_not_running"},
+	{SocialIntegrationPlugin::State::UNLOADED, "unloaded"},
+	{SocialIntegrationPlugin::State::DUPLICATE, "duplicate"},
+	{SocialIntegrationPlugin::State::UNSUPPORTED_API, "unsupported_api"},
+})
+
 
 /** Lookup table to convert a VehicleType to a string. */
 static const std::string _vehicle_type_to_string[] = {
@@ -433,6 +445,26 @@ void SurveyLibraries(nlohmann::json &survey)
 	survey["curl"] = curl_v->version;
 	survey["curl_ssl"] = curl_v->ssl_version == nullptr ? "none" : curl_v->ssl_version;
 #endif
+}
+
+/**
+ * Convert plugin information to JSON.
+ *
+ * @param survey The JSON object.
+ */
+void SurveyPlugins(nlohmann::json &survey)
+{
+	auto _plugins = SocialIntegration::GetPlugins();
+
+	for (auto &plugin : _plugins) {
+		auto &platform = survey[plugin->social_platform];
+		platform.push_back({
+			{"name", plugin->name},
+			{"version", plugin->version},
+			{"basepath", plugin->basepath},
+			{"state", plugin->state},
+		});
+	}
 }
 
 /**

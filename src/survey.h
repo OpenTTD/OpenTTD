@@ -21,6 +21,7 @@ void SurveyFont(nlohmann::json &survey);
 void SurveyGameScript(nlohmann::json &survey);
 void SurveyGrfs(nlohmann::json &survey);
 void SurveyLibraries(nlohmann::json &survey);
+void SurveyPlugins(nlohmann::json &survey);
 void SurveyOpenTTD(nlohmann::json &survey);
 void SurveySettings(nlohmann::json &survey, bool skip_if_default);
 void SurveyTimers(nlohmann::json &survey);

@@ -61,6 +61,7 @@ std::string NetworkSurveyHandler::CreatePayload(Reason reason, bool for_preview)
 		SurveyFont(info["font"]);
 		SurveyCompiler(info["compiler"]);
 		SurveyLibraries(info["libraries"]);
+		SurveyPlugins(info["plugins"]);
 	}
 
 	{
