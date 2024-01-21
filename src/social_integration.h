@@ -16,6 +16,11 @@ public:
 	 * Initialize the social integration system, loading any social integration plugins that are available.
 	 */
 	static void Initialize();
+
+	/**
+	 * Shutdown the social integration system, and all social integration plugins that are loaded.
+	 */
+	static void Shutdown();
 };
 
 #endif /* SOCIAL_INTEGRATION_H */
