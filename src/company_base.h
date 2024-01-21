@@ -67,7 +67,7 @@ struct CompanyProperties {
 	byte money_fraction;             ///< Fraction of money of the company, too small to represent in #money.
 	Money current_loan;              ///< Amount of money borrowed from the bank.
 
-	byte colour;                     ///< Company colour.
+	Colours colour;                  ///< Company colour.
 
 	byte block_preview;              ///< Number of quarters that the company is not allowed to get new exclusive engine previews (see CompaniesGenStatistics).
 
@@ -105,7 +105,7 @@ struct CompanyProperties {
 	// TODO: Change some of these member variables to use relevant INVALID_xxx constants
 	CompanyProperties()
 		: name_2(0), name_1(0), president_name_1(0), president_name_2(0),
-		  face(0), money(0), money_fraction(0), current_loan(0), colour(0), block_preview(0),
+		  face(0), money(0), money_fraction(0), current_loan(0), colour(COLOUR_BEGIN), block_preview(0),
 		  location_of_HQ(0), last_build_coordinate(0), inaugurated_year(0),
 		  months_of_bankruptcy(0), bankrupt_asked(0), bankrupt_timeout(0), bankrupt_value(0),
 		  terraform_limit(0), clear_limit(0), tree_limit(0), build_object_limit(0), is_ai(false), engine_renew_list(nullptr) {}

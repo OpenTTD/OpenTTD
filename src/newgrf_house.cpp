@@ -429,7 +429,7 @@ static void DrawTileLayout(const TileInfo *ti, const TileLayoutSpriteGroup *grou
 	const DrawTileSprites *dts = group->ProcessRegisters(&stage);
 
 	const HouseSpec *hs = HouseSpec::Get(house_id);
-	PaletteID palette = hs->random_colour[TileHash2Bit(ti->x, ti->y)] + PALETTE_RECOLOUR_START;
+	PaletteID palette = GENERAL_SPRITE_COLOUR(hs->random_colour[TileHash2Bit(ti->x, ti->y)]);
 	if (HasBit(hs->callback_mask, CBM_HOUSE_COLOUR)) {
 		uint16_t callback = GetHouseCallback(CBID_HOUSE_COLOUR, 0, 0, house_id, Town::GetByTile(ti->tile), ti->tile);
 		if (callback != CALLBACK_FAILED) {

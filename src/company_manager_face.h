@@ -236,6 +236,6 @@ inline SpriteID GetCompanyManagerFaceSprite(CompanyManagerFace cmf, CompanyManag
 	return _cmf_info[cmfv].first_sprite[ge] + GB(cmf, _cmf_info[cmfv].offset, _cmf_info[cmfv].length);
 }
 
-void DrawCompanyManagerFace(CompanyManagerFace face, int colour, const Rect &r);
+void DrawCompanyManagerFace(CompanyManagerFace face, Colours colour, const Rect &r);
 
 #endif /* COMPANY_MANAGER_FACE_H */

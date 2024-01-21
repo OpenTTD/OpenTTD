@@ -332,7 +332,7 @@ void LinkGraphOverlay::DrawStationDots(const DrawPixelInfo *dpi) const
 
 		LinkGraphOverlay::DrawVertex(pt.x, pt.y, r,
 				_colour_gradient[st->owner != OWNER_NONE ?
-						(Colours)Company::Get(st->owner)->colour : COLOUR_GREY][5],
+						Company::Get(st->owner)->colour : COLOUR_GREY][5],
 				_colour_gradient[COLOUR_GREY][1]);
 	}
 }

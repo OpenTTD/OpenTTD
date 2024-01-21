@@ -455,10 +455,10 @@ static void FixTTOCompanies()
 	}
 }
 
-static inline byte RemapTTOColour(byte tto)
+static inline Colours RemapTTOColour(Colours tto)
 {
 	/** Lossy remapping of TTO colours to TTD colours. SVXConverter uses the same conversion. */
-	static const byte tto_colour_remap[] = {
+	static const Colours tto_colour_remap[] = {
 		COLOUR_DARK_BLUE,  COLOUR_GREY,       COLOUR_YELLOW,     COLOUR_RED,
 		COLOUR_PURPLE,     COLOUR_DARK_GREEN, COLOUR_ORANGE,     COLOUR_PALE_GREEN,
 		COLOUR_BLUE,       COLOUR_GREEN,      COLOUR_CREAM,      COLOUR_BROWN,
@@ -1033,7 +1033,7 @@ static bool LoadOldCompany(LoadgameState *ls, int num)
 		if (c->money == 893288) c->money = c->current_loan = 100000;
 	}
 
-	_company_colours[num] = (Colours)c->colour;
+	_company_colours[num] = c->colour;
 	c->inaugurated_year -= CalendarTime::ORIGINAL_BASE_YEAR;
 
 	return true;
