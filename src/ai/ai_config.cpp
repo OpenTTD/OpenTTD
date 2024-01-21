@@ -18,6 +18,8 @@
 
 /* static */ AIConfig *AIConfig::GetConfig(CompanyID company, ScriptSettingSource source)
 {
+	assert(company < MAX_COMPANIES);
+
 	AIConfig **config;
 	if (source == SSS_FORCE_NEWGAME || (source == SSS_DEFAULT && _game_mode == GM_MENU)) {
 		config = &_settings_newgame.ai_config[company];
