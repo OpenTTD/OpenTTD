@@ -13,6 +13,7 @@
 #include "water_map.h"
 #include "error_func.h"
 #include "string_func.h"
+#include "pathfinder/water_regions.h"
 
 #include "safeguards.h"
 
@@ -62,6 +63,8 @@ extern "C" _CRTIMP void __cdecl _assert(void *, void *, unsigned);
 
 	Tile::base_tiles = CallocT<Tile::TileBase>(Map::size);
 	Tile::extended_tiles = CallocT<Tile::TileExtended>(Map::size);
+
+	AllocateWaterRegions();
 }
 
 

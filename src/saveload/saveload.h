@@ -367,6 +367,8 @@ enum SaveLoadVersion : uint16_t {
 	SLV_TIMETABLE_TICKS_TYPE,               ///< 323  PR#11435 Convert timetable current order time to ticks.
 	SLV_WATER_REGIONS,                      ///< 324  PR#10543 Water Regions for ship pathfinder.
 
+	SLV_WATER_REGION_EVAL_SIMPLIFIED,       ///< 325  PR#11750 Simplified Water Region evaluation.
+
 	SL_MAX_VERSION,                         ///< Highest possible saveload version
 };
 

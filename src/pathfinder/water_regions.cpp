@@ -18,6 +18,7 @@
 #include "tunnelbridge_map.h"
 #include "follow_track.hpp"
 #include "ship.h"
+#include "debug.h"
 
 using TWaterRegionTraversabilityBits = uint16_t;
 constexpr TWaterRegionPatchLabel FIRST_REGION_LABEL = 1;
@@ -114,6 +115,7 @@ public:
 	 */
 	void ForceUpdate()
 	{
+		Debug(map, 3, "Updating water region ({},{})", GetWaterRegionX(this->tile_area.tile), GetWaterRegionY(this->tile_area.tile));
 		this->has_cross_region_aqueducts = false;
 
 		this->tile_patch_labels.fill(INVALID_WATER_REGION_PATCH);
@@ -267,8 +269,9 @@ WaterRegionPatchDesc GetWaterRegionPatchInfo(TileIndex tile)
 void InvalidateWaterRegion(TileIndex tile)
 {
 	const int index = GetWaterRegionIndex(tile);
-	if (index > static_cast<int>(_water_regions.size())) return;
 	_water_regions[index].Invalidate();
+
+	Debug(map, 3, "Invalidated water region ({},{})", GetWaterRegionX(tile), GetWaterRegionY(tile));
 }
 
 /**
@@ -342,38 +345,19 @@ void VisitWaterRegionPatchNeighbors(const WaterRegionPatchDesc &water_region_pat
 	}
 }
 
-std::vector<WaterRegionSaveLoadInfo> GetWaterRegionSaveLoadInfo()
-{
-	std::vector<WaterRegionSaveLoadInfo> result;
-	for (WaterRegion &region : _water_regions) result.push_back({ region.IsInitialized() });
-	return result;
-}
-
-void LoadWaterRegions(const std::vector<WaterRegionSaveLoadInfo> &save_load_info)
-{
-	_water_regions.clear();
-	_water_regions.reserve(save_load_info.size());
-	TWaterRegionIndex index = 0;
-	for (const auto &loaded_region_info : save_load_info) {
-		const int region_x = index % GetWaterRegionMapSizeX();
-		const int region_y = index / GetWaterRegionMapSizeX();
-		WaterRegion &region = _water_regions.emplace_back(region_x, region_y);
-		if (loaded_region_info.initialized) region.ForceUpdate();
-		index++;
-	}
-}
-
 /**
- * Initializes all water regions. All water tiles will be scanned and interconnected water patches within regions will be identified.
+ * Allocates the appropriate amount of water regions for the current map size
  */
-void InitializeWaterRegions()
+void AllocateWaterRegions()
 {
 	_water_regions.clear();
 	_water_regions.reserve(static_cast<size_t>(GetWaterRegionMapSizeX()) * GetWaterRegionMapSizeY());
 
+	Debug(map, 2, "Allocating {} x {} water regions", GetWaterRegionMapSizeX(), GetWaterRegionMapSizeY());
+
 	for (int region_y = 0; region_y < GetWaterRegionMapSizeY(); region_y++) {
 		for (int region_x = 0; region_x < GetWaterRegionMapSizeX(); region_x++) {
-			_water_regions.emplace_back(region_x, region_y).ForceUpdate();
+			_water_regions.emplace_back(region_x, region_y);
 		}
 	}
 }
