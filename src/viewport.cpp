@@ -1894,9 +1894,20 @@ void UpdateViewportPosition(Window *w)
 		if (delta_x != 0 || delta_y != 0) {
 			if (_settings_client.gui.smooth_scroll) {
 				int max_scroll = Map::ScaleBySize1D(512 * ZOOM_LVL_BASE);
-				/* Not at our desired position yet... */
-				w->viewport->scrollpos_x += Clamp(DivAwayFromZero(delta_x, 4), -max_scroll, max_scroll);
-				w->viewport->scrollpos_y += Clamp(DivAwayFromZero(delta_y, 4), -max_scroll, max_scroll);
+
+				int delta_x_clamped;
+				int delta_y_clamped;
+
+				if (abs(delta_x) > abs(delta_y)) {
+					delta_x_clamped = Clamp(DivAwayFromZero(delta_x, 4), -max_scroll, max_scroll);
+					delta_y_clamped = delta_y * delta_x_clamped / delta_x;
+				} else {
+					delta_y_clamped = Clamp(DivAwayFromZero(delta_y, 4), -max_scroll, max_scroll);
+					delta_x_clamped = delta_x * delta_y_clamped / delta_y;
+				}
+
+				w->viewport->scrollpos_x += delta_x_clamped;
+				w->viewport->scrollpos_y += delta_y_clamped;
 			} else {
 				w->viewport->scrollpos_x = w->viewport->dest_scrollpos_x;
 				w->viewport->scrollpos_y = w->viewport->dest_scrollpos_y;
