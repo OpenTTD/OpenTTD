@@ -38,6 +38,7 @@ public:
 };
 
 static std::vector<std::unique_ptr<InternalSocialIntegrationPlugin>> _plugins; ///< List of loaded plugins.
+static std::set<std::string> _loaded_social_platform; ///< List of Social Platform plugins already loaded. Used to prevent loading a plugin for the same Social Platform twice.
 
 /** Helper for scanning for files with SocialIntegration as extension */
 class SocialIntegrationFileScanner : FileScanner {
@@ -81,6 +82,17 @@ public:
 
 		getinfo_func(&plugin->plugin_info);
 
+		/* Lowercase the string for comparison. */
+		std::string lc_social_platform = plugin->plugin_info.social_platform;
+		strtolower(lc_social_platform);
+
+		/* Prevent more than one plugin for a certain Social Platform to be loaded, as that never ends well. */
+		if (_loaded_social_platform.find(lc_social_platform) != _loaded_social_platform.end()) {
+			Debug(misc, 0, "[Social Integration: {}] Another plugin for {} is already loaded", basepath, plugin->plugin_info.social_platform);
+			return false;
+		}
+		_loaded_social_platform.insert(lc_social_platform);
+
 		auto state = init_func(&plugin->plugin_api, &plugin->openttd_info);
 		switch (state) {
 			case OTTD_SOCIAL_INTEGRATION_V1_INIT_SUCCESS:
@@ -110,4 +122,5 @@ void SocialIntegration::Initialize()
 void SocialIntegration::Shutdown()
 {
 	_plugins.clear();
+	_loaded_social_platform.clear();
 }
