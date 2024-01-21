@@ -63,7 +63,8 @@ std::string GetDebugString();
 /* Shorter form for passing filename and linenumber */
 #define FILE_LINE __FILE__, __LINE__
 
-/* Used for profiling
+/**
+ * Used for profiling.
  *
  * Usage:
  * TIC();
@@ -84,30 +85,14 @@ std::string GetDebugString();
  * TIC() / TOC() creates its own block, so make sure not the mangle
  *  it with another block.
  *
- * The output is counted in CPU cycles, and not comparable across
- *  machines. Mainly useful for local optimisations.
+ * The output is counted in microseconds. Mainly useful for local optimisations.
  **/
 #define TIC() {\
-	uint64_t _xxx_ = ottd_rdtsc();\
-	static uint64_t _sum_ = 0;\
-	static uint32_t _i_ = 0;
-
-#define TOC(str, count)\
-	_sum_ += ottd_rdtsc() - _xxx_;\
-	if (++_i_ == count) {\
-		Debug(misc, 0, "[{}] {} [avg: {:.1f}]", str, _sum_, _sum_/(double)_i_);\
-		_i_ = 0;\
-		_sum_ = 0;\
-	}\
-}
-
-/* Chrono based version. The output is in microseconds. */
-#define TICC() {\
 	auto _start_ = std::chrono::high_resolution_clock::now();\
 	static uint64_t _sum_ = 0;\
 	static uint32_t _i_ = 0;
 
-#define TOCC(str, _count_)\
+#define TOC(str, _count_)\
 	_sum_ += (std::chrono::duration_cast<std::chrono::microseconds>(std::chrono::high_resolution_clock::now() - _start_)).count();\
 	if (++_i_ == _count_) {\
 		Debug(misc, 0, "[{}] {} us [avg: {:.1f} us]", str, _sum_, _sum_/(double)_i_);\
