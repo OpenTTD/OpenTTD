@@ -119,8 +119,84 @@ void SocialIntegration::Initialize()
 	fs.Scan();
 }
 
+/**
+ * Wrapper to call a function pointer of a plugin if it isn't a nullptr.
+ *
+ * @param plugin Plugin to call the function pointer on.
+ * @param func   Function pointer to call.
+ */
+template <typename T, typename... Ts>
+static void PluginCall(std::unique_ptr<InternalSocialIntegrationPlugin> &plugin, T func, Ts... args)
+{
+	if (plugin->external.state != SocialIntegrationPlugin::RUNNING) {
+		return;
+	}
+
+	if (func != nullptr) {
+		func(args...);
+	}
+}
+
 void SocialIntegration::Shutdown()
 {
+	for (auto &plugin : _plugins) {
+		PluginCall(plugin, plugin->plugin_api.shutdown);
+	}
+
 	_plugins.clear();
 	_loaded_social_platform.clear();
+}
+
+void SocialIntegration::RunCallbacks()
+{
+	for (auto &plugin : _plugins) {
+		if (plugin->external.state != SocialIntegrationPlugin::RUNNING) {
+			continue;
+		}
+
+		if (plugin->plugin_api.run_callbacks != nullptr) {
+			if (!plugin->plugin_api.run_callbacks()) {
+				Debug(misc, 1, "[Social Plugin: {}] Requested to be unloaded", plugin->external.basepath);
+
+				_loaded_social_platform.erase(plugin->plugin_info.social_platform);
+				plugin->external.state = SocialIntegrationPlugin::UNLOADED;
+				PluginCall(plugin, plugin->plugin_api.shutdown);
+			}
+		}
+	}
+}
+
+void SocialIntegration::EventEnterMainMenu()
+{
+	for (auto &plugin : _plugins) {
+		PluginCall(plugin, plugin->plugin_api.event_enter_main_menu);
+	}
+}
+
+void SocialIntegration::EventEnterScenarioEditor(uint map_width, uint map_height)
+{
+	for (auto &plugin : _plugins) {
+		PluginCall(plugin, plugin->plugin_api.event_enter_scenario_editor, map_width, map_height);
+	}
+}
+
+void SocialIntegration::EventEnterSingleplayer(uint map_width, uint map_height)
+{
+	for (auto &plugin : _plugins) {
+		PluginCall(plugin, plugin->plugin_api.event_enter_singleplayer, map_width, map_height);
+	}
+}
+
+void SocialIntegration::EventEnterMultiplayer(uint map_width, uint map_height)
+{
+	for (auto &plugin : _plugins) {
+		PluginCall(plugin, plugin->plugin_api.event_enter_multiplayer, map_width, map_height);
+	}
+}
+
+void SocialIntegration::EventJoiningMultiplayer()
+{
+	for (auto &plugin : _plugins) {
+		PluginCall(plugin, plugin->plugin_api.event_joining_multiplayer);
+	}
 }

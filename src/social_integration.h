@@ -21,6 +21,36 @@ public:
 	 * Shutdown the social integration system, and all social integration plugins that are loaded.
 	 */
 	static void Shutdown();
+
+	/**
+	 * Allow any social integration library to handle their own events.
+	 */
+	static void RunCallbacks();
+
+	/**
+	 * Event: user entered the main menu.
+	 */
+	static void EventEnterMainMenu();
+
+	/**
+	 * Event: user entered the Scenario Editor.
+	 */
+	static void EventEnterScenarioEditor(uint map_width, uint map_height);
+
+	/**
+	 * Event: user entered a singleplayer game.
+	 */
+	static void EventEnterSingleplayer(uint map_width, uint map_height);
+
+	/**
+	 * Event: user entered a multiplayer game.
+	 */
+	static void EventEnterMultiplayer(uint map_width, uint map_height);
+
+	/**
+	 * Event: user is joining a multiplayer game.
+	 */
+	static void EventJoiningMultiplayer();
 };
 
 #endif /* SOCIAL_INTEGRATION_H */
