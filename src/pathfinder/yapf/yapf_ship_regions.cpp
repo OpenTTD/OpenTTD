@@ -10,7 +10,7 @@
 #include "../../stdafx.h"
 #include "../../ship.h"
 
-#include "yapf.hpp"
+#include "yapf_includes.h"
 #include "yapf_ship_regions.h"
 #include "../water_regions.h"
 

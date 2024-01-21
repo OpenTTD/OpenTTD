@@ -12,7 +12,7 @@
 #include "../../industry.h"
 #include "../../vehicle_func.h"
 
-#include "yapf.hpp"
+#include "yapf_includes.h"
 #include "yapf_node_ship.hpp"
 #include "yapf_ship_regions.h"
 #include "../water_regions.h"

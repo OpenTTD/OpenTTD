@@ -8,7 +8,7 @@
 /** @file yapf_road.cpp The road pathfinding. */
 
 #include "../../stdafx.h"
-#include "yapf.hpp"
+#include "yapf_includes.h"
 #include "yapf_node_road.hpp"
 #include "../../roadstop_base.h"
 

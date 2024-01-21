@@ -13,7 +13,7 @@
 #include "command_func.h"
 #include "error_func.h"
 #include "pathfinder/npf/npf_func.h"
-#include "pathfinder/yapf/yapf.hpp"
+#include "pathfinder/yapf/yapf_includes.h"
 #include "news_func.h"
 #include "company_func.h"
 #include "newgrf_sound.h"

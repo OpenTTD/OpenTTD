@@ -1,7 +1,6 @@
 add_files(
     nodelist.hpp
     yapf.h
-    yapf.hpp
     yapf_base.hpp
     yapf_cache.h
     yapf_common.hpp
@@ -9,6 +8,7 @@ add_files(
     yapf_costcache.hpp
     yapf_costrail.hpp
     yapf_destrail.hpp
+    yapf_includes.h
     yapf_node.hpp
     yapf_node_rail.hpp
     yapf_node_road.hpp
