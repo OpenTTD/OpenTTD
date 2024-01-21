@@ -5,7 +5,7 @@
  * See the GNU General Public License for more details. You should have received a copy of the GNU General Public License along with OpenTTD. If not, see <http://www.gnu.org/licenses/>.
  */
 
-/** @file script_window.hpp Everything to handle window interaction. */
+/** @file script_window.h Everything to handle window interaction. */
 
 #ifndef SCRIPT_WINDOW_HPP
 #define SCRIPT_WINDOW_HPP

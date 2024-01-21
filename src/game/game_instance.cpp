@@ -22,7 +22,7 @@
 #include "game.hpp"
 
 /* Convert all Game related classes to Squirrel data. */
-#include "../script/api/game/game_includes.hpp"
+#include "../script/api/game/game_includes.h"
 
 #include "../safeguards.h"
 

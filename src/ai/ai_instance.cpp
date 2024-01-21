@@ -26,7 +26,7 @@
 #include "../script/api/template/template_text.hpp.sq"
 
 /* Convert all AI related classes to Squirrel data. */
-#include "../script/api/ai/ai_includes.hpp"
+#include "../script/api/ai/ai_includes.h"
 
 #include "../company_base.h"
 #include "../company_func.h"
