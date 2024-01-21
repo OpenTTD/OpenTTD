@@ -51,13 +51,15 @@ void TimeoutTimer<TimerGameTick>::Elapsed(TimerGameTick::TElapsed delta)
 }
 
 template<>
-void TimerManager<TimerGameTick>::Elapsed(TimerGameTick::TElapsed delta)
+bool TimerManager<TimerGameTick>::Elapsed(TimerGameTick::TElapsed delta)
 {
 	TimerGameTick::counter++;
 
 	for (auto timer : TimerManager<TimerGameTick>::GetTimers()) {
 		timer->Elapsed(delta);
 	}
+
+	return true;
 }
 
 #ifdef WITH_ASSERT

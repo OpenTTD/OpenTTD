@@ -121,14 +121,14 @@ void TimeoutTimer<TimerGameEconomy>::Elapsed(TimerGameEconomy::TElapsed trigger)
 }
 
 template<>
-void TimerManager<TimerGameEconomy>::Elapsed([[maybe_unused]] TimerGameEconomy::TElapsed delta)
+bool TimerManager<TimerGameEconomy>::Elapsed([[maybe_unused]] TimerGameEconomy::TElapsed delta)
 {
 	assert(delta == 1);
 
-	if (_game_mode == GM_MENU) return;
+	if (_game_mode == GM_MENU) return false;
 
 	TimerGameEconomy::date_fract++;
-	if (TimerGameEconomy::date_fract < Ticks::DAY_TICKS) return;
+	if (TimerGameEconomy::date_fract < Ticks::DAY_TICKS) return true;
 	TimerGameEconomy::date_fract = 0;
 
 	/* increase day counter */
@@ -187,6 +187,8 @@ void TimerManager<TimerGameEconomy>::Elapsed([[maybe_unused]] TimerGameEconomy::
 		for (Vehicle *v : Vehicle::Iterate()) v->ShiftDates(-days_this_year);
 		for (LinkGraph *lg : LinkGraph::Iterate()) lg->ShiftDates(-days_this_year);
 	}
+
+	return true;
 }
 
 #ifdef WITH_ASSERT
