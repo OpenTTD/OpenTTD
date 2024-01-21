@@ -25,7 +25,7 @@
  */
 class InternalSocialIntegrationPlugin {
 public:
-	InternalSocialIntegrationPlugin(const std::string &filename, const std::string &basepath) : library(filename)
+	InternalSocialIntegrationPlugin(const std::string &filename, const std::string &basepath) : library(filename), external(basepath)
 	{
 		openttd_info.openttd_version = _openttd_revision;
 	}
@@ -35,6 +35,8 @@ public:
 	OpenTTD_SocialIntegration_v1_OpenTTDInfo openttd_info = {}; ///< Information supplied by OpenTTD.
 
 	LibraryLoader library; ///< Library handle.
+
+	SocialIntegrationPlugin external; ///< Information of the plugin to be used by other parts of our codebase.
 };
 
 static std::vector<std::unique_ptr<InternalSocialIntegrationPlugin>> _plugins; ///< List of loaded plugins.
@@ -64,23 +66,33 @@ public:
 		auto &plugin = _plugins.emplace_back(std::make_unique<InternalSocialIntegrationPlugin>(filename, basepath));
 
 		if (plugin->library.HasError()) {
+			plugin->external.state = SocialIntegrationPlugin::FAILED;
+
 			Debug(misc, 0, "[Social Integration: {}] Failed to load library: {}", basepath, plugin->library.GetLastError());
 			return false;
 		}
 
 		OpenTTD_SocialIntegration_v1_GetInfo getinfo_func = plugin->library.GetFunction("SocialIntegration_v1_GetInfo");
 		if (plugin->library.HasError()) {
+			plugin->external.state = SocialIntegrationPlugin::UNSUPPORTED_API;
+
 			Debug(misc, 0, "[Social Integration: {}] Failed to find symbol SocialPlugin_v1_GetInfo: {}", basepath, plugin->library.GetLastError());
 			return false;
 		}
 
 		OpenTTD_SocialIntegration_v1_Init init_func = plugin->library.GetFunction("SocialIntegration_v1_Init");
 		if (plugin->library.HasError()) {
+			plugin->external.state = SocialIntegrationPlugin::UNSUPPORTED_API;
+
 			Debug(misc, 0, "[Social Integration: {}] Failed to find symbol SocialPlugin_v1_Init: {}", basepath, plugin->library.GetLastError());
 			return false;
 		}
 
 		getinfo_func(&plugin->plugin_info);
+		/* Setup the information for the outside world to see. */
+		plugin->external.social_platform = plugin->plugin_info.social_platform;
+		plugin->external.name = plugin->plugin_info.name;
+		plugin->external.version = plugin->plugin_info.version;
 
 		/* Lowercase the string for comparison. */
 		std::string lc_social_platform = plugin->plugin_info.social_platform;
@@ -88,6 +100,8 @@ public:
 
 		/* Prevent more than one plugin for a certain Social Platform to be loaded, as that never ends well. */
 		if (_loaded_social_platform.find(lc_social_platform) != _loaded_social_platform.end()) {
+			plugin->external.state = SocialIntegrationPlugin::DUPLICATE;
+
 			Debug(misc, 0, "[Social Integration: {}] Another plugin for {} is already loaded", basepath, plugin->plugin_info.social_platform);
 			return false;
 		}
@@ -96,14 +110,20 @@ public:
 		auto state = init_func(&plugin->plugin_api, &plugin->openttd_info);
 		switch (state) {
 			case OTTD_SOCIAL_INTEGRATION_V1_INIT_SUCCESS:
+				plugin->external.state = SocialIntegrationPlugin::RUNNING;
+
 				Debug(misc, 1, "[Social Integration: {}] Loaded for {}: {} ({})", basepath, plugin->plugin_info.social_platform, plugin->plugin_info.name, plugin->plugin_info.version);
 				return true;
 
 			case OTTD_SOCIAL_INTEGRATION_V1_INIT_FAILED:
+				plugin->external.state = SocialIntegrationPlugin::FAILED;
+
 				Debug(misc, 0, "[Social Integration: {}] Failed to initialize", basepath);
 				return false;
 
 			case OTTD_SOCIAL_INTEGRATION_V1_INIT_PLATFORM_NOT_RUNNING:
+				plugin->external.state = SocialIntegrationPlugin::PLATFORM_NOT_RUNNING;
+
 				Debug(misc, 1, "[Social Integration: {}] Failed to initialize: {} is not running", basepath, plugin->plugin_info.social_platform);
 				return false;
 
@@ -112,6 +132,17 @@ public:
 		}
 	}
 };
+
+std::vector<SocialIntegrationPlugin *> SocialIntegration::GetPlugins()
+{
+	std::vector<SocialIntegrationPlugin *> plugins;
+
+	for (auto &plugin : _plugins) {
+		plugins.push_back(&plugin->external);
+	}
+
+	return plugins;
+}
 
 void SocialIntegration::Initialize()
 {

@@ -10,8 +10,36 @@
 #ifndef SOCIAL_INTEGRATION_H
 #define SOCIAL_INTEGRATION_H
 
+class SocialIntegrationPlugin {
+public:
+	enum State {
+		RUNNING, ///< The plugin is successfully loaded and running.
+
+		FAILED, ///< The plugin failed to initialize.
+		PLATFORM_NOT_RUNNING, ///< The plugin failed to initialize because the Social Platform is not running.
+		UNLOADED, ///< The plugin is unloaded upon request.
+		DUPLICATE, ///< Another plugin of the same Social Platform is already loaded.
+		UNSUPPORTED_API, ///< The plugin does not support the current API version.
+	};
+
+	std::string basepath; ///< Base path of the plugin.
+
+	std::string social_platform = "unknown"; ///< Social platform this plugin is for.
+	std::string name = ""; ///< Name of the plugin.
+	std::string version = ""; ///< Version of the plugin.
+
+	State state = FAILED; ///< Result of the plugin's init function.
+
+	SocialIntegrationPlugin(const std::string &basepath) : basepath(basepath) {}
+};
+
 class SocialIntegration {
 public:
+	/**
+	 * Get the list of loaded social integration plugins.
+	 */
+	static std::vector<SocialIntegrationPlugin *> GetPlugins();
+
 	/**
 	 * Initialize the social integration system, loading any social integration plugins that are available.
 	 */
