@@ -943,6 +943,8 @@ STR_GAME_OPTIONS_TAB_GRAPHICS                                   :Graphics
 STR_GAME_OPTIONS_TAB_GRAPHICS_TT                                :{BLACK}Choose graphics settings
 STR_GAME_OPTIONS_TAB_SOUND                                      :Sound
 STR_GAME_OPTIONS_TAB_SOUND_TT                                   :{BLACK}Choose sound and music settings
+STR_GAME_OPTIONS_TAB_SOCIAL                                     :Social
+STR_GAME_OPTIONS_TAB_SOCIAL_TT                                  :{BLACK}Choose social integration settings
 
 STR_GAME_OPTIONS_VOLUME                                         :Volume
 STR_GAME_OPTIONS_SFX_VOLUME                                     :Sound effects
@@ -1081,6 +1083,19 @@ STR_GAME_OPTIONS_BASE_SFX_DESCRIPTION_TOOLTIP                   :{BLACK}Addition
 STR_GAME_OPTIONS_BASE_MUSIC                                     :{BLACK}Base music set
 STR_GAME_OPTIONS_BASE_MUSIC_TOOLTIP                             :{BLACK}Select the base music set to use
 STR_GAME_OPTIONS_BASE_MUSIC_DESCRIPTION_TOOLTIP                 :{BLACK}Additional information about the base music set
+
+STR_GAME_OPTIONS_SOCIAL_PLUGINS_NONE                            :{LTBLUE}(no plugins to integrate with social platforms installed)
+
+STR_GAME_OPTIONS_SOCIAL_PLUGIN_TITLE                            :{BLACK}{RAW_STRING} ({RAW_STRING})
+STR_GAME_OPTIONS_SOCIAL_PLUGIN_PLATFORM                         :{BLACK}Platform:
+STR_GAME_OPTIONS_SOCIAL_PLUGIN_STATE                            :{BLACK}Plugin state:
+
+STR_GAME_OPTIONS_SOCIAL_PLUGIN_STATE_RUNNING                    :{GREEN}Running
+STR_GAME_OPTIONS_SOCIAL_PLUGIN_STATE_FAILED                     :{RED}Failed to initialize
+STR_GAME_OPTIONS_SOCIAL_PLUGIN_STATE_PLATFORM_NOT_RUNNING       :{ORANGE}{RAW_STRING} not running
+STR_GAME_OPTIONS_SOCIAL_PLUGIN_STATE_UNLOADED                   :{RED}Unloaded
+STR_GAME_OPTIONS_SOCIAL_PLUGIN_STATE_DUPLICATE                  :{RED}Duplicated plugin
+STR_GAME_OPTIONS_SOCIAL_PLUGIN_STATE_UNSUPPORTED_API            :{RED}Unsupported version
 
 STR_BASESET_STATUS                                              :{RAW_STRING} {RED}({NUM} missing/corrupted file{P "" s})
 

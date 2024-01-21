@@ -15,6 +15,7 @@ enum GameOptionsWidgets : WidgetID {
 	WID_GO_TAB_GENERAL,            ///< General tab.
 	WID_GO_TAB_GRAPHICS,           ///< Graphics tab.
 	WID_GO_TAB_SOUND,              ///< Sound tab.
+	WID_GO_TAB_SOCIAL,             ///< Social tab.
 	WID_GO_TAB_SELECTION,          ///< Background of the tab selection.
 	WID_GO_CURRENCY_DROPDOWN,      ///< Currency dropdown.
 	WID_GO_DISTANCE_DROPDOWN,      ///< Measuring unit dropdown.
@@ -53,6 +54,10 @@ enum GameOptionsWidgets : WidgetID {
 	WID_GO_SURVEY_PARTICIPATE_BUTTON, ///< Toggle for participating in the automated survey.
 	WID_GO_SURVEY_LINK_BUTTON,     ///< Button to open browser to go to the survey website.
 	WID_GO_SURVEY_PREVIEW_BUTTON,  ///< Button to open a preview window with the survey results
+	WID_GO_SOCIAL_PLUGINS,         ///< Main widget handling the social plugins.
+	WID_GO_SOCIAL_PLUGIN_TITLE,    ///< Title of the frame of the social plugin.
+	WID_GO_SOCIAL_PLUGIN_PLATFORM, ///< Platform of the social plugin.
+	WID_GO_SOCIAL_PLUGIN_STATE,    ///< State of the social plugin.
 };
 
 /** Widgets of the #GameSettingsWindow class. */
