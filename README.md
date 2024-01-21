@@ -118,6 +118,15 @@ Most types of add-on content can be downloaded within OpenTTD via the 'Check Onl
 Add-on content can also be installed manually, but that's more complicated; the [OpenTTD wiki](https://wiki.openttd.org/) may offer help with that, or the [OpenTTD directory structure guide](./docs/directory_structure.md).
 
 
+### 1.5.1) Social Integration
+
+OpenTTD has the ability to load plugins to integrate with Social Platforms like Steam, Discord, etc.
+
+To enable such integration, the plugin for the specific platform has to be downloaded and stored in the `social_integration` folder.
+
+See [OpenTTD's website](https://www.openttd.org), under Downloads, for what plugins are available.
+
+
 ### 1.6) OpenTTD directories
 
 OpenTTD uses its own directory structure to store game data, add-on content etc.
