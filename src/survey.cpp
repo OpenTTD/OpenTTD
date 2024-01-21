@@ -16,6 +16,8 @@
 #include "rev.h"
 #include "settings_type.h"
 #include "timer/timer_game_tick.h"
+#include "timer/timer_game_calendar.h"
+#include "timer/timer_game_economy.h"
 
 #include "currency.h"
 #include "fontcache.h"
@@ -316,6 +318,9 @@ void SurveyTimers(nlohmann::json &survey)
 {
 	survey["ticks"] = TimerGameTick::counter;
 	survey["seconds"] = std::chrono::duration_cast<std::chrono::seconds>(std::chrono::steady_clock::now() - _switch_mode_time).count();
+
+	TimerGameEconomy::YearMonthDay economy_ymd = TimerGameEconomy::ConvertDateToYMD(TimerGameEconomy::date);
+	survey["economy"] = fmt::format("{:04}-{:02}-{:02} ({})", economy_ymd.year, economy_ymd.month + 1, economy_ymd.day, TimerGameEconomy::date_fract);
 
 	TimerGameCalendar::YearMonthDay ymd = TimerGameCalendar::ConvertDateToYMD(TimerGameCalendar::date);
 	survey["calendar"] = fmt::format("{:04}-{:02}-{:02} ({})", ymd.year, ymd.month + 1, ymd.day, TimerGameCalendar::date_fract);
