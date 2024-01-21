@@ -121,6 +121,7 @@ enum Subdirectory {
 	GAME_DIR,      ///< Subdirectory for all game scripts
 	GAME_LIBRARY_DIR, ///< Subdirectory for all GS libraries
 	SCREENSHOT_DIR,   ///< Subdirectory for all screenshots
+	SOCIAL_INTEGRATION_DIR, ///< Subdirectory for all social integration plugins
 	NUM_SUBDIRS,   ///< Number of subdirectories
 	NO_DIRECTORY,  ///< A path without any base directory
 };

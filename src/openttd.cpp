@@ -75,6 +75,7 @@
 #include "timer/timer_game_economy.h"
 #include "timer/timer_game_realtime.h"
 #include "timer/timer_game_tick.h"
+#include "social_integration.h"
 
 #include "linkgraph/linkgraphschedule.h"
 
@@ -752,6 +753,7 @@ int openttd_main(int argc, char *argv[])
 	/* The video driver is now selected, now initialise GUI zoom */
 	AdjustGUIZoom(false);
 
+	SocialIntegration::Initialize();
 	NetworkStartUp(); // initialize network-core
 
 	if (!HandleBootstrap()) {

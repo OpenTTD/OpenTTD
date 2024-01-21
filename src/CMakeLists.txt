@@ -393,6 +393,8 @@ add_files(
     slope_type.h
     smallmap_gui.cpp
     smallmap_gui.h
+    social_integration.cpp
+    social_integration.h
     sortlist_type.h
     sound.cpp
     sound_func.h
