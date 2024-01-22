@@ -275,50 +275,32 @@ void InvalidateWaterRegion(TileIndex tile)
 }
 
 /**
- * Calls the provided callback function for all water region patches
- * accessible from one particular side of the starting patch.
- * @param water_region_patch Water patch within the water region to start searching from
- * @param side Side of the water region to look for neigboring patches of water
- * @param callback The function that will be called for each neighbor that is found
+ * Find the tile of a cross-region aqueduct based on the given parameters.
+ * @param region_x The x-coordinate of the water region.
+ * @param region_y The y-coordinate of the water region.
+ * @param side The side the aqueduct crosses.
+ * @param x_or_y The x or y coordinate within the water region.
+ * @pre The x_or_y represents a valid position within the water region boundaries.
+ * @pre The side must be a valid diagonal direction (DIAGDIR_NE, DIAGDIR_NW, DIAGDIR_SE, DIAGDIR_SW).
+ * @return The tile index of the cross-region aqueduct or INVALID_TILE if not found.
  */
-static inline void VisitAdjacentWaterRegionPatchNeighbors(const WaterRegionPatchDesc &water_region_patch, DiagDirection side, TVisitWaterRegionPatchCallBack &func)
+TileIndex FindCrossRegionAqueductTileCoordinate(int region_x, int region_y, DiagDirection side, int x_or_y)
 {
-	const WaterRegion &current_region = GetUpdatedWaterRegion(water_region_patch.x, water_region_patch.y);
+	assert(x_or_y >= 0 && x_or_y < WATER_REGION_EDGE_LENGTH);
+	assert(IsValidDiagDirection(side));
 
-	const TileIndexDiffC offset = TileIndexDiffCByDiagDir(side);
-	const int nx = water_region_patch.x + offset.x;
-	const int ny = water_region_patch.y + offset.y;
+	int start = (side == DIAGDIR_NE || side == DIAGDIR_NW) ? 0 : WATER_REGION_EDGE_LENGTH - 1;
+	int end = (side == DIAGDIR_NE || side == DIAGDIR_NW) ? WATER_REGION_EDGE_LENGTH : -1;
+	int step = (side == DIAGDIR_NE || side == DIAGDIR_NW) ? 1 : -1;
 
-	if (nx < 0 || ny < 0 || nx >= GetWaterRegionMapSizeX() || ny >= GetWaterRegionMapSizeY()) return;
-
-	const WaterRegion &neighboring_region = GetUpdatedWaterRegion(nx, ny);
-	const DiagDirection opposite_side = ReverseDiagDir(side);
-
-	/* Indicates via which local x or y coordinates (depends on the "side" parameter) we can cross over into the adjacent region. */
-	const TWaterRegionTraversabilityBits traversability_bits = current_region.GetEdgeTraversabilityBits(side)
-		& neighboring_region.GetEdgeTraversabilityBits(opposite_side);
-	if (traversability_bits == 0) return;
-
-	if (current_region.NumberOfPatches() == 1 && neighboring_region.NumberOfPatches() == 1) {
-		func(WaterRegionPatchDesc{ nx, ny, FIRST_REGION_LABEL }); // No further checks needed because we know there is just one patch for both adjacent regions
-		return;
+	for (int i = start; i != end; i += step) {
+		TileIndex tile = (side == DIAGDIR_NE || side == DIAGDIR_SW) ? GetTileIndexFromLocalCoordinate(region_x, region_y, i, x_or_y) : GetTileIndexFromLocalCoordinate(region_x, region_y, x_or_y, i);
+		if (IsAqueductTile(tile) && GetWaterRegionIndex(region_x, region_y) != GetWaterRegionIndex(GetOtherBridgeEnd(tile)) && GetTunnelBridgeDirection(tile) == side) {
+			return tile;
+		}
 	}
 
-	/* Multiple water patches can be reached from the current patch. Check each edge tile individually. */
-	static std::vector<TWaterRegionPatchLabel> unique_labels; // static and vector-instead-of-map for performance reasons
-	unique_labels.clear();
-	for (int x_or_y = 0; x_or_y < WATER_REGION_EDGE_LENGTH; ++x_or_y) {
-		if (!HasBit(traversability_bits, x_or_y)) continue;
-
-		const TileIndex current_edge_tile = GetEdgeTileCoordinate(water_region_patch.x, water_region_patch.y, side, x_or_y);
-		const TWaterRegionPatchLabel current_label = current_region.GetLabel(current_edge_tile);
-		if (current_label != water_region_patch.label) continue;
-
-		const TileIndex neighbor_edge_tile = GetEdgeTileCoordinate(nx, ny, opposite_side, x_or_y);
-		const TWaterRegionPatchLabel neighbor_label = neighboring_region.GetLabel(neighbor_edge_tile);
-		if (std::find(unique_labels.begin(), unique_labels.end(), neighbor_label) == unique_labels.end()) unique_labels.push_back(neighbor_label);
-	}
-	for (TWaterRegionPatchLabel unique_label : unique_labels) func(WaterRegionPatchDesc{ nx, ny, unique_label });
+	return INVALID_TILE;
 }
 
 /**
@@ -331,17 +313,70 @@ void VisitWaterRegionPatchNeighbors(const WaterRegionPatchDesc &water_region_pat
 {
 	const WaterRegion &current_region = GetUpdatedWaterRegion(water_region_patch.x, water_region_patch.y);
 
-	/* Visit adjacent water region patches in each cardinal direction */
-	for (DiagDirection side = DIAGDIR_BEGIN; side < DIAGDIR_END; side++) VisitAdjacentWaterRegionPatchNeighbors(water_region_patch, side, callback);
+	/* Multiple water patches can be reached from the current patch. Check each edge and aqueduct tiles individually. */
+	static std::vector<WaterRegionPatchDesc> unique_labels; // static and vector-instead-of-map for performance reasons
+	unique_labels.clear();
 
-	/* Visit neigboring water patches accessible via cross-region aqueducts */
-	if (current_region.HasCrossRegionAqueducts()) {
-		for (const TileIndex tile : current_region) {
-			if (GetWaterRegionPatchInfo(tile) == water_region_patch && IsAqueductTile(tile)) {
-				const TileIndex other_end_tile = GetOtherBridgeEnd(tile);
-				if (GetWaterRegionIndex(tile) != GetWaterRegionIndex(other_end_tile)) callback(GetWaterRegionPatchInfo(other_end_tile));
+	for (DiagDirection side = DIAGDIR_BEGIN; side < DIAGDIR_END; side++) {
+		/* Visit neigboring water patches accessible via cross-region aqueducts. */
+		if (current_region.HasCrossRegionAqueducts()) {
+			for (int x_or_y = 0; x_or_y < WATER_REGION_EDGE_LENGTH; ++x_or_y) {
+				const TileIndex current_aqueduct_tile = FindCrossRegionAqueductTileCoordinate(water_region_patch.x, water_region_patch.y, side, x_or_y);
+				if (!IsValidTile(current_aqueduct_tile)) continue;
+
+				const TWaterRegionPatchLabel current_label = current_region.GetLabel(current_aqueduct_tile);
+				if (current_label != water_region_patch.label) continue;
+
+				const TileIndex neighbor_aqueduct_tile = GetOtherBridgeEnd(current_aqueduct_tile);
+				const WaterRegionPatchDesc &neighbor_patch = GetWaterRegionPatchInfo(neighbor_aqueduct_tile);
+				if (std::find(unique_labels.begin(), unique_labels.end(), neighbor_patch) == unique_labels.end()) {
+					unique_labels.push_back(neighbor_patch);
+				}
 			}
 		}
+
+		/* Visit adjacent water region patches in each cardinal direction. */
+		const TileIndexDiffC offset = TileIndexDiffCByDiagDir(side);
+		const int nx = water_region_patch.x + offset.x;
+		const int ny = water_region_patch.y + offset.y;
+
+		if (nx < 0 || ny < 0 || nx >= GetWaterRegionMapSizeX() || ny >= GetWaterRegionMapSizeY()) continue;
+
+		const WaterRegion &neighboring_region = GetUpdatedWaterRegion(nx, ny);
+		const DiagDirection opposite_side = ReverseDiagDir(side);
+
+		/* Indicates via which local x or y coordinates (depends on the "side" parameter) we can cross over into the adjacent region. */
+		const TWaterRegionTraversabilityBits edge_traversability_bits = current_region.GetEdgeTraversabilityBits(side)
+				& neighboring_region.GetEdgeTraversabilityBits(opposite_side);
+		if (edge_traversability_bits == 0) continue;
+
+		if (current_region.NumberOfPatches() == 1 && neighboring_region.NumberOfPatches() == 1) {
+			/* No further checks needed because we know there is just one patch for both adjacent regions. */
+			const WaterRegionPatchDesc &neighbor_patch = WaterRegionPatchDesc{ nx, ny, FIRST_REGION_LABEL };
+			if (std::find(unique_labels.begin(), unique_labels.end(), neighbor_patch) == unique_labels.end()) {
+				unique_labels.push_back(neighbor_patch);
+			}
+		} else {
+			/* Multiple water patches can be reached from the current patch. Check each edge tile individually. */
+			for (int x_or_y = 0; x_or_y < WATER_REGION_EDGE_LENGTH; ++x_or_y) {
+				if (!HasBit(edge_traversability_bits, x_or_y)) continue;
+
+				const TileIndex current_edge_tile = GetEdgeTileCoordinate(water_region_patch.x, water_region_patch.y, side, x_or_y);
+				const TWaterRegionPatchLabel current_label = current_region.GetLabel(current_edge_tile);
+				if (current_label != water_region_patch.label) continue;
+
+				const TileIndex neighbor_edge_tile = GetEdgeTileCoordinate(nx, ny, opposite_side, x_or_y);
+				const WaterRegionPatchDesc &neighbor_patch = GetWaterRegionPatchInfo(neighbor_edge_tile);
+				if (std::find(unique_labels.begin(), unique_labels.end(), neighbor_patch) == unique_labels.end()) {
+					unique_labels.push_back(neighbor_patch);
+				}
+			}
+		}
+	}
+
+	/* Call the provided callback function on all accessible water region patches. */
+	for (const WaterRegionPatchDesc &neighbor_patch : unique_labels) {
+		callback(neighbor_patch);
 	}
 }
 
