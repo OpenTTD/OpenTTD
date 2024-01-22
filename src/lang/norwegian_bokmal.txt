@@ -905,6 +905,7 @@ STR_EXTRA_VIEW_MOVE_MAIN_TO_VIEW_TT                             :{BLACK}flytt pl
 STR_GAME_OPTIONS_CAPTION                                        :{WHITE}Spillinnstillinger
 
 
+STR_GAME_OPTIONS_SFX_VOLUME                                     :Lydeffekter
 
 
 STR_GAME_OPTIONS_CURRENCY_UNITS_FRAME                           :{BLACK}Valutaenhet
@@ -987,6 +988,7 @@ STR_GAME_OPTIONS_VIDEO_VSYNC_TOOLTIP                            :{BLACK}Merk av 
 
 STR_GAME_OPTIONS_GUI_SCALE_2X                                   :2x
 STR_GAME_OPTIONS_GUI_SCALE_3X                                   :3x
+STR_GAME_OPTIONS_GUI_SCALE_4X                                   :4x
 
 
 STR_GAME_OPTIONS_GRAPHICS                                       :{BLACK}Grafikk
@@ -1352,6 +1354,7 @@ STR_CONFIG_SETTING_INFRASTRUCTURE_MAINTENANCE_HELPTEXT          :Når aktivert, 
 STR_CONFIG_SETTING_COMPANY_STARTING_COLOUR                      :Startifarge for firmaet: {STRING}
 STR_CONFIG_SETTING_COMPANY_STARTING_COLOUR_HELPTEXT             :Velg startfarge for firmaet
 
+STR_CONFIG_SETTING_COMPANY_STARTING_COLOUR_SECONDARY            :Oppstarsselskapets sekundære farge:{STRING}
 
 STR_CONFIG_SETTING_NEVER_EXPIRE_AIRPORTS                        :Flyplasser utgår aldri: {STRING}
 STR_CONFIG_SETTING_NEVER_EXPIRE_AIRPORTS_HELPTEXT               :Aktivering av denne innstillingen gjør at hver type flyplass forblir tilgjengelig for alltid etter at sin introduksjon
@@ -1546,6 +1549,7 @@ STR_CONFIG_SETTING_RIGHT_MOUSE_BTN_EMU_OFF                      :Av
 STR_CONFIG_SETTING_RIGHT_MOUSE_WND_CLOSE                        :Lukk vinduet med høyreklikk: {STRING}
 STR_CONFIG_SETTING_RIGHT_MOUSE_WND_CLOSE_HELPTEXT               :Lukker et vindu ved å høyreklikke i det. Deaktiverer verktøytipset med høyreklikk!
 ###length 3
+STR_CONFIG_SETTING_RIGHT_MOUSE_WND_CLOSE_YES                    :Ja
 
 STR_CONFIG_SETTING_DATE_FORMAT_IN_SAVE_NAMES                    :Bruk {STRING} datoformat i navn på lagrede spill.
 STR_CONFIG_SETTING_DATE_FORMAT_IN_SAVE_NAMES_HELPTEXT           :Datoformat i lagrede spills filnavn
@@ -1572,6 +1576,7 @@ STR_CONFIG_SETTING_LOADING_INDICATORS                           :Bruk lastingsin
 STR_CONFIG_SETTING_LOADING_INDICATORS_HELPTEXT                  :Velg hvorvidt lasteindikatorer vises over kjøretøy som lastes eller losses
 
 ###length 3
+STR_CONFIG_SETTING_TIMETABLE_MODE_SECONDS                       :Sekunder
 
 STR_CONFIG_SETTING_TIMETABLE_SHOW_ARRIVAL_DEPARTURE             :Vis ankomst og avgang i rutetabeller: {STRING}
 STR_CONFIG_SETTING_TIMETABLE_SHOW_ARRIVAL_DEPARTURE_HELPTEXT    :Vise forventede ankomst- og avgangstider i rutetabeller
@@ -1872,6 +1877,7 @@ STR_CONFIG_SETTING_LARGER_TOWNS_DISABLED                        :ingen
 STR_CONFIG_SETTING_CITY_SIZE_MULTIPLIER                         :Innledende bystørrelsesmultiplikator: {STRING}
 STR_CONFIG_SETTING_CITY_SIZE_MULTIPLIER_HELPTEXT                :Gjennomsnittsstørrelse på (stor)byer i forhold til vanlige byer ved begynnelsen av spillet
 
+STR_CONFIG_SETTING_LINKGRAPH_RECALC_INTERVAL                    :Oppdater distribusjonsgraf hvert {STRING}
 
 STR_CONFIG_SETTING_DISTRIBUTION_PAX                             :Distribusjonsmodus for passasjerer: {STRING}
 STR_CONFIG_SETTING_DISTRIBUTION_PAX_HELPTEXT                    :"symmetrisk" betyr at omtrent like mange passasjerer vil reise fra stasjon A til stasjon B som omvendt (fra B til A). "asymmetrisk" betyr at et vilkårlig antall passasjerer vil reise i begge retninger. "manuelt" betyr at det ikke vil forekomme automatisk distribusjon for passasjerene
@@ -1957,6 +1963,7 @@ STR_CONFIG_SETTING_LIMITATIONS                                  :Begrensninger
 STR_CONFIG_SETTING_ACCIDENTS                                    :Katastrofer / Ulykker
 STR_CONFIG_SETTING_GENWORLD                                     :Verdensgenerering
 STR_CONFIG_SETTING_ENVIRONMENT                                  :Miljø
+STR_CONFIG_SETTING_ENVIRONMENT_TIME                             :Tid
 STR_CONFIG_SETTING_ENVIRONMENT_AUTHORITIES                      :Myndigheter
 STR_CONFIG_SETTING_ENVIRONMENT_TOWNS                            :Byer
 STR_CONFIG_SETTING_ENVIRONMENT_INDUSTRIES                       :Industrier
@@ -3637,6 +3644,7 @@ STR_COMPANY_VIEW_INFRASTRUCTURE_BUTTON                          :{BLACK}Detaljer
 STR_COMPANY_VIEW_INFRASTRUCTURE_TOOLTIP                         :{BLACK}Vis detaljert infrastrukturtelling
 STR_COMPANY_VIEW_GIVE_MONEY_BUTTON                              :{BLACK}Gi penger
 STR_COMPANY_VIEW_GIVE_MONEY_TOOLTIP                             :{BLACK}Gi penger til dette firmaet
+STR_COMPANY_VIEW_HOSTILE_TAKEOVER_TOOLTIP                       :{BLACK}Gjør en fiendtlig overtagelse av dette selskapet
 
 STR_COMPANY_VIEW_NEW_FACE_BUTTON                                :{BLACK}Nytt ansikt
 STR_COMPANY_VIEW_NEW_FACE_TOOLTIP                               :{BLACK}Velg nytt ansikt på sjefen
@@ -3816,6 +3824,7 @@ STR_PURCHASE_INFO_AIRCRAFT_RANGE                                :{BLACK}Rekkevid
 STR_PURCHASE_INFO_AIRCRAFT_TYPE                                 :{BLACK}Flytype: {GOLD}{STRING}
 
 ###length 3
+STR_CARGO_TYPE_FILTER_ALL                                       :Alle cargo typer
 
 ###length VEHICLE_TYPES
 STR_BUY_VEHICLE_TRAIN_LIST_TOOLTIP                              :{BLACK}Liste over tog/vogner - klikk på tog/vogn for mer informasjon. Ctrl+klikk for å skjule/vise denne typen

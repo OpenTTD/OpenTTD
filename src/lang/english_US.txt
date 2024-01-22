@@ -282,7 +282,7 @@ STR_TOOLTIP_RESIZE                                              :{BLACK}Click an
 STR_TOOLTIP_TOGGLE_LARGE_SMALL_WINDOW                           :{BLACK}Toggle large/small window size
 STR_TOOLTIP_VSCROLL_BAR_SCROLLS_LIST                            :{BLACK}Scroll bar - scrolls list up/down
 STR_TOOLTIP_HSCROLL_BAR_SCROLLS_LIST                            :{BLACK}Scroll bar - scrolls list left/right
-STR_TOOLTIP_DEMOLISH_BUILDINGS_ETC                              :{BLACK}Demolish buildings etc. on a square of land. Ctrl selects the area diagonally. Shift toggles building/showing cost estimate
+STR_TOOLTIP_DEMOLISH_BUILDINGS_ETC                              :{BLACK}Demolish buildings etc. on a square of land. Ctrl+Click+Drag to select the area diagonally. Also press Shift to show cost estimate only
 
 # Show engines button
 ###length VEHICLE_TYPES
@@ -370,32 +370,32 @@ STR_TOOLBAR_TOOLTIP_PAUSE_GAME                                  :{BLACK}Pause ga
 STR_TOOLBAR_TOOLTIP_FORWARD                                     :{BLACK}Fast forward the game
 STR_TOOLBAR_TOOLTIP_OPTIONS                                     :{BLACK}Options and settings
 STR_TOOLBAR_TOOLTIP_SAVE_GAME_ABANDON_GAME                      :{BLACK}Save, load or abandon game, exit program
-STR_TOOLBAR_TOOLTIP_DISPLAY_MAP                                 :{BLACK}Display map, extra viewport, cargo flow or list of signs
-STR_TOOLBAR_TOOLTIP_DISPLAY_TOWN_DIRECTORY                      :{BLACK}Display town directory
-STR_TOOLBAR_TOOLTIP_DISPLAY_SUBSIDIES                           :{BLACK}Display subsidies
-STR_TOOLBAR_TOOLTIP_DISPLAY_LIST_OF_COMPANY_STATIONS            :{BLACK}Display list of company's stations
-STR_TOOLBAR_TOOLTIP_DISPLAY_COMPANY_FINANCES                    :{BLACK}Display company finances information
-STR_TOOLBAR_TOOLTIP_DISPLAY_COMPANY_GENERAL                     :{BLACK}Display general company information
-STR_TOOLBAR_TOOLTIP_DISPLAY_STORY_BOOK                          :{BLACK}Display story book
-STR_TOOLBAR_TOOLTIP_DISPLAY_GOALS_LIST                          :{BLACK}Display goal list
-STR_TOOLBAR_TOOLTIP_DISPLAY_GRAPHS                              :{BLACK}Display company graphs and cargo payment rates
-STR_TOOLBAR_TOOLTIP_DISPLAY_COMPANY_LEAGUE                      :{BLACK}Display company league table
-STR_TOOLBAR_TOOLTIP_FUND_CONSTRUCTION_OF_NEW                    :{BLACK}Examine industries or fund construction of a new industry
-STR_TOOLBAR_TOOLTIP_DISPLAY_LIST_OF_COMPANY_TRAINS              :{BLACK}Display list of company's trains. Ctrl+Click toggles opening the group/vehicle list
-STR_TOOLBAR_TOOLTIP_DISPLAY_LIST_OF_COMPANY_ROAD_VEHICLES       :{BLACK}Display list of company's road vehicles. Ctrl+Click toggles opening the group/vehicle list
-STR_TOOLBAR_TOOLTIP_DISPLAY_LIST_OF_COMPANY_SHIPS               :{BLACK}Display list of company's ships. Ctrl+Click toggles opening the group/vehicle list
-STR_TOOLBAR_TOOLTIP_DISPLAY_LIST_OF_COMPANY_AIRCRAFT            :{BLACK}Display list of company's aircraft. Ctrl+Click toggles opening the group/vehicle list
-STR_TOOLBAR_TOOLTIP_ZOOM_THE_VIEW_IN                            :{BLACK}Zoom the view in
-STR_TOOLBAR_TOOLTIP_ZOOM_THE_VIEW_OUT                           :{BLACK}Zoom the view out
-STR_TOOLBAR_TOOLTIP_BUILD_RAILROAD_TRACK                        :{BLACK}Build railroad track
-STR_TOOLBAR_TOOLTIP_BUILD_ROADS                                 :{BLACK}Build roads
-STR_TOOLBAR_TOOLTIP_BUILD_TRAMWAYS                              :{BLACK}Build streetcar lines
-STR_TOOLBAR_TOOLTIP_BUILD_SHIP_DOCKS                            :{BLACK}Build ship docks
+STR_TOOLBAR_TOOLTIP_DISPLAY_MAP                                 :{BLACK}Open map, extra viewport, cargo flow or list of signs
+STR_TOOLBAR_TOOLTIP_DISPLAY_TOWN_DIRECTORY                      :{BLACK}Open town directory or found town
+STR_TOOLBAR_TOOLTIP_DISPLAY_SUBSIDIES                           :{BLACK}Open subsidy list
+STR_TOOLBAR_TOOLTIP_DISPLAY_LIST_OF_COMPANY_STATIONS            :{BLACK}Open list of company's stations
+STR_TOOLBAR_TOOLTIP_DISPLAY_COMPANY_FINANCES                    :{BLACK}Open company finances information
+STR_TOOLBAR_TOOLTIP_DISPLAY_COMPANY_GENERAL                     :{BLACK}Open general company information
+STR_TOOLBAR_TOOLTIP_DISPLAY_STORY_BOOK                          :{BLACK}Open story book
+STR_TOOLBAR_TOOLTIP_DISPLAY_GOALS_LIST                          :{BLACK}Open goal list
+STR_TOOLBAR_TOOLTIP_DISPLAY_GRAPHS                              :{BLACK}Open company graphs and cargo payment rates
+STR_TOOLBAR_TOOLTIP_DISPLAY_COMPANY_LEAGUE                      :{BLACK}Open company league table
+STR_TOOLBAR_TOOLTIP_FUND_CONSTRUCTION_OF_NEW                    :{BLACK}Open industry directory, industry chain, or fund construction of a new industry
+STR_TOOLBAR_TOOLTIP_DISPLAY_LIST_OF_COMPANY_TRAINS              :{BLACK}Open list of company's trains. Ctrl+Click to show or hide vehicle groups, opposite of the chosen setting
+STR_TOOLBAR_TOOLTIP_DISPLAY_LIST_OF_COMPANY_ROAD_VEHICLES       :{BLACK}Open list of company's road vehicles. Ctrl+Click to show or hide vehicle groups, opposite of the chosen setting
+STR_TOOLBAR_TOOLTIP_DISPLAY_LIST_OF_COMPANY_SHIPS               :{BLACK}Open list of company's ships. Ctrl+Click to show or hide vehicle groups, opposite of the chosen setting
+STR_TOOLBAR_TOOLTIP_DISPLAY_LIST_OF_COMPANY_AIRCRAFT            :{BLACK}Open list of company's aircraft. Ctrl+Click to show or hide vehicle groups, opposite of the chosen setting
+STR_TOOLBAR_TOOLTIP_ZOOM_THE_VIEW_IN                            :{BLACK}Zoom in
+STR_TOOLBAR_TOOLTIP_ZOOM_THE_VIEW_OUT                           :{BLACK}Zoom out
+STR_TOOLBAR_TOOLTIP_BUILD_RAILROAD_TRACK                        :{BLACK}Build railroad infrastructure
+STR_TOOLBAR_TOOLTIP_BUILD_ROADS                                 :{BLACK}Build road infrastructure
+STR_TOOLBAR_TOOLTIP_BUILD_TRAMWAYS                              :{BLACK}Build streetcar infrastructure
+STR_TOOLBAR_TOOLTIP_BUILD_SHIP_DOCKS                            :{BLACK}Build waterway infrastructure
 STR_TOOLBAR_TOOLTIP_BUILD_AIRPORTS                              :{BLACK}Build airports
-STR_TOOLBAR_TOOLTIP_LANDSCAPING                                 :{BLACK}Open the landscaping toolbar to raise/lower land, plant trees, etc.
-STR_TOOLBAR_TOOLTIP_SHOW_SOUND_MUSIC_WINDOW                     :{BLACK}Show sound/music window
-STR_TOOLBAR_TOOLTIP_SHOW_LAST_MESSAGE_NEWS                      :{BLACK}Show last message/news report, messages history or delete all messages
-STR_TOOLBAR_TOOLTIP_LAND_BLOCK_INFORMATION                      :{BLACK}Land area information, screenshot, about OpenTTD and developer tools
+STR_TOOLBAR_TOOLTIP_LANDSCAPING                                 :{BLACK}Open landscaping menu, tree menu, or place a sign
+STR_TOOLBAR_TOOLTIP_SHOW_SOUND_MUSIC_WINDOW                     :{BLACK}Open sound/music window
+STR_TOOLBAR_TOOLTIP_SHOW_LAST_MESSAGE_NEWS                      :{BLACK}Open last message/news report, messages history or delete all messages
+STR_TOOLBAR_TOOLTIP_LAND_BLOCK_INFORMATION                      :{BLACK}Open land information, screenshot menu, OpenTTD credits, or developer tools
 STR_TOOLBAR_TOOLTIP_SWITCH_TOOLBAR                              :{BLACK}Switch toolbars
 
 # Extra tooltips for the scenario editor toolbar
@@ -405,15 +405,15 @@ STR_SCENEDIT_TOOLBAR_SCENARIO_EDITOR                            :{YELLOW}Scenari
 STR_SCENEDIT_TOOLBAR_TOOLTIP_MOVE_THE_STARTING_DATE_BACKWARD    :{BLACK}Move the starting date backward 1 year
 STR_SCENEDIT_TOOLBAR_TOOLTIP_MOVE_THE_STARTING_DATE_FORWARD     :{BLACK}Move the starting date forward 1 year
 STR_SCENEDIT_TOOLBAR_TOOLTIP_SET_DATE                           :{BLACK}Click to enter the starting year
-STR_SCENEDIT_TOOLBAR_TOOLTIP_DISPLAY_MAP_TOWN_DIRECTORY         :{BLACK}Display map, town directory
-STR_SCENEDIT_TOOLBAR_LANDSCAPE_GENERATION                       :{BLACK}Landscape generation
-STR_SCENEDIT_TOOLBAR_TOWN_GENERATION                            :{BLACK}Town generation
-STR_SCENEDIT_TOOLBAR_INDUSTRY_GENERATION                        :{BLACK}Industry generation
-STR_SCENEDIT_TOOLBAR_ROAD_CONSTRUCTION                          :{BLACK}Road construction
-STR_SCENEDIT_TOOLBAR_TRAM_CONSTRUCTION                          :{BLACK}Streetcar line construction
-STR_SCENEDIT_TOOLBAR_PLANT_TREES                                :{BLACK}Plant trees. Ctrl selects the area diagonally. Shift toggles building/showing cost estimate
+STR_SCENEDIT_TOOLBAR_TOOLTIP_DISPLAY_MAP_TOWN_DIRECTORY         :{BLACK}Open map, extra viewport, sign list, or town or industry directory
+STR_SCENEDIT_TOOLBAR_LANDSCAPE_GENERATION                       :{BLACK}Open landscaping menu or generate a new world
+STR_SCENEDIT_TOOLBAR_TOWN_GENERATION                            :{BLACK}Build or generate towns
+STR_SCENEDIT_TOOLBAR_INDUSTRY_GENERATION                        :{BLACK}Build or generate industries
+STR_SCENEDIT_TOOLBAR_ROAD_CONSTRUCTION                          :{BLACK}Build road infrastructure
+STR_SCENEDIT_TOOLBAR_TRAM_CONSTRUCTION                          :{BLACK}Build streetcar infrastructure
+STR_SCENEDIT_TOOLBAR_PLANT_TREES                                :{BLACK}Plant trees. Ctrl+Click+Drag to select the area diagonally. Also press Shift to show cost estimate only
 STR_SCENEDIT_TOOLBAR_PLACE_SIGN                                 :{BLACK}Place sign
-STR_SCENEDIT_TOOLBAR_PLACE_OBJECT                               :{BLACK}Place object. Ctrl selects the area diagonally. Shift toggles building/showing cost estimate
+STR_SCENEDIT_TOOLBAR_PLACE_OBJECT                               :{BLACK}Place object. Ctrl+Click+Drag to select the area diagonally. Also press Shift to show cost estimate only
 
 # Scenario editor file menu
 ###length 7
@@ -1037,7 +1037,7 @@ STR_GAME_OPTIONS_VIDEO_VSYNC_TOOLTIP                            :{BLACK}Check th
 STR_GAME_OPTIONS_VIDEO_DRIVER_INFO                              :{BLACK}Current driver: {STRING}
 
 STR_GAME_OPTIONS_GUI_SCALE_FRAME                                :{BLACK}Interface size
-STR_GAME_OPTIONS_GUI_SCALE_TOOLTIP                              :{BLACK}Drag slider to set interface size. Hold Ctrl for continuous adjustment
+STR_GAME_OPTIONS_GUI_SCALE_TOOLTIP                              :{BLACK}Drag slider to set interface size. Ctrl+Drag for continuous adjustment
 STR_GAME_OPTIONS_GUI_SCALE_AUTO                                 :{BLACK}Auto-detect size
 STR_GAME_OPTIONS_GUI_SCALE_AUTO_TOOLTIP                         :{BLACK}Check this box to detect interface size automatically
 
@@ -1334,7 +1334,7 @@ STR_CONFIG_SETTING_FORBID_90_DEG                                :Forbid trains f
 STR_CONFIG_SETTING_FORBID_90_DEG_HELPTEXT                       :90 degree turns occur when a horizontal track is directly followed by a vertical track piece on the adjacent tile, thus making the train turn by 90 degrees when traversing the tile edge instead of the usual 45 degrees for other track combinations.
 
 STR_CONFIG_SETTING_DISTANT_JOIN_STATIONS                        :Allow joining stations not directly adjacent: {STRING}
-STR_CONFIG_SETTING_DISTANT_JOIN_STATIONS_HELPTEXT               :Allow adding parts to a station without directly touching the existing parts. Needs Ctrl+Click while placing the new parts
+STR_CONFIG_SETTING_DISTANT_JOIN_STATIONS_HELPTEXT               :Allow adding parts to a station without directly touching the existing parts, by Ctrl+Clicking while placing the new parts
 
 STR_CONFIG_SETTING_INFLATION                                    :Inflation: {STRING}
 STR_CONFIG_SETTING_INFLATION_HELPTEXT                           :Enable inflation in the economy, where costs are slightly faster rising than payments
@@ -1874,7 +1874,7 @@ STR_CONFIG_SETTING_SEMAPHORE_BUILD_BEFORE_DATE                  :Automatically b
 STR_CONFIG_SETTING_SEMAPHORE_BUILD_BEFORE_DATE_HELPTEXT         :Set the year when electric signals will be used for tracks. Before this year, non-electric signals will be used (which have the exact same function, but different looks)
 
 STR_CONFIG_SETTING_CYCLE_SIGNAL_TYPES                           :Cycle through signal types: {STRING}
-STR_CONFIG_SETTING_CYCLE_SIGNAL_TYPES_HELPTEXT                  :Select which signal types to cycle through when Ctrl+clicking on a built signal with the signal tool
+STR_CONFIG_SETTING_CYCLE_SIGNAL_TYPES_HELPTEXT                  :Select which signal types to cycle through when Ctrl+Clicking on a built signal with the signal tool
 ###length 2
 STR_CONFIG_SETTING_CYCLE_SIGNAL_PBS                             :Path signals only
 STR_CONFIG_SETTING_CYCLE_SIGNAL_ALL                             :All visible
@@ -2147,14 +2147,14 @@ STR_INTRO_TOOLTIP_SUB_ARCTIC_LANDSCAPE                          :{BLACK}Select '
 STR_INTRO_TOOLTIP_SUB_TROPICAL_LANDSCAPE                        :{BLACK}Select 'sub-tropical' landscape style
 STR_INTRO_TOOLTIP_TOYLAND_LANDSCAPE                             :{BLACK}Select 'toyland' landscape style
 
-STR_INTRO_TOOLTIP_GAME_OPTIONS                                  :{BLACK}Display game options
-STR_INTRO_TOOLTIP_HIGHSCORE                                     :{BLACK}Display highscore table
+STR_INTRO_TOOLTIP_GAME_OPTIONS                                  :{BLACK}Open game options
+STR_INTRO_TOOLTIP_HIGHSCORE                                     :{BLACK}Open highscore table
 STR_INTRO_TOOLTIP_HELP                                          :{BLACK}Get access to documentation and online resources
-STR_INTRO_TOOLTIP_CONFIG_SETTINGS_TREE                          :{BLACK}Display settings
-STR_INTRO_TOOLTIP_NEWGRF_SETTINGS                               :{BLACK}Display NewGRF settings
+STR_INTRO_TOOLTIP_CONFIG_SETTINGS_TREE                          :{BLACK}Open settings
+STR_INTRO_TOOLTIP_NEWGRF_SETTINGS                               :{BLACK}Open NewGRF settings
 STR_INTRO_TOOLTIP_ONLINE_CONTENT                                :{BLACK}Check for new and updated content to download
-STR_INTRO_TOOLTIP_AI_SETTINGS                                   :{BLACK}Display AI settings
-STR_INTRO_TOOLTIP_GAMESCRIPT_SETTINGS                           :{BLACK}Display Game script settings
+STR_INTRO_TOOLTIP_AI_SETTINGS                                   :{BLACK}Open AI settings
+STR_INTRO_TOOLTIP_GAMESCRIPT_SETTINGS                           :{BLACK}Open Game script settings
 STR_INTRO_TOOLTIP_QUIT                                          :{BLACK}Quit 'OpenTTD'
 
 STR_INTRO_BASESET                                               :{BLACK}The currently selected base graphics set is missing {NUM} sprite{P "" s}. Please check for updates for the baseset.
@@ -2212,8 +2212,8 @@ STR_LIVERY_TRAIN_GROUP_TOOLTIP                                  :{BLACK}Show col
 STR_LIVERY_ROAD_VEHICLE_GROUP_TOOLTIP                           :{BLACK}Show colors of road vehicle groups
 STR_LIVERY_SHIP_GROUP_TOOLTIP                                   :{BLACK}Show colors of ship groups
 STR_LIVERY_AIRCRAFT_GROUP_TOOLTIP                               :{BLACK}Show colors of aircraft groups
-STR_LIVERY_PRIMARY_TOOLTIP                                      :{BLACK}Choose the primary color for the selected scheme. Ctrl+Click will set this color for every scheme
-STR_LIVERY_SECONDARY_TOOLTIP                                    :{BLACK}Choose the secondary color for the selected scheme. Ctrl+Click will set this color for every scheme
+STR_LIVERY_PRIMARY_TOOLTIP                                      :{BLACK}Choose the primary color for the selected scheme. Ctrl+Click to set this color for every scheme
+STR_LIVERY_SECONDARY_TOOLTIP                                    :{BLACK}Choose the secondary color for the selected scheme. Ctrl+Click to set this color for every scheme
 STR_LIVERY_PANEL_TOOLTIP                                        :{BLACK}Select a color scheme to change, or multiple schemes with Ctrl+Click. Click on the box to toggle use of the scheme
 STR_LIVERY_TRAIN_GROUP_EMPTY                                    :No train groups are set up
 STR_LIVERY_ROAD_VEHICLE_GROUP_EMPTY                             :No road vehicle groups are set up
@@ -2726,16 +2726,16 @@ STR_RAIL_TOOLBAR_ELRAIL_CONSTRUCTION_CAPTION                    :Electrified Rai
 STR_RAIL_TOOLBAR_MONORAIL_CONSTRUCTION_CAPTION                  :Monorail Construction
 STR_RAIL_TOOLBAR_MAGLEV_CONSTRUCTION_CAPTION                    :Maglev Construction
 
-STR_RAIL_TOOLBAR_TOOLTIP_BUILD_RAILROAD_TRACK                   :{BLACK}Build railroad track. Ctrl toggles build/remove for railroad construction. Shift toggles building/showing cost estimate
-STR_RAIL_TOOLBAR_TOOLTIP_BUILD_AUTORAIL                         :{BLACK}Build railroad track using the Autorail mode. Ctrl toggles build/remove for railroad construction. Shift toggles building/showing cost estimate
-STR_RAIL_TOOLBAR_TOOLTIP_BUILD_TRAIN_DEPOT_FOR_BUILDING         :{BLACK}Build train depot (for buying and maintaining trains). Shift toggles building/showing cost estimate
-STR_RAIL_TOOLBAR_TOOLTIP_CONVERT_RAIL_TO_WAYPOINT               :{BLACK}Build waypoint on railway. Ctrl enables joining waypoints. Shift toggles building/showing cost estimate
-STR_RAIL_TOOLBAR_TOOLTIP_BUILD_RAILROAD_STATION                 :{BLACK}Build railroad station. Ctrl enables joining stations. Shift toggles building/showing cost estimate
-STR_RAIL_TOOLBAR_TOOLTIP_BUILD_RAILROAD_SIGNALS                 :{BLACK}Build signal on railway. Ctrl toggles semaphore/light signals{}Dragging builds signals along a straight stretch of rail. Ctrl builds signals up to the next junction or signal{}Ctrl+Click toggles opening the signal selection window. Shift toggles building/showing cost estimate
-STR_RAIL_TOOLBAR_TOOLTIP_BUILD_RAILROAD_BRIDGE                  :{BLACK}Build railroad bridge. Shift toggles building/showing cost estimate
-STR_RAIL_TOOLBAR_TOOLTIP_BUILD_RAILROAD_TUNNEL                  :{BLACK}Build railroad tunnel. Shift toggles building/showing cost estimate
-STR_RAIL_TOOLBAR_TOOLTIP_TOGGLE_BUILD_REMOVE_FOR                :{BLACK}Toggle build/remove for railroad track, signals, waypoints and stations. Hold Ctrl to also remove the rail of waypoints and stations
-STR_RAIL_TOOLBAR_TOOLTIP_CONVERT_RAIL                           :{BLACK}Convert/Upgrade the type of rail. Shift toggles building/showing cost estimate
+STR_RAIL_TOOLBAR_TOOLTIP_BUILD_RAILROAD_TRACK                   :{BLACK}Build railroad track. Ctrl+Click to remove railroad track. Also press Shift to show cost estimate only
+STR_RAIL_TOOLBAR_TOOLTIP_BUILD_AUTORAIL                         :{BLACK}Build railroad track using the Autorail mode. Ctrl+Click to remove railroad track. Also press Shift to show cost estimate only
+STR_RAIL_TOOLBAR_TOOLTIP_BUILD_TRAIN_DEPOT_FOR_BUILDING         :{BLACK}Build train depot (for buying and maintaining trains). Also press Shift to show cost estimate only
+STR_RAIL_TOOLBAR_TOOLTIP_CONVERT_RAIL_TO_WAYPOINT               :{BLACK}Build waypoint on railroad. Ctrl+Click to select another waypoint to join. Also press Shift to show cost estimate only
+STR_RAIL_TOOLBAR_TOOLTIP_BUILD_RAILROAD_STATION                 :{BLACK}Build railroad station. Ctrl+Click to select another station to join. Also press Shift to show cost estimate only
+STR_RAIL_TOOLBAR_TOOLTIP_BUILD_RAILROAD_SIGNALS                 :{BLACK}Build signal on railroad. Ctrl+Click to build the alternate signal style{}Click+Drag to fill the selected section of rail with signals at the chosen spacing. Ctrl+Click+Drag to fill signals up to the next junction, station, or signal. Also press Shift to show cost estimate only
+STR_RAIL_TOOLBAR_TOOLTIP_BUILD_RAILROAD_BRIDGE                  :{BLACK}Build railroad bridge. Also press Shift to show cost estimate only
+STR_RAIL_TOOLBAR_TOOLTIP_BUILD_RAILROAD_TUNNEL                  :{BLACK}Build railroad tunnel. Also press Shift to show cost estimate only
+STR_RAIL_TOOLBAR_TOOLTIP_TOGGLE_BUILD_REMOVE_FOR                :{BLACK}Toggle build/remove for railroad track, signals, waypoints and stations. Ctrl+Click to also remove the rail of waypoints and stations
+STR_RAIL_TOOLBAR_TOOLTIP_CONVERT_RAIL                           :{BLACK}Convert/Upgrade the type of rail. Also press Shift to show cost estimate only
 
 STR_RAIL_NAME_RAILROAD                                          :Railroad
 STR_RAIL_NAME_ELRAIL                                            :Electrified railroad
@@ -2785,7 +2785,7 @@ STR_BUILD_SIGNAL_ELECTRIC_EXIT_TOOLTIP                          :{BLACK}Exit Sig
 STR_BUILD_SIGNAL_ELECTRIC_COMBO_TOOLTIP                         :{BLACK}Combo Signal (electric){}The combo signal simply acts as both an entry and exit signal. This allows you to build large "trees" of pre-signals
 STR_BUILD_SIGNAL_ELECTRIC_PBS_TOOLTIP                           :{BLACK}Path Signal (electric){}A path signal allows more than one train to enter a signal block at the same time, if the train can reserve a path to a safe stopping point. Standard path signals can be passed from the back side
 STR_BUILD_SIGNAL_ELECTRIC_PBS_OWAY_TOOLTIP                      :{BLACK}One-way Path Signal (electric){}A path signal allows more than one train to enter a signal block at the same time, if the train can reserve a path to a safe stopping point. One-way path signals can't be passed from the back side
-STR_BUILD_SIGNAL_CONVERT_TOOLTIP                                :{BLACK}Signal Convert{}When selected, clicking an existing signal will convert it to the selected signal type and variant. Ctrl+Click will toggle the existing variant. Shift+Click shows estimated conversion cost
+STR_BUILD_SIGNAL_CONVERT_TOOLTIP                                :{BLACK}Signal Convert{}Click an existing signal to convert it to the selected signal type and variant. Ctrl+Click to toggle the existing variant. Shift+Click shows estimated conversion cost
 STR_BUILD_SIGNAL_DRAG_SIGNALS_DENSITY_TOOLTIP                   :{BLACK}Dragging signal distance
 STR_BUILD_SIGNAL_DRAG_SIGNALS_DENSITY_DECREASE_TOOLTIP          :{BLACK}Decrease dragging signal distance
 STR_BUILD_SIGNAL_DRAG_SIGNALS_DENSITY_INCREASE_TOOLTIP          :{BLACK}Increase dragging signal distance
@@ -2811,25 +2811,25 @@ STR_BRIDGE_TUBULAR_SILICON                                      :Tubular, Silico
 # Road construction toolbar
 STR_ROAD_TOOLBAR_ROAD_CONSTRUCTION_CAPTION                      :{WHITE}Road Construction
 STR_ROAD_TOOLBAR_TRAM_CONSTRUCTION_CAPTION                      :{WHITE}Streetcar Construction
-STR_ROAD_TOOLBAR_TOOLTIP_BUILD_ROAD_SECTION                     :{BLACK}Build road section. Ctrl toggles build/remove for road construction. Shift toggles building/showing cost estimate
-STR_ROAD_TOOLBAR_TOOLTIP_BUILD_TRAMWAY_SECTION                  :{BLACK}Build streetcar track. Ctrl toggles build/remove for streetcar construction. Shift toggles building/showing cost estimate
-STR_ROAD_TOOLBAR_TOOLTIP_BUILD_AUTOROAD                         :{BLACK}Build road section using the Autoroad mode. Ctrl toggles build/remove for road construction. Shift toggles building/showing cost estimate
-STR_ROAD_TOOLBAR_TOOLTIP_BUILD_AUTOTRAM                         :{BLACK}Build streetcar track using the Autostreet mode. Ctrl toggles build/remove for streetcar construction. Shift toggles building/showing cost estimate
-STR_ROAD_TOOLBAR_TOOLTIP_BUILD_ROAD_VEHICLE_DEPOT               :{BLACK}Build road vehicle depot (for buying and maintaining vehicles). Shift toggles building/showing cost estimate
-STR_ROAD_TOOLBAR_TOOLTIP_BUILD_TRAM_VEHICLE_DEPOT               :{BLACK}Build tram vehicle depot (for buying and servicing vehicles). Shift toggles building/showing cost estimate
-STR_ROAD_TOOLBAR_TOOLTIP_BUILD_BUS_STATION                      :{BLACK}Build bus station. Ctrl enables joining stations. Shift toggles building/showing cost estimate
-STR_ROAD_TOOLBAR_TOOLTIP_BUILD_PASSENGER_TRAM_STATION           :{BLACK}Build passenger streetcar station. Ctrl enables joining stations. Shift toggles building/showing cost estimate
-STR_ROAD_TOOLBAR_TOOLTIP_BUILD_TRUCK_LOADING_BAY                :{BLACK}Build truck station. Ctrl enables joining stations. Shift toggles building/showing cost estimate
-STR_ROAD_TOOLBAR_TOOLTIP_BUILD_CARGO_TRAM_STATION               :{BLACK}Build freight streetcar station. Ctrl enables joining stations. Shift toggles building/showing cost estimate
+STR_ROAD_TOOLBAR_TOOLTIP_BUILD_ROAD_SECTION                     :{BLACK}Build road section. Ctrl+Click to remove road section. Also press Shift to show cost estimate only
+STR_ROAD_TOOLBAR_TOOLTIP_BUILD_TRAMWAY_SECTION                  :{BLACK}Build streetcar section. Ctrl+Click to remove streetcar section. Also press Shift to show cost estimate only
+STR_ROAD_TOOLBAR_TOOLTIP_BUILD_AUTOROAD                         :{BLACK}Build road section using the Autoroad mode. Ctrl+Click to remove road section. Also press Shift to show cost estimate only
+STR_ROAD_TOOLBAR_TOOLTIP_BUILD_AUTOTRAM                         :{BLACK}Build streetcar section using the Autorail mode. Ctrl+Click to remove streetcar section. Also press Shift to show cost estimate only
+STR_ROAD_TOOLBAR_TOOLTIP_BUILD_ROAD_VEHICLE_DEPOT               :{BLACK}Build road vehicle depot (for buying and maintaining vehicles). Also press Shift to show cost estimate only
+STR_ROAD_TOOLBAR_TOOLTIP_BUILD_TRAM_VEHICLE_DEPOT               :{BLACK}Build streetcar vehicle depot (for buying and maintaining vehicles). Also press Shift to show cost estimate only
+STR_ROAD_TOOLBAR_TOOLTIP_BUILD_BUS_STATION                      :{BLACK}Build bus station. Ctrl+Click to select another station to join. Also press Shift to show cost estimate only
+STR_ROAD_TOOLBAR_TOOLTIP_BUILD_PASSENGER_TRAM_STATION           :{BLACK}Build passenger streetcar station. Ctrl+Click to select another station to join. Also press Shift to show cost estimate only
+STR_ROAD_TOOLBAR_TOOLTIP_BUILD_TRUCK_LOADING_BAY                :{BLACK}Build truck station. Ctrl+Click to select another station to join. Also press Shift to show cost estimate only
+STR_ROAD_TOOLBAR_TOOLTIP_BUILD_CARGO_TRAM_STATION               :{BLACK}Build freight streetcar station. Ctrl+Click to select another station to join. Also press Shift to show cost estimate only
 STR_ROAD_TOOLBAR_TOOLTIP_TOGGLE_ONE_WAY_ROAD                    :{BLACK}Activate/Deactivate one way roads
-STR_ROAD_TOOLBAR_TOOLTIP_BUILD_ROAD_BRIDGE                      :{BLACK}Build road bridge. Shift toggles building/showing cost estimate
-STR_ROAD_TOOLBAR_TOOLTIP_BUILD_TRAMWAY_BRIDGE                   :{BLACK}Build streetcar bridge. Shift toggles building/showing cost estimate
-STR_ROAD_TOOLBAR_TOOLTIP_BUILD_ROAD_TUNNEL                      :{BLACK}Build road tunnel. Shift toggles building/showing cost estimate
-STR_ROAD_TOOLBAR_TOOLTIP_BUILD_TRAMWAY_TUNNEL                   :{BLACK}Build streetcar tunnel. Shift toggles building/showing cost estimate
+STR_ROAD_TOOLBAR_TOOLTIP_BUILD_ROAD_BRIDGE                      :{BLACK}Build road bridge. Also press Shift to show cost estimate only
+STR_ROAD_TOOLBAR_TOOLTIP_BUILD_TRAMWAY_BRIDGE                   :{BLACK}Build streetcar bridge. Also press Shift to show cost estimate only
+STR_ROAD_TOOLBAR_TOOLTIP_BUILD_ROAD_TUNNEL                      :{BLACK}Build road tunnel. Also press Shift to show cost estimate only
+STR_ROAD_TOOLBAR_TOOLTIP_BUILD_TRAMWAY_TUNNEL                   :{BLACK}Build streetcar tunnel. Also press Shift to show cost estimate only
 STR_ROAD_TOOLBAR_TOOLTIP_TOGGLE_BUILD_REMOVE_FOR_ROAD           :{BLACK}Toggle build/remove for road construction
 STR_ROAD_TOOLBAR_TOOLTIP_TOGGLE_BUILD_REMOVE_FOR_TRAMWAYS       :{BLACK}Toggle build/remove for streetcar track construction
-STR_ROAD_TOOLBAR_TOOLTIP_CONVERT_ROAD                           :{BLACK}Convert/Upgrade the type of road. Shift toggles building/showing cost estimate
-STR_ROAD_TOOLBAR_TOOLTIP_CONVERT_TRAM                           :{BLACK}Convert/Upgrade the type of streetcar. Shift toggles building/showing cost estimate
+STR_ROAD_TOOLBAR_TOOLTIP_CONVERT_ROAD                           :{BLACK}Convert/Upgrade the type of road. Also press Shift to show cost estimate only
+STR_ROAD_TOOLBAR_TOOLTIP_CONVERT_TRAM                           :{BLACK}Convert/Upgrade the type of streetcar. Also press Shift to show cost estimate only
 
 STR_ROAD_NAME_ROAD                                              :Road
 STR_ROAD_NAME_TRAM                                              :Streetcar line
@@ -2853,14 +2853,14 @@ STR_STATION_BUILD_CARGO_TRAM_ORIENTATION_TOOLTIP                :{BLACK}Select f
 # Waterways toolbar (last two for SE only)
 STR_WATERWAYS_TOOLBAR_CAPTION                                   :{WHITE}Waterways Construction
 STR_WATERWAYS_TOOLBAR_CAPTION_SE                                :{WHITE}Waterways
-STR_WATERWAYS_TOOLBAR_BUILD_CANALS_TOOLTIP                      :{BLACK}Build canals. Shift toggles building/showing cost estimate
-STR_WATERWAYS_TOOLBAR_BUILD_LOCKS_TOOLTIP                       :{BLACK}Build locks. Shift toggles building/showing cost estimate
-STR_WATERWAYS_TOOLBAR_BUILD_DEPOT_TOOLTIP                       :{BLACK}Build ship depot (for buying and maintaining ships). Shift toggles building/showing cost estimate
-STR_WATERWAYS_TOOLBAR_BUILD_DOCK_TOOLTIP                        :{BLACK}Build ship dock. Ctrl enables joining stations. Shift toggles building/showing cost estimate
-STR_WATERWAYS_TOOLBAR_BUOY_TOOLTIP                              :{BLACK}Place a buoy which can be used as a waypoint. Shift toggles building/showing cost estimate
-STR_WATERWAYS_TOOLBAR_BUILD_AQUEDUCT_TOOLTIP                    :{BLACK}Build aqueduct. Shift toggles building/showing cost estimate
-STR_WATERWAYS_TOOLBAR_CREATE_LAKE_TOOLTIP                       :{BLACK}Define water area.{}Make a canal. If Ctrl is held down at sea level, it will flood the surroundings instead
-STR_WATERWAYS_TOOLBAR_CREATE_RIVER_TOOLTIP                      :{BLACK}Place rivers. Ctrl selects the area diagonally
+STR_WATERWAYS_TOOLBAR_BUILD_CANALS_TOOLTIP                      :{BLACK}Build canals. Also press Shift to show cost estimate only
+STR_WATERWAYS_TOOLBAR_BUILD_LOCKS_TOOLTIP                       :{BLACK}Build locks. Also press Shift to show cost estimate only
+STR_WATERWAYS_TOOLBAR_BUILD_DEPOT_TOOLTIP                       :{BLACK}Build ship depot (for buying and maintaining ships). Also press Shift to show cost estimate only
+STR_WATERWAYS_TOOLBAR_BUILD_DOCK_TOOLTIP                        :{BLACK}Build ship dock. Ctrl+Click to select another station to join. Also press Shift to show cost estimate only
+STR_WATERWAYS_TOOLBAR_BUOY_TOOLTIP                              :{BLACK}Place a buoy which can be used as a waypoint. Also press Shift to show cost estimate only
+STR_WATERWAYS_TOOLBAR_BUILD_AQUEDUCT_TOOLTIP                    :{BLACK}Build aqueduct. Also press Shift to show cost estimate only
+STR_WATERWAYS_TOOLBAR_CREATE_LAKE_TOOLTIP                       :{BLACK}Build canal. Ctrl+Click at sea level to flood with sea water instead
+STR_WATERWAYS_TOOLBAR_CREATE_RIVER_TOOLTIP                      :{BLACK}Place rivers. Ctrl+Click to select diagonally
 
 # Ship depot construction window
 STR_DEPOT_BUILD_SHIP_CAPTION                                    :{WHITE}Ship Depot Orientation
@@ -2871,7 +2871,7 @@ STR_STATION_BUILD_DOCK_CAPTION                                  :{WHITE}Dock
 
 # Airport toolbar
 STR_TOOLBAR_AIRCRAFT_CAPTION                                    :{WHITE}Airports
-STR_TOOLBAR_AIRCRAFT_BUILD_AIRPORT_TOOLTIP                      :{BLACK}Build airport. Ctrl enables joining stations. Shift toggles building/showing cost estimate
+STR_TOOLBAR_AIRCRAFT_BUILD_AIRPORT_TOOLTIP                      :{BLACK}Build airport. Ctrl+Click to select another station to join. Also press Shift to show cost estimate only
 
 # Airport construction window
 STR_STATION_BUILD_AIRPORT_CAPTION                               :{WHITE}Airport Selection
@@ -2898,14 +2898,14 @@ STR_STATION_BUILD_NOISE                                         :{BLACK}Noise ge
 
 # Landscaping toolbar
 STR_LANDSCAPING_TOOLBAR                                         :{WHITE}Landscaping
-STR_LANDSCAPING_TOOLTIP_LOWER_A_CORNER_OF_LAND                  :{BLACK}Lower a corner of land. Dragging lowers the first selected corner and levels the selected area to the new corner height. Ctrl selects the area diagonally. Shift toggles building/showing cost estimate
-STR_LANDSCAPING_TOOLTIP_RAISE_A_CORNER_OF_LAND                  :{BLACK}Raise a corner of land. Dragging raises the first selected corner and levels the selected area to the new corner height. Ctrl selects the area diagonally. Shift toggles building/showing cost estimate
-STR_LANDSCAPING_LEVEL_LAND_TOOLTIP                              :{BLACK}Level an area of land to the height of the first selected corner. Ctrl selects the area diagonally. Shift toggles building/showing cost estimate
-STR_LANDSCAPING_TOOLTIP_PURCHASE_LAND                           :{BLACK}Purchase land for future use. Ctrl selects the area diagonally. Shift toggles building/showing cost estimate
+STR_LANDSCAPING_TOOLTIP_LOWER_A_CORNER_OF_LAND                  :{BLACK}Lower a corner of land. Click+Drag to lower the first selected corner and level the selected area to the new corner height. Ctrl+Click+Drag to select the area diagonally. Also press Shift to show cost estimate only
+STR_LANDSCAPING_TOOLTIP_RAISE_A_CORNER_OF_LAND                  :{BLACK}Raise a corner of land. Click+Drag to raise the first selected corner and level the selected area to the new corner height. Ctrl+Click+Drag to select the area diagonally. Also press Shift to show cost estimate only
+STR_LANDSCAPING_LEVEL_LAND_TOOLTIP                              :{BLACK}Level an area of land to the height of the first selected corner. Ctrl+Click+Drag to select the area diagonally. Also press Shift to show cost estimate only
+STR_LANDSCAPING_TOOLTIP_PURCHASE_LAND                           :{BLACK}Purchase land for future use. Ctrl+Click+Drag to select the area diagonally. Also press Shift to show cost estimate only
 
 # Object construction window
 STR_OBJECT_BUILD_CAPTION                                        :{WHITE}Object Selection
-STR_OBJECT_BUILD_TOOLTIP                                        :{BLACK}Select object to build. Ctrl selects the area diagonally. Shift toggles building/showing cost estimate
+STR_OBJECT_BUILD_TOOLTIP                                        :{BLACK}Select object to build. Ctrl+Click+Drag to select the area diagonally. Also press Shift to show cost estimate only
 STR_OBJECT_BUILD_CLASS_TOOLTIP                                  :{BLACK}Select class of the object to build
 STR_OBJECT_BUILD_PREVIEW_TOOLTIP                                :{BLACK}Preview of the object
 STR_OBJECT_BUILD_SIZE                                           :{BLACK}Size: {GOLD}{NUM} x {NUM} tiles
@@ -2917,7 +2917,7 @@ STR_OBJECT_CLASS_TRNS                                           :Transmitters
 STR_PLANT_TREE_CAPTION                                          :{WHITE}Trees
 STR_PLANT_TREE_TOOLTIP                                          :{BLACK}Select tree type to plant. If the tile already has a tree, this will add more trees of mixed types independent of the selected type
 STR_TREES_RANDOM_TYPE                                           :{BLACK}Trees of random type
-STR_TREES_RANDOM_TYPE_TOOLTIP                                   :{BLACK}Place trees of random type. Ctrl selects the area diagonally. Shift toggles building/showing cost estimate
+STR_TREES_RANDOM_TYPE_TOOLTIP                                   :{BLACK}Place trees of random type. Ctrl+Click+Drag to select the area diagonally. Also press Shift to show cost estimate only
 STR_TREES_RANDOM_TREES_BUTTON                                   :{BLACK}Random Trees
 STR_TREES_RANDOM_TREES_TOOLTIP                                  :{BLACK}Plant trees randomly throughout the landscape
 STR_TREES_MODE_NORMAL_BUTTON                                    :{BLACK}Normal
@@ -2930,7 +2930,7 @@ STR_TREES_MODE_FOREST_LG_TOOLTIP                                :{BLACK}Plant la
 # Land generation window (SE)
 STR_TERRAFORM_TOOLBAR_LAND_GENERATION_CAPTION                   :{WHITE}Land Generation
 STR_TERRAFORM_TOOLTIP_PLACE_ROCKY_AREAS_ON_LANDSCAPE            :{BLACK}Place rocky areas on landscape
-STR_TERRAFORM_TOOLTIP_DEFINE_DESERT_AREA                        :{BLACK}Define desert area.{}Hold Ctrl to remove it
+STR_TERRAFORM_TOOLTIP_DEFINE_DESERT_AREA                        :{BLACK}Define desert area.{}Ctrl+Click to remove desert area
 STR_TERRAFORM_TOOLTIP_INCREASE_SIZE_OF_LAND_AREA                :{BLACK}Increase area of land to lower/raise
 STR_TERRAFORM_TOOLTIP_DECREASE_SIZE_OF_LAND_AREA                :{BLACK}Decrease area of land to lower/raise
 STR_TERRAFORM_TOOLTIP_GENERATE_RANDOM_LAND                      :{BLACK}Generate random land
@@ -2944,7 +2944,7 @@ STR_RESET_LANDSCAPE_CONFIRMATION_TEXT                           :{WHITE}Are you 
 # Town generation window (SE)
 STR_FOUND_TOWN_CAPTION                                          :{WHITE}Town Generation
 STR_FOUND_TOWN_NEW_TOWN_BUTTON                                  :{BLACK}New Town
-STR_FOUND_TOWN_NEW_TOWN_TOOLTIP                                 :{BLACK}Found new town. Shift+Click shows only estimated cost
+STR_FOUND_TOWN_NEW_TOWN_TOOLTIP                                 :{BLACK}Found new town. Also press Shift to show cost estimate only
 STR_FOUND_TOWN_RANDOM_TOWN_BUTTON                               :{BLACK}Random Town
 STR_FOUND_TOWN_RANDOM_TOWN_TOOLTIP                              :{BLACK}Found town in random location
 STR_FOUND_TOWN_MANY_RANDOM_TOWNS                                :{BLACK}Many random towns
@@ -3010,7 +3010,7 @@ STR_INDUSTRY_CARGOES_SELECT_INDUSTRY_TOOLTIP                    :{BLACK}Select t
 
 # Land area window
 STR_LAND_AREA_INFORMATION_CAPTION                               :{WHITE}Land Area Information
-STR_LAND_AREA_INFORMATION_LOCATION_TOOLTIP                      :{BLACK}Center the main view on tile location. Ctrl+Click opens a new viewport on tile location
+STR_LAND_AREA_INFORMATION_LOCATION_TOOLTIP                      :{BLACK}Center the main view on tile location. Ctrl+Click to open a new viewport on tile location
 STR_LAND_AREA_INFORMATION_COST_TO_CLEAR_N_A                     :{BLACK}Cost to clear: {LTBLUE}N/A
 STR_LAND_AREA_INFORMATION_COST_TO_CLEAR                         :{BLACK}Cost to clear: {RED}{CURRENCY_LONG}
 STR_LAND_AREA_INFORMATION_REVENUE_WHEN_CLEARED                  :{BLACK}Revenue when cleared: {LTBLUE}{CURRENCY_LONG}
@@ -3257,11 +3257,11 @@ STR_MAPGEN_VARIETY                                              :{BLACK}Variety 
 STR_MAPGEN_GENERATE                                             :{WHITE}Generate
 STR_MAPGEN_GENERATE_TOOLTIP                                     :{BLACK}Create the world and play OpenTTD!
 STR_MAPGEN_NEWGRF_SETTINGS                                      :{BLACK}NewGRF Settings
-STR_MAPGEN_NEWGRF_SETTINGS_TOOLTIP                              :{BLACK}Display NewGRF settings
+STR_MAPGEN_NEWGRF_SETTINGS_TOOLTIP                              :{BLACK}Open NewGRF settings
 STR_MAPGEN_AI_SETTINGS                                          :{BLACK}AI Settings
-STR_MAPGEN_AI_SETTINGS_TOOLTIP                                  :{BLACK}Display AI settings
+STR_MAPGEN_AI_SETTINGS_TOOLTIP                                  :{BLACK}Open AI settings
 STR_MAPGEN_GS_SETTINGS                                          :{BLACK}Game Script Settings
-STR_MAPGEN_GS_SETTINGS_TOOLTIP                                  :{BLACK}Display game script settings
+STR_MAPGEN_GS_SETTINGS_TOOLTIP                                  :{BLACK}Open game script settings
 
 ###length 21
 STR_MAPGEN_TOWN_NAME_ORIGINAL_ENGLISH                           :English (Original)
@@ -3537,7 +3537,7 @@ STR_SIGN_LIST_MATCH_CASE_TOOLTIP                                :{BLACK}Toggle m
 
 # Sign window
 STR_EDIT_SIGN_CAPTION                                           :{WHITE}Edit sign text
-STR_EDIT_SIGN_LOCATION_TOOLTIP                                  :{BLACK}Center the main view on sign location. Ctrl+Click opens a new viewport on sign location
+STR_EDIT_SIGN_LOCATION_TOOLTIP                                  :{BLACK}Center the main view on sign location. Ctrl+Click to open a new viewport on sign location
 STR_EDIT_SIGN_NEXT_SIGN_TOOLTIP                                 :{BLACK}Go to next sign
 STR_EDIT_SIGN_PREVIOUS_SIGN_TOOLTIP                             :{BLACK}Go to previous sign
 
@@ -3548,7 +3548,7 @@ STR_TOWN_DIRECTORY_CAPTION                                      :{WHITE}Towns
 STR_TOWN_DIRECTORY_NONE                                         :{ORANGE}- None -
 STR_TOWN_DIRECTORY_TOWN                                         :{ORANGE}{TOWN}{BLACK} ({COMMA})
 STR_TOWN_DIRECTORY_CITY                                         :{ORANGE}{TOWN}{YELLOW} (City){BLACK} ({COMMA})
-STR_TOWN_DIRECTORY_LIST_TOOLTIP                                 :{BLACK}Town names - click on name to center main view on town. Ctrl+Click opens a new viewport on town location
+STR_TOWN_DIRECTORY_LIST_TOOLTIP                                 :{BLACK}Town names - click on name to center main view on town. Ctrl+Click to open a new viewport on town location
 STR_TOWN_POPULATION                                             :{BLACK}World population: {COMMA}
 
 # Town view window
@@ -3566,7 +3566,7 @@ STR_TOWN_VIEW_TOWN_GROWS_EVERY                                  :{BLACK}Town gro
 STR_TOWN_VIEW_TOWN_GROWS_EVERY_FUNDED                           :{BLACK}Town grows every {ORANGE}{COMMA}{BLACK}{NBSP}day{P "" s} (funded)
 STR_TOWN_VIEW_TOWN_GROW_STOPPED                                 :{BLACK}Town is {RED}not{BLACK} growing
 STR_TOWN_VIEW_NOISE_IN_TOWN                                     :{BLACK}Noise limit in town: {ORANGE}{COMMA}{BLACK}  max: {ORANGE}{COMMA}
-STR_TOWN_VIEW_CENTER_TOOLTIP                                    :{BLACK}Center the main view on town location. Ctrl+Click opens a new viewport on town location
+STR_TOWN_VIEW_CENTER_TOOLTIP                                    :{BLACK}Center the main view on town location. Ctrl+Click to open a new viewport on town location
 STR_TOWN_VIEW_LOCAL_AUTHORITY_BUTTON                            :{BLACK}Local Authority
 STR_TOWN_VIEW_LOCAL_AUTHORITY_TOOLTIP                           :{BLACK}Show information on local authority
 STR_TOWN_VIEW_RENAME_TOOLTIP                                    :{BLACK}Change town name
@@ -3621,7 +3621,7 @@ STR_GOALS_TEXT                                                  :{ORANGE}{STRING
 STR_GOALS_NONE                                                  :{ORANGE}- None -
 STR_GOALS_PROGRESS                                              :{ORANGE}{STRING}
 STR_GOALS_PROGRESS_COMPLETE                                     :{GREEN}{STRING}
-STR_GOALS_TOOLTIP_CLICK_ON_SERVICE_TO_CENTER                    :{BLACK}Click on goal to center main view on industry/town/tile. Ctrl+Click opens a new viewport on industry/town/tile location
+STR_GOALS_TOOLTIP_CLICK_ON_SERVICE_TO_CENTER                    :{BLACK}Click on goal to center main view on industry/town/tile. Ctrl+Click to open a new viewport on industry/town/tile location
 
 # Goal question window
 STR_GOAL_QUESTION_CAPTION_QUESTION                              :{BLACK}Question
@@ -3657,7 +3657,7 @@ STR_SUBSIDIES_OFFERED_FROM_TO                                   :{ORANGE}{STRING
 STR_SUBSIDIES_NONE                                              :{ORANGE}- None -
 STR_SUBSIDIES_SUBSIDISED_TITLE                                  :{BLACK}Services already subsidized:
 STR_SUBSIDIES_SUBSIDISED_FROM_TO                                :{ORANGE}{STRING} from {STRING} to {STRING}{YELLOW} ({COMPANY}{YELLOW}, until {DATE_SHORT})
-STR_SUBSIDIES_TOOLTIP_CLICK_ON_SERVICE_TO_CENTER                :{BLACK}Click on service to center main view on industry/town. Ctrl+Click opens a new viewport on industry/town location
+STR_SUBSIDIES_TOOLTIP_CLICK_ON_SERVICE_TO_CENTER                :{BLACK}Click on service to center main view on industry/town. Ctrl+Click to open a new viewport on industry/town location
 
 # Story book window
 STR_STORY_BOOK_CAPTION                                          :{WHITE}{COMPANY} Story Book
@@ -3673,8 +3673,8 @@ STR_STORY_BOOK_NEXT_PAGE_TOOLTIP                                :{BLACK}Go to ne
 STR_STORY_BOOK_INVALID_GOAL_REF                                 :{RED}Invalid goal reference
 
 # Station list window
-STR_STATION_LIST_TOOLTIP                                        :{BLACK}Station names - click on name to center main view on station. Ctrl+Click opens a new viewport on station location
-STR_STATION_LIST_USE_CTRL_TO_SELECT_MORE                        :{BLACK}Hold Ctrl to select more than one item
+STR_STATION_LIST_TOOLTIP                                        :{BLACK}Station names - click on name to center main view on station. Ctrl+Click to open a new viewport on station location
+STR_STATION_LIST_USE_CTRL_TO_SELECT_MORE                        :{BLACK}Ctrl+Click to select multiple items
 STR_STATION_LIST_CAPTION                                        :{WHITE}{COMPANY} - {COMMA} Station{P "" s}
 STR_STATION_LIST_STATION                                        :{YELLOW}{STATION} {STATION_FEATURES}
 STR_STATION_LIST_WAYPOINT                                       :{YELLOW}{WAYPOINT}
@@ -3733,7 +3733,7 @@ STR_CARGO_RATING_VERY_GOOD                                      :Very Good
 STR_CARGO_RATING_EXCELLENT                                      :Excellent
 STR_CARGO_RATING_OUTSTANDING                                    :Outstanding
 
-STR_STATION_VIEW_CENTER_TOOLTIP                                 :{BLACK}Center main view on station location. Ctrl+Click opens a new viewport on station location
+STR_STATION_VIEW_CENTER_TOOLTIP                                 :{BLACK}Center main view on station location. Ctrl+Click to open a new viewport on station location
 STR_STATION_VIEW_RENAME_TOOLTIP                                 :{BLACK}Change name of station
 
 STR_STATION_VIEW_SCHEDULED_TRAINS_TOOLTIP                       :{BLACK}Show all trains which have this station on their schedule
@@ -3748,9 +3748,9 @@ STR_STATION_VIEW_CLOSE_AIRPORT_TOOLTIP                          :{BLACK}Prevent 
 
 # Waypoint/buoy view window
 STR_WAYPOINT_VIEW_CAPTION                                       :{WHITE}{WAYPOINT}
-STR_WAYPOINT_VIEW_CENTER_TOOLTIP                                :{BLACK}Center main view on waypoint location. Ctrl+Click opens a new viewport on waypoint location
+STR_WAYPOINT_VIEW_CENTER_TOOLTIP                                :{BLACK}Center main view on waypoint location. Ctrl+Click to open a new viewport on waypoint location
 STR_WAYPOINT_VIEW_CHANGE_WAYPOINT_NAME                          :{BLACK}Change waypoint name
-STR_BUOY_VIEW_CENTER_TOOLTIP                                    :{BLACK}Center main view on buoy location. Ctrl+Click opens a new viewport on buoy location
+STR_BUOY_VIEW_CENTER_TOOLTIP                                    :{BLACK}Center main view on buoy location. Ctrl+Click to open a new viewport on buoy location
 STR_BUOY_VIEW_CHANGE_BUOY_NAME                                  :{BLACK}Change buoy name
 
 STR_EDIT_WAYPOINT_NAME                                          :{WHITE}Edit waypoint name
@@ -3793,9 +3793,9 @@ STR_FINANCES_MAX_LOAN                                           :{WHITE}Maximum 
 STR_FINANCES_TOTAL_CURRENCY                                     :{BLACK}{CURRENCY_LONG}
 STR_FINANCES_BANK_BALANCE                                       :{WHITE}{CURRENCY_LONG}
 STR_FINANCES_BORROW_BUTTON                                      :{BLACK}Borrow {CURRENCY_LONG}
-STR_FINANCES_BORROW_TOOLTIP                                     :{BLACK}Increase size of loan. Ctrl+Click borrows as much as possible
+STR_FINANCES_BORROW_TOOLTIP                                     :{BLACK}Increase size of loan. Ctrl+Click to borrow as much as possible
 STR_FINANCES_REPAY_BUTTON                                       :{BLACK}Repay {CURRENCY_LONG}
-STR_FINANCES_REPAY_TOOLTIP                                      :{BLACK}Repay part of loan. Ctrl+Click repays as much loan as possible
+STR_FINANCES_REPAY_TOOLTIP                                      :{BLACK}Repay part of loan. Ctrl+Click to repay as much loan as possible
 STR_FINANCES_INFRASTRUCTURE_BUTTON                              :{BLACK}Infrastructure
 
 # Company view
@@ -3824,7 +3824,7 @@ STR_COMPANY_VIEW_BUILD_HQ_TOOLTIP                               :{BLACK}Build co
 STR_COMPANY_VIEW_VIEW_HQ_BUTTON                                 :{BLACK}View HQ
 STR_COMPANY_VIEW_VIEW_HQ_TOOLTIP                                :{BLACK}View company headquarters
 STR_COMPANY_VIEW_RELOCATE_HQ                                    :{BLACK}Relocate HQ
-STR_COMPANY_VIEW_RELOCATE_COMPANY_HEADQUARTERS                  :{BLACK}Rebuild company headquarters elsewhere for 1% cost of company value. Shift+Click shows estimated cost without relocating HQ
+STR_COMPANY_VIEW_RELOCATE_COMPANY_HEADQUARTERS                  :{BLACK}Rebuild company headquarters elsewhere for 1% cost of company value. Also press Shift to show cost estimate only
 STR_COMPANY_VIEW_INFRASTRUCTURE_BUTTON                          :{BLACK}Details
 STR_COMPANY_VIEW_INFRASTRUCTURE_TOOLTIP                         :{BLACK}View detailed infrastructure counts
 STR_COMPANY_VIEW_GIVE_MONEY_BUTTON                              :{BLACK}Give money
@@ -3870,7 +3870,7 @@ STR_INDUSTRY_DIRECTORY_ITEM_PROD1                               :{ORANGE}{INDUST
 STR_INDUSTRY_DIRECTORY_ITEM_PROD2                               :{ORANGE}{INDUSTRY} {STRING}, {STRING}
 STR_INDUSTRY_DIRECTORY_ITEM_PROD3                               :{ORANGE}{INDUSTRY} {STRING}, {STRING}, {STRING}
 STR_INDUSTRY_DIRECTORY_ITEM_PRODMORE                            :{ORANGE}{INDUSTRY} {STRING}, {STRING}, {STRING} and {NUM} more...
-STR_INDUSTRY_DIRECTORY_LIST_CAPTION                             :{BLACK}Industry names - click on name to center main view on industry. Ctrl+Click opens a new viewport on industry location
+STR_INDUSTRY_DIRECTORY_LIST_CAPTION                             :{BLACK}Industry names - click on name to center main view on industry. Ctrl+Click to open a new viewport on industry location
 STR_INDUSTRY_DIRECTORY_ACCEPTED_CARGO_FILTER                    :{BLACK}Accepted cargo: {SILVER}{STRING}
 STR_INDUSTRY_DIRECTORY_PRODUCED_CARGO_FILTER                    :{BLACK}Produced cargo: {SILVER}{STRING}
 STR_INDUSTRY_DIRECTORY_FILTER_ALL_TYPES                         :All cargo types
@@ -3880,7 +3880,7 @@ STR_INDUSTRY_DIRECTORY_FILTER_NONE                              :None
 STR_INDUSTRY_VIEW_CAPTION                                       :{WHITE}{INDUSTRY}
 STR_INDUSTRY_VIEW_PRODUCTION_LAST_MONTH_TITLE                   :{BLACK}Production last month:
 STR_INDUSTRY_VIEW_TRANSPORTED                                   :{YELLOW}{CARGO_LONG}{STRING}{BLACK} ({COMMA}% transported)
-STR_INDUSTRY_VIEW_LOCATION_TOOLTIP                              :{BLACK}Center the main view on industry location. Ctrl+Click opens a new viewport on industry location
+STR_INDUSTRY_VIEW_LOCATION_TOOLTIP                              :{BLACK}Center the main view on industry location. Ctrl+Click to open a new viewport on industry location
 STR_INDUSTRY_VIEW_PRODUCTION_LEVEL                              :{BLACK}Production level: {YELLOW}{COMMA}%
 STR_INDUSTRY_VIEW_INDUSTRY_ANNOUNCED_CLOSURE                    :{YELLOW}The industry has announced imminent closure!
 
@@ -4019,10 +4019,10 @@ STR_CARGO_TYPE_FILTER_FREIGHT                                   :Freight
 STR_CARGO_TYPE_FILTER_NONE                                      :None
 
 ###length VEHICLE_TYPES
-STR_BUY_VEHICLE_TRAIN_LIST_TOOLTIP                              :{BLACK}Train vehicle selection list. Click on vehicle for information. Ctrl+Click to toggle hiding of the vehicle type
-STR_BUY_VEHICLE_ROAD_VEHICLE_LIST_TOOLTIP                       :{BLACK}Road vehicle selection list. Click on vehicle for information. Ctrl+Click to toggle hiding of the vehicle type
-STR_BUY_VEHICLE_SHIP_LIST_TOOLTIP                               :{BLACK}Ship selection list. Click on ship for information. Ctrl+Click to toggle hiding of the ship type
-STR_BUY_VEHICLE_AIRCRAFT_LIST_TOOLTIP                           :{BLACK}Aircraft selection list. Click on aircraft for information. Ctrl+Click to toggle hiding of the aircraft type
+STR_BUY_VEHICLE_TRAIN_LIST_TOOLTIP                              :{BLACK}Train vehicle selection list. Click on vehicle for information. Ctrl+Click to show/hide this vehicle type
+STR_BUY_VEHICLE_ROAD_VEHICLE_LIST_TOOLTIP                       :{BLACK}Road vehicle selection list. Click on vehicle for information. Ctrl+Click to show/hide the vehicle type
+STR_BUY_VEHICLE_SHIP_LIST_TOOLTIP                               :{BLACK}Ship selection list. Click on ship for information. Ctrl+Click to show/hide the ship type
+STR_BUY_VEHICLE_AIRCRAFT_LIST_TOOLTIP                           :{BLACK}Aircraft selection list. Click on aircraft for information. Ctrl+Click to show/hide of the aircraft type
 
 ###length VEHICLE_TYPES
 STR_BUY_VEHICLE_TRAIN_BUY_VEHICLE_BUTTON                        :{BLACK}Buy Vehicle
@@ -4037,16 +4037,16 @@ STR_BUY_VEHICLE_SHIP_BUY_REFIT_VEHICLE_BUTTON                   :{BLACK}Buy and 
 STR_BUY_VEHICLE_AIRCRAFT_BUY_REFIT_VEHICLE_BUTTON               :{BLACK}Buy and Refit Aircraft
 
 ###length VEHICLE_TYPES
-STR_BUY_VEHICLE_TRAIN_BUY_VEHICLE_TOOLTIP                       :{BLACK}Buy the highlighted train vehicle. Shift+Click shows estimated cost without purchase
-STR_BUY_VEHICLE_ROAD_VEHICLE_BUY_VEHICLE_TOOLTIP                :{BLACK}Buy the highlighted road vehicle. Shift+Click shows estimated cost without purchase
-STR_BUY_VEHICLE_SHIP_BUY_VEHICLE_TOOLTIP                        :{BLACK}Buy the highlighted ship. Shift+Click shows estimated cost without purchase
-STR_BUY_VEHICLE_AIRCRAFT_BUY_VEHICLE_TOOLTIP                    :{BLACK}Buy the highlighted aircraft. Shift+Click shows estimated cost without purchase
+STR_BUY_VEHICLE_TRAIN_BUY_VEHICLE_TOOLTIP                       :{BLACK}Buy the highlighted train vehicle. Also press Shift to show cost estimate only
+STR_BUY_VEHICLE_ROAD_VEHICLE_BUY_VEHICLE_TOOLTIP                :{BLACK}Buy the highlighted road vehicle. Also press Shift to show cost estimate only
+STR_BUY_VEHICLE_SHIP_BUY_VEHICLE_TOOLTIP                        :{BLACK}Buy the highlighted ship. Also press Shift to show cost estimate only
+STR_BUY_VEHICLE_AIRCRAFT_BUY_VEHICLE_TOOLTIP                    :{BLACK}Buy the highlighted aircraft. Also press Shift to show cost estimate only
 
 ###length VEHICLE_TYPES
-STR_BUY_VEHICLE_TRAIN_BUY_REFIT_VEHICLE_TOOLTIP                 :{BLACK}Buy and refit the highlighted train vehicle. Shift+Click shows estimated cost without purchase
-STR_BUY_VEHICLE_ROAD_VEHICLE_BUY_REFIT_VEHICLE_TOOLTIP          :{BLACK}Buy and refit the highlighted road vehicle. Shift+Click shows estimated cost without purchase
-STR_BUY_VEHICLE_SHIP_BUY_REFIT_VEHICLE_TOOLTIP                  :{BLACK}Buy and refit the highlighted ship. Shift+Click shows estimated cost without purchase
-STR_BUY_VEHICLE_AIRCRAFT_BUY_REFIT_VEHICLE_TOOLTIP              :{BLACK}Buy and refit the highlighted aircraft. Shift+Click shows estimated cost without purchase
+STR_BUY_VEHICLE_TRAIN_BUY_REFIT_VEHICLE_TOOLTIP                 :{BLACK}Buy and refit the highlighted train vehicle. Also press Shift to show cost estimate only
+STR_BUY_VEHICLE_ROAD_VEHICLE_BUY_REFIT_VEHICLE_TOOLTIP          :{BLACK}Buy and refit the highlighted road vehicle. Also press Shift to show cost estimate only
+STR_BUY_VEHICLE_SHIP_BUY_REFIT_VEHICLE_TOOLTIP                  :{BLACK}Buy and refit the highlighted ship. Also press Shift to show cost estimate only
+STR_BUY_VEHICLE_AIRCRAFT_BUY_REFIT_VEHICLE_TOOLTIP              :{BLACK}Buy and refit the highlighted aircraft. Also press Shift to show cost estimate only
 
 ###length VEHICLE_TYPES
 STR_BUY_VEHICLE_TRAIN_RENAME_BUTTON                             :{BLACK}Rename
@@ -4096,7 +4096,7 @@ STR_DEPOT_VEHICLE_TOOLTIP_CHAIN                                 :{BLACK}{NUM} ve
 STR_DEPOT_VEHICLE_TOOLTIP_CARGO                                 :{}{CARGO_LONG} ({CARGO_SHORT})
 
 ###length VEHICLE_TYPES
-STR_DEPOT_TRAIN_LIST_TOOLTIP                                    :{BLACK}Trains - drag vehicle with left-click to add/remove from train, right-click for information. Hold Ctrl to make both functions apply to the following chain
+STR_DEPOT_TRAIN_LIST_TOOLTIP                                    :{BLACK}Trains - drag vehicle with left-click to add/remove from train, right-click for information. Ctrl+Click to apply either function to the following chain
 STR_DEPOT_ROAD_VEHICLE_LIST_TOOLTIP                             :{BLACK}Vehicles - right-click on vehicle for information
 STR_DEPOT_SHIP_LIST_TOOLTIP                                     :{BLACK}Ships - right-click on ship for information
 STR_DEPOT_AIRCRAFT_LIST_TOOLTIP                                 :{BLACK}Aircraft - right-click on aircraft for information
@@ -4138,16 +4138,16 @@ STR_DEPOT_CLONE_SHIP                                            :{BLACK}Clone Sh
 STR_DEPOT_CLONE_AIRCRAFT                                        :{BLACK}Clone Aircraft
 
 ###length VEHICLE_TYPES
-STR_DEPOT_CLONE_TRAIN_DEPOT_INFO                                :{BLACK}This will buy a copy of a train including all cars. Click this button and then on a train inside or outside the depot. Ctrl+Click will share the orders. Shift+Click shows estimated cost without purchase
-STR_DEPOT_CLONE_ROAD_VEHICLE_DEPOT_INFO                         :{BLACK}This will buy a copy of a road vehicle. Click this button and then on a road vehicle inside or outside the depot. Ctrl+Click will share the orders. Shift+Click shows estimated cost without purchase
-STR_DEPOT_CLONE_SHIP_DEPOT_INFO                                 :{BLACK}This will buy a copy of a ship. Click this button and then on a ship inside or outside the depot. Ctrl+Click will share the orders. Shift+Click shows estimated cost without purchase
-STR_DEPOT_CLONE_AIRCRAFT_INFO_HANGAR_WINDOW                     :{BLACK}This will buy a copy of an aircraft. Click this button and then on an aircraft inside or outside the hangar. Ctrl+Click will share the orders. Shift+Click shows estimated cost without purchase
+STR_DEPOT_CLONE_TRAIN_DEPOT_INFO                                :{BLACK}Buy a copy of a train including all cars. Click this button and then on a train inside or outside the depot. Ctrl+Click to share the orders. Also press Shift to show cost estimate only
+STR_DEPOT_CLONE_ROAD_VEHICLE_DEPOT_INFO                         :{BLACK}Buy a copy of a road vehicle. Click this button and then on a road vehicle inside or outside the depot. Ctrl+Click to share the orders. Also press Shift to show cost estimate only
+STR_DEPOT_CLONE_SHIP_DEPOT_INFO                                 :{BLACK}Buy a copy of a ship. Click this button and then on a ship inside or outside the depot. Ctrl+Click to share the orders. Also press Shift to show cost estimate only
+STR_DEPOT_CLONE_AIRCRAFT_INFO_HANGAR_WINDOW                     :{BLACK}Buy a copy of an aircraft. Click this button and then on an aircraft inside or outside the hangar. Ctrl+Click to share the orders. Also press Shift to show cost estimate only
 
 ###length VEHICLE_TYPES
-STR_DEPOT_TRAIN_LOCATION_TOOLTIP                                :{BLACK}Center main view on train depot location. Ctrl+Click opens a new viewport on train depot location
-STR_DEPOT_ROAD_VEHICLE_LOCATION_TOOLTIP                         :{BLACK}Center main view on road vehicle depot location. Ctrl+Click opens a new viewport on road depot location
-STR_DEPOT_SHIP_LOCATION_TOOLTIP                                 :{BLACK}Center main view on ship depot location. Ctrl+Click opens a new viewport on ship depot location
-STR_DEPOT_AIRCRAFT_LOCATION_TOOLTIP                             :{BLACK}Center main view on hangar location. Ctrl+Click opens a new viewport on hangar location
+STR_DEPOT_TRAIN_LOCATION_TOOLTIP                                :{BLACK}Center main view on train depot location. Ctrl+Click to open a new viewport on train depot location
+STR_DEPOT_ROAD_VEHICLE_LOCATION_TOOLTIP                         :{BLACK}Center main view on road vehicle depot location. Ctrl+Click to open a new viewport on road depot location
+STR_DEPOT_SHIP_LOCATION_TOOLTIP                                 :{BLACK}Center main view on ship depot location. Ctrl+Click to open a new viewport on ship depot location
+STR_DEPOT_AIRCRAFT_LOCATION_TOOLTIP                             :{BLACK}Center main view on hangar location. Ctrl+Click to open a new viewport on hangar location
 
 ###length VEHICLE_TYPES
 STR_DEPOT_VEHICLE_ORDER_LIST_TRAIN_TOOLTIP                      :{BLACK}Get a list of all trains with the current depot in their orders
@@ -4248,27 +4248,27 @@ STR_REPLACE_REMOVE_WAGON_GROUP_HELP                             :{STRING}. Ctrl+
 STR_VEHICLE_VIEW_CAPTION                                        :{WHITE}{VEHICLE}
 
 ###length VEHICLE_TYPES
-STR_VEHICLE_VIEW_TRAIN_CENTER_TOOLTIP                           :{BLACK}Center main view on train's location. Double click will follow train in main view. Ctrl+Click opens a new viewport on train's location
-STR_VEHICLE_VIEW_ROAD_VEHICLE_CENTER_TOOLTIP                    :{BLACK}Center main view on vehicle's location. Double click will follow vehicle in main view. Ctrl+Click opens a new viewport on vehicle's location
-STR_VEHICLE_VIEW_SHIP_CENTER_TOOLTIP                            :{BLACK}Center main view on ship's location. Double click will follow ship in main view. Ctrl+Click opens a new viewport on ship's location
-STR_VEHICLE_VIEW_AIRCRAFT_CENTER_TOOLTIP                        :{BLACK}Center main view on aircraft's location. Double click will follow aircraft in main view. Ctrl+Click opens a new viewport on aircraft's location
+STR_VEHICLE_VIEW_TRAIN_CENTER_TOOLTIP                           :{BLACK}Center main view on train's location. Double click to follow train in main view. Ctrl+Click to open a new viewport on train's location
+STR_VEHICLE_VIEW_ROAD_VEHICLE_CENTER_TOOLTIP                    :{BLACK}Center main view on vehicle's location. Double click to follow vehicle in main view. Ctrl+Click to open a new viewport on vehicle's location
+STR_VEHICLE_VIEW_SHIP_CENTER_TOOLTIP                            :{BLACK}Center main view on ship's location. Double click to follow ship in main view. Ctrl+Click to open a new viewport on ship's location
+STR_VEHICLE_VIEW_AIRCRAFT_CENTER_TOOLTIP                        :{BLACK}Center main view on aircraft's location. Double click to follow aircraft in main view. Ctrl+Click to open a new viewport on aircraft's location
 
 ###length VEHICLE_TYPES
-STR_VEHICLE_VIEW_TRAIN_SEND_TO_DEPOT_TOOLTIP                    :{BLACK}Send train to depot. Ctrl+Click will only service
-STR_VEHICLE_VIEW_ROAD_VEHICLE_SEND_TO_DEPOT_TOOLTIP             :{BLACK}Send vehicle to depot. Ctrl+Click will only service
-STR_VEHICLE_VIEW_SHIP_SEND_TO_DEPOT_TOOLTIP                     :{BLACK}Send ship to depot. Ctrl+Click will only service
-STR_VEHICLE_VIEW_AIRCRAFT_SEND_TO_DEPOT_TOOLTIP                 :{BLACK}Send aircraft to hangar. Ctrl+Click will only service
+STR_VEHICLE_VIEW_TRAIN_SEND_TO_DEPOT_TOOLTIP                    :{BLACK}Send train to depot. Ctrl+Click to only service
+STR_VEHICLE_VIEW_ROAD_VEHICLE_SEND_TO_DEPOT_TOOLTIP             :{BLACK}Send vehicle to depot. Ctrl+Click to only service
+STR_VEHICLE_VIEW_SHIP_SEND_TO_DEPOT_TOOLTIP                     :{BLACK}Send ship to depot. Ctrl+Click to only service
+STR_VEHICLE_VIEW_AIRCRAFT_SEND_TO_DEPOT_TOOLTIP                 :{BLACK}Send aircraft to hangar. Ctrl+Click to only service
 
 ###length VEHICLE_TYPES
-STR_VEHICLE_VIEW_CLONE_TRAIN_INFO                               :{BLACK}This will buy a copy of the train including all cars. Ctrl+Click will share the orders. Shift+Click shows estimated cost without purchase
-STR_VEHICLE_VIEW_CLONE_ROAD_VEHICLE_INFO                        :{BLACK}This will buy a copy of the road vehicle. Ctrl+Click will share the orders. Shift+Click shows estimated cost without purchase
-STR_VEHICLE_VIEW_CLONE_SHIP_INFO                                :{BLACK}This will buy a copy of the ship. Ctrl+Click will share the orders. Shift+Click shows estimated cost without purchase
-STR_VEHICLE_VIEW_CLONE_AIRCRAFT_INFO                            :{BLACK}This will buy a copy of the aircraft. Ctrl+Click will share the orders. Shift+Click shows estimated cost without purchase
+STR_VEHICLE_VIEW_CLONE_TRAIN_INFO                               :{BLACK}Buy a copy of the train including all cars. Ctrl+Click to share orders. Also press Shift to show cost estimate only
+STR_VEHICLE_VIEW_CLONE_ROAD_VEHICLE_INFO                        :{BLACK}Buy a copy of the road vehicle. Ctrl+Click to share orders. Also press Shift to show cost estimate only
+STR_VEHICLE_VIEW_CLONE_SHIP_INFO                                :{BLACK}Buy a copy of the ship. Ctrl+Click to share orders. Also press Shift to show cost estimate only
+STR_VEHICLE_VIEW_CLONE_AIRCRAFT_INFO                            :{BLACK}Buy a copy of the aircraft. Ctrl+Click to share orders. Also press Shift to show cost estimate only
 
 STR_VEHICLE_VIEW_TRAIN_IGNORE_SIGNAL_TOOLTIP                    :{BLACK}Force train to proceed without waiting for signal to clear
 STR_VEHICLE_VIEW_TRAIN_REVERSE_TOOLTIP                          :{BLACK}Reverse direction of train
 STR_VEHICLE_VIEW_ROAD_VEHICLE_REVERSE_TOOLTIP                   :{BLACK}Force vehicle to turn around
-STR_VEHICLE_VIEW_ORDER_LOCATION_TOOLTIP                         :{BLACK}Center main view on order destination. Ctrl+Click opens a new viewport on the order destination's location
+STR_VEHICLE_VIEW_ORDER_LOCATION_TOOLTIP                         :{BLACK}Center main view on order destination. Ctrl+Click to open a new viewport on the order destination's location
 
 ###length VEHICLE_TYPES
 STR_VEHICLE_VIEW_TRAIN_REFIT_TOOLTIP                            :{BLACK}Refit train to carry a different cargo type
@@ -4358,8 +4358,8 @@ STR_VEHICLE_INFO_FEEDER_CARGO_VALUE                             :{BLACK}Transfer
 
 STR_VEHICLE_DETAILS_SERVICING_INTERVAL_DAYS                     :{BLACK}Maintenance interval: {LTBLUE}{COMMA}{NBSP}days{BLACK}   Last maintenance: {LTBLUE}{DATE_LONG}
 STR_VEHICLE_DETAILS_SERVICING_INTERVAL_PERCENT                  :{BLACK}Maintenance interval: {LTBLUE}{COMMA}%{BLACK}   Last maintenance: {LTBLUE}{DATE_LONG}
-STR_VEHICLE_DETAILS_INCREASE_SERVICING_INTERVAL_TOOLTIP         :{BLACK}Increase maintenance interval by 10. Ctrl+Click increases maintenance interval by 5
-STR_VEHICLE_DETAILS_DECREASE_SERVICING_INTERVAL_TOOLTIP         :{BLACK}Decrease maintenance interval by 10. Ctrl+Click decreases maintenance interval by 5
+STR_VEHICLE_DETAILS_INCREASE_SERVICING_INTERVAL_TOOLTIP         :{BLACK}Increase maintenance interval by 10. Ctrl+Click to increase maintenance interval by 5
+STR_VEHICLE_DETAILS_DECREASE_SERVICING_INTERVAL_TOOLTIP         :{BLACK}Decrease maintenance interval by 10. Ctrl+Click to decrease maintenance interval by 5
 
 STR_SERVICE_INTERVAL_DROPDOWN_TOOLTIP                           :{BLACK}Change servicing interval type
 STR_VEHICLE_DETAILS_DEFAULT                                     :Default
@@ -4402,7 +4402,7 @@ STR_REFIT_NEW_CAPACITY_COST_OF_REFIT                            :{BLACK}New capa
 STR_REFIT_NEW_CAPACITY_INCOME_FROM_REFIT                        :{BLACK}New capacity: {GOLD}{CARGO_LONG}{}{BLACK}Income from refit: {GREEN}{CURRENCY_LONG}
 STR_REFIT_NEW_CAPACITY_COST_OF_AIRCRAFT_REFIT                   :{BLACK}New capacity: {GOLD}{CARGO_LONG}, {GOLD}{CARGO_LONG}{}{BLACK}Cost of refit: {RED}{CURRENCY_LONG}
 STR_REFIT_NEW_CAPACITY_INCOME_FROM_AIRCRAFT_REFIT               :{BLACK}New capacity: {GOLD}{CARGO_LONG}, {GOLD}{CARGO_LONG}{}{BLACK}Income from refit: {GREEN}{CURRENCY_LONG}
-STR_REFIT_SELECT_VEHICLES_TOOLTIP                               :{BLACK}Select the vehicles to refit. Dragging with the mouse allows to select multiple vehicles. Clicking on an empty space will select the whole vehicle. Ctrl+Click will select a vehicle and the following chain
+STR_REFIT_SELECT_VEHICLES_TOOLTIP                               :{BLACK}Select the vehicles to refit. Click+Drag to select multiple vehicles. Click on an empty space to select the whole vehicle. Ctrl+Click to select a vehicle and the following chain
 
 ###length VEHICLE_TYPES
 STR_REFIT_TRAIN_LIST_TOOLTIP                                    :{BLACK}Select type of cargo for train to carry
@@ -4427,7 +4427,7 @@ STR_ORDERS_CAPTION                                              :{WHITE}{VEHICLE
 STR_ORDERS_TIMETABLE_VIEW                                       :{BLACK}Timetable
 STR_ORDERS_TIMETABLE_VIEW_TOOLTIP                               :{BLACK}Switch to the timetable view
 
-STR_ORDERS_LIST_TOOLTIP                                         :{BLACK}Order list - click on an order to highlight it. Ctrl+Click scrolls to the order's destination
+STR_ORDERS_LIST_TOOLTIP                                         :{BLACK}Order list - click on an order to highlight it. Ctrl+Click to scroll to the order's destination
 STR_ORDER_INDEX                                                 :{COMMA}:{NBSP}
 STR_ORDER_TEXT                                                  :{STRING} {STRING} {STRING}
 
@@ -4497,20 +4497,20 @@ STR_ORDER_CONDITIONAL_VALUE_TOOLTIP                             :{BLACK}The valu
 STR_ORDER_CONDITIONAL_VALUE_CAPT                                :{WHITE}Enter value to compare against
 
 STR_ORDERS_SKIP_BUTTON                                          :{BLACK}Skip
-STR_ORDERS_SKIP_TOOLTIP                                         :{BLACK}Skip the current order, and start the next. Ctrl+Click skips to the selected order
+STR_ORDERS_SKIP_TOOLTIP                                         :{BLACK}Skip the current order, and start the next. Ctrl+Click to skip to the selected order
 
 STR_ORDERS_DELETE_BUTTON                                        :{BLACK}Delete
 STR_ORDERS_DELETE_TOOLTIP                                       :{BLACK}Delete the highlighted order
 STR_ORDERS_DELETE_ALL_TOOLTIP                                   :{BLACK}Delete all orders
 STR_ORDERS_STOP_SHARING_BUTTON                                  :{BLACK}Stop sharing
-STR_ORDERS_STOP_SHARING_TOOLTIP                                 :{BLACK}Stop sharing the order list. Ctrl+Click additionally deletes all orders for this vehicle
+STR_ORDERS_STOP_SHARING_TOOLTIP                                 :{BLACK}Stop sharing the order list. Ctrl+Click to additionally delete all orders for this vehicle
 
 STR_ORDERS_GO_TO_BUTTON                                         :{BLACK}Go To
 STR_ORDER_GO_TO_NEAREST_DEPOT                                   :Go to nearest depot
 STR_ORDER_GO_TO_NEAREST_HANGAR                                  :Go to nearest hangar
 STR_ORDER_CONDITIONAL                                           :Conditional order jump
 STR_ORDER_SHARE                                                 :Share orders
-STR_ORDERS_GO_TO_TOOLTIP                                        :{BLACK}Insert a new order before the highlighted order, or add to end of list. Ctrl makes station orders 'full load any cargo', waypoint orders 'non-stop', and depot orders 'maintenance'. 'Share orders' or Ctrl lets this vehicle share orders with the selected vehicle. Clicking a vehicle copies the orders from that vehicle. A depot order disables automatic maintenance of the vehicle
+STR_ORDERS_GO_TO_TOOLTIP                                        :{BLACK}Insert a new order before the highlighted order, or add to end of list. Ctrl+Click on a station for 'full load any cargo', on a waypoint for 'non-stop', or on a depot for 'service'. Click on another vehicle to copy its orders or Ctrl+Click to share orders. A depot order disables automatic servicing of the vehicle
 
 STR_ORDERS_VEH_WITH_SHARED_ORDERS_LIST_TOOLTIP                  :{BLACK}Show all vehicles that share this schedule
 
@@ -4616,24 +4616,24 @@ STR_TIMETABLE_STATUS_START_AT_DATE                              :{BLACK}This tim
 STR_TIMETABLE_STATUS_START_IN_SECONDS                           :{BLACK}This timetable will start in {COMMA} seconds
 
 STR_TIMETABLE_START                                             :{BLACK}Start Timetable
-STR_TIMETABLE_START_TOOLTIP                                     :{BLACK}Select when this timetable starts. Ctrl+Click evenly distributes the start of all vehicles sharing this order based on their relative order, if the order is completely timetabled
+STR_TIMETABLE_START_TOOLTIP                                     :{BLACK}Select when this timetable starts. Ctrl+Click to evenly distribute the start of all vehicles sharing this order based on their relative order, if the order is completely timetabled
 
 STR_TIMETABLE_START_SECONDS_QUERY                               :Seconds until timetable starts
 
 STR_TIMETABLE_CHANGE_TIME                                       :{BLACK}Change Time
-STR_TIMETABLE_WAIT_TIME_TOOLTIP                                 :{BLACK}Change the amount of time that the highlighted order should take. Ctrl+Click sets the time for all orders
+STR_TIMETABLE_WAIT_TIME_TOOLTIP                                 :{BLACK}Change the amount of time that the highlighted order should take. Ctrl+Click to set the time for all orders
 
 STR_TIMETABLE_CLEAR_TIME                                        :{BLACK}Clear Time
-STR_TIMETABLE_CLEAR_TIME_TOOLTIP                                :{BLACK}Clear the amount of time for the highlighted order. Ctrl+Click clears the time for all orders
+STR_TIMETABLE_CLEAR_TIME_TOOLTIP                                :{BLACK}Clear the amount of time for the highlighted order. Ctrl+Click to clear the time for all orders
 
 STR_TIMETABLE_CHANGE_SPEED                                      :{BLACK}Change Speed Limit
-STR_TIMETABLE_CHANGE_SPEED_TOOLTIP                              :{BLACK}Change the maximum travel speed of the highlighted order. Ctrl+Click sets the speed for all orders
+STR_TIMETABLE_CHANGE_SPEED_TOOLTIP                              :{BLACK}Change the maximum travel speed of the highlighted order. Ctrl+Click to set the speed for all orders
 
 STR_TIMETABLE_CLEAR_SPEED                                       :{BLACK}Clear Speed Limit
-STR_TIMETABLE_CLEAR_SPEED_TOOLTIP                               :{BLACK}Clear the maximum travel speed of the highlighted order. Ctrl+Click clears the speed for all orders
+STR_TIMETABLE_CLEAR_SPEED_TOOLTIP                               :{BLACK}Clear the maximum travel speed of the highlighted order. Ctrl+Click to clear the speed for all orders
 
 STR_TIMETABLE_RESET_LATENESS                                    :{BLACK}Reset Late Counter
-STR_TIMETABLE_RESET_LATENESS_TOOLTIP                            :{BLACK}Reset the lateness counter, so the vehicle will be on time. Ctrl+Click will reset the entire group so the latest vehicle will be on time and all others will be early
+STR_TIMETABLE_RESET_LATENESS_TOOLTIP                            :{BLACK}Reset the lateness counter, so the vehicle will be on time. Ctrl+Click to reset the entire group so the latest vehicle will be on time and all others will be early
 
 STR_TIMETABLE_AUTOFILL                                          :{BLACK}Autofill
 STR_TIMETABLE_AUTOFILL_TOOLTIP                                  :{BLACK}Fill the timetable automatically with the values from the next journey. Ctrl+Click to try to keep waiting times
