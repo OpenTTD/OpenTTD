@@ -190,7 +190,7 @@ struct SelectGameWindow : public Window {
 		this->mouse_idle_pos = _cursor.pos;
 	}
 
-	void OnRealtimeTick([[maybe_unused]] uint delta_ms) override
+	void OnRealtimeTick(uint delta_ms) override
 	{
 		/* Move the main game viewport according to intro viewport commands. */
 
@@ -252,7 +252,7 @@ struct SelectGameWindow : public Window {
 		/* Update the viewport position. */
 		mw->viewport->dest_scrollpos_x = mw->viewport->scrollpos_x = pos.x;
 		mw->viewport->dest_scrollpos_y = mw->viewport->scrollpos_y = pos.y;
-		UpdateViewportPosition(mw);
+		UpdateViewportPosition(mw, delta_ms);
 		mw->SetDirty(); // Required during panning, otherwise logo graphics disappears
 
 		/* If there is only one command, we just executed it and don't need to do any more */

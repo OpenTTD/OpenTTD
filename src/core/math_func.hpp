@@ -350,23 +350,6 @@ constexpr int RoundDivSU(int a, uint b)
 	}
 }
 
-/**
- * Computes (a / b) rounded away from zero.
- * @param a Numerator
- * @param b Denominator
- * @return Quotient, rounded away from zero
- */
-constexpr int DivAwayFromZero(int a, uint b)
-{
-	const int _b = static_cast<int>(b);
-	if (a > 0) {
-		return (a + _b - 1) / _b;
-	} else {
-		/* Note: Behaviour of negative numerator division is truncation toward zero. */
-		return (a - _b + 1) / _b;
-	}
-}
-
 uint32_t IntSqrt(uint32_t num);
 
 #endif /* MATH_FUNC_HPP */
