@@ -949,40 +949,6 @@ static void GameLoadConfig(const IniFile &ini, const char *grpname)
 }
 
 /**
- * Convert a character to a hex nibble value, or \c -1 otherwise.
- * @param c Character to convert.
- * @return Hex value of the character, or \c -1 if not a hex digit.
- */
-static int DecodeHexNibble(char c)
-{
-	if (c >= '0' && c <= '9') return c - '0';
-	if (c >= 'A' && c <= 'F') return c + 10 - 'A';
-	if (c >= 'a' && c <= 'f') return c + 10 - 'a';
-	return -1;
-}
-
-/**
- * Parse a sequence of characters (supposedly hex digits) into a sequence of bytes.
- * After the hex number should be a \c '|' character.
- * @param pos First character to convert.
- * @param[out] dest Output byte array to write the bytes.
- * @param dest_size Number of bytes in \a dest.
- * @return Whether reading was successful.
- */
-static bool DecodeHexText(const char *pos, uint8_t *dest, size_t dest_size)
-{
-	while (dest_size > 0) {
-		int hi = DecodeHexNibble(pos[0]);
-		int lo = (hi >= 0) ? DecodeHexNibble(pos[1]) : -1;
-		if (lo < 0) return false;
-		*dest++ = (hi << 4) | lo;
-		pos += 2;
-		dest_size--;
-	}
-	return *pos == '|';
-}
-
-/**
  * Load BaseGraphics set selection and configuration.
  */
 static void GraphicsSetLoadConfig(IniFile &ini)
@@ -1034,29 +1000,40 @@ static GRFConfig *GRFLoadConfig(const IniFile &ini, const char *grpname, bool is
 	for (const IniItem &item : group->items) {
 		GRFConfig *c = nullptr;
 
-		uint8_t grfid_buf[4];
+		std::array<uint8_t, 4> grfid_buf;
 		MD5Hash md5sum;
-		const char *filename = item.name.c_str();
-		bool has_grfid = false;
+		std::string_view item_name = item.name;
 		bool has_md5sum = false;
 
 		/* Try reading "<grfid>|" and on success, "<md5sum>|". */
-		has_grfid = DecodeHexText(filename, grfid_buf, lengthof(grfid_buf));
-		if (has_grfid) {
-			filename += 1 + 2 * lengthof(grfid_buf);
-			has_md5sum = DecodeHexText(filename, md5sum.data(), md5sum.size());
-			if (has_md5sum) filename += 1 + 2 * md5sum.size();
+		auto grfid_pos = item_name.find("|");
+		if (grfid_pos != std::string_view::npos) {
+			std::string_view grfid_str = item_name.substr(0, grfid_pos);
 
-			uint32_t grfid = grfid_buf[0] | (grfid_buf[1] << 8) | (grfid_buf[2] << 16) | (grfid_buf[3] << 24);
-			if (has_md5sum) {
-				const GRFConfig *s = FindGRFConfig(grfid, FGCM_EXACT, &md5sum);
-				if (s != nullptr) c = new GRFConfig(*s);
-			}
-			if (c == nullptr && !FioCheckFileExists(filename, NEWGRF_DIR)) {
-				const GRFConfig *s = FindGRFConfig(grfid, FGCM_NEWEST_VALID);
-				if (s != nullptr) c = new GRFConfig(*s);
+			if (ConvertHexToBytes(grfid_str, grfid_buf)) {
+				item_name = item_name.substr(grfid_pos + 1);
+
+				auto md5sum_pos = item_name.find("|");
+				if (md5sum_pos != std::string_view::npos) {
+					std::string_view md5sum_str = item_name.substr(0, md5sum_pos);
+
+					has_md5sum = ConvertHexToBytes(md5sum_str, md5sum);
+					if (has_md5sum) item_name = item_name.substr(md5sum_pos + 1);
+				}
+
+				uint32_t grfid = grfid_buf[0] | (grfid_buf[1] << 8) | (grfid_buf[2] << 16) | (grfid_buf[3] << 24);
+				if (has_md5sum) {
+					const GRFConfig *s = FindGRFConfig(grfid, FGCM_EXACT, &md5sum);
+					if (s != nullptr) c = new GRFConfig(*s);
+				}
+				if (c == nullptr && !FioCheckFileExists(std::string(item_name), NEWGRF_DIR)) {
+					const GRFConfig *s = FindGRFConfig(grfid, FGCM_NEWEST_VALID);
+					if (s != nullptr) c = new GRFConfig(*s);
+				}
 			}
 		}
+		std::string filename = std::string(item_name);
+
 		if (c == nullptr) c = new GRFConfig(filename);
 
 		/* Parse parameters */
@@ -1084,7 +1061,7 @@ static GRFConfig *GRFLoadConfig(const IniFile &ini, const char *grpname, bool is
 				SetDParam(1, STR_CONFIG_ERROR_INVALID_GRF_UNKNOWN);
 			}
 
-			SetDParamStr(0, StrEmpty(filename) ? item.name.c_str() : filename);
+			SetDParamStr(0, filename.empty() ? item.name.c_str() : filename);
 			ShowErrorMessage(STR_CONFIG_ERROR, STR_CONFIG_ERROR_INVALID_GRF, WL_CRITICAL);
 			delete c;
 			continue;
