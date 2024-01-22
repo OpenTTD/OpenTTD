@@ -118,6 +118,15 @@ Most types of add-on content can be downloaded within OpenTTD via the 'Check Onl
 Add-on content can also be installed manually, but that's more complicated; the [OpenTTD wiki](https://wiki.openttd.org/) may offer help with that, or the [OpenTTD directory structure guide](./docs/directory_structure.md).
 
 
+### 1.5.1) Social Integration
+
+OpenTTD has the ability to load plugins to integrate with Social Platforms like Steam, Discord, etc.
+
+To enable such integration, the plugin for the specific platform has to be downloaded and stored in the `social_integration` folder.
+
+See [OpenTTD's website](https://www.openttd.org), under Downloads, for what plugins are available.
+
+
 ### 1.6) OpenTTD directories
 
 OpenTTD uses its own directory structure to store game data, add-on content etc.
@@ -198,7 +207,10 @@ The icu scriptrun implementation in `src/3rdparty/icu` is licensed under the Uni
 See `src/3rdparty/icu/LICENSE` for the complete license text.
 
 The monocypher implementation in `src/3rdparty/monocypher` is licensed under the 2-clause BSD and CC-0 license.
-See src/3rdparty/monocypher/LICENSE.md` for the complete license text.
+See `src/3rdparty/monocypher/LICENSE.md` for the complete license text.
+
+The OpenTTD Social Integration API in `src/3rdparty/openttd_social_integration_api` is licensed under the MIT license.
+See `src/3rdparty/openttd_social_integration_api/LICENSE` for the complete license text.
 
 ## 4.0 Credits
 

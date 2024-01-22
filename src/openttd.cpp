@@ -75,6 +75,7 @@
 #include "timer/timer_game_economy.h"
 #include "timer/timer_game_realtime.h"
 #include "timer/timer_game_tick.h"
+#include "social_integration.h"
 
 #include "linkgraph/linkgraphschedule.h"
 
@@ -288,6 +289,7 @@ static void ShutdownGame()
 
 	if (_network_available) NetworkShutDown(); // Shut down the network and close any open connections
 
+	SocialIntegration::Shutdown();
 	DriverFactoryBase::ShutdownDrivers();
 
 	UnInitWindowSystem();
@@ -752,6 +754,7 @@ int openttd_main(int argc, char *argv[])
 	/* The video driver is now selected, now initialise GUI zoom */
 	AdjustGUIZoom(false);
 
+	SocialIntegration::Initialize();
 	NetworkStartUp(); // initialize network-core
 
 	if (!HandleBootstrap()) {
@@ -997,6 +1000,28 @@ bool SafeLoad(const std::string &filename, SaveLoadOperation fop, DetailedFileTy
 	return false;
 }
 
+static void UpdateSocialIntegration(GameMode game_mode)
+{
+	switch (game_mode) {
+		case GM_BOOTSTRAP:
+		case GM_MENU:
+			SocialIntegration::EventEnterMainMenu();
+			break;
+
+		case GM_NORMAL:
+			if (_networking) {
+				SocialIntegration::EventEnterMultiplayer(Map::SizeX(), Map::SizeY());
+			} else {
+				SocialIntegration::EventEnterSingleplayer(Map::SizeX(), Map::SizeY());
+			}
+			break;
+
+		case GM_EDITOR:
+			SocialIntegration::EventEnterScenarioEditor(Map::SizeX(), Map::SizeY());
+			break;
+	}
+}
+
 void SwitchToMode(SwitchMode new_mode)
 {
 	/* If we are saving something, the network stays in its current state */
@@ -1044,6 +1069,8 @@ void SwitchToMode(SwitchMode new_mode)
 		case SM_EDITOR: // Switch to scenario editor
 			MakeNewEditorWorld();
 			GenerateSavegameId();
+
+			UpdateSocialIntegration(GM_EDITOR);
 			break;
 
 		case SM_RELOADGAME: // Reload with what-ever started the game
@@ -1061,12 +1088,16 @@ void SwitchToMode(SwitchMode new_mode)
 
 			MakeNewGame(false, new_mode == SM_NEWGAME);
 			GenerateSavegameId();
+
+			UpdateSocialIntegration(GM_NORMAL);
 			break;
 
 		case SM_RESTARTGAME: // Restart --> 'Random game' with current settings
 		case SM_NEWGAME: // New Game --> 'Random game'
 			MakeNewGame(false, new_mode == SM_NEWGAME);
 			GenerateSavegameId();
+
+			UpdateSocialIntegration(GM_NORMAL);
 			break;
 
 		case SM_LOAD_GAME: { // Load game, Play Scenario
@@ -1084,6 +1115,8 @@ void SwitchToMode(SwitchMode new_mode)
 				/* Decrease pause counter (was increased from opening load dialog) */
 				Command<CMD_PAUSE>::Post(PM_PAUSED_SAVELOAD, false);
 			}
+
+			UpdateSocialIntegration(GM_NORMAL);
 			break;
 		}
 
@@ -1091,6 +1124,8 @@ void SwitchToMode(SwitchMode new_mode)
 		case SM_START_HEIGHTMAP: // Load a heightmap and start a new game from it
 			MakeNewGame(true, new_mode == SM_START_HEIGHTMAP);
 			GenerateSavegameId();
+
+			UpdateSocialIntegration(GM_NORMAL);
 			break;
 
 		case SM_LOAD_HEIGHTMAP: // Load heightmap from scenario editor
@@ -1099,6 +1134,8 @@ void SwitchToMode(SwitchMode new_mode)
 			GenerateWorld(GWM_HEIGHTMAP, 1 << _settings_game.game_creation.map_x, 1 << _settings_game.game_creation.map_y);
 			GenerateSavegameId();
 			MarkWholeScreenDirty();
+
+			UpdateSocialIntegration(GM_NORMAL);
 			break;
 
 		case SM_LOAD_SCENARIO: { // Load scenario from scenario editor
@@ -1112,12 +1149,16 @@ void SwitchToMode(SwitchMode new_mode)
 				SetDParamStr(0, GetSaveLoadErrorString());
 				ShowErrorMessage(STR_JUST_RAW_STRING, INVALID_STRING_ID, WL_CRITICAL);
 			}
+
+			UpdateSocialIntegration(GM_NORMAL);
 			break;
 		}
 
 		case SM_JOIN_GAME: // Join a multiplayer game
 			LoadIntroGame();
 			NetworkClientJoinGame();
+
+			SocialIntegration::EventJoiningMultiplayer();
 			break;
 
 		case SM_MENU: // Switch to game intro menu
@@ -1134,6 +1175,8 @@ void SwitchToMode(SwitchMode new_mode)
 					ShowNetworkAskSurvey();
 				}
 			}
+
+			UpdateSocialIntegration(GM_MENU);
 			break;
 
 		case SM_SAVE_GAME: // Save game.
@@ -1544,4 +1587,5 @@ void GameLoop()
 
 	SoundDriver::GetInstance()->MainLoop();
 	MusicLoop();
+	SocialIntegration::RunCallbacks();
 }

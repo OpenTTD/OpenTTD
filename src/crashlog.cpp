@@ -122,6 +122,9 @@ void CrashLog::FillCrashLog()
 		if (!this->TryExecute("libraries", [&info]() { SurveyLibraries(info["libraries"]); return true; })) {
 			info["libraries"] = "crashed while gathering information";
 		}
+		if (!this->TryExecute("plugins", [&info]() { SurveyPlugins(info["plugins"]); return true; })) {
+			info["plugins"] = "crashed while gathering information";
+		}
 	}
 
 	{

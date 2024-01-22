@@ -2141,6 +2141,7 @@ DEF_CONSOLE_CMD(ConListDirs)
 		{ SAVE_DIR,         "save",       true  },
 		{ AUTOSAVE_DIR,     "autosave",   true  },
 		{ SCREENSHOT_DIR,   "screenshot", true  },
+		{ SOCIAL_INTEGRATION_DIR, "social_integration", true },
 	};
 
 	if (argc != 2) {
