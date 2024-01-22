@@ -3066,7 +3066,7 @@ void UpdateWindows()
 
 	for (Window *w : Window::Iterate()) {
 		/* Update viewport only if window is not shaded. */
-		if (w->viewport != nullptr && !w->IsShaded()) UpdateViewportPosition(w);
+		if (w->viewport != nullptr && !w->IsShaded()) UpdateViewportPosition(w, delta_ms.count());
 	}
 	NetworkDrawChatMessage();
 	/* Redraw mouse cursor in case it was hidden */
