@@ -26,7 +26,7 @@ struct OrthogonalTileArea {
 	 * @param w the width
 	 * @param h the height
 	 */
-	OrthogonalTileArea(TileIndex tile = INVALID_TILE, uint8_t w = 0, uint8_t h = 0) : tile(tile), w(w), h(h)
+	OrthogonalTileArea(TileIndex tile = INVALID_TILE, uint16_t w = 0, uint16_t h = 0) : tile(tile), w(w), h(h)
 	{
 	}
 
@@ -79,7 +79,7 @@ struct DiagonalTileArea {
 	 * @param a The "x" extent.
 	 * @param b The "y" estent.
 	 */
-	DiagonalTileArea(TileIndex tile = INVALID_TILE, int8_t a = 0, int8_t b = 0) : tile(tile), a(a), b(b)
+	DiagonalTileArea(TileIndex tile = INVALID_TILE, int16_t a = 0, int16_t b = 0) : tile(tile), a(a), b(b)
 	{
 	}
 
