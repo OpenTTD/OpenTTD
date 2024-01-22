@@ -139,6 +139,6 @@ void DoClearSquare(TileIndex tile);
 void RunTileLoop();
 
 void InitializeLandscape();
-void GenerateLandscape(byte mode);
+bool GenerateLandscape(byte mode);
 
 #endif /* LANDSCAPE_H */

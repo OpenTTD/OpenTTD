@@ -13,7 +13,7 @@
 .Op Fl c Ar config_file
 .Op Fl d Op Ar level | Ar cat Ns = Ns Ar lvl Ns Op , Ns Ar ...
 .Op Fl D Oo Ar host Oc Ns Op : Ns Ar port
-.Op Fl g Op Ar savegame
+.Op Fl g Op Ar file
 .Op Fl G Ar seed
 .Op Fl I Ar graphicsset
 .Op Fl m Ar driver
@@ -62,11 +62,11 @@ Start in world editor mode.
 .It Fl f
 Fork into background (dedicated server only, see
 .Fl D ) .
-.It Fl g Op Ar savegame
+.It Fl g Op Ar file
 Load
-.Ar savegame
-at start or start a new game if omitted.
-.Ar savegame
+.Ar file
+(can be either a savegame, scenario, or heightmap) at start or start a new game if omitted.
+.Ar file
 must be either an absolute path or one relative to the current path or one of
 the search paths.
 .It Fl G Ar seed

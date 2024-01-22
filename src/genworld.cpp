@@ -103,8 +103,14 @@ static void _GenerateWorld()
 		/* Must start economy early because of the costs. */
 		StartupEconomy();
 
+		bool landscape_generated = false;
+
 		/* Don't generate landscape items when in the scenario editor. */
-		if (_gw.mode == GWM_EMPTY) {
+		if (_gw.mode != GWM_EMPTY) {
+			landscape_generated = GenerateLandscape(_gw.mode);
+		}
+
+		if (!landscape_generated) {
 			SetGeneratingWorldProgress(GWP_OBJECT, 1);
 
 			/* Make sure the tiles at the north border are void tiles if needed. */
@@ -121,7 +127,6 @@ static void _GenerateWorld()
 
 			_settings_game.game_creation.snow_line_height = DEF_SNOWLINE_HEIGHT;
 		} else {
-			GenerateLandscape(_gw.mode);
 			GenerateClearTile();
 
 			/* Only generate towns, tree and industries in newgame mode. */
