@@ -287,8 +287,8 @@ public:
 	TimerGameCalendar::Year build_year;           ///< Year the vehicle has been built.
 	TimerGameCalendar::Date age;                  ///< Age in days
 	TimerGameCalendar::Date max_age;              ///< Maximum age
-	TimerGameCalendar::Date date_of_last_service; ///< Last date the vehicle had a service at a depot.
-	TimerGameCalendar::Date date_of_last_service_newgrf; ///< Last date the vehicle had a service at a depot, unchanged by the date cheat to protect against unsafe NewGRF behavior.
+	TimerGameEconomy::Date date_of_last_service; ///< Last economy date the vehicle had a service at a depot.
+	TimerGameCalendar::Date date_of_last_service_newgrf; ///< Last calendar date the vehicle had a service at a depot, unchanged by the date cheat to protect against unsafe NewGRF behavior.
 	uint16_t reliability;                 ///< Reliability.
 	uint16_t reliability_spd_dec;         ///< Reliability decrease speed.
 	byte breakdown_ctr;                 ///< Counter for managing breakdown events. @see Vehicle::HandleBreakdown
@@ -567,11 +567,16 @@ public:
 	virtual bool Tick() { return true; };
 
 	/**
-	 * Calls the new day handler of the vehicle
+	 * Calls the new calendar day handler of the vehicle.
 	 */
-	virtual void OnNewDay() {};
+	virtual void OnNewCalendarDay() {};
 
-	void ShiftDates(TimerGameCalendar::Date interval);
+	/**
+	 * Calls the new economy day handler of the vehicle.
+	 */
+	virtual void OnNewEconomyDay() {};
+
+	void ShiftDates(TimerGameEconomy::Date interval);
 
 	/**
 	 * Crash the (whole) vehicle chain.

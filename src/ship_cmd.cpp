@@ -23,6 +23,7 @@
 #include "strings_func.h"
 #include "window_func.h"
 #include "timer/timer_game_calendar.h"
+#include "timer/timer_game_economy.h"
 #include "vehicle_func.h"
 #include "sound_func.h"
 #include "ai/ai.hpp"
@@ -222,14 +223,20 @@ Money Ship::GetRunningCost() const
 	return GetPrice(PR_RUNNING_SHIP, cost_factor, e->GetGRF());
 }
 
-void Ship::OnNewDay()
+/** Calendar day handler. */
+void Ship::OnNewCalendarDay()
+{
+	AgeVehicle(this);
+}
+
+/** Economy day handler. */
+void Ship::OnNewEconomyDay()
 {
 	if ((++this->day_counter & 7) == 0) {
 		DecreaseVehicleValue(this);
 	}
 
 	CheckVehicleBreakdown(this);
-	AgeVehicle(this);
 	CheckIfShipNeedsService(this);
 
 	CheckOrders(this);
@@ -902,7 +909,7 @@ CommandCost CmdBuildShip(DoCommandFlag flags, TileIndex tile, const Engine *e, V
 		v->state = TRACK_BIT_DEPOT;
 
 		v->SetServiceInterval(Company::Get(_current_company)->settings.vehicle.servint_ships);
-		v->date_of_last_service = TimerGameCalendar::date;
+		v->date_of_last_service = TimerGameEconomy::date;
 		v->date_of_last_service_newgrf = TimerGameCalendar::date;
 		v->build_year = TimerGameCalendar::year;
 		v->sprite_cache.sprite_seq.Set(SPR_IMG_QUERY);

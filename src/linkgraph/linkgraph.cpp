@@ -29,7 +29,7 @@ LinkGraph::BaseNode::BaseNode(TileIndex xy, StationID st, uint demand)
 	this->supply = 0;
 	this->demand = demand;
 	this->station = st;
-	this->last_update = CalendarTime::INVALID_DATE;
+	this->last_update = EconomyTime::INVALID_DATE;
 }
 
 /**
@@ -40,8 +40,8 @@ LinkGraph::BaseEdge::BaseEdge(NodeID dest_node)
 	this->capacity = 0;
 	this->usage = 0;
 	this->travel_time_sum = 0;
-	this->last_unrestricted_update = CalendarTime::INVALID_DATE;
-	this->last_restricted_update = CalendarTime::INVALID_DATE;
+	this->last_unrestricted_update = EconomyTime::INVALID_DATE;
+	this->last_restricted_update = EconomyTime::INVALID_DATE;
 	this->dest_node = dest_node;
 }
 
@@ -50,22 +50,22 @@ LinkGraph::BaseEdge::BaseEdge(NodeID dest_node)
  * This is useful if the date has been modified with the cheat menu.
  * @param interval Number of days to be added or subtracted.
  */
-void LinkGraph::ShiftDates(TimerGameCalendar::Date interval)
+void LinkGraph::ShiftDates(TimerGameEconomy::Date interval)
 {
 	this->last_compression += interval;
 	for (NodeID node1 = 0; node1 < this->Size(); ++node1) {
 		BaseNode &source = this->nodes[node1];
-		if (source.last_update != CalendarTime::INVALID_DATE) source.last_update += interval;
+		if (source.last_update != EconomyTime::INVALID_DATE) source.last_update += interval;
 		for (BaseEdge &edge : this->nodes[node1].edges) {
-			if (edge.last_unrestricted_update != CalendarTime::INVALID_DATE) edge.last_unrestricted_update += interval;
-			if (edge.last_restricted_update != CalendarTime::INVALID_DATE) edge.last_restricted_update += interval;
+			if (edge.last_unrestricted_update != EconomyTime::INVALID_DATE) edge.last_unrestricted_update += interval;
+			if (edge.last_restricted_update != EconomyTime::INVALID_DATE) edge.last_restricted_update += interval;
 		}
 	}
 }
 
 void LinkGraph::Compress()
 {
-	this->last_compression = (TimerGameCalendar::date + this->last_compression).base() / 2;
+	this->last_compression = (TimerGameEconomy::date + this->last_compression).base() / 2;
 	for (NodeID node1 = 0; node1 < this->Size(); ++node1) {
 		this->nodes[node1].supply /= 2;
 		for (BaseEdge &edge : this->nodes[node1].edges) {
@@ -89,8 +89,8 @@ void LinkGraph::Compress()
  */
 void LinkGraph::Merge(LinkGraph *other)
 {
-	TimerGameCalendar::Date age = TimerGameCalendar::date - this->last_compression + 1;
-	TimerGameCalendar::Date other_age = TimerGameCalendar::date - other->last_compression + 1;
+	TimerGameEconomy::Date age = TimerGameEconomy::date - this->last_compression + 1;
+	TimerGameEconomy::Date other_age = TimerGameEconomy::date - other->last_compression + 1;
 	NodeID first = this->Size();
 	for (NodeID node1 = 0; node1 < other->Size(); ++node1) {
 		Station *st = Station::Get(other->nodes[node1].station);
@@ -172,8 +172,8 @@ void LinkGraph::BaseNode::AddEdge(NodeID to, uint capacity, uint usage, uint32_t
 	edge.capacity = capacity;
 	edge.usage = usage;
 	edge.travel_time_sum = static_cast<uint64_t>(travel_time) * capacity;
-	if (mode & EUM_UNRESTRICTED)  edge.last_unrestricted_update = TimerGameCalendar::date;
-	if (mode & EUM_RESTRICTED) edge.last_restricted_update = TimerGameCalendar::date;
+	if (mode & EUM_UNRESTRICTED)  edge.last_unrestricted_update = TimerGameEconomy::date;
+	if (mode & EUM_RESTRICTED) edge.last_restricted_update = TimerGameEconomy::date;
 }
 
 /**
@@ -239,8 +239,8 @@ void LinkGraph::BaseEdge::Update(uint capacity, uint usage, uint32_t travel_time
 		}
 		this->usage = std::max(this->usage, usage);
 	}
-	if (mode & EUM_UNRESTRICTED) this->last_unrestricted_update = TimerGameCalendar::date;
-	if (mode & EUM_RESTRICTED) this->last_restricted_update = TimerGameCalendar::date;
+	if (mode & EUM_UNRESTRICTED) this->last_unrestricted_update = TimerGameEconomy::date;
+	if (mode & EUM_RESTRICTED) this->last_restricted_update = TimerGameEconomy::date;
 }
 
 /**

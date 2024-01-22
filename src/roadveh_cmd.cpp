@@ -21,6 +21,7 @@
 #include "strings_func.h"
 #include "tunnelbridge_map.h"
 #include "timer/timer_game_calendar.h"
+#include "timer/timer_game_economy.h"
 #include "vehicle_func.h"
 #include "sound_func.h"
 #include "ai/ai.hpp"
@@ -299,7 +300,7 @@ CommandCost CmdBuildRoadVehicle(DoCommandFlag flags, TileIndex tile, const Engin
 
 		v->SetServiceInterval(Company::Get(v->owner)->settings.vehicle.servint_roadveh);
 
-		v->date_of_last_service = TimerGameCalendar::date;
+		v->date_of_last_service = TimerGameEconomy::date;
 		v->date_of_last_service_newgrf = TimerGameCalendar::date;
 		v->build_year = TimerGameCalendar::year;
 
@@ -1705,10 +1706,16 @@ static void CheckIfRoadVehNeedsService(RoadVehicle *v)
 	SetWindowWidgetDirty(WC_VEHICLE_VIEW, v->index, WID_VV_START_STOP);
 }
 
-void RoadVehicle::OnNewDay()
+/** Calandar day handler */
+void RoadVehicle::OnNewCalendarDay()
 {
+	if (!this->IsFrontEngine()) return;
 	AgeVehicle(this);
+}
 
+/** Economy day handler. */
+void RoadVehicle::OnNewEconomyDay()
+{
 	if (!this->IsFrontEngine()) return;
 
 	if ((++this->day_counter & 7) == 0) DecreaseVehicleValue(this);

@@ -62,6 +62,7 @@ CommandCost TunnelBridgeIsFree(TileIndex tile, TileIndex endtile, const Vehicle 
 void DecreaseVehicleValue(Vehicle *v);
 void CheckVehicleBreakdown(Vehicle *v);
 void AgeVehicle(Vehicle *v);
+void RunVehicleCalendarDayProc();
 void VehicleEnteredDepotThisTick(Vehicle *v);
 
 UnitID GetFreeUnitNumber(VehicleType type);

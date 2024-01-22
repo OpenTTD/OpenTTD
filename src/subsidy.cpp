@@ -27,7 +27,7 @@
 #include "tile_cmd.h"
 #include "subsidy_cmd.h"
 #include "timer/timer.h"
-#include "timer/timer_game_calendar.h"
+#include "timer/timer_game_economy.h"
 
 #include "table/strings.h"
 
@@ -474,8 +474,8 @@ bool FindSubsidyCargoDestination(CargoID cid, SourceType src_type, SourceID src)
 	return true;
 }
 
-/** Perform the monthly update of open subsidies, and try to create a new one. */
-static IntervalTimer<TimerGameCalendar> _subsidies_monthly({TimerGameCalendar::MONTH, TimerGameCalendar::Priority::SUBSIDY}, [](auto)
+/** Perform the economy monthly update of open subsidies, and try to create a new one. */
+static IntervalTimer<TimerGameEconomy> _economy_subsidies_monthly({TimerGameEconomy::MONTH, TimerGameEconomy::Priority::SUBSIDY}, [](auto)
 {
 	bool modified = false;
 

@@ -54,6 +54,7 @@
 #include "tunnelbridge_cmd.h"
 #include "timer/timer.h"
 #include "timer/timer_game_calendar.h"
+#include "timer/timer_game_economy.h"
 #include "timer/timer_game_tick.h"
 
 #include "table/strings.h"
@@ -3837,7 +3838,7 @@ CommandCost CheckforTownRating(DoCommandFlag flags, Town *t, TownRatingCheckType
 	return CommandCost();
 }
 
-static IntervalTimer<TimerGameCalendar> _towns_monthly({TimerGameCalendar::MONTH, TimerGameCalendar::Priority::TOWN}, [](auto)
+static IntervalTimer<TimerGameEconomy> _economy_towns_monthly({TimerGameEconomy::MONTH, TimerGameEconomy::Priority::TOWN}, [](auto)
 {
 	for (Town *t : Town::Iterate()) {
 		/* Check for active town actions and decrement their counters. */
@@ -3864,7 +3865,7 @@ static IntervalTimer<TimerGameCalendar> _towns_monthly({TimerGameCalendar::MONTH
 	}
 });
 
-static IntervalTimer<TimerGameCalendar> _towns_yearly({TimerGameCalendar::YEAR, TimerGameCalendar::Priority::TOWN}, [](auto)
+static IntervalTimer<TimerGameEconomy> _economy_towns_yearly({TimerGameEconomy::YEAR, TimerGameEconomy::Priority::TOWN}, [](auto)
 {
 	/* Increment house ages */
 	for (TileIndex t = 0; t < Map::Size(); t++) {

@@ -36,7 +36,7 @@
 #include "widgets/statusbar_widget.h"
 #include "company_cmd.h"
 #include "timer/timer.h"
-#include "timer/timer_game_calendar.h"
+#include "timer/timer_game_economy.h"
 #include "timer/timer_game_tick.h"
 
 #include "table/strings.h"
@@ -566,7 +566,7 @@ Company *DoStartupNewCompany(bool is_ai, CompanyID company = INVALID_COMPANY)
 
 	c->avail_railtypes = GetCompanyRailTypes(c->index);
 	c->avail_roadtypes = GetCompanyRoadTypes(c->index);
-	c->inaugurated_year = TimerGameCalendar::year;
+	c->inaugurated_year = TimerGameEconomy::year;
 
 	/* If starting a player company in singleplayer and a favorite company manager face is selected, choose it. Otherwise, use a random face.
 	 * In a network game, we'll choose the favorite face later in CmdCompanyCtrl to sync it to all clients. */
@@ -747,7 +747,7 @@ void OnTick_Companies()
  * A year has passed, update the economic data of all companies, and perhaps show the
  * financial overview window of the local company.
  */
-static IntervalTimer<TimerGameCalendar> _companies_yearly({TimerGameCalendar::YEAR, TimerGameCalendar::Priority::COMPANY}, [](auto)
+static IntervalTimer<TimerGameEconomy> _economy_companies_yearly({TimerGameEconomy::YEAR, TimerGameEconomy::Priority::COMPANY}, [](auto)
 {
 	/* Copy statistics */
 	for (Company *c : Company::Iterate()) {

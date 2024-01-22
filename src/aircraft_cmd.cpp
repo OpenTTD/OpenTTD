@@ -22,6 +22,7 @@
 #include "command_func.h"
 #include "window_func.h"
 #include "timer/timer_game_calendar.h"
+#include "timer/timer_game_economy.h"
 #include "vehicle_func.h"
 #include "sound_func.h"
 #include "cheat_type.h"
@@ -338,7 +339,7 @@ CommandCost CmdBuildAircraft(DoCommandFlag flags, TileIndex tile, const Engine *
 
 		v->SetServiceInterval(Company::Get(_current_company)->settings.vehicle.servint_aircraft);
 
-		v->date_of_last_service = TimerGameCalendar::date;
+		v->date_of_last_service = TimerGameEconomy::date;
 		v->date_of_last_service_newgrf = TimerGameCalendar::date;
 		v->build_year = u->build_year = TimerGameCalendar::year;
 
@@ -439,7 +440,15 @@ Money Aircraft::GetRunningCost() const
 	return GetPrice(PR_RUNNING_AIRCRAFT, cost_factor, e->GetGRF());
 }
 
-void Aircraft::OnNewDay()
+/** Calendar day handler */
+void Aircraft::OnNewCalendarDay()
+{
+	if (!this->IsNormalAircraft()) return;
+	AgeVehicle(this);
+}
+
+/** Economy day handler */
+void Aircraft::OnNewEconomyDay()
 {
 	if (!this->IsNormalAircraft()) return;
 
@@ -448,7 +457,6 @@ void Aircraft::OnNewDay()
 	CheckOrders(this);
 
 	CheckVehicleBreakdown(this);
-	AgeVehicle(this);
 	CheckIfAircraftNeedsService(this);
 
 	if (this->running_ticks == 0) return;
@@ -1555,7 +1563,7 @@ static void AircraftEventHandler_AtTerminal(Aircraft *v, const AirportFTAClass *
 		if (_settings_game.order.serviceathelipad) {
 			if (v->subtype == AIR_HELICOPTER && apc->num_helipads > 0) {
 				/* an excerpt of ServiceAircraft, without the invisibility stuff */
-				v->date_of_last_service = TimerGameCalendar::date;
+				v->date_of_last_service = TimerGameEconomy::date;
 				v->date_of_last_service_newgrf = TimerGameCalendar::date;
 				v->breakdowns_since_last_service = 0;
 				v->reliability = v->GetEngine()->reliability;

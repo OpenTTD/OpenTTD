@@ -18,8 +18,8 @@
  * @param w the window that sends the callback
  * @param date the date that has been chosen
  */
-typedef void SetDateCallback(const Window *w, TimerGameCalendar::Date date, void *data);
+typedef void SetDateCallback(const Window *w, TimerGameEconomy::Date date, void *data);
 
-void ShowSetDateWindow(Window *parent, int window_number, TimerGameCalendar::Date initial_date, TimerGameCalendar::Year min_year, TimerGameCalendar::Year max_year, SetDateCallback *callback, void *callback_data);
+void ShowSetDateWindow(Window *parent, int window_number, TimerGameEconomy::Date initial_date, TimerGameEconomy::Year min_year, TimerGameEconomy::Year max_year, SetDateCallback *callback, void *callback_data);
 
 #endif /* DATE_GUI_H */

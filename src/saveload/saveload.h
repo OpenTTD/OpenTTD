@@ -368,6 +368,7 @@ enum SaveLoadVersion : uint16_t {
 	SLV_WATER_REGIONS,                      ///< 324  PR#10543 Water Regions for ship pathfinder.
 
 	SLV_WATER_REGION_EVAL_SIMPLIFIED,       ///< 325  PR#11750 Simplified Water Region evaluation.
+	SLV_ECONOMY_DATE,                       ///< 326  PR#10700 Split calendar and economy timers and dates.
 
 	SL_MAX_VERSION,                         ///< Highest possible saveload version
 };

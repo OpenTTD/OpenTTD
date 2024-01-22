@@ -20,7 +20,7 @@
 #include "company_func.h"
 #include "timer/timer.h"
 #include "timer/timer_game_tick.h"
-#include "timer/timer_game_calendar.h"
+#include "timer/timer_game_economy.h"
 #include "timer/timer_window.h"
 #include "date_gui.h"
 #include "vehicle_gui.h"
@@ -192,7 +192,7 @@ static void FillTimetableArrivalDepartureTable(const Vehicle *v, VehicleOrderID 
  * @param w the window related to the setting of the date
  * @param date the actually chosen date
  */
-static void ChangeTimetableStartCallback(const Window *w, TimerGameCalendar::Date date, void *data)
+static void ChangeTimetableStartCallback(const Window *w, TimerGameEconomy::Date date, void *data)
 {
 	Command<CMD_SET_TIMETABLE_START>::Post(STR_ERROR_CAN_T_TIMETABLE_VEHICLE, (VehicleID)w->window_number, reinterpret_cast<std::uintptr_t>(data) != 0, GetStartTickFromDate(date));
 }
@@ -235,7 +235,7 @@ struct TimetableWindow : Window {
 		TimerGameTick::Ticks start_time = -v->current_order_time;
 
 		/* If arrival and departure times are in days, compensate for the current date_fract. */
-		if (_settings_client.gui.timetable_mode != TimetableMode::Seconds) start_time += TimerGameCalendar::date_fract;
+		if (_settings_client.gui.timetable_mode != TimetableMode::Seconds) start_time += TimerGameEconomy::date_fract;
 
 		FillTimetableArrivalDepartureTable(v, v->cur_real_order_index % v->GetNumOrders(), travelling, table, start_time);
 
@@ -252,7 +252,7 @@ struct TimetableWindow : Window {
 					SetDParamMaxDigits(1, 4, FS_SMALL);
 					size->width = std::max(GetStringBoundingBox(STR_TIMETABLE_ARRIVAL_SECONDS_IN_FUTURE).width, GetStringBoundingBox(STR_TIMETABLE_DEPARTURE_SECONDS_IN_FUTURE).width) + WidgetDimensions::scaled.hsep_wide + padding.width;
 				} else {
-					SetDParamMaxValue(1, TimerGameCalendar::DateAtStartOfYear(CalendarTime::MAX_YEAR), 0, FS_SMALL);
+					SetDParamMaxValue(1, TimerGameEconomy::DateAtStartOfYear(EconomyTime::MAX_YEAR), 0, FS_SMALL);
 					size->width = std::max(GetStringBoundingBox(STR_TIMETABLE_ARRIVAL_DATE).width, GetStringBoundingBox(STR_TIMETABLE_DEPARTURE_DATE).width) + WidgetDimensions::scaled.hsep_wide + padding.width;
 				}
 				FALLTHROUGH;
@@ -525,7 +525,7 @@ struct TimetableWindow : Window {
 						DrawString(tr.left, tr.right, tr.top, STR_TIMETABLE_ARRIVAL_SECONDS_IN_FUTURE, i == selected ? TC_WHITE : TC_BLACK);
 					} else {
 						/* Show a date. */
-						SetDParam(1, TimerGameCalendar::date + (arr_dep[i / 2].arrival + this_offset) / Ticks::DAY_TICKS);
+						SetDParam(1, TimerGameEconomy::date + (arr_dep[i / 2].arrival + this_offset) / Ticks::DAY_TICKS);
 						DrawString(tr.left, tr.right, tr.top, STR_TIMETABLE_ARRIVAL_DATE, i == selected ? TC_WHITE : TC_BLACK);
 					}
 				}
@@ -538,7 +538,7 @@ struct TimetableWindow : Window {
 						DrawString(tr.left, tr.right, tr.top, STR_TIMETABLE_DEPARTURE_SECONDS_IN_FUTURE, i == selected ? TC_WHITE : TC_BLACK);
 					} else {
 						/* Show a date. */
-						SetDParam(1, TimerGameCalendar::date + (arr_dep[i / 2].departure + offset) / Ticks::DAY_TICKS);
+						SetDParam(1, TimerGameEconomy::date + (arr_dep[i / 2].departure + offset) / Ticks::DAY_TICKS);
 						DrawString(tr.left, tr.right, tr.top, STR_TIMETABLE_DEPARTURE_DATE, i == selected ? TC_WHITE : TC_BLACK);
 					}
 				}
@@ -572,7 +572,7 @@ struct TimetableWindow : Window {
 				SetDParam(0, (static_cast<TimerGameTick::Ticks>(v->timetable_start - TimerGameTick::counter) / Ticks::TICKS_PER_SECOND));
 				DrawString(tr, STR_TIMETABLE_STATUS_START_IN_SECONDS);
 			} else {
-				/* Calendar units use dates. */
+				/* Other units use dates. */
 				SetDParam(0, STR_JUST_DATE_TINY);
 				SetDParam(1, GetDateFromStartTick(v->timetable_start));
 				DrawString(tr, STR_TIMETABLE_STATUS_START_AT_DATE);
@@ -643,7 +643,7 @@ struct TimetableWindow : Window {
 					this->change_timetable_all = _ctrl_pressed;
 					ShowQueryString(STR_EMPTY, STR_TIMETABLE_START_SECONDS_QUERY, 6, this, CS_NUMERAL, QSF_ACCEPT_UNCHANGED);
 				} else {
-					ShowSetDateWindow(this, v->index, TimerGameCalendar::date, TimerGameCalendar::year, TimerGameCalendar::year + MAX_TIMETABLE_START_YEARS, ChangeTimetableStartCallback, reinterpret_cast<void*>(static_cast<uintptr_t>(_ctrl_pressed)));
+					ShowSetDateWindow(this, v->index, TimerGameEconomy::date, TimerGameEconomy::year, TimerGameEconomy::year + MAX_TIMETABLE_START_YEARS, ChangeTimetableStartCallback, reinterpret_cast<void*>(static_cast<uintptr_t>(_ctrl_pressed)));
 				}
 				break;
 

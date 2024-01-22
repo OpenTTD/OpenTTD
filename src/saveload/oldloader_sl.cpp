@@ -859,7 +859,7 @@ static bool LoadOldIndustry(LoadgameState *ls, int num)
 			if (i->type > 0x06) i->type++; // Printing Works were added
 			if (i->type == 0x0A) i->type = 0x12; // Iron Ore Mine has different ID
 
-			TimerGameCalendar::YearMonthDay ymd = TimerGameCalendar::ConvertDateToYMD(TimerGameCalendar::date);
+			TimerGameEconomy::YearMonthDay ymd = TimerGameEconomy::ConvertDateToYMD(TimerGameEconomy::date);
 			i->last_prod_year = ymd.year;
 
 			i->random_colour = RemapTTOColour(i->random_colour);
@@ -1034,7 +1034,7 @@ static bool LoadOldCompany(LoadgameState *ls, int num)
 	}
 
 	_company_colours[num] = c->colour;
-	c->inaugurated_year -= CalendarTime::ORIGINAL_BASE_YEAR;
+	c->inaugurated_year -= EconomyTime::ORIGINAL_BASE_YEAR;
 
 	return true;
 }

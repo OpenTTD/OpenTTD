@@ -11,7 +11,7 @@
 #include "command_func.h"
 #include "company_func.h"
 #include "timer/timer_game_tick.h"
-#include "timer/timer_game_calendar.h"
+#include "timer/timer_game_economy.h"
 #include "window_func.h"
 #include "vehicle_base.h"
 #include "timetable_cmd.h"
@@ -26,13 +26,13 @@
  * @param start_date The date when the timetable starts.
  * @return The first tick of this date.
  */
-TimerGameTick::TickCounter GetStartTickFromDate(TimerGameCalendar::Date start_date)
+TimerGameTick::TickCounter GetStartTickFromDate(TimerGameEconomy::Date start_date)
 {
 	/* Calculate the offset in ticks from the current date. */
-	TimerGameTick::Ticks tick_offset = (start_date - TimerGameCalendar::date).base() * Ticks::DAY_TICKS;
+	TimerGameTick::Ticks tick_offset = (start_date - TimerGameEconomy::date).base() * Ticks::DAY_TICKS;
 
 	/* Compensate for the current date_fract. */
-	tick_offset -= TimerGameCalendar::date_fract;
+	tick_offset -= TimerGameEconomy::date_fract;
 
 	/* Return the current tick plus the offset. */
 	return TimerGameTick::counter + tick_offset;
@@ -43,16 +43,16 @@ TimerGameTick::TickCounter GetStartTickFromDate(TimerGameCalendar::Date start_da
  * @param start_tick The TimerGameTick::TickCounter when the timetable starts.
  * @return The date when we reach this tick.
  */
-TimerGameCalendar::Date GetDateFromStartTick(TimerGameTick::TickCounter start_tick)
+TimerGameEconomy::Date GetDateFromStartTick(TimerGameTick::TickCounter start_tick)
 {
 	/* Calculate the offset in ticks from the current counter tick. */
 	TimerGameTick::Ticks tick_offset = start_tick - TimerGameTick::counter;
 
 	/* Compensate for the current date_fract. */
-	tick_offset += TimerGameCalendar::date_fract;
+	tick_offset += TimerGameEconomy::date_fract;
 
 	/* Return the current date plus the offset in days. */
-	return TimerGameCalendar::date + (tick_offset / Ticks::DAY_TICKS);
+	return TimerGameEconomy::date + (tick_offset / Ticks::DAY_TICKS);
 }
 
 /**
@@ -347,21 +347,21 @@ CommandCost CmdSetTimetableStart(DoCommandFlag flags, VehicleID veh_id, bool tim
 
 	TimerGameTick::Ticks total_duration = v->orders->GetTimetableTotalDuration();
 
-	TimerGameCalendar::Date start_date = GetDateFromStartTick(start_tick);
+	TimerGameEconomy::Date start_date = GetDateFromStartTick(start_tick);
 
 	/* Don't let a timetable start at an invalid date. */
-	if (start_date < 0 || start_date > CalendarTime::MAX_DATE) return CMD_ERROR;
+	if (start_date < 0 || start_date > EconomyTime::MAX_DATE) return CMD_ERROR;
 
 	/* Don't let a timetable start more than 15 years into the future... */
-	if (start_date - TimerGameCalendar::date > TimerGameCalendar::DateAtStartOfYear(MAX_TIMETABLE_START_YEARS)) return CMD_ERROR;
+	if (start_date - TimerGameEconomy::date > TimerGameEconomy::DateAtStartOfYear(MAX_TIMETABLE_START_YEARS)) return CMD_ERROR;
 	/* ...or 1 year in the past. */
-	if (TimerGameCalendar::date - start_date > CalendarTime::DAYS_IN_LEAP_YEAR) return CMD_ERROR;
+	if (TimerGameEconomy::date - start_date > EconomyTime::DAYS_IN_LEAP_YEAR) return CMD_ERROR;
 
 	/* If trying to distribute start dates over a shared order group, we need to know the total duration. */
 	if (timetable_all && !v->orders->IsCompleteTimetable()) return CommandCost(STR_ERROR_TIMETABLE_INCOMPLETE);
 
 	/* Don't allow invalid start dates for other vehicles in the shared order group. */
-	if (timetable_all && start_date + (total_duration / Ticks::DAY_TICKS) > CalendarTime::MAX_DATE) return CMD_ERROR;
+	if (timetable_all && start_date + (total_duration / Ticks::DAY_TICKS) > EconomyTime::MAX_DATE) return CMD_ERROR;
 
 	if (flags & DC_EXEC) {
 		std::vector<Vehicle *> vehs;

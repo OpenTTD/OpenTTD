@@ -32,6 +32,7 @@
 #include "../rev.h"
 #include "../timer/timer.h"
 #include "../timer/timer_game_calendar.h"
+#include "../timer/timer_game_economy.h"
 #include <mutex>
 #include <condition_variable>
 
@@ -882,10 +883,10 @@ NetworkRecvStatus ServerNetworkGameSocketHandler::Receive_CLIENT_JOIN(Packet *p)
 	assert(NetworkClientInfo::CanAllocateItem());
 	NetworkClientInfo *ci = new NetworkClientInfo(this->client_id);
 	this->SetInfo(ci);
-	ci->join_date = TimerGameCalendar::date;
+	ci->join_date = TimerGameEconomy::date;
 	ci->client_name = client_name;
 	ci->client_playas = playas;
-	Debug(desync, 1, "client: {:08x}; {:02x}; {:02x}; {:02x}", TimerGameCalendar::date, TimerGameCalendar::date_fract, (int)ci->client_playas, (int)ci->index);
+	Debug(desync, 1, "client: {:08x}; {:02x}; {:02x}; {:02x}", TimerGameEconomy::date, TimerGameEconomy::date_fract, (int)ci->client_playas, (int)ci->index);
 
 	/* Make sure companies to which people try to join are not autocleaned */
 	if (Company::IsValidID(playas)) _network_company_states[playas].months_empty = 0;
@@ -1479,7 +1480,7 @@ void NetworkUpdateClientInfo(ClientID client_id)
 
 	if (ci == nullptr) return;
 
-	Debug(desync, 1, "client: {:08x}; {:02x}; {:02x}; {:04x}", TimerGameCalendar::date, TimerGameCalendar::date_fract, (int)ci->client_playas, client_id);
+	Debug(desync, 1, "client: {:08x}; {:02x}; {:02x}; {:04x}", TimerGameEconomy::date, TimerGameEconomy::date_fract, (int)ci->client_playas, client_id);
 
 	for (NetworkClientSocket *cs : NetworkClientSocket::Iterate()) {
 		if (cs->status >= ServerNetworkGameSocketHandler::STATUS_AUTHORIZED) {
@@ -1810,17 +1811,23 @@ void NetworkServer_Tick(bool send_frame)
 	}
 }
 
-/** Yearly "callback". Called whenever the year changes. */
-static IntervalTimer<TimerGameCalendar> _network_yearly({TimerGameCalendar::YEAR, TimerGameCalendar::Priority::NONE}, [](auto)
-{
+/** Calendar yearly "callback". Called whenever the calendar year changes. */
+static IntervalTimer<TimerGameCalendar> _calendar_network_yearly({ TimerGameCalendar::YEAR, TimerGameCalendar::Priority::NONE }, [](auto) {
 	if (!_network_server) return;
 
 	NetworkCheckRestartMap();
+});
+
+/** Economy yearly "callback". Called whenever the economy year changes. */
+static IntervalTimer<TimerGameEconomy> _economy_network_yearly({TimerGameEconomy::YEAR, TimerGameEconomy::Priority::NONE}, [](auto)
+{
+	if (!_network_server) return;
+
 	NetworkAdminUpdate(ADMIN_FREQUENCY_ANUALLY);
 });
 
-/** Quarterly "callback". Called whenever the quarter changes. */
-static IntervalTimer<TimerGameCalendar> _network_quarterly({TimerGameCalendar::QUARTER, TimerGameCalendar::Priority::NONE}, [](auto)
+/** Quarterly "callback". Called whenever the economy quarter changes. */
+static IntervalTimer<TimerGameEconomy> _network_quarterly({TimerGameEconomy::QUARTER, TimerGameEconomy::Priority::NONE}, [](auto)
 {
 	if (!_network_server) return;
 
@@ -1828,8 +1835,8 @@ static IntervalTimer<TimerGameCalendar> _network_quarterly({TimerGameCalendar::Q
 	NetworkAdminUpdate(ADMIN_FREQUENCY_QUARTERLY);
 });
 
-/** Monthly "callback". Called whenever the month changes. */
-static IntervalTimer<TimerGameCalendar> _network_monthly({TimerGameCalendar::MONTH, TimerGameCalendar::Priority::NONE}, [](auto)
+/** Economy monthly "callback". Called whenever the economy month changes. */
+static IntervalTimer<TimerGameEconomy> _network_monthly({TimerGameEconomy::MONTH, TimerGameEconomy::Priority::NONE}, [](auto)
 {
 	if (!_network_server) return;
 
@@ -1837,16 +1844,16 @@ static IntervalTimer<TimerGameCalendar> _network_monthly({TimerGameCalendar::MON
 	NetworkAdminUpdate(ADMIN_FREQUENCY_MONTHLY);
 });
 
-/** Weekly "callback". Called whenever the week changes. */
-static IntervalTimer<TimerGameCalendar> _network_weekly({TimerGameCalendar::WEEK, TimerGameCalendar::Priority::NONE}, [](auto)
+/** Economy weekly "callback". Called whenever the economy week changes. */
+static IntervalTimer<TimerGameEconomy> _network_weekly({TimerGameEconomy::WEEK, TimerGameEconomy::Priority::NONE}, [](auto)
 {
 	if (!_network_server) return;
 
 	NetworkAdminUpdate(ADMIN_FREQUENCY_WEEKLY);
 });
 
-/** Daily "callback". Called whenever the date changes. */
-static IntervalTimer<TimerGameCalendar> _network_daily({TimerGameCalendar::DAY, TimerGameCalendar::Priority::NONE}, [](auto)
+/** Daily "callback". Called whenever the economy date changes. */
+static IntervalTimer<TimerGameEconomy> _economy_network_daily({TimerGameEconomy::DAY, TimerGameEconomy::Priority::NONE}, [](auto)
 {
 	if (!_network_server) return;
 

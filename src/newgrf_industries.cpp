@@ -396,7 +396,7 @@ static uint32_t GetCountAndDistanceOfClosestInstance(byte param_setID, byte layo
 		case 0xA6: return indspec->grf_prop.local_id;
 		case 0xA7: return this->industry->founder;
 		case 0xA8: return this->industry->random_colour;
-		case 0xA9: return ClampTo<uint8_t>(this->industry->last_prod_year - CalendarTime::ORIGINAL_BASE_YEAR);
+		case 0xA9: return ClampTo<uint8_t>(this->industry->last_prod_year - EconomyTime::ORIGINAL_BASE_YEAR);
 		case 0xAA: return this->industry->counter;
 		case 0xAB: return GB(this->industry->counter, 8, 8);
 		case 0xAC: return this->industry->was_cargo_delivered;
@@ -405,7 +405,7 @@ static uint32_t GetCountAndDistanceOfClosestInstance(byte param_setID, byte layo
 		case 0xB3: return this->industry->construction_type; // Construction type
 		case 0xB4: {
 			auto it = std::max_element(std::begin(this->industry->accepted), std::end(this->industry->accepted), [](const auto &a, const auto &b) { return a.last_accepted < b.last_accepted; });
-			return ClampTo<uint16_t>(it->last_accepted - CalendarTime::DAYS_TILL_ORIGINAL_BASE_YEAR); // Date last cargo accepted since 1920 (in days)
+			return ClampTo<uint16_t>(it->last_accepted - EconomyTime::DAYS_TILL_ORIGINAL_BASE_YEAR); // Date last cargo accepted since 1920 (in days)
 		}
 	}
 

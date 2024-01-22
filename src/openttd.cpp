@@ -72,6 +72,7 @@
 #include "misc_cmd.h"
 #include "timer/timer.h"
 #include "timer/timer_game_calendar.h"
+#include "timer/timer_game_economy.h"
 #include "timer/timer_game_realtime.h"
 #include "timer/timer_game_tick.h"
 
@@ -830,7 +831,7 @@ static void OnStartScenario()
 
 	/* Make sure all industries were built "this year", to avoid too early closures. (#9918) */
 	for (Industry *i : Industry::Iterate()) {
-		i->last_prod_year = TimerGameCalendar::year;
+		i->last_prod_year = TimerGameEconomy::year;
 	}
 }
 
@@ -1396,7 +1397,7 @@ void StateGameLoop()
 		CallWindowGameTickEvent();
 		NewsLoop();
 	} else {
-		if (_debug_desync_level > 2 && TimerGameCalendar::date_fract == 0 && (TimerGameCalendar::date.base() & 0x1F) == 0) {
+		if (_debug_desync_level > 2 && TimerGameEconomy::date_fract == 0 && (TimerGameEconomy::date.base() & 0x1F) == 0) {
 			/* Save the desync savegame if needed. */
 			std::string name = fmt::format("dmp_cmds_{:08x}_{:08x}.sav", _settings_game.game_creation.generation_seed, TimerGameCalendar::date);
 			SaveOrLoad(name, SLO_SAVE, DFT_GAME_FILE, AUTOSAVE_DIR, false);
@@ -1411,8 +1412,10 @@ void StateGameLoop()
 		BasePersistentStorageArray::SwitchMode(PSM_ENTER_GAMELOOP);
 		AnimateAnimatedTiles();
 		TimerManager<TimerGameCalendar>::Elapsed(1);
+		TimerManager<TimerGameEconomy>::Elapsed(1);
 		TimerManager<TimerGameTick>::Elapsed(1);
 		RunTileLoop();
+		RunVehicleCalendarDayProc();
 		CallVehicleTicks();
 		CallLandscapeTick();
 		BasePersistentStorageArray::SwitchMode(PSM_LEAVE_GAMELOOP);

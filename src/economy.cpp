@@ -54,6 +54,7 @@
 #include "vehicle_cmd.h"
 #include "timer/timer.h"
 #include "timer/timer_game_calendar.h"
+#include "timer/timer_game_economy.h"
 
 #include "table/strings.h"
 #include "table/pricebase.h"
@@ -690,8 +691,8 @@ static void CompaniesGenStatistics()
 	}
 	cur_company.Restore();
 
-	/* Only run the economic statics and update company stats every 3rd month (1st of quarter). */
-	if (!HasBit(1 << 0 | 1 << 3 | 1 << 6 | 1 << 9, TimerGameCalendar::month)) return;
+	/* Only run the economic statics and update company stats every 3rd economy month (1st of quarter). */
+	if (!HasBit(1 << 0 | 1 << 3 | 1 << 6 | 1 << 9, TimerGameEconomy::month)) return;
 
 	for (Company *c : Company::Iterate()) {
 		/* Drop the oldest history off the end */
@@ -844,8 +845,8 @@ static void CompaniesPayInterest()
 		if (c->money < 0) {
 			yearly_fee += -c->money *_economy.interest_rate / 100;
 		}
-		Money up_to_previous_month = yearly_fee * TimerGameCalendar::month / 12;
-		Money up_to_this_month = yearly_fee * (TimerGameCalendar::month + 1) / 12;
+		Money up_to_previous_month = yearly_fee * TimerGameEconomy::month / 12;
+		Money up_to_this_month = yearly_fee * (TimerGameEconomy::month + 1) / 12;
 
 		SubtractMoneyFromCompany(CommandCost(EXPENSES_LOAN_INTEREST, up_to_this_month - up_to_previous_month));
 
@@ -1080,7 +1081,7 @@ static uint DeliverGoodsToIndustry(const Station *st, CargoID cargo_type, uint n
 
 		uint amount = std::min(num_pieces, 0xFFFFu - it->waiting);
 		it->waiting += amount;
-		it->last_accepted = TimerGameCalendar::date;
+		it->last_accepted = TimerGameEconomy::date;
 		num_pieces -= amount;
 		accepted += amount;
 
@@ -1980,16 +1981,23 @@ void LoadUnloadStation(Station *st)
 }
 
 /**
- * Monthly update of the economic data (of the companies as well as economic fluctuations).
+ * Every calendar month update of inflation.
  */
-static IntervalTimer<TimerGameCalendar> _companies_monthly({TimerGameCalendar::MONTH, TimerGameCalendar::Priority::COMPANY}, [](auto)
+static IntervalTimer<TimerGameCalendar> _calendar_inflation_monthly({TimerGameCalendar::MONTH, TimerGameCalendar::Priority::COMPANY}, [](auto)
 {
-	CompaniesPayInterest();
-	CompaniesGenStatistics();
 	if (_settings_game.economy.inflation) {
 		AddInflation();
 		RecomputePrices();
 	}
+});
+
+/**
+ * Every economy month update of company economic data, plus economy fluctuations.
+ */
+static IntervalTimer<TimerGameEconomy> _economy_companies_monthly({ TimerGameEconomy::MONTH, TimerGameEconomy::Priority::COMPANY }, [](auto)
+{
+	CompaniesGenStatistics();
+	CompaniesPayInterest();
 	HandleEconomyFluctuations();
 });
 

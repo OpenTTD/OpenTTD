@@ -142,7 +142,7 @@ struct SubsidyListWindow : Window {
 	{
 		if (widget != WID_SUL_PANEL) return;
 
-		TimerGameCalendar::YearMonthDay ymd = TimerGameCalendar::ConvertDateToYMD(TimerGameCalendar::date);
+		TimerGameEconomy::YearMonthDay ymd = TimerGameEconomy::ConvertDateToYMD(TimerGameEconomy::date);
 
 		Rect tr = r.Shrink(WidgetDimensions::scaled.framerect);
 
@@ -159,7 +159,7 @@ struct SubsidyListWindow : Window {
 				if (IsInsideMM(pos, 0, cap)) {
 					/* Displays the two offered towns */
 					SetupSubsidyDecodeParam(s, SubsidyDecodeParamType::Gui);
-					SetDParam(7, TimerGameCalendar::date - ymd.day + s->remaining * 32);
+					SetDParam(7, TimerGameEconomy::date - ymd.day + s->remaining * 32);
 					DrawString(tr.left, tr.right, tr.top + pos * GetCharacterHeight(FS_NORMAL), STR_SUBSIDIES_OFFERED_FROM_TO);
 				}
 				pos++;
@@ -183,7 +183,7 @@ struct SubsidyListWindow : Window {
 				if (IsInsideMM(pos, 0, cap)) {
 					SetupSubsidyDecodeParam(s, SubsidyDecodeParamType::Gui);
 					SetDParam(7, s->awarded);
-					SetDParam(8, TimerGameCalendar::date - ymd.day + s->remaining * 32);
+					SetDParam(8, TimerGameEconomy::date - ymd.day + s->remaining * 32);
 
 					/* Displays the two connected stations */
 					DrawString(tr.left, tr.right, tr.top + pos * GetCharacterHeight(FS_NORMAL), STR_SUBSIDIES_SUBSIDISED_FROM_TO);

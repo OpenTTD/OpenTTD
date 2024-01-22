@@ -1103,10 +1103,18 @@ void ToggleWidgetOutlines()
 void SetStartingYear(TimerGameCalendar::Year year)
 {
 	_settings_game.game_creation.starting_year = Clamp(year, CalendarTime::MIN_YEAR, CalendarTime::MAX_YEAR);
-	TimerGameCalendar::Date new_date = TimerGameCalendar::ConvertYMDToDate(_settings_game.game_creation.starting_year, 0, 1);
-	/* If you open a savegame as scenario there may already be link graphs.*/
-	LinkGraphSchedule::instance.ShiftDates(new_date - TimerGameCalendar::date);
-	TimerGameCalendar::SetDate(new_date, 0);
+	TimerGameCalendar::Date new_calendar_date = TimerGameCalendar::ConvertYMDToDate(_settings_game.game_creation.starting_year, 0, 1);
+	TimerGameEconomy::Date new_economy_date = new_calendar_date.base();
+
+	/* We must set both Calendar and Economy dates to keep them in sync. Calendar first. */
+	TimerGameCalendar::SetDate(new_calendar_date, 0);
+
+	/* If you open a savegame as a scenario, there may already be link graphs and/or vehicles. These use economy date. */
+	LinkGraphSchedule::instance.ShiftDates(new_economy_date - TimerGameEconomy::date);
+	for (auto v : Vehicle::Iterate()) v->ShiftDates(new_economy_date - TimerGameEconomy::date);
+
+	/* Only change the date after changing cached values above. */
+	TimerGameEconomy::SetDate(new_economy_date, 0);
 }
 
 /**

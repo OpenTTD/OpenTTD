@@ -16,6 +16,7 @@
 #include "newgrf_house.h"
 #include "economy_func.h"
 #include "timer/timer_game_calendar.h"
+#include "timer/timer_game_economy.h"
 #include "timer/timer_game_tick.h"
 #include "texteff.hpp"
 #include "gfx_func.h"
@@ -109,7 +110,10 @@ void InitializeGame(uint size_x, uint size_y, bool reset_date, bool reset_settin
 	_newgrf_profilers.clear();
 
 	if (reset_date) {
-		TimerGameCalendar::SetDate(TimerGameCalendar::ConvertYMDToDate(_settings_game.game_creation.starting_year, 0, 1), 0);
+		TimerGameCalendar::Date new_date = TimerGameCalendar::ConvertYMDToDate(_settings_game.game_creation.starting_year, 0, 1);
+		TimerGameCalendar::SetDate(new_date, 0);
+		/* Keep the economy date synced with the calendar date. */
+		TimerGameEconomy::SetDate(new_date.base(), 0);
 		InitializeOldNames();
 	}
 

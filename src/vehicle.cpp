@@ -58,6 +58,7 @@
 #include "newgrf_roadstop.h"
 #include "timer/timer.h"
 #include "timer/timer_game_calendar.h"
+#include "timer/timer_game_economy.h"
 #include "timer/timer_game_tick.h"
 
 #include "table/strings.h"
@@ -169,7 +170,7 @@ void VehicleServiceInDepot(Vehicle *v)
 	SetWindowDirty(WC_VEHICLE_DETAILS, v->index); // ensure that last service date and reliability are updated
 
 	do {
-		v->date_of_last_service = TimerGameCalendar::date;
+		v->date_of_last_service = TimerGameEconomy::date;
 		v->date_of_last_service_newgrf = TimerGameCalendar::date;
 		v->breakdowns_since_last_service = 0;
 		v->reliability = v->GetEngine()->reliability;
@@ -196,7 +197,7 @@ bool Vehicle::NeedsServicing() const
 	const Company *c = Company::Get(this->owner);
 	if (this->ServiceIntervalIsPercent() ?
 			(this->reliability >= this->GetEngine()->reliability * (100 - this->GetServiceInterval()) / 100) :
-			(this->date_of_last_service + this->GetServiceInterval() >= TimerGameCalendar::date)) {
+			(this->date_of_last_service + this->GetServiceInterval() >= TimerGameEconomy::date)) {
 		return false;
 	}
 
@@ -766,9 +767,9 @@ uint32_t Vehicle::GetGRFID() const
  * This is useful if the date has been modified with the cheat menu.
  * @param interval Number of days to be added or substracted.
  */
-void Vehicle::ShiftDates(TimerGameCalendar::Date interval)
+void Vehicle::ShiftDates(TimerGameEconomy::Date interval)
 {
-	this->date_of_last_service = std::max(this->date_of_last_service + interval, TimerGameCalendar::Date(0));
+	this->date_of_last_service = std::max(this->date_of_last_service + interval, TimerGameEconomy::Date(0));
 	/* date_of_last_service_newgrf is not updated here as it must stay stable
 	 * for vehicles outside of a depot. */
 }
@@ -916,16 +917,31 @@ void VehicleEnteredDepotThisTick(Vehicle *v)
 }
 
 /**
- * Increases the day counter for all vehicles and calls 1-day and 32-day handlers.
- * Each tick, it processes vehicles with "index % DAY_TICKS == TimerGameCalendar::date_fract",
- * so each day, all vehicles are processes in DAY_TICKS steps.
+ * Age all vehicles, spreading out the action using the current TimerGameCalendar::date_fract.
  */
-static void RunVehicleDayProc()
+void RunVehicleCalendarDayProc()
 {
 	if (_game_mode != GM_NORMAL) return;
 
-	/* Run the day_proc for every DAY_TICKS vehicle starting at TimerGameCalendar::date_fract. */
+	/* Run the calendar day proc for every DAY_TICKS vehicle starting at TimerGameCalendar::date_fract. */
 	for (size_t i = TimerGameCalendar::date_fract; i < Vehicle::GetPoolSize(); i += Ticks::DAY_TICKS) {
+		Vehicle *v = Vehicle::Get(i);
+		if (v == nullptr) continue;
+		v->OnNewCalendarDay();
+	}
+}
+
+/**
+ * Increases the day counter for all vehicles and calls 1-day and 32-day handlers.
+ * Each tick, it processes vehicles with "index % DAY_TICKS == TimerGameEconomy::date_fract",
+ * so each day, all vehicles are processes in DAY_TICKS steps.
+ */
+static void RunEconomyVehicleDayProc()
+{
+	if (_game_mode != GM_NORMAL) return;
+
+	/* Run the economy day proc for every DAY_TICKS vehicle starting at TimerGameEconomy::date_fract. */
+	for (size_t i = TimerGameEconomy::date_fract; i < Vehicle::GetPoolSize(); i += Ticks::DAY_TICKS) {
 		Vehicle *v = Vehicle::Get(i);
 		if (v == nullptr) continue;
 
@@ -946,7 +962,7 @@ static void RunVehicleDayProc()
 		}
 
 		/* This is called once per day for each vehicle, but not in the first tick of the day */
-		v->OnNewDay();
+		v->OnNewEconomyDay();
 	}
 }
 
@@ -954,7 +970,7 @@ void CallVehicleTicks()
 {
 	_vehicles_to_autoreplace.clear();
 
-	RunVehicleDayProc();
+	RunEconomyVehicleDayProc();
 
 	{
 		PerformanceMeasurer framerate(PFE_GL_ECONOMY);
@@ -2819,7 +2835,7 @@ void Vehicle::RemoveFromShared()
 	this->previous_shared = nullptr;
 }
 
-static IntervalTimer<TimerGameCalendar> _vehicles_yearly({TimerGameCalendar::YEAR, TimerGameCalendar::Priority::VEHICLE}, [](auto)
+static IntervalTimer<TimerGameEconomy> _economy_vehicles_yearly({TimerGameEconomy::YEAR, TimerGameEconomy::Priority::VEHICLE}, [](auto)
 {
 	for (Vehicle *v : Vehicle::Iterate()) {
 		if (v->IsPrimaryVehicle()) {
