@@ -165,7 +165,7 @@ static void ShowHelp()
 		"  -t year             = Set starting year\n"
 		"  -d [[fac=]lvl[,...]]= Debug mode\n"
 		"  -e                  = Start Editor\n"
-		"  -g [savegame]       = Start new/save game immediately\n"
+		"  -g [savegame|scenario|heightmap] = Start new/savegame/scenario/heightmap immediately\n"
 		"  -G seed             = Set random seed\n"
 		"  -n host[:port][#company]= Join network game\n"
 		"  -p password         = Password to join server\n"
@@ -577,21 +577,37 @@ int openttd_main(int argc, char *argv[])
 				if (mgo.opt != nullptr) SetDebugString(mgo.opt, ShowInfoI);
 				break;
 			}
-		case 'e': _switch_mode = (_switch_mode == SM_LOAD_GAME || _switch_mode == SM_LOAD_SCENARIO ? SM_LOAD_SCENARIO : SM_EDITOR); break;
+		case 'e':
+			/* Allow for '-e' before or after '-g'. */
+			switch (_switch_mode) {
+				case SM_MENU: _switch_mode = SM_EDITOR; break;
+				case SM_LOAD_GAME: _switch_mode = SM_LOAD_SCENARIO; break;
+				case SM_START_HEIGHTMAP: _switch_mode = SM_LOAD_HEIGHTMAP; break;
+				default: break;
+			}
+			break;
 		case 'g':
 			if (mgo.opt != nullptr) {
 				_file_to_saveload.name = mgo.opt;
-				bool is_scenario = _switch_mode == SM_EDITOR || _switch_mode == SM_LOAD_SCENARIO;
-				_switch_mode = is_scenario ? SM_LOAD_SCENARIO : SM_LOAD_GAME;
-				_file_to_saveload.SetMode(SLO_LOAD, is_scenario ? FT_SCENARIO : FT_SAVEGAME, DFT_GAME_FILE);
 
-				/* if the file doesn't exist or it is not a valid savegame, let the saveload code show an error */
-				auto t = _file_to_saveload.name.find_last_of('.');
-				if (t != std::string::npos) {
-					auto [ft, _] = FiosGetSavegameListCallback(SLO_LOAD, _file_to_saveload.name, _file_to_saveload.name.substr(t));
-					if (ft != FIOS_TYPE_INVALID) _file_to_saveload.SetMode(ft);
+				std::string extension = std::filesystem::path(_file_to_saveload.name).extension().string();
+				auto [ft, _] = FiosGetSavegameListCallback(SLO_LOAD, _file_to_saveload.name, extension);
+				if (ft == FIOS_TYPE_INVALID) {
+					std::tie(ft, _) = FiosGetScenarioListCallback(SLO_LOAD, _file_to_saveload.name, extension);
+				}
+				if (ft == FIOS_TYPE_INVALID) {
+					std::tie(ft, _) = FiosGetHeightmapListCallback(SLO_LOAD, _file_to_saveload.name, extension);
 				}
 
+				/* Allow for '-e' before or after '-g'. */
+				switch (GetAbstractFileType(ft)) {
+					case FT_SAVEGAME: _switch_mode = (_switch_mode == SM_EDITOR ? SM_LOAD_SCENARIO : SM_LOAD_GAME); break;
+					case FT_SCENARIO: _switch_mode = (_switch_mode == SM_EDITOR ? SM_LOAD_SCENARIO : SM_LOAD_GAME); break;
+					case FT_HEIGHTMAP: _switch_mode = (_switch_mode == SM_EDITOR ? SM_LOAD_HEIGHTMAP : SM_START_HEIGHTMAP); break;
+					default: break;
+				}
+
+				_file_to_saveload.SetMode(SLO_LOAD, GetAbstractFileType(ft), GetDetailedFileType(ft));
 				break;
 			}
 
@@ -1130,6 +1146,8 @@ void SwitchToMode(SwitchMode new_mode)
 
 		case SM_LOAD_HEIGHTMAP: // Load heightmap from scenario editor
 			SetLocalCompany(OWNER_NONE);
+
+			_game_mode = GM_EDITOR;
 
 			GenerateWorld(GWM_HEIGHTMAP, 1 << _settings_game.game_creation.map_x, 1 << _settings_game.game_creation.map_y);
 			GenerateSavegameId();

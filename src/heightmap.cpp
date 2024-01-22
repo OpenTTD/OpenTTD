@@ -520,14 +520,14 @@ bool GetHeightmapDimensions(DetailedFileType dft, const char *filename, uint *x,
  * @param dft Type of image file.
  * @param filename of the heightmap file to be imported
  */
-void LoadHeightmap(DetailedFileType dft, const char *filename)
+bool LoadHeightmap(DetailedFileType dft, const char *filename)
 {
 	uint x, y;
 	byte *map = nullptr;
 
 	if (!ReadHeightMap(dft, filename, &x, &y, &map)) {
 		free(map);
-		return;
+		return false;
 	}
 
 	GrayscaleToMapHeights(x, y, map);
@@ -535,6 +535,8 @@ void LoadHeightmap(DetailedFileType dft, const char *filename)
 
 	FixSlopes();
 	MarkWholeScreenDirty();
+
+	return true;
 }
 
 /**

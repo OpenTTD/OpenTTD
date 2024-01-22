@@ -22,7 +22,7 @@ enum HeightmapRotation {
 };
 
 bool GetHeightmapDimensions(DetailedFileType dft, const char *filename, uint *x, uint *y);
-void LoadHeightmap(DetailedFileType dft, const char *filename);
+bool LoadHeightmap(DetailedFileType dft, const char *filename);
 void FlatEmptyWorld(byte tile_height);
 void FixSlopes();
 
