@@ -1135,7 +1135,7 @@ void SwitchToMode(SwitchMode new_mode)
 			GenerateSavegameId();
 			MarkWholeScreenDirty();
 
-			UpdateSocialIntegration(GM_NORMAL);
+			UpdateSocialIntegration(GM_EDITOR);
 			break;
 
 		case SM_LOAD_SCENARIO: { // Load scenario from scenario editor
@@ -1150,7 +1150,7 @@ void SwitchToMode(SwitchMode new_mode)
 				ShowErrorMessage(STR_JUST_RAW_STRING, INVALID_STRING_ID, WL_CRITICAL);
 			}
 
-			UpdateSocialIntegration(GM_NORMAL);
+			UpdateSocialIntegration(GM_EDITOR);
 			break;
 		}
 
