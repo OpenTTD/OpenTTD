@@ -342,3 +342,45 @@ TEST_CASE("FormatArrayAsHex")
 	CHECK(FormatArrayAsHex(std::array<byte, 1>{0x12}) == "12");
 	CHECK(FormatArrayAsHex(std::array<byte, 4>{0x13, 0x38, 0x42, 0xAF}) == "133842AF");
 }
+
+TEST_CASE("ConvertHexToBytes")
+{
+	CHECK(ConvertHexToBytes("", {}) == true);
+	CHECK(ConvertHexToBytes("1", {}) == false);
+	CHECK(ConvertHexToBytes("12", {}) == false);
+
+	std::array<uint8_t, 1> bytes1;
+	CHECK(ConvertHexToBytes("1", bytes1) == false);
+	CHECK(ConvertHexToBytes("12", bytes1) == true);
+	CHECK(bytes1[0] == 0x12);
+	CHECK(ConvertHexToBytes("123", bytes1) == false);
+	CHECK(ConvertHexToBytes("1g", bytes1) == false);
+	CHECK(ConvertHexToBytes("g1", bytes1) == false);
+
+	std::array<uint8_t, 2> bytes2;
+	CHECK(ConvertHexToBytes("12", bytes2) == false);
+	CHECK(ConvertHexToBytes("1234", bytes2) == true);
+	CHECK(bytes2[0] == 0x12);
+	CHECK(bytes2[1] == 0x34);
+
+	std::array<uint8_t, 8> bytes3;
+	CHECK(ConvertHexToBytes("123456789abcdef0", bytes3) == true);
+	CHECK(bytes3[0] == 0x12);
+	CHECK(bytes3[1] == 0x34);
+	CHECK(bytes3[2] == 0x56);
+	CHECK(bytes3[3] == 0x78);
+	CHECK(bytes3[4] == 0x9a);
+	CHECK(bytes3[5] == 0xbc);
+	CHECK(bytes3[6] == 0xde);
+	CHECK(bytes3[7] == 0xf0);
+
+	CHECK(ConvertHexToBytes("123456789ABCDEF0", bytes3) == true);
+	CHECK(bytes3[0] == 0x12);
+	CHECK(bytes3[1] == 0x34);
+	CHECK(bytes3[2] == 0x56);
+	CHECK(bytes3[3] == 0x78);
+	CHECK(bytes3[4] == 0x9a);
+	CHECK(bytes3[5] == 0xbc);
+	CHECK(bytes3[6] == 0xde);
+	CHECK(bytes3[7] == 0xf0);
+}

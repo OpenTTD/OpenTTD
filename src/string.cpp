@@ -702,6 +702,55 @@ static int ICUStringContains(const std::string_view str, const std::string_view 
 	return ci_str.find(ci_value) != CaseInsensitiveStringView::npos;
 }
 
+/**
+ * Convert a single hex-nibble to a byte.
+ *
+ * @param c The hex-nibble to convert.
+ * @return The byte the hex-nibble represents, or -1 if it is not a valid hex-nibble.
+ */
+static int ConvertHexNibbleToByte(char c)
+{
+	if (c >= '0' && c <= '9') return c - '0';
+	if (c >= 'A' && c <= 'F') return c + 10 - 'A';
+	if (c >= 'a' && c <= 'f') return c + 10 - 'a';
+	return -1;
+}
+
+/**
+ * Convert a hex-string to a byte-array, while validating it was actually hex.
+ *
+ * @param hex The hex-string to convert.
+ * @param bytes The byte-array to write the result to.
+ *
+ * @note The length of the hex-string has to be exactly twice that of the length
+ * of the byte-array, otherwise conversion will fail.
+ *
+ * @return True iff the hex-string was valid and the conversion succeeded.
+ */
+bool ConvertHexToBytes(std::string_view hex, std::span<uint8_t> bytes)
+{
+	if (bytes.size() != hex.size() / 2) {
+		return false;
+	}
+
+	/* Hex-string lengths are always divisible by 2. */
+	if (hex.size() % 2 != 0) {
+		return false;
+	}
+
+	for (size_t i = 0; i < hex.size() / 2; i++) {
+		auto hi = ConvertHexNibbleToByte(hex[i * 2]);
+		auto lo = ConvertHexNibbleToByte(hex[i * 2 + 1]);
+
+		if (hi < 0 || lo < 0) {
+			return false;
+		}
+
+		bytes[i] = (hi << 4) | lo;
+	}
+
+	return true;
+}
 
 #ifdef WITH_UNISCRIBE
 

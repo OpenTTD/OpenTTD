@@ -39,6 +39,8 @@ void StrTrimInPlace(std::string &str);
 [[nodiscard]] bool StrNaturalContains(const std::string_view str, const std::string_view value);
 [[nodiscard]] bool StrNaturalContainsIgnoreCase(const std::string_view str, const std::string_view value);
 
+bool ConvertHexToBytes(std::string_view hex, std::span<uint8_t> bytes);
+
 /** Case insensitive comparator for strings, for example for use in std::map. */
 struct CaseInsensitiveComparator {
 	bool operator()(const std::string_view s1, const std::string_view s2) const { return StrCompareIgnoreCase(s1, s2) < 0; }
