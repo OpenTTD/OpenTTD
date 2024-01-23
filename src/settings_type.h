@@ -325,6 +325,7 @@ struct NetworkSettings {
 	uint8_t       max_companies;                            ///< maximum amount of companies
 	uint8_t       max_clients;                              ///< maximum amount of clients
 	TimerGameCalendar::Year restart_game_year;            ///< year the server restarts
+	uint16_t      restart_hours;                          ///< number of hours to run the server before automatic restart
 	uint8_t       min_active_clients;                       ///< minimum amount of active clients to unpause the game
 	bool        reload_cfg;                               ///< reload the config file before restarting
 	std::string last_joined;                              ///< Last joined server

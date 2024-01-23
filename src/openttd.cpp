@@ -34,6 +34,7 @@
 #include "console_func.h"
 #include "screenshot.h"
 #include "network/network.h"
+#include "network/network_server.h"
 #include "network/network_func.h"
 #include "ai/ai.hpp"
 #include "ai/ai_config.hpp"
@@ -917,7 +918,11 @@ static void MakeNewGameDone()
 	CheckIndustries();
 	MarkWholeScreenDirty();
 
-	if (_network_server && !_network_dedicated) ShowClientList();
+	if (_network_server) {
+		ChangeNetworkRestartTime(true);
+
+		if (!_network_dedicated) ShowClientList();
+	}
 }
 
 static void MakeNewGame(bool from_heightmap, bool reset_settings)
