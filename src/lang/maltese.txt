@@ -171,6 +171,9 @@ STR_UNITS_FORCE_SI                                              :{DECIMAL} kN
 STR_UNITS_HEIGHT_IMPERIAL                                       :{DECIMAL} ft
 STR_UNITS_HEIGHT_SI                                             :{DECIMAL} m
 
+# Time units used in string control characters
+
+
 
 # Common window strings
 STR_LIST_FILTER_OSKTITLE                                        :{BLACK}Daħħal sentenza għall-iffiltrar
@@ -320,6 +323,7 @@ STR_GRAPH_Y_LABEL_NUMBER                                        :{TINY_FONT}{COM
 
 
 
+
 # Graph key window
 
 # Company league window
@@ -406,6 +410,9 @@ STR_NEWS_VEHICLE_IS_LOST                                        :{WHITE}{VEHICLE
 
 
 STR_GAME_OPTIONS_RESOLUTION_OTHER                               :oħrajn
+
+
+
 
 
 
@@ -545,6 +552,8 @@ STR_CONFIG_SETTING_WARN_LOST_VEHICLE                            :Avza jekk jinti
 ###length 3
 
 
+
+###length 2
 
 
 ###length 2

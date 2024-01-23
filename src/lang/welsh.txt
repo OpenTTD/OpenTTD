@@ -231,6 +231,9 @@ STR_UNITS_HEIGHT_IMPERIAL                                       :{DECIMAL}{NBSP}
 STR_UNITS_HEIGHT_METRIC                                         :{DECIMAL}{NBSP}m
 STR_UNITS_HEIGHT_SI                                             :{DECIMAL}{NBSP}m
 
+# Time units used in string control characters
+
+
 
 # Common window strings
 STR_LIST_FILTER_TITLE                                           :{BLACK}Hidlydd:
@@ -570,8 +573,8 @@ STR_GRAPH_CARGO_DELIVERED_CAPTION                               :{WHITE}Llwythi 
 STR_GRAPH_COMPANY_PERFORMANCE_RATINGS_CAPTION                   :{WHITE}Graddfeydd Perfformiad Cwmni (gradd uchaf=1000)
 STR_GRAPH_COMPANY_VALUES_CAPTION                                :{WHITE}Gwerth Cwmnïau
 
+
 STR_GRAPH_CARGO_PAYMENT_RATES_CAPTION                           :{WHITE}Graddfeydd Tâl Llwythi
-STR_GRAPH_CARGO_PAYMENT_RATES_X_LABEL                           :{TINY_FONT}{BLACK}Diwrnodau ar daith
 STR_GRAPH_CARGO_PAYMENT_RATES_TITLE                             :{TINY_FONT}{BLACK}Tâl am gludo llwyth o 10 uned (neu 10,000 litr) pellter o 20 sgwâr
 STR_GRAPH_CARGO_ENABLE_ALL                                      :{TINY_FONT}{BLACK}Galluogi popeth
 STR_GRAPH_CARGO_DISABLE_ALL                                     :{TINY_FONT}{BLACK}Analluogi popeth
@@ -986,6 +989,9 @@ STR_GAME_OPTIONS_BASE_MUSIC_TOOLTIP                             :{BLACK}Dewisiwc
 STR_GAME_OPTIONS_BASE_MUSIC_DESCRIPTION_TOOLTIP                 :{BLACK}Gwybodaeth bellach am y set gerddoriaeth sylfaenol
 
 
+
+
+
 STR_ERROR_RESOLUTION_LIST_FAILED                                :{WHITE}Methu nôl rhestr o cydraniadau cydnaws
 STR_ERROR_FULLSCREEN_FAILED                                     :{WHITE}Methodd y modd sgrin llawn
 
@@ -1338,6 +1344,8 @@ STR_CONFIG_SETTING_WARN_INCOME_LESS_HELPTEXT                    :Pan fo wedi'i a
 
 STR_CONFIG_SETTING_NEVER_EXPIRE_VEHICLES                        :Nid yw cerbydau'n darfod: {STRING}
 STR_CONFIG_SETTING_NEVER_EXPIRE_VEHICLES_HELPTEXT               :Pan fo wedi'i alluogi, bydd bob math o gerbyd yn aros ar gael am byth wedi eu cyflwyniad gyntaf
+
+###length 2
 
 STR_CONFIG_SETTING_AUTORENEW_VEHICLE                            :Awtoadnewyddu cerbyd pan aiff yn hen: {STRING}
 STR_CONFIG_SETTING_AUTORENEW_VEHICLE_HELPTEXT                   :Pan fo wedi'i alluogi, bydd cerbyd sy'n agos at ddiwedd ei oes yn cael ei ddisodli'n ddiofyn pan y caiff yr amodau adnewyddu eu cyflawni
@@ -3260,10 +3268,8 @@ STR_GOAL_QUESTION_BUTTON_CLOSE                                  :Cau
 # Subsidies window
 STR_SUBSIDIES_CAPTION                                           :{WHITE}Cymorthdaliadau
 STR_SUBSIDIES_OFFERED_TITLE                                     :{BLACK}Cymorthdaliadau sy'n cael eu cynnig ar gyfer cludo:
-STR_SUBSIDIES_OFFERED_FROM_TO                                   :{ORANGE}{STRING} o {STRING} i {STRING}{YELLOW} (erbyn {DATE_SHORT})
 STR_SUBSIDIES_NONE                                              :{ORANGE}- Dim -
 STR_SUBSIDIES_SUBSIDISED_TITLE                                  :{BLACK}Gwasanaethau sydd eisoes yn derbyn cymhorthdal:
-STR_SUBSIDIES_SUBSIDISED_FROM_TO                                :{ORANGE}{STRING} o {STRING} i {STRING}{YELLOW} ({COMPANY}{YELLOW}, tan {DATE_SHORT})
 STR_SUBSIDIES_TOOLTIP_CLICK_ON_SERVICE_TO_CENTER                :{BLACK}Cliciwch ar y gwasanaeth i ganoli'r olygfa ar y diwydiant/tref. Mae Ctrl+Clic yn agor ffenest golwg newydd ar leoliad y diwydiant/tref
 
 # Story book window
@@ -3886,9 +3892,9 @@ STR_VEHICLE_DETAILS_ROAD_VEHICLE_RENAME                         :{BLACK}Enwi cer
 STR_VEHICLE_DETAILS_SHIP_RENAME                                 :{BLACK}Enwi llong
 STR_VEHICLE_DETAILS_AIRCRAFT_RENAME                             :{BLACK}Enwi awyren
 
-STR_VEHICLE_INFO_AGE_RUNNING_COST_YR                            :{BLACK}Oed: {LTBLUE}{STRING}{BLACK}   Cost Rhedeg: {LTBLUE}{CURRENCY_LONG}/bl
 STR_VEHICLE_INFO_AGE                                            :{COMMA} blwyddyn ({COMMA})
 STR_VEHICLE_INFO_AGE_RED                                        :{RED}{COMMA} blwyddyn ({COMMA})
+STR_VEHICLE_INFO_AGE_RUNNING_COST_YR                            :{BLACK}Oed: {LTBLUE}{STRING}{BLACK}   Cost Rhedeg: {LTBLUE}{CURRENCY_LONG}/bl
 
 STR_VEHICLE_INFO_MAX_SPEED                                      :{BLACK}cyflymder uchaf: {LTBLUE}{VELOCITY}
 STR_VEHICLE_INFO_MAX_SPEED_TYPE                                 :{BLACK}Cyflym. uchaf: {LTBLUE}{VELOCITY} {BLACK}Math awyren: {LTBLUE}{STRING}
@@ -3908,14 +3914,11 @@ STR_VEHICLE_INFO_CAPACITY_CAPACITY                              :{BLACK}Cynhwyse
 
 STR_VEHICLE_INFO_FEEDER_CARGO_VALUE                             :{BLACK}Credydau Trosglwyddo: {LTBLUE}{CURRENCY_LONG}
 
-STR_VEHICLE_DETAILS_SERVICING_INTERVAL_DAYS                     :{BLACK}Bwlch rhwng gwasanaeth: {LTBLUE}{COMMA}{NBSP}diwrnod{BLACK}   Gwasanaeth diwethaf: {LTBLUE}{DATE_LONG}
-STR_VEHICLE_DETAILS_SERVICING_INTERVAL_PERCENT                  :{BLACK}Bwlch rhwng gwasanaethu: {LTBLUE}{COMMA}%{BLACK}  Gwasanaeth diwethaf: {LTBLUE}{DATE_LONG}
 STR_VEHICLE_DETAILS_INCREASE_SERVICING_INTERVAL_TOOLTIP         :{BLACK}Cynyddu'r bwlch rhwng gwasanaethau fesul 10. Mae Ctrl+Clic yn gostwng y bwlch rhwng gwasanaethau fesul 5.
 STR_VEHICLE_DETAILS_DECREASE_SERVICING_INTERVAL_TOOLTIP         :{BLACK}Gostwng y bwlch rhwng gwasanaethau fesul 10. Mae Ctrl+Clic yn gostwng y bwlch rhwng gwasanaethau fesul 5.
 
 STR_SERVICE_INTERVAL_DROPDOWN_TOOLTIP                           :{BLACK}Newid dull ystod gwasanaethu
 STR_VEHICLE_DETAILS_DEFAULT                                     :Rhagosodedig
-STR_VEHICLE_DETAILS_DAYS                                        :Diwrnod
 STR_VEHICLE_DETAILS_PERCENT                                     :Canran
 
 ###length VEHICLE_TYPES

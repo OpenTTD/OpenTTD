@@ -275,8 +275,6 @@ STR_COLOUR_RANDOM                                               :Hazarda
 STR_UNITS_VELOCITY_IMPERIAL                                     :{DECIMAL}{NBSP}mph
 STR_UNITS_VELOCITY_METRIC                                       :{DECIMAL}{NBSP}km/h
 STR_UNITS_VELOCITY_SI                                           :{DECIMAL}{NBSP}m/s
-STR_UNITS_VELOCITY_GAMEUNITS                                    :{DECIMAL}{NBSP}kaheloj tage
-STR_UNITS_VELOCITY_GAMEUNITS.n                                  :{DECIMAL}{NBSP}kahelojn tage
 STR_UNITS_VELOCITY_KNOTS                                        :{DECIMAL}{NBSP}knotoj
 
 STR_UNITS_POWER_IMPERIAL                                        :{DECIMAL}{NBSP}ĉp
@@ -320,6 +318,9 @@ STR_UNITS_FORCE_SI                                              :{DECIMAL}{NBSP}
 STR_UNITS_HEIGHT_IMPERIAL                                       :{DECIMAL}{NBSP}ft
 STR_UNITS_HEIGHT_METRIC                                         :{DECIMAL}{NBSP}m
 STR_UNITS_HEIGHT_SI                                             :{DECIMAL}{NBSP}m
+
+# Time units used in string control characters
+
 
 
 # Common window strings
@@ -673,8 +674,8 @@ STR_GRAPH_CARGO_DELIVERED_CAPTION                               :{WHITE}Kiom da 
 STR_GRAPH_COMPANY_PERFORMANCE_RATINGS_CAPTION                   :{WHITE}Kompania rendimento (maksimumo=1000)
 STR_GRAPH_COMPANY_VALUES_CAPTION                                :{WHITE}Kompaniaj valoroj
 
+
 STR_GRAPH_CARGO_PAYMENT_RATES_CAPTION                           :{WHITE}Ŝarĝpagaj Tarifoj
-STR_GRAPH_CARGO_PAYMENT_RATES_X_LABEL                           :{TINY_FONT}{BLACK}Tagoj en transporto
 STR_GRAPH_CARGO_PAYMENT_RATES_TITLE                             :{TINY_FONT}{BLACK}Pago por liveri 10 unuojn (aŭ 10,000 litrojn) da ŝarĝo trans 20 kvadratoj
 STR_GRAPH_CARGO_ENABLE_ALL                                      :{TINY_FONT}{BLACK}Aktivu ĉiujn
 STR_GRAPH_CARGO_DISABLE_ALL                                     :{TINY_FONT}{BLACK}Malaktivu ĉiujn
@@ -1122,6 +1123,9 @@ STR_GAME_OPTIONS_BASE_MUSIC_TOOLTIP                             :{BLACK}Elekti b
 STR_GAME_OPTIONS_BASE_MUSIC_DESCRIPTION_TOOLTIP                 :{BLACK}Pluaj informoj pri la baza muzikaro.
 
 
+
+
+
 STR_ERROR_RESOLUTION_LIST_FAILED                                :{WHITE}Ne eblis akiri liston de subtenataj distingivoj
 STR_ERROR_FULLSCREEN_FAILED                                     :{WHITE}Plenekrana moduso fiaskis
 
@@ -1480,6 +1484,8 @@ STR_CONFIG_SETTING_WARN_INCOME_LESS_HELPTEXT                    :Kiam tiu ĉi ag
 
 STR_CONFIG_SETTING_NEVER_EXPIRE_VEHICLES                        :Veturiloj neniam eluziĝas: {STRING}
 STR_CONFIG_SETTING_NEVER_EXPIRE_VEHICLES_HELPTEXT               :Se tiu ĉi agordo estas aktiva, ĉiuj modeloj de veturiloj restos aĉeteblaj por ĉiam post ekhaveblo
+
+###length 2
 
 STR_CONFIG_SETTING_AUTORENEW_VEHICLE                            :Aŭtomate anstataŭu veturilon se malnoviĝas: {STRING}
 STR_CONFIG_SETTING_AUTORENEW_VEHICLE_HELPTEXT                   :Se tiu ĉi agordo estas aktiva, veturilo kiu alproksimiĝas al la fino de sia vivdaŭro estos aŭtomate anstataŭigita kiam la renovigkondiĉoj estas plenumitaj
@@ -3534,10 +3540,8 @@ STR_GOAL_QUESTION_BUTTON_CLOSE                                  :Fermu
 # Subsidies window
 STR_SUBSIDIES_CAPTION                                           :{WHITE}Subvencioj
 STR_SUBSIDIES_OFFERED_TITLE                                     :{BLACK}Subvencioj haveblas por jenaj servoj:
-STR_SUBSIDIES_OFFERED_FROM_TO                                   :{ORANGE}{STRING} de {STRING} al {STRING}{YELLOW} (antaŭ {DATE_SHORT})
 STR_SUBSIDIES_NONE                                              :{ORANGE}- Neniu -
 STR_SUBSIDIES_SUBSIDISED_TITLE                                  :{BLACK}Servoj subvenciataj:
-STR_SUBSIDIES_SUBSIDISED_FROM_TO                                :{ORANGE}{STRING} de {STRING} al {STRING}{YELLOW} ({COMPANY}{YELLOW}, ĝis {DATE_SHORT})
 STR_SUBSIDIES_TOOLTIP_CLICK_ON_SERVICE_TO_CENTER                :{BLACK}Klaku servon por centri vidpunkto ĉe la industrio/urbo. Ctrl+Klak por malfermi novan vidujon ĉe la loko
 
 # Story book window
@@ -4204,9 +4208,9 @@ STR_VEHICLE_DETAILS_ROAD_VEHICLE_RENAME                         :{BLACK}Nomi str
 STR_VEHICLE_DETAILS_SHIP_RENAME                                 :{BLACK}Nomu ŝipon
 STR_VEHICLE_DETAILS_AIRCRAFT_RENAME                             :{BLACK}Nomu aviadilon
 
-STR_VEHICLE_INFO_AGE_RUNNING_COST_YR                            :{BLACK}Aĝo: {LTBLUE}{STRING}{BLACK}   Irkosto: {LTBLUE}{CURRENCY_LONG}/jaro
 STR_VEHICLE_INFO_AGE                                            :{COMMA} jaro{P "" j} ({COMMA})
 STR_VEHICLE_INFO_AGE_RED                                        :{RED}{COMMA} jaro{P "" j} ({COMMA})
+STR_VEHICLE_INFO_AGE_RUNNING_COST_YR                            :{BLACK}Aĝo: {LTBLUE}{STRING}{BLACK}   Irkosto: {LTBLUE}{CURRENCY_LONG}/jaro
 
 STR_VEHICLE_INFO_MAX_SPEED                                      :{BLACK}Maks. rapido: {LTBLUE}{VELOCITY}
 STR_VEHICLE_INFO_MAX_SPEED_TYPE                                 :{BLACK}Maks. rapideco: {LTBLUE}{VELOCITY} {BLACK}Tipo de aviadilo: {LTBLUE}{STRING}
@@ -4226,14 +4230,11 @@ STR_VEHICLE_INFO_CAPACITY_CAPACITY                              :{BLACK}Enhaveco
 
 STR_VEHICLE_INFO_FEEDER_CARGO_VALUE                             :{BLACK}Transigaj Kreditoj: {LTBLUE}{CURRENCY_LONG}
 
-STR_VEHICLE_DETAILS_SERVICING_INTERVAL_DAYS                     :{BLACK}Prizorga intervalo: {LTBLUE}{COMMA}{NBSP}tagoj{BLACK}   Plej malfrua prizorgo: {LTBLUE}{DATE_LONG}
-STR_VEHICLE_DETAILS_SERVICING_INTERVAL_PERCENT                  :{BLACK}Prizorga intervalo: {LTBLUE}{COMMA}%{BLACK}   Lasta prizorgo: {LTBLUE}{DATE_LONG}
 STR_VEHICLE_DETAILS_INCREASE_SERVICING_INTERVAL_TOOLTIP         :{BLACK}Multoblas prizorgintervalon po 10. Ctrl+klak multoblas prizorgintervalon po 5.
 STR_VEHICLE_DETAILS_DECREASE_SERVICING_INTERVAL_TOOLTIP         :{BLACK}Malpliigu prizorgintervalon po 10. Ctrl-klak malpliigas prizorgintervalon po 5
 
 STR_SERVICE_INTERVAL_DROPDOWN_TOOLTIP                           :{BLACK}Ŝanĝi la tipo de servon intervalon
 STR_VEHICLE_DETAILS_DEFAULT                                     :Defaŭlto
-STR_VEHICLE_DETAILS_DAYS                                        :Tagoj
 STR_VEHICLE_DETAILS_PERCENT                                     :Procentaĵo
 
 ###length VEHICLE_TYPES

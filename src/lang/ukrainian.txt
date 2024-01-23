@@ -322,7 +322,6 @@ STR_COLOUR_RANDOM                                               :Випадко�
 STR_UNITS_VELOCITY_IMPERIAL                                     :{DECIMAL}{NBSP}миль/год
 STR_UNITS_VELOCITY_METRIC                                       :{DECIMAL}{NBSP}км/год
 STR_UNITS_VELOCITY_SI                                           :{DECIMAL}{NBSP}м/с
-STR_UNITS_VELOCITY_GAMEUNITS                                    :{DECIMAL}{NBSP}клітинок/день
 STR_UNITS_VELOCITY_KNOTS                                        :{DECIMAL}{NBSP}вуз{P ол ла лів}
 
 STR_UNITS_POWER_IMPERIAL                                        :{DECIMAL}{NBSP}к.с.
@@ -362,6 +361,9 @@ STR_UNITS_FORCE_SI                                              :{DECIMAL}{NBSP}
 STR_UNITS_HEIGHT_IMPERIAL                                       :{DECIMAL}{NBSP}фт
 STR_UNITS_HEIGHT_METRIC                                         :{DECIMAL}{NBSP}м
 STR_UNITS_HEIGHT_SI                                             :{DECIMAL}{NBSP}м
+
+# Time units used in string control characters
+
 
 
 # Common window strings
@@ -721,8 +723,8 @@ STR_GRAPH_CARGO_DELIVERED_CAPTION                               :{WHITE}Кіль
 STR_GRAPH_COMPANY_PERFORMANCE_RATINGS_CAPTION                   :{WHITE}Рейтинг продуктивності компанії (найбільший рейтинг=1000)
 STR_GRAPH_COMPANY_VALUES_CAPTION                                :{WHITE}Вартість компанії
 
+
 STR_GRAPH_CARGO_PAYMENT_RATES_CAPTION                           :{WHITE}Тарифи на доставку вантажів
-STR_GRAPH_CARGO_PAYMENT_RATES_X_LABEL                           :{TINY_FONT}{BLACK}Днів у дорозі
 STR_GRAPH_CARGO_PAYMENT_RATES_TITLE                             :{TINY_FONT}{BLACK}Плата за доставку 10 одиниць (або 10,000 літрів) вантажу на відстань 20 квадратів
 STR_GRAPH_CARGO_ENABLE_ALL                                      :{TINY_FONT}{BLACK}Включити всі
 STR_GRAPH_CARGO_DISABLE_ALL                                     :{TINY_FONT}{BLACK}Відключити усі
@@ -1174,6 +1176,9 @@ STR_GAME_OPTIONS_BASE_MUSIC_TOOLTIP                             :{BLACK}Обер
 STR_GAME_OPTIONS_BASE_MUSIC_DESCRIPTION_TOOLTIP                 :{BLACK}Допоміжна інформація про базовий музичний набір
 
 
+
+
+
 STR_ERROR_RESOLUTION_LIST_FAILED                                :{WHITE}Не вдалося отримати список підтримуваних дозволів
 STR_ERROR_FULLSCREEN_FAILED                                     :{WHITE}Повноекранний режим не працює
 
@@ -1538,6 +1543,8 @@ STR_CONFIG_SETTING_WARN_INCOME_LESS_HELPTEXT                    :Вмикає/в
 
 STR_CONFIG_SETTING_NEVER_EXPIRE_VEHICLES                        :Транспортні засоби не застарівають: {STRING}
 STR_CONFIG_SETTING_NEVER_EXPIRE_VEHICLES_HELPTEXT               :При включенні будь-яка модель транспортного засобу буде доступна для придбання безстроково після її впровадження.
+
+###length 2
 
 STR_CONFIG_SETTING_AUTORENEW_VEHICLE                            :Автозаміна зношених транспортних засобів: {STRING}
 STR_CONFIG_SETTING_AUTORENEW_VEHICLE_HELPTEXT                   :При включенні транспортні засоби з вичерпаним строком служби автоматично замінюються на нові (при виконанні умов автозаміни).
@@ -3680,10 +3687,8 @@ STR_GOAL_QUESTION_BUTTON_CLOSE                                  :Закрити
 # Subsidies window
 STR_SUBSIDIES_CAPTION                                           :{WHITE}Субсидії
 STR_SUBSIDIES_OFFERED_TITLE                                     :{BLACK}Пропонуються субсидії:
-STR_SUBSIDIES_OFFERED_FROM_TO                                   :{ORANGE}Перевезення {STRING.r} з {STRING} до {STRING}{YELLOW} ({DATE_SHORT})
 STR_SUBSIDIES_NONE                                              :{ORANGE}- немає -
 STR_SUBSIDIES_SUBSIDISED_TITLE                                  :{BLACK}Призначені субсидії:
-STR_SUBSIDIES_SUBSIDISED_FROM_TO                                :{ORANGE}Перевезення {STRING.r} з {STRING} до {STRING}{YELLOW} ({COMPANY}{YELLOW}, по {DATE_SHORT})
 STR_SUBSIDIES_TOOLTIP_CLICK_ON_SERVICE_TO_CENTER                :{BLACK}Натисніть на субсидії, щоб показати підприємство/місто у центрі екрану. Ctrl+клац мишою відкриває нове вікно з видом на підприємство/місто
 
 # Story book window
@@ -4357,9 +4362,9 @@ STR_VEHICLE_DETAILS_ROAD_VEHICLE_RENAME                         :{BLACK}Назв
 STR_VEHICLE_DETAILS_SHIP_RENAME                                 :{BLACK}Назвати корабель
 STR_VEHICLE_DETAILS_AIRCRAFT_RENAME                             :{BLACK}Назвати літак
 
-STR_VEHICLE_INFO_AGE_RUNNING_COST_YR                            :{BLACK}Вік: {LTBLUE}{STRING}{BLACK}   Вартість експлуатації: {LTBLUE}{CURRENCY_LONG}/рік
 STR_VEHICLE_INFO_AGE                                            :{COMMA} р{P ік оки оків} ({COMMA})
 STR_VEHICLE_INFO_AGE_RED                                        :{RED}{COMMA} р{P ік оки оків} ({COMMA})
+STR_VEHICLE_INFO_AGE_RUNNING_COST_YR                            :{BLACK}Вік: {LTBLUE}{STRING}{BLACK}   Вартість експлуатації: {LTBLUE}{CURRENCY_LONG}/рік
 
 STR_VEHICLE_INFO_MAX_SPEED                                      :{BLACK}Макс. швидкість: {LTBLUE}{VELOCITY}
 STR_VEHICLE_INFO_MAX_SPEED_TYPE                                 :{BLACK}Макс. швидкість: {LTBLUE}{VELOCITY} {BLACK}Тип: {LTBLUE}{STRING}
@@ -4379,14 +4384,11 @@ STR_VEHICLE_INFO_CAPACITY_CAPACITY                              :{BLACK}Міст
 
 STR_VEHICLE_INFO_FEEDER_CARGO_VALUE                             :{BLACK}Плата за трансфер: {LTBLUE}{CURRENCY_LONG}
 
-STR_VEHICLE_DETAILS_SERVICING_INTERVAL_DAYS                     :{BLACK}Інтервал техогляду: {LTBLUE}{COMMA}{NBSP}днів{BLACK}   Останній техогляд: {LTBLUE}{DATE_LONG}
-STR_VEHICLE_DETAILS_SERVICING_INTERVAL_PERCENT                  :{BLACK}Інтервал техогляду: {LTBLUE}{COMMA}%{BLACK}   Останній техогляд: {LTBLUE}{DATE_LONG}
 STR_VEHICLE_DETAILS_INCREASE_SERVICING_INTERVAL_TOOLTIP         :{BLACK}Збільшити інтервал техогляду на 10. Ctrl+клац мишою збільшує інтервал техогляду на 5
 STR_VEHICLE_DETAILS_DECREASE_SERVICING_INTERVAL_TOOLTIP         :{BLACK}Зменшити період техогляду на 10. Ctrl+клац мишою зменшує інтервал техогляду на 5
 
 STR_SERVICE_INTERVAL_DROPDOWN_TOOLTIP                           :{BLACK}Відлік інтервалу між техоглядами
 STR_VEHICLE_DETAILS_DEFAULT                                     :Стандартно
-STR_VEHICLE_DETAILS_DAYS                                        :Дні
 STR_VEHICLE_DETAILS_PERCENT                                     :Проценти
 
 ###length VEHICLE_TYPES

@@ -378,6 +378,9 @@ STR_UNITS_HEIGHT_IMPERIAL                                       :{DECIMAL} ft
 STR_UNITS_HEIGHT_METRIC                                         :{DECIMAL} m
 STR_UNITS_HEIGHT_SI                                             :{DECIMAL} m
 
+# Time units used in string control characters
+
+
 
 # Common window strings
 STR_LIST_FILTER_TITLE                                           :{BLACK}Filtriraj niz:
@@ -716,8 +719,8 @@ STR_GRAPH_CARGO_DELIVERED_CAPTION                               :{WHITE}Enot dos
 STR_GRAPH_COMPANY_PERFORMANCE_RATINGS_CAPTION                   :{WHITE}Ocene uspeha podjetja (max=1000)
 STR_GRAPH_COMPANY_VALUES_CAPTION                                :{WHITE}Vrednosti podjetij
 
+
 STR_GRAPH_CARGO_PAYMENT_RATES_CAPTION                           :{WHITE}Cene tovora
-STR_GRAPH_CARGO_PAYMENT_RATES_X_LABEL                           :{TINY_FONT}{BLACK}Dni v tranzitu
 STR_GRAPH_CARGO_PAYMENT_RATES_TITLE                             :{TINY_FONT}{BLACK}Plačilo za dostavo 10 enot (ali 10.000 litrov) tovora za razdaljo 20 kvadratkov
 STR_GRAPH_CARGO_ENABLE_ALL                                      :{TINY_FONT}{BLACK}Omogoči vse
 STR_GRAPH_CARGO_DISABLE_ALL                                     :{TINY_FONT}{BLACK}Onemogoči vse
@@ -1007,7 +1010,12 @@ STR_NEWS_NEW_VEHICLE_NOW_AVAILABLE_WITH_TYPE                    :{BLACK}Novo! {S
 
 STR_NEWS_OFFER_OF_SUBSIDY_EXPIRED                               :{BIG_FONT}{BLACK}Ponudba subvencije potekla:{}{}Prevoz {STRING.r} od {STRING} do {STRING} ni več subvencioniran
 STR_NEWS_SUBSIDY_WITHDRAWN_SERVICE                              :{BIG_FONT}{BLACK}Subvencija zaključena:{}{}Prevoz {STRING.r} od {STRING} do {STRING} ni več subvencioniran
+STR_NEWS_SERVICE_SUBSIDY_OFFERED                                :{BIG_FONT}{BLACK}Nova ponujena subvencija:{}{}Prvi prevoz {STRING.r} od {STRING.r} do {STRING.r} bo{}subvencioniran s strani mestnega sveta!
 ###length 4
+STR_NEWS_SERVICE_SUBSIDY_AWARDED_HALF                           :{BIG_FONT}{BLACK}Subvencija podeljena podjetju {STRING}!{}{}Prevoz {STRING.r} od {STRING} do {STRING} bo prinesel 50% večji prihodek{}za naslednje leto!
+STR_NEWS_SERVICE_SUBSIDY_AWARDED_DOUBLE                         :{BIG_FONT}{BLACK}Podjetje {STRING} je prejelo subvencijo!{}{}Prevoz {STRING.r} od {STRING} do {STRING} bo prinesel dvakratni prihodek{}za naslednje leto!
+STR_NEWS_SERVICE_SUBSIDY_AWARDED_TRIPLE                         :{BIG_FONT}{BLACK}Subvencija odobrena podjetju {STRING}!{}{}Prevoz {STRING.r} od {STRING} do {STRING} bo prinesel trikratni prihodek{}za naslednje leto!
+STR_NEWS_SERVICE_SUBSIDY_AWARDED_QUADRUPLE                      :{BIG_FONT}{BLACK}Subvencija podeljena podjetju{STRING}!{}{}Prevoz {STRING.r} od {STRING} do {STRING} bo prinesel štirikratni prihodek{}za naslednje leto!
 
 STR_NEWS_ROAD_REBUILDING                                        :{BIG_FONT}{BLACK}Prometni kaos v mestu {TOWN}!{}{}Obnovitvena dela, ki jih financira podjetje {STRING},{}bodo prinesla 6 mesecev nevšečnosti{}voznikom motornih vozil!
 STR_NEWS_EXCLUSIVE_RIGHTS_TITLE                                 :{BIG_FONT}{BLACK}Transportni monopol!
@@ -1105,6 +1113,9 @@ STR_GAME_OPTIONS_BASE_SFX_DESCRIPTION_TOOLTIP                   :{BLACK}Dodatne 
 STR_GAME_OPTIONS_BASE_MUSIC                                     :{BLACK}Osnovni komplet glasbe
 STR_GAME_OPTIONS_BASE_MUSIC_TOOLTIP                             :{BLACK}Izberi osnovni komplet glasbe za uporabo
 STR_GAME_OPTIONS_BASE_MUSIC_DESCRIPTION_TOOLTIP                 :{BLACK}Dodatne informacije o osnovnem kompletu glasbe
+
+
+
 
 
 STR_ERROR_RESOLUTION_LIST_FAILED                                :{WHITE}Nalaganje seznama podprtih resolucij ni uspelo
@@ -1451,6 +1462,8 @@ STR_CONFIG_SETTING_WARN_INCOME_LESS_HELPTEXT                    :Če je omogoče
 
 STR_CONFIG_SETTING_NEVER_EXPIRE_VEHICLES                        :Vozila nikoli ne dotrajajo: {STRING}
 STR_CONFIG_SETTING_NEVER_EXPIRE_VEHICLES_HELPTEXT               :Če je omogočeno, vsi modeli vozil ostanejo omogočeni po uvedbi.
+
+###length 2
 
 STR_CONFIG_SETTING_AUTORENEW_VEHICLE                            :Samoobnovi vozila, ko se postarajo: {STRING}
 STR_CONFIG_SETTING_AUTORENEW_VEHICLE_HELPTEXT                   :Če je omogočeno, se vozila ob koncu življenjske dobe avtomatsko zamenjajo pod pogoji samoobnove.
@@ -3309,10 +3322,8 @@ STR_GOAL_QUESTION_BUTTON_CLOSE                                  :Zapri
 # Subsidies window
 STR_SUBSIDIES_CAPTION                                           :{WHITE}Subvencije
 STR_SUBSIDIES_OFFERED_TITLE                                     :{BLACK}Ponudba subvencije za storitev:
-STR_SUBSIDIES_OFFERED_FROM_TO                                   :{ORANGE}Prevoz {STRING.r} iz {STRING} v {STRING}{YELLOW} (do {DATE_SHORT})
 STR_SUBSIDIES_NONE                                              :{ORANGE}- Brez -
 STR_SUBSIDIES_SUBSIDISED_TITLE                                  :{BLACK}Že subvencionirane storitve:
-STR_SUBSIDIES_SUBSIDISED_FROM_TO                                :{ORANGE}Prevoz {STRING.r} od {STRING} do {STRING}{YELLOW} ({COMPANY}{YELLOW}, do {DATE_SHORT})
 STR_SUBSIDIES_TOOLTIP_CLICK_ON_SERVICE_TO_CENTER                :{BLACK}Klikni na storitev za pogled na industrijo/mesto. Ctrl+Klik odpre nov pogled na lokaciji industrije/mesta
 
 # Story book window
@@ -3901,9 +3912,9 @@ STR_VEHICLE_DETAILS_ROAD_VEHICLE_RENAME                         :{BLACK}Poimenuj
 STR_VEHICLE_DETAILS_SHIP_RENAME                                 :{BLACK}Poimenuj ladjo
 STR_VEHICLE_DETAILS_AIRCRAFT_RENAME                             :{BLACK}Poimenuj letalo
 
-STR_VEHICLE_INFO_AGE_RUNNING_COST_YR                            :{BLACK}Starost: {LTBLUE}{STRING}{BLACK}   Cena delovanja: {LTBLUE}{CURRENCY_LONG}/leto
 STR_VEHICLE_INFO_AGE                                            :{COMMA} let{P o i a ""} ({COMMA})
 STR_VEHICLE_INFO_AGE_RED                                        :{RED}{COMMA} let{P o i a ""} ({COMMA})
+STR_VEHICLE_INFO_AGE_RUNNING_COST_YR                            :{BLACK}Starost: {LTBLUE}{STRING}{BLACK}   Cena delovanja: {LTBLUE}{CURRENCY_LONG}/leto
 
 STR_VEHICLE_INFO_MAX_SPEED                                      :{BLACK}Max. hitrost: {LTBLUE}{VELOCITY}
 STR_VEHICLE_INFO_WEIGHT_POWER_MAX_SPEED                         :{BLACK}Teža: {LTBLUE}{WEIGHT_SHORT} {BLACK}Moč: {LTBLUE}{POWER}{BLACK} Max. hitrost: {LTBLUE}{VELOCITY}
@@ -3920,14 +3931,11 @@ STR_VEHICLE_INFO_CAPACITY_CAPACITY                              :{BLACK}Zmogljiv
 
 STR_VEHICLE_INFO_FEEDER_CARGO_VALUE                             :{BLACK}Prenesi kredite: {LTBLUE}{CURRENCY_LONG}
 
-STR_VEHICLE_DETAILS_SERVICING_INTERVAL_DAYS                     :{BLACK}IObdobje servisiranja: {LTBLUE}{COMMA}dni{BLACK}   Zadnji servis: {LTBLUE}{DATE_LONG}
-STR_VEHICLE_DETAILS_SERVICING_INTERVAL_PERCENT                  :{BLACK}Obdobje servisiranja: {LTBLUE}{COMMA}%{BLACK}   Zadnji servis: {LTBLUE}{DATE_LONG}
 STR_VEHICLE_DETAILS_INCREASE_SERVICING_INTERVAL_TOOLTIP         :{BLACK}Podaljšaj čas med servisi za 10. Ctrl+Klik podaljša za 5
 STR_VEHICLE_DETAILS_DECREASE_SERVICING_INTERVAL_TOOLTIP         :{BLACK}Skrajšaj čas med servisi za 10. Ctrl+Klik skrajša za 5
 
 STR_SERVICE_INTERVAL_DROPDOWN_TOOLTIP                           :{BLACK}Spremeni presledek tipa servisiranja
 STR_VEHICLE_DETAILS_DEFAULT                                     :Privzeto
-STR_VEHICLE_DETAILS_DAYS                                        :Dni
 STR_VEHICLE_DETAILS_PERCENT                                     :Odstotek
 
 ###length VEHICLE_TYPES

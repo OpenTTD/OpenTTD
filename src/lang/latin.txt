@@ -415,6 +415,9 @@ STR_UNITS_HEIGHT_IMPERIAL                                       :{DECIMAL}{NBSP}
 STR_UNITS_HEIGHT_METRIC                                         :{DECIMAL}{NBSP}m
 STR_UNITS_HEIGHT_SI                                             :{DECIMAL}{NBSP}m
 
+# Time units used in string control characters
+
+
 
 # Common window strings
 STR_LIST_FILTER_TITLE                                           :{BLACK}Series colans:
@@ -753,8 +756,8 @@ STR_GRAPH_CARGO_DELIVERED_CAPTION                               :{WHITE}Unitates
 STR_GRAPH_COMPANY_PERFORMANCE_RATINGS_CAPTION                   :{WHITE}Censiones effectus societatis (Censio maxima = 1000)
 STR_GRAPH_COMPANY_VALUES_CAPTION                                :{WHITE}Aestimationes societatis
 
+
 STR_GRAPH_CARGO_PAYMENT_RATES_CAPTION                           :{WHITE}Mercedes Onerum
-STR_GRAPH_CARGO_PAYMENT_RATES_X_LABEL                           :{TINY_FONT}{BLACK}Dies in itinere
 STR_GRAPH_CARGO_PAYMENT_RATES_TITLE                             :{TINY_FONT}{BLACK}Merces tradendi 10 oneris unitates (aut 10,000 litra) per 20 quadra
 STR_GRAPH_CARGO_ENABLE_ALL                                      :{TINY_FONT}{BLACK}Omnia Monstrare
 STR_GRAPH_CARGO_DISABLE_ALL                                     :{TINY_FONT}{BLACK}Omnia Celare
@@ -1047,7 +1050,12 @@ STR_NEWS_NEW_VEHICLE_NOW_AVAILABLE_WITH_TYPE                    :{BLACK}Nov{G us
 
 STR_NEWS_OFFER_OF_SUBSIDY_EXPIRED                               :{BIG_FONT}{BLACK}Condicio subsidii discedit:{}{}Vectura {STRING.gen} a {STRING.abl} ad {STRING.acc} non diutius subveniatur
 STR_NEWS_SUBSIDY_WITHDRAWN_SERVICE                              :{BIG_FONT}{BLACK}Subsidium retractum:{}{}Vectura {STRING.gen} a {STRING.abl} ad {STRING.acc} non diutius subvenietur
+STR_NEWS_SERVICE_SUBSIDY_OFFERED                                :{BIG_FONT}{BLACK}Subsidium oblatum:{}{}Prima vectura {STRING.gen} a {STRING.abl} ad {STRING.acc} unum annum subveniatur ab auctoritate vicinale!
 ###length 4
+STR_NEWS_SERVICE_SUBSIDY_AWARDED_HALF                           :{BIG_FONT}{BLACK}{STRING} assignatur subsidium!{}{}Vectura {STRING.gen} a {STRING.abl} ad {STRING.acc} merebit reditum sesquiplicem anno secundo!
+STR_NEWS_SERVICE_SUBSIDY_AWARDED_DOUBLE                         :{BIG_FONT}{BLACK}{STRING} assignatur subsidium!{}{}Vectura {STRING.gen} a {STRING.abl} ad {STRING.acc} merebit reditum duplicem anno secundo!
+STR_NEWS_SERVICE_SUBSIDY_AWARDED_TRIPLE                         :{BIG_FONT}{BLACK}{STRING} assignatur subsidium!{}{}Vectura {STRING.gen} a {STRING.abl} ad {STRING.acc} merebit reditum triplicem anno secundo!
+STR_NEWS_SERVICE_SUBSIDY_AWARDED_QUADRUPLE                      :{BIG_FONT}{BLACK}{STRING} assignatur subsidium!{}{}Vectura {STRING.gen} a {STRING.abl} ad {STRING.acc} merebit reditum quadruplicem anno secundo!
 
 STR_NEWS_ROAD_REBUILDING                                        :{BIG_FONT}{BLACK}Chaos vehicularium in {TOWN}!{}{}Reconstructio viarum, expensis a {STRING} compartis, affert miseriam autoraedariis 6 menses!
 STR_NEWS_EXCLUSIVE_RIGHTS_TITLE                                 :{BIG_FONT}{BLACK}Monopolium Vecturae!
@@ -1145,6 +1153,9 @@ STR_GAME_OPTIONS_BASE_SFX_DESCRIPTION_TOOLTIP                   :{BLACK}Indicia 
 STR_GAME_OPTIONS_BASE_MUSIC                                     :{BLACK}Fundamentum musicum
 STR_GAME_OPTIONS_BASE_MUSIC_TOOLTIP                             :{BLACK}Eligere fundamentum musicum adhibendum
 STR_GAME_OPTIONS_BASE_MUSIC_DESCRIPTION_TOOLTIP                 :{BLACK}Indicia additicia de hoc fundamento musico
+
+
+
 
 
 STR_ERROR_RESOLUTION_LIST_FAILED                                :{WHITE}Non potuit repperire indicem resolutionum
@@ -1494,6 +1505,8 @@ STR_CONFIG_SETTING_WARN_INCOME_LESS_HELPTEXT                    :Electa, nuntium
 
 STR_CONFIG_SETTING_NEVER_EXPIRE_VEHICLES                        :Vehicula numquam recedunt: {STRING}
 STR_CONFIG_SETTING_NEVER_EXPIRE_VEHICLES_HELPTEXT               :Electa, omnes vehiculorum typi permanent post introductionem
+
+###length 2
 
 STR_CONFIG_SETTING_AUTORENEW_VEHICLE                            :Autoredimere vehicula cum veterascunt: {STRING}
 STR_CONFIG_SETTING_AUTORENEW_VEHICLE_HELPTEXT                   :Electa, vehicula veterascentia automatice redimuntur, condicionibus satisfactis
@@ -3387,10 +3400,8 @@ STR_GOAL_QUESTION_BUTTON_CLOSE                                  :Claudere
 # Subsidies window
 STR_SUBSIDIES_CAPTION                                           :{WHITE}Subsidia
 STR_SUBSIDIES_OFFERED_TITLE                                     :{BLACK}Subsidia portationis oblata:
-STR_SUBSIDIES_OFFERED_FROM_TO                                   :{ORANGE}{STRING} a {STRING.abl} ad {STRING.acc}{YELLOW} (ante {DATE_SHORT})
 STR_SUBSIDIES_NONE                                              :{ORANGE}- Nulla -
 STR_SUBSIDIES_SUBSIDISED_TITLE                                  :{BLACK}Itinera iam subventa:
-STR_SUBSIDIES_SUBSIDISED_FROM_TO                                :{ORANGE}{STRING} a {STRING} ad {STRING}{YELLOW} ({COMPANY}{YELLOW}, ad {DATE_SHORT})
 STR_SUBSIDIES_TOOLTIP_CLICK_ON_SERVICE_TO_CENTER                :{BLACK}Preme in subsidium ut conspectus moveatur supra industriam/oppidum. Ctrl+Preme ut nova fenestra conspectus aperiatur supra industriam/oppidum
 
 # Story book window
@@ -4008,9 +4019,9 @@ STR_VEHICLE_DETAILS_ROAD_VEHICLE_RENAME                         :{BLACK}Nominare
 STR_VEHICLE_DETAILS_SHIP_RENAME                                 :{BLACK}Nominare navem
 STR_VEHICLE_DETAILS_AIRCRAFT_RENAME                             :{BLACK}Nominare aeroplanum
 
-STR_VEHICLE_INFO_AGE_RUNNING_COST_YR                            :{BLACK}Aetas: {LTBLUE}{STRING}{BLACK}   Pretium operandi: {LTBLUE}{CURRENCY_LONG} per annum
 STR_VEHICLE_INFO_AGE                                            :{COMMA} ann{P us i} ({COMMA})
 STR_VEHICLE_INFO_AGE_RED                                        :{RED}{COMMA} ann{P us i} ({COMMA})
+STR_VEHICLE_INFO_AGE_RUNNING_COST_YR                            :{BLACK}Aetas: {LTBLUE}{STRING}{BLACK}   Pretium operandi: {LTBLUE}{CURRENCY_LONG} per annum
 
 STR_VEHICLE_INFO_MAX_SPEED                                      :{BLACK}Velocitas maxima: {LTBLUE}{VELOCITY}
 STR_VEHICLE_INFO_MAX_SPEED_TYPE                                 :{BLACK}Velocitas maxima: {LTBLUE}{VELOCITY} {BLACK}Typus aeroplani: {LTBLUE}{STRING}
@@ -4029,14 +4040,11 @@ STR_VEHICLE_INFO_CAPACITY_CAPACITY                              :{BLACK}Capacita
 
 STR_VEHICLE_INFO_FEEDER_CARGO_VALUE                             :{BLACK}Credita transferendi: {LTBLUE}{CURRENCY_LONG}
 
-STR_VEHICLE_DETAILS_SERVICING_INTERVAL_DAYS                     :{BLACK}Intervallum ministrationis: {LTBLUE}{COMMA}{NBSP}dies{BLACK}   Ministratio prior: {LTBLUE}{DATE_LONG}
-STR_VEHICLE_DETAILS_SERVICING_INTERVAL_PERCENT                  :{BLACK}Intervallum ministrationis: {LTBLUE}{COMMA}%{BLACK}    Ministratio prior: {LTBLUE}{DATE_LONG}
 STR_VEHICLE_DETAILS_INCREASE_SERVICING_INTERVAL_TOOLTIP         :{BLACK}Augere intervallum ministrationis 10. Ctrl+Preme ut augeatur 5
 STR_VEHICLE_DETAILS_DECREASE_SERVICING_INTERVAL_TOOLTIP         :{BLACK}Minuere intervallum ministrationis 10. Ctrl+Preme ut minuatur 5
 
 STR_SERVICE_INTERVAL_DROPDOWN_TOOLTIP                           :{BLACK}Eligere genus intervalli ministrationis
 STR_VEHICLE_DETAILS_DEFAULT                                     :Solitus
-STR_VEHICLE_DETAILS_DAYS                                        :Diebus
 STR_VEHICLE_DETAILS_PERCENT                                     :Per centum
 
 ###length VEHICLE_TYPES

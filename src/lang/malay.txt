@@ -220,6 +220,9 @@ STR_UNITS_HEIGHT_IMPERIAL                                       :{DECIMAL} ka
 STR_UNITS_HEIGHT_METRIC                                         :{DECIMAL}{NBSP}m
 STR_UNITS_HEIGHT_SI                                             :{DECIMAL} m
 
+# Time units used in string control characters
+
+
 
 # Common window strings
 STR_LIST_FILTER_TITLE                                           :{BLACK}Tapis barisan:
@@ -544,8 +547,8 @@ STR_GRAPH_CARGO_DELIVERED_CAPTION                               :{WHITE}Unit kar
 STR_GRAPH_COMPANY_PERFORMANCE_RATINGS_CAPTION                   :{WHITE}Penilaian prestasi syarikat (nilai maksimum=1000)
 STR_GRAPH_COMPANY_VALUES_CAPTION                                :{WHITE}Nilai syarikat
 
+
 STR_GRAPH_CARGO_PAYMENT_RATES_CAPTION                           :{WHITE}Kadar Bayaran Kargo
-STR_GRAPH_CARGO_PAYMENT_RATES_X_LABEL                           :{TINY_FONT}{BLACK}Jumlah hari dalam perjalanan
 STR_GRAPH_CARGO_PAYMENT_RATES_TITLE                             :{TINY_FONT}{BLACK}Bayaran untuk hantaran 10 unit (atau 10,000 liter) kargo sejauh 20 petak
 STR_GRAPH_CARGO_ENABLE_ALL                                      :{TINY_FONT}{BLACK}Guna Semua
 STR_GRAPH_CARGO_DISABLE_ALL                                     :{TINY_FONT}{BLACK}Nyahaktifkan Semua
@@ -827,7 +830,12 @@ STR_NEWS_NEW_VEHICLE_NOW_AVAILABLE_WITH_TYPE                    :{BLACK}{STRING}
 
 STR_NEWS_OFFER_OF_SUBSIDY_EXPIRED                               :{BIG_FONT}{BLACK}Tempoh tawaran subsidi tamat:{}{}{STRING} dari {STRING} ke {STRING} tidak akan diberi subsidi.
 STR_NEWS_SUBSIDY_WITHDRAWN_SERVICE                              :{BIG_FONT}{BLACK}Subsidi ditarik:{}{}Servis {STRING} dari {STRING} ke {STRING} tidak akan diberi subsidi.
+STR_NEWS_SERVICE_SUBSIDY_OFFERED                                :{BIG_FONT}{BLACK}Subsidi perkhidmatan ditawarkan:{}{}Perkhidmatan {STRING} pertama dari {STRING} ke {STRING} akan mendapat subsidi selama setahun daripada pihak berkuasa tempatan!
 ###length 4
+STR_NEWS_SERVICE_SUBSIDY_AWARDED_HALF                           :{BIG_FONT}{BLACK}Subsidi perkhidmatan dianugerahkan kepada {STRING}!{}{}Perkhidmatan {STRING} dari {STRING} ke {STRING} akan ditambah bayaran 50% untuk tahun berikutnya!
+STR_NEWS_SERVICE_SUBSIDY_AWARDED_DOUBLE                         :{BIG_FONT}{BLACK}Subsidi perkhidmatan dianugerahkan kepada {STRING}!{}{}Perkhidmatan {STRING} dari {STRING} ke {STRING} akan dibayar kadar dua kali ganda untuk tahun berikutnya!
+STR_NEWS_SERVICE_SUBSIDY_AWARDED_TRIPLE                         :{BIG_FONT}{BLACK}Subsidi perkhidmatan dianugerahkan kepada {STRING}!{}{}Perkhidmatan {STRING} dari {STRING} ke {STRING} akan dibayar kadar tiga kali ganda untuk tahun berikutnya!
+STR_NEWS_SERVICE_SUBSIDY_AWARDED_QUADRUPLE                      :{BIG_FONT}{BLACK}Subsidi perkhidmatan dianugerahkan kepada {STRING}!{}{}Perkhidmatan {STRING} dari {STRING} ke {STRING} akan dibayar kadar empat kali ganda untuk tahun berikutnya!
 
 STR_NEWS_ROAD_REBUILDING                                        :{BIG_FONT}{BLACK}Kesesakan lalulintas di {TOWN}!{}{}Rancangan pembinaan semula jalanraya dibiayai oleh {STRING} akan menyeksa pemandu kenderaan selama 6 bulan!
 STR_NEWS_EXCLUSIVE_RIGHTS_TITLE                                 :{BIG_FONT}{BLACK}Monopoly pengangkutan!
@@ -923,6 +931,9 @@ STR_GAME_OPTIONS_BASE_SFX_DESCRIPTION_TOOLTIP                   :{BLACK}Maklumat
 STR_GAME_OPTIONS_BASE_MUSIC                                     :{BLACK}Set muzik asas
 STR_GAME_OPTIONS_BASE_MUSIC_TOOLTIP                             :{BLACK}Pilih set muzik asas yang akan digunakan
 STR_GAME_OPTIONS_BASE_MUSIC_DESCRIPTION_TOOLTIP                 :{BLACK}Maklumat lebih tentang set muzik asas
+
+
+
 
 
 STR_ERROR_RESOLUTION_LIST_FAILED                                :{WHITE}Gagal untuk mendapat senarai resolusi yang disokong
@@ -1246,6 +1257,8 @@ STR_CONFIG_SETTING_ORDER_REVIEW_ON                              :Semua kenderaan
 STR_CONFIG_SETTING_WARN_INCOME_LESS                             :Beri amaran jika pendapatan kenderaan adalah negatif: {STRING}
 
 STR_CONFIG_SETTING_NEVER_EXPIRE_VEHICLES                        :Kenderaan tidak akan tamat tempohnya: {STRING}
+
+###length 2
 
 STR_CONFIG_SETTING_AUTORENEW_VEHICLE                            :Gunakan pembaharuan automatik apabila kenderaan usang : {STRING}
 
@@ -2883,10 +2896,8 @@ STR_GOAL_QUESTION_BUTTON_CLOSE                                  :Tutup
 # Subsidies window
 STR_SUBSIDIES_CAPTION                                           :{WHITE}Subsidi
 STR_SUBSIDIES_OFFERED_TITLE                                     :{BLACK}Subsidi yang ditawarkan untuk perkhidmatan:
-STR_SUBSIDIES_OFFERED_FROM_TO                                   :{ORANGE}{STRING} dari {STRING} ke {STRING}{YELLOW} (sebelum {DATE_SHORT})
 STR_SUBSIDIES_NONE                                              :{ORANGE}- Tiada -
 STR_SUBSIDIES_SUBSIDISED_TITLE                                  :{BLACK}Perkhidmatan yang telah disubsidikan:
-STR_SUBSIDIES_SUBSIDISED_FROM_TO                                :{ORANGE}{STRING} dari {STRING} ke {STRING}{YELLOW} ({COMPANY}{YELLOW}, sehingga {DATE_SHORT})
 STR_SUBSIDIES_TOOLTIP_CLICK_ON_SERVICE_TO_CENTER                :{BLACK}Klik di atas servis untuk memusatkan pemandangan kepada industri/bandar. Ctrl+Klik untuk membuka tetingkap pemandangan di lokasi bandar
 
 # Story book window
@@ -3435,9 +3446,9 @@ STR_VEHICLE_DETAILS_ROAD_VEHICLE_RENAME                         :{BLACK}Nama ken
 STR_VEHICLE_DETAILS_SHIP_RENAME                                 :{BLACK}Nama kapal
 STR_VEHICLE_DETAILS_AIRCRAFT_RENAME                             :{BLACK}Namakan pesawat
 
-STR_VEHICLE_INFO_AGE_RUNNING_COST_YR                            :{BLACK}Umur: {LTBLUE}{STRING}{BLACK}   Kos Pengendalian: {LTBLUE}{CURRENCY_LONG}/thn
 STR_VEHICLE_INFO_AGE                                            :{COMMA} tahun ({COMMA})
 STR_VEHICLE_INFO_AGE_RED                                        :{RED}{COMMA} tahun ({COMMA})
+STR_VEHICLE_INFO_AGE_RUNNING_COST_YR                            :{BLACK}Umur: {LTBLUE}{STRING}{BLACK}   Kos Pengendalian: {LTBLUE}{CURRENCY_LONG}/thn
 
 STR_VEHICLE_INFO_MAX_SPEED                                      :{BLACK}Kelajuan Maks.: {LTBLUE}{VELOCITY}
 STR_VEHICLE_INFO_MAX_SPEED_TYPE                                 :{BLACK}Kelajuan maksima: {LTBLUE}{VELOCITY} {BLACK}Jenis pesawat: {LTBLUE}{STRING}
@@ -3456,12 +3467,9 @@ STR_VEHICLE_INFO_CAPACITY_CAPACITY                              :{BLACK}Muatan: 
 
 STR_VEHICLE_INFO_FEEDER_CARGO_VALUE                             :{BLACK}Pindahkan kredit: {LTBLUE}{CURRENCY_LONG}
 
-STR_VEHICLE_DETAILS_SERVICING_INTERVAL_DAYS                     :{BLACK}Tempoh Penyenggelaraan: {LTBLUE}{COMMA}hari{BLACK}   Penyenggelaraan terakhir: {LTBLUE}{DATE_LONG}
-STR_VEHICLE_DETAILS_SERVICING_INTERVAL_PERCENT                  :{BLACK}Tempoh Penyenggelaraan: {LTBLUE}{COMMA}%{BLACK}   Penyenggelaraan terakhir: {LTBLUE}{DATE_LONG}
 STR_VEHICLE_DETAILS_INCREASE_SERVICING_INTERVAL_TOOLTIP         :{BLACK}Tambah 10 tempoh penyenggelaraan. Ctrl+Klik untuk tambah 5 tempoh penyenggelaraan
 STR_VEHICLE_DETAILS_DECREASE_SERVICING_INTERVAL_TOOLTIP         :{BLACK}Kurangkan 10 tempoh penyenggelaraan. Ctrl+Klik untuk kurangkan 5 tempoh penyenggelaraan
 
-STR_VEHICLE_DETAILS_DAYS                                        :Hari
 STR_VEHICLE_DETAILS_PERCENT                                     :Peratusan
 
 ###length VEHICLE_TYPES

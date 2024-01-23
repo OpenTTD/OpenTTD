@@ -197,7 +197,6 @@ STR_COLOUR_RANDOM                                               :Randamach
 STR_UNITS_VELOCITY_IMPERIAL                                     :{DECIMAL}{NBSP}m/u
 STR_UNITS_VELOCITY_METRIC                                       :{DECIMAL}{NBSP}km/u
 STR_UNITS_VELOCITY_SI                                           :{DECIMAL}{NBSP}m/s
-STR_UNITS_VELOCITY_GAMEUNITS                                    :{DECIMAL}{NBSP}{P th th th dt t}íl/lá
 
 STR_UNITS_POWER_IMPERIAL                                        :{DECIMAL}hp
 STR_UNITS_POWER_METRIC                                          :{DECIMAL}hp
@@ -227,6 +226,9 @@ STR_UNITS_FORCE_SI                                              :{DECIMAL}{NBSP}
 STR_UNITS_HEIGHT_IMPERIAL                                       :{DECIMAL}{NBSP}tr
 STR_UNITS_HEIGHT_METRIC                                         :{DECIMAL}{NBSP}m
 STR_UNITS_HEIGHT_SI                                             :{DECIMAL}{NBSP}m
+
+# Time units used in string control characters
+
 
 
 # Common window strings
@@ -581,8 +583,8 @@ STR_GRAPH_CARGO_DELIVERED_CAPTION                               :{WHITE}Aonad la
 STR_GRAPH_COMPANY_PERFORMANCE_RATINGS_CAPTION                   :{WHITE}Rátálacha feidhmíochta cuideachtaí (uasrátáil=1000)
 STR_GRAPH_COMPANY_VALUES_CAPTION                                :{WHITE}Luachanna cuideachta
 
+
 STR_GRAPH_CARGO_PAYMENT_RATES_CAPTION                           :{WHITE}Rátaí íocaíochta do lastas
-STR_GRAPH_CARGO_PAYMENT_RATES_X_LABEL                           :{TINY_FONT}{BLACK}Laethanta faoi bhealach
 STR_GRAPH_CARGO_PAYMENT_RATES_TITLE                             :{TINY_FONT}{BLACK}Íocaíocht as 10 n-aonad (nó 10,000 lítear) de lastas a sheachadadh fad 20 cearnóg
 STR_GRAPH_CARGO_ENABLE_ALL                                      :{TINY_FONT}{BLACK}Cumasaigh gach
 STR_GRAPH_CARGO_DISABLE_ALL                                     :{TINY_FONT}{BLACK}Díchumasaigh gach
@@ -1003,6 +1005,9 @@ STR_GAME_OPTIONS_BASE_MUSIC_TOOLTIP                             :{BLACK}Roghnaig
 STR_GAME_OPTIONS_BASE_MUSIC_DESCRIPTION_TOOLTIP                 :{BLACK}Faisnéis breise faoin tsraith ceoil bunaidh
 
 
+
+
+
 STR_ERROR_RESOLUTION_LIST_FAILED                                :{WHITE}Teipeadh liosta de na taifigh a dtacaítear leo a fháil
 STR_ERROR_FULLSCREEN_FAILED                                     :{WHITE}Theip ar an mód lánscáileáin
 
@@ -1364,6 +1369,8 @@ STR_CONFIG_SETTING_WARN_INCOME_LESS_HELPTEXT                    :Má dhéantar �
 
 STR_CONFIG_SETTING_NEVER_EXPIRE_VEHICLES                        :Ní imíonn feithiclí as dáta riamh: {STRING}
 STR_CONFIG_SETTING_NEVER_EXPIRE_VEHICLES_HELPTEXT               :Má dhéantar é a chumasú beidh gach cineál feithicle ar fáil go deo tar éis é a thabhairt isteach
+
+###length 2
 
 STR_CONFIG_SETTING_AUTORENEW_VEHICLE                            :Déan uathathnuachan ar an bhfeithicil nuair a éiríonn sé sean: {STRING}
 STR_CONFIG_SETTING_AUTORENEW_VEHICLE_HELPTEXT                   :Má tá sé cumasaithe, déantar feithicil atá ag teacht chuig deireadh a ré a ionadú go huathoibríoch má tá na coinníollacha athnuachana comhlíonta
@@ -3453,10 +3460,8 @@ STR_GOAL_QUESTION_BUTTON_CLOSE                                  :Dún
 # Subsidies window
 STR_SUBSIDIES_CAPTION                                           :{WHITE}Fóirdheontais
 STR_SUBSIDIES_OFFERED_TITLE                                     :{BLACK}Fóirdheontais le fáil do sheirbhísí chun:
-STR_SUBSIDIES_OFFERED_FROM_TO                                   :{ORANGE}{STRING} a thabhairt ó {STRING} go {STRING}{YELLOW} (roimh {DATE_SHORT})
 STR_SUBSIDIES_NONE                                              :{ORANGE}- Ceann ar bith -
 STR_SUBSIDIES_SUBSIDISED_TITLE                                  :{BLACK}Seirbhísí a fhaigheann fóirdheontas:
-STR_SUBSIDIES_SUBSIDISED_FROM_TO                                :{ORANGE}{STRING} a thabhairt ó {STRING} go {STRING}{YELLOW} ({COMPANY}{YELLOW}, go dtí {DATE_SHORT})
 STR_SUBSIDIES_TOOLTIP_CLICK_ON_SERVICE_TO_CENTER                :{BLACK}Cliceáil ar sheirbhís chun an t-amharc a lárú ar thionscal/bhaile. Déantar amharc nua a oscailt ar shuíomh an tionscail/bhaile le Ctrl+Cliceáil
 
 # Story book window
@@ -4111,9 +4116,9 @@ STR_VEHICLE_DETAILS_ROAD_VEHICLE_RENAME                         :{BLACK}Ainmnigh
 STR_VEHICLE_DETAILS_SHIP_RENAME                                 :{BLACK}Ainmnigh long
 STR_VEHICLE_DETAILS_AIRCRAFT_RENAME                             :{BLACK}Ainmnigh aerárthach
 
-STR_VEHICLE_INFO_AGE_RUNNING_COST_YR                            :{BLACK}Aois: {LTBLUE}{STRING}{BLACK}   Costas le Rith: {LTBLUE}{CURRENCY_LONG}/bl
 STR_VEHICLE_INFO_AGE                                            :{COMMA} {P bhliain bhliain bliana mbliana bliana} ({COMMA})
 STR_VEHICLE_INFO_AGE_RED                                        :{RED}{COMMA} {P bhliain bhliain bliana mbliana bliana} ({COMMA})
+STR_VEHICLE_INFO_AGE_RUNNING_COST_YR                            :{BLACK}Aois: {LTBLUE}{STRING}{BLACK}   Costas le Rith: {LTBLUE}{CURRENCY_LONG}/bl
 
 STR_VEHICLE_INFO_MAX_SPEED                                      :{BLACK}Luas uasta: {LTBLUE}{VELOCITY}
 STR_VEHICLE_INFO_MAX_SPEED_TYPE                                 :{BLACK}Luas Uasta: {LTBLUE}{VELOCITY} {BLACK}Cineál aerárthaigh: {LTBLUE}{STRING}
@@ -4132,14 +4137,11 @@ STR_VEHICLE_INFO_CAPACITY_CAPACITY                              :{BLACK}Toillead
 
 STR_VEHICLE_INFO_FEEDER_CARGO_VALUE                             :{BLACK}Creidmheasanna Aistrithe: {LTBLUE}{CURRENCY_LONG}
 
-STR_VEHICLE_DETAILS_SERVICING_INTERVAL_DAYS                     :{BLACK}Eatramh seirbhísithe: {LTBLUE}{COMMA}lá{BLACK}   Seirbhísiú deiridh: {LTBLUE}{DATE_LONG}
-STR_VEHICLE_DETAILS_SERVICING_INTERVAL_PERCENT                  :{BLACK}Eatramh seirbhísithe: {LTBLUE}{COMMA}%{BLACK}   Seirbhísiú deiridh: {LTBLUE}{DATE_LONG}
 STR_VEHICLE_DETAILS_INCREASE_SERVICING_INTERVAL_TOOLTIP         :{BLACK}Méadaigh an t-eatramh seirbhísithe de 10. Méadaítear an t-eatramh seirbhísithe de 5 le Ctrl+Cliceáil
 STR_VEHICLE_DETAILS_DECREASE_SERVICING_INTERVAL_TOOLTIP         :{BLACK}Laghdaigh an t-eatramh seirbhísithe d 10. Laghdaítear an t-eatramh seirbhísithe de 5 le Ctrl+Cliceáil
 
 STR_SERVICE_INTERVAL_DROPDOWN_TOOLTIP                           :{BLACK}Athraigh cineál eatramh seirbhísithe
 STR_VEHICLE_DETAILS_DEFAULT                                     :Réamhshocrú
-STR_VEHICLE_DETAILS_DAYS                                        :Laethanta
 STR_VEHICLE_DETAILS_PERCENT                                     :Céatadán
 
 ###length VEHICLE_TYPES

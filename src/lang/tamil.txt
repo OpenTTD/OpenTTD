@@ -197,7 +197,6 @@ STR_COLOUR_RANDOM                                               :ஏதோவொ
 STR_UNITS_VELOCITY_IMPERIAL                                     :{DECIMAL}{NBSP}mph
 STR_UNITS_VELOCITY_METRIC                                       :{DECIMAL}{NBSP}km/h
 STR_UNITS_VELOCITY_SI                                           :{DECIMAL}{NBSP}m/s
-STR_UNITS_VELOCITY_GAMEUNITS                                    :{DECIMAL}{NBSP}வட்டங்கள்/நாளிற்கு
 
 STR_UNITS_POWER_IMPERIAL                                        :{DECIMAL}{NBSP}hp
 STR_UNITS_POWER_METRIC                                          :{DECIMAL}{NBSP}hp
@@ -228,6 +227,9 @@ STR_UNITS_FORCE_SI                                              :{DECIMAL}{NBSP}
 STR_UNITS_HEIGHT_IMPERIAL                                       :{DECIMAL}{NBSP}அடி
 STR_UNITS_HEIGHT_METRIC                                         :{DECIMAL}{NBSP}மீ
 STR_UNITS_HEIGHT_SI                                             :{DECIMAL}{NBSP}மீ
+
+# Time units used in string control characters
+
 
 
 # Common window strings
@@ -574,8 +576,8 @@ STR_GRAPH_CARGO_DELIVERED_CAPTION                               :{WHITE}பர�
 STR_GRAPH_COMPANY_PERFORMANCE_RATINGS_CAPTION                   :{WHITE}கம்பெனி செயல்வரம்பு (அதிகபட்ச செயல்வரம்பு=1000)
 STR_GRAPH_COMPANY_VALUES_CAPTION                                :{WHITE}கம்பெனி மதிப்பீடுகள்
 
+
 STR_GRAPH_CARGO_PAYMENT_RATES_CAPTION                           :{WHITE}சரக்கு விற்பனை விலை
-STR_GRAPH_CARGO_PAYMENT_RATES_X_LABEL                           :{TINY_FONT}{BLACK}எடுத்துச் செல்லுதல் நாட்கள்
 STR_GRAPH_CARGO_PAYMENT_RATES_TITLE                             :{TINY_FONT}{BLACK}10 யூனிட்டு (அல்லது 10000 லிட்டர்) சரக்குகளை 20 கட்டங்களுக்கு நகர்த்தியதற்கான வருவாய்
 STR_GRAPH_CARGO_ENABLE_ALL                                      :{TINY_FONT}{BLACK}அனைத்தையும் செயலாக்கு
 STR_GRAPH_CARGO_DISABLE_ALL                                     :{TINY_FONT}{BLACK}அனைத்தையும் செயலிளக்கவை
@@ -973,6 +975,9 @@ STR_GAME_OPTIONS_BASE_MUSIC_TOOLTIP                             :{BLACK}பய�
 STR_GAME_OPTIONS_BASE_MUSIC_DESCRIPTION_TOOLTIP                 :{BLACK}அடிப்படை இசைத் தொகுப்பு பற்றிய கூடுதல் தகவல்கள்
 
 
+
+
+
 STR_ERROR_RESOLUTION_LIST_FAILED                                :{WHITE}ஆதரிக்கப்பட்ட திரைத் தெளிவுத்திரங்களின் வரிசை பெற முடியவில்லை
 STR_ERROR_FULLSCREEN_FAILED                                     :{WHITE}முழுத்திரை நிலை தோல்வியடைந்தது
 
@@ -1293,6 +1298,8 @@ STR_CONFIG_SETTING_ORDER_REVIEW_ON                              :அனைத்
 STR_CONFIG_SETTING_WARN_INCOME_LESS                             :வாகனம் நஷ்டத்தில் ஓடினால் எச்சரி: {STRING}
 
 STR_CONFIG_SETTING_NEVER_EXPIRE_VEHICLES                        :வாகனங்கள் என்றும் காலாவதியாகாது: {STRING}
+
+###length 2
 
 STR_CONFIG_SETTING_AUTORENEW_VEHICLE                            :வாகனங்கள் காலாவதியானால் தானாக மாற்றியமை: {STRING}
 STR_CONFIG_SETTING_AUTORENEW_VEHICLE_HELPTEXT                   :செயலாக்க செய்யப்பட்டால், வாகனங்கள் காலாவதியாவதற்கு முன்னால் தானாக மாற்றியமைக்கப்படும்
@@ -3126,10 +3133,8 @@ STR_GOAL_QUESTION_BUTTON_CLOSE                                  :மூடு
 # Subsidies window
 STR_SUBSIDIES_CAPTION                                           :{WHITE}மானியங்கள்
 STR_SUBSIDIES_OFFERED_TITLE                                     :{BLACK}மானியம் வழங்கப்படப்போகும் பணிகள்:
-STR_SUBSIDIES_OFFERED_FROM_TO                                   :{ORANGE}{STRING} {STRING} இருந்து {STRING}வரை {YELLOW} ({DATE_SHORT} முன்னர்)
 STR_SUBSIDIES_NONE                                              :{ORANGE}- ஒன்றுமில்லை -
 STR_SUBSIDIES_SUBSIDISED_TITLE                                  :{BLACK}மானியம் ஏற்கனவே வழங்கப்பட்ட பணிகள்:
-STR_SUBSIDIES_SUBSIDISED_FROM_TO                                :{ORANGE}{STRING} {STRING} இருந்து {STRING} வரை {YELLOW} ({COMPANY}{YELLOW}, {DATE_SHORT} வரை)
 
 # Story book window
 STR_STORY_BOOK_CAPTION                                          :{WHITE}{COMPANY} கதைப் புத்தகம்
@@ -3743,9 +3748,9 @@ STR_VEHICLE_DETAILS_ROAD_VEHICLE_RENAME                         :{BLACK}சா�
 STR_VEHICLE_DETAILS_SHIP_RENAME                                 :{BLACK}கப்பலுக்கு பெயரிடு
 STR_VEHICLE_DETAILS_AIRCRAFT_RENAME                             :{BLACK}விமானத்திற்கு பெயரிடு
 
-STR_VEHICLE_INFO_AGE_RUNNING_COST_YR                            :{BLACK}வயது: {LTBLUE}{STRING}{BLACK}   ஓட்டுதல் செலவு: {LTBLUE}{CURRENCY_LONG}/வரு
 STR_VEHICLE_INFO_AGE                                            :{COMMA} வருடம்{P "" கள்} ({COMMA})
 STR_VEHICLE_INFO_AGE_RED                                        :{RED}{COMMA} வருடம்{P "" கள்} ({COMMA})
+STR_VEHICLE_INFO_AGE_RUNNING_COST_YR                            :{BLACK}வயது: {LTBLUE}{STRING}{BLACK}   ஓட்டுதல் செலவு: {LTBLUE}{CURRENCY_LONG}/வரு
 
 STR_VEHICLE_INFO_MAX_SPEED                                      :{BLACK}அதி. வேகம்: {LTBLUE}{VELOCITY}
 STR_VEHICLE_INFO_MAX_SPEED_TYPE                                 :{BLACK}அதி. வேகம்: {LTBLUE}{VELOCITY} {BLACK}விமான வகை: {LTBLUE}{STRING}
@@ -3764,12 +3769,9 @@ STR_VEHICLE_INFO_CAPACITY_CAPACITY                              :{BLACK}கொ�
 
 STR_VEHICLE_INFO_FEEDER_CARGO_VALUE                             :{BLACK}இடமாற்றம் வரவுகள்: {LTBLUE}{CURRENCY_LONG}
 
-STR_VEHICLE_DETAILS_SERVICING_INTERVAL_DAYS                     :{BLACK}பராமரிப்புகளுக்கிடையேயான காலம்: {LTBLUE}{COMMA}{NBSP}நாட்கள்{BLACK}   கடைசி பராமரிப்பு: {LTBLUE}{DATE_LONG}
-STR_VEHICLE_DETAILS_SERVICING_INTERVAL_PERCENT                  :{BLACK}பராமரிப்புகளுக்கிடையேயான காலம்: {LTBLUE}{COMMA}%{BLACK}   கடைசி பராமரிப்பு: {LTBLUE}{DATE_LONG}
 
 STR_SERVICE_INTERVAL_DROPDOWN_TOOLTIP                           :{BLACK}பழுதுபார்த்தல் இடைவேளி வகையினை மாற்றவும்
 STR_VEHICLE_DETAILS_DEFAULT                                     :Default
-STR_VEHICLE_DETAILS_DAYS                                        :நாட்கள்
 STR_VEHICLE_DETAILS_PERCENT                                     :சதவிகிதம்
 
 ###length VEHICLE_TYPES

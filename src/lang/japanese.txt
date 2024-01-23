@@ -197,7 +197,6 @@ STR_COLOUR_RANDOM                                               :ランダム
 STR_UNITS_VELOCITY_IMPERIAL                                     :{DECIMAL}mph
 STR_UNITS_VELOCITY_METRIC                                       :{DECIMAL}km/h
 STR_UNITS_VELOCITY_SI                                           :{DECIMAL}m/s
-STR_UNITS_VELOCITY_GAMEUNITS                                    :{DECIMAL}{NBSP}タイル/日
 STR_UNITS_VELOCITY_KNOTS                                        :{DECIMAL}{NBSP}ノット
 
 STR_UNITS_POWER_IMPERIAL                                        :{DECIMAL}英馬力
@@ -237,6 +236,9 @@ STR_UNITS_FORCE_SI                                              :{DECIMAL}kN
 STR_UNITS_HEIGHT_IMPERIAL                                       :{DECIMAL}フィート
 STR_UNITS_HEIGHT_METRIC                                         :{DECIMAL}m
 STR_UNITS_HEIGHT_SI                                             :{DECIMAL}m
+
+# Time units used in string control characters
+
 
 
 # Common window strings
@@ -593,8 +595,8 @@ STR_GRAPH_CARGO_DELIVERED_CAPTION                               :{WHITE}貨物�
 STR_GRAPH_COMPANY_PERFORMANCE_RATINGS_CAPTION                   :{WHITE}格付の推移(最大1000)
 STR_GRAPH_COMPANY_VALUES_CAPTION                                :{WHITE}総資産の推移
 
+
 STR_GRAPH_CARGO_PAYMENT_RATES_CAPTION                           :{WHITE}運送報酬の相場
-STR_GRAPH_CARGO_PAYMENT_RATES_X_LABEL                           :{TINY_FONT}{BLACK}輸送時間(日)
 STR_GRAPH_CARGO_PAYMENT_RATES_TITLE                             :{TINY_FONT}{BLACK}貨物を10単位(又は10,000リットル)を20マス運送したときの報酬
 STR_GRAPH_CARGO_ENABLE_ALL                                      :{TINY_FONT}{BLACK}すべて有効化
 STR_GRAPH_CARGO_DISABLE_ALL                                     :{TINY_FONT}{BLACK}すべて無効化
@@ -1045,6 +1047,9 @@ STR_GAME_OPTIONS_BASE_MUSIC_TOOLTIP                             :{BLACK}使用�
 STR_GAME_OPTIONS_BASE_MUSIC_DESCRIPTION_TOOLTIP                 :{BLACK}基本音楽セットについての追加情報
 
 
+
+
+
 STR_ERROR_RESOLUTION_LIST_FAILED                                :{WHITE}サポートされている解像度リストの回復に失敗しました
 STR_ERROR_FULLSCREEN_FAILED                                     :{WHITE}フルスクリーンモードでの実行に失敗しました
 
@@ -1409,6 +1414,8 @@ STR_CONFIG_SETTING_WARN_INCOME_LESS_HELPTEXT                    :有効にする
 
 STR_CONFIG_SETTING_NEVER_EXPIRE_VEHICLES                        :輸送機器の旧式化撤廃: {STRING}
 STR_CONFIG_SETTING_NEVER_EXPIRE_VEHICLES_HELPTEXT               :有効にすると、いずれの種類の輸送機器であっても、その開発後であれば永久に購入が可能になります
+
+###length 2
 
 STR_CONFIG_SETTING_AUTORENEW_VEHICLE                            :老朽車両の自動交換: {STRING}
 STR_CONFIG_SETTING_AUTORENEW_VEHICLE_HELPTEXT                   :有効にすると、耐用年数を越えた輸送機器は自動で更新されるようになります(交換には一度格納施設に戻る必要があります)。具体的な交換時期は下の設定で変更できます。
@@ -3549,10 +3556,8 @@ STR_GOAL_QUESTION_BUTTON_CLOSE                                  :閉じる
 # Subsidies window
 STR_SUBSIDIES_CAPTION                                           :{WHITE}助成金
 STR_SUBSIDIES_OFFERED_TITLE                                     :{BLACK}助成金が提案された経路:
-STR_SUBSIDIES_OFFERED_FROM_TO                                   :{ORANGE}{STRING}を{STRING}から{STRING}へ{YELLOW}(有効期限: {DATE_SHORT})
 STR_SUBSIDIES_NONE                                              :{ORANGE}- なし -
 STR_SUBSIDIES_SUBSIDISED_TITLE                                  :{BLACK}助成金が交付されている経路:
-STR_SUBSIDIES_SUBSIDISED_FROM_TO                                :{ORANGE}{STRING}を{STRING}から{STRING}へ{YELLOW}({COMPANY}{YELLOW}、交付期限:{DATE_SHORT})
 STR_SUBSIDIES_TOOLTIP_CLICK_ON_SERVICE_TO_CENTER                :{BLACK}指定の街/産業の場所を見るにはクリックします。Ctrl+クリックで新規のビューポートに表示します
 
 # Story book window
@@ -4224,9 +4229,9 @@ STR_VEHICLE_DETAILS_ROAD_VEHICLE_RENAME                         :{BLACK}車両�
 STR_VEHICLE_DETAILS_SHIP_RENAME                                 :{BLACK}船舶に名前を付ける
 STR_VEHICLE_DETAILS_AIRCRAFT_RENAME                             :{BLACK}航空機に名前を付ける
 
-STR_VEHICLE_INFO_AGE_RUNNING_COST_YR                            :{BLACK}使用年数: {LTBLUE}{STRING}{BLACK}　維持費: 一年間{LTBLUE}{CURRENCY_LONG}
 STR_VEHICLE_INFO_AGE                                            :{COMMA}年({COMMA}年)
 STR_VEHICLE_INFO_AGE_RED                                        :{RED}{COMMA}年({COMMA}年)
+STR_VEHICLE_INFO_AGE_RUNNING_COST_YR                            :{BLACK}使用年数: {LTBLUE}{STRING}{BLACK}　維持費: 一年間{LTBLUE}{CURRENCY_LONG}
 
 STR_VEHICLE_INFO_MAX_SPEED                                      :{BLACK}最高速度: {LTBLUE}{VELOCITY}
 STR_VEHICLE_INFO_MAX_SPEED_TYPE                                 :{BLACK}最高速度: {LTBLUE}{VELOCITY} {BLACK}航空機のタイプ: {LTBLUE}{STRING}
@@ -4246,14 +4251,11 @@ STR_VEHICLE_INFO_CAPACITY_CAPACITY                              :{BLACK}収容�
 
 STR_VEHICLE_INFO_FEEDER_CARGO_VALUE                             :{BLACK}転送による部分払い: {LTBLUE}{CURRENCY_LONG}
 
-STR_VEHICLE_DETAILS_SERVICING_INTERVAL_DAYS                     :{BLACK}点検周期: {LTBLUE}{COMMA}日{BLACK}  最終点検日: {LTBLUE}{DATE_LONG}
-STR_VEHICLE_DETAILS_SERVICING_INTERVAL_PERCENT                  :{BLACK}点検周期: {LTBLUE}{COMMA}%{BLACK}　最終点検日: {LTBLUE}{DATE_LONG}
 STR_VEHICLE_DETAILS_INCREASE_SERVICING_INTERVAL_TOOLTIP         :{BLACK}点検周期を10日(%)延ばします。Ctrl+クリックで5日(%)単位になります
 STR_VEHICLE_DETAILS_DECREASE_SERVICING_INTERVAL_TOOLTIP         :{BLACK}点検周期を10日(%)縮めます。Ctrl+クリックで5日(%)単位になります
 
 STR_SERVICE_INTERVAL_DROPDOWN_TOOLTIP                           :{BLACK}点検周期の変更
 STR_VEHICLE_DETAILS_DEFAULT                                     :既定
-STR_VEHICLE_DETAILS_DAYS                                        :日
 STR_VEHICLE_DETAILS_PERCENT                                     :パーセント
 
 ###length VEHICLE_TYPES

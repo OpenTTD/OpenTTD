@@ -216,7 +216,6 @@ STR_COLOUR_SECONDARY_SAME_AS_PRIMARY                            :Tāds, ka prim�
 STR_UNITS_VELOCITY_IMPERIAL                                     :{DECIMAL}{NBSP}jūdzes stundā
 STR_UNITS_VELOCITY_METRIC                                       :{DECIMAL}{NBSP}km/h
 STR_UNITS_VELOCITY_SI                                           :{DECIMAL}{NBSP}m/s
-STR_UNITS_VELOCITY_GAMEUNITS                                    :{DECIMAL}{NBSP}lauciņi/diena
 STR_UNITS_VELOCITY_KNOTS                                        :{DECIMAL}{NBSP}mezgli
 
 STR_UNITS_POWER_IMPERIAL                                        :{DECIMAL}{NBSP}ZS
@@ -257,9 +256,12 @@ STR_UNITS_HEIGHT_IMPERIAL                                       :{DECIMAL}{NBSP}
 STR_UNITS_HEIGHT_METRIC                                         :{DECIMAL}{NBSP}m
 STR_UNITS_HEIGHT_SI                                             :{DECIMAL}{NBSP}m
 
+# Time units used in string control characters
 STR_UNITS_DAYS                                                  :{COMMA}{NBSP}dien{P a as ""}
 STR_UNITS_SECONDS                                               :{COMMA}{NBSP}sekund{P e s ''''}
 STR_UNITS_TICKS                                                 :{COMMA}{NBSP}tick{P šķi šķi s}
+
+
 
 # Common window strings
 STR_LIST_FILTER_TITLE                                           :{BLACK}Filters:
@@ -617,8 +619,8 @@ STR_GRAPH_CARGO_DELIVERED_CAPTION                               :{WHITE}Pārvad�
 STR_GRAPH_COMPANY_PERFORMANCE_RATINGS_CAPTION                   :{WHITE}Uzņēmuma darbības vērtējumi (maksimālais ir 1000)
 STR_GRAPH_COMPANY_VALUES_CAPTION                                :{WHITE}Uzņēmuma vērtības diagramma
 
+
 STR_GRAPH_CARGO_PAYMENT_RATES_CAPTION                           :{WHITE}Kravas apmaksas cenas
-STR_GRAPH_CARGO_PAYMENT_RATES_X_LABEL                           :{TINY_FONT}{BLACK}Dienas pārvadājumos
 STR_GRAPH_CARGO_PAYMENT_RATES_TITLE                             :{TINY_FONT}{BLACK}Izmaksas par 10 vienību (vai 10,000 litru) kravas pārvadāšanu par 20 lauciņiem
 STR_GRAPH_CARGO_ENABLE_ALL                                      :{TINY_FONT}{BLACK}Iespējot visu
 STR_GRAPH_CARGO_DISABLE_ALL                                     :{TINY_FONT}{BLACK}Atspējot visu
@@ -1080,6 +1082,9 @@ STR_GAME_OPTIONS_BASE_MUSIC                                     :{BLACK}Pamata m
 STR_GAME_OPTIONS_BASE_MUSIC_TOOLTIP                             :{BLACK}Atlasīt lietošanai pamata mūzikas kopu
 STR_GAME_OPTIONS_BASE_MUSIC_DESCRIPTION_TOOLTIP                 :{BLACK}Papildinformācija par pamata mūzikas kopu
 
+
+
+
 STR_BASESET_STATUS                                              :{STRING} {RED}({NUM} trūkst/bojāts fail{P s i ""})
 
 STR_ERROR_RESOLUTION_LIST_FAILED                                :{WHITE}Neizdevās saņemt sarakstu ar atbalstītajām izšķirtspējām
@@ -1452,6 +1457,8 @@ STR_CONFIG_SETTING_WARN_INCOME_LESS_HELPTEXT                    :Ja ieslēgts, t
 
 STR_CONFIG_SETTING_NEVER_EXPIRE_VEHICLES                        :Transportlīdzekļi nekad "nemirst": {STRING}
 STR_CONFIG_SETTING_NEVER_EXPIRE_VEHICLES_HELPTEXT               :Kad ieslēgts, visi transportlīdzekļu modeļi pēc to ieviešanas vienmēr ir pieejami
+
+###length 2
 
 STR_CONFIG_SETTING_AUTORENEW_VEHICLE                            :Automātiski atjaunot transportlīdzekļus, kad tie ir kļuvuši veci: {STRING}
 STR_CONFIG_SETTING_AUTORENEW_VEHICLE_HELPTEXT                   :Ja ieslēgts, kad ir atbilstoši atjaunošanas apstākļi, automātiski tiek nomainīti transportlīdzekļi kuru kalpošanas laiks tuvojas beigām
@@ -3659,10 +3666,8 @@ STR_GOAL_QUESTION_BUTTON_CLOSE                                  :Aizvērt
 # Subsidies window
 STR_SUBSIDIES_CAPTION                                           :{WHITE}Subsīdijas
 STR_SUBSIDIES_OFFERED_TITLE                                     :{BLACK}Piedāvājumā esošās subsīdijas par pakalpojumu nodrošināšanu:
-STR_SUBSIDIES_OFFERED_FROM_TO                                   :{ORANGE}{STRING} no {STRING} līdz {STRING}{YELLOW} (no {DATE_SHORT})
 STR_SUBSIDIES_NONE                                              :{ORANGE}- Neviens -
 STR_SUBSIDIES_SUBSIDISED_TITLE                                  :{BLACK}Pašlaik subsidētie pakalpojumi:
-STR_SUBSIDIES_SUBSIDISED_FROM_TO                                :{ORANGE}{STRING} no {STRING} uz {STRING}{YELLOW} ({COMPANY}{YELLOW}, līdz {DATE_SHORT})
 STR_SUBSIDIES_TOOLTIP_CLICK_ON_SERVICE_TO_CENTER                :{BLACK}Klikšķināt uz servisa, lai iecentrētu skatu uz rūpnīcu/pilsētu. Ctrl+klikšķis atvērs jaunu skatu lauku uz pilsētu/rūpnīcu
 
 # Story book window
@@ -4341,9 +4346,9 @@ STR_VEHICLE_DETAILS_ROAD_VEHICLE_RENAME                         :{BLACK}Nosaukt 
 STR_VEHICLE_DETAILS_SHIP_RENAME                                 :{BLACK}Nosaukt kuģi
 STR_VEHICLE_DETAILS_AIRCRAFT_RENAME                             :{BLACK}Nosaukt lidaparātu
 
-STR_VEHICLE_INFO_AGE_RUNNING_COST_YR                            :{BLACK}Vecums: {LTBLUE}{STRING}{BLACK}   Izmaksas: {LTBLUE}{CURRENCY_LONG} gadā
 STR_VEHICLE_INFO_AGE                                            :{COMMA} gad{P s i u} ({COMMA})
 STR_VEHICLE_INFO_AGE_RED                                        :{RED}{COMMA} gad{P s i u} ({COMMA})
+STR_VEHICLE_INFO_AGE_RUNNING_COST_YR                            :{BLACK}Vecums: {LTBLUE}{STRING}{BLACK}   Izmaksas: {LTBLUE}{CURRENCY_LONG} gadā
 
 STR_VEHICLE_INFO_MAX_SPEED                                      :{BLACK}Maks. ātrums: {LTBLUE}{VELOCITY}
 STR_VEHICLE_INFO_MAX_SPEED_TYPE                                 :{BLACK}Maks. ātrums: {LTBLUE}{VELOCITY} {BLACK}Lidaparāta veids: {LTBLUE}{STRING}
@@ -4363,14 +4368,11 @@ STR_VEHICLE_INFO_CAPACITY_CAPACITY                              :{BLACK}Ietilpī
 
 STR_VEHICLE_INFO_FEEDER_CARGO_VALUE                             :{BLACK}Pārvadājumu ieņēmumi: {LTBLUE}{CURRENCY_LONG}
 
-STR_VEHICLE_DETAILS_SERVICING_INTERVAL_DAYS                     :{BLACK}Apkopes starplaiks: {LTBLUE}{COMMA}{NBSP}dienas{BLACK}   Pēdējā apkope: {LTBLUE}{DATE_LONG}
-STR_VEHICLE_DETAILS_SERVICING_INTERVAL_PERCENT                  :{BLACK}Apkopes starplaiks: {LTBLUE}{COMMA}%{BLACK}   Pēdējā apkope: {LTBLUE}{DATE_LONG}
 STR_VEHICLE_DETAILS_INCREASE_SERVICING_INTERVAL_TOOLTIP         :{BLACK}Palielināt apkopes starplaiku par 10. Ctrl+klikšķis palielina apkopes starplaiku par 5
 STR_VEHICLE_DETAILS_DECREASE_SERVICING_INTERVAL_TOOLTIP         :{BLACK}Samazināt apkopes starplaiku par 10. Ctrl+klikšķis samazina apkopes starplaiku par 5
 
 STR_SERVICE_INTERVAL_DROPDOWN_TOOLTIP                           :{BLACK}Mainīt apkopes starplaiku veidu
 STR_VEHICLE_DETAILS_DEFAULT                                     :Noklusējuma
-STR_VEHICLE_DETAILS_DAYS                                        :Dienas
 STR_VEHICLE_DETAILS_PERCENT                                     :Procenti
 
 ###length VEHICLE_TYPES

@@ -214,7 +214,6 @@ STR_COLOUR_SECONDARY_SAME_AS_PRIMARY                            :Zelfde als prim
 STR_UNITS_VELOCITY_IMPERIAL                                     :{DECIMAL}{NBSP}mph
 STR_UNITS_VELOCITY_METRIC                                       :{DECIMAL}{NBSP}km/u
 STR_UNITS_VELOCITY_SI                                           :{DECIMAL}{NBSP}m/s
-STR_UNITS_VELOCITY_GAMEUNITS                                    :{DECIMAL}{NBSP}tegels/dag
 STR_UNITS_VELOCITY_KNOTS                                        :{DECIMAL}{NBSP}knopen
 
 STR_UNITS_POWER_IMPERIAL                                        :{DECIMAL}{NBSP}pk
@@ -255,9 +254,12 @@ STR_UNITS_HEIGHT_IMPERIAL                                       :{DECIMAL}{NBSP}
 STR_UNITS_HEIGHT_METRIC                                         :{DECIMAL}{NBSP}m
 STR_UNITS_HEIGHT_SI                                             :{DECIMAL}{NBSP}m
 
+# Time units used in string control characters
 STR_UNITS_DAYS                                                  :{COMMA}{NBSP}dag{P "" en}
 STR_UNITS_SECONDS                                               :{COMMA}{NBSP}seconde{P "" n}
 STR_UNITS_TICKS                                                 :{COMMA}{NBSP}tik{P "" ken}
+
+
 
 # Common window strings
 STR_LIST_FILTER_TITLE                                           :{BLACK}Filter:
@@ -615,8 +617,8 @@ STR_GRAPH_CARGO_DELIVERED_CAPTION                               :{WHITE}Aantal e
 STR_GRAPH_COMPANY_PERFORMANCE_RATINGS_CAPTION                   :{WHITE}Bedrijfsprestatiescore (maximale score = 1000)
 STR_GRAPH_COMPANY_VALUES_CAPTION                                :{WHITE}Grafiek bedrijfswaarde
 
+
 STR_GRAPH_CARGO_PAYMENT_RATES_CAPTION                           :{WHITE}Vrachtprijzen
-STR_GRAPH_CARGO_PAYMENT_RATES_X_LABEL                           :{TINY_FONT}{BLACK}Dagen onderweg
 STR_GRAPH_CARGO_PAYMENT_RATES_TITLE                             :{TINY_FONT}{BLACK}Betaling voor het leveren van 10 eenheden (of 10.000 liter) vracht over een afstand van 20 vakjes
 STR_GRAPH_CARGO_ENABLE_ALL                                      :{TINY_FONT}{BLACK}Alles aan
 STR_GRAPH_CARGO_DISABLE_ALL                                     :{TINY_FONT}{BLACK}Alles uit
@@ -1078,6 +1080,9 @@ STR_GAME_OPTIONS_BASE_MUSIC                                     :{BLACK}Basisset
 STR_GAME_OPTIONS_BASE_MUSIC_TOOLTIP                             :{BLACK}Selecteer de te gebruiken basisset voor muziek
 STR_GAME_OPTIONS_BASE_MUSIC_DESCRIPTION_TOOLTIP                 :{BLACK}Aanvullende informatie over the basisset voor muziek
 
+
+
+
 STR_BASESET_STATUS                                              :{STRING} {RED}({NUM} {P "ontbrekend/beschadigd bestand" "ontbrekende/beschadigde bestanden"})
 
 STR_ERROR_RESOLUTION_LIST_FAILED                                :{WHITE}Mislukt om een lijst met ondersteunde resoluties op te halen
@@ -1450,6 +1455,8 @@ STR_CONFIG_SETTING_WARN_INCOME_LESS_HELPTEXT                    :Wanneer ingesch
 
 STR_CONFIG_SETTING_NEVER_EXPIRE_VEHICLES                        :Voertuigen verlopen niet: {STRING}
 STR_CONFIG_SETTING_NEVER_EXPIRE_VEHICLES_HELPTEXT               :Wanneer ingeschakeld, alle voertuig modellen blijven voor altijd beschikbaar na hun introductie
+
+###length 2
 
 STR_CONFIG_SETTING_AUTORENEW_VEHICLE                            :Voertuig automatisch vernieuwen wanneer dit oud wordt: {STRING}
 STR_CONFIG_SETTING_AUTORENEW_VEHICLE_HELPTEXT                   :Wanneer ingeschakeld, wordt een voertuig dat het einde van zijn levensduur nadert automatisch vervangen als aan de voorwaarden voor vernieuwing wordt voldaan
@@ -3649,10 +3656,8 @@ STR_GOAL_QUESTION_BUTTON_CLOSE                                  :Sluiten
 # Subsidies window
 STR_SUBSIDIES_CAPTION                                           :{WHITE}Subsidies
 STR_SUBSIDIES_OFFERED_TITLE                                     :{BLACK}Beschikbare subsidies:
-STR_SUBSIDIES_OFFERED_FROM_TO                                   :{ORANGE}{STRING} van {STRING} naar {STRING}{YELLOW} (voor {DATE_SHORT})
 STR_SUBSIDIES_NONE                                              :{ORANGE} Geen
 STR_SUBSIDIES_SUBSIDISED_TITLE                                  :{BLACK}Bestaande subsidies:
-STR_SUBSIDIES_SUBSIDISED_FROM_TO                                :{ORANGE}{STRING} van {STRING} naar {STRING}{YELLOW} ({COMPANY}{YELLOW}, tot {DATE_SHORT})
 STR_SUBSIDIES_TOOLTIP_CLICK_ON_SERVICE_TO_CENTER                :{BLACK}Klik op de dienst om het dorp/industrie te centreren. Ctrl+klik opent een nieuw venster op de locatie van het dorp/industrie
 
 # Story book window
@@ -4330,9 +4335,9 @@ STR_VEHICLE_DETAILS_ROAD_VEHICLE_RENAME                         :{BLACK}Wegvoert
 STR_VEHICLE_DETAILS_SHIP_RENAME                                 :{BLACK}Schip hernoemen
 STR_VEHICLE_DETAILS_AIRCRAFT_RENAME                             :{BLACK}Vliegtuig hernoemen
 
-STR_VEHICLE_INFO_AGE_RUNNING_COST_YR                            :{BLACK}Leeftijd: {LTBLUE}{STRING}{BLACK}   Gebruikskosten: {LTBLUE}{CURRENCY_LONG}/yr
 STR_VEHICLE_INFO_AGE                                            :{COMMA} ja{P ar ren} ({COMMA})
 STR_VEHICLE_INFO_AGE_RED                                        :{RED}{COMMA} ja{P ar ren} ({COMMA})
+STR_VEHICLE_INFO_AGE_RUNNING_COST_YR                            :{BLACK}Leeftijd: {LTBLUE}{STRING}{BLACK}   Gebruikskosten: {LTBLUE}{CURRENCY_LONG}/yr
 
 STR_VEHICLE_INFO_MAX_SPEED                                      :{BLACK}Max.snelheid: {LTBLUE}{VELOCITY}
 STR_VEHICLE_INFO_MAX_SPEED_TYPE                                 :{BLACK}Max.snelheid: {LTBLUE}{VELOCITY} {BLACK}Vliegtuigtype: {LTBLUE}{STRING}
@@ -4352,14 +4357,11 @@ STR_VEHICLE_INFO_CAPACITY_CAPACITY                              :{BLACK}Capacite
 
 STR_VEHICLE_INFO_FEEDER_CARGO_VALUE                             :{BLACK}Geldoverdracht: {LTBLUE}{CURRENCY_LONG}
 
-STR_VEHICLE_DETAILS_SERVICING_INTERVAL_DAYS                     :{BLACK}Onderhoudstermijn: {LTBLUE}{COMMA}{NBSP}dagen{BLACK}   Laatste onderhoud: {LTBLUE}{DATE_LONG}
-STR_VEHICLE_DETAILS_SERVICING_INTERVAL_PERCENT                  :{BLACK}Onderhoudstermijn: {LTBLUE}{COMMA}%{BLACK} Laatste onderhoud: {LTBLUE}{DATE_LONG}
 STR_VEHICLE_DETAILS_INCREASE_SERVICING_INTERVAL_TOOLTIP         :{BLACK}Onderhoudstermijn met 10 verlengen. Ctrl+klik verlengt termijn met 5.
 STR_VEHICLE_DETAILS_DECREASE_SERVICING_INTERVAL_TOOLTIP         :{BLACK}Onderhoudstermijn met 10 verkorten. Ctrl+klik verkort termijn met 5
 
 STR_SERVICE_INTERVAL_DROPDOWN_TOOLTIP                           :{BLACK}Wijzig onderhoudsintervaltype
 STR_VEHICLE_DETAILS_DEFAULT                                     :Standaard
-STR_VEHICLE_DETAILS_DAYS                                        :Dagen
 STR_VEHICLE_DETAILS_PERCENT                                     :Percentage
 
 ###length VEHICLE_TYPES

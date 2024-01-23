@@ -240,6 +240,9 @@ STR_UNITS_HEIGHT_IMPERIAL                                       :{DECIMAL} רג�
 STR_UNITS_HEIGHT_METRIC                                         :{DECIMAL} מ'
 STR_UNITS_HEIGHT_SI                                             :{DECIMAL} מ'
 
+# Time units used in string control characters
+
+
 
 # Common window strings
 STR_LIST_FILTER_TITLE                                           :{BLACK}מחרוזת סינון:
@@ -580,8 +583,8 @@ STR_GRAPH_CARGO_DELIVERED_CAPTION                               :{WHITE}יחיד
 STR_GRAPH_COMPANY_PERFORMANCE_RATINGS_CAPTION                   :{WHITE}(מדד הביצועים (הציון המירבי = 1000
 STR_GRAPH_COMPANY_VALUES_CAPTION                                :{WHITE}שווי החברות
 
+
 STR_GRAPH_CARGO_PAYMENT_RATES_CAPTION                           :{WHITE}שיעורי התשלום עבור הובלת מטענים
-STR_GRAPH_CARGO_PAYMENT_RATES_X_LABEL                           :{TINY_FONT}{BLACK}משך ההובלה בימים
 STR_GRAPH_CARGO_PAYMENT_RATES_TITLE                             :{TINY_FONT}{BLACK}תשלום עבור הובלת 10 יחידות (או 10,000 ליטר) למרחק 20 משבצות
 STR_GRAPH_CARGO_ENABLE_ALL                                      :{TINY_FONT}{BLACK}אפשר הכל
 STR_GRAPH_CARGO_DISABLE_ALL                                     :{TINY_FONT}{BLACK}בטל הכל
@@ -872,7 +875,12 @@ STR_NEWS_NEW_VEHICLE_NOW_AVAILABLE_WITH_TYPE                    :{BLACK}{STRING}
 
 STR_NEWS_OFFER_OF_SUBSIDY_EXPIRED                               :{BIG_FONT}{BLACK}פג תוקף הצעת סובסידיה:{}{}סובסידיה של הובלת {STRING.plural} מ{STRING} אל {STRING} לא תזכה עוד בסיבסוד.
 STR_NEWS_SUBSIDY_WITHDRAWN_SERVICE                              :{BIG_FONT}{BLACK}סובסידיה הוסרה:{}{}שירות הובלת {STRING.plural} מ{STRING} אל {STRING} אינו מסובסד יותר.
+STR_NEWS_SERVICE_SUBSIDY_OFFERED                                :{BIG_FONT}{BLACK}הצעה למתן סובסידיה:{}{}שירות הובלת {STRING.plural} ראשון מ{STRING} אל {STRING} יזכה לסובסידיה בת שנה מהרשות המקומית!
 ###length 4
+STR_NEWS_SERVICE_SUBSIDY_AWARDED_HALF                           :{BIG_FONT}{BLACK}סובסידיה לשירות ניתנה לחברת {STRING}!{}{}שירות הובלת {STRING.plural} מ{STRING} אל {STRING} יזכה לשיעור תשלום גדול ב-50% לשנה הקרובה
+STR_NEWS_SERVICE_SUBSIDY_AWARDED_DOUBLE                         :{BIG_FONT}{BLACK}סובסידיה לשירות ניתנה לחברת {STRING}!{}{}שירות הובלת {STRING.plural} מ{STRING} אל {STRING} יזכה לשיעור תשלום כפול לשנה הקרובה!
+STR_NEWS_SERVICE_SUBSIDY_AWARDED_TRIPLE                         :{BIG_FONT}{BLACK}סובסידיה לשירות ניתנה לחברת {STRING}!{}{}שירות הובלת {STRING.plural} מ{STRING} אל {STRING} יזכה לשיעור תשלום משולש לשנה הקרובה!
+STR_NEWS_SERVICE_SUBSIDY_AWARDED_QUADRUPLE                      :{BIG_FONT}{BLACK}סובסידיה לשירות ניתנה לחברת {STRING}!{}{}שירות הובלת {STRING.plural} מ{STRING} אל {STRING} יזכה לשיעור תשלום מוכפל פי 4 לשנה הקרובה!
 
 STR_NEWS_ROAD_REBUILDING                                        :{BIG_FONT}{BLACK}פקקי תנועה ענקיים ב{TOWN}!{}{} תכנית לשיפוץ מקיף של הכבישים במימון {STRING} מביאה לקטסטרופת תנועה לשישה חודשים
 STR_NEWS_EXCLUSIVE_RIGHTS_TITLE                                 :{BIG_FONT}{BLACK}מונופול תחבורה!
@@ -979,6 +987,9 @@ STR_GAME_OPTIONS_BASE_SFX_DESCRIPTION_TOOLTIP                   :{BLACK}מידע
 STR_GAME_OPTIONS_BASE_MUSIC                                     :{BLACK}ערכת מוזיקת בסיס
 STR_GAME_OPTIONS_BASE_MUSIC_TOOLTIP                             :{BLACK}בחר בערכת מוזיקת הבסיס לשימוש
 STR_GAME_OPTIONS_BASE_MUSIC_DESCRIPTION_TOOLTIP                 :{BLACK}מידע נוסף אודות ערכת המוזיקה הבסיסית
+
+
+
 
 
 STR_ERROR_RESOLUTION_LIST_FAILED                                :{WHITE}שגיאה ביצירת רשימה של רזולוציות אפשריות
@@ -1333,6 +1344,8 @@ STR_CONFIG_SETTING_WARN_INCOME_LESS_HELPTEXT                    :כאשר מאו
 
 STR_CONFIG_SETTING_NEVER_EXPIRE_VEHICLES                        :{STRING} :בטל התיישנות כלי רכב
 STR_CONFIG_SETTING_NEVER_EXPIRE_VEHICLES_HELPTEXT               :כאשר מאופשר, כל סוגי כלי הרכב נשארים זמינים לעד אחרי השקתם
+
+###length 2
 
 STR_CONFIG_SETTING_AUTORENEW_VEHICLE                            :חידוש עצמי של רכב כשהוא נהיה ישן: {STRING}
 STR_CONFIG_SETTING_AUTORENEW_VEHICLE_HELPTEXT                   :כאשר מאופשר, רכב המתקרב לסוף חייו מוחלף אוטומטית כאשר תנאי החידוש מתקיימים
@@ -3281,10 +3294,8 @@ STR_GOAL_QUESTION_BUTTON_CLOSE                                  :סגור
 # Subsidies window
 STR_SUBSIDIES_CAPTION                                           :{WHITE}סובסידיות
 STR_SUBSIDIES_OFFERED_TITLE                                     :{BLACK} :סובסידיות למימון שירותי הובלה
-STR_SUBSIDIES_OFFERED_FROM_TO                                   :{ORANGE}{STRING} מ-{STRING} אל {STRING}{YELLOW} (ב-{DATE_SHORT})
 STR_SUBSIDIES_NONE                                              :{ORANGE}- כלום -
 STR_SUBSIDIES_SUBSIDISED_TITLE                                  :{BLACK} :שירותים מסובסדים
-STR_SUBSIDIES_SUBSIDISED_FROM_TO                                :{ORANGE}{STRING} מ-{STRING} אל {STRING}{YELLOW} ({COMPANY}{YELLOW}, עד {DATE_SHORT})
 STR_SUBSIDIES_TOOLTIP_CLICK_ON_SERVICE_TO_CENTER                :{BLACK}לחץ על שירות כדי להתמקד על עיר/תעשייה. Ctrl+לחיצה פותח חלונית תצוגה חדשה על מיקום העיר/תעשייה
 
 # Story book window
@@ -3913,9 +3924,9 @@ STR_VEHICLE_DETAILS_ROAD_VEHICLE_RENAME                         :{BLACK}תן ש�
 STR_VEHICLE_DETAILS_SHIP_RENAME                                 :{BLACK}תן שם לכלי השייט
 STR_VEHICLE_DETAILS_AIRCRAFT_RENAME                             :{BLACK}תן שם לכלי הטייס
 
-STR_VEHICLE_INFO_AGE_RUNNING_COST_YR                            :{BLACK}גיל: {LTBLUE}{STRING}{BLACK}   עלות שוטפת: {LTBLUE}{CURRENCY_LONG}/לשנה
 STR_VEHICLE_INFO_AGE                                            :({1:COMMA}) שנים {NBSP}{0:COMMA}
 STR_VEHICLE_INFO_AGE_RED                                        :{RED}({1:COMMA}) שנים {NBSP}{0:COMMA}
+STR_VEHICLE_INFO_AGE_RUNNING_COST_YR                            :{BLACK}גיל: {LTBLUE}{STRING}{BLACK}   עלות שוטפת: {LTBLUE}{CURRENCY_LONG}/לשנה
 
 STR_VEHICLE_INFO_MAX_SPEED                                      :{BLACK}מהירות מקסימלית: {LTBLUE}{VELOCITY}
 STR_VEHICLE_INFO_MAX_SPEED_TYPE                                 :{BLACK}מהירות מקס.: {LTBLUE}{VELOCITY} {BLACK}סוג כלי טיס: {LTBLUE}{STRING}
@@ -3934,14 +3945,11 @@ STR_VEHICLE_INFO_CAPACITY_CAPACITY                              :{BLACK}קיבו
 
 STR_VEHICLE_INFO_FEEDER_CARGO_VALUE                             :{BLACK}העברת סכום: {LTBLUE}{CURRENCY_LONG}
 
-STR_VEHICLE_DETAILS_SERVICING_INTERVAL_DAYS                     :{LTBLUE}{1:DATE_LONG} :טיפול אחרוןֿ {BLACK}{LTBLUE}{0:COMMA}% {BLACK} :מרווח בין טיפולים
-STR_VEHICLE_DETAILS_SERVICING_INTERVAL_PERCENT                  :{LTBLUE}{1:DATE_LONG} :טיפול אחרוןֿ {BLACK}{LTBLUE}{0:COMMA}% {BLACK} :מרווח בין טיפולים
 STR_VEHICLE_DETAILS_INCREASE_SERVICING_INTERVAL_TOOLTIP         :{BLACK}הגדל את מרווח הזמן עד קבלת שירות ב-10. Ctrl+לחיצה מגדיל את המרווח ב-5
 STR_VEHICLE_DETAILS_DECREASE_SERVICING_INTERVAL_TOOLTIP         :{BLACK}הקטן את מרווח הזמן עד קבלת שירות ב-10. Ctrl+לחיצה מקטינה את המרווח ב-5
 
 STR_SERVICE_INTERVAL_DROPDOWN_TOOLTIP                           :{BLACK}שנה סוג מרווח שירות
 STR_VEHICLE_DETAILS_DEFAULT                                     :ברירת מחדל
-STR_VEHICLE_DETAILS_DAYS                                        :ימים
 STR_VEHICLE_DETAILS_PERCENT                                     :אחוז
 
 ###length VEHICLE_TYPES

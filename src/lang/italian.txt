@@ -216,7 +216,6 @@ STR_COLOUR_SECONDARY_SAME_AS_PRIMARY                            :Come il primari
 STR_UNITS_VELOCITY_IMPERIAL                                     :{DECIMAL}{NBSP}mph
 STR_UNITS_VELOCITY_METRIC                                       :{DECIMAL}{NBSP}km/h
 STR_UNITS_VELOCITY_SI                                           :{DECIMAL}{NBSP}m/s
-STR_UNITS_VELOCITY_GAMEUNITS                                    :{DECIMAL}{NBSP}caselle/giorno
 STR_UNITS_VELOCITY_KNOTS                                        :{DECIMAL}{NBSP}nodi
 
 STR_UNITS_POWER_IMPERIAL                                        :{DECIMAL}{NBSP}hp
@@ -257,9 +256,12 @@ STR_UNITS_HEIGHT_IMPERIAL                                       :{DECIMAL}{NBSP}
 STR_UNITS_HEIGHT_METRIC                                         :{DECIMAL}{NBSP}m
 STR_UNITS_HEIGHT_SI                                             :{DECIMAL}{NBSP}m
 
+# Time units used in string control characters
 STR_UNITS_DAYS                                                  :{COMMA}{NBSP}giorn{P "o" i}
 STR_UNITS_SECONDS                                               :{COMMA}{NBSP}second{P "o" i}
 STR_UNITS_TICKS                                                 :{COMMA}{NBSP}tick{P "" s}
+
+
 
 # Common window strings
 STR_LIST_FILTER_TITLE                                           :{BLACK}Filtro:
@@ -617,8 +619,8 @@ STR_GRAPH_CARGO_DELIVERED_CAPTION                               :{WHITE}Unità d
 STR_GRAPH_COMPANY_PERFORMANCE_RATINGS_CAPTION                   :{WHITE}Valutazione prestazioni compagnie (massima valutazione=1000)
 STR_GRAPH_COMPANY_VALUES_CAPTION                                :{WHITE}Grafico del valore aziendale
 
+
 STR_GRAPH_CARGO_PAYMENT_RATES_CAPTION                           :{WHITE}Tariffe di pagamento carichi
-STR_GRAPH_CARGO_PAYMENT_RATES_X_LABEL                           :{TINY_FONT}{BLACK}Giorni di viaggio
 STR_GRAPH_CARGO_PAYMENT_RATES_TITLE                             :{TINY_FONT}{BLACK}Pagamento per la consegna di 10 unità (o 10.000 litri) di carico alla distanza di 20 caselle
 STR_GRAPH_CARGO_ENABLE_ALL                                      :{TINY_FONT}{BLACK}Abilita tutti
 STR_GRAPH_CARGO_DISABLE_ALL                                     :{TINY_FONT}{BLACK}Disabilita tutti
@@ -1079,6 +1081,9 @@ STR_GAME_OPTIONS_BASE_MUSIC                                     :{BLACK}Pacchett
 STR_GAME_OPTIONS_BASE_MUSIC_TOOLTIP                             :{BLACK}Seleziona il pacchetto musicale di base da utilizzare
 STR_GAME_OPTIONS_BASE_MUSIC_DESCRIPTION_TOOLTIP                 :{BLACK}Informazioni aggiuntive sul pacchetto musicale di base
 
+
+
+
 STR_BASESET_STATUS                                              :{STRING} {RED}({NUM} file{P "" s} mancant{P e i}/corrott{P o i})
 
 STR_ERROR_RESOLUTION_LIST_FAILED                                :{WHITE}Errore nel recupero della lista delle risoluzioni supportate
@@ -1484,6 +1489,8 @@ STR_CONFIG_SETTING_WARN_INCOME_LESS_HELPTEXT                    :Se abilitata, v
 
 STR_CONFIG_SETTING_NEVER_EXPIRE_VEHICLES                        :I veicoli non diventano mai obsoleti: {STRING}
 STR_CONFIG_SETTING_NEVER_EXPIRE_VEHICLES_HELPTEXT               :Se abilitata, dopo la loro introduzione, tutti i tipi di veicoli rimarranno sempre disponibili.
+
+###length 2
 
 STR_CONFIG_SETTING_AUTORENEW_VEHICLE                            :Rinnova un veicolo quando diventa vecchio: {STRING}
 STR_CONFIG_SETTING_AUTORENEW_VEHICLE_HELPTEXT                   :Se abilitata, un veicolo vicino alla sua età massima viene automaticamente sostituito quando si verificano le condizioni richieste per il rinnovo
@@ -3676,10 +3683,8 @@ STR_GOAL_QUESTION_BUTTON_CLOSE                                  :Chiudi
 # Subsidies window
 STR_SUBSIDIES_CAPTION                                           :{WHITE}Sussidi
 STR_SUBSIDIES_OFFERED_TITLE                                     :{BLACK}Sussidi offerti per la realizzazione di servizi:
-STR_SUBSIDIES_OFFERED_FROM_TO                                   :{ORANGE}{STRING} da {STRING} a {STRING}{YELLOW} (entro {DATE_SHORT})
 STR_SUBSIDIES_NONE                                              :{ORANGE}- Nessuno -
 STR_SUBSIDIES_SUBSIDISED_TITLE                                  :{BLACK}Servizi già sovvenzionati:
-STR_SUBSIDIES_SUBSIDISED_FROM_TO                                :{ORANGE}{STRING} da {STRING} a {STRING}{YELLOW} ({COMPANY}{YELLOW}, fino al {DATE_SHORT})
 STR_SUBSIDIES_TOOLTIP_CLICK_ON_SERVICE_TO_CENTER                :{BLACK}Fare clic su un servizio per centrare la visuale principale sull'industria o città. CTRL+clic mostra l'industria/città in una mini visuale
 
 # Story book window
@@ -4357,9 +4362,9 @@ STR_VEHICLE_DETAILS_ROAD_VEHICLE_RENAME                         :{BLACK}Rinomina
 STR_VEHICLE_DETAILS_SHIP_RENAME                                 :{BLACK}Rinomina la nave
 STR_VEHICLE_DETAILS_AIRCRAFT_RENAME                             :{BLACK}Rinomina l'aeromobile
 
-STR_VEHICLE_INFO_AGE_RUNNING_COST_YR                            :{BLACK}Età: {LTBLUE}{STRING}{BLACK}   Costo di esercizio: {LTBLUE}{CURRENCY_LONG}/anno
 STR_VEHICLE_INFO_AGE                                            :{COMMA} ann{P o i} ({COMMA})
 STR_VEHICLE_INFO_AGE_RED                                        :{RED}{COMMA} ann{P o i} ({COMMA})
+STR_VEHICLE_INFO_AGE_RUNNING_COST_YR                            :{BLACK}Età: {LTBLUE}{STRING}{BLACK}   Costo di esercizio: {LTBLUE}{CURRENCY_LONG}/anno
 
 STR_VEHICLE_INFO_MAX_SPEED                                      :{BLACK}Velocità max.: {LTBLUE}{VELOCITY}
 STR_VEHICLE_INFO_MAX_SPEED_TYPE                                 :{BLACK}Velocità max.: {LTBLUE}{VELOCITY} {BLACK}Tipo aeromobile: {LTBLUE}{STRING}
@@ -4379,14 +4384,11 @@ STR_VEHICLE_INFO_CAPACITY_CAPACITY                              :{BLACK}Capacit�
 
 STR_VEHICLE_INFO_FEEDER_CARGO_VALUE                             :{BLACK}Crediti di trasferimento: {LTBLUE}{CURRENCY_LONG}
 
-STR_VEHICLE_DETAILS_SERVICING_INTERVAL_DAYS                     :{BLACK}Manutenzione ogni: {LTBLUE}{COMMA}{NBSP}giorni{BLACK}   Ultima volta: {LTBLUE}{DATE_LONG}
-STR_VEHICLE_DETAILS_SERVICING_INTERVAL_PERCENT                  :{BLACK}Intervallo manutenzione: {LTBLUE}{COMMA}%{BLACK}   Ultima il: {LTBLUE}{DATE_LONG}
 STR_VEHICLE_DETAILS_INCREASE_SERVICING_INTERVAL_TOOLTIP         :{BLACK}Aumenta l'intervallo di manutenzione di 10. CTRL+clic lo aumenta di 5.
 STR_VEHICLE_DETAILS_DECREASE_SERVICING_INTERVAL_TOOLTIP         :{BLACK}Riduce l'intervallo di manutenzione di 10. CTRL+clic lo riduce di 5.
 
 STR_SERVICE_INTERVAL_DROPDOWN_TOOLTIP                           :{BLACK}Cambia il tipo di intervallo di manutenzione
 STR_VEHICLE_DETAILS_DEFAULT                                     :Predefinito
-STR_VEHICLE_DETAILS_DAYS                                        :Giorni
 STR_VEHICLE_DETAILS_PERCENT                                     :Percentuale
 
 ###length VEHICLE_TYPES

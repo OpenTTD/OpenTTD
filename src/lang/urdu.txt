@@ -219,6 +219,9 @@ STR_UNITS_FORCE_SI                                              :{NBSP}{DECIMAL}
 STR_UNITS_HEIGHT_IMPERIAL                                       :{NBSP}{DECIMAL} فٹ
 STR_UNITS_HEIGHT_SI                                             :{NBSP}{DECIMAL} میٹر
 
+# Time units used in string control characters
+
+
 
 # Common window strings
 STR_LIST_FILTER_OSKTITLE                                        :{BLACK} چھان کے الفاظ درج کیجیئے
@@ -544,8 +547,8 @@ STR_GRAPH_CARGO_DELIVERED_CAPTION                               :{WHITE} شما�
 STR_GRAPH_COMPANY_PERFORMANCE_RATINGS_CAPTION                   :{WHITE} کمپنی کی کارکردگی کی درج بندی (حدِ درجھ = 1000)
 STR_GRAPH_COMPANY_VALUES_CAPTION                                :{WHITE}کمپنی کی مالیت
 
+
 STR_GRAPH_CARGO_PAYMENT_RATES_CAPTION                           :{WHITE} سامان کی ادایگی کا تناسب
-STR_GRAPH_CARGO_PAYMENT_RATES_X_LABEL                           :{TINY_FONT}{BLACK} حرکت میں ایام
 STR_GRAPH_CARGO_PAYMENT_RATES_TITLE                             :{TINY_FONT}{BLACK} سامان کی دس اکائیات (یآ 10،000 لیٹر)، 20 چکور تک لے جانے کی ادائیگی
 STR_GRAPH_CARGO_ENABLE_ALL                                      :{TINY_FONT} {BLACK} سب کو قابل کیجیئے
 STR_GRAPH_CARGO_DISABLE_ALL                                     :{TINY_FONT} {BLACK} سب کو نا کارہ کیجیئے
@@ -822,7 +825,12 @@ STR_NEWS_NEW_VEHICLE_NOW_AVAILABLE_WITH_TYPE                    :{BLACK}نئی {
 
 STR_NEWS_OFFER_OF_SUBSIDY_EXPIRED                               :{BIG_FONT}{BLACK}امداد کی پیشکش کی معیاد ختم:{}{}{STRING} {STRING} سے {STRING} تک اب کوئی امداد نہیں ملے گی
 STR_NEWS_SUBSIDY_WITHDRAWN_SERVICE                              :{BIG_FONT}{BLACK}امداد ختم:{}{}{STRING} {STRING} سے {STRING} تک کئی گئی خدمت کی اب کوئی امداد نہیں ملے گی
+STR_NEWS_SERVICE_SUBSIDY_OFFERED                                :{BIG_FONT}{BLACK}خدمات پر امداد کی پیشکش:{}{}پہلی خدمت {STRING} جو {STRING} سے {STRING} تک ہو، پر ایک سال تک امدام ملے گی
 ###length 4
+STR_NEWS_SERVICE_SUBSIDY_AWARDED_HALF                           :{BIG_FONT}{BLACK}خدمات پر{STRING} کو امداد دے دی گئی!{}{}{STRING} {STRING} سے {STRING} تک دی جانے والی خدمات پر اگلے سال 50٪ زیادہ ملیں گے
+STR_NEWS_SERVICE_SUBSIDY_AWARDED_DOUBLE                         :{BIG_FONT}{BLACK}خدمات پر{STRING} کو امداد دے دی گئی!{}{}{STRING} {STRING} سے {STRING} تک دی جانے والی خدمات پر اگلے سال دُگنے پیسے ملیں گے
+STR_NEWS_SERVICE_SUBSIDY_AWARDED_TRIPLE                         :{BIG_FONT}{BLACK}خدمات پر{STRING} کو امداد دے دی گئی!{}{}{STRING} {STRING} سے {STRING} تک دی جانے والی خدمات پر اگلے سال تین گُنا پیسے ملیں گے
+STR_NEWS_SERVICE_SUBSIDY_AWARDED_QUADRUPLE                      :{BIG_FONT}{BLACK}خدمات پر{STRING} کو امداد دے دی گئی!{}{}{STRING} {STRING} سے {STRING} تک دی جانے والی خدمات پر اگلے سال چار گُنا پیسے ملیں گے
 
 STR_NEWS_ROAD_REBUILDING                                        :{BIG_FONT}{BLACK}{TOWN} میں ٹریفک کا بُرا حال!{}{}سڑکیں دوبارہ بنوانے کے پیسے {STRING} نے دئیے۔ اس کی وجہ سے اگلے 6 ماہ مشکل رہے گی
 
@@ -915,6 +923,9 @@ STR_GAME_OPTIONS_BASE_SFX_DESCRIPTION_TOOLTIP                   :{BLACK}بُنی
 STR_GAME_OPTIONS_BASE_MUSIC                                     :{BLACK}بُنیادی موسیقی سیٹ
 STR_GAME_OPTIONS_BASE_MUSIC_TOOLTIP                             :{BLACK}بُنیادی موسیقی سیٹ اختیار کریں
 STR_GAME_OPTIONS_BASE_MUSIC_DESCRIPTION_TOOLTIP                 :{BLACK}بُنیادی موسیقی سیٹ کے بارے میں اضافی معلومات
+
+
+
 
 
 STR_ERROR_FULLSCREEN_FAILED                                     :{WHITE}مُکمل اسکرین موڈ ناکام ہوگیا
@@ -1158,6 +1169,8 @@ STR_CONFIG_SETTING_ORDER_REVIEW_ON                              :تمام گاڑ
 STR_CONFIG_SETTING_WARN_INCOME_LESS                             :گاڑی کو نقصان کی صورت میں انتباہ کیجئیے: {STRING}
 
 STR_CONFIG_SETTING_NEVER_EXPIRE_VEHICLES                        :گاڑیوں کی معیاد کبھی ختم نہ ہو: {STRING}
+
+###length 2
 
 STR_CONFIG_SETTING_AUTORENEW_VEHICLE                            :گاڑی پرانی ہونے کی صورت میں خودکار طریقے سے بدل دیں: {STRING}
 

@@ -218,6 +218,9 @@ STR_UNITS_FORCE_SI                                              :{DECIMAL} kN
 STR_UNITS_HEIGHT_IMPERIAL                                       :{DECIMAL} ft
 STR_UNITS_HEIGHT_SI                                             :{DECIMAL} m
 
+# Time units used in string control characters
+
+
 
 # Common window strings
 STR_LIST_FILTER_OSKTITLE                                        :{BLACK}Внесете филтер низа
@@ -535,8 +538,8 @@ STR_GRAPH_CARGO_DELIVERED_CAPTION                               :{WHITE}Един
 STR_GRAPH_COMPANY_PERFORMANCE_RATINGS_CAPTION                   :{WHITE}Перформанси на компанијата рејтингот (максимум рејтинг = 1000)
 STR_GRAPH_COMPANY_VALUES_CAPTION                                :{WHITE}компанијата вредности
 
+
 STR_GRAPH_CARGO_PAYMENT_RATES_CAPTION                           :{WHITE}Карго плаќање цени
-STR_GRAPH_CARGO_PAYMENT_RATES_X_LABEL                           :{TINY_FONT}{BLACK}Денови во транзит
 STR_GRAPH_CARGO_PAYMENT_RATES_TITLE                             :{TINY_FONT}{BLACK}Плаќање за доставување 10 единици (или 10.000 литри) на товар на растојание од 20 квадрати
 STR_GRAPH_CARGO_ENABLE_ALL                                      :{TINY_FONT}{BLACK}им овозможи на сите
 STR_GRAPH_CARGO_DISABLE_ALL                                     :{TINY_FONT}{BLACK}Оневозможи ги сите
@@ -804,6 +807,9 @@ STR_GAME_OPTIONS_CAPTION                                        :{WHITE}Опци
 
 
 
+
+
+
 # Custom currency window
 
 
@@ -918,6 +924,8 @@ STR_CONFIG_SETTING_INFRASTRUCTURE_MAINTENANCE                   :Инфраст�
 ###length 3
 
 
+
+###length 2
 
 
 ###length 2
@@ -1831,7 +1839,6 @@ STR_VEHICLE_INFO_AGE_RED                                        :{RED}{COMMA} г
 
 
 STR_SERVICE_INTERVAL_DROPDOWN_TOOLTIP                           :{BLACK}Смени тип на интервалот за сервисирање
-STR_VEHICLE_DETAILS_DAYS                                        :Дена
 STR_VEHICLE_DETAILS_PERCENT                                     :Процент
 
 ###length VEHICLE_TYPES

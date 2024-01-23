@@ -214,7 +214,6 @@ STR_COLOUR_SECONDARY_SAME_AS_PRIMARY                            :La fel ca opți
 STR_UNITS_VELOCITY_IMPERIAL                                     :{DECIMAL} mph
 STR_UNITS_VELOCITY_METRIC                                       :{DECIMAL} km/h
 STR_UNITS_VELOCITY_SI                                           :{DECIMAL} m/s
-STR_UNITS_VELOCITY_GAMEUNITS                                    :{DECIMAL}{NBSP}dale/zi
 STR_UNITS_VELOCITY_KNOTS                                        :{DECIMAL}{NBSP}Noduri
 
 STR_UNITS_POWER_IMPERIAL                                        :{DECIMAL}cp
@@ -254,6 +253,9 @@ STR_UNITS_FORCE_SI                                              :{DECIMAL} kN
 STR_UNITS_HEIGHT_IMPERIAL                                       :{DECIMAL} ft
 STR_UNITS_HEIGHT_METRIC                                         :{DECIMAL} m
 STR_UNITS_HEIGHT_SI                                             :{DECIMAL} m
+
+# Time units used in string control characters
+
 
 
 # Common window strings
@@ -612,8 +614,8 @@ STR_GRAPH_CARGO_DELIVERED_CAPTION                               :{WHITE}Unităț
 STR_GRAPH_COMPANY_PERFORMANCE_RATINGS_CAPTION                   :{WHITE}Evaluarea performanțelor companiilor (maxim=1000)
 STR_GRAPH_COMPANY_VALUES_CAPTION                                :{WHITE}Graficul valorii companiilor
 
+
 STR_GRAPH_CARGO_PAYMENT_RATES_CAPTION                           :{WHITE}Prețurile transportului de mărfuri
-STR_GRAPH_CARGO_PAYMENT_RATES_X_LABEL                           :{TINY_FONT}{BLACK}Zile în tranzit
 STR_GRAPH_CARGO_PAYMENT_RATES_TITLE                             :{TINY_FONT}{BLACK}Plata pentru livrarea a 10 unități (sau 10.000 de litri) de marfă pe o distanță de 20 de pătrățele
 STR_GRAPH_CARGO_ENABLE_ALL                                      :{TINY_FONT}{BLACK}Activează tot
 STR_GRAPH_CARGO_DISABLE_ALL                                     :{TINY_FONT}{BLACK}Dezactivează tot
@@ -1080,6 +1082,9 @@ STR_GAME_OPTIONS_BASE_MUSIC_TOOLTIP                             :{BLACK}Selecta�
 STR_GAME_OPTIONS_BASE_MUSIC_DESCRIPTION_TOOLTIP                 :{BLACK}Informații adiționale despre setul de muzică de bază
 
 
+
+
+
 STR_ERROR_RESOLUTION_LIST_FAILED                                :{WHITE}Nu s-a putut obține lista de rezoluții suportate
 STR_ERROR_FULLSCREEN_FAILED                                     :{WHITE}Comutarea pe întreg ecranul a eșuat
 
@@ -1449,6 +1454,8 @@ STR_CONFIG_SETTING_WARN_INCOME_LESS_HELPTEXT                    :După activare,
 
 STR_CONFIG_SETTING_NEVER_EXPIRE_VEHICLES                        :Vehiculele nu expiră niciodată: {STRING}
 STR_CONFIG_SETTING_NEVER_EXPIRE_VEHICLES_HELPTEXT               :După activare, toate modelele de vehicule rămân disponibile permanent după introducerea lor
+
+###length 2
 
 STR_CONFIG_SETTING_AUTORENEW_VEHICLE                            :Înnoire automată pentru vehiculele învechite: {STRING}
 STR_CONFIG_SETTING_AUTORENEW_VEHICLE_HELPTEXT                   :După activare, orice vehicul care este învechit va fi înnoit automat când condițiile de înlocuire automată sunt îndeplinite
@@ -3648,10 +3655,8 @@ STR_GOAL_QUESTION_BUTTON_CLOSE                                  :Închide
 # Subsidies window
 STR_SUBSIDIES_CAPTION                                           :{WHITE}Subvenții (F6)
 STR_SUBSIDIES_OFFERED_TITLE                                     :{BLACK}Subvenții disponibile:
-STR_SUBSIDIES_OFFERED_FROM_TO                                   :{ORANGE}{STRING} de la {STRING} la {STRING}{YELLOW} (după {DATE_SHORT})
 STR_SUBSIDIES_NONE                                              :{ORANGE} - nici una -
 STR_SUBSIDIES_SUBSIDISED_TITLE                                  :{BLACK}Subvenții acordate la ora actuală:
-STR_SUBSIDIES_SUBSIDISED_FROM_TO                                :{ORANGE}- {STRING} de la {STRING} la {STRING}{YELLOW} ({COMPANY}{YELLOW}, până în {DATE_SHORT})
 STR_SUBSIDIES_TOOLTIP_CLICK_ON_SERVICE_TO_CENTER                :{BLACK}Click pe serviciu pentru a centra imaginea pe industrie/oraș. Ctrl+Click deshide o fereastră cu locația industriei/orașului
 
 # Story book window
@@ -4329,9 +4334,9 @@ STR_VEHICLE_DETAILS_ROAD_VEHICLE_RENAME                         :{BLACK}Numele a
 STR_VEHICLE_DETAILS_SHIP_RENAME                                 :{BLACK}Denumește această navă
 STR_VEHICLE_DETAILS_AIRCRAFT_RENAME                             :{BLACK}Denumește aeronava
 
-STR_VEHICLE_INFO_AGE_RUNNING_COST_YR                            :{BLACK}Vechime: {LTBLUE}{STRING}{BLACK}   Mentenanță: {LTBLUE}{CURRENCY_LONG}/an
 STR_VEHICLE_INFO_AGE                                            :{COMMA} {P an ani "de ani"} ({COMMA})
 STR_VEHICLE_INFO_AGE_RED                                        :{RED}{COMMA} {P an ani "de ani"} ({COMMA})
+STR_VEHICLE_INFO_AGE_RUNNING_COST_YR                            :{BLACK}Vechime: {LTBLUE}{STRING}{BLACK}   Mentenanță: {LTBLUE}{CURRENCY_LONG}/an
 
 STR_VEHICLE_INFO_MAX_SPEED                                      :{BLACK}Viteză max.: {LTBLUE}{VELOCITY}
 STR_VEHICLE_INFO_MAX_SPEED_TYPE                                 :{BLACK}Viteză max.: {LTBLUE}{VELOCITY} {BLACK}Tip de aeronavă: {LTBLUE}{STRING}
@@ -4351,14 +4356,11 @@ STR_VEHICLE_INFO_CAPACITY_CAPACITY                              :{BLACK}Capacita
 
 STR_VEHICLE_INFO_FEEDER_CARGO_VALUE                             :{BLACK}Transferă Credit: {LTBLUE}{CURRENCY_LONG}
 
-STR_VEHICLE_DETAILS_SERVICING_INTERVAL_DAYS                     :{BLACK}Intervalul pentru întreținere: {LTBLUE}{COMMA}zile{BLACK}   Ultima întreținere: {LTBLUE}{DATE_LONG}
-STR_VEHICLE_DETAILS_SERVICING_INTERVAL_PERCENT                  :{BLACK}Intervalul de service: {LTBLUE}{COMMA}%{BLACK}   Ultimul service: {LTBLUE}{DATE_LONG}
 STR_VEHICLE_DETAILS_INCREASE_SERVICING_INTERVAL_TOOLTIP         :{BLACK}Mărește intervalul de service cu 10. Ctrl+click mărește intervalul de service cu 5
 STR_VEHICLE_DETAILS_DECREASE_SERVICING_INTERVAL_TOOLTIP         :{BLACK}Micșorează intervalul de service cu 10. Ctrl+Click micșorează intervalul de service cu 5
 
 STR_SERVICE_INTERVAL_DROPDOWN_TOOLTIP                           :{BLACK}Schimbă tipul intervalului de întreținere
 STR_VEHICLE_DETAILS_DEFAULT                                     :Standard
-STR_VEHICLE_DETAILS_DAYS                                        :Zile
 STR_VEHICLE_DETAILS_PERCENT                                     :Procent
 
 ###length VEHICLE_TYPES

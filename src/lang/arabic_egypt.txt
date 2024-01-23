@@ -196,7 +196,6 @@ STR_COLOUR_WHITE                                                :ابيض
 STR_UNITS_VELOCITY_IMPERIAL                                     :{DECIMAL}{NBSP}ميل/س
 STR_UNITS_VELOCITY_METRIC                                       :{DECIMAL}{NBSP}كم/س
 STR_UNITS_VELOCITY_SI                                           :{DECIMAL}{NBSP}م/ث
-STR_UNITS_VELOCITY_GAMEUNITS                                    :{DECIMAL}{NBSP}مربعات/ اليوم
 
 STR_UNITS_POWER_IMPERIAL                                        :{DECIMAL}{NBSP}حصان
 STR_UNITS_POWER_METRIC                                          :{DECIMAL}{NBSP}حصان
@@ -228,6 +227,9 @@ STR_UNITS_FORCE_SI                                              :{DECIMAL}{NBSP}
 STR_UNITS_HEIGHT_IMPERIAL                                       :{DECIMAL}{NBSP} قدم
 STR_UNITS_HEIGHT_METRIC                                         :{DECIMAL}{NBSP}م
 STR_UNITS_HEIGHT_SI                                             :{DECIMAL}{NBSP} متر
+
+# Time units used in string control characters
+
 
 
 # Common window strings
@@ -574,8 +576,8 @@ STR_GRAPH_CARGO_DELIVERED_CAPTION                               :{WHITE}عدد �
 STR_GRAPH_COMPANY_PERFORMANCE_RATINGS_CAPTION                   :{WHITE}تقييم الأداء العام للشركة ---- اقصى اداء = 1000
 STR_GRAPH_COMPANY_VALUES_CAPTION                                :{WHITE}قيمة الشركة
 
+
 STR_GRAPH_CARGO_PAYMENT_RATES_CAPTION                           :{WHITE}النسبة التنازلية لقيمة نقل البضائع
-STR_GRAPH_CARGO_PAYMENT_RATES_X_LABEL                           :{TINY_FONT}{BLACK}يوم في النقل
 STR_GRAPH_CARGO_PAYMENT_RATES_TITLE                             :{TINY_FONT}{BLACK}الدخل من نقل 10 وحدات (او 10,000 لتر) من البضاعة مسافة 20 مربع
 STR_GRAPH_CARGO_ENABLE_ALL                                      :{TINY_FONT}{BLACK}فعل الكل
 STR_GRAPH_CARGO_DISABLE_ALL                                     :{TINY_FONT}{BLACK}اوقف الكل
@@ -979,6 +981,9 @@ STR_GAME_OPTIONS_BASE_MUSIC_TOOLTIP                             :{BLACK}اختر
 STR_GAME_OPTIONS_BASE_MUSIC_DESCRIPTION_TOOLTIP                 :{BLACK}معلومات اضافية عن الموسيقى الاساسية
 
 
+
+
+
 STR_ERROR_RESOLUTION_LIST_FAILED                                :{WHITE}فشل في استرداد قائمة الدقة المدعومة
 STR_ERROR_FULLSCREEN_FAILED                                     :{WHITE}فشل تشغيل نمط الشاشة الكاملة
 
@@ -1260,6 +1265,8 @@ STR_CONFIG_SETTING_WARN_INCOME_LESS                             :حذر عندم
 STR_CONFIG_SETTING_WARN_INCOME_LESS_HELPTEXT                    :عند التمكين ، يتم إرسال رسالة إخبارية عندما لا تحقق السيارة أي ربح خلال سنة تقويمية واحدة
 
 STR_CONFIG_SETTING_NEVER_EXPIRE_VEHICLES                        :المركبات لا تنتهي صلاحيتها ابدا : {STRING}
+
+###length 2
 
 STR_CONFIG_SETTING_AUTORENEW_VEHICLE                            :جدد العربات عندما تصبح قديمة : {STRING}
 STR_CONFIG_SETTING_AUTORENEW_VEHICLE_HELPTEXT                   :عند التمكين ، يتم استبدال العربة التي اقتربت من نهاية عمرها عند اكتمال شروط التجديد
@@ -3025,10 +3032,8 @@ STR_GOAL_QUESTION_BUTTON_SURRENDER                              :استسلام
 # Subsidies window
 STR_SUBSIDIES_CAPTION                                           :{WHITE}العروض
 STR_SUBSIDIES_OFFERED_TITLE                                     :{BLACK}العروض المتاحة للخدمة:
-STR_SUBSIDIES_OFFERED_FROM_TO                                   :{ORANGE}{STRING} من {STRING} الى {STRING}{YELLOW} - حتى {DATE_SHORT} -
 STR_SUBSIDIES_NONE                                              :{ORANGE}بدون
 STR_SUBSIDIES_SUBSIDISED_TITLE                                  :{BLACK}العروض المأخوذة
-STR_SUBSIDIES_SUBSIDISED_FROM_TO                                :{ORANGE}{STRING} من {STRING} الى {STRING}{YELLOW} - {COMPANY}{YELLOW}, حتى {DATE_SHORT}-
 STR_SUBSIDIES_TOOLTIP_CLICK_ON_SERVICE_TO_CENTER                :{BLACK}اضغط على الخدمة لتوسيط الخريطة على المصنع/المدينة. اضغط + كنترول لفتح شاشة عرض جديدة للمدينة.
 
 # Story book window
@@ -3620,9 +3625,9 @@ STR_VEHICLE_DETAILS_ROAD_VEHICLE_RENAME                         :{BLACK}تسمي
 STR_VEHICLE_DETAILS_SHIP_RENAME                                 :{BLACK}تسمية السفينة
 STR_VEHICLE_DETAILS_AIRCRAFT_RENAME                             :{BLACK} تسمية الطائرة
 
-STR_VEHICLE_INFO_AGE_RUNNING_COST_YR                            :{BLACK} العمر {LTBLUE}{STRING}{BLACK} تكلفة التشغيل {LTBLUE}{CURRENCY_LONG} / سنة
 STR_VEHICLE_INFO_AGE                                            :{COMMA}سنة ({COMMA})
 STR_VEHICLE_INFO_AGE_RED                                        :{RED}{COMMA}سنة ({COMMA})
+STR_VEHICLE_INFO_AGE_RUNNING_COST_YR                            :{BLACK} العمر {LTBLUE}{STRING}{BLACK} تكلفة التشغيل {LTBLUE}{CURRENCY_LONG} / سنة
 
 STR_VEHICLE_INFO_MAX_SPEED                                      :{BLACK} السرعة القصوى {LTBLUE}{VELOCITY}
 STR_VEHICLE_INFO_WEIGHT_POWER_MAX_SPEED                         :{BLACK} الوزن {LTBLUE}{WEIGHT_SHORT} {BLACK} الطاقة {LTBLUE}{POWER}{BLACK} السرعى القصوى {LTBLUE}{VELOCITY}
@@ -3639,13 +3644,10 @@ STR_VEHICLE_INFO_CAPACITY_CAPACITY                              :{BLACK} الس�
 
 STR_VEHICLE_INFO_FEEDER_CARGO_VALUE                             :{BLACK}مقدار التحويل: {LTBLUE}{CURRENCY_LONG}
 
-STR_VEHICLE_DETAILS_SERVICING_INTERVAL_DAYS                     :{BLACK}فترات الصيانة: {LTBLUE}{COMMA}{NBSP} يوم {BLACK} اخر صيانة: {LTBLUE}{DATE_LONG}
-STR_VEHICLE_DETAILS_SERVICING_INTERVAL_PERCENT                  :{BLACK}فترات الصيانة: {LTBLUE}{COMMA}% {BLACK}    الصيانة الأخيرة: {LTBLUE}{DATE_LONG}
 STR_VEHICLE_DETAILS_INCREASE_SERVICING_INTERVAL_TOOLTIP         :{BLACK}زيادة فترات الصيانة بقدر 10. ومع مفتاح كنترول بمقدار 5.
 STR_VEHICLE_DETAILS_DECREASE_SERVICING_INTERVAL_TOOLTIP         :{BLACK} انقاص فترات الصيانة بمعدل 10. Ctrl+ الضغط الانقاص بمعدل 5.
 
 STR_SERVICE_INTERVAL_DROPDOWN_TOOLTIP                           :{BLACK}تغيير نوع الفاصل الزمني للصيانة
-STR_VEHICLE_DETAILS_DAYS                                        :الأيام
 STR_VEHICLE_DETAILS_PERCENT                                     :النسبة المئوية
 
 ###length VEHICLE_TYPES

@@ -214,7 +214,6 @@ STR_COLOUR_SECONDARY_SAME_AS_PRIMARY                            :Samme som Prim�
 STR_UNITS_VELOCITY_IMPERIAL                                     :{DECIMAL} miles/t
 STR_UNITS_VELOCITY_METRIC                                       :{DECIMAL} km/t
 STR_UNITS_VELOCITY_SI                                           :{DECIMAL} m/s
-STR_UNITS_VELOCITY_GAMEUNITS                                    :{DECIMAL}{NBSP}felter/dag
 STR_UNITS_VELOCITY_KNOTS                                        :{DECIMAL}{NBSP}knob
 
 STR_UNITS_POWER_IMPERIAL                                        :{DECIMAL}hk
@@ -255,9 +254,12 @@ STR_UNITS_HEIGHT_IMPERIAL                                       :{DECIMAL} fod
 STR_UNITS_HEIGHT_METRIC                                         :{DECIMAL} m
 STR_UNITS_HEIGHT_SI                                             :{DECIMAL} m
 
+# Time units used in string control characters
 STR_UNITS_DAYS                                                  :{COMMA}{NBSP}dag{P "" s}
 STR_UNITS_SECONDS                                               :{COMMA}{NBSP}sekund{P "" er}
 STR_UNITS_TICKS                                                 :{COMMA}{NBSP}tick{P "" s}
+
+
 
 # Common window strings
 STR_LIST_FILTER_TITLE                                           :{BLACK}Filtrer udtryk:
@@ -615,8 +617,8 @@ STR_GRAPH_CARGO_DELIVERED_CAPTION                               :{WHITE}Aflevere
 STR_GRAPH_COMPANY_PERFORMANCE_RATINGS_CAPTION                   :{WHITE}Selskabets præstationsrang (maksimal rang=1000)
 STR_GRAPH_COMPANY_VALUES_CAPTION                                :{WHITE}Selskabsværdier
 
+
 STR_GRAPH_CARGO_PAYMENT_RATES_CAPTION                           :{WHITE}Lastudbetalingsrater
-STR_GRAPH_CARGO_PAYMENT_RATES_X_LABEL                           :{TINY_FONT}{BLACK}Antal dage undervejs
 STR_GRAPH_CARGO_PAYMENT_RATES_TITLE                             :{TINY_FONT}{BLACK}Betaling for at transportere 10 enheder (eller 10,000 liter) last en distance på 20 enheder.
 STR_GRAPH_CARGO_ENABLE_ALL                                      :{TINY_FONT}{BLACK}Slå alt til
 STR_GRAPH_CARGO_DISABLE_ALL                                     :{TINY_FONT}{BLACK}Slå alt fra
@@ -1082,6 +1084,9 @@ STR_GAME_OPTIONS_BASE_MUSIC                                     :{BLACK}Basis-mu
 STR_GAME_OPTIONS_BASE_MUSIC_TOOLTIP                             :{BLACK}Vælg basismusik-sæt
 STR_GAME_OPTIONS_BASE_MUSIC_DESCRIPTION_TOOLTIP                 :{BLACK}Yderligere information om basismusik-sættet
 
+
+
+
 STR_BASESET_STATUS                                              :{STRING} {RED}({NUM} manglende/beskadiget fil{P "" s})
 
 STR_ERROR_RESOLUTION_LIST_FAILED                                :{WHITE}Det lykkedes ikke at hente en liste over understøttede opløsninger
@@ -1454,6 +1459,8 @@ STR_CONFIG_SETTING_WARN_INCOME_LESS_HELPTEXT                    :Når aktiveret,
 
 STR_CONFIG_SETTING_NEVER_EXPIRE_VEHICLES                        :Køretøjernes levealder udløber aldrig: {STRING}
 STR_CONFIG_SETTING_NEVER_EXPIRE_VEHICLES_HELPTEXT               :Når aktiveret, forbliver alle biltyper tilgængelige for evigt efter indførelse
+
+###length 2
 
 STR_CONFIG_SETTING_AUTORENEW_VEHICLE                            :Automatisk fornyelse af gamle køretøjer: {STRING}
 STR_CONFIG_SETTING_AUTORENEW_VEHICLE_HELPTEXT                   :Når aktiveret, bliver et køretøjder nærmer sig sin afslutning af livet automatisk udskiftet, når betingelserne er opfyldt
@@ -3653,10 +3660,8 @@ STR_GOAL_QUESTION_BUTTON_CLOSE                                  :Luk
 # Subsidies window
 STR_SUBSIDIES_CAPTION                                           :{WHITE}Tilskudsordninger
 STR_SUBSIDIES_OFFERED_TITLE                                     :{BLACK}Tilskudsordninger i licitation:
-STR_SUBSIDIES_OFFERED_FROM_TO                                   :{ORANGE}{STRING} fra {STRING} til {STRING}{YELLOW} (inden {DATE_SHORT})
 STR_SUBSIDIES_NONE                                              :{ORANGE}- Ingen -
 STR_SUBSIDIES_SUBSIDISED_TITLE                                  :{BLACK}Tilskudsordninger der allerede er vundet:
-STR_SUBSIDIES_SUBSIDISED_FROM_TO                                :{ORANGE}{STRING} fra {STRING} til {STRING}{YELLOW} ({COMPANY}{YELLOW}, indtil {DATE_SHORT})
 STR_SUBSIDIES_TOOLTIP_CLICK_ON_SERVICE_TO_CENTER                :{BLACK}Klik på servicen for at centrere skærmen over industrien/byen. Ctrl+Klik åbner et nyt vindue ved industriens/byens lokalitet.
 
 # Story book window
@@ -4334,9 +4339,9 @@ STR_VEHICLE_DETAILS_ROAD_VEHICLE_RENAME                         :{BLACK}Giv kør
 STR_VEHICLE_DETAILS_SHIP_RENAME                                 :{BLACK}Giv skibet et navn
 STR_VEHICLE_DETAILS_AIRCRAFT_RENAME                             :{BLACK}Navngiv flyet
 
-STR_VEHICLE_INFO_AGE_RUNNING_COST_YR                            :{BLACK}Alder: {LTBLUE}{STRING}{BLACK}   Driftsomkostninger: {LTBLUE}{CURRENCY_LONG}/år
 STR_VEHICLE_INFO_AGE                                            :{COMMA} år ({COMMA})
 STR_VEHICLE_INFO_AGE_RED                                        :{RED}{COMMA} år ({COMMA})
+STR_VEHICLE_INFO_AGE_RUNNING_COST_YR                            :{BLACK}Alder: {LTBLUE}{STRING}{BLACK}   Driftsomkostninger: {LTBLUE}{CURRENCY_LONG}/år
 
 STR_VEHICLE_INFO_MAX_SPEED                                      :{BLACK}Maks. hast.: {LTBLUE}{VELOCITY}
 STR_VEHICLE_INFO_MAX_SPEED_TYPE                                 :{BLACK}Max. hastighed: {LTBLUE}{VELOCITY} {BLACK}Fly type: {LTBLUE}{STRING}
@@ -4356,14 +4361,11 @@ STR_VEHICLE_INFO_CAPACITY_CAPACITY                              :{BLACK}Kapacite
 
 STR_VEHICLE_INFO_FEEDER_CARGO_VALUE                             :{BLACK}Værdi af overført fragt: {LTBLUE}{CURRENCY_LONG}
 
-STR_VEHICLE_DETAILS_SERVICING_INTERVAL_DAYS                     :{BLACK}Serviceinterval: {LTBLUE}{COMMA}dage{BLACK}   Sidste service: {LTBLUE}{DATE_LONG}
-STR_VEHICLE_DETAILS_SERVICING_INTERVAL_PERCENT                  :{BLACK}Serviceinterval: {LTBLUE}{COMMA}%{BLACK}   Sidste service: {LTBLUE}{DATE_LONG}
 STR_VEHICLE_DETAILS_INCREASE_SERVICING_INTERVAL_TOOLTIP         :{BLACK}Forøg serviceintervallet med 10. Ctrl+Klik forøger serviceintervallet med 5
 STR_VEHICLE_DETAILS_DECREASE_SERVICING_INTERVAL_TOOLTIP         :{BLACK}Sænk serviceintervallet med 10. Ctrl+Klik nedsætter serviceintervallet med 5
 
 STR_SERVICE_INTERVAL_DROPDOWN_TOOLTIP                           :{BLACK}Ændre serviceintervallets type
 STR_VEHICLE_DETAILS_DEFAULT                                     :Standard
-STR_VEHICLE_DETAILS_DAYS                                        :Dage
 STR_VEHICLE_DETAILS_PERCENT                                     :Procent
 
 ###length VEHICLE_TYPES

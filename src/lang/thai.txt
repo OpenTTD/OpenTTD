@@ -226,6 +226,9 @@ STR_UNITS_HEIGHT_IMPERIAL                                       :{DECIMAL} ฟ�
 STR_UNITS_HEIGHT_METRIC                                         :{DECIMAL} เมตร
 STR_UNITS_HEIGHT_SI                                             :{DECIMAL} ม.
 
+# Time units used in string control characters
+
+
 
 # Common window strings
 STR_LIST_FILTER_TITLE                                           :{BLACK}คำกรอง:
@@ -568,8 +571,8 @@ STR_GRAPH_CARGO_DELIVERED_CAPTION                               :{WHITE}หน�
 STR_GRAPH_COMPANY_PERFORMANCE_RATINGS_CAPTION                   :{WHITE}คะแนนประสิทธิภาพของบริษัท (คะแนนสูงสุด=1000)
 STR_GRAPH_COMPANY_VALUES_CAPTION                                :{WHITE}มูลค่าทรัพย์สินบริษัท
 
+
 STR_GRAPH_CARGO_PAYMENT_RATES_CAPTION                           :{WHITE}อัตราค่าตอบแทนการขนส่ง
-STR_GRAPH_CARGO_PAYMENT_RATES_X_LABEL                           :{TINY_FONT}{BLACK}จำนวนวันในการเดินทาง
 STR_GRAPH_CARGO_PAYMENT_RATES_TITLE                             :{TINY_FONT}{BLACK}ค่าขนส่งจากการขนส่งสินค้า 10 หน่วย (หรือ 10,000 ลิตร) ต่อระยะทาง 20 ช่องตาราง
 STR_GRAPH_CARGO_ENABLE_ALL                                      :{TINY_FONT}{BLACK}เปิดทั้งหมด
 STR_GRAPH_CARGO_DISABLE_ALL                                     :{TINY_FONT}{BLACK}ปิดทั้งหมด all
@@ -969,6 +972,9 @@ STR_GAME_OPTIONS_BASE_MUSIC_TOOLTIP                             :{BLACK}เล�
 STR_GAME_OPTIONS_BASE_MUSIC_DESCRIPTION_TOOLTIP                 :{BLACK}ข้อมูลเพิ่มเติมเกี่ยวกับชุดเพลงประกอบพื้นฐาน
 
 
+
+
+
 STR_ERROR_FULLSCREEN_FAILED                                     :{WHITE}Fullscreen โหมดล้มเหลว
 
 # Custom currency window
@@ -1311,6 +1317,8 @@ STR_CONFIG_SETTING_WARN_INCOME_LESS_HELPTEXT                    :เมื่อ
 
 STR_CONFIG_SETTING_NEVER_EXPIRE_VEHICLES                        :ยานพาหนะไม่หมดอายุ: {STRING}
 STR_CONFIG_SETTING_NEVER_EXPIRE_VEHICLES_HELPTEXT               :เมื่อเปิดใช้งาน พาหนะทั้งหมดจะยังสามารถซื้อได้ตลอดไปหลังจากหมดช่วงระยะเวลา
+
+###length 2
 
 STR_CONFIG_SETTING_AUTORENEW_VEHICLE                            :เปลี่ยนยานพาหนะใหม่โดยอัตโนมัติเมื่อเก่าเกินไป: {STRING}
 STR_CONFIG_SETTING_AUTORENEW_VEHICLE_HELPTEXT                   :เมื่อเปิดใช้งาน พาหนะที่ใกล้หมดอายุการใช้งาน จะทำการแทนที่ใหม่เอง
@@ -3245,10 +3253,8 @@ STR_GOAL_QUESTION_BUTTON_CLOSE                                  :ปิด
 # Subsidies window
 STR_SUBSIDIES_CAPTION                                           :{WHITE}เงินอุดหนุน
 STR_SUBSIDIES_OFFERED_TITLE                                     :{BLACK}โครงการที่จะได้รับเงินทุนสนับสนุน:
-STR_SUBSIDIES_OFFERED_FROM_TO                                   :{ORANGE}{STRING} จาก {STRING} ถึง {STRING}{YELLOW} (ก่อน {DATE_SHORT})
 STR_SUBSIDIES_NONE                                              :{ORANGE}- ไม่มี -
 STR_SUBSIDIES_SUBSIDISED_TITLE                                  :{BLACK}โครงการที่ได้เงินสนับสนุนเรียบร้อยแล้ว:
-STR_SUBSIDIES_SUBSIDISED_FROM_TO                                :{ORANGE}{STRING} จาก {STRING} ถึง {STRING}{YELLOW} ({COMPANY}{YELLOW}, จนกว่าจะถึง {DATE_SHORT})
 STR_SUBSIDIES_TOOLTIP_CLICK_ON_SERVICE_TO_CENTER                :{BLACK}กดที่บริการเพื่อไปยังจุดกึ่งกลางของจุดเริ่มต้น
 
 # Story book window
@@ -3862,9 +3868,9 @@ STR_VEHICLE_DETAILS_ROAD_VEHICLE_RENAME                         :{BLACK}ชื�
 STR_VEHICLE_DETAILS_SHIP_RENAME                                 :{BLACK}ชื่อ
 STR_VEHICLE_DETAILS_AIRCRAFT_RENAME                             :{BLACK}ชื่อ
 
-STR_VEHICLE_INFO_AGE_RUNNING_COST_YR                            :{BLACK}ใช้งานมาแล้ว: {LTBLUE}{STRING}{BLACK}   ค่าปฏิบัติการ: {LTBLUE}{CURRENCY_LONG}/ปี
 STR_VEHICLE_INFO_AGE                                            :{COMMA} ปี ({COMMA})
 STR_VEHICLE_INFO_AGE_RED                                        :{RED}{COMMA} ปี ({COMMA})
+STR_VEHICLE_INFO_AGE_RUNNING_COST_YR                            :{BLACK}ใช้งานมาแล้ว: {LTBLUE}{STRING}{BLACK}   ค่าปฏิบัติการ: {LTBLUE}{CURRENCY_LONG}/ปี
 
 STR_VEHICLE_INFO_MAX_SPEED                                      :{BLACK}ความเร็วสูงสุด: {LTBLUE}{VELOCITY}
 STR_VEHICLE_INFO_MAX_SPEED_TYPE                                 :{BLACK}ความเร็วสูงสุด: {LTBLUE}{VELOCITY} {BLACK}อากาศยานชนิด: {LTBLUE}{STRING}
@@ -3882,14 +3888,11 @@ STR_VEHICLE_INFO_CAPACITY_CAPACITY                              :{BLACK}บร�
 
 STR_VEHICLE_INFO_FEEDER_CARGO_VALUE                             :{BLACK}รายได้จากการส่งต่อ: {LTBLUE}{CURRENCY_LONG}
 
-STR_VEHICLE_DETAILS_SERVICING_INTERVAL_DAYS                     :{BLACK}เข้าซ่อมบำรุงทุก: {LTBLUE}{COMMA}วัน{BLACK}   ครั้งสุดท้ายเมื่อ: {LTBLUE}{DATE_LONG}
-STR_VEHICLE_DETAILS_SERVICING_INTERVAL_PERCENT                  :{BLACK}เข้าซ่อมบำรุงเมื่อประสิทธิภาพ: {LTBLUE}{COMMA}%{BLACK}   เข้าซ่อมบำรุงครั้งสุดท้ายเมื่อ: {LTBLUE}{DATE_LONG}
 STR_VEHICLE_DETAILS_INCREASE_SERVICING_INTERVAL_TOOLTIP         :{BLACK}เพิ่มระยะการซ่อมบำรุงครั้งละ 10 . Ctrl+Click เพิ่มทีละ5
 STR_VEHICLE_DETAILS_DECREASE_SERVICING_INTERVAL_TOOLTIP         :{BLACK}ลดระยะการซ่อมบำรุงครั้งละ 10 . Ctrl+Click ลดทีละ5
 
 STR_SERVICE_INTERVAL_DROPDOWN_TOOLTIP                           :{BLACK}ปรับเปลี่ยนประเภทการวัดค่าที่ควรซ่อมบำรุง
 STR_VEHICLE_DETAILS_DEFAULT                                     :ค่าเริ่มต้น
-STR_VEHICLE_DETAILS_DAYS                                        :วัน
 STR_VEHICLE_DETAILS_PERCENT                                     :เปอร์เซนต์
 
 ###length VEHICLE_TYPES

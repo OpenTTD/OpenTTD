@@ -199,7 +199,6 @@ STR_COLOUR_RANDOM                                               :Tilfeldig
 STR_UNITS_VELOCITY_IMPERIAL                                     :{DECIMAL}{NBSP}mi/t
 STR_UNITS_VELOCITY_METRIC                                       :{DECIMAL}{NBSP}km/t
 STR_UNITS_VELOCITY_SI                                           :{DECIMAL}{NBSP}m/s
-STR_UNITS_VELOCITY_GAMEUNITS                                    :{DECIMAL}{NBSP}ruter/dag
 
 STR_UNITS_POWER_IMPERIAL                                        :{DECIMAL}{NBSP}hk
 STR_UNITS_POWER_METRIC                                          :{DECIMAL}{NBSP}hk
@@ -230,6 +229,9 @@ STR_UNITS_FORCE_SI                                              :{DECIMAL}{NBSP}
 STR_UNITS_HEIGHT_IMPERIAL                                       :{DECIMAL}{NBSP}fot
 STR_UNITS_HEIGHT_METRIC                                         :{DECIMAL}{NBSP}m
 STR_UNITS_HEIGHT_SI                                             :{DECIMAL}{NBSP}m
+
+# Time units used in string control characters
+
 
 
 # Common window strings
@@ -585,8 +587,8 @@ STR_GRAPH_CARGO_DELIVERED_CAPTION                               :{WHITE}Vareenhe
 STR_GRAPH_COMPANY_PERFORMANCE_RATINGS_CAPTION                   :{WHITE}Prestasjonsvurdering av firma (maks poeng=1000)
 STR_GRAPH_COMPANY_VALUES_CAPTION                                :{WHITE}Firmaverdier
 
+
 STR_GRAPH_CARGO_PAYMENT_RATES_CAPTION                           :{WHITE}Varetakster
-STR_GRAPH_CARGO_PAYMENT_RATES_X_LABEL                           :{TINY_FONT}{BLACK}Dager i transport
 STR_GRAPH_CARGO_PAYMENT_RATES_TITLE                             :{TINY_FONT}{BLACK}Betaling for levering av ti vareenheter (eller 10,000 liter) over en avstand på 20 ruter
 STR_GRAPH_CARGO_ENABLE_ALL                                      :{TINY_FONT}{BLACK}Vis alle
 STR_GRAPH_CARGO_DISABLE_ALL                                     :{TINY_FONT}{BLACK}Skjul alle
@@ -1011,6 +1013,9 @@ STR_GAME_OPTIONS_BASE_MUSIC_TOOLTIP                             :{BLACK}Velg mus
 STR_GAME_OPTIONS_BASE_MUSIC_DESCRIPTION_TOOLTIP                 :{BLACK}Ytterligere informasjon om det originale musikksettet
 
 
+
+
+
 STR_ERROR_RESOLUTION_LIST_FAILED                                :{WHITE}Mislyktes med å hente en liste over støttede oppløsninger
 STR_ERROR_FULLSCREEN_FAILED                                     :{WHITE}Fullskjermmodus mislyktes
 
@@ -1374,6 +1379,8 @@ STR_CONFIG_SETTING_WARN_INCOME_LESS_HELPTEXT                    :Når aktivert, 
 
 STR_CONFIG_SETTING_NEVER_EXPIRE_VEHICLES                        :Kjøretøy utgår aldri: {STRING}
 STR_CONFIG_SETTING_NEVER_EXPIRE_VEHICLES_HELPTEXT               :Når aktivert, vil alle kjøretøysmodeller være tilgjengelig for alltid etter de introduseres
+
+###length 2
 
 STR_CONFIG_SETTING_AUTORENEW_VEHICLE                            :Autoforny kjøretøy når det blir gammelt: {STRING}
 STR_CONFIG_SETTING_AUTORENEW_VEHICLE_HELPTEXT                   :Når aktivert, blir et kjøretøy som nærmer seg slutten av sin levetid automatisk erstattet når betingelsene for fornyelse er oppfylt
@@ -3482,10 +3489,8 @@ STR_GOAL_QUESTION_BUTTON_CLOSE                                  :Lukk
 # Subsidies window
 STR_SUBSIDIES_CAPTION                                           :{WHITE}Subsidier
 STR_SUBSIDIES_OFFERED_TITLE                                     :{BLACK}Subsidietilbud:
-STR_SUBSIDIES_OFFERED_FROM_TO                                   :{ORANGE}{STRING} fra {STRING} til {STRING}{YELLOW} (innen {DATE_SHORT})
 STR_SUBSIDIES_NONE                                              :{ORANGE}- Ingen -
 STR_SUBSIDIES_SUBSIDISED_TITLE                                  :{BLACK}Tjenester som allerede subsidieres:
-STR_SUBSIDIES_SUBSIDISED_FROM_TO                                :{ORANGE}{STRING} fra {STRING} til {STRING}{YELLOW} ({COMPANY}{YELLOW}, inntil {DATE_SHORT})
 STR_SUBSIDIES_TOOLTIP_CLICK_ON_SERVICE_TO_CENTER                :{BLACK}Klikk for å gå til industri/by. Ctrl+klikk åpner et nytt tilleggsvindu over industrien/byen
 
 # Story book window
@@ -4142,9 +4147,9 @@ STR_VEHICLE_DETAILS_ROAD_VEHICLE_RENAME                         :{BLACK}Navngi k
 STR_VEHICLE_DETAILS_SHIP_RENAME                                 :{BLACK}Navngi skip
 STR_VEHICLE_DETAILS_AIRCRAFT_RENAME                             :{BLACK}Navngi luftfartøy
 
-STR_VEHICLE_INFO_AGE_RUNNING_COST_YR                            :{BLACK}Alder: {LTBLUE}{STRING}{BLACK}   Driftskostnader: {LTBLUE}{CURRENCY_LONG}/år
 STR_VEHICLE_INFO_AGE                                            :{COMMA} år ({COMMA})
 STR_VEHICLE_INFO_AGE_RED                                        :{RED}{COMMA} år ({COMMA})
+STR_VEHICLE_INFO_AGE_RUNNING_COST_YR                            :{BLACK}Alder: {LTBLUE}{STRING}{BLACK}   Driftskostnader: {LTBLUE}{CURRENCY_LONG}/år
 
 STR_VEHICLE_INFO_MAX_SPEED                                      :{BLACK}Topphastighet: {LTBLUE}{VELOCITY}
 STR_VEHICLE_INFO_MAX_SPEED_TYPE                                 :{BLACK}Topphastighet: {LTBLUE}{VELOCITY} {BLACK}Flytype: {LTBLUE}{STRING}
@@ -4163,14 +4168,11 @@ STR_VEHICLE_INFO_CAPACITY_CAPACITY                              :{BLACK}Kapasite
 
 STR_VEHICLE_INFO_FEEDER_CARGO_VALUE                             :{BLACK}Overføringskreditt: {LTBLUE}{CURRENCY_LONG}
 
-STR_VEHICLE_DETAILS_SERVICING_INTERVAL_DAYS                     :{BLACK}Vedlikeholdsintervall: {LTBLUE}{COMMA}{NBSP}dager{BLACK}   Forrige vedlikehold: {LTBLUE}{DATE_LONG}
-STR_VEHICLE_DETAILS_SERVICING_INTERVAL_PERCENT                  :{BLACK}Vedlikeholdsintervall: {LTBLUE}{COMMA}{NBSP}%{BLACK}   Forrige vedlikehold: {LTBLUE}{DATE_LONG}
 STR_VEHICLE_DETAILS_INCREASE_SERVICING_INTERVAL_TOOLTIP         :{BLACK}Øk vedlikeholdsintervall med 10. Ctrl+klikk øker med 5
 STR_VEHICLE_DETAILS_DECREASE_SERVICING_INTERVAL_TOOLTIP         :{BLACK}Reduser vedlikeholdsintervall med 10. Ctrl+klikk reduserer med 5
 
 STR_SERVICE_INTERVAL_DROPDOWN_TOOLTIP                           :{BLACK}Enhet for vedlikeholdsintervall
 STR_VEHICLE_DETAILS_DEFAULT                                     :Standard
-STR_VEHICLE_DETAILS_DAYS                                        :Dager
 STR_VEHICLE_DETAILS_PERCENT                                     :Prosentandel
 
 ###length VEHICLE_TYPES

@@ -215,7 +215,6 @@ STR_COLOUR_SECONDARY_SAME_AS_PRIMARY                            :Igual que o pri
 STR_UNITS_VELOCITY_IMPERIAL                                     :{DECIMAL} mph
 STR_UNITS_VELOCITY_METRIC                                       :{DECIMAL} km/h
 STR_UNITS_VELOCITY_SI                                           :{DECIMAL} m/s
-STR_UNITS_VELOCITY_GAMEUNITS                                    :{DECIMAL}{NBSP}cadros/día
 STR_UNITS_VELOCITY_KNOTS                                        :{DECIMAL}{NBSP}nudos
 
 STR_UNITS_POWER_IMPERIAL                                        :{DECIMAL}cv
@@ -256,7 +255,10 @@ STR_UNITS_HEIGHT_IMPERIAL                                       :{DECIMAL} pés
 STR_UNITS_HEIGHT_METRIC                                         :{DECIMAL} m
 STR_UNITS_HEIGHT_SI                                             :{DECIMAL} m
 
+# Time units used in string control characters
 STR_UNITS_TICKS                                                 :{COMMA}{NBSP}tick{P "" s}
+
+
 
 # Common window strings
 STR_LIST_FILTER_TITLE                                           :{BLACK}Filtrar:
@@ -614,8 +616,8 @@ STR_GRAPH_CARGO_DELIVERED_CAPTION                               :{WHITE}Unidades
 STR_GRAPH_COMPANY_PERFORMANCE_RATINGS_CAPTION                   :{WHITE}Puntuación de rendemento da compañía (máximo=1000)
 STR_GRAPH_COMPANY_VALUES_CAPTION                                :{WHITE}Gráfico do valor da compañía
 
+
 STR_GRAPH_CARGO_PAYMENT_RATES_CAPTION                           :{WHITE}Taxas de pago por carga
-STR_GRAPH_CARGO_PAYMENT_RATES_X_LABEL                           :{TINY_FONT}{BLACK}Días en tránsito
 STR_GRAPH_CARGO_PAYMENT_RATES_TITLE                             :{TINY_FONT}{BLACK}Pagamento por transportar 10 unidades (ou 1.000 litros) de carga unha distancia de 20 cadros
 STR_GRAPH_CARGO_ENABLE_ALL                                      :{TINY_FONT}{BLACK}Activar todo
 STR_GRAPH_CARGO_DISABLE_ALL                                     :{TINY_FONT}{BLACK}Desactivar todo
@@ -1075,6 +1077,9 @@ STR_GAME_OPTIONS_BASE_MUSIC                                     :{BLACK}Conxunto
 STR_GAME_OPTIONS_BASE_MUSIC_TOOLTIP                             :{BLACK}Selecciona o conxunto de música base a empregar
 STR_GAME_OPTIONS_BASE_MUSIC_DESCRIPTION_TOOLTIP                 :{BLACK}Información adicional sobre o conxunto de música base
 
+
+
+
 STR_BASESET_STATUS                                              :{STRING} {RED}({NUM} ficheiro{P "" s} perdido{P "" s} ou corrupto{P "" s})
 
 STR_ERROR_RESOLUTION_LIST_FAILED                                :{WHITE}Erro ao obter a lista de resolucións soportadas
@@ -1447,6 +1452,8 @@ STR_CONFIG_SETTING_WARN_INCOME_LESS_HELPTEXT                    :Cando se activa
 
 STR_CONFIG_SETTING_NEVER_EXPIRE_VEHICLES                        :Os vehículos nunca caducan: {STRING}
 STR_CONFIG_SETTING_NEVER_EXPIRE_VEHICLES_HELPTEXT               :Cando se activa, tódolos modelos de vehículos seguen a estar dispoñíbeis para sempre dende a súa aparición
+
+###length 2
 
 STR_CONFIG_SETTING_AUTORENEW_VEHICLE                            :Autorenova-los vehículos cando vaian vellos: {STRING}
 STR_CONFIG_SETTING_AUTORENEW_VEHICLE_HELPTEXT                   :Cando se activa, un vehículo que se achega ao fin da súa vida útil é reemprazado automáticamente se se cumplen as condicións de renovación
@@ -3626,10 +3633,8 @@ STR_GOAL_QUESTION_BUTTON_CLOSE                                  :Pechar
 # Subsidies window
 STR_SUBSIDIES_CAPTION                                           :{WHITE}Subvencións
 STR_SUBSIDIES_OFFERED_TITLE                                     :{BLACK}Subvencións ofrecidas para sevizos que transporten:
-STR_SUBSIDIES_OFFERED_FROM_TO                                   :{ORANGE}{STRING} dende {STRING} ata {STRING}{YELLOW} (antes de {DATE_SHORT})
 STR_SUBSIDIES_NONE                                              :{ORANGE}- Ningunha -
 STR_SUBSIDIES_SUBSIDISED_TITLE                                  :{BLACK}Servizos que xa teñen subvención:
-STR_SUBSIDIES_SUBSIDISED_FROM_TO                                :{ORANGE}{STRING} dende {STRING} ata {STRING}{YELLOW} ({COMPANY}{YELLOW}, ata {DATE_SHORT})
 STR_SUBSIDIES_TOOLTIP_CLICK_ON_SERVICE_TO_CENTER                :{BLACK}Pincha no servizo para centrar a vista na industria/cidade. CTRL+Click abre unha nova fiestra na localización da industria/cidade
 
 # Story book window
@@ -4307,9 +4312,9 @@ STR_VEHICLE_DETAILS_ROAD_VEHICLE_RENAME                         :{BLACK}Renomear
 STR_VEHICLE_DETAILS_SHIP_RENAME                                 :{BLACK}Renomear barco
 STR_VEHICLE_DETAILS_AIRCRAFT_RENAME                             :{BLACK}Renomear avión
 
-STR_VEHICLE_INFO_AGE_RUNNING_COST_YR                            :{BLACK}Idade: {LTBLUE}{STRING}{BLACK}   Custo operativo: {LTBLUE}{CURRENCY_LONG}/ano
 STR_VEHICLE_INFO_AGE                                            :{COMMA} ano{P "" s} ({COMMA})
 STR_VEHICLE_INFO_AGE_RED                                        :{RED}{COMMA} ano{P "" s} ({COMMA})
+STR_VEHICLE_INFO_AGE_RUNNING_COST_YR                            :{BLACK}Idade: {LTBLUE}{STRING}{BLACK}   Custo operativo: {LTBLUE}{CURRENCY_LONG}/ano
 
 STR_VEHICLE_INFO_MAX_SPEED                                      :{BLACK}Velocidade máxima: {LTBLUE}{VELOCITY}
 STR_VEHICLE_INFO_MAX_SPEED_TYPE                                 :{BLACK}Vel. máxima: {LTBLUE}{VELOCITY} {BLACK}Tipo de aeronave: {LTBLUE}{STRING}
@@ -4329,14 +4334,11 @@ STR_VEHICLE_INFO_CAPACITY_CAPACITY                              :{BLACK}Capacida
 
 STR_VEHICLE_INFO_FEEDER_CARGO_VALUE                             :{BLACK}Créditos de transferencia: {LTBLUE}{CURRENCY_LONG}
 
-STR_VEHICLE_DETAILS_SERVICING_INTERVAL_DAYS                     :{BLACK}Intervalo de servizo: {LTBLUE}{COMMA}días{BLACK}   Último servizo: {LTBLUE}{DATE_LONG}
-STR_VEHICLE_DETAILS_SERVICING_INTERVAL_PERCENT                  :{BLACK}Intervalo  de servizo: {LTBLUE}{COMMA}%{BLACK}   Último servizo: {LTBLUE}{DATE_LONG}
 STR_VEHICLE_DETAILS_INCREASE_SERVICING_INTERVAL_TOOLTIP         :{BLACK}Incrementa-lo intervalo dos servizos en 10. Ctrl+Click increméntao en 5
 STR_VEHICLE_DETAILS_DECREASE_SERVICING_INTERVAL_TOOLTIP         :{BLACK}Diminuí-lo intervalo dos servizos en 10. Ctrl+click diminúeo en 5
 
 STR_SERVICE_INTERVAL_DROPDOWN_TOOLTIP                           :{BLACK}Mudar tipo de intervalo de servizo
 STR_VEHICLE_DETAILS_DEFAULT                                     :Por defecto
-STR_VEHICLE_DETAILS_DAYS                                        :Días
 STR_VEHICLE_DETAILS_PERCENT                                     :Porcentaxe
 
 ###length VEHICLE_TYPES

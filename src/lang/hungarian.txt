@@ -277,7 +277,6 @@ STR_COLOUR_SECONDARY_SAME_AS_PRIMARY                            :Ugyanaz mint az
 STR_UNITS_VELOCITY_IMPERIAL                                     :{DECIMAL}{NBSP}mi/h
 STR_UNITS_VELOCITY_METRIC                                       :{DECIMAL}{NBSP}km/h
 STR_UNITS_VELOCITY_SI                                           :{DECIMAL}{NBSP}m/s
-STR_UNITS_VELOCITY_GAMEUNITS                                    :{DECIMAL}{NBSP}mező/nap
 STR_UNITS_VELOCITY_KNOTS                                        :{DECIMAL}{NBSP}csomó
 
 STR_UNITS_POWER_IMPERIAL                                        :{DECIMAL}{NBSP}LE
@@ -317,6 +316,9 @@ STR_UNITS_FORCE_SI                                              :{DECIMAL}{NBSP}
 STR_UNITS_HEIGHT_IMPERIAL                                       :{DECIMAL}{NBSP}láb
 STR_UNITS_HEIGHT_METRIC                                         :{DECIMAL}{NBSP}m
 STR_UNITS_HEIGHT_SI                                             :{DECIMAL}{NBSP}m
+
+# Time units used in string control characters
+
 
 
 # Common window strings
@@ -675,8 +677,8 @@ STR_GRAPH_CARGO_DELIVERED_CAPTION                               :{WHITE}Elszáll
 STR_GRAPH_COMPANY_PERFORMANCE_RATINGS_CAPTION                   :{WHITE}Vállalatok teljesítménye (legjobb teljesítmény=1000)
 STR_GRAPH_COMPANY_VALUES_CAPTION                                :{WHITE}Vállalatok értéke grafikon
 
+
 STR_GRAPH_CARGO_PAYMENT_RATES_CAPTION                           :{WHITE}Rakományok szállítási díja
-STR_GRAPH_CARGO_PAYMENT_RATES_X_LABEL                           :{TINY_FONT}{BLACK}ÚTON TÖLTÖTT NAPOK
 STR_GRAPH_CARGO_PAYMENT_RATES_TITLE                             :{TINY_FONT}{BLACK}Fizetség 10 egységnyi (vagy 10000 liter) rakomány 20 négyzet távolságra való szállítsa esetén
 STR_GRAPH_CARGO_ENABLE_ALL                                      :{TINY_FONT}{BLACK}Bekapcsol mind
 STR_GRAPH_CARGO_DISABLE_ALL                                     :{TINY_FONT}{BLACK}Kikapcsol mind
@@ -1138,6 +1140,9 @@ STR_GAME_OPTIONS_BASE_MUSIC_TOOLTIP                             :{BLACK}Használ
 STR_GAME_OPTIONS_BASE_MUSIC_DESCRIPTION_TOOLTIP                 :{BLACK}További információk a zenei alapcsomagról
 
 
+
+
+
 STR_ERROR_RESOLUTION_LIST_FAILED                                :{WHITE}Nem sikerült a támogatott felbontások lekérdezése
 STR_ERROR_FULLSCREEN_FAILED                                     :{WHITE}Teljes képernyős módra váltás sikertelen
 
@@ -1508,6 +1513,8 @@ STR_CONFIG_SETTING_WARN_INCOME_LESS_HELPTEXT                    :Üzenetek megje
 
 STR_CONFIG_SETTING_NEVER_EXPIRE_VEHICLES                        :Járművek sosem avulnak el: {STRING}
 STR_CONFIG_SETTING_NEVER_EXPIRE_VEHICLES_HELPTEXT               :Bekapcsolva minden járműmodell örökké elérhető marad bevezetése után
+
+###length 2
 
 STR_CONFIG_SETTING_AUTORENEW_VEHICLE                            :Automatikusan felújítja a járművet ha elöregedik: {STRING}
 STR_CONFIG_SETTING_AUTORENEW_VEHICLE_HELPTEXT                   :Bekapcsolva a jármű élettartamának végén automatikusan cserére kerül, ha a lecserélési feltételek teljesülnek
@@ -3678,10 +3685,8 @@ STR_GOAL_QUESTION_BUTTON_CLOSE                                  :Bezár
 # Subsidies window
 STR_SUBSIDIES_CAPTION                                           :{WHITE}Támogatások
 STR_SUBSIDIES_OFFERED_TITLE                                     :{BLACK}Támogatás jár
-STR_SUBSIDIES_OFFERED_FROM_TO                                   :{ORANGE}{STRING} szállításáért {STRING} és {STRING} között{YELLOW} ({DATE_SHORT}ig)
 STR_SUBSIDIES_NONE                                              :{ORANGE}---
 STR_SUBSIDIES_SUBSIDISED_TITLE                                  :{BLACK}Már támogatást kap
-STR_SUBSIDIES_SUBSIDISED_FROM_TO                                :{ORANGE}{STRING} szállításáért {STRING} és {STRING} között {YELLOW} ({COMPANY}{YELLOW} ({DATE_SHORT}ig)
 STR_SUBSIDIES_TOOLTIP_CLICK_ON_SERVICE_TO_CENTER                :{BLACK}Kattints egy sorra a város/gazdasági épület megnézéséhez. Ctrl+kattintás esetén új látképet nyit a város/gazdasági épület pozíciójára
 
 # Story book window
@@ -4359,9 +4364,9 @@ STR_VEHICLE_DETAILS_ROAD_VEHICLE_RENAME                         :{BLACK}Közúti
 STR_VEHICLE_DETAILS_SHIP_RENAME                                 :{BLACK}Hajó átnevezése
 STR_VEHICLE_DETAILS_AIRCRAFT_RENAME                             :{BLACK}Repülőgép átnevezése
 
-STR_VEHICLE_INFO_AGE_RUNNING_COST_YR                            :{BLACK}Kor: {LTBLUE}{STRING}{BLACK}   Üzemeltetés: {LTBLUE}{CURRENCY_LONG}/év
 STR_VEHICLE_INFO_AGE                                            :{COMMA} év ({COMMA})
 STR_VEHICLE_INFO_AGE_RED                                        :{RED}{COMMA} év ({COMMA})
+STR_VEHICLE_INFO_AGE_RUNNING_COST_YR                            :{BLACK}Kor: {LTBLUE}{STRING}{BLACK}   Üzemeltetés: {LTBLUE}{CURRENCY_LONG}/év
 
 STR_VEHICLE_INFO_MAX_SPEED                                      :{BLACK}Végsebesség: {LTBLUE}{VELOCITY}
 STR_VEHICLE_INFO_MAX_SPEED_TYPE                                 :{BLACK}Sebesség: {LTBLUE}{VELOCITY} {BLACK}Típus: {LTBLUE}{STRING}
@@ -4381,14 +4386,11 @@ STR_VEHICLE_INFO_CAPACITY_CAPACITY                              :{BLACK}Kapacit�
 
 STR_VEHICLE_INFO_FEEDER_CARGO_VALUE                             :{BLACK}Szállítási díj: {LTBLUE}{CURRENCY_LONG}
 
-STR_VEHICLE_DETAILS_SERVICING_INTERVAL_DAYS                     :{BLACK}Javítási időköz: {LTBLUE}{COMMA}{NBSP}nap{BLACK}   Utolsó javítás: {LTBLUE}{DATE_LONG}
-STR_VEHICLE_DETAILS_SERVICING_INTERVAL_PERCENT                  :{BLACK}Javítási intervallum: {LTBLUE}{COMMA}%{BLACK}   Utolsó javítás: {LTBLUE}{DATE_LONG}
 STR_VEHICLE_DETAILS_INCREASE_SERVICING_INTERVAL_TOOLTIP         :{BLACK}Javítási időköz növelése 10-zel. Ctrl+kattintás 5-tel növeli
 STR_VEHICLE_DETAILS_DECREASE_SERVICING_INTERVAL_TOOLTIP         :{BLACK}Javítási időköz csökkentése 10-zel. Ctrl+Kattintás 5-tel csökkenti
 
 STR_SERVICE_INTERVAL_DROPDOWN_TOOLTIP                           :{BLACK}Javítási időköz módjának megváltoztatása
 STR_VEHICLE_DETAILS_DEFAULT                                     :Alapértelmezett
-STR_VEHICLE_DETAILS_DAYS                                        :Napok
 STR_VEHICLE_DETAILS_PERCENT                                     :Százalék
 
 ###length VEHICLE_TYPES

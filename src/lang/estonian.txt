@@ -254,7 +254,6 @@ STR_COLOUR_RANDOM                                               :Suvaline
 STR_UNITS_VELOCITY_IMPERIAL                                     :{DECIMAL} miili tunnis
 STR_UNITS_VELOCITY_METRIC                                       :{DECIMAL} km/h
 STR_UNITS_VELOCITY_SI                                           :{DECIMAL} m/s
-STR_UNITS_VELOCITY_GAMEUNITS                                    :{DECIMAL}{NBSP}ruutu/päev
 
 STR_UNITS_POWER_IMPERIAL                                        :{DECIMAL}hj
 STR_UNITS_POWER_METRIC                                          :{DECIMAL}hj
@@ -293,6 +292,9 @@ STR_UNITS_FORCE_SI                                              :{DECIMAL} kN
 STR_UNITS_HEIGHT_IMPERIAL                                       :{DECIMAL} meeter
 STR_UNITS_HEIGHT_METRIC                                         :{DECIMAL} m
 STR_UNITS_HEIGHT_SI                                             :{DECIMAL} m
+
+# Time units used in string control characters
+
 
 
 # Common window strings
@@ -649,8 +651,8 @@ STR_GRAPH_CARGO_DELIVERED_CAPTION                               :{WHITE}Äraveet
 STR_GRAPH_COMPANY_PERFORMANCE_RATINGS_CAPTION                   :{WHITE}Ettevõtte tegevushinnang (suurim hinnang saab olla 1000)
 STR_GRAPH_COMPANY_VALUES_CAPTION                                :{WHITE}Firmaväärtused
 
+
 STR_GRAPH_CARGO_PAYMENT_RATES_CAPTION                           :{WHITE}Veotariifid
-STR_GRAPH_CARGO_PAYMENT_RATES_X_LABEL                           :{TINY_FONT}{BLACK}Teelolekuaeg päevades
 STR_GRAPH_CARGO_PAYMENT_RATES_TITLE                             :{TINY_FONT}{BLACK}Tasu 10 ühiku (või 10 000 liitri) kauba äraveo eest üle 20 ruudu
 STR_GRAPH_CARGO_ENABLE_ALL                                      :{TINY_FONT}{BLACK}Kõik sisse
 STR_GRAPH_CARGO_DISABLE_ALL                                     :{TINY_FONT}{BLACK}Kõik välja
@@ -1082,6 +1084,9 @@ STR_GAME_OPTIONS_BASE_MUSIC_TOOLTIP                             :{BLACK}Valib ka
 STR_GAME_OPTIONS_BASE_MUSIC_DESCRIPTION_TOOLTIP                 :{BLACK}Rohkem teavet lähtemuusikakogu kohta
 
 
+
+
+
 STR_ERROR_RESOLUTION_LIST_FAILED                                :{WHITE}Ei õnnestunud tuvastada toetatud resulutsioone
 STR_ERROR_FULLSCREEN_FAILED                                     :{WHITE}Täisekraanrežiim ebaõnnestus
 
@@ -1446,6 +1451,8 @@ STR_CONFIG_SETTING_WARN_INCOME_LESS_HELPTEXT                    :Kui on aktiveer
 
 STR_CONFIG_SETTING_NEVER_EXPIRE_VEHICLES                        :Sõidukid ei aegu: {STRING}
 STR_CONFIG_SETTING_NEVER_EXPIRE_VEHICLES_HELPTEXT               :Kui on aktiveeritud, siis jäävad kõik sõidukite tüübid igavesti avatuks
+
+###length 2
 
 STR_CONFIG_SETTING_AUTORENEW_VEHICLE                            :Vananenud sõidukite uuendamine: {STRING}
 STR_CONFIG_SETTING_AUTORENEW_VEHICLE_HELPTEXT                   :Kui on sisse lülitatud, siis uuendatalse kõik kasutusaja lõpu lähedal olevad sõidukid automaatselt, järgides uuendamise tingimusi
@@ -3579,10 +3586,8 @@ STR_GOAL_QUESTION_BUTTON_CLOSE                                  :Sulge
 # Subsidies window
 STR_SUBSIDIES_CAPTION                                           :{WHITE}Toetused
 STR_SUBSIDIES_OFFERED_TITLE                                     :{BLACK}Pakutavad toetused teenusepakkumise eest:
-STR_SUBSIDIES_OFFERED_FROM_TO                                   :{ORANGE}{STRING} kohast {STRING} kohta {STRING}{YELLOW} (kuni {DATE_SHORT})
 STR_SUBSIDIES_NONE                                              :{ORANGE}Mitte ühtegi
 STR_SUBSIDIES_SUBSIDISED_TITLE                                  :{BLACK}Juba toetatavad veoteenused:
-STR_SUBSIDIES_SUBSIDISED_FROM_TO                                :{ORANGE}{STRING} kohast {STRING} kohta {STRING}{YELLOW} ({COMPANY}{YELLOW}, kuni {DATE_SHORT})
 STR_SUBSIDIES_TOOLTIP_CLICK_ON_SERVICE_TO_CENTER                :{BLACK}Vajuta pakkumisele, et keskendada vaade tööstusele/asustusele. Ctrl+klõps avab uue vaate ettevõtte/asustuse asukohas
 
 # Story book window
@@ -4254,9 +4259,9 @@ STR_VEHICLE_DETAILS_ROAD_VEHICLE_RENAME                         :{BLACK}Nimeta m
 STR_VEHICLE_DETAILS_SHIP_RENAME                                 :{BLACK}Nimeta laev
 STR_VEHICLE_DETAILS_AIRCRAFT_RENAME                             :{BLACK}Nimeta õhusõiduk
 
-STR_VEHICLE_INFO_AGE_RUNNING_COST_YR                            :{BLACK}Vanus: {LTBLUE}{STRING}{BLACK}   Käituskulud: {LTBLUE}{CURRENCY_LONG}/a
 STR_VEHICLE_INFO_AGE                                            :{COMMA} aasta{P "" t} ({COMMA})
 STR_VEHICLE_INFO_AGE_RED                                        :{RED}{COMMA} aasta{P "" t} ({COMMA})
+STR_VEHICLE_INFO_AGE_RUNNING_COST_YR                            :{BLACK}Vanus: {LTBLUE}{STRING}{BLACK}   Käituskulud: {LTBLUE}{CURRENCY_LONG}/a
 
 STR_VEHICLE_INFO_MAX_SPEED                                      :{BLACK}Tippkiirus: {LTBLUE}{VELOCITY}
 STR_VEHICLE_INFO_MAX_SPEED_TYPE                                 :{BLACK}Tippkiirus: {LTBLUE}{VELOCITY} {BLACK}Õhusõiduki liik: {LTBLUE}{STRING}
@@ -4276,14 +4281,11 @@ STR_VEHICLE_INFO_CAPACITY_CAPACITY                              :{BLACK}Kandevõ
 
 STR_VEHICLE_INFO_FEEDER_CARGO_VALUE                             :{BLACK}Ülekantud tulu: {LTBLUE}{CURRENCY_LONG}
 
-STR_VEHICLE_DETAILS_SERVICING_INTERVAL_DAYS                     :{BLACK}Hooldusvälp: {LTBLUE}{COMMA}päeva{BLACK}  Viimati hooldatud: {LTBLUE}{DATE_LONG}
-STR_VEHICLE_DETAILS_SERVICING_INTERVAL_PERCENT                  :{BLACK}Hooldusvälp: {LTBLUE}{COMMA}%{BLACK}   Viimati hooldatud: {LTBLUE}{DATE_LONG}
 STR_VEHICLE_DETAILS_INCREASE_SERVICING_INTERVAL_TOOLTIP         :{BLACK}Suurenda hooldusvahemiku 10 võrra. Ctrl-klahviga suurendatakse hooldusvahemiku 5 võrra.
 STR_VEHICLE_DETAILS_DECREASE_SERVICING_INTERVAL_TOOLTIP         :{BLACK}Vähenda hooldusvahemiku 10 võrra. Ctrl+Klõps vähendab hooldusvahemikku 5 võrra.
 
 STR_SERVICE_INTERVAL_DROPDOWN_TOOLTIP                           :{BLACK}Muuda hooldusvälba liiki
 STR_VEHICLE_DETAILS_DEFAULT                                     :Esialgne
-STR_VEHICLE_DETAILS_DAYS                                        :Päevad
 STR_VEHICLE_DETAILS_PERCENT                                     :Protsendid
 
 ###length VEHICLE_TYPES

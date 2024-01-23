@@ -214,7 +214,6 @@ STR_COLOUR_SECONDARY_SAME_AS_PRIMARY                            :與主色調相
 STR_UNITS_VELOCITY_IMPERIAL                                     :{DECIMAL}{NBSP}英里/小時
 STR_UNITS_VELOCITY_METRIC                                       :{DECIMAL}{NBSP}公里/小時
 STR_UNITS_VELOCITY_SI                                           :{DECIMAL}{NBSP}米/秒
-STR_UNITS_VELOCITY_GAMEUNITS                                    :{DECIMAL}{NBSP}格/日
 STR_UNITS_VELOCITY_KNOTS                                        :{DECIMAL}{NBSP}節
 
 STR_UNITS_POWER_IMPERIAL                                        :{DECIMAL}{NBSP}匹
@@ -254,6 +253,9 @@ STR_UNITS_FORCE_SI                                              :{DECIMAL}{NBSP}
 STR_UNITS_HEIGHT_IMPERIAL                                       :{DECIMAL}{NBSP}英呎
 STR_UNITS_HEIGHT_METRIC                                         :{DECIMAL}{NBSP}米
 STR_UNITS_HEIGHT_SI                                             :{DECIMAL}{NBSP}公尺
+
+# Time units used in string control characters
+
 
 
 # Common window strings
@@ -611,8 +613,8 @@ STR_GRAPH_CARGO_DELIVERED_CAPTION                               :{WHITE}運送�
 STR_GRAPH_COMPANY_PERFORMANCE_RATINGS_CAPTION                   :{WHITE}公司效率指標 (最高 1000)
 STR_GRAPH_COMPANY_VALUES_CAPTION                                :{WHITE}公司價值
 
+
 STR_GRAPH_CARGO_PAYMENT_RATES_CAPTION                           :{WHITE}貨物運費表
-STR_GRAPH_CARGO_PAYMENT_RATES_X_LABEL                           :{TINY_FONT}{BLACK}運輸日數
 STR_GRAPH_CARGO_PAYMENT_RATES_TITLE                             :{TINY_FONT}{BLACK}將 10 單位 (或 10,000 公升) 貨物運送 20 格的費用
 STR_GRAPH_CARGO_ENABLE_ALL                                      :{TINY_FONT}{BLACK}全部啟用
 STR_GRAPH_CARGO_DISABLE_ALL                                     :{TINY_FONT}{BLACK}全部停用
@@ -1066,6 +1068,9 @@ STR_GAME_OPTIONS_BASE_MUSIC_TOOLTIP                             :{BLACK}選擇�
 STR_GAME_OPTIONS_BASE_MUSIC_DESCRIPTION_TOOLTIP                 :{BLACK}關於基本音樂集的額外資訊
 
 
+
+
+
 STR_ERROR_RESOLUTION_LIST_FAILED                                :{WHITE}無法擷取可用的螢幕解析度清單
 STR_ERROR_FULLSCREEN_FAILED                                     :{WHITE}無法切換全螢幕模式
 
@@ -1434,6 +1439,8 @@ STR_CONFIG_SETTING_WARN_INCOME_LESS_HELPTEXT                    :如啟用此選
 
 STR_CONFIG_SETTING_NEVER_EXPIRE_VEHICLES                        :車輛永不過期：{STRING}
 STR_CONFIG_SETTING_NEVER_EXPIRE_VEHICLES_HELPTEXT               :如啟用此選項，所有車輛一經面世，就永遠可以選擇建造。
+
+###length 2
 
 STR_CONFIG_SETTING_AUTORENEW_VEHICLE                            :車輛達到使用年限時自動更新：{STRING}
 STR_CONFIG_SETTING_AUTORENEW_VEHICLE_HELPTEXT                   :如啟用此選項，所有在符合替換條件時進入維修設施的車輛會被替換。
@@ -3591,10 +3598,8 @@ STR_GOAL_QUESTION_BUTTON_CLOSE                                  :關閉
 # Subsidies window
 STR_SUBSIDIES_CAPTION                                           :{WHITE}補助資訊
 STR_SUBSIDIES_OFFERED_TITLE                                     :{BLACK}提供補助的運輸服務：
-STR_SUBSIDIES_OFFERED_FROM_TO                                   :{ORANGE}將 {STRING} 從 {STRING} 運到 {STRING}{YELLOW} (在 {DATE_SHORT} 之前)
 STR_SUBSIDIES_NONE                                              :{ORANGE}- 無 -
 STR_SUBSIDIES_SUBSIDISED_TITLE                                  :{BLACK}已獲補助的服務：
-STR_SUBSIDIES_SUBSIDISED_FROM_TO                                :{ORANGE}將 {STRING} 從 {STRING} 運到 {STRING}{YELLOW} ({COMPANY}{YELLOW}，補助到 {DATE_SHORT})
 STR_SUBSIDIES_TOOLTIP_CLICK_ON_SERVICE_TO_CENTER                :{BLACK}點選運送服務可將工業／市鎮置於畫面中央。 按住 Ctrl 點選可於工業／市鎮位置開啟新視窗視野
 
 # Story book window
@@ -4268,9 +4273,9 @@ STR_VEHICLE_DETAILS_ROAD_VEHICLE_RENAME                         :{BLACK}命名�
 STR_VEHICLE_DETAILS_SHIP_RENAME                                 :{BLACK}命名船舶
 STR_VEHICLE_DETAILS_AIRCRAFT_RENAME                             :{BLACK}命名飛機
 
-STR_VEHICLE_INFO_AGE_RUNNING_COST_YR                            :{BLACK}年齡：{LTBLUE}{STRING}{BLACK}   營運成本：每年{LTBLUE}{CURRENCY_LONG}
 STR_VEHICLE_INFO_AGE                                            :{COMMA} 年 ({COMMA})
 STR_VEHICLE_INFO_AGE_RED                                        :{RED}{COMMA} 年 ({COMMA})
+STR_VEHICLE_INFO_AGE_RUNNING_COST_YR                            :{BLACK}年齡：{LTBLUE}{STRING}{BLACK}   營運成本：每年{LTBLUE}{CURRENCY_LONG}
 
 STR_VEHICLE_INFO_MAX_SPEED                                      :{BLACK}最高速度：{LTBLUE}{VELOCITY}
 STR_VEHICLE_INFO_MAX_SPEED_TYPE                                 :{BLACK}最大速度：{LTBLUE}{VELOCITY} {BLACK}飛機型號：{LTBLUE}{STRING}
@@ -4290,14 +4295,11 @@ STR_VEHICLE_INFO_CAPACITY_CAPACITY                              :{BLACK}容量�
 
 STR_VEHICLE_INFO_FEEDER_CARGO_VALUE                             :{BLACK}轉運潛在收入：{LTBLUE}{CURRENCY_LONG}
 
-STR_VEHICLE_DETAILS_SERVICING_INTERVAL_DAYS                     :{BLACK}每隔 {LTBLUE}{COMMA}{NBSP}天進行維護{BLACK}   上次維護日期：{LTBLUE}{DATE_LONG}
-STR_VEHICLE_DETAILS_SERVICING_INTERVAL_PERCENT                  :{BLACK}維護間隔：{LTBLUE}{COMMA}%{BLACK}   上次維護：{LTBLUE}{DATE_LONG}
 STR_VEHICLE_DETAILS_INCREASE_SERVICING_INTERVAL_TOOLTIP         :{BLACK}以 10 為單位延長維護間隔。 按住 Ctrl 點選可以 5 為單位
 STR_VEHICLE_DETAILS_DECREASE_SERVICING_INTERVAL_TOOLTIP         :{BLACK}以 10 為單位縮短維護間隔。 按住 Ctrl 點選可以 5 為單位
 
 STR_SERVICE_INTERVAL_DROPDOWN_TOOLTIP                           :{BLACK}更改檢修週期所用單位
 STR_VEHICLE_DETAILS_DEFAULT                                     :預設
-STR_VEHICLE_DETAILS_DAYS                                        :日數
 STR_VEHICLE_DETAILS_PERCENT                                     :百分比
 
 ###length VEHICLE_TYPES

@@ -167,6 +167,9 @@ STR_UNITS_POWER_SI                                              :{DECIMAL}кВт
 
 
 
+# Time units used in string control characters
+
+
 
 # Common window strings
 
@@ -357,6 +360,7 @@ STR_GRAPH_Y_LABEL                                               :{TINY_FONT}{STR
 STR_GRAPH_Y_LABEL_NUMBER                                        :{TINY_FONT}{COMMA}
 
 
+
 STR_GRAPH_CARGO_PAYMENT_CARGO                                   :{TINY_FONT}{BLACK}{STRING}
 
 
@@ -489,6 +493,9 @@ STR_GAME_OPTIONS_FULLSCREEN                                     :{BLACK}Тулл
 
 STR_GAME_OPTIONS_RESOLUTION                                     :{BLACK}Экрана сӑнарлама пултарни
 STR_GAME_OPTIONS_RESOLUTION_OTHER                               :расна
+
+
+
 
 
 
@@ -641,6 +648,8 @@ STR_CONFIG_SETTING_NEVER_EXPIRE_AIRPORTS                        :Аэропор�
 ###length 3
 
 
+
+###length 2
 
 
 ###length 2

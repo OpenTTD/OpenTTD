@@ -215,7 +215,6 @@ STR_COLOUR_SECONDARY_SAME_AS_PRIMARY                            :주 색상과 �
 STR_UNITS_VELOCITY_IMPERIAL                                     :{DECIMAL}mph
 STR_UNITS_VELOCITY_METRIC                                       :{DECIMAL}km/h
 STR_UNITS_VELOCITY_SI                                           :{DECIMAL}m/s
-STR_UNITS_VELOCITY_GAMEUNITS                                    :{DECIMAL}칸/일
 STR_UNITS_VELOCITY_KNOTS                                        :{DECIMAL}노트
 
 STR_UNITS_POWER_IMPERIAL                                        :{DECIMAL}마력
@@ -256,9 +255,12 @@ STR_UNITS_HEIGHT_IMPERIAL                                       :{DECIMAL}피트
 STR_UNITS_HEIGHT_METRIC                                         :{DECIMAL}m
 STR_UNITS_HEIGHT_SI                                             :{DECIMAL}m
 
+# Time units used in string control characters
 STR_UNITS_DAYS                                                  :{COMMA}일
 STR_UNITS_SECONDS                                               :{COMMA}초
 STR_UNITS_TICKS                                                 :{COMMA}틱
+
+
 
 # Common window strings
 STR_LIST_FILTER_TITLE                                           :{BLACK}검색:
@@ -616,8 +618,8 @@ STR_GRAPH_CARGO_DELIVERED_CAPTION                               :{WHITE}수송 �
 STR_GRAPH_COMPANY_PERFORMANCE_RATINGS_CAPTION                   :{WHITE}회사 성취도 (최고 1000)
 STR_GRAPH_COMPANY_VALUES_CAPTION                                :{WHITE}회사가치 그래프
 
+
 STR_GRAPH_CARGO_PAYMENT_RATES_CAPTION                           :{WHITE}화물 운송단가 비율
-STR_GRAPH_CARGO_PAYMENT_RATES_X_LABEL                           :{TINY_FONT}{BLACK}통과시간
 STR_GRAPH_CARGO_PAYMENT_RATES_TITLE                             :{TINY_FONT}{BLACK}10 단위(1만 리터)의 화물을 20칸 거리만큼 운송할 때의 운송비 지급량
 STR_GRAPH_CARGO_ENABLE_ALL                                      :{TINY_FONT}{BLACK}모두 사용
 STR_GRAPH_CARGO_DISABLE_ALL                                     :{TINY_FONT}{BLACK}모두 사용 안 함
@@ -1083,6 +1085,9 @@ STR_GAME_OPTIONS_BASE_MUSIC                                     :{BLACK}기본 �
 STR_GAME_OPTIONS_BASE_MUSIC_TOOLTIP                             :{BLACK}게임에 사용할 기본 배경 음악 세트를 선택하세요
 STR_GAME_OPTIONS_BASE_MUSIC_DESCRIPTION_TOOLTIP                 :{BLACK}기본 배경 음악 세트에 대한 추가 정보를 봅니다.
 
+
+
+
 STR_BASESET_STATUS                                              :{STRING} {RED}({NUM}개의 파일이 빠졌거나 손상되었습니다)
 
 STR_ERROR_RESOLUTION_LIST_FAILED                                :{WHITE}지원되는 해상도 목록을 불러오는데 실패하였습니다.
@@ -1455,6 +1460,8 @@ STR_CONFIG_SETTING_WARN_INCOME_LESS_HELPTEXT                    :이 설정을 �
 
 STR_CONFIG_SETTING_NEVER_EXPIRE_VEHICLES                        :옛날 차량을 사라지지 않고 계속 만들 수 있게 함: {STRING}
 STR_CONFIG_SETTING_NEVER_EXPIRE_VEHICLES_HELPTEXT               :이 설정을 켜면, 오래된 차량 모델을 포함하여 모든 차량 모델을 도입 이후에 계속 사용할 수 있게 됩니다.
+
+###length 2
 
 STR_CONFIG_SETTING_AUTORENEW_VEHICLE                            :차량이 낡으면 차량을 자동으로 교체: {STRING}
 STR_CONFIG_SETTING_AUTORENEW_VEHICLE_HELPTEXT                   :이 설정을 켜면, 제한 수명에 다다른 차량이 교체 조건을 만족할 경우 자동으로 차량을 교체할 수 있게 됩니다
@@ -3654,10 +3661,8 @@ STR_GOAL_QUESTION_BUTTON_CLOSE                                  :닫기
 # Subsidies window
 STR_SUBSIDIES_CAPTION                                           :{WHITE}보조금
 STR_SUBSIDIES_OFFERED_TITLE                                     :{BLACK}지급 대기 중인 보조금:
-STR_SUBSIDIES_OFFERED_FROM_TO                                   :{ORANGE}{1:STRING}에서 {2:STRING}까지 {0:STRING} 수송{YELLOW} ({3:DATE_SHORT}까지)
 STR_SUBSIDIES_NONE                                              :{ORANGE}없음
 STR_SUBSIDIES_SUBSIDISED_TITLE                                  :{BLACK}이미 지급된 보조금:
-STR_SUBSIDIES_SUBSIDISED_FROM_TO                                :{ORANGE}{1:STRING}에서 {2:STRING}까지 {0:STRING} 수송{YELLOW} ({3:COMPANY}{YELLOW}, {DATE_SHORT}까지)
 STR_SUBSIDIES_TOOLTIP_CLICK_ON_SERVICE_TO_CENTER                :{BLACK}산업시설/도시의 위치로 시점을 변경하려면 클릭하세요. CTRL+클릭하면 이 산업시설/도시의 위치를 기준으로 새로운 외부 화면을 엽니다
 
 # Story book window
@@ -4335,9 +4340,9 @@ STR_VEHICLE_DETAILS_ROAD_VEHICLE_RENAME                         :{BLACK}차량 �
 STR_VEHICLE_DETAILS_SHIP_RENAME                                 :{BLACK}선박 이름 지정
 STR_VEHICLE_DETAILS_AIRCRAFT_RENAME                             :{BLACK}항공기 이름 지정
 
-STR_VEHICLE_INFO_AGE_RUNNING_COST_YR                            :{BLACK}연령: {LTBLUE}{STRING}{BLACK}   유지비: {LTBLUE}{CURRENCY_LONG}/년
 STR_VEHICLE_INFO_AGE                                            :{COMMA}년 ({COMMA})
 STR_VEHICLE_INFO_AGE_RED                                        :{RED}{COMMA}년 ({COMMA})
+STR_VEHICLE_INFO_AGE_RUNNING_COST_YR                            :{BLACK}연령: {LTBLUE}{STRING}{BLACK}   유지비: {LTBLUE}{CURRENCY_LONG}/년
 
 STR_VEHICLE_INFO_MAX_SPEED                                      :{BLACK}최고 속력: {LTBLUE}{VELOCITY}
 STR_VEHICLE_INFO_MAX_SPEED_TYPE                                 :{BLACK}최고 속력: {LTBLUE}{VELOCITY} {BLACK}항공기 종류: {LTBLUE}{STRING}
@@ -4357,14 +4362,11 @@ STR_VEHICLE_INFO_CAPACITY_CAPACITY                              :{BLACK}수송�
 
 STR_VEHICLE_INFO_FEEDER_CARGO_VALUE                             :{BLACK}환승 수익: {LTBLUE}{CURRENCY_LONG}
 
-STR_VEHICLE_DETAILS_SERVICING_INTERVAL_DAYS                     :{BLACK}점검 간격: {LTBLUE}{COMMA}일{BLACK}마다{NBSP}  마지막 점검 날짜: {LTBLUE}{DATE_LONG}
-STR_VEHICLE_DETAILS_SERVICING_INTERVAL_PERCENT                  :{BLACK}점검 기준: {LTBLUE}{COMMA}%{BLACK} 떨어지면   마지막 점검 날짜: {LTBLUE}{DATE_LONG}
 STR_VEHICLE_DETAILS_INCREASE_SERVICING_INTERVAL_TOOLTIP         :{BLACK}점검 기준값을 10만큼 올립니다. CTRL+클릭하면 점검 기준값을 5만큼 올립니다
 STR_VEHICLE_DETAILS_DECREASE_SERVICING_INTERVAL_TOOLTIP         :{BLACK}점검 기준값을 10만큼 내립니다. CTRL+클릭하면 점검 기준값을 5만큼 내립니다
 
 STR_SERVICE_INTERVAL_DROPDOWN_TOOLTIP                           :{BLACK}점검 기준 설정을 변경합니다
 STR_VEHICLE_DETAILS_DEFAULT                                     :기본
-STR_VEHICLE_DETAILS_DAYS                                        :날짜
 STR_VEHICLE_DETAILS_PERCENT                                     :신뢰도
 
 ###length VEHICLE_TYPES

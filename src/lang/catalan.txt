@@ -215,7 +215,6 @@ STR_COLOUR_SECONDARY_SAME_AS_PRIMARY                            :El mateix que e
 STR_UNITS_VELOCITY_IMPERIAL                                     :{DECIMAL}{NBSP}mph
 STR_UNITS_VELOCITY_METRIC                                       :{DECIMAL}{NBSP}km/h
 STR_UNITS_VELOCITY_SI                                           :{DECIMAL}{NBSP}m/s
-STR_UNITS_VELOCITY_GAMEUNITS                                    :{DECIMAL}{NBSP}cel·les/dia
 STR_UNITS_VELOCITY_KNOTS                                        :{DECIMAL}{NBSP}{P nus nusos}
 
 STR_UNITS_POWER_IMPERIAL                                        :{DECIMAL}{NBSP}cv
@@ -256,9 +255,12 @@ STR_UNITS_HEIGHT_IMPERIAL                                       :{DECIMAL}{NBSP}
 STR_UNITS_HEIGHT_METRIC                                         :{DECIMAL}{NBSP}m
 STR_UNITS_HEIGHT_SI                                             :{G=Masculin}{DECIMAL}{NBSP}m
 
+# Time units used in string control characters
 STR_UNITS_DAYS                                                  :{COMMA}{NBSP}di{P a es}
 STR_UNITS_SECONDS                                               :{COMMA}{NBSP}segon{P "" s}
 STR_UNITS_TICKS                                                 :{COMMA}{NBSP}tic{P "" s}
+
+
 
 # Common window strings
 STR_LIST_FILTER_TITLE                                           :{BLACK}Filtre:
@@ -616,8 +618,8 @@ STR_GRAPH_CARGO_DELIVERED_CAPTION                               :{WHITE}Unitats 
 STR_GRAPH_COMPANY_PERFORMANCE_RATINGS_CAPTION                   :{WHITE}Ratis de rendiment de la companyia (rati màxim: 1000)
 STR_GRAPH_COMPANY_VALUES_CAPTION                                :{WHITE}Gràfic del valor de les companyies
 
+
 STR_GRAPH_CARGO_PAYMENT_RATES_CAPTION                           :{WHITE}Tarifes de pagament de càrregues
-STR_GRAPH_CARGO_PAYMENT_RATES_X_LABEL                           :{TINY_FONT}{BLACK}Dies en trànsit
 STR_GRAPH_CARGO_PAYMENT_RATES_TITLE                             :{TINY_FONT}{BLACK}Pagament per entregar 10 unitats (o 10.000 litres) de càrrega a una distància de 20 caselles
 STR_GRAPH_CARGO_ENABLE_ALL                                      :{TINY_FONT}{BLACK}Activa-ho tot
 STR_GRAPH_CARGO_DISABLE_ALL                                     :{TINY_FONT}{BLACK}Desactiva-ho tot
@@ -1083,6 +1085,9 @@ STR_GAME_OPTIONS_BASE_MUSIC                                     :{BLACK}Conjunt 
 STR_GAME_OPTIONS_BASE_MUSIC_TOOLTIP                             :{BLACK}Selecciona el conjunt de peces de música base a utilitzar
 STR_GAME_OPTIONS_BASE_MUSIC_DESCRIPTION_TOOLTIP                 :{BLACK}Informació addicional sobre el conjunt de peces de música base
 
+
+
+
 STR_BASESET_STATUS                                              :{STRING} {RED}(hi ha {NUM} fitxer{P " que fa falta o està corromput" "s que fan falta o estan corromputs"})
 
 STR_ERROR_RESOLUTION_LIST_FAILED                                :{WHITE}No s'ha pogut obtenir la llista de resolucions permeses
@@ -1455,6 +1460,8 @@ STR_CONFIG_SETTING_WARN_INCOME_LESS_HELPTEXT                    :Quan està acti
 
 STR_CONFIG_SETTING_NEVER_EXPIRE_VEHICLES                        :Els vehicles mai caduquen: {STRING}
 STR_CONFIG_SETTING_NEVER_EXPIRE_VEHICLES_HELPTEXT               :Quan està activat, tots els models de vehicles continuen disponibles per sempre després de la seva introducció
+
+###length 2
 
 STR_CONFIG_SETTING_AUTORENEW_VEHICLE                            :Autorenova el vehicle quan sigui vell: {STRING}
 STR_CONFIG_SETTING_AUTORENEW_VEHICLE_HELPTEXT                   :Quan està activat, un vehicle que arriba al final de la seva vida útil és automàticament substituït quan es compleixen les condicions d'autorenovació.
@@ -3654,10 +3661,8 @@ STR_GOAL_QUESTION_BUTTON_CLOSE                                  :Tanca
 # Subsidies window
 STR_SUBSIDIES_CAPTION                                           :{WHITE}Subvencions
 STR_SUBSIDIES_OFFERED_TITLE                                     :{BLACK}Subvencions per prestació de serveis oferts:
-STR_SUBSIDIES_OFFERED_FROM_TO                                   :{ORANGE}{STRING} de {STRING} a {STRING}{YELLOW} (per {DATE_SHORT})
 STR_SUBSIDIES_NONE                                              :{ORANGE}- Cap -
 STR_SUBSIDIES_SUBSIDISED_TITLE                                  :{BLACK}Serveis ja subvencionats:
-STR_SUBSIDIES_SUBSIDISED_FROM_TO                                :{ORANGE}{STRING} des de {STRING} fins a {STRING}{YELLOW} ({COMPANY}{YELLOW}, fins a {DATE_SHORT})
 STR_SUBSIDIES_TOOLTIP_CLICK_ON_SERVICE_TO_CENTER                :{BLACK}Clica al servei per centrar la vista a la indústria/població. Ctrl+Clic obre una nova vista al lloc de la indústria/població
 
 # Story book window
@@ -4335,9 +4340,9 @@ STR_VEHICLE_DETAILS_ROAD_VEHICLE_RENAME                         :{BLACK}Anomena 
 STR_VEHICLE_DETAILS_SHIP_RENAME                                 :{BLACK}Anomena vaixell
 STR_VEHICLE_DETAILS_AIRCRAFT_RENAME                             :{BLACK}Anomena avió
 
-STR_VEHICLE_INFO_AGE_RUNNING_COST_YR                            :{BLACK}Anys: {LTBLUE}{STRING}{BLACK}   Cost d'utilització: {LTBLUE}{CURRENCY_LONG}/any
 STR_VEHICLE_INFO_AGE                                            :{COMMA} any{P "" s} ({COMMA})
 STR_VEHICLE_INFO_AGE_RED                                        :{RED}{COMMA} any{P "" s} ({COMMA})
+STR_VEHICLE_INFO_AGE_RUNNING_COST_YR                            :{BLACK}Anys: {LTBLUE}{STRING}{BLACK}   Cost d'utilització: {LTBLUE}{CURRENCY_LONG}/any
 
 STR_VEHICLE_INFO_MAX_SPEED                                      :{BLACK}Vel. màx.: {LTBLUE}{VELOCITY}
 STR_VEHICLE_INFO_MAX_SPEED_TYPE                                 :{BLACK}Velocitat màx.: {LTBLUE}{VELOCITY} {BLACK}Tipus d'aeronau: {LTBLUE}{STRING}
@@ -4357,14 +4362,11 @@ STR_VEHICLE_INFO_CAPACITY_CAPACITY                              :{BLACK}Capacita
 
 STR_VEHICLE_INFO_FEEDER_CARGO_VALUE                             :{BLACK}Transferir crèdits: {LTBLUE}{CURRENCY_LONG}
 
-STR_VEHICLE_DETAILS_SERVICING_INTERVAL_DAYS                     :{BLACK}Interval de les revisions: {LTBLUE}{COMMA}{NBSP}dies{BLACK}   Darrera revisió: {LTBLUE}{DATE_LONG}
-STR_VEHICLE_DETAILS_SERVICING_INTERVAL_PERCENT                  :{BLACK}Interval de les revisions: {LTBLUE}{COMMA}%{BLACK}   Darrera revisió: {LTBLUE}{DATE_LONG}
 STR_VEHICLE_DETAILS_INCREASE_SERVICING_INTERVAL_TOOLTIP         :{BLACK}Augmenta l'interval de les revisions en 10. Ctrl+Clic augmenta l'interval de les revisions en 5
 STR_VEHICLE_DETAILS_DECREASE_SERVICING_INTERVAL_TOOLTIP         :{BLACK}Disminueix l'interval de les revisions en 10. Ctrl+Clic disminueix l'interval de les revisions en 5
 
 STR_SERVICE_INTERVAL_DROPDOWN_TOOLTIP                           :{BLACK}Canvia el tipus d'interval de les revisions
 STR_VEHICLE_DETAILS_DEFAULT                                     :{G=Masculin}Predeterminat
-STR_VEHICLE_DETAILS_DAYS                                        :{G=Masculin}Dies
 STR_VEHICLE_DETAILS_PERCENT                                     :Percentatge
 
 ###length VEHICLE_TYPES

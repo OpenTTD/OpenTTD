@@ -214,7 +214,6 @@ STR_COLOUR_SECONDARY_SAME_AS_PRIMARY                            :主色调
 STR_UNITS_VELOCITY_IMPERIAL                                     :{DECIMAL}{NBSP}英里/小时
 STR_UNITS_VELOCITY_METRIC                                       :{DECIMAL}{NBSP}千米/小时
 STR_UNITS_VELOCITY_SI                                           :{DECIMAL}{NBSP}米/秒
-STR_UNITS_VELOCITY_GAMEUNITS                                    :{DECIMAL}{NBSP}格/日
 STR_UNITS_VELOCITY_KNOTS                                        :{DECIMAL}{NBSP}节
 
 STR_UNITS_POWER_IMPERIAL                                        :{DECIMAL}{NBSP}匹
@@ -255,9 +254,12 @@ STR_UNITS_HEIGHT_IMPERIAL                                       :{DECIMAL}{NBSP}
 STR_UNITS_HEIGHT_METRIC                                         :{DECIMAL}{NBSP}米
 STR_UNITS_HEIGHT_SI                                             :{DECIMAL}{NBSP}米
 
+# Time units used in string control characters
 STR_UNITS_DAYS                                                  :{COMMA}{NBSP} 日
 STR_UNITS_SECONDS                                               :{COMMA}{NBSP} 秒
 STR_UNITS_TICKS                                                 :{COMMA}{NBSP} 刻
+
+
 
 # Common window strings
 STR_LIST_FILTER_TITLE                                           :{BLACK}搜索：
@@ -615,8 +617,8 @@ STR_GRAPH_CARGO_DELIVERED_CAPTION                               :{WHITE}运输�
 STR_GRAPH_COMPANY_PERFORMANCE_RATINGS_CAPTION                   :{WHITE}公司评价表现指数 (最大指数为1000)
 STR_GRAPH_COMPANY_VALUES_CAPTION                                :{WHITE}公司市值图表
 
+
 STR_GRAPH_CARGO_PAYMENT_RATES_CAPTION                           :{WHITE}货物运输价格
-STR_GRAPH_CARGO_PAYMENT_RATES_X_LABEL                           :{TINY_FONT}{BLACK}运输时间（天）
 STR_GRAPH_CARGO_PAYMENT_RATES_TITLE                             :{TINY_FONT}{BLACK}将 10 单位 (或 10,000 升) 货物运输 20 个方格
 STR_GRAPH_CARGO_ENABLE_ALL                                      :{TINY_FONT}{BLACK}全部启用
 STR_GRAPH_CARGO_DISABLE_ALL                                     :{TINY_FONT}{BLACK}全部禁用
@@ -1082,6 +1084,9 @@ STR_GAME_OPTIONS_BASE_MUSIC                                     :{BLACK}基础�
 STR_GAME_OPTIONS_BASE_MUSIC_TOOLTIP                             :{BLACK}选择要使用的基础音乐组
 STR_GAME_OPTIONS_BASE_MUSIC_DESCRIPTION_TOOLTIP                 :{BLACK}有关基础音乐组的附加信息
 
+
+
+
 STR_BASESET_STATUS                                              :{STRING} {RED}（共有{NUM}份缺失或损坏的文件）
 
 STR_ERROR_RESOLUTION_LIST_FAILED                                :{WHITE}检索支持的分辨率列表失败
@@ -1454,6 +1459,8 @@ STR_CONFIG_SETTING_WARN_INCOME_LESS_HELPTEXT                    :“打开”，
 
 STR_CONFIG_SETTING_NEVER_EXPIRE_VEHICLES                        :载具永不过期：{STRING}
 STR_CONFIG_SETTING_NEVER_EXPIRE_VEHICLES_HELPTEXT               :启用时，所有载具一经面世，就可以永远选择购买使用。
+
+###length 2
 
 STR_CONFIG_SETTING_AUTORENEW_VEHICLE                            :当车辆报废时自动更新：{STRING}
 STR_CONFIG_SETTING_AUTORENEW_VEHICLE_HELPTEXT                   :“打开”时，车辆在临近它的报废期限时自动更新
@@ -3653,10 +3660,8 @@ STR_GOAL_QUESTION_BUTTON_CLOSE                                  :关闭
 # Subsidies window
 STR_SUBSIDIES_CAPTION                                           :{WHITE}财政补贴项目
 STR_SUBSIDIES_OFFERED_TITLE                                     :{BLACK}尚未中标的项目：
-STR_SUBSIDIES_OFFERED_FROM_TO                                   :{ORANGE}将 {STRING} 从 {STRING} 运送到 {STRING}{YELLOW} (截止日期为 {DATE_SHORT})
 STR_SUBSIDIES_NONE                                              :{ORANGE}没有
 STR_SUBSIDIES_SUBSIDISED_TITLE                                  :{BLACK}已经中标的项目：
-STR_SUBSIDIES_SUBSIDISED_FROM_TO                                :{ORANGE}将 {STRING} 从 {STRING} 运送到 {STRING}{YELLOW} ({COMPANY}{YELLOW}，截止日期为 {DATE_SHORT})
 STR_SUBSIDIES_TOOLTIP_CLICK_ON_SERVICE_TO_CENTER                :{BLACK}点击项目可将屏幕中心移动到{}城镇/工业 所在的位置. 单击的同时按住Ctrl会在新视点中显示城镇/工业位置
 
 # Story book window
@@ -4334,9 +4339,9 @@ STR_VEHICLE_DETAILS_ROAD_VEHICLE_RENAME                         :{BLACK}命名�
 STR_VEHICLE_DETAILS_SHIP_RENAME                                 :{BLACK}命名船只
 STR_VEHICLE_DETAILS_AIRCRAFT_RENAME                             :{BLACK}命名飞机
 
-STR_VEHICLE_INFO_AGE_RUNNING_COST_YR                            :{BLACK}年龄：{LTBLUE}{STRING}{BLACK}   运行成本：{LTBLUE}{CURRENCY_LONG} /年
 STR_VEHICLE_INFO_AGE                                            :{COMMA} 年 ({COMMA})
 STR_VEHICLE_INFO_AGE_RED                                        :{RED}{COMMA} 年 ({COMMA})
+STR_VEHICLE_INFO_AGE_RUNNING_COST_YR                            :{BLACK}年龄：{LTBLUE}{STRING}{BLACK}   运行成本：{LTBLUE}{CURRENCY_LONG} /年
 
 STR_VEHICLE_INFO_MAX_SPEED                                      :{BLACK}最大速度：{LTBLUE}{VELOCITY}
 STR_VEHICLE_INFO_MAX_SPEED_TYPE                                 :{BLACK}最高速度： {LTBLUE}{VELOCITY} {BLACK}飞机种类： {LTBLUE}{STRING}
@@ -4356,14 +4361,11 @@ STR_VEHICLE_INFO_CAPACITY_CAPACITY                              :{BLACK}运载�
 
 STR_VEHICLE_INFO_FEEDER_CARGO_VALUE                             :{BLACK}转运成本： {LTBLUE}{CURRENCY_LONG}
 
-STR_VEHICLE_DETAILS_SERVICING_INTERVAL_DAYS                     :{BLACK}保养周期：{LTBLUE}{COMMA}天{BLACK}   上次保养日期：{LTBLUE}{DATE_LONG}
-STR_VEHICLE_DETAILS_SERVICING_INTERVAL_PERCENT                  :{BLACK}保养周期：{LTBLUE}{COMMA}%{BLACK}   上次保养：{LTBLUE}{DATE_LONG}
 STR_VEHICLE_DETAILS_INCREASE_SERVICING_INTERVAL_TOOLTIP         :{BLACK}增大检修时间间隔,以10为单位进行调整. 按住Ctrl同时点击则以5为单位进行调整
 STR_VEHICLE_DETAILS_DECREASE_SERVICING_INTERVAL_TOOLTIP         :{BLACK}减少检修时间间隔,以10为单位进行调整. 按住Ctrl同时点击则以5为单位进行调整
 
 STR_SERVICE_INTERVAL_DROPDOWN_TOOLTIP                           :{BLACK}更改服务时间间隔类型
 STR_VEHICLE_DETAILS_DEFAULT                                     :默认
-STR_VEHICLE_DETAILS_DAYS                                        :天
 STR_VEHICLE_DETAILS_PERCENT                                     :百分比
 
 ###length VEHICLE_TYPES

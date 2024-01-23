@@ -216,6 +216,9 @@ STR_UNITS_VOLUME_LONG_SI                                        :{DECIMAL} m³
 
 
 
+# Time units used in string control characters
+
+
 
 # Common window strings
 STR_LIST_FILTER_TITLE                                           :{BLACK}शब्द गाळा:
@@ -525,8 +528,8 @@ STR_GRAPH_CARGO_DELIVERED_CAPTION                               :{WHITE}वि�
 STR_GRAPH_COMPANY_PERFORMANCE_RATINGS_CAPTION                   :{WHITE}कंपनी कामगिरी रेटिंग (कमाल रेटिंग = 1000)
 STR_GRAPH_COMPANY_VALUES_CAPTION                                :{WHITE}कंपनी मूल्ये
 
+
 STR_GRAPH_CARGO_PAYMENT_RATES_CAPTION                           :{WHITE}मालवाहू भरणा दर
-STR_GRAPH_CARGO_PAYMENT_RATES_X_LABEL                           :{TINY_FONT}{BLACK}संक्रमणादरम्यान दिवस
 STR_GRAPH_CARGO_PAYMENT_RATES_TITLE                             :{TINY_FONT}{BLACK}मालवाहू 10 युनिट (किंवा 10,000 लिटर) 20 चौरस अंतरावर वितरण भरणा
 STR_GRAPH_CARGO_ENABLE_ALL                                      :{TINY_FONT}{BLACK}सर्व सक्षम
 STR_GRAPH_CARGO_DISABLE_ALL                                     :{TINY_FONT}{BLACK}सर्व अक्षम
@@ -739,6 +742,9 @@ STR_GAME_OPTIONS_RESOLUTION_OTHER                               :अन्य
 
 
 
+
+
+
 # Custom currency window
 
 
@@ -853,6 +859,8 @@ STR_CONFIG_SETTING_WARN_LOST_VEHICLE                            : वाहन �
 ###length 3
 
 
+
+###length 2
 
 
 ###length 2

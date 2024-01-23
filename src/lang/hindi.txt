@@ -80,6 +80,9 @@ STR_UNITS_POWER_METRIC                                          :{DECIMAL}{NBSP}
 
 
 
+# Time units used in string control characters
+
+
 
 # Common window strings
 
@@ -185,6 +188,7 @@ STR_MONTH_AUG                                                   :अगस्त
 STR_GRAPH_X_LABEL_MONTH                                         :{TINY_FONT}{STRING}
 STR_GRAPH_Y_LABEL                                               :{TINY_FONT}{STRING}
 STR_GRAPH_Y_LABEL_NUMBER                                        :{TINY_FONT}{COMMA}
+
 
 
 STR_GRAPH_CARGO_PAYMENT_CARGO                                   :{TINY_FONT}{BLACK}{STRING}
@@ -296,6 +300,9 @@ STR_GAME_OPTIONS_VIDEO_ACCELERATION                             :{BLACK}हा�
 
 
 STR_GAME_OPTIONS_GUI_SCALE_FRAME                                :{BLACK}इंटरफ़ेस का आकार
+
+
+
 
 
 
@@ -436,6 +443,8 @@ STR_CONFIG_SETTING_ORDER_REVIEW_HELPTEXT                        :सक्षम
 STR_CONFIG_SETTING_ORDER_REVIEW_OFF                             :नहीं
 
 
+
+###length 2
 
 
 ###length 2

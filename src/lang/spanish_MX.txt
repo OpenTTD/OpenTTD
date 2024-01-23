@@ -198,7 +198,6 @@ STR_COLOUR_RANDOM                                               :Aleatorio
 STR_UNITS_VELOCITY_IMPERIAL                                     :{DECIMAL}{NBSP}mph
 STR_UNITS_VELOCITY_METRIC                                       :{DECIMAL}{NBSP}km/h
 STR_UNITS_VELOCITY_SI                                           :{DECIMAL}{NBSP}m/s
-STR_UNITS_VELOCITY_GAMEUNITS                                    :{DECIMAL}{NBSP}casillas/día
 
 STR_UNITS_POWER_IMPERIAL                                        :{DECIMAL}{NBSP}hp
 STR_UNITS_POWER_METRIC                                          :{DECIMAL}{NBSP}cv
@@ -237,6 +236,9 @@ STR_UNITS_FORCE_SI                                              :{DECIMAL}{NBSP}
 STR_UNITS_HEIGHT_IMPERIAL                                       :{DECIMAL}{NBSP}pies
 STR_UNITS_HEIGHT_METRIC                                         :{DECIMAL}{NBSP}m
 STR_UNITS_HEIGHT_SI                                             :{DECIMAL}{NBSP}m
+
+# Time units used in string control characters
+
 
 
 # Common window strings
@@ -593,8 +595,8 @@ STR_GRAPH_CARGO_DELIVERED_CAPTION                               :{WHITE}Unidades
 STR_GRAPH_COMPANY_PERFORMANCE_RATINGS_CAPTION                   :{WHITE}Nivel de desempeño (nivel máximo: 1000)
 STR_GRAPH_COMPANY_VALUES_CAPTION                                :{WHITE}Valor de la empresa
 
+
 STR_GRAPH_CARGO_PAYMENT_RATES_CAPTION                           :{WHITE}Tasas de pago por carga
-STR_GRAPH_CARGO_PAYMENT_RATES_X_LABEL                           :{TINY_FONT}{BLACK}Días en tránsito
 STR_GRAPH_CARGO_PAYMENT_RATES_TITLE                             :{TINY_FONT}{BLACK}Pago por entregar 10 unidades (o 10,000 litros) de carga por distancia de 20 casillas
 STR_GRAPH_CARGO_ENABLE_ALL                                      :{TINY_FONT}{BLACK}Activar todos
 STR_GRAPH_CARGO_DISABLE_ALL                                     :{TINY_FONT}{BLACK}Desactivar todos
@@ -1027,6 +1029,9 @@ STR_GAME_OPTIONS_BASE_MUSIC_TOOLTIP                             :{BLACK}Elegir m
 STR_GAME_OPTIONS_BASE_MUSIC_DESCRIPTION_TOOLTIP                 :{BLACK}Información adicional sobre música base
 
 
+
+
+
 STR_ERROR_RESOLUTION_LIST_FAILED                                :{WHITE}No se pudo obtener una lista de resoluciones compatibles
 STR_ERROR_FULLSCREEN_FAILED                                     :{WHITE}El modo de pantalla completa falló
 
@@ -1391,6 +1396,8 @@ STR_CONFIG_SETTING_WARN_INCOME_LESS_HELPTEXT                    :Mostrar un mens
 
 STR_CONFIG_SETTING_NEVER_EXPIRE_VEHICLES                        :Vehículos siempre disponibles: {STRING}
 STR_CONFIG_SETTING_NEVER_EXPIRE_VEHICLES_HELPTEXT               :Todos los modelos de vehículos estarán disponibles para siempre tras haber sido introducidos
+
+###length 2
 
 STR_CONFIG_SETTING_AUTORENEW_VEHICLE                            :Renovar automáticamente vehículos viejos: {STRING}
 STR_CONFIG_SETTING_AUTORENEW_VEHICLE_HELPTEXT                   :Los vehículos próximos al final de su vida útil serán renovados automáticamente, siempre y cuando se cumplan las condiciones de renovación
@@ -3522,10 +3529,8 @@ STR_GOAL_QUESTION_BUTTON_CLOSE                                  :Cerrar
 # Subsidies window
 STR_SUBSIDIES_CAPTION                                           :{WHITE}Subsidios
 STR_SUBSIDIES_OFFERED_TITLE                                     :{BLACK}Se ofrecen subsidios al servicio que lleve:
-STR_SUBSIDIES_OFFERED_FROM_TO                                   :{ORANGE}{STRING} desde {STRING} a {STRING}{YELLOW} (antes de {DATE_SHORT})
 STR_SUBSIDIES_NONE                                              :{ORANGE}- Ninguno -
 STR_SUBSIDIES_SUBSIDISED_TITLE                                  :{BLACK}Servicios con subsidio:
-STR_SUBSIDIES_SUBSIDISED_FROM_TO                                :{ORANGE}{STRING} desde {STRING} a {STRING}{YELLOW} ({COMPANY}{YELLOW}, hasta {DATE_SHORT})
 STR_SUBSIDIES_TOOLTIP_CLICK_ON_SERVICE_TO_CENTER                :{BLACK}Clic en un servicio para centrar la vista en la industria o localidad. Ctrl+Clic abre una vista aparte
 
 # Story book window
@@ -4197,9 +4202,9 @@ STR_VEHICLE_DETAILS_ROAD_VEHICLE_RENAME                         :{BLACK}Cambiar 
 STR_VEHICLE_DETAILS_SHIP_RENAME                                 :{BLACK}Cambiar nombre
 STR_VEHICLE_DETAILS_AIRCRAFT_RENAME                             :{BLACK}Cambiar nombre
 
-STR_VEHICLE_INFO_AGE_RUNNING_COST_YR                            :{BLACK}Edad: {LTBLUE}{STRING}{BLACK}   Costo de mantenimiento: {LTBLUE}{CURRENCY_LONG}/año
 STR_VEHICLE_INFO_AGE                                            :{COMMA} año{P "" s} ({COMMA})
 STR_VEHICLE_INFO_AGE_RED                                        :{RED}{COMMA} año{P "" s} ({COMMA})
+STR_VEHICLE_INFO_AGE_RUNNING_COST_YR                            :{BLACK}Edad: {LTBLUE}{STRING}{BLACK}   Costo de mantenimiento: {LTBLUE}{CURRENCY_LONG}/año
 
 STR_VEHICLE_INFO_MAX_SPEED                                      :{BLACK}Velocidad máx.: {LTBLUE}{VELOCITY}
 STR_VEHICLE_INFO_MAX_SPEED_TYPE                                 :{BLACK}Vel. máx.: {LTBLUE}{VELOCITY} {BLACK}Tipo de aeronave: {LTBLUE}{STRING}
@@ -4219,14 +4224,11 @@ STR_VEHICLE_INFO_CAPACITY_CAPACITY                              :{BLACK}Capacida
 
 STR_VEHICLE_INFO_FEEDER_CARGO_VALUE                             :{BLACK}Créditos por transferencia: {LTBLUE}{CURRENCY_LONG}
 
-STR_VEHICLE_DETAILS_SERVICING_INTERVAL_DAYS                     :{BLACK}Mantenimiento cada: {LTBLUE}{COMMA}{NBSP}días{BLACK}   Último mantenimiento: {LTBLUE}{DATE_LONG}
-STR_VEHICLE_DETAILS_SERVICING_INTERVAL_PERCENT                  :{BLACK}Mantenimiento cada: {LTBLUE}{COMMA}%{BLACK}   Último mantenimiento: {LTBLUE}{DATE_LONG}
 STR_VEHICLE_DETAILS_INCREASE_SERVICING_INTERVAL_TOOLTIP         :{BLACK}Incrementar el intervalo de mantenimiento 10 días. Ctrl+Clic para incrementar el intervalo de mantenimiento en 5 días
 STR_VEHICLE_DETAILS_DECREASE_SERVICING_INTERVAL_TOOLTIP         :{BLACK}Reducir intervalo de mantenimiento 10 días. Ctrl+Clic para reducir el intervalo de mantenimiento 5 días
 
 STR_SERVICE_INTERVAL_DROPDOWN_TOOLTIP                           :{BLACK}Cambiar tipo de intervalo de mantenimiento
 STR_VEHICLE_DETAILS_DEFAULT                                     :Por defecto
-STR_VEHICLE_DETAILS_DAYS                                        :Días
 STR_VEHICLE_DETAILS_PERCENT                                     :Porcentaje
 
 ###length VEHICLE_TYPES

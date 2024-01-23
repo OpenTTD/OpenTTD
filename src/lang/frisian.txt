@@ -225,6 +225,9 @@ STR_UNITS_HEIGHT_IMPERIAL                                       :{DECIMAL}{NBSP}
 STR_UNITS_HEIGHT_METRIC                                         :{DECIMAL}{NBSP}m
 STR_UNITS_HEIGHT_SI                                             :{DECIMAL}{NBSP}m
 
+# Time units used in string control characters
+
+
 
 # Common window strings
 STR_LIST_FILTER_TITLE                                           :{BLACK}Filter:
@@ -564,8 +567,8 @@ STR_GRAPH_CARGO_DELIVERED_CAPTION                               :{WHITE}Stiks fr
 STR_GRAPH_COMPANY_PERFORMANCE_RATINGS_CAPTION                   :{WHITE}Bedriuwsprestaasjewurdearring (maksimale wurdearring=1000)
 STR_GRAPH_COMPANY_VALUES_CAPTION                                :{WHITE}Bedriuwswearden
 
+
 STR_GRAPH_CARGO_PAYMENT_RATES_CAPTION                           :{WHITE}Frachtpriizen
-STR_GRAPH_CARGO_PAYMENT_RATES_X_LABEL                           :{TINY_FONT}{BLACK}Dagen ûnderweis
 STR_GRAPH_CARGO_PAYMENT_RATES_TITLE                             :{TINY_FONT}{BLACK}Betelling foar levering fan 10 ienheiden (of 10,000 liter) fracht oer in ôfstân fan 20 hokjes
 STR_GRAPH_CARGO_ENABLE_ALL                                      :{TINY_FONT}{BLACK}Alles oansette
 STR_GRAPH_CARGO_DISABLE_ALL                                     :{TINY_FONT}{BLACK}Alles ûtsette
@@ -969,6 +972,9 @@ STR_GAME_OPTIONS_BASE_MUSIC_TOOLTIP                             :{BLACK}Selektea
 STR_GAME_OPTIONS_BASE_MUSIC_DESCRIPTION_TOOLTIP                 :{BLACK}Oanfoljende ynformaasje oer de basisset foar musyk
 
 
+
+
+
 STR_ERROR_RESOLUTION_LIST_FAILED                                :{WHITE}Koe gjin list mei brûkbere resolúsjes ophelje
 STR_ERROR_FULLSCREEN_FAILED                                     :{WHITE}Folslein skermmodus mislearre
 
@@ -1316,6 +1322,8 @@ STR_CONFIG_SETTING_WARN_INCOME_LESS_HELPTEXT                    :By ynskeakeljen
 
 STR_CONFIG_SETTING_NEVER_EXPIRE_VEHICLES                        :Fiertugen ferinne nea: {STRING}
 STR_CONFIG_SETTING_NEVER_EXPIRE_VEHICLES_HELPTEXT               :By ynskeakeljen bliuwe alle fiertugen foar ivich beskikber
+
+###length 2
 
 STR_CONFIG_SETTING_AUTORENEW_VEHICLE                            :Ferfang âlde fiertugen automatysk: {STRING}
 STR_CONFIG_SETTING_AUTORENEW_VEHICLE_HELPTEXT                   :By ynskeakeljen wurden fiertugen dy't hast op harren ein binne automatyske ferfongen
@@ -3022,10 +3030,8 @@ STR_GOAL_QUESTION_BUTTON_CLOSE                                  :Slute
 # Subsidies window
 STR_SUBSIDIES_CAPTION                                           :{WHITE}Subsydzjes
 STR_SUBSIDIES_OFFERED_TITLE                                     :{BLACK}Subsydzjes dy't oanbean wurde:
-STR_SUBSIDIES_OFFERED_FROM_TO                                   :{ORANGE}{STRING} fan {STRING} nei {STRING}{YELLOW} (foar {DATE_SHORT})
 STR_SUBSIDIES_NONE                                              :{ORANGE}- Gjin -
 STR_SUBSIDIES_SUBSIDISED_TITLE                                  :{BLACK}Tsjinsten dy't al subsydzje krije:
-STR_SUBSIDIES_SUBSIDISED_FROM_TO                                :{ORANGE}{STRING} fan {STRING} nei {STRING}{YELLOW} ({COMPANY}{YELLOW}, oant {DATE_SHORT})
 STR_SUBSIDIES_TOOLTIP_CLICK_ON_SERVICE_TO_CENTER                :{BLACK}Klik om te sentrearen op yndusty/stêd. Ctrl+klick iepent in nij sichtber diel op yndustry/stêd lokaasje
 
 # Story book window
@@ -3553,14 +3559,11 @@ STR_VEHICLE_INFO_CAPACITY_CAPACITY                              :{BLACK}Kapasite
 
 STR_VEHICLE_INFO_FEEDER_CARGO_VALUE                             :{BLACK}Wikselje kredyt: {LTBLUE}{CURRENCY_LONG}
 
-STR_VEHICLE_DETAILS_SERVICING_INTERVAL_DAYS                     :{BLACK}Underhâldsinterval: {LTBLUE}{COMMA}{NBSP}dagen{BLACK}   Lêste underhâld: {LTBLUE}{DATE_LONG}
-STR_VEHICLE_DETAILS_SERVICING_INTERVAL_PERCENT                  :{BLACK}Underhâldsinterval: {LTBLUE}{COMMA}%{BLACK}   Lêste underhâld: {LTBLUE}{DATE_LONG}
 STR_VEHICLE_DETAILS_INCREASE_SERVICING_INTERVAL_TOOLTIP         :{BLACK}Underhâldsinterval ferheegje mei 10. Ctrl+Klik ferheegt underhâldsinterval mei 5
 STR_VEHICLE_DETAILS_DECREASE_SERVICING_INTERVAL_TOOLTIP         :{BLACK}Tiid tusken ûnderhâldsbeurten ferleegje mei 10. Ctrl+Klik ferleegt de tiid tusken ûnderhâldsbeurten mei 5.
 
 STR_SERVICE_INTERVAL_DROPDOWN_TOOLTIP                           :{BLACK}Feroarje tiid tusken ûnderhâldsbeurten
 STR_VEHICLE_DETAILS_DEFAULT                                     :Standert
-STR_VEHICLE_DETAILS_DAYS                                        :Dagen
 STR_VEHICLE_DETAILS_PERCENT                                     :Persintaazje
 
 ###length VEHICLE_TYPES

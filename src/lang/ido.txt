@@ -217,6 +217,9 @@ STR_UNITS_FORCE_SI                                              :{DECIMAL} kN
 STR_UNITS_HEIGHT_IMPERIAL                                       :{DECIMAL} pd
 STR_UNITS_HEIGHT_SI                                             :{DECIMAL} m
 
+# Time units used in string control characters
+
+
 
 # Common window strings
 
@@ -347,6 +350,7 @@ STR_GRAPH_X_LABEL_MONTH                                         :{TINY_FONT}{STR
 STR_GRAPH_X_LABEL_MONTH_YEAR                                    :{TINY_FONT}{STRING}{}{NUM}
 STR_GRAPH_Y_LABEL                                               :{TINY_FONT}{STRING}
 STR_GRAPH_Y_LABEL_NUMBER                                        :{TINY_FONT}{COMMA}
+
 
 
 
@@ -489,6 +493,9 @@ STR_GAME_OPTIONS_RESOLUTION_OTHER                               :altra
 
 
 
+
+
+
 # Custom currency window
 
 
@@ -615,6 +622,8 @@ STR_CONFIG_SETTING_PLANE_CRASHES_NORMAL                         :normala
 ###length 3
 
 
+
+###length 2
 
 
 ###length 2
