@@ -558,6 +558,7 @@ struct EconomySettings {
 	bool   allow_town_level_crossings;       ///< towns are allowed to build level crossings
 	bool   infrastructure_maintenance;       ///< enable monthly maintenance fee for owner infrastructure
 	TimekeepingUnits timekeeping_units;      ///< time units to use for the game economy, either calendar or wallclock
+	uint16_t minutes_per_calendar_year;      ///< minutes per calendar year. Special value 0 means that calendar time is frozen.
 };
 
 struct LinkGraphSettings {

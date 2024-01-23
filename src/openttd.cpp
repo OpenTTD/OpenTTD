@@ -1472,11 +1472,12 @@ void StateGameLoop()
 
 		BasePersistentStorageArray::SwitchMode(PSM_ENTER_GAMELOOP);
 		AnimateAnimatedTiles();
-		TimerManager<TimerGameCalendar>::Elapsed(1);
+		if (TimerManager<TimerGameCalendar>::Elapsed(1)) {
+			RunVehicleCalendarDayProc();
+		}
 		TimerManager<TimerGameEconomy>::Elapsed(1);
 		TimerManager<TimerGameTick>::Elapsed(1);
 		RunTileLoop();
-		RunVehicleCalendarDayProc();
 		CallVehicleTicks();
 		CallLandscapeTick();
 		BasePersistentStorageArray::SwitchMode(PSM_LEAVE_GAMELOOP);

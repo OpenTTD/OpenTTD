@@ -32,6 +32,7 @@ TimerGameCalendar::Year TimerGameCalendar::year = {};
 TimerGameCalendar::Month TimerGameCalendar::month = {};
 TimerGameCalendar::Date TimerGameCalendar::date = {};
 TimerGameCalendar::DateFract TimerGameCalendar::date_fract = {};
+uint16_t TimerGameCalendar::sub_date_fract = {};
 
 /**
  * Converts a Date to a Year, Month & Day.
@@ -93,28 +94,42 @@ void TimeoutTimer<TimerGameCalendar>::Elapsed(TimerGameCalendar::TElapsed trigge
 }
 
 template<>
-void TimerManager<TimerGameCalendar>::Elapsed([[maybe_unused]] TimerGameCalendar::TElapsed delta)
+bool TimerManager<TimerGameCalendar>::Elapsed([[maybe_unused]] TimerGameCalendar::TElapsed delta)
 {
 	assert(delta == 1);
 
-	if (_game_mode == GM_MENU) return;
+	if (_game_mode == GM_MENU) return false;
+
+	/* If calendar day progress is frozen, don't try to advance time. */
+	if (_settings_game.economy.minutes_per_calendar_year == CalendarTime::FROZEN_MINUTES_PER_YEAR) return false;
+
+	/* If we are using a non-default calendar progression speed, we need to check the sub_date_fract before updating date_fract. */
+	if (_settings_game.economy.minutes_per_calendar_year != CalendarTime::DEF_MINUTES_PER_YEAR) {
+		TimerGameCalendar::sub_date_fract++;
+
+		/* Check if we are ready to increment date_fract */
+		if (TimerGameCalendar::sub_date_fract < (Ticks::DAY_TICKS * _settings_game.economy.minutes_per_calendar_year) / CalendarTime::DEF_MINUTES_PER_YEAR) return false;
+	}
 
 	TimerGameCalendar::date_fract++;
-	if (TimerGameCalendar::date_fract < Ticks::DAY_TICKS) return;
-	TimerGameCalendar::date_fract = 0;
 
-	/* increase day counter */
+	/* Check if we entered a new day. */
+	if (TimerGameCalendar::date_fract < Ticks::DAY_TICKS) return true;
+	TimerGameCalendar::date_fract = 0;
+	TimerGameCalendar::sub_date_fract = 0;
+
+	/* Increase day counter. */
 	TimerGameCalendar::date++;
 
 	TimerGameCalendar::YearMonthDay ymd = TimerGameCalendar::ConvertDateToYMD(TimerGameCalendar::date);
 
-	/* check if we entered a new month? */
+	/* Check if we entered a new month. */
 	bool new_month = ymd.month != TimerGameCalendar::month;
 
-	/* check if we entered a new year? */
+	/* Check if we entered a new year. */
 	bool new_year = ymd.year != TimerGameCalendar::year;
 
-	/* update internal variables before calling the daily/monthly/yearly loops */
+	/* Update internal variables before calling the daily/monthly/yearly loops. */
 	TimerGameCalendar::month = ymd.month;
 	TimerGameCalendar::year = ymd.year;
 
@@ -137,7 +152,7 @@ void TimerManager<TimerGameCalendar>::Elapsed([[maybe_unused]] TimerGameCalendar
 		}
 	}
 
-	/* check if we reached the maximum year, decrement dates by a year */
+	/* If we reached the maximum year, decrement dates by a year. */
 	if (TimerGameCalendar::year == CalendarTime::MAX_YEAR + 1) {
 		int days_this_year;
 
@@ -145,6 +160,8 @@ void TimerManager<TimerGameCalendar>::Elapsed([[maybe_unused]] TimerGameCalendar
 		days_this_year = TimerGameCalendar::IsLeapYear(TimerGameCalendar::year) ? CalendarTime::DAYS_IN_LEAP_YEAR : CalendarTime::DAYS_IN_YEAR;
 		TimerGameCalendar::date -= days_this_year;
 	}
+
+	return true;
 }
 
 #ifdef WITH_ASSERT

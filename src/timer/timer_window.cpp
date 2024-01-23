@@ -49,7 +49,7 @@ void TimeoutTimer<TimerWindow>::Elapsed(TimerWindow::TElapsed delta)
 }
 
 template<>
-void TimerManager<TimerWindow>::Elapsed(TimerWindow::TElapsed delta)
+bool TimerManager<TimerWindow>::Elapsed(TimerWindow::TElapsed delta)
 {
 	/* Make a temporary copy of the timers, as a timer's callback might add/remove other timers. */
 	auto timers = TimerManager<TimerWindow>::GetTimers();
@@ -57,6 +57,8 @@ void TimerManager<TimerWindow>::Elapsed(TimerWindow::TElapsed delta)
 	for (auto timer : timers) {
 		timer->Elapsed(delta);
 	}
+
+	return true;
 }
 
 #ifdef WITH_ASSERT

@@ -78,8 +78,9 @@ public:
 	 *   Call the Elapsed() method of all active timers.
 	 *
 	 * @param value The amount of time that has elapsed.
+	 * @return True iff time has progressed.
 	 */
-	static void Elapsed(TElapsed value);
+	static bool Elapsed(TElapsed value);
 
 private:
 	/**
