@@ -1487,6 +1487,13 @@ STR_CONFIG_SETTING_TIMEKEEPING_UNITS_HELPTEXT                   :Select the time
 STR_CONFIG_SETTING_TIMEKEEPING_UNITS_CALENDAR                   :Calendar
 STR_CONFIG_SETTING_TIMEKEEPING_UNITS_WALLCLOCK                  :Wallclock
 
+STR_CONFIG_SETTING_MINUTES_PER_YEAR                             :Minutes per year: {STRING2}
+STR_CONFIG_SETTING_MINUTES_PER_YEAR_HELPTEXT                    :Choose the number of minutes in a calendar year. The default is 12 minutes. Set to 0 to stop calendar time from changing. This setting does not affect the economic simulation of the game, and is only available when using wallclock timekeeping.
+
+STR_CONFIG_SETTING_MINUTES_PER_YEAR_VALUE                       :{NUM}
+###setting-zero-is-special
+STR_CONFIG_SETTING_MINUTES_PER_YEAR_FROZEN                      :0 (calendar time frozen)
+
 STR_CONFIG_SETTING_AUTORENEW_VEHICLE                            :Autorenew vehicle when it gets old: {STRING2}
 STR_CONFIG_SETTING_AUTORENEW_VEHICLE_HELPTEXT                   :When enabled, a vehicle nearing its end of life gets automatically replaced when the renew conditions are fulfilled
 

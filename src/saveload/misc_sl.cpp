@@ -88,6 +88,7 @@ static const SaveLoad _date_desc[] = {
 	SLEG_CONDVAR("tick_counter",           TimerGameTick::counter,           SLE_UINT64,                  SLV_U64_TICK_COUNTER, SL_MAX_VERSION),
 	SLEG_CONDVAR("economy_date",           TimerGameEconomy::date,           SLE_INT32,                   SLV_ECONOMY_DATE, SL_MAX_VERSION),
 	SLEG_CONDVAR("economy_date_fract",     TimerGameEconomy::date_fract,     SLE_UINT16,                  SLV_ECONOMY_DATE, SL_MAX_VERSION),
+	SLEG_CONDVAR("calendar_sub_date_fract", TimerGameCalendar::sub_date_fract, SLE_UINT16,                SLV_CALENDAR_SUB_DATE_FRACT, SL_MAX_VERSION),
 	SLEG_CONDVAR("age_cargo_skip_counter", _age_cargo_skip_counter, SLE_UINT8,                   SL_MIN_VERSION, SLV_162),
 	SLEG_CONDVAR("cur_tileloop_tile",      _cur_tileloop_tile,      SLE_FILE_U16 | SLE_VAR_U32,  SL_MIN_VERSION, SLV_6),
 	SLEG_CONDVAR("cur_tileloop_tile",      _cur_tileloop_tile,      SLE_UINT32,                  SLV_6, SL_MAX_VERSION),

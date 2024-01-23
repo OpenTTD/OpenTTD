@@ -22,6 +22,7 @@
 #include "news_func.h"
 #include "window_func.h"
 #include "company_func.h"
+#include "timer/timer_game_calendar.h"
 #if defined(WITH_FREETYPE) || defined(_WIN32) || defined(WITH_COCOA)
 #define HAS_TRUETYPE_FONT
 #include "fontcache.h"
@@ -500,7 +501,46 @@ static void ChangeTimekeepingUnits(int32_t)
 		UpdateAllServiceInterval(0);
 	}
 
+	/* If we are using calendar timekeeping, "minutes per year" must be default. */
+	if (!TimerGameEconomy::UsingWallclockUnits(true)) {
+		_settings_newgame.economy.minutes_per_calendar_year = CalendarTime::DEF_MINUTES_PER_YEAR;
+	}
+
 	InvalidateWindowClassesData(WC_GAME_OPTIONS, 0);
+}
+
+/**
+ * Callback after the player changes the minutes per year.
+ * @param new_value The intended new value of the setting, used for clamping.
+ */
+static void ChangeMinutesPerYear(int32_t new_value)
+{
+	/* We don't allow setting Minutes Per Year below default, unless it's to 0 for frozen calendar time. */
+	if (new_value < CalendarTime::DEF_MINUTES_PER_YEAR) {
+		int clamped;
+
+		/* If the new value is 1, we're probably at 0 and trying to increase the value, so we should jump up to default. */
+		if (new_value == 1) {
+			clamped = CalendarTime::DEF_MINUTES_PER_YEAR;
+		} else {
+			clamped = CalendarTime::FROZEN_MINUTES_PER_YEAR;
+		}
+
+		/* Override the setting with the clamped value. */
+		if (_game_mode == GM_MENU) {
+			_settings_newgame.economy.minutes_per_calendar_year = clamped;
+		} else {
+			_settings_game.economy.minutes_per_calendar_year = clamped;
+		}
+	}
+
+	/* If the setting value is not the default, force the game to use wallclock timekeeping units.
+	 * This can only happen in the menu, since the pre_cb ensures this setting can only be changed there, or if we're already using wallclock units.
+	 */
+	if (_game_mode == GM_MENU && (_settings_newgame.economy.minutes_per_calendar_year != CalendarTime::DEF_MINUTES_PER_YEAR)) {
+		_settings_newgame.economy.timekeeping_units = TKU_WALLCLOCK;
+		InvalidateWindowClassesData(WC_GAME_OPTIONS, 0);
+	}
 }
 
 /**
