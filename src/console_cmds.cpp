@@ -56,9 +56,8 @@ static uint _script_current_depth; ///< Depth of scripts running (used to abort 
 /** File list storage for the console, for caching the last 'ls' command. */
 class ConsoleFileList : public FileList {
 public:
-	ConsoleFileList() : FileList()
+	ConsoleFileList(AbstractFileType abstract_filetype, bool show_dirs) : FileList(), abstract_filetype(abstract_filetype), show_dirs(show_dirs)
 	{
-		this->file_list_valid = false;
 	}
 
 	/** Declare the file storage cache as being invalid, also clears all stored files. */
@@ -75,15 +74,19 @@ public:
 	void ValidateFileList(bool force_reload = false)
 	{
 		if (force_reload || !this->file_list_valid) {
-			this->BuildFileList(FT_SAVEGAME, SLO_LOAD);
+			this->BuildFileList(this->abstract_filetype, SLO_LOAD, this->show_dirs);
 			this->file_list_valid = true;
 		}
 	}
 
-	bool file_list_valid; ///< If set, the file list is valid.
+	AbstractFileType abstract_filetype; ///< The abstract file type to list.
+	bool show_dirs; ///< Whether to show directories in the file list.
+	bool file_list_valid = false; ///< If set, the file list is valid.
 };
 
-static ConsoleFileList _console_file_list; ///< File storage cache for the console.
+static ConsoleFileList _console_file_list_savegame{FT_SAVEGAME, true}; ///< File storage cache for savegames.
+static ConsoleFileList _console_file_list_scenario{FT_SCENARIO, false}; ///< File storage cache for scenarios.
+static ConsoleFileList _console_file_list_heightmap{FT_HEIGHTMAP, false}; ///< File storage cache for heightmaps.
 
 /* console command defines */
 #define DEF_CONSOLE_CMD(function) static bool function([[maybe_unused]] byte argc, [[maybe_unused]] char *argv[])
@@ -424,8 +427,8 @@ DEF_CONSOLE_CMD(ConLoad)
 	if (argc != 2) return false;
 
 	const char *file = argv[1];
-	_console_file_list.ValidateFileList();
-	const FiosItem *item = _console_file_list.FindItem(file);
+	_console_file_list_savegame.ValidateFileList();
+	const FiosItem *item = _console_file_list_savegame.FindItem(file);
 	if (item != nullptr) {
 		if (GetAbstractFileType(item->type) == FT_SAVEGAME) {
 			_switch_mode = SM_LOAD_GAME;
@@ -440,6 +443,57 @@ DEF_CONSOLE_CMD(ConLoad)
 	return true;
 }
 
+DEF_CONSOLE_CMD(ConLoadScenario)
+{
+	if (argc == 0) {
+		IConsolePrint(CC_HELP, "Load a scenario by name or index. Usage: 'load_scenario <file | number>'.");
+		return true;
+	}
+
+	if (argc != 2) return false;
+
+	const char *file = argv[1];
+	_console_file_list_scenario.ValidateFileList();
+	const FiosItem *item = _console_file_list_scenario.FindItem(file);
+	if (item != nullptr) {
+		if (GetAbstractFileType(item->type) == FT_SCENARIO) {
+			_switch_mode = SM_LOAD_GAME;
+			_file_to_saveload.Set(*item);
+		} else {
+			IConsolePrint(CC_ERROR, "'{}' is not a scenario.", file);
+		}
+	} else {
+		IConsolePrint(CC_ERROR, "'{}' cannot be found.", file);
+	}
+
+	return true;
+}
+
+DEF_CONSOLE_CMD(ConLoadHeightmap)
+{
+	if (argc == 0) {
+		IConsolePrint(CC_HELP, "Load a heightmap by name or index. Usage: 'load_heightmap <file | number>'.");
+		return true;
+	}
+
+	if (argc != 2) return false;
+
+	const char *file = argv[1];
+	_console_file_list_heightmap.ValidateFileList();
+	const FiosItem *item = _console_file_list_heightmap.FindItem(file);
+	if (item != nullptr) {
+		if (GetAbstractFileType(item->type) == FT_HEIGHTMAP) {
+			_switch_mode = SM_START_HEIGHTMAP;
+			_file_to_saveload.Set(*item);
+		} else {
+			IConsolePrint(CC_ERROR, "'{}' is not a heightmap.", file);
+		}
+	} else {
+		IConsolePrint(CC_ERROR, "'{}' cannot be found.", file);
+	}
+
+	return true;
+}
 
 DEF_CONSOLE_CMD(ConRemove)
 {
@@ -451,8 +505,8 @@ DEF_CONSOLE_CMD(ConRemove)
 	if (argc != 2) return false;
 
 	const char *file = argv[1];
-	_console_file_list.ValidateFileList();
-	const FiosItem *item = _console_file_list.FindItem(file);
+	_console_file_list_savegame.ValidateFileList();
+	const FiosItem *item = _console_file_list_savegame.FindItem(file);
 	if (item != nullptr) {
 		if (unlink(item->name.c_str()) != 0) {
 			IConsolePrint(CC_ERROR, "Failed to delete '{}'.", item->name);
@@ -461,7 +515,7 @@ DEF_CONSOLE_CMD(ConRemove)
 		IConsolePrint(CC_ERROR, "'{}' could not be found.", file);
 	}
 
-	_console_file_list.InvalidateFileList();
+	_console_file_list_savegame.InvalidateFileList();
 	return true;
 }
 
@@ -474,9 +528,41 @@ DEF_CONSOLE_CMD(ConListFiles)
 		return true;
 	}
 
-	_console_file_list.ValidateFileList(true);
-	for (uint i = 0; i < _console_file_list.size(); i++) {
-		IConsolePrint(CC_DEFAULT, "{}) {}", i, _console_file_list[i].title);
+	_console_file_list_savegame.ValidateFileList(true);
+	for (uint i = 0; i < _console_file_list_savegame.size(); i++) {
+		IConsolePrint(CC_DEFAULT, "{}) {}", i, _console_file_list_savegame[i].title);
+	}
+
+	return true;
+}
+
+/* List all the scenarios */
+DEF_CONSOLE_CMD(ConListScenarios)
+{
+	if (argc == 0) {
+		IConsolePrint(CC_HELP, "List all loadable scenarios. Usage: 'list_scenarios'.");
+		return true;
+	}
+
+	_console_file_list_scenario.ValidateFileList(true);
+	for (uint i = 0; i < _console_file_list_scenario.size(); i++) {
+		IConsolePrint(CC_DEFAULT, "{}) {}", i, _console_file_list_scenario[i].title);
+	}
+
+	return true;
+}
+
+/* List all the heightmaps */
+DEF_CONSOLE_CMD(ConListHeightmaps)
+{
+	if (argc == 0) {
+		IConsolePrint(CC_HELP, "List all loadable heightmaps. Usage: 'list_heightmaps'.");
+		return true;
+	}
+
+	_console_file_list_heightmap.ValidateFileList(true);
+	for (uint i = 0; i < _console_file_list_heightmap.size(); i++) {
+		IConsolePrint(CC_DEFAULT, "{}) {}", i, _console_file_list_heightmap[i].title);
 	}
 
 	return true;
@@ -493,8 +579,8 @@ DEF_CONSOLE_CMD(ConChangeDirectory)
 	if (argc != 2) return false;
 
 	const char *file = argv[1];
-	_console_file_list.ValidateFileList(true);
-	const FiosItem *item = _console_file_list.FindItem(file);
+	_console_file_list_savegame.ValidateFileList(true);
+	const FiosItem *item = _console_file_list_savegame.FindItem(file);
 	if (item != nullptr) {
 		switch (item->type) {
 			case FIOS_TYPE_DIR: case FIOS_TYPE_DRIVE: case FIOS_TYPE_PARENT:
@@ -506,7 +592,7 @@ DEF_CONSOLE_CMD(ConChangeDirectory)
 		IConsolePrint(CC_ERROR, "{}: No such file or directory.", file);
 	}
 
-	_console_file_list.InvalidateFileList();
+	_console_file_list_savegame.InvalidateFileList();
 	return true;
 }
 
@@ -518,8 +604,8 @@ DEF_CONSOLE_CMD(ConPrintWorkingDirectory)
 	}
 
 	/* XXX - Workaround for broken file handling */
-	_console_file_list.ValidateFileList(true);
-	_console_file_list.InvalidateFileList();
+	_console_file_list_savegame.ValidateFileList(true);
+	_console_file_list_savegame.InvalidateFileList();
 
 	IConsolePrint(CC_DEFAULT, FiosGetCurrentPath());
 	return true;
@@ -2531,10 +2617,16 @@ void IConsoleStdLibRegister()
 	IConsole::CmdRegister("scrollto",                ConScrollToTile);
 	IConsole::CmdRegister("alias",                   ConAlias);
 	IConsole::CmdRegister("load",                    ConLoad);
+	IConsole::CmdRegister("load_save",               ConLoad);
+	IConsole::CmdRegister("load_scenario",           ConLoadScenario);
+	IConsole::CmdRegister("load_heightmap",          ConLoadHeightmap);
 	IConsole::CmdRegister("rm",                      ConRemove);
 	IConsole::CmdRegister("save",                    ConSave);
 	IConsole::CmdRegister("saveconfig",              ConSaveConfig);
 	IConsole::CmdRegister("ls",                      ConListFiles);
+	IConsole::CmdRegister("list_saves",              ConListFiles);
+	IConsole::CmdRegister("list_scenarios",          ConListScenarios);
+	IConsole::CmdRegister("list_heightmaps",         ConListHeightmaps);
 	IConsole::CmdRegister("cd",                      ConChangeDirectory);
 	IConsole::CmdRegister("pwd",                     ConPrintWorkingDirectory);
 	IConsole::CmdRegister("clear",                   ConClearBuffer);

@@ -87,7 +87,7 @@ struct FiosItem {
 /** List of file information. */
 class FileList : public std::vector<FiosItem> {
 public:
-	void BuildFileList(AbstractFileType abstract_filetype, SaveLoadOperation fop);
+	void BuildFileList(AbstractFileType abstract_filetype, SaveLoadOperation fop, bool show_dirs);
 	const FiosItem *FindItem(const std::string_view file);
 };
 
@@ -104,9 +104,9 @@ extern SortingBits _savegame_sort_order;
 
 void ShowSaveLoadDialog(AbstractFileType abstract_filetype, SaveLoadOperation fop);
 
-void FiosGetSavegameList(SaveLoadOperation fop, FileList &file_list);
-void FiosGetScenarioList(SaveLoadOperation fop, FileList &file_list);
-void FiosGetHeightmapList(SaveLoadOperation fop, FileList &file_list);
+void FiosGetSavegameList(SaveLoadOperation fop, bool show_dirs, FileList &file_list);
+void FiosGetScenarioList(SaveLoadOperation fop, bool show_dirs, FileList &file_list);
+void FiosGetHeightmapList(SaveLoadOperation fop, bool show_dirs, FileList &file_list);
 
 bool FiosBrowseTo(const FiosItem *item);
 
