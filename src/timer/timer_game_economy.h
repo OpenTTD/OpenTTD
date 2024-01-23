@@ -37,12 +37,19 @@ public:
 	static Date date; ///< Current date in days (day counter).
 	static DateFract date_fract; ///< Fractional part of the day.
 
+	static YearMonthDay ConvertDateToYMD(Date date);
+	static Date ConvertYMDToDate(Year year, Month month, Day day);
 	static void SetDate(Date date, DateFract fract);
+	static bool UsingWallclockUnits(bool newgame = false);
 };
 
 /**
  * Storage class for Economy time constants.
  */
-class EconomyTime : public TimerGameConst<struct Economy> {};
+class EconomyTime : public TimerGameConst<struct Economy> {
+public:
+	static constexpr int DAYS_IN_ECONOMY_YEAR = 360; ///< Days in an economy year, when in wallclock timekeeping mode.
+	static constexpr int DAYS_IN_ECONOMY_MONTH = 30; ///< Days in an economy month, when in wallclock timekeeping mode.
+};
 
 #endif /* TIMER_GAME_ECONOMY_H */

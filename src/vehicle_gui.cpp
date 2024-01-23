@@ -2299,7 +2299,7 @@ extern void DrawAircraftDetails(const Aircraft *v, const Rect &r);
 
 static StringID _service_interval_dropdown[] = {
 	STR_VEHICLE_DETAILS_DEFAULT,
-	STR_VEHICLE_DETAILS_DAYS,
+	STR_VEHICLE_DETAILS_TIME,
 	STR_VEHICLE_DETAILS_PERCENT,
 	INVALID_STRING_ID,
 };
@@ -2431,7 +2431,17 @@ struct VehicleDetailsWindow : Window {
 
 			case WID_VD_SERVICING_INTERVAL:
 				SetDParamMaxValue(0, MAX_SERVINT_DAYS); // Roughly the maximum interval
-				SetDParamMaxValue(1, TimerGameEconomy::DateAtStartOfYear(EconomyTime::MAX_YEAR)); // Roughly the maximum year
+
+				/* Do we show the last serviced value as a date or minutes since service? */
+				if (TimerGameEconomy::UsingWallclockUnits()) {
+					SetDParam(1, STR_VEHICLE_DETAILS_LAST_SERVICE_MINUTES_AGO);
+					/*/ Vehicle was last serviced at year 0, and we're at max year */
+					SetDParamMaxValue(2, EconomyTime::MONTHS_IN_YEAR * EconomyTime::MAX_YEAR.base());
+				} else {
+					SetDParam(1, STR_VEHICLE_DETAILS_LAST_SERVICE_DATE);
+					/*/ Vehicle was last serviced at year 0, and we're at max year */
+					SetDParamMaxValue(2, TimerGameEconomy::DateAtStartOfYear(EconomyTime::MAX_YEAR));
+				}
 				size->width = std::max(
 					GetStringBoundingBox(STR_VEHICLE_DETAILS_SERVICING_INTERVAL_PERCENT).width,
 					GetStringBoundingBox(STR_VEHICLE_DETAILS_SERVICING_INTERVAL_DAYS).width
@@ -2572,8 +2582,22 @@ struct VehicleDetailsWindow : Window {
 			case WID_VD_SERVICING_INTERVAL: {
 				/* Draw service interval text */
 				Rect tr = r.Shrink(WidgetDimensions::scaled.framerect);
+
 				SetDParam(0, v->GetServiceInterval());
-				SetDParam(1, v->date_of_last_service);
+
+				/* We're using wallclock units. Show minutes since last serviced. */
+				if (TimerGameEconomy::UsingWallclockUnits()) {
+					int minutes_since_serviced = (TimerGameEconomy::date - v->date_of_last_service).base() / EconomyTime::DAYS_IN_ECONOMY_MONTH;
+					SetDParam(1, STR_VEHICLE_DETAILS_LAST_SERVICE_MINUTES_AGO);
+					SetDParam(2, minutes_since_serviced);
+					DrawString(tr.left, tr.right, CenterBounds(r.top, r.bottom, GetCharacterHeight(FS_NORMAL)),
+						v->ServiceIntervalIsPercent() ? STR_VEHICLE_DETAILS_SERVICING_INTERVAL_PERCENT : STR_VEHICLE_DETAILS_SERVICING_INTERVAL_MINUTES);
+					break;
+				}
+
+				/* We're using calendar dates. Show the date of last service. */
+				SetDParam(1, STR_VEHICLE_DETAILS_LAST_SERVICE_DATE);
+				SetDParam(2, v->date_of_last_service);
 				DrawString(tr.left, tr.right, CenterBounds(r.top, r.bottom, GetCharacterHeight(FS_NORMAL)),
 						v->ServiceIntervalIsPercent() ? STR_VEHICLE_DETAILS_SERVICING_INTERVAL_PERCENT : STR_VEHICLE_DETAILS_SERVICING_INTERVAL_DAYS);
 				break;
@@ -2597,7 +2621,7 @@ struct VehicleDetailsWindow : Window {
 			WID_VD_DECREASE_SERVICING_INTERVAL);
 
 		StringID str = v->ServiceIntervalIsCustom() ?
-			(v->ServiceIntervalIsPercent() ? STR_VEHICLE_DETAILS_PERCENT : STR_VEHICLE_DETAILS_DAYS) :
+			(v->ServiceIntervalIsPercent() ? STR_VEHICLE_DETAILS_PERCENT : STR_VEHICLE_DETAILS_TIME) :
 			STR_VEHICLE_DETAILS_DEFAULT;
 		this->GetWidget<NWidgetCore>(WID_VD_SERVICE_INTERVAL_DROPDOWN)->widget_data = str;
 
@@ -2609,7 +2633,7 @@ struct VehicleDetailsWindow : Window {
 		switch (widget) {
 			case WID_VD_INCREASE_SERVICING_INTERVAL:   // increase int
 			case WID_VD_DECREASE_SERVICING_INTERVAL: { // decrease int
-				int mod = _ctrl_pressed ? 5 : 10;
+				int mod = TimerGameEconomy::UsingWallclockUnits() ? (_ctrl_pressed ? 1 : 5) : (_ctrl_pressed ? 5 : 10);
 				const Vehicle *v = Vehicle::Get(this->window_number);
 
 				mod = (widget == WID_VD_DECREASE_SERVICING_INTERVAL) ? -mod : mod;

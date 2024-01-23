@@ -735,6 +735,9 @@ bool AfterLoadGame()
 	 * must be done before loading sprites as some newgrfs check it */
 	TimerGameCalendar::SetDate(TimerGameCalendar::date, TimerGameCalendar::date_fract);
 
+	/* Only new games can use wallclock units. */
+	if (IsSavegameVersionBefore(SLV_ECONOMY_MODE_TIMEKEEPING_UNITS)) _settings_game.economy.timekeeping_units = TKU_CALENDAR;
+
 	/* Update economy year. If we don't have a separate economy date saved, follow the calendar date. */
 	if (IsSavegameVersionBefore(SLV_ECONOMY_DATE)) {
 		TimerGameEconomy::SetDate(TimerGameCalendar::date.base(), TimerGameCalendar::date_fract);

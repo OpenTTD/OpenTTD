@@ -195,10 +195,17 @@ bool Vehicle::NeedsServicing() const
 
 	/* Are we ready for the next service cycle? */
 	const Company *c = Company::Get(this->owner);
-	if (this->ServiceIntervalIsPercent() ?
-			(this->reliability >= this->GetEngine()->reliability * (100 - this->GetServiceInterval()) / 100) :
-			(this->date_of_last_service + this->GetServiceInterval() >= TimerGameEconomy::date)) {
-		return false;
+
+	/* Service intervals can be measured in different units, which we handle individually. */
+	if (this->ServiceIntervalIsPercent()) {
+		/* Service interval is in percents. */
+		if (this->reliability >= this->GetEngine()->reliability * (100 - this->GetServiceInterval()) / 100) return false;
+	} else if (TimerGameEconomy::UsingWallclockUnits()) {
+		/* Service interval is in minutes. */
+		if (this->date_of_last_service + (this->GetServiceInterval() * EconomyTime::DAYS_IN_ECONOMY_MONTH) >= TimerGameEconomy::date) return false;
+	} else {
+		/* Service interval is in days. */
+		if (this->date_of_last_service + this->GetServiceInterval() >= TimerGameEconomy::date) return false;
 	}
 
 	/* If we're servicing anyway, because we have not disabled servicing when

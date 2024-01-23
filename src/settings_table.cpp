@@ -130,7 +130,7 @@ static void UpdateConsists(int32_t)
 
 /**
  * Check and update if needed all vehicle service intervals.
- * @param new_value Contains 0 if service intervals are in days, otherwise intervals use percents.
+ * @param new_value Contains 0 if service intervals are in time (days or real-world minutes), otherwise intervals use percents.
  */
 static void UpdateAllServiceInterval(int32_t new_value)
 {
@@ -150,6 +150,12 @@ static void UpdateAllServiceInterval(int32_t new_value)
 		vds->servint_roadveh  = DEF_SERVINT_PERCENT;
 		vds->servint_aircraft = DEF_SERVINT_PERCENT;
 		vds->servint_ships    = DEF_SERVINT_PERCENT;
+	} else if (TimerGameEconomy::UsingWallclockUnits(_game_mode == GM_MENU)) {
+		/* Service intervals are in minutes. */
+		vds->servint_trains   = DEF_SERVINT_MINUTES_TRAINS;
+		vds->servint_roadveh  = DEF_SERVINT_MINUTES_ROADVEH;
+		vds->servint_aircraft = DEF_SERVINT_MINUTES_AIRCRAFT;
+		vds->servint_ships    = DEF_SERVINT_MINUTES_SHIPS;
 	} else {
 		/* Service intervals are in days. */
 		vds->servint_trains   = DEF_SERVINT_DAYS_TRAINS;
@@ -481,6 +487,30 @@ static void UpdateClientConfigValues()
 		NetworkServerSendConfigUpdate();
 		SetWindowClassesDirty(WC_CLIENT_LIST);
 	}
+}
+
+/**
+ * Callback for when the player changes the timekeeping units.
+ * @param Unused.
+ */
+static void ChangeTimekeepingUnits(int32_t)
+{
+	/* If service intervals are in time units (calendar days or real-world minutes), reset them to the correct defaults. */
+	if (!_settings_client.company.vehicle.servint_ispercent) {
+		UpdateAllServiceInterval(0);
+	}
+
+	InvalidateWindowClassesData(WC_GAME_OPTIONS, 0);
+}
+
+/**
+ * Pre-callback check when trying to change the timetable mode. This is locked to Seconds when using wallclock units.
+ * @param Unused.
+ * @return True if we allow changing the timetable mode.
+ */
+static bool CanChangeTimetableMode(int32_t &)
+{
+	return !TimerGameEconomy::UsingWallclockUnits();
 }
 
 /* End - Callback Functions */

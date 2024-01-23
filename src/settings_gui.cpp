@@ -2212,6 +2212,7 @@ static SettingsContainer &GetSettingsTree()
 		{
 			SettingsPage *time = environment->Add(new SettingsPage(STR_CONFIG_SETTING_ENVIRONMENT_TIME));
 			{
+				time->Add(new SettingEntry("economy.timekeeping_units"));
 				time->Add(new SettingEntry("game_creation.ending_year"));
 				time->Add(new SettingEntry("gui.pause_on_newgame"));
 				time->Add(new SettingEntry("gui.fast_forward_speed_limit"));
