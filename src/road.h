@@ -33,14 +33,17 @@ DECLARE_ENUM_AS_BIT_SET(RoadTramTypes)
 
 static const RoadTramType _roadtramtypes[] = { RTT_ROAD, RTT_TRAM };
 
-/** Roadtype flags. Starts with RO instead of R because R is used for rails */
-enum RoadTypeFlags {
+/** Roadtype flag bit numbers. Starts with RO instead of R because R is used for rails */
+enum RoadTypeFlag {
 	ROTF_CATENARY = 0,                                     ///< Bit number for adding catenary
 	ROTF_NO_LEVEL_CROSSING,                                ///< Bit number for disabling level crossing
 	ROTF_NO_HOUSES,                                        ///< Bit number for setting this roadtype as not house friendly
 	ROTF_HIDDEN,                                           ///< Bit number for hidden from construction.
 	ROTF_TOWN_BUILD,                                       ///< Bit number for allowing towns to build this roadtype.
+};
 
+/** Roadtype flags. Starts with RO instead of R because R is used for rails */
+enum RoadTypeFlags : uint8_t {
 	ROTFB_NONE = 0,                                        ///< All flags cleared.
 	ROTFB_CATENARY          = 1 << ROTF_CATENARY,          ///< Value for drawing a catenary.
 	ROTFB_NO_LEVEL_CROSSING = 1 << ROTF_NO_LEVEL_CROSSING, ///< Value for disabling a level crossing.
