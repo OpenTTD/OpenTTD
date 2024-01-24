@@ -331,8 +331,10 @@ STR_SORT_BY_PRODUCTION                                          :Production
 STR_SORT_BY_TYPE                                                :Type
 STR_SORT_BY_TRANSPORTED                                         :Transported
 STR_SORT_BY_NUMBER                                              :Number
-STR_SORT_BY_PROFIT_LAST_YEAR                                    :Profit last {TKM year period}
-STR_SORT_BY_PROFIT_THIS_YEAR                                    :Profit this {TKM year period}
+STR_SORT_BY_PROFIT_LAST_YEAR                                    :Profit last year
+STR_SORT_BY_PROFIT_LAST_PERIOD                                  :Profit last period
+STR_SORT_BY_PROFIT_THIS_YEAR                                    :Profit this year
+STR_SORT_BY_PROFIT_THIS_PERIOD                                  :Profit this period
 STR_SORT_BY_AGE                                                 :Age
 STR_SORT_BY_RELIABILITY                                         :Reliability
 STR_SORT_BY_TOTAL_CAPACITY_PER_CARGOTYPE                        :Total capacity per cargo type
@@ -359,10 +361,14 @@ STR_SORT_BY_RANGE                                               :Range
 STR_SORT_BY_POPULATION                                          :Population
 STR_SORT_BY_RATING                                              :Rating
 STR_SORT_BY_NUM_VEHICLES                                        :Number of vehicles
-STR_SORT_BY_TOTAL_PROFIT_LAST_YEAR                              :Total profit last {TKM year period}
-STR_SORT_BY_TOTAL_PROFIT_THIS_YEAR                              :Total profit this {TKM year period}
-STR_SORT_BY_AVERAGE_PROFIT_LAST_YEAR                            :Average profit last {TKM year period}
-STR_SORT_BY_AVERAGE_PROFIT_THIS_YEAR                            :Average profit this {TKM year period}
+STR_SORT_BY_TOTAL_PROFIT_LAST_YEAR                              :Total profit last year
+STR_SORT_BY_TOTAL_PROFIT_LAST_PERIOD                            :Total profit last period
+STR_SORT_BY_TOTAL_PROFIT_THIS_YEAR                              :Total profit this year
+STR_SORT_BY_TOTAL_PROFIT_THIS_PERIOD                            :Total profit this period
+STR_SORT_BY_AVERAGE_PROFIT_LAST_YEAR                            :Average profit last year
+STR_SORT_BY_AVERAGE_PROFIT_LAST_PERIOD                          :Average profit last period
+STR_SORT_BY_AVERAGE_PROFIT_THIS_YEAR                            :Average profit this year
+STR_SORT_BY_AVERAGE_PROFIT_THIS_PERIOD                          :Average profit this period
 
 # Group by options for vehicle list
 STR_GROUP_BY_NONE                                               :None

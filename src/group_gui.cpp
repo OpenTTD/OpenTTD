@@ -418,8 +418,10 @@ public:
 				break;
 
 			case WID_GL_SORT_BY_DROPDOWN:
-				size->width = GetStringListWidth(this->vehicle_group_none_sorter_names);
-				size->width = std::max(size->width, GetStringListWidth(this->vehicle_group_shared_orders_sorter_names));
+				size->width = GetStringListWidth(this->vehicle_group_none_sorter_names_calendar);
+				size->width = std::max(size->width, GetStringListWidth(this->vehicle_group_none_sorter_names_wallclock));
+				size->width = std::max(size->width, GetStringListWidth(this->vehicle_group_shared_orders_sorter_names_calendar));
+				size->width = std::max(size->width, GetStringListWidth(this->vehicle_group_shared_orders_sorter_names_wallclock));
 				size->width += padding.width;
 				break;
 
