@@ -21,15 +21,18 @@
 #include "signal_type.h"
 #include "settings_type.h"
 
-/** Railtype flags. */
-enum RailTypeFlags {
+/** Railtype flag bit numbers. */
+enum RailTypeFlag {
 	RTF_CATENARY          = 0,                           ///< Bit number for drawing a catenary.
 	RTF_NO_LEVEL_CROSSING = 1,                           ///< Bit number for disallowing level crossings.
 	RTF_HIDDEN            = 2,                           ///< Bit number for hiding from selection.
 	RTF_NO_SPRITE_COMBINE = 3,                           ///< Bit number for using non-combined junctions.
 	RTF_ALLOW_90DEG       = 4,                           ///< Bit number for always allowed 90 degree turns, regardless of setting.
 	RTF_DISALLOW_90DEG    = 5,                           ///< Bit number for never allowed 90 degree turns, regardless of setting.
+};
 
+/** Railtype flags. */
+enum RailTypeFlags : uint8_t {
 	RTFB_NONE              = 0,                          ///< All flags cleared.
 	RTFB_CATENARY          = 1 << RTF_CATENARY,          ///< Value for drawing a catenary.
 	RTFB_NO_LEVEL_CROSSING = 1 << RTF_NO_LEVEL_CROSSING, ///< Value for disallowing level crossings.
