@@ -99,8 +99,10 @@ struct BaseVehicleListWindow : public Window {
 
 	static const StringID vehicle_depot_name[];
 	static const StringID vehicle_group_by_names[];
-	static const StringID vehicle_group_none_sorter_names[];
-	static const StringID vehicle_group_shared_orders_sorter_names[];
+	static const StringID vehicle_group_none_sorter_names_calendar[];
+	static const StringID vehicle_group_none_sorter_names_wallclock[];
+	static const StringID vehicle_group_shared_orders_sorter_names_calendar[];
+	static const StringID vehicle_group_shared_orders_sorter_names_wallclock[];
 	static VehicleGroupSortFunction * const vehicle_group_none_sorter_funcs[];
 	static VehicleGroupSortFunction * const vehicle_group_shared_orders_sorter_funcs[];
 
@@ -122,17 +124,7 @@ struct BaseVehicleListWindow : public Window {
 	Dimension GetActionDropdownSize(bool show_autoreplace, bool show_group, bool show_create);
 	DropDownList BuildActionDropdownList(bool show_autoreplace, bool show_group, bool show_create);
 
-	const StringID *GetVehicleSorterNames()
-	{
-		switch (this->grouping) {
-			case GB_NONE:
-				return vehicle_group_none_sorter_names;
-			case GB_SHARED_ORDERS:
-				return vehicle_group_shared_orders_sorter_names;
-			default:
-				NOT_REACHED();
-		}
-	}
+	const StringID *GetVehicleSorterNames();
 
 	VehicleGroupSortFunction * const *GetVehicleSorterFuncs()
 	{

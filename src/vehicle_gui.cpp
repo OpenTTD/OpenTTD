@@ -93,12 +93,29 @@ BaseVehicleListWindow::VehicleGroupSortFunction * const BaseVehicleListWindow::v
 	&VehicleIndividualToGroupSorterWrapper<VehicleTimetableDelaySorter>,
 };
 
-const StringID BaseVehicleListWindow::vehicle_group_none_sorter_names[] = {
+const StringID BaseVehicleListWindow::vehicle_group_none_sorter_names_calendar[] = {
 	STR_SORT_BY_NUMBER,
 	STR_SORT_BY_NAME,
 	STR_SORT_BY_AGE,
 	STR_SORT_BY_PROFIT_THIS_YEAR,
 	STR_SORT_BY_PROFIT_LAST_YEAR,
+	STR_SORT_BY_TOTAL_CAPACITY_PER_CARGOTYPE,
+	STR_SORT_BY_RELIABILITY,
+	STR_SORT_BY_MAX_SPEED,
+	STR_SORT_BY_MODEL,
+	STR_SORT_BY_VALUE,
+	STR_SORT_BY_LENGTH,
+	STR_SORT_BY_LIFE_TIME,
+	STR_SORT_BY_TIMETABLE_DELAY,
+	INVALID_STRING_ID
+};
+
+const StringID BaseVehicleListWindow::vehicle_group_none_sorter_names_wallclock[] = {
+	STR_SORT_BY_NUMBER,
+	STR_SORT_BY_NAME,
+	STR_SORT_BY_AGE,
+	STR_SORT_BY_PROFIT_THIS_PERIOD,
+	STR_SORT_BY_PROFIT_LAST_PERIOD,
 	STR_SORT_BY_TOTAL_CAPACITY_PER_CARGOTYPE,
 	STR_SORT_BY_RELIABILITY,
 	STR_SORT_BY_MAX_SPEED,
@@ -118,12 +135,21 @@ BaseVehicleListWindow::VehicleGroupSortFunction * const BaseVehicleListWindow::v
 	&VehicleGroupAverageProfitLastYearSorter,
 };
 
-const StringID BaseVehicleListWindow::vehicle_group_shared_orders_sorter_names[] = {
+const StringID BaseVehicleListWindow::vehicle_group_shared_orders_sorter_names_calendar[] = {
 	STR_SORT_BY_NUM_VEHICLES,
 	STR_SORT_BY_TOTAL_PROFIT_THIS_YEAR,
 	STR_SORT_BY_TOTAL_PROFIT_LAST_YEAR,
 	STR_SORT_BY_AVERAGE_PROFIT_THIS_YEAR,
 	STR_SORT_BY_AVERAGE_PROFIT_LAST_YEAR,
+	INVALID_STRING_ID
+};
+
+const StringID BaseVehicleListWindow::vehicle_group_shared_orders_sorter_names_wallclock[] = {
+	STR_SORT_BY_NUM_VEHICLES,
+	STR_SORT_BY_TOTAL_PROFIT_THIS_PERIOD,
+	STR_SORT_BY_TOTAL_PROFIT_LAST_PERIOD,
+	STR_SORT_BY_AVERAGE_PROFIT_THIS_PERIOD,
+	STR_SORT_BY_AVERAGE_PROFIT_LAST_PERIOD,
 	INVALID_STRING_ID
 };
 
@@ -145,6 +171,18 @@ BaseVehicleListWindow::BaseVehicleListWindow(WindowDesc *desc, WindowNumber wno)
 	this->vehicle_sel = INVALID_VEHICLE;
 	this->grouping = _grouping[vli.type][vli.vtype];
 	this->UpdateSortingFromGrouping();
+}
+
+const StringID *BaseVehicleListWindow::GetVehicleSorterNames()
+{
+	switch (this->grouping) {
+		case GB_NONE:
+			return TimerGameEconomy::UsingWallclockUnits() ? vehicle_group_none_sorter_names_wallclock : vehicle_group_none_sorter_names_calendar;
+		case GB_SHARED_ORDERS:
+			return TimerGameEconomy::UsingWallclockUnits() ? vehicle_group_shared_orders_sorter_names_wallclock : vehicle_group_shared_orders_sorter_names_calendar;
+		default:
+			NOT_REACHED();
+	}
 }
 
 /**
@@ -1885,8 +1923,10 @@ public:
 				break;
 
 			case WID_VL_SORT_BY_PULLDOWN:
-				size->width = GetStringListWidth(this->vehicle_group_none_sorter_names);
-				size->width = std::max(size->width, GetStringListWidth(this->vehicle_group_shared_orders_sorter_names));
+				size->width = GetStringListWidth(this->vehicle_group_none_sorter_names_calendar);
+				size->width = std::max(size->width, GetStringListWidth(this->vehicle_group_none_sorter_names_wallclock));
+				size->width = std::max(size->width, GetStringListWidth(this->vehicle_group_shared_orders_sorter_names_calendar));
+				size->width = std::max(size->width, GetStringListWidth(this->vehicle_group_shared_orders_sorter_names_wallclock));
 				size->width += padding.width;
 				break;
 
