@@ -30,14 +30,14 @@ jobs:
     steps:
     - name: Checkout (Release)
       if: github.event_name == 'release'
-      uses: actions/checkout@v3
+      uses: actions/checkout@v4
       with:
         # We generate a changelog; for this we need the full git log.
         fetch-depth: 0
 
     - name: Checkout (Manual)
       if: github.event_name == 'workflow_dispatch'
-      uses: actions/checkout@v3
+      uses: actions/checkout@v4
       with:
         ref: ${{ github.event.inputs.ref }}
         # We generate a changelog; for this we need the full git log.
@@ -45,7 +45,7 @@ jobs:
 
     - name: Checkout (Trigger)
       if: github.event_name == 'repository_dispatch'
-      uses: actions/checkout@v3
+      uses: actions/checkout@v4
       with:
         ref: ${{ github.event.client_payload.ref }}
         # We generate a changelog; for this we need the full git log.
@@ -193,14 +193,14 @@ jobs:
         echo "::endgroup::"
 
     - name: Store bundles
-      uses: actions/upload-artifact@v3
+      uses: actions/upload-artifact@v4
       with:
         name: openttd-source
         path: build/bundles/*
         retention-days: 5
 
     - name: Store source (for other jobs)
-      uses: actions/upload-artifact@v3
+      uses: actions/upload-artifact@v4
       with:
         name: internal-source
         path: source.tar.gz
