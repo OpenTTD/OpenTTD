@@ -360,6 +360,8 @@ static CommandCost DoBuildLock(TileIndex tile, DiagDirection dir, DoCommandFlag 
 		MarkTileDirtyByTile(tile + delta);
 		MarkCanalsAndRiversAroundDirty(tile - delta);
 		MarkCanalsAndRiversAroundDirty(tile + delta);
+		InvalidateWaterRegion(tile - delta);
+		InvalidateWaterRegion(tile + delta);
 	}
 	cost.AddCost(_price[PR_BUILD_LOCK]);
 
