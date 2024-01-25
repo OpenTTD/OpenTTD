@@ -21,7 +21,7 @@ jobs:
 
     steps:
     - name: Download all bundles
-      uses: actions/download-artifact@v3
+      uses: actions/download-artifact@v4
 
     - name: Calculate checksums
       run: |
@@ -70,14 +70,14 @@ jobs:
         done
 
     - name: Store bundles
-      uses: actions/upload-artifact@v3
+      uses: actions/upload-artifact@v4
       with:
         name: cdn-bundles
         path: bundles/*
         retention-days: 5
 
     - name: Store breakpad symbols
-      uses: actions/upload-artifact@v3
+      uses: actions/upload-artifact@v4
       with:
         name: cdn-symbols
         path: symbols/*
@@ -88,7 +88,7 @@ jobs:
     - prepare
 
     name: Publish bundles
-    uses: OpenTTD/actions/.github/workflows/rw-cdn-upload.yml@v4
+    uses: OpenTTD/actions/.github/workflows/rw-cdn-upload.yml@v5
     secrets:
       CDN_SIGNING_KEY: ${{ secrets.CDN_SIGNING_KEY }}
       DEPLOYMENT_APP_ID: ${{ secrets.DEPLOYMENT_APP_ID }}
@@ -103,7 +103,7 @@ jobs:
     - prepare
 
     name: Publish symbols
-    uses: OpenTTD/actions/.github/workflows/rw-symbols-upload.yml@v4
+    uses: OpenTTD/actions/.github/workflows/rw-symbols-upload.yml@v5
     secrets:
       SYMBOLS_SIGNING_KEY: ${{ secrets.SYMBOLS_SIGNING_KEY }}
     with:
@@ -122,14 +122,15 @@ jobs:
     steps:
     - name: Generate access token
       id: generate_token
-      uses: tibdex/github-app-token@v1
+      uses: tibdex/github-app-token@v2
       with:
         app_id: ${{ secrets.DEPLOYMENT_APP_ID }}
         private_key: ${{ secrets.DEPLOYMENT_APP_PRIVATE_KEY }}
-        repository: OpenTTD/workflows
+        repositories: >-
+          ["OpenTTD/workflows"]
 
     - name: Trigger 'Publish Docs'
-      uses: peter-evans/repository-dispatch@v2
+      uses: peter-evans/repository-dispatch@v3
       with:
         token: ${{ steps.generate_token.outputs.token }}
         repository: OpenTTD/workflows
