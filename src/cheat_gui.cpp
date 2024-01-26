@@ -217,10 +217,7 @@ static constexpr NWidgetPart _nested_cheat_widgets[] = {
 		NWidget(WWT_SHADEBOX, COLOUR_GREY),
 		NWidget(WWT_STICKYBOX, COLOUR_GREY),
 	EndContainer(),
-	NWidget(WWT_PANEL, COLOUR_GREY, WID_C_PANEL), SetDataTip(0x0, STR_CHEATS_TOOLTIP), EndContainer(),
-	NWidget(WWT_PANEL, COLOUR_GREY),
-		NWidget(WWT_LABEL, COLOUR_GREY, WID_C_NOTE), SetFill(1, 1), SetDataTip(STR_CHEATS_NOTE, STR_NULL), SetPadding(WidgetDimensions::unscaled.frametext),
-	EndContainer(),
+	NWidget(WWT_PANEL, COLOUR_GREY, WID_C_PANEL), EndContainer(),
 };
 
 /** GUI for the cheats. */
@@ -228,7 +225,6 @@ struct CheatWindow : Window {
 	int clicked;
 	int clicked_widget;
 	uint line_height;
-	Dimension box;      ///< Dimension of box sprite
 	Dimension icon;     ///< Dimension of company icon sprite
 
 	CheatWindow(WindowDesc *desc) : Window(desc)
@@ -238,7 +234,6 @@ struct CheatWindow : Window {
 
 	void OnInit() override
 	{
-		this->box = maxdim(GetSpriteSize(SPR_BOX_EMPTY), GetSpriteSize(SPR_BOX_CHECKED));
 		this->icon = GetSpriteSize(SPR_COMPANY_ICON);
 	}
 
@@ -250,20 +245,16 @@ struct CheatWindow : Window {
 		int y = ir.top;
 
 		bool rtl = _current_text_dir == TD_RTL;
-		uint box_left    = rtl ? ir.right - this->box.width - WidgetDimensions::scaled.hsep_wide : ir.left + WidgetDimensions::scaled.hsep_wide;
-		uint button_left = rtl ? ir.right - this->box.width - WidgetDimensions::scaled.hsep_wide * 2 - SETTING_BUTTON_WIDTH : ir.left + this->box.width + WidgetDimensions::scaled.hsep_wide * 2;
-		uint text_left   = ir.left + (rtl ? 0 : WidgetDimensions::scaled.hsep_wide * 4 + this->box.width + SETTING_BUTTON_WIDTH);
-		uint text_right  = ir.right - (rtl ? WidgetDimensions::scaled.hsep_wide * 4 + this->box.width + SETTING_BUTTON_WIDTH : 0);
+		uint button_left = rtl ? ir.right - SETTING_BUTTON_WIDTH : ir.left;
+		uint text_left   = ir.left + (rtl ? 0 : WidgetDimensions::scaled.hsep_wide + SETTING_BUTTON_WIDTH);
+		uint text_right  = ir.right - (rtl ? WidgetDimensions::scaled.hsep_wide + SETTING_BUTTON_WIDTH : 0);
 
 		int text_y_offset = (this->line_height - GetCharacterHeight(FS_NORMAL)) / 2;
-		int box_y_offset = (this->line_height - this->box.height) / 2;
 		int button_y_offset = (this->line_height - SETTING_BUTTON_HEIGHT) / 2;
 		int icon_y_offset = (this->line_height - this->icon.height) / 2;
 
 		for (int i = 0; i != lengthof(_cheats_ui); i++) {
 			const CheatEntry *ce = &_cheats_ui[i];
-
-			DrawSprite((*ce->been_used) ? SPR_BOX_CHECKED : SPR_BOX_EMPTY, PAL_NONE, box_left, y + box_y_offset);
 
 			switch (ce->type) {
 				case SLE_BOOL: {
@@ -330,7 +321,7 @@ struct CheatWindow : Window {
 						/* Draw coloured flag for change company cheat */
 						case STR_CHEAT_CHANGE_COMPANY:
 							SetDParamMaxValue(0, MAX_COMPANIES);
-							width = std::max(width, GetStringBoundingBox(ce->str).width + WidgetDimensions::scaled.hsep_wide * 4);
+							width = std::max(width, GetStringBoundingBox(ce->str).width + WidgetDimensions::scaled.hsep_wide);
 							break;
 
 						default:
@@ -342,11 +333,10 @@ struct CheatWindow : Window {
 			}
 		}
 
-		this->line_height = std::max(this->box.height, this->icon.height);
 		this->line_height = std::max<uint>(this->line_height, SETTING_BUTTON_HEIGHT);
 		this->line_height = std::max<uint>(this->line_height, GetCharacterHeight(FS_NORMAL)) + WidgetDimensions::scaled.framerect.Vertical();
 
-		size->width = width + WidgetDimensions::scaled.hsep_wide * 4 + this->box.width + SETTING_BUTTON_WIDTH /* stuff on the left */ + WidgetDimensions::scaled.hsep_wide * 2 /* extra spacing on right */;
+		size->width = width + WidgetDimensions::scaled.hsep_wide * 2 + SETTING_BUTTON_WIDTH;
 		size->height = WidgetDimensions::scaled.framerect.Vertical() + this->line_height * lengthof(_cheats_ui);
 	}
 
@@ -356,7 +346,7 @@ struct CheatWindow : Window {
 
 		Rect r = this->GetWidget<NWidgetBase>(WID_C_PANEL)->GetCurrentRect().Shrink(WidgetDimensions::scaled.framerect);
 		uint btn = (pt.y - r.top) / this->line_height;
-		uint x = pt.x - r.left;
+		int x = pt.x - r.left;
 		bool rtl = _current_text_dir == TD_RTL;
 		if (rtl) x = r.Width() - 1 - x;
 
@@ -366,13 +356,13 @@ struct CheatWindow : Window {
 		int value = (int32_t)ReadValue(ce->variable, ce->type);
 		int oldvalue = value;
 
-		if (btn == CHT_CHANGE_DATE && x >= WidgetDimensions::scaled.hsep_wide * 2 + this->box.width + SETTING_BUTTON_WIDTH) {
+		if (btn == CHT_CHANGE_DATE && x >= SETTING_BUTTON_WIDTH) {
 			/* Click at the date text directly. */
 			clicked_widget = CHT_CHANGE_DATE;
 			SetDParam(0, value);
 			ShowQueryString(STR_JUST_INT, STR_CHEAT_CHANGE_DATE_QUERY_CAPT, 8, this, CS_NUMERAL, QSF_ACCEPT_UNCHANGED);
 			return;
-		} else if (btn == CHT_EDIT_MAX_HL && x >= WidgetDimensions::scaled.hsep_wide * 2 + this->box.width + SETTING_BUTTON_WIDTH) {
+		} else if (btn == CHT_EDIT_MAX_HL && x >= SETTING_BUTTON_WIDTH) {
 			clicked_widget = CHT_EDIT_MAX_HL;
 			SetDParam(0, value);
 			ShowQueryString(STR_JUST_INT, STR_CHEAT_EDIT_MAX_HL_QUERY_CAPT, 8, this, CS_NUMERAL, QSF_ACCEPT_UNCHANGED);
@@ -380,7 +370,7 @@ struct CheatWindow : Window {
 		}
 
 		/* Not clicking a button? */
-		if (!IsInsideMM(x, WidgetDimensions::scaled.hsep_wide * 2 + this->box.width, WidgetDimensions::scaled.hsep_wide * 2 + this->box.width + SETTING_BUTTON_WIDTH)) return;
+		if (!IsInsideMM(x, 0, SETTING_BUTTON_WIDTH)) return;
 
 		*ce->been_used = true;
 
@@ -392,10 +382,10 @@ struct CheatWindow : Window {
 
 			default:
 				/* Take whatever the function returns */
-				value = ce->proc(value + ((x >= WidgetDimensions::scaled.hsep_wide * 2 + this->box.width + SETTING_BUTTON_WIDTH / 2) ? 1 : -1), (x >= WidgetDimensions::scaled.hsep_wide * 2 + this->box.width + SETTING_BUTTON_WIDTH / 2) ? 1 : -1);
+				value = ce->proc(value + ((x >= SETTING_BUTTON_WIDTH / 2) ? 1 : -1), (x >= SETTING_BUTTON_WIDTH / 2) ? 1 : -1);
 
 				/* The first cheat (money), doesn't return a different value. */
-				if (value != oldvalue || btn == CHT_MONEY) this->clicked = btn * 2 + 1 + ((x >= WidgetDimensions::scaled.hsep_wide * 2 + this->box.width + SETTING_BUTTON_WIDTH / 2) != rtl ? 1 : 0);
+				if (value != oldvalue || btn == CHT_MONEY) this->clicked = btn * 2 + 1 + ((x >= SETTING_BUTTON_WIDTH / 2) != rtl ? 1 : 0);
 				break;
 		}
 
