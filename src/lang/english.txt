@@ -4253,13 +4253,18 @@ STR_ENGINE_PREVIEW_TRAM_VEHICLE                                 :tramway vehicle
 STR_ENGINE_PREVIEW_AIRCRAFT                                     :aircraft
 STR_ENGINE_PREVIEW_SHIP                                         :ship
 
-STR_ENGINE_PREVIEW_COST_WEIGHT_SPEED_POWER                      :{BLACK}Cost: {CURRENCY_LONG} Weight: {WEIGHT_SHORT}{}Speed: {VELOCITY}  Power: {POWER}{}Running Cost: {CURRENCY_LONG}/{TKM year period}{}Capacity: {CARGO_LONG}
-STR_ENGINE_PREVIEW_COST_WEIGHT_SPEED_POWER_MAX_TE               :{BLACK}Cost: {0:CURRENCY_LONG} Weight: {1:WEIGHT_SHORT}{}Speed: {2:VELOCITY}  Power: {3:POWER}  Max. T.E.: {6:FORCE}{}Running Cost: {4:CURRENCY_LONG}/{TKM year period}{}Capacity: {5:CARGO_LONG}
-STR_ENGINE_PREVIEW_COST_MAX_SPEED_CAP_RUNCOST                   :{BLACK}Cost: {CURRENCY_LONG} Max. Speed: {VELOCITY}{}Capacity: {CARGO_LONG}{}Running Cost: {CURRENCY_LONG}/{TKM year period}
-STR_ENGINE_PREVIEW_COST_MAX_SPEED_TYPE_CAP_CAP_RUNCOST          :{BLACK}Cost: {CURRENCY_LONG} Max. Speed: {VELOCITY}{}Aircraft type: {STRING}{}Capacity: {CARGO_LONG}, {CARGO_LONG}{}Running Cost: {CURRENCY_LONG}/{TKM year period}
-STR_ENGINE_PREVIEW_COST_MAX_SPEED_TYPE_CAP_RUNCOST              :{BLACK}Cost: {CURRENCY_LONG} Max. Speed: {VELOCITY}{}Aircraft type: {STRING}{}Capacity: {CARGO_LONG}{}Running Cost: {CURRENCY_LONG}/{TKM year period}
-STR_ENGINE_PREVIEW_COST_MAX_SPEED_TYPE_RANGE_CAP_CAP_RUNCOST    :{BLACK}Cost: {CURRENCY_LONG} Max. Speed: {VELOCITY}{}Aircraft type: {STRING} Range: {COMMA} tiles{}Capacity: {CARGO_LONG}, {CARGO_LONG}{}Running Cost: {CURRENCY_LONG}/{TKM year period}
-STR_ENGINE_PREVIEW_COST_MAX_SPEED_TYPE_RANGE_CAP_RUNCOST        :{BLACK}Cost: {CURRENCY_LONG} Max. Speed: {VELOCITY}{}Aircraft type: {STRING} Range: {COMMA} tiles{}Capacity: {CARGO_LONG}{}Running Cost: {CURRENCY_LONG}/{TKM year period}
+STR_ENGINE_PREVIEW_TEXT3                                        :{BLACK}{STRING2}{}{5:STRING1}{}{STRING4}
+STR_ENGINE_PREVIEW_TEXT4                                        :{BLACK}{STRING2}{}{STRING3}{}{STRING1}{}{STRING4}
+STR_ENGINE_PREVIEW_COST_WEIGHT                                  :Cost: {CURRENCY_LONG}  Weight: {WEIGHT_SHORT}
+STR_ENGINE_PREVIEW_COST_MAX_SPEED                               :Cost: {CURRENCY_LONG}  Max. Speed: {VELOCITY}
+STR_ENGINE_PREVIEW_SPEED_POWER                                  :Speed: {VELOCITY}  Power: {POWER}
+STR_ENGINE_PREVIEW_SPEED_POWER_MAX_TE                           :Speed: {VELOCITY}  Power: {POWER}  Max. T.E.: {FORCE}
+STR_ENGINE_PREVIEW_TYPE                                         :Aircraft type: {STRING}
+STR_ENGINE_PREVIEW_TYPE_RANGE                                   :Aircraft type: {STRING}   Range: {COMMA} tiles
+STR_ENGINE_PREVIEW_RUNCOST_YEAR                                 :Running Cost: {CURRENCY_LONG}/year
+STR_ENGINE_PREVIEW_RUNCOST_PERIOD                               :Running Cost: {CURRENCY_LONG}/period
+STR_ENGINE_PREVIEW_CAPACITY                                     :Capacity: {CARGO_LONG}
+STR_ENGINE_PREVIEW_CAPACITY_2                                   :Capacity: {CARGO_LONG}, {CARGO_LONG}
 
 # Autoreplace window
 STR_REPLACE_VEHICLES_WHITE                                      :{WHITE}Replace {STRING} - {STRING1}
