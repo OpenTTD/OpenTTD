@@ -179,6 +179,7 @@ public:
 	Point GetCharPosition(std::string_view::const_iterator ch) const;
 	ptrdiff_t GetCharAtPosition(int x, size_t line_index) const;
 
+	static void Initialize();
 	static void ResetFontCache(FontSize size);
 	static void ResetLineCache();
 	static void ReduceLineCache();

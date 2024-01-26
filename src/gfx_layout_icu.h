@@ -12,6 +12,7 @@
 
 #include "gfx_layout.h"
 
+#include <unicode/brkiter.h>
 #include <unicode/ustring.h>
 
 /**
@@ -26,6 +27,11 @@ public:
 
 	static ParagraphLayouter *GetParagraphLayout(UChar *buff, UChar *buff_end, FontMap &fontMapping);
 	static size_t AppendToBuffer(UChar *buff, const UChar *buffer_last, char32_t c);
+
+	static void InitializeLayouter();
+	static std::unique_ptr<icu::BreakIterator> GetBreakIterator();
+private:
+	static std::unique_ptr<icu::BreakIterator> break_iterator;
 };
 
 #endif /* GFX_LAYOUT_ICU_H */

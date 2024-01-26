@@ -335,6 +335,16 @@ Font *Layouter::GetFont(FontSize size, TextColour colour)
 }
 
 /**
+ * Perform initialization of layout engine.
+ */
+void Layouter::Initialize()
+{
+#if defined(WITH_ICU_I18N) && defined(WITH_HARFBUZZ)
+	ICUParagraphLayoutFactory::InitializeLayouter();
+#endif /* WITH_ICU_I18N && WITH_HARFBUZZ */
+}
+
+/**
  * Reset cached font information.
  * @param size Font size to reset.
  */
