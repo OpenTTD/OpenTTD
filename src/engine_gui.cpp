@@ -170,22 +170,24 @@ uint GetTotalCapacityOfArticulatedParts(EngineID engine)
 
 static StringID GetTrainEngineInfoString(const Engine *e)
 {
-	SetDParam(0, e->GetCost());
-	SetDParam(2, PackVelocity(e->GetDisplayMaxSpeed(), e->type));
-	SetDParam(3, e->GetPower());
-	SetDParam(1, e->GetDisplayWeight());
-	SetDParam(7, e->GetDisplayMaxTractiveEffort());
+	SetDParam(0, STR_ENGINE_PREVIEW_COST_WEIGHT);
+	SetDParam(1, e->GetCost());
+	SetDParam(2, e->GetDisplayWeight());
 
-	SetDParam(4, e->GetRunningCost());
+	SetDParam(3, (_settings_game.vehicle.train_acceleration_model != AM_ORIGINAL && GetRailTypeInfo(e->u.rail.railtype)->acceleration_type != 2) ? STR_ENGINE_PREVIEW_SPEED_POWER_MAX_TE : STR_ENGINE_PREVIEW_SPEED_POWER);
+	SetDParam(4, PackVelocity(e->GetDisplayMaxSpeed(), e->type));
+	SetDParam(5, e->GetPower());
+	SetDParam(6, e->GetDisplayMaxTractiveEffort());
 
+	SetDParam(7, TimerGameEconomy::UsingWallclockUnits() ? STR_ENGINE_PREVIEW_RUNCOST_PERIOD : STR_ENGINE_PREVIEW_RUNCOST_YEAR);
+	SetDParam(8, e->GetRunningCost());
+
+	SetDParam(9, STR_ENGINE_PREVIEW_CAPACITY);
 	uint capacity = GetTotalCapacityOfArticulatedParts(e->index);
-	if (capacity != 0) {
-		SetDParam(5, e->GetDefaultCargoType());
-		SetDParam(6, capacity);
-	} else {
-		SetDParam(5, INVALID_CARGO);
-	}
-	return (_settings_game.vehicle.train_acceleration_model != AM_ORIGINAL && GetRailTypeInfo(e->u.rail.railtype)->acceleration_type != 2) ? STR_ENGINE_PREVIEW_COST_WEIGHT_SPEED_POWER_MAX_TE : STR_ENGINE_PREVIEW_COST_WEIGHT_SPEED_POWER;
+	SetDParam(10, capacity != 0 ? e->GetDefaultCargoType() : INVALID_CARGO);
+	SetDParam(11, capacity);
+
+	return STR_ENGINE_PREVIEW_TEXT4;
 }
 
 static StringID GetAircraftEngineInfoString(const Engine *e)
@@ -195,67 +197,70 @@ static StringID GetAircraftEngineInfoString(const Engine *e)
 	uint capacity = e->GetDisplayDefaultCapacity(&mail_capacity);
 	uint16_t range = e->GetRange();
 
-	uint i = 0;
-	SetDParam(i++, e->GetCost());
-	SetDParam(i++, PackVelocity(e->GetDisplayMaxSpeed(), e->type));
-	SetDParam(i++, e->GetAircraftTypeText());
-	if (range > 0) SetDParam(i++, range);
-	SetDParam(i++, cargo);
-	SetDParam(i++, capacity);
+	SetDParam(0, STR_ENGINE_PREVIEW_COST_MAX_SPEED);
+	SetDParam(1, e->GetCost());
+	SetDParam(2, PackVelocity(e->GetDisplayMaxSpeed(), e->type));
 
-	if (mail_capacity > 0) {
-		SetDParam(i++, CT_MAIL);
-		SetDParam(i++, mail_capacity);
-		SetDParam(i++, e->GetRunningCost());
-		return range > 0 ? STR_ENGINE_PREVIEW_COST_MAX_SPEED_TYPE_RANGE_CAP_CAP_RUNCOST : STR_ENGINE_PREVIEW_COST_MAX_SPEED_TYPE_CAP_CAP_RUNCOST;
-	} else {
-		SetDParam(i++, e->GetRunningCost());
-		return range > 0 ? STR_ENGINE_PREVIEW_COST_MAX_SPEED_TYPE_RANGE_CAP_RUNCOST : STR_ENGINE_PREVIEW_COST_MAX_SPEED_TYPE_CAP_RUNCOST;
-	}
+	SetDParam(3, range > 0 ? STR_ENGINE_PREVIEW_TYPE_RANGE : STR_ENGINE_PREVIEW_TYPE);
+	SetDParam(4, e->GetAircraftTypeText());
+	SetDParam(5, range);
+
+	SetDParam(7, TimerGameEconomy::UsingWallclockUnits() ? STR_ENGINE_PREVIEW_RUNCOST_PERIOD : STR_ENGINE_PREVIEW_RUNCOST_YEAR);
+	SetDParam(8, e->GetRunningCost());
+
+	SetDParam(9, mail_capacity > 0 ? STR_ENGINE_PREVIEW_CAPACITY_2 : STR_ENGINE_PREVIEW_CAPACITY);
+	SetDParam(10, cargo);
+	SetDParam(11, capacity);
+	SetDParam(12, CT_MAIL);
+	SetDParam(13, mail_capacity);
+
+	return STR_ENGINE_PREVIEW_TEXT4;
 }
 
 static StringID GetRoadVehEngineInfoString(const Engine *e)
 {
+	SetDParam(7, TimerGameEconomy::UsingWallclockUnits() ? STR_ENGINE_PREVIEW_RUNCOST_PERIOD : STR_ENGINE_PREVIEW_RUNCOST_YEAR);
+	SetDParam(8, e->GetRunningCost());
+
+	SetDParam(9, STR_ENGINE_PREVIEW_CAPACITY);
+	uint capacity = GetTotalCapacityOfArticulatedParts(e->index);
+	SetDParam(10, capacity != 0 ? e->GetDefaultCargoType() : INVALID_CARGO);
+	SetDParam(11, capacity);
+
 	if (_settings_game.vehicle.roadveh_acceleration_model == AM_ORIGINAL) {
-		SetDParam(0, e->GetCost());
-		SetDParam(1, PackVelocity(e->GetDisplayMaxSpeed(), e->type));
-		uint capacity = GetTotalCapacityOfArticulatedParts(e->index);
-		if (capacity != 0) {
-			SetDParam(2, e->GetDefaultCargoType());
-			SetDParam(3, capacity);
-		} else {
-			SetDParam(2, INVALID_CARGO);
-		}
-		SetDParam(4, e->GetRunningCost());
-		return STR_ENGINE_PREVIEW_COST_MAX_SPEED_CAP_RUNCOST;
-	} else {
-		SetDParam(0, e->GetCost());
+		SetDParam(0, STR_ENGINE_PREVIEW_COST_MAX_SPEED);
+		SetDParam(1, e->GetCost());
 		SetDParam(2, PackVelocity(e->GetDisplayMaxSpeed(), e->type));
-		SetDParam(3, e->GetPower());
-		SetDParam(1, e->GetDisplayWeight());
-		SetDParam(7, e->GetDisplayMaxTractiveEffort());
 
-		SetDParam(4, e->GetRunningCost());
+		return STR_ENGINE_PREVIEW_TEXT3;
+	} else {
+		SetDParam(0, STR_ENGINE_PREVIEW_COST_WEIGHT);
+		SetDParam(1, e->GetCost());
+		SetDParam(2, e->GetDisplayWeight());
 
-		uint capacity = GetTotalCapacityOfArticulatedParts(e->index);
-		if (capacity != 0) {
-			SetDParam(5, e->GetDefaultCargoType());
-			SetDParam(6, capacity);
-		} else {
-			SetDParam(5, INVALID_CARGO);
-		}
-		return STR_ENGINE_PREVIEW_COST_WEIGHT_SPEED_POWER_MAX_TE;
+		SetDParam(3, STR_ENGINE_PREVIEW_SPEED_POWER_MAX_TE);
+		SetDParam(4, PackVelocity(e->GetDisplayMaxSpeed(), e->type));
+		SetDParam(5, e->GetPower());
+		SetDParam(6, e->GetDisplayMaxTractiveEffort());
+
+		return STR_ENGINE_PREVIEW_TEXT4;
 	}
 }
 
 static StringID GetShipEngineInfoString(const Engine *e)
 {
-	SetDParam(0, e->GetCost());
-	SetDParam(1, PackVelocity(e->GetDisplayMaxSpeed(), e->type));
-	SetDParam(2, e->GetDefaultCargoType());
-	SetDParam(3, e->GetDisplayDefaultCapacity());
-	SetDParam(4, e->GetRunningCost());
-	return STR_ENGINE_PREVIEW_COST_MAX_SPEED_CAP_RUNCOST;
+	SetDParam(0, STR_ENGINE_PREVIEW_COST_MAX_SPEED);
+	SetDParam(1, e->GetCost());
+	SetDParam(2, PackVelocity(e->GetDisplayMaxSpeed(), e->type));
+
+	SetDParam(7, TimerGameEconomy::UsingWallclockUnits() ? STR_ENGINE_PREVIEW_RUNCOST_PERIOD : STR_ENGINE_PREVIEW_RUNCOST_YEAR);
+	SetDParam(8, e->GetRunningCost());
+
+	SetDParam(9, STR_ENGINE_PREVIEW_CAPACITY);
+	SetDParam(10, e->GetDefaultCargoType());
+	SetDParam(11, e->GetDisplayDefaultCapacity());
+
+	return STR_ENGINE_PREVIEW_TEXT3;
 }
 
 
