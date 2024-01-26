@@ -128,7 +128,9 @@ public:
 	 * Get the number of engines in a given group.
 	 * @param group_id The group to get the number of engines in.
 	 * @param engine_id The engine id to count.
-	 * @pre IsValidGroup(group_id) || group_id == GROUP_ALL || group_id == GROUP_DEFAULT.
+	 * @pre ScriptEngine::IsValidEngine(engine_id).
+	 * @pre (IsValidGroup(group_id) && ScriptEngine::GetVehicleType(engine_id) == GetVehicleType(group_id)) ||
+	     group_id == GROUP_ALL || group_id == GROUP_DEFAULT.
 	 * @game @pre ScriptCompanyMode::IsValid().
 	 * @return The number of engines with id engine_id in the group with id group_id.
 	 */
