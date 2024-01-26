@@ -1,13 +1,9 @@
-// Formatting library for C++ - experimental range support
+// Formatting library for C++ - range and tuple support
 //
-// Copyright (c) 2012 - present, Victor Zverovich
+// Copyright (c) 2012 - present, Victor Zverovich and {fmt} contributors
 // All rights reserved.
 //
 // For the license information refer to format.h.
-//
-// Copyright (c) 2018 - present, Remotion (Igor Schulz)
-// All Rights Reserved
-// {fmt} support for ranges, containers and types tuple interface.
 
 #ifndef FMT_RANGES_H_
 #define FMT_RANGES_H_
@@ -187,7 +183,7 @@ template <size_t N> using make_index_sequence = std::make_index_sequence<N>;
 template <typename T, T... N> struct integer_sequence {
   using value_type = T;
 
-  static FMT_CONSTEXPR size_t size() { return sizeof...(N); }
+  static FMT_CONSTEXPR auto size() -> size_t { return sizeof...(N); }
 };
 
 template <size_t... N> using index_sequence = integer_sequence<size_t, N...>;
@@ -211,15 +207,15 @@ class is_tuple_formattable_ {
 };
 template <typename T, typename C> class is_tuple_formattable_<T, C, true> {
   template <std::size_t... Is>
-  static std::true_type check2(index_sequence<Is...>,
-                               integer_sequence<bool, (Is == Is)...>);
-  static std::false_type check2(...);
+  static auto check2(index_sequence<Is...>,
+                     integer_sequence<bool, (Is == Is)...>) -> std::true_type;
+  static auto check2(...) -> std::false_type;
   template <std::size_t... Is>
-  static decltype(check2(
+  static auto check(index_sequence<Is...>) -> decltype(check2(
       index_sequence<Is...>{},
-      integer_sequence<
-          bool, (is_formattable<typename std::tuple_element<Is, T>::type,
-                                C>::value)...>{})) check(index_sequence<Is...>);
+      integer_sequence<bool,
+                       (is_formattable<typename std::tuple_element<Is, T>::type,
+                                       C>::value)...>{}));
 
  public:
   static constexpr const bool value =
@@ -421,6 +417,12 @@ struct is_formattable_delayed
 #endif
 }  // namespace detail
 
+template <typename...> struct conjunction : std::true_type {};
+template <typename P> struct conjunction<P> : P {};
+template <typename P1, typename... Pn>
+struct conjunction<P1, Pn...>
+    : conditional_t<bool(P1::value), conjunction<Pn...>, P1> {};
+
 template <typename T, typename Char, typename Enable = void>
 struct range_formatter;
 
@@ -486,7 +488,8 @@ struct range_formatter<
     for (; it != end; ++it) {
       if (i > 0) out = detail::copy_str<Char>(separator_, out);
       ctx.advance_to(out);
-      out = underlying_.format(mapper.map(*it), ctx);
+      auto&& item = *it;
+      out = underlying_.format(mapper.map(item), ctx);
       ++i;
     }
     out = detail::copy_str<Char>(closing_bracket_, out);
@@ -668,8 +671,11 @@ template <typename Container> struct all {
 }  // namespace detail
 
 template <typename T, typename Char>
-struct formatter<T, Char,
-                 enable_if_t<detail::is_container_adaptor_like<T>::value>>
+struct formatter<
+    T, Char,
+    enable_if_t<conjunction<detail::is_container_adaptor_like<T>,
+                            bool_constant<range_format_kind<T, Char>::value ==
+                                          range_format::disabled>>::value>>
     : formatter<detail::all<typename T::container_type>, Char> {
   using all = detail::all<typename T::container_type>;
   template <typename FormatContext>
