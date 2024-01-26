@@ -526,6 +526,16 @@ public:
 	 * @return The baseprice of building or removing the given object.
 	 */
 	static Money GetBuildCost(BuildType build_type);
+
+	/**
+	 * Spawns animated text on the map.
+	 * @param tile The tile to spawn the text.
+	 * @param text The text to be spawned.
+	 * @pre ScriptMap::IsValidTile(tile).
+	 * @pre text != null && len(text) != 0.
+	 * @return True if text was sucessfully spawned.
+	 */
+	static bool SpawnAnimatedText(TileIndex tile, Text *text);
 };
 
 #endif /* SCRIPT_TILE_HPP */

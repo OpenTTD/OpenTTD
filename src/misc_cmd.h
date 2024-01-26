@@ -21,16 +21,20 @@ enum class LoanCommand : byte {
 	Amount,
 };
 
+static const uint MAX_LENGTH_ANIMATED_TEXT_CHARS = 64; ///< The maximum length of animated text
+
 CommandCost CmdMoneyCheat(DoCommandFlag flags, Money amount);
 CommandCost CmdChangeBankBalance(DoCommandFlag flags, TileIndex tile, Money delta, CompanyID company, ExpensesType expenses_type);
 CommandCost CmdIncreaseLoan(DoCommandFlag flags, LoanCommand cmd, Money amount);
 CommandCost CmdDecreaseLoan(DoCommandFlag flags, LoanCommand cmd, Money amount);
 CommandCost CmdPause(DoCommandFlag flags, PauseMode mode, bool pause);
+CommandCost CmdSpawnAnimatedText(DoCommandFlag flags, TileIndex tile, const std::string &text);
 
 DEF_CMD_TRAIT(CMD_MONEY_CHEAT,         CmdMoneyCheat,        CMD_OFFLINE,             CMDT_CHEAT)
 DEF_CMD_TRAIT(CMD_CHANGE_BANK_BALANCE, CmdChangeBankBalance, CMD_DEITY,               CMDT_MONEY_MANAGEMENT)
 DEF_CMD_TRAIT(CMD_INCREASE_LOAN,       CmdIncreaseLoan,      0,                       CMDT_MONEY_MANAGEMENT)
 DEF_CMD_TRAIT(CMD_DECREASE_LOAN,       CmdDecreaseLoan,      0,                       CMDT_MONEY_MANAGEMENT)
 DEF_CMD_TRAIT(CMD_PAUSE,               CmdPause,             CMD_SERVER | CMD_NO_EST, CMDT_SERVER_SETTING)
+DEF_CMD_TRAIT(CMD_SPAWN_ANIMATED_TEXT, CmdSpawnAnimatedText, CMD_DEITY,               CMDT_OTHER_MANAGEMENT)
 
 #endif /* MISC_CMD_H */
