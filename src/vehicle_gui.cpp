@@ -1711,7 +1711,8 @@ void BaseVehicleListWindow::DrawVehicleListItems(VehicleID selected_vehicle, int
 
 		SetDParam(0, vehgroup.GetDisplayProfitThisYear());
 		SetDParam(1, vehgroup.GetDisplayProfitLastYear());
-		DrawString(tr.left, tr.right, ir.bottom - GetCharacterHeight(FS_SMALL) - WidgetDimensions::scaled.framerect.bottom, STR_VEHICLE_LIST_PROFIT_THIS_YEAR_LAST_YEAR);
+		DrawString(tr.left, tr.right, ir.bottom - GetCharacterHeight(FS_SMALL) - WidgetDimensions::scaled.framerect.bottom,
+			TimerGameEconomy::UsingWallclockUnits() ? STR_VEHICLE_LIST_PROFIT_THIS_PERIOD_LAST_PERIOD : STR_VEHICLE_LIST_PROFIT_THIS_YEAR_LAST_YEAR);
 
 		DrawVehicleProfitButton(vehgroup.GetOldestVehicleAge(), vehgroup.GetDisplayProfitLastYear(), vehgroup.NumVehicles(), vehicle_button_x, ir.top + GetCharacterHeight(FS_NORMAL) + WidgetDimensions::scaled.vsep_normal);
 
@@ -2337,9 +2338,16 @@ extern void DrawRoadVehDetails(const Vehicle *v, const Rect &r);
 extern void DrawShipDetails(const Vehicle *v, const Rect &r);
 extern void DrawAircraftDetails(const Aircraft *v, const Rect &r);
 
-static StringID _service_interval_dropdown[] = {
+static StringID _service_interval_dropdown_calendar[] = {
 	STR_VEHICLE_DETAILS_DEFAULT,
-	STR_VEHICLE_DETAILS_TIME,
+	STR_VEHICLE_DETAILS_DAYS,
+	STR_VEHICLE_DETAILS_PERCENT,
+	INVALID_STRING_ID,
+};
+
+static StringID _service_interval_dropdown_wallclock[] = {
+	STR_VEHICLE_DETAILS_DEFAULT,
+	STR_VEHICLE_DETAILS_MINUTES,
 	STR_VEHICLE_DETAILS_PERCENT,
 	INVALID_STRING_ID,
 };
@@ -2419,14 +2427,15 @@ struct VehicleDetailsWindow : Window {
 					STR_VEHICLE_INFO_MAX_SPEED,
 					STR_VEHICLE_INFO_WEIGHT_POWER_MAX_SPEED,
 					STR_VEHICLE_INFO_WEIGHT_POWER_MAX_SPEED_MAX_TE,
-					STR_VEHICLE_INFO_PROFIT_THIS_YEAR_LAST_YEAR,
+					STR_VEHICLE_INFO_PROFIT_THIS_YEAR_LAST_YEAR_MIN_PERFORMANCE,
+					STR_VEHICLE_INFO_PROFIT_THIS_PERIOD_LAST_PERIOD_MIN_PERFORMANCE,
 					STR_VEHICLE_INFO_RELIABILITY_BREAKDOWNS
 				};
 				for (uint i = 0; i < lengthof(info_strings); i++) {
 					dim = maxdim(dim, GetStringBoundingBox(info_strings[i]));
 				}
 				SetDParam(0, STR_VEHICLE_INFO_AGE);
-				dim = maxdim(dim, GetStringBoundingBox(STR_VEHICLE_INFO_AGE_RUNNING_COST_YR));
+				dim = maxdim(dim, GetStringBoundingBox(TimerGameEconomy::UsingWallclockUnits() ? STR_VEHICLE_INFO_AGE_RUNNING_COST_PERIOD : STR_VEHICLE_INFO_AGE_RUNNING_COST_YR));
 				size->width = dim.width + padding.width;
 				break;
 			}
@@ -2459,9 +2468,10 @@ struct VehicleDetailsWindow : Window {
 
 			case WID_VD_SERVICE_INTERVAL_DROPDOWN: {
 				Dimension d{0, 0};
-				StringID *strs = _service_interval_dropdown;
-				while (*strs != INVALID_STRING_ID) {
-					d = maxdim(d, GetStringBoundingBox(*strs++));
+				for (const StringID *strs : {_service_interval_dropdown_calendar, _service_interval_dropdown_wallclock}) {
+					while (*strs != INVALID_STRING_ID) {
+						d = maxdim(d, GetStringBoundingBox(*strs++));
+					}
 				}
 				d.width += padding.width;
 				d.height += padding.height;
@@ -2542,7 +2552,7 @@ struct VehicleDetailsWindow : Window {
 				SetDParam(0, (v->age + CalendarTime::DAYS_IN_YEAR < v->max_age) ? STR_VEHICLE_INFO_AGE : STR_VEHICLE_INFO_AGE_RED);
 				SetDParam(2, TimerGameCalendar::DateToYear(v->max_age));
 				SetDParam(3, v->GetDisplayRunningCost());
-				DrawString(tr, STR_VEHICLE_INFO_AGE_RUNNING_COST_YR);
+				DrawString(tr, TimerGameEconomy::UsingWallclockUnits() ? STR_VEHICLE_INFO_AGE_RUNNING_COST_PERIOD : STR_VEHICLE_INFO_AGE_RUNNING_COST_YR);
 				tr.top += GetCharacterHeight(FS_NORMAL);
 
 				/* Draw max speed */
@@ -2582,9 +2592,9 @@ struct VehicleDetailsWindow : Window {
 				SetDParam(1, v->GetDisplayProfitLastYear());
 				if (v->IsGroundVehicle()) {
 					SetDParam(2, v->GetDisplayMinPowerToWeight());
-					DrawString(tr, STR_VEHICLE_INFO_PROFIT_THIS_YEAR_LAST_YEAR_MIN_PERFORMANCE);
+					DrawString(tr, TimerGameEconomy::UsingWallclockUnits() ? STR_VEHICLE_INFO_PROFIT_THIS_PERIOD_LAST_PERIOD_MIN_PERFORMANCE : STR_VEHICLE_INFO_PROFIT_THIS_YEAR_LAST_YEAR_MIN_PERFORMANCE);
 				} else {
-					DrawString(tr, STR_VEHICLE_INFO_PROFIT_THIS_YEAR_LAST_YEAR);
+					DrawString(tr, TimerGameEconomy::UsingWallclockUnits() ? STR_VEHICLE_INFO_PROFIT_THIS_PERIOD_LAST_PERIOD : STR_VEHICLE_INFO_PROFIT_THIS_YEAR_LAST_YEAR);
 				}
 				tr.top += GetCharacterHeight(FS_NORMAL);
 
@@ -2660,9 +2670,10 @@ struct VehicleDetailsWindow : Window {
 			WID_VD_INCREASE_SERVICING_INTERVAL,
 			WID_VD_DECREASE_SERVICING_INTERVAL);
 
-		StringID str = v->ServiceIntervalIsCustom() ?
-			(v->ServiceIntervalIsPercent() ? STR_VEHICLE_DETAILS_PERCENT : STR_VEHICLE_DETAILS_TIME) :
-			STR_VEHICLE_DETAILS_DEFAULT;
+		StringID str =
+			!v->ServiceIntervalIsCustom() ? STR_VEHICLE_DETAILS_DEFAULT :
+			v->ServiceIntervalIsPercent() ? STR_VEHICLE_DETAILS_PERCENT :
+			TimerGameEconomy::UsingWallclockUnits() ? STR_VEHICLE_DETAILS_MINUTES : STR_VEHICLE_DETAILS_DAYS;
 		this->GetWidget<NWidgetCore>(WID_VD_SERVICE_INTERVAL_DROPDOWN)->widget_data = str;
 
 		this->DrawWidgets();
@@ -2691,7 +2702,9 @@ struct VehicleDetailsWindow : Window {
 
 			case WID_VD_SERVICE_INTERVAL_DROPDOWN: {
 				const Vehicle *v = Vehicle::Get(this->window_number);
-				ShowDropDownMenu(this, _service_interval_dropdown, v->ServiceIntervalIsCustom() ? (v->ServiceIntervalIsPercent() ? 2 : 1) : 0, widget, 0, 0);
+				ShowDropDownMenu(this,
+					TimerGameEconomy::UsingWallclockUnits() ? _service_interval_dropdown_wallclock : _service_interval_dropdown_calendar,
+					v->ServiceIntervalIsCustom() ? (v->ServiceIntervalIsPercent() ? 2 : 1) : 0, widget, 0, 0);
 				break;
 			}
 

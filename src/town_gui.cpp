@@ -395,16 +395,17 @@ public:
 		DrawString(tr, STR_TOWN_VIEW_POPULATION_HOUSES);
 		tr.top += GetCharacterHeight(FS_NORMAL);
 
+		StringID str_last_period = TimerGameEconomy::UsingWallclockUnits() ? STR_TOWN_VIEW_CARGO_LAST_MINUTE_MAX : STR_TOWN_VIEW_CARGO_LAST_MONTH_MAX;
 		SetDParam(0, 1 << CT_PASSENGERS);
 		SetDParam(1, this->town->supplied[CT_PASSENGERS].old_act);
 		SetDParam(2, this->town->supplied[CT_PASSENGERS].old_max);
-		DrawString(tr, STR_TOWN_VIEW_CARGO_LAST_MONTH_MAX);
+		DrawString(tr, str_last_period);
 		tr.top += GetCharacterHeight(FS_NORMAL);
 
 		SetDParam(0, 1 << CT_MAIL);
 		SetDParam(1, this->town->supplied[CT_MAIL].old_act);
 		SetDParam(2, this->town->supplied[CT_MAIL].old_max);
-		DrawString(tr, STR_TOWN_VIEW_CARGO_LAST_MONTH_MAX);
+		DrawString(tr, str_last_period);
 		tr.top += GetCharacterHeight(FS_NORMAL);
 
 		bool first = true;
