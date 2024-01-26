@@ -913,7 +913,7 @@ public:
 			if (!IsValidCargoID(p.cargo)) continue;
 			if (first) {
 				if (has_accept) ir.top += WidgetDimensions::scaled.vsep_wide;
-				DrawString(ir, STR_INDUSTRY_VIEW_PRODUCTION_LAST_MONTH_TITLE);
+				DrawString(ir, TimerGameEconomy::UsingWallclockUnits() ? STR_INDUSTRY_VIEW_PRODUCTION_LAST_MINUTE_TITLE : STR_INDUSTRY_VIEW_PRODUCTION_LAST_MONTH_TITLE);
 				ir.top += GetCharacterHeight(FS_NORMAL);
 				if (this->editable == EA_RATE) this->production_offset_y = ir.top;
 				first = false;

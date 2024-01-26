@@ -1861,7 +1861,7 @@ struct StationViewWindow : public Window {
 			tr.top += WidgetDimensions::scaled.vsep_wide;
 		}
 
-		DrawString(tr, STR_STATION_VIEW_SUPPLY_RATINGS_TITLE);
+		DrawString(tr, TimerGameEconomy::UsingWallclockUnits() ? STR_STATION_VIEW_SUPPLY_RATINGS_TITLE_MINUTE : STR_STATION_VIEW_SUPPLY_RATINGS_TITLE_MONTH);
 		tr.top += GetCharacterHeight(FS_NORMAL);
 
 		for (const CargoSpec *cs : _sorted_standard_cargo_specs) {

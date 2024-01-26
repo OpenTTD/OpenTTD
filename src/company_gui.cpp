@@ -138,7 +138,7 @@ static uint GetTotalCategoriesHeight()
  */
 static uint GetMaxCategoriesWidth()
 {
-	uint max_width = GetStringBoundingBox(STR_FINANCES_YEAR_CAPTION).width;
+	uint max_width = GetStringBoundingBox(TimerGameEconomy::UsingWallclockUnits() ? STR_FINANCES_PERIOD_CAPTION : STR_FINANCES_YEAR_CAPTION).width;
 
 	/* Loop through categories to check max widths. */
 	for (const ExpensesList &list : _expenses_list_types) {
@@ -175,7 +175,7 @@ static void DrawCategories(const Rect &r)
 {
 	int y = r.top;
 	/* Draw description of 12-minute economic period. */
-	DrawString(r.left, r.right, y, (STR_FINANCES_YEAR_CAPTION), TC_FROMSTRING, SA_LEFT, true);
+	DrawString(r.left, r.right, y, (TimerGameEconomy::UsingWallclockUnits() ? STR_FINANCES_PERIOD_CAPTION : STR_FINANCES_YEAR_CAPTION), TC_FROMSTRING, SA_LEFT, true);
 	y += GetCharacterHeight(FS_NORMAL) + WidgetDimensions::scaled.vsep_wide;
 
 	for (const ExpensesList &list : _expenses_list_types) {
@@ -1982,12 +1982,13 @@ struct CompanyInfrastructureWindow : Window
 				uint count_width = GetStringBoundingBox(STR_JUST_COMMA).width + WidgetDimensions::scaled.hsep_indent; // Reserve some wiggle room
 
 				if (_settings_game.economy.infrastructure_maintenance) {
+					StringID str_total = TimerGameEconomy::UsingWallclockUnits() ? STR_COMPANY_INFRASTRUCTURE_VIEW_TOTAL_PERIOD : STR_COMPANY_INFRASTRUCTURE_VIEW_TOTAL_YEAR;
 					SetDParamMaxValue(0, this->GetTotalMaintenanceCost() * 12); // Convert to per year
-					this->total_width = GetStringBoundingBox(STR_COMPANY_INFRASTRUCTURE_VIEW_TOTAL).width + WidgetDimensions::scaled.hsep_indent * 2;
+					this->total_width = GetStringBoundingBox(str_total).width + WidgetDimensions::scaled.hsep_indent * 2;
 					size->width = std::max(size->width, this->total_width);
 
 					SetDParamMaxValue(0, max_cost * 12); // Convert to per year
-					count_width += std::max(this->total_width, GetStringBoundingBox(STR_COMPANY_INFRASTRUCTURE_VIEW_TOTAL).width);
+					count_width += std::max(this->total_width, GetStringBoundingBox(str_total).width);
 				}
 
 				size->width = std::max(size->width, count_width);
@@ -2016,7 +2017,9 @@ struct CompanyInfrastructureWindow : Window
 		if (_settings_game.economy.infrastructure_maintenance) {
 			SetDParam(0, monthly_cost * 12); // Convert to per year
 			Rect tr = r.WithWidth(this->total_width, _current_text_dir == TD_RTL);
-			DrawString(tr.left, tr.right, y, STR_COMPANY_INFRASTRUCTURE_VIEW_TOTAL, TC_FROMSTRING, SA_RIGHT);
+			DrawString(tr.left, tr.right, y,
+				TimerGameEconomy::UsingWallclockUnits() ? STR_COMPANY_INFRASTRUCTURE_VIEW_TOTAL_PERIOD : STR_COMPANY_INFRASTRUCTURE_VIEW_TOTAL_YEAR,
+				TC_FROMSTRING, SA_RIGHT);
 		}
 	}
 
@@ -2100,7 +2103,9 @@ struct CompanyInfrastructureWindow : Window
 					GfxFillRect(tr.left, y, tr.right, y + WidgetDimensions::scaled.bevel.top - 1, PC_WHITE);
 					y += WidgetDimensions::scaled.vsep_normal;
 					SetDParam(0, this->GetTotalMaintenanceCost() * 12); // Convert to per year
-					DrawString(tr.left, tr.right, y, STR_COMPANY_INFRASTRUCTURE_VIEW_TOTAL, TC_FROMSTRING, SA_RIGHT);
+					DrawString(tr.left, tr.right, y,
+						TimerGameEconomy::UsingWallclockUnits() ? STR_COMPANY_INFRASTRUCTURE_VIEW_TOTAL_PERIOD : STR_COMPANY_INFRASTRUCTURE_VIEW_TOTAL_YEAR,
+						TC_FROMSTRING, SA_RIGHT);
 				}
 				break;
 

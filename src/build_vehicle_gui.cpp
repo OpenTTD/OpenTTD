@@ -620,7 +620,7 @@ static int DrawRailWagonPurchaseInfo(int left, int right, int y, EngineID engine
 	/* Running cost */
 	if (rvi->running_cost_class != INVALID_PRICE) {
 		SetDParam(0, e->GetRunningCost());
-		DrawString(left, right, y, STR_PURCHASE_INFO_RUNNINGCOST);
+		DrawString(left, right, y, TimerGameEconomy::UsingWallclockUnits() ? STR_PURCHASE_INFO_RUNNINGCOST_PERIOD : STR_PURCHASE_INFO_RUNNINGCOST_YEAR);
 		y += GetCharacterHeight(FS_NORMAL);
 	}
 
@@ -661,7 +661,7 @@ static int DrawRailEnginePurchaseInfo(int left, int right, int y, EngineID engin
 	/* Running cost */
 	if (rvi->running_cost_class != INVALID_PRICE) {
 		SetDParam(0, e->GetRunningCost());
-		DrawString(left, right, y, STR_PURCHASE_INFO_RUNNINGCOST);
+		DrawString(left, right, y, TimerGameEconomy::UsingWallclockUnits() ? STR_PURCHASE_INFO_RUNNINGCOST_PERIOD : STR_PURCHASE_INFO_RUNNINGCOST_YEAR);
 		y += GetCharacterHeight(FS_NORMAL);
 	}
 
@@ -727,7 +727,7 @@ static int DrawRoadVehPurchaseInfo(int left, int right, int y, EngineID engine_n
 
 	/* Running cost */
 	SetDParam(0, e->GetRunningCost());
-	DrawString(left, right, y, STR_PURCHASE_INFO_RUNNINGCOST);
+	DrawString(left, right, y, TimerGameEconomy::UsingWallclockUnits() ? STR_PURCHASE_INFO_RUNNINGCOST_PERIOD : STR_PURCHASE_INFO_RUNNINGCOST_YEAR);
 	y += GetCharacterHeight(FS_NORMAL);
 
 	return y;
@@ -784,7 +784,7 @@ static int DrawShipPurchaseInfo(int left, int right, int y, EngineID engine_numb
 
 	/* Running cost */
 	SetDParam(0, e->GetRunningCost());
-	DrawString(left, right, y, STR_PURCHASE_INFO_RUNNINGCOST);
+	DrawString(left, right, y, TimerGameEconomy::UsingWallclockUnits() ? STR_PURCHASE_INFO_RUNNINGCOST_PERIOD : STR_PURCHASE_INFO_RUNNINGCOST_YEAR);
 	y += GetCharacterHeight(FS_NORMAL);
 
 	return y;
@@ -835,7 +835,7 @@ static int DrawAircraftPurchaseInfo(int left, int right, int y, EngineID engine_
 
 	/* Running cost */
 	SetDParam(0, e->GetRunningCost());
-	DrawString(left, right, y, STR_PURCHASE_INFO_RUNNINGCOST);
+	DrawString(left, right, y, TimerGameEconomy::UsingWallclockUnits() ? STR_PURCHASE_INFO_RUNNINGCOST_PERIOD : STR_PURCHASE_INFO_RUNNINGCOST_YEAR);
 	y += GetCharacterHeight(FS_NORMAL);
 
 	/* Aircraft type */

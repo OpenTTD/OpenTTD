@@ -407,7 +407,9 @@ bool LinkGraphOverlay::ShowTooltip(Point pt, TooltipCloseCondition close_cond)
 				SetDParam(3, j->first);
 				SetDParam(4, link.Usage() * 100 / (link.capacity + 1));
 				SetDParamStr(5, tooltip_extension);
-				GuiShowTooltips(this->window, STR_LINKGRAPH_STATS_TOOLTIP, close_cond, 7);
+				GuiShowTooltips(this->window,
+					TimerGameEconomy::UsingWallclockUnits() ? STR_LINKGRAPH_STATS_TOOLTIP_MINUTE : STR_LINKGRAPH_STATS_TOOLTIP_MONTH,
+					close_cond, 7);
 				return true;
 			}
 		}
