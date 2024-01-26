@@ -97,7 +97,7 @@ public:
 		this->Add(std::make_unique<NWidgetLeaf>(WWT_PUSHTXTBTN, COLOUR_WHITE, WID_NG_CLIENTS, STR_NETWORK_SERVER_LIST_CLIENTS_CAPTION, STR_NETWORK_SERVER_LIST_CLIENTS_CAPTION_TOOLTIP));
 		this->Add(std::make_unique<NWidgetLeaf>(WWT_PUSHTXTBTN, COLOUR_WHITE, WID_NG_MAPSIZE, STR_NETWORK_SERVER_LIST_MAP_SIZE_CAPTION, STR_NETWORK_SERVER_LIST_MAP_SIZE_CAPTION_TOOLTIP));
 		this->Add(std::make_unique<NWidgetLeaf>(WWT_PUSHTXTBTN, COLOUR_WHITE, WID_NG_DATE, STR_NETWORK_SERVER_LIST_DATE_CAPTION, STR_NETWORK_SERVER_LIST_DATE_CAPTION_TOOLTIP));
-		this->Add(std::make_unique<NWidgetLeaf>(WWT_PUSHTXTBTN, COLOUR_WHITE, WID_NG_YEARS, STR_NETWORK_SERVER_LIST_YEARS_CAPTION, STR_NETWORK_SERVER_LIST_YEARS_CAPTION_TOOLTIP));
+		this->Add(std::make_unique<NWidgetLeaf>(WWT_PUSHTXTBTN, COLOUR_WHITE, WID_NG_YEARS, STR_NETWORK_SERVER_LIST_PLAY_TIME_CAPTION, STR_NETWORK_SERVER_LIST_PLAY_TIME_CAPTION_TOOLTIP));
 
 		leaf = std::make_unique<NWidgetLeaf>(WWT_PUSHTXTBTN, COLOUR_WHITE, WID_NG_INFO, STR_EMPTY, STR_NETWORK_SERVER_LIST_INFO_ICONS_TOOLTIP);
 		leaf->SetMinimalSize(14 + GetSpriteSize(SPR_LOCK, nullptr, ZOOM_LVL_OUT_4X).width
@@ -283,18 +283,20 @@ protected:
 		return (r != 0) ? r < 0 : NGameClientSorter(a, b);
 	}
 
-	/** Sort servers by current date */
-	static bool NGameDateSorter(NetworkGameList * const &a, NetworkGameList * const &b)
+	/** Sort servers by calendar date. */
+	static bool NGameCalendarDateSorter(NetworkGameList * const &a, NetworkGameList * const &b)
 	{
-		auto r = a->info.game_date - b->info.game_date;
+		auto r = a->info.calendar_date - b->info.calendar_date;
 		return (r != 0) ? r < 0 : NGameClientSorter(a, b);
 	}
 
-	/** Sort servers by the number of days the game is running */
-	static bool NGameYearsSorter(NetworkGameList * const &a, NetworkGameList * const &b)
+	/** Sort servers by the number of ticks the game is running. */
+	static bool NGameTicksPlayingSorter(NetworkGameList * const &a, NetworkGameList * const &b)
 	{
-		auto r = a->info.game_date - a->info.start_date - b->info.game_date + b->info.start_date;
-		return (r != 0) ? r < 0: NGameDateSorter(a, b);
+		if (a->info.ticks_playing == b->info.ticks_playing) {
+			return NGameClientSorter(a, b);
+		}
+		return a->info.ticks_playing < b->info.ticks_playing;
 	}
 
 	/**
@@ -392,18 +394,18 @@ protected:
 			if (const NWidgetBase *nwid = this->GetWidget<NWidgetBase>(WID_NG_DATE); nwid->current_x != 0) {
 				/* current date */
 				Rect date = nwid->GetCurrentRect();
-				TimerGameCalendar::YearMonthDay ymd = TimerGameCalendar::ConvertDateToYMD(cur_item->info.game_date);
+				TimerGameCalendar::YearMonthDay ymd = TimerGameCalendar::ConvertDateToYMD(cur_item->info.calendar_date);
 				SetDParam(0, ymd.year);
 				DrawString(date.left, date.right, y + text_y_offset, STR_JUST_INT, TC_BLACK, SA_HOR_CENTER);
 			}
 
 			if (const NWidgetBase *nwid = this->GetWidget<NWidgetBase>(WID_NG_YEARS); nwid->current_x != 0) {
-				/* number of years the game is running */
+				/* play time */
 				Rect years = nwid->GetCurrentRect();
-				TimerGameCalendar::YearMonthDay ymd_cur = TimerGameCalendar::ConvertDateToYMD(cur_item->info.game_date);
-				TimerGameCalendar::YearMonthDay ymd_start = TimerGameCalendar::ConvertDateToYMD(cur_item->info.start_date);
-				SetDParam(0, ymd_cur.year - ymd_start.year);
-				DrawString(years.left, years.right, y + text_y_offset, STR_JUST_INT, TC_BLACK, SA_HOR_CENTER);
+				const auto play_time = cur_item->info.ticks_playing / Ticks::TICKS_PER_SECOND;
+				SetDParam(0, play_time / 60 / 60);
+				SetDParam(1, (play_time / 60) % 60);
+				DrawString(years.left, years.right, y + text_y_offset, STR_NETWORK_SERVER_LIST_PLAY_TIME_SHORT, TC_BLACK, SA_HOR_CENTER);
 			}
 
 			/* draw a lock if the server is password protected */
@@ -652,11 +654,16 @@ public:
 			StringID invite_or_address = sel->connection_string.starts_with("+") ? STR_NETWORK_SERVER_LIST_INVITE_CODE : STR_NETWORK_SERVER_LIST_SERVER_ADDRESS;
 			tr.top = DrawStringMultiLine(tr, invite_or_address); // server address / invite code
 
-			SetDParam(0, sel->info.start_date);
+			SetDParam(0, sel->info.calendar_start);
 			tr.top = DrawStringMultiLine(tr, STR_NETWORK_SERVER_LIST_START_DATE); // start date
 
-			SetDParam(0, sel->info.game_date);
+			SetDParam(0, sel->info.calendar_date);
 			tr.top = DrawStringMultiLine(tr, STR_NETWORK_SERVER_LIST_CURRENT_DATE); // current date
+
+			const auto play_time = sel->info.ticks_playing / Ticks::TICKS_PER_SECOND;
+			SetDParam(0, play_time / 60 / 60);
+			SetDParam(1, (play_time / 60) % 60);
+			tr.top = DrawStringMultiLine(tr, STR_NETWORK_SERVER_LIST_PLAY_TIME); // play time
 
 			if (sel->info.gamescript_version != -1) {
 				SetDParamStr(0, sel->info.gamescript_name);
@@ -857,8 +864,8 @@ GUIGameServerList::SortFunction * const NetworkGameWindow::sorter_funcs[] = {
 	&NGameNameSorter,
 	&NGameClientSorter,
 	&NGameMapSizeSorter,
-	&NGameDateSorter,
-	&NGameYearsSorter,
+	&NGameCalendarDateSorter,
+	&NGameTicksPlayingSorter,
 	&NGameAllowedSorter
 };
 

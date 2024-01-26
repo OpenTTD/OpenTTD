@@ -46,7 +46,7 @@ static const uint16_t TCP_MTU                         = 32767;          ///< Num
 static const uint16_t COMPAT_MTU                      = 1460;           ///< Number of bytes we can pack in a single packet for backward compatibility
 
 static const byte NETWORK_GAME_ADMIN_VERSION        =    3;           ///< What version of the admin network do we use?
-static const byte NETWORK_GAME_INFO_VERSION         =    6;           ///< What version of game-info do we use?
+static const byte NETWORK_GAME_INFO_VERSION         =    7;           ///< What version of game-info do we use?
 static const byte NETWORK_COORDINATOR_VERSION       =    6;           ///< What version of game-coordinator-protocol do we use?
 static const byte NETWORK_SURVEY_VERSION            =    1;           ///< What version of the survey do we use?
 
