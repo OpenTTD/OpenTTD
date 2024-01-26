@@ -1884,24 +1884,13 @@ static void ClampSmoothScroll(uint32_t delta_ms, int64_t delta_hi, int64_t delta
 {
 	/** A tile is 64 pixels in width at 1x zoom; viewport coordinates are in 4x zoom. */
 	constexpr int PIXELS_PER_TILE = TILE_PIXELS * 2 * ZOOM_LVL_BASE;
-	constexpr int MS_PER_STEP = 30; ///< Time between each step in the smooth scroll.
-
-	static uint32_t remainder_time = 0;
 
 	assert(delta_hi != 0);
 
-	int64_t delta_left = delta_hi;
-	int max_scroll = 0;
-
-	for (uint count = 0; count < (delta_ms + remainder_time) / MS_PER_STEP; count++) {
-		/* We move 1/4th of the distance per 30ms, to give a smooth movement experience. */
-		delta_left = delta_left * 3 / 4;
-		/* But we don't allow more than 16 tiles movement per 30ms; longer distances take longer.
-		 * This means that the full width of a map would take ~1 second, ignoring the slowdown:
-		 * 256 / 16 * 30ms = 480ms. */
-		max_scroll += Map::ScaleBySize1D(16 * PIXELS_PER_TILE);
-	}
-	remainder_time = (delta_ms + remainder_time) % MS_PER_STEP;
+	/* Move at most 75% of the distance every 30ms, for a smooth experience */
+	int64_t delta_left = delta_hi * std::pow(0.75, delta_ms / 30.0);
+	/* Move never more than 16 tiles per 30ms. */
+	int max_scroll = Map::ScaleBySize1D(16 * PIXELS_PER_TILE * delta_ms / 30);
 
 	/* We never go over the max_scroll speed. */
 	delta_hi_clamped = Clamp(delta_hi - delta_left, -max_scroll, max_scroll);
@@ -1911,14 +1900,6 @@ static void ClampSmoothScroll(uint32_t delta_ms, int64_t delta_hi, int64_t delta
 	/* Ensure we always move (delta_hi can't be zero). */
 	if (delta_hi_clamped == 0) {
 		delta_hi_clamped = delta_hi > 0 ? 1 : -1;
-	}
-
-	/* Also ensure we always move on the lower delta. This is mostly to avoid a
-	 * situation at borders, where you can't move from (x, y) to (x + 1, y),
-	 * but you can move to (x + 1, y + 1). This due to how viewport clamping
-	 * works and rounding issue. */
-	if (delta_lo_clamped == 0 && delta_lo != 0) {
-		delta_lo_clamped = delta_lo > 0 ? 1 : -1;
 	}
 }
 
@@ -1944,6 +1925,9 @@ void UpdateViewportPosition(Window *w, uint32_t delta_ms)
 		int delta_x = w->viewport->dest_scrollpos_x - w->viewport->scrollpos_x;
 		int delta_y = w->viewport->dest_scrollpos_y - w->viewport->scrollpos_y;
 
+		int current_x = w->viewport->scrollpos_x;
+		int current_y = w->viewport->scrollpos_y;
+
 		bool update_overlay = false;
 		if (delta_x != 0 || delta_y != 0) {
 			if (_settings_client.gui.smooth_scroll) {
@@ -1955,6 +1939,7 @@ void UpdateViewportPosition(Window *w, uint32_t delta_ms)
 				} else {
 					ClampSmoothScroll(delta_ms, delta_y, delta_x, delta_y_clamped, delta_x_clamped);
 				}
+
 				w->viewport->scrollpos_x += delta_x_clamped;
 				w->viewport->scrollpos_y += delta_y_clamped;
 			} else {
@@ -1966,6 +1951,13 @@ void UpdateViewportPosition(Window *w, uint32_t delta_ms)
 		}
 
 		ClampViewportToMap(vp, &w->viewport->scrollpos_x, &w->viewport->scrollpos_y);
+
+		/* When moving small amounts around the border we can get stuck, and
+		 * not actually move. In those cases, teleport to the destination. */
+		if ((delta_x != 0 || delta_y != 0) && current_x == w->viewport->scrollpos_x && current_y == w->viewport->scrollpos_y) {
+			w->viewport->scrollpos_x = w->viewport->dest_scrollpos_x;
+			w->viewport->scrollpos_y = w->viewport->dest_scrollpos_y;
+		}
 
 		SetViewportPosition(w, w->viewport->scrollpos_x, w->viewport->scrollpos_y);
 		if (update_overlay) RebuildViewportOverlay(w);
