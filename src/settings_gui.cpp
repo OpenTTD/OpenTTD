@@ -97,6 +97,8 @@ struct BaseSetTextfileWindow : public TextfileWindow {
 
 	BaseSetTextfileWindow(TextfileType file_type, const TBaseSet *baseset, StringID content_type) : TextfileWindow(file_type), baseset(baseset), content_type(content_type)
 	{
+		this->ConstructWindow();
+
 		auto textfile = this->baseset->GetTextfile(file_type);
 		this->LoadTextfile(textfile.value(), BASESET_DIR);
 	}
