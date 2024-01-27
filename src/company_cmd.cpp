@@ -202,14 +202,15 @@ void InvalidateCompanyWindows(const Company *company)
  */
 Money GetAvailableMoney(CompanyID company)
 {
+	if (_settings_game.difficulty.infinite_money) return INT64_MAX;
 	if (!Company::IsValidID(company)) return INT64_MAX;
 	return Company::Get(company)->money;
 }
 
 /**
  * This functions returns the money which can be used to execute a command.
- * This is either the money of the current company or INT64_MAX if there
- * is no such a company "at the moment" like the server itself.
+ * This is either the money of the current company, or INT64_MAX if infinite money
+ * is enabled or there is no such a company "at the moment" like the server itself.
  *
  * @return The available money of the current company or INT64_MAX
  */
@@ -221,17 +222,19 @@ Money GetAvailableMoneyForCommand()
 /**
  * Verify whether the company can pay the bill.
  * @param[in,out] cost Money to pay, is changed to an error if the company does not have enough money.
- * @return Function returns \c true if the company has enough money, else it returns \c false.
+ * @return Function returns \c true if the company has enough money or infinite money is enabled,
+ * else it returns \c false.
  */
 bool CheckCompanyHasMoney(CommandCost &cost)
 {
-	if (cost.GetCost() > 0) {
-		const Company *c = Company::GetIfValid(_current_company);
-		if (c != nullptr && cost.GetCost() > c->money) {
-			SetDParam(0, cost.GetCost());
-			cost.MakeError(STR_ERROR_NOT_ENOUGH_CASH_REQUIRES_CURRENCY);
-			return false;
-		}
+	if (cost.GetCost() <= 0) return true;
+	if (_settings_game.difficulty.infinite_money) return true;
+
+	const Company *c = Company::GetIfValid(_current_company);
+	if (c != nullptr && cost.GetCost() > c->money) {
+		SetDParam(0, cost.GetCost());
+		cost.MakeError(STR_ERROR_NOT_ENOUGH_CASH_REQUIRES_CURRENCY);
+		return false;
 	}
 	return true;
 }
