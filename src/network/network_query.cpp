@@ -24,6 +24,15 @@ NetworkRecvStatus QueryNetworkGameSocketHandler::CloseConnection(NetworkRecvStat
 	assert(status != NETWORK_RECV_STATUS_OKAY);
 	assert(this->sock != INVALID_SOCKET);
 
+	/* Connection is closed, but we never received a packet. Must be offline. */
+	NetworkGameList *item = NetworkGameListAddItem(this->connection_string);
+	if (item->refreshing) {
+		item->status = NGLS_OFFLINE;
+		item->refreshing = false;
+
+		UpdateNetworkGameWindow();
+	}
+
 	return status;
 }
 
@@ -36,6 +45,7 @@ bool QueryNetworkGameSocketHandler::CheckConnection()
 
 	/* If there was no response in 5 seconds, terminate the query. */
 	if (lag > std::chrono::seconds(5)) {
+		Debug(net, 0, "Timeout while waiting for response from {}", this->connection_string);
 		this->CloseConnection(NETWORK_RECV_STATUS_CONNECTION_LOST);
 		return false;
 	}
