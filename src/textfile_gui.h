@@ -23,8 +23,6 @@ struct TextfileWindow : public Window, MissingGlyphSearcher {
 	Scrollbar *vscroll;              ///< Vertical scrollbar.
 	Scrollbar *hscroll;              ///< Horizontal scrollbar.
 
-	TextfileWindow(TextfileType file_type);
-
 	void UpdateWidgetSize(WidgetID widget, Dimension *size, [[maybe_unused]] const Dimension &padding, [[maybe_unused]] Dimension *fill, [[maybe_unused]] Dimension *resize) override;
 	void OnClick([[maybe_unused]] Point pt, WidgetID widget, [[maybe_unused]] int click_count) override;
 	void DrawWidget(const Rect &r, WidgetID widget) const override;
@@ -42,6 +40,9 @@ struct TextfileWindow : public Window, MissingGlyphSearcher {
 	virtual void LoadTextfile(const std::string &textfile, Subdirectory dir);
 
 protected:
+	TextfileWindow(TextfileType file_type);
+	void ConstructWindow();
+
 	struct Line {
 		int top{0};                  ///< Top scroll position in visual lines.
 		int bottom{0};               ///< Bottom scroll position in visual lines.

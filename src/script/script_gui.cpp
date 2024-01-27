@@ -631,6 +631,7 @@ struct ScriptTextfileWindow : public TextfileWindow {
 
 	ScriptTextfileWindow(TextfileType file_type, CompanyID slot) : TextfileWindow(file_type), slot(slot)
 	{
+		this->ConstructWindow();
 		this->OnInvalidateData();
 	}
 

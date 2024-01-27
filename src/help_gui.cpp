@@ -59,6 +59,8 @@ static std::optional<std::string> FindGameManualFilePath(std::string_view filena
 struct GameManualTextfileWindow : public TextfileWindow {
 	GameManualTextfileWindow(std::string_view filename) : TextfileWindow(TFT_GAME_MANUAL)
 	{
+		this->ConstructWindow();
+
 		/* Mark the content of these files as trusted. */
 		this->trusted = true;
 
