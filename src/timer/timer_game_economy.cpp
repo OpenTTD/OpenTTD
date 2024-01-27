@@ -50,9 +50,9 @@ TimerGameEconomy::DateFract TimerGameEconomy::date_fract = {};
 
 	/* If we're using wallclock units, economy months have 30 days and an economy year has 360 days. */
 	TimerGameEconomy::YearMonthDay ymd;
-	ymd.year = TimerGameEconomy::date.base() / EconomyTime::DAYS_IN_ECONOMY_YEAR;
-	ymd.month = (TimerGameEconomy::date.base() % EconomyTime::DAYS_IN_ECONOMY_YEAR) / EconomyTime::DAYS_IN_ECONOMY_MONTH;
-	ymd.day = TimerGameEconomy::date.base() % EconomyTime::DAYS_IN_ECONOMY_MONTH;
+	ymd.year = date.base() / EconomyTime::DAYS_IN_ECONOMY_YEAR;
+	ymd.month = (date.base() % EconomyTime::DAYS_IN_ECONOMY_YEAR) / EconomyTime::DAYS_IN_ECONOMY_MONTH;
+	ymd.day = date.base() % EconomyTime::DAYS_IN_ECONOMY_MONTH;
 	return ymd;
 }
 
