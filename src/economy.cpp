@@ -568,6 +568,9 @@ void ChangeOwnershipOfCompanyItems(Owner old_owner, Owner new_owner)
  */
 static void CompanyCheckBankrupt(Company *c)
 {
+	/* If "Infinite money" setting is on, companies should not go bankrupt. */
+	if (_settings_game.difficulty.infinite_money) return;
+
 	/*  If the company has money again, it does not go bankrupt */
 	if (c->money - c->current_loan >= -_economy.max_loan) {
 		int previous_months_of_bankruptcy = CeilDiv(c->months_of_bankruptcy, 3);
