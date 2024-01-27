@@ -454,7 +454,7 @@ size_t BoolSettingDesc::ParseValue(const char *str) const
  */
 StringID IntSettingDesc::GetTitle() const
 {
-	return this->str;
+	return this->get_title_cb != nullptr ? this->get_title_cb(*this) : this->str;
 }
 
 /**
@@ -463,7 +463,7 @@ StringID IntSettingDesc::GetTitle() const
  */
 StringID IntSettingDesc::GetHelp() const
 {
-	return this->str_help;
+	return this->get_help_cb != nullptr ? this->get_help_cb(*this) : this->str_help;
 }
 
 /**
@@ -473,7 +473,9 @@ StringID IntSettingDesc::GetHelp() const
  */
 void IntSettingDesc::SetValueDParams(uint first_param, int32_t value) const
 {
-	if (this->IsBoolSetting()) {
+	if (this->set_value_dparams_cb != nullptr) {
+		this->set_value_dparams_cb(*this, first_param, value);
+	} else if (this->IsBoolSetting()) {
 		SetDParam(first_param++, value != 0 ? STR_CONFIG_SETTING_ON : STR_CONFIG_SETTING_OFF);
 	} else {
 		if ((this->flags & SF_GUI_DROPDOWN) != 0) {
