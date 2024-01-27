@@ -3121,7 +3121,9 @@ void Window::InvalidateData(int data, bool gui_scope)
 	this->SetDirty();
 	if (!gui_scope) {
 		/* Schedule GUI-scope invalidation for next redraw. */
-		this->scheduled_invalidation_data.push_back(data);
+		if (std::find(std::begin(this->scheduled_invalidation_data), std::end(this->scheduled_invalidation_data), data) == std::end(this->scheduled_invalidation_data)) {
+			this->scheduled_invalidation_data.push_back(data);
+		}
 	}
 	this->OnInvalidateData(data, gui_scope);
 }
