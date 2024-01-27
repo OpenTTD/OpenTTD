@@ -81,6 +81,33 @@ SettingTable _win32_settings{ _win32_settings_table };
 
 /* Begin - Callback Functions for the various settings. */
 
+/** Switch setting title depending on wallclock setting */
+static StringID SettingTitleWallclock(const IntSettingDesc &sd)
+{
+	return TimerGameEconomy::UsingWallclockUnits(_game_mode == GM_MENU) ? sd.str + 1 : sd.str;
+}
+
+/** Switch setting help depending on wallclock setting */
+static StringID SettingHelpWallclock(const IntSettingDesc &sd)
+{
+	return TimerGameEconomy::UsingWallclockUnits(_game_mode == GM_MENU) ? sd.str_help + 1 : sd.str_help;
+}
+
+/** Setting values for velocity unit localisation */
+static void SettingsValueVelocityUnit(const IntSettingDesc &, uint first_param, int32_t value)
+{
+	StringID val;
+	switch (value) {
+		case 0: val = STR_CONFIG_SETTING_LOCALISATION_UNITS_VELOCITY_IMPERIAL; break;
+		case 1: val = STR_CONFIG_SETTING_LOCALISATION_UNITS_VELOCITY_METRIC; break;
+		case 2: val = STR_CONFIG_SETTING_LOCALISATION_UNITS_VELOCITY_SI; break;
+		case 3: val = TimerGameEconomy::UsingWallclockUnits(_game_mode == GM_MENU) ? STR_CONFIG_SETTING_LOCALISATION_UNITS_VELOCITY_GAMEUNITS_SECS : STR_CONFIG_SETTING_LOCALISATION_UNITS_VELOCITY_GAMEUNITS_DAYS; break;
+		case 4: val = STR_CONFIG_SETTING_LOCALISATION_UNITS_VELOCITY_KNOTS; break;
+		default: NOT_REACHED();
+	}
+	SetDParam(first_param, val);
+}
+
 /** Reposition the main toolbar as the setting changed. */
 static void v_PositionMainToolbar(int32_t)
 {
