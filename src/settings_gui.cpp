@@ -1275,17 +1275,6 @@ struct SettingEntry : BaseSettingEntry {
 
 	void SetButtons(byte new_val);
 
-	/**
-	 * Get the help text of a single setting.
-	 * @return The requested help text.
-	 */
-	inline StringID GetHelpText() const
-	{
-		return this->setting->str_help;
-	}
-
-	void SetValueDParams(uint first_param, int32_t value) const;
-
 protected:
 	void DrawSetting(GameSettings *settings_ptr, int left, int right, int y, bool highlight) const override;
 
@@ -1499,7 +1488,7 @@ uint SettingEntry::Length() const
  */
 uint SettingEntry::GetMaxHelpHeight(int maxw)
 {
-	return GetStringHeight(this->GetHelpText(), maxw);
+	return GetStringHeight(this->setting->GetHelp(), maxw);
 }
 
 /**
@@ -1560,8 +1549,8 @@ bool SettingEntry::UpdateFilterState(SettingFilter &filter, bool force_visible)
 		filter.string.ResetState();
 
 		SetDParam(0, STR_EMPTY);
-		filter.string.AddLine(sd->str);
-		filter.string.AddLine(this->GetHelpText());
+		filter.string.AddLine(sd->GetTitle());
+		filter.string.AddLine(sd->GetHelp());
 
 		visible = filter.string.GetState();
 	}
@@ -1590,28 +1579,6 @@ static const void *ResolveObject(const GameSettings *settings_ptr, const IntSett
 		return &_settings_client.company;
 	}
 	return settings_ptr;
-}
-
-/**
- * Set the DParams for drawing the value of a setting.
- * @param first_param First DParam to use
- * @param value Setting value to set params for.
- */
-void SettingEntry::SetValueDParams(uint first_param, int32_t value) const
-{
-	if (this->setting->IsBoolSetting()) {
-		SetDParam(first_param++, value != 0 ? STR_CONFIG_SETTING_ON : STR_CONFIG_SETTING_OFF);
-	} else {
-		if ((this->setting->flags & SF_GUI_DROPDOWN) != 0) {
-			SetDParam(first_param++, this->setting->str_val - this->setting->min + value);
-		} else if ((this->setting->flags & SF_GUI_NEGATIVE_IS_SPECIAL) != 0) {
-			SetDParam(first_param++, this->setting->str_val + ((value >= 0) ? 1 : 0));
-			value = abs(value);
-		} else {
-			SetDParam(first_param++, this->setting->str_val + ((value == 0 && (this->setting->flags & SF_GUI_0_IS_SPECIAL) != 0) ? 1 : 0));
-		}
-		SetDParam(first_param++, value);
-	}
 }
 
 /**
@@ -1649,8 +1616,8 @@ void SettingEntry::DrawSetting(GameSettings *settings_ptr, int left, int right, 
 		DrawArrowButtons(buttons_left, button_y, COLOUR_YELLOW, state,
 				editable && value != (sd->flags & SF_GUI_0_IS_SPECIAL ? 0 : sd->min), editable && (uint32_t)value != sd->max);
 	}
-	this->SetValueDParams(1, value);
-	DrawString(text_left, text_right, y + (SETTING_HEIGHT - GetCharacterHeight(FS_NORMAL)) / 2, sd->str, highlight ? TC_WHITE : TC_LIGHT_BLUE);
+	sd->SetValueDParams(1, value);
+	DrawString(text_left, text_right, y + (SETTING_HEIGHT - GetCharacterHeight(FS_NORMAL)) / 2, sd->GetTitle(), highlight ? TC_WHITE : TC_LIGHT_BLUE);
 }
 
 /* == SettingsContainer methods == */
@@ -2524,11 +2491,11 @@ struct GameSettingsWindow : Window {
 					DrawString(tr, STR_CONFIG_SETTING_TYPE);
 					tr.top += GetCharacterHeight(FS_NORMAL);
 
-					this->last_clicked->SetValueDParams(0, sd->def);
+					sd->SetValueDParams(0, sd->def);
 					DrawString(tr, STR_CONFIG_SETTING_DEFAULT_VALUE);
 					tr.top += GetCharacterHeight(FS_NORMAL) + WidgetDimensions::scaled.vsep_normal;
 
-					DrawStringMultiLine(tr, this->last_clicked->GetHelpText(), TC_WHITE);
+					DrawStringMultiLine(tr, sd->GetHelp(), TC_WHITE);
 				}
 				break;
 
@@ -2655,7 +2622,8 @@ struct GameSettingsWindow : Window {
 
 					DropDownList list;
 					for (int i = sd->min; i <= (int)sd->max; i++) {
-						list.push_back(std::make_unique<DropDownListStringItem>(sd->str_val + i - sd->min, i, false));
+						sd->SetValueDParams(0, i);
+						list.push_back(std::make_unique<DropDownListStringItem>(STR_JUST_STRING2, i, false));
 					}
 
 					ShowDropDownListAt(this, std::move(list), value, WID_GS_SETTING_DROPDOWN, wi_rect, COLOUR_ORANGE);
