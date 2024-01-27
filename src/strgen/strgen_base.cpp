@@ -377,34 +377,6 @@ void EmitPlural(Buffer *buffer, char *buf, int)
 	EmitWordList(buffer, words, nw);
 }
 
-/**
- * Handle the selection of timekeeping units based on the timekeeping setting.
- * This uses the string control character {TKM [value if calendar] [value if wallclock]}, e.g. {TKM month minute}.
- * @param buffer The output buffer
- * @param buf    The input buffer
- * @param        Unused
- */
-void EmitTKM(Buffer* buffer, char* buf, int)
-{
-	/* The correct number of words is 2, but we'll check for more in case of typos. */
-	std::vector<const char *> words(3, nullptr);
-
-	/* Parse each string. */
-	uint nw = 0;
-	for (nw = 0; nw < 3; nw++) {
-		words[nw] = ParseWord(&buf);
-		if (words[nw] == nullptr) break;
-	}
-
-	/* Warn about the wrong number of parameters. */
-	if (nw != 2) {
-		StrgenFatal("%s: Invalid number of TKM options. Expecting %d, found %d.", _cur_ident, 2, nw);
-	}
-
-	buffer->AppendUtf8(SCC_TIMEKEEPING_MODE_LIST);
-	EmitWordList(buffer, words, 2);
-}
-
 void EmitGender(Buffer *buffer, char *buf, int)
 {
 	int argidx = _cur_argidx;

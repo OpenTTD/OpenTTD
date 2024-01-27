@@ -30,7 +30,6 @@ struct CmdStruct {
 };
 
 extern void EmitSingleChar(Buffer *buffer, char *buf, int value);
-extern void EmitTKM(Buffer* buffer, char* buf, int value);
 extern void EmitPlural(Buffer *buffer, char *buf, int value);
 extern void EmitGender(Buffer *buffer, char *buf, int value);
 
@@ -93,8 +92,6 @@ static const CmdStruct _cmd_structs[] = {
 	{"UNITS_MONTHS_OR_MINUTES", EmitSingleChar, SCC_UNITS_MONTHS_OR_MINUTES, 1,  0, C_NONE},
 	{"UNITS_YEARS_OR_PERIODS",  EmitSingleChar, SCC_UNITS_YEARS_OR_PERIODS,  1,  0, C_NONE},
 	{"UNITS_YEARS_OR_MINUTES",  EmitSingleChar, SCC_UNITS_YEARS_OR_MINUTES,  1,  0, C_NONE},
-
-	{"TKM",                     EmitTKM,  0,                      0, -1, C_DONTCOUNT}, // Timekeeping mode string selection, e.g. "{TKM month minute}"
 
 	{"P",                 EmitPlural,     0,                      0, -1, C_DONTCOUNT}, // plural specifier
 	{"G",                 EmitGender,     0,                      0, -1, C_DONTCOUNT}, // gender specifier

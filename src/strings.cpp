@@ -1443,11 +1443,6 @@ static void FormatString(StringBuilder &builder, const char *str_arg, StringPara
 					break;
 				}
 
-				case SCC_TIMEKEEPING_MODE_LIST: { // {TKM}
-					str = ParseStringChoice(str, (uint8_t)TimerGameEconomy::UsingWallclockUnits(_game_mode == GM_MENU), builder);
-					break;
-				}
-
 				case SCC_COMPANY_NAME: { // {COMPANY}
 					const Company *c = Company::GetIfValid(args.GetNextParameter<CompanyID>());
 					if (c == nullptr) break;
