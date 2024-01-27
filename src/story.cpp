@@ -66,13 +66,16 @@ static bool VerifyElementContentParameters(StoryPageID page_id, StoryPageElement
 			break;
 		case SPET_BUTTON_PUSH:
 			if (!button_data.ValidateColour()) return false;
+			if (!button_data.ValidateFlags()) return false;
 			return true;
 		case SPET_BUTTON_TILE:
 			if (!button_data.ValidateColour()) return false;
+			if (!button_data.ValidateFlags()) return false;
 			if (!button_data.ValidateCursor()) return false;
 			return true;
 		case SPET_BUTTON_VEHICLE:
 			if (!button_data.ValidateColour()) return false;
+			if (!button_data.ValidateFlags()) return false;
 			if (!button_data.ValidateCursor()) return false;
 			if (!button_data.ValidateVehicleType()) return false;
 			return true;

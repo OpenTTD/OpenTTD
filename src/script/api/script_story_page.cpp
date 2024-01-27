@@ -224,10 +224,32 @@ static inline bool StoryPageElementTypeRequiresText(StoryPageElementType type)
 	return ScriptObject::Command<CMD_REMOVE_STORY_PAGE_ELEMENT>::Do(story_page_element_id);
 }
 
+/* static */ bool ScriptStoryPage::IsValidStoryPageButtonColour(StoryPageButtonColour colour)
+{
+	return ::IsValidColours((::Colours)colour);
+}
+
+/* static */ bool ScriptStoryPage::IsValidStoryPageButtonFlags(StoryPageButtonFlags flags)
+{
+	/* Don't allow float left and right together */
+	if ((flags & SPBF_FLOAT_LEFT) && (flags & SPBF_FLOAT_RIGHT)) return false;
+	/* Don't allow undefined flags */
+	if (flags & ~(SPBF_FLOAT_LEFT | SPBF_FLOAT_RIGHT)) return false;
+	return true;
+}
+
+/* static */ bool ScriptStoryPage::IsValidStoryPageButtonCursor(StoryPageButtonCursor cursor)
+{
+	return ::IsValidStoryPageButtonCursor((::StoryPageButtonCursor)cursor);
+}
+
 /* static */ ScriptStoryPage::StoryPageButtonFormatting ScriptStoryPage::MakePushButtonReference(StoryPageButtonColour colour, StoryPageButtonFlags flags)
 {
+	EnforcePrecondition(UINT32_MAX, IsValidStoryPageButtonColour(colour));
+	EnforcePrecondition(UINT32_MAX, IsValidStoryPageButtonFlags(flags));
+
 	StoryPageButtonData data;
-	data.SetColour((Colours)colour);
+	data.SetColour((::Colours)colour);
 	data.SetFlags((::StoryPageButtonFlags)flags);
 	if (!data.ValidateColour()) return UINT32_MAX;
 	if (!data.ValidateFlags()) return UINT32_MAX;
@@ -236,8 +258,12 @@ static inline bool StoryPageElementTypeRequiresText(StoryPageElementType type)
 
 /* static */ ScriptStoryPage::StoryPageButtonFormatting ScriptStoryPage::MakeTileButtonReference(StoryPageButtonColour colour, StoryPageButtonFlags flags, StoryPageButtonCursor cursor)
 {
+	EnforcePrecondition(UINT32_MAX, IsValidStoryPageButtonColour(colour));
+	EnforcePrecondition(UINT32_MAX, IsValidStoryPageButtonFlags(flags));
+	EnforcePrecondition(UINT32_MAX, IsValidStoryPageButtonCursor(cursor));
+
 	StoryPageButtonData data;
-	data.SetColour((Colours)colour);
+	data.SetColour((::Colours)colour);
 	data.SetFlags((::StoryPageButtonFlags)flags);
 	data.SetCursor((::StoryPageButtonCursor)cursor);
 	if (!data.ValidateColour()) return UINT32_MAX;
@@ -248,8 +274,13 @@ static inline bool StoryPageElementTypeRequiresText(StoryPageElementType type)
 
 /* static */ ScriptStoryPage::StoryPageButtonFormatting ScriptStoryPage::MakeVehicleButtonReference(StoryPageButtonColour colour, StoryPageButtonFlags flags, StoryPageButtonCursor cursor, ScriptVehicle::VehicleType vehtype)
 {
+	EnforcePrecondition(UINT32_MAX, IsValidStoryPageButtonColour(colour));
+	EnforcePrecondition(UINT32_MAX, IsValidStoryPageButtonFlags(flags));
+	EnforcePrecondition(UINT32_MAX, IsValidStoryPageButtonCursor(cursor));
+	EnforcePrecondition(UINT32_MAX, vehtype == ScriptVehicle::VT_INVALID || vehtype == ScriptVehicle::VT_RAIL || vehtype == ScriptVehicle::VT_ROAD || vehtype == ScriptVehicle::VT_WATER || vehtype == ScriptVehicle::VT_AIR);
+
 	StoryPageButtonData data;
-	data.SetColour((Colours)colour);
+	data.SetColour((::Colours)colour);
 	data.SetFlags((::StoryPageButtonFlags)flags);
 	data.SetCursor((::StoryPageButtonCursor)cursor);
 	data.SetVehicleType((::VehicleType)vehtype);
@@ -259,4 +290,3 @@ static inline bool StoryPageElementTypeRequiresText(StoryPageElementType type)
 	if (!data.ValidateVehicleType()) return UINT32_MAX;
 	return data.referenced_id;
 }
-

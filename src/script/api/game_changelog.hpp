@@ -82,6 +82,9 @@
  * \li GSIndustry::GetProductionLevel
  * \li GSIndustry::SetProductionLevel
  * \li GSStoryPage::IsValidStoryPageElementType
+ * \li GSStoryPage::IsValidStoryPageButtonColour
+ * \li GSStoryPage::IsValidStoryPageButtonFlags
+ * \li GSStoryPage::IsValidStoryPageButtonCursor
  *
  * API removals:
  * \li GSError::ERR_PRECONDITION_TOO_MANY_PARAMETERS, that error is never returned anymore.
