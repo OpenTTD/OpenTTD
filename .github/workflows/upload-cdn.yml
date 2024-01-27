@@ -126,8 +126,8 @@ jobs:
       with:
         app_id: ${{ secrets.DEPLOYMENT_APP_ID }}
         private_key: ${{ secrets.DEPLOYMENT_APP_PRIVATE_KEY }}
-        repositories: >-
-          ["OpenTTD/workflows"]
+        installation_retrieval_mode: "repository"
+        installation_retrieval_payload: "OpenTTD/workflows"
 
     - name: Trigger 'Publish Docs'
       uses: peter-evans/repository-dispatch@v3
