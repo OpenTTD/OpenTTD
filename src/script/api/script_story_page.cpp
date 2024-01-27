@@ -38,6 +38,11 @@ static inline bool StoryPageElementTypeRequiresText(StoryPageElementType type)
 	return ::StoryPageElement::IsValidID(story_page_element_id);
 }
 
+/* static */ bool ScriptStoryPage::IsValidStoryPageElementType(StoryPageElementType type)
+{
+	return type == SPET_TEXT || type == SPET_LOCATION || type == SPET_GOAL || type == SPET_BUTTON_PUSH || type == SPET_BUTTON_TILE || type == SPET_BUTTON_VEHICLE;
+}
+
 /* static */ ScriptStoryPage::StoryPageID ScriptStoryPage::New(ScriptCompany::CompanyID company, Text *title)
 {
 	CCountedPtr<Text> counter(title);
@@ -63,6 +68,7 @@ static inline bool StoryPageElementTypeRequiresText(StoryPageElementType type)
 
 	EnforceDeityMode(STORY_PAGE_ELEMENT_INVALID);
 	EnforcePrecondition(STORY_PAGE_ELEMENT_INVALID, IsValidStoryPage(story_page_id));
+	EnforcePrecondition(STORY_PAGE_ELEMENT_INVALID, IsValidStoryPageElementType(type));
 	std::string encoded_text;
 	if (StoryPageElementTypeRequiresText(btype)) {
 		EnforcePrecondition(STORY_PAGE_ELEMENT_INVALID, text != nullptr);

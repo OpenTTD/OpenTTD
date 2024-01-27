@@ -180,6 +180,13 @@ public:
 	static bool IsValidStoryPageElement(StoryPageElementID story_page_element_id);
 
 	/**
+	 * Check whether this is a valid story page element type.
+	 * @param type The StoryPageElementType to check.
+	 * @return True if and only if this story page element type is valid.
+	 */
+	static bool IsValidStoryPageElementType(StoryPageElementType type);
+
+	/**
 	 * Create a new story page.
 	 * @param company The company to create the story page for, or ScriptCompany::COMPANY_INVALID for all.
 	 * @param title Page title (can be either a raw string, a ScriptText object, or null).
@@ -202,6 +209,7 @@ public:
 	 * @return The new StoryPageElementID, or STORY_PAGE_ELEMENT_INVALID if it failed.
 	 * @pre ScriptCompanyMode::IsDeity().
 	 * @pre IsValidStoryPage(story_page).
+	 * @pre IsValidStoryPageElementType(type).
 	 * @pre (type != SPET_TEXT && type != SPET_LOCATION) || (text != null && len(text) != 0).
 	 * @pre type != SPET_LOCATION || ScriptMap::IsValidTile(reference).
 	 * @pre type != SPET_GOAL || ScriptGoal::IsValidGoal(reference).
