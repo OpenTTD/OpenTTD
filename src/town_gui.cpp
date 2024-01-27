@@ -76,6 +76,7 @@ private:
 	uint displayed_actions_on_previous_painting; ///< Actions that were available on the previous call to OnPaint()
 	TownActions enabled_actions; ///< Actions that are enabled in settings.
 	TownActions available_actions; ///< Actions that are available to execute for the current company.
+	StringID action_tooltips[TACT_COUNT];
 
 	Dimension icon_size;      ///< Dimensions of company icon
 	Dimension exclusive_size; ///< Dimensions of exlusive icon
@@ -121,6 +122,17 @@ public:
 	{
 		this->town = Town::Get(window_number);
 		this->enabled_actions = GetEnabledActions();
+
+		auto realtime = TimerGameEconomy::UsingWallclockUnits();
+		this->action_tooltips[0] = STR_LOCAL_AUTHORITY_ACTION_TOOLTIP_SMALL_ADVERTISING;
+		this->action_tooltips[1] = STR_LOCAL_AUTHORITY_ACTION_TOOLTIP_MEDIUM_ADVERTISING;
+		this->action_tooltips[2] = STR_LOCAL_AUTHORITY_ACTION_TOOLTIP_LARGE_ADVERTISING;
+		this->action_tooltips[3] = realtime ? STR_LOCAL_AUTHORITY_ACTION_TOOLTIP_ROAD_RECONSTRUCTION_MINUTES : STR_LOCAL_AUTHORITY_ACTION_TOOLTIP_ROAD_RECONSTRUCTION_MONTHS;
+		this->action_tooltips[4] = STR_LOCAL_AUTHORITY_ACTION_TOOLTIP_STATUE_OF_COMPANY;
+		this->action_tooltips[5] = STR_LOCAL_AUTHORITY_ACTION_TOOLTIP_NEW_BUILDINGS;
+		this->action_tooltips[6] = realtime ? STR_LOCAL_AUTHORITY_ACTION_TOOLTIP_EXCLUSIVE_TRANSPORT_MINUTES : STR_LOCAL_AUTHORITY_ACTION_TOOLTIP_EXCLUSIVE_TRANSPORT_MONTHS;
+		this->action_tooltips[7] = STR_LOCAL_AUTHORITY_ACTION_TOOLTIP_BRIBE;
+
 		this->InitNested(window_number);
 	}
 
@@ -237,7 +249,7 @@ public:
 
 					SetDParam(0, action_cost);
 					DrawStringMultiLine(r.Shrink(WidgetDimensions::scaled.framerect),
-						STR_LOCAL_AUTHORITY_ACTION_TOOLTIP_SMALL_ADVERTISING + this->sel_index,
+						this->action_tooltips[this->sel_index],
 						affordable ? TC_YELLOW : TC_RED);
 				}
 				break;
@@ -252,7 +264,7 @@ public:
 				Dimension d = {0, 0};
 				for (int i = 0; i < TACT_COUNT; i++) {
 					SetDParam(0, _price[PR_TOWN_ACTION] * _town_action_costs[i] >> 8);
-					d = maxdim(d, GetStringMultiLineBoundingBox(STR_LOCAL_AUTHORITY_ACTION_TOOLTIP_SMALL_ADVERTISING + i, *size));
+					d = maxdim(d, GetStringMultiLineBoundingBox(this->action_tooltips[i], *size));
 				}
 				d.width += padding.width;
 				d.height += padding.height;
