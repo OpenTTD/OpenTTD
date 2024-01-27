@@ -37,6 +37,7 @@
 #include "network/network_content_gui.h"
 #include "newgrf_engine.h"
 #include "core/backup_type.hpp"
+#include "gfx_layout.h"
 #include <stack>
 #include <charconv>
 
@@ -1975,6 +1976,8 @@ bool ReadLanguagePack(const LanguageMetadata *lang)
 		_current_collator.reset();
 	}
 #endif /* WITH_ICU_I18N */
+
+	Layouter::Initialize();
 
 	/* Some lists need to be sorted again after a language change. */
 	ReconsiderGameScriptLanguage();

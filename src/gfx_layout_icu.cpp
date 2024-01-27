@@ -381,6 +381,30 @@ std::vector<ICURun> ItemizeStyle(std::vector<ICURun> &runs_current, FontMap &fon
 	return new ICUParagraphLayout(runs, buff, length);
 }
 
+/* static */ std::unique_ptr<icu::BreakIterator> ICUParagraphLayoutFactory::break_iterator;
+
+/**
+ * Initialize data needed for the ICU layouter.
+ */
+/* static */ void ICUParagraphLayoutFactory::InitializeLayouter()
+{
+	auto locale = icu::Locale(_current_language->isocode);
+	UErrorCode status = U_ZERO_ERROR;
+	ICUParagraphLayoutFactory::break_iterator.reset(icu::BreakIterator::createLineInstance(locale, status));
+	assert(U_SUCCESS(status));
+}
+
+/**
+ * Get a thread-safe line break iterator.
+ * @returns unique_ptr managed BreakIterator instance.
+ */
+/* static */ std::unique_ptr<icu::BreakIterator> ICUParagraphLayoutFactory::GetBreakIterator()
+{
+	assert(ICUParagraphLayoutFactory::break_iterator != nullptr);
+
+	return std::unique_ptr<icu::BreakIterator>(ICUParagraphLayoutFactory::break_iterator->clone());
+}
+
 std::unique_ptr<const ICUParagraphLayout::Line> ICUParagraphLayout::NextLine(int max_width)
 {
 	std::vector<ICURun>::iterator start_run = this->current_run;
@@ -413,11 +437,8 @@ std::unique_ptr<const ICUParagraphLayout::Line> ICUParagraphLayout::NextLine(int
 	/* If the text does not fit into the available width, find a suitable breaking point. */
 	int new_partial_length = 0;
 	if (cur_width > max_width) {
-		auto locale = icu::Locale(_current_language->isocode);
-
 		/* Create a break-iterator to find a good place to break lines. */
-		UErrorCode err = U_ZERO_ERROR;
-		auto break_iterator = icu::BreakIterator::createLineInstance(locale, err);
+		auto break_iterator = ICUParagraphLayoutFactory::GetBreakIterator();
 		break_iterator->setText(icu::UnicodeString(this->buff, this->buff_length));
 
 		auto overflow_run = last_run - 1;
