@@ -480,9 +480,6 @@ void IntSettingDesc::SetValueDParams(uint first_param, int32_t value) const
 	} else {
 		if ((this->flags & SF_GUI_DROPDOWN) != 0) {
 			SetDParam(first_param++, this->str_val - this->min + value);
-		} else if ((this->flags & SF_GUI_NEGATIVE_IS_SPECIAL) != 0) {
-			SetDParam(first_param++, this->str_val + ((value >= 0) ? 1 : 0));
-			value = abs(value);
 		} else {
 			SetDParam(first_param++, this->str_val + ((value == 0 && (this->flags & SF_GUI_0_IS_SPECIAL) != 0) ? 1 : 0));
 		}
