@@ -274,6 +274,7 @@ protected:
 	virtual void FindWindowPlacementAndResize(int def_width, int def_height);
 
 	std::vector<int> scheduled_invalidation_data;  ///< Data of scheduled OnInvalidateData() calls.
+	bool scheduled_resize; ///< Set if window has been resized.
 
 	/* Protected to prevent deletion anywhere outside Window::DeleteClosedWindows(). */
 	virtual ~Window();
@@ -559,6 +560,8 @@ public:
 
 	void SetShaded(bool make_shaded);
 
+	void ScheduleResize();
+	void ProcessScheduledResize();
 	void InvalidateData(int data = 0, bool gui_scope = true);
 	void ProcessScheduledInvalidations();
 	void ProcessHighlightedInvalidations();
