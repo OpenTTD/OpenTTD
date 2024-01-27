@@ -2275,6 +2275,9 @@ static bool CheckTrainStayInDepot(Train *v)
 		return true;
 	}
 
+	/* Check if we should wait here for unbunching. */
+	if (v->IsWaitingForUnbunching()) return true;
+
 	SigSegState seg_state;
 
 	if (v->force_proceed == TFP_NONE) {
@@ -2315,8 +2318,9 @@ static bool CheckTrainStayInDepot(Train *v)
 	if (_settings_client.gui.show_track_reservation) MarkTileDirtyByTile(v->tile);
 
 	VehicleServiceInDepot(v);
-	SetWindowClassesDirty(WC_TRAINS_LIST);
+	v->LeaveUnbunchingDepot();
 	v->PlayLeaveStationSound();
+	SetWindowClassesDirty(WC_TRAINS_LIST);
 
 	v->track = TRACK_BIT_X;
 	if (v->direction & 2) v->track = TRACK_BIT_Y;

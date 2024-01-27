@@ -42,3 +42,13 @@ void BaseConsist::CopyConsistPropertiesFrom(const BaseConsist *src)
 	}
 	if (HasBit(src->vehicle_flags, VF_SERVINT_IS_CUSTOM)) SetBit(this->vehicle_flags, VF_SERVINT_IS_CUSTOM);
 }
+
+/**
+ * Resets all the data used for depot unbunching.
+ */
+void BaseConsist::ResetDepotUnbunching()
+{
+	this->depot_unbunching_last_departure = 0;
+	this->depot_unbunching_next_departure = 0;
+	this->round_trip_time = 0;
+}
