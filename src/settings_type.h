@@ -114,6 +114,7 @@ struct DifficultySettings {
 	bool   line_reverse_mode;                ///< reversing at stations or not
 	bool   disasters;                        ///< are disasters enabled
 	byte   town_council_tolerance;           ///< minimum required town ratings to be allowed to demolish stuff
+	bool   infinite_money;                   ///< whether spending money despite negative balance is allowed
 };
 
 /** Settings relating to viewport/smallmap scrolling. */
