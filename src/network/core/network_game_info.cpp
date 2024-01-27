@@ -14,6 +14,7 @@
 #include "../../core/bitmath_func.hpp"
 #include "../../company_base.h"
 #include "../../timer/timer_game_calendar.h"
+#include "../../timer/timer_game_tick.h"
 #include "../../debug.h"
 #include "../../map_func.h"
 #include "../../game/game.hpp"
@@ -123,7 +124,7 @@ void CheckGameCompatibility(NetworkGameInfo &ngi)
 void FillStaticNetworkServerGameInfo()
 {
 	_network_game_info.use_password   = !_settings_client.network.server_password.empty();
-	_network_game_info.start_date     = TimerGameCalendar::ConvertYMDToDate(_settings_game.game_creation.starting_year, 0, 1);
+	_network_game_info.calendar_start = TimerGameCalendar::ConvertYMDToDate(_settings_game.game_creation.starting_year, 0, 1);
 	_network_game_info.clients_max    = _settings_client.network.max_clients;
 	_network_game_info.companies_max  = _settings_client.network.max_companies;
 	_network_game_info.map_width      = Map::SizeX();
@@ -149,7 +150,8 @@ const NetworkServerGameInfo *GetCurrentNetworkServerGameInfo()
 	 */
 	_network_game_info.companies_on  = (byte)Company::GetNumItems();
 	_network_game_info.spectators_on = NetworkSpectatorCount();
-	_network_game_info.game_date     = TimerGameCalendar::date;
+	_network_game_info.calendar_date = TimerGameCalendar::date;
+	_network_game_info.ticks_playing = TimerGameTick::counter;
 	return &_network_game_info;
 }
 
@@ -194,6 +196,9 @@ void SerializeNetworkGameInfo(Packet *p, const NetworkServerGameInfo *info, bool
 	/* Update the documentation in game_info.h on changes
 	 * to the NetworkGameInfo wire-protocol! */
 
+	/* NETWORK_GAME_INFO_VERSION = 7 */
+	p->Send_uint64(info->ticks_playing);
+
 	/* NETWORK_GAME_INFO_VERSION = 6 */
 	p->Send_uint8(send_newgrf_names ? NST_GRFID_MD5_NAME : NST_GRFID_MD5);
 
@@ -227,8 +232,8 @@ void SerializeNetworkGameInfo(Packet *p, const NetworkServerGameInfo *info, bool
 	}
 
 	/* NETWORK_GAME_INFO_VERSION = 3 */
-	p->Send_uint32(info->game_date.base());
-	p->Send_uint32(info->start_date.base());
+	p->Send_uint32(info->calendar_date.base());
+	p->Send_uint32(info->calendar_start.base());
 
 	/* NETWORK_GAME_INFO_VERSION = 2 */
 	p->Send_uint8 (info->companies_max);
@@ -267,6 +272,10 @@ void DeserializeNetworkGameInfo(Packet *p, NetworkGameInfo *info, const GameInfo
 	 * to the NetworkGameInfo wire-protocol! */
 
 	switch (game_info_version) {
+		case 7:
+			info->ticks_playing = p->Recv_uint64();
+			FALLTHROUGH;
+
 		case 6:
 			newgrf_serialisation = (NewGRFSerializationType)p->Recv_uint8();
 			if (newgrf_serialisation >= NST_END) return;
@@ -321,8 +330,8 @@ void DeserializeNetworkGameInfo(Packet *p, NetworkGameInfo *info, const GameInfo
 		}
 
 		case 3:
-			info->game_date      = Clamp(p->Recv_uint32(), 0, CalendarTime::MAX_DATE.base());
-			info->start_date     = Clamp(p->Recv_uint32(), 0, CalendarTime::MAX_DATE.base());
+			info->calendar_date = Clamp(p->Recv_uint32(), 0, CalendarTime::MAX_DATE.base());
+			info->calendar_start = Clamp(p->Recv_uint32(), 0, CalendarTime::MAX_DATE.base());
 			FALLTHROUGH;
 
 		case 2:
@@ -340,8 +349,8 @@ void DeserializeNetworkGameInfo(Packet *p, NetworkGameInfo *info, const GameInfo
 			info->clients_on     = p->Recv_uint8 ();
 			info->spectators_on  = p->Recv_uint8 ();
 			if (game_info_version < 3) { // 16 bits dates got scrapped and are read earlier
-				info->game_date    = p->Recv_uint16() + CalendarTime::DAYS_TILL_ORIGINAL_BASE_YEAR;
-				info->start_date   = p->Recv_uint16() + CalendarTime::DAYS_TILL_ORIGINAL_BASE_YEAR;
+				info->calendar_date = p->Recv_uint16() + CalendarTime::DAYS_TILL_ORIGINAL_BASE_YEAR;
+				info->calendar_start = p->Recv_uint16() + CalendarTime::DAYS_TILL_ORIGINAL_BASE_YEAR;
 			}
 			if (game_info_version < 6) while (p->Recv_uint8() != 0) {} // Used to contain the map-name.
 			info->map_width      = p->Recv_uint16();
@@ -350,6 +359,11 @@ void DeserializeNetworkGameInfo(Packet *p, NetworkGameInfo *info, const GameInfo
 			info->dedicated      = p->Recv_bool  ();
 
 			if (info->landscape >= NUM_LANDSCAPE) info->landscape = 0;
+	}
+
+	/* For older servers, estimate the ticks running based on the calendar date. */
+	if (game_info_version < 7) {
+		info->ticks_playing = static_cast<uint64_t>(std::max(0, info->calendar_date.base() - info->calendar_start.base())) * Ticks::DAY_TICKS;
 	}
 }
 

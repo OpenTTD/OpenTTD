@@ -16,6 +16,7 @@
 #include "core.h"
 #include "../../newgrf_config.h"
 #include "../../timer/timer_game_calendar.h"
+#include "../../timer/timer_game_tick.h"
 
 #include <unordered_map>
 
@@ -26,6 +27,8 @@
  *
  * Version: Bytes:  Description:
  *   all      1       the version of this packet's structure
+ *
+ *   7+       8       amount of ticks this game has been running unpaused.
  *
  *   6+       1       type of storage for the NewGRFs below:
  *                      0 = NewGRF ID and MD5 checksum.
@@ -54,8 +57,8 @@
  *                     - 4 byte lookup table index.
  *                       For v6+ in case of type 2.
  *
- *   3+       4       current game date in days since 1-1-0 (DMY)
- *   3+       4       game introduction date in days since 1-1-0 (DMY)
+ *   3+       4       current calendar date in days since 1-1-0 (DMY)
+ *   3+       4       calendar start date in days since 1-1-0 (DMY)
  *
  *   2+       1       maximum number of companies allowed on the server
  *   2+       1       number of companies on the server
@@ -92,8 +95,9 @@ enum NewGRFSerializationType {
  */
 struct NetworkServerGameInfo {
 	GRFConfig *grfconfig;        ///< List of NewGRF files used
-	TimerGameCalendar::Date start_date; ///< When the game started
-	TimerGameCalendar::Date game_date;  ///< Current date
+	TimerGameCalendar::Date calendar_start; ///< When the game started.
+	TimerGameCalendar::Date calendar_date; ///< Current calendar date.
+	TimerGameTick::TickCounter ticks_playing; ///< Amount of ticks the game has been running unpaused.
 	uint16_t map_width;            ///< Map width
 	uint16_t map_height;           ///< Map height
 	std::string server_name;     ///< Server name
