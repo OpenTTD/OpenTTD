@@ -68,6 +68,11 @@ string(REPLACE "\n[P] " "\n" REGRESSION_RESULT "${REGRESSION_RESULT}")
 string(REPLACE "\n[S] " "\n" REGRESSION_RESULT "${REGRESSION_RESULT}")
 string(REGEX REPLACE "dbg: ([^\n]*)\n?" "" REGRESSION_RESULT "${REGRESSION_RESULT}")
 
+# Remove duplicate script info
+string(REGEX REPLACE "ERROR: Registering([^\n]*)\n?" "" REGRESSION_RESULT "${REGRESSION_RESULT}")
+string(REGEX REPLACE "ERROR:   [12]([^\n]*)\n?" "" REGRESSION_RESULT "${REGRESSION_RESULT}")
+string(REGEX REPLACE "ERROR: The first([^\n]*)\n?" "" REGRESSION_RESULT "${REGRESSION_RESULT}")
+
 # Read the expected result
 file(READ ai/${REGRESSION_TEST}/result.txt REGRESSION_EXPECTED)
 
