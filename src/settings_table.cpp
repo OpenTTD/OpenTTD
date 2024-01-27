@@ -108,6 +108,13 @@ static void SettingsValueVelocityUnit(const IntSettingDesc &, uint first_param, 
 	SetDParam(first_param, val);
 }
 
+/** A negative value has another string (the one after "strval"). */
+static void SettingsValueAbsolute(const IntSettingDesc &sd, uint first_param, int32_t value)
+{
+	SetDParam(first_param, sd.str_val + ((value >= 0) ? 1 : 0));
+	SetDParam(first_param + 1, abs(value));
+}
+
 /** Reposition the main toolbar as the setting changed. */
 static void v_PositionMainToolbar(int32_t)
 {

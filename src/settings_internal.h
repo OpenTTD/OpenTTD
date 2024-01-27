@@ -16,7 +16,6 @@
 enum SettingFlag : uint16_t {
 	SF_NONE = 0,
 	SF_GUI_0_IS_SPECIAL        = 1 <<  0, ///< A value of zero is possible and has a custom string (the one after "strval").
-	SF_GUI_NEGATIVE_IS_SPECIAL = 1 <<  1, ///< A negative value has another string (the one after "strval").
 	SF_GUI_DROPDOWN            = 1 <<  2, ///< The value represents a limited number of string-options (internally integer) presented as dropdown.
 	SF_GUI_CURRENCY            = 1 <<  3, ///< The number represents money, so when reading value multiply by exchange rate.
 	SF_NETWORK_ONLY            = 1 <<  4, ///< This setting only applies to network games.
