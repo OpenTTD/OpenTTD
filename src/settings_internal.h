@@ -209,6 +209,10 @@ struct IntSettingDesc : SettingDesc {
 	PreChangeCheck *pre_check;         ///< Callback to check for the validity of the setting.
 	PostChangeCallback *post_callback; ///< Callback when the setting has been changed.
 
+	StringID GetTitle() const;
+	StringID GetHelp() const;
+	void SetValueDParams(uint first_param, int32_t value) const;
+
 	/**
 	 * Check whether this setting is a boolean type setting.
 	 * @return True when the underlying type is an integer.
