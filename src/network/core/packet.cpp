@@ -176,16 +176,15 @@ void Packet::Send_buffer(const std::vector<byte> &data)
 /**
  * Send as many of the bytes as possible in the packet. This can mean
  * that it is possible that not all bytes are sent. To cope with this
- * the function returns the amount of bytes that were actually sent.
- * @param begin The begin of the buffer to send.
- * @param end   The end of the buffer to send.
- * @return The number of bytes that were added to this packet.
+ * the function returns the span of bytes that were not sent.
+ * @param span The span describing the range of bytes to send.
+ * @return The span of bytes that were not written.
  */
-size_t Packet::Send_bytes(const byte *begin, const byte *end)
+std::span<const byte> Packet::Send_bytes(const std::span<const byte> span)
 {
-	size_t amount = std::min<size_t>(end - begin, this->limit - this->Size());
-	this->buffer.insert(this->buffer.end(), begin, begin + amount);
-	return amount;
+	size_t amount = std::min<size_t>(span.size(), this->limit - this->Size());
+	this->buffer.insert(this->buffer.end(), span.data(), span.data() + amount);
+	return span.subspan(amount);
 }
 
 /*
@@ -368,6 +367,22 @@ std::vector<byte> Packet::Recv_buffer()
 	}
 
 	return data;
+}
+
+/**
+ * Extract at most the length of the span bytes from the packet into the span.
+ * @param span The span to write the bytes to.
+ * @return The number of bytes that were actually read.
+ */
+size_t Packet::Recv_bytes(std::span<byte> span)
+{
+	auto tranfer_to_span = [](std::span<byte> destination, const char *source, size_t amount) {
+		size_t to_copy = std::min(amount, destination.size());
+		std::copy(source, source + to_copy, destination.data());
+		return to_copy;
+	};
+
+	return this->TransferOut(tranfer_to_span, span);
 }
 
 /**
