@@ -145,14 +145,13 @@ struct PacketWriter : SaveFilter {
 
 		if (this->current == nullptr) this->current = std::make_unique<Packet>(this->cs, PACKET_SERVER_MAP_DATA, TCP_MTU);
 
-		byte *bufe = buf + size;
-		while (buf != bufe) {
-			size_t written = this->current->Send_bytes(buf, bufe);
-			buf += written;
+		std::span<const byte> to_write(buf, size);
+		while (!to_write.empty()) {
+			to_write = this->current->Send_bytes(to_write);
 
 			if (!this->current->CanWriteToPacket(1)) {
 				this->packets.push_back(std::move(this->current));
-				if (buf != bufe) this->current = std::make_unique<Packet>(this->cs, PACKET_SERVER_MAP_DATA, TCP_MTU);
+				if (!to_write.empty()) this->current = std::make_unique<Packet>(this->cs, PACKET_SERVER_MAP_DATA, TCP_MTU);
 			}
 		}
 
