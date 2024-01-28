@@ -639,6 +639,11 @@ NetworkRecvStatus ServerNetworkAdminSocketHandler::Receive_ADMIN_JOIN(Packet &p)
 {
 	if (this->status != ADMIN_STATUS_INACTIVE) return this->SendError(NETWORK_ERROR_NOT_EXPECTED);
 
+	if (!_settings_client.network.allow_insecure_admin_login) {
+		/* You're not authorized to login using this method. */
+		return this->SendError(NETWORK_ERROR_NOT_AUTHORIZED);
+	}
+
 	std::string password = p.Recv_string(NETWORK_PASSWORD_LENGTH);
 
 	if (_settings_client.network.admin_password.empty() ||
