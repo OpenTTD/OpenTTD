@@ -19,21 +19,17 @@
 /* These declarations are internal to spritecache but need to be exposed for unit-tests. */
 
 struct SpriteCache {
-	void *ptr;
-	size_t file_pos;
-	SpriteFile *file;    ///< The file the sprite in this entry can be found in.
+	std::unique_ptr<std::byte[]> ptr;
+	size_t file_pos = 0;
+	SpriteFile *file = nullptr; ///< The file the sprite in this entry can be found in.
 	uint32_t length; ///< Length of sprite data.
-	uint32_t id;
-	int16_t lru;
-	SpriteType type;     ///< In some cases a single sprite is misused by two NewGRFs. Once as real sprite and once as recolour sprite. If the recolour sprite gets into the cache it might be drawn as real sprite which causes enormous trouble.
-	bool warned;         ///< True iff the user has been warned about incorrect use of this sprite
-	uint8_t control_flags;  ///< Control flags, see SpriteCacheCtrlFlags
-};
+	uint32_t id = 0;
+	uint32_t lru = 0;
+	SpriteType type = SpriteType::Invalid; ///< In some cases a single sprite is misused by two NewGRFs. Once as real sprite and once as recolour sprite. If the recolour sprite gets into the cache it might be drawn as real sprite which causes enormous trouble.
+	bool warned = false; ///< True iff the user has been warned about incorrect use of this sprite
+	uint8_t control_flags = 0; ///< Control flags, see SpriteCacheCtrlFlags
 
-/** SpriteAllocator that allocates memory from the sprite cache. */
-class CacheSpriteAllocator : public SpriteAllocator {
-protected:
-	void *AllocatePtr(size_t size) override;
+	void ClearSpriteData();
 };
 
 inline bool IsMapgenSpriteID(SpriteID sprite)
