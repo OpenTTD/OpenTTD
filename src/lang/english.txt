@@ -5710,8 +5710,9 @@ STR_UNKNOWN_STATION                                             :unknown station
 STR_DEFAULT_SIGN_NAME                                           :Sign
 STR_COMPANY_SOMEONE                                             :someone
 
-STR_SAVEGAME_NAME_DEFAULT                                       :{COMPANY}, {STRING1}
-STR_SAVEGAME_NAME_SPECTATOR                                     :Spectator, {1:STRING1}
+STR_SAVEGAME_DURATION_REALTIME                                  :{NUM}h {NUM}m
+STR_SAVEGAME_NAME_DEFAULT                                       :{COMPANY}, {STRING2}
+STR_SAVEGAME_NAME_SPECTATOR                                     :Spectator, {1:STRING2}
 
 # Viewport strings
 STR_VIEWPORT_TOWN_POP                                           :{WHITE}{TOWN} ({COMMA})

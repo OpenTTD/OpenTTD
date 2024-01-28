@@ -31,7 +31,7 @@
 #include "../core/endian_func.hpp"
 #include "../vehicle_base.h"
 #include "../company_func.h"
-#include "../timer/timer_game_calendar.h"
+#include "../timer/timer_game_economy.h"
 #include "../autoreplace_base.h"
 #include "../roadstop_base.h"
 #include "../linkgraph/linkgraph.h"
@@ -3111,7 +3111,7 @@ SaveOrLoadResult SaveOrLoad(const std::string &filename, SaveLoadOperation fop, 
 		}
 
 		if (fop == SLO_SAVE) { // SAVE game
-			Debug(desync, 1, "save: {:08x}; {:02x}; {}", TimerGameCalendar::date, TimerGameCalendar::date_fract, filename);
+			Debug(desync, 1, "save: {:08x}; {:02x}; {}", TimerGameEconomy::date, TimerGameEconomy::date_fract, filename);
 			if (!_settings_client.gui.threaded_saves) threaded = false;
 
 			return DoSave(new FileWriter(fh), threaded);
@@ -3179,14 +3179,23 @@ std::string GenerateDefaultSaveName()
 
 	SetDParam(0, cid);
 
-	/* Insert current date */
-	switch (_settings_client.gui.date_format_in_default_names) {
-		case 0: SetDParam(1, STR_JUST_DATE_LONG); break;
-		case 1: SetDParam(1, STR_JUST_DATE_TINY); break;
-		case 2: SetDParam(1, STR_JUST_DATE_ISO); break;
-		default: NOT_REACHED();
+	/* We show the current game time differently depending on the timekeeping units used by this game. */
+	if (TimerGameEconomy::UsingWallclockUnits()) {
+		/* Insert time played. */
+		const auto play_time = TimerGameTick::counter / Ticks::TICKS_PER_SECOND;
+		SetDParam(1, STR_SAVEGAME_DURATION_REALTIME);
+		SetDParam(2, play_time / 60 / 60);
+		SetDParam(3, (play_time / 60) % 60);
+	} else {
+		/* Insert current date */
+		switch (_settings_client.gui.date_format_in_default_names) {
+			case 0: SetDParam(1, STR_JUST_DATE_LONG); break;
+			case 1: SetDParam(1, STR_JUST_DATE_TINY); break;
+			case 2: SetDParam(1, STR_JUST_DATE_ISO); break;
+			default: NOT_REACHED();
+		}
+		SetDParam(2, TimerGameEconomy::date);
 	}
-	SetDParam(2, TimerGameCalendar::date);
 
 	/* Get the correct string (special string for when there's not company) */
 	std::string filename = GetString(!Company::IsValidID(cid) ? STR_SAVEGAME_NAME_SPECTATOR : STR_SAVEGAME_NAME_DEFAULT);
