@@ -969,7 +969,14 @@ static constexpr NWidgetPart _nested_story_book_widgets[] = {
 };
 
 static WindowDesc _story_book_desc(__FILE__, __LINE__,
-	WDP_CENTER, "view_story", 400, 300,
+	WDP_AUTO, "view_story", 400, 300,
+	WC_STORY_BOOK, WC_NONE,
+	0,
+	std::begin(_nested_story_book_widgets), std::end(_nested_story_book_widgets)
+);
+
+static WindowDesc _story_book_gs_desc(__FILE__, __LINE__,
+	WDP_CENTER, "view_story_gs", 400, 300,
 	WC_STORY_BOOK, WC_NONE,
 	0,
 	std::begin(_nested_story_book_widgets), std::end(_nested_story_book_widgets)
@@ -1041,11 +1048,12 @@ static CursorID TranslateStoryPageButtonCursor(StoryPageButtonCursor cursor)
  * Raise or create the story book window for \a company, at page \a page_id.
  * @param company 'Owner' of the story book, may be #INVALID_COMPANY.
  * @param page_id Page to open, may be #INVALID_STORY_PAGE.
+ * @param centered Whether to open the window centered.
  */
-void ShowStoryBook(CompanyID company, uint16_t page_id)
+void ShowStoryBook(CompanyID company, uint16_t page_id, bool centered)
 {
 	if (!Company::IsValidID(company)) company = (CompanyID)INVALID_COMPANY;
 
-	StoryBookWindow *w = AllocateWindowDescFront<StoryBookWindow>(&_story_book_desc, company, true);
+	StoryBookWindow *w = AllocateWindowDescFront<StoryBookWindow>(centered ? &_story_book_gs_desc : &_story_book_desc, company, true);
 	if (page_id != INVALID_STORY_PAGE) w->SetSelectedPage(page_id);
 }
