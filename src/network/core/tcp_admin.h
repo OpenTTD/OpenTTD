@@ -22,7 +22,7 @@
  * This protocol may only be extended to ensure stability.
  */
 enum PacketAdminType : uint8_t {
-	ADMIN_PACKET_ADMIN_JOIN,             ///< The admin announces and authenticates itself to the server.
+	ADMIN_PACKET_ADMIN_JOIN,             ///< The admin announces and authenticates itself to the server using an unsecured passwords.
 	ADMIN_PACKET_ADMIN_QUIT,             ///< The admin tells the server that it is quitting.
 	ADMIN_PACKET_ADMIN_UPDATE_FREQUENCY, ///< The admin tells the server the update frequency of a particular piece of information.
 	ADMIN_PACKET_ADMIN_POLL,             ///< The admin explicitly polls for a piece of information.
@@ -31,6 +31,8 @@ enum PacketAdminType : uint8_t {
 	ADMIN_PACKET_ADMIN_GAMESCRIPT,       ///< The admin sends a JSON string for the GameScript.
 	ADMIN_PACKET_ADMIN_PING,             ///< The admin sends a ping to the server, expecting a ping-reply (PONG) packet.
 	ADMIN_PACKET_ADMIN_EXTERNAL_CHAT,    ///< The admin sends a chat message from external source.
+	ADMIN_PACKET_ADMIN_JOIN_SECURE,      ///< The admin announces and starts a secure authentication handshake.
+	ADMIN_PACKET_ADMIN_AUTH_RESPONSE,    ///< The admin responds to the authentication request.
 
 	ADMIN_PACKET_SERVER_FULL = 100,      ///< The server tells the admin it cannot accept the admin.
 	ADMIN_PACKET_SERVER_BANNED,          ///< The server tells the admin it is banned.
@@ -61,6 +63,7 @@ enum PacketAdminType : uint8_t {
 	ADMIN_PACKET_SERVER_RCON_END,        ///< The server indicates that the remote console command has completed.
 	ADMIN_PACKET_SERVER_PONG,            ///< The server replies to a ping request from the admin.
 	ADMIN_PACKET_SERVER_CMD_LOGGING,     ///< The server gives the admin copies of incoming command packets.
+	ADMIN_PACKET_SERVER_AUTH_REQUEST,    ///< The server gives the admin the used authentication method and required parameters.
 
 	INVALID_ADMIN_PACKET = 0xFF,         ///< An invalid marker for admin packets.
 };
@@ -119,8 +122,8 @@ protected:
 	NetworkRecvStatus ReceiveInvalidPacket(PacketAdminType type);
 
 	/**
-	 * Join the admin network:
-	 * string  Password the server is expecting for this network.
+	 * Join the admin network using an unsecured password exchange:
+	 * string  Unsecured password the server is expecting for this network.
 	 * string  Name of the application being used to connect.
 	 * string  Version string of the application being used to connect.
 	 * @param p The packet that was just received.
@@ -200,6 +203,32 @@ protected:
 	 * @return The state the network should have.
 	 */
 	virtual NetworkRecvStatus Receive_ADMIN_PING(Packet &p);
+
+	/**
+	 * Join the admin network using a secure authentication method:
+	 * string Name of the application being used to connect.
+	 * string Version string of the application being used to connect.
+	 * uint16_t Bitmask of supported authentication methods. See \c NetworkAuthenticationMethod for the supported methods.
+	 *
+	 * The server will determine which of the authentication methods supplied by the client will be used.
+	 * When there is no supported authentication method, an \c ADMIN_PACKET_SERVER_ERROR packet will be
+	 * sent with \c NETWORK_ERROR_NO_AUTHENTICATION_METHOD_AVAILABLE as error.
+	 * @param p The packet that was just received.
+	 * @return The state the network should have.
+	 */
+	virtual NetworkRecvStatus Receive_ADMIN_JOIN_SECURE(Packet &p);
+
+	/**
+	 * Admin responds to \c ADMIN_PACKET_SERVER_AUTH_REQUEST with the appropriate
+	 * data given the agreed upon \c NetworkAuthenticationMethod.
+	 * With \c NETWORK_AUTH_METHOD_X25519_PAKE and \c NETWORK_AUTH_METHOD_X25519_AUTHORIZED_KEY:
+	 *   32 * uint8_t Public key of the client.
+	 *   16 * uint8_t Message authentication code (mac).
+	 *    8 * uint8_t Encrypted message of the authentication (just random bytes).
+	 * @param p The packet that was just received.
+	 * @return The state the network should have.
+	 */
+	virtual NetworkRecvStatus Receive_ADMIN_AUTH_RESPONSE(Packet &p);
 
 	/**
 	 * The server is full (connection gets closed).
@@ -472,6 +501,17 @@ protected:
 	 * @return The state the network should have.
 	 */
 	virtual NetworkRecvStatus Receive_SERVER_CMD_LOGGING(Packet &p);
+
+	/**
+	 * Server requests authentication challenge from the admin.
+	 * uint8_t The chosen authentication method from \c NetworkAuthenticationMethod.
+	 * With \c NETWORK_AUTH_METHOD_X25519_PAKE and \c NETWORK_AUTH_METHOD_X25519_AUTHORIZED_KEY:
+	 *   32 * uint8_t Public key of the server.
+	 *   24 * uint8_t Nonce to use for the encryption.
+	 * @param p The packet that was just received.
+	 * @return The state the network should have.
+	 */
+	virtual NetworkRecvStatus Receive_SERVER_AUTH_REQUEST(Packet &p);
 
 	/**
 	 * Send a ping-reply (pong) to the admin that sent us the ping packet.
