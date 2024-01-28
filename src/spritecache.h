@@ -67,7 +67,7 @@ SpriteFile &OpenCachedSpriteFile(const std::string &filename, Subdirectory subdi
 
 void ReadGRFSpriteOffsets(SpriteFile &file);
 size_t GetGRFSpriteOffset(uint32_t id);
-bool LoadNextSprite(int load_index, SpriteFile &file, uint file_sprite_id);
+bool LoadNextSprite(uint load_index, SpriteFile &file, uint file_sprite_id);
 bool SkipSpriteData(SpriteFile &file, uint8_t type, uint16_t num);
 void DupSprite(SpriteID old_spr, SpriteID new_spr);
 

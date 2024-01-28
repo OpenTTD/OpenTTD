@@ -15,17 +15,15 @@
 #include "../spritecache_internal.h"
 #include "../table/sprites.h"
 
-static bool MockLoadNextSprite(int load_index)
+static bool MockLoadNextSprite(uint load_index)
 {
-	SimpleSpriteAllocator allocator;
-	static Sprite *sprite = (Sprite *)allocator.Allocate(sizeof(*sprite));
-
 	bool is_mapgen = IsMapgenSpriteID(load_index);
 
 	SpriteCache *sc = AllocateSpriteCache(load_index);
 	sc->file = nullptr;
 	sc->file_pos = 0;
-	sc->ptr = sprite;
+	CacheSpriteAllocator allocator(sc->data);
+	allocator.Allocate(sizeof(Sprite));
 	sc->lru = 0;
 	sc->id = 0;
 	sc->type = is_mapgen ? SpriteType::MapGen : SpriteType::Normal;
@@ -43,7 +41,7 @@ void MockGfxLoadSprites()
 
 	GfxInitSpriteMem();
 
-	int load_index = 0;
+	uint load_index = 0;
 	while (MockLoadNextSprite(load_index)) {
 		load_index++;
 	}
