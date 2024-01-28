@@ -175,7 +175,7 @@ public:
 
 /** The authentication method that can be used. */
 enum NetworkAuthenticationMethod : uint8_t {
-	NETWORK_AUTH_METHOD_X25519_KEY_EXCHANGE_ONLY, ///< No actual authentication is taking place, just perform a x25519 key exchange.
+	NETWORK_AUTH_METHOD_X25519_KEY_EXCHANGE_ONLY, ///< No actual authentication is taking place, just perform a x25519 key exchange. This method is not supported for the admin connection.
 	NETWORK_AUTH_METHOD_X25519_PAKE, ///< Authentication using x25519 password-authenticated key agreement.
 	NETWORK_AUTH_METHOD_X25519_AUTHORIZED_KEY, ///< Authentication using x22519 key exchange and authorized keys.
 	NETWORK_AUTH_METHOD_END, ///< Must ALWAYS be on the end of this list!! (period)
