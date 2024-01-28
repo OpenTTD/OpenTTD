@@ -324,6 +324,7 @@ struct NetworkSettings {
 	NetworkAuthorizedKeys server_authorized_keys; ///< Public keys of clients that are authorized to connect to the game.
 	std::string rcon_password;                            ///< password for rconsole (server side)
 	NetworkAuthorizedKeys rcon_authorized_keys; ///< Public keys of clients that are authorized to use the rconsole (server side).
+	bool allow_insecure_admin_login; ///< Whether to allow logging in as admin using the insecure old JOIN packet.
 	std::string admin_password;                           ///< password for the admin network
 	NetworkAuthorizedKeys admin_authorized_keys; ///< Public keys of clients that are authorized to use the admin network.
 	std::string client_name;                              ///< name of the player (as client)
