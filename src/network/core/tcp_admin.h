@@ -68,6 +68,7 @@ enum PacketAdminType : uint8_t {
 /** Status of an admin. */
 enum AdminStatus {
 	ADMIN_STATUS_INACTIVE,      ///< The admin is not connected nor active.
+	ADMIN_STATUS_AUTHENTICATE,  ///< The admin is connected and working on authentication.
 	ADMIN_STATUS_ACTIVE,        ///< The admin is active.
 	ADMIN_STATUS_END,           ///< Must ALWAYS be on the end of this list!! (period)
 };
