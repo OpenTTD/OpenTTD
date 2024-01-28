@@ -31,12 +31,16 @@ struct SpriteCache {
 	uint8_t control_flags;  ///< Control flags, see SpriteCacheCtrlFlags
 };
 
+class CacheSpriteAllocator : public SpriteAllocator {
+public:
+	void *Allocate(size_t size) override;
+};
+
 inline bool IsMapgenSpriteID(SpriteID sprite)
 {
 	return IsInsideMM(sprite, SPR_MAPGEN_BEGIN, SPR_MAPGEN_END);
 }
 
-void *AllocSprite(size_t mem_req);
 SpriteCache *AllocateSpriteCache(uint index);
 
 #endif /* SPRITECACHE_INTERNAL_H */
