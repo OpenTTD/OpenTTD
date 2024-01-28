@@ -615,7 +615,13 @@ public:
 			if (c != nullptr) {
 				this->colours[numd] = _colour_gradient[c->colour][6];
 				for (int j = this->num_on_x_axis, i = 0; --j >= 0;) {
-					this->cost[numd][i] = (j >= c->num_valid_stat_ent) ? INVALID_DATAPOINT : GetGraphData(c, j);
+					if (j >= c->num_valid_stat_ent) {
+						this->cost[numd][i] = INVALID_DATAPOINT;
+					} else {
+						/* Ensure we never assign INVALID_DATAPOINT, as that has another meaning.
+						 * Instead, use the value just under it. Hopefully nobody will notice. */
+						this->cost[numd][i] = std::min(GetGraphData(c, j), INVALID_DATAPOINT - 1);
+					}
 					i++;
 				}
 			}
