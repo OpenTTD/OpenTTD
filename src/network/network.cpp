@@ -339,6 +339,7 @@ StringID GetNetworkErrorMsg(NetworkErrorCode err)
 		STR_NETWORK_ERROR_CLIENT_TIMEOUT_JOIN,
 		STR_NETWORK_ERROR_CLIENT_INVALID_CLIENT_NAME,
 		STR_NETWORK_ERROR_CLIENT_NOT_ON_ALLOW_LIST,
+		STR_NETWORK_ERROR_CLIENT_NO_AUTHENTICATION_METHOD_AVAILABLE,
 	};
 	static_assert(lengthof(network_error_strings) == NETWORK_ERROR_END);
 
@@ -905,8 +906,8 @@ bool NetworkServerStart()
 	Debug(net, 5, "Starting listeners for clients");
 	if (!ServerNetworkGameSocketHandler::Listen(_settings_client.network.server_port)) return false;
 
-	/* Only listen for admins when the password isn't empty. */
-	if (!_settings_client.network.admin_password.empty()) {
+	/* Only listen for admins when the authentication is configured. */
+	if (_settings_client.network.AdminAuthenticationConfigured()) {
 		Debug(net, 5, "Starting listeners for admins");
 		if (!ServerNetworkAdminSocketHandler::Listen(_settings_client.network.server_admin_port)) return false;
 	}

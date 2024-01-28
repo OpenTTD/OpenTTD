@@ -1909,6 +1909,7 @@ DEF_CONSOLE_CMD(ConSayClient)
 
 /** All the known authorized keys with their name. */
 static std::vector<std::pair<std::string_view, NetworkAuthorizedKeys *>> _console_cmd_authorized_keys{
+	{ "admin", &_settings_client.network.admin_authorized_keys },
 	{ "rcon", &_settings_client.network.rcon_authorized_keys },
 	{ "server", &_settings_client.network.server_authorized_keys },
 };
