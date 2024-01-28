@@ -778,9 +778,6 @@ public:
 		this->CreateNestedTree();
 		this->vscroll = this->GetScrollbar(WID_O_SCROLLBAR);
 		this->FinishInitNested(v->index);
-		if (v->owner == _local_company) {
-			this->DisableWidget(WID_O_EMPTY);
-		}
 
 		this->selected_order = -1;
 		this->order_over = INVALID_VEH_ORDER_ID;
@@ -1600,8 +1597,7 @@ static constexpr NWidgetPart _nested_orders_train_widgets[] = {
 															SetDataTip(STR_ORDER_SERVICE, STR_ORDER_SERVICE_TOOLTIP), SetResize(1, 0),
 				EndContainer(),
 				NWidget(NWID_SELECTION, INVALID_COLOUR, WID_O_SEL_TOP_RIGHT),
-					NWidget(WWT_TEXTBTN, COLOUR_GREY, WID_O_EMPTY), SetMinimalSize(93, 12), SetFill(1, 0),
-															SetDataTip(STR_ORDER_REFIT, STR_ORDER_REFIT_TOOLTIP), SetResize(1, 0),
+					NWidget(WWT_PANEL, COLOUR_GREY), SetMinimalSize(93, 12), SetFill(1, 0), SetResize(1, 0), EndContainer(),
 					NWidget(NWID_BUTTON_DROPDOWN, COLOUR_GREY, WID_O_REFIT_DROPDOWN), SetMinimalSize(93, 12), SetFill(1, 0),
 															SetDataTip(STR_ORDER_REFIT_AUTO, STR_ORDER_REFIT_AUTO_TOOLTIP), SetResize(1, 0),
 				EndContainer(),
