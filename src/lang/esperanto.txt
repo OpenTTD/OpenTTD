@@ -488,7 +488,7 @@ STR_SCENEDIT_FILE_MENU_SEPARATOR                                :
 STR_SCENEDIT_FILE_MENU_QUIT                                     :Forlasi
 
 # Settings menu
-###length 15
+###length 16
 STR_SETTINGS_MENU_GAME_OPTIONS                                  :Ludaj opcioj
 STR_SETTINGS_MENU_CONFIG_SETTINGS_TREE                          :Agordoj
 STR_SETTINGS_MENU_GAMESCRIPT_SETTINGS                           :Ludoskriptaj agordoj
@@ -722,11 +722,9 @@ STR_PERFORMANCE_DETAIL_CARGO                                    :{BLACK}Ŝarĝo:
 STR_PERFORMANCE_DETAIL_MONEY                                    :{BLACK}Mono:
 STR_PERFORMANCE_DETAIL_LOAN                                     :{BLACK}Prunto:
 STR_PERFORMANCE_DETAIL_TOTAL                                    :{BLACK}Entute:
+###next-name-looks-similar
 
-###length 10
-STR_PERFORMANCE_DETAIL_VEHICLES_TOOLTIP                         :{BLACK}Nombro da veturiloj, kiuj lastjare profitis. Tio inkluzivas stratveturilojn, trajnojn, ŝipojn kaj aviadilojn.
 STR_PERFORMANCE_DETAIL_STATIONS_TOOLTIP                         :{BLACK}Nombro da staciopartoj lastatempe servitaj. Ĉiu stacioparto (ekz. stacidomo, bushaltejo, flughaveno) alkalkuliĝas, eĉ se ligite kiel unu stacio.
-STR_PERFORMANCE_DETAIL_MIN_PROFIT_TOOLTIP                       :{BLACK}La profito de la malplejenspeza veturilo (nur de veturiloj pli aĝaj ol 2 jaroj).
 STR_PERFORMANCE_DETAIL_MIN_INCOME_TOOLTIP                       :{BLACK}Enspezo dum la plej malaltprofita kvarono de la lastaj 12 kvaronoj
 STR_PERFORMANCE_DETAIL_MAX_INCOME_TOOLTIP                       :{BLACK}Enspezo dum la plej altprofita kvaronjaro el la lastaj 12 kvaronjaroj
 STR_PERFORMANCE_DETAIL_DELIVERED_TOOLTIP                        :{BLACK}Ŝarĝunuoj liveritaj dum la pasintaj 4 kvaronjaroj
@@ -954,7 +952,6 @@ STR_NEWS_VEHICLE_IS_GETTING_VERY_OLD                            :{WHITE}{VEHICLE
 STR_NEWS_VEHICLE_IS_GETTING_VERY_OLD_AND                        :{WHITE}{VEHICLE} tro malnoviĝis kaj postulas anstataŭiĝon
 STR_NEWS_TRAIN_IS_STUCK                                         :{WHITE}{VEHICLE} ne povas trovi padon por daŭrigi.
 STR_NEWS_VEHICLE_IS_LOST                                        :{WHITE}{VEHICLE} estas perdita
-STR_NEWS_VEHICLE_IS_UNPROFITABLE                                :{WHITE}{VEHICLE} pasintjare gajnis {CURRENCY_LONG}
 STR_NEWS_AIRCRAFT_DEST_TOO_FAR                                  :{WHITE}{VEHICLE} ne povas iri ĝis la sekva celpunkto ĉar ĝi estas ekster la atingebla distanco
 
 STR_NEWS_ORDER_REFIT_FAILED                                     :{WHITE}{VEHICLE} haltis ĉar komanda transformo fiaskis
@@ -968,16 +965,9 @@ STR_NEWS_NEW_VEHICLE_NOW_AVAILABLE_WITH_TYPE                    :{BLACK}Nova {ST
 
 STR_NEWS_OFFER_OF_SUBSIDY_EXPIRED                               :{BIG_FONT}{BLACK}Subvencia oferto ne plu validas:{}{}Transportado de {STRING} de {STRING} al {STRING} ne estos subvenciata.
 STR_NEWS_SUBSIDY_WITHDRAWN_SERVICE                              :{BIG_FONT}{BLACK}Subvencio retiriĝis:{}{}Servo de {STRING} de {STRING} al {STRING} ne plu estas subvenciata.
-STR_NEWS_SERVICE_SUBSIDY_OFFERED                                :{BIG_FONT}{BLACK}Subvencia oferto:{}{}Kiu unue transportos {STRING.n} de {STRING} al {STRING} ricevos {NUM}-jaran subvencion de la lokaj estroj!
 ###length 4
-STR_NEWS_SERVICE_SUBSIDY_AWARDED_HALF                           :{BIG_FONT}{BLACK}{STRING} ricevis subvencion!{}{}Transportado de {STRING} de {STRING} al {STRING} pagiĝos je 50% pli dum la sekva{P 4 "" j} {4:NUM} jaro{P 4 "" j}!
-STR_NEWS_SERVICE_SUBSIDY_AWARDED_DOUBLE                         :{BIG_FONT}{BLACK}{STRING} ricevis subvencion!{}{}Transportado de {STRING} de {STRING} al {STRING} pagiĝos duoble dum la sekva{P 4 "" j} {4:NUM} jaro{P 4 "" j}!
-STR_NEWS_SERVICE_SUBSIDY_AWARDED_TRIPLE                         :{BIG_FONT}{BLACK}{STRING} ricevis subvencion!{}{}Transportado de {STRING} de {STRING} al {STRING} pagiĝos trioble dum la sekva{P 4 "" j} {4:NUM} jaro{P 4 "" j}!
-STR_NEWS_SERVICE_SUBSIDY_AWARDED_QUADRUPLE                      :{BIG_FONT}{BLACK}{STRING} ricevis subvencion!{}{}Transportado de {STRING} de {STRING} al {STRING} pagiĝos kvaroble dum la sekva{P 4 "" j} {4:NUM} jaro{P 4 "" j}!
 
-STR_NEWS_ROAD_REBUILDING                                        :{BIG_FONT}{BLACK}Trafika ĥaoso en {TOWN}!{}{}Vojrekonstruada programo komencita de {STRING} alportas 6-monatan mizeron al vojuzantoj!
 STR_NEWS_EXCLUSIVE_RIGHTS_TITLE                                 :{BIG_FONT}{BLACK}Transporta monopolo!
-STR_NEWS_EXCLUSIVE_RIGHTS_DESCRIPTION                           :{BIG_FONT}{BLACK}La lokaj estroj de {TOWN} subskribas kontrakton kun {STRING} por unu jaro de ekskluzivaj transportrajtoj!
 
 # Extra view window
 STR_EXTRA_VIEWPORT_TITLE                                        :{WHITE}Vidujo {COMMA}
@@ -1311,10 +1301,9 @@ STR_CONFIG_SETTING_SUBSIDY_MULTIPLIER                           :Subvencia multo
 STR_CONFIG_SETTING_SUBSIDY_MULTIPLIER_HELPTEXT                  :Ŝanĝu kio oni pagas por subvenciataj rilatoj
 
 STR_CONFIG_SETTING_SUBSIDY_DURATION                             :Daŭro de subvencio: {STRING}
+###length 2
 STR_CONFIG_SETTING_SUBSIDY_DURATION_HELPTEXT                    :Indiku por kiom da jaroj validas subvencio
 
-STR_CONFIG_SETTING_SUBSIDY_DURATION_VALUE                       :{NUM} jaro{P "" j}
-STR_CONFIG_SETTING_SUBSIDY_DURATION_VALUE.n                     :{NUM} jaro{P "" j}n
 ###setting-zero-is-special
 STR_CONFIG_SETTING_SUBSIDY_DURATION_DISABLED                    :Neniuj subvencioj
 
@@ -1404,7 +1393,10 @@ STR_CONFIG_SETTING_SIGNALSIDE_LEFT                              :Maldekstre
 STR_CONFIG_SETTING_SIGNALSIDE_DRIVING_SIDE                      :En la strata stirflanko
 STR_CONFIG_SETTING_SIGNALSIDE_RIGHT                             :Dekstre
 
+###length 2
 STR_CONFIG_SETTING_SHOWFINANCES                                 :Montru financan fenestron fine de la jaro: {STRING}
+
+###length 2
 STR_CONFIG_SETTING_SHOWFINANCES_HELPTEXT                        :Kiam tiu ĉi agordo estas aktiva, la financa fenesto aperas je la fino de ĉiu jaro por ebligi facilan inspektadon de la financa stato de la kompanio
 
 STR_CONFIG_SETTING_NONSTOP_BY_DEFAULT                           :Novaj ordonoj estas 'sen-halte' per defaŭlto: {STRING}
@@ -1425,9 +1417,11 @@ STR_CONFIG_SETTING_AUTOSCROLL_MAIN_VIEWPORT                     :Ĉefa vidujo
 STR_CONFIG_SETTING_AUTOSCROLL_EVERY_VIEWPORT                    :Ĉiu vidujo
 
 STR_CONFIG_SETTING_BRIBE                                        :Permesu subaĉeti la lokajn estrojn: {STRING}
+###length 2
 STR_CONFIG_SETTING_BRIBE_HELPTEXT                               :Permesu al kompanioj provi subaĉeti lokajn estrojn. Se inspektoro rimarkas la subaĉeton, la kompanio dum ses monatoj ne povos agi en la urbo
 
 STR_CONFIG_SETTING_ALLOW_EXCLUSIVE                              :Permesu aĉeti ekskluzivajn transportrajtojn: {STRING}
+###length 2
 STR_CONFIG_SETTING_ALLOW_EXCLUSIVE_HELPTEXT                     :Se kompanio aĉetas ekskluzivajn transportrajtojn en urbo, stacioj de konkurantoj (pasaĝeraj kaj kargaj) ne ricevos ŝarĝojn dum tuta jaro
 
 STR_CONFIG_SETTING_ALLOW_FUND_BUILDINGS                         :Permesi financi konstruaĵojn: {STRING}
@@ -1480,12 +1474,16 @@ STR_CONFIG_SETTING_ORDER_REVIEW_EXDEPOT                         :jes, escepte de
 STR_CONFIG_SETTING_ORDER_REVIEW_ON                              :de ĉiuj veturiloj
 
 STR_CONFIG_SETTING_WARN_INCOME_LESS                             :Avertu se gajno de veturilo negativas: {STRING}
+###length 2
 STR_CONFIG_SETTING_WARN_INCOME_LESS_HELPTEXT                    :Kiam tiu ĉi agordo estas aktiva, aperas anonco kiam iu veturilo ne faris profiton dum kalendara jaro
 
 STR_CONFIG_SETTING_NEVER_EXPIRE_VEHICLES                        :Veturiloj neniam eluziĝas: {STRING}
 STR_CONFIG_SETTING_NEVER_EXPIRE_VEHICLES_HELPTEXT               :Se tiu ĉi agordo estas aktiva, ĉiuj modeloj de veturiloj restos aĉeteblaj por ĉiam post ekhaveblo
 
 ###length 2
+
+
+###setting-zero-is-special
 
 STR_CONFIG_SETTING_AUTORENEW_VEHICLE                            :Aŭtomate anstataŭu veturilon se malnoviĝas: {STRING}
 STR_CONFIG_SETTING_AUTORENEW_VEHICLE_HELPTEXT                   :Se tiu ĉi agordo estas aktiva, veturilo kiu alproksimiĝas al la fino de sia vivdaŭro estos aŭtomate anstataŭigita kiam la renovigkondiĉoj estas plenumitaj
@@ -1717,7 +1715,10 @@ STR_CONFIG_SETTING_SOUND_TICKER_HELPTEXT                        :Ludu sonon je r
 STR_CONFIG_SETTING_SOUND_NEWS                                   :Ĵurnalo: {STRING}
 STR_CONFIG_SETTING_SOUND_NEWS_HELPTEXT                          :Ludu sonon je montro de gazetoj
 
+###length 2
 STR_CONFIG_SETTING_SOUND_NEW_YEAR                               :Fine de la jaro: {STRING}
+
+###length 2
 STR_CONFIG_SETTING_SOUND_NEW_YEAR_HELPTEXT                      :Ludu sonon je la fino de jaro resumantan la rendimenton de la kompanio dum la jaro kompare al la antaŭa jaro
 
 STR_CONFIG_SETTING_SOUND_CONFIRM                                :Konstruado: {STRING}
@@ -1998,11 +1999,9 @@ STR_CONFIG_SETTING_SHORT_PATH_SATURATION_HELPTEXT               :Ofte ekzistas p
 STR_CONFIG_SETTING_LOCALISATION_UNITS_VELOCITY                  :Rapidecunuoj (surtere): {STRING}
 STR_CONFIG_SETTING_LOCALISATION_UNITS_VELOCITY_NAUTICAL         :Rapidecunuoj (surakve): {STRING}
 STR_CONFIG_SETTING_LOCALISATION_UNITS_VELOCITY_HELPTEXT         :Kiam ajn montriĝas rapideco en la uzantinterfaco, montru ĝin en la indikitaj unuoj
-###length 5
 STR_CONFIG_SETTING_LOCALISATION_UNITS_VELOCITY_IMPERIAL         :Angla-usona sistemo (mejloj hore)
 STR_CONFIG_SETTING_LOCALISATION_UNITS_VELOCITY_METRIC           :Metra (km/h)
 STR_CONFIG_SETTING_LOCALISATION_UNITS_VELOCITY_SI               :SI-unuoj (m/s)
-STR_CONFIG_SETTING_LOCALISATION_UNITS_VELOCITY_GAMEUNITS        :Ludunuoj (kaheloj tage)
 STR_CONFIG_SETTING_LOCALISATION_UNITS_VELOCITY_KNOTS            :Knotoj
 
 STR_CONFIG_SETTING_LOCALISATION_UNITS_POWER                     :Unuoj de veturila povumo: {STRING}
@@ -2158,8 +2157,6 @@ STR_ABANDON_SCENARIO_QUERY                                      :{YELLOW}Ĉu vi 
 
 # Cheat window
 STR_CHEATS                                                      :{WHITE}Filudaĵoj
-STR_CHEATS_TOOLTIP                                              :{BLACK}La kvadratetoj indikas ĉu vi jam uzis la filudaĵon antaŭe.
-STR_CHEATS_NOTE                                                 :{BLACK}Notu: ajna uzado de tiuj ĉi agordoj estos registritaj en la konservdosiero
 STR_CHEAT_MONEY                                                 :{LTBLUE}Altigu monkvanton per {CURRENCY_LONG}
 STR_CHEAT_CHANGE_COMPANY                                        :{LTBLUE}Ludanta kiel kompanio: {ORANGE}{COMMA}
 STR_CHEAT_EXTRA_DYNAMITE                                        :{LTBLUE}Magia forigilo (forviŝu industriojn, nemovebla objektoj): {ORANGE}{STRING}
@@ -2287,8 +2284,6 @@ STR_NETWORK_SERVER_LIST_MAP_SIZE_CAPTION                        :{BLACK}Mapgrand
 STR_NETWORK_SERVER_LIST_MAP_SIZE_CAPTION_TOOLTIP                :{BLACK}Mapgrandeco de la ludo{}Klaku por ordigi laŭ areo
 STR_NETWORK_SERVER_LIST_DATE_CAPTION                            :{BLACK}Dato
 STR_NETWORK_SERVER_LIST_DATE_CAPTION_TOOLTIP                    :{BLACK}Aktuala dato
-STR_NETWORK_SERVER_LIST_YEARS_CAPTION                           :{BLACK}Jaroj
-STR_NETWORK_SERVER_LIST_YEARS_CAPTION_TOOLTIP                   :{BLACK}Nombro de jaroj{}la ludo jam rulas
 STR_NETWORK_SERVER_LIST_INFO_ICONS_TOOLTIP                      :{BLACK}Lingvo, servila versio ktp.
 
 STR_NETWORK_SERVER_LIST_CLICK_GAME_TO_SELECT                    :{BLACK}Alklaku ludon el la listo por elekti ĝin
@@ -2642,9 +2637,7 @@ STR_LINKGRAPH_LEGEND_SATURATED                                  :{TINY_FONT}{BLA
 STR_LINKGRAPH_LEGEND_OVERLOADED                                 :{TINY_FONT}{BLACK}superŝutata
 
 # Linkgraph tooltip
-STR_LINKGRAPH_STATS_TOOLTIP                                     :{BLACK}{CARGO_LONG} transportenda ĉiumonate de {STATION} al {STATION} ({COMMA}% de la kapacito){STRING}
 STR_LINKGRAPH_STATS_TOOLTIP_RETURN_EXTENSION                    :{}{CARGO_LONG} transportenda reen ({COMMA}% de la kapacito)
-STR_LINKGRAPH_STATS_TOOLTIP_TIME_EXTENSION                      :{}Averaĝa veturtempo: {NUM}{NBSP}tago{P "" j}
 
 # Base for station construction window(s)
 STR_STATION_BUILD_COVERAGE_AREA_TITLE                           :{BLACK}Ŝarĝregiona marko
@@ -2654,7 +2647,6 @@ STR_STATION_BUILD_COVERAGE_AREA_OFF_TOOLTIP                     :{BLACK}Ne marku
 STR_STATION_BUILD_COVERAGE_AREA_ON_TOOLTIP                      :{BLACK}Marku ŝarĝregionon ĉe proponata loko
 STR_STATION_BUILD_ACCEPTS_CARGO                                 :{BLACK}Akceptiĝas: {GOLD}{CARGO_LIST}
 STR_STATION_BUILD_SUPPLIES_CARGO                                :{BLACK}Provizoj: {GOLD}{CARGO_LIST}
-STR_STATION_BUILD_INFRASTRUCTURE_COST                           :{BLACK}Bontenada kosto: {GOLD}{CURRENCY_SHORT} jare
 
 # Join station window
 STR_JOIN_STATION_CAPTION                                        :{WHITE}Ligi stacion
@@ -3460,8 +3452,6 @@ STR_TOWN_VIEW_CARGO_FOR_TOWNGROWTH_REQUIRED_WINTER              :{ORANGE}{STRING
 STR_TOWN_VIEW_CARGO_FOR_TOWNGROWTH_DELIVERED_GENERAL            :{ORANGE}{STRING}{GREEN} liverita
 STR_TOWN_VIEW_CARGO_FOR_TOWNGROWTH_REQUIRED                     :{ORANGE}{CARGO_TINY} / {CARGO_LONG}{RED} (ankoraŭ bezonata)
 STR_TOWN_VIEW_CARGO_FOR_TOWNGROWTH_DELIVERED                    :{ORANGE}{CARGO_TINY} / {CARGO_LONG}{GREEN} (liverita)
-STR_TOWN_VIEW_TOWN_GROWS_EVERY                                  :{BLACK}La urbo kreskas ĉiun {ORANGE}{COMMA}an{BLACK}{NBSP}tagon
-STR_TOWN_VIEW_TOWN_GROWS_EVERY_FUNDED                           :{BLACK}La urbo kreskas ĉiun {ORANGE}{COMMA}an{BLACK}{NBSP}tagon (pagata)
 STR_TOWN_VIEW_TOWN_GROW_STOPPED                                 :{BLACK}La urbo {RED}ne{BLACK} kreskas
 STR_TOWN_VIEW_NOISE_IN_TOWN                                     :{BLACK}Urba brulimo: {ORANGE}{COMMA}{BLACK}  maks: {ORANGE}{COMMA}
 STR_TOWN_VIEW_CENTER_TOOLTIP                                    :{BLACK}Centri ĉefvidon ĉe la urbo. Stir+Klak por malfermi novan vidujon ĉe la urba loko.
@@ -3496,15 +3486,13 @@ STR_LOCAL_AUTHORITY_ACTION_STATUE_OF_COMPANY                    :Konstruu statuo
 STR_LOCAL_AUTHORITY_ACTION_NEW_BUILDINGS                        :Fondu novajn konstruaĵojn
 STR_LOCAL_AUTHORITY_ACTION_EXCLUSIVE_TRANSPORT                  :Aĉetu ekskluzivan transportrajton
 STR_LOCAL_AUTHORITY_ACTION_BRIBE                                :Subaĉetu la lokajn estrojn
+###next-name-looks-similar
 
-###length 8
 STR_LOCAL_AUTHORITY_ACTION_TOOLTIP_SMALL_ADVERTISING            :{PUSH_COLOUR}{YELLOW}Komencu malgrandan lokan varbadkampanjon, por altiri pliajn pasaĝerojn kaj kargojn al viaj transportservoj.{}Portempe altigas staciajn pritaksojn en malgranda areo ĉirkaŭ la urbocentro.{}{POP_COLOUR}Kosto: {CURRENCY_LONG}
 STR_LOCAL_AUTHORITY_ACTION_TOOLTIP_MEDIUM_ADVERTISING           :{PUSH_COLOUR}{YELLOW}Komencu mezgrandan lokan varbadkampanjon, por altiri pliajn pasaĝerojn kaj kargojn al viaj transportservoj.{}Portempe altigas staciajn pritaksojn en mezgranda areo ĉirkaŭ la urbocentro.{}{POP_COLOUR}Kosto: {CURRENCY_LONG}
 STR_LOCAL_AUTHORITY_ACTION_TOOLTIP_LARGE_ADVERTISING            :{PUSH_COLOUR}{YELLOW}Komencu grandan lokan varbadkampanjon, por altiri pliajn pasaĝerojn kaj kargojn al viaj transportservoj.{}Portempe altigas staciajn pritaksojn en granda areo ĉirkaŭ la urbocentro.{}{POP_COLOUR}Kosto: {CURRENCY_LONG}
-STR_LOCAL_AUTHORITY_ACTION_TOOLTIP_ROAD_RECONSTRUCTION          :{PUSH_COLOUR}{YELLOW}Pagu rekonstruadon de la urba stratreto.{}Kaŭzos konsiderindan ĝenon al la trafiko por ĝis 6 monatoj.{}{POP_COLOUR}Kosto: {CURRENCY_LONG}
 STR_LOCAL_AUTHORITY_ACTION_TOOLTIP_STATUE_OF_COMPANY            :{PUSH_COLOUR}{YELLOW}Konstruu statuon honore al via kompanio.{}Porĉiame altigas staciajn pritaksojn en tiu ĉi urbo.{}{POP_COLOUR}Kosto: {CURRENCY_LONG}
 STR_LOCAL_AUTHORITY_ACTION_TOOLTIP_NEW_BUILDINGS                :{PUSH_COLOUR}{YELLOW}Pagu la konstruadon de novaj komercaj konstruaĵoj en la urbo.{}Portempe rapidigas la kreskadon de tiu ĉi urbo.{}{POP_COLOUR}Kosto: {CURRENCY_LONG}
-STR_LOCAL_AUTHORITY_ACTION_TOOLTIP_EXCLUSIVE_TRANSPORT          :{PUSH_COLOUR}{YELLOW}Aĉetu ekskluzivajn transportrajtojn en la urbo por 1 jaro.{}La urbo nur permesos pasaĝerojn kaj kargojn uzi la staciojn de via entrepreno.{}{POP_COLOUR}Kosto: {CURRENCY_LONG}
 STR_LOCAL_AUTHORITY_ACTION_TOOLTIP_BRIBE                        :{PUSH_COLOUR}{YELLOW}Subaĉetu la lokajn estrojn por pliigi vian rendimenton, riskante grandan punon je kaptiĝo.{}{POP_COLOUR}Kosto: {CURRENCY_LONG}
 
 # Goal window
@@ -3579,7 +3567,6 @@ STR_STATION_VIEW_EXCLUSIVE_RIGHTS_COMPANY                       :{YELLOW}{COMPAN
 
 STR_STATION_VIEW_RATINGS_BUTTON                                 :{BLACK}Takso
 STR_STATION_VIEW_RATINGS_TOOLTIP                                :{BLACK}Montru stacian takson
-STR_STATION_VIEW_SUPPLY_RATINGS_TITLE                           :{BLACK}Ĉiumonata provizo kaj loka pritakso:
 STR_STATION_VIEW_CARGO_SUPPLY_RATING                            :{WHITE}{STRING}: {YELLOW}{COMMA} / {STRING} ({COMMA}%)
 
 STR_STATION_VIEW_GROUP                                          :{BLACK}Grupigu laŭ
@@ -3741,7 +3728,6 @@ STR_COMPANY_INFRASTRUCTURE_VIEW_CANALS                          :{WHITE}Kanaloj
 STR_COMPANY_INFRASTRUCTURE_VIEW_STATION_SECT                    :{GOLD}Stacioj:
 STR_COMPANY_INFRASTRUCTURE_VIEW_STATIONS                        :{WHITE}Staciaj kaheloj
 STR_COMPANY_INFRASTRUCTURE_VIEW_AIRPORTS                        :{WHITE}Flughavenoj
-STR_COMPANY_INFRASTRUCTURE_VIEW_TOTAL                           :{WHITE}{CURRENCY_LONG} jare
 
 # Industry directory
 STR_INDUSTRY_DIRECTORY_CAPTION                                  :{WHITE}Industrioj
@@ -3867,7 +3853,6 @@ STR_PURCHASE_INFO_SPEED_POWER                                   :{BLACK}Rapido: 
 STR_PURCHASE_INFO_SPEED                                         :{BLACK}Rapido: {GOLD}{VELOCITY}
 STR_PURCHASE_INFO_SPEED_OCEAN                                   :{BLACK}Rapido sur oceano: {GOLD}{VELOCITY}
 STR_PURCHASE_INFO_SPEED_CANAL                                   :{BLACK}Rapido sur kanalo/rivero: {GOLD}{VELOCITY}
-STR_PURCHASE_INFO_RUNNINGCOST                                   :{BLACK}Irkosto: {GOLD}po {CURRENCY_LONG} jare
 STR_PURCHASE_INFO_CAPACITY                                      :{BLACK}Kapablo: {GOLD}{CARGO_LONG} {STRING}
 STR_PURCHASE_INFO_REFITTABLE                                    :(transformebla)
 STR_PURCHASE_INFO_DESIGNED_LIFE                                 :{BLACK}Pripensite: {GOLD}{NUM}{BLACK} Vivlongo: {GOLD}{COMMA} jaro{P "" j}
@@ -4059,13 +4044,6 @@ STR_ENGINE_PREVIEW_TRAM_VEHICLE.n                               :tramvojan vetur
 STR_ENGINE_PREVIEW_AIRCRAFT                                     :aviadilo
 STR_ENGINE_PREVIEW_SHIP                                         :ŝipo
 
-STR_ENGINE_PREVIEW_COST_WEIGHT_SPEED_POWER                      :{BLACK}Kosto: {CURRENCY_LONG} Pezo: {WEIGHT_SHORT}{}Rapido: {VELOCITY}  Forto: {POWER}{}Irkosto: po {CURRENCY_LONG} jare{}Kapablo: {CARGO_LONG}
-STR_ENGINE_PREVIEW_COST_WEIGHT_SPEED_POWER_MAX_TE               :{BLACK}Kosto: {0:CURRENCY_LONG} Pezo: {1:WEIGHT_SHORT}{}Rapideco: {2:VELOCITY}  Povumo: {3:POWER}  Maks. trakcia forto.: {6:FORCE}{}Irkosto: {4:CURRENCY_LONG} jare{}Kapacito: {5:CARGO_LONG}
-STR_ENGINE_PREVIEW_COST_MAX_SPEED_CAP_RUNCOST                   :{BLACK}Kosto: {CURRENCY_LONG} Maks. Rapido: {VELOCITY}{}Kapacito: {CARGO_LONG}{}Irkosto: {CURRENCY_LONG}/jaro
-STR_ENGINE_PREVIEW_COST_MAX_SPEED_TYPE_CAP_CAP_RUNCOST          :{BLACK}Kosto: {CURRENCY_LONG} Maks. rapideco: {VELOCITY}{}Tipo de aviadilo: {STRING}{}Kapacito: {CARGO_LONG}, {CARGO_LONG}{}Irkosto: {CURRENCY_LONG} jare
-STR_ENGINE_PREVIEW_COST_MAX_SPEED_TYPE_CAP_RUNCOST              :{BLACK}Kosto: {CURRENCY_LONG} Maks. rapideco: {VELOCITY}{}Tipo de aviadilo: {STRING}{}Kapacito: {CARGO_LONG}{}Irkosto: {CURRENCY_LONG} jare
-STR_ENGINE_PREVIEW_COST_MAX_SPEED_TYPE_RANGE_CAP_CAP_RUNCOST    :{BLACK}Kosto: {CURRENCY_LONG} Maks. rapideco: {VELOCITY}{}Tipo de aviadilo: {STRING} Atingdistanco: {COMMA} kaheloj{}Kapacito: {CARGO_LONG}, {CARGO_LONG}{}Irkosto: {CURRENCY_LONG} jare
-STR_ENGINE_PREVIEW_COST_MAX_SPEED_TYPE_RANGE_CAP_RUNCOST        :{BLACK}Kosto: {CURRENCY_LONG} Maks. rapideco: {VELOCITY}{}Tipo de aviadilo: {STRING} Atingdistanco: {COMMA} kaheloj{}Kapacito: {CARGO_LONG}{}Irkosto: {CURRENCY_LONG} jare
 
 # Autoreplace window
 STR_REPLACE_VEHICLES_WHITE                                      :{WHITE}Anstataŭu {STRING.n} - {STRING}
@@ -4230,8 +4208,6 @@ STR_VEHICLE_INFO_CAPACITY_CAPACITY                              :{BLACK}Enhaveco
 
 STR_VEHICLE_INFO_FEEDER_CARGO_VALUE                             :{BLACK}Transigaj Kreditoj: {LTBLUE}{CURRENCY_LONG}
 
-STR_VEHICLE_DETAILS_INCREASE_SERVICING_INTERVAL_TOOLTIP         :{BLACK}Multoblas prizorgintervalon po 10. Ctrl+klak multoblas prizorgintervalon po 5.
-STR_VEHICLE_DETAILS_DECREASE_SERVICING_INTERVAL_TOOLTIP         :{BLACK}Malpliigu prizorgintervalon po 10. Ctrl-klak malpliigas prizorgintervalon po 5
 
 STR_SERVICE_INTERVAL_DROPDOWN_TOOLTIP                           :{BLACK}Ŝanĝi la tipo de servon intervalon
 STR_VEHICLE_DETAILS_DEFAULT                                     :Defaŭlto

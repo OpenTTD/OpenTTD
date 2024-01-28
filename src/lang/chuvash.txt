@@ -233,7 +233,7 @@ STR_SCENEDIT_FILE_MENU_SEPARATOR                                :
 STR_SCENEDIT_FILE_MENU_QUIT                                     :Вӗҫле
 
 # Settings menu
-###length 15
+###length 16
 STR_SETTINGS_MENU_GAME_OPTIONS                                  :Вӑййи майлаштару
 STR_SETTINGS_MENU_NEWGRF_SETTINGS                               :NewGRF майлаштару
 
@@ -386,8 +386,8 @@ STR_PERFORMANCE_DETAIL_CARGO                                    :{BLACK}Тиев
 STR_PERFORMANCE_DETAIL_MONEY                                    :{BLACK}Укҫӑ:
 STR_PERFORMANCE_DETAIL_LOAN                                     :{BLACK}Кивҫен:
 STR_PERFORMANCE_DETAIL_TOTAL                                    :{BLACK}Пурӗ:
+###next-name-looks-similar
 
-###length 10
 
 # Music window
 STR_MUSIC_TRACK_NONE                                            :{TINY_FONT}{DKGREEN}--
@@ -588,6 +588,7 @@ STR_CONFIG_SETTING_HORIZONTAL_POS_RIGHT                         :Сылтӑмр�
 
 
 
+###length 2
 
 ###setting-zero-is-special
 
@@ -621,13 +622,18 @@ STR_CONFIG_SETTING_RAW_INDUSTRY_CONSTRUCTION_METHOD_NONE        :ҫук
 
 ###length 3
 
+###length 2
+
+###length 2
 
 
 ###length 3
 
 ###length 4
 
+###length 2
 
+###length 2
 
 
 
@@ -647,9 +653,13 @@ STR_CONFIG_SETTING_NEVER_EXPIRE_AIRPORTS                        :Аэропор�
 
 ###length 3
 
+###length 2
 
 
 ###length 2
+
+
+###setting-zero-is-special
 
 
 ###length 2
@@ -739,6 +749,9 @@ STR_CONFIG_SETTING_DATE_FORMAT_IN_SAVE_NAMES_ISO                :ISO (2008-12-31
 
 
 
+###length 2
+
+###length 2
 
 
 
@@ -832,7 +845,6 @@ STR_CONFIG_SETTING_TOWN_GROWTH_VERY_FAST                        :Питӗ хӑв
 
 
 
-###length 5
 
 ###length 3
 
@@ -955,7 +967,6 @@ STR_NETWORK_SERVER_LIST_MAP_SIZE_SHORT                          :{BLACK}{COMMA}x
 STR_NETWORK_SERVER_LIST_MAP_SIZE_CAPTION                        :{BLACK}Виҫе картти
 STR_NETWORK_SERVER_LIST_DATE_CAPTION                            :{BLACK}Кун
 STR_NETWORK_SERVER_LIST_DATE_CAPTION_TOOLTIP                    :{BLACK}Хальхи кун
-STR_NETWORK_SERVER_LIST_YEARS_CAPTION                           :{BLACK}Ҫул
 STR_NETWORK_SERVER_LIST_INFO_ICONS_TOOLTIP                      :{BLACK}Чӗлхе, сервер версиӗ, т. ыт. те.
 
 
@@ -1293,8 +1304,8 @@ STR_TOWN_VIEW_TOWN_CAPTION                                      :{WHITE}{TOWN}
 STR_LOCAL_AUTHORITY_COMPANY_RATING                              :{YELLOW}{COMPANY} {COMPANY_NUM}: {ORANGE}{STRING}
 
 ###length 8
+###next-name-looks-similar
 
-###length 8
 
 # Goal window
 STR_GOALS_TEXT                                                  :{ORANGE}{STRING}

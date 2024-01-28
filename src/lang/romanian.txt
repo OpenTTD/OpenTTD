@@ -425,7 +425,7 @@ STR_SCENEDIT_FILE_MENU_SEPARATOR                                :
 STR_SCENEDIT_FILE_MENU_QUIT                                     :Ieșire din joc
 
 # Settings menu
-###length 15
+###length 16
 STR_SETTINGS_MENU_GAME_OPTIONS                                  :Opțiunile jocului
 STR_SETTINGS_MENU_CONFIG_SETTINGS_TREE                          :Setări
 STR_SETTINGS_MENU_AI_SETTINGS                                   :Setările AI
@@ -662,11 +662,9 @@ STR_PERFORMANCE_DETAIL_CARGO                                    :{BLACK}Mărfuri
 STR_PERFORMANCE_DETAIL_MONEY                                    :{BLACK}Cont curent:
 STR_PERFORMANCE_DETAIL_LOAN                                     :{BLACK}Credite:
 STR_PERFORMANCE_DETAIL_TOTAL                                    :{BLACK}Total:
+###next-name-looks-similar
 
-###length 10
-STR_PERFORMANCE_DETAIL_VEHICLES_TOOLTIP                         :{BLACK}Numărul de vehicule profitabile pe anul precedent. Include autovehicule, trenuri, nave și aeronave
 STR_PERFORMANCE_DETAIL_STATIONS_TOOLTIP                         :{BLACK}Numărul stațiilor. Se numără fiecare componentă în cazul unor stații compuse simultan din gări, aeroporturi, porturi, stații de autobuz, etc.
-STR_PERFORMANCE_DETAIL_MIN_PROFIT_TOOLTIP                       :{BLACK}Profitul vehiculului cu cele mai mici încasări (doar vehiculele mai vechi de 2 ani sunt listate)
 STR_PERFORMANCE_DETAIL_MIN_INCOME_TOOLTIP                       :{BLACK}Suma de bani obținută în trimestrul cu cel mai mic profit din ultimele 12 trimestre.
 STR_PERFORMANCE_DETAIL_MAX_INCOME_TOOLTIP                       :{BLACK}Suma de bani obținută în trimestrul cu cel mai mare profit din ultimele 12 trimestre.
 STR_PERFORMANCE_DETAIL_DELIVERED_TOOLTIP                        :{BLACK}Numărul de încărcături transportate în ultimele 12 luni.
@@ -898,7 +896,6 @@ STR_NEWS_VEHICLE_IS_GETTING_VERY_OLD                            :{WHITE}{VEHICLE
 STR_NEWS_VEHICLE_IS_GETTING_VERY_OLD_AND                        :{WHITE}{VEHICLE} este foarte vechi și trebuie înlocuit
 STR_NEWS_TRAIN_IS_STUCK                                         :{WHITE}{VEHICLE} nu găsește calea către destinație
 STR_NEWS_VEHICLE_IS_LOST                                        :{WHITE}{VEHICLE} s-a rătăcit
-STR_NEWS_VEHICLE_IS_UNPROFITABLE                                :{WHITE}Profitul {VEHICLE} pe anul precedent a fost de {CURRENCY_LONG}
 STR_NEWS_AIRCRAFT_DEST_TOO_FAR                                  :{WHITE}{VEHICLE} nu poate ajunge la următoarea destinație deoarece se află în afara razei de acțiune
 
 STR_NEWS_ORDER_REFIT_FAILED                                     :{WHITE}{VEHICLE} s-a oprit deoarece recondiționarea programată a eșuat
@@ -915,16 +912,9 @@ STR_NEWS_STATION_NOW_ACCEPTS_CARGO_LIST                         :{WHITE}{STATION
 
 STR_NEWS_OFFER_OF_SUBSIDY_EXPIRED                               :{BIG_FONT}{BLACK}Ofertă expirată:{}{}Transportul de {STRING} de la {STRING} la {STRING} nu va mai fi subvenționat
 STR_NEWS_SUBSIDY_WITHDRAWN_SERVICE                              :{BIG_FONT}{BLACK}Ofertă retrasă:{}{}Transportul de {STRING} de la {STRING} la {STRING} nu va mai fi subvenționat
-STR_NEWS_SERVICE_SUBSIDY_OFFERED                                :{BIG_FONT}{BLACK}Subvenție oferită:{}{}Primul transport de {STRING} de la {STRING} la {STRING} va primi o subvenție pe {NUM} {P an ani "de ani"} din partea autorităților locale!
 ###length 4
-STR_NEWS_SERVICE_SUBSIDY_AWARDED_HALF                           :{BIG_FONT}{BLACK}Subvenție acordată companiei {STRING}!{}{}Transportul de {STRING} de la {STRING} la {STRING} va aduce încasări cu 50% mai mari în următor{P 4 ul ii ii} {NUM} {P an ani "de ani"}!
-STR_NEWS_SERVICE_SUBSIDY_AWARDED_DOUBLE                         :{BIG_FONT}{BLACK}Subvenție acordată companiei {STRING}!{}{}Transportul de {STRING} de la {STRING} la {STRING} va aduce încasări duble în următor{P 4 ul ii ii} {NUM} {P an ani "de ani"}!
-STR_NEWS_SERVICE_SUBSIDY_AWARDED_TRIPLE                         :{BIG_FONT}{BLACK}Subvenție acordată companiei {STRING}!{}{}Transportul de {STRING} de la {STRING} la {STRING} va aduce încasări triple în următor{P 4 ul ii ii} {NUM} {P an ani "de ani"}!
-STR_NEWS_SERVICE_SUBSIDY_AWARDED_QUADRUPLE                      :{BIG_FONT}{BLACK}Subvenție acordată companiei {STRING}!{}{}Transportul de {STRING} de la {STRING} la {STRING} va aduce încasări de patru ori mai mari în următor{P 4 ul ii ii} {NUM} {P an ani "de ani"}!
 
-STR_NEWS_ROAD_REBUILDING                                        :{BIG_FONT}{BLACK}Haos pe străzile din {TOWN}!{}{}Programul finanțat de {STRING} pentru reconstrucția străzilor aduce 6 luni de haos participanților la trafic!
 STR_NEWS_EXCLUSIVE_RIGHTS_TITLE                                 :{BIG_FONT}{BLACK}Monopol de transport!
-STR_NEWS_EXCLUSIVE_RIGHTS_DESCRIPTION                           :{BIG_FONT}{BLACK}Autoritatea locală a orașului {TOWN} semnează un contract cu {STRING} pentru un an de drepturi exclusive de transport!
 
 # Extra view window
 STR_EXTRA_VIEWPORT_TITLE                                        :{WHITE}Ecran {COMMA}
@@ -1270,9 +1260,9 @@ STR_CONFIG_SETTING_SUBSIDY_MULTIPLIER                           :Multiplicator a
 STR_CONFIG_SETTING_SUBSIDY_MULTIPLIER_HELPTEXT                  :Alege cât de mult se plătește pentru conexiuni subvenționate
 
 STR_CONFIG_SETTING_SUBSIDY_DURATION                             :Durată subvenție: {STRING}
+###length 2
 STR_CONFIG_SETTING_SUBSIDY_DURATION_HELPTEXT                    :Stabilește numărul de ani pentru care se acordă o subvenție
 
-STR_CONFIG_SETTING_SUBSIDY_DURATION_VALUE                       :{NUM} {P an ani "de ani"}
 ###setting-zero-is-special
 STR_CONFIG_SETTING_SUBSIDY_DURATION_DISABLED                    :Fără subvenții
 
@@ -1368,7 +1358,10 @@ STR_CONFIG_SETTING_SIGNALSIDE_LEFT                              :Pe partea stân
 STR_CONFIG_SETTING_SIGNALSIDE_DRIVING_SIDE                      :În direcția de mers
 STR_CONFIG_SETTING_SIGNALSIDE_RIGHT                             :Pe partea dreaptă
 
+###length 2
 STR_CONFIG_SETTING_SHOWFINANCES                                 :Afișează finanțele la sfârșitul fiecărui an: {STRING}
+
+###length 2
 STR_CONFIG_SETTING_SHOWFINANCES_HELPTEXT                        :Dacă este activat, fereastra de finanțe apare automat la sfârșitul fiecărui an pentru a permite inspectarea facilă a stării financiale a companiei
 
 STR_CONFIG_SETTING_NONSTOP_BY_DEFAULT                           :Comenzile noi sunt implicit „fără oprire”: {STRING}
@@ -1390,9 +1383,11 @@ STR_CONFIG_SETTING_AUTOSCROLL_MAIN_VIEWPORT                     :ecranul princip
 STR_CONFIG_SETTING_AUTOSCROLL_EVERY_VIEWPORT                    :fiecare ecran
 
 STR_CONFIG_SETTING_BRIBE                                        :Permite mituirea autorităților locale: {STRING}
+###length 2
 STR_CONFIG_SETTING_BRIBE_HELPTEXT                               :Permite companiilor să încerce să mituiască autoritatea locală. Daca încercarea este descoperită de către un inspector, compania nu va mai putea executa nici o acțiune în oraș timp de șase luni
 
 STR_CONFIG_SETTING_ALLOW_EXCLUSIVE                              :Permite cumpărarea de drepturi exclusive de transport: {STRING}
+###length 2
 STR_CONFIG_SETTING_ALLOW_EXCLUSIVE_HELPTEXT                     :Dacă o companie cumpără drepturi exclusive de transport într-un oraș, stațiile concurenței (de pasageri și mărfuri) nu vor primi niciun fel de marfă timp de un an
 
 STR_CONFIG_SETTING_ALLOW_FUND_BUILDINGS                         :Permite finațarea clădirilor noi: {STRING}
@@ -1450,12 +1445,16 @@ STR_CONFIG_SETTING_ORDER_REVIEW_EXDEPOT                         :da, dar exclude
 STR_CONFIG_SETTING_ORDER_REVIEW_ON                              :pentru toate vehiculele
 
 STR_CONFIG_SETTING_WARN_INCOME_LESS                             :Avertisment dacă profitul unui vehicul este negativ: {STRING}
+###length 2
 STR_CONFIG_SETTING_WARN_INCOME_LESS_HELPTEXT                    :După activare, o notificare este afișată dacă un vehicul nu a facut nici un profit intr-un an calendaristic
 
 STR_CONFIG_SETTING_NEVER_EXPIRE_VEHICLES                        :Vehiculele nu expiră niciodată: {STRING}
 STR_CONFIG_SETTING_NEVER_EXPIRE_VEHICLES_HELPTEXT               :După activare, toate modelele de vehicule rămân disponibile permanent după introducerea lor
 
 ###length 2
+
+
+###setting-zero-is-special
 
 STR_CONFIG_SETTING_AUTORENEW_VEHICLE                            :Înnoire automată pentru vehiculele învechite: {STRING}
 STR_CONFIG_SETTING_AUTORENEW_VEHICLE_HELPTEXT                   :După activare, orice vehicul care este învechit va fi înnoit automat când condițiile de înlocuire automată sunt îndeplinite
@@ -1709,7 +1708,10 @@ STR_CONFIG_SETTING_SOUND_TICKER_HELPTEXT                        :Redă sunet la 
 STR_CONFIG_SETTING_SOUND_NEWS                                   :Ziar: {STRING}
 STR_CONFIG_SETTING_SOUND_NEWS_HELPTEXT                          :Redă sunet la afișarea ziarelor
 
+###length 2
 STR_CONFIG_SETTING_SOUND_NEW_YEAR                               :Finalul anului: {STRING}
+
+###length 2
 STR_CONFIG_SETTING_SOUND_NEW_YEAR_HELPTEXT                      :Redă sunet la final de an pentru sumarul performanței companiei comparat cu cel din anul anterior
 
 STR_CONFIG_SETTING_SOUND_CONFIRM                                :Construcție: {STRING}
@@ -2008,11 +2010,9 @@ STR_CONFIG_SETTING_SHORT_PATH_SATURATION_HELPTEXT               :Adesea, există
 STR_CONFIG_SETTING_LOCALISATION_UNITS_VELOCITY                  :Unitate viteză (terestru): {STRING}
 STR_CONFIG_SETTING_LOCALISATION_UNITS_VELOCITY_NAUTICAL         :Unități de viteză (nautice): {STRING}
 STR_CONFIG_SETTING_LOCALISATION_UNITS_VELOCITY_HELPTEXT         :Afișează viteza în interfață folosind unitățile selectate
-###length 5
 STR_CONFIG_SETTING_LOCALISATION_UNITS_VELOCITY_IMPERIAL         :Imperial (mph)
 STR_CONFIG_SETTING_LOCALISATION_UNITS_VELOCITY_METRIC           :Metric (km/h)
 STR_CONFIG_SETTING_LOCALISATION_UNITS_VELOCITY_SI               :SI (m/s)
-STR_CONFIG_SETTING_LOCALISATION_UNITS_VELOCITY_GAMEUNITS        :Unități de joc (dale/zi)
 STR_CONFIG_SETTING_LOCALISATION_UNITS_VELOCITY_KNOTS            :Noduri
 
 STR_CONFIG_SETTING_LOCALISATION_UNITS_POWER                     :Unitate putere vehicule: {STRING}
@@ -2188,8 +2188,6 @@ STR_HELP_WINDOW_COMMUNITY                                       :{BLACK}Comunita
 
 # Cheat window
 STR_CHEATS                                                      :{WHITE}Cheat-uri
-STR_CHEATS_TOOLTIP                                              :{BLACK}Bifa vă indică dacă ați folosit anterior acest cheat
-STR_CHEATS_NOTE                                                 :{BLACK}Notă: utilizarea acestor setări va fi memorată în salvarea jocului
 STR_CHEAT_MONEY                                                 :{LTBLUE}Mărește fondurile cu {CURRENCY_LONG}
 STR_CHEAT_CHANGE_COMPANY                                        :{LTBLUE}Joacă drept compania: {ORANGE}{COMMA}
 STR_CHEAT_EXTRA_DYNAMITE                                        :{LTBLUE}Buldozer magic (demolează industrii și lucruri amovibile): {ORANGE}{STRING}
@@ -2326,8 +2324,6 @@ STR_NETWORK_SERVER_LIST_MAP_SIZE_CAPTION                        :{BLACK}Dimensiu
 STR_NETWORK_SERVER_LIST_MAP_SIZE_CAPTION_TOOLTIP                :{BLACK}Dimensiunea hărții jocului{}Click pentru sortarea după suprafață
 STR_NETWORK_SERVER_LIST_DATE_CAPTION                            :{BLACK}Data
 STR_NETWORK_SERVER_LIST_DATE_CAPTION_TOOLTIP                    :{BLACK}Data curentă
-STR_NETWORK_SERVER_LIST_YEARS_CAPTION                           :{BLACK}Ani
-STR_NETWORK_SERVER_LIST_YEARS_CAPTION_TOOLTIP                   :{BLACK}Numărul de ani{}de când rulează jocul
 STR_NETWORK_SERVER_LIST_INFO_ICONS_TOOLTIP                      :{BLACK}Limba, versiunea serverului, etc.
 
 STR_NETWORK_SERVER_LIST_CLICK_GAME_TO_SELECT                    :{BLACK}Click pe un joc din listă pentru a-l selecta
@@ -2698,9 +2694,7 @@ STR_LINKGRAPH_LEGEND_SATURATED                                  :{TINY_FONT}{BLA
 STR_LINKGRAPH_LEGEND_OVERLOADED                                 :{TINY_FONT}{BLACK}supraîncărcat
 
 # Linkgraph tooltip
-STR_LINKGRAPH_STATS_TOOLTIP                                     :{BLACK}{CARGO_LONG} care urmează să fie transportat pe lună de la {STATION} la {STATION} ({COMMA}% din capacitate){STRING}
 STR_LINKGRAPH_STATS_TOOLTIP_RETURN_EXTENSION                    :{}{CARGO_LONG} de transportat înapoi ({COMMA}% din capacitate)
-STR_LINKGRAPH_STATS_TOOLTIP_TIME_EXTENSION                      :{}Durată medie de călătorie: {NUM}{NBSP}{P "zi" "zile" "de zile"}
 
 # Base for station construction window(s)
 STR_STATION_BUILD_COVERAGE_AREA_TITLE                           :{BLACK}Aria de acoperire
@@ -2710,7 +2704,6 @@ STR_STATION_BUILD_COVERAGE_AREA_OFF_TOOLTIP                     :{BLACK}Nu arăt
 STR_STATION_BUILD_COVERAGE_AREA_ON_TOOLTIP                      :{BLACK}Arată aria de acoperire a locației propuse
 STR_STATION_BUILD_ACCEPTS_CARGO                                 :{BLACK}Acceptă: {GOLD}{CARGO_LIST}
 STR_STATION_BUILD_SUPPLIES_CARGO                                :{BLACK}Furnizează: {GOLD}{CARGO_LIST}
-STR_STATION_BUILD_INFRASTRUCTURE_COST                           :{BLACK}Cost întreținere: {GOLD}{CURRENCY_SHORT}/an
 
 # Join station window
 STR_JOIN_STATION_CAPTION                                        :{WHITE}Unește stația
@@ -3564,8 +3557,6 @@ STR_TOWN_VIEW_CARGO_FOR_TOWNGROWTH_REQUIRED_WINTER              :{ORANGE}{STRING
 STR_TOWN_VIEW_CARGO_FOR_TOWNGROWTH_DELIVERED_GENERAL            :{ORANGE}{STRING}{GREEN} livrate
 STR_TOWN_VIEW_CARGO_FOR_TOWNGROWTH_REQUIRED                     :{ORANGE}{CARGO_TINY} / {CARGO_LONG}{RED} (mai sunt necesare)
 STR_TOWN_VIEW_CARGO_FOR_TOWNGROWTH_DELIVERED                    :{ORANGE}{CARGO_TINY} / {CARGO_LONG}{GREEN} (livrate)
-STR_TOWN_VIEW_TOWN_GROWS_EVERY                                  :{BLACK}Orașul crește la fiecare {ORANGE}{COMMA}{BLACK}{NBSP}{P zi zile "de zile"}
-STR_TOWN_VIEW_TOWN_GROWS_EVERY_FUNDED                           :{BLACK}Orașul crește la fiecare {ORANGE}{COMMA}{BLACK}{NBSP}{P zi zile "de zile"} (cu fonduri)
 STR_TOWN_VIEW_TOWN_GROW_STOPPED                                 :{BLACK}Orașul {RED}nu{BLACK} crește
 STR_TOWN_VIEW_NOISE_IN_TOWN                                     :{BLACK}Limita zgomotului în oraș: {ORANGE}{COMMA}{BLACK}  maxim: {ORANGE}{COMMA}
 STR_TOWN_VIEW_CENTER_TOOLTIP                                    :{BLACK}Centrează imaginea pe locația orașului. Ctrl+Click deshide o fereastra cu locația orașului
@@ -3600,15 +3591,13 @@ STR_LOCAL_AUTHORITY_ACTION_STATUE_OF_COMPANY                    :Ridică un monu
 STR_LOCAL_AUTHORITY_ACTION_NEW_BUILDINGS                        :Finanțează construcția de noi clădiri
 STR_LOCAL_AUTHORITY_ACTION_EXCLUSIVE_TRANSPORT                  :Cumpără drepturi exclusive de transport
 STR_LOCAL_AUTHORITY_ACTION_BRIBE                                :Mituiește autoritatea locală
+###next-name-looks-similar
 
-###length 8
 STR_LOCAL_AUTHORITY_ACTION_TOOLTIP_SMALL_ADVERTISING            :{PUSH_COLOUR}{YELLOW}Inițiază o campanie publicitară mică pentru a atrage mai mulți călători și mai multe mărfuri spre compania ta.{}Oferă temporar un spor la cotația staților tale pe o rază mică în jurul centrului orașului.{}{POP_COLOUR}Cost: {CURRENCY_LONG}
 STR_LOCAL_AUTHORITY_ACTION_TOOLTIP_MEDIUM_ADVERTISING           :{PUSH_COLOUR}{YELLOW}Inițiază o campanie publicitară medie pentru a atrage mai mulți călători și mai multe mărfuri spre compania ta.{}Oferă temporar un spor la cotația stațiilor tale pe o rază medie în jurul centrului orașului.{}{POP_COLOUR}Cost: {CURRENCY_LONG}
 STR_LOCAL_AUTHORITY_ACTION_TOOLTIP_LARGE_ADVERTISING            :{PUSH_COLOUR}{YELLOW}Inițiază o mare campanie publicitară pentru a atrage mai mulți călători și mai multe mărfuri spre compania ta.{}Oferă temporar un spor la cotația stațiilor tale pe o rază mare în jurul centrului orașului.{}{POP_COLOUR}Cost: {CURRENCY_LONG}
-STR_LOCAL_AUTHORITY_ACTION_TOOLTIP_ROAD_RECONSTRUCTION          :{PUSH_COLOUR}{YELLOW}Finanțați reconstrucția rețelei de drumuri urbane.{}Provoacă perturbări considerabile ale traficului rutier timp de până la 6 luni.{}{POP_COLOUR}Cost: {CURRENCY_LONG}
 STR_LOCAL_AUTHORITY_ACTION_TOOLTIP_STATUE_OF_COMPANY            :{PUSH_COLOUR}{YELLOW}Construiește o statuie în onoarea companiei tale.{}Oferă un spor permanent pentru cotele stațiilor tale din acest oraș.{}{POP_COLOUR}Cost: {CURRENCY_LONG}
 STR_LOCAL_AUTHORITY_ACTION_TOOLTIP_NEW_BUILDINGS                :{PUSH_COLOUR}{YELLOW}Finanțează construcția de noi clădiri în oraș.{}Oferă un spor temporar dezvoltării în acest oraș.{}{POP_COLOUR}Cost: {CURRENCY_LONG}
-STR_LOCAL_AUTHORITY_ACTION_TOOLTIP_EXCLUSIVE_TRANSPORT          :{PUSH_COLOUR}{YELLOW}Cumpărați drepturi exclusive de transport pentru un an în oraș.{}Autoritatea orașului nu va permite pasagerilor și mărfurilor să folosească stațiile concurenților dvs. O mită reușită de la un concurent va anula acest contract.{}{POP_COLOUR}Cost:  {CURRENCY_LONG}
 STR_LOCAL_AUTHORITY_ACTION_TOOLTIP_BRIBE                        :{PUSH_COLOUR}{YELLOW}Mituiți autoritatea locală pentru a vă crește ratingul și pentru a anula drepturile exclusive de transport ale unui concurent, cu riscul unei penalități severe dacă ești prins.{}{POP_COLOUR}Cost: {CURRENCY_LONG}
 
 # Goal window
@@ -3697,7 +3686,6 @@ STR_STATION_VIEW_EXCLUSIVE_RIGHTS_COMPANY                       :{YELLOW}{COMPAN
 
 STR_STATION_VIEW_RATINGS_BUTTON                                 :{BLACK}Evaluări
 STR_STATION_VIEW_RATINGS_TOOLTIP                                :{BLACK}Afișează evaluările stației
-STR_STATION_VIEW_SUPPLY_RATINGS_TITLE                           :{BLACK}Aprovizionare lunară și evaluare locală:
 STR_STATION_VIEW_CARGO_SUPPLY_RATING                            :{WHITE}{STRING}: {YELLOW}{COMMA} / {STRING} ({COMMA}%)
 
 STR_STATION_VIEW_GROUP                                          :{BLACK}Grupează după
@@ -3859,7 +3847,6 @@ STR_COMPANY_INFRASTRUCTURE_VIEW_CANALS                          :{WHITE}Canale
 STR_COMPANY_INFRASTRUCTURE_VIEW_STATION_SECT                    :{GOLD}Stații:
 STR_COMPANY_INFRASTRUCTURE_VIEW_STATIONS                        :{WHITE}Suprafață stații
 STR_COMPANY_INFRASTRUCTURE_VIEW_AIRPORTS                        :{WHITE}Aeroporturi
-STR_COMPANY_INFRASTRUCTURE_VIEW_TOTAL                           :{WHITE}{CURRENCY_LONG}/an
 
 # Industry directory
 STR_INDUSTRY_DIRECTORY_CAPTION                                  :{WHITE}Industrii
@@ -3992,7 +3979,6 @@ STR_PURCHASE_INFO_SPEED_POWER                                   :{BLACK}Viteză:
 STR_PURCHASE_INFO_SPEED                                         :{BLACK}Viteză: {GOLD}{VELOCITY}
 STR_PURCHASE_INFO_SPEED_OCEAN                                   :{BLACK}Viteza pe ocean: {GOLD}{VELOCITY}
 STR_PURCHASE_INFO_SPEED_CANAL                                   :{BLACK}Viteza pe canal/râu: {GOLD}{VELOCITY}
-STR_PURCHASE_INFO_RUNNINGCOST                                   :{BLACK}Cost de rulare: {GOLD}{CURRENCY_LONG}/an
 STR_PURCHASE_INFO_CAPACITY                                      :{BLACK}Capacitate: {GOLD}{CARGO_LONG} {STRING}
 STR_PURCHASE_INFO_REFITTABLE                                    :(suportă alte mărfuri)
 STR_PURCHASE_INFO_DESIGNED_LIFE                                 :{BLACK}An apariție: {GOLD}{NUM}{BLACK} Durata de viață: {GOLD}{COMMA} ani
@@ -4185,13 +4171,6 @@ STR_ENGINE_PREVIEW_TRAM_VEHICLE                                 :tramvai
 STR_ENGINE_PREVIEW_AIRCRAFT                                     :aeronavă
 STR_ENGINE_PREVIEW_SHIP                                         :navă
 
-STR_ENGINE_PREVIEW_COST_WEIGHT_SPEED_POWER                      :{BLACK}Cost: {CURRENCY_LONG} Greutate: {WEIGHT_SHORT}{}Viteză: {VELOCITY}  Putere: {POWER}{}Mentenanță: {CURRENCY_LONG}/an{}Capacitate: {CARGO_LONG}
-STR_ENGINE_PREVIEW_COST_WEIGHT_SPEED_POWER_MAX_TE               :{BLACK}Cost: {0:CURRENCY_LONG} Greutate: {1:WEIGHT_SHORT}{}Viteză: {2:VELOCITY}  Putere: {3:POWER}  Ef. T. Max.: {6:FORCE}{}Cost operare: {4:CURRENCY_LONG}/an{}Capacitate: {5:CARGO_LONG}
-STR_ENGINE_PREVIEW_COST_MAX_SPEED_CAP_RUNCOST                   :{BLACK}Cost: {CURRENCY_LONG} Viteză max.: {VELOCITY}{}Capacitate: {CARGO_LONG}{}Mentenanță: {CURRENCY_LONG}/an
-STR_ENGINE_PREVIEW_COST_MAX_SPEED_TYPE_CAP_CAP_RUNCOST          :{BLACK}Cost: {CURRENCY_LONG} Viteză max.: {VELOCITY}{}Tip de aeronavă: {STRING}{}Capacitate: {CARGO_LONG}, {CARGO_LONG}{}Mentenanță: {CURRENCY_LONG}/an
-STR_ENGINE_PREVIEW_COST_MAX_SPEED_TYPE_CAP_RUNCOST              :{BLACK}Cost: {CURRENCY_LONG} Viteză max.: {VELOCITY}{}Tip aeronavă: {STRING}{}Capacitate: {CARGO_LONG}{}Mentenanță: {CURRENCY_LONG}/an
-STR_ENGINE_PREVIEW_COST_MAX_SPEED_TYPE_RANGE_CAP_CAP_RUNCOST    :{BLACK}Cost: {CURRENCY_LONG} Viteză max.: {VELOCITY}{}Tip de aeronavă: {STRING} Autonomie: {COMMA} dale{}Capacitate: {CARGO_LONG}, {CARGO_LONG}{}Mentenanță: {CURRENCY_LONG}/an
-STR_ENGINE_PREVIEW_COST_MAX_SPEED_TYPE_RANGE_CAP_RUNCOST        :{BLACK}Cost: {CURRENCY_LONG} Viteză max.: {VELOCITY}{}Tip aeronavă: {STRING} Autonomie: {COMMA} dale{}Capacitate: {CARGO_LONG}{}Mentenanță: {CURRENCY_LONG}/an
 
 # Autoreplace window
 STR_REPLACE_VEHICLES_WHITE                                      :{WHITE}Înlocuiește {STRING} - {STRING}
@@ -4356,8 +4335,6 @@ STR_VEHICLE_INFO_CAPACITY_CAPACITY                              :{BLACK}Capacita
 
 STR_VEHICLE_INFO_FEEDER_CARGO_VALUE                             :{BLACK}Transferă Credit: {LTBLUE}{CURRENCY_LONG}
 
-STR_VEHICLE_DETAILS_INCREASE_SERVICING_INTERVAL_TOOLTIP         :{BLACK}Mărește intervalul de service cu 10. Ctrl+click mărește intervalul de service cu 5
-STR_VEHICLE_DETAILS_DECREASE_SERVICING_INTERVAL_TOOLTIP         :{BLACK}Micșorează intervalul de service cu 10. Ctrl+Click micșorează intervalul de service cu 5
 
 STR_SERVICE_INTERVAL_DROPDOWN_TOOLTIP                           :{BLACK}Schimbă tipul intervalului de întreținere
 STR_VEHICLE_DETAILS_DEFAULT                                     :Standard

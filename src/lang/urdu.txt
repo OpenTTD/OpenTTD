@@ -368,7 +368,7 @@ STR_SCENEDIT_FILE_MENU_SEPARATOR                                :
 STR_SCENEDIT_FILE_MENU_QUIT                                     :باہر نکلو
 
 # Settings menu
-###length 15
+###length 16
 STR_SETTINGS_MENU_GAME_OPTIONS                                  :کھیل کے اختیارات
 STR_SETTINGS_MENU_NEWGRF_SETTINGS                               :NewGRF اختیارات
 STR_SETTINGS_MENU_TRANSPARENCY_OPTIONS                          :Transparency کے اختیارات
@@ -595,11 +595,9 @@ STR_PERFORMANCE_DETAIL_CARGO                                    :{BLACK} سام�
 STR_PERFORMANCE_DETAIL_MONEY                                    :{BLACK} رقم:
 STR_PERFORMANCE_DETAIL_LOAN                                     :{BLACK} قرضہ:
 STR_PERFORMANCE_DETAIL_TOTAL                                    :{BLACK} مکمل:
+###next-name-looks-similar
 
-###length 10
-STR_PERFORMANCE_DETAIL_VEHICLES_TOOLTIP                         :{BLACK} پچھلے سال نفعدار ناقل کی تعداد؛ جس میں گاڑیاں، قطار، بحری جہاز، ہوائی جہاز وغعرہ شامل ہیں
 STR_PERFORMANCE_DETAIL_STATIONS_TOOLTIP                         :{BLACK} تعداد برائے حالیہ مرمت شدہ مستقر حصے۔ مستقر کا ہر حصہ گنا جاتا ہے۔ مثلا پٹری مستقر، بس اسٹاپ، ہوائی اڈہ وغیرہ، خواہ وہ ایک ساتھ جڑے بھی ہوں۔
-STR_PERFORMANCE_DETAIL_MIN_PROFIT_TOOLTIP                       :{BLACK}سب سے کم آمدنی والی گاڑی کا نفع (صرف دو سال سے پرانی گاڑیاں مدنظر رکھی جائیں گی)
 STR_PERFORMANCE_DETAIL_DELIVERED_TOOLTIP                        :{BLACK}پچھلے چار ربعات میں پہنچاے گے سامان کی تعداد
 STR_PERFORMANCE_DETAIL_CARGO_TOOLTIP                            :{BLACK}پچھلے ربع میں پہنچاے گے تمام قسم کے سامان کی تعداد
 STR_PERFORMANCE_DETAIL_MONEY_TOOLTIP                            :{BLACK}کمپنی کے بینک میں پڑے ہوے پیسے
@@ -811,7 +809,6 @@ STR_NEWS_VEHICLE_IS_GETTING_VERY_OLD                            :{WHITE}{VEHICLE
 STR_NEWS_VEHICLE_IS_GETTING_VERY_OLD_AND                        :{WHITE}{VEHICLE} بہت پرانا ہو رہا ہے اور اُسے فوراً بدلنا ضروری ہے
 STR_NEWS_TRAIN_IS_STUCK                                         :{WHITE}{VEHICLE} کو آگے بڑھنے کے لئے راستہ نہیں مل رہا
 STR_NEWS_VEHICLE_IS_LOST                                        :{WHITE}{VEHICLE} گم گی ہے
-STR_NEWS_VEHICLE_IS_UNPROFITABLE                                :{WHITE}{VEHICLE} نے پچھلے سال میں {CURRENCY_LONG} نفع حاصل کیا
 STR_NEWS_AIRCRAFT_DEST_TOO_FAR                                  :{WHITE}{VEHICLE} اگلی منزل پر پہنچ سے باہر ہونے کی وجہ سے نہیں جا سکتا
 
 STR_NEWS_ORDER_REFIT_FAILED                                     :{WHITE}{VEHICLE} رُک گیا ہے کیونکے اُسے دیا گیا تزین و آرائش کا حکم پورا نہں ہو سکا
@@ -825,14 +822,8 @@ STR_NEWS_NEW_VEHICLE_NOW_AVAILABLE_WITH_TYPE                    :{BLACK}نئی {
 
 STR_NEWS_OFFER_OF_SUBSIDY_EXPIRED                               :{BIG_FONT}{BLACK}امداد کی پیشکش کی معیاد ختم:{}{}{STRING} {STRING} سے {STRING} تک اب کوئی امداد نہیں ملے گی
 STR_NEWS_SUBSIDY_WITHDRAWN_SERVICE                              :{BIG_FONT}{BLACK}امداد ختم:{}{}{STRING} {STRING} سے {STRING} تک کئی گئی خدمت کی اب کوئی امداد نہیں ملے گی
-STR_NEWS_SERVICE_SUBSIDY_OFFERED                                :{BIG_FONT}{BLACK}خدمات پر امداد کی پیشکش:{}{}پہلی خدمت {STRING} جو {STRING} سے {STRING} تک ہو، پر ایک سال تک امدام ملے گی
 ###length 4
-STR_NEWS_SERVICE_SUBSIDY_AWARDED_HALF                           :{BIG_FONT}{BLACK}خدمات پر{STRING} کو امداد دے دی گئی!{}{}{STRING} {STRING} سے {STRING} تک دی جانے والی خدمات پر اگلے سال 50٪ زیادہ ملیں گے
-STR_NEWS_SERVICE_SUBSIDY_AWARDED_DOUBLE                         :{BIG_FONT}{BLACK}خدمات پر{STRING} کو امداد دے دی گئی!{}{}{STRING} {STRING} سے {STRING} تک دی جانے والی خدمات پر اگلے سال دُگنے پیسے ملیں گے
-STR_NEWS_SERVICE_SUBSIDY_AWARDED_TRIPLE                         :{BIG_FONT}{BLACK}خدمات پر{STRING} کو امداد دے دی گئی!{}{}{STRING} {STRING} سے {STRING} تک دی جانے والی خدمات پر اگلے سال تین گُنا پیسے ملیں گے
-STR_NEWS_SERVICE_SUBSIDY_AWARDED_QUADRUPLE                      :{BIG_FONT}{BLACK}خدمات پر{STRING} کو امداد دے دی گئی!{}{}{STRING} {STRING} سے {STRING} تک دی جانے والی خدمات پر اگلے سال چار گُنا پیسے ملیں گے
 
-STR_NEWS_ROAD_REBUILDING                                        :{BIG_FONT}{BLACK}{TOWN} میں ٹریفک کا بُرا حال!{}{}سڑکیں دوبارہ بنوانے کے پیسے {STRING} نے دئیے۔ اس کی وجہ سے اگلے 6 ماہ مشکل رہے گی
 
 # Extra view window
 STR_EXTRA_VIEWPORT_TITLE                                        :{WHITE}دہکھنے والی کھڑکی {COMMA}
@@ -1059,6 +1050,7 @@ STR_CONFIG_SETTING_HORIZONTAL_POS_RIGHT                         :دائیں
 
 
 
+###length 2
 
 ###setting-zero-is-special
 
@@ -1115,7 +1107,10 @@ STR_CONFIG_SETTING_MULTIPINDTOWN                                :ایک شہر �
 STR_CONFIG_SETTING_SIGNALSIDE                                   :ریل کے اشارے دکھائو: {STRING}
 ###length 3
 
+###length 2
 STR_CONFIG_SETTING_SHOWFINANCES                                 :ہر سال کے آخر پر کھاتے والی ونڈو دکھاو: {STRING}
+
+###length 2
 
 STR_CONFIG_SETTING_NONSTOP_BY_DEFAULT                           :نئے احکامات شروع سے 'نان اسٹاپ' ہوں: {STRING}
 
@@ -1129,8 +1124,10 @@ STR_CONFIG_SETTING_AUTOSCROLL                                   :ونڈو کو �
 ###length 4
 
 STR_CONFIG_SETTING_BRIBE                                        :مقامی اتھارٹی کی رشوت کی اجازت دیں: {STRING}
+###length 2
 
 STR_CONFIG_SETTING_ALLOW_EXCLUSIVE                              :خصوصی نقل و حمل کے حقوق کو خریدنے کی اجازت: {STRING}
+###length 2
 
 STR_CONFIG_SETTING_ALLOW_FUND_BUILDINGS                         :فنڈنگ عمارتوں کی اجازت: {STRING}
 
@@ -1167,10 +1164,14 @@ STR_CONFIG_SETTING_ORDER_REVIEW_EXDEPOT                         :ہاں، لیک
 STR_CONFIG_SETTING_ORDER_REVIEW_ON                              :تمام گاڑیوں کے
 
 STR_CONFIG_SETTING_WARN_INCOME_LESS                             :گاڑی کو نقصان کی صورت میں انتباہ کیجئیے: {STRING}
+###length 2
 
 STR_CONFIG_SETTING_NEVER_EXPIRE_VEHICLES                        :گاڑیوں کی معیاد کبھی ختم نہ ہو: {STRING}
 
 ###length 2
+
+
+###setting-zero-is-special
 
 STR_CONFIG_SETTING_AUTORENEW_VEHICLE                            :گاڑی پرانی ہونے کی صورت میں خودکار طریقے سے بدل دیں: {STRING}
 
@@ -1315,6 +1316,9 @@ STR_CONFIG_SETTING_PERSISTENT_BUILDINGTOOLS                     :تعمیرات�
 
 
 
+###length 2
+
+###length 2
 
 
 
@@ -1466,7 +1470,6 @@ STR_CONFIG_SETTING_CITY_SIZE_MULTIPLIER                         :شہر کا ش�
 
 
 
-###length 5
 
 ###length 3
 
@@ -1562,7 +1565,6 @@ STR_ABANDON_SCENARIO_QUERY                                      :{YELLOW}کیا 
 
 # Cheat window
 STR_CHEATS                                                      :{WHITE}دھوکے
-STR_CHEATS_TOOLTIP                                              :{BLACK}چیک باکسز سے ظاہر ہوتا ہے کہ آپ نے یہ دھوکا پہلے بھی کیا یے
 STR_CHEAT_MONEY                                                 :{LTBLUE}رقم کو {CURRENCY_LONG} سے بڑھائیں
 STR_CHEAT_CHANGE_COMPANY                                        :{LTBLUE}اس کمپنی کی طور پر کھیلیں: {ORANGE}{COMMA}
 STR_CHEAT_EXTRA_DYNAMITE                                        :{LTBLUE}جادوئی دھماکہ خیز (نہ ٹوٹنے والی چیزیں بھی توڑ دے): {ORANGE}{STRING}
@@ -1682,8 +1684,6 @@ STR_NETWORK_SERVER_LIST_MAP_SIZE_CAPTION                        :{BLACK}نقشے
 STR_NETWORK_SERVER_LIST_MAP_SIZE_CAPTION_TOOLTIP                :{BLACK}کھیل لے نقشے کا سائز منتخب کریں{}علاقے کے حساب سے ترتیب دینے کے لئے کلک کریں
 STR_NETWORK_SERVER_LIST_DATE_CAPTION                            :{BLACK}تاریخ
 STR_NETWORK_SERVER_LIST_DATE_CAPTION_TOOLTIP                    :{BLACK}آج کی تاریخ
-STR_NETWORK_SERVER_LIST_YEARS_CAPTION                           :{BLACK}سال
-STR_NETWORK_SERVER_LIST_YEARS_CAPTION_TOOLTIP                   :{BLACK}کھیل کو چلتے ہوئے سال
 STR_NETWORK_SERVER_LIST_INFO_ICONS_TOOLTIP                      :{BLACK}Language, server version, etc.
 
 STR_NETWORK_SERVER_LIST_CLICK_GAME_TO_SELECT                    :{BLACK}فہرست میں سے ایک کھیل کو چُننے کے لئے ایک پر کلک کریں
@@ -2351,8 +2351,8 @@ STR_TOWN_VIEW_DELETE_TOOLTIP                                    :{BLACK}اس ش�
 STR_LOCAL_AUTHORITY_COMPANY_RATING                              :{YELLOW}{COMPANY} {COMPANY_NUM}: {ORANGE}{STRING}
 
 ###length 8
+###next-name-looks-similar
 
-###length 8
 
 # Goal window
 STR_GOALS_TEXT                                                  :{ORANGE}{STRING}
@@ -2429,7 +2429,6 @@ STR_COMPANY_INFRASTRUCTURE_VIEW_CANALS                          :{WHITE}نہری
 STR_COMPANY_INFRASTRUCTURE_VIEW_STATION_SECT                    :{GOLD} اسٹیشن:
 STR_COMPANY_INFRASTRUCTURE_VIEW_STATIONS                        :{WHITE}اسٹیشن کی ٹائل
 STR_COMPANY_INFRASTRUCTURE_VIEW_AIRPORTS                        :{WHITE}ہوائی اڈے
-STR_COMPANY_INFRASTRUCTURE_VIEW_TOTAL                           :{WHITE}{CURRENCY_LONG}سالانہ
 
 # Industry directory
 

@@ -408,7 +408,7 @@ STR_SCENEDIT_FILE_MENU_SEPARATOR                                :―――――
 STR_SCENEDIT_FILE_MENU_QUIT                                     :OpenTTDを終了
 
 # Settings menu
-###length 15
+###length 16
 STR_SETTINGS_MENU_GAME_OPTIONS                                  :ゲームオプション設定
 STR_SETTINGS_MENU_CONFIG_SETTINGS_TREE                          :設定
 STR_SETTINGS_MENU_AI_SETTINGS                                   :AI設定
@@ -643,11 +643,9 @@ STR_PERFORMANCE_DETAIL_CARGO                                    :{BLACK}運送�
 STR_PERFORMANCE_DETAIL_MONEY                                    :{BLACK}資本金:
 STR_PERFORMANCE_DETAIL_LOAN                                     :{BLACK}借入:
 STR_PERFORMANCE_DETAIL_TOTAL                                    :{BLACK}合計:
+###next-name-looks-similar
 
-###length 10
-STR_PERFORMANCE_DETAIL_VEHICLES_TOOLTIP                         :{BLACK}去年黒字だった列車・車両・船舶・航空機の数です
 STR_PERFORMANCE_DETAIL_STATIONS_TOOLTIP                         :{BLACK}最近業務に使われた停留施設の数です。2種類以上の交通機関で構成される場合は、それぞれ別々に数えます
-STR_PERFORMANCE_DETAIL_MIN_PROFIT_TOOLTIP                       :{BLACK}輸送機器の中で、一番収益の低い輸送機器(購入から2年以上)の収益を表します
 STR_PERFORMANCE_DETAIL_MIN_INCOME_TOOLTIP                       :{BLACK}過去12回の四半期で、収益が最小となった期の収益です
 STR_PERFORMANCE_DETAIL_MAX_INCOME_TOOLTIP                       :{BLACK}過去12回の四半期で、収益が最大となった期の収益です
 STR_PERFORMANCE_DETAIL_DELIVERED_TOOLTIP                        :{BLACK}過去1年間に運送した貨物の量です
@@ -878,7 +876,6 @@ STR_NEWS_VEHICLE_IS_GETTING_VERY_OLD                            :{WHITE}{VEHICLE
 STR_NEWS_VEHICLE_IS_GETTING_VERY_OLD_AND                        :{WHITE}{VEHICLE}はひどく老朽化しているため、早急に交換する必要があります
 STR_NEWS_TRAIN_IS_STUCK                                         :{WHITE}{VEHICLE}が目的地への経路を見つけられません
 STR_NEWS_VEHICLE_IS_LOST                                        :{WHITE}{VEHICLE}が迷っています
-STR_NEWS_VEHICLE_IS_UNPROFITABLE                                :{WHITE}昨年の{VEHICLE}の収益は{CURRENCY_LONG}で{RED}赤字{WHITE}です
 STR_NEWS_AIRCRAFT_DEST_TOO_FAR                                  :{WHITE}航続距離を超えるため、{VEHICLE}は次の目的地に到達できません
 
 STR_NEWS_ORDER_REFIT_FAILED                                     :{WHITE}{VEHICLE}は指令された改造に失敗したため、運用を停止しました
@@ -893,16 +890,9 @@ STR_NEWS_SHOW_VEHICLE_GROUP_TOOLTIP                             :{BLACK}車両�
 
 STR_NEWS_OFFER_OF_SUBSIDY_EXPIRED                               :{BIG_FONT}{BLACK}助成金交付案失効:{}{1:STRING}から{2:STRING}に{0:STRING}を運ぶ便の{}助成金交付案は失効しました
 STR_NEWS_SUBSIDY_WITHDRAWN_SERVICE                              :{BIG_FONT}{BLACK}助成金支払満了:{}{1:STRING}から{2:STRING}に{0:STRING}を運ぶ便の{}助成金は終了しました
-STR_NEWS_SERVICE_SUBSIDY_OFFERED                                :{BIG_FONT}{BLACK}助成金交付案:{}{}最初に{STRING}を{STRING}から{STRING}に運んだ会社には地元当局より{NUM}年間助成金を交付されます!
 ###length 4
-STR_NEWS_SERVICE_SUBSIDY_AWARDED_HALF                           :{BIG_FONT}{BLACK}{STRING}が助成金を獲得。{}{}{STRING}の{STRING}から{STRING}への輸送の収入は次の {NUM} 年間50%増えます。
-STR_NEWS_SERVICE_SUBSIDY_AWARDED_DOUBLE                         :{BIG_FONT}{BLACK}{STRING}が輸送助成金を獲得。{}{}{STRING}の{STRING}から{STRING}への輸送について次の {NUM} 年間、収入が2倍になります。
-STR_NEWS_SERVICE_SUBSIDY_AWARDED_TRIPLE                         :{BIG_FONT}{BLACK}{STRING}が輸送助成金を獲得。{}{}{STRING}の{STRING}から{STRING}への輸送について次の {NUM} 年間、収入が3倍になります。
-STR_NEWS_SERVICE_SUBSIDY_AWARDED_QUADRUPLE                      :{BIG_FONT}{BLACK}{STRING}が輸送助成金を獲得。{}{}{STRING}の{STRING}から{STRING}への輸送について次の {NUM} 年間、収入が4倍になります。
 
-STR_NEWS_ROAD_REBUILDING                                        :{BIG_FONT}{BLACK}混乱する道路交通!{}{}{1:STRING}が{0:TOWN}の街路補修に出資{}地元ドライバーには悪夢の半年に!
 STR_NEWS_EXCLUSIVE_RIGHTS_TITLE                                 :{BIG_FONT}{BLACK}輸送独占!
-STR_NEWS_EXCLUSIVE_RIGHTS_DESCRIPTION                           :{BIG_FONT}{BLACK} {TOWN}が{STRING}と1年間の排他輸送契約を締結!
 
 # Extra view window
 STR_EXTRA_VIEWPORT_TITLE                                        :{WHITE}ビューア {COMMA}
@@ -1234,9 +1224,9 @@ STR_CONFIG_SETTING_SUBSIDY_MULTIPLIER                           :助成金の乗
 STR_CONFIG_SETTING_SUBSIDY_MULTIPLIER_HELPTEXT                  :助成金対象の路線に対して、通常の輸送相場の何倍が支払われるかを設定します
 
 STR_CONFIG_SETTING_SUBSIDY_DURATION                             :助成期間: {STRING}
+###length 2
 STR_CONFIG_SETTING_SUBSIDY_DURATION_HELPTEXT                    :助成金が配布される年数を設定
 
-STR_CONFIG_SETTING_SUBSIDY_DURATION_VALUE                       :{NUM} 年{}
 ###setting-zero-is-special
 STR_CONFIG_SETTING_SUBSIDY_DURATION_DISABLED                    :補助金なし
 
@@ -1332,7 +1322,10 @@ STR_CONFIG_SETTING_SIGNALSIDE_LEFT                              :左
 STR_CONFIG_SETTING_SIGNALSIDE_DRIVING_SIDE                      :運転席側
 STR_CONFIG_SETTING_SIGNALSIDE_RIGHT                             :右
 
+###length 2
 STR_CONFIG_SETTING_SHOWFINANCES                                 :年末の財政ウインドウ表示: {STRING}
+
+###length 2
 STR_CONFIG_SETTING_SHOWFINANCES_HELPTEXT                        :有効にすると、毎年末に財政ウインドウがポップアップするようになります。企業の財務状況を簡単にチェックするのに便利です。
 
 STR_CONFIG_SETTING_NONSTOP_BY_DEFAULT                           :直行運転をデフォルト化: {STRING}
@@ -1354,9 +1347,11 @@ STR_CONFIG_SETTING_AUTOSCROLL_MAIN_VIEWPORT                     :する
 STR_CONFIG_SETTING_AUTOSCROLL_EVERY_VIEWPORT                    :する (ビューポートでも有効)
 
 STR_CONFIG_SETTING_BRIBE                                        :議会の買収: {STRING}
+###length 2
 STR_CONFIG_SETTING_BRIBE_HELPTEXT                               :街で議会買収を企てられるようになります。成功すれば街での評判が良くなりますが、地元当局に事が発覚した場合罰金を受けた上評判が悪くなり、その上その街では半年間何もできなくなります
 
 STR_CONFIG_SETTING_ALLOW_EXCLUSIVE                              :独占運送契約の締結: {STRING}
+###length 2
 STR_CONFIG_SETTING_ALLOW_EXCLUSIVE_HELPTEXT                     :会社と街との間で独占運送契約を結ぶことが可能になります。この契約が締結されると、その街にあるすべての競争相手の停留施設は丸一年間、旅客・貨物問わず何も受け入れできなくなります
 
 STR_CONFIG_SETTING_ALLOW_FUND_BUILDINGS                         :街の開発に出資: {STRING}
@@ -1410,12 +1405,16 @@ STR_CONFIG_SETTING_ORDER_REVIEW_EXDEPOT                         :有効 (車庫�
 STR_CONFIG_SETTING_ORDER_REVIEW_ON                              :有効 (全車両)
 
 STR_CONFIG_SETTING_WARN_INCOME_LESS                             :赤字車両の警告表示: {STRING}
+###length 2
 STR_CONFIG_SETTING_WARN_INCOME_LESS_HELPTEXT                    :有効にすると、輸送車両が一年(1/1～12/31)の間全く利益を上げていない場合、メッセージで知らせてくるようになります。
 
 STR_CONFIG_SETTING_NEVER_EXPIRE_VEHICLES                        :輸送機器の旧式化撤廃: {STRING}
 STR_CONFIG_SETTING_NEVER_EXPIRE_VEHICLES_HELPTEXT               :有効にすると、いずれの種類の輸送機器であっても、その開発後であれば永久に購入が可能になります
 
 ###length 2
+
+
+###setting-zero-is-special
 
 STR_CONFIG_SETTING_AUTORENEW_VEHICLE                            :老朽車両の自動交換: {STRING}
 STR_CONFIG_SETTING_AUTORENEW_VEHICLE_HELPTEXT                   :有効にすると、耐用年数を越えた輸送機器は自動で更新されるようになります(交換には一度格納施設に戻る必要があります)。具体的な交換時期は下の設定で変更できます。
@@ -1660,7 +1659,10 @@ STR_CONFIG_SETTING_SOUND_TICKER_HELPTEXT                        :ステータス
 STR_CONFIG_SETTING_SOUND_NEWS                                   :新聞: {STRING}
 STR_CONFIG_SETTING_SOUND_NEWS_HELPTEXT                          :画面に新聞が現れたときに効果音を鳴らすかどうかを設定します
 
+###length 2
 STR_CONFIG_SETTING_SOUND_NEW_YEAR                               :年末: {STRING}
+
+###length 2
 STR_CONFIG_SETTING_SOUND_NEW_YEAR_HELPTEXT                      :年始に行われる過年度の営業総括が表示されたときに効果音を鳴らすかどうかを設定します
 
 STR_CONFIG_SETTING_SOUND_CONFIRM                                :建設: {STRING}
@@ -1957,11 +1959,9 @@ STR_CONFIG_SETTING_SHORT_PATH_SATURATION_HELPTEXT               :二つの停留
 STR_CONFIG_SETTING_LOCALISATION_UNITS_VELOCITY                  :速度単位(陸地): {STRING}
 STR_CONFIG_SETTING_LOCALISATION_UNITS_VELOCITY_NAUTICAL         :速度単位(海事): {STRING}
 STR_CONFIG_SETTING_LOCALISATION_UNITS_VELOCITY_HELPTEXT         :ゲーム中の速度をいずれの単位系で表すか決定します
-###length 5
 STR_CONFIG_SETTING_LOCALISATION_UNITS_VELOCITY_IMPERIAL         :ヤード・ポンド法 (マイル時(mph))
 STR_CONFIG_SETTING_LOCALISATION_UNITS_VELOCITY_METRIC           :メートル法 (km/h)
 STR_CONFIG_SETTING_LOCALISATION_UNITS_VELOCITY_SI               :国際単位系 (m/s)
-STR_CONFIG_SETTING_LOCALISATION_UNITS_VELOCITY_GAMEUNITS        :ゲーム内単位(タイル/日)
 STR_CONFIG_SETTING_LOCALISATION_UNITS_VELOCITY_KNOTS            :ノット
 
 STR_CONFIG_SETTING_LOCALISATION_UNITS_POWER                     :動力単位: {STRING}
@@ -2120,8 +2120,6 @@ STR_ABANDON_SCENARIO_QUERY                                      :{YELLOW}この�
 
 # Cheat window
 STR_CHEATS                                                      :{WHITE}チート
-STR_CHEATS_TOOLTIP                                              :{BLACK}以前にこのチートを使用したことがあることを示します
-STR_CHEATS_NOTE                                                 :{BLACK}注意：これらの設定はすべてゲームセーブによって記録されます
 STR_CHEAT_MONEY                                                 :{LTBLUE}預金残高を{CURRENCY_LONG}増やす
 STR_CHEAT_CHANGE_COMPANY                                        :{LTBLUE}会社: {ORANGE}{COMMA}を乗っ取ってプレイする
 STR_CHEAT_EXTRA_DYNAMITE                                        :{LTBLUE}魔法のブルドーザー(産業拠点等、何でも撤去できる): {ORANGE}{STRING}
@@ -2249,8 +2247,6 @@ STR_NETWORK_SERVER_LIST_MAP_SIZE_CAPTION                        :{BLACK}地図�
 STR_NETWORK_SERVER_LIST_MAP_SIZE_CAPTION_TOOLTIP                :{BLACK}ゲームの地図サイズです{}クリックすると地域順に並べ替えます
 STR_NETWORK_SERVER_LIST_DATE_CAPTION                            :{BLACK}日付
 STR_NETWORK_SERVER_LIST_DATE_CAPTION_TOOLTIP                    :{BLACK}ゲームの現在の日付を示します
-STR_NETWORK_SERVER_LIST_YEARS_CAPTION                           :{BLACK}実行年間
-STR_NETWORK_SERVER_LIST_YEARS_CAPTION_TOOLTIP                   :{BLACK}ゲームの起動から経過した年数です
 STR_NETWORK_SERVER_LIST_INFO_ICONS_TOOLTIP                      :{BLACK}言語、サーバーバージョンなど
 
 STR_NETWORK_SERVER_LIST_CLICK_GAME_TO_SELECT                    :{BLACK}選択するにはリスト内のゲームをクリックします
@@ -2614,9 +2610,7 @@ STR_LINKGRAPH_LEGEND_SATURATED                                  :{TINY_FONT}{BLA
 STR_LINKGRAPH_LEGEND_OVERLOADED                                 :{TINY_FONT}{BLACK}供給過多
 
 # Linkgraph tooltip
-STR_LINKGRAPH_STATS_TOOLTIP                                     :{BLACK}{1:STATION}から{2:STATION}までの輸送需要 {0:CARGO_LONG}/月 (輸送力{3:COMMA}%){4:STRING}
 STR_LINKGRAPH_STATS_TOOLTIP_RETURN_EXTENSION                    :{}復路の輸送需要 {CARGO_LONG}/月 (輸送力{COMMA}%)
-STR_LINKGRAPH_STATS_TOOLTIP_TIME_EXTENSION                      :{}平均移動時間: {NUM}{NBSP}日
 
 # Base for station construction window(s)
 STR_STATION_BUILD_COVERAGE_AREA_TITLE                           :{BLACK}集荷範囲のハイライト
@@ -2626,7 +2620,6 @@ STR_STATION_BUILD_COVERAGE_AREA_OFF_TOOLTIP                     :{BLACK}停留�
 STR_STATION_BUILD_COVERAGE_AREA_ON_TOOLTIP                      :{BLACK}停留施設の旅客・貨物集荷範囲をハイライトします
 STR_STATION_BUILD_ACCEPTS_CARGO                                 :{BLACK}受入貨物: {GOLD}{CARGO_LIST}
 STR_STATION_BUILD_SUPPLIES_CARGO                                :{BLACK}供給貨物: {GOLD}{CARGO_LIST}
-STR_STATION_BUILD_INFRASTRUCTURE_COST                           :{BLACK}維持費: {GOLD}{CURRENCY_SHORT}/年
 
 # Join station window
 STR_JOIN_STATION_CAPTION                                        :{WHITE}停留施設を統合
@@ -3465,8 +3458,6 @@ STR_TOWN_VIEW_CARGO_FOR_TOWNGROWTH_REQUIRED_WINTER              :{ORANGE}{STRING
 STR_TOWN_VIEW_CARGO_FOR_TOWNGROWTH_DELIVERED_GENERAL            :{ORANGE}{STRING}{GREEN} は配送されています
 STR_TOWN_VIEW_CARGO_FOR_TOWNGROWTH_REQUIRED                     :{ORANGE}{CARGO_TINY} / {CARGO_LONG} {RED}(更なる配送が必要)
 STR_TOWN_VIEW_CARGO_FOR_TOWNGROWTH_DELIVERED                    :{ORANGE}{CARGO_TINY} / {CARGO_LONG} {GREEN}(需要充足)
-STR_TOWN_VIEW_TOWN_GROWS_EVERY                                  :{BLACK}街は {ORANGE}{COMMA}{BLACK} 日毎に成長しています
-STR_TOWN_VIEW_TOWN_GROWS_EVERY_FUNDED                           :{BLACK}街は {ORANGE}{COMMA}{BLACK} 日毎に成長しています(資金提供)
 STR_TOWN_VIEW_TOWN_GROW_STOPPED                                 :{BLACK}街は{RED}成長を止めています{BLACK}
 STR_TOWN_VIEW_NOISE_IN_TOWN                                     :{BLACK}騒音量: {ORANGE}{COMMA}{BLACK} (現状) / {ORANGE}{COMMA}{BLACK} (最大)
 STR_TOWN_VIEW_CENTER_TOOLTIP                                    :{BLACK}メイン画面を街の場所に移動します。Ctrl+クリックで新しいビューポートに表示します。
@@ -3501,15 +3492,13 @@ STR_LOCAL_AUTHORITY_ACTION_STATUE_OF_COMPANY                    :社長の彫像
 STR_LOCAL_AUTHORITY_ACTION_NEW_BUILDINGS                        :市街地開発に出資
 STR_LOCAL_AUTHORITY_ACTION_EXCLUSIVE_TRANSPORT                  :独占運送契約を締結
 STR_LOCAL_AUTHORITY_ACTION_BRIBE                                :議会を買収
+###next-name-looks-similar
 
-###length 8
 STR_LOCAL_AUTHORITY_ACTION_TOOLTIP_SMALL_ADVERTISING            :{PUSH_COLOUR}{YELLOW}旅客と貨物を確保する為に、街で新聞広告を実施します。{}より多くの旅客と貨物が自社の交通網を利用するようになります。{}{POP_COLOUR}費用: {CURRENCY_LONG}
 STR_LOCAL_AUTHORITY_ACTION_TOOLTIP_MEDIUM_ADVERTISING           :{PUSH_COLOUR}{YELLOW}旅客と貨物を確保する為に、街でラジオCMを実施します{}街の中心部から中範囲にある駅の評価が一時的に高まります。{}{POP_COLOUR}費用: {CURRENCY_LONG}
 STR_LOCAL_AUTHORITY_ACTION_TOOLTIP_LARGE_ADVERTISING            :{PUSH_COLOUR}{YELLOW}旅客と貨物を確保する為に、街でTV-CMを開始します{}街の中心部の大範囲にある駅の評価が一時的に高まります。{}{POP_COLOUR}費用: {CURRENCY_LONG}
-STR_LOCAL_AUTHORITY_ACTION_TOOLTIP_ROAD_RECONSTRUCTION          :{PUSH_COLOUR}{YELLOW}街内の道路補修工事に出資します。{}最高6ヶ月間街中の道路交通が途絶します。{}{POP_COLOUR}費用: {CURRENCY_LONG}
 STR_LOCAL_AUTHORITY_ACTION_TOOLTIP_STATUE_OF_COMPANY            :{PUSH_COLOUR}{YELLOW}社を称える彫像を建設します{}この街の駅の評価を恒久的に高めます。{}{POP_COLOUR}費用: {CURRENCY_LONG}
 STR_LOCAL_AUTHORITY_ACTION_TOOLTIP_NEW_BUILDINGS                :{PUSH_COLOUR}{YELLOW}市街地の開発に出資します{}街の成長速度が一時的に早まります。{}{POP_COLOUR}費用: {CURRENCY_LONG}
-STR_LOCAL_AUTHORITY_ACTION_TOOLTIP_EXCLUSIVE_TRANSPORT          :{PUSH_COLOUR}{YELLOW}街と一年間の独占運送契約を締結します。{}乗客や貨物はあなたの会社の運送経路のみを使用するようになります。{}{POP_COLOUR}費用: {CURRENCY_LONG}
 STR_LOCAL_AUTHORITY_ACTION_TOOLTIP_BRIBE                        :{PUSH_COLOUR}{YELLOW}買収を行い、議会内の評判を高めます。注意: 露見した場合は処罰されます{}{POP_COLOUR}費用: {CURRENCY_LONG}
 
 # Goal window
@@ -3598,7 +3587,6 @@ STR_STATION_VIEW_EXCLUSIVE_RIGHTS_COMPANY                       :{YELLOW}{COMPAN
 
 STR_STATION_VIEW_RATINGS_BUTTON                                 :{BLACK}評価
 STR_STATION_VIEW_RATINGS_TOOLTIP                                :{BLACK}停留施設の評価を表示します
-STR_STATION_VIEW_SUPPLY_RATINGS_TITLE                           :{BLACK}今月の貨物別供給と地元評価:
 STR_STATION_VIEW_CARGO_SUPPLY_RATING                            :{WHITE}{STRING}: {YELLOW}{COMMA} / {STRING} ({COMMA}%)
 
 STR_STATION_VIEW_GROUP                                          :{BLACK}グループ分け:
@@ -3757,7 +3745,6 @@ STR_COMPANY_INFRASTRUCTURE_VIEW_CANALS                          :{WHITE}運河
 STR_COMPANY_INFRASTRUCTURE_VIEW_STATION_SECT                    :{GOLD}停留施設数:
 STR_COMPANY_INFRASTRUCTURE_VIEW_STATIONS                        :{WHITE}停留施設(タイル数)
 STR_COMPANY_INFRASTRUCTURE_VIEW_AIRPORTS                        :{WHITE}空港
-STR_COMPANY_INFRASTRUCTURE_VIEW_TOTAL                           :{WHITE}{CURRENCY_LONG}/年
 
 # Industry directory
 STR_INDUSTRY_DIRECTORY_CAPTION                                  :{WHITE}産業
@@ -3887,7 +3874,6 @@ STR_PURCHASE_INFO_SPEED_POWER                                   :{BLACK}最高�
 STR_PURCHASE_INFO_SPEED                                         :{BLACK}最高速度: {GOLD}{VELOCITY}
 STR_PURCHASE_INFO_SPEED_OCEAN                                   :{BLACK}外洋/湖での航行速度: {GOLD}{VELOCITY}
 STR_PURCHASE_INFO_SPEED_CANAL                                   :{BLACK}水路/川での航行速度: {GOLD}{VELOCITY}
-STR_PURCHASE_INFO_RUNNINGCOST                                   :{BLACK}運用費: {GOLD}{CURRENCY_LONG}/年
 STR_PURCHASE_INFO_CAPACITY                                      :{BLACK}収容量: {GOLD}{CARGO_LONG} {STRING}
 STR_PURCHASE_INFO_REFITTABLE                                    :(改造可能)
 STR_PURCHASE_INFO_DESIGNED_LIFE                                 :{BLACK}設計年: {GOLD}{NUM}{BLACK}　耐用年数: {GOLD}{COMMA}年
@@ -4080,13 +4066,6 @@ STR_ENGINE_PREVIEW_TRAM_VEHICLE                                 :路面電車車
 STR_ENGINE_PREVIEW_AIRCRAFT                                     :航空機
 STR_ENGINE_PREVIEW_SHIP                                         :船舶
 
-STR_ENGINE_PREVIEW_COST_WEIGHT_SPEED_POWER                      :{BLACK}費用: {CURRENCY_LONG} 重量: {WEIGHT_SHORT}{} 最高速度: {VELOCITY} 出力: {POWER}{} 維持費: {CURRENCY_LONG} /年{} 容量: {CARGO_LONG}
-STR_ENGINE_PREVIEW_COST_WEIGHT_SPEED_POWER_MAX_TE               :{BLACK}価格: {0:CURRENCY_LONG} 重量: {1:WEIGHT_SHORT}{}最高速度: {2:VELOCITY} 出力: {3:POWER} 最大牽引力: {6:FORCE}{}運用費: {4:CURRENCY_LONG}/年{}収容量 {5:CARGO_LONG}
-STR_ENGINE_PREVIEW_COST_MAX_SPEED_CAP_RUNCOST                   :{BLACK}費用: {CURRENCY_LONG} 最高速度: {VELOCITY}{} 容量: {CARGO_LONG}{} 維持費: {CURRENCY_LONG} /年
-STR_ENGINE_PREVIEW_COST_MAX_SPEED_TYPE_CAP_CAP_RUNCOST          :{BLACK}費用: {CURRENCY_LONG} 最高速度: {VELOCITY}{} 航空機の種類: {STRING}{} 容量: {CARGO_LONG}, {CARGO_LONG}{} 維持費: {CURRENCY_LONG}/yr
-STR_ENGINE_PREVIEW_COST_MAX_SPEED_TYPE_CAP_RUNCOST              :{BLACK}費用: {CURRENCY_LONG} 最高速度: {VELOCITY}{} 航空機の種類: {STRING}{} 容量: {CARGO_LONG}{} 維持費: {CURRENCY_LONG} /年
-STR_ENGINE_PREVIEW_COST_MAX_SPEED_TYPE_RANGE_CAP_CAP_RUNCOST    :{BLACK}費用: {CURRENCY_LONG} 最高速度: {VELOCITY}{} 航空機の種類: {STRING} 範囲: {COMMA}タイル{} 容量: {CARGO_LONG}、{CARGO_LONG}{} 維持費: {CURRENCY_LONG} /年
-STR_ENGINE_PREVIEW_COST_MAX_SPEED_TYPE_RANGE_CAP_RUNCOST        :{BLACK}費用: {CURRENCY_LONG} 最高速度: {VELOCITY}{} 航空機の種類: {STRING} 範囲:{COMMA}タイル{} 容量: {CARGO_LONG}{} 維持費: {CURRENCY_LONG} /年
 
 # Autoreplace window
 STR_REPLACE_VEHICLES_WHITE                                      :{WHITE}{STRING}の自動置換 - {STRING}
@@ -4251,8 +4230,6 @@ STR_VEHICLE_INFO_CAPACITY_CAPACITY                              :{BLACK}収容�
 
 STR_VEHICLE_INFO_FEEDER_CARGO_VALUE                             :{BLACK}転送による部分払い: {LTBLUE}{CURRENCY_LONG}
 
-STR_VEHICLE_DETAILS_INCREASE_SERVICING_INTERVAL_TOOLTIP         :{BLACK}点検周期を10日(%)延ばします。Ctrl+クリックで5日(%)単位になります
-STR_VEHICLE_DETAILS_DECREASE_SERVICING_INTERVAL_TOOLTIP         :{BLACK}点検周期を10日(%)縮めます。Ctrl+クリックで5日(%)単位になります
 
 STR_SERVICE_INTERVAL_DROPDOWN_TOOLTIP                           :{BLACK}点検周期の変更
 STR_VEHICLE_DETAILS_DEFAULT                                     :既定

@@ -383,7 +383,7 @@ STR_SCENEDIT_FILE_MENU_SEPARATOR                                :
 STR_SCENEDIT_FILE_MENU_QUIT                                     :Изход
 
 # Settings menu
-###length 15
+###length 16
 STR_SETTINGS_MENU_GAME_OPTIONS                                  :Игрови опции
 STR_SETTINGS_MENU_CONFIG_SETTINGS_TREE                          :Настройки
 STR_SETTINGS_MENU_NEWGRF_SETTINGS                               :Newgrf настройки
@@ -615,11 +615,9 @@ STR_PERFORMANCE_DETAIL_CARGO                                    :{BLACK}Това
 STR_PERFORMANCE_DETAIL_MONEY                                    :{BLACK}Пари:
 STR_PERFORMANCE_DETAIL_LOAN                                     :{BLACK}Заем:
 STR_PERFORMANCE_DETAIL_TOTAL                                    :{BLACK}Общо:
+###next-name-looks-similar
 
-###length 10
-STR_PERFORMANCE_DETAIL_VEHICLES_TOOLTIP                         :{BLACK}Брой превозни средства с печалба за миналата година.Това включва автомобили, влакове, кораби и самолети
 STR_PERFORMANCE_DETAIL_STATIONS_TOOLTIP                         :{BLACK}Брой последно обслужени станции. Всяка част на станция (напр. ЖП гара, автогара, летище) се брои отделно, даже ако са свързани като една станция
-STR_PERFORMANCE_DETAIL_MIN_PROFIT_TOOLTIP                       :{BLACK}Печалбата на превозното средство с най-нисък доход (от всички на поне 2 години)
 STR_PERFORMANCE_DETAIL_MIN_INCOME_TOOLTIP                       :{BLACK}Сумата пари спечелена през месеца с най-ниска печалба от последните 12 четвъртини
 STR_PERFORMANCE_DETAIL_MAX_INCOME_TOOLTIP                       :{BLACK}Сумата пари спечелена през месеца с най-висока печалба от последните 12 четвъртини
 STR_PERFORMANCE_DETAIL_DELIVERED_TOOLTIP                        :{BLACK}Единици товар доставени през последната година
@@ -838,7 +836,6 @@ STR_NEWS_VEHICLE_IS_GETTING_VERY_OLD                            :{WHITE}{VEHICLE
 STR_NEWS_VEHICLE_IS_GETTING_VERY_OLD_AND                        :{WHITE}{VEHICLE} е прекалено остаряло и спешно има нужда от замяна
 STR_NEWS_TRAIN_IS_STUCK                                         :{WHITE}{VEHICLE} не може да намери път за да продължи.
 STR_NEWS_VEHICLE_IS_LOST                                        :{WHITE}{VEHICLE} се е загубил.
-STR_NEWS_VEHICLE_IS_UNPROFITABLE                                :{WHITE}{VEHICLE} миналата година е направил печалба от {CURRENCY_LONG}
 STR_NEWS_AIRCRAFT_DEST_TOO_FAR                                  :{WHITE}{VEHICLE} не може да достигне до следващата цел, защото е извън обхват
 
 STR_NEWS_ORDER_REFIT_FAILED                                     :{WHITE}{VEHICLE} спря поради провалена задача за преоборудване
@@ -852,16 +849,9 @@ STR_NEWS_NEW_VEHICLE_NOW_AVAILABLE_WITH_TYPE                    :{BLACK}Нов {
 
 STR_NEWS_OFFER_OF_SUBSIDY_EXPIRED                               :{BIG_FONT}{BLACK}Предложението за субсидия изтече:{}{}Превозът на {STRING} от {STRING} до {STRING} повече няма да получава субсидия.
 STR_NEWS_SUBSIDY_WITHDRAWN_SERVICE                              :{BIG_FONT}{BLACK}Анулирана субсидия:{}{}Превозът на {STRING} от {STRING} до {STRING} вече не се субсидира.
-STR_NEWS_SERVICE_SUBSIDY_OFFERED                                :{BIG_FONT}{BLACK}Предложена субсидия:{}{}Първият превоз на {STRING} от {STRING} до {STRING} ще спечели едногодишна субсидия от местните власти!
 ###length 4
-STR_NEWS_SERVICE_SUBSIDY_AWARDED_HALF                           :{BIG_FONT}{BLACK}{STRING} спечели субсидия!{}{}Превозът на {STRING} от {STRING} до {STRING} ще се заплаща с 50% повече през следващата година!
-STR_NEWS_SERVICE_SUBSIDY_AWARDED_DOUBLE                         :{BIG_FONT}{BLACK}{STRING} спечели субсидия!!{}{}Превозът на {STRING} от {STRING} до {STRING} ще се заплаща двойно през следващата година!
-STR_NEWS_SERVICE_SUBSIDY_AWARDED_TRIPLE                         :{BIG_FONT}{BLACK}{STRING} спечели субсидия!!{}{}Превозът на {STRING} от {STRING} до {STRING} ще се заплаща тройно през следващата година!
-STR_NEWS_SERVICE_SUBSIDY_AWARDED_QUADRUPLE                      :{BIG_FONT}{BLACK}{STRING} спечели субсидия!!{}{}Превозът на {STRING} от {STRING} до {STRING} ще се заплаща четворно през следващата година!
 
-STR_NEWS_ROAD_REBUILDING                                        :{BIG_FONT}{BLACK}Хаос на трафика в {TOWN}!{}{}Програмата за пътна реконструкция, финансирана от {STRING}, доведе до 6 месеца мизерия за мотористите!
 STR_NEWS_EXCLUSIVE_RIGHTS_TITLE                                 :{BIG_FONT}{BLACK}Монополист на транспорта!
-STR_NEWS_EXCLUSIVE_RIGHTS_DESCRIPTION                           :{BIG_FONT}{BLACK}Местните власти на {TOWN} подписаха договор с {STRING} за едногодишни ексклузивни транспортни права
 
 # Extra view window
 STR_EXTRA_VIEWPORT_TITLE                                        :{WHITE}Камера {COMMA}
@@ -1140,6 +1130,7 @@ STR_CONFIG_SETTING_VEHICLE_BREAKDOWNS_HELPTEXT                  :Контрол�
 STR_CONFIG_SETTING_SUBSIDY_MULTIPLIER                           :Умножител на субсидии: {STRING}
 STR_CONFIG_SETTING_SUBSIDY_MULTIPLIER_HELPTEXT                  :Задава колко се заплаща за субсидирани връзки
 
+###length 2
 
 ###setting-zero-is-special
 
@@ -1229,7 +1220,10 @@ STR_CONFIG_SETTING_SIGNALSIDE_LEFT                              :От ляво
 STR_CONFIG_SETTING_SIGNALSIDE_DRIVING_SIDE                      :От страната на движението
 STR_CONFIG_SETTING_SIGNALSIDE_RIGHT                             :От дясно
 
+###length 2
 STR_CONFIG_SETTING_SHOWFINANCES                                 :Финансов отчет в края на годината: {STRING.m}
+
+###length 2
 STR_CONFIG_SETTING_SHOWFINANCES_HELPTEXT                        :Ако тази опция бъде активирана, прозорецът с вашите финансии ще се показва в края на всяка календарна година, позволявайки лесен достъп до финансовия статус на компанията ви
 
 STR_CONFIG_SETTING_NONSTOP_BY_DEFAULT                           :По подразбиране новите зповеди са 'без спиране': {STRING}
@@ -1251,9 +1245,11 @@ STR_CONFIG_SETTING_AUTOSCROLL_MAIN_VIEWPORT                     :Главна к
 STR_CONFIG_SETTING_AUTOSCROLL_EVERY_VIEWPORT                    :Всяка камера
 
 STR_CONFIG_SETTING_BRIBE                                        :Подкупване на местната власт: {STRING}
+###length 2
 STR_CONFIG_SETTING_BRIBE_HELPTEXT                               :Позволява на компаниите да се опитват да подкупят местните власти. Ако опитът за подкуп бъде разкрит от местен следовател, тази компания няма да може да действа в града за шест месеца
 
 STR_CONFIG_SETTING_ALLOW_EXCLUSIVE                              :Позволи купуване на изклучителни транспортни права: {STRING}
+###length 2
 STR_CONFIG_SETTING_ALLOW_EXCLUSIVE_HELPTEXT                     :Ако някоя компания купи ексклузивни права за даден град, спирките на противниковите компании (пътници и стоки) няма да получават товар през следващата година
 
 STR_CONFIG_SETTING_ALLOW_FUND_BUILDINGS                         :Позволи финансирането на строежи: {STRING}
@@ -1305,12 +1301,16 @@ STR_CONFIG_SETTING_ORDER_REVIEW_EXDEPOT                         :Включен,
 STR_CONFIG_SETTING_ORDER_REVIEW_ON                              :На всички превозни средства
 
 STR_CONFIG_SETTING_WARN_INCOME_LESS                             :Предупреждение ако превозното средство е на загуба: {STRING}
+###length 2
 STR_CONFIG_SETTING_WARN_INCOME_LESS_HELPTEXT                    :Ако тази опция бъде активирана, ще получите съобщение ако някое от вашите превозни средства не е донесло печалба през изминалата календарна година
 
 STR_CONFIG_SETTING_NEVER_EXPIRE_VEHICLES                        :ПС не губят валидност: {STRING.n}
 STR_CONFIG_SETTING_NEVER_EXPIRE_VEHICLES_HELPTEXT               :Ако тази опция бъде активирана, всички модели на превозните средства, ще бъдат възможни за производство завинаги
 
 ###length 2
+
+
+###setting-zero-is-special
 
 STR_CONFIG_SETTING_AUTORENEW_VEHICLE                            :Автоматично поднови превозното средство, когато остарее: {STRING}
 STR_CONFIG_SETTING_AUTORENEW_VEHICLE_HELPTEXT                   :Ако тази опция бъде активирана, дадено превозно средство ще бъде автоматично заменено когато е към края на своя живот, стига условията за това да са налице
@@ -1511,7 +1511,10 @@ STR_CONFIG_SETTING_SOUND_TICKER_HELPTEXT                        :Звуков с
 STR_CONFIG_SETTING_SOUND_NEWS                                   :Вестник: {STRING}
 STR_CONFIG_SETTING_SOUND_NEWS_HELPTEXT                          :Звуков сигнал при показването на новини
 
+###length 2
 STR_CONFIG_SETTING_SOUND_NEW_YEAR                               :Край на година: {STRING}
+
+###length 2
 STR_CONFIG_SETTING_SOUND_NEW_YEAR_HELPTEXT                      :Звуков сигнал при проказване на баланса в края на годината сравнен с края на предишната година
 
 STR_CONFIG_SETTING_SOUND_CONFIRM                                :Конструкция: {STRING}
@@ -1758,7 +1761,6 @@ STR_CONFIG_SETTING_DEMAND_SIZE                                  :Количес�
 
 STR_CONFIG_SETTING_LOCALISATION_UNITS_VELOCITY                  :Единици за скорост: {STRING}
 STR_CONFIG_SETTING_LOCALISATION_UNITS_VELOCITY_HELPTEXT         :Всеки път при показване на скорости, да бъдат изписвани в избраните мерни единици
-###length 5
 STR_CONFIG_SETTING_LOCALISATION_UNITS_VELOCITY_IMPERIAL         :Imperial (mph)
 STR_CONFIG_SETTING_LOCALISATION_UNITS_VELOCITY_METRIC           :Metric (km/h)
 STR_CONFIG_SETTING_LOCALISATION_UNITS_VELOCITY_SI               :SI (m/s)
@@ -1899,7 +1901,6 @@ STR_ABANDON_SCENARIO_QUERY                                      :{YELLOW}Иск�
 
 # Cheat window
 STR_CHEATS                                                      :{WHITE}Кодове
-STR_CHEATS_TOOLTIP                                              :{BLACK}Кутийките показват дали този код е бил използван
 STR_CHEAT_MONEY                                                 :{LTBLUE}Увеличаване на парите с {CURRENCY_LONG}
 STR_CHEAT_CHANGE_COMPANY                                        :{LTBLUE}Играе като компания: {ORANGE}{COMMA}
 STR_CHEAT_EXTRA_DYNAMITE                                        :{LTBLUE}Магически булдозер (премахва промишленост, неподвижни обекти): {ORANGE}{STRING}
@@ -2023,8 +2024,6 @@ STR_NETWORK_SERVER_LIST_MAP_SIZE_CAPTION                        :{BLACK}Голе
 STR_NETWORK_SERVER_LIST_MAP_SIZE_CAPTION_TOOLTIP                :{BLACK}Големина на картата в играта{}Натисни за сортиране по площ
 STR_NETWORK_SERVER_LIST_DATE_CAPTION                            :{BLACK}Дата
 STR_NETWORK_SERVER_LIST_DATE_CAPTION_TOOLTIP                    :{BLACK}Настояща дата
-STR_NETWORK_SERVER_LIST_YEARS_CAPTION                           :{BLACK}Години
-STR_NETWORK_SERVER_LIST_YEARS_CAPTION_TOOLTIP                   :{BLACK}Брой години{}през които продължава играта
 STR_NETWORK_SERVER_LIST_INFO_ICONS_TOOLTIP                      :{BLACK}Език, версия на сървъра, и др.
 
 STR_NETWORK_SERVER_LIST_CLICK_GAME_TO_SELECT                    :{BLACK}Щракни върху игра от списъка, за да я избереш
@@ -3040,8 +3039,6 @@ STR_TOWN_VIEW_CARGO_FOR_TOWNGROWTH_REQUIRED_WINTER              :{ORANGE}{STRING
 STR_TOWN_VIEW_CARGO_FOR_TOWNGROWTH_DELIVERED_GENERAL            :{ORANGE}{STRING}{GREEN} доставено
 STR_TOWN_VIEW_CARGO_FOR_TOWNGROWTH_REQUIRED                     :{ORANGE}{CARGO_TINY} / {CARGO_LONG}{RED} (все още трява)
 STR_TOWN_VIEW_CARGO_FOR_TOWNGROWTH_DELIVERED                    :{ORANGE}{CARGO_TINY} / {CARGO_LONG}{GREEN} (доставено)
-STR_TOWN_VIEW_TOWN_GROWS_EVERY                                  :{BLACK}Града нараства всеги {ORANGE}{COMMA}{BLACK}{NBSP}д{P ен ни}
-STR_TOWN_VIEW_TOWN_GROWS_EVERY_FUNDED                           :{BLACK}Града нараства всеки {ORANGE}{COMMA}{BLACK}{NBSP}д{P ен ни} (субсидиран)
 STR_TOWN_VIEW_TOWN_GROW_STOPPED                                 :{BLACK}Града {RED}не{BLACK} расте
 STR_TOWN_VIEW_NOISE_IN_TOWN                                     :{BLACK}Лимит на шумът в градът: {ORANGE}{COMMA}{BLACK}  най-много: {ORANGE}{COMMA}
 STR_TOWN_VIEW_CENTER_TOOLTIP                                    :{BLACK}Фиксиране на главния изглед върху града. Ctrl+Click отваря прозорец на нов изглед върху града.
@@ -3074,15 +3071,13 @@ STR_LOCAL_AUTHORITY_ACTION_STATUE_OF_COMPANY                    :Построя�
 STR_LOCAL_AUTHORITY_ACTION_NEW_BUILDINGS                        :Финансиране построяването на нови сгради
 STR_LOCAL_AUTHORITY_ACTION_EXCLUSIVE_TRANSPORT                  :Покупка на специални транспортни права
 STR_LOCAL_AUTHORITY_ACTION_BRIBE                                :Подкупи местните власти
+###next-name-looks-similar
 
-###length 8
 STR_LOCAL_AUTHORITY_ACTION_TOOLTIP_SMALL_ADVERTISING            :{YELLOW} Иницииране на малка местна рекламна кампания, за привличане на повече пътници и товар към вашите транспортни услуги.{} Цена: {CURRENCY_LONG}
 STR_LOCAL_AUTHORITY_ACTION_TOOLTIP_MEDIUM_ADVERTISING           :{YELLOW} Иницииране на малка местна рекламна кампания, за привличане на повече пътници и товар към вашите транспортни услуги.{} Цена: {CURRENCY_LONG}
 STR_LOCAL_AUTHORITY_ACTION_TOOLTIP_LARGE_ADVERTISING            :{YELLOW} Иницииране на малка местна рекламна кампания, за привличане на повече пътници и товар към вашите транспортни услуги.{} Цена: {CURRENCY_LONG}
-STR_LOCAL_AUTHORITY_ACTION_TOOLTIP_ROAD_RECONSTRUCTION          :{YELLOW} Финансиране преустройството на градската пътна мрежа. Ще породи значителен разрив на градския трафик за не повече от 6 месеца.{} Цена: {CURRENCY_LONG}
 STR_LOCAL_AUTHORITY_ACTION_TOOLTIP_STATUE_OF_COMPANY            :{YELLOW} Строеж на статуя в чест на вашата компания.{} Цена: {CURRENCY_LONG}
 STR_LOCAL_AUTHORITY_ACTION_TOOLTIP_NEW_BUILDINGS                :{YELLOW} Финансиране изграждането на нови комерсиални сгради в града.{} Цена: {CURRENCY_LONG}
-STR_LOCAL_AUTHORITY_ACTION_TOOLTIP_EXCLUSIVE_TRANSPORT          :{YELLOW}Покупка на едногодишни специални транспортни права в града. Градските власти ще позволят на пътниците и товара да използват само гарите на вашата компания.{} Цена: {CURRENCY_LONG}
 STR_LOCAL_AUTHORITY_ACTION_TOOLTIP_BRIBE                        :{YELLOW} Подкупването на местната власт за да увеличи рейтинга носи огромен риск ако бъдете хванати.{} Цена: {CURRENCY_LONG}
 
 # Goal window
@@ -3158,7 +3153,6 @@ STR_STATION_VIEW_EXCLUSIVE_RIGHTS_COMPANY                       :{YELLOW}{COMPAN
 
 STR_STATION_VIEW_RATINGS_BUTTON                                 :{BLACK}Рейтинги
 STR_STATION_VIEW_RATINGS_TOOLTIP                                :{BLACK}Покажи нивото на обслужване
-STR_STATION_VIEW_SUPPLY_RATINGS_TITLE                           :{BLACK}Месечни доставки и местен рейтинг:
 
 STR_STATION_VIEW_GROUP                                          :{BLACK}По група
 STR_STATION_VIEW_WAITING_STATION                                :Станция: Изчакване
@@ -3299,7 +3293,6 @@ STR_COMPANY_INFRASTRUCTURE_VIEW_CANALS                          :{WHITE}Кана
 STR_COMPANY_INFRASTRUCTURE_VIEW_STATION_SECT                    :{GOLD}Станции:
 STR_COMPANY_INFRASTRUCTURE_VIEW_STATIONS                        :{WHITE}Части на станции
 STR_COMPANY_INFRASTRUCTURE_VIEW_AIRPORTS                        :{WHITE}Летища
-STR_COMPANY_INFRASTRUCTURE_VIEW_TOTAL                           :{WHITE}{CURRENCY_LONG}/година
 
 # Industry directory
 STR_INDUSTRY_DIRECTORY_CAPTION                                  :{WHITE}Индустрии
@@ -3409,7 +3402,6 @@ STR_PURCHASE_INFO_SPEED_POWER                                   :{BLACK}Скор
 STR_PURCHASE_INFO_SPEED                                         :{BLACK}Скорост: {GOLD}{VELOCITY}
 STR_PURCHASE_INFO_SPEED_OCEAN                                   :{BLACK}Скорост в океана: {GOLD}{VELOCITY}
 STR_PURCHASE_INFO_SPEED_CANAL                                   :{BLACK}Скорост в канал/река: {GOLD}{VELOCITY}
-STR_PURCHASE_INFO_RUNNINGCOST                                   :{BLACK}Разход: {GOLD}{CURRENCY_LONG}/год.
 STR_PURCHASE_INFO_CAPACITY                                      :{BLACK}Капацитет: {GOLD}{CARGO_LONG} {STRING}
 STR_PURCHASE_INFO_REFITTABLE                                    :(преустроим)
 STR_PURCHASE_INFO_DESIGNED_LIFE                                 :{BLACK}Модел: {GOLD}{NUM}{BLACK} Живот: {GOLD}{COMMA} години
@@ -3589,10 +3581,6 @@ STR_ENGINE_PREVIEW_ROAD_VEHICLE                                 :автомоб�
 STR_ENGINE_PREVIEW_AIRCRAFT                                     :самолет
 STR_ENGINE_PREVIEW_SHIP                                         :кораб
 
-STR_ENGINE_PREVIEW_COST_WEIGHT_SPEED_POWER                      :{BLACK}Цена: {CURRENCY_LONG} Тегло: {WEIGHT_SHORT}{}Скорост: {VELOCITY}  Мощност: {POWER}{}Разход: {CURRENCY_LONG}/г.{}Капацитет: {CARGO_LONG}
-STR_ENGINE_PREVIEW_COST_WEIGHT_SPEED_POWER_MAX_TE               :{BLACK}Цена: {CURRENCY_LONG} Тегло: {WEIGHT_SHORT}{}Скорост: {VELOCITY}  Мощност: {POWER}  Макс. Т.С.: {6:FORCE}{}Експлоатационни разходи: {4:CURRENCY_LONG}/год.{}Вместимост: {5:CARGO_LONG}
-STR_ENGINE_PREVIEW_COST_MAX_SPEED_CAP_RUNCOST                   :{BLACK}Цена: {CURRENCY_LONG} Макс. Скорост: {VELOCITY}{}Вместимост: {CARGO_LONG}{}Експлоатационни разходи: {CURRENCY_LONG}/год.
-STR_ENGINE_PREVIEW_COST_MAX_SPEED_TYPE_CAP_RUNCOST              :{BLACK}Цена: {CURRENCY_LONG} Макс.скорост: {VELOCITY}{}Тип самолет: {STRING}{}Вместимост: {CARGO_LONG}{}Оперативни разходи: {CURRENCY_LONG}/yr
 
 # Autoreplace window
 STR_REPLACE_VEHICLES_WHITE                                      :{WHITE}Замяна {STRING} - {STRING}
@@ -3737,8 +3725,6 @@ STR_VEHICLE_INFO_CAPACITY_CAPACITY                              :{BLACK}Капа
 
 STR_VEHICLE_INFO_FEEDER_CARGO_VALUE                             :{BLACK}Сума за преместване: {LTBLUE}{CURRENCY_LONG}
 
-STR_VEHICLE_DETAILS_INCREASE_SERVICING_INTERVAL_TOOLTIP         :{BLACK}Удължава периода за сервиз с 10. Ctrl-click удължава периода за сервиз с 5
-STR_VEHICLE_DETAILS_DECREASE_SERVICING_INTERVAL_TOOLTIP         :{BLACK}Намалява периода за сервиз с 10. Ctrl-click намалява периода за сервиз с 5
 
 STR_SERVICE_INTERVAL_DROPDOWN_TOOLTIP                           :{BLACK}Промяна на сервизният интервал
 STR_VEHICLE_DETAILS_DEFAULT                                     :По подразбиране

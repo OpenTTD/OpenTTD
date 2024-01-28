@@ -467,7 +467,7 @@ STR_SCENEDIT_FILE_MENU_SEPARATOR                                :
 STR_SCENEDIT_FILE_MENU_QUIT                                     :Έξοδος
 
 # Settings menu
-###length 15
+###length 16
 STR_SETTINGS_MENU_GAME_OPTIONS                                  :Επιλογές παιχνιδιού
 STR_SETTINGS_MENU_CONFIG_SETTINGS_TREE                          :Ρυθμίσεις
 STR_SETTINGS_MENU_AI_SETTINGS                                   :Ρυθμίσεις AI
@@ -748,11 +748,9 @@ STR_PERFORMANCE_DETAIL_CARGO                                    :{BLACK}Εμπο
 STR_PERFORMANCE_DETAIL_MONEY                                    :{BLACK}Χρήματα:
 STR_PERFORMANCE_DETAIL_LOAN                                     :{BLACK}Δάνειο:
 STR_PERFORMANCE_DETAIL_TOTAL                                    :{BLACK}Σύνολο:
+###next-name-looks-similar
 
-###length 10
-STR_PERFORMANCE_DETAIL_VEHICLES_TOOLTIP                         :{BLACK}Απαρίθμηση των οχημάτων που απέφεραν κέρδος πέρσι. Περιλαμβανομένων των επιγείων οχημάτων, τρένων, πλοίων και αεροσκαφών.
 STR_PERFORMANCE_DETAIL_STATIONS_TOOLTIP                         :{BLACK}Αριθμός των πρόσφατα επισκευασμένων σταθμών. Σταθμοί τρένων, στάσεις λεωφορείων, αεροδρόμια, κ.ο.κ. προσμετρώνται ξεχωριστά, ακόμα κι αν ανήκουν στον ίδιο σταθμό.
-STR_PERFORMANCE_DETAIL_MIN_PROFIT_TOOLTIP                       :{BLACK}Το κέρδος του οχήματος με το μικρότερο εισόδημα (μόνο οχήματα παλιότερα των 2 ετών θα λαμβάνονται υπόψην)
 STR_PERFORMANCE_DETAIL_MIN_INCOME_TOOLTIP                       :{BLACK}Το ποσό των χρημάτων που έγιναν σε ένα τρίμηνο με το μικρότερο κέρδος των τελευταίων 12 τριμήνων
 STR_PERFORMANCE_DETAIL_MAX_INCOME_TOOLTIP                       :{BLACK}Το ποσό των χρημάτων που έγιναν σε ένα τρίμηνο με το μεγαλύτερο κέρδος των τελευταίων 12 τριμήνων
 STR_PERFORMANCE_DETAIL_DELIVERED_TOOLTIP                        :{BLACK}Μονάδες εμπορεύματος που παραδόθηκαν στα τελευταία τέσσερα τρίμηνα
@@ -983,7 +981,6 @@ STR_NEWS_VEHICLE_IS_GETTING_VERY_OLD                            :{WHITE}Το {VE
 STR_NEWS_VEHICLE_IS_GETTING_VERY_OLD_AND                        :{WHITE}Το {VEHICLE} πάλιωσε πολύ και χρειάζεται επειγόντως αλλαγή
 STR_NEWS_TRAIN_IS_STUCK                                         :{WHITE}Το {VEHICLE} δεν μπορεί να βρει δρόμο να συνεχίσει
 STR_NEWS_VEHICLE_IS_LOST                                        :{WHITE}{G Ο Η Το} {VEHICLE} χάθηκε
-STR_NEWS_VEHICLE_IS_UNPROFITABLE                                :{WHITE}Το κέρδος του {VEHICLE} πέρυσι ήταν {CURRENCY_LONG}
 STR_NEWS_AIRCRAFT_DEST_TOO_FAR                                  :{WHITE}{G Ο Η Το} {VEHICLE} δεν μπορεί να μεταβεί στον επόμενο προορισμό λόγω υπερβολικής απόστασης
 
 STR_NEWS_ORDER_REFIT_FAILED                                     :{WHITE}Το {VEHICLE} σταμάτησε γιατί μια εντολή μετατροπής απέτυχε
@@ -998,16 +995,9 @@ STR_NEWS_SHOW_VEHICLE_GROUP_TOOLTIP                             :{BLACK}Ανοί
 
 STR_NEWS_OFFER_OF_SUBSIDY_EXPIRED                               :{BIG_FONT}{BLACK}Έληξε η προσφορά επιδότησης:{}{}{STRING} από {G τον τη το} {STRING} πρός {G τον τη το} {STRING} δεν θα επιδοτείται πλέον.
 STR_NEWS_SUBSIDY_WITHDRAWN_SERVICE                              :{BIG_FONT}{BLACK}Η επιδότηση αποσύρθηκε:{}{}Η υπηρεσια για {STRING.subs} απο το {STRING} προς το {STRING} δεν επιδοτείται πλέον.
-STR_NEWS_SERVICE_SUBSIDY_OFFERED                                :{BIG_FONT}{BLACK}Προσφορά χρηματοδότησης υπηρεσίας:{}{}Η πρώτη υπηρεσία για {STRING.subs} από {G τον τη το} {STRING} προς {G τον τη το} {STRING} επιχορηγείται για {NUM} έτος/η από την τοπική αρχή!
 ###length 4
-STR_NEWS_SERVICE_SUBSIDY_AWARDED_HALF                           :{BIG_FONT}{BLACK}Η επιχορήγηση υπηρεσίας που δόθηκε στην {STRING}!{}{}{STRING} από {STRING} έως {STRING} θα πληρώνει 50% έξτρα για το/α επόμενο/α {NUM} έτος/η!
-STR_NEWS_SERVICE_SUBSIDY_AWARDED_DOUBLE                         :{BIG_FONT}{BLACK}Η επιχορήγηση υπηρεσίας που δώθηκε στην {STRING}!{}{}{STRING} από {STRING} έως {STRING} θα πληρώνει διπλά ποσά για το επόμενο/α {NUM} έτος/η!
-STR_NEWS_SERVICE_SUBSIDY_AWARDED_TRIPLE                         :{BIG_FONT}{BLACK}Η επιχορήγηση υπηρεσία που δόθηκε στην {STRING}!{}{}{STRING} από {STRING} έως {STRING} θα πληρώνει τριπλές τιμές για το/α επόμενο/α {NUM} έτος/η!
-STR_NEWS_SERVICE_SUBSIDY_AWARDED_QUADRUPLE                      :{BIG_FONT}{BLACK}Η επιχορήγηση υπηρεσίας που δόθηκε στην {STRING}!{}{}{STRING} από {STRING} έως {STRING} θα πληρώνει τετραπλές τιμές για το/α επόμενο/α {NUM} έτος/η!
 
-STR_NEWS_ROAD_REBUILDING                                        :{BIG_FONT}{BLACK}Χαώδης κίνηση στην πόλη {TOWN}!{}{}Χρηματοδοτήθηκε πρόγραμμα ανακατασκευής των δρόμων από την εταιρία {STRING} και προκαλεί 6 μήνες μιζέριας στους οδηγούς!
 STR_NEWS_EXCLUSIVE_RIGHTS_TITLE                                 :{BIG_FONT}{BLACK}Μονοπώλιο μεταφορών!
-STR_NEWS_EXCLUSIVE_RIGHTS_DESCRIPTION                           :{BIG_FONT}{BLACK}Οι τοπικές αρχές της πόλης {TOWN} υπογράφουν συμβόλαιο με την εταιρεία {STRING} για αποκλειστικά δικαιώματα μεταφορών ενός έτους!
 
 # Extra view window
 STR_EXTRA_VIEWPORT_TITLE                                        :{WHITE}Εμφάνιση {COMMA}
@@ -1319,9 +1309,9 @@ STR_CONFIG_SETTING_SUBSIDY_MULTIPLIER                           :Πολλαπλ�
 STR_CONFIG_SETTING_SUBSIDY_MULTIPLIER_HELPTEXT                  :Θέστε πόσο ξεπληρώνεται για επιδοτημένες συνδέσεις
 
 STR_CONFIG_SETTING_SUBSIDY_DURATION                             :Διάρκεια επιδότησης: {STRING}
+###length 2
 STR_CONFIG_SETTING_SUBSIDY_DURATION_HELPTEXT                    :Ορίστε τον αριθμό των ετών για τα οποία θα ισχύει η επιδότηση
 
-STR_CONFIG_SETTING_SUBSIDY_DURATION_VALUE                       :{NUM} έτος/η
 ###setting-zero-is-special
 STR_CONFIG_SETTING_SUBSIDY_DURATION_DISABLED                    :Χωρίς επιχορηγήσεις
 
@@ -1417,7 +1407,10 @@ STR_CONFIG_SETTING_SIGNALSIDE_LEFT                              :Στα αρισ
 STR_CONFIG_SETTING_SIGNALSIDE_DRIVING_SIDE                      :Στην πλευρά οδήγησης
 STR_CONFIG_SETTING_SIGNALSIDE_RIGHT                             :Στα δεξιά
 
+###length 2
 STR_CONFIG_SETTING_SHOWFINANCES                                 :Εμφάνιση παράθυρου οικονομικών στο τέλος του έτους: {STRING}
+
+###length 2
 STR_CONFIG_SETTING_SHOWFINANCES_HELPTEXT                        :Όταν ενεργοποιείται, το παράθυρο των οικονομικών πληροφοριών εμφανίζεται στο τέλος κάθε χρόνου για ευκολότερο έλεγχο της οικονομικής κατάστασης της εταιρείας
 
 STR_CONFIG_SETTING_NONSTOP_BY_DEFAULT                           :Οι νέες οδηγίες είναι «χωρίς στάση» από προεπιλογή: {STRING}
@@ -1439,9 +1432,11 @@ STR_CONFIG_SETTING_AUTOSCROLL_MAIN_VIEWPORT                     :Κύρια εμ
 STR_CONFIG_SETTING_AUTOSCROLL_EVERY_VIEWPORT                    :Κάθε εμφάνιση
 
 STR_CONFIG_SETTING_BRIBE                                        :Επιτρέπεται η δωροδοκία της τοπικής αρχής: {STRING}
+###length 2
 STR_CONFIG_SETTING_BRIBE_HELPTEXT                               :Επιτρέπεται στις εταιρείες να προσπαθήσουν να δωροδοκήσουν την τοπική αρχή. Αν η δωροδοκία γίνει αντιληπτή από τον ελεγκτή, η εταιρεία δε θα μπορεί να ενεργήσει στην πόλη για έξι μήνες
 
 STR_CONFIG_SETTING_ALLOW_EXCLUSIVE                              :Επιτρέπεται η αγορά αποκλειστικών δικαιωμάτων μεταφοράς: {STRING}
+###length 2
 STR_CONFIG_SETTING_ALLOW_EXCLUSIVE_HELPTEXT                     :Αν μια εταιρεία αγοράσει τα αποκλειστικά δικαιώματα μεταφορών σε μια πόλη, οι σταθμοί των αντιπάλων δεν θα λαμβάνουν φορτία (επιβάτες και εμπορεύματα) για έναν ολόκληρο χρόνο
 
 STR_CONFIG_SETTING_ALLOW_FUND_BUILDINGS                         :Επιτρέπεται η κατασκευή κτιρίων: {STRING}
@@ -1495,12 +1490,16 @@ STR_CONFIG_SETTING_ORDER_REVIEW_EXDEPOT                         :Ναι, αλλ�
 STR_CONFIG_SETTING_ORDER_REVIEW_ON                              :Για όλα τα οχήματα
 
 STR_CONFIG_SETTING_WARN_INCOME_LESS                             :Ειδοποίηση όταν τα έσοδα ενός οχήματου είναι αρνητικά: {STRING}
+###length 2
 STR_CONFIG_SETTING_WARN_INCOME_LESS_HELPTEXT                    :Όταν είναι ενεργοποιημένη, στέλνεται μήνυμα ειδήσεων όταν κάποιο όχημα δεν έχει αποφέρει κέρδος εντός ενός ημερολογιακού έτους
 
 STR_CONFIG_SETTING_NEVER_EXPIRE_VEHICLES                        :Τα οχήματα δεν λήγουν ποτέ: {STRING}
 STR_CONFIG_SETTING_NEVER_EXPIRE_VEHICLES_HELPTEXT               :Όταν είναι ενεργοποιημένη, όλα τα μοντέλα οχημάτων παραμένουν διαθέσιμα για πάντα μετά την παρουσίασή τους
 
 ###length 2
+
+
+###setting-zero-is-special
 
 STR_CONFIG_SETTING_AUTORENEW_VEHICLE                            :Αυτόματη ανανέωση όταν ένα όχημα παλιώνει: {STRING}
 STR_CONFIG_SETTING_AUTORENEW_VEHICLE_HELPTEXT                   :Όταν είναι ενεργοποιημένη, τα οχήματα που πλησιάζουν το τέλος της ζωής τους αντικαθίσταται αυτόματα όταν πληρούνται οι προϋποθέσεις αντικατάστασής του
@@ -1745,7 +1744,10 @@ STR_CONFIG_SETTING_SOUND_TICKER_HELPTEXT                        :Παίζει ή
 STR_CONFIG_SETTING_SOUND_NEWS                                   :Εφημερίδα: {STRING}
 STR_CONFIG_SETTING_SOUND_NEWS_HELPTEXT                          :Παίζει ήχο όταν εμφανίζονται εφημερίδες
 
+###length 2
 STR_CONFIG_SETTING_SOUND_NEW_YEAR                               :Στο τέλος του χρόνου: {STRING}
+
+###length 2
 STR_CONFIG_SETTING_SOUND_NEW_YEAR_HELPTEXT                      :Παίζει ηχητικό εφέ στο τέλος του χρόνου που συνοψίζει την επίδοση της εταιρείας κατά την διάρκεια αυτού του χρόνου σε σχέση με τον προηγούμενο χρόνο
 
 STR_CONFIG_SETTING_SOUND_CONFIRM                                :Οικοδομή: {STRING}
@@ -2037,11 +2039,9 @@ STR_CONFIG_SETTING_SHORT_PATH_SATURATION_HELPTEXT               :Συχνά υπ
 
 STR_CONFIG_SETTING_LOCALISATION_UNITS_VELOCITY                  :Μονάδες μέτρησης ταχύτητας: {STRING}
 STR_CONFIG_SETTING_LOCALISATION_UNITS_VELOCITY_HELPTEXT         :Όποτε εμφανίζεται μια ταχύτητα στη διεπαφή χρήστη, να εμφανίζεται στην επιλεγμένη μονάδα
-###length 5
 STR_CONFIG_SETTING_LOCALISATION_UNITS_VELOCITY_IMPERIAL         :Αυτοκρατορικό (μίλια/ώρα)
 STR_CONFIG_SETTING_LOCALISATION_UNITS_VELOCITY_METRIC           :Μετρικό (χλμ/ώρα)
 STR_CONFIG_SETTING_LOCALISATION_UNITS_VELOCITY_SI               :SI (m/s)
-STR_CONFIG_SETTING_LOCALISATION_UNITS_VELOCITY_GAMEUNITS        :Μονάδες παιχνιδιού (πλακίδια/ημέρα)
 
 STR_CONFIG_SETTING_LOCALISATION_UNITS_POWER                     :Μονάδες ισχύος οχημάτων: {STRING}
 STR_CONFIG_SETTING_LOCALISATION_UNITS_POWER_HELPTEXT            :Όποτε εμφανίζεται η ισχύς ενός οχήματος στη διεπαφή χρήστη, να εμφανίζεται στην επιλεγμένη μονάδα
@@ -2199,8 +2199,6 @@ STR_ABANDON_SCENARIO_QUERY                                      :{YELLOW}Είσ�
 
 # Cheat window
 STR_CHEATS                                                      :{WHITE}Απατεωνιές
-STR_CHEATS_TOOLTIP                                              :{BLACK}Τα κουτάκια δείχνουν αν έχετε ξαναχρησιμοποιήσει αυτή την απατεωνιά
-STR_CHEATS_NOTE                                                 :{BLACK}Σημείωση: κάθε χρήση αυτών των ρυθμίσεων θα καταγραφεί από το αρχείο αποθήκευσης
 STR_CHEAT_MONEY                                                 :{LTBLUE}Αύξηση χρημάτων κατά {CURRENCY_LONG}
 STR_CHEAT_CHANGE_COMPANY                                        :{LTBLUE}Παίζετε με την εταιρία: {ORANGE}{COMMA}
 STR_CHEAT_EXTRA_DYNAMITE                                        :{LTBLUE}Μαγική μπουλντόζα (αφαιρεί βιομηχανίες, αμετακίνητα αντικείμενα): {ORANGE}{STRING}
@@ -2328,8 +2326,6 @@ STR_NETWORK_SERVER_LIST_MAP_SIZE_CAPTION                        :{BLACK}Μέγε
 STR_NETWORK_SERVER_LIST_MAP_SIZE_CAPTION_TOOLTIP                :{BLACK}Μέγεθος χάρτη του παιχνιδιού{}Πατήστε για ταξινόμηση ανά περιοχή
 STR_NETWORK_SERVER_LIST_DATE_CAPTION                            :{BLACK}Ημερομηνία
 STR_NETWORK_SERVER_LIST_DATE_CAPTION_TOOLTIP                    :{BLACK}Τρέχουσα ημερομηνία
-STR_NETWORK_SERVER_LIST_YEARS_CAPTION                           :{BLACK}Χρόνια
-STR_NETWORK_SERVER_LIST_YEARS_CAPTION_TOOLTIP                   :{BLACK}Αριθμός χρόνων{}που τρέχει το παιχνίδι
 STR_NETWORK_SERVER_LIST_INFO_ICONS_TOOLTIP                      :{BLACK}Γλώσσα, έκδοση διακομιστή, κλπ.
 
 STR_NETWORK_SERVER_LIST_CLICK_GAME_TO_SELECT                    :{BLACK}Πατήστε σε ένα παιχνίδι από τη λίστα για το επιλέξετε
@@ -2691,9 +2687,7 @@ STR_LINKGRAPH_LEGEND_SATURATED                                  :{TINY_FONT}{BLA
 STR_LINKGRAPH_LEGEND_OVERLOADED                                 :{TINY_FONT}{BLACK}υπερφορτωμένο
 
 # Linkgraph tooltip
-STR_LINKGRAPH_STATS_TOOLTIP                                     :{BLACK}{CARGO_LONG} προς μεταφορά κάθε μήνα από {STATION} στο {STATION} ({COMMA}% χωρητικότητας){STRING}
 STR_LINKGRAPH_STATS_TOOLTIP_RETURN_EXTENSION                    :{}{CARGO_LONG} προς μεταφορά πίσω ({COMMA}% της χωρητικότητας)
-STR_LINKGRAPH_STATS_TOOLTIP_TIME_EXTENSION                      :{}Μέσος χρόνος ταξιδιού: {NUM}{NBSP}{P "ημέρα" "ημέρες"}
 
 # Base for station construction window(s)
 STR_STATION_BUILD_COVERAGE_AREA_TITLE                           :{BLACK}Κάλυψη περιοχής
@@ -2703,7 +2697,6 @@ STR_STATION_BUILD_COVERAGE_AREA_OFF_TOOLTIP                     :{BLACK}Μη ε�
 STR_STATION_BUILD_COVERAGE_AREA_ON_TOOLTIP                      :{BLACK}Εμφάνιση κάλυψης του προτεινόμενου τόπου
 STR_STATION_BUILD_ACCEPTS_CARGO                                 :{BLACK}Δέχεται: {GOLD}{CARGO_LIST}
 STR_STATION_BUILD_SUPPLIES_CARGO                                :{BLACK}Προμηθεύει : {GOLD}{CARGO_LIST}
-STR_STATION_BUILD_INFRASTRUCTURE_COST                           :{BLACK}Κόστος συντήρησης: {GOLD}{CURRENCY_SHORT}/έτος
 
 # Join station window
 STR_JOIN_STATION_CAPTION                                        :{WHITE}Συνένωση σταθμού
@@ -3535,8 +3528,6 @@ STR_TOWN_VIEW_CARGO_FOR_TOWNGROWTH_REQUIRED_WINTER              :{ORANGE}{STRING
 STR_TOWN_VIEW_CARGO_FOR_TOWNGROWTH_DELIVERED_GENERAL            :{ORANGE}{STRING}{GREEN} παραδόθηκε
 STR_TOWN_VIEW_CARGO_FOR_TOWNGROWTH_REQUIRED                     :{ORANGE}{CARGO_TINY} / {CARGO_LONG}{RED} (ακόμη απαιτείται)
 STR_TOWN_VIEW_CARGO_FOR_TOWNGROWTH_DELIVERED                    :{ORANGE}{CARGO_TINY} / {CARGO_LONG}{GREEN} (παραδόθηκε)
-STR_TOWN_VIEW_TOWN_GROWS_EVERY                                  :{BLACK}Η πόλη επεκτείνεται κάθε {ORANGE}{COMMA}{BLACK}{NBSP}ημέρ{P α ες}
-STR_TOWN_VIEW_TOWN_GROWS_EVERY_FUNDED                           :{BLACK}Η πόλη επεκτείνεται κάθε {ORANGE}{COMMA}{BLACK}{NBSP}ημέρ{P α ες} (χρηματοδοτούμενη)
 STR_TOWN_VIEW_TOWN_GROW_STOPPED                                 :{BLACK}Η πόλη {RED}δεν{BLACK} επεκτείνεται
 STR_TOWN_VIEW_NOISE_IN_TOWN                                     :{BLACK}Επίπεδο θορύβου στη πόλη: {ORANGE}{COMMA}{BLACK}  μέγιστο: {ORANGE}{COMMA}
 STR_TOWN_VIEW_CENTER_TOOLTIP                                    :{BLACK}Κεντράρισμα της εικόνας στην τοποθεσία της πόλης. Με Ctrl+Κλικ ανοίγει νέο παράθυρο προβολής στην τοποθεσία της πόλης
@@ -3571,15 +3562,13 @@ STR_LOCAL_AUTHORITY_ACTION_STATUE_OF_COMPANY                    :Κτίσιμο 
 STR_LOCAL_AUTHORITY_ACTION_NEW_BUILDINGS                        :Επιχορήγηση νέων κτιρίων
 STR_LOCAL_AUTHORITY_ACTION_EXCLUSIVE_TRANSPORT                  :Αγορά αποκλειστικών δικαιωμάτων μεταφοράς
 STR_LOCAL_AUTHORITY_ACTION_BRIBE                                :Δωροδοκήστε την τοπική αρχή
+###next-name-looks-similar
 
-###length 8
 STR_LOCAL_AUTHORITY_ACTION_TOOLTIP_SMALL_ADVERTISING            :{YELLOW}Έναρξη μικρής τοπικής διαφημιστικής καμπάνιας, για να προσελκύσετε περισσότερους επιβάτες και εμπορεύματα στις μεταφορικές σας υπηρεσίες.{}Παρέχει μία προσωρινή ώθηση στην βαθμολογία σταθμών σε μία μικρή ακτίνα γύρω από το κέντρο της πόλης.{} Κόστος: {CURRENCY_LONG}
 STR_LOCAL_AUTHORITY_ACTION_TOOLTIP_MEDIUM_ADVERTISING           :{YELLOW}Έναρξη μεσαίας τοπικής διαφημιστικής καμπάνιας, για να προσελκύσετε περισσότερους επιβάτες και εμπορεύματα στις μεταφορικές σας υπηρεσίες.{}Παρέχει μία προσωρινή ώθηση στην βαθμολογία σταθμών σε μία μεσαία ακτίνα γύρω από το κέντρο της πόλης.{} Κόστος: {CURRENCY_LONG}
 STR_LOCAL_AUTHORITY_ACTION_TOOLTIP_LARGE_ADVERTISING            :{PUSH_COLOUR}{YELLOW}Έναρξη μεγάλης τοπικής διαφημιστικής καμπάνιας, για να προσελκύσετε περισσότερους επιβάτες και εμπορεύματα στις μεταφορικές σας υπηρεσίες.{}Παρέχει μία προσωρινή ώθηση στην βαθμολογία σταθμού σε μία μεγάλη ακτίνα γύρω από το κέντρο της πόλης.{}{POP_COLOUR} Κόστος: {CURRENCY_LONG}
-STR_LOCAL_AUTHORITY_ACTION_TOOLTIP_ROAD_RECONSTRUCTION          :{YELLOW}Επιχορηγήστε την ανακατασκευή του τοπικού οδικού δικτύου.{}Προκαλεί σοβαρή ενόχληση στην τοπικό οδικό δίκτυο για έως 6 μήνες.{} Κόστος: {CURRENCY_LONG}
 STR_LOCAL_AUTHORITY_ACTION_TOOLTIP_STATUE_OF_COMPANY            :{PUSH_COLOUR}{YELLOW}Χτίστε ένα άγαλμα προς τιμήν της εταιρίας σας.{}Παρέχει μία μόνιμη ώθηση στην βαθμολογία σταθμών σε αυτή την πόλη.{}{POP_COLOUR}Κόστος: {CURRENCY_LONG}
 STR_LOCAL_AUTHORITY_ACTION_TOOLTIP_NEW_BUILDINGS                :{YELLOW}Χρηματοδοτήστε την κατασκευή νέων κτιρίων στην πόλη.{}Παρέχει μία προσωρινή ώθηση στην ανάπτυξη αυτής της πόλης.{} Κόστος: {CURRENCY_LONG}
-STR_LOCAL_AUTHORITY_ACTION_TOOLTIP_EXCLUSIVE_TRANSPORT          :{YELLOW}Αγορά αποκλειστικών δικαιωμάτων διάρκειας ενός χρόνου για αυτήν την πόλη.{}Η τοπική αρχή δες θα επιτρέπει στους επιβάτες και τα φορτία να χρησιμοποιούν σταθμούς των ανταγωνιστών.{} Κόστος: {CURRENCY_LONG}
 STR_LOCAL_AUTHORITY_ACTION_TOOLTIP_BRIBE                        :{YELLOW}Δωροδοκήστε τις τοπικές αρχές για να αυξήσετε τα ποσοστά αποδοχής σας, με ρίσκο ένα μεγάλο πρόστιμο εάν συλληφθείτε.{}Κόστος: {CURRENCY_LONG}
 
 # Goal window
@@ -3668,7 +3657,6 @@ STR_STATION_VIEW_EXCLUSIVE_RIGHTS_COMPANY                       :Η {YELLOW}{COM
 
 STR_STATION_VIEW_RATINGS_BUTTON                                 :{BLACK}Βαθμολογίες
 STR_STATION_VIEW_RATINGS_TOOLTIP                                :{BLACK}Εμφάνιση στατιστικών σταθμού
-STR_STATION_VIEW_SUPPLY_RATINGS_TITLE                           :{BLACK}Μηνιαία προμήθεια και τοπικό ποσοστό αποδοχής:
 STR_STATION_VIEW_CARGO_SUPPLY_RATING                            :{WHITE}{STRING}: {YELLOW}{COMMA} / {STRING} ({COMMA}%)
 
 STR_STATION_VIEW_GROUP                                          :{BLACK}Ομαδοποίηση από
@@ -3828,7 +3816,6 @@ STR_COMPANY_INFRASTRUCTURE_VIEW_CANALS                          :{WHITE}Κανά
 STR_COMPANY_INFRASTRUCTURE_VIEW_STATION_SECT                    :{GOLD}Σταθμοί:
 STR_COMPANY_INFRASTRUCTURE_VIEW_STATIONS                        :{WHITE}Τετραγωνίδια σταθμού
 STR_COMPANY_INFRASTRUCTURE_VIEW_AIRPORTS                        :{WHITE}Αεροδρόμια
-STR_COMPANY_INFRASTRUCTURE_VIEW_TOTAL                           :{WHITE}{CURRENCY_LONG}/έτος
 
 # Industry directory
 STR_INDUSTRY_DIRECTORY_CAPTION                                  :{WHITE}Βιομηχανίες
@@ -3958,7 +3945,6 @@ STR_PURCHASE_INFO_SPEED_POWER                                   :{BLACK}Ταχύ
 STR_PURCHASE_INFO_SPEED                                         :{BLACK}Ταχύτητα: {GOLD}{VELOCITY}
 STR_PURCHASE_INFO_SPEED_OCEAN                                   :{BLACK}Ταχύτητα στον ωκεανό: {GOLD}{VELOCITY}
 STR_PURCHASE_INFO_SPEED_CANAL                                   :{BLACK}Ταχύτητα σε κανάλι/ποταμό: {GOLD}{VELOCITY}
-STR_PURCHASE_INFO_RUNNINGCOST                                   :{BLACK}Λειτουργικό Κόστος: {GOLD}{CURRENCY_LONG}/χρ
 STR_PURCHASE_INFO_CAPACITY                                      :{BLACK}Χωρητικότητα: {GOLD}{CARGO_LONG} {STRING}
 STR_PURCHASE_INFO_REFITTABLE                                    :(μετατρέψιμο)
 STR_PURCHASE_INFO_DESIGNED_LIFE                                 :{BLACK}Έτος σχεδίασης: {GOLD}{NUM}{BLACK} Χρόνος ζωής: {GOLD}{COMMA} χρόν{P ο ια}
@@ -4158,13 +4144,6 @@ STR_ENGINE_PREVIEW_AIRCRAFT.geniki                              :αεροσκά�
 STR_ENGINE_PREVIEW_SHIP                                         :{G=n}πλοίου
 STR_ENGINE_PREVIEW_SHIP.geniki                                  :πλοίου
 
-STR_ENGINE_PREVIEW_COST_WEIGHT_SPEED_POWER                      :{BLACK}Κόστος: {CURRENCY_LONG} Βάρος: {WEIGHT_SHORT}{}Ταχύτητα: {VELOCITY}  Δύναμη Κινητήρα: {POWER}{}Λειτουργικό κόστος: {CURRENCY_LONG}/έτος{}Χωρητικότητα: {CARGO_LONG}
-STR_ENGINE_PREVIEW_COST_WEIGHT_SPEED_POWER_MAX_TE               :{BLACK}Κόστος: {CURRENCY_LONG} Βάρος: {WEIGHT_SHORT}{}Ταχύτητα: {VELOCITY}  Δύναμη Κινητήρα: {POWER}  Μεγ. Ε.Δ: {6:FORCE}{}Λειτουργικό Κόστος: {4:CURRENCY_LONG}/έτος{}Χωρητικότητα: {5:CARGO_LONG}
-STR_ENGINE_PREVIEW_COST_MAX_SPEED_CAP_RUNCOST                   :{BLACK}Κόστος: {CURRENCY_LONG} Μέγ. Ταχύτητα: {VELOCITY}{}Χωρητικότητα: {CARGO_LONG}{}Λειτουργικό κόστος: {CURRENCY_LONG}/έτος
-STR_ENGINE_PREVIEW_COST_MAX_SPEED_TYPE_CAP_CAP_RUNCOST          :{BLACK}Κόστος: {CURRENCY_LONG} Μεγ. Ταχύτητα: {VELOCITY}{}Τύπος αεροσκάφους: {STRING}{}Χωρητικότητα: {CARGO_LONG}, {CARGO_LONG}{}Λειτουργικό κόστος: {CURRENCY_LONG}/έτος
-STR_ENGINE_PREVIEW_COST_MAX_SPEED_TYPE_CAP_RUNCOST              :{BLACK}Κόστος: {CURRENCY_LONG} Μεγ. ταχύτητα: {VELOCITY}{}Τύπος αεροσκάφους: {STRING}{}Χωρητικότητα: {CARGO_LONG}{}Λειτουργικό κόστος: {CURRENCY_LONG}/έτος
-STR_ENGINE_PREVIEW_COST_MAX_SPEED_TYPE_RANGE_CAP_CAP_RUNCOST    :{BLACK}Κόστος: {CURRENCY_LONG} Μεγ. Ταχύτητα: {VELOCITY}{}Τύπος αεροσκάφους: {STRING} Εμβέλεια: {COMMA} tiles{}Χωρητικότητα: {CARGO_LONG}, {CARGO_LONG}{}Running Κόστος: {CURRENCY_LONG}/έτος
-STR_ENGINE_PREVIEW_COST_MAX_SPEED_TYPE_RANGE_CAP_RUNCOST        :{BLACK}Κόστος: {CURRENCY_LONG} Μεγ. Ταχύτητα: {VELOCITY}{}Τύπος αεροσκάφους: {STRING} Εμβέλεια: {COMMA} τεταγωνίδια{}Χωρητικότητα: {CARGO_LONG}{}Λειτουργικό κόστος: {CURRENCY_LONG}/έτος
 
 # Autoreplace window
 STR_REPLACE_VEHICLES_WHITE                                      :{WHITE}Αντικατάσταση {STRING} - {STRING}
@@ -4329,8 +4308,6 @@ STR_VEHICLE_INFO_CAPACITY_CAPACITY                              :{BLACK}Χωρη
 
 STR_VEHICLE_INFO_FEEDER_CARGO_VALUE                             :{BLACK}Έσοδα μεταφοράς: {LTBLUE}{CURRENCY_LONG}
 
-STR_VEHICLE_DETAILS_INCREASE_SERVICING_INTERVAL_TOOLTIP         :{BLACK}Αύξηση διαστημάτων επισκευών κατά 10. Με Ctrl+Κλικ αυξάνονται τα διαστήματα ανάμεσα των επισκευών κατά 5
-STR_VEHICLE_DETAILS_DECREASE_SERVICING_INTERVAL_TOOLTIP         :{BLACK}Μείωση διαστημάτων επισκευών κατά 10. Με Ctrl+Κλικ μειώνεται τα διαστήματα επισκευών κατά 5
 
 STR_SERVICE_INTERVAL_DROPDOWN_TOOLTIP                           :{BLACK}Αλλάξτε τον τύπο διαστήματος επισκευών
 STR_VEHICLE_DETAILS_DEFAULT                                     :Προκαθορισμένο

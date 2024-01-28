@@ -383,7 +383,7 @@ STR_SCENEDIT_FILE_MENU_SEPARATOR                                :
 STR_SCENEDIT_FILE_MENU_QUIT                                     :Ofslute
 
 # Settings menu
-###length 15
+###length 16
 STR_SETTINGS_MENU_GAME_OPTIONS                                  :Spulopsjes
 STR_SETTINGS_MENU_CONFIG_SETTINGS_TREE                          :Ynstellings
 STR_SETTINGS_MENU_NEWGRF_SETTINGS                               :NewGRF-ynstellings
@@ -615,11 +615,9 @@ STR_PERFORMANCE_DETAIL_CARGO                                    :{BLACK}Fracht:
 STR_PERFORMANCE_DETAIL_MONEY                                    :{BLACK}Jild:
 STR_PERFORMANCE_DETAIL_LOAN                                     :{BLACK}Lean:
 STR_PERFORMANCE_DETAIL_TOTAL                                    :{BLACK}Totaal:
+###next-name-looks-similar
 
-###length 10
-STR_PERFORMANCE_DETAIL_VEHICLES_TOOLTIP                         :{BLACK}Tal fiertugen hokker winst makke hawwe it ôfrûne jier. Hjiryn wurde weinen, treinen, skippen en fleantugen meinaam
 STR_PERFORMANCE_DETAIL_STATIONS_TOOLTIP                         :{BLACK}Tal koartlyn oandiene stasjons. Treinstasjons, bushaltes, fleanfjilder en sa fierder wurde ek apart telt ek al binne se part fan itselde stasjon
-STR_PERFORMANCE_DETAIL_MIN_PROFIT_TOOLTIP                       :{BLACK}De winst fan it fiertúch mei de leechste ynkomsten (allinnich fiertugen âlder as 2 jier wurde meinaam)
 STR_PERFORMANCE_DETAIL_MIN_INCOME_TOOLTIP                       :{BLACK}Bedrach dat fertsjinne is yn it fearnsjier mei de leechste winst fan 'e lêste 12 fearnsjieren
 STR_PERFORMANCE_DETAIL_MAX_INCOME_TOOLTIP                       :{BLACK}Bedrach dat fertsjinne is yn it fearnsjier mei de heechste winst fan 'e lêste 12 fearnsjieren
 STR_PERFORMANCE_DETAIL_DELIVERED_TOOLTIP                        :{BLACK}Ienheden fracht ôflevere yn de lêste fjouwer fearnsjieren
@@ -844,7 +842,6 @@ STR_NEWS_VEHICLE_IS_GETTING_VERY_OLD                            :{WHITE}{VEHICLE
 STR_NEWS_VEHICLE_IS_GETTING_VERY_OLD_AND                        :{WHITE}{VEHICLE} begjint tige âld te wurden en is nedich oan ferfanging ta
 STR_NEWS_TRAIN_IS_STUCK                                         :{WHITE}{VEHICLE} kin gjin paad fine om fierder te gean
 STR_NEWS_VEHICLE_IS_LOST                                        :{WHITE}{VEHICLE} is it paad kwyt.
-STR_NEWS_VEHICLE_IS_UNPROFITABLE                                :{WHITE}{VEHICLE} hie ôfrûne jier in winst fan {CURRENCY_LONG}
 STR_NEWS_AIRCRAFT_DEST_TOO_FAR                                  :{WHITE}{VEHICLE} kin net op de folgjende bestimming komme, dizze leit bûten de aksjeradius
 
 STR_NEWS_ORDER_REFIT_FAILED                                     :{WHITE}{VEHICLE} is stoppe om't it ombouwen mislearre is
@@ -858,16 +855,9 @@ STR_NEWS_NEW_VEHICLE_NOW_AVAILABLE_WITH_TYPE                    :{BLACK}Neie {ST
 
 STR_NEWS_OFFER_OF_SUBSIDY_EXPIRED                               :{BIG_FONT}{BLACK}Subsydzje oanbieding ferrûn:{}{}{STRING} fan {STRING} nei {STRING} sil no net in subsydzje krije.
 STR_NEWS_SUBSIDY_WITHDRAWN_SERVICE                              :{BIG_FONT}{BLACK}Subsydzje ôfrûn:{}{}{STRING} tsjinst fan {STRING} nei {STRING} krijt gjin subsydzje mear.
-STR_NEWS_SERVICE_SUBSIDY_OFFERED                                :{BIG_FONT}{BLACK}Subsydzje oanbean:{}{}Earste{STRING} tsjinst fan {STRING} nei {STRING} krijt {NUM} jier subsydzje fan 'e gemeente!
 ###length 4
-STR_NEWS_SERVICE_SUBSIDY_AWARDED_HALF                           :{BIG_FONT}{BLACK}Subsydzje tawezen oan {STRING}!{}{}{STRING} tsjinst fan {STRING} nei {STRING} krijt 50% ekstra betelle foar {P 4 "it" "de"} kommende {NUM} jier!
-STR_NEWS_SERVICE_SUBSIDY_AWARDED_DOUBLE                         :{BIG_FONT}{BLACK}Subsydzje tawezen oan {STRING}!{}{}{STRING} tsjinst fan {STRING} nei {STRING} krijt dûbel betelle foar {P 4 "it" "de"} kommende {NUM} jier!
-STR_NEWS_SERVICE_SUBSIDY_AWARDED_TRIPLE                         :{BIG_FONT}{BLACK}Subsydzje tawezen oan {STRING}!{}{}{STRING} tsjinst fan {STRING} nei {STRING} krijt trijedûbel betelle foar {P 4 "it" "de"} kommende {NUM} jier!
-STR_NEWS_SERVICE_SUBSIDY_AWARDED_QUADRUPLE                      :{BIG_FONT}{BLACK}Subsydzje tawezen oan {STRING}!{}{}{STRING} tsjinst fan {STRING} nei {STRING} krijt fjouwerdûbel betelle foar {P 4 "it" "de"} kommende {NUM} jier!
 
-STR_NEWS_ROAD_REBUILDING                                        :{BIG_FONT}{BLACK}Ferkearsgaos yn {TOWN}!{}{}Dykreparaasje betelle troch {STRING} bringt 6 moannen oan ellinde foar ferkearsdielnimmers!
 STR_NEWS_EXCLUSIVE_RIGHTS_TITLE                                 :{BIG_FONT}{BLACK}Transportmonopoalje!
-STR_NEWS_EXCLUSIVE_RIGHTS_DESCRIPTION                           :{BIG_FONT}{BLACK}Gemeente fan {TOWN} tekent in kontrakt mei {STRING} foar in jier lang eksklusive ferfiersrjochen!
 
 # Extra view window
 STR_EXTRA_VIEWPORT_TITLE                                        :{WHITE}Loaitsfinster {COMMA}
@@ -1152,9 +1142,9 @@ STR_CONFIG_SETTING_VEHICLE_BREAKDOWNS_HELPTEXT                  :Behearskje hoe 
 STR_CONFIG_SETTING_SUBSIDY_MULTIPLIER                           :Subsydzjefermannichfâldiger: {STRING}
 STR_CONFIG_SETTING_SUBSIDY_MULTIPLIER_HELPTEXT                  :Stel yn hoefolle der betelle wurdt foar subsidiearre ferbinings
 
+###length 2
 STR_CONFIG_SETTING_SUBSIDY_DURATION_HELPTEXT                    :Stel it oantal jierren yn wêrfoar subsydzje takend wurdt
 
-STR_CONFIG_SETTING_SUBSIDY_DURATION_VALUE                       :{NUM} jier
 ###setting-zero-is-special
 
 STR_CONFIG_SETTING_CONSTRUCTION_COSTS                           :Boukosten: {STRING}
@@ -1242,7 +1232,10 @@ STR_CONFIG_SETTING_SIGNALSIDE_LEFT                              :Oan de lofterka
 STR_CONFIG_SETTING_SIGNALSIDE_DRIVING_SIDE                      :Oan de riidkant
 STR_CONFIG_SETTING_SIGNALSIDE_RIGHT                             :Oan de rjochterkant
 
+###length 2
 STR_CONFIG_SETTING_SHOWFINANCES                                 :Finansjeel oersjoch oan it ein fan it jier sjen litte: {STRING}
+
+###length 2
 STR_CONFIG_SETTING_SHOWFINANCES_HELPTEXT                        :By ynskeakeljen wurdt der elts jier in finansjeel jierferlslach sjen litten, dit makket it makliker in oersjoch fan de finansjele steat fan it bedriuw te krijen
 
 STR_CONFIG_SETTING_NONSTOP_BY_DEFAULT                           :Nije oarder binne standert 'non-stop': {STRING}
@@ -1264,9 +1257,11 @@ STR_CONFIG_SETTING_AUTOSCROLL_MAIN_VIEWPORT                     :Haadfinster
 STR_CONFIG_SETTING_AUTOSCROLL_EVERY_VIEWPORT                    :Elts loaitsfinster
 
 STR_CONFIG_SETTING_BRIBE                                        :It omkeapjen fan de gemeente tastean: {STRING}
+###length 2
 STR_CONFIG_SETTING_BRIBE_HELPTEXT                               :Stean ta dat bedriuwen gemeentes omkeapje kinne. At dit ûntdutsem wurdt kin it bedriuw yn kwestje 6 moannen gjin saken dwaan yn de stêd
 
 STR_CONFIG_SETTING_ALLOW_EXCLUSIVE                              :Eksklusyfe transportrjochten keapje tastean: {STRING}
+###length 2
 STR_CONFIG_SETTING_ALLOW_EXCLUSIVE_HELPTEXT                     :At in bedriuw eksklusive transportrjochten keapet foar in stêd sille stasjon fan tsjinstanners in jier lang gjin passazjiers en fracht ûntfange
 
 STR_CONFIG_SETTING_ALLOW_FUND_BUILDINGS                         :Nije gebouwen stipe tastean: {STRING}
@@ -1318,12 +1313,16 @@ STR_CONFIG_SETTING_ORDER_REVIEW_EXDEPOT                         :Ja, mar slút s
 STR_CONFIG_SETTING_ORDER_REVIEW_ON                              :Fan alle fiertugen
 
 STR_CONFIG_SETTING_WARN_INCOME_LESS                             :Warskôgje at de fertsjinsten fan in fiertúch negatyf binne: {STRING}
+###length 2
 STR_CONFIG_SETTING_WARN_INCOME_LESS_HELPTEXT                    :By ynskeakeljen wurdt der berjochte at in fiertúch it ôfrûnne jier gjin winst makke hat
 
 STR_CONFIG_SETTING_NEVER_EXPIRE_VEHICLES                        :Fiertugen ferinne nea: {STRING}
 STR_CONFIG_SETTING_NEVER_EXPIRE_VEHICLES_HELPTEXT               :By ynskeakeljen bliuwe alle fiertugen foar ivich beskikber
 
 ###length 2
+
+
+###setting-zero-is-special
 
 STR_CONFIG_SETTING_AUTORENEW_VEHICLE                            :Ferfang âlde fiertugen automatysk: {STRING}
 STR_CONFIG_SETTING_AUTORENEW_VEHICLE_HELPTEXT                   :By ynskeakeljen wurden fiertugen dy't hast op harren ein binne automatyske ferfongen
@@ -1531,7 +1530,10 @@ STR_CONFIG_SETTING_SOUND_TICKER_HELPTEXT                        :Lit in lûd hea
 STR_CONFIG_SETTING_SOUND_NEWS                                   :Krante: {STRING}
 STR_CONFIG_SETTING_SOUND_NEWS_HELPTEXT                          :Lit in lûd heare at der in kranteberjocht sjen litten wurdt
 
+###length 2
 STR_CONFIG_SETTING_SOUND_NEW_YEAR                               :Ein fan it jier: {STRING}
+
+###length 2
 STR_CONFIG_SETTING_SOUND_NEW_YEAR_HELPTEXT                      :Lit in lûd heare oan de ein fan it jier hokker de prestaasjes fan it bedriuw fergeliket mei dy fan it jier derfoar
 
 STR_CONFIG_SETTING_SOUND_CONFIRM                                :Konstruksje: {STRING}
@@ -1764,7 +1766,6 @@ STR_CONFIG_SETTING_SHORT_PATH_SATURATION_HELPTEXT               :Gauris binne de
 
 STR_CONFIG_SETTING_LOCALISATION_UNITS_VELOCITY                  :Faasje-ienheid: {STRING}
 STR_CONFIG_SETTING_LOCALISATION_UNITS_VELOCITY_HELPTEXT         :Wannear't in faasje sichtber is yn de interface de selektearre ienheid brûke
-###length 5
 STR_CONFIG_SETTING_LOCALISATION_UNITS_VELOCITY_IMPERIAL         :Ymperiaal (mph)
 STR_CONFIG_SETTING_LOCALISATION_UNITS_VELOCITY_METRIC           :Metrysk (km/h)
 STR_CONFIG_SETTING_LOCALISATION_UNITS_VELOCITY_SI               :SI (m/s)
@@ -1899,7 +1900,6 @@ STR_ABANDON_SCENARIO_QUERY                                      :{YELLOW}Wolsto 
 
 # Cheat window
 STR_CHEATS                                                      :{WHITE}Falsk spielje
-STR_CHEATS_TOOLTIP                                              :{BLACK}Kontrôle finster om te sjen of dast al falsk spiele hast
 STR_CHEAT_MONEY                                                 :{LTBLUE}Stoart jild by{CURRENCY_LONG}
 STR_CHEAT_CHANGE_COMPANY                                        :{LTBLUE}Spielje as bedriuw: {ORANGE}{COMMA}
 STR_CHEAT_EXTRA_DYNAMITE                                        :{LTBLUE}Gigantyske sloopmodus: {ORANGE}{STRING}
@@ -2014,7 +2014,6 @@ STR_NETWORK_SERVER_LIST_MAP_SIZE_SHORT                          :{BLACK}{COMMA}x
 STR_NETWORK_SERVER_LIST_MAP_SIZE_CAPTION                        :{BLACK}Lângrutte
 STR_NETWORK_SERVER_LIST_DATE_CAPTION                            :{BLACK}Datum
 STR_NETWORK_SERVER_LIST_DATE_CAPTION_TOOLTIP                    :{BLACK}Wizigje datum
-STR_NETWORK_SERVER_LIST_YEARS_CAPTION                           :{BLACK}Jieren
 
 STR_NETWORK_SERVER_LIST_CLICK_GAME_TO_SELECT                    :{BLACK}Klik in spul út de list om it te selektearjen
 STR_NETWORK_SERVER_LIST_LAST_JOINED_SERVER                      :{BLACK}Server wert dast it lêst op spiele hast
@@ -2947,8 +2946,6 @@ STR_TOWN_VIEW_CARGO_FOR_TOWNGROWTH_REQUIRED_WINTER              :{ORANGE}{STRING
 STR_TOWN_VIEW_CARGO_FOR_TOWNGROWTH_DELIVERED_GENERAL            :{ORANGE}{STRING}{GREEN} ôflevere
 STR_TOWN_VIEW_CARGO_FOR_TOWNGROWTH_REQUIRED                     :{ORANGE}{CARGO_TINY} / {CARGO_LONG}{RED} (noch nedich)
 STR_TOWN_VIEW_CARGO_FOR_TOWNGROWTH_DELIVERED                    :{ORANGE}{CARGO_TINY} / {CARGO_LONG}{GREEN} (ôflevere)
-STR_TOWN_VIEW_TOWN_GROWS_EVERY                                  :{BLACK}Stêd groeit eltse {ORANGE}{COMMA}{BLACK}{NBSP}{P dei dagen}
-STR_TOWN_VIEW_TOWN_GROWS_EVERY_FUNDED                           :{BLACK}Stêd groeit eltse {ORANGE}{COMMA}{BLACK}{NBSP}{P dei dagen} (subsidearre)
 STR_TOWN_VIEW_TOWN_GROW_STOPPED                                 :{BLACK}Stêd groeit{RED}net{BLACK}
 STR_TOWN_VIEW_NOISE_IN_TOWN                                     :{BLACK}Lûdslimyt yn dizze stêd: {ORANGE}{COMMA}{BLACK}  maks: {ORANGE}{COMMA}
 STR_TOWN_VIEW_CENTER_TOOLTIP                                    :{BLACK}Sintrearje it byld op de lokaasje fan dizze stêd
@@ -2982,12 +2979,11 @@ STR_LOCAL_AUTHORITY_ACTION_STATUE_OF_COMPANY                    :Bou stânbyld f
 STR_LOCAL_AUTHORITY_ACTION_NEW_BUILDINGS                        :Betelje bouw fan nije gebouwen
 STR_LOCAL_AUTHORITY_ACTION_EXCLUSIVE_TRANSPORT                  :Keapje eksklusive ferfiersrjochten
 STR_LOCAL_AUTHORITY_ACTION_BRIBE                                :Keapje it lokale bestjoer om
+###next-name-looks-similar
 
-###length 8
 STR_LOCAL_AUTHORITY_ACTION_TOOLTIP_SMALL_ADVERTISING            :{YELLOW}Begjin in lytse advertinsjecampanje, om mear passazjiers en fracht nei dyn transporttsjinsten te lûken.{}Kostet: {CURRENCY_LONG}
 STR_LOCAL_AUTHORITY_ACTION_TOOLTIP_MEDIUM_ADVERTISING           :{YELLOW}Begjin in middelgrutte advertinsjecampanje, om mear passazjiers en fracht nei dyn transporttsjinsten te lûken.{}Kostet: {CURRENCY_LONG}
 STR_LOCAL_AUTHORITY_ACTION_TOOLTIP_LARGE_ADVERTISING            :{YELLOW}Begjin in grutte advertinsjecampanje, om mear passazjiers en fracht nei dyn transport tsjinsten te lûken.{}Kostet: {CURRENCY_LONG}
-STR_LOCAL_AUTHORITY_ACTION_TOOLTIP_ROAD_RECONSTRUCTION          :{YELLOW}Subsidearje de fernijing fan it dikenstelsel yn dizze stêd. Jout tsjin de seis moannen grutte oerlêst foar it ferkear{}Kosten: {CURRENCY_LONG}
 STR_LOCAL_AUTHORITY_ACTION_TOOLTIP_STATUE_OF_COMPANY            :{YELLOW}Bou in stânbyld ter eare fan jo bedriuw.{}Kostet: {CURRENCY_LONG}
 STR_LOCAL_AUTHORITY_ACTION_TOOLTIP_NEW_BUILDINGS                :{YELLOW}Subsidearje de bou fan nije kommersjele gebouwen yn dizze stêd.{}Kosten: {CURRENCY_LONG}
 STR_LOCAL_AUTHORITY_ACTION_TOOLTIP_BRIBE                        :{YELLOW}Keapje de gemeente om. Mei it risiko op in boete ast betrape wurdst.{}kosten: {CURRENCY_LONG}
@@ -3065,7 +3061,6 @@ STR_STATION_VIEW_EXCLUSIVE_RIGHTS_SELF                          :{BLACK}Dit stas
 STR_STATION_VIEW_EXCLUSIVE_RIGHTS_COMPANY                       :{YELLOW}{COMPANY}{BLACK} Hat eksklusyfe transportrjochten in dizze plak kocht.
 
 STR_STATION_VIEW_RATINGS_TOOLTIP                                :{BLACK}Stasjonwurdearing sjen litte
-STR_STATION_VIEW_SUPPLY_RATINGS_TITLE                           :{BLACK}Moanlikse foarried en wurdearring:
 STR_STATION_VIEW_CARGO_SUPPLY_RATING                            :{WHITE}{STRING}: {YELLOW}{COMMA} / {STRING} ({COMMA}%)
 
 STR_STATION_VIEW_GROUP                                          :{BLACK}Groepearje by
@@ -3201,7 +3196,6 @@ STR_COMPANY_INFRASTRUCTURE_VIEW_CANALS                          :{WHITE}Kanalen
 STR_COMPANY_INFRASTRUCTURE_VIEW_STATION_SECT                    :{GOLD}Stasjons:
 STR_COMPANY_INFRASTRUCTURE_VIEW_STATIONS                        :{WHITE}Stasjontegels
 STR_COMPANY_INFRASTRUCTURE_VIEW_AIRPORTS                        :{WHITE}Fleanfjilden
-STR_COMPANY_INFRASTRUCTURE_VIEW_TOTAL                           :{WHITE}{CURRENCY_LONG}/jr
 
 # Industry directory
 STR_INDUSTRY_DIRECTORY_CAPTION                                  :{WHITE}Yndustryen
@@ -3300,7 +3294,6 @@ STR_PURCHASE_INFO_COST_WEIGHT                                   :{BLACK}Kosten: 
 STR_PURCHASE_INFO_SPEED_POWER                                   :{BLACK}Snelheid: {GOLD}{VELOCITY}{BLACK} Kracht: {GOLD}{POWER}
 STR_PURCHASE_INFO_SPEED                                         :{BLACK}Snelheid: {GOLD}{VELOCITY}
 STR_PURCHASE_INFO_SPEED_OCEAN                                   :{BLACK}Faasje op see: {GOLD}{VELOCITY}
-STR_PURCHASE_INFO_RUNNINGCOST                                   :{BLACK}Underhâldskosten: {GOLD}{CURRENCY_LONG}/jr
 STR_PURCHASE_INFO_CAPACITY                                      :{BLACK}Kapasiteit: {GOLD}{CARGO_LONG} {STRING}
 STR_PURCHASE_INFO_REFITTABLE                                    :(kin omboud wurde)
 STR_PURCHASE_INFO_DESIGNED_LIFE                                 :{BLACK}Ûntwurpen: {GOLD}{NUM}{BLACK} Libbensdoer: {GOLD}{COMMA} jier
@@ -3445,8 +3438,6 @@ STR_ENGINE_PREVIEW_TRAM_VEHICLE                                 :tram
 STR_ENGINE_PREVIEW_AIRCRAFT                                     :fleantúch
 STR_ENGINE_PREVIEW_SHIP                                         :skip
 
-STR_ENGINE_PREVIEW_COST_WEIGHT_SPEED_POWER                      :{BLACK}Kosten: {CURRENCY_LONG} Gewicht: {WEIGHT_SHORT}{}Snelheid: {VELOCITY}  Kracht: {POWER}{}Underhâldskosten: {CURRENCY_LONG}/jr{}Kapasiteit: {CARGO_LONG}
-STR_ENGINE_PREVIEW_COST_MAX_SPEED_CAP_RUNCOST                   :{BLACK}Kosten: {CURRENCY_LONG} Maks. Faasje: {VELOCITY}{}Kapasiteit: {CARGO_LONG}{}Underhâldskosten: {CURRENCY_LONG}/jr
 
 # Autoreplace window
 STR_REPLACE_VEHICLES_WHITE                                      :{WHITE}Ferfang {STRING} - {STRING}
@@ -3559,8 +3550,6 @@ STR_VEHICLE_INFO_CAPACITY_CAPACITY                              :{BLACK}Kapasite
 
 STR_VEHICLE_INFO_FEEDER_CARGO_VALUE                             :{BLACK}Wikselje kredyt: {LTBLUE}{CURRENCY_LONG}
 
-STR_VEHICLE_DETAILS_INCREASE_SERVICING_INTERVAL_TOOLTIP         :{BLACK}Underhâldsinterval ferheegje mei 10. Ctrl+Klik ferheegt underhâldsinterval mei 5
-STR_VEHICLE_DETAILS_DECREASE_SERVICING_INTERVAL_TOOLTIP         :{BLACK}Tiid tusken ûnderhâldsbeurten ferleegje mei 10. Ctrl+Klik ferleegt de tiid tusken ûnderhâldsbeurten mei 5.
 
 STR_SERVICE_INTERVAL_DROPDOWN_TOOLTIP                           :{BLACK}Feroarje tiid tusken ûnderhâldsbeurten
 STR_VEHICLE_DETAILS_DEFAULT                                     :Standert

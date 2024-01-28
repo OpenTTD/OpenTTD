@@ -214,6 +214,8 @@ STR_COLOUR_SECONDARY_SAME_AS_PRIMARY                            :Như màu chủ
 STR_UNITS_VELOCITY_IMPERIAL                                     :{DECIMAL}{NBSP}mph
 STR_UNITS_VELOCITY_METRIC                                       :{DECIMAL}{NBSP}km/h
 STR_UNITS_VELOCITY_SI                                           :{DECIMAL}{NBSP}m/s
+STR_UNITS_VELOCITY_GAMEUNITS_DAY                                :{DECIMAL}{NBSP}ô/ngày
+STR_UNITS_VELOCITY_GAMEUNITS_SEC                                :{DECIMAL}{NBSP}ô/giây
 STR_UNITS_VELOCITY_KNOTS                                        :{DECIMAL}{NBSP}hải lý
 
 STR_UNITS_POWER_IMPERIAL                                        :{DECIMAL}{NBSP}hp
@@ -428,7 +430,7 @@ STR_SCENEDIT_FILE_MENU_SEPARATOR                                :
 STR_SCENEDIT_FILE_MENU_QUIT                                     :Thoát
 
 # Settings menu
-###length 15
+###length 16
 STR_SETTINGS_MENU_GAME_OPTIONS                                  :Cấu hình trò chơi
 STR_SETTINGS_MENU_CONFIG_SETTINGS_TREE                          :Thiết lập
 STR_SETTINGS_MENU_AI_SETTINGS                                   :Thiết lập AI
@@ -665,11 +667,9 @@ STR_PERFORMANCE_DETAIL_CARGO                                    :{BLACK}Hàng h�
 STR_PERFORMANCE_DETAIL_MONEY                                    :{BLACK}Tiền:
 STR_PERFORMANCE_DETAIL_LOAN                                     :{BLACK}Vay:
 STR_PERFORMANCE_DETAIL_TOTAL                                    :{BLACK}Tổng cộng:
+###next-name-looks-similar
 
-###length 10
-STR_PERFORMANCE_DETAIL_VEHICLES_TOOLTIP                         :{BLACK}Số lượng phương tiện đã làm ra lợi nhuận năm trước ; bao gồm xe cộ, tàu hoả, tàu thủy và máy bay
 STR_PERFORMANCE_DETAIL_STATIONS_TOOLTIP                         :{BLACK}Số trạm mới được phục vụ.Nhà ga, trạm xe buýt và sân bay ... đều được tính riêng, dù chúng có chung một trạm
-STR_PERFORMANCE_DETAIL_MIN_PROFIT_TOOLTIP                       :{BLACK}Lợi nhuận của những phương tiện có thu nhập thấp nhất (chỉ tính các phương tiện hơn 2 năm tuổi)
 STR_PERFORMANCE_DETAIL_MIN_INCOME_TOOLTIP                       :{BLACK}Doanh thu trong quý với lợi nhuận thấp nhất trong 12 quý gần đây
 STR_PERFORMANCE_DETAIL_MAX_INCOME_TOOLTIP                       :{BLACK}Doanh thu trong tháng với lợi nhuận cao nhất trong 12 quý gần đây
 STR_PERFORMANCE_DETAIL_DELIVERED_TOOLTIP                        :{BLACK}Lượng hàng đã vận chuyển trong bốn quý gần đây
@@ -901,7 +901,6 @@ STR_NEWS_VEHICLE_IS_GETTING_VERY_OLD                            :{WHITE}{VEHICLE
 STR_NEWS_VEHICLE_IS_GETTING_VERY_OLD_AND                        :{WHITE}{VEHICLE} đang xuống cấp trầm trọng và cần được thay thế ngay lập tức
 STR_NEWS_TRAIN_IS_STUCK                                         :{WHITE}{VEHICLE} không thể tìm đường đi tiếp.
 STR_NEWS_VEHICLE_IS_LOST                                        :{WHITE}{VEHICLE} bị mất phương hướng.
-STR_NEWS_VEHICLE_IS_UNPROFITABLE                                :{WHITE}Lợi nhuận của {VEHICLE} năm trước là {CURRENCY_LONG}
 STR_NEWS_AIRCRAFT_DEST_TOO_FAR                                  :{WHITE}{VEHICLE} không thể tới điểm đến kế tiếp vì nó vượt tầm
 
 STR_NEWS_ORDER_REFIT_FAILED                                     :{WHITE}{VEHICLE} đã dừng lại do yêu cầu cải biến thất bại
@@ -918,16 +917,9 @@ STR_NEWS_STATION_NOW_ACCEPTS_CARGO_LIST                         :{WHITE}{STATION
 
 STR_NEWS_OFFER_OF_SUBSIDY_EXPIRED                               :{BIG_FONT}{BLACK}Lời đề nghị trợ cấp đã hết hạn:{}{}{STRING} từ {STRING} đến {STRING} bây giờ sẽ không có trợ cấp.
 STR_NEWS_SUBSIDY_WITHDRAWN_SERVICE                              :{BIG_FONT}{BLACK}Trợ cấp đã hết:{}{}Dịch vụ vận chuyển {STRING} từ {STRING} đến {STRING} sẽ không được trợ cấp nữa.
-STR_NEWS_SERVICE_SUBSIDY_OFFERED                                :{BIG_FONT}{BLACK}Đề nghị trợ cấp:{}{}Dịch vụ {STRING} đầu tiên từ {STRING} đến {STRING} sẽ nhận được tiền trợ cấp trong {NUM} năm của chính quyền địa phương!
 ###length 4
-STR_NEWS_SERVICE_SUBSIDY_AWARDED_HALF                           :{BIG_FONT}{BLACK}Trợ cấp dịch vụ được trao cho {STRING}!{}{}{STRING} từ {STRING} đến {STRING} sẽ thu lợi cao hơn 50% trong vòng {NUM} năm tới!
-STR_NEWS_SERVICE_SUBSIDY_AWARDED_DOUBLE                         :{BIG_FONT}{BLACK}Trợ cấp dịch vụ được trao cho {STRING}!{}{}{STRING} từ {STRING} đến {STRING} sẽ thu lợi gấp đôi trong vòng {NUM} năm tới!
-STR_NEWS_SERVICE_SUBSIDY_AWARDED_TRIPLE                         :{BIG_FONT}{BLACK}Trợ cấp dịch vụ được trao cho {STRING}!{}{}{STRING} từ {STRING} đến {STRING} sẽ thu lợi gấp ba trong vòng {NUM} năm tới!
-STR_NEWS_SERVICE_SUBSIDY_AWARDED_QUADRUPLE                      :{BIG_FONT}{BLACK}Trợ cấp dịch vụ được trao cho {STRING}!{}{}{STRING} từ {STRING} đến {STRING} sẽ thu lợi gấp tư trong vòng {NUM} năm tới!
 
-STR_NEWS_ROAD_REBUILDING                                        :{BIG_FONT}{BLACK}Giao thông hỗn loạn tại {TOWN}!{}{}Chương trình sửa đường đầu tư bởi {STRING} mang 6 tháng khốn đốn cho người chạy mô tô!
 STR_NEWS_EXCLUSIVE_RIGHTS_TITLE                                 :{BIG_FONT}{BLACK}Độc quyền vận tải!
-STR_NEWS_EXCLUSIVE_RIGHTS_DESCRIPTION                           :{BIG_FONT}{BLACK}Chính quyền địa phương {TOWN} ký hợp đồng với {STRING} cho phép độc quyền vận tải trong vòng 1 năm!
 
 # Extra view window
 STR_EXTRA_VIEWPORT_TITLE                                        :{WHITE}Cửa sổ {COMMA}
@@ -945,6 +937,7 @@ STR_GAME_OPTIONS_TAB_GRAPHICS                                   :Đồ họa
 STR_GAME_OPTIONS_TAB_GRAPHICS_TT                                :{BLACK}Điều chỉnh thiết lập đồ họa
 STR_GAME_OPTIONS_TAB_SOUND                                      :Âm thanh
 STR_GAME_OPTIONS_TAB_SOUND_TT                                   :{BLACK}Lựa chọn thiết lập cho âm thanh và nhạc
+STR_GAME_OPTIONS_TAB_SOCIAL                                     :Xã hội
 
 STR_GAME_OPTIONS_VOLUME                                         :Âm lượng
 STR_GAME_OPTIONS_SFX_VOLUME                                     :Hiệu ứng âm thanh
@@ -1080,7 +1073,9 @@ STR_GAME_OPTIONS_BASE_MUSIC_TOOLTIP                             :{BLACK}Chọn g
 STR_GAME_OPTIONS_BASE_MUSIC_DESCRIPTION_TOOLTIP                 :{BLACK}Thông tin thêm về gói nhạc chuẩn
 
 
+STR_GAME_OPTIONS_SOCIAL_PLUGIN_PLATFORM                         :{BLACK}Nền tảng:
 
+STR_GAME_OPTIONS_SOCIAL_PLUGIN_STATE_PLATFORM_NOT_RUNNING       :{ORANGE}{STRING} đang không chạy
 
 STR_BASESET_STATUS                                              :{STRING} {RED}({NUM} file bị hỏng/thiếu
 
@@ -1270,9 +1265,9 @@ STR_CONFIG_SETTING_SUBSIDY_MULTIPLIER                           :Tỉ lệ chi t
 STR_CONFIG_SETTING_SUBSIDY_MULTIPLIER_HELPTEXT                  :Thiết lập mức chi trả cho tuyến vận chuyển phụ trợ
 
 STR_CONFIG_SETTING_SUBSIDY_DURATION                             :Thời hạn trợ cấp: {STRING}
+###length 2
 STR_CONFIG_SETTING_SUBSIDY_DURATION_HELPTEXT                    :Đặt số năm được hưởng trợ cấp dịch vụ
 
-STR_CONFIG_SETTING_SUBSIDY_DURATION_VALUE                       :{NUM} năm
 ###setting-zero-is-special
 STR_CONFIG_SETTING_SUBSIDY_DURATION_DISABLED                    :Không có trợ cấp
 
@@ -1368,7 +1363,10 @@ STR_CONFIG_SETTING_SIGNALSIDE_LEFT                              :Phía bên trá
 STR_CONFIG_SETTING_SIGNALSIDE_DRIVING_SIDE                      :Phía xe chạy
 STR_CONFIG_SETTING_SIGNALSIDE_RIGHT                             :Phía bên phải
 
+###length 2
 STR_CONFIG_SETTING_SHOWFINANCES                                 :Hiện bảng tài chính vào cuối năm: {STRING}
+
+###length 2
 STR_CONFIG_SETTING_SHOWFINANCES_HELPTEXT                        :Nếu được bật, cửa số báo cáo tài chính sẽ tự bật lên cuối mỗi năm để có thể nhìn trạng thái tài chính công ty
 
 STR_CONFIG_SETTING_NONSTOP_BY_DEFAULT                           :Đặt các điểm lộ trình mới sẽ là 'chạy suốt" làm mặc định: {STRING}
@@ -1390,9 +1388,11 @@ STR_CONFIG_SETTING_AUTOSCROLL_MAIN_VIEWPORT                     :Cửa sổ chí
 STR_CONFIG_SETTING_AUTOSCROLL_EVERY_VIEWPORT                    :Mọi cửa sổ bổ sung
 
 STR_CONFIG_SETTING_BRIBE                                        :Cho phép hối lộ chính quyền địa phương: {STRING}
+###length 2
 STR_CONFIG_SETTING_BRIBE_HELPTEXT                               :Cho phép công ty thử hối lộ quan chức địa phương. Nếu việc hối lộ bị phát giác, công ty sẽ không được làm gì ở địa phương đó 6 tháng
 
 STR_CONFIG_SETTING_ALLOW_EXCLUSIVE                              :Cho phép mua quyền vận tải độc quyền: {STRING}
+###length 2
 STR_CONFIG_SETTING_ALLOW_EXCLUSIVE_HELPTEXT                     :Nếu một công ty mua quyền vân tải độc quyền tại địa phương, thì các trạm của đối thủ sẽ không nhận được hàng hóa và hành khách trong vòng 1 năm
 
 STR_CONFIG_SETTING_ALLOW_FUND_BUILDINGS                         :Cho phép góp vốn cho các công trình: {STRING}
@@ -1450,12 +1450,16 @@ STR_CONFIG_SETTING_ORDER_REVIEW_EXDEPOT                         :có, nhưng tr�
 STR_CONFIG_SETTING_ORDER_REVIEW_ON                              :tất cả phương tiện
 
 STR_CONFIG_SETTING_WARN_INCOME_LESS                             :Cảnh báo nếu thu nhập của phương tiện bị lỗ: {STRING}
+###length 2
 STR_CONFIG_SETTING_WARN_INCOME_LESS_HELPTEXT                    :Nếu bật, sẽ có thông báo nếu một phương tiện nào đó không có lãi trong một năm
 
 STR_CONFIG_SETTING_NEVER_EXPIRE_VEHICLES                        :Phương tiện không bao giờ hết hạn sử dụng: {STRING}
 STR_CONFIG_SETTING_NEVER_EXPIRE_VEHICLES_HELPTEXT               :Nếu bật, tất cả các model phương tiện sẽ không bị lỗi thời
 
 ###length 2
+
+
+###setting-zero-is-special
 
 STR_CONFIG_SETTING_AUTORENEW_VEHICLE                            :Tự thay mới phương tiện nếu hết hạn sử dụng: {STRING}
 STR_CONFIG_SETTING_AUTORENEW_VEHICLE_HELPTEXT                   :Nếu bật, phương tiện gần hết hạn sẽ được tự động thay mới và điều kiện thay mới được thỏa mãn
@@ -1709,7 +1713,10 @@ STR_CONFIG_SETTING_SOUND_TICKER_HELPTEXT                        :Phát âm thanh
 STR_CONFIG_SETTING_SOUND_NEWS                                   :Báo chí: {STRING}
 STR_CONFIG_SETTING_SOUND_NEWS_HELPTEXT                          :Phát âm thanh khi có báo mới
 
+###length 2
 STR_CONFIG_SETTING_SOUND_NEW_YEAR                               :Kết thúc cuối năm: {STRING}
+
+###length 2
 STR_CONFIG_SETTING_SOUND_NEW_YEAR_HELPTEXT                      :Phát âm thanh cuối mỗi năm khi hiển thị bảng tổng kết hiệu quả cuối năm so với năm cũ
 
 STR_CONFIG_SETTING_SOUND_CONFIRM                                :Xây dựng: {STRING}
@@ -2006,11 +2013,9 @@ STR_CONFIG_SETTING_SHORT_PATH_SATURATION_HELPTEXT               :Thường sẽ 
 STR_CONFIG_SETTING_LOCALISATION_UNITS_VELOCITY                  :Đơn vị tốc độ (đất liền): {STRING}
 STR_CONFIG_SETTING_LOCALISATION_UNITS_VELOCITY_NAUTICAL         :Đơn vị tốc độ (hàng hải): {STRING}
 STR_CONFIG_SETTING_LOCALISATION_UNITS_VELOCITY_HELPTEXT         :Khi thể hiện tốc độ trên giao diện, thể hiện nó bằng đơn vị đã chọn.
-###length 5
 STR_CONFIG_SETTING_LOCALISATION_UNITS_VELOCITY_IMPERIAL         :Imperial (mph)
 STR_CONFIG_SETTING_LOCALISATION_UNITS_VELOCITY_METRIC           :Metric (km/h)
 STR_CONFIG_SETTING_LOCALISATION_UNITS_VELOCITY_SI               :SI (m/s)
-STR_CONFIG_SETTING_LOCALISATION_UNITS_VELOCITY_GAMEUNITS        :Đơn vị trong trò chơi (ô/ngày)
 STR_CONFIG_SETTING_LOCALISATION_UNITS_VELOCITY_KNOTS            :Hải lý
 
 STR_CONFIG_SETTING_LOCALISATION_UNITS_POWER                     :Đơn vị công suất phương tiện: {STRING}
@@ -2065,10 +2070,12 @@ STR_CONFIG_SETTING_LIMITATIONS                                  :Giới hạn
 STR_CONFIG_SETTING_ACCIDENTS                                    :Thiên tai / Tai nạn
 STR_CONFIG_SETTING_GENWORLD                                     :Khởi tạo bản đồ
 STR_CONFIG_SETTING_ENVIRONMENT                                  :Môi trường
+STR_CONFIG_SETTING_ENVIRONMENT_TIME                             :Thời gian
 STR_CONFIG_SETTING_ENVIRONMENT_AUTHORITIES                      :Chính quyền
 STR_CONFIG_SETTING_ENVIRONMENT_TOWNS                            :Đô thị
 STR_CONFIG_SETTING_ENVIRONMENT_INDUSTRIES                       :Nhà máy
 STR_CONFIG_SETTING_ENVIRONMENT_CARGODIST                        :Phân bổ hàng hóa
+STR_CONFIG_SETTING_ENVIRONMENT_TREES                            :Cây cối
 STR_CONFIG_SETTING_AI                                           :Đối Thủ
 STR_CONFIG_SETTING_AI_NPC                                       :Nhân vật máy
 STR_CONFIG_SETTING_NETWORK                                      :Kết nối
@@ -2183,8 +2190,6 @@ STR_HELP_WINDOW_COMMUNITY                                       :{BLACK}Cộng �
 
 # Cheat window
 STR_CHEATS                                                      :{WHITE}Cheats
-STR_CHEATS_TOOLTIP                                              :{BLACK}Ô đánh dấu cho biết nếu bạn đã từng dùng mã ăn gian đó
-STR_CHEATS_NOTE                                                 :{BLACK}Chú ý: việc sử dụng các thiết lập này sẽ được ghi lại trong bản lưu ván chơi
 STR_CHEAT_MONEY                                                 :{LTBLUE}Tăng số tiền lên {CURRENCY_LONG}
 STR_CHEAT_CHANGE_COMPANY                                        :{LTBLUE}Điều khiển công ty: {ORANGE}{COMMA}
 STR_CHEAT_EXTRA_DYNAMITE                                        :{LTBLUE}Xe ủi thần kỳ (xóa bỏ nhà máy, vật không thể di chuyển): {ORANGE}{STRING}
@@ -2313,8 +2318,6 @@ STR_NETWORK_SERVER_LIST_MAP_SIZE_CAPTION                        :{BLACK}Kích th
 STR_NETWORK_SERVER_LIST_MAP_SIZE_CAPTION_TOOLTIP                :{BLACK}Kích thước bản đồ trong game{}Nhấn vào đây để sắp xếp theo diện tích
 STR_NETWORK_SERVER_LIST_DATE_CAPTION                            :{BLACK}Năm
 STR_NETWORK_SERVER_LIST_DATE_CAPTION_TOOLTIP                    :{BLACK}Ngày hiện tại
-STR_NETWORK_SERVER_LIST_YEARS_CAPTION                           :{BLACK}Số Năm
-STR_NETWORK_SERVER_LIST_YEARS_CAPTION_TOOLTIP                   :{BLACK}Số năm{}mà game đang chạy
 STR_NETWORK_SERVER_LIST_INFO_ICONS_TOOLTIP                      :{BLACK}Ngôn ngữ, phiên bản server, etc.
 
 STR_NETWORK_SERVER_LIST_CLICK_GAME_TO_SELECT                    :{BLACK}Chọn một game trong danh sách
@@ -2685,9 +2688,7 @@ STR_LINKGRAPH_LEGEND_SATURATED                                  :{TINY_FONT}{BLA
 STR_LINKGRAPH_LEGEND_OVERLOADED                                 :{TINY_FONT}{BLACK}quá tải
 
 # Linkgraph tooltip
-STR_LINKGRAPH_STATS_TOOLTIP                                     :{BLACK}{CARGO_LONG} sẽ được vận chuyển hằng tháng từ {STATION} đến {STATION} ({COMMA}% dung lượng){STRING}
 STR_LINKGRAPH_STATS_TOOLTIP_RETURN_EXTENSION                    :{}{CARGO_LONG} sẽ được hoàn chuyển ({COMMA}% dung lượng)
-STR_LINKGRAPH_STATS_TOOLTIP_TIME_EXTENSION                      :{}Thời gian đi lại trung bình: {NUM}{NBSP}ngày
 
 # Base for station construction window(s)
 STR_STATION_BUILD_COVERAGE_AREA_TITLE                           :{BLACK}Hiện rõ vùng phủ ảnh hưởng
@@ -2697,7 +2698,6 @@ STR_STATION_BUILD_COVERAGE_AREA_OFF_TOOLTIP                     :{BLACK}Không h
 STR_STATION_BUILD_COVERAGE_AREA_ON_TOOLTIP                      :{BLACK}Hiện vùng che phủ của điểm đề xuất
 STR_STATION_BUILD_ACCEPTS_CARGO                                 :{BLACK}Chấp nhận: {GOLD}{CARGO_LIST}
 STR_STATION_BUILD_SUPPLIES_CARGO                                :{BLACK}Cung cấp: {GOLD}{CARGO_LIST}
-STR_STATION_BUILD_INFRASTRUCTURE_COST                           :{BLACK}Chi phí bảo trì: {GOLD}{CURRENCY_SHORT}/năm
 
 # Join station window
 STR_JOIN_STATION_CAPTION                                        :{WHITE}Nối ga, bến
@@ -3549,8 +3549,6 @@ STR_TOWN_VIEW_CARGO_FOR_TOWNGROWTH_REQUIRED_WINTER              :{ORANGE}{STRING
 STR_TOWN_VIEW_CARGO_FOR_TOWNGROWTH_DELIVERED_GENERAL            :{GREEN}Đã chuyển được {ORANGE}{STRING}
 STR_TOWN_VIEW_CARGO_FOR_TOWNGROWTH_REQUIRED                     :{ORANGE}{CARGO_TINY} / {CARGO_LONG}{RED} (vẫn còn yêu cầu)
 STR_TOWN_VIEW_CARGO_FOR_TOWNGROWTH_DELIVERED                    :{ORANGE}{CARGO_TINY} / {CARGO_LONG}{GREEN} (đã được vận chuyển)
-STR_TOWN_VIEW_TOWN_GROWS_EVERY                                  :{BLACK}Thị trấn phát triển mỗi {ORANGE}{COMMA}{BLACK}{NBSP}ngày
-STR_TOWN_VIEW_TOWN_GROWS_EVERY_FUNDED                           :{BLACK}Thị trấn phát triển mỗi {ORANGE}{COMMA}{BLACK}{NBSP}ngày (đã được góp vốn)
 STR_TOWN_VIEW_TOWN_GROW_STOPPED                                 :{BLACK}Thị trấn {RED}không còn{BLACK} phát triển
 STR_TOWN_VIEW_NOISE_IN_TOWN                                     :{BLACK}Độ ồn giới hạn trong đô thị: {ORANGE}{COMMA}{BLACK}  max: {ORANGE}{COMMA}
 STR_TOWN_VIEW_CENTER_TOOLTIP                                    :{BLACK}Xem trung tâm đô thị. Ctrl+Click mở cửa sổ mới về vị trí đô thị
@@ -3585,15 +3583,13 @@ STR_LOCAL_AUTHORITY_ACTION_STATUE_OF_COMPANY                    :Xây tượng �
 STR_LOCAL_AUTHORITY_ACTION_NEW_BUILDINGS                        :Tài trợ xây nhà cửa
 STR_LOCAL_AUTHORITY_ACTION_EXCLUSIVE_TRANSPORT                  :Mua độc quyền kinh doanh vận tải
 STR_LOCAL_AUTHORITY_ACTION_BRIBE                                :Hối lộ quan chức địa phương
+###next-name-looks-similar
 
-###length 8
 STR_LOCAL_AUTHORITY_ACTION_TOOLTIP_SMALL_ADVERTISING            :{PUSH_COLOUR}{YELLOW}Thực hiện chiến dịch quảng cáo nhỏ để thu hút khách và hàng hoá vận chuyển.{}Tăng xếp hạng cho các trạm gần trung tâm trong thời gian ngắn.{}{POP_COLOUR}Chi phí: {CURRENCY_LONG}
 STR_LOCAL_AUTHORITY_ACTION_TOOLTIP_MEDIUM_ADVERTISING           :{PUSH_COLOUR}{YELLOW}Thực hiện chiến dịch quảng cáo trung bình để thu hút khách và hàng hoá vận chuyển.{}Tăng xếp hạng cho các trạm xung quanh trung tâm trong thời gian ngắn.{}{POP_COLOUR}Chi phí: {CURRENCY_LONG}
 STR_LOCAL_AUTHORITY_ACTION_TOOLTIP_LARGE_ADVERTISING            :{PUSH_COLOUR}{YELLOW}Thực hiện chiến dịch quảng cáo lớn để thu hút khách và hàng hoá vận chuyển.{}Tăng xếp hạng cho các trạm xung quanh & xa trung tâm trong thời gian ngắn.{}{POP_COLOUR}Chi phí: {CURRENCY_LONG}
-STR_LOCAL_AUTHORITY_ACTION_TOOLTIP_ROAD_RECONSTRUCTION          :{PUSH_COLOUR}{YELLOW}Tài trợ xây dựng lại đường sá của đô thị.{} Sẽ gây ách tắc giao thông đường bộ trong 6 tháng.{}{POP_COLOUR}Chi phí: {CURRENCY_LONG}
 STR_LOCAL_AUTHORITY_ACTION_TOOLTIP_STATUE_OF_COMPANY            :{PUSH_COLOUR}{YELLOW}Dựng tượng đài tôn vinh để quảng bá hình ảnh công ty.{} Tăng xếp hạng cho các trạm trong khu vực.{}{POP_COLOUR} Chi phí: {CURRENCY_LONG}
 STR_LOCAL_AUTHORITY_ACTION_TOOLTIP_NEW_BUILDINGS                :{PUSH_COLOUR}{YELLOW}Tài trợ xây dựng các toà nhà để thúc đẩy phát triển đô thị.{}Tăng sự phát triển đô thị trong một thời gian ngắn.{}{POP_COLOUR}Chi phí: {CURRENCY_LONG}
-STR_LOCAL_AUTHORITY_ACTION_TOOLTIP_EXCLUSIVE_TRANSPORT          :{PUSH_COLOUR}{YELLOW}Mua 1 năm độc quyền kinh doanh vận tải của đô thị.{} Chính quyền địa phương sẽ ra luật chỉ cho phép hành khách và hàng hoá vào nhà ga, bến, cảng của công ty. Việc hối lộ thành công từ đối thủ cạnh tranh sẽ hủy hợp đồng này.{}{POP_COLOUR}Chi phí: {CURRENCY_LONG}
 STR_LOCAL_AUTHORITY_ACTION_TOOLTIP_BRIBE                        :{PUSH_COLOUR}{YELLOW}Đút lót quan chức địa phương để nâng cao quyền lợi và hủy bỏ độc quyền kinh doanh vận tải của đối thủ, có nguy cơ bị phạt nặng nếu vụ việc bị bại lộ.{}{POP_COLOUR}Chi phí: {CURRENCY_LONG}
 
 # Goal window
@@ -3640,9 +3636,12 @@ STR_GOAL_QUESTION_BUTTON_CLOSE                                  :Đóng
 # Subsidies window
 STR_SUBSIDIES_CAPTION                                           :{WHITE}Trợ Cấp
 STR_SUBSIDIES_OFFERED_TITLE                                     :{BLACK}Trợ cấp sẽ có cho dịch vụ sau:
+STR_SUBSIDIES_OFFERED_FROM_TO                                   :{ORANGE}{STRING} từ {STRING} đến {STRING}{YELLOW} ({STRING})
 STR_SUBSIDIES_NONE                                              :{ORANGE}- Không -
 STR_SUBSIDIES_SUBSIDISED_TITLE                                  :{BLACK}Chính quyền đã dành trợ cấp cho dịch vụ của:
+STR_SUBSIDIES_SUBSIDISED_FROM_TO                                :{ORANGE}{STRING} từ {STRING} đến {STRING}{YELLOW} ({COMPANY}{YELLOW}, {STRING})
 STR_SUBSIDIES_TOOLTIP_CLICK_ON_SERVICE_TO_CENTER                :{BLACK}Nháy vào tên dịch vụ để xem nhà máy/đô thị liên quan. Ctrl+Click mở cửa sổ mới để xem
+STR_SUBSIDIES_OFFERED_EXPIRY_DATE                               :đến {DATE_SHORT}
 
 # Story book window
 STR_STORY_BOOK_CAPTION                                          :{WHITE}{COMPANY} Tình Tiết
@@ -3682,7 +3681,6 @@ STR_STATION_VIEW_EXCLUSIVE_RIGHTS_COMPANY                       :{YELLOW}{COMPAN
 
 STR_STATION_VIEW_RATINGS_BUTTON                                 :{BLACK}Uy tín
 STR_STATION_VIEW_RATINGS_TOOLTIP                                :{BLACK}Hiện uy tín ga, bến, cảng
-STR_STATION_VIEW_SUPPLY_RATINGS_TITLE                           :{BLACK}Sản lượng và đánh giá địa phương hàng tháng:
 STR_STATION_VIEW_CARGO_SUPPLY_RATING                            :{WHITE}{STRING}: {YELLOW}{COMMA} / {STRING} ({COMMA}%)
 
 STR_STATION_VIEW_GROUP                                          :{BLACK}Nhóm bằng
@@ -3844,7 +3842,6 @@ STR_COMPANY_INFRASTRUCTURE_VIEW_CANALS                          :{WHITE}Kênh đ
 STR_COMPANY_INFRASTRUCTURE_VIEW_STATION_SECT                    :{GOLD}Ga, bến:
 STR_COMPANY_INFRASTRUCTURE_VIEW_STATIONS                        :{WHITE}Các ô ga, bến
 STR_COMPANY_INFRASTRUCTURE_VIEW_AIRPORTS                        :{WHITE}Sân bay
-STR_COMPANY_INFRASTRUCTURE_VIEW_TOTAL                           :{WHITE}{CURRENCY_LONG}/năm
 
 # Industry directory
 STR_INDUSTRY_DIRECTORY_CAPTION                                  :{WHITE}Nhà máy
@@ -3977,7 +3974,6 @@ STR_PURCHASE_INFO_SPEED_POWER                                   :{BLACK}Tốc đ
 STR_PURCHASE_INFO_SPEED                                         :{BLACK}Tốc độ: {GOLD}{VELOCITY}
 STR_PURCHASE_INFO_SPEED_OCEAN                                   :{BLACK}Tốc độ trên biển: {GOLD}{VELOCITY}
 STR_PURCHASE_INFO_SPEED_CANAL                                   :{BLACK}Tốc độ trên kênh/sông: {GOLD}{VELOCITY}
-STR_PURCHASE_INFO_RUNNINGCOST                                   :{BLACK}Chi phí hoạt động: {GOLD}{CURRENCY_LONG}/yr
 STR_PURCHASE_INFO_CAPACITY                                      :{BLACK}Sức chứa: {GOLD}{CARGO_LONG} {STRING}
 STR_PURCHASE_INFO_REFITTABLE                                    :(cải biến được)
 STR_PURCHASE_INFO_DESIGNED_LIFE                                 :{BLACK}Thiết kế: {GOLD}{NUM}{BLACK} Niên hạn: {GOLD}{COMMA} năm
@@ -4170,13 +4166,6 @@ STR_ENGINE_PREVIEW_TRAM_VEHICLE                                 :toa xe điện
 STR_ENGINE_PREVIEW_AIRCRAFT                                     :máy bay
 STR_ENGINE_PREVIEW_SHIP                                         :tàu thuỷ
 
-STR_ENGINE_PREVIEW_COST_WEIGHT_SPEED_POWER                      :{BLACK}Giá thành: {CURRENCY_LONG} Tải trọng: {WEIGHT_SHORT}{}Tốc độ: {VELOCITY}  Công suất: {POWER}{}Chi phí hoạt động: {CURRENCY_LONG}/năm{}Sức chứa: {CARGO_LONG}
-STR_ENGINE_PREVIEW_COST_WEIGHT_SPEED_POWER_MAX_TE               :{BLACK}Giá: {0:CURRENCY_LONG} Nặng: {1:WEIGHT_SHORT}{}Tốc độ: {2:VELOCITY}  Công suất: {3:POWER}  Max. T.E.: {6:FORCE}{}Giá vận hành: {4:CURRENCY_LONG}/yr{}Năng suất: {5:CARGO_LONG}
-STR_ENGINE_PREVIEW_COST_MAX_SPEED_CAP_RUNCOST                   :{BLACK}Giá thành: {CURRENCY_LONG} Tốc độ tối đa: {VELOCITY}{}Sức chứa: {CARGO_LONG}{}Chi phí hoạt động: {CURRENCY_LONG}/năm
-STR_ENGINE_PREVIEW_COST_MAX_SPEED_TYPE_CAP_CAP_RUNCOST          :{BLACK}Giá: {CURRENCY_LONG} Tốc độ tối đa: {VELOCITY}{}Kiểu máy bay: {STRING}{}Sức chứa: {CARGO_LONG}, {CARGO_LONG}{}Chi phí hoạt động: {CURRENCY_LONG}/năm
-STR_ENGINE_PREVIEW_COST_MAX_SPEED_TYPE_CAP_RUNCOST              :{BLACK}GIá: {CURRENCY_LONG} Tốc độ tối đa: {VELOCITY}{}Kiểu máy bay: {STRING}{}Sức chứa: {CARGO_LONG}{}Chi phí hoạt động: {CURRENCY_LONG}/năm
-STR_ENGINE_PREVIEW_COST_MAX_SPEED_TYPE_RANGE_CAP_CAP_RUNCOST    :{BLACK}Giá: {CURRENCY_LONG} Tốc độ tối đa: {VELOCITY}{}Kiểu máy bay: {STRING} Tầm xa: {COMMA} ô{}Sức chứa: {CARGO_LONG}, {CARGO_LONG}{}Chi phí hoạt động: {CURRENCY_LONG}/năm
-STR_ENGINE_PREVIEW_COST_MAX_SPEED_TYPE_RANGE_CAP_RUNCOST        :{BLACK}Giá: {CURRENCY_LONG} Tốc độ tối đa: {VELOCITY}{}Kiểu máy bay: {STRING} Tầm xa: {COMMA} ô{}Sức chứa: {CARGO_LONG}{}Chi phí hoạt động: {CURRENCY_LONG}/năm
 
 # Autoreplace window
 STR_REPLACE_VEHICLES_WHITE                                      :{WHITE}Thay thế {STRING} - {STRING}
@@ -4341,8 +4330,6 @@ STR_VEHICLE_INFO_CAPACITY_CAPACITY                              :{BLACK}Sức ch
 
 STR_VEHICLE_INFO_FEEDER_CARGO_VALUE                             :{BLACK}Cước trung chuyển: {LTBLUE}{CURRENCY_LONG}
 
-STR_VEHICLE_DETAILS_INCREASE_SERVICING_INTERVAL_TOOLTIP         :{BLACK}Tăng tần suất bảo trì lên 10. Ctrl+Click để tăng 5 thôi
-STR_VEHICLE_DETAILS_DECREASE_SERVICING_INTERVAL_TOOLTIP         :{BLACK}Giảm tần suất bảo trì lên 10. Ctrl+Click để giảm 5 thôi
 
 STR_SERVICE_INTERVAL_DROPDOWN_TOOLTIP                           :{BLACK}Thay đổi kiểu tần suất phục vụ
 STR_VEHICLE_DETAILS_DEFAULT                                     :Mặc định

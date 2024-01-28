@@ -362,7 +362,7 @@ STR_SCENEDIT_FILE_MENU_SEPARATOR                                :
 STR_SCENEDIT_FILE_MENU_QUIT                                     :Hætta
 
 # Settings menu
-###length 15
+###length 16
 STR_SETTINGS_MENU_GAME_OPTIONS                                  :Stillingar
 STR_SETTINGS_MENU_NEWGRF_SETTINGS                               :NewGRF stillingar
 STR_SETTINGS_MENU_TRANSPARENCY_OPTIONS                          :Gegnsæisstillingar
@@ -591,11 +591,9 @@ STR_PERFORMANCE_DETAIL_CARGO                                    :{BLACK}Farmur:
 STR_PERFORMANCE_DETAIL_MONEY                                    :{BLACK}Reiðufé:
 STR_PERFORMANCE_DETAIL_LOAN                                     :{BLACK}Lán:
 STR_PERFORMANCE_DETAIL_TOTAL                                    :{BLACK}Alls:
+###next-name-looks-similar
 
-###length 10
-STR_PERFORMANCE_DETAIL_VEHICLES_TOOLTIP                         :{BLACK}Fjöldi farartækja sem skiluðu hagnaði síðasta ár. Inniheldur bifreiðar, lestir, skip og flugvélar
 STR_PERFORMANCE_DETAIL_STATIONS_TOOLTIP                         :{BLACK}Fjöldi stöðvarhluta sem hafa nýlega verið þjónustaðir. Hver hluti stöðvar (t.d. lestarstöð, strætóstöð, flugvöllur) er talinn sérstaklega, jafnvel þótt þeir séu tengdir einni stöð
-STR_PERFORMANCE_DETAIL_MIN_PROFIT_TOOLTIP                       :{BLACK}Hagnaður tekjulægsta farartækisins (sem þó er eldra en 2 ára)
 STR_PERFORMANCE_DETAIL_MIN_INCOME_TOOLTIP                       :{BLACK}Heildar afkoma í ársfjórðungi með lægsta gróða yfir síðastliðna 12 ársfjórðunga
 STR_PERFORMANCE_DETAIL_MAX_INCOME_TOOLTIP                       :{BLACK}Heildar afkoma í ársfjórðungi með hæðsta gróða yfir síðastliðnu 12 ársfjórðunga
 STR_PERFORMANCE_DETAIL_DELIVERED_TOOLTIP                        :{BLACK}Einingar farms sem fluttar hafa verið síðasta árið
@@ -811,7 +809,6 @@ STR_NEWS_VEHICLE_IS_GETTING_VERY_OLD                            :{WHITE}{VEHICLE
 STR_NEWS_VEHICLE_IS_GETTING_VERY_OLD_AND                        :{WHITE}{VEHICLE} er tekinn að eldast mikið og nauðsynlegt er að skipta honum út
 STR_NEWS_TRAIN_IS_STUCK                                         :{WHITE}{VEHICLE} ratar ekki á áfangastað
 STR_NEWS_VEHICLE_IS_LOST                                        :{WHITE}{VEHICLE} hefur villst
-STR_NEWS_VEHICLE_IS_UNPROFITABLE                                :{WHITE}Hagnaður síðasta árs af {VEHICLE} nam {CURRENCY_LONG}
 STR_NEWS_AIRCRAFT_DEST_TOO_FAR                                  :{WHITE}{VEHICLE} kemst ekki á næsta áfangastað vegna þess að hann er of langt í burtu
 
 STR_NEWS_ORDER_REFIT_FAILED                                     :{WHITE}{VEHICLE} stöðvaði vegna þess að umbeðin endursetning klikkaði
@@ -825,16 +822,9 @@ STR_NEWS_NEW_VEHICLE_NOW_AVAILABLE_WITH_TYPE                    :{BLACK}Ný {STR
 
 STR_NEWS_OFFER_OF_SUBSIDY_EXPIRED                               :{BIG_FONT}{BLACK}Tilboð til samstarfssamnings runnið út:{}{}{STRING} frá {STRING} til {STRING} mun ekki vera samningsbundið.
 STR_NEWS_SUBSIDY_WITHDRAWN_SERVICE                              :{BIG_FONT}{BLACK}Samsarfssamningur gerður ógildur:{}{} {STRING}flutningur frá {STRING} til {STRING} er ekki lengur samningsbundinn.
-STR_NEWS_SERVICE_SUBSIDY_OFFERED                                :{BIG_FONT}{BLACK}Nýtt tilboð til samstarfssamnings:{}{}Fyrsti {STRING}flutningur frá {STRING} til {STRING} mun stofna til eins árs samstarfssamnings við bæjaryfirvöld!
 ###length 4
-STR_NEWS_SERVICE_SUBSIDY_AWARDED_HALF                           :{BIG_FONT}{BLACK}Samstarfssamningur gerður við {STRING}!{}{}{STRING}flutningur frá {STRING} til {STRING} mun borga 50% aukalega í heilt ár!
-STR_NEWS_SERVICE_SUBSIDY_AWARDED_DOUBLE                         :{BIG_FONT}{BLACK}Samstarfssamningur gerður við {STRING}!{}{}{STRING}flutningur frá {STRING} til {STRING} mun borga tvöfalt í heilt ár!
-STR_NEWS_SERVICE_SUBSIDY_AWARDED_TRIPLE                         :{BIG_FONT}{BLACK}Samstarfssamningur gerður við {STRING}!{}{}{STRING}flutningur frá {STRING} til {STRING} mun borga þrefalt í heilt ár!
-STR_NEWS_SERVICE_SUBSIDY_AWARDED_QUADRUPLE                      :{BIG_FONT}{BLACK}Samstarfssamningur gerður við {STRING}!{}{}{STRING}flutningur frá {STRING} til {STRING} mun borga fjórfalt í heilt ár!
 
-STR_NEWS_ROAD_REBUILDING                                        :{BIG_FONT}{BLACK}Glundroði í umferð {TOWN}!{}{}Uppbygging vega kostuð af {STRING} veldur 6 mánaða vesæld meðal ökumanna!
 STR_NEWS_EXCLUSIVE_RIGHTS_TITLE                                 :{BIG_FONT}{BLACK}Flutninga einokun!
-STR_NEWS_EXCLUSIVE_RIGHTS_DESCRIPTION                           :{BIG_FONT}{BLACK}Bæjarstjórn {TOWN} skrifar undir eins árs sérleyfis samning við {STRING} til flutningar á öllum varningi.
 
 # Extra view window
 STR_EXTRA_VIEWPORT_TITLE                                        :{WHITE}Sjónarhorn {COMMA}
@@ -1098,6 +1088,7 @@ STR_CONFIG_SETTING_VEHICLE_BREAKDOWNS_HELPTEXT                  :Hversu oft fara
 STR_CONFIG_SETTING_SUBSIDY_MULTIPLIER                           :Styrkur vegna samstarfs: {STRING}
 STR_CONFIG_SETTING_SUBSIDY_MULTIPLIER_HELPTEXT                  :Stillingar fyrir hversu hátt er borgað fyrir samstarfssamninga
 
+###length 2
 
 ###setting-zero-is-special
 
@@ -1184,7 +1175,10 @@ STR_CONFIG_SETTING_SIGNALSIDE_LEFT                              :Vinstra megin
 STR_CONFIG_SETTING_SIGNALSIDE_DRIVING_SIDE                      :Akstursstefnu megin
 STR_CONFIG_SETTING_SIGNALSIDE_RIGHT                             :Hægra megin
 
+###length 2
 STR_CONFIG_SETTING_SHOWFINANCES                                 :Sýna fjármálaglugga í lok árs: {STRING}
+
+###length 2
 STR_CONFIG_SETTING_SHOWFINANCES_HELPTEXT                        :Ef þetta er virkt þá koma fjárhagsupplýsingar fyrirtækisins við enda hvers árs til að auðvelda yfirlit yfir fjárhag fyrirtækisins
 
 STR_CONFIG_SETTING_NONSTOP_BY_DEFAULT                           :Nýjar skipanir eru sjálfgefnar sem 'hraðleiðar': {STRING}
@@ -1206,9 +1200,11 @@ STR_CONFIG_SETTING_AUTOSCROLL_MAIN_VIEWPORT                     :Aðal sjónarho
 STR_CONFIG_SETTING_AUTOSCROLL_EVERY_VIEWPORT                    :Öll sjónarhorn
 
 STR_CONFIG_SETTING_BRIBE                                        :Leyfilegt að múta bæjaryfirvöldum: {STRING}
+###length 2
 STR_CONFIG_SETTING_BRIBE_HELPTEXT                               :Fyrirtæki geta reint að múta borgarstjórn. Ef eftirlistmenn uppgötva að verið sé múta bæjarstjórn, mun fyrirtækið ekki geta starfað í bænum í sex mánuði
 
 STR_CONFIG_SETTING_ALLOW_EXCLUSIVE                              :Heimila sölu á sérleyfi til flutninga: {STRING}
+###length 2
 STR_CONFIG_SETTING_ALLOW_EXCLUSIVE_HELPTEXT                     :Ef fyrirtæki kaupir sérleyfi af bæjaryfirvöldum munu stöðvar keppinauta (farþegar og farmur) ekki fá neinn farm í heilt ár
 
 STR_CONFIG_SETTING_ALLOW_FUND_BUILDINGS                         :Leyfa byggingastyrki: {STRING}
@@ -1260,12 +1256,16 @@ STR_CONFIG_SETTING_ORDER_REVIEW_EXDEPOT                         :Allra nema kyrr
 STR_CONFIG_SETTING_ORDER_REVIEW_ON                              :Allra farartækja
 
 STR_CONFIG_SETTING_WARN_INCOME_LESS                             :Birta viðvörun ef tap er af rekstri farartækis: {STRING}
+###length 2
 STR_CONFIG_SETTING_WARN_INCOME_LESS_HELPTEXT                    :Þegar þessi stilling er virk, eru frétta boð send ef farartæki hafa ekki skilað hagnaði síðasta dagatals ár
 
 STR_CONFIG_SETTING_NEVER_EXPIRE_VEHICLES                        :Farartæki úreldast aldrei: {STRING}
 STR_CONFIG_SETTING_NEVER_EXPIRE_VEHICLES_HELPTEXT               :Ef þessi stilling er virk, eru öll farartæki alltaf í boði eftir að þau voru fyrst kynnt til sögunnar
 
 ###length 2
+
+
+###setting-zero-is-special
 
 STR_CONFIG_SETTING_AUTORENEW_VEHICLE                            :Uppfæra faratæki sjálfvirkt þegar þau eldast: {STRING}
 STR_CONFIG_SETTING_AUTORENEW_VEHICLE_HELPTEXT                   :Ef þessi stilling er virk, eru farartæki endurnýjuð sjálfvirkt þegar endingartími þeirra er komin
@@ -1459,7 +1459,10 @@ STR_CONFIG_SETTING_SOUND_TICKER_HELPTEXT                        :Spila hljóð f
 STR_CONFIG_SETTING_SOUND_NEWS                                   :Dagblaðið: {STRING}
 STR_CONFIG_SETTING_SOUND_NEWS_HELPTEXT                          :Spila hljóð þegar dagblaðið er birt
 
+###length 2
 STR_CONFIG_SETTING_SOUND_NEW_YEAR                               :Lok árs: {STRING}
+
+###length 2
 STR_CONFIG_SETTING_SOUND_NEW_YEAR_HELPTEXT                      :Spila hljóð þegar árinu lýkur og staða fyrirtækisins er borin saman við síðasta ár
 
 STR_CONFIG_SETTING_SOUND_CONFIRM                                :Byggingarframkvæmd: {STRING}
@@ -1699,7 +1702,6 @@ STR_CONFIG_SETTING_CITY_SIZE_MULTIPLIER_HELPTEXT                :Meðalstærð b
 
 
 
-###length 5
 
 ###length 3
 
@@ -1807,7 +1809,6 @@ STR_ABANDON_SCENARIO_QUERY                                      :{YELLOW}Ertu vi
 
 # Cheat window
 STR_CHEATS                                                      :{WHITE}Svindl
-STR_CHEATS_TOOLTIP                                              :{BLACK}Valreitur segir til um ef þú hefur notað þetta svindl áður
 STR_CHEAT_MONEY                                                 :{LTBLUE}Auka pening um {CURRENCY_LONG}
 STR_CHEAT_CHANGE_COMPANY                                        :{LTBLUE}Spila sem fyrirtæki: {ORANGE}{COMMA}
 STR_CHEAT_EXTRA_DYNAMITE                                        :{LTBLUE}Töfrajarðýta (eyðir iðnaði, óeyðanlegum hlutum): {ORANGE}{STRING}
@@ -1929,8 +1930,6 @@ STR_NETWORK_SERVER_LIST_MAP_SIZE_CAPTION                        :{BLACK}Kortast�
 STR_NETWORK_SERVER_LIST_MAP_SIZE_CAPTION_TOOLTIP                :{BLACK}Stærð korts í leiknum{}Smelltu til að flokka eftir stærð
 STR_NETWORK_SERVER_LIST_DATE_CAPTION                            :{BLACK}Dagsetning
 STR_NETWORK_SERVER_LIST_DATE_CAPTION_TOOLTIP                    :{BLACK}Núverandi dagsetning
-STR_NETWORK_SERVER_LIST_YEARS_CAPTION                           :{BLACK}Ár
-STR_NETWORK_SERVER_LIST_YEARS_CAPTION_TOOLTIP                   :{BLACK}Fjöldi ára{}sem leikurinn er í gangi
 STR_NETWORK_SERVER_LIST_INFO_ICONS_TOOLTIP                      :{BLACK}Tungumál, útgáfa þjóns o.s.frv.
 
 STR_NETWORK_SERVER_LIST_CLICK_GAME_TO_SELECT                    :{BLACK}Ýttu á leik á listanum til að velja hann
@@ -2915,8 +2914,6 @@ STR_TOWN_VIEW_CARGO_FOR_TOWNGROWTH_REQUIRED_WINTER              :{ORANGE}{STRING
 STR_TOWN_VIEW_CARGO_FOR_TOWNGROWTH_DELIVERED_GENERAL            :{ORANGE}{STRING}{GREEN} afhent
 STR_TOWN_VIEW_CARGO_FOR_TOWNGROWTH_REQUIRED                     :{ORANGE}{CARGO_TINY} / {CARGO_LONG}{RED} (vantar enn)
 STR_TOWN_VIEW_CARGO_FOR_TOWNGROWTH_DELIVERED                    :{ORANGE}{CARGO_TINY} / {CARGO_LONG}{GREEN} (afhent)
-STR_TOWN_VIEW_TOWN_GROWS_EVERY                                  :{BLACK}Bærinn stækkar á {ORANGE}{COMMA}{BLACK} dag{P s a} fresti
-STR_TOWN_VIEW_TOWN_GROWS_EVERY_FUNDED                           :{BLACK}Bærinn stækkar á {ORANGE}{COMMA}{BLACK} dag{P s a} (stofnaður)
 STR_TOWN_VIEW_TOWN_GROW_STOPPED                                 :{BLACK}Bærinn er {RED}ekki{BLACK} að stækka
 STR_TOWN_VIEW_NOISE_IN_TOWN                                     :{BLACK}Hávaðamörk í bænum: {ORANGE}{COMMA}{BLACK}  mest: {ORANGE}{COMMA}
 STR_TOWN_VIEW_CENTER_TOOLTIP                                    :{BLACK}Færa aðalsjónarhorn á staðsetningu þessa bæjar. Ctrl+smelltu til að opna nýtt sjónarhorn yfir þessum bæ
@@ -2949,15 +2946,13 @@ STR_LOCAL_AUTHORITY_ACTION_STATUE_OF_COMPANY                    :Byggja styttu a
 STR_LOCAL_AUTHORITY_ACTION_NEW_BUILDINGS                        :Fjármagna nýjar byggingar
 STR_LOCAL_AUTHORITY_ACTION_EXCLUSIVE_TRANSPORT                  :Kaupa sérleyfi til flutninga
 STR_LOCAL_AUTHORITY_ACTION_BRIBE                                :Múta bæjaryfirvöldum
+###next-name-looks-similar
 
-###length 8
 STR_LOCAL_AUTHORITY_ACTION_TOOLTIP_SMALL_ADVERTISING            :{YELLOW}Hleypa af stokkunum lítilli auglýsingaherferð til að laða að fleiri farþega og meiri farm til að flytja.{} Kostnaður: {CURRENCY_LONG}
 STR_LOCAL_AUTHORITY_ACTION_TOOLTIP_MEDIUM_ADVERTISING           :{YELLOW} Hleypa af stokkunum miðlungs auglýsingaherferð til að laða að fleiri farþega og meiri farm til að flytja.{} Kostnaður: {CURRENCY_LONG}
 STR_LOCAL_AUTHORITY_ACTION_TOOLTIP_LARGE_ADVERTISING            :{YELLOW} Hleypa af stokkunum mikilli auglýsingaherferð til að laða að fleiri farþega og meiri farm til að flytja.{} Kostnaður: {CURRENCY_LONG}
-STR_LOCAL_AUTHORITY_ACTION_TOOLTIP_ROAD_RECONSTRUCTION          :{YELLOW}Kosta endurbætur á vegakerfi úthverfanna. Veldur töluverðri röskun á umferð í allt að 6 mánuði.{} Kostnaður: {CURRENCY_LONG}
 STR_LOCAL_AUTHORITY_ACTION_TOOLTIP_STATUE_OF_COMPANY            :{YELLOW} Byggja styttu til heiðurs fyrirtækinu þínu.{} Kostnaður: {CURRENCY_LONG}
 STR_LOCAL_AUTHORITY_ACTION_TOOLTIP_NEW_BUILDINGS                :{YELLOW}Kosta byggingu nýs verslunarhúsnæðis í bænum.{} Kostnaður: {CURRENCY_LONG}
-STR_LOCAL_AUTHORITY_ACTION_TOOLTIP_EXCLUSIVE_TRANSPORT          :{YELLOW} Kaupa 1 árs sérleyfi í þessum bæ. Bæjaryfirvöld munu aðeins leyfa notkun á þínum flutningsleiðum.{} Kostnaður: {CURRENCY_LONG}
 STR_LOCAL_AUTHORITY_ACTION_TOOLTIP_BRIBE                        :{YELLOW}Múta bæjaryfirvöldum til að auka við fylgi þitt, með hættu á þungri refsingu komist það upp.{} Kostnaður: {CURRENCY_LONG}
 
 # Goal window
@@ -3145,7 +3140,6 @@ STR_COMPANY_INFRASTRUCTURE_VIEW_CANALS                          :{WHITE}Skipasku
 STR_COMPANY_INFRASTRUCTURE_VIEW_STATION_SECT                    :{GOLD}Stöðvar:
 STR_COMPANY_INFRASTRUCTURE_VIEW_STATIONS                        :{WHITE}Stöðva reitir
 STR_COMPANY_INFRASTRUCTURE_VIEW_AIRPORTS                        :{WHITE}Flugvellir
-STR_COMPANY_INFRASTRUCTURE_VIEW_TOTAL                           :{WHITE}{CURRENCY_LONG} á ári
 
 # Industry directory
 STR_INDUSTRY_DIRECTORY_CAPTION                                  :{WHITE}Iðnaðir
@@ -3249,7 +3243,6 @@ STR_PURCHASE_INFO_SPEED_POWER                                   :{BLACK}Hámarks
 STR_PURCHASE_INFO_SPEED                                         :{BLACK}Hraði: {GOLD}{VELOCITY}
 STR_PURCHASE_INFO_SPEED_OCEAN                                   :{BLACK}Hraði á sjó: {GOLD}{VELOCITY}
 STR_PURCHASE_INFO_SPEED_CANAL                                   :{BLACK}Hraði í skipaskurðum/ám: {GOLD}{VELOCITY}
-STR_PURCHASE_INFO_RUNNINGCOST                                   :{BLACK}Rekstrarkostnaður: {GOLD}{CURRENCY_LONG} á ári
 STR_PURCHASE_INFO_CAPACITY                                      :{BLACK}Burðargeta: {GOLD}{CARGO_LONG} {STRING}
 STR_PURCHASE_INFO_REFITTABLE                                    :(breytanlegt)
 STR_PURCHASE_INFO_DESIGNED_LIFE                                 :{BLACK}Hönnun: {GOLD}{NUM}{BLACK} Endingartími: {GOLD}{COMMA} ár
@@ -3412,9 +3405,6 @@ STR_ENGINE_PREVIEW_ROAD_VEHICLE                                 :bifreið
 STR_ENGINE_PREVIEW_AIRCRAFT                                     :flugvél
 STR_ENGINE_PREVIEW_SHIP                                         :sjóferju
 
-STR_ENGINE_PREVIEW_COST_WEIGHT_SPEED_POWER                      :{BLACK}Verð: {CURRENCY_LONG} Þyngd: {WEIGHT_SHORT}{}Hraði: {VELOCITY}  Afl: {POWER}{}Rekstrarkostnaður: {CURRENCY_LONG} á ári{}Burðargeta: {CARGO_LONG}
-STR_ENGINE_PREVIEW_COST_WEIGHT_SPEED_POWER_MAX_TE               :{BLACK}Verð: {CURRENCY_LONG} Þyngd: {WEIGHT_SHORT}{}Hámarskhraði: {VELOCITY}  Afl: {POWER}  Hámarks kraftur: {6:FORCE}{}Running Cost: {4:CURRENCY_LONG}/ári{}Burðargeta: {5:CARGO_LONG}
-STR_ENGINE_PREVIEW_COST_MAX_SPEED_CAP_RUNCOST                   :{BLACK}Verð: {CURRENCY_LONG} Hámarkshraði: {VELOCITY}{}Burðargeta: {CARGO_LONG}{}Rekstrarkostnaður: {CURRENCY_LONG} á ári
 
 # Autoreplace window
 STR_REPLACE_VEHICLES_WHITE                                      :{WHITE}Endurnýja {STRING} - {STRING}
@@ -3552,8 +3542,6 @@ STR_VEHICLE_INFO_CAPACITY_CAPACITY                              :{BLACK}Burðarg
 
 STR_VEHICLE_INFO_FEEDER_CARGO_VALUE                             :{BLACK}Flytja inneign: {LTBLUE}{CURRENCY_LONG}
 
-STR_VEHICLE_DETAILS_INCREASE_SERVICING_INTERVAL_TOOLTIP         :{BLACK}Lengja skoðanamillibil með 10. Ctrl smelltu til að lengja skoðanamillibilið með 5
-STR_VEHICLE_DETAILS_DECREASE_SERVICING_INTERVAL_TOOLTIP         :{BLACK}Stytta skoðanamillibil með 10. Ctrl smelltu til að sytta skoðanamillibilið með 5
 
 STR_SERVICE_INTERVAL_DROPDOWN_TOOLTIP                           :{BLACK}Velja eftir hverju þjónustu á bílnum skuli háttað
 STR_VEHICLE_DETAILS_DEFAULT                                     :Sjálfgefið

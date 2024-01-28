@@ -360,7 +360,7 @@ STR_SCENEDIT_FILE_MENU_SEPARATOR                                :
 STR_SCENEDIT_FILE_MENU_QUIT                                     :Напушти
 
 # Settings menu
-###length 15
+###length 16
 STR_SETTINGS_MENU_GAME_OPTIONS                                  :игра опции
 STR_SETTINGS_MENU_NEWGRF_SETTINGS                               :NewGRF подесувања
 STR_SETTINGS_MENU_TRANSPARENCY_OPTIONS                          :транспарентност опции
@@ -586,11 +586,9 @@ STR_PERFORMANCE_DETAIL_CARGO                                    :{BLACK}карг
 STR_PERFORMANCE_DETAIL_MONEY                                    :{BLACK}пари:
 STR_PERFORMANCE_DETAIL_LOAN                                     :{BLACK}кредит:
 STR_PERFORMANCE_DETAIL_TOTAL                                    :{BLACK}Вкупно:
+###next-name-looks-similar
 
-###length 10
-STR_PERFORMANCE_DETAIL_VEHICLES_TOOLTIP                         :{BLACK}Број на возила кои се претвори профит минатата година. Ова вклучува возила, возови, бродови и авиони
 STR_PERFORMANCE_DETAIL_STATIONS_TOOLTIP                         :{BLACK}Број на неодамна сервисираат станица делови. Секој дел на станицата (на пример, железничка станица, автобуска станица, аеродром) се смета, дури и ако тие се поврзани како една станица
-STR_PERFORMANCE_DETAIL_MIN_PROFIT_TOOLTIP                       :{BLACK}Профитот на возилото со најниски примања (само возила постари од две години се смета)
 STR_PERFORMANCE_DETAIL_MIN_INCOME_TOOLTIP                       :{BLACK}Износ на готовина направени во четврт со најниска добивка на последните 12 четвртини
 STR_PERFORMANCE_DETAIL_MAX_INCOME_TOOLTIP                       :{BLACK}Износ на готовина направени во четврт со најголем профит на последните 12 четвртини
 STR_PERFORMANCE_DETAIL_DELIVERED_TOOLTIP                        :{BLACK}Единиците на товар испорачани во последните четири квартали
@@ -865,6 +863,7 @@ STR_CONFIG_SETTING_REALISTIC                                    :Реален
 
 
 
+###length 2
 
 ###setting-zero-is-special
 
@@ -898,13 +897,18 @@ STR_CONFIG_SETTING_SMOKE_AMOUNT                                 :Износ на
 
 ###length 3
 
+###length 2
+
+###length 2
 
 
 ###length 3
 
 ###length 4
 
+###length 2
 
+###length 2
 
 
 
@@ -923,9 +927,13 @@ STR_CONFIG_SETTING_INFRASTRUCTURE_MAINTENANCE                   :Инфраст�
 
 ###length 3
 
+###length 2
 
 
 ###length 2
+
+
+###setting-zero-is-special
 
 
 ###length 2
@@ -1005,7 +1013,10 @@ STR_CONFIG_SETTING_GRAPH_LINE_THICKNESS                         :Дебелин�
 
 
 
+###length 2
 STR_CONFIG_SETTING_SOUND_NEW_YEAR                               :Крај на година: {STRING}
+
+###length 2
 
 STR_CONFIG_SETTING_SOUND_CONFIRM                                :Изградба: {STRING}
 
@@ -1118,7 +1129,6 @@ STR_CONFIG_SETTING_ZOOM_LVL_OUT_8X                              :8x
 
 
 
-###length 5
 
 ###length 3
 
@@ -1557,8 +1567,8 @@ STR_TOWN_VIEW_EXPAND_TOOLTIP                                    :{BLACK}Згол
 STR_LOCAL_AUTHORITY_COMPANY_RATING                              :{YELLOW}{COMPANY} {COMPANY_NUM}: {ORANGE}{STRING}
 
 ###length 8
+###next-name-looks-similar
 
-###length 8
 
 # Goal window
 STR_GOALS_TEXT                                                  :{ORANGE}{STRING}
@@ -1641,7 +1651,6 @@ STR_COMPANY_INFRASTRUCTURE_VIEW_CANALS                          :{WHITE}кана
 STR_COMPANY_INFRASTRUCTURE_VIEW_STATION_SECT                    :{GOLD}станици:
 STR_COMPANY_INFRASTRUCTURE_VIEW_STATIONS                        :{WHITE}станица плочки
 STR_COMPANY_INFRASTRUCTURE_VIEW_AIRPORTS                        :{WHITE}аеродроми
-STR_COMPANY_INFRASTRUCTURE_VIEW_TOTAL                           :{WHITE}{CURRENCY_LONG}/годишно
 
 # Industry directory
 

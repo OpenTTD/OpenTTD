@@ -425,7 +425,7 @@ STR_SCENEDIT_FILE_MENU_SEPARATOR                                :
 STR_SCENEDIT_FILE_MENU_QUIT                                     :離開
 
 # Settings menu
-###length 15
+###length 16
 STR_SETTINGS_MENU_GAME_OPTIONS                                  :遊戲選項
 STR_SETTINGS_MENU_CONFIG_SETTINGS_TREE                          :設定
 STR_SETTINGS_MENU_AI_SETTINGS                                   :AI 設定
@@ -661,11 +661,9 @@ STR_PERFORMANCE_DETAIL_CARGO                                    :{BLACK}貨物�
 STR_PERFORMANCE_DETAIL_MONEY                                    :{BLACK}資金：
 STR_PERFORMANCE_DETAIL_LOAN                                     :{BLACK}貸款：
 STR_PERFORMANCE_DETAIL_TOTAL                                    :{BLACK}總計：
+###next-name-looks-similar
 
-###length 10
-STR_PERFORMANCE_DETAIL_VEHICLES_TOOLTIP                         :{BLACK}去年錄得盈利的車輛（包括公路車輛、火車、船舶與飛機）數量
 STR_PERFORMANCE_DETAIL_STATIONS_TOOLTIP                         :{BLACK}最後提供服務的車站各部份數量。 每部份車站 (火車站、公車站、機場) 都算在内，就算連在一起亦然
-STR_PERFORMANCE_DETAIL_MIN_PROFIT_TOOLTIP                       :{BLACK}最低收入的車輛的損益（只計算出廠兩年以上的車輛）
 STR_PERFORMANCE_DETAIL_MIN_INCOME_TOOLTIP                       :{BLACK}最近三年的單季最低收入
 STR_PERFORMANCE_DETAIL_MAX_INCOME_TOOLTIP                       :{BLACK}最近三年的單季最高收入
 STR_PERFORMANCE_DETAIL_DELIVERED_TOOLTIP                        :{BLACK}前四季運送的貨物量
@@ -896,7 +894,6 @@ STR_NEWS_VEHICLE_IS_GETTING_VERY_OLD                            :{WHITE}{VEHICLE
 STR_NEWS_VEHICLE_IS_GETTING_VERY_OLD_AND                        :{WHITE}{VEHICLE} 應馬上退役並替換新車
 STR_NEWS_TRAIN_IS_STUCK                                         :{WHITE}{VEHICLE} 找不到路徑繼續前進
 STR_NEWS_VEHICLE_IS_LOST                                        :{WHITE}{VEHICLE} 迷路了
-STR_NEWS_VEHICLE_IS_UNPROFITABLE                                :{WHITE}{VEHICLE}去年的盈利是 {CURRENCY_LONG}
 STR_NEWS_AIRCRAFT_DEST_TOO_FAR                                  :{WHITE}{VEHICLE} 無法前往下一目的地，因為該目的地超出了飛行範圍
 
 STR_NEWS_ORDER_REFIT_FAILED                                     :{WHITE}{VEHICLE} 因改裝失敗而停止
@@ -911,16 +908,9 @@ STR_NEWS_SHOW_VEHICLE_GROUP_TOOLTIP                             :{BLACK}打開�
 
 STR_NEWS_OFFER_OF_SUBSIDY_EXPIRED                               :{BIG_FONT}{BLACK}補助過期：{}{}將 {STRING} 從 {STRING} 運到 {STRING} 現在起不再提供補助
 STR_NEWS_SUBSIDY_WITHDRAWN_SERVICE                              :{BIG_FONT}{BLACK}補助結束：{}{}將 {STRING} 從 {STRING} 運到 {STRING} 的服務不再提供補助
-STR_NEWS_SERVICE_SUBSIDY_OFFERED                                :{BIG_FONT}{BLACK}提供補助：{}{}首先將 {STRING} 從 {STRING} 運到 {STRING} 的公司將得到地方政府補助{NUM}年！
 ###length 4
-STR_NEWS_SERVICE_SUBSIDY_AWARDED_HALF                           :{BIG_FONT}{BLACK}{STRING} 獲得補助！{}{}將 {STRING} 從 {STRING} 運到 {STRING} 的服務可在往後{NUM}年收到額外 50% 的運費補助！
-STR_NEWS_SERVICE_SUBSIDY_AWARDED_DOUBLE                         :{BIG_FONT}{BLACK}{STRING} 獲得補助！{}{}將 {STRING} 從 {STRING} 運到 {STRING} 的服務可在往後{NUM}年收到雙倍運費補助！
-STR_NEWS_SERVICE_SUBSIDY_AWARDED_TRIPLE                         :{BIG_FONT}{BLACK}{STRING} 獲得補助！{}{}將 {STRING} 從 {STRING} 運到 {STRING} 的服務可在往後{NUM}年收到三倍運費補助！
-STR_NEWS_SERVICE_SUBSIDY_AWARDED_QUADRUPLE                      :{BIG_FONT}{BLACK}{STRING} 獲得補助！{}{}將 {STRING} 從 {STRING} 運到 {STRING} 的服務可在往後{NUM}年收到四倍運費補助！
 
-STR_NEWS_ROAD_REBUILDING                                        :{BIG_FONT}{BLACK}{TOWN} 交通大亂！{}{}{STRING} 出資的道路重建計劃為用路人帶來六個月的惡夢！
 STR_NEWS_EXCLUSIVE_RIGHTS_TITLE                                 :{BIG_FONT}{BLACK}運輸大亨!
-STR_NEWS_EXCLUSIVE_RIGHTS_DESCRIPTION                           :{BIG_FONT}{BLACK}{TOWN} 的地方政府與 {STRING} 簽訂了一年的專屬運輸權合約！
 
 # Extra view window
 STR_EXTRA_VIEWPORT_TITLE                                        :{WHITE}視野 {COMMA}
@@ -1257,9 +1247,9 @@ STR_CONFIG_SETTING_SUBSIDY_MULTIPLIER                           :補助倍率：
 STR_CONFIG_SETTING_SUBSIDY_MULTIPLIER_HELPTEXT                  :設定獲補助服務的總利潤金額相對原有利潤的倍率
 
 STR_CONFIG_SETTING_SUBSIDY_DURATION                             :補助持續時間：{STRING}
+###length 2
 STR_CONFIG_SETTING_SUBSIDY_DURATION_HELPTEXT                    :設定發放財政補助的年數。
 
-STR_CONFIG_SETTING_SUBSIDY_DURATION_VALUE                       :{NUM} 年
 ###setting-zero-is-special
 STR_CONFIG_SETTING_SUBSIDY_DURATION_DISABLED                    :沒有補貼
 
@@ -1355,7 +1345,10 @@ STR_CONFIG_SETTING_SIGNALSIDE_LEFT                              :路軌左方
 STR_CONFIG_SETTING_SIGNALSIDE_DRIVING_SIDE                      :與行車方向相同
 STR_CONFIG_SETTING_SIGNALSIDE_RIGHT                             :路軌右方
 
+###length 2
 STR_CONFIG_SETTING_SHOWFINANCES                                 :於年末顯示財政視窗：{STRING}
+
+###length 2
 STR_CONFIG_SETTING_SHOWFINANCES_HELPTEXT                        :如啟用此選項，財務視窗會在每年年終出現，讓玩家可輕易查察公司的財務狀況。
 
 STR_CONFIG_SETTING_NONSTOP_BY_DEFAULT                           :設定指令時預設選擇「直達」指令：{STRING}
@@ -1377,9 +1370,11 @@ STR_CONFIG_SETTING_AUTOSCROLL_MAIN_VIEWPORT                     :主視野
 STR_CONFIG_SETTING_AUTOSCROLL_EVERY_VIEWPORT                    :所有視野
 
 STR_CONFIG_SETTING_BRIBE                                        :可向地方政府行賄：{STRING}
+###length 2
 STR_CONFIG_SETTING_BRIBE_HELPTEXT                               :容許公司嘗試賄賂地方政府。如果賄賂行為被調查員揭發，公司在往後六個月內無法接觸有關地方政府。
 
 STR_CONFIG_SETTING_ALLOW_EXCLUSIVE                              :允許購買市鎮的專屬運輸權：{STRING}
+###length 2
 STR_CONFIG_SETTING_ALLOW_EXCLUSIVE_HELPTEXT                     :如果一所公司購買了一個市鎮的一年專屬運輸權，其他公司在該市鎮建造的車站在這一年之內將不會收到任何貨物 (包括乘客)。
 
 STR_CONFIG_SETTING_ALLOW_FUND_BUILDINGS                         :容許資助市鎮建設：{STRING}
@@ -1435,12 +1430,16 @@ STR_CONFIG_SETTING_ORDER_REVIEW_EXDEPOT                         :是（停止的
 STR_CONFIG_SETTING_ORDER_REVIEW_ON                              :所有車輛
 
 STR_CONFIG_SETTING_WARN_INCOME_LESS                             :當車輛收入為負時發放警告：{STRING}
+###length 2
 STR_CONFIG_SETTING_WARN_INCOME_LESS_HELPTEXT                    :如啟用此選項，系統會為上一年度賺不到錢的車輛顯示訊息。
 
 STR_CONFIG_SETTING_NEVER_EXPIRE_VEHICLES                        :車輛永不過期：{STRING}
 STR_CONFIG_SETTING_NEVER_EXPIRE_VEHICLES_HELPTEXT               :如啟用此選項，所有車輛一經面世，就永遠可以選擇建造。
 
 ###length 2
+
+
+###setting-zero-is-special
 
 STR_CONFIG_SETTING_AUTORENEW_VEHICLE                            :車輛達到使用年限時自動更新：{STRING}
 STR_CONFIG_SETTING_AUTORENEW_VEHICLE_HELPTEXT                   :如啟用此選項，所有在符合替換條件時進入維修設施的車輛會被替換。
@@ -1687,7 +1686,10 @@ STR_CONFIG_SETTING_SOUND_TICKER_HELPTEXT                        :總結新訊息
 STR_CONFIG_SETTING_SOUND_NEWS                                   :報紙：{STRING}
 STR_CONFIG_SETTING_SOUND_NEWS_HELPTEXT                          :在顯示報紙訊息時播放音效。
 
+###length 2
 STR_CONFIG_SETTING_SOUND_NEW_YEAR                               :年度結束：{STRING}
+
+###length 2
 STR_CONFIG_SETTING_SOUND_NEW_YEAR_HELPTEXT                      :在顯示年終報告時播放音效
 
 STR_CONFIG_SETTING_SOUND_CONFIRM                                :建造：{STRING}
@@ -1981,11 +1983,9 @@ STR_CONFIG_SETTING_SHORT_PATH_SATURATION_HELPTEXT               :貨物分配功
 STR_CONFIG_SETTING_LOCALISATION_UNITS_VELOCITY                  :速度單位：{STRING}
 STR_CONFIG_SETTING_LOCALISATION_UNITS_VELOCITY_NAUTICAL         :速度單位（航海）：{STRING}
 STR_CONFIG_SETTING_LOCALISATION_UNITS_VELOCITY_HELPTEXT         :在界面上以所選擇的單位表示速度。
-###length 5
 STR_CONFIG_SETTING_LOCALISATION_UNITS_VELOCITY_IMPERIAL         :英制（英里/小時）
 STR_CONFIG_SETTING_LOCALISATION_UNITS_VELOCITY_METRIC           :米制（公里/小時）
 STR_CONFIG_SETTING_LOCALISATION_UNITS_VELOCITY_SI               :國際單位（米/秒）
-STR_CONFIG_SETTING_LOCALISATION_UNITS_VELOCITY_GAMEUNITS        :遊戲單位 (格/日)
 STR_CONFIG_SETTING_LOCALISATION_UNITS_VELOCITY_KNOTS            :節
 
 STR_CONFIG_SETTING_LOCALISATION_UNITS_POWER                     :車輛功率單位：{STRING}
@@ -2155,8 +2155,6 @@ STR_HELP_WINDOW_COMMUNITY                                       :{BLACK}社區
 
 # Cheat window
 STR_CHEATS                                                      :{WHITE}作弊
-STR_CHEATS_TOOLTIP                                              :{BLACK}方塊被勾選代表您用過這個密技
-STR_CHEATS_NOTE                                                 :{BLACK}請注意：任何修改這些設定的操作將會被記錄於遊戲存檔中
 STR_CHEAT_MONEY                                                 :{LTBLUE}增加金錢：{CURRENCY_LONG}
 STR_CHEAT_CHANGE_COMPANY                                        :{LTBLUE}切換玩家操控的公司：{ORANGE}{COMMA}
 STR_CHEAT_EXTRA_DYNAMITE                                        :{LTBLUE}神奇推土機 (可摧毀工業、無法移除的物件)：{ORANGE}{STRING}
@@ -2284,8 +2282,6 @@ STR_NETWORK_SERVER_LIST_MAP_SIZE_CAPTION                        :{BLACK}地圖�
 STR_NETWORK_SERVER_LIST_MAP_SIZE_CAPTION_TOOLTIP                :{BLACK}遊戲的地圖大小{}點選可以依大小排序
 STR_NETWORK_SERVER_LIST_DATE_CAPTION                            :{BLACK}日期
 STR_NETWORK_SERVER_LIST_DATE_CAPTION_TOOLTIP                    :{BLACK}目前日期
-STR_NETWORK_SERVER_LIST_YEARS_CAPTION                           :{BLACK}年份
-STR_NETWORK_SERVER_LIST_YEARS_CAPTION_TOOLTIP                   :{BLACK}遊戲年份{}遊戲正在進行中
 STR_NETWORK_SERVER_LIST_INFO_ICONS_TOOLTIP                      :{BLACK}語言、伺服器版本等
 
 STR_NETWORK_SERVER_LIST_CLICK_GAME_TO_SELECT                    :{BLACK}點選清單内的遊戲即可選擇
@@ -2653,9 +2649,7 @@ STR_LINKGRAPH_LEGEND_SATURATED                                  :{TINY_FONT}{BLA
 STR_LINKGRAPH_LEGEND_OVERLOADED                                 :{TINY_FONT}{BLACK}超載
 
 # Linkgraph tooltip
-STR_LINKGRAPH_STATS_TOOLTIP                                     :{BLACK}每月有 {CARGO_LONG} 正等待 從 {STATION} 運送至 {STATION} (可載量之{COMMA}%){STRING}
 STR_LINKGRAPH_STATS_TOOLTIP_RETURN_EXTENSION                    :{}回程則有{CARGO_LONG}(可載量之{COMMA}%)
-STR_LINKGRAPH_STATS_TOOLTIP_TIME_EXTENSION                      :{}平均運輸時間：{NUM}{NBSP}日
 
 # Base for station construction window(s)
 STR_STATION_BUILD_COVERAGE_AREA_TITLE                           :{BLACK}顯示運輸涵蓋範圍
@@ -2665,7 +2659,6 @@ STR_STATION_BUILD_COVERAGE_AREA_OFF_TOOLTIP                     :{BLACK}不顯�
 STR_STATION_BUILD_COVERAGE_AREA_ON_TOOLTIP                      :{BLACK}顯示設置地點的運輸涵蓋範圍
 STR_STATION_BUILD_ACCEPTS_CARGO                                 :{BLACK}接受：{GOLD}{CARGO_LIST}
 STR_STATION_BUILD_SUPPLIES_CARGO                                :{BLACK}供應：{GOLD}{CARGO_LIST}
-STR_STATION_BUILD_INFRASTRUCTURE_COST                           :{BLACK}維護成本: {GOLD}{CURRENCY_SHORT}/年
 
 # Join station window
 STR_JOIN_STATION_CAPTION                                        :{WHITE}合併車站
@@ -3507,8 +3500,6 @@ STR_TOWN_VIEW_CARGO_FOR_TOWNGROWTH_REQUIRED_WINTER              :{ORANGE}{STRING
 STR_TOWN_VIEW_CARGO_FOR_TOWNGROWTH_DELIVERED_GENERAL            :{ORANGE}{STRING}{GREEN} 已運送
 STR_TOWN_VIEW_CARGO_FOR_TOWNGROWTH_REQUIRED                     :{ORANGE}{CARGO_TINY} / {CARGO_LONG}{RED} (仍然需要)
 STR_TOWN_VIEW_CARGO_FOR_TOWNGROWTH_DELIVERED                    :{ORANGE}{CARGO_TINY} / {CARGO_LONG}{GREEN}（已運送）
-STR_TOWN_VIEW_TOWN_GROWS_EVERY                                  :{BLACK}該市鎮每隔 {ORANGE}{COMMA}{BLACK}{NBSP}天擴張一次
-STR_TOWN_VIEW_TOWN_GROWS_EVERY_FUNDED                           :{BLACK}該市鎮每隔 {ORANGE}{COMMA}{BLACK}{NBSP}天擴張一次 (正接受資助)
 STR_TOWN_VIEW_TOWN_GROW_STOPPED                                 :{BLACK}市鎮{RED}不在{BLACK}成長
 STR_TOWN_VIEW_NOISE_IN_TOWN                                     :{BLACK}市鎮噪音限制：{ORANGE}{COMMA}{BLACK}  最大：{ORANGE}{COMMA}
 STR_TOWN_VIEW_CENTER_TOOLTIP                                    :{BLACK}將市鎮置於畫面中央。按住 Ctrl 點選可於市鎮位置開啟新視窗視野
@@ -3543,15 +3534,13 @@ STR_LOCAL_AUTHORITY_ACTION_STATUE_OF_COMPANY                    :建造公司所
 STR_LOCAL_AUTHORITY_ACTION_NEW_BUILDINGS                        :資助市鎮建設
 STR_LOCAL_AUTHORITY_ACTION_EXCLUSIVE_TRANSPORT                  :購買專屬運輸權
 STR_LOCAL_AUTHORITY_ACTION_BRIBE                                :向地方政府行賄
+###next-name-looks-similar
 
-###length 8
 STR_LOCAL_AUTHORITY_ACTION_TOOLTIP_SMALL_ADVERTISING            :{PUSH_COLOUR}{YELLOW}開始進行小型地方廣告活動，為您的運輸服務吸引更多乘客與貨物。{}使城鎮小範圍內的車站獲得暫時的評分增益。{} {POP_COLOUR}費用：{CURRENCY_LONG}
 STR_LOCAL_AUTHORITY_ACTION_TOOLTIP_MEDIUM_ADVERTISING           :{PUSH_COLOUR}{YELLOW}開始進行中型地方廣告活動，為您的運輸服務吸引更多乘客與貨物。{}使城鎮中等範圍內的車站獲得暫時的評分增益。{}{POP_COLOUR}費用：{CURRENCY_LONG}
 STR_LOCAL_AUTHORITY_ACTION_TOOLTIP_LARGE_ADVERTISING            :{PUSH_COLOUR}{YELLOW}開始進行大型地方廣告活動，為您的運輸服務吸引更多乘客與貨物。{}使城鎮較大範圍內的車站獲得暫時的評分增益。{}{POP_COLOUR}費用：{CURRENCY_LONG}
-STR_LOCAL_AUTHORITY_ACTION_TOOLTIP_ROAD_RECONSTRUCTION          :{PUSH_COLOUR}{YELLOW}出資重建市鎮內道路網。{}將對往後六個月的道路運輸造成可觀的衝擊。{}{POP_COLOUR}費用：{CURRENCY_LONG}
 STR_LOCAL_AUTHORITY_ACTION_TOOLTIP_STATUE_OF_COMPANY            :{PUSH_COLOUR}{YELLOW}建造雕像紀念您的公司。{}使城鎮範圍內的車站獲得永久的評分增益。{}{POP_COLOUR}費用：{CURRENCY_LONG}
 STR_LOCAL_AUTHORITY_ACTION_TOOLTIP_NEW_BUILDINGS                :{PUSH_COLOUR}{YELLOW}出資協助市鎮建造新的商業建築。{}使城鎮獲得暫時性的成長速度增益。{}{POP_COLOUR}費用：{CURRENCY_LONG}
-STR_LOCAL_AUTHORITY_ACTION_TOOLTIP_EXCLUSIVE_TRANSPORT          :{PUSH_COLOUR}{YELLOW}購買此市鎮一年的專屬運輸權。{}地方政府將不會讓其他公司的車站服務該市鎮的乘客和貨物。{}{POP_COLOUR}費用：{CURRENCY_LONG}
 STR_LOCAL_AUTHORITY_ACTION_TOOLTIP_BRIBE                        :{PUSH_COLOUR}{YELLOW}冒著被抓到嚴懲的風險，向地方政府行賄以提高評價{}{POP_COLOUR}費用：{CURRENCY_LONG}
 
 # Goal window
@@ -3640,7 +3629,6 @@ STR_STATION_VIEW_EXCLUSIVE_RIGHTS_COMPANY                       :{YELLOW}{COMPAN
 
 STR_STATION_VIEW_RATINGS_BUTTON                                 :{BLACK}評價
 STR_STATION_VIEW_RATINGS_TOOLTIP                                :{BLACK}顯示車站評價
-STR_STATION_VIEW_SUPPLY_RATINGS_TITLE                           :{BLACK}按月供應量與本地評比：
 STR_STATION_VIEW_CARGO_SUPPLY_RATING                            :{WHITE}{STRING}: {YELLOW}{COMMA} / {STRING} ({COMMA}%)
 
 STR_STATION_VIEW_GROUP                                          :{BLACK}群組方式
@@ -3800,7 +3788,6 @@ STR_COMPANY_INFRASTRUCTURE_VIEW_CANALS                          :{WHITE}運河
 STR_COMPANY_INFRASTRUCTURE_VIEW_STATION_SECT                    :{GOLD}車站：
 STR_COMPANY_INFRASTRUCTURE_VIEW_STATIONS                        :{WHITE}車站設施
 STR_COMPANY_INFRASTRUCTURE_VIEW_AIRPORTS                        :{WHITE}機場
-STR_COMPANY_INFRASTRUCTURE_VIEW_TOTAL                           :{WHITE}每年{CURRENCY_LONG}
 
 # Industry directory
 STR_INDUSTRY_DIRECTORY_CAPTION                                  :{WHITE}工業
@@ -3931,7 +3918,6 @@ STR_PURCHASE_INFO_SPEED_POWER                                   :{BLACK}速度�
 STR_PURCHASE_INFO_SPEED                                         :{BLACK}速度：{GOLD}{VELOCITY}
 STR_PURCHASE_INFO_SPEED_OCEAN                                   :{BLACK}海上速度：{GOLD}{VELOCITY}
 STR_PURCHASE_INFO_SPEED_CANAL                                   :{BLACK}運河／河道上速度：{GOLD}{VELOCITY}
-STR_PURCHASE_INFO_RUNNINGCOST                                   :{BLACK}營運成本：{GOLD}{CURRENCY_LONG}/年
 STR_PURCHASE_INFO_CAPACITY                                      :{BLACK}容量：{GOLD}{CARGO_LONG} {STRING}
 STR_PURCHASE_INFO_REFITTABLE                                    :(可改裝)
 STR_PURCHASE_INFO_DESIGNED_LIFE                                 :{BLACK}設計年份：{GOLD}{NUM}{BLACK} 使用年限：{GOLD}{COMMA} 年
@@ -4124,13 +4110,6 @@ STR_ENGINE_PREVIEW_TRAM_VEHICLE                                 :電車車輛
 STR_ENGINE_PREVIEW_AIRCRAFT                                     :飛機
 STR_ENGINE_PREVIEW_SHIP                                         :船舶
 
-STR_ENGINE_PREVIEW_COST_WEIGHT_SPEED_POWER                      :{BLACK}費用：{CURRENCY_LONG} 載重：{WEIGHT_SHORT}{}速度：{VELOCITY}  功率：{POWER}{}營運成本：{CURRENCY_LONG} / 年{}容量：{CARGO_LONG}
-STR_ENGINE_PREVIEW_COST_WEIGHT_SPEED_POWER_MAX_TE               :{BLACK}費用：{0:CURRENCY_LONG} 載重：{1:WEIGHT_SHORT}{}速度：{2:VELOCITY}  功率：{3:POWER}  最大牽引力：{6:FORCE}{}營運成本：{4:CURRENCY_LONG}/年{}容量：{5:CARGO_LONG}
-STR_ENGINE_PREVIEW_COST_MAX_SPEED_CAP_RUNCOST                   :{BLACK}費用：{CURRENCY_LONG} 最高速度：{VELOCITY}{}容量：{CARGO_LONG}{}營運成本：{CURRENCY_LONG}/年
-STR_ENGINE_PREVIEW_COST_MAX_SPEED_TYPE_CAP_CAP_RUNCOST          :{BLACK}費用: {CURRENCY_LONG} 最高速度: {VELOCITY}{}飛機型號: {STRING}{}容量: {CARGO_LONG}, {CARGO_LONG}{}營運成本：每年: {CURRENCY_LONG}
-STR_ENGINE_PREVIEW_COST_MAX_SPEED_TYPE_CAP_RUNCOST              :{BLACK}費用：{CURRENCY_LONG} 最高速度：{VELOCITY}{}飛機型號：{STRING}{}容量：{CARGO_LONG}{}營運成本：每年{CURRENCY_LONG}
-STR_ENGINE_PREVIEW_COST_MAX_SPEED_TYPE_RANGE_CAP_CAP_RUNCOST    :{BLACK}費用：{CURRENCY_LONG} 最高速度：{VELOCITY}{}飛機型號：{STRING} 距離：{COMMA}格{}容量：{CARGO_LONG}、{CARGO_LONG}{}營運成本：每年{CURRENCY_LONG}
-STR_ENGINE_PREVIEW_COST_MAX_SPEED_TYPE_RANGE_CAP_RUNCOST        :{BLACK}費用：{CURRENCY_LONG} 最高速度：{VELOCITY}{}飛機型號：{STRING} 距離：{COMMA}格{}容量：{CARGO_LONG}{}營運成本：每年{CURRENCY_LONG}
 
 # Autoreplace window
 STR_REPLACE_VEHICLES_WHITE                                      :{WHITE}替換 {STRING} - {STRING}
@@ -4295,8 +4274,6 @@ STR_VEHICLE_INFO_CAPACITY_CAPACITY                              :{BLACK}容量�
 
 STR_VEHICLE_INFO_FEEDER_CARGO_VALUE                             :{BLACK}轉運潛在收入：{LTBLUE}{CURRENCY_LONG}
 
-STR_VEHICLE_DETAILS_INCREASE_SERVICING_INTERVAL_TOOLTIP         :{BLACK}以 10 為單位延長維護間隔。 按住 Ctrl 點選可以 5 為單位
-STR_VEHICLE_DETAILS_DECREASE_SERVICING_INTERVAL_TOOLTIP         :{BLACK}以 10 為單位縮短維護間隔。 按住 Ctrl 點選可以 5 為單位
 
 STR_SERVICE_INTERVAL_DROPDOWN_TOOLTIP                           :{BLACK}更改檢修週期所用單位
 STR_VEHICLE_DETAILS_DEFAULT                                     :預設

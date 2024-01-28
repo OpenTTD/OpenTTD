@@ -572,7 +572,7 @@ STR_SCENEDIT_FILE_MENU_SEPARATOR                                :
 STR_SCENEDIT_FILE_MENU_QUIT                                     :Exire
 
 # Settings menu
-###length 15
+###length 16
 STR_SETTINGS_MENU_GAME_OPTIONS                                  :Ludi optiones
 STR_SETTINGS_MENU_CONFIG_SETTINGS_TREE                          :Electiones
 STR_SETTINGS_MENU_NEWGRF_SETTINGS                               :Optiones NewGRF
@@ -804,11 +804,9 @@ STR_PERFORMANCE_DETAIL_CARGO                                    :{BLACK}Onera:
 STR_PERFORMANCE_DETAIL_MONEY                                    :{BLACK}Pecunia:
 STR_PERFORMANCE_DETAIL_LOAN                                     :{BLACK}Creditum:
 STR_PERFORMANCE_DETAIL_TOTAL                                    :{BLACK}Omnia:
+###next-name-looks-similar
 
-###length 10
-STR_PERFORMANCE_DETAIL_VEHICLES_TOOLTIP                         :{BLACK}Numerus vehiculorum quae lucrum fecerunt anno priore. Vehicula viaria, hamaxostichi, naves, et aeroplana numerantur
 STR_PERFORMANCE_DETAIL_STATIONS_TOOLTIP                         :{BLACK}Numerus stationum nuper adventorum. Stationes ferriviariae laophoricaeque, et aeroportus, et cetera numerantur separatim etsi in eadem statione sunt
-STR_PERFORMANCE_DETAIL_MIN_PROFIT_TOOLTIP                       :{BLACK}Lucrum vehiculi quod minimum lucrum habet (modo vehicula plures quam duos annos in aetate)
 STR_PERFORMANCE_DETAIL_MIN_INCOME_TOOLTIP                       :{BLACK}Copia pecuniae merita in quadrante cum minimo lucro ex 12 quadrantibus prioribus
 STR_PERFORMANCE_DETAIL_MAX_INCOME_TOOLTIP                       :{BLACK}Copia pecuniae merita in quadrante cum maximo lucro ex 12 quadrantibus prioribus
 STR_PERFORMANCE_DETAIL_DELIVERED_TOOLTIP                        :{BLACK}Unitates oneris traditae quattuor quadrantibus prioribus
@@ -1036,7 +1034,6 @@ STR_NEWS_VEHICLE_IS_GETTING_VERY_OLD                            :{WHITE}{VEHICLE
 STR_NEWS_VEHICLE_IS_GETTING_VERY_OLD_AND                        :{WHITE}{VEHICLE} valde veterascit atque necesse est redimi
 STR_NEWS_TRAIN_IS_STUCK                                         :{WHITE}{VEHICLE} non potest iter invenire
 STR_NEWS_VEHICLE_IS_LOST                                        :{WHITE}{VEHICLE} errans est
-STR_NEWS_VEHICLE_IS_UNPROFITABLE                                :{WHITE}{VEHICLE} anno priore {CURRENCY_LONG} lucratur
 STR_NEWS_AIRCRAFT_DEST_TOO_FAR                                  :{WHITE}{VEHICLE} non potest ire ad destinatum nam extra distantiam volatus maximam est
 
 STR_NEWS_ORDER_REFIT_FAILED                                     :{WHITE}{VEHICLE} constitit quia ordo reficiendi defecit
@@ -1050,16 +1047,9 @@ STR_NEWS_NEW_VEHICLE_NOW_AVAILABLE_WITH_TYPE                    :{BLACK}Nov{G us
 
 STR_NEWS_OFFER_OF_SUBSIDY_EXPIRED                               :{BIG_FONT}{BLACK}Condicio subsidii discedit:{}{}Vectura {STRING.gen} a {STRING.abl} ad {STRING.acc} non diutius subveniatur
 STR_NEWS_SUBSIDY_WITHDRAWN_SERVICE                              :{BIG_FONT}{BLACK}Subsidium retractum:{}{}Vectura {STRING.gen} a {STRING.abl} ad {STRING.acc} non diutius subvenietur
-STR_NEWS_SERVICE_SUBSIDY_OFFERED                                :{BIG_FONT}{BLACK}Subsidium oblatum:{}{}Prima vectura {STRING.gen} a {STRING.abl} ad {STRING.acc} unum annum subveniatur ab auctoritate vicinale!
 ###length 4
-STR_NEWS_SERVICE_SUBSIDY_AWARDED_HALF                           :{BIG_FONT}{BLACK}{STRING} assignatur subsidium!{}{}Vectura {STRING.gen} a {STRING.abl} ad {STRING.acc} merebit reditum sesquiplicem anno secundo!
-STR_NEWS_SERVICE_SUBSIDY_AWARDED_DOUBLE                         :{BIG_FONT}{BLACK}{STRING} assignatur subsidium!{}{}Vectura {STRING.gen} a {STRING.abl} ad {STRING.acc} merebit reditum duplicem anno secundo!
-STR_NEWS_SERVICE_SUBSIDY_AWARDED_TRIPLE                         :{BIG_FONT}{BLACK}{STRING} assignatur subsidium!{}{}Vectura {STRING.gen} a {STRING.abl} ad {STRING.acc} merebit reditum triplicem anno secundo!
-STR_NEWS_SERVICE_SUBSIDY_AWARDED_QUADRUPLE                      :{BIG_FONT}{BLACK}{STRING} assignatur subsidium!{}{}Vectura {STRING.gen} a {STRING.abl} ad {STRING.acc} merebit reditum quadruplicem anno secundo!
 
-STR_NEWS_ROAD_REBUILDING                                        :{BIG_FONT}{BLACK}Chaos vehicularium in {TOWN}!{}{}Reconstructio viarum, expensis a {STRING} compartis, affert miseriam autoraedariis 6 menses!
 STR_NEWS_EXCLUSIVE_RIGHTS_TITLE                                 :{BIG_FONT}{BLACK}Monopolium Vecturae!
-STR_NEWS_EXCLUSIVE_RIGHTS_DESCRIPTION                           :{BIG_FONT}{BLACK}{TOWN}: Auctoritas vicinalis nuntiat {STRING} esse societatem unicam cui uno anno licet transportare intra oppidum!
 
 # Extra view window
 STR_EXTRA_VIEWPORT_TITLE                                        :{WHITE}Fenestra conspectus {COMMA}
@@ -1333,6 +1323,7 @@ STR_CONFIG_SETTING_VEHICLE_BREAKDOWNS_HELPTEXT                  :Eligere crebrit
 STR_CONFIG_SETTING_SUBSIDY_MULTIPLIER                           :Multiplicator subsidiorum: {STRING}
 STR_CONFIG_SETTING_SUBSIDY_MULTIPLIER_HELPTEXT                  :Eligere proportionem reditus additicii subsidiorum
 
+###length 2
 
 ###setting-zero-is-special
 
@@ -1423,7 +1414,10 @@ STR_CONFIG_SETTING_SIGNALSIDE_LEFT                              :in sinistro
 STR_CONFIG_SETTING_SIGNALSIDE_DRIVING_SIDE                      :in latere gubernandi
 STR_CONFIG_SETTING_SIGNALSIDE_RIGHT                             :in dextro
 
+###length 2
 STR_CONFIG_SETTING_SHOWFINANCES                                 :Monstrare fenestram argentariam anno finito: {STRING}
+
+###length 2
 STR_CONFIG_SETTING_SHOWFINANCES_HELPTEXT                        :Electa, fenestra argentaria ostenditur quoque anno finito ut facile inspiciatur status argentarius societatis
 
 STR_CONFIG_SETTING_NONSTOP_BY_DEFAULT                           :Nova iussa solite 'continua' sunt: {STRING}
@@ -1445,9 +1439,11 @@ STR_CONFIG_SETTING_AUTOSCROLL_MAIN_VIEWPORT                     :Fenestram prima
 STR_CONFIG_SETTING_AUTOSCROLL_EVERY_VIEWPORT                    :Quamque fenestram
 
 STR_CONFIG_SETTING_BRIBE                                        :Sinere largiri auctoritatem vicinalem: {STRING}
+###length 2
 STR_CONFIG_SETTING_BRIBE_HELPTEXT                               :Sinere societatibus conari largiri auctoritatem vicinalem. Si largitio animadversa est ab inquisitore, non licet societati agere in oppido 6 menses
 
 STR_CONFIG_SETTING_ALLOW_EXCLUSIVE                              :Sinere societatibus emere monopolia: {STRING}
+###length 2
 STR_CONFIG_SETTING_ALLOW_EXCLUSIVE_HELPTEXT                     :Si societas monopolium oppidi emit, nulla onera mittet stationibus competitorum in oppido (et onerariis et vectoriis) unum totum annum
 
 STR_CONFIG_SETTING_ALLOW_FUND_BUILDINGS                         :Sinere condere aedificia: {STRING}
@@ -1501,12 +1497,16 @@ STR_CONFIG_SETTING_ORDER_REVIEW_EXDEPOT                         :Ita, sed non ve
 STR_CONFIG_SETTING_ORDER_REVIEW_ON                              :Ita, omnium vehiculorum
 
 STR_CONFIG_SETTING_WARN_INCOME_LESS                             :Monere si reditus vehiculi negativus sit: {STRING}
+###length 2
 STR_CONFIG_SETTING_WARN_INCOME_LESS_HELPTEXT                    :Electa, nuntium ostenditur cum vehiculum non facit lucrum in anno
 
 STR_CONFIG_SETTING_NEVER_EXPIRE_VEHICLES                        :Vehicula numquam recedunt: {STRING}
 STR_CONFIG_SETTING_NEVER_EXPIRE_VEHICLES_HELPTEXT               :Electa, omnes vehiculorum typi permanent post introductionem
 
 ###length 2
+
+
+###setting-zero-is-special
 
 STR_CONFIG_SETTING_AUTORENEW_VEHICLE                            :Autoredimere vehicula cum veterascunt: {STRING}
 STR_CONFIG_SETTING_AUTORENEW_VEHICLE_HELPTEXT                   :Electa, vehicula veterascentia automatice redimuntur, condicionibus satisfactis
@@ -1724,7 +1724,10 @@ STR_CONFIG_SETTING_SOUND_TICKER_HELPTEXT                        :Sonare cum nunt
 STR_CONFIG_SETTING_SOUND_NEWS                                   :Ephemeris: {STRING}
 STR_CONFIG_SETTING_SOUND_NEWS_HELPTEXT                          :Sonare cum ephemeris ostenditur
 
+###length 2
 STR_CONFIG_SETTING_SOUND_NEW_YEAR                               :Annni finis: {STRING}
+
+###length 2
 STR_CONFIG_SETTING_SOUND_NEW_YEAR_HELPTEXT                      :Sonare anno finito cum summarium effectus societatis ostenditur
 
 STR_CONFIG_SETTING_SOUND_CONFIRM                                :Constructio: {STRING}
@@ -1989,7 +1992,6 @@ STR_CONFIG_SETTING_SHORT_PATH_SATURATION_HELPTEXT               :Frequenter sunt
 
 STR_CONFIG_SETTING_LOCALISATION_UNITS_VELOCITY                  :Unitates velocitatis: {STRING}
 STR_CONFIG_SETTING_LOCALISATION_UNITS_VELOCITY_HELPTEXT         :Quandocumque velocitas monstratur, monstrabitur his unitatibus electis
-###length 5
 STR_CONFIG_SETTING_LOCALISATION_UNITS_VELOCITY_IMPERIAL         :Anglicae (mph)
 STR_CONFIG_SETTING_LOCALISATION_UNITS_VELOCITY_METRIC           :Metricae (km/h)
 STR_CONFIG_SETTING_LOCALISATION_UNITS_VELOCITY_SI               :SI (m/s)
@@ -2142,7 +2144,6 @@ STR_ABANDON_SCENARIO_QUERY                                      :{YELLOW}Esne ce
 
 # Cheat window
 STR_CHEATS                                                      :{WHITE}Tricae
-STR_CHEATS_TOOLTIP                                              :{BLACK}Quadrum signi plenum indicat trica iam a te usa est
 STR_CHEAT_MONEY                                                 :{LTBLUE}Augere pecuniam {CURRENCY_LONG}
 STR_CHEAT_CHANGE_COMPANY                                        :{LTBLUE}Ludens es in loco societatis: {ORANGE}{COMMA}
 STR_CHEAT_EXTRA_DYNAMITE                                        :{LTBLUE}Magica machina aggerandi (removet industrias, obiecta immobilia): {ORANGE}{STRING}
@@ -2267,8 +2268,6 @@ STR_NETWORK_SERVER_LIST_MAP_SIZE_CAPTION                        :{BLACK}Magnitud
 STR_NETWORK_SERVER_LIST_MAP_SIZE_CAPTION_TOOLTIP                :{BLACK}Magnitudo ludi tabulae{}Preme ut magnitudine separenur
 STR_NETWORK_SERVER_LIST_DATE_CAPTION                            :{BLACK}Dies
 STR_NETWORK_SERVER_LIST_DATE_CAPTION_TOOLTIP                    :{BLACK}Dies currens
-STR_NETWORK_SERVER_LIST_YEARS_CAPTION                           :{BLACK}Anni
-STR_NETWORK_SERVER_LIST_YEARS_CAPTION_TOOLTIP                   :{BLACK}Numerus ludi annorum
 STR_NETWORK_SERVER_LIST_INFO_ICONS_TOOLTIP                      :{BLACK}Lingua, editio servatri, etc.
 
 STR_NETWORK_SERVER_LIST_CLICK_GAME_TO_SELECT                    :{BLACK}Eligere ludum ex indice
@@ -3315,8 +3314,6 @@ STR_TOWN_VIEW_CARGO_FOR_TOWNGROWTH_REQUIRED_WINTER              :{ORANGE}{STRING
 STR_TOWN_VIEW_CARGO_FOR_TOWNGROWTH_DELIVERED_GENERAL            :{ORANGE}{STRING}{GREEN} tradit{G 0 us a um i ae a}
 STR_TOWN_VIEW_CARGO_FOR_TOWNGROWTH_REQUIRED                     :{ORANGE}{CARGO_TINY} / {CARGO_LONG}{RED} (adhuc mandat{G 1 us a um i ae a})
 STR_TOWN_VIEW_CARGO_FOR_TOWNGROWTH_DELIVERED                    :{ORANGE}{CARGO_TINY} / {CARGO_LONG}{GREEN} (tradit{G 1 us a um i ae a})
-STR_TOWN_VIEW_TOWN_GROWS_EVERY                                  :{BLACK}Oppidum crescit {ORANGE}{COMMA}{BLACK} quoque die
-STR_TOWN_VIEW_TOWN_GROWS_EVERY_FUNDED                           :{BLACK}Oppidum crescit {ORANGE}{COMMA}{BLACK} quoque die (stimulatus)
 STR_TOWN_VIEW_TOWN_GROW_STOPPED                                 :{BLACK}Oppidum {RED}non{BLACK} crescit
 STR_TOWN_VIEW_NOISE_IN_TOWN                                     :{BLACK}Finis soniti in oppido: {ORANGE}{COMMA}{BLACK}  max: {ORANGE}{COMMA}
 STR_TOWN_VIEW_CENTER_TOOLTIP                                    :{BLACK}Movere conspectum supra hoc oppidum. Ctrl+Preme ut nova fenestra conspectus aperiatur supra oppidum
@@ -3349,15 +3346,13 @@ STR_LOCAL_AUTHORITY_ACTION_STATUE_OF_COMPANY                    :Struere effigie
 STR_LOCAL_AUTHORITY_ACTION_NEW_BUILDINGS                        :Condere nova aedificia
 STR_LOCAL_AUTHORITY_ACTION_EXCLUSIVE_TRANSPORT                  :Emere monopolium
 STR_LOCAL_AUTHORITY_ACTION_BRIBE                                :Largiri auctoritatem vicinalem
+###next-name-looks-similar
 
-###length 8
 STR_LOCAL_AUTHORITY_ACTION_TOOLTIP_SMALL_ADVERTISING            :{YELLOW}Incipere coepta praeconia parva, ut plures vectores oneraque alliciantur tuis muneribus.{}Pretium: {CURRENCY_LONG}
 STR_LOCAL_AUTHORITY_ACTION_TOOLTIP_MEDIUM_ADVERTISING           :{YELLOW}Incipere coepta praeconia mediocria, ut plures vectores oneraque alliciantur tuis muneribus.{}Pretium: {CURRENCY_LONG}
 STR_LOCAL_AUTHORITY_ACTION_TOOLTIP_LARGE_ADVERTISING            :{YELLOW}Incipere coepta praeconia magna, ut plures vectores oneraque alliciantur tuis muneribus.{}Pretium: {CURRENCY_LONG}
-STR_LOCAL_AUTHORITY_ACTION_TOOLTIP_ROAD_RECONSTRUCTION          :{YELLOW}Condere reconstructionem retis viarum urbanarum. Reconstructio facit magnam turbam viariam in oppido 6 menses.{}Pretium: {CURRENCY_LONG}
 STR_LOCAL_AUTHORITY_ACTION_TOOLTIP_STATUE_OF_COMPANY            :{YELLOW}Struere effigiem praesidis tuae societatis in oppido.{}Pretium: {CURRENCY_LONG}
 STR_LOCAL_AUTHORITY_ACTION_TOOLTIP_NEW_BUILDINGS                :{YELLOW}Condere nova aedificia mercatoria in oppido.{}Pretium: {CURRENCY_LONG}
-STR_LOCAL_AUTHORITY_ACTION_TOOLTIP_EXCLUSIVE_TRANSPORT          :{YELLOW}Emere monopolium unius anni in oppido. Auctoritas oppidi licebit vectores oneraque solum ire ad stationes tuas.{}Pretium: {CURRENCY_LONG}
 STR_LOCAL_AUTHORITY_ACTION_TOOLTIP_BRIBE                        :{YELLOW}Largiri auctoritatem vicinalem ut tua censio augeatur, at difficultas adest: forsitan animadvertaris et graviter puniaris.{}Pretium: {CURRENCY_LONG}
 
 # Goal window
@@ -3442,7 +3437,6 @@ STR_STATION_VIEW_EXCLUSIVE_RIGHTS_COMPANY                       :{YELLOW}{COMPAN
 
 STR_STATION_VIEW_RATINGS_BUTTON                                 :{BLACK}Censiones
 STR_STATION_VIEW_RATINGS_TOOLTIP                                :{BLACK}Monstrare censiones stationum
-STR_STATION_VIEW_SUPPLY_RATINGS_TITLE                           :{BLACK}Oblatum menstruum et censio vicinalis:
 STR_STATION_VIEW_CARGO_SUPPLY_RATING                            :{WHITE}{STRING}: {YELLOW}{COMMA} / {STRING} ({COMMA}%)
 
 STR_STATION_VIEW_GROUP                                          :{BLACK}Ordo
@@ -3583,7 +3577,6 @@ STR_COMPANY_INFRASTRUCTURE_VIEW_CANALS                          :{WHITE}Canales
 STR_COMPANY_INFRASTRUCTURE_VIEW_STATION_SECT                    :{GOLD}Stationes:
 STR_COMPANY_INFRASTRUCTURE_VIEW_STATIONS                        :{WHITE}Tegulae stationum
 STR_COMPANY_INFRASTRUCTURE_VIEW_AIRPORTS                        :{WHITE}Aeroportus
-STR_COMPANY_INFRASTRUCTURE_VIEW_TOTAL                           :{WHITE}{CURRENCY_LONG} per annum
 
 # Industry directory
 STR_INDUSTRY_DIRECTORY_CAPTION                                  :{WHITE}Industriae
@@ -3702,7 +3695,6 @@ STR_PURCHASE_INFO_SPEED_POWER                                   :{BLACK}Velocita
 STR_PURCHASE_INFO_SPEED                                         :{BLACK}Velocitas: {GOLD}{VELOCITY}
 STR_PURCHASE_INFO_SPEED_OCEAN                                   :{BLACK}Velocitas in mare: {GOLD}{VELOCITY}
 STR_PURCHASE_INFO_SPEED_CANAL                                   :{BLACK}Velocitas in canale flumineve: {GOLD}{VELOCITY}
-STR_PURCHASE_INFO_RUNNINGCOST                                   :{BLACK}Pretium Operandi: {GOLD}{CURRENCY_LONG} per annum
 STR_PURCHASE_INFO_CAPACITY                                      :{BLACK}Capacitas: {GOLD}{CARGO_LONG} {STRING}
 STR_PURCHASE_INFO_REFITTABLE                                    :(refectabilis)
 STR_PURCHASE_INFO_DESIGNED_LIFE                                 :{BLACK}Productum: {GOLD}{NUM}{BLACK} Aetas: {GOLD}{COMMA} ann{P us i}
@@ -3889,13 +3881,6 @@ STR_ENGINE_PREVIEW_ROAD_VEHICLE                                 :{G=n}vehiculum 
 STR_ENGINE_PREVIEW_AIRCRAFT                                     :{G=n}aeroplanum
 STR_ENGINE_PREVIEW_SHIP                                         :{G=f}navem
 
-STR_ENGINE_PREVIEW_COST_WEIGHT_SPEED_POWER                      :{BLACK}Pretium: {CURRENCY_LONG} Pondus: {WEIGHT_SHORT}{}Velocitas: {VELOCITY}  Potestas: {POWER}{}Pretium Operandi: {CURRENCY_LONG} per annum{}Capacitas: {CARGO_LONG}
-STR_ENGINE_PREVIEW_COST_WEIGHT_SPEED_POWER_MAX_TE               :{BLACK}Pretium: {CURRENCY_LONG} Pondus: {WEIGHT_SHORT}{}Velocitas: {VELOCITY}  Potestas: {POWER}  V.T. Max.: {6:FORCE}{}Pretium Operandi: {4:CURRENCY_LONG} per annum{}Capacitas: {5:CARGO_LONG}
-STR_ENGINE_PREVIEW_COST_MAX_SPEED_CAP_RUNCOST                   :{BLACK}Pretium: {CURRENCY_LONG} Velocitas Maxima: {VELOCITY}{}Capacitas: {CARGO_LONG}{}Pretium Operandi: {CURRENCY_LONG} per annum
-STR_ENGINE_PREVIEW_COST_MAX_SPEED_TYPE_CAP_CAP_RUNCOST          :{BLACK}Pretium: {CURRENCY_LONG} Velocitas Maxima: {VELOCITY}{}Typus Aeroplani: {STRING}{}Capacitas: {CARGO_LONG}, {CARGO_LONG}{}Pretium Operandi: {CURRENCY_LONG} per annum
-STR_ENGINE_PREVIEW_COST_MAX_SPEED_TYPE_CAP_RUNCOST              :{BLACK}Pretium: {CURRENCY_LONG} Velocitas Maxima: {VELOCITY}{}Typus Aeroplani: {STRING}{}Capacitas: {CARGO_LONG}{}Pretium Operandi: {CURRENCY_LONG} per annum
-STR_ENGINE_PREVIEW_COST_MAX_SPEED_TYPE_RANGE_CAP_CAP_RUNCOST    :{BLACK}Pretium: {CURRENCY_LONG} Velocitas Maxima: {VELOCITY}{}Typus Aeroplani: {STRING} Max. Distantia Volatus: {COMMA} tegulas{}Capacitas: {CARGO_LONG}, {CARGO_LONG}{}Pretium Operandi: {CURRENCY_LONG} per annum
-STR_ENGINE_PREVIEW_COST_MAX_SPEED_TYPE_RANGE_CAP_RUNCOST        :{BLACK}Pretium: {CURRENCY_LONG} Velocitas Maxima: {VELOCITY}{}Typus Aeroplani: {STRING} Max. Distantia Volatus: {COMMA} tegulas{}Capacitas: {CARGO_LONG}{}Pretium Operandi: {CURRENCY_LONG} per annum
 
 # Autoreplace window
 STR_REPLACE_VEHICLES_WHITE                                      :{WHITE}Mutare {STRING} - {STRING}
@@ -4040,8 +4025,6 @@ STR_VEHICLE_INFO_CAPACITY_CAPACITY                              :{BLACK}Capacita
 
 STR_VEHICLE_INFO_FEEDER_CARGO_VALUE                             :{BLACK}Credita transferendi: {LTBLUE}{CURRENCY_LONG}
 
-STR_VEHICLE_DETAILS_INCREASE_SERVICING_INTERVAL_TOOLTIP         :{BLACK}Augere intervallum ministrationis 10. Ctrl+Preme ut augeatur 5
-STR_VEHICLE_DETAILS_DECREASE_SERVICING_INTERVAL_TOOLTIP         :{BLACK}Minuere intervallum ministrationis 10. Ctrl+Preme ut minuatur 5
 
 STR_SERVICE_INTERVAL_DROPDOWN_TOOLTIP                           :{BLACK}Eligere genus intervalli ministrationis
 STR_VEHICLE_DETAILS_DEFAULT                                     :Solitus

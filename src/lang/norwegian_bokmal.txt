@@ -401,7 +401,7 @@ STR_SCENEDIT_FILE_MENU_SEPARATOR                                :
 STR_SCENEDIT_FILE_MENU_QUIT                                     :Avslutt
 
 # Settings menu
-###length 15
+###length 16
 STR_SETTINGS_MENU_GAME_OPTIONS                                  :Spillinnstillinger
 STR_SETTINGS_MENU_CONFIG_SETTINGS_TREE                          :Innstillinger
 STR_SETTINGS_MENU_GAMESCRIPT_SETTINGS                           :Innstillinger for spill-skript
@@ -635,11 +635,9 @@ STR_PERFORMANCE_DETAIL_CARGO                                    :{BLACK}Varer:
 STR_PERFORMANCE_DETAIL_MONEY                                    :{BLACK}Penger:
 STR_PERFORMANCE_DETAIL_LOAN                                     :{BLACK}Lån:
 STR_PERFORMANCE_DETAIL_TOTAL                                    :{BLACK}Totalt:
+###next-name-looks-similar
 
-###length 10
-STR_PERFORMANCE_DETAIL_VEHICLES_TOOLTIP                         :{BLACK}Antall kjøretøy med positiv fortjeneste i fjor. Dette inkluderer veikjøretøy, tog, skip og luftfartøy
 STR_PERFORMANCE_DETAIL_STATIONS_TOOLTIP                         :{BLACK}Antall nylig betjente stasjonsdeler. Hver del av en stasjon (f.eks. togstasjon, bussholdeplass, flyplass) er medregnet, selv om de er tilkoblet en stasjon.
-STR_PERFORMANCE_DETAIL_MIN_PROFIT_TOOLTIP                       :{BLACK}Fortjenesten til kjøretøyet med lavest inntekt (kun kjøretøy eldre enn 2 år er medregnet)
 STR_PERFORMANCE_DETAIL_MIN_INCOME_TOOLTIP                       :{BLACK}Inntekt i det kvartalet med minst fortjeneste de siste 12 kvartalene
 STR_PERFORMANCE_DETAIL_MAX_INCOME_TOOLTIP                       :{BLACK}Inntekt i det kvartalet med størst fortjeneste de siste 12 kvartalene
 STR_PERFORMANCE_DETAIL_DELIVERED_TOOLTIP                        :{BLACK}Vareenheter levert de siste fire kvartalene.
@@ -870,7 +868,6 @@ STR_NEWS_VEHICLE_IS_GETTING_VERY_OLD                            :{WHITE}{VEHICLE
 STR_NEWS_VEHICLE_IS_GETTING_VERY_OLD_AND                        :{WHITE}{VEHICLE} er veldig gammel, og bør byttes ut snarest
 STR_NEWS_TRAIN_IS_STUCK                                         :{WHITE}{VEHICLE} kan ikke finne en rute å fortsette på.
 STR_NEWS_VEHICLE_IS_LOST                                        :{WHITE}{VEHICLE} har kjørt seg vill
-STR_NEWS_VEHICLE_IS_UNPROFITABLE                                :{WHITE}{VEHICLE}s inntekt i fjor var {CURRENCY_LONG}
 STR_NEWS_AIRCRAFT_DEST_TOO_FAR                                  :{WHITE}{VEHICLE} kan ikke kjøre til neste destinasjon fordi den er utenfor rekkevidde
 
 STR_NEWS_ORDER_REFIT_FAILED                                     :{WHITE}{VEHICLE} stoppet fordi ombyggingsordre feilet
@@ -885,16 +882,9 @@ STR_NEWS_SHOW_VEHICLE_GROUP_TOOLTIP                             :{BLACK}Vis grup
 
 STR_NEWS_OFFER_OF_SUBSIDY_EXPIRED                               :{BIG_FONT}{BLACK}Subsidietilbud har gått ut:{}{}{STRING} fra {STRING} til {STRING} vil ikke subsidieres.
 STR_NEWS_SUBSIDY_WITHDRAWN_SERVICE                              :{BIG_FONT}{BLACK}Subsidie er trukket tilbake:{}{}Transport av {STRING} fra {STRING} til {STRING} subsidieres ikke lenger.
-STR_NEWS_SERVICE_SUBSIDY_OFFERED                                :{BIG_FONT}{BLACK}Subsidietilbud:{}{}Første transport av {STRING} fra {STRING} til {STRING} vil subsidieres av bystyret i {NUM} år!
 ###length 4
-STR_NEWS_SERVICE_SUBSIDY_AWARDED_HALF                           :{BIG_FONT}{BLACK}Subsidie gitt til {STRING}!{}{}{STRING} fra {STRING} til {STRING} vil betales med 50% ekstra de neste {NUM} år{P "" s}!
-STR_NEWS_SERVICE_SUBSIDY_AWARDED_DOUBLE                         :{BIG_FONT}{BLACK}Subsidie gitt til {STRING}!{}{}Transport av {STRING} fra {STRING} til {STRING} vil gi dobbel fortjeneste det neste {NUM} året{P "" s}!
-STR_NEWS_SERVICE_SUBSIDY_AWARDED_TRIPLE                         :{BIG_FONT}{BLACK}Subsidie gitt til {STRING}!{}{}Transport av {STRING} fra {STRING} til {STRING} vil gi trippel fortjeneste det neste {NUM} året{P "" s}!
-STR_NEWS_SERVICE_SUBSIDY_AWARDED_QUADRUPLE                      :{BIG_FONT}{BLACK}Subsidie gitt til {STRING}!{}{}Transport av {STRING} fra {STRING} til {STRING} vil gi firedobbel fortjeneste det neste {NUM} året{P "" s}!
 
-STR_NEWS_ROAD_REBUILDING                                        :{BIG_FONT}{BLACK}Traffikkaos i {TOWN}!{}{}Veiarbeid finansiert av {STRING} medfører 6 måneders irritasjon for bilistene!
 STR_NEWS_EXCLUSIVE_RIGHTS_TITLE                                 :{BIG_FONT}{BLACK}Transport monopol!
-STR_NEWS_EXCLUSIVE_RIGHTS_DESCRIPTION                           :{BIG_FONT}{BLACK}Lokal myndighet i {TOWN} signerer kontrakt med {STRING} for ett år med eksklusift transport rettigheter!
 
 # Extra view window
 STR_EXTRA_VIEWPORT_TITLE                                        :{WHITE}Tilleggsvindu {COMMA}
@@ -1197,9 +1187,9 @@ STR_CONFIG_SETTING_SUBSIDY_MULTIPLIER                           :Multiplikator f
 STR_CONFIG_SETTING_SUBSIDY_MULTIPLIER_HELPTEXT                  :Angi hvor mye som betales for subsidierte forbindelser
 
 STR_CONFIG_SETTING_SUBSIDY_DURATION                             :Subsidiens varighet: {STRING}
+###length 2
 STR_CONFIG_SETTING_SUBSIDY_DURATION_HELPTEXT                    :Angi antall år som subsidiet tildeles for
 
-STR_CONFIG_SETTING_SUBSIDY_DURATION_VALUE                       :{NUM} år{P "" s}
 ###setting-zero-is-special
 STR_CONFIG_SETTING_SUBSIDY_DURATION_DISABLED                    :Ingen subsidier
 
@@ -1295,7 +1285,10 @@ STR_CONFIG_SETTING_SIGNALSIDE_LEFT                              :Til venstre
 STR_CONFIG_SETTING_SIGNALSIDE_DRIVING_SIDE                      :På kjøre-siden
 STR_CONFIG_SETTING_SIGNALSIDE_RIGHT                             :Til høyre
 
+###length 2
 STR_CONFIG_SETTING_SHOWFINANCES                                 :Vis regnskap ved nyttår: {STRING}
+
+###length 2
 STR_CONFIG_SETTING_SHOWFINANCES_HELPTEXT                        :Hvis aktivert, spretter økonomivinduet opp på slutten av hvert år for å muliggjør en enkel inspeksjon av selskapets økonomiske status
 
 STR_CONFIG_SETTING_NONSTOP_BY_DEFAULT                           :Nye ordre er 'direkte' som standard: {STRING}
@@ -1317,10 +1310,12 @@ STR_CONFIG_SETTING_AUTOSCROLL_MAIN_VIEWPORT                     :Hovedvindu
 STR_CONFIG_SETTING_AUTOSCROLL_EVERY_VIEWPORT                    :alle tilleggsvindu
 
 STR_CONFIG_SETTING_BRIBE                                        :Tillat bestikkelser av bystyret: {STRING}
+###length 2
 STR_CONFIG_SETTING_BRIBE_HELPTEXT                               :Tillat firmaer å prøve å bestikke de lokale myndighetene i byen. Hvis bestikkelsen blir oppdaget av en inspektør, vil selskapet ikke være i stand til å gjøre forretninger i byen de neste seks månedene
 STR_CONFIG_SETTING_BRIBE_HELPTEXT.small                         :firma
 
 STR_CONFIG_SETTING_ALLOW_EXCLUSIVE                              :Tillat kjøp av eksklusive transportrettigheter: {STRING}
+###length 2
 STR_CONFIG_SETTING_ALLOW_EXCLUSIVE_HELPTEXT                     :Om et firma kjøper eksklusive transportrettigheter for en by, vil ikke motstandernes stasjoner motta varer eller passasjorer på ett år.
 
 STR_CONFIG_SETTING_ALLOW_FUND_BUILDINGS                         :Tillat finansiering av bygninger: {STRING}
@@ -1375,12 +1370,16 @@ STR_CONFIG_SETTING_ORDER_REVIEW_EXDEPOT                         :Ja, men utelukk
 STR_CONFIG_SETTING_ORDER_REVIEW_ON                              :Alle kjøretøy
 
 STR_CONFIG_SETTING_WARN_INCOME_LESS                             :Advar hvis inntekten til et kjøretøy er negativ: {STRING}
+###length 2
 STR_CONFIG_SETTING_WARN_INCOME_LESS_HELPTEXT                    :Når aktivert, vil en nyhetsmelding vises når et kjøretøy ikke har tjent penger i løpet av ett kalenderår
 
 STR_CONFIG_SETTING_NEVER_EXPIRE_VEHICLES                        :Kjøretøy utgår aldri: {STRING}
 STR_CONFIG_SETTING_NEVER_EXPIRE_VEHICLES_HELPTEXT               :Når aktivert, vil alle kjøretøysmodeller være tilgjengelig for alltid etter de introduseres
 
 ###length 2
+
+
+###setting-zero-is-special
 
 STR_CONFIG_SETTING_AUTORENEW_VEHICLE                            :Autoforny kjøretøy når det blir gammelt: {STRING}
 STR_CONFIG_SETTING_AUTORENEW_VEHICLE_HELPTEXT                   :Når aktivert, blir et kjøretøy som nærmer seg slutten av sin levetid automatisk erstattet når betingelsene for fornyelse er oppfylt
@@ -1619,7 +1618,10 @@ STR_CONFIG_SETTING_SOUND_TICKER_HELPTEXT                        :Spille av lyd f
 STR_CONFIG_SETTING_SOUND_NEWS                                   :Avis: {STRING}
 STR_CONFIG_SETTING_SOUND_NEWS_HELPTEXT                          :Spille av lyd ved visning av aviser
 
+###length 2
 STR_CONFIG_SETTING_SOUND_NEW_YEAR                               :Utgangen av år: {STRING}
+
+###length 2
 STR_CONFIG_SETTING_SOUND_NEW_YEAR_HELPTEXT                      :Spille av lydeffekt ved utgangen av et år som oppsummerer selskapets resultater i løpet av året i forhold til året før
 
 STR_CONFIG_SETTING_SOUND_CONFIRM                                :Konstruksjon: {STRING}
@@ -1912,11 +1914,9 @@ STR_CONFIG_SETTING_SHORT_PATH_SATURATION_HELPTEXT               :Ofte er det fle
 
 STR_CONFIG_SETTING_LOCALISATION_UNITS_VELOCITY                  :Hastighetsenheter: {STRING}
 STR_CONFIG_SETTING_LOCALISATION_UNITS_VELOCITY_HELPTEXT         :Når en hastighet vises i brukergrensesnittet, vise det i de valgte enheter
-###length 5
 STR_CONFIG_SETTING_LOCALISATION_UNITS_VELOCITY_IMPERIAL         :Det britiske imperiets enhetssystem (mph)
 STR_CONFIG_SETTING_LOCALISATION_UNITS_VELOCITY_METRIC           :Metrisk (km/t)
 STR_CONFIG_SETTING_LOCALISATION_UNITS_VELOCITY_SI               :SI (m/s)
-STR_CONFIG_SETTING_LOCALISATION_UNITS_VELOCITY_GAMEUNITS        :Spill deler (ruter/dag)
 
 STR_CONFIG_SETTING_LOCALISATION_UNITS_POWER                     :Kjøretøys effektenheter: {STRING}
 STR_CONFIG_SETTING_LOCALISATION_UNITS_POWER_HELPTEXT            :Når et kjøretøys effekt er vist i brukergrensesnittet, vise det i de valgte enheter
@@ -2073,8 +2073,6 @@ STR_ABANDON_SCENARIO_QUERY                                      :{YELLOW}Er du s
 
 # Cheat window
 STR_CHEATS                                                      :{WHITE}Juksekoder
-STR_CHEATS_TOOLTIP                                              :{BLACK}Avkrysningsbokser indikerer om du har brukt denne juksekoden tidligere
-STR_CHEATS_NOTE                                                 :{BLACK}Notat: alle endringer i disse innstillingene vil bli lagret i det lagrede spillet
 STR_CHEAT_MONEY                                                 :{LTBLUE}Øk pengebeholdningen med {CURRENCY_LONG}
 STR_CHEAT_CHANGE_COMPANY                                        :{LTBLUE}Spiller som firma: {ORANGE}{COMMA}
 STR_CHEAT_EXTRA_DYNAMITE                                        :{LTBLUE}Magisk bulldoser (fjern industrier, uflyttbare objekter): {ORANGE}{STRING}
@@ -2202,8 +2200,6 @@ STR_NETWORK_SERVER_LIST_MAP_SIZE_CAPTION                        :{BLACK}Kartstø
 STR_NETWORK_SERVER_LIST_MAP_SIZE_CAPTION_TOOLTIP                :{BLACK}Kartstørrelsen på spillet{}Klikk for å sortere på område
 STR_NETWORK_SERVER_LIST_DATE_CAPTION                            :{BLACK}Dato
 STR_NETWORK_SERVER_LIST_DATE_CAPTION_TOOLTIP                    :{BLACK}Gjeldende dato
-STR_NETWORK_SERVER_LIST_YEARS_CAPTION                           :{BLACK}År
-STR_NETWORK_SERVER_LIST_YEARS_CAPTION_TOOLTIP                   :{BLACK}Antall år{}spillet pågår
 STR_NETWORK_SERVER_LIST_INFO_ICONS_TOOLTIP                      :{BLACK}Språk, tjenerversjon, osv.
 
 STR_NETWORK_SERVER_LIST_CLICK_GAME_TO_SELECT                    :{BLACK}Klikk på et spill i listen for å velge det
@@ -3398,8 +3394,6 @@ STR_TOWN_VIEW_CARGO_FOR_TOWNGROWTH_REQUIRED_WINTER              :{ORANGE}{STRING
 STR_TOWN_VIEW_CARGO_FOR_TOWNGROWTH_DELIVERED_GENERAL            :{ORANGE}{STRING}{GREEN} levert
 STR_TOWN_VIEW_CARGO_FOR_TOWNGROWTH_REQUIRED                     :{ORANGE}{CARGO_TINY} / {CARGO_LONG}{RED} (fortsatt nødvendig)
 STR_TOWN_VIEW_CARGO_FOR_TOWNGROWTH_DELIVERED                    :{ORANGE}{CARGO_TINY} / {CARGO_LONG}{GREEN} (levert)
-STR_TOWN_VIEW_TOWN_GROWS_EVERY                                  :{BLACK}Byen vokser hver {ORANGE}{COMMA}{BLACK}{NBSP}dag{P "" er}
-STR_TOWN_VIEW_TOWN_GROWS_EVERY_FUNDED                           :{BLACK}Byen vokser hver {ORANGE}{COMMA}{BLACK}{NBSP}dag{P "" er} (finansiert)
 STR_TOWN_VIEW_TOWN_GROW_STOPPED                                 :{BLACK}Byen vokser {RED}ikke{BLACK}
 STR_TOWN_VIEW_NOISE_IN_TOWN                                     :{BLACK}Flystøy: {ORANGE}{COMMA}{BLACK}  støygrense: {ORANGE}{COMMA}
 STR_TOWN_VIEW_CENTER_TOOLTIP                                    :{BLACK}Gå til by. Ctrl+klikk åpner et nytt tilleggsvindu over byen
@@ -3434,15 +3428,13 @@ STR_LOCAL_AUTHORITY_ACTION_STATUE_OF_COMPANY                    :Bygg statue av 
 STR_LOCAL_AUTHORITY_ACTION_NEW_BUILDINGS                        :Finansier nye bygninger
 STR_LOCAL_AUTHORITY_ACTION_EXCLUSIVE_TRANSPORT                  :Kjøp eksklusive transportrettigheter
 STR_LOCAL_AUTHORITY_ACTION_BRIBE                                :Bestikk bystyret
+###next-name-looks-similar
 
-###length 8
 STR_LOCAL_AUTHORITY_ACTION_TOOLTIP_SMALL_ADVERTISING            :{YELLOW}Start en liten lokal reklamekampanje for å tiltrekke deg flere passasjerer og mer varer til dine transporttjenester.{}Gir en midlertidig økning til stasjonsvurderingen i en liten radius rundt bysentrum.{}Kostnad: {CURRENCY_LONG}
 STR_LOCAL_AUTHORITY_ACTION_TOOLTIP_MEDIUM_ADVERTISING           :{YELLOW}Start en middels stor lokal reklamekampanje for å tiltrekke deg flere passasjerer og mer varer til dine transporttjenester.{}Gir en midlertidig økning til stasjonsvurderingen i en liten radius rundt bysentrum.{}Kostnad: {CURRENCY_LONG}
 STR_LOCAL_AUTHORITY_ACTION_TOOLTIP_LARGE_ADVERTISING            :{YELLOW}Start en stor lokal reklamekampanje for å tiltrekke deg flere passasjerer og mer varer til dine transporttjenester.{}Gir et midlertidig økning til stasjonsvurderingen i stor radius rundt bysentrum.{}Kostnad: {CURRENCY_LONG}
-STR_LOCAL_AUTHORITY_ACTION_TOOLTIP_ROAD_RECONSTRUCTION          :{YELLOW}Finansier ombygging av det lokale veinettet.{}Fører til betydelige veiforstyrrelser i opptil seks måneder.{}Kostnad: {CURRENCY_LONG}
 STR_LOCAL_AUTHORITY_ACTION_TOOLTIP_STATUE_OF_COMPANY            :{YELLOW}Bygg en statue for å ære firmaet.{}Gir en permanent økning i stasjonens rangering i denne byen.{}Kostnad: {CURRENCY_LONG}
 STR_LOCAL_AUTHORITY_ACTION_TOOLTIP_NEW_BUILDINGS                :{YELLOW}Finansier byggingen av nye kommersielle bygninger i byen.{}Gir en midlertidig økning for veksten i denne byen.{}Kostnad: {CURRENCY_LONG}
-STR_LOCAL_AUTHORITY_ACTION_TOOLTIP_EXCLUSIVE_TRANSPORT          :{YELLOW}Kjøp ett års eksklusive transportrettigheter i byen.{}Bystyret vil ikke tillate passasjerer og last å bruke konkurrentenes stasjoner.{}Kostnad: {CURRENCY_LONG}
 STR_LOCAL_AUTHORITY_ACTION_TOOLTIP_BRIBE                        :{YELLOW}Du kan bestikke bystyret for å forbedre vurderingen av firmaet ditt, men du risikerer å bli bøtelagt hvis du blir oppdaget.{}Kostnad: {CURRENCY_LONG}
 
 # Goal window
@@ -3531,7 +3523,6 @@ STR_STATION_VIEW_EXCLUSIVE_RIGHTS_COMPANY                       :{YELLOW}{COMPAN
 
 STR_STATION_VIEW_RATINGS_BUTTON                                 :{BLACK}Vurderinger
 STR_STATION_VIEW_RATINGS_TOOLTIP                                :{BLACK}Vis stasjonsvurdering
-STR_STATION_VIEW_SUPPLY_RATINGS_TITLE                           :{BLACK}Månedlig forsyning og lokal rangering:
 STR_STATION_VIEW_CARGO_SUPPLY_RATING                            :{WHITE}{STRING}: {YELLOW}{COMMA} / {STRING} ({COMMA}%)
 
 STR_STATION_VIEW_GROUP                                          :{BLACK}Gruppér etter
@@ -3677,7 +3668,6 @@ STR_COMPANY_INFRASTRUCTURE_VIEW_CANALS                          :{WHITE}Kanaler
 STR_COMPANY_INFRASTRUCTURE_VIEW_STATION_SECT                    :{GOLD}Stasjoner:
 STR_COMPANY_INFRASTRUCTURE_VIEW_STATIONS                        :{WHITE}Stasjonsruter
 STR_COMPANY_INFRASTRUCTURE_VIEW_AIRPORTS                        :{WHITE}Flyplasser
-STR_COMPANY_INFRASTRUCTURE_VIEW_TOTAL                           :{WHITE}{CURRENCY_LONG}/år
 
 # Industry directory
 STR_INDUSTRY_DIRECTORY_CAPTION                                  :{WHITE}Industrier
@@ -3807,7 +3797,6 @@ STR_PURCHASE_INFO_SPEED_POWER                                   :{BLACK}Hastighe
 STR_PURCHASE_INFO_SPEED                                         :{BLACK}Hastighet: {GOLD}{VELOCITY}
 STR_PURCHASE_INFO_SPEED_OCEAN                                   :{BLACK}Hastighet på havet: {GOLD}{VELOCITY}
 STR_PURCHASE_INFO_SPEED_CANAL                                   :{BLACK}Hastighet på kanal/elv: {GOLD}{VELOCITY}
-STR_PURCHASE_INFO_RUNNINGCOST                                   :{BLACK}Driftskostnad: {GOLD}{CURRENCY_LONG}/år
 STR_PURCHASE_INFO_CAPACITY                                      :{BLACK}Kapasitet: {GOLD}{CARGO_LONG} {STRING}
 STR_PURCHASE_INFO_REFITTABLE                                    :(ombyggbart)
 STR_PURCHASE_INFO_DESIGNED_LIFE                                 :{BLACK}Designet: {GOLD}{NUM}{BLACK} Levetid: {GOLD}{COMMA} år
@@ -3998,13 +3987,6 @@ STR_ENGINE_PREVIEW_TRAM_VEHICLE                                 :trikkekjøretø
 STR_ENGINE_PREVIEW_AIRCRAFT                                     :{G=neuter}luftfartøy
 STR_ENGINE_PREVIEW_SHIP                                         :{G=neuter}skip
 
-STR_ENGINE_PREVIEW_COST_WEIGHT_SPEED_POWER                      :{BLACK}Kostnad: {CURRENCY_LONG} Vekt: {WEIGHT_SHORT}{}Hastighet: {VELOCITY}  Kraft: {POWER}{}Driftskostnader: {CURRENCY_LONG}/år{}Kapasitet: {CARGO_LONG}
-STR_ENGINE_PREVIEW_COST_WEIGHT_SPEED_POWER_MAX_TE               :{BLACK}Kostnad: {CURRENCY_LONG} Vekt: {WEIGHT_SHORT}{}Hastighet: {VELOCITY}  Kraft: {POWER}  Maks trekkraft: {6:FORCE}{}Vedlikehold: {4:CURRENCY_LONG}/år{}Kapasitet: {5:CARGO_LONG}
-STR_ENGINE_PREVIEW_COST_MAX_SPEED_CAP_RUNCOST                   :{BLACK}Kostnad: {CURRENCY_LONG} Maks hastighet: {VELOCITY}{}Kapasitet: {CARGO_LONG}{}Driftskostnader: {CURRENCY_LONG}/år
-STR_ENGINE_PREVIEW_COST_MAX_SPEED_TYPE_CAP_CAP_RUNCOST          :{BLACK}Kostnad: {CURRENCY_LONG} Maks. hastighet: {VELOCITY}{}Flytype: {STRING}{}Kapasitet: {CARGO_LONG}, {CARGO_LONG}{}Driftskostnader: {CURRENCY_LONG}/år
-STR_ENGINE_PREVIEW_COST_MAX_SPEED_TYPE_CAP_RUNCOST              :{BLACK}Kostnad: {CURRENCY_LONG} Maks. hastighet: {VELOCITY}{}Flytype: {STRING}{}Kapasitet: {CARGO_LONG}{}Driftskostnad: {CURRENCY_LONG}/år
-STR_ENGINE_PREVIEW_COST_MAX_SPEED_TYPE_RANGE_CAP_CAP_RUNCOST    :{BLACK}Kostnad: {CURRENCY_LONG} Maks. hastighet: {VELOCITY}{}Flytype: {STRING} Rekkevidde: {COMMA} ruter{}kapasitet: {CARGO_LONG}, {CARGO_LONG}{}Driftskostnader: {CURRENCY_LONG}/år
-STR_ENGINE_PREVIEW_COST_MAX_SPEED_TYPE_RANGE_CAP_RUNCOST        :{BLACK}Kostnad: {CURRENCY_LONG} Maks. hastighet: {VELOCITY}{}Flytype: {STRING} Rekkevidde: {COMMA} ruter{}Kapasitet: {CARGO_LONG}{}Driftskostnad: {CURRENCY_LONG}/år
 
 # Autoreplace window
 STR_REPLACE_VEHICLES_WHITE                                      :{WHITE}Erstatte {STRING} - {STRING}
@@ -4168,8 +4150,6 @@ STR_VEHICLE_INFO_CAPACITY_CAPACITY                              :{BLACK}Kapasite
 
 STR_VEHICLE_INFO_FEEDER_CARGO_VALUE                             :{BLACK}Overføringskreditt: {LTBLUE}{CURRENCY_LONG}
 
-STR_VEHICLE_DETAILS_INCREASE_SERVICING_INTERVAL_TOOLTIP         :{BLACK}Øk vedlikeholdsintervall med 10. Ctrl+klikk øker med 5
-STR_VEHICLE_DETAILS_DECREASE_SERVICING_INTERVAL_TOOLTIP         :{BLACK}Reduser vedlikeholdsintervall med 10. Ctrl+klikk reduserer med 5
 
 STR_SERVICE_INTERVAL_DROPDOWN_TOOLTIP                           :{BLACK}Enhet for vedlikeholdsintervall
 STR_VEHICLE_DETAILS_DEFAULT                                     :Standard

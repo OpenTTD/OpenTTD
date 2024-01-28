@@ -599,7 +599,7 @@ STR_SCENEDIT_FILE_MENU_SEPARATOR                                :
 STR_SCENEDIT_FILE_MENU_QUIT                                     :Izađi
 
 # Settings menu
-###length 15
+###length 16
 STR_SETTINGS_MENU_GAME_OPTIONS                                  :Opcije
 STR_SETTINGS_MENU_CONFIG_SETTINGS_TREE                          :Podešavanja
 STR_SETTINGS_MENU_AI_SETTINGS                                   :Podešavanja VI
@@ -835,11 +835,9 @@ STR_PERFORMANCE_DETAIL_CARGO                                    :{BLACK}Teret:
 STR_PERFORMANCE_DETAIL_MONEY                                    :{BLACK}Novac:
 STR_PERFORMANCE_DETAIL_LOAN                                     :{BLACK}Zajam:
 STR_PERFORMANCE_DETAIL_TOTAL                                    :{BLACK}Ukupno:
+###next-name-looks-similar
 
-###length 10
-STR_PERFORMANCE_DETAIL_VEHICLES_TOOLTIP                         :{BLACK}Broj vozila koja su imala zaradu prošle godine. Ovo uključuje drumska, železnička vozila, brodove i letelice
 STR_PERFORMANCE_DETAIL_STATIONS_TOOLTIP                         :{BLACK}Broj nedavno opsluženih stanica. Posebno se broji svaki deo stanice (npr. železničko, autobusko stajalište ili aerodrom)
-STR_PERFORMANCE_DETAIL_MIN_PROFIT_TOOLTIP                       :{BLACK}Zarada vozila sa najmanjim prihodom (samo vozila starijih od 2 godine)
 STR_PERFORMANCE_DETAIL_MIN_INCOME_TOOLTIP                       :{BLACK}Zarađen novac u tromesečju sa najmanjom zaradom u proteklih 12 tromesečja
 STR_PERFORMANCE_DETAIL_MAX_INCOME_TOOLTIP                       :{BLACK}Zarađen novac u tromesečju sa najvećom zaradom u proteklih 12 tromesečja
 STR_PERFORMANCE_DETAIL_DELIVERED_TOOLTIP                        :{BLACK}Jedinica tereta dostavljenih u proteklih četiri tromesečja
@@ -1077,7 +1075,6 @@ STR_NEWS_VEHICLE_IS_GETTING_VERY_OLD                            :{WHITE}{VEHICLE
 STR_NEWS_VEHICLE_IS_GETTING_VERY_OLD_AND                        :{WHITE}{VEHICLE} previše zastareva i hitno bi ga treba zameniti
 STR_NEWS_TRAIN_IS_STUCK                                         :{WHITE}{VEHICLE} ne može za dalje da pronađe put
 STR_NEWS_VEHICLE_IS_LOST                                        :{WHITE}{VEHICLE} se izgubio
-STR_NEWS_VEHICLE_IS_UNPROFITABLE                                :{WHITE}{VEHICLE} je prošle godine imao zaradu od {CURRENCY_LONG}
 STR_NEWS_AIRCRAFT_DEST_TOO_FAR                                  :{WHITE}{VEHICLE} ne može da stigne do sledeće destinacije, izvan dometa je
 
 STR_NEWS_ORDER_REFIT_FAILED                                     :{WHITE}Neuspešna primena naredbe preuređivanja {VEHICLE}
@@ -1092,16 +1089,9 @@ STR_NEWS_SHOW_VEHICLE_GROUP_TOOLTIP                             :{BLACK}Otvori g
 
 STR_NEWS_OFFER_OF_SUBSIDY_EXPIRED                               :{BIG_FONT}{BLACK}Ponuda subvencije istekla:{}{}Prevoz {STRING.gen} iz {STRING} u {STRING} se više neće stimulisati
 STR_NEWS_SUBSIDY_WITHDRAWN_SERVICE                              :{BIG_FONT}{BLACK}Subvencija povučena:{}{}Usluga prevoza {STRING.gen} između stanica {STRING} i {STRING} više nije u opticaju
-STR_NEWS_SERVICE_SUBSIDY_OFFERED                                :{BIG_FONT}{BLACK}Ponuda subvencije:{}{}Prvi {STRING} od {STRING} do {STRING} stiče pravo na subvenciju u trajanju od {NUM} godina!
 ###length 4
-STR_NEWS_SERVICE_SUBSIDY_AWARDED_HALF                           :{BIG_FONT}{BLACK}Subvencija odobrena preduzeću {STRING}!{}{}{STRING} od {STRING} do {STRING} će biti plaćena 50% više {NUM} godin{P e a a}!
-STR_NEWS_SERVICE_SUBSIDY_AWARDED_DOUBLE                         :{BIG_FONT}{BLACK}Subvencija odobrena preduzeću {STRING}!{}{}{STRING} od {STRING} do {STRING} će biti plaćena dvostruko {NUM} godin{P e a a}!
-STR_NEWS_SERVICE_SUBSIDY_AWARDED_TRIPLE                         :{BIG_FONT}{BLACK}Subvencija odobrena preduzeću {STRING}!{}{}{STRING} od {STRING} do {STRING} će biti plaćena trostruko {NUM} godin{P e a a}!
-STR_NEWS_SERVICE_SUBSIDY_AWARDED_QUADRUPLE                      :{BIG_FONT}{BLACK}Subvencija odobrena preduzeću {STRING}!{}{}{STRING} od {STRING} do {STRING} će biti plaćena četvorostruko {NUM} godin{P e a a}!
 
-STR_NEWS_ROAD_REBUILDING                                        :{BIG_FONT}{BLACK}{TOWN} - haos na ulicama!{}{}Program rekonstrukcije puteva sponzorisan od strane preduzeća {STRING} donosi vozačima 6 meseci agonije!
 STR_NEWS_EXCLUSIVE_RIGHTS_TITLE                                 :{BIG_FONT}{BLACK}Prevoznički monopol!
-STR_NEWS_EXCLUSIVE_RIGHTS_DESCRIPTION                           :{BIG_FONT}{BLACK}Vlasti naselja {TOWN} su potpisale ugovor sa preduzećem {STRING} o ekskluzivnom pravu prevoza na godinu dana!
 
 # Extra view window
 STR_EXTRA_VIEWPORT_TITLE                                        :{WHITE}Pogled{COMMA}
@@ -1422,9 +1412,9 @@ STR_CONFIG_SETTING_SUBSIDY_MULTIPLIER                           :Množilac subve
 STR_CONFIG_SETTING_SUBSIDY_MULTIPLIER_HELPTEXT                  :Podešava koliko se plaća za subvencionisane konekcije
 
 STR_CONFIG_SETTING_SUBSIDY_DURATION                             :Trajanje subvencije: {STRING}
+###length 2
 STR_CONFIG_SETTING_SUBSIDY_DURATION_HELPTEXT                    :Odredi broj godina trajanja subvencije
 
-STR_CONFIG_SETTING_SUBSIDY_DURATION_VALUE                       :{NUM} godina
 ###setting-zero-is-special
 STR_CONFIG_SETTING_SUBSIDY_DURATION_DISABLED                    :Bez subvencija
 
@@ -1520,7 +1510,10 @@ STR_CONFIG_SETTING_SIGNALSIDE_LEFT                              :Na levoj
 STR_CONFIG_SETTING_SIGNALSIDE_DRIVING_SIDE                      :Na strani na kojoj se vozi
 STR_CONFIG_SETTING_SIGNALSIDE_RIGHT                             :Na desnoj
 
+###length 2
 STR_CONFIG_SETTING_SHOWFINANCES                                 :Prikazivanje finansijskog stanja na kraju godine: {STRING}
+
+###length 2
 STR_CONFIG_SETTING_SHOWFINANCES_HELPTEXT                        :Ako je omogućeno, na kraju svake godine će se prikazati prozor sa finansijskim stanjem što omogućava lakše praćenje finansija preduzeća
 
 STR_CONFIG_SETTING_NONSTOP_BY_DEFAULT                           :Nove naredbe su postavljene sa 'direktno': {STRING}
@@ -1542,9 +1535,11 @@ STR_CONFIG_SETTING_AUTOSCROLL_MAIN_VIEWPORT                     :Glavni prikaz
 STR_CONFIG_SETTING_AUTOSCROLL_EVERY_VIEWPORT                    :Svaki prikaz
 
 STR_CONFIG_SETTING_BRIBE                                        :Dozvoljeno podmićivanje lokalnih vlasti: {STRING}
+###length 2
 STR_CONFIG_SETTING_BRIBE_HELPTEXT                               :Dozvoljava preduzećima da pokušaju da podmite lokalne vlasti. Ako inspektor primeti podmićivanje, preduzeće neće moći da deluje u naselju sledećih šest meseci
 
 STR_CONFIG_SETTING_ALLOW_EXCLUSIVE                              :Dozvoljena kupovina ekskluzivnih prava prevoza: {STRING}
+###length 2
 STR_CONFIG_SETTING_ALLOW_EXCLUSIVE_HELPTEXT                     :Ako preduzeće kupi ekskluzivna prava prevoza u naselju, protivničke stanice neće primati nikakav teret ni putnike cele godine
 
 STR_CONFIG_SETTING_ALLOW_FUND_BUILDINGS                         :Dozvoljeno finansiranje zgrada: {STRING}
@@ -1598,12 +1593,16 @@ STR_CONFIG_SETTING_ORDER_REVIEW_EXDEPOT                         :da, osim zausta
 STR_CONFIG_SETTING_ORDER_REVIEW_ON                              :svih vozila
 
 STR_CONFIG_SETTING_WARN_INCOME_LESS                             :Upozorenje ukoliko vozilo pravi gubitke: {STRING}
+###length 2
 STR_CONFIG_SETTING_WARN_INCOME_LESS_HELPTEXT                    :Ako je omogućeno, šalje vest kada vozilo u toku kalendarske godine nije ostvarilo zaradu
 
 STR_CONFIG_SETTING_NEVER_EXPIRE_VEHICLES                        :Vozila nikad ne zastarevaju: {STRING}
 STR_CONFIG_SETTING_NEVER_EXPIRE_VEHICLES_HELPTEXT               :Ako je omogućeno, svi modeli vozila ostaju zauvek dostupni (posle njihovog predstavljanja)
 
 ###length 2
+
+
+###setting-zero-is-special
 
 STR_CONFIG_SETTING_AUTORENEW_VEHICLE                            :Automatska zamena kada vozilo ostari: {STRING}
 STR_CONFIG_SETTING_AUTORENEW_VEHICLE_HELPTEXT                   :Kada je omogućeno, vozilo blizu kraja života će se automatski zameniti kada su ispunjeni uslovi obnavljanja
@@ -1850,7 +1849,10 @@ STR_CONFIG_SETTING_SOUND_TICKER_HELPTEXT                        :Reprodukuj zvu�
 STR_CONFIG_SETTING_SOUND_NEWS                                   :Novinski naslovi: {STRING}
 STR_CONFIG_SETTING_SOUND_NEWS_HELPTEXT                          :Reprodukuj zvučne efekte prilikom prikazivanja novinskih naslova
 
+###length 2
 STR_CONFIG_SETTING_SOUND_NEW_YEAR                               :Kraj godine: {STRING}
+
+###length 2
 STR_CONFIG_SETTING_SOUND_NEW_YEAR_HELPTEXT                      :Reprodukuj zvučne efekte prilikom ispisa rezultata poslovanja preduzeća na kraju svake godine
 
 STR_CONFIG_SETTING_SOUND_CONFIRM                                :Izgradnja: {STRING}
@@ -2142,11 +2144,9 @@ STR_CONFIG_SETTING_SHORT_PATH_SATURATION_HELPTEXT               :Često postoji 
 
 STR_CONFIG_SETTING_LOCALISATION_UNITS_VELOCITY                  :Mere brzine: {STRING}
 STR_CONFIG_SETTING_LOCALISATION_UNITS_VELOCITY_HELPTEXT         :Kada brzina bude pokazana u interfejsu, pokaži u željenoj meri
-###length 5
 STR_CONFIG_SETTING_LOCALISATION_UNITS_VELOCITY_IMPERIAL         :Imperijalne mere (mph)
 STR_CONFIG_SETTING_LOCALISATION_UNITS_VELOCITY_METRIC           :Metričke mere (km/h)
 STR_CONFIG_SETTING_LOCALISATION_UNITS_VELOCITY_SI               :SI (m/s)
-STR_CONFIG_SETTING_LOCALISATION_UNITS_VELOCITY_GAMEUNITS        :Jedinice igre (pločica/dan)
 STR_CONFIG_SETTING_LOCALISATION_UNITS_VELOCITY_KNOTS            :Čvorovi
 
 STR_CONFIG_SETTING_LOCALISATION_UNITS_POWER                     :Mere za snagu vozila: {STRING}
@@ -2311,8 +2311,6 @@ STR_HELP_WINDOW_LICENSE                                         :{BLACK}Licenca
 
 # Cheat window
 STR_CHEATS                                                      :{WHITE}Varanja
-STR_CHEATS_TOOLTIP                                              :{BLACK}Štiklirano polje označava da ste i ranije koristili ovu opciju
-STR_CHEATS_NOTE                                                 :{BLACK}Napomena: korišćenje ovih podešavanja će biti zapamćeno u sačuvanoj igri
 STR_CHEAT_MONEY                                                 :{LTBLUE}Dodati još {CURRENCY_LONG}
 STR_CHEAT_CHANGE_COMPANY                                        :{LTBLUE}Upravljanje preduzećem: {ORANGE}{COMMA}
 STR_CHEAT_EXTRA_DYNAMITE                                        :{LTBLUE}Magični buldožer (uklanja fabrike, nepokretnosti): {ORANGE}{STRING}
@@ -2442,8 +2440,6 @@ STR_NETWORK_SERVER_LIST_MAP_SIZE_CAPTION                        :{BLACK}Veličin
 STR_NETWORK_SERVER_LIST_MAP_SIZE_CAPTION_TOOLTIP                :{BLACK}Veličina terena u igri{}Klikom će se poređati po veličini
 STR_NETWORK_SERVER_LIST_DATE_CAPTION                            :{BLACK}Datum
 STR_NETWORK_SERVER_LIST_DATE_CAPTION_TOOLTIP                    :{BLACK}Trenutni datum u igri
-STR_NETWORK_SERVER_LIST_YEARS_CAPTION                           :{BLACK}Godina
-STR_NETWORK_SERVER_LIST_YEARS_CAPTION_TOOLTIP                   :{BLACK}Ukupan broj godina{}koliko traje igra
 STR_NETWORK_SERVER_LIST_INFO_ICONS_TOOLTIP                      :{BLACK}Jezik, verzija servera, itd.
 
 STR_NETWORK_SERVER_LIST_CLICK_GAME_TO_SELECT                    :{BLACK}Klikom na igru sa spiska vrši se njen odabir
@@ -2809,9 +2805,7 @@ STR_LINKGRAPH_LEGEND_SATURATED                                  :{TINY_FONT}{BLA
 STR_LINKGRAPH_LEGEND_OVERLOADED                                 :{TINY_FONT}{BLACK}Preopterećen
 
 # Linkgraph tooltip
-STR_LINKGRAPH_STATS_TOOLTIP                                     :{BLACK}{CARGO_LONG} će biti prevezeno svakog meseca od {STATION} do {STATION} ({COMMA}% kapaciteta){STRING}
 STR_LINKGRAPH_STATS_TOOLTIP_RETURN_EXTENSION                    :{}{CARGO_LONG} će biti prevezeno nazad ({COMMA}% kapaciteta)
-STR_LINKGRAPH_STATS_TOOLTIP_TIME_EXTENSION                      :{}Prosečno vreme putovanja: {NUM}{NBSP}dan{P "" a a}
 
 # Base for station construction window(s)
 STR_STATION_BUILD_COVERAGE_AREA_TITLE                           :{BLACK}Označavanje zahvaćenog područja
@@ -2821,7 +2815,6 @@ STR_STATION_BUILD_COVERAGE_AREA_OFF_TOOLTIP                     :{BLACK}Isključ
 STR_STATION_BUILD_COVERAGE_AREA_ON_TOOLTIP                      :{BLACK}Uključi označavanje zahvaćenog područja
 STR_STATION_BUILD_ACCEPTS_CARGO                                 :{BLACK}Prihvata: {GOLD}{CARGO_LIST.aku}
 STR_STATION_BUILD_SUPPLIES_CARGO                                :{BLACK}Snabdeva: {GOLD}{CARGO_LIST}
-STR_STATION_BUILD_INFRASTRUCTURE_COST                           :{BLACK}Troškovi održavanja: {GOLD}{CURRENCY_SHORT}/god
 
 # Join station window
 STR_JOIN_STATION_CAPTION                                        :{WHITE}Pridruži stanicu
@@ -3658,8 +3651,6 @@ STR_TOWN_VIEW_CARGO_FOR_TOWNGROWTH_REQUIRED_WINTER              :{ORANGE}{STRING
 STR_TOWN_VIEW_CARGO_FOR_TOWNGROWTH_DELIVERED_GENERAL            :{ORANGE}{STRING}{GREEN} dostavljeno
 STR_TOWN_VIEW_CARGO_FOR_TOWNGROWTH_REQUIRED                     :{ORANGE}{CARGO_TINY} / {CARGO_LONG}{RED} (potrebno)
 STR_TOWN_VIEW_CARGO_FOR_TOWNGROWTH_DELIVERED                    :{ORANGE}{CARGO_TINY} / {CARGO_LONG}{GREEN} (dostavljeno)
-STR_TOWN_VIEW_TOWN_GROWS_EVERY                                  :{BLACK}Naselje se razvija u periodu od {ORANGE}{COMMA}{BLACK} dan{P a a a}
-STR_TOWN_VIEW_TOWN_GROWS_EVERY_FUNDED                           :{BLACK}Naselje se razvija u periodu od {ORANGE}{COMMA}{BLACK} dan{P a a a} (sponzorisano)
 STR_TOWN_VIEW_TOWN_GROW_STOPPED                                 :{BLACK}Naselje se {RED}ne{BLACK} razvija
 STR_TOWN_VIEW_NOISE_IN_TOWN                                     :{BLACK}Nivo buke u naselju: {ORANGE}{COMMA}{BLACK}  najviše: {ORANGE}{COMMA}
 STR_TOWN_VIEW_CENTER_TOOLTIP                                    :{BLACK}Prebacuje glavni pogled na lokaciju naselja. Ctrl+klik otvara novi pogled na lokaciju naselja
@@ -3694,15 +3685,13 @@ STR_LOCAL_AUTHORITY_ACTION_STATUE_OF_COMPANY                    :Izgradnja statu
 STR_LOCAL_AUTHORITY_ACTION_NEW_BUILDINGS                        :Finansiranje novih zgrada
 STR_LOCAL_AUTHORITY_ACTION_EXCLUSIVE_TRANSPORT                  :Kupovina ekskluzivnih prava prevoza
 STR_LOCAL_AUTHORITY_ACTION_BRIBE                                :Podmićivanje lokalne vlasti
+###next-name-looks-similar
 
-###length 8
 STR_LOCAL_AUTHORITY_ACTION_TOOLTIP_SMALL_ADVERTISING            :{PUSH_COLOUR}{YELLOW}Ulaganje u malu reklamnu kampanju će doneti preduzeću više putnika i robe iz ovog naselja.{}Privremeno povećava ocenu stanica u malom prečniku oko centra naselja tokom trajanja kampanje.{}{POP_COLOUR}Trošak: {CURRENCY_LONG}
 STR_LOCAL_AUTHORITY_ACTION_TOOLTIP_MEDIUM_ADVERTISING           :{PUSH_COLOUR}{YELLOW}Ulaganje u reklamnu kampanju srednje veličine će doneti preduzeću više putnika i robe iz ovog naselja.{}Privremeno povećava ocenu stanica u prečniku srednje veličine oko centra naselja tokom trajanja kampanje.{}{POP_COLOUR}Trošak: {CURRENCY_LONG}
 STR_LOCAL_AUTHORITY_ACTION_TOOLTIP_LARGE_ADVERTISING            :{PUSH_COLOUR}{YELLOW}Ulaganje u veliku reklamnu kampanju će doneti preduzeću više putnika i robe iz ovog naselja.{}Privremeno povećava ocenu stanica u velikom prečniku oko centra naselja tokom trajanja kampanje.{}{POP_COLOUR}Trošak: {CURRENCY_LONG}
-STR_LOCAL_AUTHORITY_ACTION_TOOLTIP_ROAD_RECONSTRUCTION          :{PUSH_COLOUR}{YELLOW}Finansiranje rekonstrukcije lokalne mreže puteva.{}Može prouzrokovati kolaps u drumskom saobraćaju u trajanju do 6 meseci.{}{POP_COLOUR}Trošak: {CURRENCY_LONG}
 STR_LOCAL_AUTHORITY_ACTION_TOOLTIP_STATUE_OF_COMPANY            :{PUSH_COLOUR}{YELLOW}Otkrivanje spomenika preduzeća.{}Trajno povećava ocenu stanica u naselju tokom trajanja kampanje.{}{POP_COLOUR}Trošak: {CURRENCY_LONG}
 STR_LOCAL_AUTHORITY_ACTION_TOOLTIP_NEW_BUILDINGS                :{PUSH_COLOUR}{YELLOW} Finansiranje izgradnje novih objekata u naselju.{}Privremeno povećava brzinu rasta u ovom naselju.{}{POP_COLOUR}Trošak: {CURRENCY_LONG}
-STR_LOCAL_AUTHORITY_ACTION_TOOLTIP_EXCLUSIVE_TRANSPORT          :{PUSH_COLOUR}{YELLOW}Kupovina ekskluzivnih prava prevoza od lokalne vlasti na godinu dana.{}Lokalna vlast osigurava da će lokalni korisnici prevoza koristiti isključivo usluge vašeg preduzeća.{}{POP_COLOUR}Trošak: {CURRENCY_LONG}
 STR_LOCAL_AUTHORITY_ACTION_TOOLTIP_BRIBE                        :{PUSH_COLOUR}{YELLOW}Davanje mita lokalnoj vlasti kako bi porasla ocena vašeg preduzeća, uz rizik velike štete ukoliko se otkrije.{}{POP_COLOUR}Trošak: {CURRENCY_LONG}
 
 # Goal window
@@ -3791,7 +3780,6 @@ STR_STATION_VIEW_EXCLUSIVE_RIGHTS_COMPANY                       :{YELLOW}{COMPAN
 
 STR_STATION_VIEW_RATINGS_BUTTON                                 :{BLACK}Ocene
 STR_STATION_VIEW_RATINGS_TOOLTIP                                :{BLACK}Prikaži ocene stanice
-STR_STATION_VIEW_SUPPLY_RATINGS_TITLE                           :{BLACK}Mesečna proizvodnja i rejting preduzeća:
 STR_STATION_VIEW_CARGO_SUPPLY_RATING                            :{WHITE}{STRING}: {YELLOW}{COMMA} / {STRING} ({COMMA}%)
 
 STR_STATION_VIEW_GROUP                                          :{BLACK}Sortiraj po
@@ -3950,7 +3938,6 @@ STR_COMPANY_INFRASTRUCTURE_VIEW_CANALS                          :{WHITE}Kanali
 STR_COMPANY_INFRASTRUCTURE_VIEW_STATION_SECT                    :{GOLD}Stanice:
 STR_COMPANY_INFRASTRUCTURE_VIEW_STATIONS                        :{WHITE}Pločica sa stanicom
 STR_COMPANY_INFRASTRUCTURE_VIEW_AIRPORTS                        :{WHITE}Aerodromi
-STR_COMPANY_INFRASTRUCTURE_VIEW_TOTAL                           :{WHITE}{CURRENCY_LONG}/god
 
 # Industry directory
 STR_INDUSTRY_DIRECTORY_CAPTION                                  :{WHITE}Fabrike
@@ -4080,7 +4067,6 @@ STR_PURCHASE_INFO_SPEED_POWER                                   :{BLACK}Brzina: 
 STR_PURCHASE_INFO_SPEED                                         :{BLACK}Brzina: {GOLD}{VELOCITY}
 STR_PURCHASE_INFO_SPEED_OCEAN                                   :{BLACK}Brzina na moru: {GOLD}{VELOCITY}
 STR_PURCHASE_INFO_SPEED_CANAL                                   :{BLACK}Brzina na kanalu/reci: {GOLD}{VELOCITY}
-STR_PURCHASE_INFO_RUNNINGCOST                                   :{BLACK}Trošak održavanja: {GOLD}{CURRENCY_LONG}/god
 STR_PURCHASE_INFO_CAPACITY                                      :{BLACK}Nosivost: {GOLD}{CARGO_LONG} {STRING}
 STR_PURCHASE_INFO_REFITTABLE                                    :(prepravljiv)
 STR_PURCHASE_INFO_DESIGNED_LIFE                                 :{BLACK}Projektovan: {GOLD}{NUM}{BLACK} Životni vek: {GOLD}{COMMA} godin{P a e a}
@@ -4279,13 +4265,6 @@ STR_ENGINE_PREVIEW_AIRCRAFT.aku                                 :letelice
 STR_ENGINE_PREVIEW_SHIP                                         :{G=muški}brod
 STR_ENGINE_PREVIEW_SHIP.aku                                     :broda
 
-STR_ENGINE_PREVIEW_COST_WEIGHT_SPEED_POWER                      :{BLACK}Cena: {CURRENCY_LONG} Težina: {WEIGHT_SHORT}{}Brzina: {VELOCITY} Snaga: {POWER}{}Trošak održavanja: {CURRENCY_LONG}/god.{}Nosivost: {CARGO_LONG}
-STR_ENGINE_PREVIEW_COST_WEIGHT_SPEED_POWER_MAX_TE               :{BLACK}Cena: {0:CURRENCY_LONG} Težina: {1:WEIGHT_SHORT}{}Brzina: {2:VELOCITY} Snaga: {3:POWER} Najveća vučna snaga: {6:FORCE}{}Trošak održavanja: {4:CURRENCY_LONG}/god{}Nosivost: {5:CARGO_LONG}
-STR_ENGINE_PREVIEW_COST_MAX_SPEED_CAP_RUNCOST                   :{BLACK}Cena: {CURRENCY_LONG} Maks. brzina: {VELOCITY}{}Nosivost: {CARGO_LONG}{}Trošak održavanja: {CURRENCY_LONG}/god.
-STR_ENGINE_PREVIEW_COST_MAX_SPEED_TYPE_CAP_CAP_RUNCOST          :{BLACK}Cena: {CURRENCY_LONG} Maks. brzina: {VELOCITY}{}Vrsta letelice: {STRING}{} Nosivost: {CARGO_LONG}, {CARGO_LONG}{}Trošak održavanja: {CURRENCY_LONG}/godine.
-STR_ENGINE_PREVIEW_COST_MAX_SPEED_TYPE_CAP_RUNCOST              :{BLACK}Cena: {CURRENCY_LONG} Maks. brzina: {VELOCITY}{}Vrsta letelice: {STRING}{}Nosivost: {CARGO_LONG}{}Trošak održavanja: {CURRENCY_LONG}/god.
-STR_ENGINE_PREVIEW_COST_MAX_SPEED_TYPE_RANGE_CAP_CAP_RUNCOST    :{BLACK}Cena: {CURRENCY_LONG} Maks. brzina: {VELOCITY}{}Vrsta letelice: {STRING} Domet: {COMMA} pločica{}Nosivost: {CARGO_LONG}, {CARGO_LONG}{}Trošak održavanja: {CURRENCY_LONG}/god.
-STR_ENGINE_PREVIEW_COST_MAX_SPEED_TYPE_RANGE_CAP_RUNCOST        :{BLACK}Cena: {CURRENCY_LONG} Maks. brzina: {VELOCITY}{}Vrsta letelice: {STRING} Domet: {COMMA} pločice{}Nosivost: {CARGO_LONG}{}Trošak održavanja: {CURRENCY_LONG}/god.
 
 # Autoreplace window
 STR_REPLACE_VEHICLES_WHITE                                      :{WHITE}Zameni {STRING} - {STRING}
@@ -4460,8 +4439,6 @@ STR_VEHICLE_INFO_CAPACITY_CAPACITY                              :{BLACK}Nosivost
 
 STR_VEHICLE_INFO_FEEDER_CARGO_VALUE                             :{BLACK}Zarada od transfera: {LTBLUE}{CURRENCY_LONG}
 
-STR_VEHICLE_DETAILS_INCREASE_SERVICING_INTERVAL_TOOLTIP         :{BLACK}Povećava period servisiranja za 10. Ctrl+klik povećava period servisiranja za 5
-STR_VEHICLE_DETAILS_DECREASE_SERVICING_INTERVAL_TOOLTIP         :{BLACK}Smanjuje period servisiranja za 10. Ctrl+klik smanjuje period servisiranja za 5
 
 STR_SERVICE_INTERVAL_DROPDOWN_TOOLTIP                           :{BLACK}Promeni tip intervala za servis
 STR_VEHICLE_DETAILS_DEFAULT                                     :Podrazumevano

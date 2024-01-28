@@ -294,7 +294,7 @@ STR_SCENEDIT_TOOLBAR_PLACE_OBJECT                               :{BLACK}Pozez ob
 STR_SCENEDIT_FILE_MENU_SEPARATOR                                :
 
 # Settings menu
-###length 15
+###length 16
 STR_SETTINGS_MENU_FULL_DETAIL                                   :Plene detaloza
 STR_SETTINGS_MENU_TRANSPARENT_BUILDINGS                         :Diafana konstrukturi
 
@@ -365,8 +365,8 @@ STR_PERFORMANCE_DETAIL_AMOUNT_INT                               :{BLACK}({COMMA}
 STR_PERFORMANCE_DETAIL_PERCENT                                  :{WHITE}{NUM}%
 
 ###length 10
+###next-name-looks-similar
 
-###length 10
 
 # Music window
 STR_MUSIC_TRACK_NONE                                            :{TINY_FONT}{DKGREEN}--
@@ -563,6 +563,7 @@ STR_CONFIG_SETTING_NONE                                         :Nulo
 
 
 
+###length 2
 
 ###setting-zero-is-special
 
@@ -595,13 +596,18 @@ STR_CONFIG_SETTING_NONE                                         :Nulo
 
 ###length 3
 
+###length 2
+
+###length 2
 
 
 ###length 3
 
 ###length 4
 
+###length 2
 
+###length 2
 
 
 
@@ -621,9 +627,13 @@ STR_CONFIG_SETTING_PLANE_CRASHES_NORMAL                         :normala
 
 ###length 3
 
+###length 2
 
 
 ###length 2
+
+
+###setting-zero-is-special
 
 
 ###length 2
@@ -705,6 +715,9 @@ STR_CONFIG_SETTING_SMALLMAP_LAND_COLOUR_VIOLET                  :Violkolora
 
 
 
+###length 2
+
+###length 2
 
 
 
@@ -786,7 +799,6 @@ STR_CONFIG_SETTING_SMALLMAP_LAND_COLOUR_VIOLET                  :Violkolora
 
 
 
-###length 5
 
 ###length 3
 
@@ -1118,8 +1130,8 @@ STR_TOWN_VIEW_TOWN_CAPTION                                      :{WHITE}{TOWN}
 STR_LOCAL_AUTHORITY_COMPANY_RATING                              :{YELLOW}{COMPANY} {COMPANY_NUM}: {ORANGE}{STRING}
 
 ###length 8
+###next-name-looks-similar
 
-###length 8
 
 # Goal window
 STR_GOALS_TEXT                                                  :{ORANGE}{STRING}

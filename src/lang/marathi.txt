@@ -354,7 +354,7 @@ STR_SCENEDIT_FILE_MENU_SEPARATOR                                :
 STR_SCENEDIT_FILE_MENU_QUIT                                     :बंद करा
 
 # Settings menu
-###length 15
+###length 16
 STR_SETTINGS_MENU_GAME_OPTIONS                                  :खेळाचे पर्याय
 STR_SETTINGS_MENU_NEWGRF_SETTINGS                               :NewGRF पर्याय
 STR_SETTINGS_MENU_TRANSPARENCY_OPTIONS                          :पारदर्शकता पर्याय
@@ -574,10 +574,8 @@ STR_PERFORMANCE_DETAIL_CARGO                                    :{BLACK}मा�
 STR_PERFORMANCE_DETAIL_MONEY                                    :{BLACK}पैसा:
 STR_PERFORMANCE_DETAIL_LOAN                                     :{BLACK}कर्ज:
 STR_PERFORMANCE_DETAIL_TOTAL                                    :{BLACK}एकूण:
+###next-name-looks-similar
 
-###length 10
-STR_PERFORMANCE_DETAIL_VEHICLES_TOOLTIP                         :{BLACK}गेल्या वर्षी नफा दिल्या वाहनांची संख्या. या वाहने, गाड्या, जहाजे, विमानाची समावेश आहे.
-STR_PERFORMANCE_DETAIL_MIN_PROFIT_TOOLTIP                       :{BLACK}सर्वात कमी उत्पन्न वाहनाच्या नफा (दोन वर्षे पेक्षा फक्त वाहने जुन्या मानले जातात)
 STR_PERFORMANCE_DETAIL_MIN_INCOME_TOOLTIP                       :{BLACK}गेल्या 12 मात्रेत सर्वात कमी नफा तिमाहीत केली रोख
 STR_PERFORMANCE_DETAIL_MAX_INCOME_TOOLTIP                       :{BLACK}गेल्या 12 मात्रेत सर्वाधिक नफा तिमाहीत केली रोख
 STR_PERFORMANCE_DETAIL_DELIVERED_TOOLTIP                        :{BLACK}गेल्या चार मात्रेत वितरित कार्गो एकके
@@ -800,6 +798,7 @@ STR_CONFIG_SETTING_REALISTIC                                    :खरेखु
 
 
 
+###length 2
 
 ###setting-zero-is-special
 
@@ -833,13 +832,18 @@ STR_CONFIG_SETTING_SMOKE_AMOUNT                                 :वाहना
 
 ###length 3
 
+###length 2
+
+###length 2
 
 
 ###length 3
 
 ###length 4
 
+###length 2
 
+###length 2
 
 
 
@@ -858,9 +862,13 @@ STR_CONFIG_SETTING_WARN_LOST_VEHICLE                            : वाहन �
 
 ###length 3
 
+###length 2
 
 
 ###length 2
+
+
+###setting-zero-is-special
 
 
 ###length 2
@@ -941,6 +949,9 @@ STR_CONFIG_SETTING_COMMAND_PAUSE_LEVEL_ALL_ACTIONS              :सर्व �
 
 
 
+###length 2
+
+###length 2
 
 
 
@@ -1023,7 +1034,6 @@ STR_CONFIG_SETTING_STATUSBAR_POS                                :स्टेट
 
 
 
-###length 5
 
 ###length 3
 
@@ -1112,7 +1122,6 @@ STR_NETWORK_SERVER_LIST_GAME_NAME                               :{BLACK}ना�
 STR_NETWORK_SERVER_LIST_GENERAL_ONLINE                          :{BLACK}{COMMA}/{COMMA} - {COMMA}/{COMMA}
 STR_NETWORK_SERVER_LIST_MAP_SIZE_SHORT                          :{BLACK}{COMMA}x{COMMA}
 STR_NETWORK_SERVER_LIST_DATE_CAPTION                            :{BLACK}तिथी
-STR_NETWORK_SERVER_LIST_YEARS_CAPTION                           :{BLACK}वर्ष
 
 
 
@@ -1404,8 +1413,8 @@ STR_TOWN_VIEW_CARGO_FOR_TOWNGROWTH_REQUIRED_GENERAL             :{ORANGE}{STRING
 STR_LOCAL_AUTHORITY_COMPANY_RATING                              :{YELLOW}{COMPANY} {COMPANY_NUM}: {ORANGE}{STRING}
 
 ###length 8
+###next-name-looks-similar
 
-###length 8
 
 # Goal window
 STR_GOALS_TEXT                                                  :{ORANGE}{STRING}

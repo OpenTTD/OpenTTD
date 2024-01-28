@@ -807,7 +807,7 @@ STR_SCENEDIT_FILE_MENU_SEPARATOR                                :
 STR_SCENEDIT_FILE_MENU_QUIT                                     :Wyjście
 
 # Settings menu
-###length 15
+###length 16
 STR_SETTINGS_MENU_GAME_OPTIONS                                  :Opcje gry
 STR_SETTINGS_MENU_CONFIG_SETTINGS_TREE                          :Ustawienia
 STR_SETTINGS_MENU_AI_SETTINGS                                   :Ustawienia SI
@@ -1044,11 +1044,9 @@ STR_PERFORMANCE_DETAIL_CARGO                                    :{BLACK}Ładunek
 STR_PERFORMANCE_DETAIL_MONEY                                    :{BLACK}Pieniądze:
 STR_PERFORMANCE_DETAIL_LOAN                                     :{BLACK}Pożyczka:
 STR_PERFORMANCE_DETAIL_TOTAL                                    :{BLACK}Łącznie:
+###next-name-looks-similar
 
-###length 10
-STR_PERFORMANCE_DETAIL_VEHICLES_TOOLTIP                         :{BLACK}Liczba pojazdów, które przyniosły zysk w zeszłym roku: dotyczy pojazdów drogowych, pociągów, statków i samolotów
 STR_PERFORMANCE_DETAIL_STATIONS_TOOLTIP                         :{BLACK}Liczba ostatnio obsłużonych stacji. Dworce, przystanki, lotniska itp. są liczone osobno, nawet jeśli są połączone w jedną stację
-STR_PERFORMANCE_DETAIL_MIN_PROFIT_TOOLTIP                       :{BLACK}Zysk pojazdu o najniższym dochodzie (dotyczy pojazdów, które mają co najmniej 2 lata)
 STR_PERFORMANCE_DETAIL_MIN_INCOME_TOOLTIP                       :{BLACK}Ilość zarobionych pieniędzy w kwartale z najmniejszym zyskiem z ostatnich 12 kwartałów
 STR_PERFORMANCE_DETAIL_MAX_INCOME_TOOLTIP                       :{BLACK}Ilość zarobionych pieniędzy w kwartale z największym zyskiem z ostatnich 12 kwartałów
 STR_PERFORMANCE_DETAIL_DELIVERED_TOOLTIP                        :{BLACK}Ilość ładunku przewiezionego w poprzednich 4 kwartałach
@@ -1281,7 +1279,6 @@ STR_NEWS_VEHICLE_IS_GETTING_VERY_OLD                            :{WHITE}{VEHICLE
 STR_NEWS_VEHICLE_IS_GETTING_VERY_OLD_AND                        :{WHITE}{VEHICLE} bardzo się starzeje i potrzebuje natychmiastowej wymiany
 STR_NEWS_TRAIN_IS_STUCK                                         :{WHITE}{VEHICLE} nie potrafi znaleźć trasy, aby kontynuować
 STR_NEWS_VEHICLE_IS_LOST                                        :{WHITE}{VEHICLE} się zgubił
-STR_NEWS_VEHICLE_IS_UNPROFITABLE                                :{WHITE}Dochód {VEHICLE} w zeszłym roku to {CURRENCY_LONG}
 STR_NEWS_AIRCRAFT_DEST_TOO_FAR                                  :{WHITE}{VEHICLE} nie może dotrzeć do kolejnego punktu docelowego, ponieważ punkt ten leży poza jego zasięgiem
 
 STR_NEWS_ORDER_REFIT_FAILED                                     :{WHITE}Zaplanowane przeładowanie zatrzymane {VEHICLE}
@@ -1298,16 +1295,9 @@ STR_NEWS_STATION_NOW_ACCEPTS_CARGO_LIST                         :{WHITE}{STATION
 
 STR_NEWS_OFFER_OF_SUBSIDY_EXPIRED                               :{BIG_FONT}{BLACK}Dotacja wygasła:{}{}{STRING} z {STRING} do {STRING} nie będzie już dotowane
 STR_NEWS_SUBSIDY_WITHDRAWN_SERVICE                              :{BIG_FONT}{BLACK}Koniec dotacji:{}{}Przewóz {STRING.d} z {STRING} do {STRING} nie jest już dotowany
-STR_NEWS_SERVICE_SUBSIDY_OFFERED                                :{BIG_FONT}{BLACK}Oferta usługi dotowanej:{}{}Pierwszy przewóz {STRING.d} z {STRING} do {STRING} będzie dotowany przez następn{P 3 y e ych} {NUM} {P rok lata lat} przez lokalne władze!
 ###length 4
-STR_NEWS_SERVICE_SUBSIDY_AWARDED_HALF                           :{BIG_FONT}{BLACK}Przyznano dotację dla {STRING}!{}{}Przewóz {STRING.d} z {STRING} do {STRING} będzie opłacany o 50% więcej przez następn{P 4 y e ych} {NUM} {P rok lata lat}!
-STR_NEWS_SERVICE_SUBSIDY_AWARDED_DOUBLE                         :{BIG_FONT}{BLACK}Przyznano dotację dla {STRING}!{}{}Przewóz {STRING.d} z {STRING} do {STRING} będzie opłacany podwójnie przez następn{P 4 y e ych} {NUM} {P rok lata lat}!
-STR_NEWS_SERVICE_SUBSIDY_AWARDED_TRIPLE                         :{BIG_FONT}{BLACK}Przyznano dotację dla {STRING}!{}{}Przewóz {STRING.d} z {STRING} do {STRING} będzie opłacany potrójnie przez następn{P 4 y e ych} {NUM} {P rok lata lat}!
-STR_NEWS_SERVICE_SUBSIDY_AWARDED_QUADRUPLE                      :{BIG_FONT}{BLACK}Przyznano dotację dla {STRING}!{}{}Przewóz {STRING.d} z {STRING} do {STRING} będzie opłacany poczwórnie przez następn{P 4 y e ych} {NUM} {P rok lata lat}!
 
-STR_NEWS_ROAD_REBUILDING                                        :{BIG_FONT}{BLACK}Chaos na drogach w {TOWN}!{}{}Program przebudowy dróg ufundowany przez {STRING} przynosi 6 miesięcy męki dla kierowców!
 STR_NEWS_EXCLUSIVE_RIGHTS_TITLE                                 :{BIG_FONT}{BLACK}Monopol transportowy!
-STR_NEWS_EXCLUSIVE_RIGHTS_DESCRIPTION                           :{BIG_FONT}{BLACK}Lokalne władze miasta {TOWN} podpisują umowę z {STRING} na wyłączność usług transportowych!
 
 # Extra view window
 STR_EXTRA_VIEWPORT_TITLE                                        :{WHITE}Podgląd {COMMA}
@@ -1655,9 +1645,9 @@ STR_CONFIG_SETTING_SUBSIDY_MULTIPLIER                           :Mnożnik dofina
 STR_CONFIG_SETTING_SUBSIDY_MULTIPLIER_HELPTEXT                  :Ustaw wysokość zapłaty za połączenia dofinansowywane
 
 STR_CONFIG_SETTING_SUBSIDY_DURATION                             :Czas trwania dotacji: {STRING}
+###length 2
 STR_CONFIG_SETTING_SUBSIDY_DURATION_HELPTEXT                    :Określ liczbę lat, na które przyznawana jest dotacja
 
-STR_CONFIG_SETTING_SUBSIDY_DURATION_VALUE                       :{NUM} {P rok lata lat}
 ###setting-zero-is-special
 STR_CONFIG_SETTING_SUBSIDY_DURATION_DISABLED                    :Brak dotacji
 
@@ -1753,7 +1743,10 @@ STR_CONFIG_SETTING_SIGNALSIDE_LEFT                              :Po lewej
 STR_CONFIG_SETTING_SIGNALSIDE_DRIVING_SIDE                      :Po stronie kierunku jazdy
 STR_CONFIG_SETTING_SIGNALSIDE_RIGHT                             :Po prawej
 
+###length 2
 STR_CONFIG_SETTING_SHOWFINANCES                                 :Pokazuj okno finansów na koniec roku: {STRING}
+
+###length 2
 STR_CONFIG_SETTING_SHOWFINANCES_HELPTEXT                        :Jeśli włączone, to okienko finansowe pokazuje się na zakończenie każdego roku, by ułatwić śledzenie sytuacji finansowej firmy
 
 STR_CONFIG_SETTING_NONSTOP_BY_DEFAULT                           :Nowe polecenia są domyślnie „bez zatrzymywania się”: {STRING}
@@ -1775,9 +1768,11 @@ STR_CONFIG_SETTING_AUTOSCROLL_MAIN_VIEWPORT                     :Główne okno p
 STR_CONFIG_SETTING_AUTOSCROLL_EVERY_VIEWPORT                    :Wszystkie okna podglądu
 
 STR_CONFIG_SETTING_BRIBE                                        :Pozwól dawać łapówki lokalnym władzom: {STRING}
+###length 2
 STR_CONFIG_SETTING_BRIBE_HELPTEXT                               :Pozwalaj firmom na próby przekupienia lokalnych władz miast. Jeśli przekupstwo zostanie wykryte przez inspektora, firma nie będzie mogła działać w danym mieście przez 6 miesięcy
 
 STR_CONFIG_SETTING_ALLOW_EXCLUSIVE                              :Pozwól na kupno wyłączności transportowej: {STRING}
+###length 2
 STR_CONFIG_SETTING_ALLOW_EXCLUSIVE_HELPTEXT                     :Kiedy firma wykupuje wyłączność na transport w mieście, to przystanki i stacje przeciwników (pasażerskie i towarowe) nie otrzymają żadnego ładunku przez cały rok
 
 STR_CONFIG_SETTING_ALLOW_FUND_BUILDINGS                         :Pozwól na fundowanie budynków: {STRING}
@@ -1835,12 +1830,16 @@ STR_CONFIG_SETTING_ORDER_REVIEW_EXDEPOT                         :Tak, ale wykluc
 STR_CONFIG_SETTING_ORDER_REVIEW_ON                              :Wszystkich pojazdów
 
 STR_CONFIG_SETTING_WARN_INCOME_LESS                             :Powiadom, jeśli pojazd przynosi straty: {STRING}
+###length 2
 STR_CONFIG_SETTING_WARN_INCOME_LESS_HELPTEXT                    :Kiedy włączone, otrzymasz wiadomość o tym, że pojazd nie przyniósł żadnych zysków w całym roku kalendarzowym
 
 STR_CONFIG_SETTING_NEVER_EXPIRE_VEHICLES                        :Pojazdy nigdy nie są wycofywane: {STRING}
 STR_CONFIG_SETTING_NEVER_EXPIRE_VEHICLES_HELPTEXT               :Kiedy włączone, wszystkie modele pojazdów pozostają dostępne na zawsze od daty ich wprowadzenia
 
 ###length 2
+
+
+###setting-zero-is-special
 
 STR_CONFIG_SETTING_AUTORENEW_VEHICLE                            :Autoodnawianie pojazdów gdy stają się stare: {STRING}
 STR_CONFIG_SETTING_AUTORENEW_VEHICLE_HELPTEXT                   :Kiedy włączone, pojazd zbliżający się do końca swojej żywotności zostaje automatycznie zastąpiony, gdy warunki jego odnowienia są spełnione
@@ -2094,7 +2093,10 @@ STR_CONFIG_SETTING_SOUND_TICKER_HELPTEXT                        :Odtwarzaj dźwi
 STR_CONFIG_SETTING_SOUND_NEWS                                   :Gazeta: {STRING}
 STR_CONFIG_SETTING_SOUND_NEWS_HELPTEXT                          :Odtwarzaj dźwięk po wyświetleniu gazety
 
+###length 2
 STR_CONFIG_SETTING_SOUND_NEW_YEAR                               :Koniec roku: {STRING}
+
+###length 2
 STR_CONFIG_SETTING_SOUND_NEW_YEAR_HELPTEXT                      :Odtwarzaj dźwięk na koniec roku podsumowując roczną sytuację przedsiębiorstwa w porównaniu do roku poprzedniego
 
 STR_CONFIG_SETTING_SOUND_CONFIRM                                :Budowa: {STRING}
@@ -2393,11 +2395,9 @@ STR_CONFIG_SETTING_SHORT_PATH_SATURATION_HELPTEXT               :Często istniej
 STR_CONFIG_SETTING_LOCALISATION_UNITS_VELOCITY                  :Jednostki prędkości (lądowe): {STRING}
 STR_CONFIG_SETTING_LOCALISATION_UNITS_VELOCITY_NAUTICAL         :Jednostki prędkości (morskie): {STRING}
 STR_CONFIG_SETTING_LOCALISATION_UNITS_VELOCITY_HELPTEXT         :Kiedy prędkość jest pokazywana w interfejsie użytkownika, wyświetl ją w wybranych jednostkach
-###length 5
 STR_CONFIG_SETTING_LOCALISATION_UNITS_VELOCITY_IMPERIAL         :Imperialne (mph)
 STR_CONFIG_SETTING_LOCALISATION_UNITS_VELOCITY_METRIC           :Metryczne (km/h)
 STR_CONFIG_SETTING_LOCALISATION_UNITS_VELOCITY_SI               :SI (m/s)
-STR_CONFIG_SETTING_LOCALISATION_UNITS_VELOCITY_GAMEUNITS        :Jednostki gry (pola/dzień)
 STR_CONFIG_SETTING_LOCALISATION_UNITS_VELOCITY_KNOTS            :Węzły
 
 STR_CONFIG_SETTING_LOCALISATION_UNITS_POWER                     :Jednostka mocy pojazdów: {STRING}
@@ -2573,8 +2573,6 @@ STR_HELP_WINDOW_COMMUNITY                                       :{BLACK}Społecz
 
 # Cheat window
 STR_CHEATS                                                      :{WHITE}Oszustwa
-STR_CHEATS_TOOLTIP                                              :{BLACK}Pole wyboru wskazuje, czy użyłeś już wcześniej tego oszustwa
-STR_CHEATS_NOTE                                                 :{BLACK}Uwaga: każde użycie tych ustawień zostanie zanotowane w pliku zapisu gry
 STR_CHEAT_MONEY                                                 :{LTBLUE}Zwiększ ilość pieniędzy o {CURRENCY_LONG}
 STR_CHEAT_CHANGE_COMPANY                                        :{LTBLUE}Grasz jako firma: {ORANGE}{COMMA}
 STR_CHEAT_EXTRA_DYNAMITE                                        :{LTBLUE}Magiczny buldożer (usuwanie przedsiębiorstw, nieprzesuwalnych obiektów): {ORANGE}{STRING}
@@ -2711,8 +2709,6 @@ STR_NETWORK_SERVER_LIST_MAP_SIZE_CAPTION                        :{BLACK}Rozmiar 
 STR_NETWORK_SERVER_LIST_MAP_SIZE_CAPTION_TOOLTIP                :{BLACK}Rozmiar mapy{}Kliknij, by sortować wg powierzchni
 STR_NETWORK_SERVER_LIST_DATE_CAPTION                            :{BLACK}Data
 STR_NETWORK_SERVER_LIST_DATE_CAPTION_TOOLTIP                    :{BLACK}Bieżąca data
-STR_NETWORK_SERVER_LIST_YEARS_CAPTION                           :{BLACK}Lata
-STR_NETWORK_SERVER_LIST_YEARS_CAPTION_TOOLTIP                   :{BLACK}Ilość lat{}trwania gry
 STR_NETWORK_SERVER_LIST_INFO_ICONS_TOOLTIP                      :{BLACK}Język, wersja serwera, itp.
 
 STR_NETWORK_SERVER_LIST_CLICK_GAME_TO_SELECT                    :{BLACK}Kliknij na grze z listy by ją wybrać
@@ -3083,9 +3079,7 @@ STR_LINKGRAPH_LEGEND_SATURATED                                  :{TINY_FONT}{BLA
 STR_LINKGRAPH_LEGEND_OVERLOADED                                 :{TINY_FONT}{BLACK}przeładowany
 
 # Linkgraph tooltip
-STR_LINKGRAPH_STATS_TOOLTIP                                     :{BLACK}{CARGO_LONG} miesięcznie do przetransportowania z {STATION} do {STATION} ({COMMA}% przepustowości){STRING}
 STR_LINKGRAPH_STATS_TOOLTIP_RETURN_EXTENSION                    :{}{CARGO_LONG} do przetransportowania z powrotem ({COMMA}% przepustowości)
-STR_LINKGRAPH_STATS_TOOLTIP_TIME_EXTENSION                      :{}Średni czas podróży: {NUM}{NBSP}d{P zień ni ni}
 
 # Base for station construction window(s)
 STR_STATION_BUILD_COVERAGE_AREA_TITLE                           :{BLACK}Podświetlaj zasięg
@@ -3095,7 +3089,6 @@ STR_STATION_BUILD_COVERAGE_AREA_OFF_TOOLTIP                     :{BLACK}Nie pod�
 STR_STATION_BUILD_COVERAGE_AREA_ON_TOOLTIP                      :{BLACK}Podświetl zasięg projektowanej stacji
 STR_STATION_BUILD_ACCEPTS_CARGO                                 :{BLACK}Akceptuje: {GOLD}{CARGO_LIST}
 STR_STATION_BUILD_SUPPLIES_CARGO                                :{BLACK}Zasoby: {GOLD}{CARGO_LIST}
-STR_STATION_BUILD_INFRASTRUCTURE_COST                           :{BLACK}Koszt utrzymania: {GOLD}{CURRENCY_SHORT}/rok
 
 # Join station window
 STR_JOIN_STATION_CAPTION                                        :{WHITE}Połącz stację
@@ -3949,8 +3942,6 @@ STR_TOWN_VIEW_CARGO_FOR_TOWNGROWTH_REQUIRED_WINTER              :{ORANGE}{STRING
 STR_TOWN_VIEW_CARGO_FOR_TOWNGROWTH_DELIVERED_GENERAL            :{G=f}{ORANGE}{STRING}{GREEN} dostarczona
 STR_TOWN_VIEW_CARGO_FOR_TOWNGROWTH_REQUIRED                     :{G=m}{ORANGE}{CARGO_TINY} / {CARGO_LONG}{RED} (wciąż wymagany)
 STR_TOWN_VIEW_CARGO_FOR_TOWNGROWTH_DELIVERED                    :{G=m}{ORANGE}{CARGO_TINY} / {CARGO_LONG}{GREEN} (dostarczony)
-STR_TOWN_VIEW_TOWN_GROWS_EVERY                                  :{BLACK}Miasto rośnie co {ORANGE}{COMMA}{BLACK}{NBSP}{P dzień dni dni}
-STR_TOWN_VIEW_TOWN_GROWS_EVERY_FUNDED                           :{BLACK}Miasto rośnie co {ORANGE}{COMMA}{BLACK}{NBSP}{P dzień dni dni} (ufundowane)
 STR_TOWN_VIEW_TOWN_GROW_STOPPED                                 :{BLACK}Miasto {RED}nie{BLACK} rośnie
 STR_TOWN_VIEW_NOISE_IN_TOWN                                     :{BLACK}Limit hałasu w mieście: {ORANGE}{COMMA}{BLACK}  maksymalnie: {ORANGE}{COMMA}
 STR_TOWN_VIEW_CENTER_TOOLTIP                                    :{BLACK}Wyśrodkuj widok główny na lokalizacji miasta. Ctrl+klik otwiera nowy podgląd na jego lokalizację
@@ -3985,15 +3976,13 @@ STR_LOCAL_AUTHORITY_ACTION_STATUE_OF_COMPANY                    :Zbuduj statuę 
 STR_LOCAL_AUTHORITY_ACTION_NEW_BUILDINGS                        :Ufunduj nowe budynki
 STR_LOCAL_AUTHORITY_ACTION_EXCLUSIVE_TRANSPORT                  :Kup wyłączność transportową
 STR_LOCAL_AUTHORITY_ACTION_BRIBE                                :Daj łapówkę lokalnym władzom
+###next-name-looks-similar
 
-###length 8
 STR_LOCAL_AUTHORITY_ACTION_TOOLTIP_SMALL_ADVERTISING            :{PUSH_COLOUR}{YELLOW}Rozpocznij małą lokalną kampanię reklamową, aby przyciągnąć więcej pasażerów i ładunków do twoich usług transportowych.{}Zapewnia tymczasowe zwiększenie oceny stacji w małym promieniu wokół centrum miasta.{}{POP_COLOUR}Koszt: {CURRENCY_LONG}
 STR_LOCAL_AUTHORITY_ACTION_TOOLTIP_MEDIUM_ADVERTISING           :{PUSH_COLOUR}{YELLOW}Rozpocznij średnią lokalną kampanię reklamową, aby przyciągnąć więcej pasażerów i ładunków do twoich usług transportowych.{}Zapewnia tymczasowe zwiększenie oceny stacji w umiarkowanym promieniu wokół centrum miasta.{}{POP_COLOUR}Koszt: {CURRENCY_LONG}
 STR_LOCAL_AUTHORITY_ACTION_TOOLTIP_LARGE_ADVERTISING            :{PUSH_COLOUR}{YELLOW}Rozpocznij dużą lokalną kampanię reklamową, aby przyciągnąć więcej pasażerów i ładunków do twoich usług transportowych.{}Zapewnia tymczasowe zwiększenie oceny stacji w dużym promieniu wokół centrum miasta.{}{POP_COLOUR}Koszt: {CURRENCY_LONG}
-STR_LOCAL_AUTHORITY_ACTION_TOOLTIP_ROAD_RECONSTRUCTION          :{PUSH_COLOUR}{YELLOW}Ufunduj remont sieci dróg.{}Spowoduje to zakłócenia w ruchu ulicznym do 6 miesięcy.{}{POP_COLOUR}Koszt: {CURRENCY_LONG}
 STR_LOCAL_AUTHORITY_ACTION_TOOLTIP_STATUE_OF_COMPANY            :{PUSH_COLOUR}{YELLOW}Zbuduj statuę dla uczczenia swojej firmy.{}Trwale podniesie to ocenę twoich stacji w pobliżu tego miasta.{}{POP_COLOUR}Koszt: {CURRENCY_LONG}
 STR_LOCAL_AUTHORITY_ACTION_TOOLTIP_NEW_BUILDINGS                :{PUSH_COLOUR}{YELLOW}Ufunduj nowe budynki w mieście.{}Zapewnia tymczasowe przyspieszenie rozwoju tego miasta.{}{POP_COLOUR}Koszt: {CURRENCY_LONG}
-STR_LOCAL_AUTHORITY_ACTION_TOOLTIP_EXCLUSIVE_TRANSPORT          :{PUSH_COLOUR}{YELLOW}Kup roczną wyłączność na prawa transportowe w mieście.{}Lokalne władze nie pozwolą pasażerom ani przedsiębiorstwom korzystać ze stacji innych firm. Skuteczna łapówka od konkurenta spowoduje anulowanie tego kontraktu.{}{POP_COLOUR}Koszt: {CURRENCY_LONG}
 STR_LOCAL_AUTHORITY_ACTION_TOOLTIP_BRIBE                        :{PUSH_COLOUR}{YELLOW}Przekup lokalne władze, aby zwiększyć swoją ocenę i unieważnić wyłączność transportową konkurenta, ryzykując surową karę w przypadku przyłapania.{}{POP_COLOUR}Koszt: {CURRENCY_LONG}
 
 # Goal window
@@ -4040,8 +4029,10 @@ STR_GOAL_QUESTION_BUTTON_CLOSE                                  :Zamknij
 # Subsidies window
 STR_SUBSIDIES_CAPTION                                           :{WHITE}Dotacje
 STR_SUBSIDIES_OFFERED_TITLE                                     :{BLACK}Oferta dotacji dla usługi przewozu:
+STR_SUBSIDIES_OFFERED_FROM_TO                                   :{ORANGE}{STRING} z {STRING} do {STRING}{YELLOW} ({STRING})
 STR_SUBSIDIES_NONE                                              :{ORANGE}- Żadne -
 STR_SUBSIDIES_SUBSIDISED_TITLE                                  :{BLACK}Usługi już dotowane:
+STR_SUBSIDIES_SUBSIDISED_FROM_TO                                :{ORANGE}{STRING} z {STRING} do {STRING}{YELLOW} ({COMPANY}{YELLOW}, {STRING})
 STR_SUBSIDIES_TOOLTIP_CLICK_ON_SERVICE_TO_CENTER                :{BLACK}Kliknij na usługę, aby wyśrodkować widok główny na przedsiębiorstwo/miasto. Ctrl+klik otwiera nowy podgląd na lokalizację przedsiębiorstwa/miasta
 
 # Story book window
@@ -4082,7 +4073,6 @@ STR_STATION_VIEW_EXCLUSIVE_RIGHTS_COMPANY                       :Firma {YELLOW}{
 
 STR_STATION_VIEW_RATINGS_BUTTON                                 :{BLACK}Oceny
 STR_STATION_VIEW_RATINGS_TOOLTIP                                :{BLACK}Pokaż ocenę stacji
-STR_STATION_VIEW_SUPPLY_RATINGS_TITLE                           :{BLACK}Miesięczna dostawa i lokalna ocena:
 STR_STATION_VIEW_CARGO_SUPPLY_RATING                            :{WHITE}{STRING}: {YELLOW}{COMMA} / {STRING} ({COMMA}%)
 
 STR_STATION_VIEW_GROUP                                          :{BLACK}Grupuj według
@@ -4244,7 +4234,6 @@ STR_COMPANY_INFRASTRUCTURE_VIEW_CANALS                          :{WHITE}Kanały
 STR_COMPANY_INFRASTRUCTURE_VIEW_STATION_SECT                    :{GOLD}Stacje:
 STR_COMPANY_INFRASTRUCTURE_VIEW_STATIONS                        :{WHITE}Pola stacji
 STR_COMPANY_INFRASTRUCTURE_VIEW_AIRPORTS                        :{WHITE}Lotniska
-STR_COMPANY_INFRASTRUCTURE_VIEW_TOTAL                           :{WHITE}{CURRENCY_LONG}/rok
 
 # Industry directory
 STR_INDUSTRY_DIRECTORY_CAPTION                                  :{WHITE}Przedsiębiorstwa
@@ -4377,7 +4366,6 @@ STR_PURCHASE_INFO_SPEED_POWER                                   :{BLACK}Prędko�
 STR_PURCHASE_INFO_SPEED                                         :{BLACK}Prędkość: {GOLD}{VELOCITY}
 STR_PURCHASE_INFO_SPEED_OCEAN                                   :{BLACK}Prędkość na oceanie: {GOLD}{VELOCITY}
 STR_PURCHASE_INFO_SPEED_CANAL                                   :{BLACK}Prędkość na kanale/rzece: {GOLD}{VELOCITY}
-STR_PURCHASE_INFO_RUNNINGCOST                                   :{BLACK}Koszt utrzymania: {GOLD}{CURRENCY_LONG}/rok
 STR_PURCHASE_INFO_CAPACITY                                      :{BLACK}Ładowność: {GOLD}{CARGO_LONG} {STRING}
 STR_PURCHASE_INFO_REFITTABLE                                    :(przebudowywalny)
 STR_PURCHASE_INFO_DESIGNED_LIFE                                 :{BLACK}Zaprojektowany: {GOLD}{NUM}{BLACK} Żywotność: {GOLD}{COMMA} lat
@@ -4576,13 +4564,6 @@ STR_ENGINE_PREVIEW_AIRCRAFT.b                                   :samolot
 STR_ENGINE_PREVIEW_SHIP                                         :{G=m}statek
 STR_ENGINE_PREVIEW_SHIP.b                                       :statek
 
-STR_ENGINE_PREVIEW_COST_WEIGHT_SPEED_POWER                      :{BLACK}Koszt: {CURRENCY_LONG} Masa: {WEIGHT_SHORT}{}Prędkość: {VELOCITY}  Moc: {POWER}{}Koszt utrzymania: {CURRENCY_LONG}/rok{}Ładowność: {CARGO_LONG}
-STR_ENGINE_PREVIEW_COST_WEIGHT_SPEED_POWER_MAX_TE               :{BLACK}Koszt: {0:CURRENCY_LONG} Masa: {1:WEIGHT_SHORT}{}Prędkość: {2:VELOCITY}  Moc: {3:POWER} Maks. siła pociągowa: {6:FORCE}{}Koszt utrzymania: {4:CURRENCY_LONG}/rok{}Ładowność: {5:CARGO_LONG}
-STR_ENGINE_PREVIEW_COST_MAX_SPEED_CAP_RUNCOST                   :{BLACK}Koszt: {CURRENCY_LONG} Prędkość maksymalna: {VELOCITY}{}Ładowność: {CARGO_LONG}{}Koszt utrzymania: {CURRENCY_LONG}/rok
-STR_ENGINE_PREVIEW_COST_MAX_SPEED_TYPE_CAP_CAP_RUNCOST          :{BLACK}Koszt: {CURRENCY_LONG} Max. prędkość: {VELOCITY}{}Typ samolotu: {STRING}{}Ładowność: {CARGO_LONG}, {CARGO_LONG}{}Koszt utrzymania: {CURRENCY_LONG}/rok
-STR_ENGINE_PREVIEW_COST_MAX_SPEED_TYPE_CAP_RUNCOST              :{BLACK}Koszt: {CURRENCY_LONG} Max. prędkość: {VELOCITY}{}Typ samolotu: {STRING}{}Ładowność: {CARGO_LONG}{}Koszt utrzymania: {CURRENCY_LONG}/rok
-STR_ENGINE_PREVIEW_COST_MAX_SPEED_TYPE_RANGE_CAP_CAP_RUNCOST    :{BLACK}Koszt: {CURRENCY_LONG} Max. prędkość: {VELOCITY}{}Typ samolotu: {STRING} Zasięg: {COMMA}{}Ładowność: {CARGO_LONG}, {CARGO_LONG}{}Koszt utrzymania: {CURRENCY_LONG}/rok
-STR_ENGINE_PREVIEW_COST_MAX_SPEED_TYPE_RANGE_CAP_RUNCOST        :{BLACK}Koszt: {CURRENCY_LONG} Max. prędkość: {VELOCITY}{}Typ samolotu: {STRING} Zasięg: {COMMA}{}Ładowność: {CARGO_LONG}{}Koszt utrzymania: {CURRENCY_LONG}/rok
 
 # Autoreplace window
 STR_REPLACE_VEHICLES_WHITE                                      :{WHITE}Zastąp {STRING} - {STRING}
@@ -4747,8 +4728,8 @@ STR_VEHICLE_INFO_CAPACITY_CAPACITY                              :{BLACK}Ładowno
 
 STR_VEHICLE_INFO_FEEDER_CARGO_VALUE                             :{BLACK}Wartość ładunku: {LTBLUE}{CURRENCY_LONG}
 
-STR_VEHICLE_DETAILS_INCREASE_SERVICING_INTERVAL_TOOLTIP         :{BLACK}Zwiększ okres między serwisowaniami o 10. Ctrl+klik zwiększa okres między serwisowaniami o 5
-STR_VEHICLE_DETAILS_DECREASE_SERVICING_INTERVAL_TOOLTIP         :{BLACK}Zmniejsz okres między serwisowaniami o 10. Ctrl+klik zmniejsza okres między serwisowaniami o 5
+STR_VEHICLE_DETAILS_SERVICING_INTERVAL_DAYS                     :{BLACK}Okres między serwisami: {LTBLUE}{COMMA}{NBSP}dni{BLACK} {STRING}
+STR_VEHICLE_DETAILS_SERVICING_INTERVAL_PERCENT                  :{BLACK}Okres między serwisami: {LTBLUE}{COMMA}%{BLACK} {STRING}
 
 STR_SERVICE_INTERVAL_DROPDOWN_TOOLTIP                           :{BLACK}Zmień typ interwału serwisowania
 STR_VEHICLE_DETAILS_DEFAULT                                     :Domyślne

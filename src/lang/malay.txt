@@ -365,7 +365,7 @@ STR_SCENEDIT_FILE_MENU_SEPARATOR                                :
 STR_SCENEDIT_FILE_MENU_QUIT                                     :Keluar
 
 # Settings menu
-###length 15
+###length 16
 STR_SETTINGS_MENU_GAME_OPTIONS                                  :Pilihan permainan
 STR_SETTINGS_MENU_CONFIG_SETTINGS_TREE                          :Tetapan
 STR_SETTINGS_MENU_NEWGRF_SETTINGS                               :Tetapan NewGRF
@@ -595,11 +595,9 @@ STR_PERFORMANCE_DETAIL_CARGO                                    :{BLACK}Kargo:
 STR_PERFORMANCE_DETAIL_MONEY                                    :{BLACK}Wang:
 STR_PERFORMANCE_DETAIL_LOAN                                     :{BLACK}Pinjaman:
 STR_PERFORMANCE_DETAIL_TOTAL                                    :{BLACK}Jumlah:
+###next-name-looks-similar
 
-###length 10
-STR_PERFORMANCE_DETAIL_VEHICLES_TOOLTIP                         :{BLACK}Jumlah kenderaan yang meraih keuntungan pada tahun lepas. Ini termasuk kenderaan jalan raya, keretapi, kapal dan pesawat
 STR_PERFORMANCE_DETAIL_STATIONS_TOOLTIP                         :{BLACK} Bilangan stesen baru diservis. Stesen keretapi, perhentian bas, lapangan terbang dan sebagainya dikira secara berasingan walaupun mereka tergolong dalam stesen yang sama
-STR_PERFORMANCE_DETAIL_MIN_PROFIT_TOOLTIP                       :{BLACK}Keuntungan kenderaan yang mempunyai pendapatan terendah (hanya kenderaan yang berumur lebih daripada dua tahun termasuk kira)
 STR_PERFORMANCE_DETAIL_MIN_INCOME_TOOLTIP                       :{BLACK}Jumlah wang yang masuk dalam sebulan dengan keuntungan terendah dalam 12 suku tahun yang lepas
 STR_PERFORMANCE_DETAIL_MAX_INCOME_TOOLTIP                       :{BLACK}Jumlah wang keuntungan dalam suku tahun dengan keuntungan tertinggi dalam 12 suku tahun yang lepas
 STR_PERFORMANCE_DETAIL_DELIVERED_TOOLTIP                        :{BLACK}Unit-unit kargo yang dihantar dalam 4 suku tahun yang lepas
@@ -816,7 +814,6 @@ STR_NEWS_VEHICLE_IS_GETTING_VERY_OLD                            :{WHITE}{VEHICLE
 STR_NEWS_VEHICLE_IS_GETTING_VERY_OLD_AND                        :{WHITE}{VEHICLE} terlalu usang dan memerlukan penggantian segera
 STR_NEWS_TRAIN_IS_STUCK                                         :{WHITE}{VEHICLE} tidak dapat mencari laluan untuk meneruskan perjalanan.
 STR_NEWS_VEHICLE_IS_LOST                                        :{WHITE}{VEHICLE} telah sesat.
-STR_NEWS_VEHICLE_IS_UNPROFITABLE                                :Keuntungan {WHITE}{VEHICLE} pada tahun lepas ialah {CURRENCY_LONG}
 STR_NEWS_AIRCRAFT_DEST_TOO_FAR                                  :{WHITE}{VEHICLE} tidak dapat ke destinasi seterusnya disebabkab di luar jarak
 
 STR_NEWS_ORDER_REFIT_FAILED                                     :{WHITE}{VEHICLE} berhenti kerana arahan arahan pengubahsuian gagal
@@ -830,16 +827,9 @@ STR_NEWS_NEW_VEHICLE_NOW_AVAILABLE_WITH_TYPE                    :{BLACK}{STRING}
 
 STR_NEWS_OFFER_OF_SUBSIDY_EXPIRED                               :{BIG_FONT}{BLACK}Tempoh tawaran subsidi tamat:{}{}{STRING} dari {STRING} ke {STRING} tidak akan diberi subsidi.
 STR_NEWS_SUBSIDY_WITHDRAWN_SERVICE                              :{BIG_FONT}{BLACK}Subsidi ditarik:{}{}Servis {STRING} dari {STRING} ke {STRING} tidak akan diberi subsidi.
-STR_NEWS_SERVICE_SUBSIDY_OFFERED                                :{BIG_FONT}{BLACK}Subsidi perkhidmatan ditawarkan:{}{}Perkhidmatan {STRING} pertama dari {STRING} ke {STRING} akan mendapat subsidi selama setahun daripada pihak berkuasa tempatan!
 ###length 4
-STR_NEWS_SERVICE_SUBSIDY_AWARDED_HALF                           :{BIG_FONT}{BLACK}Subsidi perkhidmatan dianugerahkan kepada {STRING}!{}{}Perkhidmatan {STRING} dari {STRING} ke {STRING} akan ditambah bayaran 50% untuk tahun berikutnya!
-STR_NEWS_SERVICE_SUBSIDY_AWARDED_DOUBLE                         :{BIG_FONT}{BLACK}Subsidi perkhidmatan dianugerahkan kepada {STRING}!{}{}Perkhidmatan {STRING} dari {STRING} ke {STRING} akan dibayar kadar dua kali ganda untuk tahun berikutnya!
-STR_NEWS_SERVICE_SUBSIDY_AWARDED_TRIPLE                         :{BIG_FONT}{BLACK}Subsidi perkhidmatan dianugerahkan kepada {STRING}!{}{}Perkhidmatan {STRING} dari {STRING} ke {STRING} akan dibayar kadar tiga kali ganda untuk tahun berikutnya!
-STR_NEWS_SERVICE_SUBSIDY_AWARDED_QUADRUPLE                      :{BIG_FONT}{BLACK}Subsidi perkhidmatan dianugerahkan kepada {STRING}!{}{}Perkhidmatan {STRING} dari {STRING} ke {STRING} akan dibayar kadar empat kali ganda untuk tahun berikutnya!
 
-STR_NEWS_ROAD_REBUILDING                                        :{BIG_FONT}{BLACK}Kesesakan lalulintas di {TOWN}!{}{}Rancangan pembinaan semula jalanraya dibiayai oleh {STRING} akan menyeksa pemandu kenderaan selama 6 bulan!
 STR_NEWS_EXCLUSIVE_RIGHTS_TITLE                                 :{BIG_FONT}{BLACK}Monopoly pengangkutan!
-STR_NEWS_EXCLUSIVE_RIGHTS_DESCRIPTION                           :{BIG_FONT} {BLACK} Pihak Berkuasa Tempatan {TOWN} menanda tangani kontrak dengan {STRING} untuk satu tahun hak pengangkutan eksklusif!
 
 # Extra view window
 STR_EXTRA_VIEWPORT_TITLE                                        :{WHITE}Tetingkap Pemandangan {COMMA}
@@ -1100,6 +1090,7 @@ STR_CONFIG_SETTING_VEHICLE_BREAKDOWNS_HELPTEXT                  :Mengawal kekera
 STR_CONFIG_SETTING_SUBSIDY_MULTIPLIER                           :Gandaan subsidi: {STRING}
 STR_CONFIG_SETTING_SUBSIDY_MULTIPLIER_HELPTEXT                  :Tetapkan jumlah bayaran untuk sambungan bersubsidi
 
+###length 2
 
 ###setting-zero-is-special
 
@@ -1186,7 +1177,10 @@ STR_CONFIG_SETTING_SIGNALSIDE                                   :Pamer isyarat: 
 ###length 3
 STR_CONFIG_SETTING_SIGNALSIDE_RIGHT                             :Di sebelah kanan
 
+###length 2
 STR_CONFIG_SETTING_SHOWFINANCES                                 :Tunjukkan tetingkap kewangan setiap penghujung tahun: {STRING}
+
+###length 2
 
 STR_CONFIG_SETTING_NONSTOP_BY_DEFAULT                           :Arahan baru ialah 'tanpa henti' secara lazim: {STRING}
 
@@ -1205,9 +1199,11 @@ STR_CONFIG_SETTING_AUTOSCROLL_MAIN_VIEWPORT                     :Peninjau utama
 STR_CONFIG_SETTING_AUTOSCROLL_EVERY_VIEWPORT                    :Setiap peninjau
 
 STR_CONFIG_SETTING_BRIBE                                        :Benarkan pihak berkuasa dirasuah: {STRING}
+###length 2
 STR_CONFIG_SETTING_BRIBE_HELPTEXT                               :Membolehkan syarikat untuk cuba merasuah pihak berkuasa bandar tempatan. Jika rasuah disedari oleh pemeriksa, syarikat tidak mampu berbuat apa-apa di bandar selama enam bulan
 
 STR_CONFIG_SETTING_ALLOW_EXCLUSIVE                              :Benarkan pembelian hak pengangkutan eksklusif: {STRING}
+###length 2
 STR_CONFIG_SETTING_ALLOW_EXCLUSIVE_HELPTEXT                     :Jika sebuah syarikat membeli hak pengangkutan eksklusif untuk sebuah bandar, stesen lawan (penumpang dan uatan) tidak akan menerima apa-apa muatan bagi keseluruhan tahun
 
 STR_CONFIG_SETTING_ALLOW_FUND_BUILDINGS                         :Benarkan pembiayaan bangunan: {STRING}
@@ -1255,10 +1251,14 @@ STR_CONFIG_SETTING_ORDER_REVIEW_EXDEPOT                         :Ya, tetapi tida
 STR_CONFIG_SETTING_ORDER_REVIEW_ON                              :Semua kenderaan
 
 STR_CONFIG_SETTING_WARN_INCOME_LESS                             :Beri amaran jika pendapatan kenderaan adalah negatif: {STRING}
+###length 2
 
 STR_CONFIG_SETTING_NEVER_EXPIRE_VEHICLES                        :Kenderaan tidak akan tamat tempohnya: {STRING}
 
 ###length 2
+
+
+###setting-zero-is-special
 
 STR_CONFIG_SETTING_AUTORENEW_VEHICLE                            :Gunakan pembaharuan automatik apabila kenderaan usang : {STRING}
 
@@ -1419,6 +1419,9 @@ STR_CONFIG_SETTING_PERSISTENT_BUILDINGTOOLS_HELPTEXT            :Simpan alat pem
 
 
 
+###length 2
+
+###length 2
 
 STR_CONFIG_SETTING_SOUND_CONFIRM                                :Pembinaan: {STRING}
 
@@ -1590,7 +1593,6 @@ STR_CONFIG_SETTING_CITY_SIZE_MULTIPLIER                         :Pengganda awal 
 
 
 
-###length 5
 
 ###length 3
 STR_CONFIG_SETTING_LOCALISATION_UNITS_POWER_IMPERIAL            :Sistem Imperial (kuasa kuda/hp)
@@ -1702,7 +1704,6 @@ STR_ABANDON_SCENARIO_QUERY                                      :{YELLOW}Pastika
 
 # Cheat window
 STR_CHEATS                                                      :{WHITE}Penipuan (Cheats)
-STR_CHEATS_TOOLTIP                                              :{BLACK}Kotak bertanda menunjukkan anda pernah menggunakan penipuan (cheats) ini
 STR_CHEAT_MONEY                                                 :{LTBLUE}Tambahkan wang sebanyak {CURRENCY_LONG}
 STR_CHEAT_CHANGE_COMPANY                                        :{LTBLUE}Bermain sebagai syarikat: {ORANGE}{COMMA}
 STR_CHEAT_EXTRA_DYNAMITE                                        :{LTBLUE}Jentolak ajaib (buang industri dan objek lain yang biasanya tidak boleh dibuang): {ORANGE}{STRING}
@@ -1826,8 +1827,6 @@ STR_NETWORK_SERVER_LIST_MAP_SIZE_CAPTION                        :{BLACK}Saiz pet
 STR_NETWORK_SERVER_LIST_MAP_SIZE_CAPTION_TOOLTIP                :{BLACK}Saiz peta permainan{}Klik untuk menyusun mengikut kawasan
 STR_NETWORK_SERVER_LIST_DATE_CAPTION                            :{BLACK}Tarikh
 STR_NETWORK_SERVER_LIST_DATE_CAPTION_TOOLTIP                    :{BLACK}Tarikh semasa
-STR_NETWORK_SERVER_LIST_YEARS_CAPTION                           :{BLACK}Tahun
-STR_NETWORK_SERVER_LIST_YEARS_CAPTION_TOOLTIP                   :{BLACK}Jumlah tahun{}permainan ini sudah berjalan
 STR_NETWORK_SERVER_LIST_INFO_ICONS_TOOLTIP                      :{BLACK}Bahasa, versi pelayan, dan sebagainya
 
 STR_NETWORK_SERVER_LIST_CLICK_GAME_TO_SELECT                    :{BLACK}Klik salah satu permainan dalam senarai untuk memilihnya
@@ -2816,8 +2815,6 @@ STR_TOWN_VIEW_CARGO_FOR_TOWNGROWTH_REQUIRED_WINTER              :{ORANGE}{STRING
 STR_TOWN_VIEW_CARGO_FOR_TOWNGROWTH_DELIVERED_GENERAL            :{ORANGE}{STRING}{GREEN} telah dihantar
 STR_TOWN_VIEW_CARGO_FOR_TOWNGROWTH_REQUIRED                     :{ORANGE}{CARGO_TINY} / {CARGO_LONG}{RED} (masih diperlukan)
 STR_TOWN_VIEW_CARGO_FOR_TOWNGROWTH_DELIVERED                    :{ORANGE}{CARGO_TINY} / {CARGO_LONG}{GREEN} (telah dihantar)
-STR_TOWN_VIEW_TOWN_GROWS_EVERY                                  :{BLACK}Bandar berkembang setiap {ORANGE}{COMMA}{BLACK} hari
-STR_TOWN_VIEW_TOWN_GROWS_EVERY_FUNDED                           :{BLACK}Bandar berkembang setiap {ORANGE}{COMMA}{BLACK} hari (dibiayai)
 STR_TOWN_VIEW_TOWN_GROW_STOPPED                                 :{BLACK}Bandar {RED}tidak{BLACK} berkembang
 STR_TOWN_VIEW_NOISE_IN_TOWN                                     :{BLACK}Had kebisingan dalam bandar: {ORANGE}{COMMA}{BLACK}  maks: {ORANGE}{COMMA}
 STR_TOWN_VIEW_CENTER_TOOLTIP                                    :{BLACK}Pusatkan pemandangan utama ke lokasi bandar. Ctrl+Klik untuk membuka tetingkap pemandangan di lokasi bandar
@@ -2850,15 +2847,13 @@ STR_LOCAL_AUTHORITY_ACTION_STATUE_OF_COMPANY                    :Bina tugu pemil
 STR_LOCAL_AUTHORITY_ACTION_NEW_BUILDINGS                        :Biaya pembinaan bangunan baru
 STR_LOCAL_AUTHORITY_ACTION_EXCLUSIVE_TRANSPORT                  :Beli hak pengangkutan eksklusif
 STR_LOCAL_AUTHORITY_ACTION_BRIBE                                :Rasuah pihak berkuasa tempatan
+###next-name-looks-similar
 
-###length 8
 STR_LOCAL_AUTHORITY_ACTION_TOOLTIP_SMALL_ADVERTISING            :{YELLOW}Lakukan kempen pengiklanan yang kecil, untuk menarik lebih pelanggan dan kargo kepada perkhidmatan pengangkutan anda.{}Kos: {CURRENCY_LONG}
 STR_LOCAL_AUTHORITY_ACTION_TOOLTIP_MEDIUM_ADVERTISING           :{YELLOW}Lakukan kempen pengiklanan yang sederhana, untuk menarik lebih pelanggan dan kargo kepada perkhidmatan pengangkutan anda.{}Kos: {CURRENCY_LONG}
 STR_LOCAL_AUTHORITY_ACTION_TOOLTIP_LARGE_ADVERTISING            :{YELLOW}Lakukan kempen pengiklanan yang besar, untuk menarik lebih pelanggan dan kargo kepada perkhidmatan pengangkutan anda.{}Kos: {CURRENCY_LONG}
-STR_LOCAL_AUTHORITY_ACTION_TOOLTIP_ROAD_RECONSTRUCTION          :{YELLOW}Biaya pembinaan semula rangkaian jalanraya bandar. Menyebabkan kesesakan lalulintas selama 6 bulan.{}Kos: {CURRENCY_LONG}
 STR_LOCAL_AUTHORITY_ACTION_TOOLTIP_STATUE_OF_COMPANY            :{YELLOW}Bina tugu sebagai penghormatan kepada syarikat anda.{}Kos: {CURRENCY_LONG}
 STR_LOCAL_AUTHORITY_ACTION_TOOLTIP_NEW_BUILDINGS                :{YELLOW}Biaya pembinaan bangunan komersil baru dalam bandar.{}Kos: {CURRENCY_LONG}
-STR_LOCAL_AUTHORITY_ACTION_TOOLTIP_EXCLUSIVE_TRANSPORT          :{YELLOW}Beli hak pengangkutan eksklusif selama 1 tahun di bandar ini. Pihak berkuasa bandar akan hanya membenarkan penumpang dan kargo menggunakan stesen-stesen syarikat anda.{}Kos: {CURRENCY_LONG}
 STR_LOCAL_AUTHORITY_ACTION_TOOLTIP_BRIBE                        :{YELLOW}Rasuah pihak berkuasa bandar untuk meninggikan penarafan anda, dengan risiko hukuman yang sangat berat.{}Kos: {CURRENCY_LONG}
 
 # Goal window
@@ -2926,7 +2921,6 @@ STR_STATION_VIEW_ACCEPTS_CARGO                                  :{BLACK}Menerima
 
 STR_STATION_VIEW_RATINGS_BUTTON                                 :{BLACK}Penarafan
 STR_STATION_VIEW_RATINGS_TOOLTIP                                :{BLACK}Tunjukkan penarafan stesen
-STR_STATION_VIEW_SUPPLY_RATINGS_TITLE                           :{BLACK}Bekalan bulanan dan penarafan tempatan:
 
 STR_STATION_VIEW_PLANNED_AMOUNT                                 :Jumlah: Telah dirancang
 STR_STATION_VIEW_VIA                                            :{YELLOW}{CARGO_SHORT} melalui {STATION}
@@ -3048,7 +3042,6 @@ STR_COMPANY_INFRASTRUCTURE_VIEW_CANALS                          :{WHITE}Terusan
 STR_COMPANY_INFRASTRUCTURE_VIEW_STATION_SECT                    :{GOLD}Stesen:
 STR_COMPANY_INFRASTRUCTURE_VIEW_STATIONS                        :{WHITE}Petak stesen
 STR_COMPANY_INFRASTRUCTURE_VIEW_AIRPORTS                        :{WHITE}Lapangan Terbang
-STR_COMPANY_INFRASTRUCTURE_VIEW_TOTAL                           :{WHITE}{CURRENCY_LONG}/thn
 
 # Industry directory
 STR_INDUSTRY_DIRECTORY_CAPTION                                  :{WHITE}Industri
@@ -3153,7 +3146,6 @@ STR_PURCHASE_INFO_SPEED_POWER                                   :{BLACK}Kelajuan
 STR_PURCHASE_INFO_SPEED                                         :{BLACK}Kelajuan: {GOLD}{VELOCITY}
 STR_PURCHASE_INFO_SPEED_OCEAN                                   :{BLACK}Kelajuan di lautan: {GOLD}{VELOCITY}
 STR_PURCHASE_INFO_SPEED_CANAL                                   :{BLACK}Kelajuan pada terusan/sungai: {GOLD}{VELOCITY}
-STR_PURCHASE_INFO_RUNNINGCOST                                   :{BLACK}Kos Pengendalian: {GOLD}{CURRENCY_LONG}/tahun
 STR_PURCHASE_INFO_CAPACITY                                      :{BLACK}Muatan: {GOLD}{CARGO_LONG} {STRING}
 STR_PURCHASE_INFO_REFITTABLE                                    :(boleh diubahsuai)
 STR_PURCHASE_INFO_DESIGNED_LIFE                                 :{BLACK}Direka: {GOLD}{NUM}{BLACK} Jangkahayat: {GOLD}{COMMA} tahun
@@ -3328,9 +3320,6 @@ STR_ENGINE_PREVIEW_ROAD_VEHICLE                                 :kenderaan jalan
 STR_ENGINE_PREVIEW_AIRCRAFT                                     :pesawat
 STR_ENGINE_PREVIEW_SHIP                                         :kapal
 
-STR_ENGINE_PREVIEW_COST_WEIGHT_SPEED_POWER                      :{BLACK}Kos: {CURRENCY_LONG} Berat: {WEIGHT_SHORT}{}Kelajuan: {VELOCITY}  Kuasa: {POWER}{}Kos Pengendalian: {CURRENCY_LONG}/thn{}Kapasiti: {CARGO_LONG}
-STR_ENGINE_PREVIEW_COST_WEIGHT_SPEED_POWER_MAX_TE               :{BLACK}Kos: {CURRENCY_LONG} Berat: {WEIGHT_SHORT}{}Kelajuan: {VELOCITY}  Kuasa: {POWER}  Maks. E.K.: {6:FORCE}{}Kos Pengendalian: {4:CURRENCY_LONG}/thn{}Kapasiti: {5:CARGO_LONG}
-STR_ENGINE_PREVIEW_COST_MAX_SPEED_CAP_RUNCOST                   :{BLACK}Kos: {CURRENCY_LONG} Kelajuan Maks.: {VELOCITY}{}Kapasiti: {CARGO_LONG}{}Kos Pengendalian: {CURRENCY_LONG}/thn
 
 # Autoreplace window
 STR_REPLACE_VEHICLES_WHITE                                      :{WHITE}Gantikan {STRING} - {STRING}
@@ -3467,8 +3456,6 @@ STR_VEHICLE_INFO_CAPACITY_CAPACITY                              :{BLACK}Muatan: 
 
 STR_VEHICLE_INFO_FEEDER_CARGO_VALUE                             :{BLACK}Pindahkan kredit: {LTBLUE}{CURRENCY_LONG}
 
-STR_VEHICLE_DETAILS_INCREASE_SERVICING_INTERVAL_TOOLTIP         :{BLACK}Tambah 10 tempoh penyenggelaraan. Ctrl+Klik untuk tambah 5 tempoh penyenggelaraan
-STR_VEHICLE_DETAILS_DECREASE_SERVICING_INTERVAL_TOOLTIP         :{BLACK}Kurangkan 10 tempoh penyenggelaraan. Ctrl+Klik untuk kurangkan 5 tempoh penyenggelaraan
 
 STR_VEHICLE_DETAILS_PERCENT                                     :Peratusan
 

@@ -374,7 +374,7 @@ STR_SCENEDIT_FILE_MENU_SEPARATOR                                :
 STR_SCENEDIT_FILE_MENU_QUIT                                     :خروج
 
 # Settings menu
-###length 15
+###length 16
 STR_SETTINGS_MENU_GAME_OPTIONS                                  :تنظیمات بازی
 STR_SETTINGS_MENU_NEWGRF_SETTINGS                               :تنظیمات NewGRF
 STR_SETTINGS_MENU_TRANSPARENCY_OPTIONS                          :گزینه های شفافیت
@@ -605,11 +605,9 @@ STR_PERFORMANCE_DETAIL_CARGO                                    :{BLACK}بار:
 STR_PERFORMANCE_DETAIL_MONEY                                    :{BLACK}پول:
 STR_PERFORMANCE_DETAIL_LOAN                                     :{BLACK}وام:
 STR_PERFORMANCE_DETAIL_TOTAL                                    :{BLACK}مجموع:
+###next-name-looks-similar
 
-###length 10
-STR_PERFORMANCE_DETAIL_VEHICLES_TOOLTIP                         :{BLACK}تعداد خودروهای که سال گذشته سوددهی داشته اند. این شامل وسایل نقلیه جاده ای ، قطار ، کشتی ها و هواپیما می باشد
 STR_PERFORMANCE_DETAIL_STATIONS_TOOLTIP                         :{BLACK} تعداد قطعات تازه سرویس شده ایستگاه. هر بخشی از یک ایستگاه (به عنوان مثال ایستگاه قطار، ایستگاه اتوبوس، فرودگاه) شمارش شده است، حتی اگر آنها به عنوان یک ایستگاه متصل باشند
-STR_PERFORMANCE_DETAIL_MIN_PROFIT_TOOLTIP                       :{BLACK}سود از خودرو با کمترین درآمد (تنها وسایل نقلیه بزرگتر از دو سال در نظر گرفته)
 STR_PERFORMANCE_DETAIL_MIN_INCOME_TOOLTIP                       :{BLACK} مقدار پول نقد در سه ماهه با کمترین سود از 12 سه ماهه آخر
 STR_PERFORMANCE_DETAIL_MAX_INCOME_TOOLTIP                       :{BLACK} مقدار پول نقد درآمده در این سه ماهه با بیشترین سود از 12 سه ماهه گذشته
 STR_PERFORMANCE_DETAIL_DELIVERED_TOOLTIP                        :{BLACK}تعداد محموله هایی که در چهار فصل گذشته تحویل شدند
@@ -832,7 +830,6 @@ STR_NEWS_VEHICLE_IS_GETTING_VERY_OLD                            :{WHITE}{VEHICLE
 STR_NEWS_VEHICLE_IS_GETTING_VERY_OLD_AND                        :{WHITE}{VEHICLE} بسیار قدیمی شده و سریعا احتیاج به جایگزینی دارد
 STR_NEWS_TRAIN_IS_STUCK                                         :{WHITE}{VEHICLE} نمی تواند مسیری برای ادامه دادن پیدا کند
 STR_NEWS_VEHICLE_IS_LOST                                        :{WHITE}{VEHICLE} گمشده
-STR_NEWS_VEHICLE_IS_UNPROFITABLE                                :سود سال گذشته {WHITE}{VEHICLE}به مقدار {CURRENCY_LONG} بوده است
 STR_NEWS_AIRCRAFT_DEST_TOO_FAR                                  :{WHITE}{VEHICLE} نمی توان به مقصد بعدی رسید.مقصد دور از دسترس است
 
 STR_NEWS_ORDER_REFIT_FAILED                                     :{WHITE}{VEHICLE} متوقف گردید چون تغییر کاربرد با شکست مواجه شد
@@ -846,16 +843,9 @@ STR_NEWS_NEW_VEHICLE_NOW_AVAILABLE_WITH_TYPE                    :{BLACK} {STRING
 
 STR_NEWS_OFFER_OF_SUBSIDY_EXPIRED                               :{BIG_FONT}{BLACK}پیشنهاد یارانه باطل شد:{}{}{STRING} از {STRING} به {STRING} دیگر یارانه ای به همراه نخواهد داشت
 STR_NEWS_SUBSIDY_WITHDRAWN_SERVICE                              :{BIG_FONT}{BLACK}یارانه بازپس گرفته شد:{}{}{STRING} خدمات از {STRING} به {STRING} دیگر شامل یارانه نمی باشند
-STR_NEWS_SERVICE_SUBSIDY_OFFERED                                :{BIG_FONT}{BLACK}پیشنهاد پرداخت یارانه:{}{}نخستین {STRING} خدمات از {STRING} به {STRING} توسط فرماندار محلی به مدت یک سال شامل یارانه می گردد!
 ###length 4
-STR_NEWS_SERVICE_SUBSIDY_AWARDED_HALF                           :{BIG_FONT}{BLACK}{STRING} برنده یارانه خدمات گردید!{}{}{STRING} خدمات از {STRING} به {STRING} به مدت یک سال شامل ۵۰ درصد اضافه می گردد!
-STR_NEWS_SERVICE_SUBSIDY_AWARDED_DOUBLE                         :{BIG_FONT}{BLACK}{STRING} برنده یارانه خدمات گردید!{}{}{STRING} خدمات از {STRING} به {STRING} به مدت یک سال دوبرابر پرداخت میشود!
-STR_NEWS_SERVICE_SUBSIDY_AWARDED_TRIPLE                         :{BIG_FONT}{BLACK} {STRING}برنده یارانه خدمات گردید!{}{}{STRING} دستمزد خدمات از {STRING} به {STRING} به مدت یک سال سه برابر پرداخت می شود!
-STR_NEWS_SERVICE_SUBSIDY_AWARDED_QUADRUPLE                      :{BIG_FONT}{BLACK}یارانه خدمات به {STRING}هدیه داده شد!{}{}{STRING} خدمات ترابری از {STRING} به {STRING} تا یک سال آینده چهار برابر پرداخت خواهد شد!
 
-STR_NEWS_ROAD_REBUILDING                                        :{BIG_FONT}{BLACK}ترافیک شدید در {TOWN}!{}{}هزینه روکش کردن آسفالت توسط {STRING} پرداخت گردیده و باعث 6 ماه بدبختی و دردسر برای رانندگان شده است!
 STR_NEWS_EXCLUSIVE_RIGHTS_TITLE                                 :{BIG_FONT}{BLACK}حمل و نقل انحصاری!
-STR_NEWS_EXCLUSIVE_RIGHTS_DESCRIPTION                           :{BIG_FONT}{BLACK}مقامات محلی {TOWN} قرارداد حمل و نقل انحصاری را با {STRING} به مدت یکسال امضاء کردند!
 
 # Extra view window
 STR_EXTRA_VIEWPORT_TITLE                                        :{WHITE}نمای اضافه {COMMA}
@@ -1112,6 +1102,7 @@ STR_CONFIG_SETTING_VEHICLE_BREAKDOWNS                           :خرابی وس
 
 STR_CONFIG_SETTING_SUBSIDY_MULTIPLIER                           :ضریب سوبسید: {STRING}
 
+###length 2
 
 ###setting-zero-is-special
 
@@ -1170,7 +1161,10 @@ STR_CONFIG_SETTING_SIGNALSIDE_LEFT                              :به سمت چ�
 STR_CONFIG_SETTING_SIGNALSIDE_DRIVING_SIDE                      :به سمت جهت رانندگی
 STR_CONFIG_SETTING_SIGNALSIDE_RIGHT                             :به سمت راست
 
+###length 2
 STR_CONFIG_SETTING_SHOWFINANCES                                 :نمایش پنجره مالی در پایان سال: {STRING}
+
+###length 2
 
 STR_CONFIG_SETTING_NONSTOP_BY_DEFAULT                           :برنامه های حرکت به طور پیش فرض «بدون توقف» باشند: {STRING}
 
@@ -1184,8 +1178,10 @@ STR_CONFIG_SETTING_AUTOSCROLL                                   :جابجا‌ش
 ###length 4
 
 STR_CONFIG_SETTING_BRIBE                                        :قابلیت رشوه دادن به مقامات محلی: {STRING}
+###length 2
 
 STR_CONFIG_SETTING_ALLOW_EXCLUSIVE                              :قابلیت انحصاری کردن حقوق حمل و نقل: {STRING}
+###length 2
 STR_CONFIG_SETTING_ALLOW_EXCLUSIVE_HELPTEXT                     :اگز یک شرکت حقوق انحصاری حمل و نقل یک شهر را بخرد، ایستگاه های دیگر بازیکنان(از جمله مسافربری و باربری) دیگر هیچگونه باری را طی یکسال قبول نمی کنند
 
 STR_CONFIG_SETTING_ALLOW_FUND_BUILDINGS                         :اجازه ساخت و ساز ساختمان: {STRING}
@@ -1223,10 +1219,14 @@ STR_CONFIG_SETTING_ORDER_REVIEW_EXDEPOT                         :بله، ولی
 STR_CONFIG_SETTING_ORDER_REVIEW_ON                              :از همه خودرو‌ها
 
 STR_CONFIG_SETTING_WARN_INCOME_LESS                             :هشدار هنگام منفی بودن درآمد خودرو: {STRING}
+###length 2
 
 STR_CONFIG_SETTING_NEVER_EXPIRE_VEHICLES                        :وسایل نقلیه هیچگاه از بین نروند: {STRING}
 
 ###length 2
+
+
+###setting-zero-is-special
 
 STR_CONFIG_SETTING_AUTORENEW_VEHICLE                            :نوکردن خودکار وسایل نقلیه کهنه شده: {STRING}
 
@@ -1391,6 +1391,9 @@ STR_CONFIG_SETTING_PERSISTENT_BUILDINGTOOLS                     :فعال مان
 
 
 
+###length 2
+
+###length 2
 
 
 STR_CONFIG_SETTING_SOUND_CLICK_HELPTEXT                         :هنگام کلیک دکمه ها بوق بزن
@@ -1546,7 +1549,6 @@ STR_CONFIG_SETTING_CITY_SIZE_MULTIPLIER                         :مضرب ابت
 
 STR_CONFIG_SETTING_LOCALISATION_UNITS_VELOCITY                  :واحدهای سرعت: {STRING}
 STR_CONFIG_SETTING_LOCALISATION_UNITS_VELOCITY_HELPTEXT         :هر زمان که سرعت در محیط بازی نمایش داده شود، آن را با واحد انتخاب شده نمایش بده
-###length 5
 STR_CONFIG_SETTING_LOCALISATION_UNITS_VELOCITY_IMPERIAL         :امپریال (mph)
 STR_CONFIG_SETTING_LOCALISATION_UNITS_VELOCITY_METRIC           :متریک (km/h)
 STR_CONFIG_SETTING_LOCALISATION_UNITS_VELOCITY_SI               :SI (m/s)
@@ -1671,7 +1673,6 @@ STR_ABANDON_SCENARIO_QUERY                                      :{YELLOW}آیا 
 
 # Cheat window
 STR_CHEATS                                                      :{WHITE}تقلبها
-STR_CHEATS_TOOLTIP                                              :{BLACK}جعبه انتخاب ها نشان می دهند که قبلا از چه تقلبی استفاده کردید
 STR_CHEAT_MONEY                                                 :{LTBLUE}اضافه کردن پول به مقدار {CURRENCY_LONG}
 STR_CHEAT_CHANGE_COMPANY                                        :{LTBLUE}بازی به عنوان شرکت: {ORANGE}{COMMA}
 STR_CHEAT_EXTRA_DYNAMITE                                        :{LTBLUE}بولدوزر جادویی(ازبین بردن صنایع و اشیاء غیرقابل حرکت): {ORANGE}{STRING}
@@ -1792,8 +1793,6 @@ STR_NETWORK_SERVER_LIST_MAP_SIZE_CAPTION                        :{BLACK}اندا
 STR_NETWORK_SERVER_LIST_MAP_SIZE_CAPTION_TOOLTIP                :{BLACK}اندازه نقشه بازی{}برای مرتب سازی بر اساس محیط کلیک کنید
 STR_NETWORK_SERVER_LIST_DATE_CAPTION                            :{BLACK}تاریخ
 STR_NETWORK_SERVER_LIST_DATE_CAPTION_TOOLTIP                    :{BLACK}تاریخ فعلی
-STR_NETWORK_SERVER_LIST_YEARS_CAPTION                           :{BLACK}سال
-STR_NETWORK_SERVER_LIST_YEARS_CAPTION_TOOLTIP                   :{BLACK}تعداد سالهایی{}که بازی در حال اجراست
 STR_NETWORK_SERVER_LIST_INFO_ICONS_TOOLTIP                      :{BLACK}زبان، ویرایش برنامه سرویس دهنده و غیره.
 
 STR_NETWORK_SERVER_LIST_CLICK_GAME_TO_SELECT                    :{BLACK}برای انتخاب روی یک بازی از لیست کلیک کنید
@@ -2783,8 +2782,6 @@ STR_TOWN_VIEW_CARGO_FOR_TOWNGROWTH_REQUIRED_WINTER              :{ORANGE}{STRING
 STR_TOWN_VIEW_CARGO_FOR_TOWNGROWTH_DELIVERED_GENERAL            :{ORANGE}{STRING}{GREEN} دریافت گردید
 STR_TOWN_VIEW_CARGO_FOR_TOWNGROWTH_REQUIRED                     :{ORANGE}{CARGO_TINY} / {CARGO_LONG}{RED} (هنوز نیاز است)
 STR_TOWN_VIEW_CARGO_FOR_TOWNGROWTH_DELIVERED                    :{ORANGE}{CARGO_TINY} / {CARGO_LONG}{GREEN} (دریافت گردیده)
-STR_TOWN_VIEW_TOWN_GROWS_EVERY                                  :{BLACK}رشد شهر هر {ORANGE}{COMMA}{BLACK} روز
-STR_TOWN_VIEW_TOWN_GROWS_EVERY_FUNDED                           :{BLACK}رشد شهر هر {ORANGE}{COMMA}{BLACK} روز (بنیان شده)
 STR_TOWN_VIEW_TOWN_GROW_STOPPED                                 :{BLACK}شهر رشد {RED}نمی {BLACK} کند
 STR_TOWN_VIEW_NOISE_IN_TOWN                                     :{BLACK}حد سروصدا در شهر: {ORANGE}{COMMA}{BLACK}  بیشینه: {ORANGE}{COMMA}
 STR_TOWN_VIEW_CENTER_TOOLTIP                                    :{BLACK}نمایش شهر در وسط صفحه نمایش. کنترل+کلیک یک نمای اضافه از شهر باز می کند
@@ -2817,15 +2814,13 @@ STR_LOCAL_AUTHORITY_ACTION_STATUE_OF_COMPANY                    :ساخت تند
 STR_LOCAL_AUTHORITY_ACTION_NEW_BUILDINGS                        :ساخت اختمان های جدید
 STR_LOCAL_AUTHORITY_ACTION_EXCLUSIVE_TRANSPORT                  :خرید انحصاری کلیه حقوق حمل و نقل
 STR_LOCAL_AUTHORITY_ACTION_BRIBE                                :رشوه به مقامات محلی
+###next-name-looks-similar
 
-###length 8
 STR_LOCAL_AUTHORITY_ACTION_TOOLTIP_SMALL_ADVERTISING            :{YELLOW}اجرای یک برنامه آگهی برای جذب بیشتر مسافر و بار به شرکت حمل و نقل شما.{}قیمت: {CURRENCY_LONG}
 STR_LOCAL_AUTHORITY_ACTION_TOOLTIP_MEDIUM_ADVERTISING           :{YELLOW}اجرای یک برنامه آگهی متوسط برای جذب بیشتر مسافر و بار به شرکت حمل و نقل شما.{}قیمت: {CURRENCY_LONG}
 STR_LOCAL_AUTHORITY_ACTION_TOOLTIP_LARGE_ADVERTISING            :{YELLOW}اجرای یک برنامه آگهی بزرگ برای جذب بیشتر مسافر و بار به شرکت حمل و نقل شما.{}قیمت: {CURRENCY_LONG}
-STR_LOCAL_AUTHORITY_ACTION_TOOLTIP_ROAD_RECONSTRUCTION          :{YELLOW}پرداخت هزینه بازسازی روکش آسفالت شهری. سبب ترافیک قابل ملاحظه ای تا شش ماه می شود{}قیمت: {CURRENCY_LONG}
 STR_LOCAL_AUTHORITY_ACTION_TOOLTIP_STATUE_OF_COMPANY            :{YELLOW}ساخت مجسمه برای بزرگداشت شرکت شما{}قیمت: {CURRENCY_LONG}
 STR_LOCAL_AUTHORITY_ACTION_TOOLTIP_NEW_BUILDINGS                :{YELLOW}پرداخت هزینه ساخت ساختمان های تجاری.{}قیمت: {CURRENCY_LONG}
-STR_LOCAL_AUTHORITY_ACTION_TOOLTIP_EXCLUSIVE_TRANSPORT          :{YELLOW}خرید انحصاری حقوق حمل و نقل به مدت یک سال. مقامات شهر به مسافران و بارها اجازه استفاده از شرکت حمل و نقل دیگری را نمی دهند{}Cost: {CURRENCY_LONG}
 STR_LOCAL_AUTHORITY_ACTION_TOOLTIP_BRIBE                        :{YELLOW}رشوه به فرماندار محلی برای افزایش رده، با احتمال جریمه زیاد در صورت گیر افتادن.{}قیمت: {CURRENCY_LONG}
 
 # Goal window
@@ -2896,7 +2891,6 @@ STR_STATION_VIEW_ACCEPTS_CARGO                                  :{BLACK}قبول
 
 STR_STATION_VIEW_RATINGS_BUTTON                                 :{BLACK}رده بندی
 STR_STATION_VIEW_RATINGS_TOOLTIP                                :{BLACK}نشان دادن رتبه بندی ایستگاه
-STR_STATION_VIEW_SUPPLY_RATINGS_TITLE                           :{BLACK}تولید ماهیانه و رتبه و محلی:
 STR_STATION_VIEW_CARGO_SUPPLY_RATING                            :{WHITE}{STRING}: {YELLOW}{COMMA} / {STRING} ({COMMA}%)
 
 STR_STATION_VIEW_GROUP                                          :{BLACK}همگروه با
@@ -2993,7 +2987,6 @@ STR_COMPANY_INFRASTRUCTURE_VIEW_CANALS                          :{WHITE}کانا
 STR_COMPANY_INFRASTRUCTURE_VIEW_STATION_SECT                    :{GOLD}ایستگاه ها:
 STR_COMPANY_INFRASTRUCTURE_VIEW_STATIONS                        :{WHITE}قطعه های ایستگاه
 STR_COMPANY_INFRASTRUCTURE_VIEW_AIRPORTS                        :{WHITE}فرودگاه ها
-STR_COMPANY_INFRASTRUCTURE_VIEW_TOTAL                           :{WHITE}{CURRENCY_LONG}/سال
 
 # Industry directory
 STR_INDUSTRY_DIRECTORY_CAPTION                                  :کارخانه ها
@@ -3193,7 +3186,6 @@ STR_ENGINE_PREVIEW_ROAD_VEHICLE                                 :ماشین جا
 STR_ENGINE_PREVIEW_AIRCRAFT                                     :هواپیما
 STR_ENGINE_PREVIEW_SHIP                                         :کشتی
 
-STR_ENGINE_PREVIEW_COST_WEIGHT_SPEED_POWER_MAX_TE               :{BLACK}قیمت: {CURRENCY_LONG} وزن: {WEIGHT_SHORT}{}سرعت: {VELOCITY}  قدرت: {POWER}  Max. T.E.: {6:FORCE}{}هزینه استهلاک {4:CURRENCY_LONG}/yr{}ظرفیت: {5:CARGO_LONG}
 
 # Autoreplace window
 
@@ -3281,8 +3273,6 @@ STR_VEHICLE_INFO_AGE_RED                                        :{RED}{COMMA} س
 STR_VEHICLE_INFO_CAPACITY_CAPACITY                              :{BLACK}ظرفیت: {LTBLUE}{CARGO_LONG}, {CARGO_LONG}{STRING}
 
 
-STR_VEHICLE_DETAILS_INCREASE_SERVICING_INTERVAL_TOOLTIP         :{BLACK}افزایش مدت سرویس به مقدار 10. برای افزایش به مقدار 5 باید Ctrl+Click کنید
-STR_VEHICLE_DETAILS_DECREASE_SERVICING_INTERVAL_TOOLTIP         :{BLACK}کاهش مدت سرویس به مقدار 10، برای کاهش به مقدار 5 باید Ctrl+Click کنید
 
 
 ###length VEHICLE_TYPES

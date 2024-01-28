@@ -215,6 +215,8 @@ STR_COLOUR_SECONDARY_SAME_AS_PRIMARY                            :주 색상과 �
 STR_UNITS_VELOCITY_IMPERIAL                                     :{DECIMAL}mph
 STR_UNITS_VELOCITY_METRIC                                       :{DECIMAL}km/h
 STR_UNITS_VELOCITY_SI                                           :{DECIMAL}m/s
+STR_UNITS_VELOCITY_GAMEUNITS_DAY                                :{DECIMAL}칸/일
+STR_UNITS_VELOCITY_GAMEUNITS_SEC                                :{DECIMAL}칸/초
 STR_UNITS_VELOCITY_KNOTS                                        :{DECIMAL}노트
 
 STR_UNITS_POWER_IMPERIAL                                        :{DECIMAL}마력
@@ -260,7 +262,11 @@ STR_UNITS_DAYS                                                  :{COMMA}일
 STR_UNITS_SECONDS                                               :{COMMA}초
 STR_UNITS_TICKS                                                 :{COMMA}틱
 
+STR_UNITS_MONTHS                                                :{NUM}개월
+STR_UNITS_MINUTES                                               :{NUM}분
 
+STR_UNITS_YEARS                                                 :{NUM}년
+STR_UNITS_PERIODS                                               :{NUM}간격
 
 # Common window strings
 STR_LIST_FILTER_TITLE                                           :{BLACK}검색:
@@ -378,11 +384,11 @@ STR_TOOLBAR_TOOLTIP_DISPLAY_TOWN_DIRECTORY                      :{BLACK}도시 �
 STR_TOOLBAR_TOOLTIP_DISPLAY_SUBSIDIES                           :{BLACK}보조금 메뉴를 표시합니다.
 STR_TOOLBAR_TOOLTIP_DISPLAY_LIST_OF_COMPANY_STATIONS            :{BLACK}각 회사의 정거장 목록을 표시합니다.
 STR_TOOLBAR_TOOLTIP_DISPLAY_COMPANY_FINANCES                    :{BLACK}각 회사의 재정 정보를 표시합니다.
-STR_TOOLBAR_TOOLTIP_DISPLAY_COMPANY_GENERAL                     :{BLACK}각 회사의 기본 정보를 표시합니다.
+STR_TOOLBAR_TOOLTIP_DISPLAY_COMPANY_GENERAL                     :{BLACK}각 회사의 기본 정보를 표시합니다
 STR_TOOLBAR_TOOLTIP_DISPLAY_STORY_BOOK                          :{BLACK}스토리 북을 엽니다.
 STR_TOOLBAR_TOOLTIP_DISPLAY_GOALS_LIST                          :{BLACK}목표 목록을 보여줍니다.
 STR_TOOLBAR_TOOLTIP_DISPLAY_GRAPHS                              :{BLACK}회사 그래프와 화물 운송단가 비율 창을 보여줍니다
-STR_TOOLBAR_TOOLTIP_DISPLAY_COMPANY_LEAGUE                      :{BLACK}회사의 성취도 순위를 표시합니다.
+STR_TOOLBAR_TOOLTIP_DISPLAY_COMPANY_LEAGUE                      :{BLACK}회사 성취도 순위를 엽니다
 STR_TOOLBAR_TOOLTIP_FUND_CONSTRUCTION_OF_NEW                    :{BLACK}새 산업시설의 위치를 무작위로 찾거나 원하는 위치에 새로운 산업시설을 건설합니다
 STR_TOOLBAR_TOOLTIP_DISPLAY_LIST_OF_COMPANY_TRAINS              :{BLACK}각 회사의 열차 목록을 표시합니다. CTRL+클릭하면 그룹화된 창은 일반 창으로, 일반 창은 그룹화된 창으로 표시됩니다.
 STR_TOOLBAR_TOOLTIP_DISPLAY_LIST_OF_COMPANY_ROAD_VEHICLES       :{BLACK}각 회사의 차량 목록을 표시합니다. CTRL+클릭하면 그룹화된 창은 일반 창으로, 일반 창은 그룹화된 창으로 표시됩니다.
@@ -391,7 +397,7 @@ STR_TOOLBAR_TOOLTIP_DISPLAY_LIST_OF_COMPANY_AIRCRAFT            :{BLACK}각 회�
 STR_TOOLBAR_TOOLTIP_ZOOM_THE_VIEW_IN                            :{BLACK}화면을 확대합니다.
 STR_TOOLBAR_TOOLTIP_ZOOM_THE_VIEW_OUT                           :{BLACK}화면을 축소합니다.
 STR_TOOLBAR_TOOLTIP_BUILD_RAILROAD_TRACK                        :{BLACK}철도 시설을 건설합니다.
-STR_TOOLBAR_TOOLTIP_BUILD_ROADS                                 :{BLACK}도로 시설을 건설합니다.
+STR_TOOLBAR_TOOLTIP_BUILD_ROADS                                 :{BLACK}도로 기반 시설을 건설합니다
 STR_TOOLBAR_TOOLTIP_BUILD_TRAMWAYS                              :{BLACK}전찻길 건설
 STR_TOOLBAR_TOOLTIP_BUILD_SHIP_DOCKS                            :{BLACK}항만 시설을 건설합니다.
 STR_TOOLBAR_TOOLTIP_BUILD_AIRPORTS                              :{BLACK}항공 시설을 건설합니다.
@@ -429,7 +435,7 @@ STR_SCENEDIT_FILE_MENU_SEPARATOR                                :
 STR_SCENEDIT_FILE_MENU_QUIT                                     :게임 종료
 
 # Settings menu
-###length 15
+###length 16
 STR_SETTINGS_MENU_GAME_OPTIONS                                  :게임 기본 설정
 STR_SETTINGS_MENU_CONFIG_SETTINGS_TREE                          :설정
 STR_SETTINGS_MENU_AI_SETTINGS                                   :인공지능 설정
@@ -666,11 +672,9 @@ STR_PERFORMANCE_DETAIL_CARGO                                    :{BLACK}화물:
 STR_PERFORMANCE_DETAIL_MONEY                                    :{BLACK}재정:
 STR_PERFORMANCE_DETAIL_LOAN                                     :{BLACK}대출:
 STR_PERFORMANCE_DETAIL_TOTAL                                    :{BLACK}종합:
+###next-name-looks-similar
 
-###length 10
-STR_PERFORMANCE_DETAIL_VEHICLES_TOOLTIP                         :{BLACK}작년에 이익을 낸 차량의 수를 나타냅니다. 자동차/전차, 열차, 선박, 항공기를 포함합니다.
 STR_PERFORMANCE_DETAIL_STATIONS_TOOLTIP                         :{BLACK}현재 영업 중인 역사의 수를 나타냅니다. 기차역, 버스 정류장, 공항 등은 같은 역으로 묶여있어도 별도로 집계됩니다
-STR_PERFORMANCE_DETAIL_MIN_PROFIT_TOOLTIP                       :{BLACK}가장 낮은 수입을 가진 차량의 이익입니다. (2년 이상된 차량만 계산)
 STR_PERFORMANCE_DETAIL_MIN_INCOME_TOOLTIP                       :{BLACK}지난 12분기 동안 최소 이익을 달성한 차량이 벌어들인 돈의 양입니다.
 STR_PERFORMANCE_DETAIL_MAX_INCOME_TOOLTIP                       :{BLACK}지난 12분기 동안 최대 이익을 달성한 차량이 벌어들인 돈의 양입니다.
 STR_PERFORMANCE_DETAIL_DELIVERED_TOOLTIP                        :{BLACK}지난 4분기 동안 수송한 화물량입니다.
@@ -902,7 +906,6 @@ STR_NEWS_VEHICLE_IS_GETTING_VERY_OLD                            :{WHITE}{VEHICLE
 STR_NEWS_VEHICLE_IS_GETTING_VERY_OLD_AND                        :{WHITE}{VEHICLE} : 차량이 매우 낡아 교체가 시급합니다
 STR_NEWS_TRAIN_IS_STUCK                                         :{WHITE}{VEHICLE} : 다음 목적지로 가는 경로를 찾을 수 없습니다
 STR_NEWS_VEHICLE_IS_LOST                                        :{WHITE}{VEHICLE} : 아직 다음 목적지에 도착하지 못했습니다
-STR_NEWS_VEHICLE_IS_UNPROFITABLE                                :{WHITE}{VEHICLE}의 작년 이익이 {CURRENCY_LONG} 입니다
 STR_NEWS_AIRCRAFT_DEST_TOO_FAR                                  :{WHITE}거리가 너무 멀어서 {VEHICLE}이 다음 목적지에 도착할 수 없습니다
 
 STR_NEWS_ORDER_REFIT_FAILED                                     :{WHITE}경로 상에 있던 개조에 실패하여 {VEHICLE}의 운행을 멈췄습니다.
@@ -919,16 +922,14 @@ STR_NEWS_STATION_NOW_ACCEPTS_CARGO_LIST                         :{WHITE}{STATION
 
 STR_NEWS_OFFER_OF_SUBSIDY_EXPIRED                               :{BIG_FONT}{BLACK}보조금 지급 종료:{}{}{1:STRING}에서 {2:STRING}까지의 {0:STRING} 수송은{}더 이상 보조금을 지급하지 않습니다.
 STR_NEWS_SUBSIDY_WITHDRAWN_SERVICE                              :{BIG_FONT}{BLACK}보조금 지급 만료:{}{}{1:STRING}에서 {2:STRING}까지의{}{0:STRING} 수송 보조금은 더 이상 지급되지 않습니다.
-STR_NEWS_SERVICE_SUBSIDY_OFFERED                                :{BIG_FONT}{BLACK}보조금 지급 안내{}{}처음으로 {1:STRING}에서 {2:STRING}까지{}{0:STRING}{G 0 "을" "를"} 수송하는 회사는{}지역 당국으로부터 {3:NUM}년 동안 보조금을 받게 될 것입니다!
+STR_NEWS_SERVICE_SUBSIDY_OFFERED                                :{BIG_FONT}{BLACK}보조금 지급 안내{}{}처음으로 {1:STRING}에서 {2:STRING}까지{}{0:STRING}{G 0 "을" "를"} 수송하는 회사는{}지역 당국으로부터 {3:UNITS_YEARS_OR_MINUTES} 동안 보조금을 받게 될 것입니다!
 ###length 4
-STR_NEWS_SERVICE_SUBSIDY_AWARDED_HALF                           :{BIG_FONT}{BLACK}{0:STRING}에게 보조금 지급!{}{}{2:STRING}에서 {3:STRING}까지 {1:STRING}{G 1 "을" "를"} 수송에 대해 {4:NUM}년 동안 50%의 추가 보조금이 주어집니다!
-STR_NEWS_SERVICE_SUBSIDY_AWARDED_DOUBLE                         :{BIG_FONT}{BLACK}{0:STRING}에게 보조금 지급!{}{}{2:STRING}에서 {3:STRING}까지 {1:STRING}{G 1 "을" "를"} 수송에 대해 {4:NUM}년 동안 2배의 추가 보조금이 주어집니다!
-STR_NEWS_SERVICE_SUBSIDY_AWARDED_TRIPLE                         :{BIG_FONT}{BLACK}{0:STRING}에게 보조금 지급!{}{}{2:STRING}에서 {3:STRING}까지 {1:STRING}{G 1 "을" "를"} 수송에 대해 {4:NUM}년 동안 3배의 추가 보조금이 주어집니다!
-STR_NEWS_SERVICE_SUBSIDY_AWARDED_QUADRUPLE                      :{BIG_FONT}{BLACK}{0:STRING}에게 보조금 지급!{}{}{2:STRING}에서 {3:STRING}까지 {1:STRING}{G 1 "을" "를"} 수송에 대해 {4:NUM}년 동안 4배의 추가 보조금이 주어집니다!
+STR_NEWS_SERVICE_SUBSIDY_AWARDED_HALF                           :{BIG_FONT}{BLACK}{0:STRING}에게 보조금 지급!{}{}{2:STRING}에서 {3:STRING}까지 {1:STRING}{G 1 "을" "를"} 수송에 대해 {4:UNITS_YEARS_OR_MINUTES} 동안 50%의 추가 보조금이 주어집니다!
+STR_NEWS_SERVICE_SUBSIDY_AWARDED_DOUBLE                         :{BIG_FONT}{BLACK}{0:STRING}에게 보조금 지급!{}{}{2:STRING}에서 {3:STRING}까지 {1:STRING}{G 1 "을" "를"} 수송에 대해 {4:UNITS_YEARS_OR_MINUTES} 동안 2배의 추가 보조금이 주어집니다!
+STR_NEWS_SERVICE_SUBSIDY_AWARDED_TRIPLE                         :{BIG_FONT}{BLACK}{0:STRING}에게 보조금 지급!{}{}{2:STRING}에서 {3:STRING}까지 {1:STRING}{G 1 "을" "를"} 수송에 대해 {4:UNITS_YEARS_OR_MINUTES} 동안 3배의 추가 보조금이 주어집니다!
+STR_NEWS_SERVICE_SUBSIDY_AWARDED_QUADRUPLE                      :{BIG_FONT}{BLACK}{0:STRING}에게 보조금 지급!{}{}{2:STRING}에서 {3:STRING}까지 {1:STRING}{G 1 "을" "를"} 수송에 대해 {4:UNITS_YEARS_OR_MINUTES} 동안 4배의 추가 보조금이 주어집니다!
 
-STR_NEWS_ROAD_REBUILDING                                        :{BIG_FONT}{BLACK}{TOWN}의 교통 혼잡!{}{}{STRING}에 의해 실시된 도로 보수공사 프로그램으로 인해 6개월 동안 운전자들이 불편을 겪을 것입니다!
 STR_NEWS_EXCLUSIVE_RIGHTS_TITLE                                 :{BIG_FONT}{BLACK}독점 수송!
-STR_NEWS_EXCLUSIVE_RIGHTS_DESCRIPTION                           :{BIG_FONT}{BLACK}{0:TOWN} 지역 당국이 {1:STRING}과 1년 간의 수송 독점권 계약을 체결하였습니다!
 
 # Extra view window
 STR_EXTRA_VIEWPORT_TITLE                                        :{WHITE}외부 화면 {COMMA}
@@ -946,6 +947,8 @@ STR_GAME_OPTIONS_TAB_GRAPHICS                                   :그래픽
 STR_GAME_OPTIONS_TAB_GRAPHICS_TT                                :{BLACK}그래픽 설정을 선택합니다
 STR_GAME_OPTIONS_TAB_SOUND                                      :효과음
 STR_GAME_OPTIONS_TAB_SOUND_TT                                   :{BLACK}효과음과 배경음 설정을 선택합니다
+STR_GAME_OPTIONS_TAB_SOCIAL                                     :소셜
+STR_GAME_OPTIONS_TAB_SOCIAL_TT                                  :{BLACK}소셜 통합 설정을 선택합니다
 
 STR_GAME_OPTIONS_VOLUME                                         :음량
 STR_GAME_OPTIONS_SFX_VOLUME                                     :효과음
@@ -1085,8 +1088,19 @@ STR_GAME_OPTIONS_BASE_MUSIC                                     :{BLACK}기본 �
 STR_GAME_OPTIONS_BASE_MUSIC_TOOLTIP                             :{BLACK}게임에 사용할 기본 배경 음악 세트를 선택하세요
 STR_GAME_OPTIONS_BASE_MUSIC_DESCRIPTION_TOOLTIP                 :{BLACK}기본 배경 음악 세트에 대한 추가 정보를 봅니다.
 
+STR_GAME_OPTIONS_SOCIAL_PLUGINS_NONE                            :{LTBLUE}(소셜 플랫폼과 연계할 수 있는 플러그인이 없음)
 
+STR_GAME_OPTIONS_SOCIAL_PLUGIN_TITLE                            :{BLACK}{STRING} ({STRING})
+STR_GAME_OPTIONS_SOCIAL_PLUGIN_PLATFORM                         :{BLACK}플랫폼:
+STR_GAME_OPTIONS_SOCIAL_PLUGIN_STATE                            :{BLACK}플러그인 상태:
 
+STR_GAME_OPTIONS_SOCIAL_PLUGIN_STATE_RUNNING                    :{GREEN}실행 중
+STR_GAME_OPTIONS_SOCIAL_PLUGIN_STATE_FAILED                     :{RED}초기화 실패
+STR_GAME_OPTIONS_SOCIAL_PLUGIN_STATE_PLATFORM_NOT_RUNNING       :{ORANGE}{0:STRING}{G 0 "이" "가"} 실행되고 있지 않습니다
+STR_GAME_OPTIONS_SOCIAL_PLUGIN_STATE_UNLOADED                   :{RED}해제됨
+STR_GAME_OPTIONS_SOCIAL_PLUGIN_STATE_DUPLICATE                  :{RED}중복된 플러그인
+STR_GAME_OPTIONS_SOCIAL_PLUGIN_STATE_UNSUPPORTED_API            :{RED}지원하지 않는 버전
+STR_GAME_OPTIONS_SOCIAL_PLUGIN_STATE_INVALID_SIGNATURE          :{RED}잘못된 인증
 
 STR_BASESET_STATUS                                              :{STRING} {RED}({NUM}개의 파일이 빠졌거나 손상되었습니다)
 
@@ -1276,9 +1290,10 @@ STR_CONFIG_SETTING_SUBSIDY_MULTIPLIER                           :보조금 배�
 STR_CONFIG_SETTING_SUBSIDY_MULTIPLIER_HELPTEXT                  :보조금을 얼마나 지급할지 설정하십시오.
 
 STR_CONFIG_SETTING_SUBSIDY_DURATION                             :보조금 기간: {STRING}
+###length 2
 STR_CONFIG_SETTING_SUBSIDY_DURATION_HELPTEXT                    :보조금이 몇 년 동안 지급될 지 설정할 수 있습니다.
 
-STR_CONFIG_SETTING_SUBSIDY_DURATION_VALUE                       :{NUM}년
+STR_CONFIG_SETTING_SUBSIDY_DURATION_VALUE                       :{UNITS_YEARS_OR_PERIODS}
 ###setting-zero-is-special
 STR_CONFIG_SETTING_SUBSIDY_DURATION_DISABLED                    :보조금 없음
 
@@ -1286,7 +1301,7 @@ STR_CONFIG_SETTING_CONSTRUCTION_COSTS                           :건설 가격: 
 STR_CONFIG_SETTING_CONSTRUCTION_COSTS_HELPTEXT                  :건설 및 구매 가격의 수준을 설정하십시오.
 
 STR_CONFIG_SETTING_RECESSIONS                                   :경제 불황: {STRING}
-STR_CONFIG_SETTING_RECESSIONS_HELPTEXT                          :이 설정을 켜면, 몇 년마다 경제 불황이 발생할 수 있습니다. 불황 기간 동안에는 모든 화물의 생산량이 확연하게 줄어듭니다. (불황이 끝나면 이전 수준으로 회복됩니다.)
+STR_CONFIG_SETTING_RECESSIONS_HELPTEXT                          :이 설정을 켜면, 주기적으로 경제 불황이 발생할 수 있습니다. 불황 기간 동안에는 모든 화물의 생산량이 확연하게 줄어듭니다. (불황이 끝나면 이전 수준으로 회복됩니다.)
 
 STR_CONFIG_SETTING_TRAIN_REVERSING                              :열차가 역 내에서 회차하는 것을 금지: {STRING}
 STR_CONFIG_SETTING_TRAIN_REVERSING_HELPTEXT                     :이 설정을 켜면. 열차가 뒤로 돌면 다음 목적지까지 더 짧은 경로로 갈 수 있다고 해도 열차가 비두단식 역에서 뒤로 돌 수 없게 됩니다.
@@ -1340,7 +1355,7 @@ STR_CONFIG_SETTING_FORBID_90_DEG                                :열차의 90도
 STR_CONFIG_SETTING_FORBID_90_DEG_HELPTEXT                       :─ 모양의 수평 선로와 │ 모양의 수직 선로가 바로 이어져 만날 때 90도 회전이 발생합니다. 이 설정을 켜면, 열차가 칸 가장자리를 통과할 때 90도로 회전할 수 있도록 허용합니다. 이 설정은 선박의 회전 반경에도 적용됩니다.
 
 STR_CONFIG_SETTING_DISTANT_JOIN_STATIONS                        :역이 같은 방향으로 붙어있지 않아도 같은 이름의 역 짓기 허용: {STRING}
-STR_CONFIG_SETTING_DISTANT_JOIN_STATIONS_HELPTEXT               :이미 존재하는 역을 직접 건드리지 않고도 역의 일부분을 새로 추가/확장하는 것을 허용합니다. 인접한 칸에 기존과 다른 새로운 역을 놓을 때에는 CTRL+클릭해야 합니다.
+STR_CONFIG_SETTING_DISTANT_JOIN_STATIONS_HELPTEXT               :이미 존재하는 역을 직접 건드리지 않고도 역의 일부분을 새로 추가/확장하는 것을 허용합니다. 인접한 칸에 기존과 다른 새로운 역을 놓을 때에는 CTRL+클릭해야 합니다
 
 STR_CONFIG_SETTING_INFLATION                                    :인플레이션(화폐 가치 하락) 사용: {STRING}
 STR_CONFIG_SETTING_INFLATION_HELPTEXT                           :경제에 인플레이션 효과를 적용합니다. 벌어들이는 수익보다 지출하는 경비가 조금 더 빨리 상승하게 됩니다.
@@ -1374,7 +1389,10 @@ STR_CONFIG_SETTING_SIGNALSIDE_LEFT                              :왼쪽에
 STR_CONFIG_SETTING_SIGNALSIDE_DRIVING_SIDE                      :자동차 통행 방향에
 STR_CONFIG_SETTING_SIGNALSIDE_RIGHT                             :오른쪽에
 
+###length 2
 STR_CONFIG_SETTING_SHOWFINANCES                                 :연말에 자동으로 재정 창을 띄우기: {STRING}
+
+###length 2
 STR_CONFIG_SETTING_SHOWFINANCES_HELPTEXT                        :이 설정을 켜면. 회사의 재정 상태를 확인하기 쉽도록 매년 말에 재정 창이 자동으로 뜹니다.
 
 STR_CONFIG_SETTING_NONSTOP_BY_DEFAULT                           :새로 지정하는 경로는 기본적으로 '직행'으로 처리: {STRING}
@@ -1396,9 +1414,11 @@ STR_CONFIG_SETTING_AUTOSCROLL_MAIN_VIEWPORT                     :주 게임 화�
 STR_CONFIG_SETTING_AUTOSCROLL_EVERY_VIEWPORT                    :모든 화면에서
 
 STR_CONFIG_SETTING_BRIBE                                        :지역 당국에 뇌물을 주는 행위 허용: {STRING}
+###length 2
 STR_CONFIG_SETTING_BRIBE_HELPTEXT                               :회사가 지역 도시 당국에 뇌물을 주는 것을 허용합니다. 뇌물 행위가 적발되는 경우, 회사는 해당 도시에서 6개월간 아무 행동도 할 수 없습니다
 
 STR_CONFIG_SETTING_ALLOW_EXCLUSIVE                              :독점 운송권 구입 허용: {STRING}
+###length 2
 STR_CONFIG_SETTING_ALLOW_EXCLUSIVE_HELPTEXT                     :한 회사가 어떤 도시의 독점수송권을 구매하면, 그 도시에 있는 상대편의 역에서는 그 해 동안 (승객을 포함한) 그 어떠한 화물도 받을 수 없습니다
 
 STR_CONFIG_SETTING_ALLOW_FUND_BUILDINGS                         :도시 상업 건물 건설에 투자하는 것을 허용: {STRING}
@@ -1456,12 +1476,20 @@ STR_CONFIG_SETTING_ORDER_REVIEW_EXDEPOT                         :정지한 차�
 STR_CONFIG_SETTING_ORDER_REVIEW_ON                              :모든 차량을 검사
 
 STR_CONFIG_SETTING_WARN_INCOME_LESS                             :차량의 수입이 적자일 때 경고하기: {STRING}
+###length 2
 STR_CONFIG_SETTING_WARN_INCOME_LESS_HELPTEXT                    :이 설정을 켜면, 지난 해에 수익이 없는 차량이 있으면 뉴스 메시지로 알려줍니다.
 
 STR_CONFIG_SETTING_NEVER_EXPIRE_VEHICLES                        :옛날 차량을 사라지지 않고 계속 만들 수 있게 함: {STRING}
 STR_CONFIG_SETTING_NEVER_EXPIRE_VEHICLES_HELPTEXT               :이 설정을 켜면, 오래된 차량 모델을 포함하여 모든 차량 모델을 도입 이후에 계속 사용할 수 있게 됩니다.
 
+STR_CONFIG_SETTING_TIMEKEEPING_UNITS                            :시간 단위: {STRING}
+STR_CONFIG_SETTING_TIMEKEEPING_UNITS_HELPTEXT                   :게임에서 사용할 시간 표시 단위를 선택합니다. 나중에 변경할 수 없습니다.{}{}달력 기반은 1년 12개월, 매월 28~31일로 구성된 고전적인 OpenTTD 환경입니다.{}{}벽시계 기반은 차량 이동, 화물 생산 및 재정이 1분 단위로 대신 계산됩니다. 1분은 달력 기반 모드에서 한 달, 즉 30일 정도 걸리는 시간으로, 12분 간격으로 묶어서 1년을 구성합니다.{}{}두 단위 모두, 시간 표시 단위와 상관없이 차량, 주택 및 기타 인프라 도입 날짜에 사용되는 기존 달력 시스템을 별도로 사용합니다.
 ###length 2
+STR_CONFIG_SETTING_TIMEKEEPING_UNITS_CALENDAR                   :달력
+STR_CONFIG_SETTING_TIMEKEEPING_UNITS_WALLCLOCK                  :벽시계
+
+
+###setting-zero-is-special
 
 STR_CONFIG_SETTING_AUTORENEW_VEHICLE                            :차량이 낡으면 차량을 자동으로 교체: {STRING}
 STR_CONFIG_SETTING_AUTORENEW_VEHICLE_HELPTEXT                   :이 설정을 켜면, 제한 수명에 다다른 차량이 교체 조건을 만족할 경우 자동으로 차량을 교체할 수 있게 됩니다
@@ -1715,7 +1743,10 @@ STR_CONFIG_SETTING_SOUND_TICKER_HELPTEXT                        :요약된 뉴�
 STR_CONFIG_SETTING_SOUND_NEWS                                   :새로운 소식: {STRING}
 STR_CONFIG_SETTING_SOUND_NEWS_HELPTEXT                          :새로운 소식을 표시할 때 효과음을 재생합니다.
 
+###length 2
 STR_CONFIG_SETTING_SOUND_NEW_YEAR                               :연말: {STRING}
+
+###length 2
 STR_CONFIG_SETTING_SOUND_NEW_YEAR_HELPTEXT                      :작년과 비교한 올해 회사의 성취도를 요약하면서 연말에 효과음을 재생합니다.
 
 STR_CONFIG_SETTING_SOUND_CONFIRM                                :건설: {STRING}
@@ -1784,7 +1815,7 @@ STR_CONFIG_SETTING_SERVINT_AIRCRAFT                             :항공기에 �
 STR_CONFIG_SETTING_SERVINT_AIRCRAFT_HELPTEXT                    :항공기에 따로 점검 기간이 설정되어있지 않은 경우에 사용할 기본 점검 기간을 설정합니다.
 STR_CONFIG_SETTING_SERVINT_SHIPS                                :선박에 대한 기본 점검 기준: {STRING}
 STR_CONFIG_SETTING_SERVINT_SHIPS_HELPTEXT                       :선박에 따로 점검 기간이 설정되어있지 않은 경우에 사용할 기본 점검 기간을 설정합니다.
-STR_CONFIG_SETTING_SERVINT_VALUE                                :{COMMA}일/%
+STR_CONFIG_SETTING_SERVINT_VALUE                                :{COMMA}일/분/%
 ###setting-zero-is-special
 STR_CONFIG_SETTING_SERVINT_DISABLED                             :사용 안 함
 
@@ -2014,11 +2045,9 @@ STR_CONFIG_SETTING_SHORT_PATH_SATURATION_HELPTEXT               :종종 두 역 
 STR_CONFIG_SETTING_LOCALISATION_UNITS_VELOCITY                  :속력 단위 (지상): {STRING}
 STR_CONFIG_SETTING_LOCALISATION_UNITS_VELOCITY_NAUTICAL         :속력 단위 (해상): {STRING}
 STR_CONFIG_SETTING_LOCALISATION_UNITS_VELOCITY_HELPTEXT         :속력를 표시할 때 선택한 단위를 사용하여 나타냅니다.
-###length 5
 STR_CONFIG_SETTING_LOCALISATION_UNITS_VELOCITY_IMPERIAL         :야드파운드법 (mph)
 STR_CONFIG_SETTING_LOCALISATION_UNITS_VELOCITY_METRIC           :미터법 (km/h)
 STR_CONFIG_SETTING_LOCALISATION_UNITS_VELOCITY_SI               :국제표준규격 (m/s)
-STR_CONFIG_SETTING_LOCALISATION_UNITS_VELOCITY_GAMEUNITS        :게임 단위 (칸/일)
 STR_CONFIG_SETTING_LOCALISATION_UNITS_VELOCITY_KNOTS            :노트
 
 STR_CONFIG_SETTING_LOCALISATION_UNITS_POWER                     :차량의 힘 단위: {STRING}
@@ -2155,7 +2184,7 @@ STR_INTRO_TOOLTIP_SUB_ARCTIC_LANDSCAPE                          :{BLACK}아한�
 STR_INTRO_TOOLTIP_SUB_TROPICAL_LANDSCAPE                        :{BLACK}아열대 기후 선택
 STR_INTRO_TOOLTIP_TOYLAND_LANDSCAPE                             :{BLACK}장난감나라 선택
 
-STR_INTRO_TOOLTIP_GAME_OPTIONS                                  :{BLACK}게임 기본 설정 창을 보여줍니다
+STR_INTRO_TOOLTIP_GAME_OPTIONS                                  :{BLACK}게임 기본 설정 창을 엽니다
 STR_INTRO_TOOLTIP_HIGHSCORE                                     :{BLACK}고득점 순위표를 보여줍니다
 STR_INTRO_TOOLTIP_HELP                                          :{BLACK}각종 문서와 온라인 링크를 확인합니다
 STR_INTRO_TOOLTIP_CONFIG_SETTINGS_TREE                          :{BLACK}설정 창을 엽니다
@@ -2194,8 +2223,6 @@ STR_HELP_WINDOW_COMMUNITY                                       :{BLACK}커뮤�
 
 # Cheat window
 STR_CHEATS                                                      :{WHITE}치트
-STR_CHEATS_TOOLTIP                                              :{BLACK}체크박스의 체크 표시는 이전에 이 치트를 사용했는지 여부를 나타냅니다
-STR_CHEATS_NOTE                                                 :{BLACK}참고: 치트 사용 여부는 저장 파일에 기록될 것입니다
 STR_CHEAT_MONEY                                                 :{LTBLUE}재정을 {CURRENCY_LONG} 만큼 증가
 STR_CHEAT_CHANGE_COMPANY                                        :{LTBLUE}다음 회사로 플레이: {ORANGE}{COMMA}
 STR_CHEAT_EXTRA_DYNAMITE                                        :{LTBLUE}마법 불도저 (산업시설이나 옮길 수 없는 건물 제거): {ORANGE}{STRING}
@@ -2332,8 +2359,6 @@ STR_NETWORK_SERVER_LIST_MAP_SIZE_CAPTION                        :{BLACK}지도 �
 STR_NETWORK_SERVER_LIST_MAP_SIZE_CAPTION_TOOLTIP                :{BLACK}게임의 지도 크기{}크기별로 정렬하려면 클릭
 STR_NETWORK_SERVER_LIST_DATE_CAPTION                            :{BLACK}날짜
 STR_NETWORK_SERVER_LIST_DATE_CAPTION_TOOLTIP                    :{BLACK}현재 날짜
-STR_NETWORK_SERVER_LIST_YEARS_CAPTION                           :{BLACK}진행 년도
-STR_NETWORK_SERVER_LIST_YEARS_CAPTION_TOOLTIP                   :{BLACK}게임이 진행된 년도 수
 STR_NETWORK_SERVER_LIST_INFO_ICONS_TOOLTIP                      :{BLACK}언어, 서버 버전 등
 
 STR_NETWORK_SERVER_LIST_CLICK_GAME_TO_SELECT                    :{BLACK}선택하려면 목록에서 게임을 클릭하세요
@@ -2704,9 +2729,8 @@ STR_LINKGRAPH_LEGEND_SATURATED                                  :{TINY_FONT}{BLA
 STR_LINKGRAPH_LEGEND_OVERLOADED                                 :{TINY_FONT}{BLACK}과포화
 
 # Linkgraph tooltip
-STR_LINKGRAPH_STATS_TOOLTIP                                     :{BLACK}{1:STATION}에서 {2:STATION}까지 매달 {0:CARGO_LONG} {G 0 "을" "를"} 수송해야 함 (수용량의 {3:COMMA}%){4:STRING}
 STR_LINKGRAPH_STATS_TOOLTIP_RETURN_EXTENSION                    :{}{0:CARGO_LONG}{G 0 "을" "를"} 다시 수송해와야 함 (수용량의 {1:COMMA}%)
-STR_LINKGRAPH_STATS_TOOLTIP_TIME_EXTENSION                      :{}평균 운행 시간: {NUM}일
+STR_LINKGRAPH_STATS_TOOLTIP_TIME_EXTENSION                      :{}평균 운행 시간: {UNITS_DAYS_OR_SECONDS}
 
 # Base for station construction window(s)
 STR_STATION_BUILD_COVERAGE_AREA_TITLE                           :{BLACK}역세권 표시
@@ -2716,7 +2740,6 @@ STR_STATION_BUILD_COVERAGE_AREA_OFF_TOOLTIP                     :{BLACK}역세�
 STR_STATION_BUILD_COVERAGE_AREA_ON_TOOLTIP                      :{BLACK}역세권을 표시합니다
 STR_STATION_BUILD_ACCEPTS_CARGO                                 :{BLACK}받음: {GOLD}{CARGO_LIST}
 STR_STATION_BUILD_SUPPLIES_CARGO                                :{BLACK}공급: {GOLD}{CARGO_LIST}
-STR_STATION_BUILD_INFRASTRUCTURE_COST                           :{BLACK}유지비: {GOLD}{CURRENCY_SHORT}/년
 
 # Join station window
 STR_JOIN_STATION_CAPTION                                        :{WHITE}같은 이름으로 정거장 만들기
@@ -2738,7 +2761,7 @@ STR_RAIL_TOOLBAR_TOOLTIP_BUILD_RAILROAD_TRACK                   :{BLACK}선로�
 STR_RAIL_TOOLBAR_TOOLTIP_BUILD_AUTORAIL                         :{BLACK}자동건설 모드로 선로를 건설합니다. CTRL 키를 누르면 건설/철거모드를 바꿀 수 있습니다. SHIFT 키를 누른 채로 사용하면 예상 비용을 볼 수 있습니다
 STR_RAIL_TOOLBAR_TOOLTIP_BUILD_TRAIN_DEPOT_FOR_BUILDING         :{BLACK}차량기지를 건설합니다. 차량을 구입하거나 점검을 할 수 있습니다. SHIFT 키를 누른 채로 사용하면 예상 비용을 볼 수 있습니다
 STR_RAIL_TOOLBAR_TOOLTIP_CONVERT_RAIL_TO_WAYPOINT               :{BLACK}선로에 경유지를 설치합니다. CTRL 키를 사용하면 같은 이름의 경유지를 서로 떨어진 곳에 지을 수 있습니다. SHIFT 키를 누른 채로 사용하면 예상 비용을 볼 수 있습니다
-STR_RAIL_TOOLBAR_TOOLTIP_BUILD_RAILROAD_STATION                 :{BLACK}철도역을 짓습니다. CTRL 키를 사용하면 같은 이름의 역을 서로 떨어진 곳에 지을 수 있습니다. SHIFT 키를 누른 채로 사용하면 예상 비용을 볼 수 있습니다
+STR_RAIL_TOOLBAR_TOOLTIP_BUILD_RAILROAD_STATION                 :{BLACK}철도역을 짓습니다. CTRL+클릭하면 같은 이름의 역을 서로 떨어진 곳에 지을 수 있습니다. SHIFT 키를 누른 채로 사용하면 예상 비용을 볼 수 있습니다
 STR_RAIL_TOOLBAR_TOOLTIP_BUILD_RAILROAD_SIGNALS                 :{BLACK}선로에 신호기를 설치합니다. CTRL 키를 누르면 구식/전자식으로 전환합니다.{}선로를 따라 드래그해서 설치할 수 있습니다. CTRL 키를 누른 채로 드래그하면 다음 분기점이나 다음 신호기까지 신호기를 설치합니다.{}CTRL 키를 누른 채 클릭하면 신호기 선택 창을 전환합니다. SHIFT 키를 누른 채로 사용하면 예상 비용을 볼 수 있습니다
 STR_RAIL_TOOLBAR_TOOLTIP_BUILD_RAILROAD_BRIDGE                  :{BLACK}철교를 짓습니다. SHIFT 키를 누른 채로 사용하면 예상 비용을 볼 수 있습니다
 STR_RAIL_TOOLBAR_TOOLTIP_BUILD_RAILROAD_TUNNEL                  :{BLACK}터널을 짓습니다. SHIFT 키를 누른 채로 사용하면 예상 비용을 볼 수 있습니다
@@ -2793,7 +2816,7 @@ STR_BUILD_SIGNAL_ELECTRIC_EXIT_TOOLTIP                          :{BLACK}출구 �
 STR_BUILD_SIGNAL_ELECTRIC_COMBO_TOOLTIP                         :{BLACK}복합 신호기 (전자식){}복합 신호기는 입구 신호기와 출구 신호기의 역할을 동시에 합니다. 이 신호기는 사전 신호기의 거대한 "나뭇가지식 구조"를 건설할 수 있도록 도와줍니다
 STR_BUILD_SIGNAL_ELECTRIC_PBS_TOOLTIP                           :{BLACK}경로 신호기 (전자식){}경로가 겹치지 않는 경우에 한 대 이상의 열차가 한 폐색 구간에 동시에 들어갈 수 있게 해주는 경로 신호기입니다. 경로 신호기는 반대편에서 통과가 가능합니다
 STR_BUILD_SIGNAL_ELECTRIC_PBS_OWAY_TOOLTIP                      :{BLACK}단방향 경로 신호기 (전자식){}경로가 겹치지 않는 경우에 한 대 이상의 열차가 한 폐색 구간에 동시에 들어갈 수 있게 해주는 경로 신호기입니다. 단방향 경로 신호기는 반대편에서 통과가 불가능합니다
-STR_BUILD_SIGNAL_CONVERT_TOOLTIP                                :{BLACK}신호기 변환{}이 버튼을 선택한 뒤 이미 설치된 신호기를 클릭하면, 신호기의 종류(일반/입구/출구/복합/경로)와 형식(구식↔전자식)을 변경하고, CTRL+클릭하면 신호기의 형식을 변경합니다. SHIFT+클릭을 사용하면 예상 비용을 볼 수 있습니다
+STR_BUILD_SIGNAL_CONVERT_TOOLTIP                                :{BLACK}신호기 변환{}이미 설치된 신호기를 클릭해서 신호기의 종류(일반/입구/출구/복합/경로)와 형식(구식↔전자식)을 변경합니다. CTRL+클릭하면 신호기의 형식을 변경합니다. SHIFT+클릭을 사용하면 예상 비용을 볼 수 있습니다
 STR_BUILD_SIGNAL_DRAG_SIGNALS_DENSITY_TOOLTIP                   :{BLACK}드래그로 설치할 때 신호기 사이의 간격입니다
 STR_BUILD_SIGNAL_DRAG_SIGNALS_DENSITY_DECREASE_TOOLTIP          :{BLACK}드래그로 설치할 신호기 간격을 줄입니다
 STR_BUILD_SIGNAL_DRAG_SIGNALS_DENSITY_INCREASE_TOOLTIP          :{BLACK}드래그로 설치할 신호기 간격을 늘입니다
@@ -2825,10 +2848,10 @@ STR_ROAD_TOOLBAR_TOOLTIP_BUILD_AUTOROAD                         :{BLACK}자동�
 STR_ROAD_TOOLBAR_TOOLTIP_BUILD_AUTOTRAM                         :{BLACK}자동건설 모드로 전차 선로를 짓습니다. CTRL 키를 누르고 있으면 건설/제거 모드를 바꿀 수 있습니다. SHIFT 키를 누른 채로 사용하면 예상 비용을 볼 수 있습니다
 STR_ROAD_TOOLBAR_TOOLTIP_BUILD_ROAD_VEHICLE_DEPOT               :{BLACK}차고지를 건설합니다. 차량을 구입하거나 점검을 할 수 있습니다. SHIFT 키를 누른 채로 사용하면 예상 비용을 볼 수 있습니다
 STR_ROAD_TOOLBAR_TOOLTIP_BUILD_TRAM_VEHICLE_DEPOT               :{BLACK}전차 차고지를 건설합니다. 차량을 구입하거나 점검을 할 수 있습니다. SHIFT 키를 누른 채로 사용하면 예상 비용을 볼 수 있습니다
-STR_ROAD_TOOLBAR_TOOLTIP_BUILD_BUS_STATION                      :{BLACK}버스 정류장을 짓습니다. CTRL 키를 사용하면 근처 정류장과 연결할 수 있습니다. SHIFT 키를 누른 채로 사용하면 예상 비용을 볼 수 있습니다
-STR_ROAD_TOOLBAR_TOOLTIP_BUILD_PASSENGER_TRAM_STATION           :{BLACK}여객 전차역을 짓습니다. CTRL 키를 사용하면 근처 역과 연결할 수 있습니다. SHIFT 키를 누른 채로 사용하면 예상 비용을 볼 수 있습니다
-STR_ROAD_TOOLBAR_TOOLTIP_BUILD_TRUCK_LOADING_BAY                :{BLACK}트럭 적하장을 짓습니다. CTRL 키를 사용하면 근처 적하장과 연결할 수 있습니다. SHIFT 키를 누른 채로 사용하면 예상 비용을 볼 수 있습니다
-STR_ROAD_TOOLBAR_TOOLTIP_BUILD_CARGO_TRAM_STATION               :{BLACK}화물 전차역을 짓습니다. CTRL 키를 사용하면 근처 역과 연결할 수 있습니다. SHIFT 키를 누른 채로 사용하면 예상 비용을 볼 수 있습니다
+STR_ROAD_TOOLBAR_TOOLTIP_BUILD_BUS_STATION                      :{BLACK}버스 정류장을 짓습니다. CTRL+클릭하면 근처 정류장과 연결할 수 있습니다. SHIFT 키를 누른 채로 사용하면 예상 비용을 볼 수 있습니다
+STR_ROAD_TOOLBAR_TOOLTIP_BUILD_PASSENGER_TRAM_STATION           :{BLACK}여객 전차역을 짓습니다. CTRL+클릭하면 근처 역과 연결할 수 있습니다. SHIFT 키를 누른 채로 사용하면 예상 비용을 볼 수 있습니다
+STR_ROAD_TOOLBAR_TOOLTIP_BUILD_TRUCK_LOADING_BAY                :{BLACK}트럭 적하장을 짓습니다. CTRL+클릭하면 근처 적하장과 연결할 수 있습니다. SHIFT 키를 누른 채로 사용하면 예상 비용을 볼 수 있습니다
+STR_ROAD_TOOLBAR_TOOLTIP_BUILD_CARGO_TRAM_STATION               :{BLACK}화물 전차역을 짓습니다. CTRL+클릭하면 근처 역과 연결할 수 있습니다. SHIFT 키를 누른 채로 사용하면 예상 비용을 볼 수 있습니다
 STR_ROAD_TOOLBAR_TOOLTIP_TOGGLE_ONE_WAY_ROAD                    :{BLACK}일방통행 도로 건설 모드를 켜거나 끕니다
 STR_ROAD_TOOLBAR_TOOLTIP_BUILD_ROAD_BRIDGE                      :{BLACK}다리를 짓습니다. SHIFT 키를 누른 채로 사용하면 예상 비용을 볼 수 있습니다
 STR_ROAD_TOOLBAR_TOOLTIP_BUILD_TRAMWAY_BRIDGE                   :{BLACK}전차 다리를 짓습니다. SHIFT 키를 누른 채로 사용하면 예상 비용을 볼 수 있습니다
@@ -2879,7 +2902,7 @@ STR_STATION_BUILD_DOCK_CAPTION                                  :{WHITE}항구
 
 # Airport toolbar
 STR_TOOLBAR_AIRCRAFT_CAPTION                                    :{WHITE}공항
-STR_TOOLBAR_AIRCRAFT_BUILD_AIRPORT_TOOLTIP                      :{BLACK}공항을 만듭니다. CTRL 키를 사용하면 같은 이름의 역을 서로 떨어진 곳에 지을 수 있습니다. SHIFT 키를 누른 채로 사용하면 예상 비용을 볼 수 있습니다
+STR_TOOLBAR_AIRCRAFT_BUILD_AIRPORT_TOOLTIP                      :{BLACK}공항을 만듭니다. CTRL+클릭하면 같은 이름의 역을 서로 떨어진 곳에 지을 수 있습니다. SHIFT 키를 누른 채로 사용하면 예상 비용을 볼 수 있습니다
 
 # Airport construction window
 STR_STATION_BUILD_AIRPORT_CAPTION                               :{WHITE}공항 선택
@@ -3570,8 +3593,8 @@ STR_TOWN_VIEW_CARGO_FOR_TOWNGROWTH_REQUIRED_WINTER              :겨울에는 {O
 STR_TOWN_VIEW_CARGO_FOR_TOWNGROWTH_DELIVERED_GENERAL            :{ORANGE}{STRING}{GREEN}{G 0 "이" "가"} 수송됨
 STR_TOWN_VIEW_CARGO_FOR_TOWNGROWTH_REQUIRED                     :{ORANGE}{1:CARGO_LONG} ＼ {0:CARGO_TINY}{RED} (더 필요함)
 STR_TOWN_VIEW_CARGO_FOR_TOWNGROWTH_DELIVERED                    :{ORANGE}{1:CARGO_LONG} ＼ {0:CARGO_TINY}{GREEN} (수송됨)
-STR_TOWN_VIEW_TOWN_GROWS_EVERY                                  :{BLACK}도시가 {ORANGE}{COMMA}{BLACK}일마다 성장합니다.
-STR_TOWN_VIEW_TOWN_GROWS_EVERY_FUNDED                           :{BLACK}도시가 {ORANGE}{COMMA}{BLACK}일마다 성장합니다. (투자됨)
+STR_TOWN_VIEW_TOWN_GROWS_EVERY                                  :{BLACK}도시가 {ORANGE}{UNITS_DAYS_OR_SECONDS}마다 성장합니다.
+STR_TOWN_VIEW_TOWN_GROWS_EVERY_FUNDED                           :{BLACK}도시가 {ORANGE}{UNITS_DAYS_OR_SECONDS}마다 성장합니다 (투자됨)
 STR_TOWN_VIEW_TOWN_GROW_STOPPED                                 :{BLACK}도시는 {RED}성장하지 않고{BLACK} 있습니다.
 STR_TOWN_VIEW_NOISE_IN_TOWN                                     :{BLACK}현재 소음 수준: {ORANGE}{COMMA}{BLACK}  최대 허용 수준: {ORANGE}{COMMA}
 STR_TOWN_VIEW_CENTER_TOOLTIP                                    :{BLACK}이 도시의 위치로 시점을 변경합니다. CTRL+클릭하면 이 도시 위치를 기준으로 새로운 외부 화면을 엽니다
@@ -3606,15 +3629,13 @@ STR_LOCAL_AUTHORITY_ACTION_STATUE_OF_COMPANY                    :회사 소유�
 STR_LOCAL_AUTHORITY_ACTION_NEW_BUILDINGS                        :새 건물에 투자
 STR_LOCAL_AUTHORITY_ACTION_EXCLUSIVE_TRANSPORT                  :수송 권한 독점권 구입
 STR_LOCAL_AUTHORITY_ACTION_BRIBE                                :지역 당국에게 뇌물 주기
+###next-name-looks-similar
 
-###length 8
 STR_LOCAL_AUTHORITY_ACTION_TOOLTIP_SMALL_ADVERTISING            :{PUSH_COLOUR}{YELLOW}더 많은 승객과 화물을 유치하기 위해 소규모의 광고 캠페인을 시작합니다.{}도시 중심 주위의 좁은 반경 안에 있는 역 등급을 일시적으로 올려줍니다.{}{POP_COLOUR}가격: {CURRENCY_LONG}
 STR_LOCAL_AUTHORITY_ACTION_TOOLTIP_MEDIUM_ADVERTISING           :{PUSH_COLOUR}{YELLOW}더 많은 승객과 화물을 유치하기 위해 중간 규모의 광고 캠페인을 시작합니다.{}도시 중심 주위의 적당한 반경 안에 있는 역 등급을 일시적으로 올려줍니다.{}{POP_COLOUR}가격: {CURRENCY_LONG}
 STR_LOCAL_AUTHORITY_ACTION_TOOLTIP_LARGE_ADVERTISING            :{PUSH_COLOUR}{YELLOW}더 많은 승객과 화물을 유치하기 위해 대규모의 광고 캠페인을 시작합니다.{}도시 중심 주위의 넓은 반경 안에 있는 역 등급을 일시적으로 올려줍니다.{}{POP_COLOUR}가격: {CURRENCY_LONG}
-STR_LOCAL_AUTHORITY_ACTION_TOOLTIP_ROAD_RECONSTRUCTION          :{PUSH_COLOUR}{YELLOW}도시 도로망 보수공사를 시행합니다.{}앞으로 6개월간 극심한 도로 혼잡을 일으킵니다.{}{POP_COLOUR}가격: {CURRENCY_LONG}
 STR_LOCAL_AUTHORITY_ACTION_TOOLTIP_STATUE_OF_COMPANY            :{PUSH_COLOUR}{YELLOW}당신의 회사를 대표하는 '명예의 동상'을 건설합니다.{}이 도시에 있는 역 등급을 영구적으로 올려줍니다.{}{POP_COLOUR}가격: {CURRENCY_LONG}
 STR_LOCAL_AUTHORITY_ACTION_TOOLTIP_NEW_BUILDINGS                :{PUSH_COLOUR}{YELLOW}도시 상업 건물의 건설에 투자합니다.{}도시의 성장을 일시적으로 빠르게 만들어줍니다.{}{POP_COLOUR}가격: {CURRENCY_LONG}
-STR_LOCAL_AUTHORITY_ACTION_TOOLTIP_EXCLUSIVE_TRANSPORT          :{PUSH_COLOUR}{YELLOW}1년 간 수송 권한 독점권을 구입합니다.{}도시 당국은 오직 당신 회사의 역에만 승객과 화물을 실을 것입니다.{}경쟁사의 뇌물 수수가 성공하면 이 독점권 계약은 취소됩니다.{}{POP_COLOUR}가격: {CURRENCY_LONG}
 STR_LOCAL_AUTHORITY_ACTION_TOOLTIP_BRIBE                        :{PUSH_COLOUR}{YELLOW}성취도를 올리고 경쟁사의 독점권을 무효화하기 위해 처벌을 감수하고 지역 당국에 뇌물을 줍니다.{}{POP_COLOUR}가격: {CURRENCY_LONG}
 
 # Goal window
@@ -3661,9 +3682,15 @@ STR_GOAL_QUESTION_BUTTON_CLOSE                                  :닫기
 # Subsidies window
 STR_SUBSIDIES_CAPTION                                           :{WHITE}보조금
 STR_SUBSIDIES_OFFERED_TITLE                                     :{BLACK}지급 대기 중인 보조금:
+STR_SUBSIDIES_OFFERED_FROM_TO                                   :{ORANGE}{1:STRING}에서 {2:STRING}까지 {0:STRING} 수송{YELLOW} ({3:STRING})
 STR_SUBSIDIES_NONE                                              :{ORANGE}없음
 STR_SUBSIDIES_SUBSIDISED_TITLE                                  :{BLACK}이미 지급된 보조금:
+STR_SUBSIDIES_SUBSIDISED_FROM_TO                                :{ORANGE}{1:STRING}에서 {2:STRING}까지 {0:STRING} 수송{YELLOW} ({3:COMPANY}{YELLOW}, {STRING})
 STR_SUBSIDIES_TOOLTIP_CLICK_ON_SERVICE_TO_CENTER                :{BLACK}산업시설/도시의 위치로 시점을 변경하려면 클릭하세요. CTRL+클릭하면 이 산업시설/도시의 위치를 기준으로 새로운 외부 화면을 엽니다
+STR_SUBSIDIES_OFFERED_EXPIRY_DATE                               :{DATE_SHORT} 까지
+STR_SUBSIDIES_OFFERED_EXPIRY_TIME                               :{UNITS_MONTHS_OR_MINUTES} 이내
+STR_SUBSIDIES_SUBSIDISED_EXPIRY_DATE                            :{DATE_SHORT} 까지
+STR_SUBSIDIES_SUBSIDISED_EXPIRY_TIME                            :{UNITS_MONTHS_OR_MINUTES} 남음
 
 # Story book window
 STR_STORY_BOOK_CAPTION                                          :{WHITE}{COMPANY}의 스토리 북
@@ -3703,7 +3730,6 @@ STR_STATION_VIEW_EXCLUSIVE_RIGHTS_COMPANY                       :{YELLOW}{COMPAN
 
 STR_STATION_VIEW_RATINGS_BUTTON                                 :{BLACK}등급
 STR_STATION_VIEW_RATINGS_TOOLTIP                                :{BLACK}역의 등급 표시
-STR_STATION_VIEW_SUPPLY_RATINGS_TITLE                           :{BLACK}월 공급 및 지역 등급:
 STR_STATION_VIEW_CARGO_SUPPLY_RATING                            :{WHITE}{STRING}: {YELLOW}{COMMA} / {STRING} ({COMMA}%)
 
 STR_STATION_VIEW_GROUP                                          :{BLACK}그룹화
@@ -3865,7 +3891,6 @@ STR_COMPANY_INFRASTRUCTURE_VIEW_CANALS                          :{WHITE}운하
 STR_COMPANY_INFRASTRUCTURE_VIEW_STATION_SECT                    :{GOLD}정거장 시설:
 STR_COMPANY_INFRASTRUCTURE_VIEW_STATIONS                        :{WHITE}정류장, 역
 STR_COMPANY_INFRASTRUCTURE_VIEW_AIRPORTS                        :{WHITE}공항
-STR_COMPANY_INFRASTRUCTURE_VIEW_TOTAL                           :{WHITE}{CURRENCY_LONG}/년
 
 # Industry directory
 STR_INDUSTRY_DIRECTORY_CAPTION                                  :{WHITE}산업시설
@@ -3998,7 +4023,6 @@ STR_PURCHASE_INFO_SPEED_POWER                                   :{BLACK}속력: 
 STR_PURCHASE_INFO_SPEED                                         :{BLACK}속력: {GOLD}{VELOCITY}
 STR_PURCHASE_INFO_SPEED_OCEAN                                   :{BLACK}바다에서 속력: {GOLD}{VELOCITY}
 STR_PURCHASE_INFO_SPEED_CANAL                                   :{BLACK}운하/강에서 속력: {GOLD}{VELOCITY}
-STR_PURCHASE_INFO_RUNNINGCOST                                   :{BLACK}유지비: {GOLD}{CURRENCY_LONG}/년
 STR_PURCHASE_INFO_CAPACITY                                      :{BLACK}수송량: {GOLD}{CARGO_LONG} {STRING}
 STR_PURCHASE_INFO_REFITTABLE                                    :(개조 가능)
 STR_PURCHASE_INFO_DESIGNED_LIFE                                 :{BLACK}개발: {GOLD}{NUM}{BLACK} 수명: {GOLD}{COMMA}년
@@ -4102,7 +4126,7 @@ STR_DEPOT_VEHICLE_TOOLTIP_CHAIN                                 :{BLACK}차량 {
 STR_DEPOT_VEHICLE_TOOLTIP_CARGO                                 :{}{CARGO_LONG} ({CARGO_SHORT})
 
 ###length VEHICLE_TYPES
-STR_DEPOT_TRAIN_LIST_TOOLTIP                                    :{BLACK}열차 - 열차에 차량을 추가하거나 제거하려면 차량을 왼쪽 클릭으로 드래그하시고, 열차 정보를 보려면 오른쪽 클릭하십시오. 두 기능을 해당 차량 뒤에 딸려오는 차량에 적용하고 싶다면 CTRL 키를 누르고 계십시오
+STR_DEPOT_TRAIN_LIST_TOOLTIP                                    :{BLACK}열차 - 열차에 차량을 추가하거나 제거하려면 차량을 왼쪽 클릭으로 드래그하시고, 열차 정보를 보려면 오른쪽 클릭하세요. CTRL+클릭하면 두 기능 중 하나를 해당 차량 뒤에 딸려오는 차량에 적용할 수 있습니다
 STR_DEPOT_ROAD_VEHICLE_LIST_TOOLTIP                             :{BLACK}차량 - 차량의 정보를 보려면 오른쪽 클릭하세요
 STR_DEPOT_SHIP_LIST_TOOLTIP                                     :{BLACK}선박 - 선박의 정보를 보려면 오른쪽 클릭하세요
 STR_DEPOT_AIRCRAFT_LIST_TOOLTIP                                 :{BLACK}항공기 - 항공기의 정보를 보려면 오른쪽 클릭하세요
@@ -4191,13 +4215,6 @@ STR_ENGINE_PREVIEW_TRAM_VEHICLE                                 :{G=f}전차
 STR_ENGINE_PREVIEW_AIRCRAFT                                     :{G=f}항공기
 STR_ENGINE_PREVIEW_SHIP                                         :{G=m}선박
 
-STR_ENGINE_PREVIEW_COST_WEIGHT_SPEED_POWER                      :{BLACK}가격: {CURRENCY_LONG} 무게: {WEIGHT_SHORT}{}속력: {VELOCITY}  힘: {POWER}{}유지비: {CURRENCY_LONG}/년{}수송량: {CARGO_LONG}
-STR_ENGINE_PREVIEW_COST_WEIGHT_SPEED_POWER_MAX_TE               :{BLACK}가격: {0:CURRENCY_LONG} 무게: {1:WEIGHT_SHORT}{}속력: {2:VELOCITY}  힘: {3:POWER}  최대 견인력: {6:FORCE}{}유지비: {4:CURRENCY_LONG}/년{}수송량: {5:CARGO_LONG}
-STR_ENGINE_PREVIEW_COST_MAX_SPEED_CAP_RUNCOST                   :{BLACK}가격: {CURRENCY_LONG} 최고 속력: {VELOCITY}{}수송량: {CARGO_LONG}{}유지비: {CURRENCY_LONG}/년
-STR_ENGINE_PREVIEW_COST_MAX_SPEED_TYPE_CAP_CAP_RUNCOST          :{BLACK}가격: {CURRENCY_LONG} 최고 속력: {VELOCITY}{}항공기 종류: {STRING}{}수송량: {CARGO_LONG}, {CARGO_LONG}{}유지비: {CURRENCY_LONG}/년
-STR_ENGINE_PREVIEW_COST_MAX_SPEED_TYPE_CAP_RUNCOST              :{BLACK}가격: {CURRENCY_LONG} 최고 속력: {VELOCITY}{}항공기 종류: {STRING}{}수송량: {CARGO_LONG}{}유지비: {CURRENCY_LONG}/년
-STR_ENGINE_PREVIEW_COST_MAX_SPEED_TYPE_RANGE_CAP_CAP_RUNCOST    :{BLACK}가격: {CURRENCY_LONG} 최고 속력: {VELOCITY}{}항공기 종류: {STRING} 항속거리: {COMMA}칸{}수송량: {CARGO_LONG}, {CARGO_LONG}{}유지비: {CURRENCY_LONG}/년
-STR_ENGINE_PREVIEW_COST_MAX_SPEED_TYPE_RANGE_CAP_RUNCOST        :{BLACK}가격: {CURRENCY_LONG} 최고 속력: {VELOCITY}{}항공기 종류: {STRING} 항속거리: {COMMA}칸{}수송량: {CARGO_LONG}{}유지비: {CURRENCY_LONG}/년
 
 # Autoreplace window
 STR_REPLACE_VEHICLES_WHITE                                      :{WHITE}{STRING} 교체 - {STRING}
@@ -4362,8 +4379,11 @@ STR_VEHICLE_INFO_CAPACITY_CAPACITY                              :{BLACK}수송�
 
 STR_VEHICLE_INFO_FEEDER_CARGO_VALUE                             :{BLACK}환승 수익: {LTBLUE}{CURRENCY_LONG}
 
-STR_VEHICLE_DETAILS_INCREASE_SERVICING_INTERVAL_TOOLTIP         :{BLACK}점검 기준값을 10만큼 올립니다. CTRL+클릭하면 점검 기준값을 5만큼 올립니다
-STR_VEHICLE_DETAILS_DECREASE_SERVICING_INTERVAL_TOOLTIP         :{BLACK}점검 기준값을 10만큼 내립니다. CTRL+클릭하면 점검 기준값을 5만큼 내립니다
+STR_VEHICLE_DETAILS_SERVICING_INTERVAL_DAYS                     :{BLACK}점검 간격: {LTBLUE}{COMMA}일{BLACK}마다{NBSP}  마지막 점검 날짜: {LTBLUE}{STRING}
+STR_VEHICLE_DETAILS_SERVICING_INTERVAL_MINUTES                  :{BLACK}점검 간격: {LTBLUE}{COMMA}분{BLACK}   {STRING}
+STR_VEHICLE_DETAILS_SERVICING_INTERVAL_PERCENT                  :{BLACK}점검 기준: {LTBLUE}{COMMA}%{BLACK} 떨어지면   마지막 점검 날짜: {LTBLUE}{STRING}
+STR_VEHICLE_DETAILS_LAST_SERVICE_DATE                           :마지막 점검: {LTBLUE}{DATE_LONG}
+STR_VEHICLE_DETAILS_LAST_SERVICE_MINUTES_AGO                    :마지막 점검: {LTBLUE}{NUM}분 전
 
 STR_SERVICE_INTERVAL_DROPDOWN_TOOLTIP                           :{BLACK}점검 기준 설정을 변경합니다
 STR_VEHICLE_DETAILS_DEFAULT                                     :기본

@@ -379,7 +379,7 @@ STR_SCENEDIT_FILE_MENU_SEPARATOR                                :
 STR_SCENEDIT_FILE_MENU_QUIT                                     :Irten
 
 # Settings menu
-###length 15
+###length 16
 STR_SETTINGS_MENU_GAME_OPTIONS                                  :Jokoaren aukerak
 STR_SETTINGS_MENU_CONFIG_SETTINGS_TREE                          :Ezarpenak
 STR_SETTINGS_MENU_NEWGRF_SETTINGS                               :NewGRF ezarpenak
@@ -609,11 +609,9 @@ STR_PERFORMANCE_DETAIL_CARGO                                    :{BLACK}Zama:
 STR_PERFORMANCE_DETAIL_MONEY                                    :{BLACK}Dirua:
 STR_PERFORMANCE_DETAIL_LOAN                                     :{BLACK}Mailegua:
 STR_PERFORMANCE_DETAIL_TOTAL                                    :{BLACK}Guztira:
+###next-name-looks-similar
 
-###length 10
-STR_PERFORMANCE_DETAIL_VEHICLES_TOOLTIP                         :{BLACK}Azken urtean irabaziak lortu dituzten ibilgailuak; honek errepideko garraioak, trenak, itsasontziak eta hegazkinak sartzen ditu
 STR_PERFORMANCE_DETAIL_STATIONS_TOOLTIP                         :{BLACK}Oraintsu zerbitzatuta dauden geltokien zatien zenbakia. Geltokiko edozein zati (adib. tren geltokia, autobuseko geldialdia, aireportua) zenbatuta dago, nahiz eta beste geltoki batekin konektatuta egon
-STR_PERFORMANCE_DETAIL_MIN_PROFIT_TOOLTIP                       :{BLACK}Irabazi gutxien eduki duen garraioa (bakarrik 2 urte baino zaharragoak dira kontuan hartuta)
 STR_PERFORMANCE_DETAIL_MIN_INCOME_TOOLTIP                       :{BLACK}Azken 12 laurdenen artean, gutxien irabazi duzun laurdenean lortu duzun dirua
 STR_PERFORMANCE_DETAIL_MAX_INCOME_TOOLTIP                       :{BLACK}Azken 12 laurdenen artean, gehien irabazi duzun laurdenean irabazi duzun dirua
 STR_PERFORMANCE_DETAIL_DELIVERED_TOOLTIP                        :{BLACK}Entregatutako zama azkeneko lau laurdenetan
@@ -832,7 +830,6 @@ STR_NEWS_VEHICLE_IS_GETTING_VERY_OLD                            :{WHITE}{VEHICLE
 STR_NEWS_VEHICLE_IS_GETTING_VERY_OLD_AND                        :{WHITE}{VEHICLE} oso zaharra bihurtzen ari da eta premiaz ordeztu behar da
 STR_NEWS_TRAIN_IS_STUCK                                         :{WHITE}{VEHICLE} ezin du biderik aurkitu jarraitzeko
 STR_NEWS_VEHICLE_IS_LOST                                        :{WHITE}{VEHICLE} galduta dago
-STR_NEWS_VEHICLE_IS_UNPROFITABLE                                :{WHITE}{VEHICLE}-ren irabazia aurreko urtean {CURRENCY_LONG} izan da
 STR_NEWS_AIRCRAFT_DEST_TOO_FAR                                  :{WHITE}{VEHICLE} ez da hurrengo geltokira iristeko gai, irismen-kanpo baitago.
 
 STR_NEWS_ORDER_REFIT_FAILED                                     :{WHITE}{VEHICLE} gelditua izan da agindutako eraldaketa tronpatu eta gero
@@ -846,16 +843,9 @@ STR_NEWS_NEW_VEHICLE_NOW_AVAILABLE_WITH_TYPE                    :{BLACK}{STRING}
 
 STR_NEWS_OFFER_OF_SUBSIDY_EXPIRED                               :{BIG_FONT}{BLACK}Subsidio eskaintza agortu egin da:{}{}{STRING} {STRING}tik {STRING}ra doanarentzat ez dago subsidiorik orain.
 STR_NEWS_SUBSIDY_WITHDRAWN_SERVICE                              :{BIG_FONT}{BLACK}Subsidioa kenduta:{}{}{STRING} Ez dago subsidiorik {STRING}(e)tik {STRING}(e)ra garraiatzeagatik.
-STR_NEWS_SERVICE_SUBSIDY_OFFERED                                :{BIG_FONT}{BLACK}Diru-laguntza eskaintza:{}{} {STRING} {STRING}tik {STRING}ra doan lehenengoari bertako udalak diru-laguntza emango dio urte batetan zehar!
 ###length 4
-STR_NEWS_SERVICE_SUBSIDY_AWARDED_HALF                           :{BIG_FONT}{BLACK}Diru-laguntza{STRING}entzako!{}{}{STRING} {STRING}tik {STRING}ra egindako serbitzuak %50-a gehiago irabaziko dute hurrengo urtean zehar!
-STR_NEWS_SERVICE_SUBSIDY_AWARDED_DOUBLE                         :{BIG_FONT}{BLACK}Diru-laguntza {STRING}entzako da!{}{}{STRING} {STRING}tik {STRING}ra egiten duen serbitzuak bikoitza irabaziko du hurrengo urtean zehar!
-STR_NEWS_SERVICE_SUBSIDY_AWARDED_TRIPLE                         :{BIG_FONT}{BLACK}Diru-laguntza {STRING}entzako da!{}{}{STRING} {STRING}tik {STRING}ra doan serbitzuak hirukoitza irabaziko du hurrengo urtean zehar!
-STR_NEWS_SERVICE_SUBSIDY_AWARDED_QUADRUPLE                      :{BIG_FONT}{BLACK}Diru-laguntza {STRING}entzako da!{}{}{STRING} {STRING}tik {STRING}ra doan zerbitzuak laukoitza irabaziko du hurrengo urtean zehar!
 
-STR_NEWS_ROAD_REBUILDING                                        :{BIG_FONT}{BLACK} Trafiko nahaste-borrastea {TOWN}en!{}{} {STRING}k ordaindutako errepideen konponketa plana sei hilabeterako arazoak esanguratzen die gidariei!
 STR_NEWS_EXCLUSIVE_RIGHTS_TITLE                                 :{BIG_FONT}{BLACK}Garraio monopolia!!
-STR_NEWS_EXCLUSIVE_RIGHTS_DESCRIPTION                           :{BIG_FONT}{BLACK}{TOWN}ko udaletxeak {STRING}rekin urte beterako erabateko garraio-eskubideen kontratua sinatu du!
 
 # Extra view window
 STR_EXTRA_VIEWPORT_TITLE                                        :{WHITE}Leihoa {COMMA}
@@ -1120,6 +1110,7 @@ STR_CONFIG_SETTING_VEHICLE_BREAKDOWNS_HELPTEXT                  :Kontrolatu mant
 STR_CONFIG_SETTING_SUBSIDY_MULTIPLIER                           :Subsidio biderkatzailea: {STRING}
 STR_CONFIG_SETTING_SUBSIDY_MULTIPLIER_HELPTEXT                  :Subsidio garraio batengatik ordainduko dena ezarri
 
+###length 2
 
 ###setting-zero-is-special
 
@@ -1206,7 +1197,10 @@ STR_CONFIG_SETTING_SIGNALSIDE_LEFT                              :Ezkerrean
 STR_CONFIG_SETTING_SIGNALSIDE_DRIVING_SIDE                      :Gidatzeko aldean
 STR_CONFIG_SETTING_SIGNALSIDE_RIGHT                             :Eskuinaldean
 
+###length 2
 STR_CONFIG_SETTING_SHOWFINANCES                                 :Finantzien informazio taula urtearen bukaeran agertu: {STRING}
+
+###length 2
 STR_CONFIG_SETTING_SHOWFINANCES_HELPTEXT                        :Gaitua badago, finantza lehioa urte bakoitzaren amaieran agertuko da konpainiaren finantza egoeraren azterketa errazteko
 
 STR_CONFIG_SETTING_NONSTOP_BY_DEFAULT                           :Agindu berriak "ez gelditu" dira beti: {STRING}
@@ -1228,9 +1222,11 @@ STR_CONFIG_SETTING_AUTOSCROLL_MAIN_VIEWPORT                     :Ikuspegi lehio 
 STR_CONFIG_SETTING_AUTOSCROLL_EVERY_VIEWPORT                    :Ikuspegi lehio guztiak
 
 STR_CONFIG_SETTING_BRIBE                                        :Udaletxeko agintariak erostea baimendu: {STRING}
+###length 2
 STR_CONFIG_SETTING_BRIBE_HELPTEXT                               :Konpainiei utzi udaletxeak sobornatzen. Inspektore batek sobornoa antzematen badu, konpainiak sei hilabetez debekatua izango du herrian aritzea
 
 STR_CONFIG_SETTING_ALLOW_EXCLUSIVE                              :Garraioaren eskubide esklusiboen erosketa baimendu: {STRING}
+###length 2
 STR_CONFIG_SETTING_ALLOW_EXCLUSIVE_HELPTEXT                     :Konpainia batek erabateko garraio eskubideak erosten baditu, aukarien geltokiek (bidaiari zehin ondasun) ez dute inolako ondasunik jasoko urte oso batez
 
 STR_CONFIG_SETTING_ALLOW_FUND_BUILDINGS                         :Eraikinak ordaintzea baimendu: {STRING}
@@ -1282,12 +1278,16 @@ STR_CONFIG_SETTING_ORDER_REVIEW_EXDEPOT                         :Bai, baina geld
 STR_CONFIG_SETTING_ORDER_REVIEW_ON                              :Ibilgailu guztientzat
 
 STR_CONFIG_SETTING_WARN_INCOME_LESS                             :Ohartarazi ibilgailu baten irabaziak negatiboak badira: {STRING}
+###length 2
 STR_CONFIG_SETTING_WARN_INCOME_LESS_HELPTEXT                    :Gaitua dagoenean, mezu bidez urte oso batean irabazirik lortu ez dituzten ibilgailuez ohartaraziko da
 
 STR_CONFIG_SETTING_NEVER_EXPIRE_VEHICLES                        :Ibilgailuei inoiz ez zaie epea amaitzen: {STRING}
 STR_CONFIG_SETTING_NEVER_EXPIRE_VEHICLES_HELPTEXT               :Gaitua dagoenean, ibilgailu modelo ezberdinak betirako egongo dira erabilgarri
 
 ###length 2
+
+
+###setting-zero-is-special
 
 STR_CONFIG_SETTING_AUTORENEW_VEHICLE                            :Ibilgailu bat zahartzen denean automatikoki berritu: {STRING}
 STR_CONFIG_SETTING_AUTORENEW_VEHICLE_HELPTEXT                   :Gaitua dagoenean, Ibilgailuek bere lan-bizitza amaitzear dutenean eta beharrezko baldintzak betetzen badira automatikoki berrituko dira
@@ -1485,7 +1485,10 @@ STR_CONFIG_SETTING_PERSISTENT_BUILDINGTOOLS_HELPTEXT            :Mantendu zubi, 
 
 STR_CONFIG_SETTING_SOUND_NEWS                                   :Periodikoa: {STRING}
 
+###length 2
 STR_CONFIG_SETTING_SOUND_NEW_YEAR                               :Amaiera urtea: {STRING}
+
+###length 2
 
 STR_CONFIG_SETTING_SOUND_CONFIRM                                :Eraikuntza: {STRING}
 STR_CONFIG_SETTING_SOUND_CONFIRM_HELPTEXT                       :Eraikuntza arrakastatsua edo beste akzioekin soinu bat egin
@@ -1712,7 +1715,6 @@ STR_CONFIG_SETTING_LINKGRAPH_ACCURACY                           :Banaketen zehaz
 
 
 STR_CONFIG_SETTING_LOCALISATION_UNITS_VELOCITY                  :Abiadura unitateak: {STRING}
-###length 5
 STR_CONFIG_SETTING_LOCALISATION_UNITS_VELOCITY_IMPERIAL         :Inperiala (milia/orduko)
 STR_CONFIG_SETTING_LOCALISATION_UNITS_VELOCITY_METRIC           :Metrikoa (km/h)
 STR_CONFIG_SETTING_LOCALISATION_UNITS_VELOCITY_SI               :SI (m/s)
@@ -1857,7 +1859,6 @@ STR_ABANDON_SCENARIO_QUERY                                      :{YELLOW}¿Segur
 
 # Cheat window
 STR_CHEATS                                                      :{WHITE}Trukoak
-STR_CHEATS_TOOLTIP                                              :{BLACK}Kontrol laukiek erakutsiko dute trukoak erabili badituzu
 STR_CHEAT_MONEY                                                 :{LTBLUE}Dirua {CURRENCY_LONG}-etan areagotu
 STR_CHEAT_CHANGE_COMPANY                                        :{LTBLUE} {ORANGE}{COMMA} konpainiarekin jolastu
 STR_CHEAT_EXTRA_DYNAMITE                                        :{LTBLUE}Bulldozer magikoa (edozer ezabatzen du): {ORANGE}{STRING}
@@ -1979,8 +1980,6 @@ STR_NETWORK_SERVER_LIST_MAP_SIZE_CAPTION                        :{BLACK}Maparen 
 STR_NETWORK_SERVER_LIST_MAP_SIZE_CAPTION_TOOLTIP                :{BLACK}Jokoaren maparen tamaina{}Klik egin area arabera ordenatzeko
 STR_NETWORK_SERVER_LIST_DATE_CAPTION                            :{BLACK}Data
 STR_NETWORK_SERVER_LIST_DATE_CAPTION_TOOLTIP                    :{BLACK}Egungo data
-STR_NETWORK_SERVER_LIST_YEARS_CAPTION                           :{BLACK}Urteak
-STR_NETWORK_SERVER_LIST_YEARS_CAPTION_TOOLTIP                   :{BLACK}Jokoa martxan dagoenetik pasa diren urteak{}
 STR_NETWORK_SERVER_LIST_INFO_ICONS_TOOLTIP                      :{BLACK}Hizkuntza, zerbitzariaren bertsioa, etab.
 
 STR_NETWORK_SERVER_LIST_CLICK_GAME_TO_SELECT                    :{BLACK}Joko bat aukeratzeko Klikatu
@@ -2982,8 +2981,6 @@ STR_TOWN_VIEW_CARGO_FOR_TOWNGROWTH_REQUIRED_WINTER              :{ORANGE}{STRING
 STR_TOWN_VIEW_CARGO_FOR_TOWNGROWTH_DELIVERED_GENERAL            :{ORANGE}{STRING}{GREEN} entregatua
 STR_TOWN_VIEW_CARGO_FOR_TOWNGROWTH_REQUIRED                     :{ORANGE}{CARGO_TINY} / {CARGO_LONG}{RED} (beharrezkoa)
 STR_TOWN_VIEW_CARGO_FOR_TOWNGROWTH_DELIVERED                    :{ORANGE}{CARGO_TINY} / {CARGO_LONG}{GREEN} (entregatua)
-STR_TOWN_VIEW_TOWN_GROWS_EVERY                                  :{BLACK}Herria {ORANGE}{COMMA}{BLACK}{NBSP}egunetan hazten da
-STR_TOWN_VIEW_TOWN_GROWS_EVERY_FUNDED                           :{BLACK}Herria {ORANGE}{COMMA}{BLACK}{NBSP}egunero hazten da (sortutako eraikuntzak)
 STR_TOWN_VIEW_TOWN_GROW_STOPPED                                 :{BLACK}Herria {RED}ez da {BLACK} hazten ari
 STR_TOWN_VIEW_NOISE_IN_TOWN                                     :{BLACK}Gehienezko soinua herrian: {ORANGE}{COMMA}{BLACK}  gehienez: {ORANGE}{COMMA}
 STR_TOWN_VIEW_CENTER_TOOLTIP                                    :{BLACK}Lehio nagusia herriaren kokapenean zentratzeko. Ktrl+Klik ikuspegi lehio berria irekiko du
@@ -3016,15 +3013,13 @@ STR_LOCAL_AUTHORITY_ACTION_STATUE_OF_COMPANY                    :Konpainiako jab
 STR_LOCAL_AUTHORITY_ACTION_NEW_BUILDINGS                        :Eraikin berriak eraiki
 STR_LOCAL_AUTHORITY_ACTION_EXCLUSIVE_TRANSPORT                  :Garraioaren eskubide esklusiboen erosketa
 STR_LOCAL_AUTHORITY_ACTION_BRIBE                                :Udaletxea sobornatu
+###next-name-looks-similar
 
-###length 8
 STR_LOCAL_AUTHORITY_ACTION_TOOLTIP_SMALL_ADVERTISING            :{YELLOW}Iragarki kanpaina txikia hasi, bidaiari eta zama gehiago zure geltokietara erakartzeko .{}Kostua: {CURRENCY_LONG}
 STR_LOCAL_AUTHORITY_ACTION_TOOLTIP_MEDIUM_ADVERTISING           :{YELLOW}Iragarki kanpaina ertaina hasi, bidaiari eta zama gehiago zure geltokietara erakartzeko .{}Kostua: {CURRENCY_LONG}
 STR_LOCAL_AUTHORITY_ACTION_TOOLTIP_LARGE_ADVERTISING            :{YELLOW}Iragarki kanpaina handia hasi, bidaiari eta zama gehiago zure geltokietara erakartzeko .{}Kostua: {CURRENCY_LONG}
-STR_LOCAL_AUTHORITY_ACTION_TOOLTIP_ROAD_RECONSTRUCTION          :{YELLOW}Herriaren errepide sarearen berreraiketarako dirua ematea.Trafiko ondamendia sortuko du hurrengo 6 hilabeteetarako.{}Kostea: {CURRENCY_LONG}
 STR_LOCAL_AUTHORITY_ACTION_TOOLTIP_STATUE_OF_COMPANY            :{YELLOW}Eraiki estatua zure konpainiaren omenez.{}Kostea: {CURRENCY_LONG}
 STR_LOCAL_AUTHORITY_ACTION_TOOLTIP_NEW_BUILDINGS                :{YELLOW}Herriko komertziorako eraikin berriak sortu.{}Kostea: {CURRENCY_LONG}
-STR_LOCAL_AUTHORITY_ACTION_TOOLTIP_EXCLUSIVE_TRANSPORT          :{YELLOW}Urte batez garraioaren eskubide esklusiboen erosketa. Udaletxeak bidaiari eta zamentzat bakarrik zure konpainiaren geltokiak erabiltzea baimenduko du.{}Kostea: {CURRENCY_LONG}
 STR_LOCAL_AUTHORITY_ACTION_TOOLTIP_BRIBE                        :{YELLOW}Udaletxea sobornatu zure balorazioa hobetzeko, isun larria jasotzeko arriskuarekinn.{}Kostea: {CURRENCY_LONG}
 
 # Goal window
@@ -3245,7 +3240,6 @@ STR_COMPANY_INFRASTRUCTURE_VIEW_CANALS                          :{WHITE}Kanalak
 STR_COMPANY_INFRASTRUCTURE_VIEW_STATION_SECT                    :{GOLD}Geltokiak:
 STR_COMPANY_INFRASTRUCTURE_VIEW_STATIONS                        :{WHITE}Geltoki sailak
 STR_COMPANY_INFRASTRUCTURE_VIEW_AIRPORTS                        :{WHITE}Aireportuak
-STR_COMPANY_INFRASTRUCTURE_VIEW_TOTAL                           :{WHITE}{CURRENCY_LONG}/urtea
 
 # Industry directory
 STR_INDUSTRY_DIRECTORY_CAPTION                                  :{WHITE}Idustriak
@@ -3350,7 +3344,6 @@ STR_PURCHASE_INFO_SPEED_POWER                                   :{BLACK}Abiadura
 STR_PURCHASE_INFO_SPEED                                         :{BLACK}Abiadura: {GOLD}{VELOCITY}
 STR_PURCHASE_INFO_SPEED_OCEAN                                   :{BLACK}Abiadura ozeanoan: {GOLD}{VELOCITY}
 STR_PURCHASE_INFO_SPEED_CANAL                                   :{BLACK}Abiadura kanaletan/erreketan: {GOLD}{VELOCITY}
-STR_PURCHASE_INFO_RUNNINGCOST                                   :{BLACK}Mantenimendu kostuak: {GOLD}{CURRENCY_LONG}/urtero
 STR_PURCHASE_INFO_CAPACITY                                      :{BLACK}Edukiera: {GOLD}{CARGO_LONG} {STRING}
 STR_PURCHASE_INFO_REFITTABLE                                    :(zama aldatu daiteke)
 STR_PURCHASE_INFO_DESIGNED_LIFE                                 :{BLACK}Diseinatua: {GOLD}{NUM}{BLACK} Bizitza: {GOLD}{COMMA} urte
@@ -3521,9 +3514,6 @@ STR_ENGINE_PREVIEW_ROAD_VEHICLE                                 :Errepide ibilga
 STR_ENGINE_PREVIEW_AIRCRAFT                                     :Hegazkina
 STR_ENGINE_PREVIEW_SHIP                                         :Itsasontzia
 
-STR_ENGINE_PREVIEW_COST_WEIGHT_SPEED_POWER                      :{BLACK}Kostea: {CURRENCY_LONG} Pisua: {WEIGHT_SHORT}{}Pisua: {VELOCITY}  Potentzia: {POWER}{}Mantenimendua: {CURRENCY_LONG}/urtero{}Edukiera: {CARGO_LONG}
-STR_ENGINE_PREVIEW_COST_WEIGHT_SPEED_POWER_MAX_TE               :{BLACK}Kostua: {CURRENCY_LONG} Pisua: {WEIGHT_SHORT}{}Abiadura: {VELOCITY}  Potentzia: {POWER}  Gehienezko trakzioa: {6:FORCE}{}Mantinemendua: {4:CURRENCY_LONG}/urtero{}Edukiera: {5:CARGO_LONG}
-STR_ENGINE_PREVIEW_COST_MAX_SPEED_CAP_RUNCOST                   :{BLACK}Kostea: {CURRENCY_LONG} Gehienezko abiadura: {VELOCITY}{}Edukiera: {CARGO_LONG}{}Mantenimendua: {CURRENCY_LONG}/urtero
 
 # Autoreplace window
 STR_REPLACE_VEHICLES_WHITE                                      :{WHITE}Ordezkatu {STRING} - {STRING}
@@ -3664,8 +3654,6 @@ STR_VEHICLE_INFO_CAPACITY_CAPACITY                              :{BLACK}Edukiera
 
 STR_VEHICLE_INFO_FEEDER_CARGO_VALUE                             :{BLACK}Transferentzia kredituak: {LTBLUE}{CURRENCY_LONG}
 
-STR_VEHICLE_DETAILS_INCREASE_SERVICING_INTERVAL_TOOLTIP         :{BLACK}Mantenimendu tartea 10 puntutan igo. Ktrl+klik mantenimendu tartea 5 puntutan igo
-STR_VEHICLE_DETAILS_DECREASE_SERVICING_INTERVAL_TOOLTIP         :{BLACK}Mantenimendu tartea 10 puntutan gutxitu. Ktrl+klik mantenimendu tartea 5 puntutan gutxitu
 
 STR_VEHICLE_DETAILS_DEFAULT                                     :Lehenetsia
 STR_VEHICLE_DETAILS_PERCENT                                     :Ehunekoa

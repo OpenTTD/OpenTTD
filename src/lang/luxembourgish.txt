@@ -407,7 +407,7 @@ STR_SCENEDIT_FILE_MENU_SEPARATOR                                :
 STR_SCENEDIT_FILE_MENU_QUIT                                     :Eraus
 
 # Settings menu
-###length 15
+###length 16
 STR_SETTINGS_MENU_GAME_OPTIONS                                  :Spilloptiounen
 STR_SETTINGS_MENU_CONFIG_SETTINGS_TREE                          :Astellungen
 STR_SETTINGS_MENU_AI_SETTINGS                                   :KI Astellungen
@@ -642,11 +642,9 @@ STR_PERFORMANCE_DETAIL_CARGO                                    :{BLACK}Luedung:
 STR_PERFORMANCE_DETAIL_MONEY                                    :{BLACK}Suen:
 STR_PERFORMANCE_DETAIL_LOAN                                     :{BLACK}Kredit:
 STR_PERFORMANCE_DETAIL_TOTAL                                    :{BLACK}Total:
+###next-name-looks-similar
 
-###length 10
-STR_PERFORMANCE_DETAIL_VEHICLES_TOOLTIP                         :{BLACK}Unzuel Gefierer déi lescht Joer Profit gemeet hunn; dëst betrëfft Stroossegefierer, Zich, Schëffer a Fligeren.
 STR_PERFORMANCE_DETAIL_STATIONS_TOOLTIP                         :{BLACK}Unzuel un kierzlech beliwwerte Statiounsdeeler. All Deel vun enger Statioun (z.B. Gare, Busarret, Fluchhafen) gëtt gezielt,och wann déi als eng Statioun verbonne sinn.
-STR_PERFORMANCE_DETAIL_MIN_PROFIT_TOOLTIP                       :{BLACK}Profit vum Gefier mam mannsten Akommes (vun alle Gefierer déi méi wéi 2 Joer al sinn)
 STR_PERFORMANCE_DETAIL_MIN_INCOME_TOOLTIP                       :{BLACK}Betrag u Geld den am Mount mam mansten Profit gemeet gouf an de leschten 12 Quartaler
 STR_PERFORMANCE_DETAIL_MAX_INCOME_TOOLTIP                       :{BLACK}Betrag u Geld den am Mount mam héchsten Profit gemeet gouf an de leschten 12 Quartaler
 STR_PERFORMANCE_DETAIL_DELIVERED_TOOLTIP                        :{BLACK}Unzuel un Type Wueren déi déi 4 lescht Quartaler geliwwert goufen
@@ -877,7 +875,6 @@ STR_NEWS_VEHICLE_IS_GETTING_VERY_OLD                            :{WHITE}{VEHICLE
 STR_NEWS_VEHICLE_IS_GETTING_VERY_OLD_AND                        :{WHITE}{VEHICLE} ass ganz al, an sollt schnellstens ersaat ginn
 STR_NEWS_TRAIN_IS_STUCK                                         :{WHITE}{VEHICLE} kann de Wee fir weider ze fueren net fannen
 STR_NEWS_VEHICLE_IS_LOST                                        :{WHITE}{VEHICLE} ass verluer
-STR_NEWS_VEHICLE_IS_UNPROFITABLE                                :{WHITE}Dëm {VEHICLE} säin Profit vum leschten Joer war {CURRENCY_LONG}
 STR_NEWS_AIRCRAFT_DEST_TOO_FAR                                  :{WHITE}{VEHICLE} kann net op d'nächst Destinatioun kommen, se ass ze wäit ewech
 
 STR_NEWS_ORDER_REFIT_FAILED                                     :{WHITE}{VEHICLE} huet gestoppt well eng Optragennerung net geklappt huet
@@ -892,16 +889,9 @@ STR_NEWS_SHOW_VEHICLE_GROUP_TOOLTIP                             :{BLACK}Maach d'
 
 STR_NEWS_OFFER_OF_SUBSIDY_EXPIRED                               :{BIG_FONT}{BLACK}Subside ofgelaaf:{}{}{STRING} vun {STRING} op {STRING} gëtt net méi subventionéiert
 STR_NEWS_SUBSIDY_WITHDRAWN_SERVICE                              :{BIG_FONT}{BLACK}Subside entzunn:{}{}{STRING} Service vun {STRING} op {STRING} gëtt net méi subventionéiert
-STR_NEWS_SERVICE_SUBSIDY_OFFERED                                :{BIG_FONT}{BLACK}Subside offréiert:{}{}Eischten {STRING} vun {STRING} op {STRING} gëtt mat engem Subside vun {NUM} Joer belount!
 ###length 4
-STR_NEWS_SERVICE_SUBSIDY_AWARDED_HALF                           :{BIG_FONT}{BLACK}Subside geet un {STRING}!{}{}{STRING} vun {STRING} op {STRING} gëtt déi nächst {NUM} Joer mat 50% Bonus bezuelt!
-STR_NEWS_SERVICE_SUBSIDY_AWARDED_DOUBLE                         :{BIG_FONT}{BLACK}Subside geet un {STRING}!{}{}{STRING} Vun {STRING} op {STRING} gëtt déi nächst {NUM} Joer duebel bezuelt!
-STR_NEWS_SERVICE_SUBSIDY_AWARDED_TRIPLE                         :{BIG_FONT}{BLACK}Subside geet un {STRING}!{}{}{STRING} vun {STRING} op {STRING} gëtt déi nächst {NUM} Joer dräifach bezuelt!
-STR_NEWS_SERVICE_SUBSIDY_AWARDED_QUADRUPLE                      :{BIG_FONT}{BLACK}Subside geet un {STRING}!{}{}{STRING} vun {STRING} op {STRING} gëtt déi nächst {NUM} Joer véierfach bezuelt!
 
-STR_NEWS_ROAD_REBUILDING                                        :{BIG_FONT}{BLACK}Trafficchaos an {TOWN}!{}{}Stroossenneibau deen vun {STRING} finanzéiert ginn ass bréngt 6 Méint Misère fir d'Autosfuerer!
 STR_NEWS_EXCLUSIVE_RIGHTS_TITLE                                 :{BIG_FONT}{BLACK}Transportmonopol!
-STR_NEWS_EXCLUSIVE_RIGHTS_DESCRIPTION                           :{BIG_FONT}{BLACK}D'Gemeng {TOWN} ënnerschreiwt Kontrakt mat {STRING} fir ee Joer laang exklusiv Transportrechter!
 
 # Extra view window
 STR_EXTRA_VIEWPORT_TITLE                                        :{WHITE}Usiicht {COMMA}
@@ -1215,9 +1205,9 @@ STR_CONFIG_SETTING_SUBSIDY_MULTIPLIER                           :Subsidemultipli
 STR_CONFIG_SETTING_SUBSIDY_MULTIPLIER_HELPTEXT                  :Fixéiert wéivill fir subsidéiert Verbindunge bezuelt gëtt
 
 STR_CONFIG_SETTING_SUBSIDY_DURATION                             :Subsidendauer: {STRING}
+###length 2
 STR_CONFIG_SETTING_SUBSIDY_DURATION_HELPTEXT                    :Unzuel u Joren fir déi et e Subside gëtt
 
-STR_CONFIG_SETTING_SUBSIDY_DURATION_VALUE                       :{NUM} Jo{P er er}
 ###setting-zero-is-special
 STR_CONFIG_SETTING_SUBSIDY_DURATION_DISABLED                    :Keng Subsiden
 
@@ -1313,7 +1303,10 @@ STR_CONFIG_SETTING_SIGNALSIDE_LEFT                              :Lénks
 STR_CONFIG_SETTING_SIGNALSIDE_DRIVING_SIDE                      :Op der Fuerersäit
 STR_CONFIG_SETTING_SIGNALSIDE_RIGHT                             :Riets
 
+###length 2
 STR_CONFIG_SETTING_SHOWFINANCES                                 :Weis de Bilan um Enn vum Joer: {STRING}
+
+###length 2
 STR_CONFIG_SETTING_SHOWFINANCES_HELPTEXT                        :Wann ugeschalt, gëtt eng Fënster um Enn vum Joer gewisen, déi eng einfach Iwwersicht iwwert d'Finanzen vun der Firma erlaabt
 
 STR_CONFIG_SETTING_NONSTOP_BY_DEFAULT                           :Nei Opträg sinn standardméisseg 'non-stop': {STRING}
@@ -1335,9 +1328,11 @@ STR_CONFIG_SETTING_AUTOSCROLL_MAIN_VIEWPORT                     :Haptusiicht
 STR_CONFIG_SETTING_AUTOSCROLL_EVERY_VIEWPORT                    :All Usiicht
 
 STR_CONFIG_SETTING_BRIBE                                        :Erlaabt d'Gemengen ze bestiechen: {STRING}
+###length 2
 STR_CONFIG_SETTING_BRIBE_HELPTEXT                               :Erlaabt Firmen d'Stad ze bestiechen. Wann et opflitt, kann d'Firma während 6 Méint net mat der Stad agéiren
 
 STR_CONFIG_SETTING_ALLOW_EXCLUSIVE                              :Erlaabt exklusiv Transportrechter ze kafen: {STRING}
+###length 2
 STR_CONFIG_SETTING_ALLOW_EXCLUSIVE_HELPTEXT                     :Wann eng Firma exklusiv Transportrechter fir eng Stad keeft, kréien géignerësch Statiounen (Passagéier an Wueren) keng Wueren fir e ganzt Joer
 
 STR_CONFIG_SETTING_ALLOW_FUND_BUILDINGS                         :Gebaier finanzéiren erlaben: {STRING}
@@ -1391,12 +1386,16 @@ STR_CONFIG_SETTING_ORDER_REVIEW_EXDEPOT                         :Jo, mee net dé
 STR_CONFIG_SETTING_ORDER_REVIEW_ON                              :Vun allen Gefierer
 
 STR_CONFIG_SETTING_WARN_INCOME_LESS                             :Warnen wann en Gefier en negativt Akommes huet: {STRING}
+###length 2
 STR_CONFIG_SETTING_WARN_INCOME_LESS_HELPTEXT                    :Wann ugeschalt, gëtt e Noorichtemessage gesent, wann e Gefier ee Joer laang kee Profit gemeet huet
 
 STR_CONFIG_SETTING_NEVER_EXPIRE_VEHICLES                        :Gefierer lafen nie of: {STRING}
 STR_CONFIG_SETTING_NEVER_EXPIRE_VEHICLES_HELPTEXT               :Wann ugeschalt, bleiwen all Modeller vu Gefierer éiweg verfügbar
 
 ###length 2
+
+
+###setting-zero-is-special
 
 STR_CONFIG_SETTING_AUTORENEW_VEHICLE                            :Gefier automatesch erneiere wann et al gëtt: {STRING}
 STR_CONFIG_SETTING_AUTORENEW_VEHICLE_HELPTEXT                   :Wann ugeschalt, gëtt e Gefier wat u säi Lafzäitenn kënnt automatesch ausgetosch
@@ -1641,7 +1640,10 @@ STR_CONFIG_SETTING_SOUND_TICKER_HELPTEXT                        :Spill Sound of 
 STR_CONFIG_SETTING_SOUND_NEWS                                   :Zeitung: {STRING}
 STR_CONFIG_SETTING_SOUND_NEWS_HELPTEXT                          :Spill Soundeffekt of wann eng Zeitung rauskënnt
 
+###length 2
 STR_CONFIG_SETTING_SOUND_NEW_YEAR                               :Enn vum Joer: {STRING}
+
+###length 2
 STR_CONFIG_SETTING_SOUND_NEW_YEAR_HELPTEXT                      :Spill Soundeffekt of um Enn vum Joer, wann d'Performance vun der Firma resuméiert gëtt am Verglach mam Viirjoer
 
 STR_CONFIG_SETTING_SOUND_CONFIRM                                :Konstruktioun: {STRING}
@@ -1933,11 +1935,9 @@ STR_CONFIG_SETTING_SHORT_PATH_SATURATION_HELPTEXT               :Oft gëtt et e 
 
 STR_CONFIG_SETTING_LOCALISATION_UNITS_VELOCITY                  :Geschwindegkeetseenheeten: {STRING}
 STR_CONFIG_SETTING_LOCALISATION_UNITS_VELOCITY_HELPTEXT         :Emmer wann eng Geschwindegkeet am Userinterface ugewisen gëtt, weis se an den ausgewielten Eenheeten un
-###length 5
 STR_CONFIG_SETTING_LOCALISATION_UNITS_VELOCITY_IMPERIAL         :Britesch (mph)
 STR_CONFIG_SETTING_LOCALISATION_UNITS_VELOCITY_METRIC           :Metresch (km/h)
 STR_CONFIG_SETTING_LOCALISATION_UNITS_VELOCITY_SI               :SI (m/s)
-STR_CONFIG_SETTING_LOCALISATION_UNITS_VELOCITY_GAMEUNITS        :Spilleenheeten (Felder/Dag)
 
 STR_CONFIG_SETTING_LOCALISATION_UNITS_POWER                     :Kraafteenheeten: {STRING}
 STR_CONFIG_SETTING_LOCALISATION_UNITS_POWER_HELPTEXT            :Emmer wann d'Kraaft vun engem Gefier am Userinterface ugewisen gëtt, weis se an den ausgewielten Eenheeten un
@@ -2095,8 +2095,6 @@ STR_ABANDON_SCENARIO_QUERY                                      :{YELLOW}Bass du
 
 # Cheat window
 STR_CHEATS                                                      :{WHITE}Cheater
-STR_CHEATS_TOOLTIP                                              :{BLACK}Checkboxen weisen un dass du den Cheat schon eng Kéier benotzt hues
-STR_CHEATS_NOTE                                                 :{BLACK}Notiz: jeglech Benotzung vun dësen Astellungen wäert am Späicherstand opgeholl ginn
 STR_CHEAT_MONEY                                                 :{LTBLUE}Suen ëm {CURRENCY_LONG} erhéijen
 STR_CHEAT_CHANGE_COMPANY                                        :{LTBLUE}Als Firma {ORANGE}{COMMA} spillen
 STR_CHEAT_EXTRA_DYNAMITE                                        :{LTBLUE}Magësche Bulldozer (Industrien ofrappen, onzerstéierbar Objeten): {ORANGE}{STRING}
@@ -2224,8 +2222,6 @@ STR_NETWORK_SERVER_LIST_MAP_SIZE_CAPTION                        :{BLACK}Kaartegr
 STR_NETWORK_SERVER_LIST_MAP_SIZE_CAPTION_TOOLTIP                :{BLACK}Kaartegréisst vum Spill{}Klicken fir dorop ze sortéieren
 STR_NETWORK_SERVER_LIST_DATE_CAPTION                            :{BLACK}Datum
 STR_NETWORK_SERVER_LIST_DATE_CAPTION_TOOLTIP                    :{BLACK}Momentanen Datum
-STR_NETWORK_SERVER_LIST_YEARS_CAPTION                           :{BLACK}Joer
-STR_NETWORK_SERVER_LIST_YEARS_CAPTION_TOOLTIP                   :{BLACK}Unzuel u Joer wou{}daat Spill leeft
 STR_NETWORK_SERVER_LIST_INFO_ICONS_TOOLTIP                      :{BLACK}Sprooch, Serverversioun, etc.
 
 STR_NETWORK_SERVER_LIST_CLICK_GAME_TO_SELECT                    :{BLACK}Klick op en Spill aus der Lëscht fir et auszewielen
@@ -2587,9 +2583,7 @@ STR_LINKGRAPH_LEGEND_SATURATED                                  :{TINY_FONT}{BLA
 STR_LINKGRAPH_LEGEND_OVERLOADED                                 :{TINY_FONT}{BLACK}iwwerlaascht
 
 # Linkgraph tooltip
-STR_LINKGRAPH_STATS_TOOLTIP                                     :{BLACK}{CARGO_LONG} muss all Mound vun {STATION} op {STATION} transportéiert ginn ({COMMA}% vun der Kapazitéit){STRING}
 STR_LINKGRAPH_STATS_TOOLTIP_RETURN_EXTENSION                    :{}{CARGO_LONG} gëtt zeréck transportéiert op ({COMMA}% vun der Kapazitéit)
-STR_LINKGRAPH_STATS_TOOLTIP_TIME_EXTENSION                      :{}Duerchschnëttszäit: {NUM}{NBSP}D{P ag eeg}
 
 # Base for station construction window(s)
 STR_STATION_BUILD_COVERAGE_AREA_TITLE                           :{BLACK}Reechwäit markéieren
@@ -2599,7 +2593,6 @@ STR_STATION_BUILD_COVERAGE_AREA_OFF_TOOLTIP                     :{BLACK}Weis d'R
 STR_STATION_BUILD_COVERAGE_AREA_ON_TOOLTIP                      :{BLACK}Weis d'Reechwäit vun dem Gebäi un
 STR_STATION_BUILD_ACCEPTS_CARGO                                 :{BLACK}Akzeptéiert: {GOLD}{CARGO_LIST}
 STR_STATION_BUILD_SUPPLIES_CARGO                                :{BLACK}Liwwert: {GOLD}{CARGO_LIST}
-STR_STATION_BUILD_INFRASTRUCTURE_COST                           :{BLACK}Ennerhaltskäschten: {GOLD}{CURRENCY_SHORT}/Jr
 
 # Join station window
 STR_JOIN_STATION_CAPTION                                        :{WHITE}Statioun verbannen
@@ -3438,8 +3431,6 @@ STR_TOWN_VIEW_CARGO_FOR_TOWNGROWTH_REQUIRED_WINTER              :{ORANGE}{STRING
 STR_TOWN_VIEW_CARGO_FOR_TOWNGROWTH_DELIVERED_GENERAL            :{ORANGE}{STRING}{GREEN} geliwwert
 STR_TOWN_VIEW_CARGO_FOR_TOWNGROWTH_REQUIRED                     :{ORANGE}{CARGO_TINY} / {CARGO_LONG}{RED} (nach gebraucht)
 STR_TOWN_VIEW_CARGO_FOR_TOWNGROWTH_DELIVERED                    :{ORANGE}{CARGO_TINY} / {CARGO_LONG}{GREEN} (geliwwert)
-STR_TOWN_VIEW_TOWN_GROWS_EVERY                                  :{BLACK}Stad wiisst all {ORANGE}{COMMA}{BLACK}{NBSP}D{P ag eeg}
-STR_TOWN_VIEW_TOWN_GROWS_EVERY_FUNDED                           :{BLACK}Stad wiisst all {ORANGE}{COMMA}{BLACK}{NBSP}D{P ag eeg} (finanzéiert)
 STR_TOWN_VIEW_TOWN_GROW_STOPPED                                 :{BLACK}Stad wiisst{RED} net{BLACK}
 STR_TOWN_VIEW_NOISE_IN_TOWN                                     :{BLACK}Kaméidislimit an der Stad: {ORANGE}{COMMA}{BLACK}  max: {ORANGE}{COMMA}
 STR_TOWN_VIEW_CENTER_TOOLTIP                                    :{BLACK}Zentréiert d'Usiicht op d'Stad. Ctrl+Klick erstellt eng nei Usiicht op d'Stad
@@ -3474,15 +3465,13 @@ STR_LOCAL_AUTHORITY_ACTION_STATUE_OF_COMPANY                    :Statu vum Firme
 STR_LOCAL_AUTHORITY_ACTION_NEW_BUILDINGS                        :Nei Gebaier finanzéieren
 STR_LOCAL_AUTHORITY_ACTION_EXCLUSIVE_TRANSPORT                  :Exklusiv Transportrechter kafen
 STR_LOCAL_AUTHORITY_ACTION_BRIBE                                :D'Gemeng bestiechen
+###next-name-looks-similar
 
-###length 8
 STR_LOCAL_AUTHORITY_ACTION_TOOLTIP_SMALL_ADVERTISING            :{PUSH_COLOUR}{YELLOW}Eng kleng Marketingaktioun starten, fir méi Passagéier a Wueren unzezéien.{}Gëtt fir eng Zäit de Statiounen em de Stadkär eng besser Bewertung.{}{POP_COLOUR}Käschten: {CURRENCY_LONG}
 STR_LOCAL_AUTHORITY_ACTION_TOOLTIP_MEDIUM_ADVERTISING           :{PUSH_COLOUR}{YELLOW}Eng mëttel Marketingaktioun starten, fir méi Passagéier a Wueren unzezéien.{}Gëtt fir eng Zäit de Statiounen an engem mëttlere Radius em de Stadkär eng besser Bewertung.{}{POP_COLOUR}Käschten: {CURRENCY_LONG}
 STR_LOCAL_AUTHORITY_ACTION_TOOLTIP_LARGE_ADVERTISING            :{PUSH_COLOUR}{YELLOW}Eng grouss Marketingaktioun starten, fir méi Passagéier a Wueren ze unzezéien.{}Gëtt fir eng Zäit de Statiounen an engem méi grousse Radius em de Stadkär eng besser Bewertung.{}{POP_COLOUR}Käschten: {CURRENCY_LONG}
-STR_LOCAL_AUTHORITY_ACTION_TOOLTIP_ROAD_RECONSTRUCTION          :{PUSH_COLOUR}{YELLOW}Stroossenneibau an der Stad finanzéieren.{}Stéiert den Traffic op de Stroossen fir déi nächst 6 Méint.{}{POP_COLOUR}Käschten: {CURRENCY_LONG}
 STR_LOCAL_AUTHORITY_ACTION_TOOLTIP_STATUE_OF_COMPANY            :{PUSH_COLOUR}{YELLOW}Eng Statu zur Éier vun der Firma bauen.{}Gëtt de Statiounen an dëser Stad permanent eng besser Bewertung.{}{POP_COLOUR}Käschten: {CURRENCY_LONG}
 STR_LOCAL_AUTHORITY_ACTION_TOOLTIP_NEW_BUILDINGS                :{PUSH_COLOUR}{YELLOW}De Bau vun neie Kommerzgebaier finanzéieren.{}Gëtt fir eng Zäit dem Stadwuesstum e Schub.{}{POP_COLOUR}Käschten: {CURRENCY_LONG}
-STR_LOCAL_AUTHORITY_ACTION_TOOLTIP_EXCLUSIVE_TRANSPORT          :{PUSH_COLOUR}{YELLOW}Kaaft fir 1 Joer exklusiv Transportrechter an dëser Stad.{}D'Gemeng erlaabt den Transport vu Passagéier a Wueren nëmmen denger Firma.{}{POP_COLOUR}Käschten: {CURRENCY_LONG}
 STR_LOCAL_AUTHORITY_ACTION_TOOLTIP_BRIBE                        :{PUSH_COLOUR}{YELLOW}D'Gemeng bestiechen fir d'Bewäertung ze erhéijen, mam Risiko fir eng grouss Bestrofung, falls der erwëscht gitt.{}{POP_COLOUR} Käschten: {CURRENCY_LONG}
 
 # Goal window
@@ -3571,7 +3560,6 @@ STR_STATION_VIEW_EXCLUSIVE_RIGHTS_COMPANY                       :{YELLOW}{COMPAN
 
 STR_STATION_VIEW_RATINGS_BUTTON                                 :{BLACK}Bewäertungen
 STR_STATION_VIEW_RATINGS_TOOLTIP                                :{BLACK}Weis d'Statiounsbewäertungen
-STR_STATION_VIEW_SUPPLY_RATINGS_TITLE                           :{BLACK}Lokal Bewäertung an Liwwerung pro Mount
 STR_STATION_VIEW_CARGO_SUPPLY_RATING                            :{WHITE}{STRING}: {YELLOW}{COMMA} / {STRING} ({COMMA}%)
 
 STR_STATION_VIEW_GROUP                                          :{BLACK}Gruppéier no
@@ -3730,7 +3718,6 @@ STR_COMPANY_INFRASTRUCTURE_VIEW_CANALS                          :{WHITE}Kanäl
 STR_COMPANY_INFRASTRUCTURE_VIEW_STATION_SECT                    :{GOLD}Statiounen:
 STR_COMPANY_INFRASTRUCTURE_VIEW_STATIONS                        :{WHITE}Statiounsfelder
 STR_COMPANY_INFRASTRUCTURE_VIEW_AIRPORTS                        :{WHITE}Fluchhäfen
-STR_COMPANY_INFRASTRUCTURE_VIEW_TOTAL                           :{WHITE}{CURRENCY_LONG}/Jr
 
 # Industry directory
 STR_INDUSTRY_DIRECTORY_CAPTION                                  :{WHITE}Industrien
@@ -3860,7 +3847,6 @@ STR_PURCHASE_INFO_SPEED_POWER                                   :{BLACK}Geschw.:
 STR_PURCHASE_INFO_SPEED                                         :{BLACK}Geschw.: {GOLD}{VELOCITY}
 STR_PURCHASE_INFO_SPEED_OCEAN                                   :{BLACK}Geschwindegkeet um Ozean: {GOLD}{VELOCITY}
 STR_PURCHASE_INFO_SPEED_CANAL                                   :{BLACK}Geschwindegkeet um Kanal/Floss: {GOLD}{VELOCITY}
-STR_PURCHASE_INFO_RUNNINGCOST                                   :{BLACK}Betribskäschten: {GOLD}{CURRENCY_LONG}/Jr
 STR_PURCHASE_INFO_CAPACITY                                      :{BLACK}Kapazitéit: {GOLD}{CARGO_LONG} {STRING}
 STR_PURCHASE_INFO_REFITTABLE                                    :(ëmbaubar)
 STR_PURCHASE_INFO_DESIGNED_LIFE                                 :{BLACK}Designt: {GOLD}{NUM}{BLACK} Liewenszäit: {GOLD}{COMMA} Joer
@@ -4053,13 +4039,6 @@ STR_ENGINE_PREVIEW_TRAM_VEHICLE                                 :Tram-Gefier
 STR_ENGINE_PREVIEW_AIRCRAFT                                     :Fliger
 STR_ENGINE_PREVIEW_SHIP                                         :Schëff
 
-STR_ENGINE_PREVIEW_COST_WEIGHT_SPEED_POWER                      :{BLACK}Käschten: {CURRENCY_LONG} Gewiicht: {WEIGHT_SHORT}{}Geschwindegkeet: {VELOCITY}  Kraaft: {POWER}{}Betribskäschten {CURRENCY_LONG}/Jr{}Kapazitéit: {CARGO_LONG}
-STR_ENGINE_PREVIEW_COST_WEIGHT_SPEED_POWER_MAX_TE               :{BLACK}Käschten: {0:CURRENCY_LONG} Gewicht: {1:WEIGHT_SHORT}{}Geschw.: {2:VELOCITY}  Kraaft: {3:POWER}  Max. T.E.: {6:FORCE}{}Betribskäschten: {4:CURRENCY_LONG}/Jr{}Kapazitéit: {5:CARGO_LONG}
-STR_ENGINE_PREVIEW_COST_MAX_SPEED_CAP_RUNCOST                   :{BLACK}Käschten: {CURRENCY_LONG} Max. Geschwindegkeet: {VELOCITY}{}Kapazitéit: {CARGO_LONG}{}Betribskäschten: {CURRENCY_LONG}/Jr
-STR_ENGINE_PREVIEW_COST_MAX_SPEED_TYPE_CAP_CAP_RUNCOST          :{BLACK}Käschten: {CURRENCY_LONG} Max. Geschw.: {VELOCITY}{}Fliger Typ: {STRING}{}Kapazitéit: {CARGO_LONG}, {CARGO_LONG}{}Betribskäschten: {CURRENCY_LONG}/Jr
-STR_ENGINE_PREVIEW_COST_MAX_SPEED_TYPE_CAP_RUNCOST              :{BLACK}Käschten: {CURRENCY_LONG} Max. Geschw.: {VELOCITY}{}Fliger Typ: {STRING}{}Kapazitéit: {CARGO_LONG}{}Betribskäschten: {CURRENCY_LONG}/Jr
-STR_ENGINE_PREVIEW_COST_MAX_SPEED_TYPE_RANGE_CAP_CAP_RUNCOST    :{BLACK}Käschten: {CURRENCY_LONG} Max. Geschw.: {VELOCITY}{}Fliger Typ: {STRING} Reeschwäit: {COMMA} Felder{}Kapazitéit: {CARGO_LONG}, {CARGO_LONG}{}Betribskäschten: {CURRENCY_LONG}/Jr
-STR_ENGINE_PREVIEW_COST_MAX_SPEED_TYPE_RANGE_CAP_RUNCOST        :{BLACK}Käschten: {CURRENCY_LONG} Max. Geschw.: {VELOCITY}{}Fliger Typ: {STRING} Reechwäit: {COMMA} Felder{}Kapazitéit: {CARGO_LONG}{}Betribskäschten: {CURRENCY_LONG}/Jr
 
 # Autoreplace window
 STR_REPLACE_VEHICLES_WHITE                                      :{WHITE}Ersetz {STRING} - {STRING}
@@ -4224,8 +4203,6 @@ STR_VEHICLE_INFO_CAPACITY_CAPACITY                              :{BLACK}Kapazit�
 
 STR_VEHICLE_INFO_FEEDER_CARGO_VALUE                             :{BLACK}Transferts-Suen: {LTBLUE}{CURRENCY_LONG}
 
-STR_VEHICLE_DETAILS_INCREASE_SERVICING_INTERVAL_TOOLTIP         :{BLACK}Revisiounsintervall em 10 erhéijen. Ctrl+Klick erhéicht Intervall em 5
-STR_VEHICLE_DETAILS_DECREASE_SERVICING_INTERVAL_TOOLTIP         :{BLACK}Revisiounsintervall em 10 erofsetzen. Ctrl+Klick setzt den Intervall em 5 rof
 
 STR_SERVICE_INTERVAL_DROPDOWN_TOOLTIP                           :{BLACK}Wiesselt de Revisiounsintervall
 STR_VEHICLE_DETAILS_DEFAULT                                     :Standard

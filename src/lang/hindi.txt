@@ -131,7 +131,7 @@ STR_SCENEDIT_FILE_MENU_SEPARATOR                                :
 STR_SCENEDIT_FILE_MENU_QUIT                                     :निकास
 
 # Settings menu
-###length 15
+###length 16
 STR_SETTINGS_MENU_CONFIG_SETTINGS_TREE                          :समायोजन
 STR_SETTINGS_MENU_WAYPOINTS_DISPLAYED                           :पथ-संकेतों के नाम दिखायें
 STR_SETTINGS_MENU_TRANSPARENT_SIGNS                             :पारदर्शी संकेत
@@ -205,9 +205,8 @@ STR_COMPANY_LEAGUE_PERFORMANCE_TITLE_PRESIDENT                  :राष्ट
 ###length 10
 STR_PERFORMANCE_DETAIL_VEHICLES                                 :{BLACK}वाहन:
 STR_PERFORMANCE_DETAIL_CARGO                                    :{BLACK}माल :
+###next-name-looks-similar
 
-###length 10
-STR_PERFORMANCE_DETAIL_MIN_PROFIT_TOOLTIP                       :{BLACK}सबसे कम आय में वाहन का लाभ (केवल दो वर्ष से अधिक पुराने वाहनों पर विचार किया जाता है)
 
 # Music window
 STR_MUSIC_TRACK_DIGIT                                           :{TINY_FONT}{DKGREEN}{ZEROFILL_NUM}
@@ -373,6 +372,7 @@ STR_CONFIG_SETTING_COMPANIES_OFF                                :बन्द
 
 
 
+###length 2
 
 ###setting-zero-is-special
 
@@ -410,6 +410,9 @@ STR_CONFIG_SETTING_MULTIPINDTOWN                                :प्रति
 
 ###length 3
 
+###length 2
+
+###length 2
 
 
 STR_CONFIG_SETTING_STOP_LOCATION_HELPTEXT                       :निर्दिष्ट करें कि ट्रेनों को स्टेशन पर कहाँ रुकना चाहिये। स्टेशन में प्रवेश के पास 'समीप का छोर', स्टेशन के बीच में 'मध्य', और प्रवेश की उलटी ओर 'दूर का छोर' है। ध्यान दें कि यह विन्यास केवल नये निर्देशों के लिये मानक स्थापित करता है। प्रत्येक निर्देश को अलग से किसी अन्य व्यवहार के लिये स्थापित किया जा सकता है।
@@ -420,8 +423,10 @@ STR_CONFIG_SETTING_STOP_LOCATION_FAR_END                        :दूर क�
 
 ###length 4
 
+###length 2
 STR_CONFIG_SETTING_BRIBE_HELPTEXT                               :कंपनियों को स्थानीय नगर प्रशासन को रिश्वत देने की अनुमति दें। यदि रिश्वत पर किसी निरीक्षक की दृष्टि पड़ती है तो कंपनी छः महीने के लिये नगर में काम नहीं कर पायेगी।
 
+###length 2
 
 
 
@@ -442,9 +447,13 @@ STR_CONFIG_SETTING_ORDER_REVIEW_HELPTEXT                        :सक्षम
 ###length 3
 STR_CONFIG_SETTING_ORDER_REVIEW_OFF                             :नहीं
 
+###length 2
 
 
 ###length 2
+
+
+###setting-zero-is-special
 
 
 ###length 2
@@ -531,6 +540,9 @@ STR_CONFIG_SETTING_FAST_FORWARD_SPEED_LIMIT_ZERO                :सीमाह
 
 STR_CONFIG_SETTING_SOUND_NEWS                                   :समाचार पत्र: {STRING}
 
+###length 2
+
+###length 2
 
 
 
@@ -629,7 +641,6 @@ STR_CONFIG_SETTING_DISTRIBUTION_MAIL                            :मेल क�
 
 
 
-###length 5
 STR_CONFIG_SETTING_LOCALISATION_UNITS_VELOCITY_SI               :अंतर्राष्ट्रीय मानक (m/s)
 
 ###length 3
@@ -1001,9 +1012,8 @@ STR_TOWN_VIEW_EXPAND_BUTTON                                     :{BLACK}फै�
 
 ###length 8
 STR_LOCAL_AUTHORITY_ACTION_SMALL_ADVERTISING_CAMPAIGN           :लघु विज्ञापन अभियान
+###next-name-looks-similar
 
-###length 8
-STR_LOCAL_AUTHORITY_ACTION_TOOLTIP_ROAD_RECONSTRUCTION          :{YELLOW}नगरों के सड़क तंत्र के पुनर्निर्माण में निवेश करें।{}इससे अधिकतम ६ महीने तक यातायात में बहुत विघ्न पड़ता है।{}मूल्य : {CURRENCY_LONG}
 
 # Goal window
 STR_GOALS_TEXT                                                  :{ORANGE}{STRING}

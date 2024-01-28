@@ -214,6 +214,8 @@ STR_COLOUR_SECONDARY_SAME_AS_PRIMARY                            :Sama kuin ensis
 STR_UNITS_VELOCITY_IMPERIAL                                     :{DECIMAL}{NBSP}mph
 STR_UNITS_VELOCITY_METRIC                                       :{DECIMAL}{NBSP}km/h
 STR_UNITS_VELOCITY_SI                                           :{DECIMAL}{NBSP}m/s
+STR_UNITS_VELOCITY_GAMEUNITS_DAY                                :{DECIMAL}{NBSP}ruutua/vrk
+STR_UNITS_VELOCITY_GAMEUNITS_SEC                                :{DECIMAL}{NBSP}ruutua/s
 STR_UNITS_VELOCITY_KNOTS                                        :{DECIMAL}{NBSP}solmua
 
 STR_UNITS_POWER_IMPERIAL                                        :{DECIMAL}{NBSP}hv
@@ -259,7 +261,10 @@ STR_UNITS_DAYS                                                  :{COMMA}{NBSP}vr
 STR_UNITS_SECONDS                                               :{COMMA}{NBSP}sekunti{P "" a}
 STR_UNITS_TICKS                                                 :{COMMA}{NBSP}räpäys{P "" tä}
 
+STR_UNITS_MINUTES                                               :{NUM}{NBSP}minuutti{P "" a}
 
+STR_UNITS_YEARS                                                 :{NUM}{NBSP}vuo{P si tta}
+STR_UNITS_PERIODS                                               :{NUM}{NBSP}jakso{P "" a}
 
 # Common window strings
 STR_LIST_FILTER_TITLE                                           :{BLACK}Suodatin:
@@ -428,7 +433,7 @@ STR_SCENEDIT_FILE_MENU_SEPARATOR                                :
 STR_SCENEDIT_FILE_MENU_QUIT                                     :Lopeta
 
 # Settings menu
-###length 15
+###length 16
 STR_SETTINGS_MENU_GAME_OPTIONS                                  :Pelin valinnat
 STR_SETTINGS_MENU_CONFIG_SETTINGS_TREE                          :Asetukset
 STR_SETTINGS_MENU_AI_SETTINGS                                   :Tekoälyasetukset
@@ -665,11 +670,9 @@ STR_PERFORMANCE_DETAIL_CARGO                                    :{BLACK}Rahti:
 STR_PERFORMANCE_DETAIL_MONEY                                    :{BLACK}Raha:
 STR_PERFORMANCE_DETAIL_LOAN                                     :{BLACK}Laina:
 STR_PERFORMANCE_DETAIL_TOTAL                                    :{BLACK}Yhteensä:
+###next-name-looks-similar
 
-###length 10
-STR_PERFORMANCE_DETAIL_VEHICLES_TOOLTIP                         :{BLACK}Kulkuveuvojen määrä. Tähän kuuluvat ajoneuvot, junat, laivat ja ilma-alukset
 STR_PERFORMANCE_DETAIL_STATIONS_TOOLTIP                         :{BLACK}Asemien osien määrä. Kaikki osat asemista (esim. rautatieasema, bussipysäkki, lentokenttä) lasketaan, vaikka ne olisivat yhdistettynä yhdeksi asemaksi
-STR_PERFORMANCE_DETAIL_MIN_PROFIT_TOOLTIP                       :{BLACK}Vähätuottoisimman kulkuneuvon tulo (kaikkien yli 2 vuotta vanhojen kulkuneuvojen)
 STR_PERFORMANCE_DETAIL_MIN_INCOME_TOOLTIP                       :{BLACK}Viimeisen 12 neljänneksen vähätuottoisimman kuun käteistuoton määrä
 STR_PERFORMANCE_DETAIL_MAX_INCOME_TOOLTIP                       :{BLACK}Viimeisen 12 neljänneksen korkeatuottoisimman kuun käteistuoton määrä
 STR_PERFORMANCE_DETAIL_DELIVERED_TOOLTIP                        :{BLACK}Viimeisen neljän neljänneksen kuljetetun rahdin määrä
@@ -901,7 +904,6 @@ STR_NEWS_VEHICLE_IS_GETTING_VERY_OLD                            :{WHITE}{VEHICLE
 STR_NEWS_VEHICLE_IS_GETTING_VERY_OLD_AND                        :{WHITE}{VEHICLE} on tulossa hyvin vanhaksi ja on uusimisen tarpeessa
 STR_NEWS_TRAIN_IS_STUCK                                         :{WHITE}{VEHICLE} ei löydä reittiä päämäärään
 STR_NEWS_VEHICLE_IS_LOST                                        :{WHITE}{VEHICLE} on eksynyt
-STR_NEWS_VEHICLE_IS_UNPROFITABLE                                :{WHITE}Kulkuneuvon {VEHICLE} tulos viime vuonna oli {CURRENCY_LONG}
 STR_NEWS_AIRCRAFT_DEST_TOO_FAR                                  :{WHITE}{VEHICLE} ei pääse seuraavaan määränpäähän koska se on toimintasäteen ulkopuolella
 
 STR_NEWS_ORDER_REFIT_FAILED                                     :{WHITE}Korvauksen epäonnistuminen pysäytti kulkuneuvon {VEHICLE}
@@ -918,16 +920,9 @@ STR_NEWS_STATION_NOW_ACCEPTS_CARGO_LIST                         :{WHITE}{STATION
 
 STR_NEWS_OFFER_OF_SUBSIDY_EXPIRED                               :{BIG_FONT}{BLACK}Tukitarjous päättynyt:{}{}{STRING} välillä {STRING} – {STRING} ei enää tulla tukemaan
 STR_NEWS_SUBSIDY_WITHDRAWN_SERVICE                              :{BIG_FONT}{BLACK}Tuki vedetty pois:{}{}{STRING} välillä {STRING}-{STRING} ei enää tueta
-STR_NEWS_SERVICE_SUBSIDY_OFFERED                                :{BIG_FONT}{BLACK}Tuki tarjolla:{}{}Paikallisviranomaiset tukevat ensimmäistä {STRING} välillä {STRING} – {STRING} {NUM} vuoden ajan!
 ###length 4
-STR_NEWS_SERVICE_SUBSIDY_AWARDED_HALF                           :{BIG_FONT}{BLACK}{STRING} sai tuen!{}{}{STRING} välillä {STRING} – {STRING} tuottaa puolitoistakertaisesti seuraavan {NUM} vuoden ajan!
-STR_NEWS_SERVICE_SUBSIDY_AWARDED_DOUBLE                         :{BIG_FONT}{BLACK}{STRING} sai tuen!{}{}{STRING} välillä {STRING} – {STRING} tuottaa kaksinkertaisesti seuraavan {NUM} vuoden ajan!
-STR_NEWS_SERVICE_SUBSIDY_AWARDED_TRIPLE                         :{BIG_FONT}{BLACK}{STRING} sai tuen!{}{}{STRING} välillä {STRING} – {STRING} tuottaa kolminkertaisesti seuraavan {NUM} vuoden ajan!
-STR_NEWS_SERVICE_SUBSIDY_AWARDED_QUADRUPLE                      :{BIG_FONT}{BLACK}{STRING} sai tuen!{}{}{STRING} välillä {STRING} – {STRING} tuottaa nelinkertaisesti seuraavan {NUM} vuoden ajan!
 
-STR_NEWS_ROAD_REBUILDING                                        :{BIG_FONT}{BLACK}{TOWN}: liikennekaaos!{}{}{STRING} rahoittaa katujen kunnostuksen; autoilijoille odotettavissa kuusi kuukautta kurjuutta!
 STR_NEWS_EXCLUSIVE_RIGHTS_TITLE                                 :{BIG_FONT}{BLACK}Kuljetusmonopoli!
-STR_NEWS_EXCLUSIVE_RIGHTS_DESCRIPTION                           :{BIG_FONT}{BLACK}{TOWN} ja {STRING} allekirjoittavat sopimuksen vuoden pituisesta kuljetusyksinoikeudesta!
 
 # Extra view window
 STR_EXTRA_VIEWPORT_TITLE                                        :{WHITE}Näkymä {COMMA}
@@ -945,6 +940,8 @@ STR_GAME_OPTIONS_TAB_GRAPHICS                                   :Grafiikka
 STR_GAME_OPTIONS_TAB_GRAPHICS_TT                                :{BLACK}Valitse grafiikka-asetukset
 STR_GAME_OPTIONS_TAB_SOUND                                      :Ääni
 STR_GAME_OPTIONS_TAB_SOUND_TT                                   :{BLACK}Valitse ääni- ja musiikkiasetukset
+STR_GAME_OPTIONS_TAB_SOCIAL                                     :Sosiaaliset
+STR_GAME_OPTIONS_TAB_SOCIAL_TT                                  :{BLACK}Valitse sosiaalisen integraation asetukset
 
 STR_GAME_OPTIONS_VOLUME                                         :Äänenvoimakkuus
 STR_GAME_OPTIONS_SFX_VOLUME                                     :Äänitehosteet
@@ -1084,8 +1081,13 @@ STR_GAME_OPTIONS_BASE_MUSIC                                     :{BLACK}Musiikki
 STR_GAME_OPTIONS_BASE_MUSIC_TOOLTIP                             :{BLACK}Valitse käytettävä musiikkipaketti
 STR_GAME_OPTIONS_BASE_MUSIC_DESCRIPTION_TOOLTIP                 :{BLACK}Lisätietoja musiikkipaketista
 
+STR_GAME_OPTIONS_SOCIAL_PLUGINS_NONE                            :{LTBLUE}(ei sosiaalisten alustojen integroinnin liitännäisiä asennettuna)
 
+STR_GAME_OPTIONS_SOCIAL_PLUGIN_TITLE                            :{BLACK}{STRING} ({STRING})
+STR_GAME_OPTIONS_SOCIAL_PLUGIN_STATE                            :{BLACK}Liitännäisen tila:
 
+STR_GAME_OPTIONS_SOCIAL_PLUGIN_STATE_RUNNING                    :{GREEN}Käynnissä
+STR_GAME_OPTIONS_SOCIAL_PLUGIN_STATE_FAILED                     :{RED}Alustus epäonnistui
 
 STR_BASESET_STATUS                                              :{STRING} {RED}({NUM} puuttuvaa tai vioittunutta tiedosto{P "" a})
 
@@ -1275,9 +1277,9 @@ STR_CONFIG_SETTING_SUBSIDY_MULTIPLIER                           :Tukikerroin: {S
 STR_CONFIG_SETTING_SUBSIDY_MULTIPLIER_HELPTEXT                  :Määritä kuinka paljon tuetuista yhteyksistä maksetaan
 
 STR_CONFIG_SETTING_SUBSIDY_DURATION                             :Tuen kesto: {STRING}
+###length 2
 STR_CONFIG_SETTING_SUBSIDY_DURATION_HELPTEXT                    :Aseta myönnetyn tuen kesto vuosina.
 
-STR_CONFIG_SETTING_SUBSIDY_DURATION_VALUE                       :{NUM} vuo{P "si" "tta"}
 ###setting-zero-is-special
 STR_CONFIG_SETTING_SUBSIDY_DURATION_DISABLED                    :Ei tukia
 
@@ -1373,7 +1375,10 @@ STR_CONFIG_SETTING_SIGNALSIDE_LEFT                              :Vasemmalla puol
 STR_CONFIG_SETTING_SIGNALSIDE_DRIVING_SIDE                      :Ajokaistan puolella
 STR_CONFIG_SETTING_SIGNALSIDE_RIGHT                             :Oikealla puolella
 
+###length 2
 STR_CONFIG_SETTING_SHOWFINANCES                                 :Näytä rahoitusikkuna vuoden lopussa: {STRING}
+
+###length 2
 STR_CONFIG_SETTING_SHOWFINANCES_HELPTEXT                        :Mikäli käytössä, rahoitusikkuna näytetään jokaisen vuoden lopussa yhtiön taloudellisen tilanteen seurannan helpottamiseksi
 
 STR_CONFIG_SETTING_NONSTOP_BY_DEFAULT                           :Uudet käskyt ovat oletusarvoisesti ilman välipysähdyksiä: {STRING}
@@ -1395,9 +1400,11 @@ STR_CONFIG_SETTING_AUTOSCROLL_MAIN_VIEWPORT                     :Päänäkymäss
 STR_CONFIG_SETTING_AUTOSCROLL_EVERY_VIEWPORT                    :Kaikissa näkymissä
 
 STR_CONFIG_SETTING_BRIBE                                        :Salli viranomaisten lahjominen: {STRING}
+###length 2
 STR_CONFIG_SETTING_BRIBE_HELPTEXT                               :Salli yhtiöiden yrittää paikallisviranomaisten lahjontaa. Jos lahjontayritys paljastuu, yhtiö ei voi toimia kunnassa kuuteen kuukauteen
 
 STR_CONFIG_SETTING_ALLOW_EXCLUSIVE                              :Salli kuljetusyksinoikeuksien ostaminen: {STRING}
+###length 2
 STR_CONFIG_SETTING_ALLOW_EXCLUSIVE_HELPTEXT                     :Jos yhtiö ostaa kuljetusyksinoikeudet kuntaan, vastustajien matkustaja- ja rahtiasemat eivät vastaanota rahtia seuraavan vuoden ajan
 
 STR_CONFIG_SETTING_ALLOW_FUND_BUILDINGS                         :Salli rakennusten rahoittaminen: {STRING}
@@ -1455,12 +1462,20 @@ STR_CONFIG_SETTING_ORDER_REVIEW_EXDEPOT                         :Kyllä, mutta e
 STR_CONFIG_SETTING_ORDER_REVIEW_ON                              :Kaikille kulkuneuvoille
 
 STR_CONFIG_SETTING_WARN_INCOME_LESS                             :Varoita, jos kulkuneuvon tulos on negatiivinen: {STRING}
+###length 2
 STR_CONFIG_SETTING_WARN_INCOME_LESS_HELPTEXT                    :Mikäli käytössä, uutisviesti lähetetään, jos kulkuneuvo ei ole tuottanut rahaa viimeisen kalenterivuoden aikana
 
 STR_CONFIG_SETTING_NEVER_EXPIRE_VEHICLES                        :Kulkuneuvot eivät vanhene: {STRING}
 STR_CONFIG_SETTING_NEVER_EXPIRE_VEHICLES_HELPTEXT               :Mikäli käytössä, kaikki kulkuneuvot ovat saatavilla ikuisesti niiden julkistamisen jälkeen
 
+STR_CONFIG_SETTING_TIMEKEEPING_UNITS                            :Ajanlasku: {STRING}
+STR_CONFIG_SETTING_TIMEKEEPING_UNITS_HELPTEXT                   :Valitse pelin aikayksiköt. Tätä ei voi muuttaa myöhemmin.{}{}Kalenteripohjainen on klassinen OpenTTD-kokemus, jossa vuosi koostuu 12 kuukaudesta ja jokaisessa kuukaudessa on 28–31 päivää.{}{}Seinäkellopohjaisessa ajassa sen sijaan kulkuneuvojen liikkuminen, rahdin tuotanto ja talous perustuvat yhden minuutin askeliin, mikä on suunnilleen yhtä pitkä aika kuin 30 päivän kuukausi kalenteripohjaisessa tilassa. Nämä on ryhmitelty 12 minuutin jaksoihin, jotka vastaavat vuotta kalenteripohjaisessa tilassa.{}{}Kummassakin tilassa on aina myös klassinen kalenteri, jota käytetään kulkuneuvojen sekä talojen ja muun infrastruktuurin käyttöönottoajankohtiin.
 ###length 2
+STR_CONFIG_SETTING_TIMEKEEPING_UNITS_CALENDAR                   :Kalenteri
+STR_CONFIG_SETTING_TIMEKEEPING_UNITS_WALLCLOCK                  :Seinäkello
+
+
+###setting-zero-is-special
 
 STR_CONFIG_SETTING_AUTORENEW_VEHICLE                            :Uudista kulkuneuvo automaattisesti, kun se vanhenee: {STRING}
 STR_CONFIG_SETTING_AUTORENEW_VEHICLE_HELPTEXT                   :Mikäli käytössä, lähellä käyttöikänsä loppua oleva kulkuneuvo korvataan automaattisesti
@@ -1714,7 +1729,10 @@ STR_CONFIG_SETTING_SOUND_TICKER_HELPTEXT                        :Toista ääni t
 STR_CONFIG_SETTING_SOUND_NEWS                                   :Sanomalehti: {STRING}
 STR_CONFIG_SETTING_SOUND_NEWS_HELPTEXT                          :Toista ääni sanomalehden ilmestyessä
 
+###length 2
 STR_CONFIG_SETTING_SOUND_NEW_YEAR                               :Vuoden loppu: {STRING}
+
+###length 2
 STR_CONFIG_SETTING_SOUND_NEW_YEAR_HELPTEXT                      :Toista ääni vuoden lopussa verrattaessa yhtiön tulosta edelliseen vuoteen
 
 STR_CONFIG_SETTING_SOUND_CONFIRM                                :Rakentaminen: {STRING}
@@ -2013,11 +2031,9 @@ STR_CONFIG_SETTING_SHORT_PATH_SATURATION_HELPTEXT               :Kahden aseman v
 STR_CONFIG_SETTING_LOCALISATION_UNITS_VELOCITY                  :Nopeuden yksikkö (maaliikenne): {STRING}
 STR_CONFIG_SETTING_LOCALISATION_UNITS_VELOCITY_NAUTICAL         :Nopeuden yksikkö (vesiliikenne): {STRING}
 STR_CONFIG_SETTING_LOCALISATION_UNITS_VELOCITY_HELPTEXT         :Kun käyttöliittymässä näytetään nopeus, näytä se valittua yksikköä käyttäen
-###length 5
 STR_CONFIG_SETTING_LOCALISATION_UNITS_VELOCITY_IMPERIAL         :Brittiläinen (mph)
 STR_CONFIG_SETTING_LOCALISATION_UNITS_VELOCITY_METRIC           :Metrinen (km/h)
 STR_CONFIG_SETTING_LOCALISATION_UNITS_VELOCITY_SI               :SI (m/s)
-STR_CONFIG_SETTING_LOCALISATION_UNITS_VELOCITY_GAMEUNITS        :Pelin yksiköt (ruutuja vuorokaudessa)
 STR_CONFIG_SETTING_LOCALISATION_UNITS_VELOCITY_KNOTS            :Solmut
 
 STR_CONFIG_SETTING_LOCALISATION_UNITS_POWER                     :Kulkuneuvon tehon yksikkö: {STRING}
@@ -2193,8 +2209,6 @@ STR_HELP_WINDOW_COMMUNITY                                       :{BLACK}Yhteisö
 
 # Cheat window
 STR_CHEATS                                                      :{WHITE}Huijaukset
-STR_CHEATS_TOOLTIP                                              :{BLACK}Valintaruudut osoittavat, oletko käyttänyt huijausta aiemmin
-STR_CHEATS_NOTE                                                 :{BLACK}Huom.: näiden asetusten käyttö tallentuu pelitallenteeseen
 STR_CHEAT_MONEY                                                 :{LTBLUE}Anna lisää rahaa: {CURRENCY_LONG}
 STR_CHEAT_CHANGE_COMPANY                                        :{LTBLUE}Hallinnassa oleva yhtiö: {ORANGE}{COMMA}
 STR_CHEAT_EXTRA_DYNAMITE                                        :{LTBLUE}Taikapuskutraktori (poista teollisuutta, liikuttamattomia kohteita): {ORANGE}{STRING}
@@ -2331,8 +2345,6 @@ STR_NETWORK_SERVER_LIST_MAP_SIZE_CAPTION                        :{BLACK}Kartan k
 STR_NETWORK_SERVER_LIST_MAP_SIZE_CAPTION_TOOLTIP                :{BLACK}Kartan koko{}Valitse lajitellaksesi koon mukaan
 STR_NETWORK_SERVER_LIST_DATE_CAPTION                            :{BLACK}Päiväys
 STR_NETWORK_SERVER_LIST_DATE_CAPTION_TOOLTIP                    :{BLACK}Nykyinen päivämäärä
-STR_NETWORK_SERVER_LIST_YEARS_CAPTION                           :{BLACK}Vuosia
-STR_NETWORK_SERVER_LIST_YEARS_CAPTION_TOOLTIP                   :{BLACK}Pelin kesto{}vuosina
 STR_NETWORK_SERVER_LIST_INFO_ICONS_TOOLTIP                      :{BLACK}Kieli, palvelimen versio, jne.
 
 STR_NETWORK_SERVER_LIST_CLICK_GAME_TO_SELECT                    :{BLACK}Napsauta peliä luettelossa valitaksesi
@@ -2703,9 +2715,7 @@ STR_LINKGRAPH_LEGEND_SATURATED                                  :{TINY_FONT}{BLA
 STR_LINKGRAPH_LEGEND_OVERLOADED                                 :{TINY_FONT}{BLACK}kuormittunut
 
 # Linkgraph tooltip
-STR_LINKGRAPH_STATS_TOOLTIP                                     :{BLACK}{CARGO_LONG} kuljetettavana kuukausittain asemalta {STATION} asemalle {STATION} ({COMMA}%{NBSP} kapasiteetista){STRING}
 STR_LINKGRAPH_STATS_TOOLTIP_RETURN_EXTENSION                    :{}{CARGO_LONG} kuljetettavana takaisin ({COMMA}{NBSP}% kapasiteetista)
-STR_LINKGRAPH_STATS_TOOLTIP_TIME_EXTENSION                      :{}Keskimääräinen matka-aika: {NUM}{NBSP}vrk
 
 # Base for station construction window(s)
 STR_STATION_BUILD_COVERAGE_AREA_TITLE                           :{BLACK}Vaikutusalueen korostus
@@ -2715,7 +2725,6 @@ STR_STATION_BUILD_COVERAGE_AREA_OFF_TOOLTIP                     :{BLACK}Älä ko
 STR_STATION_BUILD_COVERAGE_AREA_ON_TOOLTIP                      :{BLACK}Korosta ehdotetun tontin vaikutusalue
 STR_STATION_BUILD_ACCEPTS_CARGO                                 :{BLACK}Vastaanottaa: {GOLD}{CARGO_LIST}
 STR_STATION_BUILD_SUPPLIES_CARGO                                :{BLACK}Tuottaa: {GOLD}{CARGO_LIST}
-STR_STATION_BUILD_INFRASTRUCTURE_COST                           :{BLACK}Maintenance cost: {GOLD}{CURRENCY_SHORT}/v
 
 # Join station window
 STR_JOIN_STATION_CAPTION                                        :{WHITE}Liitä asema
@@ -3569,8 +3578,6 @@ STR_TOWN_VIEW_CARGO_FOR_TOWNGROWTH_REQUIRED_WINTER              :{ORANGE}{STRING
 STR_TOWN_VIEW_CARGO_FOR_TOWNGROWTH_DELIVERED_GENERAL            :{ORANGE}{STRING}{GREEN} kuljetettu
 STR_TOWN_VIEW_CARGO_FOR_TOWNGROWTH_REQUIRED                     :{ORANGE}{CARGO_TINY} / {CARGO_LONG}{RED} (tarvitaan lisää)
 STR_TOWN_VIEW_CARGO_FOR_TOWNGROWTH_DELIVERED                    :{ORANGE}{CARGO_TINY} / {CARGO_LONG}{GREEN} (kuljetettu)
-STR_TOWN_VIEW_TOWN_GROWS_EVERY                                  :{BLACK}Kunta kasvaa {ORANGE}{COMMA}{BLACK}{NBSP}päivän{P "" ""} välein
-STR_TOWN_VIEW_TOWN_GROWS_EVERY_FUNDED                           :{BLACK}Kunta kasvaa {ORANGE}{COMMA}{BLACK}{NBSP}päivän{P "" ""} välein (rahoitettu)
 STR_TOWN_VIEW_TOWN_GROW_STOPPED                                 :{BLACK}Kunta {RED}ei{BLACK} kasva
 STR_TOWN_VIEW_NOISE_IN_TOWN                                     :{BLACK}Meluraja kunnassa: {ORANGE}{COMMA}{BLACK}  maks.: {ORANGE}{COMMA}
 STR_TOWN_VIEW_CENTER_TOOLTIP                                    :{BLACK}Keskitä päänäkymä kunnan sijaintiin. Ctrl+napsautus avaa uuden näkymäikkunan kunnan sijaintiin.
@@ -3605,15 +3612,13 @@ STR_LOCAL_AUTHORITY_ACTION_STATUE_OF_COMPANY                    :Rakenna yhtiön
 STR_LOCAL_AUTHORITY_ACTION_NEW_BUILDINGS                        :Rahoita uusia rakennuksia
 STR_LOCAL_AUTHORITY_ACTION_EXCLUSIVE_TRANSPORT                  :Osta yksinoikeudet kuljetuksiin
 STR_LOCAL_AUTHORITY_ACTION_BRIBE                                :Lahjo viranomaisia
+###next-name-looks-similar
 
-###length 8
 STR_LOCAL_AUTHORITY_ACTION_TOOLTIP_SMALL_ADVERTISING            :{PUSH_COLOUR}{YELLOW}Käynnistä pieni mainoskampanja houkutellaksesi lisää matkustajia ja rahtia kuljetuspalveluihisi.{}Tämä kasvattaa tilapäisesti asemien arvioita pienellä säteellä kunnan keskustan ympärillä.{}{POP_COLOUR}Kustannus: {CURRENCY_LONG}
 STR_LOCAL_AUTHORITY_ACTION_TOOLTIP_MEDIUM_ADVERTISING           :{PUSH_COLOUR}{YELLOW}Käynnistä keskikokoinen mainoskampanja houkutellaksesi lisää matkustajia ja rahtia kuljetuspalveluihisi.{}Tämä kasvattaa tilapäisesti asemien arvioita keskikokoisella säteellä kunnan keskustan ympärillä.{}{POP_COLOUR}Kustannus: {CURRENCY_LONG}
 STR_LOCAL_AUTHORITY_ACTION_TOOLTIP_LARGE_ADVERTISING            :{PUSH_COLOUR}{YELLOW}Käynnistä suuri mainoskampanja hoikutellaksesi lisää matkustajia ja rahtia kuljetuspalveluihisi.{}Tämä kasvattaa tilapäisesti asemien arvioita suurella säteellä kunnan keskustan ympärillä.{}{POP_COLOUR}Kustannus: {CURRENCY_LONG}
-STR_LOCAL_AUTHORITY_ACTION_TOOLTIP_ROAD_RECONSTRUCTION          :{PUSH_COLOUR}{YELLOW}Rahoita tieverkon uudelleenrakentamista.{}Aiheuttaa huomattavaa häiriötä tieliikenteessä jopa kuuden kuukauden ajan.{}{POP_COLOUR}Kustannus: {CURRENCY_LONG}
 STR_LOCAL_AUTHORITY_ACTION_TOOLTIP_STATUE_OF_COMPANY            :{PUSH_COLOUR}{YELLOW}Rakenna patsas yhtiösi kunniaksi.{}Parantaa asemien arvioita pysyvästi tässä kunnassa.{}{POP_COLOUR}Kustannus: {CURRENCY_LONG}
 STR_LOCAL_AUTHORITY_ACTION_TOOLTIP_NEW_BUILDINGS                :{PUSH_COLOUR}{YELLOW}Rahoita uusien rakennusten rakentamista kunnassa.{}Tämä kiihdyttää tämän kunnan kasvua tilapäisesti.{}{POP_COLOUR}Kustannus: {CURRENCY_LONG}
-STR_LOCAL_AUTHORITY_ACTION_TOOLTIP_EXCLUSIVE_TRANSPORT          :{PUSH_COLOUR}{YELLOW}Osta vuodeksi yksinoikeudet liikennöintiin kunnassa.{}Tällöin paikallisviranomaiset eivät salli matkustajien ja rahdin käyttää kilpailijoittesi asemia. Sopimus raukeaa, jos kilpailija onnistuu lahjomaan viranomaiset.{}{POP_COLOUR}Kustannus: {CURRENCY_LONG}
 STR_LOCAL_AUTHORITY_ACTION_TOOLTIP_BRIBE                        :{PUSH_COLOUR}{YELLOW}Lahjo viranomaisia parantaaksesi arviotasi ja keskeyttääksesi kilpailijan kuljetusyksinoikeuden; rangaistus voi kuitenkin olla ankara, jos jäät kiinni.{}{POP_COLOUR}Kustannus: {CURRENCY_LONG}
 
 # Goal window
@@ -3663,6 +3668,8 @@ STR_SUBSIDIES_OFFERED_TITLE                                     :{BLACK}Tarjotut
 STR_SUBSIDIES_NONE                                              :{ORANGE}- Ei mitään -
 STR_SUBSIDIES_SUBSIDISED_TITLE                                  :{BLACK}Käytetyt tuet:
 STR_SUBSIDIES_TOOLTIP_CLICK_ON_SERVICE_TO_CENTER                :{BLACK}Napsauta kuljetusyhteyttä keskittääksesi päänäkymän laitokseen/kuntaan. Ctrl+napsautus avaa uuden näkymäikkunan laitoksen/kunnan sijaintiin.
+STR_SUBSIDIES_OFFERED_EXPIRY_DATE                               :viimeistään {DATE_SHORT}
+STR_SUBSIDIES_SUBSIDISED_EXPIRY_DATE                            :{DATE_SHORT} asti
 
 # Story book window
 STR_STORY_BOOK_CAPTION                                          :{WHITE}{COMPANY}: historia
@@ -3679,7 +3686,7 @@ STR_STORY_BOOK_INVALID_GOAL_REF                                 :{RED}Virheellin
 
 # Station list window
 STR_STATION_LIST_TOOLTIP                                        :{BLACK}Asemien nimet – napsauta nimeä keskittääksesi päänäkymän asemaan. Ctrl+napsautus avaa uuden näkymäikkunan aseman sijaintiin.
-STR_STATION_LIST_USE_CTRL_TO_SELECT_MORE                        :{BLACK}Pidä Ctrl-näppäin painettuna valitaksesi useamman kuin yhden vaihtoehdon
+STR_STATION_LIST_USE_CTRL_TO_SELECT_MORE                        :{BLACK}Ctrl+napsautus valitsee useamman kohteen
 STR_STATION_LIST_CAPTION                                        :{WHITE}{COMPANY} – {COMMA} asema{P "" a}
 STR_STATION_LIST_STATION                                        :{YELLOW}{STATION} {STATION_FEATURES}
 STR_STATION_LIST_WAYPOINT                                       :{YELLOW}{WAYPOINT}
@@ -3702,7 +3709,6 @@ STR_STATION_VIEW_EXCLUSIVE_RIGHTS_COMPANY                       :{YELLOW}{COMPAN
 
 STR_STATION_VIEW_RATINGS_BUTTON                                 :{BLACK}Arviot
 STR_STATION_VIEW_RATINGS_TOOLTIP                                :{BLACK}Näytä aseman arviot
-STR_STATION_VIEW_SUPPLY_RATINGS_TITLE                           :{BLACK}Kuukausittainen tarjonta ja paikallinen arvio:
 STR_STATION_VIEW_CARGO_SUPPLY_RATING                            :{WHITE}{STRING}: {YELLOW}{COMMA} / {STRING} ({COMMA}{NBSP}%)
 
 STR_STATION_VIEW_GROUP                                          :{BLACK}Ryhmittele
@@ -3864,7 +3870,6 @@ STR_COMPANY_INFRASTRUCTURE_VIEW_CANALS                          :{WHITE}Kanavat
 STR_COMPANY_INFRASTRUCTURE_VIEW_STATION_SECT                    :{GOLD}Asemat:
 STR_COMPANY_INFRASTRUCTURE_VIEW_STATIONS                        :{WHITE}Asemaruudut
 STR_COMPANY_INFRASTRUCTURE_VIEW_AIRPORTS                        :{WHITE}Lentokentät
-STR_COMPANY_INFRASTRUCTURE_VIEW_TOTAL                           :{WHITE}{CURRENCY_LONG}/vuosi
 
 # Industry directory
 STR_INDUSTRY_DIRECTORY_CAPTION                                  :{WHITE}Teollisuuslaitokset
@@ -3997,7 +4002,6 @@ STR_PURCHASE_INFO_SPEED_POWER                                   :{BLACK}Nopeus: 
 STR_PURCHASE_INFO_SPEED                                         :{BLACK}Nopeus: {GOLD}{VELOCITY}
 STR_PURCHASE_INFO_SPEED_OCEAN                                   :{BLACK}Nopeus merellä: {GOLD}{VELOCITY}
 STR_PURCHASE_INFO_SPEED_CANAL                                   :{BLACK}Nopeus kanaalissa/joella: {GOLD}{VELOCITY}
-STR_PURCHASE_INFO_RUNNINGCOST                                   :{BLACK}Käyttökustannus: {GOLD}{CURRENCY_LONG}/vuosi
 STR_PURCHASE_INFO_CAPACITY                                      :{BLACK}Kapasiteetti: {GOLD}{CARGO_LONG} {STRING}
 STR_PURCHASE_INFO_REFITTABLE                                    :(sovitettavissa)
 STR_PURCHASE_INFO_DESIGNED_LIFE                                 :{BLACK}Suunniteltu: {GOLD}{NUM}{BLACK} Elinikä: {GOLD}{COMMA} vuo{P si tta}
@@ -4190,13 +4194,6 @@ STR_ENGINE_PREVIEW_TRAM_VEHICLE                                 :raitiovaunu
 STR_ENGINE_PREVIEW_AIRCRAFT                                     :ilma-alus
 STR_ENGINE_PREVIEW_SHIP                                         :laiva
 
-STR_ENGINE_PREVIEW_COST_WEIGHT_SPEED_POWER                      :{BLACK}Hinta: {CURRENCY_LONG} Paino: {WEIGHT_SHORT}{}Nopeus: {VELOCITY}  Teho: {POWER}{}Käyttökustannukset: {CURRENCY_LONG}/vuosi{}Kapasiteetti: {CARGO_LONG}
-STR_ENGINE_PREVIEW_COST_WEIGHT_SPEED_POWER_MAX_TE               :{BLACK}Hinta: {0:CURRENCY_LONG} Paino: {1:WEIGHT_SHORT}{}Nopeus: {2:VELOCITY}  Teho: {3:POWER}  Maksimivetovoima: {6:FORCE}{}Käyttökustannukset: {4:CURRENCY_LONG}/yr{}Kapasiteetti: {5:CARGO_LONG}
-STR_ENGINE_PREVIEW_COST_MAX_SPEED_CAP_RUNCOST                   :{BLACK}Hinta: {CURRENCY_LONG} Huippunopeus: {VELOCITY}{}Kapasiteetti: {CARGO_LONG}{}Käyttökustannukset: {CURRENCY_LONG}/v
-STR_ENGINE_PREVIEW_COST_MAX_SPEED_TYPE_CAP_CAP_RUNCOST          :{BLACK}Hinta: {CURRENCY_LONG} Huippunopeus: {VELOCITY}{}Ilma-alustyyppi: {STRING}{}Kapasiteetti: {CARGO_LONG}, {CARGO_LONG}{}Käyttökustannukset: {CURRENCY_LONG}/v
-STR_ENGINE_PREVIEW_COST_MAX_SPEED_TYPE_CAP_RUNCOST              :{BLACK}Hinta: {CURRENCY_LONG} Huippunopeus: {VELOCITY}{}Ilma-alustyyppi: {STRING}{}Kapasiteetti: {CARGO_LONG}{}Käyttökustannukset: {CURRENCY_LONG}/v
-STR_ENGINE_PREVIEW_COST_MAX_SPEED_TYPE_RANGE_CAP_CAP_RUNCOST    :{BLACK}Hinta: {CURRENCY_LONG} Huippunopeus: {VELOCITY}{}Ilma-alustyyppi: {STRING} Toimintamatka: {COMMA} ruutua{}Kapasiteetti: {CARGO_LONG}, {CARGO_LONG}{}Käyttökustannukset: {CURRENCY_LONG}/v
-STR_ENGINE_PREVIEW_COST_MAX_SPEED_TYPE_RANGE_CAP_RUNCOST        :{BLACK}Hinta: {CURRENCY_LONG} Huippunopeus: {VELOCITY}{}Ilma-alustyyppi: {STRING} Toimintamatka: {COMMA} ruutua{}Kapasiteetti: {CARGO_LONG}{}Käyttökustannukset: {CURRENCY_LONG}/v
 
 # Autoreplace window
 STR_REPLACE_VEHICLES_WHITE                                      :{WHITE}Korvaa {STRING} – {STRING}
@@ -4361,8 +4358,9 @@ STR_VEHICLE_INFO_CAPACITY_CAPACITY                              :{BLACK}Kapasite
 
 STR_VEHICLE_INFO_FEEDER_CARGO_VALUE                             :{BLACK}Siirron arvo: {LTBLUE}{CURRENCY_LONG}
 
-STR_VEHICLE_DETAILS_INCREASE_SERVICING_INTERVAL_TOOLTIP         :{BLACK}Kasvata huoltoväliä kymmenellä. Ctrl+napsautus kasvattaa huoltoväliä viidellä.
-STR_VEHICLE_DETAILS_DECREASE_SERVICING_INTERVAL_TOOLTIP         :{BLACK}Pienennä huoltoväliä kymmenellä. Ctrl+napsautus pienentää huoltoväliä viidellä.
+STR_VEHICLE_DETAILS_SERVICING_INTERVAL_MINUTES                  :{BLACK}Huoltoväli: {LTBLUE}{COMMA}{NBSP}minuuttia{BLACK}   {STRING}
+STR_VEHICLE_DETAILS_LAST_SERVICE_DATE                           :Viimeksi huollettu: {LTBLUE}{DATE_LONG}
+STR_VEHICLE_DETAILS_LAST_SERVICE_MINUTES_AGO                    :Last service: {LTBLUE}{NUM} minuuttia sitten
 
 STR_SERVICE_INTERVAL_DROPDOWN_TOOLTIP                           :{BLACK}Muuta huoltovälien tyyppiä
 STR_VEHICLE_DETAILS_DEFAULT                                     :Oletus

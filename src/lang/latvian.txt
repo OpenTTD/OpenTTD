@@ -430,7 +430,7 @@ STR_SCENEDIT_FILE_MENU_SEPARATOR                                :
 STR_SCENEDIT_FILE_MENU_QUIT                                     :Iziet
 
 # Settings menu
-###length 15
+###length 16
 STR_SETTINGS_MENU_GAME_OPTIONS                                  :Spēles opcijas
 STR_SETTINGS_MENU_CONFIG_SETTINGS_TREE                          :Iestatījumi
 STR_SETTINGS_MENU_AI_SETTINGS                                   :AI iestatījumi
@@ -667,11 +667,9 @@ STR_PERFORMANCE_DETAIL_CARGO                                    :{BLACK}Krava:
 STR_PERFORMANCE_DETAIL_MONEY                                    :{BLACK}Nauda:
 STR_PERFORMANCE_DETAIL_LOAN                                     :{BLACK}Aizdevums:
 STR_PERFORMANCE_DETAIL_TOTAL                                    :{BLACK}Kopā:
+###next-name-looks-similar
 
-###length 10
-STR_PERFORMANCE_DETAIL_VEHICLES_TOOLTIP                         :{BLACK}Transportlīdzekļi, kuri iepriekšējā gadā ir nesuši peļņu. Ietver autotransporta līdzekļus, vilcienus, kuģus un lidaparātus
 STR_PERFORMANCE_DETAIL_STATIONS_TOOLTIP                         :{BLACK}Nesen apkalpoto staciju skaits. Dzelzceļa stacijas, autoostas, lidostas un tamlīdzīgas tiek skaitītas kā atsevišķas, pat ja tās ir savienotas kā viena stacija
-STR_PERFORMANCE_DETAIL_MIN_PROFIT_TOOLTIP                       :{BLACK}Transportlīdzekļa, kuram ir mazākie ienākumi, peļņa (ņemti vērā tikai transportlīdzekļi, kuri vecāki par 2 gadiem)
 STR_PERFORMANCE_DETAIL_MIN_INCOME_TOOLTIP                       :{BLACK}Nopelnītās naudas daudzums ceturksnī ar vismazāko peļņu pēdējos 12 ceturkšņos
 STR_PERFORMANCE_DETAIL_MAX_INCOME_TOOLTIP                       :{BLACK}Nopelnītās naudas daudzums ceturksnī ar vislielāko peļņu pēdējos 12 ceturkšņos
 STR_PERFORMANCE_DETAIL_DELIVERED_TOOLTIP                        :{BLACK}Kravu vienības , kas piegādātas pēdējos četros ceturkšņos
@@ -903,7 +901,6 @@ STR_NEWS_VEHICLE_IS_GETTING_VERY_OLD                            :{WHITE}{VEHICLE
 STR_NEWS_VEHICLE_IS_GETTING_VERY_OLD_AND                        :{WHITE}{VEHICLE} ir kļuvis ļoti vecs un tam steidzami nepieciešama nomaiņa
 STR_NEWS_TRAIN_IS_STUCK                                         :{WHITE}{VEHICLE} nevar atrast ceļu, lai turpinātu
 STR_NEWS_VEHICLE_IS_LOST                                        :{WHITE}{VEHICLE} ir apmaldījies
-STR_NEWS_VEHICLE_IS_UNPROFITABLE                                :{WHITE}{VEHICLE} iepriekšējā gada peļņa bija {CURRENCY_LONG}
 STR_NEWS_AIRCRAFT_DEST_TOO_FAR                                  :{WHITE}{VEHICLE} nevar doties uz nākamo galamērķi, jo tas ir ārpus apgabala
 
 STR_NEWS_ORDER_REFIT_FAILED                                     :{WHITE}{VEHICLE} ir apstājies, jo neizdevās pasūtītā pielāgošana
@@ -920,16 +917,9 @@ STR_NEWS_STATION_NOW_ACCEPTS_CARGO_LIST                         :{WHITE}{STATION
 
 STR_NEWS_OFFER_OF_SUBSIDY_EXPIRED                               :{BIG_FONT}{BLACK}Subsīdijas piedāvājums beidzies:{}{}{STRING} no {STRING} uz {STRING} subsidēšana ir atcelta
 STR_NEWS_SUBSIDY_WITHDRAWN_SERVICE                              :{BIG_FONT}{BLACK}Subsidēšana atcelta:{}{}{STRING} pārvadājumi no {STRING} uz {STRING} turpmāk vairs netiek subsidēti
-STR_NEWS_SERVICE_SUBSIDY_OFFERED                                :{BIG_FONT}{BLACK}Līnijas subsīdijas piedāvājums:{}{}Krava: {STRING} no{STRING} uz {STRING} piesaistīs {NUM} gadu subsīdijas no vietējās pašvaldības!
 ###length 4
-STR_NEWS_SERVICE_SUBSIDY_AWARDED_HALF                           :{BIG_FONT}{BLACK}Līnijas subsīdija tiek piešķirta {STRING}!{}{}{STRING} no {STRING} uz {STRING} tiks maksāts 50% vairāk nākamos {NUM} gad{P u us us}!
-STR_NEWS_SERVICE_SUBSIDY_AWARDED_DOUBLE                         :{BIG_FONT}{BLACK}Līnijas subsīdija tiek piešķrita {STRING}!{}{}{STRING} no {STRING} uz {STRING} tiks maksātas dubultās likmes nākamos {NUM} gad{P u us us}!
-STR_NEWS_SERVICE_SUBSIDY_AWARDED_TRIPLE                         :{BIG_FONT}{BLACK}Līnijas subsīdija tiek piešķirta {STRING}!{}{}{STRING} no {STRING} uz {STRING} tiks maksātas trīskāršas likmes nākamos {NUM} gad{P u us us}!
-STR_NEWS_SERVICE_SUBSIDY_AWARDED_QUADRUPLE                      :{BIG_FONT}{BLACK}Līnijas subsīdija tiek piešķirta {STRING}!{}{}{STRING} no {STRING} uz {STRING} tiks maksātas cetrkāršās likmes nākamos {NUM} gad{P u us us}!
 
-STR_NEWS_ROAD_REBUILDING                                        :{BIG_FONT}{BLACK}Satiksmes haoss {TOWN}!{}{}{STRING} apmaksātie ielu pārbūves darbi rada vājprātu uz ielām pusgada garumā!
 STR_NEWS_EXCLUSIVE_RIGHTS_TITLE                                 :{BIG_FONT}{BLACK}Pārvadājumu monopols!
-STR_NEWS_EXCLUSIVE_RIGHTS_DESCRIPTION                           :{BIG_FONT}{BLACK}{TOWN} vietējā pašvaldība panāk vienošanos ar {STRING} par pārvadājumu izņēmuma tiesībām uz vienu gadu!
 
 # Extra view window
 STR_EXTRA_VIEWPORT_TITLE                                        :{WHITE}Skatvieta {COMMA}
@@ -1273,9 +1263,9 @@ STR_CONFIG_SETTING_SUBSIDY_MULTIPLIER                           :Subsīdiju reiz
 STR_CONFIG_SETTING_SUBSIDY_MULTIPLIER_HELPTEXT                  :Iestatīt, cik daudz maksāt par subsidētajiem savienojumiem
 
 STR_CONFIG_SETTING_SUBSIDY_DURATION                             :Subsīdiju ilgums: {STRING}
+###length 2
 STR_CONFIG_SETTING_SUBSIDY_DURATION_HELPTEXT                    :Nosakiet gadu skaitu, par kuru tiek piešķirta subsīdija
 
-STR_CONFIG_SETTING_SUBSIDY_DURATION_VALUE                       :{NUM} {P gads gadu gadus}
 ###setting-zero-is-special
 STR_CONFIG_SETTING_SUBSIDY_DURATION_DISABLED                    :Bez subsīdijām
 
@@ -1371,7 +1361,10 @@ STR_CONFIG_SETTING_SIGNALSIDE_LEFT                              :kreisajā pusē
 STR_CONFIG_SETTING_SIGNALSIDE_DRIVING_SIDE                      :braukšanas pusē
 STR_CONFIG_SETTING_SIGNALSIDE_RIGHT                             :labajā pusē
 
+###length 2
 STR_CONFIG_SETTING_SHOWFINANCES                                 :Gada beigās rādīt finanšu pārskatu: {STRING}
+
+###length 2
 STR_CONFIG_SETTING_SHOWFINANCES_HELPTEXT                        :Ja ieslēgts, katra gada beigās uznirst finanšu logs, lai varētu viegli pārbaudīt uzņēmuma finansiālo stāvokli
 
 STR_CONFIG_SETTING_NONSTOP_BY_DEFAULT                           :Jaunie rīkojumi noklusējumā ir 'bez pieturām': {STRING}
@@ -1393,9 +1386,11 @@ STR_CONFIG_SETTING_AUTOSCROLL_MAIN_VIEWPORT                     :galveno skatvie
 STR_CONFIG_SETTING_AUTOSCROLL_EVERY_VIEWPORT                    :katru skatvietu
 
 STR_CONFIG_SETTING_BRIBE                                        :Atļaut piekukuļot vietējās pašvaldības: {STRING}
+###length 2
 STR_CONFIG_SETTING_BRIBE_HELPTEXT                               :Lauj uzņēmumiem mēģināt piekukuļot pilsētu vietējo pašvaldību. Ja inspektors paziņo par kukuli, tad uzņēmums pilsētā nevarēs darboties sešus mēnešus
 
 STR_CONFIG_SETTING_ALLOW_EXCLUSIVE                              :Atļaut pirkt pārvadājumu izņēmuma tiesības: {STRING}
+###length 2
 STR_CONFIG_SETTING_ALLOW_EXCLUSIVE_HELPTEXT                     :Ja uzņēmums pērk pārvadājumu izņēmuma tiesības pilsētā, pretinieku stacijas (pasažieru un kravas) veselu gadu nesaņems nekādu kravu
 
 STR_CONFIG_SETTING_ALLOW_FUND_BUILDINGS                         :Atļaut ēku finansēšanu: {STRING}
@@ -1453,12 +1448,16 @@ STR_CONFIG_SETTING_ORDER_REVIEW_EXDEPOT                         :jā, izņemot a
 STR_CONFIG_SETTING_ORDER_REVIEW_ON                              :visiem transportlīdzekļiem
 
 STR_CONFIG_SETTING_WARN_INCOME_LESS                             :Brīdināt, ja transportlīdzekļa ienākumi ir negatīvi: {STRING}
+###length 2
 STR_CONFIG_SETTING_WARN_INCOME_LESS_HELPTEXT                    :Ja ieslēgts, tiks sūtīts ziņojums gadījumā kad transportlīdzeklis negūst nekādu peļņu kalendārā gada laikā
 
 STR_CONFIG_SETTING_NEVER_EXPIRE_VEHICLES                        :Transportlīdzekļi nekad "nemirst": {STRING}
 STR_CONFIG_SETTING_NEVER_EXPIRE_VEHICLES_HELPTEXT               :Kad ieslēgts, visi transportlīdzekļu modeļi pēc to ieviešanas vienmēr ir pieejami
 
 ###length 2
+
+
+###setting-zero-is-special
 
 STR_CONFIG_SETTING_AUTORENEW_VEHICLE                            :Automātiski atjaunot transportlīdzekļus, kad tie ir kļuvuši veci: {STRING}
 STR_CONFIG_SETTING_AUTORENEW_VEHICLE_HELPTEXT                   :Ja ieslēgts, kad ir atbilstoši atjaunošanas apstākļi, automātiski tiek nomainīti transportlīdzekļi kuru kalpošanas laiks tuvojas beigām
@@ -1712,7 +1711,10 @@ STR_CONFIG_SETTING_SOUND_TICKER_HELPTEXT                        :Atskaņot apkop
 STR_CONFIG_SETTING_SOUND_NEWS                                   :Avīze: {STRING}
 STR_CONFIG_SETTING_SOUND_NEWS_HELPTEXT                          :Atskaņot skaņu kad tiek rādītas avīzes
 
+###length 2
 STR_CONFIG_SETTING_SOUND_NEW_YEAR                               :Gada beigas: {STRING}
+
+###length 2
 STR_CONFIG_SETTING_SOUND_NEW_YEAR_HELPTEXT                      :Atskaņot skaņu gada beigās, apkopojot uzņēmuma darbības sasniegumus gada laikā salīdzinājumā ar iepriekšējo gadu
 
 STR_CONFIG_SETTING_SOUND_CONFIRM                                :Būvniecība: {STRING}
@@ -2011,11 +2013,9 @@ STR_CONFIG_SETTING_SHORT_PATH_SATURATION_HELPTEXT               :Nereti starp di
 STR_CONFIG_SETTING_LOCALISATION_UNITS_VELOCITY                  :Ātruma vienības (sauszemes): {STRING}
 STR_CONFIG_SETTING_LOCALISATION_UNITS_VELOCITY_NAUTICAL         :Ātruma vienības (jūras): {STRING}
 STR_CONFIG_SETTING_LOCALISATION_UNITS_VELOCITY_HELPTEXT         :Vai lietotāja saskarnē rāda ātrumu, rādīt norādītajās mērvienībās
-###length 5
 STR_CONFIG_SETTING_LOCALISATION_UNITS_VELOCITY_IMPERIAL         :impērijas, britu (jūdzes stundā)
 STR_CONFIG_SETTING_LOCALISATION_UNITS_VELOCITY_METRIC           :metriskās (km/h)
 STR_CONFIG_SETTING_LOCALISATION_UNITS_VELOCITY_SI               :SI, starptautiskās (m/s)
-STR_CONFIG_SETTING_LOCALISATION_UNITS_VELOCITY_GAMEUNITS        :Spēles vienības (lauciņi/dienas)
 STR_CONFIG_SETTING_LOCALISATION_UNITS_VELOCITY_KNOTS            :Mezgli
 
 STR_CONFIG_SETTING_LOCALISATION_UNITS_POWER                     :Transportlīdzekļu jaudas mērvienības: {STRING}
@@ -2193,8 +2193,6 @@ STR_HELP_WINDOW_COMMUNITY                                       :{BLACK}Kopiena
 
 # Cheat window
 STR_CHEATS                                                      :{WHITE}Blēdības
-STR_CHEATS_TOOLTIP                                              :{BLACK}Atzīmētās rūtiņas norāda uz to, vai esat jau izmantojis šo blēdību
-STR_CHEATS_NOTE                                                 :{BLACK}Piezīme: Šo iestatījumu lietojums tiks ierakstīs arī spēles saglabājumā
 STR_CHEAT_MONEY                                                 :{LTBLUE}Palielināt naudas līdzekļus par {CURRENCY_LONG}
 STR_CHEAT_CHANGE_COMPANY                                        :{LTBLUE}Spēlēt kā uzņēmumam: {ORANGE}{COMMA}
 STR_CHEAT_EXTRA_DYNAMITE                                        :{LTBLUE}Burvju buldozers (nojauc ražotnes, nepārvietojamus objektus): {ORANGE}{STRING}
@@ -2331,8 +2329,6 @@ STR_NETWORK_SERVER_LIST_MAP_SIZE_CAPTION                        :{BLACK}Kartes i
 STR_NETWORK_SERVER_LIST_MAP_SIZE_CAPTION_TOOLTIP                :{BLACK}Spēles kartes izmērs{}Klikšķināt, lai šķirotu laukumos
 STR_NETWORK_SERVER_LIST_DATE_CAPTION                            :{BLACK}Datums
 STR_NETWORK_SERVER_LIST_DATE_CAPTION_TOOLTIP                    :{BLACK}Šībrīža datums
-STR_NETWORK_SERVER_LIST_YEARS_CAPTION                           :{BLACK}Gadi
-STR_NETWORK_SERVER_LIST_YEARS_CAPTION_TOOLTIP                   :{BLACK}Gadu skaits{}spēle ir palaista
 STR_NETWORK_SERVER_LIST_INFO_ICONS_TOOLTIP                      :{BLACK}Valoda, servera versija utt.
 
 STR_NETWORK_SERVER_LIST_CLICK_GAME_TO_SELECT                    :{BLACK}Klikšķināt sarakstā uz spēles, lai to izvēlētos
@@ -2703,9 +2699,7 @@ STR_LINKGRAPH_LEGEND_SATURATED                                  :{TINY_FONT}{BLA
 STR_LINKGRAPH_LEGEND_OVERLOADED                                 :{TINY_FONT}{BLACK}pārslogots
 
 # Linkgraph tooltip
-STR_LINKGRAPH_STATS_TOOLTIP                                     :{BLACK}{CARGO_LONG}, kas jāpārvadā mēnesī no {STATION} uz {STATION} ({COMMA}% no parvadājuma){STRING}
 STR_LINKGRAPH_STATS_TOOLTIP_RETURN_EXTENSION                    :{}{CARGO_LONG} jātransportē atpakaļ ({COMMA}% no pārvadājuma)
-STR_LINKGRAPH_STATS_TOOLTIP_TIME_EXTENSION                      :{}Vidējais ceļojuma laiks: {NUM}{NBSP}dienas
 
 # Base for station construction window(s)
 STR_STATION_BUILD_COVERAGE_AREA_TITLE                           :{BLACK}Pārklājuma iezīmēšana
@@ -2715,7 +2709,6 @@ STR_STATION_BUILD_COVERAGE_AREA_OFF_TOOLTIP                     :{BLACK}Neiezīm
 STR_STATION_BUILD_COVERAGE_AREA_ON_TOOLTIP                      :{BLACK}Iezīmēt jaunceļamā objekta pārklājumu
 STR_STATION_BUILD_ACCEPTS_CARGO                                 :{BLACK}Pieņem: {GOLD}{CARGO_LIST}
 STR_STATION_BUILD_SUPPLIES_CARGO                                :{BLACK}Piegādā: {GOLD}{CARGO_LIST}
-STR_STATION_BUILD_INFRASTRUCTURE_COST                           :{BLACK}Uzturēšanas izmaksas: {GOLD}{CURRENCY_SHORT}/gadā
 
 # Join station window
 STR_JOIN_STATION_CAPTION                                        :{WHITE}Pievienot staciju
@@ -3573,8 +3566,6 @@ STR_TOWN_VIEW_CARGO_FOR_TOWNGROWTH_REQUIRED_WINTER              :{ORANGE}{STRING
 STR_TOWN_VIEW_CARGO_FOR_TOWNGROWTH_DELIVERED_GENERAL            :{ORANGE}{STRING}{GREEN} piegādāts
 STR_TOWN_VIEW_CARGO_FOR_TOWNGROWTH_REQUIRED                     :{ORANGE}{CARGO_TINY} / {CARGO_LONG}{RED} (joprojām pieprasīts)
 STR_TOWN_VIEW_CARGO_FOR_TOWNGROWTH_DELIVERED                    :{ORANGE}{CARGO_TINY} / {CARGO_LONG}{GREEN} (piegādāts)
-STR_TOWN_VIEW_TOWN_GROWS_EVERY                                  :{BLACK}Pilsēta aug katr{P 0 u as u} {ORANGE}{COMMA}{BLACK}{NBSP}dien{P u as u}
-STR_TOWN_VIEW_TOWN_GROWS_EVERY_FUNDED                           :{BLACK}Pilsēta aug katr{P 0 u as u} {ORANGE}{COMMA}{BLACK}{NBSP}dien{P u as u} (finansēta)
 STR_TOWN_VIEW_TOWN_GROW_STOPPED                                 :{BLACK}Pilsēta {RED}neattīstās{BLACK}
 STR_TOWN_VIEW_NOISE_IN_TOWN                                     :{BLACK}Trokšņu ierobežojums pilsētā: {ORANGE}{COMMA}{BLACK}  maks.: {ORANGE}{COMMA}
 STR_TOWN_VIEW_CENTER_TOOLTIP                                    :{BLACK}Centrēt galveno skatu uz pilsētu. Ctrl+klikšķis atvērs skatu uz pilsētu jaunā skatlaukā
@@ -3609,15 +3600,13 @@ STR_LOCAL_AUTHORITY_ACTION_STATUE_OF_COMPANY                    :Uzbūvēt uzņ�
 STR_LOCAL_AUTHORITY_ACTION_NEW_BUILDINGS                        :Finansēt jaunas ēkas
 STR_LOCAL_AUTHORITY_ACTION_EXCLUSIVE_TRANSPORT                  :Pirkt pārvadājumu izņēmuma tiesības
 STR_LOCAL_AUTHORITY_ACTION_BRIBE                                :Dot kukuli pašvaldībai
+###next-name-looks-similar
 
-###length 8
 STR_LOCAL_AUTHORITY_ACTION_TOOLTIP_SMALL_ADVERTISING            :{PUSH_COLOUR}{YELLOW}Sāciet nelielu vietējo reklāmas kampaņu, lai piesaistītu vairāk pasažieru un kravas saviem transporta pakalpojumiem.{}Nodrošina īslaicīgu staciju vērtējuma palielinājumu nelielā rādiusā ap pilsētas centru.{}{POP_COLOUR}Izmaksas: {CURRENCY_LONG}
 STR_LOCAL_AUTHORITY_ACTION_TOOLTIP_MEDIUM_ADVERTISING           :{PUSH_COLOUR}{YELLOW}Veiciet vidējo reklāmas kampaņu lai palielinātu pasažieru un kravu parvadājumu savās stacijās.{}Tas īslaicīgi palielinās to staciju vērtējumu, kuras atrodas netālu no pilsētas centra.{}{POP_COLOUR}Izmaksas: {CURRENCY_LONG}
 STR_LOCAL_AUTHORITY_ACTION_TOOLTIP_LARGE_ADVERTISING            :{PUSH_COLOUR}{YELLOW}Sāciet lielu vietējo reklāmas kampaņu lai piesaistītu vairāk pasažieru un kravas saviem transporta pakalpojumiem.{}Nodrošina īslaicīgu staciju vērtējuma palielinājumu lielā rādiusā ap pilsētas centru.{}{POP_COLOUR}Izmaksas: {CURRENCY_LONG}
-STR_LOCAL_AUTHORITY_ACTION_TOOLTIP_ROAD_RECONSTRUCTION          :{PUSH_COLOUR}{YELLOW}Finansējiet pilsētas ceļu tīkla rekonstrukciju.{}Līdz 6 mēnešiem rada ievērojamus ceļu satiksmes traucējumus.{}{POP_COLOUR}Izmaksas: {CURRENCY_LONG}
 STR_LOCAL_AUTHORITY_ACTION_TOOLTIP_STATUE_OF_COMPANY            :{PUSH_COLOUR}{YELLOW}Uzceliet statuju par godu savam uzņēmumam.{}Nodrošina pastāvīgu staciju vērtējuma palielinājumu šajā pilsētā.{}{POP_COLOUR}Izmaksas: {CURRENCY_LONG}
 STR_LOCAL_AUTHORITY_ACTION_TOOLTIP_NEW_BUILDINGS                :{PUSH_COLOUR}{YELLOW}Finansējiet jaunu ēku celtniecību pilsētā.{}Nodrošina īslaicīgu stimulu pilsētas izaugsmei šajā pilsētā.{}{POP_COLOUR}Izmaksas: {CURRENCY_LONG}
-STR_LOCAL_AUTHORITY_ACTION_TOOLTIP_EXCLUSIVE_TRANSPORT          :{PUSH_COLOUR}{YELLOW}Iegādājieties 1 gada ekskluzīvas transporta tiesības pilsētā.{}Pilsētas pašvaldība neļaus pasažieriem un kravai izmantot jūsu konkurentu stacijas. Veiksmīgs kukulis no konkurenta atcels šo līgumu.{}{POP_COLOUR}Izmaksas: {CURRENCY_LONG}
 STR_LOCAL_AUTHORITY_ACTION_TOOLTIP_BRIBE                        :{PUSH_COLOUR}{YELLOW}Piekukuļot vietējo pašvaldību, lai paaugstinātu savu vērtējumu un atceltu konkurenta ekskluzīvās transporta tiesības, riskējot ar bargu sodu, ja tiksiet pieķerts.{}{POP_COLOUR}Izmaksas: {CURRENCY_LONG}
 
 # Goal window
@@ -3708,7 +3697,6 @@ STR_STATION_VIEW_EXCLUSIVE_RIGHTS_COMPANY                       :{YELLOW}{COMPAN
 
 STR_STATION_VIEW_RATINGS_BUTTON                                 :{BLACK}Vērtējumi
 STR_STATION_VIEW_RATINGS_TOOLTIP                                :{BLACK}Rādīt stacijas vērtējumus
-STR_STATION_VIEW_SUPPLY_RATINGS_TITLE                           :{BLACK}Mēneša apgāde un vietējais vērtējums:
 STR_STATION_VIEW_CARGO_SUPPLY_RATING                            :{WHITE}{STRING}: {YELLOW}{COMMA} / {STRING} ({COMMA}%)
 
 STR_STATION_VIEW_GROUP                                          :{BLACK}Grupēt pēc
@@ -3870,7 +3858,6 @@ STR_COMPANY_INFRASTRUCTURE_VIEW_CANALS                          :{WHITE}Kanāli
 STR_COMPANY_INFRASTRUCTURE_VIEW_STATION_SECT                    :{GOLD}Stacijas:
 STR_COMPANY_INFRASTRUCTURE_VIEW_STATIONS                        :{WHITE}Staciju lauciņi
 STR_COMPANY_INFRASTRUCTURE_VIEW_AIRPORTS                        :{WHITE}Lidostas
-STR_COMPANY_INFRASTRUCTURE_VIEW_TOTAL                           :{WHITE}{CURRENCY_LONG} gadā
 
 # Industry directory
 STR_INDUSTRY_DIRECTORY_CAPTION                                  :{WHITE}Ražotnes
@@ -4004,7 +3991,6 @@ STR_PURCHASE_INFO_SPEED_POWER                                   :{BLACK}Ātrums:
 STR_PURCHASE_INFO_SPEED                                         :{BLACK}Ātrums: {GOLD}{VELOCITY}
 STR_PURCHASE_INFO_SPEED_OCEAN                                   :{BLACK}Ātrums okeānā: {GOLD}{VELOCITY}
 STR_PURCHASE_INFO_SPEED_CANAL                                   :{BLACK}Ātrums kanālā/upē: {GOLD}{VELOCITY}
-STR_PURCHASE_INFO_RUNNINGCOST                                   :{BLACK}Kārtējās izmaksas: {GOLD}{CURRENCY_LONG} gadā
 STR_PURCHASE_INFO_CAPACITY                                      :{BLACK}Ietilpība: {GOLD}{CARGO_LONG} {STRING}
 STR_PURCHASE_INFO_REFITTABLE                                    :(pielāgojams)
 STR_PURCHASE_INFO_DESIGNED_LIFE                                 :{BLACK}Projektēts: {GOLD}{NUM}{BLACK} Kalpošanas laiks: {GOLD}{COMMA} gad{P s i u}
@@ -4197,13 +4183,6 @@ STR_ENGINE_PREVIEW_TRAM_VEHICLE                                 :tramvajs
 STR_ENGINE_PREVIEW_AIRCRAFT                                     :lidaparāts
 STR_ENGINE_PREVIEW_SHIP                                         :kuģis
 
-STR_ENGINE_PREVIEW_COST_WEIGHT_SPEED_POWER                      :{BLACK}Cena: {CURRENCY_LONG} Svars: {WEIGHT_SHORT}{}Ātrums: {VELOCITY} Jauda: {POWER}{}Kārtējās izmaksas: {CURRENCY_LONG} gadā{}Ietilpība:  {CARGO_LONG}
-STR_ENGINE_PREVIEW_COST_WEIGHT_SPEED_POWER_MAX_TE               :{BLACK}Maksa: {0:CURRENCY_LONG} Svars: {1:WEIGHT_SHORT}{}Ātrums: {2:VELOCITY} Jauda: {3:POWER} Maks. T.E.: {6:FORCE}{}Darbības izmaksas: {4:CURRENCY_LONG}/gadā{}ietilpība: {5:CARGO_LONG}
-STR_ENGINE_PREVIEW_COST_MAX_SPEED_CAP_RUNCOST                   :{BLACK}Cena: {CURRENCY_LONG} Maks. ātrums: {VELOCITY}{}Ietilpība: {CARGO_LONG}{}Kārtējās izmaksas: {CURRENCY_LONG} gadā
-STR_ENGINE_PREVIEW_COST_MAX_SPEED_TYPE_CAP_CAP_RUNCOST          :{BLACK}Cena: {CURRENCY_LONG} Maks. ātrums: {VELOCITY}{}Lidaparāta veids: {STRING}{}Ietilpība: {CARGO_LONG}, {CARGO_LONG}{}Izmaksas: {CURRENCY_LONG} gadā
-STR_ENGINE_PREVIEW_COST_MAX_SPEED_TYPE_CAP_RUNCOST              :{BLACK}Cena: {CURRENCY_LONG} Maks. ātrums: {VELOCITY}{}Lidaparāta veids: {STRING}{}Ietilpība: {CARGO_LONG}{}Izmaksas: {CURRENCY_LONG}/gadā
-STR_ENGINE_PREVIEW_COST_MAX_SPEED_TYPE_RANGE_CAP_CAP_RUNCOST    :{BLACK}Cena: {CURRENCY_LONG} Maks. ātrums: {VELOCITY}{}Lidaparāta veids: {STRING} Attālums: {COMMA} lauciņi{}Ietilpība: {CARGO_LONG}, {CARGO_LONG}{}Izmaksas: {CURRENCY_LONG}/gadā
-STR_ENGINE_PREVIEW_COST_MAX_SPEED_TYPE_RANGE_CAP_RUNCOST        :{BLACK}Cena: {CURRENCY_LONG} Maks. ātrums: {VELOCITY}{}Lidaparāta veids: {STRING} Attālums: {COMMA} lauciņi{}Ietilpība: {CARGO_LONG}{}Izmaksas: {CURRENCY_LONG}/gadā
 
 # Autoreplace window
 STR_REPLACE_VEHICLES_WHITE                                      :{WHITE}Nomainīt {STRING} - {STRING}
@@ -4368,8 +4347,6 @@ STR_VEHICLE_INFO_CAPACITY_CAPACITY                              :{BLACK}Ietilpī
 
 STR_VEHICLE_INFO_FEEDER_CARGO_VALUE                             :{BLACK}Pārvadājumu ieņēmumi: {LTBLUE}{CURRENCY_LONG}
 
-STR_VEHICLE_DETAILS_INCREASE_SERVICING_INTERVAL_TOOLTIP         :{BLACK}Palielināt apkopes starplaiku par 10. Ctrl+klikšķis palielina apkopes starplaiku par 5
-STR_VEHICLE_DETAILS_DECREASE_SERVICING_INTERVAL_TOOLTIP         :{BLACK}Samazināt apkopes starplaiku par 10. Ctrl+klikšķis samazina apkopes starplaiku par 5
 
 STR_SERVICE_INTERVAL_DROPDOWN_TOOLTIP                           :{BLACK}Mainīt apkopes starplaiku veidu
 STR_VEHICLE_DETAILS_DEFAULT                                     :Noklusējuma
