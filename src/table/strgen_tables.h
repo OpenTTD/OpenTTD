@@ -88,10 +88,10 @@ static const CmdStruct _cmd_structs[] = {
 	{"VELOCITY",          EmitSingleChar, SCC_VELOCITY,           1,  0, C_NONE},
 	{"HEIGHT",            EmitSingleChar, SCC_HEIGHT,             1,  0, C_NONE},
 
-	{"UNITS_DAYS_OR_SECONDS",   EmitSingleChar, SCC_UNITS_DAYS_OR_SECONDS,   1,  0, C_NONE},
-	{"UNITS_MONTHS_OR_MINUTES", EmitSingleChar, SCC_UNITS_MONTHS_OR_MINUTES, 1,  0, C_NONE},
-	{"UNITS_YEARS_OR_PERIODS",  EmitSingleChar, SCC_UNITS_YEARS_OR_PERIODS,  1,  0, C_NONE},
-	{"UNITS_YEARS_OR_MINUTES",  EmitSingleChar, SCC_UNITS_YEARS_OR_MINUTES,  1,  0, C_NONE},
+	{"UNITS_DAYS_OR_SECONDS",   EmitSingleChar, SCC_UNITS_DAYS_OR_SECONDS,   1,  0, C_GENDER},
+	{"UNITS_MONTHS_OR_MINUTES", EmitSingleChar, SCC_UNITS_MONTHS_OR_MINUTES, 1,  0, C_GENDER},
+	{"UNITS_YEARS_OR_PERIODS",  EmitSingleChar, SCC_UNITS_YEARS_OR_PERIODS,  1,  0, C_GENDER},
+	{"UNITS_YEARS_OR_MINUTES",  EmitSingleChar, SCC_UNITS_YEARS_OR_MINUTES,  1,  0, C_GENDER},
 
 	{"P",                 EmitPlural,     0,                      0, -1, C_DONTCOUNT}, // plural specifier
 	{"G",                 EmitGender,     0,                      0, -1, C_DONTCOUNT}, // gender specifier
