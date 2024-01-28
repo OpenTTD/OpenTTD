@@ -41,6 +41,9 @@ static CargoTypes _legend_excluded_cargo;
 static const OverflowSafeInt64 INVALID_DATAPOINT(INT64_MAX); // Value used for a datapoint that shouldn't be drawn.
 static const uint INVALID_DATAPOINT_POS = UINT_MAX;  // Used to determine if the previous point was drawn.
 
+constexpr double INT64_MAX_IN_DOUBLE = static_cast<double>(INT64_MAX - 512); ///< The biggest double that when cast to int64_t still fits in a int64_t.
+static_assert(static_cast<int64_t>(INT64_MAX_IN_DOUBLE) < INT64_MAX);
+
 /****************/
 /* GRAPH LEGEND */
 /****************/
@@ -225,16 +228,16 @@ protected:
 			}
 		}
 
-		/* Prevent showing values too close to the graph limits. */
-		current_interval.highest = (11 * current_interval.highest) / 10;
-		current_interval.lowest =  (11 * current_interval.lowest) / 10;
-
 		/* Always include zero in the shown range. */
 		double abs_lower  = (current_interval.lowest > 0) ? 0 : (double)abs(current_interval.lowest);
 		double abs_higher = (current_interval.highest < 0) ? 0 : (double)current_interval.highest;
 
+		/* Prevent showing values too close to the graph limits. */
+		abs_higher = (11.0 * abs_higher) / 10.0;
+		abs_lower = (11.0 * abs_lower) / 10.0;
+
 		int num_pos_grids;
-		int64_t grid_size;
+		OverflowSafeInt64 grid_size;
 
 		if (abs_lower != 0 || abs_higher != 0) {
 			/* The number of grids to reserve for the positive part is: */
@@ -245,8 +248,19 @@ protected:
 			if (num_pos_grids == num_hori_lines && abs_lower != 0) num_pos_grids--;
 
 			/* Get the required grid size for each side and use the maximum one. */
-			int64_t grid_size_higher = (abs_higher > 0) ? ((int64_t)abs_higher + num_pos_grids - 1) / num_pos_grids : 0;
-			int64_t grid_size_lower = (abs_lower > 0) ? ((int64_t)abs_lower + num_hori_lines - num_pos_grids - 1) / (num_hori_lines - num_pos_grids) : 0;
+
+			OverflowSafeInt64 grid_size_higher = 0;
+			if (abs_higher > 0) {
+				grid_size_higher = abs_higher > INT64_MAX_IN_DOUBLE ? INT64_MAX : static_cast<int64_t>(abs_higher);
+				grid_size_higher = (grid_size_higher + num_pos_grids - 1) / num_pos_grids;
+			}
+
+			OverflowSafeInt64 grid_size_lower = 0;
+			if (abs_lower > 0) {
+				grid_size_lower = abs_lower > INT64_MAX_IN_DOUBLE ? INT64_MAX : static_cast<int64_t>(abs_lower);
+				grid_size_lower = (grid_size_lower + num_hori_lines - num_pos_grids - 1) / (num_hori_lines - num_pos_grids);
+			}
+
 			grid_size = std::max(grid_size_higher, grid_size_lower);
 		} else {
 			/* If both values are zero, show an empty graph. */
