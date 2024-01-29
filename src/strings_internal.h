@@ -16,7 +16,6 @@
 /** The data required to format and validate a single parameter of a string. */
 struct StringParameter {
 	uint64_t data; ///< The data of the parameter.
-	const char *string_view; ///< The string value, if it has any.
 	std::unique_ptr<std::string> string; ///< Copied string value, if it has any.
 	char32_t type; ///< The #StringControlCode to interpret this data with when it's the first parameter, otherwise '\0'.
 };
@@ -106,7 +105,7 @@ public:
 	const char *GetNextParameterString()
 	{
 		auto ptr = GetNextParameterPointer();
-		return ptr->string != nullptr ? ptr->string->c_str() : ptr->string_view;
+		return ptr->string != nullptr ? ptr->string->c_str() : nullptr;
 	}
 
 	/**
@@ -152,7 +151,6 @@ public:
 		assert(n < this->parameters.size());
 		this->parameters[n].data = v;
 		this->parameters[n].string.reset();
-		this->parameters[n].string_view = nullptr;
 	}
 
 	template <typename T, std::enable_if_t<std::is_base_of<StrongTypedefBase, T>::value, int> = 0>
@@ -165,8 +163,7 @@ public:
 	{
 		assert(n < this->parameters.size());
 		this->parameters[n].data = 0;
-		this->parameters[n].string.reset();
-		this->parameters[n].string_view = str;
+		this->parameters[n].string = std::make_unique<std::string>(str);
 	}
 
 	void SetParam(size_t n, const std::string &str) { this->SetParam(n, str.c_str()); }
@@ -176,13 +173,12 @@ public:
 		assert(n < this->parameters.size());
 		this->parameters[n].data = 0;
 		this->parameters[n].string = std::make_unique<std::string>(std::move(str));
-		this->parameters[n].string_view = nullptr;
 	}
 
 	uint64_t GetParam(size_t n) const
 	{
 		assert(n < this->parameters.size());
-		assert(this->parameters[n].string_view == nullptr && this->parameters[n].string == nullptr);
+		assert(this->parameters[n].string == nullptr);
 		return this->parameters[n].data;
 	}
 
@@ -195,7 +191,7 @@ public:
 	{
 		assert(n < this->parameters.size());
 		auto &param = this->parameters[n];
-		return param.string != nullptr ? param.string->c_str() : param.string_view;
+		return param.string != nullptr ? param.string->c_str() : nullptr;
 	}
 };
 
