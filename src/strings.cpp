@@ -510,7 +510,6 @@ static void FormatGenericCurrency(StringBuilder &builder, const CurrencySpec *sp
 	/* We are going to make number absolute for printing, so
 	 * keep this piece of data as we need it later on */
 	bool negative = number < 0;
-	const char *multiplier = "";
 
 	number *= spec->rate;
 
@@ -527,16 +526,24 @@ static void FormatGenericCurrency(StringBuilder &builder, const CurrencySpec *sp
 	 * The only remaining value is 1 (suffix), so everything that is not 1 */
 	if (spec->symbol_pos != 1) builder += spec->prefix;
 
-	/* for huge numbers, compact the number into k or M */
+	StringID number_str = STR_NULL;
+
+	/* For huge numbers, compact the number. */
 	if (compact) {
-		/* Take care of the 'k' rounding. Having 1 000 000 k
+		/* Take care of the thousand rounding. Having 1 000 000 k
 		 * and 1 000 M is inconsistent, so always use 1 000 M. */
-		if (number >= 1000000000 - 500) {
-			number = (number + 500000) / 1000000;
-			multiplier = NBSP "M";
-		} else if (number >= 1000000) {
-			number = (number + 500) / 1000;
-			multiplier = NBSP "k";
+		if (number >= Money(1'000'000'000'000'000) - 500'000'000) {
+			number = (number + Money(500'000'000'000)) / Money(1'000'000'000'000);
+			number_str = STR_CURRENCY_SHORT_TERA;
+		} else if (number >= Money(1'000'000'000'000) - 500'000) {
+			number = (number + 500'000'000) / 1'000'000'000;
+			number_str = STR_CURRENCY_SHORT_GIGA;
+		} else if (number >= 1'000'000'000 - 500) {
+			number = (number + 500'000) / 1'000'000;
+			number_str = STR_CURRENCY_SHORT_MEGA;
+		} else if (number >= 1'000'000) {
+			number = (number + 500) / 1'000;
+			number_str = STR_CURRENCY_SHORT_KILO;
 		}
 	}
 
@@ -544,7 +551,10 @@ static void FormatGenericCurrency(StringBuilder &builder, const CurrencySpec *sp
 	if (StrEmpty(separator)) separator = _currency->separator.c_str();
 	if (StrEmpty(separator)) separator = _langpack.langpack->digit_group_separator_currency;
 	FormatNumber(builder, number, separator);
-	builder += multiplier;
+	if (number_str != STR_NULL) {
+		auto tmp_params = ArrayStringParameters<0>();
+		FormatString(builder, GetStringPtr(number_str), tmp_params);
+	}
 
 	/* Add suffix part, following symbol_pos specification.
 	 * Here, it can can be either 1 (suffix) or 2 (both prefix and suffix).
