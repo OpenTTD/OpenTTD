@@ -1263,7 +1263,7 @@ public:
 
 			case WID_O_UNLOAD:
 				if (this->GetWidget<NWidgetLeaf>(widget)->ButtonHit(pt)) {
-					this->OrderClick_Unload(OUFB_UNLOAD, true);
+					this->OrderClick_Unload(OUFB_TRANSFER, true);
 				} else {
 					ShowDropDownMenu(this, _order_unload_drowdown, this->vehicle->GetOrder(this->OrderGetSel())->GetUnloadType(), WID_O_UNLOAD, 0, 8);
 				}
@@ -1592,7 +1592,7 @@ static constexpr NWidgetPart _nested_orders_train_widgets[] = {
 				EndContainer(),
 				NWidget(NWID_SELECTION, INVALID_COLOUR, WID_O_SEL_TOP_MIDDLE),
 					NWidget(NWID_BUTTON_DROPDOWN, COLOUR_GREY, WID_O_UNLOAD), SetMinimalSize(93, 12), SetFill(1, 0),
-															SetDataTip(STR_ORDER_TOGGLE_UNLOAD, STR_ORDER_TOOLTIP_UNLOAD), SetResize(1, 0),
+															SetDataTip(STR_ORDER_TOGGLE_TRANSFER, STR_ORDER_TOOLTIP_UNLOAD), SetResize(1, 0),
 					NWidget(NWID_BUTTON_DROPDOWN, COLOUR_GREY, WID_O_SERVICE), SetMinimalSize(93, 12), SetFill(1, 0),
 															SetDataTip(STR_ORDER_SERVICE, STR_ORDER_SERVICE_TOOLTIP), SetResize(1, 0),
 				EndContainer(),
@@ -1663,7 +1663,7 @@ static constexpr NWidgetPart _nested_orders_widgets[] = {
 				NWidget(NWID_BUTTON_DROPDOWN, COLOUR_GREY, WID_O_FULL_LOAD), SetMinimalSize(124, 12), SetFill(1, 0),
 													SetDataTip(STR_ORDER_TOGGLE_FULL_LOAD, STR_ORDER_TOOLTIP_FULL_LOAD), SetResize(1, 0),
 				NWidget(NWID_BUTTON_DROPDOWN, COLOUR_GREY, WID_O_UNLOAD), SetMinimalSize(124, 12), SetFill(1, 0),
-													SetDataTip(STR_ORDER_TOGGLE_UNLOAD, STR_ORDER_TOOLTIP_UNLOAD), SetResize(1, 0),
+													SetDataTip(STR_ORDER_TOGGLE_TRANSFER, STR_ORDER_TOOLTIP_UNLOAD), SetResize(1, 0),
 				NWidget(NWID_BUTTON_DROPDOWN, COLOUR_GREY, WID_O_REFIT_DROPDOWN), SetMinimalSize(124, 12), SetFill(1, 0),
 													SetDataTip(STR_ORDER_REFIT_AUTO, STR_ORDER_REFIT_AUTO_TOOLTIP), SetResize(1, 0),
 			EndContainer(),

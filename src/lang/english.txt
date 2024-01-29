@@ -4553,7 +4553,7 @@ STR_ORDER_DROP_FULL_LOAD_ANY                                    :Full load any c
 STR_ORDER_DROP_NO_LOADING                                       :No loading
 STR_ORDER_TOOLTIP_FULL_LOAD                                     :{BLACK}Change the loading behaviour of the highlighted order
 
-STR_ORDER_TOGGLE_UNLOAD                                         :{BLACK}Unload all
+STR_ORDER_TOGGLE_TRANSFER                                       :{BLACK}Transfer
 STR_ORDER_DROP_UNLOAD_IF_ACCEPTED                               :Unload if accepted
 STR_ORDER_DROP_UNLOAD                                           :Unload all
 STR_ORDER_DROP_TRANSFER                                         :Transfer
