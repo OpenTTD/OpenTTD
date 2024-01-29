@@ -333,7 +333,7 @@ struct CheatWindow : Window {
 			}
 		}
 
-		this->line_height = std::max<uint>(this->line_height, SETTING_BUTTON_HEIGHT);
+		this->line_height = std::max<uint>(this->icon.height, SETTING_BUTTON_HEIGHT);
 		this->line_height = std::max<uint>(this->line_height, GetCharacterHeight(FS_NORMAL)) + WidgetDimensions::scaled.framerect.Vertical();
 
 		size->width = width + WidgetDimensions::scaled.hsep_wide * 2 + SETTING_BUTTON_WIDTH;
