@@ -363,6 +363,7 @@ STR_SORT_BY_TOTAL_PROFIT_LAST_YEAR                              :Lucro total no 
 STR_SORT_BY_TOTAL_PROFIT_THIS_YEAR                              :Lucro total deste ano
 STR_SORT_BY_AVERAGE_PROFIT_LAST_YEAR                            :Lucro médio no ano passado
 STR_SORT_BY_AVERAGE_PROFIT_THIS_YEAR                            :Lucro médio este ano
+STR_SORT_BY_AVERAGE_PROFIT_THIS_PERIOD                          :Lucro médio neste período
 
 # Group by options for vehicle list
 STR_GROUP_BY_NONE                                               :Nenhuma
@@ -440,6 +441,7 @@ STR_SETTINGS_MENU_CONFIG_SETTINGS_TREE                          :Definições
 STR_SETTINGS_MENU_AI_SETTINGS                                   :Definições de IA
 STR_SETTINGS_MENU_GAMESCRIPT_SETTINGS                           :Definições de script de jogo
 STR_SETTINGS_MENU_NEWGRF_SETTINGS                               :Definições NewGRF
+STR_SETTINGS_MENU_SANDBOX_OPTIONS                               :Opções da "sandbox"
 STR_SETTINGS_MENU_TRANSPARENCY_OPTIONS                          :Opções de Transparência
 STR_SETTINGS_MENU_TOWN_NAMES_DISPLAYED                          :Mostrar nomes de localidades
 STR_SETTINGS_MENU_STATION_NAMES_DISPLAYED                       :Mostrar nomes de estações
@@ -673,6 +675,7 @@ STR_PERFORMANCE_DETAIL_LOAN                                     :{BLACK}Emprést
 STR_PERFORMANCE_DETAIL_TOTAL                                    :{BLACK}Total:
 ###next-name-looks-similar
 
+STR_PERFORMANCE_DETAIL_VEHICLES_TOOLTIP_PERIODS                 :{BLACK}Número de veículos que obtiveram lucro no último período. Isto inclui veículos rodoviários, comboios, navios e aeronaves.
 STR_PERFORMANCE_DETAIL_STATIONS_TOOLTIP                         :{BLACK}Número de estações recentemente reparadas. Estações ferroviárias, paragens de autocarro, aeroportos são contabilizadas separadamente, mesmo se estiverem ligadas como uma só.
 STR_PERFORMANCE_DETAIL_MIN_INCOME_TOOLTIP                       :{BLACK}Dinheiro conseguido no mês com os lucros mais baixos dos últimos 12 trimestres
 STR_PERFORMANCE_DETAIL_MAX_INCOME_TOOLTIP                       :{BLACK}Dinheiro conseguido no mês com os lucros mais altos dos últimos 12 trimestres
@@ -838,7 +841,7 @@ STR_NEWS_FIRST_CARGO_TRAM_ARRIVAL                               :{BIG_FONT}{BLAC
 STR_NEWS_FIRST_SHIP_ARRIVAL                                     :{BIG_FONT}{BLACK}Cidadãos celebram . . .{}Primeiro navio chega a {STATION}!
 STR_NEWS_FIRST_AIRCRAFT_ARRIVAL                                 :{BIG_FONT}{BLACK}Cidadãos celebram . . .{}Primeira aeronave chega a {STATION}!
 
-STR_NEWS_TRAIN_CRASH                                            :{BIG_FONT}{BLACK}Acidente de Comboios!{}{COMMA} mortem numa explosão após a colisão!
+STR_NEWS_TRAIN_CRASH                                            :{BIG_FONT}{BLACK}Acidente de Comboios!{}{COMMA} morrem numa explosão após a colisão!
 STR_NEWS_ROAD_VEHICLE_CRASH_DRIVER                              :{BIG_FONT}{BLACK}Acidente com Veículo Rodoviário!{}Condutor morre na explosão após a colisão com um comboio!
 STR_NEWS_ROAD_VEHICLE_CRASH                                     :{BIG_FONT}{BLACK}Acidente com Veículo Rodoviário{}{COMMA} morrem na explosão após a colisão com um comboio!
 STR_NEWS_AIRCRAFT_CRASH                                         :{BIG_FONT}{BLACK}Acidente de Aeronave!{}{COMMA} morrem na explosão em {STATION}!
@@ -905,6 +908,8 @@ STR_NEWS_VEHICLE_IS_GETTING_VERY_OLD                            :{WHITE}{VEHICLE
 STR_NEWS_VEHICLE_IS_GETTING_VERY_OLD_AND                        :{WHITE}{VEHICLE} está a ficar muito velho e urgentemente necessita de substituição
 STR_NEWS_TRAIN_IS_STUCK                                         :{WHITE}{VEHICLE} não consegue encontrar um caminho para continuar
 STR_NEWS_VEHICLE_IS_LOST                                        :{WHITE}{VEHICLE} está perdido
+STR_NEWS_VEHICLE_UNPROFITABLE_YEAR                              :O lucro de {WHITE}{VEHICLE} no último ano foi {CURRENCY_LONG}
+STR_NEWS_VEHICLE_UNPROFITABLE_PERIOD                            :O lucro de {WHITE}{VEHICLE} no último período foi {CURRENCY_LONG}
 STR_NEWS_AIRCRAFT_DEST_TOO_FAR                                  :{WHITE}{VEHICLE} não consegue chegar ao próximo destino pois está fora de alcance
 
 STR_NEWS_ORDER_REFIT_FAILED                                     :{WHITE}{VEHICLE} parou porque a ordem de adaptação falhou
@@ -923,7 +928,10 @@ STR_NEWS_OFFER_OF_SUBSIDY_EXPIRED                               :{BIG_FONT}{BLAC
 STR_NEWS_SUBSIDY_WITHDRAWN_SERVICE                              :{BIG_FONT}{BLACK}Subsídio retirado:{}{}Ligação de {STRING} d{G 1 e o a os as} {STRING} para{G 2 "" " o" " a" " os" " as"} {STRING} já não é subsidiada.
 ###length 4
 
+STR_NEWS_ROAD_REBUILDING_MONTHS                                 :{BIG_FONT}{BLACK}Tráfego caótico em {TOWN}!{}{}Programa de reconstrução das estradas financiado por {STRING} provoca 6 meses de sofrimento aos motoristas!
+STR_NEWS_ROAD_REBUILDING_MINUTES                                :{BIG_FONT}{BLACK}Tráfego caótico em {TOWN}!{}{}Programa de reconstrução das estradas financiado por {STRING} provoca 6 minutos de sofrimento aos motoristas!
 STR_NEWS_EXCLUSIVE_RIGHTS_TITLE                                 :{BIG_FONT}{BLACK}Monopólio de Transporte!
+STR_NEWS_EXCLUSIVE_RIGHTS_DESCRIPTION_MONTHS                    :{BIG_FONT}{BLACK}A autoridade local de {TOWN} assinou um contrato com {STRING} por 12 meses de direitos exclusivos de transporte!
 
 # Extra view window
 STR_EXTRA_VIEWPORT_TITLE                                        :{WHITE}Visualizador {COMMA}
@@ -1080,6 +1088,7 @@ STR_GAME_OPTIONS_BASE_MUSIC                                     :{BLACK}Conjunto
 STR_GAME_OPTIONS_BASE_MUSIC_TOOLTIP                             :{BLACK}Seleccione o conjunto de música base a usar
 STR_GAME_OPTIONS_BASE_MUSIC_DESCRIPTION_TOOLTIP                 :{BLACK}Informação adicional sobre o conjunto de música base
 
+STR_GAME_OPTIONS_SOCIAL_PLUGINS_NONE                            :{LTBLUE}(não existem "plugins" para integrar com as plataformas sociais instaladas)
 
 STR_GAME_OPTIONS_SOCIAL_PLUGIN_TITLE                            :{BLACK}{STRING} ({STRING})
 STR_GAME_OPTIONS_SOCIAL_PLUGIN_PLATFORM                         :{BLACK}Plataforma:
@@ -1091,6 +1100,7 @@ STR_GAME_OPTIONS_SOCIAL_PLUGIN_STATE_PLATFORM_NOT_RUNNING       :{ORANGE}{STRING
 STR_GAME_OPTIONS_SOCIAL_PLUGIN_STATE_UNLOADED                   :{RED}Descarregado
 STR_GAME_OPTIONS_SOCIAL_PLUGIN_STATE_DUPLICATE                  :{RED}Plugin duplicado
 STR_GAME_OPTIONS_SOCIAL_PLUGIN_STATE_UNSUPPORTED_API            :{RED}Versão não suportada
+STR_GAME_OPTIONS_SOCIAL_PLUGIN_STATE_INVALID_SIGNATURE          :{RED}Assinatura inválida
 
 STR_BASESET_STATUS                                              :{STRING} {RED}({NUM} ficheiro{P "" s} em falta/corrompido{P "" s})
 
@@ -1282,6 +1292,7 @@ STR_CONFIG_SETTING_SUBSIDY_MULTIPLIER_HELPTEXT                  :Define quanto �
 STR_CONFIG_SETTING_SUBSIDY_DURATION                             :Duração do subsídio: {STRING}
 ###length 2
 STR_CONFIG_SETTING_SUBSIDY_DURATION_HELPTEXT                    :Define o número de anos de concessão de um subsídio
+STR_CONFIG_SETTING_SUBSIDY_DURATION_HELPTEXT_PERIODS            :Define o número de períodos de concessão de um subsídio
 
 ###setting-zero-is-special
 STR_CONFIG_SETTING_SUBSIDY_DURATION_DISABLED                    :Sem subsídios
@@ -1380,9 +1391,11 @@ STR_CONFIG_SETTING_SIGNALSIDE_RIGHT                             :Na direita
 
 ###length 2
 STR_CONFIG_SETTING_SHOWFINANCES                                 :Mostrar janela das finanças no fim do ano: {STRING}
+STR_CONFIG_SETTING_SHOWFINANCES_PERIOD                          :Mostrar janela das finanças no fim do período: {STRING}
 
 ###length 2
-STR_CONFIG_SETTING_SHOWFINANCES_HELPTEXT                        :Se ativado, os pops up de finanças ao final de cada ano permitem fácil inspeção do estado financeiro da empresa
+STR_CONFIG_SETTING_SHOWFINANCES_HELPTEXT                        :Se ativado, a janela de finanças aparece no final de cada ano para permitir a fácil inspeção da situação financeira da empresa
+STR_CONFIG_SETTING_SHOWFINANCES_HELPTEXT_PERIOD                 :Se ativado, a janela de finanças aparece no final de cada período para permitir a fácil inspeção da situação financeira da empresa
 
 STR_CONFIG_SETTING_NONSTOP_BY_DEFAULT                           :Novas ordens são 'sem parar' por predefinição: {STRING}
 STR_CONFIG_SETTING_NONSTOP_BY_DEFAULT_HELPTEXT                  :Normalmente, um veículo para em cada estação por onde passa. Ao ativar esta configuração, um veículo irá passar por todas as estações no seu percurso, parando apenas no destino final. Esta opção só tem efeito para novas rotas, mas as rotas existentes podem ser alteradas para funcionarem de forma igual.
@@ -1408,7 +1421,8 @@ STR_CONFIG_SETTING_BRIBE_HELPTEXT                               :Permite que as 
 
 STR_CONFIG_SETTING_ALLOW_EXCLUSIVE                              :Permite comprar direitos de transporte em exclusividade: {STRING}
 ###length 2
-STR_CONFIG_SETTING_ALLOW_EXCLUSIVE_HELPTEXT                     :Se uma empresa compra direitos exclusivos de transporte para uma localidade, as estações dos concorrentes (passageiros e carga) não receberão cargo durante um ano
+STR_CONFIG_SETTING_ALLOW_EXCLUSIVE_HELPTEXT                     :Se uma empresa comprar direitos exclusivos de transporte para uma localidade, as estações dos concorrentes (passageiros e carga) não receberão carga durante 12 meses
+STR_CONFIG_SETTING_ALLOW_EXCLUSIVE_HELPTEXT_MINUTES             :Se uma empresa comprar direitos exclusivos de transporte para uma localidade, as estações dos concorrentes (passageiros e carga) não receberão carga durante 12 minutos
 
 STR_CONFIG_SETTING_ALLOW_FUND_BUILDINGS                         :Permite investir em edifícios: {STRING}
 STR_CONFIG_SETTING_ALLOW_FUND_BUILDINGS_HELPTEXT                :Permite que empresas doem dinheiro às localidades para financiar novas casas
@@ -1423,7 +1437,7 @@ STR_CONFIG_SETTING_FREIGHT_TRAINS                               :Multiplicador d
 STR_CONFIG_SETTING_FREIGHT_TRAINS_HELPTEXT                      :Define o impacto de carregar mercadoria nos comboios. Um valor elevado torna o transporte de mercadorias mais exigente para os comboios, especialmente em terreno inclinado
 
 STR_CONFIG_SETTING_PLANE_SPEED                                  :Fator de velocidade de avião: {STRING}
-STR_CONFIG_SETTING_PLANE_SPEED_HELPTEXT                         :Set the relative speed of planes compared to other vehicle types, to reduce the amount of income of transport by aircraft
+STR_CONFIG_SETTING_PLANE_SPEED_HELPTEXT                         :Definir a velocidade relativa dos aviões em comparação com outros tipos de veículos, para reduzir o valor da receita do transporte por aeronave
 STR_CONFIG_SETTING_PLANE_SPEED_VALUE                            :1 / {COMMA}
 
 STR_CONFIG_SETTING_PLANE_CRASHES                                :Número de acidentes de aeronaves: {STRING}
@@ -1467,16 +1481,20 @@ STR_CONFIG_SETTING_ORDER_REVIEW_ON                              :De todos os ve�
 STR_CONFIG_SETTING_WARN_INCOME_LESS                             :Avisar se o lucro de um veiculo for negativo: {STRING}
 ###length 2
 STR_CONFIG_SETTING_WARN_INCOME_LESS_HELPTEXT                    :Quando ativo, uma notícia é enviada quando um veículo não deu lucro durante um ano
+STR_CONFIG_SETTING_WARN_INCOME_LESS_HELPTEXT_PERIOD             :Quando ativo, uma notícia é enviada quando um veículo não gerou qualquer lucro durante um período
 
 STR_CONFIG_SETTING_NEVER_EXPIRE_VEHICLES                        :Veículos nunca expiram: {STRING}
 STR_CONFIG_SETTING_NEVER_EXPIRE_VEHICLES_HELPTEXT               :Quando ativo, todos os modelos de veículos permanecerão disponíveis para sempre após a sua introdução
 
+STR_CONFIG_SETTING_TIMEKEEPING_UNITS_HELPTEXT                   :Selecione as unidades de cronometragem do jogo. Isso não pode ser alterado posteriormente.{}{}O uso baseado no calendário é a experiência clássica do OpenTTD, em que um ano corresponde a 12 meses e cada mês tem 28 a 31 dias.{}{}No tempo baseado no relógio de parede, o movimento de veículos, a produção de carga e as finanças baseiam-se em incrementos de um minuto, o que equivale a um mês de 30 dias no modo baseado no calendário. Eles são agrupados em períodos de 12 minutos, equivalentes a um ano no modo baseado em calendário.{}{}Em ambos os modos há sempre um calendário clássico, que é usado para datas de introdução de veículos, casas e outras infraestruturas.
 ###length 2
 STR_CONFIG_SETTING_TIMEKEEPING_UNITS_CALENDAR                   :Calendário
 STR_CONFIG_SETTING_TIMEKEEPING_UNITS_WALLCLOCK                  :Relógio de parede
 
+STR_CONFIG_SETTING_MINUTES_PER_YEAR_HELPTEXT                    :Escolher o número de minutos num ano civil. Por omissão é 12 minutos. Defina como 0 para impedir que a hora do calendário seja alterada. Esta configuração não afeta a simulação económica do jogo e só está disponível ao usar a cronometragem do relógio de parede.
 
 ###setting-zero-is-special
+STR_CONFIG_SETTING_MINUTES_PER_YEAR_FROZEN                      :0 (tempo do calendário congelado)
 
 STR_CONFIG_SETTING_AUTORENEW_VEHICLE                            :Auto-renovação de veículos quando ficam velhos: {STRING}
 STR_CONFIG_SETTING_AUTORENEW_VEHICLE_HELPTEXT                   :Quando ativo, um veículo a chegar ao fim de vida é automaticamente substituído quando as condições de renovação estão reunidas
@@ -1732,9 +1750,11 @@ STR_CONFIG_SETTING_SOUND_NEWS_HELPTEXT                          :Reproduzir efei
 
 ###length 2
 STR_CONFIG_SETTING_SOUND_NEW_YEAR                               :Fim do ano: {STRING}
+STR_CONFIG_SETTING_SOUND_NEW_PERIOD                             :Fim do período: {STRING}
 
 ###length 2
-STR_CONFIG_SETTING_SOUND_NEW_YEAR_HELPTEXT                      :Reproduzir efeito sonoro ao fim do ano que resume a performance da empresa em comparação com o ano anterior
+STR_CONFIG_SETTING_SOUND_NEW_YEAR_HELPTEXT                      :Reproduz um som no final do ano e resume a performance da empresa desse ano em comparação com a do ano anterior
+STR_CONFIG_SETTING_SOUND_NEW_PERIOD_HELPTEXT                    :Reproduz um som no final do período e resume a performance da empresa desse período em comparação com a do período anterior
 
 STR_CONFIG_SETTING_SOUND_CONFIRM                                :Construção: {STRING}
 STR_CONFIG_SETTING_SOUND_CONFIRM_HELPTEXT                       :Reproduzir efeito sonoro nas construções ou outras acções bem sucedidas
@@ -2035,6 +2055,8 @@ STR_CONFIG_SETTING_LOCALISATION_UNITS_VELOCITY_HELPTEXT         :Quando uma velo
 STR_CONFIG_SETTING_LOCALISATION_UNITS_VELOCITY_IMPERIAL         :Imperial (mph)
 STR_CONFIG_SETTING_LOCALISATION_UNITS_VELOCITY_METRIC           :Métrico (km/h)
 STR_CONFIG_SETTING_LOCALISATION_UNITS_VELOCITY_SI               :SI (m/s)
+STR_CONFIG_SETTING_LOCALISATION_UNITS_VELOCITY_GAMEUNITS_DAYS   :Unidades do jogo (mosaicos/dia)
+STR_CONFIG_SETTING_LOCALISATION_UNITS_VELOCITY_GAMEUNITS_SECS   :Unidades do jogo (mosaicos/seg)
 STR_CONFIG_SETTING_LOCALISATION_UNITS_VELOCITY_KNOTS            :Nós
 
 STR_CONFIG_SETTING_LOCALISATION_UNITS_POWER                     :Unidades de potência de veículos: {STRING}
@@ -2346,6 +2368,8 @@ STR_NETWORK_SERVER_LIST_MAP_SIZE_CAPTION                        :{BLACK}Tamanho 
 STR_NETWORK_SERVER_LIST_MAP_SIZE_CAPTION_TOOLTIP                :{BLACK}Tamanho do mapa{}Clique para ordenar por área
 STR_NETWORK_SERVER_LIST_DATE_CAPTION                            :{BLACK}Data
 STR_NETWORK_SERVER_LIST_DATE_CAPTION_TOOLTIP                    :{BLACK}Data de hoje
+STR_NETWORK_SERVER_LIST_PLAY_TIME_SHORT                         :{BLACK}{NUM}h {NUM}m
+STR_NETWORK_SERVER_LIST_PLAY_TIME_CAPTION                       :{BLACK}Tempo de jogo
 STR_NETWORK_SERVER_LIST_INFO_ICONS_TOOLTIP                      :{BLACK}Idioma, versão do servidor, etc.
 
 STR_NETWORK_SERVER_LIST_CLICK_GAME_TO_SELECT                    :{BLACK}Clique num jogo da lista para o selecionar
@@ -2726,6 +2750,7 @@ STR_STATION_BUILD_COVERAGE_AREA_OFF_TOOLTIP                     :{BLACK}Não exi
 STR_STATION_BUILD_COVERAGE_AREA_ON_TOOLTIP                      :{BLACK}Exibir área de cobertura do sítio proposto
 STR_STATION_BUILD_ACCEPTS_CARGO                                 :{BLACK}Aceita: {GOLD}{CARGO_LIST}
 STR_STATION_BUILD_SUPPLIES_CARGO                                :{BLACK}Fornecimentos: {GOLD}{CARGO_LIST}
+STR_STATION_BUILD_INFRASTRUCTURE_COST_PERIOD                    :{BLACK}Custo de manutenção: {GOLD}{CURRENCY_SHORT}/período
 
 # Join station window
 STR_JOIN_STATION_CAPTION                                        :{WHITE}Juntar estação
@@ -3573,6 +3598,7 @@ STR_TOWN_VIEW_TOWN_CAPTION                                      :{WHITE}{TOWN}
 STR_TOWN_VIEW_CITY_CAPTION                                      :{WHITE}{TOWN} (Cidade)
 STR_TOWN_VIEW_POPULATION_HOUSES                                 :{BLACK}População: {ORANGE}{COMMA}{BLACK}  Casas: {ORANGE}{COMMA}
 STR_TOWN_VIEW_CARGO_LAST_MONTH_MAX                              :{BLACK}{CARGO_LIST} ultimo mês: {ORANGE}{COMMA}{BLACK}  max: {ORANGE}{COMMA}
+STR_TOWN_VIEW_CARGO_LAST_MINUTE_MAX                             :{BLACK}{CARGO_LIST} último minuto: {ORANGE}{COMMA}{BLACK} máx: {ORANGE}{COMMA}
 STR_TOWN_VIEW_CARGO_FOR_TOWNGROWTH                              :{BLACK}Mercadoria necessária para o seu desenvolvimento:
 STR_TOWN_VIEW_CARGO_FOR_TOWNGROWTH_REQUIRED_GENERAL             :{RED}É necessário {ORANGE}{STRING}
 STR_TOWN_VIEW_CARGO_FOR_TOWNGROWTH_REQUIRED_WINTER              :{BLACK}No inverno, é necessário {ORANGE}{STRING}
@@ -3670,6 +3696,7 @@ STR_SUBSIDIES_NONE                                              :{ORANGE}- Nenhu
 STR_SUBSIDIES_SUBSIDISED_TITLE                                  :{BLACK}Serviços já subsidiados:
 STR_SUBSIDIES_TOOLTIP_CLICK_ON_SERVICE_TO_CENTER                :{BLACK}Clique num serviço para centrar a visualização numa indústria/localidade. Ctrl+Clique abre um novo visualizador na localização da indústria/localidade
 STR_SUBSIDIES_OFFERED_EXPIRY_DATE                               :em {DATE_SHORT}
+STR_SUBSIDIES_OFFERED_EXPIRY_TIME                               :dentro de {UNITS_MONTHS_OR_MINUTES}
 STR_SUBSIDIES_SUBSIDISED_EXPIRY_DATE                            :até {DATE_SHORT}
 
 # Story book window
@@ -3710,6 +3737,7 @@ STR_STATION_VIEW_EXCLUSIVE_RIGHTS_COMPANY                       :{YELLOW}{COMPAN
 
 STR_STATION_VIEW_RATINGS_BUTTON                                 :{BLACK}Classificações
 STR_STATION_VIEW_RATINGS_TOOLTIP                                :{BLACK}Exibir classificações da estação
+STR_STATION_VIEW_SUPPLY_RATINGS_TITLE_MONTH                     :{BLACK}Fornecimento por mês e avaliação local:
 STR_STATION_VIEW_CARGO_SUPPLY_RATING                            :{WHITE}{STRING}: {YELLOW}{COMMA} / {STRING} ({COMMA}%)
 
 STR_STATION_VIEW_GROUP                                          :{BLACK}Agrupar por
@@ -3871,6 +3899,7 @@ STR_COMPANY_INFRASTRUCTURE_VIEW_CANALS                          :{WHITE}Canais
 STR_COMPANY_INFRASTRUCTURE_VIEW_STATION_SECT                    :{GOLD}Estações:
 STR_COMPANY_INFRASTRUCTURE_VIEW_STATIONS                        :{WHITE}Mosaicos de estações
 STR_COMPANY_INFRASTRUCTURE_VIEW_AIRPORTS                        :{WHITE}Aeroportos
+STR_COMPANY_INFRASTRUCTURE_VIEW_TOTAL_YEAR                      :{WHITE}{CURRENCY_LONG}/ano
 
 # Industry directory
 STR_INDUSTRY_DIRECTORY_CAPTION                                  :{WHITE}Indústrias
@@ -3890,6 +3919,7 @@ STR_INDUSTRY_DIRECTORY_FILTER_NONE                              :Nenhuma
 # Industry view
 STR_INDUSTRY_VIEW_CAPTION                                       :{WHITE}{INDUSTRY}
 STR_INDUSTRY_VIEW_PRODUCTION_LAST_MONTH_TITLE                   :{BLACK}Produção no último mês:
+STR_INDUSTRY_VIEW_PRODUCTION_LAST_MINUTE_TITLE                  :{BLACK}Produção no último minuto:
 STR_INDUSTRY_VIEW_TRANSPORTED                                   :{YELLOW}{CARGO_LONG}{STRING}{BLACK} ({COMMA}% transportado)
 STR_INDUSTRY_VIEW_LOCATION_TOOLTIP                              :{BLACK}Centrar visualização na localização da indústria. Ctrl+Clique abre um novo visualizador na localização da indústria
 STR_INDUSTRY_VIEW_PRODUCTION_LEVEL                              :{BLACK}Nível de produção: {YELLOW}{COMMA}%
@@ -3976,6 +4006,7 @@ STR_GROUP_REMOVE_ALL_VEHICLES                                   :Remover todos o
 STR_GROUP_RENAME_CAPTION                                        :{BLACK}Renomear um grupo
 
 STR_GROUP_PROFIT_THIS_YEAR                                      :Lucro deste ano:
+STR_GROUP_PROFIT_THIS_PERIOD                                    :Lucro neste período:
 STR_GROUP_PROFIT_LAST_YEAR                                      :Lucro no último ano:
 STR_GROUP_OCCUPANCY                                             :Utilização actual:
 STR_GROUP_OCCUPANCY_VALUE                                       :{NUM}%
@@ -4195,6 +4226,9 @@ STR_ENGINE_PREVIEW_TRAM_VEHICLE                                 :elétrico
 STR_ENGINE_PREVIEW_AIRCRAFT                                     :aeronave
 STR_ENGINE_PREVIEW_SHIP                                         :navio
 
+STR_ENGINE_PREVIEW_SPEED_POWER_MAX_TE                           :Velocidade: {VELOCITY} Potência: {POWER} Tração Máx.: {FORCE}
+STR_ENGINE_PREVIEW_TYPE                                         :Tipo de aeronave: {STRING}
+STR_ENGINE_PREVIEW_TYPE_RANGE                                   :Tipo de aeronave: {STRING} Alcance: {COMMA} mosaicos
 
 # Autoreplace window
 STR_REPLACE_VEHICLES_WHITE                                      :{WHITE}Substituir {STRING} - {STRING}
@@ -4340,16 +4374,18 @@ STR_VEHICLE_DETAILS_AIRCRAFT_RENAME                             :{BLACK}Renomear
 STR_VEHICLE_INFO_AGE                                            :{COMMA} ano{P "" s} ({COMMA})
 STR_VEHICLE_INFO_AGE_RED                                        :{RED}{COMMA} ano{P "" s} ({COMMA})
 STR_VEHICLE_INFO_AGE_RUNNING_COST_YR                            :{BLACK}Idade: {LTBLUE}{STRING}{BLACK}   Custo de circulação: {LTBLUE}{CURRENCY_LONG}/ano
+STR_VEHICLE_INFO_AGE_RUNNING_COST_PERIOD                        :{BLACK}Idade: {LTBLUE}{STRING}{BLACK} Custo de Circulação: {LTBLUE}{CURRENCY_LONG}/período
 
 STR_VEHICLE_INFO_MAX_SPEED                                      :{BLACK}Velocidade máx.: {LTBLUE}{VELOCITY}
 STR_VEHICLE_INFO_MAX_SPEED_TYPE                                 :{BLACK}Vel. máxima: {LTBLUE}{VELOCITY} {BLACK}Tipo de Aeronave: {LTBLUE}{STRING}
-STR_VEHICLE_INFO_MAX_SPEED_TYPE_RANGE                           :{BLACK}Velocidade Máx.: {LTBLUE}{VELOCITY} {BLACK}Tipo de Aeronave: {LTBLUE}{STRING} {BLACK}Alcance: {LTBLUE}{COMMA} quadrados
+STR_VEHICLE_INFO_MAX_SPEED_TYPE_RANGE                           :{BLACK}Velocidade Máx.: {LTBLUE}{VELOCITY} {BLACK}Tipo de Aeronave: {LTBLUE}{STRING} {BLACK}Alcance: {LTBLUE}{COMMA} mosaicos
 STR_VEHICLE_INFO_WEIGHT_POWER_MAX_SPEED                         :{BLACK}Peso: {LTBLUE}{WEIGHT_SHORT} {BLACK}Potência: {LTBLUE}{POWER}{BLACK} Velocidade máx.: {LTBLUE}{VELOCITY}
 STR_VEHICLE_INFO_WEIGHT_POWER_MAX_SPEED_MAX_TE                  :{BLACK}Peso: {LTBLUE}{WEIGHT_SHORT} {BLACK}Potência: {LTBLUE}{POWER}{BLACK} Velocidade máx.: {LTBLUE}{VELOCITY} {BLACK}Tração Máx.: {LTBLUE}{FORCE}
 
 STR_VEHICLE_INFO_PROFIT_THIS_YEAR_LAST_YEAR                     :{BLACK}Lucro neste ano: {LTBLUE}{CURRENCY_LONG} (último ano: {CURRENCY_LONG})
 STR_VEHICLE_INFO_PROFIT_THIS_YEAR_LAST_YEAR_MIN_PERFORMANCE     :{BLACK}Lucro deste ano: {LTBLUE}{CURRENCY_LONG} (último ano: {CURRENCY_LONG}) {BLACK}Performance min.: {LTBLUE}{POWER_TO_WEIGHT}
-STR_VEHICLE_INFO_RELIABILITY_BREAKDOWNS                         :{BLACK}Fiabilidade: {LTBLUE}{COMMA}%  {BLACK}Avarias desde o último serviço: {LTBLUE}{COMMA}
+STR_VEHICLE_INFO_PROFIT_THIS_PERIOD_LAST_PERIOD                 :{BLACK}Lucro neste período: {LTBLUE}{CURRENCY_LONG} (útimo período: {CURRENCY_LONG})
+STR_VEHICLE_INFO_RELIABILITY_BREAKDOWNS                         :{BLACK}Fiabilidade: {LTBLUE}{COMMA}%  {BLACK}Avarias desde a última manutenção: {LTBLUE}{COMMA}
 
 STR_VEHICLE_INFO_BUILT_VALUE                                    :{LTBLUE}{ENGINE} {BLACK}Construído: {LTBLUE}{NUM}{BLACK} Valor: {LTBLUE}{CURRENCY_LONG}
 STR_VEHICLE_INFO_NO_CAPACITY                                    :{BLACK}Capacidade: {LTBLUE}Nenhuma{STRING}
@@ -4359,9 +4395,15 @@ STR_VEHICLE_INFO_CAPACITY_CAPACITY                              :{BLACK}Capacida
 
 STR_VEHICLE_INFO_FEEDER_CARGO_VALUE                             :{BLACK}Créditos de Transferência: {LTBLUE}{CURRENCY_LONG}
 
+STR_VEHICLE_DETAILS_SERVICING_INTERVAL_DAYS                     :{BLACK}Intervalo de manutenção: {LTBLUE}{COMMA}{NBSP}dias{BLACK} {STRING}
+STR_VEHICLE_DETAILS_SERVICING_INTERVAL_MINUTES                  :{BLACK}Intervalo de manutenção: {LTBLUE}{COMMA}{NBSP}minutos{BLACK} {STRING}
+STR_VEHICLE_DETAILS_SERVICING_INTERVAL_PERCENT                  :{BLACK}Intervalo de manutenção: {LTBLUE}{COMMA}%{BLACK} {STRING}
+STR_VEHICLE_DETAILS_LAST_SERVICE_DATE                           :Última manutenção: {LTBLUE}{DATE_LONG}
+STR_VEHICLE_DETAILS_DECREASE_SERVICING_INTERVAL_TOOLTIP_MINUTES :{BLACK}Reduzir o intervalo de manutenção em 5 minutos. Ctrl+Clique para reduzir o intervalo de manutenção em 1 minuto
 
 STR_SERVICE_INTERVAL_DROPDOWN_TOOLTIP                           :{BLACK}Alterar tipo de intervalo de manutenção
 STR_VEHICLE_DETAILS_DEFAULT                                     :Padrão
+STR_VEHICLE_DETAILS_MINUTES                                     :Minutos
 STR_VEHICLE_DETAILS_PERCENT                                     :Percentagem
 
 ###length VEHICLE_TYPES
@@ -4516,8 +4558,8 @@ STR_ORDERS_VEH_WITH_SHARED_ORDERS_LIST_TOOLTIP                  :{BLACK}Mostra t
 STR_ORDER_GO_TO_WAYPOINT                                        :Ir por {WAYPOINT}
 STR_ORDER_GO_NON_STOP_TO_WAYPOINT                               :Ir sem parar por {WAYPOINT}
 
-STR_ORDER_SERVICE_AT                                            :Serviço em
-STR_ORDER_SERVICE_NON_STOP_AT                                   :Serviço sem parar em
+STR_ORDER_SERVICE_AT                                            :Manutenção em
+STR_ORDER_SERVICE_NON_STOP_AT                                   :Manutenção sem parar em
 
 STR_ORDER_NEAREST_DEPOT                                         :o mais perto
 STR_ORDER_NEAREST_HANGAR                                        :o hangar mais próximo
@@ -5154,7 +5196,7 @@ STR_ERROR_CAN_T_SELL_SHIP                                       :{WHITE}Não é 
 STR_ERROR_CAN_T_SELL_AIRCRAFT                                   :{WHITE}Não é possível vender aeronave...
 
 STR_ERROR_TOO_MANY_VEHICLES_IN_GAME                             :{WHITE}Existem demasiados veículos em jogo
-STR_ERROR_CAN_T_CHANGE_SERVICING                                :{WHITE}Não é possível alterar o intervalo de serviço...
+STR_ERROR_CAN_T_CHANGE_SERVICING                                :{WHITE}Não é possível alterar o intervalo manutenção...
 
 STR_ERROR_VEHICLE_IS_DESTROYED                                  :{WHITE}... o veículo está destruido
 

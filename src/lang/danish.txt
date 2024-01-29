@@ -1274,6 +1274,7 @@ STR_CONFIG_SETTING_SUBSIDY_DURATION                             :Varighed på ti
 ###length 2
 STR_CONFIG_SETTING_SUBSIDY_DURATION_HELPTEXT                    :Styrer hvor mange år tilskudsordninger tildeles for
 
+STR_CONFIG_SETTING_SUBSIDY_DURATION_VALUE                       :{UNITS_YEARS_OR_PERIODS}
 ###setting-zero-is-special
 STR_CONFIG_SETTING_SUBSIDY_DURATION_DISABLED                    :Ingen tilskudsordninger
 
