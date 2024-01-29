@@ -193,8 +193,8 @@ enum Commands : uint16_t {
 	CMD_BUILD_BRIDGE,                 ///< build a bridge
 	CMD_BUILD_RAIL_STATION,           ///< build a rail station
 	CMD_BUILD_TRAIN_DEPOT,            ///< build a train depot
-	CMD_BUILD_SIGNALS,                ///< build a signal
-	CMD_REMOVE_SIGNALS,               ///< remove a signal
+	CMD_BUILD_SINGLE_SIGNAL,          ///< build a signal
+	CMD_REMOVE_SINGLE_SIGNAL,         ///< remove a signal
 	CMD_TERRAFORM_LAND,               ///< terraform a tile
 	CMD_BUILD_OBJECT,                 ///< build an object
 	CMD_BUILD_OBJECT_AREA,            ///< build an area of objects

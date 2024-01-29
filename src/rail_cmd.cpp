@@ -455,7 +455,7 @@ CommandCost CmdBuildSingleRail(DoCommandFlag flags, TileIndex tile, RailType rai
 
 				for (Track track_it = TRACK_BEGIN; track_it < TRACK_END; track_it++) {
 					if (HasTrack(tile, track_it) && HasSignalOnTrack(tile, track_it)) {
-						CommandCost ret_remove_signals = Command<CMD_REMOVE_SIGNALS>::Do(flags, tile, track_it);
+						CommandCost ret_remove_signals = Command<CMD_REMOVE_SINGLE_SIGNAL>::Do(flags, tile, track_it);
 						if (ret_remove_signals.Failed()) return ret_remove_signals;
 						cost.AddCost(ret_remove_signals);
 					}
@@ -682,7 +682,7 @@ CommandCost CmdRemoveSingleRail(DoCommandFlag flags, TileIndex tile, Track track
 
 			/* Charge extra to remove signals on the track, if they are there */
 			if (HasSignalOnTrack(tile, track)) {
-				cost.AddCost(Command<CMD_REMOVE_SIGNALS>::Do(flags, tile, track));
+				cost.AddCost(Command<CMD_REMOVE_SINGLE_SIGNAL>::Do(flags, tile, track));
 			}
 
 			if (flags & DC_EXEC) {
@@ -1325,7 +1325,7 @@ static CommandCost CmdSignalTrackHelper(DoCommandFlag flags, TileIndex tile, Til
 		if (HasBit(signal_dir, 1)) signals |= SignalAgainstTrackdir(trackdir);
 
 		DoCommandFlag do_flags = test_only ? flags & ~DC_EXEC : flags;
-		CommandCost ret = remove ? Command<CMD_REMOVE_SIGNALS>::Do(do_flags, tile, TrackdirToTrack(trackdir)) : Command<CMD_BUILD_SIGNALS>::Do(do_flags, tile, TrackdirToTrack(trackdir), sigtype, sigvar, false, signal_ctr == 0, mode, SIGTYPE_BLOCK, SIGTYPE_BLOCK, 0, signals);
+		CommandCost ret = remove ? Command<CMD_REMOVE_SINGLE_SIGNAL>::Do(do_flags, tile, TrackdirToTrack(trackdir)) : Command<CMD_BUILD_SINGLE_SIGNAL>::Do(do_flags, tile, TrackdirToTrack(trackdir), sigtype, sigvar, false, signal_ctr == 0, mode, SIGTYPE_BLOCK, SIGTYPE_BLOCK, 0, signals);
 
 		if (test_only) return ret.Succeeded();
 
