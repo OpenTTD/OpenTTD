@@ -15,6 +15,7 @@
 #include "viewport_func.h"
 #include "viewport_kdtree.h"
 #include "command_func.h"
+#include "company_func.h"
 #include "industry.h"
 #include "station_base.h"
 #include "waypoint_base.h"

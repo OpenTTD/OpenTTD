@@ -161,21 +161,6 @@ bool IsCommandAllowedWhilePaused(Commands cmd)
 	return _game_mode == GM_EDITOR || command_type_lookup[_command_proc_table[cmd].type] <= _settings_game.construction.command_pause_level;
 }
 
-/*!
- * This functions returns the money which can be used to execute a command.
- * This is either the money of the current company or INT64_MAX if there
- * is no such a company "at the moment" like the server itself.
- *
- * @return The available money of a company or INT64_MAX
- */
-Money GetAvailableMoneyForCommand()
-{
-	CompanyID company = _current_company;
-	if (!Company::IsValidID(company)) return INT64_MAX;
-	return Company::Get(company)->money;
-}
-
-
 /**
  * Prepare for calling a command proc.
  * @param top_level Top level of command execution, i.e. command from a command.
