@@ -469,7 +469,7 @@ static bool IsValidSignalType(int signal_type)
 	}
 	::SignalType sig_type = (::SignalType)(signal >= SIGNALTYPE_TWOWAY ? signal ^ SIGNALTYPE_TWOWAY : signal);
 
-	return ScriptObject::Command<CMD_BUILD_SIGNALS>::Do(tile, track, sig_type, ::SIG_ELECTRIC, false, false, false, ::SIGTYPE_BLOCK, ::SIGTYPE_BLOCK, signal_cycles, 0);
+	return ScriptObject::Command<CMD_BUILD_SINGLE_SIGNAL>::Do(tile, track, sig_type, ::SIG_ELECTRIC, false, false, false, ::SIGTYPE_BLOCK, ::SIGTYPE_BLOCK, signal_cycles, 0);
 }
 
 /* static */ bool ScriptRail::RemoveSignal(TileIndex tile, TileIndex front)
@@ -488,7 +488,7 @@ static bool IsValidSignalType(int signal_type)
 	}
 	EnforcePrecondition(false, track != INVALID_TRACK);
 
-	return ScriptObject::Command<CMD_REMOVE_SIGNALS>::Do(tile, track);
+	return ScriptObject::Command<CMD_REMOVE_SINGLE_SIGNAL>::Do(tile, track);
 }
 
 /* static */ Money ScriptRail::GetBuildCost(RailType railtype, BuildType build_type)
