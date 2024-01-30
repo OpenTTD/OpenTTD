@@ -108,16 +108,16 @@ void DumpDebugFacilityNames(std::back_insert_iterator<std::string> &output_itera
  * @param level Debug category.
  * @param message The message to output.
  */
-void DebugPrint(const char *level, const std::string &message)
+void DebugPrint(const char *category, int level, const std::string &message)
 {
-	if (strcmp(level, "desync") == 0) {
+	if (strcmp(category, "desync") == 0) {
 		static FILE *f = FioFOpenFile("commands-out.log", "wb", AUTOSAVE_DIR);
 		if (f == nullptr) return;
 
-		fmt::print(f, "{}{}\n", GetLogPrefix(), message);
+		fmt::print(f, "{}{}\n", GetLogPrefix(true), message);
 		fflush(f);
 #ifdef RANDOM_DEBUG
-	} else if (strcmp(level, "random") == 0) {
+	} else if (strcmp(category, "random") == 0) {
 		static FILE *f = FioFOpenFile("random-out.log", "wb", AUTOSAVE_DIR);
 		if (f == nullptr) return;
 
@@ -125,12 +125,12 @@ void DebugPrint(const char *level, const std::string &message)
 		fflush(f);
 #endif
 	} else {
-		fmt::print(stderr, "{}dbg: [{}] {}\n", GetLogPrefix(), level, message);
+		fmt::print(stderr, "{}dbg: [{}:{}] {}\n", GetLogPrefix(true), category, level, message);
 
 		if (_debug_remote_console.load()) {
 			/* Only add to the queue when there is at least one consumer of the data. */
 			std::lock_guard<std::mutex> lock(_debug_remote_console_mutex);
-			_debug_remote_console_queue.push_back({ level, message });
+			_debug_remote_console_queue.push_back({ category, message });
 		}
 	}
 }
@@ -218,14 +218,17 @@ std::string GetDebugString()
 }
 
 /**
- * Get the prefix for logs; if show_date_in_logs is enabled it returns
+ * Get the prefix for logs.
+ *
+ * If show_date_in_logs or \p force is enabled it returns
  * the date, otherwise it returns an empty string.
+ *
  * @return the prefix for logs.
  */
-std::string GetLogPrefix()
+std::string GetLogPrefix(bool force)
 {
 	std::string log_prefix;
-	if (_settings_client.gui.show_date_in_logs) {
+	if (force || _settings_client.gui.show_date_in_logs) {
 		log_prefix = fmt::format("[{:%Y-%m-%d %H:%M:%S}] ", fmt::localtime(time(nullptr)));
 	}
 	return log_prefix;
