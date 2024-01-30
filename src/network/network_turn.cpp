@@ -32,6 +32,8 @@ public:
 
 	void OnFailure() override
 	{
+		Debug(net, 9, "Turn::OnFailure()");
+
 		this->handler->connecter = nullptr;
 
 		this->handler->ConnectFailure();
@@ -39,6 +41,8 @@ public:
 
 	void OnConnect(SOCKET s) override
 	{
+		Debug(net, 9, "Turn::OnConnect()");
+
 		this->handler->connecter = nullptr;
 
 		this->handler->sock = s;
@@ -47,6 +51,8 @@ public:
 
 bool ClientNetworkTurnSocketHandler::Receive_TURN_ERROR(Packet *)
 {
+	Debug(net, 9, "Receive_TURN_ERROR()");
+
 	this->ConnectFailure();
 
 	return false;
@@ -54,6 +60,8 @@ bool ClientNetworkTurnSocketHandler::Receive_TURN_ERROR(Packet *)
 
 bool ClientNetworkTurnSocketHandler::Receive_TURN_CONNECTED(Packet *p)
 {
+	Debug(net, 9, "Receive_TURN_CONNECTED()");
+
 	std::string hostname = p->Recv_string(NETWORK_HOSTNAME_LENGTH);
 
 	/* Act like we no longer have a socket, as we are handing it over to the
@@ -72,6 +80,8 @@ bool ClientNetworkTurnSocketHandler::Receive_TURN_CONNECTED(Packet *p)
  */
 void ClientNetworkTurnSocketHandler::Connect()
 {
+	Debug(net, 9, "Turn::Connect()");
+
 	this->connect_started = true;
 	this->connecter = TCPConnecter::Create<NetworkTurnConnecter>(this, this->connection_string);
 }

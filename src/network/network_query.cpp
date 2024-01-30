@@ -81,12 +81,16 @@ void QueryNetworkGameSocketHandler::Send()
  */
 NetworkRecvStatus QueryNetworkGameSocketHandler::SendGameInfo()
 {
+	Debug(net, 9, "Query::SendGameInfo()");
+
 	this->SendPacket(new Packet(PACKET_CLIENT_GAME_INFO));
 	return NETWORK_RECV_STATUS_OKAY;
 }
 
 NetworkRecvStatus QueryNetworkGameSocketHandler::Receive_SERVER_FULL(Packet *)
 {
+	Debug(net, 9, "Query::Receive_SERVER_FULL()");
+
 	NetworkGameList *item = NetworkGameListAddItem(this->connection_string);
 	item->status = NGLS_FULL;
 	item->refreshing = false;
@@ -98,6 +102,8 @@ NetworkRecvStatus QueryNetworkGameSocketHandler::Receive_SERVER_FULL(Packet *)
 
 NetworkRecvStatus QueryNetworkGameSocketHandler::Receive_SERVER_BANNED(Packet *)
 {
+	Debug(net, 9, "Query::Receive_SERVER_BANNED()");
+
 	NetworkGameList *item = NetworkGameListAddItem(this->connection_string);
 	item->status = NGLS_BANNED;
 	item->refreshing = false;
@@ -109,6 +115,8 @@ NetworkRecvStatus QueryNetworkGameSocketHandler::Receive_SERVER_BANNED(Packet *)
 
 NetworkRecvStatus QueryNetworkGameSocketHandler::Receive_SERVER_GAME_INFO(Packet *p)
 {
+	Debug(net, 9, "Query::Receive_SERVER_GAME_INFO()");
+
 	NetworkGameList *item = NetworkGameListAddItem(this->connection_string);
 
 	/* Clear any existing GRFConfig chain. */
@@ -129,6 +137,8 @@ NetworkRecvStatus QueryNetworkGameSocketHandler::Receive_SERVER_GAME_INFO(Packet
 NetworkRecvStatus QueryNetworkGameSocketHandler::Receive_SERVER_ERROR(Packet *p)
 {
 	NetworkErrorCode error = (NetworkErrorCode)p->Recv_uint8();
+
+	Debug(net, 9, "Query::Receive_SERVER_ERROR(): error={}", error);
 
 	NetworkGameList *item = NetworkGameListAddItem(this->connection_string);
 

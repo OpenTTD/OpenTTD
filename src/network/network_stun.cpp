@@ -38,6 +38,8 @@ public:
 
 	void OnFailure() override
 	{
+		Debug(net, 9, "Stun::OnFailure(): family={}", this->family);
+
 		this->stun_handler->connecter = nullptr;
 
 		/* Connection to STUN server failed. For example, the client doesn't
@@ -48,6 +50,8 @@ public:
 
 	void OnConnect(SOCKET s) override
 	{
+		Debug(net, 9, "Stun::OnConnect(): family={}", this->family);
+
 		this->stun_handler->connecter = nullptr;
 
 		assert(this->stun_handler->sock == INVALID_SOCKET);
@@ -70,6 +74,8 @@ void ClientNetworkStunSocketHandler::Connect(const std::string &token, uint8_t f
 {
 	this->token = token;
 	this->family = family;
+
+	Debug(net, 9, "Stun::Connect(): family={}", this->family);
 
 	this->connecter = TCPConnecter::Create<NetworkStunConnecter>(this, NetworkStunConnectionString(), token, family);
 }
