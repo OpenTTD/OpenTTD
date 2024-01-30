@@ -72,7 +72,7 @@ public:
 	void OnClick([[maybe_unused]] Point pt, WidgetID widget, [[maybe_unused]] int click_count) override
 	{
 		if (widget >= WID_TT_BEGIN && widget < WID_TT_END) {
-			if (_ctrl_pressed) {
+			if (_fn_pressed) {
 				/* toggle the bit of the transparencies lock variable */
 				ToggleTransparencyLock((TransparencyOption)(widget - WID_TT_BEGIN));
 				this->SetDirty();

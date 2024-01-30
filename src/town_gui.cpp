@@ -493,7 +493,7 @@ public:
 	{
 		switch (widget) {
 			case WID_TV_CENTER_VIEW: // scroll to location
-				if (_ctrl_pressed) {
+				if (_fn_pressed) {
 					ShowExtraViewportWindow(this->town->xy);
 				} else {
 					ScrollMainWindowToTile(this->town->xy);
@@ -958,7 +958,7 @@ public:
 
 				const Town *t = *it;
 				assert(t != nullptr);
-				if (_ctrl_pressed) {
+				if (_fn_pressed) {
 					ShowExtraViewportWindow(t->xy);
 				} else {
 					ScrollMainWindowToTile(t->xy);
@@ -1217,7 +1217,7 @@ public:
 				tile, this->town_size, this->city, this->town_layout, random, townnameparts, name);
 
 		/* Rerandomise name, if success and no cost-estimation. */
-		if (success && !_shift_pressed) this->RandomTownName();
+		if (success && !_estimate_pressed) this->RandomTownName();
 	}
 
 	void OnClick([[maybe_unused]] Point pt, WidgetID widget, [[maybe_unused]] int click_count) override

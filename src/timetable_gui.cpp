@@ -204,8 +204,8 @@ struct TimetableWindow : Window {
 	const Vehicle *vehicle;    ///< Vehicle monitored by the window.
 	bool show_expected;        ///< Whether we show expected arrival or scheduled.
 	Scrollbar *vscroll;        ///< The scrollbar.
-	bool set_start_date_all;   ///< Set start date using minutes text entry for all timetable entries (ctrl-click) action.
-	bool change_timetable_all; ///< Set wait time or speed for all timetable entries (ctrl-click) action.
+	bool set_start_date_all;   ///< Set start date using minutes text entry for all timetable entries (Fn-click) action.
+	bool change_timetable_all; ///< Set wait time or speed for all timetable entries (Fn-click) action.
 
 	TimetableWindow(WindowDesc *desc, WindowNumber window_number) :
 			Window(desc),
@@ -646,10 +646,10 @@ struct TimetableWindow : Window {
 			case WID_VT_START_DATE: // Change the date that the timetable starts.
 				if (_settings_client.gui.timetable_mode == TimetableMode::Seconds) {
 					this->query_widget = WID_VT_START_DATE;
-					this->change_timetable_all = _ctrl_pressed;
+					this->change_timetable_all = _fn_pressed;
 					ShowQueryString(STR_EMPTY, STR_TIMETABLE_START_SECONDS_QUERY, 6, this, CS_NUMERAL, QSF_ACCEPT_UNCHANGED);
 				} else {
-					ShowSetDateWindow(this, v->index, TimerGameEconomy::date, TimerGameEconomy::year, TimerGameEconomy::year + MAX_TIMETABLE_START_YEARS, ChangeTimetableStartCallback, reinterpret_cast<void*>(static_cast<uintptr_t>(_ctrl_pressed)));
+					ShowSetDateWindow(this, v->index, TimerGameEconomy::date, TimerGameEconomy::year, TimerGameEconomy::year + MAX_TIMETABLE_START_YEARS, ChangeTimetableStartCallback, reinterpret_cast<void*>(static_cast<uintptr_t>(_fn_pressed)));
 				}
 				break;
 
@@ -673,7 +673,7 @@ struct TimetableWindow : Window {
 					}
 				}
 
-				this->change_timetable_all = _ctrl_pressed && (order != nullptr);
+				this->change_timetable_all = _fn_pressed && (order != nullptr);
 				ShowQueryString(current, STR_TIMETABLE_CHANGE_TIME, 31, this, CS_NUMERAL, QSF_ACCEPT_UNCHANGED);
 				break;
 			}
@@ -694,14 +694,14 @@ struct TimetableWindow : Window {
 					}
 				}
 
-				this->change_timetable_all = _ctrl_pressed && (order != nullptr);
+				this->change_timetable_all = _fn_pressed && (order != nullptr);
 				ShowQueryString(current, STR_TIMETABLE_CHANGE_SPEED, 31, this, CS_NUMERAL, QSF_NONE);
 				break;
 			}
 
 			case WID_VT_CLEAR_TIME: { // Clear waiting time.
 				auto [order_id, mtf] = PackTimetableArgs(v, this->sel_index, false);
-				if (_ctrl_pressed) {
+				if (_fn_pressed) {
 					Command<CMD_BULK_CHANGE_TIMETABLE>::Post(STR_ERROR_CAN_T_TIMETABLE_VEHICLE, v->index, mtf, 0);
 				} else {
 					Command<CMD_CHANGE_TIMETABLE>::Post(STR_ERROR_CAN_T_TIMETABLE_VEHICLE, v->index, order_id, mtf, 0);
@@ -711,7 +711,7 @@ struct TimetableWindow : Window {
 
 			case WID_VT_CLEAR_SPEED: { // Clear max speed button.
 				auto [order_id, mtf] = PackTimetableArgs(v, this->sel_index, true);
-				if (_ctrl_pressed) {
+				if (_fn_pressed) {
 					Command<CMD_BULK_CHANGE_TIMETABLE>::Post(STR_ERROR_CAN_T_TIMETABLE_VEHICLE, v->index, mtf, UINT16_MAX);
 				} else {
 					Command<CMD_CHANGE_TIMETABLE>::Post(STR_ERROR_CAN_T_TIMETABLE_VEHICLE, v->index, order_id, mtf, UINT16_MAX);
@@ -720,11 +720,11 @@ struct TimetableWindow : Window {
 			}
 
 			case WID_VT_RESET_LATENESS: // Reset the vehicle's late counter.
-				Command<CMD_SET_VEHICLE_ON_TIME>::Post(STR_ERROR_CAN_T_TIMETABLE_VEHICLE, v->index, _ctrl_pressed);
+				Command<CMD_SET_VEHICLE_ON_TIME>::Post(STR_ERROR_CAN_T_TIMETABLE_VEHICLE, v->index, _fn_pressed);
 				break;
 
 			case WID_VT_AUTOFILL: { // Autofill the timetable.
-				Command<CMD_AUTOFILL_TIMETABLE>::Post(STR_ERROR_CAN_T_TIMETABLE_VEHICLE, v->index, !HasBit(v->vehicle_flags, VF_AUTOFILL_TIMETABLE), _ctrl_pressed);
+				Command<CMD_AUTOFILL_TIMETABLE>::Post(STR_ERROR_CAN_T_TIMETABLE_VEHICLE, v->index, !HasBit(v->vehicle_flags, VF_AUTOFILL_TIMETABLE), _fn_pressed);
 				break;
 			}
 

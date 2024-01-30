@@ -472,14 +472,13 @@ void VideoDriver_Cocoa::InputLoop()
 {
 	NSUInteger cur_mods = [ NSEvent modifierFlags ];
 
-	bool old_ctrl_pressed = _ctrl_pressed;
-
-	_ctrl_pressed = (cur_mods & ( _settings_client.gui.right_mouse_btn_emulation != RMBE_CONTROL ? NSEventModifierFlagControl : NSEventModifierFlagCommand)) != 0;
-	_shift_pressed = (cur_mods & NSEventModifierFlagShift) != 0;
+	bool ctrl_pressed = (cur_mods & ( _settings_client.gui.right_mouse_btn_emulation != RMBE_CONTROL ? NSEventModifierFlagControl : NSEventModifierFlagCommand)) != 0;
+	bool shift_pressed = (cur_mods & NSEventModifierFlagShift) != 0;
+	bool alt_pressed = (cur_mods & NSEventModifierFlagOption) != 0;
 
 	this->fast_forward_key_pressed = _tab_is_down;
 
-	if (old_ctrl_pressed != _ctrl_pressed) HandleCtrlChanged();
+	HandleModifierKeys(shift_pressed, ctrl_pressed, alt_pressed);
 }
 
 /** Main game loop. */

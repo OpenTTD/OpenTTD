@@ -344,7 +344,7 @@ public:
 	{
 		switch (widget) {
 			case WID_LI_LOCATION:
-				if (_ctrl_pressed) {
+				if (_fn_pressed) {
 					ShowExtraViewportWindow(this->tile);
 				} else {
 					ScrollMainWindowToTile(this->tile);

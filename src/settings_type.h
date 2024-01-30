@@ -23,6 +23,7 @@
 #include "rail_gui.h"
 #include "signal_type.h"
 #include "timetable.h"
+#include "gfx_type.h"
 
 /* Used to validate sizes of "max" value in settings. */
 const size_t MAX_SLE_UINT8 = UINT8_MAX;
@@ -220,6 +221,9 @@ struct GUISettings {
 	uint8_t  newgrf_default_palette;           ///< default palette to use for NewGRFs without action 14 palette information
 
 	bool   scale_bevels;                     ///< bevels are scaled with GUI scale.
+	ModifierKey fn_modifier;                 ///< function modifier key
+	ModifierKey remove_modifier;             ///< remove modifier key
+	ModifierKey estimate_modifier;           ///< estimate modifier key
 
 	/**
 	 * Returns true when the user has sufficient privileges to edit newgrfs on a running game

@@ -130,7 +130,7 @@ struct EnginePreviewWindow : Window {
 				Command<CMD_WANT_ENGINE_PREVIEW>::Post(this->window_number);
 				FALLTHROUGH;
 			case WID_EP_NO:
-				if (!_shift_pressed) this->Close();
+				if (!_estimate_pressed) this->Close();
 				break;
 		}
 	}

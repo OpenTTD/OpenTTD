@@ -785,7 +785,7 @@ struct GameOptionsWindow : Window {
 
 			case WID_GO_GUI_SCALE:
 				if (ClickSliderWidget(this->GetWidget<NWidgetBase>(widget)->GetCurrentRect(), pt, MIN_INTERFACE_SCALE, MAX_INTERFACE_SCALE, this->gui_scale)) {
-					if (!_ctrl_pressed) this->gui_scale = ((this->gui_scale + 12) / 25) * 25;
+					if (!_fn_pressed) this->gui_scale = ((this->gui_scale + 12) / 25) * 25;
 					this->SetWidgetDirty(widget);
 				}
 
@@ -2041,6 +2041,9 @@ static SettingsContainer &GetSettingsTree()
 			interface->Add(new SettingEntry("gui.timetable_arrival_departure"));
 			interface->Add(new SettingEntry("gui.show_newgrf_name"));
 			interface->Add(new SettingEntry("gui.show_cargo_in_vehicle_lists"));
+			viewports->Add(new SettingEntry("gui.fn_modifier"));
+			viewports->Add(new SettingEntry("gui.remove_modifier"));
+			viewports->Add(new SettingEntry("gui.estimate_modifier"));
 		}
 
 		SettingsPage *advisors = main->Add(new SettingsPage(STR_CONFIG_SETTING_ADVISORS));

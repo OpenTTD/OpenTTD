@@ -1039,7 +1039,7 @@ CommandCost CmdBuildTrainDepot(DoCommandFlag flags, TileIndex tile, RailType rai
  * @param track track-orientation
  * @param sigtype type of the signal
  * @param sigvar variant of signal type (normal/semaphore)
- * @param ctrl_pressed true = override signal/semaphore, or pre/exit/combo signal or toggle variant (CTRL-toggle)
+ * @param fn_pressed true = override signal/semaphore, or pre/exit/combo signal or toggle variant (Fn-toggle)
  * @param convert_signal convert the present signal type and variant
  * @param cycle_start start cycle from this signal type
  * @param cycle_stop wrap around after this signal type
@@ -1049,12 +1049,12 @@ CommandCost CmdBuildTrainDepot(DoCommandFlag flags, TileIndex tile, RailType rai
  * @return the cost of this operation or an error
  * @todo p2 should be replaced by two bits for "along" and "against" the track.
  */
-CommandCost CmdBuildSingleSignal(DoCommandFlag flags, TileIndex tile, Track track, SignalType sigtype, SignalVariant sigvar, bool convert_signal, bool skip_existing_signals, bool ctrl_pressed, SignalType cycle_start, SignalType cycle_stop, uint8_t num_dir_cycle, byte signals_copy)
+CommandCost CmdBuildSingleSignal(DoCommandFlag flags, TileIndex tile, Track track, SignalType sigtype, SignalVariant sigvar, bool convert_signal, bool skip_existing_signals, bool fn_pressed, SignalType cycle_start, SignalType cycle_stop, uint8_t num_dir_cycle, byte signals_copy)
 {
 	if (sigtype > SIGTYPE_LAST || sigvar > SIG_SEMAPHORE) return CMD_ERROR;
 	if (cycle_start > cycle_stop || cycle_stop > SIGTYPE_LAST) return CMD_ERROR;
 
-	if (ctrl_pressed) sigvar = (SignalVariant)(sigvar ^ SIG_SEMAPHORE);
+	if (fn_pressed) sigvar = (SignalVariant)(sigvar ^ SIG_SEMAPHORE);
 
 	/* You can only build signals on plain rail tiles, and the selected track must exist */
 	if (!ValParamTrackOrientation(track) || !IsPlainRailTile(tile) ||
@@ -1087,7 +1087,7 @@ CommandCost CmdBuildSingleSignal(DoCommandFlag flags, TileIndex tile, Track trac
 
 		} else if (convert_signal) {
 			/* convert button pressed */
-			if (ctrl_pressed || GetSignalVariant(tile, track) != sigvar) {
+			if (fn_pressed || GetSignalVariant(tile, track) != sigvar) {
 				/* it costs money to change signal variant (light or semaphore) */
 				cost = CommandCost(EXPENSES_CONSTRUCTION, _price[PR_BUILD_SIGNALS] + _price[PR_CLEAR_SIGNALS]);
 			} else {
@@ -1133,7 +1133,7 @@ CommandCost CmdBuildSingleSignal(DoCommandFlag flags, TileIndex tile, Track trac
 			} else {
 				if (convert_signal) {
 					/* convert signal button pressed */
-					if (ctrl_pressed) {
+					if (fn_pressed) {
 						/* toggle the present signal variant: SIG_ELECTRIC <-> SIG_SEMAPHORE */
 						SetSignalVariant(tile, track, (GetSignalVariant(tile, track) == SIG_ELECTRIC) ? SIG_SEMAPHORE : SIG_ELECTRIC);
 						/* Query current signal type so the check for PBS signals below works. */
@@ -1147,7 +1147,7 @@ CommandCost CmdBuildSingleSignal(DoCommandFlag flags, TileIndex tile, Track trac
 						}
 					}
 
-				} else if (ctrl_pressed) {
+				} else if (fn_pressed) {
 					/* cycle between cycle_start and cycle_end */
 					sigtype = (SignalType)(GetSignalType(tile, track) + 1);
 

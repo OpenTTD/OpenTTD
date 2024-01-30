@@ -101,6 +101,11 @@ enum StringControlCode {
 	SCC_SET_CASE,
 	SCC_SWITCH_CASE,
 
+	/* Modifier keys */
+	SCC_FN_KEY,
+	SCC_REMOVE_KEY,
+	SCC_ESTIMATE_KEY,
+
 	/* Colour codes */
 	SCC_BLUE,
 	SCC_SILVER,

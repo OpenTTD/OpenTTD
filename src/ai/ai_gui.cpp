@@ -229,7 +229,7 @@ struct AIConfigWindow : public Window {
 			case WID_AIC_LIST: { // Select a slot
 				this->selected_slot = (CompanyID)this->vscroll->GetScrolledRowFromWidget(pt.y, this, widget);
 				this->InvalidateData();
-				if (click_count > 1 && this->selected_slot != INVALID_COMPANY) ShowScriptListWindow((CompanyID)this->selected_slot, _ctrl_pressed);
+				if (click_count > 1 && this->selected_slot != INVALID_COMPANY) ShowScriptListWindow((CompanyID)this->selected_slot, _fn_pressed);
 				break;
 			}
 
@@ -259,7 +259,7 @@ struct AIConfigWindow : public Window {
 			}
 
 			case WID_AIC_CHANGE:  // choose other AI
-				ShowScriptListWindow((CompanyID)this->selected_slot, _ctrl_pressed);
+				ShowScriptListWindow((CompanyID)this->selected_slot, _fn_pressed);
 				break;
 
 			case WID_AIC_CONFIGURE: // change the settings for an AI

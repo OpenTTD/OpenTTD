@@ -65,7 +65,7 @@ static void PlaceAirport(TileIndex tile)
 
 	byte airport_type = AirportClass::Get(_selected_airport_class)->GetSpec(_selected_airport_index)->GetIndex();
 	byte layout = _selected_airport_layout;
-	bool adjacent = _ctrl_pressed;
+	bool adjacent = _fn_pressed;
 
 	auto proc = [=](bool test, StationID to_join) -> bool {
 		if (test) {

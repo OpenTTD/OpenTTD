@@ -143,7 +143,7 @@ struct GoalListWindow : public Window {
 			default: NOT_REACHED();
 		}
 
-		if (_ctrl_pressed) {
+		if (_fn_pressed) {
 			ShowExtraViewportWindow(xy);
 		} else {
 			ScrollMainWindowToTile(xy);

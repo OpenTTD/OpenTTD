@@ -566,6 +566,12 @@ static void FormatGenericCurrency(StringBuilder &builder, const CurrencySpec *sp
 	}
 }
 
+static void FormatModifierKey(StringBuilder &builder, ModifierKey key)
+{
+	auto tmp_params = MakeParameters();
+	return FormatString(builder, GetStringPtr(STR_MODIFIER_KEY_UNASSIGNED + key), tmp_params);
+}
+
 /**
  * Determine the "plural" index given a plural form and a number.
  * @param count       The number to get the plural index of.
@@ -1702,6 +1708,21 @@ static void FormatString(StringBuilder &builder, const char *str_arg, StringPara
 				case SCC_COLOUR: { // {COLOUR}
 					StringControlCode scc = (StringControlCode)(SCC_BLUE + args.GetNextParameter<Colours>());
 					if (IsInsideMM(scc, SCC_BLUE, SCC_COLOUR)) builder.Utf8Encode(scc);
+					break;
+				}
+
+				case SCC_FN_KEY: { // {FN_KEY}
+					FormatModifierKey(builder, _settings_client.gui.fn_modifier);
+					break;
+				}
+
+				case SCC_REMOVE_KEY: { // {REMOVE_KEY}
+					FormatModifierKey(builder, _settings_client.gui.remove_modifier);
+					break;
+				}
+
+				case SCC_ESTIMATE_KEY: { // {ESTIMATE_KEY}
+					FormatModifierKey(builder, _settings_client.gui.estimate_modifier);
 					break;
 				}
 

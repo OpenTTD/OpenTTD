@@ -155,6 +155,11 @@ static const CmdStruct _cmd_structs[] = {
 	{"LRO",               EmitSingleChar, CHAR_TD_LRO,            0, -1, C_DONTCOUNT},
 	{"RLO",               EmitSingleChar, CHAR_TD_RLO,            0, -1, C_DONTCOUNT},
 	{"PDF",               EmitSingleChar, CHAR_TD_PDF,            0, -1, C_DONTCOUNT},
+
+	/* Control codes to insert the name of a modifier key. */
+	{"FN_KEY",            EmitSingleChar, SCC_FN_KEY,             0, -1, C_NONE},
+	{"REMOVE_KEY",        EmitSingleChar, SCC_REMOVE_KEY,         0, -1, C_NONE},
+	{"ESTIMATE_KEY",      EmitSingleChar, SCC_ESTIMATE_KEY,       0, -1, C_NONE},
 };
 
 /** Description of a plural form */

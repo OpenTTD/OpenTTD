@@ -1082,7 +1082,7 @@ struct NetworkStartServerWindow : public Window {
 			case WID_NSS_GENERATE_GAME: // Start game
 				if (!CheckServerName()) return;
 				_is_network_server = true;
-				if (_ctrl_pressed) {
+				if (_fn_pressed) {
 					StartNewGameWithoutGUI(GENERATE_NEW_SEED);
 				} else {
 					ShowGenerateLandscape();

@@ -34,8 +34,10 @@ byte _dirkeys;        ///< 1 = left, 2 = up, 4 = right, 8 = down
 bool _fullscreen;
 byte _support8bpp;
 CursorVars _cursor;
-bool _ctrl_pressed;   ///< Is Ctrl pressed?
-bool _shift_pressed;  ///< Is Shift pressed?
+bool _shift_pressed;     ///< Is Shift pressed?
+bool _fn_pressed;        ///< Is function modifier pressed?
+bool _remove_pressed;    ///< Is remove modifier pressed?
+bool _estimate_pressed;  ///< Is estimate modifier pressed?
 uint16_t _game_speed = 100; ///< Current game-speed; 100 is 1x, 0 is infinite.
 bool _left_button_down;     ///< Is left mouse button pressed?
 bool _left_button_clicked;  ///< Is left mouse button clicked?

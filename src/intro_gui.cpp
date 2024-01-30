@@ -333,7 +333,7 @@ struct SelectGameWindow : public Window {
 
 		switch (widget) {
 			case WID_SGI_GENERATE_GAME:
-				if (_ctrl_pressed) {
+				if (_fn_pressed) {
 					StartNewGameWithoutGUI(GENERATE_NEW_SEED);
 				} else {
 					ShowGenerateLandscape();

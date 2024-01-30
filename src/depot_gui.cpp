@@ -144,7 +144,7 @@ static void TrainDepotMoveVehicle(const Vehicle *wagon, VehicleID sel, const Veh
 
 	if (wagon == v) return;
 
-	Command<CMD_MOVE_RAIL_VEHICLE>::Post(STR_ERROR_CAN_T_MOVE_VEHICLE, v->tile, v->index, wagon == nullptr ? INVALID_VEHICLE : wagon->index, _ctrl_pressed);
+	Command<CMD_MOVE_RAIL_VEHICLE>::Post(STR_ERROR_CAN_T_MOVE_VEHICLE, v->tile, v->index, wagon == nullptr ? INVALID_VEHICLE : wagon->index, _fn_pressed);
 }
 
 static VehicleCellSize _base_block_sizes_depot[VEH_COMPANY_END];    ///< Cell size for vehicle images in the depot view.
@@ -560,7 +560,7 @@ struct DepotWindow : Window {
 				} else if (v != nullptr) {
 					SetObjectToPlaceWnd(SPR_CURSOR_MOUSE, PAL_NONE, HT_DRAG, this);
 					SetMouseCursorVehicle(v, EIT_IN_DEPOT);
-					_cursor.vehchain = _ctrl_pressed;
+					_cursor.vehchain = _fn_pressed;
 
 					this->sel = v->index;
 					this->SetDirty();
@@ -786,7 +786,7 @@ struct DepotWindow : Window {
 				break;
 
 			case WID_D_LOCATION:
-				if (_ctrl_pressed) {
+				if (_fn_pressed) {
 					ShowExtraViewportWindow(this->window_number);
 				} else {
 					ScrollMainWindowToTile(this->window_number);
@@ -854,7 +854,7 @@ struct DepotWindow : Window {
 		CargoArray capacity{}, loaded{};
 
 		/* Display info for single (articulated) vehicle, or for whole chain starting with selected vehicle */
-		bool whole_chain = (this->type == VEH_TRAIN && _ctrl_pressed);
+		bool whole_chain = (this->type == VEH_TRAIN && _fn_pressed);
 
 		/* loop through vehicle chain and collect cargoes */
 		uint num = 0;
@@ -900,7 +900,7 @@ struct DepotWindow : Window {
 	 */
 	bool OnVehicleSelect(const Vehicle *v) override
 	{
-		if (_ctrl_pressed) {
+		if (_fn_pressed) {
 			/* Share-clone, do not open new viewport, and keep tool active */
 			Command<CMD_CLONE_VEHICLE>::Post(STR_ERROR_CAN_T_BUY_TRAIN + v->type, this->window_number, v->index, true);
 		} else {
@@ -921,8 +921,8 @@ struct DepotWindow : Window {
 	 */
 	bool OnVehicleSelect(VehicleList::const_iterator begin, VehicleList::const_iterator end) override
 	{
-		if (!_ctrl_pressed) {
-			/* If CTRL is not pressed: If all the vehicles in this list have the same orders, then copy orders */
+		if (!_fn_pressed) {
+			/* If Fn is not pressed: If all the vehicles in this list have the same orders, then copy orders */
 			if (AllEqual(begin, end, [](const Vehicle *v1, const Vehicle *v2) {
 				return VehiclesHaveSameEngineList(v1, v2);
 			})) {
@@ -937,7 +937,7 @@ struct DepotWindow : Window {
 				ShowErrorMessage(STR_ERROR_CAN_T_BUY_TRAIN + (*begin)->type, STR_ERROR_CAN_T_CLONE_VEHICLE_LIST, WL_INFO);
 			}
 		} else {
-			/* If CTRL is pressed: If all the vehicles in this list share orders, then copy orders */
+			/* If Fn is pressed: If all the vehicles in this list share orders, then copy orders */
 			if (AllEqual(begin, end, [](const Vehicle *v1, const Vehicle *v2) {
 				return VehiclesHaveSameEngineList(v1, v2);
 			})) {
@@ -1039,7 +1039,7 @@ struct DepotWindow : Window {
 					GetDepotVehiclePtData gdvp = { nullptr, nullptr };
 
 					if (this->GetVehicleFromDepotWndPt(pt.x, pt.y, &v, &gdvp) == MODE_DRAG_VEHICLE && sel != INVALID_VEHICLE) {
-						if (gdvp.wagon != nullptr && gdvp.wagon->index == sel && _ctrl_pressed) {
+						if (gdvp.wagon != nullptr && gdvp.wagon->index == sel && _fn_pressed) {
 							Command<CMD_REVERSE_TRAIN_DIRECTION>::Post(STR_ERROR_CAN_T_REVERSE_DIRECTION_RAIL_VEHICLE, Vehicle::Get(sel)->tile, Vehicle::Get(sel)->index, true);
 						} else if (gdvp.wagon == nullptr || gdvp.wagon->index != sel) {
 							this->vehicle_over = INVALID_VEHICLE;
@@ -1064,7 +1064,7 @@ struct DepotWindow : Window {
 				this->sel = INVALID_VEHICLE;
 				this->SetDirty();
 
-				bool sell_cmd = (v->type == VEH_TRAIN && (widget == WID_D_SELL_CHAIN || _ctrl_pressed));
+				bool sell_cmd = (v->type == VEH_TRAIN && (widget == WID_D_SELL_CHAIN || _fn_pressed));
 				Command<CMD_SELL_VEHICLE>::Post(GetCmdSellVehMsg(v->type), v->tile, v->index, sell_cmd, true, INVALID_CLIENT_ID);
 				break;
 			}
@@ -1101,10 +1101,10 @@ struct DepotWindow : Window {
 		}
 	}
 
-	EventState OnCTRLStateChange() override
+	EventState OnFnStateChange() override
 	{
 		if (this->sel != INVALID_VEHICLE) {
-			_cursor.vehchain = _ctrl_pressed;
+			_cursor.vehchain = _fn_pressed;
 			this->SetWidgetDirty(WID_D_MATRIX);
 			return ES_HANDLED;
 		}
