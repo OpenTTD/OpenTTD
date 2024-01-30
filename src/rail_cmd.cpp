@@ -2387,7 +2387,9 @@ static void DrawTrackBits(TileInfo *ti, TrackBits track)
 
 static void DrawSignals(TileIndex tile, TrackBits rails, const RailTypeInfo *rti)
 {
-#define MAYBE_DRAW_SIGNAL(x, y, z, t) if (IsSignalPresent(tile, x)) DrawSingleSignal(tile, rti, t, GetSingleSignalState(tile, x), y, z)
+	auto MAYBE_DRAW_SIGNAL = [&](byte signalbit, SignalOffsets image, uint pos, Track track) {
+		if (IsSignalPresent(tile, signalbit)) DrawSingleSignal(tile, rti, track, GetSingleSignalState(tile, signalbit), image, pos);
+	};
 
 	if (!(rails & TRACK_BIT_Y)) {
 		if (!(rails & TRACK_BIT_X)) {
