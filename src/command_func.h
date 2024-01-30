@@ -42,7 +42,6 @@ void NetworkSendCommand(Commands cmd, StringID err_message, CommandCallback *cal
 bool IsValidCommand(Commands cmd);
 CommandFlags GetCommandFlags(Commands cmd);
 const char *GetCommandName(Commands cmd);
-Money GetAvailableMoneyForCommand();
 bool IsCommandAllowedWhilePaused(Commands cmd);
 
 template <Commands Tcmd>

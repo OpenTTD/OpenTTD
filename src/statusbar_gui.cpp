@@ -123,6 +123,8 @@ struct StatusBarWindow : Window {
 			case WID_S_RIGHT: {
 				if (_local_company == COMPANY_SPECTATOR) {
 					DrawString(tr, STR_STATUSBAR_SPECTATOR, TC_FROMSTRING, SA_HOR_CENTER);
+				} else if (_settings_game.difficulty.infinite_money) {
+					DrawString(tr, STR_STATUSBAR_INFINITE_MONEY, TC_FROMSTRING, SA_HOR_CENTER);
 				} else {
 					/* Draw company money, if any */
 					const Company *c = Company::GetIfValid(_local_company);

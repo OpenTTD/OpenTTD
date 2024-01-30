@@ -10,6 +10,7 @@
 #include "stdafx.h"
 #include "landscape.h"
 #include "command_func.h"
+#include "company_func.h"
 #include "viewport_func.h"
 #include "company_base.h"
 #include "town.h"

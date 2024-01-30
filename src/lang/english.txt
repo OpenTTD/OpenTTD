@@ -835,6 +835,7 @@ STR_STATUSBAR_AUTOSAVE                                          :{RED}AUTOSAVE
 STR_STATUSBAR_SAVING_GAME                                       :{RED}*  *  SAVING GAME  *  *
 
 STR_STATUSBAR_SPECTATOR                                         :{WHITE}(spectator)
+STR_STATUSBAR_INFINITE_MONEY                                    :{WHITE}(infinite money)
 
 # News message history
 STR_MESSAGE_HISTORY                                             :{WHITE}Message History
@@ -1286,6 +1287,9 @@ STR_CONFIG_SETTING_HORIZONTAL_POS_CENTER                        :Centre
 STR_CONFIG_SETTING_HORIZONTAL_POS_RIGHT                         :Right
 
 STR_CONFIG_SETTING_SECONDS_VALUE                                :{COMMA}{NBSP}second{P 0 "" s}
+
+STR_CONFIG_SETTING_INFINITE_MONEY                               :Infinite money: {STRING2}
+STR_CONFIG_SETTING_INFINITE_MONEY_HELPTEXT                      :Allow unlimited spending and disable bankruptcy of companies
 
 STR_CONFIG_SETTING_MAXIMUM_INITIAL_LOAN                         :Maximum initial loan: {STRING2}
 STR_CONFIG_SETTING_MAXIMUM_INITIAL_LOAN_HELPTEXT                :Maximum amount a company can loan (without taking inflation into account)

@@ -179,7 +179,7 @@
 	company = ResolveCompanyID(company);
 	if (company == COMPANY_INVALID) return -1;
 
-	return ::Company::Get(company)->money;
+	return GetAvailableMoney((::CompanyID)company);
 }
 
 /* static */ Money ScriptCompany::GetLoanAmount()
