@@ -392,7 +392,7 @@ void NORETURN AssertFailedError(int line, const char *file, const char *expressi
 /* For non-debug builds with assertions enabled use the special assertion handler. */
 #if defined(NDEBUG) && defined(WITH_ASSERT)
 #	undef assert
-#	define assert(expression) if (unlikely(!(expression))) AssertFailedError(__LINE__, __FILE__, #expression);
+#	define assert(expression) do { if (unlikely(!(expression))) AssertFailedError(__LINE__, __FILE__, #expression); } while (false)
 #endif
 
 /* Define JSON_ASSERT, which is used by nlohmann-json. Otherwise the header-file
