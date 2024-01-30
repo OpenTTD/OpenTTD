@@ -561,6 +561,7 @@ struct EconomySettings {
 	bool   infrastructure_maintenance;       ///< enable monthly maintenance fee for owner infrastructure
 	TimekeepingUnits timekeeping_units;      ///< time units to use for the game economy, either calendar or wallclock
 	uint16_t minutes_per_calendar_year;      ///< minutes per calendar year. Special value 0 means that calendar time is frozen.
+	uint16_t payment_time_scale;             ///< percentage of delivery time to use for payment calculations
 };
 
 struct LinkGraphSettings {
