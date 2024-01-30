@@ -1439,6 +1439,7 @@ STR_CONFIG_SETTING_HORIZONTAL_POS_CENTER                        :ў цэнтры
 STR_CONFIG_SETTING_HORIZONTAL_POS_RIGHT                         :праваруч
 
 
+
 STR_CONFIG_SETTING_MAXIMUM_INITIAL_LOAN                         :Максымальная сума пазыкі: {STRING}
 STR_CONFIG_SETTING_MAXIMUM_INITIAL_LOAN_HELPTEXT                :Максымальная сума пазыкі для кампаніі (без уліку інфляцыі)
 ###setting-zero-is-special
@@ -5634,6 +5635,7 @@ STR_STATION_NAME                                                :{STATION}
 STR_TOWN_NAME                                                   :{TOWN}
 STR_VEHICLE_NAME                                                :{VEHICLE}
 STR_WAYPOINT_NAME                                               :{WAYPOINT}
+
 
 STR_JUST_CARGO                                                  :{CARGO_LONG}
 STR_JUST_CHECKMARK                                              :{CHECKMARK}

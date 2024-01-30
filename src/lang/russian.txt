@@ -489,6 +489,7 @@ STR_SORT_BY_TOTAL_PROFIT_LAST_YEAR                              :Общая пр
 STR_SORT_BY_TOTAL_PROFIT_THIS_YEAR                              :Общая прибыль в этом году
 STR_SORT_BY_AVERAGE_PROFIT_LAST_YEAR                            :Средняя прибыль в прошлом году
 STR_SORT_BY_AVERAGE_PROFIT_THIS_YEAR                            :Средняя прибыль в этом году
+STR_SORT_BY_AVERAGE_PROFIT_THIS_PERIOD                          :Средний доход в текущем периоде
 
 # Group by options for vehicle list
 STR_GROUP_BY_NONE                                               :Нет
@@ -566,6 +567,7 @@ STR_SETTINGS_MENU_CONFIG_SETTINGS_TREE                          :Расшире�
 STR_SETTINGS_MENU_AI_SETTINGS                                   :Настройки ИИ
 STR_SETTINGS_MENU_GAMESCRIPT_SETTINGS                           :Настройки игровых скриптов
 STR_SETTINGS_MENU_NEWGRF_SETTINGS                               :Настройки NewGRF
+STR_SETTINGS_MENU_SANDBOX_OPTIONS                               :Настройки песочницы
 STR_SETTINGS_MENU_TRANSPARENCY_OPTIONS                          :Настройки прозрачности
 STR_SETTINGS_MENU_TOWN_NAMES_DISPLAYED                          :Показывать названия городов
 STR_SETTINGS_MENU_STATION_NAMES_DISPLAYED                       :Показывать названия станций
@@ -1050,6 +1052,7 @@ STR_NEWS_VEHICLE_IS_GETTING_VERY_OLD                            :{WHITE}ТС «{
 STR_NEWS_VEHICLE_IS_GETTING_VERY_OLD_AND                        :{WHITE}ТС «{VEHICLE}» очень сильно устарело и требует срочной замены
 STR_NEWS_TRAIN_IS_STUCK                                         :{WHITE}ТС «{VEHICLE}» не может найти путь для продолжения движения
 STR_NEWS_VEHICLE_IS_LOST                                        :{WHITE}ТС «{VEHICLE}» заблудилось
+STR_NEWS_VEHICLE_UNPROFITABLE_PERIOD                            :{WHITE}Доход ТС «{VEHICLE}» в прошлом периоде: {CURRENCY_LONG}
 STR_NEWS_AIRCRAFT_DEST_TOO_FAR                                  :{WHITE}ТС «{VEHICLE}» не может достичь пункта назначения - слишком далеко
 
 STR_NEWS_ORDER_REFIT_FAILED                                     :{WHITE}ТС «{VEHICLE}» остановлено из-за сбоя переоборудования
@@ -1417,6 +1420,7 @@ STR_CONFIG_SETTING_HORIZONTAL_POS_RIGHT                         :справа
 
 STR_CONFIG_SETTING_SECONDS_VALUE                                :{COMMA}{NBSP}секунд{P 0 а ы ""}
 
+
 STR_CONFIG_SETTING_MAXIMUM_INITIAL_LOAN                         :Максимальная сумма кредита: {STRING}
 STR_CONFIG_SETTING_MAXIMUM_INITIAL_LOAN_HELPTEXT                :Максимальная сумма кредита для компании (без учета инфляции)
 STR_CONFIG_SETTING_MAXIMUM_INITIAL_LOAN_VALUE                   :{CURRENCY_LONG}
@@ -1631,6 +1635,7 @@ STR_CONFIG_SETTING_WARN_INCOME_LESS_HELPTEXT                    :Включае�
 STR_CONFIG_SETTING_NEVER_EXPIRE_VEHICLES                        :Транспорт не будет выходить из эксплуатации: {STRING}
 STR_CONFIG_SETTING_NEVER_EXPIRE_VEHICLES_HELPTEXT               :При включении все транспортные средства остаются доступными для покупки в любое время после начала их производства
 
+STR_CONFIG_SETTING_TIMEKEEPING_UNITS_HELPTEXT                   :Выбор системы отсчёта времени, используемой в игре. После старта сменить её невозможно.{}{}Календарь - это классическая система, изначально использовавшаяся в OpenTTD: год состоит из 12 месяцев, в каждом из которых 28-31{NBSP}день.{}{}В режиме реального времени расчёты производства, движения транспорта и финансовых показателей основаны на интервалах длительностью в 1{NBSP}минуту, что примерно соответствует 30{NBSP}дням в режиме календаря. Эти интервалы группируются в 12-минутные циклы, соответствующие 1{NBSP}году в классическом режиме.{}{}В любом случае, появление новых транспортных средств, зданий и инфраструктуры будет сопровождаться календарём с понятными датами.
 ###length 2
 
 
@@ -1893,6 +1898,7 @@ STR_CONFIG_SETTING_SOUND_NEW_YEAR                               :Финансо�
 
 ###length 2
 STR_CONFIG_SETTING_SOUND_NEW_YEAR_HELPTEXT                      :Воспроизводить звуковой эффект при отображении финансового отчёта компании за прошедшие годы
+STR_CONFIG_SETTING_SOUND_NEW_PERIOD_HELPTEXT                    :Воспроизводить звуковой эффект при отображении финансового отчёта компании за прошедшие циклы
 
 STR_CONFIG_SETTING_SOUND_CONFIRM                                :Строительство: {STRING}
 STR_CONFIG_SETTING_SOUND_CONFIRM_HELPTEXT                       :Воспроизводить звуковые эффекты при строительстве и других действиях
@@ -2367,7 +2373,7 @@ STR_HELP_WINDOW_BUGTRACKER                                      :{BLACK}Сооб
 STR_HELP_WINDOW_COMMUNITY                                       :{BLACK}Сообщество
 
 # Cheat window
-STR_CHEATS                                                      :{WHITE}Читы
+STR_CHEATS                                                      :{WHITE}Настройки песочницы
 STR_CHEAT_MONEY                                                 :{LTBLUE}Добавить {CURRENCY_LONG}
 STR_CHEAT_CHANGE_COMPANY                                        :{LTBLUE}Игра за компанию: {ORANGE}{COMMA}
 STR_CHEAT_EXTRA_DYNAMITE                                        :{LTBLUE}Волшебный динамит (снос ВСЕГО): {ORANGE}{STRING}
@@ -2504,6 +2510,7 @@ STR_NETWORK_SERVER_LIST_MAP_SIZE_CAPTION                        :{BLACK}Разм
 STR_NETWORK_SERVER_LIST_MAP_SIZE_CAPTION_TOOLTIP                :{BLACK}Размер карты игры{}Нажмите для сортировки по площади
 STR_NETWORK_SERVER_LIST_DATE_CAPTION                            :{BLACK}Дата
 STR_NETWORK_SERVER_LIST_DATE_CAPTION_TOOLTIP                    :{BLACK}Текущая дата
+STR_NETWORK_SERVER_LIST_PLAY_TIME_CAPTION_TOOLTIP               :{BLACK}Время, проведённое в игре{}(без учёта времени, когда игра была приостановлена)
 STR_NETWORK_SERVER_LIST_INFO_ICONS_TOOLTIP                      :{BLACK}Язык, версия сервера и{NBSP}т.{NBSP}п.
 
 STR_NETWORK_SERVER_LIST_CLICK_GAME_TO_SELECT                    :{BLACK}Выберите игру из списка
@@ -2897,6 +2904,7 @@ STR_STATION_BUILD_COVERAGE_AREA_OFF_TOOLTIP                     :{BLACK}Не п�
 STR_STATION_BUILD_COVERAGE_AREA_ON_TOOLTIP                      :{BLACK}Показывать зону покрытия
 STR_STATION_BUILD_ACCEPTS_CARGO                                 :{BLACK}Принимается: {GOLD}{CARGO_LIST}
 STR_STATION_BUILD_SUPPLIES_CARGO                                :{BLACK}Отправляется: {GOLD}{CARGO_LIST}
+STR_STATION_BUILD_INFRASTRUCTURE_COST_YEAR                      :{BLACK}Содержание: {GOLD}{CURRENCY_SHORT}/год
 
 # Join station window
 STR_JOIN_STATION_CAPTION                                        :{WHITE}Объединить станции
@@ -3756,6 +3764,7 @@ STR_TOWN_VIEW_TOWN_CAPTION                                      :{WHITE}{TOWN}
 STR_TOWN_VIEW_CITY_CAPTION                                      :{WHITE}{TOWN} (Мегаполис)
 STR_TOWN_VIEW_POPULATION_HOUSES                                 :{BLACK}Население: {ORANGE}{COMMA}{BLACK} Зданий: {ORANGE}{COMMA}
 STR_TOWN_VIEW_CARGO_LAST_MONTH_MAX                              :{BLACK}{CARGO_LIST} в прошлом месяце: {ORANGE}{COMMA}{BLACK} Макс.: {ORANGE}{COMMA}
+STR_TOWN_VIEW_CARGO_LAST_MINUTE_MAX                             :{BLACK}{CARGO_LIST} в минуту: {ORANGE}{COMMA}{BLACK} Макс: {ORANGE}{COMMA}
 STR_TOWN_VIEW_CARGO_FOR_TOWNGROWTH                              :{BLACK}Груз, необходимый для роста города:
 STR_TOWN_VIEW_CARGO_FOR_TOWNGROWTH_REQUIRED_GENERAL             :{ORANGE}{STRING}{RED} требу{G 0 е е е ю}тся
 STR_TOWN_VIEW_CARGO_FOR_TOWNGROWTH_REQUIRED_WINTER              :{ORANGE}{STRING}{BLACK} требу{G 0 е е е ю}тся зимой
@@ -3803,9 +3812,11 @@ STR_LOCAL_AUTHORITY_ACTION_BRIBE                                :Взятка м
 STR_LOCAL_AUTHORITY_ACTION_TOOLTIP_SMALL_ADVERTISING            :{PUSH_COLOUR}{YELLOW}Провести малую рекламную кампанию для увеличения грузо- и пассажиропотока на ваших станциях.{}Она временно повысит рейтинг ваших станций, построенных рядом с центром города.{}{POP_COLOUR}Стоимость: {CURRENCY_LONG}
 STR_LOCAL_AUTHORITY_ACTION_TOOLTIP_MEDIUM_ADVERTISING           :{PUSH_COLOUR}{YELLOW}Провести среднюю рекламную кампанию для увеличения грузо- и пассажиропотока на ваших станциях.{}Она временно повысит рейтинг ваших станций, находящихся не очень далеко от центра города.{}{POP_COLOUR}Стоимость: {CURRENCY_LONG}
 STR_LOCAL_AUTHORITY_ACTION_TOOLTIP_LARGE_ADVERTISING            :{PUSH_COLOUR}{YELLOW}Провести большую рекламную кампанию для увеличения грузо- и пассажиропотока на ваших станциях.{}Она временно повысит рейтинг ваших станций на значительной площади в городе и окрестностях.{}{POP_COLOUR}Стоимость: {CURRENCY_LONG}
-STR_LOCAL_AUTHORITY_ACTION_TOOLTIP_ROAD_RECONSTRUCTION_MONTHS   :{PUSH_COLOUR}{YELLOW}Профинансировать реконструкцию городской дорожной сети.{}Работы, продолжительностью до 6 месяцев, приводят к значительным дорожным заторам .{}{POP_COLOUR}Цена: {CURRENCY_LONG}
+STR_LOCAL_AUTHORITY_ACTION_TOOLTIP_ROAD_RECONSTRUCTION_MONTHS   :{PUSH_COLOUR}{YELLOW}Профинансировать реконструкцию городской дорожной сети.{}Работы, продолжительностью до 6 месяцев, приводят к значительным дорожным заторам.{}{POP_COLOUR}Стоимость: {CURRENCY_LONG}
+STR_LOCAL_AUTHORITY_ACTION_TOOLTIP_ROAD_RECONSTRUCTION_MINUTES  :{PUSH_COLOUR}{YELLOW}Профинансировать реконструкцию городской дорожной сети.{}Работы, продолжительностью до 6 минут, приводят к значительным дорожным заторам.{}{POP_COLOUR}Стоимость: {CURRENCY_LONG}
 STR_LOCAL_AUTHORITY_ACTION_TOOLTIP_STATUE_OF_COMPANY            :{PUSH_COLOUR}{YELLOW}Установить статую в честь вашей компании.{}Она добавит рейтинг вашим станциям.{}{POP_COLOUR}Стоимость: {CURRENCY_LONG}
 STR_LOCAL_AUTHORITY_ACTION_TOOLTIP_NEW_BUILDINGS                :{PUSH_COLOUR}{YELLOW}Профинансировать строительство новых зданий.{}Это временно ускорит рост города.{}{POP_COLOUR}Стоимость: {CURRENCY_LONG}
+STR_LOCAL_AUTHORITY_ACTION_TOOLTIP_EXCLUSIVE_TRANSPORT_MONTHS   :{PUSH_COLOUR}{YELLOW}Приобрести эксклюзивные транспортные права в городе сроком на 12{NBSP}месяцев.{}Городская администрация не позволит пассажирам и предприятиям использовать станции ваших конкурентов. Успешная дача взятки со стороны конкурента аннулирует этот контракт.{}{POP_COLOUR}Стоимость: {CURRENCY_LONG}
 STR_LOCAL_AUTHORITY_ACTION_TOOLTIP_BRIBE                        :{PUSH_COLOUR}{YELLOW}Дать взятку городской администрации для повышения рейтинга и отмены эксклюзивных транспортных прав конкурирующей компании. Существует риск санкций, если факт подкупа раскроется.{}{POP_COLOUR}Цена: {CURRENCY_LONG}
 
 # Goal window
@@ -3960,6 +3971,7 @@ STR_EDIT_WAYPOINT_NAME                                          :{WHITE}Назв
 # Finances window
 STR_FINANCES_CAPTION                                            :{WHITE}Финансы - {COMPANY} {BLACK}{COMPANY_NUM}
 STR_FINANCES_YEAR                                               :{WHITE}{NUM}
+STR_FINANCES_PERIOD_CAPTION                                     :{WHITE}Период
 
 ###length 3
 STR_FINANCES_REVENUE_TITLE                                      :{WHITE}Доходы
@@ -4061,6 +4073,8 @@ STR_COMPANY_INFRASTRUCTURE_VIEW_CANALS                          :{WHITE}Кана
 STR_COMPANY_INFRASTRUCTURE_VIEW_STATION_SECT                    :{GOLD}Станции:
 STR_COMPANY_INFRASTRUCTURE_VIEW_STATIONS                        :{WHITE}Площадь станций
 STR_COMPANY_INFRASTRUCTURE_VIEW_AIRPORTS                        :{WHITE}Аэропорты
+STR_COMPANY_INFRASTRUCTURE_VIEW_TOTAL_YEAR                      :{WHITE}{CURRENCY_LONG}/год
+STR_COMPANY_INFRASTRUCTURE_VIEW_TOTAL_PERIOD                    :{WHITE}{CURRENCY_LONG}/период
 
 # Industry directory
 STR_INDUSTRY_DIRECTORY_CAPTION                                  :{WHITE}Предприятия
@@ -4166,6 +4180,7 @@ STR_GROUP_REMOVE_ALL_VEHICLES                                   :Удалить 
 STR_GROUP_RENAME_CAPTION                                        :{BLACK}Название группы
 
 STR_GROUP_PROFIT_THIS_YEAR                                      :Прибыль в текущем году:
+STR_GROUP_PROFIT_THIS_PERIOD                                    :Прибыль в текущем периоде:
 STR_GROUP_PROFIT_LAST_YEAR                                      :Прибыль в прошлом году:
 STR_GROUP_PROFIT_LAST_PERIOD                                    :Прибыль за последний период времени:
 STR_GROUP_OCCUPANCY                                             :Средняя загрузка ТС:
@@ -4194,6 +4209,7 @@ STR_PURCHASE_INFO_SPEED_POWER                                   :{BLACK}Скор
 STR_PURCHASE_INFO_SPEED                                         :{BLACK}Скорость: {GOLD}{VELOCITY}
 STR_PURCHASE_INFO_SPEED_OCEAN                                   :{BLACK}Скорость в море: {GOLD}{VELOCITY}
 STR_PURCHASE_INFO_SPEED_CANAL                                   :{BLACK}Скорость в каналах и реках: {GOLD}{VELOCITY}
+STR_PURCHASE_INFO_RUNNINGCOST_YEAR                              :{BLACK}Стоимость обслуживания: {GOLD}{CURRENCY_LONG}/год
 STR_PURCHASE_INFO_CAPACITY                                      :{BLACK}Ёмкость: {GOLD}{CARGO_LONG} {STRING}
 STR_PURCHASE_INFO_REFITTABLE                                    :(переоб.)
 STR_PURCHASE_INFO_DESIGNED_LIFE                                 :{BLACK}Разработан в {GOLD}{NUM} г.{BLACK} Срок службы: {GOLD}{COMMA} {P год года лет}
@@ -4394,7 +4410,13 @@ STR_ENGINE_PREVIEW_AIRCRAFT.gen                                 :воздушн�
 STR_ENGINE_PREVIEW_SHIP                                         :судно
 STR_ENGINE_PREVIEW_SHIP.gen                                     :судна
 
+STR_ENGINE_PREVIEW_TEXT3                                        :{BLACK}{STRING}{}{5:STRING}{}{STRING}
+STR_ENGINE_PREVIEW_TEXT4                                        :{BLACK}{STRING}{}{STRING}{}{STRING}{}{STRING}
 STR_ENGINE_PREVIEW_COST_WEIGHT                                  :Цена: {CURRENCY_LONG} Масса: {WEIGHT_SHORT}
+STR_ENGINE_PREVIEW_COST_MAX_SPEED                               :Цена: {CURRENCY_LONG} Макс. скорость: {VELOCITY}
+STR_ENGINE_PREVIEW_SPEED_POWER_MAX_TE                           :Скорость: {VELOCITY} Мощность: {POWER} Макс. ТУ: {FORCE}
+STR_ENGINE_PREVIEW_TYPE_RANGE                                   :Возд. судно: {STRING} Дальность: {COMMA}{NBSP}клет{P ка ки ок}
+STR_ENGINE_PREVIEW_CAPACITY                                     :Ёмкость: {CARGO_LONG}
 
 # Autoreplace window
 STR_REPLACE_VEHICLES_WHITE                                      :{WHITE}Замена {STRING.gen} - {STRING}
@@ -4553,6 +4575,7 @@ STR_VEHICLE_INFO_WEIGHT_POWER_MAX_SPEED_MAX_TE                  :{BLACK}Масс
 
 STR_VEHICLE_INFO_PROFIT_THIS_YEAR_LAST_YEAR                     :{BLACK}Прибыль в этом году: {LTBLUE}{CURRENCY_LONG} (в прошлом году: {CURRENCY_LONG})
 STR_VEHICLE_INFO_PROFIT_THIS_YEAR_LAST_YEAR_MIN_PERFORMANCE     :{BLACK}Прибыль в этом году: {LTBLUE}{CURRENCY_LONG} (в прошлом году: {CURRENCY_LONG}) {BLACK}Мин. удельная мощн.: {LTBLUE}{POWER_TO_WEIGHT}
+STR_VEHICLE_INFO_PROFIT_THIS_PERIOD_LAST_PERIOD                 :{BLACK}Прибыль в текущем периоде: {LTBLUE}{CURRENCY_LONG} (в прошлом: {CURRENCY_LONG})
 STR_VEHICLE_INFO_RELIABILITY_BREAKDOWNS                         :{BLACK}Надёжность: {LTBLUE}{COMMA}% {BLACK}Поломок после ТО: {LTBLUE}{COMMA}
 
 STR_VEHICLE_INFO_BUILT_VALUE                                    :{LTBLUE}{ENGINE} {BLACK}Построен в {LTBLUE}{NUM} г.{BLACK} Стоимость: {LTBLUE}{CURRENCY_LONG}
@@ -5938,6 +5961,7 @@ STR_STATION_NAME                                                :{STATION}
 STR_TOWN_NAME                                                   :{TOWN}
 STR_VEHICLE_NAME                                                :{VEHICLE}
 STR_WAYPOINT_NAME                                               :{WAYPOINT}
+
 
 STR_JUST_CARGO                                                  :{CARGO_LONG}
 STR_JUST_RIGHT_ARROW                                            :{RIGHT_ARROW}

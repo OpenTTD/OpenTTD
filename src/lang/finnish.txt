@@ -261,6 +261,7 @@ STR_UNITS_DAYS                                                  :{COMMA}{NBSP}vr
 STR_UNITS_SECONDS                                               :{COMMA}{NBSP}sekunti{P "" a}
 STR_UNITS_TICKS                                                 :{COMMA}{NBSP}räpäys{P "" tä}
 
+STR_UNITS_MONTHS                                                :{NUM}{NBSP}kuukau{P si tta}
 STR_UNITS_MINUTES                                               :{NUM}{NBSP}minuutti{P "" a}
 
 STR_UNITS_YEARS                                                 :{NUM}{NBSP}vuo{P si tta}
@@ -332,6 +333,7 @@ STR_SORT_BY_TRANSPORTED                                         :Kuljetettu
 STR_SORT_BY_NUMBER                                              :Numero
 STR_SORT_BY_PROFIT_LAST_YEAR                                    :Tuotto viime vuonna
 STR_SORT_BY_PROFIT_THIS_YEAR                                    :Tuotto tänä vuonna
+STR_SORT_BY_PROFIT_THIS_PERIOD                                  :Tuotto tällä jaksolla
 STR_SORT_BY_AGE                                                 :Ikä
 STR_SORT_BY_RELIABILITY                                         :Toimintavarmuus
 STR_SORT_BY_TOTAL_CAPACITY_PER_CARGOTYPE                        :Kokonaiskapasiteetti/rahtityyppi
@@ -360,8 +362,10 @@ STR_SORT_BY_RATING                                              :Arvio
 STR_SORT_BY_NUM_VEHICLES                                        :Kulkuneuvojen määrä
 STR_SORT_BY_TOTAL_PROFIT_LAST_YEAR                              :Kokonaistuotto viime vuonna
 STR_SORT_BY_TOTAL_PROFIT_THIS_YEAR                              :Kokonaistuotto tänä vuonna
+STR_SORT_BY_TOTAL_PROFIT_THIS_PERIOD                            :Kokonaistuotto tällä jaksolla
 STR_SORT_BY_AVERAGE_PROFIT_LAST_YEAR                            :Keskimääräinen tuotto viime vuonna
 STR_SORT_BY_AVERAGE_PROFIT_THIS_YEAR                            :Keskimääräinen tuotto tänä vuonna
+STR_SORT_BY_AVERAGE_PROFIT_THIS_PERIOD                          :Keskimääräinen tuotto tällä jaksolla
 
 # Group by options for vehicle list
 STR_GROUP_BY_NONE                                               :Ei mitään
@@ -622,8 +626,10 @@ STR_GRAPH_CARGO_DELIVERED_CAPTION                               :{WHITE}Rahtia k
 STR_GRAPH_COMPANY_PERFORMANCE_RATINGS_CAPTION                   :{WHITE}Yhtiön suoritearvio (enimmäisarvio=1000)
 STR_GRAPH_COMPANY_VALUES_CAPTION                                :{WHITE}Yhtiöiden arvot kuvaajana
 
+STR_GRAPH_LAST_72_MINUTES_TIME_LABEL                            :{TINY_FONT}{BLACK}Viime 72 minuuttia
 
 STR_GRAPH_CARGO_PAYMENT_RATES_CAPTION                           :{WHITE}Rahtitaksat
+STR_GRAPH_CARGO_PAYMENT_RATES_DAYS                              :{TINY_FONT}{BLACK}Vuorokausia kuljetuksessa
 STR_GRAPH_CARGO_PAYMENT_RATES_TITLE                             :{TINY_FONT}{BLACK}Maksu 10 yksikön (tai 10 000 litran) rahdin kuljettamisesta 20 ruudun päähän
 STR_GRAPH_CARGO_ENABLE_ALL                                      :{TINY_FONT}{BLACK}Ota kaikki käyttöön
 STR_GRAPH_CARGO_DISABLE_ALL                                     :{TINY_FONT}{BLACK}Poista kaikki käytöstä
@@ -672,7 +678,10 @@ STR_PERFORMANCE_DETAIL_LOAN                                     :{BLACK}Laina:
 STR_PERFORMANCE_DETAIL_TOTAL                                    :{BLACK}Yhteensä:
 ###next-name-looks-similar
 
+STR_PERFORMANCE_DETAIL_VEHICLES_TOOLTIP_PERIODS                 :{BLACK}Viime jaksolla voittoa tuottaneiden kulkuneuvojen lukumäärä. Tähän sisältyvät ajoneuvot, junat, laivat ja lentokoneet
 STR_PERFORMANCE_DETAIL_STATIONS_TOOLTIP                         :{BLACK}Asemien osien määrä. Kaikki osat asemista (esim. rautatieasema, bussipysäkki, lentokenttä) lasketaan, vaikka ne olisivat yhdistettynä yhdeksi asemaksi
+STR_PERFORMANCE_DETAIL_MIN_PROFIT_TOOLTIP_YEARS                 :{BLACK}Vähiten tuottaneen kulkuneuvon tuotto (huomioon otetaan vain yli kahden vuoden ikäiset kulkuneuvot)
+STR_PERFORMANCE_DETAIL_MIN_PROFIT_TOOLTIP_PERIODS               :{BLACK}Vähiten tuottaneen kulkuneuvon tuotto (huomioon otetaan vain yli kahden jakson ikäiset kulkuneuvot)
 STR_PERFORMANCE_DETAIL_MIN_INCOME_TOOLTIP                       :{BLACK}Viimeisen 12 neljänneksen vähätuottoisimman kuun käteistuoton määrä
 STR_PERFORMANCE_DETAIL_MAX_INCOME_TOOLTIP                       :{BLACK}Viimeisen 12 neljänneksen korkeatuottoisimman kuun käteistuoton määrä
 STR_PERFORMANCE_DETAIL_DELIVERED_TOOLTIP                        :{BLACK}Viimeisen neljän neljänneksen kuljetetun rahdin määrä
@@ -904,6 +913,7 @@ STR_NEWS_VEHICLE_IS_GETTING_VERY_OLD                            :{WHITE}{VEHICLE
 STR_NEWS_VEHICLE_IS_GETTING_VERY_OLD_AND                        :{WHITE}{VEHICLE} on tulossa hyvin vanhaksi ja on uusimisen tarpeessa
 STR_NEWS_TRAIN_IS_STUCK                                         :{WHITE}{VEHICLE} ei löydä reittiä päämäärään
 STR_NEWS_VEHICLE_IS_LOST                                        :{WHITE}{VEHICLE} on eksynyt
+STR_NEWS_VEHICLE_UNPROFITABLE_YEAR                              :{WHITE}Kulkuneuvon {VEHICLE} tuotto viime vuonna oli {CURRENCY_LONG}
 STR_NEWS_AIRCRAFT_DEST_TOO_FAR                                  :{WHITE}{VEHICLE} ei pääse seuraavaan määränpäähän koska se on toimintasäteen ulkopuolella
 
 STR_NEWS_ORDER_REFIT_FAILED                                     :{WHITE}Korvauksen epäonnistuminen pysäytti kulkuneuvon {VEHICLE}
@@ -922,7 +932,10 @@ STR_NEWS_OFFER_OF_SUBSIDY_EXPIRED                               :{BIG_FONT}{BLAC
 STR_NEWS_SUBSIDY_WITHDRAWN_SERVICE                              :{BIG_FONT}{BLACK}Tuki vedetty pois:{}{}{STRING} välillä {STRING}-{STRING} ei enää tueta
 ###length 4
 
+STR_NEWS_ROAD_REBUILDING_MONTHS                                 :{BIG_FONT}{BLACK}Liikennekaaos paikkakunnalla {TOWN}!{}{}Yhtiön {STRING} rahoittama tienrakennusohjelma tuo autoilijoille 6 kuukautta kärsimystä!
+STR_NEWS_ROAD_REBUILDING_MINUTES                                :{BIG_FONT}{BLACK}Liikennekaaos paikkakunnalla {TOWN}!{}{}Yhtiön {STRING} rahoittama tienrakennusohjelma tuo autoilijoille 6 minuuttia kärsimystä!
 STR_NEWS_EXCLUSIVE_RIGHTS_TITLE                                 :{BIG_FONT}{BLACK}Kuljetusmonopoli!
+STR_NEWS_EXCLUSIVE_RIGHTS_DESCRIPTION_MINUTES                   :{BIG_FONT}{BLACK}Kunnan {TOWN} viranomaiset ovat sopineet yhtiön {STRING} kanssa 12 minuutin kuljetusyksinoikeudesta!
 
 # Extra view window
 STR_EXTRA_VIEWPORT_TITLE                                        :{WHITE}Näkymä {COMMA}
@@ -1084,10 +1097,13 @@ STR_GAME_OPTIONS_BASE_MUSIC_DESCRIPTION_TOOLTIP                 :{BLACK}Lisätie
 STR_GAME_OPTIONS_SOCIAL_PLUGINS_NONE                            :{LTBLUE}(ei sosiaalisten alustojen integroinnin liitännäisiä asennettuna)
 
 STR_GAME_OPTIONS_SOCIAL_PLUGIN_TITLE                            :{BLACK}{STRING} ({STRING})
+STR_GAME_OPTIONS_SOCIAL_PLUGIN_PLATFORM                         :{BLACK}Alusta:
 STR_GAME_OPTIONS_SOCIAL_PLUGIN_STATE                            :{BLACK}Liitännäisen tila:
 
 STR_GAME_OPTIONS_SOCIAL_PLUGIN_STATE_RUNNING                    :{GREEN}Käynnissä
 STR_GAME_OPTIONS_SOCIAL_PLUGIN_STATE_FAILED                     :{RED}Alustus epäonnistui
+STR_GAME_OPTIONS_SOCIAL_PLUGIN_STATE_PLATFORM_NOT_RUNNING       :{ORANGE}{STRING} ei ole käynnissä
+STR_GAME_OPTIONS_SOCIAL_PLUGIN_STATE_UNSUPPORTED_API            :{RED}Versiota ei tueta
 
 STR_BASESET_STATUS                                              :{STRING} {RED}({NUM} puuttuvaa tai vioittunutta tiedosto{P "" a})
 
@@ -1255,6 +1271,7 @@ STR_CONFIG_SETTING_HORIZONTAL_POS_RIGHT                         :oikealla
 
 STR_CONFIG_SETTING_SECONDS_VALUE                                :{COMMA}{NBSP}sekunti{P 0 "" a}
 
+
 STR_CONFIG_SETTING_MAXIMUM_INITIAL_LOAN                         :Suurin mahdollinen laina alussa: {STRING}
 STR_CONFIG_SETTING_MAXIMUM_INITIAL_LOAN_HELPTEXT                :Suurin mahdollinen yhtiön ottama laina (ottamatta huomioon inflaatiota)
 STR_CONFIG_SETTING_MAXIMUM_INITIAL_LOAN_VALUE                   :{CURRENCY_LONG}
@@ -1278,7 +1295,8 @@ STR_CONFIG_SETTING_SUBSIDY_MULTIPLIER_HELPTEXT                  :Määritä kuin
 
 STR_CONFIG_SETTING_SUBSIDY_DURATION                             :Tuen kesto: {STRING}
 ###length 2
-STR_CONFIG_SETTING_SUBSIDY_DURATION_HELPTEXT                    :Aseta myönnetyn tuen kesto vuosina.
+STR_CONFIG_SETTING_SUBSIDY_DURATION_HELPTEXT                    :Aseta myönnettävän tuen kesto vuosina
+STR_CONFIG_SETTING_SUBSIDY_DURATION_HELPTEXT_PERIODS            :Aseta myönnettävän tuen kesto jaksoina
 
 ###setting-zero-is-special
 STR_CONFIG_SETTING_SUBSIDY_DURATION_DISABLED                    :Ei tukia
@@ -1376,10 +1394,11 @@ STR_CONFIG_SETTING_SIGNALSIDE_DRIVING_SIDE                      :Ajokaistan puol
 STR_CONFIG_SETTING_SIGNALSIDE_RIGHT                             :Oikealla puolella
 
 ###length 2
-STR_CONFIG_SETTING_SHOWFINANCES                                 :Näytä rahoitusikkuna vuoden lopussa: {STRING}
+STR_CONFIG_SETTING_SHOWFINANCES                                 :Näytä talousikkuna vuoden lopussa: {STRING}
+STR_CONFIG_SETTING_SHOWFINANCES_PERIOD                          :Näytä talousikkuna jakson lopussa: {STRING}
 
 ###length 2
-STR_CONFIG_SETTING_SHOWFINANCES_HELPTEXT                        :Mikäli käytössä, rahoitusikkuna näytetään jokaisen vuoden lopussa yhtiön taloudellisen tilanteen seurannan helpottamiseksi
+STR_CONFIG_SETTING_SHOWFINANCES_HELPTEXT                        :Mikäli käytössä, talousikkuna näytetään jokaisen vuoden lopussa yhtiön taloudellisen tilanteen seurannan helpottamiseksi
 
 STR_CONFIG_SETTING_NONSTOP_BY_DEFAULT                           :Uudet käskyt ovat oletusarvoisesti ilman välipysähdyksiä: {STRING}
 STR_CONFIG_SETTING_NONSTOP_BY_DEFAULT_HELPTEXT                  :Normaalisti kulkuneuvo pysähtyy jokaisella läpikulkemallaan asemalla. Mikäli tämä asetus on käytössä kulkuneuvot eivät pysähdy ajaessaan asemien läpi. Huomioi, että tämä asetus määrittää oletusarvoisen toiminnon uusille kulkuneuvoille. Asetusta voidaan muuttaa erikseen kunkin kulkuneuvon kohdalla
@@ -1410,8 +1429,8 @@ STR_CONFIG_SETTING_ALLOW_EXCLUSIVE_HELPTEXT                     :Jos yhtiö osta
 STR_CONFIG_SETTING_ALLOW_FUND_BUILDINGS                         :Salli rakennusten rahoittaminen: {STRING}
 STR_CONFIG_SETTING_ALLOW_FUND_BUILDINGS_HELPTEXT                :Sallii yhtiöiden rahoittaa uusien talojen rakentamista kunnissa
 
-STR_CONFIG_SETTING_ALLOW_FUND_ROAD                              :Salli paikallisen tieverkon uudelleenrakentamisen rahoitus: {STRING}
-STR_CONFIG_SETTING_ALLOW_FUND_ROAD_HELPTEXT                     :Sallii yhtiöiden rahoittaa kuntien tieverkon uudelleenrakentamista tieliikenteen häiritsemiseksi
+STR_CONFIG_SETTING_ALLOW_FUND_ROAD                              :Salli paikallisen tieverkon peruskorjauksen rahoitus: {STRING}
+STR_CONFIG_SETTING_ALLOW_FUND_ROAD_HELPTEXT                     :Salli yritysten antaa kunnille rahaa tiestön peruskorjaukseen tiestöön perustuvien palvelujen sabotoimiseksi kunnassa
 
 STR_CONFIG_SETTING_ALLOW_GIVE_MONEY                             :Salli rahan lähettäminen muille yhtiöille: {STRING}
 STR_CONFIG_SETTING_ALLOW_GIVE_MONEY_HELPTEXT                    :Sallii rahan siirtämisen yhtiöiden välillä moninpelitilassa
@@ -1474,6 +1493,7 @@ STR_CONFIG_SETTING_TIMEKEEPING_UNITS_HELPTEXT                   :Valitse pelin a
 STR_CONFIG_SETTING_TIMEKEEPING_UNITS_CALENDAR                   :Kalenteri
 STR_CONFIG_SETTING_TIMEKEEPING_UNITS_WALLCLOCK                  :Seinäkello
 
+STR_CONFIG_SETTING_MINUTES_PER_YEAR                             :Minuuttia vuodessa: {STRING}
 
 ###setting-zero-is-special
 
@@ -1705,7 +1725,7 @@ STR_CONFIG_SETTING_DEFAULT_RAIL_TYPE                            :Oletusraidetyyp
 STR_CONFIG_SETTING_DEFAULT_RAIL_TYPE_HELPTEXT                   :Ratatyyppi, joka valitaan pelin aloittamisen jälkeen: ”ensimmäinen saatavilla oleva” valitsee vanhimman ratatyypin, ”viimeisin saatavilla oleva” valitsee uusimman ratatyypin, ja ”eniten käytetty” valitsee eniten käytetyn ratatyypin
 ###length 3
 STR_CONFIG_SETTING_DEFAULT_RAIL_TYPE_FIRST                      :Ensimmäinen
-STR_CONFIG_SETTING_DEFAULT_RAIL_TYPE_LAST                       :Viimeinen
+STR_CONFIG_SETTING_DEFAULT_RAIL_TYPE_LAST                       :Viimeisin saatavilla oleva
 STR_CONFIG_SETTING_DEFAULT_RAIL_TYPE_MOST_USED                  :Yleisin
 
 STR_CONFIG_SETTING_SHOW_TRACK_RESERVATION                       :Näytä reittivaraukset raiteilla: {STRING}
@@ -1731,6 +1751,7 @@ STR_CONFIG_SETTING_SOUND_NEWS_HELPTEXT                          :Toista ääni s
 
 ###length 2
 STR_CONFIG_SETTING_SOUND_NEW_YEAR                               :Vuoden loppu: {STRING}
+STR_CONFIG_SETTING_SOUND_NEW_PERIOD                             :Jakson loppu: {STRING}
 
 ###length 2
 STR_CONFIG_SETTING_SOUND_NEW_YEAR_HELPTEXT                      :Toista ääni vuoden lopussa verrattaessa yhtiön tulosta edelliseen vuoteen
@@ -1863,7 +1884,7 @@ STR_CONFIG_SETTING_NEWS_SUBSIDIES                               :Tuet: {STRING}
 STR_CONFIG_SETTING_NEWS_SUBSIDIES_HELPTEXT                      :Näytä sanomalehti tukiin liittyvistä tapahtumista
 
 STR_CONFIG_SETTING_NEWS_GENERAL_INFORMATION                     :Yleistä tietoa: {STRING}
-STR_CONFIG_SETTING_NEWS_GENERAL_INFORMATION_HELPTEXT            :Näytä sanomalehti yleisille tapahtumille, kuten kuljetusyksinoikeuksien ostamiselle tai tieverkon uusimiselle
+STR_CONFIG_SETTING_NEWS_GENERAL_INFORMATION_HELPTEXT            :Näytä sanomalehti yleisille tapahtumille kuten kuljetusyksinoikeuksien ostamiselle tai tieverkon peruskorjauksen rahoittamiselle
 ###length 3
 STR_CONFIG_SETTING_NEWS_MESSAGES_OFF                            :Pois
 STR_CONFIG_SETTING_NEWS_MESSAGES_SUMMARY                        :Tiivistelmä
@@ -2034,6 +2055,8 @@ STR_CONFIG_SETTING_LOCALISATION_UNITS_VELOCITY_HELPTEXT         :Kun käyttölii
 STR_CONFIG_SETTING_LOCALISATION_UNITS_VELOCITY_IMPERIAL         :Brittiläinen (mph)
 STR_CONFIG_SETTING_LOCALISATION_UNITS_VELOCITY_METRIC           :Metrinen (km/h)
 STR_CONFIG_SETTING_LOCALISATION_UNITS_VELOCITY_SI               :SI (m/s)
+STR_CONFIG_SETTING_LOCALISATION_UNITS_VELOCITY_GAMEUNITS_DAYS   :Pelin yksiköt (ruutua/vrk)
+STR_CONFIG_SETTING_LOCALISATION_UNITS_VELOCITY_GAMEUNITS_SECS   :Pelin yksiköt (ruutua/s)
 STR_CONFIG_SETTING_LOCALISATION_UNITS_VELOCITY_KNOTS            :Solmut
 
 STR_CONFIG_SETTING_LOCALISATION_UNITS_POWER                     :Kulkuneuvon tehon yksikkö: {STRING}
@@ -2345,6 +2368,7 @@ STR_NETWORK_SERVER_LIST_MAP_SIZE_CAPTION                        :{BLACK}Kartan k
 STR_NETWORK_SERVER_LIST_MAP_SIZE_CAPTION_TOOLTIP                :{BLACK}Kartan koko{}Valitse lajitellaksesi koon mukaan
 STR_NETWORK_SERVER_LIST_DATE_CAPTION                            :{BLACK}Päiväys
 STR_NETWORK_SERVER_LIST_DATE_CAPTION_TOOLTIP                    :{BLACK}Nykyinen päivämäärä
+STR_NETWORK_SERVER_LIST_PLAY_TIME_CAPTION_TOOLTIP               :{BLACK}Peliaika, kun peli{}ei ollut pysäytettynä
 STR_NETWORK_SERVER_LIST_INFO_ICONS_TOOLTIP                      :{BLACK}Kieli, palvelimen versio, jne.
 
 STR_NETWORK_SERVER_LIST_CLICK_GAME_TO_SELECT                    :{BLACK}Napsauta peliä luettelossa valitaksesi
@@ -2715,6 +2739,7 @@ STR_LINKGRAPH_LEGEND_SATURATED                                  :{TINY_FONT}{BLA
 STR_LINKGRAPH_LEGEND_OVERLOADED                                 :{TINY_FONT}{BLACK}kuormittunut
 
 # Linkgraph tooltip
+STR_LINKGRAPH_STATS_TOOLTIP_MINUTE                              :{BLACK}{CARGO_LONG} minuutissa kuljetettavana asemalta {STATION} asemalle {STATION} ({COMMA}% kapasiteetista){STRING}
 STR_LINKGRAPH_STATS_TOOLTIP_RETURN_EXTENSION                    :{}{CARGO_LONG} kuljetettavana takaisin ({COMMA}{NBSP}% kapasiteetista)
 
 # Base for station construction window(s)
@@ -2725,6 +2750,7 @@ STR_STATION_BUILD_COVERAGE_AREA_OFF_TOOLTIP                     :{BLACK}Älä ko
 STR_STATION_BUILD_COVERAGE_AREA_ON_TOOLTIP                      :{BLACK}Korosta ehdotetun tontin vaikutusalue
 STR_STATION_BUILD_ACCEPTS_CARGO                                 :{BLACK}Vastaanottaa: {GOLD}{CARGO_LIST}
 STR_STATION_BUILD_SUPPLIES_CARGO                                :{BLACK}Tuottaa: {GOLD}{CARGO_LIST}
+STR_STATION_BUILD_INFRASTRUCTURE_COST_PERIOD                    :{BLACK}Ylläpitokustannukset: {GOLD}{CURRENCY_SHORT}/jakso
 
 # Join station window
 STR_JOIN_STATION_CAPTION                                        :{WHITE}Liitä asema
@@ -3572,6 +3598,7 @@ STR_TOWN_VIEW_TOWN_CAPTION                                      :{WHITE}{TOWN}
 STR_TOWN_VIEW_CITY_CAPTION                                      :{WHITE}{TOWN} (kaupunki)
 STR_TOWN_VIEW_POPULATION_HOUSES                                 :{BLACK}Asukasluku: {ORANGE}{COMMA}{BLACK}  Taloja: {ORANGE}{COMMA}
 STR_TOWN_VIEW_CARGO_LAST_MONTH_MAX                              :{BLACK}{CARGO_LIST} viime kuussa: {ORANGE}{COMMA}{BLACK}  enimmillään: {ORANGE}{COMMA}
+STR_TOWN_VIEW_CARGO_LAST_MINUTE_MAX                             :{BLACK}{CARGO_LIST} viime minuutissa: {ORANGE}{COMMA}{BLACK}  enimmillään: {ORANGE}{COMMA}
 STR_TOWN_VIEW_CARGO_FOR_TOWNGROWTH                              :{BLACK}Kunnan kasvuun tarvittava rahti:
 STR_TOWN_VIEW_CARGO_FOR_TOWNGROWTH_REQUIRED_GENERAL             :{ORANGE}{STRING}{RED} vaadittu
 STR_TOWN_VIEW_CARGO_FOR_TOWNGROWTH_REQUIRED_WINTER              :{ORANGE}{STRING}{BLACK} vaaditaan talvella
@@ -3607,7 +3634,7 @@ STR_LOCAL_AUTHORITY_DO_IT_TOOLTIP                               :{BLACK}Suorita 
 STR_LOCAL_AUTHORITY_ACTION_SMALL_ADVERTISING_CAMPAIGN           :Pieni mainoskampanja
 STR_LOCAL_AUTHORITY_ACTION_MEDIUM_ADVERTISING_CAMPAIGN          :Keskikokoinen mainoskampanja
 STR_LOCAL_AUTHORITY_ACTION_LARGE_ADVERTISING_CAMPAIGN           :Suuri mainoskampanja
-STR_LOCAL_AUTHORITY_ACTION_ROAD_RECONSTRUCTION                  :Rahoita paikallisen tieverkon uudelleenrakennusta
+STR_LOCAL_AUTHORITY_ACTION_ROAD_RECONSTRUCTION                  :Rahoita paikallisen tieverkon peruskorjausta
 STR_LOCAL_AUTHORITY_ACTION_STATUE_OF_COMPANY                    :Rakenna yhtiön omistajan patsas
 STR_LOCAL_AUTHORITY_ACTION_NEW_BUILDINGS                        :Rahoita uusia rakennuksia
 STR_LOCAL_AUTHORITY_ACTION_EXCLUSIVE_TRANSPORT                  :Osta yksinoikeudet kuljetuksiin
@@ -3617,8 +3644,11 @@ STR_LOCAL_AUTHORITY_ACTION_BRIBE                                :Lahjo viranomai
 STR_LOCAL_AUTHORITY_ACTION_TOOLTIP_SMALL_ADVERTISING            :{PUSH_COLOUR}{YELLOW}Käynnistä pieni mainoskampanja houkutellaksesi lisää matkustajia ja rahtia kuljetuspalveluihisi.{}Tämä kasvattaa tilapäisesti asemien arvioita pienellä säteellä kunnan keskustan ympärillä.{}{POP_COLOUR}Kustannus: {CURRENCY_LONG}
 STR_LOCAL_AUTHORITY_ACTION_TOOLTIP_MEDIUM_ADVERTISING           :{PUSH_COLOUR}{YELLOW}Käynnistä keskikokoinen mainoskampanja houkutellaksesi lisää matkustajia ja rahtia kuljetuspalveluihisi.{}Tämä kasvattaa tilapäisesti asemien arvioita keskikokoisella säteellä kunnan keskustan ympärillä.{}{POP_COLOUR}Kustannus: {CURRENCY_LONG}
 STR_LOCAL_AUTHORITY_ACTION_TOOLTIP_LARGE_ADVERTISING            :{PUSH_COLOUR}{YELLOW}Käynnistä suuri mainoskampanja hoikutellaksesi lisää matkustajia ja rahtia kuljetuspalveluihisi.{}Tämä kasvattaa tilapäisesti asemien arvioita suurella säteellä kunnan keskustan ympärillä.{}{POP_COLOUR}Kustannus: {CURRENCY_LONG}
+STR_LOCAL_AUTHORITY_ACTION_TOOLTIP_ROAD_RECONSTRUCTION_MONTHS   :{PUSH_COLOUR}{YELLOW}Rahoita taajamien tieverkon peruskorjausta.{}Aiheuttaa huomattavia häiriöitä tieliikenteelle jopa 6 kuukauden ajan.{}{POP_COLOUR}Kustannus: {CURRENCY_LONG}
+STR_LOCAL_AUTHORITY_ACTION_TOOLTIP_ROAD_RECONSTRUCTION_MINUTES  :{PUSH_COLOUR}{YELLOW}Rahoita taajamien tieverkon peruskorjausta.{}Aiheuttaa huomattavia häiriöitä tieliikenteelle jopa 6 minuutin ajan.{}{POP_COLOUR}Kustannus: {CURRENCY_LONG}
 STR_LOCAL_AUTHORITY_ACTION_TOOLTIP_STATUE_OF_COMPANY            :{PUSH_COLOUR}{YELLOW}Rakenna patsas yhtiösi kunniaksi.{}Parantaa asemien arvioita pysyvästi tässä kunnassa.{}{POP_COLOUR}Kustannus: {CURRENCY_LONG}
 STR_LOCAL_AUTHORITY_ACTION_TOOLTIP_NEW_BUILDINGS                :{PUSH_COLOUR}{YELLOW}Rahoita uusien rakennusten rakentamista kunnassa.{}Tämä kiihdyttää tämän kunnan kasvua tilapäisesti.{}{POP_COLOUR}Kustannus: {CURRENCY_LONG}
+STR_LOCAL_AUTHORITY_ACTION_TOOLTIP_EXCLUSIVE_TRANSPORT_MONTHS   :{PUSH_COLOUR}{YELLOW}Osta kuljetusyksinoikeus kuntaan 12 kuukaudeksi.{}Kunnan viranomaiset eivät salli matkustajien ja rahdin käyttävän kilpailijoittesi asemia. Kilpailijan onnistunut lahjonta purkaa tämän sopimuksen.{}{POP_COLOUR}Kustannus: {CURRENCY_LONG}
 STR_LOCAL_AUTHORITY_ACTION_TOOLTIP_BRIBE                        :{PUSH_COLOUR}{YELLOW}Lahjo viranomaisia parantaaksesi arviotasi ja keskeyttääksesi kilpailijan kuljetusyksinoikeuden; rangaistus voi kuitenkin olla ankara, jos jäät kiinni.{}{POP_COLOUR}Kustannus: {CURRENCY_LONG}
 
 # Goal window
@@ -3709,6 +3739,8 @@ STR_STATION_VIEW_EXCLUSIVE_RIGHTS_COMPANY                       :{YELLOW}{COMPAN
 
 STR_STATION_VIEW_RATINGS_BUTTON                                 :{BLACK}Arviot
 STR_STATION_VIEW_RATINGS_TOOLTIP                                :{BLACK}Näytä aseman arviot
+STR_STATION_VIEW_SUPPLY_RATINGS_TITLE_MONTH                     :{BLACK}Kuukausittainen tarjonta ja paikallinen arvio:
+STR_STATION_VIEW_SUPPLY_RATINGS_TITLE_MINUTE                    :{BLACK}Minuutittainen tarjonta ja paikallinen arvio:
 STR_STATION_VIEW_CARGO_SUPPLY_RATING                            :{WHITE}{STRING}: {YELLOW}{COMMA} / {STRING} ({COMMA}{NBSP}%)
 
 STR_STATION_VIEW_GROUP                                          :{BLACK}Ryhmittele
@@ -3769,6 +3801,8 @@ STR_EDIT_WAYPOINT_NAME                                          :{WHITE}Muokkaa 
 # Finances window
 STR_FINANCES_CAPTION                                            :{WHITE}Talous, {COMPANY} {BLACK}{COMPANY_NUM}
 STR_FINANCES_YEAR                                               :{WHITE}{NUM}
+STR_FINANCES_YEAR_CAPTION                                       :{WHITE}Vuosi
+STR_FINANCES_PERIOD_CAPTION                                     :{WHITE}Jakso
 
 ###length 3
 STR_FINANCES_REVENUE_TITLE                                      :{WHITE}Tuotto
@@ -3870,6 +3904,7 @@ STR_COMPANY_INFRASTRUCTURE_VIEW_CANALS                          :{WHITE}Kanavat
 STR_COMPANY_INFRASTRUCTURE_VIEW_STATION_SECT                    :{GOLD}Asemat:
 STR_COMPANY_INFRASTRUCTURE_VIEW_STATIONS                        :{WHITE}Asemaruudut
 STR_COMPANY_INFRASTRUCTURE_VIEW_AIRPORTS                        :{WHITE}Lentokentät
+STR_COMPANY_INFRASTRUCTURE_VIEW_TOTAL_YEAR                      :{WHITE}{CURRENCY_LONG}/vuosi
 
 # Industry directory
 STR_INDUSTRY_DIRECTORY_CAPTION                                  :{WHITE}Teollisuuslaitokset
@@ -3888,7 +3923,8 @@ STR_INDUSTRY_DIRECTORY_FILTER_NONE                              :Ei mitään
 
 # Industry view
 STR_INDUSTRY_VIEW_CAPTION                                       :{WHITE}{INDUSTRY}
-STR_INDUSTRY_VIEW_PRODUCTION_LAST_MONTH_TITLE                   :{BLACK}Tuotto viime kuussa:
+STR_INDUSTRY_VIEW_PRODUCTION_LAST_MONTH_TITLE                   :{BLACK}Tuotanto viime kuussa:
+STR_INDUSTRY_VIEW_PRODUCTION_LAST_MINUTE_TITLE                  :{BLACK}Tuotanto viime minuutissa:
 STR_INDUSTRY_VIEW_TRANSPORTED                                   :{YELLOW}{CARGO_LONG}{STRING}{BLACK} ({COMMA}{NBSP}% kuljetettu)
 STR_INDUSTRY_VIEW_LOCATION_TOOLTIP                              :{BLACK}Keskitä päänäkymä tuotantolaitoksen sijaintiin. Ctrl+napsautus avaa uuden näkymäikkunan laitoksen sijaintiin.
 STR_INDUSTRY_VIEW_PRODUCTION_LEVEL                              :{BLACK}Tuotantotaso: {YELLOW}{COMMA}{NBSP}%
@@ -3975,7 +4011,9 @@ STR_GROUP_REMOVE_ALL_VEHICLES                                   :Poista kaikki k
 STR_GROUP_RENAME_CAPTION                                        :{BLACK}Nimeä ryhmä
 
 STR_GROUP_PROFIT_THIS_YEAR                                      :Tuotto tänä vuonna:
+STR_GROUP_PROFIT_THIS_PERIOD                                    :Tuotto tällä jaksolla:
 STR_GROUP_PROFIT_LAST_YEAR                                      :Tuotto viime vuonna:
+STR_GROUP_PROFIT_LAST_PERIOD                                    :Tuotto viime jaksolla:
 STR_GROUP_OCCUPANCY                                             :Nykyinen käyttö:
 STR_GROUP_OCCUPANCY_VALUE                                       :{NUM} %
 
@@ -4002,6 +4040,8 @@ STR_PURCHASE_INFO_SPEED_POWER                                   :{BLACK}Nopeus: 
 STR_PURCHASE_INFO_SPEED                                         :{BLACK}Nopeus: {GOLD}{VELOCITY}
 STR_PURCHASE_INFO_SPEED_OCEAN                                   :{BLACK}Nopeus merellä: {GOLD}{VELOCITY}
 STR_PURCHASE_INFO_SPEED_CANAL                                   :{BLACK}Nopeus kanaalissa/joella: {GOLD}{VELOCITY}
+STR_PURCHASE_INFO_RUNNINGCOST_YEAR                              :{BLACK}Käyttökustannukset: {GOLD}{CURRENCY_LONG}/v
+STR_PURCHASE_INFO_RUNNINGCOST_PERIOD                            :{BLACK}Käyttökustannukset: {GOLD}{CURRENCY_LONG}/jakso
 STR_PURCHASE_INFO_CAPACITY                                      :{BLACK}Kapasiteetti: {GOLD}{CARGO_LONG} {STRING}
 STR_PURCHASE_INFO_REFITTABLE                                    :(sovitettavissa)
 STR_PURCHASE_INFO_DESIGNED_LIFE                                 :{BLACK}Suunniteltu: {GOLD}{NUM}{BLACK} Elinikä: {GOLD}{COMMA} vuo{P si tta}
@@ -4067,7 +4107,7 @@ STR_BUY_VEHICLE_AIRCRAFT_RENAME_BUTTON                          :{BLACK}Nimeä
 STR_BUY_VEHICLE_TRAIN_RENAME_TOOLTIP                            :{BLACK}Nimeä yksikön tyyppi uudelleen
 STR_BUY_VEHICLE_ROAD_VEHICLE_RENAME_TOOLTIP                     :{BLACK}Nimeä ajoneuvon tyyppi uudelleen
 STR_BUY_VEHICLE_SHIP_RENAME_TOOLTIP                             :{BLACK}Nimeä laivatyyppi uudelleen
-STR_BUY_VEHICLE_AIRCRAFT_RENAME_TOOLTIP                         :{BLACK}Nimeä lentokonetyyppi uudelleen
+STR_BUY_VEHICLE_AIRCRAFT_RENAME_TOOLTIP                         :{BLACK}Nimeä ilma-alustyyppi uudelleen
 
 ###length VEHICLE_TYPES
 STR_BUY_VEHICLE_TRAIN_HIDE_TOGGLE_BUTTON                        :{BLACK}Piilota
@@ -4194,6 +4234,11 @@ STR_ENGINE_PREVIEW_TRAM_VEHICLE                                 :raitiovaunu
 STR_ENGINE_PREVIEW_AIRCRAFT                                     :ilma-alus
 STR_ENGINE_PREVIEW_SHIP                                         :laiva
 
+STR_ENGINE_PREVIEW_TEXT4                                        :{BLACK}{STRING}{}{STRING}{}{STRING}{}{STRING}
+STR_ENGINE_PREVIEW_COST_WEIGHT                                  :Hinta: {CURRENCY_LONG}  Paino: {WEIGHT_SHORT}
+STR_ENGINE_PREVIEW_TYPE                                         :Ilma-aluksen tyyppi: {STRING}
+STR_ENGINE_PREVIEW_TYPE_RANGE                                   :Ilma-alustyyppi: {STRING}   Toimintasäde: {COMMA} ruutua
+STR_ENGINE_PREVIEW_RUNCOST_PERIOD                               :Käyttökustannukset: {CURRENCY_LONG}/jakso
 
 # Autoreplace window
 STR_REPLACE_VEHICLES_WHITE                                      :{WHITE}Korvaa {STRING} – {STRING}
@@ -4339,6 +4384,7 @@ STR_VEHICLE_DETAILS_AIRCRAFT_RENAME                             :{BLACK}Nimeä i
 STR_VEHICLE_INFO_AGE                                            :{COMMA} vuo{P si tta} ({COMMA})
 STR_VEHICLE_INFO_AGE_RED                                        :{RED}{COMMA} vuo{P si tta} ({COMMA})
 STR_VEHICLE_INFO_AGE_RUNNING_COST_YR                            :{BLACK}Ikä: {LTBLUE}{STRING}{BLACK} Käyttökustannukset: {LTBLUE}{CURRENCY_LONG}/v
+STR_VEHICLE_INFO_AGE_RUNNING_COST_PERIOD                        :{BLACK}Ikä: {LTBLUE}{STRING}{BLACK}   Käyttökustannukset: {LTBLUE}{CURRENCY_LONG}/jakso
 
 STR_VEHICLE_INFO_MAX_SPEED                                      :{BLACK}Huippunopeus: {LTBLUE}{VELOCITY}
 STR_VEHICLE_INFO_MAX_SPEED_TYPE                                 :{BLACK}Huippunopeus: {LTBLUE}{VELOCITY} {BLACK}Ilma-alustyyppi: {LTBLUE}{STRING}
@@ -4348,6 +4394,7 @@ STR_VEHICLE_INFO_WEIGHT_POWER_MAX_SPEED_MAX_TE                  :{BLACK}Paino: {
 
 STR_VEHICLE_INFO_PROFIT_THIS_YEAR_LAST_YEAR                     :{BLACK}Tuotto tänä vuonna: {LTBLUE}{CURRENCY_LONG} (viime vuonna: {CURRENCY_LONG})
 STR_VEHICLE_INFO_PROFIT_THIS_YEAR_LAST_YEAR_MIN_PERFORMANCE     :{BLACK}Tuotto tänä vuonna: {LTBLUE}{CURRENCY_LONG} (viime vuonna: {CURRENCY_LONG}) {BLACK}Vähimmäissuorituskyky: {LTBLUE}{POWER_TO_WEIGHT}
+STR_VEHICLE_INFO_PROFIT_THIS_PERIOD_LAST_PERIOD_MIN_PERFORMANCE :{BLACK}Tuotto tällä jaksolla: {LTBLUE}{CURRENCY_LONG} (viime jakso: {CURRENCY_LONG}) {BLACK}Vähimmäissuorituskyky: {LTBLUE}{POWER_TO_WEIGHT}
 STR_VEHICLE_INFO_RELIABILITY_BREAKDOWNS                         :{BLACK}Luotettavuus: {LTBLUE}{COMMA}{NBSP}%  {BLACK}Hajoamiset viime huollon jälkeen: {LTBLUE}{COMMA}
 
 STR_VEHICLE_INFO_BUILT_VALUE                                    :{LTBLUE}{ENGINE} {BLACK}Rakennettu: {LTBLUE}{NUM}{BLACK} Arvo: {LTBLUE}{CURRENCY_LONG}
@@ -4360,10 +4407,14 @@ STR_VEHICLE_INFO_FEEDER_CARGO_VALUE                             :{BLACK}Siirron 
 
 STR_VEHICLE_DETAILS_SERVICING_INTERVAL_MINUTES                  :{BLACK}Huoltoväli: {LTBLUE}{COMMA}{NBSP}minuuttia{BLACK}   {STRING}
 STR_VEHICLE_DETAILS_LAST_SERVICE_DATE                           :Viimeksi huollettu: {LTBLUE}{DATE_LONG}
-STR_VEHICLE_DETAILS_LAST_SERVICE_MINUTES_AGO                    :Last service: {LTBLUE}{NUM} minuuttia sitten
+STR_VEHICLE_DETAILS_LAST_SERVICE_MINUTES_AGO                    :Viimeksi huollettu: {LTBLUE}{NUM} minuuttia sitten
+STR_VEHICLE_DETAILS_INCREASE_SERVICING_INTERVAL_TOOLTIP_MINUTES :{BLACK}Pidennä huoltoväliä 5 minuutilla. Ctrl+napsautus pidentää väliä 1 minuutilla
+STR_VEHICLE_DETAILS_INCREASE_SERVICING_INTERVAL_TOOLTIP_PERCENT :{BLACK}Pidennä huoltoväliä 10 prosentilla. Ctrl+napsautus pidentää väliä 5 prosentilla
+STR_VEHICLE_DETAILS_DECREASE_SERVICING_INTERVAL_TOOLTIP_MINUTES :{BLACK}Lyhennä huoltoväliä 5 minuutilla. Ctrl+napsautus lyhentää väliä 1 minuutilla
 
 STR_SERVICE_INTERVAL_DROPDOWN_TOOLTIP                           :{BLACK}Muuta huoltovälien tyyppiä
 STR_VEHICLE_DETAILS_DEFAULT                                     :Oletus
+STR_VEHICLE_DETAILS_MINUTES                                     :Minuutteja
 STR_VEHICLE_DETAILS_PERCENT                                     :Prosentteja
 
 ###length VEHICLE_TYPES
@@ -5694,6 +5745,7 @@ STR_STATION_NAME                                                :{STATION}
 STR_TOWN_NAME                                                   :{TOWN}
 STR_VEHICLE_NAME                                                :{VEHICLE}
 STR_WAYPOINT_NAME                                               :{WAYPOINT}
+
 
 STR_JUST_CARGO                                                  :{CARGO_LONG}
 STR_JUST_RIGHT_ARROW                                            :{RIGHT_ARROW}

@@ -215,6 +215,8 @@ STR_COLOUR_SECONDARY_SAME_AS_PRIMARY                            :Identique à la
 STR_UNITS_VELOCITY_IMPERIAL                                     :{DECIMAL}{NBSP}mph
 STR_UNITS_VELOCITY_METRIC                                       :{DECIMAL}{NBSP}km/h
 STR_UNITS_VELOCITY_SI                                           :{DECIMAL}{NBSP}m/s
+STR_UNITS_VELOCITY_GAMEUNITS_DAY                                :{DECIMAL}{NBSP}cases/jour
+STR_UNITS_VELOCITY_GAMEUNITS_SEC                                :{DECIMAL}{NBSP}cases/s
 STR_UNITS_VELOCITY_KNOTS                                        :{DECIMAL}{NBSP}nœuds
 
 STR_UNITS_POWER_IMPERIAL                                        :{DECIMAL}{NBSP}hp
@@ -256,12 +258,15 @@ STR_UNITS_HEIGHT_METRIC                                         :{DECIMAL}{NBSP}
 STR_UNITS_HEIGHT_SI                                             :{DECIMAL}{NBSP}m
 
 # Time units used in string control characters
-STR_UNITS_DAYS                                                  :{COMMA}{NBSP}jour{P "" s}
-STR_UNITS_SECONDS                                               :{COMMA}{NBSP}seconde{P "" s}
-STR_UNITS_TICKS                                                 :{COMMA}{NBSP}tick{P "" s}
+STR_UNITS_DAYS                                                  :{G=m}{COMMA}{NBSP}jour{P "" s}
+STR_UNITS_SECONDS                                               :{G=f}{COMMA}{NBSP}seconde{P "" s}
+STR_UNITS_TICKS                                                 :{G=m}{COMMA}{NBSP}tick{P "" s}
 
+STR_UNITS_MONTHS                                                :{G=m}{NUM}{NBSP}mois
+STR_UNITS_MINUTES                                               :{G=f}{NUM}{NBSP}minute{P "" s}
 
-STR_UNITS_YEARS                                                 :{NUM}{NBSP}année{P "" s}
+STR_UNITS_YEARS                                                 :{G=f}{NUM}{NBSP}année{P "" s}
+STR_UNITS_PERIODS                                               :{G=f}{NUM}{NBSP}période{P "" s}
 
 # Common window strings
 STR_LIST_FILTER_TITLE                                           :{BLACK}Filtre{NBSP}:
@@ -328,7 +333,9 @@ STR_SORT_BY_TYPE                                                :Type
 STR_SORT_BY_TRANSPORTED                                         :Transporté
 STR_SORT_BY_NUMBER                                              :Numéro
 STR_SORT_BY_PROFIT_LAST_YEAR                                    :Profit l'année précédente
+STR_SORT_BY_PROFIT_LAST_PERIOD                                  :Profit la période précédente
 STR_SORT_BY_PROFIT_THIS_YEAR                                    :Profit cette année
+STR_SORT_BY_PROFIT_THIS_PERIOD                                  :Profit cette période
 STR_SORT_BY_AGE                                                 :Âge
 STR_SORT_BY_RELIABILITY                                         :Fiabilité
 STR_SORT_BY_TOTAL_CAPACITY_PER_CARGOTYPE                        :Capacité totale par cargo
@@ -356,9 +363,13 @@ STR_SORT_BY_POPULATION                                          :Population
 STR_SORT_BY_RATING                                              :Qualité de service
 STR_SORT_BY_NUM_VEHICLES                                        :Nombre de véhicules
 STR_SORT_BY_TOTAL_PROFIT_LAST_YEAR                              :Profit total l'année précédente
+STR_SORT_BY_TOTAL_PROFIT_LAST_PERIOD                            :Profit total la période précédente
 STR_SORT_BY_TOTAL_PROFIT_THIS_YEAR                              :Profit total cette année
+STR_SORT_BY_TOTAL_PROFIT_THIS_PERIOD                            :Profit total cette période
 STR_SORT_BY_AVERAGE_PROFIT_LAST_YEAR                            :Profit moyen l'année précédente
+STR_SORT_BY_AVERAGE_PROFIT_LAST_PERIOD                          :Profit moyen la période précédente
 STR_SORT_BY_AVERAGE_PROFIT_THIS_YEAR                            :Profit moyen cette année
+STR_SORT_BY_AVERAGE_PROFIT_THIS_PERIOD                          :Profit moyen cette période
 
 # Group by options for vehicle list
 STR_GROUP_BY_NONE                                               :Aucun
@@ -436,6 +447,7 @@ STR_SETTINGS_MENU_CONFIG_SETTINGS_TREE                          :Paramètres
 STR_SETTINGS_MENU_AI_SETTINGS                                   :Configuration des IAs
 STR_SETTINGS_MENU_GAMESCRIPT_SETTINGS                           :Configuration du script de jeu
 STR_SETTINGS_MENU_NEWGRF_SETTINGS                               :Paramètres NewGRF
+STR_SETTINGS_MENU_SANDBOX_OPTIONS                               :Options de bac-à-sable
 STR_SETTINGS_MENU_TRANSPARENCY_OPTIONS                          :Options de transparence
 STR_SETTINGS_MENU_TOWN_NAMES_DISPLAYED                          :Afficher le nom des villes
 STR_SETTINGS_MENU_STATION_NAMES_DISPLAYED                       :Afficher le nom des stations
@@ -619,8 +631,11 @@ STR_GRAPH_CARGO_DELIVERED_CAPTION                               :{WHITE}Cargaiso
 STR_GRAPH_COMPANY_PERFORMANCE_RATINGS_CAPTION                   :{WHITE}Historique de performance (performance max. = 1000)
 STR_GRAPH_COMPANY_VALUES_CAPTION                                :{WHITE}Graphique de la valeur de la compagnie
 
+STR_GRAPH_LAST_72_MINUTES_TIME_LABEL                            :{TINY_FONT}{BLACK}Dernières 72 minutes
 
 STR_GRAPH_CARGO_PAYMENT_RATES_CAPTION                           :{WHITE}Valeur des marchandises
+STR_GRAPH_CARGO_PAYMENT_RATES_DAYS                              :{TINY_FONT}{BLACK}Jours de trajet
+STR_GRAPH_CARGO_PAYMENT_RATES_SECONDS                           :{TINY_FONT}{BLACK}Secondes de trajet
 STR_GRAPH_CARGO_PAYMENT_RATES_TITLE                             :{TINY_FONT}{BLACK}Prix payé pour livrer 10 unités (ou 10{NBSP}000 litres) à 20 carrés de distance
 STR_GRAPH_CARGO_ENABLE_ALL                                      :{TINY_FONT}{BLACK}Activer tout
 STR_GRAPH_CARGO_DISABLE_ALL                                     :{TINY_FONT}{BLACK}Désactiver tout
@@ -669,7 +684,11 @@ STR_PERFORMANCE_DETAIL_LOAN                                     :{BLACK}Emprunt{
 STR_PERFORMANCE_DETAIL_TOTAL                                    :{BLACK}Total{NBSP}:
 ###next-name-looks-similar
 
+STR_PERFORMANCE_DETAIL_VEHICLES_TOOLTIP_YEARS                   :{BLACK}Nombre de véhicules ayant fait du profit l'an passé. Ceci inclut les véhicules routiers, les trains, les navires et les aéronefs.
+STR_PERFORMANCE_DETAIL_VEHICLES_TOOLTIP_PERIODS                 :{BLACK}Nombre de véhicules ayant fait du profit la période précédente. Ceci inclut les véhicules routiers, les trains, les navires et les aéronefs.
 STR_PERFORMANCE_DETAIL_STATIONS_TOOLTIP                         :{BLACK}Nombre de parties de stations utilisées récemment. Les gares, arrêts de bus, aéroports et autres sont comptés séparément même si ils font partie de la même station.
+STR_PERFORMANCE_DETAIL_MIN_PROFIT_TOOLTIP_YEARS                 :{BLACK}Le profit du véhicule ayant le revenu le plus bas (de tous les véhicules ayant plus de 2 années d'existence)
+STR_PERFORMANCE_DETAIL_MIN_PROFIT_TOOLTIP_PERIODS               :{BLACK}Le profit du véhicule ayant le revenu le plus bas (de tous les véhicules ayant plus de 2 périodes d'existence)
 STR_PERFORMANCE_DETAIL_MIN_INCOME_TOOLTIP                       :{BLACK}Quantité d'argent fait dans le trimestre ayant le plus bas profit des 12 derniers trimestres
 STR_PERFORMANCE_DETAIL_MAX_INCOME_TOOLTIP                       :{BLACK}Quantité d'argent fait dans le trimestre ayant le plus haut profit des 12 derniers trimestres
 STR_PERFORMANCE_DETAIL_DELIVERED_TOOLTIP                        :{BLACK}Unités de cargo livrées durant les 4 derniers trimestres
@@ -901,6 +920,8 @@ STR_NEWS_VEHICLE_IS_GETTING_VERY_OLD                            :{WHITE}{VEHICLE
 STR_NEWS_VEHICLE_IS_GETTING_VERY_OLD_AND                        :{WHITE}{VEHICLE} devient très vieux et doit être remplacé d'urgence
 STR_NEWS_TRAIN_IS_STUCK                                         :{WHITE}{VEHICLE} ne trouve pas de chemin pour continuer
 STR_NEWS_VEHICLE_IS_LOST                                        :{WHITE}{VEHICLE} est perdu
+STR_NEWS_VEHICLE_UNPROFITABLE_YEAR                              :{WHITE}Le profit de {VEHICLE} l'an dernier était de {CURRENCY_LONG}
+STR_NEWS_VEHICLE_UNPROFITABLE_PERIOD                            :{WHITE}Le profit de {VEHICLE} la période précédente était de {CURRENCY_LONG}
 STR_NEWS_AIRCRAFT_DEST_TOO_FAR                                  :{WHITE}{VEHICLE} ne peut rejoindre la prochaine destination parce qu'elle est hors de portée
 
 STR_NEWS_ORDER_REFIT_FAILED                                     :{WHITE}L'échec du réaménagement a stoppé {VEHICLE}
@@ -917,9 +938,18 @@ STR_NEWS_STATION_NOW_ACCEPTS_CARGO_LIST                         :{WHITE}{STATION
 
 STR_NEWS_OFFER_OF_SUBSIDY_EXPIRED                               :{BIG_FONT}{BLACK}Offre de subvention expirée{NBSP}:{}{}Le transport de {STRING} entre {STRING} et {STRING} n'est désormais plus subventionné
 STR_NEWS_SUBSIDY_WITHDRAWN_SERVICE                              :{BIG_FONT}{BLACK}Abandon de la subvention{NBSP}:{}{}Le transport de {STRING} entre {STRING} et {STRING} n'est plus subventionné
+STR_NEWS_SERVICE_SUBSIDY_OFFERED                                :{BIG_FONT}{BLACK}Offre de subvention{NBSP}:{}{}Le premier service de {STRING} entre {STRING} et {STRING} sera subventionné pendant {UNITS_YEARS_OR_MINUTES}{NBSP}!
 ###length 4
+STR_NEWS_SERVICE_SUBSIDY_AWARDED_HALF                           :{BIG_FONT}{BLACK}Subvention accordée à {STRING}{NBSP}!{}{}Le transport de {STRING} entre {STRING} et {STRING} rapportera 50{NBSP}% de plus pendant {UNITS_YEARS_OR_MINUTES}{NBSP}!
+STR_NEWS_SERVICE_SUBSIDY_AWARDED_DOUBLE                         :{BIG_FONT}{BLACK}Subvention accordée à {STRING}{NBSP}!{}{}Le transport de {STRING} entre {STRING} et {STRING} rapportera double pendant {UNITS_YEARS_OR_MINUTES}{NBSP}!
+STR_NEWS_SERVICE_SUBSIDY_AWARDED_TRIPLE                         :{BIG_FONT}{BLACK}Subvention accordée à {STRING}{NBSP}!{}{}Le transport de {STRING} entre {STRING} et {STRING} rapportera triple pendant {UNITS_YEARS_OR_MINUTES}{NBSP}!
+STR_NEWS_SERVICE_SUBSIDY_AWARDED_QUADRUPLE                      :{BIG_FONT}{BLACK}Subvention accordée à {STRING}{NBSP}!{}{}Le transport de {STRING} entre {STRING} et {STRING} rapportera quadruple pendant {UNITS_YEARS_OR_MINUTES}{NBSP}!
 
+STR_NEWS_ROAD_REBUILDING_MONTHS                                 :{BIG_FONT}{BLACK}Problèmes de trafic à {TOWN}{NBSP}!{}{}La reconstruction des routes financée par {STRING} provoque 6 mois de problèmes aux automobilistes{NBSP}!
+STR_NEWS_ROAD_REBUILDING_MINUTES                                :{BIG_FONT}{BLACK}Problèmes de trafic à {TOWN}{NBSP}!{}{}La reconstruction des routes financée par {STRING} provoque 6 minutes de problèmes aux automobilistes{NBSP}!
 STR_NEWS_EXCLUSIVE_RIGHTS_TITLE                                 :{BIG_FONT}{BLACK}Monopole des transports{NBSP}!
+STR_NEWS_EXCLUSIVE_RIGHTS_DESCRIPTION_MONTHS                    :{BIG_FONT}{BLACK}La municipalité de {TOWN} signe avec {STRING} un contrat d'exclusivité des transports valable 12 mois{NBSP}!
+STR_NEWS_EXCLUSIVE_RIGHTS_DESCRIPTION_MINUTES                   :{BIG_FONT}{BLACK}La municipalité de {TOWN} signe avec {STRING} un contrat d'exclusivité des transports valable 12 minutes{NBSP}!
 
 # Extra view window
 STR_EXTRA_VIEWPORT_TITLE                                        :{WHITE}Vue {COMMA}
@@ -937,6 +967,7 @@ STR_GAME_OPTIONS_TAB_GRAPHICS                                   :Graphiques
 STR_GAME_OPTIONS_TAB_GRAPHICS_TT                                :{BLACK}Afficher les paramètres graphiques
 STR_GAME_OPTIONS_TAB_SOUND                                      :Son
 STR_GAME_OPTIONS_TAB_SOUND_TT                                   :{BLACK}Afficher les paramètres de son et de musique
+STR_GAME_OPTIONS_TAB_SOCIAL                                     :Social
 STR_GAME_OPTIONS_TAB_SOCIAL_TT                                  :{BLACK}Afficher les paramètres d'intégration sociale
 
 STR_GAME_OPTIONS_VOLUME                                         :Volume
@@ -1077,8 +1108,19 @@ STR_GAME_OPTIONS_BASE_MUSIC                                     :{BLACK}Musique 
 STR_GAME_OPTIONS_BASE_MUSIC_TOOLTIP                             :{BLACK}Sélectionner la musique de base à utiliser
 STR_GAME_OPTIONS_BASE_MUSIC_DESCRIPTION_TOOLTIP                 :{BLACK}Informations additionnelles sur la musique de base
 
+STR_GAME_OPTIONS_SOCIAL_PLUGINS_NONE                            :{LTBLUE}(aucun plugin d'intégration avec les plateformes sociales installé)
 
+STR_GAME_OPTIONS_SOCIAL_PLUGIN_TITLE                            :{BLACK}{STRING} ({STRING})
+STR_GAME_OPTIONS_SOCIAL_PLUGIN_PLATFORM                         :{BLACK}Platforme{NBSP}:
+STR_GAME_OPTIONS_SOCIAL_PLUGIN_STATE                            :{BLACK}État du plugin{NBSP}:
 
+STR_GAME_OPTIONS_SOCIAL_PLUGIN_STATE_RUNNING                    :{GREEN}Actif
+STR_GAME_OPTIONS_SOCIAL_PLUGIN_STATE_FAILED                     :{RED}Échec de l'initialisation
+STR_GAME_OPTIONS_SOCIAL_PLUGIN_STATE_PLATFORM_NOT_RUNNING       :{ORANGE}{STRING} n'est pas lancé
+STR_GAME_OPTIONS_SOCIAL_PLUGIN_STATE_UNLOADED                   :{RED}Déchargé
+STR_GAME_OPTIONS_SOCIAL_PLUGIN_STATE_DUPLICATE                  :{RED}Plugin dupliqué
+STR_GAME_OPTIONS_SOCIAL_PLUGIN_STATE_UNSUPPORTED_API            :{RED}Version non supportée
+STR_GAME_OPTIONS_SOCIAL_PLUGIN_STATE_INVALID_SIGNATURE          :{RED}Signature invalide
 
 STR_BASESET_STATUS                                              :{STRING} {RED}({NUM} fichier{P "" s} manquant{P "" s}/corrompu{P "" s})
 
@@ -1246,6 +1288,7 @@ STR_CONFIG_SETTING_HORIZONTAL_POS_RIGHT                         :À droite
 
 STR_CONFIG_SETTING_SECONDS_VALUE                                :{COMMA}{NBSP}seconde{P 0 "" s}
 
+
 STR_CONFIG_SETTING_MAXIMUM_INITIAL_LOAN                         :Emprunt initial maximum{NBSP}: {STRING}
 STR_CONFIG_SETTING_MAXIMUM_INITIAL_LOAN_HELPTEXT                :Montant maximum qu'une compagnie peut emprunter (sans tenir compte de l'inflation)
 STR_CONFIG_SETTING_MAXIMUM_INITIAL_LOAN_VALUE                   :{CURRENCY_LONG}
@@ -1270,7 +1313,9 @@ STR_CONFIG_SETTING_SUBSIDY_MULTIPLIER_HELPTEXT                  :Définit combie
 STR_CONFIG_SETTING_SUBSIDY_DURATION                             :Durée de subvention{NBSP}: {STRING}
 ###length 2
 STR_CONFIG_SETTING_SUBSIDY_DURATION_HELPTEXT                    :Définir le nombre d'années pour lesquelles une subvention est accordée
+STR_CONFIG_SETTING_SUBSIDY_DURATION_HELPTEXT_PERIODS            :Définir le nombre de périodes pour lesquelles une subvention est accordée
 
+STR_CONFIG_SETTING_SUBSIDY_DURATION_VALUE                       :{UNITS_YEARS_OR_PERIODS}
 ###setting-zero-is-special
 STR_CONFIG_SETTING_SUBSIDY_DURATION_DISABLED                    :Pas de subventions
 
@@ -1278,7 +1323,7 @@ STR_CONFIG_SETTING_CONSTRUCTION_COSTS                           :Coûts de const
 STR_CONFIG_SETTING_CONSTRUCTION_COSTS_HELPTEXT                  :Définit le niveau des coûts de construction et d'achat
 
 STR_CONFIG_SETTING_RECESSIONS                                   :Récessions{NBSP}: {STRING}
-STR_CONFIG_SETTING_RECESSIONS_HELPTEXT                          :Si activé, des récessions peuvent se produire toutes les quelques années. Pendant une récession, toute la production baisse de façon significative (elle retourne à son niveau antérieur à la fin de la récession).
+STR_CONFIG_SETTING_RECESSIONS_HELPTEXT                          :Si activé, des récessions peuvent se produire périodiquement. Pendant une récession, toute la production baisse de façon significative (elle retourne à son niveau antérieur à la fin de la récession).
 
 STR_CONFIG_SETTING_TRAIN_REVERSING                              :Interdire le retournement des trains dans les stations{NBSP}: {STRING}
 STR_CONFIG_SETTING_TRAIN_REVERSING_HELPTEXT                     :Si activé, les trains ne feront plus demi-tour dans les stations non terminus, même si ce faisant il y avait un chemin plus court vers leur prochaine destination.
@@ -1368,9 +1413,11 @@ STR_CONFIG_SETTING_SIGNALSIDE_RIGHT                             :à droite de la
 
 ###length 2
 STR_CONFIG_SETTING_SHOWFINANCES                                 :Afficher le bilan financier en fin d'année{NBSP}: {STRING}
+STR_CONFIG_SETTING_SHOWFINANCES_PERIOD                          :Afficher le bilan financier en fin de période{NBSP}: {STRING}
 
 ###length 2
 STR_CONFIG_SETTING_SHOWFINANCES_HELPTEXT                        :Si activé, le bilan financier sera affiché à la fin de chaque année pour permettre un contrôle rapide de l'état de la compagnie.
+STR_CONFIG_SETTING_SHOWFINANCES_HELPTEXT_PERIOD                 :Si activé, le bilan financier sera affiché à la fin de chaque période pour permettre un contrôle rapide de l'état de la compagnie.
 
 STR_CONFIG_SETTING_NONSTOP_BY_DEFAULT                           :Les nouveaux ordres sont « sans arrêt » par défaut{NBSP}: {STRING}
 STR_CONFIG_SETTING_NONSTOP_BY_DEFAULT_HELPTEXT                  :Normalement, un véhicule s'arrête dans chaque station qu'il traverse. En activant ce paramètre, il traversera toutes les stations sur le chemin de sa destination finale sans s'arrêter. Noter que ce paramètre définit uniquement une valeur par défaut pour les nouveaux ordres. Les ordres peuvent par après être réglés individuellement avec un autre comportement
@@ -1393,10 +1440,12 @@ STR_CONFIG_SETTING_AUTOSCROLL_EVERY_VIEWPORT                    :Chaque vue
 STR_CONFIG_SETTING_BRIBE                                        :Permettre la corruption de la municipalité{NBSP}: {STRING}
 ###length 2
 STR_CONFIG_SETTING_BRIBE_HELPTEXT                               :Autoriser les compagnies à essayer de corrompre la municipalité. Si la corruption est découverte par un enquêteur, la compagnie ne pourra rien faire dans la ville pendant six mois
+STR_CONFIG_SETTING_BRIBE_HELPTEXT_MINUTES                       :Autoriser les compagnies à essayer de corrompre la municipalité. Si la corruption est découverte par un enquêteur, la compagnie ne pourra rien faire dans la ville pendant six minutes
 
 STR_CONFIG_SETTING_ALLOW_EXCLUSIVE                              :Autoriser l'achat des droits de transport exclusifs{NBSP}: {STRING}
 ###length 2
-STR_CONFIG_SETTING_ALLOW_EXCLUSIVE_HELPTEXT                     :Si une compagnie achète les droits de transport exclusifs dans une ville, les stations des concurrents (passagers et marchandises) ne recevront aucune cargaison pendant une année entière.
+STR_CONFIG_SETTING_ALLOW_EXCLUSIVE_HELPTEXT                     :Si une compagnie achète les droits de transport exclusifs dans une ville, les stations des concurrents (passagers et marchandises) ne recevront aucune cargaison pendant douze mois.
+STR_CONFIG_SETTING_ALLOW_EXCLUSIVE_HELPTEXT_MINUTES             :Si une compagnie achète les droits de transport exclusifs dans une ville, les stations des concurrents (passagers et marchandises) ne recevront aucune cargaison pendant douze minutes.
 
 STR_CONFIG_SETTING_ALLOW_FUND_BUILDINGS                         :Permettre le financement de bâtiments{NBSP}: {STRING}
 STR_CONFIG_SETTING_ALLOW_FUND_BUILDINGS_HELPTEXT                :Autoriser les compagnie à donner de l'argent aux villes pour financer de nouveaux bâtiments
@@ -1431,7 +1480,7 @@ STR_CONFIG_SETTING_STOP_ON_COMPETITOR_ROAD_HELPTEXT             :Autoriser la co
 STR_CONFIG_SETTING_DYNAMIC_ENGINES_EXISTING_VEHICLES            :{WHITE}Il n'est pas possible de modifier ce paramètre quand il y a des véhicules
 
 STR_CONFIG_SETTING_INFRASTRUCTURE_MAINTENANCE                   :Entretien de l'infrastructure{NBSP}: {STRING}
-STR_CONFIG_SETTING_INFRASTRUCTURE_MAINTENANCE_HELPTEXT          :Si activé, les infrastructures entraineront des coût d'entretien. Le coût augmente proportionnellement à la taille du réseau, affectant les grosses compagnies plus que les petites
+STR_CONFIG_SETTING_INFRASTRUCTURE_MAINTENANCE_HELPTEXT          :Si activé, les infrastructures entraineront des coûts d'entretien. Le coût augmente proportionnellement à la taille du réseau, affectant les grosses compagnies plus que les petites
 
 STR_CONFIG_SETTING_COMPANY_STARTING_COLOUR                      :Couleur de la compagnie au démarrage{NBSP}: {STRING}
 STR_CONFIG_SETTING_COMPANY_STARTING_COLOUR_HELPTEXT             :Choisir la couleur de démarrage pour la compagnie
@@ -1454,17 +1503,24 @@ STR_CONFIG_SETTING_ORDER_REVIEW_ON                              :De tous les vé
 
 STR_CONFIG_SETTING_WARN_INCOME_LESS                             :Alerter en cas de revenu négatif pour un véhicule{NBSP}: {STRING}
 ###length 2
-STR_CONFIG_SETTING_WARN_INCOME_LESS_HELPTEXT                    :Quand il est actif, un message d'information est envoyé lorsqu'un véhicule n'a fait aucun bénéfice au cours d'une année calendaire
+STR_CONFIG_SETTING_WARN_INCOME_LESS_HELPTEXT                    :Quand il est actif, un message d'information est envoyé lorsqu'un véhicule n'a fait aucun bénéfice au cours d'une année
+STR_CONFIG_SETTING_WARN_INCOME_LESS_HELPTEXT_PERIOD             :Quand il est actif, un message d'information est envoyé lorsqu'un véhicule n'a fait aucun bénéfice au cours d'une période
 
 STR_CONFIG_SETTING_NEVER_EXPIRE_VEHICLES                        :Les véhicules n'expirent jamais{NBSP}: {STRING}
 STR_CONFIG_SETTING_NEVER_EXPIRE_VEHICLES_HELPTEXT               :Quand il est actif, tous les modèles de véhicule restent disponibles pour toujours après leur introduction
 
+STR_CONFIG_SETTING_TIMEKEEPING_UNITS                            :Mesure du temps{NBSP}: {STRING}
 STR_CONFIG_SETTING_TIMEKEEPING_UNITS_HELPTEXT                   :Sélectionner les unités de mesure du temps pour la partie. Ce choix ne peut pas être modifié par la suite.{}{}"Calendrier" correspond à l’expérience classique d'OpenTTD, avec une année de 12 mois et chaque mois ayant de 28 à 31 jours.{}{}Quand le temps est basé sur la "pendule", les mouvements des véhicules, la production de marchandises et les finances sont basés sur des incréments d'une minute, équivalent à des mois de 30 jours dans le mode "calendrier". Ceux-ci sont groupés par période de 12 minutes, équivalent à une année dans le mode "calendrier".{}{}Quelque soit le mode, il y a toujours un calendrier classique, utilisé pour les dates d'introduction des véhicules, maisons, et autres infrastructures.
 ###length 2
 STR_CONFIG_SETTING_TIMEKEEPING_UNITS_CALENDAR                   :Calendrier
+STR_CONFIG_SETTING_TIMEKEEPING_UNITS_WALLCLOCK                  :Pendule
 
+STR_CONFIG_SETTING_MINUTES_PER_YEAR                             :Minutes par année{NBSP}: {STRING}
+STR_CONFIG_SETTING_MINUTES_PER_YEAR_HELPTEXT                    :Sélectionner le nombre de minutes dans une année calendaire. La valeur par défaut est 12 minutes.Régler sur 0 pour arrêter la progression du calendrier. Ce paramètre n'affecte pas la simulation économique du jeu, et il n'est disponible qu'en utilisant le mode "pendule".
 
+STR_CONFIG_SETTING_MINUTES_PER_YEAR_VALUE                       :{NUM}
 ###setting-zero-is-special
+STR_CONFIG_SETTING_MINUTES_PER_YEAR_FROZEN                      :0 (calendrier gelé)
 
 STR_CONFIG_SETTING_AUTORENEW_VEHICLE                            :Renouveler automatiquement les véhicules vieillissants{NBSP}: {STRING}
 STR_CONFIG_SETTING_AUTORENEW_VEHICLE_HELPTEXT                   :Quand il est actif, un véhicule approchant de la fin de sa durée de vie est automatiquement remplacé quand les conditions du renouvellement sont remplies
@@ -1720,9 +1776,11 @@ STR_CONFIG_SETTING_SOUND_NEWS_HELPTEXT                          :Jouer un son à
 
 ###length 2
 STR_CONFIG_SETTING_SOUND_NEW_YEAR                               :Fin de l'année{NBSP}: {STRING}
+STR_CONFIG_SETTING_SOUND_NEW_PERIOD                             :Fin de la période{NBSP}: {STRING}
 
 ###length 2
 STR_CONFIG_SETTING_SOUND_NEW_YEAR_HELPTEXT                      :Jouer un effet sonore à la fin de l'année résumant la performance de la compagnie durant l'année comparée à l'année précédente
+STR_CONFIG_SETTING_SOUND_NEW_PERIOD_HELPTEXT                    :Jouer un effet sonore à la fin de la période résumant la performance de la compagnie durant la période comparée à la période précédente
 
 STR_CONFIG_SETTING_SOUND_CONFIRM                                :Construction{NBSP}: {STRING}
 STR_CONFIG_SETTING_SOUND_CONFIRM_HELPTEXT                       :Jouer un effet sonore pour les constructions réussies ou d'autres actions
@@ -1790,7 +1848,7 @@ STR_CONFIG_SETTING_SERVINT_AIRCRAFT                             :Intervalle d'en
 STR_CONFIG_SETTING_SERVINT_AIRCRAFT_HELPTEXT                    :Définit l'intervalle d'entretien par défaut des nouveaux aéronefs, si aucun intervalle d'entretien n'est défini pour le véhicule
 STR_CONFIG_SETTING_SERVINT_SHIPS                                :Intervalle d'entretien par défaut pour les navires{NBSP}: {STRING}
 STR_CONFIG_SETTING_SERVINT_SHIPS_HELPTEXT                       :Définit l'intervalle d'entretien par défaut des nouveaux navires, si aucun intervalle d'entretien n'est défini pour le véhicule
-STR_CONFIG_SETTING_SERVINT_VALUE                                :{COMMA}{NBSP}jour{P 0 "" s}/%
+STR_CONFIG_SETTING_SERVINT_VALUE                                :{COMMA}{NBSP}jour{P 0 "" s}/minute{P 0 "" s}/%
 ###setting-zero-is-special
 STR_CONFIG_SETTING_SERVINT_DISABLED                             :Désactivé
 
@@ -2023,6 +2081,8 @@ STR_CONFIG_SETTING_LOCALISATION_UNITS_VELOCITY_HELPTEXT         :Quand une vites
 STR_CONFIG_SETTING_LOCALISATION_UNITS_VELOCITY_IMPERIAL         :Impérial (mph)
 STR_CONFIG_SETTING_LOCALISATION_UNITS_VELOCITY_METRIC           :Métrique (km/h)
 STR_CONFIG_SETTING_LOCALISATION_UNITS_VELOCITY_SI               :SI (m/s)
+STR_CONFIG_SETTING_LOCALISATION_UNITS_VELOCITY_GAMEUNITS_DAYS   :Unités de jeu (cases/jour)
+STR_CONFIG_SETTING_LOCALISATION_UNITS_VELOCITY_GAMEUNITS_SECS   :Unités de jeu (cases/s)
 STR_CONFIG_SETTING_LOCALISATION_UNITS_VELOCITY_KNOTS            :Nœuds
 
 STR_CONFIG_SETTING_LOCALISATION_UNITS_POWER                     :Unité de puissance de véhicule{NBSP}: {STRING}
@@ -2197,7 +2257,7 @@ STR_HELP_WINDOW_BUGTRACKER                                      :{BLACK}Rapporte
 STR_HELP_WINDOW_COMMUNITY                                       :{BLACK}Communauté
 
 # Cheat window
-STR_CHEATS                                                      :{WHITE}Triches
+STR_CHEATS                                                      :{WHITE}Options de bac-à-sable
 STR_CHEAT_MONEY                                                 :{LTBLUE}Augmenter l'argent de {CURRENCY_LONG}
 STR_CHEAT_CHANGE_COMPANY                                        :{LTBLUE}Jouer en tant que compagnie{NBSP}: {ORANGE}{COMMA}
 STR_CHEAT_EXTRA_DYNAMITE                                        :{LTBLUE}Bulldozer magique (enlèvement des industries et des objets fixes){NBSP}: {ORANGE}{STRING}
@@ -2334,6 +2394,9 @@ STR_NETWORK_SERVER_LIST_MAP_SIZE_CAPTION                        :{BLACK}Taille
 STR_NETWORK_SERVER_LIST_MAP_SIZE_CAPTION_TOOLTIP                :{BLACK}Taille de la carte{}Cliquer pour trier par surface
 STR_NETWORK_SERVER_LIST_DATE_CAPTION                            :{BLACK}Année en jeu
 STR_NETWORK_SERVER_LIST_DATE_CAPTION_TOOLTIP                    :{BLACK}Date courante
+STR_NETWORK_SERVER_LIST_PLAY_TIME_SHORT                         :{BLACK}{NUM}h {NUM}m
+STR_NETWORK_SERVER_LIST_PLAY_TIME_CAPTION                       :{BLACK}Temps de jeu
+STR_NETWORK_SERVER_LIST_PLAY_TIME_CAPTION_TOOLTIP               :{BLACK}Temps joué quand la{}partie n'était pas en pause
 STR_NETWORK_SERVER_LIST_INFO_ICONS_TOOLTIP                      :{BLACK}Langue, version du serveur, etc.
 
 STR_NETWORK_SERVER_LIST_CLICK_GAME_TO_SELECT                    :{BLACK}Cliquer sur une partie dans la liste pour la sélectionner
@@ -2349,6 +2412,7 @@ STR_NETWORK_SERVER_LIST_SERVER_ADDRESS                          :{SILVER}Adresse
 STR_NETWORK_SERVER_LIST_INVITE_CODE                             :{SILVER}Code d'invitation{NBSP}: {WHITE}{STRING}
 STR_NETWORK_SERVER_LIST_START_DATE                              :{SILVER}Date de début{NBSP}: {WHITE}{DATE_SHORT}
 STR_NETWORK_SERVER_LIST_CURRENT_DATE                            :{SILVER}Date courante{NBSP}: {WHITE}{DATE_SHORT}
+STR_NETWORK_SERVER_LIST_PLAY_TIME                               :{SILVER}Temps de jeu{NBSP}: {WHITE}{NUM}h {NUM}m
 STR_NETWORK_SERVER_LIST_GAMESCRIPT                              :{SILVER}Script de jeu{NBSP}: {WHITE}{STRING} (v{NUM})
 STR_NETWORK_SERVER_LIST_PASSWORD                                :{SILVER}Protégée par mot de passe{NBSP}!
 STR_NETWORK_SERVER_LIST_SERVER_OFFLINE                          :{SILVER}SERVEUR HORS-LIGNE
@@ -2704,7 +2768,10 @@ STR_LINKGRAPH_LEGEND_SATURATED                                  :{TINY_FONT}{BLA
 STR_LINKGRAPH_LEGEND_OVERLOADED                                 :{TINY_FONT}{BLACK}surchargé
 
 # Linkgraph tooltip
+STR_LINKGRAPH_STATS_TOOLTIP_MONTH                               :{BLACK}{CARGO_LONG} à transporter par mois de {STATION} à {STATION} ({COMMA}% de la capacité){STRING}
+STR_LINKGRAPH_STATS_TOOLTIP_MINUTE                              :{BLACK}{CARGO_LONG} à transporter par minute de {STATION} à {STATION} ({COMMA}% de la capacité){STRING}
 STR_LINKGRAPH_STATS_TOOLTIP_RETURN_EXTENSION                    :{}{CARGO_LONG} à transporter en retour ({COMMA}% de la capacité)
+STR_LINKGRAPH_STATS_TOOLTIP_TIME_EXTENSION                      :{}Temps de trajet moyen{NBSP}: {UNITS_DAYS_OR_SECONDS}
 
 # Base for station construction window(s)
 STR_STATION_BUILD_COVERAGE_AREA_TITLE                           :{BLACK}Afficher la zone couverte
@@ -2714,6 +2781,8 @@ STR_STATION_BUILD_COVERAGE_AREA_OFF_TOOLTIP                     :{BLACK}Ne pas a
 STR_STATION_BUILD_COVERAGE_AREA_ON_TOOLTIP                      :{BLACK}Afficher la zone couverte
 STR_STATION_BUILD_ACCEPTS_CARGO                                 :{BLACK}Accepte{NBSP}: {GOLD}{CARGO_LIST}
 STR_STATION_BUILD_SUPPLIES_CARGO                                :{BLACK}Fournit{NBSP}: {GOLD}{CARGO_LIST}
+STR_STATION_BUILD_INFRASTRUCTURE_COST_YEAR                      :{BLACK}Coût d'entretien{NBSP}: {GOLD}{CURRENCY_SHORT}/an
+STR_STATION_BUILD_INFRASTRUCTURE_COST_PERIOD                    :{BLACK}Coût d'entretien{NBSP}: {GOLD}{CURRENCY_SHORT}/période
 
 # Join station window
 STR_JOIN_STATION_CAPTION                                        :{WHITE}Joindre une station
@@ -3561,12 +3630,15 @@ STR_TOWN_VIEW_TOWN_CAPTION                                      :{WHITE}{TOWN}
 STR_TOWN_VIEW_CITY_CAPTION                                      :{WHITE}{TOWN} (Métropole)
 STR_TOWN_VIEW_POPULATION_HOUSES                                 :{BLACK}Population{NBSP}: {ORANGE}{COMMA}{BLACK} − Maisons{NBSP}: {ORANGE}{COMMA}
 STR_TOWN_VIEW_CARGO_LAST_MONTH_MAX                              :{BLACK}{CARGO_LIST} le mois dernier{NBSP}: {ORANGE}{COMMA}{BLACK} - max.{NBSP}: {ORANGE}{COMMA}
+STR_TOWN_VIEW_CARGO_LAST_MINUTE_MAX                             :{BLACK}{CARGO_LIST} minute précédente{NBSP}: {ORANGE}{COMMA}{BLACK}  max{NBSP}: {ORANGE}{COMMA}
 STR_TOWN_VIEW_CARGO_FOR_TOWNGROWTH                              :{BLACK}Cargaison nécessaire à la croissance de la ville{NBSP}:
 STR_TOWN_VIEW_CARGO_FOR_TOWNGROWTH_REQUIRED_GENERAL             :{ORANGE}{STRING}{RED} requis
 STR_TOWN_VIEW_CARGO_FOR_TOWNGROWTH_REQUIRED_WINTER              :{ORANGE}{STRING}{BLACK} requis en hiver
 STR_TOWN_VIEW_CARGO_FOR_TOWNGROWTH_DELIVERED_GENERAL            :{ORANGE}{STRING}{GREEN} livré
 STR_TOWN_VIEW_CARGO_FOR_TOWNGROWTH_REQUIRED                     :{ORANGE}{CARGO_TINY} / {CARGO_LONG}{RED} (encore nécessaires)
 STR_TOWN_VIEW_CARGO_FOR_TOWNGROWTH_DELIVERED                    :{ORANGE}{CARGO_TINY} / {CARGO_LONG}{GREEN} (livrés)
+STR_TOWN_VIEW_TOWN_GROWS_EVERY                                  :{BLACK}La ville croît tou{G 0 "" "" "te"}s les {ORANGE}{UNITS_DAYS_OR_SECONDS}
+STR_TOWN_VIEW_TOWN_GROWS_EVERY_FUNDED                           :{BLACK}La ville croît tou{G 0 "" "" "te"}s {ORANGE}{UNITS_DAYS_OR_SECONDS} (financé)
 STR_TOWN_VIEW_TOWN_GROW_STOPPED                                 :{BLACK}La ville {RED}ne croît pas{BLACK}
 STR_TOWN_VIEW_NOISE_IN_TOWN                                     :{BLACK}Nuisances sonores en ville{NBSP}: {ORANGE}{COMMA}{BLACK} − max.{NBSP}: {ORANGE}{COMMA}
 STR_TOWN_VIEW_CENTER_TOOLTIP                                    :{BLACK}Centrer la vue sur la ville. Ctrl-clic pour ouvrir une nouvelle vue sur la ville.
@@ -3606,8 +3678,12 @@ STR_LOCAL_AUTHORITY_ACTION_BRIBE                                :Corrompre la mu
 STR_LOCAL_AUTHORITY_ACTION_TOOLTIP_SMALL_ADVERTISING            :{PUSH_COLOUR}{YELLOW}Lancez une petite campagne de publicité locale pour attirer plus de passagers et de marchandises vers vos services de transport.{}Fournit une amélioration temporaire de la note des gares dans un petit rayon autour du centre-ville.{}{POP_COLOUR}Coût{NBSP}: {CURRENCY_LONG}
 STR_LOCAL_AUTHORITY_ACTION_TOOLTIP_MEDIUM_ADVERTISING           :{PUSH_COLOUR}{YELLOW}Lancer une campagne de publicité moyenne, pour attirer plus de voyageurs et de marchandises sur vos lignes.{}Augmente temporairement le classement de vos gares dans un rayon moyen autour du centre-ville.{}{POP_COLOUR}Coût{NBSP}:{CURRENCY_LONG}
 STR_LOCAL_AUTHORITY_ACTION_TOOLTIP_LARGE_ADVERTISING            :{PUSH_COLOUR}{YELLOW}Lancer une grande campagne de publicité, pour attirer plus de voyageurs et de marchandises sur vos lignes.{}Augmente temporairement le classement des gares dans un rayon important autour du centre-ville.{}{POP_COLOUR}Coût{NBSP}: {CURRENCY_LONG}
+STR_LOCAL_AUTHORITY_ACTION_TOOLTIP_ROAD_RECONSTRUCTION_MONTHS   :{PUSH_COLOUR}{YELLOW}Financer la reconstruction du réseau routier.{}Provoque une perturbation considérable du trafic pendant 6 mois au maximum.{}{POP_COLOUR}Coût{NBSP}: {CURRENCY_LONG}
+STR_LOCAL_AUTHORITY_ACTION_TOOLTIP_ROAD_RECONSTRUCTION_MINUTES  :{PUSH_COLOUR}{YELLOW}Financer la reconstruction du réseau routier.{}Provoque une perturbation considérable du trafic pendant 6 minutes au maximum.{}{POP_COLOUR}Coût{NBSP}: {CURRENCY_LONG}
 STR_LOCAL_AUTHORITY_ACTION_TOOLTIP_STATUE_OF_COMPANY            :{PUSH_COLOUR}{YELLOW}Construire une statue en l'honneur de votre compagnie.{}Augmente en permanence le classement de vos stations dans cette ville.{}{POP_COLOUR}Coût{NBSP}:{CURRENCY_LONG}
 STR_LOCAL_AUTHORITY_ACTION_TOOLTIP_NEW_BUILDINGS                :{PUSH_COLOUR}{YELLOW}Financer la construction de nouveaux immeubles commerciaux.{}Stimule temporairement la croissance dans cette ville.{}{POP_COLOUR}Coût{NBSP}:{CURRENCY_LONG}
+STR_LOCAL_AUTHORITY_ACTION_TOOLTIP_EXCLUSIVE_TRANSPORT_MONTHS   :{PUSH_COLOUR}{YELLOW}Acheter les droits de transport exclusifs dans la ville pour 12 mois.{} La municipalité n'autorisera pas les passagers et les marchandises à utiliser les stations de vos concurrents. Un pot-de-vin réussi d'un concurrent annulera ce contrat.{}{POP_COLOUR}Coût{NBSP}: {CURRENCY_LONG}
+STR_LOCAL_AUTHORITY_ACTION_TOOLTIP_EXCLUSIVE_TRANSPORT_MINUTES  :{PUSH_COLOUR}{YELLOW}Acheter les droits de transport exclusifs dans la ville pour 12 minutes.{} La municipalité n'autorisera pas les passagers et les marchandises à utiliser les stations de vos concurrents. Un pot-de-vin réussi d'un concurrent annulera ce contrat.{}{POP_COLOUR}Coût{NBSP}: {CURRENCY_LONG}
 STR_LOCAL_AUTHORITY_ACTION_TOOLTIP_BRIBE                        :{PUSH_COLOUR}{YELLOW}Corrompre la municipalité pour améliorer votre réputation et annuler les droits de transports exclusifs d'un concurrent, au risque de pénalisation si le pot-de-vin est dévoilé.{}{POP_COLOUR}Coût{NBSP}: {CURRENCY_LONG}
 
 # Goal window
@@ -3654,9 +3730,15 @@ STR_GOAL_QUESTION_BUTTON_CLOSE                                  :Fermer
 # Subsidies window
 STR_SUBSIDIES_CAPTION                                           :{WHITE}Subventions
 STR_SUBSIDIES_OFFERED_TITLE                                     :{BLACK}Offres de subvention pour le transport de{NBSP}:
+STR_SUBSIDIES_OFFERED_FROM_TO                                   :{ORANGE}{STRING} de {STRING} à {STRING}{YELLOW} ({STRING})
 STR_SUBSIDIES_NONE                                              :{ORANGE}− Aucune −
 STR_SUBSIDIES_SUBSIDISED_TITLE                                  :{BLACK}Subventions déjà accordées{NBSP}:
+STR_SUBSIDIES_SUBSIDISED_FROM_TO                                :{ORANGE}{STRING} de {STRING} à {STRING}{YELLOW} ({COMPANY}{YELLOW}, {STRING})
 STR_SUBSIDIES_TOOLTIP_CLICK_ON_SERVICE_TO_CENTER                :{BLACK}Cliquer sur le service pour centrer la vue principale sur l'industrie ou la ville. Ctrl-clic pour ouvrir une nouvelle vue sur l'industrie ou la ville.
+STR_SUBSIDIES_OFFERED_EXPIRY_DATE                               :avant {DATE_SHORT}
+STR_SUBSIDIES_OFFERED_EXPIRY_TIME                               :d'ici {UNITS_MONTHS_OR_MINUTES}
+STR_SUBSIDIES_SUBSIDISED_EXPIRY_DATE                            :jusqu'à {DATE_SHORT}
+STR_SUBSIDIES_SUBSIDISED_EXPIRY_TIME                            :{UNITS_MONTHS_OR_MINUTES} restant{G 0 "" "" e}{P "" s}
 
 # Story book window
 STR_STORY_BOOK_CAPTION                                          :{WHITE}Livre d'histoire de {COMPANY}
@@ -3696,6 +3778,8 @@ STR_STATION_VIEW_EXCLUSIVE_RIGHTS_COMPANY                       :{YELLOW}{COMPAN
 
 STR_STATION_VIEW_RATINGS_BUTTON                                 :{BLACK}Qualité
 STR_STATION_VIEW_RATINGS_TOOLTIP                                :{BLACK}Afficher la qualité de service de la station
+STR_STATION_VIEW_SUPPLY_RATINGS_TITLE_MONTH                     :{BLACK}Cargaison reçue par mois et qualité du service{NBSP}:
+STR_STATION_VIEW_SUPPLY_RATINGS_TITLE_MINUTE                    :{BLACK}Cargaison reçue par minute et qualité du service{NBSP}:
 STR_STATION_VIEW_CARGO_SUPPLY_RATING                            :{WHITE}{STRING}: {YELLOW}{COMMA} / {STRING} ({COMMA}%)
 
 STR_STATION_VIEW_GROUP                                          :{BLACK}Regrouper par
@@ -3756,6 +3840,8 @@ STR_EDIT_WAYPOINT_NAME                                          :{WHITE}Modifier
 # Finances window
 STR_FINANCES_CAPTION                                            :{WHITE}Finances de {COMPANY} {BLACK}{COMPANY_NUM}
 STR_FINANCES_YEAR                                               :{WHITE}{NUM}
+STR_FINANCES_YEAR_CAPTION                                       :{WHITE}Année
+STR_FINANCES_PERIOD_CAPTION                                     :{WHITE}Période
 
 ###length 3
 STR_FINANCES_REVENUE_TITLE                                      :{WHITE}Revenus
@@ -3857,6 +3943,8 @@ STR_COMPANY_INFRASTRUCTURE_VIEW_CANALS                          :{WHITE}Canaux
 STR_COMPANY_INFRASTRUCTURE_VIEW_STATION_SECT                    :{GOLD}Stations{NBSP}:
 STR_COMPANY_INFRASTRUCTURE_VIEW_STATIONS                        :{WHITE}Cases de station
 STR_COMPANY_INFRASTRUCTURE_VIEW_AIRPORTS                        :{WHITE}Aéroports
+STR_COMPANY_INFRASTRUCTURE_VIEW_TOTAL_YEAR                      :{WHITE}{CURRENCY_LONG}/an
+STR_COMPANY_INFRASTRUCTURE_VIEW_TOTAL_PERIOD                    :{WHITE}{CURRENCY_LONG}/période
 
 # Industry directory
 STR_INDUSTRY_DIRECTORY_CAPTION                                  :{WHITE}Industries
@@ -3876,6 +3964,7 @@ STR_INDUSTRY_DIRECTORY_FILTER_NONE                              :Aucune
 # Industry view
 STR_INDUSTRY_VIEW_CAPTION                                       :{WHITE}{INDUSTRY}
 STR_INDUSTRY_VIEW_PRODUCTION_LAST_MONTH_TITLE                   :{BLACK}Production le mois dernier{NBSP}:
+STR_INDUSTRY_VIEW_PRODUCTION_LAST_MINUTE_TITLE                  :{BLACK}Production la minute précédente{NBSP}:
 STR_INDUSTRY_VIEW_TRANSPORTED                                   :{YELLOW}{CARGO_LONG}{STRING}{BLACK} ({COMMA}{NBSP}% transporté{P "" s})
 STR_INDUSTRY_VIEW_LOCATION_TOOLTIP                              :{BLACK}Centrer la vue sur l'industrie. Ctrl-clic pour ouvrir une nouvelle vue sur l'industrie.
 STR_INDUSTRY_VIEW_PRODUCTION_LEVEL                              :{BLACK}Niveau de production{NBSP}: {YELLOW}{COMMA}{NBSP}%
@@ -3917,6 +4006,7 @@ STR_VEHICLE_LIST_REPLACE_VEHICLES                               :Remplacer des v
 STR_VEHICLE_LIST_SEND_FOR_SERVICING                             :Envoyer à l'entretien
 STR_VEHICLE_LIST_CREATE_GROUP                                   :Créer un groupe
 STR_VEHICLE_LIST_PROFIT_THIS_YEAR_LAST_YEAR                     :{TINY_FONT}{BLACK}Profit cette année{NBSP}: {CURRENCY_LONG} (année précédente{NBSP}: {CURRENCY_LONG})
+STR_VEHICLE_LIST_PROFIT_THIS_PERIOD_LAST_PERIOD                 :{TINY_FONT}{BLACK}Profit cette période{NBSP}: {CURRENCY_LONG} (période précédente{NBSP}: {CURRENCY_LONG})
 STR_VEHICLE_LIST_CARGO                                          :[{CARGO_LIST}]
 STR_VEHICLE_LIST_NAME_AND_CARGO                                 :{STRING} {STRING}
 
@@ -3962,7 +4052,9 @@ STR_GROUP_REMOVE_ALL_VEHICLES                                   :Retirer tous le
 STR_GROUP_RENAME_CAPTION                                        :{BLACK}Renommer un groupe
 
 STR_GROUP_PROFIT_THIS_YEAR                                      :Profit cette année{NBSP}:
+STR_GROUP_PROFIT_THIS_PERIOD                                    :Profit cette période{NBSP}:
 STR_GROUP_PROFIT_LAST_YEAR                                      :Profit l'année précédente{NBSP}:
+STR_GROUP_PROFIT_LAST_PERIOD                                    :Profit la période précédente{NBSP}:
 STR_GROUP_OCCUPANCY                                             :Utilisation actuelle{NBSP}:
 STR_GROUP_OCCUPANCY_VALUE                                       :{NUM}%
 
@@ -3989,6 +4081,8 @@ STR_PURCHASE_INFO_SPEED_POWER                                   :{BLACK}Vitesse{
 STR_PURCHASE_INFO_SPEED                                         :{BLACK}Vitesse{NBSP}: {GOLD}{VELOCITY}
 STR_PURCHASE_INFO_SPEED_OCEAN                                   :{BLACK}Vitesse sur l'océan{NBSP}: {GOLD}{VELOCITY}
 STR_PURCHASE_INFO_SPEED_CANAL                                   :{BLACK}Vitesse sur canal/fleuve{NBSP}: {GOLD}{VELOCITY}
+STR_PURCHASE_INFO_RUNNINGCOST_YEAR                              :{BLACK}Coût d'entretien{NBSP}: {GOLD}{CURRENCY_LONG}/an
+STR_PURCHASE_INFO_RUNNINGCOST_PERIOD                            :{BLACK}Coûts d'entretien{NBSP}: {GOLD}{CURRENCY_LONG}/période
 STR_PURCHASE_INFO_CAPACITY                                      :{BLACK}Capacité{NBSP}: {GOLD}{CARGO_LONG} {STRING}
 STR_PURCHASE_INFO_REFITTABLE                                    :(réaménageable)
 STR_PURCHASE_INFO_DESIGNED_LIFE                                 :{BLACK}Conçu en{NBSP}: {GOLD}{NUM}{BLACK} − Durée de vie{NBSP}: {GOLD}{COMMA} an{P "" s}
@@ -4016,9 +4110,9 @@ STR_CARGO_TYPE_FILTER_NONE                                      :Aucun
 
 ###length VEHICLE_TYPES
 STR_BUY_VEHICLE_TRAIN_LIST_TOOLTIP                              :{BLACK}Choix du véhicule. Cliquer sur un véhicule pour obtenir des informations. Ctrl-clic pour afficher/masquer le type de véhicule
-STR_BUY_VEHICLE_ROAD_VEHICLE_LIST_TOOLTIP                       :{BLACK}Choix du véhicule routier. Cliquer sur un véhicule pour obtenir des informations. Ctrl-clic pour afficher/masquer le type de véhicule
-STR_BUY_VEHICLE_SHIP_LIST_TOOLTIP                               :{BLACK}Choix du navire. Cliquer sur un navire pour obtenir des informations. Ctrl-clic pour afficher/masquer le type de navire
-STR_BUY_VEHICLE_AIRCRAFT_LIST_TOOLTIP                           :{BLACK}Choix de l'aéronef. Cliquer sur un aéronef pour obtenir des informations. Ctrl-clic pour afficher/masquer le type d'aéronef
+STR_BUY_VEHICLE_ROAD_VEHICLE_LIST_TOOLTIP                       :{BLACK}Choix du véhicule routier. Cliquer sur un véhicule pour obtenir des informations. Ctrl-clic pour afficher/masquer ce type de véhicule
+STR_BUY_VEHICLE_SHIP_LIST_TOOLTIP                               :{BLACK}Choix du navire. Cliquer sur un navire pour obtenir des informations. Ctrl-clic pour afficher/masquer ce type de navire
+STR_BUY_VEHICLE_AIRCRAFT_LIST_TOOLTIP                           :{BLACK}Choix de l'aéronef. Cliquer sur un aéronef pour obtenir des informations. Ctrl-clic pour afficher/masquer ce type d'aéronef
 
 ###length VEHICLE_TYPES
 STR_BUY_VEHICLE_TRAIN_BUY_VEHICLE_BUTTON                        :{BLACK}Acheter
@@ -4181,6 +4275,18 @@ STR_ENGINE_PREVIEW_TRAM_VEHICLE                                 :{G=m}tramway
 STR_ENGINE_PREVIEW_AIRCRAFT                                     :{G=m2}aéronef
 STR_ENGINE_PREVIEW_SHIP                                         :{G=m}navire
 
+STR_ENGINE_PREVIEW_TEXT3                                        :{BLACK}{STRING}{}{5:STRING}{}{STRING}
+STR_ENGINE_PREVIEW_TEXT4                                        :{BLACK}{STRING}{}{STRING}{}{STRING}{}{STRING}
+STR_ENGINE_PREVIEW_COST_WEIGHT                                  :Coût{NBSP}: {CURRENCY_LONG}  Poids{NBSP}: {WEIGHT_SHORT}
+STR_ENGINE_PREVIEW_COST_MAX_SPEED                               :Coût{NBSP}: {CURRENCY_LONG}  Vitesse max.{NBSP}: {VELOCITY}
+STR_ENGINE_PREVIEW_SPEED_POWER                                  :Vitesse{NBSP}: {VELOCITY}  Puissance{NBSP}: {POWER}
+STR_ENGINE_PREVIEW_SPEED_POWER_MAX_TE                           :Vitesse{NBSP}: {VELOCITY}  Puissance{NBSP}: {POWER}  E.T. max.{NBSP}: {FORCE}
+STR_ENGINE_PREVIEW_TYPE                                         :Type d'aéronef{NBSP}: {STRING}
+STR_ENGINE_PREVIEW_TYPE_RANGE                                   :Type d'aéronef{NBSP}: {STRING}   Rayon d'action{NBSP}: {COMMA} cases
+STR_ENGINE_PREVIEW_RUNCOST_YEAR                                 :Coûts d'entretien{NBSP}: {CURRENCY_LONG}/an
+STR_ENGINE_PREVIEW_RUNCOST_PERIOD                               :Coûts d'entretien{NBSP}: {CURRENCY_LONG}/période
+STR_ENGINE_PREVIEW_CAPACITY                                     :Capacité{NBSP}: {CARGO_LONG}
+STR_ENGINE_PREVIEW_CAPACITY_2                                   :Capacité{NBSP}: {CARGO_LONG}, {CARGO_LONG}
 
 # Autoreplace window
 STR_REPLACE_VEHICLES_WHITE                                      :{WHITE}Remplacer {STRING} - {STRING}
@@ -4325,7 +4431,8 @@ STR_VEHICLE_DETAILS_AIRCRAFT_RENAME                             :{BLACK}Renommer
 
 STR_VEHICLE_INFO_AGE                                            :{COMMA} an{P "" nées} ({COMMA})
 STR_VEHICLE_INFO_AGE_RED                                        :{RED}{COMMA} an{P "" nées} ({COMMA})
-STR_VEHICLE_INFO_AGE_RUNNING_COST_YR                            :{BLACK}Âge{NBSP}: {LTBLUE}{STRING}{BLACK} − Coûts d'entretien{NBSP}: {LTBLUE}{CURRENCY_LONG}/an
+STR_VEHICLE_INFO_AGE_RUNNING_COST_YR                            :{BLACK}Âge{NBSP}: {LTBLUE}{STRING}{BLACK}   Coûts d'entretien{NBSP}: {LTBLUE}{CURRENCY_LONG}/an{BLACK}
+STR_VEHICLE_INFO_AGE_RUNNING_COST_PERIOD                        :{BLACK}Âge{NBSP}: {LTBLUE}{STRING}{BLACK}   Coûts d'entretien{NBSP}: {LTBLUE}{CURRENCY_LONG}/période
 
 STR_VEHICLE_INFO_MAX_SPEED                                      :{BLACK}Vitesse max.{NBSP}: {LTBLUE}{VELOCITY}
 STR_VEHICLE_INFO_MAX_SPEED_TYPE                                 :{BLACK}Vitesse max.{NBSP}: {LTBLUE}{VELOCITY}{BLACK} - Type d'aéronef{NBSP}: {LTBLUE}{STRING}
@@ -4335,6 +4442,8 @@ STR_VEHICLE_INFO_WEIGHT_POWER_MAX_SPEED_MAX_TE                  :{BLACK}Poids{NB
 
 STR_VEHICLE_INFO_PROFIT_THIS_YEAR_LAST_YEAR                     :{BLACK}Profit cette année{NBSP}: {LTBLUE}{CURRENCY_LONG} (année précédente{NBSP}: {CURRENCY_LONG})
 STR_VEHICLE_INFO_PROFIT_THIS_YEAR_LAST_YEAR_MIN_PERFORMANCE     :{BLACK}Profit cette année{NBSP}: {LTBLUE}{CURRENCY_LONG} (année précédente{NBSP}: {CURRENCY_LONG}) {BLACK}Performance min.{NBSP}: {LTBLUE}{POWER_TO_WEIGHT}
+STR_VEHICLE_INFO_PROFIT_THIS_PERIOD_LAST_PERIOD                 :{BLACK}Profit cette période{NBSP}: {LTBLUE}{CURRENCY_LONG} (période précédente{NBSP}: {CURRENCY_LONG})
+STR_VEHICLE_INFO_PROFIT_THIS_PERIOD_LAST_PERIOD_MIN_PERFORMANCE :{BLACK}Profit cette période{NBSP}: {LTBLUE}{CURRENCY_LONG} (période précédente{NBSP}: {CURRENCY_LONG}) {BLACK}Performance min.{NBSP}: {LTBLUE}{POWER_TO_WEIGHT}
 STR_VEHICLE_INFO_RELIABILITY_BREAKDOWNS                         :{BLACK}Fiabilité{NBSP}: {LTBLUE}{COMMA}{NBSP}%{BLACK} − Pannes depuis le dernier entretien{NBSP}: {LTBLUE}{COMMA}
 
 STR_VEHICLE_INFO_BUILT_VALUE                                    :{LTBLUE}{ENGINE}{BLACK} − Construit en{NBSP}: {LTBLUE}{NUM}{BLACK} − Valeur{NBSP}: {LTBLUE}{CURRENCY_LONG}
@@ -4345,10 +4454,22 @@ STR_VEHICLE_INFO_CAPACITY_CAPACITY                              :{BLACK}Capacit�
 
 STR_VEHICLE_INFO_FEEDER_CARGO_VALUE                             :{BLACK}Crédits de transfert{NBSP}: {LTBLUE}{CURRENCY_LONG}
 
+STR_VEHICLE_DETAILS_SERVICING_INTERVAL_DAYS                     :{BLACK}Intervalle d'entretien{NBSP}: {LTBLUE}{COMMA}{NBSP}jours{BLACK}   {STRING}
+STR_VEHICLE_DETAILS_SERVICING_INTERVAL_MINUTES                  :{BLACK}Intervalle de service{NBSP}: {LTBLUE}{COMMA}{NBSP}minutes{BLACK}   {STRING}
+STR_VEHICLE_DETAILS_SERVICING_INTERVAL_PERCENT                  :{BLACK}Intervalle d'entretien{NBSP}: {LTBLUE}{COMMA}{NBSP}%{BLACK}   {STRING}
+STR_VEHICLE_DETAILS_LAST_SERVICE_DATE                           :Dernier entretien{NBSP}: {LTBLUE}{DATE_LONG}
 STR_VEHICLE_DETAILS_LAST_SERVICE_MINUTES_AGO                    :Dernier entretien{NBSP}: {LTBLUE}il y a {NUM} minutes
+STR_VEHICLE_DETAILS_INCREASE_SERVICING_INTERVAL_TOOLTIP_DAYS    :{BLACK}Augmenter l'intervalle d'entretien de 10 jours. Ctrl-clic pour l'augmenter de 5 jours
+STR_VEHICLE_DETAILS_INCREASE_SERVICING_INTERVAL_TOOLTIP_MINUTES :{BLACK}Augmenter l'intervalle d'entretien de 5 minutes. Ctrl-clic pour l'augmenter de 1 minute
+STR_VEHICLE_DETAILS_INCREASE_SERVICING_INTERVAL_TOOLTIP_PERCENT :{BLACK}Augmenter l'intervalle d'entretien de 10%. Ctrl-clic pour l'augmenter de 5%
+STR_VEHICLE_DETAILS_DECREASE_SERVICING_INTERVAL_TOOLTIP_DAYS    :{BLACK}Diminuer l'intervalle d'entretien de 10 jours. Ctrl-clic pour le diminuer de 5 jours
+STR_VEHICLE_DETAILS_DECREASE_SERVICING_INTERVAL_TOOLTIP_MINUTES :{BLACK}Diminuer l'intervalle d'entretien de 5 minutes. Ctrl-clic pour le diminuer de 1 minute
+STR_VEHICLE_DETAILS_DECREASE_SERVICING_INTERVAL_TOOLTIP_PERCENT :{BLACK}Diminuer l'intervalle d'entretien de 10%. Ctrl-clic pour le diminuer de 5%
 
 STR_SERVICE_INTERVAL_DROPDOWN_TOOLTIP                           :{BLACK}Modifier le type d’intervalle d'entretien
 STR_VEHICLE_DETAILS_DEFAULT                                     :Défaut
+STR_VEHICLE_DETAILS_DAYS                                        :Jours
+STR_VEHICLE_DETAILS_MINUTES                                     :Minutes
 STR_VEHICLE_DETAILS_PERCENT                                     :Pourcentage
 
 ###length VEHICLE_TYPES
@@ -5679,6 +5800,7 @@ STR_STATION_NAME                                                :{STATION}
 STR_TOWN_NAME                                                   :{TOWN}
 STR_VEHICLE_NAME                                                :{VEHICLE}
 STR_WAYPOINT_NAME                                               :{WAYPOINT}
+
 
 STR_JUST_CARGO                                                  :{CARGO_LONG}
 STR_JUST_RIGHT_ARROW                                            :{RIGHT_ARROW}

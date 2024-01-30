@@ -1288,6 +1288,7 @@ STR_CONFIG_SETTING_HORIZONTAL_POS_RIGHT                         :Derecha
 
 STR_CONFIG_SETTING_SECONDS_VALUE                                :{COMMA}{NBSP}segundo{P "" s}
 
+
 STR_CONFIG_SETTING_MAXIMUM_INITIAL_LOAN                         :Préstamo máximo inicial: {STRING}
 STR_CONFIG_SETTING_MAXIMUM_INITIAL_LOAN_HELPTEXT                :Cantidad máxima que una empresa puede recibir como préstamo (sin tener en cuenta la inflación)
 STR_CONFIG_SETTING_MAXIMUM_INITIAL_LOAN_VALUE                   :{CURRENCY_LONG}
@@ -4561,7 +4562,7 @@ STR_ORDER_TOOLTIP_UNLOAD                                        :{BLACK}Cambia e
 STR_ORDER_REFIT                                                 :{BLACK}Reformar
 STR_ORDER_REFIT_TOOLTIP                                         :{BLACK}Selecciona el tipo de carga a reformar en esta orden. Ctrl+clic para eliminar la orden de reforma
 STR_ORDER_REFIT_AUTO                                            :{BLACK}Reforma en la estación
-STR_ORDER_REFIT_AUTO_TOOLTIP                                    :{BLACK}Selecciona el tipo de carga a reformar en esta orden. Ctrl+clic elimina la orden de reforma. La reforma solamente puede relalizarse si el vehículo lo permite
+STR_ORDER_REFIT_AUTO_TOOLTIP                                    :{BLACK}Selecciona el tipo de carga a reformar en esta orden. Ctrl+clic elimina la orden de reforma. La reforma solamente puede realizarse si el vehículo lo permite
 STR_ORDER_DROP_REFIT_AUTO                                       :Carga fijada
 STR_ORDER_DROP_REFIT_AUTO_ANY                                   :Carga disponible
 
@@ -5796,6 +5797,7 @@ STR_STATION_NAME                                                :{STATION}
 STR_TOWN_NAME                                                   :{TOWN}
 STR_VEHICLE_NAME                                                :{VEHICLE}
 STR_WAYPOINT_NAME                                               :{WAYPOINT}
+
 
 STR_JUST_CARGO                                                  :{CARGO_LONG}
 STR_JUST_RIGHT_ARROW                                            :{RIGHT_ARROW}

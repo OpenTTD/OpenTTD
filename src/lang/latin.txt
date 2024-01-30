@@ -1304,6 +1304,7 @@ STR_CONFIG_SETTING_HORIZONTAL_POS_CENTER                        :Medio
 STR_CONFIG_SETTING_HORIZONTAL_POS_RIGHT                         :Dextro
 
 
+
 STR_CONFIG_SETTING_MAXIMUM_INITIAL_LOAN                         :Creditum maximum in initio: {STRING}
 STR_CONFIG_SETTING_MAXIMUM_INITIAL_LOAN_HELPTEXT                :Copia crediti maxima (sine inflatione)
 ###setting-zero-is-special
@@ -5406,6 +5407,7 @@ STR_STATION_NAME                                                :{STATION}
 STR_TOWN_NAME                                                   :{TOWN}
 STR_VEHICLE_NAME                                                :{VEHICLE}
 STR_WAYPOINT_NAME                                               :{WAYPOINT}
+
 
 STR_JUST_CARGO                                                  :{CARGO_LONG}
 STR_JUST_CHECKMARK                                              :{CHECKMARK}
