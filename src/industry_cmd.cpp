@@ -1132,7 +1132,24 @@ static void ChopLumberMillTrees(Industry *i)
 
 	TileIndex tile = i->location.tile;
 	if (CircularTileSearch(&tile, 40, SearchLumberMillTrees, nullptr)) { // 40x40 tiles  to search.
-		i->produced[0].waiting = ClampTo<uint16_t>(i->produced[0].waiting + 45); // Found a tree, add according value to waiting cargo.
+		i->produced[0].waiting = ClampTo<uint16_t>(i->produced[0].waiting + ScaleByCargoScale(45, false)); // Found a tree, add according value to waiting cargo.
+	}
+}
+
+/**
+ * Helper for ProduceIndustryGoods that scales and produces cargos.
+ * @param i The industry
+ * @param scale Should we scale production of this cargo directly?
+ */
+static void ProduceIndustryGoodsHelper(Industry *i, bool scale)
+{
+	for (auto &p : i->produced) {
+		if (!IsValidCargoID(p.cargo)) continue;
+
+		uint16_t amount = p.rate;
+		if (scale) amount = ScaleByCargoScale(amount, false);
+
+		p.waiting = ClampTo<uint16_t>(p.waiting + amount);
 	}
 }
 
@@ -1155,15 +1172,23 @@ static void ProduceIndustryGoods(Industry *i)
 
 	i->counter--;
 
-	/* produce some cargo */
+	/* If using an industry callback, scale the callback interval by cargo scale percentage. */
+	if (HasBit(indsp->callback_mask, CBM_IND_PRODUCTION_256_TICKS)) {
+		if (i->counter % ScaleByInverseCargoScale(Ticks::INDUSTRY_PRODUCE_TICKS, false) == 0) {
+			IndustryProductionCallback(i, 1);
+			ProduceIndustryGoodsHelper(i, false);
+		}
+	}
+
+	/*
+	 * All other production and special effects happen every 256 ticks, and cargo production is just scaled by the cargo scale percentage.
+	 * This keeps a slow trickle of production to avoid confusion at low scale factors when the industry seems to be doing nothing for a long period of time.
+	 */
 	if ((i->counter % Ticks::INDUSTRY_PRODUCE_TICKS) == 0) {
-		if (HasBit(indsp->callback_mask, CBM_IND_PRODUCTION_256_TICKS)) IndustryProductionCallback(i, 1);
+		/* Handle non-callback cargo production. */
+		if (!HasBit(indsp->callback_mask, CBM_IND_PRODUCTION_256_TICKS)) ProduceIndustryGoodsHelper(i, true);
 
 		IndustryBehaviour indbehav = indsp->behaviour;
-		for (auto &p : i->produced) {
-			if (!IsValidCargoID(p.cargo)) continue;
-			p.waiting = ClampTo<uint16_t>(p.waiting + p.rate);
-		}
 
 		if ((indbehav & INDUSTRYBEH_PLANT_FIELDS) != 0) {
 			uint16_t cb_res = CALLBACK_FAILED;
@@ -1825,7 +1850,7 @@ static void DoCreateNewIndustry(Industry *i, TileIndex tile, IndustryType type, 
 		}
 
 		for (auto &p : i->produced) {
-			p.history[LAST_MONTH].production += p.rate * 8;
+			p.history[LAST_MONTH].production += ScaleByCargoScale(p.rate * 8, false);
 		}
 	}
 
