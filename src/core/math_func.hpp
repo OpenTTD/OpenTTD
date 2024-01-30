@@ -352,4 +352,29 @@ constexpr int RoundDivSU(int a, uint b)
 
 uint32_t IntSqrt(uint32_t num);
 
+/**
+ * Scale a number by the required percentage.
+ *
+ * Calculation is performed in the type U of the num parameter.
+ * The result is clamped to the limits of type T if needed.
+ *
+ * @param num The number to scale.
+ * @param percentage The percentage value. 100% = don't scale.
+ * @return The number scaled by the percentage value.
+ */
+template <typename T, typename U>
+constexpr T ScaleByPercentage(U num, uint16_t percentage)
+{
+	U scaled;
+	/* We might not need to do anything. */
+	if (percentage == 100) {
+		scaled = num;
+	} else {
+		scaled = (num * static_cast<U>(percentage)) / 100;
+	}
+
+	/* Make sure the value fits resulting type T. */
+	return ClampTo<T>(scaled);
+}
+
 #endif /* MATH_FUNC_HPP */

@@ -1520,6 +1520,9 @@ STR_CONFIG_SETTING_MINUTES_PER_YEAR_VALUE                       :{NUM}
 ###setting-zero-is-special
 STR_CONFIG_SETTING_MINUTES_PER_YEAR_FROZEN                      :0 (calendar time frozen)
 
+STR_CONFIG_SETTING_PAYMENT_TIME_SCALE                           :Time scale for cargo payments: {STRING2}
+STR_CONFIG_SETTING_PAYMENT_TIME_SCALE_HELPTEXT                  :Adjusts the time scale factor (in percentage) in the cargo payment calculations. A lower value means faster deliveries, resulting in higher payments.
+
 STR_CONFIG_SETTING_AUTORENEW_VEHICLE                            :Autorenew vehicle when it gets old: {STRING2}
 STR_CONFIG_SETTING_AUTORENEW_VEHICLE_HELPTEXT                   :When enabled, a vehicle nearing its end of life gets automatically replaced when the renew conditions are fulfilled
 
