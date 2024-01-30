@@ -159,8 +159,10 @@ enum IniFileVersion : uint32_t {
 	IFV_GAME_TYPE,                                         ///< 2  PR#9515  Convert server_advertise to server_game_type.
 	IFV_LINKGRAPH_SECONDS,                                 ///< 3  PR#10610 Store linkgraph update intervals in seconds instead of days.
 	IFV_NETWORK_PRIVATE_SETTINGS,                          ///< 4  PR#10762 Move no_http_content_downloads / use_relay_service to private settings.
+
 	IFV_AUTOSAVE_RENAME,                                   ///< 5  PR#11143 Renamed values of autosave to be in minutes.
 	IFV_RIGHT_CLICK_CLOSE,                                 ///< 6  PR#10204 Add alternative right click to close windows setting.
+	IFV_REMOVE_GENERATION_SEED,                            ///< 7  PR#11927 Remove "generation_seed" from configuration.
 
 	IFV_MAX_VERSION,       ///< Highest possible ini-file version.
 };
@@ -1480,6 +1482,13 @@ void SaveToConfig()
 		/* Remove all settings from the generic ini that are now in the secrets ini. */
 		for (auto &table : SecretSettingTables()) {
 			RemoveEntriesFromIni(generic_ini, table);
+		}
+	}
+
+	if (generic_version < IFV_REMOVE_GENERATION_SEED) {
+		IniGroup *game_creation = generic_ini.GetGroup("game_creation");
+		if (game_creation != nullptr) {
+			game_creation->RemoveItem("generation_seed");
 		}
 	}
 
