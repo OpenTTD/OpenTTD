@@ -97,7 +97,7 @@ inline constexpr auto MakeCommandsFromTraits(std::integer_sequence<T, i...>) noe
 static constexpr auto _command_proc_table = MakeCommandsFromTraits(std::make_integer_sequence<std::underlying_type_t<Commands>, CMD_END>{});
 
 
-/*!
+/**
  * This function range-checks a cmd.
  *
  * @param cmd The integer value of a command
@@ -108,7 +108,7 @@ bool IsValidCommand(Commands cmd)
 	return cmd < _command_proc_table.size();
 }
 
-/*!
+/**
  * This function mask the parameter with CMD_ID_MASK and returns
  * the flags which belongs to the given command.
  *
@@ -122,7 +122,7 @@ CommandFlags GetCommandFlags(Commands cmd)
 	return _command_proc_table[cmd].flags;
 }
 
-/*!
+/**
  * This function mask the parameter with CMD_ID_MASK and returns
  * the name which belongs to the given command.
  *
