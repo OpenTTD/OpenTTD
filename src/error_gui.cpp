@@ -223,26 +223,20 @@ public:
 			return pt;
 		}
 
-		/* Find the free screen space between the main toolbar at the top, and the statusbar at the bottom.
-		 * Add a fixed distance 20 to make it less cluttered.
-		 */
-		int scr_top = GetMainViewTop() + 20;
-		int scr_bot = GetMainViewBottom() - 20;
+		constexpr int distance_to_cursor = 200;
 
-		Point pt = RemapCoords(this->position.x, this->position.y, GetSlopePixelZOutsideMap(this->position.x, this->position.y));
-		const Viewport *vp = GetMainWindow()->viewport;
-		if (this->face == INVALID_COMPANY) {
-			/* move x pos to opposite corner */
-			pt.x = UnScaleByZoom(pt.x - vp->virtual_left, vp->zoom) + vp->left;
-			pt.x = (pt.x < (_screen.width >> 1)) ? _screen.width - sm_width - 20 : 20; // Stay 20 pixels away from the edge of the screen.
+		/* Position the error window just above the cursor. This makes the
+		 * error window clearly visible, without being in the way of what
+		 * the user is doing. */
+		Point pt;
+		pt.x = _cursor.pos.x - sm_width / 2;
+		pt.y = _cursor.pos.y - (distance_to_cursor + sm_height);
 
-			/* move y pos to opposite corner */
-			pt.y = UnScaleByZoom(pt.y - vp->virtual_top, vp->zoom) + vp->top;
-			pt.y = (pt.y < (_screen.height >> 1)) ? scr_bot - sm_height : scr_top;
-		} else {
-			pt.x = std::min(std::max(UnScaleByZoom(pt.x - vp->virtual_left, vp->zoom) + vp->left - (sm_width / 2), 0), _screen.width - sm_width);
-			pt.y = std::min(std::max(UnScaleByZoom(pt.y - vp->virtual_top,  vp->zoom) + vp->top  - (sm_height / 2), scr_top), scr_bot - sm_height);
+		if (pt.y < GetMainViewTop()) {
+			/* Window didn't fit above cursor, so place it below. */
+			pt.y = _cursor.pos.y + distance_to_cursor;
 		}
+
 		return pt;
 	}
 
