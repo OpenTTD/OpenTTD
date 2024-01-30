@@ -14,7 +14,7 @@
 #include "script_object.hpp"
 
 /** Maximum number of operations allowed for valuating a list. */
-static const int MAX_VALUATE_OPS = 500000;
+static const int MAX_VALUATE_OPS = 1000000;
 
 class ScriptListSorter;
 
