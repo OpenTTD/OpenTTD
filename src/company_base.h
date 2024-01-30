@@ -18,6 +18,8 @@
 #include "settings_type.h"
 #include "group.h"
 
+static const Money COMPANY_MAX_LOAN_DEFAULT = INT64_MIN;
+
 /** Statistics about the economy. */
 struct CompanyEconomyEntry {
 	Money income;               ///< The amount of income.
@@ -50,7 +52,6 @@ struct CompanyInfrastructure {
 typedef Pool<Company, CompanyID, 1, MAX_COMPANIES> CompanyPool;
 extern CompanyPool _company_pool;
 
-
 /** Statically loadable part of Company pool item */
 struct CompanyProperties {
 	uint32_t name_2;                   ///< Parameter of #name_1.
@@ -66,6 +67,7 @@ struct CompanyProperties {
 	Money money;                     ///< Money owned by the company.
 	byte money_fraction;             ///< Fraction of money of the company, too small to represent in #money.
 	Money current_loan;              ///< Amount of money borrowed from the bank.
+	Money max_loan;                  ///< Max allowed amount of the loan or COMPANY_MAX_LOAN_DEFAULT.
 
 	Colours colour;                  ///< Company colour.
 
@@ -105,8 +107,8 @@ struct CompanyProperties {
 	// TODO: Change some of these member variables to use relevant INVALID_xxx constants
 	CompanyProperties()
 		: name_2(0), name_1(0), president_name_1(0), president_name_2(0),
-		  face(0), money(0), money_fraction(0), current_loan(0), colour(COLOUR_BEGIN), block_preview(0),
-		  location_of_HQ(0), last_build_coordinate(0), inaugurated_year(0),
+		  face(0), money(0), money_fraction(0), current_loan(0), max_loan(COMPANY_MAX_LOAN_DEFAULT),
+		  colour(COLOUR_BEGIN), block_preview(0), location_of_HQ(0), last_build_coordinate(0), inaugurated_year(0),
 		  months_of_bankruptcy(0), bankrupt_asked(0), bankrupt_timeout(0), bankrupt_value(0),
 		  terraform_limit(0), clear_limit(0), tree_limit(0), build_object_limit(0), is_ai(false), engine_renew_list(nullptr) {}
 };
@@ -125,6 +127,8 @@ struct Company : CompanyProperties, CompanyPool::PoolItem<&_company_pool> {
 	GroupStatistics group_default[VEH_COMPANY_END];  ///< NOSAVE: Statistics for the DEFAULT_GROUP group.
 
 	CompanyInfrastructure infrastructure; ///< NOSAVE: Counts of company owned infrastructure.
+
+	Money GetMaxLoan() const;
 
 	/**
 	 * Is this company a valid company, controlled by the computer (a NoAI program)?

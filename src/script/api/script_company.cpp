@@ -192,7 +192,32 @@
 
 /* static */ Money ScriptCompany::GetMaxLoanAmount()
 {
-	return _economy.max_loan;
+	if (ScriptCompanyMode::IsDeity()) return _economy.max_loan;
+
+	ScriptCompany::CompanyID company = ResolveCompanyID(COMPANY_SELF);
+	if (company == COMPANY_INVALID) return -1;
+
+	return ::Company::Get(company)->GetMaxLoan();
+}
+
+/* static */ bool ScriptCompany::SetMaxLoanAmountForCompany(CompanyID company, Money amount)
+{
+	EnforceDeityMode(false);
+	EnforcePrecondition(false, amount >= 0 && amount <= (Money)MAX_LOAN_LIMIT);
+
+	company = ResolveCompanyID(company);
+	EnforcePrecondition(false, company != COMPANY_INVALID);
+	return ScriptObject::Command<CMD_SET_COMPANY_MAX_LOAN>::Do((::CompanyID)company, amount);
+}
+
+/* static */ bool ScriptCompany::ResetMaxLoanAmountForCompany(CompanyID company)
+{
+	EnforceDeityMode(false);
+
+	company = ResolveCompanyID(company);
+	EnforcePrecondition(false, company != COMPANY_INVALID);
+
+	return ScriptObject::Command<CMD_SET_COMPANY_MAX_LOAN>::Do((::CompanyID)company, COMPANY_MAX_LOAN_DEFAULT);
 }
 
 /* static */ Money ScriptCompany::GetLoanInterval()

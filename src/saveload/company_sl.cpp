@@ -458,6 +458,7 @@ static const SaveLoad _company_desc[] = {
 
 	SLE_CONDVAR(CompanyProperties, current_loan,          SLE_VAR_I64 | SLE_FILE_I32,  SL_MIN_VERSION, SLV_65),
 	SLE_CONDVAR(CompanyProperties, current_loan,          SLE_INT64,                  SLV_65, SL_MAX_VERSION),
+	SLE_CONDVAR(CompanyProperties, max_loan,              SLE_INT64, SLV_MAX_LOAN_FOR_COMPANY, SL_MAX_VERSION),
 
 	    SLE_VAR(CompanyProperties, colour,                SLE_UINT8),
 	    SLE_VAR(CompanyProperties, money_fraction,        SLE_UINT8),

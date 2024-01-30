@@ -374,9 +374,11 @@ struct CompanyFinancesWindow : Window {
 				SetDParam(0, _settings_game.difficulty.initial_interest);
 				break;
 
-			case WID_CF_MAXLOAN_VALUE:
-				SetDParam(0, _economy.max_loan);
+			case WID_CF_MAXLOAN_VALUE: {
+				const Company *c = Company::Get((CompanyID)this->window_number);
+				SetDParam(0, c->GetMaxLoan());
 				break;
+			}
 
 			case WID_CF_INCREASE_LOAN:
 			case WID_CF_REPAY_LOAN:
@@ -474,7 +476,7 @@ struct CompanyFinancesWindow : Window {
 			}
 
 			const Company *c = Company::Get(company);
-			this->SetWidgetDisabledState(WID_CF_INCREASE_LOAN, c->current_loan == _economy.max_loan); // Borrow button only shows when there is any more money to loan.
+			this->SetWidgetDisabledState(WID_CF_INCREASE_LOAN, c->current_loan >= c->GetMaxLoan()); // Borrow button only shows when there is any more money to loan.
 			this->SetWidgetDisabledState(WID_CF_REPAY_LOAN, company != _local_company || c->current_loan == 0); // Repay button only shows when there is any more money to repay.
 		}
 

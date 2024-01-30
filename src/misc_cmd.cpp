@@ -39,9 +39,9 @@
 CommandCost CmdIncreaseLoan(DoCommandFlag flags, LoanCommand cmd, Money amount)
 {
 	Company *c = Company::Get(_current_company);
-
-	if (c->current_loan >= _economy.max_loan) {
-		SetDParam(0, _economy.max_loan);
+	Money max_loan = c->GetMaxLoan();
+	if (c->current_loan >= max_loan) {
+		SetDParam(0, max_loan);
 		return_cmd_error(STR_ERROR_MAXIMUM_PERMITTED_LOAN);
 	}
 
@@ -52,11 +52,11 @@ CommandCost CmdIncreaseLoan(DoCommandFlag flags, LoanCommand cmd, Money amount)
 			loan = LOAN_INTERVAL;
 			break;
 		case LoanCommand::Max: // Take a loan as big as possible
-			loan = _economy.max_loan - c->current_loan;
+			loan = max_loan - c->current_loan;
 			break;
 		case LoanCommand::Amount: // Take the given amount of loan
 			loan = amount;
-			if (loan < LOAN_INTERVAL || c->current_loan + loan > _economy.max_loan || loan % LOAN_INTERVAL != 0) return CMD_ERROR;
+			if (loan < LOAN_INTERVAL || c->current_loan + loan > max_loan || loan % LOAN_INTERVAL != 0) return CMD_ERROR;
 			break;
 	}
 
@@ -113,6 +113,32 @@ CommandCost CmdDecreaseLoan(DoCommandFlag flags, LoanCommand cmd, Money amount)
 	if (flags & DC_EXEC) {
 		c->money        -= loan;
 		c->current_loan -= loan;
+		InvalidateCompanyWindows(c);
+	}
+	return CommandCost();
+}
+
+/**
+ * Sets the max loan amount of your company. Does not respect the global loan setting.
+ * @param company the company ID.
+ * @param amount the new max loan amount, will be rounded down to the multitude of LOAN_INTERVAL. If set to COMPANY_MAX_LOAN_DEFAULT reset the max loan to default(global) value.
+ * @return zero cost or an error
+ */
+CommandCost CmdSetCompanyMaxLoan(DoCommandFlag flags, CompanyID company, Money amount)
+{
+	if (_current_company != OWNER_DEITY) return CMD_ERROR;
+	if (amount != COMPANY_MAX_LOAN_DEFAULT) {
+		if (amount < 0 || amount > (Money)MAX_LOAN_LIMIT) return CMD_ERROR;
+	}
+
+	Company *c = Company::GetIfValid(company);
+	if (c == nullptr) return CMD_ERROR;
+
+	if (flags & DC_EXEC) {
+		/* Round the amount down to a multiple of LOAN_INTERVAL. */
+		if (amount != COMPANY_MAX_LOAN_DEFAULT) amount -= (int64_t)amount % LOAN_INTERVAL;
+
+		c->max_loan = amount;
 		InvalidateCompanyWindows(c);
 	}
 	return CommandCost();
