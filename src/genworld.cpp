@@ -91,11 +91,9 @@ static void _GenerateWorld()
 	try {
 		_generating_world = true;
 		if (_network_dedicated) Debug(net, 3, "Generating map, please wait...");
-		/* Set the Random() seed to generation_seed so we produce the same map with the same seed */
-		_random.SetSeed(_settings_game.game_creation.generation_seed);
+
 		SetGeneratingWorldProgress(GWP_MAP_INIT, 2);
 		SetObjectToPlace(SPR_CURSOR_ZZZ, PAL_NONE, HT_NONE, WC_MAIN_WINDOW, 0);
-		ScriptObject::InitializeRandomizers();
 
 		BasePersistentStorageArray::SwitchMode(PSM_ENTER_GAMELOOP);
 
@@ -289,6 +287,10 @@ void GenerateWorld(GenWorldMode mode, uint size_x, uint size_y, bool reset_setti
 	SetLocalCompany(COMPANY_SPECTATOR);
 
 	InitializeGame(_gw.size_x, _gw.size_y, true, reset_settings);
+
+	SavedRandomSeeds saved_seeds;
+	SaveRandomSeeds(&saved_seeds);
+
 	PrepareGenerateWorldProgress();
 
 	if (_settings_game.construction.map_height_limit == 0) {
@@ -306,8 +308,6 @@ void GenerateWorld(GenWorldMode mode, uint size_x, uint size_y, bool reset_setti
 
 		_settings_game.construction.map_height_limit = std::max(MAP_HEIGHT_LIMIT_AUTO_MINIMUM, std::min(MAX_MAP_HEIGHT_LIMIT, estimated_height + MAP_HEIGHT_LIMIT_AUTO_CEILING_ROOM));
 	}
-
-	if (_settings_game.game_creation.generation_seed == GENERATE_NEW_SEED) _settings_game.game_creation.generation_seed = InteractiveRandom();
 
 	/* Load the right landscape stuff, and the NewGRFs! */
 	GfxLoadSprites();
@@ -328,6 +328,10 @@ void GenerateWorld(GenWorldMode mode, uint size_x, uint size_y, bool reset_setti
 
 	/* Centre the view on the map */
 	ScrollMainWindowToTile(TileXY(Map::SizeX() / 2, Map::SizeY() / 2), true);
+
+	/* Initialization should use Random() as that could affect the ability to recreate the same map with the
+	 * same settings. (This is not guaranteed between different versions though.) */
+	assert(CheckRandomSeeds(saved_seeds));
 
 	_GenerateWorld();
 }

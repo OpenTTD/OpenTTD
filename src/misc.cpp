@@ -8,6 +8,10 @@
 /** @file misc.cpp Misc functions that shouldn't be here. */
 
 #include "stdafx.h"
+#include "core/random_func.hpp"
+#include "ai/ai_config.hpp"
+#include "game/game_config.hpp"
+#include "genworld.h"
 #include "landscape.h"
 #include "news_func.h"
 #include "ai/ai.hpp"
@@ -173,4 +177,16 @@ void InitializeGame(uint size_x, uint size_y, bool reset_date, bool reset_settin
 	_gamelog.Mode();
 	_gamelog.GRFAddList(_grfconfig);
 	_gamelog.StopAction();
+
+	/* Set the Random() seed to generation_seed so we produce the same map with the same seed. */
+	if (_settings_game.game_creation.generation_seed == GENERATE_NEW_SEED) _settings_game.game_creation.generation_seed = InteractiveRandom();
+
+	_random.SetSeed(_settings_game.game_creation.generation_seed);
+	ScriptObject::InitializeRandomizers();
+
+	/* Set random deviation for scripts. */
+	for (auto &ai_config : _settings_game.ai_config) {
+		if (ai_config != nullptr) ai_config->AddRandomDeviation();
+	}
+	if (_settings_game.game_config != nullptr) _settings_game.game_config->AddRandomDeviation();
 }

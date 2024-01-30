@@ -46,6 +46,19 @@ inline void SaveRandomSeeds(SavedRandomSeeds *storage)
 }
 
 /**
+ * Check if random seeds have been changed.
+ * @param saved_seeds Saved random seeds.
+ * @returns true if the saved seeds match the current random seeds.
+ */
+inline bool CheckRandomSeeds(const SavedRandomSeeds &saved_seeds)
+{
+	return (saved_seeds.random.state[0] == _random.state[0])
+		&& (saved_seeds.random.state[1] == _random.state[1])
+		&& (saved_seeds.interactive_random.state[0] == _interactive_random.state[0])
+		&& (saved_seeds.interactive_random.state[1] == _interactive_random.state[1]);
+}
+
+/**
  * Restores previously saved seeds
  * @param storage Storage where SaveRandomSeeds() stored th seeds
  */

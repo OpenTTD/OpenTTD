@@ -57,9 +57,6 @@ ScriptConfig::ScriptConfig(const ScriptConfig *config)
 	for (const auto &item : config->settings) {
 		this->settings[item.first] = item.second;
 	}
-
-	/* Virtual functions get called statically in constructors, so make it explicit to remove any confusion. */
-	this->ScriptConfig::AddRandomDeviation();
 }
 
 ScriptConfig::~ScriptConfig()
