@@ -34,7 +34,6 @@ execute_process(COMMAND ${OPENTTD_EXECUTABLE}
                         -mnull
                         -vnull:ticks=30000
                         -d script=2
-                        -d misc=9
                         -Q
                 OUTPUT_VARIABLE REGRESSION_OUTPUT
                 ERROR_VARIABLE REGRESSION_RESULT
@@ -58,10 +57,13 @@ string(REPLACE "0x0x0" "0x00000000" REGRESSION_RESULT "${REGRESSION_RESULT}")
 string(REPLACE "\\" "/" REGRESSION_RESULT "${REGRESSION_RESULT}")
 
 # Remove timestamps if any
-string(REGEX REPLACE "\[[0-9-]+ [0-9:]+\] " "" REGRESSION_RESULT "${REGRESSION_RESULT}")
+string(REGEX REPLACE "\\\[[0-9-]+ [0-9:]+\\\] " "" REGRESSION_RESULT "${REGRESSION_RESULT}")
+
+# Remove log level
+string(REGEX REPLACE "\\\[script:[0-9]\\\]" "" REGRESSION_RESULT "${REGRESSION_RESULT}")
 
 # Convert the output to a format that is expected (and more readable) by result.txt
-string(REPLACE "\ndbg: [script]" "\n" REGRESSION_RESULT "${REGRESSION_RESULT}")
+string(REPLACE "\ndbg: " "\n" REGRESSION_RESULT "${REGRESSION_RESULT}")
 string(REPLACE "\n " "\nERROR: " REGRESSION_RESULT "${REGRESSION_RESULT}")
 string(REPLACE "\nERROR: [1] " "\n" REGRESSION_RESULT "${REGRESSION_RESULT}")
 string(REPLACE "\n[P] " "\n" REGRESSION_RESULT "${REGRESSION_RESULT}")
