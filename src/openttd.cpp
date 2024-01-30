@@ -430,7 +430,7 @@ struct AfterNewGRFScan : NewGRFScanCallback {
 		SetEffectVolume(_settings_client.music.effect_vol);
 
 		if (startyear != CalendarTime::INVALID_YEAR) IConsoleSetSetting("game_creation.starting_year", startyear.base());
-		if (generation_seed != GENERATE_NEW_SEED) _settings_newgame.game_creation.generation_seed = generation_seed;
+		_settings_newgame.game_creation.generation_seed = generation_seed;
 
 		if (!dedicated_host.empty()) {
 			_network_bind_list.clear();
