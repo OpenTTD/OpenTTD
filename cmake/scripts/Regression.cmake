@@ -98,7 +98,7 @@ foreach(RESULT IN LISTS REGRESSION_RESULT)
 
     if(NOT RESULT STREQUAL EXPECTED)
         message("${ARGC}: - ${EXPECTED}")
-        message("${ARGC}: + ${RESULT}'")
+        message("${ARGC}: + ${RESULT}")
         set(ERROR YES)
     endif()
 endforeach()
