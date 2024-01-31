@@ -1071,7 +1071,7 @@ struct RefitWindow : public Window {
 				Vehicle *v = Vehicle::Get(this->window_number);
 				this->selected_vehicle = v->index;
 				this->num_vehicles = UINT8_MAX;
-				FALLTHROUGH;
+				[[fallthrough]];
 			}
 
 			case 2: { // The vehicle selection has changed; rebuild the entire list.
@@ -1097,7 +1097,7 @@ struct RefitWindow : public Window {
 					this->information_width = max_width;
 					this->ReInit();
 				}
-				FALLTHROUGH;
+				[[fallthrough]];
 			}
 
 			case 1: // A new cargo has been selected.
@@ -1158,7 +1158,7 @@ struct RefitWindow : public Window {
 					if (_ctrl_pressed) this->num_vehicles = UINT8_MAX;
 					break;
 				}
-				FALLTHROUGH;
+				[[fallthrough]];
 			}
 
 			default:
@@ -1193,7 +1193,7 @@ struct RefitWindow : public Window {
 				this->InvalidateData(1);
 
 				if (click_count == 1) break;
-				FALLTHROUGH;
+				[[fallthrough]];
 			}
 
 			case WID_VR_REFIT: // refit button
@@ -3166,7 +3166,7 @@ public:
 						str = STR_VEHICLE_STATUS_LEAVING;
 						break;
 					}
-					FALLTHROUGH;
+					[[fallthrough]];
 				default:
 					if (v->GetNumManualOrders() == 0) {
 						str = STR_VEHICLE_STATUS_NO_ORDERS_VEL;

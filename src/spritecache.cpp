@@ -913,7 +913,7 @@ static void *HandleInvalidSpriteRequest(SpriteID sprite, SpriteType requested, S
 	switch (requested) {
 		case SpriteType::Normal:
 			if (sprite == SPR_IMG_QUERY) UserError("Uhm, would you be so kind not to load a NewGRF that makes the 'query' sprite a non-normal sprite?");
-			FALLTHROUGH;
+			[[fallthrough]];
 		case SpriteType::Font:
 			return GetRawSprite(SPR_IMG_QUERY, SpriteType::Normal, allocator);
 		case SpriteType::Recolour:

@@ -1025,11 +1025,11 @@ struct QueryStringWindow : public Window
 		switch (widget) {
 			case WID_QS_DEFAULT:
 				this->editbox.text.DeleteAll();
-				FALLTHROUGH;
+				[[fallthrough]];
 
 			case WID_QS_OK:
 				this->OnOk();
-				FALLTHROUGH;
+				[[fallthrough]];
 
 			case WID_QS_CANCEL:
 				this->Close();
@@ -1181,7 +1181,7 @@ struct QueryWindow : public Window {
 					this->proc(this->parent, true);
 					this->proc = nullptr;
 				}
-				FALLTHROUGH;
+				[[fallthrough]];
 
 			case WKC_ESC:
 				this->Close();

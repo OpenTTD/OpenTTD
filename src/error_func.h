@@ -12,8 +12,8 @@
 
 #include "3rdparty/fmt/format.h"
 
-void NORETURN UserErrorI(const std::string &str);
-void NORETURN FatalErrorI(const std::string &str);
+[[noreturn]] void UserErrorI(const std::string &str);
+[[noreturn]] void FatalErrorI(const std::string &str);
 #define UserError(format_string, ...) UserErrorI(fmt::format(FMT_STRING(format_string), ## __VA_ARGS__))
 #define FatalError(format_string, ...) FatalErrorI(fmt::format(FMT_STRING(format_string), ## __VA_ARGS__))
 

@@ -424,7 +424,7 @@ LRESULT CALLBACK WndProcGdi(HWND hwnd, UINT msg, WPARAM wParam, LPARAM lParam)
 
 		case WM_PALETTECHANGED:
 			if ((HWND)wParam == hwnd) return 0;
-			FALLTHROUGH;
+			[[fallthrough]];
 
 		case WM_QUERYNEWPALETTE:
 			video_driver->PaletteChanged(hwnd);

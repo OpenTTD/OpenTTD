@@ -886,14 +886,14 @@ public:
 			switch (suffix.display) {
 				case CSD_CARGO_AMOUNT_TEXT:
 					SetDParamStr(3, suffix.text);
-					FALLTHROUGH;
+					[[fallthrough]];
 				case CSD_CARGO_AMOUNT:
 					str = stockpiling ? STR_INDUSTRY_VIEW_ACCEPT_CARGO_AMOUNT : STR_INDUSTRY_VIEW_ACCEPT_CARGO;
 					break;
 
 				case CSD_CARGO_TEXT:
 					SetDParamStr(3, suffix.text);
-					FALLTHROUGH;
+					[[fallthrough]];
 				case CSD_CARGO:
 					str = STR_INDUSTRY_VIEW_ACCEPT_CARGO;
 					break;

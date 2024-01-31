@@ -71,7 +71,7 @@ static const std::map<DWORD, std::string> exception_code_to_name{
  *
  * @param exit_code The exit code to return.
  */
-static void NORETURN ImmediateExitProcess(uint exit_code)
+[[noreturn]] static void ImmediateExitProcess(uint exit_code)
 {
 	/* TerminateProcess may fail in some special edge cases; fall back to ExitProcess in this case. */
 	TerminateProcess(GetCurrentProcess(), exit_code);

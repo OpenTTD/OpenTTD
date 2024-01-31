@@ -84,37 +84,13 @@
 
 /* Stuff for GCC */
 #if defined(__GNUC__) || (defined(__clang__) && !defined(_MSC_VER))
-#	define NORETURN __attribute__ ((noreturn))
 #	define CDECL
-#	if __GNUC__ > 4 || (__GNUC__ == 4 && __GNUC_MINOR__ >= 7)
-#		define FINAL final
-#	else
-#		define FINAL
-#	endif
-
-	/* Use fallthrough attribute where supported */
-#	if __GNUC__ >= 7
-#		if __cplusplus > 201402L // C++17
-#			define FALLTHROUGH [[fallthrough]]
-#		else
-#			define FALLTHROUGH __attribute__((fallthrough))
-#		endif
-#	else
-#		define FALLTHROUGH
-#	endif
 #endif /* __GNUC__ || __clang__ */
 
 #if __GNUC__ > 11 || (__GNUC__ == 11 && __GNUC_MINOR__ >= 1)
 #      define NOACCESS(args) __attribute__ ((access (none, args)))
 #else
 #      define NOACCESS(args)
-#endif
-
-/* [[nodiscard]] on constructors doesn't work in GCC older than 10.1. */
-#if __GNUC__ < 10 || (__GNUC__ == 10 && __GNUC_MINOR__ < 1)
-#      define NODISCARD
-#else
-#      define NODISCARD [[nodiscard]]
 #endif
 
 #if defined(_WIN32)
@@ -154,20 +130,11 @@
 #		include <intrin.h>
 #	endif
 
-#	define NORETURN __declspec(noreturn)
 #	if (_MSC_VER < 1900)
 #		define inline __forceinline
 #	endif
 
 #	define CDECL _cdecl
-#	define FINAL final
-
-	/* fallthrough attribute, VS 2017 */
-#	if (_MSC_VER >= 1910) || defined(__clang__)
-#		define FALLTHROUGH [[fallthrough]]
-#	else
-#		define FALLTHROUGH
-#	endif
 
 #	if defined(_WIN32) && !defined(_WIN64)
 #		if !defined(_W64)
@@ -373,26 +340,22 @@ static_assert(SIZE_MAX >= UINT32_MAX);
 #endif /* __APPLE__ */
 
 #if defined(__GNUC__) || defined(__clang__)
-#	define likely(x)     __builtin_expect(!!(x), 1)
-#	define unlikely(x)   __builtin_expect(!!(x), 0)
 #	define GNU_TARGET(x) [[gnu::target(x)]]
 #else
-#	define likely(x)     (x)
-#	define unlikely(x)   (x)
 #	define GNU_TARGET(x)
 #endif /* __GNUC__ || __clang__ */
 
 /* For the FMT library we only want to use the headers, not link to some library. */
 #define FMT_HEADER_ONLY
 
-void NORETURN NotReachedError(int line, const char *file);
-void NORETURN AssertFailedError(int line, const char *file, const char *expression);
+[[noreturn]] void NotReachedError(int line, const char *file);
+[[noreturn]] void AssertFailedError(int line, const char *file, const char *expression);
 #define NOT_REACHED() NotReachedError(__LINE__, __FILE__)
 
 /* For non-debug builds with assertions enabled use the special assertion handler. */
 #if defined(NDEBUG) && defined(WITH_ASSERT)
 #	undef assert
-#	define assert(expression) do { if (unlikely(!(expression))) AssertFailedError(__LINE__, __FILE__, #expression); } while (false)
+#	define assert(expression) do { if (!(expression)) [[unlikely]] AssertFailedError(__LINE__, __FILE__, #expression); } while (false)
 #endif
 
 /* Define JSON_ASSERT, which is used by nlohmann-json. Otherwise the header-file

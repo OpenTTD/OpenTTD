@@ -2641,7 +2641,7 @@ void NWidgetLeaf::SetupSmallestSize(Window *w)
 			size.width = std::max(size.width, ScaleGUITrad(30) + sprite_size.width);
 			size.height = std::max(sprite_size.height, GetStringBoundingBox("_").height + WidgetDimensions::scaled.framerect.Vertical());
 		}
-		FALLTHROUGH;
+		[[fallthrough]];
 		case WWT_PUSHBTN: {
 			padding = {WidgetDimensions::scaled.frametext.Horizontal(), WidgetDimensions::scaled.framerect.Vertical()};
 			break;
@@ -2953,7 +2953,7 @@ static const NWidgetPart *MakeNWidget(const NWidgetPart *nwid_begin, const NWidg
 
 			case WPT_RESIZE: {
 				NWidgetResizeBase *nwrb = dynamic_cast<NWidgetResizeBase *>(dest.get());
-				if (unlikely(nwrb == nullptr)) throw std::runtime_error("WPT_RESIZE requires NWidgetResizeBase");
+				if (nwrb == nullptr) [[unlikely]] throw std::runtime_error("WPT_RESIZE requires NWidgetResizeBase");
 				assert(nwid_begin->u.xy.x >= 0 && nwid_begin->u.xy.y >= 0);
 				nwrb->SetResize(nwid_begin->u.xy.x, nwid_begin->u.xy.y);
 				break;
@@ -2961,7 +2961,7 @@ static const NWidgetPart *MakeNWidget(const NWidgetPart *nwid_begin, const NWidg
 
 			case WPT_MINSIZE: {
 				NWidgetResizeBase *nwrb = dynamic_cast<NWidgetResizeBase *>(dest.get());
-				if (unlikely(nwrb == nullptr)) throw std::runtime_error("WPT_MINSIZE requires NWidgetResizeBase");
+				if (nwrb == nullptr) [[unlikely]] throw std::runtime_error("WPT_MINSIZE requires NWidgetResizeBase");
 				assert(nwid_begin->u.xy.x >= 0 && nwid_begin->u.xy.y >= 0);
 				nwrb->SetMinimalSize(nwid_begin->u.xy.x, nwid_begin->u.xy.y);
 				break;
@@ -2969,7 +2969,7 @@ static const NWidgetPart *MakeNWidget(const NWidgetPart *nwid_begin, const NWidg
 
 			case WPT_MINTEXTLINES: {
 				NWidgetResizeBase *nwrb = dynamic_cast<NWidgetResizeBase *>(dest.get());
-				if (unlikely(nwrb == nullptr)) throw std::runtime_error("WPT_MINTEXTLINES requires NWidgetResizeBase");
+				if (nwrb == nullptr) [[unlikely]] throw std::runtime_error("WPT_MINTEXTLINES requires NWidgetResizeBase");
 				assert(nwid_begin->u.text_lines.size >= FS_BEGIN && nwid_begin->u.text_lines.size < FS_END);
 				nwrb->SetMinimalTextLines(nwid_begin->u.text_lines.lines, nwid_begin->u.text_lines.spacing, nwid_begin->u.text_lines.size);
 				break;
@@ -2977,35 +2977,35 @@ static const NWidgetPart *MakeNWidget(const NWidgetPart *nwid_begin, const NWidg
 
 			case WPT_TEXTSTYLE: {
 				NWidgetCore *nwc = dynamic_cast<NWidgetCore *>(dest.get());
-				if (unlikely(nwc == nullptr)) throw std::runtime_error("WPT_TEXTSTYLE requires NWidgetCore");
+				if (nwc == nullptr) [[unlikely]] throw std::runtime_error("WPT_TEXTSTYLE requires NWidgetCore");
 				nwc->SetTextStyle(nwid_begin->u.text_style.colour, nwid_begin->u.text_style.size);
 				break;
 			}
 
 			case WPT_ALIGNMENT: {
 				NWidgetCore *nwc = dynamic_cast<NWidgetCore *>(dest.get());
-				if (unlikely(nwc == nullptr)) throw std::runtime_error("WPT_ALIGNMENT requires NWidgetCore");
+				if (nwc == nullptr) [[unlikely]] throw std::runtime_error("WPT_ALIGNMENT requires NWidgetCore");
 				nwc->SetAlignment(nwid_begin->u.align.align);
 				break;
 			}
 
 			case WPT_FILL: {
 				NWidgetResizeBase *nwrb = dynamic_cast<NWidgetResizeBase *>(dest.get());
-				if (unlikely(nwrb == nullptr)) throw std::runtime_error("WPT_FILL requires NWidgetResizeBase");
+				if (nwrb == nullptr) [[unlikely]] throw std::runtime_error("WPT_FILL requires NWidgetResizeBase");
 				nwrb->SetFill(nwid_begin->u.xy.x, nwid_begin->u.xy.y);
 				break;
 			}
 
 			case WPT_DATATIP: {
 				NWidgetCore *nwc = dynamic_cast<NWidgetCore *>(dest.get());
-				if (unlikely(nwc == nullptr)) throw std::runtime_error("WPT_DATATIP requires NWidgetCore");
+				if (nwc == nullptr) [[unlikely]] throw std::runtime_error("WPT_DATATIP requires NWidgetCore");
 				nwc->widget_data = nwid_begin->u.data_tip.data;
 				nwc->tool_tip = nwid_begin->u.data_tip.tooltip;
 				break;
 			}
 
 			case WPT_PADDING:
-				if (unlikely(dest == nullptr)) throw std::runtime_error("WPT_PADDING requires NWidgetBase");
+				if (dest == nullptr) [[unlikely]] throw std::runtime_error("WPT_PADDING requires NWidgetBase");
 				dest->SetPadding(nwid_begin->u.padding);
 				break;
 
@@ -3016,7 +3016,7 @@ static const NWidgetPart *MakeNWidget(const NWidgetPart *nwid_begin, const NWidg
 				NWidgetBackground *nwb = dynamic_cast<NWidgetBackground *>(dest.get());
 				if (nwb != nullptr) nwb->SetPIP(nwid_begin->u.pip.pre, nwid_begin->u.pip.inter, nwid_begin->u.pip.post);
 
-				if (unlikely(nwc == nullptr && nwb == nullptr)) throw std::runtime_error("WPT_PIPSPACE requires NWidgetPIPContainer or NWidgetBackground");
+				if (nwc == nullptr && nwb == nullptr) [[unlikely]] throw std::runtime_error("WPT_PIPSPACE requires NWidgetPIPContainer or NWidgetBackground");
 				break;
 			}
 
@@ -3027,13 +3027,13 @@ static const NWidgetPart *MakeNWidget(const NWidgetPart *nwid_begin, const NWidg
 				NWidgetBackground *nwb = dynamic_cast<NWidgetBackground *>(dest.get());
 				if (nwb != nullptr) nwb->SetPIPRatio(nwid_begin->u.pip.pre, nwid_begin->u.pip.inter, nwid_begin->u.pip.post);
 
-				if (unlikely(nwc == nullptr && nwb == nullptr)) throw std::runtime_error("WPT_PIPRATIO requires NWidgetPIPContainer or NWidgetBackground");
+				if (nwc == nullptr && nwb == nullptr) [[unlikely]] throw std::runtime_error("WPT_PIPRATIO requires NWidgetPIPContainer or NWidgetBackground");
 				break;
 			}
 
 			case WPT_SCROLLBAR: {
 				NWidgetCore *nwc = dynamic_cast<NWidgetCore *>(dest.get());
-				if (unlikely(nwc == nullptr)) throw std::runtime_error("WPT_SCROLLBAR requires NWidgetCore");
+				if (nwc == nullptr) [[unlikely]] throw std::runtime_error("WPT_SCROLLBAR requires NWidgetCore");
 				nwc->scrollbar_index = nwid_begin->u.widget.index;
 				break;
 			}
@@ -3139,7 +3139,7 @@ std::unique_ptr<NWidgetBase> MakeNWidgets(const NWidgetPart *nwid_begin, const N
 	if (container == nullptr) container = std::make_unique<NWidgetVertical>();
 	[[maybe_unused]] const NWidgetPart *nwid_part = MakeWidgetTree(nwid_begin, nwid_end, container);
 #ifdef WITH_ASSERT
-	if (unlikely(nwid_part != nwid_end)) throw std::runtime_error("Did not consume all NWidgetParts");
+	if (nwid_part != nwid_end) [[unlikely]] throw std::runtime_error("Did not consume all NWidgetParts");
 #endif
 	return std::move(container);
 }

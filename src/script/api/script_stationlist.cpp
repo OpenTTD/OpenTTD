@@ -153,13 +153,13 @@ void CargoCollector::Update(StationID from, StationID via, uint amount)
 	switch (Tselector) {
 		case ScriptStationList_Cargo::CS_VIA_BY_FROM:
 			if (via != this->other_station) return;
-			FALLTHROUGH;
+			[[fallthrough]];
 		case ScriptStationList_Cargo::CS_BY_FROM:
 			key = from;
 			break;
 		case ScriptStationList_Cargo::CS_FROM_BY_VIA:
 			if (from != this->other_station) return;
-			FALLTHROUGH;
+			[[fallthrough]];
 		case ScriptStationList_Cargo::CS_BY_VIA:
 			key = via;
 			break;

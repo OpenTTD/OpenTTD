@@ -239,7 +239,7 @@ static uint32_t GetCountAndDistanceOfClosestInstance(byte local_id, uint32_t grf
 
 		case 0xFFFFFFFF: // current grf
 			grf_id = grfid;
-			FALLTHROUGH;
+			[[fallthrough]];
 
 		default: // use the grfid specified in register 100h
 			idx = _object_mngr.GetID(local_id, grf_id);

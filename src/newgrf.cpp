@@ -3073,7 +3073,7 @@ static ChangeInfoResult CargoChangeInfo(uint cid, int numinfo, int prop, ByteRea
 					case 0x0B: cs->town_acceptance_effect = TAE_FOOD; break;
 					default:
 						GrfMsg(1, "CargoChangeInfo: Unknown town growth substitute value {}, setting to none.", substitute_type);
-						FALLTHROUGH;
+						[[fallthrough]];
 					case 0xFF: cs->town_acceptance_effect = TAE_NONE; break;
 				}
 				break;
@@ -4279,7 +4279,7 @@ static ChangeInfoResult RailTypeChangeInfo(uint id, int numinfo, int prop, ByteR
 					RailType resolved_rt = GetRailTypeByLabel(BSWAP32(label), false);
 					if (resolved_rt != INVALID_RAILTYPE) {
 						switch (prop) {
-							case 0x0F: SetBit(rti->powered_railtypes, resolved_rt);               FALLTHROUGH; // Powered implies compatible.
+							case 0x0F: SetBit(rti->powered_railtypes, resolved_rt);               [[fallthrough]]; // Powered implies compatible.
 							case 0x0E: SetBit(rti->compatible_railtypes, resolved_rt);            break;
 							case 0x18: SetBit(rti->introduction_required_railtypes, resolved_rt); break;
 							case 0x19: SetBit(rti->introduces_railtypes, resolved_rt);            break;
@@ -4396,7 +4396,7 @@ static ChangeInfoResult RailTypeReserveInfo(uint id, int numinfo, int prop, Byte
 					break;
 				}
 				GrfMsg(1, "RailTypeReserveInfo: Ignoring property 1D for rail type {} because no label was set", id + i);
-				FALLTHROUGH;
+				[[fallthrough]];
 
 			case 0x0E: // Compatible railtype list
 			case 0x0F: // Powered railtype list
@@ -4885,7 +4885,7 @@ static bool HandleChangeInfoResult(const char *caller, ChangeInfoResult cir, uin
 
 		case CIR_UNKNOWN:
 			GrfMsg(0, "{}: Unknown property 0x{:02X} of feature 0x{:02X}, disabling", caller, property, feature);
-			FALLTHROUGH;
+			[[fallthrough]];
 
 		case CIR_INVALID_ID: {
 			/* No debug message for an invalid ID, as it has already been output */

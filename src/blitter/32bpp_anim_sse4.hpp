@@ -32,7 +32,7 @@
 #define MARGIN_NORMAL_THRESHOLD 4
 
 /** The SSE4 32 bpp blitter with palette animation. */
-class Blitter_32bppSSE4_Anim FINAL : public Blitter_32bppSSE2_Anim, public Blitter_32bppSSE4 {
+class Blitter_32bppSSE4_Anim final : public Blitter_32bppSSE2_Anim, public Blitter_32bppSSE4 {
 private:
 
 public:

@@ -454,7 +454,7 @@ struct NetworkChatWindow : public Window {
 		switch (widget) {
 			case WID_NC_SENDBUTTON: /* Send */
 				SendChat(this->message_editbox.text.buf, this->dtype, this->dest);
-				FALLTHROUGH;
+				[[fallthrough]];
 
 			case WID_NC_CLOSE: /* Cancel */
 				this->Close();

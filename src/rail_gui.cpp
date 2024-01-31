@@ -2278,7 +2278,7 @@ static void SetDefaultRailGui()
 			if (count[rt] > 0) break;
 
 			/* No rail, just get the first available one */
-			FALLTHROUGH;
+			[[fallthrough]];
 		}
 		case 0: {
 			/* Use first available type */

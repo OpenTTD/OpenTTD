@@ -21,7 +21,7 @@ typedef std::deque<Trackdir> ShipPathCache;
 /**
  * All ships have this type.
  */
-struct Ship FINAL : public SpecializedVehicle<Ship, VEH_SHIP> {
+struct Ship final : public SpecializedVehicle<Ship, VEH_SHIP> {
 	TrackBits state;      ///< The "track" the ship is following.
 	ShipPathCache path;   ///< Cached path.
 	Direction rotation;   ///< Visible direction.

@@ -92,7 +92,7 @@ SQLexer::SQLexer(SQSharedState *ss, SQLEXREADFUNC rg, SQUserPointer up)
 	Next();
 }
 
-NORETURN void SQLexer::Error(const SQChar *err)
+[[noreturn]] void SQLexer::Error(const SQChar *err)
 {
 	throw CompileException(err);
 }

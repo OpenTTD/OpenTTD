@@ -399,7 +399,7 @@ struct CompanyFinancesWindow : Window {
 			case WID_CF_EXPS_PRICE2:
 			case WID_CF_EXPS_PRICE3:
 				size->height = GetTotalCategoriesHeight();
-				FALLTHROUGH;
+				[[fallthrough]];
 
 			case WID_CF_BALANCE_VALUE:
 			case WID_CF_LOAN_VALUE:
@@ -819,7 +819,7 @@ public:
 					size->width = 0;
 					break;
 				}
-				FALLTHROUGH;
+				[[fallthrough]];
 
 			case WID_SCL_PRI_COL_DROPDOWN: {
 				this->square = GetSpriteSize(SPR_SQUARE);
@@ -1649,7 +1649,7 @@ public:
 			/* OK button */
 			case WID_SCMF_ACCEPT:
 				Command<CMD_SET_COMPANY_MANAGER_FACE>::Post(this->face);
-				FALLTHROUGH;
+				[[fallthrough]];
 
 			/* Cancel button */
 			case WID_SCMF_CANCEL:

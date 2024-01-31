@@ -53,7 +53,7 @@ public:
 	inline constexpr OverflowSafeInt& operator += (const OverflowSafeInt& other)
 	{
 #ifdef HAS_OVERFLOW_BUILTINS
-		if (unlikely(__builtin_add_overflow(this->m_value, other.m_value, &this->m_value))) {
+		if (__builtin_add_overflow(this->m_value, other.m_value, &this->m_value)) [[unlikely]] {
 			this->m_value = (other.m_value < 0) ? T_MIN : T_MAX;
 		}
 #else
@@ -76,7 +76,7 @@ public:
 	inline constexpr OverflowSafeInt& operator -= (const OverflowSafeInt& other)
 	{
 #ifdef HAS_OVERFLOW_BUILTINS
-		if (unlikely(__builtin_sub_overflow(this->m_value, other.m_value, &this->m_value))) {
+		if (__builtin_sub_overflow(this->m_value, other.m_value, &this->m_value)) [[unlikely]] {
 			this->m_value = (other.m_value < 0) ? T_MAX : T_MIN;
 		}
 #else
@@ -114,7 +114,7 @@ public:
 	{
 #ifdef HAS_OVERFLOW_BUILTINS
 		const bool is_result_positive = (this->m_value < 0) == (factor < 0); // -ve * -ve == +ve
-		if (unlikely(__builtin_mul_overflow(this->m_value, factor, &this->m_value))) {
+		if (__builtin_mul_overflow(this->m_value, factor, &this->m_value)) [[unlikely]] {
 			this->m_value = is_result_positive ? T_MAX : T_MIN;
 		}
 #else

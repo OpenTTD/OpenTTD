@@ -186,7 +186,7 @@ void AfterLoadCompanyStats()
 						}
 					}
 				}
-				FALLTHROUGH;
+				[[fallthrough]];
 
 			case MP_OBJECT:
 				if (GetWaterClass(tile) == WATER_CLASS_CANAL) {

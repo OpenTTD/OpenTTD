@@ -27,7 +27,7 @@
  * @param s Format string.
  * @note Function does not return.
  */
-void NORETURN FatalErrorI(const std::string &msg)
+[[noreturn]] void FatalErrorI(const std::string &msg)
 {
 	fmt::print(stderr, "settingsgen: FATAL: {}\n", msg);
 	exit(1);
