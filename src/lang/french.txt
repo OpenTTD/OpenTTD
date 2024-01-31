@@ -1522,6 +1522,7 @@ STR_CONFIG_SETTING_MINUTES_PER_YEAR_VALUE                       :{NUM}
 ###setting-zero-is-special
 STR_CONFIG_SETTING_MINUTES_PER_YEAR_FROZEN                      :0 (calendrier gelé)
 
+
 STR_CONFIG_SETTING_AUTORENEW_VEHICLE                            :Renouveler automatiquement les véhicules vieillissants{NBSP}: {STRING}
 STR_CONFIG_SETTING_AUTORENEW_VEHICLE_HELPTEXT                   :Quand il est actif, un véhicule approchant de la fin de sa durée de vie est automatiquement remplacé quand les conditions du renouvellement sont remplies
 

@@ -1399,6 +1399,7 @@ STR_CONFIG_SETTING_NEVER_EXPIRE_VEHICLES_HELPTEXT               :Todos los model
 
 ###setting-zero-is-special
 
+
 STR_CONFIG_SETTING_AUTORENEW_VEHICLE                            :Renovar automáticamente vehículos viejos: {STRING}
 STR_CONFIG_SETTING_AUTORENEW_VEHICLE_HELPTEXT                   :Los vehículos próximos al final de su vida útil serán renovados automáticamente, siempre y cuando se cumplan las condiciones de renovación
 

@@ -1485,6 +1485,7 @@ STR_CONFIG_SETTING_TIMEKEEPING_UNITS_WALLCLOCK                  :Muurklok
 
 ###setting-zero-is-special
 
+
 STR_CONFIG_SETTING_AUTORENEW_VEHICLE                            :Voertuig automatisch vernieuwen wanneer dit oud wordt: {STRING}
 STR_CONFIG_SETTING_AUTORENEW_VEHICLE_HELPTEXT                   :Wanneer ingeschakeld, wordt een voertuig dat het einde van zijn levensduur nadert automatisch vervangen als aan de voorwaarden voor vernieuwing wordt voldaan
 

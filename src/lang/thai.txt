@@ -1321,6 +1321,7 @@ STR_CONFIG_SETTING_NEVER_EXPIRE_VEHICLES_HELPTEXT               :เมื่อ
 
 ###setting-zero-is-special
 
+
 STR_CONFIG_SETTING_AUTORENEW_VEHICLE                            :เปลี่ยนยานพาหนะใหม่โดยอัตโนมัติเมื่อเก่าเกินไป: {STRING}
 STR_CONFIG_SETTING_AUTORENEW_VEHICLE_HELPTEXT                   :เมื่อเปิดใช้งาน พาหนะที่ใกล้หมดอายุการใช้งาน จะทำการแทนที่ใหม่เอง
 

@@ -1268,6 +1268,7 @@ STR_CONFIG_SETTING_NEVER_EXPIRE_VEHICLES_HELPTEXT               :Ef þessi still
 
 ###setting-zero-is-special
 
+
 STR_CONFIG_SETTING_AUTORENEW_VEHICLE                            :Uppfæra faratæki sjálfvirkt þegar þau eldast: {STRING}
 STR_CONFIG_SETTING_AUTORENEW_VEHICLE_HELPTEXT                   :Ef þessi stilling er virk, eru farartæki endurnýjuð sjálfvirkt þegar endingartími þeirra er komin
 

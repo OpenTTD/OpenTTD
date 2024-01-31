@@ -1438,6 +1438,7 @@ STR_CONFIG_SETTING_NEVER_EXPIRE_VEHICLES_HELPTEXT               :Kada je uključ
 
 ###setting-zero-is-special
 
+
 STR_CONFIG_SETTING_AUTORENEW_VEHICLE                            :Automatski obnovi vozilo kada postane staro: {STRING}
 STR_CONFIG_SETTING_AUTORENEW_VEHICLE_HELPTEXT                   :Kada je uključeno, vozilo kojem se bliži kraj vijeka trajanja se automatski obnavlja ukoliko su uvjeti za obnavljanje ispunjeni
 

@@ -1454,6 +1454,7 @@ STR_CONFIG_SETTING_NEVER_EXPIRE_VEHICLES_HELPTEXT               :Kui on aktiveer
 
 ###setting-zero-is-special
 
+
 STR_CONFIG_SETTING_AUTORENEW_VEHICLE                            :Vananenud sõidukite uuendamine: {STRING}
 STR_CONFIG_SETTING_AUTORENEW_VEHICLE_HELPTEXT                   :Kui on sisse lülitatud, siis uuendatalse kõik kasutusaja lõpu lähedal olevad sõidukid automaatselt, järgides uuendamise tingimusi
 

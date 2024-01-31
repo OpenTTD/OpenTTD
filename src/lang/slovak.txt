@@ -1504,6 +1504,7 @@ STR_CONFIG_SETTING_NEVER_EXPIRE_VEHICLES_HELPTEXT               :Ak je zapnuté,
 
 ###setting-zero-is-special
 
+
 STR_CONFIG_SETTING_AUTORENEW_VEHICLE                            :Automatická obnova dopravných prostriedkov, keď sú staré: {STRING}
 STR_CONFIG_SETTING_AUTORENEW_VEHICLE_HELPTEXT                   :Ak je zapnuté, vozidlá blížiace sa ku koncu svojej životnosti budú automaticky vymenené ak sú splnené podmienky na výmenu.
 

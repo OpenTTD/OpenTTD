@@ -1325,6 +1325,7 @@ STR_CONFIG_SETTING_NEVER_EXPIRE_VEHICLES_HELPTEXT               :By ynskeakeljen
 
 ###setting-zero-is-special
 
+
 STR_CONFIG_SETTING_AUTORENEW_VEHICLE                            :Ferfang âlde fiertugen automatysk: {STRING}
 STR_CONFIG_SETTING_AUTORENEW_VEHICLE_HELPTEXT                   :By ynskeakeljen wurden fiertugen dy't hast op harren ein binne automatyske ferfongen
 

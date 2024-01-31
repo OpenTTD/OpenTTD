@@ -1589,6 +1589,7 @@ STR_CONFIG_SETTING_NEVER_EXPIRE_VEHICLES_HELPTEXT               :Kartą atsirad�
 
 ###setting-zero-is-special
 
+
 STR_CONFIG_SETTING_AUTORENEW_VEHICLE                            :Automatiškai atnaujinti transporto priemonę, kai ji pasensta: {STRING}
 STR_CONFIG_SETTING_AUTORENEW_VEHICLE_HELPTEXT                   :Transporto priemonė, eksploatacijos laikotarpiui artėjant prie pabaigos, bus automatiškai bus atnaujinta, jei tik atnaujinimo sąlygos bus išpildytos
 

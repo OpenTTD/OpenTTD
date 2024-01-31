@@ -1492,6 +1492,7 @@ STR_CONFIG_SETTING_NEVER_EXPIRE_VEHICLES_HELPTEXT               :Se abilitata, d
 
 ###setting-zero-is-special
 
+
 STR_CONFIG_SETTING_AUTORENEW_VEHICLE                            :Rinnova un veicolo quando diventa vecchio: {STRING}
 STR_CONFIG_SETTING_AUTORENEW_VEHICLE_HELPTEXT                   :Se abilitata, un veicolo vicino alla sua età massima viene automaticamente sostituito quando si verificano le condizioni richieste per il rinnovo
 

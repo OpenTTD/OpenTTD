@@ -1546,6 +1546,7 @@ STR_CONFIG_SETTING_NEVER_EXPIRE_VEHICLES_HELPTEXT               :При вклю
 
 ###setting-zero-is-special
 
+
 STR_CONFIG_SETTING_AUTORENEW_VEHICLE                            :Автозаміна зношених транспортних засобів: {STRING}
 STR_CONFIG_SETTING_AUTORENEW_VEHICLE_HELPTEXT                   :При включенні транспортні засоби з вичерпаним строком служби автоматично замінюються на нові (при виконанні умов автозаміни).
 

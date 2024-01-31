@@ -1334,6 +1334,7 @@ STR_CONFIG_SETTING_NEVER_EXPIRE_VEHICLES_HELPTEXT               :As dit geaktive
 
 ###setting-zero-is-special
 
+
 STR_CONFIG_SETTING_AUTORENEW_VEHICLE                            :Outohernuwe voertuig as hy oud raak: {STRING}
 STR_CONFIG_SETTING_AUTORENEW_VEHICLE_HELPTEXT                   :As dit geaktiveer is, word 'n voertuig wat naby die einde van sy werkslewe kom outomaties vervang, wanneer die hernu voorwaardes vervul is.
 

@@ -1486,6 +1486,7 @@ STR_CONFIG_SETTING_NEVER_EXPIRE_VEHICLES_HELPTEXT               :Se tiu ĉi agor
 
 ###setting-zero-is-special
 
+
 STR_CONFIG_SETTING_AUTORENEW_VEHICLE                            :Aŭtomate anstataŭu veturilon se malnoviĝas: {STRING}
 STR_CONFIG_SETTING_AUTORENEW_VEHICLE_HELPTEXT                   :Se tiu ĉi agordo estas aktiva, veturilo kiu alproksimiĝas al la fino de sia vivdaŭro estos aŭtomate anstataŭigita kiam la renovigkondiĉoj estas plenumitaj
 

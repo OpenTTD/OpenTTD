@@ -1504,6 +1504,7 @@ STR_CONFIG_SETTING_NEVER_EXPIRE_VEHICLES_HELPTEXT               :Pokud je zapnut
 
 ###setting-zero-is-special
 
+
 STR_CONFIG_SETTING_AUTORENEW_VEHICLE                            :Automaticky nahradit dopravní prostředek, když zestárne: {STRING}
 STR_CONFIG_SETTING_AUTORENEW_VEHICLE_HELPTEXT                   :Pokud je zapnuto, vozidla na konci své plánované životnosti budou automaticky nahrazena, když jsou splněny podmínky pro automatické obnovení.
 

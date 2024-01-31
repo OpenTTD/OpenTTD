@@ -1457,6 +1457,7 @@ STR_CONFIG_SETTING_NEVER_EXPIRE_VEHICLES_HELPTEXT               :După activare,
 
 ###setting-zero-is-special
 
+
 STR_CONFIG_SETTING_AUTORENEW_VEHICLE                            :Înnoire automată pentru vehiculele învechite: {STRING}
 STR_CONFIG_SETTING_AUTORENEW_VEHICLE_HELPTEXT                   :După activare, orice vehicul care este învechit va fi înnoit automat când condițiile de înlocuire automată sunt îndeplinite
 

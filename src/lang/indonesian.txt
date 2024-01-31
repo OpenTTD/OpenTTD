@@ -1453,6 +1453,7 @@ STR_CONFIG_SETTING_NEVER_EXPIRE_VEHICLES_HELPTEXT               :Jika dinyalakan
 
 ###setting-zero-is-special
 
+
 STR_CONFIG_SETTING_AUTORENEW_VEHICLE                            :Perbarui otomatis kendaraan yang telah tua: {STRING}
 STR_CONFIG_SETTING_AUTORENEW_VEHICLE_HELPTEXT                   :Jika dinyalakan, kendaraan mendekati akhir usianya akan secara otomatis diperbarui jika masih tersedia kendaraan itu
 

@@ -1313,6 +1313,7 @@ STR_CONFIG_SETTING_NEVER_EXPIRE_VEHICLES_HELPTEXT               :Ако тази
 
 ###setting-zero-is-special
 
+
 STR_CONFIG_SETTING_AUTORENEW_VEHICLE                            :Автоматично поднови превозното средство, когато остарее: {STRING}
 STR_CONFIG_SETTING_AUTORENEW_VEHICLE_HELPTEXT                   :Ако тази опция бъде активирана, дадено превозно средство ще бъде автоматично заменено когато е към края на своя живот, стига условията за това да са налице
 

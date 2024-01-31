@@ -1516,6 +1516,7 @@ STR_CONFIG_SETTING_NEVER_EXPIRE_VEHICLES_HELPTEXT               :Ma tha seo air,
 
 ###setting-zero-is-special
 
+
 STR_CONFIG_SETTING_AUTORENEW_VEHICLE                            :Fèin-nuadhaich carbad nuair a bhios e air fàs aosta: {STRING}
 STR_CONFIG_SETTING_AUTORENEW_VEHICLE_HELPTEXT                   :Nuair a bhios seo air, nuair a bhios carbad air fàs ro aosta, thèid fear ùr a chur na àite gu fèin-obrachail ma dh'fhreagras e ri cumhan an fhèin-nuadhachaidh
 

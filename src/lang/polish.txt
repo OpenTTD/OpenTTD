@@ -1842,6 +1842,7 @@ STR_CONFIG_SETTING_NEVER_EXPIRE_VEHICLES_HELPTEXT               :Kiedy włączon
 
 ###setting-zero-is-special
 
+
 STR_CONFIG_SETTING_AUTORENEW_VEHICLE                            :Autoodnawianie pojazdów gdy stają się stare: {STRING}
 STR_CONFIG_SETTING_AUTORENEW_VEHICLE_HELPTEXT                   :Kiedy włączone, pojazd zbliżający się do końca swojej żywotności zostaje automatycznie zastąpiony, gdy warunki jego odnowienia są spełnione
 

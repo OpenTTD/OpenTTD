@@ -1484,6 +1484,7 @@ STR_CONFIG_SETTING_TIMEKEEPING_UNITS_WALLCLOCK                  :Rellotge de par
 
 ###setting-zero-is-special
 
+
 STR_CONFIG_SETTING_AUTORENEW_VEHICLE                            :Autorenova el vehicle quan sigui vell: {STRING}
 STR_CONFIG_SETTING_AUTORENEW_VEHICLE_HELPTEXT                   :Quan està activat, un vehicle que arriba al final de la seva vida útil és automàticament substituït quan es compleixen les condicions d'autorenovació.
 

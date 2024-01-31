@@ -1290,6 +1290,7 @@ STR_CONFIG_SETTING_NEVER_EXPIRE_VEHICLES_HELPTEXT               :Gaitua dagoenea
 
 ###setting-zero-is-special
 
+
 STR_CONFIG_SETTING_AUTORENEW_VEHICLE                            :Ibilgailu bat zahartzen denean automatikoki berritu: {STRING}
 STR_CONFIG_SETTING_AUTORENEW_VEHICLE_HELPTEXT                   :Gaitua dagoenean, Ibilgailuek bere lan-bizitza amaitzear dutenean eta beharrezko baldintzak betetzen badira automatikoki berrituko dira
 

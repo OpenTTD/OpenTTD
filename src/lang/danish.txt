@@ -1471,6 +1471,7 @@ STR_CONFIG_SETTING_TIMEKEEPING_UNITS_WALLCLOCK                  :Vægur
 
 ###setting-zero-is-special
 
+
 STR_CONFIG_SETTING_AUTORENEW_VEHICLE                            :Automatisk fornyelse af gamle køretøjer: {STRING}
 STR_CONFIG_SETTING_AUTORENEW_VEHICLE_HELPTEXT                   :Når aktiveret, bliver et køretøjder nærmer sig sin afslutning af livet automatisk udskiftet, når betingelserne er opfyldt
 

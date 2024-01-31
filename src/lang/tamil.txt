@@ -1304,6 +1304,7 @@ STR_CONFIG_SETTING_NEVER_EXPIRE_VEHICLES                        :வாகனங
 
 ###setting-zero-is-special
 
+
 STR_CONFIG_SETTING_AUTORENEW_VEHICLE                            :வாகனங்கள் காலாவதியானால் தானாக மாற்றியமை: {STRING}
 STR_CONFIG_SETTING_AUTORENEW_VEHICLE_HELPTEXT                   :செயலாக்க செய்யப்பட்டால், வாகனங்கள் காலாவதியாவதற்கு முன்னால் தானாக மாற்றியமைக்கப்படும்
 

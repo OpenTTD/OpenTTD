@@ -1372,6 +1372,7 @@ STR_CONFIG_SETTING_NEVER_EXPIRE_VEHICLES_HELPTEXT               :Má dhéantar �
 
 ###setting-zero-is-special
 
+
 STR_CONFIG_SETTING_AUTORENEW_VEHICLE                            :Déan uathathnuachan ar an bhfeithicil nuair a éiríonn sé sean: {STRING}
 STR_CONFIG_SETTING_AUTORENEW_VEHICLE_HELPTEXT                   :Má tá sé cumasaithe, déantar feithicil atá ag teacht chuig deireadh a ré a ionadú go huathoibríoch má tá na coinníollacha athnuachana comhlíonta
 

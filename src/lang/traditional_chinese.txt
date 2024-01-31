@@ -1442,6 +1442,7 @@ STR_CONFIG_SETTING_NEVER_EXPIRE_VEHICLES_HELPTEXT               :如啟用此選
 
 ###setting-zero-is-special
 
+
 STR_CONFIG_SETTING_AUTORENEW_VEHICLE                            :車輛達到使用年限時自動更新：{STRING}
 STR_CONFIG_SETTING_AUTORENEW_VEHICLE_HELPTEXT                   :如啟用此選項，所有在符合替換條件時進入維修設施的車輛會被替換。
 

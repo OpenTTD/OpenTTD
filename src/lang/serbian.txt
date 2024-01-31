@@ -1605,6 +1605,7 @@ STR_CONFIG_SETTING_NEVER_EXPIRE_VEHICLES_HELPTEXT               :Ako je omoguće
 
 ###setting-zero-is-special
 
+
 STR_CONFIG_SETTING_AUTORENEW_VEHICLE                            :Automatska zamena kada vozilo ostari: {STRING}
 STR_CONFIG_SETTING_AUTORENEW_VEHICLE_HELPTEXT                   :Kada je omogućeno, vozilo blizu kraja života će se automatski zameniti kada su ispunjeni uslovi obnavljanja
 

@@ -1417,6 +1417,7 @@ STR_CONFIG_SETTING_NEVER_EXPIRE_VEHICLES_HELPTEXT               :有効にする
 
 ###setting-zero-is-special
 
+
 STR_CONFIG_SETTING_AUTORENEW_VEHICLE                            :老朽車両の自動交換: {STRING}
 STR_CONFIG_SETTING_AUTORENEW_VEHICLE_HELPTEXT                   :有効にすると、耐用年数を越えた輸送機器は自動で更新されるようになります(交換には一度格納施設に戻る必要があります)。具体的な交換時期は下の設定で変更できます。
 

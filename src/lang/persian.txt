@@ -1229,6 +1229,7 @@ STR_CONFIG_SETTING_NEVER_EXPIRE_VEHICLES                        :وسایل نق
 
 ###setting-zero-is-special
 
+
 STR_CONFIG_SETTING_AUTORENEW_VEHICLE                            :نوکردن خودکار وسایل نقلیه کهنه شده: {STRING}
 
 ###length 2

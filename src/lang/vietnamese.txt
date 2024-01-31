@@ -261,6 +261,7 @@ STR_UNITS_DAYS                                                  :{COMMA}{NBSP}ng
 STR_UNITS_SECONDS                                               :{COMMA}{NBSP}giây
 STR_UNITS_TICKS                                                 :{COMMA}{NBSP}tick
 
+STR_UNITS_MONTHS                                                :{NUM}{NBSP}tháng
 
 
 # Common window strings
@@ -817,6 +818,7 @@ STR_STATUSBAR_AUTOSAVE                                          :{RED}LƯU TỰ 
 STR_STATUSBAR_SAVING_GAME                                       :{RED}*  *  ĐANG LƯU GAME *  *
 
 STR_STATUSBAR_SPECTATOR                                         :{WHITE}(người xem)
+STR_STATUSBAR_INFINITE_MONEY                                    :{WHITE}(tiền vô hạn)
 
 # News message history
 STR_MESSAGE_HISTORY                                             :{WHITE}Lịch Sử Thông Điệp
@@ -918,6 +920,10 @@ STR_NEWS_STATION_NOW_ACCEPTS_CARGO_LIST                         :{WHITE}{STATION
 STR_NEWS_OFFER_OF_SUBSIDY_EXPIRED                               :{BIG_FONT}{BLACK}Lời đề nghị trợ cấp đã hết hạn:{}{}{STRING} từ {STRING} đến {STRING} bây giờ sẽ không có trợ cấp.
 STR_NEWS_SUBSIDY_WITHDRAWN_SERVICE                              :{BIG_FONT}{BLACK}Trợ cấp đã hết:{}{}Dịch vụ vận chuyển {STRING} từ {STRING} đến {STRING} sẽ không được trợ cấp nữa.
 ###length 4
+STR_NEWS_SERVICE_SUBSIDY_AWARDED_HALF                           :{BIG_FONT}{BLACK}Trợ cấp dịch vụ được trao cho {STRING}!{}{}{STRING} từ {STRING} đến {STRING} sẽ thu lợi cao hơn 50% trong vòng {UNITS_YEARS_OR_MINUTES} năm tới!
+STR_NEWS_SERVICE_SUBSIDY_AWARDED_DOUBLE                         :{BIG_FONT}{BLACK}Trợ cấp dịch vụ được trao cho {STRING}!{}{}{STRING} từ {STRING} đến {STRING} sẽ thu lợi gấp đôi trong vòng {UNITS_YEARS_OR_MINUTES} năm tới!
+STR_NEWS_SERVICE_SUBSIDY_AWARDED_TRIPLE                         :{BIG_FONT}{BLACK}Trợ cấp dịch vụ được trao cho {STRING}!{}{}{STRING} từ {STRING} đến {STRING} sẽ thu lợi gấp ba trong vòng {UNITS_YEARS_OR_MINUTES}!
+STR_NEWS_SERVICE_SUBSIDY_AWARDED_QUADRUPLE                      :{BIG_FONT}{BLACK}Trợ cấp dịch vụ được trao cho {STRING}!{}{}{STRING} từ {STRING} đến {STRING} sẽ thu lợi gấp tư trong vòng {UNITS_YEARS_OR_MINUTES}!
 
 STR_NEWS_EXCLUSIVE_RIGHTS_TITLE                                 :{BIG_FONT}{BLACK}Độc quyền vận tải!
 
@@ -1269,6 +1275,7 @@ STR_CONFIG_SETTING_SUBSIDY_DURATION                             :Thời hạn tr
 ###length 2
 STR_CONFIG_SETTING_SUBSIDY_DURATION_HELPTEXT                    :Đặt số năm được hưởng trợ cấp dịch vụ
 
+STR_CONFIG_SETTING_SUBSIDY_DURATION_VALUE                       :{UNITS_YEARS_OR_PERIODS}
 ###setting-zero-is-special
 STR_CONFIG_SETTING_SUBSIDY_DURATION_DISABLED                    :Không có trợ cấp
 
@@ -1458,9 +1465,11 @@ STR_CONFIG_SETTING_NEVER_EXPIRE_VEHICLES                        :Phương tiện
 STR_CONFIG_SETTING_NEVER_EXPIRE_VEHICLES_HELPTEXT               :Nếu bật, tất cả các model phương tiện sẽ không bị lỗi thời
 
 ###length 2
+STR_CONFIG_SETTING_TIMEKEEPING_UNITS_CALENDAR                   :Lịch
 
 
 ###setting-zero-is-special
+
 
 STR_CONFIG_SETTING_AUTORENEW_VEHICLE                            :Tự thay mới phương tiện nếu hết hạn sử dụng: {STRING}
 STR_CONFIG_SETTING_AUTORENEW_VEHICLE_HELPTEXT                   :Nếu bật, phương tiện gần hết hạn sẽ được tự động thay mới và điều kiện thay mới được thỏa mãn
@@ -2690,6 +2699,7 @@ STR_LINKGRAPH_LEGEND_OVERLOADED                                 :{TINY_FONT}{BLA
 
 # Linkgraph tooltip
 STR_LINKGRAPH_STATS_TOOLTIP_RETURN_EXTENSION                    :{}{CARGO_LONG} sẽ được hoàn chuyển ({COMMA}% dung lượng)
+STR_LINKGRAPH_STATS_TOOLTIP_TIME_EXTENSION                      :{}Thời gian đi lại trung bình: {UNITS_DAYS_OR_SECONDS}
 
 # Base for station construction window(s)
 STR_STATION_BUILD_COVERAGE_AREA_TITLE                           :{BLACK}Hiện rõ vùng phủ ảnh hưởng
@@ -4167,6 +4177,7 @@ STR_ENGINE_PREVIEW_TRAM_VEHICLE                                 :toa xe điện
 STR_ENGINE_PREVIEW_AIRCRAFT                                     :máy bay
 STR_ENGINE_PREVIEW_SHIP                                         :tàu thuỷ
 
+STR_ENGINE_PREVIEW_TEXT4                                        :{BLACK}{STRING}{}{STRING}{}{STRING}{}{STRING}
 
 # Autoreplace window
 STR_REPLACE_VEHICLES_WHITE                                      :{WHITE}Thay thế {STRING} - {STRING}

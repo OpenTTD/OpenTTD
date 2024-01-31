@@ -1454,6 +1454,7 @@ STR_CONFIG_SETTING_NEVER_EXPIRE_VEHICLES_HELPTEXT               :Erlauben, dass 
 
 ###setting-zero-is-special
 
+
 STR_CONFIG_SETTING_AUTORENEW_VEHICLE                            :Fahrzeuge automatisch erneuern, wenn sie alt werden: {STRING}
 STR_CONFIG_SETTING_AUTORENEW_VEHICLE_HELPTEXT                   :Erneuere Fahrzeuge automatisch gemäß der Regeln für Erneuerung, wenn sie ihr Maximalalter erreicht haben.
 

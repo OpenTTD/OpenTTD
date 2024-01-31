@@ -1502,6 +1502,7 @@ STR_CONFIG_SETTING_NEVER_EXPIRE_VEHICLES_HELPTEXT               :Όταν είν
 
 ###setting-zero-is-special
 
+
 STR_CONFIG_SETTING_AUTORENEW_VEHICLE                            :Αυτόματη ανανέωση όταν ένα όχημα παλιώνει: {STRING}
 STR_CONFIG_SETTING_AUTORENEW_VEHICLE_HELPTEXT                   :Όταν είναι ενεργοποιημένη, τα οχήματα που πλησιάζουν το τέλος της ζωής τους αντικαθίσταται αυτόματα όταν πληρούνται οι προϋποθέσεις αντικατάστασής του
 

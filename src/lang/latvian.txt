@@ -1460,6 +1460,7 @@ STR_CONFIG_SETTING_NEVER_EXPIRE_VEHICLES_HELPTEXT               :Kad ieslēgts, 
 
 ###setting-zero-is-special
 
+
 STR_CONFIG_SETTING_AUTORENEW_VEHICLE                            :Automātiski atjaunot transportlīdzekļus, kad tie ir kļuvuši veci: {STRING}
 STR_CONFIG_SETTING_AUTORENEW_VEHICLE_HELPTEXT                   :Ja ieslēgts, kad ir atbilstoši atjaunošanas apstākļi, automātiski tiek nomainīti transportlīdzekļi kuru kalpošanas laiks tuvojas beigām
 

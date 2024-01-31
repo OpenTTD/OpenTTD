@@ -1522,6 +1522,7 @@ STR_CONFIG_SETTING_MINUTES_PER_YEAR_VALUE                       :{NUM}
 ###setting-zero-is-special
 STR_CONFIG_SETTING_MINUTES_PER_YEAR_FROZEN                      :0 (tiempo de calendario congelado)
 
+
 STR_CONFIG_SETTING_AUTORENEW_VEHICLE                            :Renovación automática de vehículos cuando se vuelven viejos: {STRING}
 STR_CONFIG_SETTING_AUTORENEW_VEHICLE_HELPTEXT                   :Cuando se activa, los vehículos próximos al final de su vida útil serán reemplazados automáticamente, siempre y cuando se cumplan las condiciones de renovación
 

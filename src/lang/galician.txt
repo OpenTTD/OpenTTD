@@ -1455,6 +1455,7 @@ STR_CONFIG_SETTING_NEVER_EXPIRE_VEHICLES_HELPTEXT               :Cando se activa
 
 ###setting-zero-is-special
 
+
 STR_CONFIG_SETTING_AUTORENEW_VEHICLE                            :Autorenova-los vehículos cando vaian vellos: {STRING}
 STR_CONFIG_SETTING_AUTORENEW_VEHICLE_HELPTEXT                   :Cando se activa, un vehículo que se achega ao fin da súa vida útil é reemprazado automáticamente se se cumplen as condicións de renovación
 

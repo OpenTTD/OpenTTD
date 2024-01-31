@@ -937,6 +937,7 @@ STR_CONFIG_SETTING_INFRASTRUCTURE_MAINTENANCE                   :Инфраст�
 ###setting-zero-is-special
 
 
+
 ###length 2
 
 

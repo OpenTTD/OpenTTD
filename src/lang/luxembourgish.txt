@@ -1398,6 +1398,7 @@ STR_CONFIG_SETTING_NEVER_EXPIRE_VEHICLES_HELPTEXT               :Wann ugeschalt,
 
 ###setting-zero-is-special
 
+
 STR_CONFIG_SETTING_AUTORENEW_VEHICLE                            :Gefier automatesch erneiere wann et al gëtt: {STRING}
 STR_CONFIG_SETTING_AUTORENEW_VEHICLE_HELPTEXT                   :Wann ugeschalt, gëtt e Gefier wat u säi Lafzäitenn kënnt automatesch ausgetosch
 

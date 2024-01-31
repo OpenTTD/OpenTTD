@@ -836,6 +836,7 @@ STR_STATUSBAR_AUTOSAVE                                          :{RED}자동 저
 STR_STATUSBAR_SAVING_GAME                                       :{RED}*  *  게임 저장 중  *  *
 
 STR_STATUSBAR_SPECTATOR                                         :{WHITE}(관전자)
+STR_STATUSBAR_INFINITE_MONEY                                    :{WHITE}(돈 무제한)
 
 # News message history
 STR_MESSAGE_HISTORY                                             :{WHITE}메시지 기록
@@ -1288,6 +1289,8 @@ STR_CONFIG_SETTING_HORIZONTAL_POS_RIGHT                         :오른쪽
 
 STR_CONFIG_SETTING_SECONDS_VALUE                                :{COMMA}초
 
+STR_CONFIG_SETTING_INFINITE_MONEY                               :돈 무제한: {STRING}
+STR_CONFIG_SETTING_INFINITE_MONEY_HELPTEXT                      :돈을 무제한으로 만들고 회사가 파산하지 않게 만듭니다
 
 STR_CONFIG_SETTING_MAXIMUM_INITIAL_LOAN                         :최대 초기 대출금: {STRING}
 STR_CONFIG_SETTING_MAXIMUM_INITIAL_LOAN_HELPTEXT                :한 회사가 최대한 빌릴 수 있는 대출금의 양을 조절할 수 있습니다. (여기서 설정한 값은 인플레이션에 의한 효과를 적용하지 않은 값입니다.)
@@ -1521,6 +1524,7 @@ STR_CONFIG_SETTING_MINUTES_PER_YEAR_HELPTEXT                    :달력의 1년�
 STR_CONFIG_SETTING_MINUTES_PER_YEAR_VALUE                       :{NUM}
 ###setting-zero-is-special
 STR_CONFIG_SETTING_MINUTES_PER_YEAR_FROZEN                      :0 (달력 시간 정지됨)
+
 
 STR_CONFIG_SETTING_AUTORENEW_VEHICLE                            :차량이 낡으면 차량을 자동으로 교체: {STRING}
 STR_CONFIG_SETTING_AUTORENEW_VEHICLE_HELPTEXT                   :이 설정을 켜면, 제한 수명에 다다른 차량이 교체 조건을 만족할 경우 자동으로 차량을 교체할 수 있게 됩니다
@@ -1940,7 +1944,7 @@ STR_CONFIG_SETTING_DRAG_SIGNALS_DENSITY                         :신호기를 �
 STR_CONFIG_SETTING_DRAG_SIGNALS_DENSITY_HELPTEXT                :신호기를 드래그할 때, 다음 장애물(신호기, 분기점 등)을 만날 때까지 신호기가 설치될 간격을 설정합니다
 STR_CONFIG_SETTING_DRAG_SIGNALS_DENSITY_VALUE                   :{COMMA}칸 간격으로 설치
 STR_CONFIG_SETTING_DRAG_SIGNALS_FIXED_DISTANCE                  :드래그할 때, 신호기 사이의 거리를 계속 고정: {STRING}
-STR_CONFIG_SETTING_DRAG_SIGNALS_FIXED_DISTANCE_HELPTEXT         :신호기를 CTRL+드래그 하여 설치할 때의 행동을 선택합니다. 이 설정을 끄면, 신호기가 없는 긴 폐색을 만들지 않기 위해 터널이나 다리 주변에 먼저 신호기가 설치될 것입니다. 이 설정을 켜면, 신호기는 터널/다리와 상관없이 매 n개의 칸마다 설치될 것입니다.
+STR_CONFIG_SETTING_DRAG_SIGNALS_FIXED_DISTANCE_HELPTEXT         :신호기를 드래그 하여 설치할 때의 행동을 선택합니다. 이 설정을 끄면, 신호기가 없는 긴 폐색을 만들지 않기 위해 터널이나 다리 주변에 먼저 신호기가 설치될 것입니다. 이 설정을 켜면, 신호기는 터널/다리와 상관없이 매 n개의 칸마다 설치될 것입니다
 
 STR_CONFIG_SETTING_SEMAPHORE_BUILD_BEFORE_DATE                  :전자식 신호기의 사용: {STRING}년 이후에
 STR_CONFIG_SETTING_SEMAPHORE_BUILD_BEFORE_DATE_HELPTEXT         :전자식 신호기를 사용할 수 있는 연도를 설정합니다. 이 이전에는 구식 신호기만 사용 가능합니다. (두 신호기는 기능적으로는 동일하고 모습만 다릅니다.)
@@ -5768,8 +5772,9 @@ STR_UNKNOWN_STATION                                             :알 수 없는 
 STR_DEFAULT_SIGN_NAME                                           :팻말
 STR_COMPANY_SOMEONE                                             :누군가
 
-STR_SAVEGAME_NAME_DEFAULT                                       :{COMPANY}의 게임 ({STRING})
-STR_SAVEGAME_NAME_SPECTATOR                                     :관전자의 게임 ({1:STRING})
+STR_SAVEGAME_DURATION_REALTIME                                  :{NUM}시간 {NUM}분
+STR_SAVEGAME_NAME_DEFAULT                                       :{COMPANY}의 게임, {STRING}
+STR_SAVEGAME_NAME_SPECTATOR                                     :관전자의 게임, {1:STRING}
 
 # Viewport strings
 STR_VIEWPORT_TOWN_POP                                           :{WHITE}{TOWN} ({COMMA})
@@ -5801,6 +5806,10 @@ STR_TOWN_NAME                                                   :{TOWN}
 STR_VEHICLE_NAME                                                :{VEHICLE}
 STR_WAYPOINT_NAME                                               :{WAYPOINT}
 
+STR_CURRENCY_SHORT_KILO                                         :k
+STR_CURRENCY_SHORT_MEGA                                         :m
+STR_CURRENCY_SHORT_GIGA                                         :bn
+STR_CURRENCY_SHORT_TERA                                         :tn
 
 STR_JUST_CARGO                                                  :{CARGO_LONG}
 STR_JUST_RIGHT_ARROW                                            :{RIGHT_ARROW}

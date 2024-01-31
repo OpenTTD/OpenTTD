@@ -334,6 +334,7 @@ STR_SORT_BY_NUMBER                                              :序号
 STR_SORT_BY_PROFIT_LAST_YEAR                                    :去年利润
 STR_SORT_BY_PROFIT_LAST_PERIOD                                  :上期损益
 STR_SORT_BY_PROFIT_THIS_YEAR                                    :今年利润
+STR_SORT_BY_PROFIT_THIS_PERIOD                                  :本期损益
 STR_SORT_BY_AGE                                                 :年龄
 STR_SORT_BY_RELIABILITY                                         :可靠性
 STR_SORT_BY_TOTAL_CAPACITY_PER_CARGOTYPE                        :每种货物的总装载能力
@@ -361,8 +362,11 @@ STR_SORT_BY_POPULATION                                          :人口
 STR_SORT_BY_RATING                                              :评价
 STR_SORT_BY_NUM_VEHICLES                                        :载具数量
 STR_SORT_BY_TOTAL_PROFIT_LAST_YEAR                              :去年总利润
+STR_SORT_BY_TOTAL_PROFIT_LAST_PERIOD                            :上期总损益
 STR_SORT_BY_TOTAL_PROFIT_THIS_YEAR                              :今年总利润
+STR_SORT_BY_TOTAL_PROFIT_THIS_PERIOD                            :本期总损益
 STR_SORT_BY_AVERAGE_PROFIT_LAST_YEAR                            :去年平均利润
+STR_SORT_BY_AVERAGE_PROFIT_LAST_PERIOD                          :上期平均损益
 STR_SORT_BY_AVERAGE_PROFIT_THIS_YEAR                            :今年平均利润
 STR_SORT_BY_AVERAGE_PROFIT_THIS_PERIOD                          :本周期平均利润
 
@@ -402,7 +406,7 @@ STR_TOOLBAR_TOOLTIP_BUILD_ROADS                                 :{BLACK}建设�
 STR_TOOLBAR_TOOLTIP_BUILD_TRAMWAYS                              :{BLACK}建造电车轨道
 STR_TOOLBAR_TOOLTIP_BUILD_SHIP_DOCKS                            :{BLACK}建设码头
 STR_TOOLBAR_TOOLTIP_BUILD_AIRPORTS                              :{BLACK}建设机场
-STR_TOOLBAR_TOOLTIP_LANDSCAPING                                 :{BLACK}打开景观美化工具栏{}以修改地形、设置地貌等
+STR_TOOLBAR_TOOLTIP_LANDSCAPING                                 :{BLACK}打开景观美化工具栏以修改地形、设置地貌等
 STR_TOOLBAR_TOOLTIP_SHOW_SOUND_MUSIC_WINDOW                     :{BLACK}显示 声音/音乐 控制菜单
 STR_TOOLBAR_TOOLTIP_SHOW_LAST_MESSAGE_NEWS                      :{BLACK}显示最新消息、新闻，消息历史或删除所有消息
 STR_TOOLBAR_TOOLTIP_LAND_BLOCK_INFORMATION                      :{BLACK}查询地块信息、截图、关于 OpenTTD 和开发者工具
@@ -418,7 +422,7 @@ STR_SCENEDIT_TOOLBAR_TOOLTIP_SET_DATE                           :{BLACK}点击�
 STR_SCENEDIT_TOOLBAR_TOOLTIP_DISPLAY_MAP_TOWN_DIRECTORY         :{BLACK}显示地图和城镇列表
 STR_SCENEDIT_TOOLBAR_LANDSCAPE_GENERATION                       :{BLACK}生成地形
 STR_SCENEDIT_TOOLBAR_TOWN_GENERATION                            :{BLACK}城镇生成
-STR_SCENEDIT_TOOLBAR_INDUSTRY_GENERATION                        :{BLACK}生成工业
+STR_SCENEDIT_TOOLBAR_INDUSTRY_GENERATION                        :{BLACK}建造或生成工业
 STR_SCENEDIT_TOOLBAR_ROAD_CONSTRUCTION                          :{BLACK}公路建设
 STR_SCENEDIT_TOOLBAR_TRAM_CONSTRUCTION                          :{BLACK}电车道建设
 STR_SCENEDIT_TOOLBAR_PLANT_TREES                                :{BLACK}植树。按 Ctrl 沿对角线建造，按 Shift 显示预计花费。
@@ -629,6 +633,8 @@ STR_GRAPH_COMPANY_VALUES_CAPTION                                :{WHITE}公司�
 STR_GRAPH_LAST_72_MINUTES_TIME_LABEL                            :{TINY_FONT}{BLACK}最后 72 分
 
 STR_GRAPH_CARGO_PAYMENT_RATES_CAPTION                           :{WHITE}货物运输价格
+STR_GRAPH_CARGO_PAYMENT_RATES_DAYS                              :{TINY_FONT}{BLACK}运输所用天数
+STR_GRAPH_CARGO_PAYMENT_RATES_SECONDS                           :{TINY_FONT}{BLACK}运输所用秒数
 STR_GRAPH_CARGO_PAYMENT_RATES_TITLE                             :{TINY_FONT}{BLACK}将 10 单位 (或 10,000 升) 货物运输 20 个方格
 STR_GRAPH_CARGO_ENABLE_ALL                                      :{TINY_FONT}{BLACK}全部启用
 STR_GRAPH_CARGO_DISABLE_ALL                                     :{TINY_FONT}{BLACK}全部禁用
@@ -677,7 +683,11 @@ STR_PERFORMANCE_DETAIL_LOAN                                     :{BLACK}贷款�
 STR_PERFORMANCE_DETAIL_TOTAL                                    :{BLACK}总表现值：
 ###next-name-looks-similar
 
+STR_PERFORMANCE_DETAIL_VEHICLES_TOOLTIP_YEARS                   :{BLACK}去年盈利的载具数量，包括公路载具、列车、船舶和飞机
+STR_PERFORMANCE_DETAIL_VEHICLES_TOOLTIP_PERIODS                 :上期盈利的载具数量，包括公路载具、列车、船舶和飞机
 STR_PERFORMANCE_DETAIL_STATIONS_TOOLTIP                         :{BLACK}最近仍然使用的车站组件数量。车站的每个组件（火车站、公交站、机场）即使是连接成为一个车站，也会被独立计数。
+STR_PERFORMANCE_DETAIL_MIN_PROFIT_TOOLTIP_YEARS                 :{BLACK}收入最低的载具的利润（只考虑年龄超过两年的载具）
+STR_PERFORMANCE_DETAIL_MIN_PROFIT_TOOLTIP_PERIODS               :{BLACK}收入最低的载具的损益（只计算年龄超过两年的载具）
 STR_PERFORMANCE_DETAIL_MIN_INCOME_TOOLTIP                       :{BLACK}在过去 12 个季度中{}利润最少的季度的现金收入
 STR_PERFORMANCE_DETAIL_MAX_INCOME_TOOLTIP                       :{BLACK}在过去 12 个季度中{}利润最多的季度的现金收入
 STR_PERFORMANCE_DETAIL_DELIVERED_TOOLTIP                        :{BLACK}在过去 4 个季度中运输的货物总数
@@ -825,6 +835,7 @@ STR_STATUSBAR_AUTOSAVE                                          :{RED}自动保�
 STR_STATUSBAR_SAVING_GAME                                       :{RED}*  *  保存游戏中  *  *
 
 STR_STATUSBAR_SPECTATOR                                         :{WHITE}（旁观者）
+STR_STATUSBAR_INFINITE_MONEY                                    :{WHITE}（无限）
 
 # News message history
 STR_MESSAGE_HISTORY                                             :{WHITE}消息历史
@@ -909,6 +920,7 @@ STR_NEWS_VEHICLE_IS_GETTING_VERY_OLD                            :{WHITE}{VEHICLE
 STR_NEWS_VEHICLE_IS_GETTING_VERY_OLD_AND                        :{WHITE}{VEHICLE} 已经达到报废年限，必须马上更新！
 STR_NEWS_TRAIN_IS_STUCK                                         :{WHITE}{VEHICLE} 无法找到道路
 STR_NEWS_VEHICLE_IS_LOST                                        :{WHITE}{VEHICLE} 无法找到路线.
+STR_NEWS_VEHICLE_UNPROFITABLE_YEAR                              :{WHITE}{VEHICLE} 的去年损益为 {CURRENCY_LONG}
 STR_NEWS_VEHICLE_UNPROFITABLE_PERIOD                            :{WHITE}{VEHICLE} 的上周期损益为 {CURRENCY_LONG}
 STR_NEWS_AIRCRAFT_DEST_TOO_FAR                                  :{WHITE}{VEHICLE} 由于航程过远，航班无法到达。
 
@@ -933,6 +945,8 @@ STR_NEWS_SERVICE_SUBSIDY_AWARDED_DOUBLE                         :{BIG_FONT}{BLAC
 STR_NEWS_SERVICE_SUBSIDY_AWARDED_TRIPLE                         :{BIG_FONT}{BLACK}{STRING} 获得财政补贴！{}{}今后 {4:UNITS_YEARS_OR_MINUTES} 中将 {1:STRING} 从 {2:STRING} 运送到 {3:STRING} 将获得三倍的报酬！
 STR_NEWS_SERVICE_SUBSIDY_AWARDED_QUADRUPLE                      :{BIG_FONT}{BLACK}{STRING} 获得财政补贴！{}{}今后 {4:UNITS_YEARS_OR_MINUTES} 中将 {1:STRING} 从 {2:STRING} 运送到 {3:STRING} 将获得四倍的报酬！
 
+STR_NEWS_ROAD_REBUILDING_MONTHS                                 :{BIG_FONT}{BLACK}{TOWN}的混乱交通！{}{}由{STRING}资助的道路重建计划将给驾车者带来长达 6 个月的堵塞！
+STR_NEWS_ROAD_REBUILDING_MINUTES                                :{BIG_FONT}{BLACK}{TOWN}的混乱交通！{}{}由{STRING}资助的道路重建计划将给驾车者带来长达 6 分钟的堵塞！
 STR_NEWS_EXCLUSIVE_RIGHTS_TITLE                                 :{BIG_FONT}{BLACK}垄断运输!
 STR_NEWS_EXCLUSIVE_RIGHTS_DESCRIPTION_MONTHS                    :{BIG_FONT}{BLACK}{TOWN} 地方当局与 {STRING} 签订了长为一年的独家运输合同！
 STR_NEWS_EXCLUSIVE_RIGHTS_DESCRIPTION_MINUTES                   :{BIG_FONT}{BLACK}{TOWN} 地方当局与 {STRING} 签订了 12 分钟独家运输合同！
@@ -1274,6 +1288,8 @@ STR_CONFIG_SETTING_HORIZONTAL_POS_RIGHT                         :右侧
 
 STR_CONFIG_SETTING_SECONDS_VALUE                                :{COMMA}{NBSP}秒
 
+STR_CONFIG_SETTING_INFINITE_MONEY                               :无限资金: {STRING}
+STR_CONFIG_SETTING_INFINITE_MONEY_HELPTEXT                      :允许无限制的支出并禁止公司破产
 
 STR_CONFIG_SETTING_MAXIMUM_INITIAL_LOAN                         :最大初始贷款: {STRING}
 STR_CONFIG_SETTING_MAXIMUM_INITIAL_LOAN_HELPTEXT                :公司最大贷款额（不考虑通货膨胀的影响）
@@ -1299,6 +1315,7 @@ STR_CONFIG_SETTING_SUBSIDY_MULTIPLIER_HELPTEXT                  :设置获得财
 STR_CONFIG_SETTING_SUBSIDY_DURATION                             :财政补贴尺度：{STRING}
 ###length 2
 STR_CONFIG_SETTING_SUBSIDY_DURATION_HELPTEXT                    :设置发放财政补贴的年数
+STR_CONFIG_SETTING_SUBSIDY_DURATION_HELPTEXT_PERIODS            :设置发放财政补贴的周期数
 
 STR_CONFIG_SETTING_SUBSIDY_DURATION_VALUE                       :{UNITS_YEARS_OR_PERIODS}
 ###setting-zero-is-special
@@ -1398,6 +1415,7 @@ STR_CONFIG_SETTING_SIGNALSIDE_RIGHT                             :右侧
 
 ###length 2
 STR_CONFIG_SETTING_SHOWFINANCES                                 :在年终显示财务报表：{STRING}
+STR_CONFIG_SETTING_SHOWFINANCES_PERIOD                          :在周期末显示财务报表：{STRING}
 
 ###length 2
 STR_CONFIG_SETTING_SHOWFINANCES_HELPTEXT                        :“打开”时，在年底显示财务报表窗口，方便查看公司财务状况
@@ -1424,10 +1442,12 @@ STR_CONFIG_SETTING_AUTOSCROLL_EVERY_VIEWPORT                    :每个视角
 STR_CONFIG_SETTING_BRIBE                                        :允许贿赂地方政府：{STRING}
 ###length 2
 STR_CONFIG_SETTING_BRIBE_HELPTEXT                               :“打开”时，允许贿赂地方政府，如果被发现，在该城市将被限制经营活动六个月
+STR_CONFIG_SETTING_BRIBE_HELPTEXT_MINUTES                       :允许公司尝试贿赂当地镇政府。如果贿赂被发现，公司在该城市将被限制经营活动 6 分钟。
 
 STR_CONFIG_SETTING_ALLOW_EXCLUSIVE                              :允许买断经营权： {STRING}
 ###length 2
 STR_CONFIG_SETTING_ALLOW_EXCLUSIVE_HELPTEXT                     :如果一家公司购买了城市独家经营权，其它公司的站台将在一年之内不再产生乘客或者货物。
+STR_CONFIG_SETTING_ALLOW_EXCLUSIVE_HELPTEXT_MINUTES             :如果一家公司购买了城市独家经营权，其它公司的站台将在 12 分钟之内不再产生乘客或者货物。
 
 STR_CONFIG_SETTING_ALLOW_FUND_BUILDINGS                         :允许资助城镇建设: {STRING}
 STR_CONFIG_SETTING_ALLOW_FUND_BUILDINGS_HELPTEXT                :“打开”时，允许公司提供资助新建房屋
@@ -1486,12 +1506,13 @@ STR_CONFIG_SETTING_ORDER_REVIEW_ON                              :检查 所有�
 STR_CONFIG_SETTING_WARN_INCOME_LESS                             :若线路亏损时发出提示： {STRING}
 ###length 2
 STR_CONFIG_SETTING_WARN_INCOME_LESS_HELPTEXT                    :“打开”，当一辆车在一年内总体亏损，发出提示
+STR_CONFIG_SETTING_WARN_INCOME_LESS_HELPTEXT_PERIOD             :启用时，若某载具在一周期内总体亏损，发出提示
 
 STR_CONFIG_SETTING_NEVER_EXPIRE_VEHICLES                        :载具永不过期：{STRING}
 STR_CONFIG_SETTING_NEVER_EXPIRE_VEHICLES_HELPTEXT               :启用时，所有载具一经面世，就可以永远选择购买使用。
 
 STR_CONFIG_SETTING_TIMEKEEPING_UNITS                            :时间模式：{STRING}
-STR_CONFIG_SETTING_TIMEKEEPING_UNITS_HELPTEXT                   :选择游戏的计时单位。 请注意此项无法在游戏进行时更改{}{}日历模式为经典 OpenTTD 体验，在此模式中，一年由 12 个月组成，每个月有 28-31 天。{}{}在挂钟模式中，车辆移动、货物生产和财务计算等都以分钟为单位，一分钟约等于日历模式中的一个月，即 30 天。两种模式都包含一个用来记录载具、房屋与其他基础设施引入日期的计时器。
+STR_CONFIG_SETTING_TIMEKEEPING_UNITS_HELPTEXT                   :选择游戏的计时模式。 请注意此项无法在游戏进行时更改{}{}日历模式为经典的 OpenTTD 体验，在此模式中，一年由 12 个月组成，每个月有 28-31 天。{}{}在挂钟模式中，车辆移动、货物生产和财务计算等都以分钟为单位，一分钟约等于日历模式中的一个月，即 30 天。两种模式都包含一个用来记录载具、房屋与其他基础设施引入日期的计时器。
 ###length 2
 STR_CONFIG_SETTING_TIMEKEEPING_UNITS_CALENDAR                   :日历
 STR_CONFIG_SETTING_TIMEKEEPING_UNITS_WALLCLOCK                  :挂钟
@@ -1501,6 +1522,8 @@ STR_CONFIG_SETTING_MINUTES_PER_YEAR_HELPTEXT                    :选择在使用
 
 STR_CONFIG_SETTING_MINUTES_PER_YEAR_VALUE                       :{NUM}
 ###setting-zero-is-special
+STR_CONFIG_SETTING_MINUTES_PER_YEAR_FROZEN                      :0（日期停止）
+
 
 STR_CONFIG_SETTING_AUTORENEW_VEHICLE                            :当车辆报废时自动更新：{STRING}
 STR_CONFIG_SETTING_AUTORENEW_VEHICLE_HELPTEXT                   :“打开”时，车辆在临近它的报废期限时自动更新
@@ -1756,9 +1779,11 @@ STR_CONFIG_SETTING_SOUND_NEWS_HELPTEXT                          :显示报纸时
 
 ###length 2
 STR_CONFIG_SETTING_SOUND_NEW_YEAR                               :年终: {STRING}
+STR_CONFIG_SETTING_SOUND_NEW_PERIOD                             :周期结束：{STRING}
 
 ###length 2
 STR_CONFIG_SETTING_SOUND_NEW_YEAR_HELPTEXT                      :在年末弹出报表时，播放相应音效
+STR_CONFIG_SETTING_SOUND_NEW_PERIOD_HELPTEXT                    :在经济周期末弹出报表时，播放相应音效
 
 STR_CONFIG_SETTING_SOUND_CONFIRM                                :建设: {STRING}
 STR_CONFIG_SETTING_SOUND_CONFIRM_HELPTEXT                       :播放成功建设或执行其它动作时的音效
@@ -2060,6 +2085,7 @@ STR_CONFIG_SETTING_LOCALISATION_UNITS_VELOCITY_IMPERIAL         :英制（英里
 STR_CONFIG_SETTING_LOCALISATION_UNITS_VELOCITY_METRIC           :公制（千米/小时）
 STR_CONFIG_SETTING_LOCALISATION_UNITS_VELOCITY_SI               :国际单位制（米/秒）
 STR_CONFIG_SETTING_LOCALISATION_UNITS_VELOCITY_GAMEUNITS_DAYS   :游戏单位（格/日）
+STR_CONFIG_SETTING_LOCALISATION_UNITS_VELOCITY_GAMEUNITS_SECS   :游戏单位（格/秒）
 STR_CONFIG_SETTING_LOCALISATION_UNITS_VELOCITY_KNOTS            :节
 
 STR_CONFIG_SETTING_LOCALISATION_UNITS_POWER                     :载具功率单位：{STRING}
@@ -2372,6 +2398,7 @@ STR_NETWORK_SERVER_LIST_MAP_SIZE_CAPTION_TOOLTIP                :{BLACK}游戏�
 STR_NETWORK_SERVER_LIST_DATE_CAPTION                            :{BLACK}日期
 STR_NETWORK_SERVER_LIST_DATE_CAPTION_TOOLTIP                    :{BLACK}当前日期
 STR_NETWORK_SERVER_LIST_PLAY_TIME_SHORT                         :{BLACK}{NUM}{NBSP}时{NBSP}{NUM}{NBSP}分
+STR_NETWORK_SERVER_LIST_PLAY_TIME_CAPTION                       :游戏时间
 STR_NETWORK_SERVER_LIST_PLAY_TIME_CAPTION_TOOLTIP               :{BLACK}有戏已进行的时间，不计暂停的时间。
 STR_NETWORK_SERVER_LIST_INFO_ICONS_TOOLTIP                      :{BLACK}语言，服务器版本和其他信息
 
@@ -2381,13 +2408,13 @@ STR_NETWORK_SERVER_LIST_CLICK_TO_SELECT_LAST                    :{BLACK}点击�
 
 STR_NETWORK_SERVER_LIST_GAME_INFO                               :{SILVER}游戏信息
 STR_NETWORK_SERVER_LIST_CLIENTS                                 :{SILVER}客户端：　{WHITE}{COMMA} / {COMMA} - {COMMA} / {COMMA}
-STR_NETWORK_SERVER_LIST_LANDSCAPE                               :{SILVER}场景类型: {WHITE}{STRING}
-STR_NETWORK_SERVER_LIST_MAP_SIZE                                :{SILVER}地图尺寸: {WHITE}{COMMA}×{COMMA}
-STR_NETWORK_SERVER_LIST_SERVER_VERSION                          :{SILVER}游戏版本: {WHITE}{STRING}
-STR_NETWORK_SERVER_LIST_SERVER_ADDRESS                          :{SILVER}该服IP: {WHITE}{STRING}
+STR_NETWORK_SERVER_LIST_LANDSCAPE                               :{SILVER}场景类型：{WHITE}{STRING}
+STR_NETWORK_SERVER_LIST_MAP_SIZE                                :{SILVER}地图尺寸：{WHITE}{COMMA}×{COMMA}
+STR_NETWORK_SERVER_LIST_SERVER_VERSION                          :{SILVER}游戏版本：{WHITE}{STRING}
+STR_NETWORK_SERVER_LIST_SERVER_ADDRESS                          :{SILVER}该服IP：　{WHITE}{STRING}
 STR_NETWORK_SERVER_LIST_INVITE_CODE                             :{SILVER}邀请代码：{WHITE}{STRING}
-STR_NETWORK_SERVER_LIST_START_DATE                              :{SILVER}开始日期: {WHITE}{DATE_SHORT}
-STR_NETWORK_SERVER_LIST_CURRENT_DATE                            :{SILVER}当前日期: {WHITE}{DATE_SHORT}
+STR_NETWORK_SERVER_LIST_START_DATE                              :{SILVER}开始日期：{WHITE}{DATE_SHORT}
+STR_NETWORK_SERVER_LIST_CURRENT_DATE                            :{SILVER}当前日期：{WHITE}{DATE_SHORT}
 STR_NETWORK_SERVER_LIST_PLAY_TIME                               :{SILVER}游戏时间：{WHITE}{NUM} 时 {NUM} 分
 STR_NETWORK_SERVER_LIST_GAMESCRIPT                              :{SILVER}游戏脚本：{WHITE}{STRING} (v{NUM})
 STR_NETWORK_SERVER_LIST_PASSWORD                                :{SILVER}有密码保护！
@@ -2744,6 +2771,8 @@ STR_LINKGRAPH_LEGEND_SATURATED                                  :{TINY_FONT}{BLA
 STR_LINKGRAPH_LEGEND_OVERLOADED                                 :{TINY_FONT}{BLACK}超载
 
 # Linkgraph tooltip
+STR_LINKGRAPH_STATS_TOOLTIP_MONTH                               :{BLACK}每月有 {CARGO_LONG} 需从 {STATION} 运至 {STATION} （运载能力的 {COMMA}%）{STRING}
+STR_LINKGRAPH_STATS_TOOLTIP_MINUTE                              :{BLACK}每分钟有 {CARGO_LONG} 需从 {STATION} 运至 {STATION} （运载能力的 {COMMA}%）{STRING}
 STR_LINKGRAPH_STATS_TOOLTIP_RETURN_EXTENSION                    :{}有{CARGO_LONG}要运回(运载能力的{COMMA}%)
 STR_LINKGRAPH_STATS_TOOLTIP_TIME_EXTENSION                      :{}平均行驶时间: {UNITS_DAYS_OR_SECONDS}
 
@@ -2755,6 +2784,7 @@ STR_STATION_BUILD_COVERAGE_AREA_OFF_TOOLTIP                     :{BLACK}不显�
 STR_STATION_BUILD_COVERAGE_AREA_ON_TOOLTIP                      :{BLACK}显示可以覆盖的区域
 STR_STATION_BUILD_ACCEPTS_CARGO                                 :{BLACK}接受：{GOLD}{CARGO_LIST}
 STR_STATION_BUILD_SUPPLIES_CARGO                                :{BLACK}供给: {GOLD}{CARGO_LIST}
+STR_STATION_BUILD_INFRASTRUCTURE_COST_YEAR                      :{BLACK}维护成本：{GOLD}{CURRENCY_SHORT}/年
 STR_STATION_BUILD_INFRASTRUCTURE_COST_PERIOD                    :{BLACK}维护成本：{GOLD}{CURRENCY_SHORT}/周期
 
 # Join station window
@@ -3057,7 +3087,7 @@ STR_INDUSTRY_CARGOES_SELECT_INDUSTRY_TOOLTIP                    :{BLACK}选择�
 
 # Land area window
 STR_LAND_AREA_INFORMATION_CAPTION                               :{WHITE}地块信息
-STR_LAND_AREA_INFORMATION_LOCATION_TOOLTIP                      :{BLACK}将屏幕中心移动到地块所在的位置。单击的同时按住Ctrl会在新视点中显示地块位置
+STR_LAND_AREA_INFORMATION_LOCATION_TOOLTIP                      :{BLACK}将屏幕中心移动到地块所在的位置。单击的同时按住 <Ctrl> 会在新视点中显示地块位置。
 STR_LAND_AREA_INFORMATION_COST_TO_CLEAR_N_A                     :{BLACK}清除费用：{LTBLUE}N/A 不能清除
 STR_LAND_AREA_INFORMATION_COST_TO_CLEAR                         :{BLACK}清除费用：{RED}{CURRENCY_LONG}
 STR_LAND_AREA_INFORMATION_REVENUE_WHEN_CLEARED                  :{BLACK}清除收入： {LTBLUE}{CURRENCY_LONG}
@@ -3652,9 +3682,11 @@ STR_LOCAL_AUTHORITY_ACTION_TOOLTIP_SMALL_ADVERTISING            :{PUSH_COLOUR}{Y
 STR_LOCAL_AUTHORITY_ACTION_TOOLTIP_MEDIUM_ADVERTISING           :{PUSH_COLOUR}{YELLOW}进行中型的广告宣传，以吸引更多的旅客和货物选择贵公司的服务。{}为位于该城镇中心中等距离内的车站提供暂时的评分增益。{}{POP_COLOUR}费用：{CURRENCY_LONG}
 STR_LOCAL_AUTHORITY_ACTION_TOOLTIP_LARGE_ADVERTISING            :{PUSH_COLOUR}{YELLOW}进行大型的广告宣传，以吸引更多的旅客和货物选择贵公司的服务。{}为位于该城镇中心较远距离内的车站提供暂时的评分增益。{}{POP_COLOUR}费用：{CURRENCY_LONG}
 STR_LOCAL_AUTHORITY_ACTION_TOOLTIP_ROAD_RECONSTRUCTION_MONTHS   :{PUSH_COLOUR}{YELLOW}资助城镇路网重建。{}这将堵塞城镇交通 6 个月。{}{POP_COLOUR}费用：{CURRENCY_LONG}
+STR_LOCAL_AUTHORITY_ACTION_TOOLTIP_ROAD_RECONSTRUCTION_MINUTES  :{PUSH_COLOUR}{YELLOW}资助城镇路网重建。{}这将堵塞城镇交通 6 个月。{}{POP_COLOUR}费用：{CURRENCY_LONG}
 STR_LOCAL_AUTHORITY_ACTION_TOOLTIP_STATUE_OF_COMPANY            :{PUSH_COLOUR}{YELLOW}以公司的名义设立一尊塑像。{}为位于该城镇的车站提供永久的评分增益。{}{POP_COLOUR}费用：{CURRENCY_LONG}
 STR_LOCAL_AUTHORITY_ACTION_TOOLTIP_NEW_BUILDINGS                :{PUSH_COLOUR}{YELLOW}资助市内建设新的房屋建筑。{}为城镇提供暂时的成长速度增益。{}{POP_COLOUR}费用：{CURRENCY_LONG}
 STR_LOCAL_AUTHORITY_ACTION_TOOLTIP_EXCLUSIVE_TRANSPORT_MONTHS   :{PUSH_COLOUR}{YELLOW}购买本城镇时长 12 个月的独家运输权。{}本城镇的乘客和货物将不会使用其他公司的车站。若竞争对手贿赂成功则此合同将被取消。{}{POP_COLOUR}费用：{CURRENCY_LONG}
+STR_LOCAL_AUTHORITY_ACTION_TOOLTIP_EXCLUSIVE_TRANSPORT_MINUTES  :{PUSH_COLOUR}{YELLOW}购买本城镇时长 12 分钟的独家运输权。{}本城镇的乘客和货物将不会使用其他公司的车站。若竞争对手贿赂成功则此合同将被取消。{}{POP_COLOUR}费用：{CURRENCY_LONG}
 STR_LOCAL_AUTHORITY_ACTION_TOOLTIP_BRIBE                        :{PUSH_COLOUR}{YELLOW}贿赂地方政府以提高评价，并终止竞争者的运输专营权，但有被发现后严厉惩罚的风险。{}{POP_COLOUR}费用：{CURRENCY_LONG}
 
 # Goal window
@@ -3750,6 +3782,7 @@ STR_STATION_VIEW_EXCLUSIVE_RIGHTS_COMPANY                       :{YELLOW}{COMPAN
 STR_STATION_VIEW_RATINGS_BUTTON                                 :{BLACK}评价
 STR_STATION_VIEW_RATINGS_TOOLTIP                                :{BLACK}显示车站评价
 STR_STATION_VIEW_SUPPLY_RATINGS_TITLE_MONTH                     :{BLACK}每月供应数量与本地评价：
+STR_STATION_VIEW_SUPPLY_RATINGS_TITLE_MINUTE                    :每分钟供应量与本地评价：
 STR_STATION_VIEW_CARGO_SUPPLY_RATING                            :{WHITE}{STRING}: {YELLOW}{COMMA} / {STRING} ({COMMA}%)
 
 STR_STATION_VIEW_GROUP                                          :{BLACK}群组方式
@@ -3810,6 +3843,8 @@ STR_EDIT_WAYPOINT_NAME                                          :{WHITE}编辑�
 # Finances window
 STR_FINANCES_CAPTION                                            :{WHITE}{COMPANY} 财务报表 {BLACK}{COMPANY_NUM}
 STR_FINANCES_YEAR                                               :{WHITE}{NUM}
+STR_FINANCES_YEAR_CAPTION                                       :年份
+STR_FINANCES_PERIOD_CAPTION                                     :{WHITE}周期
 
 ###length 3
 STR_FINANCES_REVENUE_TITLE                                      :{WHITE}收入
@@ -3911,6 +3946,8 @@ STR_COMPANY_INFRASTRUCTURE_VIEW_CANALS                          :{WHITE}运河
 STR_COMPANY_INFRASTRUCTURE_VIEW_STATION_SECT                    :{GOLD}站台：
 STR_COMPANY_INFRASTRUCTURE_VIEW_STATIONS                        :{WHITE}车站
 STR_COMPANY_INFRASTRUCTURE_VIEW_AIRPORTS                        :{WHITE}机场
+STR_COMPANY_INFRASTRUCTURE_VIEW_TOTAL_YEAR                      :{WHITE}{CURRENCY_LONG}/年
+STR_COMPANY_INFRASTRUCTURE_VIEW_TOTAL_PERIOD                    :{WHITE}{CURRENCY_LONG}/周期
 
 # Industry directory
 STR_INDUSTRY_DIRECTORY_CAPTION                                  :{WHITE}工业设施
@@ -3930,6 +3967,7 @@ STR_INDUSTRY_DIRECTORY_FILTER_NONE                              :无
 # Industry view
 STR_INDUSTRY_VIEW_CAPTION                                       :{WHITE}{INDUSTRY}
 STR_INDUSTRY_VIEW_PRODUCTION_LAST_MONTH_TITLE                   :{BLACK}上月产量：
+STR_INDUSTRY_VIEW_PRODUCTION_LAST_MINUTE_TITLE                  :{BLACK}上分钟产量：
 STR_INDUSTRY_VIEW_TRANSPORTED                                   :{YELLOW}{CARGO_LONG}{STRING}{BLACK} ({COMMA}% 已运输)
 STR_INDUSTRY_VIEW_LOCATION_TOOLTIP                              :{BLACK}将屏幕中心移动到工厂所在的位置. 单击的同时按住Ctrl会在新视点中显示工厂位置
 STR_INDUSTRY_VIEW_PRODUCTION_LEVEL                              :{BLACK}生产等级: {YELLOW}{COMMA}%
@@ -4017,6 +4055,7 @@ STR_GROUP_REMOVE_ALL_VEHICLES                                   :移除所有车
 STR_GROUP_RENAME_CAPTION                                        :{BLACK}重命名分组
 
 STR_GROUP_PROFIT_THIS_YEAR                                      :今年利润：
+STR_GROUP_PROFIT_THIS_PERIOD                                    :本期损益：
 STR_GROUP_PROFIT_LAST_YEAR                                      :去年利润
 STR_GROUP_PROFIT_LAST_PERIOD                                    :上周期损益：
 STR_GROUP_OCCUPANCY                                             :当前使用量：
@@ -4046,6 +4085,7 @@ STR_PURCHASE_INFO_SPEED                                         :{BLACK}速度�
 STR_PURCHASE_INFO_SPEED_OCEAN                                   :{BLACK}在海洋上的速度： {GOLD}{VELOCITY}
 STR_PURCHASE_INFO_SPEED_CANAL                                   :{BLACK}在河流上的速度： {GOLD}{VELOCITY}
 STR_PURCHASE_INFO_RUNNINGCOST_YEAR                              :{BLACK}运行费用：{GOLD}{CURRENCY_LONG}/年
+STR_PURCHASE_INFO_RUNNINGCOST_PERIOD                            :{BLACK}运行费用：{GOLD}{CURRENCY_LONG}/周期
 STR_PURCHASE_INFO_CAPACITY                                      :{BLACK}运载能力：{GOLD}{CARGO_LONG} {STRING}
 STR_PURCHASE_INFO_REFITTABLE                                    :(可改装)
 STR_PURCHASE_INFO_DESIGNED_LIFE                                 :{BLACK}设计日期：{GOLD}{NUM}{BLACK} 寿命：{GOLD}{COMMA} 年
@@ -4099,7 +4139,7 @@ STR_BUY_VEHICLE_AIRCRAFT_BUY_VEHICLE_TOOLTIP                    :{BLACK}购买�
 STR_BUY_VEHICLE_TRAIN_BUY_REFIT_VEHICLE_TOOLTIP                 :{BLACK}购买并改装选定的列车。按住 <Shift> 键单击可以显示所需资金
 STR_BUY_VEHICLE_ROAD_VEHICLE_BUY_REFIT_VEHICLE_TOOLTIP          :{BLACK}购买并改装选定的汽车。按住 Shift 键单击可以显示所需资金
 STR_BUY_VEHICLE_SHIP_BUY_REFIT_VEHICLE_TOOLTIP                  :{BLACK}购买并改装选定的船只。按住 Shift 键单击可以显示所需资金
-STR_BUY_VEHICLE_AIRCRAFT_BUY_REFIT_VEHICLE_TOOLTIP              :购买并改装选定的飞机，按住 Shift 键单击可以显示所需资金
+STR_BUY_VEHICLE_AIRCRAFT_BUY_REFIT_VEHICLE_TOOLTIP              :{BLACK}购买并改装选定的飞机，按住 Shift 键单击可以显示所需资金
 
 ###length VEHICLE_TYPES
 STR_BUY_VEHICLE_TRAIN_RENAME_BUTTON                             :{BLACK}重命名
@@ -4238,9 +4278,13 @@ STR_ENGINE_PREVIEW_TRAM_VEHICLE                                 :电车
 STR_ENGINE_PREVIEW_AIRCRAFT                                     :飞机
 STR_ENGINE_PREVIEW_SHIP                                         :船只
 
+STR_ENGINE_PREVIEW_TEXT3                                        :{BLACK}{STRING}{}{5:STRING}{}{STRING}
 STR_ENGINE_PREVIEW_TEXT4                                        :{BLACK}{STRING}{}{STRING}{}{STRING}{}{STRING}
+STR_ENGINE_PREVIEW_COST_WEIGHT                                  :售价：{CURRENCY_LONG} 重量：{WEIGHT_SHORT}
 STR_ENGINE_PREVIEW_COST_MAX_SPEED                               :售价：{CURRENCY_LONG}  最大速度：{VELOCITY}
+STR_ENGINE_PREVIEW_SPEED_POWER                                  :速度：{VELOCITY} 功率：{POWER}
 STR_ENGINE_PREVIEW_SPEED_POWER_MAX_TE                           :速度：{VELOCITY}  功率：{POWER}  最大牵引力：{FORCE}
+STR_ENGINE_PREVIEW_TYPE                                         :飞机类型：{STRING}
 STR_ENGINE_PREVIEW_TYPE_RANGE                                   :飞机类别：{STRING}   航程：{COMMA} 格
 STR_ENGINE_PREVIEW_RUNCOST_YEAR                                 :运行费用：{CURRENCY_LONG}/年
 STR_ENGINE_PREVIEW_RUNCOST_PERIOD                               :运行费用：{CURRENCY_LONG}/周期
@@ -4401,6 +4445,8 @@ STR_VEHICLE_INFO_WEIGHT_POWER_MAX_SPEED_MAX_TE                  :{BLACK}重量�
 
 STR_VEHICLE_INFO_PROFIT_THIS_YEAR_LAST_YEAR                     :{BLACK}今年利润：{LTBLUE}{CURRENCY_LONG} (去年利润：{CURRENCY_LONG})
 STR_VEHICLE_INFO_PROFIT_THIS_YEAR_LAST_YEAR_MIN_PERFORMANCE     :{BLACK}今年利润: {LTBLUE}{CURRENCY_LONG} (去年利润: {CURRENCY_LONG}) {BLACK}最小功率: {LTBLUE}{POWER_TO_WEIGHT}
+STR_VEHICLE_INFO_PROFIT_THIS_PERIOD_LAST_PERIOD                 :{BLACK}本期损益：{LTBLUE}{CURRENCY_LONG}（上期损益：{CURRENCY_LONG}）
+STR_VEHICLE_INFO_PROFIT_THIS_PERIOD_LAST_PERIOD_MIN_PERFORMANCE :{BLACK}本期损益：{LTBLUE}{CURRENCY_LONG}（上期损益：{CURRENCY_LONG})）{BLACK}最小功率：{LTBLUE}{POWER_TO_WEIGHT}
 STR_VEHICLE_INFO_RELIABILITY_BREAKDOWNS                         :{BLACK}可靠性：{LTBLUE}{COMMA}%  {BLACK}上次保养后抛锚的次数：{LTBLUE}{COMMA}
 
 STR_VEHICLE_INFO_BUILT_VALUE                                    :{LTBLUE}{ENGINE} {BLACK}建造年份：{LTBLUE}{NUM}{BLACK} 价值：{LTBLUE}{CURRENCY_LONG}
@@ -4416,12 +4462,17 @@ STR_VEHICLE_DETAILS_SERVICING_INTERVAL_MINUTES                  :{BLACK}服务�
 STR_VEHICLE_DETAILS_SERVICING_INTERVAL_PERCENT                  :{BLACK}保养周期：{LTBLUE}{COMMA}%{BLACK}   上次保养：{LTBLUE}{STRING}
 STR_VEHICLE_DETAILS_LAST_SERVICE_DATE                           :最近保养：{LTBLUE}{DATE_LONG}
 STR_VEHICLE_DETAILS_LAST_SERVICE_MINUTES_AGO                    :最近保养：{LTBLUE}{NUM}{NBSP}分钟前
+STR_VEHICLE_DETAILS_INCREASE_SERVICING_INTERVAL_TOOLTIP_DAYS    :将维修间隔增大 10 天。按住 <Ctrl> 点击可将维修间隔增大 5 天。
+STR_VEHICLE_DETAILS_INCREASE_SERVICING_INTERVAL_TOOLTIP_MINUTES :{BLACK}将维修间隔增大 5 分。按住 <Ctrl> 点击可将维修间隔增大 1 分 。
+STR_VEHICLE_DETAILS_INCREASE_SERVICING_INTERVAL_TOOLTIP_PERCENT :{BLACK}将维修间隔增大 10%。按住 <Ctrl> 点击可将维修间隔增大 5% 。
 STR_VEHICLE_DETAILS_DECREASE_SERVICING_INTERVAL_TOOLTIP_DAYS    :{BLACK}将维修间隔缩短 10 天。按住 <Ctrl> 点击可将维修间隔缩短 5 天。
 STR_VEHICLE_DETAILS_DECREASE_SERVICING_INTERVAL_TOOLTIP_MINUTES :{BLACK}将维修间隔缩短 5 分。按住 <Ctrl> 点击可将维修间隔缩短 1 分 。
 STR_VEHICLE_DETAILS_DECREASE_SERVICING_INTERVAL_TOOLTIP_PERCENT :{BLACK}将维修间隔缩短 10%。按住 <Ctrl> 点击可将维修间隔缩短 5% 。
 
 STR_SERVICE_INTERVAL_DROPDOWN_TOOLTIP                           :{BLACK}更改服务时间间隔类型
 STR_VEHICLE_DETAILS_DEFAULT                                     :默认
+STR_VEHICLE_DETAILS_DAYS                                        :天
+STR_VEHICLE_DETAILS_MINUTES                                     :分钟
 STR_VEHICLE_DETAILS_PERCENT                                     :百分比
 
 ###length VEHICLE_TYPES
@@ -5720,6 +5771,7 @@ STR_UNKNOWN_STATION                                             :未知车站（
 STR_DEFAULT_SIGN_NAME                                           :标志
 STR_COMPANY_SOMEONE                                             :某人
 
+STR_SAVEGAME_DURATION_REALTIME                                  :{NUM} 时 {NUM} 分
 STR_SAVEGAME_NAME_DEFAULT                                       :{COMPANY}, {STRING}
 STR_SAVEGAME_NAME_SPECTATOR                                     :观众, {1:STRING}
 
@@ -5753,6 +5805,10 @@ STR_TOWN_NAME                                                   :{TOWN}
 STR_VEHICLE_NAME                                                :{VEHICLE}
 STR_WAYPOINT_NAME                                               :{WAYPOINT}
 
+STR_CURRENCY_SHORT_KILO                                         :{NBSP}k
+STR_CURRENCY_SHORT_MEGA                                         :{NBSP}m
+STR_CURRENCY_SHORT_GIGA                                         :b
+STR_CURRENCY_SHORT_TERA                                         :t
 
 STR_JUST_CARGO                                                  :{CARGO_LONG}
 STR_JUST_RIGHT_ARROW                                            :{RIGHT_ARROW}

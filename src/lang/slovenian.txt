@@ -1466,6 +1466,7 @@ STR_CONFIG_SETTING_NEVER_EXPIRE_VEHICLES_HELPTEXT               :Če je omogoče
 
 ###setting-zero-is-special
 
+
 STR_CONFIG_SETTING_AUTORENEW_VEHICLE                            :Samoobnovi vozila, ko se postarajo: {STRING}
 STR_CONFIG_SETTING_AUTORENEW_VEHICLE_HELPTEXT                   :Če je omogočeno, se vozila ob koncu življenjske dobe avtomatsko zamenjajo pod pogoji samoobnove.
 

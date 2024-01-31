@@ -1269,6 +1269,7 @@ STR_CONFIG_SETTING_NEVER_EXPIRE_VEHICLES_HELPTEXT               :Um gilda, eru �
 
 ###setting-zero-is-special
 
+
 STR_CONFIG_SETTING_AUTORENEW_VEHICLE                            :Sjálvendurnýggja flutningstól tá ta gerst gamalt: {STRING}
 STR_CONFIG_SETTING_AUTORENEW_VEHICLE_HELPTEXT                   :Um gilda, verður eitt flutningstól tá tað nærkast endanum á sínum lívi sjálvirkandi umbýtt tá endurnýggjanar treytirnar eru nøktaðar
 

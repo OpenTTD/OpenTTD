@@ -1382,6 +1382,7 @@ STR_CONFIG_SETTING_NEVER_EXPIRE_VEHICLES_HELPTEXT               :Når aktivert, 
 
 ###setting-zero-is-special
 
+
 STR_CONFIG_SETTING_AUTORENEW_VEHICLE                            :Autoforny kjøretøy når det blir gammelt: {STRING}
 STR_CONFIG_SETTING_AUTORENEW_VEHICLE_HELPTEXT                   :Når aktivert, blir et kjøretøy som nærmer seg slutten av sin levetid automatisk erstattet når betingelsene for fornyelse er oppfylt
 

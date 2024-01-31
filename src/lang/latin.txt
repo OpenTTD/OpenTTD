@@ -1509,6 +1509,7 @@ STR_CONFIG_SETTING_NEVER_EXPIRE_VEHICLES_HELPTEXT               :Electa, omnes v
 
 ###setting-zero-is-special
 
+
 STR_CONFIG_SETTING_AUTORENEW_VEHICLE                            :Autoredimere vehicula cum veterascunt: {STRING}
 STR_CONFIG_SETTING_AUTORENEW_VEHICLE_HELPTEXT                   :Electa, vehicula veterascentia automatice redimuntur, condicionibus satisfactis
 

@@ -1174,6 +1174,7 @@ STR_CONFIG_SETTING_NEVER_EXPIRE_VEHICLES                        :گاڑیوں ک
 
 ###setting-zero-is-special
 
+
 STR_CONFIG_SETTING_AUTORENEW_VEHICLE                            :گاڑی پرانی ہونے کی صورت میں خودکار طریقے سے بدل دیں: {STRING}
 
 ###length 2

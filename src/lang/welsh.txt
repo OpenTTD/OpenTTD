@@ -1347,6 +1347,7 @@ STR_CONFIG_SETTING_NEVER_EXPIRE_VEHICLES_HELPTEXT               :Pan fo wedi'i a
 
 ###setting-zero-is-special
 
+
 STR_CONFIG_SETTING_AUTORENEW_VEHICLE                            :Awtoadnewyddu cerbyd pan aiff yn hen: {STRING}
 STR_CONFIG_SETTING_AUTORENEW_VEHICLE_HELPTEXT                   :Pan fo wedi'i alluogi, bydd cerbyd sy'n agos at ddiwedd ei oes yn cael ei ddisodli'n ddiofyn pan y caiff yr amodau adnewyddu eu cyflawni
 

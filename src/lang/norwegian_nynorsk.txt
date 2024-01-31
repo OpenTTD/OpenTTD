@@ -1293,6 +1293,7 @@ STR_CONFIG_SETTING_NEVER_EXPIRE_VEHICLES                        :Køyretøy utg�
 
 ###setting-zero-is-special
 
+
 STR_CONFIG_SETTING_AUTORENEW_VEHICLE                            :Autoforny køyretøy når det vert gamalt: {STRING}
 
 STR_CONFIG_SETTING_AUTORENEW_MONTHS                             :Automatisk fornying når køyretøy er {STRING} maks alder

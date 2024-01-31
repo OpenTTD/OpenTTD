@@ -1448,6 +1448,7 @@ STR_CONFIG_SETTING_NEVER_EXPIRE_VEHICLES_HELPTEXT               :Om det är akti
 
 ###setting-zero-is-special
 
+
 STR_CONFIG_SETTING_AUTORENEW_VEHICLE                            :Förnya fordon automatiskt när de blir gamla: {STRING}
 STR_CONFIG_SETTING_AUTORENEW_VEHICLE_HELPTEXT                   :Om det är aktiverat kommer ett fordon som närmar sig slutet av sin livslängd automatiskt att bytas ut när villkoren för förnyelse är uppfyllda
 

@@ -1348,6 +1348,7 @@ STR_CONFIG_SETTING_NEVER_EXPIRE_VEHICLES_HELPTEXT               :כאשר מאו
 
 ###setting-zero-is-special
 
+
 STR_CONFIG_SETTING_AUTORENEW_VEHICLE                            :חידוש עצמי של רכב כשהוא נהיה ישן: {STRING}
 STR_CONFIG_SETTING_AUTORENEW_VEHICLE_HELPTEXT                   :כאשר מאופשר, רכב המתקרב לסוף חייו מוחלף אוטומטית כאשר תנאי החידוש מתקיימים
 

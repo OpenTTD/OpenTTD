@@ -836,6 +836,7 @@ STR_STATUSBAR_AUTOSAVE                                          :{RED}Salvo Auto
 STR_STATUSBAR_SAVING_GAME                                       :{RED}*  *  SALVANDO JOGO  *  *
 
 STR_STATUSBAR_SPECTATOR                                         :{WHITE}(espectador)
+STR_STATUSBAR_INFINITE_MONEY                                    :{WHITE}(dinheiro infinito)
 
 # News message history
 STR_MESSAGE_HISTORY                                             :{WHITE}Histórico de Mensagens
@@ -1288,6 +1289,8 @@ STR_CONFIG_SETTING_HORIZONTAL_POS_RIGHT                         :Direita
 
 STR_CONFIG_SETTING_SECONDS_VALUE                                :{COMMA}{NBSP}segundo{P 0 "" s}
 
+STR_CONFIG_SETTING_INFINITE_MONEY                               :Dinheiro infinito: {STRING}
+STR_CONFIG_SETTING_INFINITE_MONEY_HELPTEXT                      :Permitir gastos sem limite e desabilitar falência das companhias
 
 STR_CONFIG_SETTING_MAXIMUM_INITIAL_LOAN                         :Empréstimo Inicial Máximo: {STRING}
 STR_CONFIG_SETTING_MAXIMUM_INITIAL_LOAN_HELPTEXT                :Quantia máxima a ser emprestada para uma companhia (sem levar em conta a inflação)
@@ -1521,6 +1524,7 @@ STR_CONFIG_SETTING_MINUTES_PER_YEAR_HELPTEXT                    :Escolher o núm
 STR_CONFIG_SETTING_MINUTES_PER_YEAR_VALUE                       :{NUM}
 ###setting-zero-is-special
 STR_CONFIG_SETTING_MINUTES_PER_YEAR_FROZEN                      :0 (tempo do calendário congelado)
+
 
 STR_CONFIG_SETTING_AUTORENEW_VEHICLE                            :Auto-renovação de veículos quando ficam velhos: {STRING}
 STR_CONFIG_SETTING_AUTORENEW_VEHICLE_HELPTEXT                   :Quando ativado, os veículos próximos do fim da vida útil são automaticamente substituídos quando as condições forem atingidas
@@ -1940,7 +1944,7 @@ STR_CONFIG_SETTING_DRAG_SIGNALS_DENSITY                         :Ao arrastar, co
 STR_CONFIG_SETTING_DRAG_SIGNALS_DENSITY_HELPTEXT                :Define a distância a cada qual sinais serão construídos até o próximo obstáculo (sinal, intersecção), ao clicar e arrastar sinais
 STR_CONFIG_SETTING_DRAG_SIGNALS_DENSITY_VALUE                   :{COMMA} quadrado{P "" s}
 STR_CONFIG_SETTING_DRAG_SIGNALS_FIXED_DISTANCE                  :Ao arrastar, manter distância fixa entre os sinais: {STRING}
-STR_CONFIG_SETTING_DRAG_SIGNALS_FIXED_DISTANCE_HELPTEXT         :Selecione o comportamento da construção de sinais ao Ctrl+Arrastar. Se desativado, sinais são colocados ao redor de túneis ou pontes para evitar trechos compridos sem sinalização. Se ativado, sinais são colocados a cada N quadrados, tornando o alinhamento de sinais em trilhos paralelos mais fácil
+STR_CONFIG_SETTING_DRAG_SIGNALS_FIXED_DISTANCE_HELPTEXT         :Selecione o comportamento da colocação de sinais ao usar Ctrl+Arrastar. Se desativado, sinais são colocados ao redor de túneis ou pontes para evitar trechos longos sem sinais. Se ativado, sinais são colocados a cada N quadrados, facilitando o alinhamento de sinais em linhas paralelas
 
 STR_CONFIG_SETTING_SEMAPHORE_BUILD_BEFORE_DATE                  :Construir sinaleiros até: {STRING}
 STR_CONFIG_SETTING_SEMAPHORE_BUILD_BEFORE_DATE_HELPTEXT         :Seleciona o ano a partir do qual semáforos substituirão sinais. Antes desse ano, serão utilizados sinais de placa (diferença puramente estética)
@@ -2394,7 +2398,7 @@ STR_NETWORK_SERVER_LIST_MAP_SIZE_CAPTION                        :{BLACK}Tamanho 
 STR_NETWORK_SERVER_LIST_MAP_SIZE_CAPTION_TOOLTIP                :{BLACK}Tamanho do mapa do jogo{}Clique para exibir por área
 STR_NETWORK_SERVER_LIST_DATE_CAPTION                            :{BLACK}Data
 STR_NETWORK_SERVER_LIST_DATE_CAPTION_TOOLTIP                    :{BLACK}Data atual
-STR_NETWORK_SERVER_LIST_PLAY_TIME_SHORT                         :{BLACK}{NUM}h {NUM}m
+STR_NETWORK_SERVER_LIST_PLAY_TIME_SHORT                         :{BLACK}{NUM}h {NUM}min
 STR_NETWORK_SERVER_LIST_PLAY_TIME_CAPTION                       :{BLACK}Tempo de jogo
 STR_NETWORK_SERVER_LIST_PLAY_TIME_CAPTION_TOOLTIP               :{BLACK}Tempo jogando enquanto{}o jogo não estava pausado
 STR_NETWORK_SERVER_LIST_INFO_ICONS_TOOLTIP                      :{BLACK}Idioma, versão do servidor, etc.
@@ -2412,7 +2416,7 @@ STR_NETWORK_SERVER_LIST_SERVER_ADDRESS                          :{SILVER}IP do s
 STR_NETWORK_SERVER_LIST_INVITE_CODE                             :{SILVER}Código de convite: {WHITE}{STRING}
 STR_NETWORK_SERVER_LIST_START_DATE                              :{SILVER}Data de inicio: {WHITE}{DATE_SHORT}
 STR_NETWORK_SERVER_LIST_CURRENT_DATE                            :{SILVER}Data atual: {WHITE}{DATE_SHORT}
-STR_NETWORK_SERVER_LIST_PLAY_TIME                               :{SILVER}Tempo de jogo: {WHITE}{NUM}h {NUM}m
+STR_NETWORK_SERVER_LIST_PLAY_TIME                               :{SILVER}Tempo de jogo: {WHITE}{NUM}h {NUM}min
 STR_NETWORK_SERVER_LIST_GAMESCRIPT                              :{SILVER}Script de jogo: {WHITE}{STRING} (v{NUM})
 STR_NETWORK_SERVER_LIST_PASSWORD                                :{SILVER}Protegido por senha!
 STR_NETWORK_SERVER_LIST_SERVER_OFFLINE                          :{SILVER}SERVIDOR DESLIGADO
@@ -2805,7 +2809,7 @@ STR_RAIL_TOOLBAR_TOOLTIP_BUILD_AUTORAIL                         :{BLACK}Construi
 STR_RAIL_TOOLBAR_TOOLTIP_BUILD_TRAIN_DEPOT_FOR_BUILDING         :{BLACK}Construir depósito de trem (para aquisição e manutenção de trens). Pressionar Shift mostra o custo estimado
 STR_RAIL_TOOLBAR_TOOLTIP_CONVERT_RAIL_TO_WAYPOINT               :{BLACK}Construir ponto de controle na ferrovia. Ctrl+Clique para selecionar outro ponto de controle e unir  com esse. Pressionar Shift mostra o custo estimado
 STR_RAIL_TOOLBAR_TOOLTIP_BUILD_RAILROAD_STATION                 :{BLACK}Construir estação ferroviária. Ctrl+Clique para selecionar outra estação e unir  com essa. Pressionar Shift mostra o custo estimado
-STR_RAIL_TOOLBAR_TOOLTIP_BUILD_RAILROAD_SIGNALS                 :{BLACK}Cosntruir sinal na ferrovia. Ctrl+Clique para construir o sinal com estilo diferente{}Clique+Arraste para preencher a seção de ferrovia selecionada com os sinais no espaçamento escolhido. Ctrl+Clique+Arraste para colocar sinais até a próxima, junção, estação ou sinal. Pressione Shift para somente mostrar o custo estimado
+STR_RAIL_TOOLBAR_TOOLTIP_BUILD_RAILROAD_SIGNALS                 :{BLACK}Construir sinal na ferrovia. Ctrl+Clique para construir o sinal com estilo diferente{}Clique+Arraste para preencher a seção selecionada da ferrovia com os sinais no espaçamento escolhido. Ctrl+Clique+Arraste para colocar sinais até a próxima junção, estação ou sinal. Pressionar Shift mostra o custo estimado
 STR_RAIL_TOOLBAR_TOOLTIP_BUILD_RAILROAD_BRIDGE                  :{BLACK}Construir ponte ferroviária. Shift alterna construir/mostrar custo estimado
 STR_RAIL_TOOLBAR_TOOLTIP_BUILD_RAILROAD_TUNNEL                  :{BLACK}Construir túnel ferroviário. Pressionar Shift mostra o custo estimado
 STR_RAIL_TOOLBAR_TOOLTIP_TOGGLE_BUILD_REMOVE_FOR                :{BLACK}Alternar entre construir/remover linha férrea, sinais, pontos de passagem e estações. Manter Ctrl pressionado também remove a linha férrea de pontos de passagem e estações
@@ -5768,6 +5772,7 @@ STR_UNKNOWN_STATION                                             :estação desco
 STR_DEFAULT_SIGN_NAME                                           :Placa
 STR_COMPANY_SOMEONE                                             :alguém
 
+STR_SAVEGAME_DURATION_REALTIME                                  :{NUM}h {NUM}min
 STR_SAVEGAME_NAME_DEFAULT                                       :{COMPANY}, {STRING}
 STR_SAVEGAME_NAME_SPECTATOR                                     :Espectador, {1:STRING}
 
@@ -5801,6 +5806,10 @@ STR_TOWN_NAME                                                   :{TOWN}
 STR_VEHICLE_NAME                                                :{VEHICLE}
 STR_WAYPOINT_NAME                                               :{WAYPOINT}
 
+STR_CURRENCY_SHORT_KILO                                         :{NBSP}k
+STR_CURRENCY_SHORT_MEGA                                         :{NBSP}m
+STR_CURRENCY_SHORT_GIGA                                         :{NBSP}bn
+STR_CURRENCY_SHORT_TERA                                         :{NBSP}tn
 
 STR_JUST_CARGO                                                  :{CARGO_LONG}
 STR_JUST_RIGHT_ARROW                                            :{RIGHT_ARROW}
