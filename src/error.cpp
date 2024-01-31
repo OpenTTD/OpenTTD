@@ -10,12 +10,12 @@
 #include "stdafx.h"
 #include "error_func.h"
 
-void NORETURN NotReachedError(int line, const char *file)
+[[noreturn]] void NotReachedError(int line, const char *file)
 {
 	FatalError("NOT_REACHED triggered at line {} of {}", line, file);
 }
 
-void NORETURN AssertFailedError(int line, const char *file, const char *expression)
+[[noreturn]] void AssertFailedError(int line, const char *file, const char *expression)
 {
 	FatalError("Assertion failed at line {} of {}: {}", line, file, expression);
 }

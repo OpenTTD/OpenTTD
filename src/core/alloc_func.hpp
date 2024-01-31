@@ -17,8 +17,8 @@
  * binary needlessly large.
  */
 
-void NORETURN MallocError(size_t size);
-void NORETURN ReallocError(size_t size);
+[[noreturn]] void MallocError(size_t size);
+[[noreturn]] void ReallocError(size_t size);
 
 /**
  * Checks whether allocating memory would overflow size_t.

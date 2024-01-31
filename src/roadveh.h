@@ -103,7 +103,7 @@ struct RoadVehPathCache {
 /**
  * Buses, trucks and trams belong to this class.
  */
-struct RoadVehicle FINAL : public GroundVehicle<RoadVehicle, VEH_ROAD> {
+struct RoadVehicle final : public GroundVehicle<RoadVehicle, VEH_ROAD> {
 	RoadVehPathCache path;  ///< Cached path.
 	byte state;             ///< @see RoadVehicleStates
 	byte frame;

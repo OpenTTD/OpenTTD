@@ -274,17 +274,17 @@ void DeserializeNetworkGameInfo(Packet *p, NetworkGameInfo *info, const GameInfo
 	switch (game_info_version) {
 		case 7:
 			info->ticks_playing = p->Recv_uint64();
-			FALLTHROUGH;
+			[[fallthrough]];
 
 		case 6:
 			newgrf_serialisation = (NewGRFSerializationType)p->Recv_uint8();
 			if (newgrf_serialisation >= NST_END) return;
-			FALLTHROUGH;
+			[[fallthrough]];
 
 		case 5: {
 			info->gamescript_version = (int)p->Recv_uint32();
 			info->gamescript_name = p->Recv_string(NETWORK_NAME_LENGTH);
-			FALLTHROUGH;
+			[[fallthrough]];
 		}
 
 		case 4: {
@@ -326,19 +326,19 @@ void DeserializeNetworkGameInfo(Packet *p, NetworkGameInfo *info, const GameInfo
 				*dst = c;
 				dst = &c->next;
 			}
-			FALLTHROUGH;
+			[[fallthrough]];
 		}
 
 		case 3:
 			info->calendar_date = Clamp(p->Recv_uint32(), 0, CalendarTime::MAX_DATE.base());
 			info->calendar_start = Clamp(p->Recv_uint32(), 0, CalendarTime::MAX_DATE.base());
-			FALLTHROUGH;
+			[[fallthrough]];
 
 		case 2:
 			info->companies_max  = p->Recv_uint8 ();
 			info->companies_on   = p->Recv_uint8 ();
 			p->Recv_uint8(); // Used to contain max-spectators.
-			FALLTHROUGH;
+			[[fallthrough]];
 
 		case 1:
 			info->server_name = p->Recv_string(NETWORK_NAME_LENGTH);

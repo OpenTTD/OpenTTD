@@ -521,7 +521,7 @@ struct SignWindow : Window, SignList {
 
 			case WID_QES_OK:
 				if (RenameSign(this->cur_sign, this->name_editbox.text.buf)) break;
-				FALLTHROUGH;
+				[[fallthrough]];
 
 			case WID_QES_CANCEL:
 				this->Close();

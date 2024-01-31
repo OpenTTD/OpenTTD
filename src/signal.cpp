@@ -500,7 +500,7 @@ static SigSegState UpdateSignalsInBuffer(Owner owner)
 					_tbdset.Add(tile, INVALID_DIAGDIR); // start from depot inside
 					break;
 				}
-				FALLTHROUGH;
+				[[fallthrough]];
 
 			case MP_STATION:
 			case MP_ROAD:
@@ -510,7 +510,7 @@ static SigSegState UpdateSignalsInBuffer(Owner owner)
 					_tbdset.Add(tile + TileOffsByDiagDir(dir), ReverseDiagDir(dir));
 					break;
 				}
-				FALLTHROUGH;
+				[[fallthrough]];
 
 			default:
 				/* jump to next tile */

@@ -145,7 +145,7 @@ bool GenerateVehicleSortList(VehicleList *list, const VehicleListIdentifier &vli
 				}
 				break;
 			}
-			FALLTHROUGH;
+			[[fallthrough]];
 
 		case VL_STANDARD:
 			for (const Vehicle *v : Vehicle::Iterate()) {

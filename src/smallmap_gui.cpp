@@ -506,7 +506,7 @@ static inline uint32_t GetSmallMapRoutesPixels(TileIndex tile, TileType t)
 				const SmallMapColourScheme *cs = &_heightmap_schemes[_settings_client.gui.smallmap_land_colour];
 				return ApplyMask(cs->default_colour, &andor);
 			}
-			FALLTHROUGH;
+			[[fallthrough]];
 		}
 
 		default:
@@ -1598,11 +1598,11 @@ public:
 							if (tbl->show_on_map && tbl->type == _smallmap_industry_highlight) {
 								legend_colour = _smallmap_industry_highlight_state ? PC_WHITE : PC_BLACK;
 							}
-							FALLTHROUGH;
+							[[fallthrough]];
 
 						case SMT_LINKSTATS:
 							SetDParam(0, tbl->legend);
-							FALLTHROUGH;
+							[[fallthrough]];
 
 						case SMT_OWNER:
 							if (this->map_type != SMT_OWNER || tbl->company != INVALID_COMPANY) {
@@ -1617,7 +1617,7 @@ public:
 								}
 								break;
 							}
-							FALLTHROUGH;
+							[[fallthrough]];
 
 						default:
 							if (this->map_type == SMT_CONTOUR) SetDParam(0, tbl->height * TILE_HEIGHT_STEP);

@@ -329,7 +329,7 @@ static void SlNullPointers()
  * @note This function does never return as it throws an exception to
  *       break out of all the saveload code.
  */
-void NORETURN SlError(StringID string, const std::string &extra_msg)
+[[noreturn]] void SlError(StringID string, const std::string &extra_msg)
 {
 	/* Distinguish between loading into _load_check_data vs. normal save/load. */
 	if (_sl.action == SLA_LOAD_CHECK) {
@@ -359,7 +359,7 @@ void NORETURN SlError(StringID string, const std::string &extra_msg)
  * @note This function does never return as it throws an exception to
  *       break out of all the saveload code.
  */
-void NORETURN SlErrorCorrupt(const std::string &msg)
+[[noreturn]] void SlErrorCorrupt(const std::string &msg)
 {
 	SlError(STR_GAME_SAVELOAD_ERROR_BROKEN_SAVEGAME, msg);
 }
@@ -1934,7 +1934,7 @@ void ChunkHandler::LoadCheck(size_t len) const
 		case CH_TABLE:
 		case CH_SPARSE_TABLE:
 			SlTableHeader({});
-			FALLTHROUGH;
+			[[fallthrough]];
 		case CH_ARRAY:
 		case CH_SPARSE_ARRAY:
 			SlSkipArray();

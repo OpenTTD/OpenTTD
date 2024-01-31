@@ -30,7 +30,7 @@ public:
 	 *
 	 * @param period The period of the timer.
 	 */
-	NODISCARD BaseTimer(const TPeriod period) :
+	[[nodiscard]] BaseTimer(const TPeriod period) :
 		period(period)
 	{
 		TimerManager<TTimerType>::RegisterTimer(*this);
@@ -84,7 +84,7 @@ public:
 	 * @param interval The interval between each callback.
 	 * @param callback The callback to call when the interval has passed.
 	 */
-	NODISCARD IntervalTimer(const TPeriod interval, std::function<void(uint)> callback) :
+	[[nodiscard]] IntervalTimer(const TPeriod interval, std::function<void(uint)> callback) :
 		BaseTimer<TTimerType>(interval),
 		callback(callback)
 	{
@@ -127,7 +127,7 @@ public:
 	 * @param callback The callback to call when the timeout has passed.
 	 * @param start Whether to start the timer immediately. If false, you can call Reset() to start it.
 	 */
-	NODISCARD TimeoutTimer(const TPeriod timeout, std::function<void()> callback, bool start = false) :
+	[[nodiscard]] TimeoutTimer(const TPeriod timeout, std::function<void()> callback, bool start = false) :
 		BaseTimer<TTimerType>(timeout),
 		fired(!start),
 		callback(callback)

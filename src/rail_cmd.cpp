@@ -562,7 +562,7 @@ CommandCost CmdBuildSingleRail(DoCommandFlag flags, TileIndex tile, RailType rai
 			if (IsLevelCrossing(tile) && GetCrossingRailBits(tile) == trackbit) {
 				return_cmd_error(STR_ERROR_ALREADY_BUILT);
 			}
-			FALLTHROUGH;
+			[[fallthrough]];
 		}
 
 		default: {
@@ -2475,13 +2475,13 @@ static void DrawTile_Track(TileInfo *ti)
 			switch (GetRailDepotDirection(ti->tile)) {
 				case DIAGDIR_NE:
 					if (!IsInvisibilitySet(TO_BUILDINGS)) break;
-					FALLTHROUGH;
+					[[fallthrough]];
 				case DIAGDIR_SW:
 					DrawGroundSprite(ground + RTO_X, PAL_NONE);
 					break;
 				case DIAGDIR_NW:
 					if (!IsInvisibilitySet(TO_BUILDINGS)) break;
-					FALLTHROUGH;
+					[[fallthrough]];
 				case DIAGDIR_SE:
 					DrawGroundSprite(ground + RTO_Y, PAL_NONE);
 					break;
@@ -2495,13 +2495,13 @@ static void DrawTile_Track(TileInfo *ti)
 				switch (GetRailDepotDirection(ti->tile)) {
 					case DIAGDIR_NE:
 						if (!IsInvisibilitySet(TO_BUILDINGS)) break;
-						FALLTHROUGH;
+						[[fallthrough]];
 					case DIAGDIR_SW:
 						DrawGroundSprite(overlay + RTO_X, PALETTE_CRASH);
 						break;
 					case DIAGDIR_NW:
 						if (!IsInvisibilitySet(TO_BUILDINGS)) break;
-						FALLTHROUGH;
+						[[fallthrough]];
 					case DIAGDIR_SE:
 						DrawGroundSprite(overlay + RTO_Y, PALETTE_CRASH);
 						break;
@@ -2515,13 +2515,13 @@ static void DrawTile_Track(TileInfo *ti)
 				switch (GetRailDepotDirection(ti->tile)) {
 					case DIAGDIR_NE:
 						if (!IsInvisibilitySet(TO_BUILDINGS)) break;
-						FALLTHROUGH;
+						[[fallthrough]];
 					case DIAGDIR_SW:
 						DrawGroundSprite(rti->base_sprites.single_x, PALETTE_CRASH);
 						break;
 					case DIAGDIR_NW:
 						if (!IsInvisibilitySet(TO_BUILDINGS)) break;
-						FALLTHROUGH;
+						[[fallthrough]];
 					case DIAGDIR_SE:
 						DrawGroundSprite(rti->base_sprites.single_y, PALETTE_CRASH);
 						break;

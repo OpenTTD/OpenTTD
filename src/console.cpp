@@ -351,7 +351,7 @@ void IConsoleCmdExec(const std::string &command_string, const uint recurse_count
 				tokenstream[tstream_i++] = *++cmdptr;
 				break;
 			}
-			FALLTHROUGH;
+			[[fallthrough]];
 		default: // Normal character
 			tokenstream[tstream_i++] = *cmdptr;
 

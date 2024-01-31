@@ -49,7 +49,7 @@ void StrgenErrorI(const std::string &msg)
 	_errors++;
 }
 
-void NORETURN StrgenFatalI(const std::string &msg)
+[[noreturn]] void StrgenFatalI(const std::string &msg)
 {
 	fmt::print(stderr, LINE_NUM_FMT("FATAL"), _file, _cur_line, msg);
 #ifdef _MSC_VER
@@ -58,7 +58,7 @@ void NORETURN StrgenFatalI(const std::string &msg)
 	throw std::exception();
 }
 
-void NORETURN FatalErrorI(const std::string &msg)
+[[noreturn]] void FatalErrorI(const std::string &msg)
 {
 	fmt::print(stderr, LINE_NUM_FMT("FATAL"), _file, _cur_line, msg);
 #ifdef _MSC_VER

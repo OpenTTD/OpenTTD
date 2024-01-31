@@ -1362,7 +1362,7 @@ void NetworkServerSendChat(NetworkAction action, DestType desttype, int dest, co
 		}
 		default:
 			Debug(net, 1, "Received unknown chat destination type {}; doing broadcast instead", desttype);
-			FALLTHROUGH;
+			[[fallthrough]];
 
 		case DESTTYPE_BROADCAST:
 			for (NetworkClientSocket *cs : NetworkClientSocket::Iterate()) {

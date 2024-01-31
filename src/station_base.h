@@ -439,7 +439,7 @@ struct IndustryCompare {
 typedef std::set<IndustryListEntry, IndustryCompare> IndustryList;
 
 /** Station data structure */
-struct Station FINAL : SpecializedStation<Station, false> {
+struct Station final : SpecializedStation<Station, false> {
 public:
 	RoadStop *GetPrimaryRoadStop(RoadStopType type) const
 	{

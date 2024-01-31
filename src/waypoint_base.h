@@ -13,7 +13,7 @@
 #include "base_station_base.h"
 
 /** Representation of a waypoint. */
-struct Waypoint FINAL : SpecializedStation<Waypoint, true> {
+struct Waypoint final : SpecializedStation<Waypoint, true> {
 	uint16_t town_cn;    ///< The N-1th waypoint for this town (consecutive number)
 
 	/**

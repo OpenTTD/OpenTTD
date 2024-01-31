@@ -1267,45 +1267,45 @@ static uint GetWindowZPriority(WindowClass wc)
 	switch (wc) {
 		case WC_TOOLTIPS:
 			++z_priority;
-			FALLTHROUGH;
+			[[fallthrough]];
 
 		case WC_ERRMSG:
 		case WC_CONFIRM_POPUP_QUERY:
 			++z_priority;
-			FALLTHROUGH;
+			[[fallthrough]];
 
 		case WC_ENDSCREEN:
 			++z_priority;
-			FALLTHROUGH;
+			[[fallthrough]];
 
 		case WC_HIGHSCORE:
 			++z_priority;
-			FALLTHROUGH;
+			[[fallthrough]];
 
 		case WC_DROPDOWN_MENU:
 			++z_priority;
-			FALLTHROUGH;
+			[[fallthrough]];
 
 		case WC_MAIN_TOOLBAR:
 		case WC_STATUS_BAR:
 			++z_priority;
-			FALLTHROUGH;
+			[[fallthrough]];
 
 		case WC_OSK:
 			++z_priority;
-			FALLTHROUGH;
+			[[fallthrough]];
 
 		case WC_QUERY_STRING:
 		case WC_SEND_NETWORK_MSG:
 			++z_priority;
-			FALLTHROUGH;
+			[[fallthrough]];
 
 		case WC_NETWORK_ASK_RELAY:
 		case WC_MODAL_PROGRESS:
 		case WC_NETWORK_STATUS_WINDOW:
 		case WC_SAVE_PRESET:
 			++z_priority;
-			FALLTHROUGH;
+			[[fallthrough]];
 
 		case WC_GENERATE_LANDSCAPE:
 		case WC_SAVELOAD:
@@ -1317,19 +1317,19 @@ static uint GetWindowZPriority(WindowClass wc)
 		case WC_SCRIPT_SETTINGS:
 		case WC_TEXTFILE:
 			++z_priority;
-			FALLTHROUGH;
+			[[fallthrough]];
 
 		case WC_CONSOLE:
 			++z_priority;
-			FALLTHROUGH;
+			[[fallthrough]];
 
 		case WC_NEWS_WINDOW:
 			++z_priority;
-			FALLTHROUGH;
+			[[fallthrough]];
 
 		default:
 			++z_priority;
-			FALLTHROUGH;
+			[[fallthrough]];
 
 		case WC_MAIN_WINDOW:
 			return z_priority;
@@ -2844,7 +2844,7 @@ static void MouseLoop(MouseClick click, int mousewheel)
 			if (!scrollwheel_scrolling || w == nullptr || w->window_class != WC_SMALLMAP) break;
 			/* We try to use the scrollwheel to scroll since we didn't touch any of the buttons.
 			 * Simulate a right button click so we can get started. */
-			FALLTHROUGH;
+			[[fallthrough]];
 
 		case MC_RIGHT:
 			DispatchRightClickEvent(w, x - w->left, y - w->top);

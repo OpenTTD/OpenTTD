@@ -189,7 +189,7 @@ struct AirportResolverObject : public ResolverObject {
 			{
 				TownScopeResolver *tsr = this->GetTown();
 				if (tsr != nullptr) return tsr;
-				FALLTHROUGH;
+				[[fallthrough]];
 			}
 			default: return ResolverObject::GetScope(scope, relative);
 		}

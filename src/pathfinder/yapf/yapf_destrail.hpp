@@ -140,7 +140,7 @@ public:
 					 * waypoint. */
 					Yapf().DisableCache(true);
 				}
-				FALLTHROUGH;
+				[[fallthrough]];
 
 			case OT_GOTO_STATION:
 				m_destTile = CalcClosestStationTile(v->current_order.GetDestination(), v->tile, v->current_order.IsType(OT_GOTO_STATION) ? STATION_RAIL : STATION_WAYPOINT);
@@ -152,7 +152,7 @@ public:
 				if (v->current_order.GetDepotActionType() & ODATFB_NEAREST_DEPOT) {
 					m_any_depot = true;
 				}
-				FALLTHROUGH;
+				[[fallthrough]];
 
 			default:
 				m_destTile = v->dest_tile;

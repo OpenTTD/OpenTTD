@@ -756,7 +756,7 @@ CommandCost CmdInsertOrder(DoCommandFlag flags, VehicleID veh, VehicleOrderID se
 				case OSL_PLATFORM_NEAR_END:
 				case OSL_PLATFORM_MIDDLE:
 					if (v->type != VEH_TRAIN) return CMD_ERROR;
-					FALLTHROUGH;
+					[[fallthrough]];
 
 				case OSL_PLATFORM_FAR_END:
 					break;
@@ -865,7 +865,7 @@ CommandCost CmdInsertOrder(DoCommandFlag flags, VehicleID veh, VehicleOrderID se
 				case OCV_LOAD_PERCENTAGE:
 				case OCV_RELIABILITY:
 					if (new_order.GetConditionValue() > 100) return CMD_ERROR;
-					FALLTHROUGH;
+					[[fallthrough]];
 
 				default:
 					if (occ == OCC_IS_TRUE || occ == OCC_IS_FALSE) return CMD_ERROR;
@@ -1388,7 +1388,7 @@ CommandCost CmdModifyOrder(DoCommandFlag flags, VehicleID veh, VehicleOrderID se
 					case OCV_LOAD_PERCENTAGE:
 					case OCV_RELIABILITY:
 						if (order->GetConditionValue() > 100) order->SetConditionValue(100);
-						FALLTHROUGH;
+						[[fallthrough]];
 
 					default:
 						if (occ == OCC_IS_TRUE || occ == OCC_IS_FALSE) order->SetConditionComparator(OCC_EQUALS);
