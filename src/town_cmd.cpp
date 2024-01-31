@@ -3435,7 +3435,7 @@ TownActions GetMaskOfTownActions(CompanyID cid, const Town *t)
 	if (cid != COMPANY_SPECTATOR && !(_settings_game.economy.bribe && t->unwanted[cid])) {
 
 		/* Actions worth more than this are not able to be performed */
-		Money avail = Company::Get(cid)->money;
+		Money avail = GetAvailableMoney(cid);
 
 		/* Check the action bits for validity and
 		 * if they are valid add them */

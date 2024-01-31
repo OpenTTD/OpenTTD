@@ -96,7 +96,7 @@ CommandCost CmdDecreaseLoan(DoCommandFlag flags, LoanCommand cmd, Money amount)
 			loan = std::min(c->current_loan, (Money)LOAN_INTERVAL);
 			break;
 		case LoanCommand::Max: // Pay back as much as possible
-			loan = std::max(std::min(c->current_loan, c->money), (Money)LOAN_INTERVAL);
+			loan = std::max(std::min(c->current_loan, GetAvailableMoneyForCommand()), (Money)LOAN_INTERVAL);
 			loan -= loan % LOAN_INTERVAL;
 			break;
 		case LoanCommand::Amount: // Repay the given amount of loan
@@ -105,7 +105,7 @@ CommandCost CmdDecreaseLoan(DoCommandFlag flags, LoanCommand cmd, Money amount)
 			break;
 	}
 
-	if (c->money < loan) {
+	if (GetAvailableMoneyForCommand() < loan) {
 		SetDParam(0, loan);
 		return_cmd_error(STR_ERROR_CURRENCY_REQUIRED);
 	}

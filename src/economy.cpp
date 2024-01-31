@@ -836,17 +836,21 @@ static void CompaniesPayInterest()
 		/* Over a year the paid interest should be "loan * interest percentage",
 		 * but... as that number is likely not dividable by 12 (pay each month),
 		 * one needs to account for that in the monthly fee calculations.
+		 *
 		 * To easily calculate what one should pay "this" month, you calculate
 		 * what (total) should have been paid up to this month and you subtract
 		 * whatever has been paid in the previous months. This will mean one month
 		 * it'll be a bit more and the other it'll be a bit less than the average
 		 * monthly fee, but on average it will be exact.
+		 *
 		 * In order to prevent cheating or abuse (just not paying interest by not
-		 * taking a loan we make companies pay interest on negative cash as well
+		 * taking a loan) we make companies pay interest on negative cash as well,
+		 * except if infinite money is enabled.
 		 */
 		Money yearly_fee = c->current_loan * _economy.interest_rate / 100;
-		if (c->money < 0) {
-			yearly_fee += -c->money *_economy.interest_rate / 100;
+		Money available_money = GetAvailableMoney(c->index);
+		if (available_money < 0) {
+			yearly_fee += -available_money * _economy.interest_rate / 100;
 		}
 		Money up_to_previous_month = yearly_fee * TimerGameEconomy::month / 12;
 		Money up_to_this_month = yearly_fee * (TimerGameEconomy::month + 1) / 12;

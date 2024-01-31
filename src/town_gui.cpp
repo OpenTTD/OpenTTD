@@ -245,7 +245,7 @@ public:
 			case WID_TA_ACTION_INFO:
 				if (this->sel_index != -1) {
 					Money action_cost = _price[PR_TOWN_ACTION] * _town_action_costs[this->sel_index] >> 8;
-					bool affordable = Company::IsValidID(_local_company) && action_cost < Company::Get(_local_company)->money;
+					bool affordable = Company::IsValidID(_local_company) && action_cost < GetAvailableMoney(_local_company);
 
 					SetDParam(0, action_cost);
 					DrawStringMultiLine(r.Shrink(WidgetDimensions::scaled.framerect),
