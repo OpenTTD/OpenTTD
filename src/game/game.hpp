@@ -31,8 +31,9 @@ public:
 
 	/**
 	 * Start up a new GameScript.
+	 * @param randomise Whether to randomise the configured GameScript.
 	 */
-	static void StartNew();
+	static void StartNew(bool randomise = true);
 
 	/**
 	 * Uninitialize the Game system.

@@ -48,6 +48,7 @@
 		/* Load default data and store the name in the settings */
 		config->Change(info->GetName(), -1, false, true);
 	}
+	if (rerandomise_ai) config->AddRandomDeviation();
 	config->AnchorUnchangeableSettings();
 
 	Backup<CompanyID> cur_company(_current_company, company, FILE_LINE);
