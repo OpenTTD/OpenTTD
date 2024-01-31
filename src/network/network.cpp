@@ -633,6 +633,8 @@ public:
 
 	void OnFailure() override
 	{
+		Debug(net, 9, "Query::OnFailure(): connection_string={}", this->connection_string);
+
 		NetworkGameList *item = NetworkGameListAddItem(connection_string);
 		item->status = NGLS_OFFLINE;
 		item->refreshing = false;
@@ -642,6 +644,8 @@ public:
 
 	void OnConnect(SOCKET s) override
 	{
+		Debug(net, 9, "Query::OnConnect(): connection_string={}", this->connection_string);
+
 		QueryNetworkGameSocketHandler::QueryServer(s, this->connection_string);
 	}
 };
@@ -653,6 +657,8 @@ public:
 void NetworkQueryServer(const std::string &connection_string)
 {
 	if (!_network_available) return;
+
+	Debug(net, 9, "NetworkQueryServer(): connection_string={}", connection_string);
 
 	/* Mark the entry as refreshing, so the GUI can show the refresh is pending. */
 	NetworkGameList *item = NetworkGameListAddItem(connection_string);
@@ -730,11 +736,15 @@ public:
 
 	void OnFailure() override
 	{
+		Debug(net, 9, "Client::OnFailure(): connection_string={}", this->connection_string);
+
 		ShowNetworkError(STR_NETWORK_ERROR_NOCONNECTION);
 	}
 
 	void OnConnect(SOCKET s) override
 	{
+		Debug(net, 9, "Client::OnConnect(): connection_string={}", this->connection_string);
+
 		_networking = true;
 		new ClientNetworkGameSocketHandler(s, this->connection_string);
 		IConsoleCmdExec("exec scripts/on_client.scr 0");
@@ -761,6 +771,8 @@ public:
  */
 bool NetworkClientConnectGame(const std::string &connection_string, CompanyID default_company, const std::string &join_server_password, const std::string &join_company_password)
 {
+	Debug(net, 9, "NetworkClientConnectGame(): connection_string={}", connection_string);
+
 	CompanyID join_as = default_company;
 	std::string resolved_connection_string = ServerAddress::Parse(connection_string, NETWORK_DEFAULT_PORT, &join_as).connection_string;
 
@@ -797,6 +809,7 @@ void NetworkClientJoinGame()
 	NetworkInitialize();
 
 	_settings_client.network.last_joined = _network_join.connection_string;
+	Debug(net, 9, "status = CONNECTING");
 	_network_join_status = NETWORK_JOIN_STATUS_CONNECTING;
 	ShowJoinStatusWindow();
 
