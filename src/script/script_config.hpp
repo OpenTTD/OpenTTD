@@ -20,7 +20,7 @@ static const int INT32_DIGITS_WITH_SIGN_AND_TERMINATION = 10 + 1 + 1;
 /** Bitmask of flags for Script settings. */
 enum ScriptConfigFlags {
 	SCRIPTCONFIG_NONE      = 0x0, ///< No flags set.
-	SCRIPTCONFIG_RANDOM    = 0x1, ///< When randomizing the Script, pick any value between min_value and max_value when on custom difficulty setting.
+	// Unused flag 0x1.
 	SCRIPTCONFIG_BOOLEAN   = 0x2, ///< This value is a boolean (either 0 (false) or 1 (true) ).
 	SCRIPTCONFIG_INGAME    = 0x4, ///< This setting can be changed while the Script is running.
 	SCRIPTCONFIG_DEVELOPER = 0x8, ///< This setting will only be visible when the Script development tools are active.
