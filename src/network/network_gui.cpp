@@ -1677,6 +1677,18 @@ public:
 	void UpdateWidgetSize(WidgetID widget, Dimension *size, [[maybe_unused]] const Dimension &padding, [[maybe_unused]] Dimension *fill, [[maybe_unused]] Dimension *resize) override
 	{
 		switch (widget) {
+			case WID_CL_SERVER_NAME:
+			case WID_CL_CLIENT_NAME:
+				if (widget == WID_CL_SERVER_NAME) {
+					SetDParamStr(0, _network_server ? _settings_client.network.server_name : _network_server_name);
+				} else {
+					const NetworkClientInfo *own_ci = NetworkClientInfo::GetByClientID(_network_own_client_id);
+					SetDParamStr(0, own_ci != nullptr ? own_ci->client_name : _settings_client.network.client_name);
+				}
+				*size = GetStringBoundingBox(STR_JUST_RAW_STRING);
+				size->width = std::min(size->width, static_cast<uint>(ScaleGUITrad(200))); // By default, don't open the window too wide.
+				break;
+
 			case WID_CL_SERVER_VISIBILITY:
 				*size = maxdim(maxdim(GetStringBoundingBox(STR_NETWORK_SERVER_VISIBILITY_LOCAL), GetStringBoundingBox(STR_NETWORK_SERVER_VISIBILITY_PUBLIC)), GetStringBoundingBox(STR_NETWORK_SERVER_VISIBILITY_INVITE_ONLY));
 				size->width += padding.width;
