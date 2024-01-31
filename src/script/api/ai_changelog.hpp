@@ -24,6 +24,7 @@
  *
  * API removals:
  * \li AIError::ERR_PRECONDITION_TOO_MANY_PARAMETERS, that error is never returned anymore.
+ * \li AIInfo::CONFIG_RANDOM, no longer used.
  *
  * Other changes:
  * \li AIGroupList accepts an optional filter function

@@ -40,7 +40,7 @@ template <> const char *GetClassName<GameInfo, ScriptType::GS>() { return "GSInf
 	SQGSInfo.DefSQAdvancedMethod(engine, &GameInfo::AddSetting, "AddSetting");
 	SQGSInfo.DefSQAdvancedMethod(engine, &GameInfo::AddLabels, "AddLabels");
 	SQGSInfo.DefSQConst(engine, SCRIPTCONFIG_NONE, "CONFIG_NONE");
-	SQGSInfo.DefSQConst(engine, SCRIPTCONFIG_RANDOM, "CONFIG_RANDOM");
+	SQGSInfo.DefSQConst(engine, SCRIPTCONFIG_NONE, "CONFIG_RANDOM"); // Deprecated, mapped to NONE.
 	SQGSInfo.DefSQConst(engine, SCRIPTCONFIG_BOOLEAN, "CONFIG_BOOLEAN");
 	SQGSInfo.DefSQConst(engine, SCRIPTCONFIG_INGAME, "CONFIG_INGAME");
 	SQGSInfo.DefSQConst(engine, SCRIPTCONFIG_DEVELOPER, "CONFIG_DEVELOPER");

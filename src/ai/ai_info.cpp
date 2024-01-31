@@ -42,14 +42,14 @@ template <> const char *GetClassName<AIInfo, ScriptType::AI>() { return "AIInfo"
 	SQAIInfo.DefSQAdvancedMethod(engine, &AIInfo::AddSetting, "AddSetting");
 	SQAIInfo.DefSQAdvancedMethod(engine, &AIInfo::AddLabels, "AddLabels");
 	SQAIInfo.DefSQConst(engine, SCRIPTCONFIG_NONE, "CONFIG_NONE");
-	SQAIInfo.DefSQConst(engine, SCRIPTCONFIG_RANDOM, "CONFIG_RANDOM");
+	SQAIInfo.DefSQConst(engine, SCRIPTCONFIG_NONE, "CONFIG_RANDOM"); // Deprecated, mapped to NONE.
 	SQAIInfo.DefSQConst(engine, SCRIPTCONFIG_BOOLEAN, "CONFIG_BOOLEAN");
 	SQAIInfo.DefSQConst(engine, SCRIPTCONFIG_INGAME, "CONFIG_INGAME");
 	SQAIInfo.DefSQConst(engine, SCRIPTCONFIG_DEVELOPER, "CONFIG_DEVELOPER");
 
 	/* Pre 1.2 had an AI prefix */
 	SQAIInfo.DefSQConst(engine, SCRIPTCONFIG_NONE, "AICONFIG_NONE");
-	SQAIInfo.DefSQConst(engine, SCRIPTCONFIG_RANDOM, "AICONFIG_RANDOM");
+	SQAIInfo.DefSQConst(engine, SCRIPTCONFIG_NONE, "AICONFIG_RANDOM"); // Deprecated, mapped to NONE.
 	SQAIInfo.DefSQConst(engine, SCRIPTCONFIG_BOOLEAN, "AICONFIG_BOOLEAN");
 	SQAIInfo.DefSQConst(engine, SCRIPTCONFIG_INGAME, "AICONFIG_INGAME");
 

@@ -162,12 +162,6 @@ SQInteger ScriptInfo::AddSetting(HSQUIRRELVM vm)
 	}
 	sq_pop(vm, 1);
 
-	/* Don't allow both random_deviation and SCRIPTCONFIG_RANDOM to
-	 * be set for the same config item. */
-	if ((items & 0x200) != 0 && (config.flags & SCRIPTCONFIG_RANDOM) != 0) {
-		this->engine->ThrowError("Setting both random_deviation and SCRIPTCONFIG_RANDOM is not allowed");
-		return SQ_ERROR;
-	}
 	/* Reset the bit for random_deviation as it's optional. */
 	items &= ~0x200;
 
