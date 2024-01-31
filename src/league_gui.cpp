@@ -115,7 +115,8 @@ public:
 
 		for (uint i = 0; i != this->companies.size(); i++) {
 			const Company *c = this->companies[i];
-			DrawString(ordinal.left, ordinal.right, ir.top + text_y_offset, i + STR_ORDINAL_NUMBER_1ST, i == 0 ? TC_WHITE : TC_YELLOW);
+			SetDParam(0, i + 1);
+			DrawString(ordinal.left, ordinal.right, ir.top + text_y_offset, STR_COMPANY_LEAGUE_COMPANY_RANK);
 
 			DrawCompanyIcon(c->index, icon_left, ir.top + icon_y_offset);
 
@@ -133,7 +134,8 @@ public:
 
 		this->ordinal_width = 0;
 		for (uint i = 0; i < MAX_COMPANIES; i++) {
-			this->ordinal_width = std::max(this->ordinal_width, GetStringBoundingBox(STR_ORDINAL_NUMBER_1ST + i).width);
+			SetDParam(0, i + 1);
+			this->ordinal_width = std::max(this->ordinal_width, GetStringBoundingBox(STR_COMPANY_LEAGUE_COMPANY_RANK).width);
 		}
 		this->ordinal_width += WidgetDimensions::scaled.hsep_wide; // Keep some extra spacing
 
@@ -339,7 +341,8 @@ public:
 		Rect score_rect = ir.Indent(this->rank_width + 2 * spacer + this->icon_size.width + this->text_width, rtl).WithWidth(this->score_width, rtl);
 
 		for (auto [rank, lte] : this->rows) {
-			DrawString(rank_rect.left, rank_rect.right, ir.top + text_y_offset, rank + STR_ORDINAL_NUMBER_1ST, rank == 0 ? TC_WHITE : TC_YELLOW);
+			SetDParam(0, rank + 1);
+			DrawString(rank_rect.left, rank_rect.right, ir.top + text_y_offset, STR_COMPANY_LEAGUE_COMPANY_RANK);
 			if (this->icon_size.width > 0 && lte->company != INVALID_COMPANY) DrawCompanyIcon(lte->company, icon_rect.left, ir.top + icon_y_offset);
 			SetDParamStr(0, lte->text);
 			DrawString(text_rect.left, text_rect.right, ir.top + text_y_offset, STR_JUST_RAW_STRING, TC_BLACK);
@@ -369,7 +372,8 @@ public:
 		this->rank_width = this->text_width = this->score_width = 0;
 		bool show_icon_column = false;
 		for (auto [rank, lte] : this->rows) {
-			this->rank_width = std::max(this->rank_width, GetStringBoundingBox(STR_ORDINAL_NUMBER_1ST + rank).width);
+			SetDParam(0, rank + 1);
+			this->rank_width = std::max(this->rank_width, GetStringBoundingBox(STR_COMPANY_LEAGUE_COMPANY_RANK).width);
 			SetDParamStr(0, lte->text);
 			this->text_width = std::max(this->text_width, GetStringBoundingBox(STR_JUST_RAW_STRING).width);
 			SetDParamStr(0, lte->score);
