@@ -48,7 +48,6 @@
 		/* Load default data and store the name in the settings */
 		config->Change(info->GetName(), -1, false, true);
 	}
-	if (rerandomise_ai) config->AddRandomDeviation();
 	config->AnchorUnchangeableSettings();
 
 	Backup<CompanyID> cur_company(_current_company, company, FILE_LINE);
@@ -115,6 +114,10 @@
 	cur_company.Restore();
 
 	InvalidateWindowClassesData(WC_SCRIPT_DEBUG, -1);
+
+	if (AIConfig::GetConfig(company)->IsRandom()) {
+		AIConfig::GetConfig(company)->Change(std::nullopt);
+	}
 	CloseWindowById(WC_SCRIPT_SETTINGS, company);
 }
 

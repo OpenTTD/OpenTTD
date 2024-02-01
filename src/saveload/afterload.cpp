@@ -553,7 +553,7 @@ static void StartScripts()
 	}
 
 	/* Start the GameScript. */
-	Game::StartNew(false);
+	Game::StartNew();
 
 	ShowScriptDebugWindowIfScriptError();
 }

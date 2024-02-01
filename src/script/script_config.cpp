@@ -32,6 +32,10 @@ void ScriptConfig::Change(std::optional<const std::string> name, int version, bo
 	this->to_load_data.reset();
 
 	this->ClearConfigList();
+
+	if (_game_mode == GM_NORMAL && _switch_mode != SM_LOAD_GAME && this->info != nullptr) {
+		this->AddRandomDeviation();
+	}
 }
 
 ScriptConfig::ScriptConfig(const ScriptConfig *config)
@@ -129,7 +133,8 @@ void ScriptConfig::AddRandomDeviation()
 {
 	for (const auto &item : *this->GetConfigList()) {
 		if (item.random_deviation != 0) {
-			this->SetSetting(item.name, ScriptObject::GetRandomizer(OWNER_NONE).Next(item.random_deviation * 2 + 1) - item.random_deviation + this->GetSetting(item.name));
+			uint32_t randomize = ScriptObject::GetRandomizer(OWNER_NONE).Next(item.random_deviation * 2 + 1);
+			if (_switch_mode != SM_RESTARTGAME) this->SetSetting(item.name, randomize - item.random_deviation + this->GetSetting(item.name));
 		}
 	}
 }

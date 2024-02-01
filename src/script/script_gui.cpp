@@ -379,14 +379,14 @@ struct ScriptSettingsWindow : public Window {
 			TextColour colour;
 			uint idx = 0;
 			if (config_item.description.empty()) {
-				if (this->slot != OWNER_DEITY && !Company::IsValidID(this->slot) && config_item.random_deviation != 0) {
+				if (this->slot != OWNER_DEITY && _game_mode != GM_NORMAL && config_item.random_deviation != 0) {
 					str = STR_AI_SETTINGS_JUST_DEVIATION;
 				} else {
 					str = STR_JUST_STRING1;
 				}
 				colour = TC_ORANGE;
 			} else {
-				if (this->slot != OWNER_DEITY && !Company::IsValidID(this->slot) && config_item.random_deviation != 0) {
+				if (this->slot != OWNER_DEITY && _game_mode != GM_NORMAL && config_item.random_deviation != 0) {
 					str = STR_AI_SETTINGS_SETTING_DEVIATION;
 				} else {
 					str = STR_AI_SETTINGS_SETTING;
@@ -405,7 +405,7 @@ struct ScriptSettingsWindow : public Window {
 					DrawArrowButtons(br.left, y + button_y_offset, COLOUR_YELLOW, (this->clicked_button == i) ? 1 + (this->clicked_increase != rtl) : 0, editable && current_value > config_item.min_value, editable && current_value < config_item.max_value);
 				}
 
-				if (this->slot == OWNER_DEITY || Company::IsValidID(this->slot) || config_item.random_deviation == 0) {
+				if (this->slot == OWNER_DEITY || _game_mode == GM_NORMAL || config_item.random_deviation == 0) {
 					auto config_iterator = config_item.labels.find(current_value);
 					if (config_iterator != config_item.labels.end()) {
 						SetDParam(idx++, STR_JUST_RAW_STRING);
