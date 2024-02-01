@@ -205,6 +205,12 @@ CommandCost CmdChangeTimetable(DoCommandFlag flags, VehicleID veh, VehicleOrderI
 			default:
 				break;
 		}
+
+		/* Unbunching data is no longer valid for any vehicle in this shared order group. */
+		Vehicle *u = v->FirstShared();
+		for (; u != nullptr; u = u->NextShared()) {
+			u->ResetDepotUnbunching();
+		}
 	}
 
 	return CommandCost();
@@ -272,6 +278,9 @@ CommandCost CmdSetVehicleOnTime(DoCommandFlag flags, VehicleID veh, bool apply_t
 				if (u->lateness_counter > most_late) {
 					most_late = u->lateness_counter;
 				}
+
+				/* Unbunching data is no longer valid. */
+				u->ResetDepotUnbunching();
 			}
 			if (most_late > 0) {
 				for (Vehicle *u = v->FirstShared(); u != nullptr; u = u->NextShared()) {
@@ -284,6 +293,8 @@ CommandCost CmdSetVehicleOnTime(DoCommandFlag flags, VehicleID veh, bool apply_t
 			}
 		} else {
 			v->lateness_counter = 0;
+			/* Unbunching data is no longer valid. */
+			v->ResetDepotUnbunching();
 			SetWindowDirty(WC_VEHICLE_TIMETABLE, v->index);
 		}
 	}
@@ -383,11 +394,14 @@ CommandCost CmdSetTimetableStart(DoCommandFlag flags, VehicleID veh_id, bool tim
 		int idx = 0;
 
 		for (Vehicle *w : vehs) {
-
 			w->lateness_counter = 0;
 			ClrBit(w->vehicle_flags, VF_TIMETABLE_STARTED);
 			/* Do multiplication, then division to reduce rounding errors. */
 			w->timetable_start = start_tick + (idx * total_duration / num_vehs);
+
+			/* Unbunching data is no longer valid. */
+			v->ResetDepotUnbunching();
+
 			SetWindowDirty(WC_VEHICLE_TIMETABLE, w->index);
 			++idx;
 		}
