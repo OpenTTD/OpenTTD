@@ -1525,6 +1525,11 @@ STR_CONFIG_SETTING_MINUTES_PER_YEAR_VALUE                       :{NUM}
 ###setting-zero-is-special
 STR_CONFIG_SETTING_MINUTES_PER_YEAR_FROZEN                      :0 (tempo do calendário congelado)
 
+STR_CONFIG_SETTING_TOWN_CARGO_SCALE                             :Escalar a produção de carga da localidade: {STRING}
+STR_CONFIG_SETTING_TOWN_CARGO_SCALE_HELPTEXT                    :Escalar a produção de carga das localidades nesta percentagem.
+STR_CONFIG_SETTING_INDUSTRY_CARGO_SCALE                         :Escalar a produção de carga da indústria: {STRING}
+STR_CONFIG_SETTING_INDUSTRY_CARGO_SCALE_HELPTEXT                :Escalar a produção de carga das indústrias nesta percentagem.
+STR_CONFIG_SETTING_CARGO_SCALE_VALUE                            :{NUM}%
 
 STR_CONFIG_SETTING_AUTORENEW_VEHICLE                            :Auto-renovação de veículos quando ficam velhos: {STRING}
 STR_CONFIG_SETTING_AUTORENEW_VEHICLE_HELPTEXT                   :Quando ativado, os veículos próximos do fim da vida útil são automaticamente substituídos quando as condições forem atingidas

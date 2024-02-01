@@ -1524,6 +1524,11 @@ STR_CONFIG_SETTING_MINUTES_PER_YEAR_VALUE                       :{NUM}
 ###setting-zero-is-special
 STR_CONFIG_SETTING_MINUTES_PER_YEAR_FROZEN                      :0 (calendar time frozen)
 
+STR_CONFIG_SETTING_TOWN_CARGO_SCALE                             :Scale town cargo production: {STRING}
+STR_CONFIG_SETTING_TOWN_CARGO_SCALE_HELPTEXT                    :Scale the cargo production of towns by this percentage.
+STR_CONFIG_SETTING_INDUSTRY_CARGO_SCALE                         :Scale industry cargo production: {STRING}
+STR_CONFIG_SETTING_INDUSTRY_CARGO_SCALE_HELPTEXT                :Scale the cargo production of industries by this percentage.
+STR_CONFIG_SETTING_CARGO_SCALE_VALUE                            :{NUM}%
 
 STR_CONFIG_SETTING_AUTORENEW_VEHICLE                            :Autorenew vehicle when it gets old: {STRING}
 STR_CONFIG_SETTING_AUTORENEW_VEHICLE_HELPTEXT                   :When enabled, a vehicle nearing its end of life gets automatically replaced when the renew conditions are fulfilled

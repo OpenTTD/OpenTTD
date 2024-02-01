@@ -1524,6 +1524,11 @@ STR_CONFIG_SETTING_MINUTES_PER_YEAR_VALUE                       :{NUM}
 ###setting-zero-is-special
 STR_CONFIG_SETTING_MINUTES_PER_YEAR_FROZEN                      :0（日期停止）
 
+STR_CONFIG_SETTING_TOWN_CARGO_SCALE                             :城镇货物产出倍数：{STRING}
+STR_CONFIG_SETTING_TOWN_CARGO_SCALE_HELPTEXT                    :按此比例扩大城镇的货物生产规模。
+STR_CONFIG_SETTING_INDUSTRY_CARGO_SCALE                         :工业货物产出倍数：{STRING}
+STR_CONFIG_SETTING_INDUSTRY_CARGO_SCALE_HELPTEXT                :按此比例扩大工业的货物生产规模。
+STR_CONFIG_SETTING_CARGO_SCALE_VALUE                            :{NUM}%
 
 STR_CONFIG_SETTING_AUTORENEW_VEHICLE                            :当车辆报废时自动更新：{STRING}
 STR_CONFIG_SETTING_AUTORENEW_VEHICLE_HELPTEXT                   :“打开”时，车辆在临近它的报废期限时自动更新
@@ -3625,7 +3630,7 @@ STR_TOWN_DIRECTORY_CAPTION                                      :{WHITE}城镇
 STR_TOWN_DIRECTORY_NONE                                         :{ORANGE}- 没有 -
 STR_TOWN_DIRECTORY_TOWN                                         :{ORANGE}{TOWN}{BLACK} ({COMMA})
 STR_TOWN_DIRECTORY_CITY                                         :{ORANGE}{TOWN}{YELLOW} (都市){BLACK} ({COMMA})
-STR_TOWN_DIRECTORY_LIST_TOOLTIP                                 :{BLACK} 城镇名称 点击名称可以将屏幕中心{}移动到城镇所在的位置. 单击的同时按住Ctrl会在新视点中显示城镇位置
+STR_TOWN_DIRECTORY_LIST_TOOLTIP                                 :{BLACK} 城镇名称 - 点击名称可以将屏幕中心{}移动到城镇所在的位置。按住 <Ctrl> 点选将会在新视点中显示城镇位置
 STR_TOWN_POPULATION                                             :{BLACK}地图人口总数：{COMMA}
 
 # Town view window
@@ -3682,7 +3687,7 @@ STR_LOCAL_AUTHORITY_ACTION_TOOLTIP_SMALL_ADVERTISING            :{PUSH_COLOUR}{Y
 STR_LOCAL_AUTHORITY_ACTION_TOOLTIP_MEDIUM_ADVERTISING           :{PUSH_COLOUR}{YELLOW}进行中型的广告宣传，以吸引更多的旅客和货物选择贵公司的服务。{}为位于该城镇中心中等距离内的车站提供暂时的评分增益。{}{POP_COLOUR}费用：{CURRENCY_LONG}
 STR_LOCAL_AUTHORITY_ACTION_TOOLTIP_LARGE_ADVERTISING            :{PUSH_COLOUR}{YELLOW}进行大型的广告宣传，以吸引更多的旅客和货物选择贵公司的服务。{}为位于该城镇中心较远距离内的车站提供暂时的评分增益。{}{POP_COLOUR}费用：{CURRENCY_LONG}
 STR_LOCAL_AUTHORITY_ACTION_TOOLTIP_ROAD_RECONSTRUCTION_MONTHS   :{PUSH_COLOUR}{YELLOW}资助城镇路网重建。{}这将堵塞城镇交通 6 个月。{}{POP_COLOUR}费用：{CURRENCY_LONG}
-STR_LOCAL_AUTHORITY_ACTION_TOOLTIP_ROAD_RECONSTRUCTION_MINUTES  :{PUSH_COLOUR}{YELLOW}资助城镇路网重建。{}这将堵塞城镇交通 6 个月。{}{POP_COLOUR}费用：{CURRENCY_LONG}
+STR_LOCAL_AUTHORITY_ACTION_TOOLTIP_ROAD_RECONSTRUCTION_MINUTES  :{PUSH_COLOUR}{YELLOW}资助城镇路网重建。{}这将堵塞城镇交通 6 分钟。{}{POP_COLOUR}费用：{CURRENCY_LONG}
 STR_LOCAL_AUTHORITY_ACTION_TOOLTIP_STATUE_OF_COMPANY            :{PUSH_COLOUR}{YELLOW}以公司的名义设立一尊塑像。{}为位于该城镇的车站提供永久的评分增益。{}{POP_COLOUR}费用：{CURRENCY_LONG}
 STR_LOCAL_AUTHORITY_ACTION_TOOLTIP_NEW_BUILDINGS                :{PUSH_COLOUR}{YELLOW}资助市内建设新的房屋建筑。{}为城镇提供暂时的成长速度增益。{}{POP_COLOUR}费用：{CURRENCY_LONG}
 STR_LOCAL_AUTHORITY_ACTION_TOOLTIP_EXCLUSIVE_TRANSPORT_MONTHS   :{PUSH_COLOUR}{YELLOW}购买本城镇时长 12 个月的独家运输权。{}本城镇的乘客和货物将不会使用其他公司的车站。若竞争对手贿赂成功则此合同将被取消。{}{POP_COLOUR}费用：{CURRENCY_LONG}
@@ -3844,7 +3849,7 @@ STR_EDIT_WAYPOINT_NAME                                          :{WHITE}编辑�
 STR_FINANCES_CAPTION                                            :{WHITE}{COMPANY} 财务报表 {BLACK}{COMPANY_NUM}
 STR_FINANCES_YEAR                                               :{WHITE}{NUM}
 STR_FINANCES_YEAR_CAPTION                                       :年份
-STR_FINANCES_PERIOD_CAPTION                                     :{WHITE}周期
+STR_FINANCES_PERIOD_CAPTION                                     :{WHITE}经济周期
 
 ###length 3
 STR_FINANCES_REVENUE_TITLE                                      :{WHITE}收入

@@ -1274,6 +1274,7 @@ STR_CONFIG_SETTING_HORIZONTAL_POS_RIGHT                         :Direita
 
 STR_CONFIG_SETTING_SECONDS_VALUE                                :{COMMA}{NBSP}segundo{P 0 "" s}
 
+STR_CONFIG_SETTING_INFINITE_MONEY_HELPTEXT                      :Permitir gastos ilimitados e desabilitar a falência de empresas
 
 STR_CONFIG_SETTING_MAXIMUM_INITIAL_LOAN                         :Valor máximo do empréstimo inicial: {STRING}
 STR_CONFIG_SETTING_MAXIMUM_INITIAL_LOAN_HELPTEXT                :Valor máximo do empréstimo para cada empresa (sem ter em conta a inflação)
@@ -1507,6 +1508,8 @@ STR_CONFIG_SETTING_MINUTES_PER_YEAR_VALUE                       :{NUM}
 ###setting-zero-is-special
 STR_CONFIG_SETTING_MINUTES_PER_YEAR_FROZEN                      :0 (tempo do calendário congelado)
 
+STR_CONFIG_SETTING_TOWN_CARGO_SCALE_HELPTEXT                    :Escalar a produção de carga das localidades nesta percentagem.
+STR_CONFIG_SETTING_CARGO_SCALE_VALUE                            :{NUM}%
 
 STR_CONFIG_SETTING_AUTORENEW_VEHICLE                            :Auto-renovação de veículos quando ficam velhos: {STRING}
 STR_CONFIG_SETTING_AUTORENEW_VEHICLE_HELPTEXT                   :Quando ativo, um veículo a chegar ao fim de vida é automaticamente substituído quando as condições de renovação estão reunidas
@@ -3657,6 +3660,8 @@ STR_LOCAL_AUTHORITY_ACTION_BRIBE                                :Subornar a auto
 STR_LOCAL_AUTHORITY_ACTION_TOOLTIP_SMALL_ADVERTISING            :{PUSH_COLOUR}{YELLOW}Iniciar uma campanha local publicitária pequena, para atrair mais passageiros e carga à sua empresa.{}Providencia um incremento temporário na avaliação das estações num raio pequeno à volta do centro da localidade.{}{POP_COLOUR}Custo: {CURRENCY_LONG}
 STR_LOCAL_AUTHORITY_ACTION_TOOLTIP_MEDIUM_ADVERTISING           :{PUSH_COLOUR}{YELLOW}Iniciar uma campanha local publicitária média, para atrair mais passageiros e carga à sua empresa.{}Providencia um incremento temporário na avaliação das estações num raio médio à volta do centro da localidade.{}{POP_COLOUR}Custo: {CURRENCY_LONG}
 STR_LOCAL_AUTHORITY_ACTION_TOOLTIP_LARGE_ADVERTISING            :{PUSH_COLOUR}{YELLOW}Iniciar uma campanha local publicitária grande, para atrair mais passageiros e carga à sua empresa.{}Providencia um incremento temporário na avaliação das estações num raio grande à volta do centro da localidade.{}{POP_COLOUR}Custo: {CURRENCY_LONG}
+STR_LOCAL_AUTHORITY_ACTION_TOOLTIP_ROAD_RECONSTRUCTION_MONTHS   :{PUSH_COLOUR}{YELLOW}Financiar a reconstrução da rede urbana de estradas.{}Provoca uma perturbação considerável no tráfego rodoviário até 6 meses.{}{POP_COLOUR}Custo: {CURRENCY_LONG}
+STR_LOCAL_AUTHORITY_ACTION_TOOLTIP_ROAD_RECONSTRUCTION_MINUTES  :{PUSH_COLOUR}{YELLOW}Financiar a reconstrução da rede urbana de estradas.{}Provoca uma perturbação considerável no tráfego rodoviário até 6 minutos.{}{POP_COLOUR}Custo: {CURRENCY_LONG}
 STR_LOCAL_AUTHORITY_ACTION_TOOLTIP_STATUE_OF_COMPANY            :{PUSH_COLOUR}{YELLOW}Construir uma estátua em honra da sua empresa.{}Providencia um incremento permanente na avaliação das estações nesta localidade.{}{POP_COLOUR}Custo: {CURRENCY_LONG}
 STR_LOCAL_AUTHORITY_ACTION_TOOLTIP_NEW_BUILDINGS                :{PUSH_COLOUR}{YELLOW}Financiar a construção de novos edifícios na localidade.{}Providencia um incremento temporário no crescimento desta localidade.{}{POP_COLOUR}Custo: {CURRENCY_LONG}
 STR_LOCAL_AUTHORITY_ACTION_TOOLTIP_BRIBE                        :{PUSH_COLOUR}{YELLOW}Subornar a autoridade local para aumentar a sua avaliação e anular o direito de transporte exclusivo da concorrência, correndo o risco de uma penalidade severa se for apanhado.{}{POP_COLOUR}Custo: {CURRENCY_LONG}
@@ -4244,9 +4249,13 @@ STR_ENGINE_PREVIEW_SHIP                                         :navio
 
 STR_ENGINE_PREVIEW_TEXT3                                        :{BLACK}{STRING}{}{5:STRING}{}{STRING}
 STR_ENGINE_PREVIEW_TEXT4                                        :{BLACK}{STRING}{}{STRING}{}{STRING}{}{STRING}
+STR_ENGINE_PREVIEW_COST_WEIGHT                                  :Custo: {CURRENCY_LONG} Peso: {WEIGHT_SHORT}
+STR_ENGINE_PREVIEW_COST_MAX_SPEED                               :Custo: {CURRENCY_LONG}  Velocidade Máx.: {VELOCITY}
 STR_ENGINE_PREVIEW_SPEED_POWER_MAX_TE                           :Velocidade: {VELOCITY} Potência: {POWER} Tração Máx.: {FORCE}
 STR_ENGINE_PREVIEW_TYPE                                         :Tipo de aeronave: {STRING}
 STR_ENGINE_PREVIEW_TYPE_RANGE                                   :Tipo de aeronave: {STRING} Alcance: {COMMA} mosaicos
+STR_ENGINE_PREVIEW_RUNCOST_YEAR                                 :Custo de Circulação: {CURRENCY_LONG}/ano
+STR_ENGINE_PREVIEW_RUNCOST_PERIOD                               :Custo de Circulação: {CURRENCY_LONG}/período
 STR_ENGINE_PREVIEW_CAPACITY                                     :Capacidade: {CARGO_LONG}
 STR_ENGINE_PREVIEW_CAPACITY_2                                   :Capacidade: {CARGO_LONG}, {CARGO_LONG}
 
@@ -4421,6 +4430,7 @@ STR_VEHICLE_DETAILS_SERVICING_INTERVAL_MINUTES                  :{BLACK}Interval
 STR_VEHICLE_DETAILS_SERVICING_INTERVAL_PERCENT                  :{BLACK}Intervalo de manutenção: {LTBLUE}{COMMA}%{BLACK} {STRING}
 STR_VEHICLE_DETAILS_LAST_SERVICE_DATE                           :Última manutenção: {LTBLUE}{DATE_LONG}
 STR_VEHICLE_DETAILS_LAST_SERVICE_MINUTES_AGO                    :Última manutenção: {LTBLUE}{NUM} minutos atrás
+STR_VEHICLE_DETAILS_INCREASE_SERVICING_INTERVAL_TOOLTIP_DAYS    :{BLACK}Aumentar o intervalo de manutenção em 10 dias. Ctrl+Clique para aumentar o intervalo de manutenção em 5 dias
 STR_VEHICLE_DETAILS_DECREASE_SERVICING_INTERVAL_TOOLTIP_DAYS    :{BLACK}Reduzir o intervalo de manutenção em 10 dias. Ctrl+Clique para reduzir o intervalo de manutenção em 5 dias
 STR_VEHICLE_DETAILS_DECREASE_SERVICING_INTERVAL_TOOLTIP_MINUTES :{BLACK}Reduzir o intervalo de manutenção em 5 minutos. Ctrl+Clique para reduzir o intervalo de manutenção em 1 minuto
 STR_VEHICLE_DETAILS_DECREASE_SERVICING_INTERVAL_TOOLTIP_PERCENT :{BLACK}Reduzir o intervalo de manutenção em 10 por cento. Ctrl+Clique para reduzir o intervalo de manutenção em 5 por cento
@@ -5759,6 +5769,7 @@ STR_TOWN_NAME                                                   :{TOWN}
 STR_VEHICLE_NAME                                                :{VEHICLE}
 STR_WAYPOINT_NAME                                               :{WAYPOINT}
 
+STR_CURRENCY_SHORT_GIGA                                         :{NBSP}bn
 
 STR_JUST_CARGO                                                  :{CARGO_LONG}
 STR_JUST_RIGHT_ARROW                                            :{RIGHT_ARROW}

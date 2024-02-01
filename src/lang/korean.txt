@@ -1525,6 +1525,11 @@ STR_CONFIG_SETTING_MINUTES_PER_YEAR_VALUE                       :{NUM}
 ###setting-zero-is-special
 STR_CONFIG_SETTING_MINUTES_PER_YEAR_FROZEN                      :0 (달력 시간 정지됨)
 
+STR_CONFIG_SETTING_TOWN_CARGO_SCALE                             :도시 화물 생성 조정: {STRING}
+STR_CONFIG_SETTING_TOWN_CARGO_SCALE_HELPTEXT                    :도시의 화물 생산량을 이 백분율 값만큼 조정합니다.
+STR_CONFIG_SETTING_INDUSTRY_CARGO_SCALE                         :산업시설 화물 생성 조정: {STRING}
+STR_CONFIG_SETTING_INDUSTRY_CARGO_SCALE_HELPTEXT                :산업시설의 생산량을 이 백분율 값만큼 조정합니다.
+STR_CONFIG_SETTING_CARGO_SCALE_VALUE                            :{NUM}%
 
 STR_CONFIG_SETTING_AUTORENEW_VEHICLE                            :차량이 낡으면 차량을 자동으로 교체: {STRING}
 STR_CONFIG_SETTING_AUTORENEW_VEHICLE_HELPTEXT                   :이 설정을 켜면, 제한 수명에 다다른 차량이 교체 조건을 만족할 경우 자동으로 차량을 교체할 수 있게 됩니다

@@ -458,6 +458,7 @@ STR_SORT_BY_TYPE                                                :Тип
 STR_SORT_BY_TRANSPORTED                                         :% перевезённого
 STR_SORT_BY_NUMBER                                              :Номер
 STR_SORT_BY_PROFIT_LAST_YEAR                                    :Прибыль в прошлом году
+STR_SORT_BY_PROFIT_LAST_PERIOD                                  :Прибыль в прошлом цикле
 STR_SORT_BY_PROFIT_THIS_YEAR                                    :Прибыль в текущем году
 STR_SORT_BY_AGE                                                 :Возраст
 STR_SORT_BY_RELIABILITY                                         :Надёжность
@@ -814,6 +815,7 @@ STR_PERFORMANCE_DETAIL_LOAN                                     :{BLACK}Сумм
 STR_PERFORMANCE_DETAIL_TOTAL                                    :{BLACK}Всего:
 ###next-name-looks-similar
 
+STR_PERFORMANCE_DETAIL_VEHICLES_TOOLTIP_YEARS                   :{BLACK}Количество транспортных средств, оказавшихся прибыльными в прошлом году. Это число включает в себя автомобили, поезда, водные и воздушные суда.
 STR_PERFORMANCE_DETAIL_STATIONS_TOOLTIP                         :{BLACK}Количество обслуживаемых станций. Если несколько типов станций связаны в одну, они все учитываются отдельно.
 STR_PERFORMANCE_DETAIL_MIN_INCOME_TOOLTIP                       :{BLACK}Наименьший квартальный доход за последние 3 года
 STR_PERFORMANCE_DETAIL_MAX_INCOME_TOOLTIP                       :{BLACK}Наибольший квартальный доход за последние 3 года
@@ -969,6 +971,7 @@ STR_STATUSBAR_AUTOSAVE                                          :{RED}АВТОС
 STR_STATUSBAR_SAVING_GAME                                       :{RED}*  *  СОХРАНЕНИЕ ИГРЫ  *  *
 
 STR_STATUSBAR_SPECTATOR                                         :{WHITE}(зритель)
+STR_STATUSBAR_INFINITE_MONEY                                    :{WHITE}(финансы не ограничены)
 
 # News message history
 STR_MESSAGE_HISTORY                                             :{WHITE}История сообщений
@@ -1569,11 +1572,12 @@ STR_CONFIG_SETTING_AUTOSCROLL_EVERY_VIEWPORT                    :во всех �
 
 STR_CONFIG_SETTING_BRIBE                                        :Разрешить подкупать местные власти: {STRING}
 ###length 2
-STR_CONFIG_SETTING_BRIBE_HELPTEXT                               :Позволять компаниям подкупать городскую администрацию. Если факт подкупа раскроется, рейтинг компании в городе падает и взимодействие с местной администрацией прекращается на 6 месяцев.
+STR_CONFIG_SETTING_BRIBE_HELPTEXT                               :Позволять компаниям подкупать городскую администрацию. Если факт подкупа раскроется, рейтинг компании в городе падает и взаимодействие с местной администрацией прекращается на 6 месяцев.
 
 STR_CONFIG_SETTING_ALLOW_EXCLUSIVE                              :Разрешить покупать эксклюзивные транспортные права: {STRING}
 ###length 2
 STR_CONFIG_SETTING_ALLOW_EXCLUSIVE_HELPTEXT                     :Если компания покапает эксклюзивные транспортные права, то на станции конкурентов не будет поступать груз и не будут приходить пассажиры в течение года
+STR_CONFIG_SETTING_ALLOW_EXCLUSIVE_HELPTEXT_MINUTES             :Если компания покапает эксклюзивные транспортные права, то на станции конкурентов не будет поступать груз и не будут приходить пассажиры в течение 12{NBSP}минут.
 
 STR_CONFIG_SETTING_ALLOW_FUND_BUILDINGS                         :Разрешить финансирование строительства зданий: {STRING}
 STR_CONFIG_SETTING_ALLOW_FUND_BUILDINGS_HELPTEXT                :Разрешить транспортым компаниям финансировать строительство новых городских зданий
@@ -1641,6 +1645,7 @@ STR_CONFIG_SETTING_TIMEKEEPING_UNITS_HELPTEXT                   :Выбор си
 
 STR_CONFIG_SETTING_MINUTES_PER_YEAR_HELPTEXT                    :Выберите, сколько минут реального времени длится год в игре. По умолчанию{NBSP}- 12{NBSP}минут. Установка «0» остановит календарное время. Эта настройка не влияет на расчёт экономической модели в игре, и работает только в режиме реального времени.
 
+STR_CONFIG_SETTING_MINUTES_PER_YEAR_VALUE                       :{NUM}
 ###setting-zero-is-special
 
 
@@ -4138,6 +4143,7 @@ STR_VEHICLE_LIST_REPLACE_VEHICLES                               :Замена т
 STR_VEHICLE_LIST_SEND_FOR_SERVICING                             :Отправить на тех. обслуживание
 STR_VEHICLE_LIST_CREATE_GROUP                                   :Создать группу
 STR_VEHICLE_LIST_PROFIT_THIS_YEAR_LAST_YEAR                     :{TINY_FONT}{BLACK}Прибыль в этом году: {CURRENCY_LONG} (в прошлом году: {CURRENCY_LONG})
+STR_VEHICLE_LIST_PROFIT_THIS_PERIOD_LAST_PERIOD                 :{TINY_FONT}{BLACK}Прибыль в текущем цикле: {LTBLUE}{CURRENCY_LONG} (в прошлом: {CURRENCY_LONG})
 STR_VEHICLE_LIST_CARGO                                          :[{CARGO_LIST}]
 STR_VEHICLE_LIST_NAME_AND_CARGO                                 :{STRING} {STRING}
 
@@ -4578,8 +4584,9 @@ STR_VEHICLE_INFO_WEIGHT_POWER_MAX_SPEED                         :{BLACK}Масс
 STR_VEHICLE_INFO_WEIGHT_POWER_MAX_SPEED_MAX_TE                  :{BLACK}Масса: {LTBLUE}{WEIGHT_SHORT} {BLACK}Мощность: {LTBLUE}{POWER}{BLACK} Макс. скорость: {LTBLUE}{VELOCITY} {BLACK}Макс. ТУ: {LTBLUE}{FORCE}
 
 STR_VEHICLE_INFO_PROFIT_THIS_YEAR_LAST_YEAR                     :{BLACK}Прибыль в этом году: {LTBLUE}{CURRENCY_LONG} (в прошлом году: {CURRENCY_LONG})
-STR_VEHICLE_INFO_PROFIT_THIS_YEAR_LAST_YEAR_MIN_PERFORMANCE     :{BLACK}Прибыль в этом году: {LTBLUE}{CURRENCY_LONG} (в прошлом году: {CURRENCY_LONG}) {BLACK}Мин. удельная мощн.: {LTBLUE}{POWER_TO_WEIGHT}
-STR_VEHICLE_INFO_PROFIT_THIS_PERIOD_LAST_PERIOD                 :{BLACK}Прибыль в текущем периоде: {LTBLUE}{CURRENCY_LONG} (в прошлом: {CURRENCY_LONG})
+STR_VEHICLE_INFO_PROFIT_THIS_YEAR_LAST_YEAR_MIN_PERFORMANCE     :{BLACK}Прибыль в текущем году: {LTBLUE}{CURRENCY_LONG} (в прошлом: {CURRENCY_LONG}) {BLACK}Мин. удельная мощн.: {LTBLUE}{POWER_TO_WEIGHT}
+STR_VEHICLE_INFO_PROFIT_THIS_PERIOD_LAST_PERIOD                 :{BLACK}Прибыль в текущем цикле: {LTBLUE}{CURRENCY_LONG} (в прошлом: {CURRENCY_LONG})
+STR_VEHICLE_INFO_PROFIT_THIS_PERIOD_LAST_PERIOD_MIN_PERFORMANCE :{BLACK}Прибыль в текущем цикле: {LTBLUE}{CURRENCY_LONG} (в прошлом: {CURRENCY_LONG}) {BLACK}Мин. удельная мощн.: {LTBLUE}{POWER_TO_WEIGHT}
 STR_VEHICLE_INFO_RELIABILITY_BREAKDOWNS                         :{BLACK}Надёжность: {LTBLUE}{COMMA}% {BLACK}Поломок после ТО: {LTBLUE}{COMMA}
 
 STR_VEHICLE_INFO_BUILT_VALUE                                    :{LTBLUE}{ENGINE} {BLACK}Построен в {LTBLUE}{NUM} г.{BLACK} Стоимость: {LTBLUE}{CURRENCY_LONG}
@@ -4595,7 +4602,8 @@ STR_VEHICLE_DETAILS_SERVICING_INTERVAL_MINUTES                  :{BLACK}ТО к�
 STR_VEHICLE_DETAILS_SERVICING_INTERVAL_PERCENT                  :{BLACK}ТО при сниж. на {LTBLUE}{COMMA}%{BLACK}. {STRING}
 STR_VEHICLE_DETAILS_LAST_SERVICE_DATE                           :ТО: {LTBLUE}{DATE_LONG}
 STR_VEHICLE_DETAILS_LAST_SERVICE_MINUTES_AGO                    :ТО: {LTBLUE}{NUM}{NBSP}мин. назад
-STR_VEHICLE_DETAILS_INCREASE_SERVICING_INTERVAL_TOOLTIP_PERCENT :{BLACK}Увеличить интервал ТО на 10%. Ctrl+щелчок - увеличить интервал на 5%.
+STR_VEHICLE_DETAILS_INCREASE_SERVICING_INTERVAL_TOOLTIP_DAYS    :{BLACK}Увеличить интервал ТО на 10{NBSP}дней. Ctrl+щелчок{NBSP}- увеличить на 5{NBSP}дней.
+STR_VEHICLE_DETAILS_INCREASE_SERVICING_INTERVAL_TOOLTIP_PERCENT :{BLACK}Увеличить интервал ТО на 10%. Ctrl+щелчок{NBSP}- увеличить на 5%.
 STR_VEHICLE_DETAILS_DECREASE_SERVICING_INTERVAL_TOOLTIP_MINUTES :{BLACK}Уменьшить интервал ТО на 5{NBSP}минут. Ctrl+щелчок{NBSP}- уменьшить на 1{NBSP}минуту.
 
 STR_SERVICE_INTERVAL_DROPDOWN_TOOLTIP                           :{BLACK}Изменить тип интервала прохождения технического обслуживания
@@ -5968,6 +5976,8 @@ STR_TOWN_NAME                                                   :{TOWN}
 STR_VEHICLE_NAME                                                :{VEHICLE}
 STR_WAYPOINT_NAME                                               :{WAYPOINT}
 
+STR_CURRENCY_SHORT_KILO                                         :{NBSP}тыс.
+STR_CURRENCY_SHORT_GIGA                                         :{NBSP}млрд.
 
 STR_JUST_CARGO                                                  :{CARGO_LONG}
 STR_JUST_RIGHT_ARROW                                            :{RIGHT_ARROW}

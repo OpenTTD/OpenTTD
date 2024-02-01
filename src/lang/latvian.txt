@@ -100,7 +100,7 @@ STR_QUANTITY_COAL                                               :{WEIGHT_LONG} o
 STR_QUANTITY_MAIL                                               :{COMMA}{NBSP}pasta mais{P s i u}
 STR_QUANTITY_OIL                                                :{VOLUME_LONG} naftas
 STR_QUANTITY_LIVESTOCK                                          :{COMMA}{NBSP}mājlop{P s i u}
-STR_QUANTITY_GOODS                                              :{COMMA}{NBSP}preču kast{P e es u}
+STR_QUANTITY_GOODS                                              :{COMMA}{NBSP}preču kast{P e es es}
 STR_QUANTITY_GRAIN                                              :{WEIGHT_LONG} graudu
 STR_QUANTITY_WOOD                                               :{WEIGHT_LONG} kokmateriālu
 STR_QUANTITY_IRON_ORE                                           :{WEIGHT_LONG} dzelzsrūdas
@@ -170,7 +170,7 @@ STR_BAGS                                                        :{COMMA}{NBSP}ma
 STR_TONS                                                        :{COMMA}{NBSP}tonn{P a as u}
 STR_LITERS                                                      :{COMMA}{NBSP}litr{P s i u}
 STR_ITEMS                                                       :{COMMA}{NBSP}vienīb{P a as u}
-STR_CRATES                                                      :{COMMA}{NBSP}kast{P e es u}
+STR_CRATES                                                      :{COMMA}{NBSP}kast{P e es es}
 
 STR_COLOUR_DEFAULT                                              :Noklusējuma
 ###length 17
@@ -917,6 +917,7 @@ STR_NEWS_STATION_NOW_ACCEPTS_CARGO_LIST                         :{WHITE}{STATION
 
 STR_NEWS_OFFER_OF_SUBSIDY_EXPIRED                               :{BIG_FONT}{BLACK}Subsīdijas piedāvājums beidzies:{}{}{STRING} no {STRING} uz {STRING} subsidēšana ir atcelta
 STR_NEWS_SUBSIDY_WITHDRAWN_SERVICE                              :{BIG_FONT}{BLACK}Subsidēšana atcelta:{}{}{STRING} pārvadājumi no {STRING} uz {STRING} turpmāk vairs netiek subsidēti
+STR_NEWS_SERVICE_SUBSIDY_OFFERED                                :{BIG_FONT}{BLACK}Pakalpojuma subsīdijas piedāvājums:{}{}Pirmais {STRING} no {STRING} līdz {STRING} saņems {UNITS_YEARS_OR_MINUTES} subsīdiju no vietējās pašvaldības!
 ###length 4
 
 STR_NEWS_EXCLUSIVE_RIGHTS_TITLE                                 :{BIG_FONT}{BLACK}Pārvadājumu monopols!
@@ -3660,6 +3661,7 @@ STR_SUBSIDIES_OFFERED_TITLE                                     :{BLACK}Piedāv�
 STR_SUBSIDIES_NONE                                              :{ORANGE}- Neviens -
 STR_SUBSIDIES_SUBSIDISED_TITLE                                  :{BLACK}Pašlaik subsidētie pakalpojumi:
 STR_SUBSIDIES_TOOLTIP_CLICK_ON_SERVICE_TO_CENTER                :{BLACK}Klikšķināt uz servisa, lai iecentrētu skatu uz rūpnīcu/pilsētu. Ctrl+klikšķis atvērs jaunu skatu lauku uz pilsētu/rūpnīcu
+STR_SUBSIDIES_OFFERED_EXPIRY_DATE                               :līdz {DATE_SHORT}
 
 # Story book window
 STR_STORY_BOOK_CAPTION                                          :{WHITE}{COMPANY} Stāstu grāmata
