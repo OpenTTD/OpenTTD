@@ -32,10 +32,6 @@ void ScriptConfig::Change(std::optional<const std::string> name, int version, bo
 	this->to_load_data.reset();
 
 	this->ClearConfigList();
-
-	if (_game_mode == GM_NORMAL && this->info != nullptr) {
-		this->AddRandomDeviation();
-	}
 }
 
 ScriptConfig::ScriptConfig(const ScriptConfig *config)
@@ -49,9 +45,6 @@ ScriptConfig::ScriptConfig(const ScriptConfig *config)
 	for (const auto &item : config->settings) {
 		this->settings[item.first] = item.second;
 	}
-
-	/* Virtual functions get called statically in constructors, so make it explicit to remove any confusion. */
-	this->ScriptConfig::AddRandomDeviation();
 }
 
 ScriptConfig::~ScriptConfig()
