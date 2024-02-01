@@ -184,6 +184,7 @@ static const StringID _order_depot_action_dropdown[] = {
 	STR_ORDER_DROP_GO_ALWAYS_DEPOT,
 	STR_ORDER_DROP_SERVICE_DEPOT,
 	STR_ORDER_DROP_HALT_DEPOT,
+	STR_ORDER_DROP_UNBUNCH,
 	INVALID_STRING_ID
 };
 
@@ -243,11 +244,12 @@ void DrawOrderString(const Vehicle *v, const Order *order, int order_index, int 
 
 	SetDParam(5, STR_EMPTY);
 	SetDParam(8, STR_EMPTY);
+	SetDParam(9, STR_EMPTY);
 
 	/* Check range for aircraft. */
 	if (v->type == VEH_AIRCRAFT && Aircraft::From(v)->GetRange() > 0 && order->IsGotoOrder()) {
 		const Order *next = order->next != nullptr ? order->next : v->GetFirstOrder();
-		if (GetOrderDistance(order, next, v) > Aircraft::From(v)->acache.cached_max_range_sqr) SetDParam(8, STR_ORDER_OUT_OF_RANGE);
+		if (GetOrderDistance(order, next, v) > Aircraft::From(v)->acache.cached_max_range_sqr) SetDParam(9, STR_ORDER_OUT_OF_RANGE);
 	}
 
 	switch (order->GetType()) {
@@ -332,6 +334,12 @@ void DrawOrderString(const Vehicle *v, const Order *order, int order_index, int 
 				SetDParam(5, (order->GetDepotActionType() & ODATFB_HALT) ? STR_ORDER_REFIT_STOP_ORDER : STR_ORDER_REFIT_ORDER);
 				SetDParam(6, CargoSpec::Get(order->GetRefitCargo())->name);
 			}
+
+			/* Do not show unbunching in the depot in the timetable window. */
+			if (!timetable && (order->GetDepotActionType() & ODATFB_UNBUNCH)) {
+				SetDParam(8, STR_ORDER_WAIT_TO_UNBUNCH);
+			}
+
 			break;
 
 		case OT_GOTO_WAYPOINT:
@@ -941,7 +949,6 @@ public:
 		/* First row. */
 		this->RaiseWidget(WID_O_FULL_LOAD);
 		this->RaiseWidget(WID_O_UNLOAD);
-		this->RaiseWidget(WID_O_SERVICE);
 
 		/* Selection widgets. */
 		/* Train or road vehicle. */
@@ -1027,7 +1034,6 @@ public:
 					this->SetWidgetDisabledState(WID_O_REFIT,
 							(order->GetDepotOrderType() & ODTFB_SERVICE) || (order->GetDepotActionType() & ODATFB_HALT) ||
 							(!this->can_do_refit && !order->IsRefit()));
-					this->SetWidgetLoweredState(WID_O_SERVICE, order->GetDepotOrderType() & ODTFB_SERVICE);
 					break;
 
 				case OT_CONDITIONAL: {
@@ -1155,6 +1161,24 @@ public:
 			case WID_O_CAPTION:
 				SetDParam(0, this->vehicle->index);
 				break;
+
+			case WID_O_DEPOT_ACTION: {
+				VehicleOrderID sel = this->OrderGetSel();
+				const Order *order = this->vehicle->GetOrder(sel);
+				if (order == nullptr || !order->IsType(OT_GOTO_DEPOT)) break;
+
+				/* Select the current action selected in the dropdown. The flags don't match the dropdown so we can't just use an index. */
+				if (order->GetDepotOrderType() & ODTFB_SERVICE) {
+					SetDParam(0, STR_ORDER_DROP_SERVICE_DEPOT);
+				} else if (order->GetDepotActionType() & ODATFB_HALT) {
+					SetDParam(0, STR_ORDER_DROP_HALT_DEPOT);
+				} else if (order->GetDepotActionType() & ODATFB_UNBUNCH) {
+					SetDParam(0, STR_ORDER_DROP_UNBUNCH);
+				} else {
+					SetDParam(0, STR_ORDER_DROP_GO_ALWAYS_DEPOT);
+				}
+				break;
+			}
 		}
 	}
 
@@ -1273,12 +1297,8 @@ public:
 				this->OrderClick_Refit(0, false);
 				break;
 
-			case WID_O_SERVICE:
-				if (this->GetWidget<NWidgetLeaf>(widget)->ButtonHit(pt)) {
-					this->OrderClick_Service(-1);
-				} else {
-					ShowDropDownMenu(this, _order_depot_action_dropdown, DepotActionStringIndex(this->vehicle->GetOrder(this->OrderGetSel())), WID_O_SERVICE, 0, 0);
-				}
+			case WID_O_DEPOT_ACTION:
+				ShowDropDownMenu(this, _order_depot_action_dropdown, DepotActionStringIndex(this->vehicle->GetOrder(this->OrderGetSel())), WID_O_DEPOT_ACTION, 0, 0);
 				break;
 
 			case WID_O_REFIT_DROPDOWN:
@@ -1373,7 +1393,7 @@ public:
 				}
 				break;
 
-			case WID_O_SERVICE:
+			case WID_O_DEPOT_ACTION:
 				this->OrderClick_Service(index);
 				break;
 
@@ -1593,8 +1613,8 @@ static constexpr NWidgetPart _nested_orders_train_widgets[] = {
 				NWidget(NWID_SELECTION, INVALID_COLOUR, WID_O_SEL_TOP_MIDDLE),
 					NWidget(NWID_BUTTON_DROPDOWN, COLOUR_GREY, WID_O_UNLOAD), SetMinimalSize(93, 12), SetFill(1, 0),
 															SetDataTip(STR_ORDER_TOGGLE_UNLOAD, STR_ORDER_TOOLTIP_UNLOAD), SetResize(1, 0),
-					NWidget(NWID_BUTTON_DROPDOWN, COLOUR_GREY, WID_O_SERVICE), SetMinimalSize(93, 12), SetFill(1, 0),
-															SetDataTip(STR_ORDER_SERVICE, STR_ORDER_SERVICE_TOOLTIP), SetResize(1, 0),
+					NWidget(NWID_BUTTON_DROPDOWN, COLOUR_GREY, WID_O_DEPOT_ACTION), SetMinimalSize(93, 12), SetFill(1, 0),
+															SetDataTip(STR_JUST_STRING, STR_ORDER_DEPOT_ACTION_TOOLTIP), SetResize(1, 0),
 				EndContainer(),
 				NWidget(NWID_SELECTION, INVALID_COLOUR, WID_O_SEL_TOP_RIGHT),
 					NWidget(WWT_PANEL, COLOUR_GREY), SetMinimalSize(93, 12), SetFill(1, 0), SetResize(1, 0), EndContainer(),
@@ -1671,8 +1691,8 @@ static constexpr NWidgetPart _nested_orders_widgets[] = {
 			NWidget(NWID_HORIZONTAL, NC_EQUALSIZE),
 				NWidget(WWT_PUSHTXTBTN, COLOUR_GREY, WID_O_REFIT), SetMinimalSize(186, 12), SetFill(1, 0),
 													SetDataTip(STR_ORDER_REFIT, STR_ORDER_REFIT_TOOLTIP), SetResize(1, 0),
-				NWidget(NWID_BUTTON_DROPDOWN, COLOUR_GREY, WID_O_SERVICE), SetMinimalSize(124, 12), SetFill(1, 0),
-													SetDataTip(STR_ORDER_SERVICE, STR_ORDER_SERVICE_TOOLTIP), SetResize(1, 0),
+				NWidget(NWID_BUTTON_DROPDOWN, COLOUR_GREY, WID_O_DEPOT_ACTION), SetMinimalSize(124, 12), SetFill(1, 0),
+													SetDataTip(STR_JUST_STRING, STR_ORDER_DEPOT_ACTION_TOOLTIP), SetResize(1, 0),
 			EndContainer(),
 
 			/* Buttons for setting a condition. */

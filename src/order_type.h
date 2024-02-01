@@ -161,6 +161,7 @@ enum OrderDepotAction {
 	DA_ALWAYS_GO, ///< Always go to the depot
 	DA_SERVICE,   ///< Service only if needed
 	DA_STOP,      ///< Go to the depot and stop there
+	DA_UNBUNCH,   ///< Go to the depot and unbunch
 	DA_END
 };
 
