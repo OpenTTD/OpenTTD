@@ -115,6 +115,10 @@
 	cur_company.Restore();
 
 	InvalidateWindowClassesData(WC_SCRIPT_DEBUG, -1);
+
+	if (AIConfig::GetConfig(company)->IsRandom()) {
+		AIConfig::GetConfig(company)->Change(std::nullopt);
+	}
 	CloseWindowById(WC_SCRIPT_SETTINGS, company);
 }
 
