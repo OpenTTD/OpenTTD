@@ -1592,7 +1592,7 @@ static bool LoadTTDPatchExtraChunks(LoadgameState *ls, int)
 	return true;
 }
 
-extern TileIndex _cur_tileloop_tile;
+extern uint32_t _cur_tileloop_seed;
 extern uint16_t _disaster_delay;
 extern uint8_t _trees_tick_ctr;
 extern uint8_t _age_cargo_skip_counter; // From misc_sl.cpp
@@ -1638,7 +1638,7 @@ static const OldChunks main_chunk[] = {
 
 	OCL_VAR ( OC_FILE_U16 | OC_VAR_U8, 1, &_age_cargo_skip_counter ),
 	OCL_VAR ( OC_FILE_U16 | OC_VAR_U64, 1, &TimerGameTick::counter ),
-	OCL_VAR (   OC_TILE,   1, &_cur_tileloop_tile ),
+	OCL_VAR (   OC_TILE,   1, &_cur_tileloop_seed ),
 
 	OCL_ASSERT( OC_TTO, 0x3A2E ),
 

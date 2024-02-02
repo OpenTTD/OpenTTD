@@ -195,20 +195,6 @@ inline void AddTreeCount(Tile t, int c)
 
 /**
  * Returns the tree growth stage.
- * Sets the tree cycle parity (for procedural growth). Uses the same bits as tree counter.
- *
- * @param t The tile to set the value on
- * @param c The value to set
- * @pre Tile must be of type MP_TREES
- */
-static inline void SetTreeCycle(Tile t, int c)
-{
-	assert(IsTileType(t, MP_TREES));
-	SB(t.m5(), 6, 2, c);
-}
-
-/**
- * Returns the tree growth stage.
  *
  * This function returns the tree growth stage of a tile with trees.
  *

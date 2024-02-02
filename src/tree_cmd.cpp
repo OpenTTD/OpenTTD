@@ -613,10 +613,13 @@ static void DrawTile_Trees(TileInfo *ti)
 
 		/* Use a fixed value for the counter (0) when trees aren't growing. */
 		if (_settings_game.construction.extra_tree_placement != ETP_NO_GROWTH_NO_SPREAD) {
-			counter = TimerGameTick::counter >> 12;
+			uint64_t cycle = tile_hash + (TimerGameTick::counter >> 8);
+			counter = cycle >> 4;
 
-			/* For procedural growth counter parity is stored instead of tree count. */
-			if (counter % 2 != trees - 1) counter++;
+			/* It may happen that counter has not increased yet but the tile was already
+			 * iterated with the new value so we need to adjust.
+			 */
+			if ((cycle & 15) == 15 && WasTileIteratedThisCycle(ti->tile)) counter++;
 		}
 
 		auto proc_value = PickRandomGrowth(tile_hash, CanPlantExtraTrees(ti->tile), counter);
@@ -778,7 +781,7 @@ static void TileLoop_Trees(TileIndex tile)
 	 * Also, we use a simple hash to spread the updates evenly over the map.
 	 */
 	uint32_t tile_hash = SimpleHash32(tile.base());
-	uint32_t cycle = tile_hash + (TimerGameTick::counter >> 8);
+	uint64_t cycle = tile_hash + (TimerGameTick::counter >> 8);
 
 	/* Handle growth of grass (under trees/on MP_TREES tiles) at every 8th processings, like it's done for grass on MP_CLEAR tiles. */
 	if ((cycle & 7) == 7 && GetTreeGround(tile) == TREE_GROUND_GRASS) {
@@ -794,7 +797,7 @@ static void TileLoop_Trees(TileIndex tile)
 	static const uint32_t TREE_UPDATE_FREQUENCY = 16;  // How many tile updates happen for one tree update
 	if (cycle % TREE_UPDATE_FREQUENCY != TREE_UPDATE_FREQUENCY - 1) return;
 
-	uint64_t counter = (TimerGameTick::counter >> 12) + 1;
+	uint64_t counter = (cycle >> 4) + 1;
 	bool can_plant_extra = CanPlantExtraTrees(tile);
 	uint8_t value = PickRandomGrowth(tile_hash, can_plant_extra, counter);
 
@@ -809,15 +812,10 @@ static void TileLoop_Trees(TileIndex tile)
 	if (growth == proc_growth && count == proc_count) {
 		growth = TreeGrowthStage::Procedural;
 		SetTreeGrowth(tile, growth);
-		SetTreeCycle(tile, 0);  // Tree cycle overwrites tree count
+		AddTreeCount(tile, -(int)count); // with procedural growth count is not used so just set it to 0
 	}
 
 	if (growth == TreeGrowthStage::Procedural) {
-		/* Store the parity of this cycle so that drawing routine can detect
-		 * whether the tile was alredy looped this cycle asd so chose appropriate state.
-		 */
-		SetTreeCycle(tile, counter % 2);
-
 		/* Don't mark dirty if trees didn't change. */
 		if (HasBit(value, 5)) return;
 
