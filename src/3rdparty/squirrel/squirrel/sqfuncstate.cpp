@@ -93,7 +93,7 @@ void DumpLiteral(SQObjectPtr &o)
 }
 #endif
 
-SQFuncState::SQFuncState(SQSharedState *ss,SQFuncState *parent,CompilerErrorFunc efunc,void *ed)
+SQFuncState::SQFuncState(SQSharedState *ss,SQFuncState *parent)
 {
 		_nliterals = 0;
 		_literals = SQTable::Create(ss,0);
@@ -106,15 +106,13 @@ SQFuncState::SQFuncState(SQSharedState *ss,SQFuncState *parent,CompilerErrorFunc
 		_traps = 0;
 		_returnexp = 0;
 		_varparams = false;
-		_errfunc = efunc;
-		_errtarget = ed;
 		_bgenerator = false;
 
 }
 
 void SQFuncState::Error(const SQChar *err)
 {
-	_errfunc(_errtarget,err);
+	throw CompileException(err);
 }
 
 #ifdef _DEBUG_DUMP
@@ -550,7 +548,7 @@ SQFunctionProto *SQFuncState::BuildProto()
 SQFuncState *SQFuncState::PushChildState(SQSharedState *ss)
 {
 	SQFuncState *child = (SQFuncState *)sq_malloc(sizeof(SQFuncState));
-	new (child) SQFuncState(ss,this,_errfunc,_errtarget);
+	new (child) SQFuncState(ss,this);
 	_childstates.push_back(child);
 	return child;
 }

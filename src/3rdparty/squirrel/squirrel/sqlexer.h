@@ -5,8 +5,8 @@
 struct SQLexer
 {
 	~SQLexer();
-	SQLexer(SQSharedState *ss,SQLEXREADFUNC rg,SQUserPointer up,CompilerErrorFunc efunc,void *ed);
-	NORETURN void Error(const SQChar *err);
+	SQLexer(SQSharedState *ss,SQLEXREADFUNC rg,SQUserPointer up);
+	[[noreturn]] void Error(const SQChar *err);
 	SQInteger Lex();
 	const SQChar *Tok2Str(SQInteger tok);
 private:
@@ -35,8 +35,6 @@ public:
 	char32_t _currdata;
 	SQSharedState *_sharedstate;
 	sqvector<SQChar> _longstr;
-	CompilerErrorFunc _errfunc;
-	void *_errtarget;
 };
 
 #endif

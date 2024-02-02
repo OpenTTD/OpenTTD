@@ -57,19 +57,15 @@ typedef sqvector<ExpState> ExpStateVec;
 class SQCompiler
 {
 public:
-	SQCompiler(SQVM *v, SQLEXREADFUNC rg, SQUserPointer up, const SQChar* sourcename, bool raiseerror, bool lineinfo) : _token(0), _fs(nullptr), _lex(_ss(v), rg, up, ThrowError, this), _debugline(0), _debugop(0)
+	SQCompiler(SQVM *v, SQLEXREADFUNC rg, SQUserPointer up, const SQChar* sourcename, bool raiseerror, bool lineinfo) : _token(0), _fs(nullptr), _lex(_ss(v), rg, up), _debugline(0), _debugop(0)
 	{
 		_vm=v;
 		_sourcename = SQString::Create(_ss(v), sourcename);
 		_lineinfo = lineinfo;_raiseerror = raiseerror;
 	}
-	NORETURN static void ThrowError(void *ud, const SQChar *s) {
-		SQCompiler *c = (SQCompiler *)ud;
-		c->Error(s);
-	}
-	NORETURN void Error(const std::string &msg)
+	[[noreturn]] void Error(const std::string &msg)
 	{
-		throw msg;
+		throw CompileException(msg);
 	}
 	void Lex(){	_token = _lex.Lex();}
 	void PushExpState(){ _expstates.push_back(ExpState()); }
@@ -159,7 +155,7 @@ public:
 		_debugline = 1;
 		_debugop = 0;
 
-		SQFuncState funcstate(_ss(_vm), nullptr,ThrowError,this);
+		SQFuncState funcstate(_ss(_vm), nullptr);
 		funcstate._name = SQString::Create(_ss(_vm), "main");
 		_fs = &funcstate;
 		_fs->AddParameter(_fs->CreateString("this"));
@@ -181,12 +177,12 @@ public:
 #endif
 			return true;
 		}
-		catch (const std::string &compilererror) {
+		catch (const CompileException &compilererror) {
 			if(_raiseerror && _ss(_vm)->_compilererrorhandler) {
-				_ss(_vm)->_compilererrorhandler(_vm, compilererror.c_str(), type(_sourcename) == OT_STRING ? _stringval(_sourcename) : "unknown",
+				_ss(_vm)->_compilererrorhandler(_vm, compilererror.what(), type(_sourcename) == OT_STRING ? _stringval(_sourcename) : "unknown",
 					_lex._currentline, _lex._currentcolumn);
 			}
-			_vm->_lasterror = SQString::Create(_ss(_vm), compilererror);
+			_vm->_lasterror = SQString::Create(_ss(_vm), compilererror.what());
 			return false;
 		}
 	}
