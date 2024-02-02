@@ -81,12 +81,12 @@ const std::string &NetworkError::AsString() const
 {
 	if (this->message.empty()) {
 #if defined(_WIN32)
-		char buffer[512];
-		if (FormatMessageA(FORMAT_MESSAGE_FROM_SYSTEM | FORMAT_MESSAGE_IGNORE_INSERTS, nullptr, this->error,
-			MAKELANGID(LANG_NEUTRAL, SUBLANG_DEFAULT), buffer, sizeof(buffer), nullptr) == 0) {
+		wchar_t buffer[512];
+		if (FormatMessage(FORMAT_MESSAGE_FROM_SYSTEM | FORMAT_MESSAGE_IGNORE_INSERTS, nullptr, this->error,
+			MAKELANGID(LANG_NEUTRAL, SUBLANG_DEFAULT), buffer, lengthof(buffer), nullptr) == 0) {
 			this->message.assign(fmt::format("Unknown error {}", this->error));
 		} else {
-			this->message.assign(buffer);
+			this->message.assign(FS2OTTD(buffer));
 		}
 #else
 		/* Make strerror thread safe by locking access to it. There is a thread safe strerror_r, however
