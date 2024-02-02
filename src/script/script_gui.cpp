@@ -379,10 +379,18 @@ struct ScriptSettingsWindow : public Window {
 			TextColour colour;
 			uint idx = 0;
 			if (config_item.description.empty()) {
-				str = STR_JUST_STRING1;
+				if (this->slot != OWNER_DEITY && !Company::IsValidID(this->slot) && config_item.random_deviation != 0) {
+					str = STR_AI_SETTINGS_JUST_DEVIATION;
+				} else {
+					str = STR_JUST_STRING1;
+				}
 				colour = TC_ORANGE;
 			} else {
-				str = STR_AI_SETTINGS_SETTING;
+				if (this->slot != OWNER_DEITY && !Company::IsValidID(this->slot) && config_item.random_deviation != 0) {
+					str = STR_AI_SETTINGS_SETTING_DEVIATION;
+				} else {
+					str = STR_AI_SETTINGS_SETTING;
+				}
 				colour = TC_LIGHT_BLUE;
 				SetDParamStr(idx++, config_item.description);
 			}
@@ -397,13 +405,35 @@ struct ScriptSettingsWindow : public Window {
 					DrawArrowButtons(br.left, y + button_y_offset, COLOUR_YELLOW, (this->clicked_button == i) ? 1 + (this->clicked_increase != rtl) : 0, editable && current_value > config_item.min_value, editable && current_value < config_item.max_value);
 				}
 
-				auto config_iterator = config_item.labels.find(current_value);
-				if (config_iterator != config_item.labels.end()) {
-					SetDParam(idx++, STR_JUST_RAW_STRING);
-					SetDParamStr(idx++, config_iterator->second);
+				if (this->slot == OWNER_DEITY || Company::IsValidID(this->slot) || config_item.random_deviation == 0) {
+					auto config_iterator = config_item.labels.find(current_value);
+					if (config_iterator != config_item.labels.end()) {
+						SetDParam(idx++, STR_JUST_RAW_STRING);
+						SetDParamStr(idx++, config_iterator->second);
+					} else {
+						SetDParam(idx++, STR_JUST_INT);
+						SetDParam(idx++, current_value);
+					}
 				} else {
-					SetDParam(idx++, STR_JUST_INT);
-					SetDParam(idx++, current_value);
+					int min_deviated = std::max(config_item.min_value, current_value - config_item.random_deviation);
+					auto config_iterator = config_item.labels.find(min_deviated);
+					if (config_iterator != config_item.labels.end()) {
+						SetDParam(idx++, STR_JUST_RAW_STRING);
+						SetDParamStr(idx++, config_iterator->second);
+					} else {
+						SetDParam(idx++, STR_JUST_INT);
+						SetDParam(idx++, min_deviated);
+					}
+
+					int max_deviated = std::min(config_item.max_value, current_value + config_item.random_deviation);
+					config_iterator = config_item.labels.find(max_deviated);
+					if (config_iterator != config_item.labels.end()) {
+						SetDParam(idx++, STR_JUST_RAW_STRING);
+						SetDParamStr(idx++, config_iterator->second);
+					} else {
+						SetDParam(idx++, STR_JUST_INT);
+						SetDParam(idx++, max_deviated);
+					}
 				}
 			}
 
