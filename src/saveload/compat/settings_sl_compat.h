@@ -162,7 +162,7 @@ const SaveLoadCompat _settings_sl_compat[] = {
 	SLC_VAR("economy.initial_city_size"),
 	SLC_VAR("economy.mod_road_rebuild"),
 	SLC_NULL(1, SL_MIN_VERSION, SLV_107),
-	SLC_VAR("script.settings_profile"),
+	SLC_NULL(1, SLV_178, SLV_TABLE_CHUNKS),
 	SLC_VAR("ai.ai_in_multiplayer"),
 	SLC_VAR("ai.ai_disable_veh_train"),
 	SLC_VAR("ai.ai_disable_veh_roadveh"),

@@ -2249,7 +2249,6 @@ static SettingsContainer &GetSettingsTree()
 		{
 			SettingsPage *npc = ai->Add(new SettingsPage(STR_CONFIG_SETTING_AI_NPC));
 			{
-				npc->Add(new SettingEntry("script.settings_profile"));
 				npc->Add(new SettingEntry("script.script_max_opcode_till_suspend"));
 				npc->Add(new SettingEntry("script.script_max_memory_megabytes"));
 				npc->Add(new SettingEntry("difficulty.competitor_speed"));
