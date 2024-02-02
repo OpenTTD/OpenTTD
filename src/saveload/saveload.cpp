@@ -198,10 +198,10 @@ struct SaveLoadParams {
 	int array_index, last_array_index;   ///< in the case of an array, the current and last positions
 	bool expect_table_header;            ///< In the case of a table, if the header is saved/loaded.
 
-	MemoryDumper *dumper;                ///< Memory dumper to write the savegame to.
+	std::unique_ptr<MemoryDumper> dumper; ///< Memory dumper to write the savegame to.
 	std::shared_ptr<SaveFilter> sf; ///< Filter to write the savegame to.
 
-	ReadBuffer *reader;                  ///< Savegame reading buffer.
+	std::unique_ptr<ReadBuffer> reader; ///< Savegame reading buffer.
 	std::shared_ptr<LoadFilter> lf; ///< Filter to read the savegame from.
 
 	StringID error_str;                  ///< the translatable error message to show
@@ -2711,14 +2711,9 @@ static void ResetSaveloadData()
  */
 static inline void ClearSaveLoadState()
 {
-	delete _sl.dumper;
 	_sl.dumper = nullptr;
-
 	_sl.sf = nullptr;
-
-	delete _sl.reader;
 	_sl.reader = nullptr;
-
 	_sl.lf = nullptr;
 }
 
@@ -2835,7 +2830,7 @@ static SaveOrLoadResult DoSave(std::shared_ptr<SaveFilter> writer, bool threaded
 {
 	assert(!_sl.saveinprogress);
 
-	_sl.dumper = new MemoryDumper();
+	_sl.dumper = std::make_unique<MemoryDumper>();
 	_sl.sf = writer;
 
 	_sl_version = SAVEGAME_VERSION;
@@ -2942,7 +2937,7 @@ static SaveOrLoadResult DoLoad(std::shared_ptr<LoadFilter> reader, bool load_che
 	}
 
 	_sl.lf = fmt->init_load(_sl.lf);
-	_sl.reader = new ReadBuffer(_sl.lf);
+	_sl.reader = std::make_unique<ReadBuffer>(_sl.lf);
 	_next_offs = 0;
 
 	if (!load_check) {
