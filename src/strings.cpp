@@ -169,24 +169,6 @@ void CopyInDParam(const std::span<const StringParameterBackup> backup)
 }
 
 /**
- * Copy \a num string parameters from the global string parameter array to the \a backup.
- * @param backup The backup to write to.
- * @param num Number of string parameters to copy.
- */
-void CopyOutDParam(std::vector<StringParameterBackup> &backup, size_t num)
-{
-	backup.resize(num);
-	for (size_t i = 0; i < backup.size(); i++) {
-		const char *str = _global_string_params.GetParamStr(i);
-		if (str != nullptr) {
-			backup[i] = str;
-		} else {
-			backup[i] = _global_string_params.GetParam(i);
-		}
-	}
-}
-
-/**
  * Copy parameters into StringParameterBackup for long-term storage.
  * @param backup The backup to write to.
  * @param params The parameters to back up.
@@ -207,26 +189,6 @@ void CopyOutDParam(std::vector<StringParameterBackup> &backup, StringParameters 
 	}
 }
 
-/**
- * Checks whether the global string parameters have changed compared to the given backup.
- * @param backup The backup to check against.
- * @return True when the parameters have changed, otherwise false.
- */
-bool HaveDParamChanged(const std::vector<StringParameterBackup> &backup)
-{
-	bool changed = false;
-	for (size_t i = 0; !changed && i < backup.size(); i++) {
-		bool global_has_string = _global_string_params.GetParamStr(i) != nullptr;
-		if (global_has_string != backup[i].string.has_value()) return true;
-
-		if (global_has_string) {
-			changed = backup[i].string.value() != _global_string_params.GetParamStr(i);
-		} else {
-			changed = backup[i].data != _global_string_params.GetParam(i);
-		}
-	}
-	return changed;
-}
 
 static void StationGetSpecialString(StringBuilder &builder, StationFacility x);
 static void GetSpecialTownNameString(StringBuilder &builder, int ind, uint32_t seed);
