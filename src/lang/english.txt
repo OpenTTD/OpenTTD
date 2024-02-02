@@ -5121,6 +5121,14 @@ STR_ERROR_UNABLE_TO_FIND_LOCAL_DEPOT                            :{WHITE}Unable t
 
 STR_ERROR_DEPOT_WRONG_DEPOT_TYPE                                :Wrong depot type
 
+# Depot unbunching related errors
+STR_ERROR_UNBUNCHING_ONLY_ONE_ALLOWED                           :{WHITE}... can only have one unbunching order
+STR_ERROR_UNBUNCHING_NO_FULL_LOAD                               :{WHITE}... cannot use full load orders when vehicle has an unbunching order
+STR_ERROR_UNBUNCHING_NO_UNBUNCHING_FULL_LOAD                    :{WHITE}... cannot unbunch a vehicle with a full load order
+STR_ERROR_UNBUNCHING_NO_CONDITIONAL                             :{WHITE}... cannot use conditional orders when vehicle has an unbunching order
+STR_ERROR_UNBUNCHING_NO_UNBUNCHING_CONDITIONAL                  :{WHITE}... cannot unbunch a vehicle with a conditional order
+STR_ERROR_UNBUNCHING_NO_SERVICE_IF_NEEDED                       :{WHITE}... vehicle must always visit the depot to unbunch there
+
 # Autoreplace related errors
 STR_ERROR_TRAIN_TOO_LONG_AFTER_REPLACEMENT                      :{WHITE}{VEHICLE} is too long after replacement
 STR_ERROR_AUTOREPLACE_NOTHING_TO_DO                             :{WHITE}No autoreplace/renew rules applied

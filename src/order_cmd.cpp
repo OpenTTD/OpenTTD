@@ -743,8 +743,17 @@ CommandCost CmdInsertOrder(DoCommandFlag flags, VehicleID veh, VehicleOrderID se
 
 			/* Filter invalid load/unload types. */
 			switch (new_order.GetLoadType()) {
-				case OLF_LOAD_IF_POSSIBLE: case OLFB_FULL_LOAD: case OLF_FULL_LOAD_ANY: case OLFB_NO_LOAD: break;
-				default: return CMD_ERROR;
+				case OLF_LOAD_IF_POSSIBLE:
+				case OLFB_NO_LOAD:
+					break;
+
+				case OLFB_FULL_LOAD:
+				case OLF_FULL_LOAD_ANY:
+					if (v->HasUnbunchingOrder()) return_cmd_error(STR_ERROR_UNBUNCHING_NO_FULL_LOAD);
+					break;
+
+				default:
+					return CMD_ERROR;
 			}
 			switch (new_order.GetUnloadType()) {
 				case OUF_UNLOAD_IF_POSSIBLE: case OUFB_UNLOAD: case OUFB_TRANSFER: case OUFB_NO_UNLOAD: break;
@@ -849,6 +858,7 @@ CommandCost CmdInsertOrder(DoCommandFlag flags, VehicleID veh, VehicleOrderID se
 			VehicleOrderID skip_to = new_order.GetConditionSkipToOrder();
 			if (skip_to != 0 && skip_to >= v->GetNumOrders()) return CMD_ERROR; // Always allow jumping to the first (even when there is no order).
 			if (new_order.GetConditionVariable() >= OCV_END) return CMD_ERROR;
+			if (v->HasUnbunchingOrder()) return_cmd_error(STR_ERROR_UNBUNCHING_NO_CONDITIONAL);
 
 			OrderConditionComparator occ = new_order.GetConditionComparator();
 			if (occ >= OCC_END) return CMD_ERROR;
@@ -1285,10 +1295,27 @@ CommandCost CmdModifyOrder(DoCommandFlag flags, VehicleID veh, VehicleOrderID se
 			if (order->GetNonStopType() & ONSF_NO_STOP_AT_DESTINATION_STATION) return CMD_ERROR;
 			if (data > OLFB_NO_LOAD || data == 1) return CMD_ERROR;
 			if (data == order->GetLoadType()) return CMD_ERROR;
+			if ((data & (OLFB_FULL_LOAD | OLF_FULL_LOAD_ANY)) && v->HasUnbunchingOrder()) return_cmd_error(STR_ERROR_UNBUNCHING_NO_FULL_LOAD);
 			break;
 
 		case MOF_DEPOT_ACTION:
 			if (data >= DA_END) return CMD_ERROR;
+			/* The vehicle must always go to the depot (not just if it needs servicing) in order to unbunch there. */
+			if ((data == DA_SERVICE) && (order->GetDepotActionType() & ODATFB_UNBUNCH)) return_cmd_error(STR_ERROR_UNBUNCHING_NO_SERVICE_IF_NEEDED);
+
+			/* Check if we are allowed to add unbunching. We are always allowed to remove it. */
+			if (data == DA_UNBUNCH) {
+				/* Only one unbunching order is allowed in a vehicle's orders. If this order already has an unbunching action, no error is needed. */
+				if (v->HasUnbunchingOrder() && !(order->GetDepotActionType() & ODATFB_UNBUNCH)) return_cmd_error(STR_ERROR_UNBUNCHING_ONLY_ONE_ALLOWED);
+				for (Order *o : v->Orders()) {
+					/* We don't allow unbunching if the vehicle has a conditional order. */
+					if (o->IsType(OT_CONDITIONAL)) return_cmd_error(STR_ERROR_UNBUNCHING_NO_UNBUNCHING_CONDITIONAL);
+					/* We don't allow unbunching if the vehicle has a full load order. */
+					if (o->IsType(OT_GOTO_STATION) && o->GetLoadType() & (OLFB_FULL_LOAD | OLF_FULL_LOAD_ANY)) return_cmd_error(STR_ERROR_UNBUNCHING_NO_UNBUNCHING_FULL_LOAD);
+					/* The vehicle must always go to the depot (not just if it needs servicing) in order to unbunch there. */
+					if (o->IsType(OT_GOTO_DEPOT) && o->GetDepotOrderType() & ODTFB_SERVICE) return_cmd_error(STR_ERROR_UNBUNCHING_NO_SERVICE_IF_NEEDED);
+				}
+			}
 			break;
 
 		case MOF_COND_VARIABLE:
