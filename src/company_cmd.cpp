@@ -424,11 +424,13 @@ set_name:;
 
 		if (c->is_ai) {
 			CompanyNewsInformation *cni = new CompanyNewsInformation(c);
-			SetDParam(0, STR_NEWS_COMPANY_LAUNCH_TITLE);
-			SetDParam(1, STR_NEWS_COMPANY_LAUNCH_DESCRIPTION);
-			SetDParamStr(2, cni->company_name);
-			SetDParam(3, t->index);
-			AddNewsItem(STR_MESSAGE_NEWS_FORMAT, NT_COMPANY_INFO, NF_COMPANY, NR_TILE, c->last_build_coordinate.base(), NR_NONE, UINT32_MAX, cni);
+			auto params = MakeParameters(
+				STR_NEWS_COMPANY_LAUNCH_TITLE,
+				STR_NEWS_COMPANY_LAUNCH_DESCRIPTION,
+				cni->company_name,
+				t->index
+			);
+			AddNewsItem(STR_MESSAGE_NEWS_FORMAT, std::move(params), NT_COMPANY_INFO, NF_COMPANY, NR_TILE, c->last_build_coordinate.base(), NR_NONE, UINT32_MAX, cni);
 		}
 		return;
 	}
@@ -940,10 +942,7 @@ CommandCost CmdCompanyCtrl(DoCommandFlag flags, CompanyCtrlAction cca, CompanyID
 			CompanyNewsInformation *cni = new CompanyNewsInformation(c);
 
 			/* Show the bankrupt news */
-			SetDParam(0, STR_NEWS_COMPANY_BANKRUPT_TITLE);
-			SetDParam(1, STR_NEWS_COMPANY_BANKRUPT_DESCRIPTION);
-			SetDParamStr(2, cni->company_name);
-			AddCompanyNewsItem(STR_MESSAGE_NEWS_FORMAT, cni);
+			AddCompanyNewsItem(STR_MESSAGE_NEWS_FORMAT, MakeParameters(STR_NEWS_COMPANY_BANKRUPT_TITLE, STR_NEWS_COMPANY_BANKRUPT_DESCRIPTION, cni->company_name), cni);
 
 			/* Remove the company */
 			ChangeOwnershipOfCompanyItems(c->index, INVALID_OWNER);

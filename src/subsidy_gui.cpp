@@ -158,7 +158,9 @@ struct SubsidyListWindow : Window {
 			if (!s->IsAwarded()) {
 				if (IsInsideMM(pos, 0, cap)) {
 					/* Displays the two offered towns */
-					SetupSubsidyDecodeParam(s, SubsidyDecodeParamType::Gui);
+					extern ArrayStringParameters<20> _global_string_params;
+					SetupSubsidyDecodeParam(s, SubsidyDecodeParamType::Gui, _global_string_params);
+
 					/* If using wallclock units, show minutes remaining. Otherwise show the date when the subsidy ends. */
 					if (TimerGameEconomy::UsingWallclockUnits()) {
 						SetDParam(7, STR_SUBSIDIES_OFFERED_EXPIRY_TIME);
@@ -189,7 +191,9 @@ struct SubsidyListWindow : Window {
 		for (const Subsidy *s : Subsidy::Iterate()) {
 			if (s->IsAwarded()) {
 				if (IsInsideMM(pos, 0, cap)) {
-					SetupSubsidyDecodeParam(s, SubsidyDecodeParamType::Gui);
+					extern ArrayStringParameters<20> _global_string_params;
+					SetupSubsidyDecodeParam(s, SubsidyDecodeParamType::Gui, _global_string_params);
+
 					SetDParam(7, s->awarded);
 					/* If using wallclock units, show minutes remaining. Otherwise show the date when the subsidy ends. */
 					if (TimerGameEconomy::UsingWallclockUnits()) {

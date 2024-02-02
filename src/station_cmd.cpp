@@ -527,10 +527,8 @@ CargoTypes GetEmptyMask(const Station *st)
  */
 static void ShowRejectOrAcceptNews(const Station *st, CargoTypes cargoes, bool reject)
 {
-	SetDParam(0, st->index);
-	SetDParam(1, cargoes);
 	StringID msg = reject ? STR_NEWS_STATION_NO_LONGER_ACCEPTS_CARGO_LIST : STR_NEWS_STATION_NOW_ACCEPTS_CARGO_LIST;
-	AddNewsItem(msg, NT_ACCEPTANCE, NF_INCOLOUR | NF_SMALL, NR_STATION, st->index);
+	AddNewsItem(msg, MakeParameters(st->index, cargoes), NT_ACCEPTANCE, NF_INCOLOUR | NF_SMALL, NR_STATION, st->index);
 }
 
 /**

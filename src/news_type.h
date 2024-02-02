@@ -143,7 +143,7 @@ struct NewsItem {
 
 	std::vector<StringParameterBackup> params; ///< Parameters for string resolving.
 
-	NewsItem(StringID string_id, NewsType type, NewsFlag flags, NewsReferenceType reftype1, uint32_t ref1, NewsReferenceType reftype2, uint32_t ref2, const NewsAllocatedData *data);
+	NewsItem(StringID string_id, class StringParameters &&, NewsType type, NewsFlag flags, NewsReferenceType reftype1, uint32_t ref1, NewsReferenceType reftype2, uint32_t ref2, const NewsAllocatedData *data);
 };
 
 /** Container for a single string to be passed as NewsAllocatedData. */
