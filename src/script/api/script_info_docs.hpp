@@ -239,6 +239,7 @@ public:
 	 *    [user_configured_value - random_deviation, user_configured_value + random_deviation] (inclusive).
 	 *    random_deviation sign is ignored and the value is clamped in the range [0, MAX(int32_t)] (inclusive).
 	 *    The randomisation will happen just before the Script start.
+	 *    Not allowed if the CONFIG_BOOLEAN flag is set, otherwise optional.
 	 *  - step_size The increase/decrease of the value every time the user
 	 *    clicks one of the up/down arrow buttons. Optional, default is 1.
 	 *  - flags Bitmask of some flags, see ScriptConfigFlags. Required.

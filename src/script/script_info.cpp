@@ -162,6 +162,13 @@ SQInteger ScriptInfo::AddSetting(HSQUIRRELVM vm)
 	}
 	sq_pop(vm, 1);
 
+	/* Don't allow both random_deviation and SCRIPTCONFIG_BOOLEAN to
+	 * be set for the same config item. */
+	if ((items & 0x200) != 0 && (config.flags & SCRIPTCONFIG_BOOLEAN) != 0) {
+		this->engine->ThrowError("setting both random_deviation and CONFIG_BOOLEAN is not allowed");
+		return SQ_ERROR;
+	}
+
 	/* Reset the bit for random_deviation as it's optional. */
 	items &= ~0x200;
 
