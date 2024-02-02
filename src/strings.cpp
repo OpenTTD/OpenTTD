@@ -187,6 +187,27 @@ void CopyOutDParam(std::vector<StringParameterBackup> &backup, size_t num)
 }
 
 /**
+ * Copy parameters into StringParameterBackup for long-term storage.
+ * @param backup The backup to write to.
+ * @param params The parameters to back up.
+ */
+void CopyOutDParam(std::vector<StringParameterBackup> &backup, StringParameters &&params)
+{
+	params.SetOffset(0);
+
+	backup.resize(params.GetDataLeft());
+
+	for (size_t i = 0; i < params.GetDataLeft(); i++) {
+		const char *str = params.GetParamStr(i);
+		if (str != nullptr) {
+			backup[i] = str;
+		} else {
+			backup[i] = params.GetParam(i);
+		}
+	}
+}
+
+/**
  * Checks whether the global string parameters have changed compared to the given backup.
  * @param backup The backup to check against.
  * @return True when the parameters have changed, otherwise false.
