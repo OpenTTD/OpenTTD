@@ -374,6 +374,7 @@ enum SaveLoadVersion : uint16_t {
 	SLV_SHIP_ACCELERATION,                  ///< 329  PR#10734 Start using Vehicle's acceleration field for ships too.
 
 	SLV_MAX_LOAN_FOR_COMPANY,               ///< 330  PR#11224 Separate max loan for each company.
+	SLV_PROCEDURAL_TREE_GROWTH,             ///< 331  PR#11263 Procedural tree growth.
 
 	SL_MAX_VERSION,                         ///< Highest possible saveload version
 };
