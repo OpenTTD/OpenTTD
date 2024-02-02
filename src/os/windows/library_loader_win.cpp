@@ -20,13 +20,13 @@ static std::string GetLoadError()
 {
 	auto error_code = GetLastError();
 
-	char buffer[512];
-	if (FormatMessageA(FORMAT_MESSAGE_FROM_SYSTEM | FORMAT_MESSAGE_IGNORE_INSERTS, nullptr, error_code,
-		MAKELANGID(LANG_NEUTRAL, SUBLANG_DEFAULT), buffer, sizeof(buffer), nullptr) == 0) {
+	wchar_t buffer[512];
+	if (FormatMessage(FORMAT_MESSAGE_FROM_SYSTEM | FORMAT_MESSAGE_IGNORE_INSERTS, nullptr, error_code,
+		MAKELANGID(LANG_NEUTRAL, SUBLANG_DEFAULT), buffer, lengthof(buffer), nullptr) == 0) {
 		return fmt::format("Unknown error {}", error_code);
 	}
 
-	return buffer;
+	return FS2OTTD(buffer);
 }
 
 void *LibraryLoader::OpenLibrary(const std::string &filename)
