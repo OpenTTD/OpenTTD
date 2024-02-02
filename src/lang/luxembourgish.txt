@@ -501,24 +501,6 @@ STR_ABOUT_MENU_SPRITE_ALIGNER                                   :Sprite Alignéi
 STR_ABOUT_MENU_TOGGLE_BOUNDING_BOXES                            :Zeechen-Boxen un/aus
 STR_ABOUT_MENU_TOGGLE_DIRTY_BLOCKS                              :Knaschteg blocks fierwen un/aus
 
-# Place in highscore window
-###length 15
-STR_ORDINAL_NUMBER_1ST                                          :1ten
-STR_ORDINAL_NUMBER_2ND                                          :2ten
-STR_ORDINAL_NUMBER_3RD                                          :3ten
-STR_ORDINAL_NUMBER_4TH                                          :4ten
-STR_ORDINAL_NUMBER_5TH                                          :5ten
-STR_ORDINAL_NUMBER_6TH                                          :6ten
-STR_ORDINAL_NUMBER_7TH                                          :7ten
-STR_ORDINAL_NUMBER_8TH                                          :8ten
-STR_ORDINAL_NUMBER_9TH                                          :9ten
-STR_ORDINAL_NUMBER_10TH                                         :10ten
-STR_ORDINAL_NUMBER_11TH                                         :11ten
-STR_ORDINAL_NUMBER_12TH                                         :12ten
-STR_ORDINAL_NUMBER_13TH                                         :13ten
-STR_ORDINAL_NUMBER_14TH                                         :14ten
-STR_ORDINAL_NUMBER_15TH                                         :15ten
-
 ###length 31
 STR_DAY_NUMBER_1ST                                              :1ten
 STR_DAY_NUMBER_2ND                                              :2ten

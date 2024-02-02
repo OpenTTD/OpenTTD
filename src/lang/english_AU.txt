@@ -537,24 +537,6 @@ STR_ABOUT_MENU_TOGGLE_BOUNDING_BOXES                            :Toggle bounding
 STR_ABOUT_MENU_TOGGLE_DIRTY_BLOCKS                              :Toggle colouring of dirty blocks
 STR_ABOUT_MENU_TOGGLE_WIDGET_OUTLINES                           :Toggle widget outlines
 
-# Place in highscore window
-###length 15
-STR_ORDINAL_NUMBER_1ST                                          :1st
-STR_ORDINAL_NUMBER_2ND                                          :2nd
-STR_ORDINAL_NUMBER_3RD                                          :3rd
-STR_ORDINAL_NUMBER_4TH                                          :4th
-STR_ORDINAL_NUMBER_5TH                                          :5th
-STR_ORDINAL_NUMBER_6TH                                          :6th
-STR_ORDINAL_NUMBER_7TH                                          :7th
-STR_ORDINAL_NUMBER_8TH                                          :8th
-STR_ORDINAL_NUMBER_9TH                                          :9th
-STR_ORDINAL_NUMBER_10TH                                         :10th
-STR_ORDINAL_NUMBER_11TH                                         :11th
-STR_ORDINAL_NUMBER_12TH                                         :12th
-STR_ORDINAL_NUMBER_13TH                                         :13th
-STR_ORDINAL_NUMBER_14TH                                         :14th
-STR_ORDINAL_NUMBER_15TH                                         :15th
-
 ###length 31
 STR_DAY_NUMBER_1ST                                              :1st
 STR_DAY_NUMBER_2ND                                              :2nd

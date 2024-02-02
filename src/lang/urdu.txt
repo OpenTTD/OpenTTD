@@ -454,24 +454,6 @@ STR_ABOUT_MENU_SPRITE_ALIGNER                                   :sprite صف ب�
 STR_ABOUT_MENU_TOGGLE_BOUNDING_BOXES                            :احاطہ کرنے والے ڈبوں کی تدویم کیجئیے
 STR_ABOUT_MENU_TOGGLE_DIRTY_BLOCKS                              :گندے بلاکوں کا رنگ تبدیل کرو
 
-# Place in highscore window
-###length 15
-STR_ORDINAL_NUMBER_1ST                                          :پھل
-STR_ORDINAL_NUMBER_2ND                                          :دوسر
-STR_ORDINAL_NUMBER_3RD                                          :تیسر
-STR_ORDINAL_NUMBER_4TH                                          :چوتھ
-STR_ORDINAL_NUMBER_5TH                                          :پانچھو
-STR_ORDINAL_NUMBER_6TH                                          :چھٹ
-STR_ORDINAL_NUMBER_7TH                                          :ساتو
-STR_ORDINAL_NUMBER_8TH                                          :آٹھو
-STR_ORDINAL_NUMBER_9TH                                          :نو
-STR_ORDINAL_NUMBER_10TH                                         :دسو
-STR_ORDINAL_NUMBER_11TH                                         :گیارھو
-STR_ORDINAL_NUMBER_12TH                                         :بارھو
-STR_ORDINAL_NUMBER_13TH                                         :تیرھو
-STR_ORDINAL_NUMBER_14TH                                         :چودھو
-STR_ORDINAL_NUMBER_15TH                                         :پندھرو
-
 ###length 31
 STR_DAY_NUMBER_1ST                                              :پھل
 STR_DAY_NUMBER_2ND                                              :دوسر

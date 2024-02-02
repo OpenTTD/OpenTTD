@@ -561,39 +561,6 @@ STR_ABOUT_MENU_SPRITE_ALIGNER                                   :Ευθυγρα�
 STR_ABOUT_MENU_TOGGLE_BOUNDING_BOXES                            :Εναλλαγή πλαισίου οριοθέτησης
 STR_ABOUT_MENU_TOGGLE_DIRTY_BLOCKS                              :Εναλλαγή χρωματισμού λερωμένων τετραγωνίδιων
 
-# Place in highscore window
-###length 15
-STR_ORDINAL_NUMBER_1ST                                          :1ος
-STR_ORDINAL_NUMBER_1ST.date                                     :1η
-STR_ORDINAL_NUMBER_2ND                                          :2ος
-STR_ORDINAL_NUMBER_2ND.date                                     :2η
-STR_ORDINAL_NUMBER_3RD                                          :3ος
-STR_ORDINAL_NUMBER_3RD.date                                     :3η
-STR_ORDINAL_NUMBER_4TH                                          :4ος
-STR_ORDINAL_NUMBER_4TH.date                                     :4η
-STR_ORDINAL_NUMBER_5TH                                          :5ος
-STR_ORDINAL_NUMBER_5TH.date                                     :5η
-STR_ORDINAL_NUMBER_6TH                                          :6ος
-STR_ORDINAL_NUMBER_6TH.date                                     :6η
-STR_ORDINAL_NUMBER_7TH                                          :7ος
-STR_ORDINAL_NUMBER_7TH.date                                     :7η
-STR_ORDINAL_NUMBER_8TH                                          :8ος
-STR_ORDINAL_NUMBER_8TH.date                                     :8η
-STR_ORDINAL_NUMBER_9TH                                          :9ος
-STR_ORDINAL_NUMBER_9TH.date                                     :9η
-STR_ORDINAL_NUMBER_10TH                                         :10ος
-STR_ORDINAL_NUMBER_10TH.date                                    :10η
-STR_ORDINAL_NUMBER_11TH                                         :11ος
-STR_ORDINAL_NUMBER_11TH.date                                    :11η
-STR_ORDINAL_NUMBER_12TH                                         :12ος
-STR_ORDINAL_NUMBER_12TH.date                                    :12η
-STR_ORDINAL_NUMBER_13TH                                         :13ος
-STR_ORDINAL_NUMBER_13TH.date                                    :13η
-STR_ORDINAL_NUMBER_14TH                                         :14ος
-STR_ORDINAL_NUMBER_14TH.date                                    :14η
-STR_ORDINAL_NUMBER_15TH                                         :15ος
-STR_ORDINAL_NUMBER_15TH.date                                    :15η
-
 ###length 31
 STR_DAY_NUMBER_1ST                                              :1ος
 STR_DAY_NUMBER_1ST.date                                         :1η

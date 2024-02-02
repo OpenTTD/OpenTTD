@@ -490,24 +490,6 @@ STR_ABOUT_MENU_SPRITE_ALIGNER                                   :Ailínóir spri
 STR_ABOUT_MENU_TOGGLE_BOUNDING_BOXES                            :Scoránaigh boscaí imill
 STR_ABOUT_MENU_TOGGLE_DIRTY_BLOCKS                              :Scor anaigh dath na mbloc salacha
 
-# Place in highscore window
-###length 15
-STR_ORDINAL_NUMBER_1ST                                          :1ú
-STR_ORDINAL_NUMBER_2ND                                          :2ú
-STR_ORDINAL_NUMBER_3RD                                          :3ú
-STR_ORDINAL_NUMBER_4TH                                          :4ú
-STR_ORDINAL_NUMBER_5TH                                          :5ú
-STR_ORDINAL_NUMBER_6TH                                          :6ú
-STR_ORDINAL_NUMBER_7TH                                          :7ú
-STR_ORDINAL_NUMBER_8TH                                          :8ú
-STR_ORDINAL_NUMBER_9TH                                          :9ú
-STR_ORDINAL_NUMBER_10TH                                         :10ú
-STR_ORDINAL_NUMBER_11TH                                         :11ú
-STR_ORDINAL_NUMBER_12TH                                         :12ú
-STR_ORDINAL_NUMBER_13TH                                         :13ú
-STR_ORDINAL_NUMBER_14TH                                         :14ú
-STR_ORDINAL_NUMBER_15TH                                         :15ú
-
 ###length 31
 STR_DAY_NUMBER_1ST                                              :1ú
 STR_DAY_NUMBER_2ND                                              :2ú

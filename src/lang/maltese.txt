@@ -305,9 +305,6 @@ STR_SCENEDIT_FILE_MENU_SEPARATOR                                :
 
 # About menu
 
-# Place in highscore window
-###length 15
-
 ###length 31
 
 ###length 12

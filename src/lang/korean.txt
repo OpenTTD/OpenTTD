@@ -538,24 +538,6 @@ STR_ABOUT_MENU_TOGGLE_BOUNDING_BOXES                            :박스 경계�
 STR_ABOUT_MENU_TOGGLE_DIRTY_BLOCKS                              :시각적 업데이트 블록 표시 전환
 STR_ABOUT_MENU_TOGGLE_WIDGET_OUTLINES                           :위젯 경계선 켜기/끄기
 
-# Place in highscore window
-###length 15
-STR_ORDINAL_NUMBER_1ST                                          :1
-STR_ORDINAL_NUMBER_2ND                                          :2
-STR_ORDINAL_NUMBER_3RD                                          :3
-STR_ORDINAL_NUMBER_4TH                                          :4
-STR_ORDINAL_NUMBER_5TH                                          :5
-STR_ORDINAL_NUMBER_6TH                                          :6
-STR_ORDINAL_NUMBER_7TH                                          :7
-STR_ORDINAL_NUMBER_8TH                                          :8
-STR_ORDINAL_NUMBER_9TH                                          :9
-STR_ORDINAL_NUMBER_10TH                                         :10
-STR_ORDINAL_NUMBER_11TH                                         :11
-STR_ORDINAL_NUMBER_12TH                                         :12
-STR_ORDINAL_NUMBER_13TH                                         :13
-STR_ORDINAL_NUMBER_14TH                                         :14
-STR_ORDINAL_NUMBER_15TH                                         :15
-
 ###length 31
 STR_DAY_NUMBER_1ST                                              :1
 STR_DAY_NUMBER_2ND                                              :2

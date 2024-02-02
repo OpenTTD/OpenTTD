@@ -273,24 +273,6 @@ STR_TOOLBAR_SOUND_MUSIC                                         :Сасӑ/Юрӑ
 STR_ABOUT_MENU_SCREENSHOT                                       :Экран сӑнӗ
 STR_ABOUT_MENU_ABOUT_OPENTTD                                    :'OpenTTD' çинчен
 
-# Place in highscore window
-###length 15
-STR_ORDINAL_NUMBER_1ST                                          :1мӗш
-STR_ORDINAL_NUMBER_2ND                                          :2мӗш
-STR_ORDINAL_NUMBER_3RD                                          :3-мӗш
-STR_ORDINAL_NUMBER_4TH                                          :4-мӗш
-STR_ORDINAL_NUMBER_5TH                                          :5-мӗш
-STR_ORDINAL_NUMBER_6TH                                          :6-мӗш
-STR_ORDINAL_NUMBER_7TH                                          :7-мӗш
-STR_ORDINAL_NUMBER_8TH                                          :8-мӗш
-STR_ORDINAL_NUMBER_9TH                                          :9-мӗш
-STR_ORDINAL_NUMBER_10TH                                         :10-мӗш
-STR_ORDINAL_NUMBER_11TH                                         :11-мӗш
-STR_ORDINAL_NUMBER_12TH                                         :12-мӗш
-STR_ORDINAL_NUMBER_13TH                                         :13-мӗш
-STR_ORDINAL_NUMBER_14TH                                         :14-мӗш
-STR_ORDINAL_NUMBER_15TH                                         :15-мӗш
-
 ###length 31
 STR_DAY_NUMBER_1ST                                              :1мӗш
 STR_DAY_NUMBER_2ND                                              :2мӗш

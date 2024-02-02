@@ -480,24 +480,6 @@ STR_ABOUT_MENU_SPRITE_ALIGNER                                   :Aliniwr corluni
 STR_ABOUT_MENU_TOGGLE_BOUNDING_BOXES                            :Toglo bocsys ffinio
 STR_ABOUT_MENU_TOGGLE_DIRTY_BLOCKS                              :Toglo llwio blociau budr
 
-# Place in highscore window
-###length 15
-STR_ORDINAL_NUMBER_1ST                                          :1af
-STR_ORDINAL_NUMBER_2ND                                          :2il
-STR_ORDINAL_NUMBER_3RD                                          :3ydd
-STR_ORDINAL_NUMBER_4TH                                          :4ydd
-STR_ORDINAL_NUMBER_5TH                                          :5ed
-STR_ORDINAL_NUMBER_6TH                                          :6ed
-STR_ORDINAL_NUMBER_7TH                                          :7fed
-STR_ORDINAL_NUMBER_8TH                                          :8fed
-STR_ORDINAL_NUMBER_9TH                                          :9fed
-STR_ORDINAL_NUMBER_10TH                                         :10fed
-STR_ORDINAL_NUMBER_11TH                                         :11eg
-STR_ORDINAL_NUMBER_12TH                                         :12fed
-STR_ORDINAL_NUMBER_13TH                                         :13eg
-STR_ORDINAL_NUMBER_14TH                                         :14eg
-STR_ORDINAL_NUMBER_15TH                                         :15fed
-
 ###length 31
 STR_DAY_NUMBER_1ST                                              :1af
 STR_DAY_NUMBER_2ND                                              :2il

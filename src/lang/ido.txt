@@ -336,9 +336,6 @@ STR_GRAPH_MENU_DELIVERED_CARGO_GRAPH                            :Livrita kargajo
 
 # About menu
 
-# Place in highscore window
-###length 15
-
 ###length 31
 
 ###length 12

@@ -663,24 +663,6 @@ STR_ABOUT_MENU_SPRITE_ALIGNER                                   :Norma spiritus
 STR_ABOUT_MENU_TOGGLE_BOUNDING_BOXES                            :Monstrare celareve arcas finitionum
 STR_ABOUT_MENU_TOGGLE_DIRTY_BLOCKS                              :Incipere desinereve pictura sordidorum laterculorum
 
-# Place in highscore window
-###length 15
-STR_ORDINAL_NUMBER_1ST                                          :Primum
-STR_ORDINAL_NUMBER_2ND                                          :Secundum
-STR_ORDINAL_NUMBER_3RD                                          :Tertium
-STR_ORDINAL_NUMBER_4TH                                          :Quartum
-STR_ORDINAL_NUMBER_5TH                                          :Quintum
-STR_ORDINAL_NUMBER_6TH                                          :Sextum
-STR_ORDINAL_NUMBER_7TH                                          :Septimum
-STR_ORDINAL_NUMBER_8TH                                          :Octavum
-STR_ORDINAL_NUMBER_9TH                                          :Nonum
-STR_ORDINAL_NUMBER_10TH                                         :Decimum
-STR_ORDINAL_NUMBER_11TH                                         :Undecimum
-STR_ORDINAL_NUMBER_12TH                                         :Duodecimum
-STR_ORDINAL_NUMBER_13TH                                         :Tertium Decimum
-STR_ORDINAL_NUMBER_14TH                                         :Quartum Decimum
-STR_ORDINAL_NUMBER_15TH                                         :Quintum Decimum
-
 ###length 31
 STR_DAY_NUMBER_1ST                                              :I
 STR_DAY_NUMBER_2ND                                              :II

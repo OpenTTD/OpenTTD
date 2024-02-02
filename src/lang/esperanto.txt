@@ -581,24 +581,6 @@ STR_ABOUT_MENU_SPRITE_ALIGNER                                   :Bildeto-liniigi
 STR_ABOUT_MENU_TOGGLE_BOUNDING_BOXES                            :Montri/ne montri limigujo
 STR_ABOUT_MENU_TOGGLE_DIRTY_BLOCKS                              :(Mal)ŝalti la kolorigon de malpuraj blokoj
 
-# Place in highscore window
-###length 15
-STR_ORDINAL_NUMBER_1ST                                          :1a
-STR_ORDINAL_NUMBER_2ND                                          :2a
-STR_ORDINAL_NUMBER_3RD                                          :3a
-STR_ORDINAL_NUMBER_4TH                                          :4a
-STR_ORDINAL_NUMBER_5TH                                          :5a
-STR_ORDINAL_NUMBER_6TH                                          :6a
-STR_ORDINAL_NUMBER_7TH                                          :7a
-STR_ORDINAL_NUMBER_8TH                                          :8a
-STR_ORDINAL_NUMBER_9TH                                          :9a
-STR_ORDINAL_NUMBER_10TH                                         :10a
-STR_ORDINAL_NUMBER_11TH                                         :11a
-STR_ORDINAL_NUMBER_12TH                                         :12a
-STR_ORDINAL_NUMBER_13TH                                         :13a
-STR_ORDINAL_NUMBER_14TH                                         :14a
-STR_ORDINAL_NUMBER_15TH                                         :15a
-
 ###length 31
 STR_DAY_NUMBER_1ST                                              :1a de
 STR_DAY_NUMBER_2ND                                              :2a de

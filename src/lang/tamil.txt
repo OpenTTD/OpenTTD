@@ -483,24 +483,6 @@ STR_ABOUT_MENU_SPRITE_ALIGNER                                   :ஸ்ரைட
 STR_ABOUT_MENU_TOGGLE_BOUNDING_BOXES                            :எல்லைக் கட்டங்களை மாற்றவும்
 STR_ABOUT_MENU_TOGGLE_DIRTY_BLOCKS                              :அழுக்கான கட்டங்களின் நிறத்தை மாற்று
 
-# Place in highscore window
-###length 15
-STR_ORDINAL_NUMBER_1ST                                          :1st
-STR_ORDINAL_NUMBER_2ND                                          :2nd
-STR_ORDINAL_NUMBER_3RD                                          :3rd
-STR_ORDINAL_NUMBER_4TH                                          :4th
-STR_ORDINAL_NUMBER_5TH                                          :5வது
-STR_ORDINAL_NUMBER_6TH                                          :6வது
-STR_ORDINAL_NUMBER_7TH                                          :7வது
-STR_ORDINAL_NUMBER_8TH                                          :8வது
-STR_ORDINAL_NUMBER_9TH                                          :9வது
-STR_ORDINAL_NUMBER_10TH                                         :10வது
-STR_ORDINAL_NUMBER_11TH                                         :11வது
-STR_ORDINAL_NUMBER_12TH                                         :12வது
-STR_ORDINAL_NUMBER_13TH                                         :13வது
-STR_ORDINAL_NUMBER_14TH                                         :14வது
-STR_ORDINAL_NUMBER_15TH                                         :15வது
-
 ###length 31
 STR_DAY_NUMBER_1ST                                              :1வது
 STR_DAY_NUMBER_2ND                                              :2வது

@@ -445,24 +445,6 @@ STR_ABOUT_MENU_ABOUT_OPENTTD                                    :За 'Отво�
 STR_ABOUT_MENU_SPRITE_ALIGNER                                   :самовила усогласат
 STR_ABOUT_MENU_TOGGLE_BOUNDING_BOXES                            :Вклучи одблеснува кутии
 
-# Place in highscore window
-###length 15
-STR_ORDINAL_NUMBER_1ST                                          :1-в
-STR_ORDINAL_NUMBER_2ND                                          :2-ор
-STR_ORDINAL_NUMBER_3RD                                          :3-ет
-STR_ORDINAL_NUMBER_4TH                                          :4-рт
-STR_ORDINAL_NUMBER_5TH                                          :5-ти
-STR_ORDINAL_NUMBER_6TH                                          :6-ти
-STR_ORDINAL_NUMBER_7TH                                          :7-ми
-STR_ORDINAL_NUMBER_8TH                                          :8-ми
-STR_ORDINAL_NUMBER_9TH                                          :9-ти
-STR_ORDINAL_NUMBER_10TH                                         :10-ти
-STR_ORDINAL_NUMBER_11TH                                         :11-ти
-STR_ORDINAL_NUMBER_12TH                                         :12-ти
-STR_ORDINAL_NUMBER_13TH                                         :13-ти
-STR_ORDINAL_NUMBER_14TH                                         :14-ти
-STR_ORDINAL_NUMBER_15TH                                         :15-ти
-
 ###length 31
 STR_DAY_NUMBER_1ST                                              :1-в
 STR_DAY_NUMBER_2ND                                              :2-ор

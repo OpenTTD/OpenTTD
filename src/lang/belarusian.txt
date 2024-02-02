@@ -791,24 +791,6 @@ STR_ABOUT_MENU_SPRITE_ALIGNER                                   :Выраўно�
 STR_ABOUT_MENU_TOGGLE_BOUNDING_BOXES                            :Пераключыць абмежавальныя рамкі
 STR_ABOUT_MENU_TOGGLE_DIRTY_BLOCKS                              :Падфарбоўваць блёкі, якія патрабуюць перамалёўкі
 
-# Place in highscore window
-###length 15
-STR_ORDINAL_NUMBER_1ST                                          :1-е
-STR_ORDINAL_NUMBER_2ND                                          :2-е
-STR_ORDINAL_NUMBER_3RD                                          :3-е
-STR_ORDINAL_NUMBER_4TH                                          :4-е
-STR_ORDINAL_NUMBER_5TH                                          :5-е
-STR_ORDINAL_NUMBER_6TH                                          :6-е
-STR_ORDINAL_NUMBER_7TH                                          :7-е
-STR_ORDINAL_NUMBER_8TH                                          :8-е
-STR_ORDINAL_NUMBER_9TH                                          :9-е
-STR_ORDINAL_NUMBER_10TH                                         :10-е
-STR_ORDINAL_NUMBER_11TH                                         :11-е
-STR_ORDINAL_NUMBER_12TH                                         :12-е
-STR_ORDINAL_NUMBER_13TH                                         :13-е
-STR_ORDINAL_NUMBER_14TH                                         :14-е
-STR_ORDINAL_NUMBER_15TH                                         :15-е
-
 ###length 31
 STR_DAY_NUMBER_1ST                                              :1-е
 STR_DAY_NUMBER_2ND                                              :2-е

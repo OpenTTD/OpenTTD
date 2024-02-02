@@ -478,24 +478,6 @@ STR_ABOUT_MENU_SPRITE_ALIGNER                                   :ตัวจั
 STR_ABOUT_MENU_TOGGLE_BOUNDING_BOXES                            :เปิด/ปิด bounding boxes
 STR_ABOUT_MENU_TOGGLE_DIRTY_BLOCKS                              :เปิด/เปิด สีของ dirty blocks
 
-# Place in highscore window
-###length 15
-STR_ORDINAL_NUMBER_1ST                                          :วันที่ 1
-STR_ORDINAL_NUMBER_2ND                                          :วันที่ 2
-STR_ORDINAL_NUMBER_3RD                                          :วันที่ 3
-STR_ORDINAL_NUMBER_4TH                                          :วันที่ 4
-STR_ORDINAL_NUMBER_5TH                                          :วันที่ 5
-STR_ORDINAL_NUMBER_6TH                                          :วันที่ 6
-STR_ORDINAL_NUMBER_7TH                                          :วันที่ 7
-STR_ORDINAL_NUMBER_8TH                                          :วันที่ 8
-STR_ORDINAL_NUMBER_9TH                                          :วันที่ 9
-STR_ORDINAL_NUMBER_10TH                                         :วันที่ 10
-STR_ORDINAL_NUMBER_11TH                                         :วันที่ 11
-STR_ORDINAL_NUMBER_12TH                                         :วันที่ 12
-STR_ORDINAL_NUMBER_13TH                                         :วันที่ 13
-STR_ORDINAL_NUMBER_14TH                                         :วันที่ 14
-STR_ORDINAL_NUMBER_15TH                                         :วันที่ 15
-
 ###length 31
 STR_DAY_NUMBER_1ST                                              :วันที่ 1
 STR_DAY_NUMBER_2ND                                              :วันที่ 2

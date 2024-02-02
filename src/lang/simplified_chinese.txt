@@ -331,9 +331,9 @@ STR_SORT_BY_PRODUCTION                                          :产量
 STR_SORT_BY_TYPE                                                :类型
 STR_SORT_BY_TRANSPORTED                                         :已运输
 STR_SORT_BY_NUMBER                                              :序号
-STR_SORT_BY_PROFIT_LAST_YEAR                                    :去年利润
+STR_SORT_BY_PROFIT_LAST_YEAR                                    :去年损益
 STR_SORT_BY_PROFIT_LAST_PERIOD                                  :上期损益
-STR_SORT_BY_PROFIT_THIS_YEAR                                    :今年利润
+STR_SORT_BY_PROFIT_THIS_YEAR                                    :今年损益
 STR_SORT_BY_PROFIT_THIS_PERIOD                                  :本期损益
 STR_SORT_BY_AGE                                                 :年龄
 STR_SORT_BY_RELIABILITY                                         :可靠性
@@ -365,10 +365,10 @@ STR_SORT_BY_TOTAL_PROFIT_LAST_YEAR                              :去年总利润
 STR_SORT_BY_TOTAL_PROFIT_LAST_PERIOD                            :上期总损益
 STR_SORT_BY_TOTAL_PROFIT_THIS_YEAR                              :今年总利润
 STR_SORT_BY_TOTAL_PROFIT_THIS_PERIOD                            :本期总损益
-STR_SORT_BY_AVERAGE_PROFIT_LAST_YEAR                            :去年平均利润
+STR_SORT_BY_AVERAGE_PROFIT_LAST_YEAR                            :去年平均损益
 STR_SORT_BY_AVERAGE_PROFIT_LAST_PERIOD                          :上期平均损益
-STR_SORT_BY_AVERAGE_PROFIT_THIS_YEAR                            :今年平均利润
-STR_SORT_BY_AVERAGE_PROFIT_THIS_PERIOD                          :本周期平均利润
+STR_SORT_BY_AVERAGE_PROFIT_THIS_YEAR                            :今年平均损益
+STR_SORT_BY_AVERAGE_PROFIT_THIS_PERIOD                          :本期平均损益
 
 # Group by options for vehicle list
 STR_GROUP_BY_NONE                                               :无
@@ -478,7 +478,7 @@ STR_TOWN_MENU_FOUND_TOWN                                        :建立城镇
 STR_SUBSIDIES_MENU_SUBSIDIES                                    :财政补贴
 
 # Graph menu
-STR_GRAPH_MENU_OPERATING_PROFIT_GRAPH                           :利润图表
+STR_GRAPH_MENU_OPERATING_PROFIT_GRAPH                           :损益图表
 STR_GRAPH_MENU_INCOME_GRAPH                                     :收入图表
 STR_GRAPH_MENU_DELIVERED_CARGO_GRAPH                            :运输货物图表
 STR_GRAPH_MENU_PERFORMANCE_HISTORY_GRAPH                        :公司评价图表
@@ -537,24 +537,6 @@ STR_ABOUT_MENU_TOGGLE_BOUNDING_BOXES                            :切换边界框
 STR_ABOUT_MENU_TOGGLE_DIRTY_BLOCKS                              :切换脏方块的颜色
 STR_ABOUT_MENU_TOGGLE_WIDGET_OUTLINES                           :切换小组件边框
 
-# Place in highscore window
-###length 15
-STR_ORDINAL_NUMBER_1ST                                          :1号
-STR_ORDINAL_NUMBER_2ND                                          :2号
-STR_ORDINAL_NUMBER_3RD                                          :3号
-STR_ORDINAL_NUMBER_4TH                                          :4号
-STR_ORDINAL_NUMBER_5TH                                          :5号
-STR_ORDINAL_NUMBER_6TH                                          :6号
-STR_ORDINAL_NUMBER_7TH                                          :7号
-STR_ORDINAL_NUMBER_8TH                                          :8号
-STR_ORDINAL_NUMBER_9TH                                          :9号
-STR_ORDINAL_NUMBER_10TH                                         :10号
-STR_ORDINAL_NUMBER_11TH                                         :11号
-STR_ORDINAL_NUMBER_12TH                                         :12号
-STR_ORDINAL_NUMBER_13TH                                         :13号
-STR_ORDINAL_NUMBER_14TH                                         :14号
-STR_ORDINAL_NUMBER_15TH                                         :15号
-
 ###length 31
 STR_DAY_NUMBER_1ST                                              :1
 STR_DAY_NUMBER_2ND                                              :2
@@ -603,18 +585,18 @@ STR_MONTH_ABBREV_NOV                                            :11
 STR_MONTH_ABBREV_DEC                                            :12
 
 ###length 12
-STR_MONTH_JAN                                                   :一月
-STR_MONTH_FEB                                                   :二月
-STR_MONTH_MAR                                                   :三月
-STR_MONTH_APR                                                   :四月
-STR_MONTH_MAY                                                   :五月
-STR_MONTH_JUN                                                   :六月
-STR_MONTH_JUL                                                   :七月
-STR_MONTH_AUG                                                   :八月
-STR_MONTH_SEP                                                   :九月
-STR_MONTH_OCT                                                   :十月
-STR_MONTH_NOV                                                   :十一月
-STR_MONTH_DEC                                                   :十二月
+STR_MONTH_JAN                                                   :1
+STR_MONTH_FEB                                                   :2
+STR_MONTH_MAR                                                   :3
+STR_MONTH_APR                                                   :4
+STR_MONTH_MAY                                                   :5
+STR_MONTH_JUN                                                   :6
+STR_MONTH_JUL                                                   :7
+STR_MONTH_AUG                                                   :8
+STR_MONTH_SEP                                                   :9
+STR_MONTH_OCT                                                   :10
+STR_MONTH_NOV                                                   :11
+STR_MONTH_DEC                                                   :12
 
 # Graph window
 STR_GRAPH_KEY_BUTTON                                            :{BLACK}索引
@@ -624,7 +606,7 @@ STR_GRAPH_X_LABEL_MONTH_YEAR                                    :{TINY_FONT}{STR
 STR_GRAPH_Y_LABEL                                               :{TINY_FONT}{STRING}
 STR_GRAPH_Y_LABEL_NUMBER                                        :{TINY_FONT}{COMMA}
 
-STR_GRAPH_OPERATING_PROFIT_CAPTION                              :{WHITE}利润图表
+STR_GRAPH_OPERATING_PROFIT_CAPTION                              :{WHITE}损益图表
 STR_GRAPH_INCOME_CAPTION                                        :{WHITE}收入图表
 STR_GRAPH_CARGO_DELIVERED_CAPTION                               :{WHITE}运输的货物总数
 STR_GRAPH_COMPANY_PERFORMANCE_RATINGS_CAPTION                   :{WHITE}公司评价表现指数 (最大指数为1000)
@@ -921,7 +903,7 @@ STR_NEWS_VEHICLE_IS_GETTING_VERY_OLD_AND                        :{WHITE}{VEHICLE
 STR_NEWS_TRAIN_IS_STUCK                                         :{WHITE}{VEHICLE} 无法找到道路
 STR_NEWS_VEHICLE_IS_LOST                                        :{WHITE}{VEHICLE} 无法找到路线.
 STR_NEWS_VEHICLE_UNPROFITABLE_YEAR                              :{WHITE}{VEHICLE} 的去年损益为 {CURRENCY_LONG}
-STR_NEWS_VEHICLE_UNPROFITABLE_PERIOD                            :{WHITE}{VEHICLE} 的上周期损益为 {CURRENCY_LONG}
+STR_NEWS_VEHICLE_UNPROFITABLE_PERIOD                            :{WHITE}{VEHICLE} 上期的损益为 {CURRENCY_LONG}
 STR_NEWS_AIRCRAFT_DEST_TOO_FAR                                  :{WHITE}{VEHICLE} 由于航程过远，航班无法到达。
 
 STR_NEWS_ORDER_REFIT_FAILED                                     :{WHITE}适配调度计划失败，已终止 {VEHICLE}
@@ -1234,7 +1216,7 @@ STR_CONFIG_SETTING_RESET_ALL                                    :{BLACK}重置�
 STR_CONFIG_SETTING_NO_EXPLANATION_AVAILABLE_HELPTEXT            :（没有可用的提示）
 STR_CONFIG_SETTING_VALUE                                        :{PUSH_COLOUR}{ORANGE}{STRING}{POP_COLOUR}
 STR_CONFIG_SETTING_DEFAULT_VALUE                                :{LTBLUE}默认值: {ORANGE}{STRING}
-STR_CONFIG_SETTING_TYPE                                         :{LTBLUE}设置类型: {ORANGE}{STRING}
+STR_CONFIG_SETTING_TYPE                                         :{LTBLUE}设置类型：{ORANGE}{STRING}
 STR_CONFIG_SETTING_TYPE_CLIENT                                  :当前客户端设置（不保存，影响所有游戏）
 STR_CONFIG_SETTING_TYPE_GAME_MENU                               :当前游戏设置（可保存在存档中，仅对新游戏生效）
 STR_CONFIG_SETTING_TYPE_GAME_INGAME                             :当前游戏设置（可保存在存档中，仅对当前游戏生效）
@@ -1668,7 +1650,7 @@ STR_CONFIG_SETTING_SMOOTH_SCROLLING_HELPTEXT                    :设置在缩略
 STR_CONFIG_SETTING_MEASURE_TOOLTIP                              :建设时显示测量数据：{STRING}
 STR_CONFIG_SETTING_MEASURE_TOOLTIP_HELPTEXT                     :建设时显示距离格数和地形高差
 
-STR_CONFIG_SETTING_LIVERIES                                     :显示公司特别外观：{STRING}
+STR_CONFIG_SETTING_LIVERIES                                     :显示公司自订涂装：{STRING}
 STR_CONFIG_SETTING_LIVERIES_HELPTEXT                            :本选项控制车辆特殊涂装方案的用法（让公司与众不同）
 ###length 3
 STR_CONFIG_SETTING_LIVERIES_NONE                                :不显示
@@ -1856,7 +1838,7 @@ STR_CONFIG_SETTING_SERVINT_AIRCRAFT                             :飞机默认保
 STR_CONFIG_SETTING_SERVINT_AIRCRAFT_HELPTEXT                    :如果没有为飞机指定保养周期，设定飞机的默认保养周期
 STR_CONFIG_SETTING_SERVINT_SHIPS                                :船只的默认保养周期：{STRING}
 STR_CONFIG_SETTING_SERVINT_SHIPS_HELPTEXT                       :如果没有为船只设定保养周期，按照这里设定的默认保养周期执行
-STR_CONFIG_SETTING_SERVINT_VALUE                                :{COMMA}{NBSP}天/%
+STR_CONFIG_SETTING_SERVINT_VALUE                                :{COMMA}{NBSP}日 / 分钟 / %
 ###setting-zero-is-special
 STR_CONFIG_SETTING_SERVINT_DISABLED                             :关闭
 
@@ -2018,24 +2000,24 @@ STR_CONFIG_SETTING_SOFT_LIMIT_VALUE                             :{COMMA}
 ###setting-zero-is-special
 STR_CONFIG_SETTING_SOFT_LIMIT_DISABLED                          :关闭
 
-STR_CONFIG_SETTING_ZOOM_MIN                                     :最大放大倍数: {STRING}
+STR_CONFIG_SETTING_ZOOM_MIN                                     :最大视角放大倍数: {STRING}
 STR_CONFIG_SETTING_ZOOM_MIN_HELPTEXT                            :画面的最大放大倍数，注意：提高放大倍数增加内存需求
 STR_CONFIG_SETTING_ZOOM_MAX                                     :最大视角缩小倍数: {STRING}
 STR_CONFIG_SETTING_ZOOM_MAX_HELPTEXT                            :画面的最大缩小倍数，过大的缩放级别在使用时会引起延迟
 ###length 6
-STR_CONFIG_SETTING_ZOOM_LVL_MIN                                 :4倍
-STR_CONFIG_SETTING_ZOOM_LVL_IN_2X                               :2倍
+STR_CONFIG_SETTING_ZOOM_LVL_MIN                                 :4 倍
+STR_CONFIG_SETTING_ZOOM_LVL_IN_2X                               :2 倍
 STR_CONFIG_SETTING_ZOOM_LVL_NORMAL                              :普通
-STR_CONFIG_SETTING_ZOOM_LVL_OUT_2X                              :2倍
-STR_CONFIG_SETTING_ZOOM_LVL_OUT_4X                              :4倍
-STR_CONFIG_SETTING_ZOOM_LVL_OUT_8X                              :8倍
+STR_CONFIG_SETTING_ZOOM_LVL_OUT_2X                              :2 倍
+STR_CONFIG_SETTING_ZOOM_LVL_OUT_4X                              :4 倍
+STR_CONFIG_SETTING_ZOOM_LVL_OUT_8X                              :8 倍
 
 STR_CONFIG_SETTING_SPRITE_ZOOM_MIN                              :贴图的最高分辨率：{STRING}
 STR_CONFIG_SETTING_SPRITE_ZOOM_MIN_HELPTEXT                     :限制贴图的最高分辨率。限制贴图分辨率将避免使用高分辨率贴图，即使它们可用。有助于在混用有/无高分辨率图形的 GRF 文件时保持游戏外观的统一。
 ###length 3
-STR_CONFIG_SETTING_SPRITE_ZOOM_LVL_MIN                          :4x
-STR_CONFIG_SETTING_SPRITE_ZOOM_LVL_IN_2X                        :2x
-STR_CONFIG_SETTING_SPRITE_ZOOM_LVL_NORMAL                       :1x
+STR_CONFIG_SETTING_SPRITE_ZOOM_LVL_MIN                          :4 倍
+STR_CONFIG_SETTING_SPRITE_ZOOM_LVL_IN_2X                        :2 倍
+STR_CONFIG_SETTING_SPRITE_ZOOM_LVL_NORMAL                       :1 倍
 
 STR_CONFIG_SETTING_TOWN_GROWTH                                  :城镇发展速度：{STRING}
 STR_CONFIG_SETTING_TOWN_GROWTH_HELPTEXT                         :城市发展速度
@@ -2093,7 +2075,7 @@ STR_CONFIG_SETTING_LOCALISATION_UNITS_VELOCITY_GAMEUNITS_DAYS   :游戏单位（
 STR_CONFIG_SETTING_LOCALISATION_UNITS_VELOCITY_GAMEUNITS_SECS   :游戏单位（格/秒）
 STR_CONFIG_SETTING_LOCALISATION_UNITS_VELOCITY_KNOTS            :节
 
-STR_CONFIG_SETTING_LOCALISATION_UNITS_POWER                     :载具功率单位：{STRING}
+STR_CONFIG_SETTING_LOCALISATION_UNITS_POWER                     :功率单位：{STRING}
 STR_CONFIG_SETTING_LOCALISATION_UNITS_POWER_HELPTEXT            :在界面上以所选择的单位表示载具的功率
 ###length 3
 STR_CONFIG_SETTING_LOCALISATION_UNITS_POWER_IMPERIAL            :英制（马力）
@@ -2180,7 +2162,7 @@ STR_CONFIG_ERROR_INVALID_GRF                                    :{WHITE}... 忽�
 STR_CONFIG_ERROR_INVALID_GRF_NOT_FOUND                          :未找到
 STR_CONFIG_ERROR_INVALID_GRF_UNSAFE                             :静态使用时不安全
 STR_CONFIG_ERROR_INVALID_GRF_SYSTEM                             :系统NewGRF
-STR_CONFIG_ERROR_INVALID_GRF_INCOMPATIBLE                       :与当前版本OpenTTD不兼容
+STR_CONFIG_ERROR_INVALID_GRF_INCOMPATIBLE                       :与当前版本 OpenTTD 不兼容
 STR_CONFIG_ERROR_INVALID_GRF_UNKNOWN                            :未知
 STR_CONFIG_ERROR_INVALID_SAVEGAME_COMPRESSION_LEVEL             :{WHITE}... 压缩等级 '{STRING}' 无效
 STR_CONFIG_ERROR_INVALID_SAVEGAME_COMPRESSION_ALGORITHM         :{WHITE}...存档格式 '{STRING}' 不适用. 请转换成 '{STRING}'
@@ -2265,7 +2247,7 @@ STR_HELP_WINDOW_BUGTRACKER                                      :{BLACK}反馈�
 STR_HELP_WINDOW_COMMUNITY                                       :{BLACK}社区
 
 # Cheat window
-STR_CHEATS                                                      :{WHITE}作弊
+STR_CHEATS                                                      :{WHITE}沙盒选项
 STR_CHEAT_MONEY                                                 :{LTBLUE}增加 {CURRENCY_LONG} 现金
 STR_CHEAT_CHANGE_COMPANY                                        :{LTBLUE}作为{ORANGE}{COMMA}进行游戏
 STR_CHEAT_EXTRA_DYNAMITE                                        :{LTBLUE}神奇推土机 (清除工业设施和其他不可移除物)： {ORANGE}{STRING}
@@ -2701,7 +2683,7 @@ STR_CONTENT_DETAIL_SUBTITLE_UNSELECTED                          :{SILVER}您尚�
 STR_CONTENT_DETAIL_SUBTITLE_SELECTED                            :{SILVER}您已选择需要下载的扩展包
 STR_CONTENT_DETAIL_SUBTITLE_AUTOSELECTED                        :{SILVER}此依存组件已被选择下载。
 STR_CONTENT_DETAIL_SUBTITLE_ALREADY_HERE                        :{SILVER}您已经下载过该扩展包
-STR_CONTENT_DETAIL_SUBTITLE_DOES_NOT_EXIST                      :{SILVER}该扩展包无法识别，OpenTTD无法下载该扩展包
+STR_CONTENT_DETAIL_SUBTITLE_DOES_NOT_EXIST                      :{SILVER}该扩展包无法识别，OpenTTD 无法下载该扩展包
 
 STR_CONTENT_DETAIL_UPDATE                                       :{SILVER}该扩展包将会替换到当前使用的 {STRING}
 STR_CONTENT_DETAIL_NAME                                         :{SILVER}名称: {WHITE}{STRING}
@@ -3474,7 +3456,7 @@ STR_NEWGRF_SETTINGS_PARAMETER_NONE                              :无
 STR_NEWGRF_SETTINGS_NO_INFO                                     :{BLACK}没有可用的信息
 STR_NEWGRF_SETTINGS_NOT_FOUND                                   :{RED}没有找到对应的文件
 STR_NEWGRF_SETTINGS_DISABLED                                    :{RED}禁用
-STR_NEWGRF_SETTINGS_INCOMPATIBLE                                :{RED}与此版本OpenTTD不兼容
+STR_NEWGRF_SETTINGS_INCOMPATIBLE                                :{RED}与此版本 OpenTTD 不兼容
 
 # NewGRF save preset window
 STR_SAVE_PRESET_CAPTION                                         :{WHITE}保存预设值
@@ -3848,7 +3830,7 @@ STR_EDIT_WAYPOINT_NAME                                          :{WHITE}编辑�
 # Finances window
 STR_FINANCES_CAPTION                                            :{WHITE}{COMPANY} 财务报表 {BLACK}{COMPANY_NUM}
 STR_FINANCES_YEAR                                               :{WHITE}{NUM}
-STR_FINANCES_YEAR_CAPTION                                       :年份
+STR_FINANCES_YEAR_CAPTION                                       :{WHITE}年份
 STR_FINANCES_PERIOD_CAPTION                                     :{WHITE}经济周期
 
 ###length 3
@@ -3974,7 +3956,7 @@ STR_INDUSTRY_VIEW_CAPTION                                       :{WHITE}{INDUSTR
 STR_INDUSTRY_VIEW_PRODUCTION_LAST_MONTH_TITLE                   :{BLACK}上月产量：
 STR_INDUSTRY_VIEW_PRODUCTION_LAST_MINUTE_TITLE                  :{BLACK}上分钟产量：
 STR_INDUSTRY_VIEW_TRANSPORTED                                   :{YELLOW}{CARGO_LONG}{STRING}{BLACK} ({COMMA}% 已运输)
-STR_INDUSTRY_VIEW_LOCATION_TOOLTIP                              :{BLACK}将屏幕中心移动到工厂所在的位置. 单击的同时按住Ctrl会在新视点中显示工厂位置
+STR_INDUSTRY_VIEW_LOCATION_TOOLTIP                              :{BLACK}将屏幕中心移动到当前工业的位置。按住 <Ctrl> 键点选会在新视点中显示工业位置。
 STR_INDUSTRY_VIEW_PRODUCTION_LEVEL                              :{BLACK}生产等级: {YELLOW}{COMMA}%
 STR_INDUSTRY_VIEW_INDUSTRY_ANNOUNCED_CLOSURE                    :{YELLOW}此工业已经宣布即刻停业倒闭!
 
@@ -4013,8 +3995,8 @@ STR_VEHICLE_LIST_MANAGE_LIST_TOOLTIP                            :{BLACK}向列�
 STR_VEHICLE_LIST_REPLACE_VEHICLES                               :替换车辆/飞机/船只
 STR_VEHICLE_LIST_SEND_FOR_SERVICING                             :进行保养
 STR_VEHICLE_LIST_CREATE_GROUP                                   :创建分组
-STR_VEHICLE_LIST_PROFIT_THIS_YEAR_LAST_YEAR                     :{TINY_FONT}{BLACK}今年利润：{CURRENCY_LONG} (去年利润：{CURRENCY_LONG})
-STR_VEHICLE_LIST_PROFIT_THIS_PERIOD_LAST_PERIOD                 :{TINY_FONT}{BLACK}本期损益：{CURRENCY_LONG}（上周期：{CURRENCY_LONG}）
+STR_VEHICLE_LIST_PROFIT_THIS_YEAR_LAST_YEAR                     :{TINY_FONT}{BLACK}今年损益：{CURRENCY_LONG}（去年损益：{CURRENCY_LONG}）
+STR_VEHICLE_LIST_PROFIT_THIS_PERIOD_LAST_PERIOD                 :{TINY_FONT}{BLACK}本期损益：{CURRENCY_LONG}（上期：{CURRENCY_LONG}）
 STR_VEHICLE_LIST_CARGO                                          :[{CARGO_LIST}]
 STR_VEHICLE_LIST_NAME_AND_CARGO                                 :{STRING} {STRING}
 
@@ -4059,11 +4041,11 @@ STR_GROUP_REMOVE_ALL_VEHICLES                                   :移除所有车
 
 STR_GROUP_RENAME_CAPTION                                        :{BLACK}重命名分组
 
-STR_GROUP_PROFIT_THIS_YEAR                                      :今年利润：
+STR_GROUP_PROFIT_THIS_YEAR                                      :今年损益：
 STR_GROUP_PROFIT_THIS_PERIOD                                    :本期损益：
-STR_GROUP_PROFIT_LAST_YEAR                                      :去年利润
-STR_GROUP_PROFIT_LAST_PERIOD                                    :上周期损益：
-STR_GROUP_OCCUPANCY                                             :当前使用量：
+STR_GROUP_PROFIT_LAST_YEAR                                      :去年损益：
+STR_GROUP_PROFIT_LAST_PERIOD                                    :上期损益：
+STR_GROUP_OCCUPANCY                                             :目前使用率：
 STR_GROUP_OCCUPANCY_VALUE                                       :{NUM}%
 
 # Build vehicle window
@@ -4448,8 +4430,8 @@ STR_VEHICLE_INFO_MAX_SPEED_TYPE_RANGE                           :{BLACK}最大�
 STR_VEHICLE_INFO_WEIGHT_POWER_MAX_SPEED                         :{BLACK}重量：{LTBLUE}{WEIGHT_SHORT} {BLACK}功率：{LTBLUE}{POWER}{BLACK} 最大速度：{LTBLUE}{VELOCITY}
 STR_VEHICLE_INFO_WEIGHT_POWER_MAX_SPEED_MAX_TE                  :{BLACK}重量：{LTBLUE}{WEIGHT_SHORT} {BLACK}功率：{LTBLUE}{POWER}{BLACK} 最大速度：{LTBLUE}{VELOCITY} {BLACK}最大牵引力：{LTBLUE}{FORCE}
 
-STR_VEHICLE_INFO_PROFIT_THIS_YEAR_LAST_YEAR                     :{BLACK}今年利润：{LTBLUE}{CURRENCY_LONG} (去年利润：{CURRENCY_LONG})
-STR_VEHICLE_INFO_PROFIT_THIS_YEAR_LAST_YEAR_MIN_PERFORMANCE     :{BLACK}今年利润: {LTBLUE}{CURRENCY_LONG} (去年利润: {CURRENCY_LONG}) {BLACK}最小功率: {LTBLUE}{POWER_TO_WEIGHT}
+STR_VEHICLE_INFO_PROFIT_THIS_YEAR_LAST_YEAR                     :{BLACK}今年损益：{LTBLUE}{CURRENCY_LONG}（去年损益：{CURRENCY_LONG}）
+STR_VEHICLE_INFO_PROFIT_THIS_YEAR_LAST_YEAR_MIN_PERFORMANCE     :{BLACK}今年损益：{LTBLUE}{CURRENCY_LONG}（去年损益：{CURRENCY_LONG}）{BLACK}最小功率：{LTBLUE}{POWER_TO_WEIGHT}
 STR_VEHICLE_INFO_PROFIT_THIS_PERIOD_LAST_PERIOD                 :{BLACK}本期损益：{LTBLUE}{CURRENCY_LONG}（上期损益：{CURRENCY_LONG}）
 STR_VEHICLE_INFO_PROFIT_THIS_PERIOD_LAST_PERIOD_MIN_PERFORMANCE :{BLACK}本期损益：{LTBLUE}{CURRENCY_LONG}（上期损益：{CURRENCY_LONG})）{BLACK}最小功率：{LTBLUE}{POWER_TO_WEIGHT}
 STR_VEHICLE_INFO_RELIABILITY_BREAKDOWNS                         :{BLACK}可靠性：{LTBLUE}{COMMA}%  {BLACK}上次保养后抛锚的次数：{LTBLUE}{COMMA}
@@ -5309,7 +5291,7 @@ STR_ERROR_CAN_T_SHARE_ORDER_LIST                                :{WHITE}不能�
 STR_ERROR_CAN_T_STOP_SHARING_ORDER_LIST                         :{WHITE}不能停止共享调度计划……
 STR_ERROR_CAN_T_COPY_ORDER_LIST                                 :{WHITE}不能复制调度计划……
 STR_ERROR_TOO_FAR_FROM_PREVIOUS_DESTINATION                     :{WHITE}……距离前一目的地太远
-STR_ERROR_AIRCRAFT_NOT_ENOUGH_RANGE                             :{WHITE}... 飞机航行距离不足
+STR_ERROR_AIRCRAFT_NOT_ENOUGH_RANGE                             :{WHITE}……飞机飞行距离不足
 
 # Extra messages which go on the third line of errors, explaining why orders failed
 STR_ERROR_NO_RAIL_STATION                                       :{WHITE}没有火车站
@@ -5743,7 +5725,7 @@ STR_VEHICLE_NAME_AIRCRAFT_POWERNAUT_HELICOPTER                  :Powernaut 直�
 ##id 0x8800
 # Formatting of some strings
 STR_FORMAT_DATE_TINY                                            :{ZEROFILL_NUM}-{ZEROFILL_NUM}-{NUM}
-STR_FORMAT_DATE_SHORT                                           :{1:NUM} {0:STRING}
+STR_FORMAT_DATE_SHORT                                           :{1:NUM} 年 {0:STRING} 月
 STR_FORMAT_DATE_LONG                                            :{2:NUM} 年 {1:STRING} 月 {0:STRING} 日
 STR_FORMAT_DATE_ISO                                             :{2:NUM}-{1:ZEROFILL_NUM}-{0:ZEROFILL_NUM}
 

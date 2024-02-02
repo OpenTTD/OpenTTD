@@ -333,7 +333,9 @@ STR_SORT_BY_TYPE                                                :Tipus
 STR_SORT_BY_TRANSPORTED                                         :% transportat
 STR_SORT_BY_NUMBER                                              :Número
 STR_SORT_BY_PROFIT_LAST_YEAR                                    :Benefici darrer any
+STR_SORT_BY_PROFIT_LAST_PERIOD                                  :Benefici durant l'últim període
 STR_SORT_BY_PROFIT_THIS_YEAR                                    :Benefici aquest any
+STR_SORT_BY_PROFIT_THIS_PERIOD                                  :Benefici durant aquest període
 STR_SORT_BY_AGE                                                 :Antiguitat
 STR_SORT_BY_RELIABILITY                                         :Fiabilitat
 STR_SORT_BY_TOTAL_CAPACITY_PER_CARGOTYPE                        :Capac. total per tipus de càrrega
@@ -362,8 +364,11 @@ STR_SORT_BY_RATING                                              :Qualificació
 STR_SORT_BY_NUM_VEHICLES                                        :Nombre de vehicles
 STR_SORT_BY_TOTAL_PROFIT_LAST_YEAR                              :Benefici total de l'any passat
 STR_SORT_BY_TOTAL_PROFIT_THIS_YEAR                              :Benefici total d'aquest any
+STR_SORT_BY_TOTAL_PROFIT_THIS_PERIOD                            :Benefici total d'aquest període
 STR_SORT_BY_AVERAGE_PROFIT_LAST_YEAR                            :Benefici mitjà de l'any passat
+STR_SORT_BY_AVERAGE_PROFIT_LAST_PERIOD                          :Benefici mitjà de l'últim període
 STR_SORT_BY_AVERAGE_PROFIT_THIS_YEAR                            :Benefici mitjà aquest any
+STR_SORT_BY_AVERAGE_PROFIT_THIS_PERIOD                          :Benefici mitjà durant aquest període
 
 # Group by options for vehicle list
 STR_GROUP_BY_NONE                                               :Cap
@@ -441,6 +446,7 @@ STR_SETTINGS_MENU_CONFIG_SETTINGS_TREE                          :Configuració
 STR_SETTINGS_MENU_AI_SETTINGS                                   :Configuració de la IA
 STR_SETTINGS_MENU_GAMESCRIPT_SETTINGS                           :Configuració de l'script de partida
 STR_SETTINGS_MENU_NEWGRF_SETTINGS                               :Extensions NewGRF
+STR_SETTINGS_MENU_SANDBOX_OPTIONS                               :Opcions del mode lliure
 STR_SETTINGS_MENU_TRANSPARENCY_OPTIONS                          :Opcions de transparència
 STR_SETTINGS_MENU_TOWN_NAMES_DISPLAYED                          :Mostra els noms de les poblacions
 STR_SETTINGS_MENU_STATION_NAMES_DISPLAYED                       :Mostra els noms de les estacions
@@ -531,24 +537,6 @@ STR_ABOUT_MENU_TOGGLE_BOUNDING_BOXES                            :Commuta les cai
 STR_ABOUT_MENU_TOGGLE_DIRTY_BLOCKS                              :Commuta l'acoloriment de blocs bruts
 STR_ABOUT_MENU_TOGGLE_WIDGET_OUTLINES                           :Commuta les línies delimitadores dels widgets
 
-# Place in highscore window
-###length 15
-STR_ORDINAL_NUMBER_1ST                                          :1r
-STR_ORDINAL_NUMBER_2ND                                          :2n
-STR_ORDINAL_NUMBER_3RD                                          :3r
-STR_ORDINAL_NUMBER_4TH                                          :4t
-STR_ORDINAL_NUMBER_5TH                                          :5è
-STR_ORDINAL_NUMBER_6TH                                          :6è
-STR_ORDINAL_NUMBER_7TH                                          :7è
-STR_ORDINAL_NUMBER_8TH                                          :8è
-STR_ORDINAL_NUMBER_9TH                                          :9è
-STR_ORDINAL_NUMBER_10TH                                         :10è
-STR_ORDINAL_NUMBER_11TH                                         :11è
-STR_ORDINAL_NUMBER_12TH                                         :12è
-STR_ORDINAL_NUMBER_13TH                                         :13è
-STR_ORDINAL_NUMBER_14TH                                         :14è
-STR_ORDINAL_NUMBER_15TH                                         :15è
-
 ###length 31
 STR_DAY_NUMBER_1ST                                              :1
 STR_DAY_NUMBER_2ND                                              :2
@@ -624,8 +612,11 @@ STR_GRAPH_CARGO_DELIVERED_CAPTION                               :{WHITE}Unitats 
 STR_GRAPH_COMPANY_PERFORMANCE_RATINGS_CAPTION                   :{WHITE}Ratis de rendiment de la companyia (rati màxim: 1000)
 STR_GRAPH_COMPANY_VALUES_CAPTION                                :{WHITE}Gràfic del valor de les companyies
 
+STR_GRAPH_LAST_72_MINUTES_TIME_LABEL                            :{TINY_FONT}{BLACK}Últims 72 minuts
 
 STR_GRAPH_CARGO_PAYMENT_RATES_CAPTION                           :{WHITE}Tarifes de pagament de càrregues
+STR_GRAPH_CARGO_PAYMENT_RATES_DAYS                              :{TINY_FONT}{BLACK}Dies en trànsit
+STR_GRAPH_CARGO_PAYMENT_RATES_SECONDS                           :{TINY_FONT}{BLACK}Segons en trànsit
 STR_GRAPH_CARGO_PAYMENT_RATES_TITLE                             :{TINY_FONT}{BLACK}Pagament per entregar 10 unitats (o 10.000 litres) de càrrega a una distància de 20 caselles
 STR_GRAPH_CARGO_ENABLE_ALL                                      :{TINY_FONT}{BLACK}Activa-ho tot
 STR_GRAPH_CARGO_DISABLE_ALL                                     :{TINY_FONT}{BLACK}Desactiva-ho tot
@@ -822,6 +813,7 @@ STR_STATUSBAR_AUTOSAVE                                          :{RED}DESADA AUT
 STR_STATUSBAR_SAVING_GAME                                       :{RED}*  *  DESANT PARTIDA  *  *
 
 STR_STATUSBAR_SPECTATOR                                         :{WHITE}(espectador)
+STR_STATUSBAR_INFINITE_MONEY                                    :{WHITE}(diners infinits)
 
 # News message history
 STR_MESSAGE_HISTORY                                             :{WHITE}Historial de missatges
@@ -906,6 +898,8 @@ STR_NEWS_VEHICLE_IS_GETTING_VERY_OLD                            :{WHITE}{VEHICLE
 STR_NEWS_VEHICLE_IS_GETTING_VERY_OLD_AND                        :{WHITE}{VEHICLE} és molt vell i necessita ser substituït urgentment
 STR_NEWS_TRAIN_IS_STUCK                                         :{WHITE}{VEHICLE} no pot trobar un camí per on continuar
 STR_NEWS_VEHICLE_IS_LOST                                        :{WHITE}{VEHICLE} s'ha perdut
+STR_NEWS_VEHICLE_UNPROFITABLE_YEAR                              :{WHITE}El benefici de {VEHICLE} durant l'últim any ha estat de {CURRENCY_LONG}
+STR_NEWS_VEHICLE_UNPROFITABLE_PERIOD                            :{WHITE}El benefici de {VEHICLE} durant l'últim període ha estat de {CURRENCY_LONG}
 STR_NEWS_AIRCRAFT_DEST_TOO_FAR                                  :{WHITE}{VEHICLE} no pot arribar al proper destí perquè és fora del seu abast
 
 STR_NEWS_ORDER_REFIT_FAILED                                     :{WHITE}El {VEHICLE} s'ha parat perquè l'ordre de remodelació ha fallat
@@ -922,7 +916,12 @@ STR_NEWS_STATION_NOW_ACCEPTS_CARGO_LIST                         :{WHITE}{STATION
 
 STR_NEWS_OFFER_OF_SUBSIDY_EXPIRED                               :{BIG_FONT}{BLACK}Oferta de subvenció caducada:{}{}El transport de {STRING} des de {STRING} fins a {STRING} no tindrà subvenció
 STR_NEWS_SUBSIDY_WITHDRAWN_SERVICE                              :{BIG_FONT}{BLACK}Subvenció retirada:{}{}El transport de {STRING} des de {STRING} fins a {STRING} ja no està subvencionat
+STR_NEWS_SERVICE_SUBSIDY_OFFERED                                :{BIG_FONT}{BLACK}Oferta de subvenció per a un servei:{}{}La primera companyia en transportar {STRING} des de {STRING} fins a {STRING} rebrà una subvenció durant {UNITS_YEARS_OR_MINUTES} per part de l'autoritat local
 ###length 4
+STR_NEWS_SERVICE_SUBSIDY_AWARDED_HALF                           :{BIG_FONT}{BLACK}Subvenció concedida a {STRING}{}{}El transport de {STRING} des de {STRING} fins a {STRING} rebrà uns ingressos addicionals del 50% durant {UNITS_YEARS_OR_MINUTES}
+STR_NEWS_SERVICE_SUBSIDY_AWARDED_DOUBLE                         :{BIG_FONT}{BLACK}Subvenció concedida a {STRING}{}{}El transport de {STRING} de {STRING} fins a {STRING} ingressarà el doble de la tarifa habitual durant {UNITS_YEARS_OR_MINUTES}!
+STR_NEWS_SERVICE_SUBSIDY_AWARDED_TRIPLE                         :{BIG_FONT}{BLACK}Subvenció concedida a {STRING}{}{}El transport de {STRING} de {STRING} fins a {STRING} ingressarà el triple de la tarifa habitual durant {UNITS_YEARS_OR_MINUTES}
+STR_NEWS_SERVICE_SUBSIDY_AWARDED_QUADRUPLE                      :{BIG_FONT}{BLACK}Subvenció concedida a {STRING}{}{}El transport de {STRING} de {STRING} fins a {STRING} ingressarà el quàdruple de la tarifa habitual durant {UNITS_YEARS_OR_MINUTES}
 
 STR_NEWS_EXCLUSIVE_RIGHTS_TITLE                                 :{BIG_FONT}{BLACK}Monopoli de transports
 
@@ -1263,6 +1262,7 @@ STR_CONFIG_SETTING_HORIZONTAL_POS_RIGHT                         :Dreta
 
 STR_CONFIG_SETTING_SECONDS_VALUE                                :{COMMA}{NBSP}segon{P 0 "" s}
 
+STR_CONFIG_SETTING_INFINITE_MONEY                               :Diners infinits: {STRING}
 
 STR_CONFIG_SETTING_MAXIMUM_INITIAL_LOAN                         :Préstec inicial màxim: {STRING}
 STR_CONFIG_SETTING_MAXIMUM_INITIAL_LOAN_HELPTEXT                :Quantitat màxima del préstec que pot demanar una companyia (sense tenir en compte la inflació)
@@ -1289,6 +1289,7 @@ STR_CONFIG_SETTING_SUBSIDY_DURATION                             :Durada dels sub
 ###length 2
 STR_CONFIG_SETTING_SUBSIDY_DURATION_HELPTEXT                    :Establiu el nombre d'anys que duren els subsidis.
 
+STR_CONFIG_SETTING_SUBSIDY_DURATION_VALUE                       :{UNITS_YEARS_OR_PERIODS}
 ###setting-zero-is-special
 STR_CONFIG_SETTING_SUBSIDY_DURATION_DISABLED                    :Sense subsidis
 
@@ -1386,6 +1387,7 @@ STR_CONFIG_SETTING_SIGNALSIDE_RIGHT                             :A la dreta
 
 ###length 2
 STR_CONFIG_SETTING_SHOWFINANCES                                 :Mostra la finestra de balanç al finalitzar cada any: {STRING}
+STR_CONFIG_SETTING_SHOWFINANCES_PERIOD                          :Mostra la finestra de finances al final d'aquest període: {STRING}
 
 ###length 2
 STR_CONFIG_SETTING_SHOWFINANCES_HELPTEXT                        :Si el paràmetre està activat, la finestra de finances apareix al final de cada any per permetre una inspecció fàcil de l'estat financer de la companyia.
@@ -1481,9 +1483,16 @@ STR_CONFIG_SETTING_NEVER_EXPIRE_VEHICLES_HELPTEXT               :Quan està acti
 STR_CONFIG_SETTING_TIMEKEEPING_UNITS_CALENDAR                   :Calendari
 STR_CONFIG_SETTING_TIMEKEEPING_UNITS_WALLCLOCK                  :Rellotge de paret
 
+STR_CONFIG_SETTING_MINUTES_PER_YEAR                             :Minuts per any: {STRING}
 
+STR_CONFIG_SETTING_MINUTES_PER_YEAR_VALUE                       :{NUM}
 ###setting-zero-is-special
+STR_CONFIG_SETTING_MINUTES_PER_YEAR_FROZEN                      :0 (temps de calendari parat)
 
+STR_CONFIG_SETTING_TOWN_CARGO_SCALE                             :Escala la producció de càrrega de les poblacions: {STRING}
+STR_CONFIG_SETTING_TOWN_CARGO_SCALE_HELPTEXT                    :Escala la producció de càrrega de les poblacions segons aquest percentatge.
+STR_CONFIG_SETTING_INDUSTRY_CARGO_SCALE_HELPTEXT                :Escala la producció de càrrega de les indústries segons aquest percentatge.
+STR_CONFIG_SETTING_CARGO_SCALE_VALUE                            :{NUM}{NBSP}%
 
 STR_CONFIG_SETTING_AUTORENEW_VEHICLE                            :Autorenova el vehicle quan sigui vell: {STRING}
 STR_CONFIG_SETTING_AUTORENEW_VEHICLE_HELPTEXT                   :Quan està activat, un vehicle que arriba al final de la seva vida útil és automàticament substituït quan es compleixen les condicions d'autorenovació.
@@ -1739,6 +1748,7 @@ STR_CONFIG_SETTING_SOUND_NEWS_HELPTEXT                          :Reprodueix un s
 
 ###length 2
 STR_CONFIG_SETTING_SOUND_NEW_YEAR                               :Cap d'any: {STRING}
+STR_CONFIG_SETTING_SOUND_NEW_PERIOD                             :Fi del període: {STRING}
 
 ###length 2
 STR_CONFIG_SETTING_SOUND_NEW_YEAR_HELPTEXT                      :Reprodueix un efecte de so al final de l'any quan apareix el resum financer de l'any de la companyia en comparació amb l'anterior
@@ -2042,6 +2052,8 @@ STR_CONFIG_SETTING_LOCALISATION_UNITS_VELOCITY_HELPTEXT         :Quan es mostren
 STR_CONFIG_SETTING_LOCALISATION_UNITS_VELOCITY_IMPERIAL         :Imperial (mph)
 STR_CONFIG_SETTING_LOCALISATION_UNITS_VELOCITY_METRIC           :Mètric (km/h)
 STR_CONFIG_SETTING_LOCALISATION_UNITS_VELOCITY_SI               :SI (m/s)
+STR_CONFIG_SETTING_LOCALISATION_UNITS_VELOCITY_GAMEUNITS_DAYS   :Unitats de la partida (caselles/dia)
+STR_CONFIG_SETTING_LOCALISATION_UNITS_VELOCITY_GAMEUNITS_SECS   :Unitats de la partida (caselles/segon)
 STR_CONFIG_SETTING_LOCALISATION_UNITS_VELOCITY_KNOTS            :Nusos
 
 STR_CONFIG_SETTING_LOCALISATION_UNITS_POWER                     :Unitats de potència dels vehicles: {STRING}
@@ -2353,6 +2365,8 @@ STR_NETWORK_SERVER_LIST_MAP_SIZE_CAPTION                        :{BLACK}Mida del
 STR_NETWORK_SERVER_LIST_MAP_SIZE_CAPTION_TOOLTIP                :{BLACK}Mida del mapa de la partida{}Clica per ordenar per àrea
 STR_NETWORK_SERVER_LIST_DATE_CAPTION                            :{BLACK}Data
 STR_NETWORK_SERVER_LIST_DATE_CAPTION_TOOLTIP                    :{BLACK}Data actual
+STR_NETWORK_SERVER_LIST_PLAY_TIME_SHORT                         :{BLACK}{NUM}{NBSP}h{NBSP}{NUM}{NBSP}m
+STR_NETWORK_SERVER_LIST_PLAY_TIME_CAPTION                       :{BLACK}Temps de joc
 STR_NETWORK_SERVER_LIST_INFO_ICONS_TOOLTIP                      :{BLACK}Idioma, versió de servidor, etc.
 
 STR_NETWORK_SERVER_LIST_CLICK_GAME_TO_SELECT                    :{BLACK}Clica en una partida de la llista per triar-la
@@ -2368,6 +2382,7 @@ STR_NETWORK_SERVER_LIST_SERVER_ADDRESS                          :{SILVER}Adreça
 STR_NETWORK_SERVER_LIST_INVITE_CODE                             :{SILVER}Codi d'invitació: {WHITE}{STRING}
 STR_NETWORK_SERVER_LIST_START_DATE                              :{SILVER}Data inicial: {WHITE}{DATE_SHORT}
 STR_NETWORK_SERVER_LIST_CURRENT_DATE                            :{SILVER}Data actual: {WHITE}{DATE_SHORT}
+STR_NETWORK_SERVER_LIST_PLAY_TIME                               :{SILVER}Temps de joc: {WHITE}{NUM}{NBSP}h{NBSP}{NUM}{NBSP}m
 STR_NETWORK_SERVER_LIST_GAMESCRIPT                              :{SILVER}Script de partida: {WHITE}{STRING} (v{NUM})
 STR_NETWORK_SERVER_LIST_PASSWORD                                :{SILVER}Protegit per contrasenya!
 STR_NETWORK_SERVER_LIST_SERVER_OFFLINE                          :{SILVER}SERVIDOR DESCONNECTAT
@@ -2724,6 +2739,7 @@ STR_LINKGRAPH_LEGEND_OVERLOADED                                 :{G=Masculin}{TI
 
 # Linkgraph tooltip
 STR_LINKGRAPH_STATS_TOOLTIP_RETURN_EXTENSION                    :{}{CARGO_LONG} per a transportar de tornada ({COMMA}{NBSP}% de capacitat)
+STR_LINKGRAPH_STATS_TOOLTIP_TIME_EXTENSION                      :{}Temps de viatge mitjà: {UNITS_DAYS_OR_SECONDS}
 
 # Base for station construction window(s)
 STR_STATION_BUILD_COVERAGE_AREA_TITLE                           :{BLACK}Marca l'àrea de cobertura
@@ -2733,6 +2749,8 @@ STR_STATION_BUILD_COVERAGE_AREA_OFF_TOOLTIP                     :{BLACK}No marca
 STR_STATION_BUILD_COVERAGE_AREA_ON_TOOLTIP                      :{BLACK}Marcar l'àrea de cobertura del lloc proposat
 STR_STATION_BUILD_ACCEPTS_CARGO                                 :{BLACK}Accepta: {GOLD}{CARGO_LIST}
 STR_STATION_BUILD_SUPPLIES_CARGO                                :{BLACK}Provisions: {GOLD}{CARGO_LIST}
+STR_STATION_BUILD_INFRASTRUCTURE_COST_YEAR                      :{BLACK}Cost de manteniment: {GOLD}{CURRENCY_SHORT}/any
+STR_STATION_BUILD_INFRASTRUCTURE_COST_PERIOD                    :{BLACK}Cost de manteniment: {GOLD}{CURRENCY_SHORT}/període
 
 # Join station window
 STR_JOIN_STATION_CAPTION                                        :{WHITE}Ajuntar estació
@@ -3580,12 +3598,15 @@ STR_TOWN_VIEW_TOWN_CAPTION                                      :{WHITE}{TOWN}
 STR_TOWN_VIEW_CITY_CAPTION                                      :{WHITE}{TOWN} (Ciutat)
 STR_TOWN_VIEW_POPULATION_HOUSES                                 :{BLACK}Població: {ORANGE}{COMMA}{BLACK}  Cases: {ORANGE}{COMMA}
 STR_TOWN_VIEW_CARGO_LAST_MONTH_MAX                              :{BLACK}{CARGO_LIST} l'últim mes: {ORANGE}{COMMA}{BLACK}  (màx. {ORANGE}{COMMA}{BLACK})
+STR_TOWN_VIEW_CARGO_LAST_MINUTE_MAX                             :{BLACK}{CARGO_LIST} l'últim minut: {ORANGE}{COMMA}{BLACK}  màx.: {ORANGE}{COMMA}
 STR_TOWN_VIEW_CARGO_FOR_TOWNGROWTH                              :{BLACK}Càrrega requerida per tal que la població creixi:
 STR_TOWN_VIEW_CARGO_FOR_TOWNGROWTH_REQUIRED_GENERAL             :{ORANGE}{STRING}{RED} requerides
 STR_TOWN_VIEW_CARGO_FOR_TOWNGROWTH_REQUIRED_WINTER              :{ORANGE}{STRING}{BLACK} requerit a l'hivern
 STR_TOWN_VIEW_CARGO_FOR_TOWNGROWTH_DELIVERED_GENERAL            :{ORANGE}{STRING}{GREEN} entregat
 STR_TOWN_VIEW_CARGO_FOR_TOWNGROWTH_REQUIRED                     :{ORANGE}{CARGO_TINY} / {CARGO_LONG}{RED} (encara requerit)
 STR_TOWN_VIEW_CARGO_FOR_TOWNGROWTH_DELIVERED                    :{ORANGE}{CARGO_TINY} / {CARGO_LONG}{GREEN} (entregat)
+STR_TOWN_VIEW_TOWN_GROWS_EVERY                                  :{BLACK}La població creix cada {ORANGE}{UNITS_DAYS_OR_SECONDS}
+STR_TOWN_VIEW_TOWN_GROWS_EVERY_FUNDED                           :{BLACK}La població creix cada {ORANGE}{UNITS_DAYS_OR_SECONDS} (finançant edificis nous)
 STR_TOWN_VIEW_TOWN_GROW_STOPPED                                 :{BLACK}La població {RED}no {BLACK} està creixent
 STR_TOWN_VIEW_NOISE_IN_TOWN                                     :{BLACK}Límit de soroll a la ciutat: {ORANGE}{COMMA}{BLACK}  màx: {ORANGE}{COMMA}
 STR_TOWN_VIEW_CENTER_TOOLTIP                                    :{BLACK}Centra la vista principal a la població. Ctrl+Clic obre una nova vista al lloc de la població
@@ -3679,6 +3700,7 @@ STR_SUBSIDIES_SUBSIDISED_TITLE                                  :{BLACK}Serveis 
 STR_SUBSIDIES_SUBSIDISED_FROM_TO                                :{ORANGE}{STRING} des de {STRING} fins a {STRING}{YELLOW} ({COMPANY}{YELLOW}, {STRING})
 STR_SUBSIDIES_TOOLTIP_CLICK_ON_SERVICE_TO_CENTER                :{BLACK}Clica al servei per centrar la vista a la indústria/població. Ctrl+Clic obre una nova vista al lloc de la indústria/població
 STR_SUBSIDIES_OFFERED_EXPIRY_DATE                               :fins el {DATE_SHORT}
+STR_SUBSIDIES_OFFERED_EXPIRY_TIME                               :abans de {UNITS_MONTHS_OR_MINUTES}
 STR_SUBSIDIES_SUBSIDISED_EXPIRY_DATE                            :fins el {DATE_SHORT}
 
 # Story book window
@@ -3719,6 +3741,7 @@ STR_STATION_VIEW_EXCLUSIVE_RIGHTS_COMPANY                       :{YELLOW}{COMPAN
 
 STR_STATION_VIEW_RATINGS_BUTTON                                 :{BLACK}Ratis
 STR_STATION_VIEW_RATINGS_TOOLTIP                                :{BLACK}Mostra els ratis de l'estació
+STR_STATION_VIEW_SUPPLY_RATINGS_TITLE_MONTH                     :{BLACK}Subministrament mensual i rati local:
 STR_STATION_VIEW_CARGO_SUPPLY_RATING                            :{WHITE}{STRING}: {YELLOW}{COMMA} / {STRING} ({COMMA}%)
 
 STR_STATION_VIEW_GROUP                                          :{BLACK}Agrupa per
@@ -3779,6 +3802,8 @@ STR_EDIT_WAYPOINT_NAME                                          :{WHITE}Edita el
 # Finances window
 STR_FINANCES_CAPTION                                            :{WHITE}Finances de {COMPANY} {BLACK}{COMPANY_NUM}
 STR_FINANCES_YEAR                                               :{WHITE}{NUM}
+STR_FINANCES_YEAR_CAPTION                                       :{WHITE}Any
+STR_FINANCES_PERIOD_CAPTION                                     :{WHITE}Període
 
 ###length 3
 STR_FINANCES_REVENUE_TITLE                                      :{WHITE}Ingressos
@@ -3880,6 +3905,8 @@ STR_COMPANY_INFRASTRUCTURE_VIEW_CANALS                          :{WHITE}Canals
 STR_COMPANY_INFRASTRUCTURE_VIEW_STATION_SECT                    :{GOLD}Estacions:
 STR_COMPANY_INFRASTRUCTURE_VIEW_STATIONS                        :{WHITE}Cel·les d'estació
 STR_COMPANY_INFRASTRUCTURE_VIEW_AIRPORTS                        :{WHITE}Aeroports
+STR_COMPANY_INFRASTRUCTURE_VIEW_TOTAL_YEAR                      :{WHITE}{CURRENCY_LONG}/any
+STR_COMPANY_INFRASTRUCTURE_VIEW_TOTAL_PERIOD                    :{WHITE}{CURRENCY_LONG}/període
 
 # Industry directory
 STR_INDUSTRY_DIRECTORY_CAPTION                                  :{WHITE}Indústries
@@ -3940,6 +3967,7 @@ STR_VEHICLE_LIST_REPLACE_VEHICLES                               :Substitueix veh
 STR_VEHICLE_LIST_SEND_FOR_SERVICING                             :Envia a fer una revisió
 STR_VEHICLE_LIST_CREATE_GROUP                                   :Crea un grup
 STR_VEHICLE_LIST_PROFIT_THIS_YEAR_LAST_YEAR                     :{TINY_FONT}{BLACK}Benefici enguany: {CURRENCY_LONG} (darrer any: {CURRENCY_LONG})
+STR_VEHICLE_LIST_PROFIT_THIS_PERIOD_LAST_PERIOD                 :{TINY_FONT}{BLACK}Benefici durant aquest període: {CURRENCY_LONG} (durant l'últim període: {CURRENCY_LONG})
 STR_VEHICLE_LIST_CARGO                                          :[{CARGO_LIST}]
 STR_VEHICLE_LIST_NAME_AND_CARGO                                 :{STRING} {STRING}
 
@@ -3985,7 +4013,9 @@ STR_GROUP_REMOVE_ALL_VEHICLES                                   :Treu tots els v
 STR_GROUP_RENAME_CAPTION                                        :{BLACK}Canvia de nom el grup
 
 STR_GROUP_PROFIT_THIS_YEAR                                      :Benefici d'enguany:
+STR_GROUP_PROFIT_THIS_PERIOD                                    :Benefici durant aquest període:
 STR_GROUP_PROFIT_LAST_YEAR                                      :Benefici de l'any passat:
+STR_GROUP_PROFIT_LAST_PERIOD                                    :Benefici durant l'últim període:
 STR_GROUP_OCCUPANCY                                             :Ocupació actual:
 STR_GROUP_OCCUPANCY_VALUE                                       :{NUM}%
 
@@ -4012,6 +4042,8 @@ STR_PURCHASE_INFO_SPEED_POWER                                   :{BLACK}Velocita
 STR_PURCHASE_INFO_SPEED                                         :{BLACK}Velocitat: {GOLD}{VELOCITY}
 STR_PURCHASE_INFO_SPEED_OCEAN                                   :{BLACK}Velocitat al mar: {GOLD}{VELOCITY}
 STR_PURCHASE_INFO_SPEED_CANAL                                   :{BLACK}Velocitat al canal/riu: {GOLD}{VELOCITY}
+STR_PURCHASE_INFO_RUNNINGCOST_YEAR                              :{BLACK}Cost d'utilització: {GOLD}{CURRENCY_LONG}/any
+STR_PURCHASE_INFO_RUNNINGCOST_PERIOD                            :{BLACK}Cost d'utilització: {GOLD}{CURRENCY_LONG}/període
 STR_PURCHASE_INFO_CAPACITY                                      :{BLACK}Capacitat: {GOLD}{CARGO_LONG} {STRING}
 STR_PURCHASE_INFO_REFITTABLE                                    :(remodelable)
 STR_PURCHASE_INFO_DESIGNED_LIFE                                 :{BLACK}Dissenyat: {GOLD}{NUM}{BLACK} Vida: {GOLD}{COMMA} any{P "" s}
@@ -4204,6 +4236,18 @@ STR_ENGINE_PREVIEW_TRAM_VEHICLE                                 :tramvia
 STR_ENGINE_PREVIEW_AIRCRAFT                                     :{G=Masculin}avió
 STR_ENGINE_PREVIEW_SHIP                                         :{G=Masculin}vaixell
 
+STR_ENGINE_PREVIEW_TEXT3                                        :{BLACK}{STRING}{}{5:STRING}{}{STRING}
+STR_ENGINE_PREVIEW_TEXT4                                        :{BLACK}{STRING}{}{STRING}{}{STRING}{}{STRING}
+STR_ENGINE_PREVIEW_COST_WEIGHT                                  :Cost: {CURRENCY_LONG}  Pes: {WEIGHT_SHORT}
+STR_ENGINE_PREVIEW_COST_MAX_SPEED                               :Cost: {CURRENCY_LONG}  Velocitat màxima: {VELOCITY}
+STR_ENGINE_PREVIEW_SPEED_POWER                                  :Velocitat: {VELOCITY}  Potència: {POWER}
+STR_ENGINE_PREVIEW_SPEED_POWER_MAX_TE                           :Velocitat: {VELOCITY}  Potència: {POWER}  E.T. màx.: {FORCE}
+STR_ENGINE_PREVIEW_TYPE                                         :Tipus d'aeronau: {STRING}
+STR_ENGINE_PREVIEW_TYPE_RANGE                                   :Tipus d'aeronau: {STRING}   Abast:{NBSP}{COMMA}{NBSP}caselles
+STR_ENGINE_PREVIEW_RUNCOST_YEAR                                 :Cost d'utilització: {CURRENCY_LONG}/any
+STR_ENGINE_PREVIEW_RUNCOST_PERIOD                               :Cost d'utilització: {CURRENCY_LONG}/període
+STR_ENGINE_PREVIEW_CAPACITY                                     :Capacitat: {CARGO_LONG}
+STR_ENGINE_PREVIEW_CAPACITY_2                                   :Capacitat: {CARGO_LONG}, {CARGO_LONG}
 
 # Autoreplace window
 STR_REPLACE_VEHICLES_WHITE                                      :{WHITE}Substitueix {STRING} - {STRING}
@@ -4349,6 +4393,7 @@ STR_VEHICLE_DETAILS_AIRCRAFT_RENAME                             :{BLACK}Anomena 
 STR_VEHICLE_INFO_AGE                                            :{COMMA} any{P "" s} ({COMMA})
 STR_VEHICLE_INFO_AGE_RED                                        :{RED}{COMMA} any{P "" s} ({COMMA})
 STR_VEHICLE_INFO_AGE_RUNNING_COST_YR                            :{BLACK}Anys: {LTBLUE}{STRING}{BLACK}   Cost d'utilització: {LTBLUE}{CURRENCY_LONG}/any
+STR_VEHICLE_INFO_AGE_RUNNING_COST_PERIOD                        :{BLACK}Edat: {LTBLUE}{STRING}{BLACK}   Cost d'utilització: {LTBLUE}{CURRENCY_LONG}/període
 
 STR_VEHICLE_INFO_MAX_SPEED                                      :{BLACK}Vel. màx.: {LTBLUE}{VELOCITY}
 STR_VEHICLE_INFO_MAX_SPEED_TYPE                                 :{BLACK}Velocitat màx.: {LTBLUE}{VELOCITY} {BLACK}Tipus d'aeronau: {LTBLUE}{STRING}
@@ -4358,6 +4403,7 @@ STR_VEHICLE_INFO_WEIGHT_POWER_MAX_SPEED_MAX_TE                  :{BLACK}Pes: {LT
 
 STR_VEHICLE_INFO_PROFIT_THIS_YEAR_LAST_YEAR                     :{BLACK}Benefici d'aquest any: {LTBLUE}{CURRENCY_LONG} (darrer any: {CURRENCY_LONG})
 STR_VEHICLE_INFO_PROFIT_THIS_YEAR_LAST_YEAR_MIN_PERFORMANCE     :{BLACK}Benefici aquest any: {LTBLUE}{CURRENCY_LONG} (l'any passat: {CURRENCY_LONG}) {BLACK}Rendiment mínim: {LTBLUE}{POWER_TO_WEIGHT}
+STR_VEHICLE_INFO_PROFIT_THIS_PERIOD_LAST_PERIOD                 :{BLACK}Benefici durant aquest període: {LTBLUE}{CURRENCY_LONG} (durant l'últim període: {CURRENCY_LONG})
 STR_VEHICLE_INFO_RELIABILITY_BREAKDOWNS                         :{BLACK}Fiabilitat: {LTBLUE}{COMMA}%  {BLACK}Avaries des de la darrera revisió: {LTBLUE}{COMMA}
 
 STR_VEHICLE_INFO_BUILT_VALUE                                    :{LTBLUE}{ENGINE} {BLACK}Fabricat: {LTBLUE}{NUM}{BLACK} Valor: {LTBLUE}{CURRENCY_LONG}
@@ -4376,6 +4422,8 @@ STR_VEHICLE_DETAILS_LAST_SERVICE_MINUTES_AGO                    :Última revisi�
 
 STR_SERVICE_INTERVAL_DROPDOWN_TOOLTIP                           :{BLACK}Canvia el tipus d'interval de les revisions
 STR_VEHICLE_DETAILS_DEFAULT                                     :{G=Masculin}Predeterminat
+STR_VEHICLE_DETAILS_DAYS                                        :Dies
+STR_VEHICLE_DETAILS_MINUTES                                     :Minuts
 STR_VEHICLE_DETAILS_PERCENT                                     :Percentatge
 
 ###length VEHICLE_TYPES
@@ -5674,6 +5722,7 @@ STR_UNKNOWN_STATION                                             :{G=Femenin}esta
 STR_DEFAULT_SIGN_NAME                                           :{G=Femenin}Senyal
 STR_COMPANY_SOMEONE                                             :Desconegut
 
+STR_SAVEGAME_DURATION_REALTIME                                  :{NUM}{NBSP}h{NBSP}{NUM}{NBSP}m
 STR_SAVEGAME_NAME_DEFAULT                                       :{COMPANY}, {STRING}
 STR_SAVEGAME_NAME_SPECTATOR                                     :{G=Masculin}Espectador, {1:STRING}
 
@@ -5707,6 +5756,10 @@ STR_TOWN_NAME                                                   :{TOWN}
 STR_VEHICLE_NAME                                                :{VEHICLE}
 STR_WAYPOINT_NAME                                               :{WAYPOINT}
 
+STR_CURRENCY_SHORT_KILO                                         :{NBSP}k
+STR_CURRENCY_SHORT_MEGA                                         :{NBSP}M
+STR_CURRENCY_SHORT_GIGA                                         :{NBSP}G
+STR_CURRENCY_SHORT_TERA                                         :{NBSP}T
 
 STR_JUST_CARGO                                                  :{CARGO_LONG}
 STR_JUST_RIGHT_ARROW                                            :{RIGHT_ARROW}

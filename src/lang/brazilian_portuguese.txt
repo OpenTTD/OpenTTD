@@ -291,7 +291,7 @@ STR_TOOLTIP_RESIZE                                              :{BLACK}Clique e
 STR_TOOLTIP_TOGGLE_LARGE_SMALL_WINDOW                           :{BLACK}Alternar entre janela de tamanho grande/pequena
 STR_TOOLTIP_VSCROLL_BAR_SCROLLS_LIST                            :{BLACK}Barra de rolagem - rola a lista acima/abaixo
 STR_TOOLTIP_HSCROLL_BAR_SCROLLS_LIST                            :{BLACK}Barra de rolagem - rola a lista para esquerda/direita
-STR_TOOLTIP_DEMOLISH_BUILDINGS_ETC                              :{BLACK}Demolir edifícios etc. em um quadrado do terreno. Ctrl+Clique+Arratar seleciona a área diagonalmente. Pressionar Shift mostra o custo estimado
+STR_TOOLTIP_DEMOLISH_BUILDINGS_ETC                              :{BLACK}Demolir edifícios etc. em um quadrado do terreno. Ctrl+Clique+Arrastar seleciona a área diagonalmente. Pressionar Shift mostra o custo estimado
 
 # Show engines button
 ###length VEHICLE_TYPES
@@ -426,9 +426,9 @@ STR_SCENEDIT_TOOLBAR_TOWN_GENERATION                            :{BLACK}Construi
 STR_SCENEDIT_TOOLBAR_INDUSTRY_GENERATION                        :{BLACK}Construir ou gerar indústrias
 STR_SCENEDIT_TOOLBAR_ROAD_CONSTRUCTION                          :{BLACK}Contrução de rodovias
 STR_SCENEDIT_TOOLBAR_TRAM_CONSTRUCTION                          :{BLACK}Construir infraestrutura de bondes
-STR_SCENEDIT_TOOLBAR_PLANT_TREES                                :{BLACK}Plantar árvores. Ctrl seleciona a área diagonalmente. Shift alterna construir/mostrar custo estimado
+STR_SCENEDIT_TOOLBAR_PLANT_TREES                                :{BLACK}Plantar árvores. Ctrl+Clique+Arrastar seleciona a área diagonalmente. Pressionar Shift mostra o custo estimado
 STR_SCENEDIT_TOOLBAR_PLACE_SIGN                                 :{BLACK}Colocar placa
-STR_SCENEDIT_TOOLBAR_PLACE_OBJECT                               :{BLACK}Colocar objeto. Ctrl seleciona a área na diagonal. Shift alterna construir/mostrar estimativa de custo
+STR_SCENEDIT_TOOLBAR_PLACE_OBJECT                               :{BLACK}Colocar objeto. Ctrl+Clique+Arrastar seleciona a área diagonalmente. Pressionar Shift mostra o custo estimado
 
 # Scenario editor file menu
 ###length 7
@@ -537,24 +537,6 @@ STR_ABOUT_MENU_SPRITE_ALIGNER                                   :Alinhador de "s
 STR_ABOUT_MENU_TOGGLE_BOUNDING_BOXES                            :Alternar caixas delimitadoras
 STR_ABOUT_MENU_TOGGLE_DIRTY_BLOCKS                              :Alterna a colorização dos blocos sujos
 STR_ABOUT_MENU_TOGGLE_WIDGET_OUTLINES                           :Alterna o contorno do elemento
-
-# Place in highscore window
-###length 15
-STR_ORDINAL_NUMBER_1ST                                          :1
-STR_ORDINAL_NUMBER_2ND                                          :2
-STR_ORDINAL_NUMBER_3RD                                          :3
-STR_ORDINAL_NUMBER_4TH                                          :4
-STR_ORDINAL_NUMBER_5TH                                          :5
-STR_ORDINAL_NUMBER_6TH                                          :6
-STR_ORDINAL_NUMBER_7TH                                          :7
-STR_ORDINAL_NUMBER_8TH                                          :8
-STR_ORDINAL_NUMBER_9TH                                          :9
-STR_ORDINAL_NUMBER_10TH                                         :10
-STR_ORDINAL_NUMBER_11TH                                         :11
-STR_ORDINAL_NUMBER_12TH                                         :12
-STR_ORDINAL_NUMBER_13TH                                         :13
-STR_ORDINAL_NUMBER_14TH                                         :14
-STR_ORDINAL_NUMBER_15TH                                         :15
 
 ###length 31
 STR_DAY_NUMBER_1ST                                              :1º
@@ -1064,7 +1046,7 @@ STR_GAME_OPTIONS_VIDEO_VSYNC_TOOLTIP                            :{BLACK}Marque e
 STR_GAME_OPTIONS_VIDEO_DRIVER_INFO                              :{BLACK}Driver de vídeo atual: {STRING}
 
 STR_GAME_OPTIONS_GUI_SCALE_FRAME                                :{BLACK}Tamanho da interface
-STR_GAME_OPTIONS_GUI_SCALE_TOOLTIP                              :{BLACK}Arraste o controle deslizante para definir o tamanho da interface. Ctrl+Arrastar para um ajuste contínuo
+STR_GAME_OPTIONS_GUI_SCALE_TOOLTIP                              :{BLACK}Arraste o controle deslizante para definir o tamanho da interface. Ctrl+Arraste para um ajuste contínuo
 STR_GAME_OPTIONS_GUI_SCALE_AUTO                                 :{BLACK}Detectar tamanho automaticamente
 STR_GAME_OPTIONS_GUI_SCALE_AUTO_TOOLTIP                         :{BLACK}Marque esta caixa para detectar o tamanho da interface automaticamente
 
@@ -2815,9 +2797,9 @@ STR_RAIL_TOOLBAR_TOOLTIP_BUILD_TRAIN_DEPOT_FOR_BUILDING         :{BLACK}Construi
 STR_RAIL_TOOLBAR_TOOLTIP_CONVERT_RAIL_TO_WAYPOINT               :{BLACK}Construir ponto de controle na ferrovia. Ctrl+Clique para selecionar outro ponto de controle e unir  com esse. Pressionar Shift mostra o custo estimado
 STR_RAIL_TOOLBAR_TOOLTIP_BUILD_RAILROAD_STATION                 :{BLACK}Construir estação ferroviária. Ctrl+Clique para selecionar outra estação e unir  com essa. Pressionar Shift mostra o custo estimado
 STR_RAIL_TOOLBAR_TOOLTIP_BUILD_RAILROAD_SIGNALS                 :{BLACK}Construir sinal na ferrovia. Ctrl+Clique para construir o sinal com estilo diferente{}Clique+Arraste para preencher a seção selecionada da ferrovia com os sinais no espaçamento escolhido. Ctrl+Clique+Arraste para colocar sinais até a próxima junção, estação ou sinal. Pressionar Shift mostra o custo estimado
-STR_RAIL_TOOLBAR_TOOLTIP_BUILD_RAILROAD_BRIDGE                  :{BLACK}Construir ponte ferroviária. Shift alterna construir/mostrar custo estimado
+STR_RAIL_TOOLBAR_TOOLTIP_BUILD_RAILROAD_BRIDGE                  :{BLACK}Construir ponte ferroviária. Presionar Shift mostra o custo estimado
 STR_RAIL_TOOLBAR_TOOLTIP_BUILD_RAILROAD_TUNNEL                  :{BLACK}Construir túnel ferroviário. Pressionar Shift mostra o custo estimado
-STR_RAIL_TOOLBAR_TOOLTIP_TOGGLE_BUILD_REMOVE_FOR                :{BLACK}Alternar entre construir/remover linha férrea, sinais, pontos de passagem e estações. Manter Ctrl pressionado também remove a linha férrea de pontos de passagem e estações
+STR_RAIL_TOOLBAR_TOOLTIP_TOGGLE_BUILD_REMOVE_FOR                :{BLACK}Alternar entre construir/remover linha férrea, sinais, pontos de controle e estações. Pressionar Ctrl+Clique remove os trilhos de pontos de controle e das estações
 STR_RAIL_TOOLBAR_TOOLTIP_CONVERT_RAIL                           :{BLACK}Converter/Atualizar tipo de trilho. Pressione Shift para somente mostrar o custo estimado
 
 STR_RAIL_NAME_RAILROAD                                          :Ferrovia
@@ -2868,7 +2850,7 @@ STR_BUILD_SIGNAL_ELECTRIC_EXIT_TOOLTIP                          :{BLACK}Sinal de
 STR_BUILD_SIGNAL_ELECTRIC_COMBO_TOOLTIP                         :{BLACK}Sinal Combo (elétrico){}O sinal combo funciona tanto como um sinal de entrada quanto de saída. Permite construir várias ramificações de pré-sinais
 STR_BUILD_SIGNAL_ELECTRIC_PBS_TOOLTIP                           :{BLACK}Sinal de trajeto (Elétrico){}Um sinal de trajeto permite mais de um trem entrar em um bloco de sinal ao mesmo tempo, se o trem puder reservar um trajeto para um ponto seguro de parada. Sinais de trajeto padrões podem ser passados pelo lado de trás
 STR_BUILD_SIGNAL_ELECTRIC_PBS_OWAY_TOOLTIP                      :{BLACK}Sinal avançado de mão única(Elétrico){}Um sinal de trajeto permite mais de um trem em um bloco de ferrovia, Se o trem no bloco puder reservar um local seguro para parar, o sinal de trajeto já permite a passada do próximo, porém não permite a passagem na via contrária
-STR_BUILD_SIGNAL_CONVERT_TOOLTIP                                :{BLACK}Converter sinal{}Clique em um sinal existente para convertê-lo para o tipo e variante de sinal selecionado. Ctrl+Clique anterna a variante existente. Shift+Clique mostra estimativa de custo da conversão
+STR_BUILD_SIGNAL_CONVERT_TOOLTIP                                :{BLACK}Converter sinal{}Clique em um sinal existente para convertê-lo para o tipo e variante de sinal selecionado. Ctrl+Clique anterna a variante existente. Shift+Clique mostra o custo estimado da conversão
 STR_BUILD_SIGNAL_DRAG_SIGNALS_DENSITY_TOOLTIP                   :{BLACK}Densidade dos sinais ao clicar e arrastar
 STR_BUILD_SIGNAL_DRAG_SIGNALS_DENSITY_DECREASE_TOOLTIP          :{BLACK}Diminuir a densidade dos sinais
 STR_BUILD_SIGNAL_DRAG_SIGNALS_DENSITY_INCREASE_TOOLTIP          :{BLACK}Aumentar a densidade dos sinais
@@ -2894,25 +2876,25 @@ STR_BRIDGE_TUBULAR_SILICON                                      :Tubular, Silíc
 # Road construction toolbar
 STR_ROAD_TOOLBAR_ROAD_CONSTRUCTION_CAPTION                      :{WHITE}Construir rodovias
 STR_ROAD_TOOLBAR_TRAM_CONSTRUCTION_CAPTION                      :{WHITE}Construção de Bonde
-STR_ROAD_TOOLBAR_TOOLTIP_BUILD_ROAD_SECTION                     :{BLACK}Construir trecho de estrada. Ctrl alterna construir/remover estradas. Shift alterna construir/mostrar custo estimado
-STR_ROAD_TOOLBAR_TOOLTIP_BUILD_TRAMWAY_SECTION                  :{BLACK}Construir linha de bonde. Ctrl alterna entre construir/remover linhas. Shift altera construir/mostrar custo estimado
+STR_ROAD_TOOLBAR_TOOLTIP_BUILD_ROAD_SECTION                     :{BLACK}Construir trecho de estrada. Ctrl+Clique remove trecho da estrada. Pressionar Shift mostra o custo estimado
+STR_ROAD_TOOLBAR_TOOLTIP_BUILD_TRAMWAY_SECTION                  :{BLACK}Construir linha de bonde. Ctrl+Clique remove trecho da linha. Pressionar Shift mostra o  custo estimado
 STR_ROAD_TOOLBAR_TOOLTIP_BUILD_AUTOROAD                         :{BLACK}Construir estrada usando o modo Autoestrada. Ctrl+Clique remove um trecho da estrada. Pressionar Shift mostra o custo estimado
-STR_ROAD_TOOLBAR_TOOLTIP_BUILD_AUTOTRAM                         :{BLACK}Construir linha de bonde usando o modo Automático. Ctrl alterna construir/remover linhas de bonde. Shift alterna construir/mostrar custo estimado
+STR_ROAD_TOOLBAR_TOOLTIP_BUILD_AUTOTRAM                         :{BLACK}Construir linha de bonde usando o modo Automático. Ctrl+Clique remove uma seção da linha. Pressionar Shift mostra o custo estimado
 STR_ROAD_TOOLBAR_TOOLTIP_BUILD_ROAD_VEHICLE_DEPOT               :{BLACK}Construir depósito para veículo rodoviário (para aquisição e manutenção de veículos). Pressionar Shift mostra o custo estimado
-STR_ROAD_TOOLBAR_TOOLTIP_BUILD_TRAM_VEHICLE_DEPOT               :{BLACK}Construir depósito para bondes (para compra e manutenção de bondes). Shift alterna construir/mostrar custo estimado
-STR_ROAD_TOOLBAR_TOOLTIP_BUILD_BUS_STATION                      :{BLACK}Construir estação de ônibus. Ctrl+Click para selecionar outra estação e unir com essa. Pressione Shift para mostrar estimativa de custo
-STR_ROAD_TOOLBAR_TOOLTIP_BUILD_PASSENGER_TRAM_STATION           :{BLACK}Constuir estação de bonde para passageiros. Ctrl permite unir estações. Shift altera construir/mostrar custo estimado
+STR_ROAD_TOOLBAR_TOOLTIP_BUILD_TRAM_VEHICLE_DEPOT               :{BLACK}Construir depósito para bondes (para compra e manutenção de bondes). Pressionar Shift mostra o custo estimado
+STR_ROAD_TOOLBAR_TOOLTIP_BUILD_BUS_STATION                      :{BLACK}Construir estação de ônibus. Ctrl+Clique para selecionar outra estação e unir com essa. Pressionar Shift mostra o custo estimado
+STR_ROAD_TOOLBAR_TOOLTIP_BUILD_PASSENGER_TRAM_STATION           :{BLACK}Construir estação de bonde para passageiros. Ctrl+Clique para selecionar outra estação e unir com essa. Pressionar Shift mostra o  custo estimado
 STR_ROAD_TOOLBAR_TOOLTIP_BUILD_TRUCK_LOADING_BAY                :{BLACK}Construir estação de caminhões. Ctrl+Clique para selecionar outra estação e unir  com essa. Pressionar Shift mostra o custo estimado
-STR_ROAD_TOOLBAR_TOOLTIP_BUILD_CARGO_TRAM_STATION               :{BLACK}Constuir estação para bondes de carga. Ctrl permite unir estações. Shift altera construir/mostrar custo estimado
+STR_ROAD_TOOLBAR_TOOLTIP_BUILD_CARGO_TRAM_STATION               :{BLACK}Constuir estação para bondes de carga. Ctrl+Clique para selecionar outra estação e unir com essa. Pressionar Shift mostra o custo estimado
 STR_ROAD_TOOLBAR_TOOLTIP_TOGGLE_ONE_WAY_ROAD                    :{BLACK}Ativar/Desativar vias de mão única
-STR_ROAD_TOOLBAR_TOOLTIP_BUILD_ROAD_BRIDGE                      :{BLACK}Construir ponte rodoviária. Shift alterna construir/mostrar cutso estimado
-STR_ROAD_TOOLBAR_TOOLTIP_BUILD_TRAMWAY_BRIDGE                   :{BLACK}Construir ponte para bondes. Shift alterna construir/mostrar custo estimado
-STR_ROAD_TOOLBAR_TOOLTIP_BUILD_ROAD_TUNNEL                      :{BLACK}Construir túnel rodoviário. Shift alterna construir/mostrar custo estimado
-STR_ROAD_TOOLBAR_TOOLTIP_BUILD_TRAMWAY_TUNNEL                   :{BLACK}Construir túnel para bondes. Shift alterna construir/mostar custo estimado
-STR_ROAD_TOOLBAR_TOOLTIP_TOGGLE_BUILD_REMOVE_FOR_ROAD           :{BLACK}Alternar construir/remover para contrução rodoviária
-STR_ROAD_TOOLBAR_TOOLTIP_TOGGLE_BUILD_REMOVE_FOR_TRAMWAYS       :{BLACK}Alternar construir/remover linhas de bonde e sinais
+STR_ROAD_TOOLBAR_TOOLTIP_BUILD_ROAD_BRIDGE                      :{BLACK}Construir ponte rodoviária. Pressionar Shift mostra o custo estimado
+STR_ROAD_TOOLBAR_TOOLTIP_BUILD_TRAMWAY_BRIDGE                   :{BLACK}Construir ponte para bondes. Pressionar Shift mostra o custo estimado
+STR_ROAD_TOOLBAR_TOOLTIP_BUILD_ROAD_TUNNEL                      :{BLACK}Construir túnel rodoviário. Pressionar Shift mostra o custo estimado
+STR_ROAD_TOOLBAR_TOOLTIP_BUILD_TRAMWAY_TUNNEL                   :{BLACK}Construir túnel para bondes. Pressionar Shift mostra o custo estimado
+STR_ROAD_TOOLBAR_TOOLTIP_TOGGLE_BUILD_REMOVE_FOR_ROAD           :{BLACK}Alternar entre construir/remover estradas
+STR_ROAD_TOOLBAR_TOOLTIP_TOGGLE_BUILD_REMOVE_FOR_TRAMWAYS       :{BLACK}Alternar entre construir/remover linhas de bonde
 STR_ROAD_TOOLBAR_TOOLTIP_CONVERT_ROAD                           :{BLACK}Converter/Atualizar o tipo de estrada. Pressione Shift para mostrar somente o custo estimado
-STR_ROAD_TOOLBAR_TOOLTIP_CONVERT_TRAM                           :{BLACK}Converter/Atualizar o tipo de bonde. Shift alterna construir/mostrar custo estimado
+STR_ROAD_TOOLBAR_TOOLTIP_CONVERT_TRAM                           :{BLACK}Converter/Atualizar o tipo de bonde. Pressionar Shift mostra o custo estimado
 
 STR_ROAD_NAME_ROAD                                              :Estrada
 STR_ROAD_NAME_TRAM                                              :Bonde
@@ -2940,7 +2922,7 @@ STR_WATERWAYS_TOOLBAR_BUILD_CANALS_TOOLTIP                      :{BLACK}Construi
 STR_WATERWAYS_TOOLBAR_BUILD_LOCKS_TOOLTIP                       :{BLACK}Construir eclusas. Pressionar Shift mostra o custo estimado
 STR_WATERWAYS_TOOLBAR_BUILD_DEPOT_TOOLTIP                       :{BLACK}Construir depósito naval (para aquisição e manutenção de embarcações). Pressionar Shift mostra o custo estimado
 STR_WATERWAYS_TOOLBAR_BUILD_DOCK_TOOLTIP                        :{BLACK}Construir doca naval. Ctrl+Clique para selecionar outra estação e unir a essa. Pressionar Shift mostra o custo estimado
-STR_WATERWAYS_TOOLBAR_BUOY_TOOLTIP                              :{BLACK}Colocar uma bóia que pode ser usada como ponto de controle. Pressionar Shift mostra estimativa de custo
+STR_WATERWAYS_TOOLBAR_BUOY_TOOLTIP                              :{BLACK}Colocar uma bóia que pode ser usada como ponto de controle. Pressionar Shift mostra o custo estimado
 STR_WATERWAYS_TOOLBAR_BUILD_AQUEDUCT_TOOLTIP                    :{BLACK}Construir aqueduto. Pressionar Shift mostra o custo estimado
 STR_WATERWAYS_TOOLBAR_CREATE_LAKE_TOOLTIP                       :{BLACK}Contruir canal. Ctrl+Clique no nível do mar para inundar com água do mar
 STR_WATERWAYS_TOOLBAR_CREATE_RIVER_TOOLTIP                      :{BLACK}Colocar rios. Ctrl+Clique para selecionar diagonalmente
@@ -2981,14 +2963,14 @@ STR_STATION_BUILD_NOISE                                         :{BLACK}Ruído g
 
 # Landscaping toolbar
 STR_LANDSCAPING_TOOLBAR                                         :{WHITE}Terreno
-STR_LANDSCAPING_TOOLTIP_LOWER_A_CORNER_OF_LAND                  :{BLACK}Rebaixar um canto do terreno. Arrastar abaixa o primeiro canto selecionado e nivela a área selecionada à altura do novo canto. Ctrl seleciona a área diagonalmente. Shift alterna construir/mostrar custo estimado
+STR_LANDSCAPING_TOOLTIP_LOWER_A_CORNER_OF_LAND                  :{BLACK}Rebaixar um canto do terreno. Clique+Arrastar abaixa o primeiro canto selecionado e nivela a área selecionada à altura do novo canto. Ctrl+Clique+Arrastar seleciona a área diagonalmente. Pressionar Shift mostra o custo estimado
 STR_LANDSCAPING_TOOLTIP_RAISE_A_CORNER_OF_LAND                  :{BLACK} Elevar um canto do terreno. Clique+Arraste para elevar o primeiro canto selecionado e nivelar a área selecionada à nova altura do primeiro canto. Ctrl+Clique+Arraste para selecionar a área diagonalmente. Pressionar Shift mostra o custo estimado
-STR_LANDSCAPING_LEVEL_LAND_TOOLTIP                              :{BLACK}Nivelar uma área do terreno à altura do primeiro canto selecionado. Ctrl seleciona uma área diagonalmente. Shift alterna construir/mostrar custo estimado
-STR_LANDSCAPING_TOOLTIP_PURCHASE_LAND                           :{BLACK}Comprar terreno para uso futuro. Ctrl seleciona a área diagonalmente. Shift alterna entre construir/mostrar custo estimado
+STR_LANDSCAPING_LEVEL_LAND_TOOLTIP                              :{BLACK}Nivelar uma área do terreno à altura do primeiro canto selecionado. Ctrl+Clique-Arrastar seleciona uma área diagonalmente. Pressionar Shift mostra o custo estimado
+STR_LANDSCAPING_TOOLTIP_PURCHASE_LAND                           :{BLACK}Comprar terreno para uso futuro. Ctrl+Clique+Arrastar seleciona a área diagonalmente. Pressionar Shift mostra o custo estimado
 
 # Object construction window
 STR_OBJECT_BUILD_CAPTION                                        :{WHITE}Seleção de Objeto
-STR_OBJECT_BUILD_TOOLTIP                                        :{BLACK}Selecione o objeto para construir. Ctrl seleciona a área diagonalmente. Shift alterna construir/mostrar estimativa de custo
+STR_OBJECT_BUILD_TOOLTIP                                        :{BLACK}Selecione o objeto para construir. Ctrl+Clique+Arrastar seleciona a área diagonalmente. Pressionar Shift mostra o custo estimado
 STR_OBJECT_BUILD_CLASS_TOOLTIP                                  :{BLACK}Selecione uma categoria de objeto para construir
 STR_OBJECT_BUILD_PREVIEW_TOOLTIP                                :{BLACK}Pré-visualização do objeto
 STR_OBJECT_BUILD_SIZE                                           :{BLACK}Tamanho: {GOLD}{NUM} x {NUM} quadrados
@@ -3000,7 +2982,7 @@ STR_OBJECT_CLASS_TRNS                                           :Transmissores
 STR_PLANT_TREE_CAPTION                                          :{WHITE}Árvores
 STR_PLANT_TREE_TOOLTIP                                          :{BLACK}Selecionar um tipo de árvore para plantar. Se o local já tiver uma árvore, isso irá adicionar mais árvores do tipo misto indepentendemente do tipo selecionado
 STR_TREES_RANDOM_TYPE                                           :{BLACK}Árvores de tipo aleatório
-STR_TREES_RANDOM_TYPE_TOOLTIP                                   :{BLACK}Plantar árvores de tipo aleatório. Ctrl+Clique+Arrastar para selecionar a área diagonalmente. Pressionar Shift mostra o custo estimado
+STR_TREES_RANDOM_TYPE_TOOLTIP                                   :{BLACK}Plantar árvores de tipo aleatório. Ctrl+Clique+Arraste para selecionar a área diagonalmente. Pressionar Shift mostra o custo estimado
 STR_TREES_RANDOM_TREES_BUTTON                                   :{BLACK}Plantar Aleatoriamente
 STR_TREES_RANDOM_TREES_TOOLTIP                                  :{BLACK}Plantar árvores aleatoriamente pelo terreno
 STR_TREES_MODE_NORMAL_BUTTON                                    :{BLACK}Normal
@@ -4145,7 +4127,7 @@ STR_BUY_VEHICLE_AIRCRAFT_BUY_VEHICLE_TOOLTIP                    :{BLACK}Comprar 
 STR_BUY_VEHICLE_TRAIN_BUY_REFIT_VEHICLE_TOOLTIP                 :{BLACK}Compra e modifica o trem selecionado. Pressionar Shift mostra o custo estimado
 STR_BUY_VEHICLE_ROAD_VEHICLE_BUY_REFIT_VEHICLE_TOOLTIP          :{BLACK}Comprar e converter o veículo rodoviário selecionado. Pressionar Shift mostra o custo estimado
 STR_BUY_VEHICLE_SHIP_BUY_REFIT_VEHICLE_TOOLTIP                  :{BLACK}Comprar e converter a embarcação selecionada. Pressionar Shift mostra o custo estimado
-STR_BUY_VEHICLE_AIRCRAFT_BUY_REFIT_VEHICLE_TOOLTIP              :{BLACK}Comprar e converter aeronave seleccionada. Shift+Clique mostra estimativa de custo, sem comprar
+STR_BUY_VEHICLE_AIRCRAFT_BUY_REFIT_VEHICLE_TOOLTIP              :{BLACK}Comprar e converter a aeronave selecionada. Pressionar Shift mostra o custo estimado
 
 ###length VEHICLE_TYPES
 STR_BUY_VEHICLE_TRAIN_RENAME_BUTTON                             :{BLACK}Renomear
@@ -4517,7 +4499,7 @@ STR_REFIT_NEW_CAPACITY_COST_OF_REFIT                            :{BLACK}Nova cap
 STR_REFIT_NEW_CAPACITY_INCOME_FROM_REFIT                        :{BLACK}Nova capacidade: {GOLD}{CARGO_LONG}{}{BLACK}Lucro vindo da adaptação: {GREEN}{CURRENCY_LONG}
 STR_REFIT_NEW_CAPACITY_COST_OF_AIRCRAFT_REFIT                   :{BLACK}Nova capacidade: {GOLD}{CARGO_LONG}, {GOLD}{CARGO_LONG}{}{BLACK}Custo da adaptação: {RED}{CURRENCY_LONG}
 STR_REFIT_NEW_CAPACITY_INCOME_FROM_AIRCRAFT_REFIT               :{BLACK}Nova capacidade: {GOLD}{CARGO_LONG}, {GOLD}{CARGO_LONG}{}{BLACK}Lucro da adaptação: {GREEN}{CURRENCY_LONG}
-STR_REFIT_SELECT_VEHICLES_TOOLTIP                               :{BLACK}Selecione os veículos para modificar. Clique+Arrastar para seleionar vários veículos. Clique em espaço vazio para selecionar todo o veículo. Ctrl+Clique para selecionar um veículo e a sequência restante
+STR_REFIT_SELECT_VEHICLES_TOOLTIP                               :{BLACK}Selecione os veículos para modificar. Clique+Arrastar para selecionar vários veículos. Clique em espaço vazio para selecionar todo o veículo. Ctrl+Clique para selecionar um veículo e a sequência restante
 
 ###length VEHICLE_TYPES
 STR_REFIT_TRAIN_LIST_TOOLTIP                                    :{BLACK}Selecionar tipo de carga para o trem

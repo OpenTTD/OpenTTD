@@ -435,24 +435,6 @@ STR_ABOUT_MENU_LAND_BLOCK_INFO                                  :जागाच
 STR_ABOUT_MENU_SCREENSHOT                                       :द्श्य
 STR_ABOUT_MENU_ABOUT_OPENTTD                                    :ओपेन टीटीडी बद्दल
 
-# Place in highscore window
-###length 15
-STR_ORDINAL_NUMBER_1ST                                          :१
-STR_ORDINAL_NUMBER_2ND                                          :२
-STR_ORDINAL_NUMBER_3RD                                          :३
-STR_ORDINAL_NUMBER_4TH                                          :४
-STR_ORDINAL_NUMBER_5TH                                          :५
-STR_ORDINAL_NUMBER_6TH                                          :६
-STR_ORDINAL_NUMBER_7TH                                          :७
-STR_ORDINAL_NUMBER_8TH                                          :८
-STR_ORDINAL_NUMBER_9TH                                          :९
-STR_ORDINAL_NUMBER_10TH                                         :१०
-STR_ORDINAL_NUMBER_11TH                                         :११
-STR_ORDINAL_NUMBER_12TH                                         :१२
-STR_ORDINAL_NUMBER_13TH                                         :१३
-STR_ORDINAL_NUMBER_14TH                                         :१४
-STR_ORDINAL_NUMBER_15TH                                         :१५
-
 ###length 31
 STR_DAY_NUMBER_1ST                                              :१
 STR_DAY_NUMBER_2ND                                              :२

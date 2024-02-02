@@ -482,24 +482,6 @@ STR_ABOUT_MENU_SPRITE_ALIGNER                                   :"Sprite" rigter
 STR_ABOUT_MENU_TOGGLE_BOUNDING_BOXES                            :skakel beperkte bokse
 STR_ABOUT_MENU_TOGGLE_DIRTY_BLOCKS                              :Skakel inkleur van vuil blokke
 
-# Place in highscore window
-###length 15
-STR_ORDINAL_NUMBER_1ST                                          :1ste
-STR_ORDINAL_NUMBER_2ND                                          :2de
-STR_ORDINAL_NUMBER_3RD                                          :3de
-STR_ORDINAL_NUMBER_4TH                                          :4de
-STR_ORDINAL_NUMBER_5TH                                          :5de
-STR_ORDINAL_NUMBER_6TH                                          :6de
-STR_ORDINAL_NUMBER_7TH                                          :7de
-STR_ORDINAL_NUMBER_8TH                                          :8ste
-STR_ORDINAL_NUMBER_9TH                                          :9de
-STR_ORDINAL_NUMBER_10TH                                         :10de
-STR_ORDINAL_NUMBER_11TH                                         :11de
-STR_ORDINAL_NUMBER_12TH                                         :12de
-STR_ORDINAL_NUMBER_13TH                                         :13de
-STR_ORDINAL_NUMBER_14TH                                         :14de
-STR_ORDINAL_NUMBER_15TH                                         :15de
-
 ###length 31
 STR_DAY_NUMBER_1ST                                              :1ste
 STR_DAY_NUMBER_2ND                                              :2de

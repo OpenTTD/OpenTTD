@@ -474,24 +474,6 @@ STR_ABOUT_MENU_SPRITE_ALIGNER                                   :Подравн�
 STR_ABOUT_MENU_TOGGLE_BOUNDING_BOXES                            :Активиране слепване на прозорците
 STR_ABOUT_MENU_TOGGLE_DIRTY_BLOCKS                              :Превключва оцветяване на замърсените блокове
 
-# Place in highscore window
-###length 15
-STR_ORDINAL_NUMBER_1ST                                          :1-ви
-STR_ORDINAL_NUMBER_2ND                                          :2-ри
-STR_ORDINAL_NUMBER_3RD                                          :3-ти
-STR_ORDINAL_NUMBER_4TH                                          :4-ти
-STR_ORDINAL_NUMBER_5TH                                          :5-и
-STR_ORDINAL_NUMBER_6TH                                          :6-и
-STR_ORDINAL_NUMBER_7TH                                          :7-и
-STR_ORDINAL_NUMBER_8TH                                          :8-и
-STR_ORDINAL_NUMBER_9TH                                          :9-ти
-STR_ORDINAL_NUMBER_10TH                                         :10-ти
-STR_ORDINAL_NUMBER_11TH                                         :11-ти
-STR_ORDINAL_NUMBER_12TH                                         :12-ти
-STR_ORDINAL_NUMBER_13TH                                         :13-ти
-STR_ORDINAL_NUMBER_14TH                                         :14-ти
-STR_ORDINAL_NUMBER_15TH                                         :15-ти
-
 ###length 31
 STR_DAY_NUMBER_1ST                                              :1-ви
 STR_DAY_NUMBER_2ND                                              :2-ри

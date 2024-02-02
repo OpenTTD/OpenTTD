@@ -660,24 +660,6 @@ STR_ABOUT_MENU_SPRITE_ALIGNER                                   :Co-thaobhaichea
 STR_ABOUT_MENU_TOGGLE_BOUNDING_BOXES                            :Toglaich bogsaichean-iadhaidh
 STR_ABOUT_MENU_TOGGLE_DIRTY_BLOCKS                              :Toglaich dathadh nam blocaichean salach
 
-# Place in highscore window
-###length 15
-STR_ORDINAL_NUMBER_1ST                                          :1ad
-STR_ORDINAL_NUMBER_2ND                                          :2na
-STR_ORDINAL_NUMBER_3RD                                          :3a
-STR_ORDINAL_NUMBER_4TH                                          :4mh
-STR_ORDINAL_NUMBER_5TH                                          :5mh
-STR_ORDINAL_NUMBER_6TH                                          :6mh
-STR_ORDINAL_NUMBER_7TH                                          :7mh
-STR_ORDINAL_NUMBER_8TH                                          :8mh
-STR_ORDINAL_NUMBER_9TH                                          :9mh
-STR_ORDINAL_NUMBER_10TH                                         :10mh
-STR_ORDINAL_NUMBER_11TH                                         :11ad
-STR_ORDINAL_NUMBER_12TH                                         :12na
-STR_ORDINAL_NUMBER_13TH                                         :13s
-STR_ORDINAL_NUMBER_14TH                                         :14mh
-STR_ORDINAL_NUMBER_15TH                                         :15mh
-
 ###length 31
 STR_DAY_NUMBER_1ST                                              :1ad
 STR_DAY_NUMBER_2ND                                              :2na

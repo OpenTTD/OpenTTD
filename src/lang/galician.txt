@@ -523,24 +523,6 @@ STR_ABOUT_MENU_TOGGLE_BOUNDING_BOXES                            :Activa/desactiv
 STR_ABOUT_MENU_TOGGLE_DIRTY_BLOCKS                              :Activa/desactiva a coloración de bloques modificados
 STR_ABOUT_MENU_TOGGLE_WIDGET_OUTLINES                           :Alternar a contorna dos Widgets
 
-# Place in highscore window
-###length 15
-STR_ORDINAL_NUMBER_1ST                                          :1º
-STR_ORDINAL_NUMBER_2ND                                          :2º
-STR_ORDINAL_NUMBER_3RD                                          :3º
-STR_ORDINAL_NUMBER_4TH                                          :4º
-STR_ORDINAL_NUMBER_5TH                                          :5º
-STR_ORDINAL_NUMBER_6TH                                          :6º
-STR_ORDINAL_NUMBER_7TH                                          :7º
-STR_ORDINAL_NUMBER_8TH                                          :8º
-STR_ORDINAL_NUMBER_9TH                                          :9º
-STR_ORDINAL_NUMBER_10TH                                         :10º
-STR_ORDINAL_NUMBER_11TH                                         :11º
-STR_ORDINAL_NUMBER_12TH                                         :12º
-STR_ORDINAL_NUMBER_13TH                                         :13º
-STR_ORDINAL_NUMBER_14TH                                         :14º
-STR_ORDINAL_NUMBER_15TH                                         :15º
-
 ###length 31
 STR_DAY_NUMBER_1ST                                              :1º
 STR_DAY_NUMBER_2ND                                              :2º
