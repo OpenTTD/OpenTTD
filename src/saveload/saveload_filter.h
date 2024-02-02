@@ -13,20 +13,19 @@
 /** Interface for filtering a savegame till it is loaded. */
 struct LoadFilter {
 	/** Chained to the (savegame) filters. */
-	LoadFilter *chain;
+	std::shared_ptr<LoadFilter> chain;
 
 	/**
 	 * Initialise this filter.
 	 * @param chain The next filter in this chain.
 	 */
-	LoadFilter(LoadFilter *chain) : chain(chain)
+	LoadFilter(std::shared_ptr<LoadFilter> chain) : chain(chain)
 	{
 	}
 
 	/** Make sure the writers are properly closed. */
 	virtual ~LoadFilter()
 	{
-		delete this->chain;
 	}
 
 	/**
@@ -51,28 +50,27 @@ struct LoadFilter {
  * @param chain The next filter in this chain.
  * @tparam T    The type of load filter to create.
  */
-template <typename T> LoadFilter *CreateLoadFilter(LoadFilter *chain)
+template <typename T> std::shared_ptr<LoadFilter> CreateLoadFilter(std::shared_ptr<LoadFilter> chain)
 {
-	return new T(chain);
+	return std::make_shared<T>(chain);
 }
 
 /** Interface for filtering a savegame till it is written. */
 struct SaveFilter {
 	/** Chained to the (savegame) filters. */
-	SaveFilter *chain;
+	std::shared_ptr<SaveFilter> chain;
 
 	/**
 	 * Initialise this filter.
 	 * @param chain The next filter in this chain.
 	 */
-	SaveFilter(SaveFilter *chain) : chain(chain)
+	SaveFilter(std::shared_ptr<SaveFilter> chain) : chain(chain)
 	{
 	}
 
 	/** Make sure the writers are properly closed. */
 	virtual ~SaveFilter()
 	{
-		delete this->chain;
 	}
 
 	/**
@@ -97,9 +95,9 @@ struct SaveFilter {
  * @param compression_level The requested level of compression.
  * @tparam T                The type of save filter to create.
  */
-template <typename T> SaveFilter *CreateSaveFilter(SaveFilter *chain, byte compression_level)
+template <typename T> std::shared_ptr<SaveFilter> CreateSaveFilter(std::shared_ptr<SaveFilter> chain, byte compression_level)
 {
-	return new T(chain, compression_level);
+	return std::make_shared<T>(chain, compression_level);
 }
 
 #endif /* SAVELOAD_FILTER_H */
