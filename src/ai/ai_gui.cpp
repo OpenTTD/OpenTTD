@@ -276,7 +276,7 @@ struct AIConfigWindow : public Window {
 
 			case WID_AIC_CONTENT_DOWNLOAD:
 				if (!_network_available) {
-					ShowErrorMessage(STR_NETWORK_ERROR_NOTAVAILABLE, INVALID_STRING_ID, WL_ERROR);
+					ShowErrorMessage(STR_NETWORK_ERROR_NOTAVAILABLE, INVALID_STRING_ID, MakeParameters(), WL_ERROR);
 				} else {
 					ShowNetworkContentListWindow(nullptr, CONTENT_TYPE_AI);
 				}

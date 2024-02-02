@@ -85,9 +85,7 @@ void CheckTrainsLengths()
 					if ((w->track != TRACK_BIT_DEPOT &&
 							std::max(abs(u->x_pos - w->x_pos), abs(u->y_pos - w->y_pos)) != u->CalcNextVehicleOffset()) ||
 							(w->track == TRACK_BIT_DEPOT && TicksToLeaveDepot(u) <= 0)) {
-						SetDParam(0, v->index);
-						SetDParam(1, v->owner);
-						ShowErrorMessage(STR_BROKEN_VEHICLE_LENGTH, INVALID_STRING_ID, WL_CRITICAL);
+						ShowErrorMessage(STR_BROKEN_VEHICLE_LENGTH, INVALID_STRING_ID, MakeParameters(v->index, v->owner), WL_CRITICAL);
 
 						if (!_networking && first) {
 							first = false;

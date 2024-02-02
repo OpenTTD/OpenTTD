@@ -550,8 +550,7 @@ void ShowEstimatedCostOrIncome(Money cost, int x, int y)
 		cost = -cost;
 		msg = STR_MESSAGE_ESTIMATED_INCOME;
 	}
-	SetDParam(0, cost);
-	ShowErrorMessage(msg, INVALID_STRING_ID, WL_INFO, x, y);
+	ShowErrorMessage(msg, INVALID_STRING_ID, MakeParameters(cost), WL_INFO, x, y);
 }
 
 /**

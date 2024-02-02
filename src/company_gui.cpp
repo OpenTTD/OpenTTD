@@ -1660,7 +1660,7 @@ public:
 			case WID_SCMF_LOAD:
 				this->face = _company_manager_face;
 				ScaleAllCompanyManagerFaceBits(this->face);
-				ShowErrorMessage(STR_FACE_LOAD_DONE, INVALID_STRING_ID, WL_INFO);
+				ShowErrorMessage(STR_FACE_LOAD_DONE, INVALID_STRING_ID, MakeParameters(), WL_INFO);
 				this->UpdateData();
 				this->SetDirty();
 				break;
@@ -1674,7 +1674,7 @@ public:
 			/* Save button */
 			case WID_SCMF_SAVE:
 				_company_manager_face = this->face;
-				ShowErrorMessage(STR_FACE_SAVE_DONE, INVALID_STRING_ID, WL_INFO);
+				ShowErrorMessage(STR_FACE_SAVE_DONE, INVALID_STRING_ID, MakeParameters(), WL_INFO);
 				break;
 
 			/* Toggle gender (male/female) button */
@@ -1751,11 +1751,11 @@ public:
 		if (!StrEmpty(str)) {
 			this->face = std::strtoul(str, nullptr, 10);
 			ScaleAllCompanyManagerFaceBits(this->face);
-			ShowErrorMessage(STR_FACE_FACECODE_SET, INVALID_STRING_ID, WL_INFO);
+			ShowErrorMessage(STR_FACE_FACECODE_SET, INVALID_STRING_ID, MakeParameters(), WL_INFO);
 			this->UpdateData();
 			this->SetDirty();
 		} else {
-			ShowErrorMessage(STR_FACE_FACECODE_ERR, INVALID_STRING_ID, WL_INFO);
+			ShowErrorMessage(STR_FACE_FACECODE_ERR, INVALID_STRING_ID, MakeParameters(), WL_INFO);
 		}
 	}
 };

@@ -954,7 +954,7 @@ public:
 	void OnConnect(bool success) override
 	{
 		if (!success) {
-			ShowErrorMessage(STR_CONTENT_ERROR_COULD_NOT_CONNECT, INVALID_STRING_ID, WL_ERROR);
+			ShowErrorMessage(STR_CONTENT_ERROR_COULD_NOT_CONNECT, INVALID_STRING_ID, MakeParameters(), WL_ERROR);
 			this->Close();
 			return;
 		}
@@ -1147,7 +1147,7 @@ void ShowNetworkContentListWindow(ContentVector *cv, ContentType type1, ContentT
 	CloseWindowById(WC_NETWORK_WINDOW, WN_NETWORK_WINDOW_CONTENT_LIST);
 	new NetworkContentListWindow(&_network_content_list_desc, cv != nullptr, types);
 #else
-	ShowErrorMessage(STR_CONTENT_NO_ZLIB, STR_CONTENT_NO_ZLIB_SUB, WL_ERROR);
+	ShowErrorMessage(STR_CONTENT_NO_ZLIB, STR_CONTENT_NO_ZLIB_SUB, MakeParameters(), WL_ERROR);
 	/* Connection failed... clean up the mess */
 	if (cv != nullptr) {
 		for (ContentInfo *ci : *cv) delete ci;

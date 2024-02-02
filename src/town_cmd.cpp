@@ -2338,7 +2338,7 @@ bool GenerateTowns(TownLayout layout)
 
 	/* If there are no towns at all and we are generating new game, bail out */
 	if (Town::GetNumItems() == 0 && _game_mode != GM_EDITOR) {
-		ShowErrorMessage(STR_ERROR_COULD_NOT_CREATE_TOWN, INVALID_STRING_ID, WL_CRITICAL);
+		ShowErrorMessage(STR_ERROR_COULD_NOT_CREATE_TOWN, INVALID_STRING_ID, MakeParameters(), WL_CRITICAL);
 	}
 
 	return false;  // we are still without a town? we failed, simply
@@ -3388,7 +3388,7 @@ static CommandCost TownActionBribe(Town *t, DoCommandFlag flags)
 
 			/* only show error message to the executing player. All errors are handled command.c
 			 * but this is special, because it can only 'fail' on a DC_EXEC */
-			if (IsLocalCompany()) ShowErrorMessage(STR_ERROR_BRIBE_FAILED, INVALID_STRING_ID, WL_INFO);
+			if (IsLocalCompany()) ShowErrorMessage(STR_ERROR_BRIBE_FAILED, INVALID_STRING_ID, MakeParameters(), WL_INFO);
 
 			/* decrease by a lot!
 			 * ChangeTownRating is only for stuff in demolishing. Bribe failure should

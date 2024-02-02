@@ -444,6 +444,6 @@ void ShowBuildBridgeWindow(TileIndex start, TileIndex end, TransportType transpo
 	if (!bl.empty()) {
 		new BuildBridgeWindow(&_build_bridge_desc, start, end, transport_type, road_rail_type, std::move(bl));
 	} else {
-		ShowErrorMessage(STR_ERROR_CAN_T_BUILD_BRIDGE_HERE, errmsg, WL_INFO, TileX(end) * TILE_SIZE, TileY(end) * TILE_SIZE);
+		ShowErrorMessage(STR_ERROR_CAN_T_BUILD_BRIDGE_HERE, errmsg, MakeParameters(), WL_INFO, TileX(end) * TILE_SIZE, TileY(end) * TILE_SIZE);
 	}
 }

@@ -324,9 +324,7 @@ void ShowNewGrfVehicleError(EngineID engine, StringID part1, StringID part2, GRF
 
 	if (!HasBit(grfconfig->grf_bugs, bug_type)) {
 		SetBit(grfconfig->grf_bugs, bug_type);
-		SetDParamStr(0, grfconfig->GetName());
-		SetDParam(1, engine);
-		ShowErrorMessage(part1, part2, WL_CRITICAL);
+		ShowErrorMessage(part1, part2, MakeParameters(grfconfig->GetName(), engine), WL_CRITICAL);
 		if (!_networking) Command<CMD_PAUSE>::Do(DC_EXEC, critical ? PM_PAUSED_ERROR : PM_PAUSED_NORMAL, true);
 	}
 
