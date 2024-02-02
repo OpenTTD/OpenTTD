@@ -38,7 +38,7 @@ struct TextEffect : public ViewportSign {
 static std::vector<struct TextEffect> _text_effects; ///< Text effects are stored there
 
 /* Text Effects */
-TextEffectID AddTextEffect(StringID msg, int center, int y, uint8_t duration, TextEffectMode mode)
+TextEffectID AddTextEffect(StringID msg, StringParameters &&params, int center, int y, uint8_t duration, TextEffectMode mode)
 {
 	if (_game_mode == GM_MENU) return INVALID_TE_ID;
 
@@ -54,24 +54,25 @@ TextEffectID AddTextEffect(StringID msg, int center, int y, uint8_t duration, Te
 	/* Start defining this object */
 	te.string_id = msg;
 	te.duration = duration;
-	CopyOutDParam(te.params, 2);
+	CopyOutDParam(te.params, std::move(params));
 	te.mode = mode;
 
 	/* Make sure we only dirty the new area */
 	te.width_normal = 0;
+	CopyInDParam(te.params);
 	te.UpdatePosition(center, y, msg);
 
 	return static_cast<TextEffectID>(it - std::begin(_text_effects));
 }
 
-void UpdateTextEffect(TextEffectID te_id, StringID msg)
+void UpdateTextEffect(TextEffectID te_id, StringID msg, StringParameters &&params)
 {
 	/* Update details */
 	TextEffect &te = _text_effects[te_id];
-	if (msg == te.string_id && !HaveDParamChanged(te.params)) return;
 	te.string_id = msg;
-	CopyOutDParam(te.params, 2);
+	CopyOutDParam(te.params, std::move(params));
 
+	CopyInDParam(te.params);
 	te.UpdatePosition(te.center, te.top, te.string_id, te.string_id - 1);
 }
 
