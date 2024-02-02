@@ -2736,7 +2736,7 @@ struct VehicleDetailsWindow : Window {
 			} else {
 				tool_tip = widget == WID_VD_INCREASE_SERVICING_INTERVAL ? STR_VEHICLE_DETAILS_INCREASE_SERVICING_INTERVAL_TOOLTIP_DAYS : STR_VEHICLE_DETAILS_DECREASE_SERVICING_INTERVAL_TOOLTIP_DAYS;
 			}
-			GuiShowTooltips(this, tool_tip, close_cond);
+			GuiShowTooltips(this, tool_tip, close_cond, MakeParameters());
 			return true;
 		}
 
@@ -2899,7 +2899,8 @@ void CcStartStopVehicle(Commands, const CommandCost &result, VehicleID veh_id, b
 
 	StringID msg = (v->vehstatus & VS_STOPPED) ? STR_VEHICLE_COMMAND_STOPPED : STR_VEHICLE_COMMAND_STARTED;
 	Point pt = RemapCoords(v->x_pos, v->y_pos, v->z_pos);
-	AddTextEffect(msg, pt.x, pt.y, Ticks::DAY_TICKS, TE_RISING);
+
+	AddTextEffect(msg, MakeParameters(), pt.x, pt.y, Ticks::DAY_TICKS, TE_RISING);
 }
 
 /**

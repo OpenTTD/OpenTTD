@@ -1091,9 +1091,7 @@ static void NewVehicleAvailable(Engine *e)
 
 	/* Only provide the "New Vehicle available" news paper entry, if engine can be built. */
 	if (!IsVehicleTypeDisabled(e->type, false) && (e->info.extra_flags & ExtraEngineFlags::NoNews) == ExtraEngineFlags::None) {
-		SetDParam(0, GetEngineCategoryName(index));
-		SetDParam(1, PackEngineNameDParam(index, EngineNameContext::PreviewNews));
-		AddNewsItem(STR_NEWS_NEW_VEHICLE_NOW_AVAILABLE_WITH_TYPE, NT_NEW_VEHICLES, NF_VEHICLE, NR_ENGINE, index);
+		AddNewsItem(STR_NEWS_NEW_VEHICLE_NOW_AVAILABLE_WITH_TYPE, MakeParameters(GetEngineCategoryName(index), PackEngineNameDParam(index, EngineNameContext::PreviewNews)), NT_NEW_VEHICLES, NF_VEHICLE, NR_ENGINE, index);
 	}
 
 	/* Update the toolbar. */
@@ -1298,9 +1296,8 @@ void CheckEngines()
 	}
 
 	if (min_date < INT32_MAX) {
-		SetDParam(0, min_date);
-		ShowErrorMessage(STR_ERROR_NO_VEHICLES_AVAILABLE_YET, STR_ERROR_NO_VEHICLES_AVAILABLE_YET_EXPLANATION, WL_WARNING);
+		ShowErrorMessage(STR_ERROR_NO_VEHICLES_AVAILABLE_YET, STR_ERROR_NO_VEHICLES_AVAILABLE_YET_EXPLANATION, MakeParameters(min_date), WL_WARNING);
 	} else {
-		ShowErrorMessage(STR_ERROR_NO_VEHICLES_AVAILABLE_AT_ALL, STR_ERROR_NO_VEHICLES_AVAILABLE_AT_ALL_EXPLANATION, WL_WARNING);
+		ShowErrorMessage(STR_ERROR_NO_VEHICLES_AVAILABLE_AT_ALL, STR_ERROR_NO_VEHICLES_AVAILABLE_AT_ALL_EXPLANATION, MakeParameters(), WL_WARNING);
 	}
 }

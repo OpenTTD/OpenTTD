@@ -1728,14 +1728,15 @@ static CommandCost CheckIfFarEnoughFromConflictingIndustry(TileIndex tile, int t
 static void AdvertiseIndustryOpening(const Industry *ind)
 {
 	const IndustrySpec *ind_spc = GetIndustrySpec(ind->type);
-	SetDParam(0, ind_spc->name);
+	ArrayStringParameters<3> params;
+	params.SetParam(0, ind_spc->name);
 	if (ind_spc->new_industry_text > STR_LAST_STRINGID) {
-		SetDParam(1, STR_TOWN_NAME);
-		SetDParam(2, ind->town->index);
+		params.SetParam(1, STR_TOWN_NAME);
+		params.SetParam(2, ind->town->index);
 	} else {
-		SetDParam(1, ind->town->index);
+		params.SetParam(1, ind->town->index);
 	}
-	AddIndustryNewsItem(ind_spc->new_industry_text, NT_INDUSTRY_OPEN, ind->index);
+	AddIndustryNewsItem(ind_spc->new_industry_text, std::move(params), NT_INDUSTRY_OPEN, ind->index);
 	AI::BroadcastNewEvent(new ScriptEventIndustryOpen(ind->index));
 	Game::NewEvent(new ScriptEventIndustryOpen(ind->index));
 }
@@ -2096,9 +2097,9 @@ CommandCost CmdBuildIndustry(DoCommandFlag flags, TileIndex tile, IndustryType i
 			}
 			if (ret.Failed() && IsLocalCompany()) {
 				if (prospect_success) {
-					ShowErrorMessage(STR_ERROR_CAN_T_PROSPECT_INDUSTRY, STR_ERROR_NO_SUITABLE_PLACES_FOR_PROSPECTING, WL_INFO);
+					ShowErrorMessage(STR_ERROR_CAN_T_PROSPECT_INDUSTRY, STR_ERROR_NO_SUITABLE_PLACES_FOR_PROSPECTING, MakeParameters(), WL_INFO);
 				} else {
-					ShowErrorMessage(STR_ERROR_CAN_T_PROSPECT_INDUSTRY, STR_ERROR_PROSPECTING_WAS_UNLUCKY, WL_INFO);
+					ShowErrorMessage(STR_ERROR_CAN_T_PROSPECT_INDUSTRY, STR_ERROR_PROSPECTING_WAS_UNLUCKY, MakeParameters(), WL_INFO);
 				}
 			}
 		}
@@ -2185,17 +2186,18 @@ CommandCost CmdIndustrySetProduction(DoCommandFlag flags, IndustryID ind_id, byt
 
 			/* Set parameters of news string */
 			NewsAllocatedData *data = nullptr;
+			ArrayStringParameters<3> params;
 			if (str == STR_NEWS_CUSTOM_ITEM) {
 				NewsStringData *news = new NewsStringData(custom_news);
-				SetDParamStr(0, news->string);
+				params.SetParam(0, news->string);
 			} else if (str > STR_LAST_STRINGID) {
-				SetDParam(0, STR_TOWN_NAME);
-				SetDParam(1, ind->town->index);
-				SetDParam(2, GetIndustrySpec(ind->type)->name);
+				params.SetParam(0, STR_TOWN_NAME);
+				params.SetParam(1, ind->town->index);
+				params.SetParam(2, GetIndustrySpec(ind->type)->name);
 			} else {
-				SetDParam(0, ind->index);
+				params.SetParam(0, ind->index);
 			}
-			AddIndustryNewsItem(str, nt, ind->index, data);
+			AddIndustryNewsItem(str, std::move(params), nt, ind->index, data);
 		}
 	}
 
@@ -2768,11 +2770,9 @@ static void ReportNewsProductionChangeIndustry(Industry *ind, CargoID type, int 
 		case 2: nt = NT_INDUSTRY_COMPANY; break;
 		default: NOT_REACHED();
 	}
-	SetDParam(2, abs(percent));
-	SetDParam(0, CargoSpec::Get(type)->name);
-	SetDParam(1, ind->index);
 	AddIndustryNewsItem(
 		percent >= 0 ? STR_NEWS_INDUSTRY_PRODUCTION_INCREASE_SMOOTH : STR_NEWS_INDUSTRY_PRODUCTION_DECREASE_SMOOTH,
+		MakeParameters(CargoSpec::Get(type)->name, ind->index, abs(percent)),
 		nt,
 		ind->index
 	);
@@ -2974,23 +2974,24 @@ static void ChangeIndustryProduction(Industry *i, bool monthly)
 				default: NOT_REACHED();
 			}
 		}
+		ArrayStringParameters<3> params;
 		/* Set parameters of news string */
 		if (str > STR_LAST_STRINGID) {
-			SetDParam(0, STR_TOWN_NAME);
-			SetDParam(1, i->town->index);
-			SetDParam(2, indspec->name);
+			params.SetParam(0, STR_TOWN_NAME);
+			params.SetParam(1, i->town->index);
+			params.SetParam(2, indspec->name);
 		} else if (closeit) {
-			SetDParam(0, STR_FORMAT_INDUSTRY_NAME);
-			SetDParam(1, i->town->index);
-			SetDParam(2, indspec->name);
+			params.SetParam(0, STR_FORMAT_INDUSTRY_NAME);
+			params.SetParam(1, i->town->index);
+			params.SetParam(2, indspec->name);
 		} else {
-			SetDParam(0, i->index);
+			params.SetParam(0, i->index);
 		}
 		/* and report the news to the user */
 		if (closeit) {
-			AddTileNewsItem(str, nt, i->location.tile + TileDiffXY(1, 1));
+			AddTileNewsItem(str, std::move(params), nt, i->location.tile + TileDiffXY(1, 1));
 		} else {
-			AddIndustryNewsItem(str, nt, i->index);
+			AddIndustryNewsItem(str, std::move(params), nt, i->index);
 		}
 	}
 }
@@ -3087,8 +3088,7 @@ void CheckIndustries()
 		if (chance == 0 || !force_at_least_one) continue; // Types that are not available can be skipped.
 
 		const IndustrySpec *is = GetIndustrySpec(it);
-		SetDParam(0, is->name);
-		ShowErrorMessage(STR_ERROR_NO_SUITABLE_PLACES_FOR_INDUSTRIES, STR_ERROR_NO_SUITABLE_PLACES_FOR_INDUSTRIES_EXPLANATION, WL_WARNING);
+		ShowErrorMessage(STR_ERROR_NO_SUITABLE_PLACES_FOR_INDUSTRIES, STR_ERROR_NO_SUITABLE_PLACES_FOR_INDUSTRIES_EXPLANATION, MakeParameters(is->name), WL_WARNING);
 
 		count++;
 		if (count >= 3) break; // Don't swamp the user with errors.

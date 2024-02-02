@@ -255,8 +255,7 @@ void CcBuildIndustry(Commands, const CommandCost &result, TileIndex tile, Indust
 	if (indtype < NUM_INDUSTRYTYPES) {
 		const IndustrySpec *indsp = GetIndustrySpec(indtype);
 		if (indsp->enabled) {
-			SetDParam(0, indsp->name);
-			ShowErrorMessage(STR_ERROR_CAN_T_BUILD_HERE, result.GetErrorMessage(), WL_INFO, TileX(tile) * TILE_SIZE, TileY(tile) * TILE_SIZE);
+			ShowErrorMessage(STR_ERROR_CAN_T_BUILD_HERE, result.GetErrorMessage(), MakeParameters(indsp->name), WL_INFO, TileX(tile) * TILE_SIZE, TileY(tile) * TILE_SIZE);
 		}
 	}
 }
@@ -600,7 +599,7 @@ public:
 		if (!confirmed) return;
 
 		if (Town::GetNumItems() == 0) {
-			ShowErrorMessage(STR_ERROR_CAN_T_GENERATE_INDUSTRIES, STR_ERROR_MUST_FOUND_TOWN_FIRST, WL_INFO);
+			ShowErrorMessage(STR_ERROR_CAN_T_GENERATE_INDUSTRIES, STR_ERROR_MUST_FOUND_TOWN_FIRST, MakeParameters(), WL_INFO);
 		} else {
 			Backup<bool> old_generating_world(_generating_world, true, FILE_LINE);
 			BasePersistentStorageArray::SwitchMode(PSM_ENTER_GAMELOOP);
@@ -632,14 +631,14 @@ public:
 			case WID_DPI_CREATE_RANDOM_INDUSTRIES_WIDGET: {
 				assert(_game_mode == GM_EDITOR);
 				this->HandleButtonClick(WID_DPI_CREATE_RANDOM_INDUSTRIES_WIDGET);
-				ShowQuery(STR_FUND_INDUSTRY_MANY_RANDOM_INDUSTRIES_CAPTION, STR_FUND_INDUSTRY_MANY_RANDOM_INDUSTRIES_QUERY, nullptr, AskManyRandomIndustriesCallback);
+				ShowQuery(STR_FUND_INDUSTRY_MANY_RANDOM_INDUSTRIES_CAPTION, STR_FUND_INDUSTRY_MANY_RANDOM_INDUSTRIES_QUERY, MakeParameters(), nullptr, AskManyRandomIndustriesCallback);
 				break;
 			}
 
 			case WID_DPI_REMOVE_ALL_INDUSTRIES_WIDGET: {
 				assert(_game_mode == GM_EDITOR);
 				this->HandleButtonClick(WID_DPI_REMOVE_ALL_INDUSTRIES_WIDGET);
-				ShowQuery(STR_FUND_INDUSTRY_REMOVE_ALL_INDUSTRIES_CAPTION, STR_FUND_INDUSTRY_REMOVE_ALL_INDUSTRIES_QUERY, nullptr, AskRemoveAllIndustriesCallback);
+				ShowQuery(STR_FUND_INDUSTRY_REMOVE_ALL_INDUSTRIES_CAPTION, STR_FUND_INDUSTRY_REMOVE_ALL_INDUSTRIES_QUERY, MakeParameters(), nullptr, AskRemoveAllIndustriesCallback);
 				break;
 			}
 
@@ -701,8 +700,7 @@ public:
 		if (_game_mode == GM_EDITOR) {
 			/* Show error if no town exists at all */
 			if (Town::GetNumItems() == 0) {
-				SetDParam(0, indsp->name);
-				ShowErrorMessage(STR_ERROR_CAN_T_BUILD_HERE, STR_ERROR_MUST_FOUND_TOWN_FIRST, WL_INFO, pt.x, pt.y);
+				ShowErrorMessage(STR_ERROR_CAN_T_BUILD_HERE, STR_ERROR_MUST_FOUND_TOWN_FIRST, MakeParameters(indsp->name), WL_INFO, pt.x, pt.y);
 				return;
 			}
 
@@ -3167,7 +3165,7 @@ struct IndustryCargoesWindow : public Window {
 
 			case CFT_INDUSTRY:
 				if (fld->u.industry.ind_type < NUM_INDUSTRYTYPES && (this->ind_cargo >= NUM_INDUSTRYTYPES || fieldxy.x != 2)) {
-					GuiShowTooltips(this, STR_INDUSTRY_CARGOES_INDUSTRY_TOOLTIP, close_cond);
+					GuiShowTooltips(this, STR_INDUSTRY_CARGOES_INDUSTRY_TOOLTIP, close_cond, MakeParameters());
 				}
 				return true;
 
@@ -3176,8 +3174,7 @@ struct IndustryCargoesWindow : public Window {
 		}
 		if (IsValidCargoID(cid) && (this->ind_cargo < NUM_INDUSTRYTYPES || cid != this->ind_cargo - NUM_INDUSTRYTYPES)) {
 			const CargoSpec *csp = CargoSpec::Get(cid);
-			SetDParam(0, csp->name);
-			GuiShowTooltips(this, STR_INDUSTRY_CARGOES_CARGO_TOOLTIP, close_cond, 1);
+			GuiShowTooltips(this, STR_INDUSTRY_CARGOES_CARGO_TOOLTIP, close_cond, MakeParameters(csp->name));
 			return true;
 		}
 

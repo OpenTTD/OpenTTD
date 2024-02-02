@@ -885,9 +885,7 @@ void MakeScreenshotWithConfirm(ScreenshotType t)
 	if (width * height > 8192 * 8192) {
 		/* Ask for confirmation */
 		_confirmed_screenshot_type = t;
-		SetDParam(0, width);
-		SetDParam(1, height);
-		ShowQuery(STR_WARNING_SCREENSHOT_SIZE_CAPTION, STR_WARNING_SCREENSHOT_SIZE_MESSAGE, nullptr, ScreenshotConfirmationCallback);
+		ShowQuery(STR_WARNING_SCREENSHOT_SIZE_CAPTION, STR_WARNING_SCREENSHOT_SIZE_MESSAGE, MakeParameters(width, height), nullptr, ScreenshotConfirmationCallback);
 	} else {
 		/* Less than 64M pixels, just do it */
 		MakeScreenshot(t, {});
@@ -952,15 +950,12 @@ static bool RealMakeScreenshot(ScreenshotType t, std::string name, uint32_t widt
 
 	if (ret) {
 		if (t == SC_HEIGHTMAP) {
-			SetDParamStr(0, _screenshot_name);
-			SetDParam(1, _heightmap_highest_peak);
-			ShowErrorMessage(STR_MESSAGE_HEIGHTMAP_SUCCESSFULLY, INVALID_STRING_ID, WL_WARNING);
+			ShowErrorMessage(STR_MESSAGE_HEIGHTMAP_SUCCESSFULLY, INVALID_STRING_ID, MakeParameters(_screenshot_name, _heightmap_highest_peak), WL_WARNING);
 		} else {
-			SetDParamStr(0, _screenshot_name);
-			ShowErrorMessage(STR_MESSAGE_SCREENSHOT_SUCCESSFULLY, INVALID_STRING_ID, WL_WARNING);
+			ShowErrorMessage(STR_MESSAGE_SCREENSHOT_SUCCESSFULLY, INVALID_STRING_ID, MakeParameters(_screenshot_name), WL_WARNING);
 		}
 	} else {
-		ShowErrorMessage(STR_ERROR_SCREENSHOT_FAILED, INVALID_STRING_ID, WL_ERROR);
+		ShowErrorMessage(STR_ERROR_SCREENSHOT_FAILED, INVALID_STRING_ID, MakeParameters(), WL_ERROR);
 	}
 
 	return ret;

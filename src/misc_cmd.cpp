@@ -188,6 +188,7 @@ CommandCost CmdPause(DoCommandFlag flags, PauseMode mode, bool pause)
 			ShowQuery(
 				STR_NEWGRF_UNPAUSE_WARNING_TITLE,
 				STR_NEWGRF_UNPAUSE_WARNING,
+				MakeParameters(),
 				nullptr,
 				AskUnsafeUnpauseCallback
 			);

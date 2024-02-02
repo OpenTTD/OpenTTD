@@ -333,20 +333,22 @@ static CommandCost BuildReplacementVehicle(Vehicle *old_veh, Vehicle **new_vehic
 	if (!IsValidCargoID(refit_cargo)) {
 		if (!IsLocalCompany()) return CommandCost();
 
-		SetDParam(0, old_veh->index);
+		ArrayStringParameters<3> params;
+
+		params.SetParam(0, old_veh->index);
 
 		int order_id = GetIncompatibleRefitOrderIdForAutoreplace(old_veh, e);
 		if (order_id != -1) {
 			/* Orders contained a refit order that is incompatible with the new vehicle. */
-			SetDParam(1, STR_ERROR_AUTOREPLACE_INCOMPATIBLE_REFIT);
-			SetDParam(2, order_id + 1); // 1-based indexing for display
+			params.SetParam(1, STR_ERROR_AUTOREPLACE_INCOMPATIBLE_REFIT);
+			params.SetParam(2, order_id + 1); // 1-based indexing for display
 		} else {
 			/* Current cargo is incompatible with the new vehicle. */
-			SetDParam(1, STR_ERROR_AUTOREPLACE_INCOMPATIBLE_CARGO);
-			SetDParam(2, CargoSpec::Get(old_veh->cargo_type)->name);
+			params.SetParam(1, STR_ERROR_AUTOREPLACE_INCOMPATIBLE_CARGO);
+			params.SetParam(2, CargoSpec::Get(old_veh->cargo_type)->name);
 		}
 
-		AddVehicleAdviceNewsItem(STR_NEWS_VEHICLE_AUTORENEW_FAILED, old_veh->index);
+		AddVehicleAdviceNewsItem(STR_NEWS_VEHICLE_AUTORENEW_FAILED, std::move(params), old_veh->index);
 		return CommandCost();
 	}
 

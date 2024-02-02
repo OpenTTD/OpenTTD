@@ -2679,8 +2679,7 @@ static const SaveLoadFormat *GetSavegameFormat(const std::string &full_name, byt
 					size_t processed;
 					long level = std::stol(complevel, &processed, 10);
 					if (processed == 0 || level != Clamp(level, slf->min_compression, slf->max_compression)) {
-						SetDParamStr(0, complevel);
-						ShowErrorMessage(STR_CONFIG_ERROR, STR_CONFIG_ERROR_INVALID_SAVEGAME_COMPRESSION_LEVEL, WL_CRITICAL);
+						ShowErrorMessage(STR_CONFIG_ERROR, STR_CONFIG_ERROR_INVALID_SAVEGAME_COMPRESSION_LEVEL, MakeParameters(complevel), WL_CRITICAL);
 					} else {
 						*compression_level = level;
 					}
@@ -2689,9 +2688,7 @@ static const SaveLoadFormat *GetSavegameFormat(const std::string &full_name, byt
 			}
 		}
 
-		SetDParamStr(0, name);
-		SetDParamStr(1, def->name);
-		ShowErrorMessage(STR_CONFIG_ERROR, STR_CONFIG_ERROR_INVALID_SAVEGAME_COMPRESSION_ALGORITHM, WL_CRITICAL);
+		ShowErrorMessage(STR_CONFIG_ERROR, STR_CONFIG_ERROR_INVALID_SAVEGAME_COMPRESSION_ALGORITHM, MakeParameters(name, def->name), WL_CRITICAL);
 	}
 	*compression_level = def->default_compression;
 	return def;
@@ -2772,8 +2769,7 @@ const char *GetSaveLoadErrorString()
 /** Show a gui message when saving has failed */
 static void SaveFileError()
 {
-	SetDParamStr(0, GetSaveLoadErrorString());
-	ShowErrorMessage(STR_JUST_RAW_STRING, INVALID_STRING_ID, WL_ERROR);
+	ShowErrorMessage(STR_JUST_RAW_STRING, INVALID_STRING_ID, MakeParameters(GetSaveLoadErrorString()), WL_ERROR);
 	SaveFileDone();
 }
 
@@ -3052,7 +3048,7 @@ SaveOrLoadResult SaveOrLoad(const std::string &filename, SaveLoadOperation fop, 
 	/* An instance of saving is already active, so don't go saving again */
 	if (_sl.saveinprogress && fop == SLO_SAVE && dft == DFT_GAME_FILE && threaded) {
 		/* if not an autosave, but a user action, show error message */
-		if (!_do_autosave) ShowErrorMessage(STR_ERROR_SAVE_STILL_IN_PROGRESS, INVALID_STRING_ID, WL_ERROR);
+		if (!_do_autosave) ShowErrorMessage(STR_ERROR_SAVE_STILL_IN_PROGRESS, INVALID_STRING_ID, MakeParameters(), WL_ERROR);
 		return SL_OK;
 	}
 	WaitTillSaved();
@@ -3150,7 +3146,7 @@ void DoAutoOrNetsave(FiosNumberedSaveName &counter)
 
 	Debug(sl, 2, "Autosaving to '{}'", filename);
 	if (SaveOrLoad(filename, SLO_SAVE, DFT_GAME_FILE, AUTOSAVE_DIR) != SL_OK) {
-		ShowErrorMessage(STR_ERROR_AUTOSAVE_FAILED, INVALID_STRING_ID, WL_ERROR);
+		ShowErrorMessage(STR_ERROR_AUTOSAVE_FAILED, INVALID_STRING_ID, MakeParameters(), WL_ERROR);
 	}
 }
 

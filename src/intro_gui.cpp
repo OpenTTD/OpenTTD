@@ -347,7 +347,7 @@ struct SelectGameWindow : public Window {
 
 			case WID_SGI_PLAY_NETWORK:
 				if (!_network_available) {
-					ShowErrorMessage(STR_NETWORK_ERROR_NOTAVAILABLE, INVALID_STRING_ID, WL_ERROR);
+					ShowErrorMessage(STR_NETWORK_ERROR_NOTAVAILABLE, INVALID_STRING_ID, MakeParameters(), WL_ERROR);
 				} else {
 					ShowNetworkGameWindow();
 				}
@@ -365,7 +365,7 @@ struct SelectGameWindow : public Window {
 			case WID_SGI_GRF_SETTINGS:    ShowNewGRFSettings(true, true, false, &_grfconfig_newgame); break;
 			case WID_SGI_CONTENT_DOWNLOAD:
 				if (!_network_available) {
-					ShowErrorMessage(STR_NETWORK_ERROR_NOTAVAILABLE, INVALID_STRING_ID, WL_ERROR);
+					ShowErrorMessage(STR_NETWORK_ERROR_NOTAVAILABLE, INVALID_STRING_ID, MakeParameters(), WL_ERROR);
 				} else {
 					ShowNetworkContentListWindow();
 				}
@@ -481,6 +481,7 @@ void AskExitGame()
 	ShowQuery(
 		STR_QUIT_CAPTION,
 		STR_QUIT_ARE_YOU_SURE_YOU_WANT_TO_EXIT_OPENTTD,
+		MakeParameters(),
 		nullptr,
 		AskExitGameCallback,
 		true
@@ -501,6 +502,7 @@ void AskExitToGameMenu()
 	ShowQuery(
 		STR_ABANDON_GAME_CAPTION,
 		(_game_mode != GM_EDITOR) ? STR_ABANDON_GAME_QUERY : STR_ABANDON_SCENARIO_QUERY,
+		MakeParameters(),
 		nullptr,
 		AskExitToGameMenuCallback,
 		true

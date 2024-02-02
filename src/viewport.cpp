@@ -2699,12 +2699,12 @@ void UpdateTileSelection()
 /**
  * Displays the measurement tooltips when selecting multiple tiles
  * @param str String to be displayed
- * @param paramcount number of params to deal with
+ * @param params Parameters of the string.
  */
-static inline void ShowMeasurementTooltips(StringID str, uint paramcount)
+static inline void ShowMeasurementTooltips(StringID str, StringParameters &&params)
 {
 	if (!_settings_client.gui.measure_tooltip) return;
-	GuiShowTooltips(_thd.GetCallbackWnd(), str, TCC_EXIT_VIEWPORT, paramcount);
+	GuiShowTooltips(_thd.GetCallbackWnd(), str, TCC_EXIT_VIEWPORT, std::move(params));
 }
 
 static void HideMeasurementTooltips()
@@ -2780,8 +2780,7 @@ void VpSetPresizeRange(TileIndex from, TileIndex to)
 
 	/* show measurement only if there is any length to speak of */
 	if (distance > 1) {
-		SetDParam(0, distance);
-		ShowMeasurementTooltips(STR_MEASURE_LENGTH, 1);
+		ShowMeasurementTooltips(STR_MEASURE_LENGTH, MakeParameters(distance));
 	} else {
 		HideMeasurementTooltips();
 	}
@@ -3168,7 +3167,8 @@ static void CalcRaildirsDrawstyle(int x, int y, int method)
 		TileIndex t0 = TileVirtXY(_thd.selstart.x, _thd.selstart.y);
 		TileIndex t1 = TileVirtXY(x, y);
 		uint distance = DistanceManhattan(t0, t1) + 1;
-		byte index = 0;
+		auto params = MakeParameters(0, 0);
+		int index = 0;
 
 		if (distance != 1) {
 			int heightdiff = CalcHeightdiff(b, distance, t0, t1);
@@ -3179,11 +3179,11 @@ static void CalcRaildirsDrawstyle(int x, int y, int method)
 				distance = CeilDiv(distance, 2);
 			}
 
-			SetDParam(index++, distance);
-			if (heightdiff != 0) SetDParam(index++, heightdiff);
+			params.SetParam(index++, distance);
+			if (heightdiff != 0) params.SetParam(index++, heightdiff);
 		}
 
-		ShowMeasurementTooltips(measure_strings_length[index], index);
+		ShowMeasurementTooltips(measure_strings_length[index], std::move(params));
 	}
 
 	_thd.selend.x = x;
@@ -3264,6 +3264,7 @@ calc_heightdiff_single_direction:;
 				TileIndex t0 = TileVirtXY(sx, sy);
 				TileIndex t1 = TileVirtXY(x, y);
 				uint distance = DistanceManhattan(t0, t1) + 1;
+				auto params = MakeParameters(0, 0);
 				byte index = 0;
 
 				if (distance != 1) {
@@ -3274,11 +3275,11 @@ calc_heightdiff_single_direction:;
 					 * new_style := (_thd.next_drawstyle & HT_RECT) ? HT_LINE | style : _thd.next_drawstyle; */
 					int heightdiff = CalcHeightdiff(HT_LINE | style, 0, t0, t1);
 
-					SetDParam(index++, distance);
-					if (heightdiff != 0) SetDParam(index++, heightdiff);
+					params.SetParam(index++, distance);
+					if (heightdiff != 0) params.SetParam(index++, heightdiff);
 				}
 
-				ShowMeasurementTooltips(measure_strings_length[index], index);
+				ShowMeasurementTooltips(measure_strings_length[index], std::move(params));
 			}
 			break;
 
@@ -3298,6 +3299,7 @@ calc_heightdiff_single_direction:;
 				TileIndex t1 = TileVirtXY(x, y);
 				uint dx = Delta(TileX(t0), TileX(t1)) + 1;
 				uint dy = Delta(TileY(t0), TileY(t1)) + 1;
+				auto params = MakeParameters(0, 0, 0);
 				byte index = 0;
 
 				/* If dragging an area (eg dynamite tool) and it is actually a single
@@ -3343,12 +3345,12 @@ calc_heightdiff_single_direction:;
 				if (dx != 1 || dy != 1) {
 					int heightdiff = CalcHeightdiff(style, 0, t0, t1);
 
-					SetDParam(index++, dx - (style & HT_POINT ? 1 : 0));
-					SetDParam(index++, dy - (style & HT_POINT ? 1 : 0));
-					if (heightdiff != 0) SetDParam(index++, heightdiff);
+					params.SetParam(index++, dx - (style & HT_POINT ? 1 : 0));
+					params.SetParam(index++, dy - (style & HT_POINT ? 1 : 0));
+					if (heightdiff != 0) params.SetParam(index++, heightdiff);
 				}
 
-				ShowMeasurementTooltips(measure_strings_area[index], index);
+				ShowMeasurementTooltips(measure_strings_area[index], std::move(params));
 			}
 			break;
 

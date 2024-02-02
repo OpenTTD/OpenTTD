@@ -55,7 +55,7 @@ public:
 	void SetDParamStr(uint n, const char *str);
 	void SetDParamStr(uint n, const std::string &str);
 
-	void CopyOutDParams();
+	void CopyOutDParams(class StringParameters &&params);
 };
 
 /** Define a queue with errors. */
@@ -65,7 +65,7 @@ void ScheduleErrorMessage(ErrorList &datas);
 void ScheduleErrorMessage(const ErrorMessageData &data);
 
 void ShowErrorMessage(StringID summary_msg, int x, int y, CommandCost cc);
-void ShowErrorMessage(StringID summary_msg, StringID detailed_msg, WarningLevel wl, int x = 0, int y = 0, const GRFFile *textref_stack_grffile = nullptr, uint textref_stack_size = 0, const uint32_t *textref_stack = nullptr, StringID extra_msg = INVALID_STRING_ID);
+void ShowErrorMessage(StringID summary_msg, StringID detailed_msg, class StringParameters &&params, WarningLevel wl, int x = 0, int y = 0, const GRFFile *textref_stack_grffile = nullptr, uint textref_stack_size = 0, const uint32_t *textref_stack = nullptr, StringID extra_msg = INVALID_STRING_ID);
 bool HideActiveErrorMessage();
 
 void ClearErrorMessages();

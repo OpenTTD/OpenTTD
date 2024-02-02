@@ -793,6 +793,7 @@ static void DeleteNewsItem(NewsItem *ni)
 /**
  * Create a new newsitem to be shown.
  * @param string_id String to display.
+ * @param params    Parameters for the string.
  * @param type      The type of news.
  * @param flags     Flags related to how to display the news.
  * @param reftype1  Type of ref1.
@@ -803,17 +804,18 @@ static void DeleteNewsItem(NewsItem *ni)
  *
  * @see NewsSubtype
  */
-NewsItem::NewsItem(StringID string_id, NewsType type, NewsFlag flags, NewsReferenceType reftype1, uint32_t ref1, NewsReferenceType reftype2, uint32_t ref2, const NewsAllocatedData *data) :
+NewsItem::NewsItem(StringID string_id, StringParameters &&params, NewsType type, NewsFlag flags, NewsReferenceType reftype1, uint32_t ref1, NewsReferenceType reftype2, uint32_t ref2, const NewsAllocatedData *data) :
 	string_id(string_id), date(TimerGameCalendar::date), economy_date(TimerGameEconomy::date), type(type), flags(flags), reftype1(reftype1), reftype2(reftype2), ref1(ref1), ref2(ref2), data(data)
 {
 	/* show this news message in colour? */
 	if (TimerGameCalendar::year >= _settings_client.gui.coloured_news_year) this->flags |= NF_INCOLOUR;
-	CopyOutDParam(this->params, 10);
+	CopyOutDParam(this->params, std::move(params));
 }
 
 /**
  * Add a new newsitem to be shown.
  * @param string String to display
+ * @param params Parameters for the string.
  * @param type news category
  * @param flags display flags for the news
  * @param reftype1 Type of ref1
@@ -824,12 +826,12 @@ NewsItem::NewsItem(StringID string_id, NewsType type, NewsFlag flags, NewsRefere
  *
  * @see NewsSubtype
  */
-void AddNewsItem(StringID string, NewsType type, NewsFlag flags, NewsReferenceType reftype1, uint32_t ref1, NewsReferenceType reftype2, uint32_t ref2, const NewsAllocatedData *data)
+void AddNewsItem(StringID string, StringParameters &&params, NewsType type, NewsFlag flags, NewsReferenceType reftype1, uint32_t ref1, NewsReferenceType reftype2, uint32_t ref2, const NewsAllocatedData *data)
 {
 	if (_game_mode == GM_MENU) return;
 
 	/* Create new news item node */
-	NewsItem *ni = new NewsItem(string, type, flags, reftype1, ref1, reftype2, ref2, data);
+	NewsItem *ni = new NewsItem(string, std::move(params), type, flags, reftype1, ref1, reftype2, ref2, data);
 
 	if (_total_news++ == 0) {
 		assert(_oldest_news == nullptr);
@@ -903,8 +905,7 @@ CommandCost CmdCustomNewsItem(DoCommandFlag flags, NewsType type, NewsReferenceT
 
 	if (flags & DC_EXEC) {
 		NewsStringData *news = new NewsStringData(text);
-		SetDParamStr(0, news->string);
-		AddNewsItem(STR_NEWS_CUSTOM_ITEM, type, NF_NORMAL, reftype1, reference, NR_NONE, UINT32_MAX, news);
+		AddNewsItem(STR_NEWS_CUSTOM_ITEM, MakeParameters(news->string), type, NF_NORMAL, reftype1, reference, NR_NONE, UINT32_MAX, news);
 	}
 
 	return CommandCost();

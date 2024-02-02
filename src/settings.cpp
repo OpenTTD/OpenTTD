@@ -1015,8 +1015,7 @@ static void GraphicsSetLoadConfig(IniFile &ini)
 			extra_params.resize(lengthof(GRFConfig::param));
 			int count = ParseIntList(item->value->c_str(), &extra_params.front(), extra_params.size());
 			if (count < 0) {
-				SetDParamStr(0, BaseGraphics::ini_data.name);
-				ShowErrorMessage(STR_CONFIG_ERROR, STR_CONFIG_ERROR_ARRAY, WL_CRITICAL);
+				ShowErrorMessage(STR_CONFIG_ERROR, STR_CONFIG_ERROR_ARRAY, MakeParameters(BaseGraphics::ini_data.name), WL_CRITICAL);
 				count = 0;
 			}
 			extra_params.resize(count);
@@ -1082,8 +1081,7 @@ static GRFConfig *GRFLoadConfig(const IniFile &ini, const char *grpname, bool is
 		if (item.value.has_value() && !item.value->empty()) {
 			int count = ParseIntList(item.value->c_str(), c->param.data(), c->param.size());
 			if (count < 0) {
-				SetDParamStr(0, filename);
-				ShowErrorMessage(STR_CONFIG_ERROR, STR_CONFIG_ERROR_ARRAY, WL_CRITICAL);
+				ShowErrorMessage(STR_CONFIG_ERROR, STR_CONFIG_ERROR_ARRAY, MakeParameters(filename), WL_CRITICAL);
 				count = 0;
 			}
 			c->num_params = count;
@@ -1103,8 +1101,7 @@ static GRFConfig *GRFLoadConfig(const IniFile &ini, const char *grpname, bool is
 				SetDParam(1, STR_CONFIG_ERROR_INVALID_GRF_UNKNOWN);
 			}
 
-			SetDParamStr(0, filename.empty() ? item.name.c_str() : filename);
-			ShowErrorMessage(STR_CONFIG_ERROR, STR_CONFIG_ERROR_INVALID_GRF, WL_CRITICAL);
+			ShowErrorMessage(STR_CONFIG_ERROR, STR_CONFIG_ERROR_INVALID_GRF, MakeParameters(filename.empty() ? item.name.c_str() : filename), WL_CRITICAL);
 			delete c;
 			continue;
 		}
@@ -1113,9 +1110,7 @@ static GRFConfig *GRFLoadConfig(const IniFile &ini, const char *grpname, bool is
 		bool duplicate = false;
 		for (const GRFConfig *gc = first; gc != nullptr; gc = gc->next) {
 			if (gc->ident.grfid == c->ident.grfid) {
-				SetDParamStr(0, c->filename);
-				SetDParamStr(1, gc->filename);
-				ShowErrorMessage(STR_CONFIG_ERROR, STR_CONFIG_ERROR_DUPLICATE_GRFID, WL_CRITICAL);
+				ShowErrorMessage(STR_CONFIG_ERROR, STR_CONFIG_ERROR_DUPLICATE_GRFID, MakeParameters(c->filename, gc->filename), WL_CRITICAL);
 				duplicate = true;
 				break;
 			}
@@ -1130,7 +1125,7 @@ static GRFConfig *GRFLoadConfig(const IniFile &ini, const char *grpname, bool is
 			SetBit(c->flags, GCF_STATIC);
 		} else if (++num_grfs > NETWORK_MAX_GRF_COUNT) {
 			/* Check we will not load more non-static NewGRFs than allowed. This could trigger issues for game servers. */
-			ShowErrorMessage(STR_CONFIG_ERROR, STR_NEWGRF_ERROR_TOO_MANY_NEWGRFS_LOADED, WL_CRITICAL);
+			ShowErrorMessage(STR_CONFIG_ERROR, STR_NEWGRF_ERROR_TOO_MANY_NEWGRFS_LOADED, MakeParameters(), WL_CRITICAL);
 			break;
 		}
 

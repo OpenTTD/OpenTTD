@@ -26,10 +26,10 @@ using TextEffectID = uint16_t;
 
 static const TextEffectID INVALID_TE_ID = UINT16_MAX;
 
-TextEffectID AddTextEffect(StringID msg, int x, int y, uint8_t duration, TextEffectMode mode);
+TextEffectID AddTextEffect(StringID msg, class StringParameters &&params, int x, int y, uint8_t duration, TextEffectMode mode);
 void InitTextEffects();
 void DrawTextEffects(DrawPixelInfo *dpi);
-void UpdateTextEffect(TextEffectID effect_id, StringID msg);
+void UpdateTextEffect(TextEffectID effect_id, StringID msg, StringParameters &&params);
 void RemoveTextEffect(TextEffectID effect_id);
 void UpdateAllTextEffectVirtCoords();
 

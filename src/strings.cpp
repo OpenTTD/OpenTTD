@@ -169,43 +169,26 @@ void CopyInDParam(const std::span<const StringParameterBackup> backup)
 }
 
 /**
- * Copy \a num string parameters from the global string parameter array to the \a backup.
+ * Copy parameters into StringParameterBackup for long-term storage.
  * @param backup The backup to write to.
- * @param num Number of string parameters to copy.
+ * @param params The parameters to back up.
  */
-void CopyOutDParam(std::vector<StringParameterBackup> &backup, size_t num)
+void CopyOutDParam(std::vector<StringParameterBackup> &backup, StringParameters &&params)
 {
-	backup.resize(num);
-	for (size_t i = 0; i < backup.size(); i++) {
-		const char *str = _global_string_params.GetParamStr(i);
+	params.SetOffset(0);
+
+	backup.resize(params.GetDataLeft());
+
+	for (size_t i = 0; i < params.GetDataLeft(); i++) {
+		const char *str = params.GetParamStr(i);
 		if (str != nullptr) {
 			backup[i] = str;
 		} else {
-			backup[i] = _global_string_params.GetParam(i);
+			backup[i] = params.GetParam(i);
 		}
 	}
 }
 
-/**
- * Checks whether the global string parameters have changed compared to the given backup.
- * @param backup The backup to check against.
- * @return True when the parameters have changed, otherwise false.
- */
-bool HaveDParamChanged(const std::vector<StringParameterBackup> &backup)
-{
-	bool changed = false;
-	for (size_t i = 0; !changed && i < backup.size(); i++) {
-		bool global_has_string = _global_string_params.GetParamStr(i) != nullptr;
-		if (global_has_string != backup[i].string.has_value()) return true;
-
-		if (global_has_string) {
-			changed = backup[i].string.value() != _global_string_params.GetParamStr(i);
-		} else {
-			changed = backup[i].data != _global_string_params.GetParam(i);
-		}
-	}
-	return changed;
-}
 
 static void StationGetSpecialString(StringBuilder &builder, StationFacility x);
 static void GetSpecialTownNameString(StringBuilder &builder, int ind, uint32_t seed);
@@ -2293,8 +2276,7 @@ void CheckForMissingGlyphs(bool base_font, MissingGlyphSearcher *searcher)
 			 * with the colour marker. */
 			static std::string err_str("XXXThe current font is missing some of the characters used in the texts for this language. Using system fallback font instead.");
 			Utf8Encode(err_str.data(), SCC_YELLOW);
-			SetDParamStr(0, err_str);
-			ShowErrorMessage(STR_JUST_RAW_STRING, INVALID_STRING_ID, WL_WARNING);
+			ShowErrorMessage(STR_JUST_RAW_STRING, INVALID_STRING_ID, MakeParameters(err_str), WL_WARNING);
 		}
 
 		if (bad_font && base_font) {
@@ -2314,8 +2296,7 @@ void CheckForMissingGlyphs(bool base_font, MissingGlyphSearcher *searcher)
 		 * the string, which takes exactly three characters, so it replaces the "XXX" with the colour marker. */
 		static std::string err_str("XXXThe current font is missing some of the characters used in the texts for this language. Read the readme to see how to solve this.");
 		Utf8Encode(err_str.data(), SCC_YELLOW);
-		SetDParamStr(0, err_str);
-		ShowErrorMessage(STR_JUST_RAW_STRING, INVALID_STRING_ID, WL_WARNING);
+		ShowErrorMessage(STR_JUST_RAW_STRING, INVALID_STRING_ID, MakeParameters(err_str), WL_WARNING);
 
 		/* Reset the font width */
 		LoadStringWidthTable(searcher->Monospace());
@@ -2342,8 +2323,7 @@ void CheckForMissingGlyphs(bool base_font, MissingGlyphSearcher *searcher)
 	if (_current_text_dir != TD_LTR) {
 		static std::string err_str("XXXThis version of OpenTTD does not support right-to-left languages. Recompile with ICU + Harfbuzz enabled.");
 		Utf8Encode(err_str.data(), SCC_YELLOW);
-		SetDParamStr(0, err_str);
-		ShowErrorMessage(STR_JUST_RAW_STRING, INVALID_STRING_ID, WL_ERROR);
+		ShowErrorMessage(STR_JUST_RAW_STRING, INVALID_STRING_ID, MakeParameters(err_str), WL_ERROR);
 	}
 #endif /* !(WITH_ICU_I18N && WITH_HARFBUZZ) && !WITH_UNISCRIBE && !WITH_COCOA */
 }

@@ -51,18 +51,21 @@ void ShowNewGRFError()
 		/* Only show Fatal and Error level messages */
 		if (!c->error.has_value() || (c->error->severity != STR_NEWGRF_ERROR_MSG_FATAL && c->error->severity != STR_NEWGRF_ERROR_MSG_ERROR)) continue;
 
-		SetDParamStr(0, c->GetName());
-		SetDParam   (1, c->error->message != STR_NULL ? c->error->message : STR_JUST_RAW_STRING);
-		SetDParamStr(2, c->error->custom_message);
-		SetDParamStr(3, c->filename);
-		SetDParamStr(4, c->error->data);
+		ArrayStringParameters<20> params;
+		assert(c->error->param_value.size() < 20 - 5);
+
+		params.SetParam(0, c->GetName());
+		params.SetParam(1, c->error->message != STR_NULL ? c->error->message : STR_JUST_RAW_STRING);
+		params.SetParam(2, c->error->custom_message);
+		params.SetParam(3, c->filename);
+		params.SetParam(4, c->error->data);
 		for (uint i = 0; i < c->error->param_value.size(); i++) {
-			SetDParam(5 + i, c->error->param_value[i]);
+			params.SetParam(5 + i, c->error->param_value[i]);
 		}
 		if (c->error->severity == STR_NEWGRF_ERROR_MSG_FATAL) {
-			ShowErrorMessage(STR_NEWGRF_ERROR_FATAL_POPUP, INVALID_STRING_ID, WL_CRITICAL);
+			ShowErrorMessage(STR_NEWGRF_ERROR_FATAL_POPUP, INVALID_STRING_ID, std::move(params), WL_CRITICAL);
 		} else {
-			ShowErrorMessage(STR_NEWGRF_ERROR_POPUP, INVALID_STRING_ID, WL_ERROR);
+			ShowErrorMessage(STR_NEWGRF_ERROR_POPUP, INVALID_STRING_ID, std::move(params), WL_ERROR);
 		}
 		break;
 	}
@@ -1121,6 +1124,7 @@ struct NewGRFWindow : public Window, NewGRFScanCallback {
 					ShowQuery(
 						STR_NEWGRF_POPUP_CAUTION_CAPTION,
 						STR_NEWGRF_CONFIRMATION_TEXT,
+						MakeParameters(),
 						this,
 						NewGRFConfirmationCallback
 					);
@@ -1153,7 +1157,7 @@ struct NewGRFWindow : public Window, NewGRFScanCallback {
 			case WID_NS_CONTENT_DOWNLOAD:
 			case WID_NS_CONTENT_DOWNLOAD2:
 				if (!_network_available) {
-					ShowErrorMessage(STR_NETWORK_ERROR_NOTAVAILABLE, INVALID_STRING_ID, WL_ERROR);
+					ShowErrorMessage(STR_NETWORK_ERROR_NOTAVAILABLE, INVALID_STRING_ID, MakeParameters(), WL_ERROR);
 				} else {
 					this->CloseChildWindows(WC_QUERY_STRING); // Remove the parameter query window
 
@@ -1533,14 +1537,14 @@ private:
 		for (list = &this->actives; *list != nullptr; list = &(*list)->next, ins_pos--) {
 			if (ins_pos == 0) entry = list; // Insert position? Save.
 			if ((*list)->ident.grfid == this->avail_sel->ident.grfid) {
-				ShowErrorMessage(STR_NEWGRF_DUPLICATE_GRFID, INVALID_STRING_ID, WL_INFO);
+				ShowErrorMessage(STR_NEWGRF_DUPLICATE_GRFID, INVALID_STRING_ID, MakeParameters(), WL_INFO);
 				return false;
 			}
 			if (!HasBit((*list)->flags, GCF_STATIC)) count++;
 		}
 		if (entry == nullptr) entry = list;
 		if (count >= NETWORK_MAX_GRF_COUNT) {
-			ShowErrorMessage(STR_NEWGRF_TOO_MANY_NEWGRFS, INVALID_STRING_ID, WL_INFO);
+			ShowErrorMessage(STR_NEWGRF_TOO_MANY_NEWGRFS, INVALID_STRING_ID, MakeParameters(), WL_INFO);
 			return false;
 		}
 

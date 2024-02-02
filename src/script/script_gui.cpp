@@ -1354,7 +1354,7 @@ Window *ShowScriptDebugWindow(CompanyID show_company, bool new_window)
 		}
 		return new ScriptDebugWindow(&_script_debug_desc, i, show_company);
 	} else {
-		ShowErrorMessage(STR_ERROR_AI_DEBUG_SERVER_ONLY, INVALID_STRING_ID, WL_INFO);
+		ShowErrorMessage(STR_ERROR_AI_DEBUG_SERVER_ONLY, INVALID_STRING_ID, MakeParameters(), WL_INFO);
 	}
 
 	return nullptr;

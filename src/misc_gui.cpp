@@ -550,8 +550,7 @@ void ShowEstimatedCostOrIncome(Money cost, int x, int y)
 		cost = -cost;
 		msg = STR_MESSAGE_ESTIMATED_INCOME;
 	}
-	SetDParam(0, cost);
-	ShowErrorMessage(msg, INVALID_STRING_ID, WL_INFO, x, y);
+	ShowErrorMessage(msg, INVALID_STRING_ID, MakeParameters(cost), WL_INFO, x, y);
 }
 
 /**
@@ -573,8 +572,8 @@ void ShowCostOrIncomeAnimation(int x, int y, int z, Money cost)
 		cost = -cost;
 		msg = STR_INCOME_FLOAT_INCOME;
 	}
-	SetDParam(0, cost);
-	AddTextEffect(msg, pt.x, pt.y, Ticks::DAY_TICKS, TE_RISING);
+
+	AddTextEffect(msg, MakeParameters(cost), pt.x, pt.y, Ticks::DAY_TICKS, TE_RISING);
 }
 
 /**
@@ -589,17 +588,15 @@ void ShowFeederIncomeAnimation(int x, int y, int z, Money transfer, Money income
 {
 	Point pt = RemapCoords(x, y, z);
 
-	SetDParam(0, transfer);
 	if (income == 0) {
-		AddTextEffect(STR_FEEDER, pt.x, pt.y, Ticks::DAY_TICKS, TE_RISING);
+		AddTextEffect(STR_FEEDER, MakeParameters(transfer), pt.x, pt.y, Ticks::DAY_TICKS, TE_RISING);
 	} else {
 		StringID msg = STR_FEEDER_COST;
 		if (income < 0) {
 			income = -income;
 			msg = STR_FEEDER_INCOME;
 		}
-		SetDParam(1, income);
-		AddTextEffect(msg, pt.x, pt.y, Ticks::DAY_TICKS, TE_RISING);
+		AddTextEffect(msg, MakeParameters(transfer, income), pt.x, pt.y, Ticks::DAY_TICKS, TE_RISING);
 	}
 }
 
@@ -618,8 +615,7 @@ TextEffectID ShowFillingPercent(int x, int y, int z, uint8_t percent, StringID s
 
 	assert(string != STR_NULL);
 
-	SetDParam(0, percent);
-	return AddTextEffect(string, pt.x, pt.y, 0, TE_STATIC);
+	return AddTextEffect(string, MakeParameters(percent), pt.x, pt.y, 0, TE_STATIC);
 }
 
 /**
@@ -631,8 +627,9 @@ void UpdateFillingPercent(TextEffectID te_id, uint8_t percent, StringID string)
 {
 	assert(string != STR_NULL);
 
-	SetDParam(0, percent);
-	UpdateTextEffect(te_id, string);
+	auto params = MakeParameters(1);
+	params.SetParam(0, percent);
+	UpdateTextEffect(te_id, string, std::move(params));
 }
 
 /**
@@ -665,13 +662,14 @@ struct TooltipsWindow : public Window
 	std::vector<StringParameterBackup> params; ///< The string parameters.
 	TooltipCloseCondition close_cond; ///< Condition for closing the window.
 
-	TooltipsWindow(Window *parent, StringID str, uint paramcount, TooltipCloseCondition close_tooltip) : Window(&_tool_tips_desc)
+	TooltipsWindow(Window *parent, StringID str, StringParameters &&params, TooltipCloseCondition close_tooltip) : Window(&_tool_tips_desc)
 	{
 		this->parent = parent;
 		this->string_id = str;
-		CopyOutDParam(this->params, paramcount);
+		CopyOutDParam(this->params, std::move(params));
 		this->close_cond = close_tooltip;
 
+		CopyInDParam(this->params);
 		this->InitNested();
 
 		CLRBITS(this->flags, WF_WHITE_BORDER);
@@ -749,15 +747,15 @@ struct TooltipsWindow : public Window
  * @param parent The window this tooltip is related to.
  * @param str String to be displayed
  * @param close_tooltip the condition under which the tooltip closes
- * @param paramcount number of params to deal with
+ * @param params Parameters for the string.
  */
-void GuiShowTooltips(Window *parent, StringID str, TooltipCloseCondition close_tooltip, uint paramcount)
+void GuiShowTooltips(Window *parent, StringID str, TooltipCloseCondition close_tooltip, StringParameters &&params)
 {
 	CloseWindowById(WC_TOOLTIPS, 0);
 
 	if (str == STR_NULL || !_cursor.in_window) return;
 
-	new TooltipsWindow(parent, str, paramcount, close_tooltip);
+	new TooltipsWindow(parent, str, std::move(params), close_tooltip);
 }
 
 void QueryString::HandleEditBox(Window *w, WidgetID wid)
@@ -1093,17 +1091,17 @@ void ShowQueryString(StringID str, StringID caption, uint maxsize, Window *paren
  */
 struct QueryWindow : public Window {
 	QueryCallbackProc *proc; ///< callback function executed on closing of popup. Window* points to parent, bool is true if 'yes' clicked, false otherwise
-	std::vector<StringParameterBackup> params; ///< local copy of #_global_string_params
+	std::vector<StringParameterBackup> params; ///< Parameters for the message.
 	StringID message;        ///< message shown for query window
 
-	QueryWindow(WindowDesc *desc, StringID caption, StringID message, Window *parent, QueryCallbackProc *callback) : Window(desc)
+	QueryWindow(WindowDesc *desc, StringID caption, StringID message, StringParameters &&params, Window *parent, QueryCallbackProc *callback) : Window(desc)
 	{
-		/* Create a backup of the variadic arguments to strings because it will be
-		 * overridden pretty often. We will copy these back for drawing */
-		CopyOutDParam(this->params, 10);
+		CopyOutDParam(this->params, std::move(params));
 		this->message = message;
 		this->proc    = callback;
 		this->parent  = parent;
+
+		CopyInDParam(this->params);
 
 		this->CreateNestedTree();
 		this->GetWidget<NWidgetCore>(WID_Q_CAPTION)->SetDataTip(caption, STR_NULL);
@@ -1219,12 +1217,13 @@ static WindowDesc _query_desc(__FILE__, __LINE__,
  * The window is aligned to the centre of its parent.
  * @param caption string shown as window caption
  * @param message string that will be shown for the window
+ * @param params Parameters for the message.
  * @param parent pointer to parent window, if this pointer is nullptr the parent becomes
  * the main window WC_MAIN_WINDOW
  * @param callback callback function pointer to set in the window descriptor
  * @param focus whether the window should be focussed (by default false)
  */
-void ShowQuery(StringID caption, StringID message, Window *parent, QueryCallbackProc *callback, bool focus)
+void ShowQuery(StringID caption, StringID message, StringParameters &&params, Window *parent, QueryCallbackProc *callback, bool focus)
 {
 	if (parent == nullptr) parent = GetMainWindow();
 
@@ -1238,6 +1237,6 @@ void ShowQuery(StringID caption, StringID message, Window *parent, QueryCallback
 		break;
 	}
 
-	QueryWindow *q = new QueryWindow(&_query_desc, caption, message, parent, callback);
+	QueryWindow *q = new QueryWindow(&_query_desc, caption, message, std::move(params), parent, callback);
 	if (focus) SetFocusedWindow(q);
 }

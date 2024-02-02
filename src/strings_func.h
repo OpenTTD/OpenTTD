@@ -99,8 +99,7 @@ void SetDParamStr(size_t n, const std::string &str);
 void SetDParamStr(size_t n, std::string &&str);
 
 void CopyInDParam(const std::span<const StringParameterBackup> backup);
-void CopyOutDParam(std::vector<StringParameterBackup> &backup, size_t num);
-bool HaveDParamChanged(const std::vector<StringParameterBackup> &backup);
+void CopyOutDParam(std::vector<StringParameterBackup> &backup, class StringParameters &&params);
 
 uint64_t GetDParam(size_t n);
 

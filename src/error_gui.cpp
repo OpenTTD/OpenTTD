@@ -113,7 +113,7 @@ ErrorMessageData::ErrorMessageData(StringID summary_msg, StringID detailed_msg, 
 /**
  * Copy error parameters from current DParams.
  */
-void ErrorMessageData::CopyOutDParams()
+void ErrorMessageData::CopyOutDParams(StringParameters &&params)
 {
 	if (this->detailed_msg == STR_ERROR_OWNED_BY) {
 		/* The parameters are set by SetDParamsForOwnedBy. */
@@ -123,7 +123,7 @@ void ErrorMessageData::CopyOutDParams()
 
 	/* Get parameters using type information */
 	if (this->textref_stack_size > 0) StartTextRefStackUsage(this->textref_stack_grffile, this->textref_stack_size, this->textref_stack);
-	CopyOutDParam(this->params, 20);
+	CopyOutDParam(this->params, std::move(params));
 	if (this->textref_stack_size > 0) StopTextRefStackUsage();
 }
 
@@ -366,13 +366,14 @@ void UnshowCriticalError()
  */
 void ShowErrorMessage(StringID summary_msg, int x, int y, CommandCost cc)
 {
-	ShowErrorMessage(summary_msg, cc.GetErrorMessage(), WL_INFO, x, y, cc.GetTextRefStackGRF(), cc.GetTextRefStackSize(), cc.GetTextRefStack(), cc.GetExtraErrorMessage());
+	ShowErrorMessage(summary_msg, cc.GetErrorMessage(), MakeParameters(), WL_INFO, x, y, cc.GetTextRefStackGRF(), cc.GetTextRefStackSize(), cc.GetTextRefStack(), cc.GetExtraErrorMessage());
 }
 
 /**
  * Display an error message in a window.
  * @param summary_msg  General error message showed in first line. Must be valid.
  * @param detailed_msg Detailed error message showed in second line. Can be INVALID_STRING_ID.
+ * @param params       Parameters for the error message.
  * @param wl           Message severity.
  * @param x            World X position (TileVirtX) of the error location. Set both x and y to 0 to just center the message when there is no related error tile.
  * @param y            World Y position (TileVirtY) of the error location. Set both x and y to 0 to just center the message when there is no related error tile.
@@ -381,7 +382,7 @@ void ShowErrorMessage(StringID summary_msg, int x, int y, CommandCost cc)
  * @param textref_stack Values to put on the #TextRefStack.
  * @param extra_msg    Extra error message shown in third line. Can be INVALID_STRING_ID.
  */
-void ShowErrorMessage(StringID summary_msg, StringID detailed_msg, WarningLevel wl, int x, int y, const GRFFile *textref_stack_grffile, uint textref_stack_size, const uint32_t *textref_stack, StringID extra_msg)
+void ShowErrorMessage(StringID summary_msg, StringID detailed_msg, StringParameters &&params, WarningLevel wl, int x, int y, const GRFFile *textref_stack_grffile, uint textref_stack_size, const uint32_t *textref_stack, StringID extra_msg)
 {
 	assert(textref_stack_size == 0 || (textref_stack_grffile != nullptr && textref_stack != nullptr));
 	if (summary_msg == STR_NULL) summary_msg = STR_EMPTY;
@@ -412,7 +413,7 @@ void ShowErrorMessage(StringID summary_msg, StringID detailed_msg, WarningLevel 
 	if (_settings_client.gui.errmsg_duration == 0 && !is_critical) return;
 
 	ErrorMessageData data(summary_msg, detailed_msg, is_critical, x, y, textref_stack_grffile, textref_stack_size, textref_stack, extra_msg);
-	data.CopyOutDParams();
+	data.CopyOutDParams(std::move(params));
 
 	ErrmsgWindow *w = (ErrmsgWindow*)FindWindowById(WC_ERRMSG, 0);
 	if (w != nullptr) {

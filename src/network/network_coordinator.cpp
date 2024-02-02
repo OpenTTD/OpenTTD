@@ -135,7 +135,7 @@ bool ClientNetworkCoordinatorSocketHandler::Receive_GC_ERROR(Packet *p)
 			return false;
 
 		case NETWORK_COORDINATOR_ERROR_REGISTRATION_FAILED:
-			ShowErrorMessage(STR_NETWORK_ERROR_COORDINATOR_REGISTRATION_FAILED, INVALID_STRING_ID, WL_ERROR);
+			ShowErrorMessage(STR_NETWORK_ERROR_COORDINATOR_REGISTRATION_FAILED, INVALID_STRING_ID, MakeParameters(), WL_ERROR);
 
 			/* To prevent that we constantly try to reconnect, switch to local game. */
 			_settings_client.network.server_game_type = SERVER_GAME_TYPE_LOCAL;
@@ -159,7 +159,7 @@ bool ClientNetworkCoordinatorSocketHandler::Receive_GC_ERROR(Packet *p)
 		}
 
 		case NETWORK_COORDINATOR_ERROR_REUSE_OF_INVITE_CODE:
-			ShowErrorMessage(STR_NETWORK_ERROR_COORDINATOR_REUSE_OF_INVITE_CODE, INVALID_STRING_ID, WL_ERROR);
+			ShowErrorMessage(STR_NETWORK_ERROR_COORDINATOR_REUSE_OF_INVITE_CODE, INVALID_STRING_ID, MakeParameters(), WL_ERROR);
 
 			/* To prevent that we constantly battle for the same invite-code, switch to local game. */
 			_settings_client.network.server_game_type = SERVER_GAME_TYPE_LOCAL;
@@ -184,7 +184,7 @@ bool ClientNetworkCoordinatorSocketHandler::Receive_GC_REGISTER_ACK(Packet *p)
 	_network_server_connection_type = (ConnectionType)p->Recv_uint8();
 
 	if (_network_server_connection_type == CONNECTION_TYPE_ISOLATED) {
-		ShowErrorMessage(STR_NETWORK_ERROR_COORDINATOR_ISOLATED, STR_NETWORK_ERROR_COORDINATOR_ISOLATED_DETAIL, WL_ERROR);
+		ShowErrorMessage(STR_NETWORK_ERROR_COORDINATOR_ISOLATED, STR_NETWORK_ERROR_COORDINATOR_ISOLATED_DETAIL, MakeParameters(), WL_ERROR);
 	}
 
 	/* Users can change the invite code in the settings, but this has no effect

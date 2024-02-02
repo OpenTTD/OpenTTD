@@ -502,10 +502,7 @@ void ErrorUnknownCallbackResult(uint32_t grfid, uint16_t cbid, uint16_t cb_res)
 
 	if (!HasBit(grfconfig->grf_bugs, GBUG_UNKNOWN_CB_RESULT)) {
 		SetBit(grfconfig->grf_bugs, GBUG_UNKNOWN_CB_RESULT);
-		SetDParamStr(0, grfconfig->GetName());
-		SetDParam(1, cbid);
-		SetDParam(2, cb_res);
-		ShowErrorMessage(STR_NEWGRF_BUGGY, STR_NEWGRF_BUGGY_UNKNOWN_CALLBACK_RESULT, WL_CRITICAL);
+		ShowErrorMessage(STR_NEWGRF_BUGGY, STR_NEWGRF_BUGGY_UNKNOWN_CALLBACK_RESULT, MakeParameters(grfconfig->GetName(), cbid, cb_res), WL_CRITICAL);
 	}
 
 	/* debug output */

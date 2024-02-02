@@ -146,7 +146,7 @@ static IntervalTimer<TimerGameCalendar> _check_switch_to_euro({TimerGameCalendar
 			_currency_specs[_settings_game.locale.currency].to_euro != CF_ISEURO &&
 			TimerGameCalendar::year >= _currency_specs[_settings_game.locale.currency].to_euro) {
 		_settings_game.locale.currency = 2; // this is the index of euro above.
-		AddNewsItem(STR_NEWS_EURO_INTRODUCTION, NT_ECONOMY, NF_NORMAL);
+		AddNewsItem(STR_NEWS_EURO_INTRODUCTION, MakeParameters(), NT_ECONOMY, NF_NORMAL);
 	}
 });
 
