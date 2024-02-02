@@ -664,13 +664,14 @@ struct TooltipsWindow : public Window
 	std::vector<StringParameterBackup> params; ///< The string parameters.
 	TooltipCloseCondition close_cond; ///< Condition for closing the window.
 
-	TooltipsWindow(Window *parent, StringID str, uint paramcount, TooltipCloseCondition close_tooltip) : Window(&_tool_tips_desc)
+	TooltipsWindow(Window *parent, StringID str, StringParameters &&params, TooltipCloseCondition close_tooltip) : Window(&_tool_tips_desc)
 	{
 		this->parent = parent;
 		this->string_id = str;
-		CopyOutDParam(this->params, paramcount);
+		CopyOutDParam(this->params, std::move(params));
 		this->close_cond = close_tooltip;
 
+		CopyInDParam(this->params);
 		this->InitNested();
 
 		CLRBITS(this->flags, WF_WHITE_BORDER);
@@ -748,15 +749,15 @@ struct TooltipsWindow : public Window
  * @param parent The window this tooltip is related to.
  * @param str String to be displayed
  * @param close_tooltip the condition under which the tooltip closes
- * @param paramcount number of params to deal with
+ * @param params Parameters for the string.
  */
-void GuiShowTooltips(Window *parent, StringID str, TooltipCloseCondition close_tooltip, uint paramcount)
+void GuiShowTooltips(Window *parent, StringID str, TooltipCloseCondition close_tooltip, StringParameters &&params)
 {
 	CloseWindowById(WC_TOOLTIPS, 0);
 
 	if (str == STR_NULL || !_cursor.in_window) return;
 
-	new TooltipsWindow(parent, str, paramcount, close_tooltip);
+	new TooltipsWindow(parent, str, std::move(params), close_tooltip);
 }
 
 void QueryString::HandleEditBox(Window *w, WidgetID wid)

@@ -758,7 +758,7 @@ static void DispatchRightClickEvent(Window *w, int x, int y)
 		/* Right-click close is enabled, but excluding sticky windows. */
 		w->Close();
 	} else if (_settings_client.gui.hover_delay_ms == 0 && !w->OnTooltip(pt, wid->index, TCC_RIGHT_CLICK) && wid->tool_tip != 0) {
-		GuiShowTooltips(w, wid->tool_tip, TCC_RIGHT_CLICK);
+		GuiShowTooltips(w, wid->tool_tip, TCC_RIGHT_CLICK, MakeParameters());
 	}
 }
 
@@ -779,7 +779,7 @@ static void DispatchHoverEvent(Window *w, int x, int y)
 
 	/* Show the tooltip if there is any */
 	if (!w->OnTooltip(pt, wid->index, TCC_HOVER) && wid->tool_tip != 0) {
-		GuiShowTooltips(w, wid->tool_tip, TCC_HOVER);
+		GuiShowTooltips(w, wid->tool_tip, TCC_HOVER, MakeParameters());
 		return;
 	}
 

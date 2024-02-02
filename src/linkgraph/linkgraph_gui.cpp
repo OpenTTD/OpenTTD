@@ -401,20 +401,15 @@ bool LinkGraphOverlay::ShowTooltip(Point pt, TooltipCloseCondition close_cond)
 					SetDParam(0, time);
 					tooltip_extension += GetString(STR_LINKGRAPH_STATS_TOOLTIP_TIME_EXTENSION);
 				}
-				SetDParam(0, link.cargo);
-				SetDParam(1, link.Usage());
-				SetDParam(2, i->first);
-				SetDParam(3, j->first);
-				SetDParam(4, link.Usage() * 100 / (link.capacity + 1));
-				SetDParamStr(5, tooltip_extension);
+
 				GuiShowTooltips(this->window,
 					TimerGameEconomy::UsingWallclockUnits() ? STR_LINKGRAPH_STATS_TOOLTIP_MINUTE : STR_LINKGRAPH_STATS_TOOLTIP_MONTH,
-					close_cond, 7);
+					close_cond, MakeParameters(link.cargo, link.Usage(), i->first, j->first, link.Usage() * 100 / (link.capacity + 1), tooltip_extension));
 				return true;
 			}
 		}
 	}
-	GuiShowTooltips(this->window, STR_NULL, close_cond);
+	GuiShowTooltips(this->window, STR_NULL, close_cond, MakeParameters());
 	return false;
 }
 
@@ -646,17 +641,15 @@ bool LinkGraphLegendWindow::OnTooltip([[maybe_unused]] Point, WidgetID widget, T
 {
 	if (IsInsideMM(widget, WID_LGL_COMPANY_FIRST, WID_LGL_COMPANY_LAST + 1)) {
 		if (this->IsWidgetDisabled(widget)) {
-			GuiShowTooltips(this, STR_LINKGRAPH_LEGEND_SELECT_COMPANIES, close_cond);
+			GuiShowTooltips(this, STR_LINKGRAPH_LEGEND_SELECT_COMPANIES, close_cond, MakeParameters());
 		} else {
-			SetDParam(0, STR_LINKGRAPH_LEGEND_SELECT_COMPANIES);
-			SetDParam(1, (CompanyID)(widget - WID_LGL_COMPANY_FIRST));
-			GuiShowTooltips(this, STR_LINKGRAPH_LEGEND_COMPANY_TOOLTIP, close_cond, 2);
+			GuiShowTooltips(this, STR_LINKGRAPH_LEGEND_COMPANY_TOOLTIP, close_cond, MakeParameters(STR_LINKGRAPH_LEGEND_SELECT_COMPANIES, (CompanyID)(widget - WID_LGL_COMPANY_FIRST)));
 		}
 		return true;
 	}
 	if (IsInsideMM(widget, WID_LGL_CARGO_FIRST, WID_LGL_CARGO_LAST + 1)) {
 		const CargoSpec *cargo = _sorted_cargo_specs[widget - WID_LGL_CARGO_FIRST];
-		GuiShowTooltips(this, cargo->name, close_cond);
+		GuiShowTooltips(this, cargo->name, close_cond, MakeParameters());
 		return true;
 	}
 	return false;
