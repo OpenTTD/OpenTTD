@@ -241,16 +241,36 @@ static void GenericPlaceSignals(TileIndex tile)
 		Command<CMD_REMOVE_SINGLE_SIGNAL>::Post(STR_ERROR_CAN_T_REMOVE_SIGNALS_FROM, CcPlaySound_CONSTRUCTION_RAIL, tile, track);
 	} else {
 		/* Which signals should we cycle through? */
-		SignalType cycle_start = _settings_client.gui.cycle_signal_types == SIGNAL_CYCLE_ALL && _settings_client.gui.signal_gui_mode == SIGNAL_GUI_ALL ? SIGTYPE_BLOCK : SIGTYPE_PBS;
+		bool tile_has_signal = IsValidTrack(track) && HasSignalOnTrack(tile, track);
+		SignalType cur_signal_on_tile = tile_has_signal ? GetSignalType(tile, track) : _cur_signal_type;
+		SignalType cycle_start;
+		SignalType cycle_end;
+
+		/* Start with the least restrictive case: the player wants to cycle through all signals they can see. */
+		if (_settings_client.gui.cycle_signal_types == SIGNAL_CYCLE_ALL) {
+			cycle_start = _settings_client.gui.signal_gui_mode == SIGNAL_GUI_ALL ? SIGTYPE_BLOCK : SIGTYPE_PBS;
+			cycle_end = SIGTYPE_LAST;
+		} else {
+			/* Only cycle through signals of the same group (block or path) as the current signal on the tile. */
+			if (cur_signal_on_tile <= SIGTYPE_LAST_NOPBS) {
+				/* Block signals only. */
+				cycle_start = SIGTYPE_BLOCK;
+				cycle_end = SIGTYPE_LAST_NOPBS;
+			} else {
+				/* Path signals only. */
+				cycle_start = SIGTYPE_PBS;
+				cycle_end = SIGTYPE_LAST;
+			}
+		}
 
 		if (FindWindowById(WC_BUILD_SIGNAL, 0) != nullptr) {
 			/* signal GUI is used */
 			Command<CMD_BUILD_SINGLE_SIGNAL>::Post(_convert_signal_button ? STR_ERROR_SIGNAL_CAN_T_CONVERT_SIGNALS_HERE : STR_ERROR_CAN_T_BUILD_SIGNALS_HERE, CcPlaySound_CONSTRUCTION_RAIL,
-				tile, track, _cur_signal_type, _cur_signal_variant, _convert_signal_button, false, _ctrl_pressed, cycle_start, SIGTYPE_LAST, 0, 0);
+				tile, track, _cur_signal_type, _cur_signal_variant, _convert_signal_button, false, _ctrl_pressed, cycle_start, cycle_end, 0, 0);
 		} else {
 			SignalVariant sigvar = TimerGameCalendar::year < _settings_client.gui.semaphore_build_before ? SIG_SEMAPHORE : SIG_ELECTRIC;
 			Command<CMD_BUILD_SINGLE_SIGNAL>::Post(STR_ERROR_CAN_T_BUILD_SIGNALS_HERE, CcPlaySound_CONSTRUCTION_RAIL,
-				tile, track, _settings_client.gui.default_signal_type, sigvar, false, false, _ctrl_pressed, cycle_start, SIGTYPE_LAST, 0, 0);
+				tile, track, _settings_client.gui.default_signal_type, sigvar, false, false, _ctrl_pressed, cycle_start, cycle_end, 0, 0);
 
 		}
 	}
