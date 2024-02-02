@@ -35,10 +35,8 @@ void SQLexer::APPEND_CHAR(char32_t c)
 	}
 }
 
-SQLexer::SQLexer(SQSharedState *ss, SQLEXREADFUNC rg, SQUserPointer up,CompilerErrorFunc efunc,void *ed)
+SQLexer::SQLexer(SQSharedState *ss, SQLEXREADFUNC rg, SQUserPointer up)
 {
-	_errfunc = efunc;
-	_errtarget = ed;
 	_sharedstate = ss;
 	_keywords = SQTable::Create(ss, 26);
 	ADD_KEYWORD(while, TK_WHILE);
@@ -96,7 +94,7 @@ SQLexer::SQLexer(SQSharedState *ss, SQLEXREADFUNC rg, SQUserPointer up,CompilerE
 
 NORETURN void SQLexer::Error(const SQChar *err)
 {
-	_errfunc(_errtarget,err);
+	throw CompileException(err);
 }
 
 void SQLexer::Next()

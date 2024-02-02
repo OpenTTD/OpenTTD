@@ -71,12 +71,7 @@ struct SQVM;
 #define TK_ENUM 323
 #define TK_CONST 324
 
-/* MSVC doesn't like NORETURN for function prototypes, but we kinda need it for GCC. */
-#if defined(_MSC_VER) && !defined(__clang__)
-typedef void(*CompilerErrorFunc)(void *ud, const SQChar *s);
-#else
-typedef NORETURN void(*CompilerErrorFunc)(void *ud, const SQChar *s);
-#endif
+using CompileException = std::runtime_error;
 
 bool Compile(SQVM *vm, SQLEXREADFUNC rg, SQUserPointer up, const SQChar *sourcename, SQObjectPtr &out, bool raiseerror, bool lineinfo);
 #endif //_SQCOMPILER_H_
