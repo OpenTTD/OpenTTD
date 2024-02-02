@@ -54,9 +54,15 @@ enum ExtraTreePlacement {
 /** Determines when to consider building more trees. */
 byte _trees_tick_ctr;
 
+static const uint TREE_GROWTH_PROCEDURAL = 7;  ///< Magic value for the tree growth stage that signifies that tree growth is determined procedurally, not stored in the map array.
+
 static const uint16_t DEFAULT_TREE_STEPS = 1000;             ///< Default number of attempts for placing trees.
 static const uint16_t DEFAULT_RAINFOREST_TREE_STEPS = 15000; ///< Default number of attempts for placing extra trees at rainforest in tropic.
 static const uint16_t EDITOR_TREE_DIV = 5;                   ///< Game editor tree generation divisor factor.
+
+/* Pre-randomized tree growth cycles (for procedural growth). */
+static const uint8_t RANDOM_GROWTH_SPREAD[] = {141, 66, 6, 10, 14, 46, 46, 78, 78, 78, 78, 67, 7, 11, 15, 47, 79, 19, 23, 27, 14, 78, 18, 22, 26, 13, 66, 6, 10, 14, 46, 46, 67, 7, 11, 15, 19, 23, 27, 14, 46, 46, 67, 7, 11, 15, 79, 19, 23, 27, 14, 78, 78, 46, 46, 46, 78, 46, 46, 46, 46, 46, 67, 7, 11, 15, 19, 23, 27, 14, 46, 18, 22, 26, 13, 77, 66, 6, 10, 14, 46, 18, 22, 26, 13, 45, 45, 45, 45, 45, 66, 6, 10, 14, 67, 7, 11, 15, 19, 23, 27, 14, 18, 22, 26, 13, 45, 45, 45, 66, 6, 10, 14, 18, 22, 26, 13, 45, 45, 45, 45, 17, 21, 25, 12, 44, 44, 44, 76, 44, 65, 5, 9, 13, 66, 6, 10, 14, 46, 46, 67, 7, 11, 15, 47, 47, 47, 79, 47, 47, 47, 47, 47, 79, 79, 79, 47, 47, 47, 47, 47, 47, 47, 47, 47, 79, 79, 47, 47, 19, 23, 27, 14, 67, 7, 11, 15, 47, 79, 47, 47, 79, 47, 47, 19, 23, 27, 14, 46, 46, 67, 7, 11, 15, 47, 47, 47, 47, 79, 47, 47, 47, 47, 47, 19, 23, 27, 14, 78, 46, 46, 46, 46, 46, 78, 46, 46, 46, 78, 46, 67, 7, 11, 15, 79, 79, 47, 47, 79, 47, 79, 47, 47, 47, 79, 79, 79, 79, 47, 47, 47, 19, 23, 27, 14, 46, 46, 46, 18, 22, 26, 13, 45, 66, 6, 10, 14, 46, 18, 22, 26, 13, 45, 45, 45, 17, 21, 25, 12, 16, 20, 24, 141, 77, 45, 45, 45, 77, 45, 77, 45, 17, 21, 25, 12, 76, 44, 44, 44, 44, 16, 20, 24, 141, 45, 17, 21, 25, 12, 44, 76, 76, 44, 44, 44, 44, 44, 44, 76, 44, 44, 65, 5, 9, 13, 45, 77, 17, 21, 25, 12, 44, 44, 44, 44, 44, 44, 44, 44, 76, 16, 20, 24, 141, 17, 21, 25, 12, 44, 44, 76, 16, 20, 24, 141, 45, 17, 21, 25, 12, 44, 16, 20, 24, 141, 66, 6, 10, 14, 46, 46, 67, 7, 11, 15, 47, 47, 47, 47, 79, 47, 47, 47, 47, 47, 47, 47, 79, 47, 47, 19, 23, 27, 14, 46, 46, 46, 67, 7, 11, 15, 47, 79, 47, 47, 79, 47, 47, 47, 79, 47, 19, 23, 27, 14, 46, 46, 46, 18, 22, 26, 13, 45, 45, 17, 21, 25, 12, 65, 5, 9, 13, 45, 45, 45, 45, 45, 17, 21, 25, 12, 44, 65, 5, 9, 13, 77, 45, 45, 45, 45, 77, 45, 45, 45, 77, 45, 77, 17, 21, 25, 12, 44, 44, 76, 16, 20, 24, 141, 45, 45, 45, 45, 45, 45, 77, 45, 77, 66, 6, 10, 14, 46, 46, 46, 67, 7, 11, 15, 79, 79, 79, 79, 79, 47, 19, 23, 27, 14, 46, 78, 18, 22, 26, 13, 45, 45, 45, 45, 45, 45, 66, 6, 10, 14, 46, 78, 78, 46, 46, 46, 46, 46, 67, 7, 11, 15, 79, 47, 47, 47, 47, 47, 47, 79, 47, 47, 19, 23, 27, 14, 46, 46, 67, 7, 11, 15, 47, 47, 79, 47, 47, 47, 47, 19, 23, 27, 14, 78, 46, 67, 7, 11, 15, 19, 23, 27, 14, 46, 67, 7, 11, 15, 47, 19, 23, 27, 14, 46, 78, 46, 67, 7, 11, 15, 79, 79, 47, 47, 47, 47, 47, 47, 47, 79, 19, 23, 27, 14, 46, 18, 22, 26, 13, 17, 21, 25, 12, 44, 44, 44, 44, 16, 20, 24, 141, 66, 6, 10, 14, 46, 46, 46, 78, 46, 46, 18, 22, 26, 13, 45, 45, 45, 45, 45, 45, 45, 66, 6, 10, 14, 67, 7, 11, 15, 79, 47, 19, 23, 27, 14, 46, 46, 46, 78, 18, 22, 26, 13, 17, 21, 25, 12, 44, 44, 16, 20, 24, 141, 45, 45, 66, 6, 10, 14, 46, 18, 22, 26, 13, 17, 21, 25, 12, 44, 44, 44, 76, 44, 44, 65, 5, 9, 13, 17, 21, 25, 12, 44, 44, 76, 44, 16, 20, 24, 141, 77, 45, 66, 6, 10, 14, 67, 7, 11, 15, 19, 23, 27, 14, 46, 67, 7, 11, 15, 79, 47, 47, 79, 79, 79, 47, 79, 47, 47, 47, 19, 23, 27, 14, 46, 46, 46, 46, 46, 78, 46, 67, 7, 11, 15, 47, 79, 79, 79, 19, 23, 27, 14, 46, 78, 46, 67, 7, 11, 15, 47, 47, 19, 23, 27, 14, 46, 67, 7, 11, 15, 19, 23, 27, 14, 46, 46, 67, 7, 11, 15, 79, 47, 47, 47, 47, 19, 23, 27, 14, 46, 46, 18, 22, 26, 13, 45, 66, 6, 10, 14, 46, 46, 78, 46, 18, 22, 26, 13, 17, 21, 25, 12, 44, 44, 44, 76, 44, 16, 20, 24, 141, 45, 66, 6, 10, 14, 46, 46, 78, 46, 46, 46, 46, 46, 46, 18, 22, 26, 13, 66, 6, 10, 14, 67, 7, 11, 15, 19, 23, 27, 14, 78, 67, 7, 11, 15, 47, 47, 47, 47, 47, 47, 47, 47, 47, 79, 79, 47, 47, 19, 23, 27, 14, 46, 78, 46, 18, 22, 26, 13, 66, 6, 10, 14, 46, 67, 7, 11, 15, 47, 19, 23, 27, 14, 46, 46, 46, 46, 67, 7, 11, 15, 47, 47, 47, 19, 23, 27, 14, 46, 46, 46, 46, 67, 7, 11, 15, 79, 47, 79, 47, 47, 47, 47, 79, 47, 47, 47, 79, 79, 47, 47, 19, 23, 27, 14, 46, 18, 22, 26, 13, 45, 77, 45, 45, 45, 45, 77, 77, 45, 17, 21, 25, 12, 16, 20, 24, 141, 45, 45, 45, 45, 66, 6, 10, 14, 18, 22, 26, 13, 45, 45, 45, 45, 66, 6, 10, 14, 46, 78, 46, 78, 46, 78, 67, 7, 11, 15, 47, 19, 23, 27, 14, 46, 67, 7, 11, 15, 19, 23, 27, 14, 18, 22, 26, 13, 45, 45, 17, 21, 25, 12, 16, 20, 24};
+static const uint8_t RANDOM_GROWTH_NO_SPREAD[] = {44, 44, 44, 44, 16, 20, 24, 0, 4, 8, 12, 44, 44, 44, 44, 44, 44, 44, 44, 44, 44, 44, 16, 20, 24, 0, 4, 8, 12, 16, 20, 24, 0, 4, 8, 12, 44, 44, 44, 44, 44, 44, 44, 44, 44, 44, 44, 44, 16, 20, 24, 0, 4, 8, 12, 44, 16, 20, 24, 0, 4, 8, 12, 44, 44, 44, 44, 44, 44, 44, 44, 44, 44, 44, 44, 44, 44, 16, 20, 24, 0, 4, 8, 12, 44, 44, 44, 16, 20, 24, 0, 4, 8, 12, 44, 44, 44, 44, 44, 44, 44, 44, 44, 44, 44, 44, 44, 44, 44, 44, 44, 16, 20, 24, 0, 4, 8, 12, 44, 44, 44, 44, 16, 20, 24, 0, 4, 8, 12, 16, 20, 24, 0, 4, 8, 12, 16, 20, 24, 0, 4, 8, 12, 44, 44, 44, 44, 44, 44, 44, 44, 44, 44, 44, 44, 44, 44, 44, 44, 44, 44, 16, 20, 24, 0, 4, 8, 12, 44, 44, 16, 20, 24, 0, 4, 8, 12, 44, 44, 44, 44, 44, 44, 44, 44, 44, 44, 44, 44, 44, 16, 20, 24, 0, 4, 8, 12, 44, 44, 44, 44, 44, 44, 16, 20, 24, 0, 4, 8, 12, 16, 20, 24, 0, 4, 8, 12, 16, 20, 24, 0, 4, 8, 12, 16, 20, 24, 0, 4, 8, 12, 44, 44, 44, 44, 44, 44, 44, 44, 44, 44, 16, 20, 24, 0, 4, 8, 12, 44, 16, 20, 24, 0, 4, 8, 12, 44, 44, 44, 44, 44, 44, 44, 44, 44, 44, 44, 16, 20, 24, 0, 4, 8, 12, 44, 44, 44, 44, 44, 44, 44, 16, 20, 24, 0, 4, 8, 12, 44, 44, 44, 44, 16, 20, 24, 0, 4, 8, 12, 44, 44, 44, 44, 44, 44, 44, 44, 44, 44, 44, 16, 20, 24, 0, 4, 8, 12, 44, 44, 44, 44, 44, 44, 44, 44, 16, 20, 24, 0, 4, 8, 12, 44, 44, 44, 44, 44, 44, 44, 44, 44, 44, 44, 44, 44, 44, 44, 44, 44, 16, 20, 24, 0, 4, 8, 12, 44, 44, 44, 44, 16, 20, 24, 0, 4, 8, 12, 44, 44, 44, 16, 20, 24, 0, 4, 8, 12, 44, 44, 44, 44, 44, 44, 16, 20, 24, 0, 4, 8, 12, 44, 44, 44, 44, 44, 44, 44, 44, 44, 44, 16, 20, 24, 0, 4, 8, 12, 44, 16, 20, 24, 0, 4, 8, 12, 44, 44, 44, 16, 20, 24, 0, 4, 8, 12, 44, 44, 44, 44, 44, 44, 16, 20, 24, 0, 4, 8, 12, 44, 44, 44, 44, 16, 20, 24, 0, 4, 8, 12, 16, 20, 24, 0, 4, 8, 12, 44, 44, 44, 44, 44, 44, 44, 44, 44, 44, 44, 44, 44, 44, 44, 44, 44, 44, 44, 44, 44, 44, 44, 44, 16, 20, 24, 0, 4, 8, 12, 44, 44, 44, 44, 44, 44, 16, 20, 24, 0, 4, 8, 12, 44, 44, 44, 44, 44, 44, 44, 44, 44, 44, 44, 44, 44, 44, 44, 44, 44, 44, 44, 44, 44, 44, 16, 20, 24, 0, 4, 8, 12, 44, 44, 44, 44, 44, 44, 44, 44, 44, 16, 20, 24, 0, 4, 8, 12, 44, 44, 44, 44, 44, 16, 20, 24, 0, 4, 8, 12, 44, 44, 44, 44, 44, 44, 44, 16, 20, 24, 0, 4, 8, 12, 44, 44, 16, 20, 24, 0, 4, 8, 12, 44, 44, 44, 44, 44, 16, 20, 24, 0, 4, 8, 12, 16, 20, 24, 0, 4, 8, 12, 44, 44, 44, 44, 44, 44, 44, 16, 20, 24, 0, 4, 8, 12, 44, 44, 44, 44, 44, 44, 44, 44, 44, 44, 44, 44, 16, 20, 24, 0, 4, 8, 12, 44, 44, 44, 44, 44, 44, 44, 44, 44, 44, 44, 44, 44, 44, 44, 44, 44, 44, 44, 44, 44, 44, 44, 44, 44, 44, 44, 16, 20, 24, 0, 4, 8, 12, 44, 44, 44, 44, 44, 44, 44, 44, 16, 20, 24, 0, 4, 8, 12, 16, 20, 24, 0, 4, 8, 12, 44, 44, 16, 20, 24, 0, 4, 8, 12, 44, 44, 44, 44, 44, 44, 44, 44, 44, 44, 44, 44, 16, 20, 24, 0, 4, 8, 12, 44, 44, 44, 44, 44, 44, 44, 44, 44, 44, 44, 44, 44, 16, 20, 24, 0, 4, 8, 12, 44, 16, 20, 24, 0, 4, 8, 12, 44, 44, 44, 44, 44, 16, 20, 24, 0, 4, 8, 12, 44, 44, 44, 44, 44, 44, 44, 44, 44, 44, 44, 44, 44, 44, 16, 20, 24, 0, 4, 8, 12, 44, 44, 44, 44, 44, 44, 44, 44, 44, 44, 44, 44, 44, 44, 16, 20, 24, 0, 4, 8, 12, 44, 44, 44, 16, 20, 24, 0, 4, 8, 12, 44, 44, 16, 20, 24, 0, 4, 8, 12, 44, 44, 44, 44, 44, 44, 44, 16, 20, 24, 0, 4, 8, 12, 16, 20, 24, 0, 4, 8, 12, 44, 44, 44, 44, 44, 44, 44, 44, 44, 44, 44, 44, 44, 44, 44, 44, 44, 44, 44, 44, 44, 16, 20, 24, 0, 4, 8, 12, 44, 44, 44, 16, 20, 24, 0, 4, 8, 12, 44, 16, 20, 24, 0, 4, 8, 12, 44, 16, 20, 24, 0, 4, 8, 12, 44, 44, 44, 44, 44, 44, 44, 44, 44, 44, 16, 20, 24, 0, 4, 8, 12, 44, 44, 44, 44, 44, 16, 20, 24, 0, 4, 8, 12, 44, 44, 44, 44, 44, 44, 44, 44, 44, 44, 44, 16, 20, 24, 0, 4, 8, 12, 44, 44, 44, 44, 44, 44, 16, 20, 24, 0, 4, 8, 12, 44, 44, 44, 44, 44, 44, 44, 44, 44, 44, 44, 44, 44, 16, 20, 24, 0, 4, 8, 12, 44, 44, 44, 44, 44, 44, 44, 44, 44, 44, 44, 44, 44, 44, 44, 44, 44, 44, 44, 44, 16, 20, 24, 0, 4, 8, 12, 44};
 
 /**
  * Tests if a tile can be converted to MP_TREES
@@ -134,24 +140,46 @@ static void PlantTreesOnTile(TileIndex tile, TreeType treetype, uint count, uint
 static TreeType GetRandomTreeType(TileIndex tile, uint seed)
 {
 	switch (_settings_game.game_creation.landscape) {
-		case LT_TEMPERATE:
-			return (TreeType)(seed * TREE_COUNT_TEMPERATE / 256 + TREE_TEMPERATE);
-
-		case LT_ARCTIC:
-			return (TreeType)(seed * TREE_COUNT_SUB_ARCTIC / 256 + TREE_SUB_ARCTIC);
-
+		case LT_TEMPERATE: return TREE_RANDOM_TEMPERATE;
+		case LT_ARCTIC: return TREE_RANDOM_ARCTIC;
 		case LT_TROPIC:
 			switch (GetTropicZone(tile)) {
-				case TROPICZONE_NORMAL:  return (TreeType)(seed * TREE_COUNT_SUB_TROPICAL / 256 + TREE_SUB_TROPICAL);
-				case TROPICZONE_DESERT:  return (TreeType)((seed > 12) ? TREE_INVALID : TREE_CACTUS);
-				default:                 return (TreeType)(seed * TREE_COUNT_RAINFOREST / 256 + TREE_RAINFOREST);
+				case TROPICZONE_NORMAL: return TREE_RANDOM_TROPIC_NORMAL;
+				case TROPICZONE_DESERT: return ((seed > 12) ? TREE_INVALID : TREE_CACTUS);
+				case TROPICZONE_RAINFOREST: return TREE_RANDOM_TROPIC_RAINFOREST;
+				default: NOT_REACHED();
 			}
-
-		default:
-			return (TreeType)(seed * TREE_COUNT_TOYLAND / 256 + TREE_TOYLAND);
+		case LT_TOYLAND: return TREE_RANDOM_TOYLAND;
+		default: NOT_REACHED();
 	}
 }
 
+/**
+ * Get a TreeType for the given tile. Random procedural tree types are coverted to
+ * specific ones based on the tile hash.
+ *
+ * @param tile The tile to get a TreeType from
+ * @param tile_hash The hash of this tile, used as source of randomness
+ * @return The tree type
+ */
+static TreeType GetProceduralTreeType(TileIndex tile, uint32_t tile_hash)
+{
+	TreeType type = GetTreeType(tile);
+	switch (type) {
+		case TREE_RANDOM_TEMPERATE:
+			return (TreeType)(tile_hash % TREE_COUNT_TEMPERATE + TREE_TEMPERATE);
+		case TREE_RANDOM_ARCTIC:
+			return (TreeType)(tile_hash % TREE_COUNT_SUB_ARCTIC + TREE_SUB_ARCTIC);
+		case TREE_RANDOM_TROPIC_NORMAL:
+			return (TreeType)(tile_hash % TREE_COUNT_SUB_TROPICAL + TREE_SUB_TROPICAL);
+		case TREE_RANDOM_TROPIC_RAINFOREST:
+			return (TreeType)(tile_hash % TREE_COUNT_RAINFOREST + TREE_RAINFOREST);
+		case TREE_RANDOM_TOYLAND:
+			return (TreeType)(tile_hash % TREE_COUNT_TOYLAND + TREE_TOYLAND);
+		default:
+			return type;
+	}
+}
 /**
  * Make a random tree tile of the given tile
  *
@@ -166,7 +194,7 @@ static void PlaceTree(TileIndex tile, uint32_t r)
 	TreeType tree = GetRandomTreeType(tile, GB(r, 24, 8));
 
 	if (tree != TREE_INVALID) {
-		PlantTreesOnTile(tile, tree, GB(r, 22, 2), std::min<byte>(GB(r, 16, 3), 6));
+		PlantTreesOnTile(tile, tree, 0, TREE_GROWTH_PROCEDURAL);
 		MarkTileDirtyByTile(tile);
 
 		/* Rerandomize ground, if neither snow nor shore */
@@ -515,6 +543,34 @@ struct TreeListEnt : PalSpriteID {
 	byte x, y;
 };
 
+/**
+ * Determines whethere new trees can be planted on the tile or around it according to game settings.
+ * @param tile The tile to check.
+ * @return True iff ne trees can be planted.
+ */
+static bool CanPlantExtraTrees(TileIndex tile)
+{
+	if (_settings_game.game_creation.landscape == LT_TROPIC && GetTropicZone(tile) == TROPICZONE_RAINFOREST) {
+		return (_settings_game.construction.extra_tree_placement == ETP_SPREAD_ALL || _settings_game.construction.extra_tree_placement == ETP_SPREAD_RAINFOREST);
+	}
+	return _settings_game.construction.extra_tree_placement == ETP_SPREAD_ALL;
+}
+
+/**
+ * Picks predefined tree growth state based on input parameters.
+ * @param tile_hash The hash of the tile.
+ * @param can_plant_extra Whether new trees can be planted (result of CanPlantExtraTrees call).
+ * @param counter Time counter.
+ * @return tree growth state (bits 0..1 - tree count, 2..4 - growth stage).
+ */
+static uint8_t PickRandomGrowth(uint32_t tile_hash, bool can_plant_extra, uint32_t counter)
+{
+	if (can_plant_extra) return RANDOM_GROWTH_SPREAD[(tile_hash + counter) % lengthof(RANDOM_GROWTH_SPREAD)];
+	uint8_t value = RANDOM_GROWTH_NO_SPREAD[(tile_hash + counter) % lengthof(RANDOM_GROWTH_NO_SPREAD)];
+	/* When trees don't spread their count doesn't change so just use a random one. */
+	return value | (tile_hash % 4);
+}
+
 static void DrawTile_Trees(TileInfo *ti)
 {
 	switch (GetTreeGround(ti->tile)) {
@@ -528,11 +584,14 @@ static void DrawTile_Trees(TileInfo *ti)
 	if (IsInvisibilitySet(TO_TREES)) return;
 
 	uint tmp = CountBits(ti->tile.base() + ti->x + ti->y);
-	uint index = GB(tmp, 0, 2) + (GetTreeType(ti->tile) << 2);
+	uint32_t tile_hash = SimpleHash32(ti->tile.base());
+	auto tt = GetProceduralTreeType(ti->tile, tile_hash);
+	uint index = GB(tmp, 0, 2) + (tt << 2);
+	uint density = GetTreeDensity(ti->tile);
 
 	/* different tree styles above one of the grounds */
 	if ((GetTreeGround(ti->tile) == TREE_GROUND_SNOW_DESERT || GetTreeGround(ti->tile) == TREE_GROUND_ROUGH_SNOW) &&
-			GetTreeDensity(ti->tile) >= 2 &&
+			density >= 2 &&
 			IsInsideMM(index, TREE_SUB_ARCTIC << 2, TREE_RAINFOREST << 2)) {
 		index += 164 - (TREE_SUB_ARCTIC << 2);
 	}
@@ -549,9 +608,25 @@ static void DrawTile_Trees(TileInfo *ti)
 
 	/* put the trees to draw in a list */
 	uint trees = GetTreeCount(ti->tile);
+	uint growth = GetTreeGrowth(ti->tile);
+	if (growth == TREE_GROWTH_PROCEDURAL) {
+		uint64_t counter = 0;
+
+		/* Use a fixed value for the counter (0) when trees aren't growing. */
+		if (_settings_game.construction.extra_tree_placement != ETP_NO_GROWTH_NO_SPREAD) {
+			counter = TimerGameTick::counter >> 12;
+
+			/* For procedural growth counter parity is stored instead of tree count. */
+			if (counter % 2 != trees - 1) counter++;
+		}
+
+		auto proc_value = PickRandomGrowth(tile_hash, CanPlantExtraTrees(ti->tile), counter);
+		growth = GB(proc_value, 2, 3);
+		trees = GB(proc_value, 0, 2) + 1;
+	}
 
 	for (uint i = 0; i < trees; i++) {
-		SpriteID sprite = s[0].sprite + (i == trees - 1 ? GetTreeGrowth(ti->tile) : 3);
+		SpriteID sprite = s[0].sprite + (i == trees - 1 ? growth : 3);
 		PaletteID pal = s[0].pal;
 
 		te[i].sprite = sprite;
@@ -609,7 +684,8 @@ static CommandCost ClearTile_Trees(TileIndex tile, DoCommandFlag flags)
 	}
 
 	num = GetTreeCount(tile);
-	if (IsInsideMM(GetTreeType(tile), TREE_RAINFOREST, TREE_CACTUS)) num *= 4;
+	auto tt = GetProceduralTreeType(tile, SimpleHash32(tile.base()));
+	if (IsInsideMM(tt, TREE_RAINFOREST, TREE_CACTUS)) num *= 4;
 
 	if (flags & DC_EXEC) DoClearSquare(tile);
 
@@ -618,7 +694,7 @@ static CommandCost ClearTile_Trees(TileIndex tile, DoCommandFlag flags)
 
 static void GetTileDesc_Trees(TileIndex tile, TileDesc *td)
 {
-	TreeType tt = GetTreeType(tile);
+	TreeType tt = GetProceduralTreeType(tile, SimpleHash32(tile.base()));
 
 	if (IsInsideMM(tt, TREE_RAINFOREST, TREE_CACTUS)) {
 		td->str = STR_LAI_TREE_NAME_RAINFOREST;
@@ -687,13 +763,6 @@ static void TileLoopTreesAlps(TileIndex tile)
 	MarkTileDirtyByTile(tile);
 }
 
-static bool CanPlantExtraTrees(TileIndex tile)
-{
-	return ((_settings_game.game_creation.landscape == LT_TROPIC && GetTropicZone(tile) == TROPICZONE_RAINFOREST) ?
-		(_settings_game.construction.extra_tree_placement == ETP_SPREAD_ALL || _settings_game.construction.extra_tree_placement == ETP_SPREAD_RAINFOREST) :
-		_settings_game.construction.extra_tree_placement == ETP_SPREAD_ALL);
-}
-
 static void TileLoop_Trees(TileIndex tile)
 {
 	if (GetTreeGround(tile) == TREE_GROUND_SHORE) {
@@ -709,9 +778,9 @@ static void TileLoop_Trees(TileIndex tile)
 
 	/* TimerGameTick::counter is incremented by 256 between each call, so ignore lower 8 bits.
 	 * Also, we use a simple hash to spread the updates evenly over the map.
-	 * 11 and 9 are just some co-prime numbers for better spread.
 	 */
-	uint32_t cycle = 11 * TileX(tile) + 9 * TileY(tile) + (TimerGameTick::counter >> 8);
+	uint32_t tile_hash = SimpleHash32(tile.base());
+	uint32_t cycle = tile_hash + (TimerGameTick::counter >> 8);
 
 	/* Handle growth of grass (under trees/on MP_TREES tiles) at every 8th processings, like it's done for grass on MP_CLEAR tiles. */
 	if ((cycle & 7) == 7 && GetTreeGround(tile) == TREE_GROUND_GRASS) {
@@ -726,86 +795,126 @@ static void TileLoop_Trees(TileIndex tile)
 
 	if ((cycle & 15) != 15) return;
 
-	switch (GetTreeGrowth(tile)) {
-		case 3: // regular sized tree
-			if (_settings_game.game_creation.landscape == LT_TROPIC &&
-					GetTreeType(tile) != TREE_CACTUS &&
-					GetTropicZone(tile) == TROPICZONE_DESERT) {
-				AddTreeGrowth(tile, 1);
-			} else {
-				switch (GB(Random(), 0, 3)) {
-					case 0: // start destructing
-						AddTreeGrowth(tile, 1);
-						break;
+	uint64_t counter = (TimerGameTick::counter >> 12) + 1;
+	bool can_plant_extra = CanPlantExtraTrees(tile);
+	uint8_t value = PickRandomGrowth(tile_hash, can_plant_extra, counter);
 
-					case 1: // add a tree
-						if (GetTreeCount(tile) < 4 && CanPlantExtraTrees(tile)) {
-							AddTreeCount(tile, 1);
-							SetTreeGrowth(tile, 0);
+	uint growth = GetTreeGrowth(tile);
+	uint count = GetTreeCount(tile);
+	uint proc_growth = GB(value, 2, 3);
+	uint proc_count = GB(value, 0, 2) + 1;
+	bool spread = false;
+	bool clear = false;
+
+	/* Check if the growth state matches procedural growth so we can switch to it. */
+	if (growth == proc_growth && count == proc_count) {
+		growth = TREE_GROWTH_PROCEDURAL;
+		SetTreeGrowth(tile, growth);
+		SetTreeCycle(tile, 0);  // Tree cycle overwrites tree count
+	}
+
+	if (growth == TREE_GROWTH_PROCEDURAL) {
+		/* Store the parity of this cycle so that drawing routine can detect
+		 * whether the tile was alredy looped this cycle asd so chose appropriate state.
+		 */
+		SetTreeCycle(tile, counter % 2);
+
+		/* Don't mark dirty if trees didn't change. */
+		if (HasBit(value, 5)) return;
+
+		spread = HasBit(value, 6);
+		clear = HasBit(value, 7);
+	} else {
+		/* Custom growth */
+		switch (growth) {
+			case 3: // regular sized tree
+				if (_settings_game.game_creation.landscape == LT_TROPIC &&
+						GetTreeType(tile) != TREE_CACTUS &&
+						GetTropicZone(tile) == TROPICZONE_DESERT) {
+					AddTreeGrowth(tile, 1);
+				} else {
+					switch (GB(Random(), 0, 3)) {
+						case 0: // start destructing
+							AddTreeGrowth(tile, 1);
+							break;
+
+						case 1: // add a tree
+							spread = can_plant_extra;
+							if (count < 4 && spread) {
+								AddTreeCount(tile, 1);
+								SetTreeGrowth(tile, 0);
+								spread = false;
+							}
+							break;
+
+						case 2: { // add a neighbouring tree
+							spread = can_plant_extra;
 							break;
 						}
-						FALLTHROUGH;
 
-					case 2: { // add a neighbouring tree
-						if (!CanPlantExtraTrees(tile)) break;
-
-						TreeType treetype = GetTreeType(tile);
-
-						tile += TileOffsByDir((Direction)(Random() & 7));
-
-						/* Cacti don't spread */
-						if (!CanPlantTreesOnTile(tile, false)) return;
-
-						/* Don't plant trees, if ground was freshly cleared */
-						if (IsTileType(tile, MP_CLEAR) && GetClearGround(tile) == CLEAR_GRASS && GetClearDensity(tile) != 3) return;
-
-						PlantTreesOnTile(tile, treetype, 0, 0);
-
-						break;
+						default:
+							return;
 					}
-
-					default:
-						return;
 				}
-			}
-			break;
+				break;
 
-		case 6: // final stage of tree destruction
-			if (!CanPlantExtraTrees(tile)) {
-				/* if trees can't spread just plant a new one to prevent deforestation */
-				SetTreeGrowth(tile, 0);
-			} else if (GetTreeCount(tile) > 1) {
-				/* more than one tree, delete it */
-				AddTreeCount(tile, -1);
-				SetTreeGrowth(tile, 3);
-			} else {
-				/* just one tree, change type into MP_CLEAR */
-				switch (GetTreeGround(tile)) {
-					case TREE_GROUND_SHORE: MakeShore(tile); break;
-					case TREE_GROUND_GRASS: MakeClear(tile, CLEAR_GRASS, GetTreeDensity(tile)); break;
-					case TREE_GROUND_ROUGH: MakeClear(tile, CLEAR_ROUGH, 3); break;
-					case TREE_GROUND_ROUGH_SNOW: {
-						uint density = GetTreeDensity(tile);
-						MakeClear(tile, CLEAR_ROUGH, 3);
-						MakeSnow(tile, density);
-						break;
-					}
-					default: // snow or desert
-						if (_settings_game.game_creation.landscape == LT_TROPIC) {
-							MakeClear(tile, CLEAR_DESERT, GetTreeDensity(tile));
-						} else {
-							uint density = GetTreeDensity(tile);
-							MakeClear(tile, CLEAR_GRASS, 3);
-							MakeSnow(tile, density);
-						}
-						break;
+			case 6: // final stage of tree destruction
+				if (!can_plant_extra) {
+					/* if trees can't spread just plant a new one to prevent deforestation */
+					SetTreeGrowth(tile, 0);
+				} else if (count > 1) {
+					/* more than one tree, delete it */
+					AddTreeCount(tile, -1);
+					SetTreeGrowth(tile, 3);
+				} else {
+					/* no more trees, mark the tile for clearing */
+					clear = true;
 				}
-			}
-			break;
+				break;
 
-		default:
-			AddTreeGrowth(tile, 1);
-			break;
+			default:
+				AddTreeGrowth(tile, 1);
+				break;
+		}
+	}
+
+	if (clear) {
+		/* All trees died, change type into MP_CLEAR */
+		switch (GetTreeGround(tile)) {
+			case TREE_GROUND_SHORE: MakeShore(tile); break;
+			case TREE_GROUND_GRASS: MakeClear(tile, CLEAR_GRASS, GetTreeDensity(tile)); break;
+			case TREE_GROUND_ROUGH: MakeClear(tile, CLEAR_ROUGH, 3); break;
+			case TREE_GROUND_ROUGH_SNOW: {
+				uint density = GetTreeDensity(tile);
+				MakeClear(tile, CLEAR_ROUGH, 3);
+				MakeSnow(tile, density);
+				break;
+			}
+			default: // snow or desert
+				if (_settings_game.game_creation.landscape == LT_TROPIC) {
+					MakeClear(tile, CLEAR_DESERT, GetTreeDensity(tile));
+				} else {
+					uint density = GetTreeDensity(tile);
+					MakeClear(tile, CLEAR_GRASS, 3);
+					MakeSnow(tile, density);
+				}
+				break;
+		}
+	}
+
+	if (spread) {
+		TreeType treetype = GetProceduralTreeType(tile, tile_hash);
+
+		/* We never spread while changing the current tile so it's ok to overwrite and only mark the new tile dirty later. */
+		tile += TileOffsByDir((Direction)(Random() % DIR_END));
+
+		/* Cacti don't spread */
+		if (!CanPlantTreesOnTile(tile, false)) return;
+
+		/* Don't plant trees, if ground was freshly cleared */
+		if (IsTileType(tile, MP_CLEAR) && GetClearGround(tile) == CLEAR_GRASS && GetClearDensity(tile) != 3) return;
+
+		PlantTreesOnTile(tile, treetype, 0, 0);
 	}
 
 	MarkTileDirtyByTile(tile);
