@@ -420,8 +420,8 @@ void DoExitSave();
 
 void DoAutoOrNetsave(FiosNumberedSaveName &counter);
 
-SaveOrLoadResult SaveWithFilter(struct SaveFilter *writer, bool threaded);
-SaveOrLoadResult LoadWithFilter(struct LoadFilter *reader);
+SaveOrLoadResult SaveWithFilter(std::shared_ptr<struct SaveFilter> writer, bool threaded);
+SaveOrLoadResult LoadWithFilter(std::shared_ptr<struct LoadFilter> reader);
 
 typedef void AutolengthProc(void *arg);
 

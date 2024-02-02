@@ -576,7 +576,7 @@ NetworkRecvStatus ServerNetworkGameSocketHandler::SendMap()
 		Debug(net, 9, "client[{}] SendMap(): first_packet", this->client_id);
 
 		WaitTillSaved();
-		this->savegame = new PacketWriter(this);
+		this->savegame = std::make_shared<PacketWriter>(this);
 
 		/* Now send the _frame_counter and how many packets are coming */
 		Packet *p = new Packet(PACKET_SERVER_MAP_BEGIN);

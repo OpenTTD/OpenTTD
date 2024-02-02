@@ -88,14 +88,14 @@ struct ReadBuffer {
 	byte buf[MEMORY_CHUNK_SIZE]; ///< Buffer we're going to read from.
 	byte *bufp;                  ///< Location we're at reading the buffer.
 	byte *bufe;                  ///< End of the buffer we can read from.
-	LoadFilter *reader;          ///< The filter used to actually read.
+	std::shared_ptr<LoadFilter> reader; ///< The filter used to actually read.
 	size_t read;                 ///< The amount of read bytes so far from the filter.
 
 	/**
 	 * Initialise our variables.
 	 * @param reader The filter to actually read data.
 	 */
-	ReadBuffer(LoadFilter *reader) : bufp(nullptr), bufe(nullptr), reader(reader), read(0)
+	ReadBuffer(std::shared_ptr<LoadFilter> reader) : bufp(nullptr), bufe(nullptr), reader(reader), read(0)
 	{
 	}
 
@@ -162,7 +162,7 @@ struct MemoryDumper {
 	 * Flush this dumper into a writer.
 	 * @param writer The filter we want to use.
 	 */
-	void Flush(SaveFilter *writer)
+	void Flush(std::shared_ptr<SaveFilter> writer)
 	{
 		uint i = 0;
 		size_t t = this->GetSize();
@@ -199,10 +199,10 @@ struct SaveLoadParams {
 	bool expect_table_header;            ///< In the case of a table, if the header is saved/loaded.
 
 	MemoryDumper *dumper;                ///< Memory dumper to write the savegame to.
-	SaveFilter *sf;                      ///< Filter to write the savegame to.
+	std::shared_ptr<SaveFilter> sf; ///< Filter to write the savegame to.
 
 	ReadBuffer *reader;                  ///< Savegame reading buffer.
-	LoadFilter *lf;                      ///< Filter to read the savegame from.
+	std::shared_ptr<LoadFilter> lf; ///< Filter to read the savegame from.
 
 	StringID error_str;                  ///< the translatable error message to show
 	std::string extra_msg;               ///< the error message
@@ -2175,9 +2175,6 @@ struct FileReader : LoadFilter {
 	{
 		if (this->file != nullptr) fclose(this->file);
 		this->file = nullptr;
-
-		/* Make sure we don't double free. */
-		_sl.sf = nullptr;
 	}
 
 	size_t Read(byte *buf, size_t size) override
@@ -2213,9 +2210,6 @@ struct FileWriter : SaveFilter {
 	~FileWriter()
 	{
 		this->Finish();
-
-		/* Make sure we don't double free. */
-		_sl.sf = nullptr;
 	}
 
 	void Write(byte *buf, size_t size) override
@@ -2249,7 +2243,7 @@ struct LZOLoadFilter : LoadFilter {
 	 * Initialise this filter.
 	 * @param chain The next filter in this chain.
 	 */
-	LZOLoadFilter(LoadFilter *chain) : LoadFilter(chain)
+	LZOLoadFilter(std::shared_ptr<LoadFilter> chain) : LoadFilter(chain)
 	{
 		if (lzo_init() != LZO_E_OK) SlError(STR_GAME_SAVELOAD_ERROR_BROKEN_INTERNAL_ERROR, "cannot initialize decompressor");
 	}
@@ -2296,7 +2290,7 @@ struct LZOSaveFilter : SaveFilter {
 	 * Initialise this filter.
 	 * @param chain             The next filter in this chain.
 	 */
-	LZOSaveFilter(SaveFilter *chain, byte) : SaveFilter(chain)
+	LZOSaveFilter(std::shared_ptr<SaveFilter> chain, byte) : SaveFilter(chain)
 	{
 		if (lzo_init() != LZO_E_OK) SlError(STR_GAME_SAVELOAD_ERROR_BROKEN_INTERNAL_ERROR, "cannot initialize compressor");
 	}
@@ -2336,7 +2330,7 @@ struct NoCompLoadFilter : LoadFilter {
 	 * Initialise this filter.
 	 * @param chain The next filter in this chain.
 	 */
-	NoCompLoadFilter(LoadFilter *chain) : LoadFilter(chain)
+	NoCompLoadFilter(std::shared_ptr<LoadFilter> chain) : LoadFilter(chain)
 	{
 	}
 
@@ -2352,7 +2346,7 @@ struct NoCompSaveFilter : SaveFilter {
 	 * Initialise this filter.
 	 * @param chain             The next filter in this chain.
 	 */
-	NoCompSaveFilter(SaveFilter *chain, byte) : SaveFilter(chain)
+	NoCompSaveFilter(std::shared_ptr<SaveFilter> chain, byte) : SaveFilter(chain)
 	{
 	}
 
@@ -2378,7 +2372,7 @@ struct ZlibLoadFilter : LoadFilter {
 	 * Initialise this filter.
 	 * @param chain The next filter in this chain.
 	 */
-	ZlibLoadFilter(LoadFilter *chain) : LoadFilter(chain)
+	ZlibLoadFilter(std::shared_ptr<LoadFilter> chain) : LoadFilter(chain)
 	{
 		memset(&this->z, 0, sizeof(this->z));
 		if (inflateInit(&this->z) != Z_OK) SlError(STR_GAME_SAVELOAD_ERROR_BROKEN_INTERNAL_ERROR, "cannot initialize decompressor");
@@ -2423,7 +2417,7 @@ struct ZlibSaveFilter : SaveFilter {
 	 * @param chain             The next filter in this chain.
 	 * @param compression_level The requested level of compression.
 	 */
-	ZlibSaveFilter(SaveFilter *chain, byte compression_level) : SaveFilter(chain)
+	ZlibSaveFilter(std::shared_ptr<SaveFilter> chain, byte compression_level) : SaveFilter(chain)
 	{
 		memset(&this->z, 0, sizeof(this->z));
 		if (deflateInit(&this->z, compression_level) != Z_OK) SlError(STR_GAME_SAVELOAD_ERROR_BROKEN_INTERNAL_ERROR, "cannot initialize compressor");
@@ -2507,7 +2501,7 @@ struct LZMALoadFilter : LoadFilter {
 	 * Initialise this filter.
 	 * @param chain The next filter in this chain.
 	 */
-	LZMALoadFilter(LoadFilter *chain) : LoadFilter(chain), lzma(_lzma_init)
+	LZMALoadFilter(std::shared_ptr<LoadFilter> chain) : LoadFilter(chain), lzma(_lzma_init)
 	{
 		/* Allow saves up to 256 MB uncompressed */
 		if (lzma_auto_decoder(&this->lzma, 1 << 28, 0) != LZMA_OK) SlError(STR_GAME_SAVELOAD_ERROR_BROKEN_INTERNAL_ERROR, "cannot initialize decompressor");
@@ -2551,7 +2545,7 @@ struct LZMASaveFilter : SaveFilter {
 	 * @param chain             The next filter in this chain.
 	 * @param compression_level The requested level of compression.
 	 */
-	LZMASaveFilter(SaveFilter *chain, byte compression_level) : SaveFilter(chain), lzma(_lzma_init)
+	LZMASaveFilter(std::shared_ptr<SaveFilter> chain, byte compression_level) : SaveFilter(chain), lzma(_lzma_init)
 	{
 		if (lzma_easy_encoder(&this->lzma, compression_level, LZMA_CHECK_CRC32) != LZMA_OK) SlError(STR_GAME_SAVELOAD_ERROR_BROKEN_INTERNAL_ERROR, "cannot initialize compressor");
 	}
@@ -2611,8 +2605,8 @@ struct SaveLoadFormat {
 	const char *name;                     ///< name of the compressor/decompressor (debug-only)
 	uint32_t tag;                           ///< the 4-letter tag by which it is identified in the savegame
 
-	LoadFilter *(*init_load)(LoadFilter *chain);                    ///< Constructor for the load filter.
-	SaveFilter *(*init_write)(SaveFilter *chain, byte compression); ///< Constructor for the save filter.
+	std::shared_ptr<LoadFilter> (*init_load)(std::shared_ptr<LoadFilter> chain); ///< Constructor for the load filter.
+	std::shared_ptr<SaveFilter> (*init_write)(std::shared_ptr<SaveFilter> chain, byte compression); ///< Constructor for the save filter.
 
 	byte min_compression;                 ///< the minimum compression level of this format
 	byte default_compression;             ///< the default compression level of this format
@@ -2720,13 +2714,11 @@ static inline void ClearSaveLoadState()
 	delete _sl.dumper;
 	_sl.dumper = nullptr;
 
-	delete _sl.sf;
 	_sl.sf = nullptr;
 
 	delete _sl.reader;
 	_sl.reader = nullptr;
 
-	delete _sl.lf;
 	_sl.lf = nullptr;
 }
 
@@ -2839,7 +2831,7 @@ void WaitTillSaved()
  * @param threaded Whether to try to perform the saving asynchronously.
  * @return Return the result of the action. #SL_OK or #SL_ERROR
  */
-static SaveOrLoadResult DoSave(SaveFilter *writer, bool threaded)
+static SaveOrLoadResult DoSave(std::shared_ptr<SaveFilter> writer, bool threaded)
 {
 	assert(!_sl.saveinprogress);
 
@@ -2871,7 +2863,7 @@ static SaveOrLoadResult DoSave(SaveFilter *writer, bool threaded)
  * @param threaded Whether to try to perform the saving asynchronously.
  * @return Return the result of the action. #SL_OK or #SL_ERROR
  */
-SaveOrLoadResult SaveWithFilter(SaveFilter *writer, bool threaded)
+SaveOrLoadResult SaveWithFilter(std::shared_ptr<SaveFilter> writer, bool threaded)
 {
 	try {
 		_sl.action = SLA_SAVE;
@@ -2888,7 +2880,7 @@ SaveOrLoadResult SaveWithFilter(SaveFilter *writer, bool threaded)
  * @param load_check Whether to perform the checking ("preview") or actually load the game.
  * @return Return the result of the action. #SL_OK or #SL_REINIT ("unload" the game)
  */
-static SaveOrLoadResult DoLoad(LoadFilter *reader, bool load_check)
+static SaveOrLoadResult DoLoad(std::shared_ptr<LoadFilter> reader, bool load_check)
 {
 	_sl.lf = reader;
 
@@ -3027,7 +3019,7 @@ static SaveOrLoadResult DoLoad(LoadFilter *reader, bool load_check)
  * @param reader   The filter to read the savegame from.
  * @return Return the result of the action. #SL_OK or #SL_REINIT ("unload" the game)
  */
-SaveOrLoadResult LoadWithFilter(LoadFilter *reader)
+SaveOrLoadResult LoadWithFilter(std::shared_ptr<LoadFilter> reader)
 {
 	try {
 		_sl.action = SLA_LOAD;
@@ -3114,13 +3106,13 @@ SaveOrLoadResult SaveOrLoad(const std::string &filename, SaveLoadOperation fop, 
 			Debug(desync, 1, "save: {:08x}; {:02x}; {}", TimerGameEconomy::date, TimerGameEconomy::date_fract, filename);
 			if (!_settings_client.gui.threaded_saves) threaded = false;
 
-			return DoSave(new FileWriter(fh), threaded);
+			return DoSave(std::make_shared<FileWriter>(fh), threaded);
 		}
 
 		/* LOAD game */
 		assert(fop == SLO_LOAD || fop == SLO_CHECK);
 		Debug(desync, 1, "load: {}", filename);
-		return DoLoad(new FileReader(fh), fop == SLO_CHECK);
+		return DoLoad(std::make_shared<FileReader>(fh), fop == SLO_CHECK);
 	} catch (...) {
 		/* This code may be executed both for old and new save games. */
 		ClearSaveLoadState();
