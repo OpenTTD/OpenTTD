@@ -1227,7 +1227,12 @@ DEF_CONSOLE_CMD(ConRestart)
 	/* Don't copy the _newgame pointers to the real pointers, so call SwitchToMode directly */
 	_settings_game.game_creation.map_x = Map::LogX();
 	_settings_game.game_creation.map_y = Map::LogY();
-	_switch_mode = SM_RESTARTGAME;
+	if (_file_to_saveload.abstract_ftype == FT_SAVEGAME || _file_to_saveload.abstract_ftype == FT_SCENARIO || _file_to_saveload.abstract_ftype == FT_HEIGHTMAP) {
+		_switch_mode = SM_RESTARTGAME;
+	} else {
+		_settings_newgame.game_creation.generation_seed = _settings_game.game_creation.generation_seed;
+		_switch_mode = SM_NEWGAME;
+	}
 	return true;
 }
 
