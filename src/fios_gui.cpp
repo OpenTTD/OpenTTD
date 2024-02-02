@@ -762,14 +762,14 @@ public:
 			if (this->abstract_filetype == FT_SAVEGAME || this->abstract_filetype == FT_SCENARIO) {
 				_file_to_saveload.name = FiosMakeSavegameName(this->filename_editbox.text.buf);
 				if (FioCheckFileExists(_file_to_saveload.name, Subdirectory::SAVE_DIR)) {
-					ShowQuery(STR_SAVELOAD_OVERWRITE_TITLE, STR_SAVELOAD_OVERWRITE_WARNING, this, SaveLoadWindow::SaveGameConfirmationCallback);
+					ShowQuery(STR_SAVELOAD_OVERWRITE_TITLE, STR_SAVELOAD_OVERWRITE_WARNING, MakeParameters(), this, SaveLoadWindow::SaveGameConfirmationCallback);
 				} else {
 					_switch_mode = SM_SAVE_GAME;
 				}
 			} else {
 				_file_to_saveload.name = FiosMakeHeightmapName(this->filename_editbox.text.buf);
 				if (FioCheckFileExists(_file_to_saveload.name, Subdirectory::SAVE_DIR)) {
-					ShowQuery(STR_SAVELOAD_OVERWRITE_TITLE, STR_SAVELOAD_OVERWRITE_WARNING, this, SaveLoadWindow::SaveHeightmapConfirmationCallback);
+					ShowQuery(STR_SAVELOAD_OVERWRITE_TITLE, STR_SAVELOAD_OVERWRITE_WARNING, MakeParameters(), this, SaveLoadWindow::SaveHeightmapConfirmationCallback);
 				} else {
 					_switch_mode = SM_SAVE_HEIGHTMAP;
 				}

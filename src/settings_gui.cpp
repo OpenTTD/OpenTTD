@@ -2536,6 +2536,7 @@ struct GameSettingsWindow : Window {
 				ShowQuery(
 					STR_CONFIG_SETTING_RESET_ALL_CONFIRMATION_DIALOG_CAPTION,
 					STR_CONFIG_SETTING_RESET_ALL_CONFIRMATION_DIALOG_TEXT,
+					MakeParameters(),
 					this,
 					ResetAllSettingsConfirmationCallback
 				);

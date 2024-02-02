@@ -1124,6 +1124,7 @@ struct NewGRFWindow : public Window, NewGRFScanCallback {
 					ShowQuery(
 						STR_NEWGRF_POPUP_CAUTION_CAPTION,
 						STR_NEWGRF_CONFIRMATION_TEXT,
+						MakeParameters(),
 						this,
 						NewGRFConfirmationCallback
 					);

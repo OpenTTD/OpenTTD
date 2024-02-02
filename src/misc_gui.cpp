@@ -1093,17 +1093,17 @@ void ShowQueryString(StringID str, StringID caption, uint maxsize, Window *paren
  */
 struct QueryWindow : public Window {
 	QueryCallbackProc *proc; ///< callback function executed on closing of popup. Window* points to parent, bool is true if 'yes' clicked, false otherwise
-	std::vector<StringParameterBackup> params; ///< local copy of #_global_string_params
+	std::vector<StringParameterBackup> params; ///< Parameters for the message.
 	StringID message;        ///< message shown for query window
 
-	QueryWindow(WindowDesc *desc, StringID caption, StringID message, Window *parent, QueryCallbackProc *callback) : Window(desc)
+	QueryWindow(WindowDesc *desc, StringID caption, StringID message, StringParameters &&params, Window *parent, QueryCallbackProc *callback) : Window(desc)
 	{
-		/* Create a backup of the variadic arguments to strings because it will be
-		 * overridden pretty often. We will copy these back for drawing */
-		CopyOutDParam(this->params, 10);
+		CopyOutDParam(this->params, std::move(params));
 		this->message = message;
 		this->proc    = callback;
 		this->parent  = parent;
+
+		CopyInDParam(this->params);
 
 		this->CreateNestedTree();
 		this->GetWidget<NWidgetCore>(WID_Q_CAPTION)->SetDataTip(caption, STR_NULL);
@@ -1219,12 +1219,13 @@ static WindowDesc _query_desc(__FILE__, __LINE__,
  * The window is aligned to the centre of its parent.
  * @param caption string shown as window caption
  * @param message string that will be shown for the window
+ * @param params Parameters for the message.
  * @param parent pointer to parent window, if this pointer is nullptr the parent becomes
  * the main window WC_MAIN_WINDOW
  * @param callback callback function pointer to set in the window descriptor
  * @param focus whether the window should be focussed (by default false)
  */
-void ShowQuery(StringID caption, StringID message, Window *parent, QueryCallbackProc *callback, bool focus)
+void ShowQuery(StringID caption, StringID message, StringParameters &&params, Window *parent, QueryCallbackProc *callback, bool focus)
 {
 	if (parent == nullptr) parent = GetMainWindow();
 
@@ -1238,6 +1239,6 @@ void ShowQuery(StringID caption, StringID message, Window *parent, QueryCallback
 		break;
 	}
 
-	QueryWindow *q = new QueryWindow(&_query_desc, caption, message, parent, callback);
+	QueryWindow *q = new QueryWindow(&_query_desc, caption, message, std::move(params), parent, callback);
 	if (focus) SetFocusedWindow(q);
 }

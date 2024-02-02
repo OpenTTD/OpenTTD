@@ -869,7 +869,7 @@ public:
 				if (_accepted_external_search) {
 					this->OpenExternalSearch();
 				} else {
-					ShowQuery(STR_CONTENT_SEARCH_EXTERNAL_DISCLAIMER_CAPTION, STR_CONTENT_SEARCH_EXTERNAL_DISCLAIMER, this, ExternalSearchDisclaimerCallback);
+					ShowQuery(STR_CONTENT_SEARCH_EXTERNAL_DISCLAIMER_CAPTION, STR_CONTENT_SEARCH_EXTERNAL_DISCLAIMER, MakeParameters(), this, ExternalSearchDisclaimerCallback);
 				}
 				break;
 		}

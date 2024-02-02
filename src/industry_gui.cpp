@@ -631,14 +631,14 @@ public:
 			case WID_DPI_CREATE_RANDOM_INDUSTRIES_WIDGET: {
 				assert(_game_mode == GM_EDITOR);
 				this->HandleButtonClick(WID_DPI_CREATE_RANDOM_INDUSTRIES_WIDGET);
-				ShowQuery(STR_FUND_INDUSTRY_MANY_RANDOM_INDUSTRIES_CAPTION, STR_FUND_INDUSTRY_MANY_RANDOM_INDUSTRIES_QUERY, nullptr, AskManyRandomIndustriesCallback);
+				ShowQuery(STR_FUND_INDUSTRY_MANY_RANDOM_INDUSTRIES_CAPTION, STR_FUND_INDUSTRY_MANY_RANDOM_INDUSTRIES_QUERY, MakeParameters(), nullptr, AskManyRandomIndustriesCallback);
 				break;
 			}
 
 			case WID_DPI_REMOVE_ALL_INDUSTRIES_WIDGET: {
 				assert(_game_mode == GM_EDITOR);
 				this->HandleButtonClick(WID_DPI_REMOVE_ALL_INDUSTRIES_WIDGET);
-				ShowQuery(STR_FUND_INDUSTRY_REMOVE_ALL_INDUSTRIES_CAPTION, STR_FUND_INDUSTRY_REMOVE_ALL_INDUSTRIES_QUERY, nullptr, AskRemoveAllIndustriesCallback);
+				ShowQuery(STR_FUND_INDUSTRY_REMOVE_ALL_INDUSTRIES_CAPTION, STR_FUND_INDUSTRY_REMOVE_ALL_INDUSTRIES_QUERY, MakeParameters(), nullptr, AskRemoveAllIndustriesCallback);
 				break;
 			}
 

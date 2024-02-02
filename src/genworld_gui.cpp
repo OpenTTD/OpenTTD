@@ -718,6 +718,7 @@ struct GenerateLandscapeWindow : public Window {
 					ShowQuery(
 						STR_WARNING_HEIGHTMAP_SCALE_CAPTION,
 						STR_WARNING_HEIGHTMAP_SCALE_MESSAGE,
+						MakeParameters(),
 						this,
 						LandscapeGenerationCallback);
 				} else {
@@ -1397,6 +1398,7 @@ struct GenerateProgressWindow : public Window {
 				ShowQuery(
 					STR_GENERATION_ABORT_CAPTION,
 					STR_GENERATION_ABORT_MESSAGE,
+					MakeParameters(),
 					this,
 					AbortGeneratingWorldCallback
 				);

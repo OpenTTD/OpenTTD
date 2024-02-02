@@ -809,11 +809,10 @@ struct DepotWindow : Window {
 			case WID_D_SELL_ALL:
 				/* Only open the confirmation window if there are anything to sell */
 				if (!this->vehicle_list.empty() || !this->wagon_list.empty()) {
-					SetDParam(0, this->type);
-					SetDParam(1, this->GetDepotIndex());
 					ShowQuery(
 						STR_DEPOT_CAPTION,
 						STR_DEPOT_SELL_CONFIRMATION_TEXT,
+						MakeParameters(this->type, this->GetDepotIndex()),
 						this,
 						DepotSellAllConfirmationCallback
 					);

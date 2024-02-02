@@ -885,9 +885,7 @@ void MakeScreenshotWithConfirm(ScreenshotType t)
 	if (width * height > 8192 * 8192) {
 		/* Ask for confirmation */
 		_confirmed_screenshot_type = t;
-		SetDParam(0, width);
-		SetDParam(1, height);
-		ShowQuery(STR_WARNING_SCREENSHOT_SIZE_CAPTION, STR_WARNING_SCREENSHOT_SIZE_MESSAGE, nullptr, ScreenshotConfirmationCallback);
+		ShowQuery(STR_WARNING_SCREENSHOT_SIZE_CAPTION, STR_WARNING_SCREENSHOT_SIZE_MESSAGE, MakeParameters(width, height), nullptr, ScreenshotConfirmationCallback);
 	} else {
 		/* Less than 64M pixels, just do it */
 		MakeScreenshot(t, {});
