@@ -30,7 +30,7 @@ enum SendPacketsState {
 /** Base socket handler for all TCP sockets */
 class NetworkTCPSocketHandler : public NetworkSocketHandler {
 private:
-	Packet *packet_queue;     ///< Packets that are awaiting delivery
+	std::deque<std::unique_ptr<Packet>> packet_queue; ///< Packets that are awaiting delivery. Cannot be std::queue as that does not have a clear() function.
 	std::unique_ptr<Packet> packet_recv; ///< Partially received packet
 
 	void EmptyPacketQueue();
@@ -58,7 +58,7 @@ public:
 	 * Whether there is something pending in the send queue.
 	 * @return true when something is pending in the send queue.
 	 */
-	bool HasSendQueue() { return this->packet_queue != nullptr; }
+	bool HasSendQueue() { return !this->packet_queue.empty(); }
 
 	NetworkTCPSocketHandler(SOCKET s = INVALID_SOCKET);
 	~NetworkTCPSocketHandler();

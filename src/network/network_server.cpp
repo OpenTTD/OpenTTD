@@ -61,9 +61,9 @@ template SocketList TCPListenHandler<ServerNetworkGameSocketHandler, PACKET_SERV
 /** Writing a savegame directly to a number of packets. */
 struct PacketWriter : SaveFilter {
 	ServerNetworkGameSocketHandler *cs; ///< Socket we are associated with.
-	Packet *current;                    ///< The packet we're currently writing to.
+	std::unique_ptr<Packet> current; ///< The packet we're currently writing to.
 	size_t total_size;                  ///< Total size of the compressed savegame.
-	Packet *packets;                    ///< Packet queue of the savegame; send these "slowly" to the client.
+	std::deque<std::unique_ptr<Packet>> packets; ///< Packet queue of the savegame; send these "slowly" to the client. Cannot be a std::queue as we want to push the map size packet in front of the data packets.
 	std::mutex mutex;                   ///< Mutex for making threaded saving safe.
 	std::condition_variable exit_sig;   ///< Signal for threaded destruction of this packet writer.
 
@@ -71,7 +71,7 @@ struct PacketWriter : SaveFilter {
 	 * Create the packet writer.
 	 * @param cs The socket handler we're making the packets for.
 	 */
-	PacketWriter(ServerNetworkGameSocketHandler *cs) : SaveFilter(nullptr), cs(cs), current(nullptr), total_size(0), packets(nullptr)
+	PacketWriter(ServerNetworkGameSocketHandler *cs) : SaveFilter(nullptr), cs(cs), total_size(0)
 	{
 	}
 
@@ -84,11 +84,9 @@ struct PacketWriter : SaveFilter {
 
 		/* This must all wait until the Destroy function is called. */
 
-		while (this->packets != nullptr) {
-			delete Packet::PopFromQueue(&this->packets);
-		}
-
-		delete this->current;
+		Debug(net, 0, "Destruct!");
+		this->packets.clear();
+		this->current = nullptr;
 	}
 
 	/**
@@ -125,14 +123,14 @@ struct PacketWriter : SaveFilter {
 	bool TransferToNetworkQueue(ServerNetworkGameSocketHandler *socket)
 	{
 		/* Unsafe check for the queue being empty or not. */
-		if (this->packets == nullptr) return false;
+		if (this->packets.empty()) return false;
 
 		std::lock_guard<std::mutex> lock(this->mutex);
 
-		while (this->packets != nullptr) {
-			Packet *p = Packet::PopFromQueue(&this->packets);
-			bool last_packet = p->GetPacketType() == PACKET_SERVER_MAP_DONE;
-			socket->SendPacket(p);
+		while (!this->packets.empty()) {
+			bool last_packet = this->packets.front()->GetPacketType() == PACKET_SERVER_MAP_DONE;
+			socket->SendPacket(this->packets.front().release());
+			this->packets.pop_front();
 
 			if (last_packet) return true;
 		}
@@ -140,32 +138,12 @@ struct PacketWriter : SaveFilter {
 		return false;
 	}
 
-	/** Append the current packet to the queue. */
-	void AppendQueue()
-	{
-		if (this->current == nullptr) return;
-
-		Packet::AddToQueue(&this->packets, this->current);
-		this->current = nullptr;
-	}
-
-	/** Prepend the current packet to the queue. */
-	void PrependQueue()
-	{
-		if (this->current == nullptr) return;
-
-		/* Reversed from AppendQueue so the queue gets added to the current one. */
-		Packet::AddToQueue(&this->current, this->packets);
-		this->packets = this->current;
-		this->current = nullptr;
-	}
-
 	void Write(byte *buf, size_t size) override
 	{
 		/* We want to abort the saving when the socket is closed. */
 		if (this->cs == nullptr) SlError(STR_NETWORK_ERROR_LOSTCONNECTION);
 
-		if (this->current == nullptr) this->current = new Packet(PACKET_SERVER_MAP_DATA, TCP_MTU);
+		if (this->current == nullptr) this->current = std::make_unique<Packet>(PACKET_SERVER_MAP_DATA, TCP_MTU);
 
 		std::lock_guard<std::mutex> lock(this->mutex);
 
@@ -175,8 +153,8 @@ struct PacketWriter : SaveFilter {
 			buf += written;
 
 			if (!this->current->CanWriteToPacket(1)) {
-				this->AppendQueue();
-				if (buf != bufe) this->current = new Packet(PACKET_SERVER_MAP_DATA, TCP_MTU);
+				this->packets.push_back(std::move(this->current));
+				if (buf != bufe) this->current = std::make_unique<Packet>(PACKET_SERVER_MAP_DATA, TCP_MTU);
 			}
 		}
 
@@ -191,16 +169,15 @@ struct PacketWriter : SaveFilter {
 		std::lock_guard<std::mutex> lock(this->mutex);
 
 		/* Make sure the last packet is flushed. */
-		this->AppendQueue();
+		if (this->current != nullptr) this->packets.push_back(std::move(this->current));
 
 		/* Add a packet stating that this is the end to the queue. */
-		this->current = new Packet(PACKET_SERVER_MAP_DONE);
-		this->AppendQueue();
+		this->packets.push_back(std::make_unique<Packet>(PACKET_SERVER_MAP_DONE));
 
 		/* Fast-track the size to the client. */
-		this->current = new Packet(PACKET_SERVER_MAP_SIZE);
-		this->current->Send_uint32((uint32_t)this->total_size);
-		this->PrependQueue();
+		auto p = std::make_unique<Packet>(PACKET_SERVER_MAP_SIZE);
+		p->Send_uint32((uint32_t)this->total_size);
+		this->packets.push_front(std::move(p));
 	}
 };
 

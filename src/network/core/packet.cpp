@@ -28,7 +28,7 @@
  *                          loose some the data of the packet, so there you pass the maximum
  *                          size for the packet you expect from the network.
  */
-Packet::Packet(NetworkSocketHandler *cs, size_t limit, size_t initial_read_size) : next(nullptr), pos(0), limit(limit)
+Packet::Packet(NetworkSocketHandler *cs, size_t limit, size_t initial_read_size) : pos(0), limit(limit)
 {
 	assert(cs != nullptr);
 
@@ -44,36 +44,11 @@ Packet::Packet(NetworkSocketHandler *cs, size_t limit, size_t initial_read_size)
  *              the limit as it might break things if the other side is not expecting
  *              much larger packets than what they support.
  */
-Packet::Packet(PacketType type, size_t limit) : next(nullptr), pos(0), limit(limit), cs(nullptr)
+Packet::Packet(PacketType type, size_t limit) : pos(0), limit(limit), cs(nullptr)
 {
 	/* Allocate space for the the size so we can write that in just before sending the packet. */
 	this->Send_uint16(0);
 	this->Send_uint8(type);
-}
-
-/**
- * Add the given Packet to the end of the queue of packets.
- * @param queue  The pointer to the begin of the queue.
- * @param packet The packet to append to the queue.
- */
-/* static */ void Packet::AddToQueue(Packet **queue, Packet *packet)
-{
-	while (*queue != nullptr) queue = &(*queue)->next;
-	*queue = packet;
-}
-
-/**
- * Pop the packet from the begin of the queue and set the
- * begin of the queue to the second element in the queue.
- * @param queue  The pointer to the begin of the queue.
- * @return The Packet that used to be a the begin of the queue.
- */
-/* static */ Packet *Packet::PopFromQueue(Packet **queue)
-{
-	Packet *p = *queue;
-	*queue = p->next;
-	p->next = nullptr;
-	return p;
 }
 
 
@@ -82,7 +57,7 @@ Packet::Packet(PacketType type, size_t limit) : next(nullptr), pos(0), limit(lim
  */
 void Packet::PrepareToSend()
 {
-	assert(this->cs == nullptr && this->next == nullptr);
+	assert(this->cs == nullptr);
 
 	this->buffer[0] = GB(this->Size(), 0, 8);
 	this->buffer[1] = GB(this->Size(), 8, 8);
@@ -268,7 +243,7 @@ size_t Packet::Size() const
  */
 bool Packet::ParsePacketSize()
 {
-	assert(this->cs != nullptr && this->next == nullptr);
+	assert(this->cs != nullptr);
 	size_t size = (size_t)this->buffer[0];
 	size       += (size_t)this->buffer[1] << 8;
 

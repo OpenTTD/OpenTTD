@@ -22,26 +22,13 @@
  */
 NetworkTCPSocketHandler::NetworkTCPSocketHandler(SOCKET s) :
 		NetworkSocketHandler(),
-		packet_queue(nullptr), packet_recv(nullptr),
 		sock(s), writable(false)
 {
 }
 
 NetworkTCPSocketHandler::~NetworkTCPSocketHandler()
 {
-	this->EmptyPacketQueue();
 	this->CloseSocket();
-}
-
-/**
- * Free all pending and partially received packets.
- */
-void NetworkTCPSocketHandler::EmptyPacketQueue()
-{
-	while (this->packet_queue != nullptr) {
-		delete Packet::PopFromQueue(&this->packet_queue);
-	}
-	this->packet_recv = nullptr;
 }
 
 /**
@@ -66,7 +53,8 @@ NetworkRecvStatus NetworkTCPSocketHandler::CloseConnection([[maybe_unused]] bool
 	this->MarkClosed();
 	this->writable = false;
 
-	this->EmptyPacketQueue();
+	this->packet_queue.clear();
+	this->packet_recv = nullptr;
 
 	return NETWORK_RECV_STATUS_OKAY;
 }
@@ -82,7 +70,7 @@ void NetworkTCPSocketHandler::SendPacket(Packet *packet)
 	assert(packet != nullptr);
 
 	packet->PrepareToSend();
-	Packet::AddToQueue(&this->packet_queue, packet);
+	this->packet_queue.push_back(std::unique_ptr<Packet>(packet));
 }
 
 /**
@@ -97,15 +85,13 @@ void NetworkTCPSocketHandler::SendPacket(Packet *packet)
  */
 SendPacketsState NetworkTCPSocketHandler::SendPackets(bool closing_down)
 {
-	ssize_t res;
-	Packet *p;
-
 	/* We can not write to this socket!! */
 	if (!this->writable) return SPS_NONE_SENT;
 	if (!this->IsConnected()) return SPS_CLOSED;
 
-	while ((p = this->packet_queue) != nullptr) {
-		res = p->TransferOut<int>(send, this->sock, 0);
+	while (!this->packet_queue.empty()) {
+		Packet *p = this->packet_queue.front().get();
+		ssize_t res = p->TransferOut<int>(send, this->sock, 0);
 		if (res == -1) {
 			NetworkError err = NetworkError::GetLast();
 			if (!err.WouldBlock()) {
@@ -127,7 +113,7 @@ SendPacketsState NetworkTCPSocketHandler::SendPackets(bool closing_down)
 		/* Is this packet sent? */
 		if (p->RemainingBytesToTransfer() == 0) {
 			/* Go to the next packet */
-			delete Packet::PopFromQueue(&this->packet_queue);
+			this->packet_queue.pop_front();
 		} else {
 			return SPS_PARTLY_SENT;
 		}
