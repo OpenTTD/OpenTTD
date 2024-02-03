@@ -423,6 +423,11 @@ NetworkRecvStatus ServerNetworkGameSocketHandler::SendNewGRFCheck()
 /** Request the game password. */
 NetworkRecvStatus ServerNetworkGameSocketHandler::SendNeedGamePassword()
 {
+	if (_settings_client.network.server_password.empty()) {
+		/* Do not actually need a game password, continue with the company password. */
+		return this->SendNeedCompanyPassword();
+	}
+
 	Debug(net, 9, "client[{}] SendNeedGamePassword()", this->client_id);
 
 	/* Invalid packet when status is STATUS_AUTH_GAME or higher */
@@ -441,6 +446,11 @@ NetworkRecvStatus ServerNetworkGameSocketHandler::SendNeedGamePassword()
 /** Request the company password. */
 NetworkRecvStatus ServerNetworkGameSocketHandler::SendNeedCompanyPassword()
 {
+	NetworkClientInfo *ci = this->GetInfo();
+	if (!Company::IsValidID(ci->client_playas) || _network_company_states[ci->client_playas].password.empty()) {
+		return this->SendWelcome();
+	}
+
 	Debug(net, 9, "client[{}] SendNeedCompanyPassword()", this->client_id);
 
 	/* Invalid packet when status is STATUS_AUTH_COMPANY or higher */
@@ -845,18 +855,7 @@ NetworkRecvStatus ServerNetworkGameSocketHandler::Receive_CLIENT_NEWGRFS_CHECKED
 
 	Debug(net, 9, "client[{}] Receive_CLIENT_NEWGRFS_CHECKED()", this->client_id);
 
-	NetworkClientInfo *ci = this->GetInfo();
-
-	/* We now want a password from the client else we do not allow them in! */
-	if (!_settings_client.network.server_password.empty()) {
-		return this->SendNeedGamePassword();
-	}
-
-	if (Company::IsValidID(ci->client_playas) && !_network_company_states[ci->client_playas].password.empty()) {
-		return this->SendNeedCompanyPassword();
-	}
-
-	return this->SendWelcome();
+	return this->SendNeedGamePassword();
 }
 
 NetworkRecvStatus ServerNetworkGameSocketHandler::Receive_CLIENT_JOIN(Packet *p)
@@ -930,8 +929,8 @@ NetworkRecvStatus ServerNetworkGameSocketHandler::Receive_CLIENT_JOIN(Packet *p)
 	this->status = STATUS_NEWGRFS_CHECK;
 
 	if (_grfconfig == nullptr) {
-		/* Behave as if we received PACKET_CLIENT_NEWGRFS_CHECKED */
-		return this->Receive_CLIENT_NEWGRFS_CHECKED(nullptr);
+		/* Continue asking for the game password. */
+		return this->SendNeedGamePassword();
 	}
 
 	return this->SendNewGRFCheck();
@@ -954,13 +953,7 @@ NetworkRecvStatus ServerNetworkGameSocketHandler::Receive_CLIENT_GAME_PASSWORD(P
 		return this->SendError(NETWORK_ERROR_WRONG_PASSWORD);
 	}
 
-	const NetworkClientInfo *ci = this->GetInfo();
-	if (Company::IsValidID(ci->client_playas) && !_network_company_states[ci->client_playas].password.empty()) {
-		return this->SendNeedCompanyPassword();
-	}
-
-	/* Valid password, allow user */
-	return this->SendWelcome();
+	return this->SendNeedCompanyPassword();
 }
 
 NetworkRecvStatus ServerNetworkGameSocketHandler::Receive_CLIENT_COMPANY_PASSWORD(Packet *p)
