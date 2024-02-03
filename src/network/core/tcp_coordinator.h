@@ -83,7 +83,7 @@ protected:
 	 * @param p The packet that was just received.
 	 * @return True upon success, otherwise false.
 	 */
-	virtual bool Receive_GC_ERROR(Packet *p);
+	virtual bool Receive_GC_ERROR(Packet &p);
 
 	/**
 	 * Server is starting a multiplayer game and wants to let the
@@ -98,7 +98,7 @@ protected:
 	 * @param p The packet that was just received.
 	 * @return True upon success, otherwise false.
 	 */
-	virtual bool Receive_SERVER_REGISTER(Packet *p);
+	virtual bool Receive_SERVER_REGISTER(Packet &p);
 
 	/**
 	 * Game Coordinator acknowledges the registration.
@@ -110,7 +110,7 @@ protected:
 	 * @param p The packet that was just received.
 	 * @return True upon success, otherwise false.
 	 */
-	virtual bool Receive_GC_REGISTER_ACK(Packet *p);
+	virtual bool Receive_GC_REGISTER_ACK(Packet &p);
 
 	/**
 	 * Send an update of the current state of the server to the Game Coordinator.
@@ -121,7 +121,7 @@ protected:
 	 * @param p The packet that was just received.
 	 * @return True upon success, otherwise false.
 	 */
-	virtual bool Receive_SERVER_UPDATE(Packet *p);
+	virtual bool Receive_SERVER_UPDATE(Packet &p);
 
 	/**
 	 * Client requests a list of all public servers.
@@ -134,7 +134,7 @@ protected:
 	 * @param p The packet that was just received.
 	 * @return True upon success, otherwise false.
 	 */
-	virtual bool Receive_CLIENT_LISTING(Packet *p);
+	virtual bool Receive_CLIENT_LISTING(Packet &p);
 
 	/**
 	 * Game Coordinator replies with a list of all public servers. Multiple
@@ -149,7 +149,7 @@ protected:
 	 * @param p The packet that was just received.
 	 * @return True upon success, otherwise false.
 	 */
-	virtual bool Receive_GC_LISTING(Packet *p);
+	virtual bool Receive_GC_LISTING(Packet &p);
 
 	/**
 	 * Client wants to connect to a Server.
@@ -160,7 +160,7 @@ protected:
 	 * @param p The packet that was just received.
 	 * @return True upon success, otherwise false.
 	 */
-	virtual bool Receive_CLIENT_CONNECT(Packet *p);
+	virtual bool Receive_CLIENT_CONNECT(Packet &p);
 
 	/**
 	 * Game Coordinator informs the Client under what token it will start the
@@ -172,7 +172,7 @@ protected:
 	 * @param p The packet that was just received.
 	 * @return True upon success, otherwise false.
 	 */
-	virtual bool Receive_GC_CONNECTING(Packet *p);
+	virtual bool Receive_GC_CONNECTING(Packet &p);
 
 	/**
 	 * Client or Server failed to connect to the remote side.
@@ -184,7 +184,7 @@ protected:
 	 * @param p The packet that was just received.
 	 * @return True upon success, otherwise false.
 	 */
-	virtual bool Receive_SERCLI_CONNECT_FAILED(Packet *p);
+	virtual bool Receive_SERCLI_CONNECT_FAILED(Packet &p);
 
 	/**
 	 * Game Coordinator informs the Client that it failed to find a way to
@@ -196,7 +196,7 @@ protected:
 	 * @param p The packet that was just received.
 	 * @return True upon success, otherwise false.
 	 */
-	virtual bool Receive_GC_CONNECT_FAILED(Packet *p);
+	virtual bool Receive_GC_CONNECT_FAILED(Packet &p);
 
 	/**
 	 * Client informs the Game Coordinator the connection with the Server is
@@ -208,7 +208,7 @@ protected:
 	 * @param p The packet that was just received.
 	 * @return True upon success, otherwise false.
 	 */
-	virtual bool Receive_CLIENT_CONNECTED(Packet *p);
+	virtual bool Receive_CLIENT_CONNECTED(Packet &p);
 
 	/**
 	 * Game Coordinator requests that the Client makes a direct connection to
@@ -222,7 +222,7 @@ protected:
 	 * @param p The packet that was just received.
 	 * @return True upon success, otherwise false.
 	 */
-	virtual bool Receive_GC_DIRECT_CONNECT(Packet *p);
+	virtual bool Receive_GC_DIRECT_CONNECT(Packet &p);
 
 	/**
 	 * Game Coordinator requests the client/server to do a STUN request to the
@@ -237,7 +237,7 @@ protected:
 	 * @param p The packet that was just received.
 	 * @return True upon success, otherwise false.
 	 */
-	virtual bool Receive_GC_STUN_REQUEST(Packet *p);
+	virtual bool Receive_GC_STUN_REQUEST(Packet &p);
 
 	/**
 	 * Client/server informs the Game Coordinator the result of a STUN request.
@@ -250,7 +250,7 @@ protected:
 	 * @param p The packet that was just received.
 	 * @return True upon success, otherwise false.
 	 */
-	virtual bool Receive_SERCLI_STUN_RESULT(Packet *p);
+	virtual bool Receive_SERCLI_STUN_RESULT(Packet &p);
 
 	/**
 	 * Game Coordinator informs the client/server of its STUN peer (the host:ip
@@ -266,7 +266,7 @@ protected:
 	 * @param p The packet that was just received.
 	 * @return True upon success, otherwise false.
 	 */
-	virtual bool Receive_GC_STUN_CONNECT(Packet *p);
+	virtual bool Receive_GC_STUN_CONNECT(Packet &p);
 
 	/**
 	 * Game Coordinator informs the client of updates for the NewGRFs lookup table
@@ -289,7 +289,7 @@ protected:
 	 * @param p The packet that was just received.
 	 * @return True upon success, otherwise false.
 	 */
-	virtual bool Receive_GC_NEWGRF_LOOKUP(Packet *p);
+	virtual bool Receive_GC_NEWGRF_LOOKUP(Packet &p);
 
 	/**
 	 * Game Coordinator requests that we make a connection to the indicated
@@ -303,9 +303,9 @@ protected:
 	 * @param p The packet that was just received.
 	 * @return True upon success, otherwise false.
 	 */
-	virtual bool Receive_GC_TURN_CONNECT(Packet *p);
+	virtual bool Receive_GC_TURN_CONNECT(Packet &p);
 
-	bool HandlePacket(Packet *p);
+	bool HandlePacket(Packet &p);
 public:
 	/**
 	 * Create a new cs socket handler for a given cs.

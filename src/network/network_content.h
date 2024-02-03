@@ -82,8 +82,8 @@ protected:
 
 	friend class NetworkContentConnecter;
 
-	bool Receive_SERVER_INFO(Packet *p) override;
-	bool Receive_SERVER_CONTENT(Packet *p) override;
+	bool Receive_SERVER_INFO(Packet &p) override;
+	bool Receive_SERVER_CONTENT(Packet &p) override;
 
 	ContentInfo *GetContent(ContentID cid) const;
 	void DownloadContentInfo(ContentID cid);

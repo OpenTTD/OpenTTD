@@ -20,8 +20,8 @@ private:
 	std::string connection_string; ///< The connection string of the TURN server we are connecting to.
 
 protected:
-	bool Receive_TURN_ERROR(Packet *p) override;
-	bool Receive_TURN_CONNECTED(Packet *p) override;
+	bool Receive_TURN_ERROR(Packet &p) override;
+	bool Receive_TURN_CONNECTED(Packet &p) override;
 
 public:
 	std::shared_ptr<TCPConnecter> connecter{}; ///< Connecter instance.

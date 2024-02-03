@@ -34,7 +34,7 @@ protected:
 	 * @param p The packet that was just received.
 	 * @return True upon success, otherwise false.
 	 */
-	virtual bool Receive_CLIENT_INFO_LIST(Packet *p);
+	virtual bool Receive_CLIENT_INFO_LIST(Packet &p);
 
 	/**
 	 * Client requesting a list of content info:
@@ -43,7 +43,7 @@ protected:
 	 * @param p The packet that was just received.
 	 * @return True upon success, otherwise false.
 	 */
-	virtual bool Receive_CLIENT_INFO_ID(Packet *p);
+	virtual bool Receive_CLIENT_INFO_ID(Packet &p);
 
 	/**
 	 * Client requesting a list of content info based on an external
@@ -57,7 +57,7 @@ protected:
 	 * @param p The packet that was just received.
 	 * @return True upon success, otherwise false.
 	 */
-	virtual bool Receive_CLIENT_INFO_EXTID(Packet *p);
+	virtual bool Receive_CLIENT_INFO_EXTID(Packet &p);
 
 	/**
 	 * Client requesting a list of content info based on an external
@@ -72,7 +72,7 @@ protected:
 	 * @param p The packet that was just received.
 	 * @return True upon success, otherwise false.
 	 */
-	virtual bool Receive_CLIENT_INFO_EXTID_MD5(Packet *p);
+	virtual bool Receive_CLIENT_INFO_EXTID_MD5(Packet &p);
 
 	/**
 	 * Server sending list of content info:
@@ -90,7 +90,7 @@ protected:
 	 * @param p The packet that was just received.
 	 * @return True upon success, otherwise false.
 	 */
-	virtual bool Receive_SERVER_INFO(Packet *p);
+	virtual bool Receive_SERVER_INFO(Packet &p);
 
 	/**
 	 * Client requesting the actual content:
@@ -99,7 +99,7 @@ protected:
 	 * @param p The packet that was just received.
 	 * @return True upon success, otherwise false.
 	 */
-	virtual bool Receive_CLIENT_CONTENT(Packet *p);
+	virtual bool Receive_CLIENT_CONTENT(Packet &p);
 
 	/**
 	 * Server sending list of content info:
@@ -111,9 +111,9 @@ protected:
 	 * @param p The packet that was just received.
 	 * @return True upon success, otherwise false.
 	 */
-	virtual bool Receive_SERVER_CONTENT(Packet *p);
+	virtual bool Receive_SERVER_CONTENT(Packet &p);
 
-	bool HandlePacket(Packet *p);
+	bool HandlePacket(Packet &p);
 public:
 	/**
 	 * Create a new cs socket handler for a given cs

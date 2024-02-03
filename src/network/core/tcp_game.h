@@ -164,13 +164,13 @@ protected:
 	 * Notification that the server is full.
 	 * @param p The packet that was just received.
 	 */
-	virtual NetworkRecvStatus Receive_SERVER_FULL(Packet *p);
+	virtual NetworkRecvStatus Receive_SERVER_FULL(Packet &p);
 
 	/**
 	 * Notification that the client trying to join is banned.
 	 * @param p The packet that was just received.
 	 */
-	virtual NetworkRecvStatus Receive_SERVER_BANNED(Packet *p);
+	virtual NetworkRecvStatus Receive_SERVER_BANNED(Packet &p);
 
 	/**
 	 * Try to join the server:
@@ -180,27 +180,27 @@ protected:
 	 * uint8_t   ID of the clients Language.
 	 * @param p The packet that was just received.
 	 */
-	virtual NetworkRecvStatus Receive_CLIENT_JOIN(Packet *p);
+	virtual NetworkRecvStatus Receive_CLIENT_JOIN(Packet &p);
 
 	/**
 	 * The client made an error:
 	 * uint8_t   Error code caused (see NetworkErrorCode).
 	 * @param p The packet that was just received.
 	 */
-	virtual NetworkRecvStatus Receive_SERVER_ERROR(Packet *p);
+	virtual NetworkRecvStatus Receive_SERVER_ERROR(Packet &p);
 
 	/**
 	 * Request game information.
 	 * @param p The packet that was just received.
 	 */
-	virtual NetworkRecvStatus Receive_CLIENT_GAME_INFO(Packet *p);
+	virtual NetworkRecvStatus Receive_CLIENT_GAME_INFO(Packet &p);
 
 	/**
 	 * Sends information about the game.
 	 * Serialized NetworkGameInfo. See game_info.h for details.
 	 * @param p The packet that was just received.
 	 */
-	virtual NetworkRecvStatus Receive_SERVER_GAME_INFO(Packet *p);
+	virtual NetworkRecvStatus Receive_SERVER_GAME_INFO(Packet &p);
 
 	/**
 	 * Send information about a client:
@@ -209,13 +209,13 @@ protected:
 	 * string  Name of the client.
 	 * @param p The packet that was just received.
 	 */
-	virtual NetworkRecvStatus Receive_SERVER_CLIENT_INFO(Packet *p);
+	virtual NetworkRecvStatus Receive_SERVER_CLIENT_INFO(Packet &p);
 
 	/**
 	 * Indication to the client that the server needs a game password.
 	 * @param p The packet that was just received.
 	 */
-	virtual NetworkRecvStatus Receive_SERVER_NEED_GAME_PASSWORD(Packet *p);
+	virtual NetworkRecvStatus Receive_SERVER_NEED_GAME_PASSWORD(Packet &p);
 
 	/**
 	 * Indication to the client that the server needs a company password:
@@ -223,7 +223,7 @@ protected:
 	 * string  Network ID of the server.
 	 * @param p The packet that was just received.
 	 */
-	virtual NetworkRecvStatus Receive_SERVER_NEED_COMPANY_PASSWORD(Packet *p);
+	virtual NetworkRecvStatus Receive_SERVER_NEED_COMPANY_PASSWORD(Packet &p);
 
 	/**
 	 * Send a password to the server to authorize:
@@ -231,7 +231,7 @@ protected:
 	 * string  The password.
 	 * @param p The packet that was just received.
 	 */
-	virtual NetworkRecvStatus Receive_CLIENT_GAME_PASSWORD(Packet *p);
+	virtual NetworkRecvStatus Receive_CLIENT_GAME_PASSWORD(Packet &p);
 
 	/**
 	 * Send a password to the server to authorize
@@ -239,7 +239,7 @@ protected:
 	 * string  The password.
 	 * @param p The packet that was just received.
 	 */
-	virtual NetworkRecvStatus Receive_CLIENT_COMPANY_PASSWORD(Packet *p);
+	virtual NetworkRecvStatus Receive_CLIENT_COMPANY_PASSWORD(Packet &p);
 
 	/**
 	 * The client is joined and ready to receive their map:
@@ -248,61 +248,61 @@ protected:
 	 * string  Network ID of the server.
 	 * @param p The packet that was just received.
 	 */
-	virtual NetworkRecvStatus Receive_SERVER_WELCOME(Packet *p);
+	virtual NetworkRecvStatus Receive_SERVER_WELCOME(Packet &p);
 
 	/**
 	 * Request the map from the server.
 	 * uint32_t  NewGRF version (release versions of OpenTTD only).
 	 * @param p The packet that was just received.
 	 */
-	virtual NetworkRecvStatus Receive_CLIENT_GETMAP(Packet *p);
+	virtual NetworkRecvStatus Receive_CLIENT_GETMAP(Packet &p);
 
 	/**
 	 * Notification that another client is currently receiving the map:
 	 * uint8_t   Number of clients waiting in front of you.
 	 * @param p The packet that was just received.
 	 */
-	virtual NetworkRecvStatus Receive_SERVER_WAIT(Packet *p);
+	virtual NetworkRecvStatus Receive_SERVER_WAIT(Packet &p);
 
 	/**
 	 * Sends that the server will begin with sending the map to the client:
 	 * uint32_t  Current frame.
 	 * @param p The packet that was just received.
 	 */
-	virtual NetworkRecvStatus Receive_SERVER_MAP_BEGIN(Packet *p);
+	virtual NetworkRecvStatus Receive_SERVER_MAP_BEGIN(Packet &p);
 
 	/**
 	 * Sends the size of the map to the client.
 	 * uint32_t  Size of the (compressed) map (in bytes).
 	 * @param p The packet that was just received.
 	 */
-	virtual NetworkRecvStatus Receive_SERVER_MAP_SIZE(Packet *p);
+	virtual NetworkRecvStatus Receive_SERVER_MAP_SIZE(Packet &p);
 
 	/**
 	 * Sends the data of the map to the client:
 	 * Contains a part of the map (until max size of packet).
 	 * @param p The packet that was just received.
 	 */
-	virtual NetworkRecvStatus Receive_SERVER_MAP_DATA(Packet *p);
+	virtual NetworkRecvStatus Receive_SERVER_MAP_DATA(Packet &p);
 
 	/**
 	 * Sends that all data of the map are sent to the client:
 	 * @param p The packet that was just received.
 	 */
-	virtual NetworkRecvStatus Receive_SERVER_MAP_DONE(Packet *p);
+	virtual NetworkRecvStatus Receive_SERVER_MAP_DONE(Packet &p);
 
 	/**
 	 * Tell the server that we are done receiving/loading the map.
 	 * @param p The packet that was just received.
 	 */
-	virtual NetworkRecvStatus Receive_CLIENT_MAP_OK(Packet *p);
+	virtual NetworkRecvStatus Receive_CLIENT_MAP_OK(Packet &p);
 
 	/**
 	 * A client joined (PACKET_CLIENT_MAP_OK), what usually directly follows is a PACKET_SERVER_CLIENT_INFO:
 	 * uint32_t  ID of the client that just joined the game.
 	 * @param p The packet that was just received.
 	 */
-	virtual NetworkRecvStatus Receive_SERVER_JOIN(Packet *p);
+	virtual NetworkRecvStatus Receive_SERVER_JOIN(Packet &p);
 
 	/**
 	 * Sends the current frame counter to the client:
@@ -313,7 +313,7 @@ protected:
 	 * uint8_t   Random token to validate the client is actually listening (only occasionally present).
 	 * @param p The packet that was just received.
 	 */
-	virtual NetworkRecvStatus Receive_SERVER_FRAME(Packet *p);
+	virtual NetworkRecvStatus Receive_SERVER_FRAME(Packet &p);
 
 	/**
 	 * Sends a sync-check to the client:
@@ -322,7 +322,7 @@ protected:
 	 * uint32_t  General seed 2 (dependent on compile settings, not default).
 	 * @param p The packet that was just received.
 	 */
-	virtual NetworkRecvStatus Receive_SERVER_SYNC(Packet *p);
+	virtual NetworkRecvStatus Receive_SERVER_SYNC(Packet &p);
 
 	/**
 	 * Tell the server we are done with this frame:
@@ -330,7 +330,7 @@ protected:
 	 * uint8_t   The random token that the server sent in the PACKET_SERVER_FRAME packet.
 	 * @param p The packet that was just received.
 	 */
-	virtual NetworkRecvStatus Receive_CLIENT_ACK(Packet *p);
+	virtual NetworkRecvStatus Receive_CLIENT_ACK(Packet &p);
 
 	/**
 	 * Send a DoCommand to the Server:
@@ -341,7 +341,7 @@ protected:
 	 * uint8_t   ID of the callback.
 	 * @param p The packet that was just received.
 	 */
-	virtual NetworkRecvStatus Receive_CLIENT_COMMAND(Packet *p);
+	virtual NetworkRecvStatus Receive_CLIENT_COMMAND(Packet &p);
 
 	/**
 	 * Sends a DoCommand to the client:
@@ -353,7 +353,7 @@ protected:
 	 * uint32_t  Frame of execution.
 	 * @param p The packet that was just received.
 	 */
-	virtual NetworkRecvStatus Receive_SERVER_COMMAND(Packet *p);
+	virtual NetworkRecvStatus Receive_SERVER_COMMAND(Packet &p);
 
 	/**
 	 * Sends a chat-packet to the server:
@@ -364,7 +364,7 @@ protected:
 	 * uint64_t  data (used e.g. for 'give money' actions).
 	 * @param p The packet that was just received.
 	 */
-	virtual NetworkRecvStatus Receive_CLIENT_CHAT(Packet *p);
+	virtual NetworkRecvStatus Receive_CLIENT_CHAT(Packet &p);
 
 	/**
 	 * Sends a chat-packet to the client:
@@ -374,7 +374,7 @@ protected:
 	 * uint64_t  data (used e.g. for 'give money' actions).
 	 * @param p The packet that was just received.
 	 */
-	virtual NetworkRecvStatus Receive_SERVER_CHAT(Packet *p);
+	virtual NetworkRecvStatus Receive_SERVER_CHAT(Packet &p);
 
 	/**
 	 * Sends a chat-packet for external source to the client:
@@ -384,41 +384,41 @@ protected:
 	 * string  Message (max NETWORK_CHAT_LENGTH).
 	 * @param p The packet that was just received.
 	 */
-	virtual NetworkRecvStatus Receive_SERVER_EXTERNAL_CHAT(Packet *p);
+	virtual NetworkRecvStatus Receive_SERVER_EXTERNAL_CHAT(Packet &p);
 
 	/**
 	 * Set the password for the clients current company:
 	 * string  The password.
 	 * @param p The packet that was just received.
 	 */
-	virtual NetworkRecvStatus Receive_CLIENT_SET_PASSWORD(Packet *p);
+	virtual NetworkRecvStatus Receive_CLIENT_SET_PASSWORD(Packet &p);
 
 	/**
 	 * Gives the client a new name:
 	 * string  New name of the client.
 	 * @param p The packet that was just received.
 	 */
-	virtual NetworkRecvStatus Receive_CLIENT_SET_NAME(Packet *p);
+	virtual NetworkRecvStatus Receive_CLIENT_SET_NAME(Packet &p);
 
 	/**
 	 * The client is quitting the game.
 	 * @param p The packet that was just received.
 	 */
-	virtual NetworkRecvStatus Receive_CLIENT_QUIT(Packet *p);
+	virtual NetworkRecvStatus Receive_CLIENT_QUIT(Packet &p);
 
 	/**
 	 * The client made an error and is quitting the game.
 	 * uint8_t   Error of the code caused (see NetworkErrorCode).
 	 * @param p The packet that was just received.
 	 */
-	virtual NetworkRecvStatus Receive_CLIENT_ERROR(Packet *p);
+	virtual NetworkRecvStatus Receive_CLIENT_ERROR(Packet &p);
 
 	/**
 	 * Notification that a client left the game:
 	 * uint32_t  ID of the client.
 	 * @param p The packet that was just received.
 	 */
-	virtual NetworkRecvStatus Receive_SERVER_QUIT(Packet *p);
+	virtual NetworkRecvStatus Receive_SERVER_QUIT(Packet &p);
 
 	/**
 	 * Inform all clients that one client made an error and thus has quit/been disconnected:
@@ -426,19 +426,19 @@ protected:
 	 * uint8_t   Code of the error caused (see NetworkErrorCode).
 	 * @param p The packet that was just received.
 	 */
-	virtual NetworkRecvStatus Receive_SERVER_ERROR_QUIT(Packet *p);
+	virtual NetworkRecvStatus Receive_SERVER_ERROR_QUIT(Packet &p);
 
 	/**
 	 * Let the clients know that the server is closing.
 	 * @param p The packet that was just received.
 	 */
-	virtual NetworkRecvStatus Receive_SERVER_SHUTDOWN(Packet *p);
+	virtual NetworkRecvStatus Receive_SERVER_SHUTDOWN(Packet &p);
 
 	/**
 	 * Let the clients know that the server is loading a new map.
 	 * @param p The packet that was just received.
 	 */
-	virtual NetworkRecvStatus Receive_SERVER_NEWGAME(Packet *p);
+	virtual NetworkRecvStatus Receive_SERVER_NEWGAME(Packet &p);
 
 	/**
 	 * Send the result of an issues RCon command back to the client:
@@ -446,7 +446,7 @@ protected:
 	 * string  Output of the RCon command
 	 * @param p The packet that was just received.
 	 */
-	virtual NetworkRecvStatus Receive_SERVER_RCON(Packet *p);
+	virtual NetworkRecvStatus Receive_SERVER_RCON(Packet &p);
 
 	/**
 	 * Send an RCon command to the server:
@@ -454,7 +454,7 @@ protected:
 	 * string  Command to be executed.
 	 * @param p The packet that was just received.
 	 */
-	virtual NetworkRecvStatus Receive_CLIENT_RCON(Packet *p);
+	virtual NetworkRecvStatus Receive_CLIENT_RCON(Packet &p);
 
 	/**
 	 * Sends information about all used GRFs to the client:
@@ -463,13 +463,13 @@ protected:
 	 * 16 * uint8_t   MD5 checksum of the GRF
 	 * @param p The packet that was just received.
 	 */
-	virtual NetworkRecvStatus Receive_SERVER_CHECK_NEWGRFS(Packet *p);
+	virtual NetworkRecvStatus Receive_SERVER_CHECK_NEWGRFS(Packet &p);
 
 	/**
 	 * Tell the server that we have the required GRFs
 	 * @param p The packet that was just received.
 	 */
-	virtual NetworkRecvStatus Receive_CLIENT_NEWGRFS_CHECKED(Packet *p);
+	virtual NetworkRecvStatus Receive_CLIENT_NEWGRFS_CHECKED(Packet &p);
 
 	/**
 	 * Move a client from one company into another:
@@ -477,7 +477,7 @@ protected:
 	 * uint8_t   ID of the new company.
 	 * @param p The packet that was just received.
 	 */
-	virtual NetworkRecvStatus Receive_SERVER_MOVE(Packet *p);
+	virtual NetworkRecvStatus Receive_SERVER_MOVE(Packet &p);
 
 	/**
 	 * Request the server to move this client into another company:
@@ -485,14 +485,14 @@ protected:
 	 * string  Password, if the company is password protected.
 	 * @param p The packet that was just received.
 	 */
-	virtual NetworkRecvStatus Receive_CLIENT_MOVE(Packet *p);
+	virtual NetworkRecvStatus Receive_CLIENT_MOVE(Packet &p);
 
 	/**
 	 * Update the clients knowledge of which company is password protected:
 	 * uint16_t  Bitwise representation of each company
 	 * @param p The packet that was just received.
 	 */
-	virtual NetworkRecvStatus Receive_SERVER_COMPANY_UPDATE(Packet *p);
+	virtual NetworkRecvStatus Receive_SERVER_COMPANY_UPDATE(Packet &p);
 
 	/**
 	 * Update the clients knowledge of the max settings:
@@ -500,9 +500,9 @@ protected:
 	 * uint8_t   Maximum number of spectators allowed.
 	 * @param p The packet that was just received.
 	 */
-	virtual NetworkRecvStatus Receive_SERVER_CONFIG_UPDATE(Packet *p);
+	virtual NetworkRecvStatus Receive_SERVER_CONFIG_UPDATE(Packet &p);
 
-	NetworkRecvStatus HandlePacket(Packet *p);
+	NetworkRecvStatus HandlePacket(Packet &p);
 
 	NetworkGameSocketHandler(SOCKET s);
 public:
@@ -542,8 +542,8 @@ public:
 
 	NetworkRecvStatus ReceivePackets();
 
-	const char *ReceiveCommand(Packet *p, CommandPacket *cp);
-	void SendCommand(Packet *p, const CommandPacket *cp);
+	const char *ReceiveCommand(Packet &p, CommandPacket *cp);
+	void SendCommand(Packet &p, const CommandPacket *cp);
 
 	bool IsPendingDeletion() const { return this->is_pending_deletion; }
 

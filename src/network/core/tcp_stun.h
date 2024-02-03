@@ -39,7 +39,7 @@ protected:
 	 * @param p The packet that was just received.
 	 * @return True upon success, otherwise false.
 	 */
-	virtual bool Receive_SERCLI_STUN(Packet *p);
+	virtual bool Receive_SERCLI_STUN(Packet &p);
 
 public:
 	/**
