@@ -222,18 +222,8 @@ public:
 	 *  - max_value The maximum value of this setting. Required for integer
 	 *    settings and not allowed for boolean settings. The value will be
 	 *    clamped in the range [MIN(int32_t), MAX(int32_t)] (inclusive).
-	 *  - easy_value The default value if the easy difficulty level
-	 *    is selected. Required. The value will be clamped in the range
-	 *    [MIN(int32_t), MAX(int32_t)] (inclusive).
-	 *  - medium_value The default value if the medium difficulty level
-	 *    is selected. Required. The value will be clamped in the range
-	 *    [MIN(int32_t), MAX(int32_t)] (inclusive).
-	 *  - hard_value The default value if the hard difficulty level
-	 *    is selected. Required. The value will be clamped in the range
-	 *    [MIN(int32_t), MAX(int32_t)] (inclusive).
-	 *  - custom_value The default value if the custom difficulty level
-	 *    is selected. Required. The value will be clamped in the range
-	 *    [MIN(int32_t), MAX(int32_t)] (inclusive).
+	 *  - default_value The default value. Required. The value will be
+	 *    clamped in the range [MIN(int32_t), MAX(int32_t)] (inclusive).
 	 *  - random_deviation If this property has a nonzero value, then the
 	 *    actual value of the setting in game will be randomised in the range
 	 *    [user_configured_value - random_deviation, user_configured_value + random_deviation] (inclusive).

@@ -87,6 +87,10 @@ SQInteger ScriptInfo::AddSetting(HSQUIRRELVM vm)
 	ScriptConfigItem config;
 	uint items = 0;
 
+	int easy_value = INT32_MIN;
+	int medium_value = INT32_MIN;
+	int hard_value = INT32_MIN;
+
 	/* Read the table, and find all properties we care about */
 	sq_pushnull(vm);
 	while (SQ_SUCCEEDED(sq_next(vm, -2))) {
@@ -122,28 +126,30 @@ SQInteger ScriptInfo::AddSetting(HSQUIRRELVM vm)
 		} else if (key == "easy_value") {
 			SQInteger res;
 			if (SQ_FAILED(sq_getinteger(vm, -1, &res))) return SQ_ERROR;
-			config.easy_value = ClampTo<int32_t>(res);
+			easy_value = ClampTo<int32_t>(res);
 			items |= 0x010;
 		} else if (key == "medium_value") {
 			SQInteger res;
 			if (SQ_FAILED(sq_getinteger(vm, -1, &res))) return SQ_ERROR;
-			config.medium_value = ClampTo<int32_t>(res);
+			medium_value = ClampTo<int32_t>(res);
 			items |= 0x020;
 		} else if (key == "hard_value") {
 			SQInteger res;
 			if (SQ_FAILED(sq_getinteger(vm, -1, &res))) return SQ_ERROR;
-			config.hard_value = ClampTo<int32_t>(res);
+			hard_value = ClampTo<int32_t>(res);
 			items |= 0x040;
+		} else if (key == "custom_value") {
+			// No longer parsed.
+		} else if (key == "default_value") {
+			SQInteger res;
+			if (SQ_FAILED(sq_getinteger(vm, -1, &res))) return SQ_ERROR;
+			config.default_value = ClampTo<int32_t>(res);
+			items |= 0x080;
 		} else if (key == "random_deviation") {
 			SQInteger res;
 			if (SQ_FAILED(sq_getinteger(vm, -1, &res))) return SQ_ERROR;
 			config.random_deviation = ClampTo<int32_t>(abs(res));
 			items |= 0x200;
-		} else if (key == "custom_value") {
-			SQInteger res;
-			if (SQ_FAILED(sq_getinteger(vm, -1, &res))) return SQ_ERROR;
-			config.custom_value = ClampTo<int32_t>(res);
-			items |= 0x080;
 		} else if (key == "step_size") {
 			SQInteger res;
 			if (SQ_FAILED(sq_getinteger(vm, -1, &res))) return SQ_ERROR;
@@ -161,6 +167,28 @@ SQInteger ScriptInfo::AddSetting(HSQUIRRELVM vm)
 		sq_pop(vm, 2);
 	}
 	sq_pop(vm, 1);
+
+	/* Check if default_value is set. Although required, this was changed with
+	 * 14.0, and as such, older AIs don't use it yet. So we convert the older
+	 * values into a default_value. */
+	if ((items & 0x080) == 0) {
+		/* Easy/medium/hard should all three be defined. */
+		if ((items & 0x010) == 0 || (items & 0x020) == 0 || (items & 0x040) == 0) {
+			this->engine->ThrowError("please define all properties of a setting (min/max not allowed for booleans)");
+			return SQ_ERROR;
+		}
+
+		config.default_value = medium_value;
+		/* If not boolean and no random deviation set, calculate it based on easy/hard difference. */
+		if ((config.flags & SCRIPTCONFIG_BOOLEAN) == 0 && (items & 0x200) == 0) {
+			config.random_deviation = abs(hard_value - easy_value) / 2;
+			items |= 0x200;
+		}
+		items |= 0x080;
+	} else {
+		/* For compatibility, also act like the default sets the easy/medium/hard. */
+		items |= 0x010 | 0x020 | 0x040;
+	}
 
 	/* Don't allow both random_deviation and SCRIPTCONFIG_BOOLEAN to
 	 * be set for the same config item. */
@@ -252,14 +280,7 @@ int ScriptInfo::GetSettingDefaultValue(const std::string &name) const
 {
 	for (const auto &item : this->config_list) {
 		if (item.name != name) continue;
-		/* The default value depends on the difficulty level */
-		switch (GetGameSettings().script.settings_profile) {
-			case SP_EASY:   return item.easy_value;
-			case SP_MEDIUM: return item.medium_value;
-			case SP_HARD:   return item.hard_value;
-			case SP_CUSTOM: return item.custom_value;
-			default: NOT_REACHED();
-		}
+		return item.default_value;
 	}
 
 	/* There is no such setting */

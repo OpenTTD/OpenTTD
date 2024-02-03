@@ -34,10 +34,7 @@ struct ScriptConfigItem {
 	std::string description;      ///< The description of the configuration setting.
 	int min_value = 0;            ///< The minimal value this configuration setting can have.
 	int max_value = 1;            ///< The maximal value this configuration setting can have.
-	int custom_value = 0;         ///< The default value on custom difficulty setting.
-	int easy_value = 0;           ///< The default value on easy difficulty setting.
-	int medium_value = 0;         ///< The default value on medium difficulty setting.
-	int hard_value = 0;           ///< The default value on hard difficulty setting.
+	int default_value = 0;        ///< The default value of this configuration setting.
 	int random_deviation = 0;     ///< The maximum random deviation from the default value.
 	int step_size = 1;            ///< The step size in the gui.
 	ScriptConfigFlags flags = SCRIPTCONFIG_NONE; ///< Flags for the configuration setting.

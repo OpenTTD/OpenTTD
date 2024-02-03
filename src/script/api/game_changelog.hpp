@@ -99,6 +99,7 @@
  * \li GSSubsidyList accepts an optional filter function
  * \li GSTownList accepts an optional filter function
  * \li GSVehicleList accepts an optional filter function
+ * \li GSInfo::AddSettings easy_value / medium_value / hard_value are replaced with default_value
  *
  * \b 13.0
  *

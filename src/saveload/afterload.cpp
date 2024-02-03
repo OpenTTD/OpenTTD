@@ -2862,12 +2862,6 @@ bool AfterLoadGame()
 		}
 	}
 
-	if (IsSavegameVersionBefore(SLV_178)) {
-		extern uint8_t _old_diff_level;
-		/* Initialise script settings profile */
-		_settings_game.script.settings_profile = IsInsideMM(_old_diff_level, SP_BEGIN, SP_END) ? _old_diff_level : (uint)SP_MEDIUM;
-	}
-
 	{
 		/* Station blocked, wires and pylon flags need to be stored in the map. This is effectively cached data, so no
 		 * version check is necessary. This is done here as the SLV_182 check below needs the blocked status. */

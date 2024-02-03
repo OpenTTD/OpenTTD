@@ -1812,13 +1812,6 @@ STR_CONFIG_SETTING_AI_BUILDS_AIRCRAFT_HELPTEXT                  :Enabling this s
 STR_CONFIG_SETTING_AI_BUILDS_SHIPS                              :Disable ships for computer: {STRING2}
 STR_CONFIG_SETTING_AI_BUILDS_SHIPS_HELPTEXT                     :Enabling this setting makes building ships impossible for a computer player
 
-STR_CONFIG_SETTING_AI_PROFILE                                   :Default settings profile: {STRING2}
-STR_CONFIG_SETTING_AI_PROFILE_HELPTEXT                          :Choose which settings profile to use for random AIs or for initial values when adding a new AI or Game Script
-###length 3
-STR_CONFIG_SETTING_AI_PROFILE_EASY                              :Easy
-STR_CONFIG_SETTING_AI_PROFILE_MEDIUM                            :Medium
-STR_CONFIG_SETTING_AI_PROFILE_HARD                              :Hard
-
 STR_CONFIG_SETTING_AI_IN_MULTIPLAYER                            :Allow AIs in multiplayer: {STRING2}
 STR_CONFIG_SETTING_AI_IN_MULTIPLAYER_HELPTEXT                   :Allow AI computer players to participate in multiplayer games
 
