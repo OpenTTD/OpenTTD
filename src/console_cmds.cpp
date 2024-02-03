@@ -1215,15 +1215,22 @@ DEF_CONSOLE_CMD(ConNewGame)
 
 DEF_CONSOLE_CMD(ConRestart)
 {
-	if (argc == 0) {
-		IConsolePrint(CC_HELP, "Restart game. Usage: 'restart'.");
-		IConsolePrint(CC_HELP, "Restarts a game, using the newgame settings.");
-		IConsolePrint(CC_HELP, " * if you started from a new game, and your newgame settings haven't changed, the game will be identical to when you started it.");
-		IConsolePrint(CC_HELP, " * if you started from a savegame / scenario / heightmap, the game might be different, because your settings might differ.");
+	if (argc == 0 || argc > 2) {
+		IConsolePrint(CC_HELP, "Restart game. Usage: 'restart [current|newgame]'.");
+		IConsolePrint(CC_HELP, "Restarts a game, using either the current or newgame (default) settings.");
+		IConsolePrint(CC_HELP, " * if you started from a new game, and your current/newgame settings haven't changed, the game will be identical to when you started it.");
+		IConsolePrint(CC_HELP, " * if you started from a savegame / scenario / heightmap, the game might be different, because the current/newgame settings might differ.");
 		return true;
 	}
 
-	StartNewGameWithoutGUI(_settings_game.game_creation.generation_seed);
+	if (argc == 1 || std::string_view(argv[1]) == "newgame") {
+		StartNewGameWithoutGUI(_settings_game.game_creation.generation_seed);
+	} else {
+		_settings_game.game_creation.map_x = Map::LogX();
+		_settings_game.game_creation.map_y = Map::LogY();
+		_switch_mode = SM_RESTARTGAME;
+	}
+
 	return true;
 }
 
@@ -1231,9 +1238,12 @@ DEF_CONSOLE_CMD(ConReload)
 {
 	if (argc == 0) {
 		IConsolePrint(CC_HELP, "Reload game. Usage: 'reload'.");
-		IConsolePrint(CC_HELP, "Reloads a game.");
-		IConsolePrint(CC_HELP, " * if you started from a new game, reload the game with the current active settings.");
-		IConsolePrint(CC_HELP, " * if you started from a savegame / scenario / heightmap, that same savegame / scenario / heightmap will be loaded again.");
+		IConsolePrint(CC_HELP, "Reloads a game if loaded via savegame / scenario / heightmap.");
+		return true;
+	}
+
+	if (_file_to_saveload.abstract_ftype == FT_NONE || _file_to_saveload.abstract_ftype == FT_INVALID) {
+		IConsolePrint(CC_ERROR, "No game loaded to reload.");
 		return true;
 	}
 
