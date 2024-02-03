@@ -1300,9 +1300,6 @@ CommandCost CmdModifyOrder(DoCommandFlag flags, VehicleID veh, VehicleOrderID se
 
 		case MOF_DEPOT_ACTION:
 			if (data >= DA_END) return CMD_ERROR;
-			/* The vehicle must always go to the depot (not just if it needs servicing) in order to unbunch there. */
-			if ((data == DA_SERVICE) && (order->GetDepotActionType() & ODATFB_UNBUNCH)) return_cmd_error(STR_ERROR_UNBUNCHING_NO_SERVICE_IF_NEEDED);
-
 			/* Check if we are allowed to add unbunching. We are always allowed to remove it. */
 			if (data == DA_UNBUNCH) {
 				/* Only one unbunching order is allowed in a vehicle's orders. If this order already has an unbunching action, no error is needed. */
@@ -1312,8 +1309,6 @@ CommandCost CmdModifyOrder(DoCommandFlag flags, VehicleID veh, VehicleOrderID se
 					if (o->IsType(OT_CONDITIONAL)) return_cmd_error(STR_ERROR_UNBUNCHING_NO_UNBUNCHING_CONDITIONAL);
 					/* We don't allow unbunching if the vehicle has a full load order. */
 					if (o->IsType(OT_GOTO_STATION) && o->GetLoadType() & (OLFB_FULL_LOAD | OLF_FULL_LOAD_ANY)) return_cmd_error(STR_ERROR_UNBUNCHING_NO_UNBUNCHING_FULL_LOAD);
-					/* The vehicle must always go to the depot (not just if it needs servicing) in order to unbunch there. */
-					if (o->IsType(OT_GOTO_DEPOT) && o->GetDepotOrderType() & ODTFB_SERVICE) return_cmd_error(STR_ERROR_UNBUNCHING_NO_SERVICE_IF_NEEDED);
 				}
 			}
 			break;
