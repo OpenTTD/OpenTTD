@@ -149,20 +149,14 @@ struct AIConfigWindow : public Window {
 	/**
 	 * Can the AI config in the given company slot be edited?
 	 * @param slot The slot to query.
-	 * @return True if and only if the given AI Config slot can e edited.
+	 * @return True if and only if the given AI Config slot can be edited.
 	 */
 	static bool IsEditable(CompanyID slot)
 	{
 		if (_game_mode != GM_NORMAL) {
-			return slot > 0 && slot <= GetGameSettings().difficulty.max_no_competitors;
+			return slot > 0 && slot < MAX_COMPANIES;
 		}
-		if (Company::IsValidID(slot)) return false;
-
-		int max_slot = GetGameSettings().difficulty.max_no_competitors;
-		for (CompanyID cid = COMPANY_FIRST; cid < (CompanyID)max_slot && cid < MAX_COMPANIES; cid++) {
-			if (Company::IsValidHumanID(cid)) max_slot++;
-		}
-		return slot < max_slot;
+		return slot < MAX_COMPANIES && !Company::IsValidID(slot);
 	}
 
 	void DrawWidget(const Rect &r, WidgetID widget) const override
@@ -186,7 +180,14 @@ struct AIConfigWindow : public Window {
 					if (this->selected_slot == i) {
 						tc = TC_WHITE;
 					} else if (IsEditable((CompanyID)i)) {
-						tc = TC_ORANGE;
+						int max_slot = GetGameSettings().difficulty.max_no_competitors;
+						for (const Company *c : Company::Iterate()) {
+							if (c->is_ai) max_slot--;
+						}
+						for (CompanyID cid = COMPANY_FIRST; cid < (CompanyID)max_slot && cid < MAX_COMPANIES; cid++) {
+							if (Company::IsValidHumanID(cid)) max_slot++;
+						}
+						if (i < max_slot) tc = TC_ORANGE;
 					} else if (Company::IsValidAiID(i)) {
 						tc = TC_GREEN;
 					}
