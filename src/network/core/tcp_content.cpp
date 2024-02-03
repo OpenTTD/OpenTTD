@@ -98,9 +98,9 @@ std::optional<std::string> ContentInfo::GetTextfile(TextfileType type) const
  * @param p the packet to handle
  * @return true if we should immediately handle further packets, false otherwise
  */
-bool NetworkContentSocketHandler::HandlePacket(Packet *p)
+bool NetworkContentSocketHandler::HandlePacket(Packet &p)
 {
-	PacketContentType type = (PacketContentType)p->Recv_uint8();
+	PacketContentType type = (PacketContentType)p.Recv_uint8();
 
 	switch (this->HasClientQuit() ? PACKET_CONTENT_END : type) {
 		case PACKET_CONTENT_CLIENT_INFO_LIST:      return this->Receive_CLIENT_INFO_LIST(p);
@@ -150,7 +150,7 @@ bool NetworkContentSocketHandler::ReceivePackets()
 	static const int MAX_PACKETS_TO_RECEIVE = 42;
 	int i = MAX_PACKETS_TO_RECEIVE;
 	while (--i != 0 && (p = this->ReceivePacket()) != nullptr) {
-		bool cont = this->HandlePacket(p.get());
+		bool cont = this->HandlePacket(*p);
 		if (!cont) return true;
 	}
 
@@ -169,13 +169,13 @@ bool NetworkContentSocketHandler::ReceiveInvalidPacket(PacketContentType type)
 	return false;
 }
 
-bool NetworkContentSocketHandler::Receive_CLIENT_INFO_LIST(Packet *) { return this->ReceiveInvalidPacket(PACKET_CONTENT_CLIENT_INFO_LIST); }
-bool NetworkContentSocketHandler::Receive_CLIENT_INFO_ID(Packet *) { return this->ReceiveInvalidPacket(PACKET_CONTENT_CLIENT_INFO_ID); }
-bool NetworkContentSocketHandler::Receive_CLIENT_INFO_EXTID(Packet *) { return this->ReceiveInvalidPacket(PACKET_CONTENT_CLIENT_INFO_EXTID); }
-bool NetworkContentSocketHandler::Receive_CLIENT_INFO_EXTID_MD5(Packet *) { return this->ReceiveInvalidPacket(PACKET_CONTENT_CLIENT_INFO_EXTID_MD5); }
-bool NetworkContentSocketHandler::Receive_SERVER_INFO(Packet *) { return this->ReceiveInvalidPacket(PACKET_CONTENT_SERVER_INFO); }
-bool NetworkContentSocketHandler::Receive_CLIENT_CONTENT(Packet *) { return this->ReceiveInvalidPacket(PACKET_CONTENT_CLIENT_CONTENT); }
-bool NetworkContentSocketHandler::Receive_SERVER_CONTENT(Packet *) { return this->ReceiveInvalidPacket(PACKET_CONTENT_SERVER_CONTENT); }
+bool NetworkContentSocketHandler::Receive_CLIENT_INFO_LIST(Packet &) { return this->ReceiveInvalidPacket(PACKET_CONTENT_CLIENT_INFO_LIST); }
+bool NetworkContentSocketHandler::Receive_CLIENT_INFO_ID(Packet &) { return this->ReceiveInvalidPacket(PACKET_CONTENT_CLIENT_INFO_ID); }
+bool NetworkContentSocketHandler::Receive_CLIENT_INFO_EXTID(Packet &) { return this->ReceiveInvalidPacket(PACKET_CONTENT_CLIENT_INFO_EXTID); }
+bool NetworkContentSocketHandler::Receive_CLIENT_INFO_EXTID_MD5(Packet &) { return this->ReceiveInvalidPacket(PACKET_CONTENT_CLIENT_INFO_EXTID_MD5); }
+bool NetworkContentSocketHandler::Receive_SERVER_INFO(Packet &) { return this->ReceiveInvalidPacket(PACKET_CONTENT_SERVER_INFO); }
+bool NetworkContentSocketHandler::Receive_CLIENT_CONTENT(Packet &) { return this->ReceiveInvalidPacket(PACKET_CONTENT_CLIENT_CONTENT); }
+bool NetworkContentSocketHandler::Receive_SERVER_CONTENT(Packet &) { return this->ReceiveInvalidPacket(PACKET_CONTENT_SERVER_CONTENT); }
 
 /**
  * Helper to get the subdirectory a #ContentInfo is located in.

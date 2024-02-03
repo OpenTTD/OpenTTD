@@ -49,34 +49,34 @@ static bool HasGRFConfig(const ContentInfo *ci, bool md5sum)
  */
 typedef bool (*HasProc)(const ContentInfo *ci, bool md5sum);
 
-bool ClientNetworkContentSocketHandler::Receive_SERVER_INFO(Packet *p)
+bool ClientNetworkContentSocketHandler::Receive_SERVER_INFO(Packet &p)
 {
 	ContentInfo *ci = new ContentInfo();
-	ci->type     = (ContentType)p->Recv_uint8();
-	ci->id       = (ContentID)p->Recv_uint32();
-	ci->filesize = p->Recv_uint32();
+	ci->type     = (ContentType)p.Recv_uint8();
+	ci->id       = (ContentID)p.Recv_uint32();
+	ci->filesize = p.Recv_uint32();
 
-	ci->name        = p->Recv_string(NETWORK_CONTENT_NAME_LENGTH);
-	ci->version     = p->Recv_string(NETWORK_CONTENT_VERSION_LENGTH);
-	ci->url         = p->Recv_string(NETWORK_CONTENT_URL_LENGTH);
-	ci->description = p->Recv_string(NETWORK_CONTENT_DESC_LENGTH, SVS_REPLACE_WITH_QUESTION_MARK | SVS_ALLOW_NEWLINE);
+	ci->name        = p.Recv_string(NETWORK_CONTENT_NAME_LENGTH);
+	ci->version     = p.Recv_string(NETWORK_CONTENT_VERSION_LENGTH);
+	ci->url         = p.Recv_string(NETWORK_CONTENT_URL_LENGTH);
+	ci->description = p.Recv_string(NETWORK_CONTENT_DESC_LENGTH, SVS_REPLACE_WITH_QUESTION_MARK | SVS_ALLOW_NEWLINE);
 
-	ci->unique_id = p->Recv_uint32();
+	ci->unique_id = p.Recv_uint32();
 	for (size_t j = 0; j < ci->md5sum.size(); j++) {
-		ci->md5sum[j] = p->Recv_uint8();
+		ci->md5sum[j] = p.Recv_uint8();
 	}
 
-	uint dependency_count = p->Recv_uint8();
+	uint dependency_count = p.Recv_uint8();
 	ci->dependencies.reserve(dependency_count);
 	for (uint i = 0; i < dependency_count; i++) {
-		ContentID dependency_cid = (ContentID)p->Recv_uint32();
+		ContentID dependency_cid = (ContentID)p.Recv_uint32();
 		ci->dependencies.push_back(dependency_cid);
 		this->reverse_dependency_map.insert({ dependency_cid, ci->id });
 	}
 
-	uint tag_count = p->Recv_uint8();
+	uint tag_count = p.Recv_uint8();
 	ci->tags.reserve(tag_count);
-	for (uint i = 0; i < tag_count; i++) ci->tags.push_back(p->Recv_string(NETWORK_CONTENT_TAG_LENGTH));
+	for (uint i = 0; i < tag_count; i++) ci->tags.push_back(p.Recv_string(NETWORK_CONTENT_TAG_LENGTH));
 
 	if (!ci->IsValid()) {
 		delete ci;
@@ -477,16 +477,16 @@ static inline ssize_t TransferOutFWrite(FILE *file, const char *buffer, size_t a
 	return fwrite(buffer, 1, amount, file);
 }
 
-bool ClientNetworkContentSocketHandler::Receive_SERVER_CONTENT(Packet *p)
+bool ClientNetworkContentSocketHandler::Receive_SERVER_CONTENT(Packet &p)
 {
 	if (this->curFile == nullptr) {
 		delete this->curInfo;
 		/* When we haven't opened a file this must be our first packet with metadata. */
 		this->curInfo = new ContentInfo;
-		this->curInfo->type     = (ContentType)p->Recv_uint8();
-		this->curInfo->id       = (ContentID)p->Recv_uint32();
-		this->curInfo->filesize = p->Recv_uint32();
-		this->curInfo->filename = p->Recv_string(NETWORK_CONTENT_FILENAME_LENGTH);
+		this->curInfo->type     = (ContentType)p.Recv_uint8();
+		this->curInfo->id       = (ContentID)p.Recv_uint32();
+		this->curInfo->filesize = p.Recv_uint32();
+		this->curInfo->filename = p.Recv_string(NETWORK_CONTENT_FILENAME_LENGTH);
 
 		if (!this->BeforeDownload()) {
 			this->CloseConnection();
@@ -494,8 +494,8 @@ bool ClientNetworkContentSocketHandler::Receive_SERVER_CONTENT(Packet *p)
 		}
 	} else {
 		/* We have a file opened, thus are downloading internal content */
-		size_t toRead = p->RemainingBytesToTransfer();
-		if (toRead != 0 && (size_t)p->TransferOut(TransferOutFWrite, this->curFile) != toRead) {
+		size_t toRead = p.RemainingBytesToTransfer();
+		if (toRead != 0 && (size_t)p.TransferOut(TransferOutFWrite, this->curFile) != toRead) {
 			CloseWindowById(WC_NETWORK_STATUS_WINDOW, WN_NETWORK_STATUS_WINDOW_CONTENT_DOWNLOAD);
 			ShowErrorMessage(STR_CONTENT_ERROR_COULD_NOT_DOWNLOAD, STR_CONTENT_ERROR_COULD_NOT_DOWNLOAD_FILE_NOT_WRITABLE, WL_ERROR);
 			this->CloseConnection();

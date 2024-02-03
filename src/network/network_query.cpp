@@ -87,7 +87,7 @@ NetworkRecvStatus QueryNetworkGameSocketHandler::SendGameInfo()
 	return NETWORK_RECV_STATUS_OKAY;
 }
 
-NetworkRecvStatus QueryNetworkGameSocketHandler::Receive_SERVER_FULL(Packet *)
+NetworkRecvStatus QueryNetworkGameSocketHandler::Receive_SERVER_FULL(Packet &)
 {
 	Debug(net, 9, "Query::Receive_SERVER_FULL()");
 
@@ -100,7 +100,7 @@ NetworkRecvStatus QueryNetworkGameSocketHandler::Receive_SERVER_FULL(Packet *)
 	return NETWORK_RECV_STATUS_CLOSE_QUERY;
 }
 
-NetworkRecvStatus QueryNetworkGameSocketHandler::Receive_SERVER_BANNED(Packet *)
+NetworkRecvStatus QueryNetworkGameSocketHandler::Receive_SERVER_BANNED(Packet &)
 {
 	Debug(net, 9, "Query::Receive_SERVER_BANNED()");
 
@@ -113,7 +113,7 @@ NetworkRecvStatus QueryNetworkGameSocketHandler::Receive_SERVER_BANNED(Packet *)
 	return NETWORK_RECV_STATUS_CLOSE_QUERY;
 }
 
-NetworkRecvStatus QueryNetworkGameSocketHandler::Receive_SERVER_GAME_INFO(Packet *p)
+NetworkRecvStatus QueryNetworkGameSocketHandler::Receive_SERVER_GAME_INFO(Packet &p)
 {
 	Debug(net, 9, "Query::Receive_SERVER_GAME_INFO()");
 
@@ -122,7 +122,7 @@ NetworkRecvStatus QueryNetworkGameSocketHandler::Receive_SERVER_GAME_INFO(Packet
 	/* Clear any existing GRFConfig chain. */
 	ClearGRFConfigList(&item->info.grfconfig);
 	/* Retrieve the NetworkGameInfo from the packet. */
-	DeserializeNetworkGameInfo(*p, item->info);
+	DeserializeNetworkGameInfo(p, item->info);
 	/* Check for compatability with the client. */
 	CheckGameCompatibility(item->info);
 	/* Ensure we consider the server online. */
@@ -134,9 +134,9 @@ NetworkRecvStatus QueryNetworkGameSocketHandler::Receive_SERVER_GAME_INFO(Packet
 	return NETWORK_RECV_STATUS_CLOSE_QUERY;
 }
 
-NetworkRecvStatus QueryNetworkGameSocketHandler::Receive_SERVER_ERROR(Packet *p)
+NetworkRecvStatus QueryNetworkGameSocketHandler::Receive_SERVER_ERROR(Packet &p)
 {
-	NetworkErrorCode error = (NetworkErrorCode)p->Recv_uint8();
+	NetworkErrorCode error = (NetworkErrorCode)p.Recv_uint8();
 
 	Debug(net, 9, "Query::Receive_SERVER_ERROR(): error={}", error);
 

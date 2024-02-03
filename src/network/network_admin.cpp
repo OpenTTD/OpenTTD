@@ -489,11 +489,11 @@ NetworkRecvStatus ServerNetworkAdminSocketHandler::SendRcon(uint16_t colour, con
 	return NETWORK_RECV_STATUS_OKAY;
 }
 
-NetworkRecvStatus ServerNetworkAdminSocketHandler::Receive_ADMIN_RCON(Packet *p)
+NetworkRecvStatus ServerNetworkAdminSocketHandler::Receive_ADMIN_RCON(Packet &p)
 {
 	if (this->status == ADMIN_STATUS_INACTIVE) return this->SendError(NETWORK_ERROR_NOT_EXPECTED);
 
-	std::string command = p->Recv_string(NETWORK_RCONCOMMAND_LENGTH);
+	std::string command = p.Recv_string(NETWORK_RCONCOMMAND_LENGTH);
 
 	Debug(net, 3, "[admin] Rcon command from '{}' ({}): {}", this->admin_name, this->admin_version, command);
 
@@ -503,11 +503,11 @@ NetworkRecvStatus ServerNetworkAdminSocketHandler::Receive_ADMIN_RCON(Packet *p)
 	return this->SendRconEnd(command);
 }
 
-NetworkRecvStatus ServerNetworkAdminSocketHandler::Receive_ADMIN_GAMESCRIPT(Packet *p)
+NetworkRecvStatus ServerNetworkAdminSocketHandler::Receive_ADMIN_GAMESCRIPT(Packet &p)
 {
 	if (this->status == ADMIN_STATUS_INACTIVE) return this->SendError(NETWORK_ERROR_NOT_EXPECTED);
 
-	std::string json = p->Recv_string(NETWORK_GAMESCRIPT_JSON_LENGTH);
+	std::string json = p.Recv_string(NETWORK_GAMESCRIPT_JSON_LENGTH);
 
 	Debug(net, 6, "[admin] GameScript JSON from '{}' ({}): {}", this->admin_name, this->admin_version, json);
 
@@ -515,11 +515,11 @@ NetworkRecvStatus ServerNetworkAdminSocketHandler::Receive_ADMIN_GAMESCRIPT(Pack
 	return NETWORK_RECV_STATUS_OKAY;
 }
 
-NetworkRecvStatus ServerNetworkAdminSocketHandler::Receive_ADMIN_PING(Packet *p)
+NetworkRecvStatus ServerNetworkAdminSocketHandler::Receive_ADMIN_PING(Packet &p)
 {
 	if (this->status == ADMIN_STATUS_INACTIVE) return this->SendError(NETWORK_ERROR_NOT_EXPECTED);
 
-	uint32_t d1 = p->Recv_uint32();
+	uint32_t d1 = p.Recv_uint32();
 
 	Debug(net, 6, "[admin] Ping from '{}' ({}): {}", this->admin_name, this->admin_version, d1);
 
@@ -627,11 +627,11 @@ NetworkRecvStatus ServerNetworkAdminSocketHandler::SendCmdLogging(ClientID clien
  * Receiving functions
  ************/
 
-NetworkRecvStatus ServerNetworkAdminSocketHandler::Receive_ADMIN_JOIN(Packet *p)
+NetworkRecvStatus ServerNetworkAdminSocketHandler::Receive_ADMIN_JOIN(Packet &p)
 {
 	if (this->status != ADMIN_STATUS_INACTIVE) return this->SendError(NETWORK_ERROR_NOT_EXPECTED);
 
-	std::string password = p->Recv_string(NETWORK_PASSWORD_LENGTH);
+	std::string password = p.Recv_string(NETWORK_PASSWORD_LENGTH);
 
 	if (_settings_client.network.admin_password.empty() ||
 			_settings_client.network.admin_password.compare(password) != 0) {
@@ -639,8 +639,8 @@ NetworkRecvStatus ServerNetworkAdminSocketHandler::Receive_ADMIN_JOIN(Packet *p)
 		return this->SendError(NETWORK_ERROR_WRONG_PASSWORD);
 	}
 
-	this->admin_name = p->Recv_string(NETWORK_CLIENT_NAME_LENGTH);
-	this->admin_version = p->Recv_string(NETWORK_REVISION_LENGTH);
+	this->admin_name = p.Recv_string(NETWORK_CLIENT_NAME_LENGTH);
+	this->admin_version = p.Recv_string(NETWORK_REVISION_LENGTH);
 
 	if (this->admin_name.empty() || this->admin_version.empty()) {
 		/* no name or version supplied */
@@ -654,18 +654,18 @@ NetworkRecvStatus ServerNetworkAdminSocketHandler::Receive_ADMIN_JOIN(Packet *p)
 	return this->SendProtocol();
 }
 
-NetworkRecvStatus ServerNetworkAdminSocketHandler::Receive_ADMIN_QUIT(Packet *)
+NetworkRecvStatus ServerNetworkAdminSocketHandler::Receive_ADMIN_QUIT(Packet &)
 {
 	/* The admin is leaving nothing else to do */
 	return this->CloseConnection();
 }
 
-NetworkRecvStatus ServerNetworkAdminSocketHandler::Receive_ADMIN_UPDATE_FREQUENCY(Packet *p)
+NetworkRecvStatus ServerNetworkAdminSocketHandler::Receive_ADMIN_UPDATE_FREQUENCY(Packet &p)
 {
 	if (this->status == ADMIN_STATUS_INACTIVE) return this->SendError(NETWORK_ERROR_NOT_EXPECTED);
 
-	AdminUpdateType type = (AdminUpdateType)p->Recv_uint16();
-	AdminUpdateFrequency freq = (AdminUpdateFrequency)p->Recv_uint16();
+	AdminUpdateType type = (AdminUpdateType)p.Recv_uint16();
+	AdminUpdateFrequency freq = (AdminUpdateFrequency)p.Recv_uint16();
 
 	if (type >= ADMIN_UPDATE_END || (_admin_update_type_frequencies[type] & freq) != freq) {
 		/* The server does not know of this UpdateType. */
@@ -680,12 +680,12 @@ NetworkRecvStatus ServerNetworkAdminSocketHandler::Receive_ADMIN_UPDATE_FREQUENC
 	return NETWORK_RECV_STATUS_OKAY;
 }
 
-NetworkRecvStatus ServerNetworkAdminSocketHandler::Receive_ADMIN_POLL(Packet *p)
+NetworkRecvStatus ServerNetworkAdminSocketHandler::Receive_ADMIN_POLL(Packet &p)
 {
 	if (this->status == ADMIN_STATUS_INACTIVE) return this->SendError(NETWORK_ERROR_NOT_EXPECTED);
 
-	AdminUpdateType type = (AdminUpdateType)p->Recv_uint8();
-	uint32_t d1 = p->Recv_uint32();
+	AdminUpdateType type = (AdminUpdateType)p.Recv_uint8();
+	uint32_t d1 = p.Recv_uint32();
 
 	switch (type) {
 		case ADMIN_UPDATE_DATE:
@@ -746,15 +746,15 @@ NetworkRecvStatus ServerNetworkAdminSocketHandler::Receive_ADMIN_POLL(Packet *p)
 	return NETWORK_RECV_STATUS_OKAY;
 }
 
-NetworkRecvStatus ServerNetworkAdminSocketHandler::Receive_ADMIN_CHAT(Packet *p)
+NetworkRecvStatus ServerNetworkAdminSocketHandler::Receive_ADMIN_CHAT(Packet &p)
 {
 	if (this->status == ADMIN_STATUS_INACTIVE) return this->SendError(NETWORK_ERROR_NOT_EXPECTED);
 
-	NetworkAction action = (NetworkAction)p->Recv_uint8();
-	DestType desttype = (DestType)p->Recv_uint8();
-	int dest = p->Recv_uint32();
+	NetworkAction action = (NetworkAction)p.Recv_uint8();
+	DestType desttype = (DestType)p.Recv_uint8();
+	int dest = p.Recv_uint32();
 
-	std::string msg = p->Recv_string(NETWORK_CHAT_LENGTH);
+	std::string msg = p.Recv_string(NETWORK_CHAT_LENGTH);
 
 	switch (action) {
 		case NETWORK_ACTION_CHAT:
@@ -772,14 +772,14 @@ NetworkRecvStatus ServerNetworkAdminSocketHandler::Receive_ADMIN_CHAT(Packet *p)
 	return NETWORK_RECV_STATUS_OKAY;
 }
 
-NetworkRecvStatus ServerNetworkAdminSocketHandler::Receive_ADMIN_EXTERNAL_CHAT(Packet *p)
+NetworkRecvStatus ServerNetworkAdminSocketHandler::Receive_ADMIN_EXTERNAL_CHAT(Packet &p)
 {
 	if (this->status == ADMIN_STATUS_INACTIVE) return this->SendError(NETWORK_ERROR_NOT_EXPECTED);
 
-	std::string source = p->Recv_string(NETWORK_CHAT_LENGTH);
-	TextColour colour = (TextColour)p->Recv_uint16();
-	std::string user = p->Recv_string(NETWORK_CHAT_LENGTH);
-	std::string msg = p->Recv_string(NETWORK_CHAT_LENGTH);
+	std::string source = p.Recv_string(NETWORK_CHAT_LENGTH);
+	TextColour colour = (TextColour)p.Recv_uint16();
+	std::string user = p.Recv_string(NETWORK_CHAT_LENGTH);
+	std::string msg = p.Recv_string(NETWORK_CHAT_LENGTH);
 
 	if (!IsValidConsoleColour(colour)) {
 		Debug(net, 1, "[admin] Not supported chat colour {} ({}, {}, {}) from '{}' ({}).", (uint16_t)colour, source, user, msg, this->admin_name, this->admin_version);

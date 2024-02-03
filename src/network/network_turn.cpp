@@ -49,7 +49,7 @@ public:
 	}
 };
 
-bool ClientNetworkTurnSocketHandler::Receive_TURN_ERROR(Packet *)
+bool ClientNetworkTurnSocketHandler::Receive_TURN_ERROR(Packet &)
 {
 	Debug(net, 9, "Receive_TURN_ERROR()");
 
@@ -58,11 +58,11 @@ bool ClientNetworkTurnSocketHandler::Receive_TURN_ERROR(Packet *)
 	return false;
 }
 
-bool ClientNetworkTurnSocketHandler::Receive_TURN_CONNECTED(Packet *p)
+bool ClientNetworkTurnSocketHandler::Receive_TURN_CONNECTED(Packet &p)
 {
 	Debug(net, 9, "Receive_TURN_CONNECTED()");
 
-	std::string hostname = p->Recv_string(NETWORK_HOSTNAME_LENGTH);
+	std::string hostname = p.Recv_string(NETWORK_HOSTNAME_LENGTH);
 
 	/* Act like we no longer have a socket, as we are handing it over to the
 	 * game handler. */

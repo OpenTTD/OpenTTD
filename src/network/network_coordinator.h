@@ -63,16 +63,16 @@ private:
 	GameInfoNewGRFLookupTable newgrf_lookup_table; ///< Table to look up NewGRFs in the GC_LISTING packets.
 
 protected:
-	bool Receive_GC_ERROR(Packet *p) override;
-	bool Receive_GC_REGISTER_ACK(Packet *p) override;
-	bool Receive_GC_LISTING(Packet *p) override;
-	bool Receive_GC_CONNECTING(Packet *p) override;
-	bool Receive_GC_CONNECT_FAILED(Packet *p) override;
-	bool Receive_GC_DIRECT_CONNECT(Packet *p) override;
-	bool Receive_GC_STUN_REQUEST(Packet *p) override;
-	bool Receive_GC_STUN_CONNECT(Packet *p) override;
-	bool Receive_GC_NEWGRF_LOOKUP(Packet *p) override;
-	bool Receive_GC_TURN_CONNECT(Packet *p) override;
+	bool Receive_GC_ERROR(Packet &p) override;
+	bool Receive_GC_REGISTER_ACK(Packet &p) override;
+	bool Receive_GC_LISTING(Packet &p) override;
+	bool Receive_GC_CONNECTING(Packet &p) override;
+	bool Receive_GC_CONNECT_FAILED(Packet &p) override;
+	bool Receive_GC_DIRECT_CONNECT(Packet &p) override;
+	bool Receive_GC_STUN_REQUEST(Packet &p) override;
+	bool Receive_GC_STUN_CONNECT(Packet &p) override;
+	bool Receive_GC_NEWGRF_LOOKUP(Packet &p) override;
+	bool Receive_GC_TURN_CONNECT(Packet &p) override;
 
 public:
 	/** The idle timeout; when to close the connection because it's idle. */

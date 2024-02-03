@@ -90,8 +90,8 @@ SendPacketsState NetworkTCPSocketHandler::SendPackets(bool closing_down)
 	if (!this->IsConnected()) return SPS_CLOSED;
 
 	while (!this->packet_queue.empty()) {
-		Packet *p = this->packet_queue.front().get();
-		ssize_t res = p->TransferOut<int>(send, this->sock, 0);
+		Packet &p = *this->packet_queue.front();
+		ssize_t res = p.TransferOut<int>(send, this->sock, 0);
 		if (res == -1) {
 			NetworkError err = NetworkError::GetLast();
 			if (!err.WouldBlock()) {
@@ -111,7 +111,7 @@ SendPacketsState NetworkTCPSocketHandler::SendPackets(bool closing_down)
 		}
 
 		/* Is this packet sent? */
-		if (p->RemainingBytesToTransfer() == 0) {
+		if (p.RemainingBytesToTransfer() == 0) {
 			/* Go to the next packet */
 			this->packet_queue.pop_front();
 		} else {
@@ -136,12 +136,12 @@ std::unique_ptr<Packet> NetworkTCPSocketHandler::ReceivePacket()
 		this->packet_recv = std::make_unique<Packet>(this, TCP_MTU);
 	}
 
-	Packet *p = this->packet_recv.get();
+	Packet &p = *this->packet_recv.get();
 
 	/* Read packet size */
-	if (!p->HasPacketSizeData()) {
-		while (p->RemainingBytesToTransfer() != 0) {
-			res = p->TransferIn<int>(recv, this->sock, 0);
+	if (!p.HasPacketSizeData()) {
+		while (p.RemainingBytesToTransfer() != 0) {
+			res = p.TransferIn<int>(recv, this->sock, 0);
 			if (res == -1) {
 				NetworkError err = NetworkError::GetLast();
 				if (!err.WouldBlock()) {
@@ -161,15 +161,15 @@ std::unique_ptr<Packet> NetworkTCPSocketHandler::ReceivePacket()
 		}
 
 		/* Parse the size in the received packet and if not valid, close the connection. */
-		if (!p->ParsePacketSize()) {
+		if (!p.ParsePacketSize()) {
 			this->CloseConnection();
 			return nullptr;
 		}
 	}
 
 	/* Read rest of packet */
-	while (p->RemainingBytesToTransfer() != 0) {
-		res = p->TransferIn<int>(recv, this->sock, 0);
+	while (p.RemainingBytesToTransfer() != 0) {
+		res = p.TransferIn<int>(recv, this->sock, 0);
 		if (res == -1) {
 			NetworkError err = NetworkError::GetLast();
 			if (!err.WouldBlock()) {
@@ -188,7 +188,7 @@ std::unique_ptr<Packet> NetworkTCPSocketHandler::ReceivePacket()
 		}
 	}
 
-	p->PrepareToRead();
+	p.PrepareToRead();
 	return std::move(this->packet_recv);
 }
 

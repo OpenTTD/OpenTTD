@@ -22,9 +22,9 @@
  * @param p the packet to handle
  * @return true if we should immediately handle further packets, false otherwise
  */
-bool NetworkTurnSocketHandler::HandlePacket(Packet *p)
+bool NetworkTurnSocketHandler::HandlePacket(Packet &p)
 {
-	PacketTurnType type = (PacketTurnType)p->Recv_uint8();
+	PacketTurnType type = (PacketTurnType)p.Recv_uint8();
 
 	switch (type) {
 		case PACKET_TURN_TURN_ERROR:     return this->Receive_TURN_ERROR(p);
@@ -47,7 +47,7 @@ bool NetworkTurnSocketHandler::ReceivePackets()
 	static const int MAX_PACKETS_TO_RECEIVE = 4;
 	int i = MAX_PACKETS_TO_RECEIVE;
 	while (--i != 0 && (p = this->ReceivePacket()) != nullptr) {
-		bool cont = this->HandlePacket(p.get());
+		bool cont = this->HandlePacket(*p);
 		if (!cont) return true;
 	}
 
@@ -65,6 +65,6 @@ bool NetworkTurnSocketHandler::ReceiveInvalidPacket(PacketTurnType type)
 	return false;
 }
 
-bool NetworkTurnSocketHandler::Receive_TURN_ERROR(Packet *) { return this->ReceiveInvalidPacket(PACKET_TURN_TURN_ERROR); }
-bool NetworkTurnSocketHandler::Receive_SERCLI_CONNECT(Packet *) { return this->ReceiveInvalidPacket(PACKET_TURN_SERCLI_CONNECT); }
-bool NetworkTurnSocketHandler::Receive_TURN_CONNECTED(Packet *) { return this->ReceiveInvalidPacket(PACKET_TURN_TURN_CONNECTED); }
+bool NetworkTurnSocketHandler::Receive_TURN_ERROR(Packet &) { return this->ReceiveInvalidPacket(PACKET_TURN_TURN_ERROR); }
+bool NetworkTurnSocketHandler::Receive_SERCLI_CONNECT(Packet &) { return this->ReceiveInvalidPacket(PACKET_TURN_SERCLI_CONNECT); }
+bool NetworkTurnSocketHandler::Receive_TURN_CONNECTED(Packet &) { return this->ReceiveInvalidPacket(PACKET_TURN_TURN_CONNECTED); }

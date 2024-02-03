@@ -424,16 +424,16 @@ void NetworkDistributeCommands()
  * @param cp the struct to write the data to.
  * @return an error message. When nullptr there has been no error.
  */
-const char *NetworkGameSocketHandler::ReceiveCommand(Packet *p, CommandPacket *cp)
+const char *NetworkGameSocketHandler::ReceiveCommand(Packet &p, CommandPacket *cp)
 {
-	cp->company = (CompanyID)p->Recv_uint8();
-	cp->cmd     = static_cast<Commands>(p->Recv_uint16());
+	cp->company = (CompanyID)p.Recv_uint8();
+	cp->cmd     = static_cast<Commands>(p.Recv_uint16());
 	if (!IsValidCommand(cp->cmd))               return "invalid command";
 	if (GetCommandFlags(cp->cmd) & CMD_OFFLINE) return "single-player only command";
-	cp->err_msg = p->Recv_uint16();
-	cp->data    = _cmd_dispatch[cp->cmd].Sanitize(p->Recv_buffer());
+	cp->err_msg = p.Recv_uint16();
+	cp->data    = _cmd_dispatch[cp->cmd].Sanitize(p.Recv_buffer());
 
-	byte callback = p->Recv_uint8();
+	byte callback = p.Recv_uint8();
 	if (callback >= _callback_table.size() || _cmd_dispatch[cp->cmd].Unpack[callback] == nullptr)  return "invalid callback";
 
 	cp->callback = _callback_table[callback];
@@ -445,19 +445,19 @@ const char *NetworkGameSocketHandler::ReceiveCommand(Packet *p, CommandPacket *c
  * @param p the packet to send it in.
  * @param cp the packet to actually send.
  */
-void NetworkGameSocketHandler::SendCommand(Packet *p, const CommandPacket *cp)
+void NetworkGameSocketHandler::SendCommand(Packet &p, const CommandPacket *cp)
 {
-	p->Send_uint8(cp->company);
-	p->Send_uint16(cp->cmd);
-	p->Send_uint16(cp->err_msg);
-	p->Send_buffer(cp->data);
+	p.Send_uint8(cp->company);
+	p.Send_uint16(cp->cmd);
+	p.Send_uint16(cp->err_msg);
+	p.Send_buffer(cp->data);
 
 	size_t callback = FindCallbackIndex(cp->callback);
 	if (callback > UINT8_MAX || _cmd_dispatch[cp->cmd].Unpack[callback] == nullptr) {
 		Debug(net, 0, "Unknown callback for command; no callback sent (command: {})", cp->cmd);
 		callback = 0; // _callback_table[0] == nullptr
 	}
-	p->Send_uint8 ((uint8_t)callback);
+	p.Send_uint8 ((uint8_t)callback);
 }
 
 /** Helper to process a single ClientID argument. */
