@@ -83,7 +83,7 @@ NetworkRecvStatus QueryNetworkGameSocketHandler::SendGameInfo()
 {
 	Debug(net, 9, "Query::SendGameInfo()");
 
-	this->SendPacket(new Packet(PACKET_CLIENT_GAME_INFO));
+	this->SendPacket(std::make_unique<Packet>(PACKET_CLIENT_GAME_INFO));
 	return NETWORK_RECV_STATUS_OKAY;
 }
 

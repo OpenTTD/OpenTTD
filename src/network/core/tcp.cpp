@@ -65,12 +65,12 @@ NetworkRecvStatus NetworkTCPSocketHandler::CloseConnection([[maybe_unused]] bool
  * if the OS-network-buffer is full)
  * @param packet the packet to send
  */
-void NetworkTCPSocketHandler::SendPacket(Packet *packet)
+void NetworkTCPSocketHandler::SendPacket(std::unique_ptr<Packet> &&packet)
 {
 	assert(packet != nullptr);
 
 	packet->PrepareToSend();
-	this->packet_queue.push_back(std::unique_ptr<Packet>(packet));
+	this->packet_queue.push_back(std::move(packet));
 }
 
 /**
