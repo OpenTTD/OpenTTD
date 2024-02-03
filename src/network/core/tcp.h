@@ -47,7 +47,7 @@ public:
 	virtual NetworkRecvStatus CloseConnection(bool error = true);
 	void CloseSocket();
 
-	virtual void SendPacket(Packet *packet);
+	virtual void SendPacket(std::unique_ptr<Packet> &&packet);
 	SendPacketsState SendPackets(bool closing_down = false);
 
 	virtual std::unique_ptr<Packet> ReceivePacket();
