@@ -41,8 +41,6 @@ typedef uint8_t  PacketType; ///< Identifier for the packet
  */
 struct Packet {
 private:
-	/** The next packet. Used for queueing packets before sending. */
-	Packet *next;
 	/** The current read/write position in the packet */
 	PacketSize pos;
 	/** The buffer of this packet. */
@@ -56,9 +54,6 @@ private:
 public:
 	Packet(NetworkSocketHandler *cs, size_t limit, size_t initial_read_size = sizeof(PacketSize));
 	Packet(PacketType type, size_t limit = COMPAT_MTU);
-
-	static void AddToQueue(Packet **queue, Packet *packet);
-	static Packet *PopFromQueue(Packet **queue);
 
 	/* Sending/writing of packets */
 	void PrepareToSend();
