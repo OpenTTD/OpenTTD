@@ -44,7 +44,7 @@
  * @param classes      Classes of this cargo type. @see CargoClass
  */
 #define MK(bt, label, colour, weight, mult, ip, td1, td2, freight, tae, str_plural, str_singular, str_volume, classes) \
-		{label, bt, colour, colour, weight, mult, classes, ip, {td1, td2}, freight, tae, INVALID_TPE, 0, \
+		{label, bt, colour, colour, weight, mult, classes, ip, {td1, td2}, freight, tae, INVALID_TPE, TOWN_PRODUCTION_DIVISOR, 0, \
 		MK_STR_CARGO_PLURAL(str_plural), MK_STR_CARGO_SINGULAR(str_singular), str_volume, MK_STR_QUANTITY(str_plural), MK_STR_ABBREV(str_plural), \
 		MK_SPRITE(str_plural), nullptr, nullptr, 0}
 

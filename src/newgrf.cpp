@@ -3091,6 +3091,24 @@ static ChangeInfoResult CargoChangeInfo(uint cid, int numinfo, int prop, ByteRea
 				cs->multiplier = std::max<uint16_t>(1u, buf->ReadWord());
 				break;
 
+			case 0x1E: { // Town production substitute type
+				uint8_t substitute_type = buf->ReadByte();
+
+				switch (substitute_type) {
+					case 0x00: cs->town_production_effect = TPE_PASSENGERS; break;
+					case 0x02: cs->town_production_effect = TPE_MAIL; break;
+					default:
+						GrfMsg(1, "CargoChangeInfo: Unknown town production substitute value {}, setting to none.", substitute_type);
+						[[fallthrough]];
+					case 0xFF: cs->town_production_effect = TPE_NONE; break;
+				}
+				break;
+			}
+
+			case 0x1F: // Town production multiplier
+				cs->town_production_multiplier = std::max<uint16_t>(1U, buf->ReadWord());
+				break;
+
 			default:
 				ret = CIR_UNKNOWN;
 				break;
