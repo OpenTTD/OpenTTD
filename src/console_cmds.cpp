@@ -1217,17 +1217,13 @@ DEF_CONSOLE_CMD(ConRestart)
 {
 	if (argc == 0) {
 		IConsolePrint(CC_HELP, "Restart game. Usage: 'restart'.");
-		IConsolePrint(CC_HELP, "Restarts a game. It tries to reproduce the exact same map as the game started with.");
-		IConsolePrint(CC_HELP, "However:");
-		IConsolePrint(CC_HELP, " * restarting games started in another version might create another map due to difference in map generation.");
-		IConsolePrint(CC_HELP, " * restarting games based on scenarios, loaded games or heightmaps will start a new game based on the settings stored in the scenario/savegame.");
+		IConsolePrint(CC_HELP, "Restarts a game, using the newgame settings.");
+		IConsolePrint(CC_HELP, " * if you started from a new game, and your newgame settings haven't changed, the game will be identical to when you started it.");
+		IConsolePrint(CC_HELP, " * if you started from a savegame / scenario / heightmap, the game might be different, because your settings might differ.");
 		return true;
 	}
 
-	/* Don't copy the _newgame pointers to the real pointers, so call SwitchToMode directly */
-	_settings_game.game_creation.map_x = Map::LogX();
-	_settings_game.game_creation.map_y = Map::LogY();
-	_switch_mode = SM_RESTARTGAME;
+	StartNewGameWithoutGUI(_settings_game.game_creation.generation_seed);
 	return true;
 }
 
@@ -1236,12 +1232,12 @@ DEF_CONSOLE_CMD(ConReload)
 	if (argc == 0) {
 		IConsolePrint(CC_HELP, "Reload game. Usage: 'reload'.");
 		IConsolePrint(CC_HELP, "Reloads a game.");
-		IConsolePrint(CC_HELP, " * if you started from a savegame / scenario / heightmap, that exact same savegame / scenario / heightmap will be loaded.");
-		IConsolePrint(CC_HELP, " * if you started from a new game, this acts the same as 'restart'.");
+		IConsolePrint(CC_HELP, " * if you started from a new game, reload the game with the current active settings.");
+		IConsolePrint(CC_HELP, " * if you started from a savegame / scenario / heightmap, that same savegame / scenario / heightmap will be loaded again.");
 		return true;
 	}
 
-	/* Don't copy the _newgame pointers to the real pointers, so call SwitchToMode directly */
+	/* Use a switch-mode to prevent copying over newgame settings to active settings. */
 	_settings_game.game_creation.map_x = Map::LogX();
 	_settings_game.game_creation.map_y = Map::LogY();
 	_switch_mode = SM_RELOADGAME;
