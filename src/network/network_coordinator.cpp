@@ -245,7 +245,7 @@ bool ClientNetworkCoordinatorSocketHandler::Receive_GC_LISTING(Packet *p)
 
 		/* Read the NetworkGameInfo from the packet. */
 		NetworkGameInfo ngi = {};
-		DeserializeNetworkGameInfo(p, &ngi, &this->newgrf_lookup_table);
+		DeserializeNetworkGameInfo(*p, ngi, &this->newgrf_lookup_table);
 
 		/* Now we know the connection string, we can add it to our list. */
 		NetworkGameList *item = NetworkGameListAddItem(connection_string);
@@ -360,7 +360,7 @@ bool ClientNetworkCoordinatorSocketHandler::Receive_GC_NEWGRF_LOOKUP(Packet *p)
 	uint16_t newgrfs = p->Recv_uint16();
 	for (; newgrfs> 0; newgrfs--) {
 		uint32_t index = p->Recv_uint32();
-		DeserializeGRFIdentifierWithName(p, &this->newgrf_lookup_table[index]);
+		DeserializeGRFIdentifierWithName(*p, this->newgrf_lookup_table[index]);
 	}
 	return true;
 }
@@ -482,7 +482,7 @@ void ClientNetworkCoordinatorSocketHandler::SendServerUpdate()
 
 	auto p = std::make_unique<Packet>(PACKET_COORDINATOR_SERVER_UPDATE, TCP_MTU);
 	p->Send_uint8(NETWORK_COORDINATOR_VERSION);
-	SerializeNetworkGameInfo(p.get(), GetCurrentNetworkServerGameInfo(), this->next_update.time_since_epoch() != std::chrono::nanoseconds::zero());
+	SerializeNetworkGameInfo(*p, GetCurrentNetworkServerGameInfo(), this->next_update.time_since_epoch() != std::chrono::nanoseconds::zero());
 
 	this->SendPacket(std::move(p));
 

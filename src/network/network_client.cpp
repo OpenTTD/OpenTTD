@@ -707,7 +707,7 @@ NetworkRecvStatus ClientNetworkGameSocketHandler::Receive_SERVER_CHECK_NEWGRFS(P
 	/* Check all GRFs */
 	for (; grf_count > 0; grf_count--) {
 		GRFIdentifier c;
-		DeserializeGRFIdentifier(p, &c);
+		DeserializeGRFIdentifier(*p, c);
 
 		/* Check whether we know this GRF */
 		const GRFConfig *f = FindGRFConfig(c.grfid, FGCM_EXACT, &c.md5sum);
