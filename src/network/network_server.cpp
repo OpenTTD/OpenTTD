@@ -342,7 +342,7 @@ NetworkRecvStatus ServerNetworkGameSocketHandler::SendGameInfo()
 	Debug(net, 9, "client[{}] SendGameInfo()", this->client_id);
 
 	auto p = std::make_unique<Packet>(PACKET_SERVER_GAME_INFO, TCP_MTU);
-	SerializeNetworkGameInfo(p.get(), GetCurrentNetworkServerGameInfo());
+	SerializeNetworkGameInfo(*p, GetCurrentNetworkServerGameInfo());
 
 	this->SendPacket(std::move(p));
 
@@ -413,7 +413,7 @@ NetworkRecvStatus ServerNetworkGameSocketHandler::SendNewGRFCheck()
 
 	p->Send_uint8 (grf_count);
 	for (c = _grfconfig; c != nullptr; c = c->next) {
-		if (!HasBit(c->flags, GCF_STATIC)) SerializeGRFIdentifier(p.get(), &c->ident);
+		if (!HasBit(c->flags, GCF_STATIC)) SerializeGRFIdentifier(*p, c->ident);
 	}
 
 	this->SendPacket(std::move(p));
