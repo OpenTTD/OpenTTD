@@ -1049,7 +1049,7 @@ void SwitchToMode(SwitchMode new_mode)
 	if (new_mode != SM_SAVE_GAME) {
 		/* If the network is active, make it not-active */
 		if (_networking) {
-			if (_network_server && (new_mode == SM_LOAD_GAME || new_mode == SM_NEWGAME)) {
+			if (_network_server && (new_mode == SM_LOAD_GAME || new_mode == SM_NEWGAME || new_mode == SM_RESTARTGAME)) {
 				NetworkReboot();
 			} else {
 				NetworkDisconnect();
@@ -1113,6 +1113,7 @@ void SwitchToMode(SwitchMode new_mode)
 			UpdateSocialIntegration(GM_NORMAL);
 			break;
 
+		case SM_RESTARTGAME: // Restart --> 'Random game' with current settings
 		case SM_NEWGAME: // New Game --> 'Random game'
 			MakeNewGame(false, new_mode == SM_NEWGAME);
 			GenerateSavegameId();
