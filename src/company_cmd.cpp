@@ -1046,7 +1046,7 @@ CommandCost CmdSetCompanyColour(DoCommandFlag flags, LiveryScheme scheme, bool p
 			c->livery[scheme].colour2 = colour;
 
 			if (scheme == LS_DEFAULT) {
-				UpdateCompanyGroupLiveries(c);
+				UpdateCompanyLiveries(c);
 			}
 		}
 
