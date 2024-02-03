@@ -1765,6 +1765,12 @@ bool AfterLoadGame()
 				v->current_order.SetLoadType(OLFB_NO_LOAD);
 			}
 		}
+	} else if (IsSavegameVersionBefore(SLV_DEPOT_UNBUNCHING)) {
+		/* OrderDepotActionFlags were moved, instead of starting at bit 4 they now start at bit 3. */
+		for (Order *order : Order::Iterate()) {
+			if (!order->IsType(OT_GOTO_DEPOT)) continue;
+			order->SetDepotActionType((OrderDepotActionFlags)(order->GetDepotActionType() >> 1));
+		}
 	}
 
 	/* The water class was moved/unified. */

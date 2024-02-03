@@ -1477,6 +1477,7 @@ void AircraftLeaveHangar(Aircraft *v, Direction exit_dir)
 	}
 
 	VehicleServiceInDepot(v);
+	v->LeaveUnbunchingDepot();
 	SetAircraftPosition(v, v->x_pos, v->y_pos, v->z_pos);
 	InvalidateWindowData(WC_VEHICLE_DEPOT, v->tile);
 	SetWindowClassesDirty(WC_AIRCRAFT_LIST);
@@ -1520,6 +1521,9 @@ static void AircraftEventHandler_InHangar(Aircraft *v, const AirportFTAClass *ap
 		v->current_order.Free();
 		return;
 	}
+
+	/* Check if we should wait here for unbunching. */
+	if (v->IsWaitingForUnbunching()) return;
 
 	if (!v->current_order.IsType(OT_GOTO_STATION) &&
 			!v->current_order.IsType(OT_GOTO_DEPOT))

@@ -22,6 +22,10 @@ struct BaseConsist {
 	TimerGameTick::Ticks lateness_counter;      ///< How many ticks late (or early if negative) this vehicle is.
 	TimerGameTick::TickCounter timetable_start; ///< At what tick of TimerGameTick::counter the vehicle should start its timetable.
 
+	TimerGameTick::TickCounter depot_unbunching_last_departure; ///< When the vehicle last left its unbunching depot.
+	TimerGameTick::TickCounter depot_unbunching_next_departure; ///< When the vehicle will next try to leave its unbunching depot.
+	TimerGameTick::Ticks round_trip_time;  ///< How many ticks for a single circumnavigation of the orders.
+
 	uint16_t service_interval;            ///< The interval for (automatic) servicing; either in days or %.
 
 	VehicleOrderID cur_real_order_index;///< The index to the current real (non-implicit) order
@@ -32,6 +36,7 @@ struct BaseConsist {
 	virtual ~BaseConsist() = default;
 
 	void CopyConsistPropertiesFrom(const BaseConsist *src);
+	void ResetDepotUnbunching();
 };
 
 #endif /* BASE_CONSIST_H */
