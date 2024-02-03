@@ -31,7 +31,7 @@ enum SendPacketsState {
 class NetworkTCPSocketHandler : public NetworkSocketHandler {
 private:
 	Packet *packet_queue;     ///< Packets that are awaiting delivery
-	Packet *packet_recv;      ///< Partially received packet
+	std::unique_ptr<Packet> packet_recv; ///< Partially received packet
 
 	void EmptyPacketQueue();
 public:
@@ -50,7 +50,7 @@ public:
 	virtual void SendPacket(Packet *packet);
 	SendPacketsState SendPackets(bool closing_down = false);
 
-	virtual Packet *ReceivePacket();
+	virtual std::unique_ptr<Packet> ReceivePacket();
 
 	bool CanSendReceive();
 

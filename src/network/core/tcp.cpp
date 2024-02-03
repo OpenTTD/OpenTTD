@@ -41,7 +41,6 @@ void NetworkTCPSocketHandler::EmptyPacketQueue()
 	while (this->packet_queue != nullptr) {
 		delete Packet::PopFromQueue(&this->packet_queue);
 	}
-	delete this->packet_recv;
 	this->packet_recv = nullptr;
 }
 
@@ -141,17 +140,17 @@ SendPacketsState NetworkTCPSocketHandler::SendPackets(bool closing_down)
  * Receives a packet for the given client
  * @return The received packet (or nullptr when it didn't receive one)
  */
-Packet *NetworkTCPSocketHandler::ReceivePacket()
+std::unique_ptr<Packet> NetworkTCPSocketHandler::ReceivePacket()
 {
 	ssize_t res;
 
 	if (!this->IsConnected()) return nullptr;
 
 	if (this->packet_recv == nullptr) {
-		this->packet_recv = new Packet(this, TCP_MTU);
+		this->packet_recv = std::make_unique<Packet>(this, TCP_MTU);
 	}
 
-	Packet *p = this->packet_recv;
+	Packet *p = this->packet_recv.get();
 
 	/* Read packet size */
 	if (!p->HasPacketSizeData()) {
@@ -203,11 +202,8 @@ Packet *NetworkTCPSocketHandler::ReceivePacket()
 		}
 	}
 
-	/* Prepare for receiving a new packet */
-	this->packet_recv = nullptr;
-
 	p->PrepareToRead();
-	return p;
+	return std::move(this->packet_recv);
 }
 
 /**
