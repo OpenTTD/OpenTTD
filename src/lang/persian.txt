@@ -1401,8 +1401,6 @@ STR_CONFIG_SETTING_AI_BUILDS_AIRCRAFT                           :غیر‌فعا
 
 STR_CONFIG_SETTING_AI_BUILDS_SHIPS                              :غیر فعال بودن کشتی برای رایانه: {STRING}
 
-###length 3
-
 STR_CONFIG_SETTING_AI_IN_MULTIPLAYER                            :امکان حضور هوش مصنوعی در بازی چندنفره: {STRING}
 
 STR_CONFIG_SETTING_SCRIPT_MAX_OPCODES                           :#opcodes before scripts are suspended: {STRING}
@@ -1467,7 +1465,6 @@ STR_CONFIG_SETTING_SEMAPHORE_BUILD_BEFORE_DATE                  :نصب علمک
 
 STR_CONFIG_SETTING_CYCLE_SIGNAL_TYPES                           :]تغییر نوع نشانگرها: {STRING}
 ###length 2
-STR_CONFIG_SETTING_CYCLE_SIGNAL_PBS                             :فقط نشانگرهای مسیر
 STR_CONFIG_SETTING_CYCLE_SIGNAL_ALL                             :همه
 
 ###length 2
@@ -3306,7 +3303,6 @@ STR_ORDERS_CAPTION                                              :{WHITE}{VEHICLE
 
 STR_ORDERS_LIST_TOOLTIP                                         :{BLACK}لیست دستورات - برای مشخص کردن دستور روی آن کلیک کنید. Ctrl+click به ایستگاه میرود
 STR_ORDER_INDEX                                                 :{COMMA}:{NBSP}
-STR_ORDER_TEXT                                                  :{STRING} {STRING} {STRING}
 
 STR_ORDERS_END_OF_ORDERS                                        :- - پایان دستورها - -
 
@@ -3346,6 +3342,7 @@ STR_ORDERS_GO_TO_TOOLTIP                                        :{BLACK}وارد
 
 STR_ORDER_GO_TO_NEAREST_DEPOT_FORMAT                            :{STRING} {STRING} {STRING}
 STR_ORDER_GO_TO_DEPOT_FORMAT                                    :{STRING} {DEPOT}
+
 
 
 STR_ORDER_GO_TO_STATION                                         :{STRING} {STATION} {STRING}
@@ -3581,6 +3578,8 @@ STR_ERROR_UNABLE_TO_FIND_ROUTE_TO                               :{WHITE}مسیر
 STR_ERROR_UNABLE_TO_FIND_LOCAL_DEPOT                            :{WHITE}مخزن یافت نشد
 
 STR_ERROR_DEPOT_WRONG_DEPOT_TYPE                                :نوع تعمیرگاه اشتباه
+
+# Depot unbunching related errors
 
 # Autoreplace related errors
 STR_ERROR_TRAIN_TOO_LONG_AFTER_REPLACEMENT                      :{WHITE}{VEHICLE} بعد از تغییر بسیار طولانی شده است

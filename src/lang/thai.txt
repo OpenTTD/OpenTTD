@@ -1559,13 +1559,6 @@ STR_CONFIG_SETTING_AI_BUILDS_AIRCRAFT_HELPTEXT                  :เมื่อ
 STR_CONFIG_SETTING_AI_BUILDS_SHIPS                              :ไม่ยอมให้มีเรือสำหรับคอมพิวเตอร์: {STRING}
 STR_CONFIG_SETTING_AI_BUILDS_SHIPS_HELPTEXT                     :เมื่อเปิดใช้งาน จะทำให้ AI สามารถสร้างยานพาหนะทางน้ำได้
 
-STR_CONFIG_SETTING_AI_PROFILE                                   :รูปแบบการตั้งค่าพื้นฐาน: {STRING}
-STR_CONFIG_SETTING_AI_PROFILE_HELPTEXT                          :เลือกที่ตั้งค่าโปรไฟล์ที่จะใช้สำหรับเอไอเอสแบบสุ่มหรือค่าเริ่มต้นสำหรับการเพิ่มสคริปต์ AI หรือเกมใหม่
-###length 3
-STR_CONFIG_SETTING_AI_PROFILE_EASY                              :ง่าย
-STR_CONFIG_SETTING_AI_PROFILE_MEDIUM                            :ปานกลาง
-STR_CONFIG_SETTING_AI_PROFILE_HARD                              :ยาก
-
 STR_CONFIG_SETTING_AI_IN_MULTIPLAYER                            :อนุญาตให้ใช้ปัญญาประดิษฐ์ (AI) สำหรับหลายผู้เล่น: {STRING}
 STR_CONFIG_SETTING_AI_IN_MULTIPLAYER_HELPTEXT                   :อนุญาตให้มี AI ในโหมดผู้เล่นหลายคน
 
@@ -1678,7 +1671,6 @@ STR_CONFIG_SETTING_SEMAPHORE_BUILD_BEFORE_DATE_HELPTEXT         :เลือก
 STR_CONFIG_SETTING_CYCLE_SIGNAL_TYPES                           :วนชนิดเสาอาณัติสัญญาณ: {STRING}
 STR_CONFIG_SETTING_CYCLE_SIGNAL_TYPES_HELPTEXT                  :เลือกประเภทเสาอาณัติสัญญาณในทิศทางที่ต้องการ หากกด Ctrl+คลิ๊กซ้าย จะเป็นการสร้างเสาสัญญาณด้วยเครื่องมือสร้างเสาสัญญาณ
 ###length 2
-STR_CONFIG_SETTING_CYCLE_SIGNAL_PBS                             :เสาอาณัติสัญญาณตอนอัตโนมัติ แบบทางเดียว
 STR_CONFIG_SETTING_CYCLE_SIGNAL_ALL                             :แสดงทั้งหมด
 
 STR_CONFIG_SETTING_SIGNAL_GUI_MODE                              :แสดงประเภทขของเสาอาณัติสัญญาณ: {STRING}
@@ -3926,7 +3918,6 @@ STR_ORDERS_TIMETABLE_VIEW_TOOLTIP                               :{BLACK}สล�
 
 STR_ORDERS_LIST_TOOLTIP                                         :{BLACK}รายการต้นทางปลายทาง
 STR_ORDER_INDEX                                                 :{COMMA}:{NBSP}
-STR_ORDER_TEXT                                                  :{STRING} {STRING} {STRING}
 
 STR_ORDERS_END_OF_ORDERS                                        :- - สิ้นสุดรายการ - -
 STR_ORDERS_END_OF_SHARED_ORDERS                                 :- - สิ้นสุดคำสั่งที่ใช้ร่วมกัน - -
@@ -3960,11 +3951,9 @@ STR_ORDER_REFIT_AUTO_TOOLTIP                                    :{BLACK}ดั�
 STR_ORDER_DROP_REFIT_AUTO                                       :เลือกประเภทตามกำหนด
 STR_ORDER_DROP_REFIT_AUTO_ANY                                   :ตามสินค้าที่ต้องการการขนส่ง
 
-STR_ORDER_SERVICE                                               :{BLACK}ซ่อมบำรุง
 STR_ORDER_DROP_GO_ALWAYS_DEPOT                                  :ไปทุกครั้ง
 STR_ORDER_DROP_SERVICE_DEPOT                                    :เข้าซ่อมบำรุงหากต้องการ
 STR_ORDER_DROP_HALT_DEPOT                                       :หยุด
-STR_ORDER_SERVICE_TOOLTIP                                       :{BLACK}จะข้ามรายการนี้ไปเมื่อยังไม่มีความต้องการซ่อมบำรุง
 
 STR_ORDER_CONDITIONAL_VARIABLE_TOOLTIP                          :{BLACK}ข้อมูลยานพาหนะที่จะข้ามไป
 
@@ -4032,6 +4021,7 @@ STR_ORDER_GO_TO_DEPOT_FORMAT                                    :{STRING} {DEPOT
 STR_ORDER_REFIT_ORDER                                           :(ดัดแปลงเป็น {STRING})
 STR_ORDER_REFIT_STOP_ORDER                                      :(ดัดแปลงเป็น {STRING} และหยุด)
 STR_ORDER_STOP_ORDER                                            :(หยุด)
+
 
 STR_ORDER_GO_TO_STATION                                         :{STRING} {STATION} {STRING}
 
@@ -4460,6 +4450,8 @@ STR_ERROR_UNABLE_TO_FIND_ROUTE_TO                               :{WHITE}ไม�
 STR_ERROR_UNABLE_TO_FIND_LOCAL_DEPOT                            :{WHITE}ไม่สามารถค้นหาอู่ในละแวกได้
 
 STR_ERROR_DEPOT_WRONG_DEPOT_TYPE                                :อู่ผิดประเภท
+
+# Depot unbunching related errors
 
 # Autoreplace related errors
 STR_ERROR_TRAIN_TOO_LONG_AFTER_REPLACEMENT                      :{WHITE}{VEHICLE} จะยาวเกินไปหลังจากแทนที่ใหม่

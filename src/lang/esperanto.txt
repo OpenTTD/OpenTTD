@@ -1744,13 +1744,6 @@ STR_CONFIG_SETTING_AI_BUILDS_AIRCRAFT_HELPTEXT                  :Se tiu ĉi agor
 STR_CONFIG_SETTING_AI_BUILDS_SHIPS                              :Malebligu ŝipojn por la komputilo: {STRING}
 STR_CONFIG_SETTING_AI_BUILDS_SHIPS_HELPTEXT                     :Se tiu ĉi agordo estas aktiva, komputila ludanto ne povas konstrui ŝipojn
 
-STR_CONFIG_SETTING_AI_PROFILE                                   :Defaŭlta agorda profilo: {STRING}
-STR_CONFIG_SETTING_AI_PROFILE_HELPTEXT                          :Elektu kiun agordaron uzi por hazardaj AIoj aŭ por komencaj valoroj dum aldonado de nova AI aŭ ludoskripto
-###length 3
-STR_CONFIG_SETTING_AI_PROFILE_EASY                              :Facila
-STR_CONFIG_SETTING_AI_PROFILE_MEDIUM                            :Mezfacila
-STR_CONFIG_SETTING_AI_PROFILE_HARD                              :Malfacila
-
 STR_CONFIG_SETTING_AI_IN_MULTIPLAYER                            :Permesu ArtefaritajnIntelektojn en pluropaj ludoj: {STRING}
 STR_CONFIG_SETTING_AI_IN_MULTIPLAYER_HELPTEXT                   :Permesu ke Artefarit-Inteligentaj (AI) komputilaj ludantoj partoprenu en pluropaj ludoj
 
@@ -1862,7 +1855,6 @@ STR_CONFIG_SETTING_SEMAPHORE_BUILD_BEFORE_DATE_HELPTEXT         :Elektu la jaron
 
 STR_CONFIG_SETTING_CYCLE_SIGNAL_TYPES                           :Iteraciu tra signaltipoj: {STRING}
 ###length 2
-STR_CONFIG_SETTING_CYCLE_SIGNAL_PBS                             :Nur vojrezervaj semaforoj
 STR_CONFIG_SETTING_CYCLE_SIGNAL_ALL                             :ĉiuj videblaj
 
 STR_CONFIG_SETTING_SIGNAL_GUI_MODE                              :Montru semaforajn tipojn: {STRING}
@@ -4260,7 +4252,6 @@ STR_ORDERS_TIMETABLE_VIEW_TOOLTIP                               :{BLACK}Montri h
 
 STR_ORDERS_LIST_TOOLTIP                                         :{BLACK}Ordonlisto - klaku ordonon por elekti. Ctrl+Klak rulumas al la celstacio
 STR_ORDER_INDEX                                                 :{COMMA}:{NBSP}
-STR_ORDER_TEXT                                                  :{STRING} {STRING} {STRING}
 
 STR_ORDERS_END_OF_ORDERS                                        :- - Fino de Ordonoj - -
 STR_ORDERS_END_OF_SHARED_ORDERS                                 :- - Fino de Kunhavitaj Ordonoj - -
@@ -4294,11 +4285,9 @@ STR_ORDER_REFIT_AUTO_TOOLTIP                                    :{BLACK}Elektu a
 STR_ORDER_DROP_REFIT_AUTO                                       :Malŝanĝa ŝarĝo
 STR_ORDER_DROP_REFIT_AUTO_ANY                                   :Haveblaj ŝarĝoj
 
-STR_ORDER_SERVICE                                               :{BLACK}Priservo
 STR_ORDER_DROP_GO_ALWAYS_DEPOT                                  :Ĉiam iru.
 STR_ORDER_DROP_SERVICE_DEPOT                                    :Prizorgu se necesas.
 STR_ORDER_DROP_HALT_DEPOT                                       :Haltu.
-STR_ORDER_SERVICE_TOOLTIP                                       :{BLACK}Transsaltu tiun ĉi ordonon krom se priservo necesas
 
 
 # Conditional order variables, must follow order of OrderConditionVariable enum
@@ -4364,6 +4353,7 @@ STR_ORDER_GO_TO_DEPOT_FORMAT                                    :{STRING} {DEPOT
 STR_ORDER_REFIT_ORDER                                           :(Readaptu por porti {STRING.n})
 STR_ORDER_REFIT_STOP_ORDER                                      :(Readaptu por porti {STRING.n} kaj haltu)
 STR_ORDER_STOP_ORDER                                            :(Haltu)
+
 
 STR_ORDER_GO_TO_STATION                                         :{STRING} {STATION} {STRING}
 STR_ORDER_GO_TO_STATION_CAN_T_USE_STATION                       :{PUSH_COLOUR}{RED}(Ne eblas uzi la stacion){POP_COLOUR} {STRING} {STATION} {STRING}
@@ -4808,6 +4798,8 @@ STR_ERROR_UNABLE_TO_FIND_ROUTE_TO                               :{WHITE}Ne povas
 STR_ERROR_UNABLE_TO_FIND_LOCAL_DEPOT                            :{WHITE}Ne povas trovi lokan garaĝon
 
 STR_ERROR_DEPOT_WRONG_DEPOT_TYPE                                :Malĝusta garaĝtipo
+
+# Depot unbunching related errors
 
 # Autoreplace related errors
 STR_ERROR_TRAIN_TOO_LONG_AFTER_REPLACEMENT                      :{WHITE}{VEHICLE} tro longas post anstataŭado

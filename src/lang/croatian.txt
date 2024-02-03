@@ -1688,13 +1688,6 @@ STR_CONFIG_SETTING_AI_BUILDS_AIRCRAFT_HELPTEXT                  :Uključivanjem 
 STR_CONFIG_SETTING_AI_BUILDS_SHIPS                              :Isključi brodove za računalo: {STRING}
 STR_CONFIG_SETTING_AI_BUILDS_SHIPS_HELPTEXT                     :Uključivanjem ove postavke, računalo-igrač neće moći koristiti brodove
 
-STR_CONFIG_SETTING_AI_PROFILE                                   :Profil osnovnih postavki: {STRING}
-STR_CONFIG_SETTING_AI_PROFILE_HELPTEXT                          :Odaberi koji profil postavki će se koristiti za nasumične UI-je ili za početne vrijednosti kada se dodaje nova UI ili Skripta Igre
-###length 3
-STR_CONFIG_SETTING_AI_PROFILE_EASY                              :Lako
-STR_CONFIG_SETTING_AI_PROFILE_MEDIUM                            :Srednje
-STR_CONFIG_SETTING_AI_PROFILE_HARD                              :Teško
-
 STR_CONFIG_SETTING_AI_IN_MULTIPLAYER                            :Dopusti UI u mrežnoj igri: {STRING}
 STR_CONFIG_SETTING_AI_IN_MULTIPLAYER_HELPTEXT                   :Dopusti UI računalnim-igračima da sudjeluju u igrama za više igrača
 
@@ -1807,7 +1800,6 @@ STR_CONFIG_SETTING_SEMAPHORE_BUILD_BEFORE_DATE_HELPTEXT         :Postavi godinu 
 STR_CONFIG_SETTING_CYCLE_SIGNAL_TYPES                           :Kruži kroz vrste signala: {STRING}
 STR_CONFIG_SETTING_CYCLE_SIGNAL_TYPES_HELPTEXT                  :Odaberi kroz koje tipove signala se može kružiti, kod Ctrl+klikanja na izgrađeni signal uz pomoć alata za signale
 ###length 2
-STR_CONFIG_SETTING_CYCLE_SIGNAL_PBS                             :Samo putni signali
 STR_CONFIG_SETTING_CYCLE_SIGNAL_ALL                             :Sve
 
 ###length 2
@@ -4122,7 +4114,6 @@ STR_ORDERS_TIMETABLE_VIEW_TOOLTIP                               :{BLACK}Promijen
 
 STR_ORDERS_LIST_TOOLTIP                                         :{BLACK}Lista naredbi - klikni na naredbu kako bi je označio. Ctrl+Klik klizi na odredište naredbe
 STR_ORDER_INDEX                                                 :{COMMA}:{NBSP}
-STR_ORDER_TEXT                                                  :{STRING} {STRING} {STRING}
 
 STR_ORDERS_END_OF_ORDERS                                        :- - Kraj naredbi - -
 STR_ORDERS_END_OF_SHARED_ORDERS                                 :- - Kraj dijeljenih naredbi - -
@@ -4156,11 +4147,9 @@ STR_ORDER_REFIT_AUTO_TOOLTIP                                    :{BLACK}Odaberi 
 STR_ORDER_DROP_REFIT_AUTO                                       :Popravljen teret
 STR_ORDER_DROP_REFIT_AUTO_ANY                                   :Dostupni teret
 
-STR_ORDER_SERVICE                                               :{BLACK}Servis
 STR_ORDER_DROP_GO_ALWAYS_DEPOT                                  :Idi neprekidno
 STR_ORDER_DROP_SERVICE_DEPOT                                    :Servisiraj prema potrebi
 STR_ORDER_DROP_HALT_DEPOT                                       :Stani
-STR_ORDER_SERVICE_TOOLTIP                                       :{BLACK}Preskoči ovu narudžbu osim ako servis nije potreban
 
 STR_ORDER_CONDITIONAL_VARIABLE_TOOLTIP                          :{BLACK}Podaci vozila prema kojima se zasniva skok
 
@@ -4228,6 +4217,7 @@ STR_ORDER_GO_TO_DEPOT_FORMAT                                    :{STRING} {DEPOT
 STR_ORDER_REFIT_ORDER                                           :(Prenamijeni u {STRING})
 STR_ORDER_REFIT_STOP_ORDER                                      :(Prenamijeni u {STRING} i zaustavi se)
 STR_ORDER_STOP_ORDER                                            :(Stani)
+
 
 STR_ORDER_GO_TO_STATION                                         :{STRING} {STATION} {STRING}
 
@@ -4663,6 +4653,8 @@ STR_ERROR_UNABLE_TO_FIND_ROUTE_TO                               :{WHITE}Ne može
 STR_ERROR_UNABLE_TO_FIND_LOCAL_DEPOT                            :{WHITE}Ne mogu pronaći lokalno spremište
 
 STR_ERROR_DEPOT_WRONG_DEPOT_TYPE                                :Pogrešna vrsta spremišta
+
+# Depot unbunching related errors
 
 # Autoreplace related errors
 STR_ERROR_TRAIN_TOO_LONG_AFTER_REPLACEMENT                      :{WHITE}{VEHICLE} je predugačko nakon zamjene

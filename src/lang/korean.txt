@@ -635,6 +635,7 @@ STR_GRAPH_KEY_COMPANY_SELECTION_TOOLTIP                         :{BLACK}특정 �
 # Company league window
 STR_COMPANY_LEAGUE_TABLE_CAPTION                                :{WHITE}회사 성취도 순위
 STR_COMPANY_LEAGUE_COMPANY_NAME                                 :{ORANGE}{COMPANY} {BLACK}{COMPANY_NUM} '{STRING}'
+STR_COMPANY_LEAGUE_COMPANY_RANK                                 :{YELLOW}#{NUM}
 STR_COMPANY_LEAGUE_PERFORMANCE_TITLE_ENGINEER                   :{G=f}기사
 STR_COMPANY_LEAGUE_PERFORMANCE_TITLE_TRAFFIC_MANAGER            :{G=f}교통망 관리자
 STR_COMPANY_LEAGUE_PERFORMANCE_TITLE_TRANSPORT_COORDINATOR      :{G=f}수송 조정자
@@ -1812,13 +1813,6 @@ STR_CONFIG_SETTING_AI_BUILDS_AIRCRAFT_HELPTEXT                  :이 설정을 �
 STR_CONFIG_SETTING_AI_BUILDS_SHIPS                              :컴퓨터의 선박 사용을 허가하지 않음: {STRING}
 STR_CONFIG_SETTING_AI_BUILDS_SHIPS_HELPTEXT                     :이 설정을 켜면, 컴퓨터 플레이어가 선박을 사용할 수 없게 됩니다
 
-STR_CONFIG_SETTING_AI_PROFILE                                   :기본 설정 난이도: {STRING}
-STR_CONFIG_SETTING_AI_PROFILE_HELPTEXT                          :무작위 인공지능이 사용할 난이도 설정이나 인공지능 또는 게임 스크립트를 추가할 때 사용할 난이도 초기값을 고르십시오
-###length 3
-STR_CONFIG_SETTING_AI_PROFILE_EASY                              :쉬움
-STR_CONFIG_SETTING_AI_PROFILE_MEDIUM                            :중간
-STR_CONFIG_SETTING_AI_PROFILE_HARD                              :어려움
-
 STR_CONFIG_SETTING_AI_IN_MULTIPLAYER                            :멀티 플레이에서 컴퓨터 플레이어의 참여 허용: {STRING}
 STR_CONFIG_SETTING_AI_IN_MULTIPLAYER_HELPTEXT                   :멀티 플레이 게임에서 인공지능 컴퓨터 플레이어가 참여하는 것을 허용합니다
 
@@ -1939,7 +1933,6 @@ STR_CONFIG_SETTING_SEMAPHORE_BUILD_BEFORE_DATE_HELPTEXT         :전자식 신�
 STR_CONFIG_SETTING_CYCLE_SIGNAL_TYPES                           :신호기를 CTRL 클릭할 때 바뀌는 신호기의 종류: {STRING}
 STR_CONFIG_SETTING_CYCLE_SIGNAL_TYPES_HELPTEXT                  :신호기 건설에서 CTRL+클릭할 때 바뀌는 신호기의 종류를 선택합니다
 ###length 2
-STR_CONFIG_SETTING_CYCLE_SIGNAL_PBS                             :경로 신호기만
 STR_CONFIG_SETTING_CYCLE_SIGNAL_ALL                             :모두 보여주기
 
 STR_CONFIG_SETTING_SIGNAL_GUI_MODE                              :보여줄 신호기 종류: {STRING}
@@ -2123,7 +2116,7 @@ STR_CONFIG_SETTING_COMPANY                                      :회사
 STR_CONFIG_SETTING_ACCOUNTING                                   :회계
 STR_CONFIG_SETTING_VEHICLES                                     :차량
 STR_CONFIG_SETTING_VEHICLES_PHYSICS                             :물리
-STR_CONFIG_SETTING_VEHICLES_ROUTING                             :경로
+STR_CONFIG_SETTING_VEHICLES_ROUTING                             :경로 탐색
 STR_CONFIG_SETTING_VEHICLES_ORDERS                              :경로
 STR_CONFIG_SETTING_LIMITATIONS                                  :제한
 STR_CONFIG_SETTING_ACCIDENTS                                    :재앙 / 사고
@@ -4526,7 +4519,6 @@ STR_ORDERS_TIMETABLE_VIEW_TOOLTIP                               :{BLACK}시간�
 
 STR_ORDERS_LIST_TOOLTIP                                         :{BLACK}이 열차의 경로 - 선택하려면 클릭하세요. CTRL+클릭하시면 그 역이 있는 장소로 이동합니다
 STR_ORDER_INDEX                                                 :{COMMA}:{NBSP}
-STR_ORDER_TEXT                                                  :{STRING} {STRING} {STRING}
 
 STR_ORDERS_END_OF_ORDERS                                        :- - 경로의 끝 - -
 STR_ORDERS_END_OF_SHARED_ORDERS                                 :- - 공유된 경로의 끝 - -
@@ -4560,11 +4552,9 @@ STR_ORDER_REFIT_AUTO_TOOLTIP                                    :{BLACK}이 경�
 STR_ORDER_DROP_REFIT_AUTO                                       :특정 화물로
 STR_ORDER_DROP_REFIT_AUTO_ANY                                   :이용 가능한 화물로
 
-STR_ORDER_SERVICE                                               :{BLACK}점검
 STR_ORDER_DROP_GO_ALWAYS_DEPOT                                  :항상 감
 STR_ORDER_DROP_SERVICE_DEPOT                                    :필요하면 점검
 STR_ORDER_DROP_HALT_DEPOT                                       :멈춤
-STR_ORDER_SERVICE_TOOLTIP                                       :{BLACK}점검이 필요하지 않으면 이 경로를 건너뜁니다
 
 STR_ORDER_CONDITIONAL_VARIABLE_TOOLTIP                          :{BLACK}경로를 건너뛰기 위한 비교 조건을 선택합니다
 
@@ -4632,6 +4622,7 @@ STR_ORDER_GO_TO_DEPOT_FORMAT                                    :{STRING} {DEPOT
 STR_ORDER_REFIT_ORDER                                           :({STRING}{G 0 "으" ""}로 개조)
 STR_ORDER_REFIT_STOP_ORDER                                      :({STRING}에서 수리 후 멈춤)
 STR_ORDER_STOP_ORDER                                            :(멈춤)
+
 
 STR_ORDER_GO_TO_STATION                                         :{STRING} {STATION} {STRING}
 STR_ORDER_GO_TO_STATION_CAN_T_USE_STATION                       :{PUSH_COLOUR}{RED}(이 역을 이용할 수 없음){POP_COLOUR} {STRING} {STATION} {STRING}
@@ -4835,6 +4826,8 @@ STR_AI_SETTINGS_CAPTION_GAMESCRIPT                              :게임 스크�
 STR_AI_SETTINGS_CLOSE                                           :{BLACK}닫기
 STR_AI_SETTINGS_RESET                                           :{BLACK}초기화
 STR_AI_SETTINGS_SETTING                                         :{STRING}: {ORANGE}{STRING}
+STR_AI_SETTINGS_SETTING_DEVIATION                               :{STRING}: {ORANGE}[{STRING}, {STRING}]
+STR_AI_SETTINGS_JUST_DEVIATION                                  :[{STRING}, {STRING}]
 
 
 # Textfile window
@@ -5099,6 +5092,8 @@ STR_ERROR_UNABLE_TO_FIND_ROUTE_TO                               :{WHITE}근처�
 STR_ERROR_UNABLE_TO_FIND_LOCAL_DEPOT                            :{WHITE}근처에 있는 차고지를 찾을 수 없습니다
 
 STR_ERROR_DEPOT_WRONG_DEPOT_TYPE                                :잘못된 차량기지 종류입니다
+
+# Depot unbunching related errors
 
 # Autoreplace related errors
 STR_ERROR_TRAIN_TOO_LONG_AFTER_REPLACEMENT                      :{WHITE}{VEHICLE} : 교체된지 너무 오래되었습니다

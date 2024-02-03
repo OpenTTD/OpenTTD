@@ -1647,13 +1647,6 @@ STR_CONFIG_SETTING_AI_BUILDS_AIRCRAFT_HELPTEXT                  :Aktivering av d
 STR_CONFIG_SETTING_AI_BUILDS_SHIPS                              :Hindre datamaskinen i å bygge skip: {STRING}
 STR_CONFIG_SETTING_AI_BUILDS_SHIPS_HELPTEXT                     :Aktivering av denne innstillingen gjør bygging av skip umulig for en datamaskin-spiller
 
-STR_CONFIG_SETTING_AI_PROFILE                                   :Profil for standardinnstillinger: {STRING}
-STR_CONFIG_SETTING_AI_PROFILE_HELPTEXT                          :Velg hvilken innstillingsprofil som skal brukes for tilfeldige data-spillere eller for startverdier når du legger til nye data-spillere eller spill-skript
-###length 3
-STR_CONFIG_SETTING_AI_PROFILE_EASY                              :Lett
-STR_CONFIG_SETTING_AI_PROFILE_MEDIUM                            :Middels
-STR_CONFIG_SETTING_AI_PROFILE_HARD                              :Vanskelig
-
 STR_CONFIG_SETTING_AI_IN_MULTIPLAYER                            :Tillat AI-er i flerspiller: {STRING}
 STR_CONFIG_SETTING_AI_IN_MULTIPLAYER_HELPTEXT                   :Tillat datamaskin-spillere å delta i flerspiller-spill
 
@@ -1772,7 +1765,6 @@ STR_CONFIG_SETTING_SEMAPHORE_BUILD_BEFORE_DATE_HELPTEXT         :Angi året når
 STR_CONFIG_SETTING_CYCLE_SIGNAL_TYPES                           :Bla gjennom signaltyper: {STRING}
 STR_CONFIG_SETTING_CYCLE_SIGNAL_TYPES_HELPTEXT                  :Velg hvilke signaltyper å gå gjennom når Ctrl+klikke på et bygd signal med signalverktøyet
 ###length 2
-STR_CONFIG_SETTING_CYCLE_SIGNAL_PBS                             :Kun avanserte signaler
 STR_CONFIG_SETTING_CYCLE_SIGNAL_ALL                             :Alle synlige
 
 STR_CONFIG_SETTING_SIGNAL_GUI_MODE                              :Vis signaltyper: {STRING}
@@ -4202,7 +4194,6 @@ STR_ORDERS_TIMETABLE_VIEW_TOOLTIP                               :{BLACK}Skift ti
 
 STR_ORDERS_LIST_TOOLTIP                                         :{BLACK}Ordreliste - klikk på en ordre for å markere den. Ctrl+klikk viser ordrens endestasjon
 STR_ORDER_INDEX                                                 :{COMMA}:{NBSP}
-STR_ORDER_TEXT                                                  :{STRING} {STRING} {STRING}
 
 STR_ORDERS_END_OF_ORDERS                                        :- - Slutt på ordre - -
 STR_ORDERS_END_OF_SHARED_ORDERS                                 :- - Slutt på delte ordre - -
@@ -4236,11 +4227,9 @@ STR_ORDER_REFIT_AUTO_TOOLTIP                                    :{BLACK}Velg hvi
 STR_ORDER_DROP_REFIT_AUTO                                       :Fast varetype
 STR_ORDER_DROP_REFIT_AUTO_ANY                                   :Tilgjengelig varetype
 
-STR_ORDER_SERVICE                                               :{BLACK}Vedlikehold
 STR_ORDER_DROP_GO_ALWAYS_DEPOT                                  :Alltid gå
 STR_ORDER_DROP_SERVICE_DEPOT                                    :Vedlikehold ved behov
 STR_ORDER_DROP_HALT_DEPOT                                       :Stopp
-STR_ORDER_SERVICE_TOOLTIP                                       :{BLACK}Hopp over ordren med mindre vedlikehold er nødvendig
 
 STR_ORDER_CONDITIONAL_VARIABLE_TOOLTIP                          :{BLACK}Kjøretøydata å basere hopp på
 
@@ -4308,6 +4297,7 @@ STR_ORDER_GO_TO_DEPOT_FORMAT                                    :{STRING} {DEPOT
 STR_ORDER_REFIT_ORDER                                           :(Bygg om til {STRING})
 STR_ORDER_REFIT_STOP_ORDER                                      :(Bygg om til {STRING} og stopp)
 STR_ORDER_STOP_ORDER                                            :(Stopp)
+
 
 STR_ORDER_GO_TO_STATION                                         :{STRING} {STATION} {STRING}
 STR_ORDER_GO_TO_STATION_CAN_T_USE_STATION                       :{PUSH_COLOUR}{RED}(Kan ikke bruke stasjon){POP_COLOUR} {STRING} {STATION} {STRING}
@@ -4746,6 +4736,8 @@ STR_ERROR_UNABLE_TO_FIND_ROUTE_TO                               :{WHITE}Finner i
 STR_ERROR_UNABLE_TO_FIND_LOCAL_DEPOT                            :{WHITE}Kan ikke finne en garasje/stall/hangar/dokk i nærheten
 
 STR_ERROR_DEPOT_WRONG_DEPOT_TYPE                                :Feil type garasje/stall/hangar/dokk
+
+# Depot unbunching related errors
 
 # Autoreplace related errors
 STR_ERROR_TRAIN_TOO_LONG_AFTER_REPLACEMENT                      :{WHITE}{VEHICLE} er for langt etter utskiftning

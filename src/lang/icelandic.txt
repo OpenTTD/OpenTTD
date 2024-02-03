@@ -1488,13 +1488,6 @@ STR_CONFIG_SETTING_AI_BUILDS_AIRCRAFT_HELPTEXT                  :Ef þessi still
 STR_CONFIG_SETTING_AI_BUILDS_SHIPS                              :Útiloka skip frá tölvu: {STRING}
 STR_CONFIG_SETTING_AI_BUILDS_SHIPS_HELPTEXT                     :Ef þessi stilling er virk er ómögulegt fyrir gervigreindar leikmenn að vera með skip
 
-STR_CONFIG_SETTING_AI_PROFILE                                   :Erfiðleikastig: {STRING}
-STR_CONFIG_SETTING_AI_PROFILE_HELPTEXT                          :Veldu hvaða erfiðleikastig á að nota fyrir gervigreind eða leikja breytingar (Game Script)
-###length 3
-STR_CONFIG_SETTING_AI_PROFILE_EASY                              :Auðvelt
-STR_CONFIG_SETTING_AI_PROFILE_MEDIUM                            :Miðlungs
-STR_CONFIG_SETTING_AI_PROFILE_HARD                              :Erfitt
-
 STR_CONFIG_SETTING_AI_IN_MULTIPLAYER                            :Leyfa gervigreind í fjölspilun: {STRING}
 STR_CONFIG_SETTING_AI_IN_MULTIPLAYER_HELPTEXT                   :Leyfir gervigreindar leikmönnum að taka þátt í fjölspilunar leikjum
 
@@ -1599,7 +1592,6 @@ STR_CONFIG_SETTING_SEMAPHORE_BUILD_BEFORE_DATE_HELPTEXT         :Stilltu árið 
 STR_CONFIG_SETTING_CYCLE_SIGNAL_TYPES                           :Skipta milli tegunda umferðarmerkja: {STRING}
 STR_CONFIG_SETTING_CYCLE_SIGNAL_TYPES_HELPTEXT                  :Veldu tegund umferðarljósa sem á að skipta á milli með því að Ctrl+smella
 ###length 2
-STR_CONFIG_SETTING_CYCLE_SIGNAL_PBS                             :Aðeins Leiðarmerki
 STR_CONFIG_SETTING_CYCLE_SIGNAL_ALL                             :Allt
 
 ###length 2
@@ -3594,7 +3586,6 @@ STR_ORDERS_TIMETABLE_VIEW_TOOLTIP                               :{BLACK}Skipta y
 
 STR_ORDERS_LIST_TOOLTIP                                         :{BLACK}Listi yfir skipanir - smelltu á skipun til að velja hana. Ctrl+smella færir sjónarhorn að áfangastað skipunar
 STR_ORDER_INDEX                                                 :{COMMA}:{NBSP}
-STR_ORDER_TEXT                                                  :{STRING} {STRING} {STRING}
 
 STR_ORDERS_END_OF_ORDERS                                        :- - Endi skipana - -
 STR_ORDERS_END_OF_SHARED_ORDERS                                 :- - Endi sameiginlegra skipana - -
@@ -3628,11 +3619,9 @@ STR_ORDER_REFIT_AUTO_TOOLTIP                                    :{BLACK}Veldu í
 STR_ORDER_DROP_REFIT_AUTO                                       :Ákveðinn farmur
 STR_ORDER_DROP_REFIT_AUTO_ANY                                   :Tiltækur farmur
 
-STR_ORDER_SERVICE                                               :{BLACK}Skoðun
 STR_ORDER_DROP_GO_ALWAYS_DEPOT                                  :Fara alltaf
 STR_ORDER_DROP_SERVICE_DEPOT                                    :Þjónusta ef þarf
 STR_ORDER_DROP_HALT_DEPOT                                       :Stoppa
-STR_ORDER_SERVICE_TOOLTIP                                       :{BLACK}Sleppa þessarri skipun nema þörf sé á viðgerð
 
 STR_ORDER_CONDITIONAL_VARIABLE_TOOLTIP                          :{BLACK}Gögn farartækis sem skilyrði byggja á
 
@@ -3699,6 +3688,7 @@ STR_ORDER_GO_TO_DEPOT_FORMAT                                    :{STRING} {DEPOT
 STR_ORDER_REFIT_ORDER                                           :(Breyta í {STRING})
 STR_ORDER_REFIT_STOP_ORDER                                      :(Breyta í {STRING} og stöðva)
 STR_ORDER_STOP_ORDER                                            :(Stopp)
+
 
 STR_ORDER_GO_TO_STATION                                         :{STRING} {STATION} {STRING}
 
@@ -4117,6 +4107,8 @@ STR_ERROR_UNABLE_TO_FIND_ROUTE_TO                               :{WHITE}Get ekki
 STR_ERROR_UNABLE_TO_FIND_LOCAL_DEPOT                            :{WHITE}Finnur ekkert nálægt skýli
 
 STR_ERROR_DEPOT_WRONG_DEPOT_TYPE                                :Röng tegund skýlis
+
+# Depot unbunching related errors
 
 # Autoreplace related errors
 STR_ERROR_TRAIN_TOO_LONG_AFTER_REPLACEMENT                      :{WHITE}{VEHICLE} er of löng eftir uppfærslu

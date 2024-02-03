@@ -635,6 +635,7 @@ STR_GRAPH_KEY_COMPANY_SELECTION_TOOLTIP                         :{BLACK}Clique a
 # Company league window
 STR_COMPANY_LEAGUE_TABLE_CAPTION                                :{WHITE}Classificação de Empresas
 STR_COMPANY_LEAGUE_COMPANY_NAME                                 :{ORANGE}{COMPANY} {BLACK}{COMPANY_NUM} '{STRING}'
+STR_COMPANY_LEAGUE_COMPANY_RANK                                 :{YELLOW}#{NUM}
 STR_COMPANY_LEAGUE_PERFORMANCE_TITLE_ENGINEER                   :Engenheiro
 STR_COMPANY_LEAGUE_PERFORMANCE_TITLE_TRAFFIC_MANAGER            :Gestor de Tráfego
 STR_COMPANY_LEAGUE_PERFORMANCE_TITLE_TRANSPORT_COORDINATOR      :Coordenador de Transportes
@@ -1296,6 +1297,7 @@ STR_CONFIG_SETTING_SUBSIDY_DURATION                             :Duração do su
 STR_CONFIG_SETTING_SUBSIDY_DURATION_HELPTEXT                    :Define o número de anos de concessão de um subsídio
 STR_CONFIG_SETTING_SUBSIDY_DURATION_HELPTEXT_PERIODS            :Define o número de períodos de concessão de um subsídio
 
+STR_CONFIG_SETTING_SUBSIDY_DURATION_VALUE                       :{UNITS_YEARS_OR_PERIODS}
 ###setting-zero-is-special
 STR_CONFIG_SETTING_SUBSIDY_DURATION_DISABLED                    :Sem subsídios
 
@@ -1807,13 +1809,6 @@ STR_CONFIG_SETTING_AI_BUILDS_AIRCRAFT_HELPTEXT                  :Ativar esta pre
 STR_CONFIG_SETTING_AI_BUILDS_SHIPS                              :Desativar navios para o computador: {STRING}
 STR_CONFIG_SETTING_AI_BUILDS_SHIPS_HELPTEXT                     :Ativar esta preferência impossibilita a construção de navios por um jogador controlado pelo computador
 
-STR_CONFIG_SETTING_AI_PROFILE                                   :Perfil de preferências por omissão: {STRING}
-STR_CONFIG_SETTING_AI_PROFILE_HELPTEXT                          :Escolher o perfil de preferências a usar para IAs aleatórias ou para valores iniciais ao adicionar uma nova IA ou Script de Jogo
-###length 3
-STR_CONFIG_SETTING_AI_PROFILE_EASY                              :Fácil
-STR_CONFIG_SETTING_AI_PROFILE_MEDIUM                            :Média
-STR_CONFIG_SETTING_AI_PROFILE_HARD                              :Difícil
-
 STR_CONFIG_SETTING_AI_IN_MULTIPLAYER                            :Permite IAs em multi-jogador: {STRING}
 STR_CONFIG_SETTING_AI_IN_MULTIPLAYER_HELPTEXT                   :Permite a jogadores controlados pelo computador a participação em jogos multi-jogador
 
@@ -1934,7 +1929,6 @@ STR_CONFIG_SETTING_SEMAPHORE_BUILD_BEFORE_DATE_HELPTEXT         :Configurar o an
 STR_CONFIG_SETTING_CYCLE_SIGNAL_TYPES                           :Trocar tipos de faróis: {STRING}
 STR_CONFIG_SETTING_CYCLE_SIGNAL_TYPES_HELPTEXT                  :Selecione os tipos de sinais a percorrer ao usar Ctrl+clique num sinal com a ferramenta de sinais
 ###length 2
-STR_CONFIG_SETTING_CYCLE_SIGNAL_PBS                             :Apenas sinais de trajeto
 STR_CONFIG_SETTING_CYCLE_SIGNAL_ALL                             :Todos visíveis
 
 STR_CONFIG_SETTING_SIGNAL_GUI_MODE                              :Mostrar tipos de sinais: {STRING}
@@ -4521,7 +4515,6 @@ STR_ORDERS_TIMETABLE_VIEW_TOOLTIP                               :{BLACK}Mudar pa
 
 STR_ORDERS_LIST_TOOLTIP                                         :{BLACK}Lista de ordens - clique numa ordem para a seleccionar. Ctrl+Clique mostra o destino da ordem
 STR_ORDER_INDEX                                                 :{COMMA}:{NBSP}
-STR_ORDER_TEXT                                                  :{STRING} {STRING} {STRING}
 
 STR_ORDERS_END_OF_ORDERS                                        :- - Fim de Ordens - -
 STR_ORDERS_END_OF_SHARED_ORDERS                                 :- - Fim de Ordens Partilhadas - -
@@ -4555,11 +4548,9 @@ STR_ORDER_REFIT_AUTO_TOOLTIP                                    :{BLACK}Selecion
 STR_ORDER_DROP_REFIT_AUTO                                       :Mercadoria fixa
 STR_ORDER_DROP_REFIT_AUTO_ANY                                   :Mercadoria disponível
 
-STR_ORDER_SERVICE                                               :{BLACK}Manutenção
 STR_ORDER_DROP_GO_ALWAYS_DEPOT                                  :Ir sempre
 STR_ORDER_DROP_SERVICE_DEPOT                                    :Manutenção, se necessária
 STR_ORDER_DROP_HALT_DEPOT                                       :Parar
-STR_ORDER_SERVICE_TOOLTIP                                       :{BLACK}Saltar esta ordem a menos que seja necessário manutenção
 
 STR_ORDER_CONDITIONAL_VARIABLE_TOOLTIP                          :{BLACK}Dados de veículo para ida à base
 
@@ -4627,6 +4618,7 @@ STR_ORDER_GO_TO_DEPOT_FORMAT                                    :{STRING} {DEPOT
 STR_ORDER_REFIT_ORDER                                           :(Adaptar para {STRING})
 STR_ORDER_REFIT_STOP_ORDER                                      :(Adaptar para {STRING} e parar)
 STR_ORDER_STOP_ORDER                                            :(Parar)
+
 
 STR_ORDER_GO_TO_STATION                                         :{STRING} {STATION} {STRING}
 STR_ORDER_GO_TO_STATION_CAN_T_USE_STATION                       :{PUSH_COLOUR}{RED}(Não pode usar a estação){POP_COLOUR} {STRING} {STATION} {STRING}
@@ -4830,6 +4822,7 @@ STR_AI_SETTINGS_CAPTION_GAMESCRIPT                              :Script de Jogo
 STR_AI_SETTINGS_CLOSE                                           :{BLACK}Fechar
 STR_AI_SETTINGS_RESET                                           :{BLACK}Repor
 STR_AI_SETTINGS_SETTING                                         :{STRING}: {ORANGE}{STRING}
+STR_AI_SETTINGS_SETTING_DEVIATION                               :{STRING}: {ORANGE}[{STRING}, {STRING}]
 
 
 # Textfile window
@@ -5094,6 +5087,8 @@ STR_ERROR_UNABLE_TO_FIND_ROUTE_TO                               :{WHITE}Não é 
 STR_ERROR_UNABLE_TO_FIND_LOCAL_DEPOT                            :{WHITE}Não é possível encontrar o depósito local
 
 STR_ERROR_DEPOT_WRONG_DEPOT_TYPE                                :Tipo de depósito errado
+
+# Depot unbunching related errors
 
 # Autoreplace related errors
 STR_ERROR_TRAIN_TOO_LONG_AFTER_REPLACEMENT                      :{WHITE}{VEHICLE} é muito longo depois de substituído

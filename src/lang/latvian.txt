@@ -216,6 +216,7 @@ STR_COLOUR_SECONDARY_SAME_AS_PRIMARY                            :Tāds, ka prim�
 STR_UNITS_VELOCITY_IMPERIAL                                     :{DECIMAL}{NBSP}jūdzes stundā
 STR_UNITS_VELOCITY_METRIC                                       :{DECIMAL}{NBSP}km/h
 STR_UNITS_VELOCITY_SI                                           :{DECIMAL}{NBSP}m/s
+STR_UNITS_VELOCITY_GAMEUNITS_SEC                                :{DECIMAL}{NBSP}lauciņi/s
 STR_UNITS_VELOCITY_KNOTS                                        :{DECIMAL}{NBSP}mezgli
 
 STR_UNITS_POWER_IMPERIAL                                        :{DECIMAL}{NBSP}ZS
@@ -261,7 +262,11 @@ STR_UNITS_DAYS                                                  :{COMMA}{NBSP}di
 STR_UNITS_SECONDS                                               :{COMMA}{NBSP}sekund{P e s ''''}
 STR_UNITS_TICKS                                                 :{COMMA}{NBSP}tick{P šķi šķi s}
 
+STR_UNITS_MONTHS                                                :{NUM}{NBSP}mēne{P is is ši}
+STR_UNITS_MINUTES                                               :{NUM}{NBSP}minūte{P e es es}
 
+STR_UNITS_YEARS                                                 :{NUM}{NBSP}gad{P s s i}
+STR_UNITS_PERIODS                                               :{NUM}{NBSP}period{P s s di}
 
 # Common window strings
 STR_LIST_FILTER_TITLE                                           :{BLACK}Filters:
@@ -329,6 +334,7 @@ STR_SORT_BY_TRANSPORTED                                         :pārvadājuma
 STR_SORT_BY_NUMBER                                              :numura
 STR_SORT_BY_PROFIT_LAST_YEAR                                    :peļņas pērn
 STR_SORT_BY_PROFIT_THIS_YEAR                                    :peļņas šogad
+STR_SORT_BY_PROFIT_THIS_PERIOD                                  :Peļņa šajā periodā
 STR_SORT_BY_AGE                                                 :vecuma
 STR_SORT_BY_RELIABILITY                                         :uzticamības
 STR_SORT_BY_TOTAL_CAPACITY_PER_CARGOTYPE                        :kravu veidu kopējās ietilpības
@@ -356,9 +362,12 @@ STR_SORT_BY_POPULATION                                          :iedzīvotāju s
 STR_SORT_BY_RATING                                              :vērtējuma
 STR_SORT_BY_NUM_VEHICLES                                        :Autotransporta līdzekļu skaits
 STR_SORT_BY_TOTAL_PROFIT_LAST_YEAR                              :Kopējā peļņa pagājušajā gadā
+STR_SORT_BY_TOTAL_PROFIT_LAST_PERIOD                            :Kopējā peļņa pagājušajā periodā
 STR_SORT_BY_TOTAL_PROFIT_THIS_YEAR                              :Kopējā peļņa šogad
+STR_SORT_BY_TOTAL_PROFIT_THIS_PERIOD                            :Kopējā peļņa šajā periodā
 STR_SORT_BY_AVERAGE_PROFIT_LAST_YEAR                            :Vidējā peļņa iepriekšējā gadā
 STR_SORT_BY_AVERAGE_PROFIT_THIS_YEAR                            :Vidējā peļņa šajā gadā
+STR_SORT_BY_AVERAGE_PROFIT_THIS_PERIOD                          :Vidējā peļņa šajā periodā
 
 # Group by options for vehicle list
 STR_GROUP_BY_NONE                                               :Nav
@@ -436,6 +445,7 @@ STR_SETTINGS_MENU_CONFIG_SETTINGS_TREE                          :Iestatījumi
 STR_SETTINGS_MENU_AI_SETTINGS                                   :AI iestatījumi
 STR_SETTINGS_MENU_GAMESCRIPT_SETTINGS                           :Spēles skripta iestatījumi
 STR_SETTINGS_MENU_NEWGRF_SETTINGS                               :NewGRF iestatījumi
+STR_SETTINGS_MENU_SANDBOX_OPTIONS                               :Smilškastes iespējas
 STR_SETTINGS_MENU_TRANSPARENCY_OPTIONS                          :Caurspīdības opcijas
 STR_SETTINGS_MENU_TOWN_NAMES_DISPLAYED                          :Rādīt pilsētu nosaukumus
 STR_SETTINGS_MENU_STATION_NAMES_DISPLAYED                       :Rādīt staciju nosaukumus
@@ -603,6 +613,7 @@ STR_GRAPH_COMPANY_VALUES_CAPTION                                :{WHITE}Uzņēmu
 
 
 STR_GRAPH_CARGO_PAYMENT_RATES_CAPTION                           :{WHITE}Kravas apmaksas cenas
+STR_GRAPH_CARGO_PAYMENT_RATES_SECONDS                           :{TINY_FONT}{BLACK}Sekundes tranzītā
 STR_GRAPH_CARGO_PAYMENT_RATES_TITLE                             :{TINY_FONT}{BLACK}Izmaksas par 10 vienību (vai 10,000 litru) kravas pārvadāšanu par 20 lauciņiem
 STR_GRAPH_CARGO_ENABLE_ALL                                      :{TINY_FONT}{BLACK}Iespējot visu
 STR_GRAPH_CARGO_DISABLE_ALL                                     :{TINY_FONT}{BLACK}Atspējot visu
@@ -620,6 +631,7 @@ STR_GRAPH_KEY_COMPANY_SELECTION_TOOLTIP                         :{BLACK}Klikšķ
 # Company league window
 STR_COMPANY_LEAGUE_TABLE_CAPTION                                :{WHITE}Uzņēmumu rangu saraksts
 STR_COMPANY_LEAGUE_COMPANY_NAME                                 :{ORANGE}{COMPANY} {BLACK}{COMPANY_NUM} '{STRING}'
+STR_COMPANY_LEAGUE_COMPANY_RANK                                 :{YELLOW}#{NUM}
 STR_COMPANY_LEAGUE_PERFORMANCE_TITLE_ENGINEER                   :Inženieris
 STR_COMPANY_LEAGUE_PERFORMANCE_TITLE_TRAFFIC_MANAGER            :Satiksmes vadītājs
 STR_COMPANY_LEAGUE_PERFORMANCE_TITLE_TRANSPORT_COORDINATOR      :Pārvadājumu koordinators
@@ -651,7 +663,10 @@ STR_PERFORMANCE_DETAIL_LOAN                                     :{BLACK}Aizdevum
 STR_PERFORMANCE_DETAIL_TOTAL                                    :{BLACK}Kopā:
 ###next-name-looks-similar
 
+STR_PERFORMANCE_DETAIL_VEHICLES_TOOLTIP_YEARS                   :{BLACK}To transportlīdzekļu skaits, kas pagājušajā gadā guva peļņu. Tas ietver autotransporta līdzekļus, vilcienus, kuģus un lidmašīnas
+STR_PERFORMANCE_DETAIL_VEHICLES_TOOLTIP_PERIODS                 :{BLACK}Transportlīdzekļu skaits, kas pagājušajā periodā guva peļņu. Tas ietver autotransporta līdzekļus, vilcienus, kuģus un lidmašīnas
 STR_PERFORMANCE_DETAIL_STATIONS_TOOLTIP                         :{BLACK}Nesen apkalpoto staciju skaits. Dzelzceļa stacijas, autoostas, lidostas un tamlīdzīgas tiek skaitītas kā atsevišķas, pat ja tās ir savienotas kā viena stacija
+STR_PERFORMANCE_DETAIL_MIN_PROFIT_TOOLTIP_YEARS                 :{BLACK}Transportlīdzekļa peļņa ar viszemākajiem ienākumiem (tiek ņemti vērā tikai transportlīdzekļi, kas vecāki par diviem gadiem)
 STR_PERFORMANCE_DETAIL_MIN_INCOME_TOOLTIP                       :{BLACK}Nopelnītās naudas daudzums ceturksnī ar vismazāko peļņu pēdējos 12 ceturkšņos
 STR_PERFORMANCE_DETAIL_MAX_INCOME_TOOLTIP                       :{BLACK}Nopelnītās naudas daudzums ceturksnī ar vislielāko peļņu pēdējos 12 ceturkšņos
 STR_PERFORMANCE_DETAIL_DELIVERED_TOOLTIP                        :{BLACK}Kravu vienības , kas piegādātas pēdējos četros ceturkšņos
@@ -799,6 +814,7 @@ STR_STATUSBAR_AUTOSAVE                                          :{RED}AUTOMĀTIS
 STR_STATUSBAR_SAVING_GAME                                       :{RED}*  *  SPĒLE TIEK SAGLABĀTA *  *
 
 STR_STATUSBAR_SPECTATOR                                         :{WHITE}(skatītājs)
+STR_STATUSBAR_INFINITE_MONEY                                    :{WHITE}(bezgalīga nauda)
 
 # News message history
 STR_MESSAGE_HISTORY                                             :{WHITE}Ziņojumu vēsture
@@ -883,6 +899,7 @@ STR_NEWS_VEHICLE_IS_GETTING_VERY_OLD                            :{WHITE}{VEHICLE
 STR_NEWS_VEHICLE_IS_GETTING_VERY_OLD_AND                        :{WHITE}{VEHICLE} ir kļuvis ļoti vecs un tam steidzami nepieciešama nomaiņa
 STR_NEWS_TRAIN_IS_STUCK                                         :{WHITE}{VEHICLE} nevar atrast ceļu, lai turpinātu
 STR_NEWS_VEHICLE_IS_LOST                                        :{WHITE}{VEHICLE} ir apmaldījies
+STR_NEWS_VEHICLE_UNPROFITABLE_PERIOD                            :{WHITE}{VEHICLE} peļņa pagājušajā periodā bija {CURRENCY_LONG}
 STR_NEWS_AIRCRAFT_DEST_TOO_FAR                                  :{WHITE}{VEHICLE} nevar doties uz nākamo galamērķi, jo tas ir ārpus apgabala
 
 STR_NEWS_ORDER_REFIT_FAILED                                     :{WHITE}{VEHICLE} ir apstājies, jo neizdevās pasūtītā pielāgošana
@@ -902,7 +919,9 @@ STR_NEWS_SUBSIDY_WITHDRAWN_SERVICE                              :{BIG_FONT}{BLAC
 STR_NEWS_SERVICE_SUBSIDY_OFFERED                                :{BIG_FONT}{BLACK}Pakalpojuma subsīdijas piedāvājums:{}{}Pirmais {STRING} no {STRING} līdz {STRING} saņems {UNITS_YEARS_OR_MINUTES} subsīdiju no vietējās pašvaldības!
 ###length 4
 
+STR_NEWS_ROAD_REBUILDING_MONTHS                                 :{BIG_FONT}{BLACK}Satiksmes haoss pilsētā {TOWN}!{}{} Dēļ {STRING} finansētā ceļu atjaunošanas programmas, tuprmākos 6 mēnešus
 STR_NEWS_EXCLUSIVE_RIGHTS_TITLE                                 :{BIG_FONT}{BLACK}Pārvadājumu monopols!
+STR_NEWS_EXCLUSIVE_RIGHTS_DESCRIPTION_MONTHS                    :{BIG_FONT}{BLACK}{TOWN} vietējā pašvaldība paraksta līgumu ar {STRING} par ekskluzīvām transporta tiesībām uz 12 mēnešiem!
 
 # Extra view window
 STR_EXTRA_VIEWPORT_TITLE                                        :{WHITE}Skatvieta {COMMA}
@@ -1021,6 +1040,8 @@ STR_GAME_OPTIONS_GUI_SCALE_AUTO_TOOLTIP                         :{BLACK}Atzīmē
 STR_GAME_OPTIONS_GUI_SCALE_BEVELS                               :{BLACK}Mēroga slīpumi
 STR_GAME_OPTIONS_GUI_SCALE_BEVELS_TOOLTIP                       :{BLACK}Atzīmējiet šo izvēlni, lai mērogotu slīpumu pēc saskarnes lieluma
 
+STR_GAME_OPTIONS_GUI_FONT_SPRITE                                :{BLACK}Izmantot radicionālo sprite fontu
+STR_GAME_OPTIONS_GUI_FONT_SPRITE_TOOLTIP                        :{BLACK}Atzīmējiet šo izvēli, ja vēlaties izmantot tradicionālo fiksētā izmēra sprite fontu.
 
 STR_GAME_OPTIONS_GUI_SCALE_1X                                   :1x
 STR_GAME_OPTIONS_GUI_SCALE_2X                                   :2x
@@ -1056,7 +1077,11 @@ STR_GAME_OPTIONS_BASE_MUSIC_TOOLTIP                             :{BLACK}Atlasīt
 STR_GAME_OPTIONS_BASE_MUSIC_DESCRIPTION_TOOLTIP                 :{BLACK}Papildinformācija par pamata mūzikas kopu
 
 
+STR_GAME_OPTIONS_SOCIAL_PLUGIN_TITLE                            :{BLACK}{STRING} ({STRING})
+STR_GAME_OPTIONS_SOCIAL_PLUGIN_STATE                            :{BLACK}Spraudņa stāvoklis:
 
+STR_GAME_OPTIONS_SOCIAL_PLUGIN_STATE_FAILED                     :{RED}Neizdevās instalēt
+STR_GAME_OPTIONS_SOCIAL_PLUGIN_STATE_DUPLICATE                  :{RED}Dublēts spraudnis
 
 STR_BASESET_STATUS                                              :{STRING} {RED}({NUM} trūkst/bojāts fail{P s i ""})
 
@@ -1224,6 +1249,7 @@ STR_CONFIG_SETTING_HORIZONTAL_POS_RIGHT                         :pa labi
 
 STR_CONFIG_SETTING_SECONDS_VALUE                                :{COMMA}{NBSP}sekund{P 0 i es ""}
 
+STR_CONFIG_SETTING_INFINITE_MONEY_HELPTEXT                      :Atļaut neierobežotus tēriņus un izslēgt uzņēmumu bankrotu
 
 STR_CONFIG_SETTING_MAXIMUM_INITIAL_LOAN                         :Maksimālais sākotnējais aizdevums: {STRING}
 STR_CONFIG_SETTING_MAXIMUM_INITIAL_LOAN_HELPTEXT                :Maksimālais aizdevuma daudzums, ko uzņēmums var izsniegt (neskaitot inflāciju)
@@ -1249,6 +1275,7 @@ STR_CONFIG_SETTING_SUBSIDY_MULTIPLIER_HELPTEXT                  :Iestatīt, cik 
 STR_CONFIG_SETTING_SUBSIDY_DURATION                             :Subsīdiju ilgums: {STRING}
 ###length 2
 STR_CONFIG_SETTING_SUBSIDY_DURATION_HELPTEXT                    :Nosakiet gadu skaitu, par kuru tiek piešķirta subsīdija
+STR_CONFIG_SETTING_SUBSIDY_DURATION_HELPTEXT_PERIODS            :Iestatiet periodu skaitu, par kuriem tiek piešķirta subsīdija
 
 ###setting-zero-is-special
 STR_CONFIG_SETTING_SUBSIDY_DURATION_DISABLED                    :Bez subsīdijām
@@ -1350,6 +1377,7 @@ STR_CONFIG_SETTING_SHOWFINANCES                                 :Gada beigās r�
 
 ###length 2
 STR_CONFIG_SETTING_SHOWFINANCES_HELPTEXT                        :Ja ieslēgts, katra gada beigās uznirst finanšu logs, lai varētu viegli pārbaudīt uzņēmuma finansiālo stāvokli
+STR_CONFIG_SETTING_SHOWFINANCES_HELPTEXT_PERIOD                 :Ja iespējots, finanšu logs tiek parādīts katra perioda beigās, lai varētu viegli pārbaudīt uzņēmuma finansiālo stāvokli
 
 STR_CONFIG_SETTING_NONSTOP_BY_DEFAULT                           :Jaunie rīkojumi noklusējumā ir 'bez pieturām': {STRING}
 STR_CONFIG_SETTING_NONSTOP_BY_DEFAULT_HELPTEXT                  :Transportlīdzeklis parasti pietur pie katras caurbraucamās stacijas. Ieslēdzot šo iestatījumu, tas dosies cauri visām ceļa stacijām uz savu galamērķi bez pieturām. Ņemiet vērā, ka šis iestatījums nosaka noklusējuma vērtību tikai jaunajiem rīkojumiem. Tomēr ir iespējams katru rīkojumu iestatīt arī atsevišķi
@@ -1376,6 +1404,7 @@ STR_CONFIG_SETTING_BRIBE_HELPTEXT                               :Lauj uzņēmumi
 STR_CONFIG_SETTING_ALLOW_EXCLUSIVE                              :Atļaut pirkt pārvadājumu izņēmuma tiesības: {STRING}
 ###length 2
 STR_CONFIG_SETTING_ALLOW_EXCLUSIVE_HELPTEXT                     :Ja uzņēmums pērk pārvadājumu izņēmuma tiesības pilsētā, pretinieku stacijas (pasažieru un kravas) veselu gadu nesaņems nekādu kravu
+STR_CONFIG_SETTING_ALLOW_EXCLUSIVE_HELPTEXT_MINUTES             :Ja uzņēmums pērk ekskluzīvas pilsētas transporta tiesības, pretinieku stacijas (pasažieru un kravas) nesaņems nevienu kravu 12 minūtes.
 
 STR_CONFIG_SETTING_ALLOW_FUND_BUILDINGS                         :Atļaut ēku finansēšanu: {STRING}
 STR_CONFIG_SETTING_ALLOW_FUND_BUILDINGS_HELPTEXT                :Atļauj uzņēmumiem dot naudu apdzīvotām vietām jaunu ēku finansēšanai
@@ -1434,15 +1463,22 @@ STR_CONFIG_SETTING_ORDER_REVIEW_ON                              :visiem transpor
 STR_CONFIG_SETTING_WARN_INCOME_LESS                             :Brīdināt, ja transportlīdzekļa ienākumi ir negatīvi: {STRING}
 ###length 2
 STR_CONFIG_SETTING_WARN_INCOME_LESS_HELPTEXT                    :Ja ieslēgts, tiks sūtīts ziņojums gadījumā kad transportlīdzeklis negūst nekādu peļņu kalendārā gada laikā
+STR_CONFIG_SETTING_WARN_INCOME_LESS_HELPTEXT_PERIOD             :Ja iespējots, tik nosūtīts ziņojums, ja transportlīdzeklis noteiktā periodā nav guvis peļņu
 
 STR_CONFIG_SETTING_NEVER_EXPIRE_VEHICLES                        :Transportlīdzekļi nekad "nemirst": {STRING}
 STR_CONFIG_SETTING_NEVER_EXPIRE_VEHICLES_HELPTEXT               :Kad ieslēgts, visi transportlīdzekļu modeļi pēc to ieviešanas vienmēr ir pieejami
 
+STR_CONFIG_SETTING_TIMEKEEPING_UNITS                            :Laika uzskaite: {STRING}
 ###length 2
+STR_CONFIG_SETTING_TIMEKEEPING_UNITS_CALENDAR                   :Kalendārs
 
+STR_CONFIG_SETTING_MINUTES_PER_YEAR_HELPTEXT                    :Izvēlieties minūšu skaitu kalendārajā gadā. Noklusējums ir 12 minūtes. Iestatiet uz 0, lai apturētu kalendāra laika izmaiņas. Šis iestatījums neietekmē spēles ekonomisko simulāciju un ir pieejams tikai tad, ja tiek izmantots sienas pulksteņa laika mērijums
 
 ###setting-zero-is-special
 
+STR_CONFIG_SETTING_TOWN_CARGO_SCALE                             :Mērogot pilsētas kravu ražošana: {STRING}
+STR_CONFIG_SETTING_TOWN_CARGO_SCALE_HELPTEXT                    :Mērogojiet pilsētu kravu ražošanu par šo procentu.
+STR_CONFIG_SETTING_CARGO_SCALE_VALUE                            :{NUM}%
 
 STR_CONFIG_SETTING_AUTORENEW_VEHICLE                            :Automātiski atjaunot transportlīdzekļus, kad tie ir kļuvuši veci: {STRING}
 STR_CONFIG_SETTING_AUTORENEW_VEHICLE_HELPTEXT                   :Ja ieslēgts, kad ir atbilstoši atjaunošanas apstākļi, automātiski tiek nomainīti transportlīdzekļi kuru kalpošanas laiks tuvojas beigām
@@ -1698,6 +1734,7 @@ STR_CONFIG_SETTING_SOUND_NEWS_HELPTEXT                          :Atskaņot skaņ
 
 ###length 2
 STR_CONFIG_SETTING_SOUND_NEW_YEAR                               :Gada beigas: {STRING}
+STR_CONFIG_SETTING_SOUND_NEW_PERIOD                             :Perioda beigas: {STRING}
 
 ###length 2
 STR_CONFIG_SETTING_SOUND_NEW_YEAR_HELPTEXT                      :Atskaņot skaņu gada beigās, apkopojot uzņēmuma darbības sasniegumus gada laikā salīdzinājumā ar iepriekšējo gadu
@@ -1740,13 +1777,6 @@ STR_CONFIG_SETTING_AI_BUILDS_AIRCRAFT_HELPTEXT                  :Šā iestatīju
 
 STR_CONFIG_SETTING_AI_BUILDS_SHIPS                              :Atspējot datoram kuģus: {STRING}
 STR_CONFIG_SETTING_AI_BUILDS_SHIPS_HELPTEXT                     :Šā iestatījuma ieslēgšana padara neiespējamu kuģu būvēšanu datoram
-
-STR_CONFIG_SETTING_AI_PROFILE                                   :Noklusējuma iestatījumu profils: {STRING}
-STR_CONFIG_SETTING_AI_PROFILE_HELPTEXT                          :Izvēlieties, kuru iestatījumu profilu izmantot nejaušam MI, vai sākotnējās vērtības, kad pievieno jaunu MI vai spēles skriptu
-###length 3
-STR_CONFIG_SETTING_AI_PROFILE_EASY                              :viegls
-STR_CONFIG_SETTING_AI_PROFILE_MEDIUM                            :vidējs
-STR_CONFIG_SETTING_AI_PROFILE_HARD                              :smags
 
 STR_CONFIG_SETTING_AI_IN_MULTIPLAYER                            :Atļaut MI vairākspēlētāju spēlēs: {STRING}
 STR_CONFIG_SETTING_AI_IN_MULTIPLAYER_HELPTEXT                   :Atļaut MI (mākslīgā intelekta) nespēlētāju tēliem (datora vadītiem) piedalīties vairākspēlētāju spēlēs
@@ -1868,7 +1898,6 @@ STR_CONFIG_SETTING_SEMAPHORE_BUILD_BEFORE_DATE_HELPTEXT         :Izvēlēties ga
 STR_CONFIG_SETTING_CYCLE_SIGNAL_TYPES                           :Braukt garām signālu veidiem: {STRING}
 STR_CONFIG_SETTING_CYCLE_SIGNAL_TYPES_HELPTEXT                  :Atlasiet, kādus signālu veidus izmantot, izmantojot Ctrl+noklikšķinot uz izveidotā signāla, izmantojot signāla rīku
 ###length 2
-STR_CONFIG_SETTING_CYCLE_SIGNAL_PBS                             :tikai ceļa signāliem
 STR_CONFIG_SETTING_CYCLE_SIGNAL_ALL                             :Redzami visi
 
 STR_CONFIG_SETTING_SIGNAL_GUI_MODE                              :Rādīt signāla tipus: {STRING}
@@ -2329,6 +2358,7 @@ STR_NETWORK_SERVER_LIST_SERVER_ADDRESS                          :{SILVER}Servera
 STR_NETWORK_SERVER_LIST_INVITE_CODE                             :{SILVER}Uzaicinājuma kods: {WHITE}{STRING}
 STR_NETWORK_SERVER_LIST_START_DATE                              :{SILVER}Sākuma datums: {WHITE}{DATE_SHORT}
 STR_NETWORK_SERVER_LIST_CURRENT_DATE                            :{SILVER}Šībrīža datums: {WHITE}{DATE_SHORT}
+STR_NETWORK_SERVER_LIST_PLAY_TIME                               :{SILVER}Spēles laiks: {WHITE}{NUM} h {NUM} min
 STR_NETWORK_SERVER_LIST_GAMESCRIPT                              :{SILVER}Spēles Skripts: {WHITE}{STRING} (v{NUM})
 STR_NETWORK_SERVER_LIST_PASSWORD                                :{SILVER}Aizsargāts ar paroli!
 STR_NETWORK_SERVER_LIST_SERVER_OFFLINE                          :{SILVER}SERVERIS NAV TIEŠSAISTĒ
@@ -2684,6 +2714,8 @@ STR_LINKGRAPH_LEGEND_SATURATED                                  :{TINY_FONT}{BLA
 STR_LINKGRAPH_LEGEND_OVERLOADED                                 :{TINY_FONT}{BLACK}pārslogots
 
 # Linkgraph tooltip
+STR_LINKGRAPH_STATS_TOOLTIP_MONTH                               :{BLACK}{CARGO_LONG}, kas jāpārvadā mēnesī no {STATION} uz {STATION} ({COMMA}% no jaudas){STRING}
+STR_LINKGRAPH_STATS_TOOLTIP_MINUTE                              :{BLACK}{CARGO_LONG}, kas jāpārvadā minūtē no {STATION} uz {STATION} ({COMMA}% no jaudas){STRING}
 STR_LINKGRAPH_STATS_TOOLTIP_RETURN_EXTENSION                    :{}{CARGO_LONG} jātransportē atpakaļ ({COMMA}% no pārvadājuma)
 
 # Base for station construction window(s)
@@ -2694,6 +2726,8 @@ STR_STATION_BUILD_COVERAGE_AREA_OFF_TOOLTIP                     :{BLACK}Neiezīm
 STR_STATION_BUILD_COVERAGE_AREA_ON_TOOLTIP                      :{BLACK}Iezīmēt jaunceļamā objekta pārklājumu
 STR_STATION_BUILD_ACCEPTS_CARGO                                 :{BLACK}Pieņem: {GOLD}{CARGO_LIST}
 STR_STATION_BUILD_SUPPLIES_CARGO                                :{BLACK}Piegādā: {GOLD}{CARGO_LIST}
+STR_STATION_BUILD_INFRASTRUCTURE_COST_YEAR                      :{BLACK}Uzturēšanas izmaksas: {GOLD}{CURRENCY_SHORT}/gadā
+STR_STATION_BUILD_INFRASTRUCTURE_COST_PERIOD                    :{BLACK}Uzturēšanas izmaksas: {GOLD}{CURRENCY_SHORT}/periodā
 
 # Join station window
 STR_JOIN_STATION_CAPTION                                        :{WHITE}Pievienot staciju
@@ -3545,6 +3579,7 @@ STR_TOWN_VIEW_TOWN_CAPTION                                      :{WHITE}{TOWN}
 STR_TOWN_VIEW_CITY_CAPTION                                      :{WHITE}{TOWN} (pilsēta)
 STR_TOWN_VIEW_POPULATION_HOUSES                                 :{BLACK}Iedzīvotāji: {ORANGE}{COMMA}{BLACK}  Mājas: {ORANGE}{COMMA}
 STR_TOWN_VIEW_CARGO_LAST_MONTH_MAX                              :{BLACK}{CARGO_LIST} iepriekšējā mēnesī: {ORANGE}{COMMA}{BLACK}  maks.: {ORANGE}{COMMA}
+STR_TOWN_VIEW_CARGO_LAST_MINUTE_MAX                             :{BLACK}{CARGO_LIST} pēdējā minūtē: {ORANGE}{COMMA}{BLACK} maks.: {ORANGE}{COMMA}
 STR_TOWN_VIEW_CARGO_FOR_TOWNGROWTH                              :{BLACK}Krava nepieciešama pilsētas attīstībai:
 STR_TOWN_VIEW_CARGO_FOR_TOWNGROWTH_REQUIRED_GENERAL             :{ORANGE}{STRING}{RED} nepieciešams
 STR_TOWN_VIEW_CARGO_FOR_TOWNGROWTH_REQUIRED_WINTER              :{ORANGE}{STRING}{BLACK} nepieciešams ziemā
@@ -3592,6 +3627,7 @@ STR_LOCAL_AUTHORITY_ACTION_TOOLTIP_MEDIUM_ADVERTISING           :{PUSH_COLOUR}{Y
 STR_LOCAL_AUTHORITY_ACTION_TOOLTIP_LARGE_ADVERTISING            :{PUSH_COLOUR}{YELLOW}Sāciet lielu vietējo reklāmas kampaņu lai piesaistītu vairāk pasažieru un kravas saviem transporta pakalpojumiem.{}Nodrošina īslaicīgu staciju vērtējuma palielinājumu lielā rādiusā ap pilsētas centru.{}{POP_COLOUR}Izmaksas: {CURRENCY_LONG}
 STR_LOCAL_AUTHORITY_ACTION_TOOLTIP_STATUE_OF_COMPANY            :{PUSH_COLOUR}{YELLOW}Uzceliet statuju par godu savam uzņēmumam.{}Nodrošina pastāvīgu staciju vērtējuma palielinājumu šajā pilsētā.{}{POP_COLOUR}Izmaksas: {CURRENCY_LONG}
 STR_LOCAL_AUTHORITY_ACTION_TOOLTIP_NEW_BUILDINGS                :{PUSH_COLOUR}{YELLOW}Finansējiet jaunu ēku celtniecību pilsētā.{}Nodrošina īslaicīgu stimulu pilsētas izaugsmei šajā pilsētā.{}{POP_COLOUR}Izmaksas: {CURRENCY_LONG}
+STR_LOCAL_AUTHORITY_ACTION_TOOLTIP_EXCLUSIVE_TRANSPORT_MINUTES  :{PUSH_COLOUR}{YELLOW}Iegādājieties ekskluzīvas transporta tiesības pilsētā uz 12 minūtēm.{}Pilsētas pārvalde neļaus pasažieriem un kravai izmantot jūsu konkurentu stacijas. Veiksmīgs kukulis no konkurenta atcels šo līgumu.{}{POP_COLOUR}Izmaksas: {CURRENCY_LONG}
 STR_LOCAL_AUTHORITY_ACTION_TOOLTIP_BRIBE                        :{PUSH_COLOUR}{YELLOW}Piekukuļot vietējo pašvaldību, lai paaugstinātu savu vērtējumu un atceltu konkurenta ekskluzīvās transporta tiesības, riskējot ar bargu sodu, ja tiksiet pieķerts.{}{POP_COLOUR}Izmaksas: {CURRENCY_LONG}
 
 # Goal window
@@ -3644,6 +3680,8 @@ STR_SUBSIDIES_NONE                                              :{ORANGE}- Nevie
 STR_SUBSIDIES_SUBSIDISED_TITLE                                  :{BLACK}Pašlaik subsidētie pakalpojumi:
 STR_SUBSIDIES_TOOLTIP_CLICK_ON_SERVICE_TO_CENTER                :{BLACK}Klikšķināt uz servisa, lai iecentrētu skatu uz rūpnīcu/pilsētu. Ctrl+klikšķis atvērs jaunu skatu lauku uz pilsētu/rūpnīcu
 STR_SUBSIDIES_OFFERED_EXPIRY_DATE                               :līdz {DATE_SHORT}
+STR_SUBSIDIES_OFFERED_EXPIRY_TIME                               :{UNITS_MONTHS_OR_MINUTES} laikā
+STR_SUBSIDIES_SUBSIDISED_EXPIRY_TIME                            :{UNITS_MONTHS_OR_MINUTES} atlikušais kalpošanas laiks
 
 # Story book window
 STR_STORY_BOOK_CAPTION                                          :{WHITE}{COMPANY} Stāstu grāmata
@@ -3683,6 +3721,8 @@ STR_STATION_VIEW_EXCLUSIVE_RIGHTS_COMPANY                       :{YELLOW}{COMPAN
 
 STR_STATION_VIEW_RATINGS_BUTTON                                 :{BLACK}Vērtējumi
 STR_STATION_VIEW_RATINGS_TOOLTIP                                :{BLACK}Rādīt stacijas vērtējumus
+STR_STATION_VIEW_SUPPLY_RATINGS_TITLE_MONTH                     :{BLACK}Piegāde mēnesī un vietējais vērtējums:
+STR_STATION_VIEW_SUPPLY_RATINGS_TITLE_MINUTE                    :{BLACK}Piegāde minūtē un vietējais vērtējums:
 STR_STATION_VIEW_CARGO_SUPPLY_RATING                            :{WHITE}{STRING}: {YELLOW}{COMMA} / {STRING} ({COMMA}%)
 
 STR_STATION_VIEW_GROUP                                          :{BLACK}Grupēt pēc
@@ -3743,6 +3783,8 @@ STR_EDIT_WAYPOINT_NAME                                          :{WHITE}Labot pi
 # Finances window
 STR_FINANCES_CAPTION                                            :{WHITE}{COMPANY} finanses {BLACK}{COMPANY_NUM}
 STR_FINANCES_YEAR                                               :{WHITE}{NUM}
+STR_FINANCES_YEAR_CAPTION                                       :{WHITE}Gads
+STR_FINANCES_PERIOD_CAPTION                                     :{WHITE}Periods
 
 ###length 3
 STR_FINANCES_REVENUE_TITLE                                      :{WHITE}Ieņēmumi
@@ -3844,6 +3886,8 @@ STR_COMPANY_INFRASTRUCTURE_VIEW_CANALS                          :{WHITE}Kanāli
 STR_COMPANY_INFRASTRUCTURE_VIEW_STATION_SECT                    :{GOLD}Stacijas:
 STR_COMPANY_INFRASTRUCTURE_VIEW_STATIONS                        :{WHITE}Staciju lauciņi
 STR_COMPANY_INFRASTRUCTURE_VIEW_AIRPORTS                        :{WHITE}Lidostas
+STR_COMPANY_INFRASTRUCTURE_VIEW_TOTAL_YEAR                      :{WHITE}{CURRENCY_LONG}/gads
+STR_COMPANY_INFRASTRUCTURE_VIEW_TOTAL_PERIOD                    :{WHITE}{CURRENCY_LONG}/periods
 
 # Industry directory
 STR_INDUSTRY_DIRECTORY_CAPTION                                  :{WHITE}Ražotnes
@@ -3950,7 +3994,9 @@ STR_GROUP_REMOVE_ALL_VEHICLES                                   :Novākt visus t
 STR_GROUP_RENAME_CAPTION                                        :{BLACK}Pārdēvēt grupu
 
 STR_GROUP_PROFIT_THIS_YEAR                                      :Ienākumi šajā gadā:
+STR_GROUP_PROFIT_THIS_PERIOD                                    :Peļņa šajā periodā:
 STR_GROUP_PROFIT_LAST_YEAR                                      :Peļņa pērn:
+STR_GROUP_PROFIT_LAST_PERIOD                                    :Peļņa pēdējā periodā:
 STR_GROUP_OCCUPANCY                                             :Pašreizējais lietojums:
 STR_GROUP_OCCUPANCY_VALUE                                       :{NUM}%
 
@@ -3977,6 +4023,7 @@ STR_PURCHASE_INFO_SPEED_POWER                                   :{BLACK}Ātrums:
 STR_PURCHASE_INFO_SPEED                                         :{BLACK}Ātrums: {GOLD}{VELOCITY}
 STR_PURCHASE_INFO_SPEED_OCEAN                                   :{BLACK}Ātrums okeānā: {GOLD}{VELOCITY}
 STR_PURCHASE_INFO_SPEED_CANAL                                   :{BLACK}Ātrums kanālā/upē: {GOLD}{VELOCITY}
+STR_PURCHASE_INFO_RUNNINGCOST_YEAR                              :{BLACK}Darbības izmaksas: {GOLD}{CURRENCY_LONG}/gadā
 STR_PURCHASE_INFO_CAPACITY                                      :{BLACK}Ietilpība: {GOLD}{CARGO_LONG} {STRING}
 STR_PURCHASE_INFO_REFITTABLE                                    :(pielāgojams)
 STR_PURCHASE_INFO_DESIGNED_LIFE                                 :{BLACK}Projektēts: {GOLD}{NUM}{BLACK} Kalpošanas laiks: {GOLD}{COMMA} gad{P s i u}
@@ -4169,6 +4216,10 @@ STR_ENGINE_PREVIEW_TRAM_VEHICLE                                 :tramvajs
 STR_ENGINE_PREVIEW_AIRCRAFT                                     :lidaparāts
 STR_ENGINE_PREVIEW_SHIP                                         :kuģis
 
+STR_ENGINE_PREVIEW_SPEED_POWER                                  :Ātrums: {VELOCITY} Jauda: {POWER}
+STR_ENGINE_PREVIEW_SPEED_POWER_MAX_TE                           :Ātrums: {VELOCITY} Jauda: {POWER} Maks. V.S.: {FORCE}
+STR_ENGINE_PREVIEW_TYPE                                         :Lidaparāta veids: {STRING}
+STR_ENGINE_PREVIEW_CAPACITY                                     :Ietilpība: {CARGO_LONG}
 
 # Autoreplace window
 STR_REPLACE_VEHICLES_WHITE                                      :{WHITE}Nomainīt {STRING} - {STRING}
@@ -4323,6 +4374,7 @@ STR_VEHICLE_INFO_WEIGHT_POWER_MAX_SPEED_MAX_TE                  :{BLACK}Svars: {
 
 STR_VEHICLE_INFO_PROFIT_THIS_YEAR_LAST_YEAR                     :{BLACK}Peļņa šogad: {LTBLUE}{CURRENCY_LONG} (pagājušajā gadā: {CURRENCY_LONG})
 STR_VEHICLE_INFO_PROFIT_THIS_YEAR_LAST_YEAR_MIN_PERFORMANCE     :{BLACK}Peļņa šogad: {LTBLUE}{CURRENCY_LONG} (pagājušajā gadā: {CURRENCY_LONG}) {BLACK}Min. veiktspēja: {LTBLUE}{POWER_TO_WEIGHT}
+STR_VEHICLE_INFO_PROFIT_THIS_PERIOD_LAST_PERIOD_MIN_PERFORMANCE :{BLACK}Peļņa šajā periodā: {LTBLUE}{CURRENCY_LONG} (pēdējais periods: {CURRENCY_LONG}) {BLACK}Min. veiktspēja: {LTBLUE}{POWER_TO_WEIGHT}
 STR_VEHICLE_INFO_RELIABILITY_BREAKDOWNS                         :{BLACK}Drošums: {LTBLUE}{COMMA}%  {BLACK}Ķibeles kopš pēdējās apkopes: {LTBLUE}{COMMA}
 
 STR_VEHICLE_INFO_BUILT_VALUE                                    :{LTBLUE}{ENGINE} {BLACK}Uzbūvēts: {LTBLUE}{NUM}{BLACK} Vērtība: {LTBLUE}{CURRENCY_LONG}
@@ -4333,9 +4385,12 @@ STR_VEHICLE_INFO_CAPACITY_CAPACITY                              :{BLACK}Ietilpī
 
 STR_VEHICLE_INFO_FEEDER_CARGO_VALUE                             :{BLACK}Pārvadājumu ieņēmumi: {LTBLUE}{CURRENCY_LONG}
 
+STR_VEHICLE_DETAILS_INCREASE_SERVICING_INTERVAL_TOOLTIP_MINUTES :{BLACK}Palieliniet apkopes intervālu par 5 minūtēm. Ctrl+klikšķis, lai palielinātu apkopes intervālu par 1 minūti
+STR_VEHICLE_DETAILS_DECREASE_SERVICING_INTERVAL_TOOLTIP_DAYS    :{BLACK}Samaziniet apkopes intervālu par 10 dienām. Ctrl+klikšķis, lai samazinātu apkopes intervālu par 5 dienām
 
 STR_SERVICE_INTERVAL_DROPDOWN_TOOLTIP                           :{BLACK}Mainīt apkopes starplaiku veidu
 STR_VEHICLE_DETAILS_DEFAULT                                     :Noklusējuma
+STR_VEHICLE_DETAILS_MINUTES                                     :Minūtes
 STR_VEHICLE_DETAILS_PERCENT                                     :Procenti
 
 ###length VEHICLE_TYPES
@@ -4401,7 +4456,6 @@ STR_ORDERS_TIMETABLE_VIEW_TOOLTIP                               :{BLACK}Pārslē
 
 STR_ORDERS_LIST_TOOLTIP                                         :{BLACK}Rīkojumu saraksts - klikšķināt uz rīkojuma, lai to atzīmētu. Ctrl+klikšķis ritina uz rīkojuma galamērķi
 STR_ORDER_INDEX                                                 :{COMMA}:{NBSP}
-STR_ORDER_TEXT                                                  :{STRING} {STRING} {STRING}
 
 STR_ORDERS_END_OF_ORDERS                                        :- - Rīkojumu beigas - -
 STR_ORDERS_END_OF_SHARED_ORDERS                                 :- - Koplietojamo rīkojumu beigas - -
@@ -4435,11 +4489,9 @@ STR_ORDER_REFIT_AUTO_TOOLTIP                                    :{BLACK}Izvēlē
 STR_ORDER_DROP_REFIT_AUTO                                       :Pastāvīga krava
 STR_ORDER_DROP_REFIT_AUTO_ANY                                   :Pieejamā krava
 
-STR_ORDER_SERVICE                                               :{BLACK}Apkope
 STR_ORDER_DROP_GO_ALWAYS_DEPOT                                  :Vienmēr doties
 STR_ORDER_DROP_SERVICE_DEPOT                                    :Apkope, ja nepieciešama
 STR_ORDER_DROP_HALT_DEPOT                                       :Apstādināt
-STR_ORDER_SERVICE_TOOLTIP                                       :{BLACK}Izlaist šo rīkojumu, izņemot ja vajadzīga apkope
 
 STR_ORDER_CONDITIONAL_VARIABLE_TOOLTIP                          :{BLACK}Vehicle data to base jumping on
 
@@ -4507,6 +4559,7 @@ STR_ORDER_GO_TO_DEPOT_FORMAT                                    :{STRING} {DEPOT
 STR_ORDER_REFIT_ORDER                                           :(Pielāgot uz {STRING})
 STR_ORDER_REFIT_STOP_ORDER                                      :(Pielāgot uz {STRING} un apstāties)
 STR_ORDER_STOP_ORDER                                            :(Apstādināt)
+
 
 STR_ORDER_GO_TO_STATION                                         :{STRING} {STATION} {STRING}
 STR_ORDER_GO_TO_STATION_CAN_T_USE_STATION                       :{PUSH_COLOUR}{RED}(Nevar izmantot staciju){POP_COLOUR} {STRING} {STATION} {STRING}
@@ -4710,6 +4763,7 @@ STR_AI_SETTINGS_CAPTION_GAMESCRIPT                              :Spēles skripts
 STR_AI_SETTINGS_CLOSE                                           :{BLACK}Aizvērt
 STR_AI_SETTINGS_RESET                                           :{BLACK}Atiestatīt
 STR_AI_SETTINGS_SETTING                                         :{STRING}: {ORANGE}{STRING}
+STR_AI_SETTINGS_JUST_DEVIATION                                  :[{STRING}, {STRING}]
 
 
 # Textfile window
@@ -4974,6 +5028,8 @@ STR_ERROR_UNABLE_TO_FIND_ROUTE_TO                               :{WHITE}Nevar at
 STR_ERROR_UNABLE_TO_FIND_LOCAL_DEPOT                            :{WHITE}Nevar atrast vietējo depo
 
 STR_ERROR_DEPOT_WRONG_DEPOT_TYPE                                :Nepareizs depo veids
+
+# Depot unbunching related errors
 
 # Autoreplace related errors
 STR_ERROR_TRAIN_TOO_LONG_AFTER_REPLACEMENT                      :{WHITE}{VEHICLE} pēc aizstāšanas ir pārāk garš
@@ -5667,6 +5723,9 @@ STR_TOWN_NAME                                                   :{TOWN}
 STR_VEHICLE_NAME                                                :{VEHICLE}
 STR_WAYPOINT_NAME                                               :{WAYPOINT}
 
+STR_CURRENCY_SHORT_KILO                                         :{NBSP}tk.
+STR_CURRENCY_SHORT_MEGA                                         :{NBSP}m
+STR_CURRENCY_SHORT_GIGA                                         :{NBSP}mljrd.
 
 STR_JUST_CARGO                                                  :{CARGO_LONG}
 STR_JUST_RIGHT_ARROW                                            :{RIGHT_ARROW}

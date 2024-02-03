@@ -635,6 +635,7 @@ STR_GRAPH_KEY_COMPANY_SELECTION_TOOLTIP                         :{BLACK}Clique a
 # Company league window
 STR_COMPANY_LEAGUE_TABLE_CAPTION                                :{WHITE}Tabela da Liga das Empresas
 STR_COMPANY_LEAGUE_COMPANY_NAME                                 :{ORANGE}{COMPANY} {BLACK}{COMPANY_NUM} '{STRING}'
+STR_COMPANY_LEAGUE_COMPANY_RANK                                 :{YELLOW}#{NUM}
 STR_COMPANY_LEAGUE_PERFORMANCE_TITLE_ENGINEER                   :Engenheiro
 STR_COMPANY_LEAGUE_PERFORMANCE_TITLE_TRAFFIC_MANAGER            :Gerenciador de Tráfego
 STR_COMPANY_LEAGUE_PERFORMANCE_TITLE_TRANSPORT_COORDINATOR      :Coordenador de Transportes
@@ -1812,13 +1813,6 @@ STR_CONFIG_SETTING_AI_BUILDS_AIRCRAFT_HELPTEXT                  :Ativado, impede
 STR_CONFIG_SETTING_AI_BUILDS_SHIPS                              :Desativar embarcação para o computador: {STRING}
 STR_CONFIG_SETTING_AI_BUILDS_SHIPS_HELPTEXT                     :Ativado, impede que jogadores controlados pelo computador construam embarcações
 
-STR_CONFIG_SETTING_AI_PROFILE                                   :Perfil de configs. padrão: {STRING}
-STR_CONFIG_SETTING_AI_PROFILE_HELPTEXT                          :Escolhe qual perfil de configurações a ser usado em IAs aleatórias ou em valores iniciais ao se adicionar uma nova IA ou GameScript
-###length 3
-STR_CONFIG_SETTING_AI_PROFILE_EASY                              :Fácil
-STR_CONFIG_SETTING_AI_PROFILE_MEDIUM                            :Médio
-STR_CONFIG_SETTING_AI_PROFILE_HARD                              :Difícil
-
 STR_CONFIG_SETTING_AI_IN_MULTIPLAYER                            :Permitir IA em multiplayer: {STRING}
 STR_CONFIG_SETTING_AI_IN_MULTIPLAYER_HELPTEXT                   :Permite jogadores controlados pelo computador participar em jogos multijogador
 
@@ -1939,7 +1933,6 @@ STR_CONFIG_SETTING_SEMAPHORE_BUILD_BEFORE_DATE_HELPTEXT         :Seleciona o ano
 STR_CONFIG_SETTING_CYCLE_SIGNAL_TYPES                           :Tipo de sinal a ser exibido: {STRING}
 STR_CONFIG_SETTING_CYCLE_SIGNAL_TYPES_HELPTEXT                  :Selecione quais os tipos de sinais mostrar ao usar Ctrl+Clique num sinal existente com a ferramenta de sinais
 ###length 2
-STR_CONFIG_SETTING_CYCLE_SIGNAL_PBS                             :De trajeto apenas
 STR_CONFIG_SETTING_CYCLE_SIGNAL_ALL                             :Todos visíveis
 
 STR_CONFIG_SETTING_SIGNAL_GUI_MODE                              :Mostrar tipos de sinais: {STRING}
@@ -4526,7 +4519,6 @@ STR_ORDERS_TIMETABLE_VIEW_TOOLTIP                               :{BLACK}Exibe o 
 
 STR_ORDERS_LIST_TOOLTIP                                         :{BLACK}Lista de ordens - clique em uma ordem para selecionar. Ctrl+Clique mostra o destino da ordem
 STR_ORDER_INDEX                                                 :{COMMA}:{NBSP}
-STR_ORDER_TEXT                                                  :{STRING} {STRING} {STRING}
 
 STR_ORDERS_END_OF_ORDERS                                        :- - Fim de Ordens - -
 STR_ORDERS_END_OF_SHARED_ORDERS                                 :- - Fim de Ordens Compartilhadas - -
@@ -4560,11 +4552,9 @@ STR_ORDER_REFIT_AUTO_TOOLTIP                                    :{BLACK}Selecion
 STR_ORDER_DROP_REFIT_AUTO                                       :Carga fixa
 STR_ORDER_DROP_REFIT_AUTO_ANY                                   :Cargas disponíveis
 
-STR_ORDER_SERVICE                                               :{BLACK}Manutenção
 STR_ORDER_DROP_GO_ALWAYS_DEPOT                                  :Ir sempre
 STR_ORDER_DROP_SERVICE_DEPOT                                    :Manutenção, se necessária
 STR_ORDER_DROP_HALT_DEPOT                                       :Parar
-STR_ORDER_SERVICE_TOOLTIP                                       :{BLACK}Pular esta ordem a menos que necessite de manutenção
 
 STR_ORDER_CONDITIONAL_VARIABLE_TOOLTIP                          :{BLACK}Dados do veículo no qual se basear para pular ordem
 
@@ -4632,6 +4622,7 @@ STR_ORDER_GO_TO_DEPOT_FORMAT                                    :{STRING} {DEPOT
 STR_ORDER_REFIT_ORDER                                           :(Adaptar para {STRING})
 STR_ORDER_REFIT_STOP_ORDER                                      :(Adaptar a {STRING} e parar)
 STR_ORDER_STOP_ORDER                                            :(Parar)
+
 
 STR_ORDER_GO_TO_STATION                                         :{STRING} {STATION} {STRING}
 STR_ORDER_GO_TO_STATION_CAN_T_USE_STATION                       :{PUSH_COLOUR}{RED}(Não pode usar a estação){POP_COLOUR} {STRING} {STATION} {STRING}
@@ -4835,6 +4826,8 @@ STR_AI_SETTINGS_CAPTION_GAMESCRIPT                              :Script de Jogo
 STR_AI_SETTINGS_CLOSE                                           :{BLACK}Fechar
 STR_AI_SETTINGS_RESET                                           :{BLACK}Resetar
 STR_AI_SETTINGS_SETTING                                         :{STRING}: {ORANGE}{STRING}
+STR_AI_SETTINGS_SETTING_DEVIATION                               :{STRING}: {ORANGE}[{STRING}, {STRING}]
+STR_AI_SETTINGS_JUST_DEVIATION                                  :[{STRING}, {STRING}]
 
 
 # Textfile window
@@ -5099,6 +5092,8 @@ STR_ERROR_UNABLE_TO_FIND_ROUTE_TO                               :{WHITE}Incapaz 
 STR_ERROR_UNABLE_TO_FIND_LOCAL_DEPOT                            :{WHITE}Incapaz de encontrar a garagem local
 
 STR_ERROR_DEPOT_WRONG_DEPOT_TYPE                                :Tipo de depósito errado
+
+# Depot unbunching related errors
 
 # Autoreplace related errors
 STR_ERROR_TRAIN_TOO_LONG_AFTER_REPLACEMENT                      :{WHITE}{VEHICLE} fica grande demais para ser substituído

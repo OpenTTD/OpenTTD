@@ -1811,13 +1811,6 @@ STR_CONFIG_SETTING_AI_BUILDS_AIRCRAFT_HELPTEXT                  :Het inschakelen
 STR_CONFIG_SETTING_AI_BUILDS_SHIPS                              :Schepen voor de computer uitschakelen: {STRING}
 STR_CONFIG_SETTING_AI_BUILDS_SHIPS_HELPTEXT                     :Het inschakelen van deze instelling maakt het het bouwen van schepen onmogelijk voor een computerspeler
 
-STR_CONFIG_SETTING_AI_PROFILE                                   :Standaard instellingenprofiel: {STRING}
-STR_CONFIG_SETTING_AI_PROFILE_HELPTEXT                          :Hiermee selecteer je welk instellingsprofiel moet worden gebruikt bij willekeurige AI's of als startwaardes wanneer een nieuwe AI of spelscript wordt toegevoegd.
-###length 3
-STR_CONFIG_SETTING_AI_PROFILE_EASY                              :Makkelijk
-STR_CONFIG_SETTING_AI_PROFILE_MEDIUM                            :Gemiddeld
-STR_CONFIG_SETTING_AI_PROFILE_HARD                              :Moeilijk
-
 STR_CONFIG_SETTING_AI_IN_MULTIPLAYER                            :Computerspelers toestaan in netwerkspelen: {STRING}
 STR_CONFIG_SETTING_AI_IN_MULTIPLAYER_HELPTEXT                   :Computerspelers toestaan in netwerkspellen
 
@@ -1938,7 +1931,6 @@ STR_CONFIG_SETTING_SEMAPHORE_BUILD_BEFORE_DATE_HELPTEXT         :Stelt het jaar 
 STR_CONFIG_SETTING_CYCLE_SIGNAL_TYPES                           :Door seintypen bladeren: {STRING}
 STR_CONFIG_SETTING_CYCLE_SIGNAL_TYPES_HELPTEXT                  :Selecteer welke soorten seinen worden gebruikt wanneer je Ctrl+klikt op een bouwsein met het seingereedschap
 ###length 2
-STR_CONFIG_SETTING_CYCLE_SIGNAL_PBS                             :Alleen routeseinen
 STR_CONFIG_SETTING_CYCLE_SIGNAL_ALL                             :Alles zichtbaar
 
 STR_CONFIG_SETTING_SIGNAL_GUI_MODE                              :Soorten sein weergeven: {STRING}
@@ -4525,7 +4517,6 @@ STR_ORDERS_TIMETABLE_VIEW_TOOLTIP                               :{BLACK}Naar die
 
 STR_ORDERS_LIST_TOOLTIP                                         :{BLACK}Orderlijst - klik op een order om deze te selecteren. Met Ctrl+klik ga je naar de bestemming van de order.
 STR_ORDER_INDEX                                                 :{COMMA}:{NBSP}
-STR_ORDER_TEXT                                                  :{STRING} {STRING} {STRING}
 
 STR_ORDERS_END_OF_ORDERS                                        :- - Einde van orders - -
 STR_ORDERS_END_OF_SHARED_ORDERS                                 :- - Einde gedeelde orders - -
@@ -4559,11 +4550,9 @@ STR_ORDER_REFIT_AUTO_TOOLTIP                                    :{BLACK}Selectee
 STR_ORDER_DROP_REFIT_AUTO                                       :Vaste vracht
 STR_ORDER_DROP_REFIT_AUTO_ANY                                   :Beschikbare vracht
 
-STR_ORDER_SERVICE                                               :{BLACK}Onderhoud
 STR_ORDER_DROP_GO_ALWAYS_DEPOT                                  :Altijd gaan
 STR_ORDER_DROP_SERVICE_DEPOT                                    :Onderhouden wanneer nodig
 STR_ORDER_DROP_HALT_DEPOT                                       :Stoppen
-STR_ORDER_SERVICE_TOOLTIP                                       :{BLACK}Deze order overslaan, tenzij onderhoud nodig is
 
 STR_ORDER_CONDITIONAL_VARIABLE_TOOLTIP                          :{BLACK}Voertuiggegevens voor basisspringen wanneer
 
@@ -4631,6 +4620,7 @@ STR_ORDER_GO_TO_DEPOT_FORMAT                                    :{STRING} {DEPOT
 STR_ORDER_REFIT_ORDER                                           :(Ombouwen naar {STRING})
 STR_ORDER_REFIT_STOP_ORDER                                      :(Ombouwen naar {STRING} en stop)
 STR_ORDER_STOP_ORDER                                            :(Stop)
+
 
 STR_ORDER_GO_TO_STATION                                         :{STRING} {STATION} {STRING}
 STR_ORDER_GO_TO_STATION_CAN_T_USE_STATION                       :{PUSH_COLOUR}{RED}(Kan station niet gebruiken){POP_COLOUR} {STRING} {STATION} {STRING}
@@ -5098,6 +5088,8 @@ STR_ERROR_UNABLE_TO_FIND_ROUTE_TO                               :{WHITE}Kan geen
 STR_ERROR_UNABLE_TO_FIND_LOCAL_DEPOT                            :{WHITE}Kan geen lokaal depot vinden
 
 STR_ERROR_DEPOT_WRONG_DEPOT_TYPE                                :Verkeerd depot-type
+
+# Depot unbunching related errors
 
 # Autoreplace related errors
 STR_ERROR_TRAIN_TOO_LONG_AFTER_REPLACEMENT                      :{WHITE}{VEHICLE} is te lang na het vervangen

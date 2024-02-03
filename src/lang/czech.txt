@@ -1776,13 +1776,6 @@ STR_CONFIG_SETTING_AI_BUILDS_AIRCRAFT_HELPTEXT                  :Zapnutím této
 STR_CONFIG_SETTING_AI_BUILDS_SHIPS                              :Zakázat počítači lodě: {STRING}
 STR_CONFIG_SETTING_AI_BUILDS_SHIPS_HELPTEXT                     :Zapnutím této volby znemožníte budování lodí hráčům, kteří jsou ovládání počítačem (AI)
 
-STR_CONFIG_SETTING_AI_PROFILE                                   :Výchozí nastavení: {STRING}
-STR_CONFIG_SETTING_AI_PROFILE_HELPTEXT                          :Vyber, který profil nastavení se použije pro náhnodné AI nebo jako úvodní hodnoty po přidání AI nebo herního skriptu do hry
-###length 3
-STR_CONFIG_SETTING_AI_PROFILE_EASY                              :Lehká
-STR_CONFIG_SETTING_AI_PROFILE_MEDIUM                            :Střední
-STR_CONFIG_SETTING_AI_PROFILE_HARD                              :Těžká
-
 STR_CONFIG_SETTING_AI_IN_MULTIPLAYER                            :Povolit AI v síťové hře: {STRING}
 STR_CONFIG_SETTING_AI_IN_MULTIPLAYER_HELPTEXT                   :Umožňuje AI počítačem řízeným hráčům připojit se do hry s více hráči
 
@@ -1901,7 +1894,6 @@ STR_CONFIG_SETTING_SEMAPHORE_BUILD_BEFORE_DATE_HELPTEXT         :Nastav rok, ve 
 STR_CONFIG_SETTING_CYCLE_SIGNAL_TYPES                           :Vybírat dokola návěstidla: {STRING}
 STR_CONFIG_SETTING_CYCLE_SIGNAL_TYPES_HELPTEXT                  :Vyber které semafory budou nabízeny při Ctrl+klikání při jejich stavbě.
 ###length 2
-STR_CONFIG_SETTING_CYCLE_SIGNAL_PBS                             :pouze dokonalejší (PBS)
 STR_CONFIG_SETTING_CYCLE_SIGNAL_ALL                             :Vše viditelné
 
 STR_CONFIG_SETTING_SIGNAL_GUI_MODE                              :Zobraz signály typu: {STRING}
@@ -4385,7 +4377,6 @@ STR_ORDERS_TIMETABLE_VIEW_TOOLTIP                               :{BLACK}Přepnou
 
 STR_ORDERS_LIST_TOOLTIP                                         :{BLACK}Seznam příkazů - stiskni příkaz pro označení. Kliknutím na příkaz se stisknutým CTRL se nastaví pohled na cíl seznamu
 STR_ORDER_INDEX                                                 :{COMMA}:{NBSP}
-STR_ORDER_TEXT                                                  :{STRING} {STRING} {STRING}
 
 STR_ORDERS_END_OF_ORDERS                                        :- - Konec příkazů - -
 STR_ORDERS_END_OF_SHARED_ORDERS                                 :- - Konec sdílených příkazů - -
@@ -4419,11 +4410,9 @@ STR_ORDER_REFIT_AUTO_TOOLTIP                                    :{BLACK}Zvolit d
 STR_ORDER_DROP_REFIT_AUTO                                       :Neměnný náklad
 STR_ORDER_DROP_REFIT_AUTO_ANY                                   :Dostupný náklad
 
-STR_ORDER_SERVICE                                               :{BLACK}Údržba
 STR_ORDER_DROP_GO_ALWAYS_DEPOT                                  :Jeď vždy
 STR_ORDER_DROP_SERVICE_DEPOT                                    :Údržba v případě potřeby
 STR_ORDER_DROP_HALT_DEPOT                                       :Zastavit
-STR_ORDER_SERVICE_TOOLTIP                                       :{BLACK}Přeskoč tento cíl, pokud není potřeba pravidelná údržba
 
 STR_ORDER_CONDITIONAL_VARIABLE_TOOLTIP                          :{BLACK}Vlastnost vozidla, podle které přeskakovat
 
@@ -4491,6 +4480,7 @@ STR_ORDER_GO_TO_DEPOT_FORMAT                                    :{STRING} {DEPOT
 STR_ORDER_REFIT_ORDER                                           :(Přestavět na {STRING})
 STR_ORDER_REFIT_STOP_ORDER                                      :(Přestavět na {STRING} a zastavit)
 STR_ORDER_STOP_ORDER                                            :(Zastavit)
+
 
 STR_ORDER_GO_TO_STATION                                         :{STRING} {STATION} {STRING}
 STR_ORDER_GO_TO_STATION_CAN_T_USE_STATION                       :{PUSH_COLOUR}{RED}(Nemůže použít stanici){POP_COLOUR} {STRING} {STATION} {STRING}
@@ -4940,6 +4930,8 @@ STR_ERROR_UNABLE_TO_FIND_ROUTE_TO                               :{WHITE}Nelze na
 STR_ERROR_UNABLE_TO_FIND_LOCAL_DEPOT                            :{WHITE}Nelze najít místní garáž
 
 STR_ERROR_DEPOT_WRONG_DEPOT_TYPE                                :Nevhodný druh depa
+
+# Depot unbunching related errors
 
 # Autoreplace related errors
 STR_ERROR_TRAIN_TOO_LONG_AFTER_REPLACEMENT                      :{WHITE}{VEHICLE} je po výměně moc dlouhý

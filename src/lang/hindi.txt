@@ -559,8 +559,6 @@ STR_CONFIG_SETTING_AI_BUILDS_TRAINS                             :कंप्य
 STR_CONFIG_SETTING_AI_BUILDS_AIRCRAFT                           :कंप्यूटर के लिए विमान अक्षम करें: {STRING}
 
 
-###length 3
-
 
 
 
@@ -599,7 +597,6 @@ STR_CONFIG_SETTING_ENDING_YEAR_VALUE                            :{NUM}
 
 
 ###length 2
-STR_CONFIG_SETTING_CYCLE_SIGNAL_PBS                             :केवल पथ संकेत
 
 ###length 2
 
@@ -1276,7 +1273,6 @@ STR_VEHICLE_DETAIL_TAB_CAPACITIES                               :{BLACK}क्�
 # Order view
 
 STR_ORDER_INDEX                                                 :{COMMA}:{NBSP}
-STR_ORDER_TEXT                                                  :{STRING} {STRING} {STRING}
 
 
 # Order bottom buttons
@@ -1311,6 +1307,7 @@ STR_ORDER_TRAIN_DEPOT                                           :ट्रेन
 
 STR_ORDER_GO_TO_NEAREST_DEPOT_FORMAT                            :{STRING} {STRING} {STRING}
 STR_ORDER_GO_TO_DEPOT_FORMAT                                    :{STRING} {DEPOT}
+
 
 
 STR_ORDER_GO_TO_STATION                                         :{STRING} {STATION} {STRING}
@@ -1439,6 +1436,8 @@ STR_ERROR_CAN_T_BUILD_TRAM_DEPOT                                :{WHITE}यह�
 
 STR_ERROR_UNABLE_TO_FIND_ROUTE_TO                               :{WHITE} स्थानीय डिपो के लिए मार्ग खोजने में असमर्थ
 
+
+# Depot unbunching related errors
 
 # Autoreplace related errors
 STR_ERROR_AUTOREPLACE_NOTHING_TO_DO                             :{WHITE}स्वतः नवीनीकरण/बदलाव का कोई भी नियम लागू नहीं किया गया

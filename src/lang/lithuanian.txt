@@ -1856,13 +1856,6 @@ STR_CONFIG_SETTING_AI_BUILDS_AIRCRAFT_HELPTEXT                  :Įjungus šį n
 STR_CONFIG_SETTING_AI_BUILDS_SHIPS                              :Uždrausti kompiuteriui laivus: {STRING}
 STR_CONFIG_SETTING_AI_BUILDS_SHIPS_HELPTEXT                     :Įjungus šį nustatymą, statyti laivų kompiuterio žaidėjui bus neįmanoma
 
-STR_CONFIG_SETTING_AI_PROFILE                                   :Numatytasis nuostatų rinkinys: {STRING}
-STR_CONFIG_SETTING_AI_PROFILE_HELPTEXT                          :Pasirinkti pradinį nuostatų profilį naujai pradedančiam veikti DI
-###length 3
-STR_CONFIG_SETTING_AI_PROFILE_EASY                              :Lengvas
-STR_CONFIG_SETTING_AI_PROFILE_MEDIUM                            :Vidutinis
-STR_CONFIG_SETTING_AI_PROFILE_HARD                              :Sunkus
-
 STR_CONFIG_SETTING_AI_IN_MULTIPLAYER                            :Leisti DI Interneto režime: {STRING}
 STR_CONFIG_SETTING_AI_IN_MULTIPLAYER_HELPTEXT                   :Leisti DI kompiuterio žaidėjus dalyvauti Interneto režime
 
@@ -1980,7 +1973,6 @@ STR_CONFIG_SETTING_SEMAPHORE_BUILD_BEFORE_DATE_HELPTEXT         :Metai, kuriais 
 STR_CONFIG_SETTING_CYCLE_SIGNAL_TYPES                           :Pereiti tam tikrus signalų tipus: {STRING}
 STR_CONFIG_SETTING_CYCLE_SIGNAL_TYPES_HELPTEXT                  :Pasirinkite, kurie signalų tipai vykdys ciklą, kai Ctrl+paspaudę statyti signalą signalų įrankiuose
 ###length 2
-STR_CONFIG_SETTING_CYCLE_SIGNAL_PBS                             :Kelio signalų
 STR_CONFIG_SETTING_CYCLE_SIGNAL_ALL                             :Visus matomus
 
 STR_CONFIG_SETTING_SIGNAL_GUI_MODE                              :Rodyti signalus: {STRING}
@@ -4444,7 +4436,6 @@ STR_ORDERS_TIMETABLE_VIEW_TOOLTIP                               :{BLACK}Pereiti 
 
 STR_ORDERS_LIST_TOOLTIP                                         :{BLACK}Užduočių sąrašas — užduotis pažymima ant jos spragtelėjus. Spragtelėjus laikant nuspaustą Ctrl klavišą, užduoties tikslo vieta bus centruojama pagrindiniame ekrane
 STR_ORDER_INDEX                                                 :{COMMA}:{NBSP}
-STR_ORDER_TEXT                                                  :{STRING} {STRING} {STRING}
 
 STR_ORDERS_END_OF_ORDERS                                        :- - Užduočių pabaiga- -
 STR_ORDERS_END_OF_SHARED_ORDERS                                 :- - Bendrų užduočių pabaiga - -
@@ -4478,11 +4469,9 @@ STR_ORDER_REFIT_AUTO_TOOLTIP                                    :{BLACK}Automati
 STR_ORDER_DROP_REFIT_AUTO                                       :Nustatytam kroviniui
 STR_ORDER_DROP_REFIT_AUTO_ANY                                   :Galimam kroviniui
 
-STR_ORDER_SERVICE                                               :{BLACK}Techninė apžiūra
 STR_ORDER_DROP_GO_ALWAYS_DEPOT                                  :Vykti visuomet
 STR_ORDER_DROP_SERVICE_DEPOT                                    :Vykti, jei reikia
 STR_ORDER_DROP_HALT_DEPOT                                       :Nuvykti ir sustoti
-STR_ORDER_SERVICE_TOOLTIP                                       :{BLACK}Keisti techninės apžiūros nuostatas
 
 STR_ORDER_CONDITIONAL_VARIABLE_TOOLTIP                          :{BLACK}Transporto priemonės parametras, kuriuo bus remiamasi vykdant sąlyginę užduotį
 
@@ -4560,6 +4549,7 @@ STR_ORDER_GO_TO_DEPOT_FORMAT                                    :{STRING} „{DE
 STR_ORDER_REFIT_ORDER                                           :(pertvarkyti {STRING.kam})
 STR_ORDER_REFIT_STOP_ORDER                                      :(pertvarkyti {STRING.kam} ir sustoti)
 STR_ORDER_STOP_ORDER                                            :(sustoti)
+
 
 STR_ORDER_GO_TO_STATION                                         :{STRING} „{STATION}“ {STRING}
 STR_ORDER_GO_TO_STATION_CAN_T_USE_STATION                       :{PUSH_COLOUR}{RED}(Negalima naudotis stotimi){POP_COLOUR} {STRING} {STATION} {STRING}
@@ -5003,6 +4993,8 @@ STR_ERROR_UNABLE_TO_FIND_ROUTE_TO                               :{WHITE}Neranda 
 STR_ERROR_UNABLE_TO_FIND_LOCAL_DEPOT                            :{WHITE}Negalima rasti garazo
 
 STR_ERROR_DEPOT_WRONG_DEPOT_TYPE                                :Netinkamas depo tipas
+
+# Depot unbunching related errors
 
 # Autoreplace related errors
 STR_ERROR_TRAIN_TOO_LONG_AFTER_REPLACEMENT                      :{WHITE}{VEHICLE} yra per ilgas po pakeitimo

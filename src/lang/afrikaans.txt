@@ -1574,13 +1574,6 @@ STR_CONFIG_SETTING_AI_BUILDS_AIRCRAFT_HELPTEXT                  :Aktiveer om te 
 STR_CONFIG_SETTING_AI_BUILDS_SHIPS                              :Sper skepe vir rekenaar: {STRING}
 STR_CONFIG_SETTING_AI_BUILDS_SHIPS_HELPTEXT                     :Aktiveer om te verhoed dat die rekenaar speler kan skepe bou
 
-STR_CONFIG_SETTING_AI_PROFILE                                   :Verstek verstellings profiel: {STRING}
-STR_CONFIG_SETTING_AI_PROFILE_HELPTEXT                          :Kies watter stellingsprofiel om te gebruik vir rekenaarspelers of beginwaardes vir nuwe rekenaarspelers
-###length 3
-STR_CONFIG_SETTING_AI_PROFILE_EASY                              :Maklik
-STR_CONFIG_SETTING_AI_PROFILE_MEDIUM                            :Middelmatig
-STR_CONFIG_SETTING_AI_PROFILE_HARD                              :Moeilik
-
 STR_CONFIG_SETTING_AI_IN_MULTIPLAYER                            :Laat AI in multispeler toe: {STRING}
 STR_CONFIG_SETTING_AI_IN_MULTIPLAYER_HELPTEXT                   :Laat AI Rekenaaar spelers by 'n multi-speler spel toe
 
@@ -1691,7 +1684,6 @@ STR_CONFIG_SETTING_SEMAPHORE_BUILD_BEFORE_DATE_HELPTEXT         :Stel die jaar w
 STR_CONFIG_SETTING_CYCLE_SIGNAL_TYPES                           :Wissel deur tiepe seine: {STRING}
 STR_CONFIG_SETTING_CYCLE_SIGNAL_TYPES_HELPTEXT                  :Selekteer watter sinjaaltipes om deur te wissel, wanneer Ctrl+klik gebruik word om 'n sinjaal te bou met die sinjaal gereedskap
 ###length 2
-STR_CONFIG_SETTING_CYCLE_SIGNAL_PBS                             :Pad seinligte alleenlik
 STR_CONFIG_SETTING_CYCLE_SIGNAL_ALL                             :Alle
 
 ###length 2
@@ -3936,7 +3928,6 @@ STR_ORDERS_TIMETABLE_VIEW_TOOLTIP                               :{BLACK}Skakel n
 
 STR_ORDERS_LIST_TOOLTIP                                         :{BLACK}Roetelys - klik op 'n bestemming om dit te kies. Ctrl+klik skuif die skerm na die bestemming
 STR_ORDER_INDEX                                                 :{COMMA}:{NBSP}
-STR_ORDER_TEXT                                                  :{STRING} {STRING} {STRING}
 
 STR_ORDERS_END_OF_ORDERS                                        :- - Einde van Opdrae - -
 STR_ORDERS_END_OF_SHARED_ORDERS                                 :- - Einde van Gedeel Opdrae - -
@@ -3970,11 +3961,9 @@ STR_ORDER_REFIT_AUTO_TOOLTIP                                    :{BLACK}Kies wat
 STR_ORDER_DROP_REFIT_AUTO                                       :Vaste vrag
 STR_ORDER_DROP_REFIT_AUTO_ANY                                   :Beskikbare vrag
 
-STR_ORDER_SERVICE                                               :{BLACK}Diens
 STR_ORDER_DROP_GO_ALWAYS_DEPOT                                  :gaan altyd
 STR_ORDER_DROP_SERVICE_DEPOT                                    :Diens indien nodig
 STR_ORDER_DROP_HALT_DEPOT                                       :Stop
-STR_ORDER_SERVICE_TOOLTIP                                       :{BLACK}Ignoreer die opdraag tensy 'n diens nodig is
 
 STR_ORDER_CONDITIONAL_VARIABLE_TOOLTIP                          :{BLACK}Voertuig data om sprong op te baseer
 
@@ -4042,6 +4031,7 @@ STR_ORDER_GO_TO_DEPOT_FORMAT                                    :{STRING} {DEPOT
 STR_ORDER_REFIT_ORDER                                           :(Herbou na {STRING})
 STR_ORDER_REFIT_STOP_ORDER                                      :(Herbou na {STRING} en stop)
 STR_ORDER_STOP_ORDER                                            :(Stop)
+
 
 STR_ORDER_GO_TO_STATION                                         :{STRING} {STATION} {STRING}
 
@@ -4476,6 +4466,8 @@ STR_ERROR_UNABLE_TO_FIND_ROUTE_TO                               :{WHITE}Kan nie 
 STR_ERROR_UNABLE_TO_FIND_LOCAL_DEPOT                            :{WHITE}Kan nie plaaslike depot vind nie
 
 STR_ERROR_DEPOT_WRONG_DEPOT_TYPE                                :Verkeerde depot tipe
+
+# Depot unbunching related errors
 
 # Autoreplace related errors
 STR_ERROR_TRAIN_TOO_LONG_AFTER_REPLACEMENT                      :{WHITE}{VEHICLE} is te lank na vervanging

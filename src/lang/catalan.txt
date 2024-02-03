@@ -1792,13 +1792,6 @@ STR_CONFIG_SETTING_AI_BUILDS_AIRCRAFT_HELPTEXT                  :Activant aquest
 STR_CONFIG_SETTING_AI_BUILDS_SHIPS                              :Desactiva els vaixells per a les IA: {STRING}
 STR_CONFIG_SETTING_AI_BUILDS_SHIPS_HELPTEXT                     :Activant aquesta opció fa que sigui impossible construir vaixells als jugadors IA.
 
-STR_CONFIG_SETTING_AI_PROFILE                                   :Perfil de paràmetres predeterminat: {STRING}
-STR_CONFIG_SETTING_AI_PROFILE_HELPTEXT                          :Escolliu el perfil de paràmetres de les IA aleatòries o els seus valors inicials quan s'afegeix una nova IA o script de partida.
-###length 3
-STR_CONFIG_SETTING_AI_PROFILE_EASY                              :Fàcil
-STR_CONFIG_SETTING_AI_PROFILE_MEDIUM                            :Mitjà
-STR_CONFIG_SETTING_AI_PROFILE_HARD                              :Difícil
-
 STR_CONFIG_SETTING_AI_IN_MULTIPLAYER                            :Permet IA en multijugador: {STRING}
 STR_CONFIG_SETTING_AI_IN_MULTIPLAYER_HELPTEXT                   :Permet a les IA participar en partides multijugador.
 
@@ -1919,7 +1912,6 @@ STR_CONFIG_SETTING_SEMAPHORE_BUILD_BEFORE_DATE_HELPTEXT         :Estableix l'any
 STR_CONFIG_SETTING_CYCLE_SIGNAL_TYPES                           :Canvia a través dels tipus de senyal: {STRING}
 STR_CONFIG_SETTING_CYCLE_SIGNAL_TYPES_HELPTEXT                  :Seleccioneu com es commutaran els tipus de senyals quan es faci Ctrl+clic sobre un senyal ja construït amb l'eina de construir senyals.
 ###length 2
-STR_CONFIG_SETTING_CYCLE_SIGNAL_PBS                             :Només avançada
 STR_CONFIG_SETTING_CYCLE_SIGNAL_ALL                             :Tots visibles
 
 STR_CONFIG_SETTING_SIGNAL_GUI_MODE                              :Mostra els tipus de senyals: {STRING}
@@ -4489,7 +4481,6 @@ STR_ORDERS_TIMETABLE_VIEW_TOOLTIP                               :{BLACK}Commuta 
 
 STR_ORDERS_LIST_TOOLTIP                                         :{BLACK}Llista d'ordres - clica en una ordre per marcar-la. Ctrl+Clic desplaça cap a la destinació de l'ordre
 STR_ORDER_INDEX                                                 :{COMMA}:{NBSP}
-STR_ORDER_TEXT                                                  :{STRING} {STRING} {STRING}
 
 STR_ORDERS_END_OF_ORDERS                                        :- - Fi d'Ordres - -
 STR_ORDERS_END_OF_SHARED_ORDERS                                 :- - Fi d'Ordres Compartides - -
@@ -4523,11 +4514,9 @@ STR_ORDER_REFIT_AUTO_TOOLTIP                                    :{BLACK}Seleccio
 STR_ORDER_DROP_REFIT_AUTO                                       :Càrrega fixa
 STR_ORDER_DROP_REFIT_AUTO_ANY                                   :Càrrega disponible
 
-STR_ORDER_SERVICE                                               :{BLACK}Servei
 STR_ORDER_DROP_GO_ALWAYS_DEPOT                                  :Vés-hi sempre
 STR_ORDER_DROP_SERVICE_DEPOT                                    :Revisa si és necessari
 STR_ORDER_DROP_HALT_DEPOT                                       :Para
-STR_ORDER_SERVICE_TOOLTIP                                       :{BLACK}Salta aquesta ordre si no és que es necessita una revisió
 
 STR_ORDER_CONDITIONAL_VARIABLE_TOOLTIP                          :{BLACK}Dades del vehicle on basar el salt a
 
@@ -4595,6 +4584,7 @@ STR_ORDER_GO_TO_DEPOT_FORMAT                                    :{STRING} {DEPOT
 STR_ORDER_REFIT_ORDER                                           :(Remodela a {STRING})
 STR_ORDER_REFIT_STOP_ORDER                                      :(Remodela a {STRING} i para)
 STR_ORDER_STOP_ORDER                                            :(Para)
+
 
 STR_ORDER_GO_TO_STATION                                         :{STRING} {STATION} {STRING}
 STR_ORDER_GO_TO_STATION_CAN_T_USE_STATION                       :{PUSH_COLOUR}{RED}(No pot usar l'estació){POP_COLOUR} {STRING} {STATION} {STRING}
@@ -5062,6 +5052,8 @@ STR_ERROR_UNABLE_TO_FIND_ROUTE_TO                               :{WHITE}Incapaç
 STR_ERROR_UNABLE_TO_FIND_LOCAL_DEPOT                            :{WHITE}Impossible trobar la cotxera local
 
 STR_ERROR_DEPOT_WRONG_DEPOT_TYPE                                :Tipus de cotxera incorrecta
+
+# Depot unbunching related errors
 
 # Autoreplace related errors
 STR_ERROR_TRAIN_TOO_LONG_AFTER_REPLACEMENT                      :{WHITE}{VEHICLE} és massa llarg després de la substitució

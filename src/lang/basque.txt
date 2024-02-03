@@ -1508,13 +1508,6 @@ STR_CONFIG_SETTING_AI_BUILDS_AIRCRAFT_HELPTEXT                  :Gaitua dagoenea
 STR_CONFIG_SETTING_AI_BUILDS_SHIPS                              :Ordenagailuak kontrolatutako konpainiei itsasontziak erabiltzea eragotzi: {STRING}
 STR_CONFIG_SETTING_AI_BUILDS_SHIPS_HELPTEXT                     :Gaitua dagoenean, ordenagailu jokalariek ezingo dute itsasontzi sarerik eraiki
 
-STR_CONFIG_SETTING_AI_PROFILE                                   :Profilentzako ezarpen lehenetsia: {STRING}
-STR_CONFIG_SETTING_AI_PROFILE_HELPTEXT                          :Aukeratu ze ezarpen profil erabiliko diren ausazko IAentzat edo hasierako balioak IA edo Script joko bat geitzen denean
-###length 3
-STR_CONFIG_SETTING_AI_PROFILE_EASY                              :Erraza
-STR_CONFIG_SETTING_AI_PROFILE_MEDIUM                            :Arrunta
-STR_CONFIG_SETTING_AI_PROFILE_HARD                              :Zaila
-
 STR_CONFIG_SETTING_AI_IN_MULTIPLAYER                            :Multijokalari moduan IA baimentzea: {STRING}
 STR_CONFIG_SETTING_AI_IN_MULTIPLAYER_HELPTEXT                   :Baimendu ordenagailu jokalariak (IA) jokalari anitzeko jokoetan parte hartzera
 
@@ -1605,7 +1598,6 @@ STR_CONFIG_SETTING_SEMAPHORE_BUILD_BEFORE_DATE_HELPTEXT         :Aukeratu trenen
 STR_CONFIG_SETTING_CYCLE_SIGNAL_TYPES                           :Aldatu seinale mota ezberdinen artean: {STRING}
 STR_CONFIG_SETTING_CYCLE_SIGNAL_TYPES_HELPTEXT                  :Aukeratu ze seinale ezberdinen artean aldatuko den seinale lanabesarekin Ktrl+klik eginez eraikitako seinale baten gainean
 ###length 2
-STR_CONFIG_SETTING_CYCLE_SIGNAL_PBS                             :Bide-seinaleak bakarrik
 STR_CONFIG_SETTING_CYCLE_SIGNAL_ALL                             :Denak
 
 ###length 2
@@ -3705,7 +3697,6 @@ STR_ORDERS_TIMETABLE_VIEW_TOOLTIP                               :{BLACK}Ordutegi
 
 STR_ORDERS_LIST_TOOLTIP                                         :{BLACK}Agindu zerrenda - Klikatu agindu batean pizteko. Krtl+Klik aginduaren tokian kokatuko zaitu
 STR_ORDER_INDEX                                                 :{COMMA}:{NBSP}
-STR_ORDER_TEXT                                                  :{STRING} {STRING} {STRING}
 
 STR_ORDERS_END_OF_ORDERS                                        :- - Aginduen amaiera - -
 STR_ORDERS_END_OF_SHARED_ORDERS                                 :- - Agindu konpartituen amaiera - -
@@ -3739,11 +3730,9 @@ STR_ORDER_REFIT_AUTO_TOOLTIP                                    :{BLACK}Aukeratu
 STR_ORDER_DROP_REFIT_AUTO                                       :Zama finkoa
 STR_ORDER_DROP_REFIT_AUTO_ANY                                   :Zama eskuragarria
 
-STR_ORDER_SERVICE                                               :{BLACK}Mantenimendua
 STR_ORDER_DROP_GO_ALWAYS_DEPOT                                  :Joan beti
 STR_ORDER_DROP_SERVICE_DEPOT                                    :Beharrezkoa bada mantenimendua egin
 STR_ORDER_DROP_HALT_DEPOT                                       :Gelditu
-STR_ORDER_SERVICE_TOOLTIP                                       :{BLACK}Agindua ez bete mantenimendua beharrezko ez bada
 
 STR_ORDER_CONDITIONAL_VARIABLE_TOOLTIP                          :{BLACK}Ibilgailuaren xehetasunak jauzia oinarritzeko
 
@@ -3810,6 +3799,7 @@ STR_ORDER_GO_TO_DEPOT_FORMAT                                    :{STRING} {DEPOT
 STR_ORDER_REFIT_ORDER                                           :(Honera birmoldatu {STRING})
 STR_ORDER_REFIT_STOP_ORDER                                      :(honera birmoldatu {STRING} eta gelditu)
 STR_ORDER_STOP_ORDER                                            :(Gelditu)
+
 
 STR_ORDER_GO_TO_STATION                                         :{STRING} {STATION}-ra {STRING}
 
@@ -4230,6 +4220,8 @@ STR_ERROR_UNABLE_TO_FIND_ROUTE_TO                               :{WHITE}Ezin iza
 STR_ERROR_UNABLE_TO_FIND_LOCAL_DEPOT                            :{WHITE}Ezin izan da herriko gordailua aurkitu
 
 STR_ERROR_DEPOT_WRONG_DEPOT_TYPE                                :Gordailu mota okerra
+
+# Depot unbunching related errors
 
 # Autoreplace related errors
 STR_ERROR_TRAIN_TOO_LONG_AFTER_REPLACEMENT                      :{WHITE}{VEHICLE} luzeegia da ordezkatua izan ondoren

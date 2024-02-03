@@ -1715,13 +1715,6 @@ STR_CONFIG_SETTING_AI_BUILDS_AIRCRAFT_HELPTEXT                  :如啟用此選
 STR_CONFIG_SETTING_AI_BUILDS_SHIPS                              :不允許電腦使用船舶：{STRING}
 STR_CONFIG_SETTING_AI_BUILDS_SHIPS_HELPTEXT                     :如啟用此選項，電腦玩家將無法建造船舶。
 
-STR_CONFIG_SETTING_AI_PROFILE                                   :預設設定檔：{STRING}
-STR_CONFIG_SETTING_AI_PROFILE_HELPTEXT                          :選擇隨機 AI 與新 AI 或遊戲腳本使用的預設設定檔。
-###length 3
-STR_CONFIG_SETTING_AI_PROFILE_EASY                              :容易
-STR_CONFIG_SETTING_AI_PROFILE_MEDIUM                            :中等
-STR_CONFIG_SETTING_AI_PROFILE_HARD                              :困難
-
 STR_CONFIG_SETTING_AI_IN_MULTIPLAYER                            :多人遊戲中允許電腦 AI 加入：{STRING}
 STR_CONFIG_SETTING_AI_IN_MULTIPLAYER_HELPTEXT                   :容許 AI 電腦玩家參與多人遊戲。
 
@@ -1840,7 +1833,6 @@ STR_CONFIG_SETTING_SEMAPHORE_BUILD_BEFORE_DATE_HELPTEXT         :設定使用燈
 STR_CONFIG_SETTING_CYCLE_SIGNAL_TYPES                           :按住 Ctrl 點選號誌時要切換的號誌種類：{STRING}
 STR_CONFIG_SETTING_CYCLE_SIGNAL_TYPES_HELPTEXT                  :選擇可以用Ctrl+點擊以替換的號誌類型。
 ###length 2
-STR_CONFIG_SETTING_CYCLE_SIGNAL_PBS                             :僅限路徑號誌
 STR_CONFIG_SETTING_CYCLE_SIGNAL_ALL                             :所有可見的號誌
 
 STR_CONFIG_SETTING_SIGNAL_GUI_MODE                              :顯示號誌類型：{STRING}
@@ -4326,7 +4318,6 @@ STR_ORDERS_TIMETABLE_VIEW_TOOLTIP                               :{BLACK}切換�
 
 STR_ORDERS_LIST_TOOLTIP                                         :{BLACK}指令清單 - 點選可選擇該指令，按住 CTRL 點選可跳到車站位置
 STR_ORDER_INDEX                                                 :{COMMA}:{NBSP}
-STR_ORDER_TEXT                                                  :{STRING} {STRING} {STRING}
 
 STR_ORDERS_END_OF_ORDERS                                        :- - 指令結束 - -
 STR_ORDERS_END_OF_SHARED_ORDERS                                 :- - 共享指令結束 - -
@@ -4360,11 +4351,9 @@ STR_ORDER_REFIT_AUTO_TOOLTIP                                    :{BLACK}選擇�
 STR_ORDER_DROP_REFIT_AUTO                                       :固定貨物種類
 STR_ORDER_DROP_REFIT_AUTO_ANY                                   :可用貨物
 
-STR_ORDER_SERVICE                                               :{BLACK}維護
 STR_ORDER_DROP_GO_ALWAYS_DEPOT                                  :總是進行
 STR_ORDER_DROP_SERVICE_DEPOT                                    :若需要則維護
 STR_ORDER_DROP_HALT_DEPOT                                       :停留
-STR_ORDER_SERVICE_TOOLTIP                                       :{BLACK}跳過這個指令，除非需要維護
 
 STR_ORDER_CONDITIONAL_VARIABLE_TOOLTIP                          :{BLACK}跳躍指令依據
 
@@ -4432,6 +4421,7 @@ STR_ORDER_GO_TO_DEPOT_FORMAT                                    :{STRING} {DEPOT
 STR_ORDER_REFIT_ORDER                                           :(改裝成 {STRING})
 STR_ORDER_REFIT_STOP_ORDER                                      :(裝載 {STRING} 並停止)
 STR_ORDER_STOP_ORDER                                            :(停止)
+
 
 STR_ORDER_GO_TO_STATION                                         :{STRING} {STATION} {STRING}
 STR_ORDER_GO_TO_STATION_CAN_T_USE_STATION                       :{PUSH_COLOUR}{RED}(不能使用車站){POP_COLOUR} {STRING} {STATION} {STRING}
@@ -4882,6 +4872,8 @@ STR_ERROR_UNABLE_TO_FIND_ROUTE_TO                               :{WHITE}找不�
 STR_ERROR_UNABLE_TO_FIND_LOCAL_DEPOT                            :{WHITE}找不到附近的車廠
 
 STR_ERROR_DEPOT_WRONG_DEPOT_TYPE                                :錯誤的機廠種類
+
+# Depot unbunching related errors
 
 # Autoreplace related errors
 STR_ERROR_TRAIN_TOO_LONG_AFTER_REPLACEMENT                      :{WHITE}{VEHICLE} 將在替換後過長

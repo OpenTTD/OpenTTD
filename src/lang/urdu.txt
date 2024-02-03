@@ -1326,8 +1326,6 @@ STR_CONFIG_SETTING_AI_BUILDS_AIRCRAFT                           :کمپیوٹر 
 
 STR_CONFIG_SETTING_AI_BUILDS_SHIPS                              :کمپیوٹر کے لئے بحری جہاز غیر فعال کریں: {STRING}
 
-###length 3
-
 STR_CONFIG_SETTING_AI_IN_MULTIPLAYER                            :زیادہ کھلاڑیوں والے کھیل میں AI کی اجازت دیں: {STRING}
 
 STR_CONFIG_SETTING_SCRIPT_MAX_OPCODES                           :اسکرپٹس کے معطل ہونے سے پہلے #opcodes: {STRING}
@@ -1391,7 +1389,6 @@ STR_CONFIG_SETTING_SEMAPHORE_BUILD_BEFORE_DATE                  :پہلے خود
 
 STR_CONFIG_SETTING_CYCLE_SIGNAL_TYPES                           :اشعاروں کی اقسام میں سے گزریں: {STRING}
 ###length 2
-STR_CONFIG_SETTING_CYCLE_SIGNAL_PBS                             :صرف راستے کے اشارے
 STR_CONFIG_SETTING_CYCLE_SIGNAL_ALL                             :تمام
 
 ###length 2
@@ -2622,7 +2619,6 @@ STR_VEHICLE_DETAIL_TAB_CARGO                                    :{BLACK}ساما
 # Order view
 
 STR_ORDER_INDEX                                                 :{COMMA}:{NBSP}
-STR_ORDER_TEXT                                                  :{STRING} {STRING} {STRING}
 
 
 # Order bottom buttons
@@ -2650,6 +2646,7 @@ STR_ORDER_TEXT                                                  :{STRING} {STRIN
 
 STR_ORDER_GO_TO_NEAREST_DEPOT_FORMAT                            :{STRING} {STRING} {STRING}
 STR_ORDER_GO_TO_DEPOT_FORMAT                                    :{STRING} {DEPOT}
+
 
 
 STR_ORDER_GO_TO_STATION                                         :{STRING} {STATION} {STRING}
@@ -2789,6 +2786,8 @@ STR_ERROR_CAN_T_RENAME_DEPOT                                    :{WHITE} ڈیپ�
 
 
 
+
+# Depot unbunching related errors
 
 # Autoreplace related errors
 

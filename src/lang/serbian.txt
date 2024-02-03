@@ -1878,13 +1878,6 @@ STR_CONFIG_SETTING_AI_BUILDS_AIRCRAFT_HELPTEXT                  :Omogućavanje o
 STR_CONFIG_SETTING_AI_BUILDS_SHIPS                              :Računar ne može da koristi vodni prevoz: {STRING}
 STR_CONFIG_SETTING_AI_BUILDS_SHIPS_HELPTEXT                     :Omogućavanje ovog podešavanja znači da računar ne može da stvara brodove
 
-STR_CONFIG_SETTING_AI_PROFILE                                   :Podrazumevani profil podešavanja: {STRING}
-STR_CONFIG_SETTING_AI_PROFILE_HELPTEXT                          :Odaberi koji profil podešavanja se koristi za proizvoljne VI ili za početne vrednosti kada se dodaje nova VI ili skripta
-###length 3
-STR_CONFIG_SETTING_AI_PROFILE_EASY                              :Lak
-STR_CONFIG_SETTING_AI_PROFILE_MEDIUM                            :Srednji
-STR_CONFIG_SETTING_AI_PROFILE_HARD                              :Težak
-
 STR_CONFIG_SETTING_AI_IN_MULTIPLAYER                            :Dozvoljena VI u mrežnoj igri: {STRING}
 STR_CONFIG_SETTING_AI_IN_MULTIPLAYER_HELPTEXT                   :Dozvoljava računarskoj VI da učestvuje u mrežnoj igri
 
@@ -2003,7 +1996,6 @@ STR_CONFIG_SETTING_SEMAPHORE_BUILD_BEFORE_DATE_HELPTEXT         :Postavi godinu 
 STR_CONFIG_SETTING_CYCLE_SIGNAL_TYPES                           :Ciklični odabir vrste signalizacije: {STRING}
 STR_CONFIG_SETTING_CYCLE_SIGNAL_TYPES_HELPTEXT                  :Ciklični odabir vrste signalizacije kada Ctrl+klik na izgradnju signala sa alatom signala
 ###length 2
-STR_CONFIG_SETTING_CYCLE_SIGNAL_PBS                             :Samo putna
 STR_CONFIG_SETTING_CYCLE_SIGNAL_ALL                             :Sve vidljivo
 
 STR_CONFIG_SETTING_SIGNAL_GUI_MODE                              :Prikaži vrste signala: {STRING}
@@ -4491,7 +4483,6 @@ STR_ORDERS_TIMETABLE_VIEW_TOOLTIP                               :{BLACK}Prelazi 
 
 STR_ORDERS_LIST_TOOLTIP                                         :{BLACK}Spisak naredbi - klikom se obeležava naredba. Ctrl+klik pomera prikaz na lokaciju stanice
 STR_ORDER_INDEX                                                 :{COMMA}:{NBSP}
-STR_ORDER_TEXT                                                  :{STRING} {STRING} {STRING}
 
 STR_ORDERS_END_OF_ORDERS                                        :- - Kraj Naredbi - -
 STR_ORDERS_END_OF_SHARED_ORDERS                                 :- - Kraj Zajedničkih Naredbi - -
@@ -4525,11 +4516,9 @@ STR_ORDER_REFIT_AUTO_TOOLTIP                                    :{BLACK}Odabir v
 STR_ORDER_DROP_REFIT_AUTO                                       :Određen teret
 STR_ORDER_DROP_REFIT_AUTO_ANY                                   :Dostupan teret
 
-STR_ORDER_SERVICE                                               :{BLACK}Servis
 STR_ORDER_DROP_GO_ALWAYS_DEPOT                                  :Uvek
 STR_ORDER_DROP_SERVICE_DEPOT                                    :Servis po potrebi
 STR_ORDER_DROP_HALT_DEPOT                                       :Zaustavljanje
-STR_ORDER_SERVICE_TOOLTIP                                       :{BLACK}Preskače ovu naredbu ukoliko servis nije potreban
 
 STR_ORDER_CONDITIONAL_VARIABLE_TOOLTIP                          :{BLACK}Skok na osnovu podatka o vozilu
 
@@ -4597,6 +4586,7 @@ STR_ORDER_GO_TO_DEPOT_FORMAT                                    :{STRING} {DEPOT
 STR_ORDER_REFIT_ORDER                                           :(Prepravi za {STRING})
 STR_ORDER_REFIT_STOP_ORDER                                      :(Prepravi za {STRING} i stani)
 STR_ORDER_STOP_ORDER                                            :(Stani)
+
 
 STR_ORDER_GO_TO_STATION                                         :{STRING} {STATION} {STRING}
 STR_ORDER_GO_TO_STATION_CAN_T_USE_STATION                       :{PUSH_COLOUR}{RED}(Ne može koristiti stanicu){POP_COLOUR} {STRING} {STATION} {STRING}
@@ -5045,6 +5035,8 @@ STR_ERROR_UNABLE_TO_FIND_ROUTE_TO                               :{WHITE}Nepostoj
 STR_ERROR_UNABLE_TO_FIND_LOCAL_DEPOT                            :{WHITE}Neuspešan pronalazak lokalnog depoa
 
 STR_ERROR_DEPOT_WRONG_DEPOT_TYPE                                :Pogrešna vrsta depoa
+
+# Depot unbunching related errors
 
 # Autoreplace related errors
 STR_ERROR_TRAIN_TOO_LONG_AFTER_REPLACEMENT                      :{WHITE}{VEHICLE} je predugačak posle zamene

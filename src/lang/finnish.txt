@@ -1791,13 +1791,6 @@ STR_CONFIG_SETTING_AI_BUILDS_AIRCRAFT_HELPTEXT                  :Mikäli käytö
 STR_CONFIG_SETTING_AI_BUILDS_SHIPS                              :Tietokoneella ei ole laivoja: {STRING}
 STR_CONFIG_SETTING_AI_BUILDS_SHIPS_HELPTEXT                     :Mikäli käytössä, laivojen rakentaminen ei ole mahdollista tietokonepelaajille
 
-STR_CONFIG_SETTING_AI_PROFILE                                   :Oletusarvoinen asetusprofiili: {STRING}
-STR_CONFIG_SETTING_AI_PROFILE_HELPTEXT                          :Valitse, mitä asetusprofiilia käytetään sattumanvaraisille tekoälyille tai alkuarvoille lisättäessä uutta tekoälyä tai peliskriptiä
-###length 3
-STR_CONFIG_SETTING_AI_PROFILE_EASY                              :Helppo
-STR_CONFIG_SETTING_AI_PROFILE_MEDIUM                            :Keskitaso
-STR_CONFIG_SETTING_AI_PROFILE_HARD                              :Vaikea
-
 STR_CONFIG_SETTING_AI_IN_MULTIPLAYER                            :Salli tekoälyt moninpelissä: {STRING}
 STR_CONFIG_SETTING_AI_IN_MULTIPLAYER_HELPTEXT                   :Sallii tietokonepelaajien osallistumisen moninpeleihin
 
@@ -1918,7 +1911,6 @@ STR_CONFIG_SETTING_SEMAPHORE_BUILD_BEFORE_DATE_HELPTEXT         :Valitse vuosi j
 STR_CONFIG_SETTING_CYCLE_SIGNAL_TYPES                           :Vaihda opastintyyppien välillä: {STRING}
 STR_CONFIG_SETTING_CYCLE_SIGNAL_TYPES_HELPTEXT                  :Valitse, mitkä opastintyypit ovat käytössä painettaessa Ctrl-näppäintä opastimia rakennettaessa
 ###length 2
-STR_CONFIG_SETTING_CYCLE_SIGNAL_PBS                             :Vain reittiopastimet
 STR_CONFIG_SETTING_CYCLE_SIGNAL_ALL                             :Näytä kaikki
 
 STR_CONFIG_SETTING_SIGNAL_GUI_MODE                              :Näytä opastintyypit: {STRING}
@@ -4489,7 +4481,6 @@ STR_ORDERS_TIMETABLE_VIEW_TOOLTIP                               :{BLACK}Näytä 
 
 STR_ORDERS_LIST_TOOLTIP                                         :{BLACK}Käskyt – napsauta käskyä korostaaksesi sen. Ctrl+napsautus siirtää näkymän käskyn kohteeseen.
 STR_ORDER_INDEX                                                 :{COMMA}:{NBSP}
-STR_ORDER_TEXT                                                  :{STRING} {STRING} {STRING}
 
 STR_ORDERS_END_OF_ORDERS                                        :- - Käskyjen loppu - -
 STR_ORDERS_END_OF_SHARED_ORDERS                                 :- - Jaettujen käskyjen loppu - -
@@ -4523,11 +4514,9 @@ STR_ORDER_REFIT_AUTO_TOOLTIP                                    :{BLACK}Valitse,
 STR_ORDER_DROP_REFIT_AUTO                                       :Määrätty rahti
 STR_ORDER_DROP_REFIT_AUTO_ANY                                   :Saatavilla oleva rahti
 
-STR_ORDER_SERVICE                                               :{BLACK}Huolto
 STR_ORDER_DROP_GO_ALWAYS_DEPOT                                  :Mene aina
 STR_ORDER_DROP_SERVICE_DEPOT                                    :Huolto, jos tarpeen
 STR_ORDER_DROP_HALT_DEPOT                                       :Pysähdy
-STR_ORDER_SERVICE_TOOLTIP                                       :{BLACK}Ohita tämä käsky, ellei huoltoa tarvita
 
 STR_ORDER_CONDITIONAL_VARIABLE_TOOLTIP                          :{BLACK}Kulkuneuvon tiedot, joiden perusteella hypätään
 
@@ -4595,6 +4584,7 @@ STR_ORDER_GO_TO_DEPOT_FORMAT                                    :{STRING} {DEPOT
 STR_ORDER_REFIT_ORDER                                           :(Sovita {STRING})
 STR_ORDER_REFIT_STOP_ORDER                                      :(Sovita rahtityypille {STRING} ja pysähdy)
 STR_ORDER_STOP_ORDER                                            :(Pysähdy)
+
 
 STR_ORDER_GO_TO_STATION                                         :{STRING} {STATION} {STRING}
 STR_ORDER_GO_TO_STATION_CAN_T_USE_STATION                       :{PUSH_COLOUR}{RED}(Asema ei käytettävissä){POP_COLOUR} {STRING} {STATION} {STRING}
@@ -5062,6 +5052,8 @@ STR_ERROR_UNABLE_TO_FIND_ROUTE_TO                               :{WHITE}Reittiä
 STR_ERROR_UNABLE_TO_FIND_LOCAL_DEPOT                            :{WHITE}Paikallista varikkoa ei löydy.
 
 STR_ERROR_DEPOT_WRONG_DEPOT_TYPE                                :Väärä varikkotyyppi
+
+# Depot unbunching related errors
 
 # Autoreplace related errors
 STR_ERROR_TRAIN_TOO_LONG_AFTER_REPLACEMENT                      :{WHITE}{VEHICLE} on liian pitkä korvaamisen jälkeen

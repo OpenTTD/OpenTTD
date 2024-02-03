@@ -634,6 +634,7 @@ STR_GRAPH_KEY_COMPANY_SELECTION_TOOLTIP                         :{BLACK}Click he
 # Company league window
 STR_COMPANY_LEAGUE_TABLE_CAPTION                                :{WHITE}Company League Table
 STR_COMPANY_LEAGUE_COMPANY_NAME                                 :{ORANGE}{COMPANY} {BLACK}{COMPANY_NUM} '{STRING}'
+STR_COMPANY_LEAGUE_COMPANY_RANK                                 :{YELLOW}#{NUM}
 STR_COMPANY_LEAGUE_PERFORMANCE_TITLE_ENGINEER                   :Engineer
 STR_COMPANY_LEAGUE_PERFORMANCE_TITLE_TRAFFIC_MANAGER            :Traffic Manager
 STR_COMPANY_LEAGUE_PERFORMANCE_TITLE_TRANSPORT_COORDINATOR      :Transport Coordinator
@@ -1811,13 +1812,6 @@ STR_CONFIG_SETTING_AI_BUILDS_AIRCRAFT_HELPTEXT                  :Enabling this s
 STR_CONFIG_SETTING_AI_BUILDS_SHIPS                              :Disable ships for computer: {STRING}
 STR_CONFIG_SETTING_AI_BUILDS_SHIPS_HELPTEXT                     :Enabling this setting makes building ships impossible for a computer player
 
-STR_CONFIG_SETTING_AI_PROFILE                                   :Default settings profile: {STRING}
-STR_CONFIG_SETTING_AI_PROFILE_HELPTEXT                          :Choose which settings profile to use for random AIs or for initial values when adding a new AI or Game Script
-###length 3
-STR_CONFIG_SETTING_AI_PROFILE_EASY                              :Easy
-STR_CONFIG_SETTING_AI_PROFILE_MEDIUM                            :Medium
-STR_CONFIG_SETTING_AI_PROFILE_HARD                              :Hard
-
 STR_CONFIG_SETTING_AI_IN_MULTIPLAYER                            :Allow AIs in multiplayer: {STRING}
 STR_CONFIG_SETTING_AI_IN_MULTIPLAYER_HELPTEXT                   :Allow AI computer players to participate in multiplayer games
 
@@ -1938,7 +1932,6 @@ STR_CONFIG_SETTING_SEMAPHORE_BUILD_BEFORE_DATE_HELPTEXT         :Set the year wh
 STR_CONFIG_SETTING_CYCLE_SIGNAL_TYPES                           :Cycle through signal types: {STRING}
 STR_CONFIG_SETTING_CYCLE_SIGNAL_TYPES_HELPTEXT                  :Select which signal types to cycle through when Ctrl+Clicking on a built signal with the signal tool
 ###length 2
-STR_CONFIG_SETTING_CYCLE_SIGNAL_PBS                             :Path signals only
 STR_CONFIG_SETTING_CYCLE_SIGNAL_ALL                             :All visible
 
 STR_CONFIG_SETTING_SIGNAL_GUI_MODE                              :Show signal types: {STRING}
@@ -4525,7 +4518,6 @@ STR_ORDERS_TIMETABLE_VIEW_TOOLTIP                               :{BLACK}Switch t
 
 STR_ORDERS_LIST_TOOLTIP                                         :{BLACK}Order list - click on an order to highlight it. Ctrl+Click to scroll to the order's destination
 STR_ORDER_INDEX                                                 :{COMMA}:{NBSP}
-STR_ORDER_TEXT                                                  :{STRING} {STRING} {STRING}
 
 STR_ORDERS_END_OF_ORDERS                                        :- - End of Orders - -
 STR_ORDERS_END_OF_SHARED_ORDERS                                 :- - End of Shared Orders - -
@@ -4559,11 +4551,9 @@ STR_ORDER_REFIT_AUTO_TOOLTIP                                    :{BLACK}Select w
 STR_ORDER_DROP_REFIT_AUTO                                       :Fixed cargo
 STR_ORDER_DROP_REFIT_AUTO_ANY                                   :Available cargo
 
-STR_ORDER_SERVICE                                               :{BLACK}Maintenance
 STR_ORDER_DROP_GO_ALWAYS_DEPOT                                  :Always go
 STR_ORDER_DROP_SERVICE_DEPOT                                    :Repair if needed
 STR_ORDER_DROP_HALT_DEPOT                                       :Stop
-STR_ORDER_SERVICE_TOOLTIP                                       :{BLACK}Skip this order unless maintenance is needed
 
 STR_ORDER_CONDITIONAL_VARIABLE_TOOLTIP                          :{BLACK}Vehicle data to base jumping on
 
@@ -4631,6 +4621,7 @@ STR_ORDER_GO_TO_DEPOT_FORMAT                                    :{STRING} {DEPOT
 STR_ORDER_REFIT_ORDER                                           :(Refit to {STRING})
 STR_ORDER_REFIT_STOP_ORDER                                      :(Refit to {STRING} and stop)
 STR_ORDER_STOP_ORDER                                            :(Stop)
+
 
 STR_ORDER_GO_TO_STATION                                         :{STRING} {STATION} {STRING}
 STR_ORDER_GO_TO_STATION_CAN_T_USE_STATION                       :{PUSH_COLOUR}{RED}(Can't use station){POP_COLOUR} {STRING} {STATION} {STRING}
@@ -4834,6 +4825,8 @@ STR_AI_SETTINGS_CAPTION_GAMESCRIPT                              :Game Script
 STR_AI_SETTINGS_CLOSE                                           :{BLACK}Close
 STR_AI_SETTINGS_RESET                                           :{BLACK}Reset
 STR_AI_SETTINGS_SETTING                                         :{STRING}: {ORANGE}{STRING}
+STR_AI_SETTINGS_SETTING_DEVIATION                               :{STRING}: {ORANGE}[{STRING}, {STRING}]
+STR_AI_SETTINGS_JUST_DEVIATION                                  :[{STRING}, {STRING}]
 
 
 # Textfile window
@@ -5098,6 +5091,8 @@ STR_ERROR_UNABLE_TO_FIND_ROUTE_TO                               :{WHITE}Unable t
 STR_ERROR_UNABLE_TO_FIND_LOCAL_DEPOT                            :{WHITE}Unable to find local depot
 
 STR_ERROR_DEPOT_WRONG_DEPOT_TYPE                                :Wrong depot type
+
+# Depot unbunching related errors
 
 # Autoreplace related errors
 STR_ERROR_TRAIN_TOO_LONG_AFTER_REPLACEMENT                      :{WHITE}{VEHICLE} is too long after replacement

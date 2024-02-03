@@ -1728,13 +1728,6 @@ STR_CONFIG_SETTING_AI_BUILDS_AIRCRAFT_HELPTEXT                  :Verbiete Comput
 STR_CONFIG_SETTING_AI_BUILDS_SHIPS                              :Schiffe für den Computer abschalten: {STRING}
 STR_CONFIG_SETTING_AI_BUILDS_SHIPS_HELPTEXT                     :Verbiete Computerspielern, Schiffe zu kaufen
 
-STR_CONFIG_SETTING_AI_PROFILE                                   :Standardeinstellungen: {STRING}
-STR_CONFIG_SETTING_AI_PROFILE_HELPTEXT                          :Auswählen, welcher Schwierigkeitsgrad in den KI-Optionen von zufällig startenden Computerspielern eingestellt werden soll. Wird auch als Standardwert für einzeln ausgewählte KIs oder für Spielskripte verwendet
-###length 3
-STR_CONFIG_SETTING_AI_PROFILE_EASY                              :Leicht
-STR_CONFIG_SETTING_AI_PROFILE_MEDIUM                            :Mittel
-STR_CONFIG_SETTING_AI_PROFILE_HARD                              :Schwierig
-
 STR_CONFIG_SETTING_AI_IN_MULTIPLAYER                            :KI im Mehrspielermodus erlauben: {STRING}
 STR_CONFIG_SETTING_AI_IN_MULTIPLAYER_HELPTEXT                   :Erlaube die Teilnahme von Computerspielern im Mehrspielermodus
 
@@ -1853,7 +1846,6 @@ STR_CONFIG_SETTING_SEMAPHORE_BUILD_BEFORE_DATE_HELPTEXT         :Lege das Jahr f
 STR_CONFIG_SETTING_CYCLE_SIGNAL_TYPES                           :Durchlaufen der Signalarten: {STRING}
 STR_CONFIG_SETTING_CYCLE_SIGNAL_TYPES_HELPTEXT                  :Lege fest, durch welche Signaltypen mittels Strg-Klick auf vorhandene Signale rotiert wird
 ###length 2
-STR_CONFIG_SETTING_CYCLE_SIGNAL_PBS                             :Nur Pfadsignale
 STR_CONFIG_SETTING_CYCLE_SIGNAL_ALL                             :Alle Sichtbaren
 
 STR_CONFIG_SETTING_SIGNAL_GUI_MODE                              :Signaltypen zeigen: {STRING}
@@ -4355,7 +4347,6 @@ STR_ORDERS_TIMETABLE_VIEW_TOOLTIP                               :{BLACK}Zur Fahr
 
 STR_ORDERS_LIST_TOOLTIP                                         :{BLACK}Auftragsliste – Auftrag anklicken, um ihn zu markieren. Strg+Klick springt zum Auftragsziel
 STR_ORDER_INDEX                                                 :{COMMA}:{NBSP}
-STR_ORDER_TEXT                                                  :{STRING} {STRING} {STRING}
 
 STR_ORDERS_END_OF_ORDERS                                        :- - Ende der Aufträge - -
 STR_ORDERS_END_OF_SHARED_ORDERS                                 :- - Ende des gemeinsam genutzten Fahrplans - -
@@ -4389,11 +4380,9 @@ STR_ORDER_REFIT_AUTO_TOOLTIP                                    :{BLACK}Auswähl
 STR_ORDER_DROP_REFIT_AUTO                                       :Vorgegebene Fracht
 STR_ORDER_DROP_REFIT_AUTO_ANY                                   :Verfügbare Fracht
 
-STR_ORDER_SERVICE                                               :{BLACK}Wartung
 STR_ORDER_DROP_GO_ALWAYS_DEPOT                                  :Fahre immer
 STR_ORDER_DROP_SERVICE_DEPOT                                    :Wartung, wenn nötig
 STR_ORDER_DROP_HALT_DEPOT                                       :Stopp
-STR_ORDER_SERVICE_TOOLTIP                                       :{BLACK}Überspringe diesen Auftrag, sofern keine Wartung benötigt wird
 
 STR_ORDER_CONDITIONAL_VARIABLE_TOOLTIP                          :{BLACK}Fahrzeuginformation, welche für den Sprung ausgewertet wird
 
@@ -4461,6 +4450,7 @@ STR_ORDER_GO_TO_DEPOT_FORMAT                                    :{STRING} {DEPOT
 STR_ORDER_REFIT_ORDER                                           :(auf {STRING} umrüsten)
 STR_ORDER_REFIT_STOP_ORDER                                      :(auf {STRING} umrüsten und stoppen)
 STR_ORDER_STOP_ORDER                                            :(Stopp)
+
 
 STR_ORDER_GO_TO_STATION                                         :{STRING} {STATION} {STRING}
 STR_ORDER_GO_TO_STATION_CAN_T_USE_STATION                       :{PUSH_COLOUR}{RED}(Station unbenutzbar){POP_COLOUR} {STRING} {STATION} {STRING}
@@ -4919,6 +4909,8 @@ STR_ERROR_UNABLE_TO_FIND_ROUTE_TO                               :{WHITE}Weg zum 
 STR_ERROR_UNABLE_TO_FIND_LOCAL_DEPOT                            :{WHITE}Fahrzeugdepot unauffindbar
 
 STR_ERROR_DEPOT_WRONG_DEPOT_TYPE                                :Falscher Depottyp
+
+# Depot unbunching related errors
 
 # Autoreplace related errors
 STR_ERROR_TRAIN_TOO_LONG_AFTER_REPLACEMENT                      :{WHITE}{VEHICLE} ist nach Ersetzung zu lang

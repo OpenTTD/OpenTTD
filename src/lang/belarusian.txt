@@ -1893,13 +1893,6 @@ STR_CONFIG_SETTING_AI_BUILDS_AIRCRAFT_HELPTEXT                  :Уключэн�
 STR_CONFIG_SETTING_AI_BUILDS_SHIPS                              :Забараніць пабудову караблёў кампутарам: {STRING}
 STR_CONFIG_SETTING_AI_BUILDS_SHIPS_HELPTEXT                     :Уключэньне гэтай наладкі робіць немагчымым набыцьцё караблёў для кампутарнага гульца.
 
-STR_CONFIG_SETTING_AI_PROFILE                                   :Зыходны профіль наладак: {STRING}
-STR_CONFIG_SETTING_AI_PROFILE_HELPTEXT                          :Выберыце, які профіль наладак выкарыстоўваць выпадковаму ШІ ці для пачатковых значэньняў пры даданні новага ШІ ці сцэнара гульні
-###length 3
-STR_CONFIG_SETTING_AI_PROFILE_EASY                              :Лёгкі
-STR_CONFIG_SETTING_AI_PROFILE_MEDIUM                            :Сярэдні
-STR_CONFIG_SETTING_AI_PROFILE_HARD                              :Цяжкі
-
 STR_CONFIG_SETTING_AI_IN_MULTIPLAYER                            :Дазволіць штучны інтэлект (ШІ/AI) у сеткавай гульні: {STRING}
 STR_CONFIG_SETTING_AI_IN_MULTIPLAYER_HELPTEXT                   :Дазволіць кампутарным гульцам (штучнаму інтэлекту) браць удзел у сеткавых гульнях.
 
@@ -2008,7 +2001,6 @@ STR_CONFIG_SETTING_SEMAPHORE_BUILD_BEFORE_DATE_HELPTEXT         :Выбраць 
 STR_CONFIG_SETTING_CYCLE_SIGNAL_TYPES                           :Выбар сыґналаў (Ctrl+клік): {STRING}
 STR_CONFIG_SETTING_CYCLE_SIGNAL_TYPES_HELPTEXT                  :Якія тыпы сыґналаў можна выбраць, пстрыкаюцы з націснутым Ctrl па гатовым сыґнале.
 ###length 2
-STR_CONFIG_SETTING_CYCLE_SIGNAL_PBS                             :толькі маршрутныя (PMS)
 STR_CONFIG_SETTING_CYCLE_SIGNAL_ALL                             :усе
 
 ###length 2
@@ -4296,7 +4288,6 @@ STR_ORDERS_TIMETABLE_VIEW_TOOLTIP                               :{BLACK}Праг
 
 STR_ORDERS_LIST_TOOLTIP                                         :{BLACK}Сьпіс заданьняў: пстрыкніце заданьне для вылучэньня. Ctrl+пстрычка — агляд станцыі прызначэньня.
 STR_ORDER_INDEX                                                 :{COMMA}:{NBSP}
-STR_ORDER_TEXT                                                  :{STRING} {STRING} {STRING}
 
 STR_ORDERS_END_OF_ORDERS                                        :- - Канец заданьняў - -
 STR_ORDERS_END_OF_SHARED_ORDERS                                 :- - Канец агульных заданьняў - -
@@ -4330,11 +4321,9 @@ STR_ORDER_REFIT_AUTO_TOOLTIP                                    :{BLACK}Выбе
 STR_ORDER_DROP_REFIT_AUTO                                       :Нязьменны груз
 STR_ORDER_DROP_REFIT_AUTO_ANY                                   :Даступны груз
 
-STR_ORDER_SERVICE                                               :{BLACK}Абслугоўваньне
 STR_ORDER_DROP_GO_ALWAYS_DEPOT                                  :Ісьці заўсёды
 STR_ORDER_DROP_SERVICE_DEPOT                                    :Абслужыць, калі неабходна
 STR_ORDER_DROP_HALT_DEPOT                                       :Стоп
-STR_ORDER_SERVICE_TOOLTIP                                       :{BLACK}Прапусьціць гэтае заданьне, калі абслугоўваньне не патрабуецца
 
 STR_ORDER_CONDITIONAL_VARIABLE_TOOLTIP                          :{BLACK}Парамэтр транспарту для параўнаньня
 
@@ -4402,6 +4391,7 @@ STR_ORDER_GO_TO_DEPOT_FORMAT                                    :{STRING} {DEPOT
 STR_ORDER_REFIT_ORDER                                           :(Пераабстал. пад {STRING.acc})
 STR_ORDER_REFIT_STOP_ORDER                                      :(Пераабстал. пад {STRING.acc} i стоп)
 STR_ORDER_STOP_ORDER                                            :(Стоп)
+
 
 STR_ORDER_GO_TO_STATION                                         :{STRING} {STATION} {STRING}
 STR_ORDER_GO_TO_STATION_CAN_T_USE_STATION                       :{PUSH_COLOUR}{RED}(Няверны тып){POP_COLOUR} {STRING} {STATION} {STRING}
@@ -4831,6 +4821,8 @@ STR_ERROR_UNABLE_TO_FIND_ROUTE_TO                               :{WHITE}Нема
 STR_ERROR_UNABLE_TO_FIND_LOCAL_DEPOT                            :{WHITE}Немагчыма знайсьці гараж
 
 STR_ERROR_DEPOT_WRONG_DEPOT_TYPE                                :Няправільны тып дэпо
+
+# Depot unbunching related errors
 
 # Autoreplace related errors
 STR_ERROR_TRAIN_TOO_LONG_AFTER_REPLACEMENT                      :{WHITE}ТС «{VEHICLE}» занадта доўгі пасьля замены

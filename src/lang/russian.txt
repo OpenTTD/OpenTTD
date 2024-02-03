@@ -550,7 +550,7 @@ STR_SCENEDIT_TOOLBAR_LANDSCAPE_GENERATION                       :{BLACK}Созд
 STR_SCENEDIT_TOOLBAR_TOWN_GENERATION                            :{BLACK}Создание городов
 STR_SCENEDIT_TOOLBAR_INDUSTRY_GENERATION                        :{BLACK}Создание предприятий
 STR_SCENEDIT_TOOLBAR_ROAD_CONSTRUCTION                          :{BLACK}Строительство автомобильной инфраструктуры
-STR_SCENEDIT_TOOLBAR_TRAM_CONSTRUCTION                          :{BLACK}Строительство трамвайных путей
+STR_SCENEDIT_TOOLBAR_TRAM_CONSTRUCTION                          :{BLACK}Строительство трамвайной инфраструктуры
 STR_SCENEDIT_TOOLBAR_PLANT_TREES                                :{BLACK}Посадить деревья.{}При нажатом Ctrl - выбор диагональной области.{}При нажатом Shift - оценка стоимости высадки.
 STR_SCENEDIT_TOOLBAR_PLACE_SIGN                                 :{BLACK}Поставить метку
 STR_SCENEDIT_TOOLBAR_PLACE_OBJECT                               :{BLACK}Разместить объект. Ctrl+щелчок+перетаскивание - выбор диагональной области. При нажатом Shift - оценка стоимости строительства.
@@ -753,6 +753,8 @@ STR_GRAPH_COMPANY_VALUES_CAPTION                                :{WHITE}Граф
 STR_GRAPH_LAST_72_MINUTES_TIME_LABEL                            :{TINY_FONT}{BLACK}Последние 72 минуты
 
 STR_GRAPH_CARGO_PAYMENT_RATES_CAPTION                           :{WHITE}Оплата за перевозку грузов
+STR_GRAPH_CARGO_PAYMENT_RATES_DAYS                              :{TINY_FONT}{BLACK}Дней в пути
+STR_GRAPH_CARGO_PAYMENT_RATES_SECONDS                           :{TINY_FONT}{BLACK}Секунд в пути
 STR_GRAPH_CARGO_PAYMENT_RATES_TITLE                             :{TINY_FONT}{BLACK}Оплата за перевозку 10{NBSP}единиц (10{NBSP}000 литров) груза на расстояние в 20 клеток
 STR_GRAPH_CARGO_ENABLE_ALL                                      :{TINY_FONT}{BLACK}Показать все
 STR_GRAPH_CARGO_DISABLE_ALL                                     :{TINY_FONT}{BLACK}Спрятать все
@@ -770,6 +772,7 @@ STR_GRAPH_KEY_COMPANY_SELECTION_TOOLTIP                         :{BLACK}Вклю
 # Company league window
 STR_COMPANY_LEAGUE_TABLE_CAPTION                                :{WHITE}Сравнительная таблица компаний
 STR_COMPANY_LEAGUE_COMPANY_NAME                                 :{ORANGE}{COMPANY} {BLACK}{COMPANY_NUM} «{STRING}»
+STR_COMPANY_LEAGUE_COMPANY_RANK                                 :{YELLOW}#{NUM}
 STR_COMPANY_LEAGUE_PERFORMANCE_TITLE_ENGINEER                   :Инженер
 STR_COMPANY_LEAGUE_PERFORMANCE_TITLE_TRAFFIC_MANAGER            :Регулировщик
 STR_COMPANY_LEAGUE_PERFORMANCE_TITLE_TRANSPORT_COORDINATOR      :Диспетчер
@@ -805,6 +808,7 @@ STR_PERFORMANCE_DETAIL_VEHICLES_TOOLTIP_YEARS                   :{BLACK}Коли
 STR_PERFORMANCE_DETAIL_VEHICLES_TOOLTIP_PERIODS                 :{BLACK}Количество транспортных средств, оказавшихся прибыльными в прошлом цикле. Это число включает в себя автомобили, поезда, водные и воздушные суда.
 STR_PERFORMANCE_DETAIL_STATIONS_TOOLTIP                         :{BLACK}Количество обслуживаемых станций. Если несколько типов станций связаны в одну, они все учитываются отдельно.
 STR_PERFORMANCE_DETAIL_MIN_PROFIT_TOOLTIP_YEARS                 :{BLACK}Наименьший доход среди транспортных средств возрастом более двух лет
+STR_PERFORMANCE_DETAIL_MIN_PROFIT_TOOLTIP_PERIODS               :{BLACK}Наименьший доход среди транспортных средств возрастом более двух циклов
 STR_PERFORMANCE_DETAIL_MIN_INCOME_TOOLTIP                       :{BLACK}Наименьший квартальный доход за последние 3 года
 STR_PERFORMANCE_DETAIL_MAX_INCOME_TOOLTIP                       :{BLACK}Наибольший квартальный доход за последние 3 года
 STR_PERFORMANCE_DETAIL_DELIVERED_TOOLTIP                        :{BLACK}Количество груза, доставленного за последние 4 квартала
@@ -1542,9 +1546,11 @@ STR_CONFIG_SETTING_SIGNALSIDE_RIGHT                             :справа
 
 ###length 2
 STR_CONFIG_SETTING_SHOWFINANCES                                 :Показывать финансовую статистику каждый год: {STRING}
+STR_CONFIG_SETTING_SHOWFINANCES_PERIOD                          :Показывать финансовую статистику каждый цикл: {STRING}
 
 ###length 2
 STR_CONFIG_SETTING_SHOWFINANCES_HELPTEXT                        :Показывать окно с финансовой информацией в конце каждого года для упрощения контроля финансового состояния компании
+STR_CONFIG_SETTING_SHOWFINANCES_HELPTEXT_PERIOD                 :Показывать окно с финансовой информацией в конце каждого цикла для упрощения контроля финансового состояния компании
 
 STR_CONFIG_SETTING_NONSTOP_BY_DEFAULT                           :Создавать задания с меткой «без остановок»: {STRING}
 STR_CONFIG_SETTING_NONSTOP_BY_DEFAULT_HELPTEXT                  :Обычно транспортное средство останавливается на каждой станции, через которое проезжает. Если в задании стоит метка «без остановок», то ТС не останавливается на пути к станции назначения. Эта настройка влияет только на вновь создаваемые задания; после создания маршрута каждое задание можно настроить индивидуально.
@@ -1635,6 +1641,7 @@ STR_CONFIG_SETTING_WARN_INCOME_LESS_HELPTEXT                    :Включае�
 STR_CONFIG_SETTING_NEVER_EXPIRE_VEHICLES                        :Транспорт не будет выходить из эксплуатации: {STRING}
 STR_CONFIG_SETTING_NEVER_EXPIRE_VEHICLES_HELPTEXT               :При включении все транспортные средства остаются доступными для покупки в любое время после начала их производства
 
+STR_CONFIG_SETTING_TIMEKEEPING_UNITS                            :Игровое время: {STRING}
 STR_CONFIG_SETTING_TIMEKEEPING_UNITS_HELPTEXT                   :Выбор системы отсчёта времени, используемой в игре. После старта сменить её невозможно.{}{}Календарь - это классическая система, изначально использовавшаяся в OpenTTD: год состоит из 12 месяцев, в каждом из которых 28-31{NBSP}день.{}{}В режиме реального времени расчёты производства, движения транспорта и финансовых показателей основаны на интервалах длительностью в 1{NBSP}минуту, что примерно соответствует 30{NBSP}дням в режиме календаря. Эти интервалы группируются в 12-минутные циклы, соответствующие 1{NBSP}году в классическом режиме.{}{}В любом случае, появление новых транспортных средств, зданий и инфраструктуры будет сопровождаться календарём с понятными датами.
 ###length 2
 STR_CONFIG_SETTING_TIMEKEEPING_UNITS_CALENDAR                   :Календарь
@@ -1648,6 +1655,7 @@ STR_CONFIG_SETTING_MINUTES_PER_YEAR_VALUE                       :{NUM}
 STR_CONFIG_SETTING_MINUTES_PER_YEAR_FROZEN                      :0 (календарное время остановлено)
 
 STR_CONFIG_SETTING_TOWN_CARGO_SCALE                             :Множитель продуктивности городов: {STRING}
+STR_CONFIG_SETTING_TOWN_CARGO_SCALE_HELPTEXT                    :Умножить производительность городов на указанное значение.
 STR_CONFIG_SETTING_INDUSTRY_CARGO_SCALE                         :Множитель производительности предприятий: {STRING}
 STR_CONFIG_SETTING_INDUSTRY_CARGO_SCALE_HELPTEXT                :Умножить производительность предприятий на указанное значение.
 STR_CONFIG_SETTING_CARGO_SCALE_VALUE                            :{NUM}%
@@ -1951,13 +1959,6 @@ STR_CONFIG_SETTING_AI_BUILDS_AIRCRAFT_HELPTEXT                  :Запрет п
 STR_CONFIG_SETTING_AI_BUILDS_SHIPS                              :Запретить покупку судов компьютером: {STRING}
 STR_CONFIG_SETTING_AI_BUILDS_SHIPS_HELPTEXT                     :Запрет покупки водного транспорта для компаний, управляемых компьютером
 
-STR_CONFIG_SETTING_AI_PROFILE                                   :Исходный профиль настроек: {STRING}
-STR_CONFIG_SETTING_AI_PROFILE_HELPTEXT                          :Выберите, какой профиль настроек использовать случайному ИИ или для начальных значений при добавлении нового ИИ или сценария игры
-###length 3
-STR_CONFIG_SETTING_AI_PROFILE_EASY                              :Лёгкий
-STR_CONFIG_SETTING_AI_PROFILE_MEDIUM                            :Средний
-STR_CONFIG_SETTING_AI_PROFILE_HARD                              :Сложный
-
 STR_CONFIG_SETTING_AI_IN_MULTIPLAYER                            :Разрешить ИИ в сетевой игре: {STRING}
 STR_CONFIG_SETTING_AI_IN_MULTIPLAYER_HELPTEXT                   :Разрешить игрокам, управляемым компьютером, участвовать в сетевых играх
 
@@ -2070,7 +2071,7 @@ STR_CONFIG_SETTING_DRAG_SIGNALS_DENSITY                         :При пере
 STR_CONFIG_SETTING_DRAG_SIGNALS_DENSITY_HELPTEXT                :Настройка периодичности расстановки сигналов методом перетаскивания. Сигналы будут устанавливаться до первого встреченного препятствия (пересечения или другого сигнала).
 STR_CONFIG_SETTING_DRAG_SIGNALS_DENSITY_VALUE                   :{COMMA} клет{P ку ки ок}
 STR_CONFIG_SETTING_DRAG_SIGNALS_FIXED_DISTANCE                  :Равномерная расстановка сигналов при перетаскивании: {STRING}
-STR_CONFIG_SETTING_DRAG_SIGNALS_FIXED_DISTANCE_HELPTEXT         :Настройка метода расстановки сигналов с помощью Ctrl+перетаскивания. Если равномерная расстановка отключена, то сигналы дополнительно ставятся перед мостами, туннелями и после них. Если включена, то сигналы ставятся ровно на каждой N-й клетке.
+STR_CONFIG_SETTING_DRAG_SIGNALS_FIXED_DISTANCE_HELPTEXT         :Настройка расстановки сигналов с помощью перетаскивания. Если равномерная расстановка отключена, то сигналы дополнительно ставятся перед мостами, туннелями и после них. Если включена, то сигналы ставятся ровно на каждой N-й клетке.
 
 STR_CONFIG_SETTING_SEMAPHORE_BUILD_BEFORE_DATE                  :Строить семафоры старого стиля: до {STRING} года
 STR_CONFIG_SETTING_SEMAPHORE_BUILD_BEFORE_DATE_HELPTEXT         :Год, начиная с которого на железных дорогах начинают использоваться светофоры. До этого строятся семафоры (которые функционируют точно так же, только выглядят по-другому).
@@ -2078,7 +2079,6 @@ STR_CONFIG_SETTING_SEMAPHORE_BUILD_BEFORE_DATE_HELPTEXT         :Год, нач�
 STR_CONFIG_SETTING_CYCLE_SIGNAL_TYPES                           :Выбор сигналов (Ctrl+щелчок): {STRING}
 STR_CONFIG_SETTING_CYCLE_SIGNAL_TYPES_HELPTEXT                  :Выбор предлагаемых типов сигналов при их модификации с помощью Ctrl+щелчка по установленному сигналу
 ###length 2
-STR_CONFIG_SETTING_CYCLE_SIGNAL_PBS                             :только маршрутные
 STR_CONFIG_SETTING_CYCLE_SIGNAL_ALL                             :все отображаемые
 
 STR_CONFIG_SETTING_SIGNAL_GUI_MODE                              :Типы сигналов в панели строительства: {STRING}
@@ -2212,6 +2212,7 @@ STR_CONFIG_SETTING_LOCALISATION_UNITS_VELOCITY_IMPERIAL         :английс�
 STR_CONFIG_SETTING_LOCALISATION_UNITS_VELOCITY_METRIC           :метрическая (км/ч)
 STR_CONFIG_SETTING_LOCALISATION_UNITS_VELOCITY_SI               :СИ (м/с)
 STR_CONFIG_SETTING_LOCALISATION_UNITS_VELOCITY_GAMEUNITS_DAYS   :Внутренние единицы (клеток/день)
+STR_CONFIG_SETTING_LOCALISATION_UNITS_VELOCITY_GAMEUNITS_SECS   :Внутренние единицы (клеток/сек.)
 STR_CONFIG_SETTING_LOCALISATION_UNITS_VELOCITY_KNOTS            :узлы
 
 STR_CONFIG_SETTING_LOCALISATION_UNITS_POWER                     :Система единиц для мощности: {STRING}
@@ -2909,6 +2910,7 @@ STR_LINKGRAPH_LEGEND_SATURATED                                  :{TINY_FONT}{BLA
 STR_LINKGRAPH_LEGEND_OVERLOADED                                 :{TINY_FONT}{BLACK}перегруз
 
 # Linkgraph tooltip
+STR_LINKGRAPH_STATS_TOOLTIP_MONTH                               :{BLACK}{CARGO_LONG}/мес. к транспортировке от {STATION} до {STATION} ({COMMA}% ёмкости){STRING}
 STR_LINKGRAPH_STATS_TOOLTIP_MINUTE                              :{BLACK}{CARGO_LONG}/мин. к транспортировке от {STATION} до {STATION} ({COMMA}% ёмкости){STRING}
 STR_LINKGRAPH_STATS_TOOLTIP_RETURN_EXTENSION                    :{}{CARGO_LONG} к возврату ({COMMA}% ёмкости)
 STR_LINKGRAPH_STATS_TOOLTIP_TIME_EXTENSION                      :{}Среднее время в пути: {UNITS_DAYS_OR_SECONDS}
@@ -3930,6 +3932,8 @@ STR_STATION_VIEW_EXCLUSIVE_RIGHTS_COMPANY                       :{YELLOW}{COMPAN
 
 STR_STATION_VIEW_RATINGS_BUTTON                                 :{BLACK}Рейтинг
 STR_STATION_VIEW_RATINGS_TOOLTIP                                :{BLACK}Показать рейтинг станции
+STR_STATION_VIEW_SUPPLY_RATINGS_TITLE_MONTH                     :{BLACK}Приход за месяц и рейтинг:
+STR_STATION_VIEW_SUPPLY_RATINGS_TITLE_MINUTE                    :{BLACK}Приход за минуту и рейтинг:
 STR_STATION_VIEW_CARGO_SUPPLY_RATING                            :{WHITE}{STRING}: {YELLOW}{COMMA} / {STRING} ({COMMA}%)
 
 STR_STATION_VIEW_GROUP                                          :{BLACK}Группировать
@@ -4232,6 +4236,7 @@ STR_PURCHASE_INFO_SPEED                                         :{BLACK}Скор
 STR_PURCHASE_INFO_SPEED_OCEAN                                   :{BLACK}Скорость в море: {GOLD}{VELOCITY}
 STR_PURCHASE_INFO_SPEED_CANAL                                   :{BLACK}Скорость в каналах и реках: {GOLD}{VELOCITY}
 STR_PURCHASE_INFO_RUNNINGCOST_YEAR                              :{BLACK}Стоимость обслуживания: {GOLD}{CURRENCY_LONG}/год
+STR_PURCHASE_INFO_RUNNINGCOST_PERIOD                            :{BLACK}Стоимость обслуживания: {GOLD}{CURRENCY_LONG}/цикл
 STR_PURCHASE_INFO_CAPACITY                                      :{BLACK}Ёмкость: {GOLD}{CARGO_LONG} {STRING}
 STR_PURCHASE_INFO_REFITTABLE                                    :(переоб.)
 STR_PURCHASE_INFO_DESIGNED_LIFE                                 :{BLACK}Разработан в {GOLD}{NUM} г.{BLACK} Срок службы: {GOLD}{COMMA} {P год года лет}
@@ -4441,6 +4446,7 @@ STR_ENGINE_PREVIEW_SPEED_POWER_MAX_TE                           :Скорост�
 STR_ENGINE_PREVIEW_TYPE                                         :Тип воздушного судна: {STRING}
 STR_ENGINE_PREVIEW_TYPE_RANGE                                   :Возд. судно: {STRING} Дальность: {COMMA}{NBSP}клет{P ка ки ок}
 STR_ENGINE_PREVIEW_RUNCOST_YEAR                                 :Стоимость обслуживания: {CURRENCY_LONG}/год
+STR_ENGINE_PREVIEW_RUNCOST_PERIOD                               :Стоимость обслуживания: {CURRENCY_LONG}/цикл
 STR_ENGINE_PREVIEW_CAPACITY                                     :Ёмкость: {CARGO_LONG}
 STR_ENGINE_PREVIEW_CAPACITY_2                                   :Ёмкость: {CARGO_LONG}, {CARGO_LONG}
 
@@ -4510,7 +4516,7 @@ STR_VEHICLE_VIEW_AIRCRAFT_CENTER_TOOLTIP                        :{BLACK}Пока
 
 ###length VEHICLE_TYPES
 STR_VEHICLE_VIEW_TRAIN_SEND_TO_DEPOT_TOOLTIP                    :{BLACK}Отправить поезд в депо. Ctrl+щелчок - провести техническое обслуживание.
-STR_VEHICLE_VIEW_ROAD_VEHICLE_SEND_TO_DEPOT_TOOLTIP             :{BLACK}Отправить автомобиль в гараж. Ctrl+щелчок - провести техническое обслуживание.
+STR_VEHICLE_VIEW_ROAD_VEHICLE_SEND_TO_DEPOT_TOOLTIP             :{BLACK}Отправить автомобиль в гараж. Ctrl+щелчок - только провести техническое обслуживание.
 STR_VEHICLE_VIEW_SHIP_SEND_TO_DEPOT_TOOLTIP                     :{BLACK}Отправить судно в док. Ctrl+щелчок - провести техническое обслуживание.
 STR_VEHICLE_VIEW_AIRCRAFT_SEND_TO_DEPOT_TOOLTIP                 :{BLACK}Отправить воздушное судно в ангар. Ctrl+щелчок - провести техническое обслуживание.
 
@@ -4695,7 +4701,6 @@ STR_ORDERS_TIMETABLE_VIEW_TOOLTIP                               :{BLACK}Пока
 
 STR_ORDERS_LIST_TOOLTIP                                         :{BLACK}Список заданий - щёлкните задание для выделения. Ctrl+щелчок - обзор станции назначения.
 STR_ORDER_INDEX                                                 :{COMMA}:{NBSP}
-STR_ORDER_TEXT                                                  :{STRING} {STRING} {STRING}
 
 STR_ORDERS_END_OF_ORDERS                                        :- - Конец заданий - -
 STR_ORDERS_END_OF_SHARED_ORDERS                                 :- - Конец общих заданий - -
@@ -4729,11 +4734,9 @@ STR_ORDER_REFIT_AUTO_TOOLTIP                                    :{BLACK}Выбе
 STR_ORDER_DROP_REFIT_AUTO                                       :Определённый груз
 STR_ORDER_DROP_REFIT_AUTO_ANY                                   :Доступный груз
 
-STR_ORDER_SERVICE                                               :{BLACK}Тех. обслуживание
 STR_ORDER_DROP_GO_ALWAYS_DEPOT                                  :Всегда
 STR_ORDER_DROP_SERVICE_DEPOT                                    :Если требуется
 STR_ORDER_DROP_HALT_DEPOT                                       :Стоп
-STR_ORDER_SERVICE_TOOLTIP                                       :{BLACK}Пропустить это задание, если техническое обслуживание не требуется
 
 STR_ORDER_CONDITIONAL_VARIABLE_TOOLTIP                          :{BLACK}Параметр транспорта для сравнения
 
@@ -4801,6 +4804,7 @@ STR_ORDER_GO_TO_DEPOT_FORMAT                                    :{STRING} {DEPOT
 STR_ORDER_REFIT_ORDER                                           :(Переоборуд. под {STRING.acc})
 STR_ORDER_REFIT_STOP_ORDER                                      :(Переоборуд. под {STRING.acc} и стоп)
 STR_ORDER_STOP_ORDER                                            :(Стоп)
+
 
 STR_ORDER_GO_TO_STATION                                         :{STRING} {STATION} {STRING}
 STR_ORDER_GO_TO_STATION_CAN_T_USE_STATION                       :{PUSH_COLOUR}{RED}(Неверный тип){POP_COLOUR} {STRING} {STATION} {STRING}
@@ -5004,6 +5008,8 @@ STR_AI_SETTINGS_CAPTION_GAMESCRIPT                              :игровых 
 STR_AI_SETTINGS_CLOSE                                           :{BLACK}Закрыть
 STR_AI_SETTINGS_RESET                                           :{BLACK}Сброс
 STR_AI_SETTINGS_SETTING                                         :{STRING}: {ORANGE}{STRING}
+STR_AI_SETTINGS_SETTING_DEVIATION                               :{STRING}: {ORANGE}[{STRING}, {STRING}]
+STR_AI_SETTINGS_JUST_DEVIATION                                  :[{STRING}, {STRING}]
 
 
 # Textfile window
@@ -5268,6 +5274,8 @@ STR_ERROR_UNABLE_TO_FIND_ROUTE_TO                               :{WHITE}Нево
 STR_ERROR_UNABLE_TO_FIND_LOCAL_DEPOT                            :{WHITE}Невозможно найти гараж
 
 STR_ERROR_DEPOT_WRONG_DEPOT_TYPE                                :Неверный тип депо
+
+# Depot unbunching related errors
 
 # Autoreplace related errors
 STR_ERROR_TRAIN_TOO_LONG_AFTER_REPLACEMENT                      :{WHITE}ТС «{VEHICLE}» слишком длинное после замены

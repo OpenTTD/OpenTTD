@@ -1470,10 +1470,6 @@ STR_CONFIG_SETTING_AI_BUILDS_AIRCRAFT                           :حظر الطا
 
 STR_CONFIG_SETTING_AI_BUILDS_SHIPS                              :حظر السفن على الحاسوب: {STRING}
 
-STR_CONFIG_SETTING_AI_PROFILE                                   :الملف الشخصي للإعدادات الافتراضية: {STRING}
-###length 3
-STR_CONFIG_SETTING_AI_PROFILE_EASY                              :سهل
-
 STR_CONFIG_SETTING_AI_IN_MULTIPLAYER                            :السماح بالذكاء الصناعي في اللعب الجماعي : {STRING}
 STR_CONFIG_SETTING_AI_IN_MULTIPLAYER_HELPTEXT                   :السماح بلاعبين كمبيوترالذكاء الصناعي بالمشاركة في الالعاب الجماعية.
 
@@ -1556,7 +1552,6 @@ STR_CONFIG_SETTING_SEMAPHORE_BUILD_BEFORE_DATE                  :اتاحة اس
 STR_CONFIG_SETTING_CYCLE_SIGNAL_TYPES                           :الدوران خلال الاشارات: {STRING}
 STR_CONFIG_SETTING_CYCLE_SIGNAL_TYPES_HELPTEXT                  :حدد أنواع الإشارات التي تريد التنقل خلالها عند النقر (Ctrl+Click) فوق إشارة مبنية باستخدام أداة الإشارة
 ###length 2
-STR_CONFIG_SETTING_CYCLE_SIGNAL_PBS                             :اشارات الطريق فقط
 STR_CONFIG_SETTING_CYCLE_SIGNAL_ALL                             :الكل واضح
 
 ###length 2
@@ -3684,7 +3679,6 @@ STR_ORDERS_TIMETABLE_VIEW_TOOLTIP                               :{BLACK}غير �
 
 STR_ORDERS_LIST_TOOLTIP                                         :{BLACK}قائمة الاوامر - اضغط على الامر لختيارة. مفتاح التحكم (كنترول) + الضغط لتوجة للمحطة
 STR_ORDER_INDEX                                                 :{COMMA}:{NBSP}
-STR_ORDER_TEXT                                                  :{STRING} {STRING} {STRING}
 
 STR_ORDERS_END_OF_ORDERS                                        :- - نهاية الاوامر - -
 STR_ORDERS_END_OF_SHARED_ORDERS                                 :- - نهاية الأوامر المشتركة - -
@@ -3718,11 +3712,9 @@ STR_ORDER_REFIT_AUTO_TOOLTIP                                    :{BLACK}اختر
 STR_ORDER_DROP_REFIT_AUTO                                       :شحنة ثابتة
 STR_ORDER_DROP_REFIT_AUTO_ANY                                   :البضائع المتاحة
 
-STR_ORDER_SERVICE                                               :{BLACK} صيانة
 STR_ORDER_DROP_GO_ALWAYS_DEPOT                                  :الذهاب دائما
 STR_ORDER_DROP_SERVICE_DEPOT                                    :الصيانة عند الحاجة
 STR_ORDER_DROP_HALT_DEPOT                                       :توقف
-STR_ORDER_SERVICE_TOOLTIP                                       :{BLACK}تجاوز هذا الامر الا اذا لم تكن الصيانة مطلوبة
 
 STR_ORDER_CONDITIONAL_VARIABLE_TOOLTIP                          :{BLACK}بيانات العربة لتعريف التجاوز الى
 
@@ -3789,6 +3781,7 @@ STR_ORDER_GO_TO_DEPOT_FORMAT                                    :{STRING} {DEPOT
 STR_ORDER_REFIT_ORDER                                           :هيئة الى {STRING}
 STR_ORDER_REFIT_STOP_ORDER                                      :هيئت الى {STRING} و توقف
 STR_ORDER_STOP_ORDER                                            :توقف
+
 
 STR_ORDER_GO_TO_STATION                                         :{STRING} {STATION} {STRING}
 STR_ORDER_GO_TO_STATION_CAN_T_USE_STATION                       :{PUSH_COLOUR}{RED}(لا يمكن استخدام المحطة){POP_COLOUR} {STRING} {STATION} {STRING}
@@ -4207,6 +4200,8 @@ STR_ERROR_UNABLE_TO_FIND_ROUTE_TO                               :{WHITE}تعذر
 STR_ERROR_UNABLE_TO_FIND_LOCAL_DEPOT                            :{WHITE}تعذر إيجاد مستوع محلى
 
 STR_ERROR_DEPOT_WRONG_DEPOT_TYPE                                :مستودع خطأ
+
+# Depot unbunching related errors
 
 # Autoreplace related errors
 STR_ERROR_TRAIN_TOO_LONG_AFTER_REPLACEMENT                      :{WHITE}{VEHICLE} طويل للغايه بعد اﻹستبدال

@@ -1594,13 +1594,6 @@ STR_CONFIG_SETTING_AI_BUILDS_AIRCRAFT_HELPTEXT                  :אפשור הג
 STR_CONFIG_SETTING_AI_BUILDS_SHIPS                              :{STRING} :מנע הפעלת כלי שייט ע”י שחקני המחשב
 STR_CONFIG_SETTING_AI_BUILDS_SHIPS_HELPTEXT                     :אפשור הגדרה זו הופך בניית אוניות לבלתי אפשרית עבור שחקן מחשב
 
-STR_CONFIG_SETTING_AI_PROFILE                                   :פרופיל הגדרות ברירת מחדל: {STRING}
-STR_CONFIG_SETTING_AI_PROFILE_HELPTEXT                          :בחר באיזה פרופיל הגדרות להשתמש עבור שחקני מחשב אקראיים או עבור ערכים ראשוניים בעת הוספת שחקן מחשב חדש או סקריפט משחק
-###length 3
-STR_CONFIG_SETTING_AI_PROFILE_EASY                              :קל
-STR_CONFIG_SETTING_AI_PROFILE_MEDIUM                            :בינוני
-STR_CONFIG_SETTING_AI_PROFILE_HARD                              :קשה
-
 STR_CONFIG_SETTING_AI_IN_MULTIPLAYER                            :{STRING} :אפשר שחקני מחשב במשחק רשת
 STR_CONFIG_SETTING_AI_IN_MULTIPLAYER_HELPTEXT                   :אפשר לשחקני מחשב להשתתף במשחקים מרובי משתתפים
 
@@ -1709,7 +1702,6 @@ STR_CONFIG_SETTING_SEMAPHORE_BUILD_BEFORE_DATE_HELPTEXT         :קבע את ה�
 STR_CONFIG_SETTING_CYCLE_SIGNAL_TYPES                           :{STRING} :הצג חלופות עבור רמזורים
 STR_CONFIG_SETTING_CYCLE_SIGNAL_TYPES_HELPTEXT                  :בחר בין אילו סוגי רמזורים לעבור כאשר מקליקים על "בנה רמזור" תוך לחיצה על מקש Ctrl
 ###length 2
-STR_CONFIG_SETTING_CYCLE_SIGNAL_PBS                             :רמזורי נתיב בלבד
 STR_CONFIG_SETTING_CYCLE_SIGNAL_ALL                             :הכל
 
 ###length 2
@@ -3982,7 +3974,6 @@ STR_ORDERS_TIMETABLE_VIEW_TOOLTIP                               :{BLACK}עבור
 
 STR_ORDERS_LIST_TOOLTIP                                         :{BLACK}רשימת יעדים - לחץ על יעד על מנת להדגישו. Ctrl+לחיצה מתמקד ביעד
 STR_ORDER_INDEX                                                 :{COMMA}:{NBSP}
-STR_ORDER_TEXT                                                  :{STRING} {STRING} {STRING}
 
 STR_ORDERS_END_OF_ORDERS                                        :- - סוף רשימת היעדים - -
 STR_ORDERS_END_OF_SHARED_ORDERS                                 :- - סוף של הוראות משותפות - -
@@ -4016,11 +4007,9 @@ STR_ORDER_REFIT_AUTO_TOOLTIP                                    :{BLACK}בחרל
 STR_ORDER_DROP_REFIT_AUTO                                       :מטען קבוע
 STR_ORDER_DROP_REFIT_AUTO_ANY                                   :מטען זמין
 
-STR_ORDER_SERVICE                                               :{BLACK}טיפול
 STR_ORDER_DROP_GO_ALWAYS_DEPOT                                  :עבור תמיד דרך
 STR_ORDER_DROP_SERVICE_DEPOT                                    :טפל במידת הצורך
 STR_ORDER_DROP_HALT_DEPOT                                       :עצור
-STR_ORDER_SERVICE_TOOLTIP                                       :{BLACK}דלג על היעד שנבחר אלא אם הכלי זקוק לטיפול
 
 STR_ORDER_CONDITIONAL_VARIABLE_TOOLTIP                          :{BLACK}נתוני כלי הרכב עליהם יתבסס הדילוג
 
@@ -4088,6 +4077,7 @@ STR_ORDER_GO_TO_DEPOT_FORMAT                                    :{STRING} {DEPOT
 STR_ORDER_REFIT_ORDER                                           :({STRING} התאם לנשיאת)
 STR_ORDER_REFIT_STOP_ORDER                                      :(ועצור {STRING} התאם לנשיאת)
 STR_ORDER_STOP_ORDER                                            :(עצור)
+
 
 STR_ORDER_GO_TO_STATION                                         :{2:STRING} {1:STATION} {0:STRING}
 
@@ -4524,6 +4514,8 @@ STR_ERROR_UNABLE_TO_FIND_ROUTE_TO                               :{WHITE}לא מ�
 STR_ERROR_UNABLE_TO_FIND_LOCAL_DEPOT                            :{WHITE}לא ניתן לאתר מוסך כלי רכב מקומי
 
 STR_ERROR_DEPOT_WRONG_DEPOT_TYPE                                :סוג מוסך שגוי
+
+# Depot unbunching related errors
 
 # Autoreplace related errors
 STR_ERROR_TRAIN_TOO_LONG_AFTER_REPLACEMENT                      :{WHITE}ארוכה מידי לאחר ביצוע ההחלפה {VEHICLE}

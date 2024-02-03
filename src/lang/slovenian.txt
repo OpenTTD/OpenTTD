@@ -1705,13 +1705,6 @@ STR_CONFIG_SETTING_AI_BUILDS_AIRCRAFT_HELPTEXT                  :Če je omogoče
 STR_CONFIG_SETTING_AI_BUILDS_SHIPS                              :Onemogoči ladje za računalnik: {STRING}
 STR_CONFIG_SETTING_AI_BUILDS_SHIPS_HELPTEXT                     :Če je omogočeno, računalniški tekmec ne more graditi ladij.
 
-STR_CONFIG_SETTING_AI_PROFILE                                   :Profil privzetih nastavitev: {STRING}
-STR_CONFIG_SETTING_AI_PROFILE_HELPTEXT                          :Izberi profil nastavitev za naključne UI ali za začetne vrednosti ob dodajanju UI ali skripta
-###length 3
-STR_CONFIG_SETTING_AI_PROFILE_EASY                              :Lahko
-STR_CONFIG_SETTING_AI_PROFILE_MEDIUM                            :Srednje težko
-STR_CONFIG_SETTING_AI_PROFILE_HARD                              :Težko
-
 STR_CONFIG_SETTING_AI_IN_MULTIPLAYER                            :Dovoli UI v večigralskem načinu: {STRING}
 STR_CONFIG_SETTING_AI_IN_MULTIPLAYER_HELPTEXT                   :Dovoli UI računalniškim tekmecem sodelovanje v večigralskem načinu.
 
@@ -1816,7 +1809,6 @@ STR_CONFIG_SETTING_SEMAPHORE_BUILD_BEFORE_DATE_HELPTEXT         :Nastavitev leta
 STR_CONFIG_SETTING_CYCLE_SIGNAL_TYPES                           :Krožni izbor tipa signalov: {STRING}
 STR_CONFIG_SETTING_CYCLE_SIGNAL_TYPES_HELPTEXT                  :Izbira tipa signalov za vrtilni-izbor. Ctrl+klik na signal z orodjem za signale.
 ###length 2
-STR_CONFIG_SETTING_CYCLE_SIGNAL_PBS                             :Samo napredni
 STR_CONFIG_SETTING_CYCLE_SIGNAL_ALL                             :Vse
 
 ###length 2
@@ -3970,7 +3962,6 @@ STR_ORDERS_TIMETABLE_VIEW_TOOLTIP                               :{BLACK}Preklop 
 
 STR_ORDERS_LIST_TOOLTIP                                         :{BLACK}Seznam navodil - klikni na ukaz, da ga izbereš. CTRL+Klik premakne na destinacijo
 STR_ORDER_INDEX                                                 :{COMMA}:{NBSP}
-STR_ORDER_TEXT                                                  :{STRING} {STRING} {STRING}
 
 STR_ORDERS_END_OF_ORDERS                                        :- - Konec ukazov - -
 STR_ORDERS_END_OF_SHARED_ORDERS                                 :- - Konec ukazov v skupni rabi - -
@@ -4004,11 +3995,9 @@ STR_ORDER_REFIT_AUTO_TOOLTIP                                    :{BLACK}Izberi k
 STR_ORDER_DROP_REFIT_AUTO                                       :Določen tovor
 STR_ORDER_DROP_REFIT_AUTO_ANY                                   :Tovor na voljo
 
-STR_ORDER_SERVICE                                               :{BLACK}Servis
 STR_ORDER_DROP_GO_ALWAYS_DEPOT                                  :Vedno pojdi
 STR_ORDER_DROP_SERVICE_DEPOT                                    :Servisiraj po potrebi
 STR_ORDER_DROP_HALT_DEPOT                                       :Stop
-STR_ORDER_SERVICE_TOOLTIP                                       :{BLACK}Preskoči ta ukaz, razen če je potreben servis
 
 STR_ORDER_CONDITIONAL_VARIABLE_TOOLTIP                          :{BLACK}Podatki vozila na osnovni preskok
 
@@ -4076,6 +4065,7 @@ STR_ORDER_GO_TO_DEPOT_FORMAT                                    :{STRING} {DEPOT
 STR_ORDER_REFIT_ORDER                                           :(Preuredi za {STRING})
 STR_ORDER_REFIT_STOP_ORDER                                      :(Preuredi v {STRING} in zaustavi)
 STR_ORDER_STOP_ORDER                                            :(Stop)
+
 
 STR_ORDER_GO_TO_STATION                                         :{STRING} {STATION} {STRING}
 
@@ -4503,6 +4493,8 @@ STR_ERROR_UNABLE_TO_FIND_ROUTE_TO                               :{WHITE}Ni mogo�
 STR_ERROR_UNABLE_TO_FIND_LOCAL_DEPOT                            :{WHITE}Ni mogoče najti najbližje garaže
 
 STR_ERROR_DEPOT_WRONG_DEPOT_TYPE                                :Napačna vrsta garaže
+
+# Depot unbunching related errors
 
 # Autoreplace related errors
 STR_ERROR_TRAIN_TOO_LONG_AFTER_REPLACEMENT                      :{WHITE}{VEHICLE} je predolgo po zamenjavi

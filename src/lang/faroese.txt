@@ -1489,13 +1489,6 @@ STR_CONFIG_SETTING_AI_BUILDS_AIRCRAFT_HELPTEXT                  :Gildan av hesi 
 STR_CONFIG_SETTING_AI_BUILDS_SHIPS                              :Ógilda skip fyri telduna: {STRING}
 STR_CONFIG_SETTING_AI_BUILDS_SHIPS_HELPTEXT                     :Gildan av hesi ásetan ger tað ógjørligt hjá einum telduspælara at byggja skip
 
-STR_CONFIG_SETTING_AI_PROFILE                                   :Vanligur innstillings profilur: {STRING}
-STR_CONFIG_SETTING_AI_PROFILE_HELPTEXT                          :Vel hvønn innstillings profil at nýta fyri tilvildarlig AI ella fyri byrjunar virði tá tú leggur nýtt AI ella spæl skript til
-###length 3
-STR_CONFIG_SETTING_AI_PROFILE_EASY                              :Lætt
-STR_CONFIG_SETTING_AI_PROFILE_MEDIUM                            :Miðal
-STR_CONFIG_SETTING_AI_PROFILE_HARD                              :Torført
-
 STR_CONFIG_SETTING_AI_IN_MULTIPLAYER                            :Loyv AI í hópspæli: {STRING}
 STR_CONFIG_SETTING_AI_IN_MULTIPLAYER_HELPTEXT                   :Loyv AI telduspælarum at taka lut í hópspølum
 
@@ -1599,7 +1592,6 @@ STR_CONFIG_SETTING_SEMAPHORE_BUILD_BEFORE_DATE_HELPTEXT         :Áset hvat ár 
 
 STR_CONFIG_SETTING_CYCLE_SIGNAL_TYPES                           :Blaða gjøgnum tekn sløg: {STRING}
 ###length 2
-STR_CONFIG_SETTING_CYCLE_SIGNAL_PBS                             :Leið tekin einans
 STR_CONFIG_SETTING_CYCLE_SIGNAL_ALL                             :Øll
 
 ###length 2
@@ -3401,7 +3393,6 @@ STR_ORDERS_CAPTION                                              :{WHITE}{VEHICLE
 STR_ORDERS_TIMETABLE_VIEW                                       :{BLACK}Tíðarætlan
 
 STR_ORDER_INDEX                                                 :{COMMA}:{NBSP}
-STR_ORDER_TEXT                                                  :{STRING} {STRING} {STRING}
 
 STR_ORDERS_END_OF_ORDERS                                        :- - Endi á boðum - -
 STR_ORDERS_END_OF_SHARED_ORDERS                                 :- - Endi á deildum boðum - -
@@ -3432,7 +3423,6 @@ STR_ORDER_REFIT_AUTO                                            :{BLACK}Sjálvum
 STR_ORDER_DROP_REFIT_AUTO                                       :Ávisur farmur
 STR_ORDER_DROP_REFIT_AUTO_ANY                                   :Tøkur farmur
 
-STR_ORDER_SERVICE                                               :{BLACK}Eftirlit
 STR_ORDER_DROP_GO_ALWAYS_DEPOT                                  :Far altíð
 STR_ORDER_DROP_SERVICE_DEPOT                                    :Eftirlit um neyðugt
 STR_ORDER_DROP_HALT_DEPOT                                       :Steðga
@@ -3499,6 +3489,7 @@ STR_ORDER_GO_TO_DEPOT_FORMAT                                    :{STRING} {DEPOT
 STR_ORDER_REFIT_ORDER                                           :(Bygg um til {STRING})
 STR_ORDER_REFIT_STOP_ORDER                                      :(Bygg um til {STRING} og steðga)
 STR_ORDER_STOP_ORDER                                            :(Steðga)
+
 
 STR_ORDER_GO_TO_STATION                                         :{STRING} {STATION} {STRING}
 
@@ -3887,6 +3878,8 @@ STR_ERROR_UNABLE_TO_FIND_ROUTE_TO                               :{WHITE}Ikki fø
 STR_ERROR_UNABLE_TO_FIND_LOCAL_DEPOT                            :{WHITE}Ikki førur fyri at finna nærðendis goymslu
 
 STR_ERROR_DEPOT_WRONG_DEPOT_TYPE                                :Skeivt goymslu slag
+
+# Depot unbunching related errors
 
 # Autoreplace related errors
 STR_ERROR_TRAIN_TOO_LONG_AFTER_REPLACEMENT                      :{WHITE}{VEHICLE} er ov langt aftaná umbýting

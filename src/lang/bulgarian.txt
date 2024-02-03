@@ -1540,13 +1540,6 @@ STR_CONFIG_SETTING_AI_BUILDS_AIRCRAFT_HELPTEXT                  :Активир�
 STR_CONFIG_SETTING_AI_BUILDS_SHIPS                              :Премахване на корабите за компютърния играч: {STRING}
 STR_CONFIG_SETTING_AI_BUILDS_SHIPS_HELPTEXT                     :Активирането на тази опция, прави невъзможно управляваните от ИИ играчи да строят кораби
 
-STR_CONFIG_SETTING_AI_PROFILE                                   :Профил на настройки по подразбиране: {STRING}
-STR_CONFIG_SETTING_AI_PROFILE_HELPTEXT                          :Избира кои профилни опции да се използват за случайните ИИ или за началните стойности, когато добавяте ново ИИ или Game Script
-###length 3
-STR_CONFIG_SETTING_AI_PROFILE_EASY                              :Лесно
-STR_CONFIG_SETTING_AI_PROFILE_MEDIUM                            :Средно
-STR_CONFIG_SETTING_AI_PROFILE_HARD                              :Трудно
-
 STR_CONFIG_SETTING_AI_IN_MULTIPLAYER                            :Позволи AI в мрежова игра: {STRING}
 STR_CONFIG_SETTING_AI_IN_MULTIPLAYER_HELPTEXT                   :Разреши ИИ играчите да участват в мрежови игри
 
@@ -1651,7 +1644,6 @@ STR_CONFIG_SETTING_SEMAPHORE_BUILD_BEFORE_DATE_HELPTEXT         :Задайте 
 STR_CONFIG_SETTING_CYCLE_SIGNAL_TYPES                           :Смяна на вида сигнал: {STRING}
 STR_CONFIG_SETTING_CYCLE_SIGNAL_TYPES_HELPTEXT                  :Изберете какъв вид сигнали да прегледате, когато Ctrl+clicking на строенето на сигнал
 ###length 2
-STR_CONFIG_SETTING_CYCLE_SIGNAL_PBS                             :Само напреднат
 STR_CONFIG_SETTING_CYCLE_SIGNAL_ALL                             :Всички
 
 ###length 2
@@ -3777,7 +3769,6 @@ STR_ORDERS_TIMETABLE_VIEW_TOOLTIP                               :{BLACK}Виж �
 
 STR_ORDERS_LIST_TOOLTIP                                         :{BLACK}Пътен лист - натиснете върху назначение за маркиране. CTRL + натискане - центрира върху дестинацията
 STR_ORDER_INDEX                                                 :{COMMA}:{NBSP}
-STR_ORDER_TEXT                                                  :{STRING} {STRING} {STRING}
 
 STR_ORDERS_END_OF_ORDERS                                        :- - Край на Заповедите - -
 STR_ORDERS_END_OF_SHARED_ORDERS                                 :- - Край на Споделения пътен лист - -
@@ -3811,11 +3802,9 @@ STR_ORDER_REFIT_AUTO_TOOLTIP                                    :{BLACK}Избе
 STR_ORDER_DROP_REFIT_AUTO                                       :Фиксиран товар
 STR_ORDER_DROP_REFIT_AUTO_ANY                                   :Наличен товар
 
-STR_ORDER_SERVICE                                               :{BLACK}Ремонт
 STR_ORDER_DROP_GO_ALWAYS_DEPOT                                  :Винаги напред
 STR_ORDER_DROP_SERVICE_DEPOT                                    :Сервиз, когато е необходимо
 STR_ORDER_DROP_HALT_DEPOT                                       :Стоп
-STR_ORDER_SERVICE_TOOLTIP                                       :{BLACK}Пропусни освен ако е необходим ремонт
 
 STR_ORDER_CONDITIONAL_VARIABLE_TOOLTIP                          :{BLACK}Данни за превозното средство, на които се базира
 
@@ -3882,6 +3871,7 @@ STR_ORDER_GO_TO_DEPOT_FORMAT                                    :{STRING} {DEPOT
 STR_ORDER_REFIT_ORDER                                           :(Преустройство към {STRING})
 STR_ORDER_REFIT_STOP_ORDER                                      :(Преоборудване на {STRING} и спиране)
 STR_ORDER_STOP_ORDER                                            :(Спри)
+
 
 STR_ORDER_GO_TO_STATION                                         :{STRING} {STATION} {STRING}
 
@@ -4308,6 +4298,8 @@ STR_ERROR_UNABLE_TO_FIND_ROUTE_TO                               :{WHITE}Не м�
 STR_ERROR_UNABLE_TO_FIND_LOCAL_DEPOT                            :{WHITE}Не може да намери локалния сервиз
 
 STR_ERROR_DEPOT_WRONG_DEPOT_TYPE                                :Погрешен депо теп
+
+# Depot unbunching related errors
 
 # Autoreplace related errors
 STR_ERROR_TRAIN_TOO_LONG_AFTER_REPLACEMENT                      :{WHITE}{VEHICLE} е прекалено дълъг след замяната

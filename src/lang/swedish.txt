@@ -1722,13 +1722,6 @@ STR_CONFIG_SETTING_AI_BUILDS_AIRCRAFT_HELPTEXT                  :När denna inst
 STR_CONFIG_SETTING_AI_BUILDS_SHIPS                              :Förbjud skepp för datorn: {STRING}
 STR_CONFIG_SETTING_AI_BUILDS_SHIPS_HELPTEXT                     :När denna inställning aktiveras blir det omöjligt för datorspelare att bygga skepp
 
-STR_CONFIG_SETTING_AI_PROFILE                                   :Inställningsprofil som standard: {STRING}
-STR_CONFIG_SETTING_AI_PROFILE_HELPTEXT                          :Välj vilken inställningsprofil som ska användas för slumpvis valda datorspelare, eller för startvärden när en ny datorspelare (AI) eller ett spelskript läggs till
-###length 3
-STR_CONFIG_SETTING_AI_PROFILE_EASY                              :Lätt
-STR_CONFIG_SETTING_AI_PROFILE_MEDIUM                            :Mellan
-STR_CONFIG_SETTING_AI_PROFILE_HARD                              :Svår
-
 STR_CONFIG_SETTING_AI_IN_MULTIPLAYER                            :Tillåt datorspelare i flerspelarläge: {STRING}
 STR_CONFIG_SETTING_AI_IN_MULTIPLAYER_HELPTEXT                   :Tillåt datorstyrda spelare att delta i spel för flera spelare
 
@@ -1847,7 +1840,6 @@ STR_CONFIG_SETTING_SEMAPHORE_BUILD_BEFORE_DATE_HELPTEXT         :Välj vilket å
 STR_CONFIG_SETTING_CYCLE_SIGNAL_TYPES                           :Gå igenom signaltyper: {STRING}
 STR_CONFIG_SETTING_CYCLE_SIGNAL_TYPES_HELPTEXT                  :Välj vilka signaltyper som ska gås igenom vid Ctrl+klick med signalverktyget på en redan byggd signal
 ###length 2
-STR_CONFIG_SETTING_CYCLE_SIGNAL_PBS                             :Endast avancerade
 STR_CONFIG_SETTING_CYCLE_SIGNAL_ALL                             :Alla synliga
 
 STR_CONFIG_SETTING_SIGNAL_GUI_MODE                              :Visa signaltyper: {STRING}
@@ -4333,7 +4325,6 @@ STR_ORDERS_TIMETABLE_VIEW_TOOLTIP                               :{BLACK}Ändra t
 
 STR_ORDERS_LIST_TOOLTIP                                         :{BLACK}Orderlista - klicka på order för att markera det. Ctrl+klick visar order-destinationen i huvudförstret
 STR_ORDER_INDEX                                                 :{COMMA}:{NBSP}
-STR_ORDER_TEXT                                                  :{STRING} {STRING} {STRING}
 
 STR_ORDERS_END_OF_ORDERS                                        :- - Slut på order - -
 STR_ORDERS_END_OF_SHARED_ORDERS                                 :- - Slut på delade order - -
@@ -4367,11 +4358,9 @@ STR_ORDER_REFIT_AUTO_TOOLTIP                                    :{BLACK}Välj vi
 STR_ORDER_DROP_REFIT_AUTO                                       :Fast lasttyp
 STR_ORDER_DROP_REFIT_AUTO_ANY                                   :Tillgängliga lasttyper
 
-STR_ORDER_SERVICE                                               :{BLACK}Service
 STR_ORDER_DROP_GO_ALWAYS_DEPOT                                  :Åk alltid
 STR_ORDER_DROP_SERVICE_DEPOT                                    :Service vid behov
 STR_ORDER_DROP_HALT_DEPOT                                       :Stanna
-STR_ORDER_SERVICE_TOOLTIP                                       :{BLACK}Skippa den här ordern om service ej behövs
 
 STR_ORDER_CONDITIONAL_VARIABLE_TOOLTIP                          :{BLACK}Fordonsdata att basera hopp på
 
@@ -4439,6 +4428,7 @@ STR_ORDER_GO_TO_DEPOT_FORMAT                                    :{STRING} {DEPOT
 STR_ORDER_REFIT_ORDER                                           :(Anpassa för {STRING})
 STR_ORDER_REFIT_STOP_ORDER                                      :(Anpassa för {STRING} och stanna)
 STR_ORDER_STOP_ORDER                                            :(Stanna)
+
 
 STR_ORDER_GO_TO_STATION                                         :{STRING} {STATION} {STRING}
 STR_ORDER_GO_TO_STATION_CAN_T_USE_STATION                       :{PUSH_COLOUR}{RED}(Kan ej använda stationen){POP_COLOUR} {STRING} {STATION} {STRING}
@@ -4888,6 +4878,8 @@ STR_ERROR_UNABLE_TO_FIND_ROUTE_TO                               :{WHITE}Kan inte
 STR_ERROR_UNABLE_TO_FIND_LOCAL_DEPOT                            :{WHITE}Kan inte hitta till lokal depå
 
 STR_ERROR_DEPOT_WRONG_DEPOT_TYPE                                :Felaktig depå-typ
+
+# Depot unbunching related errors
 
 # Autoreplace related errors
 STR_ERROR_TRAIN_TOO_LONG_AFTER_REPLACEMENT                      :{WHITE}{VEHICLE} är för långt efter utbyte

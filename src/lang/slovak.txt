@@ -1775,13 +1775,6 @@ STR_CONFIG_SETTING_AI_BUILDS_AIRCRAFT_HELPTEXT                  :Povolením nast
 STR_CONFIG_SETTING_AI_BUILDS_SHIPS                              :Zakázať lode pre počítač: {STRING}
 STR_CONFIG_SETTING_AI_BUILDS_SHIPS_HELPTEXT                     :Povolením nastavenia znemožní počítačovým hráčom budovať lode.
 
-STR_CONFIG_SETTING_AI_PROFILE                                   :Predvolený profil nastavení: {STRING}
-STR_CONFIG_SETTING_AI_PROFILE_HELPTEXT                          :Vyberte, ktorý profil nastavení sa má použiť pre náhodných počítačových hráčov alebo pre počiatočné hodnoty pri pridávaní nových počítačových hráčov alebo Herného skriptu
-###length 3
-STR_CONFIG_SETTING_AI_PROFILE_EASY                              :Ľahký
-STR_CONFIG_SETTING_AI_PROFILE_MEDIUM                            :Stredný
-STR_CONFIG_SETTING_AI_PROFILE_HARD                              :{G=m}Ťažký
-
 STR_CONFIG_SETTING_AI_IN_MULTIPLAYER                            :Povoliť AI v hre viacerých hráčov: {STRING}
 STR_CONFIG_SETTING_AI_IN_MULTIPLAYER_HELPTEXT                   :Povoliť AI počítačovým hráčom hrať "Hru viacerých hráčov".
 
@@ -1900,7 +1893,6 @@ STR_CONFIG_SETTING_SEMAPHORE_BUILD_BEFORE_DATE_HELPTEXT         :Zvoľte rok od 
 STR_CONFIG_SETTING_CYCLE_SIGNAL_TYPES                           :Prepínanie medzi typmi návestidiel: {STRING}
 STR_CONFIG_SETTING_CYCLE_SIGNAL_TYPES_HELPTEXT                  :Výber návestidiel použitých v zámene pomocou Ctrl+kliku na návestidlo počas umiestňovania návestidiel
 ###length 2
-STR_CONFIG_SETTING_CYCLE_SIGNAL_PBS                             :Iba trasové návestidlá
 STR_CONFIG_SETTING_CYCLE_SIGNAL_ALL                             :Všetky viditeľné
 
 STR_CONFIG_SETTING_SIGNAL_GUI_MODE                              :Zobraziť typy návestidiel: {STRING}
@@ -4371,7 +4363,6 @@ STR_ORDERS_TIMETABLE_VIEW_TOOLTIP                               :{BLACK}Prepnút
 
 STR_ORDERS_LIST_TOOLTIP                                         :{BLACK}Zoznam príkazov - kliknúť na príkaz pre označenie. Ctrl+klik presunie pohľad na cieľ príkazu
 STR_ORDER_INDEX                                                 :{COMMA}:{NBSP}
-STR_ORDER_TEXT                                                  :{STRING} {STRING} {STRING}
 
 STR_ORDERS_END_OF_ORDERS                                        :- - Koniec príkazov - -
 STR_ORDERS_END_OF_SHARED_ORDERS                                 :- - Koniec zdieľaných príkazov - -
@@ -4405,11 +4396,9 @@ STR_ORDER_REFIT_AUTO_TOOLTIP                                    :{BLACK}Vyberte 
 STR_ORDER_DROP_REFIT_AUTO                                       :Fixný náklad
 STR_ORDER_DROP_REFIT_AUTO_ANY                                   :Dostupný náklad
 
-STR_ORDER_SERVICE                                               :{BLACK}Servis
 STR_ORDER_DROP_GO_ALWAYS_DEPOT                                  :Vždy choď
 STR_ORDER_DROP_SERVICE_DEPOT                                    :Servis, ak je potrebný
 STR_ORDER_DROP_HALT_DEPOT                                       :Zastav
-STR_ORDER_SERVICE_TOOLTIP                                       :{BLACK}Preskočiť tento príkaz pokiaľ nie je potrebný servis
 
 STR_ORDER_CONDITIONAL_VARIABLE_TOOLTIP                          :{BLACK}Údaje vozidla na základe ktorých sa vykoná skok
 
@@ -4477,6 +4466,7 @@ STR_ORDER_GO_TO_DEPOT_FORMAT                                    :{STRING} {DEPOT
 STR_ORDER_REFIT_ORDER                                           :(Prestavba na {STRING})
 STR_ORDER_REFIT_STOP_ORDER                                      :(Prestavba na {STRING} a zastav)
 STR_ORDER_STOP_ORDER                                            :(Zastav)
+
 
 STR_ORDER_GO_TO_STATION                                         :{STRING} {STATION} {STRING}
 STR_ORDER_GO_TO_STATION_CAN_T_USE_STATION                       :{PUSH_COLOUR}{RED}(Nemožno použiť stanicu){POP_COLOUR} {STRING} {STATION} {STRING}
@@ -4924,6 +4914,8 @@ STR_ERROR_UNABLE_TO_FIND_ROUTE_TO                               :{WHITE}Nemôže
 STR_ERROR_UNABLE_TO_FIND_LOCAL_DEPOT                            :{WHITE}Nemožno nájsť miestnu garáž
 
 STR_ERROR_DEPOT_WRONG_DEPOT_TYPE                                :Nesprávny typ depa
+
+# Depot unbunching related errors
 
 # Autoreplace related errors
 STR_ERROR_TRAIN_TOO_LONG_AFTER_REPLACEMENT                      :{WHITE}{VEHICLE} je dlho po výmene

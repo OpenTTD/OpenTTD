@@ -1758,13 +1758,6 @@ STR_CONFIG_SETTING_AI_BUILDS_AIRCRAFT_HELPTEXT                  :Ενεργοπ�
 STR_CONFIG_SETTING_AI_BUILDS_SHIPS                              :Απενεργοποίηση πλοίων υπολογιστή: {STRING}
 STR_CONFIG_SETTING_AI_BUILDS_SHIPS_HELPTEXT                     :Ενεργοποιώντας αυτήν τη ρύθμιση κάνει αδύνατη την κατασκευή πλοίων από παίκτη του υπολογιστή
 
-STR_CONFIG_SETTING_AI_PROFILE                                   :Προκαθορισμένο προφίλ ρυθμίσεων: {STRING}
-STR_CONFIG_SETTING_AI_PROFILE_HELPTEXT                          :Επιλέξτε το προφίλ ρυθμίσεων για χρήση με τυχαία ΑΙ ή για τις αρχικές τιμές όταν προστίθεται νέο AI ή δέσμη ενεργειών
-###length 3
-STR_CONFIG_SETTING_AI_PROFILE_EASY                              :Εύκολο
-STR_CONFIG_SETTING_AI_PROFILE_MEDIUM                            :Μεσαίο
-STR_CONFIG_SETTING_AI_PROFILE_HARD                              :Δύσκολο
-
 STR_CONFIG_SETTING_AI_IN_MULTIPLAYER                            :Επιτρέπονται AI σε παιχνίδια πολλών παικτών: {STRING}
 STR_CONFIG_SETTING_AI_IN_MULTIPLAYER_HELPTEXT                   :Επιτρέπεται η συμμετοχή παικτών υπολογιστή AI σε παιχνίδια πολλαπλών παικτών
 
@@ -1883,7 +1876,6 @@ STR_CONFIG_SETTING_SEMAPHORE_BUILD_BEFORE_DATE_HELPTEXT         :Ορίζετα�
 STR_CONFIG_SETTING_CYCLE_SIGNAL_TYPES                           :Περιήγηση στους τύπους σηματοδότησης: {STRING}
 STR_CONFIG_SETTING_CYCLE_SIGNAL_TYPES_HELPTEXT                  :Επιλέξτε τους τύπους σημάτων μεταξύ των οποίων θα γίνονται οι αλλαγές όταν πατάτε σε ένα τοποθετημένο σήμα κρατώντας πατημένο το Ctrl
 ###length 2
-STR_CONFIG_SETTING_CYCLE_SIGNAL_PBS                             :Μόνο σηματοδότες τροχιάς
 STR_CONFIG_SETTING_CYCLE_SIGNAL_ALL                             :Όλα ορατά
 
 STR_CONFIG_SETTING_SIGNAL_GUI_MODE                              :Εμφάνιση τύπων σημάτων: {STRING}
@@ -4345,7 +4337,6 @@ STR_ORDERS_TIMETABLE_VIEW_TOOLTIP                               :{BLACK}Αλλα
 
 STR_ORDERS_LIST_TOOLTIP                                         :{BLACK}Λίστα εντολών - πατήστε σε μια εντολή για να την επιλέξετε. Με Ctrl+Κλικ γίνεται μετακίνηση στον προορισμό της οδηγίας
 STR_ORDER_INDEX                                                 :{COMMA}:{NBSP}
-STR_ORDER_TEXT                                                  :{STRING} {STRING} {STRING}
 
 STR_ORDERS_END_OF_ORDERS                                        :- - Τέλος Εντολών - -
 STR_ORDERS_END_OF_SHARED_ORDERS                                 :- - Τέλος Μοιρασμένων Οδηγιών - -
@@ -4379,11 +4370,9 @@ STR_ORDER_REFIT_AUTO_TOOLTIP                                    :{BLACK}Επιλ
 STR_ORDER_DROP_REFIT_AUTO                                       :Προκαθορισμένο φορτίο
 STR_ORDER_DROP_REFIT_AUTO_ANY                                   :Διαθέσιμο φορτίο
 
-STR_ORDER_SERVICE                                               :{BLACK}Επισκευή
 STR_ORDER_DROP_GO_ALWAYS_DEPOT                                  :Πάντα πήγαινε
 STR_ORDER_DROP_SERVICE_DEPOT                                    :Επισκευή εάν χρειάζεται
 STR_ORDER_DROP_HALT_DEPOT                                       :Στάση
-STR_ORDER_SERVICE_TOOLTIP                                       :{BLACK}Παράλειψη αυτής της εντολής εκτός αν χρειάζεται επισκευή
 
 STR_ORDER_CONDITIONAL_VARIABLE_TOOLTIP                          :{BLACK}Δεδομένα οχήματος για να βασιστεί το άλμα
 
@@ -4451,6 +4440,7 @@ STR_ORDER_GO_TO_DEPOT_FORMAT                                    :{STRING} {DEPOT
 STR_ORDER_REFIT_ORDER                                           :(Μετατροπή σε {STRING})
 STR_ORDER_REFIT_STOP_ORDER                                      :(Μετατροπή σε {STRING} και στάση)
 STR_ORDER_STOP_ORDER                                            :(Στάση)
+
 
 STR_ORDER_GO_TO_STATION                                         :{STRING} {STATION} {STRING}
 STR_ORDER_GO_TO_STATION_CAN_T_USE_STATION                       :{PUSH_COLOUR}{RED}(Δεν μπορείτε να χρησιμοποιήσετε τον σταθμό){POP_COLOUR} {STRING} {STATION} {STRING}
@@ -4894,6 +4884,8 @@ STR_ERROR_UNABLE_TO_FIND_ROUTE_TO                               :{WHITE}Αδύν
 STR_ERROR_UNABLE_TO_FIND_LOCAL_DEPOT                            :{WHITE}Αδύνατο να βρεθεί τοπικό αμαξοστάσιο
 
 STR_ERROR_DEPOT_WRONG_DEPOT_TYPE                                :Λάθος τύπος αμαξοστάσιου
+
+# Depot unbunching related errors
 
 # Autoreplace related errors
 STR_ERROR_TRAIN_TOO_LONG_AFTER_REPLACEMENT                      :{WHITE}Το {VEHICLE} είναι πολύ μεγάλο μετά την ανανέωση

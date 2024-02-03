@@ -950,8 +950,6 @@ STR_CONFIG_SETTING_COMMAND_PAUSE_LEVEL_ALL_ACTIONS              :सर्व �
 
 
 
-###length 3
-
 
 
 
@@ -1671,7 +1669,6 @@ STR_VEHICLE_VIEW_CAPTION                                        :{WHITE}{VEHICLE
 # Order view
 
 STR_ORDER_INDEX                                                 :{COMMA}:{NBSP}
-STR_ORDER_TEXT                                                  :{STRING} {STRING} {STRING}
 
 
 # Order bottom buttons
@@ -1700,6 +1697,7 @@ STR_ORDERS_DELETE_ALL_TOOLTIP                                   :{BLACK}सर�
 
 STR_ORDER_GO_TO_NEAREST_DEPOT_FORMAT                            :{STRING} {STRING} {STRING}
 STR_ORDER_GO_TO_DEPOT_FORMAT                                    :{STRING} {DEPOT}
+
 
 
 STR_ORDER_GO_TO_STATION                                         :{STRING} {STATION} {STRING}
@@ -1818,6 +1816,8 @@ STR_ERROR_NOT_ALLOWED_WHILE_PAUSED                              :{WHITE} स्�
 
 
 
+
+# Depot unbunching related errors
 
 # Autoreplace related errors
 

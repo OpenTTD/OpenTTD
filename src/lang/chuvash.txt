@@ -750,8 +750,6 @@ STR_CONFIG_SETTING_DATE_FORMAT_IN_SAVE_NAMES_ISO                :ISO (2008-12-31
 
 
 
-###length 3
-
 
 
 
@@ -1522,7 +1520,6 @@ STR_VEHICLE_INFO_NO_CAPACITY                                    :{BLACK}Савӑ
 # Order view
 
 STR_ORDER_INDEX                                                 :{COMMA}:{NBSP}
-STR_ORDER_TEXT                                                  :{STRING} {STRING} {STRING}
 
 
 # Order bottom buttons
@@ -1550,6 +1547,7 @@ STR_ORDER_TEXT                                                  :{STRING} {STRIN
 
 STR_ORDER_GO_TO_NEAREST_DEPOT_FORMAT                            :{STRING} {STRING} {STRING}
 STR_ORDER_GO_TO_DEPOT_FORMAT                                    :{STRING} {DEPOT}
+
 
 
 STR_ORDER_GO_TO_STATION                                         :{STRING} {STATION} {STRING}
@@ -1658,6 +1656,8 @@ STR_ERROR_MESSAGE_CAPTION                                       :{YELLOW}Пӗл�
 
 
 
+
+# Depot unbunching related errors
 
 # Autoreplace related errors
 STR_ERROR_AUTOREPLACE_MONEY_LIMIT                               :(укҫа ҫитмест)

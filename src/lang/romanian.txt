@@ -1737,13 +1737,6 @@ STR_CONFIG_SETTING_AI_BUILDS_AIRCRAFT_HELPTEXT                  :Prin activarea 
 STR_CONFIG_SETTING_AI_BUILDS_SHIPS                              :Dezactivează navele pentru jucătorii controlați de calculator: {STRING}
 STR_CONFIG_SETTING_AI_BUILDS_SHIPS_HELPTEXT                     :Prin activarea acestei opțiuni, jucătorul controlat de calculator nu poate construi nave
 
-STR_CONFIG_SETTING_AI_PROFILE                                   :Configurația implicită: {STRING}
-STR_CONFIG_SETTING_AI_PROFILE_HELPTEXT                          :Alege o configurație care va fi folosită pentru AI aleator, sau care va fi furniza valori implicite când se adaugă un nou AI sau script
-###length 3
-STR_CONFIG_SETTING_AI_PROFILE_EASY                              :Ușor
-STR_CONFIG_SETTING_AI_PROFILE_MEDIUM                            :Mediu
-STR_CONFIG_SETTING_AI_PROFILE_HARD                              :Dificil
-
 STR_CONFIG_SETTING_AI_IN_MULTIPLAYER                            :Permite Inteligență Artificială în multiplayer: {STRING}
 STR_CONFIG_SETTING_AI_IN_MULTIPLAYER_HELPTEXT                   :Permite ca jucătorii controlați de AI să participe în jocuri multiplayer
 
@@ -1864,7 +1857,6 @@ STR_CONFIG_SETTING_SEMAPHORE_BUILD_BEFORE_DATE_HELPTEXT         :Alege anul din 
 STR_CONFIG_SETTING_CYCLE_SIGNAL_TYPES                           :Ciclu prin tipurile de semnal: {STRING}
 STR_CONFIG_SETTING_CYCLE_SIGNAL_TYPES_HELPTEXT                  :Selectează între care tipuri de semnale să se cicleze când se apasă Ctrl+Click pe un semnal folosind unealta de construcție
 ###length 2
-STR_CONFIG_SETTING_CYCLE_SIGNAL_PBS                             :Doar avansat
 STR_CONFIG_SETTING_CYCLE_SIGNAL_ALL                             :Toate vizibile
 
 STR_CONFIG_SETTING_SIGNAL_GUI_MODE                              :Arată tipurile de semnal: {STRING}
@@ -4387,7 +4379,6 @@ STR_ORDERS_TIMETABLE_VIEW_TOOLTIP                               :{BLACK}Comută 
 
 STR_ORDERS_LIST_TOOLTIP                                         :{BLACK}Lista de comenzi - clic pe o comandă pentru a o selecta. Ctrl+Click poziționează ecranul pe stația destinație
 STR_ORDER_INDEX                                                 :{COMMA}:{NBSP}
-STR_ORDER_TEXT                                                  :{STRING} {STRING} {STRING}
 
 STR_ORDERS_END_OF_ORDERS                                        :- - Sfârșitul comenzilor - -
 STR_ORDERS_END_OF_SHARED_ORDERS                                 :- - Sfârșitul comenzilor sincronizate - -
@@ -4421,11 +4412,9 @@ STR_ORDER_REFIT_AUTO_TOOLTIP                                    :{BLACK}Alege ma
 STR_ORDER_DROP_REFIT_AUTO                                       :Tip încărcătură nemodificabil
 STR_ORDER_DROP_REFIT_AUTO_ANY                                   :Încărcătură disponibilă
 
-STR_ORDER_SERVICE                                               :{BLACK}Service
 STR_ORDER_DROP_GO_ALWAYS_DEPOT                                  :Merge mereu
 STR_ORDER_DROP_SERVICE_DEPOT                                    :Service dacă este nevoie
 STR_ORDER_DROP_HALT_DEPOT                                       :Stop
-STR_ORDER_SERVICE_TOOLTIP                                       :{BLACK}Sari peste această comandă dacă nu este necesar un service
 
 STR_ORDER_CONDITIONAL_VARIABLE_TOOLTIP                          :{BLACK}Datele vehiculului pe care se bazează
 
@@ -4493,6 +4482,7 @@ STR_ORDER_GO_TO_DEPOT_FORMAT                                    :{STRING} {DEPOT
 STR_ORDER_REFIT_ORDER                                           :(Rearanjeaza in {STRING})
 STR_ORDER_REFIT_STOP_ORDER                                      :(Modifică pentru {STRING} și oprește)
 STR_ORDER_STOP_ORDER                                            :(Stop)
+
 
 STR_ORDER_GO_TO_STATION                                         :{STRING} {STATION} {STRING}
 STR_ORDER_GO_TO_STATION_CAN_T_USE_STATION                       :{PUSH_COLOUR}{RED}(Stație inutilizabilă){POP_COLOUR} {STRING} {STATION} {STRING}
@@ -4960,6 +4950,8 @@ STR_ERROR_UNABLE_TO_FIND_ROUTE_TO                               :{WHITE}Nu se po
 STR_ERROR_UNABLE_TO_FIND_LOCAL_DEPOT                            :{WHITE}Nu pot găsi o autobază apropiată
 
 STR_ERROR_DEPOT_WRONG_DEPOT_TYPE                                :Tip incorect de depou
+
+# Depot unbunching related errors
 
 # Autoreplace related errors
 STR_ERROR_TRAIN_TOO_LONG_AFTER_REPLACEMENT                      :{WHITE}{VEHICLE} este prea lung după înlocuire

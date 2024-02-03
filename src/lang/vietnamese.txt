@@ -1750,13 +1750,6 @@ STR_CONFIG_SETTING_AI_BUILDS_AIRCRAFT_HELPTEXT                  :Bật tùy ch�
 STR_CONFIG_SETTING_AI_BUILDS_SHIPS                              :Nhân vật máy không được mua tàu thủy: {STRING}
 STR_CONFIG_SETTING_AI_BUILDS_SHIPS_HELPTEXT                     :Bật tùy chọn này thì người chơi là AI sẽ không xây đường thủy
 
-STR_CONFIG_SETTING_AI_PROFILE                                   :Giá trị thiết lập mặc định: {STRING}
-STR_CONFIG_SETTING_AI_PROFILE_HELPTEXT                          :Lực chọn mức độ khó đối với AI ngẫu nhiên hoặc giá trị mặc định khi thêm AI mới hay kịch bản trò trơi
-###length 3
-STR_CONFIG_SETTING_AI_PROFILE_EASY                              :Dễ
-STR_CONFIG_SETTING_AI_PROFILE_MEDIUM                            :Trung bình
-STR_CONFIG_SETTING_AI_PROFILE_HARD                              :Khó
-
 STR_CONFIG_SETTING_AI_IN_MULTIPLAYER                            :Cho phép AI ở chế độ nhiều người chơi: {STRING}
 STR_CONFIG_SETTING_AI_IN_MULTIPLAYER_HELPTEXT                   :Cho phép người chơi AI (máy tính) được tham gia trong ván chơi nhiều người
 
@@ -1875,7 +1868,6 @@ STR_CONFIG_SETTING_SEMAPHORE_BUILD_BEFORE_DATE_HELPTEXT         :Thiết lập t
 STR_CONFIG_SETTING_CYCLE_SIGNAL_TYPES                           :Đổi tuần hoàn các kiểu đèn báo: {STRING}
 STR_CONFIG_SETTING_CYCLE_SIGNAL_TYPES_HELPTEXT                  :Chọn kiểu đèn báo để tuần hoàn khi Ctrl+click vào một đèn báo đã được xây bằng công cụ đèn báo
 ###length 2
-STR_CONFIG_SETTING_CYCLE_SIGNAL_PBS                             :Đèn hiệu giành đường
 STR_CONFIG_SETTING_CYCLE_SIGNAL_ALL                             :Tất cả có thể thấy
 
 STR_CONFIG_SETTING_SIGNAL_GUI_MODE                              :Hiển thị các kiểu đèn báo: {STRING}
@@ -4392,7 +4384,6 @@ STR_ORDERS_TIMETABLE_VIEW_TOOLTIP                               :{BLACK}Lịch t
 
 STR_ORDERS_LIST_TOOLTIP                                         :{BLACK}Lịch trình - click để tô sáng một thứ tự nào đó. Ctr+Click để nhảy đến nhà ga tương ứng
 STR_ORDER_INDEX                                                 :{COMMA}:{NBSP}
-STR_ORDER_TEXT                                                  :{STRING} {STRING} {STRING}
 
 STR_ORDERS_END_OF_ORDERS                                        :- - Kết thúc lộ trình - -
 STR_ORDERS_END_OF_SHARED_ORDERS                                 :- - Kết thúc lộ trình chia sẻ - -
@@ -4426,11 +4417,9 @@ STR_ORDER_REFIT_AUTO_TOOLTIP                                    :{BLACK}Chọn l
 STR_ORDER_DROP_REFIT_AUTO                                       :Loại hàng cố định
 STR_ORDER_DROP_REFIT_AUTO_ANY                                   :Loại hàng sẵn có
 
-STR_ORDER_SERVICE                                               :{BLACK}Bảo trì
 STR_ORDER_DROP_GO_ALWAYS_DEPOT                                  :Chạy suốt
 STR_ORDER_DROP_SERVICE_DEPOT                                    :Bảo trì nếu cần
 STR_ORDER_DROP_HALT_DEPOT                                       :Dừng
-STR_ORDER_SERVICE_TOOLTIP                                       :{BLACK}Bỏ điểm lộ trình này trừ khi cần bảo trì
 
 STR_ORDER_CONDITIONAL_VARIABLE_TOOLTIP                          :{BLACK}Dữ kiện của phương tiện để xác định
 
@@ -4498,6 +4487,7 @@ STR_ORDER_GO_TO_DEPOT_FORMAT                                    :{STRING} {DEPOT
 STR_ORDER_REFIT_ORDER                                           :(Cải biến thành {STRING})
 STR_ORDER_REFIT_STOP_ORDER                                      :(Cải biến thành {STRING} và dừng)
 STR_ORDER_STOP_ORDER                                            :(Dừng)
+
 
 STR_ORDER_GO_TO_STATION                                         :{STRING} {STATION} {STRING}
 STR_ORDER_GO_TO_STATION_CAN_T_USE_STATION                       :{PUSH_COLOUR}{RED}(Không thể sử dụng trạm){POP_COLOUR} {STRING} {STATION} {STRING}
@@ -4964,6 +4954,8 @@ STR_ERROR_UNABLE_TO_FIND_ROUTE_TO                               :{WHITE}Không t
 STR_ERROR_UNABLE_TO_FIND_LOCAL_DEPOT                            :{WHITE}Không thể tìm được đường tới xưởng địa phương
 
 STR_ERROR_DEPOT_WRONG_DEPOT_TYPE                                :Xưởng không hợp kiểu
+
+# Depot unbunching related errors
 
 # Autoreplace related errors
 STR_ERROR_TRAIN_TOO_LONG_AFTER_REPLACEMENT                      :{WHITE}{VEHICLE} quá dài sau khi thay thế

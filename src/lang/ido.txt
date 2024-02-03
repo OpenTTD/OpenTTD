@@ -731,8 +731,6 @@ STR_CONFIG_SETTING_SMALLMAP_LAND_COLOUR_VIOLET                  :Violkolora
 
 
 
-###length 3
-
 
 
 
@@ -1400,7 +1398,6 @@ STR_VEHICLE_DETAIL_TAB_CAPACITIES                               :{BLACK}Kapacesi
 # Order view
 
 STR_ORDER_INDEX                                                 :{COMMA}:{NBSP}
-STR_ORDER_TEXT                                                  :{STRING} {STRING} {STRING}
 
 
 # Order bottom buttons
@@ -1428,6 +1425,7 @@ STR_ORDER_TEXT                                                  :{STRING} {STRIN
 
 STR_ORDER_GO_TO_NEAREST_DEPOT_FORMAT                            :{STRING} {STRING} {STRING}
 STR_ORDER_GO_TO_DEPOT_FORMAT                                    :{STRING} {DEPOT}
+
 
 
 STR_ORDER_GO_TO_STATION                                         :{STRING} {STATION} {STRING}
@@ -1547,6 +1545,8 @@ STR_ERROR_THERE_IS_NO_STATION                                   :{WHITE}... ne e
 STR_ERROR_TRAIN_TOO_LONG                                        :{WHITE}Treno tro longa
 
 
+
+# Depot unbunching related errors
 
 # Autoreplace related errors
 

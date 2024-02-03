@@ -1817,13 +1817,6 @@ STR_CONFIG_SETTING_AI_BUILDS_AIRCRAFT_HELPTEXT                  :Заборон�
 STR_CONFIG_SETTING_AI_BUILDS_SHIPS                              :Заборонити комп'ютеру використання кораблів: {STRING}
 STR_CONFIG_SETTING_AI_BUILDS_SHIPS_HELPTEXT                     :Забороняє віртуальним гравцям використання водного транспорту.
 
-STR_CONFIG_SETTING_AI_PROFILE                                   :Параметри профілю за умовчанням: {STRING}
-STR_CONFIG_SETTING_AI_PROFILE_HELPTEXT                          :Виберіть, який профіль налаштувань використовувати випадковому ШІ або для початкових значень при додаванні нового ШІ або скрипту гри
-###length 3
-STR_CONFIG_SETTING_AI_PROFILE_EASY                              :Легкий
-STR_CONFIG_SETTING_AI_PROFILE_MEDIUM                            :Середній
-STR_CONFIG_SETTING_AI_PROFILE_HARD                              :Складний
-
 STR_CONFIG_SETTING_AI_IN_MULTIPLAYER                            :Дозволити ШІ у колективній грі: {STRING}
 STR_CONFIG_SETTING_AI_IN_MULTIPLAYER_HELPTEXT                   :Дозволяє участь віртуальних гравців у колективній грі
 
@@ -1942,7 +1935,6 @@ STR_CONFIG_SETTING_SEMAPHORE_BUILD_BEFORE_DATE_HELPTEXT         :Налашту�
 STR_CONFIG_SETTING_CYCLE_SIGNAL_TYPES                           :Сигнали, доступні при циклічному переборі: {STRING}
 STR_CONFIG_SETTING_CYCLE_SIGNAL_TYPES_HELPTEXT                  :Налаштування типу сигналів, що доступні при зміні типу за допомогою Ctrl+клац мишею
 ###length 2
-STR_CONFIG_SETTING_CYCLE_SIGNAL_PBS                             :тільки маршрутні
 STR_CONFIG_SETTING_CYCLE_SIGNAL_ALL                             :всі видимі
 
 STR_CONFIG_SETTING_SIGNAL_GUI_MODE                              :Показувати типи сигналів: {STRING}
@@ -4415,7 +4407,6 @@ STR_ORDERS_TIMETABLE_VIEW_TOOLTIP                               :{BLACK}Пере
 
 STR_ORDERS_LIST_TOOLTIP                                         :{BLACK}Маршрутний лист - клацніть на завданні для його вибору. Ctrl+клац мишою показує станцію призначення
 STR_ORDER_INDEX                                                 :{COMMA}:{NBSP}
-STR_ORDER_TEXT                                                  :{STRING} {STRING} {STRING}
 
 STR_ORDERS_END_OF_ORDERS                                        :- - Кінець наказів - -
 STR_ORDERS_END_OF_SHARED_ORDERS                                 :- - Кінець спільних наказів - -
@@ -4449,11 +4440,9 @@ STR_ORDER_REFIT_AUTO_TOOLTIP                                    :{BLACK}Обра
 STR_ORDER_DROP_REFIT_AUTO                                       :Зазначений вантаж
 STR_ORDER_DROP_REFIT_AUTO_ANY                                   :Доступний вантаж
 
-STR_ORDER_SERVICE                                               :{BLACK}Техогляд
 STR_ORDER_DROP_GO_ALWAYS_DEPOT                                  :Завжди прямувати
 STR_ORDER_DROP_SERVICE_DEPOT                                    :Прямувати при потребі в техогляді
 STR_ORDER_DROP_HALT_DEPOT                                       :Прямувати і зупинитись
-STR_ORDER_SERVICE_TOOLTIP                                       :{BLACK}Пропустити це завдання, якщо техогляд не потрібен
 
 STR_ORDER_CONDITIONAL_VARIABLE_TOOLTIP                          :{BLACK}Дані транспорту для базування наказу
 
@@ -4521,6 +4510,7 @@ STR_ORDER_GO_TO_DEPOT_FORMAT                                    :{STRING} {DEPOT
 STR_ORDER_REFIT_ORDER                                           :(Переобладнати до {STRING})
 STR_ORDER_REFIT_STOP_ORDER                                      :(Переобладнати на {STRING} і зупинити)
 STR_ORDER_STOP_ORDER                                            :(зупинити)
+
 
 STR_ORDER_GO_TO_STATION                                         :{STRING} {STATION} {STRING}
 STR_ORDER_GO_TO_STATION_CAN_T_USE_STATION                       :{PUSH_COLOUR}{RED}(Неможливо використати станцію){POP_COLOUR} {STRING} {STATION} {STRING}
@@ -4969,6 +4959,8 @@ STR_ERROR_UNABLE_TO_FIND_ROUTE_TO                               :{WHITE}Немо
 STR_ERROR_UNABLE_TO_FIND_LOCAL_DEPOT                            :{WHITE}Неможливо знайти місцеве депо
 
 STR_ERROR_DEPOT_WRONG_DEPOT_TYPE                                :Неправильний тип депо
+
+# Depot unbunching related errors
 
 # Autoreplace related errors
 STR_ERROR_TRAIN_TOO_LONG_AFTER_REPLACEMENT                      :{WHITE}{VEHICLE} дуже довгий після оновлення

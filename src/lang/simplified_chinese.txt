@@ -634,6 +634,7 @@ STR_GRAPH_KEY_COMPANY_SELECTION_TOOLTIP                         :{BLACK}点击�
 # Company league window
 STR_COMPANY_LEAGUE_TABLE_CAPTION                                :{WHITE}公司评价排名
 STR_COMPANY_LEAGUE_COMPANY_NAME                                 :{ORANGE}{COMPANY} {BLACK}{COMPANY_NUM} '{STRING}'
+STR_COMPANY_LEAGUE_COMPANY_RANK                                 :{YELLOW}#{NUM}
 STR_COMPANY_LEAGUE_PERFORMANCE_TITLE_ENGINEER                   :车库主管
 STR_COMPANY_LEAGUE_PERFORMANCE_TITLE_TRAFFIC_MANAGER            :线路经理
 STR_COMPANY_LEAGUE_PERFORMANCE_TITLE_TRANSPORT_COORDINATOR      :运输代理
@@ -1811,13 +1812,6 @@ STR_CONFIG_SETTING_AI_BUILDS_AIRCRAFT_HELPTEXT                  :“打开”本
 STR_CONFIG_SETTING_AI_BUILDS_SHIPS                              :禁止电脑使用船只：{STRING}
 STR_CONFIG_SETTING_AI_BUILDS_SHIPS_HELPTEXT                     :“打开”本选项将禁止电脑使用船只
 
-STR_CONFIG_SETTING_AI_PROFILE                                   :默认设置属性: {STRING}
-STR_CONFIG_SETTING_AI_PROFILE_HELPTEXT                          :设置随机添加AI或脚本时的AI初始属性。
-###length 3
-STR_CONFIG_SETTING_AI_PROFILE_EASY                              :简单
-STR_CONFIG_SETTING_AI_PROFILE_MEDIUM                            :中等
-STR_CONFIG_SETTING_AI_PROFILE_HARD                              :困难
-
 STR_CONFIG_SETTING_AI_IN_MULTIPLAYER                            :联机游戏时允许电脑玩家(AI)： {STRING}
 STR_CONFIG_SETTING_AI_IN_MULTIPLAYER_HELPTEXT                   :“打开”时联机游戏允许电脑玩家
 
@@ -1938,7 +1932,6 @@ STR_CONFIG_SETTING_SEMAPHORE_BUILD_BEFORE_DATE_HELPTEXT         :设置电子信
 STR_CONFIG_SETTING_CYCLE_SIGNAL_TYPES                           :在以下信号类型中循环： {STRING}
 STR_CONFIG_SETTING_CYCLE_SIGNAL_TYPES_HELPTEXT                  :选择用Ctrl+点击的方式切换信号灯类型时的备选类型
 ###length 2
-STR_CONFIG_SETTING_CYCLE_SIGNAL_PBS                             :仅路径信号灯
 STR_CONFIG_SETTING_CYCLE_SIGNAL_ALL                             :全部可见
 
 STR_CONFIG_SETTING_SIGNAL_GUI_MODE                              :显示信号类型: {STRING}
@@ -4525,7 +4518,6 @@ STR_ORDERS_TIMETABLE_VIEW_TOOLTIP                               :{BLACK}切换�
 
 STR_ORDERS_LIST_TOOLTIP                                         :{BLACK}调度列表{}单击一个调度指令以选定{}CTRL+左键{}将视点移动到相应的车站
 STR_ORDER_INDEX                                                 :{COMMA}:{NBSP}
-STR_ORDER_TEXT                                                  :{STRING} {STRING} {STRING}
 
 STR_ORDERS_END_OF_ORDERS                                        :-- 调度计划结束 --
 STR_ORDERS_END_OF_SHARED_ORDERS                                 :- - 共享调度计划结束 - -
@@ -4559,11 +4551,9 @@ STR_ORDER_REFIT_AUTO_TOOLTIP                                    :{BLACK}选择�
 STR_ORDER_DROP_REFIT_AUTO                                       :固定货物
 STR_ORDER_DROP_REFIT_AUTO_ANY                                   :可用类型
 
-STR_ORDER_SERVICE                                               :{BLACK}保养
 STR_ORDER_DROP_GO_ALWAYS_DEPOT                                  :一直前进
 STR_ORDER_DROP_SERVICE_DEPOT                                    :若需要则维护
 STR_ORDER_DROP_HALT_DEPOT                                       :停留
-STR_ORDER_SERVICE_TOOLTIP                                       :{BLACK}除非需要在此处保养，否则跳过这一项目
 
 STR_ORDER_CONDITIONAL_VARIABLE_TOOLTIP                          :{BLACK}跳过所需的车辆数据值
 
@@ -4631,6 +4621,7 @@ STR_ORDER_GO_TO_DEPOT_FORMAT                                    :{STRING} {DEPOT
 STR_ORDER_REFIT_ORDER                                           :(改装为 {STRING})
 STR_ORDER_REFIT_STOP_ORDER                                      :(改装为{STRING}并停留)
 STR_ORDER_STOP_ORDER                                            :(停留)
+
 
 STR_ORDER_GO_TO_STATION                                         :{STRING} {STATION} {STRING}
 STR_ORDER_GO_TO_STATION_CAN_T_USE_STATION                       :{PUSH_COLOUR}{RED}(不能使用车站){POP_COLOUR} {STRING} {STATION} {STRING}
@@ -4834,6 +4825,8 @@ STR_AI_SETTINGS_CAPTION_GAMESCRIPT                              :游戏脚本
 STR_AI_SETTINGS_CLOSE                                           :{BLACK}关闭
 STR_AI_SETTINGS_RESET                                           :{BLACK}重设
 STR_AI_SETTINGS_SETTING                                         :{STRING}: {ORANGE}{STRING}
+STR_AI_SETTINGS_SETTING_DEVIATION                               :{STRING}：{ORANGE}[{STRING}，{STRING}]
+STR_AI_SETTINGS_JUST_DEVIATION                                  :[{STRING}，{STRING}]
 
 
 # Textfile window
@@ -5098,6 +5091,8 @@ STR_ERROR_UNABLE_TO_FIND_ROUTE_TO                               :{WHITE}找不�
 STR_ERROR_UNABLE_TO_FIND_LOCAL_DEPOT                            :{WHITE}在附近找不到车库
 
 STR_ERROR_DEPOT_WRONG_DEPOT_TYPE                                :车库类型错误
+
+# Depot unbunching related errors
 
 # Autoreplace related errors
 STR_ERROR_TRAIN_TOO_LONG_AFTER_REPLACEMENT                      :{WHITE}{VEHICLE}在更新后总长会过长

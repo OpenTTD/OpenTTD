@@ -1727,13 +1727,6 @@ STR_CONFIG_SETTING_AI_BUILDS_AIRCRAFT_HELPTEXT                  :Mengaktifkan pe
 STR_CONFIG_SETTING_AI_BUILDS_SHIPS                              :Non-aktifkan kapal bagi pemain komputer: {STRING}
 STR_CONFIG_SETTING_AI_BUILDS_SHIPS_HELPTEXT                     :Mengaktifkan pengaturan ini membuat pemain komputer (AI) tidak dapat membangun kapal
 
-STR_CONFIG_SETTING_AI_PROFILE                                   :Profil pengaturan standar: {STRING}
-STR_CONFIG_SETTING_AI_PROFILE_HELPTEXT                          :Pilih profil yang digunakan untuk pengaturan AI acak atau nilai awal saat menambahkan AI atau Game Script baru
-###length 3
-STR_CONFIG_SETTING_AI_PROFILE_EASY                              :Gampang
-STR_CONFIG_SETTING_AI_PROFILE_MEDIUM                            :Sedang
-STR_CONFIG_SETTING_AI_PROFILE_HARD                              :Susah
-
 STR_CONFIG_SETTING_AI_IN_MULTIPLAYER                            :Ijinkan kecerdasan pada modus banyak pemain: {STRING}
 STR_CONFIG_SETTING_AI_IN_MULTIPLAYER_HELPTEXT                   :Bolehkan pemain komputer AI untuk ikut permainan multiplayer
 
@@ -1852,7 +1845,6 @@ STR_CONFIG_SETTING_SEMAPHORE_BUILD_BEFORE_DATE_HELPTEXT         :Setel tahun saa
 STR_CONFIG_SETTING_CYCLE_SIGNAL_TYPES                           :Pergantian jenis sinyal: {STRING}
 STR_CONFIG_SETTING_CYCLE_SIGNAL_TYPES_HELPTEXT                  :Pilih jenis sinyal mana yang akan digilir saat Ctrl+klik pada sinyal yang dibangun dengan alat sinyal
 ###length 2
-STR_CONFIG_SETTING_CYCLE_SIGNAL_PBS                             :Hanya sinyal jalur
 STR_CONFIG_SETTING_CYCLE_SIGNAL_ALL                             :Semua
 
 STR_CONFIG_SETTING_SIGNAL_GUI_MODE                              :Tampilkan jenis sinyal: {STRING}
@@ -4354,7 +4346,6 @@ STR_ORDERS_TIMETABLE_VIEW_TOOLTIP                               :{BLACK}Tampilka
 
 STR_ORDERS_LIST_TOOLTIP                                         :{BLACK}Daftar perintah - klik pada perintah untuk menandainya. CTRL + klik untuk mengunjungi tujuan
 STR_ORDER_INDEX                                                 :{COMMA}:{NBSP}
-STR_ORDER_TEXT                                                  :{STRING} {STRING} {STRING}
 
 STR_ORDERS_END_OF_ORDERS                                        :- - Akhir Perintah - -
 STR_ORDERS_END_OF_SHARED_ORDERS                                 :- - Akhir Perintah Bersama - -
@@ -4388,11 +4379,9 @@ STR_ORDER_REFIT_AUTO_TOOLTIP                                    :{BLACK}Pilih au
 STR_ORDER_DROP_REFIT_AUTO                                       :Kargo tetap
 STR_ORDER_DROP_REFIT_AUTO_ANY                                   :Kargo yang tersedia
 
-STR_ORDER_SERVICE                                               :{BLACK}Perbaikan
 STR_ORDER_DROP_GO_ALWAYS_DEPOT                                  :Selalu masuk
 STR_ORDER_DROP_SERVICE_DEPOT                                    :Perbaikan jika diperlukan
 STR_ORDER_DROP_HALT_DEPOT                                       :Berhenti
-STR_ORDER_SERVICE_TOOLTIP                                       :{BLACK}Lewati pemberhentian ini kecuali jika dibutuhkan perbaikan
 
 STR_ORDER_CONDITIONAL_VARIABLE_TOOLTIP                          :{BLACK}Kondisi yang diperiksa
 
@@ -4460,6 +4449,7 @@ STR_ORDER_GO_TO_DEPOT_FORMAT                                    :{STRING} {DEPOT
 STR_ORDER_REFIT_ORDER                                           :(Pasang ulang menjadi {STRING})
 STR_ORDER_REFIT_STOP_ORDER                                      :(Pasang {STRING} dan berhenti)
 STR_ORDER_STOP_ORDER                                            :(Berhenti)
+
 
 STR_ORDER_GO_TO_STATION                                         :{STRING} {STATION} {STRING}
 STR_ORDER_GO_TO_STATION_CAN_T_USE_STATION                       :{PUSH_COLOUR}{RED}(Tidak dapat menggunakan stasiun){POP_COLOUR} {STRING} {STATION} {STRING}
@@ -4915,6 +4905,8 @@ STR_ERROR_UNABLE_TO_FIND_ROUTE_TO                               :{WHITE}Tidak me
 STR_ERROR_UNABLE_TO_FIND_LOCAL_DEPOT                            :{WHITE}Tidak dapat menemukan bengkel terdekat
 
 STR_ERROR_DEPOT_WRONG_DEPOT_TYPE                                :Jenis bengkel salah
+
+# Depot unbunching related errors
 
 # Autoreplace related errors
 STR_ERROR_TRAIN_TOO_LONG_AFTER_REPLACEMENT                      :{WHITE}{VEHICLE} jadi terlalu panjang setelah diganti

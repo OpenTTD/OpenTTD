@@ -1790,13 +1790,6 @@ STR_CONFIG_SETTING_AI_BUILDS_AIRCRAFT_HELPTEXT                  :Bekapcsolva a s
 STR_CONFIG_SETTING_AI_BUILDS_SHIPS                              :Hajók tiltása a gépi ellenfeleknek: {STRING}
 STR_CONFIG_SETTING_AI_BUILDS_SHIPS_HELPTEXT                     :Bekapcsolva a számítógép által irányított ellenfelek nem építhetnek hajókat
 
-STR_CONFIG_SETTING_AI_PROFILE                                   :Alapértelmezett beállítás: {STRING}
-STR_CONFIG_SETTING_AI_PROFILE_HELPTEXT                          :Válaszd ki, hogy melyik beállítási mintát használja a 'véletlen' MI a belső beállításainak, amikor új MI-t vagy szkriptet adsz hozzá
-###length 3
-STR_CONFIG_SETTING_AI_PROFILE_EASY                              :Könnyű
-STR_CONFIG_SETTING_AI_PROFILE_MEDIUM                            :Közepes
-STR_CONFIG_SETTING_AI_PROFILE_HARD                              :Nehéz
-
 STR_CONFIG_SETTING_AI_IN_MULTIPLAYER                            :Számítógépes ellenfelek a hálózati játékokban: {STRING}
 STR_CONFIG_SETTING_AI_IN_MULTIPLAYER_HELPTEXT                   :Számítógép által irányított játékosok részvételének engedélyezése többjátékos játékokban
 
@@ -1915,7 +1908,6 @@ STR_CONFIG_SETTING_SEMAPHORE_BUILD_BEFORE_DATE_HELPTEXT         :Az év beállí
 STR_CONFIG_SETTING_CYCLE_SIGNAL_TYPES                           :Jelzők típusa átalakításkor: {STRING}
 STR_CONFIG_SETTING_CYCLE_SIGNAL_TYPES_HELPTEXT                  :Jelzőtípusok kiválasztása, hogy melyek legyenek elérhetőek a jelzőépítés eszközzel Ctrl+kattintás hatására.
 ###length 2
-STR_CONFIG_SETTING_CYCLE_SIGNAL_PBS                             :Csak irányjelzők
 STR_CONFIG_SETTING_CYCLE_SIGNAL_ALL                             :Minden jelző
 
 STR_CONFIG_SETTING_SIGNAL_GUI_MODE                              :Vasúti jelzők mutatása: {STRING}
@@ -4417,7 +4409,6 @@ STR_ORDERS_TIMETABLE_VIEW_TOOLTIP                               :{BLACK}Átkapcs
 
 STR_ORDERS_LIST_TOOLTIP                                         :{BLACK}Utasításlista - kattints egy célpontra a kijelöléséhez. Ctrl+kattintással az utasítás helyszínére görget
 STR_ORDER_INDEX                                                 :{COMMA}:{NBSP}
-STR_ORDER_TEXT                                                  :{STRING} {STRING} {STRING}
 
 STR_ORDERS_END_OF_ORDERS                                        :- - Utasítások vége - -
 STR_ORDERS_END_OF_SHARED_ORDERS                                 :- - Megosztott utasításlista vége - -
@@ -4451,11 +4442,9 @@ STR_ORDER_REFIT_AUTO_TOOLTIP                                    :{BLACK}Az utas�
 STR_ORDER_DROP_REFIT_AUTO                                       :Fix rakomány
 STR_ORDER_DROP_REFIT_AUTO_ANY                                   :Elérhető rakomány
 
-STR_ORDER_SERVICE                                               :{BLACK}Javítás
 STR_ORDER_DROP_GO_ALWAYS_DEPOT                                  :Mindig menj javítani
 STR_ORDER_DROP_SERVICE_DEPOT                                    :Ha javításra szorul
 STR_ORDER_DROP_HALT_DEPOT                                       :Maradj ott
-STR_ORDER_SERVICE_TOOLTIP                                       :{BLACK}Utasítás kihagyása, ha javítás szükséges
 
 STR_ORDER_CONDITIONAL_VARIABLE_TOOLTIP                          :{BLACK}A jármű adata ami alapján ugrani szeretnénk a parancssorban
 
@@ -4523,6 +4512,7 @@ STR_ORDER_GO_TO_DEPOT_FORMAT                                    :{STRING} {DEPOT
 STR_ORDER_REFIT_ORDER                                           :(Átalakít erre: {STRING})
 STR_ORDER_REFIT_STOP_ORDER                                      :(átalakít erre: {STRING}, és megáll)
 STR_ORDER_STOP_ORDER                                            :(megáll)
+
 
 STR_ORDER_GO_TO_STATION                                         :{STRING} {STATION} {STRING}
 STR_ORDER_GO_TO_STATION_CAN_T_USE_STATION                       :{PUSH_COLOUR}{RED}(Az állomás nem használható){POP_COLOUR} {STRING} {STATION} {STRING}
@@ -4978,6 +4968,8 @@ STR_ERROR_UNABLE_TO_FIND_ROUTE_TO                               :{WHITE}Nem tal�
 STR_ERROR_UNABLE_TO_FIND_LOCAL_DEPOT                            :{WHITE}Nem találom a helyi garázst
 
 STR_ERROR_DEPOT_WRONG_DEPOT_TYPE                                :Rossz járműteleptípus
+
+# Depot unbunching related errors
 
 # Autoreplace related errors
 STR_ERROR_TRAIN_TOO_LONG_AFTER_REPLACEMENT                      :{WHITE}{VEHICLE} túl hosszú a csere után

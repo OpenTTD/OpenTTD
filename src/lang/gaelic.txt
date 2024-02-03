@@ -1755,13 +1755,6 @@ STR_CONFIG_SETTING_AI_BUILDS_AIRCRAFT_HELPTEXT                  :Ma tha seo air,
 STR_CONFIG_SETTING_AI_BUILDS_SHIPS                              :Cuir longan à comas airson a' choimpiutair: {STRING}
 STR_CONFIG_SETTING_AI_BUILDS_SHIPS_HELPTEXT                     :Ma tha seo air, chan urrainn dha chluicheadairean coimpiutair longan a thogail
 
-STR_CONFIG_SETTING_AI_PROFILE                                   :Pròifil nan roghainnean bunaiteach: {STRING}
-STR_CONFIG_SETTING_AI_PROFILE_HELPTEXT                          :Tagh pròifil nan roghainnean a thèid a chleachdadh airson IFan air thuaiream no airson luachan tòiseachaidh nuair a thèid IF no sgriobt geama ùr a chur ris
-###length 3
-STR_CONFIG_SETTING_AI_PROFILE_EASY                              :Furasta
-STR_CONFIG_SETTING_AI_PROFILE_MEDIUM                            :Meadhanach
-STR_CONFIG_SETTING_AI_PROFILE_HARD                              :Doirbh
-
 STR_CONFIG_SETTING_AI_IN_MULTIPLAYER                            :Ceadaich IFan sa mhodh ioma-chluicheadair: {STRING}
 STR_CONFIG_SETTING_AI_IN_MULTIPLAYER_HELPTEXT                   :Ceadaich gun gabh cluicheadairean coimpiutair IF pàirt an an geamannan ioma-chluicheadair
 
@@ -1866,7 +1859,6 @@ STR_CONFIG_SETTING_SEMAPHORE_BUILD_BEFORE_DATE_HELPTEXT         :Tagh am bliadhn
 STR_CONFIG_SETTING_CYCLE_SIGNAL_TYPES                           :Cuairtich tro na seòrsaichean comharra: {STRING}
 STR_CONFIG_SETTING_CYCLE_SIGNAL_TYPES_HELPTEXT                  :Tagh dè na seòrsaichean dhe chomharra a thèid a chuairteachadh tromhpa nuair a thèid briogadh le Ctrl air togail comharra leis an inneal togail chomharran
 ###length 2
-STR_CONFIG_SETTING_CYCLE_SIGNAL_PBS                             :Comharran slighe a-mhàin
 STR_CONFIG_SETTING_CYCLE_SIGNAL_ALL                             :Na h-uile
 
 ###length 2
@@ -4087,7 +4079,6 @@ STR_ORDERS_TIMETABLE_VIEW_TOOLTIP                               :{BLACK}Gearr le
 
 STR_ORDERS_LIST_TOOLTIP                                         :{BLACK}Liosta nan òrduighean - briog air òrdugh gus a thaghadh. Sgrolaichidh Ctrl+briogadh gu ceann-uidhe an òrduigh
 STR_ORDER_INDEX                                                 :{COMMA}:{NBSP}
-STR_ORDER_TEXT                                                  :{STRING} {STRING} {STRING}
 
 STR_ORDERS_END_OF_ORDERS                                        :- - Deireadh nan òrduighean - -
 STR_ORDERS_END_OF_SHARED_ORDERS                                 :- - Deireadh nan òrduighean co-roinnte - -
@@ -4121,11 +4112,9 @@ STR_ORDER_REFIT_AUTO_TOOLTIP                                    :{BLACK}Tagh an 
 STR_ORDER_DROP_REFIT_AUTO                                       :Carago stèidhichte
 STR_ORDER_DROP_REFIT_AUTO_ANY                                   :Carago ri làimh
 
-STR_ORDER_SERVICE                                               :{BLACK}Obair-ghlèidhidh
 STR_ORDER_DROP_GO_ALWAYS_DEPOT                                  :Rach ann an-còmhnaidh
 STR_ORDER_DROP_SERVICE_DEPOT                                    :Obair-ghlèidhidh ma tha i a dhìth
 STR_ORDER_DROP_HALT_DEPOT                                       :Stad
-STR_ORDER_SERVICE_TOOLTIP                                       :{BLACK}Leum thairis air an òrdugh seo mura h-eil feum air obair-ghlèidhidh
 
 STR_ORDER_CONDITIONAL_VARIABLE_TOOLTIP                          :{BLACK}Dàta a' charbaid air a bheil an leum stèidhichte
 
@@ -4192,6 +4181,7 @@ STR_ORDER_GO_TO_DEPOT_FORMAT                                    :{STRING} {DEPOT
 STR_ORDER_REFIT_ORDER                                           :(Mùth airson {STRING})
 STR_ORDER_REFIT_STOP_ORDER                                      :(Mùth airson {STRING} is stad)
 STR_ORDER_STOP_ORDER                                            :(Stad)
+
 
 STR_ORDER_GO_TO_STATION                                         :{STRING} {STATION} {STRING}
 
@@ -4619,6 +4609,8 @@ STR_ERROR_UNABLE_TO_FIND_ROUTE_TO                               :{WHITE}Cha ghab
 STR_ERROR_UNABLE_TO_FIND_LOCAL_DEPOT                            :{WHITE}Cha ghabh a' gharaids / an trèan-lann / an cala / an hangar ionadail lorg
 
 STR_ERROR_DEPOT_WRONG_DEPOT_TYPE                                :Seòrsa dhe gharaids / trèan-lann / cala / hangar cearr
+
+# Depot unbunching related errors
 
 # Autoreplace related errors
 STR_ERROR_TRAIN_TOO_LONG_AFTER_REPLACEMENT                      :{WHITE}Tha {VEHICLE} ro fhada an dèidh cur an àite

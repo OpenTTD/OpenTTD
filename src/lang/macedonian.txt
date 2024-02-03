@@ -1017,8 +1017,6 @@ STR_CONFIG_SETTING_SOUND_VEHICLE                                :Возила: {
 
 
 
-###length 3
-
 
 STR_CONFIG_SETTING_SCRIPT_MAX_OPCODES                           :#ОПкодови пред скрипти се суспендирани: {STRING}
 
@@ -1871,7 +1869,6 @@ STR_REFIT_AIRCRAFT_REFIT_TOOLTIP                                :{BLACK}Прен
 # Order view
 
 STR_ORDER_INDEX                                                 :{COMMA}:{NBSP}
-STR_ORDER_TEXT                                                  :{STRING} {STRING} {STRING}
 
 
 # Order bottom buttons
@@ -1899,6 +1896,7 @@ STR_ORDER_TEXT                                                  :{STRING} {STRIN
 
 STR_ORDER_GO_TO_NEAREST_DEPOT_FORMAT                            :{STRING} {STRING} {STRING}
 STR_ORDER_GO_TO_DEPOT_FORMAT                                    :{STRING} {DEPOT}
+
 
 
 STR_ORDER_GO_TO_STATION                                         :{STRING} {STATION} {STRING}
@@ -2047,6 +2045,8 @@ STR_ERROR_AIRCRAFT_MUST_BE_STOPPED_INSIDE_HANGAR                :{WHITE}... мо
 
 
 
+
+# Depot unbunching related errors
 
 # Autoreplace related errors
 STR_ERROR_AUTOREPLACE_NOTHING_TO_DO                             :{WHITE}Не авто замени / обнови правила се применуваат

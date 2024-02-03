@@ -1725,13 +1725,6 @@ STR_CONFIG_SETTING_AI_BUILDS_AIRCRAFT_HELPTEXT                  :Selle seade sis
 STR_CONFIG_SETTING_AI_BUILDS_SHIPS                              :Laevakeeld arvutile: {STRING}
 STR_CONFIG_SETTING_AI_BUILDS_SHIPS_HELPTEXT                     :Selle seade sisse lülitamise korral ei ole arvuti juhitud mängijal lubatud laevade ehitamine
 
-STR_CONFIG_SETTING_AI_PROFILE                                   :Vaikeseadistus: {STRING}
-STR_CONFIG_SETTING_AI_PROFILE_HELPTEXT                          :Vali seadistus, mida kasutada suvalistes AI-des või uue AI/GameScripti lisamisel
-###length 3
-STR_CONFIG_SETTING_AI_PROFILE_EASY                              :Lihtne
-STR_CONFIG_SETTING_AI_PROFILE_MEDIUM                            :Keskmine
-STR_CONFIG_SETTING_AI_PROFILE_HARD                              :Keeruline
-
 STR_CONFIG_SETTING_AI_IN_MULTIPLAYER                            :AI mitmikmängus: {STRING}
 STR_CONFIG_SETTING_AI_IN_MULTIPLAYER_HELPTEXT                   :Võimaldab arvutil osaleda mitmikmängudes
 
@@ -1850,7 +1843,6 @@ STR_CONFIG_SETTING_SEMAPHORE_BUILD_BEFORE_DATE_HELPTEXT         :Määra aasta a
 STR_CONFIG_SETTING_CYCLE_SIGNAL_TYPES                           :Vaheta signaalide liike: {STRING}
 STR_CONFIG_SETTING_CYCLE_SIGNAL_TYPES_HELPTEXT                  :Muuda valitavaid signaaliliike, kui «Ctrl»+klõpsu abil muudetakse ehitatud signaali liiki
 ###length 2
-STR_CONFIG_SETTING_CYCLE_SIGNAL_PBS                             :Ainult täiustatud
 STR_CONFIG_SETTING_CYCLE_SIGNAL_ALL                             :Kõik nähtavad
 
 STR_CONFIG_SETTING_SIGNAL_GUI_MODE                              :Näita signaali tüüpe: {STRING}
@@ -4312,7 +4304,6 @@ STR_ORDERS_TIMETABLE_VIEW_TOOLTIP                               :{BLACK}Näita g
 
 STR_ORDERS_LIST_TOOLTIP                                         :{BLACK}Korralduste register - korraldus valitakse klõpsamisega. Ctrl+klõps keskendab vaate korralduse sihtpunktile
 STR_ORDER_INDEX                                                 :{COMMA}:{NBSP}
-STR_ORDER_TEXT                                                  :{STRING} {STRING} {STRING}
 
 STR_ORDERS_END_OF_ORDERS                                        :- - Korralduste lõpp - -
 STR_ORDERS_END_OF_SHARED_ORDERS                                 :- - Jagatud korralduste lõpp - -
@@ -4346,11 +4337,9 @@ STR_ORDER_REFIT_AUTO_TOOLTIP                                    :{BLACK}Vali, mi
 STR_ORDER_DROP_REFIT_AUTO                                       :Fikseeritud kaubatüüp
 STR_ORDER_DROP_REFIT_AUTO_ANY                                   :Võimalikud kaubad
 
-STR_ORDER_SERVICE                                               :{BLACK}Hooldus
 STR_ORDER_DROP_GO_ALWAYS_DEPOT                                  :Alati
 STR_ORDER_DROP_SERVICE_DEPOT                                    :Vajadusel
 STR_ORDER_DROP_HALT_DEPOT                                       :Peatu
-STR_ORDER_SERVICE_TOOLTIP                                       :{BLACK}Jäta see käsk vahele, kui hooldust ei vajata
 
 STR_ORDER_CONDITIONAL_VARIABLE_TOOLTIP                          :{BLACK}Sõiduki andmed, millel korralduse vahelejätmine põhineb
 
@@ -4418,6 +4407,7 @@ STR_ORDER_GO_TO_DEPOT_FORMAT                                    :{STRING} {DEPOT
 STR_ORDER_REFIT_ORDER                                           :(Ümberseadista: {STRING})
 STR_ORDER_REFIT_STOP_ORDER                                      :(Ümberseadista: {STRING}, peatu)
 STR_ORDER_STOP_ORDER                                            :(Peatu)
+
 
 STR_ORDER_GO_TO_STATION                                         :{STRING} {STATION} {STRING}
 STR_ORDER_GO_TO_STATION_CAN_T_USE_STATION                       :{PUSH_COLOUR}{RED}(Ei saa jaama kasutada){POP_COLOUR} {STRING} {STATION} {STRING}
@@ -4865,6 +4855,8 @@ STR_ERROR_UNABLE_TO_FIND_ROUTE_TO                               :{WHITE}Ei leia 
 STR_ERROR_UNABLE_TO_FIND_LOCAL_DEPOT                            :{WHITE}Ei leia kohalikku garaaži üles
 
 STR_ERROR_DEPOT_WRONG_DEPOT_TYPE                                :Vale depootüüp
+
+# Depot unbunching related errors
 
 # Autoreplace related errors
 STR_ERROR_TRAIN_TOO_LONG_AFTER_REPLACEMENT                      :{WHITE}{VEHICLE} on pärast asendamist liiga pikk

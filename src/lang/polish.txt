@@ -2122,13 +2122,6 @@ STR_CONFIG_SETTING_AI_BUILDS_AIRCRAFT_HELPTEXT                  :Włączona opcj
 STR_CONFIG_SETTING_AI_BUILDS_SHIPS                              :Statki niedostępne dla komputera: {STRING}
 STR_CONFIG_SETTING_AI_BUILDS_SHIPS_HELPTEXT                     :Włączona opcja nie pozwala na budowanie statków graczom komputerowym
 
-STR_CONFIG_SETTING_AI_PROFILE                                   :Domyślny profil ustawień: {STRING}
-STR_CONFIG_SETTING_AI_PROFILE_HELPTEXT                          :Wybierz, którego profilu ustawień używać dla losowych SI lub dla wartości początkowych przy dodawaniu nowych SI lub Game Script
-###length 3
-STR_CONFIG_SETTING_AI_PROFILE_EASY                              :Łatwy
-STR_CONFIG_SETTING_AI_PROFILE_MEDIUM                            :Średni
-STR_CONFIG_SETTING_AI_PROFILE_HARD                              :Trudny
-
 STR_CONFIG_SETTING_AI_IN_MULTIPLAYER                            :Pozwól na SI w grze wieloosobowej: {STRING}
 STR_CONFIG_SETTING_AI_IN_MULTIPLAYER_HELPTEXT                   :Pozwól komputerowym graczom SI na udział w grach dla wielu graczy
 
@@ -2249,7 +2242,6 @@ STR_CONFIG_SETTING_SEMAPHORE_BUILD_BEFORE_DATE_HELPTEXT         :Ustaw rok, w kt
 STR_CONFIG_SETTING_CYCLE_SIGNAL_TYPES                           :Przełączaj typy sygnalizatorów: {STRING}
 STR_CONFIG_SETTING_CYCLE_SIGNAL_TYPES_HELPTEXT                  :Wybierz, między jakimi typami sygnalizatorów przełączać po naciśnięciu Ctrl+klik przy budowaniu sygnalizatorów
 ###length 2
-STR_CONFIG_SETTING_CYCLE_SIGNAL_PBS                             :tylko sygnalizatory trasy
 STR_CONFIG_SETTING_CYCLE_SIGNAL_ALL                             :Wszystkie widoczne
 
 STR_CONFIG_SETTING_SIGNAL_GUI_MODE                              :Pokazuj typy sygnalizatorów: {STRING}
@@ -4782,7 +4774,6 @@ STR_ORDERS_TIMETABLE_VIEW_TOOLTIP                               :{BLACK}Otwórz 
 
 STR_ORDERS_LIST_TOOLTIP                                         :{BLACK}Lista poleceń - kliknij na poleceniu, aby zaznaczyć. Ctrl+klik przenosi do stacji docelowej
 STR_ORDER_INDEX                                                 :{COMMA}:{NBSP}
-STR_ORDER_TEXT                                                  :{STRING} {STRING} {STRING}
 
 STR_ORDERS_END_OF_ORDERS                                        :- - Koniec poleceń - -
 STR_ORDERS_END_OF_SHARED_ORDERS                                 :- - Koniec współdzielonych poleceń - -
@@ -4816,11 +4807,9 @@ STR_ORDER_REFIT_AUTO_TOOLTIP                                    :{BLACK}Wybierz 
 STR_ORDER_DROP_REFIT_AUTO                                       :Ustalony ładunek
 STR_ORDER_DROP_REFIT_AUTO_ANY                                   :Dostępny ładunek
 
-STR_ORDER_SERVICE                                               :{BLACK}Serwis
 STR_ORDER_DROP_GO_ALWAYS_DEPOT                                  :Zawsze do
 STR_ORDER_DROP_SERVICE_DEPOT                                    :Serwisuj jeśli trzeba
 STR_ORDER_DROP_HALT_DEPOT                                       :Zatrzymaj
-STR_ORDER_SERVICE_TOOLTIP                                       :{BLACK}Pomiń to polecenie jesli serwis nie jest wymagany
 
 STR_ORDER_CONDITIONAL_VARIABLE_TOOLTIP                          :{BLACK}Dane pojazdu wykorzystane w warunku
 
@@ -4888,6 +4877,7 @@ STR_ORDER_GO_TO_DEPOT_FORMAT                                    :{STRING} {DEPOT
 STR_ORDER_REFIT_ORDER                                           :(Przebuduj na {STRING.b})
 STR_ORDER_REFIT_STOP_ORDER                                      :(Przebuduj na {STRING.b} i zatrzymaj)
 STR_ORDER_STOP_ORDER                                            :(Stop)
+
 
 STR_ORDER_GO_TO_STATION                                         :{STRING} {STATION} {STRING}
 STR_ORDER_GO_TO_STATION_CAN_T_USE_STATION                       :{PUSH_COLOUR}{RED}(Nie może korzystać ze stacji){POP_COLOUR} {STRING} {STATION} {STRING}
@@ -5355,6 +5345,8 @@ STR_ERROR_UNABLE_TO_FIND_ROUTE_TO                               :{WHITE}Nie moż
 STR_ERROR_UNABLE_TO_FIND_LOCAL_DEPOT                            :{WHITE}Nie można znaleźć zajezdni
 
 STR_ERROR_DEPOT_WRONG_DEPOT_TYPE                                :Zły typ zajezdni
+
+# Depot unbunching related errors
 
 # Autoreplace related errors
 STR_ERROR_TRAIN_TOO_LONG_AFTER_REPLACEMENT                      :{WHITE}{VEHICLE} jest za długi po wymianie

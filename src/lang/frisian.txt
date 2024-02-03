@@ -1559,13 +1559,6 @@ STR_CONFIG_SETTING_AI_BUILDS_AIRCRAFT_HELPTEXT                  :By ynskeakeljen
 STR_CONFIG_SETTING_AI_BUILDS_SHIPS                              :Ferbied skippen foar kompjûterspilers: {STRING}
 STR_CONFIG_SETTING_AI_BUILDS_SHIPS_HELPTEXT                     :By ynskeakeljen is it ûnmooglik foar kompjûterspilers om skippen te bouwen
 
-STR_CONFIG_SETTING_AI_PROFILE                                   :Standerd ynstellingsprofyl: {STRING}
-STR_CONFIG_SETTING_AI_PROFILE_HELPTEXT                          :Kies hokker ynstellingsprofyl brûkt wurde moat foar ien of oare AI of foar begjinweardes by it tafoegjen fan in nije AI of Spulskript
-###length 3
-STR_CONFIG_SETTING_AI_PROFILE_EASY                              :Maklik
-STR_CONFIG_SETTING_AI_PROFILE_MEDIUM                            :Middel
-STR_CONFIG_SETTING_AI_PROFILE_HARD                              :Dreech
-
 STR_CONFIG_SETTING_AI_IN_MULTIPLAYER                            :Stea AIs ta yn multiplayer: {STRING}
 STR_CONFIG_SETTING_AI_IN_MULTIPLAYER_HELPTEXT                   :Kompjûterspilers tastean mei te spylje yn multyspyler spullen
 
@@ -1662,7 +1655,6 @@ STR_CONFIG_SETTING_SEMAPHORE_BUILD_BEFORE_DATE                  :Bou semafoor se
 
 STR_CONFIG_SETTING_CYCLE_SIGNAL_TYPES                           :Gea langs alle sein soarten: {STRING}
 ###length 2
-STR_CONFIG_SETTING_CYCLE_SIGNAL_PBS                             :route seinen allinech
 STR_CONFIG_SETTING_CYCLE_SIGNAL_ALL                             :Allegear
 
 ###length 2
@@ -3596,7 +3588,6 @@ STR_ORDERS_CAPTION                                              :{WHITE}{VEHICLE
 STR_ORDERS_TIMETABLE_VIEW                                       :{BLACK}Tjinstregeling
 
 STR_ORDER_INDEX                                                 :{COMMA}:{NBSP}
-STR_ORDER_TEXT                                                  :{STRING} {STRING} {STRING}
 
 STR_ORDERS_END_OF_ORDERS                                        :--Ein fan de Oarders--
 
@@ -3624,10 +3615,8 @@ STR_ORDER_REFIT_AUTO                                            :{BLACK}Ombouwe 
 STR_ORDER_DROP_REFIT_AUTO                                       :Fêste fracht
 STR_ORDER_DROP_REFIT_AUTO_ANY                                   :Beskikbere fracht
 
-STR_ORDER_SERVICE                                               :{BLACK}Tsjinst
 STR_ORDER_DROP_GO_ALWAYS_DEPOT                                  :Gean altyd
 STR_ORDER_DROP_HALT_DEPOT                                       :Stop
-STR_ORDER_SERVICE_TOOLTIP                                       :{BLACK}Sla dizze opdracht oer of it moar wêze dat ûnderhâld nedich is.
 
 
 # Conditional order variables, must follow order of OrderConditionVariable enum
@@ -3686,6 +3675,7 @@ STR_ORDER_GO_TO_DEPOT_FORMAT                                    :{STRING} {DEPOT
 STR_ORDER_REFIT_ORDER                                           :(Ombouwe nij {STRING})
 STR_ORDER_REFIT_STOP_ORDER                                      :(Ombouwe nei {STRING} en stopje)
 STR_ORDER_STOP_ORDER                                            :(Stop)
+
 
 STR_ORDER_GO_TO_STATION                                         :{STRING} {STATION} {STRING}
 
@@ -4060,6 +4050,8 @@ STR_ERROR_UNABLE_TO_FIND_ROUTE_TO                               :{WHITE}Kin gjin
 STR_ERROR_UNABLE_TO_FIND_LOCAL_DEPOT                            :{WHITE}Kin lokaal depot net fine
 
 STR_ERROR_DEPOT_WRONG_DEPOT_TYPE                                :Ferkeard depottype
+
+# Depot unbunching related errors
 
 # Autoreplace related errors
 STR_ERROR_TRAIN_TOO_LONG_AFTER_REPLACEMENT                      :{WHITE}{VEHICLE} is te lang nei ferfanging

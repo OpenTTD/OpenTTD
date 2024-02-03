@@ -1631,13 +1631,6 @@ STR_CONFIG_SETTING_AI_BUILDS_AIRCRAFT_HELPTEXT                  :Má dhéantar a
 STR_CONFIG_SETTING_AI_BUILDS_SHIPS                              :Díchumasaigh longa don ríomhare: {STRING}
 STR_CONFIG_SETTING_AI_BUILDS_SHIPS_HELPTEXT                     :Má dhéantar an socrú seo a chumasú ní bheidh ríomhimreoir in ann longa a thógáil
 
-STR_CONFIG_SETTING_AI_PROFILE                                   :Próifíl socruithe réamhshocraithe: {STRING}
-STR_CONFIG_SETTING_AI_PROFILE_HELPTEXT                          :Roghnaigh cén próifíl socruithe a úsáidfear do AInna fánacha nó na luachanna tosaigh nuair a chuirfear AI nó Script Cluiche nua leis
-###length 3
-STR_CONFIG_SETTING_AI_PROFILE_EASY                              :Éasca
-STR_CONFIG_SETTING_AI_PROFILE_MEDIUM                            :Méanach
-STR_CONFIG_SETTING_AI_PROFILE_HARD                              :Deacair
-
 STR_CONFIG_SETTING_AI_IN_MULTIPLAYER                            :Ceadaigh AIanna i gcluiche ilimreora: {STRING}
 STR_CONFIG_SETTING_AI_IN_MULTIPLAYER_HELPTEXT                   :Ceadaigh do ríomhimreoirí AI a bheith páirteach i gcluichí ilimreora
 
@@ -1753,7 +1746,6 @@ STR_CONFIG_SETTING_SEMAPHORE_BUILD_BEFORE_DATE_HELPTEXT         :Socraigh an bli
 STR_CONFIG_SETTING_CYCLE_SIGNAL_TYPES                           :Téigh trí na cineálacha comharthaí in ord: {STRING}
 STR_CONFIG_SETTING_CYCLE_SIGNAL_TYPES_HELPTEXT                  :Roghnaigh cad iad na cineálacha comharthaí a rachfar tríd, nuair a dhéánfar Ctrl+cliceáil ar chomhartha atá tógtha le huirlis na gcomharthaí
 ###length 2
-STR_CONFIG_SETTING_CYCLE_SIGNAL_PBS                             :Comharthaí cosán amháin
 STR_CONFIG_SETTING_CYCLE_SIGNAL_ALL                             :Gach ceann infheicthe
 
 STR_CONFIG_SETTING_SIGNAL_GUI_MODE                              :Taispeáin cineálacha comharthaí: {STRING}
@@ -4171,7 +4163,6 @@ STR_ORDERS_TIMETABLE_VIEW_TOOLTIP                               :{BLACK}Athraigh
 
 STR_ORDERS_LIST_TOOLTIP                                         :{BLACK}Liosta na n-orduithe - cliceáil ar ordú chun é a aibhisiú. Is féidir scrollú chuig an stáisiún le Ctrl+Cliceáil
 STR_ORDER_INDEX                                                 :{COMMA}:{NBSP}
-STR_ORDER_TEXT                                                  :{STRING} {STRING} {STRING}
 
 STR_ORDERS_END_OF_ORDERS                                        :- - Deireadh na nOrduithe - -
 STR_ORDERS_END_OF_SHARED_ORDERS                                 :- - Deireadh na nOrduithe Comhroinnte - -
@@ -4205,11 +4196,9 @@ STR_ORDER_REFIT_AUTO_TOOLTIP                                    :{BLACK}Roghnaig
 STR_ORDER_DROP_REFIT_AUTO                                       :Lastas seasta
 STR_ORDER_DROP_REFIT_AUTO_ANY                                   :Lastas atá ar fáil
 
-STR_ORDER_SERVICE                                               :{BLACK}Seirbhísigh
 STR_ORDER_DROP_GO_ALWAYS_DEPOT                                  :Téigh i gcónaí
 STR_ORDER_DROP_SERVICE_DEPOT                                    :Seirbhísigh más gá
 STR_ORDER_DROP_HALT_DEPOT                                       :Stop
-STR_ORDER_SERVICE_TOOLTIP                                       :{BLACK}Téigh thar an t-ordú seo ach amháin má theastaíonn seirbhísiú
 
 STR_ORDER_CONDITIONAL_VARIABLE_TOOLTIP                          :{BLACK}Sonraí feithicle a bhunófar an léim air
 
@@ -4277,6 +4266,7 @@ STR_ORDER_GO_TO_DEPOT_FORMAT                                    :{STRING} {DEPOT
 STR_ORDER_REFIT_ORDER                                           :(Athfheistigh go {STRING})
 STR_ORDER_REFIT_STOP_ORDER                                      :(Athfheistigh go {STRING} agus stop)
 STR_ORDER_STOP_ORDER                                            :(Stop)
+
 
 STR_ORDER_GO_TO_STATION                                         :{STRING} {STATION} {STRING}
 STR_ORDER_GO_TO_STATION_CAN_T_USE_STATION                       :{PUSH_COLOUR}{RED}(Ní féidir an stáisiún a úsáid){POP_COLOUR} {STRING} {STATION} {STRING}
@@ -4715,6 +4705,8 @@ STR_ERROR_UNABLE_TO_FIND_ROUTE_TO                               :{WHITE}Ní féi
 STR_ERROR_UNABLE_TO_FIND_LOCAL_DEPOT                            :{WHITE}Ní féidir iosta a aimsiú i gcóngar
 
 STR_ERROR_DEPOT_WRONG_DEPOT_TYPE                                :Cineál iosta mícheart
+
+# Depot unbunching related errors
 
 # Autoreplace related errors
 STR_ERROR_TRAIN_TOO_LONG_AFTER_REPLACEMENT                      :{WHITE}Tá {VEHICLE} rófhada tar éis athsholáthair

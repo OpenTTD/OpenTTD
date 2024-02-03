@@ -1753,13 +1753,6 @@ STR_CONFIG_SETTING_AI_BUILDS_AIRCRAFT_HELPTEXT                  :Electa, non lic
 STR_CONFIG_SETTING_AI_BUILDS_SHIPS                              :Vetare IA naves habere: {STRING}
 STR_CONFIG_SETTING_AI_BUILDS_SHIPS_HELPTEXT                     :Electa, non licet lusori IA naves tenere
 
-STR_CONFIG_SETTING_AI_PROFILE                                   :Ratio optionum solita: {STRING}
-STR_CONFIG_SETTING_AI_PROFILE_HELPTEXT                          :Eligere quae ratio optionum adhibenda est ad fortuitam IA, sive valores initiales cum nova IA seu Ludi Scriptum legitur
-###length 3
-STR_CONFIG_SETTING_AI_PROFILE_EASY                              :Facilis
-STR_CONFIG_SETTING_AI_PROFILE_MEDIUM                            :Mediocris
-STR_CONFIG_SETTING_AI_PROFILE_HARD                              :Difficilis
-
 STR_CONFIG_SETTING_AI_IN_MULTIPLAYER                            :Sinere IA in ludis cum pluribus lusoribus: {STRING}
 STR_CONFIG_SETTING_AI_IN_MULTIPLAYER_HELPTEXT                   :Sinere lusores IA asesse in ludis cum pluribus lusoribus
 
@@ -1864,7 +1857,6 @@ STR_CONFIG_SETTING_SEMAPHORE_BUILD_BEFORE_DATE_HELPTEXT         :Eligere annum i
 STR_CONFIG_SETTING_CYCLE_SIGNAL_TYPES                           :Mutare inter typus signalium: {STRING}
 STR_CONFIG_SETTING_CYCLE_SIGNAL_TYPES_HELPTEXT                  :Eligere typos signalium mutandos cum premitur Ctrl pressa in signale structum
 ###length 2
-STR_CONFIG_SETTING_CYCLE_SIGNAL_PBS                             :Modo signalia itineris
 STR_CONFIG_SETTING_CYCLE_SIGNAL_ALL                             :Omnes
 
 ###length 2
@@ -4077,7 +4069,6 @@ STR_ORDERS_TIMETABLE_VIEW_TOOLTIP                               :{BLACK}Mutare a
 
 STR_ORDERS_LIST_TOOLTIP                                         :{BLACK}Index iussorum - preme in iussum ut eligatur. Ctrl+Preme vagatur ad destinatum
 STR_ORDER_INDEX                                                 :{COMMA}:{NBSP}
-STR_ORDER_TEXT                                                  :{STRING} {STRING} {STRING}
 
 STR_ORDERS_END_OF_ORDERS                                        :- - Finis Iussorum - -
 STR_ORDERS_END_OF_SHARED_ORDERS                                 :- - Finis Iussorum Communium - -
@@ -4111,11 +4102,9 @@ STR_ORDER_REFIT_AUTO_TOOLTIP                                    :{BLACK}Eligere 
 STR_ORDER_DROP_REFIT_AUTO                                       :Oneri fixo
 STR_ORDER_DROP_REFIT_AUTO_ANY                                   :Oneri parabili
 
-STR_ORDER_SERVICE                                               :{BLACK}Ministratio
 STR_ORDER_DROP_GO_ALWAYS_DEPOT                                  :Ire semper
 STR_ORDER_DROP_SERVICE_DEPOT                                    :Ministrari si necesse est
 STR_ORDER_DROP_HALT_DEPOT                                       :Consiste
-STR_ORDER_SERVICE_TOOLTIP                                       :{BLACK}Transilire huic iusso nisi necesse est ministrari
 
 STR_ORDER_CONDITIONAL_VARIABLE_TOOLTIP                          :{BLACK}Indicia vehiculi ad quae spectat ordines conditionales
 
@@ -4183,6 +4172,7 @@ STR_ORDER_GO_TO_DEPOT_FORMAT                                    :{STRING} {DEPOT
 STR_ORDER_REFIT_ORDER                                           :(Reficere {STRING.dat})
 STR_ORDER_REFIT_STOP_ORDER                                      :(Reficere {STRING.dat} consisteque)
 STR_ORDER_STOP_ORDER                                            :(Consiste)
+
 
 STR_ORDER_GO_TO_STATION                                         :{STRING} {STATION} {STRING}
 
@@ -4610,6 +4600,8 @@ STR_ERROR_UNABLE_TO_FIND_ROUTE_TO                               :{WHITE}Non pote
 STR_ERROR_UNABLE_TO_FIND_LOCAL_DEPOT                            :{WHITE}Non potest receptaculum invenire
 
 STR_ERROR_DEPOT_WRONG_DEPOT_TYPE                                :Typus receptaculi impar
+
+# Depot unbunching related errors
 
 # Autoreplace related errors
 STR_ERROR_TRAIN_TOO_LONG_AFTER_REPLACEMENT                      :{WHITE}{VEHICLE} nimis long(G us a um) est post commutationem

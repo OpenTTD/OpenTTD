@@ -1688,13 +1688,6 @@ STR_CONFIG_SETTING_AI_BUILDS_AIRCRAFT_HELPTEXT                  :コンピュー
 STR_CONFIG_SETTING_AI_BUILDS_SHIPS                              :AI企業の船舶輸送を不許可: {STRING}
 STR_CONFIG_SETTING_AI_BUILDS_SHIPS_HELPTEXT                     :コンピュータが設立するライバル企業が船舶輸送を使えないようにします
 
-STR_CONFIG_SETTING_AI_PROFILE                                   :規定の設定プロファイル: {STRING}
-STR_CONFIG_SETTING_AI_PROFILE_HELPTEXT                          :新たなAIやゲームスクリプトを追加するときに、どの設定プロファイルを使ってランダムAIや初期値を与えるかを決定します
-###length 3
-STR_CONFIG_SETTING_AI_PROFILE_EASY                              :初級
-STR_CONFIG_SETTING_AI_PROFILE_MEDIUM                            :中級
-STR_CONFIG_SETTING_AI_PROFILE_HARD                              :上級
-
 STR_CONFIG_SETTING_AI_IN_MULTIPLAYER                            :マルチプレイヤーゲームでもAIを使用: {STRING}
 STR_CONFIG_SETTING_AI_IN_MULTIPLAYER_HELPTEXT                   :マルチプレイヤーゲームでもAIのライバル企業が登場するかを設定します
 
@@ -1813,7 +1806,6 @@ STR_CONFIG_SETTING_SEMAPHORE_BUILD_BEFORE_DATE_HELPTEXT         :色灯式信号
 STR_CONFIG_SETTING_CYCLE_SIGNAL_TYPES                           :信号種類のサイクル範囲: {STRING}
 STR_CONFIG_SETTING_CYCLE_SIGNAL_TYPES_HELPTEXT                  :Ctrl+クリックで信号種類を切り替える際に使う、サイクル種類を決定します
 ###length 2
-STR_CONFIG_SETTING_CYCLE_SIGNAL_PBS                             :パス・一方通行パス
 STR_CONFIG_SETTING_CYCLE_SIGNAL_ALL                             :すべて表示
 
 STR_CONFIG_SETTING_SIGNAL_GUI_MODE                              :信号の種類: {STRING}
@@ -4282,7 +4274,6 @@ STR_ORDERS_TIMETABLE_VIEW_TOOLTIP                               :{BLACK}ダイ�
 
 STR_ORDERS_LIST_TOOLTIP                                         :{BLACK}指令リスト - 指令を選択するにはクリックします。Ctrl+クリックで指令先に飛びます
 STR_ORDER_INDEX                                                 :{COMMA}:{NBSP}
-STR_ORDER_TEXT                                                  :{STRING} {STRING} {STRING}
 
 STR_ORDERS_END_OF_ORDERS                                        :- - 指令終了 - -
 STR_ORDERS_END_OF_SHARED_ORDERS                                 :- - 共有指令終了- -
@@ -4316,11 +4307,9 @@ STR_ORDER_REFIT_AUTO_TOOLTIP                                    :{BLACK}改造�
 STR_ORDER_DROP_REFIT_AUTO                                       :改造不能な車両
 STR_ORDER_DROP_REFIT_AUTO_ANY                                   :改造可能な車両
 
-STR_ORDER_SERVICE                                               :{BLACK}点検
 STR_ORDER_DROP_GO_ALWAYS_DEPOT                                  :常に行く
 STR_ORDER_DROP_SERVICE_DEPOT                                    :必要であれば点検
 STR_ORDER_DROP_HALT_DEPOT                                       :運用停止
-STR_ORDER_SERVICE_TOOLTIP                                       :{BLACK}点検が必要ない時にはこの指令はスキップされます
 
 STR_ORDER_CONDITIONAL_VARIABLE_TOOLTIP                          :{BLACK}輸送機器データに基づく条件分岐
 
@@ -4388,6 +4377,7 @@ STR_ORDER_GO_TO_DEPOT_FORMAT                                    :{1:DEPOT}へ{0:
 STR_ORDER_REFIT_ORDER                                           :({STRING}に改造)
 STR_ORDER_REFIT_STOP_ORDER                                      :({STRING}に改造して、運用停止)
 STR_ORDER_STOP_ORDER                                            :(運用停止)
+
 
 STR_ORDER_GO_TO_STATION                                         :{1:STATION}へ{0:STRING} {2:STRING}
 STR_ORDER_GO_TO_STATION_CAN_T_USE_STATION                       :{PUSH_COLOUR}{RED}(駅を使用できません){POP_COLOUR} {STRING} {STATION} {STRING}
@@ -4836,6 +4826,8 @@ STR_ERROR_UNABLE_TO_FIND_ROUTE_TO                               :{WHITE}付近�
 STR_ERROR_UNABLE_TO_FIND_LOCAL_DEPOT                            :{WHITE}付近に車庫が見つかりません
 
 STR_ERROR_DEPOT_WRONG_DEPOT_TYPE                                :車庫の種類が一致しません
+
+# Depot unbunching related errors
 
 # Autoreplace related errors
 STR_ERROR_TRAIN_TOO_LONG_AFTER_REPLACEMENT                      :{WHITE}{VEHICLE}は置換後では長すぎます

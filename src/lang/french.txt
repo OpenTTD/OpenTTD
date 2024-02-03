@@ -1804,13 +1804,6 @@ STR_CONFIG_SETTING_AI_BUILDS_AIRCRAFT_HELPTEXT                  :En activant ce 
 STR_CONFIG_SETTING_AI_BUILDS_SHIPS                              :Désactiver les navires pour l'ordinateur{NBSP}: {STRING}
 STR_CONFIG_SETTING_AI_BUILDS_SHIPS_HELPTEXT                     :En activant ce paramètre, il sera impossible de construire des navires pour l'ordinateur
 
-STR_CONFIG_SETTING_AI_PROFILE                                   :Profil de réglage par défaut{NBSP}: {STRING}
-STR_CONFIG_SETTING_AI_PROFILE_HELPTEXT                          :Définir le profil des réglages à utiliser pour les IAs aléatoires ou pour les valeurs initiales lors de l'ajout d'une nouvelle IA ou d'un script de jeu
-###length 3
-STR_CONFIG_SETTING_AI_PROFILE_EASY                              :Facile
-STR_CONFIG_SETTING_AI_PROFILE_MEDIUM                            :Moyen
-STR_CONFIG_SETTING_AI_PROFILE_HARD                              :Difficile
-
 STR_CONFIG_SETTING_AI_IN_MULTIPLAYER                            :Permettre les IA en multi-joueurs{NBSP}: {STRING}
 STR_CONFIG_SETTING_AI_IN_MULTIPLAYER_HELPTEXT                   :Autorise les Intelligences Artificielles à participer aux parties multijoueurs
 
@@ -1931,7 +1924,6 @@ STR_CONFIG_SETTING_SEMAPHORE_BUILD_BEFORE_DATE_HELPTEXT         :Définit l'ann�
 STR_CONFIG_SETTING_CYCLE_SIGNAL_TYPES                           :Sélectionner les signaux parmi{NBSP}: {STRING}
 STR_CONFIG_SETTING_CYCLE_SIGNAL_TYPES_HELPTEXT                  :Choisir quels types de signaux sont proposés lors de leur construction avec Ctrl
 ###length 2
-STR_CONFIG_SETTING_CYCLE_SIGNAL_PBS                             :les signaux de chemin uniquement
 STR_CONFIG_SETTING_CYCLE_SIGNAL_ALL                             :tous les signaux visibles
 
 STR_CONFIG_SETTING_SIGNAL_GUI_MODE                              :Afficher les signaux parmi{NBSP}: {STRING}
@@ -4518,7 +4510,6 @@ STR_ORDERS_TIMETABLE_VIEW_TOOLTIP                               :{BLACK}Basculer
 
 STR_ORDERS_LIST_TOOLTIP                                         :{BLACK}Liste d'ordres - Cliquer sur un ordre pour le sélectionner. Ctrl-clic pour déplacer la vue sur la destination de l'ordre.
 STR_ORDER_INDEX                                                 :{COMMA}:{NBSP}
-STR_ORDER_TEXT                                                  :{STRING} {STRING} {STRING}
 
 STR_ORDERS_END_OF_ORDERS                                        :−− Fin des ordres −−
 STR_ORDERS_END_OF_SHARED_ORDERS                                 :−− Fin des ordres partagés −−
@@ -4552,11 +4543,9 @@ STR_ORDER_REFIT_AUTO_TOOLTIP                                    :{BLACK}Sélecti
 STR_ORDER_DROP_REFIT_AUTO                                       :Cargaison fixée
 STR_ORDER_DROP_REFIT_AUTO_ANY                                   :Cargaison disponible
 
-STR_ORDER_SERVICE                                               :{BLACK}Entretien
 STR_ORDER_DROP_GO_ALWAYS_DEPOT                                  :Toujours aller
 STR_ORDER_DROP_SERVICE_DEPOT                                    :Entretien si nécessaire
 STR_ORDER_DROP_HALT_DEPOT                                       :Arrêt
-STR_ORDER_SERVICE_TOOLTIP                                       :{BLACK}Sauter cet ordre tant qu'aucun entretien n'est requis
 
 STR_ORDER_CONDITIONAL_VARIABLE_TOOLTIP                          :{BLACK}Données du véhicule servant de base au saut
 
@@ -4624,6 +4613,7 @@ STR_ORDER_GO_TO_DEPOT_FORMAT                                    :{STRING} {DEPOT
 STR_ORDER_REFIT_ORDER                                           :(Réaménager pour {STRING})
 STR_ORDER_REFIT_STOP_ORDER                                      :(Réaménager pour {STRING} et arrêt)
 STR_ORDER_STOP_ORDER                                            :(Arrêt)
+
 
 STR_ORDER_GO_TO_STATION                                         :{STRING} {STATION} {STRING}
 STR_ORDER_GO_TO_STATION_CAN_T_USE_STATION                       :{PUSH_COLOUR}{RED}(Station inutilisable){POP_COLOUR} {STRING} {STATION} {STRING}
@@ -5091,6 +5081,8 @@ STR_ERROR_UNABLE_TO_FIND_ROUTE_TO                               :{WHITE}Impossib
 STR_ERROR_UNABLE_TO_FIND_LOCAL_DEPOT                            :{WHITE}Impossible de trouver un dépôt local
 
 STR_ERROR_DEPOT_WRONG_DEPOT_TYPE                                :Dépôt incompatible
+
+# Depot unbunching related errors
 
 # Autoreplace related errors
 STR_ERROR_TRAIN_TOO_LONG_AFTER_REPLACEMENT                      :{WHITE}{VEHICLE} est trop long après remplacement

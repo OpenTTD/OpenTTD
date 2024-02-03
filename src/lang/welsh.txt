@@ -1591,13 +1591,6 @@ STR_CONFIG_SETTING_AI_BUILDS_AIRCRAFT_HELPTEXT                  :Mae galluogi'r 
 STR_CONFIG_SETTING_AI_BUILDS_SHIPS                              :Analluogi llongau ar gyfer y cyfrifiadur: {STRING}
 STR_CONFIG_SETTING_AI_BUILDS_SHIPS_HELPTEXT                     :Mae galluogi'r gosodiad yma'n ei gwneud yn amhosib i chwaraewr cyfrifiadur adeiladu llongau
 
-STR_CONFIG_SETTING_AI_PROFILE                                   :Proffil gosodiadau rhagosodedig: {STRING}
-STR_CONFIG_SETTING_AI_PROFILE_HELPTEXT                          :Dewis pa broffil gosodiadau i'w ddefnyddio ar gyfer AIau a gyflwynir ar hap, neu fel gwerthoedd rhagosodedig pan yn ychwanegu AI neu Sgript Gêm newydd
-###length 3
-STR_CONFIG_SETTING_AI_PROFILE_EASY                              :Hawdd
-STR_CONFIG_SETTING_AI_PROFILE_MEDIUM                            :Cymhedrol
-STR_CONFIG_SETTING_AI_PROFILE_HARD                              :Anodd
-
 STR_CONFIG_SETTING_AI_IN_MULTIPLAYER                            :Caniatáu AIau mewn gemau amlchwaraewr: {STRING}
 STR_CONFIG_SETTING_AI_IN_MULTIPLAYER_HELPTEXT                   :Caniatáu i chwaraewyr AI gymeryd rhan mewn gemau amlchwaraewr
 
@@ -1704,7 +1697,6 @@ STR_CONFIG_SETTING_SEMAPHORE_BUILD_BEFORE_DATE_HELPTEXT         :Gosod y flwyddy
 STR_CONFIG_SETTING_CYCLE_SIGNAL_TYPES                           :Cylchu trwy mathau signal: {STRING}
 STR_CONFIG_SETTING_CYCLE_SIGNAL_TYPES_HELPTEXT                  :Dewis pa fathau o signalau i gylchu drwyddynt pan yn Ctrl+clicio ar signal gyda'r offer signal
 ###length 2
-STR_CONFIG_SETTING_CYCLE_SIGNAL_PBS                             :Signalau llwybr yn unig
 STR_CONFIG_SETTING_CYCLE_SIGNAL_ALL                             :Pob math gweledol
 
 STR_CONFIG_SETTING_SIGNAL_GUI_MODE                              :Dangos mathau signal: {STRING}
@@ -3950,7 +3942,6 @@ STR_ORDERS_TIMETABLE_VIEW_TOOLTIP                               :{BLACK}Newid i'
 
 STR_ORDERS_LIST_TOOLTIP                                         :{BLACK}Rhestr orchmynion - cliciwch orchymyn i'w amlygu. Mae Ctrl+Clic yn sgrolio i gyrchfan yr orchymyn
 STR_ORDER_INDEX                                                 :{COMMA}:{NBSP}
-STR_ORDER_TEXT                                                  :{STRING} {STRING} {STRING}
 
 STR_ORDERS_END_OF_ORDERS                                        :- - Diwedd Gorchmynion - -
 STR_ORDERS_END_OF_SHARED_ORDERS                                 :- - Diwedd y Gorchmynion sydd wedi'u Rhannu - -
@@ -3984,11 +3975,9 @@ STR_ORDER_REFIT_AUTO_TOOLTIP                                    :{BLACK}Dewis y 
 STR_ORDER_DROP_REFIT_AUTO                                       :Llwyth gosodedig
 STR_ORDER_DROP_REFIT_AUTO_ANY                                   :Llwythi ar gael
 
-STR_ORDER_SERVICE                                               :{BLACK}Gwasanaeth
 STR_ORDER_DROP_GO_ALWAYS_DEPOT                                  :Mynd bob tro
 STR_ORDER_DROP_SERVICE_DEPOT                                    :Gwasanaethu os oes angen
 STR_ORDER_DROP_HALT_DEPOT                                       :Stopio
-STR_ORDER_SERVICE_TOOLTIP                                       :{BLACK}Hepgor y gorchymyn hwn os nad oes angen gwasanaeth
 
 STR_ORDER_CONDITIONAL_VARIABLE_TOOLTIP                          :{BLACK}Data cerbyd i seilio'r naid arno
 
@@ -4056,6 +4045,7 @@ STR_ORDER_GO_TO_DEPOT_FORMAT                                    :{STRING} {DEPOT
 STR_ORDER_REFIT_ORDER                                           :(Ailffitio i {STRING})
 STR_ORDER_REFIT_STOP_ORDER                                      :(Ailfitio i {STRING} a stopio)
 STR_ORDER_STOP_ORDER                                            :(Stopio)
+
 
 STR_ORDER_GO_TO_STATION                                         :{STRING} {STATION} {STRING}
 STR_ORDER_GO_TO_STATION_CAN_T_USE_STATION                       :{PUSH_COLOUR}{RED}(Methu defnyddio gorsaf){POP_COLOUR} {STRING} {STATION} {STRING}
@@ -4491,6 +4481,8 @@ STR_ERROR_UNABLE_TO_FIND_ROUTE_TO                               :{WHITE}Methu do
 STR_ERROR_UNABLE_TO_FIND_LOCAL_DEPOT                            :{WHITE}Methu dod o hyd i'r depo lleol
 
 STR_ERROR_DEPOT_WRONG_DEPOT_TYPE                                :math depo anghywir
+
+# Depot unbunching related errors
 
 # Autoreplace related errors
 STR_ERROR_TRAIN_TOO_LONG_AFTER_REPLACEMENT                      :{WHITE}Aeth gormod o amser heibio i allu adnewyddu {VEHICLE}

@@ -1504,12 +1504,6 @@ STR_CONFIG_SETTING_AI_BUILDS_AIRCRAFT                           :Hindre datamask
 
 STR_CONFIG_SETTING_AI_BUILDS_SHIPS                              :Hindre datamaskina i å byggje skip: {STRING}
 
-STR_CONFIG_SETTING_AI_PROFILE                                   :Standard innstillingsprofil: {STRING}
-###length 3
-STR_CONFIG_SETTING_AI_PROFILE_EASY                              :Lett
-STR_CONFIG_SETTING_AI_PROFILE_MEDIUM                            :Medium
-STR_CONFIG_SETTING_AI_PROFILE_HARD                              :Hard
-
 STR_CONFIG_SETTING_AI_IN_MULTIPLAYER                            :Tillet AI-spelarar i fleirspelarmodus: {STRING}
 STR_CONFIG_SETTING_AI_IN_MULTIPLAYER_HELPTEXT                   :Tillat AI datamaskinspelarar å delta i fleirspelar-modus
 
@@ -1598,7 +1592,6 @@ STR_CONFIG_SETTING_SEMAPHORE_BUILD_BEFORE_DATE                  :Bygg vingesigna
 
 STR_CONFIG_SETTING_CYCLE_SIGNAL_TYPES                           :Bla gjennom signaltypar: {STRING}
 ###length 2
-STR_CONFIG_SETTING_CYCLE_SIGNAL_PBS                             :Kun avanserte signaler
 STR_CONFIG_SETTING_CYCLE_SIGNAL_ALL                             :Alle
 
 ###length 2
@@ -3724,7 +3717,6 @@ STR_ORDERS_TIMETABLE_VIEW_TOOLTIP                               :{BLACK}Byt til 
 
 STR_ORDERS_LIST_TOOLTIP                                         :{BLACK}Ordreliste - klikk på ein ordre for å velje han. Ctrl+klikk ruller til stasjonen
 STR_ORDER_INDEX                                                 :{COMMA}:{NBSP}
-STR_ORDER_TEXT                                                  :{STRING} {STRING} {STRING}
 
 STR_ORDERS_END_OF_ORDERS                                        :- - Slutt på ordre - -
 STR_ORDERS_END_OF_SHARED_ORDERS                                 :- - Slutt på delte ordrar - -
@@ -3758,11 +3750,9 @@ STR_ORDER_REFIT_AUTO_TOOLTIP                                    :{BLACK}Velg kva
 STR_ORDER_DROP_REFIT_AUTO                                       :Fast varetype
 STR_ORDER_DROP_REFIT_AUTO_ANY                                   :Tilgjengeleg vare
 
-STR_ORDER_SERVICE                                               :{BLACK}Vedlikehald
 STR_ORDER_DROP_GO_ALWAYS_DEPOT                                  :Alltid gå
 STR_ORDER_DROP_SERVICE_DEPOT                                    :Vedlikehald om naudsynt
 STR_ORDER_DROP_HALT_DEPOT                                       :Stopp
-STR_ORDER_SERVICE_TOOLTIP                                       :{BLACK}Hopp over ordren dersom ikkje vedlikehald trengst
 
 STR_ORDER_CONDITIONAL_VARIABLE_TOOLTIP                          :{BLACK}Køyretøy-data å basere hopp på
 
@@ -3829,6 +3819,7 @@ STR_ORDER_GO_TO_DEPOT_FORMAT                                    :{STRING} {DEPOT
 STR_ORDER_REFIT_ORDER                                           :(Bygg om til {STRING})
 STR_ORDER_REFIT_STOP_ORDER                                      :(Bygg om til {STRING} og stopp)
 STR_ORDER_STOP_ORDER                                            :(Stopp)
+
 
 STR_ORDER_GO_TO_STATION                                         :{STRING} {STATION} {STRING}
 
@@ -4253,6 +4244,8 @@ STR_ERROR_UNABLE_TO_FIND_ROUTE_TO                               :{WHITE}Kan ikkj
 STR_ERROR_UNABLE_TO_FIND_LOCAL_DEPOT                            :{WHITE}Kan ikkje finne garasje/stall/hangar/dokk i nærleiken
 
 STR_ERROR_DEPOT_WRONG_DEPOT_TYPE                                :Gal type garasje/stall/hangar/dokk
+
+# Depot unbunching related errors
 
 # Autoreplace related errors
 STR_ERROR_TRAIN_TOO_LONG_AFTER_REPLACEMENT                      :{WHITE}{VEHICLE} er for langt etter byte

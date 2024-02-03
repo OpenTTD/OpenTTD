@@ -662,8 +662,6 @@ STR_CONFIG_SETTING_ADVANCED_VEHICLE_LISTS_HELPTEXT              :Ippermetti l-uz
 
 
 
-###length 3
-
 
 
 
@@ -1261,7 +1259,6 @@ STR_VEHICLE_VIEW_CAPTION                                        :{WHITE}{VEHICLE
 # Order view
 
 STR_ORDER_INDEX                                                 :{COMMA}:{NBSP}
-STR_ORDER_TEXT                                                  :{STRING} {STRING} {STRING}
 
 
 # Order bottom buttons
@@ -1290,6 +1287,7 @@ STR_ORDERS_DELETE_ALL_TOOLTIP                                   :{BLACK}Hassar l
 
 STR_ORDER_GO_TO_NEAREST_DEPOT_FORMAT                            :{STRING} {STRING} {STRING}
 STR_ORDER_GO_TO_DEPOT_FORMAT                                    :{STRING} {DEPOT}
+
 
 
 STR_ORDER_GO_TO_STATION                                         :{STRING} {STATION} {STRING}
@@ -1408,6 +1406,8 @@ STR_ERROR_CAN_T_RENAME_DEPOT                                    :{WHITE}Ma tista
 
 
 
+
+# Depot unbunching related errors
 
 # Autoreplace related errors
 

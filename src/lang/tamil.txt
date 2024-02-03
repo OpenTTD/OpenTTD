@@ -1521,12 +1521,6 @@ STR_CONFIG_SETTING_AI_BUILDS_AIRCRAFT_HELPTEXT                  :கணினி
 STR_CONFIG_SETTING_AI_BUILDS_SHIPS                              :கணினியிற்கு கப்பல்களை அனுமதிக்காதே: {STRING}
 STR_CONFIG_SETTING_AI_BUILDS_SHIPS_HELPTEXT                     :கணினியால் கப்பல்களை பயன்படுத்த இயலாது
 
-STR_CONFIG_SETTING_AI_PROFILE                                   :முதன்மை அமைப்புகள் profile: {STRING}
-###length 3
-STR_CONFIG_SETTING_AI_PROFILE_EASY                              :எளிதான
-STR_CONFIG_SETTING_AI_PROFILE_MEDIUM                            :நடுத்தரமான
-STR_CONFIG_SETTING_AI_PROFILE_HARD                              :கடுமையான
-
 STR_CONFIG_SETTING_AI_IN_MULTIPLAYER                            :கணினிகளை பல்வீரர் ஆட்டத்தில் அனுமதி: {STRING}
 
 STR_CONFIG_SETTING_SCRIPT_MAX_MEMORY_VALUE                      :{COMMA} MiB
@@ -1620,7 +1614,6 @@ STR_CONFIG_SETTING_SEMAPHORE_BUILD_BEFORE_DATE                  :தானாக
 
 STR_CONFIG_SETTING_CYCLE_SIGNAL_TYPES                           :வெவேறு சிக்னல் வகைகளுள் மாற்றவும்: {STRING}
 ###length 2
-STR_CONFIG_SETTING_CYCLE_SIGNAL_PBS                             :பாதை சிக்னல்கள் மட்டும்
 STR_CONFIG_SETTING_CYCLE_SIGNAL_ALL                             :தெரிகிர அனைத்தும்
 
 STR_CONFIG_SETTING_SIGNAL_GUI_MODE                              :சிக்னல் வகைகளை காட்டு: {STRING}
@@ -3806,7 +3799,6 @@ STR_ORDERS_TIMETABLE_VIEW                                       :{BLACK}நே�
 STR_ORDERS_TIMETABLE_VIEW_TOOLTIP                               :{BLACK}கால அட்டவணை பார்வைக்கு மாறு
 
 STR_ORDER_INDEX                                                 :{COMMA}:{NBSP}
-STR_ORDER_TEXT                                                  :{STRING} {STRING} {STRING}
 
 STR_ORDERS_END_OF_ORDERS                                        :- - கட்டளைகளின் பட்டியல் முடிகிறது - -
 STR_ORDERS_END_OF_SHARED_ORDERS                                 :- - பகிரப்பட்ட கட்டளைகளின் பட்டியல் முடிகிறது - -
@@ -3835,11 +3827,9 @@ STR_ORDER_REFIT_AUTO                                            :{BLACK}தா�
 STR_ORDER_DROP_REFIT_AUTO                                       :குறிப்பிட்ட சரக்கு
 STR_ORDER_DROP_REFIT_AUTO_ANY                                   :கிடைக்கும் சரக்கு
 
-STR_ORDER_SERVICE                                               :{BLACK}பராமரிப்பு
 STR_ORDER_DROP_GO_ALWAYS_DEPOT                                  :எப்போதும் செல்
 STR_ORDER_DROP_SERVICE_DEPOT                                    :தேவைப்பட்டால் பராமரிப்பிற்கு செல்
 STR_ORDER_DROP_HALT_DEPOT                                       :நிறுத்து
-STR_ORDER_SERVICE_TOOLTIP                                       :{BLACK}பழுது சரிபார்த்தல் இல்லையெனில் இந்தக் கட்டளையினை தவிற்கவும்
 
 STR_ORDER_CONDITIONAL_VARIABLE_TOOLTIP                          :{BLACK}அடிப்படை ஜம்பிங் செய்ய வாகனத் தரவு
 
@@ -3905,6 +3895,7 @@ STR_ORDER_GO_TO_DEPOT_FORMAT                                    :{STRING} {DEPOT
 STR_ORDER_REFIT_ORDER                                           :({STRING}-இற்கு மாற்று)
 STR_ORDER_REFIT_STOP_ORDER                                      :({STRING}-இற்கு மாற்றிவிட்டு நின்றுவிடு)
 STR_ORDER_STOP_ORDER                                            :(நிறுத்து)
+
 
 STR_ORDER_GO_TO_STATION                                         :{STRING} {STATION} {STRING}
 
@@ -4333,6 +4324,8 @@ STR_ERROR_UNABLE_TO_FIND_ROUTE_TO                               :{WHITE}பண�
 STR_ERROR_UNABLE_TO_FIND_LOCAL_DEPOT                            :{WHITE}பணிமனையை கண்டுபிடிக்க முடியவில்லை
 
 STR_ERROR_DEPOT_WRONG_DEPOT_TYPE                                :தவறான பணிமனை வகை
+
+# Depot unbunching related errors
 
 # Autoreplace related errors
 STR_ERROR_TRAIN_TOO_LONG_AFTER_REPLACEMENT                      :{WHITE}{VEHICLE} மாற்றியமைக்கப்பட்ட பின் இரயில் மிக நீளமாக உள்ளது
