@@ -63,7 +63,7 @@ static UDPSocket _udp_server("Server"); ///< udp server socket
 /** Helper class for handling all server side communication. */
 class ServerNetworkUDPSocketHandler : public NetworkUDPSocketHandler {
 protected:
-	void Receive_CLIENT_FIND_SERVER(Packet *p, NetworkAddress *client_addr) override;
+	void Receive_CLIENT_FIND_SERVER(Packet &p, NetworkAddress &client_addr) override;
 public:
 	/**
 	 * Create the socket.
@@ -73,12 +73,12 @@ public:
 	virtual ~ServerNetworkUDPSocketHandler() = default;
 };
 
-void ServerNetworkUDPSocketHandler::Receive_CLIENT_FIND_SERVER(Packet *, NetworkAddress *client_addr)
+void ServerNetworkUDPSocketHandler::Receive_CLIENT_FIND_SERVER(Packet &, NetworkAddress &client_addr)
 {
 	Packet packet(PACKET_UDP_SERVER_RESPONSE);
-	this->SendPacket(&packet, client_addr);
+	this->SendPacket(packet, client_addr);
 
-	Debug(net, 7, "Queried from {}", client_addr->GetHostname());
+	Debug(net, 7, "Queried from {}", client_addr.GetHostname());
 }
 
 ///*** Communication with servers (we are client) ***/
@@ -86,16 +86,16 @@ void ServerNetworkUDPSocketHandler::Receive_CLIENT_FIND_SERVER(Packet *, Network
 /** Helper class for handling all client side communication. */
 class ClientNetworkUDPSocketHandler : public NetworkUDPSocketHandler {
 protected:
-	void Receive_SERVER_RESPONSE(Packet *p, NetworkAddress *client_addr) override;
+	void Receive_SERVER_RESPONSE(Packet &p, NetworkAddress &client_addr) override;
 public:
 	virtual ~ClientNetworkUDPSocketHandler() = default;
 };
 
-void ClientNetworkUDPSocketHandler::Receive_SERVER_RESPONSE(Packet *, NetworkAddress *client_addr)
+void ClientNetworkUDPSocketHandler::Receive_SERVER_RESPONSE(Packet &, NetworkAddress &client_addr)
 {
-	Debug(net, 3, "Server response from {}", client_addr->GetAddressAsString());
+	Debug(net, 3, "Server response from {}", client_addr.GetAddressAsString());
 
-	NetworkAddServer(client_addr->GetAddressAsString(false), false, true);
+	NetworkAddServer(client_addr.GetAddressAsString(false), false, true);
 }
 
 /** Broadcast to all ips */
@@ -105,7 +105,7 @@ static void NetworkUDPBroadCast(NetworkUDPSocketHandler *socket)
 		Debug(net, 5, "Broadcasting to {}", addr.GetHostname());
 
 		Packet p(PACKET_UDP_CLIENT_FIND_SERVER);
-		socket->SendPacket(&p, &addr, true, true);
+		socket->SendPacket(p, addr, true, true);
 	}
 }
 
