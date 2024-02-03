@@ -43,12 +43,11 @@ bool NetworkTurnSocketHandler::HandlePacket(Packet *p)
  */
 bool NetworkTurnSocketHandler::ReceivePackets()
 {
-	Packet *p;
+	std::unique_ptr<Packet> p;
 	static const int MAX_PACKETS_TO_RECEIVE = 4;
 	int i = MAX_PACKETS_TO_RECEIVE;
 	while (--i != 0 && (p = this->ReceivePacket()) != nullptr) {
-		bool cont = this->HandlePacket(p);
-		delete p;
+		bool cont = this->HandlePacket(p.get());
 		if (!cont) return true;
 	}
 

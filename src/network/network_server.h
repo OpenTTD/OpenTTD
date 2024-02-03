@@ -75,7 +75,7 @@ public:
 	ServerNetworkGameSocketHandler(SOCKET s);
 	~ServerNetworkGameSocketHandler();
 
-	Packet *ReceivePacket() override;
+	std::unique_ptr<Packet> ReceivePacket() override;
 	NetworkRecvStatus CloseConnection(NetworkRecvStatus status) override;
 	std::string GetClientName() const;
 
