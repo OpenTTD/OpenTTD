@@ -458,7 +458,7 @@ void ClientNetworkCoordinatorSocketHandler::Register()
 
 	this->Connect();
 
-	auto p = std::make_unique<Packet>(PACKET_COORDINATOR_SERVER_REGISTER);
+	auto p = std::make_unique<Packet>(this, PACKET_COORDINATOR_SERVER_REGISTER);
 	p->Send_uint8(NETWORK_COORDINATOR_VERSION);
 	p->Send_uint8(_settings_client.network.server_game_type);
 	p->Send_uint16(_settings_client.network.server_port);
@@ -480,7 +480,7 @@ void ClientNetworkCoordinatorSocketHandler::SendServerUpdate()
 {
 	Debug(net, 6, "Sending server update to Game Coordinator");
 
-	auto p = std::make_unique<Packet>(PACKET_COORDINATOR_SERVER_UPDATE, TCP_MTU);
+	auto p = std::make_unique<Packet>(this, PACKET_COORDINATOR_SERVER_UPDATE, TCP_MTU);
 	p->Send_uint8(NETWORK_COORDINATOR_VERSION);
 	SerializeNetworkGameInfo(*p, GetCurrentNetworkServerGameInfo(), this->next_update.time_since_epoch() != std::chrono::nanoseconds::zero());
 
@@ -498,7 +498,7 @@ void ClientNetworkCoordinatorSocketHandler::GetListing()
 
 	_network_game_list_version++;
 
-	auto p = std::make_unique<Packet>(PACKET_COORDINATOR_CLIENT_LISTING);
+	auto p = std::make_unique<Packet>(this, PACKET_COORDINATOR_CLIENT_LISTING);
 	p->Send_uint8(NETWORK_COORDINATOR_VERSION);
 	p->Send_uint8(NETWORK_GAME_INFO_VERSION);
 	p->Send_string(_openttd_revision);
@@ -530,7 +530,7 @@ void ClientNetworkCoordinatorSocketHandler::ConnectToServer(const std::string &i
 
 	this->Connect();
 
-	auto p = std::make_unique<Packet>(PACKET_COORDINATOR_CLIENT_CONNECT);
+	auto p = std::make_unique<Packet>(this, PACKET_COORDINATOR_CLIENT_CONNECT);
 	p->Send_uint8(NETWORK_COORDINATOR_VERSION);
 	p->Send_string(invite_code);
 
@@ -547,7 +547,7 @@ void ClientNetworkCoordinatorSocketHandler::ConnectFailure(const std::string &to
 	/* Connecter will destroy itself. */
 	this->game_connecter = nullptr;
 
-	auto p = std::make_unique<Packet>(PACKET_COORDINATOR_SERCLI_CONNECT_FAILED);
+	auto p = std::make_unique<Packet>(this, PACKET_COORDINATOR_SERCLI_CONNECT_FAILED);
 	p->Send_uint8(NETWORK_COORDINATOR_VERSION);
 	p->Send_string(token);
 	p->Send_uint8(tracking_number);
@@ -578,7 +578,7 @@ void ClientNetworkCoordinatorSocketHandler::ConnectSuccess(const std::string &to
 	} else {
 		/* The client informs the Game Coordinator about the success. The server
 		 * doesn't have to, as it is implied by the client telling. */
-		auto p = std::make_unique<Packet>(PACKET_COORDINATOR_CLIENT_CONNECTED);
+		auto p = std::make_unique<Packet>(this, PACKET_COORDINATOR_CLIENT_CONNECTED);
 		p->Send_uint8(NETWORK_COORDINATOR_VERSION);
 		p->Send_string(token);
 		this->SendPacket(std::move(p));
@@ -606,7 +606,7 @@ void ClientNetworkCoordinatorSocketHandler::ConnectSuccess(const std::string &to
  */
 void ClientNetworkCoordinatorSocketHandler::StunResult(const std::string &token, uint8_t family, bool result)
 {
-	auto p = std::make_unique<Packet>(PACKET_COORDINATOR_SERCLI_STUN_RESULT);
+	auto p = std::make_unique<Packet>(this, PACKET_COORDINATOR_SERCLI_STUN_RESULT);
 	p->Send_uint8(NETWORK_COORDINATOR_VERSION);
 	p->Send_string(token);
 	p->Send_uint8(family);

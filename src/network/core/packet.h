@@ -53,7 +53,7 @@ private:
 
 public:
 	Packet(NetworkSocketHandler *cs, size_t limit, size_t initial_read_size = sizeof(PacketSize));
-	Packet(PacketType type, size_t limit = COMPAT_MTU);
+	Packet(NetworkSocketHandler *cs, PacketType type, size_t limit = COMPAT_MTU);
 
 	/* Sending/writing of packets */
 	void PrepareToSend();
