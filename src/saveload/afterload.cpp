@@ -69,7 +69,7 @@
 
 #include "../safeguards.h"
 
-extern Company *DoStartupNewCompany(bool is_ai, CompanyID company = INVALID_COMPANY);
+extern Company *DoStartupNewCompany(bool is_ai, CompanyID company = INVALID_COMPANY, bool deviate = true);
 
 /**
  * Makes a tile canal or water depending on the surroundings.
@@ -549,11 +549,11 @@ static void StartScripts()
 
 	/* Start the AIs. */
 	for (const Company *c : Company::Iterate()) {
-		if (Company::IsValidAiID(c->index)) AI::StartNew(c->index, false);
+		if (Company::IsValidAiID(c->index)) AI::StartNew(c->index, false, false);
 	}
 
 	/* Start the GameScript. */
-	Game::StartNew();
+	Game::StartNew(false);
 
 	ShowScriptDebugWindowIfScriptError();
 }

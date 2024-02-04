@@ -33,7 +33,7 @@
 	return !_networking || (_network_server && _settings_game.ai.ai_in_multiplayer);
 }
 
-/* static */ void AI::StartNew(CompanyID company, bool rerandomise_ai)
+/* static */ void AI::StartNew(CompanyID company, bool rerandomise_ai, bool deviate)
 {
 	assert(Company::IsValidID(company));
 
@@ -46,8 +46,9 @@
 		info = AI::scanner_info->SelectRandomAI();
 		assert(info != nullptr);
 		/* Load default data and store the name in the settings */
-		config->Change(info->GetName(), -1, false, true);
+		config->Change(info->GetName(), -1, false, true, false);
 	}
+	if (deviate) config->AddRandomDeviation();
 	config->AnchorUnchangeableSettings();
 
 	Backup<CompanyID> cur_company(_current_company, company, FILE_LINE);

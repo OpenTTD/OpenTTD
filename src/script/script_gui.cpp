@@ -176,7 +176,7 @@ struct ScriptListWindow : public Window {
 		} else {
 			ScriptInfoList::const_iterator it = this->info_list->cbegin();
 			std::advance(it, this->selected);
-			GetConfig(slot)->Change(it->second->GetName(), it->second->GetVersion());
+			GetConfig(slot)->Change(it->second->GetName(), it->second->GetVersion(), false, false, false);
 		}
 		InvalidateWindowData(WC_GAME_OPTIONS, slot == OWNER_DEITY ? WN_GAME_OPTIONS_GS : WN_GAME_OPTIONS_AI);
 		InvalidateWindowClassesData(WC_SCRIPT_SETTINGS);
@@ -1080,12 +1080,14 @@ struct ScriptDebugWindow : public Window {
 				ChangeToScript(OWNER_DEITY, _ctrl_pressed);
 				break;
 
-			case WID_SCRD_RELOAD_TOGGLE:
+			case WID_SCRD_RELOAD_TOGGLE: {
 				if (this->filter.script_debug_company == OWNER_DEITY) break;
+				bool deviate = AIConfig::GetConfig(this->filter.script_debug_company)->IsRandom();
 				/* First kill the company of the AI, then start a new one. This should start the current AI again */
-				Command<CMD_COMPANY_CTRL>::Post(CCA_DELETE, this->filter.script_debug_company, CRR_MANUAL, INVALID_CLIENT_ID);
-				Command<CMD_COMPANY_CTRL>::Post(CCA_NEW_AI, this->filter.script_debug_company, CRR_NONE, INVALID_CLIENT_ID);
+				Command<CMD_COMPANY_CTRL>::Post(CCA_DELETE, this->filter.script_debug_company, CRR_MANUAL, INVALID_CLIENT_ID, false);
+				Command<CMD_COMPANY_CTRL>::Post(CCA_NEW_AI, this->filter.script_debug_company, CRR_NONE, INVALID_CLIENT_ID, deviate);
 				break;
+			}
 
 			case WID_SCRD_SETTINGS:
 				ShowScriptSettingsWindow(this->filter.script_debug_company);

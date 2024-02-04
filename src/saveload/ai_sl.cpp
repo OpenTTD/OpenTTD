@@ -87,11 +87,11 @@ struct AIPLChunkHandler : ChunkHandler {
 				/* A random AI. */
 				config->Change(std::nullopt, -1, false, true);
 			} else {
-				config->Change(_ai_saveload_name, _ai_saveload_version, false, _ai_saveload_is_random);
+				config->Change(_ai_saveload_name, _ai_saveload_version, false, _ai_saveload_is_random, false);
 				if (!config->HasScript()) {
 					/* No version of the AI available that can load the data. Try to load the
 					 * latest version of the AI instead. */
-					config->Change(_ai_saveload_name, -1, false, _ai_saveload_is_random);
+					config->Change(_ai_saveload_name, -1, false, _ai_saveload_is_random, false);
 					if (!config->HasScript()) {
 						if (_ai_saveload_name.compare("%_dummy") != 0) {
 							Debug(script, 0, "The savegame has an AI by the name '{}', version {} which is no longer available.", _ai_saveload_name, _ai_saveload_version);

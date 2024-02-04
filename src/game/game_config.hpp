@@ -23,8 +23,8 @@ public:
 		ScriptConfig()
 	{}
 
-	GameConfig(const GameConfig *config) :
-		ScriptConfig(config)
+	GameConfig(const GameConfig *config, bool add_random_deviation) :
+		ScriptConfig(config, add_random_deviation)
 	{}
 
 	class GameInfo *GetInfo() const;

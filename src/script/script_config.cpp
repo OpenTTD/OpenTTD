@@ -18,7 +18,7 @@
 
 #include "../safeguards.h"
 
-void ScriptConfig::Change(std::optional<const std::string> name, int version, bool force_exact_match, bool is_random)
+void ScriptConfig::Change(std::optional<const std::string> name, int version, bool force_exact_match, bool is_random, bool add_random_deviation)
 {
 	if (name.has_value()) {
 		this->name = std::move(name.value());
@@ -33,12 +33,12 @@ void ScriptConfig::Change(std::optional<const std::string> name, int version, bo
 
 	this->ClearConfigList();
 
-	if (_game_mode == GM_NORMAL && _switch_mode != SM_LOAD_GAME && this->info != nullptr) {
+	if (this->info != nullptr && add_random_deviation) {
 		this->AddRandomDeviation();
 	}
 }
 
-ScriptConfig::ScriptConfig(const ScriptConfig *config)
+ScriptConfig::ScriptConfig(const ScriptConfig *config, bool add_random_deviation)
 {
 	this->name = config->name;
 	this->info = config->info;
@@ -49,6 +49,8 @@ ScriptConfig::ScriptConfig(const ScriptConfig *config)
 	for (const auto &item : config->settings) {
 		this->settings[item.first] = item.second;
 	}
+
+	if (add_random_deviation) this->AddRandomDeviation();
 }
 
 ScriptConfig::~ScriptConfig()

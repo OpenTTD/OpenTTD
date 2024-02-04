@@ -24,8 +24,8 @@ public:
 		ScriptConfig()
 	{}
 
-	AIConfig(const AIConfig *config) :
-		ScriptConfig(config)
+	AIConfig(const AIConfig *config, bool add_random_deviation) :
+		ScriptConfig(config, add_random_deviation)
 	{}
 
 	class AIInfo *GetInfo() const;

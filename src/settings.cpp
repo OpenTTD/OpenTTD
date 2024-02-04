@@ -953,7 +953,7 @@ static void AILoadConfig(const IniFile &ini, const char *grpname)
 	for (const IniItem &item : group->items) {
 		AIConfig *config = AIConfig::GetConfig(c, AIConfig::SSS_FORCE_NEWGAME);
 
-		config->Change(item.name);
+		config->Change(item.name, -1, false, false, false);
 		if (!config->HasScript()) {
 			if (item.name != "none") {
 				Debug(script, 0, "The AI by the name '{}' was no longer found, and removed from the list.", item.name);
@@ -980,7 +980,7 @@ static void GameLoadConfig(const IniFile &ini, const char *grpname)
 
 	GameConfig *config = GameConfig::GetConfig(AIConfig::SSS_FORCE_NEWGAME);
 
-	config->Change(item.name);
+	config->Change(item.name, -1, false, false, false);
 	if (!config->HasScript()) {
 		if (item.name != "none") {
 			Debug(script, 0, "The GameScript by the name '{}' was no longer found, and removed from the list.", item.name);

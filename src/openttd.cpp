@@ -96,7 +96,7 @@ void CallWindowGameTickEvent();
 bool HandleBootstrap();
 
 extern void AfterLoadCompanyStats();
-extern Company *DoStartupNewCompany(bool is_ai, CompanyID company = INVALID_COMPANY);
+extern Company *DoStartupNewCompany(bool is_ai, CompanyID company = INVALID_COMPANY, bool deviate = true);
 extern void OSOpenBrowser(const std::string &url);
 extern void RebuildTownCaches();
 extern void ShowOSErrorBox(const char *buf, bool system);
@@ -361,12 +361,12 @@ void MakeNewgameSettingsLive()
 	for (CompanyID c = COMPANY_FIRST; c < MAX_COMPANIES; c++) {
 		_settings_game.ai_config[c] = nullptr;
 		if (_settings_newgame.ai_config[c] != nullptr) {
-			_settings_game.ai_config[c] = new AIConfig(_settings_newgame.ai_config[c]);
+			_settings_game.ai_config[c] = new AIConfig(_settings_newgame.ai_config[c], false);
 		}
 	}
 	_settings_game.game_config = nullptr;
 	if (_settings_newgame.game_config != nullptr) {
-		_settings_game.game_config = new GameConfig(_settings_newgame.game_config);
+		_settings_game.game_config = new GameConfig(_settings_newgame.game_config, false);
 	}
 }
 

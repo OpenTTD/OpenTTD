@@ -187,18 +187,20 @@ void InitializeGame(uint size_x, uint size_y, bool reset_date, bool reset_settin
 		for (CompanyID c = COMPANY_FIRST; c < MAX_COMPANIES; c++) {
 			_settings_game.ai_config[c] = nullptr;
 			if (_settings_newgame.ai_config[c] != nullptr) {
-				_settings_game.ai_config[c] = new AIConfig(_settings_newgame.ai_config[c]);
+				_settings_game.ai_config[c] = new AIConfig(_settings_newgame.ai_config[c], true);
 			}
 		}
 		_settings_game.game_config = nullptr;
 		if (_settings_newgame.game_config != nullptr) {
-			_settings_game.game_config = new GameConfig(_settings_newgame.game_config);
+			_settings_game.game_config = new GameConfig(_settings_newgame.game_config, true);
 		}
 	}
 
-	/* Set random deviation for scripts. */
-	for (auto &ai_config : _settings_game.ai_config) {
-		if (ai_config != nullptr) ai_config->AddRandomDeviation();
+	if (_switch_mode == SM_RESTARTGAME) {
+		/* Simulate random deviation for scripts to keep the randomizer counters in sync, but don't set the deviated values. */
+		for (auto &ai_config : _settings_game.ai_config) {
+			if (ai_config != nullptr) ai_config->AddRandomDeviation();
+		}
+		if (_settings_game.game_config != nullptr) _settings_game.game_config->AddRandomDeviation();
 	}
-	if (_settings_game.game_config != nullptr) _settings_game.game_config->AddRandomDeviation();
 }

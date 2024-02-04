@@ -1015,7 +1015,7 @@ DEF_CONSOLE_CMD(ConResetCompany)
 	}
 
 	/* It is safe to remove this company */
-	Command<CMD_COMPANY_CTRL>::Post(CCA_DELETE, index, CRR_MANUAL, INVALID_CLIENT_ID);
+	Command<CMD_COMPANY_CTRL>::Post(CCA_DELETE, index, CRR_MANUAL, INVALID_CLIENT_ID, false);
 	IConsolePrint(CC_DEFAULT, "Company deleted.");
 
 	return true;
@@ -1350,16 +1350,20 @@ DEF_CONSOLE_CMD(ConStartAI)
 		return true;
 	}
 
-	int n = 0;
+	CompanyID cid = COMPANY_FIRST;
 	/* Find the next free slot */
 	for (const Company *c : Company::Iterate()) {
-		if (c->index != n) break;
-		n++;
+		if (c->index != cid) break;
+		cid++;
 	}
 
-	AIConfig *config = AIConfig::GetConfig((CompanyID)n);
+	AIConfig *config = AIConfig::GetConfig(cid);
+	bool deviate = argc == 1 ? !config->HasScript() : argc == 2;
 	if (argc >= 2) {
-		config->Change(argv[1], -1, false);
+		auto name = std::string(argv[1]);
+		int version = -1;
+		bool force_exact_match = false;
+		config->Change(name, version, force_exact_match, false, deviate);
 
 		/* If the name is not found, and there is a dot in the name,
 		 * try again with the assumption everything right of the dot is
@@ -1370,8 +1374,10 @@ DEF_CONSOLE_CMD(ConStartAI)
 				size_t name_length = e - argv[1];
 				e++;
 
-				int version = atoi(e);
-				config->Change(std::string(argv[1], name_length), version, true);
+				version = atoi(e);
+				name = std::string(argv[1], name_length);
+				force_exact_match = true;
+				config->Change(name, version, force_exact_match, false, deviate);
 			}
 		}
 
@@ -1385,7 +1391,7 @@ DEF_CONSOLE_CMD(ConStartAI)
 	}
 
 	/* Start a new AI company */
-	Command<CMD_COMPANY_CTRL>::Post(CCA_NEW_AI, INVALID_COMPANY, CRR_NONE, INVALID_CLIENT_ID);
+	Command<CMD_COMPANY_CTRL>::Post(CCA_NEW_AI, cid, CRR_NONE, INVALID_CLIENT_ID, deviate);
 
 	return true;
 }
@@ -1420,9 +1426,11 @@ DEF_CONSOLE_CMD(ConReloadAI)
 		return true;
 	}
 
+	bool deviate = AIConfig::GetConfig(company_id)->IsRandom();
+
 	/* First kill the company of the AI, then start a new one. This should start the current AI again */
-	Command<CMD_COMPANY_CTRL>::Post(CCA_DELETE, company_id, CRR_MANUAL, INVALID_CLIENT_ID);
-	Command<CMD_COMPANY_CTRL>::Post(CCA_NEW_AI, company_id, CRR_NONE, INVALID_CLIENT_ID);
+	Command<CMD_COMPANY_CTRL>::Post(CCA_DELETE, company_id, CRR_MANUAL, INVALID_CLIENT_ID, false);
+	Command<CMD_COMPANY_CTRL>::Post(CCA_NEW_AI, company_id, CRR_NONE, INVALID_CLIENT_ID, deviate);
 	IConsolePrint(CC_DEFAULT, "AI reloaded.");
 
 	return true;
@@ -1459,7 +1467,7 @@ DEF_CONSOLE_CMD(ConStopAI)
 	}
 
 	/* Now kill the company of the AI. */
-	Command<CMD_COMPANY_CTRL>::Post(CCA_DELETE, company_id, CRR_MANUAL, INVALID_CLIENT_ID);
+	Command<CMD_COMPANY_CTRL>::Post(CCA_DELETE, company_id, CRR_MANUAL, INVALID_CLIENT_ID, false);
 	IConsolePrint(CC_DEFAULT, "AI stopped, company deleted.");
 
 	return true;

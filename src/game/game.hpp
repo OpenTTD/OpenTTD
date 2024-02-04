@@ -31,8 +31,9 @@ public:
 
 	/**
 	 * Start up a new GameScript.
+	 * @param deviation Whether to add random deviation to settings that allow it.
 	 */
-	static void StartNew();
+	static void StartNew(bool deviation = true);
 
 	/**
 	 * Uninitialize the Game system.

@@ -228,7 +228,9 @@ public:
 	 *    actual value of the setting in game will be randomised in the range
 	 *    [user_configured_value - random_deviation, user_configured_value + random_deviation] (inclusive).
 	 *    random_deviation sign is ignored and the value is clamped in the range [0, MAX(int32_t)] (inclusive).
-	 *    The randomisation will happen just before the Script start.
+	 *    The randomisation will happen in the following cases:
+	 *    - right before game start, so after the user decided the settings for the script.
+	 *    - when a random AI starts.
 	 *    Not allowed if the CONFIG_BOOLEAN flag is set, otherwise optional.
 	 *  - step_size The increase/decrease of the value every time the user
 	 *    clicks one of the up/down arrow buttons. Optional, default is 1.

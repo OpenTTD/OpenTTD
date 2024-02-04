@@ -28,8 +28,9 @@ public:
 	 * Start a new AI company.
 	 * @param company At which slot the AI company should start.
 	 * @param rerandomise_ai Whether to rerandomise the configured AI.
+	 * @param deviate Whether to add random deviation to settings that allow it.
 	 */
-	static void StartNew(CompanyID company, bool rerandomise_ai = true);
+	static void StartNew(CompanyID company, bool rerandomise_ai = true, bool deviate = true);
 
 	/**
 	 * Called every game-tick to let AIs do something.

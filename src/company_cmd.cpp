@@ -20,6 +20,7 @@
 #include "network/network_base.h"
 #include "network/network_admin.h"
 #include "ai/ai.hpp"
+#include "ai/ai_config.hpp"
 #include "company_manager_face.h"
 #include "window_func.h"
 #include "strings_func.h"
@@ -577,9 +578,10 @@ void ResetCompanyLivery(Company *c)
  *
  * @param is_ai is an AI company?
  * @param company CompanyID to use for the new company
+ * @param deviate whether to add random deviation to settings that allow it, for the AI company
  * @return the company struct
  */
-Company *DoStartupNewCompany(bool is_ai, CompanyID company = INVALID_COMPANY)
+Company *DoStartupNewCompany(bool is_ai, CompanyID company = INVALID_COMPANY, bool deviate = true)
 {
 	if (!Company::CanAllocateItem()) return nullptr;
 
@@ -625,7 +627,7 @@ Company *DoStartupNewCompany(bool is_ai, CompanyID company = INVALID_COMPANY)
 	BuildOwnerLegend();
 	InvalidateWindowData(WC_SMALLMAP, 0, 1);
 
-	if (is_ai && (!_networking || _network_server)) AI::StartNew(c->index);
+	if (is_ai && (!_networking || _network_server)) AI::StartNew(c->index, true, deviate);
 
 	AI::BroadcastNewEvent(new ScriptEventCompanyNew(c->index), c->index);
 	Game::NewEvent(new ScriptEventCompanyNew(c->index));
@@ -646,9 +648,16 @@ TimeoutTimer<TimerGameTick> _new_competitor_timeout(0, []() {
 
 	if (n >= _settings_game.difficulty.max_no_competitors) return;
 
+	CompanyID cid = COMPANY_FIRST;
+	/* Find the next free slot */
+	for (const Company *c : Company::Iterate()) {
+		if (c->index != cid) break;
+		cid++;
+	}
+
 	/* Send a command to all clients to start up a new AI.
 	 * Works fine for Multiplayer and Singleplayer */
-	Command<CMD_COMPANY_CTRL>::Post(CCA_NEW_AI, INVALID_COMPANY, CRR_NONE, INVALID_CLIENT_ID);
+	Command<CMD_COMPANY_CTRL>::Post(CCA_NEW_AI, cid, CRR_NONE, INVALID_CLIENT_ID, !AIConfig::GetConfig(cid)->HasScript());
 });
 
 /** Start of a new game. */
@@ -760,15 +769,36 @@ void OnTick_Companies()
 		/* If the interval is zero, start as many competitors as needed then check every ~10 minutes if a company went bankrupt and needs replacing. */
 		if (timeout == 0) {
 			/* count number of competitors */
-			uint8_t n = 0;
+			uint8_t n_ais = 0;
 			for (const Company *cc : Company::Iterate()) {
-				if (cc->is_ai) n++;
+				if (cc->is_ai) n_ais++;
 			}
 
+			/* Count number of total existing companies. */
+			auto current_companies = Company::GetNumItems();
+
+			CompanyMask ais_to_start = 0;
 			for (auto i = 0; i < _settings_game.difficulty.max_no_competitors; i++) {
-				if (_networking && Company::GetNumItems() >= _settings_client.network.max_companies) break;
-				if (n++ >= _settings_game.difficulty.max_no_competitors) break;
-				Command<CMD_COMPANY_CTRL>::Post(CCA_NEW_AI, INVALID_COMPANY, CRR_NONE, INVALID_CLIENT_ID);
+				auto count = CountBits(ais_to_start);
+				if (_networking && current_companies + count >= _settings_client.network.max_companies) break;
+				if (n_ais + count >= _settings_game.difficulty.max_no_competitors) break;
+				if (current_companies + count >= MAX_COMPANIES) break;
+
+				/* Find the first company which doesn't exist yet */
+				CompanyID cid = INVALID_COMPANY;
+				for (cid = COMPANY_FIRST; cid < MAX_COMPANIES; cid++) {
+					if (!Company::IsValidID(cid)) {
+						if (count == 0) break;
+						count--;
+					}
+				}
+				assert(count == 0);
+				assert(!HasBit(ais_to_start, cid));
+				SetBit(ais_to_start, cid);
+			}
+
+			for (auto company : SetBitIterator(ais_to_start)) {
+				Command<CMD_COMPANY_CTRL>::Post(CCA_NEW_AI, (CompanyID)company, CRR_NONE, INVALID_CLIENT_ID, !AIConfig::GetConfig((CompanyID)company)->HasScript());
 			}
 			timeout = 10 * 60 * Ticks::TICKS_PER_SECOND;
 		}
@@ -857,7 +887,7 @@ void CompanyAdminRemove(CompanyID company_id, CompanyRemoveReason reason)
  * @param client_id ClientID
  * @return the cost of this operation or an error
  */
-CommandCost CmdCompanyCtrl(DoCommandFlag flags, CompanyCtrlAction cca, CompanyID company_id, CompanyRemoveReason reason, ClientID client_id)
+CommandCost CmdCompanyCtrl(DoCommandFlag flags, CompanyCtrlAction cca, CompanyID company_id, CompanyRemoveReason reason, ClientID client_id, bool deviate)
 {
 	InvalidateWindowData(WC_COMPANY_LEAGUE, 0, 0);
 
@@ -921,7 +951,7 @@ CommandCost CmdCompanyCtrl(DoCommandFlag flags, CompanyCtrlAction cca, CompanyID
 			/* For network game, just assume deletion happened. */
 			assert(company_id == INVALID_COMPANY || !Company::IsValidID(company_id));
 
-			Company *c = DoStartupNewCompany(true, company_id);
+			Company *c = DoStartupNewCompany(true, company_id, deviate);
 			if (c != nullptr) NetworkServerNewCompany(c, nullptr);
 			break;
 		}

@@ -77,11 +77,11 @@ struct GSDTChunkHandler : ChunkHandler {
 
 		GameConfig *config = GameConfig::GetConfig(GameConfig::SSS_FORCE_GAME);
 		if (!_game_saveload_name.empty()) {
-			config->Change(_game_saveload_name, _game_saveload_version, false, _game_saveload_is_random);
+			config->Change(_game_saveload_name, _game_saveload_version, false, _game_saveload_is_random, false);
 			if (!config->HasScript()) {
 				/* No version of the GameScript available that can load the data. Try to load the
 				 * latest version of the GameScript instead. */
-				config->Change(_game_saveload_name, -1, false, _game_saveload_is_random);
+				config->Change(_game_saveload_name, -1, false, _game_saveload_is_random, false);
 				if (!config->HasScript()) {
 					if (_game_saveload_name.compare("%_dummy") != 0) {
 						Debug(script, 0, "The savegame has an GameScript by the name '{}', version {} which is no longer available.", _game_saveload_name, _game_saveload_version);

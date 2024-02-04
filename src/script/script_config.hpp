@@ -63,8 +63,9 @@ public:
 	/**
 	 * Create a new Script config that is a copy of an existing config.
 	 * @param config The object to copy.
+	 * @param add_random_deviation Whether to add random deviation to script settings that allow it.
 	 */
-	ScriptConfig(const ScriptConfig *config);
+	ScriptConfig(const ScriptConfig *config, bool add_random_deviation);
 
 	/** Delete an Script configuration. */
 	virtual ~ScriptConfig();
@@ -76,8 +77,9 @@ public:
 	 * @param force_exact_match If true try to find the exact same version
 	 *   as specified. If false any compatible version is ok.
 	 * @param is_random Is the Script chosen randomly?
+	 * @param add_random_deviation Apply random deviation to settings that allow it?
 	 */
-	void Change(std::optional<const std::string> name, int version = -1, bool force_exact_match = false, bool is_random = false);
+	void Change(std::optional<const std::string> name, int version = -1, bool force_exact_match = false, bool is_random = false, bool add_random_deviation = true);
 
 	/**
 	 * Get the ScriptInfo linked to this ScriptConfig.
