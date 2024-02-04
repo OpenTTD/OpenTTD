@@ -77,7 +77,11 @@ public:
 
 	bool IsInitialized() const { return this->initialized; }
 
-	void Invalidate() { this->initialized = false; }
+	void Invalidate()
+	{
+		if (!IsInitialized()) Debug(map, 3, "Invalidated water region ({},{})", GetWaterRegionX(this->tile_area.tile), GetWaterRegionY(this->tile_area.tile));
+		this->initialized = false;
+	}
 
 	/**
 	 * Returns a set of bits indicating whether an edge tile on a particular side is traversable or not. These
@@ -120,16 +124,7 @@ public:
 		this->has_cross_region_aqueducts = false;
 
 		this->tile_patch_labels.fill(INVALID_WATER_REGION_PATCH);
-
-		for (const TileIndex tile : this->tile_area) {
-			if (IsAqueductTile(tile)) {
-				const TileIndex other_aqueduct_end = GetOtherBridgeEnd(tile);
-				if (!tile_area.Contains(other_aqueduct_end)) {
-					this->has_cross_region_aqueducts = true;
-					break;
-				}
-			}
-		}
+		this->edge_traversability_bits.fill(0);
 
 		TWaterRegionPatchLabel current_label = 1;
 		TWaterRegionPatchLabel highest_assigned_label = 0;
@@ -158,7 +153,18 @@ public:
 				for (const Trackdir dir : SetTrackdirBitIterator(valid_dirs)) {
 					/* By using a TrackFollower we "play by the same rules" as the actual ship pathfinder */
 					CFollowTrackWater ft;
-					if (ft.Follow(tile, dir) && this->tile_area.Contains(ft.m_new_tile)) tiles_to_check.push_back(ft.m_new_tile);
+					if (ft.Follow(tile, dir)) {
+						if (this->tile_area.Contains(ft.m_new_tile)) {
+							tiles_to_check.push_back(ft.m_new_tile);
+						} else if (!ft.m_is_bridge) {
+							assert(DistanceManhattan(ft.m_new_tile, tile) == 1);
+							const auto side = DiagdirBetweenTiles(tile, ft.m_new_tile);
+							const int local_x_or_y = DiagDirToAxis(side) == AXIS_X ? TileY(tile) - TileY(this->tile_area.tile) : TileX(tile) - TileX(this->tile_area.tile);
+							SetBit(this->edge_traversability_bits[side], local_x_or_y);
+						} else {
+							this->has_cross_region_aqueducts = true;
+						}
+					}
 				}
 			}
 
@@ -167,18 +173,6 @@ public:
 
 		this->number_of_patches = highest_assigned_label;
 		this->initialized = true;
-
-		/* Calculate the traversability (whether the tile can be entered / exited) for all edges. Note that
-		 * we always follow the same X and Y scanning direction, this is important for comparisons later on! */
-		this->edge_traversability_bits.fill(0);
-		const int top_x = TileX(tile_area.tile);
-		const int top_y = TileY(tile_area.tile);
-		for (int i = 0; i < WATER_REGION_EDGE_LENGTH; ++i) {
-			if (GetWaterTracks(TileXY(top_x + i, top_y)) & TRACK_BIT_3WAY_NW) SetBit(this->edge_traversability_bits[DIAGDIR_NW], i); // NW edge
-			if (GetWaterTracks(TileXY(top_x + i, top_y + WATER_REGION_EDGE_LENGTH - 1)) & TRACK_BIT_3WAY_SE) SetBit(this->edge_traversability_bits[DIAGDIR_SE], i); // SE edge
-			if (GetWaterTracks(TileXY(top_x, top_y + i)) & TRACK_BIT_3WAY_NE) SetBit(this->edge_traversability_bits[DIAGDIR_NE], i); // NE edge
-			if (GetWaterTracks(TileXY(top_x + WATER_REGION_EDGE_LENGTH - 1, top_y + i)) & TRACK_BIT_3WAY_SW) SetBit(this->edge_traversability_bits[DIAGDIR_SW], i); // SW edge
-		}
 	}
 
 	/**
@@ -278,10 +272,17 @@ WaterRegionPatchDesc GetWaterRegionPatchInfo(TileIndex tile)
  */
 void InvalidateWaterRegion(TileIndex tile)
 {
-	const int index = GetWaterRegionIndex(tile);
-	_water_regions[index].Invalidate();
+	if (!IsValidTile(tile)) return;
+	const int water_region_index = GetWaterRegionIndex(tile);
+	_water_regions[water_region_index].Invalidate();
 
-	Debug(map, 3, "Invalidated water region ({},{})", GetWaterRegionX(tile), GetWaterRegionY(tile));
+	/* When updating the water region we look into the first tile of adjacent water regions to determine edge
+	 * traversability. This means that if we invalidate any region edge tiles we might also change the traversability
+	 * of the adjacent region. This code ensures the adjacent regions also get invalidated in such a case. */
+	for (DiagDirection side = DIAGDIR_BEGIN; side < DIAGDIR_END; side++) {
+		const int adjacent_region_index = GetWaterRegionIndex(TileAddByDiagDir(tile, side));
+		if (adjacent_region_index != water_region_index) _water_regions[adjacent_region_index].Invalidate();
+	}
 }
 
 /**
