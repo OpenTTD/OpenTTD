@@ -32,7 +32,7 @@ enum ContentType {
 };
 
 /** Enum with all types of TCP content packets. The order MUST not be changed **/
-enum PacketContentType {
+enum PacketContentType : uint8_t {
 	PACKET_CONTENT_CLIENT_INFO_LIST,      ///< Queries the content server for a list of info of a given content type
 	PACKET_CONTENT_CLIENT_INFO_ID,        ///< Queries the content server for information about a list of internal IDs
 	PACKET_CONTENT_CLIENT_INFO_EXTID,     ///< Queries the content server for information about a list of external IDs

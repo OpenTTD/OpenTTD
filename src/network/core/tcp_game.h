@@ -22,7 +22,7 @@
  * Enum with all types of TCP packets.
  * For the exact meaning, look at #NetworkGameSocketHandler.
  */
-enum PacketGameType {
+enum PacketGameType : uint8_t {
 	/*
 	 * These first four pair of packets (thus eight in
 	 * total) must remain in this order for backward

@@ -25,7 +25,7 @@ static const uint16_t NETWORK_CONTENT_SERVER_PORT     = 3978;           ///< The
 static const uint16_t NETWORK_DEFAULT_PORT            = 3979;           ///< The default port of the game server (TCP & UDP)
 static const uint16_t NETWORK_ADMIN_PORT              = 3977;           ///< The default port for admin network
 
-static const size_t UDP_MTU                         = 1460;           ///< Number of bytes we can pack in a single UDP packet
+static const size_t UDP_MTU = 1460; ///< Number of bytes we can pack in a single UDP packet
 
 static const std::string NETWORK_SURVEY_DETAILS_LINK = "https://survey.openttd.org/participate"; ///< Link with more details & privacy statement of the survey.
 /*
@@ -42,8 +42,8 @@ static const std::string NETWORK_SURVEY_DETAILS_LINK = "https://survey.openttd.o
  * Send_uint16(GB(size, 16, 14) | 0b10 << 14)
  * Send_uint16(GB(size,  0, 16))
  */
-static const size_t TCP_MTU                         = 32767;          ///< Number of bytes we can pack in a single TCP packet
-static const size_t COMPAT_MTU                      = 1460;           ///< Number of bytes we can pack in a single packet for backward compatibility
+static const size_t TCP_MTU = 32767; ///< Number of bytes we can pack in a single TCP packet
+static const size_t COMPAT_MTU = 1460; ///< Number of bytes we can pack in a single packet for backward compatibility
 
 static const byte NETWORK_GAME_ADMIN_VERSION        =    3;           ///< What version of the admin network do we use?
 static const byte NETWORK_GAME_INFO_VERSION         =    7;           ///< What version of game-info do we use?
