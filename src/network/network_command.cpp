@@ -304,9 +304,8 @@ void NetworkSendCommand(Commands cmd, StringID err_message, CommandCallback *cal
 void NetworkSyncCommandQueue(NetworkClientSocket *cs)
 {
 	for (CommandPacket *p = _local_execution_queue.Peek(); p != nullptr; p = p->next) {
-		CommandPacket c = *p;
+		CommandPacket &c = cs->outgoing_queue.emplace_back(*p);
 		c.callback = nullptr;
-		cs->outgoing_queue.Append(&c);
 	}
 }
 
@@ -371,7 +370,7 @@ static void DistributeCommandPacket(CommandPacket &cp, const NetworkClientSocket
 			 *  first place. This filters that out. */
 			cp.callback = (cs != owner) ? nullptr : callback;
 			cp.my_cmd = (cs == owner);
-			cs->outgoing_queue.Append(&cp);
+			cs->outgoing_queue.push_back(cp);
 		}
 	}
 

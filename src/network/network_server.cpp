@@ -1701,11 +1701,8 @@ void NetworkServerSetCompanyPassword(CompanyID company_id, const std::string &pa
  */
 static void NetworkHandleCommandQueue(NetworkClientSocket *cs)
 {
-	CommandPacket *cp;
-	while ((cp = cs->outgoing_queue.Pop()) != nullptr) {
-		cs->SendCommand(cp);
-		delete cp;
-	}
+	for (auto &cp : cs->outgoing_queue) cs->SendCommand(&cp);
+	cs->outgoing_queue.clear();
 }
 
 /**
