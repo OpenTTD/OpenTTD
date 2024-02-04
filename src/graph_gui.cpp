@@ -1122,7 +1122,7 @@ struct PaymentRatesGraphWindow : BaseGraphWindow {
 		int i = 0;
 		for (const CargoSpec *cs : _sorted_standard_cargo_specs) {
 			this->colours[i] = cs->legend_colour;
-			for (uint j = 0; j != 20; j++) {
+			for (uint j = 0; j != this->num_on_x_axis; j++) {
 				this->cost[i][j] = GetTransportedGoodsIncome(10, 20, j * 4 + 4, cs->Index());
 			}
 			i++;
