@@ -1,12 +1,12 @@
 14.0-beta2 (2023-02-04)
 ------------------------------------------------------------------------
 Change: Decouple and remove landscape-dependent cargo types (#11719)
-Fix #11975: Running AIs also occupy a slot (#11976)
-Fix #11972: Incorrect minimum width allocated to graph (#11974)
-Fix #11968: Always set string parameters to avoid undefined behavior (#11973)
-Fix #11966: Scrollbar may be incorrect on first opening of text file window (#11981)
-Fix #11982: Signals exist only on plain rail tiles (#11977)
-Fix: Second colour vehicle-type default liveries not being updated (#11971)
+Fix #11975: Inconsistent behaviour when changing first AI company settings (#11976)
+Fix #11972: Year cut off in graph windows (#11974)
+Fix #11968: Crash when opening orders window of new vehicles (#11973)
+Fix #11966: Monospace text in windows may not have been fully scrollable (#11981)
+Fix #11982: Crash when trying to place signals on things other than plain rails (#11977)
+Fix: Second colour vehicle-type default liveries were not being updated (#11971)
 
 
 14.0-beta1 (2023-02-03)
