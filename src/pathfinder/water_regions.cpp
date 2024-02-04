@@ -182,6 +182,33 @@ public:
 	{
 		if (!this->initialized) ForceUpdate();
 	}
+
+	void PrintDebugInfo()
+	{
+		Debug(map, 9, "Water region {},{} labels and edge traversability = ...", GetWaterRegionX(tile_area.tile), GetWaterRegionY(tile_area.tile));
+
+		const size_t max_element_width = std::to_string(this->number_of_patches).size();
+
+		std::array<int, 16> traversability_NW{0};
+		for (auto bitIndex : SetBitIterator(edge_traversability_bits[DIAGDIR_NW])) *(traversability_NW.rbegin() + bitIndex) = 1;
+		Debug(map, 9, "    {:{}}", fmt::join(traversability_NW, " "), max_element_width);
+		Debug(map, 9, "  +{:->{}}+", "", WATER_REGION_EDGE_LENGTH * (max_element_width + 1) + 1);
+
+		for (int y = 0; y < WATER_REGION_EDGE_LENGTH; ++y) {
+			std::string line{};
+			for (int x = 0; x < WATER_REGION_EDGE_LENGTH; ++x) {
+				const auto label = this->tile_patch_labels[x + y * WATER_REGION_EDGE_LENGTH];
+				const std::string label_str = label == INVALID_WATER_REGION_PATCH ? "." : std::to_string(label);
+				line = fmt::format("{:{}}", label_str, max_element_width) + " " + line;
+			}
+			Debug(map, 9, "{} | {}| {}", GB(this->edge_traversability_bits[DIAGDIR_SW], y, 1), line, GB(this->edge_traversability_bits[DIAGDIR_NE], y, 1));
+		}
+
+		Debug(map, 9, "  +{:->{}}+", "", WATER_REGION_EDGE_LENGTH * (max_element_width + 1) + 1);
+		std::array<int, 16> traversability_SE{0};
+		for (auto bitIndex : SetBitIterator(edge_traversability_bits[DIAGDIR_SE])) *(traversability_SE.rbegin() + bitIndex) = 1;
+		Debug(map, 9, "    {:{}}", fmt::join(traversability_SE, " "), max_element_width);
+	}
 };
 
 std::vector<WaterRegion> _water_regions;
@@ -371,4 +398,9 @@ void AllocateWaterRegions()
 			_water_regions.emplace_back(region_x, region_y);
 		}
 	}
+}
+
+void PrintWaterRegionDebugInfo(TileIndex tile)
+{
+	GetUpdatedWaterRegion(tile).PrintDebugInfo();
 }

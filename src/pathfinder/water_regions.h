@@ -64,4 +64,6 @@ void VisitWaterRegionPatchNeighbors(const WaterRegionPatchDesc &water_region_pat
 
 void AllocateWaterRegions();
 
+void PrintWaterRegionDebugInfo(TileIndex tile);
+
 #endif /* WATER_REGIONS_H */

@@ -29,6 +29,7 @@
 #include "rev.h"
 #include "timer/timer.h"
 #include "timer/timer_window.h"
+#include "pathfinder/water_regions.h"
 
 #include "widgets/misc_widget.h"
 
@@ -128,6 +129,8 @@ public:
 		Debug(misc, LANDINFOD_LEVEL, "m6     = 0x{:x}", tile.m6());
 		Debug(misc, LANDINFOD_LEVEL, "m7     = 0x{:x}", tile.m7());
 		Debug(misc, LANDINFOD_LEVEL, "m8     = 0x{:x}", tile.m8());
+
+		PrintWaterRegionDebugInfo(tile);
 #undef LANDINFOD_LEVEL
 	}
 
