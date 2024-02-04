@@ -1243,6 +1243,7 @@ STR_CONFIG_SETTING_SUBSIDY_MULTIPLIER_HELPTEXT                  :Fixa canto se p
 STR_CONFIG_SETTING_SUBSIDY_DURATION                             :Duración da subvención: {STRING}
 ###length 2
 STR_CONFIG_SETTING_SUBSIDY_DURATION_HELPTEXT                    :Establece o número de anos durante os cales se concede a subvención.
+STR_CONFIG_SETTING_SUBSIDY_DURATION_HELPTEXT_PERIODS            :Establece o número de períodos durante os que se concede a subvención
 
 ###setting-zero-is-special
 STR_CONFIG_SETTING_SUBSIDY_DURATION_DISABLED                    :Sen subvencións
@@ -2301,6 +2302,7 @@ STR_NETWORK_SERVER_LIST_SERVER_ADDRESS                          :{SILVER}Direcci
 STR_NETWORK_SERVER_LIST_INVITE_CODE                             :{SILVER}Código de convite: {WHITE}{STRING}
 STR_NETWORK_SERVER_LIST_START_DATE                              :{SILVER}Data de comezo: {WHITE}{DATE_SHORT}
 STR_NETWORK_SERVER_LIST_CURRENT_DATE                            :{SILVER}Data actual: {WHITE}{DATE_SHORT}
+STR_NETWORK_SERVER_LIST_PLAY_TIME                               :{SILVER}Tempo de xogo: {WHITE}{NUM}h {NUM}m
 STR_NETWORK_SERVER_LIST_GAMESCRIPT                              :{SILVER}Script do xogo: {WHITE}{STRING} (v{NUM})
 STR_NETWORK_SERVER_LIST_PASSWORD                                :{SILVER}Protexido con contrasinal!
 STR_NETWORK_SERVER_LIST_SERVER_OFFLINE                          :{SILVER}SERVIDOR DESCONECTADO
@@ -4125,6 +4127,7 @@ STR_ENGINE_PREVIEW_TRAM_VEHICLE                                 :Vehículo de tr
 STR_ENGINE_PREVIEW_AIRCRAFT                                     :avión
 STR_ENGINE_PREVIEW_SHIP                                         :barco
 
+STR_ENGINE_PREVIEW_CAPACITY_2                                   :Capacidade: {CARGO_LONG}, {CARGO_LONG}
 
 # Autoreplace window
 STR_REPLACE_VEHICLES_WHITE                                      :{WHITE}Substituír {STRING} - {STRING}
@@ -4393,6 +4396,10 @@ STR_ORDER_DROP_REFIT_AUTO_ANY                                   :Carga dispoñí
 STR_ORDER_DROP_GO_ALWAYS_DEPOT                                  :Ir sempre
 STR_ORDER_DROP_SERVICE_DEPOT                                    :Facer servizo se é necesario
 STR_ORDER_DROP_HALT_DEPOT                                       :Parar
+
+# Depot action tooltips, one per vehicle type
+###length VEHICLE_TYPES
+###next-name-looks-similar
 
 STR_ORDER_CONDITIONAL_VARIABLE_TOOLTIP                          :{BLACK}Datos do vehículo para saltarse
 

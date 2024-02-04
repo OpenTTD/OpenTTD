@@ -4444,6 +4444,10 @@ STR_ORDER_DROP_GO_ALWAYS_DEPOT                                  :Завжди п
 STR_ORDER_DROP_SERVICE_DEPOT                                    :Прямувати при потребі в техогляді
 STR_ORDER_DROP_HALT_DEPOT                                       :Прямувати і зупинитись
 
+# Depot action tooltips, one per vehicle type
+###length VEHICLE_TYPES
+###next-name-looks-similar
+
 STR_ORDER_CONDITIONAL_VARIABLE_TOOLTIP                          :{BLACK}Дані транспорту для базування наказу
 
 # Conditional order variables, must follow order of OrderConditionVariable enum

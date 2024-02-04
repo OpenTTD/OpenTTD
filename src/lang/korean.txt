@@ -1496,17 +1496,17 @@ STR_CONFIG_SETTING_NEVER_EXPIRE_VEHICLES                        :옛날 차량�
 STR_CONFIG_SETTING_NEVER_EXPIRE_VEHICLES_HELPTEXT               :이 설정을 켜면, 오래된 차량 모델을 포함하여 모든 차량 모델을 도입 이후에 계속 사용할 수 있게 됩니다.
 
 STR_CONFIG_SETTING_TIMEKEEPING_UNITS                            :시간 단위: {STRING}
-STR_CONFIG_SETTING_TIMEKEEPING_UNITS_HELPTEXT                   :게임에서 사용할 시간 표시 단위를 선택합니다. 나중에 변경할 수 없습니다.{}{}달력 기반은 1년 12개월, 매월 28~31일로 구성된 고전적인 OpenTTD 환경입니다.{}{}벽시계 기반은 차량 이동, 화물 생산 및 재정이 1분 단위로 대신 계산됩니다. 1분은 달력 기반 모드에서 한 달, 즉 30일 정도 걸리는 시간으로, 12분 간격으로 묶어서 1년을 구성합니다.{}{}두 단위 모두, 시간 표시 단위와 상관없이 차량, 주택 및 기타 인프라 도입 날짜에 사용되는 기존 달력 시스템을 별도로 사용합니다.
+STR_CONFIG_SETTING_TIMEKEEPING_UNITS_HELPTEXT                   :게임에서 사용할 시간 표시 단위를 선택합니다. 나중에 변경할 수 없습니다.{}{}달력 기반은 1년 12개월, 매월 28~31일로 구성된 고전적인 OpenTTD 환경입니다.{}{}벽시계 기반은 차량 이동, 화물 생산 및 재정이 1분 단위로 대신 계산됩니다. 1분은 달력 기반 모드에서 한 달, 즉 30일 정도 걸리는 시간으로, 12분 간격으로 묶어서 1년을 구성합니다.{}{}두 단위 모두, 시간 표시 단위와 상관없이 차량, 건물 및 기타 기반 시설 도입 날짜 등에는 기존의 달력 시스템을 별도로 사용합니다.
 ###length 2
 STR_CONFIG_SETTING_TIMEKEEPING_UNITS_CALENDAR                   :달력
 STR_CONFIG_SETTING_TIMEKEEPING_UNITS_WALLCLOCK                  :벽시계
 
-STR_CONFIG_SETTING_MINUTES_PER_YEAR                             :1년의 길이: {STRING}분
+STR_CONFIG_SETTING_MINUTES_PER_YEAR                             :1년의 길이: {STRING}{ORANGE}분
 STR_CONFIG_SETTING_MINUTES_PER_YEAR_HELPTEXT                    :달력의 1년을 몇 분으로 할 지 선택합니다. 기본값은 12분입니다. 달력 시간이 변하는 것을 막으려면 0으로 설정하세요. 이 설정은 게임의 경제 시뮬레이션에는 영향을 미치지 않고, 벽시계 시간 설정을 사용할 때만 이용 가능합니다.
 
 STR_CONFIG_SETTING_MINUTES_PER_YEAR_VALUE                       :{NUM}
 ###setting-zero-is-special
-STR_CONFIG_SETTING_MINUTES_PER_YEAR_FROZEN                      :0 (달력 시간 정지됨)
+STR_CONFIG_SETTING_MINUTES_PER_YEAR_FROZEN                      :(달력 시간 정지됨) 0
 
 STR_CONFIG_SETTING_TOWN_CARGO_SCALE                             :도시 화물 생성 조정: {STRING}
 STR_CONFIG_SETTING_TOWN_CARGO_SCALE_HELPTEXT                    :도시의 화물 생산량을 이 백분율 값만큼 조정합니다.
@@ -1933,6 +1933,7 @@ STR_CONFIG_SETTING_SEMAPHORE_BUILD_BEFORE_DATE_HELPTEXT         :전자식 신�
 STR_CONFIG_SETTING_CYCLE_SIGNAL_TYPES                           :신호기를 CTRL 클릭할 때 바뀌는 신호기의 종류: {STRING}
 STR_CONFIG_SETTING_CYCLE_SIGNAL_TYPES_HELPTEXT                  :신호기 건설에서 CTRL+클릭할 때 바뀌는 신호기의 종류를 선택합니다
 ###length 2
+STR_CONFIG_SETTING_CYCLE_SIGNAL_GROUP                           :경로 신호기만 보여주기
 STR_CONFIG_SETTING_CYCLE_SIGNAL_ALL                             :모두 보여주기
 
 STR_CONFIG_SETTING_SIGNAL_GUI_MODE                              :보여줄 신호기 종류: {STRING}
@@ -4376,6 +4377,7 @@ STR_VEHICLE_VIEW_AIRCRAFT_STATUS_START_STOP_TOOLTIP             :{BLACK}현재 �
 # Messages in the start stop button in the vehicle view
 STR_VEHICLE_STATUS_LOADING_UNLOADING                            :{LTBLUE}싣는 중 / 내리는 중
 STR_VEHICLE_STATUS_LEAVING                                      :{LTBLUE}출발 중
+STR_VEHICLE_STATUS_WAITING_UNBUNCHING                           :{LTBLUE}배차 간격 유지 대기 중
 STR_VEHICLE_STATUS_CRASHED                                      :{RED}충돌!
 STR_VEHICLE_STATUS_BROKEN_DOWN                                  :{RED}고장
 STR_VEHICLE_STATUS_STOPPED                                      :{RED}정지함
@@ -4389,6 +4391,7 @@ STR_VEHICLE_STATUS_NO_ORDERS_VEL                                :{LTBLUE}경로 
 STR_VEHICLE_STATUS_HEADING_FOR_WAYPOINT_VEL                     :{LTBLUE}다음 목적지: {WAYPOINT} ({VELOCITY})
 STR_VEHICLE_STATUS_HEADING_FOR_DEPOT_VEL                        :{ORANGE}다음 목적지: {DEPOT} ({VELOCITY})
 STR_VEHICLE_STATUS_HEADING_FOR_DEPOT_SERVICE_VEL                :{LTBLUE}점검: {DEPOT} ({VELOCITY})
+STR_VEHICLE_STATUS_HEADING_FOR_DEPOT_UNBUNCH_VEL                :{LTBLUE}점검 및 배차 간격 대기: {DEPOT}, {VELOCITY}
 
 STR_VEHICLE_STATUS_CANNOT_REACH_STATION_VEL                     :{LTBLUE}{STATION}에 갈 수 없음, {VELOCITY}
 STR_VEHICLE_STATUS_CANNOT_REACH_WAYPOINT_VEL                    :{LTBLUE}{WAYPOINT}에 갈 수 없음, {VELOCITY}
@@ -4519,6 +4522,7 @@ STR_ORDERS_TIMETABLE_VIEW_TOOLTIP                               :{BLACK}시간�
 
 STR_ORDERS_LIST_TOOLTIP                                         :{BLACK}이 열차의 경로 - 선택하려면 클릭하세요. CTRL+클릭하시면 그 역이 있는 장소로 이동합니다
 STR_ORDER_INDEX                                                 :{COMMA}:{NBSP}
+STR_ORDER_TEXT                                                  :{STRING} {STRING} {STRING} {STRING}
 
 STR_ORDERS_END_OF_ORDERS                                        :- - 경로의 끝 - -
 STR_ORDERS_END_OF_SHARED_ORDERS                                 :- - 공유된 경로의 끝 - -
@@ -4555,6 +4559,11 @@ STR_ORDER_DROP_REFIT_AUTO_ANY                                   :이용 가능�
 STR_ORDER_DROP_GO_ALWAYS_DEPOT                                  :항상 감
 STR_ORDER_DROP_SERVICE_DEPOT                                    :필요하면 점검
 STR_ORDER_DROP_HALT_DEPOT                                       :멈춤
+STR_ORDER_DROP_UNBUNCH                                          :배차 간격 유지
+
+# Depot action tooltips, one per vehicle type
+###length VEHICLE_TYPES
+###next-name-looks-similar
 
 STR_ORDER_CONDITIONAL_VARIABLE_TOOLTIP                          :{BLACK}경로를 건너뛰기 위한 비교 조건을 선택합니다
 
@@ -4623,6 +4632,7 @@ STR_ORDER_REFIT_ORDER                                           :({STRING}{G 0 "
 STR_ORDER_REFIT_STOP_ORDER                                      :({STRING}에서 수리 후 멈춤)
 STR_ORDER_STOP_ORDER                                            :(멈춤)
 
+STR_ORDER_WAIT_TO_UNBUNCH                                       :(배차 간격 유지 대기)
 
 STR_ORDER_GO_TO_STATION                                         :{STRING} {STATION} {STRING}
 STR_ORDER_GO_TO_STATION_CAN_T_USE_STATION                       :{PUSH_COLOUR}{RED}(이 역을 이용할 수 없음){POP_COLOUR} {STRING} {STATION} {STRING}
@@ -5094,6 +5104,11 @@ STR_ERROR_UNABLE_TO_FIND_LOCAL_DEPOT                            :{WHITE}근처�
 STR_ERROR_DEPOT_WRONG_DEPOT_TYPE                                :잘못된 차량기지 종류입니다
 
 # Depot unbunching related errors
+STR_ERROR_UNBUNCHING_ONLY_ONE_ALLOWED                           :{WHITE}... 배차 간격 유지 경로는 하나만 사용 가능합니다
+STR_ERROR_UNBUNCHING_NO_FULL_LOAD                               :{WHITE}... 차량에 배차 간격 유지 경로가 있으면 가득 싣기 경로를 사용할 수 없습니다
+STR_ERROR_UNBUNCHING_NO_UNBUNCHING_FULL_LOAD                    :{WHITE}... 가득 싣기 경로가 있는 차량에는 배차 간격 유지를 사용할 수 없습니다
+STR_ERROR_UNBUNCHING_NO_CONDITIONAL                             :{WHITE}... 차량에 배차 간격 유지 경로가 있으면 조건부 경로를 사용할 수 없습니다
+STR_ERROR_UNBUNCHING_NO_UNBUNCHING_CONDITIONAL                  :{WHITE}... 조건부 경로가 있는 차량에는 배차 간격 유지를 사용할 수 없습니다
 
 # Autoreplace related errors
 STR_ERROR_TRAIN_TOO_LONG_AFTER_REPLACEMENT                      :{WHITE}{VEHICLE} : 교체된지 너무 오래되었습니다

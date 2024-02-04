@@ -1677,6 +1677,10 @@ STR_ORDER_INDEX                                                 :{COMMA}:{NBSP}
 
 
 
+# Depot action tooltips, one per vehicle type
+###length VEHICLE_TYPES
+###next-name-looks-similar
+
 
 # Conditional order variables, must follow order of OrderConditionVariable enum
 ###length 8

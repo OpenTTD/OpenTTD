@@ -165,7 +165,7 @@ STR_ABBREV_ALL                                                  :TUDO
 
 # 'Mode' of transport for cargoes
 STR_PASSENGERS                                                  :{COMMA}{NBSP}passageiro{P "" s}
-STR_BAGS                                                        :{COMMA}{NBSP}bolsa{P "" s}
+STR_BAGS                                                        :{COMMA}{NBSP}sacola{P "" s}
 STR_TONS                                                        :{COMMA}{NBSP}tonelada{P "" s}
 STR_LITERS                                                      :{COMMA}{NBSP}litro{P "" s}
 STR_ITEMS                                                       :{COMMA}{NBSP}ite{P m ns}
@@ -1933,6 +1933,7 @@ STR_CONFIG_SETTING_SEMAPHORE_BUILD_BEFORE_DATE_HELPTEXT         :Seleciona o ano
 STR_CONFIG_SETTING_CYCLE_SIGNAL_TYPES                           :Tipo de sinal a ser exibido: {STRING}
 STR_CONFIG_SETTING_CYCLE_SIGNAL_TYPES_HELPTEXT                  :Selecione quais os tipos de sinais mostrar ao usar Ctrl+Clique num sinal existente com a ferramenta de sinais
 ###length 2
+STR_CONFIG_SETTING_CYCLE_SIGNAL_GROUP                           :Apenas grupo atual
 STR_CONFIG_SETTING_CYCLE_SIGNAL_ALL                             :Todos visíveis
 
 STR_CONFIG_SETTING_SIGNAL_GUI_MODE                              :Mostrar tipos de sinais: {STRING}
@@ -2830,19 +2831,19 @@ STR_STATION_CLASS_WAYP_WAYPOINT                                 :Ponto de contro
 
 # Signal window
 STR_BUILD_SIGNAL_CAPTION                                        :{WHITE}Seleção de Sinais
-STR_BUILD_SIGNAL_TOGGLE_ADVANCED_SIGNAL_TOOLTIP                 :{BLACK}Alternar se mostra os tipos de sinais avançados
-STR_BUILD_SIGNAL_SEMAPHORE_NORM_TOOLTIP                         :{BLACK}Sinais padrão (semáforos){}Sinais são necessários para impedir trens de colidirem nas malhas ferroviárias com mais de um trem
-STR_BUILD_SIGNAL_SEMAPHORE_ENTRY_TOOLTIP                        :{BLACK}Sinal de Entrada (semáforo){}Verde enquanto haja um ou mais sinais de saída verdes na atual seção dos trilhos. Do contrário, mostra vermelho
-STR_BUILD_SIGNAL_SEMAPHORE_EXIT_TOOLTIP                         :{BLACK}Sinal de saída (semáforo){}Funciona como um sinal normal, porém é necessário para o funcionamento correto do sistema de pré-sinais combo ou de entrada
-STR_BUILD_SIGNAL_SEMAPHORE_COMBO_TOOLTIP                        :{BLACK}Sinal combo (semáforo){}O sinal combo funciona tanto como um sinal de entrada quanto de saída. Permite construir várias ramificações
-STR_BUILD_SIGNAL_SEMAPHORE_PBS_TOOLTIP                          :{BLACK}Sinal de trajeto(Semáforo){}Um sinal de trajeto permite mais de um trem em um bloco de ferrovia, Se o trem no bloco puder reservar um local seguro para parar, o sinal de trajeto já permite a passada do próximo
-STR_BUILD_SIGNAL_SEMAPHORE_PBS_OWAY_TOOLTIP                     :{BLACK}Sinal de trajeto de mão única(Semáforo){}Um sinal de trajeto permite mais de um trem em um bloco de ferrovia, Se o trem no bloco puder reservar um local seguro para parar, o sinal de trajeto já permite a passada do próximo, porém não permite a passagem na via contrária
-STR_BUILD_SIGNAL_ELECTRIC_NORM_TOOLTIP                          :{BLACK}Sinal Padrão (elétrico){}Sinais são necessários para impedir que trens batam em redes de ferrovias com mais de uma máquina
+STR_BUILD_SIGNAL_TOGGLE_ADVANCED_SIGNAL_TOOLTIP                 :{BLACK}Alterna mostrar os tipos de sinais avançados
+STR_BUILD_SIGNAL_SEMAPHORE_NORM_TOOLTIP                         :{BLACK}Sinal de bloco (semáforo){}Este é o tipo mais básico de sinal, permitindo que apenas um trem fique em um bloco de linha ao mesmo tempo
+STR_BUILD_SIGNAL_SEMAPHORE_ENTRY_TOOLTIP                        :{BLACK}Sinal de Entrada (semáforo){}Fica verde enquanto houver um ou mais sinais de saída verdes na atual seção de trilhos. Caso contrário, fica vermelho
+STR_BUILD_SIGNAL_SEMAPHORE_EXIT_TOOLTIP                         :{BLACK}Sinal de saída (semáforo){}Funciona da mesma forma que o sinal de bloco, mas é necessário para ativar a cor correta nos pré-sinais de entrada e combinado.
+STR_BUILD_SIGNAL_SEMAPHORE_COMBO_TOOLTIP                        :{BLACK}Sinal combinado (semáforo){}O sinal combinado funciona simultaneamente como um sinal de entrada e de saída. Isto permite a construção de ramificações complexas de pré-sinais.
+STR_BUILD_SIGNAL_SEMAPHORE_PBS_TOOLTIP                          :{BLACK}Sinal de trajeto(semáforo){}Um sinal de trajeto permite mais de um trem entrar em um bloco de sinal ao mesmo tempo, se o trem puder reservar um trajeto para um ponto seguro de parada. Sinais de trajeto padrões podem ser passados no sentido contrário
+STR_BUILD_SIGNAL_SEMAPHORE_PBS_OWAY_TOOLTIP                     :{BLACK}Sinal de sentido único(semáforo){}Um sinal de trajeto permite mais de um trem em um bloco de sinal ao mesmo tempo, se o trem puder reservar um trajeto para um ponto seguro de parada. Os sinais de sentido único não podem ser passados no sentido contrário
+STR_BUILD_SIGNAL_ELECTRIC_NORM_TOOLTIP                          :{BLACK}Sinal de bloco (elétrico){}Este é o tipo mais básico de sinal, permitindo que apenas um trem fique em um bloco de linha em um dado momento
 STR_BUILD_SIGNAL_ELECTRIC_ENTRY_TOOLTIP                         :{BLACK}Sinal de Entrada (elétrico){}Verde enquanto haja um ou mais sinais de saída verdes na atual seção dos trilhos. Do contrário, mostra vermelho
-STR_BUILD_SIGNAL_ELECTRIC_EXIT_TOOLTIP                          :{BLACK}Sinal de saída(elétrico){}Funciona como um sinal normal, porém é necessário para o funcionamento correto do sistema de pré-sinais combo ou de entrada
-STR_BUILD_SIGNAL_ELECTRIC_COMBO_TOOLTIP                         :{BLACK}Sinal Combo (elétrico){}O sinal combo funciona tanto como um sinal de entrada quanto de saída. Permite construir várias ramificações de pré-sinais
-STR_BUILD_SIGNAL_ELECTRIC_PBS_TOOLTIP                           :{BLACK}Sinal de trajeto (Elétrico){}Um sinal de trajeto permite mais de um trem entrar em um bloco de sinal ao mesmo tempo, se o trem puder reservar um trajeto para um ponto seguro de parada. Sinais de trajeto padrões podem ser passados pelo lado de trás
-STR_BUILD_SIGNAL_ELECTRIC_PBS_OWAY_TOOLTIP                      :{BLACK}Sinal avançado de mão única(Elétrico){}Um sinal de trajeto permite mais de um trem em um bloco de ferrovia, Se o trem no bloco puder reservar um local seguro para parar, o sinal de trajeto já permite a passada do próximo, porém não permite a passagem na via contrária
+STR_BUILD_SIGNAL_ELECTRIC_EXIT_TOOLTIP                          :{BLACK}Sinal de saída (elétrico){}Funciona da mesma forma que o sinal de bloco, mas é necessário para ativar a cor correta nos pré-sinais de entrada e combinado.
+STR_BUILD_SIGNAL_ELECTRIC_COMBO_TOOLTIP                         :{BLACK}Sinal combinado (elétrico){}O sinal combinado funciona simultaneamente como um sinal de entrada e de saída. Isto permite construir ramificações complexas de pré-sinais.
+STR_BUILD_SIGNAL_ELECTRIC_PBS_TOOLTIP                           :{BLACK}Sinal de trajeto (elétrico){}Um sinal de trajeto permite mais de um trem entrar em um bloco de sinal ao mesmo tempo, se o trem puder reservar um trajeto para um ponto seguro de parada. Sinais de trajeto padrões podem ser passados no sentido contrário
+STR_BUILD_SIGNAL_ELECTRIC_PBS_OWAY_TOOLTIP                      :{BLACK}Sinal de sentido único (elétrico){}Um sinal de trajeto permite mais de um trem entrar em um bloco de sinal ao mesmo tempo, se o trem puder reservar um trajeto para um ponto seguro de parada. Os sinais de sentido único não podem ser passados no sentido contrário
 STR_BUILD_SIGNAL_CONVERT_TOOLTIP                                :{BLACK}Converter sinal{}Clique em um sinal existente para convertê-lo para o tipo e variante de sinal selecionado. Ctrl+Clique anterna a variante existente. Shift+Clique mostra o custo estimado da conversão
 STR_BUILD_SIGNAL_DRAG_SIGNALS_DENSITY_TOOLTIP                   :{BLACK}Densidade dos sinais ao clicar e arrastar
 STR_BUILD_SIGNAL_DRAG_SIGNALS_DENSITY_DECREASE_TOOLTIP          :{BLACK}Diminuir a densidade dos sinais
@@ -4108,7 +4109,7 @@ STR_BUY_VEHICLE_AIRCRAFT_BUY_VEHICLE_BUTTON                     :{BLACK}Comprar 
 STR_BUY_VEHICLE_TRAIN_BUY_REFIT_VEHICLE_BUTTON                  :{BLACK}Comprar e reequipar veículo
 STR_BUY_VEHICLE_ROAD_VEHICLE_BUY_REFIT_VEHICLE_BUTTON           :{BLACK}Comprar e Reequipar Veículo
 STR_BUY_VEHICLE_SHIP_BUY_REFIT_VEHICLE_BUTTON                   :{BLACK}Comprar e Repor Navio
-STR_BUY_VEHICLE_AIRCRAFT_BUY_REFIT_VEHICLE_BUTTON               :{BLACK}Comprar e reequipar aeronaves
+STR_BUY_VEHICLE_AIRCRAFT_BUY_REFIT_VEHICLE_BUTTON               :{BLACK}Comprar e Adaptar Aeronaves
 
 ###length VEHICLE_TYPES
 STR_BUY_VEHICLE_TRAIN_BUY_VEHICLE_TOOLTIP                       :{BLACK}Comprar o veículo ferroviário selecionado. Pressionar Shift mostra o custo estimado
@@ -4376,6 +4377,7 @@ STR_VEHICLE_VIEW_AIRCRAFT_STATUS_START_STOP_TOOLTIP             :{BLACK}Ação a
 # Messages in the start stop button in the vehicle view
 STR_VEHICLE_STATUS_LOADING_UNLOADING                            :{LTBLUE}Carregando / descarregando
 STR_VEHICLE_STATUS_LEAVING                                      :{LTBLUE}Saindo
+STR_VEHICLE_STATUS_WAITING_UNBUNCHING                           :{LTBLUE}Esperando para desagrupar
 STR_VEHICLE_STATUS_CRASHED                                      :{RED}Acidentado!
 STR_VEHICLE_STATUS_BROKEN_DOWN                                  :{RED}Quebrado
 STR_VEHICLE_STATUS_STOPPED                                      :{RED}Parado
@@ -4389,6 +4391,7 @@ STR_VEHICLE_STATUS_NO_ORDERS_VEL                                :{LTBLUE}Sem ord
 STR_VEHICLE_STATUS_HEADING_FOR_WAYPOINT_VEL                     :{LTBLUE}Indo para {WAYPOINT}, {VELOCITY}
 STR_VEHICLE_STATUS_HEADING_FOR_DEPOT_VEL                        :{ORANGE}Indo para {DEPOT}. {VELOCITY}
 STR_VEHICLE_STATUS_HEADING_FOR_DEPOT_SERVICE_VEL                :{LTBLUE}Manutenção em {DEPOT}. {VELOCITY}
+STR_VEHICLE_STATUS_HEADING_FOR_DEPOT_UNBUNCH_VEL                :{LTBLUE}Desagrupar e efetuar manutenção em {DEPOT}, {VELOCITY}
 
 STR_VEHICLE_STATUS_CANNOT_REACH_STATION_VEL                     :{LTBLUE}Não é possível alcançar {STATION}, {VELOCITY}
 STR_VEHICLE_STATUS_CANNOT_REACH_WAYPOINT_VEL                    :{LTBLUE}Não é possível alcançar {WAYPOINT}, {VELOCITY}
@@ -4519,6 +4522,7 @@ STR_ORDERS_TIMETABLE_VIEW_TOOLTIP                               :{BLACK}Exibe o 
 
 STR_ORDERS_LIST_TOOLTIP                                         :{BLACK}Lista de ordens - clique em uma ordem para selecionar. Ctrl+Clique mostra o destino da ordem
 STR_ORDER_INDEX                                                 :{COMMA}:{NBSP}
+STR_ORDER_TEXT                                                  :{STRING} {STRING} {STRING} {STRING}
 
 STR_ORDERS_END_OF_ORDERS                                        :- - Fim de Ordens - -
 STR_ORDERS_END_OF_SHARED_ORDERS                                 :- - Fim de Ordens Compartilhadas - -
@@ -4555,6 +4559,11 @@ STR_ORDER_DROP_REFIT_AUTO_ANY                                   :Cargas disponí
 STR_ORDER_DROP_GO_ALWAYS_DEPOT                                  :Ir sempre
 STR_ORDER_DROP_SERVICE_DEPOT                                    :Manutenção, se necessária
 STR_ORDER_DROP_HALT_DEPOT                                       :Parar
+STR_ORDER_DROP_UNBUNCH                                          :Desagrupar
+
+# Depot action tooltips, one per vehicle type
+###length VEHICLE_TYPES
+###next-name-looks-similar
 
 STR_ORDER_CONDITIONAL_VARIABLE_TOOLTIP                          :{BLACK}Dados do veículo no qual se basear para pular ordem
 
@@ -4623,6 +4632,7 @@ STR_ORDER_REFIT_ORDER                                           :(Adaptar para {
 STR_ORDER_REFIT_STOP_ORDER                                      :(Adaptar a {STRING} e parar)
 STR_ORDER_STOP_ORDER                                            :(Parar)
 
+STR_ORDER_WAIT_TO_UNBUNCH                                       :(esperar para desagrupar)
 
 STR_ORDER_GO_TO_STATION                                         :{STRING} {STATION} {STRING}
 STR_ORDER_GO_TO_STATION_CAN_T_USE_STATION                       :{PUSH_COLOUR}{RED}(Não pode usar a estação){POP_COLOUR} {STRING} {STATION} {STRING}
@@ -4755,12 +4765,12 @@ STR_AI_DEBUG_RELOAD                                             :{BLACK}Recarreg
 STR_AI_DEBUG_RELOAD_TOOLTIP                                     :{BLACK}Desativar a IA, recarregar o script e reiniciar a IA
 STR_AI_DEBUG_BREAK_STR_ON_OFF_TOOLTIP                           :{BLACK}Ativar/desativar a pausa quando uma mensagem de registo da IA corresponder à sequência de pausa
 STR_AI_DEBUG_BREAK_ON_LABEL                                     :{BLACK}Falha em:
-STR_AI_DEBUG_BREAK_STR_OSKTITLE                                 :{BLACK}Falha em
+STR_AI_DEBUG_BREAK_STR_OSKTITLE                                 :{BLACK}Parar em
 STR_AI_DEBUG_BREAK_STR_TOOLTIP                                  :{BLACK}Quando uma mensagem do registo da IA corresponder a esta sequência, o jogo é pausado
 STR_AI_DEBUG_MATCH_CASE                                         :{BLACK}Caso de igualdade
 STR_AI_DEBUG_MATCH_CASE_TOOLTIP                                 :{BLACK}Alternar o caso de igualdade quando comparar as mensagens de resgisto da IA com a sequência de pausa
 STR_AI_DEBUG_CONTINUE                                           :{BLACK}Continuar
-STR_AI_DEBUG_CONTINUE_TOOLTIP                                   :{BLACK}Despausar e continuar o AI
+STR_AI_DEBUG_CONTINUE_TOOLTIP                                   :{BLACK}Sair da pausa e continuar a IA
 STR_AI_DEBUG_SELECT_AI_TOOLTIP                                  :{BLACK}Ver saída de depuração desta IA
 STR_AI_GAME_SCRIPT                                              :{BLACK}Game Script
 STR_AI_GAME_SCRIPT_TOOLTIP                                      :{BLACK}Verifique o registo do Script de jogo
@@ -4799,7 +4809,7 @@ STR_AI_CONFIG_CONFIGURE_TOOLTIP                                 :{BLACK}Configur
 # Available AIs window
 STR_AI_LIST_CAPTION                                             :{WHITE}Disponíveis {STRING}
 STR_AI_LIST_CAPTION_AI                                          :{G=f}IAs
-STR_AI_LIST_CAPTION_GAMESCRIPT                                  :Script do jogo
+STR_AI_LIST_CAPTION_GAMESCRIPT                                  :Scripts de jogo
 STR_AI_LIST_TOOLTIP                                             :{BLACK}Clique para selecionar um script
 
 STR_AI_LIST_AUTHOR                                              :{LTBLUE}Autor: {ORANGE}{STRING}
@@ -5094,6 +5104,11 @@ STR_ERROR_UNABLE_TO_FIND_LOCAL_DEPOT                            :{WHITE}Incapaz 
 STR_ERROR_DEPOT_WRONG_DEPOT_TYPE                                :Tipo de depósito errado
 
 # Depot unbunching related errors
+STR_ERROR_UNBUNCHING_ONLY_ONE_ALLOWED                           :{WHITE}... pode haver somente uma ordem de desagrupar
+STR_ERROR_UNBUNCHING_NO_FULL_LOAD                               :{WHITE}... não é possível usar ordens de carga completa quando o veículo tem uma ordem de desagrupar
+STR_ERROR_UNBUNCHING_NO_UNBUNCHING_FULL_LOAD                    :{WHITE}... não é possível desagrupar um veículo com ordem de carga completa
+STR_ERROR_UNBUNCHING_NO_CONDITIONAL                             :{WHITE}... não é possível usar ordens condicionais quando um veículo tem uma ordem de desagrupar
+STR_ERROR_UNBUNCHING_NO_UNBUNCHING_CONDITIONAL                  :{WHITE}... não é possível desagrupar um veículo com uma ordem condicional
 
 # Autoreplace related errors
 STR_ERROR_TRAIN_TOO_LONG_AFTER_REPLACEMENT                      :{WHITE}{VEHICLE} fica grande demais para ser substituído

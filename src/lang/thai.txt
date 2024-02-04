@@ -3955,6 +3955,10 @@ STR_ORDER_DROP_GO_ALWAYS_DEPOT                                  :ไปทุก
 STR_ORDER_DROP_SERVICE_DEPOT                                    :เข้าซ่อมบำรุงหากต้องการ
 STR_ORDER_DROP_HALT_DEPOT                                       :หยุด
 
+# Depot action tooltips, one per vehicle type
+###length VEHICLE_TYPES
+###next-name-looks-similar
+
 STR_ORDER_CONDITIONAL_VARIABLE_TOOLTIP                          :{BLACK}ข้อมูลยานพาหนะที่จะข้ามไป
 
 # Conditional order variables, must follow order of OrderConditionVariable enum

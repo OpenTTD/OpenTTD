@@ -4421,6 +4421,10 @@ STR_ORDER_DROP_GO_ALWAYS_DEPOT                                  :Chạy suốt
 STR_ORDER_DROP_SERVICE_DEPOT                                    :Bảo trì nếu cần
 STR_ORDER_DROP_HALT_DEPOT                                       :Dừng
 
+# Depot action tooltips, one per vehicle type
+###length VEHICLE_TYPES
+###next-name-looks-similar
+
 STR_ORDER_CONDITIONAL_VARIABLE_TOOLTIP                          :{BLACK}Dữ kiện của phương tiện để xác định
 
 # Conditional order variables, must follow order of OrderConditionVariable enum

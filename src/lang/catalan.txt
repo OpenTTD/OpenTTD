@@ -363,6 +363,7 @@ STR_SORT_BY_POPULATION                                          :Població
 STR_SORT_BY_RATING                                              :Qualificació
 STR_SORT_BY_NUM_VEHICLES                                        :Nombre de vehicles
 STR_SORT_BY_TOTAL_PROFIT_LAST_YEAR                              :Benefici total de l'any passat
+STR_SORT_BY_TOTAL_PROFIT_LAST_PERIOD                            :Benefici total durant l'últim període
 STR_SORT_BY_TOTAL_PROFIT_THIS_YEAR                              :Benefici total d'aquest any
 STR_SORT_BY_TOTAL_PROFIT_THIS_PERIOD                            :Benefici total d'aquest període
 STR_SORT_BY_AVERAGE_PROFIT_LAST_YEAR                            :Benefici mitjà de l'any passat
@@ -634,6 +635,7 @@ STR_GRAPH_KEY_COMPANY_SELECTION_TOOLTIP                         :{BLACK}Clica aq
 # Company league window
 STR_COMPANY_LEAGUE_TABLE_CAPTION                                :{WHITE}Taula de la lliga de companyies
 STR_COMPANY_LEAGUE_COMPANY_NAME                                 :{ORANGE}{COMPANY} {BLACK}{COMPANY_NUM} «{STRING}»
+STR_COMPANY_LEAGUE_COMPANY_RANK                                 :{YELLOW}#{NUM}
 STR_COMPANY_LEAGUE_PERFORMANCE_TITLE_ENGINEER                   :Enginyer
 STR_COMPANY_LEAGUE_PERFORMANCE_TITLE_TRAFFIC_MANAGER            :Director de trànsit
 STR_COMPANY_LEAGUE_PERFORMANCE_TITLE_TRANSPORT_COORDINATOR      :Coordinador de transport
@@ -1263,6 +1265,7 @@ STR_CONFIG_SETTING_HORIZONTAL_POS_RIGHT                         :Dreta
 STR_CONFIG_SETTING_SECONDS_VALUE                                :{COMMA}{NBSP}segon{P 0 "" s}
 
 STR_CONFIG_SETTING_INFINITE_MONEY                               :Diners infinits: {STRING}
+STR_CONFIG_SETTING_INFINITE_MONEY_HELPTEXT                      :Permet gastar diners sense límit i desactiva les bancarrotes de les companyies.
 
 STR_CONFIG_SETTING_MAXIMUM_INITIAL_LOAN                         :Préstec inicial màxim: {STRING}
 STR_CONFIG_SETTING_MAXIMUM_INITIAL_LOAN_HELPTEXT                :Quantitat màxima del préstec que pot demanar una companyia (sense tenir en compte la inflació)
@@ -1288,6 +1291,7 @@ STR_CONFIG_SETTING_SUBSIDY_MULTIPLIER_HELPTEXT                  :Fixa quant es p
 STR_CONFIG_SETTING_SUBSIDY_DURATION                             :Durada dels subsidis: {STRING}
 ###length 2
 STR_CONFIG_SETTING_SUBSIDY_DURATION_HELPTEXT                    :Establiu el nombre d'anys que duren els subsidis.
+STR_CONFIG_SETTING_SUBSIDY_DURATION_HELPTEXT_PERIODS            :Estableix el nombre de períodes que duren les subvencions.
 
 STR_CONFIG_SETTING_SUBSIDY_DURATION_VALUE                       :{UNITS_YEARS_OR_PERIODS}
 ###setting-zero-is-special
@@ -1474,7 +1478,8 @@ STR_CONFIG_SETTING_ORDER_REVIEW_ON                              :De tots els veh
 
 STR_CONFIG_SETTING_WARN_INCOME_LESS                             :Avisa si el benefici del vehicle és negatiu: {STRING}
 ###length 2
-STR_CONFIG_SETTING_WARN_INCOME_LESS_HELPTEXT                    :Quan està activat, un missatge de notícia és enviat quan un vehicle no ha tingut beneficis durant l'any
+STR_CONFIG_SETTING_WARN_INCOME_LESS_HELPTEXT                    :Quan està activat, s'envia un missatge de notícia quan un vehicle no ha tingut beneficis durant l'any
+STR_CONFIG_SETTING_WARN_INCOME_LESS_HELPTEXT_PERIOD             :Quan està activat, s'envia un missatge de notícia quan un vehicle no ha obtingut benefici durant un període.
 
 STR_CONFIG_SETTING_NEVER_EXPIRE_VEHICLES                        :Els vehicles mai caduquen: {STRING}
 STR_CONFIG_SETTING_NEVER_EXPIRE_VEHICLES_HELPTEXT               :Quan està activat, tots els models de vehicles continuen disponibles per sempre després de la seva introducció
@@ -1491,6 +1496,7 @@ STR_CONFIG_SETTING_MINUTES_PER_YEAR_FROZEN                      :0 (temps de cal
 
 STR_CONFIG_SETTING_TOWN_CARGO_SCALE                             :Escala la producció de càrrega de les poblacions: {STRING}
 STR_CONFIG_SETTING_TOWN_CARGO_SCALE_HELPTEXT                    :Escala la producció de càrrega de les poblacions segons aquest percentatge.
+STR_CONFIG_SETTING_INDUSTRY_CARGO_SCALE                         :Escala la producció de càrrega de les indústries: {STRING}
 STR_CONFIG_SETTING_INDUSTRY_CARGO_SCALE_HELPTEXT                :Escala la producció de càrrega de les indústries segons aquest percentatge.
 STR_CONFIG_SETTING_CARGO_SCALE_VALUE                            :{NUM}{NBSP}%
 
@@ -1752,6 +1758,7 @@ STR_CONFIG_SETTING_SOUND_NEW_PERIOD                             :Fi del període
 
 ###length 2
 STR_CONFIG_SETTING_SOUND_NEW_YEAR_HELPTEXT                      :Reprodueix un efecte de so al final de l'any quan apareix el resum financer de l'any de la companyia en comparació amb l'anterior
+STR_CONFIG_SETTING_SOUND_NEW_PERIOD_HELPTEXT                    :Reprodueix un so al final d'un període que indica el rendiment de la companyia durant el període respecte al període anterior.
 
 STR_CONFIG_SETTING_SOUND_CONFIRM                                :Construcció: {STRING}
 STR_CONFIG_SETTING_SOUND_CONFIRM_HELPTEXT                       :Reprodueix un efecte de so quan es realitzin amb èxit construccions o altres accions
@@ -1912,6 +1919,7 @@ STR_CONFIG_SETTING_SEMAPHORE_BUILD_BEFORE_DATE_HELPTEXT         :Estableix l'any
 STR_CONFIG_SETTING_CYCLE_SIGNAL_TYPES                           :Canvia a través dels tipus de senyal: {STRING}
 STR_CONFIG_SETTING_CYCLE_SIGNAL_TYPES_HELPTEXT                  :Seleccioneu com es commutaran els tipus de senyals quan es faci Ctrl+clic sobre un senyal ja construït amb l'eina de construir senyals.
 ###length 2
+STR_CONFIG_SETTING_CYCLE_SIGNAL_GROUP                           :Només el grup actual
 STR_CONFIG_SETTING_CYCLE_SIGNAL_ALL                             :Tots visibles
 
 STR_CONFIG_SETTING_SIGNAL_GUI_MODE                              :Mostra els tipus de senyals: {STRING}
@@ -2220,7 +2228,7 @@ STR_HELP_WINDOW_BUGTRACKER                                      :{BLACK}Informeu
 STR_HELP_WINDOW_COMMUNITY                                       :Comunitat
 
 # Cheat window
-STR_CHEATS                                                      :{WHITE}Trampes
+STR_CHEATS                                                      :{WHITE}Opcions de mode lliure
 STR_CHEAT_MONEY                                                 :{LTBLUE}Augmenta els diners de la companyia actual en {CURRENCY_LONG}.
 STR_CHEAT_CHANGE_COMPANY                                        :{LTBLUE}Juga amb la companyia: {ORANGE}{COMMA}
 STR_CHEAT_EXTRA_DYNAMITE                                        :{LTBLUE}Eruga màgica (treu indústries i altres objectes inamovibles): {ORANGE}{STRING}
@@ -3694,6 +3702,7 @@ STR_SUBSIDIES_TOOLTIP_CLICK_ON_SERVICE_TO_CENTER                :{BLACK}Clica al
 STR_SUBSIDIES_OFFERED_EXPIRY_DATE                               :fins el {DATE_SHORT}
 STR_SUBSIDIES_OFFERED_EXPIRY_TIME                               :abans de {UNITS_MONTHS_OR_MINUTES}
 STR_SUBSIDIES_SUBSIDISED_EXPIRY_DATE                            :fins el {DATE_SHORT}
+STR_SUBSIDIES_SUBSIDISED_EXPIRY_TIME                            :Queden {UNITS_MONTHS_OR_MINUTES}
 
 # Story book window
 STR_STORY_BOOK_CAPTION                                          :{WHITE}Llibre de Partida de {COMPANY}
@@ -3734,6 +3743,7 @@ STR_STATION_VIEW_EXCLUSIVE_RIGHTS_COMPANY                       :{YELLOW}{COMPAN
 STR_STATION_VIEW_RATINGS_BUTTON                                 :{BLACK}Ratis
 STR_STATION_VIEW_RATINGS_TOOLTIP                                :{BLACK}Mostra els ratis de l'estació
 STR_STATION_VIEW_SUPPLY_RATINGS_TITLE_MONTH                     :{BLACK}Subministrament mensual i rati local:
+STR_STATION_VIEW_SUPPLY_RATINGS_TITLE_MINUTE                    :{BLACK}Subministrament per minut i rati local:
 STR_STATION_VIEW_CARGO_SUPPLY_RATING                            :{WHITE}{STRING}: {YELLOW}{COMMA} / {STRING} ({COMMA}%)
 
 STR_STATION_VIEW_GROUP                                          :{BLACK}Agrupa per
@@ -3918,6 +3928,7 @@ STR_INDUSTRY_DIRECTORY_FILTER_NONE                              :Cap
 # Industry view
 STR_INDUSTRY_VIEW_CAPTION                                       :{WHITE}{INDUSTRY}
 STR_INDUSTRY_VIEW_PRODUCTION_LAST_MONTH_TITLE                   :{BLACK}Producció del darrer mes:
+STR_INDUSTRY_VIEW_PRODUCTION_LAST_MINUTE_TITLE                  :{BLACK}Producció durant l'últim minut:
 STR_INDUSTRY_VIEW_TRANSPORTED                                   :{YELLOW}{CARGO_LONG}{STRING}{BLACK} ({COMMA}% transportat)
 STR_INDUSTRY_VIEW_LOCATION_TOOLTIP                              :{BLACK}Centra la vista principal al lloc de la indústria. Ctrl+Clic obre una nova vista al lloc de la indústria
 STR_INDUSTRY_VIEW_PRODUCTION_LEVEL                              :{BLACK}Nivell de producció: {YELLOW}{COMMA}%
@@ -4396,6 +4407,7 @@ STR_VEHICLE_INFO_WEIGHT_POWER_MAX_SPEED_MAX_TE                  :{BLACK}Pes: {LT
 STR_VEHICLE_INFO_PROFIT_THIS_YEAR_LAST_YEAR                     :{BLACK}Benefici d'aquest any: {LTBLUE}{CURRENCY_LONG} (darrer any: {CURRENCY_LONG})
 STR_VEHICLE_INFO_PROFIT_THIS_YEAR_LAST_YEAR_MIN_PERFORMANCE     :{BLACK}Benefici aquest any: {LTBLUE}{CURRENCY_LONG} (l'any passat: {CURRENCY_LONG}) {BLACK}Rendiment mínim: {LTBLUE}{POWER_TO_WEIGHT}
 STR_VEHICLE_INFO_PROFIT_THIS_PERIOD_LAST_PERIOD                 :{BLACK}Benefici durant aquest període: {LTBLUE}{CURRENCY_LONG} (durant l'últim període: {CURRENCY_LONG})
+STR_VEHICLE_INFO_PROFIT_THIS_PERIOD_LAST_PERIOD_MIN_PERFORMANCE :{BLACK}Benefici durant aquest període: {LTBLUE}{CURRENCY_LONG} (durant l'últim període: {CURRENCY_LONG}) {BLACK}Rendiment mínim: {LTBLUE}{POWER_TO_WEIGHT}
 STR_VEHICLE_INFO_RELIABILITY_BREAKDOWNS                         :{BLACK}Fiabilitat: {LTBLUE}{COMMA}%  {BLACK}Avaries des de la darrera revisió: {LTBLUE}{COMMA}
 
 STR_VEHICLE_INFO_BUILT_VALUE                                    :{LTBLUE}{ENGINE} {BLACK}Fabricat: {LTBLUE}{NUM}{BLACK} Valor: {LTBLUE}{CURRENCY_LONG}
@@ -4481,6 +4493,7 @@ STR_ORDERS_TIMETABLE_VIEW_TOOLTIP                               :{BLACK}Commuta 
 
 STR_ORDERS_LIST_TOOLTIP                                         :{BLACK}Llista d'ordres - clica en una ordre per marcar-la. Ctrl+Clic desplaça cap a la destinació de l'ordre
 STR_ORDER_INDEX                                                 :{COMMA}:{NBSP}
+STR_ORDER_TEXT                                                  :{STRING} {STRING} {STRING} {STRING}
 
 STR_ORDERS_END_OF_ORDERS                                        :- - Fi d'Ordres - -
 STR_ORDERS_END_OF_SHARED_ORDERS                                 :- - Fi d'Ordres Compartides - -
@@ -4517,6 +4530,11 @@ STR_ORDER_DROP_REFIT_AUTO_ANY                                   :Càrrega dispon
 STR_ORDER_DROP_GO_ALWAYS_DEPOT                                  :Vés-hi sempre
 STR_ORDER_DROP_SERVICE_DEPOT                                    :Revisa si és necessari
 STR_ORDER_DROP_HALT_DEPOT                                       :Para
+STR_ORDER_DROP_UNBUNCH                                          :Separa
+
+# Depot action tooltips, one per vehicle type
+###length VEHICLE_TYPES
+###next-name-looks-similar
 
 STR_ORDER_CONDITIONAL_VARIABLE_TOOLTIP                          :{BLACK}Dades del vehicle on basar el salt a
 
@@ -4585,6 +4603,7 @@ STR_ORDER_REFIT_ORDER                                           :(Remodela a {ST
 STR_ORDER_REFIT_STOP_ORDER                                      :(Remodela a {STRING} i para)
 STR_ORDER_STOP_ORDER                                            :(Para)
 
+STR_ORDER_WAIT_TO_UNBUNCH                                       :(espera per a separar)
 
 STR_ORDER_GO_TO_STATION                                         :{STRING} {STATION} {STRING}
 STR_ORDER_GO_TO_STATION_CAN_T_USE_STATION                       :{PUSH_COLOUR}{RED}(No pot usar l'estació){POP_COLOUR} {STRING} {STATION} {STRING}
@@ -4788,6 +4807,8 @@ STR_AI_SETTINGS_CAPTION_GAMESCRIPT                              :Script de la pa
 STR_AI_SETTINGS_CLOSE                                           :{BLACK}Tanca
 STR_AI_SETTINGS_RESET                                           :{BLACK}Restableix
 STR_AI_SETTINGS_SETTING                                         :{STRING}: {ORANGE}{STRING}
+STR_AI_SETTINGS_SETTING_DEVIATION                               :{STRING}: {ORANGE}[{STRING}, {STRING}]
+STR_AI_SETTINGS_JUST_DEVIATION                                  :[{STRING}, {STRING}]
 
 
 # Textfile window
@@ -5054,6 +5075,10 @@ STR_ERROR_UNABLE_TO_FIND_LOCAL_DEPOT                            :{WHITE}Impossib
 STR_ERROR_DEPOT_WRONG_DEPOT_TYPE                                :Tipus de cotxera incorrecta
 
 # Depot unbunching related errors
+STR_ERROR_UNBUNCHING_ONLY_ONE_ALLOWED                           :{WHITE}... només pot tenir una ordre de separar.
+STR_ERROR_UNBUNCHING_NO_FULL_LOAD                               :{WHITE}... no es poden fer servir ordres de càrrega completa quan el vehicle té una ordre de separació.
+STR_ERROR_UNBUNCHING_NO_CONDITIONAL                             :{WHITE}... no pot fer servir ordres condicionals quan un vehicle té una ordre de separació.
+STR_ERROR_UNBUNCHING_NO_UNBUNCHING_CONDITIONAL                  :{WHITE}... no es pot separar un vehicle que té ordres condicionals.
 
 # Autoreplace related errors
 STR_ERROR_TRAIN_TOO_LONG_AFTER_REPLACEMENT                      :{WHITE}{VEHICLE} és massa llarg després de la substitució

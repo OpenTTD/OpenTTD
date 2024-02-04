@@ -3618,6 +3618,10 @@ STR_ORDER_DROP_REFIT_AUTO_ANY                                   :Beskikbere frac
 STR_ORDER_DROP_GO_ALWAYS_DEPOT                                  :Gean altyd
 STR_ORDER_DROP_HALT_DEPOT                                       :Stop
 
+# Depot action tooltips, one per vehicle type
+###length VEHICLE_TYPES
+###next-name-looks-similar
+
 
 # Conditional order variables, must follow order of OrderConditionVariable enum
 ###length 8

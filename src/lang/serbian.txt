@@ -4520,6 +4520,10 @@ STR_ORDER_DROP_GO_ALWAYS_DEPOT                                  :Uvek
 STR_ORDER_DROP_SERVICE_DEPOT                                    :Servis po potrebi
 STR_ORDER_DROP_HALT_DEPOT                                       :Zaustavljanje
 
+# Depot action tooltips, one per vehicle type
+###length VEHICLE_TYPES
+###next-name-looks-similar
+
 STR_ORDER_CONDITIONAL_VARIABLE_TOOLTIP                          :{BLACK}Skok na osnovu podatka o vozilu
 
 # Conditional order variables, must follow order of OrderConditionVariable enum

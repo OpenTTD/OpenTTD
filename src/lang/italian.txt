@@ -4444,6 +4444,10 @@ STR_ORDER_DROP_GO_ALWAYS_DEPOT                                  :Sempre
 STR_ORDER_DROP_SERVICE_DEPOT                                    :Solo se necessario
 STR_ORDER_DROP_HALT_DEPOT                                       :Ferma in deposito
 
+# Depot action tooltips, one per vehicle type
+###length VEHICLE_TYPES
+###next-name-looks-similar
+
 STR_ORDER_CONDITIONAL_VARIABLE_TOOLTIP                          :{BLACK}Dato del veicolo sul quale basare il salto
 
 # Conditional order variables, must follow order of OrderConditionVariable enum

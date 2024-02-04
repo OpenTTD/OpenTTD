@@ -1282,6 +1282,10 @@ STR_ORDER_INDEX                                                 :{COMMA}:{NBSP}
 STR_ORDER_REFIT_TOOLTIP                                         :{BLACK}इस मार्ग पर ढोये जा रहे नौभार को बदलने के लिये नये प्रकार का नौभार चुनें। Ctrl+क्लिक करने पर परिवर्तन का आदेश निरस्त हो जायेगा।
 
 
+# Depot action tooltips, one per vehicle type
+###length VEHICLE_TYPES
+###next-name-looks-similar
+
 
 # Conditional order variables, must follow order of OrderConditionVariable enum
 ###length 8

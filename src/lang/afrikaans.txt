@@ -3965,6 +3965,10 @@ STR_ORDER_DROP_GO_ALWAYS_DEPOT                                  :gaan altyd
 STR_ORDER_DROP_SERVICE_DEPOT                                    :Diens indien nodig
 STR_ORDER_DROP_HALT_DEPOT                                       :Stop
 
+# Depot action tooltips, one per vehicle type
+###length VEHICLE_TYPES
+###next-name-looks-similar
+
 STR_ORDER_CONDITIONAL_VARIABLE_TOOLTIP                          :{BLACK}Voertuig data om sprong op te baseer
 
 # Conditional order variables, must follow order of OrderConditionVariable enum

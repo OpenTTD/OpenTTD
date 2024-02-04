@@ -799,6 +799,7 @@ STR_STATUSBAR_AUTOSAVE                                          :{RED}AUTOGEM
 STR_STATUSBAR_SAVING_GAME                                       :{RED}*  *  GEMMER SPIL  *  *
 
 STR_STATUSBAR_SPECTATOR                                         :{WHITE}(tilskuer)
+STR_STATUSBAR_INFINITE_MONEY                                    :{WHITE}(uendelige penge)
 
 # News message history
 STR_MESSAGE_HISTORY                                             :{WHITE}Beskedhistorik
@@ -4163,6 +4164,7 @@ STR_ENGINE_PREVIEW_TRAM_VEHICLE                                 :sporvogn
 STR_ENGINE_PREVIEW_AIRCRAFT                                     :fly
 STR_ENGINE_PREVIEW_SHIP                                         :skib
 
+STR_ENGINE_PREVIEW_TEXT3                                        :{BLACK}{STRING}{}{5:STRING}{}{STRING}
 
 # Autoreplace window
 STR_REPLACE_VEHICLES_WHITE                                      :{WHITE}Udskift {STRING} - {STRING}
@@ -4433,6 +4435,10 @@ STR_ORDER_DROP_REFIT_AUTO_ANY                                   :Tilgængelig la
 STR_ORDER_DROP_GO_ALWAYS_DEPOT                                  :Altid benyt
 STR_ORDER_DROP_SERVICE_DEPOT                                    :Service hvis nødvendigt
 STR_ORDER_DROP_HALT_DEPOT                                       :Stop
+
+# Depot action tooltips, one per vehicle type
+###length VEHICLE_TYPES
+###next-name-looks-similar
 
 STR_ORDER_CONDITIONAL_VARIABLE_TOOLTIP                          :{BLACK}Data som ordrespring baseres på
 

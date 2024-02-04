@@ -4414,6 +4414,10 @@ STR_ORDER_DROP_GO_ALWAYS_DEPOT                                  :Jeď vždy
 STR_ORDER_DROP_SERVICE_DEPOT                                    :Údržba v případě potřeby
 STR_ORDER_DROP_HALT_DEPOT                                       :Zastavit
 
+# Depot action tooltips, one per vehicle type
+###length VEHICLE_TYPES
+###next-name-looks-similar
+
 STR_ORDER_CONDITIONAL_VARIABLE_TOOLTIP                          :{BLACK}Vlastnost vozidla, podle které přeskakovat
 
 # Conditional order variables, must follow order of OrderConditionVariable enum

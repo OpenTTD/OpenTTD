@@ -3754,6 +3754,10 @@ STR_ORDER_DROP_GO_ALWAYS_DEPOT                                  :Alltid gå
 STR_ORDER_DROP_SERVICE_DEPOT                                    :Vedlikehald om naudsynt
 STR_ORDER_DROP_HALT_DEPOT                                       :Stopp
 
+# Depot action tooltips, one per vehicle type
+###length VEHICLE_TYPES
+###next-name-looks-similar
+
 STR_ORDER_CONDITIONAL_VARIABLE_TOOLTIP                          :{BLACK}Køyretøy-data å basere hopp på
 
 # Conditional order variables, must follow order of OrderConditionVariable enum

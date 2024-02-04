@@ -4116,6 +4116,10 @@ STR_ORDER_DROP_GO_ALWAYS_DEPOT                                  :Rach ann an-cò
 STR_ORDER_DROP_SERVICE_DEPOT                                    :Obair-ghlèidhidh ma tha i a dhìth
 STR_ORDER_DROP_HALT_DEPOT                                       :Stad
 
+# Depot action tooltips, one per vehicle type
+###length VEHICLE_TYPES
+###next-name-looks-similar
+
 STR_ORDER_CONDITIONAL_VARIABLE_TOOLTIP                          :{BLACK}Dàta a' charbaid air a bheil an leum stèidhichte
 
 # Conditional order variables, must follow order of OrderConditionVariable enum

@@ -4473,6 +4473,10 @@ STR_ORDER_DROP_GO_ALWAYS_DEPOT                                  :Vykti visuomet
 STR_ORDER_DROP_SERVICE_DEPOT                                    :Vykti, jei reikia
 STR_ORDER_DROP_HALT_DEPOT                                       :Nuvykti ir sustoti
 
+# Depot action tooltips, one per vehicle type
+###length VEHICLE_TYPES
+###next-name-looks-similar
+
 STR_ORDER_CONDITIONAL_VARIABLE_TOOLTIP                          :{BLACK}Transporto priemonės parametras, kuriuo bus remiamasi vykdant sąlyginę užduotį
 
 # Conditional order variables, must follow order of OrderConditionVariable enum

@@ -635,6 +635,7 @@ STR_GRAPH_KEY_COMPANY_SELECTION_TOOLTIP                         :{BLACK}Cliquer 
 # Company league window
 STR_COMPANY_LEAGUE_TABLE_CAPTION                                :{WHITE}Classement des compagnies
 STR_COMPANY_LEAGUE_COMPANY_NAME                                 :{ORANGE}{COMPANY} {BLACK}{COMPANY_NUM} '{STRING}'
+STR_COMPANY_LEAGUE_COMPANY_RANK                                 :{YELLOW}#{NUM}
 STR_COMPANY_LEAGUE_PERFORMANCE_TITLE_ENGINEER                   :Ingénieur
 STR_COMPANY_LEAGUE_PERFORMANCE_TITLE_TRAFFIC_MANAGER            :Gestionnaire de trafic
 STR_COMPANY_LEAGUE_PERFORMANCE_TITLE_TRANSPORT_COORDINATOR      :Coordinateur de trafic
@@ -818,6 +819,7 @@ STR_STATUSBAR_AUTOSAVE                                          :{RED}ENREGISTRE
 STR_STATUSBAR_SAVING_GAME                                       :{RED}*  *  SAUVEGARDE EN COURS  *  *
 
 STR_STATUSBAR_SPECTATOR                                         :{WHITE}(spectateur)
+STR_STATUSBAR_INFINITE_MONEY                                    :{WHITE}(argent infini)
 
 # News message history
 STR_MESSAGE_HISTORY                                             :{WHITE}Historique des messages
@@ -1270,6 +1272,8 @@ STR_CONFIG_SETTING_HORIZONTAL_POS_RIGHT                         :À droite
 
 STR_CONFIG_SETTING_SECONDS_VALUE                                :{COMMA}{NBSP}seconde{P 0 "" s}
 
+STR_CONFIG_SETTING_INFINITE_MONEY                               :Argent infini{NBSP}: {STRING}
+STR_CONFIG_SETTING_INFINITE_MONEY_HELPTEXT                      :Autoriser les dépenses illimitées et désactiver la banqueroute des compagnies
 
 STR_CONFIG_SETTING_MAXIMUM_INITIAL_LOAN                         :Emprunt initial maximum{NBSP}: {STRING}
 STR_CONFIG_SETTING_MAXIMUM_INITIAL_LOAN_HELPTEXT                :Montant maximum qu'une compagnie peut emprunter (sans tenir compte de l'inflation)
@@ -1504,6 +1508,11 @@ STR_CONFIG_SETTING_MINUTES_PER_YEAR_VALUE                       :{NUM}
 ###setting-zero-is-special
 STR_CONFIG_SETTING_MINUTES_PER_YEAR_FROZEN                      :0 (calendrier gelé)
 
+STR_CONFIG_SETTING_TOWN_CARGO_SCALE                             :Échelle de production de marchandise des villes{NBSP}: {STRING}
+STR_CONFIG_SETTING_TOWN_CARGO_SCALE_HELPTEXT                    :Modifier la production de marchandise des villes de ce pourcentage.
+STR_CONFIG_SETTING_INDUSTRY_CARGO_SCALE                         :Échelle de production de marchandise des industries{NBSP}: {STRING}
+STR_CONFIG_SETTING_INDUSTRY_CARGO_SCALE_HELPTEXT                :Modifier la production de marchandise des industries de ce pourcentage.
+STR_CONFIG_SETTING_CARGO_SCALE_VALUE                            :{NUM}%
 
 STR_CONFIG_SETTING_AUTORENEW_VEHICLE                            :Renouveler automatiquement les véhicules vieillissants{NBSP}: {STRING}
 STR_CONFIG_SETTING_AUTORENEW_VEHICLE_HELPTEXT                   :Quand il est actif, un véhicule approchant de la fin de sa durée de vie est automatiquement remplacé quand les conditions du renouvellement sont remplies
@@ -1916,7 +1925,7 @@ STR_CONFIG_SETTING_DRAG_SIGNALS_DENSITY                         :Espacement des 
 STR_CONFIG_SETTING_DRAG_SIGNALS_DENSITY_HELPTEXT                :Définit la distance à laquelle les signaux seront construits sur une voies jusqu'au prochain obstacle (signal, jonction), si les signaux sont glissés-déposés
 STR_CONFIG_SETTING_DRAG_SIGNALS_DENSITY_VALUE                   :{COMMA} case{P 0 "" s}
 STR_CONFIG_SETTING_DRAG_SIGNALS_FIXED_DISTANCE                  :Espacement fixe entre les signaux en mode glisser-déposer{NBSP}: {STRING}
-STR_CONFIG_SETTING_DRAG_SIGNALS_FIXED_DISTANCE_HELPTEXT         :Choisir le comportement du placement des signaux en mode glisser-déposer avec Ctrl. Si désactivé, les signaux sont placés autour des tunnels ou des ponts pour éviter de longues portions sans signaux. Si activé, les signaux sont placés toutes les N case, permettant d'aligner facilement les signaux sur des voies parallèles
+STR_CONFIG_SETTING_DRAG_SIGNALS_FIXED_DISTANCE_HELPTEXT         :Choisir le comportement du placement des signaux en mode glisser-déposer. Si désactivé, les signaux sont placés autour des tunnels ou des ponts pour éviter de longues portions sans signaux. Si activé, les signaux sont placés toutes les N cases, permettant d'aligner facilement les signaux sur des voies parallèles
 
 STR_CONFIG_SETTING_SEMAPHORE_BUILD_BEFORE_DATE                  :Construire automatiquement des sémaphores avant{NBSP}: {STRING}
 STR_CONFIG_SETTING_SEMAPHORE_BUILD_BEFORE_DATE_HELPTEXT         :Définit l'année à partir de laquelle des signaux électriques seront utilisés pour les voies. Avant cette année, des signaux non électriques seront utilisés (ils ont le même fonctionnement mais une apparence différente)
@@ -1924,6 +1933,7 @@ STR_CONFIG_SETTING_SEMAPHORE_BUILD_BEFORE_DATE_HELPTEXT         :Définit l'ann�
 STR_CONFIG_SETTING_CYCLE_SIGNAL_TYPES                           :Sélectionner les signaux parmi{NBSP}: {STRING}
 STR_CONFIG_SETTING_CYCLE_SIGNAL_TYPES_HELPTEXT                  :Choisir quels types de signaux sont proposés lors de leur construction avec Ctrl
 ###length 2
+STR_CONFIG_SETTING_CYCLE_SIGNAL_GROUP                           :Uniquement le groupe courant
 STR_CONFIG_SETTING_CYCLE_SIGNAL_ALL                             :tous les signaux visibles
 
 STR_CONFIG_SETTING_SIGNAL_GUI_MODE                              :Afficher les signaux parmi{NBSP}: {STRING}
@@ -2780,7 +2790,7 @@ STR_RAIL_TOOLBAR_TOOLTIP_BUILD_AUTORAIL                         :{BLACK}Construi
 STR_RAIL_TOOLBAR_TOOLTIP_BUILD_TRAIN_DEPOT_FOR_BUILDING         :{BLACK}Construire un dépôt ferroviaire (pour acheter et entretenir des trains).{}Shift pour afficher seulement le coût estimé.
 STR_RAIL_TOOLBAR_TOOLTIP_CONVERT_RAIL_TO_WAYPOINT               :{BLACK}Construire un point de contrôle sur les rails.{}Ctrl pour joindre des points de contrôle entre eux.{}Shift pour afficher seulement le coût estimé.
 STR_RAIL_TOOLBAR_TOOLTIP_BUILD_RAILROAD_STATION                 :{BLACK}Construire une gare.{}Ctrl pour joindre des stations entre elles.{}Shift pour afficher seulement le coût estimé.
-STR_RAIL_TOOLBAR_TOOLTIP_BUILD_RAILROAD_SIGNALS                 :{BLACK}Construire des signaux. Ctrl pour inverser le type des signaux (sémaphore/lumineux).{}Faire glisser pour construire le long d'une section de voie linéaire.{}Ctrl-glisser pour construire des signaux jusqu'à la prochaine jonction ou le prochain signal{}Ctrl-clic pour inverser le mode d'ouverture de la fenêtre de sélection des signaux.{}Shift pour afficher seulement le coût estimé.
+STR_RAIL_TOOLBAR_TOOLTIP_BUILD_RAILROAD_SIGNALS                 :{BLACK}Construire des signaux. Ctrl pour inverser le type des signaux (sémaphore/lumineux).{}Faire glisser pour construire des signaux jusqu'à la prochaine jonction ou le prochain signal{}Shift pour afficher seulement le coût estimé.
 STR_RAIL_TOOLBAR_TOOLTIP_BUILD_RAILROAD_BRIDGE                  :{BLACK}Construire un pont ferroviaire.{}Shift pour afficher seulement le coût estimé.
 STR_RAIL_TOOLBAR_TOOLTIP_BUILD_RAILROAD_TUNNEL                  :{BLACK}Construire un tunnel ferroviaire.{}Shift pour afficher seulement le coût estimé.
 STR_RAIL_TOOLBAR_TOOLTIP_TOGGLE_BUILD_REMOVE_FOR                :{BLACK}Alterner entre construire et retirer des voies, des signaux, des points de contrôle et des gares.{}Ctrl pour retirer également la voie lors du retrait des points de contrôle et des gares.
@@ -4367,6 +4377,7 @@ STR_VEHICLE_VIEW_AIRCRAFT_STATUS_START_STOP_TOOLTIP             :{BLACK}Action c
 # Messages in the start stop button in the vehicle view
 STR_VEHICLE_STATUS_LOADING_UNLOADING                            :{LTBLUE}Chargement/Déchargement
 STR_VEHICLE_STATUS_LEAVING                                      :{LTBLUE}Départ
+STR_VEHICLE_STATUS_WAITING_UNBUNCHING                           :{LTBLUE}En attente de répartition
 STR_VEHICLE_STATUS_CRASHED                                      :{RED}Accidenté{NBSP}!
 STR_VEHICLE_STATUS_BROKEN_DOWN                                  :{RED}En panne
 STR_VEHICLE_STATUS_STOPPED                                      :{RED}Arrêté
@@ -4380,6 +4391,7 @@ STR_VEHICLE_STATUS_NO_ORDERS_VEL                                :{LTBLUE}Aucun o
 STR_VEHICLE_STATUS_HEADING_FOR_WAYPOINT_VEL                     :{LTBLUE}En route pour {WAYPOINT}, {VELOCITY}
 STR_VEHICLE_STATUS_HEADING_FOR_DEPOT_VEL                        :{ORANGE}En route pour le {DEPOT}, {VELOCITY}
 STR_VEHICLE_STATUS_HEADING_FOR_DEPOT_SERVICE_VEL                :{LTBLUE}Entretien au {DEPOT}, {VELOCITY}
+STR_VEHICLE_STATUS_HEADING_FOR_DEPOT_UNBUNCH_VEL                :{LTBLUE}Répartition et entretien au {DEPOT}, {VELOCITY}
 
 STR_VEHICLE_STATUS_CANNOT_REACH_STATION_VEL                     :{LTBLUE}Ne peut pas atteindre {STATION}, {VELOCITY}
 STR_VEHICLE_STATUS_CANNOT_REACH_WAYPOINT_VEL                    :{LTBLUE}Ne peut pas atteindre {WAYPOINT}, {VELOCITY}
@@ -4510,6 +4522,7 @@ STR_ORDERS_TIMETABLE_VIEW_TOOLTIP                               :{BLACK}Basculer
 
 STR_ORDERS_LIST_TOOLTIP                                         :{BLACK}Liste d'ordres - Cliquer sur un ordre pour le sélectionner. Ctrl-clic pour déplacer la vue sur la destination de l'ordre.
 STR_ORDER_INDEX                                                 :{COMMA}:{NBSP}
+STR_ORDER_TEXT                                                  :{STRING} {STRING} {STRING} {STRING}
 
 STR_ORDERS_END_OF_ORDERS                                        :−− Fin des ordres −−
 STR_ORDERS_END_OF_SHARED_ORDERS                                 :−− Fin des ordres partagés −−
@@ -4546,6 +4559,11 @@ STR_ORDER_DROP_REFIT_AUTO_ANY                                   :Cargaison dispo
 STR_ORDER_DROP_GO_ALWAYS_DEPOT                                  :Toujours aller
 STR_ORDER_DROP_SERVICE_DEPOT                                    :Entretien si nécessaire
 STR_ORDER_DROP_HALT_DEPOT                                       :Arrêt
+STR_ORDER_DROP_UNBUNCH                                          :Répartir
+
+# Depot action tooltips, one per vehicle type
+###length VEHICLE_TYPES
+###next-name-looks-similar
 
 STR_ORDER_CONDITIONAL_VARIABLE_TOOLTIP                          :{BLACK}Données du véhicule servant de base au saut
 
@@ -4614,6 +4632,7 @@ STR_ORDER_REFIT_ORDER                                           :(Réaménager p
 STR_ORDER_REFIT_STOP_ORDER                                      :(Réaménager pour {STRING} et arrêt)
 STR_ORDER_STOP_ORDER                                            :(Arrêt)
 
+STR_ORDER_WAIT_TO_UNBUNCH                                       :(attendre la répartition)
 
 STR_ORDER_GO_TO_STATION                                         :{STRING} {STATION} {STRING}
 STR_ORDER_GO_TO_STATION_CAN_T_USE_STATION                       :{PUSH_COLOUR}{RED}(Station inutilisable){POP_COLOUR} {STRING} {STATION} {STRING}
@@ -4817,6 +4836,8 @@ STR_AI_SETTINGS_CAPTION_GAMESCRIPT                              :du script de je
 STR_AI_SETTINGS_CLOSE                                           :{BLACK}Fermer
 STR_AI_SETTINGS_RESET                                           :{BLACK}Réinitialiser
 STR_AI_SETTINGS_SETTING                                         :{STRING}{NBSP}: {ORANGE}{STRING}
+STR_AI_SETTINGS_SETTING_DEVIATION                               :{STRING}{NBSP}: {ORANGE}[{STRING}, {STRING}]
+STR_AI_SETTINGS_JUST_DEVIATION                                  :[{STRING}, {STRING}]
 
 
 # Textfile window
@@ -5083,6 +5104,11 @@ STR_ERROR_UNABLE_TO_FIND_LOCAL_DEPOT                            :{WHITE}Impossib
 STR_ERROR_DEPOT_WRONG_DEPOT_TYPE                                :Dépôt incompatible
 
 # Depot unbunching related errors
+STR_ERROR_UNBUNCHING_ONLY_ONE_ALLOWED                           :{WHITE}... ne peut avoir qu'un seul ordre de répartition
+STR_ERROR_UNBUNCHING_NO_FULL_LOAD                               :{WHITE}... impossible d'utiliser un ordre de chargement complet quand un véhicule a un ordre de répartition
+STR_ERROR_UNBUNCHING_NO_UNBUNCHING_FULL_LOAD                    :{WHITE}... impossible de répartir un véhicule avec un ordre de chargement complet
+STR_ERROR_UNBUNCHING_NO_CONDITIONAL                             :{WHITE}... impossible d'utiliser des ordres conditionnels quand le véhicule a un ordre de répartition
+STR_ERROR_UNBUNCHING_NO_UNBUNCHING_CONDITIONAL                  :{WHITE}... impossible de répartir un véhicule avec un ordre conditionnel
 
 # Autoreplace related errors
 STR_ERROR_TRAIN_TOO_LONG_AFTER_REPLACEMENT                      :{WHITE}{VEHICLE} est trop long après remplacement
@@ -5743,6 +5769,7 @@ STR_UNKNOWN_STATION                                             :station inconnu
 STR_DEFAULT_SIGN_NAME                                           :Panneau
 STR_COMPANY_SOMEONE                                             :quelqu'un
 
+STR_SAVEGAME_DURATION_REALTIME                                  :{NUM}h {NUM}m
 STR_SAVEGAME_NAME_DEFAULT                                       :{COMPANY}, {STRING}
 STR_SAVEGAME_NAME_SPECTATOR                                     :Spectateur, {1:STRING}
 
@@ -5776,6 +5803,10 @@ STR_TOWN_NAME                                                   :{TOWN}
 STR_VEHICLE_NAME                                                :{VEHICLE}
 STR_WAYPOINT_NAME                                               :{WAYPOINT}
 
+STR_CURRENCY_SHORT_KILO                                         :{NBSP}k
+STR_CURRENCY_SHORT_MEGA                                         :{NBSP}Mio
+STR_CURRENCY_SHORT_GIGA                                         :{NBSP}Mrd
+STR_CURRENCY_SHORT_TERA                                         :{NBSP}kMrd
 
 STR_JUST_CARGO                                                  :{CARGO_LONG}
 STR_JUST_RIGHT_ARROW                                            :{RIGHT_ARROW}

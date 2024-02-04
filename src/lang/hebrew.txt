@@ -4011,6 +4011,10 @@ STR_ORDER_DROP_GO_ALWAYS_DEPOT                                  :עבור תמי
 STR_ORDER_DROP_SERVICE_DEPOT                                    :טפל במידת הצורך
 STR_ORDER_DROP_HALT_DEPOT                                       :עצור
 
+# Depot action tooltips, one per vehicle type
+###length VEHICLE_TYPES
+###next-name-looks-similar
+
 STR_ORDER_CONDITIONAL_VARIABLE_TOOLTIP                          :{BLACK}נתוני כלי הרכב עליהם יתבסס הדילוג
 
 # Conditional order variables, must follow order of OrderConditionVariable enum

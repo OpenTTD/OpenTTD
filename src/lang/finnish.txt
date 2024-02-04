@@ -4518,6 +4518,10 @@ STR_ORDER_DROP_GO_ALWAYS_DEPOT                                  :Mene aina
 STR_ORDER_DROP_SERVICE_DEPOT                                    :Huolto, jos tarpeen
 STR_ORDER_DROP_HALT_DEPOT                                       :Pysähdy
 
+# Depot action tooltips, one per vehicle type
+###length VEHICLE_TYPES
+###next-name-looks-similar
+
 STR_ORDER_CONDITIONAL_VARIABLE_TOOLTIP                          :{BLACK}Kulkuneuvon tiedot, joiden perusteella hypätään
 
 # Conditional order variables, must follow order of OrderConditionVariable enum

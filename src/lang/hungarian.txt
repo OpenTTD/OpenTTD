@@ -4446,6 +4446,10 @@ STR_ORDER_DROP_GO_ALWAYS_DEPOT                                  :Mindig menj jav
 STR_ORDER_DROP_SERVICE_DEPOT                                    :Ha javításra szorul
 STR_ORDER_DROP_HALT_DEPOT                                       :Maradj ott
 
+# Depot action tooltips, one per vehicle type
+###length VEHICLE_TYPES
+###next-name-looks-similar
+
 STR_ORDER_CONDITIONAL_VARIABLE_TOOLTIP                          :{BLACK}A jármű adata ami alapján ugrani szeretnénk a parancssorban
 
 # Conditional order variables, must follow order of OrderConditionVariable enum

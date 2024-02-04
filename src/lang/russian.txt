@@ -1074,6 +1074,7 @@ STR_NEWS_SERVICE_SUBSIDY_AWARDED_TRIPLE                         :{BIG_FONT}{BLAC
 STR_NEWS_SERVICE_SUBSIDY_AWARDED_QUADRUPLE                      :{BIG_FONT}{BLACK}Компания «{STRING}» получает субсидию!{}{}Перевозка {STRING.gen} по маршруту {STRING} - {STRING} будет оплачиваться в четырёхкратном размере в течение {UNITS_YEARS_OR_MINUTES}!
 
 STR_NEWS_ROAD_REBUILDING_MONTHS                                 :{BIG_FONT}{BLACK}Хаос на дорогах г.{NBSP}{TOWN}!{}{}Реконструкция дорожной сети, профинансированная компанией «{STRING}», принесёт водителям полгода страданий!
+STR_NEWS_ROAD_REBUILDING_MINUTES                                :{BIG_FONT}{BLACK}Хаос на дорогах г.{NBSP}{TOWN}!{}{}Реконструкция дорожной сети, профинансированная компанией «{STRING}», принесёт водителям 6{NBSP}минут страданий!
 STR_NEWS_EXCLUSIVE_RIGHTS_TITLE                                 :{BIG_FONT}{BLACK}Транспортный монополист!
 STR_NEWS_EXCLUSIVE_RIGHTS_DESCRIPTION_MONTHS                    :{BIG_FONT}{BLACK}Администрация г.{NBSP}{TOWN} предоставила компании «{STRING}» эксклюзивные транспортные права сроком на 12 месяцев!
 STR_NEWS_EXCLUSIVE_RIGHTS_DESCRIPTION_MINUTES                   :{BIG_FONT}{BLACK}Администрация г.{NBSP}{TOWN} предоставила компании «{STRING}» эксклюзивные транспортные права сроком на 12 минут!
@@ -1577,7 +1578,7 @@ STR_CONFIG_SETTING_BRIBE_HELPTEXT_MINUTES                       :Позволя�
 
 STR_CONFIG_SETTING_ALLOW_EXCLUSIVE                              :Разрешить покупать эксклюзивные транспортные права: {STRING}
 ###length 2
-STR_CONFIG_SETTING_ALLOW_EXCLUSIVE_HELPTEXT                     :Если компания покапает эксклюзивные транспортные права, то на станции конкурентов не будет поступать груз и не будут приходить пассажиры в течение года
+STR_CONFIG_SETTING_ALLOW_EXCLUSIVE_HELPTEXT                     :Если компания покапает эксклюзивные транспортные права, то на станции конкурентов не будет поступать груз и не будут приходить пассажиры в течение 12{NBSP}месяцев
 STR_CONFIG_SETTING_ALLOW_EXCLUSIVE_HELPTEXT_MINUTES             :Если компания покапает эксклюзивные транспортные права, то на станции конкурентов не будет поступать груз и не будут приходить пассажиры в течение 12{NBSP}минут.
 
 STR_CONFIG_SETTING_ALLOW_FUND_BUILDINGS                         :Разрешить финансирование строительства зданий: {STRING}
@@ -1636,7 +1637,8 @@ STR_CONFIG_SETTING_ORDER_REVIEW_ON                              :у всех
 
 STR_CONFIG_SETTING_WARN_INCOME_LESS                             :Предупреждать, если доход ТС отрицателен: {STRING}
 ###length 2
-STR_CONFIG_SETTING_WARN_INCOME_LESS_HELPTEXT                    :Включает сообщения о транспортых средствах, не принёсших прибыли по итогам прошедшего года
+STR_CONFIG_SETTING_WARN_INCOME_LESS_HELPTEXT                    :Включает сообщения о транспортных средствах, не принёсших прибыли по итогам прошедшего года.
+STR_CONFIG_SETTING_WARN_INCOME_LESS_HELPTEXT_PERIOD             :Включает сообщения о транспортных средствах, не принёсших прибыли по итогам прошедшего цикла.
 
 STR_CONFIG_SETTING_NEVER_EXPIRE_VEHICLES                        :Транспорт не будет выходить из эксплуатации: {STRING}
 STR_CONFIG_SETTING_NEVER_EXPIRE_VEHICLES_HELPTEXT               :При включении все транспортные средства остаются доступными для покупки в любое время после начала их производства
@@ -2079,6 +2081,7 @@ STR_CONFIG_SETTING_SEMAPHORE_BUILD_BEFORE_DATE_HELPTEXT         :Год, нач�
 STR_CONFIG_SETTING_CYCLE_SIGNAL_TYPES                           :Выбор сигналов (Ctrl+щелчок): {STRING}
 STR_CONFIG_SETTING_CYCLE_SIGNAL_TYPES_HELPTEXT                  :Выбор предлагаемых типов сигналов при их модификации с помощью Ctrl+щелчка по установленному сигналу
 ###length 2
+STR_CONFIG_SETTING_CYCLE_SIGNAL_GROUP                           :Только текущая группа
 STR_CONFIG_SETTING_CYCLE_SIGNAL_ALL                             :все отображаемые
 
 STR_CONFIG_SETTING_SIGNAL_GUI_MODE                              :Типы сигналов в панели строительства: {STRING}
@@ -2968,7 +2971,7 @@ STR_RAIL_NAME_MAGLEV.n                                          :Магнитн�
 
 # Rail depot construction window
 STR_BUILD_DEPOT_TRAIN_ORIENTATION_CAPTION                       :{WHITE}Направление депо
-STR_BUILD_DEPOT_TRAIN_ORIENTATION_TOOLTIP                       :{BLACK}Выбор направления депо
+STR_BUILD_DEPOT_TRAIN_ORIENTATION_TOOLTIP                       :{BLACK}Выбор ориентации депо
 
 # Rail waypoint construction window
 STR_WAYPOINT_CAPTION                                            :{WHITE}Точка пути
@@ -2977,7 +2980,7 @@ STR_WAYPOINT_GRAPHICS_TOOLTIP                                   :{BLACK}Выбо
 # Rail station construction window
 STR_STATION_BUILD_RAIL_CAPTION                                  :{WHITE}Выбор ж/д станции
 STR_STATION_BUILD_ORIENTATION                                   :{BLACK}Направление
-STR_STATION_BUILD_RAILROAD_ORIENTATION_TOOLTIP                  :{BLACK}Выберите направление ж/д станции
+STR_STATION_BUILD_RAILROAD_ORIENTATION_TOOLTIP                  :{BLACK}Выберите ориентацию ж/д станции
 STR_STATION_BUILD_NUMBER_OF_TRACKS                              :{BLACK}Количество путей
 STR_STATION_BUILD_NUMBER_OF_TRACKS_TOOLTIP                      :{BLACK}Укажите количество платформ ж/д станции
 STR_STATION_BUILD_PLATFORM_LENGTH                               :{BLACK}Длина платформы
@@ -3066,13 +3069,13 @@ STR_BUILD_DEPOT_TRAM_ORIENTATION_SELECT_TOOLTIP                 :{BLACK}Выбо
 
 # Road vehicle station construction window
 STR_STATION_BUILD_BUS_ORIENTATION                               :{WHITE}Направление остановки
-STR_STATION_BUILD_BUS_ORIENTATION_TOOLTIP                       :{BLACK}Выберите направление остановки
+STR_STATION_BUILD_BUS_ORIENTATION_TOOLTIP                       :{BLACK}Выберите ориентацию остановки
 STR_STATION_BUILD_TRUCK_ORIENTATION                             :{WHITE}Ориентация терминала
 STR_STATION_BUILD_TRUCK_ORIENTATION_TOOLTIP                     :{BLACK}Выберите направление грузового терминала
 STR_STATION_BUILD_PASSENGER_TRAM_ORIENTATION                    :{WHITE}Направление пассажирской трамвайной остановки
 STR_STATION_BUILD_PASSENGER_TRAM_ORIENTATION_TOOLTIP            :{BLACK}Выберите направление пассажирской трамвайной остановки
 STR_STATION_BUILD_CARGO_TRAM_ORIENTATION                        :{WHITE}Направление грузовой трамвайной остановки
-STR_STATION_BUILD_CARGO_TRAM_ORIENTATION_TOOLTIP                :{BLACK}Выберите направление грузовой трамвайной остановки
+STR_STATION_BUILD_CARGO_TRAM_ORIENTATION_TOOLTIP                :{BLACK}Выберите ориентацию грузовой трамвайной станции
 
 # Waterways toolbar (last two for SE only)
 STR_WATERWAYS_TOOLBAR_CAPTION                                   :{WHITE}Судоходные коммуникации
@@ -3088,7 +3091,7 @@ STR_WATERWAYS_TOOLBAR_CREATE_RIVER_TOOLTIP                      :{BLACK}Созд
 
 # Ship depot construction window
 STR_DEPOT_BUILD_SHIP_CAPTION                                    :{WHITE}Направление дока
-STR_DEPOT_BUILD_SHIP_ORIENTATION_TOOLTIP                        :{BLACK}Выберите направление дока
+STR_DEPOT_BUILD_SHIP_ORIENTATION_TOOLTIP                        :{BLACK}Выберите ориентацию дока
 
 # Dock construction window
 STR_STATION_BUILD_DOCK_CAPTION                                  :{WHITE}Пристань
@@ -4701,6 +4704,7 @@ STR_ORDERS_TIMETABLE_VIEW_TOOLTIP                               :{BLACK}Пока
 
 STR_ORDERS_LIST_TOOLTIP                                         :{BLACK}Список заданий - щёлкните задание для выделения. Ctrl+щелчок - обзор станции назначения.
 STR_ORDER_INDEX                                                 :{COMMA}:{NBSP}
+STR_ORDER_TEXT                                                  :{STRING} {STRING} {STRING} {STRING}
 
 STR_ORDERS_END_OF_ORDERS                                        :- - Конец заданий - -
 STR_ORDERS_END_OF_SHARED_ORDERS                                 :- - Конец общих заданий - -
@@ -4737,6 +4741,10 @@ STR_ORDER_DROP_REFIT_AUTO_ANY                                   :Доступн�
 STR_ORDER_DROP_GO_ALWAYS_DEPOT                                  :Всегда
 STR_ORDER_DROP_SERVICE_DEPOT                                    :Если требуется
 STR_ORDER_DROP_HALT_DEPOT                                       :Стоп
+
+# Depot action tooltips, one per vehicle type
+###length VEHICLE_TYPES
+###next-name-looks-similar
 
 STR_ORDER_CONDITIONAL_VARIABLE_TOOLTIP                          :{BLACK}Параметр транспорта для сравнения
 

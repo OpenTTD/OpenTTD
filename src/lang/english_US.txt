@@ -1932,6 +1932,7 @@ STR_CONFIG_SETTING_SEMAPHORE_BUILD_BEFORE_DATE_HELPTEXT         :Set the year wh
 STR_CONFIG_SETTING_CYCLE_SIGNAL_TYPES                           :Cycle through signal types: {STRING}
 STR_CONFIG_SETTING_CYCLE_SIGNAL_TYPES_HELPTEXT                  :Select which signal types to cycle through when Ctrl+Clicking on a built signal with the signal tool
 ###length 2
+STR_CONFIG_SETTING_CYCLE_SIGNAL_GROUP                           :Current group only
 STR_CONFIG_SETTING_CYCLE_SIGNAL_ALL                             :All visible
 
 STR_CONFIG_SETTING_SIGNAL_GUI_MODE                              :Show signal types: {STRING}
@@ -4375,6 +4376,7 @@ STR_VEHICLE_VIEW_AIRCRAFT_STATUS_START_STOP_TOOLTIP             :{BLACK}Current 
 # Messages in the start stop button in the vehicle view
 STR_VEHICLE_STATUS_LOADING_UNLOADING                            :{LTBLUE}Loading / Unloading
 STR_VEHICLE_STATUS_LEAVING                                      :{LTBLUE}Leaving
+STR_VEHICLE_STATUS_WAITING_UNBUNCHING                           :{LTBLUE}Waiting to unbunch
 STR_VEHICLE_STATUS_CRASHED                                      :{RED}Crashed!
 STR_VEHICLE_STATUS_BROKEN_DOWN                                  :{RED}Broken down
 STR_VEHICLE_STATUS_STOPPED                                      :{RED}Stopped
@@ -4388,6 +4390,7 @@ STR_VEHICLE_STATUS_NO_ORDERS_VEL                                :{LTBLUE}No orde
 STR_VEHICLE_STATUS_HEADING_FOR_WAYPOINT_VEL                     :{LTBLUE}Heading for {WAYPOINT}, {VELOCITY}
 STR_VEHICLE_STATUS_HEADING_FOR_DEPOT_VEL                        :{ORANGE}Heading for {DEPOT}, {VELOCITY}
 STR_VEHICLE_STATUS_HEADING_FOR_DEPOT_SERVICE_VEL                :{LTBLUE}Maintenance at {DEPOT}, {VELOCITY}
+STR_VEHICLE_STATUS_HEADING_FOR_DEPOT_UNBUNCH_VEL                :{LTBLUE}Unbunch and service at {DEPOT}, {VELOCITY}
 
 STR_VEHICLE_STATUS_CANNOT_REACH_STATION_VEL                     :{LTBLUE}Cannot reach {STATION}, {VELOCITY}
 STR_VEHICLE_STATUS_CANNOT_REACH_WAYPOINT_VEL                    :{LTBLUE}Cannot reach {WAYPOINT}, {VELOCITY}
@@ -4518,6 +4521,7 @@ STR_ORDERS_TIMETABLE_VIEW_TOOLTIP                               :{BLACK}Switch t
 
 STR_ORDERS_LIST_TOOLTIP                                         :{BLACK}Order list - click on an order to highlight it. Ctrl+Click to scroll to the order's destination
 STR_ORDER_INDEX                                                 :{COMMA}:{NBSP}
+STR_ORDER_TEXT                                                  :{STRING} {STRING} {STRING} {STRING}
 
 STR_ORDERS_END_OF_ORDERS                                        :- - End of Orders - -
 STR_ORDERS_END_OF_SHARED_ORDERS                                 :- - End of Shared Orders - -
@@ -4554,6 +4558,11 @@ STR_ORDER_DROP_REFIT_AUTO_ANY                                   :Available cargo
 STR_ORDER_DROP_GO_ALWAYS_DEPOT                                  :Always go
 STR_ORDER_DROP_SERVICE_DEPOT                                    :Repair if needed
 STR_ORDER_DROP_HALT_DEPOT                                       :Stop
+STR_ORDER_DROP_UNBUNCH                                          :Unbunch
+
+# Depot action tooltips, one per vehicle type
+###length VEHICLE_TYPES
+###next-name-looks-similar
 
 STR_ORDER_CONDITIONAL_VARIABLE_TOOLTIP                          :{BLACK}Vehicle data to base jumping on
 
@@ -4622,6 +4631,7 @@ STR_ORDER_REFIT_ORDER                                           :(Refit to {STRI
 STR_ORDER_REFIT_STOP_ORDER                                      :(Refit to {STRING} and stop)
 STR_ORDER_STOP_ORDER                                            :(Stop)
 
+STR_ORDER_WAIT_TO_UNBUNCH                                       :(wait to unbunch)
 
 STR_ORDER_GO_TO_STATION                                         :{STRING} {STATION} {STRING}
 STR_ORDER_GO_TO_STATION_CAN_T_USE_STATION                       :{PUSH_COLOUR}{RED}(Can't use station){POP_COLOUR} {STRING} {STATION} {STRING}
@@ -5093,6 +5103,11 @@ STR_ERROR_UNABLE_TO_FIND_LOCAL_DEPOT                            :{WHITE}Unable t
 STR_ERROR_DEPOT_WRONG_DEPOT_TYPE                                :Wrong depot type
 
 # Depot unbunching related errors
+STR_ERROR_UNBUNCHING_ONLY_ONE_ALLOWED                           :{WHITE}... can only have one unbunching order
+STR_ERROR_UNBUNCHING_NO_FULL_LOAD                               :{WHITE}... cannot use full load orders when vehicle has an unbunching order
+STR_ERROR_UNBUNCHING_NO_UNBUNCHING_FULL_LOAD                    :{WHITE}... cannot unbunch a vehicle with a full load order
+STR_ERROR_UNBUNCHING_NO_CONDITIONAL                             :{WHITE}... cannot use conditional orders when vehicle has an unbunching order
+STR_ERROR_UNBUNCHING_NO_UNBUNCHING_CONDITIONAL                  :{WHITE}... cannot unbunch a vehicle with a conditional order
 
 # Autoreplace related errors
 STR_ERROR_TRAIN_TOO_LONG_AFTER_REPLACEMENT                      :{WHITE}{VEHICLE} is too long after replacement

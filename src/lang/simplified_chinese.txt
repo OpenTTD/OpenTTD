@@ -1516,11 +1516,11 @@ STR_CONFIG_SETTING_CARGO_SCALE_VALUE                            :{NUM}%
 STR_CONFIG_SETTING_AUTORENEW_VEHICLE                            :当车辆报废时自动更新：{STRING}
 STR_CONFIG_SETTING_AUTORENEW_VEHICLE_HELPTEXT                   :“打开”时，车辆在临近它的报废期限时自动更新
 
-STR_CONFIG_SETTING_AUTORENEW_MONTHS                             :当车辆还有 {STRING} 到达最大年限时自动更新
+STR_CONFIG_SETTING_AUTORENEW_MONTHS                             :自动替换年龄到达使用期限{STRING}的载具。
 STR_CONFIG_SETTING_AUTORENEW_MONTHS_HELPTEXT                    :设置车辆自动更新的时间
 ###length 2
-STR_CONFIG_SETTING_AUTORENEW_MONTHS_VALUE_BEFORE                :{COMMA} 个月前
-STR_CONFIG_SETTING_AUTORENEW_MONTHS_VALUE_AFTER                 :{COMMA} 个月后
+STR_CONFIG_SETTING_AUTORENEW_MONTHS_VALUE_BEFORE                :前 {COMMA} 个月
+STR_CONFIG_SETTING_AUTORENEW_MONTHS_VALUE_AFTER                 :后 {COMMA} 个月
 
 STR_CONFIG_SETTING_AUTORENEW_MONEY                              :启动自动更新需要的最少现金：{STRING}
 STR_CONFIG_SETTING_AUTORENEW_MONEY_HELPTEXT                     :启动自动更新车辆时需要保留的最少现金
@@ -1830,7 +1830,7 @@ STR_CONFIG_SETTING_SERVINT_ROAD_VEHICLES                        :汽车默认保
 STR_CONFIG_SETTING_SERVINT_ROAD_VEHICLES_HELPTEXT               :如果没有为汽车指定保养周期，设定汽车的默认保养周期
 STR_CONFIG_SETTING_SERVINT_AIRCRAFT                             :飞机默认保养周期：{STRING}
 STR_CONFIG_SETTING_SERVINT_AIRCRAFT_HELPTEXT                    :如果没有为飞机指定保养周期，设定飞机的默认保养周期
-STR_CONFIG_SETTING_SERVINT_SHIPS                                :船只的默认保养周期：{STRING}
+STR_CONFIG_SETTING_SERVINT_SHIPS                                :船只默认保养周期：{STRING}
 STR_CONFIG_SETTING_SERVINT_SHIPS_HELPTEXT                       :如果没有为船只设定保养周期，按照这里设定的默认保养周期执行
 STR_CONFIG_SETTING_SERVINT_VALUE                                :{COMMA}{NBSP}日 / 分钟 / %
 ###setting-zero-is-special
@@ -1932,6 +1932,7 @@ STR_CONFIG_SETTING_SEMAPHORE_BUILD_BEFORE_DATE_HELPTEXT         :设置电子信
 STR_CONFIG_SETTING_CYCLE_SIGNAL_TYPES                           :在以下信号类型中循环： {STRING}
 STR_CONFIG_SETTING_CYCLE_SIGNAL_TYPES_HELPTEXT                  :选择用Ctrl+点击的方式切换信号灯类型时的备选类型
 ###length 2
+STR_CONFIG_SETTING_CYCLE_SIGNAL_GROUP                           :仅当前信号组
 STR_CONFIG_SETTING_CYCLE_SIGNAL_ALL                             :全部可见
 
 STR_CONFIG_SETTING_SIGNAL_GUI_MODE                              :显示信号类型: {STRING}
@@ -2829,7 +2830,7 @@ STR_STATION_CLASS_WAYP_WAYPOINT                                 :默认路点
 
 # Signal window
 STR_BUILD_SIGNAL_CAPTION                                        :{WHITE}信号选择
-STR_BUILD_SIGNAL_TOGGLE_ADVANCED_SIGNAL_TOOLTIP                 :{BLACK}选择是否显示高级信号灯类型
+STR_BUILD_SIGNAL_TOGGLE_ADVANCED_SIGNAL_TOOLTIP                 :{BLACK}切换显示逻辑信号机
 STR_BUILD_SIGNAL_SEMAPHORE_NORM_TOOLTIP                         :{BLACK}通过信号灯（悬臂）{}是最基本的信号灯，只允许一列车进入该信号灯以后的区间
 STR_BUILD_SIGNAL_SEMAPHORE_ENTRY_TOOLTIP                        :{BLACK}入口信号灯（悬臂）{}在下一轨道区间上至少有一个出口信号灯是绿色时此信号亮绿灯,否则亮红灯
 STR_BUILD_SIGNAL_SEMAPHORE_EXIT_TOOLTIP                         :{BLACK}出口信号灯（悬臂）{}信号显示条件与通过信号灯相同,但是它的状态可以触发入口及复合信号灯
@@ -3762,7 +3763,7 @@ STR_STATION_VIEW_EXCLUSIVE_RIGHTS_COMPANY                       :{YELLOW}{COMPAN
 STR_STATION_VIEW_RATINGS_BUTTON                                 :{BLACK}评价
 STR_STATION_VIEW_RATINGS_TOOLTIP                                :{BLACK}显示车站评价
 STR_STATION_VIEW_SUPPLY_RATINGS_TITLE_MONTH                     :{BLACK}每月供应数量与本地评价：
-STR_STATION_VIEW_SUPPLY_RATINGS_TITLE_MINUTE                    :每分钟供应量与本地评价：
+STR_STATION_VIEW_SUPPLY_RATINGS_TITLE_MINUTE                    :{BLACK}每分钟供应量与本地评价：
 STR_STATION_VIEW_CARGO_SUPPLY_RATING                            :{WHITE}{STRING}: {YELLOW}{COMMA} / {STRING} ({COMMA}%)
 
 STR_STATION_VIEW_GROUP                                          :{BLACK}群组方式
@@ -4375,6 +4376,7 @@ STR_VEHICLE_VIEW_AIRCRAFT_STATUS_START_STOP_TOOLTIP             :{BLACK}当前�
 # Messages in the start stop button in the vehicle view
 STR_VEHICLE_STATUS_LOADING_UNLOADING                            :{LTBLUE}装载/卸货
 STR_VEHICLE_STATUS_LEAVING                                      :{LTBLUE}发车
+STR_VEHICLE_STATUS_WAITING_UNBUNCHING                           :{LTBLUE}等待班次均匀发车时间
 STR_VEHICLE_STATUS_CRASHED                                      :{RED}已撞毁!
 STR_VEHICLE_STATUS_BROKEN_DOWN                                  :{RED}抛锚
 STR_VEHICLE_STATUS_STOPPED                                      :{RED}停运
@@ -4388,6 +4390,7 @@ STR_VEHICLE_STATUS_NO_ORDERS_VEL                                :{LTBLUE}没有�
 STR_VEHICLE_STATUS_HEADING_FOR_WAYPOINT_VEL                     :{LTBLUE}正在前往{WAYPOINT}，{VELOCITY}
 STR_VEHICLE_STATUS_HEADING_FOR_DEPOT_VEL                        :{ORANGE}正在前往 {DEPOT}, {VELOCITY}
 STR_VEHICLE_STATUS_HEADING_FOR_DEPOT_SERVICE_VEL                :{LTBLUE}正在服务于 {DEPOT}, {VELOCITY}
+STR_VEHICLE_STATUS_HEADING_FOR_DEPOT_UNBUNCH_VEL                :{LTBLUE}正前往 {DEPOT} 以维护与调节班次, {VELOCITY}
 
 STR_VEHICLE_STATUS_CANNOT_REACH_STATION_VEL                     :{LTBLUE}不能到达 {STATION}, {VELOCITY}
 STR_VEHICLE_STATUS_CANNOT_REACH_WAYPOINT_VEL                    :{LTBLUE}不能到达 {WAYPOINT}, {VELOCITY}
@@ -4518,6 +4521,7 @@ STR_ORDERS_TIMETABLE_VIEW_TOOLTIP                               :{BLACK}切换�
 
 STR_ORDERS_LIST_TOOLTIP                                         :{BLACK}调度列表{}单击一个调度指令以选定{}CTRL+左键{}将视点移动到相应的车站
 STR_ORDER_INDEX                                                 :{COMMA}:{NBSP}
+STR_ORDER_TEXT                                                  :{STRING} {STRING} {STRING} {STRING}
 
 STR_ORDERS_END_OF_ORDERS                                        :-- 调度计划结束 --
 STR_ORDERS_END_OF_SHARED_ORDERS                                 :- - 共享调度计划结束 - -
@@ -4554,6 +4558,11 @@ STR_ORDER_DROP_REFIT_AUTO_ANY                                   :可用类型
 STR_ORDER_DROP_GO_ALWAYS_DEPOT                                  :一直前进
 STR_ORDER_DROP_SERVICE_DEPOT                                    :若需要则维护
 STR_ORDER_DROP_HALT_DEPOT                                       :停留
+STR_ORDER_DROP_UNBUNCH                                          :班次均匀
+
+# Depot action tooltips, one per vehicle type
+###length VEHICLE_TYPES
+###next-name-looks-similar
 
 STR_ORDER_CONDITIONAL_VARIABLE_TOOLTIP                          :{BLACK}跳过所需的车辆数据值
 
@@ -4622,6 +4631,7 @@ STR_ORDER_REFIT_ORDER                                           :(改装为 {STR
 STR_ORDER_REFIT_STOP_ORDER                                      :(改装为{STRING}并停留)
 STR_ORDER_STOP_ORDER                                            :(停留)
 
+STR_ORDER_WAIT_TO_UNBUNCH                                       :（班次均匀）
 
 STR_ORDER_GO_TO_STATION                                         :{STRING} {STATION} {STRING}
 STR_ORDER_GO_TO_STATION_CAN_T_USE_STATION                       :{PUSH_COLOUR}{RED}(不能使用车站){POP_COLOUR} {STRING} {STATION} {STRING}
@@ -5093,6 +5103,11 @@ STR_ERROR_UNABLE_TO_FIND_LOCAL_DEPOT                            :{WHITE}在附�
 STR_ERROR_DEPOT_WRONG_DEPOT_TYPE                                :车库类型错误
 
 # Depot unbunching related errors
+STR_ERROR_UNBUNCHING_ONLY_ONE_ALLOWED                           :{WHITE}……载具只能有一项班次均匀命令
+STR_ERROR_UNBUNCHING_NO_FULL_LOAD                               :{WHITE}……不能对有班次均匀的载具应用满载命令
+STR_ERROR_UNBUNCHING_NO_UNBUNCHING_FULL_LOAD                    :{WHITE}……不能对有满载命令的载具应用班次均匀
+STR_ERROR_UNBUNCHING_NO_CONDITIONAL                             :{WHITE}……不能对有班次均匀的载具应用条件性命令
+STR_ERROR_UNBUNCHING_NO_UNBUNCHING_CONDITIONAL                  :{WHITE}……不能对有条件性命令的载具应用班次均匀
 
 # Autoreplace related errors
 STR_ERROR_TRAIN_TOO_LONG_AFTER_REPLACEMENT                      :{WHITE}{VEHICLE}在更新后总长会过长
