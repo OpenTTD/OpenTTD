@@ -1,6 +1,7 @@
 14.0-beta2 (2023-02-04)
 ------------------------------------------------------------------------
-Change: Decouple and remove landscape-dependent cargo types (#11719)
+Change: [NewGRF] Improved support for redefining default cargo types (#11719)
+Fix #11802: Made determining water region edge traversability more robust (#11986)
 Fix #11975: Inconsistent behaviour when changing first AI company settings (#11976)
 Fix #11972: Year cut off in graph windows (#11974)
 Fix #11968: Crash when opening orders window of new vehicles (#11973)
