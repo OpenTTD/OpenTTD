@@ -1151,6 +1151,7 @@ static ChangeInfoResult RailVehicleChangeInfo(uint engine, int numinfo, int prop
 					ei->cargo_type = INVALID_CARGO;
 					GrfMsg(2, "RailVehicleChangeInfo: Invalid cargo type {}, using first refittable", ctype);
 				}
+				ei->cargo_label = CT_INVALID;
 				break;
 			}
 
@@ -1412,6 +1413,7 @@ static ChangeInfoResult RoadVehicleChangeInfo(uint engine, int numinfo, int prop
 					ei->cargo_type = INVALID_CARGO;
 					GrfMsg(2, "RailVehicleChangeInfo: Invalid cargo type {}, using first refittable", ctype);
 				}
+				ei->cargo_label = CT_INVALID;
 				break;
 			}
 
@@ -1607,6 +1609,7 @@ static ChangeInfoResult ShipVehicleChangeInfo(uint engine, int numinfo, int prop
 					ei->cargo_type = INVALID_CARGO;
 					GrfMsg(2, "ShipVehicleChangeInfo: Invalid cargo type {}, using first refittable", ctype);
 				}
+				ei->cargo_label = CT_INVALID;
 				break;
 			}
 
@@ -2426,7 +2429,9 @@ static ChangeInfoResult TownHouseChangeInfo(uint hid, int numinfo, int prop, Byt
 					 * climate. This can cause problems when copying the properties
 					 * of a house that accepts food, where the new house is valid
 					 * in the temperate climate. */
-					if (!CargoSpec::Get(housespec->accepts_cargo[2])->IsValid()) {
+					CargoID cid = housespec->accepts_cargo[2];
+					if (!IsValidCargoID(cid)) cid = GetCargoIDByLabel(housespec->accepts_cargo_label[2]);
+					if (!IsValidCargoID(cid) || !CargoSpec::Get(cid)->IsValid()) {
 						housespec->cargo_acceptance[2] = 0;
 					}
 				}
@@ -2462,13 +2467,14 @@ static ChangeInfoResult TownHouseChangeInfo(uint hid, int numinfo, int prop, Byt
 
 				/* If value of goods is negative, it means in fact food or, if in toyland, fizzy_drink acceptance.
 				 * Else, we have "standard" 3rd cargo type, goods or candy, for toyland once more */
-				CargoID cid = (goods >= 0) ? ((_settings_game.game_creation.landscape == LT_TOYLAND) ? CT_CANDY : CT_GOODS) :
-						((_settings_game.game_creation.landscape == LT_TOYLAND) ? CT_FIZZY_DRINKS : CT_FOOD);
+				CargoID cid = (goods >= 0) ? ((_settings_game.game_creation.landscape == LT_TOYLAND) ? GetCargoIDByLabel(CT_CANDY) : GetCargoIDByLabel(CT_GOODS)) :
+						((_settings_game.game_creation.landscape == LT_TOYLAND) ? GetCargoIDByLabel(CT_FIZZY_DRINKS) : GetCargoIDByLabel(CT_FOOD));
 
 				/* Make sure the cargo type is valid in this climate. */
 				if (!CargoSpec::Get(cid)->IsValid()) goods = 0;
 
 				housespec->accepts_cargo[2] = cid;
+				housespec->accepts_cargo_label[2] = CT_INVALID;
 				housespec->cargo_acceptance[2] = abs(goods); // but we do need positive value here
 				break;
 			}
@@ -2636,7 +2642,7 @@ static ChangeInfoResult TownHouseChangeInfo(uint hid, int numinfo, int prop, Byt
  * @return ChangeInfoResult.
  */
 template <typename T>
-static ChangeInfoResult LoadTranslationTable(uint gvid, int numinfo, ByteReader *buf, T &translation_table, const char *name)
+static ChangeInfoResult LoadTranslationTable(uint gvid, int numinfo, ByteReader *buf, std::vector<T> &translation_table, const char *name)
 {
 	if (gvid != 0) {
 		GrfMsg(1, "LoadTranslationTable: {} translation table must start at zero", name);
@@ -2645,8 +2651,7 @@ static ChangeInfoResult LoadTranslationTable(uint gvid, int numinfo, ByteReader 
 
 	translation_table.clear();
 	for (int i = 0; i < numinfo; i++) {
-		uint32_t item = buf->ReadDWord();
-		translation_table.push_back(BSWAP32(item));
+		translation_table.push_back(T(BSWAP32(buf->ReadDWord())));
 	}
 
 	return CIR_SUCCESS;
@@ -2991,6 +2996,7 @@ static ChangeInfoResult CargoChangeInfo(uint cid, int numinfo, int prop, ByteRea
 				} else {
 					ClrBit(_cargo_mask, cid + i);
 				}
+				BuildCargoLabelMap();
 				break;
 
 			case 0x09: // String ID for cargo type name
@@ -3058,8 +3064,8 @@ static ChangeInfoResult CargoChangeInfo(uint cid, int numinfo, int prop, ByteRea
 				break;
 
 			case 0x17: // Cargo label
-				cs->label = buf->ReadDWord();
-				cs->label = BSWAP32(cs->label);
+				cs->label = CargoLabel{BSWAP32(buf->ReadDWord())};
+				BuildCargoLabelMap();
 				break;
 
 			case 0x18: { // Town growth substitute type
@@ -3666,12 +3672,14 @@ static ChangeInfoResult IndustriesChangeInfo(uint indid, int numinfo, int prop, 
 			case 0x10: // Production cargo types
 				for (byte j = 0; j < 2; j++) {
 					indsp->produced_cargo[j] = GetCargoTranslation(buf->ReadByte(), _cur.grffile);
+					indsp->produced_cargo_label[j] = CT_INVALID;
 				}
 				break;
 
 			case 0x11: // Acceptance cargo types
 				for (byte j = 0; j < 3; j++) {
 					indsp->accepts_cargo[j] = GetCargoTranslation(buf->ReadByte(), _cur.grffile);
+					indsp->accepts_cargo_label[j] = CT_INVALID;
 				}
 				buf->ReadByte(); // Unnused, eat it up
 				break;
@@ -5564,18 +5572,18 @@ static CargoID TranslateCargo(uint8_t feature, uint8_t ctype)
 
 	/* Look up the cargo label from the translation table */
 	CargoLabel cl = _cur.grffile->cargo_list[ctype];
-	if (cl == 0) {
+	if (cl == CT_INVALID) {
 		GrfMsg(5, "TranslateCargo: Cargo type {} not available in this climate, skipping.", ctype);
 		return INVALID_CARGO;
 	}
 
 	CargoID cid = GetCargoIDByLabel(cl);
 	if (!IsValidCargoID(cid)) {
-		GrfMsg(5, "TranslateCargo: Cargo '{:c}{:c}{:c}{:c}' unsupported, skipping.", GB(cl, 24, 8), GB(cl, 16, 8), GB(cl, 8, 8), GB(cl, 0, 8));
+		GrfMsg(5, "TranslateCargo: Cargo '{:c}{:c}{:c}{:c}' unsupported, skipping.", GB(cl.base(), 24, 8), GB(cl.base(), 16, 8), GB(cl.base(), 8, 8), GB(cl.base(), 0, 8));
 		return INVALID_CARGO;
 	}
 
-	GrfMsg(6, "TranslateCargo: Cargo '{:c}{:c}{:c}{:c}' mapped to cargo type {}.", GB(cl, 24, 8), GB(cl, 16, 8), GB(cl, 8, 8), GB(cl, 0, 8), cid);
+	GrfMsg(6, "TranslateCargo: Cargo '{:c}{:c}{:c}{:c}' mapped to cargo type {}.", GB(cl.base(), 24, 8), GB(cl.base(), 16, 8), GB(cl.base(), 8, 8), GB(cl.base(), 0, 8), cid);
 	return cid;
 }
 
@@ -6864,9 +6872,9 @@ static void SkipIf(ByteReader *buf)
 	if (condtype >= 0x0B) {
 		/* Tests that ignore 'param' */
 		switch (condtype) {
-			case 0x0B: result = !IsValidCargoID(GetCargoIDByLabel(BSWAP32(cond_val)));
+			case 0x0B: result = !IsValidCargoID(GetCargoIDByLabel(CargoLabel(BSWAP32(cond_val))));
 				break;
-			case 0x0C: result = IsValidCargoID(GetCargoIDByLabel(BSWAP32(cond_val)));
+			case 0x0C: result = IsValidCargoID(GetCargoIDByLabel(CargoLabel(BSWAP32(cond_val))));
 				break;
 			case 0x0D: result = GetRailTypeByLabel(BSWAP32(cond_val)) == INVALID_RAILTYPE;
 				break;
@@ -8961,15 +8969,19 @@ GRFFile::~GRFFile()
 static void CalculateRefitMasks()
 {
 	CargoTypes original_known_cargoes = 0;
-	for (int ct = 0; ct != NUM_ORIGINAL_CARGO; ++ct) {
-		CargoID cid = GetDefaultCargoID(_settings_game.game_creation.landscape, static_cast<CargoType>(ct));
-		if (IsValidCargoID(cid)) SetBit(original_known_cargoes, cid);
+	for (CargoID cid = 0; cid != NUM_CARGO; ++cid) {
+		if (IsDefaultCargo(cid)) SetBit(original_known_cargoes, cid);
 	}
 
 	for (Engine *e : Engine::Iterate()) {
 		EngineID engine = e->index;
 		EngineInfo *ei = &e->info;
 		bool only_defaultcargo; ///< Set if the vehicle shall carry only the default cargo
+
+		/* Apply default cargo translation map if cargo type hasn't been set, either explicitly or by aircraft cargo handling. */
+		if (!IsValidCargoID(e->info.cargo_type)) {
+			e->info.cargo_type = GetCargoIDByLabel(e->info.cargo_label);
+		}
 
 		/* If the NewGRF did not set any cargo properties, we apply default values. */
 		if (_gted[engine].defaultcargo_grf == nullptr) {
@@ -8981,7 +8993,7 @@ static void CalculateRefitMasks()
 				static constexpr byte Y = 1 << LT_TOYLAND;
 				static const struct DefaultRefitMasks {
 					byte climate;
-					CargoType cargo_type;
+					CargoLabel cargo_label;
 					CargoTypes cargo_allowed;
 					CargoTypes cargo_disallowed;
 				} _default_refit_masks[] = {
@@ -9005,13 +9017,13 @@ static void CalculateRefitMasks()
 					_gted[engine].cargo_allowed = CC_PASSENGERS | CC_MAIL | CC_ARMOURED | CC_EXPRESS;
 					_gted[engine].cargo_disallowed = CC_LIQUID;
 				} else if (e->type == VEH_SHIP) {
-					switch (ei->cargo_type) {
-						case CT_PASSENGERS:
+					switch (ei->cargo_label.base()) {
+						case CT_PASSENGERS.base():
 							/* Ferries */
 							_gted[engine].cargo_allowed = CC_PASSENGERS;
 							_gted[engine].cargo_disallowed = 0;
 							break;
-						case CT_OIL:
+						case CT_OIL.base():
 							/* Tankers */
 							_gted[engine].cargo_allowed = CC_LIQUID;
 							_gted[engine].cargo_disallowed = 0;
@@ -9038,7 +9050,7 @@ static void CalculateRefitMasks()
 					/* Train wagons and road vehicles are classified by their default cargo type */
 					for (const auto &drm : _default_refit_masks) {
 						if (!HasBit(drm.climate, _settings_game.game_creation.landscape)) continue;
-						if (drm.cargo_type != ei->cargo_type) continue;
+						if (drm.cargo_label != ei->cargo_label) continue;
 
 						_gted[engine].cargo_allowed = drm.cargo_allowed;
 						_gted[engine].cargo_disallowed = drm.cargo_disallowed;
@@ -9051,8 +9063,6 @@ static void CalculateRefitMasks()
 			}
 			_gted[engine].UpdateRefittability(_gted[engine].cargo_allowed != 0);
 
-			/* Translate cargo_type using the original climate-specific cargo table. */
-			ei->cargo_type = GetDefaultCargoID(_settings_game.game_creation.landscape, static_cast<CargoType>(ei->cargo_type));
 			if (IsValidCargoID(ei->cargo_type)) ClrBit(_gted[engine].ctt_exclude_mask, ei->cargo_type);
 		}
 
@@ -9206,10 +9216,10 @@ void FinaliseCargoArray()
 	for (CargoSpec &cs : CargoSpec::array) {
 		if (cs.town_production_effect == INVALID_TPE) {
 			/* Set default town production effect by cargo label. */
-			switch (cs.label) {
-				case 'PASS': cs.town_production_effect = TPE_PASSENGERS; break;
-				case 'MAIL': cs.town_production_effect = TPE_MAIL; break;
-				default:     cs.town_production_effect = TPE_NONE; break;
+			switch (cs.label.base()) {
+				case CT_PASSENGERS.base(): cs.town_production_effect = TPE_PASSENGERS; break;
+				case CT_MAIL.base():       cs.town_production_effect = TPE_MAIL; break;
+				default:                   cs.town_production_effect = TPE_NONE; break;
 			}
 		}
 		if (!cs.IsValid()) {
@@ -9352,6 +9362,13 @@ static void FinaliseHouseArray()
 			 * this one in the pool is properly handled as 1x1 house. */
 			hs->building_flags = TILE_NO_FLAG;
 		}
+
+		/* Apply default cargo translation map for unset cargo slots */
+		for (uint i = 0; i < lengthof(hs->accepts_cargo); ++i) {
+			if (!IsValidCargoID(hs->accepts_cargo[i])) hs->accepts_cargo[i] = GetCargoIDByLabel(hs->accepts_cargo_label[i]);
+			/* Disable acceptance if cargo type is invalid. */
+			if (!IsValidCargoID(hs->accepts_cargo[i])) hs->cargo_acceptance[i] = 0;
+		}
 	}
 
 	HouseZones climate_mask = (HouseZones)(1 << (_settings_game.game_creation.landscape + 12));
@@ -9425,6 +9442,21 @@ static void FinaliseIndustriesArray()
 		}
 		if (!indsp.enabled) {
 			indsp.name = STR_NEWGRF_INVALID_INDUSTRYTYPE;
+		}
+
+		/* Apply default cargo translation map for unset cargo slots */
+		for (uint i = 0; i < lengthof(indsp.produced_cargo); ++i) {
+			if (!IsValidCargoID(indsp.produced_cargo[i])) indsp.produced_cargo[i] = GetCargoIDByLabel(indsp.produced_cargo_label[i]);
+		}
+		for (uint i = 0; i < lengthof(indsp.accepts_cargo); ++i) {
+			if (!IsValidCargoID(indsp.accepts_cargo[i])) indsp.accepts_cargo[i] = GetCargoIDByLabel(indsp.accepts_cargo_label[i]);
+		}
+	}
+
+	for (auto &indtsp : _industry_tile_specs) {
+		/* Apply default cargo translation map for unset cargo slots */
+		for (uint i = 0; i < lengthof(indtsp.accepts_cargo); ++i) {
+			if (!IsValidCargoID(indtsp.accepts_cargo[i])) indtsp.accepts_cargo[i] = GetCargoIDByLabel(indtsp.accepts_cargo_label[i]);
 		}
 	}
 }

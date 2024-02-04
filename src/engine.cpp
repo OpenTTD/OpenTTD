@@ -244,8 +244,10 @@ uint Engine::DetermineCapacity(const Vehicle *v, uint16_t *mail_capacity) const
 			if (!IsCargoInClass(cargo_type, CC_PASSENGERS)) {
 				extra_mail_cap = GetEngineProperty(this->index, PROP_AIRCRAFT_MAIL_CAPACITY, this->u.air.mail_capacity, v);
 			}
-			if (!new_multipliers && cargo_type == CT_MAIL) return capacity + extra_mail_cap;
-			default_cargo = CT_PASSENGERS; // Always use 'passengers' wrt. cargo multipliers
+			if (IsValidCargoID(GetCargoIDByLabel(CT_MAIL))) {
+				if (!new_multipliers && cargo_type == GetCargoIDByLabel(CT_MAIL)) return capacity + extra_mail_cap;
+			}
+			default_cargo = GetCargoIDByLabel(CT_PASSENGERS); // Always use 'passengers' wrt. cargo multipliers
 			break;
 
 		default: NOT_REACHED();
@@ -262,8 +264,8 @@ uint Engine::DetermineCapacity(const Vehicle *v, uint16_t *mail_capacity) const
 		uint16_t default_multiplier = new_multipliers ? 0x100 : CargoSpec::Get(default_cargo)->multiplier;
 		uint16_t cargo_multiplier = CargoSpec::Get(cargo_type)->multiplier;
 		capacity *= cargo_multiplier;
-		if (extra_mail_cap > 0) {
-			uint mail_multiplier = CargoSpec::Get(CT_MAIL)->multiplier;
+		if (extra_mail_cap > 0 && IsValidCargoID(GetCargoIDByLabel(CT_MAIL))) {
+			uint mail_multiplier = CargoSpec::Get(GetCargoIDByLabel(CT_MAIL))->multiplier;
 			capacity += (default_multiplier * extra_mail_cap * cargo_multiplier + mail_multiplier / 2) / mail_multiplier;
 		}
 		capacity = (capacity + default_multiplier / 2) / default_multiplier;

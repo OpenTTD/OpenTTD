@@ -24,7 +24,7 @@
  * @param f Bitmask of the climates
  * @note the 5 between b and f is the load amount
  */
-#define MT(a, b, c, d, e, f) { CalendarTime::DAYS_TILL_ORIGINAL_BASE_YEAR + a, c, d, b, 5, f, e, 0, 8, 0, 0, 0, STR_EMPTY, Ticks::CARGO_AGING_TICKS, INVALID_ENGINE, ExtraEngineFlags::None }
+#define MT(a, b, c, d, e, f) { CalendarTime::DAYS_TILL_ORIGINAL_BASE_YEAR + a, c, d, b, 5, f, INVALID_CARGO, e, 0, 8, 0, 0, 0, STR_EMPTY, Ticks::CARGO_AGING_TICKS, INVALID_ENGINE, ExtraEngineFlags::None }
 
 /**
  * Writes the properties of a multiple-unit train into the EngineInfo struct.
@@ -37,7 +37,7 @@
  * @param f Bitmask of the climates
  * @note the 5 between b and f is the load amount
  */
-#define MM(a, b, c, d, e, f) { CalendarTime::DAYS_TILL_ORIGINAL_BASE_YEAR + a, c, d, b, 5, f, e, 0, 8, 1 << EF_RAIL_IS_MU, 0, 0, STR_EMPTY, Ticks::CARGO_AGING_TICKS, INVALID_ENGINE, ExtraEngineFlags::None }
+#define MM(a, b, c, d, e, f) { CalendarTime::DAYS_TILL_ORIGINAL_BASE_YEAR + a, c, d, b, 5, f, INVALID_CARGO, e, 0, 8, 1 << EF_RAIL_IS_MU, 0, 0, STR_EMPTY, Ticks::CARGO_AGING_TICKS, INVALID_ENGINE, ExtraEngineFlags::None }
 
 /**
  * Writes the properties of a train carriage into the EngineInfo struct.
@@ -50,7 +50,7 @@
  * @see MT
  * @note the 5 between b and f is the load amount
  */
-#define MW(a, b, c, d, e, f) { CalendarTime::DAYS_TILL_ORIGINAL_BASE_YEAR + a, c, d, b, 5, f, e, 0, 8, 0, 0, 0, STR_EMPTY, Ticks::CARGO_AGING_TICKS, INVALID_ENGINE, ExtraEngineFlags::None }
+#define MW(a, b, c, d, e, f) { CalendarTime::DAYS_TILL_ORIGINAL_BASE_YEAR + a, c, d, b, 5, f, INVALID_CARGO, e, 0, 8, 0, 0, 0, STR_EMPTY, Ticks::CARGO_AGING_TICKS, INVALID_ENGINE, ExtraEngineFlags::None }
 
 /**
  * Writes the properties of a road vehicle into the EngineInfo struct.
@@ -63,7 +63,7 @@
  * @param f Bitmask of the climates
  * @note the 5 between b and f is the load amount
  */
-#define MR(a, b, c, d, e, f) { CalendarTime::DAYS_TILL_ORIGINAL_BASE_YEAR + a, c, d, b, 5, f, e, 0, 8, 0, 0, 0, STR_EMPTY, Ticks::CARGO_AGING_TICKS, INVALID_ENGINE, ExtraEngineFlags::None }
+#define MR(a, b, c, d, e, f) { CalendarTime::DAYS_TILL_ORIGINAL_BASE_YEAR + a, c, d, b, 5, f, INVALID_CARGO, e, 0, 8, 0, 0, 0, STR_EMPTY, Ticks::CARGO_AGING_TICKS, INVALID_ENGINE, ExtraEngineFlags::None }
 
 /**
  * Writes the properties of a ship into the EngineInfo struct.
@@ -75,7 +75,7 @@
  * @param f Bitmask of the climates
  * @note the 10 between b and f is the load amount
  */
-#define MS(a, b, c, d, e, f) { CalendarTime::DAYS_TILL_ORIGINAL_BASE_YEAR + a, c, d, b, 10, f, e, 0, 8, 0, 0, 0, STR_EMPTY, Ticks::CARGO_AGING_TICKS, INVALID_ENGINE, ExtraEngineFlags::None }
+#define MS(a, b, c, d, e, f) { CalendarTime::DAYS_TILL_ORIGINAL_BASE_YEAR + a, c, d, b, 10, f, INVALID_CARGO, e, 0, 8, 0, 0, 0, STR_EMPTY, Ticks::CARGO_AGING_TICKS, INVALID_ENGINE, ExtraEngineFlags::None }
 
 /**
  * Writes the properties of an aeroplane into the EngineInfo struct.
@@ -86,7 +86,7 @@
  * @param e Bitmask of the climates
  * @note the 20 between b and e is the load amount
  */
-#define MA(a, b, c, d, e) { CalendarTime::DAYS_TILL_ORIGINAL_BASE_YEAR + a, c, d, b, 20, e, CT_INVALID, 0, 8, 0, 0, 0, STR_EMPTY, Ticks::CARGO_AGING_TICKS, INVALID_ENGINE, ExtraEngineFlags::None }
+#define MA(a, b, c, d, e) { CalendarTime::DAYS_TILL_ORIGINAL_BASE_YEAR + a, c, d, b, 20, e, INVALID_CARGO, CT_INVALID, 0, 8, 0, 0, 0, STR_EMPTY, Ticks::CARGO_AGING_TICKS, INVALID_ENGINE, ExtraEngineFlags::None }
 
 /* Climates
  * T = Temperate
@@ -102,33 +102,33 @@ static const EngineInfo _orig_engine_info[] = {
 	 *      |    decay_speed         cargo_type
 	 *      |    |    lifelength     |         climates
 	 *      |    |    |    |         |         | */
-	MT(  1827,  20,  15,  30, 0              , T      ), //   0 Kirby Paul Tank (Steam)
-	MT( 12784,  20,  22,  30, 0              ,   A|S  ), //   1 MJS 250 (Diesel)
-	MT(  9497,  20,  20,  50, 0              ,       Y), //   2 Ploddyphut Choo-Choo
-	MT( 11688,  20,  20,  30, 0              ,       Y), //   3 Powernaut Choo-Choo
-	MT( 16802,  20,  20,  30, 0              ,       Y), //   4 Mightymover Choo-Choo
-	MT( 18993,  20,  20,  30, 0              ,       Y), //   5 Ploddyphut Diesel
-	MT( 20820,  20,  20,  30, 0              ,       Y), //   6 Powernaut Diesel
-	MT(  8766,  20,  20,  30, 0              ,   A|S  ), //   7 Wills 2-8-0 (Steam)
-	MT(  5114,  20,  21,  30, 0              , T      ), //   8 Chaney 'Jubilee' (Steam)
-	MT(  5479,  20,  20,  30, 0              , T      ), //   9 Ginzu 'A4' (Steam)
-	MT( 12419,  20,  23,  25, 0              , T      ), //  10 SH '8P' (Steam)
+	MT(  1827,  20,  15,  30, CT_NONE        , T      ), //   0 Kirby Paul Tank (Steam)
+	MT( 12784,  20,  22,  30, CT_NONE        ,   A|S  ), //   1 MJS 250 (Diesel)
+	MT(  9497,  20,  20,  50, CT_NONE        ,       Y), //   2 Ploddyphut Choo-Choo
+	MT( 11688,  20,  20,  30, CT_NONE        ,       Y), //   3 Powernaut Choo-Choo
+	MT( 16802,  20,  20,  30, CT_NONE        ,       Y), //   4 Mightymover Choo-Choo
+	MT( 18993,  20,  20,  30, CT_NONE        ,       Y), //   5 Ploddyphut Diesel
+	MT( 20820,  20,  20,  30, CT_NONE        ,       Y), //   6 Powernaut Diesel
+	MT(  8766,  20,  20,  30, CT_NONE        ,   A|S  ), //   7 Wills 2-8-0 (Steam)
+	MT(  5114,  20,  21,  30, CT_NONE        , T      ), //   8 Chaney 'Jubilee' (Steam)
+	MT(  5479,  20,  20,  30, CT_NONE        , T      ), //   9 Ginzu 'A4' (Steam)
+	MT( 12419,  20,  23,  25, CT_NONE        , T      ), //  10 SH '8P' (Steam)
 	MM( 13149,  20,  12,  30, CT_PASSENGERS  , T      ), //  11 Manley-Morel DMU (Diesel)
 	MM( 23376,  20,  15,  35, CT_PASSENGERS  , T      ), //  12 'Dash' (Diesel)
-	MT( 14976,  20,  18,  28, 0              , T      ), //  13 SH/Hendry '25' (Diesel)
-	MT( 14245,  20,  20,  30, 0              , T      ), //  14 UU '37' (Diesel)
-	MT( 15341,  20,  22,  33, 0              , T      ), //  15 Floss '47' (Diesel)
-	MT( 14976,  20,  20,  25, 0              ,   A|S  ), //  16 CS 4000 (Diesel)
-	MT( 16437,  20,  20,  30, 0              ,   A|S  ), //  17 CS 2400 (Diesel)
-	MT( 18993,  20,  22,  30, 0              ,   A|S  ), //  18 Centennial (Diesel)
-	MT( 13880,  20,  22,  30, 0              ,   A|S  ), //  19 Kelling 3100 (Diesel)
-	MM( 20454,  20,  22,  30, 0              ,   A|S  ), //  20 Turner Turbo (Diesel)
-	MT( 16071,  20,  22,  30, 0              ,   A|S  ), //  21 MJS 1000 (Diesel)
+	MT( 14976,  20,  18,  28, CT_NONE        , T      ), //  13 SH/Hendry '25' (Diesel)
+	MT( 14245,  20,  20,  30, CT_NONE        , T      ), //  14 UU '37' (Diesel)
+	MT( 15341,  20,  22,  33, CT_NONE        , T      ), //  15 Floss '47' (Diesel)
+	MT( 14976,  20,  20,  25, CT_NONE        ,   A|S  ), //  16 CS 4000 (Diesel)
+	MT( 16437,  20,  20,  30, CT_NONE        ,   A|S  ), //  17 CS 2400 (Diesel)
+	MT( 18993,  20,  22,  30, CT_NONE        ,   A|S  ), //  18 Centennial (Diesel)
+	MT( 13880,  20,  22,  30, CT_NONE        ,   A|S  ), //  19 Kelling 3100 (Diesel)
+	MM( 20454,  20,  22,  30, CT_NONE        ,   A|S  ), //  20 Turner Turbo (Diesel)
+	MT( 16071,  20,  22,  30, CT_NONE        ,   A|S  ), //  21 MJS 1000 (Diesel)
 	MT( 20820,  20,  20,  25, CT_MAIL        , T      ), //  22 SH '125' (Diesel)
-	MT( 16437,  20,  23,  30, 0              , T      ), //  23 SH '30' (Electric)
-	MT( 19359,  20,  23,  80, 0              , T      ), //  24 SH '40' (Electric)
-	MM( 23376,  20,  25,  30, 0              , T      ), //  25 'T.I.M.' (Electric)
-	MM( 26298,  20,  25,  50, 0              , T      ), //  26 'AsiaStar' (Electric)
+	MT( 16437,  20,  23,  30, CT_NONE        , T      ), //  23 SH '30' (Electric)
+	MT( 19359,  20,  23,  80, CT_NONE        , T      ), //  24 SH '40' (Electric)
+	MM( 23376,  20,  25,  30, CT_NONE        , T      ), //  25 'T.I.M.' (Electric)
+	MM( 26298,  20,  25,  50, CT_NONE        , T      ), //  26 'AsiaStar' (Electric)
 	MW(  1827,  20,  20,  50, CT_PASSENGERS  , T|A|S|Y), //  27 Passenger Carriage
 	MW(  1827,  20,  20,  50, CT_MAIL        , T|A|S|Y), //  28 Mail Van
 	MW(  1827,  20,  20,  50, CT_COAL        , T|A    ), //  29 Coal Truck
@@ -156,9 +156,9 @@ static const EngineInfo _orig_engine_info[] = {
 	MW(  1827,  20,  20,  50, CT_BATTERIES   ,       Y), //  51 Battery Truck
 	MW(  1827,  20,  20,  50, CT_FIZZY_DRINKS,       Y), //  52 Fizzy Drink Truck
 	MW(  1827,  20,  20,  50, CT_PLASTIC     ,       Y), //  53 Plastic Truck
-	MT( 28490,  20,  20,  50, 0              , T|A|S  ), //  54 'X2001' (Electric)
+	MT( 28490,  20,  20,  50, CT_NONE        , T|A|S  ), //  54 'X2001' (Electric)
 	MT( 31047,  20,  20,  50, CT_PASSENGERS  , T|A|S  ), //  55 'Millennium Z1' (Electric)
-	MT( 28855,  20,  20,  50, 0              ,       Y), //  56 Wizzowow Z99
+	MT( 28855,  20,  20,  50, CT_NONE        ,       Y), //  56 Wizzowow Z99
 	MW(  1827,  20,  20,  50, CT_PASSENGERS  , T|A|S|Y), //  57 Passenger Carriage
 	MW(  1827,  20,  20,  50, CT_MAIL        , T|A|S|Y), //  58 Mail Van
 	MW(  1827,  20,  20,  50, CT_COAL        , T|A    ), //  59 Coal Truck
@@ -186,11 +186,11 @@ static const EngineInfo _orig_engine_info[] = {
 	MW(  1827,  20,  20,  50, CT_BATTERIES   ,       Y), //  81 Battery Truck
 	MW(  1827,  20,  20,  50, CT_FIZZY_DRINKS,       Y), //  82 Fizzy Drink Truck
 	MW(  1827,  20,  20,  50, CT_PLASTIC     ,       Y), //  83 Plastic Truck
-	MT( 36525,  20,  20,  50, 0              , T|A|S  ), //  84 Lev1 'Leviathan' (Electric)
-	MT( 39447,  20,  20,  50, 0              , T|A|S  ), //  85 Lev2 'Cyclops' (Electric)
-	MT( 42004,  20,  20,  50, 0              , T|A|S  ), //  86 Lev3 'Pegasus' (Electric)
-	MT( 42735,  20,  20,  50, 0              , T|A|S  ), //  87 Lev4 'Chimaera' (Electric)
-	MT( 36891,  20,  20,  60, 0              ,       Y), //  88 Wizzowow Rocketeer
+	MT( 36525,  20,  20,  50, CT_NONE        , T|A|S  ), //  84 Lev1 'Leviathan' (Electric)
+	MT( 39447,  20,  20,  50, CT_NONE        , T|A|S  ), //  85 Lev2 'Cyclops' (Electric)
+	MT( 42004,  20,  20,  50, CT_NONE        , T|A|S  ), //  86 Lev3 'Pegasus' (Electric)
+	MT( 42735,  20,  20,  50, CT_NONE        , T|A|S  ), //  87 Lev4 'Chimaera' (Electric)
+	MT( 36891,  20,  20,  60, CT_NONE        ,       Y), //  88 Wizzowow Rocketeer
 	MW(  1827,  20,  20,  50, CT_PASSENGERS  , T|A|S|Y), //  89 Passenger Carriage
 	MW(  1827,  20,  20,  50, CT_MAIL        , T|A|S|Y), //  90 Mail Van
 	MW(  1827,  20,  20,  50, CT_COAL        , T|A    ), //  91 Coal Truck

@@ -36,6 +36,12 @@ CargoTypes _cargo_mask;
 CargoTypes _standard_cargo_mask;
 
 /**
+ * List of default cargo labels, used when setting up cargo types for default vehicles.
+ * This is done by label so that a cargo label can be redefined in a different slot.
+ */
+static std::vector<CargoLabel> _default_cargo_labels;
+
+/**
  * Set up the default cargo types for the given landscape type.
  * @param l Landscape
  */
@@ -44,18 +50,20 @@ void SetupCargoForClimate(LandscapeID l)
 	assert(l < lengthof(_default_climate_cargo));
 
 	_cargo_mask = 0;
+	_default_cargo_labels.clear();
 
 	/* Copy from default cargo by label or index. */
 	auto insert = std::begin(CargoSpec::array);
-	for (const CargoLabel &cl : _default_climate_cargo[l]) {
+	for (const auto &cl : _default_climate_cargo[l]) {
 
 		/* Check if value is an index into the cargo table */
-		if (cl < lengthof(_default_cargo)) {
+		if (std::holds_alternative<int>(cl)) {
 			/* Copy the default cargo by index. */
-			*insert = _default_cargo[cl];
+			*insert = _default_cargo[std::get<int>(cl)];
 		} else {
 			/* Search for label in default cargo types and copy if found. */
-			auto found = std::find_if(std::begin(_default_cargo), std::end(_default_cargo), [&cl](const CargoSpec &cs) { return cs.label == cl; });
+			CargoLabel label = std::get<CargoLabel>(cl);
+			auto found = std::find_if(std::begin(_default_cargo), std::end(_default_cargo), [&label](const CargoSpec &cs) { return cs.label == label; });
 			if (found != std::end(_default_cargo)) {
 				*insert = *found;
 			} else {
@@ -64,12 +72,49 @@ void SetupCargoForClimate(LandscapeID l)
 			}
 		}
 
-		if (insert->IsValid()) SetBit(_cargo_mask, insert->Index());
+		if (insert->IsValid()) {
+			SetBit(_cargo_mask, insert->Index());
+			_default_cargo_labels.push_back(insert->label);
+		}
 		++insert;
 	}
 
 	/* Reset and disable remaining cargo types. */
 	std::fill(insert, std::end(CargoSpec::array), CargoSpec{});
+
+	BuildCargoLabelMap();
+}
+
+/**
+ * Build cargo label map.
+ * This is called multiple times during NewGRF initialization as cargos are defined, so that TranslateRefitMask() and
+ * GetCargoTranslation(), also used during initialization, get the correct information.
+ */
+void BuildCargoLabelMap()
+{
+	CargoSpec::label_map.clear();
+	for (const CargoSpec &cs : CargoSpec::array) {
+		/* During initialization, CargoSpec can be marked valid before the label has been set. */
+		if (!cs.IsValid() || cs.label == CargoLabel{0}) continue;
+		/* Label already exists, don't addd again. */
+		if (CargoSpec::label_map.count(cs.label) != 0) continue;
+
+		CargoSpec::label_map.insert(std::make_pair(cs.label, cs.Index()));
+	}
+}
+
+/**
+ * Test if a cargo is a default cargo type.
+ * @param cid Cargo ID.
+ * @returns true iff the cargo type is a default cargo type.
+ */
+bool IsDefaultCargo(CargoID cid)
+{
+	auto cs = CargoSpec::Get(cid);
+	if (!cs->IsValid()) return false;
+
+	CargoLabel label = cs->label;
+	return std::any_of(std::begin(_default_cargo_labels), std::end(_default_cargo_labels), [&label](const CargoLabel &cl) { return cl == label; });
 }
 
 /**
@@ -84,44 +129,6 @@ Dimension GetLargestCargoIconSize()
 	}
 	return size;
 }
-
-/**
- * Get the cargo ID of a default cargo, if present.
- * @param l Landscape
- * @param ct Default cargo type.
- * @return ID number if the cargo exists, else #INVALID_CARGO
- */
-CargoID GetDefaultCargoID(LandscapeID l, CargoType ct)
-{
-	assert(l < lengthof(_default_climate_cargo));
-
-	if (!IsValidCargoType(ct)) return INVALID_CARGO;
-
-	assert(ct < lengthof(_default_climate_cargo[0]));
-	CargoLabel cl = _default_climate_cargo[l][ct];
-	/* Bzzt: check if cl is just an index into the cargo table */
-	if (cl < lengthof(_default_cargo)) {
-		cl = _default_cargo[cl].label;
-	}
-
-	return GetCargoIDByLabel(cl);
-}
-
-/**
- * Get the cargo ID by cargo label.
- * @param cl Cargo type to get.
- * @return ID number if the cargo exists, else #INVALID_CARGO
- */
-CargoID GetCargoIDByLabel(CargoLabel cl)
-{
-	for (const CargoSpec *cs : CargoSpec::Iterate()) {
-		if (cs->label == cl) return cs->Index();
-	}
-
-	/* No matching label was found, so it is invalid */
-	return INVALID_CARGO;
-}
-
 
 /**
  * Find the CargoID of a 'bitnum' value.

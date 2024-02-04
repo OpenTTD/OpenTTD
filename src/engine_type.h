@@ -149,6 +149,7 @@ struct EngineInfo {
 	byte load_amount;
 	byte climates;      ///< Climates supported by the engine.
 	CargoID cargo_type;
+	CargoLabel cargo_label;
 	CargoTypes refit_mask;
 	byte refit_cost;
 	byte misc_flags;         ///< Miscellaneous flags. @see EngineMiscFlags

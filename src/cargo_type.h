@@ -11,58 +11,64 @@
 #define CARGO_TYPE_H
 
 #include "core/enum_type.hpp"
+#include "core/strong_typedef_type.hpp"
+
+/** Globally unique label of a cargo type. */
+using CargoLabel = StrongType::Typedef<uint32_t, struct CargoLabelTag, StrongType::Compare>;
 
 /**
  * Cargo slots to indicate a cargo type within a game.
- * Numbers are re-used between different climates.
- * @see CargoTypes
  */
-typedef byte CargoID;
+using CargoID = byte;
 
-/** Available types of cargo */
-enum CargoType {
-	/* Temperate */
-	CT_PASSENGERS   =  0,
-	CT_COAL         =  1,
-	CT_MAIL         =  2,
-	CT_OIL          =  3,
-	CT_LIVESTOCK    =  4,
-	CT_GOODS        =  5,
-	CT_GRAIN        =  6,
-	CT_WOOD         =  7,
-	CT_IRON_ORE     =  8,
-	CT_STEEL        =  9,
-	CT_VALUABLES    = 10,
+/**
+ * Available types of cargo
+ * Labels may be re-used between different climates.
+ */
 
-	/* Arctic */
-	CT_WHEAT        =  6,
-	CT_HILLY_UNUSED =  8,
-	CT_PAPER        =  9,
-	CT_GOLD         = 10,
-	CT_FOOD         = 11,
+/* Temperate */
+static constexpr CargoLabel CT_PASSENGERS   = CargoLabel{'PASS'};
+static constexpr CargoLabel CT_COAL         = CargoLabel{'COAL'};
+static constexpr CargoLabel CT_MAIL         = CargoLabel{'MAIL'};
+static constexpr CargoLabel CT_OIL          = CargoLabel{'OIL_'};
+static constexpr CargoLabel CT_LIVESTOCK    = CargoLabel{'LVST'};
+static constexpr CargoLabel CT_GOODS        = CargoLabel{'GOOD'};
+static constexpr CargoLabel CT_GRAIN        = CargoLabel{'GRAI'};
+static constexpr CargoLabel CT_WOOD         = CargoLabel{'WOOD'};
+static constexpr CargoLabel CT_IRON_ORE     = CargoLabel{'IORE'};
+static constexpr CargoLabel CT_STEEL        = CargoLabel{'STEL'};
+static constexpr CargoLabel CT_VALUABLES    = CargoLabel{'VALU'};
 
-	/* Tropic */
-	CT_RUBBER       =  1,
-	CT_FRUIT        =  4,
-	CT_MAIZE        =  6,
-	CT_COPPER_ORE   =  8,
-	CT_WATER        =  9,
-	CT_DIAMONDS     = 10,
+/* Arctic */
+static constexpr CargoLabel CT_WHEAT        = CargoLabel{'WHEA'};
+static constexpr CargoLabel CT_PAPER        = CargoLabel{'PAPR'};
+static constexpr CargoLabel CT_GOLD         = CargoLabel{'GOLD'};
+static constexpr CargoLabel CT_FOOD         = CargoLabel{'FOOD'};
 
-	/* Toyland */
-	CT_SUGAR        =  1,
-	CT_TOYS         =  3,
-	CT_BATTERIES    =  4,
-	CT_CANDY        =  5,
-	CT_TOFFEE       =  6,
-	CT_COLA         =  7,
-	CT_COTTON_CANDY =  8,
-	CT_BUBBLES      =  9,
-	CT_PLASTIC      = 10,
-	CT_FIZZY_DRINKS = 11,
+/* Tropic */
+static constexpr CargoLabel CT_RUBBER       = CargoLabel{'RUBR'};
+static constexpr CargoLabel CT_FRUIT        = CargoLabel{'FRUI'};
+static constexpr CargoLabel CT_MAIZE        = CargoLabel{'MAIZ'};
+static constexpr CargoLabel CT_COPPER_ORE   = CargoLabel{'CORE'};
+static constexpr CargoLabel CT_WATER        = CargoLabel{'WATR'};
+static constexpr CargoLabel CT_DIAMONDS     = CargoLabel{'DIAM'};
 
-	CT_INVALID      = 0xFF, ///< Invalid cargo type.
-};
+/* Toyland */
+static constexpr CargoLabel CT_SUGAR        = CargoLabel{'SUGR'};
+static constexpr CargoLabel CT_TOYS         = CargoLabel{'TOYS'};
+static constexpr CargoLabel CT_BATTERIES    = CargoLabel{'BATT'};
+static constexpr CargoLabel CT_CANDY        = CargoLabel{'SWET'};
+static constexpr CargoLabel CT_TOFFEE       = CargoLabel{'TOFF'};
+static constexpr CargoLabel CT_COLA         = CargoLabel{'COLA'};
+static constexpr CargoLabel CT_COTTON_CANDY = CargoLabel{'CTCD'};
+static constexpr CargoLabel CT_BUBBLES      = CargoLabel{'BUBL'};
+static constexpr CargoLabel CT_PLASTIC      = CargoLabel{'PLST'};
+static constexpr CargoLabel CT_FIZZY_DRINKS = CargoLabel{'FZDR'};
+
+/** Dummy label for engines that carry no cargo; they actually carry 0 passengers. */
+static constexpr CargoLabel CT_NONE         = CT_PASSENGERS;
+
+static constexpr CargoLabel CT_INVALID      = CargoLabel{UINT32_MAX}; ///< Invalid cargo type.
 
 static const CargoID NUM_ORIGINAL_CARGO = 12; ///< Original number of cargo types.
 static const CargoID NUM_CARGO = 64; ///< Maximum number of cargo types in a game.
@@ -85,7 +91,7 @@ namespace CargoFilterCriteria {
 };
 
 /** Test whether cargo type is not CT_INVALID */
-inline bool IsValidCargoType(CargoType t) { return t != CT_INVALID; }
+inline bool IsValidCargoType(CargoLabel t) { return t != CT_INVALID; }
 /** Test whether cargo type is not INVALID_CARGO */
 inline bool IsValidCargoID(CargoID t) { return t != INVALID_CARGO; }
 

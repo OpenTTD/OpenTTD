@@ -947,7 +947,7 @@ struct RefitWindow : public Window {
 
 		Money money = cost.GetCost();
 		if (mail_capacity > 0) {
-			SetDParam(2, CT_MAIL);
+			SetDParam(2, GetCargoIDByLabel(CT_MAIL));
 			SetDParam(3, mail_capacity);
 			if (this->order != INVALID_VEH_ORDER_ID) {
 				/* No predictable cost */
