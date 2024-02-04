@@ -35,7 +35,7 @@ public:
 		/* Check if the client is banned. */
 		for (const auto &entry : _network_ban_list) {
 			if (address.IsInNetmask(entry)) {
-				Packet p(Tban_packet);
+				Packet p(nullptr, Tban_packet);
 				p.PrepareToSend();
 
 				Debug(net, 2, "[{}] Banned ip tried to join ({}), refused", Tsocket::GetName(), entry);
@@ -52,7 +52,7 @@ public:
 		if (!Tsocket::AllowConnection()) {
 			/* No more clients allowed?
 			 * Send to the client that we are full! */
-			Packet p(Tfull_packet);
+			Packet p(nullptr, Tfull_packet);
 			p.PrepareToSend();
 
 			if (p.TransferOut<int>(send, s, 0) < 0) {

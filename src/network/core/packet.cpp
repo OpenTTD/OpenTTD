@@ -38,13 +38,14 @@ Packet::Packet(NetworkSocketHandler *cs, size_t limit, size_t initial_read_size)
 
 /**
  * Creates a packet to send
+ * @param cs    The socket handler associated with the socket we are writing to; could be \c nullptr.
  * @param type  The type of the packet to send
  * @param limit The maximum number of bytes the packet may have. Default is COMPAT_MTU.
  *              Be careful of compatibility with older clients/servers when changing
  *              the limit as it might break things if the other side is not expecting
  *              much larger packets than what they support.
  */
-Packet::Packet(PacketType type, size_t limit) : pos(0), limit(limit), cs(nullptr)
+Packet::Packet(NetworkSocketHandler *cs, PacketType type, size_t limit) : pos(0), limit(limit), cs(cs)
 {
 	/* Allocate space for the the size so we can write that in just before sending the packet. */
 	this->Send_uint16(0);
@@ -57,7 +58,8 @@ Packet::Packet(PacketType type, size_t limit) : pos(0), limit(limit), cs(nullptr
  */
 void Packet::PrepareToSend()
 {
-	assert(this->cs == nullptr);
+	/* Prevent this to be called twice and for packets that have been received. */
+	assert(this->buffer[0] == 0 && this->buffer[1] == 0);
 
 	this->buffer[0] = GB(this->Size(), 0, 8);
 	this->buffer[1] = GB(this->Size(), 8, 8);
@@ -243,7 +245,6 @@ size_t Packet::Size() const
  */
 bool Packet::ParsePacketSize()
 {
-	assert(this->cs != nullptr);
 	size_t size = (size_t)this->buffer[0];
 	size       += (size_t)this->buffer[1] << 8;
 
