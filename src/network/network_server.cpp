@@ -656,15 +656,15 @@ NetworkRecvStatus ServerNetworkGameSocketHandler::SendSync()
  * Send a command to the client to execute.
  * @param cp The command to send.
  */
-NetworkRecvStatus ServerNetworkGameSocketHandler::SendCommand(const CommandPacket *cp)
+NetworkRecvStatus ServerNetworkGameSocketHandler::SendCommand(const CommandPacket &cp)
 {
-	Debug(net, 9, "client[{}] SendCommand(): cmd={}", this->client_id, cp->cmd);
+	Debug(net, 9, "client[{}] SendCommand(): cmd={}", this->client_id, cp.cmd);
 
 	auto p = std::make_unique<Packet>(PACKET_SERVER_COMMAND);
 
 	this->NetworkGameSocketHandler::SendCommand(*p, cp);
-	p->Send_uint32(cp->frame);
-	p->Send_bool  (cp->my_cmd);
+	p->Send_uint32(cp.frame);
+	p->Send_bool  (cp.my_cmd);
 
 	this->SendPacket(std::move(p));
 	return NETWORK_RECV_STATUS_OKAY;
@@ -1067,7 +1067,7 @@ NetworkRecvStatus ServerNetworkGameSocketHandler::Receive_CLIENT_COMMAND(Packet 
 	Debug(net, 9, "client[{}] Receive_CLIENT_COMMAND()", this->client_id);
 
 	CommandPacket cp;
-	const char *err = this->ReceiveCommand(p, &cp);
+	const char *err = this->ReceiveCommand(p, cp);
 
 	if (this->HasClientQuit()) return NETWORK_RECV_STATUS_CLIENT_QUIT;
 
@@ -1701,7 +1701,7 @@ void NetworkServerSetCompanyPassword(CompanyID company_id, const std::string &pa
  */
 static void NetworkHandleCommandQueue(NetworkClientSocket *cs)
 {
-	for (auto &cp : cs->outgoing_queue) cs->SendCommand(&cp);
+	for (auto &cp : cs->outgoing_queue) cs->SendCommand(cp);
 	cs->outgoing_queue.clear();
 }
 

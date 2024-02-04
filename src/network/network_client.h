@@ -80,7 +80,7 @@ public:
 	void ClientError(NetworkRecvStatus res);
 
 	static NetworkRecvStatus SendJoin();
-	static NetworkRecvStatus SendCommand(const CommandPacket *cp);
+	static NetworkRecvStatus SendCommand(const CommandPacket &cp);
 	static NetworkRecvStatus SendError(NetworkErrorCode errorno);
 	static NetworkRecvStatus SendQuit();
 	static NetworkRecvStatus SendAck();

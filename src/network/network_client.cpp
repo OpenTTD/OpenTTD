@@ -435,9 +435,9 @@ NetworkRecvStatus ClientNetworkGameSocketHandler::SendAck()
  * Send a command to the server.
  * @param cp The command to send.
  */
-NetworkRecvStatus ClientNetworkGameSocketHandler::SendCommand(const CommandPacket *cp)
+NetworkRecvStatus ClientNetworkGameSocketHandler::SendCommand(const CommandPacket &cp)
 {
-	Debug(net, 9, "Client::SendCommand(): cmd={}", cp->cmd);
+	Debug(net, 9, "Client::SendCommand(): cmd={}", cp.cmd);
 
 	auto p = std::make_unique<Packet>(PACKET_CLIENT_COMMAND);
 	my_client->NetworkGameSocketHandler::SendCommand(*p, cp);
@@ -961,7 +961,7 @@ NetworkRecvStatus ClientNetworkGameSocketHandler::Receive_SERVER_COMMAND(Packet 
 	if (this->status != STATUS_ACTIVE) return NETWORK_RECV_STATUS_MALFORMED_PACKET;
 
 	CommandPacket cp;
-	const char *err = this->ReceiveCommand(p, &cp);
+	const char *err = this->ReceiveCommand(p, cp);
 	cp.frame    = p.Recv_uint32();
 	cp.my_cmd   = p.Recv_bool();
 
