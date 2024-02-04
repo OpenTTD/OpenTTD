@@ -122,9 +122,9 @@ struct CallbackArgsHelper<void(*const)(Commands, const CommandCost &, Targs...)>
 /* Helpers to generate the command dispatch table from the command traits. */
 
 template <Commands Tcmd> static CommandDataBuffer SanitizeCmdStrings(const CommandDataBuffer &data);
-template <Commands Tcmd, size_t cb> static void UnpackNetworkCommand(const CommandPacket *cp);
+template <Commands Tcmd, size_t cb> static void UnpackNetworkCommand(const CommandPacket &cp);
 template <Commands Tcmd> static void NetworkReplaceCommandClientId(CommandPacket &cp, ClientID client_id);
-using UnpackNetworkCommandProc = void (*)(const CommandPacket *);
+using UnpackNetworkCommandProc = void (*)(const CommandPacket &);
 using UnpackDispatchT = std::array<UnpackNetworkCommandProc, _callback_tuple_size>;
 struct CommandDispatch {
 	CommandDataBuffer(*Sanitize)(const CommandDataBuffer &);
@@ -219,7 +219,7 @@ void NetworkSendCommand(Commands cmd, StringID err_message, CommandCallback *cal
 	c.frame = 0; // The client can't tell which frame, so just make it 0
 
 	/* Clients send their command to the server and forget all about the packet */
-	MyClient::SendCommand(&c);
+	MyClient::SendCommand(c);
 }
 
 /**
@@ -265,7 +265,7 @@ void NetworkExecuteLocalCommandQueue()
 		size_t cb_index = FindCallbackIndex(cp->callback);
 		assert(cb_index < _callback_tuple_size);
 		assert(_cmd_dispatch[cp->cmd].Unpack[cb_index] != nullptr);
-		_cmd_dispatch[cp->cmd].Unpack[cb_index](&*cp);
+		_cmd_dispatch[cp->cmd].Unpack[cb_index](*cp);
 	}
 	queue.erase(queue.begin(), cp);
 
@@ -337,7 +337,7 @@ static void DistributeQueue(CommandQueue &queue, const NetworkClientSocket *owne
 		}
 
 		DistributeCommandPacket(*cp, owner);
-		NetworkAdminCmdLogging(owner, &*cp);
+		NetworkAdminCmdLogging(owner, *cp);
 		cp = queue.erase(cp);
 	}
 }
@@ -360,19 +360,19 @@ void NetworkDistributeCommands()
  * @param cp the struct to write the data to.
  * @return an error message. When nullptr there has been no error.
  */
-const char *NetworkGameSocketHandler::ReceiveCommand(Packet &p, CommandPacket *cp)
+const char *NetworkGameSocketHandler::ReceiveCommand(Packet &p, CommandPacket &cp)
 {
-	cp->company = (CompanyID)p.Recv_uint8();
-	cp->cmd     = static_cast<Commands>(p.Recv_uint16());
-	if (!IsValidCommand(cp->cmd))               return "invalid command";
-	if (GetCommandFlags(cp->cmd) & CMD_OFFLINE) return "single-player only command";
-	cp->err_msg = p.Recv_uint16();
-	cp->data    = _cmd_dispatch[cp->cmd].Sanitize(p.Recv_buffer());
+	cp.company = (CompanyID)p.Recv_uint8();
+	cp.cmd     = static_cast<Commands>(p.Recv_uint16());
+	if (!IsValidCommand(cp.cmd))               return "invalid command";
+	if (GetCommandFlags(cp.cmd) & CMD_OFFLINE) return "single-player only command";
+	cp.err_msg = p.Recv_uint16();
+	cp.data    = _cmd_dispatch[cp.cmd].Sanitize(p.Recv_buffer());
 
 	byte callback = p.Recv_uint8();
-	if (callback >= _callback_table.size() || _cmd_dispatch[cp->cmd].Unpack[callback] == nullptr)  return "invalid callback";
+	if (callback >= _callback_table.size() || _cmd_dispatch[cp.cmd].Unpack[callback] == nullptr)  return "invalid callback";
 
-	cp->callback = _callback_table[callback];
+	cp.callback = _callback_table[callback];
 	return nullptr;
 }
 
@@ -381,16 +381,16 @@ const char *NetworkGameSocketHandler::ReceiveCommand(Packet &p, CommandPacket *c
  * @param p the packet to send it in.
  * @param cp the packet to actually send.
  */
-void NetworkGameSocketHandler::SendCommand(Packet &p, const CommandPacket *cp)
+void NetworkGameSocketHandler::SendCommand(Packet &p, const CommandPacket &cp)
 {
-	p.Send_uint8(cp->company);
-	p.Send_uint16(cp->cmd);
-	p.Send_uint16(cp->err_msg);
-	p.Send_buffer(cp->data);
+	p.Send_uint8(cp.company);
+	p.Send_uint16(cp.cmd);
+	p.Send_uint16(cp.err_msg);
+	p.Send_buffer(cp.data);
 
-	size_t callback = FindCallbackIndex(cp->callback);
-	if (callback > UINT8_MAX || _cmd_dispatch[cp->cmd].Unpack[callback] == nullptr) {
-		Debug(net, 0, "Unknown callback for command; no callback sent (command: {})", cp->cmd);
+	size_t callback = FindCallbackIndex(cp.callback);
+	if (callback > UINT8_MAX || _cmd_dispatch[cp.cmd].Unpack[callback] == nullptr) {
+		Debug(net, 0, "Unknown callback for command; no callback sent (command: {})", cp.cmd);
 		callback = 0; // _callback_table[0] == nullptr
 	}
 	p.Send_uint8 ((uint8_t)callback);
@@ -473,8 +473,8 @@ CommandDataBuffer SanitizeCmdStrings(const CommandDataBuffer &data)
  * @param cp Command packet to unpack.
  */
 template <Commands Tcmd, size_t Tcb>
-void UnpackNetworkCommand(const CommandPacket *cp)
+void UnpackNetworkCommand(const CommandPacket &cp)
 {
-	auto args = EndianBufferReader::ToValue<typename CommandTraits<Tcmd>::Args>(cp->data);
-	Command<Tcmd>::PostFromNet(cp->err_msg, std::get<Tcb>(_callback_tuple), cp->my_cmd, args);
+	auto args = EndianBufferReader::ToValue<typename CommandTraits<Tcmd>::Args>(cp.data);
+	Command<Tcmd>::PostFromNet(cp.err_msg, std::get<Tcb>(_callback_tuple), cp.my_cmd, args);
 }

@@ -97,7 +97,7 @@ public:
 	NetworkRecvStatus SendJoin(ClientID client_id);
 	NetworkRecvStatus SendFrame();
 	NetworkRecvStatus SendSync();
-	NetworkRecvStatus SendCommand(const CommandPacket *cp);
+	NetworkRecvStatus SendCommand(const CommandPacket &cp);
 	NetworkRecvStatus SendCompanyUpdate();
 	NetworkRecvStatus SendConfigUpdate();
 

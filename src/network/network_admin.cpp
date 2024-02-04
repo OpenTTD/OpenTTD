@@ -608,15 +608,15 @@ NetworkRecvStatus ServerNetworkAdminSocketHandler::SendCmdNames()
  * @param client_id The client executing the command.
  * @param cp The command that would be executed.
  */
-NetworkRecvStatus ServerNetworkAdminSocketHandler::SendCmdLogging(ClientID client_id, const CommandPacket *cp)
+NetworkRecvStatus ServerNetworkAdminSocketHandler::SendCmdLogging(ClientID client_id, const CommandPacket &cp)
 {
 	auto p = std::make_unique<Packet>(ADMIN_PACKET_SERVER_CMD_LOGGING);
 
 	p->Send_uint32(client_id);
-	p->Send_uint8 (cp->company);
-	p->Send_uint16(cp->cmd);
-	p->Send_buffer(cp->data);
-	p->Send_uint32(cp->frame);
+	p->Send_uint8 (cp.company);
+	p->Send_uint16(cp.cmd);
+	p->Send_buffer(cp.data);
+	p->Send_uint32(cp.frame);
 
 	this->SendPacket(std::move(p));
 
@@ -959,7 +959,7 @@ void NetworkAdminGameScript(const std::string_view json)
  * @param owner The owner of the CommandPacket (who sent us the CommandPacket).
  * @param cp    The CommandPacket to be distributed.
  */
-void NetworkAdminCmdLogging(const NetworkClientSocket *owner, const CommandPacket *cp)
+void NetworkAdminCmdLogging(const NetworkClientSocket *owner, const CommandPacket &cp)
 {
 	ClientID client_id = owner == nullptr ? _network_own_client_id : owner->client_id;
 
