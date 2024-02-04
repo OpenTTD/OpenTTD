@@ -21,7 +21,7 @@
  * Enum with types of TCP packets specific to the admin network.
  * This protocol may only be extended to ensure stability.
  */
-enum PacketAdminType {
+enum PacketAdminType : uint8_t {
 	ADMIN_PACKET_ADMIN_JOIN,             ///< The admin announces and authenticates itself to the server.
 	ADMIN_PACKET_ADMIN_QUIT,             ///< The admin tells the server that it is quitting.
 	ADMIN_PACKET_ADMIN_UPDATE_FREQUENCY, ///< The admin tells the server the update frequency of a particular piece of information.

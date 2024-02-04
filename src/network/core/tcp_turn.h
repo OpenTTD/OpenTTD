@@ -18,7 +18,7 @@
 #include "network_game_info.h"
 
 /** Enum with all types of TCP TURN packets. The order MUST not be changed. **/
-enum PacketTurnType {
+enum PacketTurnType : uint8_t {
 	PACKET_TURN_TURN_ERROR,     ///< TURN server is unable to relay.
 	PACKET_TURN_SERCLI_CONNECT, ///< Client or server is connecting to the TURN server.
 	PACKET_TURN_TURN_CONNECTED, ///< TURN server indicates the socket is now being relayed.

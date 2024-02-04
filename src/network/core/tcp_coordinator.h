@@ -25,7 +25,7 @@
  * CLIENT -> packets from Client to Game Coordinator.
  * SERCLI -> packets from either the Server or Client to Game Coordinator.
  **/
-enum PacketCoordinatorType {
+enum PacketCoordinatorType : uint8_t {
 	PACKET_COORDINATOR_GC_ERROR,              ///< Game Coordinator indicates there was an error.
 	PACKET_COORDINATOR_SERVER_REGISTER,       ///< Server registration.
 	PACKET_COORDINATOR_GC_REGISTER_ACK,       ///< Game Coordinator accepts the registration.
