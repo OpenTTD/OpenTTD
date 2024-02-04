@@ -1060,7 +1060,7 @@ NetworkRecvStatus ServerNetworkGameSocketHandler::Receive_CLIENT_COMMAND(Packet 
 		return this->SendError(NETWORK_ERROR_NOT_EXPECTED);
 	}
 
-	if (this->incoming_queue.Count() >= _settings_client.network.max_commands_in_queue) {
+	if (this->incoming_queue.size() >= _settings_client.network.max_commands_in_queue) {
 		return this->SendError(NETWORK_ERROR_TOO_MANY_COMMANDS);
 	}
 
@@ -1115,7 +1115,7 @@ NetworkRecvStatus ServerNetworkGameSocketHandler::Receive_CLIENT_COMMAND(Packet 
 
 	if (GetCommandFlags(cp.cmd) & CMD_CLIENT_ID) NetworkReplaceCommandClientId(cp, this->client_id);
 
-	this->incoming_queue.Append(&cp);
+	this->incoming_queue.push_back(cp);
 	return NETWORK_RECV_STATUS_OKAY;
 }
 

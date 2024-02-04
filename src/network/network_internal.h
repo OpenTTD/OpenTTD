@@ -107,9 +107,7 @@ void UpdateNetworkGameWindow();
  * Everything we need to know about a command to be able to execute it.
  */
 struct CommandPacket {
-	/** Make sure the pointer is nullptr. */
-	CommandPacket() : next(nullptr), company(INVALID_COMPANY), frame(0), my_cmd(false) {}
-	CommandPacket *next; ///< the next command packet (if in queue)
+	CommandPacket() : company(INVALID_COMPANY), frame(0), my_cmd(false) {}
 	CompanyID company;   ///< company that is executing the command
 	uint32_t frame;        ///< the frame in which this packet is executed
 	bool my_cmd;         ///< did the command originate from "me"

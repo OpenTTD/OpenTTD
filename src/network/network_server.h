@@ -66,7 +66,7 @@ public:
 	byte last_token;             ///< The last random token we did send to verify the client is listening
 	uint32_t last_token_frame;     ///< The last frame we received the right token
 	ClientStatus status;         ///< Status of this client
-	std::vector<CommandPacket> outgoing_queue; ///< The command-queue awaiting delivery; conceptually more a bucket to gather commands in, after which the whole bucket is sent to the client.
+	CommandQueue outgoing_queue; ///< The command-queue awaiting delivery; conceptually more a bucket to gather commands in, after which the whole bucket is sent to the client.
 	size_t receive_limit;        ///< Amount of bytes that we can receive at this moment
 
 	std::shared_ptr<struct PacketWriter> savegame; ///< Writer used to write the savegame.

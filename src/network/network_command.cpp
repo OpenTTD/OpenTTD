@@ -165,76 +165,6 @@ static constexpr auto _cmd_dispatch = MakeDispatchTable(std::make_integer_sequen
 #	pragma GCC diagnostic pop
 #endif
 
-
-/**
- * Append a CommandPacket at the end of the queue.
- * @param p The packet to append to the queue.
- * @note A new instance of the CommandPacket will be made.
- */
-void CommandQueue::Append(CommandPacket *p)
-{
-	CommandPacket *add = new CommandPacket();
-	*add = *p;
-	add->next = nullptr;
-	if (this->first == nullptr) {
-		this->first = add;
-	} else {
-		this->last->next = add;
-	}
-	this->last = add;
-	this->count++;
-}
-
-/**
- * Return the first item in the queue and remove it from the queue.
- * @param ignore_paused Whether to ignore commands that may not be executed while paused.
- * @return the first item in the queue.
- */
-CommandPacket *CommandQueue::Pop(bool ignore_paused)
-{
-	CommandPacket **prev = &this->first;
-	CommandPacket *ret = this->first;
-	CommandPacket *prev_item = nullptr;
-	if (ignore_paused && _pause_mode != PM_UNPAUSED) {
-		while (ret != nullptr && !IsCommandAllowedWhilePaused(ret->cmd)) {
-			prev_item = ret;
-			prev = &ret->next;
-			ret = ret->next;
-		}
-	}
-	if (ret != nullptr) {
-		if (ret == this->last) this->last = prev_item;
-		*prev = ret->next;
-		this->count--;
-	}
-	return ret;
-}
-
-/**
- * Return the first item in the queue, but don't remove it.
- * @param ignore_paused Whether to ignore commands that may not be executed while paused.
- * @return the first item in the queue.
- */
-CommandPacket *CommandQueue::Peek(bool ignore_paused)
-{
-	if (!ignore_paused || _pause_mode == PM_UNPAUSED) return this->first;
-
-	for (CommandPacket *p = this->first; p != nullptr; p = p->next) {
-		if (IsCommandAllowedWhilePaused(p->cmd)) return p;
-	}
-	return nullptr;
-}
-
-/** Free everything that is in the queue. */
-void CommandQueue::Free()
-{
-	CommandPacket *cp;
-	while ((cp = this->Pop()) != nullptr) {
-		delete cp;
-	}
-	assert(this->count == 0);
-}
-
 /** Local queue of packets waiting for handling. */
 static CommandQueue _local_wait_queue;
 /** Local queue of packets waiting for execution. */
@@ -282,7 +212,7 @@ void NetworkSendCommand(Commands cmd, StringID err_message, CommandCallback *cal
 		c.frame = _frame_counter_max + 1;
 		c.my_cmd = true;
 
-		_local_wait_queue.Append(&c);
+		_local_wait_queue.push_back(c);
 		return;
 	}
 
@@ -303,8 +233,8 @@ void NetworkSendCommand(Commands cmd, StringID err_message, CommandCallback *cal
  */
 void NetworkSyncCommandQueue(NetworkClientSocket *cs)
 {
-	for (CommandPacket *p = _local_execution_queue.Peek(); p != nullptr; p = p->next) {
-		CommandPacket &c = cs->outgoing_queue.emplace_back(*p);
+	for (auto &p : _local_execution_queue) {
+		CommandPacket &c = cs->outgoing_queue.emplace_back(p);
 		c.callback = nullptr;
 	}
 }
@@ -318,8 +248,8 @@ void NetworkExecuteLocalCommandQueue()
 
 	CommandQueue &queue = (_network_server ? _local_execution_queue : ClientNetworkGameSocketHandler::my_client->incoming_queue);
 
-	CommandPacket *cp;
-	while ((cp = queue.Peek()) != nullptr) {
+	auto cp = queue.begin();
+	for (; cp != queue.end(); cp++) {
 		/* The queue is always in order, which means
 		 * that the first element will be executed first. */
 		if (_frame_counter < cp->frame) break;
@@ -335,11 +265,9 @@ void NetworkExecuteLocalCommandQueue()
 		size_t cb_index = FindCallbackIndex(cp->callback);
 		assert(cb_index < _callback_tuple_size);
 		assert(_cmd_dispatch[cp->cmd].Unpack[cb_index] != nullptr);
-		_cmd_dispatch[cp->cmd].Unpack[cb_index](cp);
-
-		queue.Pop();
-		delete cp;
+		_cmd_dispatch[cp->cmd].Unpack[cb_index](&*cp);
 	}
+	queue.erase(queue.begin(), cp);
 
 	/* Local company may have changed, so we should not restore the old value */
 	_current_company = _local_company;
@@ -350,8 +278,8 @@ void NetworkExecuteLocalCommandQueue()
  */
 void NetworkFreeLocalCommandQueue()
 {
-	_local_wait_queue.Free();
-	_local_execution_queue.Free();
+	_local_wait_queue.clear();
+	_local_execution_queue.clear();
 }
 
 /**
@@ -376,7 +304,7 @@ static void DistributeCommandPacket(CommandPacket &cp, const NetworkClientSocket
 
 	cp.callback = (nullptr != owner) ? nullptr : callback;
 	cp.my_cmd = (nullptr == owner);
-	_local_execution_queue.Append(&cp);
+	_local_execution_queue.push_back(cp);
 }
 
 /**
@@ -384,7 +312,7 @@ static void DistributeCommandPacket(CommandPacket &cp, const NetworkClientSocket
  * @param queue The queue of commands that has to be distributed.
  * @param owner The client that owns the commands,
  */
-static void DistributeQueue(CommandQueue *queue, const NetworkClientSocket *owner)
+static void DistributeQueue(CommandQueue &queue, const NetworkClientSocket *owner)
 {
 #ifdef DEBUG_DUMP_COMMANDS
 	/* When replaying we do not want this limitation. */
@@ -397,11 +325,20 @@ static void DistributeQueue(CommandQueue *queue, const NetworkClientSocket *owne
 	}
 #endif
 
-	CommandPacket *cp;
-	while (--to_go >= 0 && (cp = queue->Pop(true)) != nullptr) {
+	/* Not technically the most performant way, but consider clients rarely click more than once per tick. */
+	for (auto cp = queue.begin(); cp != queue.end(); /* removing some items */) {
+		/* Limit the number of commands per client per tick. */
+		if (--to_go < 0) break;
+
+		/* Do not distribute commands when paused and the command is not allowed while paused. */
+		if (_pause_mode != PM_UNPAUSED && !IsCommandAllowedWhilePaused(cp->cmd)) {
+			++cp;
+			continue;
+		}
+
 		DistributeCommandPacket(*cp, owner);
-		NetworkAdminCmdLogging(owner, cp);
-		delete cp;
+		NetworkAdminCmdLogging(owner, &*cp);
+		cp = queue.erase(cp);
 	}
 }
 
@@ -409,11 +346,11 @@ static void DistributeQueue(CommandQueue *queue, const NetworkClientSocket *owne
 void NetworkDistributeCommands()
 {
 	/* First send the server's commands. */
-	DistributeQueue(&_local_wait_queue, nullptr);
+	DistributeQueue(_local_wait_queue, nullptr);
 
 	/* Then send the queues of the others. */
 	for (NetworkClientSocket *cs : NetworkClientSocket::Iterate()) {
-		DistributeQueue(&cs->incoming_queue, cs);
+		DistributeQueue(cs->incoming_queue, cs);
 	}
 }
 

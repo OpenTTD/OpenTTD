@@ -131,24 +131,12 @@ enum PacketGameType : uint8_t {
 /** Packet that wraps a command */
 struct CommandPacket;
 
-/** A queue of CommandPackets. */
-class CommandQueue {
-	CommandPacket *first; ///< The first packet in the queue.
-	CommandPacket *last;  ///< The last packet in the queue; only valid when first != nullptr.
-	uint count;           ///< The number of items in the queue.
-
-public:
-	/** Initialise the command queue. */
-	CommandQueue() : first(nullptr), last(nullptr), count(0) {}
-	/** Clear the command queue. */
-	~CommandQueue() { this->Free(); }
-	void Append(CommandPacket *p);
-	CommandPacket *Pop(bool ignore_paused = false);
-	CommandPacket *Peek(bool ignore_paused = false);
-	void Free();
-	/** Get the number of items in the queue. */
-	uint Count() const { return this->count; }
-};
+/**
+ * A "queue" of CommandPackets.
+ * Not a std::queue because, when paused, some commands remain on the queue.
+ * In other words, you do not always pop the first element from this queue.
+ */
+using CommandQueue = std::vector<CommandPacket>;
 
 /** Base socket handler for all TCP sockets */
 class NetworkGameSocketHandler : public NetworkTCPSocketHandler {
