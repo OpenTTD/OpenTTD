@@ -164,6 +164,17 @@ struct AIConfigWindow : public Window {
 		switch (widget) {
 			case WID_AIC_LIST: {
 				Rect tr = r.Shrink(WidgetDimensions::scaled.matrix);
+				int max_slot = GetGameSettings().difficulty.max_no_competitors;
+				if (_game_mode == GM_NORMAL) {
+					for (const Company *c : Company::Iterate()) {
+						if (c->is_ai) max_slot--;
+					}
+					for (CompanyID cid = COMPANY_FIRST; cid < (CompanyID)max_slot && cid < MAX_COMPANIES; cid++) {
+						if (Company::IsValidID(cid)) max_slot++;
+					}
+				} else {
+					max_slot++; // Slot 0 is human
+				}
 				for (int i = this->vscroll->GetPosition(); this->vscroll->IsVisible(i) && i < MAX_COMPANIES; i++) {
 					StringID text;
 
@@ -180,13 +191,6 @@ struct AIConfigWindow : public Window {
 					if (this->selected_slot == i) {
 						tc = TC_WHITE;
 					} else if (IsEditable((CompanyID)i)) {
-						int max_slot = GetGameSettings().difficulty.max_no_competitors;
-						for (const Company *c : Company::Iterate()) {
-							if (c->is_ai) max_slot--;
-						}
-						for (CompanyID cid = COMPANY_FIRST; cid < (CompanyID)max_slot && cid < MAX_COMPANIES; cid++) {
-							if (Company::IsValidHumanID(cid)) max_slot++;
-						}
 						if (i < max_slot) tc = TC_ORANGE;
 					} else if (Company::IsValidAiID(i)) {
 						tc = TC_GREEN;
