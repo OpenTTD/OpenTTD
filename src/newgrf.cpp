@@ -2431,7 +2431,7 @@ static ChangeInfoResult TownHouseChangeInfo(uint hid, int numinfo, int prop, Byt
 					 * in the temperate climate. */
 					CargoID cid = housespec->accepts_cargo[2];
 					if (!IsValidCargoID(cid)) cid = GetCargoIDByLabel(housespec->accepts_cargo_label[2]);
-					if (!IsValidCargoID(cid) || !CargoSpec::Get(cid)->IsValid()) {
+					if (!IsValidCargoID(cid)) {
 						housespec->cargo_acceptance[2] = 0;
 					}
 				}
@@ -2471,7 +2471,7 @@ static ChangeInfoResult TownHouseChangeInfo(uint hid, int numinfo, int prop, Byt
 						((_settings_game.game_creation.landscape == LT_TOYLAND) ? GetCargoIDByLabel(CT_FIZZY_DRINKS) : GetCargoIDByLabel(CT_FOOD));
 
 				/* Make sure the cargo type is valid in this climate. */
-				if (!CargoSpec::Get(cid)->IsValid()) goods = 0;
+				if (!IsValidCargoID(cid)) goods = 0;
 
 				housespec->accepts_cargo[2] = cid;
 				housespec->accepts_cargo_label[2] = CT_INVALID;
