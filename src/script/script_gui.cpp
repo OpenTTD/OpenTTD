@@ -307,13 +307,11 @@ struct ScriptSettingsWindow : public Window {
 		clicked_dropdown(false),
 		closing_dropdown(false)
 	{
-		this->script_config = GetConfig(slot);
-
 		this->CreateNestedTree();
 		this->vscroll = this->GetScrollbar(WID_SCRS_SCROLLBAR);
 		this->FinishInitNested(slot);  // Initializes 'this->line_height' as side effect.
 
-		this->RebuildVisibleSettings();
+		this->OnInvalidateData();
 	}
 
 	/**
@@ -591,6 +589,8 @@ struct ScriptSettingsWindow : public Window {
 	 */
 	void OnInvalidateData([[maybe_unused]] int data = 0, [[maybe_unused]] bool gui_scope = true) override
 	{
+		this->script_config = GetConfig(this->slot);
+		if (this->script_config->GetConfigList()->empty()) this->Close();
 		this->RebuildVisibleSettings();
 		this->CloseChildWindows(WC_DROPDOWN_MENU);
 		this->CloseChildWindows(WC_QUERY_STRING);
@@ -1206,7 +1206,8 @@ struct ScriptDebugWindow : public Window {
 		this->SetWidgetLoweredState(WID_SCRD_BREAK_STR_ON_OFF_BTN, this->filter.break_check_enabled);
 		this->SetWidgetLoweredState(WID_SCRD_MATCH_CASE_BTN, this->filter.case_sensitive_break_check);
 
-		this->SetWidgetDisabledState(WID_SCRD_SETTINGS, this->filter.script_debug_company == INVALID_COMPANY);
+		this->SetWidgetDisabledState(WID_SCRD_SETTINGS, this->filter.script_debug_company == INVALID_COMPANY ||
+			GetConfig(this->filter.script_debug_company)->GetConfigList()->empty());
 		extern CompanyID _local_company;
 		this->SetWidgetDisabledState(WID_SCRD_RELOAD_TOGGLE,
 				this->filter.script_debug_company == INVALID_COMPANY ||

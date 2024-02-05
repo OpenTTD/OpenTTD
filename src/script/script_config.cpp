@@ -18,7 +18,7 @@
 
 #include "../safeguards.h"
 
-void ScriptConfig::Change(std::optional<const std::string> name, int version, bool force_exact_match, bool is_random)
+void ScriptConfig::Change(std::optional<const std::string> name, int version, bool force_exact_match)
 {
 	if (name.has_value()) {
 		this->name = std::move(name.value());
@@ -27,7 +27,6 @@ void ScriptConfig::Change(std::optional<const std::string> name, int version, bo
 		this->info = nullptr;
 	}
 	this->version = (info == nullptr) ? -1 : info->GetVersion();
-	this->is_random = is_random;
 	this->config_list.reset();
 	this->to_load_data.reset();
 
@@ -39,7 +38,6 @@ ScriptConfig::ScriptConfig(const ScriptConfig *config)
 	this->name = config->name;
 	this->info = config->info;
 	this->version = config->version;
-	this->is_random = config->is_random;
 	this->to_load_data.reset();
 
 	for (const auto &item : config->settings) {
@@ -137,11 +135,6 @@ void ScriptConfig::AddRandomDeviation()
 bool ScriptConfig::HasScript() const
 {
 	return this->info != nullptr;
-}
-
-bool ScriptConfig::IsRandom() const
-{
-	return this->is_random;
 }
 
 const std::string &ScriptConfig::GetName() const

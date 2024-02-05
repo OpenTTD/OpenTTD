@@ -56,7 +56,6 @@ public:
 	ScriptConfig() :
 		version(-1),
 		info(nullptr),
-		is_random(false),
 		to_load_data(nullptr)
 	{}
 
@@ -77,7 +76,7 @@ public:
 	 *   as specified. If false any compatible version is ok.
 	 * @param is_random Is the Script chosen randomly?
 	 */
-	void Change(std::optional<const std::string> name, int version = -1, bool force_exact_match = false, bool is_random = false);
+	void Change(std::optional<const std::string> name, int version = -1, bool force_exact_match = false);
 
 	/**
 	 * Get the ScriptInfo linked to this ScriptConfig.
@@ -145,11 +144,6 @@ public:
 	bool HasScript() const;
 
 	/**
-	 * Is the current Script a randomly chosen Script?
-	 */
-	bool IsRandom() const;
-
-	/**
 	 * Get the name of the Script.
 	 */
 	const std::string &GetName() const;
@@ -188,7 +182,6 @@ protected:
 	class ScriptInfo *info;                                   ///< ScriptInfo object for related to this Script version
 	SettingValueList settings;                                ///< List with all setting=>value pairs that are configure for this Script
 	std::unique_ptr<ScriptConfigItemList> config_list;        ///< List with all settings defined by this Script
-	bool is_random;                                           ///< True if the AI in this slot was randomly chosen.
 	std::unique_ptr<ScriptInstance::ScriptData> to_load_data; ///< Data to load after the Script start.
 
 	/**
