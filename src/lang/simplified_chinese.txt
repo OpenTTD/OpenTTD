@@ -1429,8 +1429,8 @@ STR_CONFIG_SETTING_BRIBE_HELPTEXT_MINUTES                       :允许公司尝
 
 STR_CONFIG_SETTING_ALLOW_EXCLUSIVE                              :允许买断经营权： {STRING}
 ###length 2
-STR_CONFIG_SETTING_ALLOW_EXCLUSIVE_HELPTEXT                     :如果一家公司购买了城市独家经营权，其它公司的站台将在一年之内不再产生乘客或者货物。
-STR_CONFIG_SETTING_ALLOW_EXCLUSIVE_HELPTEXT_MINUTES             :如果一家公司购买了城市独家经营权，其它公司的站台将在 12 分钟之内不再产生乘客或者货物。
+STR_CONFIG_SETTING_ALLOW_EXCLUSIVE_HELPTEXT                     :如果一家公司购买了一座城镇的独家经营权，其他公司在此城镇的车站在十二个月之内将不会收到任何货物与乘客。
+STR_CONFIG_SETTING_ALLOW_EXCLUSIVE_HELPTEXT_MINUTES             :如果一家公司购买了一座城镇的独家经营权，其他公司在此城镇的车站在 12 分钟之内将不会收到任何货物与乘客。
 
 STR_CONFIG_SETTING_ALLOW_FUND_BUILDINGS                         :允许资助城镇建设: {STRING}
 STR_CONFIG_SETTING_ALLOW_FUND_BUILDINGS_HELPTEXT                :“打开”时，允许公司提供资助新建房屋
@@ -2209,7 +2209,7 @@ STR_INTRO_TOOLTIP_HELP                                          :{BLACK}获取�
 STR_INTRO_TOOLTIP_CONFIG_SETTINGS_TREE                          :{BLACK}显示设置
 STR_INTRO_TOOLTIP_NEWGRF_SETTINGS                               :{BLACK}显示 NewGRF 设定
 STR_INTRO_TOOLTIP_ONLINE_CONTENT                                :{BLACK}连接服务器并查找扩展包
-STR_INTRO_TOOLTIP_AI_SETTINGS                                   :{BLACK}显示AI设置
+STR_INTRO_TOOLTIP_AI_SETTINGS                                   :{BLACK}显示 AI 设置
 STR_INTRO_TOOLTIP_GAMESCRIPT_SETTINGS                           :{BLACK}显示游戏脚本设置
 STR_INTRO_TOOLTIP_QUIT                                          :{BLACK}退出 'OpenTTD'
 
@@ -2661,9 +2661,9 @@ STR_CONTENT_SELECT_UPDATES_CAPTION_TOOLTIP                      :{BLACK}更新�
 STR_CONTENT_UNSELECT_ALL_CAPTION                                :{BLACK}取消全选
 STR_CONTENT_UNSELECT_ALL_CAPTION_TOOLTIP                        :{BLACK}取消全部选择
 STR_CONTENT_SEARCH_EXTERNAL                                     :{BLACK}在外部网站搜索
-STR_CONTENT_SEARCH_EXTERNAL_TOOLTIP                             :{BLACK}在与OpenTTD没有联系的网站搜寻没有纳入OpenTTD內容服务的內容
+STR_CONTENT_SEARCH_EXTERNAL_TOOLTIP                             :{BLACK}在与 OpenTTD 没有联系的网站搜寻没有纳入 OpenTTD 內容服务的內容
 STR_CONTENT_SEARCH_EXTERNAL_DISCLAIMER_CAPTION                  :{WHITE}正在离开游戏！
-STR_CONTENT_SEARCH_EXTERNAL_DISCLAIMER                          :{WHITE}在外部网站下载內容的规则及条款可能跟OpenTTD引用的规则及条款不同。{}您需要参照有关网站以取得在OpenTTD安装有关內容的资讯。{}您要継续吗？
+STR_CONTENT_SEARCH_EXTERNAL_DISCLAIMER                          :{WHITE}在外部网站下载內容的规则及条款可能跟 OpenTTD 引用的规则及条款不同。{}您需要参照有关网站以取得在 OpenTTD 安装有关內容的资讯。{}您要継续吗？
 STR_CONTENT_FILTER_TITLE                                        :{BLACK}标签/名称过滤器
 STR_CONTENT_OPEN_URL                                            :{BLACK}主页
 STR_CONTENT_OPEN_URL_TOOLTIP                                    :{BLACK}打开该扩展包主页
@@ -2843,7 +2843,7 @@ STR_BUILD_SIGNAL_ELECTRIC_EXIT_TOOLTIP                          :{BLACK}出口�
 STR_BUILD_SIGNAL_ELECTRIC_COMBO_TOOLTIP                         :{BLACK}复合信号（电子）{}复合信号灯是入口和出口信号灯的组合,这样允许建立大型“树状”预警信号灯系统
 STR_BUILD_SIGNAL_ELECTRIC_PBS_TOOLTIP                           :{BLACK}路径信号灯（电子）{}路径信号灯为列车预留一条到安全停车位的路径，而其它路径仍然可以使用，从而允许一列以上的列车同时进入一个信号区间
 STR_BUILD_SIGNAL_ELECTRIC_PBS_OWAY_TOOLTIP                      :{BLACK}单向路径信号灯（电子）{}路径信号灯为列车预留一条到安全停车位的路径，而其它路径仍然可以使用，从而允许一列以上的列车同时进入一个信号区间
-STR_BUILD_SIGNAL_CONVERT_TOOLTIP                                :{BLACK}信号转换工具{}按下此按钮，可以将已存在的信号转化为选择的信号类型，按下Ctrl键单击，可以在电子信号和悬臂信号之间转换。按住Shift键单击显示预估成本。
+STR_BUILD_SIGNAL_CONVERT_TOOLTIP                                :{BLACK}信号转换{}使用此工具时可以将现有的信号机转换成选择的信号种类及风格。按住 <Ctrl> 键单击以仅在灯式/悬臂式之间切换。按住 <Shift> 键单击以显示预计费用。
 STR_BUILD_SIGNAL_DRAG_SIGNALS_DENSITY_TOOLTIP                   :{BLACK}拖拽布置信号灯的间隔距离
 STR_BUILD_SIGNAL_DRAG_SIGNALS_DENSITY_DECREASE_TOOLTIP          :{BLACK}减少拖拽布置信号的间隔距离
 STR_BUILD_SIGNAL_DRAG_SIGNALS_DENSITY_INCREASE_TOOLTIP          :{BLACK}增加拖拽布置信号灯的间隔距离
@@ -2877,7 +2877,7 @@ STR_ROAD_TOOLBAR_TOOLTIP_BUILD_ROAD_VEHICLE_DEPOT               :{BLACK}建设�
 STR_ROAD_TOOLBAR_TOOLTIP_BUILD_TRAM_VEHICLE_DEPOT               :{BLACK}建造电车车库（可以购买与维护车辆）
 STR_ROAD_TOOLBAR_TOOLTIP_BUILD_BUS_STATION                      :{BLACK}建设公共汽车站。按住 Ctrl 键允许合并站台
 STR_ROAD_TOOLBAR_TOOLTIP_BUILD_PASSENGER_TRAM_STATION           :{BLACK}建设客运电车站。按住 Ctrl 键允许合并站台
-STR_ROAD_TOOLBAR_TOOLTIP_BUILD_TRUCK_LOADING_BAY                :{BLACK}建设汽车货场。按住 Ctrl 键允许合并站台
+STR_ROAD_TOOLBAR_TOOLTIP_BUILD_TRUCK_LOADING_BAY                :{BLACK}建设汽车货场。按住 <Ctrl> 键点击以合并站台，按住 <Shift> 键以显示预计费用。
 STR_ROAD_TOOLBAR_TOOLTIP_BUILD_CARGO_TRAM_STATION               :{BLACK}建设货运电车站。按住 <Ctrl> 键单击以合并站台。按住 <Shift> 键以显示预计费用。
 STR_ROAD_TOOLBAR_TOOLTIP_TOGGLE_ONE_WAY_ROAD                    :{BLACK}选择是否建设单行道
 STR_ROAD_TOOLBAR_TOOLTIP_BUILD_ROAD_BRIDGE                      :{BLACK}建设公路桥梁
@@ -2963,7 +2963,7 @@ STR_LANDSCAPING_TOOLTIP_PURCHASE_LAND                           :{BLACK}购买�
 
 # Object construction window
 STR_OBJECT_BUILD_CAPTION                                        :{WHITE}物体选单
-STR_OBJECT_BUILD_TOOLTIP                                        :{BLACK}选择建设项目.。按住Ctrl可沿对角线选择区域。按住Shift键建设可以显示建设费用
+STR_OBJECT_BUILD_TOOLTIP                                        :{BLACK}选择要建设的物体。按住 <Ctrl> 键以沿对角线建设，按住 <Shift> 键操作以显示预计成本。
 STR_OBJECT_BUILD_CLASS_TOOLTIP                                  :{BLACK}选择要建造的物件类型
 STR_OBJECT_BUILD_PREVIEW_TOOLTIP                                :{BLACK}物件预览
 STR_OBJECT_BUILD_SIZE                                           :{BLACK}大小: {GOLD}{NUM} x {NUM} 瓦
@@ -3313,11 +3313,11 @@ STR_MAPGEN_QUANTITY_OF_RIVERS                                   :{BLACK}河流�
 STR_MAPGEN_SMOOTHNESS                                           :{BLACK}平滑程度：
 STR_MAPGEN_VARIETY                                              :{BLACK}多样地形：
 STR_MAPGEN_GENERATE                                             :{WHITE}生成
-STR_MAPGEN_GENERATE_TOOLTIP                                     :{BLACK}创建世界并开始游玩OpenTTD！
+STR_MAPGEN_GENERATE_TOOLTIP                                     :{BLACK}创建世界并开始游玩 OpenTTD！
 STR_MAPGEN_NEWGRF_SETTINGS                                      :{BLACK}NewGRF设置
 STR_MAPGEN_NEWGRF_SETTINGS_TOOLTIP                              :{BLACK}显示 NewGRF 设置
 STR_MAPGEN_AI_SETTINGS                                          :{BLACK}AI 设置
-STR_MAPGEN_AI_SETTINGS_TOOLTIP                                  :{BLACK}显示AI设置
+STR_MAPGEN_AI_SETTINGS_TOOLTIP                                  :{BLACK}显示 AI 设置
 STR_MAPGEN_GS_SETTINGS                                          :{BLACK}游戏脚本设置
 STR_MAPGEN_GS_SETTINGS_TOOLTIP                                  :{BLACK}显示游戏脚本设置
 
@@ -4340,8 +4340,8 @@ STR_VEHICLE_VIEW_AIRCRAFT_SEND_TO_DEPOT_TOOLTIP                 :{BLACK}命令�
 
 ###length VEHICLE_TYPES
 STR_VEHICLE_VIEW_CLONE_TRAIN_INFO                               :{BLACK}复制这列火车。按住 Ctrl 键单击可以同时共享调度计划，按住 Shift 键单击可以显示所需资金
-STR_VEHICLE_VIEW_CLONE_ROAD_VEHICLE_INFO                        :{BLACK}复制这辆汽车。按住 Ctrl 键单击可以同时共享调度计划，按住 Shift 键单击可以显示所需资金
-STR_VEHICLE_VIEW_CLONE_SHIP_INFO                                :{BLACK}复制这条船只。按住 Ctrl 键单击可以同时共享调度计划，按住 Shift 键单击可以显示所需资金
+STR_VEHICLE_VIEW_CLONE_ROAD_VEHICLE_INFO                        :{BLACK}复制这辆汽车。按住 <Ctrl> 键单击以共享调度计划，按住 <Shift> 键单击以显示预计费用。
+STR_VEHICLE_VIEW_CLONE_SHIP_INFO                                :{BLACK}复制这条船只。按住 <Ctrl> 键单击以共享调度计划，按住 <Shift> 键单击以显示所需资金。
 STR_VEHICLE_VIEW_CLONE_AIRCRAFT_INFO                            :{BLACK}复制这架飞机。按住 Ctrl 键单击可以同时共享调度计划，按住 Shift 键单击可以显示所需资金
 
 STR_VEHICLE_VIEW_TRAIN_IGNORE_SIGNAL_TOOLTIP                    :{BLACK}命令列车强行通过信号
@@ -4532,21 +4532,21 @@ STR_ORDER_GO_TO                                                 :前往
 STR_ORDER_GO_NON_STOP_TO                                        :不停车前往
 STR_ORDER_GO_VIA                                                :经由
 STR_ORDER_GO_NON_STOP_VIA                                       :经由（不停车）
-STR_ORDER_TOOLTIP_NON_STOP                                      :{BLACK}改变当前选中车站停车时的执行动作
+STR_ORDER_TOOLTIP_NON_STOP                                      :{BLACK}修改当前指令在车站的停靠措施
 
 STR_ORDER_TOGGLE_FULL_LOAD                                      :{BLACK}装满任意货物
 STR_ORDER_DROP_LOAD_IF_POSSIBLE                                 :若有的话就装载
 STR_ORDER_DROP_FULL_LOAD_ALL                                    :装满所有货物
 STR_ORDER_DROP_FULL_LOAD_ANY                                    :装满任意货物
 STR_ORDER_DROP_NO_LOADING                                       :不装载
-STR_ORDER_TOOLTIP_FULL_LOAD                                     :{BLACK}改变当前选中车站装载时的执行动作
+STR_ORDER_TOOLTIP_FULL_LOAD                                     :{BLACK}修改当前指令在车站的装载措施
 
 STR_ORDER_TOGGLE_UNLOAD                                         :{BLACK}卸载全部
 STR_ORDER_DROP_UNLOAD_IF_ACCEPTED                               :若接受的话就卸载
 STR_ORDER_DROP_UNLOAD                                           :卸载全部
 STR_ORDER_DROP_TRANSFER                                         :联运
 STR_ORDER_DROP_NO_UNLOADING                                     :不卸载
-STR_ORDER_TOOLTIP_UNLOAD                                        :{BLACK}改变当前选中车站卸载时的执行动作
+STR_ORDER_TOOLTIP_UNLOAD                                        :{BLACK}修改当前指令在车站的卸载措施
 
 STR_ORDER_REFIT                                                 :{BLACK}改装
 STR_ORDER_REFIT_TOOLTIP                                         :{BLACK}选择要在调度计划中改装的货物类型{}CTRL+单击 可以去掉改装计划
@@ -4562,6 +4562,10 @@ STR_ORDER_DROP_UNBUNCH                                          :班次均匀
 
 # Depot action tooltips, one per vehicle type
 ###length VEHICLE_TYPES
+STR_ORDER_TRAIN_DEPOT_ACTION_TOOLTIP                            :{BLACK}选择在此车库采取的措施
+STR_ORDER_ROAD_DEPOT_ACTION_TOOLTIP                             :{BLACK}选择在此车库采取的措施
+STR_ORDER_SHIP_DEPOT_ACTION_TOOLTIP                             :{BLACK}选择在此船坞采取的措施
+STR_ORDER_HANGAR_ACTION_TOOLTIP                                 :{BLACK}选择在此机库采取的措施
 ###next-name-looks-similar
 
 STR_ORDER_CONDITIONAL_VARIABLE_TOOLTIP                          :{BLACK}跳过所需的车辆数据值
@@ -4854,9 +4858,9 @@ STR_TEXTFILE_VIEW_CHANGELOG_TOOLTIP                             :查看此项目
 STR_TEXTFILE_VIEW_LICENCE                                       :{BLACK}版权信息
 STR_TEXTFILE_VIEW_LICENCE_TOOLTIP                               :查看此项目的许可证
 ###length 5
-STR_TEXTFILE_README_CAPTION                                     :{WHITE}{STRING} {STRING} 的说明
+STR_TEXTFILE_README_CAPTION                                     :{WHITE}{STRING} {STRING} {WHITE}的说明
 STR_TEXTFILE_CHANGELOG_CAPTION                                  :{WHITE}{STRING} {STRING} 的更新日志
-STR_TEXTFILE_LICENCE_CAPTION                                    :{WHITE}{STRING} {STRING} 的版权信息
+STR_TEXTFILE_LICENCE_CAPTION                                    :{WHITE}{STRING} {STRING} {WHITE}的版权信息
 STR_TEXTFILE_SURVEY_RESULT_CAPTION                              :{WHITE}预览调查结果
 STR_TEXTFILE_GAME_MANUAL_CAPTION                                :{WHITE}OpenTTD 文档 '{STRING}'
 

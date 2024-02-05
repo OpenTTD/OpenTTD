@@ -786,12 +786,12 @@ STR_SCENEDIT_TOOLBAR_SCENARIO_EDITOR                            :{YELLOW}Edytor 
 STR_SCENEDIT_TOOLBAR_TOOLTIP_MOVE_THE_STARTING_DATE_BACKWARD    :{BLACK}Zmień datę początkową do tyłu o 1 rok
 STR_SCENEDIT_TOOLBAR_TOOLTIP_MOVE_THE_STARTING_DATE_FORWARD     :{BLACK}Zmień datę początkową do przodu o 1 rok
 STR_SCENEDIT_TOOLBAR_TOOLTIP_SET_DATE                           :{BLACK}Kliknij aby wpisać datę początkową
-STR_SCENEDIT_TOOLBAR_TOOLTIP_DISPLAY_MAP_TOWN_DIRECTORY         :{BLACK}Wyświetl mapę, listę miast
-STR_SCENEDIT_TOOLBAR_LANDSCAPE_GENERATION                       :{BLACK}Tworzenie krajobrazu
-STR_SCENEDIT_TOOLBAR_TOWN_GENERATION                            :{BLACK}Tworzenie miast
-STR_SCENEDIT_TOOLBAR_INDUSTRY_GENERATION                        :{BLACK}Tworzenie przedsiębiorstw
-STR_SCENEDIT_TOOLBAR_ROAD_CONSTRUCTION                          :{BLACK}Konstrukcja dróg
-STR_SCENEDIT_TOOLBAR_TRAM_CONSTRUCTION                          :{BLACK}Konstrukcja torów tramwajowych
+STR_SCENEDIT_TOOLBAR_TOOLTIP_DISPLAY_MAP_TOWN_DIRECTORY         :{BLACK}Otwórz mapę, dodatkowy podgląd, listę napisów, miast lub spis przedsiębiorstw
+STR_SCENEDIT_TOOLBAR_LANDSCAPE_GENERATION                       :{BLACK}Otwórz menu kształtowania krajobrazu lub wygeneruj nowy świat
+STR_SCENEDIT_TOOLBAR_TOWN_GENERATION                            :{BLACK}Budowanie oraz generowanie miast
+STR_SCENEDIT_TOOLBAR_INDUSTRY_GENERATION                        :{BLACK}Budowanie lub generowanie przedsiębiorstw
+STR_SCENEDIT_TOOLBAR_ROAD_CONSTRUCTION                          :{BLACK}Budowa infrastruktury drogowej
+STR_SCENEDIT_TOOLBAR_TRAM_CONSTRUCTION                          :{BLACK}Budowanie infrastruktury tramwajowej
 STR_SCENEDIT_TOOLBAR_PLANT_TREES                                :{BLACK}Posadź drzewa. Ctrl zaznacza teren po przekątnej. Shift przełącza pomiędzy trybem sadzenia a szacowaniem jego kosztów
 STR_SCENEDIT_TOOLBAR_PLACE_SIGN                                 :{BLACK}Umieść napis
 STR_SCENEDIT_TOOLBAR_PLACE_OBJECT                               :{BLACK}Umieść obiekt. Ctrl zaznacza obszar po przekątnej. Shift przełącza pomiędzy trybem budowania a szacowaniem jego kosztów
@@ -813,6 +813,7 @@ STR_SETTINGS_MENU_CONFIG_SETTINGS_TREE                          :Ustawienia
 STR_SETTINGS_MENU_AI_SETTINGS                                   :Ustawienia SI
 STR_SETTINGS_MENU_GAMESCRIPT_SETTINGS                           :Ustawienia Game Script
 STR_SETTINGS_MENU_NEWGRF_SETTINGS                               :Ustawienia NewGRF
+STR_SETTINGS_MENU_SANDBOX_OPTIONS                               :Opcje swobodnej rozgrywki
 STR_SETTINGS_MENU_TRANSPARENCY_OPTIONS                          :Opcje przeźroczystości
 STR_SETTINGS_MENU_TOWN_NAMES_DISPLAYED                          :Wyświetlanie nazw miast
 STR_SETTINGS_MENU_STATION_NAMES_DISPLAYED                       :Wyświetlanie nazw stacji
@@ -997,6 +998,7 @@ STR_GRAPH_KEY_COMPANY_SELECTION_TOOLTIP                         :{BLACK}Kliknij 
 # Company league window
 STR_COMPANY_LEAGUE_TABLE_CAPTION                                :{WHITE}Ranking firm
 STR_COMPANY_LEAGUE_COMPANY_NAME                                 :{ORANGE}{COMPANY} {BLACK}{COMPANY_NUM} „{STRING}”
+STR_COMPANY_LEAGUE_COMPANY_RANK                                 :{YELLOW}{NUM}.
 STR_COMPANY_LEAGUE_PERFORMANCE_TITLE_ENGINEER                   :Inżynier
 STR_COMPANY_LEAGUE_PERFORMANCE_TITLE_TRAFFIC_MANAGER            :Administrator Ruchu
 STR_COMPANY_LEAGUE_PERFORMANCE_TITLE_TRANSPORT_COORDINATOR      :Koordynator Transportu
@@ -1177,6 +1179,7 @@ STR_STATUSBAR_AUTOSAVE                                          :{RED}AUTOZAPIS
 STR_STATUSBAR_SAVING_GAME                                       :{RED}*  *  ZAPISYWANIE GRY  *  *
 
 STR_STATUSBAR_SPECTATOR                                         :{WHITE}(obserwator)
+STR_STATUSBAR_INFINITE_MONEY                                    :{WHITE}(nieskończone pieniądze)
 
 # News message history
 STR_MESSAGE_HISTORY                                             :{WHITE}Poprzednie wiadomości
@@ -1277,7 +1280,12 @@ STR_NEWS_STATION_NOW_ACCEPTS_CARGO_LIST                         :{WHITE}{STATION
 
 STR_NEWS_OFFER_OF_SUBSIDY_EXPIRED                               :{BIG_FONT}{BLACK}Dotacja wygasła:{}{}{STRING} z {STRING} do {STRING} nie będzie już dotowane
 STR_NEWS_SUBSIDY_WITHDRAWN_SERVICE                              :{BIG_FONT}{BLACK}Koniec dotacji:{}{}Przewóz {STRING.d} z {STRING} do {STRING} nie jest już dotowany
+STR_NEWS_SERVICE_SUBSIDY_OFFERED                                :{BIG_FONT}{BLACK}Oferta usługi dotowanej:{}{}Pierwszy przewóz {STRING.d} z {STRING} do {STRING} będzie dotowany przez następn{P 3 y e ych} {UNITS_YEARS_OR_MINUTES} przez lokalne władze!
 ###length 4
+STR_NEWS_SERVICE_SUBSIDY_AWARDED_HALF                           :{BIG_FONT}{BLACK}Przyznano dotację dla {STRING}!{}{}Przewóz {STRING.d} z {STRING} do {STRING} będzie opłacany o 50% więcej przez następn{P 4 y e ych} {UNITS_YEARS_OR_MINUTES}!
+STR_NEWS_SERVICE_SUBSIDY_AWARDED_DOUBLE                         :{BIG_FONT}{BLACK}Przyznano dotację dla {STRING}!{}{}Przewóz {STRING.d} z {STRING} do {STRING} będzie opłacany podwójnie przez następn{P 4 y e ych} {UNITS_YEARS_OR_MINUTES}!
+STR_NEWS_SERVICE_SUBSIDY_AWARDED_TRIPLE                         :{BIG_FONT}{BLACK}Przyznano dotację dla {STRING}!{}{}Przewóz {STRING.d} z {STRING} do {STRING} będzie opłacany potrójnie przez następn{P 4 y e ych} {UNITS_YEARS_OR_MINUTES}!
+STR_NEWS_SERVICE_SUBSIDY_AWARDED_QUADRUPLE                      :{BIG_FONT}{BLACK}Przyznano dotację dla {STRING}!{}{}Przewóz {STRING.d} z {STRING} do {STRING} będzie opłacany poczwórnie przez następn{P 4 y e ych} {UNITS_YEARS_OR_MINUTES}!
 
 STR_NEWS_EXCLUSIVE_RIGHTS_TITLE                                 :{BIG_FONT}{BLACK}Monopol transportowy!
 
@@ -1297,6 +1305,8 @@ STR_GAME_OPTIONS_TAB_GRAPHICS                                   :Grafika
 STR_GAME_OPTIONS_TAB_GRAPHICS_TT                                :{BLACK}Wybierz opcje grafiki
 STR_GAME_OPTIONS_TAB_SOUND                                      :Dźwięk
 STR_GAME_OPTIONS_TAB_SOUND_TT                                   :{BLACK}Wybierz opcje dźwięku i muzyki
+STR_GAME_OPTIONS_TAB_SOCIAL                                     :Społeczność
+STR_GAME_OPTIONS_TAB_SOCIAL_TT                                  :{BLACK}Wybierz ustawienia integracji sieci społecznościowych
 
 STR_GAME_OPTIONS_VOLUME                                         :Głośność
 STR_GAME_OPTIONS_SFX_VOLUME                                     :Efekty dźwiękowe
@@ -1391,7 +1401,7 @@ STR_GAME_OPTIONS_VIDEO_VSYNC_TOOLTIP                            :{BLACK}Zaznacz 
 STR_GAME_OPTIONS_VIDEO_DRIVER_INFO                              :{BLACK}Bieżący sterownik: {STRING}
 
 STR_GAME_OPTIONS_GUI_SCALE_FRAME                                :{BLACK}Rozmiar interfejsu
-STR_GAME_OPTIONS_GUI_SCALE_TOOLTIP                              :{BLACK}Przeciągnij suwak, aby ustawić rozmiar interfejsu. Przytrzymaj Ctrl, aby uzyskać płynną regulację
+STR_GAME_OPTIONS_GUI_SCALE_TOOLTIP                              :{BLACK}Przeciągnij suwak, aby ustawić rozmiar interfejsu. Ctrl+przeciągnij, aby uzyskać płynną regulację
 STR_GAME_OPTIONS_GUI_SCALE_AUTO                                 :{BLACK}Wykryj rozmiar automatycznie
 STR_GAME_OPTIONS_GUI_SCALE_AUTO_TOOLTIP                         :{BLACK}Zaznacz to pole, aby rozmiar interfejsu był wykrywany automatycznie
 
@@ -1436,8 +1446,19 @@ STR_GAME_OPTIONS_BASE_MUSIC                                     :{BLACK}Podstawo
 STR_GAME_OPTIONS_BASE_MUSIC_TOOLTIP                             :{BLACK}Wybierz podstawowy zestaw muzyki do użycia
 STR_GAME_OPTIONS_BASE_MUSIC_DESCRIPTION_TOOLTIP                 :{BLACK}Dodatkowe informacje o muzyce podstawowej
 
+STR_GAME_OPTIONS_SOCIAL_PLUGINS_NONE                            :{LTBLUE}(brak zainstalowanych wtyczek do integracji z platformami społecznościowymi)
 
+STR_GAME_OPTIONS_SOCIAL_PLUGIN_TITLE                            :{BLACK}{STRING} ({STRING})
+STR_GAME_OPTIONS_SOCIAL_PLUGIN_PLATFORM                         :{BLACK}Platforma:
+STR_GAME_OPTIONS_SOCIAL_PLUGIN_STATE                            :{BLACK}Stan wtyczki:
 
+STR_GAME_OPTIONS_SOCIAL_PLUGIN_STATE_RUNNING                    :{GREEN}Uruchomiona
+STR_GAME_OPTIONS_SOCIAL_PLUGIN_STATE_FAILED                     :{RED}Inicjalizacja nie powiodła się
+STR_GAME_OPTIONS_SOCIAL_PLUGIN_STATE_PLATFORM_NOT_RUNNING       :{ORANGE}{STRING} nie uruchomiona
+STR_GAME_OPTIONS_SOCIAL_PLUGIN_STATE_UNLOADED                   :{RED}Niezaładowana
+STR_GAME_OPTIONS_SOCIAL_PLUGIN_STATE_DUPLICATE                  :{RED}Zdublowana wtyczka
+STR_GAME_OPTIONS_SOCIAL_PLUGIN_STATE_UNSUPPORTED_API            :{RED}Wersja nieobsługiwana
+STR_GAME_OPTIONS_SOCIAL_PLUGIN_STATE_INVALID_SIGNATURE          :{RED}Nieprawidłowa sygnatura
 
 STR_BASESET_STATUS                                              :{STRING} {RED}({NUM} brakując{P y e ych}/uszkodzon{P y e ych} plik{P "" i ów})
 
@@ -1605,6 +1626,7 @@ STR_CONFIG_SETTING_HORIZONTAL_POS_RIGHT                         :z prawej strony
 
 STR_CONFIG_SETTING_SECONDS_VALUE                                :{COMMA}{NBSP}sekund{P 0 ę y ""}
 
+STR_CONFIG_SETTING_INFINITE_MONEY                               :Nieskończona ilość pieniędzy: {STRING}
 
 STR_CONFIG_SETTING_MAXIMUM_INITIAL_LOAN                         :Maksymalna wysokość początkowej pożyczki: {STRING}
 STR_CONFIG_SETTING_MAXIMUM_INITIAL_LOAN_HELPTEXT                :Maksymalna wysokość pożyczki, jaką firma może zaciągnąć (bez uwzględnienia inflacji)
@@ -1631,6 +1653,7 @@ STR_CONFIG_SETTING_SUBSIDY_DURATION                             :Czas trwania do
 ###length 2
 STR_CONFIG_SETTING_SUBSIDY_DURATION_HELPTEXT                    :Określ liczbę lat, na które przyznawana jest dotacja
 
+STR_CONFIG_SETTING_SUBSIDY_DURATION_VALUE                       :{UNITS_YEARS_OR_PERIODS}
 ###setting-zero-is-special
 STR_CONFIG_SETTING_SUBSIDY_DURATION_DISABLED                    :Brak dotacji
 
@@ -1638,7 +1661,7 @@ STR_CONFIG_SETTING_CONSTRUCTION_COSTS                           :Koszty konstruk
 STR_CONFIG_SETTING_CONSTRUCTION_COSTS_HELPTEXT                  :Ustaw poziom kosztów konstrukcji i kupna
 
 STR_CONFIG_SETTING_RECESSIONS                                   :Kryzys: {STRING}
-STR_CONFIG_SETTING_RECESSIONS_HELPTEXT                          :Jeśli włączone, kryzys może wystąpić co kilka lat. Podczas kryzysu produkcja jest znacznie niższa (powraca do poprzedniego poziomu, kiedy kryzys się kończy)
+STR_CONFIG_SETTING_RECESSIONS_HELPTEXT                          :Jeśli włączone, kryzys może występować okresowo. Podczas kryzysu produkcja jest znacznie niższa (powraca do poprzedniego poziomu, kiedy kryzys się kończy)
 
 STR_CONFIG_SETTING_TRAIN_REVERSING                              :Nie pozwalaj pociągom zawracać na stacjach: {STRING}
 STR_CONFIG_SETTING_TRAIN_REVERSING_HELPTEXT                     :Jeśli włączone, pociągi nie będą zawracać na stacjach dwu-wjazdowych, nawet jeśli droga do następnego celu jest krótsza po zawróceniu
@@ -1692,7 +1715,7 @@ STR_CONFIG_SETTING_FORBID_90_DEG                                :Zabroń pociąg
 STR_CONFIG_SETTING_FORBID_90_DEG_HELPTEXT                       :90-stopniowy zakręt występuje wtedy, gdy bezpośrednio po poziomym odcinku toru występuje odcinek pionowy (lub na odwrót), zmuszając pociąg do ostrzejszego skrętu (zamiast normalnego, 45-stopniowego skrętu w innych kombinacjach torów)
 
 STR_CONFIG_SETTING_DISTANT_JOIN_STATIONS                        :Pozwól na łączenie stacji nie sąsiadujących bezpośrednio: {STRING}
-STR_CONFIG_SETTING_DISTANT_JOIN_STATIONS_HELPTEXT               :Pozwalaj na dodawanie części stacji nie stykających się ze sobą. Naciśnij Ctrl przed postawieniem nowej części
+STR_CONFIG_SETTING_DISTANT_JOIN_STATIONS_HELPTEXT               :Pozwala na dołączanie części stacji nie stykających się ze sobą, wciskając Ctrl+klik przy stawianiu nowej części
 
 STR_CONFIG_SETTING_INFLATION                                    :Inflacja: {STRING}
 STR_CONFIG_SETTING_INFLATION_HELPTEXT                           :Włącz lub wyłącz inflację (sytuacja ekonomiczna, w związku z którą koszty rosną nieco szybciej niż zapłaty)
@@ -1756,7 +1779,7 @@ STR_CONFIG_SETTING_BRIBE_HELPTEXT                               :Pozwalaj firmom
 
 STR_CONFIG_SETTING_ALLOW_EXCLUSIVE                              :Pozwól na kupno wyłączności transportowej: {STRING}
 ###length 2
-STR_CONFIG_SETTING_ALLOW_EXCLUSIVE_HELPTEXT                     :Kiedy firma wykupuje wyłączność na transport w mieście, to przystanki i stacje przeciwników (pasażerskie i towarowe) nie otrzymają żadnego ładunku przez cały rok
+STR_CONFIG_SETTING_ALLOW_EXCLUSIVE_HELPTEXT                     :Kiedy firma wykupuje wyłączność na transport w mieście, to przystanki i stacje przeciwników (pasażerskie i towarowe) nie otrzymują żadnego ładunku przez dwanaście miesięcy
 
 STR_CONFIG_SETTING_ALLOW_FUND_BUILDINGS                         :Pozwól na fundowanie budynków: {STRING}
 STR_CONFIG_SETTING_ALLOW_FUND_BUILDINGS_HELPTEXT                :Pozwalaj firmom na sponsorowanie budowy nowych budynków w miastach
@@ -1814,7 +1837,7 @@ STR_CONFIG_SETTING_ORDER_REVIEW_ON                              :Wszystkich poja
 
 STR_CONFIG_SETTING_WARN_INCOME_LESS                             :Powiadom, jeśli pojazd przynosi straty: {STRING}
 ###length 2
-STR_CONFIG_SETTING_WARN_INCOME_LESS_HELPTEXT                    :Kiedy włączone, otrzymasz wiadomość o tym, że pojazd nie przyniósł żadnych zysków w całym roku kalendarzowym
+STR_CONFIG_SETTING_WARN_INCOME_LESS_HELPTEXT                    :Kiedy włączone, wiadomość zostanie wyświetlona, gdy pojazd nie osiągnie zysku w ciągu roku
 
 STR_CONFIG_SETTING_NEVER_EXPIRE_VEHICLES                        :Pojazdy nigdy nie są wycofywane: {STRING}
 STR_CONFIG_SETTING_NEVER_EXPIRE_VEHICLES_HELPTEXT               :Kiedy włączone, wszystkie modele pojazdów pozostają dostępne na zawsze od daty ich wprowadzenia
@@ -1824,6 +1847,7 @@ STR_CONFIG_SETTING_NEVER_EXPIRE_VEHICLES_HELPTEXT               :Kiedy włączon
 
 ###setting-zero-is-special
 
+STR_CONFIG_SETTING_CARGO_SCALE_VALUE                            :{NUM}%
 
 STR_CONFIG_SETTING_AUTORENEW_VEHICLE                            :Autoodnawianie pojazdów gdy stają się stare: {STRING}
 STR_CONFIG_SETTING_AUTORENEW_VEHICLE_HELPTEXT                   :Kiedy włączone, pojazd zbliżający się do końca swojej żywotności zostaje automatycznie zastąpiony, gdy warunki jego odnowienia są spełnione
@@ -2142,7 +2166,7 @@ STR_CONFIG_SETTING_SERVINT_AIRCRAFT                             :Domyślny inter
 STR_CONFIG_SETTING_SERVINT_AIRCRAFT_HELPTEXT                    :Ustaw domyślny okres serwisowania dla nowych maszyn latających, jeśli takowy nie istnieje dla określonego pojazdu
 STR_CONFIG_SETTING_SERVINT_SHIPS                                :Domyślny interwał serwisowania statków: {STRING}
 STR_CONFIG_SETTING_SERVINT_SHIPS_HELPTEXT                       :Ustaw domyślny okres serwisowania dla nowych statków, jeśli takowy nie istnieje dla określonego pojazdu
-STR_CONFIG_SETTING_SERVINT_VALUE                                :{COMMA}{NBSP}d{P zień ni ni}/%
+STR_CONFIG_SETTING_SERVINT_VALUE                                :{COMMA}{NBSP}D{P zień ni ni}/Minut{P a y ""}/%
 ###setting-zero-is-special
 STR_CONFIG_SETTING_SERVINT_DISABLED                             :Wyłączone
 
@@ -2234,7 +2258,7 @@ STR_CONFIG_SETTING_DRAG_SIGNALS_DENSITY                         :Podczas przeci�
 STR_CONFIG_SETTING_DRAG_SIGNALS_DENSITY_HELPTEXT                :Ustaw dystans, na jakim semafory będą budowane przy torach aż do następnej przeszkody (semafor, zwrotnica), przy przeciąganiu
 STR_CONFIG_SETTING_DRAG_SIGNALS_DENSITY_VALUE                   :{COMMA} p{P ole ola ól}
 STR_CONFIG_SETTING_DRAG_SIGNALS_FIXED_DISTANCE                  :Zachowaj stały odstęp między semaforami przy przeciąganiu: {STRING}
-STR_CONFIG_SETTING_DRAG_SIGNALS_FIXED_DISTANCE_HELPTEXT         :Wybierz sposób budowania semaforów przy przeciąganiu z wciśniętym Ctrl. Kiedy wyłączone, semafory są stawiane przy tunelach lub mostach, by nie zostawiać długich odcinków bez sygnałów. Kiedy włączone, semafory są stawiane co X pól, sprawiając, że stawianie semaforów na rownoległych torach jest łatwiejsze
+STR_CONFIG_SETTING_DRAG_SIGNALS_FIXED_DISTANCE_HELPTEXT         :Wybierz sposób rozmieszczania sygnalizacji podczas przeciągania. Kiedy wyłączone, sygnały są stawiane przy tunelach lub mostach, by nie zostawiać długich odcinków bez sygnałów. Kiedy włączone, sygnały są umieszczane co X pól, sprawiając że stawianie sygnalizacji na równoległych torach jest łatwiejsze
 
 STR_CONFIG_SETTING_SEMAPHORE_BUILD_BEFORE_DATE                  :Automatycznie buduj semafory przed: {STRING}
 STR_CONFIG_SETTING_SEMAPHORE_BUILD_BEFORE_DATE_HELPTEXT         :Ustaw rok, w którym semafory świetlne będą używane. Przed tym rokiem w użyciu będą semafory kształtowe (które mają te same właściwości, tylko inny wygląd)
@@ -2510,14 +2534,14 @@ STR_INTRO_TOOLTIP_SUB_ARCTIC_LANDSCAPE                          :{BLACK}Wybierz 
 STR_INTRO_TOOLTIP_SUB_TROPICAL_LANDSCAPE                        :{BLACK}Wybierz krajobraz „tropikalny”
 STR_INTRO_TOOLTIP_TOYLAND_LANDSCAPE                             :{BLACK}Wybierz krajobraz „zabawkowy”
 
-STR_INTRO_TOOLTIP_GAME_OPTIONS                                  :{BLACK}Wyświetl opcje gry
-STR_INTRO_TOOLTIP_HIGHSCORE                                     :{BLACK}Wyświetl tabelę wyników
+STR_INTRO_TOOLTIP_GAME_OPTIONS                                  :{BLACK}Otwórz opcje gry
+STR_INTRO_TOOLTIP_HIGHSCORE                                     :{BLACK}Otwórz tabelę wyników
 STR_INTRO_TOOLTIP_HELP                                          :{BLACK}Uzyskaj dostęp do dokumentacji i zasobów online
-STR_INTRO_TOOLTIP_CONFIG_SETTINGS_TREE                          :{BLACK}Wyświetl ustawienia gry
-STR_INTRO_TOOLTIP_NEWGRF_SETTINGS                               :{BLACK}Wyświetl ustawienia NewGRF
+STR_INTRO_TOOLTIP_CONFIG_SETTINGS_TREE                          :{BLACK}Otwórz ustawienia gry
+STR_INTRO_TOOLTIP_NEWGRF_SETTINGS                               :{BLACK}Otwórz ustawienia NewGRF
 STR_INTRO_TOOLTIP_ONLINE_CONTENT                                :{BLACK}Poszukaj nowych lub zaktualizowanych dodatków do pobrania
-STR_INTRO_TOOLTIP_AI_SETTINGS                                   :{BLACK}Wyświetl ustawienia SI
-STR_INTRO_TOOLTIP_GAMESCRIPT_SETTINGS                           :{BLACK}Wyświetl ustawienia Game Script
+STR_INTRO_TOOLTIP_AI_SETTINGS                                   :{BLACK}Otwórz ustawienia SI
+STR_INTRO_TOOLTIP_GAMESCRIPT_SETTINGS                           :{BLACK}Otwórz ustawienia Game Script
 STR_INTRO_TOOLTIP_QUIT                                          :{BLACK}Wyjdź z „OpenTTD”
 
 STR_INTRO_BASESET                                               :{BLACK}Aktualnie używany podstawowy zestaw graficzny nie posiada {NUM} wymagan{P ego ych ych} sprite{P 'u 'ów 'ów}. Proszę poszukać aktualizacji dla zestawu podstawowego.
@@ -2548,7 +2572,7 @@ STR_HELP_WINDOW_BUGTRACKER                                      :{BLACK}Zgłoś 
 STR_HELP_WINDOW_COMMUNITY                                       :{BLACK}Społeczność
 
 # Cheat window
-STR_CHEATS                                                      :{WHITE}Oszustwa
+STR_CHEATS                                                      :{WHITE}Opcje Swobodnej Rozgrywki
 STR_CHEAT_MONEY                                                 :{LTBLUE}Zwiększ ilość pieniędzy o {CURRENCY_LONG}
 STR_CHEAT_CHANGE_COMPANY                                        :{LTBLUE}Grasz jako firma: {ORANGE}{COMMA}
 STR_CHEAT_EXTRA_DYNAMITE                                        :{LTBLUE}Magiczny buldożer (usuwanie przedsiębiorstw, nieprzesuwalnych obiektów): {ORANGE}{STRING}
@@ -2685,6 +2709,9 @@ STR_NETWORK_SERVER_LIST_MAP_SIZE_CAPTION                        :{BLACK}Rozmiar 
 STR_NETWORK_SERVER_LIST_MAP_SIZE_CAPTION_TOOLTIP                :{BLACK}Rozmiar mapy{}Kliknij, by sortować wg powierzchni
 STR_NETWORK_SERVER_LIST_DATE_CAPTION                            :{BLACK}Data
 STR_NETWORK_SERVER_LIST_DATE_CAPTION_TOOLTIP                    :{BLACK}Bieżąca data
+STR_NETWORK_SERVER_LIST_PLAY_TIME_SHORT                         :{BLACK}{NUM}h {NUM}min
+STR_NETWORK_SERVER_LIST_PLAY_TIME_CAPTION                       :{BLACK}Czas gry
+STR_NETWORK_SERVER_LIST_PLAY_TIME_CAPTION_TOOLTIP               :{BLACK}Czas rozgrywki,{}gdy gra nie była wstrzymana
 STR_NETWORK_SERVER_LIST_INFO_ICONS_TOOLTIP                      :{BLACK}Język, wersja serwera, itp.
 
 STR_NETWORK_SERVER_LIST_CLICK_GAME_TO_SELECT                    :{BLACK}Kliknij na grze z listy by ją wybrać
@@ -2700,6 +2727,7 @@ STR_NETWORK_SERVER_LIST_SERVER_ADDRESS                          :{SILVER}Adres s
 STR_NETWORK_SERVER_LIST_INVITE_CODE                             :{SILVER}Kod zaproszenia: {WHITE}{STRING}
 STR_NETWORK_SERVER_LIST_START_DATE                              :{SILVER}Data uruchomienia: {WHITE}{DATE_SHORT}
 STR_NETWORK_SERVER_LIST_CURRENT_DATE                            :{SILVER}Aktualna data: {WHITE}{DATE_SHORT}
+STR_NETWORK_SERVER_LIST_PLAY_TIME                               :{SILVER}Czas gry: {WHITE}{NUM}h {NUM}min
 STR_NETWORK_SERVER_LIST_GAMESCRIPT                              :{SILVER}Game Script: {WHITE}{STRING} (v{NUM})
 STR_NETWORK_SERVER_LIST_PASSWORD                                :{SILVER}Chronione hasłem!
 STR_NETWORK_SERVER_LIST_SERVER_OFFLINE                          :{SILVER}SERWER WYŁĄCZONY
@@ -3056,6 +3084,7 @@ STR_LINKGRAPH_LEGEND_OVERLOADED                                 :{TINY_FONT}{BLA
 
 # Linkgraph tooltip
 STR_LINKGRAPH_STATS_TOOLTIP_RETURN_EXTENSION                    :{}{CARGO_LONG} do przetransportowania z powrotem ({COMMA}% przepustowości)
+STR_LINKGRAPH_STATS_TOOLTIP_TIME_EXTENSION                      :{}Średni czas podróży: {UNITS_DAYS_OR_SECONDS}
 
 # Base for station construction window(s)
 STR_STATION_BUILD_COVERAGE_AREA_TITLE                           :{BLACK}Podświetlaj zasięg
@@ -3090,7 +3119,7 @@ STR_RAIL_TOOLBAR_TOOLTIP_BUILD_RAILROAD_STATION                 :{BLACK}Zbuduj s
 STR_RAIL_TOOLBAR_TOOLTIP_BUILD_RAILROAD_SIGNALS                 :{BLACK}Zbuduj sygnały na torach. Ctrl przełącza semafory/sygnały świetlne{}Przeciąganie buduje sygnały wzdłuż prostej linii torów, z Ctrl buduje sygnały aż do najbliższego skrzyżowania lub sygnału{}Ctrl+klik przełącza wyświetlanie okna wyboru sygnałów. Shift przełącza pomiędzy budowaniem a szacowaniem jego kosztów
 STR_RAIL_TOOLBAR_TOOLTIP_BUILD_RAILROAD_BRIDGE                  :{BLACK}Zbuduj most kolejowy. Shift przełącza pomiędzy trybem budowania a szacowaniem jego kosztów
 STR_RAIL_TOOLBAR_TOOLTIP_BUILD_RAILROAD_TUNNEL                  :{BLACK}Zbuduj tunel kolejowy. Shift przełącza pomiędzy trybem budowania a szacowaniem jego kosztów
-STR_RAIL_TOOLBAR_TOOLTIP_TOGGLE_BUILD_REMOVE_FOR                :{BLACK}Przełącz buduj/usuń dla torów kolejowych, sygnałów, posterunków i stacji. Przetrzymanie Ctrl usuwa także tory kolejowe z posterunków i stacji
+STR_RAIL_TOOLBAR_TOOLTIP_TOGGLE_BUILD_REMOVE_FOR                :{BLACK}Przełącz budowanie/usuwanie torów kolejowych, sygnałów, posterunków i stacji. Ctrl+klik usuwa także tory kolejowe z posterunków i stacji
 STR_RAIL_TOOLBAR_TOOLTIP_CONVERT_RAIL                           :{BLACK}Zamiana typu torów. Shift przełącza pomiędzy trybem budowania a szacowaniem jego kosztów
 
 STR_RAIL_NAME_RAILROAD                                          :Kolej
@@ -3141,7 +3170,7 @@ STR_BUILD_SIGNAL_ELECTRIC_EXIT_TOOLTIP                          :{BLACK}Sygnaliz
 STR_BUILD_SIGNAL_ELECTRIC_COMBO_TOOLTIP                         :{BLACK}Sygnalizator złożony (elektryczny){}Sygnalizator złożony działa jako sygnał wejściowy i wyjściowy. Umożliwia to budowę wielkich „drzew” presygnalizatorów
 STR_BUILD_SIGNAL_ELECTRIC_PBS_TOOLTIP                           :{BLACK}Sygnalizator trasy (elektryczny){}Sygnalizator trasy umożliwiający wejście więcej niż jednemu pociagowi do bloku sygnalizatorów, o ile pociąg może zarezerwować trasę do bezpiecznego punktu zatrzymania. Zwykłe sygnalizatory trasy mogą być mijane w przeciwnym kierunku
 STR_BUILD_SIGNAL_ELECTRIC_PBS_OWAY_TOOLTIP                      :{BLACK}Jednokierunkowy sygnalizator trasy (elektryczny){}Sygnalizator trasy umożliwiający wejście więcej niż jednemu pociagowi do bloku sygnalizatorów, o ile pociąg może zarezerwować trasę do bezpiecznego punktu zatrzymania. Sygnalizatory jednokierunkowe nie mogą być mijane w przeciwnym kierunku
-STR_BUILD_SIGNAL_CONVERT_TOOLTIP                                :{BLACK}Zamiana sygnałów{}Jeżeli włączone, kliknięcie na istniejący sygnał spowoduje zamianę go na wybrany typ i wariant. Ctrl+klik przełącza istniejący wariant. Shift+klik pokazuje szacowany koszt zamiany
+STR_BUILD_SIGNAL_CONVERT_TOOLTIP                                :{BLACK}Zamiana sygnałów{}Kliknij na istniejący sygnał, aby zamienić go na wybrany typ i wariant. Ctrl+klik przełącza istniejący wariant. Shift+klik pokazuje szacowany koszt zamiany
 STR_BUILD_SIGNAL_DRAG_SIGNALS_DENSITY_TOOLTIP                   :{BLACK}Odległość między sygnałami przy przeciąganiu
 STR_BUILD_SIGNAL_DRAG_SIGNALS_DENSITY_DECREASE_TOOLTIP          :{BLACK}Zmniejsz odległość między sygnałami przy przeciąganiu
 STR_BUILD_SIGNAL_DRAG_SIGNALS_DENSITY_INCREASE_TOOLTIP          :{BLACK}Zwiększ odległość między sygnałami przy przeciąganiu
@@ -3215,8 +3244,8 @@ STR_WATERWAYS_TOOLBAR_BUILD_DEPOT_TOOLTIP                       :{BLACK}Wybuduj 
 STR_WATERWAYS_TOOLBAR_BUILD_DOCK_TOOLTIP                        :{BLACK}Zbuduj port. Ctrl umożliwia łączenie stacji. Shift przełącza pomiędzy trybem budowania a szacowaniem jego kosztów
 STR_WATERWAYS_TOOLBAR_BUOY_TOOLTIP                              :{BLACK}Ustaw boję, która może być użyta jako punkt orientacyjny. Shift przełącza pomiędzy trybem budowania a szacowaniem jego kosztów
 STR_WATERWAYS_TOOLBAR_BUILD_AQUEDUCT_TOOLTIP                    :{BLACK}Zbuduj akwedukt. Shift przełącza pomiędzy trybem budowania a szacowaniem jego kosztów
-STR_WATERWAYS_TOOLBAR_CREATE_LAKE_TOOLTIP                       :{BLACK}Stwórz akwen wodny.{}Tworzy kanał, chyba że przytrzymany jest CTRL na poziomie morza, wtedy pobliski teren zostanie zatopiony
-STR_WATERWAYS_TOOLBAR_CREATE_RIVER_TOOLTIP                      :{BLACK}Umieszczanie rzek. Ctrl zaznacza obszar po przekątnej.
+STR_WATERWAYS_TOOLBAR_CREATE_LAKE_TOOLTIP                       :{BLACK}Zbuduj kanał. Ctrl+klik na poziomie morza spowoduje zatopienie terenu
+STR_WATERWAYS_TOOLBAR_CREATE_RIVER_TOOLTIP                      :{BLACK}Umieszczanie rzek. Ctrl+klik zaznacza obszar po przekątnej
 
 # Ship depot construction window
 STR_DEPOT_BUILD_SHIP_CAPTION                                    :{WHITE}Ukierunkowanie stoczni
@@ -3261,7 +3290,7 @@ STR_LANDSCAPING_TOOLTIP_PURCHASE_LAND                           :{BLACK}Zakup te
 
 # Object construction window
 STR_OBJECT_BUILD_CAPTION                                        :{WHITE}Wybór obiektu
-STR_OBJECT_BUILD_TOOLTIP                                        :{BLACK}Wybierz obiekt do budowy. Ctrl zaznacza obszar po przekątnej. Shift przełącza pomiędzy trybem budowy a szacowaniem jej kosztów
+STR_OBJECT_BUILD_TOOLTIP                                        :{BLACK}Wybierz obiekt do budowy. Ctrl+klik+przeciągnięcie zaznacza obszar po przekątnej. Dodatkowo wciśnięcie Shift wyświetli jedynie szacunkowy koszt
 STR_OBJECT_BUILD_CLASS_TOOLTIP                                  :{BLACK}Wybierz rodzaj obiektu do budowy
 STR_OBJECT_BUILD_PREVIEW_TOOLTIP                                :{BLACK}Podgląd obiektu
 STR_OBJECT_BUILD_SIZE                                           :{BLACK}Rozmiar: {GOLD}{NUM} x {NUM} pól
@@ -3613,11 +3642,11 @@ STR_MAPGEN_VARIETY                                              :{BLACK}Różnor
 STR_MAPGEN_GENERATE                                             :{WHITE}Stwórz
 STR_MAPGEN_GENERATE_TOOLTIP                                     :{BLACK}Stwórz świat i graj w OpenTTD!
 STR_MAPGEN_NEWGRF_SETTINGS                                      :{BLACK}Ustawienia NewGRF
-STR_MAPGEN_NEWGRF_SETTINGS_TOOLTIP                              :{BLACK}Wyświetl ustawienia NewGRF
+STR_MAPGEN_NEWGRF_SETTINGS_TOOLTIP                              :{BLACK}Otwórz ustawienia NewGRF
 STR_MAPGEN_AI_SETTINGS                                          :{BLACK}Ustawienia SI
-STR_MAPGEN_AI_SETTINGS_TOOLTIP                                  :{BLACK}Wyświetl ustawienia SI
+STR_MAPGEN_AI_SETTINGS_TOOLTIP                                  :{BLACK}Otwórz ustawienia SI
 STR_MAPGEN_GS_SETTINGS                                          :{BLACK}Ustawienia Game Script
-STR_MAPGEN_GS_SETTINGS_TOOLTIP                                  :{BLACK}Wyświetl ustawienia Game Script
+STR_MAPGEN_GS_SETTINGS_TOOLTIP                                  :{BLACK}Otwórz ustawienia Game Script
 
 ###length 21
 STR_MAPGEN_TOWN_NAME_ORIGINAL_ENGLISH                           :Angielskie (Oryginalne)
@@ -3918,6 +3947,8 @@ STR_TOWN_VIEW_CARGO_FOR_TOWNGROWTH_REQUIRED_WINTER              :{ORANGE}{STRING
 STR_TOWN_VIEW_CARGO_FOR_TOWNGROWTH_DELIVERED_GENERAL            :{G=f}{ORANGE}{STRING}{GREEN} dostarczona
 STR_TOWN_VIEW_CARGO_FOR_TOWNGROWTH_REQUIRED                     :{G=m}{ORANGE}{CARGO_TINY} / {CARGO_LONG}{RED} (wciąż wymagany)
 STR_TOWN_VIEW_CARGO_FOR_TOWNGROWTH_DELIVERED                    :{G=m}{ORANGE}{CARGO_TINY} / {CARGO_LONG}{GREEN} (dostarczony)
+STR_TOWN_VIEW_TOWN_GROWS_EVERY                                  :{BLACK}Miasto rośnie co {ORANGE}{UNITS_DAYS_OR_SECONDS}
+STR_TOWN_VIEW_TOWN_GROWS_EVERY_FUNDED                           :{BLACK}Miasto rośnie co {ORANGE}{UNITS_DAYS_OR_SECONDS} (ufundowane)
 STR_TOWN_VIEW_TOWN_GROW_STOPPED                                 :{BLACK}Miasto {RED}nie{BLACK} rośnie
 STR_TOWN_VIEW_NOISE_IN_TOWN                                     :{BLACK}Limit hałasu w mieście: {ORANGE}{COMMA}{BLACK}  maksymalnie: {ORANGE}{COMMA}
 STR_TOWN_VIEW_CENTER_TOOLTIP                                    :{BLACK}Wyśrodkuj widok główny na lokalizacji miasta. Ctrl+klik otwiera nowy podgląd na jego lokalizację
@@ -3973,7 +4004,7 @@ STR_GOALS_TEXT                                                  :{ORANGE}{STRING
 STR_GOALS_NONE                                                  :{ORANGE}- Brak -
 STR_GOALS_PROGRESS                                              :{ORANGE}{STRING}
 STR_GOALS_PROGRESS_COMPLETE                                     :{GREEN}{STRING}
-STR_GOALS_TOOLTIP_CLICK_ON_SERVICE_TO_CENTER                    :{BLACK}Kliknij na celu by wyśrodkować widok na przedsiębiorstwie/mieście/polu. Ctrl+klik otwiera nowe okno podglądu
+STR_GOALS_TOOLTIP_CLICK_ON_SERVICE_TO_CENTER                    :{BLACK}Kliknij na celu, aby wyśrodkować widok na przedsiębiorstwie/mieście/polu. Ctrl+klik otwiera nowe okno podglądu
 
 # Goal question window
 STR_GOAL_QUESTION_CAPTION_QUESTION                              :Pytanie
@@ -4109,6 +4140,8 @@ STR_EDIT_WAYPOINT_NAME                                          :{WHITE}Edytuj n
 # Finances window
 STR_FINANCES_CAPTION                                            :{WHITE}Finanse {COMPANY} {BLACK}{COMPANY_NUM}
 STR_FINANCES_YEAR                                               :{WHITE}{NUM}
+STR_FINANCES_YEAR_CAPTION                                       :{WHITE}Rok
+STR_FINANCES_PERIOD_CAPTION                                     :{WHITE}Okres
 
 ###length 3
 STR_FINANCES_REVENUE_TITLE                                      :{WHITE}Przychody
@@ -4210,6 +4243,8 @@ STR_COMPANY_INFRASTRUCTURE_VIEW_CANALS                          :{WHITE}Kanały
 STR_COMPANY_INFRASTRUCTURE_VIEW_STATION_SECT                    :{GOLD}Stacje:
 STR_COMPANY_INFRASTRUCTURE_VIEW_STATIONS                        :{WHITE}Pola stacji
 STR_COMPANY_INFRASTRUCTURE_VIEW_AIRPORTS                        :{WHITE}Lotniska
+STR_COMPANY_INFRASTRUCTURE_VIEW_TOTAL_YEAR                      :{WHITE}{CURRENCY_LONG}/rok
+STR_COMPANY_INFRASTRUCTURE_VIEW_TOTAL_PERIOD                    :{WHITE}{CURRENCY_LONG}/okres
 
 # Industry directory
 STR_INDUSTRY_DIRECTORY_CAPTION                                  :{WHITE}Przedsiębiorstwa
@@ -4368,10 +4403,10 @@ STR_CARGO_TYPE_FILTER_FREIGHT                                   :Fracht
 STR_CARGO_TYPE_FILTER_NONE                                      :Żaden
 
 ###length VEHICLE_TYPES
-STR_BUY_VEHICLE_TRAIN_LIST_TOOLTIP                              :{BLACK}Lista wyboru pociągów - kliknij na pojazd, aby uzyskać informacje. Ctrl+klik przełącza ukrywanie typu pojazdu
-STR_BUY_VEHICLE_ROAD_VEHICLE_LIST_TOOLTIP                       :{BLACK}Lista wyboru pojazdów drogowych - kliknij na pojazd, aby uzyskać więcej informacji. Ctrl+klik przełącza ukrywanie typu pojazdu
-STR_BUY_VEHICLE_SHIP_LIST_TOOLTIP                               :{BLACK}Lista wyboru statków - kliknij na statek, aby uzyskać informacje. Ctrl+klik przełącza ukrywanie typu statku
-STR_BUY_VEHICLE_AIRCRAFT_LIST_TOOLTIP                           :{BLACK}Lista wyboru samolotów - kliknij na samolocie, aby uzyskać informacje. Ctrl+klik przełącza ukrywanie typu samolotu
+STR_BUY_VEHICLE_TRAIN_LIST_TOOLTIP                              :{BLACK}Lista wyboru pociągów. Kliknij na pojazd, aby uzyskać informacje. Ctrl+klik przełącza wyświetlanie/ukrywanie typu pojazdu
+STR_BUY_VEHICLE_ROAD_VEHICLE_LIST_TOOLTIP                       :{BLACK}Lista wyboru pojazdów drogowych. Kliknij na pojazd, aby uzyskać informacje. Ctrl+klik przełącza wyświetlanie/ukrywanie typu pojazdu
+STR_BUY_VEHICLE_SHIP_LIST_TOOLTIP                               :{BLACK}Lista wyboru statków. Kliknij na statek, aby uzyskać informacje. Ctrl+klik przełącza wyświetlanie/ukrywanie typu statku
+STR_BUY_VEHICLE_AIRCRAFT_LIST_TOOLTIP                           :{BLACK}Lista wyboru samolotów. Kliknij na samolot, aby uzyskać informacje. Ctrl+klik przełącza wyświetlanie/ukrywanie typu samolotu
 
 ###length VEHICLE_TYPES
 STR_BUY_VEHICLE_TRAIN_BUY_VEHICLE_BUTTON                        :{BLACK}Kup tabor kolejowy
@@ -4445,7 +4480,7 @@ STR_DEPOT_VEHICLE_TOOLTIP_CHAIN                                 :{BLACK}{NUM} po
 STR_DEPOT_VEHICLE_TOOLTIP_CARGO                                 :{}{CARGO_LONG} ({CARGO_SHORT})
 
 ###length VEHICLE_TYPES
-STR_DEPOT_TRAIN_LIST_TOOLTIP                                    :{BLACK}Pociągi - przeciągnij pojazd/wagon przytrzymując lewy klawisz myszy, aby go dodać/usunąć ze składu pociągu, kliknij na pociągu prawym aby uzyskać informacje. Przytrzymanie Ctrl dla podanych akcji stosuje zmiany do całego składu pociągu
+STR_DEPOT_TRAIN_LIST_TOOLTIP                                    :{BLACK}Pociągi - przeciągnij pojazd/wagon lewym przyciskiem myszy, aby go dodać/usunąć ze składu pociągu; kliknij prawym, aby uzyskać o nim informacje. Ctrl+klik wykona te funkcje dla ciągu wagonów aż do ostatniego
 STR_DEPOT_ROAD_VEHICLE_LIST_TOOLTIP                             :{BLACK}Pojazdy - prawy klik na pojeździe pozwala uzyskać więcej informacji
 STR_DEPOT_SHIP_LIST_TOOLTIP                                     :{BLACK}Statki - prawy klik pozwala uzyskać informacje o statku
 STR_DEPOT_AIRCRAFT_LIST_TOOLTIP                                 :{BLACK}Samolot - prawy klik na samolocie pozwala uzyskać informacje
@@ -4540,6 +4575,7 @@ STR_ENGINE_PREVIEW_AIRCRAFT.b                                   :samolot
 STR_ENGINE_PREVIEW_SHIP                                         :{G=m}statek
 STR_ENGINE_PREVIEW_SHIP.b                                       :statek
 
+STR_ENGINE_PREVIEW_CAPACITY                                     :Ładowność: {CARGO_LONG}
 
 # Autoreplace window
 STR_REPLACE_VEHICLES_WHITE                                      :{WHITE}Zastąp {STRING} - {STRING}
@@ -4747,7 +4783,7 @@ STR_REFIT_NEW_CAPACITY_COST_OF_REFIT                            :{BLACK}Nowa ła
 STR_REFIT_NEW_CAPACITY_INCOME_FROM_REFIT                        :{BLACK}Nowa ładowność: {GOLD}{CARGO_LONG}{}{BLACK}Przychód z przebudowy: {GREEN}{CURRENCY_LONG}
 STR_REFIT_NEW_CAPACITY_COST_OF_AIRCRAFT_REFIT                   :{BLACK}Nowa ładowność: {GOLD}{CARGO_LONG}, {GOLD}{CARGO_LONG}{}{BLACK}Koszt przebudowy: {RED}{CURRENCY_LONG}
 STR_REFIT_NEW_CAPACITY_INCOME_FROM_AIRCRAFT_REFIT               :{BLACK}Nowa ładowność: {GOLD}{CARGO_LONG}, {GOLD}{CARGO_LONG}{}{BLACK}Przychód z przebudowy: {GREEN}{CURRENCY_LONG}
-STR_REFIT_SELECT_VEHICLES_TOOLTIP                               :{BLACK}Wybierz pojazdy do przebudowania. Przeciągając myszkę można wybierać więcej pojazdów. Klikając na puste pole zaznaczysz cały pojazd. Ctrl+klik zaznaczy pojazd i dołączony skład
+STR_REFIT_SELECT_VEHICLES_TOOLTIP                               :{BLACK}Wybierz pojazdy/wagony do przebudowania. Klik+przeciągnięcie zaznacza wiele pojazdów/wagonów. Kliknięcie na puste pole zaznacza cały pojazd. Ctrl+klik zaznacza pojazd/wagon i następne aż do ostatniego
 
 ###length VEHICLE_TYPES
 STR_REFIT_TRAIN_LIST_TOOLTIP                                    :{BLACK}Wybierz jaki ładunek ma przewozić pociąg
@@ -4774,6 +4810,7 @@ STR_ORDERS_TIMETABLE_VIEW_TOOLTIP                               :{BLACK}Otwórz 
 
 STR_ORDERS_LIST_TOOLTIP                                         :{BLACK}Lista poleceń - kliknij na poleceniu, aby zaznaczyć. Ctrl+klik przenosi do stacji docelowej
 STR_ORDER_INDEX                                                 :{COMMA}:{NBSP}
+STR_ORDER_TEXT                                                  :{STRING} {STRING} {STRING} {STRING}
 
 STR_ORDERS_END_OF_ORDERS                                        :- - Koniec poleceń - -
 STR_ORDERS_END_OF_SHARED_ORDERS                                 :- - Koniec współdzielonych poleceń - -
@@ -4856,7 +4893,7 @@ STR_ORDER_GO_TO_NEAREST_DEPOT                                   :Idź do najbli�
 STR_ORDER_GO_TO_NEAREST_HANGAR                                  :Leć do najbliższego hangaru
 STR_ORDER_CONDITIONAL                                           :Warunkowy skok poleceń
 STR_ORDER_SHARE                                                 :Współdzielenie poleceń
-STR_ORDERS_GO_TO_TOOLTIP                                        :{BLACK}Dodaj nowe polecenie na końcu listy lub przed zaznaczonym poleceniem. Ctrl ustawi polecenie stacji na „pełny załadunek któregoś z towarów”, posterunku na „bez zatrzymywania się”, a zajezdni na „serwisuj”. Kliknięcie innego pojazdu kopiuje jego polecenia. „Współdzielenie poleceń” lub Ctrl+klik pozwala na współdzielenie z nim poleceń. Polecenie zajezdni wyłącza automatyczne serwisowanie tego pojazdu
+STR_ORDERS_GO_TO_TOOLTIP                                        :{BLACK}Dodaj nowe polecenie na końcu listy lub przed zaznaczonym poleceniem. Ctrl+klik ustawia polecenie stacji na „pełny załadunek któregoś z towarów”, posterunku na „bez zatrzymywania się”, a zajezdni na „serwisuj”. Kliknięcie innego pojazdu kopiuje jego polecenia, a Ctrl+klik pozwala na współdzielenie z nim poleceń. Polecenie do zajezdni wyłącza automatyczne serwisowanie tego pojazdu
 
 STR_ORDERS_VEH_WITH_SHARED_ORDERS_LIST_TOOLTIP                  :{BLACK}Pokaż wszystkie pojazdy współdzielące te polecenia
 
@@ -5085,6 +5122,8 @@ STR_AI_SETTINGS_CAPTION_GAMESCRIPT                              :Game Script
 STR_AI_SETTINGS_CLOSE                                           :{BLACK}Zamknij
 STR_AI_SETTINGS_RESET                                           :{BLACK}Resetuj
 STR_AI_SETTINGS_SETTING                                         :{STRING}: {ORANGE}{STRING}
+STR_AI_SETTINGS_SETTING_DEVIATION                               :{STRING}: {ORANGE}[{STRING}, {STRING}]
+STR_AI_SETTINGS_JUST_DEVIATION                                  :[{STRING}, {STRING}]
 
 
 # Textfile window

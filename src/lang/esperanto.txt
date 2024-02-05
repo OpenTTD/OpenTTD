@@ -320,8 +320,13 @@ STR_UNITS_HEIGHT_METRIC                                         :{DECIMAL}{NBSP}
 STR_UNITS_HEIGHT_SI                                             :{DECIMAL}{NBSP}m
 
 # Time units used in string control characters
+STR_UNITS_DAYS                                                  :{COMMA}{NBSP}tago{P "" j}
+STR_UNITS_SECONDS                                               :{COMMA}{NBSP}sekundo{P "" j}
 
+STR_UNITS_MONTHS                                                :{NUM}{NBSP}monato{P "" j}
+STR_UNITS_MINUTES                                               :{NUM}{NBSP}minuto{P "" j}
 
+STR_UNITS_YEARS                                                 :{NUM}{NBSP}jaro{P "" j}
 
 # Common window strings
 STR_LIST_FILTER_TITLE                                           :{BLACK}Filtroteksto:
@@ -430,7 +435,7 @@ STR_GOTO_ORDER_VIEW                                             :{BLACK}Itinero
 ###length 31
 STR_TOOLBAR_TOOLTIP_PAUSE_GAME                                  :{BLACK}Paŭzigu la ludon
 STR_TOOLBAR_TOOLTIP_FORWARD                                     :{BLACK}Rapide pluirigu la ludon
-STR_TOOLBAR_TOOLTIP_OPTIONS                                     :{BLACK}Opcioj kaj agordoj
+STR_TOOLBAR_TOOLTIP_OPTIONS                                     :{BLACK}Agordoj
 STR_TOOLBAR_TOOLTIP_SAVE_GAME_ABANDON_GAME                      :{BLACK}Konservu ludon, foriru ludo, forlasi
 STR_TOOLBAR_TOOLTIP_DISPLAY_MAP                                 :{BLACK}Montru mapon, ekstran vidujon, fluon de ŝarĝoj aŭ liston de ŝildoj
 STR_TOOLBAR_TOOLTIP_DISPLAY_TOWN_DIRECTORY                      :{BLACK}Montru urbaron
@@ -489,7 +494,7 @@ STR_SCENEDIT_FILE_MENU_QUIT                                     :Forlasi
 
 # Settings menu
 ###length 16
-STR_SETTINGS_MENU_GAME_OPTIONS                                  :Ludaj opcioj
+STR_SETTINGS_MENU_GAME_OPTIONS                                  :Ludaj agordoj
 STR_SETTINGS_MENU_CONFIG_SETTINGS_TREE                          :Agordoj
 STR_SETTINGS_MENU_GAMESCRIPT_SETTINGS                           :Ludoskriptaj agordoj
 STR_SETTINGS_MENU_NEWGRF_SETTINGS                               :Agordoj de NewGRF
@@ -506,7 +511,7 @@ STR_SETTINGS_MENU_TRANSPARENT_SIGNS                             :Travideblaj sig
 
 # File menu
 STR_FILE_MENU_SAVE_GAME                                         :Konservu ludon
-STR_FILE_MENU_LOAD_GAME                                         :Ŝarĝu ludon
+STR_FILE_MENU_LOAD_GAME                                         :Enlegi ludon
 STR_FILE_MENU_QUIT_GAME                                         :Foriru de la ludo
 STR_FILE_MENU_EXIT                                              :Fermu
 
@@ -947,7 +952,12 @@ STR_NEWS_NEW_VEHICLE_NOW_AVAILABLE_WITH_TYPE                    :{BLACK}Nova {ST
 
 STR_NEWS_OFFER_OF_SUBSIDY_EXPIRED                               :{BIG_FONT}{BLACK}Subvencia oferto ne plu validas:{}{}Transportado de {STRING} de {STRING} al {STRING} ne estos subvenciata.
 STR_NEWS_SUBSIDY_WITHDRAWN_SERVICE                              :{BIG_FONT}{BLACK}Subvencio retiriĝis:{}{}Servo de {STRING} de {STRING} al {STRING} ne plu estas subvenciata.
+STR_NEWS_SERVICE_SUBSIDY_OFFERED                                :{BIG_FONT}{BLACK}Subvencia proponiĝas:{}{}Unua {STRING} de {STRING} al {STRING} ricevos {UNITS_YEARS_OR_MINUTES} subvencion de la lokaj estroj!
 ###length 4
+STR_NEWS_SERVICE_SUBSIDY_AWARDED_HALF                           :{BIG_FONT}{BLACK}Subvencion gajnis {STRING}!{}{}{STRING} de {STRING} al {STRING} pagiĝos kun aldono je 50% dum la sekvontaj {UNITS_YEARS_OR_MINUTES}!
+STR_NEWS_SERVICE_SUBSIDY_AWARDED_DOUBLE                         :{BIG_FONT}{BLACK}Subvencion gajnis {STRING}!{}{}{STRING} de {STRING} al {STRING} pagiĝos duoble dum la sekvontaj {UNITS_YEARS_OR_MINUTES}!
+STR_NEWS_SERVICE_SUBSIDY_AWARDED_TRIPLE                         :{BIG_FONT}{BLACK}Subvencion gajnis {STRING}!{}{}{STRING} de {STRING} al {STRING} pagiĝos trioble dum la sekvontaj {UNITS_YEARS_OR_MINUTES}!
+STR_NEWS_SERVICE_SUBSIDY_AWARDED_QUADRUPLE                      :{BIG_FONT}{BLACK}Suvencion gajnis {STRING}!{}{}{STRING} de {STRING} al {STRING} pagiĝos kvaroble dum la sekvontaj {UNITS_YEARS_OR_MINUTES}!
 
 STR_NEWS_EXCLUSIVE_RIGHTS_TITLE                                 :{BIG_FONT}{BLACK}Transporta monopolo!
 
@@ -959,7 +969,7 @@ STR_EXTRA_VIEW_MOVE_MAIN_TO_VIEW                                :{BLACK}Gluu de 
 STR_EXTRA_VIEW_MOVE_MAIN_TO_VIEW_TT                             :{BLACK}Gluu la lokon de ĉi tiu vidujo al la ĉefvido
 
 # Game options window
-STR_GAME_OPTIONS_CAPTION                                        :{WHITE}Ludaj Opcioj
+STR_GAME_OPTIONS_CAPTION                                        :{WHITE}Ludaj agordoj
 
 STR_GAME_OPTIONS_TAB_GENERAL                                    :Ĝenerale
 STR_GAME_OPTIONS_TAB_GENERAL_TT                                 :{BLACK}Elektu ĝeneralajn agordojn
@@ -1287,6 +1297,7 @@ STR_CONFIG_SETTING_SUBSIDY_DURATION                             :Daŭro de subve
 ###length 2
 STR_CONFIG_SETTING_SUBSIDY_DURATION_HELPTEXT                    :Indiku por kiom da jaroj validas subvencio
 
+STR_CONFIG_SETTING_SUBSIDY_DURATION_VALUE                       :{UNITS_YEARS_OR_PERIODS}n
 ###setting-zero-is-special
 STR_CONFIG_SETTING_SUBSIDY_DURATION_DISABLED                    :Neniuj subvencioj
 
@@ -1464,6 +1475,7 @@ STR_CONFIG_SETTING_NEVER_EXPIRE_VEHICLES                        :Veturiloj nenia
 STR_CONFIG_SETTING_NEVER_EXPIRE_VEHICLES_HELPTEXT               :Se tiu ĉi agordo estas aktiva, ĉiuj modeloj de veturiloj restos aĉeteblaj por ĉiam post ekhaveblo
 
 ###length 2
+STR_CONFIG_SETTING_TIMEKEEPING_UNITS_CALENDAR                   :Kalendaro
 
 
 ###setting-zero-is-special
@@ -2078,14 +2090,14 @@ STR_VIDEO_DRIVER_ERROR_NO_HARDWARE_ACCELERATION                 :{WHITE}... ne t
 # Intro window
 STR_INTRO_CAPTION                                               :{WHITE}OpenTTD {REV}
 
-STR_INTRO_NEW_GAME                                              :{BLACK}Nova Ludo
+STR_INTRO_NEW_GAME                                              :{BLACK}Novan ludon
 STR_INTRO_LOAD_GAME                                             :{BLACK}Ŝarĝu ludon
-STR_INTRO_PLAY_SCENARIO                                         :{BLACK}Ludu Scenaron
-STR_INTRO_PLAY_HEIGHTMAP                                        :{BLACK}Ludu Altecmapon
+STR_INTRO_PLAY_SCENARIO                                         :{BLACK}Ludi scenaron
+STR_INTRO_PLAY_HEIGHTMAP                                        :{BLACK}Ludi altecmapon
 STR_INTRO_SCENARIO_EDITOR                                       :{BLACK}Scenarkreilo
 STR_INTRO_MULTIPLAYER                                           :{BLACK}Pluraj Ludantoj
 
-STR_INTRO_GAME_OPTIONS                                          :{BLACK}Ludaj Opcioj
+STR_INTRO_GAME_OPTIONS                                          :{BLACK}Ludaj agordoj
 STR_INTRO_HIGHSCORE                                             :{BLACK}Altpoentara tabelo
 STR_INTRO_CONFIG_SETTINGS_TREE                                  :{BLACK}Agordoj
 STR_INTRO_NEWGRF_SETTINGS                                       :{BLACK}Agordoj de NewGRF
@@ -2106,7 +2118,7 @@ STR_INTRO_TOOLTIP_SUB_ARCTIC_LANDSCAPE                          :{BLACK}Elektu '
 STR_INTRO_TOOLTIP_SUB_TROPICAL_LANDSCAPE                        :{BLACK}Elektu 'sub-tropikan' landstilon
 STR_INTRO_TOOLTIP_TOYLAND_LANDSCAPE                             :{BLACK}Elektu 'ludlandan' landstilon
 
-STR_INTRO_TOOLTIP_GAME_OPTIONS                                  :{BLACK}Montru ludajn opciojn
+STR_INTRO_TOOLTIP_GAME_OPTIONS                                  :{BLACK}Montri ludajn agordojn
 STR_INTRO_TOOLTIP_HIGHSCORE                                     :{BLACK}Montru altpoentara tabelo
 STR_INTRO_TOOLTIP_CONFIG_SETTINGS_TREE                          :{BLACK}Montru agordojn
 STR_INTRO_TOOLTIP_NEWGRF_SETTINGS                               :{BLACK}Montri NewGRF-agordojn
@@ -2394,7 +2406,7 @@ STR_NETWORK_ASK_RELAY_YES_ONCE                                  :{BLACK}Jes, ĉi
 STR_NETWORK_ASK_RELAY_YES_ALWAYS                                :{BLACK}Jes, ne demandu denove
 
 STR_NETWORK_ASK_SURVEY_CAPTION                                  :Partopreni aŭtomatan sondadon?
-STR_NETWORK_ASK_SURVEY_TEXT                                     :Ĉu vi volas partopreni la aŭtomatan sondadon?{}OpenTTD sendos sondaĵon post foriro el ludo.{}Vi povas ŝanĝi tion ĉi iam ajn sub "Ludaj Opcioj".
+STR_NETWORK_ASK_SURVEY_TEXT                                     :Ĉu vi volas partopreni la aŭtomatan sondadon?{}OpenTTD sendos sondaĵon post foriro el ludo.{}Vi povas ŝanĝi tion ĉi iam ajn sub "Ludaj agordoj".
 STR_NETWORK_ASK_SURVEY_PREVIEW                                  :Antaŭmontru sondaĵrezulton
 STR_NETWORK_ASK_SURVEY_LINK                                     :Pri sondado kaj privateco
 STR_NETWORK_ASK_SURVEY_NO                                       :Ne
@@ -2614,6 +2626,7 @@ STR_LINKGRAPH_LEGEND_OVERLOADED                                 :{TINY_FONT}{BLA
 
 # Linkgraph tooltip
 STR_LINKGRAPH_STATS_TOOLTIP_RETURN_EXTENSION                    :{}{CARGO_LONG} transportenda reen ({COMMA}% de la kapacito)
+STR_LINKGRAPH_STATS_TOOLTIP_TIME_EXTENSION                      :{}Meznombra veturtempo: {UNITS_DAYS_OR_SECONDS}
 
 # Base for station construction window(s)
 STR_STATION_BUILD_COVERAGE_AREA_TITLE                           :{BLACK}Ŝarĝregiona marko
@@ -3428,6 +3441,8 @@ STR_TOWN_VIEW_CARGO_FOR_TOWNGROWTH_REQUIRED_WINTER              :{ORANGE}{STRING
 STR_TOWN_VIEW_CARGO_FOR_TOWNGROWTH_DELIVERED_GENERAL            :{ORANGE}{STRING}{GREEN} liverita
 STR_TOWN_VIEW_CARGO_FOR_TOWNGROWTH_REQUIRED                     :{ORANGE}{CARGO_TINY} / {CARGO_LONG}{RED} (ankoraŭ bezonata)
 STR_TOWN_VIEW_CARGO_FOR_TOWNGROWTH_DELIVERED                    :{ORANGE}{CARGO_TINY} / {CARGO_LONG}{GREEN} (liverita)
+STR_TOWN_VIEW_TOWN_GROWS_EVERY                                  :{BLACK}La urbo kreskas ĉiun {ORANGE}{UNITS_DAYS_OR_SECONDS}
+STR_TOWN_VIEW_TOWN_GROWS_EVERY_FUNDED                           :{BLACK}La urbo kreskas ĉiun {ORANGE}{UNITS_DAYS_OR_SECONDS} (pagata)
 STR_TOWN_VIEW_TOWN_GROW_STOPPED                                 :{BLACK}La urbo {RED}ne{BLACK} kreskas
 STR_TOWN_VIEW_NOISE_IN_TOWN                                     :{BLACK}Urba brulimo: {ORANGE}{COMMA}{BLACK}  maks: {ORANGE}{COMMA}
 STR_TOWN_VIEW_CENTER_TOOLTIP                                    :{BLACK}Centri ĉefvidon ĉe la urbo. Stir+Klak por malfermi novan vidujon ĉe la urba loko.
@@ -3504,8 +3519,10 @@ STR_GOAL_QUESTION_BUTTON_CLOSE                                  :Fermu
 # Subsidies window
 STR_SUBSIDIES_CAPTION                                           :{WHITE}Subvencioj
 STR_SUBSIDIES_OFFERED_TITLE                                     :{BLACK}Subvencioj haveblas por jenaj servoj:
+STR_SUBSIDIES_OFFERED_FROM_TO                                   :{ORANGE}{STRING} de {STRING} al {STRING}{YELLOW} ({STRING})
 STR_SUBSIDIES_NONE                                              :{ORANGE}- Neniu -
 STR_SUBSIDIES_SUBSIDISED_TITLE                                  :{BLACK}Servoj subvenciataj:
+STR_SUBSIDIES_SUBSIDISED_FROM_TO                                :{ORANGE}{STRING} de {STRING} al {STRING}{YELLOW} ({COMPANY}{YELLOW}, {STRING})
 STR_SUBSIDIES_TOOLTIP_CLICK_ON_SERVICE_TO_CENTER                :{BLACK}Klaku servon por centri vidpunkto ĉe la industrio/urbo. Ctrl+Klak por malfermi novan vidujon ĉe la loko
 
 # Story book window
@@ -4184,6 +4201,8 @@ STR_VEHICLE_INFO_CAPACITY_CAPACITY                              :{BLACK}Enhaveco
 
 STR_VEHICLE_INFO_FEEDER_CARGO_VALUE                             :{BLACK}Transigaj Kreditoj: {LTBLUE}{CURRENCY_LONG}
 
+STR_VEHICLE_DETAILS_SERVICING_INTERVAL_DAYS                     :{BLACK}Prizorga intertempo: {LTBLUE}{COMMA}{NBSP}tagoj{BLACK} {STRING}
+STR_VEHICLE_DETAILS_SERVICING_INTERVAL_PERCENT                  :{BLACK}Prizorga intertempo: {LTBLUE}{COMMA}%{BLACK} {STRING}
 
 STR_SERVICE_INTERVAL_DROPDOWN_TOOLTIP                           :{BLACK}Ŝanĝi la tipo de servon intervalon
 STR_VEHICLE_DETAILS_DEFAULT                                     :Defaŭlto
@@ -4252,6 +4271,7 @@ STR_ORDERS_TIMETABLE_VIEW_TOOLTIP                               :{BLACK}Montri h
 
 STR_ORDERS_LIST_TOOLTIP                                         :{BLACK}Ordonlisto - klaku ordonon por elekti. Ctrl+Klak rulumas al la celstacio
 STR_ORDER_INDEX                                                 :{COMMA}:{NBSP}
+STR_ORDER_TEXT                                                  :{STRING} {STRING} {STRING} {STRING}
 
 STR_ORDERS_END_OF_ORDERS                                        :- - Fino de Ordonoj - -
 STR_ORDERS_END_OF_SHARED_ORDERS                                 :- - Fino de Kunhavitaj Ordonoj - -
@@ -4549,6 +4569,7 @@ STR_AI_SETTINGS_CAPTION_GAMESCRIPT                              :Ludoskripto
 STR_AI_SETTINGS_CLOSE                                           :{BLACK}Fermi
 STR_AI_SETTINGS_RESET                                           :{BLACK}Reŝargo
 STR_AI_SETTINGS_SETTING                                         :{STRING}: {ORANGE}{STRING}
+STR_AI_SETTINGS_SETTING_DEVIATION                               :{STRING}: {ORANGE}[{STRING}, {STRING}]
 
 
 # Textfile window

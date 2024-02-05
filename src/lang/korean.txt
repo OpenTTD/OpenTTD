@@ -4563,6 +4563,10 @@ STR_ORDER_DROP_UNBUNCH                                          :배차 간격 �
 
 # Depot action tooltips, one per vehicle type
 ###length VEHICLE_TYPES
+STR_ORDER_TRAIN_DEPOT_ACTION_TOOLTIP                            :{BLACK}차량기지에서 수행할 작업을 선택합니다
+STR_ORDER_ROAD_DEPOT_ACTION_TOOLTIP                             :{BLACK}차고지에서 수행할 작업을 선택합니다.
+STR_ORDER_SHIP_DEPOT_ACTION_TOOLTIP                             :{BLACK}정박소에서 수행할 작업을 선택합니다
+STR_ORDER_HANGAR_ACTION_TOOLTIP                                 :{BLACK}격납고에서 수행할 작업을 선택합니다.
 ###next-name-looks-similar
 
 STR_ORDER_CONDITIONAL_VARIABLE_TOOLTIP                          :{BLACK}경로를 건너뛰기 위한 비교 조건을 선택합니다

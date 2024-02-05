@@ -4562,6 +4562,10 @@ STR_ORDER_DROP_UNBUNCH                                          :Unbunch
 
 # Depot action tooltips, one per vehicle type
 ###length VEHICLE_TYPES
+STR_ORDER_TRAIN_DEPOT_ACTION_TOOLTIP                            :{BLACK}Select the action to take at this depot
+STR_ORDER_ROAD_DEPOT_ACTION_TOOLTIP                             :{BLACK}Select the action to take at this depot
+STR_ORDER_SHIP_DEPOT_ACTION_TOOLTIP                             :{BLACK}Select the action to take at this depot
+STR_ORDER_HANGAR_ACTION_TOOLTIP                                 :{BLACK}Select the action to take at this hangar
 ###next-name-looks-similar
 
 STR_ORDER_CONDITIONAL_VARIABLE_TOOLTIP                          :{BLACK}Vehicle data to base jumping on
