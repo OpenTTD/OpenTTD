@@ -79,6 +79,13 @@ static const CargoID CARGO_NO_REFIT = 0xFE; ///< Do not refit cargo of a vehicle
 
 static const CargoID INVALID_CARGO = UINT8_MAX;
 
+/** Mixed cargo types for definitions with cargo that can vary depending on climate. */
+enum MixedCargoType {
+	MCT_LIVESTOCK_FRUIT, ///< Cargo can be livestock or fruit.
+	MCT_GRAIN_WHEAT_MAIZE, ///< Cargo can be grain, wheat or maize.
+	MCT_VALUABLES_GOLD_DIAMONDS, ///< Cargo can be valuables, gold or diamonds.
+};
+
 /**
  * Special cargo filter criteria.
  * These are used by user interface code only and must not be assigned to any entity. Not all values are valid for every UI filter.

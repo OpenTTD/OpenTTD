@@ -8962,6 +8962,38 @@ GRFFile::~GRFFile()
 	delete[] this->language_map;
 }
 
+/**
+ * Find first cargo label that exists and is active from a list of cargo labels.
+ * @param labels List of cargo labels.
+ * @returns First cargo label in list that exists, or CT_INVALID if none exist.
+ */
+static CargoLabel GetActiveCargoLabel(const std::initializer_list<CargoLabel> &labels)
+{
+	for (const CargoLabel &label : labels) {
+		CargoID cid = GetCargoIDByLabel(label);
+		if (cid != INVALID_CARGO) return label;
+	}
+	return CT_INVALID;
+}
+
+/**
+ * Get active cargo label from either a cargo label or climate-dependent mixed cargo type.
+ * @param label Cargo label or climate-dependent mixed cargo type.
+ * @returns Active cargo label, or CT_INVALID if cargo label is not active.
+ */
+static CargoLabel GetActiveCargoLabel(const std::variant<CargoLabel, MixedCargoType> &label)
+{
+	if (std::holds_alternative<CargoLabel>(label)) return std::get<CargoLabel>(label);
+	if (std::holds_alternative<MixedCargoType>(label)) {
+		switch (std::get<MixedCargoType>(label)) {
+			case MCT_LIVESTOCK_FRUIT: return GetActiveCargoLabel({CT_LIVESTOCK, CT_FRUIT});
+			case MCT_GRAIN_WHEAT_MAIZE: return GetActiveCargoLabel({CT_GRAIN, CT_WHEAT, CT_MAIZE});
+			case MCT_VALUABLES_GOLD_DIAMONDS: return GetActiveCargoLabel({CT_VALUABLES, CT_GOLD, CT_DIAMONDS});
+			default: NOT_REACHED();
+		}
+	}
+	NOT_REACHED();
+}
 
 /**
  * Precalculate refit masks from cargo classes for all vehicles.
@@ -8980,7 +9012,7 @@ static void CalculateRefitMasks()
 
 		/* Apply default cargo translation map if cargo type hasn't been set, either explicitly or by aircraft cargo handling. */
 		if (!IsValidCargoID(e->info.cargo_type)) {
-			e->info.cargo_type = GetCargoIDByLabel(e->info.cargo_label);
+			e->info.cargo_type = GetCargoIDByLabel(GetActiveCargoLabel(e->info.cargo_label));
 		}
 
 		/* If the NewGRF did not set any cargo properties, we apply default values. */
@@ -9017,7 +9049,8 @@ static void CalculateRefitMasks()
 					_gted[engine].cargo_allowed = CC_PASSENGERS | CC_MAIL | CC_ARMOURED | CC_EXPRESS;
 					_gted[engine].cargo_disallowed = CC_LIQUID;
 				} else if (e->type == VEH_SHIP) {
-					switch (ei->cargo_label.base()) {
+					CargoLabel label = GetActiveCargoLabel(ei->cargo_label);
+					switch (label.base()) {
 						case CT_PASSENGERS.base():
 							/* Ferries */
 							_gted[engine].cargo_allowed = CC_PASSENGERS;
@@ -9048,9 +9081,10 @@ static void CalculateRefitMasks()
 					_gted[engine].cargo_disallowed = 0;
 				} else {
 					/* Train wagons and road vehicles are classified by their default cargo type */
+					CargoLabel label = GetActiveCargoLabel(ei->cargo_label);
 					for (const auto &drm : _default_refit_masks) {
 						if (!HasBit(drm.climate, _settings_game.game_creation.landscape)) continue;
-						if (drm.cargo_label != ei->cargo_label) continue;
+						if (drm.cargo_label != label) continue;
 
 						_gted[engine].cargo_allowed = drm.cargo_allowed;
 						_gted[engine].cargo_disallowed = drm.cargo_disallowed;
@@ -9446,17 +9480,17 @@ static void FinaliseIndustriesArray()
 
 		/* Apply default cargo translation map for unset cargo slots */
 		for (uint i = 0; i < lengthof(indsp.produced_cargo); ++i) {
-			if (!IsValidCargoID(indsp.produced_cargo[i])) indsp.produced_cargo[i] = GetCargoIDByLabel(indsp.produced_cargo_label[i]);
+			if (!IsValidCargoID(indsp.produced_cargo[i])) indsp.produced_cargo[i] = GetCargoIDByLabel(GetActiveCargoLabel(indsp.produced_cargo_label[i]));
 		}
 		for (uint i = 0; i < lengthof(indsp.accepts_cargo); ++i) {
-			if (!IsValidCargoID(indsp.accepts_cargo[i])) indsp.accepts_cargo[i] = GetCargoIDByLabel(indsp.accepts_cargo_label[i]);
+			if (!IsValidCargoID(indsp.accepts_cargo[i])) indsp.accepts_cargo[i] = GetCargoIDByLabel(GetActiveCargoLabel(indsp.accepts_cargo_label[i]));
 		}
 	}
 
 	for (auto &indtsp : _industry_tile_specs) {
 		/* Apply default cargo translation map for unset cargo slots */
 		for (uint i = 0; i < lengthof(indtsp.accepts_cargo); ++i) {
-			if (!IsValidCargoID(indtsp.accepts_cargo[i])) indtsp.accepts_cargo[i] = GetCargoIDByLabel(indtsp.accepts_cargo_label[i]);
+			if (!IsValidCargoID(indtsp.accepts_cargo[i])) indtsp.accepts_cargo[i] = GetCargoIDByLabel(GetActiveCargoLabel(indtsp.accepts_cargo_label[i]));
 		}
 	}
 }
