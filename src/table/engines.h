@@ -135,11 +135,11 @@ static const EngineInfo _orig_engine_info[] = {
 	MW(  1827,  20,  20,  50, CT_OIL         , T|A|S  ), //  30 Oil Tanker
 	MW(  1827,  20,  20,  50, CT_LIVESTOCK   , T|A    ), //  31 Livestock Van
 	MW(  1827,  20,  20,  50, CT_GOODS       , T|A|S  ), //  32 Goods Van
-	MW(  1827,  20,  20,  50, CT_GRAIN       , T|A|S  ), //  33 Grain Hopper
+	MW(  1827,  20,  20,  50, MCT_GRAIN_WHEAT_MAIZE, T|A|S  ), //  33 Grain Hopper
 	MW(  1827,  20,  20,  50, CT_WOOD        , T|A|S  ), //  34 Wood Truck
 	MW(  1827,  20,  20,  50, CT_IRON_ORE    , T      ), //  35 Iron Ore Hopper
 	MW(  1827,  20,  20,  50, CT_STEEL       , T      ), //  36 Steel Truck
-	MW(  1827,  20,  20,  50, CT_VALUABLES   , T|A|S  ), //  37 Armoured Van
+	MW(  1827,  20,  20,  50, MCT_VALUABLES_GOLD_DIAMONDS, T|A|S  ), //  37 Armoured Van
 	MW(  1827,  20,  20,  50, CT_FOOD        ,   A|S  ), //  38 Food Van
 	MW(  1827,  20,  20,  50, CT_PAPER       ,   A    ), //  39 Paper Truck
 	MW(  1827,  20,  20,  50, CT_COPPER_ORE  ,     S  ), //  40 Copper Ore Hopper
@@ -165,11 +165,11 @@ static const EngineInfo _orig_engine_info[] = {
 	MW(  1827,  20,  20,  50, CT_OIL         , T|A|S  ), //  60 Oil Tanker
 	MW(  1827,  20,  20,  50, CT_LIVESTOCK   , T|A    ), //  61 Livestock Van
 	MW(  1827,  20,  20,  50, CT_GOODS       , T|A|S  ), //  62 Goods Van
-	MW(  1827,  20,  20,  50, CT_GRAIN       , T|A|S  ), //  63 Grain Hopper
+	MW(  1827,  20,  20,  50, MCT_GRAIN_WHEAT_MAIZE, T|A|S  ), //  63 Grain Hopper
 	MW(  1827,  20,  20,  50, CT_WOOD        , T|A|S  ), //  64 Wood Truck
 	MW(  1827,  20,  20,  50, CT_IRON_ORE    , T      ), //  65 Iron Ore Hopper
 	MW(  1827,  20,  20,  50, CT_STEEL       , T      ), //  66 Steel Truck
-	MW(  1827,  20,  20,  50, CT_VALUABLES   , T|A|S  ), //  67 Armoured Van
+	MW(  1827,  20,  20,  50, MCT_VALUABLES_GOLD_DIAMONDS, T|A|S  ), //  67 Armoured Van
 	MW(  1827,  20,  20,  50, CT_FOOD        ,   A|S  ), //  68 Food Van
 	MW(  1827,  20,  20,  50, CT_PAPER       ,   A    ), //  69 Paper Truck
 	MW(  1827,  20,  20,  50, CT_COPPER_ORE  ,     S  ), //  70 Copper Ore Hopper
@@ -197,11 +197,11 @@ static const EngineInfo _orig_engine_info[] = {
 	MW(  1827,  20,  20,  50, CT_OIL         , T|A|S  ), //  92 Oil Tanker
 	MW(  1827,  20,  20,  50, CT_LIVESTOCK   , T|A    ), //  93 Livestock Van
 	MW(  1827,  20,  20,  50, CT_GOODS       , T|A|S  ), //  94 Goods Van
-	MW(  1827,  20,  20,  50, CT_GRAIN       , T|A|S  ), //  95 Grain Hopper
+	MW(  1827,  20,  20,  50, MCT_GRAIN_WHEAT_MAIZE, T|A|S  ), //  95 Grain Hopper
 	MW(  1827,  20,  20,  50, CT_WOOD        , T|A|S  ), //  96 Wood Truck
 	MW(  1827,  20,  20,  50, CT_IRON_ORE    , T      ), //  97 Iron Ore Hopper
 	MW(  1827,  20,  20,  50, CT_STEEL       , T      ), //  98 Steel Truck
-	MW(  1827,  20,  20,  50, CT_VALUABLES   , T|A|S  ), //  99 Armoured Van
+	MW(  1827,  20,  20,  50, MCT_VALUABLES_GOLD_DIAMONDS, T|A|S  ), //  99 Armoured Van
 	MW(  1827,  20,  20,  50, CT_FOOD        ,   A|S  ), // 100 Food Van
 	MW(  1827,  20,  20,  50, CT_PAPER       ,   A    ), // 101 Paper Truck
 	MW(  1827,  20,  20,  50, CT_COPPER_ORE  ,     S  ), // 102 Copper Ore Hopper
@@ -243,9 +243,9 @@ static const EngineInfo _orig_engine_info[] = {
 	MR(  5479,  20,  15,  55, CT_GOODS       , T|A|S  ), // 138 Balogh Goods Truck
 	MR( 19724,  20,  15,  55, CT_GOODS       , T|A|S  ), // 139 Craighead Goods Truck
 	MR( 31047,  20,  15,  85, CT_GOODS       , T|A|S  ), // 140 Goss Goods Truck
-	MR(  5479,  20,  15,  55, CT_GRAIN       , T|A|S  ), // 141 Hereford Grain Truck
-	MR( 21185,  20,  15,  55, CT_GRAIN       , T|A|S  ), // 142 Thomas Grain Truck
-	MR( 32873,  20,  15,  85, CT_GRAIN       , T|A|S  ), // 143 Goss Grain Truck
+	MR(  5479,  20,  15,  55, MCT_GRAIN_WHEAT_MAIZE, T|A|S  ), // 141 Hereford Grain Truck
+	MR( 21185,  20,  15,  55, MCT_GRAIN_WHEAT_MAIZE, T|A|S  ), // 142 Thomas Grain Truck
+	MR( 32873,  20,  15,  85, MCT_GRAIN_WHEAT_MAIZE, T|A|S  ), // 143 Goss Grain Truck
 	MR(  5479,  20,  15,  55, CT_WOOD        , T|A|S  ), // 144 Witcombe Wood Truck
 	MR( 19724,  20,  15,  55, CT_WOOD        , T|A|S  ), // 145 Foster Wood Truck
 	MR( 35430,  20,  15,  85, CT_WOOD        , T|A|S  ), // 146 Moreland Wood Truck
@@ -255,9 +255,9 @@ static const EngineInfo _orig_engine_info[] = {
 	MR(  5479,  20,  15,  55, CT_STEEL       , T      ), // 150 Balogh Steel Truck
 	MR( 21185,  20,  15,  55, CT_STEEL       , T      ), // 151 Uhl Steel Truck
 	MR( 31777,  20,  15,  85, CT_STEEL       , T      ), // 152 Kelling Steel Truck
-	MR(  5479,  20,  15,  55, CT_VALUABLES   , T|A|S  ), // 153 Balogh Armoured Truck
-	MR( 22281,  20,  15,  55, CT_VALUABLES   , T|A|S  ), // 154 Uhl Armoured Truck
-	MR( 33603,  20,  15,  85, CT_VALUABLES   , T|A|S  ), // 155 Foster Armoured Truck
+	MR(  5479,  20,  15,  55, MCT_VALUABLES_GOLD_DIAMONDS, T|A|S  ), // 153 Balogh Armoured Truck
+	MR( 22281,  20,  15,  55, MCT_VALUABLES_GOLD_DIAMONDS, T|A|S  ), // 154 Uhl Armoured Truck
+	MR( 33603,  20,  15,  85, MCT_VALUABLES_GOLD_DIAMONDS, T|A|S  ), // 155 Foster Armoured Truck
 	MR(  5479,  20,  15,  55, CT_FOOD        ,   A|S  ), // 156 Foster Food Van
 	MR( 18628,  20,  15,  55, CT_FOOD        ,   A|S  ), // 157 Perry Food Van
 	MR( 30681,  20,  15,  85, CT_FOOD        ,   A|S  ), // 158 Chippy Food Van
