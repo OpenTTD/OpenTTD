@@ -1358,6 +1358,21 @@ function Regression::Station()
 	}
 }
 
+function Regression::StationList()
+{
+	print("");
+	print("--StationList--");
+	local road_stations = AIStationList(AIStation.STATION_TRUCK_STOP);
+	for (local st = road_stations.Begin(); !road_stations.IsEnd(); st = road_stations.Next()) {
+		print("  GetName(): " + AIStation.GetName(st));
+		print("  TileList_StationCoverage:");
+		local coverage = AITileList_StationCoverage(st);
+		for (local i = coverage.Begin(); !coverage.IsEnd(); i = coverage.Next()) {
+			print("    " + i);
+		}
+	}
+}
+
 function Regression::Tile()
 {
 	print("");
@@ -1989,6 +2004,7 @@ function Regression::Start()
 	this.Road();
 	this.Sign();
 	this.Station();
+	this.StationList();
 	this.Tile();
 	this.TileList();
 	this.Town();

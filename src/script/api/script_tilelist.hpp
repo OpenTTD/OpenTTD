@@ -104,4 +104,17 @@ public:
 	ScriptTileList_StationType(StationID station_id, ScriptStation::StationType station_type);
 };
 
+/**
+ * Creates a list of tiles in the catchment area of the StationID.
+ * @api ai game
+ * @ingroup ScriptList
+ */
+class ScriptTileList_StationCoverage : public ScriptTileList {
+public:
+	/**
+	 * @param station_id The station to create the ScriptTileList for.
+	 */
+	ScriptTileList_StationCoverage(StationID station_id);
+};
+
 #endif /* SCRIPT_TILELIST_HPP */

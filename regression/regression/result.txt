@@ -7761,6 +7761,153 @@ ERROR: IsEnd() is invalid as Begin() is never called
   GetCargoPlannedFromVia(1000, 1000, 0, 1000): -1
   GetCargoPlannedFromVia(1000, 1000, 1000, 1000): -1
 
+--StationList--
+  GetName(): Little Frutford Valley
+  TileList_StationCoverage:
+    34192
+    34191
+    34190
+    34189
+    34188
+    34187
+    34186
+    33936
+    33935
+    33934
+    33933
+    33932
+    33931
+    33930
+    33680
+    33679
+    33678
+    33677
+    33676
+    33675
+    33674
+    33424
+    33423
+    33422
+    33421
+    33420
+    33419
+    33418
+    33168
+    33167
+    33166
+    33165
+    33164
+    33163
+    33162
+    32912
+    32911
+    32910
+    32909
+    32908
+    32907
+    32906
+    32656
+    32655
+    32654
+    32653
+    32652
+    32651
+    32650
+  GetName(): Little Frutford Woods
+  TileList_StationCoverage:
+    34439
+    34438
+    34437
+    34436
+    34435
+    34434
+    34433
+    34432
+    34187
+    34186
+    34185
+    34184
+    34183
+    34182
+    34181
+    34180
+    34179
+    34178
+    34177
+    34176
+    33931
+    33930
+    33929
+    33928
+    33927
+    33926
+    33925
+    33924
+    33923
+    33922
+    33921
+    33920
+    33675
+    33674
+    33673
+    33672
+    33671
+    33670
+    33669
+    33668
+    33667
+    33666
+    33665
+    33664
+    33419
+    33418
+    33417
+    33416
+    33415
+    33414
+    33413
+    33412
+    33411
+    33410
+    33409
+    33408
+    33163
+    33162
+    33161
+    33160
+    33159
+    33158
+    33157
+    33156
+    33155
+    33154
+    33153
+    33152
+    32907
+    32906
+    32905
+    32904
+    32903
+    32902
+    32901
+    32900
+    32899
+    32898
+    32897
+    32896
+    32651
+    32650
+    32649
+    32648
+    32647
+    32646
+    32645
+    32644
+    32643
+    32642
+    32641
+    32640
+
 --Tile--
   HasTreeOnTile():      false
   IsFarmTile():         true
@@ -9589,9 +9736,9 @@ ERROR: IsEnd() is invalid as Begin() is never called
 --Valuate() with excessive CPU usage--
 Your script made an error: excessive CPU usage in valuator function
 
-*FUNCTION [unknown()] regression/main.nut line [2034]
+*FUNCTION [unknown()] regression/main.nut line [2050]
 *FUNCTION [Valuate()] NATIVE line [-1]
-*FUNCTION [Start()] regression/main.nut line [2035]
+*FUNCTION [Start()] regression/main.nut line [2051]
 
 [id] 0
 [this] TABLE
@@ -9600,7 +9747,7 @@ Your script made an error: excessive CPU usage in valuator function
 [this] INSTANCE
 Your script made an error: excessive CPU usage in valuator function
 
-*FUNCTION [Start()] regression/main.nut line [2035]
+*FUNCTION [Start()] regression/main.nut line [2051]
 
 [Infinite] CLOSURE
 [list] INSTANCE
