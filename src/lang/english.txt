@@ -4613,7 +4613,7 @@ STR_ORDER_GO_TO_NEAREST_DEPOT                                   :Go to nearest d
 STR_ORDER_GO_TO_NEAREST_HANGAR                                  :Go to nearest hangar
 STR_ORDER_CONDITIONAL                                           :Conditional order jump
 STR_ORDER_SHARE                                                 :Share orders
-STR_ORDERS_GO_TO_TOOLTIP                                        :{BLACK}Insert a new order before the highlighted order, or add to end of list. Ctrl+Click on a station for 'full load any cargo', on a waypoint to invert the 'non-stop by default' setting, or on a depot for 'service'. Click on another vehicle to copy its orders or Ctrl+Click to share orders. A depot order disables automatic servicing of the vehicle
+STR_ORDERS_GO_TO_TOOLTIP                                        :{BLACK}Insert a new order before the highlighted order, or add to end of list. Ctrl+Click on a station for 'full load any cargo', on a waypoint to invert the 'non-stop by default' setting, or on a depot for 'unbunch'. Click on another vehicle to copy its orders or Ctrl+Click to share orders. A depot order disables automatic servicing of the vehicle
 
 STR_ORDERS_VEH_WITH_SHARED_ORDERS_LIST_TOOLTIP                  :{BLACK}Show all vehicles that share this schedule
 
