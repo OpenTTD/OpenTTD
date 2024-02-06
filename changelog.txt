@@ -1,4 +1,4 @@
-14.0-beta3 (2023-02-06)
+14.0-beta3 (2024-02-06)
 ------------------------------------------------------------------------
 Add: [Script] ScriptTileList_StationCoverage to get station coverage area (#12015)
 Change: Update OpenTTD TTF fonts to v0.5 (#11994)
@@ -12,7 +12,7 @@ Fix: [Script] Avoid overflow in scripts when infinite money is enabled (#12016)
 Fix: [Script] Don't kill GS misusing GSText (#12009)
 
 
-14.0-beta2 (2023-02-04)
+14.0-beta2 (2024-02-04)
 ------------------------------------------------------------------------
 Change: [NewGRF] Improved support for redefining default cargo types (#11719)
 Fix #11982: Crash when trying to place signals on things other than plain rails (#11977)
@@ -24,7 +24,7 @@ Fix #11802: Made determining water region edge traversability more robust (#1198
 Fix: Second colour vehicle-type default liveries were not being updated (#11971)
 
 
-14.0-beta1 (2023-02-03)
+14.0-beta1 (2024-02-03)
 ------------------------------------------------------------------------
 Feature: Order option to unbunch vehicles at depot (#11945)
 Feature: Infinite money mode (#11902)
