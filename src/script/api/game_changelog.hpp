@@ -87,10 +87,11 @@
  * \li GSStoryPage::IsValidStoryPageButtonColour
  * \li GSStoryPage::IsValidStoryPageButtonFlags
  * \li GSStoryPage::IsValidStoryPageButtonCursor
+ * \li GSTileList_StationCoverage
  *
  * API removals:
  * \li GSError::ERR_PRECONDITION_TOO_MANY_PARAMETERS, that error is never returned anymore.
- * \li AIInfo::CONFIG_RANDOM, no longer used.
+ * \li GSInfo::CONFIG_RANDOM, no longer used.
  *
  * Other changes:
  * \li GSGroupList accepts an optional filter function

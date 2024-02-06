@@ -147,3 +147,13 @@ ScriptTileList_StationType::ScriptTileList_StationType(StationID station_id, Scr
 		this->AddTile(cur_tile);
 	}
 }
+
+ScriptTileList_StationCoverage::ScriptTileList_StationCoverage(StationID station_id)
+{
+	if (!ScriptStation::IsValidStation(station_id)) return;
+
+	BitmapTileIterator it(::Station::Get(station_id)->catchment_tiles);
+	for (TileIndex tile = it; tile != INVALID_TILE; tile = ++it) {
+		this->AddTile(tile);
+	}
+}
