@@ -258,9 +258,10 @@ public:
 
 	/**
 	 * Gets the bank balance. In other words, the amount of money the given company can spent.
+	 * If infinite money is enabled, it returns INT32_MAX.
 	 * @param company The company to get the bank balance of.
 	 * @pre ResolveCompanyID(company) != COMPANY_INVALID.
-	 * @return The actual bank balance.
+	 * @return The actual bank balance or INT32_MAX.
 	 */
 	static Money GetBankBalance(CompanyID company);
 
