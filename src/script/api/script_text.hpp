@@ -136,8 +136,11 @@ private:
 		StringID owner;
 		int idx;
 		Param *param;
+		bool used;
 
-		ParamCheck(StringID owner, int idx, Param *param) : owner(owner), idx(idx), param(param) {}
+		ParamCheck(StringID owner, int idx, Param *param) : owner(owner), idx(idx), param(param), used(false) {}
+
+		void Encode(std::back_insert_iterator<std::string> &output);
 	};
 
 	using ParamList = std::vector<ParamCheck>;
