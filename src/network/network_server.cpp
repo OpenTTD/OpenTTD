@@ -116,10 +116,9 @@ struct PacketWriter : SaveFilter {
 	/**
 	 * Transfer all packets from here to the network's queue while holding
 	 * the lock on our mutex.
-	 * @param socket The network socket to write to.
 	 * @return True iff the last packet of the map has been sent.
 	 */
-	bool TransferToNetworkQueue(ServerNetworkGameSocketHandler *socket)
+	bool TransferToNetworkQueue()
 	{
 		/* Unsafe check for the queue being empty or not. */
 		if (this->packets.empty()) return false;
@@ -128,7 +127,7 @@ struct PacketWriter : SaveFilter {
 
 		while (!this->packets.empty()) {
 			bool last_packet = this->packets.front()->GetPacketType() == PACKET_SERVER_MAP_DONE;
-			socket->SendPacket(std::move(this->packets.front()));
+			this->cs->SendPacket(std::move(this->packets.front()));
 			this->packets.pop_front();
 
 			if (last_packet) return true;
@@ -577,7 +576,7 @@ NetworkRecvStatus ServerNetworkGameSocketHandler::SendMap()
 	}
 
 	if (this->status == STATUS_MAP) {
-		bool last_packet = this->savegame->TransferToNetworkQueue(this);
+		bool last_packet = this->savegame->TransferToNetworkQueue();
 		if (last_packet) {
 			Debug(net, 9, "client[{}] SendMap(): last_packet", this->client_id);
 
