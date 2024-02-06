@@ -194,6 +194,8 @@ static int DepotActionStringIndex(const Order *order)
 		return DA_STOP;
 	} else if (order->GetDepotOrderType() & ODTFB_SERVICE) {
 		return DA_SERVICE;
+	} else if (order->GetDepotActionType() & ODATFB_UNBUNCH) {
+		return DA_UNBUNCH;
 	} else {
 		return DA_ALWAYS_GO;
 	}
