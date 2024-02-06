@@ -178,6 +178,8 @@
 {
 	company = ResolveCompanyID(company);
 	if (company == COMPANY_INVALID) return -1;
+	/* If we return INT64_MAX as usual, overflows may occur in the script. So return a smaller value. */
+	if (_settings_game.difficulty.infinite_money) return INT32_MAX;
 
 	return GetAvailableMoney((::CompanyID)company);
 }
