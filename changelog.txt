@@ -1,3 +1,16 @@
+14.0-beta3 (2023-02-06)
+------------------------------------------------------------------------
+Change: Update OpenTTD TTF fonts to v0.5 (#11994)
+Fix #12012: Crash when opening orders of another company (#12013)
+Fix #12001: Use correct valid cargo check for old-style NewGRF town house 3rd cargo set up (#12006)
+Fix #11997: Adjust economy date by 1920 when loading TTD/TTO savegames (#12007)
+Fix: Focus hotkey in road/tram stop building window (#12008)
+Fix: Signals were incorrectly shifted by 1 pixel when selected (#12005)
+Fix: Missing default vehicles and industry acceptance/production (#12000)
+Fix: [Script] Avoid overflow in scripts when infinite money is enabled (#12016)
+Fix: [Script] Don't kill GS misusing GSText (#12009)
+
+
 14.0-beta2 (2023-02-04)
 ------------------------------------------------------------------------
 Change: [NewGRF] Improved support for redefining default cargo types (#11719)
