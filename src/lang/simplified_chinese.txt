@@ -1308,7 +1308,7 @@ STR_CONFIG_SETTING_CONSTRUCTION_COSTS                           :建设费用: {
 STR_CONFIG_SETTING_CONSTRUCTION_COSTS_HELPTEXT                  :设定建造的成本水平。
 
 STR_CONFIG_SETTING_RECESSIONS                                   :经济衰退: {STRING}
-STR_CONFIG_SETTING_RECESSIONS_HELPTEXT                          :启用后，经济衰退将每隔几年就出现。在衰退期内，所有产出将大幅下降直至衰退结束。
+STR_CONFIG_SETTING_RECESSIONS_HELPTEXT                          :启用时，经济衰退将每隔几经济周期发生一次。经济衰退时所有工业货物产量都将大幅下降，直至衰退结束为止。
 
 STR_CONFIG_SETTING_TRAIN_REVERSING                              :禁止列车在站台调头: {STRING}
 STR_CONFIG_SETTING_TRAIN_REVERSING_HELPTEXT                     :启用后，如果列车有到下一站的捷径，列车将不在非终点站台调头，

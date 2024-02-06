@@ -536,7 +536,7 @@ STR_ABOUT_MENU_ABOUT_OPENTTD                                    :Acerca de 'Open
 STR_ABOUT_MENU_SPRITE_ALIGNER                                   :Alineador de sprites
 STR_ABOUT_MENU_TOGGLE_BOUNDING_BOXES                            :Activar cajas delimitadoras
 STR_ABOUT_MENU_TOGGLE_DIRTY_BLOCKS                              :Activar/Desactivar coloreado de bloques modificados
-STR_ABOUT_MENU_TOGGLE_WIDGET_OUTLINES                           :Activar/desactivar los bordes de los "widgets"
+STR_ABOUT_MENU_TOGGLE_WIDGET_OUTLINES                           :Activa/Desactiva los bordes de los "widgets"
 
 ###length 31
 STR_DAY_NUMBER_1ST                                              :1
@@ -758,9 +758,9 @@ STR_SMALLMAP_TOOLTIP_SHOW_LINK_STATS_ON_MAP                     :{BLACK}Muestra 
 STR_SMALLMAP_TOOLTIP_SHOW_TRANSPORT_ROUTES_ON                   :{BLACK}Muestra las rutas de transporte en el mapa
 STR_SMALLMAP_TOOLTIP_SHOW_VEGETATION_ON_MAP                     :{BLACK}Muestra la vegetación en el mapa
 STR_SMALLMAP_TOOLTIP_SHOW_LAND_OWNERS_ON_MAP                    :{BLACK}Muestra los propietarios de terreno en el mapa
-STR_SMALLMAP_TOOLTIP_INDUSTRY_SELECTION                         :{BLACK}Haz clic en un tipo de industria para mostrarlo u ocultarlo. Ctrl+Clic alterna entre mostrar todos los tipos, con excepción del elegido, o mostrar solo el elegido
-STR_SMALLMAP_TOOLTIP_COMPANY_SELECTION                          :{BLACK}Haz clic en una empresa para mostrar u ocultar sus bienes. Ctrl+Clic alterna entre mostrar todas las empresas, con excepción de la elegida, o mostrar solo la elegida
-STR_SMALLMAP_TOOLTIP_CARGO_SELECTION                            :{BLACK}Haz clic en una carga para mostrar u ocultar sus bienes. Ctrl+Clic alterna entre mostrar todas las cargas, con excepción de la elegida, o mostrar solo la elegida
+STR_SMALLMAP_TOOLTIP_INDUSTRY_SELECTION                         :{BLACK}Clica en un tipo de industria para mostrarlo u ocultarlo. Ctrl+Clic alterna entre mostrar todos los tipos, con excepción del elegido, o mostrar solo el elegido
+STR_SMALLMAP_TOOLTIP_COMPANY_SELECTION                          :{BLACK}Clica en una empresa para mostrar u ocultar sus propiedades. Ctrl+Clic alterna entre mostrar todas las empresas, con excepción de la elegida, o mostrar solo la elegida
+STR_SMALLMAP_TOOLTIP_CARGO_SELECTION                            :{BLACK}Clica en una carga para mostrar u ocultar sus flujos. Ctrl+Clic alterna entre mostrar todas las cargas, con excepción de la elegida, o mostrar solo la elegida
 
 STR_SMALLMAP_LEGENDA_ROADS                                      :{TINY_FONT}{BLACK}Carreteras
 STR_SMALLMAP_LEGENDA_RAILROADS                                  :{TINY_FONT}{BLACK}Ferrocarriles
@@ -1065,11 +1065,11 @@ STR_GAME_OPTIONS_GUI_SCALE_5X                                   :5x
 
 STR_GAME_OPTIONS_PARTICIPATE_SURVEY_FRAME                       :{BLACK}Encuesta automática
 STR_GAME_OPTIONS_PARTICIPATE_SURVEY                             :{BLACK}Participar en la encuesta automática
-STR_GAME_OPTIONS_PARTICIPATE_SURVEY_TOOLTIP                     :{BLACK}Si está activado, OpenTTD enviará una encuesta al finalizar el juego
+STR_GAME_OPTIONS_PARTICIPATE_SURVEY_TOOLTIP                     :{BLACK}Si está activado, OpenTTD enviará una encuesta al salir el juego
 STR_GAME_OPTIONS_PARTICIPATE_SURVEY_LINK                        :{BLACK}Acerca de la encuesta y la privacidad
-STR_GAME_OPTIONS_PARTICIPATE_SURVEY_LINK_TOOLTIP                :{BLACK}Se abrirá un navegador web con más información sobre la encuesta automática
-STR_GAME_OPTIONS_PARTICIPATE_SURVEY_PREVIEW                     :{BLACK}Visualizar el resultado de la encuesta
-STR_GAME_OPTIONS_PARTICIPATE_SURVEY_PREVIEW_TOOLTIP             :{BLACK}Mostrar el resultado de la encuesta del juego actual
+STR_GAME_OPTIONS_PARTICIPATE_SURVEY_LINK_TOOLTIP                :{BLACK}Se abrirá el navegador web con más información sobre la encuesta automática
+STR_GAME_OPTIONS_PARTICIPATE_SURVEY_PREVIEW                     :{BLACK}Vista previa del resultado
+STR_GAME_OPTIONS_PARTICIPATE_SURVEY_PREVIEW_TOOLTIP             :{BLACK}Muestra el resultado de la encuesta para el juego actual
 
 STR_GAME_OPTIONS_GRAPHICS                                       :{BLACK}Gráficos
 
@@ -1452,8 +1452,8 @@ STR_CONFIG_SETTING_PLANE_CRASHES_NONE                           :Ninguno*
 STR_CONFIG_SETTING_PLANE_CRASHES_REDUCED                        :Reducida
 STR_CONFIG_SETTING_PLANE_CRASHES_NORMAL                         :Normal
 
-STR_CONFIG_SETTING_CROSSING_WITH_COMPETITOR                     :Permitir intersecciones con carreteras o ferrocarriles que sean propiedad de otras empresas: {STRING}
-STR_CONFIG_SETTING_CROSSING_WITH_COMPETITOR_HELPTEXT            :Permitir construir intersecciones en carreteras o ferrocarriles que sean propiedad de otras empresas
+STR_CONFIG_SETTING_CROSSING_WITH_COMPETITOR                     :Permitir pasos a nivel con carreteras o ferrocarriles propiedad de otras empresas: {STRING}
+STR_CONFIG_SETTING_CROSSING_WITH_COMPETITOR_HELPTEXT            :Permite construir pasos a nivel en carreteras o ferrocarriles que sean propiedad de otras empresas
 
 STR_CONFIG_SETTING_STOP_ON_TOWN_ROAD                            :Permitir construir paradas sobre carreteras de los municipios: {STRING}
 STR_CONFIG_SETTING_STOP_ON_TOWN_ROAD_HELPTEXT                   :Permite construir estaciones de paso en carreteras que sean propiedad de los municipios
@@ -1467,8 +1467,8 @@ STR_CONFIG_SETTING_INFRASTRUCTURE_MAINTENANCE_HELPTEXT          :Si se activa, l
 STR_CONFIG_SETTING_COMPANY_STARTING_COLOUR                      :Color inicial de la empresa: {STRING}
 STR_CONFIG_SETTING_COMPANY_STARTING_COLOUR_HELPTEXT             :Selecciona el color inicial de la empresa
 
-STR_CONFIG_SETTING_COMPANY_STARTING_COLOUR_SECONDARY            :Color secundario inicial de la empresa: {STRING}
-STR_CONFIG_SETTING_COMPANY_STARTING_COLOUR_SECONDARY_HELPTEXT   :Selecciona un color secundario para la empresa, si usas un NewGRF que lo permita
+STR_CONFIG_SETTING_COMPANY_STARTING_COLOUR_SECONDARY            :Color secundario de la empresa inicial: {STRING}
+STR_CONFIG_SETTING_COMPANY_STARTING_COLOUR_SECONDARY_HELPTEXT   :Selecciona un color secundario para la empresa, si usas un NewGRF que lo permita.
 
 STR_CONFIG_SETTING_NEVER_EXPIRE_AIRPORTS                        :Aeropuertos nunca caducan: {STRING}
 STR_CONFIG_SETTING_NEVER_EXPIRE_AIRPORTS_HELPTEXT               :Permite a todos los aeropuertos estar disponibles permanentemente una vez han sido introducidos
@@ -1491,7 +1491,7 @@ STR_CONFIG_SETTING_WARN_INCOME_LESS_HELPTEXT_PERIOD             :Cuando se activ
 STR_CONFIG_SETTING_NEVER_EXPIRE_VEHICLES                        :Los vehículos nunca caducan: {STRING}
 STR_CONFIG_SETTING_NEVER_EXPIRE_VEHICLES_HELPTEXT               :Cuando se activa, todos los modelos de vehículos permanecen disponibles para siempre una vez han sido introducidos
 
-STR_CONFIG_SETTING_TIMEKEEPING_UNITS                            :Control de horarios: {STRING}
+STR_CONFIG_SETTING_TIMEKEEPING_UNITS                            :Cronometraje: {STRING}
 STR_CONFIG_SETTING_TIMEKEEPING_UNITS_HELPTEXT                   :Selecciona las unidades de gestión temporal del juego. Este ajuste no puede ser cambiado más adelante.{}{}"Basado en calendario" es la experiencia clásica de OpenTTD, donde un año tiene 12 meses y cada mes entre 28 y 31 días.{}{}En "Basado en reloj", el movimiento de los vehículos, la producción de carga y la gestión financiera se basan en incrementos de un minuto, que es similar a lo que tarda un mes de 30 días en el modo "basado en calendario". Estos se agrupan en períodos de 12 minutos, que equivalen a un año en el modo "basado en calendario".{}{}En uno y otro modo siempre hay un calendario clásico que es usado para las fechas de aparición de vehículos, casas y otras infraestructuras.
 ###length 2
 STR_CONFIG_SETTING_TIMEKEEPING_UNITS_CALENDAR                   :Calendario

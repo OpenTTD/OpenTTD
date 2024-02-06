@@ -593,6 +593,8 @@ STR_COLOUR_SECONDARY_SAME_AS_PRIMARY                            :Taki jak podsta
 STR_UNITS_VELOCITY_IMPERIAL                                     :{DECIMAL}{NBSP}mph
 STR_UNITS_VELOCITY_METRIC                                       :{DECIMAL}{NBSP}km/h
 STR_UNITS_VELOCITY_SI                                           :{DECIMAL}{NBSP}m/s
+STR_UNITS_VELOCITY_GAMEUNITS_DAY                                :{DECIMAL}{NBSP}p{P ole ola ól}/dzień
+STR_UNITS_VELOCITY_GAMEUNITS_SEC                                :{DECIMAL}{NBSP}p{P ole ola ól}/s
 STR_UNITS_VELOCITY_KNOTS                                        :{DECIMAL}{NBSP}w.
 
 STR_UNITS_POWER_IMPERIAL                                        :{DECIMAL}{NBSP}hp
@@ -638,7 +640,11 @@ STR_UNITS_DAYS                                                  :{COMMA}{NBSP}d{
 STR_UNITS_SECONDS                                               :{COMMA}{NBSP}sekund{P a y ""}
 STR_UNITS_TICKS                                                 :{COMMA}{NBSP}tyknię{P cie cia ć}
 
+STR_UNITS_MONTHS                                                :{NUM}{NBSP}miesi{P ąc ące ęcy}
+STR_UNITS_MINUTES                                               :{NUM}{NBSP}minut{P a y ""}
 
+STR_UNITS_YEARS                                                 :{NUM}{NBSP}{P rok lata lat}
+STR_UNITS_PERIODS                                               :{NUM}{NBSP}okres{P "" y ów}
 
 # Common window strings
 STR_LIST_FILTER_TITLE                                           :{BLACK}Filtr:
@@ -704,8 +710,10 @@ STR_SORT_BY_PRODUCTION                                          :Produkcja
 STR_SORT_BY_TYPE                                                :Typ
 STR_SORT_BY_TRANSPORTED                                         :Przetransportowano
 STR_SORT_BY_NUMBER                                              :Numer
-STR_SORT_BY_PROFIT_LAST_YEAR                                    :Zysk w ostatnim roku
+STR_SORT_BY_PROFIT_LAST_YEAR                                    :Zysk w poprzednim roku
+STR_SORT_BY_PROFIT_LAST_PERIOD                                  :Zysk w poprzednim okresie
 STR_SORT_BY_PROFIT_THIS_YEAR                                    :Zysk w tym roku
+STR_SORT_BY_PROFIT_THIS_PERIOD                                  :Zysk w tym okresie
 STR_SORT_BY_AGE                                                 :Wiek
 STR_SORT_BY_RELIABILITY                                         :Niezawodność
 STR_SORT_BY_TOTAL_CAPACITY_PER_CARGOTYPE                        :Całkowita ładowność po typie ładunku
@@ -732,10 +740,14 @@ STR_SORT_BY_RANGE                                               :Zasięg
 STR_SORT_BY_POPULATION                                          :Liczba mieszkańców
 STR_SORT_BY_RATING                                              :Ocena
 STR_SORT_BY_NUM_VEHICLES                                        :Ilość pojazdów
-STR_SORT_BY_TOTAL_PROFIT_LAST_YEAR                              :Całkowity zysk w zeszłym roku
+STR_SORT_BY_TOTAL_PROFIT_LAST_YEAR                              :Całkowity zysk w poprzednim roku
+STR_SORT_BY_TOTAL_PROFIT_LAST_PERIOD                            :Całkowity zysk w poprzednim okresie
 STR_SORT_BY_TOTAL_PROFIT_THIS_YEAR                              :Całkowity zysk w obecnym roku
-STR_SORT_BY_AVERAGE_PROFIT_LAST_YEAR                            :Średni zysk w zeszłym roku
-STR_SORT_BY_AVERAGE_PROFIT_THIS_YEAR                            :Średni zysk w obecnym roku
+STR_SORT_BY_TOTAL_PROFIT_THIS_PERIOD                            :Całkowity zysk w tym okresie
+STR_SORT_BY_AVERAGE_PROFIT_LAST_YEAR                            :Średni zysk w poprzednim roku
+STR_SORT_BY_AVERAGE_PROFIT_LAST_PERIOD                          :Średni zysk w poprzednim okresie
+STR_SORT_BY_AVERAGE_PROFIT_THIS_YEAR                            :Średni zysk w tym roku
+STR_SORT_BY_AVERAGE_PROFIT_THIS_PERIOD                          :Średni zysk w tym okresie
 
 # Group by options for vehicle list
 STR_GROUP_BY_NONE                                               :Brak
@@ -979,8 +991,11 @@ STR_GRAPH_CARGO_DELIVERED_CAPTION                               :{WHITE}Dostarcz
 STR_GRAPH_COMPANY_PERFORMANCE_RATINGS_CAPTION                   :{WHITE}Ocena wydajności firmy (maks. ocena=1000)
 STR_GRAPH_COMPANY_VALUES_CAPTION                                :{WHITE}Wykres wartości firmy
 
+STR_GRAPH_LAST_72_MINUTES_TIME_LABEL                            :{TINY_FONT}{BLACK}Ostatnie 72 minuty
 
 STR_GRAPH_CARGO_PAYMENT_RATES_CAPTION                           :{WHITE}Stawki płatności za ładunek
+STR_GRAPH_CARGO_PAYMENT_RATES_DAYS                              :{TINY_FONT}{BLACK}Dni w transporcie
+STR_GRAPH_CARGO_PAYMENT_RATES_SECONDS                           :{TINY_FONT}{BLACK}Sekund w transporcie
 STR_GRAPH_CARGO_PAYMENT_RATES_TITLE                             :{TINY_FONT}{BLACK}Dochód z przewozu 10 jednostek (lub 10,000 litrów) ładunku na odległość 20 pól
 STR_GRAPH_CARGO_ENABLE_ALL                                      :{TINY_FONT}{BLACK}Włącz wszystko
 STR_GRAPH_CARGO_DISABLE_ALL                                     :{TINY_FONT}{BLACK}Wyłącz wszystko
@@ -1023,18 +1038,22 @@ STR_PERFORMANCE_DETAIL_STATIONS                                 :{BLACK}Stacje:
 STR_PERFORMANCE_DETAIL_MIN_PROFIT                               :{BLACK}Min. zysk:
 STR_PERFORMANCE_DETAIL_MIN_INCOME                               :{BLACK}Min. przychód:
 STR_PERFORMANCE_DETAIL_MAX_INCOME                               :{BLACK}Maks. przychód:
-STR_PERFORMANCE_DETAIL_DELIVERED                                :{BLACK}Przewieziono:
+STR_PERFORMANCE_DETAIL_DELIVERED                                :{BLACK}Dostarczono:
 STR_PERFORMANCE_DETAIL_CARGO                                    :{BLACK}Ładunek:
 STR_PERFORMANCE_DETAIL_MONEY                                    :{BLACK}Pieniądze:
 STR_PERFORMANCE_DETAIL_LOAN                                     :{BLACK}Pożyczka:
 STR_PERFORMANCE_DETAIL_TOTAL                                    :{BLACK}Łącznie:
 ###next-name-looks-similar
 
+STR_PERFORMANCE_DETAIL_VEHICLES_TOOLTIP_YEARS                   :{BLACK}Liczba pojazdów, które przyniosły zysk w poprzednim roku. Dotyczy to pojazdów drogowych, pociągów, statków i samolotów
+STR_PERFORMANCE_DETAIL_VEHICLES_TOOLTIP_PERIODS                 :{BLACK}Liczba pojazdów, które przyniosły zysk w poprzednim okresie. Dotyczy to pojazdów drogowych, pociągów, statków i samolotów
 STR_PERFORMANCE_DETAIL_STATIONS_TOOLTIP                         :{BLACK}Liczba ostatnio obsłużonych stacji. Dworce, przystanki, lotniska itp. są liczone osobno, nawet jeśli są połączone w jedną stację
-STR_PERFORMANCE_DETAIL_MIN_INCOME_TOOLTIP                       :{BLACK}Ilość zarobionych pieniędzy w kwartale z najmniejszym zyskiem z ostatnich 12 kwartałów
-STR_PERFORMANCE_DETAIL_MAX_INCOME_TOOLTIP                       :{BLACK}Ilość zarobionych pieniędzy w kwartale z największym zyskiem z ostatnich 12 kwartałów
-STR_PERFORMANCE_DETAIL_DELIVERED_TOOLTIP                        :{BLACK}Ilość ładunku przewiezionego w poprzednich 4 kwartałach
-STR_PERFORMANCE_DETAIL_CARGO_TOOLTIP                            :{BLACK}Ilość różnych typów ładunku przewiezionych w ostatnim kwartale
+STR_PERFORMANCE_DETAIL_MIN_PROFIT_TOOLTIP_YEARS                 :{BLACK}Zysk pojazdu o najniższym przychodzie (pod uwagę brane są tylko pojazdy starsze niż dwa lata)
+STR_PERFORMANCE_DETAIL_MIN_PROFIT_TOOLTIP_PERIODS               :{BLACK}Zysk pojazdu o najniższym przychodzie (pod uwagę brane są tylko pojazdy starsze niż dwa okresy)
+STR_PERFORMANCE_DETAIL_MIN_INCOME_TOOLTIP                       :{BLACK}Kwota pieniędzy zarobionych w kwartale z najniższym zyskiem spośród poprzednich 12 kwartałów
+STR_PERFORMANCE_DETAIL_MAX_INCOME_TOOLTIP                       :{BLACK}Kwota pieniędzy zarobionych w kwartale z najwyższym zyskiem spośród poprzednich 12 kwartałów
+STR_PERFORMANCE_DETAIL_DELIVERED_TOOLTIP                        :{BLACK}Ilość ładunku dostarczonego w poprzednich 4 kwartałach
+STR_PERFORMANCE_DETAIL_CARGO_TOOLTIP                            :{BLACK}Ilość różnych typów ładunku dostarczonych w poprzednim kwartale
 STR_PERFORMANCE_DETAIL_MONEY_TOOLTIP                            :{BLACK}Ilość dostępnych środków pieniężnych
 STR_PERFORMANCE_DETAIL_LOAN_TOOLTIP                             :{BLACK}Wielkość pożyczki wziętej przez firmę
 STR_PERFORMANCE_DETAIL_TOTAL_TOOLTIP                            :{BLACK}Suma przyznanych punktów
@@ -1264,6 +1283,8 @@ STR_NEWS_VEHICLE_IS_GETTING_VERY_OLD                            :{WHITE}{VEHICLE
 STR_NEWS_VEHICLE_IS_GETTING_VERY_OLD_AND                        :{WHITE}{VEHICLE} bardzo się starzeje i potrzebuje natychmiastowej wymiany
 STR_NEWS_TRAIN_IS_STUCK                                         :{WHITE}{VEHICLE} nie potrafi znaleźć trasy, aby kontynuować
 STR_NEWS_VEHICLE_IS_LOST                                        :{WHITE}{VEHICLE} się zgubił
+STR_NEWS_VEHICLE_UNPROFITABLE_YEAR                              :{WHITE}Dochód {VEHICLE} w poprzednim roku wyniósł {CURRENCY_LONG}
+STR_NEWS_VEHICLE_UNPROFITABLE_PERIOD                            :{WHITE}Dochód {VEHICLE} w poprzednim okresie wyniósł {CURRENCY_LONG}
 STR_NEWS_AIRCRAFT_DEST_TOO_FAR                                  :{WHITE}{VEHICLE} nie może dotrzeć do kolejnego punktu docelowego, ponieważ punkt ten leży poza jego zasięgiem
 
 STR_NEWS_ORDER_REFIT_FAILED                                     :{WHITE}Zaplanowane przeładowanie zatrzymane {VEHICLE}
@@ -1627,6 +1648,7 @@ STR_CONFIG_SETTING_HORIZONTAL_POS_RIGHT                         :z prawej strony
 STR_CONFIG_SETTING_SECONDS_VALUE                                :{COMMA}{NBSP}sekund{P 0 ę y ""}
 
 STR_CONFIG_SETTING_INFINITE_MONEY                               :Nieskończona ilość pieniędzy: {STRING}
+STR_CONFIG_SETTING_INFINITE_MONEY_HELPTEXT                      :Pozwól na nieograniczone wydatki i wyłącz bankructwa firm
 
 STR_CONFIG_SETTING_MAXIMUM_INITIAL_LOAN                         :Maksymalna wysokość początkowej pożyczki: {STRING}
 STR_CONFIG_SETTING_MAXIMUM_INITIAL_LOAN_HELPTEXT                :Maksymalna wysokość pożyczki, jaką firma może zaciągnąć (bez uwzględnienia inflacji)
@@ -1842,10 +1864,16 @@ STR_CONFIG_SETTING_WARN_INCOME_LESS_HELPTEXT                    :Kiedy włączon
 STR_CONFIG_SETTING_NEVER_EXPIRE_VEHICLES                        :Pojazdy nigdy nie są wycofywane: {STRING}
 STR_CONFIG_SETTING_NEVER_EXPIRE_VEHICLES_HELPTEXT               :Kiedy włączone, wszystkie modele pojazdów pozostają dostępne na zawsze od daty ich wprowadzenia
 
+STR_CONFIG_SETTING_TIMEKEEPING_UNITS                            :Miara czasu: {STRING}
+STR_CONFIG_SETTING_TIMEKEEPING_UNITS_HELPTEXT                   :Wybierz jednostki pomiaru czasu w grze. Nie można tego zmienić później.{}{}Kalendarz jest klasycznym trybem OpenTTD, z rokiem składającym się z 12 miesięcy, a każdy miesiąc ma 28-31 dni.{}{}W trybie opartym na zegarze ruch pojazdów, produkcja ładunków i finanse są natomiast oparte na jednominutowych przyrostach, czyli mniej więcej tak długo, jak trwa 30-dniowy miesiąc w trybie opartym na kalendarzu. Są one pogrupowane w 12-minutowe okresy, co odpowiada rokowi w trybie opartym na kalendarzu.{}{}W obu trybach zawsze funkcjonuje klasyczny kalendarz, który jest używany do dat wprowadzenia pojazdów, domów i innej infrastruktury.
 ###length 2
+STR_CONFIG_SETTING_TIMEKEEPING_UNITS_CALENDAR                   :Kalendarz
+STR_CONFIG_SETTING_TIMEKEEPING_UNITS_WALLCLOCK                  :Zegar
 
 
+STR_CONFIG_SETTING_MINUTES_PER_YEAR_VALUE                       :{NUM}
 ###setting-zero-is-special
+STR_CONFIG_SETTING_MINUTES_PER_YEAR_FROZEN                      :0 (zamrożenie czasu kalendarza)
 
 STR_CONFIG_SETTING_CARGO_SCALE_VALUE                            :{NUM}%
 
@@ -2103,6 +2131,7 @@ STR_CONFIG_SETTING_SOUND_NEWS_HELPTEXT                          :Odtwarzaj dźwi
 
 ###length 2
 STR_CONFIG_SETTING_SOUND_NEW_YEAR                               :Koniec roku: {STRING}
+STR_CONFIG_SETTING_SOUND_NEW_PERIOD                             :Koniec okresu: {STRING}
 
 ###length 2
 STR_CONFIG_SETTING_SOUND_NEW_YEAR_HELPTEXT                      :Odtwarzaj dźwięk na koniec roku podsumowując roczną sytuację przedsiębiorstwa w porównaniu do roku poprzedniego
@@ -2266,6 +2295,7 @@ STR_CONFIG_SETTING_SEMAPHORE_BUILD_BEFORE_DATE_HELPTEXT         :Ustaw rok, w kt
 STR_CONFIG_SETTING_CYCLE_SIGNAL_TYPES                           :Przełączaj typy sygnalizatorów: {STRING}
 STR_CONFIG_SETTING_CYCLE_SIGNAL_TYPES_HELPTEXT                  :Wybierz, między jakimi typami sygnalizatorów przełączać po naciśnięciu Ctrl+klik przy budowaniu sygnalizatorów
 ###length 2
+STR_CONFIG_SETTING_CYCLE_SIGNAL_GROUP                           :Tylko bieżąca grupa
 STR_CONFIG_SETTING_CYCLE_SIGNAL_ALL                             :Wszystkie widoczne
 
 STR_CONFIG_SETTING_SIGNAL_GUI_MODE                              :Pokazuj typy sygnalizatorów: {STRING}
@@ -2398,6 +2428,8 @@ STR_CONFIG_SETTING_LOCALISATION_UNITS_VELOCITY_HELPTEXT         :Kiedy prędkoś
 STR_CONFIG_SETTING_LOCALISATION_UNITS_VELOCITY_IMPERIAL         :Imperialne (mph)
 STR_CONFIG_SETTING_LOCALISATION_UNITS_VELOCITY_METRIC           :Metryczne (km/h)
 STR_CONFIG_SETTING_LOCALISATION_UNITS_VELOCITY_SI               :SI (m/s)
+STR_CONFIG_SETTING_LOCALISATION_UNITS_VELOCITY_GAMEUNITS_DAYS   :Jednostki gry (pola/dzień)
+STR_CONFIG_SETTING_LOCALISATION_UNITS_VELOCITY_GAMEUNITS_SECS   :Jednostki gry (pola/s)
 STR_CONFIG_SETTING_LOCALISATION_UNITS_VELOCITY_KNOTS            :Węzły
 
 STR_CONFIG_SETTING_LOCALISATION_UNITS_POWER                     :Jednostka mocy pojazdów: {STRING}
@@ -3083,6 +3115,8 @@ STR_LINKGRAPH_LEGEND_SATURATED                                  :{TINY_FONT}{BLA
 STR_LINKGRAPH_LEGEND_OVERLOADED                                 :{TINY_FONT}{BLACK}przeładowany
 
 # Linkgraph tooltip
+STR_LINKGRAPH_STATS_TOOLTIP_MONTH                               :{BLACK}{CARGO_LONG} do przetransportowania w ciągu miesiąca z {STATION} do {STATION} ({COMMA}% przepustowości){STRING}
+STR_LINKGRAPH_STATS_TOOLTIP_MINUTE                              :{BLACK}{CARGO_LONG} do przetransportowania w ciągu minuty z {STATION} do {STATION} ({COMMA}% przepustowości){STRING}
 STR_LINKGRAPH_STATS_TOOLTIP_RETURN_EXTENSION                    :{}{CARGO_LONG} do przetransportowania z powrotem ({COMMA}% przepustowości)
 STR_LINKGRAPH_STATS_TOOLTIP_TIME_EXTENSION                      :{}Średni czas podróży: {UNITS_DAYS_OR_SECONDS}
 
@@ -3940,7 +3974,8 @@ STR_TOWN_POPULATION                                             :{BLACK}Populacj
 STR_TOWN_VIEW_TOWN_CAPTION                                      :{WHITE}{TOWN}
 STR_TOWN_VIEW_CITY_CAPTION                                      :{WHITE}{TOWN} (Metropolia)
 STR_TOWN_VIEW_POPULATION_HOUSES                                 :{BLACK}Populacja: {ORANGE}{COMMA}{BLACK}  Domów: {ORANGE}{COMMA}
-STR_TOWN_VIEW_CARGO_LAST_MONTH_MAX                              :{BLACK}{CARGO_LIST} w ostatnim miesiącu: {ORANGE}{COMMA}{BLACK}  najwięcej: {ORANGE}{COMMA}
+STR_TOWN_VIEW_CARGO_LAST_MONTH_MAX                              :{BLACK}{CARGO_LIST} w poprzednim miesiącu: {ORANGE}{COMMA}{BLACK} maks.: {ORANGE}{COMMA}
+STR_TOWN_VIEW_CARGO_LAST_MINUTE_MAX                             :{BLACK}{CARGO_LIST} w poprzedniej minucie: {ORANGE}{COMMA}{BLACK} maks.: {ORANGE}{COMMA}
 STR_TOWN_VIEW_CARGO_FOR_TOWNGROWTH                              :{BLACK}Ładunek potrzebny do rozwoju miasta:
 STR_TOWN_VIEW_CARGO_FOR_TOWNGROWTH_REQUIRED_GENERAL             :{RED}Wymagana {ORANGE}{STRING}
 STR_TOWN_VIEW_CARGO_FOR_TOWNGROWTH_REQUIRED_WINTER              :{ORANGE}{STRING}{BLACK} wymagane zimą
@@ -4263,7 +4298,8 @@ STR_INDUSTRY_DIRECTORY_FILTER_NONE                              :Żadne
 
 # Industry view
 STR_INDUSTRY_VIEW_CAPTION                                       :{WHITE}{INDUSTRY}
-STR_INDUSTRY_VIEW_PRODUCTION_LAST_MONTH_TITLE                   :{BLACK}Wyprodukowano w ostatnim miesiącu:
+STR_INDUSTRY_VIEW_PRODUCTION_LAST_MONTH_TITLE                   :{BLACK}Wyprodukowano w poprzednim miesiącu:
+STR_INDUSTRY_VIEW_PRODUCTION_LAST_MINUTE_TITLE                  :{BLACK}Wyprodukowano w poprzedniej minucie:
 STR_INDUSTRY_VIEW_TRANSPORTED                                   :{YELLOW}{CARGO_LONG}{STRING}{BLACK} ({COMMA}% przetransportowano)
 STR_INDUSTRY_VIEW_LOCATION_TOOLTIP                              :{BLACK}Wyśrodkuj widok główny na lokalizacji przedsiębiorstwa. Ctrl+klik otwiera nowy podgląd na jego lokalizację
 STR_INDUSTRY_VIEW_PRODUCTION_LEVEL                              :{BLACK}Poziom produkcji: {YELLOW}{COMMA}%
@@ -4304,7 +4340,7 @@ STR_VEHICLE_LIST_MANAGE_LIST_TOOLTIP                            :{BLACK}Wyślij 
 STR_VEHICLE_LIST_REPLACE_VEHICLES                               :Zastąp pojazdy
 STR_VEHICLE_LIST_SEND_FOR_SERVICING                             :Wyślij do serwisu
 STR_VEHICLE_LIST_CREATE_GROUP                                   :Stwórz grupę
-STR_VEHICLE_LIST_PROFIT_THIS_YEAR_LAST_YEAR                     :{TINY_FONT}{BLACK}Zysk w tym roku: {CURRENCY_LONG} (ostatni rok: {CURRENCY_LONG})
+STR_VEHICLE_LIST_PROFIT_THIS_YEAR_LAST_YEAR                     :{TINY_FONT}{BLACK}Zysk w tym roku: {CURRENCY_LONG} (poprzedni rok: {CURRENCY_LONG})
 STR_VEHICLE_LIST_CARGO                                          :[{CARGO_LIST}]
 STR_VEHICLE_LIST_NAME_AND_CARGO                                 :{STRING} {STRING}
 
@@ -4350,7 +4386,9 @@ STR_GROUP_REMOVE_ALL_VEHICLES                                   :Usuń wszystkie
 STR_GROUP_RENAME_CAPTION                                        :{BLACK}Zmień nazwę grupy
 
 STR_GROUP_PROFIT_THIS_YEAR                                      :Zysk w tym roku:
-STR_GROUP_PROFIT_LAST_YEAR                                      :Zysk w zeszłym roku:
+STR_GROUP_PROFIT_THIS_PERIOD                                    :Zysk w tym okresie:
+STR_GROUP_PROFIT_LAST_YEAR                                      :Zysk w poprzednim roku:
+STR_GROUP_PROFIT_LAST_PERIOD                                    :Zysk w poprzednim okresie:
 STR_GROUP_OCCUPANCY                                             :Aktualne wykorzystanie:
 STR_GROUP_OCCUPANCY_VALUE                                       :{NUM}%
 
@@ -4377,6 +4415,8 @@ STR_PURCHASE_INFO_SPEED_POWER                                   :{BLACK}Prędko�
 STR_PURCHASE_INFO_SPEED                                         :{BLACK}Prędkość: {GOLD}{VELOCITY}
 STR_PURCHASE_INFO_SPEED_OCEAN                                   :{BLACK}Prędkość na oceanie: {GOLD}{VELOCITY}
 STR_PURCHASE_INFO_SPEED_CANAL                                   :{BLACK}Prędkość na kanale/rzece: {GOLD}{VELOCITY}
+STR_PURCHASE_INFO_RUNNINGCOST_YEAR                              :{BLACK}Kosz Utrzymania: {GOLD}{CURRENCY_LONG}/rok
+STR_PURCHASE_INFO_RUNNINGCOST_PERIOD                            :{BLACK}Kosz Utrzymania: {GOLD}{CURRENCY_LONG}/okres
 STR_PURCHASE_INFO_CAPACITY                                      :{BLACK}Ładowność: {GOLD}{CARGO_LONG} {STRING}
 STR_PURCHASE_INFO_REFITTABLE                                    :(przebudowywalny)
 STR_PURCHASE_INFO_DESIGNED_LIFE                                 :{BLACK}Zaprojektowany: {GOLD}{NUM}{BLACK} Żywotność: {GOLD}{COMMA} lat
@@ -4575,7 +4615,11 @@ STR_ENGINE_PREVIEW_AIRCRAFT.b                                   :samolot
 STR_ENGINE_PREVIEW_SHIP                                         :{G=m}statek
 STR_ENGINE_PREVIEW_SHIP.b                                       :statek
 
+STR_ENGINE_PREVIEW_TEXT3                                        :{BLACK}{STRING}{}{5:STRING}{}{STRING}
+STR_ENGINE_PREVIEW_TEXT4                                        :{BLACK}{STRING}{}{STRING}{}{STRING}{}{STRING}
+STR_ENGINE_PREVIEW_RUNCOST_YEAR                                 :Kosz Utrzymania: {CURRENCY_LONG}/rok
 STR_ENGINE_PREVIEW_CAPACITY                                     :Ładowność: {CARGO_LONG}
+STR_ENGINE_PREVIEW_CAPACITY_2                                   :Ładowność: {CARGO_LONG}, {CARGO_LONG}
 
 # Autoreplace window
 STR_REPLACE_VEHICLES_WHITE                                      :{WHITE}Zastąp {STRING} - {STRING}
@@ -4728,8 +4772,8 @@ STR_VEHICLE_INFO_MAX_SPEED_TYPE_RANGE                           :{BLACK}Max. pr�
 STR_VEHICLE_INFO_WEIGHT_POWER_MAX_SPEED                         :{BLACK}Masa: {LTBLUE}{WEIGHT_SHORT} {BLACK}Moc: {LTBLUE}{POWER}{BLACK} Prędkość maksymalna: {LTBLUE}{VELOCITY}
 STR_VEHICLE_INFO_WEIGHT_POWER_MAX_SPEED_MAX_TE                  :{BLACK}Masa: {LTBLUE}{WEIGHT_SHORT} {BLACK}Moc: {LTBLUE}{POWER}{BLACK} Prędkość maksymalna: {LTBLUE}{VELOCITY} {BLACK}Maksymalna siła pociągowa: {LTBLUE}{FORCE}
 
-STR_VEHICLE_INFO_PROFIT_THIS_YEAR_LAST_YEAR                     :{BLACK}Zysk w tym roku: {LTBLUE}{CURRENCY_LONG} (ostatni rok: {CURRENCY_LONG})
-STR_VEHICLE_INFO_PROFIT_THIS_YEAR_LAST_YEAR_MIN_PERFORMANCE     :{BLACK}Zysk w tym roku: {LTBLUE}{CURRENCY_LONG} (ostatni rok: {CURRENCY_LONG}) {BLACK}Min. wydajność: {LTBLUE}{POWER_TO_WEIGHT}
+STR_VEHICLE_INFO_PROFIT_THIS_YEAR_LAST_YEAR                     :{BLACK}Zysk w tym roku: {LTBLUE}{CURRENCY_LONG} (poprzedni rok: {CURRENCY_LONG})
+STR_VEHICLE_INFO_PROFIT_THIS_YEAR_LAST_YEAR_MIN_PERFORMANCE     :{BLACK}Zysk w tym roku: {LTBLUE}{CURRENCY_LONG} (poprzedni rok: {CURRENCY_LONG}) {BLACK}Min. wydajność: {LTBLUE}{POWER_TO_WEIGHT}
 STR_VEHICLE_INFO_RELIABILITY_BREAKDOWNS                         :{BLACK}Niezawodność: {LTBLUE}{COMMA}%  {BLACK}Awarie od ostatniego serwisowania: {LTBLUE}{COMMA}
 
 STR_VEHICLE_INFO_BUILT_VALUE                                    :{LTBLUE}{ENGINE} {BLACK}Zakupiony: {LTBLUE}{NUM}{BLACK} Wartość: {LTBLUE}{CURRENCY_LONG}
@@ -4850,6 +4894,10 @@ STR_ORDER_DROP_HALT_DEPOT                                       :Zatrzymaj
 
 # Depot action tooltips, one per vehicle type
 ###length VEHICLE_TYPES
+STR_ORDER_TRAIN_DEPOT_ACTION_TOOLTIP                            :{BLACK}Wybierz akcję do wykonania w tych warsztatach
+STR_ORDER_ROAD_DEPOT_ACTION_TOOLTIP                             :{BLACK}Wybierz akcję do wykonania w tej zajezdni
+STR_ORDER_SHIP_DEPOT_ACTION_TOOLTIP                             :{BLACK}Wybierz akcję do wykonania w tej stoczni
+STR_ORDER_HANGAR_ACTION_TOOLTIP                                 :{BLACK}Wybierz akcję do wykonania w tym hangarze
 ###next-name-looks-similar
 
 STR_ORDER_CONDITIONAL_VARIABLE_TOOLTIP                          :{BLACK}Dane pojazdu wykorzystane w warunku
@@ -6093,6 +6141,7 @@ STR_COMPANY_SOMEONE.n                                           :kimś
 STR_COMPANY_SOMEONE.m                                           :kimś
 STR_COMPANY_SOMEONE.w                                           :ktoś
 
+STR_SAVEGAME_DURATION_REALTIME                                  :{NUM}h {NUM}min
 STR_SAVEGAME_NAME_DEFAULT                                       :{COMPANY}, {STRING}
 STR_SAVEGAME_NAME_SPECTATOR                                     :Obserwator, {1:STRING}
 
@@ -6126,6 +6175,10 @@ STR_TOWN_NAME                                                   :{TOWN}
 STR_VEHICLE_NAME                                                :{VEHICLE}
 STR_WAYPOINT_NAME                                               :{WAYPOINT}
 
+STR_CURRENCY_SHORT_KILO                                         :{NBSP}k
+STR_CURRENCY_SHORT_MEGA                                         :{NBSP}M
+STR_CURRENCY_SHORT_GIGA                                         :{NBSP}G
+STR_CURRENCY_SHORT_TERA                                         :{NBSP}T
 
 STR_JUST_CARGO                                                  :{CARGO_LONG}
 STR_JUST_RIGHT_ARROW                                            :{RIGHT_ARROW}

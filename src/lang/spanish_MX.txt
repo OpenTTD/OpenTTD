@@ -239,6 +239,7 @@ STR_UNITS_HEIGHT_SI                                             :{DECIMAL}{NBSP}
 
 # Time units used in string control characters
 
+STR_UNITS_MONTHS                                                :{NUM}{NBSP}mes{P "" es}
 
 
 # Common window strings
@@ -493,6 +494,7 @@ STR_NEWS_MENU_DELETE_ALL_MESSAGES                               :Eliminar todos 
 
 # About menu
 STR_ABOUT_MENU_LAND_BLOCK_INFO                                  :Información sobre área de terreno
+STR_ABOUT_MENU_HELP                                             :Ayuda y manuales
 STR_ABOUT_MENU_TOGGLE_CONSOLE                                   :Activar consola
 STR_ABOUT_MENU_AI_DEBUG                                         :Depuración de scripts de IA o juego
 STR_ABOUT_MENU_SCREENSHOT                                       :Captura de pantalla
@@ -973,6 +975,8 @@ STR_GAME_OPTIONS_GUI_SCALE_AUTO_TOOLTIP                         :{BLACK}Detectar
 STR_GAME_OPTIONS_GUI_SCALE_BEVELS                               :{BLACK}Ajustar biseles
 STR_GAME_OPTIONS_GUI_SCALE_BEVELS_TOOLTIP                       :{BLACK}Ajustar el tamaño de los biseles respecto a la interfaz
 
+STR_GAME_OPTIONS_GUI_FONT_SPRITE                                :{BLACK}Usar la fuente sprite tradicional
+STR_GAME_OPTIONS_GUI_FONT_SPRITE_TOOLTIP                        :{BLACK}Marca esta casilla si prefieres usar la fuente de letra tradicional.
 
 STR_GAME_OPTIONS_GUI_SCALE_1X                                   :1x
 STR_GAME_OPTIONS_GUI_SCALE_2X                                   :2x
@@ -4015,6 +4019,7 @@ STR_ENGINE_PREVIEW_TRAM_VEHICLE                                 :tranvía
 STR_ENGINE_PREVIEW_AIRCRAFT                                     :{G=f}aeronave
 STR_ENGINE_PREVIEW_SHIP                                         :{G=m}barco
 
+STR_ENGINE_PREVIEW_SPEED_POWER                                  :Velocidad: {VELOCITY} Potencia: {POWER}
 
 # Autoreplace window
 STR_REPLACE_VEHICLES_WHITE                                      :{WHITE}Reemplazar {STRING} - {STRING}
@@ -4286,6 +4291,7 @@ STR_ORDER_DROP_HALT_DEPOT                                       :Detenerse
 
 # Depot action tooltips, one per vehicle type
 ###length VEHICLE_TYPES
+STR_ORDER_TRAIN_DEPOT_ACTION_TOOLTIP                            :Seleccione una acción que quiera realizar en este depósito.
 ###next-name-looks-similar
 
 STR_ORDER_CONDITIONAL_VARIABLE_TOOLTIP                          :{BLACK}Datos del vehículo para recorridos condicionales
@@ -4999,6 +5005,7 @@ STR_ERROR_AIRCRAFT_NOT_ENOUGH_RANGE                             :{WHITE}... la a
 # Extra messages which go on the third line of errors, explaining why orders failed
 STR_ERROR_NO_BUS_STATION                                        :{WHITE}No hay una estación de autobus
 STR_ERROR_NO_STOP_COMPATIBLE_TRAM_TYPE                          :{WHITE}No hay paradas con un tipo de tramo compatible
+STR_ERROR_AIRPORT_NO_HELICOPTERS                                :{WHITE}El helicóptero no puede aterrizar en este aeropuerto
 
 # Timetable related errors
 STR_ERROR_CAN_T_TIMETABLE_VEHICLE                               :{WHITE}No se pueden asignar itinerarios al vehículo...

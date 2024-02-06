@@ -267,6 +267,11 @@ STR_COLOUR_RANDOM                                               :Náhodná
 
 ###length 17
 STR_COLOUR_SECONDARY_DARK_BLUE                                  :Tmavomodrá
+STR_COLOUR_SECONDARY_SECONDARY_PINK                             :Růžová
+STR_COLOUR_SECONDARY_LIGHT_BLUE                                 :Světle modrá
+STR_COLOUR_SECONDARY_GREEN                                      :Zelená
+STR_COLOUR_SECONDARY_PURPLE                                     :Purpurová
+STR_COLOUR_SECONDARY_ORANGE                                     :Oranžová
 STR_COLOUR_SECONDARY_BROWN                                      :Hnědá
 STR_COLOUR_SECONDARY_GREY                                       :Šedá
 STR_COLOUR_SECONDARY_WHITE                                      :Bílá
@@ -276,6 +281,7 @@ STR_COLOUR_SECONDARY_WHITE                                      :Bílá
 STR_UNITS_VELOCITY_IMPERIAL                                     :{DECIMAL}{NBSP}m{P íle íle il}/h
 STR_UNITS_VELOCITY_METRIC                                       :{DECIMAL}{NBSP}km/h
 STR_UNITS_VELOCITY_SI                                           :{DECIMAL}{NBSP}m/s
+STR_UNITS_VELOCITY_KNOTS                                        :{DECIMAL}{NBSP}uz{P el ly lů}
 
 STR_UNITS_POWER_IMPERIAL                                        :{DECIMAL}{NBSP}hp
 STR_UNITS_POWER_METRIC                                          :{DECIMAL}{NBSP}hp
@@ -317,7 +323,9 @@ STR_UNITS_HEIGHT_SI                                             :{DECIMAL}{NBSP}
 
 # Time units used in string control characters
 
+STR_UNITS_MINUTES                                               :{NUM}{NBSP}minut{P a y ""}
 
+STR_UNITS_YEARS                                                 :{NUM}{NBSP}{P rok roky let}
 
 # Common window strings
 STR_LIST_FILTER_TITLE                                           :{BLACK}Filtrovat řetězec:
@@ -412,7 +420,9 @@ STR_SORT_BY_POPULATION                                          :Podle populace
 STR_SORT_BY_RATING                                              :Hodnocení
 STR_SORT_BY_NUM_VEHICLES                                        :Počet vozidel
 STR_SORT_BY_TOTAL_PROFIT_LAST_YEAR                              :Letošní celkový zisk
+STR_SORT_BY_TOTAL_PROFIT_LAST_PERIOD                            :Celkový zisk v minulém období
 STR_SORT_BY_TOTAL_PROFIT_THIS_YEAR                              :Celkový letošní zisk
+STR_SORT_BY_TOTAL_PROFIT_THIS_PERIOD                            :Celkový zisk v tomto období
 STR_SORT_BY_AVERAGE_PROFIT_LAST_YEAR                            :Loňský průměrný zisk
 STR_SORT_BY_AVERAGE_PROFIT_THIS_YEAR                            :Průměrný letošní zisk
 
@@ -772,6 +782,7 @@ STR_PLAYLIST_TOOLTIP_CLICK_TO_ADD_TRACK                         :{BLACK}Skladba 
 STR_PLAYLIST_TOOLTIP_CLICK_TO_REMOVE_TRACK                      :{BLACK}Hudební stopu odstraníš ze současného programu (pouze u vlastního) kliknutím na ni
 
 # Highscore window
+STR_HIGHSCORE_TOP_COMPANIES                                     :{BIG_FONT}{BLACK}Nejlepší společnosti
 STR_HIGHSCORE_POSITION                                          :{BIG_FONT}{BLACK}{COMMA}.
 STR_HIGHSCORE_PERFORMANCE_TITLE_BUSINESSMAN                     :Obchodník
 STR_HIGHSCORE_PERFORMANCE_TITLE_ENTREPRENEUR                    :Manažer
@@ -864,6 +875,7 @@ STR_STATUSBAR_AUTOSAVE                                          :{RED}Automatick
 STR_STATUSBAR_SAVING_GAME                                       :{RED}*  *  HRA SE UKLÁDÁ  *  *
 
 STR_STATUSBAR_SPECTATOR                                         :{WHITE}(spectator)
+STR_STATUSBAR_INFINITE_MONEY                                    :{WHITE}(neomezené peníze)
 
 # News message history
 STR_MESSAGE_HISTORY                                             :{WHITE}Historie zpráv
@@ -986,6 +998,8 @@ STR_GAME_OPTIONS_VOLUME                                         :Hlasitost
 STR_GAME_OPTIONS_MUSIC_VOLUME                                   :Hudba
 
 STR_GAME_OPTIONS_VOLUME_0                                       :0%
+STR_GAME_OPTIONS_VOLUME_25                                      :25 %
+STR_GAME_OPTIONS_VOLUME_50                                      :50 %
 STR_GAME_OPTIONS_VOLUME_75                                      :75%
 STR_GAME_OPTIONS_VOLUME_100                                     :100%
 
@@ -1082,6 +1096,8 @@ STR_GAME_OPTIONS_GUI_SCALE_3X                                   :3x
 STR_GAME_OPTIONS_GUI_SCALE_4X                                   :4x
 STR_GAME_OPTIONS_GUI_SCALE_5X                                   :5x
 
+STR_GAME_OPTIONS_PARTICIPATE_SURVEY                             :{BLACK}Účastnit se automatického průzkumu
+STR_GAME_OPTIONS_PARTICIPATE_SURVEY_LINK                        :{BLACK}O anketě a ochraně soukromí
 STR_GAME_OPTIONS_PARTICIPATE_SURVEY_PREVIEW                     :{BLACK}Náhled výsledků průzkumu
 STR_GAME_OPTIONS_PARTICIPATE_SURVEY_PREVIEW_TOOLTIP             :{BLACK}Zobrazovat výsledek průzkumu z aktuálně běžící hry
 
@@ -1105,6 +1121,7 @@ STR_GAME_OPTIONS_BASE_MUSIC_TOOLTIP                             :{BLACK}Vyberte 
 STR_GAME_OPTIONS_BASE_MUSIC_DESCRIPTION_TOOLTIP                 :{BLACK}Další informace o základním hudebním setu
 
 
+STR_GAME_OPTIONS_SOCIAL_PLUGIN_STATE                            :{BLACK}Stav zásuvného modulu:
 
 
 
@@ -1216,6 +1233,7 @@ STR_CONFIG_SETTING_EXPAND_ALL                                   :{BLACK}Rozbalit
 STR_CONFIG_SETTING_COLLAPSE_ALL                                 :{BLACK}Sbalit vše
 STR_CONFIG_SETTING_RESET_ALL                                    :{BLACK}Vymazat všechny hodnoty
 STR_CONFIG_SETTING_NO_EXPLANATION_AVAILABLE_HELPTEXT            :(žádné vysvětlení není k dispozici)
+STR_CONFIG_SETTING_VALUE                                        :{PUSH_COLOUR}{ORANGE}{STRING}{POP_COLOUR}
 STR_CONFIG_SETTING_DEFAULT_VALUE                                :{LTBLUE}Výchozí hodnota: {ORANGE}{STRING}
 STR_CONFIG_SETTING_TYPE                                         :{LTBLUE}Typ nastavení: {ORANGE}{STRING}
 STR_CONFIG_SETTING_TYPE_CLIENT                                  :Nastavení klienta (není uchováno v uložených hrách; ovlivní všechny hry)
@@ -1397,6 +1415,7 @@ STR_CONFIG_SETTING_SHOWFINANCES                                 :Ukazovat finan�
 
 ###length 2
 STR_CONFIG_SETTING_SHOWFINANCES_HELPTEXT                        :Na konci každého roku zobrazit okno s finančním přehledem pro snadnou kontrolu hospodaření společnosti.
+STR_CONFIG_SETTING_SHOWFINANCES_HELPTEXT_PERIOD                 :Pokud je zapnuto, na konci každého období se zobrazí okno s finančním přehledem pro snadnou kontrolu hospodaření společnosti.
 
 STR_CONFIG_SETTING_NONSTOP_BY_DEFAULT                           :Vydávat nové příkazy jako 'bez zastavení': {STRING}
 STR_CONFIG_SETTING_NONSTOP_BY_DEFAULT_HELPTEXT                  :Normálně vozidlo zastavuje v každé stanici, kterou projíždí. Zapnutím této možnosti budou všechny nově vydané příkazy "Jet do" vydávány jako "bez zastavení" a vozidlo tak každou stanicí po cestě do cíle pouze projede bez odbavení. U jednotlivých příkazů nicméně lze ručně nastavit odlišné chování.
@@ -1447,6 +1466,7 @@ STR_CONFIG_SETTING_PLANE_CRASHES_NONE                           :Žádná*
 STR_CONFIG_SETTING_PLANE_CRASHES_REDUCED                        :Redukovaný
 STR_CONFIG_SETTING_PLANE_CRASHES_NORMAL                         :Obvyklý
 
+STR_CONFIG_SETTING_CROSSING_WITH_COMPETITOR_HELPTEXT            :Povolit výstavbu železničních přejezdů na silnicích nebo železničních tratích vlastněných jinými společnostmi
 
 STR_CONFIG_SETTING_STOP_ON_TOWN_ROAD                            :Stavba průjezdných zastávek na obecních silnicích: {STRING}
 STR_CONFIG_SETTING_STOP_ON_TOWN_ROAD_HELPTEXT                   :Povoluje stavbu průjezdných stanic na městem vlastněných silnicích
@@ -1483,6 +1503,7 @@ STR_CONFIG_SETTING_NEVER_EXPIRE_VEHICLES_HELPTEXT               :Pokud je zapnut
 
 ###length 2
 
+STR_CONFIG_SETTING_MINUTES_PER_YEAR                             :Minut v roce: {STRING}
 
 ###setting-zero-is-special
 
@@ -1696,6 +1717,7 @@ STR_CONFIG_SETTING_LOADING_INDICATORS                           :Používat ukaz
 STR_CONFIG_SETTING_LOADING_INDICATORS_HELPTEXT                  :Vyber jestli budou zobrazovány ukazatele naložení nad nakládajícími a vykládajícími vozidly.
 
 ###length 3
+STR_CONFIG_SETTING_TIMETABLE_MODE_SECONDS                       :Sekundy
 
 STR_CONFIG_SETTING_TIMETABLE_SHOW_ARRIVAL_DEPARTURE             :Ukazovat v jízdním řádu příjezdy a odjezdy: {STRING}
 STR_CONFIG_SETTING_TIMETABLE_SHOW_ARRIVAL_DEPARTURE_HELPTEXT    :Zobrazit předpokládané časy příjezdu a odjezdu v jízdních řádech.
@@ -1803,6 +1825,8 @@ STR_CONFIG_SETTING_SERVINT_DISABLED                             :Vypnuto
 STR_CONFIG_SETTING_NOSERVICE                                    :Vypnout servisy, když jsou vypnuty poruchy: {STRING}
 STR_CONFIG_SETTING_NOSERVICE_HELPTEXT                           :Pokud je zapnuto a zároveň jsou vypnuty poruchy, vozidla nebudou vůbec jezdit do servisu, protože se nemohou nikdy porouchat
 
+STR_CONFIG_SETTING_STATION_LENGTH_LOADING_PENALTY               :Pomalejší nakládání u vlaků delších než stanice: {STRING}
+STR_CONFIG_SETTING_STATION_LENGTH_LOADING_PENALTY_HELPTEXT      :Pokud je zapnuto, u vlaků delší než stanice je nakládání pomalejší než u vlaků, které se do stanice vejdou. Nastavení neovlivňuje hledání cesty.
 
 STR_CONFIG_SETTING_WAGONSPEEDLIMITS                             :Zapnout omezení rychlosti vagonů: {STRING}
 STR_CONFIG_SETTING_WAGONSPEEDLIMITS_HELPTEXT                    :Pokud zapnuto, použije rychlostní omezení vagónů při stanovení maximální rychlosti vlaku
@@ -2023,6 +2047,7 @@ STR_CONFIG_SETTING_LOCALISATION_UNITS_VELOCITY_HELPTEXT         :Kdykoliv se ryc
 STR_CONFIG_SETTING_LOCALISATION_UNITS_VELOCITY_IMPERIAL         :Imperiální (mph)
 STR_CONFIG_SETTING_LOCALISATION_UNITS_VELOCITY_METRIC           :Metrické (km/h)
 STR_CONFIG_SETTING_LOCALISATION_UNITS_VELOCITY_SI               :SI (m/s)
+STR_CONFIG_SETTING_LOCALISATION_UNITS_VELOCITY_KNOTS            :uzly
 
 STR_CONFIG_SETTING_LOCALISATION_UNITS_POWER                     :Jednotky výkonu vozidla: {STRING}
 STR_CONFIG_SETTING_LOCALISATION_UNITS_POWER_HELPTEXT            :Kdykoliv se výkon vozidla zobrazí v uživatelském rozhraní, bude ve zvolených jednotkách
@@ -2072,6 +2097,7 @@ STR_CONFIG_SETTING_ACCOUNTING                                   :Účetnictví
 STR_CONFIG_SETTING_VEHICLES                                     :Dopravní prostředky
 STR_CONFIG_SETTING_VEHICLES_PHYSICS                             :Fyzika
 STR_CONFIG_SETTING_VEHICLES_ROUTING                             :Směrování
+STR_CONFIG_SETTING_VEHICLES_ORDERS                              :Příkazy
 STR_CONFIG_SETTING_LIMITATIONS                                  :Omezení
 STR_CONFIG_SETTING_ACCIDENTS                                    :Katastrofy / Nehody
 STR_CONFIG_SETTING_GENWORLD                                     :Generování krajiny
@@ -2080,6 +2106,7 @@ STR_CONFIG_SETTING_ENVIRONMENT_AUTHORITIES                      :Městská sprá
 STR_CONFIG_SETTING_ENVIRONMENT_TOWNS                            :Města
 STR_CONFIG_SETTING_ENVIRONMENT_INDUSTRIES                       :Průmysl
 STR_CONFIG_SETTING_ENVIRONMENT_CARGODIST                        :Distribuce nákladu
+STR_CONFIG_SETTING_ENVIRONMENT_TREES                            :Stromy
 STR_CONFIG_SETTING_AI                                           :Konkurenti
 STR_CONFIG_SETTING_AI_NPC                                       :Umělá inteligence
 STR_CONFIG_SETTING_NETWORK                                      :Síť
@@ -2203,6 +2230,7 @@ STR_LIVERY_TRAIN_TOOLTIP                                        :{BLACK}Zobrazit
 STR_LIVERY_ROAD_VEHICLE_TOOLTIP                                 :{BLACK}Zobrazit barevná schémata pro silniční vozidla
 STR_LIVERY_SHIP_TOOLTIP                                         :{BLACK}Zobrazit barevná schémata pro lodě
 STR_LIVERY_AIRCRAFT_TOOLTIP                                     :{BLACK}Zobrazit barevná schémata pro letadla
+STR_LIVERY_SHIP_GROUP_TOOLTIP                                   :{BLACK}Zobrazit barvy skupin lodí
 STR_LIVERY_PRIMARY_TOOLTIP                                      :{BLACK}Vybrat primární barvu označeného schématu. Ctrl+kliknutí nastaví tuto barvu každému schématu
 STR_LIVERY_SECONDARY_TOOLTIP                                    :{BLACK}Vybrat sekundární barvu označeného schématu. Ctrl+Kliknutí nastaví tuto barvu každému schématu
 STR_LIVERY_PANEL_TOOLTIP                                        :{BLACK}Vyber, které barevné schéma chceš změnit (více označíš s Ctrl). Schéma změníš kliknutím na tlačítko
@@ -3820,6 +3848,7 @@ STR_COMPANY_INFRASTRUCTURE_VIEW_CANALS                          :{WHITE}Průplav
 STR_COMPANY_INFRASTRUCTURE_VIEW_STATION_SECT                    :{GOLD}Stanice:
 STR_COMPANY_INFRASTRUCTURE_VIEW_STATIONS                        :{WHITE}Staniční oblasti
 STR_COMPANY_INFRASTRUCTURE_VIEW_AIRPORTS                        :{WHITE}Letiště
+STR_COMPANY_INFRASTRUCTURE_VIEW_TOTAL_PERIOD                    :{WHITE}{CURRENCY_LONG}/období
 
 # Industry directory
 STR_INDUSTRY_DIRECTORY_CAPTION                                  :{WHITE}Průmysl
@@ -4145,6 +4174,9 @@ STR_ENGINE_PREVIEW_TRAM_VEHICLE                                 :tramvaj
 STR_ENGINE_PREVIEW_AIRCRAFT                                     :{G=n}letadlo
 STR_ENGINE_PREVIEW_SHIP                                         :{G=f}loď
 
+STR_ENGINE_PREVIEW_SPEED_POWER                                  :Rychlost: {VELOCITY}  Výkon: {POWER}
+STR_ENGINE_PREVIEW_TYPE_RANGE                                   :Typ letadla: {STRING}   Dosah: {COMMA} políč{P ko ka ek}
+STR_ENGINE_PREVIEW_RUNCOST_YEAR                                 :Provozní náklady: {CURRENCY_LONG}/rok
 
 # Autoreplace window
 STR_REPLACE_VEHICLES_WHITE                                      :{WHITE}Vyměňování {STRING} - {STRING}
@@ -4309,6 +4341,7 @@ STR_VEHICLE_INFO_CAPACITY_CAPACITY                              :{BLACK}Kapacita
 
 STR_VEHICLE_INFO_FEEDER_CARGO_VALUE                             :{BLACK}Podíl za převoz: {LTBLUE}{CURRENCY_LONG}
 
+STR_VEHICLE_DETAILS_INCREASE_SERVICING_INTERVAL_TOOLTIP_MINUTES :{BLACK}Prodloužit interval údržby o 5 minut. Ctrl+kliknutí prodlouží interval údržby o 1 minutu.
 
 STR_SERVICE_INTERVAL_DROPDOWN_TOOLTIP                           :{BLACK}Změnit typ servisního intervalu
 STR_VEHICLE_DETAILS_DEFAULT                                     :Defaultní
@@ -4416,6 +4449,7 @@ STR_ORDER_DROP_HALT_DEPOT                                       :Zastavit
 
 # Depot action tooltips, one per vehicle type
 ###length VEHICLE_TYPES
+STR_ORDER_ROAD_DEPOT_ACTION_TOOLTIP                             :{BLACK}Vyber příkaz k provedení v této garáži
 ###next-name-looks-similar
 
 STR_ORDER_CONDITIONAL_VARIABLE_TOOLTIP                          :{BLACK}Vlastnost vozidla, podle které přeskakovat
@@ -4562,6 +4596,8 @@ STR_TIMETABLE_STATUS_ON_TIME                                    :{BLACK}Vozidlo 
 STR_TIMETABLE_STATUS_LATE                                       :{BLACK}Vozidlo má {STRING} zpoždění
 STR_TIMETABLE_STATUS_EARLY                                      :{BLACK}Vozidlo jede {STRING} napřed
 STR_TIMETABLE_STATUS_NOT_STARTED                                :{BLACK}Tento jízdní řád ještě nezačal
+STR_TIMETABLE_STATUS_START_AT_DATE                              :{BLACK}Tento jízdní řád začne {STRING}
+STR_TIMETABLE_STATUS_START_IN_SECONDS                           :{BLACK}Tento jízdní řád začne za {COMMA} sekund{P u y ""}
 
 
 
@@ -5716,6 +5752,7 @@ STR_UNKNOWN_STATION                                             :neznámá stani
 STR_DEFAULT_SIGN_NAME                                           :Nápis
 STR_COMPANY_SOMEONE                                             :někdo
 
+STR_SAVEGAME_DURATION_REALTIME                                  :{NUM}h {NUM}m
 STR_SAVEGAME_NAME_DEFAULT                                       :{COMPANY}, {STRING}
 STR_SAVEGAME_NAME_SPECTATOR                                     :Pozorovatel, {1:STRING}
 
