@@ -273,16 +273,19 @@ static CommandCost RemoveShipDepot(TileIndex tile, DoCommandFlag flags)
 		if (ret.Failed()) return ret;
 	}
 
+	bool do_clear = (flags & DC_FORCE_CLEAR_TILE) != 0;
+
 	if (flags & DC_EXEC) {
 		delete Depot::GetByTile(tile);
 
 		Company *c = Company::GetIfValid(GetTileOwner(tile));
 		if (c != nullptr) {
 			c->infrastructure.water -= 2 * LOCK_DEPOT_TILE_FACTOR;
+			if (do_clear && GetWaterClass(tile) == WATER_CLASS_CANAL) c->infrastructure.water--;
 			DirtyCompanyInfrastructureWindows(c->index);
 		}
 
-		MakeWaterKeepingClass(tile,  GetTileOwner(tile));
+		if (!do_clear) MakeWaterKeepingClass(tile,  GetTileOwner(tile));
 		MakeWaterKeepingClass(tile2, GetTileOwner(tile2));
 	}
 
