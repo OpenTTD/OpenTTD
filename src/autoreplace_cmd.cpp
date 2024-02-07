@@ -315,9 +315,10 @@ static CommandCost GetNewEngineType(const Vehicle *v, const Company *c, bool alw
  * @param old_veh A single (articulated/multiheaded) vehicle that shall be replaced.
  * @param new_vehicle Returns the newly build and refitted vehicle
  * @param part_of_chain The vehicle is part of a train
+ * @param flags The calling command flags.
  * @return cost or error
  */
-static CommandCost BuildReplacementVehicle(Vehicle *old_veh, Vehicle **new_vehicle, bool part_of_chain)
+static CommandCost BuildReplacementVehicle(Vehicle *old_veh, Vehicle **new_vehicle, bool part_of_chain, DoCommandFlag flags)
 {
 	*new_vehicle = nullptr;
 
@@ -331,7 +332,7 @@ static CommandCost BuildReplacementVehicle(Vehicle *old_veh, Vehicle **new_vehic
 	/* Does it need to be refitted */
 	CargoID refit_cargo = GetNewCargoTypeForReplace(old_veh, e, part_of_chain);
 	if (!IsValidCargoID(refit_cargo)) {
-		if (!IsLocalCompany()) return CommandCost();
+		if (!IsLocalCompany() || (flags & DC_EXEC) == 0) return CommandCost();
 
 		VehicleID old_veh_id = (old_veh->type == VEH_TRAIN) ? Train::From(old_veh)->First()->index : old_veh->index;
 		SetDParam(0, old_veh_id);
@@ -456,7 +457,7 @@ static CommandCost ReplaceFreeUnit(Vehicle **single_unit, DoCommandFlag flags, b
 
 	/* Build and refit replacement vehicle */
 	Vehicle *new_v = nullptr;
-	cost.AddCost(BuildReplacementVehicle(old_v, &new_v, false));
+	cost.AddCost(BuildReplacementVehicle(old_v, &new_v, false, flags));
 
 	/* Was a new vehicle constructed? */
 	if (cost.Succeeded() && new_v != nullptr) {
@@ -532,7 +533,7 @@ static CommandCost ReplaceChain(Vehicle **chain, DoCommandFlag flags, bool wagon
 		for (Train *w = Train::From(old_head); w != nullptr; w = w->GetNextUnit()) {
 			ReplaceChainItem &replacement = replacements.emplace_back(w, nullptr, 0);
 
-			CommandCost ret = BuildReplacementVehicle(replacement.old_veh, &replacement.new_veh, true);
+			CommandCost ret = BuildReplacementVehicle(replacement.old_veh, &replacement.new_veh, true, flags);
 			cost.AddCost(ret);
 			if (cost.Failed()) break;
 
@@ -689,7 +690,7 @@ static CommandCost ReplaceChain(Vehicle **chain, DoCommandFlag flags, bool wagon
 	} else {
 		/* Build and refit replacement vehicle */
 		Vehicle *new_head = nullptr;
-		cost.AddCost(BuildReplacementVehicle(old_head, &new_head, true));
+		cost.AddCost(BuildReplacementVehicle(old_head, &new_head, true, flags));
 
 		/* Was a new vehicle constructed? */
 		if (cost.Succeeded() && new_head != nullptr) {
