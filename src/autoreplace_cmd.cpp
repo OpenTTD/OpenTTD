@@ -333,7 +333,8 @@ static CommandCost BuildReplacementVehicle(Vehicle *old_veh, Vehicle **new_vehic
 	if (!IsValidCargoID(refit_cargo)) {
 		if (!IsLocalCompany()) return CommandCost();
 
-		SetDParam(0, old_veh->index);
+		VehicleID old_veh_id = (old_veh->type == VEH_TRAIN) ? Train::From(old_veh)->First()->index : old_veh->index;
+		SetDParam(0, old_veh_id);
 
 		int order_id = GetIncompatibleRefitOrderIdForAutoreplace(old_veh, e);
 		if (order_id != -1) {
@@ -346,7 +347,7 @@ static CommandCost BuildReplacementVehicle(Vehicle *old_veh, Vehicle **new_vehic
 			SetDParam(2, CargoSpec::Get(old_veh->cargo_type)->name);
 		}
 
-		AddVehicleAdviceNewsItem(STR_NEWS_VEHICLE_AUTORENEW_FAILED, old_veh->index);
+		AddVehicleAdviceNewsItem(STR_NEWS_VEHICLE_AUTORENEW_FAILED, old_veh_id);
 		return CommandCost();
 	}
 
