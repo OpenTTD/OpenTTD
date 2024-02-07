@@ -161,7 +161,6 @@ STR_ABBREV_TOFFEE                                               :CP
 STR_ABBREV_BATTERIES                                            :BT
 STR_ABBREV_PLASTIC                                              :PL
 STR_ABBREV_FIZZY_DRINKS                                         :LM
-STR_ABBREV_NONE                                                 :NAV
 STR_ABBREV_ALL                                                  :VISI
 
 # 'Mode' of transport for cargoes
@@ -3755,8 +3754,6 @@ STR_STATION_LIST_STATION                                        :{YELLOW}{STATIO
 STR_STATION_LIST_WAYPOINT                                       :{YELLOW}{WAYPOINT}
 STR_STATION_LIST_NONE                                           :{YELLOW}- Nav -
 STR_STATION_LIST_SELECT_ALL_FACILITIES                          :{BLACK}Izvēlēties visu aprīkojumu
-STR_STATION_LIST_SELECT_ALL_TYPES                               :{BLACK}Izvēlēties visus kravas veidus (ieskaitot tos kas negaida)
-STR_STATION_LIST_NO_WAITING_CARGO                               :{BLACK}Neviena veida krava negaida
 
 # Station view window
 STR_STATION_VIEW_CAPTION                                        :{WHITE}{STATION} {STATION_FEATURES}

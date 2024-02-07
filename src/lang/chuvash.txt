@@ -128,7 +128,6 @@ STR_ABBREV_TOFFEE                                               :КР
 STR_ABBREV_BATTERIES                                            :БТ
 STR_ABBREV_PLASTIC                                              :ПЛ
 STR_ABBREV_FIZZY_DRINKS                                         :ГШ
-STR_ABBREV_NONE                                                 :ҪУК
 STR_ABBREV_ALL                                                  :ПӖРМАЙ
 
 # 'Mode' of transport for cargoes

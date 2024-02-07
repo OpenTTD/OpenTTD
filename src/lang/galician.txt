@@ -160,7 +160,6 @@ STR_ABBREV_TOFFEE                                               :TO
 STR_ABBREV_BATTERIES                                            :PI
 STR_ABBREV_PLASTIC                                              :PL
 STR_ABBREV_FIZZY_DRINKS                                         :BE
-STR_ABBREV_NONE                                                 :NON
 STR_ABBREV_ALL                                                  :TODO
 
 # 'Mode' of transport for cargoes
@@ -649,6 +648,8 @@ STR_PERFORMANCE_DETAIL_TOTAL                                    :{BLACK}Total:
 ###next-name-looks-similar
 
 STR_PERFORMANCE_DETAIL_STATIONS_TOOLTIP                         :{BLACK}Número de estacións atendidas recentemente. As estacións de ferrocarril, paradas de bus, aeroportos, etc. cóntanse por separado aínda que pertenzan á mesma estación
+STR_PERFORMANCE_DETAIL_MIN_PROFIT_TOOLTIP_YEARS                 :{BLACK}Os beneficios do vehículo cos menores ingresos (só se consideran os vehículos de máis de dous anos de antigüidade)
+STR_PERFORMANCE_DETAIL_MIN_PROFIT_TOOLTIP_PERIODS               :{BLACK}Os beneficios do vehículo cos menores ingresos (só se consideran os vehículos de máis de dous períodos de antigüidade)
 STR_PERFORMANCE_DETAIL_MIN_INCOME_TOOLTIP                       :{BLACK}Cartos gañados no trimestre co beneficio máis baixo dos últimos 12 trimestres
 STR_PERFORMANCE_DETAIL_MAX_INCOME_TOOLTIP                       :{BLACK}Cartos gañados no trimestre co beneficio máis alto dos últimos 12 trimestres
 STR_PERFORMANCE_DETAIL_DELIVERED_TOOLTIP                        :{BLACK}Unidades de carga entregadas nos últimos catro trimestres
@@ -897,6 +898,8 @@ STR_NEWS_OFFER_OF_SUBSIDY_EXPIRED                               :{BIG_FONT}{BLAC
 STR_NEWS_SUBSIDY_WITHDRAWN_SERVICE                              :{BIG_FONT}{BLACK}Subvención reitrada:{}{}O servizo de transporte de {STRING} dende {STRING} ata {STRING} xa non ten subvención.
 ###length 4
 
+STR_NEWS_ROAD_REBUILDING_MONTHS                                 :{BIG_FONT}{BLACK}Caos no tráfico en {TOWN}!{}{}O Programa de reconstrución de estradas financiado por {STRING} trae 6 meses de miseria os condutores!
+STR_NEWS_ROAD_REBUILDING_MINUTES                                :{BIG_FONT}{BLACK}Caos no tráfico en {TOWN}!{}{}O Programa de reconstrución de estradas financiado por {STRING} trae 6 minutos de miseria os condutores!
 STR_NEWS_EXCLUSIVE_RIGHTS_TITLE                                 :{BIG_FONT}{BLACK}Monopolio de transportes!
 
 # Extra view window
@@ -1370,7 +1373,8 @@ STR_CONFIG_SETTING_BRIBE_HELPTEXT                               :Permite ás com
 
 STR_CONFIG_SETTING_ALLOW_EXCLUSIVE                              :Permiti-la compra de dereitos de transporte exclusivos: {STRING}
 ###length 2
-STR_CONFIG_SETTING_ALLOW_EXCLUSIVE_HELPTEXT                     :Se unha compañía compar os dereitos de transporte exclusivos nunha cidade, as estacións dos opoñentes (pasaxeiros e mercadorías) non recibirán ningunha carga durante un ano enteiro
+STR_CONFIG_SETTING_ALLOW_EXCLUSIVE_HELPTEXT                     :Se unha compañía compra os dereitos de transporte exclusivos nunha cidade, as estacións dos opoñentes (pasaxeiros e mercadorías) non recibirán ningunha carga durante doce meses
+STR_CONFIG_SETTING_ALLOW_EXCLUSIVE_HELPTEXT_MINUTES             :Se unha compañía compra os dereitos de transporte exclusivos nunha cidade, as estacións dos opoñentes (pasaxeiros e mercadorías) non recibirán ningunha carga durante doce minutos
 
 STR_CONFIG_SETTING_ALLOW_FUND_BUILDINGS                         :Permitir a financiación de edicifios: {STRING}
 STR_CONFIG_SETTING_ALLOW_FUND_BUILDINGS_HELPTEXT                :Permite ás compañías dar cartos ás cidades para finiacia-la construción de novos edificios
@@ -1433,11 +1437,20 @@ STR_CONFIG_SETTING_WARN_INCOME_LESS_HELPTEXT                    :Cando se activa
 STR_CONFIG_SETTING_NEVER_EXPIRE_VEHICLES                        :Os vehículos nunca caducan: {STRING}
 STR_CONFIG_SETTING_NEVER_EXPIRE_VEHICLES_HELPTEXT               :Cando se activa, tódolos modelos de vehículos seguen a estar dispoñíbeis para sempre dende a súa aparición
 
+STR_CONFIG_SETTING_TIMEKEEPING_UNITS                            :Cronometraxe: {STRING}
+STR_CONFIG_SETTING_TIMEKEEPING_UNITS_HELPTEXT                   :Selecciona as unidades de cronometeraxe do xogo. Isto non se pode mudar despois.{}{}A experiencia clásica de OpenTTD é basada en calendario, cun ano que consite de 12 meses e cada mes ten 28-31 días.{}{}No tempo baseado no reloxo, o movemento dos vehículos, producción de mercadorías e as finanzas baseanse en minutos, sendo o que dura aproximadamente un mes de 30 días no modo de Calendario. Estes agrúpanse en períodos de 12 minutos, equivalente o ano no modo de Calendario.{}{}En ambos modos hai sempre un calendario clásico, que se utiliza para a data de introdución de vehículos, casas e outras infraestruturas.
 ###length 2
+STR_CONFIG_SETTING_TIMEKEEPING_UNITS_CALENDAR                   :Calendario
+STR_CONFIG_SETTING_TIMEKEEPING_UNITS_WALLCLOCK                  :Reloxo
 
+STR_CONFIG_SETTING_MINUTES_PER_YEAR                             :Minutos por ano: {STRING}
 
 ###setting-zero-is-special
 
+STR_CONFIG_SETTING_TOWN_CARGO_SCALE                             :Escala da produción de mercadorías das vilas: {STRING}
+STR_CONFIG_SETTING_TOWN_CARGO_SCALE_HELPTEXT                    :Escala a produción de mercadorías das vilas nesta porcentaxe.
+STR_CONFIG_SETTING_INDUSTRY_CARGO_SCALE                         :Escala da produción industrial de mercadorías: {STRING}
+STR_CONFIG_SETTING_INDUSTRY_CARGO_SCALE_HELPTEXT                :Escala a produción de mercadorías das industrias nesta porcentaxe.
 
 STR_CONFIG_SETTING_AUTORENEW_VEHICLE                            :Autorenova-los vehículos cando vaian vellos: {STRING}
 STR_CONFIG_SETTING_AUTORENEW_VEHICLE_HELPTEXT                   :Cando se activa, un vehículo que se achega ao fin da súa vida útil é reemprazado automáticamente se se cumplen as condicións de renovación
@@ -1982,6 +1995,8 @@ STR_CONFIG_SETTING_LOCALISATION_UNITS_VELOCITY_HELPTEXT         :Cando unha velo
 STR_CONFIG_SETTING_LOCALISATION_UNITS_VELOCITY_IMPERIAL         :Imperial (mph)
 STR_CONFIG_SETTING_LOCALISATION_UNITS_VELOCITY_METRIC           :Métrico (km/h)
 STR_CONFIG_SETTING_LOCALISATION_UNITS_VELOCITY_SI               :SI (m/s)
+STR_CONFIG_SETTING_LOCALISATION_UNITS_VELOCITY_GAMEUNITS_DAYS   :Unidades de xogo (cadros/día)
+STR_CONFIG_SETTING_LOCALISATION_UNITS_VELOCITY_GAMEUNITS_SECS   :Unidades de xogo (cadros/seg)
 STR_CONFIG_SETTING_LOCALISATION_UNITS_VELOCITY_KNOTS            :Nudos
 
 STR_CONFIG_SETTING_LOCALISATION_UNITS_POWER                     :Unidades de potencia dos vehículos: {STRING}
@@ -3193,6 +3208,7 @@ STR_MAPGEN_TOWN_NAME_LABEL                                      :{BLACK}Nomes da
 STR_MAPGEN_TOWN_NAME_DROPDOWN_TOOLTIP                           :{BLACK}Selecciona o estilo dos nomes das cidades
 STR_MAPGEN_DATE                                                 :{BLACK}Data:
 STR_MAPGEN_NUMBER_OF_INDUSTRIES                                 :{BLACK}Nº de industrias:
+STR_MAPGEN_NUMBER_OF_INDUSTRIES_TOOLTIP                         :{BLACK}Selecciona a densidade das industrias, ou un número personalizado
 STR_MAPGEN_HEIGHTMAP_HEIGHT                                     :{BLACK}Maior pico:
 STR_MAPGEN_HEIGHTMAP_HEIGHT_UP                                  :{BLACK}Aumentar a altitude máxima do pico máis alto do mapa nunha unidade.
 STR_MAPGEN_HEIGHTMAP_HEIGHT_DOWN                                :{BLACK}Disminuir a altitude máxima do pico máis alto do mapa nunha unidade.
@@ -3206,6 +3222,7 @@ STR_MAPGEN_DESERT_COVERAGE_DOWN                                 :{BLACK}Disminu�
 STR_MAPGEN_DESERT_COVERAGE_TEXT                                 :{BLACK}{NUM}%
 STR_MAPGEN_TERRAIN_TYPE                                         :{BLACK}Tipo de terreo:
 STR_MAPGEN_SEA_LEVEL                                            :{BLACK}Nivel do mar:
+STR_MAPGEN_SEA_LEVEL_TOOLTIP                                    :{BLACK}Seleccionar o nivel do mar
 STR_MAPGEN_QUANTITY_OF_RIVERS                                   :{BLACK}Ríos:
 STR_MAPGEN_SMOOTHNESS                                           :{BLACK}Suavidade:
 STR_MAPGEN_VARIETY                                              :{BLACK}Variedade:
@@ -3270,6 +3287,7 @@ STR_SE_MAPGEN_FLAT_WORLD                                        :{WHITE}Terreo c
 STR_SE_MAPGEN_FLAT_WORLD_TOOLTIP                                :{BLACK}Xerar terreo chan
 STR_SE_MAPGEN_RANDOM_LAND                                       :{WHITE}Terreo aleatorio
 STR_SE_MAPGEN_FLAT_WORLD_HEIGHT                                 :{BLACK}Altura do terreo chan:
+STR_SE_MAPGEN_FLAT_WORLD_HEIGHT_TOOLTIP                         :{BLACK}Escolle a altura da terra por enriba do nivel do mar
 STR_SE_MAPGEN_FLAT_WORLD_HEIGHT_DOWN                            :{BLACK}Subir a altura do terreo chan un nivel
 STR_SE_MAPGEN_FLAT_WORLD_HEIGHT_UP                              :{BLACK}Baixar a altura do terreo chan un nivel
 
@@ -3625,8 +3643,6 @@ STR_STATION_LIST_STATION                                        :{YELLOW}{STATIO
 STR_STATION_LIST_WAYPOINT                                       :{YELLOW}{WAYPOINT}
 STR_STATION_LIST_NONE                                           :{YELLOW}- Ningunha -
 STR_STATION_LIST_SELECT_ALL_FACILITIES                          :{BLACK}Seleccionar tódolos edificios
-STR_STATION_LIST_SELECT_ALL_TYPES                               :{BLACK}Seleccionar tódolos tipos de carga (incluso os que non están a esperar)
-STR_STATION_LIST_NO_WAITING_CARGO                               :{BLACK}Non queda ningunha carga de ningún tipo en espera
 
 # Station view window
 STR_STATION_VIEW_CAPTION                                        :{WHITE}{STATION} {STATION_FEATURES}
@@ -3702,6 +3718,8 @@ STR_EDIT_WAYPOINT_NAME                                          :{WHITE}Editar o
 # Finances window
 STR_FINANCES_CAPTION                                            :{WHITE}{COMPANY} Finanzas {BLACK}{COMPANY_NUM}
 STR_FINANCES_YEAR                                               :{WHITE}{NUM}
+STR_FINANCES_YEAR_CAPTION                                       :{WHITE}Ano
+STR_FINANCES_PERIOD_CAPTION                                     :{WHITE}Período
 
 ###length 3
 STR_FINANCES_REVENUE_TITLE                                      :{WHITE}Ingresos
@@ -4292,6 +4310,9 @@ STR_VEHICLE_INFO_CAPACITY_CAPACITY                              :{BLACK}Capacida
 
 STR_VEHICLE_INFO_FEEDER_CARGO_VALUE                             :{BLACK}Créditos de transferencia: {LTBLUE}{CURRENCY_LONG}
 
+STR_VEHICLE_DETAILS_DECREASE_SERVICING_INTERVAL_TOOLTIP_DAYS    :{BLACK}Diminuir o intervalo de servizo en 10 días. Ctrl+Click para diminuir o intervalo de servizo en 5 días.
+STR_VEHICLE_DETAILS_DECREASE_SERVICING_INTERVAL_TOOLTIP_MINUTES :{BLACK}Diminuir o intervalo de servizo en 5 minutos. Ctrl+Click para diminuir o intervalo de servizo en 1 minuto
+STR_VEHICLE_DETAILS_DECREASE_SERVICING_INTERVAL_TOOLTIP_PERCENT :{BLACK}Diminuir o intervalo de servizo nun 10%. Ctrl+Click para diminuir o intervalo de servizo en 5%.
 
 STR_SERVICE_INTERVAL_DROPDOWN_TOOLTIP                           :{BLACK}Mudar tipo de intervalo de servizo
 STR_VEHICLE_DETAILS_DEFAULT                                     :Por defecto

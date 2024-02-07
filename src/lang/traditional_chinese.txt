@@ -159,7 +159,6 @@ STR_ABBREV_TOFFEE                                               :太
 STR_ABBREV_BATTERIES                                            :電
 STR_ABBREV_PLASTIC                                              :塑
 STR_ABBREV_FIZZY_DRINKS                                         :汽
-STR_ABBREV_NONE                                                 :無
 STR_ABBREV_ALL                                                  :全
 
 # 'Mode' of transport for cargoes
@@ -3588,8 +3587,6 @@ STR_STATION_LIST_STATION                                        :{YELLOW}{STATIO
 STR_STATION_LIST_WAYPOINT                                       :{YELLOW}{WAYPOINT}
 STR_STATION_LIST_NONE                                           :{YELLOW}- 無 -
 STR_STATION_LIST_SELECT_ALL_FACILITIES                          :{BLACK}選擇所有設施
-STR_STATION_LIST_SELECT_ALL_TYPES                               :{BLACK}選擇所有貨物種類 (包含沒在等待的貨物)
-STR_STATION_LIST_NO_WAITING_CARGO                               :{BLACK}無任何貨物等候運送
 
 # Station view window
 STR_STATION_VIEW_CAPTION                                        :{WHITE}{STATION} {STATION_FEATURES}

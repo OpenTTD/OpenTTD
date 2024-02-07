@@ -159,7 +159,6 @@ STR_ABBREV_TOFFEE                                               :KA
 STR_ABBREV_BATTERIES                                            :BA
 STR_ABBREV_PLASTIC                                              :PL
 STR_ABBREV_FIZZY_DRINKS                                         :SV
-STR_ABBREV_NONE                                                 :INT
 STR_ABBREV_ALL                                                  :ALT
 
 # 'Mode' of transport for cargoes
@@ -214,6 +213,8 @@ STR_COLOUR_SECONDARY_SAME_AS_PRIMARY                            :Samme som Prim�
 STR_UNITS_VELOCITY_IMPERIAL                                     :{DECIMAL} miles/t
 STR_UNITS_VELOCITY_METRIC                                       :{DECIMAL} km/t
 STR_UNITS_VELOCITY_SI                                           :{DECIMAL} m/s
+STR_UNITS_VELOCITY_GAMEUNITS_DAY                                :{DECIMAL}{NBSP}felter/dag
+STR_UNITS_VELOCITY_GAMEUNITS_SEC                                :{DECIMAL}{NBSP}felter/sek
 STR_UNITS_VELOCITY_KNOTS                                        :{DECIMAL}{NBSP}knob
 
 STR_UNITS_POWER_IMPERIAL                                        :{DECIMAL}hk
@@ -328,6 +329,7 @@ STR_SORT_BY_TYPE                                                :Type
 STR_SORT_BY_TRANSPORTED                                         :Transporteret
 STR_SORT_BY_NUMBER                                              :Nummer
 STR_SORT_BY_PROFIT_LAST_YEAR                                    :Afkast sidste år
+STR_SORT_BY_PROFIT_LAST_PERIOD                                  :Overskud i sidste periode
 STR_SORT_BY_PROFIT_THIS_YEAR                                    :Afkast i år
 STR_SORT_BY_PROFIT_THIS_PERIOD                                  :Profit denne periode
 STR_SORT_BY_AGE                                                 :Alder
@@ -621,6 +623,7 @@ STR_GRAPH_KEY_COMPANY_SELECTION_TOOLTIP                         :{BLACK}Klik her
 # Company league window
 STR_COMPANY_LEAGUE_TABLE_CAPTION                                :{WHITE}Selskabsoversigt
 STR_COMPANY_LEAGUE_COMPANY_NAME                                 :{ORANGE}{COMPANY} {BLACK}{COMPANY_NUM} '{STRING}'
+STR_COMPANY_LEAGUE_COMPANY_RANK                                 :{YELLOW}#{NUM}
 STR_COMPANY_LEAGUE_PERFORMANCE_TITLE_ENGINEER                   :Ingeniør
 STR_COMPANY_LEAGUE_PERFORMANCE_TITLE_TRAFFIC_MANAGER            :Trafikbestyrer
 STR_COMPANY_LEAGUE_PERFORMANCE_TITLE_TRANSPORT_COORDINATOR      :Trafikkoordinator
@@ -887,6 +890,8 @@ STR_NEWS_VEHICLE_IS_GETTING_VERY_OLD                            :{WHITE}{VEHICLE
 STR_NEWS_VEHICLE_IS_GETTING_VERY_OLD_AND                        :{WHITE}{VEHICLE} er meget gammel, og må udskiftes omgående
 STR_NEWS_TRAIN_IS_STUCK                                         :{WHITE}{VEHICLE} kan ikke finde en rute at fortsætte ad.
 STR_NEWS_VEHICLE_IS_LOST                                        :{WHITE}{VEHICLE} er faret vild.
+STR_NEWS_VEHICLE_UNPROFITABLE_YEAR                              :{WHITE}{VEHICLE}s overskud sidste år var {CURRENCY_LONG}
+STR_NEWS_VEHICLE_UNPROFITABLE_PERIOD                            :{WHITE}{VEHICLE}s overskud sidste periode var {CURRENCY_LONG}
 STR_NEWS_AIRCRAFT_DEST_TOO_FAR                                  :{WHITE}{VEHICLE} kan ikke nå til næste destination, da den er uden for rækkevidde
 
 STR_NEWS_ORDER_REFIT_FAILED                                     :{WHITE}{VEHICLE} stoppet fordi en tilpasningsordre fejlede
@@ -903,9 +908,16 @@ STR_NEWS_STATION_NOW_ACCEPTS_CARGO_LIST                         :{WHITE}{STATION
 
 STR_NEWS_OFFER_OF_SUBSIDY_EXPIRED                               :{BIG_FONT}{BLACK}Licitation af tilskudsordning udløbet:{}{}{STRING} fra {STRING} til {STRING} vil ikke længere udløse tilskud.
 STR_NEWS_SUBSIDY_WITHDRAWN_SERVICE                              :{BIG_FONT}{BLACK}Tilskudsordning tilbagetrukket:{}{}{STRING} fra {STRING} til {STRING} modtager ikke længere tilskud.
+STR_NEWS_SERVICE_SUBSIDY_OFFERED                                :{BIG_FONT}{BLACK}Tilskudsordning i udbyd:{}{}Første {STRING} fra {STRING} til {STRING} vil tiltrække et {UNITS_YEARS_OR_MINUTES} tilskud fra den lokale myndighed!
 ###length 4
+STR_NEWS_SERVICE_SUBSIDY_AWARDED_HALF                           :{BIG_FONT}{BLACK}Servicetilskud tildelt til {STRING}!{}{}{STRING} fra {STRING} til {STRING} vil betale 50% ekstra for de næste {UNITS_YEARS_OR_MINUTES}!
+STR_NEWS_SERVICE_SUBSIDY_AWARDED_DOUBLE                         :{BIG_FONT}{BLACK}Tilskudsordning tildelt {STRING}!{}{}{STRING} fra {STRING} til {STRING} vil betale dobbelt takster for den næste {UNITS_YEARS_OR_MINUTES}!
+STR_NEWS_SERVICE_SUBSIDY_AWARDED_TRIPLE                         :{BIG_FONT}{BLACK}Tilskudsordning tildelt {STRING}!{}{}{STRING} fra {STRING} til {STRING} betaler tredobbelte takster for de næste {UNITS_YEARS_OR_MINUTES}!
+STR_NEWS_SERVICE_SUBSIDY_AWARDED_QUADRUPLE                      :{BIG_FONT}{BLACK}Tilskudsordning tildelt {STRING}!{}{}{STRING} fra {STRING} til {STRING} betaler firedobbelt takster for de næste {UNITS_YEARS_OR_MINUTES}!
 
 STR_NEWS_EXCLUSIVE_RIGHTS_TITLE                                 :{BIG_FONT}{BLACK}Transportmonopol!
+STR_NEWS_EXCLUSIVE_RIGHTS_DESCRIPTION_MONTHS                    :{BIG_FONT}{BLACK}Den lokale myndighed i {TOWN} underskriver kontrakt med {STRING} for 12 måneders eksklusive transportrettigheder!
+STR_NEWS_EXCLUSIVE_RIGHTS_DESCRIPTION_MINUTES                   :{BIG_FONT}{BLACK}Den lokale myndighed i {TOWN} underskriver kontrakt med {STRING} for minutters eksklusive transportrettigheder!
 
 # Extra view window
 STR_EXTRA_VIEWPORT_TITLE                                        :{WHITE}Lokalitetsvindue {COMMA}
@@ -1064,10 +1076,16 @@ STR_GAME_OPTIONS_BASE_MUSIC                                     :{BLACK}Basis-mu
 STR_GAME_OPTIONS_BASE_MUSIC_TOOLTIP                             :{BLACK}Vælg basismusik-sæt
 STR_GAME_OPTIONS_BASE_MUSIC_DESCRIPTION_TOOLTIP                 :{BLACK}Yderligere information om basismusik-sættet
 
+STR_GAME_OPTIONS_SOCIAL_PLUGINS_NONE                            :{LTBLUE}(ingen plugins til at integrere med sociale platforme installeret)
 
 STR_GAME_OPTIONS_SOCIAL_PLUGIN_TITLE                            :{BLACK}{STRING} ({STRING})
+STR_GAME_OPTIONS_SOCIAL_PLUGIN_PLATFORM                         :{BLACK}Platform:
+STR_GAME_OPTIONS_SOCIAL_PLUGIN_STATE                            :{BLACK}Plugin-tilstand:
 
+STR_GAME_OPTIONS_SOCIAL_PLUGIN_STATE_FAILED                     :{RED}Initialisering mislykkedes
+STR_GAME_OPTIONS_SOCIAL_PLUGIN_STATE_DUPLICATE                  :{RED}Duplikeret plugin
 STR_GAME_OPTIONS_SOCIAL_PLUGIN_STATE_UNSUPPORTED_API            :{RED}Ikke-understøttet version
+STR_GAME_OPTIONS_SOCIAL_PLUGIN_STATE_INVALID_SIGNATURE          :{RED}Ugyldig signatur
 
 STR_BASESET_STATUS                                              :{STRING} {RED}({NUM} manglende/beskadiget fil{P "" s})
 
@@ -1235,6 +1253,8 @@ STR_CONFIG_SETTING_HORIZONTAL_POS_RIGHT                         :Højre
 
 STR_CONFIG_SETTING_SECONDS_VALUE                                :{COMMA}{NBSP}sekund{P 0 "" er}
 
+STR_CONFIG_SETTING_INFINITE_MONEY                               :Ubegrænset penge: {STRING}
+STR_CONFIG_SETTING_INFINITE_MONEY_HELPTEXT                      :Tillad ubegrænset forbrug og deaktiver virksomheders konkurs
 
 STR_CONFIG_SETTING_MAXIMUM_INITIAL_LOAN                         :Maksimum startlån: {STRING}
 STR_CONFIG_SETTING_MAXIMUM_INITIAL_LOAN_HELPTEXT                :Maksimumbeløb et selskab kan låne (uden at tage inflation i betragtning)
@@ -1260,6 +1280,7 @@ STR_CONFIG_SETTING_SUBSIDY_MULTIPLIER_HELPTEXT                  :Indstil, hvor m
 STR_CONFIG_SETTING_SUBSIDY_DURATION                             :Varighed på tilskudsordning: {STRING}
 ###length 2
 STR_CONFIG_SETTING_SUBSIDY_DURATION_HELPTEXT                    :Styrer hvor mange år tilskudsordninger tildeles for
+STR_CONFIG_SETTING_SUBSIDY_DURATION_HELPTEXT_PERIODS            :Angiv antallet af perioder, hvor der ydes tilskud til
 
 STR_CONFIG_SETTING_SUBSIDY_DURATION_VALUE                       :{UNITS_YEARS_OR_PERIODS}
 ###setting-zero-is-special
@@ -1384,10 +1405,12 @@ STR_CONFIG_SETTING_AUTOSCROLL_EVERY_VIEWPORT                    :Alle visningspo
 STR_CONFIG_SETTING_BRIBE                                        :Tillad bestikkelse af de lokale myndigheder: {STRING}
 ###length 2
 STR_CONFIG_SETTING_BRIBE_HELPTEXT                               :Tillade firmaer at forsøge at bestikke den lokale myndighed. Hvis bestikkelsen bliver opdaget af en inspektør vil selskabet ikke være i stand til at handle i byen i seks måneder
+STR_CONFIG_SETTING_BRIBE_HELPTEXT_MINUTES                       :Tillad virksomheder at forsøge at bestikke den lokale bymyndighed. Hvis bestikkelsen opdages af en inspektør, vil virksomheden ikke kunne handle i byen i seks minutter
 
 STR_CONFIG_SETTING_ALLOW_EXCLUSIVE                              :Tillad køb af eksklusive transportrettigheder: {STRING}
 ###length 2
-STR_CONFIG_SETTING_ALLOW_EXCLUSIVE_HELPTEXT                     :Hvis et firma køber eksklusive transport rettigheder til en by, vil modstandernes stationer (passagerer og fragt) ikke modtage nogen fragt i et helt år
+STR_CONFIG_SETTING_ALLOW_EXCLUSIVE_HELPTEXT                     :Hvis et firma køber eksklusive transport rettigheder til en by, vil modstandernes stationer (passagerer og fragt) ikke modtage nogen fragt i 12 måneder
+STR_CONFIG_SETTING_ALLOW_EXCLUSIVE_HELPTEXT_MINUTES             :Hvis et firma køber eksklusive transport rettigheder til en by, vil modstandernes stationer (passagerer og fragt) ikke modtage nogen fragt i 12 minutter
 
 STR_CONFIG_SETTING_ALLOW_FUND_BUILDINGS                         :Tillad sponsorer bygninger: {STRING}
 STR_CONFIG_SETTING_ALLOW_FUND_BUILDINGS_HELPTEXT                :Tillad firmaer til at give penge til byerne for finansiering af nye huse
@@ -1451,12 +1474,16 @@ STR_CONFIG_SETTING_NEVER_EXPIRE_VEHICLES                        :Køretøjernes 
 STR_CONFIG_SETTING_NEVER_EXPIRE_VEHICLES_HELPTEXT               :Når aktiveret, forbliver alle biltyper tilgængelige for evigt efter indførelse
 
 STR_CONFIG_SETTING_TIMEKEEPING_UNITS                            :Tidtagning: {STRING}
+STR_CONFIG_SETTING_TIMEKEEPING_UNITS_HELPTEXT                   :Vælg spillets tidtagningsenheder. Dette kan ikke ændres senere.{}{}Kalenderbaseret er den klassiske OpenTTD-oplevelse, med et år bestående af 12 måneder, og hver måned har 28-31 dage.{}{}I vægur-baseret tid, køretøjsbevægelser, gods produktion, og økonomi er i stedet baseret på trin på et minut, hvilket er omtrent lige så lang tid, som en måned på 30 dage tager i kalenderbaseret tilstand. Disse er grupperet i 12-minutters perioder, svarende til et år i kalenderbaseret tilstand.{}{}I begge tilstande er der altid en klassisk kalender, som bruges til introduktionsdatoer for køretøjer, huse og anden infrastruktur.
 ###length 2
+STR_CONFIG_SETTING_TIMEKEEPING_UNITS_CALENDAR                   :Kalender
 STR_CONFIG_SETTING_TIMEKEEPING_UNITS_WALLCLOCK                  :Vægur
 
 
 ###setting-zero-is-special
 
+STR_CONFIG_SETTING_INDUSTRY_CARGO_SCALE                         :Skaler industri gods produktion: {STRING}
+STR_CONFIG_SETTING_INDUSTRY_CARGO_SCALE_HELPTEXT                :Skaler industriens gods produktion med denne procentdel.
 
 STR_CONFIG_SETTING_AUTORENEW_VEHICLE                            :Automatisk fornyelse af gamle køretøjer: {STRING}
 STR_CONFIG_SETTING_AUTORENEW_VEHICLE_HELPTEXT                   :Når aktiveret, bliver et køretøjder nærmer sig sin afslutning af livet automatisk udskiftet, når betingelserne er opfyldt
@@ -2700,6 +2727,8 @@ STR_STATION_BUILD_COVERAGE_AREA_OFF_TOOLTIP                     :{BLACK}Marker i
 STR_STATION_BUILD_COVERAGE_AREA_ON_TOOLTIP                      :{BLACK}Marker dækningsområdet af den foreslåede placering
 STR_STATION_BUILD_ACCEPTS_CARGO                                 :{BLACK}Accepterer: {GOLD}{CARGO_LIST}
 STR_STATION_BUILD_SUPPLIES_CARGO                                :{BLACK}Forsyner: {GOLD}{CARGO_LIST}
+STR_STATION_BUILD_INFRASTRUCTURE_COST_YEAR                      :{BLACK}Vedligeholdelsesomkostninger: {GOLD}{CURRENCY_SHORT}/år
+STR_STATION_BUILD_INFRASTRUCTURE_COST_PERIOD                    :{BLACK}Vedligeholdelsesomkostninger: {GOLD}{CURRENCY_SHORT}/periode
 
 # Join station window
 STR_JOIN_STATION_CAPTION                                        :{WHITE}Sammenkæd station
@@ -2802,7 +2831,7 @@ STR_BRIDGE_TUBULAR_SILICON                                      :Rørformet bro,
 # Road construction toolbar
 STR_ROAD_TOOLBAR_ROAD_CONSTRUCTION_CAPTION                      :{WHITE}Vejkonstruktion
 STR_ROAD_TOOLBAR_TRAM_CONSTRUCTION_CAPTION                      :{WHITE}Sporvejskonstruktion
-STR_ROAD_TOOLBAR_TOOLTIP_BUILD_ROAD_SECTION                     :{BLACK}Byg vej. Ctrl skifter mellem at bygge og fjerne elementer. Shift skifter mellem at bygge og vise prisoverslag.
+STR_ROAD_TOOLBAR_TOOLTIP_BUILD_ROAD_SECTION                     :{BLACK}Byg vejstrækning. Ctrl+klik for at fjerne vejafsnit. Tryk også på Shift for at vise omkostningsestimat
 STR_ROAD_TOOLBAR_TOOLTIP_BUILD_TRAMWAY_SECTION                  :{BLACK}Byg sporvej. Ctrl skifter mellem at bygge og fjerne elementer. Shift skifter mellem at bygge og vise prisoverslag.
 STR_ROAD_TOOLBAR_TOOLTIP_BUILD_AUTOROAD                         :{BLACK}Byg vej med auto-vej-værktøjet. Ctrl skifter mellem at bygge og fjerne elementer. Shift skifter mellem at bygge og vise prisoverslag.
 STR_ROAD_TOOLBAR_TOOLTIP_BUILD_AUTOTRAM                         :{BLACK}Byg sporvej med auto-sporvej-værktøjet. Ctrl skifter mellem at muliggør at bygge og fjerne elementer. Shift skifter mellem at bygge og vise prisoverslag.
@@ -3547,12 +3576,15 @@ STR_TOWN_VIEW_TOWN_CAPTION                                      :{WHITE}{TOWN}
 STR_TOWN_VIEW_CITY_CAPTION                                      :{WHITE}{TOWN} (storby)
 STR_TOWN_VIEW_POPULATION_HOUSES                                 :{BLACK}Indbyggere: {ORANGE}{COMMA}{BLACK}  Huse: {ORANGE}{COMMA}
 STR_TOWN_VIEW_CARGO_LAST_MONTH_MAX                              :{BLACK}{CARGO_LIST} sidste måned: {ORANGE}{COMMA}{BLACK}  mulig: {ORANGE}{COMMA}
+STR_TOWN_VIEW_CARGO_LAST_MINUTE_MAX                             :{BLACK}{CARGO_LIST} sidste minut: {ORANGE}{COMMA}{BLACK}  max: {ORANGE}{COMMA}
 STR_TOWN_VIEW_CARGO_FOR_TOWNGROWTH                              :{BLACK}Nødvendig godsmængde for at byen kan vokse:
 STR_TOWN_VIEW_CARGO_FOR_TOWNGROWTH_REQUIRED_GENERAL             :{ORANGE}{STRING}{RED} krævet
 STR_TOWN_VIEW_CARGO_FOR_TOWNGROWTH_REQUIRED_WINTER              :{ORANGE}{STRING}{BLACK} kræves om vinteren
 STR_TOWN_VIEW_CARGO_FOR_TOWNGROWTH_DELIVERED_GENERAL            :{ORANGE}{STRING}{GREEN} leveret
 STR_TOWN_VIEW_CARGO_FOR_TOWNGROWTH_REQUIRED                     :{ORANGE}{CARGO_TINY} / {CARGO_LONG}{RED} (stadig krævet)
 STR_TOWN_VIEW_CARGO_FOR_TOWNGROWTH_DELIVERED                    :{ORANGE}{CARGO_TINY} / {CARGO_LONG}{GREEN} (leveret)
+STR_TOWN_VIEW_TOWN_GROWS_EVERY                                  :{BLACK}By vokser hver {ORANGE}{UNITS_DAYS_OR_SECONDS}
+STR_TOWN_VIEW_TOWN_GROWS_EVERY_FUNDED                           :{BLACK}By vokser hver {ORANGE}{UNITS_DAYS_OR_SECONDS} (finansieret)
 STR_TOWN_VIEW_TOWN_GROW_STOPPED                                 :{BLACK}Byen vokser {RED}ikke{BLACK}
 STR_TOWN_VIEW_NOISE_IN_TOWN                                     :{BLACK}Støjgrænse i byen: {ORANGE}{COMMA}{BLACK}  maks.: {ORANGE}{COMMA}
 STR_TOWN_VIEW_CENTER_TOOLTIP                                    :{BLACK}Centrer skærmen over byens lokalitet. Ctrl+Klik åbner et nyt vindue ved byens lokalitet
@@ -3592,8 +3624,12 @@ STR_LOCAL_AUTHORITY_ACTION_BRIBE                                :Bestik de lokal
 STR_LOCAL_AUTHORITY_ACTION_TOOLTIP_SMALL_ADVERTISING            :{PUSH_COLOUR}{YELLOW} Start en lille reklamekampagne for at tiltrække flere passagerer og last til dine stationer.{}Giver en midlertidig forbedring af stationsbedømmelsen i en lille radius omkring bymidten.{}{POP_COLOUR}Pris: {CURRENCY_LONG}
 STR_LOCAL_AUTHORITY_ACTION_TOOLTIP_MEDIUM_ADVERTISING           :{PUSH_COLOUR}{YELLOW}Start en mellem reklamekampagne, for at tiltrække flere passagerer og last til dine stationer.{}Giver en midlertidig forbedring af stationsbedømmelsen i en mellemstor radius omkring bymidten.{}{POP_COLOUR}Pris: {CURRENCY_LONG}
 STR_LOCAL_AUTHORITY_ACTION_TOOLTIP_LARGE_ADVERTISING            :{PUSH_COLOUR}{YELLOW}Start en stor reklamekampagne, for at tiltrække flere passagerer og last til dine stationer.{}Giver en midlertidig forbedring af stationsbedømmelsen i en stor radius omkring bymidten.{}{POP_COLOUR}Pris: {CURRENCY_LONG}
+STR_LOCAL_AUTHORITY_ACTION_TOOLTIP_ROAD_RECONSTRUCTION_MONTHS   :{PUSH_COLOUR}{YELLOW}Finansier genopbygningen af byvejnettet.{}Forårsager betydelige forstyrrelser for vejtrafikken i op til 6 måneder.{}{POP_COLOUR}Pris: {CURRENCY_LONG}
+STR_LOCAL_AUTHORITY_ACTION_TOOLTIP_ROAD_RECONSTRUCTION_MINUTES  :{PUSH_COLOUR}{YELLOW}Finansier genopbygningen af byvejnettet.{}Forårsager betydelige forstyrrelser for vejtrafikken i op til 6 minutter.{}{POP_COLOUR}Pris: {CURRENCY_LONG}
 STR_LOCAL_AUTHORITY_ACTION_TOOLTIP_STATUE_OF_COMPANY            :{PUSH_COLOUR}{YELLOW}Byg en statue til ære for dit selskab.{}Giver en permanent forbedring af stationsbedømmelser i denne by.{}{POP_COLOUR}Pris: {CURRENCY_LONG}
 STR_LOCAL_AUTHORITY_ACTION_TOOLTIP_NEW_BUILDINGS                :{PUSH_COLOUR}{YELLOW}Finansiér opførelse af nye bygninger i byen.{}Giver en midlertidig forøgelse af byens væksthastighed.{}{POP_COLOUR}Pris: {CURRENCY_LONG}
+STR_LOCAL_AUTHORITY_ACTION_TOOLTIP_EXCLUSIVE_TRANSPORT_MONTHS   :{PUSH_COLOUR}{YELLOW}Køb eksklusive transportrettigheder i byen i 12 måneder.{}Byens myndigheder tillader ikke, at passagerer og gods bruger dine konkurrenters stationer. En vellykket bestikkelse fra en konkurrent vil annullere denne kontrakt.{}{POP_COLOUR}Pris: {CURRENCY_LONG}
+STR_LOCAL_AUTHORITY_ACTION_TOOLTIP_EXCLUSIVE_TRANSPORT_MINUTES  :{PUSH_COLOUR}{YELLOW}Køb eksklusive transportrettigheder i byen i 12 minutter.{}Byens myndigheder tillader ikke, at passagerer og gods bruger dine konkurrenters stationer. En vellykket bestikkelse fra en konkurrent vil annullere denne kontrakt.{}{POP_COLOUR}Pris: {CURRENCY_LONG}
 STR_LOCAL_AUTHORITY_ACTION_TOOLTIP_BRIBE                        :{PUSH_COLOUR}{YELLOW}Bestik de lokale myndigheder til at hæve din bedømmelse, med risiko for en stor straf hvis det bliver opdaget.{}{POP_COLOUR}Pris: {CURRENCY_LONG}
 
 # Goal window
@@ -3667,8 +3703,6 @@ STR_STATION_LIST_STATION                                        :{YELLOW}{STATIO
 STR_STATION_LIST_WAYPOINT                                       :{YELLOW}{WAYPOINT}
 STR_STATION_LIST_NONE                                           :{YELLOW}- Ingen -
 STR_STATION_LIST_SELECT_ALL_FACILITIES                          :{BLACK}Vælg alle faciliteter
-STR_STATION_LIST_SELECT_ALL_TYPES                               :{BLACK}Vælg alle lasttyper (inklusiv fragttyper, der ikke venter)
-STR_STATION_LIST_NO_WAITING_CARGO                               :{BLACK}Der venter ingen fragt af nogen type
 
 # Station view window
 STR_STATION_VIEW_CAPTION                                        :{WHITE}{STATION} {STATION_FEATURES}
@@ -3950,7 +3984,9 @@ STR_GROUP_REMOVE_ALL_VEHICLES                                   :Fjern alle kør
 STR_GROUP_RENAME_CAPTION                                        :{BLACK}Omdøb en gruppe
 
 STR_GROUP_PROFIT_THIS_YEAR                                      :Afkast i år:
+STR_GROUP_PROFIT_THIS_PERIOD                                    :Overskud i denne periode:
 STR_GROUP_PROFIT_LAST_YEAR                                      :Afkast sidste år:
+STR_GROUP_PROFIT_LAST_PERIOD                                    :Overskud i sidste periode
 STR_GROUP_OCCUPANCY                                             :Nuværende brug:
 STR_GROUP_OCCUPANCY_VALUE                                       :{NUM}%
 
@@ -3977,6 +4013,8 @@ STR_PURCHASE_INFO_SPEED_POWER                                   :{BLACK}Hastighe
 STR_PURCHASE_INFO_SPEED                                         :{BLACK}Hastighed: {GOLD}{VELOCITY}
 STR_PURCHASE_INFO_SPEED_OCEAN                                   :{BLACK}Hastighed på havet: {GOLD}{VELOCITY}
 STR_PURCHASE_INFO_SPEED_CANAL                                   :{BLACK}Hastighed på kanal/flod: {GOLD}{VELOCITY}
+STR_PURCHASE_INFO_RUNNINGCOST_YEAR                              :{BLACK}Driftsomkostninger: {GOLD}{CURRENCY_LONG}/år
+STR_PURCHASE_INFO_RUNNINGCOST_PERIOD                            :{BLACK} Driftsomkostninger: {GOLD}{CURRENCY_LONG}/periode
 STR_PURCHASE_INFO_CAPACITY                                      :{BLACK}Lasteevne: {GOLD}{CARGO_LONG} {STRING}
 STR_PURCHASE_INFO_REFITTABLE                                    :(kan tilpasses)
 STR_PURCHASE_INFO_DESIGNED_LIFE                                 :{BLACK}Designet: {GOLD}{NUM}{BLACK} Levetid: {GOLD}{COMMA} år
@@ -4171,6 +4209,13 @@ STR_ENGINE_PREVIEW_SHIP                                         :skib
 
 STR_ENGINE_PREVIEW_TEXT3                                        :{BLACK}{STRING}{}{5:STRING}{}{STRING}
 STR_ENGINE_PREVIEW_COST_WEIGHT                                  :Pris: {CURRENCY_LONG}  Vægt: {WEIGHT_SHORT}
+STR_ENGINE_PREVIEW_COST_MAX_SPEED                               :Pris: {CURRENCY_LONG}  Max. Hastighed: {VELOCITY}
+STR_ENGINE_PREVIEW_SPEED_POWER                                  :Hastighed: {VELOCITY}  Styrke: {POWER}
+STR_ENGINE_PREVIEW_SPEED_POWER_MAX_TE                           :Hastighed: {VELOCITY}  Styrke: {POWER}  Max. T.E.: {FORCE}
+STR_ENGINE_PREVIEW_RUNCOST_YEAR                                 :Driftsomkostninger: {CURRENCY_LONG}/år
+STR_ENGINE_PREVIEW_RUNCOST_PERIOD                               :Driftsomkostninger: {CURRENCY_LONG}/periode
+STR_ENGINE_PREVIEW_CAPACITY                                     :Kapacitet: {CARGO_LONG}
+STR_ENGINE_PREVIEW_CAPACITY_2                                   :Kapacitet: {CARGO_LONG}, {CARGO_LONG}
 
 # Autoreplace window
 STR_REPLACE_VEHICLES_WHITE                                      :{WHITE}Udskift {STRING} - {STRING}
@@ -4335,6 +4380,9 @@ STR_VEHICLE_INFO_CAPACITY_CAPACITY                              :{BLACK}Kapacite
 
 STR_VEHICLE_INFO_FEEDER_CARGO_VALUE                             :{BLACK}Værdi af overført fragt: {LTBLUE}{CURRENCY_LONG}
 
+STR_VEHICLE_DETAILS_SERVICING_INTERVAL_DAYS                     :{BLACK}Serviceinterval: {LTBLUE}{COMMA}{NBSP}dage{BLACK}   {STRING}
+STR_VEHICLE_DETAILS_SERVICING_INTERVAL_MINUTES                  :{BLACK}Serviceinterval: {LTBLUE}{COMMA}{NBSP}minutter{BLACK}   {STRING}
+STR_VEHICLE_DETAILS_SERVICING_INTERVAL_PERCENT                  :{BLACK}Serviceinterval: {LTBLUE}{COMMA}%{BLACK}   {STRING}
 STR_VEHICLE_DETAILS_LAST_SERVICE_DATE                           :Sidste service: {LTBLUE}{DATE_LONG}
 STR_VEHICLE_DETAILS_LAST_SERVICE_MINUTES_AGO                    :Last service: {LTBLUE}{NUM} minutter siden
 
@@ -4406,6 +4454,7 @@ STR_ORDERS_TIMETABLE_VIEW_TOOLTIP                               :{BLACK}Skift ti
 
 STR_ORDERS_LIST_TOOLTIP                                         :{BLACK}Ordreliste - klik på en ordre for at markere den. CTRL-klik for at centrere skærmen over stationen
 STR_ORDER_INDEX                                                 :{COMMA}:{NBSP}
+STR_ORDER_TEXT                                                  :{STRING} {STRING} {STRING} {STRING}
 
 STR_ORDERS_END_OF_ORDERS                                        :- - Slut på ordrer - -
 STR_ORDERS_END_OF_SHARED_ORDERS                                 :- - Slut på delt ordreliste - -
@@ -4445,6 +4494,8 @@ STR_ORDER_DROP_HALT_DEPOT                                       :Stop
 
 # Depot action tooltips, one per vehicle type
 ###length VEHICLE_TYPES
+STR_ORDER_SHIP_DEPOT_ACTION_TOOLTIP                             :{BLACK}Vælg den handling, der skal udføres på dette depot
+STR_ORDER_HANGAR_ACTION_TOOLTIP                                 :{BLACK}Vælg den handling, der skal udføres i denne hangar
 ###next-name-looks-similar
 
 STR_ORDER_CONDITIONAL_VARIABLE_TOOLTIP                          :{BLACK}Data som ordrespring baseres på
@@ -4983,6 +5034,7 @@ STR_ERROR_UNABLE_TO_FIND_LOCAL_DEPOT                            :{WHITE}Kan ikke
 STR_ERROR_DEPOT_WRONG_DEPOT_TYPE                                :Forkert depottype
 
 # Depot unbunching related errors
+STR_ERROR_UNBUNCHING_ONLY_ONE_ALLOWED                           :{WHITE}... kan kun have én opsamlingsordre
 
 # Autoreplace related errors
 STR_ERROR_TRAIN_TOO_LONG_AFTER_REPLACEMENT                      :{WHITE}{VEHICLE} er blevet for langt efter udskiftning
@@ -5676,6 +5728,10 @@ STR_TOWN_NAME                                                   :{TOWN}
 STR_VEHICLE_NAME                                                :{VEHICLE}
 STR_WAYPOINT_NAME                                               :{WAYPOINT}
 
+STR_CURRENCY_SHORT_KILO                                         :{NBSP}k
+STR_CURRENCY_SHORT_MEGA                                         :{NBSP}m
+STR_CURRENCY_SHORT_GIGA                                         :{NBSP}bn
+STR_CURRENCY_SHORT_TERA                                         :{NBSP}tn
 
 STR_JUST_CARGO                                                  :{CARGO_LONG}
 STR_JUST_RIGHT_ARROW                                            :{RIGHT_ARROW}

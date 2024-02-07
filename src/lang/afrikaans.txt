@@ -160,7 +160,6 @@ STR_ABBREV_TOFFEE                                               :TF
 STR_ABBREV_BATTERIES                                            :BA
 STR_ABBREV_PLASTIC                                              :PL
 STR_ABBREV_FIZZY_DRINKS                                         :GK
-STR_ABBREV_NONE                                                 :NS
 STR_ABBREV_ALL                                                  :ALMAL
 
 # 'Mode' of transport for cargoes
@@ -3240,8 +3239,6 @@ STR_STATION_LIST_STATION                                        :{YELLOW}{STATIO
 STR_STATION_LIST_WAYPOINT                                       :{YELLOW}{WAYPOINT}
 STR_STATION_LIST_NONE                                           :{YELLOW}- Geen -
 STR_STATION_LIST_SELECT_ALL_FACILITIES                          :{BLACK}Kies alle fakulteite
-STR_STATION_LIST_SELECT_ALL_TYPES                               :{BLACK}Kies alle vrag tipes (geen wag vrag ingesluit)
-STR_STATION_LIST_NO_WAITING_CARGO                               :{BLACK}Geen vrag van enige tipe is wagtend
 
 # Station view window
 STR_STATION_VIEW_CAPTION                                        :{WHITE}{STATION} {STATION_FEATURES}

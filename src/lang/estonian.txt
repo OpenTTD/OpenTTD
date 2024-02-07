@@ -216,7 +216,6 @@ STR_ABBREV_TOFFEE                                               :TF
 STR_ABBREV_BATTERIES                                            :BA
 STR_ABBREV_PLASTIC                                              :PL
 STR_ABBREV_FIZZY_DRINKS                                         :FZ
-STR_ABBREV_NONE                                                 :EI
 STR_ABBREV_ALL                                                  :KÕIK
 
 # 'Mode' of transport for cargoes
@@ -3576,8 +3575,6 @@ STR_STATION_LIST_STATION                                        :{YELLOW}{STATIO
 STR_STATION_LIST_WAYPOINT                                       :{YELLOW}{WAYPOINT}
 STR_STATION_LIST_NONE                                           :{YELLOW}- Puudub -
 STR_STATION_LIST_SELECT_ALL_FACILITIES                          :{BLACK}Vali kõik tööstused
-STR_STATION_LIST_SELECT_ALL_TYPES                               :{BLACK}Vali kõik kaubatüüpid (ka mitteoodatav kaup)
-STR_STATION_LIST_NO_WAITING_CARGO                               :{BLACK}Veoseid pole ootamas
 
 # Station view window
 STR_STATION_VIEW_CAPTION                                        :{WHITE}{STATION} {STATION_FEATURES}

@@ -159,7 +159,6 @@ STR_ABBREV_TOFFEE                                               :टॉ
 STR_ABBREV_BATTERIES                                            :बॅ
 STR_ABBREV_PLASTIC                                              :प्लॅ
 STR_ABBREV_FIZZY_DRINKS                                         :फस
-STR_ABBREV_NONE                                                 :NO
 STR_ABBREV_ALL                                                  :सर्व
 
 # 'Mode' of transport for cargoes

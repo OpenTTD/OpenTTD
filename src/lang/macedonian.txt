@@ -159,7 +159,6 @@ STR_ABBREV_TOFFEE                                               :КА
 STR_ABBREV_BATTERIES                                            :БА
 STR_ABBREV_PLASTIC                                              :ПЛ
 STR_ABBREV_FIZZY_DRINKS                                         :ПП
-STR_ABBREV_NONE                                                 :НТ
 STR_ABBREV_ALL                                                  :Се`
 
 # 'Mode' of transport for cargoes
@@ -1571,8 +1570,6 @@ STR_SUBSIDIES_TOOLTIP_CLICK_ON_SERVICE_TO_CENTER                :{BLACK}Клик
 STR_STATION_LIST_STATION                                        :{YELLOW}{STATION} {STATION_FEATURES}
 STR_STATION_LIST_WAYPOINT                                       :{YELLOW}{WAYPOINT}
 STR_STATION_LIST_SELECT_ALL_FACILITIES                          :{BLACK}Избери ги сите објекти
-STR_STATION_LIST_SELECT_ALL_TYPES                               :{BLACK}Избери ги сите видови товар (including no waiting cargo)
-STR_STATION_LIST_NO_WAITING_CARGO                               :{BLACK}Не чека никаков товар
 
 # Station view window
 STR_STATION_VIEW_CAPTION                                        :{WHITE}{STATION} {STATION_FEATURES}

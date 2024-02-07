@@ -159,7 +159,6 @@ STR_ABBREV_TOFFEE                                               :ลูกอม
 STR_ABBREV_BATTERIES                                            :ถ่าน
 STR_ABBREV_PLASTIC                                              :พลาสติก
 STR_ABBREV_FIZZY_DRINKS                                         :น้ำอัดลม
-STR_ABBREV_NONE                                                 :ว่าง
 STR_ABBREV_ALL                                                  :ทั้งหมด
 
 # 'Mode' of transport for cargoes
@@ -3248,8 +3247,6 @@ STR_STATION_LIST_STATION                                        :{YELLOW}{STATIO
 STR_STATION_LIST_WAYPOINT                                       :{YELLOW}{WAYPOINT}
 STR_STATION_LIST_NONE                                           :{YELLOW}- ไม่มี -
 STR_STATION_LIST_SELECT_ALL_FACILITIES                          :{BLACK}เลือกทั้งหมด
-STR_STATION_LIST_SELECT_ALL_TYPES                               :{BLACK}เลือกประเภทสินค้าทั้งหมด (รวมถึงสินค้าที่ไม่ได้รอการส่ง)
-STR_STATION_LIST_NO_WAITING_CARGO                               :{BLACK}ไม่มีสินค้ารออยู่เลย
 
 # Station view window
 STR_STATION_VIEW_CAPTION                                        :{WHITE}{STATION} {STATION_FEATURES}

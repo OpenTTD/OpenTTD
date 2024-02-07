@@ -223,7 +223,6 @@ STR_ABBREV_TOFFEE                                               :KR
 STR_ABBREV_BATTERIES                                            :BT
 STR_ABBREV_PLASTIC                                              :UM
 STR_ABBREV_FIZZY_DRINKS                                         :MA
-STR_ABBREV_NONE                                                 :NIC
 STR_ABBREV_ALL                                                  :VS.
 
 # 'Mode' of transport for cargoes
@@ -3632,8 +3631,6 @@ STR_STATION_LIST_STATION                                        :{YELLOW}{STATIO
 STR_STATION_LIST_WAYPOINT                                       :{YELLOW}{WAYPOINT}
 STR_STATION_LIST_NONE                                           :{YELLOW}- Žiadne -
 STR_STATION_LIST_SELECT_ALL_FACILITIES                          :{BLACK}Označiť všetky možnosti
-STR_STATION_LIST_SELECT_ALL_TYPES                               :{BLACK}Označiť všetky druhy nákladu (vrátane nečakajúceho na prepravu)
-STR_STATION_LIST_NO_WAITING_CARGO                               :{BLACK}Nečaká žiadny typ nákladu
 
 # Station view window
 STR_STATION_VIEW_CAPTION                                        :{WHITE}{STATION} {STATION_FEATURES}

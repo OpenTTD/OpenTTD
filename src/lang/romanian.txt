@@ -159,7 +159,6 @@ STR_ABBREV_TOFFEE                                               :CM
 STR_ABBREV_BATTERIES                                            :BA
 STR_ABBREV_PLASTIC                                              :PL
 STR_ABBREV_FIZZY_DRINKS                                         :SC
-STR_ABBREV_NONE                                                 :NU
 STR_ABBREV_ALL                                                  :TOT
 
 # 'Mode' of transport for cargoes
@@ -3645,8 +3644,6 @@ STR_STATION_LIST_STATION                                        :{YELLOW}{STATIO
 STR_STATION_LIST_WAYPOINT                                       :{YELLOW}{WAYPOINT}
 STR_STATION_LIST_NONE                                           :{YELLOW}- Nici una -
 STR_STATION_LIST_SELECT_ALL_FACILITIES                          :{BLACK}Alege toate facilitățile
-STR_STATION_LIST_SELECT_ALL_TYPES                               :{BLACK}Alege toate tipurile de încãrcãturi (inclusiv încãrcãturile care nu sunt în asteptare)
-STR_STATION_LIST_NO_WAITING_CARGO                               :{BLACK}Nu este nici un fel de încărcătură în așteptare
 
 # Station view window
 STR_STATION_VIEW_CAPTION                                        :{WHITE}{STATION} {STATION_FEATURES}

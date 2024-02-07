@@ -285,7 +285,6 @@ STR_ABBREV_TOFFEE                                               :ИР
 STR_ABBREV_BATTERIES                                            :БТ
 STR_ABBREV_PLASTIC                                              :ПЛ
 STR_ABBREV_FIZZY_DRINKS                                         :ГЗ
-STR_ABBREV_NONE                                                 :НЕТ
 STR_ABBREV_ALL                                                  :Все
 
 # 'Mode' of transport for cargoes
@@ -511,10 +510,10 @@ STR_TOOLBAR_TOOLTIP_FORWARD                                     :{BLACK}Уско
 STR_TOOLBAR_TOOLTIP_OPTIONS                                     :{BLACK}Настройки
 STR_TOOLBAR_TOOLTIP_SAVE_GAME_ABANDON_GAME                      :{BLACK}Сохранение/загрузка игры; главное меню; выход
 STR_TOOLBAR_TOOLTIP_DISPLAY_MAP                                 :{BLACK}Карта; окна просмотра; грузовые потоки; список меток
-STR_TOOLBAR_TOOLTIP_DISPLAY_TOWN_DIRECTORY                      :{BLACK}Список городов
+STR_TOOLBAR_TOOLTIP_DISPLAY_TOWN_DIRECTORY                      :{BLACK}Список существующих городов; основание новых
 STR_TOOLBAR_TOOLTIP_DISPLAY_SUBSIDIES                           :{BLACK}Субсидии
 STR_TOOLBAR_TOOLTIP_DISPLAY_LIST_OF_COMPANY_STATIONS            :{BLACK}Список станций
-STR_TOOLBAR_TOOLTIP_DISPLAY_COMPANY_FINANCES                    :{BLACK}Информация о финансах компаний
+STR_TOOLBAR_TOOLTIP_DISPLAY_COMPANY_FINANCES                    :{BLACK}Информация о финансовом состоянии компаний
 STR_TOOLBAR_TOOLTIP_DISPLAY_COMPANY_GENERAL                     :{BLACK}Основная информация о компаниях
 STR_TOOLBAR_TOOLTIP_DISPLAY_STORY_BOOK                          :{BLACK}История компаний
 STR_TOOLBAR_TOOLTIP_DISPLAY_GOALS_LIST                          :{BLACK}Список задач
@@ -551,7 +550,7 @@ STR_SCENEDIT_TOOLBAR_TOWN_GENERATION                            :{BLACK}Созд
 STR_SCENEDIT_TOOLBAR_INDUSTRY_GENERATION                        :{BLACK}Создание предприятий
 STR_SCENEDIT_TOOLBAR_ROAD_CONSTRUCTION                          :{BLACK}Строительство автомобильной инфраструктуры
 STR_SCENEDIT_TOOLBAR_TRAM_CONSTRUCTION                          :{BLACK}Строительство трамвайной инфраструктуры
-STR_SCENEDIT_TOOLBAR_PLANT_TREES                                :{BLACK}Посадить деревья.{}При нажатом Ctrl - выбор диагональной области.{}При нажатом Shift - оценка стоимости высадки.
+STR_SCENEDIT_TOOLBAR_PLANT_TREES                                :{BLACK}Посадить деревья. Ctrl+перетаскивание{NBSP}- выбор диагональной области. При нажатом Shift{NBSP}- оценка стоимости высадки.
 STR_SCENEDIT_TOOLBAR_PLACE_SIGN                                 :{BLACK}Поставить метку
 STR_SCENEDIT_TOOLBAR_PLACE_OBJECT                               :{BLACK}Разместить объект. Ctrl+щелчок+перетаскивание - выбор диагональной области. При нажатом Shift - оценка стоимости строительства.
 
@@ -3041,7 +3040,7 @@ STR_ROAD_TOOLBAR_TRAM_CONSTRUCTION_CAPTION                      :{WHITE}Трам
 STR_ROAD_TOOLBAR_TOOLTIP_BUILD_ROAD_SECTION                     :{BLACK}Строительство автомобильных дорог. При нажатом Ctrl - удаление дороги. При нажатом Shift - оценка стоимости работ.
 STR_ROAD_TOOLBAR_TOOLTIP_BUILD_TRAMWAY_SECTION                  :{BLACK}Строительство трамвайных путей. При нажатом Ctrl - их удаление. При нажатом Shift - оценка стоимости работ.
 STR_ROAD_TOOLBAR_TOOLTIP_BUILD_AUTOROAD                         :{BLACK}Строительство автомобильных дорог в автоматическом режиме. При нажатом Ctrl - удаление дороги. При нажатом Shift - оценка стоимости работ.
-STR_ROAD_TOOLBAR_TOOLTIP_BUILD_AUTOTRAM                         :{BLACK}Строительство трамвайных путей в автоматическом режиме. При нажатом Ctrl - удаление путей. При нажатом Shift - оценка стоимости строительства.
+STR_ROAD_TOOLBAR_TOOLTIP_BUILD_AUTOTRAM                         :{BLACK}Строительство трамвайных путей в автоматическом режиме. Ctrl+щелчок - удаление путей. При нажатом Shift - оценка стоимости строительства.
 STR_ROAD_TOOLBAR_TOOLTIP_BUILD_ROAD_VEHICLE_DEPOT               :{BLACK}Строительство гаражей (для приобретения и обслуживания автомобилей). При нажатом Shift - оценка стоимости строительства.
 STR_ROAD_TOOLBAR_TOOLTIP_BUILD_TRAM_VEHICLE_DEPOT               :{BLACK}Строительство трамвайных депо (для приобретения и обслуживания трамваев). При нажатом Shift - оценка стоимости строительства.
 STR_ROAD_TOOLBAR_TOOLTIP_BUILD_BUS_STATION                      :{BLACK}Строительство автобусных остановок. Ctrl+щелчок - объединение новой остановки с существующей. Shift+щелчок - оценка стоимости строительства.
@@ -3086,7 +3085,7 @@ STR_WATERWAYS_TOOLBAR_BUILD_DEPOT_TOOLTIP                       :{BLACK}Стро
 STR_WATERWAYS_TOOLBAR_BUILD_DOCK_TOOLTIP                        :{BLACK}Строительство пристаней. Ctrl+щелчок - объединение новой станции с существующей. При нажатом Shift - оценка стоимости строительства.
 STR_WATERWAYS_TOOLBAR_BUOY_TOOLTIP                              :{BLACK}Буи помогают в навигации на больших расстояниях; используйте их как маршрутные точки. При нажатом Shift - оценка стоимости строительства.
 STR_WATERWAYS_TOOLBAR_BUILD_AQUEDUCT_TOOLTIP                    :{BLACK}Строительство акведуков. При нажатом Shift - оценка стоимости строительства.
-STR_WATERWAYS_TOOLBAR_CREATE_LAKE_TOOLTIP                       :{BLACK}Создать канал.{}При зажатом Ctrl клетка на уровне моря наполняется водой.
+STR_WATERWAYS_TOOLBAR_CREATE_LAKE_TOOLTIP                       :{BLACK}Построить канал. Ctrl+щелчок по клетке на уровне моря - заполнить её водой.
 STR_WATERWAYS_TOOLBAR_CREATE_RIVER_TOOLTIP                      :{BLACK}Создание рек на карте. При нажатом Ctrl они создаются по диагонали.
 
 # Ship depot construction window
@@ -3918,8 +3917,6 @@ STR_STATION_LIST_STATION                                        :{YELLOW}{STATIO
 STR_STATION_LIST_WAYPOINT                                       :{YELLOW}{WAYPOINT}
 STR_STATION_LIST_NONE                                           :{YELLOW}- Нет -
 STR_STATION_LIST_SELECT_ALL_FACILITIES                          :{BLACK}Показать все станции
-STR_STATION_LIST_SELECT_ALL_TYPES                               :{BLACK}Выбрать все типы грузов
-STR_STATION_LIST_NO_WAITING_CARGO                               :{BLACK}На станции нет грузов, ожидающих погрузки
 
 # Station view window
 STR_STATION_VIEW_CAPTION                                        :{WHITE}{STATION} {STATION_FEATURES}
@@ -4112,7 +4109,7 @@ STR_INDUSTRY_DIRECTORY_ITEM_PROD1                               :{ORANGE}{INDUST
 STR_INDUSTRY_DIRECTORY_ITEM_PROD2                               :{ORANGE}{INDUSTRY} {STRING}, {STRING}
 STR_INDUSTRY_DIRECTORY_ITEM_PROD3                               :{ORANGE}{INDUSTRY} {STRING}, {STRING}, {STRING}
 STR_INDUSTRY_DIRECTORY_ITEM_PRODMORE                            :{ORANGE}{INDUSTRY} {STRING}, {STRING}, {STRING} и ещё {NUM}...
-STR_INDUSTRY_DIRECTORY_LIST_CAPTION                             :{BLACK}Список предприятий - щелчок по названию показывает предприятие в основном окне. Ctrl+щелчок показывает в дополнительном окне.
+STR_INDUSTRY_DIRECTORY_LIST_CAPTION                             :{BLACK}Список предприятий. Щелчок по названию показывает предприятие в основном окне. Ctrl+щелчок показывает в дополнительном окне.
 STR_INDUSTRY_DIRECTORY_ACCEPTED_CARGO_FILTER                    :{BLACK}Принимаемый груз: {SILVER}{STRING}
 STR_INDUSTRY_DIRECTORY_PRODUCED_CARGO_FILTER                    :{BLACK}Производимый груз: {SILVER}{STRING}
 STR_INDUSTRY_DIRECTORY_FILTER_ALL_TYPES                         :Любой
@@ -4574,6 +4571,7 @@ STR_VEHICLE_STATUS_NO_ORDERS_VEL                                :{LTBLUE}Нет 
 STR_VEHICLE_STATUS_HEADING_FOR_WAYPOINT_VEL                     :{LTBLUE}Идёт к {WAYPOINT}; {VELOCITY}
 STR_VEHICLE_STATUS_HEADING_FOR_DEPOT_VEL                        :{ORANGE}Идёт в {DEPOT}; {VELOCITY}
 STR_VEHICLE_STATUS_HEADING_FOR_DEPOT_SERVICE_VEL                :{LTBLUE}Идёт в {DEPOT} для ТО; {VELOCITY}
+STR_VEHICLE_STATUS_HEADING_FOR_DEPOT_UNBUNCH_VEL                :{LTBLUE}Идёт в {DEPOT} для ТО и распред., {VELOCITY}
 
 STR_VEHICLE_STATUS_CANNOT_REACH_STATION_VEL                     :{LTBLUE}Нет пути до {STATION}, {VELOCITY}
 STR_VEHICLE_STATUS_CANNOT_REACH_WAYPOINT_VEL                    :{LTBLUE}Нет пути до {WAYPOINT}, {VELOCITY}
@@ -4741,9 +4739,14 @@ STR_ORDER_DROP_REFIT_AUTO_ANY                                   :Доступн�
 STR_ORDER_DROP_GO_ALWAYS_DEPOT                                  :Всегда
 STR_ORDER_DROP_SERVICE_DEPOT                                    :Если требуется
 STR_ORDER_DROP_HALT_DEPOT                                       :Стоп
+STR_ORDER_DROP_UNBUNCH                                          :Распределить
 
 # Depot action tooltips, one per vehicle type
 ###length VEHICLE_TYPES
+STR_ORDER_TRAIN_DEPOT_ACTION_TOOLTIP                            :{BLACK}Выберите действие, которое нужно выполнить в этом депо
+STR_ORDER_ROAD_DEPOT_ACTION_TOOLTIP                             :{BLACK}Выберите действие, которое нужно выполнить в этом гараже
+STR_ORDER_SHIP_DEPOT_ACTION_TOOLTIP                             :{BLACK}Выберите действие, которое нужно выполнить в этом доке
+STR_ORDER_HANGAR_ACTION_TOOLTIP                                 :{BLACK}Выберите действие, которое нужно выполнить в этом ангаре
 ###next-name-looks-similar
 
 STR_ORDER_CONDITIONAL_VARIABLE_TOOLTIP                          :{BLACK}Параметр транспорта для сравнения
@@ -4813,6 +4816,7 @@ STR_ORDER_REFIT_ORDER                                           :(Переобо
 STR_ORDER_REFIT_STOP_ORDER                                      :(Переоборуд. под {STRING.acc} и стоп)
 STR_ORDER_STOP_ORDER                                            :(Стоп)
 
+STR_ORDER_WAIT_TO_UNBUNCH                                       :(распределить)
 
 STR_ORDER_GO_TO_STATION                                         :{STRING} {STATION} {STRING}
 STR_ORDER_GO_TO_STATION_CAN_T_USE_STATION                       :{PUSH_COLOUR}{RED}(Неверный тип){POP_COLOUR} {STRING} {STATION} {STRING}
@@ -5284,6 +5288,11 @@ STR_ERROR_UNABLE_TO_FIND_LOCAL_DEPOT                            :{WHITE}Нево
 STR_ERROR_DEPOT_WRONG_DEPOT_TYPE                                :Неверный тип депо
 
 # Depot unbunching related errors
+STR_ERROR_UNBUNCHING_ONLY_ONE_ALLOWED                           :{WHITE}... допускается только одно задание с распределением по маршруту
+STR_ERROR_UNBUNCHING_NO_FULL_LOAD                               :{WHITE}... нельзя ждать полной загрузки, если в списке заданий есть «распределение»
+STR_ERROR_UNBUNCHING_NO_UNBUNCHING_FULL_LOAD                    :{WHITE}... нельзя равномерно распределить по маршруту транспортные средства с заданиями ожидания полной погрузки
+STR_ERROR_UNBUNCHING_NO_CONDITIONAL                             :{WHITE}... нельзя использовать условные задания, если в списке заданий есть «распределение»
+STR_ERROR_UNBUNCHING_NO_UNBUNCHING_CONDITIONAL                  :{WHITE}... нельзя равномерно распределить по маршруту транспортные средства с условными заданиями
 
 # Autoreplace related errors
 STR_ERROR_TRAIN_TOO_LONG_AFTER_REPLACEMENT                      :{WHITE}ТС «{VEHICLE}» слишком длинное после замены

@@ -159,7 +159,6 @@ STR_ABBREV_TOFFEE                                               :TF
 STR_ABBREV_BATTERIES                                            :BT
 STR_ABBREV_PLASTIC                                              :PL
 STR_ABBREV_FIZZY_DRINKS                                         :FZ
-STR_ABBREV_NONE                                                 :TIADA
 STR_ABBREV_ALL                                                  :SEMUA
 
 # 'Mode' of transport for cargoes
@@ -2883,8 +2882,6 @@ STR_STATION_LIST_STATION                                        :{YELLOW}{STATIO
 STR_STATION_LIST_WAYPOINT                                       :{YELLOW}{WAYPOINT}
 STR_STATION_LIST_NONE                                           :{YELLOW}- Tiada -
 STR_STATION_LIST_SELECT_ALL_FACILITIES                          :{BLACK}Pilih semua kemudahan
-STR_STATION_LIST_SELECT_ALL_TYPES                               :{BLACK}Pilih semua kargo (termasuk kargo tiada menunggu)
-STR_STATION_LIST_NO_WAITING_CARGO                               :{BLACK}Tiada kargo menunggu
 
 # Station view window
 STR_STATION_VIEW_CAPTION                                        :{WHITE}{STATION} {STATION_FEATURES}

@@ -160,7 +160,6 @@ STR_ABBREV_TOFFEE                                               :CM
 STR_ABBREV_BATTERIES                                            :BA
 STR_ABBREV_PLASTIC                                              :PL
 STR_ABBREV_FIZZY_DRINKS                                         :GZ
-STR_ABBREV_NONE                                                 :NO
 STR_ABBREV_ALL                                                  :TOUT
 
 # 'Mode' of transport for cargoes
@@ -3746,8 +3745,6 @@ STR_STATION_LIST_STATION                                        :{YELLOW}{STATIO
 STR_STATION_LIST_WAYPOINT                                       :{YELLOW}{WAYPOINT}
 STR_STATION_LIST_NONE                                           :{YELLOW}− Aucun −
 STR_STATION_LIST_SELECT_ALL_FACILITIES                          :{BLACK}Tous les types de station
-STR_STATION_LIST_SELECT_ALL_TYPES                               :{BLACK}Tous les types de marchandise{}(y compris pas en attente)
-STR_STATION_LIST_NO_WAITING_CARGO                               :{BLACK}Pas de marchandises en attente
 
 # Station view window
 STR_STATION_VIEW_CAPTION                                        :{WHITE}{STATION} {STATION_FEATURES}

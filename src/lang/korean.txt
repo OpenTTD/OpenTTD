@@ -160,7 +160,6 @@ STR_ABBREV_TOFFEE                                               :토
 STR_ABBREV_BATTERIES                                            :건
 STR_ABBREV_PLASTIC                                              :플
 STR_ABBREV_FIZZY_DRINKS                                         :탄
-STR_ABBREV_NONE                                                 :X
 STR_ABBREV_ALL                                                  :모두
 
 # 'Mode' of transport for cargoes
@@ -3746,8 +3745,6 @@ STR_STATION_LIST_STATION                                        :{YELLOW}{STATIO
 STR_STATION_LIST_WAYPOINT                                       :{YELLOW}{WAYPOINT}
 STR_STATION_LIST_NONE                                           :{YELLOW}- 없음 -
 STR_STATION_LIST_SELECT_ALL_FACILITIES                          :{BLACK}모든 시설을 선택합니다.
-STR_STATION_LIST_SELECT_ALL_TYPES                               :{BLACK}화물을 하나라도 취급하는 모든 역을 목록에 표시합니다. (화물이 없는 역도 포함)
-STR_STATION_LIST_NO_WAITING_CARGO                               :{BLACK}화물을 취급하지 않는 역을 목록에 표시합니다.
 
 # Station view window
 STR_STATION_VIEW_CAPTION                                        :{WHITE}{STATION} {STATION_FEATURES}

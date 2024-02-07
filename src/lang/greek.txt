@@ -220,7 +220,6 @@ STR_ABBREV_TOFFEE                                               :ΚΒ
 STR_ABBREV_BATTERIES                                            :ΜΠ
 STR_ABBREV_PLASTIC                                              :ΠΛ
 STR_ABBREV_FIZZY_DRINKS                                         :ΑΨ
-STR_ABBREV_NONE                                                 :ΤΠ
 STR_ABBREV_ALL                                                  :ΟΛΑ
 
 # 'Mode' of transport for cargoes
@@ -3601,8 +3600,6 @@ STR_STATION_LIST_STATION                                        :{YELLOW}{STATIO
 STR_STATION_LIST_WAYPOINT                                       :{YELLOW}{WAYPOINT}
 STR_STATION_LIST_NONE                                           :{YELLOW}- Κανένας -
 STR_STATION_LIST_SELECT_ALL_FACILITIES                          :{BLACK}Επιλογή όλων των εγκαταστάσεων
-STR_STATION_LIST_SELECT_ALL_TYPES                               :{BLACK}Επιλογή όλων των τύπων φορτίου (συμπεριλαμβανομένου φορτίου μη-αναμονής)
-STR_STATION_LIST_NO_WAITING_CARGO                               :{BLACK}Κανένα εμπόρευμα κανενός τύπου δεν περιμένει
 
 # Station view window
 STR_STATION_VIEW_CAPTION                                        :{WHITE}{STATION} {STATION_FEATURES}

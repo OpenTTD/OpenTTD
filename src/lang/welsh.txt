@@ -159,7 +159,6 @@ STR_ABBREV_TOFFEE                                               :TFI
 STR_ABBREV_BATTERIES                                            :BAT
 STR_ABBREV_PLASTIC                                              :PLS
 STR_ABBREV_FIZZY_DRINKS                                         :DIO
-STR_ABBREV_NONE                                                 :DIM
 STR_ABBREV_ALL                                                  :OLL
 
 # 'Mode' of transport for cargoes
@@ -3262,8 +3261,6 @@ STR_STATION_LIST_STATION                                        :{YELLOW}{STATIO
 STR_STATION_LIST_WAYPOINT                                       :{YELLOW}{WAYPOINT}
 STR_STATION_LIST_NONE                                           :{YELLOW}- Dim -
 STR_STATION_LIST_SELECT_ALL_FACILITIES                          :{BLACK}Dewis pob cyfleuster
-STR_STATION_LIST_SELECT_ALL_TYPES                               :{BLACK}Dewis pob math llwyth (gan gynnwys llwythi lle nad oes dim yn disgwyl)
-STR_STATION_LIST_NO_WAITING_CARGO                               :{BLACK}Nid oes llwyth o unrhyw fath yn disgwyl
 
 # Station view window
 STR_STATION_VIEW_CAPTION                                        :{WHITE}{STATION} {STATION_FEATURES}

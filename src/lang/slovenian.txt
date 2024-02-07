@@ -312,7 +312,6 @@ STR_ABBREV_TOFFEE                                               :KR
 STR_ABBREV_BATTERIES                                            :BA
 STR_ABBREV_PLASTIC                                              :PL
 STR_ABBREV_FIZZY_DRINKS                                         :GP
-STR_ABBREV_NONE                                                 :NO
 STR_ABBREV_ALL                                                  :VSE
 
 # 'Mode' of transport for cargoes
@@ -3316,8 +3315,6 @@ STR_STATION_LIST_STATION                                        :{YELLOW}{STATIO
 STR_STATION_LIST_WAYPOINT                                       :{YELLOW}{WAYPOINT}
 STR_STATION_LIST_NONE                                           :{YELLOW}- Brez -
 STR_STATION_LIST_SELECT_ALL_FACILITIES                          :{BLACK}Izberi vse pripomočke
-STR_STATION_LIST_SELECT_ALL_TYPES                               :{BLACK}Izberi vse vrste tovora (vključno s tovorom, ki ne čaka)
-STR_STATION_LIST_NO_WAITING_CARGO                               :{BLACK}Noben tovor ne čaka
 
 # Station view window
 STR_STATION_VIEW_CAPTION                                        :{WHITE}{STATION} {STATION_FEATURES}

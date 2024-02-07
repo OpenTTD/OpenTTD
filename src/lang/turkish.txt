@@ -160,7 +160,6 @@ STR_ABBREV_TOFFEE                                               :ŞL
 STR_ABBREV_BATTERIES                                            :PL
 STR_ABBREV_PLASTIC                                              :PL
 STR_ABBREV_FIZZY_DRINKS                                         :İÇ
-STR_ABBREV_NONE                                                 :YO
 STR_ABBREV_ALL                                                  :TÜMÜ
 
 # 'Mode' of transport for cargoes
@@ -3622,8 +3621,6 @@ STR_STATION_LIST_STATION                                        :{YELLOW}{STATIO
 STR_STATION_LIST_WAYPOINT                                       :{YELLOW}{WAYPOINT}
 STR_STATION_LIST_NONE                                           :{YELLOW}- Yok -
 STR_STATION_LIST_SELECT_ALL_FACILITIES                          :{BLACK}Tüm türleri seç
-STR_STATION_LIST_SELECT_ALL_TYPES                               :{BLACK}Tüm kargo türlerini seç (hiç beklemeyenler dahil)
-STR_STATION_LIST_NO_WAITING_CARGO                               :{BLACK}Hiç kargo yok
 
 # Station view window
 STR_STATION_VIEW_CAPTION                                        :{WHITE}{STATION} {STATION_FEATURES}
@@ -4288,6 +4285,9 @@ STR_VEHICLE_INFO_CAPACITY_CAPACITY                              :{BLACK}Kapasite
 
 STR_VEHICLE_INFO_FEEDER_CARGO_VALUE                             :{BLACK}Aktarma Maliyeti: {LTBLUE}{CURRENCY_LONG}
 
+STR_VEHICLE_DETAILS_INCREASE_SERVICING_INTERVAL_TOOLTIP_DAYS    :{BLACK}Bakım aralığını 10 gün arttırın. Bakım aralığını 5 gün arttırmak için Ctrl+Sol tık yapın.
+STR_VEHICLE_DETAILS_INCREASE_SERVICING_INTERVAL_TOOLTIP_MINUTES :{BLACK}Servis aralığını 5 dakika arttırın. Servis aralığını 1 dakika arttırmak için Ctrl+Sol tık yapın.
+STR_VEHICLE_DETAILS_INCREASE_SERVICING_INTERVAL_TOOLTIP_PERCENT :{BLACK}Servis aralığını yüzde 10 arttırın. Servis aralığını %5 arttırmak için Ctrl + Sol tık yapın.
 
 STR_SERVICE_INTERVAL_DROPDOWN_TOOLTIP                           :{BLACK}Bakım aralığı türünü değiştir
 STR_VEHICLE_DETAILS_DEFAULT                                     :Varsayılan

@@ -159,7 +159,6 @@ STR_ABBREV_TOFFEE                                               :タ
 STR_ABBREV_BATTERIES                                            :電
 STR_ABBREV_PLASTIC                                              :プ
 STR_ABBREV_FIZZY_DRINKS                                         :ソ
-STR_ABBREV_NONE                                                 :無
 STR_ABBREV_ALL                                                  :全
 
 # 'Mode' of transport for cargoes
@@ -3546,8 +3545,6 @@ STR_STATION_LIST_STATION                                        :{YELLOW}{STATIO
 STR_STATION_LIST_WAYPOINT                                       :{YELLOW}{WAYPOINT}
 STR_STATION_LIST_NONE                                           :{YELLOW}- なし -
 STR_STATION_LIST_SELECT_ALL_FACILITIES                          :{BLACK}全停留施設を選択
-STR_STATION_LIST_SELECT_ALL_TYPES                               :{BLACK}全貨物種類を選択(積込待ちのない貨物も含む)
-STR_STATION_LIST_NO_WAITING_CARGO                               :{BLACK}積込待ち貨物はありません
 
 # Station view window
 STR_STATION_VIEW_CAPTION                                        :{WHITE}{STATION} {STATION_FEATURES}

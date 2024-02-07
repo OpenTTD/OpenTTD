@@ -354,7 +354,6 @@ STR_ABBREV_TOFFEE                                               :KR
 STR_ABBREV_BATTERIES                                            :BA
 STR_ABBREV_PLASTIC                                              :PM
 STR_ABBREV_FIZZY_DRINKS                                         :GG
-STR_ABBREV_NONE                                                 :-
 STR_ABBREV_ALL                                                  :VISI
 
 # 'Mode' of transport for cargoes
@@ -3682,8 +3681,6 @@ STR_STATION_LIST_STATION                                        :{YELLOW}{STATIO
 STR_STATION_LIST_WAYPOINT                                       :{YELLOW}{WAYPOINT}
 STR_STATION_LIST_NONE                                           :{YELLOW}- Nieko -
 STR_STATION_LIST_SELECT_ALL_FACILITIES                          :{BLACK}Pažymėti visus pastatus
-STR_STATION_LIST_SELECT_ALL_TYPES                               :{BLACK}Pažymėti visus krovinio tipus (įskaitant nelaukiančius krovinių)
-STR_STATION_LIST_NO_WAITING_CARGO                               :{BLACK}Jokių krovinių nėra pakrovimui
 
 # Station view window
 STR_STATION_VIEW_CAPTION                                        :{WHITE}{STATION} {STATION_FEATURES}

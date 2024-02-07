@@ -284,7 +284,6 @@ STR_ABBREV_TOFFEE                                               :ІР
 STR_ABBREV_BATTERIES                                            :БТ
 STR_ABBREV_PLASTIC                                              :ПЛ
 STR_ABBREV_FIZZY_DRINKS                                         :ГЗ
-STR_ABBREV_NONE                                                 :НІ
 STR_ABBREV_ALL                                                  :Все
 
 # 'Mode' of transport for cargoes
@@ -316,6 +315,19 @@ STR_COLOUR_WHITE                                                :Білий
 STR_COLOUR_RANDOM                                               :Випадково
 
 ###length 17
+STR_COLOUR_SECONDARY_DARK_BLUE                                  :Синій
+STR_COLOUR_SECONDARY_PALE_GREEN                                 :Світло-зелений
+STR_COLOUR_SECONDARY_RED                                        :Червоний
+STR_COLOUR_SECONDARY_LIGHT_BLUE                                 :Блакитний
+STR_COLOUR_SECONDARY_GREEN                                      :Зелений
+STR_COLOUR_SECONDARY_DARK_GREEN                                 :Темно-зелений
+STR_COLOUR_SECONDARY_BLUE                                       :Синій
+STR_COLOUR_SECONDARY_CREAM                                      :Кремовий
+STR_COLOUR_SECONDARY_MAUVE                                      :Бузковий
+STR_COLOUR_SECONDARY_PURPLE                                     :Фіолетовий
+STR_COLOUR_SECONDARY_ORANGE                                     :Помаранчевий
+STR_COLOUR_SECONDARY_BROWN                                      :Коричневий
+STR_COLOUR_SECONDARY_GREY                                       :Сірий
 
 
 # Units used in OpenTTD
@@ -431,7 +443,9 @@ STR_SORT_BY_TYPE                                                :за типом
 STR_SORT_BY_TRANSPORTED                                         :за обсягом перевезень
 STR_SORT_BY_NUMBER                                              :за номером
 STR_SORT_BY_PROFIT_LAST_YEAR                                    :за прибутком минулого року
+STR_SORT_BY_PROFIT_LAST_PERIOD                                  :Прибуток минулого періоду
 STR_SORT_BY_PROFIT_THIS_YEAR                                    :за прибутком цього року
+STR_SORT_BY_PROFIT_THIS_PERIOD                                  :Прибуток цього періоду
 STR_SORT_BY_AGE                                                 :за віком
 STR_SORT_BY_RELIABILITY                                         :за надійністю
 STR_SORT_BY_TOTAL_CAPACITY_PER_CARGOTYPE                        :за місткістю
@@ -459,7 +473,9 @@ STR_SORT_BY_POPULATION                                          :за насел
 STR_SORT_BY_RATING                                              :за рейтингом
 STR_SORT_BY_NUM_VEHICLES                                        :Кількість авто
 STR_SORT_BY_TOTAL_PROFIT_LAST_YEAR                              :Загальний прибуток минулого року
+STR_SORT_BY_TOTAL_PROFIT_LAST_PERIOD                            :Загальний прибуток минулого періоду
 STR_SORT_BY_TOTAL_PROFIT_THIS_YEAR                              :Загальний прибуток цього року
+STR_SORT_BY_TOTAL_PROFIT_THIS_PERIOD                            :Загальний прибуток цього періоду
 STR_SORT_BY_AVERAGE_PROFIT_LAST_YEAR                            :Середній прибуток минулого року
 STR_SORT_BY_AVERAGE_PROFIT_THIS_YEAR                            :Середній прибуток цього року
 
@@ -618,6 +634,7 @@ STR_NEWS_MENU_DELETE_ALL_MESSAGES                               :Видалит�
 
 # About menu
 STR_ABOUT_MENU_LAND_BLOCK_INFO                                  :Інформація про ділянку
+STR_ABOUT_MENU_HELP                                             :Допомога й довідка
 STR_ABOUT_MENU_TOGGLE_CONSOLE                                   :Вкл./відкл. консоль
 STR_ABOUT_MENU_AI_DEBUG                                         :Зневадження ШІ / ігрового скрипту
 STR_ABOUT_MENU_SCREENSHOT                                       :Знімок екрану
@@ -986,6 +1003,8 @@ STR_NEWS_VEHICLE_IS_GETTING_VERY_OLD                            :{WHITE}{VEHICLE
 STR_NEWS_VEHICLE_IS_GETTING_VERY_OLD_AND                        :{WHITE}{VEHICLE} дуже застарів та потребує негайної заміни
 STR_NEWS_TRAIN_IS_STUCK                                         :{WHITE}{VEHICLE} не може знайти шлях
 STR_NEWS_VEHICLE_IS_LOST                                        :{WHITE}{VEHICLE} загубився
+STR_NEWS_VEHICLE_UNPROFITABLE_YEAR                              :Прибуток {WHITE}{VEHICLE} минулого року {CURRENCY_LONG}
+STR_NEWS_VEHICLE_UNPROFITABLE_PERIOD                            :Прибуток {WHITE}{VEHICLE} минулого року {CURRENCY_LONG}
 STR_NEWS_AIRCRAFT_DEST_TOO_FAR                                  :{WHITE}{VEHICLE} не може дістатися наступного місця призначення, бо воно дуже далеко
 
 STR_NEWS_ORDER_REFIT_FAILED                                     :{WHITE}{VEHICLE} зупинено внаслідок збою запланованого переобладнання
@@ -1034,6 +1053,7 @@ STR_GAME_OPTIONS_VOLUME_100                                     :100%
 STR_GAME_OPTIONS_CURRENCY_UNITS_FRAME                           :{BLACK}Грошова одиниця
 STR_GAME_OPTIONS_CURRENCY_UNITS_DROPDOWN_TOOLTIP                :{BLACK}Виберіть грошову одиницю
 
+STR_GAME_OPTIONS_CURRENCY_CODE                                  :{STRING} ({STRING})
 
 ###length 43
 STR_GAME_OPTIONS_CURRENCY_GBP                                   :Британський фунт
@@ -1078,6 +1098,7 @@ STR_GAME_OPTIONS_CURRENCY_HKD                                   :Гонконг�
 STR_GAME_OPTIONS_CURRENCY_INR                                   :Індійська рупія
 STR_GAME_OPTIONS_CURRENCY_IDR                                   :Індонезійська рупія
 STR_GAME_OPTIONS_CURRENCY_MYR                                   :Малайзійський рингіт
+STR_GAME_OPTIONS_CURRENCY_LVL                                   :Латвійські лати
 
 STR_GAME_OPTIONS_AUTOSAVE_FRAME                                 :{BLACK}Автозбереження
 STR_GAME_OPTIONS_AUTOSAVE_DROPDOWN_TOOLTIP                      :{BLACK}Виберіть період автозбереження гри
@@ -1314,6 +1335,7 @@ STR_CONFIG_SETTING_HORIZONTAL_POS_CENTER                        :по центр
 STR_CONFIG_SETTING_HORIZONTAL_POS_RIGHT                         :праворуч
 
 
+STR_CONFIG_SETTING_INFINITE_MONEY                               :Нескінченні гроші: {STRING}
 
 STR_CONFIG_SETTING_MAXIMUM_INITIAL_LOAN                         :Максимальна сума позики: {STRING}
 STR_CONFIG_SETTING_MAXIMUM_INITIAL_LOAN_HELPTEXT                :Максимальна сума позики для компанії (без урахування інфляції)
@@ -1464,7 +1486,8 @@ STR_CONFIG_SETTING_BRIBE_HELPTEXT                               :Дозволя�
 
 STR_CONFIG_SETTING_ALLOW_EXCLUSIVE                              :Дозволити придбання ексклюзивних прав: {STRING}
 ###length 2
-STR_CONFIG_SETTING_ALLOW_EXCLUSIVE_HELPTEXT                     :Якщо компанія придбає ексклюзивні транспортні права в місті, то на протязі року станції конкурентів не отримають жодного вантажа або пасажира.
+STR_CONFIG_SETTING_ALLOW_EXCLUSIVE_HELPTEXT                     :Якщо компанія придбає ексклюзивні транспортні права в місті, то впродовж року станції конкурентів не отримають жодного вантажа або пасажира.
+STR_CONFIG_SETTING_ALLOW_EXCLUSIVE_HELPTEXT_MINUTES             :Якщо компанія придбає ексклюзивні транспортні права в місті, то впродовж року станції конкурентів не отримають жодного вантажа або пасажира.
 
 STR_CONFIG_SETTING_ALLOW_FUND_BUILDINGS                         :Дозволити фінансування забудови міста: {STRING}
 STR_CONFIG_SETTING_ALLOW_FUND_BUILDINGS_HELPTEXT                :Дозволяє компаніям фінансувати забудову міста, тимчасово прискорюючи його розвиток.
@@ -1525,6 +1548,7 @@ STR_CONFIG_SETTING_NEVER_EXPIRE_VEHICLES_HELPTEXT               :При вклю
 
 ###length 2
 
+STR_CONFIG_SETTING_MINUTES_PER_YEAR                             :Хвилин у році: {STRING}
 
 ###setting-zero-is-special
 
@@ -1641,7 +1665,7 @@ STR_CONFIG_SETTING_SMALLMAP_LAND_COLOUR                         :Колір по
 STR_CONFIG_SETTING_SMALLMAP_LAND_COLOUR_HELPTEXT                :Колір поверхні на зменшеній карті
 ###length 3
 STR_CONFIG_SETTING_SMALLMAP_LAND_COLOUR_GREEN                   :зелений
-STR_CONFIG_SETTING_SMALLMAP_LAND_COLOUR_DARK_GREEN              :темнозелений
+STR_CONFIG_SETTING_SMALLMAP_LAND_COLOUR_DARK_GREEN              :темно-зелений
 STR_CONFIG_SETTING_SMALLMAP_LAND_COLOUR_VIOLET                  :фіолетовий
 
 STR_CONFIG_SETTING_LINKGRAPH_COLOURS                            :Схема кольорів вантажопотоків: {STRING}
@@ -2240,9 +2264,11 @@ STR_LIVERY_TRAIN_TOOLTIP                                        :{BLACK}Пока
 STR_LIVERY_ROAD_VEHICLE_TOOLTIP                                 :{BLACK}Показати фарбування автотранспорта
 STR_LIVERY_SHIP_TOOLTIP                                         :{BLACK}Показати фарбування кораблів
 STR_LIVERY_AIRCRAFT_TOOLTIP                                     :{BLACK}Показати фарбування авіації
+STR_LIVERY_TRAIN_GROUP_TOOLTIP                                  :{BLACK}Показати кольори груп поїздів
 STR_LIVERY_PRIMARY_TOOLTIP                                      :{BLACK}Оберіть основний колір для обраної схеми. Ctrl+клац мишею встановить обраний колір для всіх схем
 STR_LIVERY_SECONDARY_TOOLTIP                                    :{BLACK}Оберіть другорядний колір для обраної схеми. Ctrl+клац мишею встановить обраний колір для всіх схем
 STR_LIVERY_PANEL_TOOLTIP                                        :{BLACK}Оберіть кольорову схему для зміни, чи декілька з Ctrl+клац мишею. Клацніть на прямокутнику, щоб ввімкнути/вимкнути використання схем
+STR_LIVERY_TRAIN_GROUP_EMPTY                                    :Кольори груп поїздів відсутні
 
 ###length 23
 STR_LIVERY_DEFAULT                                              :Стандартний колір
@@ -2348,6 +2374,7 @@ STR_NETWORK_SERVER_LIST_MAP_SIZE_CAPTION                        :{BLACK}Розм
 STR_NETWORK_SERVER_LIST_MAP_SIZE_CAPTION_TOOLTIP                :{BLACK}Розмір карти гри{}Клацніть мишею для сортування за районом
 STR_NETWORK_SERVER_LIST_DATE_CAPTION                            :{BLACK}Дата
 STR_NETWORK_SERVER_LIST_DATE_CAPTION_TOOLTIP                    :{BLACK}Поточна дата
+STR_NETWORK_SERVER_LIST_PLAY_TIME_CAPTION                       :{BLACK}Тривалість гри
 STR_NETWORK_SERVER_LIST_INFO_ICONS_TOOLTIP                      :{BLACK}Мова, версія сервера, та інше.
 
 STR_NETWORK_SERVER_LIST_CLICK_GAME_TO_SELECT                    :{BLACK}Натисніть на гру із списку, щоб вибрати її
@@ -2363,6 +2390,7 @@ STR_NETWORK_SERVER_LIST_SERVER_ADDRESS                          :{SILVER}Адр�
 STR_NETWORK_SERVER_LIST_INVITE_CODE                             :{SILVER}Код запрошення: {WHITE}{STRING}
 STR_NETWORK_SERVER_LIST_START_DATE                              :{SILVER}Дата початку: {WHITE}{DATE_SHORT}
 STR_NETWORK_SERVER_LIST_CURRENT_DATE                            :{SILVER}Поточна дата: {WHITE}{DATE_SHORT}
+STR_NETWORK_SERVER_LIST_PLAY_TIME                               :{SILVER}Тривалість гри: {WHITE}{NUM}год {NUM}хв
 STR_NETWORK_SERVER_LIST_GAMESCRIPT                              :{SILVER}Ігровий скрипт: {WHITE}{STRING} (v{NUM})
 STR_NETWORK_SERVER_LIST_PASSWORD                                :{SILVER}Захищено паролем!
 STR_NETWORK_SERVER_LIST_SERVER_OFFLINE                          :{SILVER}Сервер відключений
@@ -3677,8 +3705,6 @@ STR_STATION_LIST_STATION                                        :{YELLOW}{STATIO
 STR_STATION_LIST_WAYPOINT                                       :{YELLOW}{WAYPOINT}
 STR_STATION_LIST_NONE                                           :{YELLOW}- немає -
 STR_STATION_LIST_SELECT_ALL_FACILITIES                          :{BLACK}Вибрати весь транспорт
-STR_STATION_LIST_SELECT_ALL_TYPES                               :{BLACK}Вибрати всі типи вантажів
-STR_STATION_LIST_NO_WAITING_CARGO                               :{BLACK}Звідси поки що нічого перевозити
 
 # Station view window
 STR_STATION_VIEW_CAPTION                                        :{WHITE}{STATION} {STATION_FEATURES}
@@ -3754,6 +3780,8 @@ STR_EDIT_WAYPOINT_NAME                                          :{WHITE}Пере
 # Finances window
 STR_FINANCES_CAPTION                                            :{WHITE}Фінанси {COMPANY} {BLACK}{COMPANY_NUM}
 STR_FINANCES_YEAR                                               :{WHITE}{NUM}
+STR_FINANCES_YEAR_CAPTION                                       :{WHITE}Рік
+STR_FINANCES_PERIOD_CAPTION                                     :{WHITE}Період
 
 ###length 3
 STR_FINANCES_REVENUE_TITLE                                      :{WHITE}Дохід
@@ -3978,7 +4006,7 @@ STR_BUY_VEHICLE_SHIP_CAPTION                                    :Нові кор
 STR_BUY_VEHICLE_AIRCRAFT_CAPTION                                :Нові літаки
 
 STR_PURCHASE_INFO_COST_WEIGHT                                   :{BLACK}Ціна: {GOLD}{CURRENCY_LONG}{BLACK} Вага: {GOLD}{WEIGHT_SHORT}
-STR_PURCHASE_INFO_COST_REFIT_WEIGHT                             :{BLACK}Ціна: {GOLD}{CURRENCY_LONG}{BLACK} (Вартість переобладнання: {GOLD}{CURRENCY_LONG}{BLACK}) Вага: {GOLD}{WEIGHT_SHORT}
+STR_PURCHASE_INFO_COST_REFIT_WEIGHT                             :{BLACK}Ціна: {GOLD}{CURRENCY_LONG}{BLACK} (Вартість переобладнання: {GOLD}{CURRENCY_LONG}{BLACK}) Маса: {GOLD}{WEIGHT_SHORT}
 STR_PURCHASE_INFO_SPEED_POWER                                   :{BLACK}Швидкість: {GOLD}{VELOCITY}{BLACK} Потужність: {GOLD}{POWER}
 STR_PURCHASE_INFO_SPEED                                         :{BLACK}Швидкість: {GOLD}{VELOCITY}
 STR_PURCHASE_INFO_SPEED_OCEAN                                   :{BLACK}Швидкість в океані: {GOLD}{VELOCITY}
@@ -4175,6 +4203,10 @@ STR_ENGINE_PREVIEW_TRAM_VEHICLE                                 :трамваї
 STR_ENGINE_PREVIEW_AIRCRAFT                                     :літак
 STR_ENGINE_PREVIEW_SHIP                                         :корабель
 
+STR_ENGINE_PREVIEW_COST_WEIGHT                                  :Ціна: {CURRENCY_LONG}  Маса: {WEIGHT_SHORT}
+STR_ENGINE_PREVIEW_COST_MAX_SPEED                               :Ціна: {CURRENCY_LONG}  Швидкість: {VELOCITY}
+STR_ENGINE_PREVIEW_CAPACITY                                     :Місткість: {CARGO_LONG}
+STR_ENGINE_PREVIEW_CAPACITY_2                                   :Місткість: {CARGO_LONG}, {CARGO_LONG}
 
 # Autoreplace window
 STR_REPLACE_VEHICLES_WHITE                                      :{WHITE}Оновити {STRING} - {STRING}
@@ -4342,6 +4374,7 @@ STR_VEHICLE_INFO_FEEDER_CARGO_VALUE                             :{BLACK}Плат
 
 STR_SERVICE_INTERVAL_DROPDOWN_TOOLTIP                           :{BLACK}Відлік інтервалу між техоглядами
 STR_VEHICLE_DETAILS_DEFAULT                                     :Стандартно
+STR_VEHICLE_DETAILS_DAYS                                        :Днів
 STR_VEHICLE_DETAILS_PERCENT                                     :Проценти
 
 ###length VEHICLE_TYPES

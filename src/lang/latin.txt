@@ -347,7 +347,6 @@ STR_ABBREV_TOFFEE                                               :ST
 STR_ABBREV_BATTERIES                                            :PE
 STR_ABBREV_PLASTIC                                              :PL
 STR_ABBREV_FIZZY_DRINKS                                         :PC
-STR_ABBREV_NONE                                                 :NO
 STR_ABBREV_ALL                                                  :OMN
 
 # 'Mode' of transport for cargoes
@@ -3396,8 +3395,6 @@ STR_STATION_LIST_STATION                                        :{YELLOW}{STATIO
 STR_STATION_LIST_WAYPOINT                                       :{YELLOW}{WAYPOINT}
 STR_STATION_LIST_NONE                                           :{YELLOW}- Nullae -
 STR_STATION_LIST_SELECT_ALL_FACILITIES                          :{BLACK}Omnes eligere
-STR_STATION_LIST_SELECT_ALL_TYPES                               :{BLACK}Omnes onerum typos eligere (etiam onera non in ulla statione)
-STR_STATION_LIST_NO_WAITING_CARGO                               :{BLACK}Nullum onus manens est
 
 # Station view window
 STR_STATION_VIEW_CAPTION                                        :{WHITE}{STATION} {STATION_FEATURES}

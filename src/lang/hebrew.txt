@@ -173,7 +173,6 @@ STR_ABBREV_TOFFEE                                               :טפ
 STR_ABBREV_BATTERIES                                            :בטריות
 STR_ABBREV_PLASTIC                                              :פל
 STR_ABBREV_FIZZY_DRINKS                                         :ממ
-STR_ABBREV_NONE                                                 :כל
 STR_ABBREV_ALL                                                  :הכל
 
 # 'Mode' of transport for cargoes
@@ -3289,8 +3288,6 @@ STR_STATION_LIST_STATION                                        :{YELLOW} {1:STA
 STR_STATION_LIST_WAYPOINT                                       :{YELLOW}{WAYPOINT}
 STR_STATION_LIST_NONE                                           :{YELLOW}- כלום -
 STR_STATION_LIST_SELECT_ALL_FACILITIES                          :{BLACK}בחר את כל המתקנים
-STR_STATION_LIST_SELECT_ALL_TYPES                               :{BLACK}(ברח את כל סוגי הסחורה (כולל סחורה שלא מחכה
-STR_STATION_LIST_NO_WAITING_CARGO                               :{BLACK}שום סחורה לא מחכה
 
 # Station view window
 STR_STATION_VIEW_CAPTION                                        :{WHITE}{STATION} {STATION_FEATURES}

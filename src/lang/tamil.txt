@@ -159,7 +159,6 @@ STR_ABBREV_TOFFEE                                               :TF
 STR_ABBREV_BATTERIES                                            :BA
 STR_ABBREV_PLASTIC                                              :PL
 STR_ABBREV_FIZZY_DRINKS                                         :FZ
-STR_ABBREV_NONE                                                 :NO
 STR_ABBREV_ALL                                                  :அனைத்தும்
 
 # 'Mode' of transport for cargoes
@@ -3130,8 +3129,6 @@ STR_STATION_LIST_STATION                                        :{YELLOW}{STATIO
 STR_STATION_LIST_WAYPOINT                                       :{YELLOW}{WAYPOINT}
 STR_STATION_LIST_NONE                                           :{YELLOW}- ஒன்றுமில்லை -
 STR_STATION_LIST_SELECT_ALL_FACILITIES                          :{BLACK}அனைத்து வசதிகளையும் தேர்ந்தெடு
-STR_STATION_LIST_SELECT_ALL_TYPES                               :{BLACK}அனைத்து சரக்கு வகைகளையும் தேர்ந்தெடுக்கவும் (காத்திருக்கா சரக்குகளையும் சேர்த்து)
-STR_STATION_LIST_NO_WAITING_CARGO                               :{BLACK}எந்த வகையான சரக்குகளும் காத்திருக்கவில்லை
 
 # Station view window
 STR_STATION_VIEW_CAPTION                                        :{WHITE}{STATION} {STATION_FEATURES}

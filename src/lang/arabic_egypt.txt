@@ -159,7 +159,6 @@ STR_ABBREV_TOFFEE                                               :توفي
 STR_ABBREV_BATTERIES                                            :بطاريات
 STR_ABBREV_PLASTIC                                              :بلاستيك
 STR_ABBREV_FIZZY_DRINKS                                         :شراب مخفوق
-STR_ABBREV_NONE                                                 :لا شيء
 STR_ABBREV_ALL                                                  :الكل
 
 # 'Mode' of transport for cargoes
@@ -3027,8 +3026,6 @@ STR_STATION_LIST_STATION                                        :{YELLOW}{STATIO
 STR_STATION_LIST_WAYPOINT                                       :{YELLOW}{WAYPOINT}
 STR_STATION_LIST_NONE                                           :{YELLOW}- بدون -
 STR_STATION_LIST_SELECT_ALL_FACILITIES                          :{BLACK}اختر جميع المرافق
-STR_STATION_LIST_SELECT_ALL_TYPES                               :{BLACK}اختر كل انواع الشحن (حتى غير المنتظرة)
-STR_STATION_LIST_NO_WAITING_CARGO                               :{BLACK}لا يوجد اي شحنة منتظرة
 
 # Station view window
 STR_STATION_VIEW_CAPTION                                        :{WHITE}{STATION} {STATION_FEATURES}

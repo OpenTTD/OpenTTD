@@ -159,7 +159,6 @@ STR_ABBREV_TOFFEE                                               :TF
 STR_ABBREV_BATTERIES                                            :BA
 STR_ABBREV_PLASTIC                                              :PL
 STR_ABBREV_FIZZY_DRINKS                                         :FR
-STR_ABBREV_NONE                                                 :GEEN
 STR_ABBREV_ALL                                                  :ALLES
 
 # 'Mode' of transport for cargoes
@@ -290,7 +289,7 @@ STR_TOOLTIP_RESIZE                                              :{BLACK}Klik en 
 STR_TOOLTIP_TOGGLE_LARGE_SMALL_WINDOW                           :{BLACK}Schakelen tussen groot/klein venster
 STR_TOOLTIP_VSCROLL_BAR_SCROLLS_LIST                            :{BLACK}Schuifbalk - blader verticaal door de lijst
 STR_TOOLTIP_HSCROLL_BAR_SCROLLS_LIST                            :{BLACK}Schuifbalk - blader horizontaal door de lijst
-STR_TOOLTIP_DEMOLISH_BUILDINGS_ETC                              :{BLACK}Hiermee sloop je gebouwen enz. op een landtegel. Ctrl selecteert het gebied diagonaal. Shift schakelt tussen bouwen/inschatting van de kosten.
+STR_TOOLTIP_DEMOLISH_BUILDINGS_ETC                              :{BLACK}Hiermee sloop je gebouwen enz. op een landtegel. Ctrl+klikken+slepen voor gebied diagonaal selecteren. Voeg Shift toe voor alleen inschatting van de kosten
 
 # Show engines button
 ###length VEHICLE_TYPES
@@ -384,21 +383,21 @@ STR_TOOLBAR_TOOLTIP_PAUSE_GAME                                  :{BLACK}Hiermee 
 STR_TOOLBAR_TOOLTIP_FORWARD                                     :{BLACK}Hiermee verhoog je de spelsnelheid
 STR_TOOLBAR_TOOLTIP_OPTIONS                                     :{BLACK}Opties en instellingen
 STR_TOOLBAR_TOOLTIP_SAVE_GAME_ABANDON_GAME                      :{BLACK}Spel opslaan, laden of stoppen, afsluiten
-STR_TOOLBAR_TOOLTIP_DISPLAY_MAP                                 :{BLACK}Kaart, extra kijkvenster, vrachtstroom of lijst met bordjes weergeven
-STR_TOOLBAR_TOOLTIP_DISPLAY_TOWN_DIRECTORY                      :{BLACK}Stedenlijst weergeven
-STR_TOOLBAR_TOOLTIP_DISPLAY_SUBSIDIES                           :{BLACK}Subsidies weergeven
-STR_TOOLBAR_TOOLTIP_DISPLAY_LIST_OF_COMPANY_STATIONS            :{BLACK}Lijst met stations van het bedrijf weergeven
-STR_TOOLBAR_TOOLTIP_DISPLAY_COMPANY_FINANCES                    :{BLACK}Financiële informatie over het bedrijf weergeven
-STR_TOOLBAR_TOOLTIP_DISPLAY_COMPANY_GENERAL                     :{BLACK}Algemene informatie over het bedrijf weergeven
-STR_TOOLBAR_TOOLTIP_DISPLAY_STORY_BOOK                          :{BLACK}Verhaal weergeven
-STR_TOOLBAR_TOOLTIP_DISPLAY_GOALS_LIST                          :{BLACK}Doellijst weergeven
-STR_TOOLBAR_TOOLTIP_DISPLAY_GRAPHS                              :{BLACK}Bedrijfsgrafieken en vrachtprijzen weergeven
+STR_TOOLBAR_TOOLTIP_DISPLAY_MAP                                 :{BLACK}Kaart, extra kijkvenster, vrachtstroom of lijst met bordjes openen
+STR_TOOLBAR_TOOLTIP_DISPLAY_TOWN_DIRECTORY                      :{BLACK}Stedenlijst openen of stad stichten
+STR_TOOLBAR_TOOLTIP_DISPLAY_SUBSIDIES                           :{BLACK}Subsidies openen
+STR_TOOLBAR_TOOLTIP_DISPLAY_LIST_OF_COMPANY_STATIONS            :{BLACK}Lijst met stations van het bedrijf openen
+STR_TOOLBAR_TOOLTIP_DISPLAY_COMPANY_FINANCES                    :{BLACK}Financiële informatie over het bedrijf openen
+STR_TOOLBAR_TOOLTIP_DISPLAY_COMPANY_GENERAL                     :{BLACK}Algemene informatie over het bedrijf openen
+STR_TOOLBAR_TOOLTIP_DISPLAY_STORY_BOOK                          :{BLACK}Verhaal openen
+STR_TOOLBAR_TOOLTIP_DISPLAY_GOALS_LIST                          :{BLACK}Doellijst openen
+STR_TOOLBAR_TOOLTIP_DISPLAY_GRAPHS                              :{BLACK}Bedrijfsgrafieken en vrachtprijzen openen
 STR_TOOLBAR_TOOLTIP_DISPLAY_COMPANY_LEAGUE                      :{BLACK}Bedrijfsscoretabel openen
-STR_TOOLBAR_TOOLTIP_FUND_CONSTRUCTION_OF_NEW                    :{BLACK}Industrieën onderzoeken of bouw van nieuwe industrie financieren
-STR_TOOLBAR_TOOLTIP_DISPLAY_LIST_OF_COMPANY_TRAINS              :{BLACK}Lijst met treinen van het bedrijf weergeven. Ctrl+klik schakelt tussen lijst van groepen/voertuigen.
-STR_TOOLBAR_TOOLTIP_DISPLAY_LIST_OF_COMPANY_ROAD_VEHICLES       :{BLACK}Lijst met wegvoertuigen van het bedrijf weergeven. Ctrl+klik schakelt tussen lijst van groepen/voertuigen.
-STR_TOOLBAR_TOOLTIP_DISPLAY_LIST_OF_COMPANY_SHIPS               :{BLACK}Lijst met schepen van het bedrijf weergeven. Ctrl+klik schakelt tussen lijst van groepen/voertuigen.
-STR_TOOLBAR_TOOLTIP_DISPLAY_LIST_OF_COMPANY_AIRCRAFT            :{BLACK}Lijst met vliegtuigen van het bedrijf weergeven. Ctrl+klik schakelt tussen lijst van groepen/voertuigen.
+STR_TOOLBAR_TOOLTIP_FUND_CONSTRUCTION_OF_NEW                    :{BLACK}Lijst met industrieën of industrieketen openen of bouw van nieuwe industrie financieren
+STR_TOOLBAR_TOOLTIP_DISPLAY_LIST_OF_COMPANY_TRAINS              :{BLACK}Lijst met treinen van het bedrijf openen. Ctrl+klik schakelt tussen lijst van groepen/voertuigen.
+STR_TOOLBAR_TOOLTIP_DISPLAY_LIST_OF_COMPANY_ROAD_VEHICLES       :{BLACK}Lijst met wegvoertuigen van het bedrijf openen. Ctrl+klik schakelt tussen lijst van groepen/voertuigen.
+STR_TOOLBAR_TOOLTIP_DISPLAY_LIST_OF_COMPANY_SHIPS               :{BLACK}Lijst met schepen van het bedrijf openen. Ctrl+klik schakelt tussen lijst van groepen/voertuigen.
+STR_TOOLBAR_TOOLTIP_DISPLAY_LIST_OF_COMPANY_AIRCRAFT            :{BLACK}Lijst met vliegtuigen van het bedrijf openen. Ctrl+klik schakelt tussen lijst van groepen/voertuigen.
 STR_TOOLBAR_TOOLTIP_ZOOM_THE_VIEW_IN                            :{BLACK}Inzoomen
 STR_TOOLBAR_TOOLTIP_ZOOM_THE_VIEW_OUT                           :{BLACK}Uitzoomen
 STR_TOOLBAR_TOOLTIP_BUILD_RAILROAD_TRACK                        :{BLACK}Spoorwegen bouwen
@@ -406,10 +405,10 @@ STR_TOOLBAR_TOOLTIP_BUILD_ROADS                                 :{BLACK}Wegen bo
 STR_TOOLBAR_TOOLTIP_BUILD_TRAMWAYS                              :{BLACK}Tramsporen bouwen
 STR_TOOLBAR_TOOLTIP_BUILD_SHIP_DOCKS                            :{BLACK}Dokken en havens bouwen
 STR_TOOLBAR_TOOLTIP_BUILD_AIRPORTS                              :{BLACK}Vliegvelden bouwen
-STR_TOOLBAR_TOOLTIP_LANDSCAPING                                 :{BLACK}Hiermee open je de landschapsbalk om land te verhogen/verlagen, bomen te planten, enz.
-STR_TOOLBAR_TOOLTIP_SHOW_SOUND_MUSIC_WINDOW                     :{BLACK}Geluid-/muziekvenster weergeven
-STR_TOOLBAR_TOOLTIP_SHOW_LAST_MESSAGE_NEWS                      :{BLACK}Laatste (nieuws-)bericht weergeven, berichtengeschiedenis of alle berichten verwijderen
-STR_TOOLBAR_TOOLTIP_LAND_BLOCK_INFORMATION                      :{BLACK}Landinformatie, schermfoto, over OpenTTD en ontwikkelaarshulpmiddelen
+STR_TOOLBAR_TOOLTIP_LANDSCAPING                                 :{BLACK}Landschapsmenu of bomenmenu openen of bordjes plaatsen
+STR_TOOLBAR_TOOLTIP_SHOW_SOUND_MUSIC_WINDOW                     :{BLACK}Geluid-/muziekvenster openen
+STR_TOOLBAR_TOOLTIP_SHOW_LAST_MESSAGE_NEWS                      :{BLACK}Laatste (nieuws-)bericht openen, berichtengeschiedenis of alle berichten verwijderen
+STR_TOOLBAR_TOOLTIP_LAND_BLOCK_INFORMATION                      :{BLACK}Landinformatie, schermfotomenu, OpenTTD-medewerkerlijst en ontwikkelaarshulpmiddelen openen
 STR_TOOLBAR_TOOLTIP_SWITCH_TOOLBAR                              :{BLACK}Knoppenbalken wisselen
 
 # Extra tooltips for the scenario editor toolbar
@@ -419,13 +418,13 @@ STR_SCENEDIT_TOOLBAR_SCENARIO_EDITOR                            :{YELLOW}Scenari
 STR_SCENEDIT_TOOLBAR_TOOLTIP_MOVE_THE_STARTING_DATE_BACKWARD    :{BLACK}Startdatum 1 jaar terugzetten
 STR_SCENEDIT_TOOLBAR_TOOLTIP_MOVE_THE_STARTING_DATE_FORWARD     :{BLACK}Startdatum 1 jaar vooruitzetten
 STR_SCENEDIT_TOOLBAR_TOOLTIP_SET_DATE                           :{BLACK}Klik om het startjaar op te geven
-STR_SCENEDIT_TOOLBAR_TOOLTIP_DISPLAY_MAP_TOWN_DIRECTORY         :{BLACK}Kaart, stedenlijst weergeven
-STR_SCENEDIT_TOOLBAR_LANDSCAPE_GENERATION                       :{BLACK}Landschapsontwikkeling
-STR_SCENEDIT_TOOLBAR_TOWN_GENERATION                            :{BLACK}Stadsontwikkeling
-STR_SCENEDIT_TOOLBAR_INDUSTRY_GENERATION                        :{BLACK}Industrieontwikkeling
+STR_SCENEDIT_TOOLBAR_TOOLTIP_DISPLAY_MAP_TOWN_DIRECTORY         :{BLACK}Kaart, extra venster, lijst met bordjes, stedenlijst of lijst met industrieën openen
+STR_SCENEDIT_TOOLBAR_LANDSCAPE_GENERATION                       :{BLACK}Menu Landschapsontwikkeling openen of nieuwe wereld genereren
+STR_SCENEDIT_TOOLBAR_TOWN_GENERATION                            :{BLACK}Steden bouwen of genereren
+STR_SCENEDIT_TOOLBAR_INDUSTRY_GENERATION                        :{BLACK}Industrieën bouwen of genereren
 STR_SCENEDIT_TOOLBAR_ROAD_CONSTRUCTION                          :{BLACK}Wegenbouw
 STR_SCENEDIT_TOOLBAR_TRAM_CONSTRUCTION                          :{BLACK}Tramsporen bouwen
-STR_SCENEDIT_TOOLBAR_PLANT_TREES                                :{BLACK}Bomen planten. Ctrl selecteert het gebied diagonaal. Shift schakelt tussen planten/inschatting van de kosten
+STR_SCENEDIT_TOOLBAR_PLANT_TREES                                :{BLACK}Bomen planten. Ctrl+klik+slepen selecteert het gebied diagonaal. Voeg Shift toe voor alleen inschatting van de kosten
 STR_SCENEDIT_TOOLBAR_PLACE_SIGN                                 :{BLACK}Bord plaatsen
 STR_SCENEDIT_TOOLBAR_PLACE_OBJECT                               :{BLACK}Object plaatsen. Ctrl+klik+slepen selecteert een diagonaal gebied. Voeg Shift toe voor alleen verwachte kosten
 
@@ -634,6 +633,7 @@ STR_GRAPH_KEY_COMPANY_SELECTION_TOOLTIP                         :{BLACK}Klik hie
 # Company league window
 STR_COMPANY_LEAGUE_TABLE_CAPTION                                :{WHITE}Bedrijfsscoretabel
 STR_COMPANY_LEAGUE_COMPANY_NAME                                 :{ORANGE}{COMPANY} {BLACK}{COMPANY_NUM} '{STRING}'
+STR_COMPANY_LEAGUE_COMPANY_RANK                                 :{YELLOW}#{NUM}
 STR_COMPANY_LEAGUE_PERFORMANCE_TITLE_ENGINEER                   :Mecanicien
 STR_COMPANY_LEAGUE_PERFORMANCE_TITLE_TRAFFIC_MANAGER            :Verkeersleider
 STR_COMPANY_LEAGUE_PERFORMANCE_TITLE_TRANSPORT_COORDINATOR      :Transportcoördinator
@@ -1045,7 +1045,7 @@ STR_GAME_OPTIONS_VIDEO_VSYNC_TOOLTIP                            :{BLACK}Selectee
 STR_GAME_OPTIONS_VIDEO_DRIVER_INFO                              :{BLACK}Huidige driver: {STRING}
 
 STR_GAME_OPTIONS_GUI_SCALE_FRAME                                :{BLACK}Grootte gebruikersscherm
-STR_GAME_OPTIONS_GUI_SCALE_TOOLTIP                              :{BLACK}Sleep de schuif om de grootte van het gebruikersscherm in te stellen. Hou Ctrl ingedrukt voor geleidelijke aanpassing
+STR_GAME_OPTIONS_GUI_SCALE_TOOLTIP                              :{BLACK}Sleep de schuif om de grootte van het gebruikersscherm in te stellen. Ctrl+slepen voor geleidelijke aanpassing
 STR_GAME_OPTIONS_GUI_SCALE_AUTO                                 :{BLACK}Grootte automatisch detecteren
 STR_GAME_OPTIONS_GUI_SCALE_AUTO_TOOLTIP                         :{BLACK}Vink dit vakje aan om de grootte van het gebruikersscherm automatisch te detecteren
 
@@ -1307,7 +1307,7 @@ STR_CONFIG_SETTING_CONSTRUCTION_COSTS                           :Bouwkosten: {ST
 STR_CONFIG_SETTING_CONSTRUCTION_COSTS_HELPTEXT                  :Het niveau van bouw- en aankoopkosten instellen
 
 STR_CONFIG_SETTING_RECESSIONS                                   :Recessies: {STRING}
-STR_CONFIG_SETTING_RECESSIONS_HELPTEXT                          :Wanneer dit is ingeschakeld kunnen om de paar jaar recessies optreden. Tijdens een recessie is alle productie aanzienlijk lager (deze keert terug naar het vorige niveau als de recessie voorbij is).
+STR_CONFIG_SETTING_RECESSIONS_HELPTEXT                          :Wanneer dit is ingeschakeld kunnen nu en dan recessies optreden. Tijdens een recessie is alle productie aanzienlijk lager (deze keert terug naar het vorige niveau als de recessie voorbij is).
 
 STR_CONFIG_SETTING_TRAIN_REVERSING                              :Niet toestaan dat treinen keren in stations: {STRING}
 STR_CONFIG_SETTING_TRAIN_REVERSING_HELPTEXT                     :Indien ingeschakeld zullen treinen niet omkeren in niet-eind stations, zelfs als er een kortere weg naar hun volgende bestemming is bij omkeren
@@ -1361,7 +1361,7 @@ STR_CONFIG_SETTING_FORBID_90_DEG                                :Treinen en sche
 STR_CONFIG_SETTING_FORBID_90_DEG_HELPTEXT                       :Draaiingen met 90° treden op wanneer een horizontale baan direct gevolgd wordt door een verticaal baanstuk op de aangrenzende tegel, waardoor de trein daarna 90 graden draait wanneer de tegelrand wordt overgestoken in plaats van de gebruikelijke 45 graden voor andere spoorcombinaties.
 
 STR_CONFIG_SETTING_DISTANT_JOIN_STATIONS                        :Samenvoegen van indirect aansluitende stations toestaan: {STRING}
-STR_CONFIG_SETTING_DISTANT_JOIN_STATIONS_HELPTEXT               :Staat toe dat er aanvullende onderdelen aan een station worden geplaatst zonder dat reeds bestaande onderdelen beïnvloed worden. Ctrl+klik is vereist tijdens het plaatsen van nieuwe onderdelen.
+STR_CONFIG_SETTING_DISTANT_JOIN_STATIONS_HELPTEXT               :Hiermee kun je aanvullende onderdelen aan een station plaatsen zonder dat reeds bestaande onderdelen beïnvloed worden. Ctrl+klik is vereist tijdens het plaatsen van nieuwe onderdelen.
 
 STR_CONFIG_SETTING_INFLATION                                    :Inflatie: {STRING}
 STR_CONFIG_SETTING_INFLATION_HELPTEXT                           :Inflatie inschakelen, waardoor de kosten iets sneller stijgen dan de betalingen
@@ -1428,7 +1428,7 @@ STR_CONFIG_SETTING_BRIBE_HELPTEXT_MINUTES                       :Toestaan dat be
 
 STR_CONFIG_SETTING_ALLOW_EXCLUSIVE                              :Kopen van exclusieve transportrechten toestaan: {STRING}
 ###length 2
-STR_CONFIG_SETTING_ALLOW_EXCLUSIVE_HELPTEXT                     :Wanneer een bedrijf de exclusieve transportrechten van een stad koopt, ontvangen de stations (zowel passagiers als vracht) van de tegenstanders geen vracht voor één heel jaar.
+STR_CONFIG_SETTING_ALLOW_EXCLUSIVE_HELPTEXT                     :Wanneer een bedrijf de exclusieve transportrechten van een stad koopt, ontvangen de stations (zowel passagiers als vracht) van de tegenstanders twaalf maanden geen vracht
 STR_CONFIG_SETTING_ALLOW_EXCLUSIVE_HELPTEXT_MINUTES             :Als een bedrijf de exclusieve transportrechten voor een stad koopt, krijgen de stations van tegenstanders twaalf minuten lang geen vracht of passagiers.
 
 STR_CONFIG_SETTING_ALLOW_FUND_BUILDINGS                         :Financieren van gebouwen toestaan: {STRING}
@@ -1831,7 +1831,7 @@ STR_CONFIG_SETTING_SERVINT_AIRCRAFT                             :Standaardonderh
 STR_CONFIG_SETTING_SERVINT_AIRCRAFT_HELPTEXT                    :Standaardonderhoudsterrmijn voor nieuwe vliegtuigen als er geen expliciete onderhoudstermijn is ingesteld voor het voertuig
 STR_CONFIG_SETTING_SERVINT_SHIPS                                :Standaardonderhoudstermijn voor schepen: {STRING}
 STR_CONFIG_SETTING_SERVINT_SHIPS_HELPTEXT                       :Standaardonderhoudstermijn voor nieuwe schepen als er geen expliciete onderhoudstermijn is ingesteld voor het voertuig
-STR_CONFIG_SETTING_SERVINT_VALUE                                :{COMMA}{NBSP}dag{P 0 "" en}/%
+STR_CONFIG_SETTING_SERVINT_VALUE                                :{COMMA}{NBSP}dag{P 0 "" en}/minu{P 0 ut ten}/%
 ###setting-zero-is-special
 STR_CONFIG_SETTING_SERVINT_DISABLED                             :Uitgeschakeld
 
@@ -1923,7 +1923,7 @@ STR_CONFIG_SETTING_DRAG_SIGNALS_DENSITY                         :Bij slepen, sei
 STR_CONFIG_SETTING_DRAG_SIGNALS_DENSITY_HELPTEXT                :Stel de afstand waarop signalen worden gebouwd op een spoor in totaan de volgende hindernis (signaal, kruising) als signalen worden gesleept
 STR_CONFIG_SETTING_DRAG_SIGNALS_DENSITY_VALUE                   :{COMMA} tegel{P 0 "" s}
 STR_CONFIG_SETTING_DRAG_SIGNALS_FIXED_DISTANCE                  :Bij slepen vaste afstand tussen seinen aanhouden: {STRING}
-STR_CONFIG_SETTING_DRAG_SIGNALS_FIXED_DISTANCE_HELPTEXT         :Selecteer het gedrag van seinplaatsing wanneer je met Ctrl+slepen seinen plaatst. Indien dit uitgeschakeld is, dan worden seinen rondom tunnels of bruggen geplaatst om lange stukken te vermijden zonder seinen. Indien dit ingeschakeld is, dan worden seinen om de N tegels geplaatst, waardoor de uitlijning van de seinen op parallelle sporen makkelijker is
+STR_CONFIG_SETTING_DRAG_SIGNALS_FIXED_DISTANCE_HELPTEXT         :Selecteer het gedrag van seinplaatsing wanneer je met slepen seinen plaatst. Indien dit uitgeschakeld is, dan worden seinen rondom tunnels of bruggen geplaatst om lange stukken zonder seinen te vermijden. Indien dit ingeschakeld is, dan worden seinen om de N tegels geplaatst, waardoor de uitlijning van de seinen op parallelle sporen makkelijker is
 
 STR_CONFIG_SETTING_SEMAPHORE_BUILD_BEFORE_DATE                  :Automatisch armseinen plaatsen voor: {STRING}
 STR_CONFIG_SETTING_SEMAPHORE_BUILD_BEFORE_DATE_HELPTEXT         :Stelt het jaar in waarin elektrische seinen worden gebruikt voor sporen. Eerder dan dit jaar worden niet-elektrische seinen gebruikt (die exact op dezelfde manier werken, maar een verschillend uiterlijk hebben).
@@ -1931,6 +1931,7 @@ STR_CONFIG_SETTING_SEMAPHORE_BUILD_BEFORE_DATE_HELPTEXT         :Stelt het jaar 
 STR_CONFIG_SETTING_CYCLE_SIGNAL_TYPES                           :Door seintypen bladeren: {STRING}
 STR_CONFIG_SETTING_CYCLE_SIGNAL_TYPES_HELPTEXT                  :Selecteer welke soorten seinen worden gebruikt wanneer je Ctrl+klikt op een bouwsein met het seingereedschap
 ###length 2
+STR_CONFIG_SETTING_CYCLE_SIGNAL_GROUP                           :Alleen huidige groep
 STR_CONFIG_SETTING_CYCLE_SIGNAL_ALL                             :Alles zichtbaar
 
 STR_CONFIG_SETTING_SIGNAL_GUI_MODE                              :Soorten sein weergeven: {STRING}
@@ -2201,14 +2202,14 @@ STR_INTRO_TOOLTIP_SUB_ARCTIC_LANDSCAPE                          :{BLACK}Subarcti
 STR_INTRO_TOOLTIP_SUB_TROPICAL_LANDSCAPE                        :{BLACK}Subtropisch klimaat
 STR_INTRO_TOOLTIP_TOYLAND_LANDSCAPE                             :{BLACK}Speelgoedlandschap
 
-STR_INTRO_TOOLTIP_GAME_OPTIONS                                  :{BLACK}Spelopties weergeven
-STR_INTRO_TOOLTIP_HIGHSCORE                                     :{BLACK}Scoretabel weergeven
+STR_INTRO_TOOLTIP_GAME_OPTIONS                                  :{BLACK}Spelopties openen
+STR_INTRO_TOOLTIP_HIGHSCORE                                     :{BLACK}Scoretabel openen
 STR_INTRO_TOOLTIP_HELP                                          :{BLACK}Toegang tot documentatie en online-hulpbronnen
-STR_INTRO_TOOLTIP_CONFIG_SETTINGS_TREE                          :{BLACK}Scherminstellingen
-STR_INTRO_TOOLTIP_NEWGRF_SETTINGS                               :{BLACK}NewGRF-instellingen weergeven
+STR_INTRO_TOOLTIP_CONFIG_SETTINGS_TREE                          :{BLACK}Instellingen openen
+STR_INTRO_TOOLTIP_NEWGRF_SETTINGS                               :{BLACK}NewGRF-instellingen openen
 STR_INTRO_TOOLTIP_ONLINE_CONTENT                                :{BLACK}Zoeken naar nieuwe en aangepaste inhoud om te downloaden
-STR_INTRO_TOOLTIP_AI_SETTINGS                                   :{BLACK}AI-instellingen weergeven
-STR_INTRO_TOOLTIP_GAMESCRIPT_SETTINGS                           :{BLACK}Spelscript-instellingen weergeven
+STR_INTRO_TOOLTIP_AI_SETTINGS                                   :{BLACK}AI-instellingen openen
+STR_INTRO_TOOLTIP_GAMESCRIPT_SETTINGS                           :{BLACK}Spelscript-instellingen openen
 STR_INTRO_TOOLTIP_QUIT                                          :{BLACK}'OpenTTD' afsluiten
 
 STR_INTRO_BASESET                                               :{BLACK}De huidige gekozen set grafische elementen mist {NUM} sprite{P "" s}. Controleer of er updates zijn voor deze basisset.
@@ -2239,7 +2240,7 @@ STR_HELP_WINDOW_BUGTRACKER                                      :{BLACK}Een fout
 STR_HELP_WINDOW_COMMUNITY                                       :{BLACK}Gemeenschap
 
 # Cheat window
-STR_CHEATS                                                      :{WHITE}Valsspelen
+STR_CHEATS                                                      :{WHITE}Zandbakopties
 STR_CHEAT_MONEY                                                 :{LTBLUE}Kapitaal vergroten met {CURRENCY_LONG}
 STR_CHEAT_CHANGE_COMPANY                                        :{LTBLUE}Spelen als bedrijf: {ORANGE}{COMMA}
 STR_CHEAT_EXTRA_DYNAMITE                                        :{LTBLUE}Magische bulldozer (industrieën en andere onverplaatsbare objecten verwijderen): {ORANGE}{STRING}
@@ -2264,7 +2265,7 @@ STR_LIVERY_TRAIN_GROUP_TOOLTIP                                  :{BLACK}Kleuren 
 STR_LIVERY_ROAD_VEHICLE_GROUP_TOOLTIP                           :{BLACK}Kleuren van wegvoertuiggroepen weergeven
 STR_LIVERY_SHIP_GROUP_TOOLTIP                                   :{BLACK}Kleuren van scheepsgroepen weergeven
 STR_LIVERY_AIRCRAFT_GROUP_TOOLTIP                               :{BLACK}Kleuren van vliegtuiggroepen weergeven
-STR_LIVERY_PRIMARY_TOOLTIP                                      :{BLACK}Selecteer de hoofdkleur voor het geselecteerde schema. Ctrl+klik zal deze kleur instellen voor elk schema
+STR_LIVERY_PRIMARY_TOOLTIP                                      :{BLACK}Selecteer de primaire kleur voor het geselecteerde schema. Met Ctrl+klik stel je deze kleur in voor alle schema's
 STR_LIVERY_SECONDARY_TOOLTIP                                    :{BLACK}Selecteer de secundaire kleur voor het geselecteerde schema. Met Ctrl+klik stel je deze kleur in voor alle schema's
 STR_LIVERY_PANEL_TOOLTIP                                        :{BLACK}Selecteer een kleurenschema om te wijzigen of meerdere schema's met Ctrl+klik. Vink de keuzevakjes aan-uit om het schema aan-uit te zetten
 STR_LIVERY_TRAIN_GROUP_EMPTY                                    :Geen treingroepen ingesteld
@@ -2782,16 +2783,16 @@ STR_RAIL_TOOLBAR_ELRAIL_CONSTRUCTION_CAPTION                    :Geëlektrificee
 STR_RAIL_TOOLBAR_MONORAIL_CONSTRUCTION_CAPTION                  :Bouw monorailspoorwegen
 STR_RAIL_TOOLBAR_MAGLEV_CONSTRUCTION_CAPTION                    :Bouw magneetzweeftreinspoorwegen
 
-STR_RAIL_TOOLBAR_TOOLTIP_BUILD_RAILROAD_TRACK                   :{BLACK}Spoor bouwen. Ctrl schakelt tussen bouwen/verwijderen van het spoor. Shift schakelt tussen bouwen/inschatting van de kosten
-STR_RAIL_TOOLBAR_TOOLTIP_BUILD_AUTORAIL                         :{BLACK}Spoor bouwen met de automatische methode. Ctrl schakelt tussen bouwen/verwijderen van het spoor. Shift schakelt tussen bouwen/inschatting van de kosten.
-STR_RAIL_TOOLBAR_TOOLTIP_BUILD_TRAIN_DEPOT_FOR_BUILDING         :{BLACK}Remise bouwen (om treinen te kopen en te onderhouden). Shift schakelt tussen bouwen/kosten weergeven.
-STR_RAIL_TOOLBAR_TOOLTIP_CONVERT_RAIL_TO_WAYPOINT               :{BLACK}Routepunt bouwen op spoor. Ctrl om samen te voegen met ander routepunt. Shift schakelt tussen bouwen/kosten weergeven.
-STR_RAIL_TOOLBAR_TOOLTIP_BUILD_RAILROAD_STATION                 :{BLACK}Treinstation bouwen. Houd Ctrl ingedrukt om samen te voegen met ander station. Shift schakelt tussen bouwen/inschatting van de kosten.
-STR_RAIL_TOOLBAR_TOOLTIP_BUILD_RAILROAD_SIGNALS                 :{BLACK}Seinen bouwen op spoor. Ctrl wisselt tussen armseinen/lichtseinen{}Slepen plaatst seinen langs een recht stuk spoor. Ctrl bouwt seinen tot de volgende wissel{}Ctrl+klik schakelt het openen van seinkeuzelijst aan-uit. Shift schakelt tussen bouwen/kosten weergeven.
-STR_RAIL_TOOLBAR_TOOLTIP_BUILD_RAILROAD_BRIDGE                  :{BLACK}Spoorbrug bouwen. Shift schakelt tussen bouwen/inschatting van de kosten
-STR_RAIL_TOOLBAR_TOOLTIP_BUILD_RAILROAD_TUNNEL                  :{BLACK}Graaf spoortunnel. Shift schakelt tussen bouwen/inschatting van de kosten
-STR_RAIL_TOOLBAR_TOOLTIP_TOGGLE_BUILD_REMOVE_FOR                :{BLACK}Schakelt tussen bouwen en verwijderen van sporen, seinen, routepunten en stations. Ctrl verwijdert ook het spoor van routepunten en stations.
-STR_RAIL_TOOLBAR_TOOLTIP_CONVERT_RAIL                           :{BLACK}Verander spoortype. Shift schakelt tussen bouwen/inschatting van de kosten
+STR_RAIL_TOOLBAR_TOOLTIP_BUILD_RAILROAD_TRACK                   :{BLACK}Spoor bouwen. Ctrl+klik voor spoor verwijderen. Voeg Shift toe voor alleen inschatting van de kosten
+STR_RAIL_TOOLBAR_TOOLTIP_BUILD_AUTORAIL                         :{BLACK}Spoor bouwen met de automatische methode. Ctrl+klik schakelt voor spoor verwijderen. Voeg Shift toe voor alleen inschatting van de kosten
+STR_RAIL_TOOLBAR_TOOLTIP_BUILD_TRAIN_DEPOT_FOR_BUILDING         :{BLACK}Remise bouwen (om treinen te kopen en te onderhouden). Voeg Shift toe voor alleen inschatting van de kosten
+STR_RAIL_TOOLBAR_TOOLTIP_CONVERT_RAIL_TO_WAYPOINT               :{BLACK}Routepunt bouwen op spoor. Ctrl+klik om samen te voegen met ander routepunt. Voeg Shift toe voor alleen inschatting van de kosten
+STR_RAIL_TOOLBAR_TOOLTIP_BUILD_RAILROAD_STATION                 :{BLACK}Treinstation bouwen. Ctrl+klik om samen te voegen met ander station. Voeg Shift toe voor alleen inschatting van de kosten
+STR_RAIL_TOOLBAR_TOOLTIP_BUILD_RAILROAD_SIGNALS                 :{BLACK}Seinen bouwen op spoor. Ctrl+klik voor andere stijl seinen{}Klik+slepen voor seinen tot volgende kruising, station of sein. Voeg Shift toe voor alleen inschatting van de kosten
+STR_RAIL_TOOLBAR_TOOLTIP_BUILD_RAILROAD_BRIDGE                  :{BLACK}Spoorbrug bouwen. Voeg Shift toe voor alleen inschatting van de kosten
+STR_RAIL_TOOLBAR_TOOLTIP_BUILD_RAILROAD_TUNNEL                  :{BLACK}Graaf spoortunnel. Voeg Shift toe voor alleen inschatting van de kosten
+STR_RAIL_TOOLBAR_TOOLTIP_TOGGLE_BUILD_REMOVE_FOR                :{BLACK}Schakelt tussen bouwen en verwijderen van sporen, seinen, routepunten en stations. Ctrl+klik om spoor van routepunten en stations te verwijderen
+STR_RAIL_TOOLBAR_TOOLTIP_CONVERT_RAIL                           :{BLACK}Spoortype veranderen/opwaarderen. Voeg Shift toe voor alleen inschatting van de kosten
 
 STR_RAIL_NAME_RAILROAD                                          :Spoorweg
 STR_RAIL_NAME_ELRAIL                                            :Geëlektrificeerde spoorweg
@@ -2867,25 +2868,25 @@ STR_BRIDGE_TUBULAR_SILICON                                      :Buis, silicium
 # Road construction toolbar
 STR_ROAD_TOOLBAR_ROAD_CONSTRUCTION_CAPTION                      :{WHITE}Wegen bouwen
 STR_ROAD_TOOLBAR_TRAM_CONSTRUCTION_CAPTION                      :{WHITE}Tramsporen bouwen
-STR_ROAD_TOOLBAR_TOOLTIP_BUILD_ROAD_SECTION                     :{BLACK}Weg bouwen. Ctrl schakelt tussen bouwen/verwijderen van de weg. Shift schakelt tussen bouwen/inschatting van de kosten.
-STR_ROAD_TOOLBAR_TOOLTIP_BUILD_TRAMWAY_SECTION                  :{BLACK}Bouw tramsporen. Ctrl schakelt tussen bouwen/verwijderen van tramsporen. Shift schakelt tussen bouwen/inschatting van de kosten
+STR_ROAD_TOOLBAR_TOOLTIP_BUILD_ROAD_SECTION                     :{BLACK}Weg bouwen. Ctrl+klik om weg te verwijderen. Voeg Shift toe voor alleen inschatting van de kosten
+STR_ROAD_TOOLBAR_TOOLTIP_BUILD_TRAMWAY_SECTION                  :{BLACK}Tramsporen bouwen. Ctrl+klik voor tramsporen verwijderen. Voeg Shift toe voor alleen inschatting van de kosten
 STR_ROAD_TOOLBAR_TOOLTIP_BUILD_AUTOROAD                         :{BLACK}Wegen bouwen met de automatische methode. Ctrl+klik voor verwijderen van de weg. Voeg Shift toe voor inschatting van de kosten.
-STR_ROAD_TOOLBAR_TOOLTIP_BUILD_AUTOTRAM                         :{BLACK}Bouw tramsporen met de Autotram-methode. Ctrl schakelt tussen bouwen/verwijderen van tramrails. Shift schakelt tussen bouwen/inschatting van de kosten
-STR_ROAD_TOOLBAR_TOOLTIP_BUILD_ROAD_VEHICLE_DEPOT               :{BLACK}Garage bouwen (voor het kopen en onderhouden van wegvoertuigen). Shift schakelt tussen bouwen/inschatting van de kosten.
-STR_ROAD_TOOLBAR_TOOLTIP_BUILD_TRAM_VEHICLE_DEPOT               :{BLACK}Tramremise bouwen (voor het kopen en onderhouden van trams). Shift schakelt tussen bouwen/inschatting van de kosten.
-STR_ROAD_TOOLBAR_TOOLTIP_BUILD_BUS_STATION                      :{BLACK}Busstation bouwen. Houd Ctrl ingedrukt om samen te voegen met ander station. Shift schakelt tussen bouwen/inschatting van de kosten.
-STR_ROAD_TOOLBAR_TOOLTIP_BUILD_PASSENGER_TRAM_STATION           :{BLACK}Bouw passagierstramhalte. Houd Ctrl ingedrukt om samen te voegen met ander station. Shift schakelt tussen bouwen/inschatting van de kosten
-STR_ROAD_TOOLBAR_TOOLTIP_BUILD_TRUCK_LOADING_BAY                :{BLACK}Vrachtwagenstation bouwen. Houd Ctrl ingedrukt om samen te voegen met ander station. Shift schakelt tussen bouwen/inschatting van de kosten.
-STR_ROAD_TOOLBAR_TOOLTIP_BUILD_CARGO_TRAM_STATION               :{BLACK}Vrachttramhalte bouwen. Houd Ctrl ingedrukt om samen te voegen met ander station. Shift schakelt tussen bouwen/inschatting van de kosten.
+STR_ROAD_TOOLBAR_TOOLTIP_BUILD_AUTOTRAM                         :{BLACK}Bouw tramsporen met de Autotram-methode. Ctrl+klik om tramrails te verwijderen. Voeg Shift toe voor alleen inschatting van de kosten
+STR_ROAD_TOOLBAR_TOOLTIP_BUILD_ROAD_VEHICLE_DEPOT               :{BLACK}Garage bouwen (voor het kopen en onderhouden van wegvoertuigen). Voeg Shift toe voor alleen inschatting van de kosten
+STR_ROAD_TOOLBAR_TOOLTIP_BUILD_TRAM_VEHICLE_DEPOT               :{BLACK}Tramremise bouwen (voor het kopen en onderhouden van trams). Voeg Shift toe voor alleen inschatting van de kosten
+STR_ROAD_TOOLBAR_TOOLTIP_BUILD_BUS_STATION                      :{BLACK}Busstation bouwen. Ctrl+klik om samen te voegen met ander station. Voeg Shift toe voor alleen inschatting van de kosten
+STR_ROAD_TOOLBAR_TOOLTIP_BUILD_PASSENGER_TRAM_STATION           :{BLACK}Passagierstramhalte bouwen. Ctrl+klik om samen te voegen met ander station. Voeg Shift toe voor alleen inschatting van de kosten
+STR_ROAD_TOOLBAR_TOOLTIP_BUILD_TRUCK_LOADING_BAY                :{BLACK}Vrachtwagenstation bouwen. Ctrl+klik om samen te voegen met ander station. Voeg Shift toe voor alleen inschatting van de kosten
+STR_ROAD_TOOLBAR_TOOLTIP_BUILD_CARGO_TRAM_STATION               :{BLACK}Vrachttramhalte bouwen. Ctrl+klik om samen te voegen met ander station. Voeg Shift toe voor alleen inschatting van de kosten
 STR_ROAD_TOOLBAR_TOOLTIP_TOGGLE_ONE_WAY_ROAD                    :{BLACK}Hiermee schakel je eenrichtingswegen in-uit
-STR_ROAD_TOOLBAR_TOOLTIP_BUILD_ROAD_BRIDGE                      :{BLACK}Bouw wegbrug. Shift schakelt tussen bouwen/inschatting van de kosten
-STR_ROAD_TOOLBAR_TOOLTIP_BUILD_TRAMWAY_BRIDGE                   :{BLACK}Bouw brug voor tramsporen. Shift schakelt tussen bouwen/inschatting van de kosten
-STR_ROAD_TOOLBAR_TOOLTIP_BUILD_ROAD_TUNNEL                      :{BLACK}Wegtunnel bouwen. Shift schakelt tussen bouwen/inschatting van de kosten.
-STR_ROAD_TOOLBAR_TOOLTIP_BUILD_TRAMWAY_TUNNEL                   :{BLACK}Tramtunnel bouwen. Shift schakelt tussen bouwen/inschatting van de kosten.
+STR_ROAD_TOOLBAR_TOOLTIP_BUILD_ROAD_BRIDGE                      :{BLACK}Bouw wegbrug. Voeg Shift toe voor alleen inschatting van de kosten
+STR_ROAD_TOOLBAR_TOOLTIP_BUILD_TRAMWAY_BRIDGE                   :{BLACK}Brug bouwen voor tramsporen. Voeg Shift toe voor alleen inschatting van de kosten
+STR_ROAD_TOOLBAR_TOOLTIP_BUILD_ROAD_TUNNEL                      :{BLACK}Wegtunnel bouwen. Voeg Shift toe voor alleen inschatting van de kosten
+STR_ROAD_TOOLBAR_TOOLTIP_BUILD_TRAMWAY_TUNNEL                   :{BLACK}Tramtunnel bouwen. Voeg Shift toe voor alleen inschatting van de kosten
 STR_ROAD_TOOLBAR_TOOLTIP_TOGGLE_BUILD_REMOVE_FOR_ROAD           :{BLACK}Wissel tussen bouwen en verwijderen bij wegenbouw
 STR_ROAD_TOOLBAR_TOOLTIP_TOGGLE_BUILD_REMOVE_FOR_TRAMWAYS       :{BLACK}Wissel tussen bouwen en verwijderen bij tramspooraanleg
-STR_ROAD_TOOLBAR_TOOLTIP_CONVERT_ROAD                           :{BLACK}Converteer/opwaardeer het type weg. Shift schakelt tussen bouwen/inschatting van de kosten.
-STR_ROAD_TOOLBAR_TOOLTIP_CONVERT_TRAM                           :{BLACK}Converteer/opwaardeer het type tram. Shift schakelt tussen bouwen/inschatting van de kosten.
+STR_ROAD_TOOLBAR_TOOLTIP_CONVERT_ROAD                           :{BLACK}Type weg veranderen/opwaarderen. Voeg Shift toe voor alleen inschatting van de kosten
+STR_ROAD_TOOLBAR_TOOLTIP_CONVERT_TRAM                           :{BLACK}Type tram veranderen/opwaarderen. Voeg Shift toe voor alleen inschatting van de kosten
 
 STR_ROAD_NAME_ROAD                                              :Weg
 STR_ROAD_NAME_TRAM                                              :Tramspoor
@@ -2909,14 +2910,14 @@ STR_STATION_BUILD_CARGO_TRAM_ORIENTATION_TOOLTIP                :{BLACK}Selectee
 # Waterways toolbar (last two for SE only)
 STR_WATERWAYS_TOOLBAR_CAPTION                                   :{WHITE}Waterwegen bouwen
 STR_WATERWAYS_TOOLBAR_CAPTION_SE                                :{WHITE}Waterwegen
-STR_WATERWAYS_TOOLBAR_BUILD_CANALS_TOOLTIP                      :{BLACK}Kanalen bouwen. Shift schakelt tussen bouwen/inschatting van de kosten.
-STR_WATERWAYS_TOOLBAR_BUILD_LOCKS_TOOLTIP                       :{BLACK}Sluis bouwen. Shift schakelt tussen bouwen/inschatting van de kosten.
-STR_WATERWAYS_TOOLBAR_BUILD_DEPOT_TOOLTIP                       :{BLACK}Dok bouwen (voor het kopen en onderhouden van schepen). Shift schakelt tussen bouwen/inschatting van de kosten.
-STR_WATERWAYS_TOOLBAR_BUILD_DOCK_TOOLTIP                        :{BLACK}Haven bouwen. Houd Ctrl ingedrukt om samen te voegen met ander station. Shift schakelt tussen bouwen/inschatting van de kosten.
-STR_WATERWAYS_TOOLBAR_BUOY_TOOLTIP                              :{BLACK}Boei plaatsen, deze kan gebruikt worden voor extra tussenstops. Shift schakelt tussen bouwen/inschatting van de kosten
-STR_WATERWAYS_TOOLBAR_BUILD_AQUEDUCT_TOOLTIP                    :{BLACK}Aquaduct bouwen. Shift schakelt tussen bouwen/inschatting van de kosten.
+STR_WATERWAYS_TOOLBAR_BUILD_CANALS_TOOLTIP                      :{BLACK}Kanalen bouwen. Voeg Shift toe voor alleen inschatting van de kosten
+STR_WATERWAYS_TOOLBAR_BUILD_LOCKS_TOOLTIP                       :{BLACK}Sluis bouwen. Voeg Shift toe voor alleen inschatting van de kosten
+STR_WATERWAYS_TOOLBAR_BUILD_DEPOT_TOOLTIP                       :{BLACK}Dok bouwen (voor het kopen en onderhouden van schepen). Voeg Shift toe voor alleen inschatting van de kosten
+STR_WATERWAYS_TOOLBAR_BUILD_DOCK_TOOLTIP                        :{BLACK}Haven bouwen. Ctrl+klik om samen te voegen met ander station. Voeg Shift toe voor alleen inschatting van de kosten
+STR_WATERWAYS_TOOLBAR_BUOY_TOOLTIP                              :{BLACK}Boei plaatsen, deze kan gebruikt worden voor extra tussenstops. Voeg Shift toe voor alleen inschatting van de kosten
+STR_WATERWAYS_TOOLBAR_BUILD_AQUEDUCT_TOOLTIP                    :{BLACK}Aquaduct bouwen. Voeg Shift toe voor alleen inschatting van de kosten
 STR_WATERWAYS_TOOLBAR_CREATE_LAKE_TOOLTIP                       :{BLACK}Kanaal bouwen. Ctrl+klik op zeeniveau zorgt voor overstroming met zeewater
-STR_WATERWAYS_TOOLBAR_CREATE_RIVER_TOOLTIP                      :{BLACK}Hiermee maak je rivieren. Ctrl selecteert het gebied diagonaal
+STR_WATERWAYS_TOOLBAR_CREATE_RIVER_TOOLTIP                      :{BLACK}Rivieren plaatsen. Ctrl+klik voor diagonaal selecteren
 
 # Ship depot construction window
 STR_DEPOT_BUILD_SHIP_CAPTION                                    :{WHITE}Richting van dok
@@ -2927,7 +2928,7 @@ STR_STATION_BUILD_DOCK_CAPTION                                  :{WHITE}Haven
 
 # Airport toolbar
 STR_TOOLBAR_AIRCRAFT_CAPTION                                    :{WHITE}Vliegvelden
-STR_TOOLBAR_AIRCRAFT_BUILD_AIRPORT_TOOLTIP                      :{BLACK}Vliegveld bouwen. Houd Ctrl ingedrukt om samen te voegen met ander station. Shift schakelt tussen bouwen/inschatting van de kosten.
+STR_TOOLBAR_AIRCRAFT_BUILD_AIRPORT_TOOLTIP                      :{BLACK}Vliegveld bouwen. Ctrl+klik om samen te voegen met ander station. Voeg Shift toe voor alleen inschatting van de kosten
 
 # Airport construction window
 STR_STATION_BUILD_AIRPORT_CAPTION                               :{WHITE}Keuze van vliegveld
@@ -2954,14 +2955,14 @@ STR_STATION_BUILD_NOISE                                         :{BLACK}Geluidso
 
 # Landscaping toolbar
 STR_LANDSCAPING_TOOLBAR                                         :{WHITE}Terreinaanpassing
-STR_LANDSCAPING_TOOLTIP_LOWER_A_CORNER_OF_LAND                  :{BLACK}Verlaag een hoek van het land. Slepen verlaagt de eerste geselecteerde hoek en brengt het geselecteerde gebied naar de hoogte van die hoek. Ctrl selecteert het gebied diagonaal. Shift maakt een inschatting van de kosten
-STR_LANDSCAPING_TOOLTIP_RAISE_A_CORNER_OF_LAND                  :{BLACK}Verhoog een hoek van het land. Slepen verhoogt de eerste geselecteerde hoek en brengt het geselecteerde gebied naar de hoogte van die hoek. Ctrl selecteert het gebied diagonaal. Shift maakt een inschatting van de kosten
-STR_LANDSCAPING_LEVEL_LAND_TOOLTIP                              :{BLACK}Land egaliseren op hoogte van eerst geselecteerde hoek. Ctrl selecteert een diagonaal gebied. Shift+klik wisselt tussen bouwen/verwachte kosten weergeven.
-STR_LANDSCAPING_TOOLTIP_PURCHASE_LAND                           :{BLACK}Land kopen voor toekomstig gebruik. Ctrl selecteert een diagonaal gebied. Shift+klik wisselt tussen bouwen/verwachte kosten weergeven.
+STR_LANDSCAPING_TOOLTIP_LOWER_A_CORNER_OF_LAND                  :{BLACK}Verlaag een hoek van het land. Klikken+slepen verlaagt de eerste geselecteerde hoek en brengt het geselecteerde gebied naar de hoogte van die hoek. Ctrl+klikken+slepen selecteert het gebied diagonaal. Voeg Shift toe voor alleen inschatting van de kosten
+STR_LANDSCAPING_TOOLTIP_RAISE_A_CORNER_OF_LAND                  :{BLACK}Verhoog een hoek van het land. Klikken+slepen verhoogt de eerste geselecteerde hoek en brengt het geselecteerde gebied naar de hoogte van die hoek. Ctrl+klikken+slepen selecteert het gebied diagonaal. Voeg Shift toe voor alleen inschatting van de kosten
+STR_LANDSCAPING_LEVEL_LAND_TOOLTIP                              :{BLACK}Land egaliseren op hoogte van eerst geselecteerde hoek. Ctrl+klikken+slepen voor diagonaal gebied selecteren. Voeg Shift toe voor alleen inschatting van de kosten
+STR_LANDSCAPING_TOOLTIP_PURCHASE_LAND                           :{BLACK}Land kopen voor toekomstig gebruik. Ctrl+klikken+slepen selecteert een diagonaal gebied. Voeg Shift toe voor alleen inschatting van de kosten
 
 # Object construction window
 STR_OBJECT_BUILD_CAPTION                                        :{WHITE}Keuze van object
-STR_OBJECT_BUILD_TOOLTIP                                        :{BLACK}Selecteer object om te bouwen. Ctrl selecteert een diagonaal gebied. Shift+klik wisselt tussen bouwen/verwachte kosten weergeven.
+STR_OBJECT_BUILD_TOOLTIP                                        :{BLACK}Selecteer object om te bouwen. Ctrl+klik voor diagonaal gebied. Voeg Shift toe voor alleen inschatting van de kosten
 STR_OBJECT_BUILD_CLASS_TOOLTIP                                  :{BLACK}Hiermee selecteer je de klasse van het te bouwen object
 STR_OBJECT_BUILD_PREVIEW_TOOLTIP                                :{BLACK}Bekijk het object
 STR_OBJECT_BUILD_SIZE                                           :{BLACK}Grootte: {GOLD}{NUM} x {NUM} tegels
@@ -2973,7 +2974,7 @@ STR_OBJECT_CLASS_TRNS                                           :Zendmasten
 STR_PLANT_TREE_CAPTION                                          :{WHITE}Bomen
 STR_PLANT_TREE_TOOLTIP                                          :{BLACK}Selecteer een soort boom om te planten. Als de tegel al bomen bevat, komen er meer bomen van verschillende typen bij, onafhankelijk van het geselecteerde type
 STR_TREES_RANDOM_TYPE                                           :{BLACK}Willekeurige soorten bomen
-STR_TREES_RANDOM_TYPE_TOOLTIP                                   :{BLACK}Willekeurig bomen planten. Ctrl selecteert het gebied diagonaal. Shift+klik wisselt tussen bouwen/verwachte kosten.
+STR_TREES_RANDOM_TYPE_TOOLTIP                                   :{BLACK}Willekeurig bomen planten. Ctrl+klikken+slepen voor diagonaal selecteren. Voeg Shift toe voor alleen inschatting van de kosten
 STR_TREES_RANDOM_TREES_BUTTON                                   :{BLACK}Willekeurige bomen
 STR_TREES_RANDOM_TREES_TOOLTIP                                  :{BLACK}Hiermee plant je bomen willekeurig over het landschap
 STR_TREES_MODE_NORMAL_BUTTON                                    :{BLACK}Normaal
@@ -2986,7 +2987,7 @@ STR_TREES_MODE_FOREST_LG_TOOLTIP                                :{BLACK}Grote bo
 # Land generation window (SE)
 STR_TERRAFORM_TOOLBAR_LAND_GENERATION_CAPTION                   :{WHITE}Landontwikkeling
 STR_TERRAFORM_TOOLTIP_PLACE_ROCKY_AREAS_ON_LANDSCAPE            :{BLACK}Rotsachtige gebieden plaatsen op de kaart
-STR_TERRAFORM_TOOLTIP_DEFINE_DESERT_AREA                        :{BLACK}Definieer woestijngebied.{}Hou Ctrl vast om het te verwijderen
+STR_TERRAFORM_TOOLTIP_DEFINE_DESERT_AREA                        :{BLACK}Definieer woestijngebied.{}Ctrl+klik om het te verwijderen
 STR_TERRAFORM_TOOLTIP_INCREASE_SIZE_OF_LAND_AREA                :{BLACK}Vergroot de landoppervlakte om te verhogen/verlagen
 STR_TERRAFORM_TOOLTIP_DECREASE_SIZE_OF_LAND_AREA                :{BLACK}Verklein de landoppervlakte om te verhogen/verlagen
 STR_TERRAFORM_TOOLTIP_GENERATE_RANDOM_LAND                      :{BLACK}Genereer willekeurig land
@@ -3000,7 +3001,7 @@ STR_RESET_LANDSCAPE_CONFIRMATION_TEXT                           :{WHITE}Weet je 
 # Town generation window (SE)
 STR_FOUND_TOWN_CAPTION                                          :{WHITE}Stadsontwikkeling
 STR_FOUND_TOWN_NEW_TOWN_BUTTON                                  :{BLACK}Nieuwe stad
-STR_FOUND_TOWN_NEW_TOWN_TOOLTIP                                 :{BLACK}Nieuwe stad stichten. Shift+klik geeft alleen de verwachte kosten.
+STR_FOUND_TOWN_NEW_TOWN_TOOLTIP                                 :{BLACK}Nieuwe stad stichten. Voeg Shift toe voor alleen inschatting van de kosten
 STR_FOUND_TOWN_RANDOM_TOWN_BUTTON                               :{BLACK}Willekeurige stad
 STR_FOUND_TOWN_RANDOM_TOWN_TOOLTIP                              :{BLACK}Hiermee sticht je een stad op een willekeurige locatie
 STR_FOUND_TOWN_MANY_RANDOM_TOWNS                                :{BLACK}Veel willekeurige steden
@@ -3078,7 +3079,7 @@ STR_LAND_AREA_INFORMATION_RAIL_OWNER                            :{BLACK}Eigenaar
 STR_LAND_AREA_INFORMATION_LOCAL_AUTHORITY                       :{BLACK}Gemeente: {LTBLUE}{STRING}
 STR_LAND_AREA_INFORMATION_LOCAL_AUTHORITY_NONE                  :Geen
 STR_LAND_AREA_INFORMATION_LANDINFO_COORDS                       :{BLACK}Coördinaten: {LTBLUE}{NUM} x {NUM} x {NUM} ({STRING})
-STR_LAND_AREA_INFORMATION_BUILD_DATE                            :{BLACK}Bouwjaar: {LTBLUE}{DATE_LONG}
+STR_LAND_AREA_INFORMATION_BUILD_DATE                            :{BLACK}Bouwjaar/opknapjaar: {LTBLUE}{DATE_LONG}
 STR_LAND_AREA_INFORMATION_STATION_CLASS                         :{BLACK}Stationsklasse: {LTBLUE}{STRING}
 STR_LAND_AREA_INFORMATION_STATION_TYPE                          :{BLACK}Stationstype: {LTBLUE}{STRING}
 STR_LAND_AREA_INFORMATION_AIRPORT_CLASS                         :{BLACK}Vliegveldklasse: {LTBLUE}{STRING}
@@ -3313,11 +3314,11 @@ STR_MAPGEN_VARIETY                                              :{BLACK}Landscha
 STR_MAPGEN_GENERATE                                             :{WHITE}Maken
 STR_MAPGEN_GENERATE_TOOLTIP                                     :{BLACK}Creëer de wereld en speel OpenTTD!
 STR_MAPGEN_NEWGRF_SETTINGS                                      :{BLACK}NewGRF-instellingen
-STR_MAPGEN_NEWGRF_SETTINGS_TOOLTIP                              :{BLACK}NewGRF-instellingen weergeven
+STR_MAPGEN_NEWGRF_SETTINGS_TOOLTIP                              :{BLACK}NewGRF-instellingen openen
 STR_MAPGEN_AI_SETTINGS                                          :{BLACK}AI-instellingen
-STR_MAPGEN_AI_SETTINGS_TOOLTIP                                  :{BLACK}AI-instellingen weergeven
+STR_MAPGEN_AI_SETTINGS_TOOLTIP                                  :{BLACK}AI-instellingen openen
 STR_MAPGEN_GS_SETTINGS                                          :{BLACK}Spelscript-instellingen
-STR_MAPGEN_GS_SETTINGS_TOOLTIP                                  :{BLACK}Spelscript-instellingen weergeven
+STR_MAPGEN_GS_SETTINGS_TOOLTIP                                  :{BLACK}Spelscript-instellingen openen
 
 ###length 21
 STR_MAPGEN_TOWN_NAME_ORIGINAL_ENGLISH                           :Engels (Origineel)
@@ -3737,14 +3738,12 @@ STR_STORY_BOOK_INVALID_GOAL_REF                                 :{RED}Ongeldige 
 
 # Station list window
 STR_STATION_LIST_TOOLTIP                                        :{BLACK}Stationsnamen - klik op naam om het scherm te centreren op het station. Ctrl+klik opent een nieuw venster op de locatie van het station
-STR_STATION_LIST_USE_CTRL_TO_SELECT_MORE                        :{BLACK}Houd Ctrl ingedrukt om meer onderdelen te kiezen
+STR_STATION_LIST_USE_CTRL_TO_SELECT_MORE                        :{BLACK}Ctrl+klik om meerdere onderdelen te kiezen
 STR_STATION_LIST_CAPTION                                        :{WHITE}{COMPANY} - {COMMA} Station{P "" s}
 STR_STATION_LIST_STATION                                        :{YELLOW}{STATION} {STATION_FEATURES}
 STR_STATION_LIST_WAYPOINT                                       :{YELLOW}{WAYPOINT}
 STR_STATION_LIST_NONE                                           :{YELLOW}- Geen -
 STR_STATION_LIST_SELECT_ALL_FACILITIES                          :{BLACK}Alle faciliteiten selecteren
-STR_STATION_LIST_SELECT_ALL_TYPES                               :{BLACK}Selecteer alle vrachttypen (inclusief niet-wachtende vracht)
-STR_STATION_LIST_NO_WAITING_CARGO                               :{BLACK}Er wacht geen vracht van enig type
 
 # Station view window
 STR_STATION_VIEW_CAPTION                                        :{WHITE}{STATION} {STATION_FEATURES}
@@ -4168,7 +4167,7 @@ STR_DEPOT_VEHICLE_TOOLTIP_CHAIN                                 :{BLACK}{NUM} vo
 STR_DEPOT_VEHICLE_TOOLTIP_CARGO                                 :{}{CARGO_LONG} ({CARGO_SHORT})
 
 ###length VEHICLE_TYPES
-STR_DEPOT_TRAIN_LIST_TOOLTIP                                    :{BLACK}Treinen - klik op trein voor informatie, sleep voertuig voor toevoegen/verwijderen van trein, klik rechts voor trein informatie, Ctrl+klik voor samengestelde informatie
+STR_DEPOT_TRAIN_LIST_TOOLTIP                                    :{BLACK}Treinen - klik links en sleep voertuig voor toevoegen/verwijderen van trein, klik rechts voor informatie, Ctrl+klik om toe te passen op volgende keten
 STR_DEPOT_ROAD_VEHICLE_LIST_TOOLTIP                             :{BLACK}Wegvoertuigen - rechts-klik op een wegvoertuig voor informatie
 STR_DEPOT_SHIP_LIST_TOOLTIP                                     :{BLACK}Schepen - rechts-klik op een schip voor informatie
 STR_DEPOT_AIRCRAFT_LIST_TOOLTIP                                 :{BLACK}Vliegtuigen - rechts-klik op een vliegtuig voor informatie
@@ -4210,10 +4209,10 @@ STR_DEPOT_CLONE_SHIP                                            :{BLACK}Schip kl
 STR_DEPOT_CLONE_AIRCRAFT                                        :{BLACK}Vliegtuig klonen
 
 ###length VEHICLE_TYPES
-STR_DEPOT_CLONE_TRAIN_DEPOT_INFO                                :{BLACK}Hiermee koop je een kopie van een trein, inclusief wagons. Klik op deze knop en dan op een trein binnen of buiten het depot. Ctrl+klik deelt de orders. Shift+klik geeft de verwachte kosten zonder te kopen.
-STR_DEPOT_CLONE_ROAD_VEHICLE_DEPOT_INFO                         :{BLACK}Hiermee koop je een kopie van een wegvoertuig. Klik op deze knop en dan op een wegvoertuig binnen of buiten de garage. Ctrl+klik deelt de orders. Shift+klik geeft de verwachte kosten zonder te kopen.
-STR_DEPOT_CLONE_SHIP_DEPOT_INFO                                 :{BLACK}Hiermee koop je een kopie van een schip. Klik op deze knop en dan op een schip binnen of buiten het dok. Ctrl+klik deelt de orders. Shift+klik geeft de verwachte kosten zonder te kopen.
-STR_DEPOT_CLONE_AIRCRAFT_INFO_HANGAR_WINDOW                     :{BLACK}Hiermee koop je een kopie van een vliegtuig. Klik op deze knop en dan op een vliegtuig binnen of buiten de hangar. Ctrl+klik deelt de orders. Shift+klik geeft de verwachte kosten zonder te kopen.
+STR_DEPOT_CLONE_TRAIN_DEPOT_INFO                                :{BLACK}Hiermee koop je een kopie van een trein, inclusief wagons. Klik op deze knop en dan op een trein binnen of buiten het depot. Ctrl+klik deelt de orders. Voeg Shift toe voor alleen inschatting van de kosten
+STR_DEPOT_CLONE_ROAD_VEHICLE_DEPOT_INFO                         :{BLACK}Hiermee koop je een kopie van een wegvoertuig. Klik op deze knop en dan op een wegvoertuig binnen of buiten de garage. Ctrl+klik deelt de orders. Voeg Shift toe voor alleen inschatting van de kosten
+STR_DEPOT_CLONE_SHIP_DEPOT_INFO                                 :{BLACK}Hiermee koop je een kopie van een schip. Klik op deze knop en dan op een schip binnen of buiten het dok. Ctrl+klik deelt de orders. Voeg Shift toe voor alleen inschatting van de kosten
+STR_DEPOT_CLONE_AIRCRAFT_INFO_HANGAR_WINDOW                     :{BLACK}Hiermee koop je een kopie van een vliegtuig. Klik op deze knop en dan op een vliegtuig binnen of buiten de hangar. Ctrl+klik deelt de orders. Voeg Shift toe voor alleen inschatting van de kosten
 
 ###length VEHICLE_TYPES
 STR_DEPOT_TRAIN_LOCATION_TOOLTIP                                :{BLACK}Centreer het hoofdscherm op de remise. Ctrl+klik opent een nieuw scherm op locatie van remise.
@@ -4337,9 +4336,9 @@ STR_VEHICLE_VIEW_SHIP_SEND_TO_DEPOT_TOOLTIP                     :{BLACK}Stuur sc
 STR_VEHICLE_VIEW_AIRCRAFT_SEND_TO_DEPOT_TOOLTIP                 :{BLACK}Stuur vliegtuig naar hangar. Ctrl+klik voor alleen onderhoud
 
 ###length VEHICLE_TYPES
-STR_VEHICLE_VIEW_CLONE_TRAIN_INFO                               :{BLACK}Hiermee koop je een kopie van deze trein, inclusief wagons. Ctrl+klik deelt de orders. Shift+klik geeft de verwachte kosten zonder te kopen.
-STR_VEHICLE_VIEW_CLONE_ROAD_VEHICLE_INFO                        :{BLACK}Hiermee koop je een kopie van dit wegvoertuig. Ctrl+klik deelt de orders. Shift+klik geeft de verwachte kosten zonder te kopen.
-STR_VEHICLE_VIEW_CLONE_SHIP_INFO                                :{BLACK}Hiermee koop je een kopie van dit schip. Ctrl+klik deelt de orders. Shift+klik geeft de verwachte kosten zonder te kopen.
+STR_VEHICLE_VIEW_CLONE_TRAIN_INFO                               :{BLACK}Hiermee koop je een kopie van deze trein, inclusief wagons. Ctrl+klik deelt de orders. Voeg Shift toe voor alleen inschatting van de kosten
+STR_VEHICLE_VIEW_CLONE_ROAD_VEHICLE_INFO                        :{BLACK}Kopie van wegvoertuig kopen. Ctrl+klik deelt de orders. Voeg Shift toe voor alleen inschatting van de kosten
+STR_VEHICLE_VIEW_CLONE_SHIP_INFO                                :{BLACK}Hiermee koop je een kopie van dit schip. Ctrl+klik deelt de orders. Voeg Shift toe voor alleen inschatting van de kosten
 STR_VEHICLE_VIEW_CLONE_AIRCRAFT_INFO                            :{BLACK}Hiermee koop je een kopie van dit vliegtuig. Ctrl+klik deelt de orders. Voeg Shift toe voor de verwachte kosten
 
 STR_VEHICLE_VIEW_TRAIN_IGNORE_SIGNAL_TOOLTIP                    :{BLACK}Forceer trein om verder te rijden zonder te wachten op een groen sein
@@ -4374,6 +4373,7 @@ STR_VEHICLE_VIEW_AIRCRAFT_STATUS_START_STOP_TOOLTIP             :{BLACK}Huidige 
 # Messages in the start stop button in the vehicle view
 STR_VEHICLE_STATUS_LOADING_UNLOADING                            :{LTBLUE}In- en uitladen
 STR_VEHICLE_STATUS_LEAVING                                      :{LTBLUE}Vertrekt van
+STR_VEHICLE_STATUS_WAITING_UNBUNCHING                           :{LTBLUE}Wacht op ontkreukelen
 STR_VEHICLE_STATUS_CRASHED                                      :{RED}Verongelukt!
 STR_VEHICLE_STATUS_BROKEN_DOWN                                  :{RED}Pech onderweg
 STR_VEHICLE_STATUS_STOPPED                                      :{RED}Gestopt
@@ -4387,6 +4387,7 @@ STR_VEHICLE_STATUS_NO_ORDERS_VEL                                :{LTBLUE}Geen or
 STR_VEHICLE_STATUS_HEADING_FOR_WAYPOINT_VEL                     :{LTBLUE}Op weg naar {WAYPOINT}, {VELOCITY}
 STR_VEHICLE_STATUS_HEADING_FOR_DEPOT_VEL                        :{ORANGE}Onderweg naar {DEPOT}, {VELOCITY}
 STR_VEHICLE_STATUS_HEADING_FOR_DEPOT_SERVICE_VEL                :{LTBLUE}Onderhoud in {DEPOT}, {VELOCITY}
+STR_VEHICLE_STATUS_HEADING_FOR_DEPOT_UNBUNCH_VEL                :{LTBLUE}Ontkreukelen en onderhouden bij {DEPOT}, {VELOCITY}
 
 STR_VEHICLE_STATUS_CANNOT_REACH_STATION_VEL                     :{LTBLUE}Kan {STATION}, {VELOCITY} niet bereiken
 STR_VEHICLE_STATUS_CANNOT_REACH_WAYPOINT_VEL                    :{LTBLUE}Kan {WAYPOINT}, {VELOCITY} niet bereiken
@@ -4490,7 +4491,7 @@ STR_REFIT_NEW_CAPACITY_COST_OF_REFIT                            :{BLACK}Nieuwe c
 STR_REFIT_NEW_CAPACITY_INCOME_FROM_REFIT                        :{BLACK}Nieuwe capaciteit: {GOLD}{CARGO_LONG}{}{BLACK}Inkomsten van ombouwen: {GREEN}{CURRENCY_LONG}
 STR_REFIT_NEW_CAPACITY_COST_OF_AIRCRAFT_REFIT                   :{BLACK}Nieuwe capaciteit: {GOLD}{CARGO_LONG}, {GOLD}{CARGO_LONG}{}{BLACK}Ombouwkosten: {RED}{CURRENCY_LONG}
 STR_REFIT_NEW_CAPACITY_INCOME_FROM_AIRCRAFT_REFIT               :{BLACK}Nieuwe capaciteit: {GOLD}{CARGO_LONG}, {GOLD}{CARGO_LONG}{}{BLACK}Inkomsten na ombouwen: {GREEN}{CURRENCY_LONG}
-STR_REFIT_SELECT_VEHICLES_TOOLTIP                               :{BLACK}Selecteer het voertuig dat je wilt ombouwen. Sleep met de muis om meerdere voertuigen te selecteren. Klik op een lege ruimte om het hele voertuig te selecteren. Met Ctrl+klik selecteer je een voertuig en de volgende keten
+STR_REFIT_SELECT_VEHICLES_TOOLTIP                               :{BLACK}Selecteer het voertuig dat je wilt ombouwen. Klik en sleep met de muis om meerdere voertuigen te selecteren. Klik op een lege ruimte om het hele voertuig te selecteren. Met Ctrl+klik selecteer je een voertuig en de volgende keten
 
 ###length VEHICLE_TYPES
 STR_REFIT_TRAIN_LIST_TOOLTIP                                    :{BLACK}Vrachttype selecteren dat deze trein moet vervoeren
@@ -4517,6 +4518,7 @@ STR_ORDERS_TIMETABLE_VIEW_TOOLTIP                               :{BLACK}Naar die
 
 STR_ORDERS_LIST_TOOLTIP                                         :{BLACK}Orderlijst - klik op een order om deze te selecteren. Met Ctrl+klik ga je naar de bestemming van de order.
 STR_ORDER_INDEX                                                 :{COMMA}:{NBSP}
+STR_ORDER_TEXT                                                  :{STRING} {STRING} {STRING} {STRING}
 
 STR_ORDERS_END_OF_ORDERS                                        :- - Einde van orders - -
 STR_ORDERS_END_OF_SHARED_ORDERS                                 :- - Einde gedeelde orders - -
@@ -4553,9 +4555,14 @@ STR_ORDER_DROP_REFIT_AUTO_ANY                                   :Beschikbare vra
 STR_ORDER_DROP_GO_ALWAYS_DEPOT                                  :Altijd gaan
 STR_ORDER_DROP_SERVICE_DEPOT                                    :Onderhouden wanneer nodig
 STR_ORDER_DROP_HALT_DEPOT                                       :Stoppen
+STR_ORDER_DROP_UNBUNCH                                          :Ontkreukelen
 
 # Depot action tooltips, one per vehicle type
 ###length VEHICLE_TYPES
+STR_ORDER_TRAIN_DEPOT_ACTION_TOOLTIP                            :{BLACK}Wat wil je doen bij deze remise
+STR_ORDER_ROAD_DEPOT_ACTION_TOOLTIP                             :{BLACK}Wat wil je doen bij deze garage
+STR_ORDER_SHIP_DEPOT_ACTION_TOOLTIP                             :{BLACK}Wat wil je doen bij dit dok
+STR_ORDER_HANGAR_ACTION_TOOLTIP                                 :{BLACK}Selecteer de actie om te ondernemen bij deze hangar
 ###next-name-looks-similar
 
 STR_ORDER_CONDITIONAL_VARIABLE_TOOLTIP                          :{BLACK}Voertuiggegevens voor basisspringen wanneer
@@ -4599,7 +4606,7 @@ STR_ORDER_GO_TO_NEAREST_DEPOT                                   :Ga naar dichtst
 STR_ORDER_GO_TO_NEAREST_HANGAR                                  :Ga naar dichtstbijzijnde hangar
 STR_ORDER_CONDITIONAL                                           :Voorwaardelijk overgeslagen order
 STR_ORDER_SHARE                                                 :Orders delen
-STR_ORDERS_GO_TO_TOOLTIP                                        :{BLACK}Voegt een nieuwe order toe voor de geselecteerde order of aan het eind van de lijst. Ctrl+klik maakt stationsorders 'Eén soort vracht volledig laden', controlepost-orders 'Ga non-stop via' en depot-orders 'Onderhoud bij'. Met 'Orders delen' of Ctrl deelt dit voertuig de orders met het geselecteerde voertuig. Klikken op een voertuig kopieert de orders van dat voertuig. Een depot-order schakelt automatisch onderhoud van een voertuig uit.
+STR_ORDERS_GO_TO_TOOLTIP                                        :{BLACK}Voegt een nieuwe order toe voor de geselecteerde order of aan het eind van de lijst. Ctrl+klik maakt stationsorders 'Eén soort vracht volledig laden', controlepost-orders 'Ga non-stop via' en depot-orders 'Onderhoud bij'. Klikken op een ander voertuig kopieert de orders van dat voertuig, Ctrl+klik om de orders te delen. Een depot-order schakelt automatisch onderhoud van een voertuig uit.
 
 STR_ORDERS_VEH_WITH_SHARED_ORDERS_LIST_TOOLTIP                  :{BLACK}Alle voertuigen weergeven met dezelfde gedeelde orders
 
@@ -4625,6 +4632,7 @@ STR_ORDER_REFIT_ORDER                                           :(Ombouwen naar 
 STR_ORDER_REFIT_STOP_ORDER                                      :(Ombouwen naar {STRING} en stop)
 STR_ORDER_STOP_ORDER                                            :(Stop)
 
+STR_ORDER_WAIT_TO_UNBUNCH                                       :(wacht op ontkreukelen)
 
 STR_ORDER_GO_TO_STATION                                         :{STRING} {STATION} {STRING}
 STR_ORDER_GO_TO_STATION_CAN_T_USE_STATION                       :{PUSH_COLOUR}{RED}(Kan station niet gebruiken){POP_COLOUR} {STRING} {STATION} {STRING}
@@ -4723,7 +4731,7 @@ STR_TIMETABLE_CLEAR_SPEED                                       :{BLACK}Snelheid
 STR_TIMETABLE_CLEAR_SPEED_TOOLTIP                               :{BLACK}Verwijder de maximumsnelheid van de gekozen order. Met Ctrl+klik wis je de snelheid voor alle orders
 
 STR_TIMETABLE_RESET_LATENESS                                    :{BLACK}Vertragingsteller terugstellen
-STR_TIMETABLE_RESET_LATENESS_TOOLTIP                            :{BLACK}Stel de vertragingsteller terug zodat het voertuig op tijd is. Ctrl+kllik stelt de hele groep terug zodat het laatste voertuig op tijd komt en alle andere te vroeg.
+STR_TIMETABLE_RESET_LATENESS_TOOLTIP                            :{BLACK}Stel de vertragingsteller terug zodat het voertuig op tijd is. Ctrl+klik stelt de hele groep terug zodat het laatste voertuig op tijd komt en alle andere te vroeg.
 
 STR_TIMETABLE_AUTOFILL                                          :{BLACK}Automatisch vullen
 STR_TIMETABLE_AUTOFILL_TOOLTIP                                  :{BLACK}Vul de dienstregeling automatisch in aan de hand van de volgende reis. Ctrl+klik om te proberen om wachttijden te bewaren
@@ -4828,6 +4836,8 @@ STR_AI_SETTINGS_CAPTION_GAMESCRIPT                              :Spelscript
 STR_AI_SETTINGS_CLOSE                                           :{BLACK}Sluiten
 STR_AI_SETTINGS_RESET                                           :{BLACK}Terugstellen
 STR_AI_SETTINGS_SETTING                                         :{STRING}: {ORANGE}{STRING}
+STR_AI_SETTINGS_SETTING_DEVIATION                               :{STRING}: {ORANGE}[{STRING}, {STRING}]
+STR_AI_SETTINGS_JUST_DEVIATION                                  :[{STRING}, {STRING}]
 
 
 # Textfile window
@@ -5094,6 +5104,11 @@ STR_ERROR_UNABLE_TO_FIND_LOCAL_DEPOT                            :{WHITE}Kan geen
 STR_ERROR_DEPOT_WRONG_DEPOT_TYPE                                :Verkeerd depot-type
 
 # Depot unbunching related errors
+STR_ERROR_UNBUNCHING_ONLY_ONE_ALLOWED                           :{WHITE}... kan maar één keer ontkreukelen in orderlijst
+STR_ERROR_UNBUNCHING_NO_FULL_LOAD                               :{WHITE}... kan niet volledig laden als het voertuig ontkreukeld moet worden
+STR_ERROR_UNBUNCHING_NO_UNBUNCHING_FULL_LOAD                    :{WHITE}... kan niet ontkreukelen als voertuig volledig moet worden geladen
+STR_ERROR_UNBUNCHING_NO_CONDITIONAL                             :{WHITE}... kan geen voorwaardelijke orders geven als het voertuig ontkreukeld moet worden
+STR_ERROR_UNBUNCHING_NO_UNBUNCHING_CONDITIONAL                  :{WHITE}... kan niet onkreukelen als voertuig een voorwaardelijke order heeft
 
 # Autoreplace related errors
 STR_ERROR_TRAIN_TOO_LONG_AFTER_REPLACEMENT                      :{WHITE}{VEHICLE} is te lang na het vervangen

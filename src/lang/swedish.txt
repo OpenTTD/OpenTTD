@@ -159,7 +159,6 @@ STR_ABBREV_TOFFEE                                               :KN
 STR_ABBREV_BATTERIES                                            :BA
 STR_ABBREV_PLASTIC                                              :PL
 STR_ABBREV_FIZZY_DRINKS                                         :LÄ
-STR_ABBREV_NONE                                                 :NEJ
 STR_ABBREV_ALL                                                  :ALLA
 
 # 'Mode' of transport for cargoes
@@ -3591,8 +3590,6 @@ STR_STATION_LIST_STATION                                        :{YELLOW}{STATIO
 STR_STATION_LIST_WAYPOINT                                       :{YELLOW}{WAYPOINT}
 STR_STATION_LIST_NONE                                           :{YELLOW}- Inga -
 STR_STATION_LIST_SELECT_ALL_FACILITIES                          :{BLACK}Markera alla inrättningar
-STR_STATION_LIST_SELECT_ALL_TYPES                               :{BLACK}Välj alla typer av last (inklusive icke väntande last)
-STR_STATION_LIST_NO_WAITING_CARGO                               :{BLACK}Ingen sorts last väntar
 
 # Station view window
 STR_STATION_VIEW_CAPTION                                        :{WHITE}{STATION} {STATION_FEATURES}

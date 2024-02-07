@@ -159,7 +159,6 @@ STR_ABBREV_TOFFEE                                               :KA
 STR_ABBREV_BATTERIES                                            :BA
 STR_ABBREV_PLASTIC                                              :PL
 STR_ABBREV_FIZZY_DRINKS                                         :KG
-STR_ABBREV_NONE                                                 :KG
 STR_ABBREV_ALL                                                  :ALL
 
 # 'Mode' of transport for cargoes
@@ -3519,8 +3518,6 @@ STR_STATION_LIST_STATION                                        :{YELLOW}{STATIO
 STR_STATION_LIST_WAYPOINT                                       :{YELLOW}{WAYPOINT}
 STR_STATION_LIST_NONE                                           :{YELLOW}- Näischt -
 STR_STATION_LIST_SELECT_ALL_FACILITIES                          :{BLACK}Wiel all d'Fabriken
-STR_STATION_LIST_SELECT_ALL_TYPES                               :{BLACK}Wielt all Luedungstyp (ouni Luedung déi waard)
-STR_STATION_LIST_NO_WAITING_CARGO                               :{BLACK}Keng Luedung
 
 # Station view window
 STR_STATION_VIEW_CAPTION                                        :{WHITE}{STATION} {STATION_FEATURES}

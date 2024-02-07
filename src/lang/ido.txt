@@ -158,7 +158,6 @@ STR_ABBREV_TOFFEE                                               :KR
 STR_ABBREV_BATTERIES                                            :BT
 STR_ABBREV_PLASTIC                                              :PL
 STR_ABBREV_FIZZY_DRINKS                                         :GD
-STR_ABBREV_NONE                                                 :NL
 STR_ABBREV_ALL                                                  :OMNA
 
 # 'Mode' of transport for cargoes

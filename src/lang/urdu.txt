@@ -160,7 +160,6 @@ STR_ABBREV_TOFFEE                                               :ٹافی
 STR_ABBREV_BATTERIES                                            :سیل
 STR_ABBREV_PLASTIC                                              :پلاسٹِک
 STR_ABBREV_FIZZY_DRINKS                                         :سوڈا واٹر
-STR_ABBREV_NONE                                                 :نہیں
 STR_ABBREV_ALL                                                  :تمام
 
 # 'Mode' of transport for cargoes
@@ -2355,8 +2354,6 @@ STR_GOAL_QUESTION_CAPTION_ERROR                                 :خرابی
 STR_STATION_LIST_STATION                                        :{YELLOW}{STATION} {STATION_FEATURES}
 STR_STATION_LIST_WAYPOINT                                       :{YELLOW}{WAYPOINT}
 STR_STATION_LIST_SELECT_ALL_FACILITIES                          :{BLACK}تمام سہولتوں کا انتخاب کرو
-STR_STATION_LIST_SELECT_ALL_TYPES                               :{BLACK}تمام قسم کے سامان کا انتخاب کرو (بشمول غیر منتظر سامان کے)
-STR_STATION_LIST_NO_WAITING_CARGO                               :{BLACK}کسی قسم کا کویی سامان انتظار نہیں کر رہا ہے
 
 # Station view window
 STR_STATION_VIEW_CAPTION                                        :{WHITE}{STATION} {STATION_FEATURES}

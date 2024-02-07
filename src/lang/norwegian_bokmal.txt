@@ -161,7 +161,6 @@ STR_ABBREV_TOFFEE                                               :KM
 STR_ABBREV_BATTERIES                                            :BA
 STR_ABBREV_PLASTIC                                              :PL
 STR_ABBREV_FIZZY_DRINKS                                         :MV
-STR_ABBREV_NONE                                                 :IN
 STR_ABBREV_ALL                                                  :ALLE
 
 # 'Mode' of transport for cargoes
@@ -3482,8 +3481,6 @@ STR_STATION_LIST_STATION                                        :{YELLOW}{STATIO
 STR_STATION_LIST_WAYPOINT                                       :{YELLOW}{WAYPOINT}
 STR_STATION_LIST_NONE                                           :{YELLOW}- Ingen -
 STR_STATION_LIST_SELECT_ALL_FACILITIES                          :{BLACK}Velg alle anlegg
-STR_STATION_LIST_SELECT_ALL_TYPES                               :{BLACK}Velg alle varetyper (inkludert varer som ikke venter)
-STR_STATION_LIST_NO_WAITING_CARGO                               :{BLACK}Ingen varetyper venter
 
 # Station view window
 STR_STATION_VIEW_CAPTION                                        :{WHITE}{STATION} {STATION_FEATURES}

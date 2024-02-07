@@ -159,7 +159,6 @@ STR_ABBREV_TOFFEE                                               :PM
 STR_ABBREV_BATTERIES                                            :BA
 STR_ABBREV_PLASTIC                                              :PL
 STR_ABBREV_FIZZY_DRINKS                                         :MR
-STR_ABBREV_NONE                                                 :TANPA
 STR_ABBREV_ALL                                                  :SMA
 
 # 'Mode' of transport for cargoes
@@ -893,7 +892,12 @@ STR_NEWS_STATION_NOW_ACCEPTS_CARGO_LIST                         :{WHITE}{STATION
 
 STR_NEWS_OFFER_OF_SUBSIDY_EXPIRED                               :{BIG_FONT}{BLACK}Penawaran subsidi berakhir:{}{}Jasa transportasi {STRING} dari {STRING} ke {STRING} mulai sekarang tidak lagi mendapat subsidi
 STR_NEWS_SUBSIDY_WITHDRAWN_SERVICE                              :{BIG_FONT}{BLACK}Subsidi berakhir:{}{}Jasa transportasi {STRING} dari {STRING} ke {STRING} tidak lagi mendapat subsidi
+STR_NEWS_SERVICE_SUBSIDY_OFFERED                                :{BIG_FONT}{BLACK}Subsidi layanan yang ditawarkan:{}{}Pertama {STRING} dari {STRING} ke {STRING} akan menarik subsidi {UNITS_YEARS_OR_MINUTES} dari otoritas lokal!
 ###length 4
+STR_NEWS_SERVICE_SUBSIDY_AWARDED_HALF                           :{BIG_FONT}{BLACK}Subsidi layanan diberikan kepada {STRING}!{}{}{STRING} dari {STRING} hingga {STRING} akan membayar ekstra 50% untuk {UNITS_YEARS_OR_MINUTES} berikutnya!
+STR_NEWS_SERVICE_SUBSIDY_AWARDED_DOUBLE                         :{BIG_FONT}{BLACK}Subsidi layanan yang diberikan kepada {STRING}!{}{}{STRING} dari {STRING} hingga {STRING} akan membayar tarif ganda untuk {UNITS_YEARS_OR_MINUTES} selanjunya!
+STR_NEWS_SERVICE_SUBSIDY_AWARDED_TRIPLE                         :{BIG_FONT}{BLACK}Subsidi layanan yang diberikan kepada {STRING}!{}{}{STRING} dari {STRING} hingga {STRING} akan membayar tarif tiga kali lipat untuk {UNITS_YEARS_OR_MINUTES} berikutnya!
+STR_NEWS_SERVICE_SUBSIDY_AWARDED_QUADRUPLE                      :{BIG_FONT}{BLACK}Subsidi layanan yang diberikan kepada {STRING}!{}{}{STRING} dari {STRING} hingga {STRING} akan membayar tarif empat kali lipat untuk {UNITS_YEARS_OR_MINUTES} berikutnya!
 
 STR_NEWS_EXCLUSIVE_RIGHTS_TITLE                                 :{BIG_FONT}{BLACK}Monopoli transportasi!
 
@@ -1047,7 +1051,9 @@ STR_GAME_OPTIONS_BASE_MUSIC                                     :{BLACK}Set Musi
 STR_GAME_OPTIONS_BASE_MUSIC_TOOLTIP                             :{BLACK}Pilih musik dasar yang akan digunakan
 STR_GAME_OPTIONS_BASE_MUSIC_DESCRIPTION_TOOLTIP                 :{BLACK}Informasi tambahan tentang musik dasar
 
+STR_GAME_OPTIONS_SOCIAL_PLUGINS_NONE                            :{LTBLUE}(tidak ada plugin untuk diintegrasikan dengan platform sosial yang terpasang)
 
+STR_GAME_OPTIONS_SOCIAL_PLUGIN_PLATFORM                         :{BLACK}Platform:
 
 
 STR_BASESET_STATUS                                              :{STRING} {RED}({NUM} file hilang/rusak
@@ -1242,6 +1248,7 @@ STR_CONFIG_SETTING_SUBSIDY_DURATION                             :Durasi subsidi:
 ###length 2
 STR_CONFIG_SETTING_SUBSIDY_DURATION_HELPTEXT                    :Atur jumlah tahun di mana subsidi diberikan
 
+STR_CONFIG_SETTING_SUBSIDY_DURATION_VALUE                       :{UNITS_YEARS_OR_PERIODS}
 ###setting-zero-is-special
 STR_CONFIG_SETTING_SUBSIDY_DURATION_DISABLED                    :Tidak ada subsidi
 
@@ -1249,7 +1256,7 @@ STR_CONFIG_SETTING_CONSTRUCTION_COSTS                           :Biaya konstruks
 STR_CONFIG_SETTING_CONSTRUCTION_COSTS_HELPTEXT                  :Menetapkan tingkat biaya konstruksi dan pembelian
 
 STR_CONFIG_SETTING_RECESSIONS                                   :Resesi : {STRING}
-STR_CONFIG_SETTING_RECESSIONS_HELPTEXT                          :Jika dinyalakan, resesi akan terjadi dalam beberapa tahun sekali. Saat resesi semua produksi produk akan berkurang (kembali normal saat resesi selesai)
+STR_CONFIG_SETTING_RECESSIONS_HELPTEXT                          :Jika diaktifkan, resesi dapat terjadi secara berkala. Selama resesi, seluruh produksi jauh lebih rendah (akan kembali ke tingkat sebelumnya setelah resesi selesai)
 
 STR_CONFIG_SETTING_TRAIN_REVERSING                              :Melarang pemutaran kereta di stasiun: {STRING}
 STR_CONFIG_SETTING_TRAIN_REVERSING_HELPTEXT                     :Jika diaktifkan, kereta tidak akan berputar selain di stasiun ujung, termasuk jika ada jalan yang lebih pendek kalau berbalik
@@ -1341,7 +1348,7 @@ STR_CONFIG_SETTING_SIGNALSIDE_RIGHT                             :Di kanan
 STR_CONFIG_SETTING_SHOWFINANCES                                 :Tampilkan laporan keuangan pada akhir tahun: {STRING}
 
 ###length 2
-STR_CONFIG_SETTING_SHOWFINANCES_HELPTEXT                        :Jika diaktifkan, jendela keuangan akan ditampilkan setiap akhir tahun untuk lebih mudah memeriksa keadaan keuangan
+STR_CONFIG_SETTING_SHOWFINANCES_HELPTEXT                        :Jika diaktifkan, jendela keuangan akan muncul setiap akhir tahun untuk memudahkan pemeriksaan status keuangan perusahaan
 
 STR_CONFIG_SETTING_NONSTOP_BY_DEFAULT                           :Tujuan baru standarnya adalah 'non-stop': {STRING}
 STR_CONFIG_SETTING_NONSTOP_BY_DEFAULT_HELPTEXT                  :Biasanya, kendaraan akan berhenti di setiap stasiun yang di lewati. Dengan mengaktifkan pengaturan ini, maka kendaraan akan melewati semua stasiun dalam perjalanan ke tujuan akhir. Perhatikan, bahwa pengaturan ini hanya mendefinisikan nilai default. Perintah individu dapat diatur
@@ -1684,9 +1691,11 @@ STR_CONFIG_SETTING_SOUND_NEWS_HELPTEXT                          :Mainkan suara s
 
 ###length 2
 STR_CONFIG_SETTING_SOUND_NEW_YEAR                               :Akhir tahun: {STRING}
+STR_CONFIG_SETTING_SOUND_NEW_PERIOD                             :Akhir periode: {STRING}
 
 ###length 2
-STR_CONFIG_SETTING_SOUND_NEW_YEAR_HELPTEXT                      :Mainkan suara di akhir tahun ringkaskan prestasi perusahaan selama tahun dibandingkan tahun terakhir
+STR_CONFIG_SETTING_SOUND_NEW_YEAR_HELPTEXT                      :Putar suara di akhir tahun yang merangkum kinerja perusahaan selama tahun tersebut dibandingkan tahun sebelumnya
+STR_CONFIG_SETTING_SOUND_NEW_PERIOD_HELPTEXT                    :Putar suara di akhir periode yang merangkum kinerja perusahaan selama periode tersebut dibandingkan periode sebelumnya
 
 STR_CONFIG_SETTING_SOUND_CONFIRM                                :Pembangunan: {STRING}
 STR_CONFIG_SETTING_SOUND_CONFIRM_HELPTEXT                       :Mainkan suara waktu pembangunan yang berhasil atau aksi lain
@@ -1818,7 +1827,7 @@ STR_CONFIG_SETTING_COLOURED_NEWS_YEAR_HELPTEXT                  :Tahun saat sura
 STR_CONFIG_SETTING_STARTING_YEAR                                :Tahun mulai: {STRING}
 
 STR_CONFIG_SETTING_ENDING_YEAR                                  :Penilaian akhir tahun: {STRING}
-STR_CONFIG_SETTING_ENDING_YEAR_HELPTEXT                         :Tahun pertandingan berakhir untuk tujuan mencetak gol. Pada akhir tahun ini, skor perusahaan dicatat dan layar skor tertinggi ditampilkan, tetapi para pemain dapat terus bermain setelah itu.{} Jika ini sebelum tahun mulai, layar skor tinggi tidak pernah ditampilkan.
+STR_CONFIG_SETTING_ENDING_YEAR_HELPTEXT                         :Tahun permainan berakhir untuk tujuan mencetak gol. Pada akhir tahun ini, skor perusahaan dicatat dan layar skor tinggi ditampilkan, namun pemain bisa terus bermain setelah itu.{}Jika ini terjadi sebelum tahun dimulai, layar skor tinggi tidak pernah ditampilkan.
 STR_CONFIG_SETTING_ENDING_YEAR_VALUE                            :{NUM}
 ###setting-zero-is-special
 STR_CONFIG_SETTING_ENDING_YEAR_ZERO                             :Tidak pernah
@@ -2648,6 +2657,7 @@ STR_LINKGRAPH_LEGEND_OVERLOADED                                 :{TINY_FONT}{BLA
 
 # Linkgraph tooltip
 STR_LINKGRAPH_STATS_TOOLTIP_RETURN_EXTENSION                    :{}{CARGO_LONG} akan dikirim kembali ({COMMA}% dari kapasitas)
+STR_LINKGRAPH_STATS_TOOLTIP_TIME_EXTENSION                      :{}Rata-rata Waktu perjalanan: {UNITS_DAYS_OR_SECONDS}
 
 # Base for station construction window(s)
 STR_STATION_BUILD_COVERAGE_AREA_TITLE                           :{BLACK}Jangkauan layanan
@@ -3249,7 +3259,7 @@ STR_MAPGEN_TERRAIN_TYPE_QUERY_CAPT                              :{WHITE}Target k
 STR_MAPGEN_HEIGHTMAP_HEIGHT_QUERY_CAPT                          :{WHITE}Puncak tertinggi
 STR_MAPGEN_SNOW_COVERAGE_QUERY_CAPT                             :{WHITE}Cakupan salju (dalam %)
 STR_MAPGEN_DESERT_COVERAGE_QUERY_CAPT                           :{WHITE}Cakupan gurun (dalam %)
-STR_MAPGEN_START_DATE_QUERY_CAPT                                :{WHITE}Ganti Tahun Permulaan
+STR_MAPGEN_START_DATE_QUERY_CAPT                                :{WHITE}Ubah tahun permulaan
 
 # SE Map generation
 STR_SE_MAPGEN_CAPTION                                           :{WHITE}Jenis Skenario
@@ -3444,7 +3454,7 @@ STR_NEWGRF_BROKEN                                               :{WHITE}Biasanya
 STR_NEWGRF_BROKEN_POWERED_WAGON                                 :{WHITE}Ini akan mengubah keadaan gerbong listrik '{1:ENGINE}' saat tidak berada di depo
 STR_NEWGRF_BROKEN_VEHICLE_LENGTH                                :{WHITE}Ini akan mengubah panjang kereta sebanyak '{1:ENGINE}' ketika tidak berada di dalam depo
 STR_NEWGRF_BROKEN_CAPACITY                                      :{WHITE}Mengubah kapasitas kendaraan '{1:ENGINE}' ketika tidak di dalam depot atau reparasi
-STR_BROKEN_VEHICLE_LENGTH                                       :{WHITE}Kereta '{VEHICLE}' milik '{COMPANY}' memiliki ukuran yang tidak sesuai. Hal ini mungkin disebabkan oleh masalah dengan NewGRF. Permainan mungkin akan rusak atau macet
+STR_BROKEN_VEHICLE_LENGTH                                       :{WHITE}Kereta '{VEHICLE}' milik '{COMPANY}' memiliki ukuran yang tidak sesuai. Hal ini mungkin disebabkan oleh masalah dengan NewGRF. Permainan mungkin tidak sinkron atau crash
 
 STR_NEWGRF_BUGGY                                                :{WHITE}NewGRF '{0:STRING}' memberikan informasi yang salah
 STR_NEWGRF_BUGGY_ARTICULATED_CARGO                              :{WHITE}Informasi muat ulang untuk '{1:ENGINE}' berbeda dengan daftar beli setelah konstruksi. Ini menyebabkan pembaruan otomatis gagal memuat ulang dengan benar
@@ -3500,6 +3510,8 @@ STR_TOWN_VIEW_CARGO_FOR_TOWNGROWTH_REQUIRED_WINTER              :{ORANGE}{STRING
 STR_TOWN_VIEW_CARGO_FOR_TOWNGROWTH_DELIVERED_GENERAL            :{ORANGE}{STRING}{GREEN} terkirim
 STR_TOWN_VIEW_CARGO_FOR_TOWNGROWTH_REQUIRED                     :{ORANGE}{CARGO_TINY} / {CARGO_LONG}{RED} (masih dibutuhkan)
 STR_TOWN_VIEW_CARGO_FOR_TOWNGROWTH_DELIVERED                    :{ORANGE}{CARGO_TINY} / {CARGO_LONG}{GREEN} (terkirim)
+STR_TOWN_VIEW_TOWN_GROWS_EVERY                                  :{BLACK}Kota berkembang setiap {ORANGE}{UNITS_DAYS_OR_SECONDS}
+STR_TOWN_VIEW_TOWN_GROWS_EVERY_FUNDED                           :{BLACK}Kota berkembang setiap {ORANGE}{UNITS_DAYS_OR_SECONDS} (didanai)
 STR_TOWN_VIEW_TOWN_GROW_STOPPED                                 :{BLACK}Kota {RED}tidak{BLACK} tumbuh
 STR_TOWN_VIEW_NOISE_IN_TOWN                                     :{BLACK}Batas kebisingan di kota : {ORANGE}{COMMA}{BLACK}  maks.: {ORANGE}{COMMA}
 STR_TOWN_VIEW_CENTER_TOOLTIP                                    :{BLACK}Arahkan pandangan utama pada lokasi kota. Ctrl+Click akan membuka viewport baru pada lokasi kota
@@ -3587,8 +3599,10 @@ STR_GOAL_QUESTION_BUTTON_CLOSE                                  :Tutup
 # Subsidies window
 STR_SUBSIDIES_CAPTION                                           :{WHITE}Subsidi
 STR_SUBSIDIES_OFFERED_TITLE                                     :{BLACK}Penawaran subsidi jasa transportasi:
+STR_SUBSIDIES_OFFERED_FROM_TO                                   :{ORANGE}{STRING} dari {STRING} ke {STRING}{YELLOW} ({STRING})
 STR_SUBSIDIES_NONE                                              :{ORANGE}- Tidak Ada -
 STR_SUBSIDIES_SUBSIDISED_TITLE                                  :{BLACK}Jasa transportasi bersubsidi:
+STR_SUBSIDIES_SUBSIDISED_FROM_TO                                :{ORANGE}{STRING} dari {STRING} ke {STRING}{YELLOW} ({COMPANY}{YELLOW}, {STRING})
 STR_SUBSIDIES_TOOLTIP_CLICK_ON_SERVICE_TO_CENTER                :{BLACK}Klik pada layanan untuk mengarahkan pandangan utama pada industri/kota. Ctrl+Click akan membuka viewport baru pada lokasi industri/kota
 
 # Story book window
@@ -3612,8 +3626,6 @@ STR_STATION_LIST_STATION                                        :{YELLOW}{STATIO
 STR_STATION_LIST_WAYPOINT                                       :{YELLOW}{WAYPOINT}
 STR_STATION_LIST_NONE                                           :{YELLOW}- Tidak ada -
 STR_STATION_LIST_SELECT_ALL_FACILITIES                          :{BLACK}Pilih semua fasilitas
-STR_STATION_LIST_SELECT_ALL_TYPES                               :{BLACK}Pilih semua jenis kargo (termasuk kargo tanpa jeda)
-STR_STATION_LIST_NO_WAITING_CARGO                               :{BLACK}Tidak ada barang yang sedang menunggu
 
 # Station view window
 STR_STATION_VIEW_CAPTION                                        :{WHITE}{STATION} {STATION_FEATURES}
@@ -4278,6 +4290,8 @@ STR_VEHICLE_INFO_CAPACITY_CAPACITY                              :{BLACK}Daya Mua
 
 STR_VEHICLE_INFO_FEEDER_CARGO_VALUE                             :{BLACK}Nilai Transfer: {LTBLUE}{CURRENCY_LONG}
 
+STR_VEHICLE_DETAILS_SERVICING_INTERVAL_DAYS                     :{BLACK}Perbaikan interval: {LTBLUE}{COMMA}{NBSP}hari{BLACK} {STRING}
+STR_VEHICLE_DETAILS_SERVICING_INTERVAL_PERCENT                  :{BLACK}Jangka waktu perbaikan: {LTBLUE}{COMMA} %{BLACK} {STRING}
 
 STR_SERVICE_INTERVAL_DROPDOWN_TOOLTIP                           :{BLACK}Ubah jenis interval perbaikan
 STR_VEHICLE_DETAILS_DEFAULT                                     :Standar
@@ -4346,6 +4360,7 @@ STR_ORDERS_TIMETABLE_VIEW_TOOLTIP                               :{BLACK}Tampilka
 
 STR_ORDERS_LIST_TOOLTIP                                         :{BLACK}Daftar perintah - klik pada perintah untuk menandainya. CTRL + klik untuk mengunjungi tujuan
 STR_ORDER_INDEX                                                 :{COMMA}:{NBSP}
+STR_ORDER_TEXT                                                  :{STRING} {STRING} {STRING} {STRING}
 
 STR_ORDERS_END_OF_ORDERS                                        :- - Akhir Perintah - -
 STR_ORDERS_END_OF_SHARED_ORDERS                                 :- - Akhir Perintah Bersama - -
@@ -4556,6 +4571,7 @@ STR_TIMETABLE_EXPECTED                                          :{BLACK}Harapan
 STR_TIMETABLE_SCHEDULED                                         :{BLACK}Dijadwalkan
 STR_TIMETABLE_EXPECTED_TOOLTIP                                  :{BLACK}Ubah antara perkiraan dan jadwal
 
+STR_TIMETABLE_DEPARTURE_SECONDS_IN_FUTURE                       :D: {COLOUR}{COMMA} dtk
 
 
 # Date window (for timetable)
@@ -4648,6 +4664,8 @@ STR_AI_SETTINGS_CAPTION_GAMESCRIPT                              :Skrip Permainan
 STR_AI_SETTINGS_CLOSE                                           :{BLACK}Tutup
 STR_AI_SETTINGS_RESET                                           :{BLACK}Reset
 STR_AI_SETTINGS_SETTING                                         :{STRING}: {ORANGE}{STRING}
+STR_AI_SETTINGS_SETTING_DEVIATION                               :{STRING}: {ORANGE}[{STRING}, {STRING}]
+STR_AI_SETTINGS_JUST_DEVIATION                                  :[{STRING}, {STRING}]
 
 
 # Textfile window

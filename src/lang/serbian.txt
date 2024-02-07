@@ -347,7 +347,6 @@ STR_ABBREV_TOFFEE                                               :KA
 STR_ABBREV_BATTERIES                                            :BT
 STR_ABBREV_PLASTIC                                              :PL
 STR_ABBREV_FIZZY_DRINKS                                         :GP
-STR_ABBREV_NONE                                                 :NŠT
 STR_ABBREV_ALL                                                  :SVE
 
 # 'Mode' of transport for cargoes
@@ -3739,8 +3738,6 @@ STR_STATION_LIST_STATION                                        :{YELLOW}{STATIO
 STR_STATION_LIST_WAYPOINT                                       :{YELLOW}{WAYPOINT}
 STR_STATION_LIST_NONE                                           :{YELLOW}- Prazno -
 STR_STATION_LIST_SELECT_ALL_FACILITIES                          :{BLACK}Odaberi sve objekte
-STR_STATION_LIST_SELECT_ALL_TYPES                               :{BLACK}Odaberi sve vrste tereta (uključujući i one bez tereta)
-STR_STATION_LIST_NO_WAITING_CARGO                               :{BLACK}Nema tereta bilo koje vrste na čekanju
 
 # Station view window
 STR_STATION_VIEW_CAPTION                                        :{WHITE}{STATION} {STATION_FEATURES}

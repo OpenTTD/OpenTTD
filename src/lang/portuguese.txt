@@ -160,7 +160,6 @@ STR_ABBREV_TOFFEE                                               :CM
 STR_ABBREV_BATTERIES                                            :BA
 STR_ABBREV_PLASTIC                                              :PL
 STR_ABBREV_FIZZY_DRINKS                                         :RF
-STR_ABBREV_NONE                                                 :NÃO
 STR_ABBREV_ALL                                                  :TUDO
 
 # 'Mode' of transport for cargoes
@@ -3742,8 +3741,6 @@ STR_STATION_LIST_STATION                                        :{YELLOW}{STATIO
 STR_STATION_LIST_WAYPOINT                                       :{YELLOW}{WAYPOINT}
 STR_STATION_LIST_NONE                                           :{YELLOW}- Nenhuma -
 STR_STATION_LIST_SELECT_ALL_FACILITIES                          :{BLACK}Seleccionar todas as instalações
-STR_STATION_LIST_SELECT_ALL_TYPES                               :{BLACK}Seleccionar todos os tipos de carga (incluindo carga sem espera)
-STR_STATION_LIST_NO_WAITING_CARGO                               :{BLACK}Nenhuma carga em espera
 
 # Station view window
 STR_STATION_VIEW_CAPTION                                        :{WHITE}{STATION} {STATION_FEATURES}
@@ -4558,6 +4555,10 @@ STR_ORDER_DROP_UNBUNCH                                          :Desagrupar
 
 # Depot action tooltips, one per vehicle type
 ###length VEHICLE_TYPES
+STR_ORDER_TRAIN_DEPOT_ACTION_TOOLTIP                            :{BLACK}Selecione a ação a realizar neste depósito
+STR_ORDER_ROAD_DEPOT_ACTION_TOOLTIP                             :{BLACK}Selecione a ação a realizar nesta garagem
+STR_ORDER_SHIP_DEPOT_ACTION_TOOLTIP                             :{BLACK}}Selecione a ação a realizar neste estaleiro
+STR_ORDER_HANGAR_ACTION_TOOLTIP                                 :{BLACK}Selecione a ação a realizar neste hangar
 ###next-name-looks-similar
 
 STR_ORDER_CONDITIONAL_VARIABLE_TOOLTIP                          :{BLACK}Dados de veículo para ida à base

@@ -160,7 +160,6 @@ STR_ABBREV_TOFFEE                                               :TF
 STR_ABBREV_BATTERIES                                            :BA
 STR_ABBREV_PLASTIC                                              :PL
 STR_ABBREV_FIZZY_DRINKS                                         :SV
-STR_ABBREV_NONE                                                 :EI
 STR_ABBREV_ALL                                                  :ALT
 
 # 'Mode' of transport for cargoes
@@ -2824,8 +2823,6 @@ STR_STATION_LIST_STATION                                        :{YELLOW}{STATIO
 STR_STATION_LIST_WAYPOINT                                       :{YELLOW}{WAYPOINT}
 STR_STATION_LIST_NONE                                           :{YELLOW}- Eingin -
 STR_STATION_LIST_SELECT_ALL_FACILITIES                          :{BLACK}Vel allar hentleikar
-STR_STATION_LIST_SELECT_ALL_TYPES                               :{BLACK}Vel øll farma sløg (íroknað farm ið ikki bíðar)
-STR_STATION_LIST_NO_WAITING_CARGO                               :{BLACK}Eingin frakt av nøkrum slag bíðar
 
 # Station view window
 STR_STATION_VIEW_CAPTION                                        :{WHITE}{STATION} {STATION_FEATURES}
