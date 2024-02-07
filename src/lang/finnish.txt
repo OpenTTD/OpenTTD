@@ -3,8 +3,8 @@
 ##isocode fi_FI
 ##plural 0
 ##textdir ltr
-##digitsep .
-##digitsepcur .
+##digitsep {NBSP}
+##digitsepcur {NBSP}
 ##decimalsep ,
 ##winlangid 0x040b
 ##grflangid 0x35
