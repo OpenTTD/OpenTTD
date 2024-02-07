@@ -1450,7 +1450,7 @@ static CommandCost CmdSignalTrackHelper(DoCommandFlag flags, TileIndex tile, Til
  * @param sigtype default signal type
  * @param sigvar signal variant to build
  * @param mode true = override signal/semaphore, or pre/exit/combo signal (CTRL-toggle)
- * @param autofill fill beyond selected stretch? (currently always true but keep the command parameter so network-compatible patch packs can restore this functionality).
+ * @param autofill fill beyond selected stretch?
  * @param minimise_gaps false = keep fixed distance, true = minimise gaps between signals
  * @param signal_density user defined signals_density
  * @return the cost of this operation or an error
@@ -1530,7 +1530,7 @@ CommandCost CmdRemoveSingleSignal(DoCommandFlag flags, TileIndex tile, Track tra
  * @param tile start tile of drag
  * @param end_tile end tile of drag
  * @param track track-orientation
- * @param autofill fill beyond selected stretch? (currently always true but keep the command parameter so network-compatible patch packs can restore this functionality).
+ * @param autofill fill beyond selected stretch?
  * @return the cost of this operation or an error
  * @see CmdSignalTrackHelper
  */
