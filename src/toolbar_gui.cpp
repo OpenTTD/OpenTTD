@@ -260,7 +260,7 @@ static CallBackFunction ToolbarOptionsClick(Window *w)
 		list.push_back(std::make_unique<DropDownListStringItem>(STR_SETTINGS_MENU_GAMESCRIPT_SETTINGS,  OME_GAMESCRIPT_SETTINGS, false));
 	}
 	list.push_back(std::make_unique<DropDownListStringItem>(STR_SETTINGS_MENU_NEWGRF_SETTINGS,          OME_NEWGRFSETTINGS, false));
-	if (_game_mode != GM_EDITOR) {
+	if (_game_mode != GM_EDITOR && !_networking) {
 		list.push_back(std::make_unique<DropDownListStringItem>(STR_SETTINGS_MENU_SANDBOX_OPTIONS,      ONE_SANDBOX, false));
 	}
 	list.push_back(std::make_unique<DropDownListStringItem>(STR_SETTINGS_MENU_TRANSPARENCY_OPTIONS,     OME_TRANSPARENCIES, false));
