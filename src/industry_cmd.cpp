@@ -1013,16 +1013,21 @@ static bool IsSuitableForFarmField(TileIndex tile, bool allow_fields)
 static void SetupFarmFieldFence(TileIndex tile, int size, byte type, DiagDirection side)
 {
 	TileIndexDiff diff = (DiagDirToAxis(side) == AXIS_Y ? TileDiffXY(1, 0) : TileDiffXY(0, 1));
+	TileIndexDiff neighbour_diff = TileOffsByDiagDir(side);
 
 	do {
 		tile = Map::WrapToMap(tile);
 
 		if (IsTileType(tile, MP_CLEAR) && IsClearGround(tile, CLEAR_FIELDS)) {
-			byte or_ = type;
+			TileIndex neighbour = tile + neighbour_diff;
+			if (!IsTileType(neighbour, MP_CLEAR) || !IsClearGround(neighbour, CLEAR_FIELDS) || GetFence(neighbour, ReverseDiagDir(side)) == 0) {
+				/* Add fence as long as neighbouring tile does not already have a fence in the same position. */
+				byte or_ = type;
 
-			if (or_ == 1 && Chance16(1, 7)) or_ = 2;
+				if (or_ == 1 && Chance16(1, 7)) or_ = 2;
 
-			SetFence(tile, side, or_);
+				SetFence(tile, side, or_);
+			}
 		}
 
 		tile += diff;
