@@ -382,7 +382,7 @@ void SetDParamStr(size_t n, std::string &&str)
 
 static const char *GetDecimalSeparator()
 {
-	const char *decimal_separator = _settings_game.locale.digit_decimal_separator.c_str();
+	const char *decimal_separator = _settings_client.gui.digit_decimal_separator.c_str();
 	if (StrEmpty(decimal_separator)) decimal_separator = _langpack.langpack->digit_decimal_separator;
 	return decimal_separator;
 }
