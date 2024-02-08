@@ -55,6 +55,8 @@ const LanguageMetadata *_current_language = nullptr; ///< The currently loaded l
 
 TextDirection _current_text_dir; ///< Text direction of the currently selected language.
 
+static NumberFormatSeparators _number_format_separators;
+
 #ifdef WITH_ICU_I18N
 std::unique_ptr<icu::Collator> _current_collator;    ///< Collator for the language currently in use.
 #endif /* WITH_ICU_I18N */
@@ -384,46 +386,40 @@ static const char *GetDecimalSeparator()
 	return decimal_separator;
 }
 
+void InitializeNumberFormats()
+{
+	ParseNumberFormatSeparators(_number_format_separators, _current_language->number_format);
+}
+
 /**
  * Format a number into a string.
- * @param builder   the string builder to write to
- * @param number    the number to write down
- * @param last      the last element in the buffer
- * @param separator the thousands-separator to use
+ * @param builder The string builder to write to.
+ * @param number The number to write down.
+ * @param separators The separator to use between each of the digits.
  */
-static void FormatNumber(StringBuilder &builder, int64_t number, const char *separator)
+static void FormatNumber(StringBuilder &builder, int64_t number, const NumberFormatSeparators &separators)
 {
-	static const int max_digits = 20;
-	uint64_t divisor = 10000000000000000000ULL;
-	int thousands_offset = (max_digits - 1) % 3;
-
 	if (number < 0) {
 		builder += '-';
 		number = -number;
 	}
 
+	uint64_t divisor = 10000000000000000000ULL;
 	uint64_t num = number;
 	uint64_t tot = 0;
-	for (int i = 0; i < max_digits; i++) {
+	for (size_t i = 0; i < separators.size(); i++) {
 		uint64_t quot = 0;
 		if (num >= divisor) {
 			quot = num / divisor;
 			num = num % divisor;
 		}
-		if ((tot |= quot) || i == max_digits - 1) {
+		if ((tot |= quot) != 0 || i == separators.size() - 1) {
 			builder += '0' + quot; // quot is a single digit
-			if ((i % 3) == thousands_offset && i < max_digits - 1) builder += separator;
+			builder += separators[i].data();
 		}
 
 		divisor /= 10;
 	}
-}
-
-static void FormatCommaNumber(StringBuilder &builder, int64_t number)
-{
-	const char *separator = _settings_game.locale.digit_group_separator.c_str();
-	if (StrEmpty(separator)) separator = _langpack.langpack->digit_group_separator;
-	FormatNumber(builder, number, separator);
 }
 
 static void FormatNoCommaNumber(StringBuilder &builder, int64_t number)
@@ -541,10 +537,7 @@ static void FormatGenericCurrency(StringBuilder &builder, const CurrencySpec *sp
 		}
 	}
 
-	const char *separator = _settings_game.locale.digit_group_separator_currency.c_str();
-	if (StrEmpty(separator)) separator = _currency->separator.c_str();
-	if (StrEmpty(separator)) separator = _langpack.langpack->digit_group_separator_currency;
-	FormatNumber(builder, number, separator);
+	FormatNumber(builder, number, _number_format_separators);
 	if (number_str != STR_NULL) {
 		auto tmp_params = ArrayStringParameters<0>();
 		FormatString(builder, GetStringPtr(number_str), tmp_params);
@@ -1189,7 +1182,7 @@ static void FormatString(StringBuilder &builder, const char *str_arg, StringPara
 				}
 
 				case SCC_COMMA: // {COMMA}
-					FormatCommaNumber(builder, args.GetNextParameter<int64_t>());
+					FormatNumber(builder, args.GetNextParameter<int64_t>(), _number_format_separators);
 					break;
 
 				case SCC_DECIMAL: { // {DECIMAL}
@@ -1199,7 +1192,7 @@ static void FormatString(StringBuilder &builder, const char *str_arg, StringPara
 					int64_t divisor = PowerOfTen(digits);
 					int64_t fractional = number % divisor;
 					number /= divisor;
-					FormatCommaNumber(builder, number);
+					FormatNumber(builder, number, _number_format_separators);
 					fmt::format_to(builder, "{}{:0{}d}", GetDecimalSeparator(), fractional, digits);
 					break;
 				}
@@ -1246,7 +1239,7 @@ static void FormatString(StringBuilder &builder, const char *str_arg, StringPara
 						}
 					}
 
-					FormatCommaNumber(builder, amount);
+					FormatNumber(builder, amount, _number_format_separators);
 					break;
 				}
 
@@ -1982,6 +1975,8 @@ bool ReadLanguagePack(const LanguageMetadata *lang)
 		_current_collator.reset();
 	}
 #endif /* WITH_ICU_I18N */
+
+	InitializeNumberFormats();
 
 	Layouter::Initialize();
 
