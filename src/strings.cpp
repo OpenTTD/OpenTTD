@@ -390,16 +390,12 @@ static const char *GetDecimalSeparator()
  * @param number    the number to write down
  * @param last      the last element in the buffer
  * @param separator the thousands-separator to use
- * @param zerofill  minimum number of digits to print for the integer part. The number will be filled with zeros at the front if necessary.
- * @param fractional_digits number of fractional digits to display after a decimal separator. The decimal separator is inserted
- *                          in front of the \a fractional_digits last digit of \a number.
  */
-static void FormatNumber(StringBuilder &builder, int64_t number, const char *separator, int zerofill = 1, int fractional_digits = 0)
+static void FormatNumber(StringBuilder &builder, int64_t number, const char *separator)
 {
 	static const int max_digits = 20;
 	uint64_t divisor = 10000000000000000000ULL;
-	zerofill += fractional_digits;
-	int thousands_offset = (max_digits - fractional_digits - 1) % 3;
+	int thousands_offset = (max_digits - 1) % 3;
 
 	if (number < 0) {
 		builder += '-';
@@ -409,39 +405,35 @@ static void FormatNumber(StringBuilder &builder, int64_t number, const char *sep
 	uint64_t num = number;
 	uint64_t tot = 0;
 	for (int i = 0; i < max_digits; i++) {
-		if (i == max_digits - fractional_digits) {
-			builder += GetDecimalSeparator();
-		}
-
 		uint64_t quot = 0;
 		if (num >= divisor) {
 			quot = num / divisor;
 			num = num % divisor;
 		}
-		if ((tot |= quot) || i >= max_digits - zerofill) {
+		if ((tot |= quot) || i == max_digits - 1) {
 			builder += '0' + quot; // quot is a single digit
-			if ((i % 3) == thousands_offset && i < max_digits - 1 - fractional_digits) builder += separator;
+			if ((i % 3) == thousands_offset && i < max_digits - 1) builder += separator;
 		}
 
 		divisor /= 10;
 	}
 }
 
-static void FormatCommaNumber(StringBuilder &builder, int64_t number, int fractional_digits = 0)
+static void FormatCommaNumber(StringBuilder &builder, int64_t number)
 {
 	const char *separator = _settings_game.locale.digit_group_separator.c_str();
 	if (StrEmpty(separator)) separator = _langpack.langpack->digit_group_separator;
-	FormatNumber(builder, number, separator, 1, fractional_digits);
+	FormatNumber(builder, number, separator);
 }
 
 static void FormatNoCommaNumber(StringBuilder &builder, int64_t number)
 {
-	FormatNumber(builder, number, "");
+	fmt::format_to(builder, "{}", number);
 }
 
 static void FormatZerofillNumber(StringBuilder &builder, int64_t number, int count)
 {
-	FormatNumber(builder, number, "", count);
+	fmt::format_to(builder, "{:0{}d}", number, count);
 }
 
 static void FormatHexNumber(StringBuilder &builder, uint64_t number)
@@ -1203,7 +1195,12 @@ static void FormatString(StringBuilder &builder, const char *str_arg, StringPara
 				case SCC_DECIMAL: { // {DECIMAL}
 					int64_t number = args.GetNextParameter<int64_t>();
 					int digits = args.GetNextParameter<int>();
-					FormatCommaNumber(builder, number, digits);
+
+					int64_t divisor = PowerOfTen(digits);
+					int64_t fractional = number % divisor;
+					number /= divisor;
+					FormatCommaNumber(builder, number);
+					fmt::format_to(builder, "{}{:0{}d}", GetDecimalSeparator(), fractional, digits);
 					break;
 				}
 
