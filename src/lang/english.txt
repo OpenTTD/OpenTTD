@@ -5,8 +5,6 @@
 ##textdir ltr
 ##numberformat 00,000,000,000,000,000,000
 ##numberabbreviations 3=00,000,000,000,000,000{NBSP}k|6=00,000,000,000,000{NBSP}m|9=00,000,000,000{NBSP}bn|12=00,000,000{NBSP}tn|15=00,000{NBSP}Qa|18=00{NBSP}Qi
-##digitsep ,
-##digitsepcur ,
 ##decimalsep .
 ##winlangid 0x0809
 ##grflangid 0x01
@@ -5811,11 +5809,6 @@ STR_STATION_NAME                                                :{STATION}
 STR_TOWN_NAME                                                   :{TOWN}
 STR_VEHICLE_NAME                                                :{VEHICLE}
 STR_WAYPOINT_NAME                                               :{WAYPOINT}
-
-STR_CURRENCY_SHORT_KILO                                         :{NBSP}k
-STR_CURRENCY_SHORT_MEGA                                         :{NBSP}m
-STR_CURRENCY_SHORT_GIGA                                         :{NBSP}bn
-STR_CURRENCY_SHORT_TERA                                         :{NBSP}tn
 
 STR_JUST_CARGO                                                  :{CARGO_LONG}
 STR_JUST_RIGHT_ARROW                                            :{RIGHT_ARROW}

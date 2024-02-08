@@ -3,8 +3,6 @@
 ##isocode gd_GB
 ##plural 13
 ##textdir ltr
-##digitsep ,
-##digitsepcur ,
 ##decimalsep .
 ##winlangid 0x083c
 ##grflangid 0x13

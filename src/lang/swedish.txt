@@ -3,8 +3,6 @@
 ##isocode sv_SE
 ##plural 0
 ##textdir ltr
-##digitsep .
-##digitsepcur .
 ##decimalsep ,
 ##winlangid 0x081d
 ##grflangid 0x2e

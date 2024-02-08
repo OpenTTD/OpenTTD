@@ -137,12 +137,6 @@ void FileStringReader::HandlePragma(char *str)
 		if (result.has_value()) FatalError("Invalid number abbreviations: {}", *result);
 
 		strecpy(_lang.number_abbreviations, str, lastof(_lang.number_abbreviations));
-	} else if (!memcmp(str, "digitsep ", 9)) {
-		str += 9;
-		strecpy(_lang.digit_group_separator, strcmp(str, "{NBSP}") == 0 ? NBSP : str, lastof(_lang.digit_group_separator));
-	} else if (!memcmp(str, "digitsepcur ", 12)) {
-		str += 12;
-		strecpy(_lang.digit_group_separator_currency, strcmp(str, "{NBSP}") == 0 ? NBSP : str, lastof(_lang.digit_group_separator_currency));
 	} else if (!memcmp(str, "decimalsep ", 11)) {
 		str += 11;
 		strecpy(_lang.digit_decimal_separator, strcmp(str, "{NBSP}") == 0 ? NBSP : str, lastof(_lang.digit_decimal_separator));

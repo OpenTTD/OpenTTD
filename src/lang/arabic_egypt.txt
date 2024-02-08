@@ -3,8 +3,6 @@
 ##isocode ar_EG
 ##plural 1
 ##textdir rtl
-##digitsep ٬
-##digitsepcur ٬
 ##decimalsep ٫
 ##winlangid 0x0c01
 ##grflangid 0x14

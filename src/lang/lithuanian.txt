@@ -3,8 +3,6 @@
 ##isocode lt_LT
 ##plural 5
 ##textdir ltr
-##digitsep .
-##digitsepcur .
 ##decimalsep ,
 ##winlangid 0x0427
 ##grflangid 0x2b

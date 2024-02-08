@@ -3,8 +3,6 @@
 ##isocode ro_RO
 ##plural 14
 ##textdir ltr
-##digitsep .
-##digitsepcur .
 ##decimalsep ,
 ##winlangid 0x0418
 ##grflangid 0x28

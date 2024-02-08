@@ -3,8 +3,6 @@
 ##isocode lv_LV
 ##plural 3
 ##textdir ltr
-##digitsep .
-##digitsepcur .
 ##decimalsep ,
 ##winlangid 0x0426
 ##grflangid 0x2a

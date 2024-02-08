@@ -3,8 +3,6 @@
 ##isocode ru_RU
 ##plural 6
 ##textdir ltr
-##digitsep {NBSP}
-##digitsepcur {NBSP}
 ##decimalsep ,
 ##winlangid 0x0419
 ##grflangid 0x07

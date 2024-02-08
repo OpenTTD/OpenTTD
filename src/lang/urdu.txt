@@ -3,8 +3,6 @@
 ##isocode ur_PK
 ##plural 0
 ##textdir rtl
-##digitsep ٬
-##digitsepcur ٬
 ##decimalsep ٫
 ##winlangid 0x0420
 ##grflangid 0x5c

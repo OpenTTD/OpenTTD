@@ -3,8 +3,6 @@
 ##isocode lb_LU
 ##plural 0
 ##textdir ltr
-##digitsep .
-##digitsepcur .
 ##decimalsep ,
 ##winlangid 0x046e
 ##grflangid 0x23

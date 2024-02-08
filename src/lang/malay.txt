@@ -3,8 +3,6 @@
 ##isocode ms_MY
 ##plural 0
 ##textdir ltr
-##digitsep ,
-##digitsepcur ,
 ##decimalsep .
 ##winlangid 0x043a
 ##grflangid 0x3c

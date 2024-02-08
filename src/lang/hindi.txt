@@ -3,8 +3,6 @@
 ##isocode hi_IN
 ##plural 0
 ##textdir ltr
-##digitsep ,
-##digitsepcur ,
 ##decimalsep .
 ##winlangid 0x0439
 ##grflangid 0x17

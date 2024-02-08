@@ -3,8 +3,6 @@
 ##isocode vi_VN
 ##plural 1
 ##textdir ltr
-##digitsep .
-##digitsepcur .
 ##decimalsep ,
 ##winlangid 0x042a
 ##grflangid 0x54

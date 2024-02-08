@@ -3,8 +3,6 @@
 ##isocode uk_UA
 ##plural 6
 ##textdir ltr
-##digitsep .
-##digitsepcur .
 ##decimalsep ,
 ##winlangid 0x0422
 ##grflangid 0x33

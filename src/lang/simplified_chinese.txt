@@ -3,8 +3,6 @@
 ##isocode zh_CN
 ##plural 1
 ##textdir ltr
-##digitsep ,
-##digitsepcur ,
 ##decimalsep .
 ##winlangid 0x0804
 ##grflangid 0x56

@@ -3,8 +3,6 @@
 ##isocode et_EE
 ##plural 0
 ##textdir ltr
-##digitsep .
-##digitsepcur .
 ##decimalsep ,
 ##winlangid 0x0425
 ##grflangid 0x34

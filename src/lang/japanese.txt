@@ -3,8 +3,6 @@
 ##isocode ja_JP
 ##plural 1
 ##textdir ltr
-##digitsep ,
-##digitsepcur ,
 ##decimalsep .
 ##winlangid 0x0411
 ##grflangid 0x39

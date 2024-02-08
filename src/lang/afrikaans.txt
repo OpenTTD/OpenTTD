@@ -3,8 +3,6 @@
 ##isocode af_ZA
 ##plural 0
 ##textdir ltr
-##digitsep .
-##digitsepcur .
 ##decimalsep ,
 ##winlangid 0x0436
 ##grflangid 0x1b

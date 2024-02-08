@@ -3,8 +3,6 @@
 ##isocode is_IS
 ##plural 0
 ##textdir ltr
-##digitsep .
-##digitsepcur .
 ##decimalsep ,
 ##winlangid 0x040f
 ##grflangid 0x29

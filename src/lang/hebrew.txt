@@ -3,8 +3,6 @@
 ##isocode he_IL
 ##plural 0
 ##textdir rtl
-##digitsep ,
-##digitsepcur ,
 ##decimalsep .
 ##winlangid 0x040d
 ##grflangid 0x61

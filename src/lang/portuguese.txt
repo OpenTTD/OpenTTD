@@ -3,8 +3,6 @@
 ##isocode pt_PT
 ##plural 0
 ##textdir ltr
-##digitsep .
-##digitsepcur .
 ##decimalsep ,
 ##winlangid 0x0816
 ##grflangid 0x36
