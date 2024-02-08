@@ -56,6 +56,7 @@ const LanguageMetadata *_current_language = nullptr; ///< The currently loaded l
 TextDirection _current_text_dir; ///< Text direction of the currently selected language.
 
 static NumberFormatSeparators _number_format_separators;
+static NumberAbbreviations _number_abbreviations;
 
 #ifdef WITH_ICU_I18N
 std::unique_ptr<icu::Collator> _current_collator;    ///< Collator for the language currently in use.
@@ -389,6 +390,8 @@ static const char *GetDecimalSeparator()
 void InitializeNumberFormats()
 {
 	ParseNumberFormatSeparators(_number_format_separators, _current_language->number_format);
+	ParseNumberAbbreviations(_number_abbreviations, _current_language->number_abbreviations);
+	_number_abbreviations.emplace_back(0, _number_format_separators);
 }
 
 /**
@@ -516,32 +519,29 @@ static void FormatGenericCurrency(StringBuilder &builder, const CurrencySpec *sp
 	 * The only remaining value is 1 (suffix), so everything that is not 1 */
 	if (spec->symbol_pos != 1) builder += spec->prefix;
 
-	StringID number_str = STR_NULL;
+	NumberFormatSeparators *format = &_number_format_separators;
 
 	/* For huge numbers, compact the number. */
 	if (compact) {
-		/* Take care of the thousand rounding. Having 1 000 000 k
-		 * and 1 000 M is inconsistent, so always use 1 000 M. */
-		if (number >= Money(1'000'000'000'000'000) - 500'000'000) {
-			number = (number + Money(500'000'000'000)) / Money(1'000'000'000'000);
-			number_str = STR_CURRENCY_SHORT_TERA;
-		} else if (number >= Money(1'000'000'000'000) - 500'000) {
-			number = (number + 500'000'000) / 1'000'000'000;
-			number_str = STR_CURRENCY_SHORT_GIGA;
-		} else if (number >= 1'000'000'000 - 500) {
-			number = (number + 500'000) / 1'000'000;
-			number_str = STR_CURRENCY_SHORT_MEGA;
-		} else if (number >= 1'000'000) {
-			number = (number + 500) / 1'000;
-			number_str = STR_CURRENCY_SHORT_KILO;
+		auto it = _number_abbreviations.begin();
+		for (;;) {
+			int64_t threshold = it->threshold;
+			++it;
+			if (it == _number_abbreviations.end()) break;
+
+			int64_t divisor = it->threshold;
+			threshold -= divisor / 2;
+
+			if ((int64_t)number > threshold) {
+				format = &it->format;
+				number += divisor / 2;
+				number /= divisor;
+				break;
+			}
 		}
 	}
 
-	FormatNumber(builder, number, _number_format_separators);
-	if (number_str != STR_NULL) {
-		auto tmp_params = ArrayStringParameters<0>();
-		FormatString(builder, GetStringPtr(number_str), tmp_params);
-	}
+	FormatNumber(builder, number, *format);
 
 	/* Add suffix part, following symbol_pos specification.
 	 * Here, it can can be either 1 (suffix) or 2 (both prefix and suffix).
