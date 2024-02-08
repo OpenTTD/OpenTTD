@@ -3,8 +3,8 @@
 ##isocode ko_KR
 ##plural 11
 ##textdir ltr
-##numberformat 00,000,000,000,000,000,000
-##numberabbreviations 3=00,000,000,000,000,000k|6=00,000,000,000,000m|9=00,000,000,000bn|12=00,000,000tn|15=00,000{NBSP}Qa|18=00{NBSP}Qi
+##numberformat 0000경0000조0000억0000만0000
+##numberabbreviations 4=0000경0000조0000억0000만|8=0000경0000조0000억|12=0000경0000조|16=0000경
 ##decimalsep .
 ##winlangid 0x0412
 ##grflangid 0x3a

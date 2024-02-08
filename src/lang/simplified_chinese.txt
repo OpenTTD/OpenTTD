@@ -3,8 +3,8 @@
 ##isocode zh_CN
 ##plural 1
 ##textdir ltr
-##numberformat 00,000,000,000,000,000,000
-##numberabbreviations 3=00,000,000,000,000,000{NBSP}k|6=00,000,000,000,000{NBSP}m|9=00,000,000,000b|12=00,000,000t|15=00,000{NBSP}Qa|18=00{NBSP}Qi
+##numberformat 0000京0000兆0000亿0000万0000
+##numberabbreviations 4=0000京0000兆0000亿0000万|8=0000京0000兆0000亿|12=0000京0000兆|16=0000京
 ##decimalsep .
 ##winlangid 0x0804
 ##grflangid 0x56
