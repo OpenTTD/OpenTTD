@@ -258,9 +258,9 @@ const SaveLoadCompat _settings_sl_compat[] = {
 	SLC_VAR("locale.units_volume"),
 	SLC_VAR("locale.units_force"),
 	SLC_VAR("locale.units_height"),
-	SLC_VAR("locale.digit_group_separator"),
-	SLC_VAR("locale.digit_group_separator_currency"),
-	SLC_VAR("locale.digit_decimal_separator"),
+	SLC_NULL_STR(1, SLV_118, SLV_TABLE_CHUNKS),
+	SLC_NULL_STR(1, SLV_118, SLV_TABLE_CHUNKS),
+	SLC_NULL_STR(1, SLV_126, SLV_TABLE_CHUNKS),
 };
 
 #endif /* SAVELOAD_COMPAT_SETTINGS_H */
