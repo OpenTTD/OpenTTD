@@ -3,8 +3,6 @@
 ##isocode la_VA
 ##plural 0
 ##textdir ltr
-##digitsep {NBSP}
-##digitsepcur {NBSP}
 ##decimalsep .
 ##winlangid 0x0476
 ##grflangid 0x66

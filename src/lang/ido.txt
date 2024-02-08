@@ -3,8 +3,6 @@
 ##isocode io_IO
 ##plural 0
 ##textdir ltr
-##digitsep .
-##digitsepcur .
 ##decimalsep ,
 ##winlangid 0x0000
 ##grflangid 0x06

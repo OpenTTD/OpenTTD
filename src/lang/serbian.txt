@@ -3,8 +3,6 @@
 ##isocode sr_RS
 ##plural 6
 ##textdir ltr
-##digitsep .
-##digitsepcur .
 ##decimalsep ,
 ##winlangid 0x7c1a
 ##grflangid 0x0d

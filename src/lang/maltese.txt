@@ -3,8 +3,6 @@
 ##isocode mt_MT
 ##plural 12
 ##textdir ltr
-##digitsep ,
-##digitsepcur ,
 ##decimalsep .
 ##winlangid 0x043a
 ##grflangid 0x09

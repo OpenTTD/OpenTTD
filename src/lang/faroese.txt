@@ -3,8 +3,6 @@
 ##isocode fo_FO
 ##plural 0
 ##textdir ltr
-##digitsep .
-##digitsepcur .
 ##decimalsep ,
 ##winlangid 0x0438
 ##grflangid 0x12

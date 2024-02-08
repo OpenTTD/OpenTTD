@@ -3,8 +3,6 @@
 ##isocode da_DK
 ##plural 0
 ##textdir ltr
-##digitsep .
-##digitsepcur .
 ##decimalsep ,
 ##winlangid 0x0406
 ##grflangid 0x2d

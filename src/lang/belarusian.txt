@@ -3,8 +3,6 @@
 ##isocode be_BY
 ##plural 6
 ##textdir ltr
-##digitsep {NBSP}
-##digitsepcur {NBSP}
 ##decimalsep ,
 ##winlangid 0x0423
 ##grflangid 0x10

@@ -3,8 +3,6 @@
 ##isocode sk_SK
 ##plural 10
 ##textdir ltr
-##digitsep {NBSP}
-##digitsepcur {NBSP}
 ##decimalsep ,
 ##winlangid 0x041b
 ##grflangid 0x16

@@ -3,8 +3,6 @@
 ##isocode cv_RU
 ##plural 0
 ##textdir ltr
-##digitsep {NBSP}
-##digitsepcur {NBSP}
 ##decimalsep ,
 ##winlangid 0x0419
 ##grflangid 0x0b

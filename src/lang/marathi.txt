@@ -3,8 +3,6 @@
 ##isocode mr_IN
 ##plural 0
 ##textdir ltr
-##digitsep ,
-##digitsepcur ,
 ##decimalsep .
 ##winlangid 0x044e
 ##grflangid 0x11

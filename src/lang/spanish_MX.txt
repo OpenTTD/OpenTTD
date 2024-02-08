@@ -3,8 +3,6 @@
 ##isocode es_MX
 ##plural 0
 ##textdir ltr
-##digitsep ,
-##digitsepcur ,
 ##decimalsep .
 ##winlangid 0x080a
 ##grflangid 0x55

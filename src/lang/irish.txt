@@ -3,8 +3,6 @@
 ##isocode ga_IE
 ##plural 4
 ##textdir ltr
-##digitsep ,
-##digitsepcur ,
 ##decimalsep .
 ##winlangid 0x083c
 ##grflangid 0x08

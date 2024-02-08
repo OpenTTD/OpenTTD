@@ -3,8 +3,6 @@
 ##isocode fa_IR
 ##plural 0
 ##textdir rtl
-##digitsep ٬
-##digitsepcur ٬
 ##decimalsep ٫
 ##winlangid 0x0429
 ##grflangid 0x62

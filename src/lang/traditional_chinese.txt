@@ -3,8 +3,6 @@
 ##isocode zh_TW
 ##plural 1
 ##textdir ltr
-##digitsep ,
-##digitsepcur ,
 ##decimalsep .
 ##winlangid 0x0404
 ##grflangid 0x0c

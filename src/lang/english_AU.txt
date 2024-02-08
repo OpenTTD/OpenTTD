@@ -3,8 +3,6 @@
 ##isocode en_AU
 ##plural 0
 ##textdir ltr
-##digitsep ,
-##digitsepcur ,
 ##decimalsep .
 ##winlangid 0x0c09
 ##grflangid 0x3d

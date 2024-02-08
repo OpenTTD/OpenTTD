@@ -3,8 +3,6 @@
 ##isocode mk_MK
 ##plural 0
 ##textdir ltr
-##digitsep .
-##digitsepcur .
 ##decimalsep ,
 ##winlangid 0x042f
 ##grflangid 0x26

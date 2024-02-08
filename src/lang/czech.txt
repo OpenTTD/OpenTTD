@@ -3,8 +3,6 @@
 ##isocode cs_CZ
 ##plural 10
 ##textdir ltr
-##digitsep {NBSP}
-##digitsepcur {NBSP}
 ##decimalsep ,
 ##winlangid 0x0405
 ##grflangid 0x15

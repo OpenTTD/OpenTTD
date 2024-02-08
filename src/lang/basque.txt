@@ -3,8 +3,6 @@
 ##isocode eu_ES
 ##plural 0
 ##textdir ltr
-##digitsep .
-##digitsepcur .
 ##decimalsep ,
 ##winlangid 0x042d
 ##grflangid 0x21
