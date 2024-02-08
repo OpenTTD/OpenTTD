@@ -377,6 +377,13 @@ void SetDParamStr(size_t n, std::string &&str)
 	_global_string_params.SetParam(n, std::move(str));
 }
 
+static const char *GetDecimalSeparator()
+{
+	const char *decimal_separator = _settings_game.locale.digit_decimal_separator.c_str();
+	if (StrEmpty(decimal_separator)) decimal_separator = _langpack.langpack->digit_decimal_separator;
+	return decimal_separator;
+}
+
 /**
  * Format a number into a string.
  * @param builder   the string builder to write to
@@ -403,9 +410,7 @@ static void FormatNumber(StringBuilder &builder, int64_t number, const char *sep
 	uint64_t tot = 0;
 	for (int i = 0; i < max_digits; i++) {
 		if (i == max_digits - fractional_digits) {
-			const char *decimal_separator = _settings_game.locale.digit_decimal_separator.c_str();
-			if (StrEmpty(decimal_separator)) decimal_separator = _langpack.langpack->digit_decimal_separator;
-			builder += decimal_separator;
+			builder += GetDecimalSeparator();
 		}
 
 		uint64_t quot = 0;
@@ -461,16 +466,13 @@ static void FormatBytes(StringBuilder &builder, int64_t number)
 		id++;
 	}
 
-	const char *decimal_separator = _settings_game.locale.digit_decimal_separator.c_str();
-	if (StrEmpty(decimal_separator)) decimal_separator = _langpack.langpack->digit_decimal_separator;
-
 	if (number < 1024) {
 		id = 0;
 		fmt::format_to(builder, "{}", number);
 	} else if (number < 1024 * 10) {
-		fmt::format_to(builder, "{}{}{:02}", number / 1024, decimal_separator, (number % 1024) * 100 / 1024);
+		fmt::format_to(builder, "{}{}{:02}", number / 1024, GetDecimalSeparator(), (number % 1024) * 100 / 1024);
 	} else if (number < 1024 * 100) {
-		fmt::format_to(builder, "{}{}{:01}", number / 1024, decimal_separator, (number % 1024) * 10 / 1024);
+		fmt::format_to(builder, "{}{}{:01}", number / 1024, GetDecimalSeparator(), (number % 1024) * 10 / 1024);
 	} else {
 		assert(number < 1024 * 1024);
 		fmt::format_to(builder, "{}", number / 1024);
