@@ -327,7 +327,9 @@ STR_SORT_BY_TYPE                                                :Tipo
 STR_SORT_BY_TRANSPORTED                                         :Trasportato
 STR_SORT_BY_NUMBER                                              :Numero
 STR_SORT_BY_PROFIT_LAST_YEAR                                    :Profitto dell'anno scorso
+STR_SORT_BY_PROFIT_LAST_PERIOD                                  :Profitti dell'ultimo periodo
 STR_SORT_BY_PROFIT_THIS_YEAR                                    :Profitto di quest'anno
+STR_SORT_BY_PROFIT_THIS_PERIOD                                  :Profitti in questo periodo
 STR_SORT_BY_AGE                                                 :Età
 STR_SORT_BY_RELIABILITY                                         :Affidabilità
 STR_SORT_BY_TOTAL_CAPACITY_PER_CARGOTYPE                        :Capacità per tipo di carico
@@ -882,6 +884,8 @@ STR_NEWS_VEHICLE_IS_GETTING_VERY_OLD                            :{WHITE}{VEHICLE
 STR_NEWS_VEHICLE_IS_GETTING_VERY_OLD_AND                        :{WHITE}{VEHICLE} sta invecchiando molto e richiede urgentemente sostituzione
 STR_NEWS_TRAIN_IS_STUCK                                         :{WHITE}{VEHICLE} non trova un percorso per proseguire
 STR_NEWS_VEHICLE_IS_LOST                                        :{WHITE}{VEHICLE} si è perso
+STR_NEWS_VEHICLE_UNPROFITABLE_YEAR                              :{WHITE}Il profitto nell'ultimo anno di {VEHICLE} è {CURRENCY_LONG}
+STR_NEWS_VEHICLE_UNPROFITABLE_PERIOD                            :{WHITE}Il profitto nell'ultimo periodo di {VEHICLE} è {CURRENCY_LONG}
 STR_NEWS_AIRCRAFT_DEST_TOO_FAR                                  :{WHITE}{VEHICLE} non può raggiungere la destinazione successiva perché è fuori portata
 
 STR_NEWS_ORDER_REFIT_FAILED                                     :{WHITE}{VEHICLE} è stato fermato perché un ordine di riadattamento non è riuscito
@@ -1473,6 +1477,8 @@ STR_CONFIG_SETTING_NEVER_EXPIRE_VEHICLES_HELPTEXT               :Se abilitata, d
 
 ###setting-zero-is-special
 
+STR_CONFIG_SETTING_INDUSTRY_CARGO_SCALE                         :Scala la produzione delle industrie: {STRING}
+STR_CONFIG_SETTING_INDUSTRY_CARGO_SCALE_HELPTEXT                :Scala la produzione industriale di questa percentuale.
 
 STR_CONFIG_SETTING_AUTORENEW_VEHICLE                            :Rinnova un veicolo quando diventa vecchio: {STRING}
 STR_CONFIG_SETTING_AUTORENEW_VEHICLE_HELPTEXT                   :Se abilitata, un veicolo vicino alla sua età massima viene automaticamente sostituito quando si verificano le condizioni richieste per il rinnovo
@@ -2021,6 +2027,8 @@ STR_CONFIG_SETTING_LOCALISATION_UNITS_VELOCITY_HELPTEXT         :Seleziona le un
 STR_CONFIG_SETTING_LOCALISATION_UNITS_VELOCITY_IMPERIAL         :Imperiali (mph)
 STR_CONFIG_SETTING_LOCALISATION_UNITS_VELOCITY_METRIC           :Metriche (km/h)
 STR_CONFIG_SETTING_LOCALISATION_UNITS_VELOCITY_SI               :SI (m/s)
+STR_CONFIG_SETTING_LOCALISATION_UNITS_VELOCITY_GAMEUNITS_DAYS   :Unità di gioco (caselle/giorno)
+STR_CONFIG_SETTING_LOCALISATION_UNITS_VELOCITY_GAMEUNITS_SECS   :Unità di gioco (caselle/sec)
 STR_CONFIG_SETTING_LOCALISATION_UNITS_VELOCITY_KNOTS            :Nodi
 
 STR_CONFIG_SETTING_LOCALISATION_UNITS_POWER                     :Unità di potenza veicoli: {STRING}
@@ -2213,9 +2221,12 @@ STR_LIVERY_TRAIN_TOOLTIP                                        :{BLACK}Mostra g
 STR_LIVERY_ROAD_VEHICLE_TOOLTIP                                 :{BLACK}Mostra gli schemi di colorazione degli automezzi
 STR_LIVERY_SHIP_TOOLTIP                                         :{BLACK}Mostra gli schemi di colorazione delle navi
 STR_LIVERY_AIRCRAFT_TOOLTIP                                     :{BLACK}Mostra gli schemi di colorazione degli aeromobili
+STR_LIVERY_SHIP_GROUP_TOOLTIP                                   :{BLACK}Mostra i colori di questo gruppo di navi
+STR_LIVERY_AIRCRAFT_GROUP_TOOLTIP                               :{BLACK} Mostra i colori dei gruppi di aeromobili
 STR_LIVERY_PRIMARY_TOOLTIP                                      :{BLACK}Sceglie il colore primario per lo schema selezionato. CTRL+clic imposta il colore per tutti gli schemi
 STR_LIVERY_SECONDARY_TOOLTIP                                    :{BLACK}Sceglie il colore secondario per lo schema selezionato. CTRL+clic imposta il colore per tutti gli schemi
 STR_LIVERY_PANEL_TOOLTIP                                        :{BLACK}Selezionare uno schema colori da cambiare, o schemi multipli con CTRL+clic. Fare clic sulla casella per attivare/disattivare uno schema
+STR_LIVERY_SHIP_GROUP_EMPTY                                     :Non ci sono gruppi di navi creati
 
 ###length 23
 STR_LIVERY_DEFAULT                                              :Livrea standard
@@ -3601,6 +3612,8 @@ STR_LOCAL_AUTHORITY_ACTION_TOOLTIP_MEDIUM_ADVERTISING           :{PUSH_COLOUR}{Y
 STR_LOCAL_AUTHORITY_ACTION_TOOLTIP_LARGE_ADVERTISING            :{PUSH_COLOUR}{YELLOW}Avvia una vasta campagna pubblicitaria locale, per attirare più passeggeri e merci sui vostri servizi di trasporto.{}Fornisce un incremento temporaneo alla valutazione delle stazioni in un ampio raggio intorno al centro città..{}{POP_COLOUR}Costo: {CURRENCY_LONG}
 STR_LOCAL_AUTHORITY_ACTION_TOOLTIP_STATUE_OF_COMPANY            :{PUSH_COLOUR}{YELLOW}Costruite una statua in onore della vostra compagnia.{}Fornisce un aumento permanente della valutazione della stazione in questa città..{}{POP_COLOUR}Costo: {CURRENCY_LONG}
 STR_LOCAL_AUTHORITY_ACTION_TOOLTIP_NEW_BUILDINGS                :{PUSH_COLOUR}{YELLOW}Finanziare la costruzione di nuovi edifici in città.{}Fornisce un incremento temporaneo alla crescita di questa città.{}{POP_COLOUR}Costo: {CURRENCY_LONG}
+STR_LOCAL_AUTHORITY_ACTION_TOOLTIP_EXCLUSIVE_TRANSPORT_MONTHS   :{PUSH_COLOUR}{YELLOW}Compra i diritti esclusivi sui trasporti per 12 mesi in questa città.{}L'autorità cittadina non permetterà a passeggeri o mergi di usare le stazioni dei tuoi competitori. Un tentativo di corruzione riuscito da un tuo competitore annullerà questo contratto.{}{POP_COLOUR}Cost: {CURRENCY_LONG}
+STR_LOCAL_AUTHORITY_ACTION_TOOLTIP_EXCLUSIVE_TRANSPORT_MINUTES  :{PUSH_COLOUR}{YELLOW}Compra i diritti esclusivi sul trasporto per 12 minuti in questa città.{}L'autorità cittadina non permetterà a passeggeri e merci di usare le stazioni dei tuoi competitori. Un tentativo di corruzione riuscito annullerà questo contratto.{}{POP_COLOUR}Costo: {CURRENCY_LONG}
 STR_LOCAL_AUTHORITY_ACTION_TOOLTIP_BRIBE                        :{PUSH_COLOUR}{YELLOW}Corrompere l'autorità locale per aumentare il proprio rating e interrompere i diritti di trasporto esclusivi di un concorrente, con il rischio di una severa sanzione se si viene scoperti.{}{POP_COLOUR}Costo: {CURRENCY_LONG}
 
 # Goal window
@@ -3672,6 +3685,7 @@ STR_STATION_LIST_STATION                                        :{YELLOW}{STATIO
 STR_STATION_LIST_WAYPOINT                                       :{YELLOW}{WAYPOINT}
 STR_STATION_LIST_NONE                                           :{YELLOW}- Nessuna -
 STR_STATION_LIST_SELECT_ALL_FACILITIES                          :{BLACK}Seleziona tutti i fabbricati
+STR_STATION_LIST_CARGO_FILTER_ALL_AND_NO_RATING                 :Tutti i tipi di carico e nessun punteggio
 
 # Station view window
 STR_STATION_VIEW_CAPTION                                        :{WHITE}{STATION} {STATION_FEATURES}
@@ -4172,6 +4186,18 @@ STR_ENGINE_PREVIEW_TRAM_VEHICLE                                 :{G=m}veicolo tr
 STR_ENGINE_PREVIEW_AIRCRAFT                                     :{G=m}aeromobile
 STR_ENGINE_PREVIEW_SHIP                                         :{G=f}nave
 
+STR_ENGINE_PREVIEW_TEXT3                                        :{BLACK}{STRING}{}{5:STRING}{}{STRING}
+STR_ENGINE_PREVIEW_TEXT4                                        :{BLACK}{STRING}{}{STRING}{}{STRING}{}{STRING}
+STR_ENGINE_PREVIEW_COST_WEIGHT                                  :Costo: {CURRENCY_LONG}  Peso: {WEIGHT_SHORT}
+STR_ENGINE_PREVIEW_COST_MAX_SPEED                               :Costo: {CURRENCY_LONG}  Velocità massima: {VELOCITY}
+STR_ENGINE_PREVIEW_SPEED_POWER                                  :Velocità: {VELOCITY}  Potenza: {POWER}
+STR_ENGINE_PREVIEW_SPEED_POWER_MAX_TE                           :Velocità: {VELOCITY}  Potenza: {POWER}  Trazione Massima: {FORCE}
+STR_ENGINE_PREVIEW_TYPE                                         :Tipo di aeromobile: {STRING}
+STR_ENGINE_PREVIEW_TYPE_RANGE                                   :Tipo di aeromobile: {STRING}   Autonomia: {COMMA} casell{P a e}
+STR_ENGINE_PREVIEW_RUNCOST_YEAR                                 :Costi di esercizio: {CURRENCY_LONG}/year
+STR_ENGINE_PREVIEW_RUNCOST_PERIOD                               :Spese di esercizio: {CURRENCY_LONG}/period
+STR_ENGINE_PREVIEW_CAPACITY                                     :Capacità: {CARGO_LONG}
+STR_ENGINE_PREVIEW_CAPACITY_2                                   :Capacità: {CARGO_LONG}, {CARGO_LONG}
 
 # Autoreplace window
 STR_REPLACE_VEHICLES_WHITE                                      :{WHITE}Rimpiazza {STRING} - {STRING}
@@ -4317,6 +4343,7 @@ STR_VEHICLE_DETAILS_AIRCRAFT_RENAME                             :{BLACK}Rinomina
 STR_VEHICLE_INFO_AGE                                            :{COMMA} ann{P o i} ({COMMA})
 STR_VEHICLE_INFO_AGE_RED                                        :{RED}{COMMA} ann{P o i} ({COMMA})
 STR_VEHICLE_INFO_AGE_RUNNING_COST_YR                            :{BLACK}Età: {LTBLUE}{STRING}{BLACK}   Costo di esercizio: {LTBLUE}{CURRENCY_LONG}/anno
+STR_VEHICLE_INFO_AGE_RUNNING_COST_PERIOD                        :{BLACK}Età: {LTBLUE}{STRING}{BLACK}   Costi di esercizio: {LTBLUE}{CURRENCY_LONG}/periodo
 
 STR_VEHICLE_INFO_MAX_SPEED                                      :{BLACK}Velocità max.: {LTBLUE}{VELOCITY}
 STR_VEHICLE_INFO_MAX_SPEED_TYPE                                 :{BLACK}Velocità max.: {LTBLUE}{VELOCITY} {BLACK}Tipo aeromobile: {LTBLUE}{STRING}
@@ -4443,6 +4470,7 @@ STR_ORDER_DROP_HALT_DEPOT                                       :Ferma in deposi
 
 # Depot action tooltips, one per vehicle type
 ###length VEHICLE_TYPES
+STR_ORDER_ROAD_DEPOT_ACTION_TOOLTIP                             :{BLACK}Seleziona l'azione da compiere a questo deposito
 ###next-name-looks-similar
 
 STR_ORDER_CONDITIONAL_VARIABLE_TOOLTIP                          :{BLACK}Dato del veicolo sul quale basare il salto
@@ -4512,6 +4540,7 @@ STR_ORDER_REFIT_ORDER                                           :(Riadatta per {
 STR_ORDER_REFIT_STOP_ORDER                                      :(Riadatta per {STRING} e ferma)
 STR_ORDER_STOP_ORDER                                            :(Ferma)
 
+STR_ORDER_WAIT_TO_UNBUNCH                                       :(aspetta di liberarsi)
 
 STR_ORDER_GO_TO_STATION                                         :{STRING} {STATION} {STRING}
 STR_ORDER_GO_TO_STATION_CAN_T_USE_STATION                       :{PUSH_COLOUR}{RED}(Impossibile usare la stazione){POP_COLOUR} {STRING} {STATION} {STRING}

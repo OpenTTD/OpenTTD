@@ -3744,6 +3744,13 @@ STR_STATION_LIST_STATION                                        :{YELLOW}{STATIO
 STR_STATION_LIST_WAYPOINT                                       :{YELLOW}{WAYPOINT}
 STR_STATION_LIST_NONE                                           :{YELLOW}- Geen -
 STR_STATION_LIST_SELECT_ALL_FACILITIES                          :{BLACK}Alle faciliteiten selecteren
+STR_STATION_LIST_CARGO_FILTER_ALL_AND_NO_RATING                 :Alle vrachtsoorten zonder waardering
+STR_STATION_LIST_CARGO_FILTER_MULTIPLE                          :Meer vrachtsoorten
+STR_STATION_LIST_CARGO_FILTER_NO_CARGO_TYPES                    :Geen vrachtsoorten
+STR_STATION_LIST_CARGO_FILTER_ONLY_NO_RATING                    :Enkel zonder vrachtwaardering
+STR_STATION_LIST_CARGO_FILTER_SELECT_ALL                        :Selecteer alle en zonder waardering
+STR_STATION_LIST_CARGO_FILTER_NO_RATING                         :Geen vrachtwaardering
+STR_STATION_LIST_CARGO_FILTER_EXPAND                            :Toon meer...
 
 # Station view window
 STR_STATION_VIEW_CAPTION                                        :{WHITE}{STATION} {STATION_FEATURES}

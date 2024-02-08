@@ -1446,6 +1446,7 @@ STR_CONFIG_SETTING_TIMEKEEPING_UNITS_WALLCLOCK                  :Reloxo
 STR_CONFIG_SETTING_MINUTES_PER_YEAR                             :Minutos por ano: {STRING}
 
 ###setting-zero-is-special
+STR_CONFIG_SETTING_MINUTES_PER_YEAR_FROZEN                      :0 (calendario conxelado)
 
 STR_CONFIG_SETTING_TOWN_CARGO_SCALE                             :Escala da produción de mercadorías das vilas: {STRING}
 STR_CONFIG_SETTING_TOWN_CARGO_SCALE_HELPTEXT                    :Escala a produción de mercadorías das vilas nesta porcentaxe.

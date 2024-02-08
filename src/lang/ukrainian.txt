@@ -827,6 +827,7 @@ STR_PLAYLIST_TOOLTIP_CLICK_TO_ADD_TRACK                         :{BLACK}Вибе
 STR_PLAYLIST_TOOLTIP_CLICK_TO_REMOVE_TRACK                      :{BLACK}Клацніть мишою на мелодії для її видалення зі списку (лише Набір1 та Набір2)
 
 # Highscore window
+STR_HIGHSCORE_TOP_COMPANIES                                     :{BIG_FONT}{BLACK}Найкращі компанії
 STR_HIGHSCORE_POSITION                                          :{BIG_FONT}{BLACK}{COMMA}.
 STR_HIGHSCORE_PERFORMANCE_TITLE_BUSINESSMAN                     :Підприємець
 STR_HIGHSCORE_PERFORMANCE_TITLE_ENTREPRENEUR                    :Підприємець
@@ -919,6 +920,7 @@ STR_STATUSBAR_AUTOSAVE                                          :{RED}АВТОЗ
 STR_STATUSBAR_SAVING_GAME                                       :{RED}*  *  ЗБЕРЕЖЕННЯ ГРИ  *  *
 
 STR_STATUSBAR_SPECTATOR                                         :{WHITE}(спостерігач)
+STR_STATUSBAR_INFINITE_MONEY                                    :{WHITE}(нескінченні гроші:)
 
 # News message history
 STR_MESSAGE_HISTORY                                             :{WHITE}Історія повідомлень
@@ -1019,7 +1021,12 @@ STR_NEWS_SHOW_VEHICLE_GROUP_TOOLTIP                             :{BLACK}Відк
 
 STR_NEWS_OFFER_OF_SUBSIDY_EXPIRED                               :{BIG_FONT}{BLACK}Субсидія більше не пропонується:{}{}Перевезення {STRING.r} з {STRING} до {STRING}
 STR_NEWS_SUBSIDY_WITHDRAWN_SERVICE                              :{BIG_FONT}{BLACK}Субсидію скасовано:{}{}Перевезення {STRING.r} з {STRING.r} до {STRING.r}
+STR_NEWS_SERVICE_SUBSIDY_OFFERED                                :{BIG_FONT}{BLACK}Пропонується субсидія:{}{}компанії, яка першою привезе {STRING.z} з {STRING} до {STRING} платитимуть субсидію впродовж {UNITS_YEARS_OR_MINUTES}!
 ###length 4
+STR_NEWS_SERVICE_SUBSIDY_AWARDED_HALF                           :{BIG_FONT}{BLACK}Компанія {STRING} отримала субсидію!{}{}Перевезення {STRING.r} з {STRING} до {STRING} принесе додатково 50% впродовж {UNITS_YEARS_OR_MINUTES}!
+STR_NEWS_SERVICE_SUBSIDY_AWARDED_DOUBLE                         :{BIG_FONT}{BLACK}Субсидію надано {STRING}!{}{}Перевезення {STRING.r} з {STRING} до {STRING} принесе вдвічі більше прибутків впродовж {UNITS_YEARS_OR_MINUTES}!
+STR_NEWS_SERVICE_SUBSIDY_AWARDED_TRIPLE                         :{BIG_FONT}{BLACK}Компанія {STRING} отримала субсидію!{}{}Перевезення {STRING.r} з {STRING} до {STRING} принесе втричі більше прибутків впродовж {UNITS_YEARS_OR_MINUTES}!
+STR_NEWS_SERVICE_SUBSIDY_AWARDED_QUADRUPLE                      :{BIG_FONT}{BLACK}Компанія {STRING} отримала субсидію!{}{}Перевезення {STRING.r} з {STRING} до {STRING} принесе вчетверо більше прибутків впродовж {UNITS_YEARS_OR_MINUTES}!
 
 STR_NEWS_EXCLUSIVE_RIGHTS_TITLE                                 :{BIG_FONT}{BLACK}Транспортна монополія!
 
@@ -1140,6 +1147,10 @@ STR_GAME_OPTIONS_GUI_SCALE_AUTO_TOOLTIP                         :{BLACK}Увім
 STR_GAME_OPTIONS_GUI_SCALE_BEVELS                               :{BLACK}Межі шкали
 STR_GAME_OPTIONS_GUI_SCALE_BEVELS_TOOLTIP                       :BLACK}Увімкнутий прапорець дозволить змінити розмір інтерфейсу
 
+STR_GAME_OPTIONS_GUI_FONT_SPRITE                                :{BLACK}Використовувати шрифт звичайної роздільності
+STR_GAME_OPTIONS_GUI_FONT_SPRITE_TOOLTIP                        :{BLACK}Натисніть цю кнопку для використання шрифтів незмінних розмірів
+STR_GAME_OPTIONS_GUI_FONT_AA                                    :{BLACK}Згладжування шрифтів
+STR_GAME_OPTIONS_GUI_FONT_AA_TOOLTIP                            :{BLACK}Натисніть цю кнопку для згладження шрифтів змінних розмірів
 
 STR_GAME_OPTIONS_GUI_SCALE_1X                                   :1x
 STR_GAME_OPTIONS_GUI_SCALE_2X                                   :2x
@@ -1169,6 +1180,7 @@ STR_GAME_OPTIONS_BASE_MUSIC_TOOLTIP                             :{BLACK}Обер
 STR_GAME_OPTIONS_BASE_MUSIC_DESCRIPTION_TOOLTIP                 :{BLACK}Допоміжна інформація про базовий музичний набір
 
 
+STR_GAME_OPTIONS_SOCIAL_PLUGIN_PLATFORM                         :{BLACK}Платформа:
 
 
 
@@ -1360,7 +1372,9 @@ STR_CONFIG_SETTING_SUBSIDY_MULTIPLIER_HELPTEXT                  :Встанов�
 STR_CONFIG_SETTING_SUBSIDY_DURATION                             :Тривалість субсидії: {STRING}
 ###length 2
 STR_CONFIG_SETTING_SUBSIDY_DURATION_HELPTEXT                    :Встановити кількість років, впродовж яких доступна субсидія
+STR_CONFIG_SETTING_SUBSIDY_DURATION_HELPTEXT_PERIODS            :Встановити кількість періодів, впродовж яких доступна субсидія
 
+STR_CONFIG_SETTING_SUBSIDY_DURATION_VALUE                       :{UNITS_YEARS_OR_PERIODS}
 ###setting-zero-is-special
 STR_CONFIG_SETTING_SUBSIDY_DURATION_DISABLED                    :Без субсидій
 
@@ -1547,10 +1561,12 @@ STR_CONFIG_SETTING_NEVER_EXPIRE_VEHICLES                        :Транспо�
 STR_CONFIG_SETTING_NEVER_EXPIRE_VEHICLES_HELPTEXT               :При включенні будь-яка модель транспортного засобу буде доступна для придбання безстроково після її впровадження.
 
 ###length 2
+STR_CONFIG_SETTING_TIMEKEEPING_UNITS_CALENDAR                   :Календар
 
 STR_CONFIG_SETTING_MINUTES_PER_YEAR                             :Хвилин у році: {STRING}
 
 ###setting-zero-is-special
+STR_CONFIG_SETTING_MINUTES_PER_YEAR_FROZEN                      :0 (час календаря зупинено)
 
 
 STR_CONFIG_SETTING_AUTORENEW_VEHICLE                            :Автозаміна зношених транспортних засобів: {STRING}
@@ -2242,6 +2258,14 @@ STR_ABANDON_GAME_QUERY                                          :{YELLOW}Ви д
 STR_ABANDON_SCENARIO_QUERY                                      :{YELLOW}Ви дійсно бажаєте вийти з цього сценарію?
 
 # Help window
+STR_HELP_WINDOW_CAPTION                                         :Допомога й довідка
+STR_HELP_WINDOW_DOCUMENTS                                       :{BLACK}Документація
+STR_HELP_WINDOW_CHANGELOG                                       :{BLACK}Зміни
+STR_HELP_WINDOW_KNOWN_BUGS                                      :{BLACK}Відомі збої
+STR_HELP_WINDOW_LICENSE                                         :{BLACK}Ліцензія
+STR_HELP_WINDOW_MAIN_WEBSITE                                    :{BLACK}OpenTTD
+STR_HELP_WINDOW_BUGTRACKER                                      :{BLACK}Повідомити про помилку
+STR_HELP_WINDOW_COMMUNITY                                       :{BLACK}Спільнота
 
 # Cheat window
 STR_CHEATS                                                      :{WHITE}Гратиму нечесно
@@ -2265,10 +2289,12 @@ STR_LIVERY_ROAD_VEHICLE_TOOLTIP                                 :{BLACK}Пока
 STR_LIVERY_SHIP_TOOLTIP                                         :{BLACK}Показати фарбування кораблів
 STR_LIVERY_AIRCRAFT_TOOLTIP                                     :{BLACK}Показати фарбування авіації
 STR_LIVERY_TRAIN_GROUP_TOOLTIP                                  :{BLACK}Показати кольори груп поїздів
+STR_LIVERY_SHIP_GROUP_TOOLTIP                                   :{BLACK}Показати кольори груп кораблів
 STR_LIVERY_PRIMARY_TOOLTIP                                      :{BLACK}Оберіть основний колір для обраної схеми. Ctrl+клац мишею встановить обраний колір для всіх схем
 STR_LIVERY_SECONDARY_TOOLTIP                                    :{BLACK}Оберіть другорядний колір для обраної схеми. Ctrl+клац мишею встановить обраний колір для всіх схем
 STR_LIVERY_PANEL_TOOLTIP                                        :{BLACK}Оберіть кольорову схему для зміни, чи декілька з Ctrl+клац мишею. Клацніть на прямокутнику, щоб ввімкнути/вимкнути використання схем
 STR_LIVERY_TRAIN_GROUP_EMPTY                                    :Кольори груп поїздів відсутні
+STR_LIVERY_SHIP_GROUP_EMPTY                                     :Групи корабілв не налаштовано
 
 ###length 23
 STR_LIVERY_DEFAULT                                              :Стандартний колір
@@ -2744,7 +2770,10 @@ STR_LINKGRAPH_LEGEND_OVERLOADED.d                               :{TINY_FONT}{BLA
 STR_LINKGRAPH_LEGEND_OVERLOADED.z                               :{TINY_FONT}{BLACK}перевантажений
 
 # Linkgraph tooltip
+STR_LINKGRAPH_STATS_TOOLTIP_MONTH                               :{BLACK}{CARGO_LONG} треба перемістити за місяць {STATION} до {STATION} (місткість {COMMA}%){STRING}
+STR_LINKGRAPH_STATS_TOOLTIP_MINUTE                              :{BLACK}{CARGO_LONG} треба перемістити за хвилину {STATION} до {STATION} (місткість {COMMA}%){STRING}
 STR_LINKGRAPH_STATS_TOOLTIP_RETURN_EXTENSION                    :{}{CARGO_LONG} треба повернути до (місткість: {COMMA}%)
+STR_LINKGRAPH_STATS_TOOLTIP_TIME_EXTENSION                      :{}Середній час поїздки (днів): {UNITS_DAYS_OR_SECONDS}
 
 # Base for station construction window(s)
 STR_STATION_BUILD_COVERAGE_AREA_TITLE                           :{BLACK}Підсвічення зони покриття
@@ -3466,7 +3495,7 @@ STR_SPRITE_ALIGNER_GOTO_TOOLTIP                                 :{BLACK}Йти �
 STR_SPRITE_ALIGNER_PREVIOUS_BUTTON                              :{BLACK}Попередній спрайт
 STR_SPRITE_ALIGNER_PREVIOUS_TOOLTIP                             :{BLACK}Повернутися до попереднього нормального спрайту, пропускаючи будь-які псевдо/перемальовані/шрифтові спрайти і обгортаючи (wrap) навколо починаючи з першого спрайту і закінчуючи останнім
 STR_SPRITE_ALIGNER_SPRITE_TOOLTIP                               :{BLACK}Відображення обраного спрайту (вирівнювання ігнорується)
-STR_SPRITE_ALIGNER_MOVE_TOOLTIP                                 :{BLACK}Рухайте спрайт навколо, змінюючи його зміщення за X та Y. Ctrl+клік зміщує спрайт на 8 клітинок
+STR_SPRITE_ALIGNER_MOVE_TOOLTIP                                 :{BLACK}Рухайте спрайт навколо, змінюючи його зміщення за X та Y. Ctrl+клац зміщує спрайт на 8 клітинок
 
 ###length 2
 STR_SPRITE_ALIGNER_CENTRE_OFFSET                                :{BLACK}Віжцентрувати зсув
@@ -3680,9 +3709,15 @@ STR_GOAL_QUESTION_BUTTON_CLOSE                                  :Закрити
 # Subsidies window
 STR_SUBSIDIES_CAPTION                                           :{WHITE}Субсидії
 STR_SUBSIDIES_OFFERED_TITLE                                     :{BLACK}Пропонуються субсидії:
+STR_SUBSIDIES_OFFERED_FROM_TO                                   :{ORANGE}Перевезення {STRING.r} з {STRING} до {STRING}{YELLOW} ({STRING})
 STR_SUBSIDIES_NONE                                              :{ORANGE}- немає -
 STR_SUBSIDIES_SUBSIDISED_TITLE                                  :{BLACK}Призначені субсидії:
+STR_SUBSIDIES_SUBSIDISED_FROM_TO                                :{ORANGE}Перевезення {STRING.r} з {STRING} до {STRING}{YELLOW} ({COMPANY}{YELLOW}, {STRING})
 STR_SUBSIDIES_TOOLTIP_CLICK_ON_SERVICE_TO_CENTER                :{BLACK}Натисніть на субсидії, щоб показати підприємство/місто у центрі екрану. Ctrl+клац мишою відкриває нове вікно з видом на підприємство/місто
+STR_SUBSIDIES_OFFERED_EXPIRY_DATE                               :до {DATE_SHORT}
+STR_SUBSIDIES_OFFERED_EXPIRY_TIME                               :впродовж {UNITS_MONTHS_OR_MINUTES}
+STR_SUBSIDIES_SUBSIDISED_EXPIRY_DATE                            :до {DATE_SHORT}
+STR_SUBSIDIES_SUBSIDISED_EXPIRY_TIME                            :залишилося {UNITS_MONTHS_OR_MINUTES}
 
 # Story book window
 STR_STORY_BOOK_CAPTION                                          :{WHITE}Історія {COMPANY}
@@ -4440,6 +4475,7 @@ STR_ORDERS_TIMETABLE_VIEW_TOOLTIP                               :{BLACK}Пере
 
 STR_ORDERS_LIST_TOOLTIP                                         :{BLACK}Маршрутний лист - клацніть на завданні для його вибору. Ctrl+клац мишою показує станцію призначення
 STR_ORDER_INDEX                                                 :{COMMA}:{NBSP}
+STR_ORDER_TEXT                                                  :{STRING} {STRING} {STRING} {STRING}
 
 STR_ORDERS_END_OF_ORDERS                                        :- - Кінець наказів - -
 STR_ORDERS_END_OF_SHARED_ORDERS                                 :- - Кінець спільних наказів - -

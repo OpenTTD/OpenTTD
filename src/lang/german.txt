@@ -332,6 +332,7 @@ STR_SORT_BY_TYPE                                                :Typ
 STR_SORT_BY_TRANSPORTED                                         :Transportiert
 STR_SORT_BY_NUMBER                                              :Nummer
 STR_SORT_BY_PROFIT_LAST_YEAR                                    :Gewinn im letzten Jahr
+STR_SORT_BY_PROFIT_LAST_PERIOD                                  :Gewinn im letzten Quartal
 STR_SORT_BY_PROFIT_THIS_YEAR                                    :Gewinn in diesem Jahr
 STR_SORT_BY_PROFIT_THIS_PERIOD                                  :Gewinn in diesem Zeitraum
 STR_SORT_BY_AGE                                                 :Alter
@@ -361,6 +362,7 @@ STR_SORT_BY_POPULATION                                          :Bevölkerung
 STR_SORT_BY_RATING                                              :Bewertung
 STR_SORT_BY_NUM_VEHICLES                                        :Anzahl der Fahrzeuge
 STR_SORT_BY_TOTAL_PROFIT_LAST_YEAR                              :Gewinn im letzten Jahr
+STR_SORT_BY_TOTAL_PROFIT_LAST_PERIOD                            :Gesamter Gewinn im letzten Quartal
 STR_SORT_BY_TOTAL_PROFIT_THIS_YEAR                              :Gewinn in diesem Jahr
 STR_SORT_BY_TOTAL_PROFIT_THIS_PERIOD                            :Gesamter Gewinn in diesem Zeitraum
 STR_SORT_BY_AVERAGE_PROFIT_LAST_YEAR                            :Durchschnittlicher Gewinn im letzten Jahr
@@ -444,6 +446,7 @@ STR_SETTINGS_MENU_CONFIG_SETTINGS_TREE                          :Einstellungen
 STR_SETTINGS_MENU_AI_SETTINGS                                   :KI-Einstellungen
 STR_SETTINGS_MENU_GAMESCRIPT_SETTINGS                           :Spielskripteinstellungen
 STR_SETTINGS_MENU_NEWGRF_SETTINGS                               :NewGRF-Einstellungen
+STR_SETTINGS_MENU_SANDBOX_OPTIONS                               :Sandbox-Optionen
 STR_SETTINGS_MENU_TRANSPARENCY_OPTIONS                          :Transparenzeinstellungen
 STR_SETTINGS_MENU_TOWN_NAMES_DISPLAYED                          :Städtenamen anzeigen
 STR_SETTINGS_MENU_STATION_NAMES_DISPLAYED                       :Stationsnamen anzeigen
@@ -666,6 +669,8 @@ STR_PERFORMANCE_DETAIL_TOTAL                                    :{BLACK}Gesamt:
 STR_PERFORMANCE_DETAIL_VEHICLES_TOOLTIP_YEARS                   :{BLACK}Anzahl der Fahrzeuge, die im letzten Jahr einen Gewinn erzielt haben. Diese beinhaltet Straßenfahrzeuge, Züge, Schiffe und Flugzeuge
 STR_PERFORMANCE_DETAIL_VEHICLES_TOOLTIP_PERIODS                 :{BLACK}Anzahl der Fahrzeuge, die im letzten Zeitraum einen Gewinn erzielt haben. Diese beinhaltet Straßenfahrzeuge, Züge, Schiffe und Flugzeuge
 STR_PERFORMANCE_DETAIL_STATIONS_TOOLTIP                         :{BLACK}Anzahl vor kurzem genutzter Stationen (wenn Stationen verschiedener Typen verbunden sind, werden sie trotzdem einzeln gezählt)
+STR_PERFORMANCE_DETAIL_MIN_PROFIT_TOOLTIP_YEARS                 :{BLACK}Der Gewinn des unptofitabelsten Fahrzeugs. Hierbei werden nur Fahrzeuge älter als 2 Jahre mit einbezogen.
+STR_PERFORMANCE_DETAIL_MIN_PROFIT_TOOLTIP_PERIODS               :{BLACK}Der Gewinn des unptofitabelsten Fahrzeugs. Hierbei werden nur Fahrzeuge älter als 2 Quartale mit einbezogen.
 STR_PERFORMANCE_DETAIL_MIN_INCOME_TOOLTIP                       :{BLACK}Geringste Quartalseinnahmen in den letzten 3 Jahren
 STR_PERFORMANCE_DETAIL_MAX_INCOME_TOOLTIP                       :{BLACK}Höchste Quartalseinnahmen in den letzten 3 Jahren
 STR_PERFORMANCE_DETAIL_DELIVERED_TOOLTIP                        :{BLACK}Im letzten Jahr gelieferte Frachteinheiten
@@ -813,6 +818,7 @@ STR_STATUSBAR_AUTOSAVE                                          :{RED}Autosicher
 STR_STATUSBAR_SAVING_GAME                                       :{RED}*  *  SPEICHERE SPIEL  *  *
 
 STR_STATUSBAR_SPECTATOR                                         :{WHITE}(Zuschauer)
+STR_STATUSBAR_INFINITE_MONEY                                    :{WHITE}(unbegrenzte finanzielle Mittel)
 
 # News message history
 STR_MESSAGE_HISTORY                                             :{WHITE}Nachrichtenchronik
@@ -1042,6 +1048,7 @@ STR_GAME_OPTIONS_GUI_SCALE_BEVELS_TOOLTIP                       :{BLACK}Dieses K
 
 STR_GAME_OPTIONS_GUI_FONT_SPRITE                                :{BLACK}Nutze die traditionelle Sprite-Schriftart
 STR_GAME_OPTIONS_GUI_FONT_SPRITE_TOOLTIP                        :{BLACK}Dieses Kästchen ankreuzen, um die traditionelle Sprite-Schriftart mit fester Größe zu verwenden.
+STR_GAME_OPTIONS_GUI_FONT_AA                                    :{BLACK}Anti-alias Schriftarten
 
 STR_GAME_OPTIONS_GUI_SCALE_1X                                   :1×
 STR_GAME_OPTIONS_GUI_SCALE_2X                                   :2×
@@ -1076,12 +1083,19 @@ STR_GAME_OPTIONS_BASE_MUSIC                                     :{BLACK}Basismus
 STR_GAME_OPTIONS_BASE_MUSIC_TOOLTIP                             :{BLACK}Ein Basismusikset auswählen
 STR_GAME_OPTIONS_BASE_MUSIC_DESCRIPTION_TOOLTIP                 :{BLACK}Zusätzliche Informationen über das Basismusikset
 
+STR_GAME_OPTIONS_SOCIAL_PLUGINS_NONE                            :{LTBLUE}(keine Plugins für Soziale Medien installiert!)
 
 STR_GAME_OPTIONS_SOCIAL_PLUGIN_TITLE                            :{BLACK}{STRING} ({STRING})
 STR_GAME_OPTIONS_SOCIAL_PLUGIN_PLATFORM                         :{BLACK}Bahnsteig:
+STR_GAME_OPTIONS_SOCIAL_PLUGIN_STATE                            :{BLACK}Zustand des Plugins:
 
 STR_GAME_OPTIONS_SOCIAL_PLUGIN_STATE_RUNNING                    :{GREEN}Am laufen
+STR_GAME_OPTIONS_SOCIAL_PLUGIN_STATE_FAILED                     :{RED}Initialisieren fehlgeschlagen
+STR_GAME_OPTIONS_SOCIAL_PLUGIN_STATE_PLATFORM_NOT_RUNNING       :{ORANGE}{STRING} läuft nicht
 STR_GAME_OPTIONS_SOCIAL_PLUGIN_STATE_UNLOADED                   :{RED}Entladen
+STR_GAME_OPTIONS_SOCIAL_PLUGIN_STATE_DUPLICATE                  :{RED}Doppeltes Plugin
+STR_GAME_OPTIONS_SOCIAL_PLUGIN_STATE_UNSUPPORTED_API            :{RED}Nicht unterstützte Version
+STR_GAME_OPTIONS_SOCIAL_PLUGIN_STATE_INVALID_SIGNATURE          :{RED}Ungültige Signatur
 
 STR_BASESET_STATUS                                              :{STRING} {RED}({NUM} fehlende/beschädigte Datei{P "" en})
 
@@ -1249,6 +1263,7 @@ STR_CONFIG_SETTING_HORIZONTAL_POS_RIGHT                         :Rechts
 
 STR_CONFIG_SETTING_SECONDS_VALUE                                :{COMMA}{NBSP}Sekunde{P 0 "" n}
 
+STR_CONFIG_SETTING_INFINITE_MONEY                               :Unbegrenzte finanzielle Mittel: {STRING}
 STR_CONFIG_SETTING_INFINITE_MONEY_HELPTEXT                      :Erlaubt Firmen, unbeschränkte Ausgaben zu tätigen und deaktiviert Insolvenz
 
 STR_CONFIG_SETTING_MAXIMUM_INITIAL_LOAN                         :Kreditlimit bei Spielbeginn: {STRING}
@@ -1378,6 +1393,7 @@ STR_CONFIG_SETTING_SHOWFINANCES_PERIOD                          :Zeige Firmenfin
 
 ###length 2
 STR_CONFIG_SETTING_SHOWFINANCES_HELPTEXT                        :Blende am Ende jedes Jahres automatisch die Einkommensübersicht des Unternehmes ein, um eine schnelle Übersicht über den finanziellen Status zu bekommen
+STR_CONFIG_SETTING_SHOWFINANCES_HELPTEXT_PERIOD                 :Wenn aktiviert, erscheint das Finanz-Fenster immer am Ende des Quartals. Dies ermöglicht einen einfachen Überblick über die finanzielle Situation und Entwicklung der Firma.
 
 STR_CONFIG_SETTING_NONSTOP_BY_DEFAULT                           :Aufträge standardmäßig ohne Zwischenhalt anfahren: {STRING}
 STR_CONFIG_SETTING_NONSTOP_BY_DEFAULT_HELPTEXT                  :Normalerweise hält ein Fahrzeug an jeder Station, die es passiert. Wird diese Einstellung aktiviert, hält das Fahrzeug nur an den Stationen, die explizit in den Aufträgen angeführt sind. Bedenke, dass dieses nur das Standard-Verhalten für neue Aufträge beschreibt. Einzelne Aufträge können explizit auf jedes gewünschte Verhalten geändert werden
@@ -1468,10 +1484,14 @@ STR_CONFIG_SETTING_WARN_INCOME_LESS_HELPTEXT                    :Zeige Nachricht
 STR_CONFIG_SETTING_NEVER_EXPIRE_VEHICLES                        :Fahrzeuge veralten nie: {STRING}
 STR_CONFIG_SETTING_NEVER_EXPIRE_VEHICLES_HELPTEXT               :Erlauben, dass Fahrzeuge nach ihrem Einführungsdatum ewig verfügbar bleiben
 
+STR_CONFIG_SETTING_TIMEKEEPING_UNITS                            :Zeiteinheit: {STRING}
 STR_CONFIG_SETTING_TIMEKEEPING_UNITS_HELPTEXT                   :Wähle die Zeiteinheit des Spiels. Diese kann später nicht geändert werden.{}{}Kalender-basiert ist die klassische OpenTTD Erfahrung, in dem ein Jahr aus 12 Monaten besteht und jeder Monat 28-31 Tage hat.{}{}In Wanduhr-basierter Zeit sind Fahrzeuggeschwindigkeit, Güterproduktion und Finanzen basierend auf 1-minütigen Inkrementen, welche etwa so lang wie ein 30-tägiger Monat im Kalender-basierten Modus sind. Diese sind in 12-minütige Zeiträume gruppiert, equivalent zu einem Kalender-Jahr.{}{}In beiden Modi ist immer ein klassischer Kalender, welcher für das Einführungdatum von Fahrzeugen, Häusern und anderer Infrastruktur genutzt wird.
 ###length 2
+STR_CONFIG_SETTING_TIMEKEEPING_UNITS_CALENDAR                   :Kalender
+STR_CONFIG_SETTING_TIMEKEEPING_UNITS_WALLCLOCK                  :Wanduhr
 
 STR_CONFIG_SETTING_MINUTES_PER_YEAR                             :Minuten pro Jahr: {STRING}
+STR_CONFIG_SETTING_MINUTES_PER_YEAR_HELPTEXT                    :Wähle die Anzahl an Minuten in einem Kalenderjahr. Standartmäßig sind das 12 Minuten. Um das wechseln der Kalenderzeit auszuschalten, stelle dies einfach auf 0. Diese Einstellung beeinflusst nicht die wirtschaftssimulation des Spiels und ist nur verfügbar, wenn die Wanduhr als Zeitmesser eingestellt ist.
 
 STR_CONFIG_SETTING_MINUTES_PER_YEAR_VALUE                       :{NUM}
 ###setting-zero-is-special
@@ -1741,6 +1761,7 @@ STR_CONFIG_SETTING_SOUND_NEW_PERIOD                             :Ende des Zeitra
 
 ###length 2
 STR_CONFIG_SETTING_SOUND_NEW_YEAR_HELPTEXT                      :Soundeffekte beim Jahresrückblick auf die Bilanzen der vergangenen Jahre abspielen
+STR_CONFIG_SETTING_SOUND_NEW_PERIOD_HELPTEXT                    :Spiele ein Geräusch am Ende eines Quartals ab, welches die Firmenbilanz im Vergleich zum letzten Quartal wiedergibt
 
 STR_CONFIG_SETTING_SOUND_CONFIRM                                :Baumaßnahmen: {STRING}
 STR_CONFIG_SETTING_SOUND_CONFIRM_HELPTEXT                       :Soundeffekte bei Baumaßnahmen oder anderen Aktionen abspielen
@@ -1809,6 +1830,7 @@ STR_CONFIG_SETTING_NOSERVICE                                    :Wartung deaktiv
 STR_CONFIG_SETTING_NOSERVICE_HELPTEXT                           :Schicke Fahrzeuge nicht zur Wartung, wenn Pannen ausgeschaltet sind
 
 STR_CONFIG_SETTING_STATION_LENGTH_LOADING_PENALTY               :Verringerung der Ladegeschwindigkeit für Züge die länger als die Station sind: {STRING}
+STR_CONFIG_SETTING_STATION_LENGTH_LOADING_PENALTY_HELPTEXT      :Wenn aktiviert laden Züge, die zu lang für den Bahnhof sind, langsamer, als solche, die passen. Diese Option hat keine Auswirkung auf die Wegfindung
 
 STR_CONFIG_SETTING_WAGONSPEEDLIMITS                             :Berücksichtige Waggonhöchstgeschwindigkeit: {STRING}
 STR_CONFIG_SETTING_WAGONSPEEDLIMITS_HELPTEXT                    :Begrenze die Höchstgeschwindigkeit eines Zuges durch die jeweiligen Höchstgeschwindigkeiten der mitgeführten Waggons
@@ -2033,6 +2055,8 @@ STR_CONFIG_SETTING_LOCALISATION_UNITS_VELOCITY_HELPTEXT         :Immer wenn die 
 STR_CONFIG_SETTING_LOCALISATION_UNITS_VELOCITY_IMPERIAL         :Imperial (mph)
 STR_CONFIG_SETTING_LOCALISATION_UNITS_VELOCITY_METRIC           :Metrisch (km/h)
 STR_CONFIG_SETTING_LOCALISATION_UNITS_VELOCITY_SI               :SI (m/s)
+STR_CONFIG_SETTING_LOCALISATION_UNITS_VELOCITY_GAMEUNITS_DAYS   :Spieleinheiten (Felder/Tag)
+STR_CONFIG_SETTING_LOCALISATION_UNITS_VELOCITY_GAMEUNITS_SECS   :Spieleinheiten (Felder/Sekunde)
 STR_CONFIG_SETTING_LOCALISATION_UNITS_VELOCITY_KNOTS            :Knoten
 
 STR_CONFIG_SETTING_LOCALISATION_UNITS_POWER                     :Leistungseinheit von Fahrzeugen: {STRING}
@@ -2729,6 +2753,7 @@ STR_STATION_BUILD_COVERAGE_AREA_ON_TOOLTIP                      :{BLACK}Einzugsg
 STR_STATION_BUILD_ACCEPTS_CARGO                                 :{BLACK}Nimmt an: {GOLD}{CARGO_LIST}
 STR_STATION_BUILD_SUPPLIES_CARGO                                :{BLACK}Liefert: {GOLD}{CARGO_LIST}
 STR_STATION_BUILD_INFRASTRUCTURE_COST_YEAR                      :{BLACK}Unterhaltskosten: {GOLD}{CURRENCY_SHORT}/Jahr
+STR_STATION_BUILD_INFRASTRUCTURE_COST_PERIOD                    :{BLACK}Wartungskosten: {GOLD}{CURRENCY_SHORT}/Quartal
 
 # Join station window
 STR_JOIN_STATION_CAPTION                                        :{WHITE}Verbinde mit Station
@@ -3249,12 +3274,14 @@ STR_MAPGEN_MAPSIZE                                              :{BLACK}Spielfel
 STR_MAPGEN_MAPSIZE_TOOLTIP                                      :{BLACK}Die Größe des Spielfelds auswählen. Die tatsächlich verfügbare Anzahl Felder wird geringfügig kleiner sein
 STR_MAPGEN_BY                                                   :{BLACK}*
 STR_MAPGEN_NUMBER_OF_TOWNS                                      :{BLACK}Städteanzahl:
+STR_MAPGEN_NUMBER_OF_TOWNS_TOOLTIP                              :{BLACK}Wähle die Besiedelungsdichte von Siedlungen, oder lege eine eigene Dichte fest
 STR_MAPGEN_TOWN_NAME_LABEL                                      :{BLACK}Städtenamen:
 STR_MAPGEN_TOWN_NAME_DROPDOWN_TOOLTIP                           :{BLACK}Wähle die Sprache für die Städtenamen aus
 STR_MAPGEN_DATE                                                 :{BLACK}Datum:
 STR_MAPGEN_NUMBER_OF_INDUSTRIES                                 :{BLACK}Industriedichte:
 STR_MAPGEN_NUMBER_OF_INDUSTRIES_TOOLTIP                         :{BLACK}Wähle die Dichte der Industrien, oder einen benutzerdefinierten Wert
 STR_MAPGEN_HEIGHTMAP_HEIGHT                                     :{BLACK}Höchster Gipfel:
+STR_MAPGEN_HEIGHTMAP_HEIGHT_TOOLTIP                             :{BLACK}Wähle den höchsten Punkt der Karte, den das Spiel versuchen soll zu erstellen, gemessen in Metern über dem Meeresspiegel (mNN)
 STR_MAPGEN_HEIGHTMAP_HEIGHT_UP                                  :{BLACK}Die maximale Höhe des höchsten Gipfels auf der Karte um eins erhöhen
 STR_MAPGEN_HEIGHTMAP_HEIGHT_DOWN                                :{BLACK}Die maximale Höhe des höchsten Gipfels auf der Karte um eins verringern
 STR_MAPGEN_SNOW_COVERAGE                                        :{BLACK}Schneebedeckung:
@@ -3335,6 +3362,7 @@ STR_SE_MAPGEN_FLAT_WORLD                                        :{WHITE}Flache L
 STR_SE_MAPGEN_FLAT_WORLD_TOOLTIP                                :{BLACK}Flache Landschaft erzeugen
 STR_SE_MAPGEN_RANDOM_LAND                                       :{WHITE}Zufällige Landschaft
 STR_SE_MAPGEN_FLAT_WORLD_HEIGHT                                 :{BLACK}Höhe des Flachlands:
+STR_SE_MAPGEN_FLAT_WORLD_HEIGHT_TOOLTIP                         :{BLACK}Wähle die Höhe über dem Meeresspiegel
 STR_SE_MAPGEN_FLAT_WORLD_HEIGHT_DOWN                            :{BLACK}Flachland um eine Stufe senken
 STR_SE_MAPGEN_FLAT_WORLD_HEIGHT_UP                              :{BLACK}Flachland um eine Stufe erhöhen
 
@@ -3572,6 +3600,7 @@ STR_TOWN_VIEW_TOWN_CAPTION                                      :{WHITE}{TOWN}
 STR_TOWN_VIEW_CITY_CAPTION                                      :{WHITE}{TOWN} (Großstadt)
 STR_TOWN_VIEW_POPULATION_HOUSES                                 :{BLACK}Einwohner: {ORANGE}{COMMA}{BLACK}  Häuser: {ORANGE}{COMMA}
 STR_TOWN_VIEW_CARGO_LAST_MONTH_MAX                              :{BLACK}{CARGO_LIST} im letzten Monat: {ORANGE}{COMMA}{BLACK} Max.: {ORANGE}{COMMA}
+STR_TOWN_VIEW_CARGO_LAST_MINUTE_MAX                             :{BLACK}{CARGO_LIST} letzte Minute: {ORANGE}{COMMA}{BLACK}  max: {ORANGE}{COMMA}
 STR_TOWN_VIEW_CARGO_FOR_TOWNGROWTH                              :{BLACK}Für Stadtwachstum benötigte Fracht:
 STR_TOWN_VIEW_CARGO_FOR_TOWNGROWTH_REQUIRED_GENERAL             :{ORANGE}{STRING}{RED} benötigt
 STR_TOWN_VIEW_CARGO_FOR_TOWNGROWTH_REQUIRED_WINTER              :{ORANGE}{STRING}{BLACK} im Winter benötigt
@@ -3696,6 +3725,13 @@ STR_STATION_LIST_STATION                                        :{YELLOW}{STATIO
 STR_STATION_LIST_WAYPOINT                                       :{YELLOW}{WAYPOINT}
 STR_STATION_LIST_NONE                                           :{YELLOW}- Keine -
 STR_STATION_LIST_SELECT_ALL_FACILITIES                          :{BLACK}Alle Stationstypen auswählen
+STR_STATION_LIST_CARGO_FILTER_ALL_AND_NO_RATING                 :Alle Frachttypen und ohne Bewertung
+STR_STATION_LIST_CARGO_FILTER_MULTIPLE                          :Mehrere Gütertypen
+STR_STATION_LIST_CARGO_FILTER_NO_CARGO_TYPES                    :Keine Gütertypen
+STR_STATION_LIST_CARGO_FILTER_ONLY_NO_RATING                    :Nur ohne Güterbewertung
+STR_STATION_LIST_CARGO_FILTER_SELECT_ALL                        :Wähle alles und ohne Bewertung
+STR_STATION_LIST_CARGO_FILTER_NO_RATING                         :Keine Güterbewertung
+STR_STATION_LIST_CARGO_FILTER_EXPAND                            :Mehr anzeigen...
 
 # Station view window
 STR_STATION_VIEW_CAPTION                                        :{WHITE}{STATION} {STATION_FEATURES}
@@ -3711,6 +3747,8 @@ STR_STATION_VIEW_EXCLUSIVE_RIGHTS_COMPANY                       :{YELLOW}{COMPAN
 
 STR_STATION_VIEW_RATINGS_BUTTON                                 :{BLACK}Bewertung
 STR_STATION_VIEW_RATINGS_TOOLTIP                                :{BLACK}Stationsbewertung anzeigen
+STR_STATION_VIEW_SUPPLY_RATINGS_TITLE_MONTH                     :{BLACK}Versorgung pro Monat und lokale Bewertung
+STR_STATION_VIEW_SUPPLY_RATINGS_TITLE_MINUTE                    :{BLACK}Versorgung pro Minute und lokale Bewertung:
 STR_STATION_VIEW_CARGO_SUPPLY_RATING                            :{WHITE}{STRING}: {YELLOW}{COMMA} / {STRING} ({COMMA}%)
 
 STR_STATION_VIEW_GROUP                                          :{BLACK}Gruppieren nach
@@ -3895,6 +3933,7 @@ STR_INDUSTRY_DIRECTORY_FILTER_NONE                              :Keine
 # Industry view
 STR_INDUSTRY_VIEW_CAPTION                                       :{WHITE}{INDUSTRY}
 STR_INDUSTRY_VIEW_PRODUCTION_LAST_MONTH_TITLE                   :{BLACK}Produktion im letzten Monat:
+STR_INDUSTRY_VIEW_PRODUCTION_LAST_MINUTE_TITLE                  :{BLACK}Produktion in der letzten Minute:
 STR_INDUSTRY_VIEW_TRANSPORTED                                   :{YELLOW}{CARGO_LONG}{STRING}{BLACK} ({COMMA}% befördert)
 STR_INDUSTRY_VIEW_LOCATION_TOOLTIP                              :{BLACK}Hauptansicht zur Industrie scrollen. Strg+Klick öffnet neue Zusatzansicht zentriert auf die Industrie
 STR_INDUSTRY_VIEW_PRODUCTION_LEVEL                              :{BLACK}Produktionsrate: {YELLOW}{COMMA}%
@@ -4203,6 +4242,7 @@ STR_ENGINE_PREVIEW_TRAM_VEHICLE                                 :Straßenbahn
 STR_ENGINE_PREVIEW_AIRCRAFT                                     :{G=n}Flugzeug
 STR_ENGINE_PREVIEW_SHIP                                         :{G=n}Schiff
 
+STR_ENGINE_PREVIEW_TEXT3                                        :{BLACK}{STRING}{}{5:STRING}{}{STRING}
 STR_ENGINE_PREVIEW_TEXT4                                        :{BLACK}{STRING}{}{STRING}{}{STRING}{}{STRING}
 STR_ENGINE_PREVIEW_COST_WEIGHT                                  :Kosten: {CURRENCY_LONG} Gewicht: {WEIGHT_SHORT}
 STR_ENGINE_PREVIEW_COST_MAX_SPEED                               :Kosten: {CURRENCY_LONG}  Max. Geschw.: {VELOCITY}
@@ -4332,6 +4372,7 @@ STR_VEHICLE_STATUS_NO_ORDERS_VEL                                :{LTBLUE}Keine A
 STR_VEHICLE_STATUS_HEADING_FOR_WAYPOINT_VEL                     :{LTBLUE}Fahre zu {WAYPOINT}, {VELOCITY}
 STR_VEHICLE_STATUS_HEADING_FOR_DEPOT_VEL                        :{ORANGE}Fährt zu {DEPOT}, {VELOCITY}
 STR_VEHICLE_STATUS_HEADING_FOR_DEPOT_SERVICE_VEL                :{LTBLUE}Wartung in {DEPOT}, {VELOCITY}
+STR_VEHICLE_STATUS_HEADING_FOR_DEPOT_UNBUNCH_VEL                :{LTBLUE}Entladen und Wartung am Depot {DEPOT}, {VELOCITY}
 
 STR_VEHICLE_STATUS_CANNOT_REACH_STATION_VEL                     :{LTBLUE} Kann nicht {STATION}, ´{VELOCITY} erreichen
 STR_VEHICLE_STATUS_CANNOT_REACH_WAYPOINT_VEL                    :{LTBLUE}Kann nicht {WAYPOINT},{VELOCITY} erreichen
@@ -4500,6 +4541,10 @@ STR_ORDER_DROP_HALT_DEPOT                                       :Stopp
 
 # Depot action tooltips, one per vehicle type
 ###length VEHICLE_TYPES
+STR_ORDER_TRAIN_DEPOT_ACTION_TOOLTIP                            :{BLACK}Was soll in diesem Depot an Arbeiten ausgeführt werden?
+STR_ORDER_ROAD_DEPOT_ACTION_TOOLTIP                             :{BLACK}Was soll in diesem Depot an Arbeiten ausgeführt werden?
+STR_ORDER_SHIP_DEPOT_ACTION_TOOLTIP                             :{BLACK}Was soll in diesem Depot an Arbeiten ausgeführt werden?
+STR_ORDER_HANGAR_ACTION_TOOLTIP                                 :{BLACK}Was soll in diesem Hangar an Arbeit ausgeführt werden?
 ###next-name-looks-similar
 
 STR_ORDER_CONDITIONAL_VARIABLE_TOOLTIP                          :{BLACK}Fahrzeuginformation, welche für den Sprung ausgewertet wird
@@ -4569,6 +4614,7 @@ STR_ORDER_REFIT_ORDER                                           :(auf {STRING} u
 STR_ORDER_REFIT_STOP_ORDER                                      :(auf {STRING} umrüsten und stoppen)
 STR_ORDER_STOP_ORDER                                            :(Stopp)
 
+STR_ORDER_WAIT_TO_UNBUNCH                                       :(warte auf Entladen)
 
 STR_ORDER_GO_TO_STATION                                         :{STRING} {STATION} {STRING}
 STR_ORDER_GO_TO_STATION_CAN_T_USE_STATION                       :{PUSH_COLOUR}{RED}(Station unbenutzbar){POP_COLOUR} {STRING} {STATION} {STRING}
@@ -4648,6 +4694,7 @@ STR_TIMETABLE_STATUS_EARLY                                      :{BLACK}Dieses F
 STR_TIMETABLE_STATUS_NOT_STARTED                                :{BLACK}Dieser Fahrplan ist noch nicht gültig
 STR_TIMETABLE_STATUS_START_IN_SECONDS                           :{BLACK}Dieser Fahrplan startet in {COMMA} Sekunden
 
+STR_TIMETABLE_START                                             :{BLACK}Starte den Fahrplan
 
 STR_TIMETABLE_START_SECONDS_QUERY                               :Sekunden bis der Fahrplan beginnt
 
@@ -4674,6 +4721,9 @@ STR_TIMETABLE_SCHEDULED                                         :{BLACK}Fahrplan
 STR_TIMETABLE_EXPECTED_TOOLTIP                                  :{BLACK}Umschalten zwischen Anzeige der erwarteten Ankunftszeit und des Fahrplans
 
 STR_TIMETABLE_ARRIVAL_DATE                                      :A: {COLOUR}{DATE_TINY}
+STR_TIMETABLE_DEPARTURE_DATE                                    :D: {COLOUR}{DATE_TINY}
+STR_TIMETABLE_ARRIVAL_SECONDS_IN_FUTURE                         :A: {COLOUR}{COMMA} sek.
+STR_TIMETABLE_DEPARTURE_SECONDS_IN_FUTURE                       :D: {COLOUR}{COMMA} sek.
 
 
 # Date window (for timetable)
@@ -5034,6 +5084,9 @@ STR_ERROR_UNABLE_TO_FIND_LOCAL_DEPOT                            :{WHITE}Fahrzeug
 STR_ERROR_DEPOT_WRONG_DEPOT_TYPE                                :Falscher Depottyp
 
 # Depot unbunching related errors
+STR_ERROR_UNBUNCHING_ONLY_ONE_ALLOWED                           :{WHITE}... kann nur einen Entladeauftrag haben
+STR_ERROR_UNBUNCHING_NO_UNBUNCHING_FULL_LOAD                    :{WHITE}... kann kein Fahrzeug mit einem Vollladeauftrag entladen
+STR_ERROR_UNBUNCHING_NO_UNBUNCHING_CONDITIONAL                  :{WHITE}... kann kein Fahrzeug mit einem an Bedingungen geknüpften Auftrag entladen
 
 # Autoreplace related errors
 STR_ERROR_TRAIN_TOO_LONG_AFTER_REPLACEMENT                      :{WHITE}{VEHICLE} ist nach Ersetzung zu lang
