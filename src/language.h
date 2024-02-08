@@ -31,6 +31,10 @@ struct LanguagePackHeader {
 	char isocode[16];   ///< the ISO code for the language (not country code)
 	uint16_t offsets[TEXT_TAB_END]; ///< the offsets
 
+	/** The raw formatting string for numbers. */
+	char number_format[64];
+	/** The raw formatting string for number abbreviations. */
+	char number_abbreviations[256];
 	/** Thousand separator used for anything not currencies */
 	char digit_group_separator[8];
 	/** Thousand separator used for currencies */
@@ -107,7 +111,28 @@ extern const LanguageMetadata *_current_language;
 extern std::unique_ptr<icu::Collator> _current_collator;
 #endif /* WITH_ICU_I18N */
 
+/** The number digits available in a uint64_t. */
+constexpr int DIGITS_IN_UINT64_T = 20;
+/**
+ * Table with the text to place after each of the digits of a number. The text at index "20 - i" will be
+ * inserted after the digit with value "10**i". So, for "normal" thousand separators, the strings at indices
+ * 3, 6, 9, 12, 15 and 18 will be filled. For CJK the strings at indices 0, 4, 8, 12 and 16 will be filled.
+ * @see ParseNumberFormatSeparators
+ */
+using NumberFormatSeparators = std::array<std::string, DIGITS_IN_UINT64_T>;
+/** Container for the power to abbreviation mapping for formatting short numbers. */
+struct NumberAbbreviation {
+	NumberAbbreviation(int64_t threshold, NumberFormatSeparators &format) : threshold(threshold), format(format) {}
+	int64_t threshold; ///< The threshold from which this abbreviation holds.
+	NumberFormatSeparators format; ///< Format separators to use for this specific power.
+};
+/** Lookup for abbreviated formats for different powers of ten. */
+using NumberAbbreviations = std::vector<NumberAbbreviation>;
+
 bool ReadLanguagePack(const LanguageMetadata *lang);
 const LanguageMetadata *GetLanguage(byte newgrflangid);
+
+std::optional<std::string> ParseNumberFormatSeparators(NumberFormatSeparators &separators, std::string_view format, size_t length = DIGITS_IN_UINT64_T);
+std::optional<std::string> ParseNumberAbbreviations(NumberAbbreviations &abbreviations, std::string_view input);
 
 #endif /* LANGUAGE_H */

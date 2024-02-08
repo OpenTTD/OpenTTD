@@ -1884,6 +1884,8 @@ bool LanguagePackHeader::IsValid() const
 	       StrValid(this->name,                           lastof(this->name)) &&
 	       StrValid(this->own_name,                       lastof(this->own_name)) &&
 	       StrValid(this->isocode,                        lastof(this->isocode)) &&
+	       StrValid(this->number_format,                  lastof(this->number_format)) &&
+	       StrValid(this->number_abbreviations,           lastof(this->number_abbreviations)) &&
 	       StrValid(this->digit_group_separator,          lastof(this->digit_group_separator)) &&
 	       StrValid(this->digit_group_separator_currency, lastof(this->digit_group_separator_currency)) &&
 	       StrValid(this->digit_decimal_separator,        lastof(this->digit_decimal_separator));

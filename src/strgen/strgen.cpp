@@ -121,6 +121,22 @@ void FileStringReader::HandlePragma(char *str)
 		} else {
 			FatalError("Invalid textdir {}", str + 8);
 		}
+	} else if (!memcmp(str, "numberformat ", 13)) {
+		str += 13;
+
+		NumberFormatSeparators separators;
+		auto result = ParseNumberFormatSeparators(separators, str);
+		if (result.has_value()) FatalError("Invalid number format: {}", *result);
+
+		strecpy(_lang.number_format, str, lastof(_lang.number_format));
+	} else if (!memcmp(str, "numberabbreviations ", 20)) {
+		str += 20;
+
+		NumberAbbreviations abbreviations;
+		auto result = ParseNumberAbbreviations(abbreviations, str);
+		if (result.has_value()) FatalError("Invalid number abbreviations: {}", *result);
+
+		strecpy(_lang.number_abbreviations, str, lastof(_lang.number_abbreviations));
 	} else if (!memcmp(str, "digitsep ", 9)) {
 		str += 9;
 		strecpy(_lang.digit_group_separator, strcmp(str, "{NBSP}") == 0 ? NBSP : str, lastof(_lang.digit_group_separator));
