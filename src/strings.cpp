@@ -389,8 +389,21 @@ static const char *GetDecimalSeparator()
 
 void InitializeNumberFormats()
 {
-	ParseNumberFormatSeparators(_number_format_separators, _current_language->number_format);
-	ParseNumberAbbreviations(_number_abbreviations, _current_language->number_abbreviations);
+	bool loaded_number_format = false;
+	if (!_settings_client.gui.number_format.empty()) {
+		auto res = ParseNumberFormatSeparators(_number_format_separators, _settings_client.gui.number_format);
+		if (res.has_value()) UserError("The setting 'number_format' under 'gui' is invalid: {}", *res);
+		loaded_number_format = !res.has_value();
+	}
+	if (!loaded_number_format) ParseNumberFormatSeparators(_number_format_separators, _current_language->number_format);
+
+	bool loaded_number_abbreviations = false;
+	if (!_settings_client.gui.number_abbreviations.empty()) {
+		auto res = ParseNumberAbbreviations(_number_abbreviations, _settings_client.gui.number_abbreviations);
+		if (res.has_value()) UserError("The setting 'number_abbreviations' under 'gui' is invalid: {}", *res);
+		loaded_number_abbreviations = !res.has_value();
+	}
+	if (!loaded_number_abbreviations) ParseNumberAbbreviations(_number_abbreviations, _current_language->number_abbreviations);
 	_number_abbreviations.emplace_back(0, _number_format_separators);
 }
 
