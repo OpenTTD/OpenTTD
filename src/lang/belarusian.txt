@@ -3,6 +3,8 @@
 ##isocode be_BY
 ##plural 6
 ##textdir ltr
+##numberformat 00{NBSP}000{NBSP}000{NBSP}000{NBSP}000{NBSP}000{NBSP}000
+##numberabbreviations 3=00{NBSP}000{NBSP}000{NBSP}000{NBSP}000{NBSP}000{NBSP}k|6=00{NBSP}000{NBSP}000{NBSP}000{NBSP}000{NBSP}m|9=00{NBSP}000{NBSP}000{NBSP}000{NBSP}bn|12=00{NBSP}000{NBSP}000{NBSP}tn|15=00{NBSP}000{NBSP}Qa|18=00{NBSP}Qi
 ##decimalsep ,
 ##winlangid 0x0423
 ##grflangid 0x10
