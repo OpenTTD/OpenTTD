@@ -16,7 +16,7 @@
 #include "../table/control_codes.h"
 
 #include "strgen.h"
-
+#include <charconv>
 
 #include "../table/strgen_tables.h"
 
@@ -756,6 +756,8 @@ void StringReader::ParseFile()
 
 	/* For each new file we parse, reset the genders, and language codes. */
 	MemSetT(&_lang, 0);
+	strecpy(_lang.number_format, "00,000,000,000,000,000,000", lastof(_lang.number_format));
+	strecpy(_lang.number_abbreviations, "3=00,000,000,000,000,000{NBSP}k|6=00,000,000,000,000{NBSP}m|9=00,000,000,000{NBSP}bn|12=00,000,000{NBSP}tn|15=00,000{NBSP}Qa|18=00{NBSP}Qi", lastof(_lang.number_abbreviations));
 	strecpy(_lang.digit_group_separator, ",", lastof(_lang.digit_group_separator));
 	strecpy(_lang.digit_group_separator_currency, ",", lastof(_lang.digit_group_separator_currency));
 	strecpy(_lang.digit_decimal_separator, ".", lastof(_lang.digit_decimal_separator));
@@ -979,4 +981,114 @@ void LanguageWriter::WriteLang(const StringData &data)
 			buffer.clear();
 		}
 	}
+}
+
+static const std::string_view NBSP_TOKEN = "{NBSP}";
+
+static std::string ReplaceNBSP(std::string string)
+{
+	for (;;) {
+		auto iter = string.find(NBSP_TOKEN);
+		if (iter == std::string::npos) break;
+
+		string.replace(iter, NBSP_TOKEN.size(), NBSP);
+	}
+	return string;
+}
+
+/**
+ * Parse the \c NumberFormatSeparators out of the given format string, with the expected number of digits.
+ *
+ * Different cultures have different ways to separate their numbers when they get really big. In the Western world
+ * these are often called thousands separators which come every three digits counted from the back. The actual
+ * separator differs per language/country. In Chinese, Japanese and Korean they add a character every four digits
+ * counted from the back, and this character differs for each spot as it denotes "ten thousand", "hundred million",
+ * etc. In the Indic numbering system (Indian subcontinent), the first separator is after three digits counted
+ * from the back, but the next separators are given every two digits.
+ *
+ * So, there's no simple single parameter that you can add to the digit grouping character that is already
+ * configured. The simplest solution is just defining what character to place between each of the digits, i.e what
+ * characters separate each of the digits. These are the \c NumberFormatSeparators.
+ *
+ * To define these, you simply write a string of \c length zeros and then add any characters in between at the right
+ * locations so the digit grouping is correct. When formatting numbers, it will start at the appropriate digit and
+ * continue from there with separators.
+ *
+ * Examples of formats are "00,000,000,000,000,000,000" and "0000{NBSP}0000{NBSP}0000{NBSP}0000{NBSP}0000".
+ *
+ * @param separators The separators to fill; it will be cleared first.
+ * @param format The format that is going to be read.
+ * @param length The number of digits that are expected in this format.
+ * @return An \c std::optional with the error message, or \c std::nullopt when the parsing went without problems.
+ */
+std::optional<std::string> ParseNumberFormatSeparators(NumberFormatSeparators &separators, std::string_view format, size_t length)
+{
+	separators.fill({});
+	size_t seen_zeros = 0;
+
+	auto it_separator = separators.rbegin();
+	auto iter = format.find_last_of('0');
+	while (iter != std::string_view::npos && it_separator != separators.rend())  {
+		seen_zeros++;
+
+		*it_separator = ReplaceNBSP(std::string(format.substr(iter + 1)));
+		++it_separator;
+
+		format = format.substr(0, iter);
+		iter = format.find_last_of('0');
+	}
+
+	if (seen_zeros != length) return fmt::format("Unexpected number of digits ({} vs {}) in format string: [{}]", seen_zeros, length, format);
+
+	return std::nullopt;
+}
+
+/**
+ * Parse the \c NumberAbbreviations out of the given input string.
+ *
+ * In some places in the UI numbers are getting really big yet their exact value is not that important. For example
+ * in the graphs of company values. For this you want more compact number, e.g. 123 m for 123.456.789. However, due
+ * to the grouping of digits differing in different cultures, see \c ParseNumberFormatSeparators, there are many
+ * different ways of grouping digits.
+ *
+ * This function builds up a lookup table of these abbreviations by power of ten. The input will be a list of
+ * definitions per power separator by a pipe character (|). Each definition is the power of ten and and the
+ * associated number format with DIGITS_IN_UINT64_T - power digits, separated by the equals sign (=).
+ *
+ * For example, for English it defines every third power of ten with subsequently smaller number formats:
+ * 3=00,000,000,000,000,000{NBSP}k|6=00,000,000,000,000{NBSP}m|9=00,000,000,000{NBSP}bn|12=00,000,000{NBSP}tn|15=00,000{NBSP}Qa|18=00{NBSP}Qi
+ *
+ * @param abbreviations The table to write the abbreviations in; is will be cleared before filling.
+ * @param input The input format to parse.
+ * @return An \c std::optional with the error message, or \c std::nullopt when the parsing went without problems.
+ */
+std::optional<std::string> ParseNumberAbbreviations(NumberAbbreviations &abbreviations, std::string_view input)
+{
+	abbreviations.clear();
+
+	std::map<int, std::string_view> abbreviation_map;
+	do {
+		std::string_view part = input.substr(0, input.find_first_of('|'));
+		input.remove_prefix(std::min(part.size() + 1, input.size()));
+
+		auto equals = part.find_first_of('=');
+		if (equals == std::string_view::npos) return fmt::format("Part [{}] does not have an '='", part);
+
+		std::string_view power_sv = part.substr(0, equals);
+		int power = 0;
+		if (std::from_chars(power_sv.data(), power_sv.data() + power_sv.size(), power).ec != std::errc{}) return fmt::format("Power [{}] is not a number", power_sv);
+		if (power >= DIGITS_IN_UINT64_T || power <= 0) return fmt::format("Power {} is not allowed", power_sv);
+
+		abbreviation_map[power] = part.substr(equals + 1);
+	} while (!input.empty());
+
+	for (auto iter = abbreviation_map.rbegin(); iter != abbreviation_map.rend(); ++iter) {
+		NumberFormatSeparators separators;
+		auto result = ParseNumberFormatSeparators(separators, iter->second, DIGITS_IN_UINT64_T - iter->first);
+		if (result.has_value()) return result;
+
+		abbreviations.emplace_back(PowerOfTen(iter->first), separators);
+	}
+
+	return std::nullopt;
 }
