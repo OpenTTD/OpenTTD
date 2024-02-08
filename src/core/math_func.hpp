@@ -350,6 +350,19 @@ constexpr int RoundDivSU(int a, uint b)
 	}
 }
 
+/**
+ * Computes ten to the given power.
+ * @param power The power of ten to get.
+ * @return The power of ten.
+ */
+constexpr uint64_t PowerOfTen(int power)
+{
+	assert(power >= 0 && power <= 20 /* digits in uint64_t */);
+	uint64_t result = 1;
+	for (int i = 0; i < power; i++) result *= 10;
+	return result;
+}
+
 uint32_t IntSqrt(uint32_t num);
 
 #endif /* MATH_FUNC_HPP */
