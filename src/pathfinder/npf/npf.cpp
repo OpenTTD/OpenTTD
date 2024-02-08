@@ -323,7 +323,7 @@ static int32_t NPFWaterPathCost(AyStar *, AyStarNode *current, OpenListNode *par
 		cost += _settings_game.pf.npf.npf_buoy_penalty; // A small penalty for going over buoys
 	}
 
-	if (current->direction != NextTrackdir((Trackdir)parent->path.node.direction)) {
+	if (current->direction != NextTrackdir(parent->path.node.direction)) {
 		cost += _settings_game.pf.npf.npf_water_curve_penalty;
 	}
 
@@ -527,7 +527,7 @@ static int32_t NPFRailPathCost(AyStar *as, AyStarNode *current, OpenListNode *pa
 	cost += NPFSlopeCost(current);
 
 	/* Check for turns */
-	if (current->direction != NextTrackdir((Trackdir)parent->path.node.direction)) {
+	if (current->direction != NextTrackdir(parent->path.node.direction)) {
 		cost += _settings_game.pf.npf.npf_rail_curve_penalty;
 	}
 	/* TODO, with realistic acceleration, also the amount of straight track between
@@ -1321,7 +1321,7 @@ Track NPFTrainChooseTrack(const Train *v, bool &path_found, bool reserve_track, 
 
 	if (target != nullptr) {
 		target->tile = ftd.node.tile;
-		target->trackdir = (Trackdir)ftd.node.direction;
+		target->trackdir = ftd.node.direction;
 		target->okay = ftd.res_okay;
 	}
 
