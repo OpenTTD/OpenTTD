@@ -66,7 +66,7 @@ void AIInstance::Died()
 
 	ShowScriptDebugWindow(_current_company);
 
-	const AIInfo *info = AIConfig::GetConfig(_current_company, AIConfig::SSS_FORCE_GAME)->GetInfo();
+	const AIInfo *info = AIConfig::GetConfig(_current_company)->GetInfo();
 	if (info != nullptr) {
 		ShowErrorMessage(STR_ERROR_AI_PLEASE_REPORT_CRASH, INVALID_STRING_ID, WL_WARNING);
 

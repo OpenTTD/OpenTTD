@@ -20,6 +20,7 @@
 #include "network/network_base.h"
 #include "network/network_admin.h"
 #include "ai/ai.hpp"
+#include "ai/ai_config.hpp"
 #include "company_manager_face.h"
 #include "window_func.h"
 #include "strings_func.h"

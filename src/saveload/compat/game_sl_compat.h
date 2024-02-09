@@ -17,7 +17,7 @@ const SaveLoadCompat _game_script_sl_compat[] = {
 	SLC_VAR("name"),
 	SLC_VAR("settings"),
 	SLC_VAR("version"),
-	SLC_VAR("is_random"),
+	SLC_NULL(1, SL_MIN_VERSION, SLV_AI_LOCAL_CONFIG),
 };
 
 /** Original field order for SlGameLanguageString. */

@@ -8,6 +8,7 @@
 /** @file ai_config.cpp Implementation of AIConfig. */
 
 #include "../stdafx.h"
+#include "../company_base.h"
 #include "../settings_type.h"
 #include "../string_func.h"
 #include "ai.hpp"
@@ -24,6 +25,10 @@
 	if (source == SSS_FORCE_NEWGAME || (source == SSS_DEFAULT && _game_mode == GM_MENU)) {
 		config = &_settings_newgame.ai_config[company];
 	} else {
+		if (source != SSS_FORCE_GAME) {
+			Company *c = Company::GetIfValid(company);
+			if (c != nullptr && c->ai_config != nullptr) return c->ai_config.get();
+		}
 		config = &_settings_game.ai_config[company];
 	}
 	if (*config == nullptr) *config = new AIConfig();
