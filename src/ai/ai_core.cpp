@@ -56,7 +56,7 @@
 		/* Load default data and store the name in the settings */
 		config->Change(info->GetName(), -1, false);
 	}
-	if (deviate) config->AddRandomDeviation();
+	if (deviate) config->AddRandomDeviation(company);
 	config->AnchorUnchangeableSettings();
 
 	c->ai_info = info;
