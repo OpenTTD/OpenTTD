@@ -1,3 +1,13 @@
+<!--
+Commit message:
+
+- Please use Feature / Add / Change / Fix for player-facing changes. E.g.: "Feature: My cool new feature".
+- Please use Feature / Add / Change / Fix followed by "[NewGRF]" or "[Script]" for moddable changes. E.g.: "Feature: [NewGRF] My cool new NewGRF addition".
+- Please use Codechange / Codefix for developer-facing changes. E.g.: "Codefix #1234: Validate against nullptr properly".
+
+See https://github.com/OpenTTD/OpenTTD/blob/master/CODINGSTYLE.md#commit-message for more details.
+-->
+
 ## Motivation / Problem
 
 <!--
