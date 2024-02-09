@@ -263,8 +263,7 @@ const Sprite *CoreTextFontCache::InternalGetGlyph(GlyphID key, bool use_aa)
 		CGContextSetAllowsFontSubpixelQuantization(context.get(), !use_aa);
 		CGContextSetShouldSmoothFonts(context.get(), false);
 
-		float offset = 0.5f; // CoreText uses 0.5 as pixel centers. We want pixel alignment.
-		CGPoint pos{offset - bounds.origin.x, offset - bounds.origin.y};
+		CGPoint pos{-bounds.origin.x, -bounds.origin.y};
 		CTFontDrawGlyphs(this->font.get(), &glyph, &pos, 1, context.get());
 
 		/* Draw shadow for medium size. */
