@@ -172,20 +172,28 @@ public:
 		return 'w';
 	}
 
+	/** Returns a random trackdir that can be reached from the current tile/trackdir, or INVALID_TRACK if none is available. */
+	static Trackdir GetRandomFollowUpTrackdir(const Ship *v, TileIndex tile, Trackdir dir, bool include_90_degree_turns)
+	{
+		TrackFollower follower(v);
+		if (follower.Follow(tile, dir)) {
+			tile = follower.m_new_tile;
+			TrackdirBits dirs = follower.m_new_td_bits;
+			if (!include_90_degree_turns) dirs &= ~TrackdirCrossesTrackdirs(dir);
+			const int strip_amount = _random.Next(CountBits(dirs));
+			for (int s = 0; s < strip_amount; ++s) RemoveFirstTrackdir(&dirs);
+			return FindFirstTrackdir(dirs);
+		}
+		return INVALID_TRACKDIR;
+	}
+
 	/** Creates a random path, avoids 90 degree turns. */
 	static Trackdir CreateRandomPath(const Ship *v, TileIndex tile, Trackdir dir, ShipPathCache &path_cache, int path_length)
 	{
 		for (int i = 0; i < path_length; ++i) {
-			TrackFollower F(v);
-			if (F.Follow(tile, dir)) {
-				tile = F.m_new_tile;
-				TrackdirBits dirs = F.m_new_td_bits & ~TrackdirCrossesTrackdirs(dir);
-				const int strip_amount = _random.Next(CountBits(dirs));
-				for (int s = 0; s < strip_amount; ++s) RemoveFirstTrackdir(&dirs);
-				dir = FindFirstTrackdir(dirs);
-				if (dir == INVALID_TRACKDIR) break;
-				path_cache.push_back(dir);
-			}
+			const Trackdir random_dir = GetRandomFollowUpTrackdir(v, tile, dir, false);
+			if (random_dir == INVALID_TRACKDIR) break;
+			path_cache.push_back(random_dir);
 		}
 
 		if (path_cache.empty()) return INVALID_TRACKDIR;
@@ -210,12 +218,12 @@ public:
 		}
 
 		/* Move back to the old tile/trackdir (where ship is coming from). */
-		TileIndex src_tile = TileAddByDiagDir(tile, ReverseDiagDir(enterdir));
-		Trackdir trackdir = v->GetVehicleTrackdir();
+		const TileIndex src_tile = TileAddByDiagDir(tile, ReverseDiagDir(enterdir));
+		const Trackdir trackdir = v->GetVehicleTrackdir();
 		assert(IsValidTrackdir(trackdir));
 
 		/* Convert origin trackdir to TrackdirBits. */
-		TrackdirBits trackdirs = TrackdirToTrackdirBits(trackdir);
+		const TrackdirBits trackdirs = TrackdirToTrackdirBits(trackdir);
 
 		const std::vector<WaterRegionPatchDesc> high_level_path = YapfShipFindWaterRegionPath(v, tile, NUMBER_OR_WATER_REGIONS_LOOKAHEAD + 1);
 		if (high_level_path.empty()) {
@@ -244,7 +252,7 @@ public:
 			path_found = pf.FindPath(v);
 			Node *node = pf.GetBestNode();
 			if (attempt == 0 && !path_found) continue; // Try again with restricted search area.
-			if (!path_found || !node) return INVALID_TRACKDIR;
+			if (!path_found || node == nullptr) GetRandomFollowUpTrackdir(v, src_tile, trackdir, true);
 
 			/* Return only the path within the current water region if an intermediate destination was returned. If not, cache the entire path
 			 * to the final destination tile. The low-level pathfinder might actually prefer a different docking tile in a nearby region. Without
