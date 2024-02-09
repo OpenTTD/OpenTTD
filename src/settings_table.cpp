@@ -17,6 +17,7 @@
 #include "network/network_func.h"
 #include "network/core/config.h"
 #include "pathfinder/pathfinder_type.h"
+#include "linkgraph/linkgraphschedule.h"
 #include "genworld.h"
 #include "train.h"
 #include "news_func.h"
@@ -541,6 +542,29 @@ static void ChangeTimekeepingUnits(int32_t)
 	}
 
 	InvalidateWindowClassesData(WC_GAME_OPTIONS, 0);
+
+	/* It is possible to change these units in Scenario Editor. We must set the economy date appropriately. */
+	if (_game_mode == GM_EDITOR) {
+		TimerGameEconomy::Date new_economy_date;
+		TimerGameEconomy::DateFract new_economy_date_fract;
+
+		if (TimerGameEconomy::UsingWallclockUnits()) {
+			/* If the new mode is wallclock units, set the economy year back to 1. */
+			new_economy_date = TimerGameEconomy::ConvertYMDToDate(1, 0, 1);
+			new_economy_date_fract = 0;
+		} else {
+			/* If the new mode is calendar units, sync the economy year with the calendar year. */
+			new_economy_date = TimerGameCalendar::date.base();
+			new_economy_date_fract = TimerGameCalendar::date_fract;
+		}
+
+		/* If you open a savegame as a scenario, there may already be link graphs and/or vehicles. These use economy date. */
+		LinkGraphSchedule::instance.ShiftDates(new_economy_date - TimerGameEconomy::date);
+		for (auto v : Vehicle::Iterate()) v->ShiftDates(new_economy_date - TimerGameEconomy::date);
+
+		/* Only change the date after changing cached values above. */
+		TimerGameEconomy::SetDate(new_economy_date, new_economy_date_fract);
+	}
 }
 
 /**
