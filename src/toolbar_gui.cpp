@@ -1378,7 +1378,8 @@ public:
 				child_wid->current_x = child_wid->smallest_x;
 			}
 		}
-		_toolbar_width = nbuttons * this->smallest_x;
+		nbuttons--; // Exclude the switcher button which is not displayed when the toolbar fits the screen.
+		_toolbar_width = nbuttons * this->smallest_x + this->spacers * this->smallest_x / 2;
 	}
 
 	void AssignSizePosition(SizingType sizing, int x, int y, uint given_width, uint given_height, bool rtl) override
