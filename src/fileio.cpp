@@ -700,7 +700,10 @@ bool ExtractTar(const std::string &tar_filename, Subdirectory subdir)
 	for (auto &it2 : _tar_filelist[subdir]) {
 		if (tar_filename != it2.second.tar_filename) continue;
 
-		filename.replace(p + 1, std::string::npos, it2.first);
+		/* it2.first is tarball + PATHSEPCHAR + name. */
+		std::string_view name = it2.first;
+		name.remove_prefix(name.find_first_of(PATHSEPCHAR) + 1);
+		filename.replace(p + 1, std::string::npos, name);
 
 		Debug(misc, 9, "  extracting {}", filename);
 
