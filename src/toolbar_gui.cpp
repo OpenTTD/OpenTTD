@@ -1414,7 +1414,13 @@ public:
 				child_wid->current_x = child_wid->smallest_x;
 			}
 		}
-		_toolbar_width = nbuttons * this->smallest_x;
+
+		/* Exclude the switcher button which is not displayed when the toolbar fits the screen. When the switch is
+		 * displayed there will be no spacers anyway. */
+		--nbuttons;
+
+		/* Allow space for all buttons, and include spacers at quarter the width of buttons. */
+		_toolbar_width = nbuttons * this->smallest_x + this->spacers * this->smallest_x / 4;
 	}
 
 	void AssignSizePosition(SizingType sizing, int x, int y, uint given_width, uint given_height, bool rtl) override
