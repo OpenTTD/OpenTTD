@@ -289,7 +289,7 @@ STR_TOOLTIP_RESIZE                                              :{BLACK}Napsauta
 STR_TOOLTIP_TOGGLE_LARGE_SMALL_WINDOW                           :{BLACK}Suurenna/pienennä ikkuna
 STR_TOOLTIP_VSCROLL_BAR_SCROLLS_LIST                            :{BLACK}Vierityspalkki – luettelon vieritys ylös/alas
 STR_TOOLTIP_HSCROLL_BAR_SCROLLS_LIST                            :{BLACK}Vierityspalkki – luettelon vieritys vasemmalle/oikealle
-STR_TOOLTIP_DEMOLISH_BUILDINGS_ETC                              :{BLACK}Tuhoa rakennuksia jne. ruudulta. Ctrl valitsee alueen vinottain. Shift vaihtaa tuhoamistilan ja kustannusarvion välillä
+STR_TOOLTIP_DEMOLISH_BUILDINGS_ETC                              :{BLACK}Tuhoa rakennuksia jne. ruudulta. Ctrl+napsautus+veto valitsee alueen vinottain. Paina lisäksi vaihtonäppäintä näyttääksesi vain kustannusarvion
 
 # Show engines button
 ###length VEHICLE_TYPES
@@ -1307,7 +1307,7 @@ STR_CONFIG_SETTING_CONSTRUCTION_COSTS                           :Rakennuskustann
 STR_CONFIG_SETTING_CONSTRUCTION_COSTS_HELPTEXT                  :Määritä rakennus- ja ostokustannusten taso
 
 STR_CONFIG_SETTING_RECESSIONS                                   :Lamat: {STRING}
-STR_CONFIG_SETTING_RECESSIONS_HELPTEXT                          :Mikäli käytössä, muutaman vuoden välein saattaa ilmaantua taloudellinen lama. Laman aikana kaikki tuotanto on huomattavasti alhaisempaa (palautuu normaalille tasolle laman päätyttyä)
+STR_CONFIG_SETTING_RECESSIONS_HELPTEXT                          :Mikäli käytössä, taloudellinen lama voi ilmaantua ajoittain. Laman aikana kaikki tuotanto on huomattavasti alhaisempaa (palautuu normaalille tasolle laman päätyttyä)
 
 STR_CONFIG_SETTING_TRAIN_REVERSING                              :Estä junien kääntyminen asemilla: {STRING}
 STR_CONFIG_SETTING_TRAIN_REVERSING_HELPTEXT                     :Mikäli käytössä, junat eivät käänny läpiajettavilla asemilla vaikka kääntymisen jälkeen saatavilla olisi lyhempi reitti
@@ -2206,7 +2206,7 @@ STR_INTRO_TOOLTIP_GAME_OPTIONS                                  :{BLACK}Avaa pel
 STR_INTRO_TOOLTIP_HIGHSCORE                                     :{BLACK}Avaa pistetaulukko
 STR_INTRO_TOOLTIP_HELP                                          :{BLACK}Tutustu dokumentaatioon ja online-resursseihin
 STR_INTRO_TOOLTIP_CONFIG_SETTINGS_TREE                          :{BLACK}Avaa asetukset
-STR_INTRO_TOOLTIP_NEWGRF_SETTINGS                               :{BLACK}Näytä NewGRF-asetukset
+STR_INTRO_TOOLTIP_NEWGRF_SETTINGS                               :{BLACK}Avaa NewGRF-asetukset
 STR_INTRO_TOOLTIP_ONLINE_CONTENT                                :{BLACK}Tarkista uutta ja päivitettyä sisältöä ladattavaksi
 STR_INTRO_TOOLTIP_AI_SETTINGS                                   :{BLACK}Avaa tekoälyasetukset
 STR_INTRO_TOOLTIP_GAMESCRIPT_SETTINGS                           :{BLACK}Avaa peliskriptiasetukset
@@ -3744,6 +3744,9 @@ STR_STATION_LIST_STATION                                        :{YELLOW}{STATIO
 STR_STATION_LIST_WAYPOINT                                       :{YELLOW}{WAYPOINT}
 STR_STATION_LIST_NONE                                           :{YELLOW}- Ei mitään -
 STR_STATION_LIST_SELECT_ALL_FACILITIES                          :{BLACK}Valitse kaikki laitteet
+STR_STATION_LIST_CARGO_FILTER_ALL_AND_NO_RATING                 :Kaikki rahtityypit, ei arviota
+STR_STATION_LIST_CARGO_FILTER_NO_CARGO_TYPES                    :Ei rahtityyppejä
+STR_STATION_LIST_CARGO_FILTER_NO_RATING                         :Ei rahtiluokitusta
 
 # Station view window
 STR_STATION_VIEW_CAPTION                                        :{WHITE}{STATION} {STATION_FEATURES}

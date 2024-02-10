@@ -290,7 +290,7 @@ STR_TOOLTIP_RESIZE                                              :{BLACK}Clica i 
 STR_TOOLTIP_TOGGLE_LARGE_SMALL_WINDOW                           :{BLACK}Commuta entre la mida gran i petita de la finestra
 STR_TOOLTIP_VSCROLL_BAR_SCROLLS_LIST                            :{BLACK}Barra de desplaçament: desplaça la llista amunt/avall.
 STR_TOOLTIP_HSCROLL_BAR_SCROLLS_LIST                            :{BLACK}Barra de desplaçament: desplaça la llista lateralment.
-STR_TOOLTIP_DEMOLISH_BUILDINGS_ETC                              :{BLACK}Neteja les caselles seleccionades (enderroca edificis, tala arbres...). Per seleccionar l'àrea en diagonal, cliqueu Ctrl. Shift commuta construir/mostrar el cost estimat.
+STR_TOOLTIP_DEMOLISH_BUILDINGS_ETC                              :{BLACK}Neteja les caselles seleccionades (enderroca edificis, tala arbres...). Amb Ctrl+clic+arrossega, es seleccionarà l'àrea en diagonal. Amb Maj, només es mostrarà el cost estimat de l'acció.
 
 # Show engines button
 ###length VEHICLE_TYPES
@@ -384,32 +384,32 @@ STR_TOOLBAR_TOOLTIP_PAUSE_GAME                                  :{BLACK}Posa en 
 STR_TOOLBAR_TOOLTIP_FORWARD                                     :{BLACK}Avança la partida el més ràpid possible
 STR_TOOLBAR_TOOLTIP_OPTIONS                                     :{BLACK}Opcions i configuració
 STR_TOOLBAR_TOOLTIP_SAVE_GAME_ABANDON_GAME                      :{BLACK}Desa o carrega una partida, abandona-la o surt del programa.
-STR_TOOLBAR_TOOLTIP_DISPLAY_MAP                                 :{BLACK}Mostra el mapa, vistes addicionals, la llista de senyals o el flux de càrrega.
-STR_TOOLBAR_TOOLTIP_DISPLAY_TOWN_DIRECTORY                      :{BLACK}Mostra la llista de poblacions
-STR_TOOLBAR_TOOLTIP_DISPLAY_SUBSIDIES                           :{BLACK}Mostra les subvencions
-STR_TOOLBAR_TOOLTIP_DISPLAY_LIST_OF_COMPANY_STATIONS            :{BLACK}Mostra la llista d'estacions de la companyia
-STR_TOOLBAR_TOOLTIP_DISPLAY_COMPANY_FINANCES                    :{BLACK}Mostra la informació financera de la companyia
-STR_TOOLBAR_TOOLTIP_DISPLAY_COMPANY_GENERAL                     :{BLACK}Mostra la informació general de la companyia
-STR_TOOLBAR_TOOLTIP_DISPLAY_STORY_BOOK                          :{BLACK}Mostra el llibre de partida
-STR_TOOLBAR_TOOLTIP_DISPLAY_GOALS_LIST                          :{BLACK}Mostra la llista d'objectius
-STR_TOOLBAR_TOOLTIP_DISPLAY_GRAPHS                              :{BLACK}Mostra gràfics de l'evolució de les companyies i les tarifes de transport.
-STR_TOOLBAR_TOOLTIP_DISPLAY_COMPANY_LEAGUE                      :{BLACK}Mostra la taula de la lliga de companyies.
-STR_TOOLBAR_TOOLTIP_FUND_CONSTRUCTION_OF_NEW                    :{BLACK}Examina les indústries o finança la construcció d'una indústria nova.
-STR_TOOLBAR_TOOLTIP_DISPLAY_LIST_OF_COMPANY_TRAINS              :{BLACK}Mostra la llista de trens de la companyia. Ctrl+Clic commuta l'obertura de la llista de grups/vehicles.
-STR_TOOLBAR_TOOLTIP_DISPLAY_LIST_OF_COMPANY_ROAD_VEHICLES       :{BLACK}Mostra la llista de vehicles de la companyia. Ctrl+Clic commuta l'obertura de la llista de grups/vehicles.
-STR_TOOLBAR_TOOLTIP_DISPLAY_LIST_OF_COMPANY_SHIPS               :{BLACK}Mostra la llista de vaixells de la companyia. Ctrl+Clic canvia entre l'obertura de la llista de grups/vehicles.
-STR_TOOLBAR_TOOLTIP_DISPLAY_LIST_OF_COMPANY_AIRCRAFT            :{BLACK}Mostra la llista d'avions de la companyia. Ctrl+Clic commuta l'obertura de la llista de grups/vehicles.
-STR_TOOLBAR_TOOLTIP_ZOOM_THE_VIEW_IN                            :{BLACK}Apropar-se
-STR_TOOLBAR_TOOLTIP_ZOOM_THE_VIEW_OUT                           :{BLACK}Allunyar-se
-STR_TOOLBAR_TOOLTIP_BUILD_RAILROAD_TRACK                        :{BLACK}Construeix vies
-STR_TOOLBAR_TOOLTIP_BUILD_ROADS                                 :{BLACK}Construeix carreteres
-STR_TOOLBAR_TOOLTIP_BUILD_TRAMWAYS                              :{BLACK}Construeix vies de tramvia
-STR_TOOLBAR_TOOLTIP_BUILD_SHIP_DOCKS                            :{BLACK}Construeix ports
+STR_TOOLBAR_TOOLTIP_DISPLAY_MAP                                 :{BLACK}Obre les finestres del mapa, de vistes addicionals, de la llista de senyals o del flux de càrrega.
+STR_TOOLBAR_TOOLTIP_DISPLAY_TOWN_DIRECTORY                      :{BLACK}Obre les finestres amb la llista de poblacions o de fundació de noves poblacions.
+STR_TOOLBAR_TOOLTIP_DISPLAY_SUBSIDIES                           :{BLACK}Obre la llista de subvencions.
+STR_TOOLBAR_TOOLTIP_DISPLAY_LIST_OF_COMPANY_STATIONS            :{BLACK}Obre una finestra amb la llista d'estacions de la companyia.
+STR_TOOLBAR_TOOLTIP_DISPLAY_COMPANY_FINANCES                    :{BLACK}Obre la finestra de la informació financera de la companyia.
+STR_TOOLBAR_TOOLTIP_DISPLAY_COMPANY_GENERAL                     :{BLACK}Obre la finestra de la informació general de la companyia.
+STR_TOOLBAR_TOOLTIP_DISPLAY_STORY_BOOK                          :{BLACK}Obre el llibre de partida.
+STR_TOOLBAR_TOOLTIP_DISPLAY_GOALS_LIST                          :{BLACK}Obre la finestra de la llista d'objectius.
+STR_TOOLBAR_TOOLTIP_DISPLAY_GRAPHS                              :{BLACK}Obre la finestra de gràfics d'evolució de les companyies i les tarifes de transport.
+STR_TOOLBAR_TOOLTIP_DISPLAY_COMPANY_LEAGUE                      :{BLACK}Obre la finestra de la taula de la lliga de companyies.
+STR_TOOLBAR_TOOLTIP_FUND_CONSTRUCTION_OF_NEW                    :{BLACK}Obre les finestres de llistes d'indústries, de cadenes industrials o de fundació de noves indústries.
+STR_TOOLBAR_TOOLTIP_DISPLAY_LIST_OF_COMPANY_TRAINS              :{BLACK}Obre una finestra amb la llista de trens de la companyia. Amb Ctrl+clic, es mostren o no els grups de vehicles, al contrari segons l'opció de configuració relacionada.
+STR_TOOLBAR_TOOLTIP_DISPLAY_LIST_OF_COMPANY_ROAD_VEHICLES       :{BLACK}Obre una finestra amb la llista de vehicles de carretera de la companyia. Amb Ctrl+clic, es mostren o no els grups de vehicles, al contrari segons l'opció de configuració relacionada.
+STR_TOOLBAR_TOOLTIP_DISPLAY_LIST_OF_COMPANY_SHIPS               :{BLACK}Obre una finestra amb la llista de vaixells de la companyia. Amb Ctrl+clic, es mostren o no els grups de vehicles, al contrari segons l'opció de configuració relacionada.
+STR_TOOLBAR_TOOLTIP_DISPLAY_LIST_OF_COMPANY_AIRCRAFT            :{BLACK}Obre una finestra amb la llista d'avions de la companyia. Amb Ctrl+clic, es mostren o no els grups de vehicles, al contrari segons l'opció de configuració relacionada.
+STR_TOOLBAR_TOOLTIP_ZOOM_THE_VIEW_IN                            :{BLACK}Apropa la vista.
+STR_TOOLBAR_TOOLTIP_ZOOM_THE_VIEW_OUT                           :{BLACK}Allunya la vista.
+STR_TOOLBAR_TOOLTIP_BUILD_RAILROAD_TRACK                        :{BLACK}Construeix infraestructures ferroviàries.
+STR_TOOLBAR_TOOLTIP_BUILD_ROADS                                 :{BLACK}Construeix carreteres i infraestructures relacionades.
+STR_TOOLBAR_TOOLTIP_BUILD_TRAMWAYS                              :{BLACK}Construeix vies de tramvia i infraestructures relacionades.
+STR_TOOLBAR_TOOLTIP_BUILD_SHIP_DOCKS                            :{BLACK}Construeix ports i infraestructures relacionades.
 STR_TOOLBAR_TOOLTIP_BUILD_AIRPORTS                              :{BLACK}Construeix aeroports
-STR_TOOLBAR_TOOLTIP_LANDSCAPING                                 :{BLACK}Obre la barra d'eines del terreny per elevar/rebaixar el terreny, plantar arbres, etc.
-STR_TOOLBAR_TOOLTIP_SHOW_SOUND_MUSIC_WINDOW                     :{BLACK}Mostra la finestra de so/música
-STR_TOOLBAR_TOOLTIP_SHOW_LAST_MESSAGE_NEWS                      :{BLACK}Mostra els darrers missatges/notícies i l'historial disponible o esborra tots els missatges.
-STR_TOOLBAR_TOOLTIP_LAND_BLOCK_INFORMATION                      :{BLACK}Informació de terreny, captures de pantalla i informació sobre l'OpenTTD i eines de desenvolupament.
+STR_TOOLBAR_TOOLTIP_LANDSCAPING                                 :{BLACK}Obre les finestres de modificació del terreny, de plantació d'arbres o de situar marques al mapa.
+STR_TOOLBAR_TOOLTIP_SHOW_SOUND_MUSIC_WINDOW                     :{BLACK}Obre la finestra de so/música.
+STR_TOOLBAR_TOOLTIP_SHOW_LAST_MESSAGE_NEWS                      :{BLACK}Obre les finestres dels darrers missatges/notícies i l'historial disponible o esborra tots els missatges.
+STR_TOOLBAR_TOOLTIP_LAND_BLOCK_INFORMATION                      :{BLACK}Obre les finestres d'informació de terreny, captures de pantalla, informació sobre l'OpenTTD i les eines de desenvolupament.
 STR_TOOLBAR_TOOLTIP_SWITCH_TOOLBAR                              :{BLACK}Commuta barres d'eines
 
 # Extra tooltips for the scenario editor toolbar
@@ -419,15 +419,15 @@ STR_SCENEDIT_TOOLBAR_SCENARIO_EDITOR                            :{YELLOW}Editor 
 STR_SCENEDIT_TOOLBAR_TOOLTIP_MOVE_THE_STARTING_DATE_BACKWARD    :{BLACK}Retarda la data d'inici 1 any
 STR_SCENEDIT_TOOLBAR_TOOLTIP_MOVE_THE_STARTING_DATE_FORWARD     :{BLACK}Avança la data d'inici 1 any
 STR_SCENEDIT_TOOLBAR_TOOLTIP_SET_DATE                           :{BLACK}Clica per introduir l'any d'inici
-STR_SCENEDIT_TOOLBAR_TOOLTIP_DISPLAY_MAP_TOWN_DIRECTORY         :{BLACK}Mostra el mapa o el llistat de poblacions
-STR_SCENEDIT_TOOLBAR_LANDSCAPE_GENERATION                       :{BLACK}Generació del terreny
-STR_SCENEDIT_TOOLBAR_TOWN_GENERATION                            :{BLACK}Generació de poblacions
-STR_SCENEDIT_TOOLBAR_INDUSTRY_GENERATION                        :{BLACK}Generació d'indústries
-STR_SCENEDIT_TOOLBAR_ROAD_CONSTRUCTION                          :{BLACK}Construcció de carreteres
-STR_SCENEDIT_TOOLBAR_TRAM_CONSTRUCTION                          :{BLACK}Construcció de vies de tramvia
-STR_SCENEDIT_TOOLBAR_PLANT_TREES                                :{BLACK}Planta arbres. Amb Ctrl, es selecciona una àrea diagonal. Amb Maj, no es realitza l'acció però es mostra el seu cost estimat.
+STR_SCENEDIT_TOOLBAR_TOOLTIP_DISPLAY_MAP_TOWN_DIRECTORY         :{BLACK}Obre el mapa, vistes addicionals, llista de signes o el llistat de poblacions i indústries.
+STR_SCENEDIT_TOOLBAR_LANDSCAPE_GENERATION                       :{BLACK}Obre el menú de terreny/generació d'un món nou.
+STR_SCENEDIT_TOOLBAR_TOWN_GENERATION                            :{BLACK}Construcció i generació de poblacions
+STR_SCENEDIT_TOOLBAR_INDUSTRY_GENERATION                        :{BLACK}Construcció i generació d'indústries
+STR_SCENEDIT_TOOLBAR_ROAD_CONSTRUCTION                          :{BLACK}Infraestructura de carreteres
+STR_SCENEDIT_TOOLBAR_TRAM_CONSTRUCTION                          :{BLACK}Construcció de vies de tramvia i infraestructures relacionades
+STR_SCENEDIT_TOOLBAR_PLANT_TREES                                :{BLACK}Planta arbres. Amb Ctrl, se selecciona una àrea diagonal. Amb Maj, només es mostrarà el cost estimat de plantar els arbres.
 STR_SCENEDIT_TOOLBAR_PLACE_SIGN                                 :{BLACK}Situa un senyal
-STR_SCENEDIT_TOOLBAR_PLACE_OBJECT                               :{BLACK}Crea un objecte. Amb Ctrl, es selecciona una àrea diagonal. Amb Maj, es commuta entre construir o mostrar el cost estimat.
+STR_SCENEDIT_TOOLBAR_PLACE_OBJECT                               :{BLACK}Construeix un objecte al mapa. Amb Ctrl+clic+arrossega, se selecciona una àrea diagonal. Si premeu Maj, es mostrarà només el cost estimat.
 
 # Scenario editor file menu
 ###length 7
@@ -666,6 +666,8 @@ STR_PERFORMANCE_DETAIL_LOAN                                     :{BLACK}Préstec
 STR_PERFORMANCE_DETAIL_TOTAL                                    :{BLACK}Total:
 ###next-name-looks-similar
 
+STR_PERFORMANCE_DETAIL_VEHICLES_TOOLTIP_YEARS                   :{BLACK}Nombre de vehicles que van obtenir beneficis l'any passat. Inclou vehicles de carretera, trens, vaixells i aeronaus.
+STR_PERFORMANCE_DETAIL_VEHICLES_TOOLTIP_PERIODS                 :{BLACK}Nombre de vehicles que van obtenir beneficis durant l'últim període. Inclou vehicles de carretera, trens, vaixells i aeronaus.
 STR_PERFORMANCE_DETAIL_STATIONS_TOOLTIP                         :{BLACK}Nombre d'estacions visitades recentment per algun vehicle. Estacions, parades d'autobús, aeroports, etc. es compten per separat, fins i tot si pertanyen a la mateixa estació.
 STR_PERFORMANCE_DETAIL_MIN_PROFIT_TOOLTIP_YEARS                 :{BLACK}El benefici del vehicle que pitjors ingressos ha tingut (només es tenen en compte els vehicles amb més de dos anys de servei).
 STR_PERFORMANCE_DETAIL_MIN_PROFIT_TOOLTIP_PERIODS               :{BLACK}El benefici del vehicle que pitjors ingressos ha tingut (només es tenen en compte els vehicles amb més de dos períodes de servei).
@@ -930,6 +932,7 @@ STR_NEWS_ROAD_REBUILDING_MONTHS                                 :{BIG_FONT}{BLAC
 STR_NEWS_ROAD_REBUILDING_MINUTES                                :{BIG_FONT}{BLACK}Trànsit caòtic a {TOWN}!{}{}El programa de millora de carrers pagat per {STRING} provoca 6 minuts de misèria als motoristes!
 STR_NEWS_EXCLUSIVE_RIGHTS_TITLE                                 :{BIG_FONT}{BLACK}Monopoli de transports
 STR_NEWS_EXCLUSIVE_RIGHTS_DESCRIPTION_MONTHS                    :{BIG_FONT}{BLACK}Les autoritats locals de {TOWN} signen un contracte amb {STRING} per a obtenir 12 mesos de drets de transport exclusius!
+STR_NEWS_EXCLUSIVE_RIGHTS_DESCRIPTION_MINUTES                   :{BIG_FONT}{BLACK}Les autoritats locals de {TOWN} signen un contracte amb {STRING} per a obtenir 12 minuts de drets de transport exclusius!
 
 # Extra view window
 STR_EXTRA_VIEWPORT_TITLE                                        :{WHITE}Vista {COMMA}
@@ -1043,7 +1046,7 @@ STR_GAME_OPTIONS_VIDEO_VSYNC_TOOLTIP                            :{BLACK}Seleccio
 STR_GAME_OPTIONS_VIDEO_DRIVER_INFO                              :{BLACK}Controlador actual: {STRING}
 
 STR_GAME_OPTIONS_GUI_SCALE_FRAME                                :{BLACK}Mida de la interfície
-STR_GAME_OPTIONS_GUI_SCALE_TOOLTIP                              :{BLACK}Arrossegueu el botó lliscant per a triar la mida de la interfície. Mantingueu premut Ctrl per a un ajustament contigu.
+STR_GAME_OPTIONS_GUI_SCALE_TOOLTIP                              :{BLACK}Arrossegueu el botó lliscant per a triar la mida de la interfície. Amb Ctrl+arrossega, s'aplica un ajust continu.
 STR_GAME_OPTIONS_GUI_SCALE_AUTO                                 :{BLACK}Detecta la mida automàticament
 STR_GAME_OPTIONS_GUI_SCALE_AUTO_TOOLTIP                         :{BLACK}Marqueu aquesta opció si voleu que s'ajusti la mida de la interfície automàticament.
 
@@ -1063,7 +1066,7 @@ STR_GAME_OPTIONS_GUI_SCALE_5X                                   :x5
 
 STR_GAME_OPTIONS_PARTICIPATE_SURVEY_FRAME                       :{BLACK}Sondeig automatitzat
 STR_GAME_OPTIONS_PARTICIPATE_SURVEY                             :{BLACK}Participa al sondeig automatitzat
-STR_GAME_OPTIONS_PARTICIPATE_SURVEY_TOOLTIP                     :{BLACK}Quan s'activa, l'OpenTTD transmetrà dades sobre l'ús del joc del sondeig quan es surti d'una partida.
+STR_GAME_OPTIONS_PARTICIPATE_SURVEY_TOOLTIP                     :{BLACK}Quan s'activa, l'OpenTTD transmetrà dades sobre l'ús del joc del sondeig quan se surti d'una partida.
 STR_GAME_OPTIONS_PARTICIPATE_SURVEY_LINK                        :{BLACK}Sobre el sondeig i la privacitat
 STR_GAME_OPTIONS_PARTICIPATE_SURVEY_LINK_TOOLTIP                :{BLACK}Obre una pàgina amb més informació sobre el sondeig automatitzat.
 STR_GAME_OPTIONS_PARTICIPATE_SURVEY_PREVIEW                     :{BLACK}Vista prèvia del resultat del sondeig
@@ -1305,7 +1308,7 @@ STR_CONFIG_SETTING_CONSTRUCTION_COSTS                           :Costos de const
 STR_CONFIG_SETTING_CONSTRUCTION_COSTS_HELPTEXT                  :Fixa el nivell de construcció i els preus de compra
 
 STR_CONFIG_SETTING_RECESSIONS                                   :Recessions: {STRING}
-STR_CONFIG_SETTING_RECESSIONS_HELPTEXT                          :Si està actiu, les recessions poden passar cada pocs anys. Durant una recessió, tota la producció és significativament baixa, tornant al nivell previ quan la recessió s'acabi.
+STR_CONFIG_SETTING_RECESSIONS_HELPTEXT                          :Si està activat, poden haver recessions periòdicament. Durant una recessió, tota la producció és significativament més baixa, tornant al nivell previ quan s'acabi el període de recessió.
 
 STR_CONFIG_SETTING_TRAIN_REVERSING                              :No permetis que els trens canviïn de sentit a les estacions: {STRING}
 STR_CONFIG_SETTING_TRAIN_REVERSING_HELPTEXT                     :Si està actiu, els trens no canviaran de sentit a les estacions no-finals, inclús si hi ha un camí més curt al seu proper destí en cas de canviar de sentit.
@@ -1359,7 +1362,7 @@ STR_CONFIG_SETTING_FORBID_90_DEG                                :Prohibeix fer g
 STR_CONFIG_SETTING_FORBID_90_DEG_HELPTEXT                       :Els girs de 90 graus succeeixen quan hi ha una via horitzontal seguida d'una de vertical a la cel·la annexa, provocant que el tren giri 90 graus quan travessi la vora de la cel·la en lloc dels 45 graus usuals en les altres combinacions.
 
 STR_CONFIG_SETTING_DISTANT_JOIN_STATIONS                        :Permet ajuntar estacions no annexes: {STRING}
-STR_CONFIG_SETTING_DISTANT_JOIN_STATIONS_HELPTEXT               :Aquesta opció permet afegir parts noves a una estació existent sense estar les parts noves en contacte directe amb les existents. Cal clicar Ctrl+Clic mentre es col·loquen les parts noves.
+STR_CONFIG_SETTING_DISTANT_JOIN_STATIONS_HELPTEXT               :Aquesta opció permet afegir parts noves a una estació existent sense estar les parts noves en contacte directe amb les existents. Cal fer Ctrl+clic quan es col·loquen les parts noves.
 
 STR_CONFIG_SETTING_INFLATION                                    :Inflació: {STRING}
 STR_CONFIG_SETTING_INFLATION_HELPTEXT                           :Habilita la inflació a l'economia, on l'augment dels costos són una mica més ràpids que els dels pagaments.
@@ -1399,6 +1402,7 @@ STR_CONFIG_SETTING_SHOWFINANCES_PERIOD                          :Mostra la fines
 
 ###length 2
 STR_CONFIG_SETTING_SHOWFINANCES_HELPTEXT                        :Si el paràmetre està activat, la finestra de finances apareix al final de cada any per permetre una inspecció fàcil de l'estat financer de la companyia.
+STR_CONFIG_SETTING_SHOWFINANCES_HELPTEXT_PERIOD                 :Si el paràmetre està activat, la finestra de finances apareix al final de cada període per a permetre una inspecció fàcil de l'estat financer de la companyia.
 
 STR_CONFIG_SETTING_NONSTOP_BY_DEFAULT                           :«Sense parada» per defecte a les ordres noves: {STRING}
 STR_CONFIG_SETTING_NONSTOP_BY_DEFAULT_HELPTEXT                  :Normalment, un vehicle para a cada estació per la que passa. Activant aquest paràmetre, no pararà a cap estació fins arribar al seu destí. Nota: aquest paràmetre només defineix el valor predeterminat per a les noves ordres. Un cop creada una ordre, aquesta es pot establir manualment al comportament desitjat.
@@ -1425,7 +1429,8 @@ STR_CONFIG_SETTING_BRIBE_HELPTEXT_MINUTES                       :Permet que les 
 
 STR_CONFIG_SETTING_ALLOW_EXCLUSIVE                              :Permet comprar els drets del transport en exclusiva: {STRING}
 ###length 2
-STR_CONFIG_SETTING_ALLOW_EXCLUSIVE_HELPTEXT                     :Si una companyia compra els drets de transport en exclusiva d'una població, les estacions dels oponents (passatgers i càrrega) no rebran cap càrrega durant un any sencer.
+STR_CONFIG_SETTING_ALLOW_EXCLUSIVE_HELPTEXT                     :Si una companyia compra els drets de transport en exclusiva d'una població, les estacions dels oponents (passatgers i càrrega) no rebran cap càrrega durant dotze mesos.
+STR_CONFIG_SETTING_ALLOW_EXCLUSIVE_HELPTEXT_MINUTES             :Si una companyia compra els drets de transport en exclusiva d'una població, les estacions dels oponents (passatgers i càrrega) no rebran cap càrrega durant dotze minuts.
 
 STR_CONFIG_SETTING_ALLOW_FUND_BUILDINGS                         :Permet finançar edificis: {STRING}
 STR_CONFIG_SETTING_ALLOW_FUND_BUILDINGS_HELPTEXT                :Permet a les companyies donar diners a les poblacions per finançar nous edificis.
@@ -1460,7 +1465,7 @@ STR_CONFIG_SETTING_STOP_ON_COMPETITOR_ROAD_HELPTEXT             :Permet la const
 STR_CONFIG_SETTING_DYNAMIC_ENGINES_EXISTING_VEHICLES            :{WHITE}No es pot canviar aquest ajustament quan hi ha vehicles
 
 STR_CONFIG_SETTING_INFRASTRUCTURE_MAINTENANCE                   :Manteniment de la infraestructura: {STRING}
-STR_CONFIG_SETTING_INFRASTRUCTURE_MAINTENANCE_HELPTEXT          :Quan està activat, la infraestructura provoca costos de manteniment. El cost creix proporcionalment al tamany de la xarxa de transport, afectant en conseqüència més a les companyies grosses que a les petites
+STR_CONFIG_SETTING_INFRASTRUCTURE_MAINTENANCE_HELPTEXT          :Si està activat, s'han de pagar costos de manteniment per infraestructures. El cost creix proporcionalment amb la mida de la xarxa de transport i, en conseqüència, afecta més a les companyies grosses que a les petites.
 
 STR_CONFIG_SETTING_COMPANY_STARTING_COLOUR                      :Color inicial de la companyia: {STRING}
 STR_CONFIG_SETTING_COMPANY_STARTING_COLOUR_HELPTEXT             :Escolliu el color inicial de la vostra companyia.
@@ -1475,7 +1480,7 @@ STR_CONFIG_SETTING_WARN_LOST_VEHICLE                            :Avisa si el veh
 STR_CONFIG_SETTING_WARN_LOST_VEHICLE_HELPTEXT                   :Alerta amb missatges quan els vehicles no siguin capaços de trobar el camí al seu destí indicat
 
 STR_CONFIG_SETTING_ORDER_REVIEW                                 :Revisa ordres dels vehicles: {STRING}
-STR_CONFIG_SETTING_ORDER_REVIEW_HELPTEXT                        :Quan està activat, les ordres dels vehicles són verificades periòdicament, i alguns problemes evidents seran informats amb missatges de notícia quan siguin detectats
+STR_CONFIG_SETTING_ORDER_REVIEW_HELPTEXT                        :Si està activat, les ordres dels vehicles es verifiquen periòdicament i, si es detecten problemes evidents, s'informarà a través de missatges de notícia.
 ###length 3
 STR_CONFIG_SETTING_ORDER_REVIEW_OFF                             :No
 STR_CONFIG_SETTING_ORDER_REVIEW_EXDEPOT                         :Sí, excepte vehicles parats
@@ -1483,17 +1488,20 @@ STR_CONFIG_SETTING_ORDER_REVIEW_ON                              :De tots els veh
 
 STR_CONFIG_SETTING_WARN_INCOME_LESS                             :Avisa si el benefici del vehicle és negatiu: {STRING}
 ###length 2
-STR_CONFIG_SETTING_WARN_INCOME_LESS_HELPTEXT                    :Quan està activat, s'envia un missatge de notícia quan un vehicle no ha tingut beneficis durant l'any
-STR_CONFIG_SETTING_WARN_INCOME_LESS_HELPTEXT_PERIOD             :Quan està activat, s'envia un missatge de notícia quan un vehicle no ha obtingut benefici durant un període.
+STR_CONFIG_SETTING_WARN_INCOME_LESS_HELPTEXT                    :Si està activat, s'envia un missatge de notícia quan un vehicle no ha tingut beneficis durant l'any.
+STR_CONFIG_SETTING_WARN_INCOME_LESS_HELPTEXT_PERIOD             :Si està activat, s'envia un missatge de notícia quan un vehicle no ha obtingut benefici durant un període.
 
 STR_CONFIG_SETTING_NEVER_EXPIRE_VEHICLES                        :Els vehicles mai caduquen: {STRING}
-STR_CONFIG_SETTING_NEVER_EXPIRE_VEHICLES_HELPTEXT               :Quan està activat, tots els models de vehicles continuen disponibles per sempre després de la seva introducció
+STR_CONFIG_SETTING_NEVER_EXPIRE_VEHICLES_HELPTEXT               :Si està activat, tots els models de vehicles continuen disponibles per sempre després de la seva introducció.
 
+STR_CONFIG_SETTING_TIMEKEEPING_UNITS                            :Mode temporal: {STRING}
+STR_CONFIG_SETTING_TIMEKEEPING_UNITS_HELPTEXT                   :Trieu les unitats del mode temporal de la partida. Una vegada començada la partida, no es pot canviar.{}{}El mode calendari ofereix l'experiència clàssica de l'OpenTTD, on un any consisteix en 12 mesos i cada mes té entre 28 i 31 dies.{}{}Amb el mode de rellotge de paret, el moviment del vehicle, la producció de càrrega i les finances es basen en increments d'un minut, que equival més o menys a un mes d'uns 30 dies en el mode calendari.{}{}En tots els modes sempre hi ha un calendari clàssic, que es fa servir per a la data d'introducció dels vehicles, cases i altres infraestructures.
 ###length 2
 STR_CONFIG_SETTING_TIMEKEEPING_UNITS_CALENDAR                   :Calendari
 STR_CONFIG_SETTING_TIMEKEEPING_UNITS_WALLCLOCK                  :Rellotge de paret
 
 STR_CONFIG_SETTING_MINUTES_PER_YEAR                             :Minuts per any: {STRING}
+STR_CONFIG_SETTING_MINUTES_PER_YEAR_HELPTEXT                    :Trieu el nombre de minuts d'un any de calendari. Per defecte són 12 minuts. Establiu-ho a 0 per a parar el temps del calendari. Aquesta opció no afecta a la simulació econòmica de la partida i només està disponible quan es fa servir el temps amb rellotge de paret.
 
 STR_CONFIG_SETTING_MINUTES_PER_YEAR_VALUE                       :{NUM}
 ###setting-zero-is-special
@@ -1506,7 +1514,7 @@ STR_CONFIG_SETTING_INDUSTRY_CARGO_SCALE_HELPTEXT                :Escala la produ
 STR_CONFIG_SETTING_CARGO_SCALE_VALUE                            :{NUM}{NBSP}%
 
 STR_CONFIG_SETTING_AUTORENEW_VEHICLE                            :Autorenova el vehicle quan sigui vell: {STRING}
-STR_CONFIG_SETTING_AUTORENEW_VEHICLE_HELPTEXT                   :Quan està activat, un vehicle que arriba al final de la seva vida útil és automàticament substituït quan es compleixen les condicions d'autorenovació.
+STR_CONFIG_SETTING_AUTORENEW_VEHICLE_HELPTEXT                   :Si està activat, quan un vehicle arriba al final de la seva vida útil es substitueix automàticament quan es compleixen les condicions d'autorenovació.
 
 STR_CONFIG_SETTING_AUTORENEW_MONTHS                             :Autorenova el vehicle {STRING} de la seva edat màxima.
 STR_CONFIG_SETTING_AUTORENEW_MONTHS_HELPTEXT                    :Edat a partir de la qual s'ha de considerar l'autorenovació del vehicle.
@@ -1700,7 +1708,7 @@ STR_CONFIG_SETTING_DATE_FORMAT_IN_SAVE_NAMES_SHORT              :curta (31-12-20
 STR_CONFIG_SETTING_DATE_FORMAT_IN_SAVE_NAMES_ISO                :ISO (2008-12-31)
 
 STR_CONFIG_SETTING_PAUSE_ON_NEW_GAME                            :Posa en pausa automàticament quan comenci una partida nova: {STRING}
-STR_CONFIG_SETTING_PAUSE_ON_NEW_GAME_HELPTEXT                   :Quan està activat, el joc es posa en pausa automàticament quan es comenci una partida nova, permetent a l'usuari estudiar el mapa més detalladament
+STR_CONFIG_SETTING_PAUSE_ON_NEW_GAME_HELPTEXT                   :Si està activat, el joc es posa en pausa automàticament quan comenci una partida nova. Així, el jugador pot estudiar el mapa amb tranquil·litat.
 
 STR_CONFIG_SETTING_COMMAND_PAUSE_LEVEL                          :Accions permeses mentre la partida està en pausa: {STRING}
 STR_CONFIG_SETTING_COMMAND_PAUSE_LEVEL_HELPTEXT                 :Seleccioneu quines accions es poden realitzar mentre la partida està en pausa.
@@ -1824,18 +1832,18 @@ STR_CONFIG_SETTING_SERVINT_AIRCRAFT                             :Interval per de
 STR_CONFIG_SETTING_SERVINT_AIRCRAFT_HELPTEXT                    :Estableix l'interval de revisió predeterminat pels nous avions, si no hi ha un interval de revisió explícit pel vehicle
 STR_CONFIG_SETTING_SERVINT_SHIPS                                :Interval per defecte de servei per als vaixells: {STRING}
 STR_CONFIG_SETTING_SERVINT_SHIPS_HELPTEXT                       :Estableix l'interval de revisió predeterminat pels vaixells que es comprin, si no hi ha un interval de revisió explícit pel vehicle.
-STR_CONFIG_SETTING_SERVINT_VALUE                                :{COMMA}{NBSP}di{P 0 a es}/%
+STR_CONFIG_SETTING_SERVINT_VALUE                                :{COMMA}{NBSP}di{P 0 a es}/minut{P 0 "" s}%
 ###setting-zero-is-special
 STR_CONFIG_SETTING_SERVINT_DISABLED                             :Desactivat
 
 STR_CONFIG_SETTING_NOSERVICE                                    :Desactiva les revisions quan les avaries s'estableixen a cap: {STRING}
-STR_CONFIG_SETTING_NOSERVICE_HELPTEXT                           :Quan està activat, els vehicles no són revisats si no es poden espatllar
+STR_CONFIG_SETTING_NOSERVICE_HELPTEXT                           :Si està activat, els vehicles no s'envien a fer revisions si no poden patir avaries.
 
 STR_CONFIG_SETTING_STATION_LENGTH_LOADING_PENALTY               :Penalització de la velocitat de càrrega per a trens més llargs que l'estació: {STRING}
 STR_CONFIG_SETTING_STATION_LENGTH_LOADING_PENALTY_HELPTEXT      :Quan s'activa, els trens que són massa llargs per a l'estació es carreguen més a poc a poc que un tren que sí que hi cap. Aquesta opció no afecta als encaminadors; és a dir, no afecta als algoritmes que fan servir els trens per a decidir el camí per a arribar a l'estació.
 
 STR_CONFIG_SETTING_WAGONSPEEDLIMITS                             :Activa límits de velocitat per als vagons: {STRING}
-STR_CONFIG_SETTING_WAGONSPEEDLIMITS_HELPTEXT                    :Quan està activat, també utilitza els límits de velocitat dels vagons per decidir la velocitat màxima del tren
+STR_CONFIG_SETTING_WAGONSPEEDLIMITS_HELPTEXT                    :Si està activat, també utilitza els límits de velocitat dels vagons per a decidir la velocitat màxima del tren.
 
 STR_CONFIG_SETTING_DISABLE_ELRAILS                              :Desactiva vies electrificades: {STRING}
 STR_CONFIG_SETTING_DISABLE_ELRAILS_HELPTEXT                     :Activant aquest paràmetre es desactiva el requeriment d'electrificar les vies per poder fer-hi circular locomotores elèctriques
@@ -1916,7 +1924,7 @@ STR_CONFIG_SETTING_DRAG_SIGNALS_DENSITY                         :En arrossegar, 
 STR_CONFIG_SETTING_DRAG_SIGNALS_DENSITY_HELPTEXT                :Estableix la distància en les quals els senyals seran construïts a la via fins al següent obstacle (senyal, desviament), si els senyals són arrossegats
 STR_CONFIG_SETTING_DRAG_SIGNALS_DENSITY_VALUE                   :{COMMA} cel·l{P 0 a es}
 STR_CONFIG_SETTING_DRAG_SIGNALS_FIXED_DISTANCE                  :Quan arrosseguis, mantingues fixada la distància entre senyals: {STRING}
-STR_CONFIG_SETTING_DRAG_SIGNALS_FIXED_DISTANCE_HELPTEXT         :Selecciona el comportament de la situació de senyals quan Ctrl+arrossega senyals. Si es desactiva, els senyals són situats al voltant dels túnels o ponts per evitar grans trossos sense senyals. Si s'activa, els senyals són situats cada n cel·les, fent l'alineament de senyals en vies paral·leles més fàcil
+STR_CONFIG_SETTING_DRAG_SIGNALS_FIXED_DISTANCE_HELPTEXT         :Estableix el comportament de com es col·loquen els senyals quan es construeixen amb Ctrl+arrossega. Si es desactiva, els senyals es situen al voltant dels túnels o ponts per a evitar trossos llargs sense senyals. Si s'activa, els senyals es situen cada n cel·les i fa que l'alineament de senyals en vies paral·leles sigui més fàcil.
 
 STR_CONFIG_SETTING_SEMAPHORE_BUILD_BEFORE_DATE                  :Construir semàfors mecànics automàticament abans de: {STRING}
 STR_CONFIG_SETTING_SEMAPHORE_BUILD_BEFORE_DATE_HELPTEXT         :Estableix l'any per utilitzar semàfors elèctrics. Abans d'aquest any s'utilitzaran senyals mecànics (que tenen exactament la mateixa funció, però amb diferent aspecte)
@@ -2195,14 +2203,14 @@ STR_INTRO_TOOLTIP_SUB_ARCTIC_LANDSCAPE                          :{BLACK}Seleccio
 STR_INTRO_TOOLTIP_SUB_TROPICAL_LANDSCAPE                        :{BLACK}Selecciona l'estil de paisatge 'subtropical'
 STR_INTRO_TOOLTIP_TOYLAND_LANDSCAPE                             :{BLACK}Selecciona l'estil de paisatge 'toyland'
 
-STR_INTRO_TOOLTIP_GAME_OPTIONS                                  :{BLACK}Mostra les opcions del joc
-STR_INTRO_TOOLTIP_HIGHSCORE                                     :{BLACK}Mostra la taula de rècords
+STR_INTRO_TOOLTIP_GAME_OPTIONS                                  :{BLACK}Obre la finestra d'opcions de la partida.
+STR_INTRO_TOOLTIP_HIGHSCORE                                     :{BLACK}Obre la finestra de la taula de rècords.
 STR_INTRO_TOOLTIP_HELP                                          :{BLACK}Accediu a la documentació i recursos en línia.
-STR_INTRO_TOOLTIP_CONFIG_SETTINGS_TREE                          :{BLACK}Mostra la finestra de configuració
-STR_INTRO_TOOLTIP_NEWGRF_SETTINGS                               :{BLACK}Mostra la configuració de les extensions NewGRF
+STR_INTRO_TOOLTIP_CONFIG_SETTINGS_TREE                          :{BLACK}Obre la finestra de configuració.
+STR_INTRO_TOOLTIP_NEWGRF_SETTINGS                               :{BLACK}Obre la finestra de configuració de les extensions NewGRF.
 STR_INTRO_TOOLTIP_ONLINE_CONTENT                                :{BLACK}Comprova si hi ha continguts nous i actualitzats per a descarregar
-STR_INTRO_TOOLTIP_AI_SETTINGS                                   :{BLACK}Mostra les opcions d'IA
-STR_INTRO_TOOLTIP_GAMESCRIPT_SETTINGS                           :{BLACK}Mostra la configuració de l'script de partida
+STR_INTRO_TOOLTIP_AI_SETTINGS                                   :{BLACK}Obre la finestra d'opcions d'IA.
+STR_INTRO_TOOLTIP_GAMESCRIPT_SETTINGS                           :{BLACK}Obre la finestra de configuració de l'script de partida.
 STR_INTRO_TOOLTIP_QUIT                                          :{BLACK}Surt de l'OpenTTD.
 
 STR_INTRO_BASESET                                               :{WHITE}Al joc de gràfics base seleccionat li falten {NUM} sprite{P "" s}.{}Si us plau, comproveu si hi ha actualitzacions disponibles.
@@ -2258,8 +2266,8 @@ STR_LIVERY_TRAIN_GROUP_TOOLTIP                                  :{BLACK}Mostra e
 STR_LIVERY_ROAD_VEHICLE_GROUP_TOOLTIP                           :{BLACK}Mostra els colors dels grups de vehicles de carretera.
 STR_LIVERY_SHIP_GROUP_TOOLTIP                                   :{BLACK}Mostra els colors dels grups de vaixells.
 STR_LIVERY_AIRCRAFT_GROUP_TOOLTIP                               :{BLACK}Mostra els colors dels grups d'aeronaus
-STR_LIVERY_PRIMARY_TOOLTIP                                      :{BLACK}Escolleix el color primari per l'esquema triat. Ctr+Click establirà el color per a cada esquema
-STR_LIVERY_SECONDARY_TOOLTIP                                    :{BLACK}Escolleix el color secundari per l'esquema triat. Ctrl+Click establirà el color per a cada esquema
+STR_LIVERY_PRIMARY_TOOLTIP                                      :{BLACK}Escolliu el color primari de l'esquema triat. Amb Ctrl+clic, s'estableix el color a tots els esquemes.
+STR_LIVERY_SECONDARY_TOOLTIP                                    :{BLACK}Escolliu el color secundari de l'esquema triat. Amb Ctrl+clic, s'estableix el color a tots els esquemes.
 STR_LIVERY_PANEL_TOOLTIP                                        :{BLACK}Selecciona un esquema de colors per canviar-lo, o diversos esquemes amb CTRL+Clic. Clica a la casella per canviar l'esquema
 STR_LIVERY_TRAIN_GROUP_EMPTY                                    :No hi ha grups de trens establerts
 STR_LIVERY_ROAD_VEHICLE_GROUP_EMPTY                             :No hi ha grups de vehicles de carretera establerts
@@ -2744,6 +2752,8 @@ STR_LINKGRAPH_LEGEND_SATURATED                                  :{G=Masculin}{TI
 STR_LINKGRAPH_LEGEND_OVERLOADED                                 :{G=Masculin}{TINY_FONT}{BLACK}sobrecarregat
 
 # Linkgraph tooltip
+STR_LINKGRAPH_STATS_TOOLTIP_MONTH                               :{BLACK}{CARGO_LONG} a transportar per mes de {STATION} a {STATION} ({COMMA}{NBSP}% de capacitat){STRING}.
+STR_LINKGRAPH_STATS_TOOLTIP_MINUTE                              :{BLACK}{CARGO_LONG} a transportar per minut de {STATION} a {STATION} ({COMMA}{NBSP}% de capacitat){STRING}.
 STR_LINKGRAPH_STATS_TOOLTIP_RETURN_EXTENSION                    :{}{CARGO_LONG} per a transportar de tornada ({COMMA}{NBSP}% de capacitat)
 STR_LINKGRAPH_STATS_TOOLTIP_TIME_EXTENSION                      :{}Temps de viatge mitjà: {UNITS_DAYS_OR_SECONDS}
 
@@ -2774,16 +2784,16 @@ STR_RAIL_TOOLBAR_ELRAIL_CONSTRUCTION_CAPTION                    :Construcció de
 STR_RAIL_TOOLBAR_MONORAIL_CONSTRUCTION_CAPTION                  :Construcció de monorail
 STR_RAIL_TOOLBAR_MAGLEV_CONSTRUCTION_CAPTION                    :Construcció de maglev
 
-STR_RAIL_TOOLBAR_TOOLTIP_BUILD_RAILROAD_TRACK                   :{BLACK}Construeix vies de tren. Ctrl canvia entre contrueix/treu la construcció de vies. Shift commuta construeix/mostra el cost estimat
-STR_RAIL_TOOLBAR_TOOLTIP_BUILD_AUTORAIL                         :{BLACK}Construeix vies de tren utilitzant el mode Autorail. Ctrl canvia entre construeix/treu la construcció de vies de tren. Shift commuta construeix/mostra el cost estimat
-STR_RAIL_TOOLBAR_TOOLTIP_BUILD_TRAIN_DEPOT_FOR_BUILDING         :{BLACK}Construeix unes cotxeres (per construir i revisar trens). Shift commuta construeix/mostra el cost estimat
-STR_RAIL_TOOLBAR_TOOLTIP_CONVERT_RAIL_TO_WAYPOINT               :{BLACK}Construeix un punt de control en una via de ferrocarril. Ctrl permet ajuntar punts de control. Amb Maj. es commuta entre construir o mostrar el cost estimat.
-STR_RAIL_TOOLBAR_TOOLTIP_BUILD_RAILROAD_STATION                 :{BLACK}Construeix una estació de tren. Ctrl permet ajuntar estacions. Shift commuta construeix/mostra el cost estimat
-STR_RAIL_TOOLBAR_TOOLTIP_BUILD_RAILROAD_SIGNALS                 :{BLACK}Construeix senyals de tren en vies de ferrocarril. Ctrl commuta entre semàfors mecànics i elèctrics.{}Arrossegant es construeixen senyals al llarg d'un tros recte de rail. Ctrl construeix senyals fins a la propera intersecció o senyal.{}Ctrl+Clic commuta l'obertura de la finestra de detecció de senyals. Shift commuta construir/mostrar el cost estimat.
-STR_RAIL_TOOLBAR_TOOLTIP_BUILD_RAILROAD_BRIDGE                  :{BLACK}Construeix un pont de tren. Shift commuta construeix/mostra el cost estimat
-STR_RAIL_TOOLBAR_TOOLTIP_BUILD_RAILROAD_TUNNEL                  :{BLACK}Construeix un túnel per a trens. Shift commuta construeix/mostra el cost estimat
-STR_RAIL_TOOLBAR_TOOLTIP_TOGGLE_BUILD_REMOVE_FOR                :{BLACK}Commuta construeix/treu per vies de tren, senyals, punts de control i estacions. Mantingueu Ctrl per treure també les vies dels punts de control i de les estacions
-STR_RAIL_TOOLBAR_TOOLTIP_CONVERT_RAIL                           :{BLACK}Converteix/Millora el tipus de via. Shift commuta construeix/mostra el cost estimat
+STR_RAIL_TOOLBAR_TOOLTIP_BUILD_RAILROAD_TRACK                   :{BLACK}Construeix vies de tren. Amb Ctrl+clic, es trauran les vies. Amb Maj, se'n mostra el cost estimat.
+STR_RAIL_TOOLBAR_TOOLTIP_BUILD_AUTORAIL                         :{BLACK}Construeix vies de tren utilitzant el mode Autorail. Amb Ctrl+clic, es trauen les vies en lloc de construir-les. Amb Maj, només es mostrarà el cost estimat de l'acció.
+STR_RAIL_TOOLBAR_TOOLTIP_BUILD_TRAIN_DEPOT_FOR_BUILDING         :{BLACK}Construeix unes cotxeres (per a construir i revisar trens). Amb Maj, només es mostrarà el cost estimat de l'acció.
+STR_RAIL_TOOLBAR_TOOLTIP_CONVERT_RAIL_TO_WAYPOINT               :{BLACK}Construeix un punt de control en una via de ferrocarril. Amb Ctrl, es poden construir nous punts de control i ajuntar-los amb d'altres ja existents. Amb Maj, es mostrarà el cost estimat de construcció.
+STR_RAIL_TOOLBAR_TOOLTIP_BUILD_RAILROAD_STATION                 :{BLACK}Construeix una estació de tren. Amb Ctrl, es poden ajuntar estacions. Amb Maj, se'n mostra el cost estimat.
+STR_RAIL_TOOLBAR_TOOLTIP_BUILD_RAILROAD_SIGNALS                 :{BLACK}Construeix senyals de tren en vies de ferrocarril. Amb Ctrl+clic, es construeix l'estil de senyal alternatiu.{}Amb Clic+arrossega, es construeixen senyals al llarg de la via fins que es troba una cruïlla, estació o senyal. Amb Maj, només es mostrarà el cost estimat de l'acció.
+STR_RAIL_TOOLBAR_TOOLTIP_BUILD_RAILROAD_BRIDGE                  :{BLACK}Construeix ponts de tren. Amb Maj, només es mostrarà el cost estimat de l'acció.
+STR_RAIL_TOOLBAR_TOOLTIP_BUILD_RAILROAD_TUNNEL                  :{BLACK}Construeix túnels per a trens. Amb Maj, només es mostrarà el cost estimat de l'acció.
+STR_RAIL_TOOLBAR_TOOLTIP_TOGGLE_BUILD_REMOVE_FOR                :{BLACK}Commuta entre construir i treure vies de tren, senyals, punts de control i estacions. Amb Ctrl+clic, també es treuen les vies dels punts de control i de les estacions.
+STR_RAIL_TOOLBAR_TOOLTIP_CONVERT_RAIL                           :{BLACK}Converteix/Millora el tipus de via. Amb Maj, se'n mostrarà el cost estimat.
 
 STR_RAIL_NAME_RAILROAD                                          :Ferrocarril
 STR_RAIL_NAME_ELRAIL                                            :Ferrocarril electrificat
@@ -2796,7 +2806,7 @@ STR_BUILD_DEPOT_TRAIN_ORIENTATION_TOOLTIP                       :{BLACK}Seleccio
 
 # Rail waypoint construction window
 STR_WAYPOINT_CAPTION                                            :{WHITE}Punt de pas
-STR_WAYPOINT_GRAPHICS_TOOLTIP                                   :{BLACK}Selecciona el tipus de punt de pas.
+STR_WAYPOINT_GRAPHICS_TOOLTIP                                   :{BLACK}Seleccioneu el tipus de punt de pas.
 
 # Rail station construction window
 STR_STATION_BUILD_RAIL_CAPTION                                  :{WHITE}Estacions de Tren
@@ -2833,7 +2843,7 @@ STR_BUILD_SIGNAL_ELECTRIC_EXIT_TOOLTIP                          :{BLACK}Senyal p
 STR_BUILD_SIGNAL_ELECTRIC_COMBO_TOOLTIP                         :{BLACK}Senyal previ combinat (elèctric){}El senyal combinat actua alhora com a senyal previ d'entrada i senyal previ de sortida. Això permet organitzar diverses seccions amb senyals previs, situant els d'entrada a un extrem, els de sortida a l'altre i els combinats al mig.
 STR_BUILD_SIGNAL_ELECTRIC_PBS_TOOLTIP                           :{BLACK}Senyal de ruta (elèctric){}Un senyal de ruta permet entrar més d'un tren dins de la mateixa secció de vies. Cal, però, que sigui capaç de reservar una ruta fins un punt de parada segur sense creuar-se amb cap altre tren. Es pot travessar en el sentit contrari al senyal.
 STR_BUILD_SIGNAL_ELECTRIC_PBS_OWAY_TOOLTIP                      :{BLACK}Senyal de ruta d'un sentit (elèctric){}Un senyal de ruta permet entrar més d'un tren dins de la mateixa secció de vies. Cal, però, que sigui capaç de reservar una ruta fins un punt de parada segur sense creuar-se amb cap altre tren. No es pot travessar en el sentit contrari al senyal.
-STR_BUILD_SIGNAL_CONVERT_TOOLTIP                                :{BLACK}Conversió de senyals{}Quan aquest botó està premut, si es clica un senyal existent el converteix al tipus de senyal seleccionat. Ctrl+Clic commuta la variant existent. Maj+Clic mostra el cost estimat de conversió.
+STR_BUILD_SIGNAL_CONVERT_TOOLTIP                                :{BLACK}Conversió de senyals{}Quan aquest botó està premut i si es clica un senyal existent, el converteix al tipus de senyal seleccionat. Amb Ctrl+clic, es commuta la variant existent. Amb Maj+clic, es mostra el cost estimat de conversió.
 STR_BUILD_SIGNAL_DRAG_SIGNALS_DENSITY_TOOLTIP                   :{BLACK}Distància entre senyals
 STR_BUILD_SIGNAL_DRAG_SIGNALS_DENSITY_DECREASE_TOOLTIP          :{BLACK}Disminueix l'espai entre senyals consecutives situades automàticament quan s'arrossega el ratolí o es manté premuda la tecla Ctrl.
 STR_BUILD_SIGNAL_DRAG_SIGNALS_DENSITY_INCREASE_TOOLTIP          :{BLACK}Augmenta l'espai entre senyals consecutives situades automàticament quan s'arrossega el ratolí o es manté premuda la tecla Ctrl.
@@ -2859,25 +2869,25 @@ STR_BRIDGE_TUBULAR_SILICON                                      :Pont tubular de
 # Road construction toolbar
 STR_ROAD_TOOLBAR_ROAD_CONSTRUCTION_CAPTION                      :{WHITE}Construcció de Carreteres
 STR_ROAD_TOOLBAR_TRAM_CONSTRUCTION_CAPTION                      :{WHITE}Construcció de Tramvies
-STR_ROAD_TOOLBAR_TOOLTIP_BUILD_ROAD_SECTION                     :{BLACK}Construeix una secció de carretera. Ctrl commuta construeix/treu la construcció de carreteres. Shift commuta construeix/mostra el cost estimat
-STR_ROAD_TOOLBAR_TOOLTIP_BUILD_TRAMWAY_SECTION                  :{BLACK}Construeix una secció de via de tramvia. Ctrl commuta construeix/treu la construcció de vies de tramvia. Shift commuta construeix/mostra el cost estimat
-STR_ROAD_TOOLBAR_TOOLTIP_BUILD_AUTOROAD                         :{BLACK}Construeix secció de carretera utilitzant el mode Autocarretera. Ctrl commuta construeix/treu la construcció de carreteres. Shift commuta construeix/mostra el cost estimat
-STR_ROAD_TOOLBAR_TOOLTIP_BUILD_AUTOTRAM                         :{BLACK}Construeix secció de tramvia utilitzant el mode Autotramvia. Ctrl commuta construeix/treu la construcció de vies de tramvia. Shift commuta construeix/mostra el cost estimat
-STR_ROAD_TOOLBAR_TOOLTIP_BUILD_ROAD_VEHICLE_DEPOT               :{BLACK}Construeix una cotxera (per comprar i revisar vehicles). Shift commuta construeix/mostra el cost estimat
-STR_ROAD_TOOLBAR_TOOLTIP_BUILD_TRAM_VEHICLE_DEPOT               :{BLACK}Construeix cotxeres de tramvies (per comprar i revisar tramvies). Shift commuta construeix/mostra el cost estimat
-STR_ROAD_TOOLBAR_TOOLTIP_BUILD_BUS_STATION                      :{BLACK}Construeix estacions d'autobús. Ctrl permet ajuntar estacions. Shift commuta construeix/mostra el cost estimat
-STR_ROAD_TOOLBAR_TOOLTIP_BUILD_PASSENGER_TRAM_STATION           :{BLACK}Construeix una estació de tramvies. Ctrl permet ajuntar estacions. Shift commuta construeix/mostra el cost estimat
-STR_ROAD_TOOLBAR_TOOLTIP_BUILD_TRUCK_LOADING_BAY                :{BLACK}Construeix una estació per a camions. Ctrl permet ajuntar estacions. Amb Maj. es commuta entre construir o mostrar el cost estimat.
-STR_ROAD_TOOLBAR_TOOLTIP_BUILD_CARGO_TRAM_STATION               :{BLACK}Construeix una estació de tramvies de mercaderies. Ctrl permet ajuntar estacions. Shift commuta construeix/mostra el cost estimat
+STR_ROAD_TOOLBAR_TOOLTIP_BUILD_ROAD_SECTION                     :{BLACK}Construeix una secció de carretera. Amb Ctrl+clic, es trauran les carreteres. Amb Maj, només es mostrarà el cost estimat de l'acció.
+STR_ROAD_TOOLBAR_TOOLTIP_BUILD_TRAMWAY_SECTION                  :{BLACK}Construeix seccions de via de tramvia. Amb Ctrl+clic, es trauen seccions de tramvia en lloc de construir-les. Amb Maj, només es mostrarà el cost estimat de l'acció.
+STR_ROAD_TOOLBAR_TOOLTIP_BUILD_AUTOROAD                         :{BLACK}Construeix seccions de carretera amb el mode Autocarretera. Amb Ctrl+clic, es trauen trossos de carretera en lloc de construir-los. Amb Maj, només es mostrarà el cost estimat de l'acció.
+STR_ROAD_TOOLBAR_TOOLTIP_BUILD_AUTOTRAM                         :{BLACK}Construeix seccions de tramvia amb el mode Autocarretera. Amb Ctrl+clic, es trauen les vies de tramvia en lloc de construir-les. Amb Maj, només es mostrarà el cost estimat de l'acció.
+STR_ROAD_TOOLBAR_TOOLTIP_BUILD_ROAD_VEHICLE_DEPOT               :{BLACK}Construeix una cotxera (per a comprar i revisar vehicles). Amb Maj, només es mostrarà el cost estimat de l'acció.
+STR_ROAD_TOOLBAR_TOOLTIP_BUILD_TRAM_VEHICLE_DEPOT               :{BLACK}Construeix cotxeres de tramvies (per a comprar i revisar tramvies). Amb Maj, només es mostrarà el cost estimat de l'acció.
+STR_ROAD_TOOLBAR_TOOLTIP_BUILD_BUS_STATION                      :{BLACK}Construeix estacions d'autobús. Amb Ctrl, es poden ajuntar estacions. Amb Maj, se'n mostra el cost estimat.
+STR_ROAD_TOOLBAR_TOOLTIP_BUILD_PASSENGER_TRAM_STATION           :{BLACK}Construeix estacions de tramvia per a passatgers. Amb Ctrl, es poden ajuntar estacions. Amb Maj, se'n mostra el cost estimat.
+STR_ROAD_TOOLBAR_TOOLTIP_BUILD_TRUCK_LOADING_BAY                :{BLACK}Construeix una estació per a camions. Amb Ctrl, es poden ajuntar estacions. Amb Maj, se'n mostra el cost estimat.
+STR_ROAD_TOOLBAR_TOOLTIP_BUILD_CARGO_TRAM_STATION               :{BLACK}{BLACK}Construeix estacions de tramvia per a mercaderies. Amb Ctrl, es poden ajuntar estacions. Amb Maj, se'n mostra el cost estimat.
 STR_ROAD_TOOLBAR_TOOLTIP_TOGGLE_ONE_WAY_ROAD                    :{BLACK}Activa/Desactiva les carreteres d'un sentit
-STR_ROAD_TOOLBAR_TOOLTIP_BUILD_ROAD_BRIDGE                      :{BLACK}Construeix un pont per carretera. Shift commuta construeix/mostra el cost estimat
-STR_ROAD_TOOLBAR_TOOLTIP_BUILD_TRAMWAY_BRIDGE                   :{BLACK}Construeix pont per tramvies. Shift commuta construeix/mostra el cost estimat
-STR_ROAD_TOOLBAR_TOOLTIP_BUILD_ROAD_TUNNEL                      :{BLACK}Construeix un túnel per carretera. Shift commuta construeix/mostra el cost estimat
-STR_ROAD_TOOLBAR_TOOLTIP_BUILD_TRAMWAY_TUNNEL                   :{BLACK}Construeix un túnel per a tramvies. Shift commuta construeix/mostra el cost estimat
+STR_ROAD_TOOLBAR_TOOLTIP_BUILD_ROAD_BRIDGE                      :{BLACK}Construeix ponts per carretera. Amb Maj, només es mostrarà el cost estimat de l'acció.
+STR_ROAD_TOOLBAR_TOOLTIP_BUILD_TRAMWAY_BRIDGE                   :{BLACK}Construeix ponts per a tramvies. Amb Maj, només es mostrarà el cost estimat de l'acció.
+STR_ROAD_TOOLBAR_TOOLTIP_BUILD_ROAD_TUNNEL                      :{BLACK}Construeix un túnel per carretera. Amb Maj, només es mostrarà el cost estimat de l'acció.
+STR_ROAD_TOOLBAR_TOOLTIP_BUILD_TRAMWAY_TUNNEL                   :{BLACK}Construeix túnels per a tramvies. Amb Maj, només es mostrarà el cost estimat de l'acció.
 STR_ROAD_TOOLBAR_TOOLTIP_TOGGLE_BUILD_REMOVE_FOR_ROAD           :{BLACK}Intercanvia funció construeix/treu per la construcció de carreteres
 STR_ROAD_TOOLBAR_TOOLTIP_TOGGLE_BUILD_REMOVE_FOR_TRAMWAYS       :{BLACK}Canvia construeix/treu de la construcció de vies de tramvia
-STR_ROAD_TOOLBAR_TOOLTIP_CONVERT_ROAD                           :{BLACK}Converteix/Millora el tipus de carretera. Shift commuta entre construir o mostrar-ne el cost estimat.
-STR_ROAD_TOOLBAR_TOOLTIP_CONVERT_TRAM                           :{BLACK}Converteix/Millora el tipus de tramvia. Shift commuta construeix/mostra el cost estimat.
+STR_ROAD_TOOLBAR_TOOLTIP_CONVERT_ROAD                           :{BLACK}Converteix/Millora el tipus de carretera. Amb Maj, només es mostrarà el cost estimat de l'acció.
+STR_ROAD_TOOLBAR_TOOLTIP_CONVERT_TRAM                           :{BLACK}Converteix/Millora el tipus de tramvia. Amb Maj, només es mostrarà el cost estimat de l'acció.
 
 STR_ROAD_NAME_ROAD                                              :Carretera
 STR_ROAD_NAME_TRAM                                              :Tramvia
@@ -2901,14 +2911,14 @@ STR_STATION_BUILD_CARGO_TRAM_ORIENTATION_TOOLTIP                :{BLACK}Seleccio
 # Waterways toolbar (last two for SE only)
 STR_WATERWAYS_TOOLBAR_CAPTION                                   :{WHITE}Construcció de canals
 STR_WATERWAYS_TOOLBAR_CAPTION_SE                                :{WHITE}Canals
-STR_WATERWAYS_TOOLBAR_BUILD_CANALS_TOOLTIP                      :{BLACK}Construeix canals. Shift commuta construeix/mostra el cost estimat
-STR_WATERWAYS_TOOLBAR_BUILD_LOCKS_TOOLTIP                       :{BLACK}Construeix rescloses. Shift commuta construeix/mostra el cost estimat
-STR_WATERWAYS_TOOLBAR_BUILD_DEPOT_TOOLTIP                       :{BLACK}Construeix una drassana (per comprar i revisar vaixells). Shift commuta construeix/mostra el cost estimat
-STR_WATERWAYS_TOOLBAR_BUILD_DOCK_TOOLTIP                        :{BLACK}Construeix un port. Ctrl permet ajuntar estacions. Shift commuta construeix/mostra el cost estimat
-STR_WATERWAYS_TOOLBAR_BUOY_TOOLTIP                              :{BLACK}Situa una boia que pot ser útil per fer punts de control addicionals. Shift commuta construeix/mostra el cost estimat
-STR_WATERWAYS_TOOLBAR_BUILD_AQUEDUCT_TOOLTIP                    :{BLACK} Construeix aqüeducte. Shift commuta construeix/mostra el cost estimat
-STR_WATERWAYS_TOOLBAR_CREATE_LAKE_TOOLTIP                       :{BLACK}Defineix caselles com a canals d'aigua.{}Amb Ctrl+Clic a nivell de mar, es defineix una casella de mar i s'inundaran els seus voltants.
-STR_WATERWAYS_TOOLBAR_CREATE_RIVER_TOOLTIP                      :{BLACK}Crea rius i caselles d'aigua. Ctrl selecciona l'àrea diagonalment.
+STR_WATERWAYS_TOOLBAR_BUILD_CANALS_TOOLTIP                      :{BLACK}Construeix canals. Amb Maj, se'n mostrarà només el cost estimat.
+STR_WATERWAYS_TOOLBAR_BUILD_LOCKS_TOOLTIP                       :{BLACK}Construeix rescloses. Amb Maj, se'n mostra el cost estimat.
+STR_WATERWAYS_TOOLBAR_BUILD_DEPOT_TOOLTIP                       :{BLACK}Construeix una drassana (per a comprar i revisar vaixells). Amb Maj, només es mostrarà el cost estimat de l'acció.
+STR_WATERWAYS_TOOLBAR_BUILD_DOCK_TOOLTIP                        :{BLACK}Construeix un port. Amb Ctrl+clic, es poden construir noves estacions i ajuntar-les amb d'altres ja existents. Amb Maj, només es mostrarà el cost estimat de l'acció.
+STR_WATERWAYS_TOOLBAR_BUOY_TOOLTIP                              :{BLACK}Situa una boia que pot ser útil com a punt de control addicional. Amb Maj, només es mostrarà el cost estimat de l'acció.
+STR_WATERWAYS_TOOLBAR_BUILD_AQUEDUCT_TOOLTIP                    :{BLACK} Construeix aqüeductes. Amb Maj, se'n mostrarà només el cost estimat.
+STR_WATERWAYS_TOOLBAR_CREATE_LAKE_TOOLTIP                       :{BLACK}Construeix un canal. Amb Ctrl+clic a nivell de mar, es defineix una casella de mar i s'inundaran els seus voltants.
+STR_WATERWAYS_TOOLBAR_CREATE_RIVER_TOOLTIP                      :{BLACK}Crea rius i caselles d'aigua. Amb Ctrl+clic+arrossega, se selecciona una àrea diagonal.
 
 # Ship depot construction window
 STR_DEPOT_BUILD_SHIP_CAPTION                                    :{WHITE}Drassanes
@@ -2919,7 +2929,7 @@ STR_STATION_BUILD_DOCK_CAPTION                                  :{WHITE}Moll
 
 # Airport toolbar
 STR_TOOLBAR_AIRCRAFT_CAPTION                                    :{WHITE}Aeroports
-STR_TOOLBAR_AIRCRAFT_BUILD_AIRPORT_TOOLTIP                      :{BLACK}Construeix un aeroport. Ctrl permet ajuntar estacions. Shift commuta construeix/mostra el cost estimat
+STR_TOOLBAR_AIRCRAFT_BUILD_AIRPORT_TOOLTIP                      :{BLACK}Construeix un aeroport. Amb Ctrl, es poden ajuntar estacions. Amb Maj, se'n mostra el cost estimat.
 
 # Airport construction window
 STR_STATION_BUILD_AIRPORT_CAPTION                               :{WHITE}Aeroports
@@ -2946,14 +2956,14 @@ STR_STATION_BUILD_NOISE                                         :{BLACK}Soroll g
 
 # Landscaping toolbar
 STR_LANDSCAPING_TOOLBAR                                         :{WHITE}Creació de paisatge
-STR_LANDSCAPING_TOOLTIP_LOWER_A_CORNER_OF_LAND                  :{BLACK}Rebaixa una cantonada del terreny. Arrossegant rebaixa la primera cantonada seleccionada i anivella l'àrea seleccionada a la nova alçada de la cantonada. Ctrl selecciona l'àrea diagonalment. Shift commuta construeix/mostra el cost estimat
-STR_LANDSCAPING_TOOLTIP_RAISE_A_CORNER_OF_LAND                  :{BLACK}Eleva una cantonada del terreny. Arrossegant eleva la primera cantonada selecciona i anivella l'àrea a la nova alçada de la cantonada. Ctrl selecciona l'àrea diagonalment. Shift commuta construeix/mostra el cost estimat
-STR_LANDSCAPING_LEVEL_LAND_TOOLTIP                              :{BLACK}Anivella el terreny a l'alçada de la primera cantonada seleccionada. Ctrl selecciona l'àrea diagonalment. Shift commuta construeix/mostra el cost estimat
-STR_LANDSCAPING_TOOLTIP_PURCHASE_LAND                           :{BLACK}Compra terreny per a fer-lo servir més endavant. Amb Ctrl, es selecciona una àrea diagonal. Maj commuta entre construir i mostrar el cost estimat.
+STR_LANDSCAPING_TOOLTIP_LOWER_A_CORNER_OF_LAND                  :{BLACK}Rebaixa una cantonada del terreny. Amb Clic+arrossega, es rebaixa la primera cantonada seleccionada i s'anivella l'àrea a la nova alçada. Amb Ctrl+clic+arrossega, se selecciona l'àrea en diagonal. Amb Maj, només es mostrarà el cost estimat de l'acció.
+STR_LANDSCAPING_TOOLTIP_RAISE_A_CORNER_OF_LAND                  :{BLACK}Eleva una cantonada del terreny. Amb Clic+arrossega, s'eleva la primera cantonada seleccionada i s'anivella l'àrea a la nova alçada. Amb Ctrl+clic+arrossega, se selecciona l'àrea en diagonal. Amb Maj, només es mostrarà el cost estimat de l'acció.
+STR_LANDSCAPING_LEVEL_LAND_TOOLTIP                              :{BLACK}Anivella el terreny a l'alçada de la primera cantonada seleccionada. Amb Ctrl+clic+arrossega, se selecciona l'àrea en diagonal. Amb Maj, només es mostrarà el cost estimat de l'acció.
+STR_LANDSCAPING_TOOLTIP_PURCHASE_LAND                           :{BLACK}Compra terreny per a fer-lo servir més endavant. Amb Ctrl, se selecciona una àrea diagonal. Maj commuta entre construir i mostrar el cost estimat.
 
 # Object construction window
 STR_OBJECT_BUILD_CAPTION                                        :{WHITE}Selecció d'objecte
-STR_OBJECT_BUILD_TOOLTIP                                        :{BLACK}Seleccioneu l'objecte a construir. Amb Ctrl, es selecciona una àrea diagonal. Amb Maj, es commuta entre construir i mostrar el cost estimat.
+STR_OBJECT_BUILD_TOOLTIP                                        :{BLACK}Seleccioneu l'objecte a construir. Amb Ctrl, se selecciona una àrea diagonal. Amb Maj, es commuta entre construir i mostrar el cost estimat.
 STR_OBJECT_BUILD_CLASS_TOOLTIP                                  :{BLACK}Selecciona la classe d'objecte a construir
 STR_OBJECT_BUILD_PREVIEW_TOOLTIP                                :{BLACK}Previsualització de l'objecte
 STR_OBJECT_BUILD_SIZE                                           :{BLACK}Mida: {GOLD}{NUM} x {NUM} cel·les
@@ -2965,7 +2975,7 @@ STR_OBJECT_CLASS_TRNS                                           :Transmissors
 STR_PLANT_TREE_CAPTION                                          :{WHITE}Arbres
 STR_PLANT_TREE_TOOLTIP                                          :{BLACK}Selecciona el tipus d'arbre a plantar. Si la casella ja conté un arbre, s'afegiran més arbres d'altres espècies independentment de quin estigui seleccionat
 STR_TREES_RANDOM_TYPE                                           :{BLACK}Arbres de tipus aleatori
-STR_TREES_RANDOM_TYPE_TOOLTIP                                   :{BLACK}Situa arbres de tipus aleatori. Amb Ctrl, es selecciona una àrea diagonal. Amb Maj., es commuta entre construir i mostrar el cost estimat.
+STR_TREES_RANDOM_TYPE_TOOLTIP                                   :{BLACK}Situa arbres de tipus aleatori. Amb Ctrl, se selecciona una àrea diagonal. Amb Maj., es commuta entre construir i mostrar el cost estimat.
 STR_TREES_RANDOM_TREES_BUTTON                                   :{BLACK}Planta arbres
 STR_TREES_RANDOM_TREES_TOOLTIP                                  :{BLACK}Planta arbres aleatòriament al paisatge
 STR_TREES_MODE_NORMAL_BUTTON                                    :{BLACK}Normal
@@ -2978,7 +2988,7 @@ STR_TREES_MODE_FOREST_LG_TOOLTIP                                :{BLACK}Planta g
 # Land generation window (SE)
 STR_TERRAFORM_TOOLBAR_LAND_GENERATION_CAPTION                   :{WHITE}Generador de terreny
 STR_TERRAFORM_TOOLTIP_PLACE_ROCKY_AREAS_ON_LANDSCAPE            :{BLACK}Situa àrees de roques al paisatge
-STR_TERRAFORM_TOOLTIP_DEFINE_DESERT_AREA                        :{BLACK}Defineix àrea de desert.{}Mantingues apretat Ctrl per treure'l
+STR_TERRAFORM_TOOLTIP_DEFINE_DESERT_AREA                        :{BLACK}Defineix àrea de desert.{}Amb Ctrl+clic, es treu l'àrea de desert.
 STR_TERRAFORM_TOOLTIP_INCREASE_SIZE_OF_LAND_AREA                :{BLACK}Augmenta la mida de l'àrea de terreny a rebaixar/elevar
 STR_TERRAFORM_TOOLTIP_DECREASE_SIZE_OF_LAND_AREA                :{BLACK}Disminueix la mida de l'àrea de terreny a rebaixar/elevar
 STR_TERRAFORM_TOOLTIP_GENERATE_RANDOM_LAND                      :{BLACK}Genera un terreny aleatori
@@ -2992,7 +3002,7 @@ STR_RESET_LANDSCAPE_CONFIRMATION_TEXT                           :{WHITE}Estàs s
 # Town generation window (SE)
 STR_FOUND_TOWN_CAPTION                                          :{WHITE}Generació de poblacions
 STR_FOUND_TOWN_NEW_TOWN_BUTTON                                  :{BLACK}Crea una població nova
-STR_FOUND_TOWN_NEW_TOWN_TOOLTIP                                 :{BLACK}Funda una població. Shift+Clic en mostra el cost estimat.
+STR_FOUND_TOWN_NEW_TOWN_TOOLTIP                                 :{BLACK}Funda una població. Amb Maj, només es mostrarà el cost estimat de l'acció.
 STR_FOUND_TOWN_RANDOM_TOWN_BUTTON                               :{BLACK}Crea una població aleatòria
 STR_FOUND_TOWN_RANDOM_TOWN_TOOLTIP                              :{BLACK}Funda una població en un lloc aleatori
 STR_FOUND_TOWN_MANY_RANDOM_TOWNS                                :{BLACK}Crea moltes poblacions aleatòries
@@ -3058,7 +3068,7 @@ STR_INDUSTRY_CARGOES_SELECT_INDUSTRY_TOOLTIP                    :{BLACK}Seleccio
 
 # Land area window
 STR_LAND_AREA_INFORMATION_CAPTION                               :{WHITE}Informació del terreny
-STR_LAND_AREA_INFORMATION_LOCATION_TOOLTIP                      :{BLACK}Centra la vista principal al lloc on està la casella. Amb Ctrl+clic s'obre una vista nova al lloc de la casella.
+STR_LAND_AREA_INFORMATION_LOCATION_TOOLTIP                      :{BLACK}Centra la vista principal al lloc on està la casella. Amb Ctrl+clic, s'obre una vista nova on hi ha la casella.
 STR_LAND_AREA_INFORMATION_COST_TO_CLEAR_N_A                     :{BLACK}Cost de neteja: {LTBLUE}N/A
 STR_LAND_AREA_INFORMATION_COST_TO_CLEAR                         :{BLACK}Cost de neteja: {RED}{CURRENCY_LONG}
 STR_LAND_AREA_INFORMATION_REVENUE_WHEN_CLEARED                  :{BLACK}Ingressos en netejar: {LTBLUE}{CURRENCY_LONG}
@@ -3305,11 +3315,11 @@ STR_MAPGEN_VARIETY                                              :{BLACK}Varietat
 STR_MAPGEN_GENERATE                                             :{WHITE}Genera
 STR_MAPGEN_GENERATE_TOOLTIP                                     :{BLACK}Creeu el món i jugueu a l'OpenTTD!
 STR_MAPGEN_NEWGRF_SETTINGS                                      :{BLACK}Configuració del NewGRF
-STR_MAPGEN_NEWGRF_SETTINGS_TOOLTIP                              :{BLACK}Mostra la configuració de NewGRF
+STR_MAPGEN_NEWGRF_SETTINGS_TOOLTIP                              :{BLACK}Obre la finestra de configuració de NewGRF.
 STR_MAPGEN_AI_SETTINGS                                          :{BLACK}Configuració d'IA
-STR_MAPGEN_AI_SETTINGS_TOOLTIP                                  :{BLACK}Mostra la configuració de la IA
+STR_MAPGEN_AI_SETTINGS_TOOLTIP                                  :{BLACK}Obre la finestra de configuració de la IA.
 STR_MAPGEN_GS_SETTINGS                                          :{BLACK}Configuració de l'script de partida
-STR_MAPGEN_GS_SETTINGS_TOOLTIP                                  :{BLACK}Mostra la configuració de l'script de partida.
+STR_MAPGEN_GS_SETTINGS_TOOLTIP                                  :{BLACK}Obre la finestra de configuració de l'script de partida.
 
 ###length 21
 STR_MAPGEN_TOWN_NAME_ORIGINAL_ENGLISH                           :Anglès
@@ -3585,7 +3595,7 @@ STR_SIGN_LIST_MATCH_CASE_TOOLTIP                                :{BLACK}Commuta 
 
 # Sign window
 STR_EDIT_SIGN_CAPTION                                           :{WHITE}Edita el text del senyal
-STR_EDIT_SIGN_LOCATION_TOOLTIP                                  :{BLACK}Centra la vista principal en la senyal. Amb Ctrl+Clic, obre una nova vista centrada en la senyal.
+STR_EDIT_SIGN_LOCATION_TOOLTIP                                  :{BLACK}Centra la vista principal en la senyal. Amb Ctrl+clic, s'obre una vista centrada en el senyal.
 STR_EDIT_SIGN_NEXT_SIGN_TOOLTIP                                 :{BLACK}Vés al proper senyal
 STR_EDIT_SIGN_PREVIOUS_SIGN_TOOLTIP                             :{BLACK}Vés al senyal anterior
 
@@ -3596,7 +3606,7 @@ STR_TOWN_DIRECTORY_CAPTION                                      :{WHITE}Poblacio
 STR_TOWN_DIRECTORY_NONE                                         :{ORANGE}- Cap -
 STR_TOWN_DIRECTORY_TOWN                                         :{ORANGE}{TOWN}{BLACK} ({COMMA})
 STR_TOWN_DIRECTORY_CITY                                         :{ORANGE}{TOWN}{BLACK} ({COMMA} -{YELLOW} ciutat{BLACK})
-STR_TOWN_DIRECTORY_LIST_TOOLTIP                                 :{BLACK}Noms de Població - clica al nom per centrar la vista principal a la població. Ctrl+Clic obre una nova vista al lloc de la població
+STR_TOWN_DIRECTORY_LIST_TOOLTIP                                 :{BLACK}Noms de les poblacions - feu clic al nom d'una població per a centrar-hi la vista principal. Amb Ctrl+clic, s'obre una vista nova centrada on hi ha la població.
 STR_TOWN_POPULATION                                             :{BLACK}Població mundial: {COMMA}
 
 # Town view window
@@ -3615,7 +3625,7 @@ STR_TOWN_VIEW_TOWN_GROWS_EVERY                                  :{BLACK}La pobla
 STR_TOWN_VIEW_TOWN_GROWS_EVERY_FUNDED                           :{BLACK}La població creix cada {ORANGE}{UNITS_DAYS_OR_SECONDS} (finançant edificis nous)
 STR_TOWN_VIEW_TOWN_GROW_STOPPED                                 :{BLACK}La població {RED}no {BLACK} està creixent
 STR_TOWN_VIEW_NOISE_IN_TOWN                                     :{BLACK}Límit de soroll a la ciutat: {ORANGE}{COMMA}{BLACK}  màx: {ORANGE}{COMMA}
-STR_TOWN_VIEW_CENTER_TOOLTIP                                    :{BLACK}Centra la vista principal a la població. Ctrl+Clic obre una nova vista al lloc de la població
+STR_TOWN_VIEW_CENTER_TOOLTIP                                    :{BLACK}Centra la vista principal a la població. Amb Ctrl+clic, s'obre una vista nova on hi ha la població.
 STR_TOWN_VIEW_LOCAL_AUTHORITY_BUTTON                            :{BLACK}Autoritat local
 STR_TOWN_VIEW_LOCAL_AUTHORITY_TOOLTIP                           :{BLACK}Mostra informació de l'autoritat local
 STR_TOWN_VIEW_RENAME_TOOLTIP                                    :{BLACK}Canvia el nom de la població
@@ -3653,8 +3663,11 @@ STR_LOCAL_AUTHORITY_ACTION_TOOLTIP_SMALL_ADVERTISING            :{PUSH_COLOUR}{Y
 STR_LOCAL_AUTHORITY_ACTION_TOOLTIP_MEDIUM_ADVERTISING           :{PUSH_COLOUR}{YELLOW}Inicia una mitjana campanya de publicitat, per atraure més passatgers i càrregues als teus serveis de transport.{}Proporciona una millora temporal dels ratis de les estacions dins un radi mitjà al voltant del centre de la població.{}{PUSH_COLOUR}Cost: {CURRENCY_LONG}
 STR_LOCAL_AUTHORITY_ACTION_TOOLTIP_LARGE_ADVERTISING            :{PUSH_COLOUR}{YELLOW}Inicia una gran campanya de publicitat, per atraure més passatgers i càrregues als teus serveis de transport.{}Proporciona una millora temporal dels ratis de les estacions dins d'un radi gran al voltant del centre de la població.{}{POP_COLOUR}Cost: {CURRENCY_LONG}
 STR_LOCAL_AUTHORITY_ACTION_TOOLTIP_ROAD_RECONSTRUCTION_MONTHS   :{PUSH_COLOUR}{YELLOW}Finança la reconstrucció de la xarxa de carreteres urbanes.{}Provoca molèsties considerables al trànsit de vehicles per carretera durant 6 mesos.{}{POP_COLOUR}Cost: {CURRENCY_LONG}
+STR_LOCAL_AUTHORITY_ACTION_TOOLTIP_ROAD_RECONSTRUCTION_MINUTES  :{PUSH_COLOUR}{YELLOW}Finança la reconstrucció de la xarxa de carreteres urbanes.{}Provoca molèsties considerables al trànsit de vehicles per carretera durant 6 minuts.{}{POP_COLOUR}Cost: {CURRENCY_LONG}
 STR_LOCAL_AUTHORITY_ACTION_TOOLTIP_STATUE_OF_COMPANY            :{PUSH_COLOUR}{YELLOW}Construeix una estàtua en honor a la teva companyia.{}Proporciona una millora permanent dels ratis d'estació de la població.{}{POP_COLOUR}Cost: {CURRENCY_LONG}
 STR_LOCAL_AUTHORITY_ACTION_TOOLTIP_NEW_BUILDINGS                :{PUSH_COLOUR}{YELLOW}Finança la construcció de nous edificis comercials a la població.{}Proporciona una millora temporal del creixement d'aquesta població.{}{POP_COLOUR}Cost: {CURRENCY_LONG}
+STR_LOCAL_AUTHORITY_ACTION_TOOLTIP_EXCLUSIVE_TRANSPORT_MONTHS   :{PUSH_COLOUR}{YELLOW}Compra els drets de transport a la població en exclusiva durant 12 mesos.{}Les autoritats de la població no permetran que els passatgers i les càrregues facin servir les estacions dels vostres oponents. Un suborn amb èxit d'un competidor cancel·laria aquest contracte.{}{POP_COLOUR}Cost: {CURRENCY_LONG}
+STR_LOCAL_AUTHORITY_ACTION_TOOLTIP_EXCLUSIVE_TRANSPORT_MINUTES  :{PUSH_COLOUR}{YELLOW}Compra els drets de transport a la població en exclusiva durant 12 minuts.{}Les autoritats de la població no permetran que els passatgers i les càrregues facin servir les estacions dels vostres oponents. Un suborn amb èxit d'un competidor cancel·laria aquest contracte.{}{POP_COLOUR}Cost: {CURRENCY_LONG}
 STR_LOCAL_AUTHORITY_ACTION_TOOLTIP_BRIBE                        :{PUSH_COLOUR}{YELLOW}Suborna les autoritats locals per a incrementar el vostre rati i cancel·lar els drets exclusius de transport del competidor, amb el risc de sancions greus si us pesquen.{}{POP_COLOUR}Cost:{NBSP}{CURRENCY_LONG}
 
 # Goal window
@@ -3669,7 +3682,7 @@ STR_GOALS_TEXT                                                  :{ORANGE}{STRING
 STR_GOALS_NONE                                                  :{ORANGE}- Cap -
 STR_GOALS_PROGRESS                                              :{ORANGE}{STRING}
 STR_GOALS_PROGRESS_COMPLETE                                     :{GREEN}{STRING}
-STR_GOALS_TOOLTIP_CLICK_ON_SERVICE_TO_CENTER                    :{BLACK}Clica sobre l'objectiu per centrar la vista principal sobre la indústria/població/cel·la. Ctrl+clic per obrir una nova vista sobre la indústria/població/cel·la
+STR_GOALS_TOOLTIP_CLICK_ON_SERVICE_TO_CENTER                    :{BLACK}Feu clic sobre l'objectiu per a centrar la vista principal a sobre de la indústria/població/cel·la. Amb Ctrl+clic, s'obre una nova vista a sobre de la indústria/població/cel·la.
 
 # Goal question window
 STR_GOAL_QUESTION_CAPTION_QUESTION                              :{BLACK}Pregunta
@@ -3705,7 +3718,7 @@ STR_SUBSIDIES_OFFERED_FROM_TO                                   :{ORANGE}{STRING
 STR_SUBSIDIES_NONE                                              :{ORANGE}- Cap -
 STR_SUBSIDIES_SUBSIDISED_TITLE                                  :{BLACK}Serveis ja subvencionats:
 STR_SUBSIDIES_SUBSIDISED_FROM_TO                                :{ORANGE}{STRING} des de {STRING} fins a {STRING}{YELLOW} ({COMPANY}{YELLOW}, {STRING})
-STR_SUBSIDIES_TOOLTIP_CLICK_ON_SERVICE_TO_CENTER                :{BLACK}Clica al servei per centrar la vista a la indústria/població. Ctrl+Clic obre una nova vista al lloc de la indústria/població
+STR_SUBSIDIES_TOOLTIP_CLICK_ON_SERVICE_TO_CENTER                :{BLACK}Feu clic en un servei per a centrar la vista a la indústria/població. Amb Ctrl+clic, s'obre una vista nova on hi ha la indústria/població.
 STR_SUBSIDIES_OFFERED_EXPIRY_DATE                               :fins el {DATE_SHORT}
 STR_SUBSIDIES_OFFERED_EXPIRY_TIME                               :abans de {UNITS_MONTHS_OR_MINUTES}
 STR_SUBSIDIES_SUBSIDISED_EXPIRY_DATE                            :fins el {DATE_SHORT}
@@ -3725,13 +3738,20 @@ STR_STORY_BOOK_NEXT_PAGE_TOOLTIP                                :{BLACK}Vés a l
 STR_STORY_BOOK_INVALID_GOAL_REF                                 :{RED}Referència d'objectius invàlida
 
 # Station list window
-STR_STATION_LIST_TOOLTIP                                        :{BLACK}Noms d'estació - clica sobre el nom per centrar la vista principal a l'estació. Ctrl+Clic obre una nova vista al lloc de l'estació
-STR_STATION_LIST_USE_CTRL_TO_SELECT_MORE                        :{BLACK}Mantingues polsat CTRL per a seleccionar més d'un ítem
+STR_STATION_LIST_TOOLTIP                                        :{BLACK}Noms d'estació - feu clic sobre el nom per a centrar la vista principal a l'estació. Amb Ctrl+clic, s'obre una vista nova al lloc de l'estació.
+STR_STATION_LIST_USE_CTRL_TO_SELECT_MORE                        :{BLACK}Amb Ctrl+clic, es pot seleccionar més d'un element.
 STR_STATION_LIST_CAPTION                                        :{WHITE}{COMPANY} - {COMMA} Estacions/Parades
 STR_STATION_LIST_STATION                                        :{YELLOW}{STATION} {STATION_FEATURES}
 STR_STATION_LIST_WAYPOINT                                       :{YELLOW}{WAYPOINT}
 STR_STATION_LIST_NONE                                           :{YELLOW}- Cap -
 STR_STATION_LIST_SELECT_ALL_FACILITIES                          :{BLACK}Seleccionar totes les instal·lacions
+STR_STATION_LIST_CARGO_FILTER_ALL_AND_NO_RATING                 :Tots els tipus de càrrega i sense rati
+STR_STATION_LIST_CARGO_FILTER_MULTIPLE                          :Múltiples tipus de càrrega
+STR_STATION_LIST_CARGO_FILTER_NO_CARGO_TYPES                    :Cap tipus de càrrega
+STR_STATION_LIST_CARGO_FILTER_ONLY_NO_RATING                    :Només un tipus de càrrega
+STR_STATION_LIST_CARGO_FILTER_SELECT_ALL                        :Tria totes les càrregues i sense rati
+STR_STATION_LIST_CARGO_FILTER_NO_RATING                         :Sense rati de càrrega
+STR_STATION_LIST_CARGO_FILTER_EXPAND                            :Mostra'n més...
 
 # Station view window
 STR_STATION_VIEW_CAPTION                                        :{WHITE}{STATION} {STATION_FEATURES}
@@ -3784,7 +3804,7 @@ STR_CARGO_RATING_VERY_GOOD                                      :Molt bo
 STR_CARGO_RATING_EXCELLENT                                      :Excel·lent
 STR_CARGO_RATING_OUTSTANDING                                    :Excepcional
 
-STR_STATION_VIEW_CENTER_TOOLTIP                                 :{BLACK}Centra la vista principal al lloc de l'estació. Ctrl+Clic obre una nova vista al lloc de l'estació
+STR_STATION_VIEW_CENTER_TOOLTIP                                 :{BLACK}Centra la vista principal al lloc de l'estació. Amb Ctrl+clic, s'obre una vista al lloc de l'estació.
 STR_STATION_VIEW_RENAME_TOOLTIP                                 :{BLACK}Canvia el nom de l'estació
 
 STR_STATION_VIEW_SCHEDULED_TRAINS_TOOLTIP                       :{BLACK}Mostra tots els trens que tinguin aquesta estació en el seu itinerari
@@ -3799,9 +3819,9 @@ STR_STATION_VIEW_CLOSE_AIRPORT_TOOLTIP                          :{BLACK}Evita qu
 
 # Waypoint/buoy view window
 STR_WAYPOINT_VIEW_CAPTION                                       :{WHITE}{WAYPOINT}
-STR_WAYPOINT_VIEW_CENTER_TOOLTIP                                :{BLACK}Centra la vista principal al lloc del punt de pas. Amb Ctrl+Clic, obre una nova vista al lloc del punt de pas.
+STR_WAYPOINT_VIEW_CENTER_TOOLTIP                                :{BLACK}Centra la vista principal al lloc del punt de pas. Amb Ctrl+clic, s'obre una vista al lloc del punt de pas.
 STR_WAYPOINT_VIEW_CHANGE_WAYPOINT_NAME                          :{BLACK}Canvia el nom del punt de pas
-STR_BUOY_VIEW_CENTER_TOOLTIP                                    :{BLACK}Centra la vista principal en la boia. Amb Ctrl+Clic, obre una nova vista centrada en la boia.
+STR_BUOY_VIEW_CENTER_TOOLTIP                                    :{BLACK}Centra la vista principal en la boia. Amb Ctrl+clic, s'obre una vista centrada a la boia.
 STR_BUOY_VIEW_CHANGE_BUOY_NAME                                  :{BLACK}Canvia el nom de la boia
 
 STR_EDIT_WAYPOINT_NAME                                          :{WHITE}Edita el nom del punt de pas
@@ -3846,9 +3866,9 @@ STR_FINANCES_MAX_LOAN                                           :{WHITE}Préstec
 STR_FINANCES_TOTAL_CURRENCY                                     :{BLACK}{CURRENCY_LONG}
 STR_FINANCES_BANK_BALANCE                                       :{WHITE}{CURRENCY_LONG}
 STR_FINANCES_BORROW_BUTTON                                      :{BLACK}Demana {CURRENCY_LONG}
-STR_FINANCES_BORROW_TOOLTIP                                     :{BLACK}Augmenta l'import del préstec Ctrl+Clic per demanar tants diners com sigui possible
+STR_FINANCES_BORROW_TOOLTIP                                     :{BLACK}Augmenta l'import del préstec Amb Ctrl+clic, es demanen tants diners com sigui possible.
 STR_FINANCES_REPAY_BUTTON                                       :{BLACK}Amortitza {CURRENCY_LONG}
-STR_FINANCES_REPAY_TOOLTIP                                      :{BLACK}Amortitza part del préstec. Ctrl+Clic per tornar tants diners com sigui possible
+STR_FINANCES_REPAY_TOOLTIP                                      :{BLACK}Amortitza part del préstec. Ctrl+clic per a retornar tants diners com sigui possible.
 STR_FINANCES_INFRASTRUCTURE_BUTTON                              :{BLACK}Infraestructura
 
 # Company view
@@ -3877,7 +3897,7 @@ STR_COMPANY_VIEW_BUILD_HQ_TOOLTIP                               :{BLACK}Construe
 STR_COMPANY_VIEW_VIEW_HQ_BUTTON                                 :{BLACK}Veure la seu
 STR_COMPANY_VIEW_VIEW_HQ_TOOLTIP                                :{BLACK}Veure la seu de la companyia.
 STR_COMPANY_VIEW_RELOCATE_HQ                                    :{BLACK}Trasllada la seu
-STR_COMPANY_VIEW_RELOCATE_COMPANY_HEADQUARTERS                  :{BLACK}Trasllada la seu a un altre lloc amb el cost d'un 1% del valor de la companyia. Amb Maj+Clic, mostra el cost estimat sense traslladar la seu.
+STR_COMPANY_VIEW_RELOCATE_COMPANY_HEADQUARTERS                  :{BLACK}Trasllada la seu a un altre lloc amb el cost d'un 1{NBSP}% del valor de la companyia. Amb Maj+clic, es mostra només el cost estimat sense traslladar la seu.
 STR_COMPANY_VIEW_INFRASTRUCTURE_BUTTON                          :{BLACK}Detalls
 STR_COMPANY_VIEW_INFRASTRUCTURE_TOOLTIP                         :{BLACK}Veure els detalls de la infraestructura de la companyia.
 STR_COMPANY_VIEW_GIVE_MONEY_BUTTON                              :{BLACK}Dóna diners
@@ -3924,7 +3944,7 @@ STR_INDUSTRY_DIRECTORY_ITEM_PROD1                               :{ORANGE}{INDUST
 STR_INDUSTRY_DIRECTORY_ITEM_PROD2                               :{ORANGE}{INDUSTRY} {STRING}, {STRING}
 STR_INDUSTRY_DIRECTORY_ITEM_PROD3                               :{ORANGE}{INDUSTRY} {STRING}, {STRING} i {STRING}.
 STR_INDUSTRY_DIRECTORY_ITEM_PRODMORE                            :{ORANGE}{INDUSTRY} {STRING}, {STRING}, {STRING} i {NUM} més...
-STR_INDUSTRY_DIRECTORY_LIST_CAPTION                             :{BLACK}Nom de les indústries - clica al nom per centrar la vista en la indústria. Ctrl+Clic obre una nova vista al lloc de la indústria
+STR_INDUSTRY_DIRECTORY_LIST_CAPTION                             :{BLACK}Noms de les indústries - feu clic al nom d'una indústria per a centrar-hi la vista principal. Amb Ctrl+clic, s'obre una vista nova al lloc on hi ha la indústria.
 STR_INDUSTRY_DIRECTORY_ACCEPTED_CARGO_FILTER                    :{BLACK}Càrrega acceptada: {SILVER}{STRING}
 STR_INDUSTRY_DIRECTORY_PRODUCED_CARGO_FILTER                    :{BLACK}Càrrega produïda: {SILVER}{STRING}
 STR_INDUSTRY_DIRECTORY_FILTER_ALL_TYPES                         :Tots els tipus de càrrega
@@ -3935,7 +3955,7 @@ STR_INDUSTRY_VIEW_CAPTION                                       :{WHITE}{INDUSTR
 STR_INDUSTRY_VIEW_PRODUCTION_LAST_MONTH_TITLE                   :{BLACK}Producció del darrer mes:
 STR_INDUSTRY_VIEW_PRODUCTION_LAST_MINUTE_TITLE                  :{BLACK}Producció durant l'últim minut:
 STR_INDUSTRY_VIEW_TRANSPORTED                                   :{YELLOW}{CARGO_LONG}{STRING}{BLACK} ({COMMA}% transportat)
-STR_INDUSTRY_VIEW_LOCATION_TOOLTIP                              :{BLACK}Centra la vista principal al lloc de la indústria. Ctrl+Clic obre una nova vista al lloc de la indústria
+STR_INDUSTRY_VIEW_LOCATION_TOOLTIP                              :{BLACK}Centra la vista principal al lloc de la indústria. Amb Ctrl+clic, s'obre una vista nova centrada al lloc on és la indústria.
 STR_INDUSTRY_VIEW_PRODUCTION_LEVEL                              :{BLACK}Nivell de producció: {YELLOW}{COMMA}%
 STR_INDUSTRY_VIEW_INDUSTRY_ANNOUNCED_CLOSURE                    :{YELLOW}La indústria ha anunciat la seva clausura imminent!
 
@@ -4078,10 +4098,10 @@ STR_CARGO_TYPE_FILTER_FREIGHT                                   :Càrrega
 STR_CARGO_TYPE_FILTER_NONE                                      :Cap
 
 ###length VEHICLE_TYPES
-STR_BUY_VEHICLE_TRAIN_LIST_TOOLTIP                              :{BLACK}Llista de selecció de trens i vagons. Clica al vehicle per més informació. Ctrl+Click per a alternar entre mostrar/ocultar el vehicle ferroviari
-STR_BUY_VEHICLE_ROAD_VEHICLE_LIST_TOOLTIP                       :{BLACK}Llista de models de vehicles de carretera. Clica sobre el model per més informació. Amb Ctrl+Clic, commuta entre mostrar o ocultar el model.
-STR_BUY_VEHICLE_SHIP_LIST_TOOLTIP                               :{BLACK}Llista de models de vaixells. Clica sobre el model per més informació. Amb Ctrl+Clic, commuta entre mostrar o ocultar el model.
-STR_BUY_VEHICLE_AIRCRAFT_LIST_TOOLTIP                           :{BLACK}Llista de models d'aeronaus. Cliqueu sobre l'aeronau per més informació. Amb Ctrl+Clic, commuta entre mostrar o ocultar l'aeronau.
+STR_BUY_VEHICLE_TRAIN_LIST_TOOLTIP                              :{BLACK}Llista de selecció de trens i vagons. Feu clic als models per a obtenir més informació. Amb Ctrl+clic, es commuta entre mostrar o ocultar el vehicle ferroviari.
+STR_BUY_VEHICLE_ROAD_VEHICLE_LIST_TOOLTIP                       :{BLACK}Llista de models de vehicles de carretera. Feu clic als models per a obtenir més informació. Amb Ctrl+clic, es commuta entre mostrar o ocultar el model.
+STR_BUY_VEHICLE_SHIP_LIST_TOOLTIP                               :{BLACK}Llista de models de vaixells. Feu clic sobre el vaixell per a obtenir més informació. Amb Ctrl+clic, es commuta entre mostrar o ocultar el vaixell.
+STR_BUY_VEHICLE_AIRCRAFT_LIST_TOOLTIP                           :{BLACK}Llista de models d'aeronaus. Feu clic sobre l'aeronau per a obtenir més informació. Amb Ctrl+clic, es commuta entre mostrar o ocultar l'aeronau.
 
 ###length VEHICLE_TYPES
 STR_BUY_VEHICLE_TRAIN_BUY_VEHICLE_BUTTON                        :{BLACK}Compra el tren/vagó
@@ -4096,16 +4116,16 @@ STR_BUY_VEHICLE_SHIP_BUY_REFIT_VEHICLE_BUTTON                   :{BLACK}Compra i
 STR_BUY_VEHICLE_AIRCRAFT_BUY_REFIT_VEHICLE_BUTTON               :{BLACK}Compra i remodela aeronaus
 
 ###length VEHICLE_TYPES
-STR_BUY_VEHICLE_TRAIN_BUY_VEHICLE_TOOLTIP                       :{BLACK}Compra el tren/vagó seleccionat. Amb Maj+Clic, mostra el cost estimat sense comprar-lo.
-STR_BUY_VEHICLE_ROAD_VEHICLE_BUY_VEHICLE_TOOLTIP                :{BLACK}Compra el vehicle marcat. Amb Maj+Clic, mostra el cost estimat sense comprar-lo.
-STR_BUY_VEHICLE_SHIP_BUY_VEHICLE_TOOLTIP                        :{BLACK}Compra el vaixell seleccionat. Amb Maj+Clic, mostra el cost estimat sense comprar-lo.
-STR_BUY_VEHICLE_AIRCRAFT_BUY_VEHICLE_TOOLTIP                    :{BLACK}Compra l'aeronau marcada. Amb Maj+Clic, mostra el cost estimat sense comprar-la.
+STR_BUY_VEHICLE_TRAIN_BUY_VEHICLE_TOOLTIP                       :{BLACK}Compra el tren/vagó seleccionat. Amb Maj+clic, es mostra el cost estimat sense comprar-lo.
+STR_BUY_VEHICLE_ROAD_VEHICLE_BUY_VEHICLE_TOOLTIP                :{BLACK}Compra el vehicle marcat. Amb Maj+clic, es mostra el cost estimat sense comprar-lo.
+STR_BUY_VEHICLE_SHIP_BUY_VEHICLE_TOOLTIP                        :{BLACK}Compra el vaixell seleccionat. Amb Maj+clic, es mostra el cost estimat sense comprar-lo.
+STR_BUY_VEHICLE_AIRCRAFT_BUY_VEHICLE_TOOLTIP                    :{BLACK}Compra l'aeronau marcada. Amb Maj+clic, es mostra el cost estimat sense comprar-la.
 
 ###length VEHICLE_TYPES
-STR_BUY_VEHICLE_TRAIN_BUY_REFIT_VEHICLE_TOOLTIP                 :{BLACK}Compra i remodela el vehicle de tren seleccionat. Amb Maj + Clic es mostra el cost estimat sense comprar-lo.
-STR_BUY_VEHICLE_ROAD_VEHICLE_BUY_REFIT_VEHICLE_TOOLTIP          :{BLACK}Compra i remodela el vehicle de carretera seleccionat. Amb Maj + Clic es mostra el cost estimat sense comprar-lo.
-STR_BUY_VEHICLE_SHIP_BUY_REFIT_VEHICLE_TOOLTIP                  :{BLACK}Compra i remodela el vaixell seleccionat. Amb Maj + Clic es mostra el cost estimat sense comprar-lo.
-STR_BUY_VEHICLE_AIRCRAFT_BUY_REFIT_VEHICLE_TOOLTIP              :{BLACK}Compra i remodela l'aeronau seleccionada. Amb Maj + Clic es mostra el cost estimat sense comprar-la.
+STR_BUY_VEHICLE_TRAIN_BUY_REFIT_VEHICLE_TOOLTIP                 :{BLACK}Compra i remodela el vehicle de tren seleccionat. Amb Maj+clic, es mostra el cost estimat sense comprar-lo.
+STR_BUY_VEHICLE_ROAD_VEHICLE_BUY_REFIT_VEHICLE_TOOLTIP          :{BLACK}Compra i remodela el vehicle de carretera seleccionat. Amb Maj+clic, es mostra el cost estimat sense comprar-lo.
+STR_BUY_VEHICLE_SHIP_BUY_REFIT_VEHICLE_TOOLTIP                  :{BLACK}Compra i remodela el vaixell seleccionat. Amb Maj+clic, es mostra el cost estimat sense comprar-lo.
+STR_BUY_VEHICLE_AIRCRAFT_BUY_REFIT_VEHICLE_TOOLTIP              :{BLACK}Compra i remodela l'aeronau seleccionada. Amb Maj+clic, es mostra el cost estimat sense comprar-la.
 
 ###length VEHICLE_TYPES
 STR_BUY_VEHICLE_TRAIN_RENAME_BUTTON                             :{BLACK}Canvia el nom
@@ -4155,7 +4175,7 @@ STR_DEPOT_VEHICLE_TOOLTIP_CHAIN                                 :{BLACK}{NUM} ve
 STR_DEPOT_VEHICLE_TOOLTIP_CARGO                                 :{}{CARGO_LONG} ({CARGO_SHORT})
 
 ###length VEHICLE_TYPES
-STR_DEPOT_TRAIN_LIST_TOOLTIP                                    :{BLACK}Trens - arrossega el vehicle per afegir/treure del tren, clica amb el botó dret al tren per informació. Mantingues Ctrl per aplicar les dues funcions a la cadena següent
+STR_DEPOT_TRAIN_LIST_TOOLTIP                                    :{BLACK}Trens - arrossegueu el vehicle per a afegir-lo/treure'l del tren. Feu clic amb el botó dret al tren per a obtenir-ne informació. Amb Ctrl, s'apliquen les dues funcions a tota la cadena posterior.
 STR_DEPOT_ROAD_VEHICLE_LIST_TOOLTIP                             :{BLACK}Vehicles - clica amb el botó dret en un vehicle per més informació
 STR_DEPOT_SHIP_LIST_TOOLTIP                                     :{BLACK}Vaixells - clica amb el botó dret en un vaixell per més informació
 STR_DEPOT_AIRCRAFT_LIST_TOOLTIP                                 :{BLACK}Avió - clica amb el botó dret sobre l'avió per més informació
@@ -4197,16 +4217,16 @@ STR_DEPOT_CLONE_SHIP                                            :{BLACK}Clona un
 STR_DEPOT_CLONE_AIRCRAFT                                        :{BLACK}Clona aeronau
 
 ###length VEHICLE_TYPES
-STR_DEPOT_CLONE_TRAIN_DEPOT_INFO                                :{BLACK}Això comprarà una còpia del tren inclosos tots els vagons. Clica aquest botó i després en un tren dins o fora de les cotxeres. Control+Clic compartirà les ordres. Shift+Clic mostra el cost estimat sense comprar-lo
-STR_DEPOT_CLONE_ROAD_VEHICLE_DEPOT_INFO                         :{BLACK}Això comprarà una còpia del vehicle. Clica aquest botó i després en un vehicle dins o fora de les cotxeres. Control+Clic compartirà les ordres. Shift+Clic mostra el cost estimat sense comprar-lo
-STR_DEPOT_CLONE_SHIP_DEPOT_INFO                                 :{BLACK}Això comprarà una còpia del vaixell. Clica aquest botó i després en un vaixell dins o fora les drassanes. Control+Clic compartirà les ordres. Shift+Clic mostra el cost estimat sense comprar-lo
-STR_DEPOT_CLONE_AIRCRAFT_INFO_HANGAR_WINDOW                     :{BLACK}Això comprarà una còpia d'un avió. Clica aquest botó i després en un avió dins o fora l'hangar. Control+Clic compartirà les ordres. Shift+Clic mostra el cost estimat sense comprar-lo
+STR_DEPOT_CLONE_TRAIN_DEPOT_INFO                                :{BLACK}Compra una còpia d'un tren i tots els seus vagons. Feu clic en aquest botó i després en un tren de dins o fora de la cotxera. Amb Ctrl+clic, es compartiran les ordres. Amb Maj, només es mostrarà el cost estimat de l'acció.
+STR_DEPOT_CLONE_ROAD_VEHICLE_DEPOT_INFO                         :{BLACK}Compra una còpia d'un vehicle de carretera. Feu clic en aquest botó i després en un vehicle de carretera de dins o fora de la cotxera. Amb Ctrl+clic, es compartiran les ordres. Amb Maj, només es mostrarà el cost estimat de l'acció.
+STR_DEPOT_CLONE_SHIP_DEPOT_INFO                                 :{BLACK}Compra una còpia d'un vaixell. Feu clic en aquest botó i després en un vaixell de dins o fora de la drassana. Amb Ctrl+clic, es compartiran les ordres. Amb Maj, només es mostrarà el cost estimat de l'acció.
+STR_DEPOT_CLONE_AIRCRAFT_INFO_HANGAR_WINDOW                     :{BLACK}Compra una còpia d'una aeronau. Feu clic en aquest botó i després en una aeronau de dins o fora de l'hangar. Amb Ctrl+clic, es compartiran les ordres. Amb Maj, només es mostrarà el cost estimat de l'acció.
 
 ###length VEHICLE_TYPES
-STR_DEPOT_TRAIN_LOCATION_TOOLTIP                                :{BLACK}Centra la vista principal al lloc de la cotxera. Ctrl+Clic obre una nova vista al lloc de la cotxera
-STR_DEPOT_ROAD_VEHICLE_LOCATION_TOOLTIP                         :{BLACK}Centra la vista principal al lloc de la cotxera. Ctrl+Clic obre una nova vista al lloc de la cotxera
-STR_DEPOT_SHIP_LOCATION_TOOLTIP                                 :{BLACK}Centra la vista principal al lloc de la drassana. Ctrl+Clic obre una nova vista al lloc de la drassana
-STR_DEPOT_AIRCRAFT_LOCATION_TOOLTIP                             :{BLACK}Centra la vista principal al lloc de l'hangar. Ctrl+Clic obre una nova vista al lloc de l'hangar
+STR_DEPOT_TRAIN_LOCATION_TOOLTIP                                :{BLACK}Centra la vista principal al lloc de la cotxera. Amb Ctrl+clic, s'obre una vista nova al lloc de la cotxera.
+STR_DEPOT_ROAD_VEHICLE_LOCATION_TOOLTIP                         :{BLACK}Centra la vista principal al lloc de la cotxera. Amb Ctrl+clic, s'obre una vista nova on hi ha la cotxera.
+STR_DEPOT_SHIP_LOCATION_TOOLTIP                                 :{BLACK}Centra la vista principal al lloc de la drassana. Amb Ctrl+clic, s'obre una vista nova on hi ha la drassana.
+STR_DEPOT_AIRCRAFT_LOCATION_TOOLTIP                             :{BLACK}Centra la vista principal al lloc de l'hangar. Amb Ctrl+clic, s'obre una vista nova on hi ha l'hangar.
 
 ###length VEHICLE_TYPES
 STR_DEPOT_VEHICLE_ORDER_LIST_TRAIN_TOOLTIP                      :{BLACK}Treure una llista de tots els trens amb aquesta cotxera en les seves ordres
@@ -4295,7 +4315,7 @@ STR_REPLACE_HELP_RAILTYPE                                       :{BLACK}Tria el 
 STR_REPLACE_HELP_ROADTYPE                                       :{BLACK}Escolliu el tipus de carretera per a la qual voleu canviar els vehicles.
 ###next-name-looks-similar
 
-STR_REPLACE_HELP_REPLACE_INFO_TAB                               :{BLACK}Mostra quin model dels seleccionats a l'esquerra es substitueix, si n'hi ha
+STR_REPLACE_HELP_REPLACE_INFO_TAB                               :{BLACK}Mostra quin model dels seleccionats a l'esquerra se substitueix, si n'hi ha.
 STR_REPLACE_RAIL_VEHICLES                                       :Trens de Vapor i Dièsel
 STR_REPLACE_ELRAIL_VEHICLES                                     :Trens Elèctrics
 STR_REPLACE_MONORAIL_VEHICLES                                   :Trens monorail
@@ -4312,27 +4332,27 @@ STR_REPLACE_REMOVE_WAGON_GROUP_HELP                             :{STRING}. Ctrl 
 STR_VEHICLE_VIEW_CAPTION                                        :{WHITE}{VEHICLE}
 
 ###length VEHICLE_TYPES
-STR_VEHICLE_VIEW_TRAIN_CENTER_TOOLTIP                           :{BLACK}Centra la vista principal al lloc on està el tren. Si feu doble clic, se'l seguirà a la vista principal. Amb Ctrl+clic s'obre una vista nova al lloc on està el tren.
-STR_VEHICLE_VIEW_ROAD_VEHICLE_CENTER_TOOLTIP                    :{BLACK}Centra la vista principal al lloc on està el vehicle. Si feu doble clic, se'l seguirà a la vista principal. Amb Ctrl+clic s'obre una vista nova al lloc on està el vehicle.
-STR_VEHICLE_VIEW_SHIP_CENTER_TOOLTIP                            :{BLACK}Centra la vista principal al lloc on està el vaixell. Si feu doble clic, se'l seguirà a la vista principal. Amb Ctrl+clic s'obre una vista nova al lloc on està el vaixell.
-STR_VEHICLE_VIEW_AIRCRAFT_CENTER_TOOLTIP                        :{BLACK}Centra la vista principal al lloc on està l'aeronau. Si feu doble clic, se la seguirà a la vista principal. Amb Ctrl+clic s'obre una vista nova al lloc on està l'aeronau.
+STR_VEHICLE_VIEW_TRAIN_CENTER_TOOLTIP                           :{BLACK}Centra la vista principal al lloc on està el tren. Si feu doble clic, se'l seguirà a la vista principal. Amb Ctrl+clic, s'obre una vista nova al lloc on està el tren.
+STR_VEHICLE_VIEW_ROAD_VEHICLE_CENTER_TOOLTIP                    :{BLACK}Centra la vista principal al lloc on està el vehicle. Si feu doble clic, se'l seguirà a la vista principal. Amb Ctrl+clic, s'obre una vista nova al lloc on està el vehicle.
+STR_VEHICLE_VIEW_SHIP_CENTER_TOOLTIP                            :{BLACK}Centra la vista principal al lloc on on està el vaixell. Si feu doble clic, se'l seguirà a la vista principal. Amb Ctrl+clic, s'obre una vista al lloc on està el vaixell.
+STR_VEHICLE_VIEW_AIRCRAFT_CENTER_TOOLTIP                        :{BLACK}Centra la vista principal al lloc on està l'aeronau. Si feu doble clic, se la seguirà a la vista principal. Amb Ctrl+clic, s'obre una vista nova al lloc on està l'aeronau.
 
 ###length VEHICLE_TYPES
-STR_VEHICLE_VIEW_TRAIN_SEND_TO_DEPOT_TOOLTIP                    :{BLACK}Envia el tren a cotxera
-STR_VEHICLE_VIEW_ROAD_VEHICLE_SEND_TO_DEPOT_TOOLTIP             :{BLACK}Envia el vehicle a cotxera
-STR_VEHICLE_VIEW_SHIP_SEND_TO_DEPOT_TOOLTIP                     :{BLACK}Envia el vaixell a la drassana. CTRL+Clic per només revisió
-STR_VEHICLE_VIEW_AIRCRAFT_SEND_TO_DEPOT_TOOLTIP                 :{BLACK}Envia avió a l'hangar
+STR_VEHICLE_VIEW_TRAIN_SEND_TO_DEPOT_TOOLTIP                    :{BLACK}Envia el tren a una cotxera. Amb Ctrl+clic, se l'enviarà només a fer una revisió.
+STR_VEHICLE_VIEW_ROAD_VEHICLE_SEND_TO_DEPOT_TOOLTIP             :{BLACK}Envia el vehicle a una cotxera. Amb Ctrl+clic, se l'enviarà només a fer una revisió.
+STR_VEHICLE_VIEW_SHIP_SEND_TO_DEPOT_TOOLTIP                     :{BLACK}Envia el vaixell a una drassana. Amb Ctrl+clic, se l'enviarà només a fer una revisió.
+STR_VEHICLE_VIEW_AIRCRAFT_SEND_TO_DEPOT_TOOLTIP                 :{BLACK}Envia l'aeronau a l'hangar. Amb Ctrl+clic, només s'anirà a fer una revisió.
 
 ###length VEHICLE_TYPES
-STR_VEHICLE_VIEW_CLONE_TRAIN_INFO                               :{BLACK}Això comprarà una còpia del tren inclosos tots els vagons. Control+Clic compartirà les ordres. Shift+Clic mostra el cost estimat sense comprar-lo
-STR_VEHICLE_VIEW_CLONE_ROAD_VEHICLE_INFO                        :{BLACK}Això comprarà una còpia del vehicle. Control+Clic compartirà les ordres. Shift+Clic mostra el cost estimat sense comprar-lo
-STR_VEHICLE_VIEW_CLONE_SHIP_INFO                                :{BLACK}Això comprarà una còpia del vaixell. Control+Clic compartirà les ordres. Shift+Clic mostra el cost estimat sense comprar-lo
-STR_VEHICLE_VIEW_CLONE_AIRCRAFT_INFO                            :{BLACK}Això comprarà una còpia de l'avió. Control+Clic compartirà les ordres. Shift+Clic mostra el cost estimat sense comprar-lo
+STR_VEHICLE_VIEW_CLONE_TRAIN_INFO                               :{BLACK}Compra una còpia d'un tren i tots els seus vagons. Amb Ctrl+clic, es compartiran les ordres. Amb Maj, només es mostrarà el cost estimat de l'acció.
+STR_VEHICLE_VIEW_CLONE_ROAD_VEHICLE_INFO                        :{BLACK}Compra una còpia d'un vehicle de carretera. Amb Ctrl+clic, es compartiran les ordres. Amb Maj, només es mostrarà el cost estimat de l'acció.
+STR_VEHICLE_VIEW_CLONE_SHIP_INFO                                :{BLACK}Compra una còpia d'un vaixell. Amb Ctrl+clic, es compartiran les ordres. Amb Maj, només es mostrarà el cost estimat de l'acció.
+STR_VEHICLE_VIEW_CLONE_AIRCRAFT_INFO                            :{BLACK}Compra una còpia d'una aeronau. Amb Ctrl+clic, es compartiran les ordres. Amb Maj, només es mostrarà el cost estimat de l'acció.
 
 STR_VEHICLE_VIEW_TRAIN_IGNORE_SIGNAL_TOOLTIP                    :{BLACK}Obliga al tren a actuar sense esperar a tenir el semàfor lliure
 STR_VEHICLE_VIEW_TRAIN_REVERSE_TOOLTIP                          :{BLACK}Inverteix la direcció del tren
 STR_VEHICLE_VIEW_ROAD_VEHICLE_REVERSE_TOOLTIP                   :{BLACK}Obliga al vehicle a tornar
-STR_VEHICLE_VIEW_ORDER_LOCATION_TOOLTIP                         :{BLACK}Centra la vista principal a la destinació de l'ordre. Amb Ctrl+clic s'obre una vista nova al lloc de la destinació de l'ordre.
+STR_VEHICLE_VIEW_ORDER_LOCATION_TOOLTIP                         :{BLACK}Centra la vista principal a la destinació de l'ordre. Amb Ctrl+clic, s'obre una vista centrada al lloc de la destinació de l'ordre.
 
 ###length VEHICLE_TYPES
 STR_VEHICLE_VIEW_TRAIN_REFIT_TOOLTIP                            :{BLACK}Remodela un tren per transportar un altre tipus de càrrega
@@ -4431,6 +4451,7 @@ STR_VEHICLE_DETAILS_SERVICING_INTERVAL_PERCENT                  :{BLACK}Interval
 STR_VEHICLE_DETAILS_LAST_SERVICE_DATE                           :Última revisió: {LTBLUE}{DATE_LONG}
 STR_VEHICLE_DETAILS_LAST_SERVICE_MINUTES_AGO                    :Última revisió: fa {LTBLUE}{NUM} minut{P "" s}
 STR_VEHICLE_DETAILS_INCREASE_SERVICING_INTERVAL_TOOLTIP_DAYS    :{BLACK}Augmenta l'interval de servei 10 dies. Amb Ctrl+Clic, s'augmenta l'interval només 5 dies.
+STR_VEHICLE_DETAILS_INCREASE_SERVICING_INTERVAL_TOOLTIP_MINUTES :{BLACK}Augmenta l'interval de servei 5 minuts. Amb Ctrl+Clic, s'augmenta l'interval només 1 dia.
 STR_VEHICLE_DETAILS_INCREASE_SERVICING_INTERVAL_TOOLTIP_PERCENT :{BLACK}Augmenta l'interval de servei un 10{NBSP}%. Amb Ctrl+Clic, s'augmenta només un 5{NBSP}%.
 STR_VEHICLE_DETAILS_DECREASE_SERVICING_INTERVAL_TOOLTIP_DAYS    :{BLACK}Redueix l'interval de servei 10 dies. Amb Ctrl+Clic, es redueix l'interval només 5 dies.
 STR_VEHICLE_DETAILS_DECREASE_SERVICING_INTERVAL_TOOLTIP_MINUTES :{BLACK}Redueix l'interval de servei 5 minuts. Amb Ctrl+Clic, es redueix l'interval només 1 minut.
@@ -4478,7 +4499,7 @@ STR_REFIT_NEW_CAPACITY_COST_OF_REFIT                            :{BLACK}Nova cap
 STR_REFIT_NEW_CAPACITY_INCOME_FROM_REFIT                        :{BLACK}Nova capacitat: {GOLD}{CARGO_LONG}{}{BLACK}Retorn de la remodelació: {GREEN}{CURRENCY_LONG}
 STR_REFIT_NEW_CAPACITY_COST_OF_AIRCRAFT_REFIT                   :{BLACK}Nova capacitat: {GOLD}{CARGO_LONG}, {GOLD}{CARGO_LONG}{}{BLACK}Cost de remodelació: {RED}{CURRENCY_LONG}
 STR_REFIT_NEW_CAPACITY_INCOME_FROM_AIRCRAFT_REFIT               :{BLACK}Nova capacitat: {GOLD}{CARGO_LONG}, {GOLD}{CARGO_LONG}{}{BLACK}Retorn de la remodelació: {GREEN}{CURRENCY_LONG}
-STR_REFIT_SELECT_VEHICLES_TOOLTIP                               :{BLACK}Selecciona els vehicles a remodelar. Arrossegant amb el ratolí permet la selecció de múltiples vehicles. Clicant en un espai buit es seleccionarà el vehicle sencer. Ctrl+Clic seleccionarà un vehicle i la cadena següent
+STR_REFIT_SELECT_VEHICLES_TOOLTIP                               :{BLACK}Trieu els vehicles a remodelar. Amb Clicarrossegar, es poden seleccionar diversos vehicles. Si es fa clic en un espai buit, se seleccionarà el vehicle sencer. Amb Ctrl+clic, se seleccionarà el vehicle i tota la cadena posterior.
 
 ###length VEHICLE_TYPES
 STR_REFIT_TRAIN_LIST_TOOLTIP                                    :{BLACK}Selecciona tipus de càrrega a transportar
@@ -4503,7 +4524,7 @@ STR_ORDERS_CAPTION                                              :{WHITE}{VEHICLE
 STR_ORDERS_TIMETABLE_VIEW                                       :{BLACK}Horari
 STR_ORDERS_TIMETABLE_VIEW_TOOLTIP                               :{BLACK}Commuta a la vista d'horaris
 
-STR_ORDERS_LIST_TOOLTIP                                         :{BLACK}Llista d'ordres - clica en una ordre per marcar-la. Ctrl+Clic desplaça cap a la destinació de l'ordre
+STR_ORDERS_LIST_TOOLTIP                                         :{BLACK}Llista d'ordres - feu clic en una ordre per a marcar-la. Amb Ctrl+clic, es centra la vista a la destinació de l'ordre.
 STR_ORDER_INDEX                                                 :{COMMA}:{NBSP}
 STR_ORDER_TEXT                                                  :{STRING} {STRING} {STRING} {STRING}
 
@@ -4548,6 +4569,7 @@ STR_ORDER_DROP_UNBUNCH                                          :Separa
 ###length VEHICLE_TYPES
 STR_ORDER_TRAIN_DEPOT_ACTION_TOOLTIP                            :{BLACK}Trieu l'acció que cal fer en aquest dipòsit.
 STR_ORDER_ROAD_DEPOT_ACTION_TOOLTIP                             :{BLACK}Trieu l'acció que cal fer en aquesta cotxera.
+STR_ORDER_SHIP_DEPOT_ACTION_TOOLTIP                             :{BLACK}Trieu l'acció que cal fer en aquesta drassana.
 STR_ORDER_HANGAR_ACTION_TOOLTIP                                 :{BLACK}Trieu l'acció que cal fer en aquest hangar.
 ###next-name-looks-similar
 
@@ -4579,20 +4601,20 @@ STR_ORDER_CONDITIONAL_VALUE_TOOLTIP                             :{BLACK}El valor
 STR_ORDER_CONDITIONAL_VALUE_CAPT                                :{WHITE}Introdueix el valor amb el que comparar
 
 STR_ORDERS_SKIP_BUTTON                                          :{BLACK}Salta
-STR_ORDERS_SKIP_TOOLTIP                                         :{BLACK}Salta l'ordre actual, i comença la següent. CTRL + clic salta l'ordre seleccionada
+STR_ORDERS_SKIP_TOOLTIP                                         :{BLACK}Salta l'ordre actual, i comença la següent. Amb Ctrl+clic, es salta a l'ordre seleccionada.
 
 STR_ORDERS_DELETE_BUTTON                                        :{BLACK}Esborra
 STR_ORDERS_DELETE_TOOLTIP                                       :{BLACK}Esborra l'ordre seleccionada
 STR_ORDERS_DELETE_ALL_TOOLTIP                                   :{BLACK}Esborra totes les ordres
 STR_ORDERS_STOP_SHARING_BUTTON                                  :{BLACK}Deixa de compartir
-STR_ORDERS_STOP_SHARING_TOOLTIP                                 :{BLACK}Deixa de compartir la llista d'ordres. Ctrl+Clic esborra totes ordres per aquest vehicle
+STR_ORDERS_STOP_SHARING_TOOLTIP                                 :{BLACK}Deixa de compartir la llista d'ordres. Amb Ctrl+clic, a més a més s'esborren totes les ordres d'aquest vehicle.
 
 STR_ORDERS_GO_TO_BUTTON                                         :{BLACK}Vés a
 STR_ORDER_GO_TO_NEAREST_DEPOT                                   :Vés al dipòsit més proper
 STR_ORDER_GO_TO_NEAREST_HANGAR                                  :Vés a l'hangar més proper
 STR_ORDER_CONDITIONAL                                           :Ordre de salt condicionada
 STR_ORDER_SHARE                                                 :Comparteix ordres
-STR_ORDERS_GO_TO_TOOLTIP                                        :{BLACK}Afegeix una nova ordre abans de la seleccionada, o afegeix-la al final de la llista. Ctrl crea les ordres d'estació 'carrega qualsevol càrrega', les ordres de punt de pas 'sense parada' i les ordres de cotxeres 'revisió'. 'Comparteix ordres' o Ctrl permet que aquest vehicle comparteixi ordres amb el vehicle seleccionat. Clicant un vehicle copia les ordres des d'aquest vehicle. Una ordre de cotxeres desactiva la revisió automàtica del vehicle
+STR_ORDERS_GO_TO_TOOLTIP                                        :{BLACK}Afegeix una nova ordre abans de la seleccionada, o afegeix-la al final de la llista. Amb Ctrl+clic, es creen ordres d'estació "carrega qualsevol càrrega", ordres de punt de pas "sense parada" i ordres de cotxeres de "revisió". Si es fa clic en un altre vehicle, es copien les seves ordres; amb Ctrl+clic, a més a més es compartiran les ordres. Una ordre de cotxeres desactiva la revisió automàtica del vehicle.
 
 STR_ORDERS_VEH_WITH_SHARED_ORDERS_LIST_TOOLTIP                  :{BLACK}Mostra tots els vehicles que tenen les mateixes ordres
 
@@ -4700,21 +4722,21 @@ STR_TIMETABLE_STATUS_START_AT_DATE                              :{BLACK}Aquest h
 STR_TIMETABLE_STATUS_START_IN_SECONDS                           :{BLACK}Aquest horari començarà en {COMMA}{NBSP}segons
 
 STR_TIMETABLE_START                                             :{BLACK}Comença l'horari
-STR_TIMETABLE_START_TOOLTIP                                     :{BLACK}Trieu quan ha de començar l'horari. Amb Ctrl+clic es distribuirà l'inici de tots els vehicles que comparteixen les ordres segons el seu ordre relatiu, si s'ha establert completament l'horari.
+STR_TIMETABLE_START_TOOLTIP                                     :{BLACK}Trieu quan ha de començar l'horari. Amb Ctrl+clic i si s'ha establert completament l'horari, es distribuirà l'inici de l'horari de tots els vehicles que comparteixen les ordres segons el seu ordre relatiu.
 
 STR_TIMETABLE_START_SECONDS_QUERY                               :Segons fins que comenci l'horari
 
 STR_TIMETABLE_CHANGE_TIME                                       :{BLACK}Canvia Temps
-STR_TIMETABLE_WAIT_TIME_TOOLTIP                                 :{BLACK}Canvia el emps que l'ordre marcada hauria de prendre. Amb Ctrl+clic estableix el temps per a totes les ordres.
+STR_TIMETABLE_WAIT_TIME_TOOLTIP                                 :{BLACK}Canvia la durada desitjada de l'ordre. Amb Ctrl+clic, s'estableix el mateix temps a totes les ordres.
 
 STR_TIMETABLE_CLEAR_TIME                                        :{BLACK}Esborra Temps
 STR_TIMETABLE_CLEAR_TIME_TOOLTIP                                :{BLACK}Esborra la quantitat de temps de l'ordre marcada. Amb Ctrl+clic, s'esborra el temps per a totes les ordres.
 
 STR_TIMETABLE_CHANGE_SPEED                                      :{BLACK}Canvia el límit de velocitat
-STR_TIMETABLE_CHANGE_SPEED_TOOLTIP                              :{BLACK}Canvia la velocitat de viatge màxima de l'ordre seleccionada. Amb Ctrl+clic s'estableix la velocitat per a totes les ordres.
+STR_TIMETABLE_CHANGE_SPEED_TOOLTIP                              :{BLACK}Canvia la velocitat de viatge màxima de l'ordre seleccionada. Amb Ctrl+clic, s'estableix la velocitat per a totes les ordres.
 
 STR_TIMETABLE_CLEAR_SPEED                                       :{BLACK}Esborra el límit de velocitat
-STR_TIMETABLE_CLEAR_SPEED_TOOLTIP                               :{BLACK}Esborra la velocitat de viatge màxima de l'ordre seleccionada. Amb Ctrl+clic s'esborra la velocitat per a totes les ordres.
+STR_TIMETABLE_CLEAR_SPEED_TOOLTIP                               :{BLACK}Esborra la velocitat de viatge màxima de l'ordre seleccionada. Amb Ctrl+clic, s'esborra la velocitat per a totes les ordres.
 
 STR_TIMETABLE_RESET_LATENESS                                    :{BLACK}Restablir Retard
 STR_TIMETABLE_RESET_LATENESS_TOOLTIP                            :{BLACK}Restableix el comptador de retards, de manera que el vehicle serà puntual. Amb Ctrl+clic, es restableix el grup sencer de manera que el vehicle més endarrerit passa a anar a hora i els altres arribaran abans d'hora.

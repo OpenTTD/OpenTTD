@@ -519,7 +519,7 @@ STR_TOOLBAR_TOOLTIP_DISPLAY_STORY_BOOK                          :{BLACK}Исто
 STR_TOOLBAR_TOOLTIP_DISPLAY_GOALS_LIST                          :{BLACK}Список задач
 STR_TOOLBAR_TOOLTIP_DISPLAY_GRAPHS                              :{BLACK}Графики различных показателей деятельности компаний и оплаты грузоперевозок
 STR_TOOLBAR_TOOLTIP_DISPLAY_COMPANY_LEAGUE                      :{BLACK}Рейтинги компаний
-STR_TOOLBAR_TOOLTIP_FUND_CONSTRUCTION_OF_NEW                    :{BLACK}Список существующих предприятий; создание новых
+STR_TOOLBAR_TOOLTIP_FUND_CONSTRUCTION_OF_NEW                    :{BLACK}Открыть промышленный каталог, производственную цепочку или финансировать строительство новой промышленности
 STR_TOOLBAR_TOOLTIP_DISPLAY_LIST_OF_COMPANY_TRAINS              :{BLACK}Списки поездов по компаниям. Ctrl+щелчок - показать/скрыть группы.
 STR_TOOLBAR_TOOLTIP_DISPLAY_LIST_OF_COMPANY_ROAD_VEHICLES       :{BLACK}Списки автомобильного транспорта по компаниям. Ctrl+щелчок - показать/скрыть группы.
 STR_TOOLBAR_TOOLTIP_DISPLAY_LIST_OF_COMPANY_SHIPS               :{BLACK}Списки судов по компаниям. Ctrl+щелчок - показать/скрыть группы.
@@ -528,7 +528,7 @@ STR_TOOLBAR_TOOLTIP_ZOOM_THE_VIEW_IN                            :{BLACK}Приб
 STR_TOOLBAR_TOOLTIP_ZOOM_THE_VIEW_OUT                           :{BLACK}Отдалить
 STR_TOOLBAR_TOOLTIP_BUILD_RAILROAD_TRACK                        :{BLACK}Строительство железнодорожной инфраструктуры
 STR_TOOLBAR_TOOLTIP_BUILD_ROADS                                 :{BLACK}Строительство автомобильной инфраструктуры
-STR_TOOLBAR_TOOLTIP_BUILD_TRAMWAYS                              :{BLACK}Строительство трамвайных путей
+STR_TOOLBAR_TOOLTIP_BUILD_TRAMWAYS                              :{BLACK}Строительство трамвайной инфраструктуры
 STR_TOOLBAR_TOOLTIP_BUILD_SHIP_DOCKS                            :{BLACK}Строительство речной/морской инфраструктуры
 STR_TOOLBAR_TOOLTIP_BUILD_AIRPORTS                              :{BLACK}Строительство аэропортов
 STR_TOOLBAR_TOOLTIP_LANDSCAPING                                 :{BLACK}Открыть панель ландшафта для изменения рельефа, посадки деревьев и т.д.
@@ -545,7 +545,7 @@ STR_SCENEDIT_TOOLBAR_TOOLTIP_MOVE_THE_STARTING_DATE_BACKWARD    :{BLACK}Нача
 STR_SCENEDIT_TOOLBAR_TOOLTIP_MOVE_THE_STARTING_DATE_FORWARD     :{BLACK}Начать игру на 1 год позже
 STR_SCENEDIT_TOOLBAR_TOOLTIP_SET_DATE                           :{BLACK}Нажмите, чтобы изменить год начала игры
 STR_SCENEDIT_TOOLBAR_TOOLTIP_DISPLAY_MAP_TOWN_DIRECTORY         :{BLACK}Показать карту, дополнительное окно просмотра, список меток, городов, предприятий
-STR_SCENEDIT_TOOLBAR_LANDSCAPE_GENERATION                       :{BLACK}Создание ландшафта
+STR_SCENEDIT_TOOLBAR_LANDSCAPE_GENERATION                       :{BLACK}Открыть меню ладшафта или создать новый мир
 STR_SCENEDIT_TOOLBAR_TOWN_GENERATION                            :{BLACK}Создание городов
 STR_SCENEDIT_TOOLBAR_INDUSTRY_GENERATION                        :{BLACK}Создание предприятий
 STR_SCENEDIT_TOOLBAR_ROAD_CONSTRUCTION                          :{BLACK}Строительство автомобильной инфраструктуры
@@ -1094,6 +1094,8 @@ STR_GAME_OPTIONS_TAB_GRAPHICS                                   :Графика
 STR_GAME_OPTIONS_TAB_GRAPHICS_TT                                :{BLACK}Настройки графики
 STR_GAME_OPTIONS_TAB_SOUND                                      :Звук
 STR_GAME_OPTIONS_TAB_SOUND_TT                                   :{BLACK}Настройки звука и музыки
+STR_GAME_OPTIONS_TAB_SOCIAL                                     :Социальный
+STR_GAME_OPTIONS_TAB_SOCIAL_TT                                  :Выберите настройки социальной интеграции
 
 STR_GAME_OPTIONS_VOLUME                                         :Громкость
 STR_GAME_OPTIONS_SFX_VOLUME                                     :Звуковые эффекты
@@ -2946,7 +2948,7 @@ STR_RAIL_TOOLBAR_MAGLEV_CONSTRUCTION_CAPTION                    :Магнитн�
 
 STR_RAIL_TOOLBAR_TOOLTIP_BUILD_RAILROAD_TRACK                   :{BLACK}Строительство железнодорожных путей. При нажатом Ctrl - удаление путей. При нажатом Shift - оценка стоимости работ.
 STR_RAIL_TOOLBAR_TOOLTIP_BUILD_AUTORAIL                         :{BLACK}Строительство железнодорожных путей в автоматическом режиме. При нажатом Ctrl - удаление путей. При нажатом Shift - оценка стоимости работ.
-STR_RAIL_TOOLBAR_TOOLTIP_BUILD_TRAIN_DEPOT_FOR_BUILDING         :{BLACK}Строительство депо (для приобретения и обслуживания поездов). При нажатом Shift - оценка стоимости строительства.
+STR_RAIL_TOOLBAR_TOOLTIP_BUILD_TRAIN_DEPOT_FOR_BUILDING         :{BLACK}Строительство депо (для приобретения и обслуживания поездов). Нажмите Shift, чтобы показать только стоимость строительства
 STR_RAIL_TOOLBAR_TOOLTIP_CONVERT_RAIL_TO_WAYPOINT               :{BLACK}Установка на рельсах маршрутных точек. Нажатие Ctrl позволяет объединять точки. При нажатом Shift - оценка стоимости строительства.
 STR_RAIL_TOOLBAR_TOOLTIP_BUILD_RAILROAD_STATION                 :{BLACK}Строительство ж/д станций. Ctrl+щелчок - объединение новой станции с существующей. При нажатом Shift - оценка стоимости строительства.
 STR_RAIL_TOOLBAR_TOOLTIP_BUILD_RAILROAD_SIGNALS                 :{BLACK}Установка сигналов на ж/д путях. Ctrl переключает семафоры/светофоры.{}Перетаскиванием можно строить сигналы с заданным интервалом. Ctrl+перетаскивание - строительство сигналов до ближайшей стрелки, сигнала или станции. При нажатом Shift - оценка стоимости строительства.
@@ -3917,6 +3919,11 @@ STR_STATION_LIST_STATION                                        :{YELLOW}{STATIO
 STR_STATION_LIST_WAYPOINT                                       :{YELLOW}{WAYPOINT}
 STR_STATION_LIST_NONE                                           :{YELLOW}- Нет -
 STR_STATION_LIST_SELECT_ALL_FACILITIES                          :{BLACK}Показать все станции
+STR_STATION_LIST_CARGO_FILTER_ALL_AND_NO_RATING                 :Все типы грузов без рейтинга
+STR_STATION_LIST_CARGO_FILTER_MULTIPLE                          :Много видов грузов
+STR_STATION_LIST_CARGO_FILTER_NO_CARGO_TYPES                    :Нет типа груза
+STR_STATION_LIST_CARGO_FILTER_ONLY_NO_RATING                    :Только грузы без рейтинга
+STR_STATION_LIST_CARGO_FILTER_NO_RATING                         :Нет грузового рейтинга
 
 # Station view window
 STR_STATION_VIEW_CAPTION                                        :{WHITE}{STATION} {STATION_FEATURES}
@@ -4517,7 +4524,7 @@ STR_VEHICLE_VIEW_AIRCRAFT_CENTER_TOOLTIP                        :{BLACK}Пока
 ###length VEHICLE_TYPES
 STR_VEHICLE_VIEW_TRAIN_SEND_TO_DEPOT_TOOLTIP                    :{BLACK}Отправить поезд в депо. Ctrl+щелчок - провести техническое обслуживание.
 STR_VEHICLE_VIEW_ROAD_VEHICLE_SEND_TO_DEPOT_TOOLTIP             :{BLACK}Отправить автомобиль в гараж. Ctrl+щелчок - только провести техническое обслуживание.
-STR_VEHICLE_VIEW_SHIP_SEND_TO_DEPOT_TOOLTIP                     :{BLACK}Отправить судно в док. Ctrl+щелчок - провести техническое обслуживание.
+STR_VEHICLE_VIEW_SHIP_SEND_TO_DEPOT_TOOLTIP                     :{BLACK}Отправить судно в док. Ctrl+щелчок, чтобы только провести техническое обслуживание.
 STR_VEHICLE_VIEW_AIRCRAFT_SEND_TO_DEPOT_TOOLTIP                 :{BLACK}Отправить воздушное судно в ангар. Ctrl+щелчок - провести техническое обслуживание.
 
 ###length VEHICLE_TYPES
@@ -4558,6 +4565,7 @@ STR_VEHICLE_VIEW_AIRCRAFT_STATUS_START_STOP_TOOLTIP             :{BLACK}Теку
 # Messages in the start stop button in the vehicle view
 STR_VEHICLE_STATUS_LOADING_UNLOADING                            :{LTBLUE}Разгрузка/Погрузка
 STR_VEHICLE_STATUS_LEAVING                                      :{LTBLUE}Отъезжает
+STR_VEHICLE_STATUS_WAITING_UNBUNCHING                           :{LTBLUE}Ожидание развязки
 STR_VEHICLE_STATUS_CRASHED                                      :{RED}Попал в аварию!
 STR_VEHICLE_STATUS_BROKEN_DOWN                                  :{RED}Поломка
 STR_VEHICLE_STATUS_STOPPED                                      :{RED}Остановлен

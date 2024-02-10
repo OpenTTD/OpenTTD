@@ -3754,6 +3754,13 @@ STR_STATION_LIST_STATION                                        :{YELLOW}{STATIO
 STR_STATION_LIST_WAYPOINT                                       :{YELLOW}{WAYPOINT}
 STR_STATION_LIST_NONE                                           :{YELLOW}- Nav -
 STR_STATION_LIST_SELECT_ALL_FACILITIES                          :{BLACK}Izvēlēties visu aprīkojumu
+STR_STATION_LIST_CARGO_FILTER_ALL_AND_NO_RATING                 :Visi kravu veidi un bez vērtējuma
+STR_STATION_LIST_CARGO_FILTER_MULTIPLE                          :Vairāki kravu veidi
+STR_STATION_LIST_CARGO_FILTER_NO_CARGO_TYPES                    :Nav kravas veidu
+STR_STATION_LIST_CARGO_FILTER_ONLY_NO_RATING                    :Tikai bez kravas vērtējuma
+STR_STATION_LIST_CARGO_FILTER_SELECT_ALL                        :Atlasīt visu un bez vērtējuma
+STR_STATION_LIST_CARGO_FILTER_NO_RATING                         :Nav kravas vērtējuma
+STR_STATION_LIST_CARGO_FILTER_EXPAND                            :Parādīt vairāk...
 
 # Station view window
 STR_STATION_VIEW_CAPTION                                        :{WHITE}{STATION} {STATION_FEATURES}

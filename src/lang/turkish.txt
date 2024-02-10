@@ -214,6 +214,8 @@ STR_COLOUR_SECONDARY_SAME_AS_PRIMARY                            :Birincil Ile Ay
 STR_UNITS_VELOCITY_IMPERIAL                                     :{DECIMAL}{NBSP}mil/s
 STR_UNITS_VELOCITY_METRIC                                       :{DECIMAL}{NBSP}km/s
 STR_UNITS_VELOCITY_SI                                           :{DECIMAL}{NBSP}m/s
+STR_UNITS_VELOCITY_GAMEUNITS_DAY                                :{DECIMAL}{NBSP}karo/gün
+STR_UNITS_VELOCITY_GAMEUNITS_SEC                                :{DECIMAL}{NBSP}karo/saniye
 STR_UNITS_VELOCITY_KNOTS                                        :{DECIMAL}{NBSP}hava hızı
 
 STR_UNITS_POWER_IMPERIAL                                        :{DECIMAL}{NBSP}bg
@@ -259,7 +261,10 @@ STR_UNITS_DAYS                                                  :{COMMA}{NBSP}g�
 STR_UNITS_SECONDS                                               :{COMMA}{NBSP}saniye{P "ler" }
 STR_UNITS_TICKS                                                 :{COMMA}{NBSP}tik{P "ler" }
 
+STR_UNITS_MONTHS                                                :{NUM}{NBSP}ay{P "lar"}
+STR_UNITS_MINUTES                                               :{NUM}{NBSP}dakika{P "lar" }
 
+STR_UNITS_PERIODS                                               :{NUM}{NBSP}dönem{P "ler"}
 
 # Common window strings
 STR_LIST_FILTER_TITLE                                           :{BLACK}Filtre:
@@ -601,6 +606,8 @@ STR_GRAPH_COMPANY_VALUES_CAPTION                                :{WHITE}Şirket 
 
 
 STR_GRAPH_CARGO_PAYMENT_RATES_CAPTION                           :{WHITE}Kargo Ödeme Seviyeleri
+STR_GRAPH_CARGO_PAYMENT_RATES_DAYS                              :{TINY_FONT}{BLACK}Transit günler
+STR_GRAPH_CARGO_PAYMENT_RATES_SECONDS                           :{TINY_FONT}{BLACK}Geçişte saniyeler
 STR_GRAPH_CARGO_PAYMENT_RATES_TITLE                             :{TINY_FONT}{BLACK}20 karelik yolda 10 birim (ya da 10,000 litre) için ödeme
 STR_GRAPH_CARGO_ENABLE_ALL                                      :{TINY_FONT}{BLACK}Tümünü aç
 STR_GRAPH_CARGO_DISABLE_ALL                                     :{TINY_FONT}{BLACK}Tümünü kapat
@@ -649,6 +656,8 @@ STR_PERFORMANCE_DETAIL_LOAN                                     :{BLACK}Kredi:
 STR_PERFORMANCE_DETAIL_TOTAL                                    :{BLACK}Toplam:
 ###next-name-looks-similar
 
+STR_PERFORMANCE_DETAIL_VEHICLES_TOOLTIP_YEARS                   :{BLACK}Geçen yıl kâr eden araç sayısı. Buna karayolu araçları, trenler, gemiler ve uçaklar dahildir
+STR_PERFORMANCE_DETAIL_VEHICLES_TOOLTIP_PERIODS                 :{BLACK}Son dönemde kâr eden araç sayısı. Buna karayolu araçları, trenler, gemiler ve uçaklar dahildir
 STR_PERFORMANCE_DETAIL_STATIONS_TOOLTIP                         :{BLACK}Yakın zamanda hizmet almış istasyon sayısı. Tren garları, otobüs durakları, havalimanları vb. aynı istasyona bağlı olsa da ayrı olarak sayılır.
 STR_PERFORMANCE_DETAIL_MIN_INCOME_TOOLTIP                       :{BLACK}Son 12 çeyrek içindeki en az karlı çeyrek
 STR_PERFORMANCE_DETAIL_MAX_INCOME_TOOLTIP                       :{BLACK}Son 12 çeyrek içindeki en karlı çeyrekte kazanılan para
@@ -1051,8 +1060,15 @@ STR_GAME_OPTIONS_BASE_MUSIC                                     :{BLACK}Temel m�
 STR_GAME_OPTIONS_BASE_MUSIC_TOOLTIP                             :{BLACK}Kullanılacak temel müzik kümesini seçin
 STR_GAME_OPTIONS_BASE_MUSIC_DESCRIPTION_TOOLTIP                 :{BLACK}Temel müzik hakkında daha fazla bilgi
 
+STR_GAME_OPTIONS_SOCIAL_PLUGINS_NONE                            :{LTBLUE}(yüklü sosyal platformlarla entegre edilecek eklenti yok)
 
+STR_GAME_OPTIONS_SOCIAL_PLUGIN_PLATFORM                         :{BLACK}Platform:
+STR_GAME_OPTIONS_SOCIAL_PLUGIN_STATE                            :{BLACK}Eklenti statüsü:
 
+STR_GAME_OPTIONS_SOCIAL_PLUGIN_STATE_FAILED                     :{RED}Başlatılamadı
+STR_GAME_OPTIONS_SOCIAL_PLUGIN_STATE_PLATFORM_NOT_RUNNING       :{ORANGE}{STRING} çalışmıyor
+STR_GAME_OPTIONS_SOCIAL_PLUGIN_STATE_DUPLICATE                  :{RED}Yinelenen eklenti
+STR_GAME_OPTIONS_SOCIAL_PLUGIN_STATE_INVALID_SIGNATURE          :{RED}Geçersiz imza
 
 STR_BASESET_STATUS                                              :{STRING} {RED}({NUM} eksik/bozuk dosya{P "lar" })
 
@@ -1763,6 +1779,8 @@ STR_CONFIG_SETTING_SERVINT_DISABLED                             :Etkisiz
 STR_CONFIG_SETTING_NOSERVICE                                    :Bozulmalar kapalıysa sevisler kapalı olsun: {STRING}
 STR_CONFIG_SETTING_NOSERVICE_HELPTEXT                           :Etkinleştirildiğinde, araçlar bozulmuyorlarsa bakıma gönderilmezler
 
+STR_CONFIG_SETTING_STATION_LENGTH_LOADING_PENALTY               :İstasyondan uzun trenler için yükleme hızı cezası: {STRING}
+STR_CONFIG_SETTING_STATION_LENGTH_LOADING_PENALTY_HELPTEXT      :Etkinleştirildiğinde, istasyon için çok uzun olan trenler, istasyona uyan bir trene göre daha yavaş yüklenir. Bu ayar yol bulmayı etkilemez.
 
 STR_CONFIG_SETTING_WAGONSPEEDLIMITS                             :Vagonların treni yavaşlatması izinli: {STRING}
 STR_CONFIG_SETTING_WAGONSPEEDLIMITS_HELPTEXT                    :Etkinleştirildiğinde, bir trenin azami hızına karar verirken vagonların hız limitleri de göz önünde bulundurulur
@@ -2286,6 +2304,9 @@ STR_NETWORK_SERVER_LIST_MAP_SIZE_CAPTION                        :{BLACK}Harita b
 STR_NETWORK_SERVER_LIST_MAP_SIZE_CAPTION_TOOLTIP                :{BLACK}Oyunun harita boyutu{}Alana göre sıralamak için tıklayın
 STR_NETWORK_SERVER_LIST_DATE_CAPTION                            :{BLACK}Tarih
 STR_NETWORK_SERVER_LIST_DATE_CAPTION_TOOLTIP                    :{BLACK}Güncel tarih
+STR_NETWORK_SERVER_LIST_PLAY_TIME_SHORT                         :{BLACK}{NUM}s {NUM}d
+STR_NETWORK_SERVER_LIST_PLAY_TIME_CAPTION                       :{BLACK}Oyunama zamanı
+STR_NETWORK_SERVER_LIST_PLAY_TIME_CAPTION_TOOLTIP               :{BLACK}Oyun duraklanma'dan{}oynanmış süre
 STR_NETWORK_SERVER_LIST_INFO_ICONS_TOOLTIP                      :{BLACK}Dil, sunucu sürümü, vb.
 
 STR_NETWORK_SERVER_LIST_CLICK_GAME_TO_SELECT                    :{BLACK}Seçmek için listeden bir oyun tıklayın
@@ -2301,6 +2322,7 @@ STR_NETWORK_SERVER_LIST_SERVER_ADDRESS                          :{SILVER}Sunucu 
 STR_NETWORK_SERVER_LIST_INVITE_CODE                             :{SILVER}Davet kodu: {WHITE}{STRING}
 STR_NETWORK_SERVER_LIST_START_DATE                              :{SILVER}Başlama tarihi: {WHITE}{DATE_SHORT}
 STR_NETWORK_SERVER_LIST_CURRENT_DATE                            :{SILVER}Şimdiki tarih: {WHITE}{DATE_SHORT}
+STR_NETWORK_SERVER_LIST_PLAY_TIME                               :{SILVER}Oyunama zamanı: {WHITE}{NUM}s {NUM}d
 STR_NETWORK_SERVER_LIST_GAMESCRIPT                              :{SILVER}Oyun Betiği: {WHITE}{STRING} (v{NUM})
 STR_NETWORK_SERVER_LIST_PASSWORD                                :{SILVER}Parola korumalı!
 STR_NETWORK_SERVER_LIST_SERVER_OFFLINE                          :{SILVER}SUNUCU KAPALI
@@ -2656,7 +2678,10 @@ STR_LINKGRAPH_LEGEND_SATURATED                                  :{TINY_FONT}{BLA
 STR_LINKGRAPH_LEGEND_OVERLOADED                                 :{TINY_FONT}{BLACK}aşırı dolu
 
 # Linkgraph tooltip
+STR_LINKGRAPH_STATS_TOOLTIP_MONTH                               :{BLACK}{CARGO_LONG} her ay taşınacak {STATION}'dan {STATION}'na ({COMMA}% kapasite){STRING}
+STR_LINKGRAPH_STATS_TOOLTIP_MINUTE                              :{BLACK}{CARGO_LONG} dakikada taşınacak {STATION}'dan {STATION}'na ({COMMA}% kapasite){STRING}
 STR_LINKGRAPH_STATS_TOOLTIP_RETURN_EXTENSION                    :{}{CARGO_LONG} geri nakledilecek ({COMMA}% kapasite ile)
+STR_LINKGRAPH_STATS_TOOLTIP_TIME_EXTENSION                      :{}Ortalama seyahat süresi: {UNITS_DAYS_OR_SECONDS}
 
 # Base for station construction window(s)
 STR_STATION_BUILD_COVERAGE_AREA_TITLE                           :{BLACK}Kapsama alanı
@@ -3203,6 +3228,7 @@ STR_MAPGEN_DESERT_COVERAGE_DOWN                                 :{BLACK}Çöl ö
 STR_MAPGEN_DESERT_COVERAGE_TEXT                                 :{BLACK}%{NUM}
 STR_MAPGEN_TERRAIN_TYPE                                         :{BLACK}Arazi türü:
 STR_MAPGEN_SEA_LEVEL                                            :{BLACK}Deniz seviyesi:
+STR_MAPGEN_SEA_LEVEL_TOOLTIP                                    :{BLACK}Deniz seviyesini seç
 STR_MAPGEN_QUANTITY_OF_RIVERS                                   :{BLACK}Nehirler:
 STR_MAPGEN_SMOOTHNESS                                           :{BLACK}Düzlük seviyesi:
 STR_MAPGEN_VARIETY                                              :{BLACK}Çeşitlilik dağılımı:
@@ -3266,6 +3292,7 @@ STR_SE_MAPGEN_FLAT_WORLD                                        :{WHITE}Düzlük
 STR_SE_MAPGEN_FLAT_WORLD_TOOLTIP                                :{BLACK}Düzlük alan oluştur
 STR_SE_MAPGEN_RANDOM_LAND                                       :{WHITE}Rastgele alan
 STR_SE_MAPGEN_FLAT_WORLD_HEIGHT                                 :{BLACK}Düzlüğün Yüksekliği:
+STR_SE_MAPGEN_FLAT_WORLD_HEIGHT_TOOLTIP                         :{BLACK}Arazinin deniz seviyesinden yüksekliğini seçin
 STR_SE_MAPGEN_FLAT_WORLD_HEIGHT_DOWN                            :{BLACK}Düzlüğü bir alçalt
 STR_SE_MAPGEN_FLAT_WORLD_HEIGHT_UP                              :{BLACK}Düzlüğün yüksekliğini bir arttır
 
@@ -4667,6 +4694,8 @@ STR_AI_SETTINGS_CAPTION_GAMESCRIPT                              :Oyun Betiği
 STR_AI_SETTINGS_CLOSE                                           :{BLACK}Kapat
 STR_AI_SETTINGS_RESET                                           :{BLACK}Yeniden başlat
 STR_AI_SETTINGS_SETTING                                         :{STRING}: {ORANGE}{STRING}
+STR_AI_SETTINGS_SETTING_DEVIATION                               :{STRING}: {ORANGE}[{STRING}, {STRING}]
+STR_AI_SETTINGS_JUST_DEVIATION                                  :[{STRING}, {STRING}]
 
 
 # Textfile window

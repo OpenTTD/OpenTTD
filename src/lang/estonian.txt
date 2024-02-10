@@ -247,6 +247,8 @@ STR_COLOUR_WHITE                                                :Valge
 STR_COLOUR_RANDOM                                               :Suvaline
 
 ###length 17
+STR_COLOUR_SECONDARY_BLUE                                       :Sinine
+STR_COLOUR_SECONDARY_BROWN                                      :Pruun
 
 
 # Units used in OpenTTD
@@ -1396,6 +1398,8 @@ STR_CONFIG_SETTING_PLANE_CRASHES_NONE                           :Ei
 STR_CONFIG_SETTING_PLANE_CRASHES_REDUCED                        :Vähem
 STR_CONFIG_SETTING_PLANE_CRASHES_NORMAL                         :Keskmiselt
 
+STR_CONFIG_SETTING_CROSSING_WITH_COMPETITOR                     :Luba samatasandilised ristumised konkurentide teede või raudteedega: {STRING}
+STR_CONFIG_SETTING_CROSSING_WITH_COMPETITOR_HELPTEXT            :Luba samatasandiliste ristumiste ehitamine konkurentide teedele või raudteedele
 
 STR_CONFIG_SETTING_STOP_ON_TOWN_ROAD                            :Läbisõidupeatused asulate kuuluvatel teedel: {STRING}
 STR_CONFIG_SETTING_STOP_ON_TOWN_ROAD_HELPTEXT                   :Lubab asulatele kuuluvatele teedele ehitada läbisõidupeatuseid
@@ -4511,6 +4515,7 @@ STR_TIMETABLE_EXPECTED                                          :{BLACK}Eeldatav
 STR_TIMETABLE_SCHEDULED                                         :{BLACK}Plaanis
 STR_TIMETABLE_EXPECTED_TOOLTIP                                  :{BLACK}Vaheta eeldatava ja graafiku vahel
 
+STR_TIMETABLE_ARRIVAL_SECONDS_IN_FUTURE                         :A: {COLOUR}{COMMA} sek
 
 
 # Date window (for timetable)

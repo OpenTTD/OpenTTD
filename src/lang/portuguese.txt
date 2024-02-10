@@ -290,7 +290,7 @@ STR_TOOLTIP_RESIZE                                              :{BLACK}Clique e
 STR_TOOLTIP_TOGGLE_LARGE_SMALL_WINDOW                           :{BLACK}Alternar entre janela grande/pequena
 STR_TOOLTIP_VSCROLL_BAR_SCROLLS_LIST                            :{BLACK}Barra de deslize - desloca a lista para cima/baixo
 STR_TOOLTIP_HSCROLL_BAR_SCROLLS_LIST                            :{BLACK}Barra de deslize - desloca a lista para a esquerda/direita
-STR_TOOLTIP_DEMOLISH_BUILDINGS_ETC                              :{BLACK}Demolir edifícios, etc. num quadrado de terreno. Ctrl selecciona a área na diagonal. Shift alterna construção/mostrando estimativa de custos
+STR_TOOLTIP_DEMOLISH_BUILDINGS_ETC                              :{BLACK}Demolir edifícios, etc, num mosaico de terreno. Ctrl+Clique+Arrastar para selecionar a área na diagonal. Pressione também Shift para apenas mostrar o custo estimado
 
 # Show engines button
 ###length VEHICLE_TYPES
@@ -384,13 +384,13 @@ STR_TOOLBAR_TOOLTIP_PAUSE_GAME                                  :{BLACK}Pausa
 STR_TOOLBAR_TOOLTIP_FORWARD                                     :{BLACK}Aumentar velocidade do jogo
 STR_TOOLBAR_TOOLTIP_OPTIONS                                     :{BLACK}Opções e definições
 STR_TOOLBAR_TOOLTIP_SAVE_GAME_ABANDON_GAME                      :{BLACK}Guardar, carregar ou abandonar o jogo, sair do programa
-STR_TOOLBAR_TOOLTIP_DISPLAY_MAP                                 :{BLACK}Exibir mapa, visualizador extra, fluxo de cargas ou lista de sinais
-STR_TOOLBAR_TOOLTIP_DISPLAY_TOWN_DIRECTORY                      :{BLACK}Mostrar lista de localidades
-STR_TOOLBAR_TOOLTIP_DISPLAY_SUBSIDIES                           :{BLACK}Mostrar subsídios
+STR_TOOLBAR_TOOLTIP_DISPLAY_MAP                                 :{BLACK}Abrir mapa, visualizador extra, fluxo de cargas ou lista de sinais
+STR_TOOLBAR_TOOLTIP_DISPLAY_TOWN_DIRECTORY                      :{BLACK}Abrir diretório de localidades ou encontrar localidade
+STR_TOOLBAR_TOOLTIP_DISPLAY_SUBSIDIES                           :{BLACK}Abrir lista de subsídios
 STR_TOOLBAR_TOOLTIP_DISPLAY_LIST_OF_COMPANY_STATIONS            :{BLACK}Abrir lista de estações da empresa
 STR_TOOLBAR_TOOLTIP_DISPLAY_COMPANY_FINANCES                    :{BLACK}Abrir informações financeiras da empresa
 STR_TOOLBAR_TOOLTIP_DISPLAY_COMPANY_GENERAL                     :{BLACK}Abrir informação geral da empresa
-STR_TOOLBAR_TOOLTIP_DISPLAY_STORY_BOOK                          :{BLACK}Mostrar livro de história
+STR_TOOLBAR_TOOLTIP_DISPLAY_STORY_BOOK                          :{BLACK}Abrir livro de história
 STR_TOOLBAR_TOOLTIP_DISPLAY_GOALS_LIST                          :{BLACK}Abrir lista de objetivos
 STR_TOOLBAR_TOOLTIP_DISPLAY_GRAPHS                              :{BLACK}Abrir gráficos da empresa e taxas de pagamento de carga
 STR_TOOLBAR_TOOLTIP_DISPLAY_COMPANY_LEAGUE                      :{BLACK}Abrir tabela de classificação de empresas
@@ -399,12 +399,12 @@ STR_TOOLBAR_TOOLTIP_DISPLAY_LIST_OF_COMPANY_TRAINS              :{BLACK}Abrir li
 STR_TOOLBAR_TOOLTIP_DISPLAY_LIST_OF_COMPANY_ROAD_VEHICLES       :{BLACK}Abrir lista de veículos rodoviários da empresa. Ctrl+Clique para mostrar ou ocultar grupos de veículos, em oposição à configuração escolhida
 STR_TOOLBAR_TOOLTIP_DISPLAY_LIST_OF_COMPANY_SHIPS               :{BLACK}Abrir lista de navios da empresa. Ctrl+Clique para mostrar ou ocultar grupos de veículos, em oposição à configuração escolhida
 STR_TOOLBAR_TOOLTIP_DISPLAY_LIST_OF_COMPANY_AIRCRAFT            :{BLACK}Abrir lista de aeronaves da empresa. Ctrl+Clique para mostrar ou ocultar grupos de veículos, em oposição à configuração escolhida
-STR_TOOLBAR_TOOLTIP_ZOOM_THE_VIEW_IN                            :{BLACK}Ampliar
-STR_TOOLBAR_TOOLTIP_ZOOM_THE_VIEW_OUT                           :{BLACK}Reduzir
+STR_TOOLBAR_TOOLTIP_ZOOM_THE_VIEW_IN                            :{BLACK}Aproximar visão
+STR_TOOLBAR_TOOLTIP_ZOOM_THE_VIEW_OUT                           :{BLACK}Afastar visão
 STR_TOOLBAR_TOOLTIP_BUILD_RAILROAD_TRACK                        :{BLACK}Construir infraestrutura ferroviária
 STR_TOOLBAR_TOOLTIP_BUILD_ROADS                                 :{BLACK}Construir infraestrutura rodoviária
-STR_TOOLBAR_TOOLTIP_BUILD_TRAMWAYS                              :{BLACK}Construir carris para elétricos
-STR_TOOLBAR_TOOLTIP_BUILD_SHIP_DOCKS                            :{BLACK}Construir docas para navios
+STR_TOOLBAR_TOOLTIP_BUILD_TRAMWAYS                              :{BLACK}Construir infraestrutura para elétricos
+STR_TOOLBAR_TOOLTIP_BUILD_SHIP_DOCKS                            :{BLACK}Construir infraestrutura naval
 STR_TOOLBAR_TOOLTIP_BUILD_AIRPORTS                              :{BLACK}Construir aeroportos
 STR_TOOLBAR_TOOLTIP_LANDSCAPING                                 :{BLACK}Abra a barra de modelação ambiental para elevar ou baixar terreno, plantar árvores, etc.
 STR_TOOLBAR_TOOLTIP_SHOW_SOUND_MUSIC_WINDOW                     :{BLACK}Abrir janela de som/música
@@ -419,13 +419,13 @@ STR_SCENEDIT_TOOLBAR_SCENARIO_EDITOR                            :{YELLOW}Editor 
 STR_SCENEDIT_TOOLBAR_TOOLTIP_MOVE_THE_STARTING_DATE_BACKWARD    :{BLACK}Retroceder data de início 1 ano
 STR_SCENEDIT_TOOLBAR_TOOLTIP_MOVE_THE_STARTING_DATE_FORWARD     :{BLACK}Avançar data de início 1 ano
 STR_SCENEDIT_TOOLBAR_TOOLTIP_SET_DATE                           :{BLACK}Clique para escolher o ano inicial
-STR_SCENEDIT_TOOLBAR_TOOLTIP_DISPLAY_MAP_TOWN_DIRECTORY         :{BLACK}Mostrar mapa, lista de localidades
-STR_SCENEDIT_TOOLBAR_LANDSCAPE_GENERATION                       :{BLACK}Gerar terreno
+STR_SCENEDIT_TOOLBAR_TOOLTIP_DISPLAY_MAP_TOWN_DIRECTORY         :{BLACK}Abrir mapa, visualizador extra, lista de sinais, ou diretório de localidades ou indústrias
+STR_SCENEDIT_TOOLBAR_LANDSCAPE_GENERATION                       :{BLACK}Abrir menu de paisagismo ou gerar um novo mundo
 STR_SCENEDIT_TOOLBAR_TOWN_GENERATION                            :{BLACK}Gerar localidades
-STR_SCENEDIT_TOOLBAR_INDUSTRY_GENERATION                        :{BLACK}Gerar indústrias
+STR_SCENEDIT_TOOLBAR_INDUSTRY_GENERATION                        :{BLACK}Construir ou gerar indústrias
 STR_SCENEDIT_TOOLBAR_ROAD_CONSTRUCTION                          :{BLACK}Construir infraestrutura rodoviária
 STR_SCENEDIT_TOOLBAR_TRAM_CONSTRUCTION                          :{BLACK}Construção de carris para elétricos
-STR_SCENEDIT_TOOLBAR_PLANT_TREES                                :{BLACK}Plantar árvores. "Ctrl" seleciona a área na diagonal. "Shift" alterna construir/mostrar custo estimado
+STR_SCENEDIT_TOOLBAR_PLANT_TREES                                :{BLACK}Plantar árvores. Ctrl+Clique+Arrastar para selecionar a área na diagonal. Pressione também Shift para apenas mostrar o custo estimado
 STR_SCENEDIT_TOOLBAR_PLACE_SIGN                                 :{BLACK}Colocar sinais
 STR_SCENEDIT_TOOLBAR_PLACE_OBJECT                               :{BLACK}Colocar objeto. Ctrl+Clique+Arrastar para selecionar a área diagonalmente. Pressione também Shift para mostrar o custo estimado
 
@@ -1362,7 +1362,7 @@ STR_CONFIG_SETTING_FORBID_90_DEG                                :Proibir comboio
 STR_CONFIG_SETTING_FORBID_90_DEG_HELPTEXT                       :Curvas de 90 graus ocorrem quando uma pista horizontal é directamente seguida por outra vertical num quadrado adjacente, fazendo com que o combóio vire 90 graus quando atravessa a fronteira dos quadrados, ao invés dos habituais 45 graus para outras combinações de pistas.
 
 STR_CONFIG_SETTING_DISTANT_JOIN_STATIONS                        :Permitir juntar estações não adjacentes: {STRING}
-STR_CONFIG_SETTING_DISTANT_JOIN_STATIONS_HELPTEXT               :Permite adicionar novas partes a uma estação sem tocar nas partes já existentes. Requer pressionar CTRL+click para adicionar as novas partes
+STR_CONFIG_SETTING_DISTANT_JOIN_STATIONS_HELPTEXT               :Permite acrescentar partes a uma estação sem tocar diretamente nas partes já existentes, fazendo Ctrl+Clique enquanto coloca as novas partes
 
 STR_CONFIG_SETTING_INFLATION                                    :Inflação: {STRING}
 STR_CONFIG_SETTING_INFLATION_HELPTEXT                           :Ativar inflação na economia, para que os preços subam ligeiramente mais rápido do que os pagamentos
@@ -2204,13 +2204,13 @@ STR_INTRO_TOOLTIP_SUB_TROPICAL_LANDSCAPE                        :{BLACK}Selecion
 STR_INTRO_TOOLTIP_TOYLAND_LANDSCAPE                             :{BLACK}Selecionar terreno do estilo "terra dos brinquedos"
 
 STR_INTRO_TOOLTIP_GAME_OPTIONS                                  :{BLACK}Abrir opções de jogo
-STR_INTRO_TOOLTIP_HIGHSCORE                                     :{BLACK}Mostrar tabela de classificações
+STR_INTRO_TOOLTIP_HIGHSCORE                                     :{BLACK}Abrir tabela de classificações
 STR_INTRO_TOOLTIP_HELP                                          :{BLACK}Obter acesso a documentação e recursos online
 STR_INTRO_TOOLTIP_CONFIG_SETTINGS_TREE                          :{BLACK}Abrir definições
-STR_INTRO_TOOLTIP_NEWGRF_SETTINGS                               :{BLACK}Mostrar definições de NewGRF
+STR_INTRO_TOOLTIP_NEWGRF_SETTINGS                               :{BLACK}Abrir definições de NewGRF
 STR_INTRO_TOOLTIP_ONLINE_CONTENT                                :{BLACK}Verificar conteúdo novo e actualizado para descarga
 STR_INTRO_TOOLTIP_AI_SETTINGS                                   :{BLACK}Abrir definições de IA
-STR_INTRO_TOOLTIP_GAMESCRIPT_SETTINGS                           :{BLACK}Mostrar definições de Script de Jogo
+STR_INTRO_TOOLTIP_GAMESCRIPT_SETTINGS                           :{BLACK}Abrir definições de Script de Jogo
 STR_INTRO_TOOLTIP_QUIT                                          :{BLACK}Sair de 'OpenTTD'
 
 STR_INTRO_BASESET                                               :{BLACK}O conjunto de gráficos base seleccionado tem {NUM} sprite{P "" s} em falta. Por favor verifique se existem atualizações para o conjunto.
@@ -2266,8 +2266,8 @@ STR_LIVERY_TRAIN_GROUP_TOOLTIP                                  :{BLACK}Exibir c
 STR_LIVERY_ROAD_VEHICLE_GROUP_TOOLTIP                           :{BLACK}Exibir cores de grupos de veículos rodoviários
 STR_LIVERY_SHIP_GROUP_TOOLTIP                                   :{BLACK}Exibir cores de grupos de navios
 STR_LIVERY_AIRCRAFT_GROUP_TOOLTIP                               :{BLACK}Exibir cores de grupos de aeronaves
-STR_LIVERY_PRIMARY_TOOLTIP                                      :{BLACK}Seleccione a cor primária para o veículo seleccionado. Ctrl+Clique vai usar esta cor para todos os esquemas
-STR_LIVERY_SECONDARY_TOOLTIP                                    :{BLACK}Selecione a cor secundária para o esquema selecionado. Ctrl+Clique seleciona essa cor para todos os esquemas
+STR_LIVERY_PRIMARY_TOOLTIP                                      :{BLACK}Escolher a cor primária para o esquema selecionado. Ctrl+Clique para definir esta cor para todos os esquemas
+STR_LIVERY_SECONDARY_TOOLTIP                                    :{BLACK}Escolher a cor secundária para o esquema selecionado. Ctrl+Clique para definir essa cor para todos os esquemas
 STR_LIVERY_PANEL_TOOLTIP                                        :{BLACK}Seleccione o esquema de cores a alterar, ou esquemas múltiplos utilizando a tecla Ctrl com o botão esquerdo do rato. Marque a caixa para comutar a utilização do esquema de cores
 STR_LIVERY_TRAIN_GROUP_EMPTY                                    :Não estão configurados grupos de comboios
 STR_LIVERY_ROAD_VEHICLE_GROUP_EMPTY                             :Não estão configurados grupos de veículos rodoviários
@@ -2870,7 +2870,7 @@ STR_BRIDGE_TUBULAR_SILICON                                      :Tubular, Silíc
 STR_ROAD_TOOLBAR_ROAD_CONSTRUCTION_CAPTION                      :{WHITE}Construção de estradas
 STR_ROAD_TOOLBAR_TRAM_CONSTRUCTION_CAPTION                      :{WHITE}Construção de eléctricos
 STR_ROAD_TOOLBAR_TOOLTIP_BUILD_ROAD_SECTION                     :{BLACK}Construir estradas. Ctrl alterna a construção/remoção de estradas
-STR_ROAD_TOOLBAR_TOOLTIP_BUILD_TRAMWAY_SECTION                  :{BLACK}Construir secção de carris para elétricos. Ctrl alterna a construção/remoção de carris para elétricos. Shift alterna construir/mostrar custo estimado
+STR_ROAD_TOOLBAR_TOOLTIP_BUILD_TRAMWAY_SECTION                  :{BLACK}Construir secção de carris para elétricos. Ctrl+Clique para remover secção de carris de elétricos. Pressione também Shift para apenas mostrar o custo estimado
 STR_ROAD_TOOLBAR_TOOLTIP_BUILD_AUTOROAD                         :{BLACK}Construir estradas usando o modo automático. Ctrl+Clique para remover secção de estrada. Pressione também Shift para apenas mostrar o custo estimado
 STR_ROAD_TOOLBAR_TOOLTIP_BUILD_AUTOTRAM                         :{BLACK}Construir carris para elétricos usando o modo automático. Ctrl+Clique para remover secção de carris para elétricos. Pressione também Shift para apenas mostrar o custo estimado
 STR_ROAD_TOOLBAR_TOOLTIP_BUILD_ROAD_VEHICLE_DEPOT               :{BLACK}Construir garagem rodoviária (para compra e manutenção de veículos rodoviários). Pressione também Shift para apenas mostrar o custo estimado
@@ -2878,12 +2878,12 @@ STR_ROAD_TOOLBAR_TOOLTIP_BUILD_TRAM_VEHICLE_DEPOT               :{BLACK}Construi
 STR_ROAD_TOOLBAR_TOOLTIP_BUILD_BUS_STATION                      :{BLACK}Construir estação de autocarros. Ctrl+Clique para selecionar outra estação para se unir. Pressione também Shift para apenas mostrar o custo estimado
 STR_ROAD_TOOLBAR_TOOLTIP_BUILD_PASSENGER_TRAM_STATION           :{BLACK}Construir paragem de elétricos para passageiros. Ctrl permite juntar estações. Shift alterna construir/mostrar custo estimado
 STR_ROAD_TOOLBAR_TOOLTIP_BUILD_TRUCK_LOADING_BAY                :{BLACK}Construir estação de camiões. Ctrl+Clique para selecionar outra estação para se unir. Pressione também Shift para apenas mostrar o custo estimado
-STR_ROAD_TOOLBAR_TOOLTIP_BUILD_CARGO_TRAM_STATION               :{BLACK}Construir paragem de elétricos para carga. Ctrl permite juntar estações. Shift alterna construir/mostrar custo estimado
+STR_ROAD_TOOLBAR_TOOLTIP_BUILD_CARGO_TRAM_STATION               :{BLACK}Construir paragem de elétricos para carga. Ctrl+Clique para selecionar outra estação para se unir. Pressione também Shift para apenas mostrar o custo estimado
 STR_ROAD_TOOLBAR_TOOLTIP_TOGGLE_ONE_WAY_ROAD                    :{BLACK}Ativar/Desativar estradas de sentido único
 STR_ROAD_TOOLBAR_TOOLTIP_BUILD_ROAD_BRIDGE                      :{BLACK}Construir ponte rodoviária. Shift alterna construir/mostrar custo estimado
-STR_ROAD_TOOLBAR_TOOLTIP_BUILD_TRAMWAY_BRIDGE                   :{BLACK}Construir ponte para elétricos. Shift alterna construir/mostrar custo estimado
+STR_ROAD_TOOLBAR_TOOLTIP_BUILD_TRAMWAY_BRIDGE                   :{BLACK}Construir ponte para elétricos. Pressione também Shift para apenas mostrar o custo estimado
 STR_ROAD_TOOLBAR_TOOLTIP_BUILD_ROAD_TUNNEL                      :{BLACK}Construir túnel rodoviário. Pressione também Shift para mostrar apenas o custo estimado
-STR_ROAD_TOOLBAR_TOOLTIP_BUILD_TRAMWAY_TUNNEL                   :{BLACK}Construir túnel para elétricos. Shift alterna construir/mostrar custo estimado
+STR_ROAD_TOOLBAR_TOOLTIP_BUILD_TRAMWAY_TUNNEL                   :{BLACK}Construir túnel para elétricos. Pressione também Shift para apenas mostrar o custo estimado
 STR_ROAD_TOOLBAR_TOOLTIP_TOGGLE_BUILD_REMOVE_FOR_ROAD           :{BLACK}Alternar entre construir/remover estradas
 STR_ROAD_TOOLBAR_TOOLTIP_TOGGLE_BUILD_REMOVE_FOR_TRAMWAYS       :{BLACK}Alternar construir/remover linhas de eléctricos e sinais
 STR_ROAD_TOOLBAR_TOOLTIP_CONVERT_ROAD                           :{BLACK}Converter/Atualizar o tipo de estrada. Pressione também Shift para apenas mostrar o custo estimado
@@ -3745,6 +3745,7 @@ STR_STATION_LIST_STATION                                        :{YELLOW}{STATIO
 STR_STATION_LIST_WAYPOINT                                       :{YELLOW}{WAYPOINT}
 STR_STATION_LIST_NONE                                           :{YELLOW}- Nenhuma -
 STR_STATION_LIST_SELECT_ALL_FACILITIES                          :{BLACK}Seleccionar todas as instalações
+STR_STATION_LIST_CARGO_FILTER_ALL_AND_NO_RATING                 :Todos os tipos de carga e sem classificação
 STR_STATION_LIST_CARGO_FILTER_NO_CARGO_TYPES                    :Sem tipos de carga
 STR_STATION_LIST_CARGO_FILTER_ONLY_NO_RATING                    :Apenas sem classificação de carga
 STR_STATION_LIST_CARGO_FILTER_NO_RATING                         :Sem classificação de carga
@@ -3893,7 +3894,7 @@ STR_COMPANY_VIEW_BUILD_HQ_TOOLTIP                               :{BLACK}Construi
 STR_COMPANY_VIEW_VIEW_HQ_BUTTON                                 :{BLACK}Ver sede
 STR_COMPANY_VIEW_VIEW_HQ_TOOLTIP                                :{BLACK}Ver sede da empresa
 STR_COMPANY_VIEW_RELOCATE_HQ                                    :{BLACK}Mover sede
-STR_COMPANY_VIEW_RELOCATE_COMPANY_HEADQUARTERS                  :{BLACK}Reconstruir sede da empresa noutro sítio por 1% do valor da empresa. Shift+Clique mostra valor estimado sem mover a sede
+STR_COMPANY_VIEW_RELOCATE_COMPANY_HEADQUARTERS                  :{BLACK}Reconstruir sede da empresa noutro sítio por 1% do valor da empresa. Pressione também Shift para apenas mostrar o custo estimado
 STR_COMPANY_VIEW_INFRASTRUCTURE_BUTTON                          :{BLACK}Detalhes
 STR_COMPANY_VIEW_INFRASTRUCTURE_TOOLTIP                         :{BLACK}Ver contagens de infraestrutura detalhadas
 STR_COMPANY_VIEW_GIVE_MONEY_BUTTON                              :{BLACK}Dar dinheiro
@@ -4094,7 +4095,7 @@ STR_CARGO_TYPE_FILTER_FREIGHT                                   :Mercadorias
 STR_CARGO_TYPE_FILTER_NONE                                      :Nenhum
 
 ###length VEHICLE_TYPES
-STR_BUY_VEHICLE_TRAIN_LIST_TOOLTIP                              :{BLACK}Lista de veículos ferroviários - clique num veículo para informações
+STR_BUY_VEHICLE_TRAIN_LIST_TOOLTIP                              :{BLACK}Lista de seleção de veículos ferroviários. Clique num veículo para informações. Ctrl+Clique para mostrar/ocultar este tipo de veículo
 STR_BUY_VEHICLE_ROAD_VEHICLE_LIST_TOOLTIP                       :{BLACK}Lista de veículos rodoviários - clique num veículo para informações
 STR_BUY_VEHICLE_SHIP_LIST_TOOLTIP                               :{BLACK}Lista de seleção de navios. Clique num navio para informações. Ctrl+Clique para mostrar/ocultar este tipo de navio
 STR_BUY_VEHICLE_AIRCRAFT_LIST_TOOLTIP                           :{BLACK}Lista de aeronaves - clique na aeronave para informações
@@ -4112,16 +4113,16 @@ STR_BUY_VEHICLE_SHIP_BUY_REFIT_VEHICLE_BUTTON                   :{BLACK}Comprar 
 STR_BUY_VEHICLE_AIRCRAFT_BUY_REFIT_VEHICLE_BUTTON               :{BLACK}Comprar e adaptar carga da aeronave
 
 ###length VEHICLE_TYPES
-STR_BUY_VEHICLE_TRAIN_BUY_VEHICLE_TOOLTIP                       :{BLACK}Comprar o veículo ferroviário seleccionado. Shift+Clique mostra estimativa de custo, sem comprar
+STR_BUY_VEHICLE_TRAIN_BUY_VEHICLE_TOOLTIP                       :{BLACK}Comprar o veículo ferroviário seleccionado. Pressione também Shift para apenas mostrar o custo estimado
 STR_BUY_VEHICLE_ROAD_VEHICLE_BUY_VEHICLE_TOOLTIP                :{BLACK}Comprar o veículo rodoviário selecionado. Shift+Clique mostra estimativa de custo, sem comprar
 STR_BUY_VEHICLE_SHIP_BUY_VEHICLE_TOOLTIP                        :{BLACK}Comprar navio selecionado. Shift+Clique mostra estimativa de custo, sem comprar
 STR_BUY_VEHICLE_AIRCRAFT_BUY_VEHICLE_TOOLTIP                    :{BLACK}Comprar aeronave seleccionada. Shift+Clique mostra estimativa de custo, sem comprar
 
 ###length VEHICLE_TYPES
-STR_BUY_VEHICLE_TRAIN_BUY_REFIT_VEHICLE_TOOLTIP                 :{BLACK}Comprar e converter veículo ferroviário seleccionado. Shift+Clique mostra estimativa de custo, sem comprar
-STR_BUY_VEHICLE_ROAD_VEHICLE_BUY_REFIT_VEHICLE_TOOLTIP          :Comprar e converter veículo rodoviário seleccionado. Shift+Clique mostra estimativa de custo, sem comprar
-STR_BUY_VEHICLE_SHIP_BUY_REFIT_VEHICLE_TOOLTIP                  :{BLACK}Comprar e converter navio seleccionado. Shift+Clique mostra estimativa de custo, sem comprar
-STR_BUY_VEHICLE_AIRCRAFT_BUY_REFIT_VEHICLE_TOOLTIP              :{BLACK}Comprar e converter aeronave seleccionada. Shift+Clique mostra estimativa de custo, sem comprar
+STR_BUY_VEHICLE_TRAIN_BUY_REFIT_VEHICLE_TOOLTIP                 :{BLACK}Comprar e converter o veículo ferroviário selecionado. Pressione também Shift para apenas mostrar o custo estimado
+STR_BUY_VEHICLE_ROAD_VEHICLE_BUY_REFIT_VEHICLE_TOOLTIP          :{BLACK}Comprar e converter veículo rodoviário selecionado. Pressione também Shift para apenas mostrar o custo estimado
+STR_BUY_VEHICLE_SHIP_BUY_REFIT_VEHICLE_TOOLTIP                  :{BLACK}Comprar e converter o navio selecionado. Pressione também Shift para apenas mostrar o custo estimado
+STR_BUY_VEHICLE_AIRCRAFT_BUY_REFIT_VEHICLE_TOOLTIP              :{BLACK}Comprar e converter a aeronave selecionada. Pressione também Shift para apenas mostrar o custo estimado
 
 ###length VEHICLE_TYPES
 STR_BUY_VEHICLE_TRAIN_RENAME_BUTTON                             :{BLACK}Renomear
@@ -4334,8 +4335,8 @@ STR_VEHICLE_VIEW_SHIP_CENTER_TOOLTIP                            :{BLACK}Centrar 
 STR_VEHICLE_VIEW_AIRCRAFT_CENTER_TOOLTIP                        :{BLACK} Centralize a vista principal na localização da aeronave. Um clique duplo seguirá a aeronave na visualização principal. Ctrl + Clique abre uma nova janela de visualização na localização da aeronave
 
 ###length VEHICLE_TYPES
-STR_VEHICLE_VIEW_TRAIN_SEND_TO_DEPOT_TOOLTIP                    :{BLACK}Mandar comboio para o depósito. Ctrl+Clique fará apenas manutenção
-STR_VEHICLE_VIEW_ROAD_VEHICLE_SEND_TO_DEPOT_TOOLTIP             :{BLACK}Mandar veículo para a garagem. Ctrl+Clique fará apenas manutenção
+STR_VEHICLE_VIEW_TRAIN_SEND_TO_DEPOT_TOOLTIP                    :{BLACK}Mandar comboio para o depósito. Ctrl+Clique para fazer apenas manutenção
+STR_VEHICLE_VIEW_ROAD_VEHICLE_SEND_TO_DEPOT_TOOLTIP             :{BLACK}Mandar veículo para a garagem. Ctrl+Clique para fazer apenas manutenção
 STR_VEHICLE_VIEW_SHIP_SEND_TO_DEPOT_TOOLTIP                     :{BLACK}Mandar navio para o estaleiro. Ctrl+Clique para fazer apenas manutenção
 STR_VEHICLE_VIEW_AIRCRAFT_SEND_TO_DEPOT_TOOLTIP                 :{BLACK}Mandar aeronave para o hangar. Ctrl+Clique fará apenas manutenção
 

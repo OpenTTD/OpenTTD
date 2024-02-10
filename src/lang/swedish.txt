@@ -509,6 +509,7 @@ STR_NEWS_MENU_DELETE_ALL_MESSAGES                               :Ta bort alla me
 
 # About menu
 STR_ABOUT_MENU_LAND_BLOCK_INFO                                  :Information om mark
+STR_ABOUT_MENU_HELP                                             :Hjälp & manualer
 STR_ABOUT_MENU_TOGGLE_CONSOLE                                   :Visa/dölj konsolen
 STR_ABOUT_MENU_AI_DEBUG                                         :Felsökning av datorspelare/spelskript
 STR_ABOUT_MENU_SCREENSHOT                                       :Skärmdump

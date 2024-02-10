@@ -758,31 +758,31 @@ STR_GOTO_ORDER_VIEW_TOOLTIP                                     :{BLACK}Otwórz 
 
 # Tooltips for the main toolbar
 ###length 31
-STR_TOOLBAR_TOOLTIP_PAUSE_GAME                                  :{BLACK}Pauza
-STR_TOOLBAR_TOOLTIP_FORWARD                                     :{BLACK}Przyspieszenie czasu w grze
+STR_TOOLBAR_TOOLTIP_PAUSE_GAME                                  :{BLACK}Wstrzymaj grę
+STR_TOOLBAR_TOOLTIP_FORWARD                                     :{BLACK}Przyspiesz czas w grze
 STR_TOOLBAR_TOOLTIP_OPTIONS                                     :{BLACK}Opcje i ustawienia
-STR_TOOLBAR_TOOLTIP_SAVE_GAME_ABANDON_GAME                      :{BLACK}Zapis, wczytanie lub opuszczenie rozgrywki, zamknięcie programu
-STR_TOOLBAR_TOOLTIP_DISPLAY_MAP                                 :{BLACK}Wyświetl mapę, dodatkowy podgląd, przepływ ładunków lub listę napisów
-STR_TOOLBAR_TOOLTIP_DISPLAY_TOWN_DIRECTORY                      :{BLACK}Wyświetl listę miast
-STR_TOOLBAR_TOOLTIP_DISPLAY_SUBSIDIES                           :{BLACK}Wyświetl dotacje
-STR_TOOLBAR_TOOLTIP_DISPLAY_LIST_OF_COMPANY_STATIONS            :{BLACK}Wyświetl listę stacji firmy
-STR_TOOLBAR_TOOLTIP_DISPLAY_COMPANY_FINANCES                    :{BLACK}Wyświetl informacje finansowe firmy
-STR_TOOLBAR_TOOLTIP_DISPLAY_COMPANY_GENERAL                     :{BLACK}Wyświetl informacje ogólne firmy
-STR_TOOLBAR_TOOLTIP_DISPLAY_STORY_BOOK                          :{BLACK}Wyświetl przewodnik
-STR_TOOLBAR_TOOLTIP_DISPLAY_GOALS_LIST                          :{BLACK}Wyświetl listę celów
-STR_TOOLBAR_TOOLTIP_DISPLAY_GRAPHS                              :{BLACK}Wyświetlanie wykresów firmy i stawek płatności za ładunek
-STR_TOOLBAR_TOOLTIP_DISPLAY_COMPANY_LEAGUE                      :{BLACK}Wyświetl ranking firm
+STR_TOOLBAR_TOOLTIP_SAVE_GAME_ABANDON_GAME                      :{BLACK}Zapisz, wczytaj lub opuść rozgrywkę, zamknij program
+STR_TOOLBAR_TOOLTIP_DISPLAY_MAP                                 :{BLACK}Otwórz mapę, dodatkowy podgląd, przepływ ładunków lub listę napisów
+STR_TOOLBAR_TOOLTIP_DISPLAY_TOWN_DIRECTORY                      :{BLACK}Otwórz listę miast lub załóż miasto
+STR_TOOLBAR_TOOLTIP_DISPLAY_SUBSIDIES                           :{BLACK}Otwórz listę dotacji
+STR_TOOLBAR_TOOLTIP_DISPLAY_LIST_OF_COMPANY_STATIONS            :{BLACK}Otwórz listę stacji firmy
+STR_TOOLBAR_TOOLTIP_DISPLAY_COMPANY_FINANCES                    :{BLACK}Otwórz informacje o finansach firmy
+STR_TOOLBAR_TOOLTIP_DISPLAY_COMPANY_GENERAL                     :{BLACK}Otwórz ogólne informacje o firmie
+STR_TOOLBAR_TOOLTIP_DISPLAY_STORY_BOOK                          :{BLACK}Otwórz przewodnik
+STR_TOOLBAR_TOOLTIP_DISPLAY_GOALS_LIST                          :{BLACK}Otwórz listę celów
+STR_TOOLBAR_TOOLTIP_DISPLAY_GRAPHS                              :{BLACK}Otwórz wykresy firmy i stawek płatności za ładunek
+STR_TOOLBAR_TOOLTIP_DISPLAY_COMPANY_LEAGUE                      :{BLACK}Otwórz ranking firm
 STR_TOOLBAR_TOOLTIP_FUND_CONSTRUCTION_OF_NEW                    :{BLACK}Analiza przedsiębiorstw lub fundowanie budowy nowego przedsiębiorstwa
-STR_TOOLBAR_TOOLTIP_DISPLAY_LIST_OF_COMPANY_TRAINS              :{BLACK}Wyświetl listę pociągów firmy. Ctrl+klik przełącza otwieranie listy grup/pojazdów
-STR_TOOLBAR_TOOLTIP_DISPLAY_LIST_OF_COMPANY_ROAD_VEHICLES       :{BLACK}Wyświetl listę pojazdów drogowych firmy. Ctrl+klik przełącza otwieranie listy grup/pojazdów
-STR_TOOLBAR_TOOLTIP_DISPLAY_LIST_OF_COMPANY_SHIPS               :{BLACK}Wyświetl listę statków firmy. Ctrl+klik przełącza otwieranie listy grup/pojazdów
-STR_TOOLBAR_TOOLTIP_DISPLAY_LIST_OF_COMPANY_AIRCRAFT            :{BLACK}Wyświetl listę samolotów firmy. Ctrl+klik przełącza otwieranie listy grup/pojazdów
-STR_TOOLBAR_TOOLTIP_ZOOM_THE_VIEW_IN                            :{BLACK}Przybliżenie
-STR_TOOLBAR_TOOLTIP_ZOOM_THE_VIEW_OUT                           :{BLACK}Oddalenie
-STR_TOOLBAR_TOOLTIP_BUILD_RAILROAD_TRACK                        :{BLACK}Budowa kolei
-STR_TOOLBAR_TOOLTIP_BUILD_ROADS                                 :{BLACK}Budowa dróg
-STR_TOOLBAR_TOOLTIP_BUILD_TRAMWAYS                              :{BLACK}Budowa tramwajów
-STR_TOOLBAR_TOOLTIP_BUILD_SHIP_DOCKS                            :{BLACK}Budowa portów
+STR_TOOLBAR_TOOLTIP_DISPLAY_LIST_OF_COMPANY_TRAINS              :{BLACK}Otwórz listę pociągów firmy. Ctrl+klik pokazuje lub ukrywa grupy pojazdów, przeciwnie do wybranego ustawienia
+STR_TOOLBAR_TOOLTIP_DISPLAY_LIST_OF_COMPANY_ROAD_VEHICLES       :{BLACK}Otwórz listę pojazdów drogowych firmy. Ctrl+klik pokazuje lub ukrywa grupy pojazdów, przeciwnie do wybranego ustawienia
+STR_TOOLBAR_TOOLTIP_DISPLAY_LIST_OF_COMPANY_SHIPS               :{BLACK}Otwórz listę statków firmy. Ctrl+klik pokazuje lub ukrywa grupy pojazdów, przeciwnie do wybranego ustawienia
+STR_TOOLBAR_TOOLTIP_DISPLAY_LIST_OF_COMPANY_AIRCRAFT            :{BLACK}Otwórz listę samolotów firmy. Ctrl+klik pokazuje lub ukrywa grupy pojazdów, przeciwnie do wybranego ustawienia
+STR_TOOLBAR_TOOLTIP_ZOOM_THE_VIEW_IN                            :{BLACK}Przybliż
+STR_TOOLBAR_TOOLTIP_ZOOM_THE_VIEW_OUT                           :{BLACK}Oddal
+STR_TOOLBAR_TOOLTIP_BUILD_RAILROAD_TRACK                        :{BLACK}Budowa infrastruktury kolejowej
+STR_TOOLBAR_TOOLTIP_BUILD_ROADS                                 :{BLACK}Budowa infrastruktury drogowej
+STR_TOOLBAR_TOOLTIP_BUILD_TRAMWAYS                              :{BLACK}Budowa infrastruktury tramwajowej
+STR_TOOLBAR_TOOLTIP_BUILD_SHIP_DOCKS                            :{BLACK}Budowa infrastruktury dróg wodnych
 STR_TOOLBAR_TOOLTIP_BUILD_AIRPORTS                              :{BLACK}Budowa lotnisk
 STR_TOOLBAR_TOOLTIP_LANDSCAPING                                 :{BLACK}Zmiana terenu, podwyższanie/obniżanie lądu, sadzenie drzew, itp.
 STR_TOOLBAR_TOOLTIP_SHOW_SOUND_MUSIC_WINDOW                     :{BLACK}Wyświetl okno dźwięk/muzyka
@@ -791,7 +791,7 @@ STR_TOOLBAR_TOOLTIP_LAND_BLOCK_INFORMATION                      :{BLACK}Informac
 STR_TOOLBAR_TOOLTIP_SWITCH_TOOLBAR                              :{BLACK}Przełącz paski narzędzi
 
 # Extra tooltips for the scenario editor toolbar
-STR_SCENEDIT_TOOLBAR_TOOLTIP_SAVE_SCENARIO_LOAD_SCENARIO        :{BLACK}Zapis scenariusza, wczytanie scenariusza, opuść edytor, wyjście
+STR_SCENEDIT_TOOLBAR_TOOLTIP_SAVE_SCENARIO_LOAD_SCENARIO        :{BLACK}Zapisz, wczytaj lub opuść edytor scenariuszy, zamknij program
 STR_SCENEDIT_TOOLBAR_OPENTTD                                    :{YELLOW}OpenTTD
 STR_SCENEDIT_TOOLBAR_SCENARIO_EDITOR                            :{YELLOW}Edytor scenariuszy
 STR_SCENEDIT_TOOLBAR_TOOLTIP_MOVE_THE_STARTING_DATE_BACKWARD    :{BLACK}Zmień datę początkową do tyłu o 1 rok
