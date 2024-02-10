@@ -416,36 +416,57 @@ There is a check-script on the git server (also available for clients, see below
 
 The first line of a message must match:
 ```
-<keyword>( #<issue>| <commit>(, (<keyword> #<issue>|<commit>))*)?: ([<section])? <Details>
+<keyword>( #<issue>|<commit>(, (#<issue>|<commit>))*)?: ([<component>])? <details>
 ```
-Keywords are:
-* Add, Feature: Adding new stuff. Difference between "Feature" and "Add" is somewhat subjective. "Feature" for user-point-of-view stuff, "Add" for other.
-* Change: Changing behaviour from user-point-of-view.
-* Remove: Removing something from user-point-of-view.
-* Codechange, Cleanup: Changes without intentional change of behaviour from user-point-of-view. Difference between "Codechange" and "Cleanup" is somewhat subjective.
-* Fix, Revert: Fixing stuff.
-* Doc, Update: Documentation changes, version increments, translator commits.
-* Prepare: Preparation for bigger changes. Rarely used.
 
-If you commit a fix for an [issue](https://github.com/OpenTTD/OpenTTD/issues), add the corresponding issue number in the form of #NNNN. Do it as well if you implement a feature with a matching entry.
+Keywords can either be player-facing, NewGRF / Script author-facing, or developer-facing.
 
-In the case of bugfixes, if you know what revision the bug was introduced (eg regression), please mention that revision as well just after the prefix. Finding the trouble-causing revision is highly encouraged as it makes backporting/branching/releases that much easier.
+For player-facing changes, we have these keywords:
+* Feature: Adding a significant new functionality to the game. This can be small in code-size, but is meant for the bigger things from a player perspective.
+* Add: Similar to Feature, but for small functionalities.
+* Change: Changing existing behaviour to an extent the player needs to know about it.
+* Fix: Fixing an issue with the game (as seen by the player).
+* Remove: Completely removing a functionality.
+* Revert: Reverting an earlier Feature / Add / Change / Fix / Remove.
+* Doc: Update to (player-facing) documentation, like in the `docs/` folder etc.
+* Update: Translator commits.
 
-To further structure the changelog, you can add sections. Example are:
-* "Network" for network specific changes
-* "NewGRF" for NewGRF additions
-* "YAPP", "NPF", for changes in these features
-* "OSX", "Debian", "win32", for OS-specific packaging changes
+For NewGRF / Script author-facing changes, we use the same keywords as player-facing changes, followed by `[NewGRF]` / `[Script]` component.
+This also means the commit is aimed (and worded) towards the NewGRF / Script authors, rather than players.
 
-Further explanations, general bitching, etc. don't go into the first line. Use a new line for those.
+For developer-facing changes, we have these keywords:
+* Codechange: Changes to the code the player is not going to notice. Refactors, modernization, etc.
+* Cleanup: Similar to Codechange, but when it is more about removing old code, rather than an actual change.
+* Codefix: Fixing problems in earlier commits that the player is not actually going to notice. Wrong comments, missing files, CI changes.
+
+If you commit a `Fix` for an [issue](https://github.com/OpenTTD/OpenTTD/issues), add the corresponding issue number in the form of #NNNNN.
+
+In the case of `Fix`es, if you know the hash of the commit in which the bug was introduced (eg regression), please mention that hash (the first 7 characters) as well just after the keyword (or, if present, after the issue number).
+Finding the trouble-causing commit is highly encouraged as it makes backporting / branching / releases that much easier.
+
+Do not mention two keywords; if two apply, pick one that best represents the commit (for example, "Fix #123" is mostly always better than "Revert", even if both are true).
+
+The `<details>` part starts with a capital and does not end with a dot.
+Try to be descriptive to what the player will notice, not to what is actually being changed in the code.
+See `changelog.txt` for inspiration.
+
+To further structure the changelog, you can add components. Example are:
+* "Network" for network specific changes.
+* "NewGRF" for NewGRF additions.
+* "Script" for AI / GS additions.
+* "YAPF", "NPF", for changes in these features.
+* "MacOS", "Linux", "Windows", for OS-specific changes.
+* "CI", "CMake", for changes to the (build) infrastructure.
+
+Further explanations, more details, etc. don't go into the first line. Use a new line for those.
 
 Complete examples:
-* Fix: [YAPF] Infinite loop in pathfinder.
-* Fix #5926: [YAPF] Infinite loop in pathfinder.
-* Fix 80dffae130: Warning about unsigned unary minus.
-* Fix #6673, 99bb3a95b4: Store the map variety setting in the samegame.
-* Revert d9065fbfbe, Fix #5922: ClientSizeChanged is only called via WndProcGdi which already has the mutex.
-* Fix #1264, Fix #2037, Fix #2038, Fix #2110: Rewrite the autoreplace kernel.
+* `Fix: [YAPF] Infinite loop in pathfinder`
+* `Fix #5926: [YAPF] Infinite loop in pathfinder`
+* `Codefix 80dffae: Warning about unsigned unary minus`
+* `Fix #6673, 99bb3a9: Store the map variety setting in the savegame`
+* `Codefix #5922: ClientSizeChanged is only called via WndProcGdi which already has the mutex`
+* `Codechange #1264, #2037, #2038, #2110: Rewrite the autoreplace kernel`
 
 
 ## Other tips
