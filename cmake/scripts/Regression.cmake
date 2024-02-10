@@ -63,11 +63,10 @@ string(REGEX REPLACE "\\\[[0-9-]+ [0-9:]+\\\] " "" REGRESSION_RESULT "${REGRESSI
 string(REGEX REPLACE "\\\[script:[0-9]\\\]" "" REGRESSION_RESULT "${REGRESSION_RESULT}")
 
 # Convert the output to a format that is expected (and more readable) by result.txt
-string(REPLACE "\ndbg: " "\n" REGRESSION_RESULT "${REGRESSION_RESULT}")
-string(REPLACE "\n " "\nERROR: " REGRESSION_RESULT "${REGRESSION_RESULT}")
-string(REPLACE "\nERROR: [1] " "\n" REGRESSION_RESULT "${REGRESSION_RESULT}")
-string(REPLACE "\n[P] " "\n" REGRESSION_RESULT "${REGRESSION_RESULT}")
-string(REPLACE "\n[S] " "\n" REGRESSION_RESULT "${REGRESSION_RESULT}")
+string(REPLACE "dbg:  " "ERROR: " REGRESSION_RESULT "${REGRESSION_RESULT}")
+string(REPLACE "ERROR: [1] " "" REGRESSION_RESULT "${REGRESSION_RESULT}")
+string(REPLACE "[P] " "" REGRESSION_RESULT "${REGRESSION_RESULT}")
+string(REPLACE "[S] " "" REGRESSION_RESULT "${REGRESSION_RESULT}")
 string(REGEX REPLACE "dbg: ([^\n]*)\n?" "" REGRESSION_RESULT "${REGRESSION_RESULT}")
 
 # Remove duplicate script info
