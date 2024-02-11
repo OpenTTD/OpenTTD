@@ -165,7 +165,7 @@ void NetworkHTTPRequest::WinHttpCallback(DWORD code, void *info, DWORD length)
 		} break;
 
 		case WINHTTP_CALLBACK_STATUS_READ_COMPLETE:
-			Debug(net, 4, "HTTP callback: {} bytes", length);
+			Debug(net, 6, "HTTP callback: {} bytes", length);
 
 			this->callback.OnReceiveData(std::unique_ptr<char[]>(static_cast<char *>(info)), length);
 

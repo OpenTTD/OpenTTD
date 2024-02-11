@@ -190,7 +190,7 @@ void HttpThread()
 
 		/* Setup our (C-style) callback function which we pipe back into the callback. */
 		curl_easy_setopt(curl, CURLOPT_WRITEFUNCTION, +[](char *ptr, size_t size, size_t nmemb, void *userdata) -> size_t {
-			Debug(net, 4, "HTTP callback: {} bytes", size * nmemb);
+			Debug(net, 6, "HTTP callback: {} bytes", size * nmemb);
 			HTTPThreadSafeCallback *callback = static_cast<HTTPThreadSafeCallback *>(userdata);
 
 			/* Copy the buffer out of CURL. OnReceiveData() will free it when done. */
