@@ -74,6 +74,8 @@ static const uint NETWORK_TOKEN_LENGTH              =   64;           ///< The m
 
 static const uint NETWORK_GRF_NAME_LENGTH           =   80;           ///< Maximum length of the name of a GRF
 
+static const uint32_t NETWORK_RECONNECT_ATTEMPTS    =    8;           ///< How many attempts before we give up reconnecting.
+
 /**
  * Maximum number of GRFs that can be sent.
  *
