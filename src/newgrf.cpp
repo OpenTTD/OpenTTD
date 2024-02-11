@@ -2606,6 +2606,7 @@ static ChangeInfoResult TownHouseChangeInfo(uint hid, int numinfo, int prop, Byt
 						housespec->accepts_cargo[i] = INVALID_CARGO;
 						housespec->cargo_acceptance[i] = 0;
 					}
+					housespec->accepts_cargo_label[i] = CT_INVALID;
 				}
 				break;
 			}
@@ -3342,6 +3343,7 @@ static ChangeInfoResult IndustrytilesChangeInfo(uint indtid, int numinfo, int pr
 						tsp->accepts_cargo[i] = INVALID_CARGO;
 						tsp->acceptance[i] = 0;
 					}
+					tsp->accepts_cargo_label[i] = CT_INVALID;
 				}
 				break;
 			}
