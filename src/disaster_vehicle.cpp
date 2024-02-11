@@ -345,12 +345,13 @@ static bool DisasterTick_Ufo(DisasterVehicle *v)
 		}
 
 		n = RandomRange(n); // Choose one of them.
-		for (const RoadVehicle *u : RoadVehicle::Iterate()) {
+		for (RoadVehicle *u : RoadVehicle::Iterate()) {
 			/* Find (n+1)-th road vehicle. */
 			if (u->IsFrontEngine() && (n-- == 0)) {
 				/* Target it. */
 				v->dest_tile = u->index;
 				v->age = 0;
+				u->disaster_vehicle = v->index;
 				break;
 			}
 		}
@@ -379,6 +380,7 @@ static bool DisasterTick_Ufo(DisasterVehicle *v)
 			v->age++;
 			if (u->crashed_ctr == 0) {
 				u->Crash();
+				u->disaster_vehicle = INVALID_VEHICLE;
 
 				AddTileNewsItem(STR_NEWS_DISASTER_SMALL_UFO, NT_ACCIDENT, u->tile);
 
@@ -970,20 +972,20 @@ void ReleaseDisastersTargetingIndustry(IndustryID i)
  * Notify disasters that we are about to delete a vehicle. So make them head elsewhere.
  * @param vehicle deleted vehicle
  */
-void ReleaseDisastersTargetingVehicle(VehicleID vehicle)
+void ReleaseDisasterVehicle(VehicleID vehicle)
 {
-	for (DisasterVehicle *v : DisasterVehicle::Iterate()) {
-		/* primary disaster vehicles that have chosen target */
-		if (v->subtype == ST_SMALL_UFO) {
-			if (v->state != 0 && v->dest_tile == vehicle) {
-				/* Revert to target-searching */
-				v->state = 0;
-				v->dest_tile = RandomTile();
-				GetAircraftFlightLevelBounds(v, &v->z_pos, nullptr);
-				v->age = 0;
-			}
-		}
-	}
+	DisasterVehicle *v = DisasterVehicle::GetIfValid(vehicle);
+	if (v == nullptr) return;
+
+	/* primary disaster vehicles that have chosen target */
+	assert(v->subtype == ST_SMALL_UFO);
+	assert(v->state != 0);
+
+	/* Revert to target-searching */
+	v->state = 0;
+	v->dest_tile = RandomTile();
+	GetAircraftFlightLevelBounds(v, &v->z_pos, nullptr);
+	v->age = 0;
 }
 
 void DisasterVehicle::UpdateDeltaXY()
