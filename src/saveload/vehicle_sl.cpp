@@ -503,7 +503,7 @@ void AfterLoadVehicles(bool part_of_load)
 					RoadVehicle *u = RoadVehicle::GetIfValid(v->dest_tile.base());
 					if (u != nullptr && u->IsFrontEngine()) {
 						/* Delete UFO targetting a vehicle which is already a target. */
-						if (u->disaster_vehicle != INVALID_VEHICLE) {
+						if (u->disaster_vehicle != INVALID_VEHICLE && u->disaster_vehicle != dv->index) {
 							delete v;
 							continue;
 						} else {
