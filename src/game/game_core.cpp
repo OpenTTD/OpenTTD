@@ -83,7 +83,7 @@
 	GameInfo *info = config->GetInfo();
 	if (info == nullptr) return;
 
-	if (deviate) config->AddRandomDeviation();
+	if (deviate) config->AddRandomDeviation(OWNER_DEITY);
 	config->AnchorUnchangeableSettings();
 
 	Backup<CompanyID> cur_company(_current_company, FILE_LINE);

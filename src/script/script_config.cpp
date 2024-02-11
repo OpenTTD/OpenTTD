@@ -123,11 +123,11 @@ void ScriptConfig::ResetEditableSettings(bool yet_to_start)
 	}
 }
 
-void ScriptConfig::AddRandomDeviation()
+void ScriptConfig::AddRandomDeviation(CompanyID owner)
 {
 	for (const auto &item : *this->GetConfigList()) {
 		if (item.random_deviation != 0) {
-			this->SetSetting(item.name, ScriptObject::GetRandomizer(OWNER_NONE).Next(item.random_deviation * 2 + 1) - item.random_deviation + this->GetSetting(item.name));
+			this->SetSetting(item.name, ScriptObject::GetRandomizer(owner).Next(item.random_deviation * 2 + 1) - item.random_deviation + this->GetSetting(item.name));
 		}
 	}
 }
