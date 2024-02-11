@@ -116,6 +116,8 @@ struct RoadVehicle final : public GroundVehicle<RoadVehicle, VEH_ROAD> {
 	RoadType roadtype;              //!< Roadtype of this vehicle.
 	RoadTypes compatible_roadtypes; //!< Roadtypes this consist is powered on.
 
+	VehicleID disaster_vehicle = INVALID_VEHICLE; ///< NOSAVE: Disaster vehicle targetting this vehicle.
+
 	/** We don't want GCC to zero our struct! It already is zeroed and has an index! */
 	RoadVehicle() : GroundVehicleBase() {}
 	/** We want to 'destruct' the right class. */

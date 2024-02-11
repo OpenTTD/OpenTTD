@@ -168,7 +168,7 @@ bool CanVehicleUseStation(EngineID engine_type, const struct Station *st);
 bool CanVehicleUseStation(const Vehicle *v, const struct Station *st);
 StringID GetVehicleCannotUseStationReason(const Vehicle *v, const Station *st);
 
-void ReleaseDisastersTargetingVehicle(VehicleID vehicle);
+void ReleaseDisasterVehicle(VehicleID vehicle);
 
 typedef std::vector<VehicleID> VehicleSet;
 void GetVehicleSet(VehicleSet &set, Vehicle *v, uint8_t num_vehicles);

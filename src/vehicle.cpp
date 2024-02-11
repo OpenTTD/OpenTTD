@@ -862,6 +862,8 @@ void Vehicle::PreDestructor()
 			/* Leave the drive through roadstop, when you have not already left it. */
 			RoadStop::GetByTile(v->tile, GetRoadStopType(v->tile))->Leave(v);
 		}
+
+		if (v->disaster_vehicle != INVALID_VEHICLE) ReleaseDisasterVehicle(v->disaster_vehicle);
 	}
 
 	if (this->Previous() == nullptr) {
@@ -884,8 +886,6 @@ void Vehicle::PreDestructor()
 	DeleteDepotHighlightOfVehicle(this);
 
 	StopGlobalFollowVehicle(this);
-
-	ReleaseDisastersTargetingVehicle(this->index);
 }
 
 Vehicle::~Vehicle()
