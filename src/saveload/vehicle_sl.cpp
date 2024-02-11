@@ -501,7 +501,15 @@ void AfterLoadVehicles(bool part_of_load)
 				auto *dv = DisasterVehicle::From(v);
 				if (dv->subtype == ST_SMALL_UFO && dv->state != 0) {
 					RoadVehicle *u = RoadVehicle::GetIfValid(v->dest_tile.base());
-					if (u != nullptr && u->IsFrontEngine()) u->disaster_vehicle = dv->index;
+					if (u != nullptr && u->IsFrontEngine()) {
+						/* Delete UFO targetting a vehicle which is already a target. */
+						if (u->disaster_vehicle != INVALID_VEHICLE) {
+							delete v;
+							continue;
+						} else {
+							u->disaster_vehicle = dv->index;
+						}
+					}
 				}
 				break;
 			}

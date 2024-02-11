@@ -348,6 +348,11 @@ static bool DisasterTick_Ufo(DisasterVehicle *v)
 		for (RoadVehicle *u : RoadVehicle::Iterate()) {
 			/* Find (n+1)-th road vehicle. */
 			if (u->IsFrontEngine() && (n-- == 0)) {
+				if (u->crashed_ctr != 0 || u->disaster_vehicle != INVALID_VEHICLE) {
+					/* Targetted vehicle is crashed or already a target, destroy the UFO. */
+					delete v;
+					return false;
+				}
 				/* Target it. */
 				v->dest_tile = u->index;
 				v->age = 0;
