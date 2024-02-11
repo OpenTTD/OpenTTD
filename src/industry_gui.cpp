@@ -1981,6 +1981,9 @@ struct CargoesField {
 	static int industry_width;
 	static uint max_cargoes;
 
+	using Cargoes = uint16_t;
+	static_assert(std::numeric_limits<Cargoes>::digits >= MAX_CARGOES);
+
 	CargoesFieldType type; ///< Type of field.
 	union {
 		struct {
@@ -1990,10 +1993,10 @@ struct CargoesField {
 		} industry; ///< Industry data (for #CFT_INDUSTRY).
 		struct {
 			CargoID vertical_cargoes[MAX_CARGOES]; ///< Cargoes running from top to bottom (cargo ID or #INVALID_CARGO).
+			Cargoes supp_cargoes; ///< Cargoes in \c vertical_cargoes entering from the left.
+			Cargoes cust_cargoes; ///< Cargoes in \c vertical_cargoes leaving to the right.
 			uint8_t num_cargoes;                   ///< Number of cargoes.
-			CargoID supp_cargoes[MAX_CARGOES];     ///< Cargoes entering from the left (index in #vertical_cargoes, or #INVALID_CARGO).
 			uint8_t top_end;                       ///< Stop at the top of the vertical cargoes.
-			CargoID cust_cargoes[MAX_CARGOES];     ///< Cargoes leaving to the right (index in #vertical_cargoes, or #INVALID_CARGO).
 			uint8_t bottom_end;                    ///< Stop at the bottom of the vertical cargoes.
 		} cargo; ///< Cargo data (for #CFT_CARGO).
 		struct {
@@ -2047,11 +2050,11 @@ struct CargoesField {
 		if (column < 0) return -1;
 
 		if (producer) {
-			assert(!IsValidCargoID(this->u.cargo.supp_cargoes[column]));
-			this->u.cargo.supp_cargoes[column]  = column;
+			assert(!HasBit(this->u.cargo.supp_cargoes, column));
+			SetBit(this->u.cargo.supp_cargoes, column);
 		} else {
-			assert(!IsValidCargoID(this->u.cargo.cust_cargoes[column]));
-			this->u.cargo.cust_cargoes[column] = column;
+			assert(!HasBit(this->u.cargo.cust_cargoes, column));
+			SetBit(this->u.cargo.cust_cargoes, column);
 		}
 		return column;
 	}
@@ -2064,11 +2067,7 @@ struct CargoesField {
 	{
 		assert(this->type == CFT_CARGO);
 
-		for (uint i = 0; i < MAX_CARGOES; i++) {
-			if (IsValidCargoID(this->u.cargo.supp_cargoes[i])) return true;
-			if (IsValidCargoID(this->u.cargo.cust_cargoes[i])) return true;
-		}
-		return false;
+		return this->u.cargo.supp_cargoes != 0 || this->u.cargo.cust_cargoes != 0;
 	}
 
 	/**
@@ -2096,8 +2095,8 @@ struct CargoesField {
 		std::fill(insert, std::end(this->u.cargo.vertical_cargoes), INVALID_CARGO);
 		this->u.cargo.top_end = top_end;
 		this->u.cargo.bottom_end = bottom_end;
-		std::fill(std::begin(this->u.cargo.supp_cargoes), std::end(this->u.cargo.supp_cargoes), INVALID_CARGO);
-		std::fill(std::begin(this->u.cargo.cust_cargoes), std::end(this->u.cargo.cust_cargoes), INVALID_CARGO);
+		this->u.cargo.supp_cargoes = 0;
+		this->u.cargo.cust_cargoes = 0;
 	}
 
 	/**
@@ -2225,7 +2224,7 @@ struct CargoesField {
 					colpos += 1 + CargoesField::cargo_space.width;
 				}
 
-				const CargoID *hor_left, *hor_right;
+				Cargoes hor_left, hor_right;
 				if (_current_text_dir == TD_RTL) {
 					hor_left  = this->u.cargo.cust_cargoes;
 					hor_right = this->u.cargo.supp_cargoes;
@@ -2235,8 +2234,8 @@ struct CargoesField {
 				}
 				ypos += CargoesField::cargo_border.height + vert_inter_industry_space / 2 + (GetCharacterHeight(FS_NORMAL) - CargoesField::cargo_line.height) / 2;
 				for (uint i = 0; i < MAX_CARGOES; i++) {
-					if (IsValidCargoID(hor_left[i])) {
-						int col = hor_left[i];
+					if (HasBit(hor_left, i)) {
+						int col = i;
 						int dx = 0;
 						const CargoSpec *csp = CargoSpec::Get(this->u.cargo.vertical_cargoes[col]);
 						for (; col > 0; col--) {
@@ -2246,8 +2245,8 @@ struct CargoesField {
 						}
 						DrawHorConnection(xpos, cargo_base - dx, ypos, csp);
 					}
-					if (IsValidCargoID(hor_right[i])) {
-						int col = hor_right[i];
+					if (HasBit(hor_right, i)) {
+						int col = i;
 						int dx = 0;
 						const CargoSpec *csp = CargoSpec::Get(this->u.cargo.vertical_cargoes[col]);
 						for (; col < this->u.cargo.num_cargoes - 1; col++) {
@@ -2311,7 +2310,7 @@ struct CargoesField {
 
 		/* row = 0 -> at first horizontal row, row = 1 -> second horizontal row, 2 = 3rd horizontal row. */
 		if (col == 0) {
-			if (IsValidCargoID(this->u.cargo.supp_cargoes[row])) return this->u.cargo.vertical_cargoes[this->u.cargo.supp_cargoes[row]];
+			if (HasBit(this->u.cargo.supp_cargoes, row)) return this->u.cargo.vertical_cargoes[row];
 			if (left != nullptr) {
 				if (left->type == CFT_INDUSTRY) return left->u.industry.other_produced[row];
 				if (left->type == CFT_CARGO_LABEL && !left->u.cargo_label.left_align) return left->u.cargo_label.cargoes[row];
@@ -2319,7 +2318,7 @@ struct CargoesField {
 			return INVALID_CARGO;
 		}
 		if (col == this->u.cargo.num_cargoes) {
-			if (IsValidCargoID(this->u.cargo.cust_cargoes[row])) return this->u.cargo.vertical_cargoes[this->u.cargo.cust_cargoes[row]];
+			if (HasBit(this->u.cargo.cust_cargoes, row)) return this->u.cargo.vertical_cargoes[row];
 			if (right != nullptr) {
 				if (right->type == CFT_INDUSTRY) return right->u.industry.other_accepted[row];
 				if (right->type == CFT_CARGO_LABEL && right->u.cargo_label.left_align) return right->u.cargo_label.cargoes[row];
@@ -2331,11 +2330,11 @@ struct CargoesField {
 			 * Since the horizontal connection is made in the same order as the vertical list, the above condition
 			 * ensures we are left-below the main diagonal, thus at the supplying side.
 			 */
-			if (IsValidCargoID(this->u.cargo.supp_cargoes[row])) return this->u.cargo.vertical_cargoes[this->u.cargo.supp_cargoes[row]];
+			if (HasBit(this->u.cargo.supp_cargoes, row)) return this->u.cargo.vertical_cargoes[row];
 			return INVALID_CARGO;
 		}
 		/* Clicked at a customer connection. */
-		if (IsValidCargoID(this->u.cargo.cust_cargoes[row])) return this->u.cargo.vertical_cargoes[this->u.cargo.cust_cargoes[row]];
+		if (HasBit(this->u.cargo.cust_cargoes, row)) return this->u.cargo.vertical_cargoes[row];
 		return INVALID_CARGO;
 	}
 
@@ -2425,7 +2424,7 @@ struct CargoesRow {
 
 			/* Allocate other cargoes in the empty holes of the horizontal cargo connections. */
 			for (uint i = 0; i < CargoesField::max_cargoes && other_count > 0; i++) {
-				if (!IsValidCargoID(cargo_fld->u.cargo.supp_cargoes[i])) ind_fld->u.industry.other_produced[i] = others[--other_count];
+				if (HasBit(cargo_fld->u.cargo.supp_cargoes, i)) ind_fld->u.industry.other_produced[i] = others[--other_count];
 			}
 		} else {
 			/* Houses only display cargo that towns produce. */
@@ -2484,7 +2483,7 @@ struct CargoesRow {
 
 			/* Allocate other cargoes in the empty holes of the horizontal cargo connections. */
 			for (uint i = 0; i < CargoesField::max_cargoes && other_count > 0; i++) {
-				if (!IsValidCargoID(cargo_fld->u.cargo.cust_cargoes[i])) ind_fld->u.industry.other_accepted[i] = others[--other_count];
+				if (!HasBit(cargo_fld->u.cargo.cust_cargoes, i)) ind_fld->u.industry.other_accepted[i] = others[--other_count];
 			}
 		} else {
 			/* Houses only display what is demanded. */
