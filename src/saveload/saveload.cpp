@@ -42,6 +42,7 @@
 #include "../string_func.h"
 #include "../fios.h"
 #include "../error.h"
+#include "../rev.h"
 #include <atomic>
 #ifdef __EMSCRIPTEN__
 #	include <emscripten.h>
@@ -2774,9 +2775,11 @@ static SaveOrLoadResult SaveFileToDisk(bool threaded)
 		byte compression;
 		const SaveLoadFormat *fmt = GetSavegameFormat(_savegame_format, &compression);
 
+		byte revision_length = ClampTo<byte>(strlen(_openttd_revision) + 1);
 		/* We have written our stuff to memory, now write it to file! */
-		uint32_t hdr[2] = { fmt->tag, TO_BE32(SAVEGAME_VERSION << 16) };
+		uint32_t hdr[2] = { fmt->tag, TO_BE32(SAVEGAME_VERSION << 16 | revision_length) };
 		_sl.sf->Write((byte*)hdr, sizeof(hdr));
+		_sl.sf->Write((const byte*)_openttd_revision, revision_length);
 
 		_sl.sf = fmt->init_write(_sl.sf, compression);
 		_sl.dumper->Flush(_sl.sf);
@@ -2920,10 +2923,18 @@ static SaveOrLoadResult DoLoad(std::shared_ptr<LoadFilter> reader, bool load_che
 			 * Therefore it is loaded, but never saved (or, it saves a 0 in any scenario). */
 			_sl_minor_version = (TO_BE32(hdr[1]) >> 8) & 0xFF;
 
-			Debug(sl, 1, "Loading savegame version {}", _sl_version);
+			byte revision_length = static_cast<byte>(TO_BE32(hdr[1]) & 0xFF);
+			std::string revision;
+			if (_sl_version > SLV_END_PATCHPACKS && revision_length > 0) {
+				char buffer[0xFF];
+				if (_sl.lf->Read((byte*)buffer, revision_length) != revision_length) SlError(STR_GAME_SAVELOAD_ERROR_FILE_NOT_READABLE);
+				revision = StrMakeValid(std::string_view(buffer, revision_length));
+			}
+
+			Debug(sl, 1, "Loading savegame version {} ({})", _sl_version, revision);
 
 			/* Is the version higher than the current? */
-			if (_sl_version > SAVEGAME_VERSION) SlError(STR_GAME_SAVELOAD_ERROR_TOO_NEW_SAVEGAME);
+			if (_sl_version > SAVEGAME_VERSION) SlError(STR_GAME_SAVELOAD_ERROR_TOO_NEW_SAVEGAME_WITH_REVISION, revision);
 			if (_sl_version >= SLV_START_PATCHPACKS && _sl_version <= SLV_END_PATCHPACKS) SlError(STR_GAME_SAVELOAD_ERROR_PATCHPACK);
 			break;
 		}

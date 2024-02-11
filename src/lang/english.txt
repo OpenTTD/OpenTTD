@@ -4902,7 +4902,7 @@ STR_ERROR_UNABLE_TO_DELETE_FILE                                 :{WHITE}Unable t
 STR_ERROR_GAME_LOAD_FAILED                                      :{WHITE}Game Load Failed{}{STRING1}
 STR_GAME_SAVELOAD_ERROR_BROKEN_INTERNAL_ERROR                   :Internal error: {RAW_STRING}
 STR_GAME_SAVELOAD_ERROR_BROKEN_SAVEGAME                         :Broken savegame - {RAW_STRING}
-STR_GAME_SAVELOAD_ERROR_TOO_NEW_SAVEGAME                        :Savegame is made with newer version
+STR_GAME_SAVELOAD_ERROR_TOO_NEW_SAVEGAME_WITH_REVISION          :Savegame is made with newer/unsupported version {RAW_STRING}
 STR_GAME_SAVELOAD_ERROR_FILE_NOT_READABLE                       :File not readable
 STR_GAME_SAVELOAD_ERROR_FILE_NOT_WRITEABLE                      :File not writeable
 STR_GAME_SAVELOAD_ERROR_DATA_INTEGRITY_CHECK_FAILED             :Data integrity check failed
