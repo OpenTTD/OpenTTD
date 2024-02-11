@@ -325,7 +325,7 @@ void ClientNetworkContentSocketHandler::DownloadSelectedContent(uint &files, uin
 
 	this->isCancelled = false;
 
-	if (_settings_client.network.no_http_content_downloads || fallback) {
+	if (fallback) {
 		this->DownloadSelectedContentFallback(content);
 	} else {
 		this->DownloadSelectedContentHTTP(content);
