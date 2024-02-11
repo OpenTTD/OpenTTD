@@ -1924,7 +1924,7 @@ STR_CONFIG_SETTING_DRAG_SIGNALS_DENSITY                         :Espacement des 
 STR_CONFIG_SETTING_DRAG_SIGNALS_DENSITY_HELPTEXT                :Définit la distance à laquelle les signaux seront construits sur une voies jusqu'au prochain obstacle (signal, jonction), si les signaux sont glissés-déposés
 STR_CONFIG_SETTING_DRAG_SIGNALS_DENSITY_VALUE                   :{COMMA} case{P 0 "" s}
 STR_CONFIG_SETTING_DRAG_SIGNALS_FIXED_DISTANCE                  :Espacement fixe entre les signaux en mode glisser-déposer{NBSP}: {STRING}
-STR_CONFIG_SETTING_DRAG_SIGNALS_FIXED_DISTANCE_HELPTEXT         :Choisir le comportement du placement des signaux en mode glisser-déposer. Si désactivé, les signaux sont placés autour des tunnels ou des ponts pour éviter de longues portions sans signaux. Si activé, les signaux sont placés toutes les N cases, permettant d'aligner facilement les signaux sur des voies parallèles
+STR_CONFIG_SETTING_DRAG_SIGNALS_FIXED_DISTANCE_HELPTEXT         :Choisir le comportement du placement des signaux en mode glisser-déposer avec Ctrl. Si désactivé, les signaux sont placés autour des tunnels ou des ponts pour éviter de longues portions sans signaux. Si activé, les signaux sont placés toutes les N case, permettant d'aligner facilement les signaux sur des voies parallèles
 
 STR_CONFIG_SETTING_SEMAPHORE_BUILD_BEFORE_DATE                  :Construire automatiquement des sémaphores avant{NBSP}: {STRING}
 STR_CONFIG_SETTING_SEMAPHORE_BUILD_BEFORE_DATE_HELPTEXT         :Définit l'année à partir de laquelle des signaux électriques seront utilisés pour les voies. Avant cette année, des signaux non électriques seront utilisés (ils ont le même fonctionnement mais une apparence différente)
@@ -2789,7 +2789,7 @@ STR_RAIL_TOOLBAR_TOOLTIP_BUILD_AUTORAIL                         :{BLACK}Construi
 STR_RAIL_TOOLBAR_TOOLTIP_BUILD_TRAIN_DEPOT_FOR_BUILDING         :{BLACK}Construire un dépôt ferroviaire (pour acheter et entretenir des trains).{}Shift pour afficher seulement le coût estimé.
 STR_RAIL_TOOLBAR_TOOLTIP_CONVERT_RAIL_TO_WAYPOINT               :{BLACK}Construire un point de contrôle sur les rails.{}Ctrl pour joindre des points de contrôle entre eux.{}Shift pour afficher seulement le coût estimé.
 STR_RAIL_TOOLBAR_TOOLTIP_BUILD_RAILROAD_STATION                 :{BLACK}Construire une gare.{}Ctrl pour joindre des stations entre elles.{}Shift pour afficher seulement le coût estimé.
-STR_RAIL_TOOLBAR_TOOLTIP_BUILD_RAILROAD_SIGNALS                 :{BLACK}Construire des signaux. Ctrl pour inverser le type des signaux (sémaphore/lumineux).{}Faire glisser pour construire des signaux jusqu'à la prochaine jonction ou le prochain signal{}Shift pour afficher seulement le coût estimé.
+STR_RAIL_TOOLBAR_TOOLTIP_BUILD_RAILROAD_SIGNALS                 :{BLACK}Construire des signaux. Ctrl pour inverser le type des signaux (sémaphore/lumineux).{}Faire glisser pour construire le long d'une section de voie linéaire.{}Ctrl-glisser pour construire des signaux jusqu'à la prochaine jonction ou le prochain signal{}Ctrl-clic pour inverser le mode d'ouverture de la fenêtre de sélection des signaux.{}Shift pour afficher seulement le coût estimé.
 STR_RAIL_TOOLBAR_TOOLTIP_BUILD_RAILROAD_BRIDGE                  :{BLACK}Construire un pont ferroviaire.{}Shift pour afficher seulement le coût estimé.
 STR_RAIL_TOOLBAR_TOOLTIP_BUILD_RAILROAD_TUNNEL                  :{BLACK}Construire un tunnel ferroviaire.{}Shift pour afficher seulement le coût estimé.
 STR_RAIL_TOOLBAR_TOOLTIP_TOGGLE_BUILD_REMOVE_FOR                :{BLACK}Alterner entre construire et retirer des voies, des signaux, des points de contrôle et des gares.{}Ctrl pour retirer également la voie lors du retrait des points de contrôle et des gares.
@@ -3745,9 +3745,12 @@ STR_STATION_LIST_STATION                                        :{YELLOW}{STATIO
 STR_STATION_LIST_WAYPOINT                                       :{YELLOW}{WAYPOINT}
 STR_STATION_LIST_NONE                                           :{YELLOW}− Aucun −
 STR_STATION_LIST_SELECT_ALL_FACILITIES                          :{BLACK}Tous les types de station
-STR_STATION_LIST_CARGO_FILTER_ALL_AND_NO_RATING                 :Tous les types de cargaison et pas de notation
+STR_STATION_LIST_CARGO_FILTER_ALL_AND_NO_RATING                 :Tous les types et sans qualité de service
 STR_STATION_LIST_CARGO_FILTER_MULTIPLE                          :Plusieurs types de cargaison
 STR_STATION_LIST_CARGO_FILTER_NO_CARGO_TYPES                    :Pas de type de cargaison
+STR_STATION_LIST_CARGO_FILTER_ONLY_NO_RATING                    :Sans qualité de service uniquement
+STR_STATION_LIST_CARGO_FILTER_SELECT_ALL                        :Sélectionner tous types et sans qualité
+STR_STATION_LIST_CARGO_FILTER_NO_RATING                         :Sans qualité de service
 STR_STATION_LIST_CARGO_FILTER_EXPAND                            :Afficher plus...
 
 # Station view window

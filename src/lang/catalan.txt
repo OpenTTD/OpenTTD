@@ -2191,24 +2191,24 @@ STR_INTRO_AI_SETTINGS                                           :{BLACK}Configur
 STR_INTRO_GAMESCRIPT_SETTINGS                                   :{BLACK}Configuració de l'script de partida
 STR_INTRO_QUIT                                                  :{BLACK}Surt
 
-STR_INTRO_TOOLTIP_NEW_GAME                                      :{BLACK}Comença una partida nova. Ctrl+Clic salta la configuració del mapa
-STR_INTRO_TOOLTIP_LOAD_GAME                                     :{BLACK}Carrega una partida desada
-STR_INTRO_TOOLTIP_PLAY_HEIGHTMAP                                :{BLACK}Comença una partida nova, utilitzant un mapa d'alçades com a terreny
-STR_INTRO_TOOLTIP_PLAY_SCENARIO                                 :{BLACK}Comença una partida nova, utilitzant un escenari personalitzat
-STR_INTRO_TOOLTIP_SCENARIO_EDITOR                               :{BLACK}Crea una partida amb un món/escenari personalitzat
-STR_INTRO_TOOLTIP_MULTIPLAYER                                   :{BLACK}Comença una partida multijugador
+STR_INTRO_TOOLTIP_NEW_GAME                                      :{BLACK}Comença una partida nova. Amb Ctrl+clic, es salta la configuració del mapa.
+STR_INTRO_TOOLTIP_LOAD_GAME                                     :{BLACK}Carrega una partida desada.
+STR_INTRO_TOOLTIP_PLAY_HEIGHTMAP                                :{BLACK}Comença una partida nova fent servir un mapa d'alçades com a base del terreny.
+STR_INTRO_TOOLTIP_PLAY_SCENARIO                                 :{BLACK}Comença una partida nova en un escenari personalitzat.
+STR_INTRO_TOOLTIP_SCENARIO_EDITOR                               :{BLACK}Crea una partida amb un món/escenari personalitzat.
+STR_INTRO_TOOLTIP_MULTIPLAYER                                   :{BLACK}Comença una partida multijugador.
 
-STR_INTRO_TOOLTIP_TEMPERATE                                     :{BLACK}Selecciona l'estil de paisatge 'temperat'
-STR_INTRO_TOOLTIP_SUB_ARCTIC_LANDSCAPE                          :{BLACK}Selecciona l'estil de paisatge 'subàrtic'
-STR_INTRO_TOOLTIP_SUB_TROPICAL_LANDSCAPE                        :{BLACK}Selecciona l'estil de paisatge 'subtropical'
-STR_INTRO_TOOLTIP_TOYLAND_LANDSCAPE                             :{BLACK}Selecciona l'estil de paisatge 'toyland'
+STR_INTRO_TOOLTIP_TEMPERATE                                     :{BLACK}Selecciona l'estil de paisatge 'temperat'.
+STR_INTRO_TOOLTIP_SUB_ARCTIC_LANDSCAPE                          :{BLACK}Selecciona l'estil de paisatge 'subàrtic'.
+STR_INTRO_TOOLTIP_SUB_TROPICAL_LANDSCAPE                        :{BLACK}Selecciona l'estil de paisatge 'subtropical'.
+STR_INTRO_TOOLTIP_TOYLAND_LANDSCAPE                             :{BLACK}Selecciona l'estil de paisatge 'toyland'.
 
 STR_INTRO_TOOLTIP_GAME_OPTIONS                                  :{BLACK}Obre la finestra d'opcions de la partida.
 STR_INTRO_TOOLTIP_HIGHSCORE                                     :{BLACK}Obre la finestra de la taula de rècords.
 STR_INTRO_TOOLTIP_HELP                                          :{BLACK}Accediu a la documentació i recursos en línia.
 STR_INTRO_TOOLTIP_CONFIG_SETTINGS_TREE                          :{BLACK}Obre la finestra de configuració.
 STR_INTRO_TOOLTIP_NEWGRF_SETTINGS                               :{BLACK}Obre la finestra de configuració de les extensions NewGRF.
-STR_INTRO_TOOLTIP_ONLINE_CONTENT                                :{BLACK}Comprova si hi ha continguts nous i actualitzats per a descarregar
+STR_INTRO_TOOLTIP_ONLINE_CONTENT                                :{BLACK}Comprova si hi ha continguts nous i actualitzats per a descarregar.
 STR_INTRO_TOOLTIP_AI_SETTINGS                                   :{BLACK}Obre la finestra d'opcions d'IA.
 STR_INTRO_TOOLTIP_GAMESCRIPT_SETTINGS                           :{BLACK}Obre la finestra de configuració de l'script de partida.
 STR_INTRO_TOOLTIP_QUIT                                          :{BLACK}Surt de l'OpenTTD.
@@ -2761,16 +2761,16 @@ STR_LINKGRAPH_STATS_TOOLTIP_TIME_EXTENSION                      :{}Temps de viat
 STR_STATION_BUILD_COVERAGE_AREA_TITLE                           :{BLACK}Marca l'àrea de cobertura
 STR_STATION_BUILD_COVERAGE_OFF                                  :{BLACK}Inactiu
 STR_STATION_BUILD_COVERAGE_ON                                   :{BLACK}Actiu
-STR_STATION_BUILD_COVERAGE_AREA_OFF_TOOLTIP                     :{BLACK}No marcar l'àrea de cobertura del lloc proposat
-STR_STATION_BUILD_COVERAGE_AREA_ON_TOOLTIP                      :{BLACK}Marcar l'àrea de cobertura del lloc proposat
+STR_STATION_BUILD_COVERAGE_AREA_OFF_TOOLTIP                     :{BLACK}No marquis l'àrea de cobertura del lloc proposat.
+STR_STATION_BUILD_COVERAGE_AREA_ON_TOOLTIP                      :{BLACK}Marca l'àrea de cobertura del lloc proposat.
 STR_STATION_BUILD_ACCEPTS_CARGO                                 :{BLACK}Accepta: {GOLD}{CARGO_LIST}
 STR_STATION_BUILD_SUPPLIES_CARGO                                :{BLACK}Provisions: {GOLD}{CARGO_LIST}
 STR_STATION_BUILD_INFRASTRUCTURE_COST_YEAR                      :{BLACK}Cost de manteniment: {GOLD}{CURRENCY_SHORT}/any
 STR_STATION_BUILD_INFRASTRUCTURE_COST_PERIOD                    :{BLACK}Cost de manteniment: {GOLD}{CURRENCY_SHORT}/període
 
 # Join station window
-STR_JOIN_STATION_CAPTION                                        :{WHITE}Ajuntar estació
-STR_JOIN_STATION_CREATE_SPLITTED_STATION                        :{YELLOW}Construir una estació separada
+STR_JOIN_STATION_CAPTION                                        :{WHITE}Ajunta la nova estació a...
+STR_JOIN_STATION_CREATE_SPLITTED_STATION                        :{YELLOW}Construeix una estació separada
 
 STR_JOIN_WAYPOINT_CAPTION                                       :{WHITE}Uneix punt de pas
 STR_JOIN_WAYPOINT_CREATE_SPLITTED_WAYPOINT                      :{YELLOW}Construeix un punt de pas separat
@@ -2789,7 +2789,7 @@ STR_RAIL_TOOLBAR_TOOLTIP_BUILD_AUTORAIL                         :{BLACK}Construe
 STR_RAIL_TOOLBAR_TOOLTIP_BUILD_TRAIN_DEPOT_FOR_BUILDING         :{BLACK}Construeix unes cotxeres (per a construir i revisar trens). Amb Maj, només es mostrarà el cost estimat de l'acció.
 STR_RAIL_TOOLBAR_TOOLTIP_CONVERT_RAIL_TO_WAYPOINT               :{BLACK}Construeix un punt de control en una via de ferrocarril. Amb Ctrl, es poden construir nous punts de control i ajuntar-los amb d'altres ja existents. Amb Maj, es mostrarà el cost estimat de construcció.
 STR_RAIL_TOOLBAR_TOOLTIP_BUILD_RAILROAD_STATION                 :{BLACK}Construeix una estació de tren. Amb Ctrl, es poden ajuntar estacions. Amb Maj, se'n mostra el cost estimat.
-STR_RAIL_TOOLBAR_TOOLTIP_BUILD_RAILROAD_SIGNALS                 :{BLACK}Construeix senyals de tren en vies de ferrocarril. Amb Ctrl+clic, es construeix l'estil de senyal alternatiu.{}Amb Clic+arrossega, es construeixen senyals al llarg de la via fins que es troba una cruïlla, estació o senyal. Amb Maj, només es mostrarà el cost estimat de l'acció.
+STR_RAIL_TOOLBAR_TOOLTIP_BUILD_RAILROAD_SIGNALS                 :{BLACK}Construeix senyals de tren en vies de ferrocarril. Amb Ctrl+clic, es construeix l'estil de senyal alternatiu.{}Amb Clic+arrossega, es construeixen senyals a la secció marcada amb l'espaiat desitjat. Amb Clic+arrossega, es construeixen senyals al llarg de la via fins que es troba una cruïlla, estació o senyal amb l'espaiat desitjat. Amb Maj, només es mostrarà el cost estimat de l'acció.
 STR_RAIL_TOOLBAR_TOOLTIP_BUILD_RAILROAD_BRIDGE                  :{BLACK}Construeix ponts de tren. Amb Maj, només es mostrarà el cost estimat de l'acció.
 STR_RAIL_TOOLBAR_TOOLTIP_BUILD_RAILROAD_TUNNEL                  :{BLACK}Construeix túnels per a trens. Amb Maj, només es mostrarà el cost estimat de l'acció.
 STR_RAIL_TOOLBAR_TOOLTIP_TOGGLE_BUILD_REMOVE_FOR                :{BLACK}Commuta entre construir i treure vies de tren, senyals, punts de control i estacions. Amb Ctrl+clic, també es treuen les vies dels punts de control i de les estacions.
@@ -2816,8 +2816,8 @@ STR_STATION_BUILD_NUMBER_OF_TRACKS                              :{BLACK}Nombre d
 STR_STATION_BUILD_NUMBER_OF_TRACKS_TOOLTIP                      :{BLACK}Selecciona el nombre d'andanes de l'estació de tren
 STR_STATION_BUILD_PLATFORM_LENGTH                               :{BLACK}Mida de les andanes
 STR_STATION_BUILD_PLATFORM_LENGTH_TOOLTIP                       :{BLACK}Selecciona la mida de les andanes de l'estació de tren
-STR_STATION_BUILD_DRAG_DROP                                     :{BLACK}Arrossega i deixa
-STR_STATION_BUILD_DRAG_DROP_TOOLTIP                             :{BLACK}Construeix una estació arrossegant i deixant
+STR_STATION_BUILD_DRAG_DROP                                     :{BLACK}Arrossega i solta
+STR_STATION_BUILD_DRAG_DROP_TOOLTIP                             :{BLACK}Construeix una estació amb el mètode arrossega i solta.
 
 STR_STATION_BUILD_STATION_CLASS_TOOLTIP                         :{BLACK}Selecciona un tipus de estació a mostrar
 STR_STATION_BUILD_STATION_TYPE_TOOLTIP                          :{BLACK}Selecciona el tipus de estació a construir
@@ -3744,7 +3744,7 @@ STR_STATION_LIST_CAPTION                                        :{WHITE}{COMPANY
 STR_STATION_LIST_STATION                                        :{YELLOW}{STATION} {STATION_FEATURES}
 STR_STATION_LIST_WAYPOINT                                       :{YELLOW}{WAYPOINT}
 STR_STATION_LIST_NONE                                           :{YELLOW}- Cap -
-STR_STATION_LIST_SELECT_ALL_FACILITIES                          :{BLACK}Seleccionar totes les instal·lacions
+STR_STATION_LIST_SELECT_ALL_FACILITIES                          :{BLACK}Selecciona totes les instal·lacions.
 STR_STATION_LIST_CARGO_FILTER_ALL_AND_NO_RATING                 :Tots els tipus de càrrega i sense rati
 STR_STATION_LIST_CARGO_FILTER_MULTIPLE                          :Múltiples tipus de càrrega
 STR_STATION_LIST_CARGO_FILTER_NO_CARGO_TYPES                    :Cap tipus de càrrega
@@ -4381,7 +4381,7 @@ STR_VEHICLE_VIEW_AIRCRAFT_STATUS_START_STOP_TOOLTIP             :{BLACK}Acció a
 # Messages in the start stop button in the vehicle view
 STR_VEHICLE_STATUS_LOADING_UNLOADING                            :{LTBLUE}Carregant / Descarregant
 STR_VEHICLE_STATUS_LEAVING                                      :{LTBLUE}Sortint
-STR_VEHICLE_STATUS_WAITING_UNBUNCHING                           :{LTBLUE}S'espera per a separar
+STR_VEHICLE_STATUS_WAITING_UNBUNCHING                           :{LTBLUE}S'espera per a espaiar
 STR_VEHICLE_STATUS_CRASHED                                      :{RED}Vehicle sinistrat!
 STR_VEHICLE_STATUS_BROKEN_DOWN                                  :{RED}Avariat
 STR_VEHICLE_STATUS_STOPPED                                      :{RED}Parat
@@ -4395,7 +4395,7 @@ STR_VEHICLE_STATUS_NO_ORDERS_VEL                                :{LTBLUE}Sense o
 STR_VEHICLE_STATUS_HEADING_FOR_WAYPOINT_VEL                     :{LTBLUE}Cap a {WAYPOINT}, a {VELOCITY}
 STR_VEHICLE_STATUS_HEADING_FOR_DEPOT_VEL                        :{ORANGE}Cap a {DEPOT}, {VELOCITY}
 STR_VEHICLE_STATUS_HEADING_FOR_DEPOT_SERVICE_VEL                :{LTBLUE}Revisió a {DEPOT}, {VELOCITY}
-STR_VEHICLE_STATUS_HEADING_FOR_DEPOT_UNBUNCH_VEL                :{LTBLUE}Separa i revisa a {DEPOT}, {VELOCITY}
+STR_VEHICLE_STATUS_HEADING_FOR_DEPOT_UNBUNCH_VEL                :{LTBLUE}Espaia i revisa a {DEPOT}, {VELOCITY}
 
 STR_VEHICLE_STATUS_CANNOT_REACH_STATION_VEL                     :{LTBLUE}No pot arribar a {STATION}, {VELOCITY}
 STR_VEHICLE_STATUS_CANNOT_REACH_WAYPOINT_VEL                    :{LTBLUE}No pot arribar a {WAYPOINT}, {VELOCITY}
@@ -4563,7 +4563,7 @@ STR_ORDER_DROP_REFIT_AUTO_ANY                                   :Càrrega dispon
 STR_ORDER_DROP_GO_ALWAYS_DEPOT                                  :Vés-hi sempre
 STR_ORDER_DROP_SERVICE_DEPOT                                    :Revisa si és necessari
 STR_ORDER_DROP_HALT_DEPOT                                       :Para
-STR_ORDER_DROP_UNBUNCH                                          :Separa
+STR_ORDER_DROP_UNBUNCH                                          :Espaia
 
 # Depot action tooltips, one per vehicle type
 ###length VEHICLE_TYPES
@@ -4640,7 +4640,7 @@ STR_ORDER_REFIT_ORDER                                           :(Remodela a {ST
 STR_ORDER_REFIT_STOP_ORDER                                      :(Remodela a {STRING} i para)
 STR_ORDER_STOP_ORDER                                            :(Para)
 
-STR_ORDER_WAIT_TO_UNBUNCH                                       :(espera per a separar)
+STR_ORDER_WAIT_TO_UNBUNCH                                       :(espera per a deixar espai entre vehicles)
 
 STR_ORDER_GO_TO_STATION                                         :{STRING} {STATION} {STRING}
 STR_ORDER_GO_TO_STATION_CAN_T_USE_STATION                       :{PUSH_COLOUR}{RED}(No pot usar l'estació){POP_COLOUR} {STRING} {STATION} {STRING}
@@ -5112,11 +5112,11 @@ STR_ERROR_UNABLE_TO_FIND_LOCAL_DEPOT                            :{WHITE}Impossib
 STR_ERROR_DEPOT_WRONG_DEPOT_TYPE                                :Tipus de cotxera incorrecta
 
 # Depot unbunching related errors
-STR_ERROR_UNBUNCHING_ONLY_ONE_ALLOWED                           :{WHITE}... només pot tenir una ordre de separar.
-STR_ERROR_UNBUNCHING_NO_FULL_LOAD                               :{WHITE}... no es poden fer servir ordres de càrrega completa quan el vehicle té una ordre de separació.
-STR_ERROR_UNBUNCHING_NO_UNBUNCHING_FULL_LOAD                    :{WHITE}... no es pot separar un vehicle amb una ordre de càrrega completa.
-STR_ERROR_UNBUNCHING_NO_CONDITIONAL                             :{WHITE}... no pot fer servir ordres condicionals quan un vehicle té una ordre de separació.
-STR_ERROR_UNBUNCHING_NO_UNBUNCHING_CONDITIONAL                  :{WHITE}... no es pot separar un vehicle que té ordres condicionals.
+STR_ERROR_UNBUNCHING_ONLY_ONE_ALLOWED                           :{WHITE}... cada llista d'ordres només pot tenir una ordre d'espaiar.
+STR_ERROR_UNBUNCHING_NO_FULL_LOAD                               :{WHITE}... no es poden fer servir ordres de càrrega completa quan el vehicle té una ordre d'espaiat.
+STR_ERROR_UNBUNCHING_NO_UNBUNCHING_FULL_LOAD                    :{WHITE}... no es poden espaiar vehicles que tenen una ordre de càrrega completa.
+STR_ERROR_UNBUNCHING_NO_CONDITIONAL                             :{WHITE}... no pot fer servir ordres condicionals quan un vehicle té una ordre d'espaiat.
+STR_ERROR_UNBUNCHING_NO_UNBUNCHING_CONDITIONAL                  :{WHITE}... els vehicles no es poden espaiar si tenen ordres condicionals.
 
 # Autoreplace related errors
 STR_ERROR_TRAIN_TOO_LONG_AFTER_REPLACEMENT                      :{WHITE}{VEHICLE} és massa llarg després de la substitució

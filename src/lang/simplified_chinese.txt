@@ -2965,7 +2965,7 @@ STR_OBJECT_BUILD_CAPTION                                        :{WHITE}物体�
 STR_OBJECT_BUILD_TOOLTIP                                        :{BLACK}选择要建设的物体。按住 <Ctrl> 键以沿对角线建设，按住 <Shift> 键操作以显示预计成本。
 STR_OBJECT_BUILD_CLASS_TOOLTIP                                  :{BLACK}选择要建造的物件类型
 STR_OBJECT_BUILD_PREVIEW_TOOLTIP                                :{BLACK}物件预览
-STR_OBJECT_BUILD_SIZE                                           :{BLACK}大小: {GOLD}{NUM} x {NUM} 瓦
+STR_OBJECT_BUILD_SIZE                                           :{BLACK}大小: {GOLD}{NUM} x {NUM} 格
 
 STR_OBJECT_CLASS_LTHS                                           :灯塔
 STR_OBJECT_CLASS_TRNS                                           :发射机

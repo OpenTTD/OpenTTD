@@ -290,7 +290,7 @@ STR_TOOLTIP_RESIZE                                              :{BLACK}Klicken 
 STR_TOOLTIP_TOGGLE_LARGE_SMALL_WINDOW                           :{BLACK}Zwischen Fenstergrößen umschalten
 STR_TOOLTIP_VSCROLL_BAR_SCROLLS_LIST                            :{BLACK}Bildlaufleiste: In der Liste auf- und abwärts blättern
 STR_TOOLTIP_HSCROLL_BAR_SCROLLS_LIST                            :{BLACK}Bildlaufleiste: In der Liste nach links und rechts blättern
-STR_TOOLTIP_DEMOLISH_BUILDINGS_ETC                              :{BLACK}Gebäude etc. von einem Planquadrat abreißen. Strg wählt ein diagonales Gebiet aus. Umschalt schaltet zwischen Bauen und Kostenvoranschlag um
+STR_TOOLTIP_DEMOLISH_BUILDINGS_ETC                              :{BLACK}Gebäude usw. von einem Planquadrat abreißen. Strg+Klick+Ziehen wählt das Gebiet diagonal. Außerdem Umschalt drücken, um nur einen Kostenvoranschlag anzuzeigen
 
 # Show engines button
 ###length VEHICLE_TYPES
@@ -384,32 +384,32 @@ STR_TOOLBAR_TOOLTIP_PAUSE_GAME                                  :{BLACK}Spiel an
 STR_TOOLBAR_TOOLTIP_FORWARD                                     :{BLACK}Zeitraffer (Zeit vergeht schnellstmöglich)
 STR_TOOLBAR_TOOLTIP_OPTIONS                                     :{BLACK}Optionen und Einstellungen
 STR_TOOLBAR_TOOLTIP_SAVE_GAME_ABANDON_GAME                      :{BLACK}Spiel speichern, laden oder abbrechen, Programm beenden
-STR_TOOLBAR_TOOLTIP_DISPLAY_MAP                                 :{BLACK}Weltkarte, zusätzliche Fenster, Warenfluss oder Schilderliste anzeigen
-STR_TOOLBAR_TOOLTIP_DISPLAY_TOWN_DIRECTORY                      :{BLACK}Städteverzeichnis anzeigen
-STR_TOOLBAR_TOOLTIP_DISPLAY_SUBSIDIES                           :{BLACK}Subventionen anzeigen
-STR_TOOLBAR_TOOLTIP_DISPLAY_LIST_OF_COMPANY_STATIONS            :{BLACK}Liste der firmeneigenen Stationen anzeigen
-STR_TOOLBAR_TOOLTIP_DISPLAY_COMPANY_FINANCES                    :{BLACK}Firmenfinanzen anzeigen
-STR_TOOLBAR_TOOLTIP_DISPLAY_COMPANY_GENERAL                     :{BLACK}Allgemeine Firmeninformationen anzeigen
-STR_TOOLBAR_TOOLTIP_DISPLAY_STORY_BOOK                          :{BLACK}Zeigt die Chronik an
-STR_TOOLBAR_TOOLTIP_DISPLAY_GOALS_LIST                          :{BLACK}Zeigt die von einem Spielskript festgelegten Ziele an
-STR_TOOLBAR_TOOLTIP_DISPLAY_GRAPHS                              :{BLACK}Firmendiagramme und Frachtraten anzeigen
-STR_TOOLBAR_TOOLTIP_DISPLAY_COMPANY_LEAGUE                      :{BLACK}Firmentabelle oder Punktestand anzeigen
-STR_TOOLBAR_TOOLTIP_FUND_CONSTRUCTION_OF_NEW                    :{BLACK}Industrien betrachten oder den Bau einer neuen Industrie finanzieren
-STR_TOOLBAR_TOOLTIP_DISPLAY_LIST_OF_COMPANY_TRAINS              :{BLACK}Zuglisten der Firmen anzeigen. Strg+Klick wechselt zwischen einfacher und erweiterter Liste
-STR_TOOLBAR_TOOLTIP_DISPLAY_LIST_OF_COMPANY_ROAD_VEHICLES       :{BLACK}Fahrzeuglisten der Firmen anzeigen. Strg+Klick wechselt zwischen einfacher und erweiterter Liste
-STR_TOOLBAR_TOOLTIP_DISPLAY_LIST_OF_COMPANY_SHIPS               :{BLACK}Schiffslisten der Firmen anzeigen. Strg+Klick wechselt zwischen einfacher und erweiterter Liste
-STR_TOOLBAR_TOOLTIP_DISPLAY_LIST_OF_COMPANY_AIRCRAFT            :{BLACK}Flugzeuglisten der Firmen anzeigen. Strg+Klick wechselt zwischen einfacher und erweiterter Liste
-STR_TOOLBAR_TOOLTIP_ZOOM_THE_VIEW_IN                            :{BLACK}Ansicht vergrößern (hineinzoomen)
-STR_TOOLBAR_TOOLTIP_ZOOM_THE_VIEW_OUT                           :{BLACK}Ansicht verkleinern (herauszoomen)
-STR_TOOLBAR_TOOLTIP_BUILD_RAILROAD_TRACK                        :{BLACK}Gleise legen
-STR_TOOLBAR_TOOLTIP_BUILD_ROADS                                 :{BLACK}Straßen bauen
-STR_TOOLBAR_TOOLTIP_BUILD_TRAMWAYS                              :{BLACK}Straßenbahngleise bauen
-STR_TOOLBAR_TOOLTIP_BUILD_SHIP_DOCKS                            :{BLACK}Häfen und Wasserstraßen bauen
+STR_TOOLBAR_TOOLTIP_DISPLAY_MAP                                 :{BLACK}Weltkarte, Zusatzansicht, Warenfluss oder Schilderliste öffnen
+STR_TOOLBAR_TOOLTIP_DISPLAY_TOWN_DIRECTORY                      :{BLACK}Städteverzeichnis öffnen oder Stadt grünen
+STR_TOOLBAR_TOOLTIP_DISPLAY_SUBSIDIES                           :{BLACK}Subventionsliste öffnen
+STR_TOOLBAR_TOOLTIP_DISPLAY_LIST_OF_COMPANY_STATIONS            :{BLACK}Liste der firmeneigenen Stationen öffnen
+STR_TOOLBAR_TOOLTIP_DISPLAY_COMPANY_FINANCES                    :{BLACK}Firmenfinanzen öffnen
+STR_TOOLBAR_TOOLTIP_DISPLAY_COMPANY_GENERAL                     :{BLACK}Allgemeine Firmeninformationen öffnen
+STR_TOOLBAR_TOOLTIP_DISPLAY_STORY_BOOK                          :{BLACK}Chronik öffnen
+STR_TOOLBAR_TOOLTIP_DISPLAY_GOALS_LIST                          :{BLACK}Zielliste öffnen
+STR_TOOLBAR_TOOLTIP_DISPLAY_GRAPHS                              :{BLACK}Firmendiagramme und Frachtraten öffnen
+STR_TOOLBAR_TOOLTIP_DISPLAY_COMPANY_LEAGUE                      :{BLACK}Firmentabelle oder Punktestand öffnen
+STR_TOOLBAR_TOOLTIP_FUND_CONSTRUCTION_OF_NEW                    :{BLACK}Industrieverzeichnis oder Industriekette öffnen oder Bau einer neuen Industrie finanzieren
+STR_TOOLBAR_TOOLTIP_DISPLAY_LIST_OF_COMPANY_TRAINS              :{BLACK}Zugliste der Firma öffnen. Mit Strg+Klick werden Fahrzeuggruppen angezeigt oder verborgen (Gegenteil von gewählter Einstellung)
+STR_TOOLBAR_TOOLTIP_DISPLAY_LIST_OF_COMPANY_ROAD_VEHICLES       :{BLACK}Straßenfahrzeugliste der Firma öffnen. Mit Strg+Klick werden Fahrzeuggruppen angezeigt oder verborgen (Gegenteil von gewählter Einstellung)
+STR_TOOLBAR_TOOLTIP_DISPLAY_LIST_OF_COMPANY_SHIPS               :{BLACK}Schiffsliste der Firma öffnen. Mit Strg+Klick werden Fahrzeuggruppen angezeigt oder verborgen (Gegenteil von gewählter Einstellung)
+STR_TOOLBAR_TOOLTIP_DISPLAY_LIST_OF_COMPANY_AIRCRAFT            :{BLACK}Flugzeugliste der Firma öffnen. Mit Strg+Klick werden Fahrzeuggruppen angezeigt oder verborgen (Gegenteil von gewählter Einstellung)
+STR_TOOLBAR_TOOLTIP_ZOOM_THE_VIEW_IN                            :{BLACK}Hineinzoomen
+STR_TOOLBAR_TOOLTIP_ZOOM_THE_VIEW_OUT                           :{BLACK}Herauszoomen
+STR_TOOLBAR_TOOLTIP_BUILD_RAILROAD_TRACK                        :{BLACK}Gleisinfrastruktur bauen
+STR_TOOLBAR_TOOLTIP_BUILD_ROADS                                 :{BLACK}Straßeninfrastruktur bauen
+STR_TOOLBAR_TOOLTIP_BUILD_TRAMWAYS                              :{BLACK}Straßenbahninfrastruktur bauen
+STR_TOOLBAR_TOOLTIP_BUILD_SHIP_DOCKS                            :{BLACK}Wasserstraßeninfrastruktur bauen
 STR_TOOLBAR_TOOLTIP_BUILD_AIRPORTS                              :{BLACK}Flughäfen bauen
-STR_TOOLBAR_TOOLTIP_LANDSCAPING                                 :{BLACK}Landschaftsbau: Land heben/senken, Bäume pflanzen etc.
-STR_TOOLBAR_TOOLTIP_SHOW_SOUND_MUSIC_WINDOW                     :{BLACK}Sound-/Musikfenster anzeigen
-STR_TOOLBAR_TOOLTIP_SHOW_LAST_MESSAGE_NEWS                      :{BLACK}Zeige letzte Mitteilung/Nachricht, Nachrichtenhistorie oder lösche alle Nachrichten
-STR_TOOLBAR_TOOLTIP_LAND_BLOCK_INFORMATION                      :{BLACK}Gebietsinformation, Screenshot, über OpenTTD und Entwicklerwerkzeuge
+STR_TOOLBAR_TOOLTIP_LANDSCAPING                                 :{BLACK}Landschaftsbaumenü oder Baummenü öffnen, oder ein Schild platzieren
+STR_TOOLBAR_TOOLTIP_SHOW_SOUND_MUSIC_WINDOW                     :{BLACK}Sound-/Musikfenster öffnen
+STR_TOOLBAR_TOOLTIP_SHOW_LAST_MESSAGE_NEWS                      :{BLACK}Letzte Mitteilung/Nachricht oder Nachrichtenhistorie öffnen, oder alle Mitteilungen löschen
+STR_TOOLBAR_TOOLTIP_LAND_BLOCK_INFORMATION                      :{BLACK}Gebietsinformation, Screenshotmenü, OpenTTD-Mitwirkendenliste oder Entwicklerwerkzeuge öffnen
 STR_TOOLBAR_TOOLTIP_SWITCH_TOOLBAR                              :{BLACK}Werkzeugleisten wechseln
 
 # Extra tooltips for the scenario editor toolbar
@@ -419,15 +419,15 @@ STR_SCENEDIT_TOOLBAR_SCENARIO_EDITOR                            :{YELLOW}Szenari
 STR_SCENEDIT_TOOLBAR_TOOLTIP_MOVE_THE_STARTING_DATE_BACKWARD    :{BLACK}Startdatum 1 Jahr früher setzen
 STR_SCENEDIT_TOOLBAR_TOOLTIP_MOVE_THE_STARTING_DATE_FORWARD     :{BLACK}Startdatum 1 Jahr später setzen
 STR_SCENEDIT_TOOLBAR_TOOLTIP_SET_DATE                           :{BLACK}Startdatum eingeben
-STR_SCENEDIT_TOOLBAR_TOOLTIP_DISPLAY_MAP_TOWN_DIRECTORY         :{BLACK}Weltkarte anzeigen, Städteverzeichnis
-STR_SCENEDIT_TOOLBAR_LANDSCAPE_GENERATION                       :{BLACK}Landfläche erzeugen
-STR_SCENEDIT_TOOLBAR_TOWN_GENERATION                            :{BLACK}Städte gründen
-STR_SCENEDIT_TOOLBAR_INDUSTRY_GENERATION                        :{BLACK}Industrie errichten
-STR_SCENEDIT_TOOLBAR_ROAD_CONSTRUCTION                          :{BLACK}Straße bauen
-STR_SCENEDIT_TOOLBAR_TRAM_CONSTRUCTION                          :{BLACK}Straßenbahngleise bauen
-STR_SCENEDIT_TOOLBAR_PLANT_TREES                                :{BLACK}Bäume pflanzen. Strg wählt das Gebiet diagonal aus. Umschalt schaltet zwischen Bauen und Kostenvoranschlag um
+STR_SCENEDIT_TOOLBAR_TOOLTIP_DISPLAY_MAP_TOWN_DIRECTORY         :{BLACK}Karte öffnen, Zusatzansicht, Schilderliste, oder Städte- und Industrieverzeichnis
+STR_SCENEDIT_TOOLBAR_LANDSCAPE_GENERATION                       :{BLACK}Landschaftsbaumenü öffnen oder neue Welt erzeugen
+STR_SCENEDIT_TOOLBAR_TOWN_GENERATION                            :{BLACK}Städte bauen oder erzeugen
+STR_SCENEDIT_TOOLBAR_INDUSTRY_GENERATION                        :{BLACK}Industrien bauen oder erzeugen
+STR_SCENEDIT_TOOLBAR_ROAD_CONSTRUCTION                          :{BLACK}Straßeninfrastruktur bauen
+STR_SCENEDIT_TOOLBAR_TRAM_CONSTRUCTION                          :{BLACK}Straßenbahninfrastruktur bauen
+STR_SCENEDIT_TOOLBAR_PLANT_TREES                                :{BLACK}Bäume pflanzen. Strg+Klick+Ziehen wählt das Gebiet diagonal aus. Außerdem Umschalt drücken, um nur einen Kostenvoranschlag anzuzeigen
 STR_SCENEDIT_TOOLBAR_PLACE_SIGN                                 :{BLACK}Schild aufstellen
-STR_SCENEDIT_TOOLBAR_PLACE_OBJECT                               :{BLACK}Objekt platzieren. Umschalt schaltet zwischen Bauen und Kostenvoranschlag um
+STR_SCENEDIT_TOOLBAR_PLACE_OBJECT                               :{BLACK}Objekt platzieren. Strg+Klick+Ziehen, um das Gebiet diagonal auszuwählen. Außerdem Umschalt drücken, um nur einen Kostenvoranschlag anzuzeigen
 
 # Scenario editor file menu
 ###length 7
@@ -446,7 +446,7 @@ STR_SETTINGS_MENU_CONFIG_SETTINGS_TREE                          :Einstellungen
 STR_SETTINGS_MENU_AI_SETTINGS                                   :KI-Einstellungen
 STR_SETTINGS_MENU_GAMESCRIPT_SETTINGS                           :Spielskripteinstellungen
 STR_SETTINGS_MENU_NEWGRF_SETTINGS                               :NewGRF-Einstellungen
-STR_SETTINGS_MENU_SANDBOX_OPTIONS                               :Sandbox-Optionen
+STR_SETTINGS_MENU_SANDBOX_OPTIONS                               :Sandkasten-Optionen
 STR_SETTINGS_MENU_TRANSPARENCY_OPTIONS                          :Transparenzeinstellungen
 STR_SETTINGS_MENU_TOWN_NAMES_DISPLAYED                          :Städtenamen anzeigen
 STR_SETTINGS_MENU_STATION_NAMES_DISPLAYED                       :Stationsnamen anzeigen
@@ -904,7 +904,7 @@ STR_NEWS_VEHICLE_IS_GETTING_VERY_OLD_AND                        :{WHITE}{VEHICLE
 STR_NEWS_TRAIN_IS_STUCK                                         :{WHITE}{VEHICLE} findet keinen Weg zum Vorankommen
 STR_NEWS_VEHICLE_IS_LOST                                        :{WHITE}{VEHICLE} hat sich verirrt
 STR_NEWS_VEHICLE_UNPROFITABLE_YEAR                              :{WHITE} Gewinn durch {VEHICLE} betrug {CURRENCY_LONG} im letzten Jahr
-STR_NEWS_VEHICLE_UNPROFITABLE_PERIOD                            :{WHITE} Gewinn durch {VEHICLE} betrug {CURRENCY_LONG} im letzten Zeitraum
+STR_NEWS_VEHICLE_UNPROFITABLE_PERIOD                            :{WHITE}Gewinn durch {VEHICLE} betrug {CURRENCY_LONG} im letzten Zeitraum
 STR_NEWS_AIRCRAFT_DEST_TOO_FAR                                  :{WHITE}{VEHICLE} kann sein Ziel nicht erreichen, da es außer Reichweite liegt
 
 STR_NEWS_ORDER_REFIT_FAILED                                     :{WHITE}Umrüstung fehlgeschlagen bei {VEHICLE}
@@ -921,7 +921,12 @@ STR_NEWS_STATION_NOW_ACCEPTS_CARGO_LIST                         :{WHITE}{STATION
 
 STR_NEWS_OFFER_OF_SUBSIDY_EXPIRED                               :{BIG_FONT}{BLACK}Subventionsangebot abgelaufen:{}{}{STRING}transport von {STRING} nach {STRING} wird nicht mehr subventioniert
 STR_NEWS_SUBSIDY_WITHDRAWN_SERVICE                              :{BIG_FONT}{BLACK}Subventionsende:{}{}{STRING}transport von {STRING} nach {STRING} wird nicht mehr subventioniert
+STR_NEWS_SERVICE_SUBSIDY_OFFERED                                :{BIG_FONT}{BLACK}Subventionsangebot:{}{}Erster {STRING} von {STRING} nach {STRING} wird {UNITS_YEARS_OR_MINUTES} von den örtlichen Behörden subventioniert!
 ###length 4
+STR_NEWS_SERVICE_SUBSIDY_AWARDED_HALF                           :{BIG_FONT}{BLACK}Subvention vergeben an {STRING}!{}{}{STRING} von {STRING} nach {STRING} erhält für {UNITS_YEARS_OR_MINUTES}  einen 50% höheren Preis!
+STR_NEWS_SERVICE_SUBSIDY_AWARDED_DOUBLE                         :{BIG_FONT}{BLACK}Subvention vergeben an {STRING}!{}{}{STRING} von {STRING} nach {STRING} erhält für {UNITS_YEARS_OR_MINUTES} den doppelten Preis!
+STR_NEWS_SERVICE_SUBSIDY_AWARDED_TRIPLE                         :{BIG_FONT}{BLACK}Subvention vergeben an {STRING}!{}{}{STRING} von {STRING} nach {STRING} erhält für {UNITS_YEARS_OR_MINUTES} den dreifachen Preis!
+STR_NEWS_SERVICE_SUBSIDY_AWARDED_QUADRUPLE                      :{BIG_FONT}{BLACK}Subvention vergeben an {STRING}!{}{}{STRING} von {STRING} nach {STRING} erhält für {UNITS_YEARS_OR_MINUTES} den vierfachen Preis!
 
 STR_NEWS_ROAD_REBUILDING_MONTHS                                 :{BIG_FONT}{BLACK}Verkehrschaos in {TOWN}!{}{}Straßenreparaturen durch {STRING} behindern Autofahrer für 6 Monate!
 STR_NEWS_ROAD_REBUILDING_MINUTES                                :{BIG_FONT}{BLACK}Verkehrschaos in {TOWN}!{}{}Straßenreparaturen durch {STRING} behindern Autofahrer für 6 Minuten!
@@ -946,6 +951,7 @@ STR_GAME_OPTIONS_TAB_GRAPHICS_TT                                :{BLACK}Grafikei
 STR_GAME_OPTIONS_TAB_SOUND                                      :Sound
 STR_GAME_OPTIONS_TAB_SOUND_TT                                   :{BLACK}Sound- und Musikeinstellungen auswählen
 STR_GAME_OPTIONS_TAB_SOCIAL                                     :Soziales
+STR_GAME_OPTIONS_TAB_SOCIAL_TT                                  :{BLACK}Soziale-Medien-Integrationseinstellungen auswählen
 
 STR_GAME_OPTIONS_VOLUME                                         :Lautstärke
 STR_GAME_OPTIONS_SFX_VOLUME                                     :Sound-Effekte
@@ -1005,6 +1011,7 @@ STR_GAME_OPTIONS_CURRENCY_HKD                                   :Hongkong-Dollar
 STR_GAME_OPTIONS_CURRENCY_INR                                   :Indische Rupie
 STR_GAME_OPTIONS_CURRENCY_IDR                                   :Indonesische Rupiah
 STR_GAME_OPTIONS_CURRENCY_MYR                                   :Malaysische Ringgit
+STR_GAME_OPTIONS_CURRENCY_LVL                                   :Lettlandischer Lats
 
 STR_GAME_OPTIONS_AUTOSAVE_FRAME                                 :{BLACK}Autosicherung
 STR_GAME_OPTIONS_AUTOSAVE_DROPDOWN_TOOLTIP                      :{BLACK}Abstand zwischen den automatischen Spielesicherungen wählen
@@ -1039,7 +1046,7 @@ STR_GAME_OPTIONS_VIDEO_VSYNC_TOOLTIP                            :{BLACK}Dieses K
 STR_GAME_OPTIONS_VIDEO_DRIVER_INFO                              :{BLACK}Aktueller Treiber: {STRING}
 
 STR_GAME_OPTIONS_GUI_SCALE_FRAME                                :{BLACK}Oberflächengröße
-STR_GAME_OPTIONS_GUI_SCALE_TOOLTIP                              :{BLACK}Schieberegler ziehen, um die Größe der Benutzeroberfläche zu wählen. Strg gedrückt halten für eine stetige Anpassung
+STR_GAME_OPTIONS_GUI_SCALE_TOOLTIP                              :{BLACK}Schieberegler ziehen, um die Größe der Benutzeroberfläche zu wählen. Strg+Ziehen für eine stetige Anpassung
 STR_GAME_OPTIONS_GUI_SCALE_AUTO                                 :{BLACK}Größe automatisch erkennen
 STR_GAME_OPTIONS_GUI_SCALE_AUTO_TOOLTIP                         :{BLACK}Dieses Kästchen ankreuzen, um die Größe der Benutzeroberfläche automatisch zu erkennen
 
@@ -1048,7 +1055,8 @@ STR_GAME_OPTIONS_GUI_SCALE_BEVELS_TOOLTIP                       :{BLACK}Dieses K
 
 STR_GAME_OPTIONS_GUI_FONT_SPRITE                                :{BLACK}Nutze die traditionelle Sprite-Schriftart
 STR_GAME_OPTIONS_GUI_FONT_SPRITE_TOOLTIP                        :{BLACK}Dieses Kästchen ankreuzen, um die traditionelle Sprite-Schriftart mit fester Größe zu verwenden.
-STR_GAME_OPTIONS_GUI_FONT_AA                                    :{BLACK}Anti-alias Schriftarten
+STR_GAME_OPTIONS_GUI_FONT_AA                                    :{BLACK}Kantenglättung für Schriften
+STR_GAME_OPTIONS_GUI_FONT_AA_TOOLTIP                            :{BLACK}Dieses Kästchen ankreuzen, um Kantenglättung für skalierbare Schriften zu aktivieren.
 
 STR_GAME_OPTIONS_GUI_SCALE_1X                                   :1×
 STR_GAME_OPTIONS_GUI_SCALE_2X                                   :2×
@@ -1292,6 +1300,7 @@ STR_CONFIG_SETTING_SUBSIDY_DURATION                             :Subventionsdaue
 STR_CONFIG_SETTING_SUBSIDY_DURATION_HELPTEXT                    :Wähle die Anzahl der Jahre, für die eine Subvention vergeben wird
 STR_CONFIG_SETTING_SUBSIDY_DURATION_HELPTEXT_PERIODS            :Wähle die Anzahl der Zeiträume, für die eine Subvention vergeben wird
 
+STR_CONFIG_SETTING_SUBSIDY_DURATION_VALUE                       :{UNITS_YEARS_OR_PERIODS}
 ###setting-zero-is-special
 STR_CONFIG_SETTING_SUBSIDY_DURATION_DISABLED                    :Keine Subventionen
 
@@ -1299,7 +1308,7 @@ STR_CONFIG_SETTING_CONSTRUCTION_COSTS                           :Baukosten: {STR
 STR_CONFIG_SETTING_CONSTRUCTION_COSTS_HELPTEXT                  :Höhe der Bau- und Einkaufskosten festlegen
 
 STR_CONFIG_SETTING_RECESSIONS                                   :Rezessionen: {STRING}
-STR_CONFIG_SETTING_RECESSIONS_HELPTEXT                          :Falls aktiv, können Rezessionen im Abstand von einigen Jahre auftreten. Während einer Rezession ist die Produktion aller Industrien viel niedriger (und kehrt zum Ende der Rezession zum gleichen Level zurück wie vor der Rezession)
+STR_CONFIG_SETTING_RECESSIONS_HELPTEXT                          :Falls aktiv, können Rezessionen von Zeit zu Zeit auftreten. Während einer Rezession ist die Produktion aller Industrien viel niedriger (und kehrt zum Ende der Rezession zur gleichen Höhe zurück wie vor der Rezession)
 
 STR_CONFIG_SETTING_TRAIN_REVERSING                              :Zügen das Umdrehen in Bahnhöfen verbieten: {STRING}
 STR_CONFIG_SETTING_TRAIN_REVERSING_HELPTEXT                     :Falls aktiv, werden Züge in Durchgangsbahnhöfen nicht umdrehen, auch wenn ein kürzerer Pfad zum nächsten Zielbahnhof mittels Umdrehen verfügbar ist
@@ -1353,7 +1362,7 @@ STR_CONFIG_SETTING_FORBID_90_DEG                                :Zügen und Schi
 STR_CONFIG_SETTING_FORBID_90_DEG_HELPTEXT                       :90-Grad-Kurven entstehen, wenn horizontale Streckenabschnitte unmittelbar auf vertikale Strecken im angrenzenden Feld folgen, so dass der Zug an Stelle der üblichen 45° um eine 90°-Kurve fahren muss. Dies bezieht sich auch auf den Wenderadius von Schiffen
 
 STR_CONFIG_SETTING_DISTANT_JOIN_STATIONS                        :Erlaube, nicht direkt benachbarte Stationen zu verbinden: {STRING}
-STR_CONFIG_SETTING_DISTANT_JOIN_STATIONS_HELPTEXT               :Erlaube den Bau von Stationsteilen, die nicht unmittelbar an andere Stationsfelder angrenzen. Nutze Strg+Klick, um diese mit einer existierenden Station zu verbinden.
+STR_CONFIG_SETTING_DISTANT_JOIN_STATIONS_HELPTEXT               :Erlaube den Bau von Stationsteilen, die nicht unmittelbar an andere Stationsfelder angrenzen, indem Strg+Klick verwendet wird, wenn die neuen Teile platziert werden
 
 STR_CONFIG_SETTING_INFLATION                                    :Inflation: {STRING}
 STR_CONFIG_SETTING_INFLATION_HELPTEXT                           :Inflation einschalten. Beim Spielen mit Inflation steigen die Kosten geringfügig schneller als die Transporteinnahmen
@@ -1479,7 +1488,8 @@ STR_CONFIG_SETTING_ORDER_REVIEW_ON                              :Für alle Fahrz
 
 STR_CONFIG_SETTING_WARN_INCOME_LESS                             :Warnen, wenn Einnahmen eines Fahrzeuges negativ sind: {STRING}
 ###length 2
-STR_CONFIG_SETTING_WARN_INCOME_LESS_HELPTEXT                    :Zeige Nachrichten, wenn ein Fahrzeug im letzten Kalenderjahr keinen Gewinn erwirtschaftet hat
+STR_CONFIG_SETTING_WARN_INCOME_LESS_HELPTEXT                    :Falls aktiviert, wird eine Nachricht gesendet, falls ein Fahrzeug innerhalb eines Jahres keinen Gewinn erwirtschaftet hat
+STR_CONFIG_SETTING_WARN_INCOME_LESS_HELPTEXT_PERIOD             :Falls aktiviert, wird eine Nachricht gesendet, falls ein Fahrzeug innerhalb einer Zeitspanne keinen Gewinn erwirtschaftet hat
 
 STR_CONFIG_SETTING_NEVER_EXPIRE_VEHICLES                        :Fahrzeuge veralten nie: {STRING}
 STR_CONFIG_SETTING_NEVER_EXPIRE_VEHICLES_HELPTEXT               :Erlauben, dass Fahrzeuge nach ihrem Einführungsdatum ewig verfügbar bleiben
@@ -1545,7 +1555,7 @@ STR_CONFIG_SETTING_LAND_GENERATOR_ORIGINAL                      :Original
 STR_CONFIG_SETTING_LAND_GENERATOR_TERRA_GENESIS                 :TerraGenesis
 
 STR_CONFIG_SETTING_TERRAIN_TYPE                                 :Landschaftstyp: {STRING}
-STR_CONFIG_SETTING_TERRAIN_TYPE_HELPTEXT                        :(nur TerraGenesis) Hügeligkeit der Landschaft
+STR_CONFIG_SETTING_TERRAIN_TYPE_HELPTEXT                        :Höhe der Hügel und Berge der Landschaft auswählen
 
 STR_CONFIG_SETTING_INDUSTRY_DENSITY                             :Industriedichte: {STRING}
 STR_CONFIG_SETTING_INDUSTRY_DENSITY_HELPTEXT                    :Wähle wieviele Industrien generiert werden sollen und welche Anzahl während des Spiels angestrebt wird zu erhalten
@@ -1557,15 +1567,15 @@ STR_CONFIG_SETTING_SNOWLINE_HEIGHT                              :Schneegrenze au
 STR_CONFIG_SETTING_SNOWLINE_HEIGHT_HELPTEXT                     :Höhe der Schneefallgrenze im subarktischen Klima wählen. Schnee beeinflusst auch die Platzierung von Industrien und Voraussetzungen für Städtewachstum. Dies kann nur im Szenarieneditor geändert werden oder wird ansonsten anhand der Einstellung „Schneebedeckung“ berechnet.
 
 STR_CONFIG_SETTING_SNOW_COVERAGE                                :Schneebedeckung: {STRING}
-STR_CONFIG_SETTING_SNOW_COVERAGE_HELPTEXT                       :Steuert die ungefähre Menge von Schneeflächen im subarktischen Klima. Schnee beeinflusst die Platzierung von Industrien und Vorausstzungen für Städtewachstum. Dies kann nur während der Kartenerzeugung benutzt werden. Land knapp über dem Meeresspiegel ist stets schneefrei.
+STR_CONFIG_SETTING_SNOW_COVERAGE_HELPTEXT                       :Regelt die ungefähre Menge von Schneeflächen im subarktischen Klima. Schnee beeinflusst die Platzierung von Industrien und Vorausstzungen für Städtewachstum. Dies kann nur während der Kartenerzeugung benutzt werden. Am Meerespiegel und auf Küstenkacheln wird sich nie Schnee befinden.
 STR_CONFIG_SETTING_SNOW_COVERAGE_VALUE                          :{NUM}%
 
 STR_CONFIG_SETTING_DESERT_COVERAGE                              :Wüstenbedeckung: {STRING}
-STR_CONFIG_SETTING_DESERT_COVERAGE_HELPTEXT                     :Steuert die ungefähre Menge von Wüsten im tropischen Klima. Wüsten beeinflussen das Erzeugen von Industriebtrieben. Dies kann nur während der Kartenerzeugung benutzt werden.
+STR_CONFIG_SETTING_DESERT_COVERAGE_HELPTEXT                     :Passt die ungefähre Menge von Wüsten im tropischen Klima an. Wüsten beeinflussen das Erzeugen von Industriebtrieben und die Bedingungen für das Stadtwachstum. Dies kann nur während der Kartenerzeugung benutzt werden.
 STR_CONFIG_SETTING_DESERT_COVERAGE_VALUE                        :{NUM}%
 
 STR_CONFIG_SETTING_ROUGHNESS_OF_TERRAIN                         :Rauheit des Geländes: {STRING}
-STR_CONFIG_SETTING_ROUGHNESS_OF_TERRAIN_HELPTEXT                :(nur TerraGenesis) Wähle die Häufigkeit von Hügeln: Rollende Landschaften haben wenige, weit verteilte Hügel. Zerklüftete Landschaften haben viele Hügel, was wiederum sich wiederholend aussehen kann
+STR_CONFIG_SETTING_ROUGHNESS_OF_TERRAIN_HELPTEXT                :(nur TerraGenesis) Die Häufigkeit von Hügeln wählen: Ebene Landschaften haben wenige breitere Hügel, zerklüftete Landschaften haben viele kleinere Hügel.
 ###length 4
 STR_CONFIG_SETTING_ROUGHNESS_OF_TERRAIN_VERY_SMOOTH             :Sehr eben
 STR_CONFIG_SETTING_ROUGHNESS_OF_TERRAIN_SMOOTH                  :Eben
@@ -1573,7 +1583,7 @@ STR_CONFIG_SETTING_ROUGHNESS_OF_TERRAIN_ROUGH                   :Zerklüftet
 STR_CONFIG_SETTING_ROUGHNESS_OF_TERRAIN_VERY_ROUGH              :Sehr zerklüftet
 
 STR_CONFIG_SETTING_VARIETY                                      :Größe der Geländeformen: {STRING}
-STR_CONFIG_SETTING_VARIETY_HELPTEXT                             :(nur TerraGenesis) Beinflusst, ob die Karte sowohl bergige als auch ebene Gegenden enthält. Weil dieses die Karte nur ebener macht, sollten andere Einstellungen auf bergig gesetzt werden
+STR_CONFIG_SETTING_VARIETY_HELPTEXT                             :Wählen, ob die Karte sowohl Berge als auch ebene Gebiete enthalten soll. Je höher die Vielfalt, desto häufiger sind Höhenunterschiede zwischen bergigen und flachen Gebieten.
 
 STR_CONFIG_SETTING_RIVER_AMOUNT                                 :Anzahl Flüsse: {STRING}
 STR_CONFIG_SETTING_RIVER_AMOUNT_HELPTEXT                        :Wähle die Anzahl zu erzeugender Flüsse
@@ -1822,7 +1832,7 @@ STR_CONFIG_SETTING_SERVINT_AIRCRAFT                             :Standard-Wartun
 STR_CONFIG_SETTING_SERVINT_AIRCRAFT_HELPTEXT                    :Setze das Standardwartungsintervall für Luftfahrzeuge. Dieses Wartungsintervall wird von allen Luftfahrzeugen eingehalten, denen kein individuelles Wartungsintervall zugewiesen worden ist
 STR_CONFIG_SETTING_SERVINT_SHIPS                                :Standard-Wartungsintervall für Schiffe: {STRING}
 STR_CONFIG_SETTING_SERVINT_SHIPS_HELPTEXT                       :Setze das Standardwartungsintervall für Schiffe. Dieses Wartungsintervall wird von allen Schiffen eingehalten, denen kein individuelles Wartungsintervall zugewiesen worden ist
-STR_CONFIG_SETTING_SERVINT_VALUE                                :{COMMA}{NBSP}Tag{P 0 "" e}/%
+STR_CONFIG_SETTING_SERVINT_VALUE                                :{COMMA}{NBSP}Tag{P 0 "" e}/Minute{P 0 "" n}/%
 ###setting-zero-is-special
 STR_CONFIG_SETTING_SERVINT_DISABLED                             :Deaktiviert
 
@@ -1920,7 +1930,7 @@ STR_CONFIG_SETTING_SEMAPHORE_BUILD_BEFORE_DATE                  :Automatischer B
 STR_CONFIG_SETTING_SEMAPHORE_BUILD_BEFORE_DATE_HELPTEXT         :Lege das Jahr für die Einführung von Lichtzeichen-Signalen fest. Vor diesem Jahr werden Formsignale gebaut. Die haben die gleiche Funktion, sehen aber anders aus
 
 STR_CONFIG_SETTING_CYCLE_SIGNAL_TYPES                           :Durchlaufen der Signalarten: {STRING}
-STR_CONFIG_SETTING_CYCLE_SIGNAL_TYPES_HELPTEXT                  :Lege fest, durch welche Signaltypen mittels Strg-Klick auf vorhandene Signale rotiert wird
+STR_CONFIG_SETTING_CYCLE_SIGNAL_TYPES_HELPTEXT                  :Festlegen, durch welche Signaltypen mittels Strg-Klick auf gebaute Signale mit dem Signalwerkzeug rotiert wird
 ###length 2
 STR_CONFIG_SETTING_CYCLE_SIGNAL_GROUP                           :Nur aktuelle Gruppe
 STR_CONFIG_SETTING_CYCLE_SIGNAL_ALL                             :Alle Sichtbaren
@@ -2107,6 +2117,7 @@ STR_CONFIG_SETTING_ACCOUNTING                                   :Finanzen
 STR_CONFIG_SETTING_VEHICLES                                     :Fahrzeuge
 STR_CONFIG_SETTING_VEHICLES_PHYSICS                             :Physik
 STR_CONFIG_SETTING_VEHICLES_ROUTING                             :Wegsuche
+STR_CONFIG_SETTING_VEHICLES_ORDERS                              :Aufträge
 STR_CONFIG_SETTING_LIMITATIONS                                  :Beschränkungen
 STR_CONFIG_SETTING_ACCIDENTS                                    :Unfälle und Katastrophen
 STR_CONFIG_SETTING_GENWORLD                                     :Spielfeld-Erzeugung
@@ -2192,14 +2203,14 @@ STR_INTRO_TOOLTIP_SUB_ARCTIC_LANDSCAPE                          :{BLACK}Landscha
 STR_INTRO_TOOLTIP_SUB_TROPICAL_LANDSCAPE                        :{BLACK}Landschaft mit subtropischem Klima auswählen
 STR_INTRO_TOOLTIP_TOYLAND_LANDSCAPE                             :{BLACK}Spielzeugland auswählen
 
-STR_INTRO_TOOLTIP_GAME_OPTIONS                                  :{BLACK}Spieleinstellungen anzeigen und/oder ändern
-STR_INTRO_TOOLTIP_HIGHSCORE                                     :{BLACK}Zeige die Bestenliste
+STR_INTRO_TOOLTIP_GAME_OPTIONS                                  :{BLACK}Spieleinstellungen öffnen
+STR_INTRO_TOOLTIP_HIGHSCORE                                     :{BLACK}Bestenliste öffnen
 STR_INTRO_TOOLTIP_HELP                                          :{BLACK}Zugriff auf Dokumentation und Onlinehilfsmittel erhalten
-STR_INTRO_TOOLTIP_CONFIG_SETTINGS_TREE                          :{BLACK}Einstellungen anzeigen
-STR_INTRO_TOOLTIP_NEWGRF_SETTINGS                               :{BLACK}NewGRF-Einstellungen anzeigen und/oder ändern
+STR_INTRO_TOOLTIP_CONFIG_SETTINGS_TREE                          :{BLACK}Einstellungen öffnen
+STR_INTRO_TOOLTIP_NEWGRF_SETTINGS                               :{BLACK}NewGRF-Einstellungen öffnen
 STR_INTRO_TOOLTIP_ONLINE_CONTENT                                :{BLACK}Prüfe, ob neue oder aktualisierte Erweiterungen zum Herunterladen bereitstehen
-STR_INTRO_TOOLTIP_AI_SETTINGS                                   :{BLACK}KI-Einstellungen anzeigen
-STR_INTRO_TOOLTIP_GAMESCRIPT_SETTINGS                           :{BLACK}Spielskripteinstellungen anzeigen
+STR_INTRO_TOOLTIP_AI_SETTINGS                                   :{BLACK}KI-Einstellungen öffnen
+STR_INTRO_TOOLTIP_GAMESCRIPT_SETTINGS                           :{BLACK}Spielskripteinstellungen öffnen
 STR_INTRO_TOOLTIP_QUIT                                          :{BLACK}OpenTTD beenden
 
 STR_INTRO_BASESET                                               :{BLACK}Den momentan ausgewählten Basisgrafiken fehl{P 0 "t" "en"} {NUM} Sprite{P 0 "" "s"}. Bitte überprüfen, ob es Updates für die Basisgrafiken gibt.
@@ -2230,7 +2241,7 @@ STR_HELP_WINDOW_BUGTRACKER                                      :{BLACK}Einen Fe
 STR_HELP_WINDOW_COMMUNITY                                       :{BLACK}Gemeinschaft
 
 # Cheat window
-STR_CHEATS                                                      :{WHITE}Cheats
+STR_CHEATS                                                      :{WHITE}Sandkasten-Optionen
 STR_CHEAT_MONEY                                                 :{LTBLUE}Kontostand um {CURRENCY_LONG} erhöhen
 STR_CHEAT_CHANGE_COMPANY                                        :{LTBLUE}Spiele die Firma: {ORANGE}{COMMA}
 STR_CHEAT_EXTRA_DYNAMITE                                        :{LTBLUE}Mächtigeres Abrisswerkzeug (entfernt Industrien und unbewegliche Objekte): {ORANGE}{STRING}
@@ -2255,8 +2266,8 @@ STR_LIVERY_TRAIN_GROUP_TOOLTIP                                  :{BLACK}Zeige Fa
 STR_LIVERY_ROAD_VEHICLE_GROUP_TOOLTIP                           :{BLACK}Zeige Farben von Fahrzeuggruppen an
 STR_LIVERY_SHIP_GROUP_TOOLTIP                                   :{BLACK}Zeige Farben von Schiffsgruppen an
 STR_LIVERY_AIRCRAFT_GROUP_TOOLTIP                               :{BLACK}Zeige Farben von Flugzeuggruppen an
-STR_LIVERY_PRIMARY_TOOLTIP                                      :{BLACK}Die Hauptfarbe für das gewählte Schema auswählen. Strg+Klick wählt diese Farbe für jedes Schema
-STR_LIVERY_SECONDARY_TOOLTIP                                    :{BLACK}Die Nebenfarbe für das ausgewählte Schema auswählen. Strg+Klick wählt diese Farbe für jedes Schema
+STR_LIVERY_PRIMARY_TOOLTIP                                      :{BLACK}Die Hauptfarbe für das gewählte Schema auswählen. Mit Strg+Klick wird diese Farbe für jedes Schema gewählt
+STR_LIVERY_SECONDARY_TOOLTIP                                    :{BLACK}Die Nebenfarbe für das ausgewählte Schema auswählen. Mit Strg+Klick wird diese Farbe für jedes Schema gewählt
 STR_LIVERY_PANEL_TOOLTIP                                        :{BLACK}Farbschema oder mehrere Farbschemata mittels Strg+Klick auswählen, um diese zu ändern. In das Kästchen klicken, um ein Schema zu aktivieren
 STR_LIVERY_TRAIN_GROUP_EMPTY                                    :Es wurden keine Zuggruppen erstellt
 STR_LIVERY_ROAD_VEHICLE_GROUP_EMPTY                             :Es sind keine Straßenfahrzeuge eingerichtet
@@ -2741,8 +2752,10 @@ STR_LINKGRAPH_LEGEND_SATURATED                                  :{TINY_FONT}{BLA
 STR_LINKGRAPH_LEGEND_OVERLOADED                                 :{TINY_FONT}{BLACK}überlastet
 
 # Linkgraph tooltip
+STR_LINKGRAPH_STATS_TOOLTIP_MONTH                               :{BLACK}{CARGO_LONG} zum Transport vorgesehen pro Monat von {STATION} zu {STATION} ({COMMA}% der Kapazität){STRING}
 STR_LINKGRAPH_STATS_TOOLTIP_MINUTE                              :{BLACK}{CARGO_LONG} zum Rücktransport vorgesehen pro Minute von {STATION} zu {STATION} ({COMMA}% der Kapazität){STRING}
 STR_LINKGRAPH_STATS_TOOLTIP_RETURN_EXTENSION                    :{}{CARGO_LONG} zum Rücktransport vorgesehen ({COMMA}% der Kapazität)
+STR_LINKGRAPH_STATS_TOOLTIP_TIME_EXTENSION                      :{}Durchschnittliche Reisezeit: {UNITS_DAYS_OR_SECONDS}
 
 # Base for station construction window(s)
 STR_STATION_BUILD_COVERAGE_AREA_TITLE                           :{BLACK}Einzugsgebiet anzeigen
@@ -2771,16 +2784,16 @@ STR_RAIL_TOOLBAR_ELRAIL_CONSTRUCTION_CAPTION                    :Bau elektrifizi
 STR_RAIL_TOOLBAR_MONORAIL_CONSTRUCTION_CAPTION                  :Einschienenbahnbau
 STR_RAIL_TOOLBAR_MAGLEV_CONSTRUCTION_CAPTION                    :Magnetschwebebahnbau
 
-STR_RAIL_TOOLBAR_TOOLTIP_BUILD_RAILROAD_TRACK                   :{BLACK}Gleise legen. Strg halten, um zwischen Bauen und Entfernen umzuschalten. Umschalt schaltet zwischen Bauen und Kostenvoranschlag um
-STR_RAIL_TOOLBAR_TOOLTIP_BUILD_AUTORAIL                         :{BLACK}Gleise legen mit automatischer Wahl der Ausrichtung. Strg halten, um zwischen Bauen und Entfernen umzuschalten. Umschalt schaltet zwischen Bauen und Kostenvoranschlag um
-STR_RAIL_TOOLBAR_TOOLTIP_BUILD_TRAIN_DEPOT_FOR_BUILDING         :{BLACK}Zugdepot bauen (zum Kauf und zur Wartung von Zügen). Umschalt schaltet zwischen Bauen und Kostenvoranschlag um
-STR_RAIL_TOOLBAR_TOOLTIP_CONVERT_RAIL_TO_WAYPOINT               :{BLACK}Wegpunkt (auf vorhandenem Gleis) bauen. Strg+Klick, um Wegpunkte zu verbinden. Umschalt schaltet zwischen Bauen und Kostenvoranschlag um
-STR_RAIL_TOOLBAR_TOOLTIP_BUILD_RAILROAD_STATION                 :{BLACK}Bahnhof bauen. Strg+Klick, um Stationen zu verbinden. Umschalt schaltet zwischen Bauen und Kostenvoranschlag um
-STR_RAIL_TOOLBAR_TOOLTIP_BUILD_RAILROAD_SIGNALS                 :{BLACK}Signale errichten. Strg+Klick wechselt zwischen Formsignal-/Signaltypen{}Klicken und Ziehen, um mehrere Signale entlang einer geraden Strecke zu bauen. Strg halten, um bis zur nächsten Kreuzung zu bauen{}Strg+Klick auf die Schaltfläche zeigt das Signal-Menü. Umschalt schaltet zwischen Bauen und Kostenvoranschlag um
-STR_RAIL_TOOLBAR_TOOLTIP_BUILD_RAILROAD_BRIDGE                  :{BLACK}Eisenbahnbrücke bauen. Umschalt schaltet zwischen Bauen und Kostenvoranschlag um
-STR_RAIL_TOOLBAR_TOOLTIP_BUILD_RAILROAD_TUNNEL                  :{BLACK}Eisenbahntunnel bauen. Umschalt schaltet zwischen Bauen und Kostenvoranschlag um
-STR_RAIL_TOOLBAR_TOOLTIP_TOGGLE_BUILD_REMOVE_FOR                :{BLACK}Umschalter für Bau/Abriss mit aktuellem Bauwerkzeug. Strg+Klick um die Gleise von Wegpunkten und Bahnhöfen ebenfalls zu entfernen
-STR_RAIL_TOOLBAR_TOOLTIP_CONVERT_RAIL                           :{BLACK}Gleistyp in den ausgewählten umwandeln. Umschalt schaltet zwischen Bauen und Kostenvoranschlag um
+STR_RAIL_TOOLBAR_TOOLTIP_BUILD_RAILROAD_TRACK                   :{BLACK}Gleis legen. Strg+Klick, um Gleis zu entfernen. Außerdem Umschalt drücken, um nur einen Kostenvoranschlag anzuzeigen
+STR_RAIL_TOOLBAR_TOOLTIP_BUILD_AUTORAIL                         :{BLACK}Gleis legen mit automatischer Wahl der Ausrichtung. Strg+Klick, um Gleis zu entfernen. Außerdem Umschalt drücken, um nur einen Kostenvoranschlag anzuzeigen
+STR_RAIL_TOOLBAR_TOOLTIP_BUILD_TRAIN_DEPOT_FOR_BUILDING         :{BLACK}Zugdepot bauen (zum Kauf und zur Wartung von Zügen). Außerdem Umschalt drücken, um nur einen Kostenvoranschlag anzuzeigen
+STR_RAIL_TOOLBAR_TOOLTIP_CONVERT_RAIL_TO_WAYPOINT               :{BLACK}Wegpunkt auf Gleis bauen. Strg+Klick, um einen anderen Wegpunkt zum Verbinden auszuwählen. Außerdem Umschalt drücken, um nur einen Kostenvoranschlag anzuzeigen
+STR_RAIL_TOOLBAR_TOOLTIP_BUILD_RAILROAD_STATION                 :{BLACK}Bahnhof bauen. Strg+Klick, um eine andere Station zum Verbinden auszuwählen. Außerdem Umschalt drücken, um nur einen Kostenvoranschlag anzuzeigen
+STR_RAIL_TOOLBAR_TOOLTIP_BUILD_RAILROAD_SIGNALS                 :{BLACK}Signal auf Gleis errichten. Strg+Klick, um den alternativen Signalstil zu bauen{}Klick+Ziehen, um den gewählten Schienenabschnitt mit Signalen mit dem ausgewählten Abstand zu füllen. Strg+Klick+Ziehen, um Signale bis zur nächsten Kreuzung, Station oder zum nächsten Signal zu füllen. Außerdem Umschalt drücken, um nur einen Kostenvoranschlag anzuzeigen
+STR_RAIL_TOOLBAR_TOOLTIP_BUILD_RAILROAD_BRIDGE                  :{BLACK}Eisenbahnbrücke bauen. Umschalt drücken, um nur einen Kostenvoranschlag anzuzeigen
+STR_RAIL_TOOLBAR_TOOLTIP_BUILD_RAILROAD_TUNNEL                  :{BLACK}Eisenbahntunnel bauen. Außerdem Umschalt drücken, um nur einen Kostenvoranschlag anzuzeigen
+STR_RAIL_TOOLBAR_TOOLTIP_TOGGLE_BUILD_REMOVE_FOR                :{BLACK}Umschalter für Bau/Abriss von Gleisen, Signalen, Wegpunkten und Bahnhöfen. Strg+Klick, um die Gleise von Wegpunkten und Bahnhöfen ebenfalls zu entfernen
+STR_RAIL_TOOLBAR_TOOLTIP_CONVERT_RAIL                           :{BLACK}Gleistyp in den ausgewählten umwandeln. Außerdem Umschalt drücken, um nur einen Kostenvoranschlag anzuzeigen
 
 STR_RAIL_NAME_RAILROAD                                          :Schienen
 STR_RAIL_NAME_ELRAIL                                            :Elektrifizierte Schienen
@@ -2830,7 +2843,7 @@ STR_BUILD_SIGNAL_ELECTRIC_EXIT_TOOLTIP                          :{BLACK}Ausfahrs
 STR_BUILD_SIGNAL_ELECTRIC_COMBO_TOOLTIP                         :{BLACK}Kombinationssignal (Lichtsignal){}Das Kombinationssignal ist gleichzeitig Aus- und Einfahrsignal. Somit werden umfangreiche Signalverschaltungen möglich
 STR_BUILD_SIGNAL_ELECTRIC_PBS_TOOLTIP                           :{BLACK}Pfadsignal (Lichtsignal){}Erlaubt mehreren Zügen gleichzeitig, einen Signalbereich zu befahren, sofern sie separate Gleisabschnitte belegen können. Normale Pfadsignale können von hinten durchfahren werden
 STR_BUILD_SIGNAL_ELECTRIC_PBS_OWAY_TOOLTIP                      :{BLACK}Einseitiges Pfadsignal (Lichtsignal):{}Erlaubt mehreren Zügen, einen Signalbereich zu befahren, sofern sie separate Gleisabschnitte belegen können. Einseitige Pfadsignale können nicht von hinten durchfahren werden
-STR_BUILD_SIGNAL_CONVERT_TOOLTIP                                :{BLACK}Signalumbau{}Wenn ausgewählt, werden bestehende Signale durch Anklicken zum ausgewählten Signaltyp umgebaut. Strg+Klick ändert die bestehende Bauform. Umschalt+Klick zeigt Kostenvoranschlag
+STR_BUILD_SIGNAL_CONVERT_TOOLTIP                                :{BLACK}Signalumbau{}Ein Klick auf ein exsitierendes Signal wird es zum gewählten Signaltyp und ihrer Variante umbauen. Strg+Klick, um die bestehende Bauform zu wechseln. Umschalt+Klick zeigt Kostenvoranschlag für den Umbau
 STR_BUILD_SIGNAL_DRAG_SIGNALS_DENSITY_TOOLTIP                   :{BLACK}Signalabstand beim automatischen Bau durch Ziehen
 STR_BUILD_SIGNAL_DRAG_SIGNALS_DENSITY_DECREASE_TOOLTIP          :{BLACK}Signalabstand verringern
 STR_BUILD_SIGNAL_DRAG_SIGNALS_DENSITY_INCREASE_TOOLTIP          :{BLACK}Signalabstand erhöhen
@@ -2856,25 +2869,25 @@ STR_BRIDGE_TUBULAR_SILICON                                      :Siliziumrundbr�
 # Road construction toolbar
 STR_ROAD_TOOLBAR_ROAD_CONSTRUCTION_CAPTION                      :{WHITE}Straßenbau
 STR_ROAD_TOOLBAR_TRAM_CONSTRUCTION_CAPTION                      :{WHITE}Straßenbahn bauen
-STR_ROAD_TOOLBAR_TOOLTIP_BUILD_ROAD_SECTION                     :{BLACK}Straße bauen. Strg halten, um zwischen Bauen und Entfernen umzuschalten. Umschalt schaltet zwischen Bauen und Kostenvoranschlag um
-STR_ROAD_TOOLBAR_TOOLTIP_BUILD_TRAMWAY_SECTION                  :{BLACK}Straßenbahngleis bauen. Strg halten, um zwischen Bauen und Entfernen umzuschalten. Umschalt schaltet zwischen Bauen und Kostenvoranschlag um
-STR_ROAD_TOOLBAR_TOOLTIP_BUILD_AUTOROAD                         :{BLACK}Straße mit automatischer Wahl der Ausrichtung bauen. Strg halten, um zwischen Bauen und Entfernen umzuschalten. Umschalt schaltet zwischen Bauen und Kostenvoranschlag um
-STR_ROAD_TOOLBAR_TOOLTIP_BUILD_AUTOTRAM                         :{BLACK}Straßenbahngleis mit automatischer Wahl der Ausrichtung bauen. Strg halten, um zwischen Bauen und Entfernen umzuschalten. Umschalt schaltet zwischen Bauen und Kostenvoranschlag um
-STR_ROAD_TOOLBAR_TOOLTIP_BUILD_ROAD_VEHICLE_DEPOT               :{BLACK}Fahrzeugdepot bauen (zum Kauf und zur Wartung von Fahrzeugen benötigt). Umschalt schaltet zwischen Bauen und Kostenvoranschlag um
-STR_ROAD_TOOLBAR_TOOLTIP_BUILD_TRAM_VEHICLE_DEPOT               :{BLACK}Straßenbahndepot bauen (zum Kauf und zur Wartung von Straßenbahnen benötigt). Umschalt schaltet zwischen Bauen und Kostenvoranschlag um
-STR_ROAD_TOOLBAR_TOOLTIP_BUILD_BUS_STATION                      :{BLACK}Bushaltestelle bauen. Strg+Klick, um Stationen zu verbinden. Umschalt schaltet zwischen Bauen und Kostenvoranschlag um
-STR_ROAD_TOOLBAR_TOOLTIP_BUILD_PASSENGER_TRAM_STATION           :{BLACK}Straßenbahnhaltestelle bauen. Strg+Klick, um Stationen zu verbinden. Umschalt schaltet zwischen Bauen und Kostenvoranschlag um
-STR_ROAD_TOOLBAR_TOOLTIP_BUILD_TRUCK_LOADING_BAY                :{BLACK}Lkw-Ladeplatz bauen. Strg+Klick, um Stationen zu verbinden. Umschalt schaltet zwischen Bauen und Kostenvoranschlag um
-STR_ROAD_TOOLBAR_TOOLTIP_BUILD_CARGO_TRAM_STATION               :{BLACK}Güterstraßenbahnhaltestelle bauen. Strg+Klick, um Stationen zu verbinden. Umschalt schaltet zwischen Bauen und Kostenvoranschlag um
+STR_ROAD_TOOLBAR_TOOLTIP_BUILD_ROAD_SECTION                     :{BLACK}Straße bauen. Strg+Klick, um Straßenabschnitt zu entfernen. Außerdem Umschalt drücken, um nur einen Kostenvoranschlag anzuzeigen
+STR_ROAD_TOOLBAR_TOOLTIP_BUILD_TRAMWAY_SECTION                  :{BLACK}Straßenbahngleis bauen. Strg+Klick, um Straßenbahngleisabschnitt zu entfernen. Außerdem Umschalt drücken, um nur einen Kostenvoranschlag anzuzeigen
+STR_ROAD_TOOLBAR_TOOLTIP_BUILD_AUTOROAD                         :{BLACK}Straße mit automatischer Wahl der Ausrichtung bauen. Strg+Klick, um Straßenabschnitt zu entfernen. Außerdem Umschalt drücken, um nur einen Kostenvoranschlag anzuzeigen
+STR_ROAD_TOOLBAR_TOOLTIP_BUILD_AUTOTRAM                         :{BLACK}Straßenbahngleis mit automatischer Wahl der Ausrichtung bauen. Strg+Klick, um Straßenbahngleisabschnitt zu entfernen. Außerdem Umschalt drücken, um nur einen Kostenvoranschlag anzuzeigen
+STR_ROAD_TOOLBAR_TOOLTIP_BUILD_ROAD_VEHICLE_DEPOT               :{BLACK}Fahrzeugdepot bauen (zum Kauf und zur Wartung von Fahrzeugen benötigt). Außerdem Umschalt drücken, um nur einen Kostenvoranschlag anzuzeigen
+STR_ROAD_TOOLBAR_TOOLTIP_BUILD_TRAM_VEHICLE_DEPOT               :{BLACK}Straßenbahndepot bauen (zum Kauf und zur Wartung von Straßenbahnen benötigt). Außerdem Umschalt drücken, um nur einen Kostenvoranschlag anzuzeigen
+STR_ROAD_TOOLBAR_TOOLTIP_BUILD_BUS_STATION                      :{BLACK}Bushaltestelle bauen. Strg+Klick, um eine andere Station zum Verbinden auszuwählen. Außerdem Umschalt drücken, um nur einen Kostenvoranschlag anzuzeigen
+STR_ROAD_TOOLBAR_TOOLTIP_BUILD_PASSENGER_TRAM_STATION           :{BLACK}Straßenbahnhaltestelle bauen. Strg+Klick, um einen andere Station zum Verbinden auszuwählen. Außerdem Umschalt drücken, um nur einen Kostenvoranschlag anzuzeigen
+STR_ROAD_TOOLBAR_TOOLTIP_BUILD_TRUCK_LOADING_BAY                :{BLACK}Lkw-Ladeplatz bauen. Strg+Klick, um eine andere Station zum Verbinden auszuwählen. Außerdem Umschalt drücken, um nur einen Kostenvoranschlag anzuzeigen
+STR_ROAD_TOOLBAR_TOOLTIP_BUILD_CARGO_TRAM_STATION               :{BLACK}Güterstraßenbahnhaltestelle bauen. Strg+Klick, um eine andere Station zum Verbinden auszuwählen. Außerdem Umschalt drücken, um nur einen Kostenvoranschlag anzuzeigen
 STR_ROAD_TOOLBAR_TOOLTIP_TOGGLE_ONE_WAY_ROAD                    :{BLACK}Einbahnstraßenbau ein/aus
-STR_ROAD_TOOLBAR_TOOLTIP_BUILD_ROAD_BRIDGE                      :{BLACK}Straßenbrücke bauen. Umschalt schaltet zwischen Bauen und Kostenvoranschlag um
-STR_ROAD_TOOLBAR_TOOLTIP_BUILD_TRAMWAY_BRIDGE                   :{BLACK}Straßenbahnbrücke bauen. Umschalt schaltet zwischen Bauen und Kostenvoranschlag um
-STR_ROAD_TOOLBAR_TOOLTIP_BUILD_ROAD_TUNNEL                      :{BLACK}Straßentunnel bauen. Umschalt schaltet zwischen Bauen und Kostenvoranschlag um
-STR_ROAD_TOOLBAR_TOOLTIP_BUILD_TRAMWAY_TUNNEL                   :{BLACK}Straßenbahntunnel bauen. Umschalt schaltet zwischen Bauen und Kostenvoranschlag um
+STR_ROAD_TOOLBAR_TOOLTIP_BUILD_ROAD_BRIDGE                      :{BLACK}Straßenbrücke bauen. Außerdem Umschalt drücken, um nur einen Kostenvoranschlag anzuzeigen
+STR_ROAD_TOOLBAR_TOOLTIP_BUILD_TRAMWAY_BRIDGE                   :{BLACK}Straßenbahnbrücke bauen. Außerdem Umschalt drücken, um nur einen Kostenvoranschlag anzuzeigen
+STR_ROAD_TOOLBAR_TOOLTIP_BUILD_ROAD_TUNNEL                      :{BLACK}Straßentunnel bauen. Außerdem Umschalt drücken, um nur einen Kostenvoranschlag anzuzeigen
+STR_ROAD_TOOLBAR_TOOLTIP_BUILD_TRAMWAY_TUNNEL                   :{BLACK}Straßenbahntunnel bauen. Außerdem Umschalt drücken, um nur einen Kostenvoranschlag anzuzeigen
 STR_ROAD_TOOLBAR_TOOLTIP_TOGGLE_BUILD_REMOVE_FOR_ROAD           :{BLACK}Zwischen Bau und Abriss der Straße umschalten
 STR_ROAD_TOOLBAR_TOOLTIP_TOGGLE_BUILD_REMOVE_FOR_TRAMWAYS       :{BLACK}Zwischen Bau und Abriss von Straßenbahngleisen umschalten
-STR_ROAD_TOOLBAR_TOOLTIP_CONVERT_ROAD                           :{BLACK}Straßentyp in den ausgewählten umwandeln. Umschalt schaltet zwischen Bauen und Kostenvoranschlag um
-STR_ROAD_TOOLBAR_TOOLTIP_CONVERT_TRAM                           :{BLACK}Straßenbahntyp in den ausgewählten umwandeln. Umschalt schaltet zwischen Bauen und Kostenvoranschlag um
+STR_ROAD_TOOLBAR_TOOLTIP_CONVERT_ROAD                           :{BLACK}Straßentyp in den ausgewählten umwandeln. Außerdem Umschalt drücken, um nur einen Kostenvoranschlag anzuzeigen
+STR_ROAD_TOOLBAR_TOOLTIP_CONVERT_TRAM                           :{BLACK}Straßenbahntyp in den ausgewählten umwandeln. Außerdem Umschalt drücken, um nur einen Kostenvoranschlag anzuzeigen
 
 STR_ROAD_NAME_ROAD                                              :Straße
 STR_ROAD_NAME_TRAM                                              :Straßenbahngleis
@@ -2898,14 +2911,14 @@ STR_STATION_BUILD_CARGO_TRAM_ORIENTATION_TOOLTIP                :{BLACK}Ausricht
 # Waterways toolbar (last two for SE only)
 STR_WATERWAYS_TOOLBAR_CAPTION                                   :{WHITE}Wasserstraßenbau
 STR_WATERWAYS_TOOLBAR_CAPTION_SE                                :{WHITE}Wasserstraßen
-STR_WATERWAYS_TOOLBAR_BUILD_CANALS_TOOLTIP                      :{BLACK}Kanal bauen. Umschalt schaltet zwischen Bauen und Kostenvoranschlag um
-STR_WATERWAYS_TOOLBAR_BUILD_LOCKS_TOOLTIP                       :{BLACK}Schleuse bauen. Umschalt schaltet zwischen Bauen und Kostenvoranschlag um
-STR_WATERWAYS_TOOLBAR_BUILD_DEPOT_TOOLTIP                       :{BLACK}Werft bauen (für den Kauf und die Wartung von Schiffen benötigt). Umschalt schaltet zwischen Bauen und Kostenvoranschlag um
-STR_WATERWAYS_TOOLBAR_BUILD_DOCK_TOOLTIP                        :{BLACK}Hafen bauen. Strg+Klick, um Stationen zu verbinden. Umschalt schaltet zwischen Bauen und Kostenvoranschlag um
-STR_WATERWAYS_TOOLBAR_BUOY_TOOLTIP                              :{BLACK}Positionsboje, wird als Wegpunkt benötigt. Umschalt schaltet zwischen Bauen und Kostenvoranschlag um
-STR_WATERWAYS_TOOLBAR_BUILD_AQUEDUCT_TOOLTIP                    :{BLACK}Aquädukt bauen. Umschalt schaltet zwischen Bauen und Kostenvoranschlag um
-STR_WATERWAYS_TOOLBAR_CREATE_LAKE_TOOLTIP                       :{BLACK}Wasser erzeugen.{}Baut einen Kanal. Auf Meereshöhe wird bei gedrückter Strg-Taste ein Wasserfeld erzeugt, welches umliegendes Land flutet
-STR_WATERWAYS_TOOLBAR_CREATE_RIVER_TOOLTIP                      :{BLACK}Flüsse platzieren. Strg wählt das Gebiet diagonal
+STR_WATERWAYS_TOOLBAR_BUILD_CANALS_TOOLTIP                      :{BLACK}Kanäle bauen. Außerdem Umschalt drücken, um nur einen Kostenvoranschlag anzuzeigen
+STR_WATERWAYS_TOOLBAR_BUILD_LOCKS_TOOLTIP                       :{BLACK}Schleusen bauen. Außerdem Umschalt drücken, um nur einen Kostenvoranschlag anzuzeigen
+STR_WATERWAYS_TOOLBAR_BUILD_DEPOT_TOOLTIP                       :{BLACK}Werft bauen (für den Kauf und die Wartung von Schiffen benötigt). Außerdem Umschalt drücken, um nur einen Kostenvoranschlag anzuzeigen
+STR_WATERWAYS_TOOLBAR_BUILD_DOCK_TOOLTIP                        :{BLACK}Hafen bauen. Strg+Klick, um eine andere Station zum Verbinden auszuwählen. Außerdem Umschalt drücken, um nur einen Kostenvoranschlag anzuzeigen
+STR_WATERWAYS_TOOLBAR_BUOY_TOOLTIP                              :{BLACK}Boje platzieren, welche als Wegpunkt benutzt werden kann. Außerdem Umschalt drücken, um nur einen Kostenvoranschlag anzuzeigen
+STR_WATERWAYS_TOOLBAR_BUILD_AQUEDUCT_TOOLTIP                    :{BLACK}Aquädukt bauen. Außerdem Umschalt drücken, um nur einen Kostenvoranschlag anzuzeigen
+STR_WATERWAYS_TOOLBAR_CREATE_LAKE_TOOLTIP                       :{BLACK}Kanal bauen. Strg+Klick auf dem Meeresspiegel, um stattdessen mit Meerwasser zu fluten
+STR_WATERWAYS_TOOLBAR_CREATE_RIVER_TOOLTIP                      :{BLACK}Flüsse platzieren. Strg+Klick wählt das Gebiet diagonal
 
 # Ship depot construction window
 STR_DEPOT_BUILD_SHIP_CAPTION                                    :{WHITE}Ausrichtung der Werft
@@ -2916,7 +2929,7 @@ STR_STATION_BUILD_DOCK_CAPTION                                  :{WHITE}Hafen
 
 # Airport toolbar
 STR_TOOLBAR_AIRCRAFT_CAPTION                                    :{WHITE}Flughäfen
-STR_TOOLBAR_AIRCRAFT_BUILD_AIRPORT_TOOLTIP                      :{BLACK}Flughafen bauen. Strg+Klick, um Stationen zu verbinden. Umschalt schaltet zwischen Bauen und Kostenvoranschlag um
+STR_TOOLBAR_AIRCRAFT_BUILD_AIRPORT_TOOLTIP                      :{BLACK}Flughafen bauen. Strg+Klick, um eine andere Station zum Verbinden auszuwählen. Außerdem Umschalt drücken, um nur einen Kostenvoranschlag anzuzeigen
 
 # Airport construction window
 STR_STATION_BUILD_AIRPORT_CAPTION                               :{WHITE}Flughafen bauen
@@ -2943,14 +2956,14 @@ STR_STATION_BUILD_NOISE                                         :{BLACK}Lärmbel
 
 # Landscaping toolbar
 STR_LANDSCAPING_TOOLBAR                                         :{WHITE}Landschaftsbau
-STR_LANDSCAPING_TOOLTIP_LOWER_A_CORNER_OF_LAND                  :{BLACK}Land absenken. Durch Ziehen wird die erste ausgewählte Ecke abgesenkt und der ausgewählte Bereich auf die neue Eckhöhe gebracht. Strg wählt das Gebiet diagonal. Umschalt schaltet zwischen Bauen und Kostenvoranschlag um
-STR_LANDSCAPING_TOOLTIP_RAISE_A_CORNER_OF_LAND                  :{BLACK}Land anheben. Durch Ziehen wird die erste ausgewählte Ecke angehoben und der ausgewählte Bereich auf die neue Eckhöhe gebracht. Strg wählt das Gebiet diagonal. Umschalt schaltet zwischen Bauen und Kostenvoranschlag um
-STR_LANDSCAPING_LEVEL_LAND_TOOLTIP                              :{BLACK}Höhe ausgleichen. Strg wählt das Gebiet diagonal. Umschalt schaltet zwischen Bauen und Kostenvoranschlag um
-STR_LANDSCAPING_TOOLTIP_PURCHASE_LAND                           :{BLACK}Land für künftige Nutzung kaufen. Umschalt schaltet zwischen Bauen und Kostenvoranschlag um
+STR_LANDSCAPING_TOOLTIP_LOWER_A_CORNER_OF_LAND                  :{BLACK}Eine Landecke absenken. Durch Ziehen wird die erste ausgewählte Ecke abgesenkt und der ausgewählte Bereich auf die neue Eckhöhe gebracht. Strg+Klick+Ziehen wählt das Gebiet diagonal. Außerdem Umschalt drücken, um nur einen Kostenvoranschlag anzuzeigen
+STR_LANDSCAPING_TOOLTIP_RAISE_A_CORNER_OF_LAND                  :{BLACK}Eine Landecke anheben. Mit Klick+Ziehen wird die erste ausgewählte Ecke angehoben und der ausgewählte Bereich auf die neue Eckhöhe gebracht. Strg+Klick+Ziehen wählt das Gebiet diagonal. Außerdem Umschalt drücken, um nur einen Kostenvoranschlag anzuzeigen
+STR_LANDSCAPING_LEVEL_LAND_TOOLTIP                              :{BLACK}Höhe eines Gebietes an die Höhe der zuerst gewählten Ecke angleichen. Strg+Klick+Ziehen wählt das Gebiet diagonal. Außerdem Umschalt drücken, um nur einen Kostenvoranschlag anzuzeigen
+STR_LANDSCAPING_TOOLTIP_PURCHASE_LAND                           :{BLACK}Land für künftige Nutzung kaufen. Strg+Klick+Ziehen wählt das Gebiet diagonal. Außerdem Umschalt drücken, um nur einen Kostenvoranschlag anzuzeigen
 
 # Object construction window
 STR_OBJECT_BUILD_CAPTION                                        :{WHITE}Objektauswahl
-STR_OBJECT_BUILD_TOOLTIP                                        :{BLACK}Zu bauendes Objekt auswählen. Umschalt schaltet zwischen Bauen und Kostenvoranschlag um
+STR_OBJECT_BUILD_TOOLTIP                                        :{BLACK}Zu bauendes Objekt auswählen. Strg+Klick+Ziehen wählt das Gebiet diagonal. Außerdem Umschalt drücken, um nur einen Kostenvoranschlag anzuzeigen
 STR_OBJECT_BUILD_CLASS_TOOLTIP                                  :{BLACK}Objektklasse auswählen
 STR_OBJECT_BUILD_PREVIEW_TOOLTIP                                :{BLACK}Vorschau des Objekts
 STR_OBJECT_BUILD_SIZE                                           :{BLACK}Größe: {GOLD}{NUM} × {NUM} Felder
@@ -2962,7 +2975,7 @@ STR_OBJECT_CLASS_TRNS                                           :Sendemasten
 STR_PLANT_TREE_CAPTION                                          :{WHITE}Bäume
 STR_PLANT_TREE_TOOLTIP                                          :{BLACK}Die zu pflanzende Baumart wählen. Wenn auf dem Feld schon ein Baum steht, wird eine zufällige Baumart gepflanzt
 STR_TREES_RANDOM_TYPE                                           :{BLACK}Zufällige Baumart
-STR_TREES_RANDOM_TYPE_TOOLTIP                                   :{BLACK}Zufällige Baumart pflanzen. Strg wählt das Gebiet diagonal aus. Umschalt schaltet zwischen Bauen und Kostenvoranschlag um
+STR_TREES_RANDOM_TYPE_TOOLTIP                                   :{BLACK}Zufällige Baumart pflanzen. Strg+Klick+Ziehen wählt das Gebiet diagonal aus. Außerdem Umschalt drücken, um nur einen Kostenvoranschlag anzuzeigen
 STR_TREES_RANDOM_TREES_BUTTON                                   :{BLACK}Zufällige Bäume
 STR_TREES_RANDOM_TREES_TOOLTIP                                  :{BLACK}Bäume zufällig über die Landschaft verteilen
 STR_TREES_MODE_NORMAL_BUTTON                                    :{BLACK}Normal
@@ -2975,7 +2988,7 @@ STR_TREES_MODE_FOREST_LG_TOOLTIP                                :{BLACK}Große W
 # Land generation window (SE)
 STR_TERRAFORM_TOOLBAR_LAND_GENERATION_CAPTION                   :{WHITE}Land erstellen
 STR_TERRAFORM_TOOLTIP_PLACE_ROCKY_AREAS_ON_LANDSCAPE            :{BLACK}Felsige Gebiete in der Landschaft platzieren
-STR_TERRAFORM_TOOLTIP_DEFINE_DESERT_AREA                        :{BLACK}Wüstengebiet platzieren{}Zum Entfernen Strg-Taste drücken
+STR_TERRAFORM_TOOLTIP_DEFINE_DESERT_AREA                        :{BLACK}Wüstengebiet platzieren{}Strg+Klick, um Wüstengebiet zu entfernen
 STR_TERRAFORM_TOOLTIP_INCREASE_SIZE_OF_LAND_AREA                :{BLACK}Landfläche zum Anheben/Absenken vergrößern
 STR_TERRAFORM_TOOLTIP_DECREASE_SIZE_OF_LAND_AREA                :{BLACK}Landfläche zum Anheben/Absenken verkleinern
 STR_TERRAFORM_TOOLTIP_GENERATE_RANDOM_LAND                      :{BLACK}Erzeuge zufällige Landfläche
@@ -2989,7 +3002,7 @@ STR_RESET_LANDSCAPE_CONFIRMATION_TEXT                           :{WHITE}Soll wir
 # Town generation window (SE)
 STR_FOUND_TOWN_CAPTION                                          :{WHITE}Stadt gründen
 STR_FOUND_TOWN_NEW_TOWN_BUTTON                                  :{BLACK}Neue Stadt
-STR_FOUND_TOWN_NEW_TOWN_TOOLTIP                                 :{BLACK}Neue Stadt gründen. Umschalt+Klick zeigt einen Kostenvoranschlag
+STR_FOUND_TOWN_NEW_TOWN_TOOLTIP                                 :{BLACK}Neue Stadt gründen. Außerdem Umschalt drücken, um nur einen Kostenvoranschlag anzuzeigen
 STR_FOUND_TOWN_RANDOM_TOWN_BUTTON                               :{BLACK}Zufällige Stadt
 STR_FOUND_TOWN_RANDOM_TOWN_TOOLTIP                              :{BLACK}Stadt an zufälligem Ort gründen
 STR_FOUND_TOWN_MANY_RANDOM_TOWNS                                :{BLACK}Viele zufällige Städte
@@ -3055,7 +3068,7 @@ STR_INDUSTRY_CARGOES_SELECT_INDUSTRY_TOOLTIP                    :{BLACK}Industri
 
 # Land area window
 STR_LAND_AREA_INFORMATION_CAPTION                               :{WHITE}Gebietsinformation
-STR_LAND_AREA_INFORMATION_LOCATION_TOOLTIP                      :{BLACK}Zentriert die Hauptansicht an der Kachelposition. Strg+Klick öffnet ein neues Ansichtsfenster an der Kachelposition
+STR_LAND_AREA_INFORMATION_LOCATION_TOOLTIP                      :{BLACK}Zentriert die Hauptansicht an der Kachelposition. Mit Strg+Klick wird ein neues Ansichtsfenster an der Kachelposition geöffnet
 STR_LAND_AREA_INFORMATION_COST_TO_CLEAR_N_A                     :{BLACK}Räumungskosten: {LTBLUE}Keine
 STR_LAND_AREA_INFORMATION_COST_TO_CLEAR                         :{BLACK}Räumungskosten: {RED}{CURRENCY_LONG}
 STR_LAND_AREA_INFORMATION_REVENUE_WHEN_CLEARED                  :{BLACK}Einnahmen beim Abriss: {LTBLUE}{CURRENCY_LONG}
@@ -3067,7 +3080,7 @@ STR_LAND_AREA_INFORMATION_RAIL_OWNER                            :{BLACK}Gleiseig
 STR_LAND_AREA_INFORMATION_LOCAL_AUTHORITY                       :{BLACK}Gehört zur Gemeinde: {LTBLUE}{STRING}
 STR_LAND_AREA_INFORMATION_LOCAL_AUTHORITY_NONE                  :Keine
 STR_LAND_AREA_INFORMATION_LANDINFO_COORDS                       :{BLACK}Koordinaten: {LTBLUE}{NUM} x {NUM} x {NUM} ({STRING})
-STR_LAND_AREA_INFORMATION_BUILD_DATE                            :{BLACK}Errichtet am: {LTBLUE}{DATE_LONG}
+STR_LAND_AREA_INFORMATION_BUILD_DATE                            :{BLACK}Errichtet/renoviert am: {LTBLUE}{DATE_LONG}
 STR_LAND_AREA_INFORMATION_STATION_CLASS                         :{BLACK}Stationsklasse: {LTBLUE}{STRING}
 STR_LAND_AREA_INFORMATION_STATION_TYPE                          :{BLACK}Stationstyp: {LTBLUE}{STRING}
 STR_LAND_AREA_INFORMATION_AIRPORT_CLASS                         :{BLACK}Flughafen-Kategorie: {LTBLUE}{STRING}
@@ -3278,6 +3291,7 @@ STR_MAPGEN_NUMBER_OF_TOWNS_TOOLTIP                              :{BLACK}Wähle d
 STR_MAPGEN_TOWN_NAME_LABEL                                      :{BLACK}Städtenamen:
 STR_MAPGEN_TOWN_NAME_DROPDOWN_TOOLTIP                           :{BLACK}Wähle die Sprache für die Städtenamen aus
 STR_MAPGEN_DATE                                                 :{BLACK}Datum:
+STR_MAPGEN_DATE_TOOLTIP                                         :{BLACK}Startdatum wählen
 STR_MAPGEN_NUMBER_OF_INDUSTRIES                                 :{BLACK}Industriedichte:
 STR_MAPGEN_NUMBER_OF_INDUSTRIES_TOOLTIP                         :{BLACK}Wähle die Dichte der Industrien, oder einen benutzerdefinierten Wert
 STR_MAPGEN_HEIGHTMAP_HEIGHT                                     :{BLACK}Höchster Gipfel:
@@ -3301,11 +3315,11 @@ STR_MAPGEN_VARIETY                                              :{BLACK}Größe 
 STR_MAPGEN_GENERATE                                             :{WHITE}Erzeugen
 STR_MAPGEN_GENERATE_TOOLTIP                                     :{BLACK}Erstelle die Welt und spiele OpenTTD!
 STR_MAPGEN_NEWGRF_SETTINGS                                      :{BLACK}NewGRF-Einstellungen
-STR_MAPGEN_NEWGRF_SETTINGS_TOOLTIP                              :{BLACK}NewGRF-Einstellungen anzeigen
+STR_MAPGEN_NEWGRF_SETTINGS_TOOLTIP                              :{BLACK}NewGRF-Einstellungen öffnen
 STR_MAPGEN_AI_SETTINGS                                          :{BLACK}KI Einstellungen
-STR_MAPGEN_AI_SETTINGS_TOOLTIP                                  :{BLACK}KI-Einstellungen anzeigen
+STR_MAPGEN_AI_SETTINGS_TOOLTIP                                  :{BLACK}KI-Einstellungen öffnen
 STR_MAPGEN_GS_SETTINGS                                          :{BLACK}Spielskripteinstellungen
-STR_MAPGEN_GS_SETTINGS_TOOLTIP                                  :{BLACK}Spielskripteinstellungen anzeigen
+STR_MAPGEN_GS_SETTINGS_TOOLTIP                                  :{BLACK}Spielskripteinstellungen öffnen
 
 ###length 21
 STR_MAPGEN_TOWN_NAME_ORIGINAL_ENGLISH                           :Englisch
@@ -3581,7 +3595,7 @@ STR_SIGN_LIST_MATCH_CASE_TOOLTIP                                :{BLACK}Umschalt
 
 # Sign window
 STR_EDIT_SIGN_CAPTION                                           :{WHITE}Schildtext ändern
-STR_EDIT_SIGN_LOCATION_TOOLTIP                                  :{BLACK}Hauptansicht auf Schildposition zentrieren. Strg+Klick öffnet ein neues Ansichtsfenster auf der Position des Schildes
+STR_EDIT_SIGN_LOCATION_TOOLTIP                                  :{BLACK}Hauptansicht auf Schildposition zentrieren. Mit Strg+Klick wird ein neues Ansichtsfenster auf der Position des Schildes geöffnet
 STR_EDIT_SIGN_NEXT_SIGN_TOOLTIP                                 :{BLACK}Zum nächsten Schild wechseln
 STR_EDIT_SIGN_PREVIOUS_SIGN_TOOLTIP                             :{BLACK}Zum vorherigen Schild wechseln
 
@@ -3592,7 +3606,7 @@ STR_TOWN_DIRECTORY_CAPTION                                      :{WHITE}Städte
 STR_TOWN_DIRECTORY_NONE                                         :{ORANGE}- Keine -
 STR_TOWN_DIRECTORY_TOWN                                         :{ORANGE}{TOWN}{BLACK} ({COMMA})
 STR_TOWN_DIRECTORY_CITY                                         :{ORANGE}{TOWN}{YELLOW} (Großstadt){BLACK} ({COMMA})
-STR_TOWN_DIRECTORY_LIST_TOOLTIP                                 :{BLACK}Städtenamen – Klick auf den Namen zentriert Hauptansicht auf die Stadt. Strg+Klick öffnet neue Zusatzansicht zentriert auf die Stadt
+STR_TOWN_DIRECTORY_LIST_TOOLTIP                                 :{BLACK}Städtenamen – Klick auf den Namen zentriert Hauptansicht auf die Stadt. Mit Strg+Klick wird eine neue Zusatzansicht auf die Stadt geöffnet
 STR_TOWN_POPULATION                                             :{BLACK}Weltbevölkerung: {COMMA}
 
 # Town view window
@@ -3607,9 +3621,11 @@ STR_TOWN_VIEW_CARGO_FOR_TOWNGROWTH_REQUIRED_WINTER              :{ORANGE}{STRING
 STR_TOWN_VIEW_CARGO_FOR_TOWNGROWTH_DELIVERED_GENERAL            :{ORANGE}{STRING}{GREEN} geliefert
 STR_TOWN_VIEW_CARGO_FOR_TOWNGROWTH_REQUIRED                     :{ORANGE}{CARGO_TINY} / {CARGO_LONG}{RED} (noch benötigt)
 STR_TOWN_VIEW_CARGO_FOR_TOWNGROWTH_DELIVERED                    :{ORANGE}{CARGO_TINY} / {CARGO_LONG}{GREEN} (geliefert)
+STR_TOWN_VIEW_TOWN_GROWS_EVERY                                  :{BLACK}Stadtwachstum braucht: {ORANGE}{UNITS_DAYS_OR_SECONDS}
+STR_TOWN_VIEW_TOWN_GROWS_EVERY_FUNDED                           :{BLACK}Stadtwachstum braucht: {ORANGE}{UNITS_DAYS_OR_SECONDS} (finanziert)
 STR_TOWN_VIEW_TOWN_GROW_STOPPED                                 :{BLACK}Die Stadt wächst {RED}nicht{BLACK}
 STR_TOWN_VIEW_NOISE_IN_TOWN                                     :{BLACK}Lärmbelastung in der Stadt: {ORANGE}{COMMA}{BLACK}  Grenzwert: {ORANGE}{COMMA}
-STR_TOWN_VIEW_CENTER_TOOLTIP                                    :{BLACK}Hauptansicht zur Stadt scrollen. Strg+Klick öffnet neue Zusatzansicht bei der Stadt
+STR_TOWN_VIEW_CENTER_TOOLTIP                                    :{BLACK}Hauptansicht zur Stadt zentrieren. Mit Strg+Klick wird eine neue Zusatzansicht bei der Stadt geöffnet
 STR_TOWN_VIEW_LOCAL_AUTHORITY_BUTTON                            :{BLACK}Stadtverwaltung
 STR_TOWN_VIEW_LOCAL_AUTHORITY_TOOLTIP                           :{BLACK}Öffnet Fenster zur Interaktion mit der Stadtverwaltung
 STR_TOWN_VIEW_RENAME_TOOLTIP                                    :{BLACK}Stadt umbenennen
@@ -3647,9 +3663,11 @@ STR_LOCAL_AUTHORITY_ACTION_TOOLTIP_SMALL_ADVERTISING            :{PUSH_COLOUR}{Y
 STR_LOCAL_AUTHORITY_ACTION_TOOLTIP_MEDIUM_ADVERTISING           :{PUSH_COLOUR}{YELLOW}Im Ort eine mittlere Werbekampagne starten, um mehr Passagier- und Frachtaufträge für die eigene Firma zu gewinnen.{}Bewirkt eine temporäre Steigerung der Stationsbewertung in einem mittleren Radius um das Ortszentrum.{}{POP_COLOUR}Kosten: {CURRENCY_LONG}
 STR_LOCAL_AUTHORITY_ACTION_TOOLTIP_LARGE_ADVERTISING            :{PUSH_COLOUR}{YELLOW}Im Ort eine große Werbekampagne starten, um mehr Passagier- und Frachtaufträge für die eigene Firma zu gewinnen.{}Bewirkt eine temporäre Steigerung der Stationsbewertung in einem großen Radius um das Ortszentrum.{}{POP_COLOUR}Kosten: {CURRENCY_LONG}
 STR_LOCAL_AUTHORITY_ACTION_TOOLTIP_ROAD_RECONSTRUCTION_MONTHS   :{PUSH_COLOUR}{YELLOW}Straßenreparaturen des Ortes finanzieren.{}Verursacht erhebliche Störungen für Straßenverkehr für bis zu 6 Monate.{}{POP_COLOUR}Kosten: {CURRENCY_LONG}
+STR_LOCAL_AUTHORITY_ACTION_TOOLTIP_ROAD_RECONSTRUCTION_MINUTES  :{PUSH_COLOUR}{YELLOW}Straßenreparaturen des Ortes finanzieren.{}Verursacht erhebliche Störungen für Straßenverkehr für bis zu 6 Minuten.{}{POP_COLOUR}Kosten: {CURRENCY_LONG}
 STR_LOCAL_AUTHORITY_ACTION_TOOLTIP_STATUE_OF_COMPANY            :{PUSH_COLOUR}{YELLOW}Eine Statue zu Ehren der eigenen Firma errichten.{}Bewirkt eine permanente Steigerung der Stationsbewertung in diesem Ort.{}{POP_COLOUR}Kosten: {CURRENCY_LONG}
 STR_LOCAL_AUTHORITY_ACTION_TOOLTIP_NEW_BUILDINGS                :{PUSH_COLOUR}{YELLOW}Bau von neuen Gebäuden im Ort finanzieren.{}Bewirkt eine temporäre Steigerung des Ortswachstums in diesem Ort.{}{POP_COLOUR}Kosten: {CURRENCY_LONG}
-STR_LOCAL_AUTHORITY_ACTION_TOOLTIP_EXCLUSIVE_TRANSPORT_MINUTES  :{PUSH_COLOUR}{YELLOW}Kaufe exklusive Transportrechte in dieser Stadt für 12 Minuten.{}Die Stadtverwaltung wird es Passagieren und Fracht nicht erlauben Stationen von Mitbewerbern zu nutzen. Eine erfolgreiche Bestechung eines Mitbewerbers kündigt den Vertrag.{}{POP_COLOUR}Kosten: {CURRENCY_LONG}
+STR_LOCAL_AUTHORITY_ACTION_TOOLTIP_EXCLUSIVE_TRANSPORT_MONTHS   :{PUSH_COLOUR}{YELLOW}Exklusive Transportrechte in dieser Stadt für 12 Monate kaufen.{}Die Stadtverwaltung wird es Passagieren und Fracht nicht erlauben, Stationen von Mitbewerbern zu nutzen. Eine erfolgreiche Bestechung eines Mitbewerbers kündigt den Vertrag.{}{POP_COLOUR}Kosten: {CURRENCY_LONG}
+STR_LOCAL_AUTHORITY_ACTION_TOOLTIP_EXCLUSIVE_TRANSPORT_MINUTES  :{PUSH_COLOUR}{YELLOW}Exklusive Transportrechte in dieser Stadt für 12 Minuten kaufen.{}Die Stadtverwaltung wird es Passagieren und Fracht nicht erlauben, Stationen von Mitbewerbern zu nutzen. Eine erfolgreiche Bestechung eines Mitbewerbers kündigt den Vertrag.{}{POP_COLOUR}Kosten: {CURRENCY_LONG}
 STR_LOCAL_AUTHORITY_ACTION_TOOLTIP_BRIBE                        :{PUSH_COLOUR}{YELLOW}Die Stadtverwaltung bestechen, um die eigene Bewertung zu verbessern und die exklusiven Transportrechte eines Wettbewerbers zu widerrufen. Dabei riskiert man allerdings eine harte Strafe, falls man ertappt wird.{}{POP_COLOUR}Kosten: {CURRENCY_LONG}
 
 # Goal window
@@ -3664,7 +3682,7 @@ STR_GOALS_TEXT                                                  :{ORANGE}{STRING
 STR_GOALS_NONE                                                  :{ORANGE}- Keine -
 STR_GOALS_PROGRESS                                              :{ORANGE}{STRING}
 STR_GOALS_PROGRESS_COMPLETE                                     :{GREEN}{STRING}
-STR_GOALS_TOOLTIP_CLICK_ON_SERVICE_TO_CENTER                    :{BLACK}Klick auf Ziel zentriert Hauptansicht auf Industrie/Stadt/Feld. Strg+Klick öffnet eine darauf zentrierte Zusatzansicht
+STR_GOALS_TOOLTIP_CLICK_ON_SERVICE_TO_CENTER                    :{BLACK}Klick auf Ziel zentriert Hauptansicht auf Industrie/Stadt/Kachel. Strg+Klick öffnet eine darauf zentrierte Zusatzansicht
 
 # Goal question window
 STR_GOAL_QUESTION_CAPTION_QUESTION                              :{BLACK}Frage
@@ -3696,10 +3714,12 @@ STR_GOAL_QUESTION_BUTTON_CLOSE                                  :Schließen
 # Subsidies window
 STR_SUBSIDIES_CAPTION                                           :{WHITE}Subventionen
 STR_SUBSIDIES_OFFERED_TITLE                                     :{BLACK}Subventionsangebot für:
+STR_SUBSIDIES_OFFERED_FROM_TO                                   :{ORANGE}{STRING} von {STRING} nach {STRING}{YELLOW} ({STRING})
 STR_SUBSIDIES_NONE                                              :{ORANGE}- Keine -
 STR_SUBSIDIES_SUBSIDISED_TITLE                                  :{BLACK}Bereits vergebene Subventionen:
 STR_SUBSIDIES_SUBSIDISED_FROM_TO                                :{ORANGE}{STRING} von {STRING} nach {STRING}{YELLOW} ({COMPANY}{YELLOW}, {STRING})
-STR_SUBSIDIES_TOOLTIP_CLICK_ON_SERVICE_TO_CENTER                :{BLACK}Klick auf subventionierte Dienstleistung zentriert Hauptansicht auf die Industrie/Stadt. Strg+Klick öffnet neue Zusatzansicht zentriert auf die Industrie/Stadt
+STR_SUBSIDIES_TOOLTIP_CLICK_ON_SERVICE_TO_CENTER                :{BLACK}Klick auf subventionierte Dienstleistung zentriert Hauptansicht auf die Industrie/Stadt. Mit Strg+Klick wird eine neue Zusatzansicht zentriert auf die Industrie/Stadt geöffnet
+STR_SUBSIDIES_OFFERED_EXPIRY_DATE                               :bis {DATE_SHORT}
 STR_SUBSIDIES_OFFERED_EXPIRY_TIME                               :innerhalb {UNITS_MONTHS_OR_MINUTES}
 STR_SUBSIDIES_SUBSIDISED_EXPIRY_DATE                            :bis {DATE_SHORT}
 STR_SUBSIDIES_SUBSIDISED_EXPIRY_TIME                            :{UNITS_MONTHS_OR_MINUTES} übrig
@@ -3718,8 +3738,8 @@ STR_STORY_BOOK_NEXT_PAGE_TOOLTIP                                :{BLACK}Die näc
 STR_STORY_BOOK_INVALID_GOAL_REF                                 :{RED}Ungültiger Verweis auf ein Spielziel
 
 # Station list window
-STR_STATION_LIST_TOOLTIP                                        :{BLACK}Stationsnamen – Klick auf den Namen zentriert Hauptansicht auf die Station. Strg+Klick öffnet neue Zusatzansicht zentriert auf die Station
-STR_STATION_LIST_USE_CTRL_TO_SELECT_MORE                        :{BLACK}Strg gedrückt halten, um mehrere Einträge auszuwählen
+STR_STATION_LIST_TOOLTIP                                        :{BLACK}Stationsnamen – Klick auf den Namen zentriert Hauptansicht auf die Station. Mit Strg+Klick wird eine neue Zusatzansicht zentriert auf die Station geöffnet
+STR_STATION_LIST_USE_CTRL_TO_SELECT_MORE                        :{BLACK}Strg+Klick, um mehrere Einträge auszuwählen
 STR_STATION_LIST_CAPTION                                        :{WHITE}{COMPANY} – {COMMA} Haltestelle{P "" n}
 STR_STATION_LIST_STATION                                        :{YELLOW}{STATION} {STATION_FEATURES}
 STR_STATION_LIST_WAYPOINT                                       :{YELLOW}{WAYPOINT}
@@ -3784,7 +3804,7 @@ STR_CARGO_RATING_VERY_GOOD                                      :Sehr gut
 STR_CARGO_RATING_EXCELLENT                                      :Ausgezeichnet
 STR_CARGO_RATING_OUTSTANDING                                    :Hervorragend
 
-STR_STATION_VIEW_CENTER_TOOLTIP                                 :{BLACK}Hauptansicht zur Station scrollen. Strg+Klick öffnet neue Zusatzansicht bei der Station
+STR_STATION_VIEW_CENTER_TOOLTIP                                 :{BLACK}Hauptansicht zur Station scrollen. Mit Strg+Klick wird eine neue Zusatzansicht bei der Station geöffnet
 STR_STATION_VIEW_RENAME_TOOLTIP                                 :{BLACK}Namen der Station ändern
 
 STR_STATION_VIEW_SCHEDULED_TRAINS_TOOLTIP                       :{BLACK}Alle Züge, die diesen Bahnhof anfahren, anzeigen
@@ -3799,9 +3819,9 @@ STR_STATION_VIEW_CLOSE_AIRPORT_TOOLTIP                          :{BLACK}Luftfahr
 
 # Waypoint/buoy view window
 STR_WAYPOINT_VIEW_CAPTION                                       :{WHITE}{WAYPOINT}
-STR_WAYPOINT_VIEW_CENTER_TOOLTIP                                :{BLACK}Hauptansicht auf den Wegpunkt zentrieren. Strg+Klick öffnet neue Zusatzansicht beim Wegpunkt
+STR_WAYPOINT_VIEW_CENTER_TOOLTIP                                :{BLACK}Hauptansicht auf den Wegpunktstandort zentrieren. Mit Strg+Klick wird neue Zusatzansicht beim Wegpunktstandort geöffnet
 STR_WAYPOINT_VIEW_CHANGE_WAYPOINT_NAME                          :{BLACK}Namen der Wegpunkte ändern
-STR_BUOY_VIEW_CENTER_TOOLTIP                                    :{BLACK}Hauptansicht zur Boje scrollen. Strg+Klick öffnet neue Zusatzansicht bei der Boje
+STR_BUOY_VIEW_CENTER_TOOLTIP                                    :{BLACK}Hauptansicht zum Bojenstandort zentrierten. Mit Strg+Klick wird eine neue Zusatzansicht beim Bojenstandort geöffnet
 STR_BUOY_VIEW_CHANGE_BUOY_NAME                                  :{BLACK}Namen der Boje ändern
 
 STR_EDIT_WAYPOINT_NAME                                          :{WHITE}Namen des Wegpunkts ändern
@@ -3877,7 +3897,7 @@ STR_COMPANY_VIEW_BUILD_HQ_TOOLTIP                               :{BLACK}Firmensi
 STR_COMPANY_VIEW_VIEW_HQ_BUTTON                                 :{BLACK}Firmensitz
 STR_COMPANY_VIEW_VIEW_HQ_TOOLTIP                                :{BLACK}Firmensitz anzeigen
 STR_COMPANY_VIEW_RELOCATE_HQ                                    :{BLACK}Verlegen
-STR_COMPANY_VIEW_RELOCATE_COMPANY_HEADQUARTERS                  :{BLACK}Errichte Firmensitz für 1% des Firmenwertes an anderer Stelle neu. Umschalt+Klick zeigt einen Kostenvoranschlag
+STR_COMPANY_VIEW_RELOCATE_COMPANY_HEADQUARTERS                  :{BLACK}Errichte Firmensitz für 1% des Firmenwertes an anderer Stelle neu. Außerdem Umschalt drücken, um nur einen Kostenvoranschlag anzuzeigen
 STR_COMPANY_VIEW_INFRASTRUCTURE_BUTTON                          :{BLACK}Details
 STR_COMPANY_VIEW_INFRASTRUCTURE_TOOLTIP                         :{BLACK}Detaillierte Informationen zur Infrastruktur dieser Firma anzeigen
 STR_COMPANY_VIEW_GIVE_MONEY_BUTTON                              :{BLACK}Verschenke Geld
@@ -3924,7 +3944,7 @@ STR_INDUSTRY_DIRECTORY_ITEM_PROD1                               :{ORANGE}{INDUST
 STR_INDUSTRY_DIRECTORY_ITEM_PROD2                               :{ORANGE}{INDUSTRY} {STRING}, {STRING}
 STR_INDUSTRY_DIRECTORY_ITEM_PROD3                               :{ORANGE}{INDUSTRY} {STRING}, {STRING}, {STRING}
 STR_INDUSTRY_DIRECTORY_ITEM_PRODMORE                            :{ORANGE}{INDUSTRY} {STRING}, {STRING}, {STRING} und {NUM} weitere ...
-STR_INDUSTRY_DIRECTORY_LIST_CAPTION                             :{BLACK}Industrienamen – Klick auf den Namen zentriert Hauptansicht auf die Industrie. Strg+Klick öffnet neue Zusatzansicht zentriert auf die Industrie
+STR_INDUSTRY_DIRECTORY_LIST_CAPTION                             :{BLACK}Industrienamen – Klick auf den Namen zentriert Hauptansicht auf die Industrie. Mit Strg+Klick wird neue Zusatzansicht auf die Industrie geöffnet
 STR_INDUSTRY_DIRECTORY_ACCEPTED_CARGO_FILTER                    :{BLACK}Angenommene Fracht: {SILVER}{STRING}
 STR_INDUSTRY_DIRECTORY_PRODUCED_CARGO_FILTER                    :{BLACK}Produzierte Fracht: {SILVER}{STRING}
 STR_INDUSTRY_DIRECTORY_FILTER_ALL_TYPES                         :Alle Frachtarten
@@ -3935,7 +3955,7 @@ STR_INDUSTRY_VIEW_CAPTION                                       :{WHITE}{INDUSTR
 STR_INDUSTRY_VIEW_PRODUCTION_LAST_MONTH_TITLE                   :{BLACK}Produktion im letzten Monat:
 STR_INDUSTRY_VIEW_PRODUCTION_LAST_MINUTE_TITLE                  :{BLACK}Produktion in der letzten Minute:
 STR_INDUSTRY_VIEW_TRANSPORTED                                   :{YELLOW}{CARGO_LONG}{STRING}{BLACK} ({COMMA}% befördert)
-STR_INDUSTRY_VIEW_LOCATION_TOOLTIP                              :{BLACK}Hauptansicht zur Industrie scrollen. Strg+Klick öffnet neue Zusatzansicht zentriert auf die Industrie
+STR_INDUSTRY_VIEW_LOCATION_TOOLTIP                              :{BLACK}Hauptansicht auf den Industriestandort zentrieren. Mit Strg+Klick wird eine neue Zusatzansicht auf den Industriestandort geöffnet
 STR_INDUSTRY_VIEW_PRODUCTION_LEVEL                              :{BLACK}Produktionsrate: {YELLOW}{COMMA}%
 STR_INDUSTRY_VIEW_INDUSTRY_ANNOUNCED_CLOSURE                    :{YELLOW}Diese Industrie wird in Kürze schließen!
 
@@ -4023,6 +4043,7 @@ STR_GROUP_RENAME_CAPTION                                        :{BLACK}Gruppe u
 STR_GROUP_PROFIT_THIS_YEAR                                      :Gewinn dieses Jahr:
 STR_GROUP_PROFIT_THIS_PERIOD                                    :Gewinn in diesem Zeitraum:
 STR_GROUP_PROFIT_LAST_YEAR                                      :Gewinn letztes Jahr:
+STR_GROUP_PROFIT_LAST_PERIOD                                    :Gewinn im letzten Zeitraum:
 STR_GROUP_OCCUPANCY                                             :Aktuelle Nutzung:
 STR_GROUP_OCCUPANCY_VALUE                                       :{NUM}%
 
@@ -4049,6 +4070,7 @@ STR_PURCHASE_INFO_SPEED_POWER                                   :{BLACK}Geschw.:
 STR_PURCHASE_INFO_SPEED                                         :{BLACK}Geschwindigkeit: {GOLD}{VELOCITY}
 STR_PURCHASE_INFO_SPEED_OCEAN                                   :{BLACK}Geschwindigkeit auf dem Meer: {GOLD}{VELOCITY}
 STR_PURCHASE_INFO_SPEED_CANAL                                   :{BLACK}Geschwindigkeit auf Kanälen und Flüssen: {GOLD}{VELOCITY}
+STR_PURCHASE_INFO_RUNNINGCOST_YEAR                              :{BLACK}Betriebskosten: {GOLD}{CURRENCY_LONG}/Jahr
 STR_PURCHASE_INFO_RUNNINGCOST_PERIOD                            :{BLACK}Betriebskosten: {GOLD}{CURRENCY_LONG}/Zeitraum
 STR_PURCHASE_INFO_CAPACITY                                      :{BLACK}Kapazität: {GOLD}{CARGO_LONG} {STRING}
 STR_PURCHASE_INFO_REFITTABLE                                    :(umrüstbar)
@@ -4076,10 +4098,10 @@ STR_CARGO_TYPE_FILTER_FREIGHT                                   :Fracht
 STR_CARGO_TYPE_FILTER_NONE                                      :Keine
 
 ###length VEHICLE_TYPES
-STR_BUY_VEHICLE_TRAIN_LIST_TOOLTIP                              :{BLACK}Schienenfahrzeugsliste. Einzelheiten durch Anklicken des Fahrzeuges. Strg+Klick schaltet um zwischen Verstecken und Zeigen des Fahrzeugtyps
-STR_BUY_VEHICLE_ROAD_VEHICLE_LIST_TOOLTIP                       :{BLACK}Straßenfahrzeugsliste. Für Einzelheiten auf ein Fahrzeug klicken. Strg+Klick schaltet um zwischen Verstecken und Zeigen des Fahrzeugtyps
-STR_BUY_VEHICLE_SHIP_LIST_TOOLTIP                               :{BLACK}Schiffsliste. Für Einzelheiten auf das Schiff klicken. Strg+Klick schaltet um zwischen Verstecken und Zeigen des Schiffstyps
-STR_BUY_VEHICLE_AIRCRAFT_LIST_TOOLTIP                           :{BLACK}Flugzeugliste. Klick auf das Flugzeug zeigt weitere Einzelheiten an. Strg+Klick schaltet um zwischen Verstecken und Zeigen des Flugzeugtyps
+STR_BUY_VEHICLE_TRAIN_LIST_TOOLTIP                              :{BLACK}Schienenfahrzeugaufwahlliste. Einzelheiten durch Anklicken des Fahrzeuges. Strg+Klick, um diesen Fahrzeugtyp anzuzeigen/zu verbergen
+STR_BUY_VEHICLE_ROAD_VEHICLE_LIST_TOOLTIP                       :{BLACK}Straßenfahrzeugauswahlliste. Für Einzelheiten auf ein Fahrzeug klicken. Strg+Klick, um diesen Fahrzeugtyp anzuzeigen/zu verbergen
+STR_BUY_VEHICLE_SHIP_LIST_TOOLTIP                               :{BLACK}Schiffsauswahlliste. Für Einzelheiten auf das Schiff klicken. Mit Strg+Klick wird die Anzeige dieses Schiffstyps angezeigt/verborgen
+STR_BUY_VEHICLE_AIRCRAFT_LIST_TOOLTIP                           :{BLACK}Flugzeugauswahlliste. Klick auf das Flugzeug zeigt weitere Einzelheiten an. Strg+Klick, um diesen Flugzeugtp anzuzeigen/zu verbergen
 
 ###length VEHICLE_TYPES
 STR_BUY_VEHICLE_TRAIN_BUY_VEHICLE_BUTTON                        :{BLACK}Fahrzeug kaufen
@@ -4094,16 +4116,16 @@ STR_BUY_VEHICLE_SHIP_BUY_REFIT_VEHICLE_BUTTON                   :{BLACK}Schiff k
 STR_BUY_VEHICLE_AIRCRAFT_BUY_REFIT_VEHICLE_BUTTON               :Flugzeug kaufen und umrüsten
 
 ###length VEHICLE_TYPES
-STR_BUY_VEHICLE_TRAIN_BUY_VEHICLE_TOOLTIP                       :{BLACK}Ausgewähltes Fahrzeug kaufen. Umschalt+Klick zeigt einen Kostenvoranschlag
-STR_BUY_VEHICLE_ROAD_VEHICLE_BUY_VEHICLE_TOOLTIP                :{BLACK}Ausgewähltes Fahrzeug kaufen. Umschalt+Klick zeigt einen Kostenvoranschlag
-STR_BUY_VEHICLE_SHIP_BUY_VEHICLE_TOOLTIP                        :{BLACK}Ausgewähltes Schiff kaufen. Umschalt+Klick zeigt einen Kostenvoranschlag
-STR_BUY_VEHICLE_AIRCRAFT_BUY_VEHICLE_TOOLTIP                    :{BLACK}Augewähltes Flugzeug kaufen. Umschalt+Klick zeigt einen Kostenvoranschlag
+STR_BUY_VEHICLE_TRAIN_BUY_VEHICLE_TOOLTIP                       :{BLACK}Ausgewähltes Fahrzeug kaufen. Außerdem Umschalt drücken, um nur einen Kostenvoranschlag anzuzeigen
+STR_BUY_VEHICLE_ROAD_VEHICLE_BUY_VEHICLE_TOOLTIP                :{BLACK}Ausgewähltes Fahrzeug kaufen. Außerdem Umschalt drücken, um nur einen Kostenvoranschlag anzuzeigen
+STR_BUY_VEHICLE_SHIP_BUY_VEHICLE_TOOLTIP                        :{BLACK}Ausgewähltes Schiff kaufen. Außerdem Umschalt drücken, um nur einen Kostenvoranschlag anzuzeigen
+STR_BUY_VEHICLE_AIRCRAFT_BUY_VEHICLE_TOOLTIP                    :{BLACK}Augewähltes Flugzeug kaufen. Außerdem Umschalt drücken, um nur einen Kostenvoranschlag anzuzeigen
 
 ###length VEHICLE_TYPES
-STR_BUY_VEHICLE_TRAIN_BUY_REFIT_VEHICLE_TOOLTIP                 :{BLACK}Ausgewähltes Fahrzeug kaufen und umrüsten. Umschalt+Klick zeigt einen Kostenvoranschlag
-STR_BUY_VEHICLE_ROAD_VEHICLE_BUY_REFIT_VEHICLE_TOOLTIP          :{BLACK}Ausgewähltes Straßenfahrzeug kaufen und umrüsten. Umschalt+Klick zeigt einen Kostenvoranschlag
-STR_BUY_VEHICLE_SHIP_BUY_REFIT_VEHICLE_TOOLTIP                  :{BLACK}Ausgewähltes Schiff kaufen und umrüsten. Umschalt+Klick zeigt einen Kostenvoranschlag
-STR_BUY_VEHICLE_AIRCRAFT_BUY_REFIT_VEHICLE_TOOLTIP              :{BLACK}Ausgewähltes Flugzeug kaufen und umrüsten. Umschalt+Klick zeigt einen Kostenvoranschlag
+STR_BUY_VEHICLE_TRAIN_BUY_REFIT_VEHICLE_TOOLTIP                 :{BLACK}Ausgewähltes Schienenfahrzeug kaufen und umrüsten. Außerdem Umschalt drücken, um nur einen Kostenvoranschlag anzuzeigen
+STR_BUY_VEHICLE_ROAD_VEHICLE_BUY_REFIT_VEHICLE_TOOLTIP          :{BLACK}Ausgewähltes Straßenfahrzeug kaufen und umrüsten. Außerdem Umschalt drücken, um nur einen Kostenvoranschlag anzuzeigen
+STR_BUY_VEHICLE_SHIP_BUY_REFIT_VEHICLE_TOOLTIP                  :{BLACK}Ausgewähltes Schiff kaufen und umrüsten. Außerdem Umschalt drücken, um nur einen Kostenvoranschlag anzuzeigen
+STR_BUY_VEHICLE_AIRCRAFT_BUY_REFIT_VEHICLE_TOOLTIP              :{BLACK}Ausgewähltes Flugzeug kaufen und umrüsten. Außerdem Umschalt drücken, um nur einen Kostenvoranschlag anzuzeigen
 
 ###length VEHICLE_TYPES
 STR_BUY_VEHICLE_TRAIN_RENAME_BUTTON                             :{BLACK}Umbenennen
@@ -4153,7 +4175,7 @@ STR_DEPOT_VEHICLE_TOOLTIP_CHAIN                                 :{BLACK}{NUM} Fa
 STR_DEPOT_VEHICLE_TOOLTIP_CARGO                                 :{}{CARGO_LONG} ({CARGO_SHORT})
 
 ###length VEHICLE_TYPES
-STR_DEPOT_TRAIN_LIST_TOOLTIP                                    :{BLACK}Züge – Fahrzeug ziehen, um es an-/abzukoppeln. Rechtsklick für Fahrzeuginformationen, Rechtsklick für Einzelheiten. Strg, um die jeweilige Funktion für das gesamte Gespann auszuführen
+STR_DEPOT_TRAIN_LIST_TOOLTIP                                    :{BLACK}Züge – Fahrzeug mit Linksklick ziehen, um es an-/abzukoppeln. Rechtsklick für Fahrzeuginformationen. Strg+Klick, um die jeweilige Funktion für das folgende Gespann auszuführen
 STR_DEPOT_ROAD_VEHICLE_LIST_TOOLTIP                             :{BLACK}Straßenfahrzeuge – Rechtsklick für Einzelheiten
 STR_DEPOT_SHIP_LIST_TOOLTIP                                     :{BLACK}Schiffe – Rechtsklick für Einzelheiten
 STR_DEPOT_AIRCRAFT_LIST_TOOLTIP                                 :{BLACK}Flugzeuge – Rechtsklick für Einzelheiten
@@ -4195,16 +4217,16 @@ STR_DEPOT_CLONE_SHIP                                            :{BLACK}Schiff k
 STR_DEPOT_CLONE_AIRCRAFT                                        :{BLACK}Flugzeug kopieren
 
 ###length VEHICLE_TYPES
-STR_DEPOT_CLONE_TRAIN_DEPOT_INFO                                :{BLACK}Kauft eine Kopie des Zuges mit allen Wagons. Klicken Sie auf diese Schaltfläche und dann auf einen Zug innerhalb oder außerhalb des Depots. Strg+Klick erzeugt gemeinsamen Fahrplan. Umschalt+Klick schaltet zwischen Bauen und Kostenvoranschlag um
-STR_DEPOT_CLONE_ROAD_VEHICLE_DEPOT_INFO                         :{BLACK}Kauft eine Kopie des Fahrzeuges. Klicken Sie auf diese Schaltfläche und dann auf ein Fahrzeug innerhalb oder außerhalb des Depots. Strg+Klick erzeugt gemeinsamen Fahrplan. Umschalt+Klick schaltet zwischen Bauen und Kostenvoranschlag um
-STR_DEPOT_CLONE_SHIP_DEPOT_INFO                                 :{BLACK}Kauft eine Kopie des Schiffes. Klicken Sie auf diese Schaltfläche und dann auf eine Schiff innerhalb oder außerhalb der Werft. Strg+Klick erzeugt gemeinsamen Fahrplan. Umschalt+Klick schaltet zwischen Bauen und Kostenvoranschlag um
-STR_DEPOT_CLONE_AIRCRAFT_INFO_HANGAR_WINDOW                     :{BLACK}Kauft eine Kopie des Flugzeuges. Klicken Sie auf diese Schaltfläche und dann auf ein Flugzeug innerhalb oder außerhalb des Hangars. Strg+Klick erzeugt gemeinsamen Fahrplan. Umschalt+Klick schaltet zwischen Bauen und Kostenvoranschlag um
+STR_DEPOT_CLONE_TRAIN_DEPOT_INFO                                :{BLACK}Eine Kopie des Zuges mit allen Waggons kaufen. Klicken Sie auf diese Schaltfläche und dann auf einen Zug innerhalb oder außerhalb des Depots. Strg+Klick erzeugt gemeinsamen Fahrplan. Außerdem Umschalt drücken, um nur einen Kostenvoranschlag anzuzeigen
+STR_DEPOT_CLONE_ROAD_VEHICLE_DEPOT_INFO                         :{BLACK}Eine Kopie des Straßenfahrzeuges kaufen. Klicken Sie auf diese Schaltfläche und dann auf ein Straßenfahrzeug innerhalb oder außerhalb des Depots. Strg+Klick erzeugt gemeinsamen Fahrplan. Außerdem Umschalt drücken, um nur einen Kostenvoranschlag anzuzeigen
+STR_DEPOT_CLONE_SHIP_DEPOT_INFO                                 :{BLACK}Kopie eines Schiffes kaufen. Klicken Sie auf diese Schaltfläche und dann auf eine Schiff innerhalb oder außerhalb der Werft. Strg+Klick erzeugt gemeinsamen Fahrplan. Außerdem Umschalt drücken, um nur einen Kostenvoranschlag anzuzeigen
+STR_DEPOT_CLONE_AIRCRAFT_INFO_HANGAR_WINDOW                     :{BLACK}Eine Kopie eines Flugzeuges kaufen. Klicken Sie auf diese Schaltfläche und dann auf ein Flugzeug innerhalb oder außerhalb des Hangars. Strg+Klick erzeugt gemeinsamen Fahrplan. Außerdem Umschalt drücken, um nur einen Kostenvoranschlag anzuzeigen
 
 ###length VEHICLE_TYPES
-STR_DEPOT_TRAIN_LOCATION_TOOLTIP                                :{BLACK}Hauptansicht zum Zugdepot scrollen. Strg+Klick öffnet neue Zusatzansicht beim Zugdepot
-STR_DEPOT_ROAD_VEHICLE_LOCATION_TOOLTIP                         :{BLACK}Hauptansicht zum Fahrzeugdepot scrollen. Strg+Klick öffnet neue Zusatzansicht beim Fahrzeugdepot
-STR_DEPOT_SHIP_LOCATION_TOOLTIP                                 :{BLACK}Hauptansicht zur Werft scrollen. Strg+Klick öffnet neue Zusatzansicht bei der Werft
-STR_DEPOT_AIRCRAFT_LOCATION_TOOLTIP                             :{BLACK}Hauptansicht zum Hangar scrollen. Strg+Klick öffnet neue Zusatzansicht beim Hangar
+STR_DEPOT_TRAIN_LOCATION_TOOLTIP                                :{BLACK}Hauptansicht zum Zugdepot zentrieren. Mit Strg+Klick wird neue Zusatzansicht beim Zugdepot geöffnet
+STR_DEPOT_ROAD_VEHICLE_LOCATION_TOOLTIP                         :{BLACK}Hauptansicht zum Straßenfahrzeugdepot zentrieren. Außerdem Umschalt drücken, um nur einen Kostenvoranschlag anzuzeigen
+STR_DEPOT_SHIP_LOCATION_TOOLTIP                                 :{BLACK}Hauptansicht zur Werft zentrieren. Mit Strg+Klick wird eine neue Zusatzansicht bei der Werft geöffnet
+STR_DEPOT_AIRCRAFT_LOCATION_TOOLTIP                             :{BLACK}Hauptansicht zum Hangar scrollen. Mit Strg+Klick wird eine neue Zusatzansicht beim Hangar geöffnet
 
 ###length VEHICLE_TYPES
 STR_DEPOT_VEHICLE_ORDER_LIST_TRAIN_TOOLTIP                      :{BLACK}Alle Züge, die dieses Depot anfahren, auflisten
@@ -4310,10 +4332,10 @@ STR_REPLACE_REMOVE_WAGON_GROUP_HELP                             :{STRING}. Strg+
 STR_VEHICLE_VIEW_CAPTION                                        :{WHITE}{VEHICLE}
 
 ###length VEHICLE_TYPES
-STR_VEHICLE_VIEW_TRAIN_CENTER_TOOLTIP                           :{BLACK}Zentriert die Hauptansicht auf die Position des Zuges. Durch Doppelklick wird der Zug in der Hauptansicht verfolgt. Strg+Klick öffnet ein neues Ansichtsfenster auf der Position des Zuges
-STR_VEHICLE_VIEW_ROAD_VEHICLE_CENTER_TOOLTIP                    :{BLACK}Zentriert die Hauptansicht auf den Standort des Fahrzeugs. Durch Doppelklick wird das Fahrzeug in der Hauptansicht verfolgt. Strg+Klick öffnet ein neues Ansichtsfenster an der Position des Fahrzeugs
-STR_VEHICLE_VIEW_SHIP_CENTER_TOOLTIP                            :{BLACK}Zentriert die Hauptansicht auf die Position des Schiffs. Mit Doppelklick wird das Schiff in der Hauptansicht verfolgt. Strg+Klick öffnet ein neues Ansichtsfenster auf der Position des Schiffs
-STR_VEHICLE_VIEW_AIRCRAFT_CENTER_TOOLTIP                        :{BLACK}Zentriert die Hauptansicht auf die Position des Flugzeugs. Durch Doppelklick wird das Flugzeug in der Hauptansicht verfolgt. Strg+Klick öffnet ein neues Ansichtsfenster auf der Position des Flugzeugs
+STR_VEHICLE_VIEW_TRAIN_CENTER_TOOLTIP                           :{BLACK}Die Hauptansicht auf die Position des Zuges zentrieren. Durch Doppelklick wird der Zug in der Hauptansicht verfolgt. Mit Strg+Klick wird ein neues Ansichtsfenster auf der Position des Zuges geöffnet
+STR_VEHICLE_VIEW_ROAD_VEHICLE_CENTER_TOOLTIP                    :{BLACK}Die Hauptansicht auf den Standort des Fahrzeugs zentrieren. Durch Doppelklick wird das Fahrzeug in der Hauptansicht verfolgt. Mit Strg+Klick wird ein neues Ansichtsfenster an der Position des Fahrzeugs geöffnet
+STR_VEHICLE_VIEW_SHIP_CENTER_TOOLTIP                            :{BLACK}Die Hauptansicht auf die Position des Schiffs zentrieren. Mit Doppelklick wird das Schiff in der Hauptansicht verfolgt. Mit Strg+Klick wird ein neues Ansichtsfenster auf der Position des Schiffs zentriert
+STR_VEHICLE_VIEW_AIRCRAFT_CENTER_TOOLTIP                        :{BLACK}Die Hauptansicht auf die Position des Flugzeugs zentrieren. Durch Doppelklick wird das Flugzeug in der Hauptansicht verfolgt. Mit Strg+Klick wird ein neues Ansichtsfenster auf der Position des Flugzeugs geöffnet
 
 ###length VEHICLE_TYPES
 STR_VEHICLE_VIEW_TRAIN_SEND_TO_DEPOT_TOOLTIP                    :{BLACK}Zug ins Depot schicken. Strg+Klick, um dort nur Wartung durchzuführen
@@ -4322,15 +4344,15 @@ STR_VEHICLE_VIEW_SHIP_SEND_TO_DEPOT_TOOLTIP                     :{BLACK}Das Schi
 STR_VEHICLE_VIEW_AIRCRAFT_SEND_TO_DEPOT_TOOLTIP                 :{BLACK}Das Flugzeug in den Hangar schicken. Strg+Klick, um dort nur Wartung durchzuführen
 
 ###length VEHICLE_TYPES
-STR_VEHICLE_VIEW_CLONE_TRAIN_INFO                               :{BLACK}Kauft eine Kopie des Zuges mit allen Waggons. Strg+Klick erzeugt gemeinsamen Fahrplan. Umschalt+Klick schaltet zwischen Bauen und Kostenvoranschlag um
-STR_VEHICLE_VIEW_CLONE_ROAD_VEHICLE_INFO                        :{BLACK}Kauft eine Kopie des Fahrzeuges. Strg+Klick erzeugt gemeinsamen Fahrplan. Umschalt+Klick schaltet zwischen Bauen und Kostenvoranschlag um
-STR_VEHICLE_VIEW_CLONE_SHIP_INFO                                :{BLACK}Kauft eine Kopie des Schiffes. Strg+Klick erzeugt gemeinsamen Fahrplan. Umschalt+Klick schaltet zwischen Bauen und Kostenvoranschlag um
-STR_VEHICLE_VIEW_CLONE_AIRCRAFT_INFO                            :{BLACK}Kauft eine Kopie des Flugzeuges. Strg+Klick erzeugt gemeinsamen Fahrplan. Umschalt+Klick schaltet zwischen Bauen und Kostenvoranschlag um
+STR_VEHICLE_VIEW_CLONE_TRAIN_INFO                               :{BLACK}Eine Kopie des Zuges mit allen Waggons kaufen. Strg+Klick erzeugt gemeinsamen Fahrplan. Außerdem Umschalt drücken, um nur einen Kostenvoranschlag anzuzeigen
+STR_VEHICLE_VIEW_CLONE_ROAD_VEHICLE_INFO                        :{BLACK}Eine Kopie des Fahrzeuges kaufen. Strg+Klick erzeugt gemeinsamen Fahrplan. Außerdem Umschalt drücken, um nur einen Kostenvoranschlag anzuzeigen
+STR_VEHICLE_VIEW_CLONE_SHIP_INFO                                :{BLACK}Eine Kopie des Schiffes kaufen. Strg+Klick erzeugt gemeinsamen Fahrplan. Außerdem Umschalt drücken, um nur einen Kostenvoranschlag anzuzeigen
+STR_VEHICLE_VIEW_CLONE_AIRCRAFT_INFO                            :{BLACK}Eine Kopie des Flugzeuges kaufen. Strg+Klick erzeugt gemeinsamen Fahrplan. Außerdem Umschalt drücken, um nur einen Kostenvoranschlag anzuzeigen
 
 STR_VEHICLE_VIEW_TRAIN_IGNORE_SIGNAL_TOOLTIP                    :{BLACK}Zug zur Weiterfahrt zwingen, ohne das Signal zu beachten
 STR_VEHICLE_VIEW_TRAIN_REVERSE_TOOLTIP                          :{BLACK}Fahrtrichtung umkehren
 STR_VEHICLE_VIEW_ROAD_VEHICLE_REVERSE_TOOLTIP                   :{BLACK}Das Straßenfahrzeug zur Umkehr zwingen
-STR_VEHICLE_VIEW_ORDER_LOCATION_TOOLTIP                         :{BLACK}Hauptansicht auf Auftragsziel zentrieren. Strg+Klick öffnet ein neues Ansichtsfenster auf dem Standort des Auftragsziels
+STR_VEHICLE_VIEW_ORDER_LOCATION_TOOLTIP                         :{BLACK}Hauptansicht auf Auftragsziel zentrieren. Mit Strg+Klick wird ein neues Ansichtsfenster auf dem Standort des Auftragsziels geöffnet
 
 ###length VEHICLE_TYPES
 STR_VEHICLE_VIEW_TRAIN_REFIT_TOOLTIP                            :{BLACK}Zug auf eine andere Fracht umrüsten
@@ -4359,6 +4381,7 @@ STR_VEHICLE_VIEW_AIRCRAFT_STATUS_START_STOP_TOOLTIP             :{BLACK}Momentan
 # Messages in the start stop button in the vehicle view
 STR_VEHICLE_STATUS_LOADING_UNLOADING                            :{LTBLUE}Laden / Entladen
 STR_VEHICLE_STATUS_LEAVING                                      :{LTBLUE}Abfahrt
+STR_VEHICLE_STATUS_WAITING_UNBUNCHING                           :{LTBLUE}Warten auf Entpulkung
 STR_VEHICLE_STATUS_CRASHED                                      :{RED}Unfall!
 STR_VEHICLE_STATUS_BROKEN_DOWN                                  :{RED}Panne
 STR_VEHICLE_STATUS_STOPPED                                      :{RED}Angehalten
@@ -4411,6 +4434,7 @@ STR_VEHICLE_INFO_WEIGHT_POWER_MAX_SPEED_MAX_TE                  :{BLACK}Gewicht:
 STR_VEHICLE_INFO_PROFIT_THIS_YEAR_LAST_YEAR                     :{BLACK}Gewinn dieses Jahr: {LTBLUE}{CURRENCY_LONG} (letztes Jahr: {CURRENCY_LONG})
 STR_VEHICLE_INFO_PROFIT_THIS_YEAR_LAST_YEAR_MIN_PERFORMANCE     :{BLACK}Gewinn im laufenden Jahr: {LTBLUE}{CURRENCY_LONG} (vergangenes Jahr: {CURRENCY_LONG}) {BLACK}Min. Leistung: {LTBLUE}{POWER_TO_WEIGHT}
 STR_VEHICLE_INFO_PROFIT_THIS_PERIOD_LAST_PERIOD                 :{BLACK}Gewinn in diesem Zeitraum: {LTBLUE}{CURRENCY_LONG} (im letzten Zeitraum: {CURRENCY_LONG})
+STR_VEHICLE_INFO_PROFIT_THIS_PERIOD_LAST_PERIOD_MIN_PERFORMANCE :{BLACK}Gewinn in diesem Zeitraum: {LTBLUE}{CURRENCY_LONG} (im letzten Zeitraum: {CURRENCY_LONG}) {BLACK}Min. Leistung: {LTBLUE}{POWER_TO_WEIGHT}
 STR_VEHICLE_INFO_RELIABILITY_BREAKDOWNS                         :{BLACK}Zuverlässigkeit: {LTBLUE}{COMMA}%  {BLACK}Pannen seit der letzten Wartung: {LTBLUE}{COMMA}
 
 STR_VEHICLE_INFO_BUILT_VALUE                                    :{LTBLUE}{ENGINE} {BLACK}Gebaut: {LTBLUE}{NUM}{BLACK} Wert: {LTBLUE}{CURRENCY_LONG}
@@ -4475,7 +4499,7 @@ STR_REFIT_NEW_CAPACITY_COST_OF_REFIT                            :{BLACK}Neue Kap
 STR_REFIT_NEW_CAPACITY_INCOME_FROM_REFIT                        :{BLACK}Neue Kapazität: {GOLD}{CARGO_LONG}{}{BLACK}Einkommen aus Umrüstung: {GREEN}{CURRENCY_LONG}
 STR_REFIT_NEW_CAPACITY_COST_OF_AIRCRAFT_REFIT                   :{BLACK}Neue Kapazität: {GOLD}{CARGO_LONG}, {GOLD}{CARGO_LONG}{}{BLACK}Kosten für Umrüstung: {RED}{CURRENCY_LONG}
 STR_REFIT_NEW_CAPACITY_INCOME_FROM_AIRCRAFT_REFIT               :{BLACK}Neue Kapazität: {GOLD}{CARGO_LONG}, {GOLD}{CARGO_LONG}{}{BLACK}Einnahmen aus Umrüstung: {GREEN}{CURRENCY_LONG}
-STR_REFIT_SELECT_VEHICLES_TOOLTIP                               :{BLACK}Umzurüstendes Fahrzeug auswählen. Ziehen mit der Maus erlaubt das Auswählen mehrerer Fahrzeuge gleichzeitig. Freifläche anklicken wählt das gesamte Fahrzeug aus. Strg+Klick wählt das Fahrzeug und alle nachfolgenden aus.
+STR_REFIT_SELECT_VEHICLES_TOOLTIP                               :{BLACK}Umzurüstende Fahrzeuge auswählen. Klick+Ziehen erlaubt das Auswählen mehrerer Fahrzeuge. Freifläche anklicken wählt das gesamte Fahrzeug aus. Strg+Klick wählt das Fahrzeug und alle nachfolgenden aus.
 
 ###length VEHICLE_TYPES
 STR_REFIT_TRAIN_LIST_TOOLTIP                                    :{BLACK}Die Fracht auswählen, die der Zug befördern soll
@@ -4500,8 +4524,9 @@ STR_ORDERS_CAPTION                                              :{WHITE}{VEHICLE
 STR_ORDERS_TIMETABLE_VIEW                                       :{BLACK}Fahrplan
 STR_ORDERS_TIMETABLE_VIEW_TOOLTIP                               :{BLACK}Zur Fahrplanansicht wechseln
 
-STR_ORDERS_LIST_TOOLTIP                                         :{BLACK}Auftragsliste – Auftrag anklicken, um ihn zu markieren. Strg+Klick springt zum Auftragsziel
+STR_ORDERS_LIST_TOOLTIP                                         :{BLACK}Auftragsliste – Auftrag anklicken, um ihn zu markieren. Mit Strg+Klick wird zum Auftragsziel gesprungen
 STR_ORDER_INDEX                                                 :{COMMA}:{NBSP}
+STR_ORDER_TEXT                                                  :{STRING} {STRING} {STRING} {STRING}
 
 STR_ORDERS_END_OF_ORDERS                                        :- - Ende der Aufträge - -
 STR_ORDERS_END_OF_SHARED_ORDERS                                 :- - Ende des gemeinsam genutzten Fahrplans - -
@@ -4538,6 +4563,7 @@ STR_ORDER_DROP_REFIT_AUTO_ANY                                   :Verfügbare Fra
 STR_ORDER_DROP_GO_ALWAYS_DEPOT                                  :Fahre immer
 STR_ORDER_DROP_SERVICE_DEPOT                                    :Wartung, wenn nötig
 STR_ORDER_DROP_HALT_DEPOT                                       :Stopp
+STR_ORDER_DROP_UNBUNCH                                          :Entpulken
 
 # Depot action tooltips, one per vehicle type
 ###length VEHICLE_TYPES
@@ -4575,20 +4601,20 @@ STR_ORDER_CONDITIONAL_VALUE_TOOLTIP                             :{BLACK}Wert, de
 STR_ORDER_CONDITIONAL_VALUE_CAPT                                :{WHITE}Wert für den Vergleich eingeben
 
 STR_ORDERS_SKIP_BUTTON                                          :{BLACK}Überspringen
-STR_ORDERS_SKIP_TOOLTIP                                         :{BLACK}Den aktuellen Auftrag überspringen und den nächsten ausführen. Strg+Klick springt zum ausgewählten Auftrag
+STR_ORDERS_SKIP_TOOLTIP                                         :{BLACK}Den aktuellen Auftrag überspringen und den nächsten ausführen. Mit Strg+Klick wird zum ausgewählten Auftrag gesprungen
 
 STR_ORDERS_DELETE_BUTTON                                        :{BLACK}Löschen
 STR_ORDERS_DELETE_TOOLTIP                                       :{BLACK}Lösche den markierten Auftrag
 STR_ORDERS_DELETE_ALL_TOOLTIP                                   :{BLACK}Lösche alle Aufträge
 STR_ORDERS_STOP_SHARING_BUTTON                                  :{BLACK}Gemeinsame Aufträge aufheben
-STR_ORDERS_STOP_SHARING_TOOLTIP                                 :{BLACK}Gemeinsame Auftragliste aufheben. Strg+Klick löscht zusätzlich die Auftragliste für dieses Fahrzeug
+STR_ORDERS_STOP_SHARING_TOOLTIP                                 :{BLACK}Gemeinsame Auftragliste aufheben. Mit Strg+Klick wird zusätzlich die Auftragliste für dieses Fahrzeug gelöscht
 
 STR_ORDERS_GO_TO_BUTTON                                         :{BLACK}Fahre zu
 STR_ORDER_GO_TO_NEAREST_DEPOT                                   :Nächstes Depot
 STR_ORDER_GO_TO_NEAREST_HANGAR                                  :Nächster Hangar
 STR_ORDER_CONDITIONAL                                           :Bedingter Sprung zu Auftrag
 STR_ORDER_SHARE                                                 :Gemeinsame Aufträge
-STR_ORDERS_GO_TO_TOOLTIP                                        :{BLACK}Einen neuen Auftrag vor dem markierten Auftrag oder am Ende der Liste einfügen. Strg halten, um für Stationen „Vollladen einer Fracht“, für Wegpunkte „ohne Zwischenhalt“ und für Depots „Wartung“ auszuwählen. „Gemeinsame Aufträge“ erlauben es, für mehrere Fahrzeuge nur einen Fahrplan und eine Auftragsliste zu verwenden. Durch Klicken auf ein Fahrzeug werden die Aufträge durch die des ausgewählten Fahrzeugs ersetzt. Wartungs- und Depotaufträge schalten die automatische Wartung aus.
+STR_ORDERS_GO_TO_TOOLTIP                                        :{BLACK}Einen neuen Auftrag vor dem markierten Auftrag oder am Ende der Liste einfügen. Strg+Klick auf einer Station für den Auftrag „Vollladen einer Fracht“, auf Wegpunkten für den Auftrag „ohne Zwischenhalt“ und auf Depots für den Auftrag „Wartung“. Mit einem Klick auf ein anderes Fahrzeug werden seine Aufträge kopiert, mit Strg+Klick werden gemeinsame Aufträge erzeugt. Ein Depotauftrag schaltet die automatische Wartung für das Fahrzeug aus.
 
 STR_ORDERS_VEH_WITH_SHARED_ORDERS_LIST_TOOLTIP                  :{BLACK}Alle Fahrzeuge mit demselben Fahrplan anzeigen
 
@@ -4692,26 +4718,28 @@ STR_TIMETABLE_STATUS_ON_TIME                                    :{BLACK}Das Fahr
 STR_TIMETABLE_STATUS_LATE                                       :{BLACK}Dieses Fahrzeug hat {STRING} Verspätung
 STR_TIMETABLE_STATUS_EARLY                                      :{BLACK}Dieses Fahrzeug ist {STRING} zu früh
 STR_TIMETABLE_STATUS_NOT_STARTED                                :{BLACK}Dieser Fahrplan ist noch nicht gültig
+STR_TIMETABLE_STATUS_START_AT_DATE                              :{BLACK}Dieser Fahrplan fängt an bei {STRING}
 STR_TIMETABLE_STATUS_START_IN_SECONDS                           :{BLACK}Dieser Fahrplan startet in {COMMA} Sekunden
 
 STR_TIMETABLE_START                                             :{BLACK}Starte den Fahrplan
+STR_TIMETABLE_START_TOOLTIP                                     :{BLACK}Auswählen, wann dieser Zeitplan beginnt. Strg+Klick, um den Start aller Fahrzeuge, die diesen Auftrag teilen, basierend auf ihrem relativen Auftrag gleichmäßig zu verteilen, falls der Auftrag vollständig per Zeitplan festgelegt ist
 
 STR_TIMETABLE_START_SECONDS_QUERY                               :Sekunden bis der Fahrplan beginnt
 
 STR_TIMETABLE_CHANGE_TIME                                       :{BLACK}Zeit ändern
-STR_TIMETABLE_WAIT_TIME_TOOLTIP                                 :{BLACK}Zeitrahmen für den markierten Auftrag ändern. Strg+Klick legt die Zeit für alle Aufträge fest
+STR_TIMETABLE_WAIT_TIME_TOOLTIP                                 :{BLACK}Zeitrahmen für den markierten Auftrag ändern. Mit Strg+Klick wird die Zeit für alle Aufträge festgelegt
 
 STR_TIMETABLE_CLEAR_TIME                                        :{BLACK}Zeit löschen
-STR_TIMETABLE_CLEAR_TIME_TOOLTIP                                :{BLACK}Zeitrahmen für den markierten Auftrag löschen. Strg+Klick löscht die Zeit für alle Aufträge
+STR_TIMETABLE_CLEAR_TIME_TOOLTIP                                :{BLACK}Zeitrahmen für den markierten Auftrag löschen. Mit Strg+Klick wird die Zeit für alle Aufträge gelöscht
 
 STR_TIMETABLE_CHANGE_SPEED                                      :{BLACK}Tempolimit ändern
 STR_TIMETABLE_CHANGE_SPEED_TOOLTIP                              :{BLACK}Tempolimit beim Ausführen des ausgewählten Auftrags ändern. Strg+Klick legt das Tempo für alle Aufträge fest
 
 STR_TIMETABLE_CLEAR_SPEED                                       :{BLACK}Tempolimit löschen
-STR_TIMETABLE_CLEAR_SPEED_TOOLTIP                               :{BLACK}Tempolimit für das Ausführen des ausgewählten Auftrags löschen. Strg+Klick löscht das Tempo für alle Aufträge
+STR_TIMETABLE_CLEAR_SPEED_TOOLTIP                               :{BLACK}Tempolimit für das Ausführen des ausgewählten Auftrags löschen. Mit Strg+Klick wird das Tempo für alle Aufträge gelöscht
 
 STR_TIMETABLE_RESET_LATENESS                                    :{BLACK}Verspätung löschen
-STR_TIMETABLE_RESET_LATENESS_TOOLTIP                            :{BLACK}Verspätungsmelder zurücksetzen, damit das Fahrzeug als pünktlich gilt. Strg+Klick wird die gesamte Gruppe zurücksetzen, so dass das späteste Fahrzeug im Zeitplan ist und alle anderen verfrüht sind
+STR_TIMETABLE_RESET_LATENESS_TOOLTIP                            :{BLACK}Verspätungsmelder zurücksetzen, damit das Fahrzeug als pünktlich gilt. Mit Strg+Klick wird die gesamte Gruppe zurückgesetzt, so dass das späteste Fahrzeug im Zeitplan ist und alle anderen verfrüht sind
 
 STR_TIMETABLE_AUTOFILL                                          :{BLACK}Erfassen
 STR_TIMETABLE_AUTOFILL_TOOLTIP                                  :{BLACK}Zeiten automatisch bei der nächsten Fahrt eintragen. Mit Strg+Klick wird versucht, die aktuellen Wartezeiten beizubehalten
@@ -4751,9 +4779,9 @@ STR_AI_DEBUG_MATCH_CASE                                         :{BLACK}Groß/Kl
 STR_AI_DEBUG_MATCH_CASE_TOOLTIP                                 :{BLACK}Festlegen, ob bei der Suche auf Groß- und Kleinschreibung geachtet werden soll
 STR_AI_DEBUG_CONTINUE                                           :{BLACK}Fortfahren
 STR_AI_DEBUG_CONTINUE_TOOLTIP                                   :{BLACK}Pause aufheben und die KI weiter ausführen
-STR_AI_DEBUG_SELECT_AI_TOOLTIP                                  :{BLACK}Debug-Ausgabe dieser KI anzeigen
+STR_AI_DEBUG_SELECT_AI_TOOLTIP                                  :{BLACK}Debug-Ausgabe dieser KI anzeigen. Strg+Klick, um in einem neuen Fenster zu öffnen
 STR_AI_GAME_SCRIPT                                              :{BLACK}Skript
-STR_AI_GAME_SCRIPT_TOOLTIP                                      :{BLACK}Überprüfe die Aufzeichnungen des Skripts
+STR_AI_GAME_SCRIPT_TOOLTIP                                      :{BLACK}Protokoll des Spielskripts überprüfen. Strg+Klick, um in einem neuen Fenster zu öffnen
 
 STR_ERROR_AI_NO_AI_FOUND                                        :Keine passende KI gefunden.{}Diese KI ist ein Platzhalter und wird nichts tun.{}KIs können im Hauptmenü als Erweiterung heruntergeladen werden
 STR_ERROR_AI_PLEASE_REPORT_CRASH                                :{WHITE}Eine der laufenden KIs oder ein Skript ist abgestürzt. Der Fehler sollte dem Autor der KI oder des Skripts mittels eines Screenshots vom Debug-Fenster unter Angabe der OpenTTD- Version und der KI- bzw. Skript-Versionsnummer gemeldet werden.
@@ -5085,7 +5113,9 @@ STR_ERROR_DEPOT_WRONG_DEPOT_TYPE                                :Falscher Depott
 
 # Depot unbunching related errors
 STR_ERROR_UNBUNCHING_ONLY_ONE_ALLOWED                           :{WHITE}... kann nur einen Entladeauftrag haben
+STR_ERROR_UNBUNCHING_NO_FULL_LOAD                               :{WHITE}… es können keine Volle-Ladungs-Aufträge benutzt werden, falls Fahrzeug einen Entpulkungsauftrag hat
 STR_ERROR_UNBUNCHING_NO_UNBUNCHING_FULL_LOAD                    :{WHITE}... kann kein Fahrzeug mit einem Vollladeauftrag entladen
+STR_ERROR_UNBUNCHING_NO_CONDITIONAL                             :{WHITE}… es können keine bedingte Aufträge benutzt werden, falls Fahrzeug einen Entpulkungsauftrag hat
 STR_ERROR_UNBUNCHING_NO_UNBUNCHING_CONDITIONAL                  :{WHITE}... kann kein Fahrzeug mit einem an Bedingungen geknüpften Auftrag entladen
 
 # Autoreplace related errors

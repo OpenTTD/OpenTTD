@@ -333,6 +333,7 @@ STR_UNITS_HEIGHT_SI                                             :{DECIMAL}{NBSP}
 # Time units used in string control characters
 STR_UNITS_DAYS                                                  :{COMMA}{NBSP}{P den dny dní}
 STR_UNITS_SECONDS                                               :{COMMA}{NBSP}sekund{P a y ""}
+STR_UNITS_TICKS                                                 :{COMMA}{NBSP}cykl{P us y ů}
 
 STR_UNITS_MONTHS                                                :{NUM}{NBSP}měsíc{P "" e ů}
 STR_UNITS_MINUTES                                               :{NUM}{NBSP}minut{P a y ""}
@@ -2824,7 +2825,10 @@ STR_LINKGRAPH_LEGEND_SATURATED                                  :{TINY_FONT}{BLA
 STR_LINKGRAPH_LEGEND_OVERLOADED                                 :{TINY_FONT}{BLACK}přetížení
 
 # Linkgraph tooltip
-STR_LINKGRAPH_STATS_TOOLTIP_RETURN_EXTENSION                    :{}{CARGO_LONG} má být přepraveno zpět ({COMMA}% z kapacity)
+STR_LINKGRAPH_STATS_TOOLTIP_MONTH                               :{BLACK}{CARGO_LONG} za měsíc má být přepraveno z {STATION} do {STATION} ({COMMA}% kapacity){STRING}
+STR_LINKGRAPH_STATS_TOOLTIP_MINUTE                              :{BLACK}{CARGO_LONG} za minutu má být přepraveno z {STATION} do {STATION} ({COMMA}% kapacity){STRING}
+STR_LINKGRAPH_STATS_TOOLTIP_RETURN_EXTENSION                    :{}{CARGO_LONG} má být přepraveno zpět ({COMMA}% kapacity)
+STR_LINKGRAPH_STATS_TOOLTIP_TIME_EXTENSION                      :{}Průměrná doba cesty: {UNITS_DAYS_OR_SECONDS}
 
 # Base for station construction window(s)
 STR_STATION_BUILD_COVERAGE_AREA_TITLE                           :{BLACK}Zvýraznění oblasti pokrytí
@@ -3738,7 +3742,7 @@ STR_LOCAL_AUTHORITY_ACTION_TOOLTIP_ROAD_RECONSTRUCTION_MONTHS   :{PUSH_COLOUR}{Y
 STR_LOCAL_AUTHORITY_ACTION_TOOLTIP_ROAD_RECONSTRUCTION_MINUTES  :{PUSH_COLOUR}{YELLOW}Dotovat rekonstrukci městské silniční sítě.{}Způsobí závažné narušení silniční dopravy ve městě po dobu až 6 minut.{}{POP_COLOUR}Cena: {CURRENCY_LONG}
 STR_LOCAL_AUTHORITY_ACTION_TOOLTIP_STATUE_OF_COMPANY            :{PUSH_COLOUR}{YELLOW}Postavit sochu jako poctu tvé společnosti.{}Poskytuje permanentní bonus k hodnocení stanic v tomto městě.{}{POP_COLOUR}Cena: {CURRENCY_LONG}
 STR_LOCAL_AUTHORITY_ACTION_TOOLTIP_NEW_BUILDINGS                :{PUSH_COLOUR}{YELLOW}Dotovat stavbu nových obchodních budov ve městě.{}Poskytuje dočasné zvýšení rychlosti růstu města.{}{POP_COLOUR}Cena: {CURRENCY_LONG}
-STR_LOCAL_AUTHORITY_ACTION_TOOLTIP_EXCLUSIVE_TRANSPORT_MONTHS   :{PUSH_COLOUR}{YELLOW}Koupit výhradní přepravní práva ve městě na 12 měsíců.{}Místní správa neumožní využívání stanic ostatních společnostní pro nakládání a vykládání cestujících a nákladu. Při úspěšném úplatku od konkurenční společnosti město tuto smlouvu zruší.{}{POP_COLOUR}Cena: {CURRENCY_LONG}
+STR_LOCAL_AUTHORITY_ACTION_TOOLTIP_EXCLUSIVE_TRANSPORT_MONTHS   :{PUSH_COLOUR}{YELLOW}Koupit výhradní přepravní práva ve městě na 12 měsíců.{}Místní správa neumožní využívání stanic ostatních společností pro nakládání a vykládání cestujících a nákladu. Po úspěšném úplatku od konkurenční společnosti město tuto smlouvu zruší.{}{POP_COLOUR}Cena: {CURRENCY_LONG}
 STR_LOCAL_AUTHORITY_ACTION_TOOLTIP_EXCLUSIVE_TRANSPORT_MINUTES  :{PUSH_COLOUR}{YELLOW}Koupit výhradní přepravní práva ve městě na 12 minut.{}Místní správa neumožní využívání stanic ostatních společnostní pro nakládání a vykládání cestujících a nákladu. Při úspěšném úplatku od konkurenční společnosti město tuto smlouvu zruší.{}{POP_COLOUR}Cena: {CURRENCY_LONG}
 STR_LOCAL_AUTHORITY_ACTION_TOOLTIP_BRIBE                        :{PUSH_COLOUR}{YELLOW}Podplatit místní správu pro zvýšení hodnocení společnosti. Riziko trestu v případě přistižení.{}{POP_COLOUR}Cena: {CURRENCY_LONG}
 
@@ -3792,6 +3796,7 @@ STR_SUBSIDIES_SUBSIDISED_TITLE                                  :{BLACK}Již př
 STR_SUBSIDIES_SUBSIDISED_FROM_TO                                :{ORANGE}{STRING.big} z{NBSP}{STRING.gen} do {STRING.gen}{YELLOW} ({COMPANY}{YELLOW}, {STRING})
 STR_SUBSIDIES_TOOLTIP_CLICK_ON_SERVICE_TO_CENTER                :{BLACK}Kliknutím na dotaci zaměříš pohled na průmysl/město. Při stisknutém Ctrl otevřeš nový pohled
 STR_SUBSIDIES_OFFERED_EXPIRY_DATE                               :do {DATE_SHORT}
+STR_SUBSIDIES_OFFERED_EXPIRY_TIME                               :během {UNITS_MONTHS_OR_MINUTES}
 STR_SUBSIDIES_SUBSIDISED_EXPIRY_DATE                            :do {DATE_SHORT}
 STR_SUBSIDIES_SUBSIDISED_EXPIRY_TIME                            :{UNITS_MONTHS_OR_MINUTES} zbývá
 

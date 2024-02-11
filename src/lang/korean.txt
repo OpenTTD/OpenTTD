@@ -1924,7 +1924,7 @@ STR_CONFIG_SETTING_DRAG_SIGNALS_DENSITY                         :신호기를 �
 STR_CONFIG_SETTING_DRAG_SIGNALS_DENSITY_HELPTEXT                :신호기를 드래그할 때, 다음 장애물(신호기, 분기점 등)을 만날 때까지 신호기가 설치될 간격을 설정합니다
 STR_CONFIG_SETTING_DRAG_SIGNALS_DENSITY_VALUE                   :{COMMA}칸 간격으로 설치
 STR_CONFIG_SETTING_DRAG_SIGNALS_FIXED_DISTANCE                  :드래그할 때, 신호기 사이의 거리를 계속 고정: {STRING}
-STR_CONFIG_SETTING_DRAG_SIGNALS_FIXED_DISTANCE_HELPTEXT         :신호기를 드래그 하여 설치할 때의 행동을 선택합니다. 이 설정을 끄면, 신호기가 없는 긴 폐색을 만들지 않기 위해 터널이나 다리 주변에 먼저 신호기가 설치될 것입니다. 이 설정을 켜면, 신호기는 터널/다리와 상관없이 매 n개의 칸마다 설치될 것입니다
+STR_CONFIG_SETTING_DRAG_SIGNALS_FIXED_DISTANCE_HELPTEXT         :신호기를 CTRL+드래그 하여 설치할 때의 행동을 선택합니다. 이 설정을 끄면, 신호기가 없는 긴 폐색을 만들지 않기 위해 터널이나 다리 주변에 먼저 신호기가 설치될 것입니다. 이 설정을 켜면, 신호기는 터널/다리와 상관없이 매 n개의 칸마다 설치될 것입니다
 
 STR_CONFIG_SETTING_SEMAPHORE_BUILD_BEFORE_DATE                  :전자식 신호기의 사용: {STRING}년 이후에
 STR_CONFIG_SETTING_SEMAPHORE_BUILD_BEFORE_DATE_HELPTEXT         :전자식 신호기를 사용할 수 있는 연도를 설정합니다. 이 이전에는 구식 신호기만 사용 가능합니다. (두 신호기는 기능적으로는 동일하고 모습만 다릅니다.)
@@ -2789,7 +2789,7 @@ STR_RAIL_TOOLBAR_TOOLTIP_BUILD_AUTORAIL                         :{BLACK}자동�
 STR_RAIL_TOOLBAR_TOOLTIP_BUILD_TRAIN_DEPOT_FOR_BUILDING         :{BLACK}차량기지를 건설합니다. 차량을 구입하거나 점검을 할 수 있습니다. SHIFT 키를 누른 채로 사용하면 예상 비용을 볼 수 있습니다
 STR_RAIL_TOOLBAR_TOOLTIP_CONVERT_RAIL_TO_WAYPOINT               :{BLACK}선로에 경유지를 설치합니다. CTRL+클릭하면 같은 이름의 경유지를 서로 떨어진 곳에 지을 수 있습니다. SHIFT 키를 누른 채로 사용하면 예상 비용을 볼 수 있습니다
 STR_RAIL_TOOLBAR_TOOLTIP_BUILD_RAILROAD_STATION                 :{BLACK}철도역을 짓습니다. CTRL+클릭하면 같은 이름의 역을 서로 떨어진 곳에 지을 수 있습니다. SHIFT 키를 누른 채로 사용하면 예상 비용을 볼 수 있습니다
-STR_RAIL_TOOLBAR_TOOLTIP_BUILD_RAILROAD_SIGNALS                 :{BLACK}선로에 신호기를 설치합니다. CTRL+클릭하면 다른 신호기 스타일(구식/전자식)을 건설합니다.{}클릭+드래그하면 드래그한 구간 내에 신호기를 정해진 간격대로 설치할 수 있습니다. CTRL+클릭+드래그하면 다음 분기점이나 다음 신호기까지 신호기를 설치합니다. SHIFT 키를 누른 채로 사용하면 예상 비용을 볼 수 있습니다
+STR_RAIL_TOOLBAR_TOOLTIP_BUILD_RAILROAD_SIGNALS                 :{BLACK}선로에 신호기를 설치합니다. CTRL+클릭하면 다른 신호기 스타일(구식/전자식)을 건설합니다.{}클릭+드래그하면 드래그한 구간 내에 신호기를 정해진 간격대로 설치합니다. CTRL+클릭+드래그하면 다음 분기점이나 다음 신호기까지 신호기를 설치합니다. SHIFT 키를 누른 채로 사용하면 예상 비용을 볼 수 있습니다
 STR_RAIL_TOOLBAR_TOOLTIP_BUILD_RAILROAD_BRIDGE                  :{BLACK}철교를 짓습니다. SHIFT 키를 누른 채로 사용하면 예상 비용을 볼 수 있습니다
 STR_RAIL_TOOLBAR_TOOLTIP_BUILD_RAILROAD_TUNNEL                  :{BLACK}터널을 짓습니다. SHIFT 키를 누른 채로 사용하면 예상 비용을 볼 수 있습니다
 STR_RAIL_TOOLBAR_TOOLTIP_TOGGLE_BUILD_REMOVE_FOR                :{BLACK}선로, 신호기, 경유지, 역 등의 철도 시설 건설/철거 모드를 켜거나 끌 수 있습니다. CTRL+클릭하면 선로에서 경유지와 역을 제거할 수 있습니다
@@ -3745,6 +3745,13 @@ STR_STATION_LIST_STATION                                        :{YELLOW}{STATIO
 STR_STATION_LIST_WAYPOINT                                       :{YELLOW}{WAYPOINT}
 STR_STATION_LIST_NONE                                           :{YELLOW}- 없음 -
 STR_STATION_LIST_SELECT_ALL_FACILITIES                          :{BLACK}모든 시설을 선택합니다.
+STR_STATION_LIST_CARGO_FILTER_ALL_AND_NO_RATING                 :등급이 없는 모든 화물
+STR_STATION_LIST_CARGO_FILTER_MULTIPLE                          :여러 개의 화물
+STR_STATION_LIST_CARGO_FILTER_NO_CARGO_TYPES                    :등급이 없는 화물
+STR_STATION_LIST_CARGO_FILTER_ONLY_NO_RATING                    :등급이 없는 화물만
+STR_STATION_LIST_CARGO_FILTER_SELECT_ALL                        :등급이 없는 모든 화물
+STR_STATION_LIST_CARGO_FILTER_NO_RATING                         :등급이 없는 화물
+STR_STATION_LIST_CARGO_FILTER_EXPAND                            :더 보기...
 
 # Station view window
 STR_STATION_VIEW_CAPTION                                        :{WHITE}{STATION} {STATION_FEATURES}
@@ -4086,7 +4093,7 @@ STR_PURCHASE_INFO_AIRCRAFT_RANGE                                :{BLACK}항속�
 STR_PURCHASE_INFO_AIRCRAFT_TYPE                                 :{BLACK}항공기 종류: {GOLD}{STRING}
 
 ###length 3
-STR_CARGO_TYPE_FILTER_ALL                                       :모든 화물 종류
+STR_CARGO_TYPE_FILTER_ALL                                       :모든 화물
 STR_CARGO_TYPE_FILTER_FREIGHT                                   :화물
 STR_CARGO_TYPE_FILTER_NONE                                      :없음
 

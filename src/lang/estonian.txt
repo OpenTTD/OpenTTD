@@ -3199,6 +3199,7 @@ STR_MAPGEN_TOWN_NAME_CATALAN                                    :Katalaani
 
 # Strings for map borders at game generation
 STR_MAPGEN_BORDER_TYPE                                          :{BLACK}Kaardi ääred:
+STR_MAPGEN_BORDER_TYPE_TOOLTIP                                  :{BLACK}Vali mängukaardi piirid
 STR_MAPGEN_NORTHWEST                                            :{BLACK}Loe
 STR_MAPGEN_NORTHEAST                                            :{BLACK}Kirre
 STR_MAPGEN_SOUTHEAST                                            :{BLACK}Kagu
