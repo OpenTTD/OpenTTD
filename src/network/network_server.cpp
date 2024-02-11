@@ -84,7 +84,6 @@ struct PacketWriter : SaveFilter {
 
 		/* This must all wait until the Destroy function is called. */
 
-		Debug(net, 0, "Destruct!");
 		this->packets.clear();
 		this->current = nullptr;
 	}
