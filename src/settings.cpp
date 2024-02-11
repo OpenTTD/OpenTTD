@@ -158,7 +158,7 @@ enum IniFileVersion : uint32_t {
 	IFV_PRIVATE_SECRETS,                                   ///< 1  PR#9298  Moving of settings from openttd.cfg to private.cfg / secrets.cfg.
 	IFV_GAME_TYPE,                                         ///< 2  PR#9515  Convert server_advertise to server_game_type.
 	IFV_LINKGRAPH_SECONDS,                                 ///< 3  PR#10610 Store linkgraph update intervals in seconds instead of days.
-	IFV_NETWORK_PRIVATE_SETTINGS,                          ///< 4  PR#10762 Move no_http_content_downloads / use_relay_service to private settings.
+	IFV_NETWORK_PRIVATE_SETTINGS,                          ///< 4  PR#10762 Move use_relay_service to private settings.
 
 	IFV_AUTOSAVE_RENAME,                                   ///< 5  PR#11143 Renamed values of autosave to be in minutes.
 	IFV_RIGHT_CLICK_CLOSE,                                 ///< 6  PR#10204 Add alternative right click to close windows setting.
@@ -1378,19 +1378,10 @@ void LoadFromConfig(bool startup)
 			_settings_newgame.linkgraph.recalc_time     *= CalendarTime::SECONDS_PER_DAY;
 		}
 
-		/* Move no_http_content_downloads and use_relay_service from generic_ini to private_ini. */
+		/* Move use_relay_service from generic_ini to private_ini. */
 		if (generic_version < IFV_NETWORK_PRIVATE_SETTINGS) {
 			const IniGroup *network = generic_ini.GetGroup("network");
 			if (network != nullptr) {
-				const IniItem *no_http_content_downloads = network->GetItem("no_http_content_downloads");
-				if (no_http_content_downloads != nullptr) {
-					if (no_http_content_downloads->value == "true") {
-						_settings_client.network.no_http_content_downloads = true;
-					} else if (no_http_content_downloads->value == "false") {
-						_settings_client.network.no_http_content_downloads = false;
-					}
-				}
-
 				const IniItem *use_relay_service = network->GetItem("use_relay_service");
 				if (use_relay_service != nullptr) {
 					if (use_relay_service->value == "never") {
@@ -1496,7 +1487,6 @@ void SaveToConfig()
 	if (generic_version < IFV_NETWORK_PRIVATE_SETTINGS) {
 		IniGroup *network = generic_ini.GetGroup("network");
 		if (network != nullptr) {
-			network->RemoveItem("no_http_content_downloads");
 			network->RemoveItem("use_relay_service");
 		}
 	}
