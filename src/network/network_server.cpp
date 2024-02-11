@@ -138,7 +138,7 @@ struct PacketWriter : SaveFilter {
 		return false;
 	}
 
-	void Write(byte *buf, size_t size) override
+	void Write(const byte *buf, size_t size) override
 	{
 		/* We want to abort the saving when the socket is closed. */
 		if (this->cs == nullptr) SlError(STR_NETWORK_ERROR_LOSTCONNECTION);
@@ -147,7 +147,7 @@ struct PacketWriter : SaveFilter {
 
 		std::lock_guard<std::mutex> lock(this->mutex);
 
-		byte *bufe = buf + size;
+		const byte *bufe = buf + size;
 		while (buf != bufe) {
 			size_t written = this->current->Send_bytes(buf, bufe);
 			buf += written;

@@ -78,7 +78,7 @@ struct SaveFilter {
 	 * @param buf The bytes to write.
 	 * @param len The number of bytes to write.
 	 */
-	virtual void Write(byte *buf, size_t len) = 0;
+	virtual void Write(const byte *buf, size_t len) = 0;
 
 	/**
 	 * Prepare everything to finish writing the savegame.

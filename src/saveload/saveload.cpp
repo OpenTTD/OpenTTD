@@ -2212,7 +2212,7 @@ struct FileWriter : SaveFilter {
 		this->Finish();
 	}
 
-	void Write(byte *buf, size_t size) override
+	void Write(const byte *buf, size_t size) override
 	{
 		/* We're in the process of shutting down, i.e. in "failure" mode. */
 		if (this->file == nullptr) return;
@@ -2295,7 +2295,7 @@ struct LZOSaveFilter : SaveFilter {
 		if (lzo_init() != LZO_E_OK) SlError(STR_GAME_SAVELOAD_ERROR_BROKEN_INTERNAL_ERROR, "cannot initialize compressor");
 	}
 
-	void Write(byte *buf, size_t size) override
+	void Write(const byte *buf, size_t size) override
 	{
 		const lzo_bytep in = buf;
 		/* Buffer size is from the LZO docs plus the chunk header size. */
@@ -2350,7 +2350,7 @@ struct NoCompSaveFilter : SaveFilter {
 	{
 	}
 
-	void Write(byte *buf, size_t size) override
+	void Write(const byte *buf, size_t size) override
 	{
 		this->chain->Write(buf, size);
 	}
@@ -2435,10 +2435,10 @@ struct ZlibSaveFilter : SaveFilter {
 	 * @param len  Amount of bytes to write.
 	 * @param mode Mode for deflate.
 	 */
-	void WriteLoop(byte *p, size_t len, int mode)
+	void WriteLoop(const byte *p, size_t len, int mode)
 	{
 		uint n;
-		this->z.next_in = p;
+		this->z.next_in = const_cast<byte *>(p);
 		this->z.avail_in = (uInt)len;
 		do {
 			this->z.next_out = this->fwrite_buf;
@@ -2463,7 +2463,7 @@ struct ZlibSaveFilter : SaveFilter {
 		} while (this->z.avail_in || !this->z.avail_out);
 	}
 
-	void Write(byte *buf, size_t size) override
+	void Write(const byte *buf, size_t size) override
 	{
 		this->WriteLoop(buf, size, 0);
 	}
@@ -2562,7 +2562,7 @@ struct LZMASaveFilter : SaveFilter {
 	 * @param len    Amount of bytes to write.
 	 * @param action Action for lzma_code.
 	 */
-	void WriteLoop(byte *p, size_t len, lzma_action action)
+	void WriteLoop(const byte *p, size_t len, lzma_action action)
 	{
 		size_t n;
 		this->lzma.next_in = p;
@@ -2582,7 +2582,7 @@ struct LZMASaveFilter : SaveFilter {
 		} while (this->lzma.avail_in || !this->lzma.avail_out);
 	}
 
-	void Write(byte *buf, size_t size) override
+	void Write(const byte *buf, size_t size) override
 	{
 		this->WriteLoop(buf, size, LZMA_RUN);
 	}
