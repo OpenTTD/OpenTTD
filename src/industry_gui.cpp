@@ -800,6 +800,7 @@ class IndustryViewWindow : public Window
 		IL_RATE2,             ///< Production rate of cargo 2
 	};
 
+	Dimension cargo_icon_size; ///< Largest cargo icon dimension.
 	Editability editable;     ///< Mode for changing production
 	InfoLine editbox_line;    ///< The line clicked to open the edit box
 	InfoLine clicked_line;    ///< The line of the button that has been clicked
@@ -828,6 +829,7 @@ public:
 	{
 		/* This only used when the cheat to alter industry production is enabled */
 		this->cheat_line_height = std::max(SETTING_BUTTON_HEIGHT + WidgetDimensions::scaled.vsep_normal, GetCharacterHeight(FS_NORMAL));
+		this->cargo_icon_size = GetLargestCargoIconSize();
 	}
 
 	void OnPaint() override
@@ -843,6 +845,15 @@ public:
 			this->ReInit();
 			return;
 		}
+	}
+
+	void DrawCargoIcon(const Rect &r, CargoID cid) const
+	{
+		bool rtl = _current_text_dir == TD_RTL;
+		SpriteID icon = CargoSpec::Get(cid)->GetCargoIcon();
+		Dimension d = GetSpriteSize(icon);
+		Rect ir = r.WithWidth(this->cargo_icon_size.width, rtl).WithHeight(GetCharacterHeight(FS_NORMAL));
+		DrawSprite(icon, PAL_NONE, CenterBounds(ir.left, ir.right, d.width), CenterBounds(ir.top, ir.bottom, this->cargo_icon_size.height));
 	}
 
 	/**
@@ -864,6 +875,7 @@ public:
 			ir.top += GetCharacterHeight(FS_NORMAL) + WidgetDimensions::scaled.vsep_wide;
 		}
 
+		const int label_indent = WidgetDimensions::scaled.hsep_normal + this->cargo_icon_size.width;
 		bool stockpiling = HasBit(ind->callback_mask, CBM_IND_PRODUCTION_CARGO_ARRIVAL) || HasBit(ind->callback_mask, CBM_IND_PRODUCTION_256_TICKS);
 
 		for (const auto &a : i->accepted) {
@@ -874,6 +886,8 @@ public:
 				ir.top += GetCharacterHeight(FS_NORMAL);
 				first = false;
 			}
+
+			DrawCargoIcon(ir, a.cargo);
 
 			CargoSuffix suffix;
 			GetCargoSuffix(CARGOSUFFIX_IN, CST_VIEW, i, i->type, ind, a.cargo, &a - i->accepted.data(), suffix);
@@ -901,7 +915,7 @@ public:
 				default:
 					NOT_REACHED();
 			}
-			DrawString(ir.Indent(WidgetDimensions::scaled.hsep_indent, rtl), str);
+			DrawString(ir.Indent(label_indent, rtl), str);
 			ir.top += GetCharacterHeight(FS_NORMAL);
 		}
 
@@ -919,6 +933,8 @@ public:
 				first = false;
 			}
 
+			DrawCargoIcon(ir, p.cargo);
+
 			CargoSuffix suffix;
 			GetCargoSuffix(CARGOSUFFIX_OUT, CST_VIEW, i, i->type, ind, p.cargo, &p - i->produced.data(), suffix);
 
@@ -926,10 +942,10 @@ public:
 			SetDParam(1, p.history[LAST_MONTH].production);
 			SetDParamStr(2, suffix.text);
 			SetDParam(3, ToPercent8(p.history[LAST_MONTH].PctTransported()));
-			DrawString(ir.Indent(WidgetDimensions::scaled.hsep_indent + (this->editable == EA_RATE ? SETTING_BUTTON_WIDTH + WidgetDimensions::scaled.hsep_normal : 0), rtl).Translate(0, text_y_offset), STR_INDUSTRY_VIEW_TRANSPORTED);
+			DrawString(ir.Indent(label_indent + (this->editable == EA_RATE ? SETTING_BUTTON_WIDTH + WidgetDimensions::scaled.hsep_normal : 0), rtl).Translate(0, text_y_offset), STR_INDUSTRY_VIEW_TRANSPORTED);
 			/* Let's put out those buttons.. */
 			if (this->editable == EA_RATE) {
-				DrawArrowButtons(ir.Indent(WidgetDimensions::scaled.hsep_indent, rtl).WithWidth(SETTING_BUTTON_WIDTH, rtl).left, ir.top + button_y_offset, COLOUR_YELLOW, (this->clicked_line == IL_RATE1 + (&p - i->produced.data())) ? this->clicked_button : 0,
+				DrawArrowButtons(ir.Indent(label_indent, rtl).WithWidth(SETTING_BUTTON_WIDTH, rtl).left, ir.top + button_y_offset, COLOUR_YELLOW, (this->clicked_line == IL_RATE1 + (&p - i->produced.data())) ? this->clicked_button : 0,
 						p.rate > 0, p.rate < 255);
 			}
 			ir.top += line_height;
@@ -943,8 +959,8 @@ public:
 			ir.top += WidgetDimensions::scaled.vsep_wide;
 			this->production_offset_y = ir.top;
 			SetDParam(0, RoundDivSU(i->prod_level * 100, PRODLEVEL_DEFAULT));
-			DrawString(ir.Indent(WidgetDimensions::scaled.hsep_indent + SETTING_BUTTON_WIDTH + WidgetDimensions::scaled.hsep_normal, rtl).Translate(0, text_y_offset), STR_INDUSTRY_VIEW_PRODUCTION_LEVEL);
-			DrawArrowButtons(ir.Indent(WidgetDimensions::scaled.hsep_indent, rtl).WithWidth(SETTING_BUTTON_WIDTH, rtl).left, ir.top + button_y_offset, COLOUR_YELLOW, (this->clicked_line == IL_MULTIPLIER) ? this->clicked_button : 0,
+			DrawString(ir.Indent(label_indent + SETTING_BUTTON_WIDTH + WidgetDimensions::scaled.hsep_normal, rtl).Translate(0, text_y_offset), STR_INDUSTRY_VIEW_PRODUCTION_LEVEL);
+			DrawArrowButtons(ir.Indent(label_indent, rtl).WithWidth(SETTING_BUTTON_WIDTH, rtl).left, ir.top + button_y_offset, COLOUR_YELLOW, (this->clicked_line == IL_MULTIPLIER) ? this->clicked_button : 0,
 					i->prod_level > PRODLEVEL_MINIMUM, i->prod_level < PRODLEVEL_MAXIMUM);
 			ir.top += line_height;
 		}
@@ -1022,7 +1038,7 @@ public:
 				if (line == IL_NONE) return;
 
 				bool rtl = _current_text_dir == TD_RTL;
-				Rect r = this->GetWidget<NWidgetBase>(widget)->GetCurrentRect().Shrink(WidgetDimensions::scaled.framerect).Indent(WidgetDimensions::scaled.hsep_indent, rtl);
+				Rect r = this->GetWidget<NWidgetBase>(widget)->GetCurrentRect().Shrink(WidgetDimensions::scaled.framerect).Indent(this->cargo_icon_size.width + WidgetDimensions::scaled.hsep_normal, rtl);
 
 				if (r.WithWidth(SETTING_BUTTON_WIDTH, rtl).Contains(pt)) {
 					/* Clicked buttons, decrease or increase production */
