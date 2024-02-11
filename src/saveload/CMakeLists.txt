@@ -30,6 +30,7 @@ add_files(
     oldloader.h
     oldloader_sl.cpp
     order_sl.cpp
+    randomizer_sl.cpp
     saveload.cpp
     saveload.h
     saveload_filter.h
