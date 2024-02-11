@@ -35,7 +35,7 @@ class VideoDriver : public Driver {
 	const uint DEFAULT_WINDOW_HEIGHT = 480u; ///< Default window height.
 
 public:
-	VideoDriver() : fast_forward_key_pressed(false), fast_forward_via_key(false), is_game_threaded(true) {}
+	VideoDriver(bool uses_hardware_acceleration = false) : fast_forward_key_pressed(false), fast_forward_via_key(false), is_game_threaded(true), uses_hardware_acceleration(uses_hardware_acceleration) {}
 
 	/**
 	 * Mark a particular area dirty.
@@ -322,7 +322,7 @@ protected:
 	std::chrono::steady_clock::duration GetDrawInterval()
 	{
 		/* If vsync, draw interval is decided by the display driver */
-		if (_video_vsync && _video_hw_accel) return std::chrono::microseconds(0);
+		if (_video_vsync && this->uses_hardware_acceleration) return std::chrono::microseconds(0);
 		return std::chrono::microseconds(1000000 / _settings_client.gui.refresh_rate);
 	}
 
@@ -354,6 +354,8 @@ protected:
 	std::thread game_thread;
 	std::mutex game_state_mutex;
 	std::mutex game_thread_wait_mutex;
+
+	bool uses_hardware_acceleration;
 
 	static void GameThreadThunk(VideoDriver *drv);
 

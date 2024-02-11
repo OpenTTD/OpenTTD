@@ -23,7 +23,7 @@ class VideoDriver_CocoaOpenGL : public VideoDriver_Cocoa {
 	const char *AllocateContext(bool allow_software);
 
 public:
-	VideoDriver_CocoaOpenGL() : gl_context(nullptr), anim_buffer(nullptr), driver_info(this->GetName()) {}
+	VideoDriver_CocoaOpenGL() : VideoDriver_Cocoa(true), gl_context(nullptr), anim_buffer(nullptr), driver_info(this->GetName()) {}
 
 	const char *Start(const StringList &param) override;
 	void Stop() override;

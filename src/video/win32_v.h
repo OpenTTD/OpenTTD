@@ -18,7 +18,7 @@
 /** Base class for Windows video drivers. */
 class VideoDriver_Win32Base : public VideoDriver {
 public:
-	VideoDriver_Win32Base() : main_wnd(nullptr), fullscreen(false), buffer_locked(false) {}
+	VideoDriver_Win32Base(bool uses_hardware_acceleration = false) : VideoDriver(uses_hardware_acceleration), main_wnd(nullptr), fullscreen(false), buffer_locked(false) {}
 
 	void Stop() override;
 
@@ -118,7 +118,7 @@ public:
 /** The OpenGL video driver for windows. */
 class VideoDriver_Win32OpenGL : public VideoDriver_Win32Base {
 public:
-	VideoDriver_Win32OpenGL() : dc(nullptr), gl_rc(nullptr), anim_buffer(nullptr), driver_info(this->GetName()) {}
+	VideoDriver_Win32OpenGL() : VideoDriver_Win32Base(true), dc(nullptr), gl_rc(nullptr), anim_buffer(nullptr), driver_info(this->GetName()) {}
 
 	const char *Start(const StringList &param) override;
 

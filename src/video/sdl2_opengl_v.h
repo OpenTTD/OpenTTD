@@ -12,7 +12,7 @@
 /** The OpenGL video driver for windows. */
 class VideoDriver_SDL_OpenGL : public VideoDriver_SDL_Base {
 public:
-	VideoDriver_SDL_OpenGL() : gl_context(nullptr), anim_buffer(nullptr) {}
+	VideoDriver_SDL_OpenGL() : VideoDriver_SDL_Base(true), gl_context(nullptr), anim_buffer(nullptr) {}
 
 	const char *Start(const StringList &param) override;
 
