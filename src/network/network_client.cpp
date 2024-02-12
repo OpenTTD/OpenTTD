@@ -881,6 +881,9 @@ NetworkRecvStatus ClientNetworkGameSocketHandler::Receive_SERVER_MAP_DONE(Packet
 	/* Say we received the map and loaded it correctly! */
 	SendMapOk();
 
+	/* As we skipped switch-mode, update the time we "switched". */
+	_switch_mode_time = std::chrono::steady_clock::now();
+
 	ShowClientList();
 
 	/* New company/spectator (invalid company) or company we want to join is not active
