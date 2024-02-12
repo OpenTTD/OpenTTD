@@ -15,9 +15,9 @@
 
 struct IniFile;
 
-void IConsoleSetSetting(const char *name, const char *value, bool force_newgame = false);
+void IConsoleSetSetting(const char *name, const char *value);
 void IConsoleSetSetting(const char *name, int32_t value);
-void IConsoleGetSetting(const char *name, bool force_newgame = false);
+void IConsoleGetSetting(const char *name);
 void IConsoleListSettings(const char *prefilter);
 
 void LoadFromConfig(bool minimal = false);

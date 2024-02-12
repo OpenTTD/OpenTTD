@@ -2163,25 +2163,6 @@ DEF_CONSOLE_CMD(ConSetting)
 	return true;
 }
 
-DEF_CONSOLE_CMD(ConSettingNewgame)
-{
-	if (argc == 0) {
-		IConsolePrint(CC_HELP, "Change setting for the next game. Usage: 'setting_newgame <name> [<value>]'.");
-		IConsolePrint(CC_HELP, "Omitting <value> will print out the current value of the setting.");
-		return true;
-	}
-
-	if (argc == 1 || argc > 3) return false;
-
-	if (argc == 2) {
-		IConsoleGetSetting(argv[1], true);
-	} else {
-		IConsoleSetSetting(argv[1], argv[2], true);
-	}
-
-	return true;
-}
-
 DEF_CONSOLE_CMD(ConListSettings)
 {
 	if (argc == 0) {
@@ -2643,7 +2624,6 @@ void IConsoleStdLibRegister()
 	IConsole::CmdRegister("clear",                   ConClearBuffer);
 	IConsole::CmdRegister("font",                    ConFont);
 	IConsole::CmdRegister("setting",                 ConSetting);
-	IConsole::CmdRegister("setting_newgame",         ConSettingNewgame);
 	IConsole::CmdRegister("list_settings",           ConListSettings);
 	IConsole::CmdRegister("gamelog",                 ConGamelogPrint);
 	IConsole::CmdRegister("rescan_newgrf",           ConRescanNewGRF);
@@ -2654,7 +2634,6 @@ void IConsoleStdLibRegister()
 	IConsole::AliasRegister("newmap",                "newgame");
 	IConsole::AliasRegister("patch",                 "setting %+");
 	IConsole::AliasRegister("set",                   "setting %+");
-	IConsole::AliasRegister("set_newgame",           "setting_newgame %+");
 	IConsole::AliasRegister("list_patches",          "list_settings %+");
 	IConsole::AliasRegister("developer",             "setting developer %+");
 

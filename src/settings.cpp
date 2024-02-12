@@ -1732,9 +1732,8 @@ CommandCost CmdChangeCompanySetting(DoCommandFlag flags, const std::string &name
  * @param index offset in the SettingDesc array of the Settings struct which
  * identifies the setting member we want to change
  * @param value new value of the setting
- * @param force_newgame force the newgame settings
  */
-bool SetSettingValue(const IntSettingDesc *sd, int32_t value, bool force_newgame)
+bool SetSettingValue(const IntSettingDesc *sd, int32_t value)
 {
 	const IntSettingDesc *setting = sd->AsIntSetting();
 	if ((setting->flags & SF_PER_COMPANY) != 0) {
@@ -1755,11 +1754,6 @@ bool SetSettingValue(const IntSettingDesc *sd, int32_t value, bool force_newgame
 			setting->ChangeValue(&_settings_newgame, value);
 		}
 		setting->ChangeValue(&GetGameSettings(), value);
-		return true;
-	}
-
-	if (force_newgame) {
-		setting->ChangeValue(&_settings_newgame, value);
 		return true;
 	}
 
@@ -1801,10 +1795,9 @@ void SyncCompanySettings()
  * Set a setting value with a string.
  * @param sd the setting to change.
  * @param value the value to write
- * @param force_newgame force the newgame settings
  * @note Strings WILL NOT be synced over the network
  */
-bool SetSettingValue(const StringSettingDesc *sd, std::string value, bool force_newgame)
+bool SetSettingValue(const StringSettingDesc *sd, std::string value)
 {
 	assert(sd->flags & SF_NO_NETWORK_SYNC);
 
@@ -1812,7 +1805,7 @@ bool SetSettingValue(const StringSettingDesc *sd, std::string value, bool force_
 		value.clear();
 	}
 
-	const void *object = (_game_mode == GM_MENU || force_newgame) ? &_settings_newgame : &_settings_game;
+	const void *object = (_game_mode == GM_MENU) ? &_settings_newgame : &_settings_game;
 	sd->AsStringSetting()->ChangeValue(object, value);
 	return true;
 }
@@ -1836,7 +1829,7 @@ void StringSettingDesc::ChangeValue(const void *object, std::string &newval) con
 
 /* Those 2 functions need to be here, else we have to make some stuff non-static
  * and besides, it is also better to keep stuff like this at the same place */
-void IConsoleSetSetting(const char *name, const char *value, bool force_newgame)
+void IConsoleSetSetting(const char *name, const char *value)
 {
 	const SettingDesc *sd = GetSettingFromName(name);
 	if (sd == nullptr) {
@@ -1846,7 +1839,7 @@ void IConsoleSetSetting(const char *name, const char *value, bool force_newgame)
 
 	bool success = true;
 	if (sd->IsStringSetting()) {
-		success = SetSettingValue(sd->AsStringSetting(), value, force_newgame);
+		success = SetSettingValue(sd->AsStringSetting(), value);
 	} else if (sd->IsIntSetting()) {
 		const IntSettingDesc *isd = sd->AsIntSetting();
 		size_t val = isd->ParseValue(value);
@@ -1855,7 +1848,7 @@ void IConsoleSetSetting(const char *name, const char *value, bool force_newgame)
 			_settings_error_list.clear();
 			return;
 		}
-		success = SetSettingValue(isd, (int32_t)val, force_newgame);
+		success = SetSettingValue(isd, (int32_t)val);
 	}
 
 	if (!success) {
@@ -1877,9 +1870,8 @@ void IConsoleSetSetting(const char *name, int value)
 /**
  * Output value of a specific setting to the console
  * @param name  Name of the setting to output its value
- * @param force_newgame force the newgame settings
  */
-void IConsoleGetSetting(const char *name, bool force_newgame)
+void IConsoleGetSetting(const char *name)
 {
 	const SettingDesc *sd = GetSettingFromName(name);
 	if (sd == nullptr) {
@@ -1887,7 +1879,7 @@ void IConsoleGetSetting(const char *name, bool force_newgame)
 		return;
 	}
 
-	const void *object = (_game_mode == GM_MENU || force_newgame) ? &_settings_newgame : &_settings_game;
+	const void *object = (_game_mode == GM_MENU) ? &_settings_newgame : &_settings_game;
 
 	if (sd->IsStringSetting()) {
 		IConsolePrint(CC_INFO, "Current value for '{}' is '{}'.", sd->GetName(), sd->AsStringSetting()->Read(object));
