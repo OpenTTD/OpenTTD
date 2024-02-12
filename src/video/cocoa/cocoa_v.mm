@@ -87,7 +87,8 @@ static const Dimension _default_resolutions[] = {
 };
 
 
-VideoDriver_Cocoa::VideoDriver_Cocoa()
+VideoDriver_Cocoa::VideoDriver_Cocoa(bool uses_hardware_acceleration)
+	: VideoDriver(uses_hardware_acceleration)
 {
 	this->setup         = false;
 	this->buffer_locked = false;
