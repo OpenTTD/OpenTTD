@@ -1713,6 +1713,11 @@ DEF_CONSOLE_CMD(ConPart)
 
 	if (_game_mode != GM_NORMAL) return false;
 
+	if (_network_dedicated) {
+		IConsolePrint(CC_ERROR, "A dedicated server can not leave the game.");
+		return false;
+	}
+
 	_switch_mode = SM_MENU;
 	return true;
 }
