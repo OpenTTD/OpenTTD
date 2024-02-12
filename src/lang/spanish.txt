@@ -444,7 +444,7 @@ STR_SCENEDIT_FILE_MENU_QUIT                                     :Salir
 STR_SETTINGS_MENU_GAME_OPTIONS                                  :Opciones de juego
 STR_SETTINGS_MENU_CONFIG_SETTINGS_TREE                          :Configuración
 STR_SETTINGS_MENU_AI_SETTINGS                                   :Configuración de IA
-STR_SETTINGS_MENU_GAMESCRIPT_SETTINGS                           :{BLACK}Configuración de script de juego
+STR_SETTINGS_MENU_GAMESCRIPT_SETTINGS                           :Configuración de script de juego
 STR_SETTINGS_MENU_NEWGRF_SETTINGS                               :Configuración NewGRF
 STR_SETTINGS_MENU_SANDBOX_OPTIONS                               :Opciones sandbox (entorno de pruebas)
 STR_SETTINGS_MENU_TRANSPARENCY_OPTIONS                          :Opciones de transparencia
@@ -1924,7 +1924,7 @@ STR_CONFIG_SETTING_DRAG_SIGNALS_DENSITY                         :Al arrastrar, c
 STR_CONFIG_SETTING_DRAG_SIGNALS_DENSITY_HELPTEXT                :Fija la distancia a la que se construirán las señales hasta el próximo obstáculo (señal, cruce) si estas son arrastradas
 STR_CONFIG_SETTING_DRAG_SIGNALS_DENSITY_VALUE                   :{COMMA} casilla{P 0 "" s}
 STR_CONFIG_SETTING_DRAG_SIGNALS_FIXED_DISTANCE                  :Al arrastrar, mantener distancia fija entre señales: {STRING}
-STR_CONFIG_SETTING_DRAG_SIGNALS_FIXED_DISTANCE_HELPTEXT         :Selecciona el comportamiento al construir señales cuando se arrastra. Si se deshabilita, se colocan señales cerca de túneles y puentes para evitar largos trozos de vía sin señales. Si se activa, se colocan señales cada N casillas, facilitando el alineamiento de vías paralelas
+STR_CONFIG_SETTING_DRAG_SIGNALS_FIXED_DISTANCE_HELPTEXT         :Selecciona el comportamiento al construir señales con Clic+arrastrar. Si se deshabilita, se colocan señales cerca de túneles y puentes para evitar largos trozos de vía sin señales. Si se activa, se colocan señales cada N casillas, facilitando el alineamiento de vías paralelas
 
 STR_CONFIG_SETTING_SEMAPHORE_BUILD_BEFORE_DATE                  :Señales mecánicas por defecto antes de: {STRING}
 STR_CONFIG_SETTING_SEMAPHORE_BUILD_BEFORE_DATE_HELPTEXT         :Fija el año a partir del cual se usarán señales eléctricas. Antes de ese año se usarán señales mecánicas (tienen la misma funcionalidad pero distinto aspecto)
@@ -2789,7 +2789,7 @@ STR_RAIL_TOOLBAR_TOOLTIP_BUILD_AUTORAIL                         :{BLACK}Construy
 STR_RAIL_TOOLBAR_TOOLTIP_BUILD_TRAIN_DEPOT_FOR_BUILDING         :{BLACK}Construye un depósito de trenes (para comprar y dar mantenimiento a trenes). Mayús permite mostrar una estimación del precio
 STR_RAIL_TOOLBAR_TOOLTIP_CONVERT_RAIL_TO_WAYPOINT               :{BLACK}Construye puntos de ruta sobre la vía del ferrocarril. Ctrl+clic para seleccionar otro punto de ruta al que unirlos. Con Mayús sólo muestra una estimación del coste
 STR_RAIL_TOOLBAR_TOOLTIP_BUILD_RAILROAD_STATION                 :{BLACK}Construye estaciones de ferrocarril. Ctrl+clic para seleccionar otra estación a la que unirlas. Con Mayús sólo muestra una estimación del coste
-STR_RAIL_TOOLBAR_TOOLTIP_BUILD_RAILROAD_SIGNALS                 :{BLACK}Construye señales de ferrocarril. Ctrl+clic para alternar entre estilos de señales{}Clic+arrastrar para construir señales hasta el cruce, estación o señal más proximos. Con Mayús sólo muestra una estimación del coste
+STR_RAIL_TOOLBAR_TOOLTIP_BUILD_RAILROAD_SIGNALS                 :{BLACK}Construye señales de ferrocarril. Ctrl+clic para alternar entre estilos de señales{}Clic+arrastra para construir señales con la distancia elegida en el trampo de vía seleccionado. Ctrl+clic+arrastrar para construir señales hasta el cruce, estación o señal más próximo. Con Mayús sólo muestra una estimación del coste
 STR_RAIL_TOOLBAR_TOOLTIP_BUILD_RAILROAD_BRIDGE                  :{BLACK}Construye puentes de ferrocarril. Mayús permite mostrar una estimación del precio
 STR_RAIL_TOOLBAR_TOOLTIP_BUILD_RAILROAD_TUNNEL                  :{BLACK}Construye túneles ferroviarios. Con Mayús sólo muestra una estimación del coste
 STR_RAIL_TOOLBAR_TOOLTIP_TOGGLE_BUILD_REMOVE_FOR                :{BLACK}Alterna entre construir o retirar ferrocarriles, señales, estaciones y puntos de ruta de ferrocarril. Ctrl+clic retirará también las vías al retirar estaciones y puntos de ruta
@@ -4744,14 +4744,14 @@ STR_TIMETABLE_RESET_LATENESS_TOOLTIP                            :{BLACK}Establec
 STR_TIMETABLE_AUTOFILL                                          :{BLACK}Rellenar automáticamente
 STR_TIMETABLE_AUTOFILL_TOOLTIP                                  :{BLACK}Rellena el horario automáticamente con los valores del siguiente recorrido. Ctrl+clic para intentar mantener los tiempos de permanencia en estación
 
-STR_TIMETABLE_EXPECTED                                          :{BLACK}Previsto
+STR_TIMETABLE_EXPECTED                                          :{BLACK}Estimado
 STR_TIMETABLE_SCHEDULED                                         :{BLACK}Programado
-STR_TIMETABLE_EXPECTED_TOOLTIP                                  :{BLACK}Alterna entre fechas previstas y programadas
+STR_TIMETABLE_EXPECTED_TOOLTIP                                  :{BLACK}Alterna entre tiempos estimados y programados
 
-STR_TIMETABLE_ARRIVAL_DATE                                      :Ll: {COLOUR}{DATE_TINY}
+STR_TIMETABLE_ARRIVAL_DATE                                      :L: {COLOUR}{DATE_TINY}
 STR_TIMETABLE_DEPARTURE_DATE                                    :S: {COLOUR}{DATE_TINY}
-STR_TIMETABLE_ARRIVAL_SECONDS_IN_FUTURE                         :Ll: {COLOUR}{COMMA} segs.
-STR_TIMETABLE_DEPARTURE_SECONDS_IN_FUTURE                       :S: {COLOUR}{COMMA} seg.
+STR_TIMETABLE_ARRIVAL_SECONDS_IN_FUTURE                         :L: {COLOUR}{COMMA} s
+STR_TIMETABLE_DEPARTURE_SECONDS_IN_FUTURE                       :S: {COLOUR}{COMMA} s
 
 
 # Date window (for timetable)
