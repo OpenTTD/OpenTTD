@@ -244,6 +244,25 @@ function Regression::Airport()
 	print("  IsAirportTile():      " + AIAirport.IsAirportTile(32119));
 	print("  GetBankBalance():     " + AICompany.GetBankBalance(AICompany.COMPANY_SELF));
 	print("  BuildAirport():       " + AIAirport.BuildAirport(32116, 0, AIStation.STATION_JOIN_ADJACENT));
+
+	print("");
+	print("--Valuate() with optional parameter--");
+	local list = AITileList_StationType(0, AIStation.STATION_AIRPORT);
+	list.Valuate(AIAirport.GetHangarOfAirport);
+	print("  Valuate(AIAirport.GetHangarOfAirport) ListDump:");
+	for (local i = list.Begin(); !list.IsEnd(); i = list.Next()) {
+		print("    " + i + " => " + list.GetValue(i));
+	}
+	list.Valuate(AIAirport.GetHangarOfAirport, 0);
+	print("  Valuate(AIAirport.GetHangarOfAirport, 0) ListDump:");
+	for (local i = list.Begin(); !list.IsEnd(); i = list.Next()) {
+		print("    " + i + " => " + list.GetValue(i));
+	}
+	list.Valuate(AIAirport.GetHangarOfAirport, 1);
+	print("  Valuate(AIAirport.GetHangarOfAirport, 1) ListDump:");
+	for (local i = list.Begin(); !list.IsEnd(); i = list.Next()) {
+		print("    " + i + " => " + list.GetValue(i));
+	}
 }
 
 function Regression::Bridge()

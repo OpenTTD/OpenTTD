@@ -887,6 +887,47 @@ ERROR: IsEnd() is invalid as Begin() is never called
   GetBankBalance():     1999989626
   BuildAirport():       true
 
+--Valuate() with optional parameter--
+  Valuate(AIAirport.GetHangarOfAirport) ListDump:
+    32631 => 32119
+    32630 => 32119
+    32629 => 32119
+    32628 => 32119
+    32375 => 32119
+    32374 => 32119
+    32373 => 32119
+    32372 => 32119
+    32119 => 32119
+    32118 => 32119
+    32117 => 32119
+    32116 => 32119
+  Valuate(AIAirport.GetHangarOfAirport, 0) ListDump:
+    32631 => 32119
+    32630 => 32119
+    32629 => 32119
+    32628 => 32119
+    32375 => 32119
+    32374 => 32119
+    32373 => 32119
+    32372 => 32119
+    32119 => 32119
+    32118 => 32119
+    32117 => 32119
+    32116 => 32119
+  Valuate(AIAirport.GetHangarOfAirport, 1) ListDump:
+    32631 => -1
+    32630 => -1
+    32629 => -1
+    32628 => -1
+    32375 => -1
+    32374 => -1
+    32373 => -1
+    32372 => -1
+    32119 => -1
+    32118 => -1
+    32117 => -1
+    32116 => -1
+
 --Bridge--
   Bridge -1
     IsValidBridge():    false
@@ -9775,9 +9816,9 @@ ERROR: IsEnd() is invalid as Begin() is never called
 --Valuate() with excessive CPU usage--
 Your script made an error: excessive CPU usage in valuator function
 
-*FUNCTION [unknown()] regression/main.nut line [2091]
+*FUNCTION [unknown()] regression/main.nut line [2110]
 *FUNCTION [Valuate()] NATIVE line [-1]
-*FUNCTION [Start()] regression/main.nut line [2092]
+*FUNCTION [Start()] regression/main.nut line [2111]
 
 [id] 0
 [this] TABLE
@@ -9786,7 +9827,7 @@ Your script made an error: excessive CPU usage in valuator function
 [this] INSTANCE
 Your script made an error: excessive CPU usage in valuator function
 
-*FUNCTION [Start()] regression/main.nut line [2092]
+*FUNCTION [Start()] regression/main.nut line [2111]
 
 [Infinite] CLOSURE
 [list] INSTANCE
