@@ -21,6 +21,7 @@
  * \li AIEventVehicleCrashed::GetVictims
  * \li AIEventCompanyRenamed
  * \li AIEventPresidentRenamed
+ * \li AIAirport::GetAirportNumTerminals
  *
  * \b 14.0
  *
