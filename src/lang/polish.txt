@@ -772,7 +772,7 @@ STR_TOOLBAR_TOOLTIP_DISPLAY_STORY_BOOK                          :{BLACK}Otwórz 
 STR_TOOLBAR_TOOLTIP_DISPLAY_GOALS_LIST                          :{BLACK}Otwórz listę celów
 STR_TOOLBAR_TOOLTIP_DISPLAY_GRAPHS                              :{BLACK}Otwórz wykresy firmy i stawek płatności za ładunek
 STR_TOOLBAR_TOOLTIP_DISPLAY_COMPANY_LEAGUE                      :{BLACK}Otwórz ranking firm
-STR_TOOLBAR_TOOLTIP_FUND_CONSTRUCTION_OF_NEW                    :{BLACK}Analiza przedsiębiorstw lub fundowanie budowy nowego przedsiębiorstwa
+STR_TOOLBAR_TOOLTIP_FUND_CONSTRUCTION_OF_NEW                    :{BLACK}Otwórz spis przedsiębiorstw, łańcuch produkcji lub ufunduj budowę nowego przedsiębiorstwa
 STR_TOOLBAR_TOOLTIP_DISPLAY_LIST_OF_COMPANY_TRAINS              :{BLACK}Otwórz listę pociągów firmy. Ctrl+klik pokazuje lub ukrywa grupy pojazdów, przeciwnie do wybranego ustawienia
 STR_TOOLBAR_TOOLTIP_DISPLAY_LIST_OF_COMPANY_ROAD_VEHICLES       :{BLACK}Otwórz listę pojazdów drogowych firmy. Ctrl+klik pokazuje lub ukrywa grupy pojazdów, przeciwnie do wybranego ustawienia
 STR_TOOLBAR_TOOLTIP_DISPLAY_LIST_OF_COMPANY_SHIPS               :{BLACK}Otwórz listę statków firmy. Ctrl+klik pokazuje lub ukrywa grupy pojazdów, przeciwnie do wybranego ustawienia
@@ -784,10 +784,10 @@ STR_TOOLBAR_TOOLTIP_BUILD_ROADS                                 :{BLACK}Budowa i
 STR_TOOLBAR_TOOLTIP_BUILD_TRAMWAYS                              :{BLACK}Budowa infrastruktury tramwajowej
 STR_TOOLBAR_TOOLTIP_BUILD_SHIP_DOCKS                            :{BLACK}Budowa infrastruktury dróg wodnych
 STR_TOOLBAR_TOOLTIP_BUILD_AIRPORTS                              :{BLACK}Budowa lotnisk
-STR_TOOLBAR_TOOLTIP_LANDSCAPING                                 :{BLACK}Zmiana terenu, podwyższanie/obniżanie lądu, sadzenie drzew, itp.
-STR_TOOLBAR_TOOLTIP_SHOW_SOUND_MUSIC_WINDOW                     :{BLACK}Wyświetl okno dźwięk/muzyka
-STR_TOOLBAR_TOOLTIP_SHOW_LAST_MESSAGE_NEWS                      :{BLACK}Wyświetlenie ostatniej wiadomości/ogłoszenia, historii wiadomości lub usunięcie wszystkich wiadomości
-STR_TOOLBAR_TOOLTIP_LAND_BLOCK_INFORMATION                      :{BLACK}Informacje o terenie, zrzut ekranu, o grze OpenTTD oraz narzędzia dla deweloperów
+STR_TOOLBAR_TOOLTIP_LANDSCAPING                                 :{BLACK}Otwórz menu kształtowania krajobrazu, sadzenia drzew lub umieść napis
+STR_TOOLBAR_TOOLTIP_SHOW_SOUND_MUSIC_WINDOW                     :{BLACK}Otwórz okno dźwięku/muzyki
+STR_TOOLBAR_TOOLTIP_SHOW_LAST_MESSAGE_NEWS                      :{BLACK}Otwórz ostatnią wiadomość/ogłoszenie, historię wiadomości lub usuń wszystkie wiadomości
+STR_TOOLBAR_TOOLTIP_LAND_BLOCK_INFORMATION                      :{BLACK}Otwórz informacje o terenie, menu zrzutu ekranu, informacje o OpenTTD lub narzędzia dla deweloperów
 STR_TOOLBAR_TOOLTIP_SWITCH_TOOLBAR                              :{BLACK}Przełącz paski narzędzi
 
 # Extra tooltips for the scenario editor toolbar
@@ -890,7 +890,7 @@ STR_WATERWAYS_MENU_WATERWAYS_CONSTRUCTION                       :Konstrukcja kan
 STR_AIRCRAFT_MENU_AIRPORT_CONSTRUCTION                          :Konstrukcje lotnicze
 
 # Landscaping menu
-STR_LANDSCAPING_MENU_LANDSCAPING                                :Krajobraz
+STR_LANDSCAPING_MENU_LANDSCAPING                                :Kształtowanie krajobrazu
 STR_LANDSCAPING_MENU_PLANT_TREES                                :Posadź drzewa
 STR_LANDSCAPING_MENU_PLACE_SIGN                                 :Umieść napis
 
@@ -3334,7 +3334,7 @@ STR_AIRPORT_CLASS_HELIPORTS                                     :Lądowiska
 STR_STATION_BUILD_NOISE                                         :{BLACK}Wytwarzany hałas: {GOLD}{COMMA}
 
 # Landscaping toolbar
-STR_LANDSCAPING_TOOLBAR                                         :{WHITE}Krajobraz
+STR_LANDSCAPING_TOOLBAR                                         :{WHITE}Kształtowanie krajobrazu
 STR_LANDSCAPING_TOOLTIP_LOWER_A_CORNER_OF_LAND                  :{BLACK}Obniżenie narożnika terenu. Przeciągnięcie obniża pierwszy zaznaczony róg i wyrównuje zaznaczony obszar do nowej wysokości rogu. Ctrl zaznacza obszar po przekątnej. Shift przełącza pomiędzy trybem budowania a szacowaniem jego kosztów
 STR_LANDSCAPING_TOOLTIP_RAISE_A_CORNER_OF_LAND                  :{BLACK}Podwyższenie narożnika terenu. Przeciągnięcie podnosi pierwszy zaznaczony róg i wyrównuje zaznaczony obszar do nowej wysokości rogu. Ctrl zaznacza obszar po przekątnej. Shift przełącza pomiędzy trybem budowania a szacowaniem jego kosztów
 STR_LANDSCAPING_LEVEL_LAND_TOOLTIP                              :{BLACK}Wyrównaj teren do wysykości pierwszego zaznaczonego rogu. Ctrl zaznacza teren po przekątnej. Shift przełącza pomiędzy trybem budowania a szacowaniem jego kosztów
@@ -3439,7 +3439,7 @@ STR_INDUSTRY_CARGOES_CARGO_TOOLTIP                              :{BLACK}{STRING}
 STR_INDUSTRY_DISPLAY_CHAIN                                      :{BLACK}Łańcuch produkcji
 STR_INDUSTRY_DISPLAY_CHAIN_TOOLTIP                              :{BLACK}Wyświetl dostawców i odbiorców ładunku
 STR_INDUSTRY_CARGOES_NOTIFY_SMALLMAP                            :{BLACK}Pokaż na mapie
-STR_INDUSTRY_CARGOES_NOTIFY_SMALLMAP_TOOLTIP                    :{BLACK}Pokazuje aktualnie wyświetlone przedsiębiorstwa na mapie
+STR_INDUSTRY_CARGOES_NOTIFY_SMALLMAP_TOOLTIP                    :{BLACK}Pokaż aktualnie wyświetlone przedsiębiorstwa na mapie
 STR_INDUSTRY_CARGOES_SELECT_CARGO                               :{BLACK}Wybierz ładunek
 STR_INDUSTRY_CARGOES_SELECT_CARGO_TOOLTIP                       :{BLACK}Wybierz ładunek, który chcesz wyświetlić
 STR_INDUSTRY_CARGOES_SELECT_INDUSTRY                            :{BLACK}Wybierz zakład
@@ -4186,10 +4186,10 @@ STR_CARGO_RATING_OUTSTANDING                                    :Niezwykłe
 STR_STATION_VIEW_CENTER_TOOLTIP                                 :{BLACK}Wyśrodkuj widok główny na lokalizacji stacji. Ctrl+klik otwiera nowy podgląd na jej lokalizację
 STR_STATION_VIEW_RENAME_TOOLTIP                                 :{BLACK}Zmień nazwę stacji
 
-STR_STATION_VIEW_SCHEDULED_TRAINS_TOOLTIP                       :{BLACK}Pokazuje wszystkie pociągi, które mają tę stację w swoim rozkładzie
-STR_STATION_VIEW_SCHEDULED_ROAD_VEHICLES_TOOLTIP                :{BLACK}Pokazuje wszystkie pojazdy, które mają ten przystanek w swoim rozkładzie
-STR_STATION_VIEW_SCHEDULED_AIRCRAFT_TOOLTIP                     :{BLACK}Pokazuje wszystkie samoloty, które mają tę stację w swoim rozkładzie
-STR_STATION_VIEW_SCHEDULED_SHIPS_TOOLTIP                        :{BLACK}Pokazuje wszystkie statki, które mają tę stację w swoim rozkładzie
+STR_STATION_VIEW_SCHEDULED_TRAINS_TOOLTIP                       :{BLACK}Pokaż wszystkie pociągi, które mają tę stację w swoim rozkładzie
+STR_STATION_VIEW_SCHEDULED_ROAD_VEHICLES_TOOLTIP                :{BLACK}Pokaż wszystkie pojazdy, które mają tę stację w swoim rozkładzie
+STR_STATION_VIEW_SCHEDULED_AIRCRAFT_TOOLTIP                     :{BLACK}Pokaż wszystkie samoloty, które mają tę stację w swoim rozkładzie
+STR_STATION_VIEW_SCHEDULED_SHIPS_TOOLTIP                        :{BLACK}Pokaż wszystkie statki, które mają tę stację w swoim rozkładzie
 
 STR_STATION_VIEW_RENAME_STATION_CAPTION                         :Zmień nazwę stacji
 
@@ -4244,9 +4244,9 @@ STR_FINANCES_INTEREST_RATE                                      :{WHITE}Oprocent
 STR_FINANCES_MAX_LOAN                                           :{WHITE}Maksymalna pożyczka: {BLACK}{CURRENCY_LONG}
 STR_FINANCES_TOTAL_CURRENCY                                     :{BLACK}{CURRENCY_LONG}
 STR_FINANCES_BANK_BALANCE                                       :{WHITE}{CURRENCY_LONG}
-STR_FINANCES_BORROW_BUTTON                                      :{BLACK}Pożyczka {CURRENCY_LONG}
+STR_FINANCES_BORROW_BUTTON                                      :{BLACK}Pożycz {CURRENCY_LONG}
 STR_FINANCES_BORROW_TOOLTIP                                     :{BLACK}Zwiększ wielkość pożyczki. Ctrl+klik pożycza największą możliwą kwotę
-STR_FINANCES_REPAY_BUTTON                                       :{BLACK}Zwrot {CURRENCY_LONG}
+STR_FINANCES_REPAY_BUTTON                                       :{BLACK}Zwróć {CURRENCY_LONG}
 STR_FINANCES_REPAY_TOOLTIP                                      :{BLACK}Spłać część pożyczki. Ctrl+klik spłaca największą możliwą kwotę pożyczki
 STR_FINANCES_INFRASTRUCTURE_BUTTON                              :{BLACK}Infrastruktura
 

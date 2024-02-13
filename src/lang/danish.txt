@@ -1380,9 +1380,11 @@ STR_CONFIG_SETTING_SIGNALSIDE_RIGHT                             :På højre
 
 ###length 2
 STR_CONFIG_SETTING_SHOWFINANCES                                 :Vis finansvinduet i slutningen af året: {STRING}
+STR_CONFIG_SETTING_SHOWFINANCES_PERIOD                          :Vis økonomivindue i slutningen af perioden: {STRING}
 
 ###length 2
 STR_CONFIG_SETTING_SHOWFINANCES_HELPTEXT                        :Hvis aktiveret, dukker finansiering vinduet op ved udgangen af hvert år, for at gøre det lettere at inspicere den finansielle status af firmaet
+STR_CONFIG_SETTING_SHOWFINANCES_HELPTEXT_PERIOD                 :Hvis aktiveret, dukker finansiering vinduet op ved udgangen af hver periode, for at gøre det lettere at inspicere den finansielle status af firmaet
 
 STR_CONFIG_SETTING_NONSTOP_BY_DEFAULT                           :Nye ordrer er 'uden stop' som standard: {STRING}
 STR_CONFIG_SETTING_NONSTOP_BY_DEFAULT_HELPTEXT                  :Normalt vil et køretøj stoppe ved hver station den passerer. Ved at aktivere denne indstilling, vil det passere alle stationer på vej til sin endelige destination uden at stoppe. Bemærk, at denne indstilling kun definerer en standardværdi for nye ordrer. Individuelle ordrer kan indstilles udtrykkeligt til en specific adfærd alligevel
@@ -1484,6 +1486,7 @@ STR_CONFIG_SETTING_TIMEKEEPING_UNITS_WALLCLOCK                  :Vægur
 
 STR_CONFIG_SETTING_INDUSTRY_CARGO_SCALE                         :Skaler industri gods produktion: {STRING}
 STR_CONFIG_SETTING_INDUSTRY_CARGO_SCALE_HELPTEXT                :Skaler industriens gods produktion med denne procentdel.
+STR_CONFIG_SETTING_CARGO_SCALE_VALUE                            :{NUM}%
 
 STR_CONFIG_SETTING_AUTORENEW_VEHICLE                            :Automatisk fornyelse af gamle køretøjer: {STRING}
 STR_CONFIG_SETTING_AUTORENEW_VEHICLE_HELPTEXT                   :Når aktiveret, bliver et køretøjder nærmer sig sin afslutning af livet automatisk udskiftet, når betingelserne er opfyldt
@@ -1900,8 +1903,9 @@ STR_CONFIG_SETTING_SEMAPHORE_BUILD_BEFORE_DATE                  :Byg automatisk 
 STR_CONFIG_SETTING_SEMAPHORE_BUILD_BEFORE_DATE_HELPTEXT         :Sæt året hvor elektriske signaler vil blive brugt på spor. Før dette år vil ikke-elektriske signaler blive brugt (hvilket har den fuldstændig same funktion, men anderledes udseende)
 
 STR_CONFIG_SETTING_CYCLE_SIGNAL_TYPES                           :Bladr gennem signaltyper: {STRING}
-STR_CONFIG_SETTING_CYCLE_SIGNAL_TYPES_HELPTEXT                  :Vælg hvilke signaltyper et vælge imellem, når der Ctrl+klikkes på et bygget signal med signalværktøjet
+STR_CONFIG_SETTING_CYCLE_SIGNAL_TYPES_HELPTEXT                  :Vælg hvilke signaltyper et vælge imellem, når der Ctrl+Klikkes på et bygget signal med signalværktøjet
 ###length 2
+STR_CONFIG_SETTING_CYCLE_SIGNAL_GROUP                           :Kun nuværende gruppe
 STR_CONFIG_SETTING_CYCLE_SIGNAL_ALL                             :Alle viste
 
 STR_CONFIG_SETTING_SIGNAL_GUI_MODE                              :Vis signaltyper: {STRING}
@@ -3703,6 +3707,8 @@ STR_STATION_LIST_STATION                                        :{YELLOW}{STATIO
 STR_STATION_LIST_WAYPOINT                                       :{YELLOW}{WAYPOINT}
 STR_STATION_LIST_NONE                                           :{YELLOW}- Ingen -
 STR_STATION_LIST_SELECT_ALL_FACILITIES                          :{BLACK}Vælg alle faciliteter
+STR_STATION_LIST_CARGO_FILTER_NO_CARGO_TYPES                    :Ingen gods typer
+STR_STATION_LIST_CARGO_FILTER_NO_RATING                         :Ingen gods vurdering
 
 # Station view window
 STR_STATION_VIEW_CAPTION                                        :{WHITE}{STATION} {STATION_FEATURES}
@@ -5035,6 +5041,8 @@ STR_ERROR_DEPOT_WRONG_DEPOT_TYPE                                :Forkert depotty
 
 # Depot unbunching related errors
 STR_ERROR_UNBUNCHING_ONLY_ONE_ALLOWED                           :{WHITE}... kan kun have én opsamlingsordre
+STR_ERROR_UNBUNCHING_NO_UNBUNCHING_FULL_LOAD                    :{WHITE}... kan ikke pakke et køretøj op med fuld last
+STR_ERROR_UNBUNCHING_NO_UNBUNCHING_CONDITIONAL                  :{WHITE}... kan ikke pakke et køretøj op med en betinget ordre
 
 # Autoreplace related errors
 STR_ERROR_TRAIN_TOO_LONG_AFTER_REPLACEMENT                      :{WHITE}{VEHICLE} er blevet for langt efter udskiftning

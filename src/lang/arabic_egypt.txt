@@ -182,13 +182,27 @@ STR_COLOUR_DARK_GREEN                                           :اخضر غام
 STR_COLOUR_BLUE                                                 :ازرق
 STR_COLOUR_CREAM                                                :كريمي
 STR_COLOUR_MAUVE                                                :موف
-STR_COLOUR_PURPLE                                               :زهري
+STR_COLOUR_PURPLE                                               :بنفثجي
 STR_COLOUR_ORANGE                                               :برتقالي
 STR_COLOUR_BROWN                                                :بني
 STR_COLOUR_GREY                                                 :رمادي
 STR_COLOUR_WHITE                                                :ابيض
 
 ###length 17
+STR_COLOUR_SECONDARY_DARK_BLUE                                  :ازرق غامق
+STR_COLOUR_SECONDARY_PALE_GREEN                                 :اخضر فاتح
+STR_COLOUR_SECONDARY_RED                                        :احمر
+STR_COLOUR_SECONDARY_LIGHT_BLUE                                 :سماوي
+STR_COLOUR_SECONDARY_GREEN                                      :اخضر
+STR_COLOUR_SECONDARY_DARK_GREEN                                 :اخضر غامق
+STR_COLOUR_SECONDARY_BLUE                                       :ازرق
+STR_COLOUR_SECONDARY_CREAM                                      :كريمي
+STR_COLOUR_SECONDARY_MAUVE                                      :موف
+STR_COLOUR_SECONDARY_PURPLE                                     :بنفثجي
+STR_COLOUR_SECONDARY_ORANGE                                     :برتقالي
+STR_COLOUR_SECONDARY_BROWN                                      :بني
+STR_COLOUR_SECONDARY_GREY                                       :رمادي
+STR_COLOUR_SECONDARY_SAME_AS_PRIMARY                            :نفس اللون الاساسي
 
 
 # Units used in OpenTTD
@@ -200,8 +214,14 @@ STR_UNITS_POWER_IMPERIAL                                        :{DECIMAL}{NBSP}
 STR_UNITS_POWER_METRIC                                          :{DECIMAL}{NBSP}حصان
 STR_UNITS_POWER_SI                                              :{DECIMAL}{NBSP}ك واط
 
+STR_UNITS_POWER_IMPERIAL_TO_WEIGHT_IMPERIAL                     :{DECIMAL}{NBSP}hp/t
+STR_UNITS_POWER_IMPERIAL_TO_WEIGHT_METRIC                       :{DECIMAL}{NBSP}hp/t
+STR_UNITS_POWER_IMPERIAL_TO_WEIGHT_SI                           :{DECIMAL}{NBSP}hp/Mg
 STR_UNITS_POWER_METRIC_TO_WEIGHT_IMPERIAL                       :{DECIMAL}{NBSP}hp/t
 STR_UNITS_POWER_METRIC_TO_WEIGHT_SI                             :{DECIMAL}{NBSP}hp/Mg
+STR_UNITS_POWER_SI_TO_WEIGHT_IMPERIAL                           :{DECIMAL}{NBSP}kW/t
+STR_UNITS_POWER_SI_TO_WEIGHT_METRIC                             :{DECIMAL}{NBSP}kW/t
+STR_UNITS_POWER_SI_TO_WEIGHT_SI                                 :{DECIMAL}{NBSP}W/kg
 
 STR_UNITS_WEIGHT_SHORT_IMPERIAL                                 :{DECIMAL}{NBSP} طن
 STR_UNITS_WEIGHT_SHORT_METRIC                                   :{DECIMAL}{NBSP}طن
@@ -244,14 +264,14 @@ STR_BUTTON_SORT_BY                                              :{BLACK} رتب 
 STR_BUTTON_CATCHMENT                                            :{BLACK}مدى التغطية
 STR_TOOLTIP_CATCHMENT                                           :{BLACK}عرض منطقة التغطية
 
-STR_TOOLTIP_CLOSE_WINDOW                                        :{BLACK}اغلاق الاطار
-STR_TOOLTIP_WINDOW_TITLE_DRAG_THIS                              :{BLACK}عنوان الاطار- اسحب لتحريك الاطار
+STR_TOOLTIP_CLOSE_WINDOW                                        :{BLACK}اغلاق النافذة
+STR_TOOLTIP_WINDOW_TITLE_DRAG_THIS                              :{BLACK}عنوان النافذة - اسحب هذا لتحريك النافذة
 STR_TOOLTIP_SHADE                                               :{BLACK}نافذة الظل - تعرض العنوان فقط
 STR_TOOLTIP_DEBUG                                               :{BLACK}اظهر معلومات صائد اخطاء الاضافات الجديدة.
 STR_TOOLTIP_DEFSIZE                                             :{BLACK}تغيير حجم النافذة إلى الحجم الافتراضي. Ctrl + Click لتخزين الحجم الحالي كإعداد افتراضي
 STR_TOOLTIP_STICKY                                              :{BLACK}علم هذه النافذة كغير قابلة للإقفال باستخدام زر إغلاق كل النوافذ, اضغط مع Ctrl لجعل الأمر إفتراضيا
-STR_TOOLTIP_RESIZE                                              :{BLACK}اضغط واسحب لتعديل حجم الاطار
-STR_TOOLTIP_TOGGLE_LARGE_SMALL_WINDOW                           :{BLACK}تبديل حجم الاطار كبير / صغير
+STR_TOOLTIP_RESIZE                                              :{BLACK}اضغط واسحب لتعديل حجم النافذة
+STR_TOOLTIP_TOGGLE_LARGE_SMALL_WINDOW                           :{BLACK}تبديل حجم النافذة (كبير/صغير)
 STR_TOOLTIP_VSCROLL_BAR_SCROLLS_LIST                            :{BLACK}شريط العرض- فوق /تحت
 STR_TOOLTIP_HSCROLL_BAR_SCROLLS_LIST                            :{BLACK}عمود التحريك - يمين/يسار
 STR_TOOLTIP_DEMOLISH_BUILDINGS_ETC                              :{BLACK}هدم المباني و غيرها في مربع من الأرض.
@@ -356,7 +376,7 @@ STR_TOOLBAR_TOOLTIP_BUILD_TRAMWAYS                              :{BLACK}بناء
 STR_TOOLBAR_TOOLTIP_BUILD_SHIP_DOCKS                            :{BLACK}ادوات السفن
 STR_TOOLBAR_TOOLTIP_BUILD_AIRPORTS                              :{BLACK}بناء مطارات
 STR_TOOLBAR_TOOLTIP_LANDSCAPING                                 :{BLACK}افتح مدير تحرير التضاريس لرفع / خفض الارض, زراعة الاشجار, الخ.
-STR_TOOLBAR_TOOLTIP_SHOW_SOUND_MUSIC_WINDOW                     :{BLACK}عرض اطار الصوت/الموسيقى
+STR_TOOLBAR_TOOLTIP_SHOW_SOUND_MUSIC_WINDOW                     :{BLACK}فتح نافذة الصوت/الموسيقى
 STR_TOOLBAR_TOOLTIP_SHOW_LAST_MESSAGE_NEWS                      :{BLACK}اظهار الرسالة الأخيرة/التقرير الأخير, خيارات الرسائل
 STR_TOOLBAR_TOOLTIP_LAND_BLOCK_INFORMATION                      :{BLACK}معلومات مناطق الخريطة
 STR_TOOLBAR_TOOLTIP_SWITCH_TOOLBAR                              :{BLACK}بدل صف الادوات
@@ -473,14 +493,16 @@ STR_NEWS_MENU_DELETE_ALL_MESSAGES                               :احذف كل �
 
 # About menu
 STR_ABOUT_MENU_LAND_BLOCK_INFO                                  :معلومات مربع في الخريطة
-STR_ABOUT_MENU_TOGGLE_CONSOLE                                   :توقل كونسول
+STR_ABOUT_MENU_HELP                                             :المساعدة وكتيبات
+STR_ABOUT_MENU_TOGGLE_CONSOLE                                   :اظهار/اخفاء الكونسول
 STR_ABOUT_MENU_AI_DEBUG                                         :مكتشف اخطاء الذكاء الصناعي
 STR_ABOUT_MENU_SCREENSHOT                                       :صورة من الشاشة - Ctrl-S -
 STR_ABOUT_MENU_SHOW_FRAMERATE                                   :سرعة عرض الإطارات
 STR_ABOUT_MENU_ABOUT_OPENTTD                                    :حول 'OpenTTD'
 STR_ABOUT_MENU_SPRITE_ALIGNER                                   :موائم العفريتات
-STR_ABOUT_MENU_TOGGLE_BOUNDING_BOXES                            :اضهار /اخفاء مربح الحوارات/الخيارات
+STR_ABOUT_MENU_TOGGLE_BOUNDING_BOXES                            :اظهار/اخفاء حدود المربعات
 STR_ABOUT_MENU_TOGGLE_DIRTY_BLOCKS                              :تبديل ألوان الكتل المتسخة
+STR_ABOUT_MENU_TOGGLE_WIDGET_OUTLINES                           :اظهار/اخفاء خطوط المربعات في النافذات
 
 ###length 31
 STR_DAY_NUMBER_1ST                                              :1
@@ -646,7 +668,7 @@ STR_MUSIC_TOOLTIP_SELECT_EZY_STREET_STYLE                       :{BLACK}اختر
 STR_MUSIC_TOOLTIP_SELECT_CUSTOM_1_USER_DEFINED                  :{BLACK}اختياري 1
 STR_MUSIC_TOOLTIP_SELECT_CUSTOM_2_USER_DEFINED                  :{BLACK}اختياري 2
 STR_MUSIC_TOOLTIP_TOGGLE_PROGRAM_SHUFFLE                        :{BLACK}تشغيل / ايقاف العشوائي
-STR_MUSIC_TOOLTIP_SHOW_MUSIC_TRACK_SELECTION                    :{BLACK}اظهار اطار اختيار الموسيقى
+STR_MUSIC_TOOLTIP_SHOW_MUSIC_TRACK_SELECTION                    :{BLACK}اظهار نافذة اختيار الموسيقى
 
 # Playlist window
 STR_PLAYLIST_TRACK_NAME                                         :{TINY_FONT}{LTBLUE}{ZEROFILL_NUM} "{STRING}"
@@ -860,6 +882,7 @@ STR_GAME_OPTIONS_CAPTION                                        :{WHITE}إعدا
 STR_GAME_OPTIONS_CURRENCY_UNITS_FRAME                           :{BLACK}وحدة العملة
 STR_GAME_OPTIONS_CURRENCY_UNITS_DROPDOWN_TOOLTIP                :{BLACK}اختيار وحدة العملة
 
+STR_GAME_OPTIONS_CURRENCY_CODE                                  :{STRING} ({STRING})
 
 ###length 43
 STR_GAME_OPTIONS_CURRENCY_GBP                                   :جنية
@@ -890,14 +913,21 @@ STR_GAME_OPTIONS_CURRENCY_TRY                                   :ليرة ترك
 STR_GAME_OPTIONS_CURRENCY_SKK                                   :كرونا سلوفاكية
 STR_GAME_OPTIONS_CURRENCY_BRL                                   :ريال برازيلي
 STR_GAME_OPTIONS_CURRENCY_EEK                                   :كرونا استونية
+STR_GAME_OPTIONS_CURRENCY_LTL                                   :ليتاس الليتوانية
 STR_GAME_OPTIONS_CURRENCY_KRW                                   :وون كوريا الجنوبية
 STR_GAME_OPTIONS_CURRENCY_ZAR                                   :راند جنوب أفريقيا
 STR_GAME_OPTIONS_CURRENCY_CUSTOM                                :مخصص ...
 STR_GAME_OPTIONS_CURRENCY_GEL                                   :لاري جورجي
+STR_GAME_OPTIONS_CURRENCY_IRR                                   :الريال الإيراني
+STR_GAME_OPTIONS_CURRENCY_RUB                                   :الروبل الروسي الجديد
+STR_GAME_OPTIONS_CURRENCY_MXN                                   :البيزو المكسيكي
 STR_GAME_OPTIONS_CURRENCY_NTD                                   :الدولار التايواني الجديد
 STR_GAME_OPTIONS_CURRENCY_CNY                                   :الرنمينبي الصيني
 STR_GAME_OPTIONS_CURRENCY_HKD                                   :دولار هونج كونج
 STR_GAME_OPTIONS_CURRENCY_INR                                   :الروبية الهندية
+STR_GAME_OPTIONS_CURRENCY_IDR                                   :الروبية الاندونيسية
+STR_GAME_OPTIONS_CURRENCY_MYR                                   :رينغيت ماليزي
+STR_GAME_OPTIONS_CURRENCY_LVL                                   :لاتفيا لاتس
 
 STR_GAME_OPTIONS_AUTOSAVE_FRAME                                 :{BLACK}حفظ آلي
 STR_GAME_OPTIONS_AUTOSAVE_DROPDOWN_TOOLTIP                      :{BLACK}اختار مدة الحفظ الآلي
@@ -905,6 +935,10 @@ STR_GAME_OPTIONS_AUTOSAVE_DROPDOWN_TOOLTIP                      :{BLACK}اختا
 # Autosave dropdown
 ###length 5
 STR_GAME_OPTIONS_AUTOSAVE_DROPDOWN_OFF                          :بدون
+STR_GAME_OPTIONS_AUTOSAVE_DROPDOWN_EVERY_10_MINUTES             :كل 10 دقائق
+STR_GAME_OPTIONS_AUTOSAVE_DROPDOWN_EVERY_30_MINUTES             :كل 30 دقيقة
+STR_GAME_OPTIONS_AUTOSAVE_DROPDOWN_EVERY_60_MINUTES             :كل 60 دقيقة
+STR_GAME_OPTIONS_AUTOSAVE_DROPDOWN_EVERY_120_MINUTES            :كل 120 دقيقة
 
 STR_GAME_OPTIONS_LANGUAGE                                       :{BLACK}لغة
 STR_GAME_OPTIONS_LANGUAGE_TOOLTIP                               :{BLACK}اختر لغة الواجهه
@@ -931,6 +965,7 @@ STR_GAME_OPTIONS_GUI_SCALE_AUTO_TOOLTIP                         :{BLACK}اختر
 
 
 
+STR_GAME_OPTIONS_GUI_SCALE_1X                                   :1x
 
 
 STR_GAME_OPTIONS_GRAPHICS                                       :{BLACK}الرسومات
@@ -1218,7 +1253,7 @@ STR_CONFIG_SETTING_PLANE_CRASHES_REDUCED                        :منخفض
 STR_CONFIG_SETTING_PLANE_CRASHES_NORMAL                         :طبيعي
 
 
-STR_CONFIG_SETTING_STOP_ON_TOWN_ROAD                            :السماح للعربات بالعبور خلال المواقف المملوكة داخل المدن: {STRING}
+STR_CONFIG_SETTING_STOP_ON_TOWN_ROAD                            :السماح للعربات بالعبور خلال الطرق المملوكة بالمدن: {STRING}
 STR_CONFIG_SETTING_STOP_ON_COMPETITOR_ROAD                      :السماح بمرور العربات خلال المحطات المملوكة للمنافسين: {STRING}
 STR_CONFIG_SETTING_STOP_ON_COMPETITOR_ROAD_HELPTEXT             :السماح ببناء مواقف السيارات على الطرق المملوكة لشركات أخرى
 STR_CONFIG_SETTING_DYNAMIC_ENGINES_EXISTING_VEHICLES            :{WHITE}تغير هذا الخيار غير متاح عندما يكون هناك عربات
@@ -1722,6 +1757,7 @@ STR_INTRO_HIGHSCORE                                             :{BLACK}قائم
 STR_INTRO_CONFIG_SETTINGS_TREE                                  :{BLACK}الاعدادات
 STR_INTRO_NEWGRF_SETTINGS                                       :{BLACK} اعدادات NewGRF
 STR_INTRO_ONLINE_CONTENT                                        :{BLACK} إبحث عن المحتوى عبر الشبكه العنكبوتيه
+STR_INTRO_AI_SETTINGS                                           :{BLACK}اعدادات االذكاء الاصطناعي
 STR_INTRO_QUIT                                                  :{BLACK}خروج
 
 STR_INTRO_TOOLTIP_NEW_GAME                                      :{BLACK}بدأ لعبة جديدة
@@ -1741,6 +1777,7 @@ STR_INTRO_TOOLTIP_HIGHSCORE                                     :{BLACK}عرض �
 STR_INTRO_TOOLTIP_CONFIG_SETTINGS_TREE                          :{BLACK}إعدادات العرض
 STR_INTRO_TOOLTIP_NEWGRF_SETTINGS                               :{BLACK}عرض إعدادات اﻹضافات
 STR_INTRO_TOOLTIP_ONLINE_CONTENT                                :{BLACK} ابحث عن محتوى جديد او تحديث
+STR_INTRO_TOOLTIP_AI_SETTINGS                                   :{BLACK} اعدادات الOpen AI
 STR_INTRO_TOOLTIP_QUIT                                          :{BLACK}اغلاق'OpenTTD'
 
 STR_INTRO_TRANSLATION                                           :{BLACK}هذة الترجمة تفتقد لـ {NUM}عبارات/عبارة. فضلا اجعل الترجمة افضل بالتسجيل في موقع الترجمة, اقرأ ملف المساعدة readme
@@ -1809,7 +1846,7 @@ STR_LIVERY_FREIGHT_TRAM                                         :عربة ترا
 # Face selection window
 STR_FACE_CAPTION                                                :{WHITE}اختيار الوجة
 STR_FACE_CANCEL_TOOLTIP                                         :{BLACK}الغاء اختيار الوجة الجديد
-STR_FACE_OK_TOOLTIP                                             :{BLACK}اقبل الوجة الجديد
+STR_FACE_OK_TOOLTIP                                             :{BLACK}موافقة على الوجه الجديد
 STR_FACE_RANDOM                                                 :{BLACK}عشوائي
 
 STR_FACE_MALE_BUTTON                                            :{BLACK}رجل
@@ -1970,6 +2007,7 @@ STR_NETWORK_CLIENT_LIST_NEW_COMPANY                             :(شركة جد�
 ###length 5
 STR_NETWORK_CLIENT_LIST_SERVER_CONNECTION_TYPE_DIRECT           :{BLACK}عامة
 
+STR_NETWORK_CLIENT_LIST_ADMIN_CLIENT_KICK                       :طرد
 STR_NETWORK_CLIENT_LIST_ADMIN_CLIENT_BAN                        :منع
 
 STR_NETWORK_CLIENT_LIST_ASK_CLIENT_KICK                         :{YELLOW}هل أنت متأكد أنك تريد طرد اللاعب '{STRING}'؟
@@ -2179,6 +2217,10 @@ STR_LINKGRAPH_LEGEND_SATURATED                                  :{TINY_FONT}{BLA
 STR_LINKGRAPH_LEGEND_OVERLOADED                                 :{TINY_FONT}{BLACK}زائد الاستخدام
 
 # Linkgraph tooltip
+STR_LINKGRAPH_STATS_TOOLTIP_MONTH                               :{BLACK}{CARGO_LONG} للنقل في الشهر من {STATION} الى {STATION} ({COMMA}% من القدرة){STRING}
+STR_LINKGRAPH_STATS_TOOLTIP_MINUTE                              :{BLACK}{CARGO_LONG} للنقل في دقيقة من {STATION} الى {STATION} ({COMMA}% من القدرة){STRING}
+STR_LINKGRAPH_STATS_TOOLTIP_RETURN_EXTENSION                    :{}{CARGO_LONG} للنقل عند الرجوع ({COMMA}% من القدرة)
+STR_LINKGRAPH_STATS_TOOLTIP_TIME_EXTENSION                      :{}متوسط وقت السفر: {UNITS_DAYS_OR_SECONDS}
 
 # Base for station construction window(s)
 STR_STATION_BUILD_COVERAGE_AREA_TITLE                           :{BLACK}وضح منطقة التغطية
@@ -2445,6 +2487,7 @@ STR_FUND_INDUSTRY_SELECTION_TOOLTIP                             :{BLACK}اختر
 STR_FUND_INDUSTRY_MANY_RANDOM_INDUSTRIES                        :{BLACK}إنشاء المصانع العشوائية
 STR_FUND_INDUSTRY_MANY_RANDOM_INDUSTRIES_TOOLTIP                :{BLACK}غطي الخريطة عشوائيا بالمصانع
 STR_FUND_INDUSTRY_MANY_RANDOM_INDUSTRIES_CAPTION                :{WHITE}إنشاء المصانع العشوائية
+STR_FUND_INDUSTRY_MANY_RANDOM_INDUSTRIES_QUERY                  :{YELLOW}هل أنت متأكد أنك تريد إنشاء المصانع العشوائية؟
 STR_FUND_INDUSTRY_INDUSTRY_BUILD_COST                           :{BLACK}التكلفة: {YELLOW}{CURRENCY_LONG}
 STR_FUND_INDUSTRY_PROSPECT_NEW_INDUSTRY                         :{BLACK} الاحتمالية
 STR_FUND_INDUSTRY_BUILD_NEW_INDUSTRY                            :{BLACK}بناء
@@ -2993,14 +3036,24 @@ STR_GOAL_QUESTION_CAPTION_ERROR                                 :{YELLOW}خطا
 
 # Goal Question button list
 ###length 18
+STR_GOAL_QUESTION_BUTTON_CANCEL                                 :الغاء
 STR_GOAL_QUESTION_BUTTON_OK                                     :موافقة
 STR_GOAL_QUESTION_BUTTON_NO                                     :لا
 STR_GOAL_QUESTION_BUTTON_YES                                    :نعم
+STR_GOAL_QUESTION_BUTTON_DECLINE                                :رفض
+STR_GOAL_QUESTION_BUTTON_ACCEPT                                 :موافق
+STR_GOAL_QUESTION_BUTTON_IGNORE                                 :تجاهل
 STR_GOAL_QUESTION_BUTTON_RETRY                                  :إعادة المحاولة
+STR_GOAL_QUESTION_BUTTON_PREVIOUS                               :السابق
+STR_GOAL_QUESTION_BUTTON_NEXT                                   :التالي
+STR_GOAL_QUESTION_BUTTON_STOP                                   :اقف
+STR_GOAL_QUESTION_BUTTON_START                                  :البدء
+STR_GOAL_QUESTION_BUTTON_GO                                     :انطلاق
 STR_GOAL_QUESTION_BUTTON_CONTINUE                               :الاستمرار
 STR_GOAL_QUESTION_BUTTON_RESTART                                :إعادة تشغيل
 STR_GOAL_QUESTION_BUTTON_POSTPONE                               :تأجيل
 STR_GOAL_QUESTION_BUTTON_SURRENDER                              :استسلام
+STR_GOAL_QUESTION_BUTTON_CLOSE                                  :اغلاق
 
 # Subsidies window
 STR_SUBSIDIES_CAPTION                                           :{WHITE}العروض
@@ -3190,6 +3243,7 @@ STR_INDUSTRY_VIEW_TRANSPORTED                                   :{YELLOW}{CARGO_
 STR_INDUSTRY_VIEW_LOCATION_TOOLTIP                              :{BLACK}وسط الشاشة على المصنع
 STR_INDUSTRY_VIEW_PRODUCTION_LEVEL                              :{BLACK}نسبة الانتاج: {YELLOW}{COMMA}%
 
+STR_INDUSTRY_VIEW_REQUIRES_N_CARGO                              :{BLACK}يتطلب: {YELLOW}{STRING}{STRING}
 STR_INDUSTRY_VIEW_PRODUCES_N_CARGO                              :{BLACK}ينتج: {YELLOW}{STRING}{STRING}
 STR_INDUSTRY_VIEW_CARGO_LIST_EXTENSION                          :، {STRING}{STRING}
 
@@ -3321,7 +3375,7 @@ STR_BUY_VEHICLE_AIRCRAFT_LIST_TOOLTIP                           :{BLACK}قائم
 STR_BUY_VEHICLE_TRAIN_BUY_VEHICLE_BUTTON                        :{BLACK}شراء عربات
 STR_BUY_VEHICLE_ROAD_VEHICLE_BUY_VEHICLE_BUTTON                 :{BLACK}شراء عربة
 STR_BUY_VEHICLE_SHIP_BUY_VEHICLE_BUTTON                         :{BLACK}شراء سفينة
-STR_BUY_VEHICLE_AIRCRAFT_BUY_VEHICLE_BUTTON                     :{BLACK}شراء طائرة
+STR_BUY_VEHICLE_AIRCRAFT_BUY_VEHICLE_BUTTON                     :{BLACK}شراء الطائرة
 
 ###length VEHICLE_TYPES
 STR_BUY_VEHICLE_TRAIN_BUY_REFIT_VEHICLE_BUTTON                  :{BLACK}شراء العربة وتجديد بضائعها
@@ -3825,6 +3879,7 @@ STR_ORDER_STOP_LOCATION_NEAR_END                                :[قرب الن�
 STR_ORDER_STOP_LOCATION_MIDDLE                                  :[وسط]
 STR_ORDER_STOP_LOCATION_FAR_END                                 :[النهاية القصوى]
 
+STR_ORDER_OUT_OF_RANGE                                          :{RED} (الوجهة الثانية خارج المدى)
 
 STR_ORDER_CONDITIONAL_UNCONDITIONAL                             :اقفز الى الأمر {COMMA}
 STR_ORDER_CONDITIONAL_NUM                                       :اقفز للامر{COMMA} عندما {STRING} {STRING} {COMMA}
@@ -3941,13 +3996,15 @@ STR_AI_CONFIG_CONFIGURE                                         :{BLACK} اعد�
 STR_AI_CONFIG_CONFIGURE_TOOLTIP                                 :{BLACK} اعداد خواص الذكاء الصناعي
 
 # Available AIs window
+STR_AI_LIST_CAPTION                                             :{WHITE}متوفر {STRING}
+STR_AI_LIST_CAPTION_AI                                          :انظمة ذكاء اصتناعي
 STR_AI_LIST_TOOLTIP                                             :{BLACK} اضغط لاختيار ذكاء اصطناعي
 
 STR_AI_LIST_AUTHOR                                              :{LTBLUE}المؤلف: {ORANGE}{STRING}
 STR_AI_LIST_VERSION                                             :{LTBLUE}الاصدار: {ORANGE}{NUM}
 STR_AI_LIST_URL                                                 :{LTBLUE}العنوان : {ORANGE}{STRING}
 
-STR_AI_LIST_ACCEPT                                              :{BLACK} اقبل
+STR_AI_LIST_ACCEPT                                              :{BLACK} موافق
 STR_AI_LIST_ACCEPT_TOOLTIP                                      :{BLACK} اختر الذكاء الصناعي المنتقى
 STR_AI_LIST_CANCEL                                              :{BLACK} الغاء
 STR_AI_LIST_CANCEL_TOOLTIP                                      :{BLACK} لا تغير الذكاء الصناعي
@@ -4356,6 +4413,7 @@ STR_ERROR_CAN_T_CHANGE_SERVICING                                :{WHITE}لا ي�
 
 STR_ERROR_VEHICLE_IS_DESTROYED                                  :{WHITE}... العربة تحطمت
 
+STR_ERROR_CAN_T_CLONE_VEHICLE_LIST                              :{WHITE}... ليست كل العربات متطابقة
 
 STR_ERROR_NO_VEHICLES_AVAILABLE_AT_ALL                          :{WHITE}لن تتوافر اى وسائل نقل على اﻹطلاق
 STR_ERROR_NO_VEHICLES_AVAILABLE_YET                             :{WHITE}لا تتوافر اى آليه نقل بعد
@@ -4381,6 +4439,7 @@ STR_ERROR_CAN_T_SKIP_TO_ORDER                                   :{WHITE}لا ي�
 STR_ERROR_CAN_T_COPY_SHARE_ORDER                                :{WHITE}العربة لا تستطيع الوصول الى كل المحطات
 STR_ERROR_CAN_T_ADD_ORDER                                       :{WHITE}العربة لا تستطيع الوصول للمحطة
 STR_ERROR_CAN_T_ADD_ORDER_SHARED                                :{WHITE}العربة المشتركة لا تستطيع الوصول للمحطة
+STR_ERROR_CAN_T_COPY_ORDER_VEHICLE_LIST                         :{WHITE}... ليست كل العربات بنفس الاوامر
 
 STR_ERROR_CAN_T_SHARE_ORDER_LIST                                :{WHITE}لا يمكن مشاركة قائمة الأوامر
 STR_ERROR_CAN_T_STOP_SHARING_ORDER_LIST                         :{WHITE}لايمكن ايقاف امر المشاركة بالاوامر ...
@@ -4871,6 +4930,10 @@ STR_TOWN_NAME                                                   :{TOWN}
 STR_VEHICLE_NAME                                                :{VEHICLE}
 STR_WAYPOINT_NAME                                               :{WAYPOINT}
 
+STR_CURRENCY_SHORT_KILO                                         :{NBSP}k
+STR_CURRENCY_SHORT_MEGA                                         :{NBSP}m
+STR_CURRENCY_SHORT_GIGA                                         :{NBSP}bn
+STR_CURRENCY_SHORT_TERA                                         :{NBSP}tn
 
 STR_JUST_CARGO                                                  :{CARGO_LONG}
 STR_JUST_CHECKMARK                                              :{CHECKMARK}

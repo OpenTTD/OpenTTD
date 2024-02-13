@@ -3978,6 +3978,8 @@ STR_COMPANY_VIEW_INFRASTRUCTURE_BUTTON                          :{BLACK}Detaily
 STR_COMPANY_VIEW_INFRASTRUCTURE_TOOLTIP                         :{BLACK}Zobrazit detaily a souhrny o infrastruktuře
 STR_COMPANY_VIEW_GIVE_MONEY_BUTTON                              :{BLACK}Poslat peníze
 STR_COMPANY_VIEW_GIVE_MONEY_TOOLTIP                             :{BLACK}Poslat peníze této společnosti
+STR_COMPANY_VIEW_HOSTILE_TAKEOVER_BUTTON                        :{BLACK}Násilné převzetí
+STR_COMPANY_VIEW_HOSTILE_TAKEOVER_TOOLTIP                       :{BLACK}Násilím převzít tuto společnost
 
 STR_COMPANY_VIEW_NEW_FACE_BUTTON                                :{BLACK}Nový obličej
 STR_COMPANY_VIEW_NEW_FACE_TOOLTIP                               :{BLACK}Zvol nový obličej prezidenta
@@ -4468,6 +4470,7 @@ STR_VEHICLE_STATUS_NO_ORDERS_VEL                                :{LTBLUE}Bez př
 STR_VEHICLE_STATUS_HEADING_FOR_WAYPOINT_VEL                     :{LTBLUE}Míří do {WAYPOINT}, {VELOCITY}
 STR_VEHICLE_STATUS_HEADING_FOR_DEPOT_VEL                        :{ORANGE}Míří do {DEPOT}, {VELOCITY}
 STR_VEHICLE_STATUS_HEADING_FOR_DEPOT_SERVICE_VEL                :{LTBLUE}Údržba v {DEPOT}, {VELOCITY}
+STR_VEHICLE_STATUS_HEADING_FOR_DEPOT_UNBUNCH_VEL                :{LTBLUE}Rozbalit a poslat do servisu do {DEPOT}, {VELOCITY}
 
 STR_VEHICLE_STATUS_CANNOT_REACH_STATION_VEL                     :{LTBLUE}Nelze dosáhnout {STATION}, {VELOCITY}
 STR_VEHICLE_STATUS_CANNOT_REACH_WAYPOINT_VEL                    :{LTBLUE}Nelze dosáhnout {WAYPOINT}, {VELOCITY}
@@ -4847,7 +4850,7 @@ STR_AI_DEBUG_MATCH_CASE                                         :{BLACK}Rozeznat
 STR_AI_DEBUG_MATCH_CASE_TOOLTIP                                 :{BLACK}Zabývat se velikostí písmen při hledání zastavujícího řetězce v AI logu
 STR_AI_DEBUG_CONTINUE                                           :{BLACK}Pokračovat
 STR_AI_DEBUG_CONTINUE_TOOLTIP                                   :{BLACK}Odpauzujte a pokračujte v běhu AI
-STR_AI_DEBUG_SELECT_AI_TOOLTIP                                  :{BLACK}Zobraz debugovací výstup této AI
+STR_AI_DEBUG_SELECT_AI_TOOLTIP                                  :{BLACK}Zobraz debugovací výstup této AI. Stiskni Ctrl pro otevření nového okna
 STR_AI_GAME_SCRIPT                                              :{BLACK}Herní skript
 STR_AI_GAME_SCRIPT_TOOLTIP                                      :{BLACK}Zkontroluj log herních skriptů
 
@@ -5180,6 +5183,8 @@ STR_ERROR_UNABLE_TO_FIND_LOCAL_DEPOT                            :{WHITE}Nelze na
 STR_ERROR_DEPOT_WRONG_DEPOT_TYPE                                :Nevhodný druh depa
 
 # Depot unbunching related errors
+STR_ERROR_UNBUNCHING_NO_FULL_LOAD                               :{WHITE}... příkaz plně naložit nelze použít dokud má vozidlo sdílený příkaz
+STR_ERROR_UNBUNCHING_NO_CONDITIONAL                             :{WHITE}... nelze použít podmíněné příkazy dokud má vozidlo sdílený příkaz
 
 # Autoreplace related errors
 STR_ERROR_TRAIN_TOO_LONG_AFTER_REPLACEMENT                      :{WHITE}{VEHICLE} je po výměně moc dlouhý

@@ -575,7 +575,7 @@ STR_GRAPH_Y_LABEL_NUMBER                                        :{TINY_FONT}{COM
 STR_GRAPH_OPERATING_PROFIT_CAPTION                              :{WHITE}Gráfica de utilidad operativa
 STR_GRAPH_INCOME_CAPTION                                        :{WHITE}Gráfica de ingresos
 STR_GRAPH_CARGO_DELIVERED_CAPTION                               :{WHITE}Unidades de carga entregadas
-STR_GRAPH_COMPANY_PERFORMANCE_RATINGS_CAPTION                   :{WHITE}Nivel de desempeño (nivel máximo: 1000)
+STR_GRAPH_COMPANY_PERFORMANCE_RATINGS_CAPTION                   :{WHITE}Nivel de desempeño (máximo: 1000)
 STR_GRAPH_COMPANY_VALUES_CAPTION                                :{WHITE}Valor de la empresa
 
 
@@ -597,6 +597,7 @@ STR_GRAPH_KEY_COMPANY_SELECTION_TOOLTIP                         :{BLACK}Mostrar 
 # Company league window
 STR_COMPANY_LEAGUE_TABLE_CAPTION                                :{WHITE}Tabla de evaluación de empresas
 STR_COMPANY_LEAGUE_COMPANY_NAME                                 :{ORANGE}{COMPANY} {BLACK}{COMPANY_NUM} '{STRING}'
+STR_COMPANY_LEAGUE_COMPANY_RANK                                 :{YELLOW}#{NUM}
 STR_COMPANY_LEAGUE_PERFORMANCE_TITLE_ENGINEER                   :Ingeniero
 STR_COMPANY_LEAGUE_PERFORMANCE_TITLE_TRAFFIC_MANAGER            :Director de Tráfico
 STR_COMPANY_LEAGUE_PERFORMANCE_TITLE_TRANSPORT_COORDINATOR      :Coordinador de Transporte
@@ -1006,6 +1007,7 @@ STR_GAME_OPTIONS_BASE_MUSIC_DESCRIPTION_TOOLTIP                 :{BLACK}Informac
 
 
 
+STR_BASESET_STATUS                                              :{STRING} {RED}({NUM} archivo{P "" s} ausente{P "" s} o dañado{P "" s})
 
 STR_ERROR_RESOLUTION_LIST_FAILED                                :{WHITE}No se pudo obtener una lista de resoluciones compatibles
 STR_ERROR_FULLSCREEN_FAILED                                     :{WHITE}El modo de pantalla completa falló
@@ -1169,6 +1171,8 @@ STR_CONFIG_SETTING_HORIZONTAL_POS_CENTER                        :Centro
 STR_CONFIG_SETTING_HORIZONTAL_POS_RIGHT                         :Derecha
 
 
+STR_CONFIG_SETTING_INFINITE_MONEY                               :Capital infinito: {STRING}
+STR_CONFIG_SETTING_INFINITE_MONEY_HELPTEXT                      :Las empresas tienen fondos ilimitados y no pueden irse a bancarrota
 
 STR_CONFIG_SETTING_MAXIMUM_INITIAL_LOAN                         :Máximo préstamo inicial: {STRING}
 STR_CONFIG_SETTING_MAXIMUM_INITIAL_LOAN_HELPTEXT                :Máxima cantidad que una empresa puede pedir prestada (sin tener en cuenta la inflación)
@@ -1317,10 +1321,12 @@ STR_CONFIG_SETTING_AUTOSCROLL_EVERY_VIEWPORT                    :Todas las vista
 STR_CONFIG_SETTING_BRIBE                                        :Permitir sobornos al ayuntamiento: {STRING}
 ###length 2
 STR_CONFIG_SETTING_BRIBE_HELPTEXT                               :Las empresas podrán sobornar a los ayuntamientos, pero si un inspector lo descubre, la empresa no podrá operar en la localidad durante seis meses
+STR_CONFIG_SETTING_BRIBE_HELPTEXT_MINUTES                       :Las empresas podrán sobornar a los ayuntamientos, pero si un inspector lo descubre, la empresa no podrá operar en la localidad durante seis minutos
 
 STR_CONFIG_SETTING_ALLOW_EXCLUSIVE                              :Permitir adquisición de derechos de transporte exclusivos: {STRING}
 ###length 2
 STR_CONFIG_SETTING_ALLOW_EXCLUSIVE_HELPTEXT                     :Si una empresa compra los derechos de transporte exclusivos en una localidad, las estaciones de la competencia no recibirán carga todo un año
+STR_CONFIG_SETTING_ALLOW_EXCLUSIVE_HELPTEXT_MINUTES             :Si una empresa compra los derechos de transporte exclusivos en una localidad, las estaciones de la competencia (pasajeros o carga) no recibirán nada para transportar durante 12 minutos
 
 STR_CONFIG_SETTING_ALLOW_FUND_BUILDINGS                         :Permitir construcción de nuevos edificios: {STRING}
 STR_CONFIG_SETTING_ALLOW_FUND_BUILDINGS_HELPTEXT                :Las empresas aportan dinero a los ayuntamientos para que construyan nuevas casas y edificios
@@ -1381,9 +1387,12 @@ STR_CONFIG_SETTING_NEVER_EXPIRE_VEHICLES_HELPTEXT               :Todos los model
 
 ###length 2
 
+STR_CONFIG_SETTING_MINUTES_PER_YEAR                             :Minutos por año: {STRING}
 
 ###setting-zero-is-special
+STR_CONFIG_SETTING_MINUTES_PER_YEAR_FROZEN                      :0 (tiempo de calendario congelado)
 
+STR_CONFIG_SETTING_CARGO_SCALE_VALUE                            :{NUM}%
 
 STR_CONFIG_SETTING_AUTORENEW_VEHICLE                            :Renovar automáticamente vehículos viejos: {STRING}
 STR_CONFIG_SETTING_AUTORENEW_VEHICLE_HELPTEXT                   :Los vehículos próximos al final de su vida útil serán renovados automáticamente, siempre y cuando se cumplan las condiciones de renovación
@@ -1475,6 +1484,7 @@ STR_CONFIG_SETTING_ROAD_SIDE_LEFT                               :Manejar por la 
 STR_CONFIG_SETTING_ROAD_SIDE_RIGHT                              :Manejar por la derecha
 
 STR_CONFIG_SETTING_HEIGHTMAP_ROTATION                           :Rotar mapa de alturas: {STRING}
+STR_CONFIG_SETTING_HEIGHTMAP_ROTATION_TOOLTIP                   :Elegir cómo se orienta la imagen del mapa de alturas para que encaje en el mapa del juego
 ###length 2
 STR_CONFIG_SETTING_HEIGHTMAP_ROTATION_COUNTER_CLOCKWISE         :A la izquierda
 STR_CONFIG_SETTING_HEIGHTMAP_ROTATION_CLOCKWISE                 :A la derecha
@@ -1567,6 +1577,9 @@ STR_CONFIG_SETTING_RIGHT_MOUSE_BTN_EMU_OFF                      :Ninguno
 STR_CONFIG_SETTING_RIGHT_MOUSE_WND_CLOSE                        :Cerrar ventana con clic derecho: {STRING}
 STR_CONFIG_SETTING_RIGHT_MOUSE_WND_CLOSE_HELPTEXT               :Cerrar la ventana haciendo clic derecho sobre ella. ¡Desactiva los mensajes de ayuda con clic derecho!
 ###length 3
+STR_CONFIG_SETTING_RIGHT_MOUSE_WND_CLOSE_NO                     :No
+STR_CONFIG_SETTING_RIGHT_MOUSE_WND_CLOSE_YES                    :Sí
+STR_CONFIG_SETTING_RIGHT_MOUSE_WND_CLOSE_YES_EXCEPT_STICKY      :Sí, excepto ancladas
 
 STR_CONFIG_SETTING_DATE_FORMAT_IN_SAVE_NAMES                    :Usar formato de fecha {STRING} para los nombres de partidas guardadas
 STR_CONFIG_SETTING_DATE_FORMAT_IN_SAVE_NAMES_HELPTEXT           :Asignar un formato de fecha como nombre al guardar una partida
@@ -1791,6 +1804,7 @@ STR_CONFIG_SETTING_SEMAPHORE_BUILD_BEFORE_DATE_HELPTEXT         :Año a partir d
 STR_CONFIG_SETTING_CYCLE_SIGNAL_TYPES                           :Cambiar entre tipos de señales: {STRING}
 STR_CONFIG_SETTING_CYCLE_SIGNAL_TYPES_HELPTEXT                  :Elegir la alternación entre señales al usar Ctrl+Clic con la herramienta de señales
 ###length 2
+STR_CONFIG_SETTING_CYCLE_SIGNAL_GROUP                           :Solo grupo actual
 STR_CONFIG_SETTING_CYCLE_SIGNAL_ALL                             :Todas
 
 STR_CONFIG_SETTING_SIGNAL_GUI_MODE                              :Mostrar tipos de señales: {STRING}
@@ -1914,10 +1928,14 @@ STR_CONFIG_SETTING_SHORT_PATH_SATURATION                        :Nivel de satura
 STR_CONFIG_SETTING_SHORT_PATH_SATURATION_HELPTEXT               :Entre dos estaciones a veces hay varias rutas. Se intentará saturar la ruta más corta primero, luego la que le sigue, y así sucesivamente. La saturación está determinada por una estimación de capacidad y uso planeado. Al saturarse todas las rutas, si aún hay demanda se sobrecargarán todas, empezando por las de mayor capacidad. El algoritmo no siempre estimará la capacidad de forma precisa. Esta opción permite especificar el porcentaje de saturación que debe tener una ruta más corta en la primera vuelta antes de pasar a la siguiente. Menos de 100% evita estaciones abarrotadas si las capacidades se sobreestiman.
 
 STR_CONFIG_SETTING_LOCALISATION_UNITS_VELOCITY                  :Unidades de velocidad: {STRING}
+STR_CONFIG_SETTING_LOCALISATION_UNITS_VELOCITY_NAUTICAL         :Unidades de velocidad (náuticas): {STRING}
 STR_CONFIG_SETTING_LOCALISATION_UNITS_VELOCITY_HELPTEXT         :Cada vez que se muestre una velocidad en la interfaz de usuario, se emplearán las unidades elegidas
 STR_CONFIG_SETTING_LOCALISATION_UNITS_VELOCITY_IMPERIAL         :Imperial (mph)
 STR_CONFIG_SETTING_LOCALISATION_UNITS_VELOCITY_METRIC           :Métrico (km/h)
 STR_CONFIG_SETTING_LOCALISATION_UNITS_VELOCITY_SI               :SI (m/s)
+STR_CONFIG_SETTING_LOCALISATION_UNITS_VELOCITY_GAMEUNITS_DAYS   :Unidades del juego (casillas/día)
+STR_CONFIG_SETTING_LOCALISATION_UNITS_VELOCITY_GAMEUNITS_SECS   :Unidades del juego (casillas/segundo)
+STR_CONFIG_SETTING_LOCALISATION_UNITS_VELOCITY_KNOTS            :Nudos
 
 STR_CONFIG_SETTING_LOCALISATION_UNITS_POWER                     :Unidades de potencia de vehículos: {STRING}
 STR_CONFIG_SETTING_LOCALISATION_UNITS_POWER_HELPTEXT            :Cada vez que se muestre la potencia de un vehículo en la interfaz de usuario, se emplearán las unidades elegidas
@@ -1971,10 +1989,12 @@ STR_CONFIG_SETTING_LIMITATIONS                                  :Restricciones
 STR_CONFIG_SETTING_ACCIDENTS                                    :Desastres y accidentes
 STR_CONFIG_SETTING_GENWORLD                                     :Generación de mapa
 STR_CONFIG_SETTING_ENVIRONMENT                                  :Entorno
+STR_CONFIG_SETTING_ENVIRONMENT_TIME                             :Tiempo
 STR_CONFIG_SETTING_ENVIRONMENT_AUTHORITIES                      :Autoridades
 STR_CONFIG_SETTING_ENVIRONMENT_TOWNS                            :Localidades
 STR_CONFIG_SETTING_ENVIRONMENT_INDUSTRIES                       :Industrias
 STR_CONFIG_SETTING_ENVIRONMENT_CARGODIST                        :Distribución de carga
+STR_CONFIG_SETTING_ENVIRONMENT_TREES                            :Árboles
 STR_CONFIG_SETTING_AI                                           :Competidores
 STR_CONFIG_SETTING_AI_NPC                                       :Jugadores no humanos
 STR_CONFIG_SETTING_NETWORK                                      :Red
@@ -2085,6 +2105,7 @@ STR_CHEAT_EDIT_MAX_HL_QUERY_CAPT                                :{WHITE}Cambiar 
 STR_CHEAT_CHANGE_DATE                                           :{LTBLUE}Cambiar fecha: {ORANGE} {DATE_SHORT}
 STR_CHEAT_CHANGE_DATE_QUERY_CAPT                                :{WHITE}Cambiar año actual
 STR_CHEAT_SETUP_PROD                                            :{LTBLUE}Permitir cambio de valores de producción: {ORANGE}{STRING}
+STR_CHEAT_STATION_RATING                                        :{LTBLUE}Fijar evaluación de estaciones en 100%: {ORANGE}{STRING}
 
 # Livery window
 STR_LIVERY_CAPTION                                              :{WHITE}{COMPANY} - Cromática
@@ -3256,6 +3277,7 @@ STR_SAVE_PRESET_SAVE                                            :{BLACK}Guardar
 STR_SAVE_PRESET_SAVE_TOOLTIP                                    :{BLACK}Guardar el perfil con el nombre elegido
 
 # NewGRF parameters window
+STR_BASEGRF_PARAMETERS_CAPTION                                  :{WHITE}Cambiar parámetros de gráficos base
 STR_NEWGRF_PARAMETERS_CAPTION                                   :{WHITE}Cambiar parámetros de NewGRF
 STR_NEWGRF_PARAMETERS_CLOSE                                     :{BLACK}Cerrar
 STR_NEWGRF_PARAMETERS_RESET                                     :{BLACK}Restablecer
@@ -3320,7 +3342,7 @@ STR_NEWGRF_ERROR_STATIC_GRF_CAUSES_DESYNC                       :Cargar {1:STRIN
 STR_NEWGRF_ERROR_UNEXPECTED_SPRITE                              :Sprite inesperado (sprite {3:NUM})
 STR_NEWGRF_ERROR_UNKNOWN_PROPERTY                               :Propiedad de Acción 0 desconocida {4:HEX} (sprite {3:NUM})
 STR_NEWGRF_ERROR_INVALID_ID                                     :Intento de usar una ID no válida (sprite {3:NUM})
-STR_NEWGRF_ERROR_CORRUPT_SPRITE                                 :{YELLOW}{STRING} contiene un sprite con errores. Todos los sprites con errores se muestran como un símbolo de interrogación rojo (?)
+STR_NEWGRF_ERROR_CORRUPT_SPRITE                                 :{YELLOW}{STRING} contiene un sprite dañado. Todos los sprites dañados se muestran como un signo de interrogación rojo (?)
 STR_NEWGRF_ERROR_MULTIPLE_ACTION_8                              :Contiene múltiples entradas de Acción 8 (sprite {3:NUM})
 STR_NEWGRF_ERROR_READ_BOUNDS                                    :La lectura excedió el límite de un pseudosprite (sprite {3:NUM})
 STR_NEWGRF_ERROR_GRM_FAILED                                     :Recursos GRF solicitados no disponibles (sprite {3:NUM})
@@ -3668,6 +3690,8 @@ STR_COMPANY_VIEW_INFRASTRUCTURE_BUTTON                          :{BLACK}Detalles
 STR_COMPANY_VIEW_INFRASTRUCTURE_TOOLTIP                         :{BLACK}Ver informe detallado de infraestructura
 STR_COMPANY_VIEW_GIVE_MONEY_BUTTON                              :{BLACK}Transferir capital
 STR_COMPANY_VIEW_GIVE_MONEY_TOOLTIP                             :{BLACK}Transferir capital a esta empresa
+STR_COMPANY_VIEW_HOSTILE_TAKEOVER_BUTTON                        :{BLACK}Compra hostil
+STR_COMPANY_VIEW_HOSTILE_TAKEOVER_TOOLTIP                       :{BLACK}Realizar una compra hostil de esta empresa
 
 STR_COMPANY_VIEW_NEW_FACE_BUTTON                                :{BLACK}Nueva cara
 STR_COMPANY_VIEW_NEW_FACE_TOOLTIP                               :{BLACK}Elegir nueva cara para el gerente
@@ -3683,6 +3707,7 @@ STR_COMPANY_VIEW_PRESIDENT_S_NAME_QUERY_CAPTION                 :Nombre del gere
 STR_COMPANY_VIEW_GIVE_MONEY_QUERY_CAPTION                       :Cantidad de dinero a transferir
 
 STR_BUY_COMPANY_MESSAGE                                         :{WHITE}Buscamos una empresa de transportes que quiera adquirir la nuestra.{}{}¿Comprar {COMPANY} por {CURRENCY_LONG}?
+STR_BUY_COMPANY_HOSTILE_TAKEOVER                                :{WHITE}En una compra hostil de {COMPANY} el jugador adquiere todas sus propiedades, liquida sus deudas y paga lo correspondiente a dos años de utilidad.{}{}El costo estimado es de {CURRENCY_LONG}.{}{}¿Realizar esta compra hostil?
 
 # Company infrastructure window
 STR_COMPANY_INFRASTRUCTURE_VIEW_CAPTION                         :{WHITE}Infraestructura de {COMPANY}
@@ -3695,6 +3720,8 @@ STR_COMPANY_INFRASTRUCTURE_VIEW_CANALS                          :{WHITE}Canales
 STR_COMPANY_INFRASTRUCTURE_VIEW_STATION_SECT                    :{GOLD}Estaciones:
 STR_COMPANY_INFRASTRUCTURE_VIEW_STATIONS                        :{WHITE}Casillas de estaciones
 STR_COMPANY_INFRASTRUCTURE_VIEW_AIRPORTS                        :{WHITE}Aeropuertos
+STR_COMPANY_INFRASTRUCTURE_VIEW_TOTAL_YEAR                      :{WHITE}{CURRENCY_LONG}/año
+STR_COMPANY_INFRASTRUCTURE_VIEW_TOTAL_PERIOD                    :{WHITE}{CURRENCY_LONG}/periodo
 
 # Industry directory
 STR_INDUSTRY_DIRECTORY_CAPTION                                  :{WHITE}Industrias
@@ -4503,6 +4530,7 @@ STR_AI_CONFIG_AILIST_TOOLTIP                                    :{BLACK}Scripts 
 STR_AI_CONFIG_HUMAN_PLAYER                                      :Jugador humano
 STR_AI_CONFIG_RANDOM_AI                                         :IA aleatoria
 STR_AI_CONFIG_NONE                                              :(ninguno)
+STR_AI_CONFIG_NAME_VERSION                                      :{STRING} {YELLOW}v{NUM}
 STR_AI_CONFIG_MAX_COMPETITORS                                   :{LTBLUE}Núm. máximo de jugadores: {ORANGE}{COMMA}
 
 STR_AI_CONFIG_MOVE_UP                                           :{BLACK}Mover hacia arriba
@@ -4544,6 +4572,7 @@ STR_SCREENSHOT_HEIGHTMAP_SCREENSHOT                             :{BLACK}Mapa de 
 STR_SCREENSHOT_MINIMAP_SCREENSHOT                               :{BLACK}Captura de minimapa
 
 # Script Parameters
+STR_AI_SETTINGS_CAPTION                                         :{WHITE}{STRING} Parámetros
 STR_AI_SETTINGS_CAPTION_AI                                      :{WHITE}Parámetros de IA
 STR_AI_SETTINGS_CLOSE                                           :{BLACK}Cerrar
 STR_AI_SETTINGS_RESET                                           :{BLACK}Reiniciar

@@ -3149,7 +3149,7 @@ STR_LAI_STATION_DESCRIPTION_AIRPORT                             :Aeroporto
 STR_LAI_STATION_DESCRIPTION_TRUCK_LOADING_AREA                  :Estação de camiões
 STR_LAI_STATION_DESCRIPTION_BUS_STATION                         :Estação de autocarros
 STR_LAI_STATION_DESCRIPTION_SHIP_DOCK                           :Doca
-STR_LAI_STATION_DESCRIPTION_BUOY                                :Bóia
+STR_LAI_STATION_DESCRIPTION_BUOY                                :Boia
 STR_LAI_STATION_DESCRIPTION_WAYPOINT                            :Ponto de controlo
 
 STR_LAI_WATER_DESCRIPTION_WATER                                 :Água
@@ -3821,8 +3821,8 @@ STR_STATION_VIEW_CLOSE_AIRPORT_TOOLTIP                          :{BLACK}Não per
 STR_WAYPOINT_VIEW_CAPTION                                       :{WHITE}{WAYPOINT}
 STR_WAYPOINT_VIEW_CENTER_TOOLTIP                                :{BLACK}Centrar visualização na localização do ponto de controlo. Ctrl+Clique para abrir um novo visualizador na localização do ponto de controlo
 STR_WAYPOINT_VIEW_CHANGE_WAYPOINT_NAME                          :{BLACK}Mudar o nome do ponto de controlo
-STR_BUOY_VIEW_CENTER_TOOLTIP                                    :{BLACK}Centrar visualização na localização da bóia. Ctrl+Clique para abrir um novo visualizador na localização da bóia
-STR_BUOY_VIEW_CHANGE_BUOY_NAME                                  :{BLACK}Mudar o nome da bóia
+STR_BUOY_VIEW_CENTER_TOOLTIP                                    :{BLACK}Centrar visualização na localização da boia. Ctrl+Clique para abrir um novo visualizador na localização da boia
+STR_BUOY_VIEW_CHANGE_BUOY_NAME                                  :{BLACK}Alterar o nome da boia
 
 STR_EDIT_WAYPOINT_NAME                                          :{WHITE}Editar nome do ponto de controlo
 
@@ -5077,13 +5077,13 @@ STR_ERROR_WAYPOINT_ADJOINS_MORE_THAN_ONE_EXISTING               :{WHITE}Junta ma
 STR_ERROR_TOO_CLOSE_TO_ANOTHER_WAYPOINT                         :{WHITE}Demasiado perto de outro ponto de controlo
 
 STR_ERROR_CAN_T_BUILD_TRAIN_WAYPOINT                            :{WHITE}Não é possível construir ponto de controlo de comboio aqui...
-STR_ERROR_CAN_T_POSITION_BUOY_HERE                              :{WHITE}Não é possível posicionar bóia aqui...
+STR_ERROR_CAN_T_POSITION_BUOY_HERE                              :{WHITE}Não é possível colocar uma boia aqui...
 STR_ERROR_CAN_T_CHANGE_WAYPOINT_NAME                            :{WHITE}Não é possível alterar o nome do ponto de controlo...
 
 STR_ERROR_CAN_T_REMOVE_TRAIN_WAYPOINT                           :{WHITE}Não é possível remover ponto de controlo de comboio aqui...
 STR_ERROR_MUST_REMOVE_RAILWAYPOINT_FIRST                        :{WHITE}É preciso remover o ponto de controlo primeiro
-STR_ERROR_BUOY_IN_THE_WAY                                       :{WHITE}... bóia no caminho
-STR_ERROR_BUOY_IS_IN_USE                                        :{WHITE}... bóia está em uso por outra empresa!
+STR_ERROR_BUOY_IN_THE_WAY                                       :{WHITE}... boia no caminho
+STR_ERROR_BUOY_IS_IN_USE                                        :{WHITE}... boia está a ser usada por outra empresa!
 
 # Depot related errors
 STR_ERROR_CAN_T_BUILD_TRAIN_DEPOT                               :{WHITE}Não é possível construir um depósito ferroviário aqui...
@@ -5324,7 +5324,7 @@ STR_ERROR_NO_STOP_ARTICULATED_VEHICLE                           :{WHITE}Não exi
 STR_ERROR_AIRPORT_NO_PLANES                                     :{WHITE}Este avião não pode aterrar neste heliporto
 STR_ERROR_AIRPORT_NO_HELICOPTERS                                :{WHITE}Este helicóptero não pode aterrar neste aeroporto
 STR_ERROR_NO_RAIL_WAYPOINT                                      :{WHITE}Não existe ponto de controlo ferroviário
-STR_ERROR_NO_BUOY                                               :{WHITE}Não existe bóia
+STR_ERROR_NO_BUOY                                               :{WHITE}Não existe uma boia
 
 # Timetable related errors
 STR_ERROR_CAN_T_TIMETABLE_VEHICLE                               :{WHITE}Impossível programar veículo...
@@ -5754,8 +5754,8 @@ STR_FORMAT_GROUP_VEHICLE_NAME                                   :{GROUP} #{COMMA
 STR_FORMAT_INDUSTRY_NAME                                        :{1:STRING} de {0:TOWN}
 
 ###length 2
-STR_FORMAT_BUOY_NAME                                            :Bóia de {TOWN}
-STR_FORMAT_BUOY_NAME_SERIAL                                     :Bóia de {TOWN} #{COMMA}
+STR_FORMAT_BUOY_NAME                                            :Boia de {TOWN}
+STR_FORMAT_BUOY_NAME_SERIAL                                     :Boia de {TOWN} #{COMMA}
 
 ###length 2
 STR_FORMAT_WAYPOINT_NAME                                        :Ponto de controlo {TOWN}
