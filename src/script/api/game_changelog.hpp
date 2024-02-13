@@ -32,6 +32,7 @@
  * \li GSBridge::GetBridgeID renamed to GSBridge::GetBridgeType
  * \li GSWaypoint::GetWaypointID now returns the StationID of any type of waypoint
  * \li GSList instances can now be saved
+ * \li GSAircraft::GetHangarOfAirport adds an optional parameter for the index of the hangar
  *
  * \b 14.0
  *
