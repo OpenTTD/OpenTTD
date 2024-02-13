@@ -217,6 +217,14 @@ public:
 	 * @return Number of helipads of this type of airport. When 0 helicopters will go to normal terminals.
 	 */
 	static SQInteger GetAirportNumHelipads(AirportType type);
+
+	/**
+	 * Get the number of terminals of a type of airport.
+	 * @param type The airport type.
+	 * @pre IsAirportInformationAvailable(type)
+	 * @return Number of terminals of this type of airport.
+	 */
+	static SQInteger GetAirportNumTerminals(AirportType type);
 };
 
 #endif /* SCRIPT_AIRPORT_HPP */

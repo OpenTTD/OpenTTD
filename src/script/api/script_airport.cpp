@@ -179,3 +179,10 @@
 
 	return ::AirportSpec::Get(type)->fsm->num_helipads;
 }
+
+/* static */ SQInteger ScriptAirport::GetAirportNumTerminals(AirportType type)
+{
+	if (!IsAirportInformationAvailable(type)) return -1;
+
+	return ::GetNumTerminals(::AirportSpec::Get(type)->fsm);
+}
