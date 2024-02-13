@@ -1966,20 +1966,6 @@ static bool FreeTerminal(Aircraft *v, uint8_t i, uint8_t last_terminal)
 }
 
 /**
- * Get the number of terminals at the airport.
- * @param apc Airport description.
- * @return Number of terminals.
- */
-static uint GetNumTerminals(const AirportFTAClass *apc)
-{
-	uint num = 0;
-
-	for (uint i = apc->terminals[0]; i > 0; i--) num += apc->terminals[i];
-
-	return num;
-}
-
-/**
  * Find a free terminal, and assign it if available.
  * @param v Aircraft to handle.
  * @param apc Airport state machine.
@@ -2029,7 +2015,7 @@ static bool AirportFindFreeTerminal(Aircraft *v, const AirportFTAClass *apc)
 	}
 
 	/* if there is only 1 terminalgroup, all terminals are checked (starting from 0 to max) */
-	return FreeTerminal(v, 0, GetNumTerminals(apc));
+	return FreeTerminal(v, 0, apc->GetNumTerminals());
 }
 
 /**
