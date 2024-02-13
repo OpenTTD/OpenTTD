@@ -190,6 +190,22 @@ const AirportFTAClass *GetAirport(const uint8_t airport_type)
 }
 
 /**
+ * Get the number of terminals of a finite state machine of an airport.
+ * @param apc Finite state machine of the airport.
+ * @return Number of terminals of the airport.
+ */
+uint GetNumTerminals(const AirportFTAClass *apc)
+{
+	uint num = 0;
+
+	if (apc->terminals != nullptr) {
+		for (uint i = apc->terminals[0]; i > 0; i--) num += apc->terminals[i];
+	}
+
+	return num;
+}
+
+/**
  * Get the vehicle position when an aircraft is build at the given tile
  * @param hangar_tile The tile on which the vehicle is build
  * @return The position (index in airport node array) where the aircraft ends up
