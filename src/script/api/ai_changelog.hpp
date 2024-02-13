@@ -19,6 +19,7 @@
  *
  * API additions:
  * \li AIEventVehicleCrashed::GetVictims
+ * \li AIAirport::GetAirportNumTerminals
  *
  * \b 14.0
  *
