@@ -170,3 +170,10 @@
 
 	return (int64_t)GetMaintenanceCostFactor(type) * _price[PR_INFRASTRUCTURE_AIRPORT] >> 3;
 }
+
+/* static */ SQInteger ScriptAirport::GetAirportNumHelipads(AirportType type)
+{
+	if (!IsAirportInformationAvailable(type)) return -1;
+
+	return ::AirportSpec::Get(type)->fsm->num_helipads;
+}

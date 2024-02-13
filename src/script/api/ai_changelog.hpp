@@ -22,6 +22,7 @@
  * \li AITown::ROAD_LAYOUT_RANDOM
  * \li AIVehicle::IsPrimaryVehicle
  * \li AITileList_StationCoverage
+ * \li AIAirport::GetAirportNumHelipads
  *
  * API removals:
  * \li AIError::ERR_PRECONDITION_TOO_MANY_PARAMETERS, that error is never returned anymore.

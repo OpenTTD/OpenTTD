@@ -805,56 +805,67 @@ ERROR: IsEnd() is invalid as Begin() is never called
   GetAirportWidth(-1):               -1
   GetAirportHeight(-1):              -1
   GetAirportCoverageRadius(-1):      -1
+  GetAirportNumHelipads(-1):         -1
   IsAirportInformationAvailable(0): true
   IsValidAirportType(0):            true
   GetAirportWidth(0):               4
   GetAirportHeight(0):              3
   GetAirportCoverageRadius(0):      4
+  GetAirportNumHelipads(0):         0
   IsAirportInformationAvailable(1): true
   IsValidAirportType(1):            false
   GetAirportWidth(1):               6
   GetAirportHeight(1):              6
   GetAirportCoverageRadius(1):      5
+  GetAirportNumHelipads(1):         0
   IsAirportInformationAvailable(2): true
   IsValidAirportType(2):            false
   GetAirportWidth(2):               1
   GetAirportHeight(2):              1
   GetAirportCoverageRadius(2):      4
+  GetAirportNumHelipads(2):         1
   IsAirportInformationAvailable(3): true
   IsValidAirportType(3):            false
   GetAirportWidth(3):               6
   GetAirportHeight(3):              6
   GetAirportCoverageRadius(3):      6
+  GetAirportNumHelipads(3):         0
   IsAirportInformationAvailable(4): true
   IsValidAirportType(4):            false
   GetAirportWidth(4):               7
   GetAirportHeight(4):              7
   GetAirportCoverageRadius(4):      8
+  GetAirportNumHelipads(4):         2
   IsAirportInformationAvailable(5): true
   IsValidAirportType(5):            false
   GetAirportWidth(5):               5
   GetAirportHeight(5):              4
   GetAirportCoverageRadius(5):      4
+  GetAirportNumHelipads(5):         2
   IsAirportInformationAvailable(6): true
   IsValidAirportType(6):            false
   GetAirportWidth(6):               2
   GetAirportHeight(6):              2
   GetAirportCoverageRadius(6):      4
+  GetAirportNumHelipads(6):         1
   IsAirportInformationAvailable(7): true
   IsValidAirportType(7):            false
   GetAirportWidth(7):               9
   GetAirportHeight(7):              11
   GetAirportCoverageRadius(7):      10
+  GetAirportNumHelipads(7):         2
   IsAirportInformationAvailable(8): true
   IsValidAirportType(8):            false
   GetAirportWidth(8):               4
   GetAirportHeight(8):              2
   GetAirportCoverageRadius(8):      4
+  GetAirportNumHelipads(8):         3
   IsAirportInformationAvailable(9): false
   IsValidAirportType(9):            false
   GetAirportWidth(9):               -1
   GetAirportHeight(9):              -1
   GetAirportCoverageRadius(9):      -1
+  GetAirportNumHelipads(9):         -1
   GetBankBalance():     1999999790
   GetPrice():           5400
   BuildAirport():       true
@@ -9737,9 +9748,9 @@ ERROR: IsEnd() is invalid as Begin() is never called
 --Valuate() with excessive CPU usage--
 Your script made an error: excessive CPU usage in valuator function
 
-*FUNCTION [unknown()] regression/main.nut line [2050]
+*FUNCTION [unknown()] regression/main.nut line [2051]
 *FUNCTION [Valuate()] NATIVE line [-1]
-*FUNCTION [Start()] regression/main.nut line [2051]
+*FUNCTION [Start()] regression/main.nut line [2052]
 
 [id] 0
 [this] TABLE
@@ -9748,7 +9759,7 @@ Your script made an error: excessive CPU usage in valuator function
 [this] INSTANCE
 Your script made an error: excessive CPU usage in valuator function
 
-*FUNCTION [Start()] regression/main.nut line [2051]
+*FUNCTION [Start()] regression/main.nut line [2052]
 
 [Infinite] CLOSURE
 [list] INSTANCE
