@@ -20,6 +20,9 @@
  * API additions:
  * \li AIEventVehicleCrashed::GetVictims
  *
+ * Other changes:
+ * \li AIAircraft::GetHangarOfAirport adds an optional parameter for the index of the hangar
+ *
  * \b 14.0
  *
  * API additions:
