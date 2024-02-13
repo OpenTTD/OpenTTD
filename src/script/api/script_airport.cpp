@@ -179,3 +179,10 @@
 
 	return ::AirportSpec::Get(type)->fsm->num_helipads;
 }
+
+/* static */ SQInteger ScriptAirport::GetAirportNumHangars(AirportType type)
+{
+	if (!IsAirportInformationAvailable(type)) return -1;
+
+	return ::AirportSpec::Get(type)->depots.size();
+}
