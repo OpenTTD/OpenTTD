@@ -88,6 +88,7 @@
  * \li GSStoryPage::IsValidStoryPageButtonFlags
  * \li GSStoryPage::IsValidStoryPageButtonCursor
  * \li GSTileList_StationCoverage
+ * \li GSAirport::GetAirportNumHelipads
  *
  * API removals:
  * \li GSError::ERR_PRECONDITION_TOO_MANY_PARAMETERS, that error is never returned anymore.
