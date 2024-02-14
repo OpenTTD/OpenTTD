@@ -224,23 +224,27 @@ function Regression::Airport()
 		print("  GetAirportNumHangars(" + i + "):          " + AIAirport.GetAirportNumHangars(i));
 	}
 
-	print("  GetBankBalance():     " + AICompany.GetBankBalance(AICompany.COMPANY_SELF));
-	print("  GetPrice():           " + AIAirport.GetPrice(0));
-	print("  BuildAirport():       " + AIAirport.BuildAirport(32116, 0, AIStation.STATION_JOIN_ADJACENT));
-	print("  IsHangarTile():       " + AIAirport.IsHangarTile(32116));
-	print("  IsAirportTile():      " + AIAirport.IsAirportTile(32116));
-	print("  GetAirportType():     " + AIAirport.GetAirportType(32119));
-	print("  GetHangarOfAirport(): " + AIAirport.GetHangarOfAirport(32116));
-	print("  IsHangarTile():       " + AIAirport.IsHangarTile(32119));
-	print("  IsAirportTile():      " + AIAirport.IsAirportTile(32119));
-	print("  GetAirportType():     " + AIAirport.GetAirportType(32119));
-	print("  GetBankBalance():     " + AICompany.GetBankBalance(AICompany.COMPANY_SELF));
+	print("  GetBankBalance():       " + AICompany.GetBankBalance(AICompany.COMPANY_SELF));
+	print("  GetPrice():             " + AIAirport.GetPrice(0));
+	print("  BuildAirport():         " + AIAirport.BuildAirport(32116, 0, AIStation.STATION_JOIN_ADJACENT));
+	print("  IsHangarTile():         " + AIAirport.IsHangarTile(32116));
+	print("  IsAirportTile():        " + AIAirport.IsAirportTile(32116));
+	print("  GetAirportType():       " + AIAirport.GetAirportType(32119));
+	print("  GetHangarOfAirport():   " + AIAirport.GetHangarOfAirport(32116));
+	print("  GetNumHangars():        " + AIAirport.GetNumHangars(32116));
+	print("  GetAirportNumHangars(): " + AIAirport.GetAirportNumHangars(AIAirport.GetAirportType(32116)));
+	print("  IsHangarTile():         " + AIAirport.IsHangarTile(32119));
+	print("  IsAirportTile():        " + AIAirport.IsAirportTile(32119));
+	print("  GetAirportType():       " + AIAirport.GetAirportType(32119));
+	print("  GetNumHangars():        " + AIAirport.GetNumHangars(32119));
+	print("  GetAirportNumHangars(): " + AIAirport.GetAirportNumHangars(AIAirport.GetAirportType(32119)));
+	print("  GetBankBalance():       " + AICompany.GetBankBalance(AICompany.COMPANY_SELF));
 
-	print("  RemoveAirport():      " + AIAirport.RemoveAirport(32118));
-	print("  IsHangarTile():       " + AIAirport.IsHangarTile(32119));
-	print("  IsAirportTile():      " + AIAirport.IsAirportTile(32119));
-	print("  GetBankBalance():     " + AICompany.GetBankBalance(AICompany.COMPANY_SELF));
-	print("  BuildAirport():       " + AIAirport.BuildAirport(32116, 0, AIStation.STATION_JOIN_ADJACENT));
+	print("  RemoveAirport():        " + AIAirport.RemoveAirport(32118));
+	print("  IsHangarTile():         " + AIAirport.IsHangarTile(32119));
+	print("  IsAirportTile():        " + AIAirport.IsAirportTile(32119));
+	print("  GetBankBalance():       " + AICompany.GetBankBalance(AICompany.COMPANY_SELF));
+	print("  BuildAirport():         " + AIAirport.BuildAirport(32116, 0, AIStation.STATION_JOIN_ADJACENT));
 }
 
 function Regression::Bridge()
