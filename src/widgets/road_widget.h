@@ -58,6 +58,7 @@ enum BuildRoadStationWidgets : WidgetID {
 	WID_BROS_MATRIX_SCROLL,          ///< Scrollbar of the #WID_BROS_SHOW_NEWST_ADDITIONS.
 	WID_BROS_FILTER_CONTAINER,       ///< Container for the filter text box for the road stop class list.
 	WID_BROS_FILTER_EDITBOX,         ///< Filter text box for the road stop class list.
+	WID_BROS_AVAILABLE_ORIENTATIONS, ///< Selection for selecting 6 or 2 orientations.
 	WID_BROS_SHOW_NEWST_DEFSIZE,     ///< Selection for default-size button for new road stops.
 	WID_BROS_SHOW_NEWST_ADDITIONS,   ///< Selection for new class selection list.
 	WID_BROS_SHOW_NEWST_MATRIX,      ///< Selection for new stop image matrix.
