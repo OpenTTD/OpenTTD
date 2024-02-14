@@ -50,6 +50,18 @@ public:
 	};
 
 	/**
+	 * Airport plane compatibility return values.
+	 */
+	enum AirportPlaneCompatibility {
+		/* Note: only one of these values is returned by ScriptAirport::GetAirportPlaneCompatibility */
+		APC_INCOMPATIBLE, ///< The aircraft can't use the airport at all.
+		APC_COMPATIBLE, ///< The aircraft can use the airport in a safe manner.
+		APC_SHORT_RUNWAY, ///< The aircraft can use the airport but the runway is too short.
+
+		APC_INVALID = -1, ///< Preconditions not met.
+	};
+
+	/**
 	 * Checks whether the given AirportType is valid and available.
 	 * @param type The AirportType to check.
 	 * @return True if and only if the AirportType is valid and available.
@@ -217,6 +229,16 @@ public:
 	 * @return Number of helipads of this type of airport. When 0 helicopters will go to normal terminals.
 	 */
 	static SQInteger GetAirportNumHelipads(AirportType type);
+
+	/**
+	 * Get the airport plane compatibility.
+	 * @param airport_type The airport type to check compatibility with the plane type.
+	 * @param plane_type The plane type to check compatibility with the airport type.
+	 * @pre IsAirportInformationAvailable(airport_type)
+	 * @pre plane_type == PT_HELICOPTER || plane_type == PT_SMALL_PLANE || plane_type == PT_BIG_PLANE
+	 * @return The AirportPlaneCompatibility type.
+	 */
+	static AirportPlaneCompatibility GetAirportPlaneCompatibility(AirportType airport_type, PlaneType plane_type);
 };
 
 #endif /* SCRIPT_AIRPORT_HPP */
