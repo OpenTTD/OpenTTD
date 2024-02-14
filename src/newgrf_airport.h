@@ -67,7 +67,7 @@ public:
 };
 
 /** List of default airport classes. */
-enum AirportClassID {
+enum AirportClassID : uint8_t {
 	APC_BEGIN     = 0,  ///< Lowest valid airport class id
 	APC_SMALL     = 0,  ///< id for small airports class
 	APC_LARGE,          ///< id for large airports class
