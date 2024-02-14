@@ -497,6 +497,8 @@ public:
 
 	int shown_plane; ///< Plane being displayed (for #NWID_SELECTION only).
 	const WidgetID index; ///< If non-negative, index in the #Window::widget_lookup.
+private:
+	WidgetLookup *widget_lookup; ///< Window's widget lookup, updated in SetDisplayedPlane().
 };
 
 /** Nested widget container flags, */
