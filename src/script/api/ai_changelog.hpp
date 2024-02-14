@@ -19,6 +19,11 @@
  *
  * API additions:
  * \li AIEventVehicleCrashed::GetVictims
+ * \li AIAirport::GetAirportPlaneCompatibility
+ * \li AIAirport::APC_INCOMPATIBLE
+ * \li AIAirport::APC_COMPATIBLE
+ * \li AIAirport::APC_SHORT_RUNWAY
+ * \li AIAirport::APC_INVALID
  *
  * \b 14.0
  *
