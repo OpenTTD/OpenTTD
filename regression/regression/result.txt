@@ -884,9 +884,12 @@ ERROR: IsEnd() is invalid as Begin() is never called
   IsAirportTile():      true
   GetAirportType():     0
   GetHangarOfAirport(): 32119
+  GetNumHangars():      1
+  GetAirportNumHangars(): 1
   IsHangarTile():       true
   IsAirportTile():      true
   GetAirportType():     0
+  GetNumHangars():      1
   GetBankBalance():     1999989890
   RemoveAirport():      true
   IsHangarTile():       false
@@ -9774,9 +9777,9 @@ ERROR: IsEnd() is invalid as Begin() is never called
 --Valuate() with excessive CPU usage--
 Your script made an error: excessive CPU usage in valuator function
 
-*FUNCTION [unknown()] regression/main.nut line [2066]
+*FUNCTION [unknown()] regression/main.nut line [2069]
 *FUNCTION [Valuate()] NATIVE line [-1]
-*FUNCTION [Start()] regression/main.nut line [2067]
+*FUNCTION [Start()] regression/main.nut line [2070]
 
 [id] 0
 [this] TABLE
@@ -9785,7 +9788,7 @@ Your script made an error: excessive CPU usage in valuator function
 [this] INSTANCE
 Your script made an error: excessive CPU usage in valuator function
 
-*FUNCTION [Start()] regression/main.nut line [2067]
+*FUNCTION [Start()] regression/main.nut line [2070]
 
 [Infinite] CLOSURE
 [list] INSTANCE
