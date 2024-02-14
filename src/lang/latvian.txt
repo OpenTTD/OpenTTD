@@ -1925,7 +1925,7 @@ STR_CONFIG_SETTING_DRAG_SIGNALS_DENSITY                         :Velkot izvietot
 STR_CONFIG_SETTING_DRAG_SIGNALS_DENSITY_HELPTEXT                :Iestatīt attālumus, kādos līdz nākamajam šķērslim (signālierīcei, dzelzceļa mezglam) uz ceļa tiks būvētas signālierīces, ja tās tiek vilktas
 STR_CONFIG_SETTING_DRAG_SIGNALS_DENSITY_VALUE                   :{COMMA} lauciņ{P 0 a a a}
 STR_CONFIG_SETTING_DRAG_SIGNALS_FIXED_DISTANCE                  :Velkot paturēt vienādu attālumu starp signālierīcēm: {STRING}
-STR_CONFIG_SETTING_DRAG_SIGNALS_FIXED_DISTANCE_HELPTEXT         :Velkot signālus, izvēlaties izvietojuma opciju. Ja ieslēgts, signāli tiek novietoti ap tuneļiem vai tiltiem, lai izvairītos no gariem posmiem bez signāliem. Ja atslēgts, signāli tiek ievietoti ik pēc n elementiem, atvieglojot signālu izlīdzināšanu paralēlos sliežu ceļus
+STR_CONFIG_SETTING_DRAG_SIGNALS_FIXED_DISTANCE_HELPTEXT         :Velkot siglānus, atlasiet signāla izvietojuma uzvedību. Ja izslēgts, signāli tiek novietoti ap tuneļiem vai tiltiem, lai izvairītos no gariem posmiem bez signāliem. Ja ieslēgts, signāli tiek novietoti ik pēc n elementiem, atvieglojot signālu izlīdzināšanu paralēlos sliežu ceļus
 
 STR_CONFIG_SETTING_SEMAPHORE_BUILD_BEFORE_DATE                  :Automātiski būvēt semaforus pirms: {STRING} gada
 STR_CONFIG_SETTING_SEMAPHORE_BUILD_BEFORE_DATE_HELPTEXT         :Izvēlēties gadu, kad ceļiem sāks izmantot elektriskās signālierīces. Pirms šā gada tiks izmantotas neelektriskās signālierīces (kam ir tieši tāda pati funkcija, bet ar atšķirīgu izskatu)
@@ -2792,7 +2792,7 @@ STR_RAIL_TOOLBAR_TOOLTIP_BUILD_AUTORAIL                         :{BLACK}Būvēt 
 STR_RAIL_TOOLBAR_TOOLTIP_BUILD_TRAIN_DEPOT_FOR_BUILDING         :{BLACK}Būvēt vilcienu depo (vilcienu pirkšanai un apkopei). Shift parāda novērtētās izmaksas, neveicot būvēšanu
 STR_RAIL_TOOLBAR_TOOLTIP_CONVERT_RAIL_TO_WAYPOINT               :{BLACK}Izveidojiet ceļa punktu uz dzelzceļa. Ctrl ļauj pievienot vairākus pieturas punktus. Shift parāda novērtētās izmaksas, neveicot būvēšanu
 STR_RAIL_TOOLBAR_TOOLTIP_BUILD_RAILROAD_STATION                 :{BLACK}Būvēt dzelzceļa staciju. Ctrl+klikšķis iespējo staciju apvienošanu.  Shift parāda izmaksas, neveicot būvēšanu
-STR_RAIL_TOOLBAR_TOOLTIP_BUILD_RAILROAD_SIGNALS                 :{BLACK}Būvēt dzelzceļa signālu. Ctrl+klikšķis, lai izveidotu alternatīvu signāla stilu{} Velciet lai aizpildītu signālus līdz nākamajam krustojumam, stacijai vai signālam.  Shiftparāda izmaksas, neveicot iegādi
+STR_RAIL_TOOLBAR_TOOLTIP_BUILD_RAILROAD_SIGNALS                 :{BLACK}Būvējiet signālu uz dzelzceļa. Ctrl+klikšķis, lai izveidotu alternatīvu signāla stilu{}Velciet, lai atlasīto sliedes posmu aizpildītu ar signāliem izvēlētajā atstatumā. Velciet Ctrl+klikšķis, lai aizpildītu signālus līdz nākamajam krustojumam, stacijai vai signālam. Shift parāda izmaksas, neveicot būvēšanu
 STR_RAIL_TOOLBAR_TOOLTIP_BUILD_RAILROAD_BRIDGE                  :{BLACK}Būvēt dzelzceļa tiltu. Shift pārslēdz būvēšanu/izmaksu tāmes rādīšanu
 STR_RAIL_TOOLBAR_TOOLTIP_BUILD_RAILROAD_TUNNEL                  :{BLACK}Būvēt dzelzceļa tuneli. Shift parāda izmaksas, neveicot būvēšanu
 STR_RAIL_TOOLBAR_TOOLTIP_TOGGLE_BUILD_REMOVE_FOR                :{BLACK}Pārslēgties starp sliežu, signālierīču, pieturas punktu būvēšanu/noņemšanu. Aizturēt Ctrl+klikšķis, lai noņemtu arī sliedes no pieturas punktiem un stacijām
@@ -4624,7 +4624,7 @@ STR_ORDER_GO_TO_NEAREST_DEPOT                                   :Doties uz tuvā
 STR_ORDER_GO_TO_NEAREST_HANGAR                                  :Doties uz tuvāko angāru
 STR_ORDER_CONDITIONAL                                           :Nosacītais rīkojuma lēciens
 STR_ORDER_SHARE                                                 :Koplietot rīkojumus
-STR_ORDERS_GO_TO_TOOLTIP                                        :{BLACK}Ievietot jaunu rīkojumu pirms iezīmētā rīkojuma vai saraksta beigās. Ctrl+klikšķis izveido stacijas rīkojumu 'piekraut pilnu ar jebkuru kravu', liek braukt cauri pieturas punktam 'neapstājoties' un depo veikt 'apkopi'. 'Koplietot rīkojumus' vai Ctrl+klikšķis ļauj šim transportlīdzeklim lietot rīkojumus kopīgi ar atlasīto transportlīdzekli. Klikšķināšana uz transportlīdzekļa kopēs tā rīkojumus. Depo rīkojums izslēdz automātisko apkopi.
+STR_ORDERS_GO_TO_TOOLTIP                                        :{BLACK}Ievietojiet jaunu pasūtījumu pirms iezīmētā pasūtījuma vai pievienojiet saraksta beigām. Ctrl+klikšķis uz stacijas lai 'piekraut pilnu', uz pieturas punkta, lai atcelu iestatījumu "bez pieturas pēc noklusējuma", vai uz noliktavas, lai veiktu apkopi. Noklikšķiniet uz cita transportlīdzekļa, lai kopētu tā pasūtījumus, vai Ctrl+klikšķis, lai kopīgotu pasūtījumus. Depo pasūtījums atspējo transportlīdzekļa automātisko apkalpošanu
 
 STR_ORDERS_VEH_WITH_SHARED_ORDERS_LIST_TOOLTIP                  :{BLACK}Rādīt visus ar šo plānu saistītos transportlīdzekļus
 

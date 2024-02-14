@@ -917,6 +917,8 @@ STR_NEWS_SUBSIDY_WITHDRAWN_SERVICE                              :{BIG_FONT}{BLAC
 ###length 4
 
 STR_NEWS_EXCLUSIVE_RIGHTS_TITLE                                 :{BIG_FONT}{BLACK}Taşımacılıkta tekel!
+STR_NEWS_EXCLUSIVE_RIGHTS_DESCRIPTION_MONTHS                    :{BIG_FONT}{BLACK}{TOWN} yerel yönetimi, 12 aylık özel ulaşım hakları için {STRING} ile sözleşme imzaladı!
+STR_NEWS_EXCLUSIVE_RIGHTS_DESCRIPTION_MINUTES                   :{BIG_FONT}{BLACK}{TOWN} yerel yönetimi, 12 dakikalık özel ulaşım hakları için {STRING} ile sözleşme imzaladı!
 
 # Extra view window
 STR_EXTRA_VIEWPORT_TITLE                                        :{WHITE}Görünüm {COMMA}
@@ -1076,6 +1078,7 @@ STR_GAME_OPTIONS_BASE_MUSIC_DESCRIPTION_TOOLTIP                 :{BLACK}Temel m�
 
 STR_GAME_OPTIONS_SOCIAL_PLUGINS_NONE                            :{LTBLUE}(yüklü sosyal platformlarla entegre edilecek eklenti yok)
 
+STR_GAME_OPTIONS_SOCIAL_PLUGIN_TITLE                            :{BLACK}{STRING} ({STRING})
 STR_GAME_OPTIONS_SOCIAL_PLUGIN_PLATFORM                         :{BLACK}Platform:
 STR_GAME_OPTIONS_SOCIAL_PLUGIN_STATE                            :{BLACK}Eklenti statüsü:
 
@@ -1403,6 +1406,7 @@ STR_CONFIG_SETTING_AUTOSCROLL_EVERY_VIEWPORT                    :Tüm görüş a
 STR_CONFIG_SETTING_BRIBE                                        :Belediye rüşveti izinli: {STRING}
 ###length 2
 STR_CONFIG_SETTING_BRIBE_HELPTEXT                               :Şirketlerin yerel yönetime rüşvet vermeyi denemelerine izin ver. Şayet rüşvet girişimi bir gözlemci tarafından fark edilirse şirket o bölgede altı ay eylemde bulunamaz
+STR_CONFIG_SETTING_BRIBE_HELPTEXT_MINUTES                       :Şirketlerin yerel yönetime rüşvet vermeyi denemelerine izin ver. Şayet rüşvet girişimi bir gözlemci tarafından fark edilirse şirket o bölgede altı dakika boyunca eylemde bulunamaz
 
 STR_CONFIG_SETTING_ALLOW_EXCLUSIVE                              :Şehrin ulaşım haklarını satın alma izinli: {STRING}
 ###length 2
@@ -1465,12 +1469,15 @@ STR_CONFIG_SETTING_ORDER_REVIEW_ON                              :Bütün araçla
 
 STR_CONFIG_SETTING_WARN_INCOME_LESS                             :Bir aracın geliri eksi olunca uyar: {STRING}
 ###length 2
-STR_CONFIG_SETTING_WARN_INCOME_LESS_HELPTEXT                    :Etkinleştirildiğinde, eğer bir araç bir takvim yılı içerisinde hiç kar etmezse bir haber mesajı gönderilir.
+STR_CONFIG_SETTING_WARN_INCOME_LESS_HELPTEXT                    :Etkinleştirildiğinde, eğer bir araç bir yıl içerisinde hiç kâr etmezse bir haber mesajı gönderilir.
+STR_CONFIG_SETTING_WARN_INCOME_LESS_HELPTEXT_PERIOD             :Etkinleştirildiğinde, eğer bir araç bir periyot içerisinde hiç kâr etmezse bir haber mesajı gönderilir.
 
 STR_CONFIG_SETTING_NEVER_EXPIRE_VEHICLES                        :Eski araçlar sürekli üretilsin: {STRING}
 STR_CONFIG_SETTING_NEVER_EXPIRE_VEHICLES_HELPTEXT               :Etkinleştirildiğinde, tüm araç modelleri piyasaya çıkışlarından itibaren sonsuza dek satın alınabilir.
 
+STR_CONFIG_SETTING_TIMEKEEPING_UNITS                            :Zaman çizelgesi: {STRING}
 ###length 2
+STR_CONFIG_SETTING_TIMEKEEPING_UNITS_CALENDAR                   :Takvim
 
 STR_CONFIG_SETTING_MINUTES_PER_YEAR                             :Yıldaki dakika sayısı: {STRING}
 STR_CONFIG_SETTING_MINUTES_PER_YEAR_HELPTEXT                    :Bir takvim yılındaki dakika sayısını seçin. Varsayılan 12 dakikadır. Takvim saatinin değişmesini durdurmak için 0'a ayarlayın. Bu ayar oyunun ekonomik simülasyonunu etkilemez ve yalnızca duvar saati zaman işleyişini kullanırken kullanılabilir.
@@ -1481,6 +1488,7 @@ STR_CONFIG_SETTING_MINUTES_PER_YEAR_FROZEN                      :0 (Takvim zaman
 
 STR_CONFIG_SETTING_INDUSTRY_CARGO_SCALE                         :Fabrikaların kargo üretimini ölçeklendirin: {STRING}
 STR_CONFIG_SETTING_INDUSTRY_CARGO_SCALE_HELPTEXT                :Fabrikaların kargo üretimini bu yüzdeye göre ölçeklendirin.
+STR_CONFIG_SETTING_CARGO_SCALE_VALUE                            :{NUM}%
 
 STR_CONFIG_SETTING_AUTORENEW_VEHICLE                            :Araç eskiyince otomatik olarak yenile: {STRING}
 STR_CONFIG_SETTING_AUTORENEW_VEHICLE_HELPTEXT                   :Etkinleştirildiğinde, yenileme koşulları sağlandığı takdirde ömrünün sonuna yaklaşan bir araç otomatik olarak yenilenir.
@@ -2227,11 +2235,13 @@ STR_LIVERY_TRAIN_TOOLTIP                                        :{BLACK}Tren ren
 STR_LIVERY_ROAD_VEHICLE_TOOLTIP                                 :{BLACK}Araç renk düzenlerini göster
 STR_LIVERY_SHIP_TOOLTIP                                         :{BLACK}Gemi renk düzenlerini göster
 STR_LIVERY_AIRCRAFT_TOOLTIP                                     :{BLACK}Uçakların renk şemalarını göster
+STR_LIVERY_ROAD_VEHICLE_GROUP_TOOLTIP                           :{BLACK}Karayolu araç listesi renklerini göster
 STR_LIVERY_SHIP_GROUP_TOOLTIP                                   :{BLACK}Gemi listelerinin renklerini göster
 STR_LIVERY_AIRCRAFT_GROUP_TOOLTIP                               :{BLACK}Uçak listelerinin renklerini göster
 STR_LIVERY_PRIMARY_TOOLTIP                                      :{BLACK}Seçili düzen için birincil rengi seç. Ctrl ile tıklama bu rengi bütün düzenler için kaydedecek
 STR_LIVERY_SECONDARY_TOOLTIP                                    :{BLACK}Seçili düzen için ikincil rengi seç. Ctrl ile tıklama bu rengi bütün düzenler için kaydedecek
 STR_LIVERY_PANEL_TOOLTIP                                        :{BLACK}Değiştirilecek bir renk düzeni seçin ya da CTRL+Tıklama ile birden düzen seçin. Düzenin kullanımını açıp kapatmak için kutuya tıklayın.
+STR_LIVERY_ROAD_VEHICLE_GROUP_EMPTY                             :Herhangibir karayolu araç listesi ayarlanmadı
 STR_LIVERY_SHIP_GROUP_EMPTY                                     :Hiçbir gemi listesi oluşturulmadı
 STR_LIVERY_AIRCRAFT_GROUP_EMPTY                                 :Hiçbir uçak listesi oluşturulmadı
 
@@ -3666,7 +3676,12 @@ STR_SUBSIDIES_CAPTION                                           :{WHITE}Teşvikl
 STR_SUBSIDIES_OFFERED_TITLE                                     :{BLACK}Teklif edilmiş teşvikler:
 STR_SUBSIDIES_NONE                                              :{ORANGE}- Yok -
 STR_SUBSIDIES_SUBSIDISED_TITLE                                  :{BLACK}Teşvik almakta olan hizmetler:
+STR_SUBSIDIES_SUBSIDISED_FROM_TO                                :{ORANGE}{STRING} 'den {STRING}  {STRING}{YELLOW}'ne ({COMPANY}{YELLOW}, {STRING})
 STR_SUBSIDIES_TOOLTIP_CLICK_ON_SERVICE_TO_CENTER                :{BLACK}Görüntüyü ortalamak için endüstriye/şehre tıklayın. Ctrl ile tıklama endüstrinin/şehrin konumunu gösteren yeni bir pencere açar
+STR_SUBSIDIES_OFFERED_EXPIRY_DATE                               : {DATE_SHORT}'de/da
+STR_SUBSIDIES_OFFERED_EXPIRY_TIME                               :{UNITS_MONTHS_OR_MINUTES} içinde
+STR_SUBSIDIES_SUBSIDISED_EXPIRY_DATE                            :Şu tarihe kadar {DATE_SHORT}
+STR_SUBSIDIES_SUBSIDISED_EXPIRY_TIME                            :Kalan süre {UNITS_MONTHS_OR_MINUTES}
 
 # Story book window
 STR_STORY_BOOK_CAPTION                                          :{WHITE}{COMPANY} Hikaye Kitabı
@@ -3980,7 +3995,9 @@ STR_GROUP_REMOVE_ALL_VEHICLES                                   :Bütün araçla
 STR_GROUP_RENAME_CAPTION                                        :{BLACK}Grubun ismini değiştir
 
 STR_GROUP_PROFIT_THIS_YEAR                                      :Bu yılki kar:
+STR_GROUP_PROFIT_THIS_PERIOD                                    :Bu periyottaki kâr
 STR_GROUP_PROFIT_LAST_YEAR                                      :Geçen yılki kar:
+STR_GROUP_PROFIT_LAST_PERIOD                                    :Geçen periyottaki kâr:
 STR_GROUP_OCCUPANCY                                             :Şu anki kullanım:
 STR_GROUP_OCCUPANCY_VALUE                                       :%{NUM}
 
@@ -4369,6 +4386,8 @@ STR_VEHICLE_INFO_WEIGHT_POWER_MAX_SPEED_MAX_TE                  :{BLACK}Ağırl�
 
 STR_VEHICLE_INFO_PROFIT_THIS_YEAR_LAST_YEAR                     :{BLACK}Bu yılki kar: {LTBLUE}{CURRENCY_LONG} (geçen yıl: {CURRENCY_LONG})
 STR_VEHICLE_INFO_PROFIT_THIS_YEAR_LAST_YEAR_MIN_PERFORMANCE     :{BLACK}Bu yıl kâr: {LTBLUE}{CURRENCY_LONG} (geçen sene: {CURRENCY_LONG}) {BLACK}Min. performans: {LTBLUE}{POWER_TO_WEIGHT}
+STR_VEHICLE_INFO_PROFIT_THIS_PERIOD_LAST_PERIOD                 :{BLACK}Bu periyottaki kâr: {LTBLUE}{CURRENCY_LONG} (Geçen periyot: {CURRENCY_LONG})
+STR_VEHICLE_INFO_PROFIT_THIS_PERIOD_LAST_PERIOD_MIN_PERFORMANCE :{BLACK}Bu periyottaki kâr: {LTBLUE}{CURRENCY_LONG} (Geçen periyot: {CURRENCY_LONG}) {BLACK}Min. performans: {LTBLUE}{POWER_TO_WEIGHT}
 STR_VEHICLE_INFO_RELIABILITY_BREAKDOWNS                         :{BLACK}Güvenilirlik: {LTBLUE}{COMMA}%  {BLACK}Son bakımdan beri bozulma sayısı: {LTBLUE}{COMMA}
 
 STR_VEHICLE_INFO_BUILT_VALUE                                    :{LTBLUE}{ENGINE} {BLACK}Üretim: {LTBLUE}{NUM}{BLACK} Değer: {LTBLUE}{CURRENCY_LONG}
@@ -4382,6 +4401,8 @@ STR_VEHICLE_INFO_FEEDER_CARGO_VALUE                             :{BLACK}Aktarma 
 STR_VEHICLE_DETAILS_SERVICING_INTERVAL_DAYS                     :{BLACK}Bakım aralığı: {LTBLUE}{COMMA}{NBSP}gün{BLACK}   {STRING}
 STR_VEHICLE_DETAILS_SERVICING_INTERVAL_MINUTES                  :{BLACK}Bakım aralığı: {LTBLUE}{COMMA}{NBSP}dakika{BLACK}   {STRING}
 STR_VEHICLE_DETAILS_SERVICING_INTERVAL_PERCENT                  :{BLACK}Bakım aralığı: {LTBLUE}{COMMA}%{BLACK}   {STRING}
+STR_VEHICLE_DETAILS_LAST_SERVICE_DATE                           :Son bakımı: {LTBLUE}{DATE_LONG}
+STR_VEHICLE_DETAILS_LAST_SERVICE_MINUTES_AGO                    :Son bakımı: {LTBLUE}{NUM} dakika önce
 STR_VEHICLE_DETAILS_INCREASE_SERVICING_INTERVAL_TOOLTIP_DAYS    :{BLACK}Bakım aralığını 10 gün arttırın. Bakım aralığını 5 gün arttırmak için Ctrl+Sol tık yapın.
 STR_VEHICLE_DETAILS_INCREASE_SERVICING_INTERVAL_TOOLTIP_MINUTES :{BLACK}Bakım aralığını 5 dakika arttırın. Bakım aralığını 1 gün arttırmak için Ctrl+Sol tık yapın.
 STR_VEHICLE_DETAILS_INCREASE_SERVICING_INTERVAL_TOOLTIP_PERCENT :{BLACK}Bakım aralığını yüzde 10 arttırın. Bakım aralığını yüzde 5 arttırmak için Ctrl+Sol tık yapın.
@@ -5745,6 +5766,10 @@ STR_TOWN_NAME                                                   :{TOWN}
 STR_VEHICLE_NAME                                                :{VEHICLE}
 STR_WAYPOINT_NAME                                               :{WAYPOINT}
 
+STR_CURRENCY_SHORT_KILO                                         :{NBSP}k
+STR_CURRENCY_SHORT_MEGA                                         :{NBSP}m
+STR_CURRENCY_SHORT_GIGA                                         :{NBSP}mlyn
+STR_CURRENCY_SHORT_TERA                                         :{NBSP}tn
 
 STR_JUST_CARGO                                                  :{CARGO_LONG}
 STR_JUST_RIGHT_ARROW                                            :{RIGHT_ARROW}

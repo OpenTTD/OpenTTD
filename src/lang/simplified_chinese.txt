@@ -393,7 +393,7 @@ STR_TOOLBAR_TOOLTIP_DISPLAY_STORY_BOOK                          :{BLACK}显示�
 STR_TOOLBAR_TOOLTIP_DISPLAY_GOALS_LIST                          :{BLACK}显示游戏目标选单
 STR_TOOLBAR_TOOLTIP_DISPLAY_GRAPHS                              :{BLACK}显示公司图表和货物运费表
 STR_TOOLBAR_TOOLTIP_DISPLAY_COMPANY_LEAGUE                      :{BLACK}显示公司排行榜
-STR_TOOLBAR_TOOLTIP_FUND_CONSTRUCTION_OF_NEW                    :{BLACK}查看工业设施或投资工业设施建设
+STR_TOOLBAR_TOOLTIP_FUND_CONSTRUCTION_OF_NEW                    :{BLACK}查看产业链、工业列表，或建设新工业
 STR_TOOLBAR_TOOLTIP_DISPLAY_LIST_OF_COMPANY_TRAINS              :{BLACK}显示公司的火车列表。按住 Ctrl 键单击可以切换组群和车辆列表。
 STR_TOOLBAR_TOOLTIP_DISPLAY_LIST_OF_COMPANY_ROAD_VEHICLES       :{BLACK}显示公司的汽车列表。按住 Ctrl 键单击可以切换组群和汽车列表。
 STR_TOOLBAR_TOOLTIP_DISPLAY_LIST_OF_COMPANY_SHIPS               :{BLACK}显示公司的船只列表。按住 Ctrl 键单击可以切换组群和船只列表。
@@ -3814,7 +3814,7 @@ STR_STATION_VIEW_CLOSE_AIRPORT_TOOLTIP                          :{BLACK}禁止�
 
 # Waypoint/buoy view window
 STR_WAYPOINT_VIEW_CAPTION                                       :{WHITE}{WAYPOINT}
-STR_WAYPOINT_VIEW_CENTER_TOOLTIP                                :{BLACK}将屏幕中心移动到路点所在的位置. 单击的同时按住Ctrl会在新视点中显示路点位置
+STR_WAYPOINT_VIEW_CENTER_TOOLTIP                                :{BLACK}将屏幕中心移动到路点所在的位置。按住 <Ctrl> 单击会在新视点中显示路点。
 STR_WAYPOINT_VIEW_CHANGE_WAYPOINT_NAME                          :{BLACK}修改路点名
 STR_BUOY_VIEW_CENTER_TOOLTIP                                    :{BLACK}将屏幕中心移动到浮标所在的位置. 单击的同时按住Ctrl会在新视点中显示浮标位置
 STR_BUOY_VIEW_CHANGE_BUOY_NAME                                  :{BLACK}修改浮标名
@@ -4119,7 +4119,7 @@ STR_BUY_VEHICLE_AIRCRAFT_BUY_VEHICLE_TOOLTIP                    :{BLACK}购买�
 ###length VEHICLE_TYPES
 STR_BUY_VEHICLE_TRAIN_BUY_REFIT_VEHICLE_TOOLTIP                 :{BLACK}购买并改装选定的列车。按住 <Shift> 键单击可以显示所需资金
 STR_BUY_VEHICLE_ROAD_VEHICLE_BUY_REFIT_VEHICLE_TOOLTIP          :{BLACK}购买并改装选定的汽车。按住 Shift 键单击可以显示所需资金
-STR_BUY_VEHICLE_SHIP_BUY_REFIT_VEHICLE_TOOLTIP                  :{BLACK}购买并改装选定的船只。按住 Shift 键单击可以显示所需资金
+STR_BUY_VEHICLE_SHIP_BUY_REFIT_VEHICLE_TOOLTIP                  :{BLACK}购买并改装选定的船只。按住 <Shift> 键单击以显示预计费用
 STR_BUY_VEHICLE_AIRCRAFT_BUY_REFIT_VEHICLE_TOOLTIP              :{BLACK}购买并改装选定的飞机，按住 Shift 键单击可以显示所需资金
 
 ###length VEHICLE_TYPES

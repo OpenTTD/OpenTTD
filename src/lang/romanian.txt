@@ -256,15 +256,15 @@ STR_UNITS_HEIGHT_METRIC                                         :{DECIMAL} m
 STR_UNITS_HEIGHT_SI                                             :{DECIMAL} m
 
 # Time units used in string control characters
-STR_UNITS_DAYS                                                  :{COMMA}{NBSP}Zi{P "0" "Zi" "Zile"}
-STR_UNITS_SECONDS                                               :{COMMA}{NBSP}secundă{P "0" "secundă" "secunde"}
-STR_UNITS_TICKS                                                 :{COMMA}{NBSP}tick{P "tick" "tickuri" s}
+STR_UNITS_DAYS                                                  :{COMMA}{NBSP}{P zi zile "de zile"}
+STR_UNITS_SECONDS                                               :{COMMA}{NBSP}{P secundă secunde "de secunde"}
+STR_UNITS_TICKS                                                 :{COMMA}{NBSP}{P tick tickuri "de tickuri"}
 
-STR_UNITS_MONTHS                                                :{NUM}{NBSP}lună{P "0" "lună" "luni"}
-STR_UNITS_MINUTES                                               :{NUM}{NBSP}minut{P "0" "minut" "minute"}
+STR_UNITS_MONTHS                                                :{NUM}{NBSP}{P lună luni "de luni"}
+STR_UNITS_MINUTES                                               :{NUM}{NBSP}{P minut minute "de minute"}
 
-STR_UNITS_YEARS                                                 :{NUM}{NBSP}an{P "0" "an" "ani"}
-STR_UNITS_PERIODS                                               :{NUM}{NBSP}perioadă{P "0" "perioadă" "perioade"}
+STR_UNITS_YEARS                                                 :{NUM}{NBSP}{P an ani "de ani"}
+STR_UNITS_PERIODS                                               :{NUM}{NBSP}{P perioadă perioade "de perioade"}
 
 # Common window strings
 STR_LIST_FILTER_TITLE                                           :{BLACK}Filtru:
@@ -1104,7 +1104,7 @@ STR_GAME_OPTIONS_SOCIAL_PLUGIN_STATE_DUPLICATE                  :{RED}Plugin dup
 STR_GAME_OPTIONS_SOCIAL_PLUGIN_STATE_UNSUPPORTED_API            :{RED}Versiune neacceptată
 STR_GAME_OPTIONS_SOCIAL_PLUGIN_STATE_INVALID_SIGNATURE          :{RED}Semnătură nevalidă
 
-STR_BASESET_STATUS                                              :{STRING} {RED}({NUM} fișier lipsă/corupt{P "fișier" "fișiere" s})
+STR_BASESET_STATUS                                              :{STRING} {RED}({NUM} {P fișier fișiere "de fișiere"} lipsă/corupt{P "" e e})
 
 STR_ERROR_RESOLUTION_LIST_FAILED                                :{WHITE}Nu s-a putut obține lista de rezoluții suportate
 STR_ERROR_FULLSCREEN_FAILED                                     :{WHITE}Comutarea pe întreg ecranul a eșuat
@@ -1268,7 +1268,7 @@ STR_CONFIG_SETTING_HORIZONTAL_POS_LEFT                          :stânga
 STR_CONFIG_SETTING_HORIZONTAL_POS_CENTER                        :centru
 STR_CONFIG_SETTING_HORIZONTAL_POS_RIGHT                         :dreapta
 
-STR_CONFIG_SETTING_SECONDS_VALUE                                :{COMMA}{NBSP}secundă{P "0" "secundă" "secunde"}
+STR_CONFIG_SETTING_SECONDS_VALUE                                :{COMMA}{NBSP}{P 0 secundă secunde "de secunde"}
 
 STR_CONFIG_SETTING_INFINITE_MONEY                               :Bani nelimitați: {STRING}
 STR_CONFIG_SETTING_INFINITE_MONEY_HELPTEXT                      :Permiteți cheltuieli nelimitate și dezactivați falimentul companiilor
@@ -1728,7 +1728,7 @@ STR_CONFIG_SETTING_TIMETABLE_MODE_HELPTEXT                      :Selectați unit
 ###length 3
 STR_CONFIG_SETTING_TIMETABLE_MODE_DAYS                          :Zile
 STR_CONFIG_SETTING_TIMETABLE_MODE_SECONDS                       :Secunde
-STR_CONFIG_SETTING_TIMETABLE_MODE_TICKS                         :Tick-uri
+STR_CONFIG_SETTING_TIMETABLE_MODE_TICKS                         :Tickuri
 
 STR_CONFIG_SETTING_TIMETABLE_SHOW_ARRIVAL_DEPARTURE             :Afișează plecările și sosirile din orare: {STRING}
 STR_CONFIG_SETTING_TIMETABLE_SHOW_ARRIVAL_DEPARTURE_HELPTEXT    :Arată timpii estimați de plecare și sosire din orar
@@ -1831,7 +1831,7 @@ STR_CONFIG_SETTING_SERVINT_AIRCRAFT                             :Intervalul de �
 STR_CONFIG_SETTING_SERVINT_AIRCRAFT_HELPTEXT                    :Alege perioada de întreținere implicită pentru noi aeronave, dacă nu există un interval de întreținere stabilit pentru aeronave
 STR_CONFIG_SETTING_SERVINT_SHIPS                                :Intervalul de întreținere implicit al navelor: {STRING}
 STR_CONFIG_SETTING_SERVINT_SHIPS_HELPTEXT                       :Alege perioada de întreținere implicită pentru noi nave, dacă nu există un interval de întreținere stabilit pentru nave
-STR_CONFIG_SETTING_SERVINT_VALUE                                :{COMMA}{NBSP}Zi{P '0' 'zi' 'zile'}/minut{P '0' 'minut' 'minute'}/%
+STR_CONFIG_SETTING_SERVINT_VALUE                                :{COMMA}{NBSP}{P 0 zi zile "de zile"}/{P 0 minut minute minute}/%
 ###setting-zero-is-special
 STR_CONFIG_SETTING_SERVINT_DISABLED                             :Dezactivat
 
@@ -3219,10 +3219,10 @@ STR_FRAMERATE_GRAPH_SECONDS                                     :{TINY_FONT}{COM
 STR_FRAMERATE_GAMELOOP                                          :{BLACK}Totalul buclei de joc:
 STR_FRAMERATE_GL_ECONOMY                                        :{BLACK}  Manipularea încărcăturilor:
 STR_FRAMERATE_GL_TRAINS                                         :Bilete de tren:
-STR_FRAMERATE_GL_ROADVEHS                                       :Tifurile vehiculelor rutiere:
-STR_FRAMERATE_GL_SHIPS                                          :Căpușele navei:
-STR_FRAMERATE_GL_AIRCRAFT                                       :Tickurile aeronavei:
-STR_FRAMERATE_GL_LANDSCAPE                                      :Tick-urile lumii:
+STR_FRAMERATE_GL_ROADVEHS                                       :{BLACK} Tickurile vehiculelor rutiere:
+STR_FRAMERATE_GL_SHIPS                                          :{BLACK} Tickurile navelor:
+STR_FRAMERATE_GL_AIRCRAFT                                       :{BLACK} Tickurile aeronavelor:
+STR_FRAMERATE_GL_LANDSCAPE                                      :{BLACK} Tickurile lumii:
 STR_FRAMERATE_GL_LINKGRAPH                                      :{BLACK}  Decalaj grafic de conexiuni:
 STR_FRAMERATE_DRAWING                                           :{BLACK}Randare grafică:
 STR_FRAMERATE_DRAWING_VIEWPORTS                                 :{BLACK}  Vizoare globale:
@@ -3236,9 +3236,9 @@ STR_FRAMERATE_AI                                                :{BLACK}   IA {N
 STR_FRAMETIME_CAPTION_GAMELOOP                                  :Buclă de joc
 STR_FRAMETIME_CAPTION_GL_ECONOMY                                :Manipularea încărcăturilor
 STR_FRAMETIME_CAPTION_GL_TRAINS                                 :Ticurile trenurilor
-STR_FRAMETIME_CAPTION_GL_ROADVEHS                               :Ticurile vehiculelor de pe drum
-STR_FRAMETIME_CAPTION_GL_SHIPS                                  :Căpușe de navă
-STR_FRAMETIME_CAPTION_GL_AIRCRAFT                               :Ticurile aeronavei
+STR_FRAMETIME_CAPTION_GL_ROADVEHS                               :Tickurile vehiculelor rutiere
+STR_FRAMETIME_CAPTION_GL_SHIPS                                  :Tickurile navelor
+STR_FRAMETIME_CAPTION_GL_AIRCRAFT                               :Tickurile aeronavelor
 STR_FRAMETIME_CAPTION_GL_LANDSCAPE                              :Ticurile lumii
 STR_FRAMETIME_CAPTION_GL_LINKGRAPH                              :Decalaj grafic de conexiuni
 STR_FRAMETIME_CAPTION_DRAWING                                   :Randare grafică
@@ -4613,7 +4613,7 @@ STR_ORDER_GO_TO_NEAREST_DEPOT                                   :Du-te la cel ma
 STR_ORDER_GO_TO_NEAREST_HANGAR                                  :Du-te la cel mai apropiat hangar
 STR_ORDER_CONDITIONAL                                           :Salt condițional la comandă
 STR_ORDER_SHARE                                                 :Sincronizează comenzile
-STR_ORDERS_GO_TO_TOOLTIP                                        :{BLACK}Inserați o nouă comandă înaintea comenzii evidențiate sau adăugați la sfârșitul listei. Ctrl+Click pe o stație pentru „încărcare completă orice marfă”, pe un punct de referință pentru „non-stop” sau pe un depozit pentru „serviciu”. Faceți clic pe alt vehicul pentru a-i copia comenzile sau Ctrl+Click pentru a partaja comenzile. O comandă de depozit dezactivează întreținerea automată a vehiculului
+STR_ORDERS_GO_TO_TOOLTIP                                        :{BLACK}Inserați o nouă comandă înaintea comenzii evidențiate sau adăugați la sfârșitul listei. Ctrl+Click pe o stație pentru „încărcare completă orice marfă”, pe o haltă pentru inversarea setării de „non-stop” sau pe un depou pentru „serviciu”. Faceți clic pe alt vehicul pentru a-i copia comenzile sau Ctrl+Click pentru a partaja comenzile. O comandă de depou dezactivează întreținerea automată a vehiculului
 
 STR_ORDERS_VEH_WITH_SHARED_ORDERS_LIST_TOOLTIP                  :{BLACK}Arata toate vehiculele care se incadreaza in acest program
 

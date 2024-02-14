@@ -1923,7 +1923,7 @@ STR_CONFIG_SETTING_DRAG_SIGNALS_DENSITY                         :Opastimien väl
 STR_CONFIG_SETTING_DRAG_SIGNALS_DENSITY_HELPTEXT                :Määrittää etäisyyden opastimien välillä seuraavaan esteeseen saakka (opastin, risteys) opastimia vedettäessä
 STR_CONFIG_SETTING_DRAG_SIGNALS_DENSITY_VALUE                   :{COMMA} ruutu{P 0 "" a}
 STR_CONFIG_SETTING_DRAG_SIGNALS_FIXED_DISTANCE                  :Pidä opastimien etäisyys vakiona vedettäessä: {STRING}
-STR_CONFIG_SETTING_DRAG_SIGNALS_FIXED_DISTANCE_HELPTEXT         :Valitse opastimien sijoittelun käyttäytyminen opastimia vedettäessä. Mikäli poissa käytöstä, opastimia sijoitetaan tunneleiden ja siltojen ympärille pitkien opastimettomien osuuksien välttämiseksi. Mikäli käytössä, opastimet sijoitetaan n ruudun välein, mikä helpottaa opastimien kohdistamista rinnakkaisilla raiteilla
+STR_CONFIG_SETTING_DRAG_SIGNALS_FIXED_DISTANCE_HELPTEXT         :Valitse opastimien sijoittelun käyttäytyminen opastimia Ctrl+vedettäessä. Mikäli poissa käytöstä, opastimia sijoitetaan tunneleiden ja siltojen ympärille pitkien opastimettomien osuuksien välttämiseksi. Mikäli käytössä, opastimet sijoitetaan n ruudun välein, mikä helpottaa opastimien kohdistamista rinnakkaisilla raiteilla
 
 STR_CONFIG_SETTING_SEMAPHORE_BUILD_BEFORE_DATE                  :Rakenna ensisijaisesti siipiopastimia ennen vuotta: {STRING}
 STR_CONFIG_SETTING_SEMAPHORE_BUILD_BEFORE_DATE_HELPTEXT         :Valitse vuosi jonka jälkeen käytetään valo-opastimia. Ennen tätä vuotta käytetään siipiopastimia (joilla on sama toiminnallisuus mutta eri ulkonäkö)
@@ -2788,7 +2788,7 @@ STR_RAIL_TOOLBAR_TOOLTIP_BUILD_AUTORAIL                         :{BLACK}Rakenna 
 STR_RAIL_TOOLBAR_TOOLTIP_BUILD_TRAIN_DEPOT_FOR_BUILDING         :{BLACK}Rakenna junavarikko (junien ostamista ja huoltoa varten). Paina lisäksi vaihtonäppäintä nähdäksesi vain kustannusarvion
 STR_RAIL_TOOLBAR_TOOLTIP_CONVERT_RAIL_TO_WAYPOINT               :{BLACK}Rakenna reittipiste rautatielle. Ctrl+napsautus valitsee toisen reittipisteen, johon haluat tämän liitettävän. Paina lisäksi vaihtonäppäintä nähdäksesi vain kustannusarvion.
 STR_RAIL_TOOLBAR_TOOLTIP_BUILD_RAILROAD_STATION                 :{BLACK}Rakenna rautatieasema. Ctrl+napsautus valitsee toisen aseman, johon haluat tämän liitettävän. Paina lisäksi vaihtonäppäintä nähdäksesi vain kustannusarvion
-STR_RAIL_TOOLBAR_TOOLTIP_BUILD_RAILROAD_SIGNALS                 :{BLACK}Rakenna opastin rautatielle. Ctrl+napsautus rakentaa vaihtoehtoista opastintyyliä{}Ctrl+veto täyttää valitun rataosuuden opastimilla määrätyin välein. Ctrl+napsautus+veto täyttää seuraavaan risteykseen, asemaan tai opastimeen asti. Paina lisäksi vaihtonäppäintä nähdäksesi vain kustannusarvion
+STR_RAIL_TOOLBAR_TOOLTIP_BUILD_RAILROAD_SIGNALS                 :{BLACK}Rakenna opastin rautatielle. Ctrl+napsautus rakentaa vaihtoehtoista opastintyyliä{}Napsautus+veto täyttää valitun rataosuuden opastimilla määrätyin välein. Ctrl+napsautus+veto täyttää seuraavaan risteykseen, asemaan tai opastimeen asti. Paina lisäksi vaihtonäppäintä nähdäksesi vain kustannusarvion
 STR_RAIL_TOOLBAR_TOOLTIP_BUILD_RAILROAD_BRIDGE                  :{BLACK}Rakenna rautatiesilta. Painettaessa Shift näyttää vain kustannusarvion
 STR_RAIL_TOOLBAR_TOOLTIP_BUILD_RAILROAD_TUNNEL                  :{BLACK}Rakenna rautatietunneli. Paina lisäksi vaihtonäppäintä nähdäksesi vain kustannusarvion
 STR_RAIL_TOOLBAR_TOOLTIP_TOGGLE_BUILD_REMOVE_FOR                :{BLACK}Rautatien, opastimien, reittipisteiden ja asemien rakentaminen/poisto päälle/pois. Ctrl+napsautus poistaa myös reittipisteiden ja asemien raiteet
@@ -3745,8 +3745,10 @@ STR_STATION_LIST_WAYPOINT                                       :{YELLOW}{WAYPOI
 STR_STATION_LIST_NONE                                           :{YELLOW}- Ei mitään -
 STR_STATION_LIST_SELECT_ALL_FACILITIES                          :{BLACK}Valitse kaikki laitteet
 STR_STATION_LIST_CARGO_FILTER_ALL_AND_NO_RATING                 :Kaikki rahtityypit, ei arviota
+STR_STATION_LIST_CARGO_FILTER_MULTIPLE                          :Useita rahtityyppejä
 STR_STATION_LIST_CARGO_FILTER_NO_CARGO_TYPES                    :Ei rahtityyppejä
 STR_STATION_LIST_CARGO_FILTER_NO_RATING                         :Ei rahtiluokitusta
+STR_STATION_LIST_CARGO_FILTER_EXPAND                            :Näytä lisää...
 
 # Station view window
 STR_STATION_VIEW_CAPTION                                        :{WHITE}{STATION} {STATION_FEATURES}
@@ -4336,7 +4338,7 @@ STR_VEHICLE_VIEW_AIRCRAFT_CENTER_TOOLTIP                        :{BLACK}Keskitä
 STR_VEHICLE_VIEW_TRAIN_SEND_TO_DEPOT_TOOLTIP                    :{BLACK}Lähetä juna veturitalliin. Ctrl+napsautus suorittaa vain huollon.
 STR_VEHICLE_VIEW_ROAD_VEHICLE_SEND_TO_DEPOT_TOOLTIP             :{BLACK}Lähetä ajoneuvo varikolle. Ctrl+napsautus suorittaa vain huollon.
 STR_VEHICLE_VIEW_SHIP_SEND_TO_DEPOT_TOOLTIP                     :{BLACK}Lähetä laiva telakalle. Ctrl+napsautus suorittaa vain huollon.
-STR_VEHICLE_VIEW_AIRCRAFT_SEND_TO_DEPOT_TOOLTIP                 :{BLACK}Lähetä ilma-alus lentokonehalliin. Ctrl+napsautus suorittaa vain huollon.
+STR_VEHICLE_VIEW_AIRCRAFT_SEND_TO_DEPOT_TOOLTIP                 :{BLACK}Lähetä ilma-alus lentokonehalliin. Ctrl+napsautus suorittaa vain huollon
 
 ###length VEHICLE_TYPES
 STR_VEHICLE_VIEW_CLONE_TRAIN_INFO                               :{BLACK}Osta kopio junasta kaikkine vaunuineen. Ctrl+napsautus jakaa käskyt. Paina lisäksi vaihtonäppäintä nähdäksesi vain kustannusarvion
@@ -4609,7 +4611,7 @@ STR_ORDER_GO_TO_NEAREST_DEPOT                                   :Mene lähimmäl
 STR_ORDER_GO_TO_NEAREST_HANGAR                                  :Mene lähimpään lentokonehalliin
 STR_ORDER_CONDITIONAL                                           :Ehdollinen hyppykäsky
 STR_ORDER_SHARE                                                 :Jaa käskyt
-STR_ORDERS_GO_TO_TOOLTIP                                        :{BLACK}Lisää uuden käskyn ennen valittua, tai lisää listan viimeiseksi. Ctrl+painalluksella asemakäskyistä tulee ”lastaa täyteen mikä tahansa rahti”, reittipistekäskyistä ”pysähtymättä” ja veturitallikäskyistä ”huolto”. Napsauta toista ajoneuvoa kopioidaksesi sen käskyt tai Ctrl+napsauta luodaksesi jaetun käskyn. Tallikäsky poistaa automaattiset huollot
+STR_ORDERS_GO_TO_TOOLTIP                                        :{BLACK}Lisää uuden käskyn ennen valittua, tai lisää listan viimeiseksi. Ctrl+napsautuksella asemakäskyistä tulee ”lastaa täyteen mikä tahansa rahti”, reittipistekäskyille ”oletuksena pysähtymättä” -asetuksen vastakohta, ja veturitallikäskyistä tulee ”huolto”. Napsauta toista kulkuneuvoa kopioidaksesi sen käskyt tai Ctrl+napsauta luodaksesi jaetun käskyn. Tallikäsky poistaa automaattiset huollot
 
 STR_ORDERS_VEH_WITH_SHARED_ORDERS_LIST_TOOLTIP                  :{BLACK}Näytä kaikki kulkuneuvot, jotka jakavat nämä käskyt
 

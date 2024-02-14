@@ -884,12 +884,21 @@ STR_EXTRA_VIEW_MOVE_MAIN_TO_VIEW_TT                             :{BLACK}Setzt d'
 # Game options window
 STR_GAME_OPTIONS_CAPTION                                        :{WHITE}Spill Optiounen
 
+STR_GAME_OPTIONS_TAB_GENERAL                                    :Generell
+STR_GAME_OPTIONS_TAB_GENERAL_TT                                 :{BLACK}Wiel generell Astellungen aus
+STR_GAME_OPTIONS_TAB_GRAPHICS                                   :Grafik
+STR_GAME_OPTIONS_TAB_GRAPHICS_TT                                :{BLACK}Wiel Grafik-Astellungen aus
+STR_GAME_OPTIONS_TAB_SOUND                                      :Sound
+STR_GAME_OPTIONS_TAB_SOUND_TT                                   :{BLACK}Wiel Sound- a Musikastellungen aus
+STR_GAME_OPTIONS_TAB_SOCIAL                                     :Social
+STR_GAME_OPTIONS_TAB_SOCIAL_TT                                  :{BLACK}Wiel Astellungen déi mat Social Media ze dinn hunn
 
 
 
 STR_GAME_OPTIONS_CURRENCY_UNITS_FRAME                           :{BLACK}Währungseenheet
 STR_GAME_OPTIONS_CURRENCY_UNITS_DROPDOWN_TOOLTIP                :{BLACK}Währungseenheet wielen
 
+STR_GAME_OPTIONS_CURRENCY_CODE                                  :{STRING} ({STRING})
 
 ###length 43
 STR_GAME_OPTIONS_CURRENCY_GBP                                   :Pond
@@ -934,6 +943,7 @@ STR_GAME_OPTIONS_CURRENCY_HKD                                   :Hong Kong Dolla
 STR_GAME_OPTIONS_CURRENCY_INR                                   :Indiesch Rupee
 STR_GAME_OPTIONS_CURRENCY_IDR                                   :Indonesesch Rupiah
 STR_GAME_OPTIONS_CURRENCY_MYR                                   :Malaysesche Ringgit
+STR_GAME_OPTIONS_CURRENCY_LVL                                   :Lettesch Lat
 
 STR_GAME_OPTIONS_AUTOSAVE_FRAME                                 :{BLACK}Autospäicheren
 STR_GAME_OPTIONS_AUTOSAVE_DROPDOWN_TOOLTIP                      :{BLACK}Wiel den Intervall aus fir d'Autospäicherung
@@ -941,6 +951,10 @@ STR_GAME_OPTIONS_AUTOSAVE_DROPDOWN_TOOLTIP                      :{BLACK}Wiel den
 # Autosave dropdown
 ###length 5
 STR_GAME_OPTIONS_AUTOSAVE_DROPDOWN_OFF                          :Aus
+STR_GAME_OPTIONS_AUTOSAVE_DROPDOWN_EVERY_10_MINUTES             :All 10 Minuten
+STR_GAME_OPTIONS_AUTOSAVE_DROPDOWN_EVERY_30_MINUTES             :All 30 Minuten
+STR_GAME_OPTIONS_AUTOSAVE_DROPDOWN_EVERY_60_MINUTES             :All 60 Minuten
+STR_GAME_OPTIONS_AUTOSAVE_DROPDOWN_EVERY_120_MINUTES            :All 120 Minuten
 
 STR_GAME_OPTIONS_LANGUAGE                                       :{BLACK}Sprooch
 STR_GAME_OPTIONS_LANGUAGE_TOOLTIP                               :{BLACK}Wielt d'Interfacesprooch aus
@@ -998,8 +1012,15 @@ STR_GAME_OPTIONS_BASE_MUSIC                                     :{BLACK}Basis Mu
 STR_GAME_OPTIONS_BASE_MUSIC_TOOLTIP                             :{BLACK}Wiel de Basis Musikset dee soll benotzt ginn
 STR_GAME_OPTIONS_BASE_MUSIC_DESCRIPTION_TOOLTIP                 :{BLACK}Méi Informatiounen iwwer de Basis Musikset
 
+STR_GAME_OPTIONS_SOCIAL_PLUGINS_NONE                            :{LTBLUE}(keng Plugins déi mat Social Platforms kommunizéiren installéiert)
 
+STR_GAME_OPTIONS_SOCIAL_PLUGIN_PLATFORM                         :{BLACK}Plattform:
+STR_GAME_OPTIONS_SOCIAL_PLUGIN_STATE                            :{BLACK}Pluginstatus:
 
+STR_GAME_OPTIONS_SOCIAL_PLUGIN_STATE_FAILED                     :{RED}Konnt net initialiséiren
+STR_GAME_OPTIONS_SOCIAL_PLUGIN_STATE_PLATFORM_NOT_RUNNING       :{ORANGE}{STRING} leeft net
+STR_GAME_OPTIONS_SOCIAL_PLUGIN_STATE_DUPLICATE                  :{RED}Duplizéierte Plugin
+STR_GAME_OPTIONS_SOCIAL_PLUGIN_STATE_INVALID_SIGNATURE          :{RED}Falsch Signatur
 
 
 STR_ERROR_RESOLUTION_LIST_FAILED                                :{WHITE}Konnt keng Lëscht vun supportéierten Opléisunge fannen
@@ -1376,8 +1397,12 @@ STR_CONFIG_SETTING_NEVER_EXPIRE_VEHICLES_HELPTEXT               :Wann ugeschalt,
 
 ###length 2
 
+STR_CONFIG_SETTING_MINUTES_PER_YEAR                             :Minute pro Joer: {STRING}
+STR_CONFIG_SETTING_MINUTES_PER_YEAR_HELPTEXT                    :Wiel d'Minute déi e Kalennerjoer dauert. Standard sinn 12 Minuten. Setz se op 0 fir d'Kalennerjoer net ze wiesselen. Des Astellung ännert näischt un der ekonomescher Simulatioun vum Spill, an kann nëmme benotzt gi wann d'Auer un der Mauer als Zäitmiësser agestallt ass
 
+STR_CONFIG_SETTING_MINUTES_PER_YEAR_VALUE                       :{NUM}
 ###setting-zero-is-special
+STR_CONFIG_SETTING_MINUTES_PER_YEAR_FROZEN                      :0 (Kalennerzäit agefruer)
 
 
 STR_CONFIG_SETTING_AUTORENEW_VEHICLE                            :Gefier automatesch erneiere wann et al gëtt: {STRING}
@@ -2089,9 +2114,13 @@ STR_LIVERY_TRAIN_TOOLTIP                                        :{BLACK}Weis Zuc
 STR_LIVERY_ROAD_VEHICLE_TOOLTIP                                 :{BLACK}Weis Stroossegefierer Faarfschemen
 STR_LIVERY_SHIP_TOOLTIP                                         :{BLACK}Weis d'Schëff Faarfschemen
 STR_LIVERY_AIRCRAFT_TOOLTIP                                     :{BLACK}Weis Fliger Faarfschemen
+STR_LIVERY_TRAIN_GROUP_TOOLTIP                                  :{BLACK}Weis Faarwe vun Zuchgruppen
+STR_LIVERY_ROAD_VEHICLE_GROUP_TOOLTIP                           :{BLACK}Weis Faarwe vun Stroossegefiergruppen
 STR_LIVERY_PRIMARY_TOOLTIP                                      :{BLACK}Wiel d'Primärfaarf fir den ausgewieltene Schema. Ctrl+Klick wielt dës Faarf fir all Schema
 STR_LIVERY_SECONDARY_TOOLTIP                                    :{BLACK}Wiel d'Sekundärfaarf fir den ausgewieltenen Schema. Ctrl+Klick wielt dës Faarf fir all Schema
 STR_LIVERY_PANEL_TOOLTIP                                        :{BLACK}Wiel en Faarfschema fir ze änneren, oder e puer Schemen mat Ctrl+Klick. Klick op d'Këscht fir d'Schemanotzung ze wiesselen
+STR_LIVERY_TRAIN_GROUP_EMPTY                                    :Keng Zuchgruppen agestallt
+STR_LIVERY_ROAD_VEHICLE_GROUP_EMPTY                             :Et goufen keng Stroossegefiergruppen definéiert
 
 ###length 23
 STR_LIVERY_DEFAULT                                              :Standard Firmefaarwen
@@ -2568,6 +2597,8 @@ STR_STATION_BUILD_COVERAGE_AREA_OFF_TOOLTIP                     :{BLACK}Weis d'R
 STR_STATION_BUILD_COVERAGE_AREA_ON_TOOLTIP                      :{BLACK}Weis d'Reechwäit vun dem Gebäi un
 STR_STATION_BUILD_ACCEPTS_CARGO                                 :{BLACK}Akzeptéiert: {GOLD}{CARGO_LIST}
 STR_STATION_BUILD_SUPPLIES_CARGO                                :{BLACK}Liwwert: {GOLD}{CARGO_LIST}
+STR_STATION_BUILD_INFRASTRUCTURE_COST_YEAR                      :{BLACK}Ennerhaltskäschtent: {GOLD}{CURRENCY_SHORT}/Joer
+STR_STATION_BUILD_INFRASTRUCTURE_COST_PERIOD                    :{BLACK}Ennerhaltskäschten: {GOLD}{CURRENCY_SHORT}/Period
 
 # Join station window
 STR_JOIN_STATION_CAPTION                                        :{WHITE}Statioun verbannen
@@ -3151,6 +3182,7 @@ STR_MAPGEN_BORDER_MANUAL                                        :{BLACK}Manuell
 STR_MAPGEN_HEIGHTMAP_ROTATION                                   :{BLACK}Héichtekaart-Rotatioun:
 STR_MAPGEN_HEIGHTMAP_NAME                                       :{BLACK}Héichtekaart-Numm:
 STR_MAPGEN_HEIGHTMAP_SIZE_LABEL                                 :{BLACK}Gréisst:
+STR_MAPGEN_HEIGHTMAP_SIZE_LABEL_TOOLTIP                         :{BLACK}D'Gréisst vum Héigtekaartbild. Déi bescht Resultater kritt ee wann d'Kant enger Zuel vun de Kaarten aus OpenTTD entsprécht, z.b 256, 512, 1024, etc.
 STR_MAPGEN_HEIGHTMAP_SIZE                                       :{ORANGE}{NUM} x {NUM}
 
 STR_MAPGEN_TERRAIN_TYPE_QUERY_CAPT                              :{WHITE}Zil Gipfelhéicht
@@ -3820,6 +3852,8 @@ STR_PURCHASE_INFO_SPEED_POWER                                   :{BLACK}Geschw.:
 STR_PURCHASE_INFO_SPEED                                         :{BLACK}Geschw.: {GOLD}{VELOCITY}
 STR_PURCHASE_INFO_SPEED_OCEAN                                   :{BLACK}Geschwindegkeet um Ozean: {GOLD}{VELOCITY}
 STR_PURCHASE_INFO_SPEED_CANAL                                   :{BLACK}Geschwindegkeet um Kanal/Floss: {GOLD}{VELOCITY}
+STR_PURCHASE_INFO_RUNNINGCOST_YEAR                              :{BLACK}Betribskäschten: {GOLD}{CURRENCY_LONG}/Joer
+STR_PURCHASE_INFO_RUNNINGCOST_PERIOD                            :{BLACK}Betribskäschten: {GOLD}{CURRENCY_LONG}/Period
 STR_PURCHASE_INFO_CAPACITY                                      :{BLACK}Kapazitéit: {GOLD}{CARGO_LONG} {STRING}
 STR_PURCHASE_INFO_REFITTABLE                                    :(ëmbaubar)
 STR_PURCHASE_INFO_DESIGNED_LIFE                                 :{BLACK}Designt: {GOLD}{NUM}{BLACK} Liewenszäit: {GOLD}{COMMA} Joer
@@ -4176,6 +4210,8 @@ STR_VEHICLE_INFO_CAPACITY_CAPACITY                              :{BLACK}Kapazit�
 
 STR_VEHICLE_INFO_FEEDER_CARGO_VALUE                             :{BLACK}Transferts-Suen: {LTBLUE}{CURRENCY_LONG}
 
+STR_VEHICLE_DETAILS_LAST_SERVICE_DATE                           :Lescht Revisioun: {LTBLUE}{DATE_LONG}
+STR_VEHICLE_DETAILS_LAST_SERVICE_MINUTES_AGO                    :Lescht Revisioun: {LTBLUE}Firu {NUM} Minuten
 
 STR_SERVICE_INTERVAL_DROPDOWN_TOOLTIP                           :{BLACK}Wiesselt de Revisiounsintervall
 STR_VEHICLE_DETAILS_DEFAULT                                     :Standard
@@ -4283,6 +4319,7 @@ STR_ORDER_DROP_HALT_DEPOT                                       :Stop
 
 # Depot action tooltips, one per vehicle type
 ###length VEHICLE_TYPES
+STR_ORDER_SHIP_DEPOT_ACTION_TOOLTIP                             :{BLACK}Wiel d'Aktioun déi an desem Schapp soll ausgefouert ginn
 ###next-name-looks-similar
 
 STR_ORDER_CONDITIONAL_VARIABLE_TOOLTIP                          :{BLACK}Gefierdaten als Basis fir den Optragssprong
@@ -4556,6 +4593,7 @@ STR_TEXTFILE_VIEW_LICENCE                                       :{BLACK}Lizenz
 STR_TEXTFILE_README_CAPTION                                     :{WHITE}{STRING} readme vun {STRING}
 STR_TEXTFILE_CHANGELOG_CAPTION                                  :{WHITE}{STRING} Changelog vun {STRING}
 STR_TEXTFILE_LICENCE_CAPTION                                    :{WHITE}{STRING} Lizenz vun {STRING}
+STR_TEXTFILE_GAME_MANUAL_CAPTION                                :{WHITE}OpenTTD Dokument '{STRING}'
 
 
 # Vehicle loading indicators
@@ -4800,6 +4838,10 @@ STR_ERROR_UNABLE_TO_FIND_LOCAL_DEPOT                            :{WHITE}Kann de 
 STR_ERROR_DEPOT_WRONG_DEPOT_TYPE                                :Falschen Schapp-Typ
 
 # Depot unbunching related errors
+STR_ERROR_UNBUNCHING_NO_FULL_LOAD                               :{WHITE}... kann net Voll Lueden als Optrag hu wann d'Gefier en Optrag verdeelt huet
+STR_ERROR_UNBUNCHING_NO_UNBUNCHING_FULL_LOAD                    :{WHITE}... kann dem Gefier keen verdeelten Optrag ginn wann et en Voll Lueden Optrag huet
+STR_ERROR_UNBUNCHING_NO_CONDITIONAL                             :{WHITE}... kann net en Optrag mat Konditiounen hu wann d'Gefier en Optrag verdeelt huet
+STR_ERROR_UNBUNCHING_NO_UNBUNCHING_CONDITIONAL                  :{WHITE}... kann dem Gefier keen verdeelten Optrag ginn wann et en Optrag mat Konditiounen huet
 
 # Autoreplace related errors
 STR_ERROR_TRAIN_TOO_LONG_AFTER_REPLACEMENT                      :{WHITE}{VEHICLE} ass ze laang nom Auswiesselen

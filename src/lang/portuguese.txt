@@ -4614,7 +4614,7 @@ STR_ORDER_GO_TO_NEAREST_DEPOT                                   :Ir para o depó
 STR_ORDER_GO_TO_NEAREST_HANGAR                                  :Ir para o hangar mais próximo
 STR_ORDER_CONDITIONAL                                           :Saltar ordem condicional
 STR_ORDER_SHARE                                                 :Partilhar ordens
-STR_ORDERS_GO_TO_TOOLTIP                                        :{BLACK}Inserir uma nova ordem antes da ordem selecionada, ou acrescentar ao fim da lista. Ctrl+Clique numa estação para 'encher completamente qualquer carga'; num ponto de controlo para 'sem parar'; ou num depósito para 'manutenção'. Clique noutro veículo para copiar as suas ordens ou Ctrl+Clique para partilhar ordens. Uma ordem para depósito desativa a manutenção programada automática do veículo.
+STR_ORDERS_GO_TO_TOOLTIP                                        :{BLACK}Inserir uma nova ordem antes da ordem selecionada, ou acrescentar ao fim da lista. Ctrl+Clique numa estação para 'encher completamente qualquer carga'; num ponto de controlo para inverter a definição 'sem paragem por omissão', ou num depósito para 'manutenção'. Clique noutro veículo para copiar as suas ordens ou Ctrl+Clique para partilhar ordens. Uma ordem para depósito desativa a manutenção programada automática do veículo.
 
 STR_ORDERS_VEH_WITH_SHARED_ORDERS_LIST_TOOLTIP                  :{BLACK}Mostra todos os veículos que seguem este mesmo trajecto
 

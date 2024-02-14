@@ -4614,7 +4614,7 @@ STR_ORDER_GO_TO_NEAREST_DEPOT                                   :Nächstes Depot
 STR_ORDER_GO_TO_NEAREST_HANGAR                                  :Nächster Hangar
 STR_ORDER_CONDITIONAL                                           :Bedingter Sprung zu Auftrag
 STR_ORDER_SHARE                                                 :Gemeinsame Aufträge
-STR_ORDERS_GO_TO_TOOLTIP                                        :{BLACK}Einen neuen Auftrag vor dem markierten Auftrag oder am Ende der Liste einfügen. Strg+Klick auf einer Station für den Auftrag „Vollladen einer Fracht“, auf Wegpunkten für den Auftrag „ohne Zwischenhalt“ und auf Depots für den Auftrag „Wartung“. Mit einem Klick auf ein anderes Fahrzeug werden seine Aufträge kopiert, mit Strg+Klick werden gemeinsame Aufträge erzeugt. Ein Depotauftrag schaltet die automatische Wartung für das Fahrzeug aus.
+STR_ORDERS_GO_TO_TOOLTIP                                        :{BLACK}Einen neuen Auftrag vor dem markierten Auftrag oder am Ende der Liste einfügen. Strg+Klick auf einer Station für den Auftrag „Vollladen einer Fracht“, auf Wegpunkten, um die Einstellung „standardmäßig ohne Zwischenhalt“ zu invertieren und auf Depots für den Auftrag „Wartung“. Mit einem Klick auf ein anderes Fahrzeug werden seine Aufträge kopiert, mit Strg+Klick werden gemeinsame Aufträge erzeugt. Ein Depotauftrag schaltet die automatische Wartung für das Fahrzeug aus.
 
 STR_ORDERS_VEH_WITH_SHARED_ORDERS_LIST_TOOLTIP                  :{BLACK}Alle Fahrzeuge mit demselben Fahrplan anzeigen
 

@@ -477,7 +477,9 @@ STR_SORT_BY_TOTAL_PROFIT_LAST_PERIOD                            :Загальн�
 STR_SORT_BY_TOTAL_PROFIT_THIS_YEAR                              :Загальний прибуток цього року
 STR_SORT_BY_TOTAL_PROFIT_THIS_PERIOD                            :Загальний прибуток цього періоду
 STR_SORT_BY_AVERAGE_PROFIT_LAST_YEAR                            :Середній прибуток минулого року
+STR_SORT_BY_AVERAGE_PROFIT_LAST_PERIOD                          :Середній прибуток минулого періоду
 STR_SORT_BY_AVERAGE_PROFIT_THIS_YEAR                            :Середній прибуток цього року
+STR_SORT_BY_AVERAGE_PROFIT_THIS_PERIOD                          :Середній прибуток цього періоду
 
 # Group by options for vehicle list
 STR_GROUP_BY_NONE                                               :Нема
@@ -1777,6 +1779,7 @@ STR_CONFIG_SETTING_LOADING_INDICATORS                           :Показув�
 STR_CONFIG_SETTING_LOADING_INDICATORS_HELPTEXT                  :Вмикає\вимикає відображення індикатора процесу завантаження над транспортними засобами.
 
 ###length 3
+STR_CONFIG_SETTING_TIMETABLE_MODE_DAYS                          :Днів
 
 STR_CONFIG_SETTING_TIMETABLE_SHOW_ARRIVAL_DEPARTURE             :Показувати час прибуття та відправлення у розкладах: {STRING}
 STR_CONFIG_SETTING_TIMETABLE_SHOW_ARRIVAL_DEPARTURE_HELPTEXT    :Відображати очікуваний час прибуття та відправлення у розкладі
@@ -2400,6 +2403,7 @@ STR_NETWORK_SERVER_LIST_MAP_SIZE_CAPTION                        :{BLACK}Розм
 STR_NETWORK_SERVER_LIST_MAP_SIZE_CAPTION_TOOLTIP                :{BLACK}Розмір карти гри{}Клацніть мишею для сортування за районом
 STR_NETWORK_SERVER_LIST_DATE_CAPTION                            :{BLACK}Дата
 STR_NETWORK_SERVER_LIST_DATE_CAPTION_TOOLTIP                    :{BLACK}Поточна дата
+STR_NETWORK_SERVER_LIST_PLAY_TIME_SHORT                         :{BLACK}{NUM}год {NUM}хв
 STR_NETWORK_SERVER_LIST_PLAY_TIME_CAPTION                       :{BLACK}Тривалість гри
 STR_NETWORK_SERVER_LIST_INFO_ICONS_TOOLTIP                      :{BLACK}Мова, версія сервера, та інше.
 
@@ -3622,6 +3626,8 @@ STR_TOWN_VIEW_CARGO_FOR_TOWNGROWTH_REQUIRED_WINTER              :{ORANGE}{STRING
 STR_TOWN_VIEW_CARGO_FOR_TOWNGROWTH_DELIVERED_GENERAL            :{ORANGE}{STRING}{GREEN} доставлено
 STR_TOWN_VIEW_CARGO_FOR_TOWNGROWTH_REQUIRED                     :{ORANGE}{CARGO_TINY} / {CARGO_LONG}{RED} (потрібно ще)
 STR_TOWN_VIEW_CARGO_FOR_TOWNGROWTH_DELIVERED                    :{ORANGE}{CARGO_TINY} / {CARGO_LONG}{GREEN} (доставлено)
+STR_TOWN_VIEW_TOWN_GROWS_EVERY                                  :{BLACK}Місто зростає раз на {ORANGE}{UNITS_DAYS_OR_SECONDS}
+STR_TOWN_VIEW_TOWN_GROWS_EVERY_FUNDED                           :{BLACK}Місто зростає раз на {ORANGE}{UNITS_DAYS_OR_SECONDS}} (профінансовано)
 STR_TOWN_VIEW_TOWN_GROW_STOPPED                                 :{BLACK}Місто {RED}не{BLACK} зростає
 STR_TOWN_VIEW_NOISE_IN_TOWN                                     :{BLACK}Ліміт шуму в місті: {ORANGE}{COMMA}{BLACK}  макс: {ORANGE}{COMMA}
 STR_TOWN_VIEW_CENTER_TOOLTIP                                    :{BLACK}Показати місто у центрі екрану. Ctrl+клац мишою відкриє нове вікно з видом на місто
@@ -4240,6 +4246,8 @@ STR_ENGINE_PREVIEW_SHIP                                         :корабел�
 
 STR_ENGINE_PREVIEW_COST_WEIGHT                                  :Ціна: {CURRENCY_LONG}  Маса: {WEIGHT_SHORT}
 STR_ENGINE_PREVIEW_COST_MAX_SPEED                               :Ціна: {CURRENCY_LONG}  Швидкість: {VELOCITY}
+STR_ENGINE_PREVIEW_SPEED_POWER                                  :Швидкість: {VELOCITY}  Потужність: {POWER}
+STR_ENGINE_PREVIEW_SPEED_POWER_MAX_TE                           :Швидкість: {VELOCITY} Потужність: {POWER} Макс. тяга: {FORCE}
 STR_ENGINE_PREVIEW_CAPACITY                                     :Місткість: {CARGO_LONG}
 STR_ENGINE_PREVIEW_CAPACITY_2                                   :Місткість: {CARGO_LONG}, {CARGO_LONG}
 
@@ -4406,6 +4414,9 @@ STR_VEHICLE_INFO_CAPACITY_CAPACITY                              :{BLACK}Міст
 
 STR_VEHICLE_INFO_FEEDER_CARGO_VALUE                             :{BLACK}Плата за трансфер: {LTBLUE}{CURRENCY_LONG}
 
+STR_VEHICLE_DETAILS_SERVICING_INTERVAL_DAYS                     :{BLACK}Інтервал техогляду: {LTBLUE}{COMMA}{NBSP}днів{BLACK} {STRING}
+STR_VEHICLE_DETAILS_SERVICING_INTERVAL_MINUTES                  :{BLACK}Інтервал техогляду: {LTBLUE}{COMMA}{NBSP}хвилин{BLACK} {STRING}
+STR_VEHICLE_DETAILS_SERVICING_INTERVAL_PERCENT                  :{BLACK}Інтервал техогляду: {LTBLUE}{COMMA}%{BLACK} {STRING}
 
 STR_SERVICE_INTERVAL_DROPDOWN_TOOLTIP                           :{BLACK}Відлік інтервалу між техоглядами
 STR_VEHICLE_DETAILS_DEFAULT                                     :Стандартно
@@ -5776,6 +5787,8 @@ STR_JUST_DATE_SHORT                                             :{DATE_SHORT}
 STR_JUST_DATE_LONG                                              :{DATE_LONG}
 STR_JUST_DATE_ISO                                               :{DATE_ISO}
 STR_JUST_STRING                                                 :{STRING}
+STR_JUST_STRING1                                                :{STRING}
+STR_JUST_STRING2                                                :{STRING}
 STR_JUST_STRING_STRING                                          :{STRING}{STRING}
 STR_JUST_RAW_STRING                                             :{STRING}
 STR_JUST_BIG_RAW_STRING                                         :{BIG_FONT}{STRING}
