@@ -19,6 +19,13 @@
  *
  * This version is not yet released. The following changes are not set in stone yet.
  *
+ * API additions:
+ * \li GSAirport::GetAirportPlaneCompatibility
+ * \li GSAirport::APC_INCOMPATIBLE
+ * \li GSAirport::APC_COMPATIBLE
+ * \li GSAirport::APC_SHORT_RUNWAY
+ * \li GSAirport::APC_INVALID
+ *
  * \b 15.0
  *
  * API additions:
