@@ -464,11 +464,12 @@ void TriggerRoadStopRandomisation(Station *st, TileIndex tile, RoadStopRandomTri
  */
 bool GetIfNewStopsByType(RoadStopType rs, RoadType roadtype)
 {
-	if (!(RoadStopClass::GetClassCount() > 1 || RoadStopClass::Get(ROADSTOP_CLASS_DFLT)->GetSpecCount() > 1)) return false;
 	for (uint i = 0; i < RoadStopClass::GetClassCount(); i++) {
-		// We don't want to check the default or waypoint classes. These classes are always available.
-		if (i == ROADSTOP_CLASS_DFLT || i == ROADSTOP_CLASS_WAYP) continue;
-		RoadStopClass *roadstopclass = RoadStopClass::Get((RoadStopClassID)i);
+		/* Ignore the waypoint class. */
+		if (i == ROADSTOP_CLASS_WAYP) continue;
+		const RoadStopClass *roadstopclass = RoadStopClass::Get((RoadStopClassID)i);
+		/* Ignore the default class with only the default station. */
+		if (i == ROADSTOP_CLASS_DFLT && roadstopclass->GetSpecCount() == 1) continue;
 		if (GetIfClassHasNewStopsByType(roadstopclass, rs, roadtype)) return true;
 	}
 	return false;
@@ -481,7 +482,7 @@ bool GetIfNewStopsByType(RoadStopType rs, RoadType roadtype)
  * @param roadtype the RoadType to check.
  * @return true if the RoadStopSpec has any specs compatible with the given RoadStopType and RoadType.
  */
-bool GetIfClassHasNewStopsByType(RoadStopClass *roadstopclass, RoadStopType rs, RoadType roadtype)
+bool GetIfClassHasNewStopsByType(const RoadStopClass *roadstopclass, RoadStopType rs, RoadType roadtype)
 {
 	for (uint j = 0; j < roadstopclass->GetSpecCount(); j++) {
 		if (GetIfStopIsForType(roadstopclass->GetSpec(j), rs, roadtype)) return true;

@@ -173,7 +173,7 @@ void TriggerRoadStopAnimation(BaseStation *st, TileIndex tile, StationAnimationT
 void TriggerRoadStopRandomisation(Station *st, TileIndex tile, RoadStopRandomTrigger trigger, CargoID cargo_type = INVALID_CARGO);
 
 bool GetIfNewStopsByType(RoadStopType rs, RoadType roadtype);
-bool GetIfClassHasNewStopsByType(RoadStopClass *roadstopclass, RoadStopType rs, RoadType roadtype);
+bool GetIfClassHasNewStopsByType(const RoadStopClass *roadstopclass, RoadStopType rs, RoadType roadtype);
 bool GetIfStopIsForType(const RoadStopSpec *roadstopspec, RoadStopType rs, RoadType roadtype);
 
 uint GetCountOfCompatibleStopsByType(RoadStopClass *roadstopclass, RoadStopType rs);
