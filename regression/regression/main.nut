@@ -235,9 +235,12 @@ function Regression::Airport()
 	print("  IsAirportTile():      " + AIAirport.IsAirportTile(32116));
 	print("  GetAirportType():     " + AIAirport.GetAirportType(32119));
 	print("  GetHangarOfAirport(): " + AIAirport.GetHangarOfAirport(32116));
+	print("  GetNumHangars():      " + AIAirport.GetNumHangars(32116));
+	print("  GetAirportNumHangars(): " + AIAirport.GetAirportNumHangars(0));
 	print("  IsHangarTile():       " + AIAirport.IsHangarTile(32119));
 	print("  IsAirportTile():      " + AIAirport.IsAirportTile(32119));
 	print("  GetAirportType():     " + AIAirport.GetAirportType(32119));
+	print("  GetNumHangars():      " + AIAirport.GetNumHangars(32119));
 	print("  GetBankBalance():     " + AICompany.GetBankBalance(AICompany.COMPANY_SELF));
 
 	print("  RemoveAirport():      " + AIAirport.RemoveAirport(32118));

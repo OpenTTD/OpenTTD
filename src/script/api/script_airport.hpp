@@ -118,7 +118,7 @@ public:
 	/**
 	 * Get the number of hangars of the airport.
 	 * @param tile Any tile of the airport.
-	 * @pre ScriptMap::IsValidTile(tile).
+	 * @pre ScriptTile::IsStationTile(tile).
 	 * @return The number of hangars of the airport.
 	 */
 	static SQInteger GetNumHangars(TileIndex tile);
