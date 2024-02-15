@@ -680,7 +680,7 @@ STR_SMALLMAP_TOOLTIP_SHOW_LINK_STATS_ON_MAP                     :{BLACK}Пока
 STR_SMALLMAP_TOOLTIP_SHOW_TRANSPORT_ROUTES_ON                   :{BLACK}Покажи транспортните маршрути на картата
 STR_SMALLMAP_TOOLTIP_SHOW_VEGETATION_ON_MAP                     :{BLACK}Покажи растителността на картата
 STR_SMALLMAP_TOOLTIP_SHOW_LAND_OWNERS_ON_MAP                    :{BLACK}Покажи собствениците на земя на картата
-STR_SMALLMAP_TOOLTIP_INDUSTRY_SELECTION                         :{BLACK}Натисни върху вид индустрия за превключване на показването.Click on an industry type to toggle displaying it. Ctrl деактивира всички освен избраната. Ctrl отново за активиране на всички
+STR_SMALLMAP_TOOLTIP_INDUSTRY_SELECTION                         :{BLACK}Натисни върху вид индустрия за превключване на показването. Ctrl деактивира всички освен избраната. Ctrl отново за активиране на всички
 STR_SMALLMAP_TOOLTIP_COMPANY_SELECTION                          :{BLACK}Натисни върху компания за показване/скриване на нейната собственост. Ctrl деактивира всички компании освен избраната. Ctrl отново за активиране на всички компании
 STR_SMALLMAP_TOOLTIP_CARGO_SELECTION                            :{BLACK}Кликнете върху товара, за да превключите показването на неговите данни. Ctrl+Click изключва всички товари без текущо избрания. Направете отново Ctrl+Click въху него, за да включите отново всички товари
 
@@ -827,6 +827,7 @@ STR_NEWS_NEW_VEHICLE_TYPE                                       :{BIG_FONT}{BLAC
 STR_NEWS_NEW_VEHICLE_NOW_AVAILABLE_WITH_TYPE                    :{BLACK}Нов {STRING} е на разположение! - {ENGINE}
 
 
+STR_NEWS_STATION_NOW_ACCEPTS_CARGO_LIST                         :{STATION} сега приема: {CARGO_LIST}
 
 STR_NEWS_OFFER_OF_SUBSIDY_EXPIRED                               :{BIG_FONT}{BLACK}Предложението за субсидия изтече:{}{}Превозът на {STRING} от {STRING} до {STRING} повече няма да получава субсидия.
 STR_NEWS_SUBSIDY_WITHDRAWN_SERVICE                              :{BIG_FONT}{BLACK}Анулирана субсидия:{}{}Превозът на {STRING} от {STRING} до {STRING} вече не се субсидира.
@@ -844,6 +845,14 @@ STR_EXTRA_VIEW_MOVE_MAIN_TO_VIEW_TT                             :{BLACK}Прем
 # Game options window
 STR_GAME_OPTIONS_CAPTION                                        :{WHITE}Настройки
 
+STR_GAME_OPTIONS_TAB_GENERAL                                    :Основни
+STR_GAME_OPTIONS_TAB_GENERAL_TT                                 :{BLACK}Изберете основни настройки
+STR_GAME_OPTIONS_TAB_GRAPHICS                                   :Графики
+STR_GAME_OPTIONS_TAB_GRAPHICS_TT                                :{BLACK}Изберете графични настройки
+STR_GAME_OPTIONS_TAB_SOUND                                      :Звук
+STR_GAME_OPTIONS_TAB_SOUND_TT                                   :{BLACK}Изберете звукови и музикални настройки
+STR_GAME_OPTIONS_TAB_SOCIAL                                     :Социално
+STR_GAME_OPTIONS_TAB_SOCIAL_TT                                  :{BLACK}Изберете настройки за социална интеграция
 
 
 
@@ -895,6 +904,10 @@ STR_GAME_OPTIONS_AUTOSAVE_DROPDOWN_TOOLTIP                      :{BLACK}Инте
 # Autosave dropdown
 ###length 5
 STR_GAME_OPTIONS_AUTOSAVE_DROPDOWN_OFF                          :изключено
+STR_GAME_OPTIONS_AUTOSAVE_DROPDOWN_EVERY_10_MINUTES             :Всеки 10 минути
+STR_GAME_OPTIONS_AUTOSAVE_DROPDOWN_EVERY_30_MINUTES             :Всеки 30 минути
+STR_GAME_OPTIONS_AUTOSAVE_DROPDOWN_EVERY_60_MINUTES             :Всеки 60 минути
+STR_GAME_OPTIONS_AUTOSAVE_DROPDOWN_EVERY_120_MINUTES            :Всеки 120 минути
 
 STR_GAME_OPTIONS_LANGUAGE                                       :{BLACK}Език
 STR_GAME_OPTIONS_LANGUAGE_TOOLTIP                               :{BLACK}Избор на език
@@ -915,6 +928,10 @@ STR_GAME_OPTIONS_RESOLUTION_OTHER                               :друго
 
 
 
+STR_GAME_OPTIONS_REFRESH_RATE                                   :{BLACK}Покажи честота на опресняване
+STR_GAME_OPTIONS_REFRESH_RATE_TOOLTIP                           :{BLACK}Избери честота на опресняване
+STR_GAME_OPTIONS_REFRESH_RATE_ITEM                              :{NUM}Hz
+STR_GAME_OPTIONS_REFRESH_RATE_WARNING                           :{WHITE}Честота на опресняване над 60Hz може да може да повлияе на производителността.
 
 STR_GAME_OPTIONS_BASE_GRF                                       :{BLACK}Базов графичен набор
 STR_GAME_OPTIONS_BASE_GRF_TOOLTIP                               :{BLACK}Изберете базов графичен набор
@@ -1229,10 +1246,12 @@ STR_CONFIG_SETTING_AUTOSCROLL_EVERY_VIEWPORT                    :Всяка ка
 STR_CONFIG_SETTING_BRIBE                                        :Подкупване на местната власт: {STRING}
 ###length 2
 STR_CONFIG_SETTING_BRIBE_HELPTEXT                               :Позволява на компаниите да се опитват да подкупят местните власти. Ако опитът за подкуп бъде разкрит от местен следовател, тази компания няма да може да действа в града за шест месеца
+STR_CONFIG_SETTING_BRIBE_HELPTEXT_MINUTES                       :Позволете на компаниите да се опитат да подкупят местните градски власти. Ако подкупът бъде забелязан от инспектор, компанията няма да може да действа в града шест минути
 
 STR_CONFIG_SETTING_ALLOW_EXCLUSIVE                              :Позволи купуване на изклучителни транспортни права: {STRING}
 ###length 2
-STR_CONFIG_SETTING_ALLOW_EXCLUSIVE_HELPTEXT                     :Ако някоя компания купи ексклузивни права за даден град, спирките на противниковите компании (пътници и стоки) няма да получават товар през следващата година
+STR_CONFIG_SETTING_ALLOW_EXCLUSIVE_HELPTEXT                     :Ако някоя компания купи ексклузивни права за даден град, спирките на противниковите компании (пътници и стоки) няма да получават товар за 12 месеца
+STR_CONFIG_SETTING_ALLOW_EXCLUSIVE_HELPTEXT_MINUTES             :Ако някоя компания купи ексклузивни права за даден град, спирките на противниковите компании (пътници и стоки) няма да получават товар за 12 минути
 
 STR_CONFIG_SETTING_ALLOW_FUND_BUILDINGS                         :Позволи финансирането на строежи: {STRING}
 STR_CONFIG_SETTING_ALLOW_FUND_BUILDINGS_HELPTEXT                :Позволи компаниите да финансират градовете за строеж на нови къщи
@@ -1340,6 +1359,9 @@ STR_CONFIG_SETTING_OIL_REF_EDGE_DISTANCE_HELPTEXT               :Нефтени�
 STR_CONFIG_SETTING_SNOWLINE_HEIGHT                              :Снежната ивица: {STRING}
 
 
+STR_CONFIG_SETTING_DESERT_COVERAGE                              :Покритие на пустинята: {STRING}
+STR_CONFIG_SETTING_DESERT_COVERAGE_HELPTEXT                     :Изберете приблизителното количество пустиня върху тропическия пейзаж. Пустинята също влияе върху генерирането на индустрията и изискванията за растеж на града. Използва се само по време на генериране на карта
+STR_CONFIG_SETTING_DESERT_COVERAGE_VALUE                        :{NUM}%
 
 STR_CONFIG_SETTING_ROUGHNESS_OF_TERRAIN                         :Стръмност на терен (само за TerraGenesis): {STRING}
 ###length 4
@@ -1393,6 +1415,7 @@ STR_CONFIG_SETTING_SMALLMAP_LAND_COLOUR_VIOLET                  :Виолето�
 
 ###length 4
 
+STR_CONFIG_SETTING_SCROLLMODE                                   :Поведение при скролване на Viewport: {STRING}
 ###length 4
 
 STR_CONFIG_SETTING_SMOOTH_SCROLLING                             :Плавно местене на камера: {STRING.n}
@@ -1431,14 +1454,19 @@ STR_CONFIG_SETTING_OSK_ACTIVATION_SINGLE_CLICK                  :Еднокра�
 
 ###length 3
 
-STR_CONFIG_SETTING_RIGHT_MOUSE_BTN_EMU                          :Дясно-щракане емулациа: {STRING}
+STR_CONFIG_SETTING_RIGHT_MOUSE_BTN_EMU                          :Дясно-кликване емулация: {STRING}
 STR_CONFIG_SETTING_RIGHT_MOUSE_BTN_EMU_HELPTEXT                 :Избира метода за симулация на десния бутон на мишката
 ###length 3
 STR_CONFIG_SETTING_RIGHT_MOUSE_BTN_EMU_COMMAND                  :Команда-щракане
 STR_CONFIG_SETTING_RIGHT_MOUSE_BTN_EMU_CONTROL                  :Контрол-щракане
 STR_CONFIG_SETTING_RIGHT_MOUSE_BTN_EMU_OFF                      :Изключен
 
+STR_CONFIG_SETTING_RIGHT_MOUSE_WND_CLOSE                        :Затвори прозореца с кликване на десен бутон: {STRING}
+STR_CONFIG_SETTING_RIGHT_MOUSE_WND_CLOSE_HELPTEXT               :Затваря прозорец чрез кликване с десен бутон вътре в него. Деактивира подсказката при кликване с десен бутон!
 ###length 3
+STR_CONFIG_SETTING_RIGHT_MOUSE_WND_CLOSE_NO                     :Не
+STR_CONFIG_SETTING_RIGHT_MOUSE_WND_CLOSE_YES                    :Да
+STR_CONFIG_SETTING_RIGHT_MOUSE_WND_CLOSE_YES_EXCEPT_STICKY      :Да, освен залепени
 
 STR_CONFIG_SETTING_DATE_FORMAT_IN_SAVE_NAMES                    :Използвай {STRING} формат на датата за имена на записаните игри.
 STR_CONFIG_SETTING_DATE_FORMAT_IN_SAVE_NAMES_HELPTEXT           :Формат на датата във файловете за запис на играта
@@ -1485,6 +1513,8 @@ STR_CONFIG_SETTING_SHOW_TRACK_RESERVATION_HELPTEXT              :Оцветяв�
 STR_CONFIG_SETTING_PERSISTENT_BUILDINGTOOLS                     :Запази инстументите активни след употреба: {STRING}
 STR_CONFIG_SETTING_PERSISTENT_BUILDINGTOOLS_HELPTEXT            :Остави отворени инструментите за строеж на мостове, тунели и др. след като са използвани
 
+STR_CONFIG_SETTING_AUTO_REMOVE_SIGNALS                          :Автоматично премахване на семафори по време на изграждане на релси: {STRING}
+STR_CONFIG_SETTING_AUTO_REMOVE_SIGNALS_HELPTEXT                 :Автоматично премахване на семафори по време на изграждане на релса, ако пречат. Имайте предвид, че това може да доведе до катастрофи с влак.
 
 ###setting-zero-is-special
 
@@ -1646,6 +1676,7 @@ STR_CONFIG_SETTING_CYCLE_SIGNAL_TYPES_HELPTEXT                  :Изберет�
 STR_CONFIG_SETTING_CYCLE_SIGNAL_ALL                             :Всички
 
 ###length 2
+STR_CONFIG_SETTING_SIGNAL_GUI_MODE_ALL_CYCLE_PATH               :Всички семафори
 
 STR_CONFIG_SETTING_TOWN_LAYOUT                                  :Пътно оформление за нови градове: {STRING}
 STR_CONFIG_SETTING_TOWN_LAYOUT_HELPTEXT                         :Тип на пътната мрежа в градовете
@@ -1686,7 +1717,7 @@ STR_CONFIG_SETTING_SNAP_RADIUS_HELPTEXT                         :Разстоя�
 STR_CONFIG_SETTING_SNAP_RADIUS_VALUE                            :{COMMA} пиксел{P 0 "" s}
 ###setting-zero-is-special
 STR_CONFIG_SETTING_SNAP_RADIUS_DISABLED                         :Изключен
-STR_CONFIG_SETTING_SOFT_LIMIT                                   :Максимално количество на прозореците без залепване: {STRING}
+STR_CONFIG_SETTING_SOFT_LIMIT                                   :Максимално количество на прозорците без залепване: {STRING}
 STR_CONFIG_SETTING_SOFT_LIMIT_HELPTEXT                          :Брой на отворените прозорци, преди старите прозорци да бъдат автоматично затворени, за да направят място за нови
 STR_CONFIG_SETTING_SOFT_LIMIT_VALUE                             :{COMMA}
 ###setting-zero-is-special
@@ -1780,9 +1811,12 @@ STR_CONFIG_SETTING_SOUND                                        :Звукови 
 STR_CONFIG_SETTING_INTERFACE                                    :Интерфейс
 STR_CONFIG_SETTING_INTERFACE_GENERAL                            :Основни
 STR_CONFIG_SETTING_INTERFACE_CONSTRUCTION                       :Строене
+STR_CONFIG_SETTING_ADVISORS                                     :Новини / Съветници
+STR_CONFIG_SETTING_ACCOUNTING                                   :Счетоводство
 STR_CONFIG_SETTING_VEHICLES                                     :Автомобили
 STR_CONFIG_SETTING_VEHICLES_ROUTING                             :Маршрутизация
 STR_CONFIG_SETTING_LIMITATIONS                                  :Ограничения
+STR_CONFIG_SETTING_ACCIDENTS                                    :Бедствия / катастрофи:
 STR_CONFIG_SETTING_ENVIRONMENT_AUTHORITIES                      :Права
 STR_CONFIG_SETTING_ENVIRONMENT_TOWNS                            :Градове
 STR_CONFIG_SETTING_ENVIRONMENT_INDUSTRIES                       :Индустрии
@@ -1873,6 +1907,17 @@ STR_ABANDON_GAME_QUERY                                          :{YELLOW}Иск�
 STR_ABANDON_SCENARIO_QUERY                                      :{YELLOW}Искате ли да прекъснете сценария?
 
 # Help window
+STR_HELP_WINDOW_CAPTION                                         :Помощ и ръководства
+STR_HELP_WINDOW_WEBSITES                                        :Уебсайтове
+STR_HELP_WINDOW_DOCUMENTS                                       :Документи
+STR_HELP_WINDOW_README                                          :Прочети ме
+STR_HELP_WINDOW_CHANGELOG                                       :Дневник на промените
+STR_HELP_WINDOW_KNOWN_BUGS                                      :Известни грешки
+STR_HELP_WINDOW_LICENSE                                         :Лиценз
+STR_HELP_WINDOW_MAIN_WEBSITE                                    :OpenTTD
+STR_HELP_WINDOW_MANUAL_WIKI                                     :Ръководство / Уики
+STR_HELP_WINDOW_BUGTRACKER                                      :Докладвай грешка
+STR_HELP_WINDOW_COMMUNITY                                       :Общност
 
 # Cheat window
 STR_CHEATS                                                      :{WHITE}Кодове
@@ -1894,9 +1939,11 @@ STR_LIVERY_TRAIN_TOOLTIP                                        :{BLACK}Пока
 STR_LIVERY_ROAD_VEHICLE_TOOLTIP                                 :{BLACK}Показване на цветови схеми за автомобилите
 STR_LIVERY_SHIP_TOOLTIP                                         :{BLACK}Показване цветови схеми на корабите
 STR_LIVERY_AIRCRAFT_TOOLTIP                                     :{BLACK}Показване цветовата схема на самолетите
+STR_LIVERY_ROAD_VEHICLE_GROUP_TOOLTIP                           :Покажи цветовете за ППС
 STR_LIVERY_PRIMARY_TOOLTIP                                      :{BLACK}Изберете основния цвят за избраната схема. Ctrl присвоява цвета за всички схеми
 STR_LIVERY_SECONDARY_TOOLTIP                                    :{BLACK}Изберете допълнителен цвят за избраната схема. Ctrl присвоява цвета за всички схеми
 STR_LIVERY_PANEL_TOOLTIP                                        :{BLACK}Изберете цветова схема за промяна или няколко - CTRL+щрак. Натиснете в кутията за да превключите използването на схемата
+STR_LIVERY_ROAD_VEHICLE_GROUP_EMPTY                             :Няма създадени групи от ППС
 
 ###length 23
 STR_LIVERY_DEFAULT                                              :Стандартен Ливъри
@@ -1999,6 +2046,9 @@ STR_NETWORK_SERVER_LIST_MAP_SIZE_CAPTION                        :{BLACK}Голе
 STR_NETWORK_SERVER_LIST_MAP_SIZE_CAPTION_TOOLTIP                :{BLACK}Големина на картата в играта{}Натисни за сортиране по площ
 STR_NETWORK_SERVER_LIST_DATE_CAPTION                            :{BLACK}Дата
 STR_NETWORK_SERVER_LIST_DATE_CAPTION_TOOLTIP                    :{BLACK}Настояща дата
+STR_NETWORK_SERVER_LIST_PLAY_TIME_SHORT                         :{BLACK}{NUM}h {NUM}m
+STR_NETWORK_SERVER_LIST_PLAY_TIME_CAPTION                       :{BLACK}Изиграно време
+STR_NETWORK_SERVER_LIST_PLAY_TIME_CAPTION_TOOLTIP               :{BLACK}Играно време, докато{}играта не е била на пауза
 STR_NETWORK_SERVER_LIST_INFO_ICONS_TOOLTIP                      :{BLACK}Език, версия на сървъра, и др.
 
 STR_NETWORK_SERVER_LIST_CLICK_GAME_TO_SELECT                    :{BLACK}Щракни върху игра от списъка, за да я избереш
@@ -2013,6 +2063,7 @@ STR_NETWORK_SERVER_LIST_SERVER_VERSION                          :{SILVER}Вер�
 STR_NETWORK_SERVER_LIST_SERVER_ADDRESS                          :{SILVER}Адрес на сървъра: {WHITE}{STRING}
 STR_NETWORK_SERVER_LIST_START_DATE                              :{SILVER}Начална дата: {WHITE}{DATE_SHORT}
 STR_NETWORK_SERVER_LIST_CURRENT_DATE                            :{SILVER}Текуща дата: {WHITE}{DATE_SHORT}
+STR_NETWORK_SERVER_LIST_PLAY_TIME                               :{SILVER}Изиграно време: {WHITE}{NUM}h {NUM}m
 STR_NETWORK_SERVER_LIST_PASSWORD                                :{SILVER}Защитено с парола!
 STR_NETWORK_SERVER_LIST_SERVER_OFFLINE                          :{SILVER}ИЗКЛЮЧЕН СЪРВЪР
 STR_NETWORK_SERVER_LIST_SERVER_FULL                             :{SILVER}ПЪЛЕН СЪРВЪР
@@ -2073,10 +2124,18 @@ STR_NETWORK_NEED_COMPANY_PASSWORD_CAPTION                       :{WHITE}Комп
 STR_NETWORK_COMPANY_LIST_CLIENT_LIST                            :Списък с играчите
 
 # Network client list
+STR_NETWORK_CLIENT_LIST_SERVER                                  :Сървър
+STR_NETWORK_CLIENT_LIST_SERVER_NAME                             :Име
+STR_NETWORK_CLIENT_LIST_ADMIN_CLIENT_TOOLTIP                    :Административни действия за извършване за този клиент
+STR_NETWORK_CLIENT_LIST_ADMIN_COMPANY_TOOLTIP                   :Административни действия за извършване за тази компания
 
 # Matches ConnectionType
 ###length 5
 
+STR_NETWORK_CLIENT_LIST_ADMIN_CLIENT_KICK                       :Изхвърлен
+STR_NETWORK_CLIENT_LIST_ADMIN_CLIENT_BAN                        :Бан
+STR_NETWORK_CLIENT_LIST_ADMIN_COMPANY_RESET                     :Изтриване
+STR_NETWORK_CLIENT_LIST_ADMIN_COMPANY_UNLOCK                    :Отключване на парола
 
 
 
@@ -2738,12 +2797,20 @@ STR_MAPGEN_TOWN_NAME_LABEL                                      :{BLACK}Имен
 STR_MAPGEN_TOWN_NAME_DROPDOWN_TOOLTIP                           :{BLACK}Избор стила на имената на градовете
 STR_MAPGEN_DATE                                                 :{BLACK}Дата:
 STR_MAPGEN_NUMBER_OF_INDUSTRIES                                 :{BLACK}Брой индустрии:
+STR_MAPGEN_SNOW_COVERAGE                                        :Снежно покритие:
+STR_MAPGEN_SNOW_COVERAGE_UP                                     :Увеличи снежното покритие с десет процента
+STR_MAPGEN_SNOW_COVERAGE_DOWN                                   :Понижи снежното покритие с десет процента
+STR_MAPGEN_SNOW_COVERAGE_TEXT                                   :{NUM}%
 STR_MAPGEN_TERRAIN_TYPE                                         :{BLACK}Тип на терен:
 STR_MAPGEN_SEA_LEVEL                                            :{BLACK}Морско ниво:
 STR_MAPGEN_QUANTITY_OF_RIVERS                                   :{BLACK}Реки:
 STR_MAPGEN_SMOOTHNESS                                           :{BLACK}Полегатост:
 STR_MAPGEN_VARIETY                                              :{BLACK}Разнообразност:
 STR_MAPGEN_GENERATE                                             :{WHITE}Генериране
+STR_MAPGEN_AI_SETTINGS                                          :{BLACK}AI настройки
+STR_MAPGEN_AI_SETTINGS_TOOLTIP                                  :{BLACK}Отвори настройки на AI
+STR_MAPGEN_GS_SETTINGS                                          :{BLACK}Настройки на Игровия скрипт
+STR_MAPGEN_GS_SETTINGS_TOOLTIP                                  :{BLACK}Отвори настройките на Игровия скрипт
 
 ###length 21
 STR_MAPGEN_TOWN_NAME_ORIGINAL_ENGLISH                           :английски (оригинални)
@@ -2785,6 +2852,7 @@ STR_MAPGEN_HEIGHTMAP_NAME                                       :{BLACK}Име �
 STR_MAPGEN_HEIGHTMAP_SIZE_LABEL                                 :{BLACK}Размер:
 STR_MAPGEN_HEIGHTMAP_SIZE                                       :{ORANGE}{NUM} x {NUM}
 
+STR_MAPGEN_SNOW_COVERAGE_QUERY_CAPT                             :Снежно покритие (в %)
 STR_MAPGEN_START_DATE_QUERY_CAPT                                :{WHITE}Промяна началната година
 
 # SE Map generation
@@ -2856,6 +2924,10 @@ STR_NEWGRF_SETTINGS_VERSION                                     :{BLACK}Верс
 STR_NEWGRF_SETTINGS_MIN_VERSION                                 :{BLACK}Минимална версия за съвместимост: {SILVER}{NUM}
 STR_NEWGRF_SETTINGS_MD5SUM                                      :{BLACK}MD5 сума: {SILVER}{STRING}
 STR_NEWGRF_SETTINGS_PALETTE                                     :{BLACK}Палитра: {SILVER}{STRING}
+STR_NEWGRF_SETTINGS_PALETTE_DEFAULT                             :По подразбиране (D)
+STR_NEWGRF_SETTINGS_PALETTE_DEFAULT_32BPP                       :По подразбиране (D) / 32 bpp
+STR_NEWGRF_SETTINGS_PALETTE_LEGACY                              :Наследен (W)
+STR_NEWGRF_SETTINGS_PALETTE_LEGACY_32BPP                        :Наследена (W) / 32 bpp
 STR_NEWGRF_SETTINGS_PARAMETER                                   :{BLACK}Параметри: {SILVER}{STRING}
 
 STR_NEWGRF_SETTINGS_NO_INFO                                     :{BLACK}Няма налична информация
@@ -3053,11 +3125,17 @@ STR_LOCAL_AUTHORITY_ACTION_TOOLTIP_MEDIUM_ADVERTISING           :{YELLOW} Ини
 STR_LOCAL_AUTHORITY_ACTION_TOOLTIP_LARGE_ADVERTISING            :{YELLOW} Иницииране на малка местна рекламна кампания, за привличане на повече пътници и товар към вашите транспортни услуги.{} Цена: {CURRENCY_LONG}
 STR_LOCAL_AUTHORITY_ACTION_TOOLTIP_STATUE_OF_COMPANY            :{YELLOW} Строеж на статуя в чест на вашата компания.{} Цена: {CURRENCY_LONG}
 STR_LOCAL_AUTHORITY_ACTION_TOOLTIP_NEW_BUILDINGS                :{YELLOW} Финансиране изграждането на нови комерсиални сгради в града.{} Цена: {CURRENCY_LONG}
+STR_LOCAL_AUTHORITY_ACTION_TOOLTIP_EXCLUSIVE_TRANSPORT_MONTHS   :{PUSH_COLOUR}{YELLOW}Купете изключителни транспортни права в града за 12 месеца.{}Градските власти няма да позволят на пътници и товари да използват станциите на вашите конкуренти. Успешен подкуп от конкурент ще анулира този договор.{}{POP_COLOUR}Цена: {CURRENCY_LONG}
+STR_LOCAL_AUTHORITY_ACTION_TOOLTIP_EXCLUSIVE_TRANSPORT_MINUTES  :{PUSH_COLOUR}{YELLOW}Купете изключителни транспортни права в града за 12 минути.{}Градските власти няма да позволят на пътници и товари да използват станциите на вашите конкуренти. Успешен подкуп от конкурент ще анулира този договор.{}{POP_COLOUR}Цена: {CURRENCY_LONG}
 STR_LOCAL_AUTHORITY_ACTION_TOOLTIP_BRIBE                        :{YELLOW} Подкупването на местната власт за да увеличи рейтинга носи огромен риск ако бъдете хванати.{} Цена: {CURRENCY_LONG}
 
 # Goal window
 STR_GOALS_CAPTION                                               :{WHITE}{COMPANY} Цели
 STR_GOALS_SPECTATOR_CAPTION                                     :{WHITE}Глобални цели
+STR_GOALS_GLOBAL_BUTTON                                         :{BLACK}Глобален
+STR_GOALS_GLOBAL_BUTTON_HELPTEXT                                :{BLACK}Покажи глобалните цели
+STR_GOALS_COMPANY_BUTTON                                        :{BLACK}Компания
+STR_GOALS_COMPANY_BUTTON_HELPTEXT                               :{BLACK}Покажи цели на компанията
 STR_GOALS_TEXT                                                  :{ORANGE}{STRING}
 STR_GOALS_NONE                                                  :{ORANGE}- Никакви -
 STR_GOALS_PROGRESS                                              :{ORANGE}напредък{STRING}
@@ -3276,6 +3354,7 @@ STR_INDUSTRY_DIRECTORY_LIST_CAPTION                             :{BLACK}Имен
 # Industry view
 STR_INDUSTRY_VIEW_CAPTION                                       :{WHITE}{INDUSTRY}
 STR_INDUSTRY_VIEW_PRODUCTION_LAST_MONTH_TITLE                   :{BLACK}Произведено миналия месец:
+STR_INDUSTRY_VIEW_PRODUCTION_LAST_MINUTE_TITLE                  :Произведено последната минута:
 STR_INDUSTRY_VIEW_TRANSPORTED                                   :{YELLOW}{CARGO_LONG}{STRING}{BLACK} ({COMMA}% превозено)
 STR_INDUSTRY_VIEW_LOCATION_TOOLTIP                              :{BLACK}Фокусиране на основният изглед върху индустрията. Ctrl+Click отваря прозорец на нов изглед върху индустрията.
 STR_INDUSTRY_VIEW_PRODUCTION_LEVEL                              :{BLACK}Ниво на производство: {YELLOW}{COMMA}%
@@ -3310,7 +3389,10 @@ STR_VEHICLE_LIST_MANAGE_LIST                                    :{BLACK}Напр
 STR_VEHICLE_LIST_MANAGE_LIST_TOOLTIP                            :{BLACK}Прати инструкциите до всички машини в този лист
 STR_VEHICLE_LIST_REPLACE_VEHICLES                               :Замяна на превозни средства
 STR_VEHICLE_LIST_SEND_FOR_SERVICING                             :Прати за обслужване
+STR_VEHICLE_LIST_CREATE_GROUP                                   :Създай група
 STR_VEHICLE_LIST_PROFIT_THIS_YEAR_LAST_YEAR                     :{TINY_FONT}{BLACK}Печалба тази година: {CURRENCY_LONG} (минала година: {CURRENCY_LONG})
+STR_VEHICLE_LIST_CARGO                                          :[{CARGO_LIST}]
+STR_VEHICLE_LIST_NAME_AND_CARGO                                 :{STRING} {STRING}
 
 STR_VEHICLE_LIST_SEND_TRAIN_TO_DEPOT                            :Прати в депото
 STR_VEHICLE_LIST_SEND_ROAD_VEHICLE_TO_DEPOT                     :Прати в сервиза
@@ -3371,6 +3453,7 @@ STR_BUY_VEHICLE_SHIP_CAPTION                                    :Нови Кор
 STR_BUY_VEHICLE_AIRCRAFT_CAPTION                                :Нова летателна машина
 
 STR_PURCHASE_INFO_COST_WEIGHT                                   :{BLACK}Цена: {GOLD}{CURRENCY_LONG}{BLACK} Тегло: {GOLD}{WEIGHT_SHORT}
+STR_PURCHASE_INFO_COST_REFIT_WEIGHT                             :{BLACK}Цена: {GOLD}{CURRENCY_LONG}{BLACK} (Цена преоборудване: {GOLD}{CURRENCY_LONG}{BLACK}) Тегло: {GOLD}{WEIGHT_SHORT}
 STR_PURCHASE_INFO_SPEED_POWER                                   :{BLACK}Скорост: {GOLD}{VELOCITY}{BLACK} Мощност: {GOLD}{POWER}
 STR_PURCHASE_INFO_SPEED                                         :{BLACK}Скорост: {GOLD}{VELOCITY}
 STR_PURCHASE_INFO_SPEED_OCEAN                                   :{BLACK}Скорост в океана: {GOLD}{VELOCITY}
@@ -3546,6 +3629,7 @@ STR_ENGINE_PREVIEW_CAPTION                                      :{WHITE}Съоб
 STR_ENGINE_PREVIEW_MESSAGE                                      :{GOLD}Създадохме нов {STRING}.{}Интересувате ли се от изключителното право да използвате това ПС за една година, за да видим как то работи преди да го пуснем на пазара за масова употреба?
 
 STR_ENGINE_PREVIEW_RAILROAD_LOCOMOTIVE                          :локомотив за двурелсов път
+STR_ENGINE_PREVIEW_ELRAIL_LOCOMOTIVE                            :електрифициран ЖП локомотив
 STR_ENGINE_PREVIEW_MONORAIL_LOCOMOTIVE                          :локомотив за еднорелсов път
 STR_ENGINE_PREVIEW_MAGLEV_LOCOMOTIVE                            :локомотив за магниторелсов път
 
@@ -3554,6 +3638,14 @@ STR_ENGINE_PREVIEW_ROAD_VEHICLE                                 :автомоб�
 STR_ENGINE_PREVIEW_AIRCRAFT                                     :самолет
 STR_ENGINE_PREVIEW_SHIP                                         :кораб
 
+STR_ENGINE_PREVIEW_COST_WEIGHT                                  :{CURRENCY_LONG} Тегло: {WEIGHT_SHORT}
+STR_ENGINE_PREVIEW_COST_MAX_SPEED                               :{CURRENCY_LONG} Макс. скорост: {VELOCITY}
+STR_ENGINE_PREVIEW_SPEED_POWER                                  :Скорост: {VELOCITY} Мощност: {POWER}
+STR_ENGINE_PREVIEW_SPEED_POWER_MAX_TE                           :Скорост: {VELOCITY} Мощност: {POWER} Макс. Т.С.: {FORCE}
+STR_ENGINE_PREVIEW_RUNCOST_YEAR                                 :Оперативна цена: {CURRENCY_LONG}/година
+STR_ENGINE_PREVIEW_RUNCOST_PERIOD                               :Оперативна цена: {CURRENCY_LONG}/период
+STR_ENGINE_PREVIEW_CAPACITY                                     :{CARGO_LONG}
+STR_ENGINE_PREVIEW_CAPACITY_2                                   :{CARGO_LONG}, {CARGO_LONG}
 
 # Autoreplace window
 STR_REPLACE_VEHICLES_WHITE                                      :{WHITE}Замяна {STRING} - {STRING}
@@ -3642,6 +3734,7 @@ STR_VEHICLE_VIEW_SHIP_SHOW_DETAILS_TOOLTIP                      :{BLACK}Пока
 STR_VEHICLE_VIEW_AIRCRAFT_SHOW_DETAILS_TOOLTIP                  :{BLACK}Информация за самолета
 
 ###length VEHICLE_TYPES
+STR_VEHICLE_VIEW_ROAD_VEHICLE_STATUS_START_STOP_TOOLTIP         :{BLACK}Действие на текущо ПС - кликнете, за да спрете/пуснете ПС
 
 # Messages in the start stop button in the vehicle view
 STR_VEHICLE_STATUS_LOADING_UNLOADING                            :{LTBLUE}Товарене/ Разтоварване
@@ -3698,6 +3791,8 @@ STR_VEHICLE_INFO_CAPACITY_CAPACITY                              :{BLACK}Капа
 
 STR_VEHICLE_INFO_FEEDER_CARGO_VALUE                             :{BLACK}Сума за преместване: {LTBLUE}{CURRENCY_LONG}
 
+STR_VEHICLE_DETAILS_LAST_SERVICE_DATE                           :{LTBLUE}{DATE_LONG}
+STR_VEHICLE_DETAILS_LAST_SERVICE_MINUTES_AGO                    :{LTBLUE} преди {NUM} минути
 
 STR_SERVICE_INTERVAL_DROPDOWN_TOOLTIP                           :{BLACK}Промяна на сервизният интервал
 STR_VEHICLE_DETAILS_DEFAULT                                     :По подразбиране
@@ -4047,10 +4142,14 @@ STR_AI_LIST_CANCEL_TOOLTIP                                      :{BLACK}Не п�
 
 
 # Script Parameters
+STR_AI_SETTINGS_CAPTION                                         :{WHITE}{STRING} Параметри
 STR_AI_SETTINGS_CAPTION_AI                                      :AI
+STR_AI_SETTINGS_CAPTION_GAMESCRIPT                              :Игрови скрипт
 STR_AI_SETTINGS_CLOSE                                           :{BLACK}Затвори
 STR_AI_SETTINGS_RESET                                           :{BLACK}Рестартиране
 STR_AI_SETTINGS_SETTING                                         :{STRING}: {ORANGE}{STRING}
+STR_AI_SETTINGS_SETTING_DEVIATION                               :{STRING}: {ORANGE}[{STRING}, {STRING}]
+STR_AI_SETTINGS_JUST_DEVIATION                                  :[{STRING}, {STRING}]
 
 
 # Textfile window
@@ -4969,17 +5068,21 @@ STR_WAYPOINT_NAME                                               :{WAYPOINT}
 
 
 STR_JUST_CARGO                                                  :{CARGO_LONG}
+STR_JUST_RIGHT_ARROW                                            :{RIGHT_ARROW}
 STR_JUST_CHECKMARK                                              :{CHECKMARK}
 STR_JUST_COMMA                                                  :{COMMA}
 STR_JUST_CURRENCY_SHORT                                         :{CURRENCY_SHORT}
 STR_JUST_CURRENCY_LONG                                          :{CURRENCY_LONG}
 STR_JUST_CARGO_LIST                                             :{CARGO_LIST}
+STR_JUST_DECIMAL                                                :{DECIMAL}
 STR_JUST_INT                                                    :{NUM}
 STR_JUST_DATE_TINY                                              :{DATE_TINY}
 STR_JUST_DATE_SHORT                                             :{DATE_SHORT}
 STR_JUST_DATE_LONG                                              :{DATE_LONG}
 STR_JUST_DATE_ISO                                               :{DATE_ISO}
 STR_JUST_STRING                                                 :{STRING}
+STR_JUST_STRING1                                                :{STRING}
+STR_JUST_STRING2                                                :{STRING}
 STR_JUST_STRING_STRING                                          :{STRING}{STRING}
 STR_JUST_RAW_STRING                                             :{STRING}
 STR_JUST_BIG_RAW_STRING                                         :{BIG_FONT}{STRING}

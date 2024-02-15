@@ -261,7 +261,10 @@ STR_UNITS_SECONDS                                               :{COMMA}{NBSP}gi
 STR_UNITS_TICKS                                                 :{COMMA}{NBSP}tick
 
 STR_UNITS_MONTHS                                                :{NUM}{NBSP}tháng
+STR_UNITS_MINUTES                                               :{NUM}{NBSP}phút
 
+STR_UNITS_YEARS                                                 :{NUM}{NBSP}năm
+STR_UNITS_PERIODS                                               :{NUM}{NBSP}kỳ
 
 # Common window strings
 STR_LIST_FILTER_TITLE                                           :{BLACK}Lọc:
@@ -286,7 +289,7 @@ STR_TOOLTIP_RESIZE                                              :{BLACK}Click v�
 STR_TOOLTIP_TOGGLE_LARGE_SMALL_WINDOW                           :{BLACK}Bật kích cỡ cửa sổ lớn/nhỏ
 STR_TOOLTIP_VSCROLL_BAR_SCROLLS_LIST                            :{BLACK}Thanh cuộn lên/xuống
 STR_TOOLTIP_HSCROLL_BAR_SCROLLS_LIST                            :{BLACK}Thanh cuộn sang trái/phải
-STR_TOOLTIP_DEMOLISH_BUILDINGS_ETC                              :{BLACK}Phá hủy các tòa nhà v.v... trên 1 lô đất. Ctrl để chọn vùng theo đường chéo. Shift để chọn hiển thị chi phí xây dựng/phá hủy
+STR_TOOLTIP_DEMOLISH_BUILDINGS_ETC                              :{BLACK}Phá hủy các tòa nhà v.v... trên 1 lô đất. Ctrl+Click+kéo để chọn vùng theo đường chéo. Shift để chọn hiển thị chi phí dự tính
 
 # Show engines button
 ###length VEHICLE_TYPES
@@ -328,7 +331,9 @@ STR_SORT_BY_TYPE                                                :Kiểu
 STR_SORT_BY_TRANSPORTED                                         :Dung lượng đã vận chuyển
 STR_SORT_BY_NUMBER                                              :Số
 STR_SORT_BY_PROFIT_LAST_YEAR                                    :Lợi nhuận năm trước
+STR_SORT_BY_PROFIT_LAST_PERIOD                                  :Lợi nhuận kỳ trước
 STR_SORT_BY_PROFIT_THIS_YEAR                                    :Lợi nhuận năm nay
+STR_SORT_BY_PROFIT_THIS_PERIOD                                  :Lợi nhuận kỳ này
 STR_SORT_BY_AGE                                                 :Tuổi
 STR_SORT_BY_RELIABILITY                                         :Độ tin cậy
 STR_SORT_BY_TOTAL_CAPACITY_PER_CARGOTYPE                        :Tổng sức chứa của loại toa xe
@@ -356,9 +361,13 @@ STR_SORT_BY_POPULATION                                          :Dân số
 STR_SORT_BY_RATING                                              :Đánh giá
 STR_SORT_BY_NUM_VEHICLES                                        :Số lượng phương tiện
 STR_SORT_BY_TOTAL_PROFIT_LAST_YEAR                              :Tổng lợi nhuận năm trước
+STR_SORT_BY_TOTAL_PROFIT_LAST_PERIOD                            :Tổng lợi nhuận kỳ trước
 STR_SORT_BY_TOTAL_PROFIT_THIS_YEAR                              :Tổng lợi nhuận năm nay
+STR_SORT_BY_TOTAL_PROFIT_THIS_PERIOD                            :Tổng lợi nhuận kỳ này
 STR_SORT_BY_AVERAGE_PROFIT_LAST_YEAR                            :Lợi nhuận trung bình năm trước
+STR_SORT_BY_AVERAGE_PROFIT_LAST_PERIOD                          :Lợi nhuận trung bình kỳ trước
 STR_SORT_BY_AVERAGE_PROFIT_THIS_YEAR                            :Lợi nhuận trung bình năm nay
+STR_SORT_BY_AVERAGE_PROFIT_THIS_PERIOD                          :Lợi nhuận trung bình kỳ này
 
 # Group by options for vehicle list
 STR_GROUP_BY_NONE                                               :Không
@@ -380,26 +389,26 @@ STR_TOOLBAR_TOOLTIP_DISPLAY_SUBSIDIES                           :{BLACK}Hiện t
 STR_TOOLBAR_TOOLTIP_DISPLAY_LIST_OF_COMPANY_STATIONS            :{BLACK}Hiển thị danh sách công ty
 STR_TOOLBAR_TOOLTIP_DISPLAY_COMPANY_FINANCES                    :{BLACK}Hiện thông tin tài chính của công ty
 STR_TOOLBAR_TOOLTIP_DISPLAY_COMPANY_GENERAL                     :{BLACK}Hiện thông tin tổng quát của công ty
-STR_TOOLBAR_TOOLTIP_DISPLAY_STORY_BOOK                          :{BLACK}Hiển thị tình tiết
+STR_TOOLBAR_TOOLTIP_DISPLAY_STORY_BOOK                          :{BLACK}Hiển thị câu chuyện
 STR_TOOLBAR_TOOLTIP_DISPLAY_GOALS_LIST                          :{BLACK}Hiển thị danh sách mục tiêu
 STR_TOOLBAR_TOOLTIP_DISPLAY_GRAPHS                              :{BLACK}Hiển thị biểu đồ của công ty và giá cước hàng hóa
 STR_TOOLBAR_TOOLTIP_DISPLAY_COMPANY_LEAGUE                      :{BLACK}Hiện bảng tầm cỡ các công ty
-STR_TOOLBAR_TOOLTIP_FUND_CONSTRUCTION_OF_NEW                    :{BLACK}Khảo sát các ngành công nghiệp hoặc bỏ vốn cho những ngành mới
-STR_TOOLBAR_TOOLTIP_DISPLAY_LIST_OF_COMPANY_TRAINS              :{BLACK}Hiện danh sách tàu hỏa của công ty. Ctrl+Click vào chốt néo để mở danh sách nhóm/phương tiện
-STR_TOOLBAR_TOOLTIP_DISPLAY_LIST_OF_COMPANY_ROAD_VEHICLES       :{BLACK}Hiện danh sách xe cộ của công ty. Ctrl+Click vào chốt néo để mở danh sách nhóm/phương tiện
-STR_TOOLBAR_TOOLTIP_DISPLAY_LIST_OF_COMPANY_SHIPS               :{BLACK}Hiện danh sách tàu thủy của công ty. Ctrl+Click vào chốt néo để mở danh sách nhóm/phương tiện
-STR_TOOLBAR_TOOLTIP_DISPLAY_LIST_OF_COMPANY_AIRCRAFT            :{BLACK}Hiện danh sách máy bay của công ty. Ctrl+Click vào chốt néo để mở dạnh sách nhóm/phương tiện
-STR_TOOLBAR_TOOLTIP_ZOOM_THE_VIEW_IN                            :{BLACK}Thu nhỏ tầm nhìn
-STR_TOOLBAR_TOOLTIP_ZOOM_THE_VIEW_OUT                           :{BLACK}Nới rộng tầm nhìn
+STR_TOOLBAR_TOOLTIP_FUND_CONSTRUCTION_OF_NEW                    :{BLACK}Khảo sát các ngành công nghiệp hoặc bỏ vốn cho những nhà máy mới
+STR_TOOLBAR_TOOLTIP_DISPLAY_LIST_OF_COMPANY_TRAINS              :{BLACK}Hiện danh sách tàu hỏa của công ty. Ctrl+Click vào ẩn hiện nhóm phương tiện, ngược lại các mục đã chọn
+STR_TOOLBAR_TOOLTIP_DISPLAY_LIST_OF_COMPANY_ROAD_VEHICLES       :{BLACK}Hiện danh sách xe cộ của công ty. Ctrl+Click vào ẩn hiện nhóm phương tiện
+STR_TOOLBAR_TOOLTIP_DISPLAY_LIST_OF_COMPANY_SHIPS               :{BLACK}Hiện danh sách tàu thủy của công ty. Ctrl+Click vào ẩn hiện nhóm phương tiện, ngược lại các mục đã chọn
+STR_TOOLBAR_TOOLTIP_DISPLAY_LIST_OF_COMPANY_AIRCRAFT            :{BLACK}Hiện danh sách máy bay của công ty. Ctrl+Click vào chốt néo để mở dạnh sách nhóm phương tiện, ngược lại với các mục đã chọn
+STR_TOOLBAR_TOOLTIP_ZOOM_THE_VIEW_IN                            :{BLACK}Phóng to
+STR_TOOLBAR_TOOLTIP_ZOOM_THE_VIEW_OUT                           :{BLACK}Thu nhỏ
 STR_TOOLBAR_TOOLTIP_BUILD_RAILROAD_TRACK                        :{BLACK}Lắp đường ray
 STR_TOOLBAR_TOOLTIP_BUILD_ROADS                                 :{BLACK}Xây đường
-STR_TOOLBAR_TOOLTIP_BUILD_TRAMWAYS                              :{BLACK}Xây dựng đường xe điện
-STR_TOOLBAR_TOOLTIP_BUILD_SHIP_DOCKS                            :{BLACK}Xây bến cảng
+STR_TOOLBAR_TOOLTIP_BUILD_TRAMWAYS                              :{BLACK}Xây dựng hạ tầng xe điện
+STR_TOOLBAR_TOOLTIP_BUILD_SHIP_DOCKS                            :{BLACK}Xây hạ tầng đường thuỷ
 STR_TOOLBAR_TOOLTIP_BUILD_AIRPORTS                              :{BLACK}Xây sân bay
-STR_TOOLBAR_TOOLTIP_LANDSCAPING                                 :{BLACK}Mở thanh địa hình để nâng cao/hạ thấp ô đất, trồng cây, etc.
+STR_TOOLBAR_TOOLTIP_LANDSCAPING                                 :{BLACK}Mở thanh địa hình để nâng cao/hạ thấp ô đất, trồng cây, đặt biển hiệu
 STR_TOOLBAR_TOOLTIP_SHOW_SOUND_MUSIC_WINDOW                     :{BLACK}Hiện cửa sổ âm thanh/nhạc
-STR_TOOLBAR_TOOLTIP_SHOW_LAST_MESSAGE_NEWS                      :{BLACK}Hiện thông báo/tin tức cuối cùng, lịch sử thông báo hoặc xóa tất cả thông báo
-STR_TOOLBAR_TOOLTIP_LAND_BLOCK_INFORMATION                      :{BLACK}Thông tin vùng đất, chụp màng hình, công cụ dành cho nhà phát triển và thông tin về OpenTTD
+STR_TOOLBAR_TOOLTIP_SHOW_LAST_MESSAGE_NEWS                      :{BLACK}Hiện thông báo cuối cùng/bản tin tức, lịch sử thông báo hoặc xóa tất cả thông báo
+STR_TOOLBAR_TOOLTIP_LAND_BLOCK_INFORMATION                      :{BLACK}Thông tin vùng đất, chụp màn hình, công cụ dành cho nhà phát triển và thông tin về OpenTTD
 STR_TOOLBAR_TOOLTIP_SWITCH_TOOLBAR                              :{BLACK}Chuyển thanh công cụ
 
 # Extra tooltips for the scenario editor toolbar
@@ -409,13 +418,13 @@ STR_SCENEDIT_TOOLBAR_SCENARIO_EDITOR                            :{YELLOW}Biên T
 STR_SCENEDIT_TOOLBAR_TOOLTIP_MOVE_THE_STARTING_DATE_BACKWARD    :{BLACK}Chuyển ngày bắt đầu về phía sau 1 năm
 STR_SCENEDIT_TOOLBAR_TOOLTIP_MOVE_THE_STARTING_DATE_FORWARD     :{BLACK}Chuyển ngày bắt đầu về phía trước 1 năm
 STR_SCENEDIT_TOOLBAR_TOOLTIP_SET_DATE                           :{BLACK}Nháy vào để nhập năm bắt đầu ván chơi
-STR_SCENEDIT_TOOLBAR_TOOLTIP_DISPLAY_MAP_TOWN_DIRECTORY         :{BLACK}Hiển thị bản đồ, thư mục thị trấn
-STR_SCENEDIT_TOOLBAR_LANDSCAPE_GENERATION                       :{BLACK}Tạo địa hình
-STR_SCENEDIT_TOOLBAR_TOWN_GENERATION                            :{BLACK}Tạo thị trấn
-STR_SCENEDIT_TOOLBAR_INDUSTRY_GENERATION                        :{BLACK}Tạo nhà máy
+STR_SCENEDIT_TOOLBAR_TOOLTIP_DISPLAY_MAP_TOWN_DIRECTORY         :{BLACK}Hiển thị bản đồ, thư mục thị trấn, danh mục nhãn, hoặc chỉ mục đô thị, nhà máy
+STR_SCENEDIT_TOOLBAR_LANDSCAPE_GENERATION                       :{BLACK}Mở menu địa hình hoặc tạo một thế giới
+STR_SCENEDIT_TOOLBAR_TOWN_GENERATION                            :{BLACK}Xây dựng hoặc khởi tạo đô thị
+STR_SCENEDIT_TOOLBAR_INDUSTRY_GENERATION                        :{BLACK}Xây dụng hoặc kiến tạo nhà máy
 STR_SCENEDIT_TOOLBAR_ROAD_CONSTRUCTION                          :{BLACK}Xây dựng đường
-STR_SCENEDIT_TOOLBAR_TRAM_CONSTRUCTION                          :{BLACK}Xây dựng đường xe điện
-STR_SCENEDIT_TOOLBAR_PLANT_TREES                                :{BLACK}Trồng cây. Ctrl chọn vùng theo đường chéo. Shift bật tắt xây dựng/hiển thị ước tính chi phí
+STR_SCENEDIT_TOOLBAR_TRAM_CONSTRUCTION                          :{BLACK}Xây dựng hạ tầng xe điện
+STR_SCENEDIT_TOOLBAR_PLANT_TREES                                :{BLACK}Trồng cây. Ctrl + Click + kéo chọn vùng theo đường chéo. Shift bật tắt hiển thị ước tính chi phí
 STR_SCENEDIT_TOOLBAR_PLACE_SIGN                                 :{BLACK}Tạo bảng ký hiệu
 STR_SCENEDIT_TOOLBAR_PLACE_OBJECT                               :{BLACK}Đặt đối tượng. Ctrl để chọn khu vực theo đường chéo. Shift để xem chi phí dự tính
 
@@ -436,6 +445,7 @@ STR_SETTINGS_MENU_CONFIG_SETTINGS_TREE                          :Thiết lập
 STR_SETTINGS_MENU_AI_SETTINGS                                   :Thiết lập AI
 STR_SETTINGS_MENU_GAMESCRIPT_SETTINGS                           :Thiết lập kịch bản màn chơi
 STR_SETTINGS_MENU_NEWGRF_SETTINGS                               :Thông số NewGRF
+STR_SETTINGS_MENU_SANDBOX_OPTIONS                               :Tuỳ chọn Sandbox
 STR_SETTINGS_MENU_TRANSPARENCY_OPTIONS                          :Thiết lập hiệu ứng trong suốt
 STR_SETTINGS_MENU_TOWN_NAMES_DISPLAYED                          :Hiển thị tên thị trấn
 STR_SETTINGS_MENU_STATION_NAMES_DISPLAYED                       :Hiển thị tên nhà ga
@@ -601,8 +611,11 @@ STR_GRAPH_CARGO_DELIVERED_CAPTION                               :{WHITE}Số lư
 STR_GRAPH_COMPANY_PERFORMANCE_RATINGS_CAPTION                   :{WHITE}Đánh giá năng suất công ty (cao nhất=1000)
 STR_GRAPH_COMPANY_VALUES_CAPTION                                :{WHITE}Biểu đồ giá trị công ty
 
+STR_GRAPH_LAST_72_MINUTES_TIME_LABEL                            :{TINY_FONT}{BLACK}72 phút cuối
 
 STR_GRAPH_CARGO_PAYMENT_RATES_CAPTION                           :{WHITE}Bảng Giá Cước Vận Chuyển Hàng Hóa
+STR_GRAPH_CARGO_PAYMENT_RATES_DAYS                              :{TINY_FONT}{BLACK}Số ngày trong trung chuyển
+STR_GRAPH_CARGO_PAYMENT_RATES_SECONDS                           :{TINY_FONT}{BLACK}Số giây trong trung chuyển
 STR_GRAPH_CARGO_PAYMENT_RATES_TITLE                             :{TINY_FONT}{BLACK}Tiền trả khi vận chuyển 10 đơn vị (hay 10,000 lít) hàng hóa trên mỗi 20 ô
 STR_GRAPH_CARGO_ENABLE_ALL                                      :{TINY_FONT}{BLACK}Cho phép toàn bộ
 STR_GRAPH_CARGO_DISABLE_ALL                                     :{TINY_FONT}{BLACK}Bỏ toàn bộ
@@ -620,6 +633,7 @@ STR_GRAPH_KEY_COMPANY_SELECTION_TOOLTIP                         :{BLACK}Click v�
 # Company league window
 STR_COMPANY_LEAGUE_TABLE_CAPTION                                :{WHITE}Bảng Tầm Cỡ Công Ty
 STR_COMPANY_LEAGUE_COMPANY_NAME                                 :{ORANGE}{COMPANY} {BLACK}{COMPANY_NUM} '{STRING}'
+STR_COMPANY_LEAGUE_COMPANY_RANK                                 :{YELLOW}#{NUM}
 STR_COMPANY_LEAGUE_PERFORMANCE_TITLE_ENGINEER                   :Kỹ sư vận tải
 STR_COMPANY_LEAGUE_PERFORMANCE_TITLE_TRAFFIC_MANAGER            :Tổ trưởng vận tải
 STR_COMPANY_LEAGUE_PERFORMANCE_TITLE_TRANSPORT_COORDINATOR      :Trưởng phòng vận tải
@@ -651,7 +665,11 @@ STR_PERFORMANCE_DETAIL_LOAN                                     :{BLACK}Vay:
 STR_PERFORMANCE_DETAIL_TOTAL                                    :{BLACK}Tổng cộng:
 ###next-name-looks-similar
 
+STR_PERFORMANCE_DETAIL_VEHICLES_TOOLTIP_YEARS                   :{BLACK}Số lượng phương tiện đã thay đổi lợi nhuận năm trước. Bao gồm ô-tô, tàu hoả, tàu thuỷ và máy bay
+STR_PERFORMANCE_DETAIL_VEHICLES_TOOLTIP_PERIODS                 :{BLACK}Số lượng phương tiện đã thay đổi lợi nhuận kỳ trước. Bao gồm ô-tô, tàu hoả, tàu thuỷ và máy bay
 STR_PERFORMANCE_DETAIL_STATIONS_TOOLTIP                         :{BLACK}Số trạm mới được phục vụ.Nhà ga, trạm xe buýt và sân bay ... đều được tính riêng, dù chúng có chung một trạm
+STR_PERFORMANCE_DETAIL_MIN_PROFIT_TOOLTIP_YEARS                 :{BLACK}Lợi nhuận của phương tiện với mức thu nhập tối thiểu (chỉ đối với các phương tiện tải qua hơn 2 năm mới xem xét)
+STR_PERFORMANCE_DETAIL_MIN_PROFIT_TOOLTIP_PERIODS               :{BLACK}Lợi nhuận của phương tiện với mức thu nhập tối thiểu (chỉ đối với các phương tiện tải qua hơn 2 kỳ mới xem xét)
 STR_PERFORMANCE_DETAIL_MIN_INCOME_TOOLTIP                       :{BLACK}Doanh thu trong quý với lợi nhuận thấp nhất trong 12 quý gần đây
 STR_PERFORMANCE_DETAIL_MAX_INCOME_TOOLTIP                       :{BLACK}Doanh thu trong tháng với lợi nhuận cao nhất trong 12 quý gần đây
 STR_PERFORMANCE_DETAIL_DELIVERED_TOOLTIP                        :{BLACK}Lượng hàng đã vận chuyển trong bốn quý gần đây
@@ -755,7 +773,7 @@ STR_SMALLMAP_LEGENDA_AIRCRAFT                                   :{TINY_FONT}{BLA
 STR_SMALLMAP_LEGENDA_TRANSPORT_ROUTES                           :{TINY_FONT}{BLACK}Tuyến vận tải
 STR_SMALLMAP_LEGENDA_FOREST                                     :{TINY_FONT}{BLACK}Rừng
 STR_SMALLMAP_LEGENDA_RAILROAD_STATION                           :{TINY_FONT}{BLACK}Ga tàu hỏa
-STR_SMALLMAP_LEGENDA_TRUCK_LOADING_BAY                          :{TINY_FONT}{BLACK}Trạm bốc dỡ hàng xe tải
+STR_SMALLMAP_LEGENDA_TRUCK_LOADING_BAY                          :{TINY_FONT}{BLACK}Trạm bốc dỡ xe tải
 STR_SMALLMAP_LEGENDA_BUS_STATION                                :{TINY_FONT}{BLACK}Bến xe buýt
 STR_SMALLMAP_LEGENDA_AIRPORT_HELIPORT                           :{TINY_FONT}{BLACK}Sân bay/Bãi đỗ trực thăng
 STR_SMALLMAP_LEGENDA_DOCK                                       :{TINY_FONT}{BLACK}Cảng biển
@@ -884,10 +902,12 @@ STR_NEWS_VEHICLE_IS_GETTING_VERY_OLD                            :{WHITE}{VEHICLE
 STR_NEWS_VEHICLE_IS_GETTING_VERY_OLD_AND                        :{WHITE}{VEHICLE} đang xuống cấp trầm trọng và cần được thay thế ngay lập tức
 STR_NEWS_TRAIN_IS_STUCK                                         :{WHITE}{VEHICLE} không thể tìm đường đi tiếp.
 STR_NEWS_VEHICLE_IS_LOST                                        :{WHITE}{VEHICLE} bị mất phương hướng.
+STR_NEWS_VEHICLE_UNPROFITABLE_YEAR                              :{WHITE}{VEHICLE} lợi nhuận của năm trước {CURRENCY_LONG}
+STR_NEWS_VEHICLE_UNPROFITABLE_PERIOD                            :{WHITE}{VEHICLE} lợi nhuận của phương tiện kỳ gần nhất {CURRENCY_LONG}
 STR_NEWS_AIRCRAFT_DEST_TOO_FAR                                  :{WHITE}{VEHICLE} không thể tới điểm đến kế tiếp vì nó vượt tầm
 
 STR_NEWS_ORDER_REFIT_FAILED                                     :{WHITE}{VEHICLE} đã dừng lại do yêu cầu cải biến thất bại
-STR_NEWS_VEHICLE_AUTORENEW_FAILED                               :{WHITE}Thất bại trong tự thay mới {VEHICLE}{}{STRING}
+STR_NEWS_VEHICLE_AUTORENEW_FAILED                               :{WHITE}Thất bại khi tự thay mới {VEHICLE}{}{STRING}
 
 STR_NEWS_NEW_VEHICLE_NOW_AVAILABLE                              :{BIG_FONT}{BLACK}{STRING} mới đã ra lò!
 STR_NEWS_NEW_VEHICLE_TYPE                                       :{BIG_FONT}{BLACK}{ENGINE}
@@ -900,13 +920,18 @@ STR_NEWS_STATION_NOW_ACCEPTS_CARGO_LIST                         :{WHITE}{STATION
 
 STR_NEWS_OFFER_OF_SUBSIDY_EXPIRED                               :{BIG_FONT}{BLACK}Lời đề nghị trợ cấp đã hết hạn:{}{}{STRING} từ {STRING} đến {STRING} bây giờ sẽ không có trợ cấp.
 STR_NEWS_SUBSIDY_WITHDRAWN_SERVICE                              :{BIG_FONT}{BLACK}Trợ cấp đã hết:{}{}Dịch vụ vận chuyển {STRING} từ {STRING} đến {STRING} sẽ không được trợ cấp nữa.
+STR_NEWS_SERVICE_SUBSIDY_OFFERED                                :{BIG_FONT}{BLACK}Đề nghị trợ cấp:{}{}Dịch vụ {STRING} đầu tiên từ {STRING} đến {STRING} sẽ nhận được tiền trợ cấp trong {UNITS_YEARS_OR_MINUTES} của chính quyền địa phương!
 ###length 4
 STR_NEWS_SERVICE_SUBSIDY_AWARDED_HALF                           :{BIG_FONT}{BLACK}Trợ cấp dịch vụ được trao cho {STRING}!{}{}{STRING} từ {STRING} đến {STRING} sẽ thu lợi cao hơn 50% trong vòng {UNITS_YEARS_OR_MINUTES} năm tới!
 STR_NEWS_SERVICE_SUBSIDY_AWARDED_DOUBLE                         :{BIG_FONT}{BLACK}Trợ cấp dịch vụ được trao cho {STRING}!{}{}{STRING} từ {STRING} đến {STRING} sẽ thu lợi gấp đôi trong vòng {UNITS_YEARS_OR_MINUTES} năm tới!
 STR_NEWS_SERVICE_SUBSIDY_AWARDED_TRIPLE                         :{BIG_FONT}{BLACK}Trợ cấp dịch vụ được trao cho {STRING}!{}{}{STRING} từ {STRING} đến {STRING} sẽ thu lợi gấp ba trong vòng {UNITS_YEARS_OR_MINUTES}!
 STR_NEWS_SERVICE_SUBSIDY_AWARDED_QUADRUPLE                      :{BIG_FONT}{BLACK}Trợ cấp dịch vụ được trao cho {STRING}!{}{}{STRING} từ {STRING} đến {STRING} sẽ thu lợi gấp tư trong vòng {UNITS_YEARS_OR_MINUTES}!
 
+STR_NEWS_ROAD_REBUILDING_MONTHS                                 :{BIG_FONT}{BLACK}Giao thông rối loạn ở {TOWN}!{}{}Đường xá trong chương trình cải tạo tài trợ bởi {STRING} sẽ khiến người lái xe vất vả 6 tháng!
+STR_NEWS_ROAD_REBUILDING_MINUTES                                :{BIG_FONT}{BLACK}Giao thông rối loạn ở {TOWN}!{}{}Đường xá trong chương trình cải tạo tài trợ bởi {STRING} sẽ khiến người lái xe vất vả 6 phút!
 STR_NEWS_EXCLUSIVE_RIGHTS_TITLE                                 :{BIG_FONT}{BLACK}Độc quyền vận tải!
+STR_NEWS_EXCLUSIVE_RIGHTS_DESCRIPTION_MONTHS                    :{BIG_FONT}{BLACK}Chính quyền địa phương {TOWN} ký hợp đồng với {STRING} trong 12 tháng cho giấy phép vận tải độc quyền!
+STR_NEWS_EXCLUSIVE_RIGHTS_DESCRIPTION_MINUTES                   :{BIG_FONT}{BLACK}Chính quyền địa phương {TOWN} ký hợp đồng với {STRING} trong 12 phút cho giấy phép vận tải độc quyền!
 
 # Extra view window
 STR_EXTRA_VIEWPORT_TITLE                                        :{WHITE}Cửa sổ {COMMA}
@@ -925,6 +950,7 @@ STR_GAME_OPTIONS_TAB_GRAPHICS_TT                                :{BLACK}Điều 
 STR_GAME_OPTIONS_TAB_SOUND                                      :Âm thanh
 STR_GAME_OPTIONS_TAB_SOUND_TT                                   :{BLACK}Lựa chọn thiết lập cho âm thanh và nhạc
 STR_GAME_OPTIONS_TAB_SOCIAL                                     :Xã hội
+STR_GAME_OPTIONS_TAB_SOCIAL_TT                                  :{BLACK}Chọn thiết lập các tích hợp xã hội
 
 STR_GAME_OPTIONS_VOLUME                                         :Âm lượng
 STR_GAME_OPTIONS_SFX_VOLUME                                     :Hiệu ứng âm thanh
@@ -984,6 +1010,7 @@ STR_GAME_OPTIONS_CURRENCY_HKD                                   :Đô-la Hồng 
 STR_GAME_OPTIONS_CURRENCY_INR                                   :Rupee Ấn Độ
 STR_GAME_OPTIONS_CURRENCY_IDR                                   :Rupiah Indonesia
 STR_GAME_OPTIONS_CURRENCY_MYR                                   :Ringgit Malaysia
+STR_GAME_OPTIONS_CURRENCY_LVL                                   :Lát-vi-a Lats
 
 STR_GAME_OPTIONS_AUTOSAVE_FRAME                                 :{BLACK}Lưu tự động
 STR_GAME_OPTIONS_AUTOSAVE_DROPDOWN_TOOLTIP                      :{BLACK}Lựa chọn khoảng thời gian tự động lưu
@@ -1025,6 +1052,10 @@ STR_GAME_OPTIONS_GUI_SCALE_AUTO_TOOLTIP                         :{BLACK}Đánh d
 STR_GAME_OPTIONS_GUI_SCALE_BEVELS                               :Tỷ lệ góc xiên
 STR_GAME_OPTIONS_GUI_SCALE_BEVELS_TOOLTIP                       :{BLACK}Đánh dấu vào ô này để điều chỉnh tỷ lệ góc xiên theo kích thước giao diện
 
+STR_GAME_OPTIONS_GUI_FONT_SPRITE                                :{BLACK}Sử dụng sprite phông truyền thống
+STR_GAME_OPTIONS_GUI_FONT_SPRITE_TOOLTIP                        :{BLACK}Tuỳ chọn này nếu bạn muốn sử dụng sprite phông cố định truyền thống.
+STR_GAME_OPTIONS_GUI_FONT_AA                                    :{BLACK}Phông chữ chống răng cưa
+STR_GAME_OPTIONS_GUI_FONT_AA_TOOLTIP                            :{BLACK}Tuỳ chọn này để chống răng cưa phông chữ co dãn được
 
 STR_GAME_OPTIONS_GUI_SCALE_1X                                   :1x
 STR_GAME_OPTIONS_GUI_SCALE_2X                                   :2x
@@ -1059,10 +1090,19 @@ STR_GAME_OPTIONS_BASE_MUSIC                                     :{BLACK}Gói nh�
 STR_GAME_OPTIONS_BASE_MUSIC_TOOLTIP                             :{BLACK}Chọn gói nhạc để sử dụng
 STR_GAME_OPTIONS_BASE_MUSIC_DESCRIPTION_TOOLTIP                 :{BLACK}Thông tin thêm về gói nhạc chuẩn
 
+STR_GAME_OPTIONS_SOCIAL_PLUGINS_NONE                            :{LTBLUE}(không có plugins được cài đặt để tích hợp vào nền tảng xã hội)
 
+STR_GAME_OPTIONS_SOCIAL_PLUGIN_TITLE                            :{BLACK}{STRING} ({STRING})
 STR_GAME_OPTIONS_SOCIAL_PLUGIN_PLATFORM                         :{BLACK}Nền tảng:
+STR_GAME_OPTIONS_SOCIAL_PLUGIN_STATE                            :{BLACK}Trạng thái Plugin:
 
+STR_GAME_OPTIONS_SOCIAL_PLUGIN_STATE_RUNNING                    :{GREEN}Đang chạy
+STR_GAME_OPTIONS_SOCIAL_PLUGIN_STATE_FAILED                     :{RED}Kích hoạt không thành công
 STR_GAME_OPTIONS_SOCIAL_PLUGIN_STATE_PLATFORM_NOT_RUNNING       :{ORANGE}{STRING} đang không chạy
+STR_GAME_OPTIONS_SOCIAL_PLUGIN_STATE_UNLOADED                   :{RED}Đã gỡ
+STR_GAME_OPTIONS_SOCIAL_PLUGIN_STATE_DUPLICATE                  :{RED}Nhân đôi plugin
+STR_GAME_OPTIONS_SOCIAL_PLUGIN_STATE_UNSUPPORTED_API            :{RED}Phiên bản không hỗ trợ
+STR_GAME_OPTIONS_SOCIAL_PLUGIN_STATE_INVALID_SIGNATURE          :{RED}Chữ ký không hợp lý
 
 STR_BASESET_STATUS                                              :{STRING} {RED}({NUM} file bị hỏng/thiếu
 
@@ -1230,6 +1270,8 @@ STR_CONFIG_SETTING_HORIZONTAL_POS_RIGHT                         :Phải
 
 STR_CONFIG_SETTING_SECONDS_VALUE                                :{COMMA}{NBSP}giây
 
+STR_CONFIG_SETTING_INFINITE_MONEY                               :Tiền vô hạn: {STRING}
+STR_CONFIG_SETTING_INFINITE_MONEY_HELPTEXT                      :Cho phép chi tiêu không giới hạn và tắt bỏ việc phá sản của các công ty
 
 STR_CONFIG_SETTING_MAXIMUM_INITIAL_LOAN                         :Khoảng vay khởi nghiệp tối đa: {STRING}
 STR_CONFIG_SETTING_MAXIMUM_INITIAL_LOAN_HELPTEXT                :Hạn mức tối đa một công ty có thể vay (không tính lạm phát)
@@ -1255,6 +1297,7 @@ STR_CONFIG_SETTING_SUBSIDY_MULTIPLIER_HELPTEXT                  :Thiết lập m
 STR_CONFIG_SETTING_SUBSIDY_DURATION                             :Thời hạn trợ cấp: {STRING}
 ###length 2
 STR_CONFIG_SETTING_SUBSIDY_DURATION_HELPTEXT                    :Đặt số năm được hưởng trợ cấp dịch vụ
+STR_CONFIG_SETTING_SUBSIDY_DURATION_HELPTEXT_PERIODS            :Đặt số kỳ được hưởng trợ cấp dịch vụ
 
 STR_CONFIG_SETTING_SUBSIDY_DURATION_VALUE                       :{UNITS_YEARS_OR_PERIODS}
 ###setting-zero-is-special
@@ -1354,9 +1397,11 @@ STR_CONFIG_SETTING_SIGNALSIDE_RIGHT                             :Phía bên ph�
 
 ###length 2
 STR_CONFIG_SETTING_SHOWFINANCES                                 :Hiện bảng tài chính vào cuối năm: {STRING}
+STR_CONFIG_SETTING_SHOWFINANCES_PERIOD                          :Hiện bảng tài chính vào cuối kỳ: {STRING}
 
 ###length 2
 STR_CONFIG_SETTING_SHOWFINANCES_HELPTEXT                        :Nếu được bật, cửa số báo cáo tài chính sẽ tự bật lên cuối mỗi năm để có thể nhìn trạng thái tài chính công ty
+STR_CONFIG_SETTING_SHOWFINANCES_HELPTEXT_PERIOD                 :Nếu được bật, cửa số báo cáo tài chính sẽ tự bật lên cuối mỗi kỳ để có thể nhìn trạng thái tài chính công ty
 
 STR_CONFIG_SETTING_NONSTOP_BY_DEFAULT                           :Đặt các điểm lộ trình mới sẽ là 'chạy suốt" làm mặc định: {STRING}
 STR_CONFIG_SETTING_NONSTOP_BY_DEFAULT_HELPTEXT                  :Bình thường tàu sẽ dừng tại tất cả các ga nó đi qua. Tùy chọn này sẽ khiến tàu chạy qua tất cả các ga không dừng cho tới điểm đích. Lưu ý, tùy chọn này chỉ là đặt giá trị mặc định khi tạo mới lộ trình, vẫn có thể thay đổi đối với từng lộ trình cụ thể
@@ -1379,10 +1424,12 @@ STR_CONFIG_SETTING_AUTOSCROLL_EVERY_VIEWPORT                    :Mọi cửa s�
 STR_CONFIG_SETTING_BRIBE                                        :Cho phép hối lộ chính quyền địa phương: {STRING}
 ###length 2
 STR_CONFIG_SETTING_BRIBE_HELPTEXT                               :Cho phép công ty thử hối lộ quan chức địa phương. Nếu việc hối lộ bị phát giác, công ty sẽ không được làm gì ở địa phương đó 6 tháng
+STR_CONFIG_SETTING_BRIBE_HELPTEXT_MINUTES                       :Cho phép các công ty hối lộ quan chức địa phương. Nếu việc hối lộ bị phát giác bởi điều tra viên, thì công ty sẽ không được hoạt động ở địa phương đó trong 6 phút
 
 STR_CONFIG_SETTING_ALLOW_EXCLUSIVE                              :Cho phép mua quyền vận tải độc quyền: {STRING}
 ###length 2
-STR_CONFIG_SETTING_ALLOW_EXCLUSIVE_HELPTEXT                     :Nếu một công ty mua quyền vân tải độc quyền tại địa phương, thì các trạm của đối thủ sẽ không nhận được hàng hóa và hành khách trong vòng 1 năm
+STR_CONFIG_SETTING_ALLOW_EXCLUSIVE_HELPTEXT                     :Nếu một công ty mua giấy phép vận tải độc quyền ở một địa phương, các ga, bến, cảng của đối thủ (hành khách và hàng hoá) sẽ không tiếp nhận hàng hoá trong 12 tháng
+STR_CONFIG_SETTING_ALLOW_EXCLUSIVE_HELPTEXT_MINUTES             :Nếu một công ty mua giấy phép vận tải độc quyền ở một địa phương, các ga, bến, cảng của đối thủ (hành khách và hàng hoá) sẽ không tiếp nhận hàng hoá trong 12 phút
 
 STR_CONFIG_SETTING_ALLOW_FUND_BUILDINGS                         :Cho phép góp vốn cho các công trình: {STRING}
 STR_CONFIG_SETTING_ALLOW_FUND_BUILDINGS_HELPTEXT                :Cho phép công ty đầu tư xây nhà mới tại địa phương
@@ -1441,16 +1488,29 @@ STR_CONFIG_SETTING_ORDER_REVIEW_ON                              :tất cả phư
 STR_CONFIG_SETTING_WARN_INCOME_LESS                             :Cảnh báo nếu thu nhập của phương tiện bị lỗ: {STRING}
 ###length 2
 STR_CONFIG_SETTING_WARN_INCOME_LESS_HELPTEXT                    :Nếu bật, sẽ có thông báo nếu một phương tiện nào đó không có lãi trong một năm
+STR_CONFIG_SETTING_WARN_INCOME_LESS_HELPTEXT_PERIOD             :Nếu bật, sẽ có thông báo nếu một phương tiện nào đó không có lãi trong một kỳ
 
 STR_CONFIG_SETTING_NEVER_EXPIRE_VEHICLES                        :Phương tiện không bao giờ hết hạn sử dụng: {STRING}
 STR_CONFIG_SETTING_NEVER_EXPIRE_VEHICLES_HELPTEXT               :Nếu bật, tất cả các model phương tiện sẽ không bị lỗi thời
 
+STR_CONFIG_SETTING_TIMEKEEPING_UNITS                            :Giữ nhịp: {STRING}
+STR_CONFIG_SETTING_TIMEKEEPING_UNITS_HELPTEXT                   :Lựa chọn đơn vị giữ nhịp thời gian trong trò chơi. Điều này không thể thay đổi sau đó.{}{}Dựa trên lịch là kiểu cổ điển của OpenTTD, với mỗi năm là 12 tháng, và mỗi tháng có 28-31 ngày.{}{}Theo kiểu nhịp đồng hồ, thì dịch chuyển xe cộ, sản lượng vận tải, và các chỉ số tài chính sẽ theo nhịp mỗi phút tăng lên, nó tương đương với 30 ngày trong tháng của kiểu lịch. Những nhịp này sẽ nhóm thành kỳ 12 phút, tương đương một năm của kiểu lịch.{}{}Ở cả 2 chế độ thì luôn áp dụng lịch cổ điển cho ngày giới thiệu xe mới, nhà và các hạ tầng khác.
 ###length 2
 STR_CONFIG_SETTING_TIMEKEEPING_UNITS_CALENDAR                   :Lịch
+STR_CONFIG_SETTING_TIMEKEEPING_UNITS_WALLCLOCK                  :Đồng hồ tính giờ
 
+STR_CONFIG_SETTING_MINUTES_PER_YEAR                             :Số phút tính cho mỗi năm: {STRING}
+STR_CONFIG_SETTING_MINUTES_PER_YEAR_HELPTEXT                    :Chọn số phút trong mỗi lịch năm. Mặc định là 12 phút/năm. Đặt bằng 0 để ngưng lịch thời gian. Tuỳ chọn này sẽ không ảnh hưởng đến việc giả lập kinh tế trong trò chơi, và nó chỉ sẵn có khi sử dụng đồng hồ giữ nhịp.
 
+STR_CONFIG_SETTING_MINUTES_PER_YEAR_VALUE                       :{NUM}
 ###setting-zero-is-special
+STR_CONFIG_SETTING_MINUTES_PER_YEAR_FROZEN                      :0 (lịch thời gian ngưng đọng)
 
+STR_CONFIG_SETTING_TOWN_CARGO_SCALE                             :Co dãn sản lượng vận tải địa phương: {STRING}
+STR_CONFIG_SETTING_TOWN_CARGO_SCALE_HELPTEXT                    :Co dãn sản lượng vận tải của các địa phương bởi tỉ lệ phần trăm này.
+STR_CONFIG_SETTING_INDUSTRY_CARGO_SCALE                         :Dãn tỉ lệ vận chuyển sản lượng của nhà máy: {STRING}
+STR_CONFIG_SETTING_INDUSTRY_CARGO_SCALE_HELPTEXT                :Dãn sản lượng vận chuyển của các nhà máy bằng tỉ lệ phần trăm này.
+STR_CONFIG_SETTING_CARGO_SCALE_VALUE                            :{NUM}%
 
 STR_CONFIG_SETTING_AUTORENEW_VEHICLE                            :Tự thay mới phương tiện nếu hết hạn sử dụng: {STRING}
 STR_CONFIG_SETTING_AUTORENEW_VEHICLE_HELPTEXT                   :Nếu bật, phương tiện gần hết hạn sẽ được tự động thay mới và điều kiện thay mới được thỏa mãn
@@ -1506,11 +1566,11 @@ STR_CONFIG_SETTING_SNOWLINE_HEIGHT                              :Độ cao tuy�
 STR_CONFIG_SETTING_SNOWLINE_HEIGHT_HELPTEXT                     :Điều chỉnh độ cao của tuyết phủ đối với địa hình xứ lạnh. Tuyết phủ có thể ảnh hưởng tới việc tạo ra nhà máy và các yêu cầu cho sự tăng trưởng đô thị. Có thể được tùy chỉnh bằng trình Biên Tập Màn Chơi Kịch Bản hoặc được tính từ cấu hình "độ phủ địa hình tuyết"
 
 STR_CONFIG_SETTING_SNOW_COVERAGE                                :Độ phủ địa hình tuyết: {STRING}
-STR_CONFIG_SETTING_SNOW_COVERAGE_HELPTEXT                       :Điều chỉnh độ phủ của tuyết đối với địa hình xứ lạnh. Tuyết phủ có thể ảnh hưởng tới việc tạo ra nhà máy và các yêu cầu cho sự tăng trưởng đô thị. Chỉ được sử dụng trong việc sinh bản đồ. Địa hình cao hơn mặt nước biển sẽ không có tuyết
+STR_CONFIG_SETTING_SNOW_COVERAGE_HELPTEXT                       :Điều chỉnh độ phủ của tuyết đối với địa hình xứ lạnh. Tuyết phủ có thể ảnh hưởng tới việc tạo ra nhà máy và các yêu cầu cho sự tăng trưởng đô thị. Chỉ được sử dụng trong khi khởi tạo bản đồ. Địa hình ngang mặt nước biển sẽ không có tuyết
 STR_CONFIG_SETTING_SNOW_COVERAGE_VALUE                          :{NUM}%
 
 STR_CONFIG_SETTING_DESERT_COVERAGE                              :Độ phủ sa mạc: {STRING}
-STR_CONFIG_SETTING_DESERT_COVERAGE_HELPTEXT                     :Điều chỉnh độ phủ xấp xỉ của hoang mạc đối với địa hình nhiệt đới. Hoang mạc sẽ ảnh hưởng tới việc phát triển nhà máy. Chỉ được sử dụng trong việc sinh bản đồ
+STR_CONFIG_SETTING_DESERT_COVERAGE_HELPTEXT                     :Điều chỉnh độ phủ xấp xỉ của hoang mạc đối với địa hình nhiệt đới. Hoang mạc sẽ ảnh hưởng tới việc phát triển nhà máy và điều kiện cho đô thị. Chỉ được sử dụng khi khởi tạo bản đồ
 STR_CONFIG_SETTING_DESERT_COVERAGE_VALUE                        :{NUM}%
 
 STR_CONFIG_SETTING_ROUGHNESS_OF_TERRAIN                         :Độ gồ ghề của địa chất: {STRING}
@@ -1706,9 +1766,11 @@ STR_CONFIG_SETTING_SOUND_NEWS_HELPTEXT                          :Phát âm thanh
 
 ###length 2
 STR_CONFIG_SETTING_SOUND_NEW_YEAR                               :Kết thúc cuối năm: {STRING}
+STR_CONFIG_SETTING_SOUND_NEW_PERIOD                             :Kết thúc của kỳ: {STRING}
 
 ###length 2
 STR_CONFIG_SETTING_SOUND_NEW_YEAR_HELPTEXT                      :Phát âm thanh cuối mỗi năm khi hiển thị bảng tổng kết hiệu quả cuối năm so với năm cũ
+STR_CONFIG_SETTING_SOUND_NEW_PERIOD_HELPTEXT                    :Phát âm thanh ở cuối mỗi kỳ tổng kết về hiệu suất công ty trong kỳ này so sánh với kỳ trước
 
 STR_CONFIG_SETTING_SOUND_CONFIRM                                :Xây dựng: {STRING}
 STR_CONFIG_SETTING_SOUND_CONFIRM_HELPTEXT                       :Phát âm thanh khi xây dựng hoặc các hoạt động khác hoàn thành
@@ -1769,13 +1831,15 @@ STR_CONFIG_SETTING_SERVINT_AIRCRAFT                             :Tần suất b�
 STR_CONFIG_SETTING_SERVINT_AIRCRAFT_HELPTEXT                    :Thiết lập khoảng thời gian bảo trì tùy chọn đối với các máy bay, nếu phương tiện không có riêng thời gian bảo trì này
 STR_CONFIG_SETTING_SERVINT_SHIPS                                :Tần suất bảo trì mặc định đối với tàu thủy: {STRING}
 STR_CONFIG_SETTING_SERVINT_SHIPS_HELPTEXT                       :Thiết lập khoảng thời gian bảo trì tùy chọn đối với các tàu thủy, nếu phương tiện không có riêng thời gian bảo trì này
-STR_CONFIG_SETTING_SERVINT_VALUE                                :{COMMA}{NBSP}ngày/%
+STR_CONFIG_SETTING_SERVINT_VALUE                                :{COMMA}{NBSP}ngày/phút/%
 ###setting-zero-is-special
 STR_CONFIG_SETTING_SERVINT_DISABLED                             :tắt
 
 STR_CONFIG_SETTING_NOSERVICE                                    :Tắt bảo trì khi đặt tắt tuỳ chọn hỏng hóc: {STRING}
 STR_CONFIG_SETTING_NOSERVICE_HELPTEXT                           :Nếu bật, phương tiện sẽ không cần bảo trì nếu chúng không thể bị hỏng
 
+STR_CONFIG_SETTING_STATION_LENGTH_LOADING_PENALTY               :Tốc độ nạp hàng bị suy giảm cho tàu hoả dài hơn độ dài của ga tàu: {STRING}
+STR_CONFIG_SETTING_STATION_LENGTH_LOADING_PENALTY_HELPTEXT      :Khi bật, đoàn tàu quá dài sẽ nạp hàng chậm hơn một đoàn tàu dài vừa với độ dài ga tàu. Tuỳ chọn. này không ảnh hưởng tới việc tìm đường.
 
 STR_CONFIG_SETTING_WAGONSPEEDLIMITS                             :Bật giới hạn tốc độ toa tàu: {STRING}
 STR_CONFIG_SETTING_WAGONSPEEDLIMITS_HELPTEXT                    :Nếu bật, sử dụng giới hạn tốc độ của toa xe để hạn chế tốc độ của cả đoàn tàu
@@ -1867,6 +1931,7 @@ STR_CONFIG_SETTING_SEMAPHORE_BUILD_BEFORE_DATE_HELPTEXT         :Thiết lập t
 STR_CONFIG_SETTING_CYCLE_SIGNAL_TYPES                           :Đổi tuần hoàn các kiểu đèn báo: {STRING}
 STR_CONFIG_SETTING_CYCLE_SIGNAL_TYPES_HELPTEXT                  :Chọn kiểu đèn báo để tuần hoàn khi Ctrl+click vào một đèn báo đã được xây bằng công cụ đèn báo
 ###length 2
+STR_CONFIG_SETTING_CYCLE_SIGNAL_GROUP                           :Chỉ nhóm hiện tại
 STR_CONFIG_SETTING_CYCLE_SIGNAL_ALL                             :Tất cả có thể thấy
 
 STR_CONFIG_SETTING_SIGNAL_GUI_MODE                              :Hiển thị các kiểu đèn báo: {STRING}
@@ -1999,6 +2064,8 @@ STR_CONFIG_SETTING_LOCALISATION_UNITS_VELOCITY_HELPTEXT         :Khi thể hiệ
 STR_CONFIG_SETTING_LOCALISATION_UNITS_VELOCITY_IMPERIAL         :Imperial (mph)
 STR_CONFIG_SETTING_LOCALISATION_UNITS_VELOCITY_METRIC           :Metric (km/h)
 STR_CONFIG_SETTING_LOCALISATION_UNITS_VELOCITY_SI               :SI (m/s)
+STR_CONFIG_SETTING_LOCALISATION_UNITS_VELOCITY_GAMEUNITS_DAYS   :Đơn vị trò chơi (ô/ngày)
+STR_CONFIG_SETTING_LOCALISATION_UNITS_VELOCITY_GAMEUNITS_SECS   :Đơn vị trò chơi (ô/giây)
 STR_CONFIG_SETTING_LOCALISATION_UNITS_VELOCITY_KNOTS            :Hải lý
 
 STR_CONFIG_SETTING_LOCALISATION_UNITS_POWER                     :Đơn vị công suất phương tiện: {STRING}
@@ -2049,6 +2116,7 @@ STR_CONFIG_SETTING_ACCOUNTING                                   :Kế toán
 STR_CONFIG_SETTING_VEHICLES                                     :Phương Tiện
 STR_CONFIG_SETTING_VEHICLES_PHYSICS                             :Vật lý
 STR_CONFIG_SETTING_VEHICLES_ROUTING                             :Tìm đường
+STR_CONFIG_SETTING_VEHICLES_ORDERS                              :Các lịch trình
 STR_CONFIG_SETTING_LIMITATIONS                                  :Giới hạn
 STR_CONFIG_SETTING_ACCIDENTS                                    :Thiên tai / Tai nạn
 STR_CONFIG_SETTING_GENWORLD                                     :Khởi tạo bản đồ
@@ -2141,7 +2209,7 @@ STR_INTRO_TOOLTIP_CONFIG_SETTINGS_TREE                          :{BLACK}Thiết 
 STR_INTRO_TOOLTIP_NEWGRF_SETTINGS                               :{BLACK}Hiển thị tùy chỉnh NewGRF
 STR_INTRO_TOOLTIP_ONLINE_CONTENT                                :{BLACK}Kiểm tra những nội dung mới & cập nhật để tải về
 STR_INTRO_TOOLTIP_AI_SETTINGS                                   :{BLACK}Hiển thị tùy chỉnh AI
-STR_INTRO_TOOLTIP_GAMESCRIPT_SETTINGS                           :{BLACK}Hiển thị thiết lập kịch bản màn chơi
+STR_INTRO_TOOLTIP_GAMESCRIPT_SETTINGS                           :{BLACK}Mở thiết lập kịch bản màn chơi
 STR_INTRO_TOOLTIP_QUIT                                          :{BLACK}Thoát 'OpenTTD'
 
 STR_INTRO_BASESET                                               :{BLACK}Gói đồ họa cơ sở đang chọn bị thiếu  {NUM} sprite. Hãy cập nhật gói cơ sở này.
@@ -2172,7 +2240,7 @@ STR_HELP_WINDOW_BUGTRACKER                                      :{BLACK}Báo cá
 STR_HELP_WINDOW_COMMUNITY                                       :{BLACK}Cộng đồng
 
 # Cheat window
-STR_CHEATS                                                      :{WHITE}Cheats
+STR_CHEATS                                                      :{WHITE}Tuỳ chọn Sandbox
 STR_CHEAT_MONEY                                                 :{LTBLUE}Tăng số tiền lên {CURRENCY_LONG}
 STR_CHEAT_CHANGE_COMPANY                                        :{LTBLUE}Điều khiển công ty: {ORANGE}{COMMA}
 STR_CHEAT_EXTRA_DYNAMITE                                        :{LTBLUE}Xe ủi thần kỳ (xóa bỏ nhà máy, vật không thể di chuyển): {ORANGE}{STRING}
@@ -2193,12 +2261,20 @@ STR_LIVERY_TRAIN_TOOLTIP                                        :{BLACK}Hiển t
 STR_LIVERY_ROAD_VEHICLE_TOOLTIP                                 :{BLACK}Hiển thị phối màu xe ôtô
 STR_LIVERY_SHIP_TOOLTIP                                         :{BLACK}Hiển thị phối màu tàu thủy
 STR_LIVERY_AIRCRAFT_TOOLTIP                                     :{BLACK}Hiển thị phối màu máy bay
+STR_LIVERY_TRAIN_GROUP_TOOLTIP                                  :{BLACK}Hiện các màu cho nhóm tàu hoả
+STR_LIVERY_ROAD_VEHICLE_GROUP_TOOLTIP                           :{BLACK}Hiện màu sắc cho nhóm xe ô-tô
+STR_LIVERY_SHIP_GROUP_TOOLTIP                                   :{BLACK}Hiện các màu cho các nhóm tàu
+STR_LIVERY_AIRCRAFT_GROUP_TOOLTIP                               :{BLACK}Hiện các màu cho nhóm máy bay
 STR_LIVERY_PRIMARY_TOOLTIP                                      :{BLACK}Chọn màu chủ đạo cho bảng phối màu đang chọn. Ctrl+click để chọn màu chủ đạo cho tất cả bảng phối màu
 STR_LIVERY_SECONDARY_TOOLTIP                                    :{BLACK}Chọn màu thứ hai cho bảng phối màu đang chọn. Ctrl+click để chọn màu cho tất cả bảng phối màu
 STR_LIVERY_PANEL_TOOLTIP                                        :{BLACK}Chọn một bảng phối màu để sửa, hoặc nhiều bảng phối màu với Ctrl+Click.Click vào bảng để bật/tắt bảng phối
+STR_LIVERY_TRAIN_GROUP_EMPTY                                    :Không có nhóm tàu nào được thiết lập
+STR_LIVERY_ROAD_VEHICLE_GROUP_EMPTY                             :Không có nhóm xe ô-tô nào được thiết lập
+STR_LIVERY_SHIP_GROUP_EMPTY                                     :Không có nhóm tàu nào được thiết lập
+STR_LIVERY_AIRCRAFT_GROUP_EMPTY                                 :Không có nhóm máy bay nào được thiết lập
 
 ###length 23
-STR_LIVERY_DEFAULT                                              :Chế Phục Tiêu Chuẩn
+STR_LIVERY_DEFAULT                                              :Chế Phục Mặc định
 STR_LIVERY_STEAM                                                :Động Cơ Hơi Nước
 STR_LIVERY_DIESEL                                               :Động Cơ Diesel
 STR_LIVERY_ELECTRIC                                             :Động Cơ Điện
@@ -2301,6 +2377,9 @@ STR_NETWORK_SERVER_LIST_MAP_SIZE_CAPTION                        :{BLACK}Kích th
 STR_NETWORK_SERVER_LIST_MAP_SIZE_CAPTION_TOOLTIP                :{BLACK}Kích thước bản đồ trong game{}Nhấn vào đây để sắp xếp theo diện tích
 STR_NETWORK_SERVER_LIST_DATE_CAPTION                            :{BLACK}Năm
 STR_NETWORK_SERVER_LIST_DATE_CAPTION_TOOLTIP                    :{BLACK}Ngày hiện tại
+STR_NETWORK_SERVER_LIST_PLAY_TIME_SHORT                         :{BLACK}{NUM}h {NUM}m
+STR_NETWORK_SERVER_LIST_PLAY_TIME_CAPTION                       :{BLACK}Thời gian chơi
+STR_NETWORK_SERVER_LIST_PLAY_TIME_CAPTION_TOOLTIP               :{BLACK}Thời gian chơi khi{}trò chơi không bị tạm dừng
 STR_NETWORK_SERVER_LIST_INFO_ICONS_TOOLTIP                      :{BLACK}Ngôn ngữ, phiên bản server, etc.
 
 STR_NETWORK_SERVER_LIST_CLICK_GAME_TO_SELECT                    :{BLACK}Chọn một game trong danh sách
@@ -2316,6 +2395,7 @@ STR_NETWORK_SERVER_LIST_SERVER_ADDRESS                          :{SILVER}Địa 
 STR_NETWORK_SERVER_LIST_INVITE_CODE                             :{SILVER}Mã tham gia: {WHITE}{STRING}
 STR_NETWORK_SERVER_LIST_START_DATE                              :{SILVER}Ngày bắt đầu: {WHITE}{DATE_SHORT}
 STR_NETWORK_SERVER_LIST_CURRENT_DATE                            :{SILVER}Ngày hiện tại: {WHITE}{DATE_SHORT}
+STR_NETWORK_SERVER_LIST_PLAY_TIME                               :{SILVER}Thời gian chơi: {WHITE}{NUM}h {NUM}m
 STR_NETWORK_SERVER_LIST_GAMESCRIPT                              :{SILVER}Game Script: {WHITE}{STRING} (v{NUM})
 STR_NETWORK_SERVER_LIST_PASSWORD                                :{SILVER}Mật khẩu bảo vệ!
 STR_NETWORK_SERVER_LIST_SERVER_OFFLINE                          :{SILVER}SERVER OFFLINE
@@ -2671,6 +2751,8 @@ STR_LINKGRAPH_LEGEND_SATURATED                                  :{TINY_FONT}{BLA
 STR_LINKGRAPH_LEGEND_OVERLOADED                                 :{TINY_FONT}{BLACK}quá tải
 
 # Linkgraph tooltip
+STR_LINKGRAPH_STATS_TOOLTIP_MONTH                               :{BLACK}{CARGO_LONG} được vận chuyển mỗi tháng từ {STATION} đến {STATION} ({COMMA}% trọng tải){STRING}
+STR_LINKGRAPH_STATS_TOOLTIP_MINUTE                              :{BLACK}{CARGO_LONG} được vận chuyển mỗi phút từ {STATION} tới {STATION} ({COMMA}% trọng tải){STRING}
 STR_LINKGRAPH_STATS_TOOLTIP_RETURN_EXTENSION                    :{}{CARGO_LONG} sẽ được hoàn chuyển ({COMMA}% dung lượng)
 STR_LINKGRAPH_STATS_TOOLTIP_TIME_EXTENSION                      :{}Thời gian đi lại trung bình: {UNITS_DAYS_OR_SECONDS}
 
@@ -2682,6 +2764,8 @@ STR_STATION_BUILD_COVERAGE_AREA_OFF_TOOLTIP                     :{BLACK}Không h
 STR_STATION_BUILD_COVERAGE_AREA_ON_TOOLTIP                      :{BLACK}Hiện vùng che phủ của điểm đề xuất
 STR_STATION_BUILD_ACCEPTS_CARGO                                 :{BLACK}Chấp nhận: {GOLD}{CARGO_LIST}
 STR_STATION_BUILD_SUPPLIES_CARGO                                :{BLACK}Cung cấp: {GOLD}{CARGO_LIST}
+STR_STATION_BUILD_INFRASTRUCTURE_COST_YEAR                      :{BLACK}Chi phí bảo trì: {GOLD}{CURRENCY_SHORT}/năm
+STR_STATION_BUILD_INFRASTRUCTURE_COST_PERIOD                    :{BLACK}Chi phí bảo trì: {GOLD}{CURRENCY_SHORT}/kỳ
 
 # Join station window
 STR_JOIN_STATION_CAPTION                                        :{WHITE}Nối ga, bến
@@ -2699,15 +2783,15 @@ STR_RAIL_TOOLBAR_ELRAIL_CONSTRUCTION_CAPTION                    :Xây Dựng Đ�
 STR_RAIL_TOOLBAR_MONORAIL_CONSTRUCTION_CAPTION                  :Xây Dựng Đường Ray Đơn
 STR_RAIL_TOOLBAR_MAGLEV_CONSTRUCTION_CAPTION                    :Xây Dựng Ray Đệm Từ
 
-STR_RAIL_TOOLBAR_TOOLTIP_BUILD_RAILROAD_TRACK                   :{BLACK}Xây dựng đường ray. Ctrl để đổi chế độ xây/phá đường ray. Shift để xem chi phí dự tính
-STR_RAIL_TOOLBAR_TOOLTIP_BUILD_AUTORAIL                         :{BLACK}Xây dựng đường ray dùng cơ chế tự xây. Ctrl để đổi chế độ xây/phá đường ray. Shift để xem chi phí dự tính
+STR_RAIL_TOOLBAR_TOOLTIP_BUILD_RAILROAD_TRACK                   :{BLACK}Xây dựng đường ray. Ctrl để đổi chế độ phá đường ray. Shift để xem chi phí dự tính
+STR_RAIL_TOOLBAR_TOOLTIP_BUILD_AUTORAIL                         :{BLACK}Xây dựng đường ray dùng cơ chế tự xây. Ctrl+Click để đổi chế độ phá đường ray. Shift để xem chi phí dự tính
 STR_RAIL_TOOLBAR_TOOLTIP_BUILD_TRAIN_DEPOT_FOR_BUILDING         :{BLACK}Xây xưởng tàu hoả (để chế tạo và bảo dưỡng tàu). Shift để xem chi phí dự tính
-STR_RAIL_TOOLBAR_TOOLTIP_CONVERT_RAIL_TO_WAYPOINT               :{BLACK}Chuyển từ ray sang điểm mốc. Ctrl để nối các điểm mốc. Shift để xem chi phí dự tính
+STR_RAIL_TOOLBAR_TOOLTIP_CONVERT_RAIL_TO_WAYPOINT               :{BLACK}Chuyển từ ray sang điểm mốc. Ctrl+Click để nối các điểm mốc. Shift để xem chi phí dự tính
 STR_RAIL_TOOLBAR_TOOLTIP_BUILD_RAILROAD_STATION                 :{BLACK}Xây nhà ga tàu hoả. Ctrl để nối các nhà ga. Shift để xem chi phí dự tính
-STR_RAIL_TOOLBAR_TOOLTIP_BUILD_RAILROAD_SIGNALS                 :{BLACK}Xây đèn tín hiệu đường sắt. Ctrl đổi dùng đèn/cờ tín hiệu{}Kéo thả để xây đèn tín hiệu theo đoạn kéo thả. Ctrl + kéo chuột theo đường ray khi xây sẽ xây loạt đèn tín hiệu cho tới điểm ngã ba, tư kế tiếp{}Ctrl+Click để mở cửa sổ chọn loại đèn tin hiệu. Shift để xem chi phí dự tính
+STR_RAIL_TOOLBAR_TOOLTIP_BUILD_RAILROAD_SIGNALS                 :{BLACK}Xây đèn tín hiệu đường sắt. Ctrl đổi dùng đèn/cờ tín hiệu{}Click kéo thả để xây đèn tín hiệu theo đoạn kéo thả. Ctrl + Click kéo chuột theo đường ray khi xây sẽ xây loạt đèn tín hiệu cho tới điểm ngã ba, tư kế tiếp. Shift để xem chi phí dự tính
 STR_RAIL_TOOLBAR_TOOLTIP_BUILD_RAILROAD_BRIDGE                  :{BLACK}Xây cầu tàu hoả. Shift để xem chi phí dự tính
 STR_RAIL_TOOLBAR_TOOLTIP_BUILD_RAILROAD_TUNNEL                  :{BLACK}Xây hầm tàu hoả. Shift để xem chi phí dự tính
-STR_RAIL_TOOLBAR_TOOLTIP_TOGGLE_BUILD_REMOVE_FOR                :{BLACK}Chuyển chế độ xây/phá cho đường ray, đèn tín hiệu, điểm mốc và nhà ga. Giữ Ctrl để phá bỏ đường ray tính từ điểm mốc hay nhà ga
+STR_RAIL_TOOLBAR_TOOLTIP_TOGGLE_BUILD_REMOVE_FOR                :{BLACK}Chuyển chế độ xây/phá cho đường ray, đèn tín hiệu, điểm mốc và nhà ga. Giữ Ctrl+Click để phá bỏ đường ray tính từ điểm mốc hay nhà ga
 STR_RAIL_TOOLBAR_TOOLTIP_CONVERT_RAIL                           :{BLACK}Chuyển đổi loại đường ray. Shift để xem chi phí dự tính
 
 STR_RAIL_NAME_RAILROAD                                          :Đường ray
@@ -2784,15 +2868,15 @@ STR_BRIDGE_TUBULAR_SILICON                                      :Cầu ống Sil
 # Road construction toolbar
 STR_ROAD_TOOLBAR_ROAD_CONSTRUCTION_CAPTION                      :{WHITE}Xây Đường Bộ
 STR_ROAD_TOOLBAR_TRAM_CONSTRUCTION_CAPTION                      :{WHITE}Xây Đường Xe Điện
-STR_ROAD_TOOLBAR_TOOLTIP_BUILD_ROAD_SECTION                     :{BLACK}Chọn xây đường bộ. Ctrl đổi chế độ xây/phá đường bộ. Shift để xem chi phí dự tính
-STR_ROAD_TOOLBAR_TOOLTIP_BUILD_TRAMWAY_SECTION                  :{BLACK}Chọn xây đường xe điện. Ctrl đổi chế độ xây/phá đường xe điện. Shift để xem chi phí dự tính
-STR_ROAD_TOOLBAR_TOOLTIP_BUILD_AUTOROAD                         :{BLACK}Xây đường bộ dùng cơ chế tự xây. Ctrl đổi chế độ xây/phá đường bộ. Shift để xem chi phí dự tính
-STR_ROAD_TOOLBAR_TOOLTIP_BUILD_AUTOTRAM                         :{BLACK}Xây đường xe điện dùng cơ chế tự xây. Ctrl đổi chế độ xây/phá đường xe điện. Shift để xem chi phí dự tính
+STR_ROAD_TOOLBAR_TOOLTIP_BUILD_ROAD_SECTION                     :{BLACK}Chọn xây đường bộ. Ctrl + Click đổi chế độ phá đường bộ. Shift để xem chi phí dự tính
+STR_ROAD_TOOLBAR_TOOLTIP_BUILD_TRAMWAY_SECTION                  :{BLACK}Chọn xây đường xe điện. Ctrl+Click đổi chế độ phá đường xe điện. Shift để xem chi phí dự tính
+STR_ROAD_TOOLBAR_TOOLTIP_BUILD_AUTOROAD                         :{BLACK}Xây đường bộ dùng cơ chế tự xây. Ctrl đổi chế độ phá đường bộ. Shift để xem chi phí dự tính
+STR_ROAD_TOOLBAR_TOOLTIP_BUILD_AUTOTRAM                         :{BLACK}Xây đường xe điện dùng cơ chế tự xây. Ctrl đổi chế độ phá cho đường xe điện. Shift để xem chi phí dự tính
 STR_ROAD_TOOLBAR_TOOLTIP_BUILD_ROAD_VEHICLE_DEPOT               :{BLACK}Xây xưởng xe cộ (mua hoặc bảo trì xe cộ). Shift để xem chi phí dự tính
 STR_ROAD_TOOLBAR_TOOLTIP_BUILD_TRAM_VEHICLE_DEPOT               :{BLACK}Xây xưởng xe điện (mua hoặc bảo trì xe điện). Shift để xem chi phí dự tính
 STR_ROAD_TOOLBAR_TOOLTIP_BUILD_BUS_STATION                      :{BLACK}Xây bến xe buýt. Ctrl để nối liền các bến. Shift để xem chi phí dự tính
 STR_ROAD_TOOLBAR_TOOLTIP_BUILD_PASSENGER_TRAM_STATION           :{BLACK}Xây bến xe điện. Ctrl để nối các bến xe điện. Shift để xem chi phí dự tính
-STR_ROAD_TOOLBAR_TOOLTIP_BUILD_TRUCK_LOADING_BAY                :{BLACK}Xây trạm bốc dỡ hàng xe tải. Ctrl để nối các trạm. Shift để xem chi phí dự tính
+STR_ROAD_TOOLBAR_TOOLTIP_BUILD_TRUCK_LOADING_BAY                :{BLACK}Xây trạm bốc dỡ xe tải. Ctrl + Click để nối các trạm. Shift để xem chi phí dự tính
 STR_ROAD_TOOLBAR_TOOLTIP_BUILD_CARGO_TRAM_STATION               :{BLACK}Xây trạm bốc dỡ hàng cho xe điện. Ctrl để nối trạm. Shift để xem chi phí dự tính
 STR_ROAD_TOOLBAR_TOOLTIP_TOGGLE_ONE_WAY_ROAD                    :{BLACK}Bật/tắt đường một chiều
 STR_ROAD_TOOLBAR_TOOLTIP_BUILD_ROAD_BRIDGE                      :{BLACK}Xây cầu đường bộ. Shift để xem chi phí dự tính
@@ -2801,8 +2885,8 @@ STR_ROAD_TOOLBAR_TOOLTIP_BUILD_ROAD_TUNNEL                      :{BLACK}Xây h�
 STR_ROAD_TOOLBAR_TOOLTIP_BUILD_TRAMWAY_TUNNEL                   :{BLACK}Xây hầm xe điện. Shift để xem chi phí dự tính
 STR_ROAD_TOOLBAR_TOOLTIP_TOGGLE_BUILD_REMOVE_FOR_ROAD           :{BLACK}Bật chế độ xây/phá đường bộ
 STR_ROAD_TOOLBAR_TOOLTIP_TOGGLE_BUILD_REMOVE_FOR_TRAMWAYS       :{BLACK}Bật chế độ xây/phá đường xe điện
-STR_ROAD_TOOLBAR_TOOLTIP_CONVERT_ROAD                           :{BLACK}Chuyển đổi/nâng cấp kiểu đường ô-tô. Shift đổi chế độ xây/xem chi phí dự tính
-STR_ROAD_TOOLBAR_TOOLTIP_CONVERT_TRAM                           :{BLACK}Chuyển đổi/nâng cấp loại xe điện. Shift để đổi chế độ mua/xem giá dự tính
+STR_ROAD_TOOLBAR_TOOLTIP_CONVERT_ROAD                           :{BLACK}Chuyển đổi/nâng cấp kiểu đường ô-tô. Shift đổi chế độ xem chi phí dự tính
+STR_ROAD_TOOLBAR_TOOLTIP_CONVERT_TRAM                           :{BLACK}Chuyển đổi/nâng cấp loại xe điện. Shift để đổi chế độ xem giá dự tính
 
 STR_ROAD_NAME_ROAD                                              :Đường ô-tô
 STR_ROAD_NAME_TRAM                                              :Đường xe điện
@@ -2817,7 +2901,7 @@ STR_BUILD_DEPOT_TRAM_ORIENTATION_SELECT_TOOLTIP                 :{BLACK}Chọn h
 STR_STATION_BUILD_BUS_ORIENTATION                               :{WHITE}Chọn hướng của bến xe buýt
 STR_STATION_BUILD_BUS_ORIENTATION_TOOLTIP                       :{BLACK}Chọn hướng của bến xe buýt
 STR_STATION_BUILD_TRUCK_ORIENTATION                             :{WHITE}Chọn hướng của trạm bốc/dỡ
-STR_STATION_BUILD_TRUCK_ORIENTATION_TOOLTIP                     :{BLACK}Chọn hướng của trạm bốc/dỡ hàng xe tải
+STR_STATION_BUILD_TRUCK_ORIENTATION_TOOLTIP                     :{BLACK}Chọn hướng của trạm bốc dỡ xe tải
 STR_STATION_BUILD_PASSENGER_TRAM_ORIENTATION                    :{WHITE}Hướng của bến xe điện
 STR_STATION_BUILD_PASSENGER_TRAM_ORIENTATION_TOOLTIP            :{BLACK}Chọn hướng đặt của bến xe điện
 STR_STATION_BUILD_CARGO_TRAM_ORIENTATION                        :{WHITE}Hướng trạm bốc/dỡ xe điện
@@ -2832,8 +2916,8 @@ STR_WATERWAYS_TOOLBAR_BUILD_DEPOT_TOOLTIP                       :{BLACK}Xây xư
 STR_WATERWAYS_TOOLBAR_BUILD_DOCK_TOOLTIP                        :{BLACK}Xây cảng tàu. Ctrl để nối các cảng. Shift+Click để xem chi phí dự tính
 STR_WATERWAYS_TOOLBAR_BUOY_TOOLTIP                              :{BLACK}Đặt một phao hàng hải như là điểm mốc. Shift+Click để xem chi phí dự toán
 STR_WATERWAYS_TOOLBAR_BUILD_AQUEDUCT_TOOLTIP                    :{BLACK}Xây cống. Shift+Click để xem chi phí dự tính
-STR_WATERWAYS_TOOLBAR_CREATE_LAKE_TOOLTIP                       :{BLACK}Đặt tên vùng biển.{}Tạo một kênh đào, nếu ấn Ctrl thì giữ xuống tới mực nước biển, không thì sẽ bị ngập nước
-STR_WATERWAYS_TOOLBAR_CREATE_RIVER_TOOLTIP                      :{BLACK}Đặt sông. Giữ Ctrl để chọn theo đường chéo
+STR_WATERWAYS_TOOLBAR_CREATE_LAKE_TOOLTIP                       :{BLACK}Xây kênh đào. Ctrl+Click thì giữ xuống tới mực nước biển để cho ngập nước
+STR_WATERWAYS_TOOLBAR_CREATE_RIVER_TOOLTIP                      :{BLACK}Đặt sông. Ctrl+Click để chọn theo đường chéo
 
 # Ship depot construction window
 STR_DEPOT_BUILD_SHIP_CAPTION                                    :{WHITE}Hướng Xưởng Tàu
@@ -2844,7 +2928,7 @@ STR_STATION_BUILD_DOCK_CAPTION                                  :{WHITE}Hải C�
 
 # Airport toolbar
 STR_TOOLBAR_AIRCRAFT_CAPTION                                    :{WHITE}Sân Bay
-STR_TOOLBAR_AIRCRAFT_BUILD_AIRPORT_TOOLTIP                      :{BLACK}Xây sân bay. Ctrl để nối các sân bay. Shift+Click để xem chi phí dự tính
+STR_TOOLBAR_AIRCRAFT_BUILD_AIRPORT_TOOLTIP                      :{BLACK}Xây sân bay. Ctrl + Click để nối các sân bay. Shift để xem chi phí dự tính
 
 # Airport construction window
 STR_STATION_BUILD_AIRPORT_CAPTION                               :{WHITE}Chọn Loại Sân Bay
@@ -2871,14 +2955,14 @@ STR_STATION_BUILD_NOISE                                         :{BLACK}Độ �
 
 # Landscaping toolbar
 STR_LANDSCAPING_TOOLBAR                                         :{WHITE}Tôn hạ nền đất
-STR_LANDSCAPING_TOOLTIP_LOWER_A_CORNER_OF_LAND                  :{BLACK}Hạ thấp một góc đất. Kéo để hạ đất từ điểm đã chọn tới điểm thấp mới. Ctrl để chọn đường chéo. Shift để hiện chi phí dự tính
-STR_LANDSCAPING_TOOLTIP_RAISE_A_CORNER_OF_LAND                  :{BLACK}Nâng cao một góc đất. Kéo để nâng đất từ điểm đã chọn tới điểm cao mới. Ctrl để chọn đường chéo. Shift để hiện chi phí dự tính
-STR_LANDSCAPING_LEVEL_LAND_TOOLTIP                              :{BLACK}Làm bình địa tới độ cao của điểm chọn đầu tiên. Ctrl để chọn vùng theo đường chéo. Shift để hiện chi phí dự tính
+STR_LANDSCAPING_TOOLTIP_LOWER_A_CORNER_OF_LAND                  :{BLACK}Hạ thấp một góc đất. Click+Kéo để hạ đất từ điểm đã chọn tới điểm thấp mới. Ctrl để chọn đường chéo. Shift để hiện chi phí dự tính
+STR_LANDSCAPING_TOOLTIP_RAISE_A_CORNER_OF_LAND                  :{BLACK}Nâng cao một góc đất. Kéo để nâng đất từ điểm đã chọn tới điểm cao mới. Ctrl + Click + kéo để chọn đường chéo. Shift để hiện chi phí dự tính
+STR_LANDSCAPING_LEVEL_LAND_TOOLTIP                              :{BLACK}Làm bình địa tới độ cao của điểm chọn đầu tiên. Ctrl + Click + kéo để chọn vùng theo đường chéo. Shift để hiện chi phí dự tính
 STR_LANDSCAPING_TOOLTIP_PURCHASE_LAND                           :{BLACK}Mua đất dành cho tương lai. Ctrl để chọn khu vực theo đường chéo. Shift để xem chi phí dự tính
 
 # Object construction window
 STR_OBJECT_BUILD_CAPTION                                        :{WHITE}Trình Chọn Đối Tượng
-STR_OBJECT_BUILD_TOOLTIP                                        :{BLACK}Chọn đối tượng để xây. Ctrl để chọn khu vực theo đường chéo. Shift để xem chi phí dự tính
+STR_OBJECT_BUILD_TOOLTIP                                        :{BLACK}Chọn đối tượng để xây. Ctrl + Click + kéo để chọn khu vực theo đường chéo. Shift để xem chi phí dự tính
 STR_OBJECT_BUILD_CLASS_TOOLTIP                                  :{BLACK}Chọn lớp đối tượng để xây dựng
 STR_OBJECT_BUILD_PREVIEW_TOOLTIP                                :{BLACK}Xem trước đối tượng
 STR_OBJECT_BUILD_SIZE                                           :{BLACK}Kích thước: {GOLD}{NUM} x {NUM} ô
@@ -2890,7 +2974,7 @@ STR_OBJECT_CLASS_TRNS                                           :Tháp tín hi�
 STR_PLANT_TREE_CAPTION                                          :{WHITE}Cây Cối
 STR_PLANT_TREE_TOOLTIP                                          :{BLACK}Chọn loại cây để trồng. Nếu ô đó đã có cây, thao tác này sẽ thêm hỗn hợp nhiều cây khác độc lập với loại đã chọn
 STR_TREES_RANDOM_TYPE                                           :{BLACK}Loại cây ngẫu nhiên
-STR_TREES_RANDOM_TYPE_TOOLTIP                                   :{BLACK}Đặt các loại cây ngẫu nhiên. Ctrl chọn vùng theo đường chéo. Shift bật tắt xây dựng/hiển thị ước tính chi phí
+STR_TREES_RANDOM_TYPE_TOOLTIP                                   :{BLACK}Đặt các loại cây ngẫu nhiên. Ctrl+Click+kéo chọn vùng theo đường chéo. Shift bật tắt xây dựng/hiển thị ước tính chi phí
 STR_TREES_RANDOM_TREES_BUTTON                                   :{BLACK}Trồng ngẫu nhiên
 STR_TREES_RANDOM_TREES_TOOLTIP                                  :{BLACK}Trồng cây ngẫu nhiên trên khoảnh đất
 STR_TREES_MODE_NORMAL_BUTTON                                    :{BLACK}Bình thường
@@ -2903,7 +2987,7 @@ STR_TREES_MODE_FOREST_LG_TOOLTIP                                :{BLACK}Trồng 
 # Land generation window (SE)
 STR_TERRAFORM_TOOLBAR_LAND_GENERATION_CAPTION                   :{WHITE}San Lấp Đất
 STR_TERRAFORM_TOOLTIP_PLACE_ROCKY_AREAS_ON_LANDSCAPE            :{BLACK}Đặt các nền đá trong vùng
-STR_TERRAFORM_TOOLTIP_DEFINE_DESERT_AREA                        :{BLACK}Đặt tên hoang mạc.{}ấn Ctrl để xoá bỏ tên
+STR_TERRAFORM_TOOLTIP_DEFINE_DESERT_AREA                        :{BLACK}Đặt tên hoang mạc.{}Ctrl + Click để xoá bỏ tên
 STR_TERRAFORM_TOOLTIP_INCREASE_SIZE_OF_LAND_AREA                :{BLACK}Tăng diện tích vùng đất để nâng/hạ
 STR_TERRAFORM_TOOLTIP_DECREASE_SIZE_OF_LAND_AREA                :{BLACK}Giảm diện tích vùng đất để nâng/hạ
 STR_TERRAFORM_TOOLTIP_GENERATE_RANDOM_LAND                      :{BLACK}Tạo vùng đất ngẫu nhiên
@@ -2917,7 +3001,7 @@ STR_RESET_LANDSCAPE_CONFIRMATION_TEXT                           :{WHITE}Bạn c�
 # Town generation window (SE)
 STR_FOUND_TOWN_CAPTION                                          :{WHITE}Lập Đô Thị
 STR_FOUND_TOWN_NEW_TOWN_BUTTON                                  :{BLACK}Đô thị mới
-STR_FOUND_TOWN_NEW_TOWN_TOOLTIP                                 :{BLACK}Khởi đầu đô thị mới. Shift+Click để xem chi phí dự tính
+STR_FOUND_TOWN_NEW_TOWN_TOOLTIP                                 :{BLACK}Khởi đầu đô thị mới. Shift để xem chi phí dự tính
 STR_FOUND_TOWN_RANDOM_TOWN_BUTTON                               :{BLACK}Tạo đô thị ngẫu nhiên
 STR_FOUND_TOWN_RANDOM_TOWN_TOOLTIP                              :{BLACK}Tìm đô thị vị trí ngẫu nhiên
 STR_FOUND_TOWN_MANY_RANDOM_TOWNS                                :{BLACK}Nhiều đô thị ngẫu nhiên
@@ -2995,7 +3079,7 @@ STR_LAND_AREA_INFORMATION_RAIL_OWNER                            :{BLACK}Chủ đ
 STR_LAND_AREA_INFORMATION_LOCAL_AUTHORITY                       :{BLACK}Thuộc về địa phương: {LTBLUE}{STRING}
 STR_LAND_AREA_INFORMATION_LOCAL_AUTHORITY_NONE                  :Không
 STR_LAND_AREA_INFORMATION_LANDINFO_COORDS                       :{BLACK}Toạ độ: {LTBLUE}{NUM} x {NUM} x {NUM} ({STRING})
-STR_LAND_AREA_INFORMATION_BUILD_DATE                            :{BLACK}Xây lúc: {LTBLUE}{DATE_LONG}
+STR_LAND_AREA_INFORMATION_BUILD_DATE                            :{BLACK}Xây/tân trang ngày: {LTBLUE}{DATE_LONG}
 STR_LAND_AREA_INFORMATION_STATION_CLASS                         :{BLACK}Loại ga,bến: {LTBLUE}{STRING}
 STR_LAND_AREA_INFORMATION_STATION_TYPE                          :{BLACK}Kiểu ga,bến: {LTBLUE}{STRING}
 STR_LAND_AREA_INFORMATION_AIRPORT_CLASS                         :{BLACK}Loại sân bay: {LTBLUE}{STRING}
@@ -3061,7 +3145,7 @@ STR_LAI_TREE_NAME_CACTUS_PLANTS                                 :Cây xương r�
 STR_LAI_STATION_DESCRIPTION_RAILROAD_STATION                    :Nhà ga tàu hoả
 STR_LAI_STATION_DESCRIPTION_AIRCRAFT_HANGAR                     :Xưởng máy bay
 STR_LAI_STATION_DESCRIPTION_AIRPORT                             :Sân bay
-STR_LAI_STATION_DESCRIPTION_TRUCK_LOADING_AREA                  :Trạm bốc dỡ hàng xe tải
+STR_LAI_STATION_DESCRIPTION_TRUCK_LOADING_AREA                  :Trạm bốc dỡ xe tải
 STR_LAI_STATION_DESCRIPTION_BUS_STATION                         :Bến xe buýt
 STR_LAI_STATION_DESCRIPTION_SHIP_DOCK                           :Cảng tàu
 STR_LAI_STATION_DESCRIPTION_BUOY                                :Phao hàng hải
@@ -3210,6 +3294,7 @@ STR_MAPGEN_DATE_TOOLTIP                                         :{BLACK}Chọn n
 STR_MAPGEN_NUMBER_OF_INDUSTRIES                                 :{BLACK}Số lượng nhà máy:
 STR_MAPGEN_NUMBER_OF_INDUSTRIES_TOOLTIP                         :Chọn độ dày đặc của nhà máy, hoặc nhập một số tự chọn
 STR_MAPGEN_HEIGHTMAP_HEIGHT                                     :{BLACK}Độ cao đỉnh cao nhất:
+STR_MAPGEN_HEIGHTMAP_HEIGHT_TOOLTIP                             :{BLACK}Chọn mức độ cao nhất mà trò chơi có thể tạo ra, đo đạc và nâng lên trên mực được biển
 STR_MAPGEN_HEIGHTMAP_HEIGHT_UP                                  :{BLACK}Tăng chiều cao tối đa của đỉnh cao nhất lên một đơn vị
 STR_MAPGEN_HEIGHTMAP_HEIGHT_DOWN                                :{BLACK}Giảm độ cao tối đa của đỉnh cao nhất trên bản đồ một đơn vị
 STR_MAPGEN_SNOW_COVERAGE                                        :{BLACK}Độ phủ địa hình tuyết:
@@ -3275,6 +3360,7 @@ STR_MAPGEN_HEIGHTMAP_ROTATION                                   :{BLACK}Xoay b�
 STR_MAPGEN_HEIGHTMAP_NAME                                       :{BLACK}Tên bản đồ địa hình:
 STR_MAPGEN_HEIGHTMAP_NAME_TOOLTIP                               :{BLACK}Tên tập tin bản đồ địa hình
 STR_MAPGEN_HEIGHTMAP_SIZE_LABEL                                 :{BLACK}Cỡ:
+STR_MAPGEN_HEIGHTMAP_SIZE_LABEL_TOOLTIP                         :{BLACK}Độ lớn của bản đồ địa hình. Để có kết quả tốt nhất, mỗi cạnh nên vừa với các độ dài cạnh của OpenTTD như là 256, 512, 1024, vv.
 STR_MAPGEN_HEIGHTMAP_SIZE                                       :{ORANGE}{NUM} x {NUM}
 
 STR_MAPGEN_TERRAIN_TYPE_QUERY_CAPT                              :{WHITE}Độ cao tối đa của đỉnh
@@ -3519,7 +3605,7 @@ STR_TOWN_DIRECTORY_CAPTION                                      :{WHITE}Đô Th�
 STR_TOWN_DIRECTORY_NONE                                         :{ORANGE}- Không Có -
 STR_TOWN_DIRECTORY_TOWN                                         :{ORANGE}{TOWN}{BLACK} ({COMMA})
 STR_TOWN_DIRECTORY_CITY                                         :{ORANGE}{TOWN}{YELLOW} (đô thị){BLACK} ({COMMA})
-STR_TOWN_DIRECTORY_LIST_TOOLTIP                                 :{BLACK}Tên các đô thị - nháy vào tên để xem trung tâm đô thị. Ctrl+Click mở cửa sổ mới về vị trí đô thị
+STR_TOWN_DIRECTORY_LIST_TOOLTIP                                 :{BLACK}Tên các đô thị - nháy vào tên để xem trung tâm đô thị. Ctrl+Click mở cửa sổ mới của đô thị
 STR_TOWN_POPULATION                                             :{BLACK}Dân số thế giới: {COMMA}
 
 # Town view window
@@ -3527,12 +3613,15 @@ STR_TOWN_VIEW_TOWN_CAPTION                                      :{WHITE}{TOWN}
 STR_TOWN_VIEW_CITY_CAPTION                                      :{WHITE}{TOWN} (Thành Phố)
 STR_TOWN_VIEW_POPULATION_HOUSES                                 :{BLACK}Dân số: {ORANGE}{COMMA}{BLACK}  Toà nhà: {ORANGE}{COMMA}
 STR_TOWN_VIEW_CARGO_LAST_MONTH_MAX                              :{BLACK}{CARGO_LIST} tháng trước: {ORANGE}{COMMA}{BLACK} tối đa: {ORANGE}{COMMA}
+STR_TOWN_VIEW_CARGO_LAST_MINUTE_MAX                             :{BLACK}{CARGO_LIST} phút cuối: {ORANGE}{COMMA}{BLACK}  tối đa: {ORANGE}{COMMA}
 STR_TOWN_VIEW_CARGO_FOR_TOWNGROWTH                              :{BLACK}Hàng hoá cần để đô thị tăng trưởng:
 STR_TOWN_VIEW_CARGO_FOR_TOWNGROWTH_REQUIRED_GENERAL             :{ORANGE}{STRING}{RED} được yêu cầu
 STR_TOWN_VIEW_CARGO_FOR_TOWNGROWTH_REQUIRED_WINTER              :{ORANGE}{STRING}{BLACK} Yêu cầu trong mùa đông
 STR_TOWN_VIEW_CARGO_FOR_TOWNGROWTH_DELIVERED_GENERAL            :{GREEN}Đã chuyển được {ORANGE}{STRING}
 STR_TOWN_VIEW_CARGO_FOR_TOWNGROWTH_REQUIRED                     :{ORANGE}{CARGO_TINY} / {CARGO_LONG}{RED} (vẫn còn yêu cầu)
 STR_TOWN_VIEW_CARGO_FOR_TOWNGROWTH_DELIVERED                    :{ORANGE}{CARGO_TINY} / {CARGO_LONG}{GREEN} (đã được vận chuyển)
+STR_TOWN_VIEW_TOWN_GROWS_EVERY                                  :{BLACK}Thị trấn phát triển mỗi {ORANGE}{UNITS_DAYS_OR_SECONDS}
+STR_TOWN_VIEW_TOWN_GROWS_EVERY_FUNDED                           :{BLACK}Thị trấn phát triển mỗi {ORANGE}{UNITS_DAYS_OR_SECONDS} (đã được góp vốn)
 STR_TOWN_VIEW_TOWN_GROW_STOPPED                                 :{BLACK}Thị trấn {RED}không còn{BLACK} phát triển
 STR_TOWN_VIEW_NOISE_IN_TOWN                                     :{BLACK}Độ ồn giới hạn trong đô thị: {ORANGE}{COMMA}{BLACK}  max: {ORANGE}{COMMA}
 STR_TOWN_VIEW_CENTER_TOOLTIP                                    :{BLACK}Xem trung tâm đô thị. Ctrl+Click mở cửa sổ mới về vị trí đô thị
@@ -3572,8 +3661,12 @@ STR_LOCAL_AUTHORITY_ACTION_BRIBE                                :Hối lộ quan
 STR_LOCAL_AUTHORITY_ACTION_TOOLTIP_SMALL_ADVERTISING            :{PUSH_COLOUR}{YELLOW}Thực hiện chiến dịch quảng cáo nhỏ để thu hút khách và hàng hoá vận chuyển.{}Tăng xếp hạng cho các trạm gần trung tâm trong thời gian ngắn.{}{POP_COLOUR}Chi phí: {CURRENCY_LONG}
 STR_LOCAL_AUTHORITY_ACTION_TOOLTIP_MEDIUM_ADVERTISING           :{PUSH_COLOUR}{YELLOW}Thực hiện chiến dịch quảng cáo trung bình để thu hút khách và hàng hoá vận chuyển.{}Tăng xếp hạng cho các trạm xung quanh trung tâm trong thời gian ngắn.{}{POP_COLOUR}Chi phí: {CURRENCY_LONG}
 STR_LOCAL_AUTHORITY_ACTION_TOOLTIP_LARGE_ADVERTISING            :{PUSH_COLOUR}{YELLOW}Thực hiện chiến dịch quảng cáo lớn để thu hút khách và hàng hoá vận chuyển.{}Tăng xếp hạng cho các trạm xung quanh & xa trung tâm trong thời gian ngắn.{}{POP_COLOUR}Chi phí: {CURRENCY_LONG}
+STR_LOCAL_AUTHORITY_ACTION_TOOLTIP_ROAD_RECONSTRUCTION_MONTHS   :{PUSH_COLOUR}{YELLOW}Tài trợ cải tạo lại mạng đường phố trong đô thị.{}Nó sẽ gây ra sự gián đoạn với giao thông đường bộ đáng kể trong vòng 6 tháng.{}{POP_COLOUR}Chi phí: {CURRENCY_LONG}
+STR_LOCAL_AUTHORITY_ACTION_TOOLTIP_ROAD_RECONSTRUCTION_MINUTES  :{PUSH_COLOUR}{YELLOW}Tài trợ cải tạo lại mạng đường phố trong đô thị.{}Nó sẽ gây ra sự gián đoạn với giao thông đường bộ đáng kể trong vòng 6 phút.{}{POP_COLOUR}Chi phí: {CURRENCY_LONG}
 STR_LOCAL_AUTHORITY_ACTION_TOOLTIP_STATUE_OF_COMPANY            :{PUSH_COLOUR}{YELLOW}Dựng tượng đài tôn vinh để quảng bá hình ảnh công ty.{} Tăng xếp hạng cho các trạm trong khu vực.{}{POP_COLOUR} Chi phí: {CURRENCY_LONG}
 STR_LOCAL_AUTHORITY_ACTION_TOOLTIP_NEW_BUILDINGS                :{PUSH_COLOUR}{YELLOW}Tài trợ xây dựng các toà nhà để thúc đẩy phát triển đô thị.{}Tăng sự phát triển đô thị trong một thời gian ngắn.{}{POP_COLOUR}Chi phí: {CURRENCY_LONG}
+STR_LOCAL_AUTHORITY_ACTION_TOOLTIP_EXCLUSIVE_TRANSPORT_MONTHS   :{PUSH_COLOUR}{YELLOW}Mua hợp đồng giấy phép vận tải độc quyền ở địa phương trong 12 tháng.{}Chính quyền địa phương sẽ không cho hành khách và hàng hoá sử dụng các ga, bến, cảng của đối thủ. Nhưng nếu đối thủ thực hiện hối lộ thành công thì sẽ huỷ bỏ hợp đồng này.{}{POP_COLOUR}Chi phí: {CURRENCY_LONG}
+STR_LOCAL_AUTHORITY_ACTION_TOOLTIP_EXCLUSIVE_TRANSPORT_MINUTES  :{PUSH_COLOUR}{YELLOW}Mua hợp đồng giấy phép vận tải độc quyền ở địa phương trong 12 phút.{}Chính quyền địa phương sẽ không cho hành khách và hàng hoá sử dụng các ga, bến, cảng của đối thủ. Nhưng nếu đối thủ thực hiện hối lộ thành công thì sẽ huỷ bỏ hợp đồng này.{}{POP_COLOUR}Chi phí: {CURRENCY_LONG}
 STR_LOCAL_AUTHORITY_ACTION_TOOLTIP_BRIBE                        :{PUSH_COLOUR}{YELLOW}Đút lót quan chức địa phương để nâng cao quyền lợi và hủy bỏ độc quyền kinh doanh vận tải của đối thủ, có nguy cơ bị phạt nặng nếu vụ việc bị bại lộ.{}{POP_COLOUR}Chi phí: {CURRENCY_LONG}
 
 # Goal window
@@ -3588,7 +3681,7 @@ STR_GOALS_TEXT                                                  :{ORANGE}{STRING
 STR_GOALS_NONE                                                  :{ORANGE}- Không -
 STR_GOALS_PROGRESS                                              :{ORANGE}{STRING}
 STR_GOALS_PROGRESS_COMPLETE                                     :{GREEN}{STRING}
-STR_GOALS_TOOLTIP_CLICK_ON_SERVICE_TO_CENTER                    :{BLACK}Click vào mục tiêu để canh giữa cửa sổ lớn chính vào ô/đô thị/nhà máy tương ứng. Ctrl+Click để mở bằng các cửa sổ bổ sung tương ứng
+STR_GOALS_TOOLTIP_CLICK_ON_SERVICE_TO_CENTER                    :{BLACK}Click vào mục tiêu để canh giữa cửa sổ lớn chính vào ô/đô thị/nhà máy tương ứng. Ctrl+Click để mở bằng các cửa sổ ô/đô thị/nhà máy tương ứng
 
 # Goal question window
 STR_GOAL_QUESTION_CAPTION_QUESTION                              :{BLACK}Câu Hỏi
@@ -3626,6 +3719,9 @@ STR_SUBSIDIES_SUBSIDISED_TITLE                                  :{BLACK}Chính q
 STR_SUBSIDIES_SUBSIDISED_FROM_TO                                :{ORANGE}{STRING} từ {STRING} đến {STRING}{YELLOW} ({COMPANY}{YELLOW}, {STRING})
 STR_SUBSIDIES_TOOLTIP_CLICK_ON_SERVICE_TO_CENTER                :{BLACK}Nháy vào tên dịch vụ để xem nhà máy/đô thị liên quan. Ctrl+Click mở cửa sổ mới để xem
 STR_SUBSIDIES_OFFERED_EXPIRY_DATE                               :đến {DATE_SHORT}
+STR_SUBSIDIES_OFFERED_EXPIRY_TIME                               :trong vòng {UNITS_MONTHS_OR_MINUTES}
+STR_SUBSIDIES_SUBSIDISED_EXPIRY_DATE                            :đến ngày {DATE_SHORT}
+STR_SUBSIDIES_SUBSIDISED_EXPIRY_TIME                            :còn lại {UNITS_MONTHS_OR_MINUTES}
 
 # Story book window
 STR_STORY_BOOK_CAPTION                                          :{WHITE}{COMPANY} Tình Tiết
@@ -3641,13 +3737,20 @@ STR_STORY_BOOK_NEXT_PAGE_TOOLTIP                                :{BLACK}Chuyển
 STR_STORY_BOOK_INVALID_GOAL_REF                                 :{RED}Tham chiếu mục tiêu không hợp lệ
 
 # Station list window
-STR_STATION_LIST_TOOLTIP                                        :{BLACK}Các nhà ga, bến, cảng - nháy vào tên để xem vị trí nhà ga,bến, cảng. Ctrl+Click mở cửa sổ mới để xem
+STR_STATION_LIST_TOOLTIP                                        :{BLACK}Tên ga, bến, cảng - nháy vào tên để xem vị trí nhà ga,bến, cảng. Ctrl+Click mở cửa sổ mới để xem
 STR_STATION_LIST_USE_CTRL_TO_SELECT_MORE                        :{BLACK}Giữ nút Ctrl để chọn nhiều mục
 STR_STATION_LIST_CAPTION                                        :{WHITE}{COMPANY} - {COMMA} Ga, bến, cảng
 STR_STATION_LIST_STATION                                        :{YELLOW}{STATION} {STATION_FEATURES}
 STR_STATION_LIST_WAYPOINT                                       :{YELLOW}{WAYPOINT}
 STR_STATION_LIST_NONE                                           :{YELLOW}- Không -
 STR_STATION_LIST_SELECT_ALL_FACILITIES                          :{BLACK}Chọn tất cả phương tiện
+STR_STATION_LIST_CARGO_FILTER_ALL_AND_NO_RATING                 :Tất cả các loại chuyển chở và không có đánh giá
+STR_STATION_LIST_CARGO_FILTER_MULTIPLE                          :Nhiều kiểu hàng hoá
+STR_STATION_LIST_CARGO_FILTER_NO_CARGO_TYPES                    :Không có chủng loại vận tải
+STR_STATION_LIST_CARGO_FILTER_ONLY_NO_RATING                    :Chỉ đánh giá không chuyên chở
+STR_STATION_LIST_CARGO_FILTER_SELECT_ALL                        :Chọn tất cả và không đánh giá
+STR_STATION_LIST_CARGO_FILTER_NO_RATING                         :Không có đánh giá vận tải
+STR_STATION_LIST_CARGO_FILTER_EXPAND                            :Xem thêm...
 
 # Station view window
 STR_STATION_VIEW_CAPTION                                        :{WHITE}{STATION} {STATION_FEATURES}
@@ -3663,6 +3766,8 @@ STR_STATION_VIEW_EXCLUSIVE_RIGHTS_COMPANY                       :{YELLOW}{COMPAN
 
 STR_STATION_VIEW_RATINGS_BUTTON                                 :{BLACK}Uy tín
 STR_STATION_VIEW_RATINGS_TOOLTIP                                :{BLACK}Hiện uy tín ga, bến, cảng
+STR_STATION_VIEW_SUPPLY_RATINGS_TITLE_MONTH                     :{BLACK}Nguồn cung mỗi tháng và tín nhiệm địa phương:
+STR_STATION_VIEW_SUPPLY_RATINGS_TITLE_MINUTE                    :{BLACK}Nguồn cung cấp mỗi phút và tín nhiệm địa phương:
 STR_STATION_VIEW_CARGO_SUPPLY_RATING                            :{WHITE}{STRING}: {YELLOW}{COMMA} / {STRING} ({COMMA}%)
 
 STR_STATION_VIEW_GROUP                                          :{BLACK}Nhóm bằng
@@ -3713,9 +3818,9 @@ STR_STATION_VIEW_CLOSE_AIRPORT_TOOLTIP                          :{BLACK}Không c
 
 # Waypoint/buoy view window
 STR_WAYPOINT_VIEW_CAPTION                                       :{WHITE}{WAYPOINT}
-STR_WAYPOINT_VIEW_CENTER_TOOLTIP                                :{BLACK}Xem vị trí của điểm mốc. Ctrl+Click để mở cửa sổ mới cho khung hình
+STR_WAYPOINT_VIEW_CENTER_TOOLTIP                                :{BLACK}Xem vị trí của điểm mốc. Ctrl+Click để mở cửa sổ mới cho điểm mốc
 STR_WAYPOINT_VIEW_CHANGE_WAYPOINT_NAME                          :{BLACK}Đổi tên điểm mốc
-STR_BUOY_VIEW_CENTER_TOOLTIP                                    :{BLACK}Xem vị trí phao hàng hải. Ctrl+Click mở cửa sổ mới
+STR_BUOY_VIEW_CENTER_TOOLTIP                                    :{BLACK}Xem vị trí phao hàng hải. Ctrl+Click mở cửa sổ mới vị trí phao
 STR_BUOY_VIEW_CHANGE_BUOY_NAME                                  :{BLACK}Đổi tên phao
 
 STR_EDIT_WAYPOINT_NAME                                          :{WHITE}Sửa tên điểm mốc
@@ -3723,6 +3828,8 @@ STR_EDIT_WAYPOINT_NAME                                          :{WHITE}Sửa t�
 # Finances window
 STR_FINANCES_CAPTION                                            :{WHITE}Tài Chính Công Ty {COMPANY} {BLACK}{COMPANY_NUM}
 STR_FINANCES_YEAR                                               :{WHITE}{NUM}
+STR_FINANCES_YEAR_CAPTION                                       :{WHITE}Năm
+STR_FINANCES_PERIOD_CAPTION                                     :{WHITE}Kỳ
 
 ###length 3
 STR_FINANCES_REVENUE_TITLE                                      :{WHITE}Doanh thu
@@ -3789,7 +3896,7 @@ STR_COMPANY_VIEW_BUILD_HQ_TOOLTIP                               :{BLACK}Xây d�
 STR_COMPANY_VIEW_VIEW_HQ_BUTTON                                 :{BLACK}Xem trụ sở
 STR_COMPANY_VIEW_VIEW_HQ_TOOLTIP                                :{BLACK}Xem khung cảnh trụ sở công ty
 STR_COMPANY_VIEW_RELOCATE_HQ                                    :{BLACK}Chuyển trụ sở
-STR_COMPANY_VIEW_RELOCATE_COMPANY_HEADQUARTERS                  :{BLACK}Chuyển trụ sở công ty đi nơi khác sẽ cần chi phí là 1% giá trị công ty. . Shift+Click để xem chi phí dự tính
+STR_COMPANY_VIEW_RELOCATE_COMPANY_HEADQUARTERS                  :{BLACK}Chuyển trụ sở công ty đi nơi khác sẽ cần chi phí là 1% giá trị công ty. . Shift để xem chi phí dự tính
 STR_COMPANY_VIEW_INFRASTRUCTURE_BUTTON                          :{BLACK}Chi tiết
 STR_COMPANY_VIEW_INFRASTRUCTURE_TOOLTIP                         :{BLACK}Xem chi tiết thống kê hạ tầng
 STR_COMPANY_VIEW_GIVE_MONEY_BUTTON                              :{BLACK}Tặng tiền
@@ -3824,6 +3931,8 @@ STR_COMPANY_INFRASTRUCTURE_VIEW_CANALS                          :{WHITE}Kênh đ
 STR_COMPANY_INFRASTRUCTURE_VIEW_STATION_SECT                    :{GOLD}Ga, bến:
 STR_COMPANY_INFRASTRUCTURE_VIEW_STATIONS                        :{WHITE}Các ô ga, bến
 STR_COMPANY_INFRASTRUCTURE_VIEW_AIRPORTS                        :{WHITE}Sân bay
+STR_COMPANY_INFRASTRUCTURE_VIEW_TOTAL_YEAR                      :{WHITE}{CURRENCY_LONG}/năm
+STR_COMPANY_INFRASTRUCTURE_VIEW_TOTAL_PERIOD                    :{WHITE}{CURRENCY_LONG}/chu kỳ
 
 # Industry directory
 STR_INDUSTRY_DIRECTORY_CAPTION                                  :{WHITE}Nhà máy
@@ -3843,6 +3952,7 @@ STR_INDUSTRY_DIRECTORY_FILTER_NONE                              :Không
 # Industry view
 STR_INDUSTRY_VIEW_CAPTION                                       :{WHITE}{INDUSTRY}
 STR_INDUSTRY_VIEW_PRODUCTION_LAST_MONTH_TITLE                   :{BLACK}Sản lượng tháng trước:
+STR_INDUSTRY_VIEW_PRODUCTION_LAST_MINUTE_TITLE                  :{BLACK}Sản lượng phút trước:
 STR_INDUSTRY_VIEW_TRANSPORTED                                   :{YELLOW}{CARGO_LONG}{STRING}{BLACK} ({COMMA}% đã vận chuyển)
 STR_INDUSTRY_VIEW_LOCATION_TOOLTIP                              :{BLACK}Xem vị trí trung tâm của nhà máy. Ctrl+Click mở cửa sổ mới để xem
 STR_INDUSTRY_VIEW_PRODUCTION_LEVEL                              :{BLACK}Mức sản lượng: {YELLOW}{COMMA}%
@@ -3884,6 +3994,7 @@ STR_VEHICLE_LIST_REPLACE_VEHICLES                               :Thay phương t
 STR_VEHICLE_LIST_SEND_FOR_SERVICING                             :Gửi về bảo trì
 STR_VEHICLE_LIST_CREATE_GROUP                                   :Tạo nhóm
 STR_VEHICLE_LIST_PROFIT_THIS_YEAR_LAST_YEAR                     :{TINY_FONT}{BLACK}Lợi nhuận năm nay: {CURRENCY_LONG} (năm ngoái: {CURRENCY_LONG})
+STR_VEHICLE_LIST_PROFIT_THIS_PERIOD_LAST_PERIOD                 :{TINY_FONT}{BLACK}Lợi nhuận kỳ này: {CURRENCY_LONG} (kỳ trước: {CURRENCY_LONG})
 STR_VEHICLE_LIST_CARGO                                          :[{CARGO_LIST}]
 STR_VEHICLE_LIST_NAME_AND_CARGO                                 :{STRING} {STRING}
 
@@ -3929,7 +4040,9 @@ STR_GROUP_REMOVE_ALL_VEHICLES                                   :Xoá tất cả
 STR_GROUP_RENAME_CAPTION                                        :{BLACK}Đổi tên nhóm
 
 STR_GROUP_PROFIT_THIS_YEAR                                      :Lợi nhuận năm nay:
+STR_GROUP_PROFIT_THIS_PERIOD                                    :Lợi nhuận kỳ này:
 STR_GROUP_PROFIT_LAST_YEAR                                      :Lợi nhuận năm trước:
+STR_GROUP_PROFIT_LAST_PERIOD                                    :Lợi nhuận kỳ trước:
 STR_GROUP_OCCUPANCY                                             :Hiện đang dùng:
 STR_GROUP_OCCUPANCY_VALUE                                       :{NUM}%
 
@@ -3956,6 +4069,8 @@ STR_PURCHASE_INFO_SPEED_POWER                                   :{BLACK}Tốc đ
 STR_PURCHASE_INFO_SPEED                                         :{BLACK}Tốc độ: {GOLD}{VELOCITY}
 STR_PURCHASE_INFO_SPEED_OCEAN                                   :{BLACK}Tốc độ trên biển: {GOLD}{VELOCITY}
 STR_PURCHASE_INFO_SPEED_CANAL                                   :{BLACK}Tốc độ trên kênh/sông: {GOLD}{VELOCITY}
+STR_PURCHASE_INFO_RUNNINGCOST_YEAR                              :{BLACK}Chi phí hoạt động: {GOLD}{CURRENCY_LONG}/năm
+STR_PURCHASE_INFO_RUNNINGCOST_PERIOD                            :{BLACK}Chi phí vận hành: {GOLD}{CURRENCY_LONG}/kỳ
 STR_PURCHASE_INFO_CAPACITY                                      :{BLACK}Sức chứa: {GOLD}{CARGO_LONG} {STRING}
 STR_PURCHASE_INFO_REFITTABLE                                    :(cải biến được)
 STR_PURCHASE_INFO_DESIGNED_LIFE                                 :{BLACK}Thiết kế: {GOLD}{NUM}{BLACK} Niên hạn: {GOLD}{COMMA} năm
@@ -3982,10 +4097,10 @@ STR_CARGO_TYPE_FILTER_FREIGHT                                   :Hàng hóa
 STR_CARGO_TYPE_FILTER_NONE                                      :Không
 
 ###length VEHICLE_TYPES
-STR_BUY_VEHICLE_TRAIN_LIST_TOOLTIP                              :{BLACK}Danh sách tàu hỏa có thể chọn. Click vào tàu hỏa để xem thông tin. Ctrl+Click để ẩn/hiện loại được chọn
-STR_BUY_VEHICLE_ROAD_VEHICLE_LIST_TOOLTIP                       :{BLACK}Danh sách xe có thể chọn. Click vào xe để xem thông tin. Ctrl+Click để ẩn/hiện loại được chọn
-STR_BUY_VEHICLE_SHIP_LIST_TOOLTIP                               :{BLACK}Danh sách tàu có thể chọn. Click vào tàu để xem thông tin. Ctrl+Click để ẩn/hiện loại được chọn
-STR_BUY_VEHICLE_AIRCRAFT_LIST_TOOLTIP                           :{BLACK}Danh sách máy bay có thể chọn. Click vào máy bay để xem thông tin. Ctrl+Click để ẩn/hiện loại được chọn
+STR_BUY_VEHICLE_TRAIN_LIST_TOOLTIP                              :{BLACK}Danh sách tàu hỏa có thể chọn. Click vào tàu hỏa để xem thông tin. Ctrl+Click để ẩn/hiện loại phương tiện này
+STR_BUY_VEHICLE_ROAD_VEHICLE_LIST_TOOLTIP                       :{BLACK}Danh sách xe có thể chọn. Click vào xe để xem thông tin. Ctrl+Click để ẩn/hiện loại ô-tô này
+STR_BUY_VEHICLE_SHIP_LIST_TOOLTIP                               :{BLACK}Danh sách tàu có thể chọn. Click vào tàu để xem thông tin. Ctrl+Click để ẩn/hiện loại tàu này
+STR_BUY_VEHICLE_AIRCRAFT_LIST_TOOLTIP                           :{BLACK}Danh sách máy bay có thể chọn. Click vào máy bay để xem thông tin. Ctrl+Click để ẩn/hiện loại máy bay này
 
 ###length VEHICLE_TYPES
 STR_BUY_VEHICLE_TRAIN_BUY_VEHICLE_BUTTON                        :{BLACK}Mua Phương Tiện
@@ -4001,13 +4116,13 @@ STR_BUY_VEHICLE_AIRCRAFT_BUY_REFIT_VEHICLE_BUTTON               :{BLACK}Mua và 
 
 ###length VEHICLE_TYPES
 STR_BUY_VEHICLE_TRAIN_BUY_VEHICLE_TOOLTIP                       :{BLACK}Mua tàu hỏa đã ấn định. Shift+Click để xem giá mua dự tính
-STR_BUY_VEHICLE_ROAD_VEHICLE_BUY_VEHICLE_TOOLTIP                :{BLACK}Mua xe đã ấn định. Shift+Click để xem giá mua dự tính
-STR_BUY_VEHICLE_SHIP_BUY_VEHICLE_TOOLTIP                        :{BLACK}Mua tàu đã ấn định. Shift+Click để xem giá mua dự tính
-STR_BUY_VEHICLE_AIRCRAFT_BUY_VEHICLE_TOOLTIP                    :{BLACK}Mua máy bay đã ấn định. Shift+Click để xem giá mua dự tính
+STR_BUY_VEHICLE_ROAD_VEHICLE_BUY_VEHICLE_TOOLTIP                :{BLACK}Mua xe đã ấn định. Shift để xem giá mua dự tính
+STR_BUY_VEHICLE_SHIP_BUY_VEHICLE_TOOLTIP                        :{BLACK}Mua tàu đã ấn định. Shift để xem giá mua dự tính
+STR_BUY_VEHICLE_AIRCRAFT_BUY_VEHICLE_TOOLTIP                    :{BLACK}Mua máy bay đã ấn định. Shift để xem giá mua dự tính
 
 ###length VEHICLE_TYPES
 STR_BUY_VEHICLE_TRAIN_BUY_REFIT_VEHICLE_TOOLTIP                 :{BLACK}Mua và cải biến toa tàu được chọn. Shift+Click để xem giá mua dự tính
-STR_BUY_VEHICLE_ROAD_VEHICLE_BUY_REFIT_VEHICLE_TOOLTIP          :{BLACK}Mua và cải biến ô-tô đang chọn. Shift+Click để xem giá mua dự tính
+STR_BUY_VEHICLE_ROAD_VEHICLE_BUY_REFIT_VEHICLE_TOOLTIP          :{BLACK}Mua và cải biến ô-tô đang chọn. Shift để xem giá mua dự tính
 STR_BUY_VEHICLE_SHIP_BUY_REFIT_VEHICLE_TOOLTIP                  :{BLACK}Mua và cải biến tàu thuỷ đã chọn. Shift+Click để dự tính giá mà không mua
 STR_BUY_VEHICLE_AIRCRAFT_BUY_REFIT_VEHICLE_TOOLTIP              :{BLACK}Mua và cải biến máy bay được chọn. Shift+Click để xem chi phí dự tính
 
@@ -4102,13 +4217,13 @@ STR_DEPOT_CLONE_AIRCRAFT                                        :{BLACK}Tạo m�
 
 ###length VEHICLE_TYPES
 STR_DEPOT_CLONE_TRAIN_DEPOT_INFO                                :{BLACK}Thao tác này mua một đoàn tàu giống hệt tàu cũ, gồm cả đầu máy và toa xe. Click vào nút này, sau đó click vào một đoàn tàu ngoài hoặc trong ga. Ctrl+Click để tạo tàu mới chia sẻ lộ trình. Shift+Click để xem giá mua dự tính
-STR_DEPOT_CLONE_ROAD_VEHICLE_DEPOT_INFO                         :{BLACK}Thao tác này mua ôtô giống hệt ôtô cũ.Click vào nút này để thực hiện thao tác đối với xe trong xưởng hoặc ngoài xưởng. Ctrl+Click để tạo ôtô chia sẻ lộ trình. Shift+Click để xem giá mua ước tính
+STR_DEPOT_CLONE_ROAD_VEHICLE_DEPOT_INFO                         :{BLACK}Thao tác này mua ôtô giống hệt ôtô cũ.Click vào nút này để thực hiện thao tác đối với xe trong xưởng hoặc ngoài xưởng. Ctrl+Click để tạo ôtô chia sẻ lộ trình. Shift để xem giá mua ước tính
 STR_DEPOT_CLONE_SHIP_DEPOT_INFO                                 :{BLACK}Thao tác này mua tàu thuỷ giống hệt tàu thuỷ cũ, gồm cả loại hàng chuyên chở. Ctrl+Click để tạo tàu thuỷ chia sẻ lộ trình. Shift+Click để xem giá mua dự tính
-STR_DEPOT_CLONE_AIRCRAFT_INFO_HANGAR_WINDOW                     :{BLACK}Thao tác này mua máy bay giống hệt máy bay cũ, gồm cả loại hàng chuyên chở. Ctrl+Click để tạo máy bay chia sẻ lộ trình. Shift+Click để xem giá mua dự tính
+STR_DEPOT_CLONE_AIRCRAFT_INFO_HANGAR_WINDOW                     :{BLACK}Thao tác này mua máy bay giống hệt máy bay cũ, gồm cả loại hàng chuyên chở. Ctrl+Click để tạo máy bay chia sẻ lộ trình. Shift để xem giá mua dự tính
 
 ###length VEHICLE_TYPES
-STR_DEPOT_TRAIN_LOCATION_TOOLTIP                                :{BLACK}Xem trung tâm của xưởng tàu hoả. Ctrl+Click mở cửa sổ mới để xem
-STR_DEPOT_ROAD_VEHICLE_LOCATION_TOOLTIP                         :{BLACK}Xem trung tâm của xưởng ôtô. Ctrl+Click mở cửa sổ mới để xem
+STR_DEPOT_TRAIN_LOCATION_TOOLTIP                                :{BLACK}Xem trung tâm của xưởng tàu hoả. Ctrl+Click mở cửa sổ mới để xem vị trí xưởng tàu
+STR_DEPOT_ROAD_VEHICLE_LOCATION_TOOLTIP                         :{BLACK}Xem trung tâm của xưởng ô-tô. Ctrl+Click mở cửa sổ mới để xem
 STR_DEPOT_SHIP_LOCATION_TOOLTIP                                 :{BLACK}Xem trung tâm của xưởng tàu thuỷ. Ctrl+Click mở cửa sổ mới để xem
 STR_DEPOT_AIRCRAFT_LOCATION_TOOLTIP                             :{BLACK}Xem trung tâm của xưởng máy bay. Ctrl+Click mở cửa sổ mới để xem
 
@@ -4148,7 +4263,18 @@ STR_ENGINE_PREVIEW_TRAM_VEHICLE                                 :toa xe điện
 STR_ENGINE_PREVIEW_AIRCRAFT                                     :máy bay
 STR_ENGINE_PREVIEW_SHIP                                         :tàu thuỷ
 
+STR_ENGINE_PREVIEW_TEXT3                                        :{BLACK}{STRING}{}{5:STRING}{}{STRING}
 STR_ENGINE_PREVIEW_TEXT4                                        :{BLACK}{STRING}{}{STRING}{}{STRING}{}{STRING}
+STR_ENGINE_PREVIEW_COST_WEIGHT                                  :Chi phí: {CURRENCY_LONG}  Trọng lượng: {WEIGHT_SHORT}
+STR_ENGINE_PREVIEW_COST_MAX_SPEED                               :Chi phí: {CURRENCY_LONG}  Tốc độ tối đa: {VELOCITY}
+STR_ENGINE_PREVIEW_SPEED_POWER                                  :Tốc độ: {VELOCITY}  Công suất: {POWER}
+STR_ENGINE_PREVIEW_SPEED_POWER_MAX_TE                           :Tốc độ: {VELOCITY}  Công suất: {POWER}  T.E. tối đa: {FORCE}
+STR_ENGINE_PREVIEW_TYPE                                         :Kiểu máy bay: {STRING}
+STR_ENGINE_PREVIEW_TYPE_RANGE                                   :Kiểu máy bay: {STRING}   Tầm bay: {COMMA} ô
+STR_ENGINE_PREVIEW_RUNCOST_YEAR                                 :Chi phí hoạt động: {CURRENCY_LONG}/năm
+STR_ENGINE_PREVIEW_RUNCOST_PERIOD                               :Chi phí hoạt động: {CURRENCY_LONG}/kỳ
+STR_ENGINE_PREVIEW_CAPACITY                                     :Tải trọng: {CARGO_LONG}
+STR_ENGINE_PREVIEW_CAPACITY_2                                   :Tải trọng: {CARGO_LONG}, {CARGO_LONG}
 
 # Autoreplace window
 STR_REPLACE_VEHICLES_WHITE                                      :{WHITE}Thay thế {STRING} - {STRING}
@@ -4205,15 +4331,15 @@ STR_REPLACE_REMOVE_WAGON_GROUP_HELP                             :{STRING}. Ctrl+
 STR_VEHICLE_VIEW_CAPTION                                        :{WHITE}{VEHICLE}
 
 ###length VEHICLE_TYPES
-STR_VEHICLE_VIEW_TRAIN_CENTER_TOOLTIP                           :{BLACK}Xem trung tâm của tàu hỏa. Click đôi để theo dõi trên màn hình. Ctrl+Click mở cửa sổ mới để xem
-STR_VEHICLE_VIEW_ROAD_VEHICLE_CENTER_TOOLTIP                    :{BLACK}Xem trung tâm của ôtô. Click đôi để theo dõi trên màn hình. Ctrl+Click mở cửa sổ mới để xem
-STR_VEHICLE_VIEW_SHIP_CENTER_TOOLTIP                            :{BLACK}Xem trung tâm của tàu thủy. Click đôi để theo dõi trên màn hình. Ctrl+Click mở cửa sổ mới để xem
+STR_VEHICLE_VIEW_TRAIN_CENTER_TOOLTIP                           :{BLACK}Xem trung tâm của tàu hỏa. Click kép để theo dõi trên màn hình. Ctrl+Click mở cửa sổ mới để xem
+STR_VEHICLE_VIEW_ROAD_VEHICLE_CENTER_TOOLTIP                    :{BLACK}Xem trung tâm của ôtô. Click kép để theo dõi trên màn hình. Ctrl+Click mở cửa sổ mới để xem
+STR_VEHICLE_VIEW_SHIP_CENTER_TOOLTIP                            :{BLACK}Xem trung tâm của tàu thủy. Click kép để theo dõi trên màn hình. Ctrl+Click mở cửa sổ mới để xem
 STR_VEHICLE_VIEW_AIRCRAFT_CENTER_TOOLTIP                        :{BLACK}Xem trung tâm của máy bay. Click đôi để theo dõi trên màn hình. Ctrl+Click mở cửa sổ mới để xem
 
 ###length VEHICLE_TYPES
-STR_VEHICLE_VIEW_TRAIN_SEND_TO_DEPOT_TOOLTIP                    :{BLACK}Đưa tàu về xưởng. Ctrl+Click sẽ gửi về bảo trì
+STR_VEHICLE_VIEW_TRAIN_SEND_TO_DEPOT_TOOLTIP                    :{BLACK}Đưa tàu về xưởng. Ctrl+Click chỉ gửi về bảo trì
 STR_VEHICLE_VIEW_ROAD_VEHICLE_SEND_TO_DEPOT_TOOLTIP             :{BLACK}Đưa ôtô về xưởng. Ctrl+Click sẽ gửi về bảo trì thôi
-STR_VEHICLE_VIEW_SHIP_SEND_TO_DEPOT_TOOLTIP                     :{BLACK}Đưa tàu thuỷ về xưởng. Ctrl+Click sẽ gửi về bảo trì thôi
+STR_VEHICLE_VIEW_SHIP_SEND_TO_DEPOT_TOOLTIP                     :{BLACK}Đưa tàu thuỷ về xưởng. Ctrl+Click chỉ gửi về bảo trì
 STR_VEHICLE_VIEW_AIRCRAFT_SEND_TO_DEPOT_TOOLTIP                 :{BLACK}Đưa máy bay về xưởng. Ctrl+Click sẽ gửi về bảo trì thôi
 
 ###length VEHICLE_TYPES
@@ -4254,6 +4380,7 @@ STR_VEHICLE_VIEW_AIRCRAFT_STATUS_START_STOP_TOOLTIP             :{BLACK}Tác đ�
 # Messages in the start stop button in the vehicle view
 STR_VEHICLE_STATUS_LOADING_UNLOADING                            :{LTBLUE}Bốc/dỡ hàng
 STR_VEHICLE_STATUS_LEAVING                                      :{LTBLUE}Rời bến
+STR_VEHICLE_STATUS_WAITING_UNBUNCHING                           :{LTBLUE}Chờ gỡ gộp lộ trình
 STR_VEHICLE_STATUS_CRASHED                                      :{RED}Tai nạn!
 STR_VEHICLE_STATUS_BROKEN_DOWN                                  :{RED}Hỏng hóc
 STR_VEHICLE_STATUS_STOPPED                                      :{RED}Dừng
@@ -4267,6 +4394,7 @@ STR_VEHICLE_STATUS_NO_ORDERS_VEL                                :{LTBLUE}Không 
 STR_VEHICLE_STATUS_HEADING_FOR_WAYPOINT_VEL                     :{LTBLUE}Nhắm tới {WAYPOINT}, {VELOCITY}
 STR_VEHICLE_STATUS_HEADING_FOR_DEPOT_VEL                        :{ORANGE}Nhắm tới {DEPOT}, {VELOCITY}
 STR_VEHICLE_STATUS_HEADING_FOR_DEPOT_SERVICE_VEL                :{LTBLUE}Phục vụ tại {DEPOT}, {VELOCITY}
+STR_VEHICLE_STATUS_HEADING_FOR_DEPOT_UNBUNCH_VEL                :{LTBLUE}Gỡ gộp và bảo trì ở {DEPOT}, {VELOCITY}
 
 STR_VEHICLE_STATUS_CANNOT_REACH_STATION_VEL                     :{LTBLUE}Không thể đi tới {STATION}, {VELOCITY}
 STR_VEHICLE_STATUS_CANNOT_REACH_WAYPOINT_VEL                    :{LTBLUE}Không thể đi tới {WAYPOINT}, {VELOCITY}
@@ -4294,6 +4422,7 @@ STR_VEHICLE_DETAILS_AIRCRAFT_RENAME                             :{BLACK}Đổi t
 STR_VEHICLE_INFO_AGE                                            :{COMMA} năm ({COMMA})
 STR_VEHICLE_INFO_AGE_RED                                        :{RED}{COMMA} năm ({COMMA})
 STR_VEHICLE_INFO_AGE_RUNNING_COST_YR                            :{BLACK}Tuổi: {LTBLUE}{STRING}{BLACK} Chi phí hoạt động: {LTBLUE}{CURRENCY_LONG}/năm
+STR_VEHICLE_INFO_AGE_RUNNING_COST_PERIOD                        :{BLACK}Tuổi: {LTBLUE}{STRING}{BLACK}   Chi phí hoạt động: {LTBLUE}{CURRENCY_LONG}/kỳ
 
 STR_VEHICLE_INFO_MAX_SPEED                                      :{BLACK}Tốc độ tối đa: {LTBLUE}{VELOCITY}
 STR_VEHICLE_INFO_MAX_SPEED_TYPE                                 :{BLACK}Tốc độ tối đa: {LTBLUE}{VELOCITY} {BLACK}Kiểu máy bay: {LTBLUE}{STRING}
@@ -4303,6 +4432,8 @@ STR_VEHICLE_INFO_WEIGHT_POWER_MAX_SPEED_MAX_TE                  :{BLACK}Tải tr
 
 STR_VEHICLE_INFO_PROFIT_THIS_YEAR_LAST_YEAR                     :{BLACK}Lợi nhuận năm nay: {LTBLUE}{CURRENCY_LONG} (năm ngoái: {CURRENCY_LONG})
 STR_VEHICLE_INFO_PROFIT_THIS_YEAR_LAST_YEAR_MIN_PERFORMANCE     :{BLACK}Lợi nhuận năm nay: {LTBLUE}{CURRENCY_LONG} (năm ngoái: {CURRENCY_LONG}) {BLACK}Hiệu suất tối thiểu: {LTBLUE}{POWER_TO_WEIGHT}
+STR_VEHICLE_INFO_PROFIT_THIS_PERIOD_LAST_PERIOD                 :{BLACK}Lợi nhuận kỳ này: {LTBLUE}{CURRENCY_LONG} (kỳ trước: {CURRENCY_LONG})
+STR_VEHICLE_INFO_PROFIT_THIS_PERIOD_LAST_PERIOD_MIN_PERFORMANCE :{BLACK}Lợi nhuận kỳ này: {LTBLUE}{CURRENCY_LONG} (kỳ trước: {CURRENCY_LONG}) {BLACK}Hiệu suất tối thiểu: {LTBLUE}{POWER_TO_WEIGHT}
 STR_VEHICLE_INFO_RELIABILITY_BREAKDOWNS                         :{BLACK}Độ tin cậy: {LTBLUE}{COMMA}%  {BLACK}Hỏng hóc kể từ lần bảo trì cuối: {LTBLUE}{COMMA}
 
 STR_VEHICLE_INFO_BUILT_VALUE                                    :{LTBLUE}{ENGINE} {BLACK}Mua lúc: {LTBLUE}{NUM}{BLACK} Giá trị: {LTBLUE}{CURRENCY_LONG}
@@ -4313,9 +4444,22 @@ STR_VEHICLE_INFO_CAPACITY_CAPACITY                              :{BLACK}Sức ch
 
 STR_VEHICLE_INFO_FEEDER_CARGO_VALUE                             :{BLACK}Cước trung chuyển: {LTBLUE}{CURRENCY_LONG}
 
+STR_VEHICLE_DETAILS_SERVICING_INTERVAL_DAYS                     :{BLACK}Tần suất bảo trì: {LTBLUE}{COMMA}{NBSP}ngày{BLACK} {STRING}
+STR_VEHICLE_DETAILS_SERVICING_INTERVAL_MINUTES                  :{BLACK}Tần suất phục vụ: {LTBLUE}{COMMA}{NBSP}phút{BLACK}   {STRING}
+STR_VEHICLE_DETAILS_SERVICING_INTERVAL_PERCENT                  :{BLACK}Tần suất bảo trì: {LTBLUE}{COMMA}%{BLACK} {STRING}
+STR_VEHICLE_DETAILS_LAST_SERVICE_DATE                           :Lần bảo trì gần nhất: {LTBLUE}{DATE_LONG}
+STR_VEHICLE_DETAILS_LAST_SERVICE_MINUTES_AGO                    :Lần bảo trì gần nhất: {LTBLUE}{NUM} phút trước
+STR_VEHICLE_DETAILS_INCREASE_SERVICING_INTERVAL_TOOLTIP_DAYS    :{BLACK}Tăng tần suất bảo trì lên mỗi 10 ngày. Ctrl+Click để tăng mỗi 5 ngày
+STR_VEHICLE_DETAILS_INCREASE_SERVICING_INTERVAL_TOOLTIP_MINUTES :{BLACK}Tăng tần suất bảo trì lên mỗi 5 phút. Ctrl+Click tăng tần suất bảo trì lên mỗi phút
+STR_VEHICLE_DETAILS_INCREASE_SERVICING_INTERVAL_TOOLTIP_PERCENT :{BLACK}Tăng tần suất bảo trì lên mỗi 10%. Ctrl+Click để tăng mỗi 5%
+STR_VEHICLE_DETAILS_DECREASE_SERVICING_INTERVAL_TOOLTIP_DAYS    :{BLACK}Giảm số ngày chu kỳ phục vụ xuống 10 ngày. Ctrl+Click giảm chu kỳ phục vụ xuống 5 ngày
+STR_VEHICLE_DETAILS_DECREASE_SERVICING_INTERVAL_TOOLTIP_MINUTES :{BLACK}Giảm chu kỳ phục vụ xuống 5 phút. Ctrl+Click giảm chu kỳ phục vụ xuống 1 phút
+STR_VEHICLE_DETAILS_DECREASE_SERVICING_INTERVAL_TOOLTIP_PERCENT :{BLACK}Giảm chu kỳ phục vụ bước 10%. Ctrl+Click giảm chu kỳ phục vụ xuống 5%
 
 STR_SERVICE_INTERVAL_DROPDOWN_TOOLTIP                           :{BLACK}Thay đổi kiểu tần suất phục vụ
 STR_VEHICLE_DETAILS_DEFAULT                                     :Mặc định
+STR_VEHICLE_DETAILS_DAYS                                        :Ngày
+STR_VEHICLE_DETAILS_MINUTES                                     :Phút
 STR_VEHICLE_DETAILS_PERCENT                                     :Phần trăm
 
 ###length VEHICLE_TYPES
@@ -4354,7 +4498,7 @@ STR_REFIT_NEW_CAPACITY_COST_OF_REFIT                            :{BLACK}Sức ch
 STR_REFIT_NEW_CAPACITY_INCOME_FROM_REFIT                        :{BLACK}Sức chứa mới: {GOLD}{CARGO_LONG}{}{BLACK}Thu từ việc chuyển đổi: {GREEN}{CURRENCY_LONG}
 STR_REFIT_NEW_CAPACITY_COST_OF_AIRCRAFT_REFIT                   :{BLACK}Sức chứa mới: {GOLD}{CARGO_LONG}, {GOLD}{CARGO_LONG}{}{BLACK}Giá thành: {RED}{CURRENCY_LONG}
 STR_REFIT_NEW_CAPACITY_INCOME_FROM_AIRCRAFT_REFIT               :{BLACK}Sức chứa mới: {GOLD}{CARGO_LONG}, {GOLD}{CARGO_LONG}{}{BLACK}Thu từ việc chuyển đổi: {GREEN}{CURRENCY_LONG}
-STR_REFIT_SELECT_VEHICLES_TOOLTIP                               :{BLACK}Chọn các phương tiện để cải biến. Kéo chuột để chọn nhiều phương tiện. Click vào khoảng trống để chọn tất cả. Ctrl+Click sẽ chọn một phương tiện và các thứ nó kéo theo
+STR_REFIT_SELECT_VEHICLES_TOOLTIP                               :{BLACK}Chọn các phương tiện để cải biến. Click + kéo chuột để chọn nhiều phương tiện. Click vào khoảng trống để chọn tất cả. Ctrl+Click sẽ chọn một phương tiện và các thứ nó kéo theo
 
 ###length VEHICLE_TYPES
 STR_REFIT_TRAIN_LIST_TOOLTIP                                    :{BLACK}Chọn loại hàng mà tàu sẽ vận chuyển
@@ -4381,6 +4525,7 @@ STR_ORDERS_TIMETABLE_VIEW_TOOLTIP                               :{BLACK}Lịch t
 
 STR_ORDERS_LIST_TOOLTIP                                         :{BLACK}Lịch trình - click để tô sáng một thứ tự nào đó. Ctr+Click để nhảy đến nhà ga tương ứng
 STR_ORDER_INDEX                                                 :{COMMA}:{NBSP}
+STR_ORDER_TEXT                                                  :{STRING} {STRING} {STRING} {STRING}
 
 STR_ORDERS_END_OF_ORDERS                                        :- - Kết thúc lộ trình - -
 STR_ORDERS_END_OF_SHARED_ORDERS                                 :- - Kết thúc lộ trình chia sẻ - -
@@ -4417,9 +4562,14 @@ STR_ORDER_DROP_REFIT_AUTO_ANY                                   :Loại hàng s�
 STR_ORDER_DROP_GO_ALWAYS_DEPOT                                  :Chạy suốt
 STR_ORDER_DROP_SERVICE_DEPOT                                    :Bảo trì nếu cần
 STR_ORDER_DROP_HALT_DEPOT                                       :Dừng
+STR_ORDER_DROP_UNBUNCH                                          :Gỡ gộp
 
 # Depot action tooltips, one per vehicle type
 ###length VEHICLE_TYPES
+STR_ORDER_TRAIN_DEPOT_ACTION_TOOLTIP                            :{BLACK}Chọn một hành động thực hiện trong xưởng tàu hoả
+STR_ORDER_ROAD_DEPOT_ACTION_TOOLTIP                             :{BLACK}Chọn một hành động thực hiện trong xưởng ô-tô
+STR_ORDER_SHIP_DEPOT_ACTION_TOOLTIP                             :{BLACK}Chọn một hành động thực hiện trong xưởng tàu thuỷ
+STR_ORDER_HANGAR_ACTION_TOOLTIP                                 :{BLACK}Chọn một hành động thực hiện trong nhà chứa máy bay
 ###next-name-looks-similar
 
 STR_ORDER_CONDITIONAL_VARIABLE_TOOLTIP                          :{BLACK}Dữ kiện của phương tiện để xác định
@@ -4489,6 +4639,7 @@ STR_ORDER_REFIT_ORDER                                           :(Cải biến t
 STR_ORDER_REFIT_STOP_ORDER                                      :(Cải biến thành {STRING} và dừng)
 STR_ORDER_STOP_ORDER                                            :(Dừng)
 
+STR_ORDER_WAIT_TO_UNBUNCH                                       :(chờ để gỡ gộp)
 
 STR_ORDER_GO_TO_STATION                                         :{STRING} {STATION} {STRING}
 STR_ORDER_GO_TO_STATION_CAN_T_USE_STATION                       :{PUSH_COLOUR}{RED}(Không thể sử dụng trạm){POP_COLOUR} {STRING} {STATION} {STRING}
@@ -4570,6 +4721,7 @@ STR_TIMETABLE_STATUS_START_AT_DATE                              :{BLACK}Bảng b
 STR_TIMETABLE_STATUS_START_IN_SECONDS                           :{BLACK}Lịch trình này sẽ bắt đầu trong {COMMA} giây
 
 STR_TIMETABLE_START                                             :{BLACK}Khởi động bảng biểu
+STR_TIMETABLE_START_TOOLTIP                                     :{BLACK}Lựa chọn cho bảng thời gian khi nào bắt đầu. Ctrl+Click để chia đều từ lúc bắt đầu cho tất cả phương tiện đang chia sẻ lịch trình này theo thứ tự tương đối của chúng, nếu như lịch trình đã hoàn tất một bảng thời gian.
 
 STR_TIMETABLE_START_SECONDS_QUERY                               :Số giây cho đến khi lịch trình bắt đầu
 
@@ -4626,9 +4778,9 @@ STR_AI_DEBUG_MATCH_CASE                                         :{BLACK}So sánh
 STR_AI_DEBUG_MATCH_CASE_TOOLTIP                                 :{BLACK}Thay đổi việc so sánh hoa/thường với các thông điệp AI log
 STR_AI_DEBUG_CONTINUE                                           :{BLACK}Tiếp tục
 STR_AI_DEBUG_CONTINUE_TOOLTIP                                   :{BLACK}Cho máy tiếp tục chơi
-STR_AI_DEBUG_SELECT_AI_TOOLTIP                                  :{BLACK}Xem thông tin debug của AI này
+STR_AI_DEBUG_SELECT_AI_TOOLTIP                                  :{BLACK}Xem thông tin debug của AI này. Ctrl+Click để mở cửa sổ mới
 STR_AI_GAME_SCRIPT                                              :{BLACK}Game Script
-STR_AI_GAME_SCRIPT_TOOLTIP                                      :{BLACK}Kiểm tra lịch sử Game Script
+STR_AI_GAME_SCRIPT_TOOLTIP                                      :{BLACK}Kiểm tra lịch sử Game Script. Ctrl + Click mở cửa sổ mới
 
 STR_ERROR_AI_NO_AI_FOUND                                        :Không có AI phù hợp để nạp.{}AI này là AI giả và sẽ không làm gì cả.{}Bạn có thể tải các AI tại mục 'Nội dung trực tuyến'.
 STR_ERROR_AI_PLEASE_REPORT_CRASH                                :{WHITE}Có một script bị treo. Hãy báo cho tác giả script kèm với màn hình chụp cửa sổ gỡ lỗi AI/Game Script
@@ -4691,6 +4843,8 @@ STR_AI_SETTINGS_CAPTION_GAMESCRIPT                              :Game Script
 STR_AI_SETTINGS_CLOSE                                           :{BLACK}Đóng
 STR_AI_SETTINGS_RESET                                           :{BLACK}Thiết Lập Lại
 STR_AI_SETTINGS_SETTING                                         :{STRING}: {ORANGE}{STRING}
+STR_AI_SETTINGS_SETTING_DEVIATION                               :{STRING}: {ORANGE}[{STRING}, {STRING}]
+STR_AI_SETTINGS_JUST_DEVIATION                                  :[{STRING}, {STRING}]
 
 
 # Textfile window
@@ -4957,6 +5111,11 @@ STR_ERROR_UNABLE_TO_FIND_LOCAL_DEPOT                            :{WHITE}Không t
 STR_ERROR_DEPOT_WRONG_DEPOT_TYPE                                :Xưởng không hợp kiểu
 
 # Depot unbunching related errors
+STR_ERROR_UNBUNCHING_ONLY_ONE_ALLOWED                           :{WHITE}... có thể chỉ có 1 lộ trình không gộp
+STR_ERROR_UNBUNCHING_NO_FULL_LOAD                               :{WHITE}... không thể dùng lộ trình nạp đầy nếu phương tiện có một lộ trình tách lẻ
+STR_ERROR_UNBUNCHING_NO_UNBUNCHING_FULL_LOAD                    :{WHITE}... không thể bỏ gộp một xe ở lịch trình nạp đầy
+STR_ERROR_UNBUNCHING_NO_CONDITIONAL                             :{WHITE}... không thể dùng lộ trình có điều kiện đối với phương tiện đã gộp lộ trình
+STR_ERROR_UNBUNCHING_NO_UNBUNCHING_CONDITIONAL                  :{WHITE}... không thể bỏ gộp một xe ở lịch trình có điều kiện
 
 # Autoreplace related errors
 STR_ERROR_TRAIN_TOO_LONG_AFTER_REPLACEMENT                      :{WHITE}{VEHICLE} quá dài sau khi thay thế
@@ -5617,8 +5776,9 @@ STR_UNKNOWN_STATION                                             :trạm chưa bi
 STR_DEFAULT_SIGN_NAME                                           :Biển hiệu
 STR_COMPANY_SOMEONE                                             :ai đó
 
+STR_SAVEGAME_DURATION_REALTIME                                  :{NUM}h {NUM}m
 STR_SAVEGAME_NAME_DEFAULT                                       :{COMPANY}, {STRING}
-STR_SAVEGAME_NAME_SPECTATOR                                     :Spectator, {1:STRING}
+STR_SAVEGAME_NAME_SPECTATOR                                     :Tham quan, {1:STRING}
 
 # Viewport strings
 STR_VIEWPORT_TOWN_POP                                           :{WHITE}{TOWN} ({COMMA})
@@ -5650,6 +5810,10 @@ STR_TOWN_NAME                                                   :{TOWN}
 STR_VEHICLE_NAME                                                :{VEHICLE}
 STR_WAYPOINT_NAME                                               :{WAYPOINT}
 
+STR_CURRENCY_SHORT_KILO                                         :{NBSP}k
+STR_CURRENCY_SHORT_MEGA                                         :{NBSP}m
+STR_CURRENCY_SHORT_GIGA                                         :{NBSP}bn
+STR_CURRENCY_SHORT_TERA                                         :{NBSP}tn
 
 STR_JUST_CARGO                                                  :{CARGO_LONG}
 STR_JUST_RIGHT_ARROW                                            :{RIGHT_ARROW}

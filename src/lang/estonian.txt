@@ -550,6 +550,7 @@ STR_NEWS_MENU_DELETE_ALL_MESSAGES                               :Kustuta kõik t
 
 # About menu
 STR_ABOUT_MENU_LAND_BLOCK_INFO                                  :Maa-ala andmed
+STR_ABOUT_MENU_HELP                                             :Abi & kasutusjuhendid
 STR_ABOUT_MENU_TOGGLE_CONSOLE                                   :Lülita konsool sisse/välja
 STR_ABOUT_MENU_AI_DEBUG                                         :AI/GameScripti debugimine
 STR_ABOUT_MENU_SCREENSHOT                                       :Ekraanipilt

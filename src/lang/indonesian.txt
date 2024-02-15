@@ -213,6 +213,8 @@ STR_COLOUR_SECONDARY_SAME_AS_PRIMARY                            :Sama seperti Ut
 STR_UNITS_VELOCITY_IMPERIAL                                     :{DECIMAL}{NBSP}mil/j
 STR_UNITS_VELOCITY_METRIC                                       :{DECIMAL}{NBSP}km/jam
 STR_UNITS_VELOCITY_SI                                           :{DECIMAL}{NBSP}meter/detik
+STR_UNITS_VELOCITY_GAMEUNITS_DAY                                :{DECIMAL}{NBSP}area/hari
+STR_UNITS_VELOCITY_GAMEUNITS_SEC                                :{DECIMAL}{NBSP}area/detik
 STR_UNITS_VELOCITY_KNOTS                                        :{DECIMAL}{NBSP}knots
 
 STR_UNITS_POWER_IMPERIAL                                        :{DECIMAL}{NBSP}dk
@@ -254,8 +256,14 @@ STR_UNITS_HEIGHT_METRIC                                         :{DECIMAL}{NBSP}
 STR_UNITS_HEIGHT_SI                                             :{DECIMAL}{NBSP}m
 
 # Time units used in string control characters
+STR_UNITS_DAYS                                                  :{COMMA}{NBSP}hari
+STR_UNITS_SECONDS                                               :{COMMA}{NBSP}detik
+STR_UNITS_TICKS                                                 :{COMMA}{NBSP}titik
 
+STR_UNITS_MONTHS                                                :{NUM}{NBSP}bulan
+STR_UNITS_MINUTES                                               :{NUM}{NBSP}menit
 
+STR_UNITS_PERIODS                                               :{NUM}{NBSP}periode
 
 # Common window strings
 STR_LIST_FILTER_TITLE                                           :{BLACK}Saring:
@@ -352,7 +360,9 @@ STR_SORT_BY_NUM_VEHICLES                                        :Jumlah kendaraa
 STR_SORT_BY_TOTAL_PROFIT_LAST_YEAR                              :Total laba tahun lalu
 STR_SORT_BY_TOTAL_PROFIT_THIS_YEAR                              :Total laba tahun ini
 STR_SORT_BY_AVERAGE_PROFIT_LAST_YEAR                            :Laba rata-rata tahun lalu
+STR_SORT_BY_AVERAGE_PROFIT_LAST_PERIOD                          :Laba rata-rata kurun waktu sebelumnya
 STR_SORT_BY_AVERAGE_PROFIT_THIS_YEAR                            :Laba rata-rata tahun ini
+STR_SORT_BY_AVERAGE_PROFIT_THIS_PERIOD                          :Laba rata-rata saat ini
 
 # Group by options for vehicle list
 STR_GROUP_BY_NONE                                               :Tidak ada
@@ -1017,6 +1027,8 @@ STR_GAME_OPTIONS_GUI_SCALE_AUTO_TOOLTIP                         :{BLACK}Pilih ko
 STR_GAME_OPTIONS_GUI_SCALE_BEVELS                               :{BLACK}Skala bevel
 STR_GAME_OPTIONS_GUI_SCALE_BEVELS_TOOLTIP                       :{BLACK}Pilih kotak ini untuk pengaturan perbandingan ukuran bevel dengan ukuran antarmuka
 
+STR_GAME_OPTIONS_GUI_FONT_AA                                    :{BLACK}Font anti-alias
+STR_GAME_OPTIONS_GUI_FONT_AA_TOOLTIP                            :{BLACK}Centang kotak ini untuk font anti-alias yang dapat diubah ukurannya.
 
 STR_GAME_OPTIONS_GUI_SCALE_1X                                   :1x
 STR_GAME_OPTIONS_GUI_SCALE_2X                                   :2x
@@ -1054,7 +1066,12 @@ STR_GAME_OPTIONS_BASE_MUSIC_DESCRIPTION_TOOLTIP                 :{BLACK}Informas
 STR_GAME_OPTIONS_SOCIAL_PLUGINS_NONE                            :{LTBLUE}(tidak ada plugin untuk diintegrasikan dengan platform sosial yang terpasang)
 
 STR_GAME_OPTIONS_SOCIAL_PLUGIN_PLATFORM                         :{BLACK}Platform:
+STR_GAME_OPTIONS_SOCIAL_PLUGIN_STATE                            :{BLACK}Status plugin:
 
+STR_GAME_OPTIONS_SOCIAL_PLUGIN_STATE_FAILED                     :{RED}Inisiasi gagal
+STR_GAME_OPTIONS_SOCIAL_PLUGIN_STATE_PLATFORM_NOT_RUNNING       :{ORANGE}{STRING} tidak dijalankan
+STR_GAME_OPTIONS_SOCIAL_PLUGIN_STATE_DUPLICATE                  :{RED}Plugin ganda
+STR_GAME_OPTIONS_SOCIAL_PLUGIN_STATE_INVALID_SIGNATURE          :{RED}Kata kunci tidak tepat
 
 STR_BASESET_STATUS                                              :{STRING} {RED}({NUM} file hilang/rusak
 
@@ -1222,6 +1239,8 @@ STR_CONFIG_SETTING_HORIZONTAL_POS_RIGHT                         :Kanan
 
 STR_CONFIG_SETTING_SECONDS_VALUE                                :{COMMA}{NBSP}detik
 
+STR_CONFIG_SETTING_INFINITE_MONEY                               :Uang tak terbatas: {STRING}
+STR_CONFIG_SETTING_INFINITE_MONEY_HELPTEXT                      :Izinkan pengeluaran tanpa batas dan nonaktifkan kebangkrutan perusahaan
 
 STR_CONFIG_SETTING_MAXIMUM_INITIAL_LOAN                         :Maksimum pinjaman awal: {STRING}
 STR_CONFIG_SETTING_MAXIMUM_INITIAL_LOAN_HELPTEXT                :Jumlah maksimum yang dapat dipinjam (tanpa menghitung inflasi)
@@ -1374,7 +1393,8 @@ STR_CONFIG_SETTING_BRIBE_HELPTEXT                               :Membolehkan per
 
 STR_CONFIG_SETTING_ALLOW_EXCLUSIVE                              :Ijinkan pembelian hak ekslusif pengelolaan transportasi: {STRING}
 ###length 2
-STR_CONFIG_SETTING_ALLOW_EXCLUSIVE_HELPTEXT                     :Jika perusahaan membeli hak monopoli transportasi for sebuah kota, stasiun lawan (penumpang dan kargo) tidak akan menerima apapun selama setahun
+STR_CONFIG_SETTING_ALLOW_EXCLUSIVE_HELPTEXT                     :Jika perusahaan membeli hak monopoli transportasi for sebuah kota, stasiun lawan (penumpang dan kargo) tidak akan menerima apapun selama dua belas bulan
+STR_CONFIG_SETTING_ALLOW_EXCLUSIVE_HELPTEXT_MINUTES             :Jika sebuah perusahaan membeli hak transportasi eksklusif untuk sebuah kota, stasiun lawan (penumpang dan kargo) tidak akan menerima kargo apapun selama dua belas menit.
 
 STR_CONFIG_SETTING_ALLOW_FUND_BUILDINGS                         :Ijinkan mendanai bangunan: {STRING}
 STR_CONFIG_SETTING_ALLOW_FUND_BUILDINGS_HELPTEXT                :Perbolehkan perusahaan untuk memberi dana kepada kota untuk membangun bangunan baru
@@ -1439,8 +1459,12 @@ STR_CONFIG_SETTING_NEVER_EXPIRE_VEHICLES_HELPTEXT               :Jika dinyalakan
 
 ###length 2
 
+STR_CONFIG_SETTING_MINUTES_PER_YEAR                             :Total menit per-tahun: {STRING}
+STR_CONFIG_SETTING_MINUTES_PER_YEAR_HELPTEXT                    :Pilih total menit dalam setahun kalender. Setelan awal 12 minutes. Isi 0 untuk membekukan kalender. Pengaturan ini tidak mempengaruhi simulasi keekonomian dalam game, dan hanya tersedia jika pewaktuan jam dinding digunakan.
 
+STR_CONFIG_SETTING_MINUTES_PER_YEAR_VALUE                       :{NUM}
 ###setting-zero-is-special
+STR_CONFIG_SETTING_MINUTES_PER_YEAR_FROZEN                      :0 (kalender dibekukan)
 
 
 STR_CONFIG_SETTING_AUTORENEW_VEHICLE                            :Perbarui otomatis kendaraan yang telah tua: {STRING}
@@ -1852,8 +1876,9 @@ STR_CONFIG_SETTING_SEMAPHORE_BUILD_BEFORE_DATE                  :Gunakan sinyal 
 STR_CONFIG_SETTING_SEMAPHORE_BUILD_BEFORE_DATE_HELPTEXT         :Setel tahun saat sinyal elektris digunakan untuk kereta. Sebelum tahun ini, sinyal non-elektris akan digunakan (fungsinya sama, tapi dengan penampilan berbeda)
 
 STR_CONFIG_SETTING_CYCLE_SIGNAL_TYPES                           :Pergantian jenis sinyal: {STRING}
-STR_CONFIG_SETTING_CYCLE_SIGNAL_TYPES_HELPTEXT                  :Pilih jenis sinyal mana yang akan digilir saat Ctrl+klik pada sinyal yang dibangun dengan alat sinyal
+STR_CONFIG_SETTING_CYCLE_SIGNAL_TYPES_HELPTEXT                  :Pilih jenis sinyal mana yang akan digilir saat Ctrl+Klik pada sinyal yang dibangun dengan alat sinyal
 ###length 2
+STR_CONFIG_SETTING_CYCLE_SIGNAL_GROUP                           :Hanya grup saat ini
 STR_CONFIG_SETTING_CYCLE_SIGNAL_ALL                             :Semua
 
 STR_CONFIG_SETTING_SIGNAL_GUI_MODE                              :Tampilkan jenis sinyal: {STRING}
@@ -2040,10 +2065,12 @@ STR_CONFIG_SETTING_LIMITATIONS                                  :Keterbatasan
 STR_CONFIG_SETTING_ACCIDENTS                                    :Bencana / Kecelakaan
 STR_CONFIG_SETTING_GENWORLD                                     :Pembuatan Bentang Darat
 STR_CONFIG_SETTING_ENVIRONMENT                                  :Linkungan Dunia
+STR_CONFIG_SETTING_ENVIRONMENT_TIME                             :Waktu
 STR_CONFIG_SETTING_ENVIRONMENT_AUTHORITIES                      :Berwenang
 STR_CONFIG_SETTING_ENVIRONMENT_TOWNS                            :Kota
 STR_CONFIG_SETTING_ENVIRONMENT_INDUSTRIES                       :Industri
 STR_CONFIG_SETTING_ENVIRONMENT_CARGODIST                        :Distribusi kargo
+STR_CONFIG_SETTING_ENVIRONMENT_TREES                            :Pohon
 STR_CONFIG_SETTING_AI                                           :Pesaing
 STR_CONFIG_SETTING_AI_NPC                                       :Pemain Komputer
 STR_CONFIG_SETTING_NETWORK                                      :Jaringan
@@ -3187,10 +3214,12 @@ STR_MAPGEN_MAPSIZE                                              :{BLACK}Ukuran P
 STR_MAPGEN_MAPSIZE_TOOLTIP                                      :{BLACK}Pilih ukuran peta dalam petak. Jumlah dari petak yang tersedia akan sedikit lebih kecil
 STR_MAPGEN_BY                                                   :{BLACK}*
 STR_MAPGEN_NUMBER_OF_TOWNS                                      :{BLACK}Jumlah Kota:
+STR_MAPGEN_NUMBER_OF_TOWNS_TOOLTIP                              :Pilih kepadatan sektor kota, atau angka tertentu
 STR_MAPGEN_TOWN_NAME_LABEL                                      :{BLACK}Nama kota:
 STR_MAPGEN_TOWN_NAME_DROPDOWN_TOOLTIP                           :{BLACK}Pilih model nama kota
 STR_MAPGEN_DATE                                                 :{BLACK}Tgl:
 STR_MAPGEN_NUMBER_OF_INDUSTRIES                                 :{BLACK}Jumlah industri:
+STR_MAPGEN_NUMBER_OF_INDUSTRIES_TOOLTIP                         :Pilih kepadatan sektor industri, atau angka tertentu
 STR_MAPGEN_HEIGHTMAP_HEIGHT                                     :{BLACK}Puncak tertinggi:
 STR_MAPGEN_HEIGHTMAP_HEIGHT_UP                                  :{BLACK}Menambah satu ketinggian maksimum puncak tertinggi di peta
 STR_MAPGEN_HEIGHTMAP_HEIGHT_DOWN                                :{BLACK}Kurangi satu ketinggian maksimum puncak tertinggi di peta
@@ -3553,6 +3582,8 @@ STR_LOCAL_AUTHORITY_ACTION_TOOLTIP_MEDIUM_ADVERTISING           :{PUSH_COLOUR}{Y
 STR_LOCAL_AUTHORITY_ACTION_TOOLTIP_LARGE_ADVERTISING            :{PUSH_COLOUR}{YELLOW}Prakarsai kampanye iklan besar, agar penumpang dan kargo lebih mengutamakan jasa perusahaan transportasi anda.{}Memberikan penggalak sementara pada peringkat stasiun dalam radius besar di sekitar pusat kota..{}{POP_COLOUR}Biaya: {CURRENCY_LONG}
 STR_LOCAL_AUTHORITY_ACTION_TOOLTIP_STATUE_OF_COMPANY            :{PUSH_COLOUR}{YELLOW}Bangun patung sebagai kebanggaan perusahaan anda.{}Memberikan peningkatan permanen pada mutu stasiun di kota ini.{}{POP_COLOUR}Biaya: {CURRENCY_LONG}
 STR_LOCAL_AUTHORITY_ACTION_TOOLTIP_NEW_BUILDINGS                :{PUSH_COLOUR}{YELLOW}Biayai pembangunan gedung baru di kota.{}Memberikan penggalak sementara pada pertumbuhan kota di kota ini,{}{POP_COLOUR}Biaya: {CURRENCY_LONG}
+STR_LOCAL_AUTHORITY_ACTION_TOOLTIP_EXCLUSIVE_TRANSPORT_MONTHS   :{PUSH_COLOUR}{YELLOW}Beli hak transportasi eksklusif dalam kota selama 12 bulan.{}Pemkot tidak akan mengizinkan penumpang dan kargo menggunakan stasiun pesaingmu. Suap yang berhasil dari pesaing akan membatalkan kontrak ini.{}{POP_COLOUR}Biaya: {CURRENCY_LONG}
+STR_LOCAL_AUTHORITY_ACTION_TOOLTIP_EXCLUSIVE_TRANSPORT_MINUTES  :{PUSH_COLOUR}{YELLOW}Beli hak transportasi eksklusif dalam kota selama 12 menit. Pemkot{}akan melarang penumpang dan kargo untuk menggunakan layanan stasiun kompetitormu. Suap yang berhasil dari kompetitormu akan memutus kontrak ini.{}{POP_COLOUR}Biaya: {CURRENCY_LONG}
 STR_LOCAL_AUTHORITY_ACTION_TOOLTIP_BRIBE                        :{PUSH_COLOUR}{YELLOW}Lakukan suap pada pemkot untuk menaikan peringkat, beresiko denda jika tertangkap.{}{POP_COLOUR}Biaya: {CURRENCY_LONG}
 
 # Goal window
@@ -3802,6 +3833,8 @@ STR_COMPANY_INFRASTRUCTURE_VIEW_CANALS                          :{WHITE}Kanal
 STR_COMPANY_INFRASTRUCTURE_VIEW_STATION_SECT                    :{GOLD}Stasiun:
 STR_COMPANY_INFRASTRUCTURE_VIEW_STATIONS                        :{WHITE}area stasiun
 STR_COMPANY_INFRASTRUCTURE_VIEW_AIRPORTS                        :{WHITE}Bandara
+STR_COMPANY_INFRASTRUCTURE_VIEW_TOTAL_YEAR                      :{WHITE}{CURRENCY_LONG}/tahun
+STR_COMPANY_INFRASTRUCTURE_VIEW_TOTAL_PERIOD                    :{WHITE}{CURRENCY_LONG}/periode
 
 # Industry directory
 STR_INDUSTRY_DIRECTORY_CAPTION                                  :{WHITE}Industri
@@ -4280,6 +4313,8 @@ STR_VEHICLE_INFO_WEIGHT_POWER_MAX_SPEED_MAX_TE                  :{BLACK}Berat: {
 
 STR_VEHICLE_INFO_PROFIT_THIS_YEAR_LAST_YEAR                     :{BLACK}Keuntungan tahun ini: {LTBLUE}{CURRENCY_LONG} (tahun lalu: {CURRENCY_LONG})
 STR_VEHICLE_INFO_PROFIT_THIS_YEAR_LAST_YEAR_MIN_PERFORMANCE     :{BLACK}Keuntungan tahun ini: {LTBLUE}{CURRENCY_LONG} (tahun kemarin: {CURRENCY_LONG}) {BLACK}Performa minimum: {LTBLUE}{POWER_TO_WEIGHT}
+STR_VEHICLE_INFO_PROFIT_THIS_PERIOD_LAST_PERIOD                 :{BLACK}Laba saat ini: {LTBLUE}{CURRENCY_LONG} (kurun waktu sebelumnya: {CURRENCY_LONG})
+STR_VEHICLE_INFO_PROFIT_THIS_PERIOD_LAST_PERIOD_MIN_PERFORMANCE :{BLACK}Laba sat ini: {LTBLUE}{CURRENCY_LONG} (kurun waktu sebelumnya: {CURRENCY_LONG}) {BLACK}Performa minimum: {LTBLUE}{POWER_TO_WEIGHT}
 STR_VEHICLE_INFO_RELIABILITY_BREAKDOWNS                         :{BLACK}Reliabilitas: {LTBLUE}{COMMA}%  {BLACK}Mogok sejak perbaikan terakhir : {LTBLUE}{COMMA} kali
 
 STR_VEHICLE_INFO_BUILT_VALUE                                    :{LTBLUE}{ENGINE} {BLACK}Dibuat: {LTBLUE}{NUM}{BLACK} Nilai: {LTBLUE}{CURRENCY_LONG}
@@ -4292,6 +4327,9 @@ STR_VEHICLE_INFO_FEEDER_CARGO_VALUE                             :{BLACK}Nilai Tr
 
 STR_VEHICLE_DETAILS_SERVICING_INTERVAL_DAYS                     :{BLACK}Perbaikan interval: {LTBLUE}{COMMA}{NBSP}hari{BLACK} {STRING}
 STR_VEHICLE_DETAILS_SERVICING_INTERVAL_PERCENT                  :{BLACK}Jangka waktu perbaikan: {LTBLUE}{COMMA} %{BLACK} {STRING}
+STR_VEHICLE_DETAILS_DECREASE_SERVICING_INTERVAL_TOOLTIP_DAYS    :{BLACK}Kurangi jangka waktu servis sebanyak 10 hari. Ctrl+Click untuk mengurangi sebanyak 5 hari
+STR_VEHICLE_DETAILS_DECREASE_SERVICING_INTERVAL_TOOLTIP_MINUTES :{BLACK}Kurangi jangka waktu servis sebanyak 5 menit. Ctrl+Click untuk mengurangi sebanyak 1 menit
+STR_VEHICLE_DETAILS_DECREASE_SERVICING_INTERVAL_TOOLTIP_PERCENT :{BLACK}Kurangi jangka waktu servis sebanyak 10 persen. Ctrl+Click untuk mengurangi sebanyak 5 persen
 
 STR_SERVICE_INTERVAL_DROPDOWN_TOOLTIP                           :{BLACK}Ubah jenis interval perbaikan
 STR_VEHICLE_DETAILS_DEFAULT                                     :Standar

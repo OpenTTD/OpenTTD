@@ -1403,6 +1403,7 @@ STR_CONFIG_SETTING_SCROLLWHEEL_OFF                              :عدم استخ
 STR_CONFIG_SETTING_OSK_ACTIVATION                               :كيبورد على الشاشة: {STRING}
 ###length 4
 STR_CONFIG_SETTING_OSK_ACTIVATION_DISABLED                      :غير مفعل
+STR_CONFIG_SETTING_OSK_ACTIVATION_DOUBLE_CLICK                  :انقر مرتين
 STR_CONFIG_SETTING_OSK_ACTIVATION_SINGLE_CLICK_FOCUS            :نقرة واحدة (عند التركيز)
 
 ###length 3
@@ -3130,7 +3131,7 @@ STR_STATION_VIEW_CLOSE_AIRPORT                                  :{BLACK}اغلا
 STR_WAYPOINT_VIEW_CAPTION                                       :{WHITE}{WAYPOINT}
 STR_WAYPOINT_VIEW_CENTER_TOOLTIP                                :{BLACK} ركز شاشة العرض على نقطة العبور
 STR_WAYPOINT_VIEW_CHANGE_WAYPOINT_NAME                          :{BLACK}غير اسم نقطة العبور
-STR_BUOY_VIEW_CENTER_TOOLTIP                                    :{BLACK} ضع العوامة في مركز الشاشة
+STR_BUOY_VIEW_CENTER_TOOLTIP                                    :{BLACK} ضع العوامة في مركز الشاشة. Ctrl+Click لفتح نافذة لموقع العوامة
 STR_BUOY_VIEW_CHANGE_BUOY_NAME                                  :{BLACK} غير اسم العومة
 
 STR_EDIT_WAYPOINT_NAME                                          :{WHITE}عدل اسم نقطة العبور
@@ -3895,14 +3896,15 @@ STR_TIMETABLE_ORDER_VIEW_TOOLTIP                                :{BLACK}حول �
 STR_TIMETABLE_TOOLTIP                                           :{BLACK}جدولة الأوامر - اضغط على الامر لاظهارة
 
 STR_TIMETABLE_NO_TRAVEL                                         :لا رحيل
-STR_TIMETABLE_NOT_TIMETABLEABLE                                 :المغادرة (ذاتي: مجدول بواسطة الامر اليدوي التالي)
-STR_TIMETABLE_TRAVEL_NOT_TIMETABLED                             :مسافر (غير مجدوله)
-STR_TIMETABLE_TRAVEL_NOT_TIMETABLED_SPEED                       :سافر(بدون جدول زمني) مع تقريبا {2:VELOCITY}
+STR_TIMETABLE_NOT_TIMETABLEABLE                                 :مسافرة (ذاتي: مجدول بواسطة الامر اليدوي التالي)
+STR_TIMETABLE_TRAVEL_NOT_TIMETABLED                             :مسافرة (غير مجدول)
+STR_TIMETABLE_TRAVEL_NOT_TIMETABLED_SPEED                       :مسافرة (ليس مجدول) بسرعة لا تتعدى {2:VELOCITY}
 STR_TIMETABLE_TRAVEL_FOR                                        :مسافر لـ {STRING}
 STR_TIMETABLE_TRAVEL_FOR_SPEED                                  :سافر لي {STRING} بمعدل {VELOCITY}
-STR_TIMETABLE_TRAVEL_FOR_ESTIMATED                              :سافر(إلى {STRING}, بدون جدول زمني)
-STR_TIMETABLE_TRAVEL_FOR_SPEED_ESTIMATED                        :سافر (إلى {STRING}, بدون الجدول الزمني) مع تقريبا {VELOCITY}
+STR_TIMETABLE_TRAVEL_FOR_ESTIMATED                              :مسافرة (ل {STRING}، ليس مجدول)
+STR_TIMETABLE_TRAVEL_FOR_SPEED_ESTIMATED                        :مسافرة (إلى {STRING}, ليس مجدول) بسرعة لا تتعدى {VELOCITY}
 STR_TIMETABLE_STAY_FOR_ESTIMATED                                :(البقاء ل{STRING}، ليس مجدول)
+STR_TIMETABLE_AND_TRAVEL_FOR_ESTIMATED                          :(المسافرة ل {STRING}، ليس مجدول)
 STR_TIMETABLE_STAY_FOR                                          :ويبقى لـ {STRING}
 STR_TIMETABLE_AND_TRAVEL_FOR                                    :ويسافر لـ {STRING}
 
@@ -3914,6 +3916,7 @@ STR_TIMETABLE_STATUS_LATE                                       :{BLACK}هذه �
 STR_TIMETABLE_STATUS_EARLY                                      :{BLACK}هذه العربه {STRING} مُتَقَدِمه عن الجدوله
 STR_TIMETABLE_STATUS_NOT_STARTED                                :{BLACK}جدول الاعمال لم تبدأ بعد
 
+STR_TIMETABLE_START                                             :{BLACK}بدء جدول الاعمال
 
 
 STR_TIMETABLE_CHANGE_TIME                                       :{BLACK}غير الوقت
@@ -3965,7 +3968,7 @@ STR_AI_DEBUG_MATCH_CASE                                         :{BLACK}قارن
 STR_AI_DEBUG_MATCH_CASE_TOOLTIP                                 :{BLACK}اظهر الحالات المتشابهة عند مقارنة رسائل الذكاء الصناعي مع الجمل المكسورة.
 STR_AI_DEBUG_CONTINUE                                           :{BLACK}استمر
 STR_AI_DEBUG_CONTINUE_TOOLTIP                                   :{BLACK}عدم توقيف ومواصلة الذكاء الصناعي
-STR_AI_DEBUG_SELECT_AI_TOOLTIP                                  :{BLACK}عرض صائد الاخطاء لهذه الاضافة
+STR_AI_DEBUG_SELECT_AI_TOOLTIP                                  :{BLACK}عرض صائد الاخطاء لهذه الاضافة. Ctrl-Click لفتحه في نافذة جديدة
 
 STR_ERROR_AI_NO_AI_FOUND                                        :لا يوجد اضافات مناسبة للتحميل{} هذه اضافة غبية ولن تفعل شيئا لك{} تستطيع تحميل اضافات من الشبكة عن طريق نظام التحميل
 STR_ERROR_AI_PLEASE_REPORT_CRASH                                :{WHITE}واحد من الذكاء الصناعي فشل. الرجاء ابلاغ المبرمج عنه مصحوبا بصورة من شاشة مصحح الاخطاء.
@@ -3973,12 +3976,13 @@ STR_ERROR_AI_DEBUG_SERVER_ONLY                                  :{YELLOW} شاش
 
 # AI configuration window
 STR_AI_CONFIG_CAPTION_AI                                        :{WHITE}اعدادات االذكاء الاصطناعي
-STR_AI_CONFIG_CAPTION_GAMESCRIPT                                :{WHITE}تكوين مخطوط اللعبة
+STR_AI_CONFIG_CAPTION_GAMESCRIPT                                :{WHITE}اعدادات مخطوط اللعبة
 STR_AI_CONFIG_GAMELIST_TOOLTIP                                  :{BLACK}النص البرمجي الخاص باللعبة الذي سيتم تحميله في اللعبة التالية
 STR_AI_CONFIG_AILIST_TOOLTIP                                    :{BLACK}الذكاء الاصطناعي الذي سيتم تحميله في اللعبة التالية
 STR_AI_CONFIG_HUMAN_PLAYER                                      :لاعب انساني
 STR_AI_CONFIG_RANDOM_AI                                         :ذكاء صناعي عشوائي
 STR_AI_CONFIG_NONE                                              :(لا شيء)
+STR_AI_CONFIG_NAME_VERSION                                      :{STRING} {YELLOW}v{NUM}
 STR_AI_CONFIG_MAX_COMPETITORS                                   :{LTBLUE}العدد الاقصى للمتنافسين: {ORANGE}{COMMA}
 STR_AI_CONFIG_COMPETITORS_INTERVAL                              :{LTBLUE}الفترة بين بدء المنافسين: {ORANGE}{COMMA} دقيقة
 
@@ -3987,11 +3991,13 @@ STR_AI_CONFIG_MOVE_UP_TOOLTIP                                   :{BLACK}انقل
 STR_AI_CONFIG_MOVE_DOWN                                         :{BLACK}انقل للاسفل
 STR_AI_CONFIG_MOVE_DOWN_TOOLTIP                                 :{BLACK}انقل الذكاء الاصطناعي المختار للاسفل
 
+STR_AI_CONFIG_GAMESCRIPT                                        :{SILVER}نص برمجي للعبة
+STR_AI_CONFIG_GAMESCRIPT_PARAM                                  :{SILVER}الحدود
 STR_AI_CONFIG_AI                                                :{SILVER} الذكاء الاصطناعي
 
-STR_AI_CONFIG_CHANGE_AI                                         :الذكاء الاصطناعي
-STR_AI_CONFIG_CHANGE_GAMESCRIPT                                 :مخطوط اللعبة
-STR_AI_CONFIG_CHANGE_TOOLTIP                                    :{BLACK}تحميل نص برمجي آخر
+STR_AI_CONFIG_CHANGE_AI                                         :{BLACK}اختيار الذكاء الاصطناعي
+STR_AI_CONFIG_CHANGE_GAMESCRIPT                                 :{BLACK} اختيار نص برمجي للعبة
+STR_AI_CONFIG_CHANGE_TOOLTIP                                    :{BLACK}تحميل نص برمجي آخر. Ctrl+Click لإظهار جميع الإصدارات المتوفرة
 STR_AI_CONFIG_CONFIGURE                                         :{BLACK} اعداد
 STR_AI_CONFIG_CONFIGURE_TOOLTIP                                 :{BLACK} اعداد خواص الذكاء الصناعي
 

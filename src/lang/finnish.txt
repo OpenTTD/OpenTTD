@@ -2842,7 +2842,7 @@ STR_BUILD_SIGNAL_ELECTRIC_EXIT_TOOLTIP                          :{BLACK}Poistumi
 STR_BUILD_SIGNAL_ELECTRIC_COMBO_TOOLTIP                         :{BLACK}Yhdistelmäopastin (valo-opastin){}Yhdistelmäopastin toimii yhtä aikaa tulo- ja poistumisopastimena. Tämän avulla on mahdollista luoda suuria ”opastinpuita”
 STR_BUILD_SIGNAL_ELECTRIC_PBS_TOOLTIP                           :{BLACK}Reittiopastin (valo-opastin){}Reittiopastin varmistaa junille turvallisen reitin ja siten mahdollistaa useampien junien yhtäaikaisen liikenteen moniraiteisissa risteyksissä. Tavalliset reittiopastimet voi ohittaa takakautta
 STR_BUILD_SIGNAL_ELECTRIC_PBS_OWAY_TOOLTIP                      :{BLACK}Yksisuuntainen reittiopastin (valo-opastin){}Reittiopastin varmistaa junille turvallisen reitin ja siten mahdollistaa useampien junien yhtäaikaisen liikenteen moniraiteisissa risteyksissä. Yksisuuntaisia opastimia ei voi ohittaa takakautta
-STR_BUILD_SIGNAL_CONVERT_TOOLTIP                                :{BLACK}Opastinten muuntaminen{}Kun tämä on valittu, olemassaolevan opastimen napsauttaminen muuntaa sen valituntyyppiseksi ja -muotoiseksi. Ctrl+napsautus vaihtaa nykyistä opastimen muotoa. Vaihto+napsautus näyttää muuntamisen kustannusarvion.
+STR_BUILD_SIGNAL_CONVERT_TOOLTIP                                :{BLACK}Opastinten muuntaminen{}Kun tämä on valittu, olemassa olevan opastimen napsauttaminen muuntaa sen valituntyyppiseksi ja -muotoiseksi. Ctrl+napsautus vaihtaa nykyistä opastimen muotoa. Vaihto+napsautus näyttää muuntamisen kustannusarvion
 STR_BUILD_SIGNAL_DRAG_SIGNALS_DENSITY_TOOLTIP                   :{BLACK}Opastimien väli vetämällä lisättäessä
 STR_BUILD_SIGNAL_DRAG_SIGNALS_DENSITY_DECREASE_TOOLTIP          :{BLACK}Pienennä opastimien väliä vetämällä lisättäessä
 STR_BUILD_SIGNAL_DRAG_SIGNALS_DENSITY_INCREASE_TOOLTIP          :{BLACK}Suurenna opastimien väliä vetämällä lisättäessä
@@ -3067,7 +3067,7 @@ STR_INDUSTRY_CARGOES_SELECT_INDUSTRY_TOOLTIP                    :{BLACK}Valitse 
 
 # Land area window
 STR_LAND_AREA_INFORMATION_CAPTION                               :{WHITE}Maa-aluetiedot
-STR_LAND_AREA_INFORMATION_LOCATION_TOOLTIP                      :{BLACK}Keskitä päänäkymä ruudun sijaintiin. Ctrl+napsautus avaa uuden näkymäikkunan ruudun sijaintiin.
+STR_LAND_AREA_INFORMATION_LOCATION_TOOLTIP                      :{BLACK}Keskitä päänäkymä ruudun sijaintiin. Ctrl+napsautus avaa uuden näkymäikkunan ruudun sijaintiin
 STR_LAND_AREA_INFORMATION_COST_TO_CLEAR_N_A                     :{BLACK}Raivaamisen hinta: {LTBLUE}-
 STR_LAND_AREA_INFORMATION_COST_TO_CLEAR                         :{BLACK}Raivaamisen hinta: {RED}{CURRENCY_LONG}
 STR_LAND_AREA_INFORMATION_REVENUE_WHEN_CLEARED                  :{BLACK}Tulo kun tyhjennetty: {LTBLUE}{CURRENCY_LONG}
@@ -3747,6 +3747,8 @@ STR_STATION_LIST_SELECT_ALL_FACILITIES                          :{BLACK}Valitse 
 STR_STATION_LIST_CARGO_FILTER_ALL_AND_NO_RATING                 :Kaikki rahtityypit, ei arviota
 STR_STATION_LIST_CARGO_FILTER_MULTIPLE                          :Useita rahtityyppejä
 STR_STATION_LIST_CARGO_FILTER_NO_CARGO_TYPES                    :Ei rahtityyppejä
+STR_STATION_LIST_CARGO_FILTER_ONLY_NO_RATING                    :Vain ilman rahtiarviointia
+STR_STATION_LIST_CARGO_FILTER_SELECT_ALL                        :Valitse kaikki ja ilman arviointia
 STR_STATION_LIST_CARGO_FILTER_NO_RATING                         :Ei rahtiluokitusta
 STR_STATION_LIST_CARGO_FILTER_EXPAND                            :Näytä lisää...
 

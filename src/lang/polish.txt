@@ -803,9 +803,9 @@ STR_SCENEDIT_TOOLBAR_TOWN_GENERATION                            :{BLACK}Budowani
 STR_SCENEDIT_TOOLBAR_INDUSTRY_GENERATION                        :{BLACK}Budowanie lub generowanie przedsiębiorstw
 STR_SCENEDIT_TOOLBAR_ROAD_CONSTRUCTION                          :{BLACK}Budowa infrastruktury drogowej
 STR_SCENEDIT_TOOLBAR_TRAM_CONSTRUCTION                          :{BLACK}Budowanie infrastruktury tramwajowej
-STR_SCENEDIT_TOOLBAR_PLANT_TREES                                :{BLACK}Posadź drzewa. Ctrl zaznacza teren po przekątnej. Shift przełącza pomiędzy trybem sadzenia a szacowaniem jego kosztów
+STR_SCENEDIT_TOOLBAR_PLANT_TREES                                :{BLACK}Posadź drzewa. Przeciągnij z użyciem Ctrl, aby zaznaczyć obszar po przekątnej. Użyj Shift, aby tylko wyświetlić szacunkowy koszt
 STR_SCENEDIT_TOOLBAR_PLACE_SIGN                                 :{BLACK}Umieść napis
-STR_SCENEDIT_TOOLBAR_PLACE_OBJECT                               :{BLACK}Umieść obiekt. Ctrl zaznacza obszar po przekątnej. Shift przełącza pomiędzy trybem budowania a szacowaniem jego kosztów
+STR_SCENEDIT_TOOLBAR_PLACE_OBJECT                               :{BLACK}Umieść obiekt. Przeciągnij z użyciem Ctrl, aby zaznaczyć obszar po przekątnej. Użyj Shift, aby tylko wyświetlić szacunkowy koszt
 
 # Scenario editor file menu
 ###length 7
@@ -1763,7 +1763,7 @@ STR_CONFIG_SETTING_RAW_INDUSTRY_CONSTRUCTION_METHOD_NORMAL      :Jak inne przeds
 STR_CONFIG_SETTING_RAW_INDUSTRY_CONSTRUCTION_METHOD_PROSPECTING :Poszukiwania
 
 STR_CONFIG_SETTING_INDUSTRY_PLATFORM                            :Płaska przestrzeń wokół przedsiębiorstw: {STRING}
-STR_CONFIG_SETTING_INDUSTRY_PLATFORM_HELPTEXT                   :Ilość płaskiej przestrzeni wokół zakładu. To zapewnia puste miejsce dostępne przy zakładach do budowy torów itp.
+STR_CONFIG_SETTING_INDUSTRY_PLATFORM_HELPTEXT                   :Ilość płaskiej przestrzeni wokół przedsiębiorstwa. Zapewnia to pustą przestrzeń wokół przedsiębiorstwa na budowę torów itp.
 
 STR_CONFIG_SETTING_MULTIPINDTOWN                                :Pozwól na wiele podobnych przedsiębiorstw w mieście: {STRING}
 STR_CONFIG_SETTING_MULTIPINDTOWN_HELPTEXT                       :Normalnie żadne miasto nie chce mieć więcej niż jednego przedsiębiorstwa danego typu. Ta opcja pozwala na funkcjonowanie kilku takich samych przedsiębiorstw przy jednym mieście
@@ -2303,7 +2303,7 @@ STR_CONFIG_SETTING_DRAG_SIGNALS_DENSITY                         :Podczas przeci�
 STR_CONFIG_SETTING_DRAG_SIGNALS_DENSITY_HELPTEXT                :Ustaw dystans, na jakim semafory będą budowane przy torach aż do następnej przeszkody (semafor, zwrotnica), przy przeciąganiu
 STR_CONFIG_SETTING_DRAG_SIGNALS_DENSITY_VALUE                   :{COMMA} p{P ole ola ól}
 STR_CONFIG_SETTING_DRAG_SIGNALS_FIXED_DISTANCE                  :Zachowaj stały odstęp między semaforami przy przeciąganiu: {STRING}
-STR_CONFIG_SETTING_DRAG_SIGNALS_FIXED_DISTANCE_HELPTEXT         :Wybierz sposób rozmieszczania sygnalizacji podczas przeciągania. Kiedy wyłączone, sygnały są stawiane przy tunelach lub mostach, by nie zostawiać długich odcinków bez sygnałów. Kiedy włączone, sygnały są umieszczane co X pól, sprawiając że stawianie sygnalizacji na równoległych torach jest łatwiejsze
+STR_CONFIG_SETTING_DRAG_SIGNALS_FIXED_DISTANCE_HELPTEXT         :Wybierz sposób rozmieszczania sygnalizacji podczas przeciągania z użyciem Ctrl. Kiedy wyłączone, sygnały są stawiane przy tunelach i mostach, by nie zostawiać długich odcinków bez sygnałów. Kiedy włączone, sygnały są umieszczane co X pól, sprawiając że stawianie sygnalizacji na równoległych torach jest łatwiejsze
 
 STR_CONFIG_SETTING_SEMAPHORE_BUILD_BEFORE_DATE                  :Automatycznie buduj semafory przed: {STRING}
 STR_CONFIG_SETTING_SEMAPHORE_BUILD_BEFORE_DATE_HELPTEXT         :Ustaw rok, w którym semafory świetlne będą używane. Przed tym rokiem w użyciu będą semafory kształtowe (które mają te same właściwości, tylko inny wygląd)
@@ -2351,7 +2351,7 @@ STR_CONFIG_SETTING_TOWN_CARGOGENMODE_ORIGINAL                   :Kwadratowy (ori
 STR_CONFIG_SETTING_TOWN_CARGOGENMODE_BITCOUNT                   :Liniowy
 
 STR_CONFIG_SETTING_EXTRA_TREE_PLACEMENT                         :Rozmieszczenie drzew w grze: {STRING}
-STR_CONFIG_SETTING_EXTRA_TREE_PLACEMENT_HELPTEXT                :Losowe pojawianie się drzew podczas gry. Może mieć to wpływ na zakłady opierające się na wyrastaniu drzew, np. tartaki
+STR_CONFIG_SETTING_EXTRA_TREE_PLACEMENT_HELPTEXT                :Losowe pojawianie się drzew podczas gry. Może mieć to wpływ na przedsiębiorstwa opierające się na wyrastaniu drzew, np. tartaki
 ###length 4
 STR_CONFIG_SETTING_EXTRA_TREE_PLACEMENT_NO_SPREAD               :Rosną, ale nie rozprzestrzeniają się {RED}(Klimat tropikalny: Tartaki nie działają)
 STR_CONFIG_SETTING_EXTRA_TREE_PLACEMENT_SPREAD_RAINFOREST       :Rosną, ale rozprzestrzeniają się tylko w lasach deszczowych
@@ -2785,7 +2785,7 @@ STR_NETWORK_SERVER_LIST_SERVER_TOO_OLD                          :{SILVER}ZBYT ST
 STR_NETWORK_SERVER_LIST_VERSION_MISMATCH                        :{SILVER}NIEZGODNA WERSJA
 STR_NETWORK_SERVER_LIST_GRF_MISMATCH                            :{SILVER}NIEZGODNE NEWGRF
 
-STR_NETWORK_SERVER_LIST_JOIN_GAME                               :{BLACK}Przyłącz się do gry
+STR_NETWORK_SERVER_LIST_JOIN_GAME                               :{BLACK}Dołącz do gry
 STR_NETWORK_SERVER_LIST_REFRESH                                 :{BLACK}Odśwież serwer
 STR_NETWORK_SERVER_LIST_REFRESH_TOOLTIP                         :{BLACK}Odśwież informacje o serwerze
 
@@ -2823,7 +2823,7 @@ STR_NETWORK_START_SERVER_NEW_GAME_NAME_OSKTITLE                 :{BLACK}Wpisz na
 # Network connecting window
 STR_NETWORK_CONNECTING_CAPTION                                  :{WHITE}Łączenie...
 
-STR_NETWORK_CONNECTING_WAITING                                  :{BLACK}{NUM} klient{P "" ów ów} chce się przyłączyć
+STR_NETWORK_CONNECTING_WAITING                                  :{BLACK}{NUM} klient{P "" ów ów} przed tobą
 STR_NETWORK_CONNECTING_DOWNLOADING_1                            :{BLACK}Dotychczas pobrano {BYTES}
 STR_NETWORK_CONNECTING_DOWNLOADING_2                            :{BLACK}{BYTES} / {BYTES} dotąd pobranych
 
@@ -3163,16 +3163,16 @@ STR_RAIL_TOOLBAR_ELRAIL_CONSTRUCTION_CAPTION                    :Konstrukcja lin
 STR_RAIL_TOOLBAR_MONORAIL_CONSTRUCTION_CAPTION                  :Konstrukcja linii jednoszynowej
 STR_RAIL_TOOLBAR_MAGLEV_CONSTRUCTION_CAPTION                    :Konstrukcja linii Maglev
 
-STR_RAIL_TOOLBAR_TOOLTIP_BUILD_RAILROAD_TRACK                   :{BLACK}Budowa torów kolejowych. Ctrl przełącza buduj/usuń dla konstrukcji kolejowych. Shift przełącza pomiędzy trybem budowania a szacowaniem jego kosztów
-STR_RAIL_TOOLBAR_TOOLTIP_BUILD_AUTORAIL                         :{BLACK}Zbuduj tory kolejowe za pomocą trybu Autotory. Ctrl przełącza buduj/usuń dla konstrukcji kolejowych. Shift przełącza pomiędzy trybem budowania a szacowaniem jego kosztów
-STR_RAIL_TOOLBAR_TOOLTIP_BUILD_TRAIN_DEPOT_FOR_BUILDING         :{BLACK}Budowa warsztatów (do kupowania i serwisowania pociągów). Shift przełącza pomiędzy trybem budowania a szacowaniem jego kosztów
-STR_RAIL_TOOLBAR_TOOLTIP_CONVERT_RAIL_TO_WAYPOINT               :{BLACK}Zbuduj posterunek na torach. Ctrl umożliwia łączenie posterunków. Shift przełącza pomiędzy trybem budowania a szacowaniem jego kosztów
-STR_RAIL_TOOLBAR_TOOLTIP_BUILD_RAILROAD_STATION                 :{BLACK}Zbuduj stację kolejową. Ctrl umożliwia łączenie stacji. Shift przełącza pomiędzy trybem budowania a szacowaniem jego kosztów
-STR_RAIL_TOOLBAR_TOOLTIP_BUILD_RAILROAD_SIGNALS                 :{BLACK}Zbuduj sygnały na torach. Ctrl przełącza semafory/sygnały świetlne{}Przeciąganie buduje sygnały wzdłuż prostej linii torów, z Ctrl buduje sygnały aż do najbliższego skrzyżowania lub sygnału{}Ctrl+klik przełącza wyświetlanie okna wyboru sygnałów. Shift przełącza pomiędzy budowaniem a szacowaniem jego kosztów
-STR_RAIL_TOOLBAR_TOOLTIP_BUILD_RAILROAD_BRIDGE                  :{BLACK}Zbuduj most kolejowy. Shift przełącza pomiędzy trybem budowania a szacowaniem jego kosztów
-STR_RAIL_TOOLBAR_TOOLTIP_BUILD_RAILROAD_TUNNEL                  :{BLACK}Zbuduj tunel kolejowy. Shift przełącza pomiędzy trybem budowania a szacowaniem jego kosztów
+STR_RAIL_TOOLBAR_TOOLTIP_BUILD_RAILROAD_TRACK                   :{BLACK}Zbuduj tory kolejowe. Użyj Ctrl, aby usunąć tory. Użyj Shift, aby tylko wyświetlić szacunkowy koszt
+STR_RAIL_TOOLBAR_TOOLTIP_BUILD_AUTORAIL                         :{BLACK}Zbuduj tory kolejowe za pomocą trybu Autotory. Użyj Ctrl, aby usunąć tory. Użyj Shift, aby tylko wyświetlić szacunkowy koszt
+STR_RAIL_TOOLBAR_TOOLTIP_BUILD_TRAIN_DEPOT_FOR_BUILDING         :{BLACK}Zbuduj warsztaty (do kupowania i serwisowania pociągów). Użyj Shift, aby tylko wyświetlić szacunkowy koszt
+STR_RAIL_TOOLBAR_TOOLTIP_CONVERT_RAIL_TO_WAYPOINT               :{BLACK}Zbuduj posterunek na linii kolejowej. Użyj Ctrl, aby połączyć z innym posterunkiem. Użyj Shift, aby tylko wyświetlić szacunkowy koszt
+STR_RAIL_TOOLBAR_TOOLTIP_BUILD_RAILROAD_STATION                 :{BLACK}Zbuduj stację kolejową. Użyj Ctrl, aby połączyć z inną stacją. Użyj Shift, aby tylko wyświetlić szacunkowy koszt
+STR_RAIL_TOOLBAR_TOOLTIP_BUILD_RAILROAD_SIGNALS                 :{BLACK}Zbuduj sygnały na torach. Kliknij z użyciem Ctrl, aby zbudować alternatywną wersję sygnałów{}Przeciągnij, aby zbudować sygnały w zaznaczonym fragmencie w ustalonych odstępach. Przeciągnij z użyciem Ctrl, aby zbudować sygnały aż do najbliższego skrzyżowania, stacji lub sygnału. Użyj Shift, aby tylko wyświetlić szacunkowy koszt
+STR_RAIL_TOOLBAR_TOOLTIP_BUILD_RAILROAD_BRIDGE                  :{BLACK}Zbuduj most kolejowy. Użyj Shift, aby tylko wyświetlić szacunkowy koszt
+STR_RAIL_TOOLBAR_TOOLTIP_BUILD_RAILROAD_TUNNEL                  :{BLACK}Zbuduj tunel kolejowy. Użyj Shift, aby tylko wyświetlić szacunkowy koszt
 STR_RAIL_TOOLBAR_TOOLTIP_TOGGLE_BUILD_REMOVE_FOR                :{BLACK}Przełącz budowanie/usuwanie torów kolejowych, sygnałów, posterunków i stacji. Ctrl+klik usuwa także tory kolejowe z posterunków i stacji
-STR_RAIL_TOOLBAR_TOOLTIP_CONVERT_RAIL                           :{BLACK}Zamiana typu torów. Shift przełącza pomiędzy trybem budowania a szacowaniem jego kosztów
+STR_RAIL_TOOLBAR_TOOLTIP_CONVERT_RAIL                           :{BLACK}Zmień typ torów. Użyj Shift, aby tylko wyświetlić szacunkowy koszt
 
 STR_RAIL_NAME_RAILROAD                                          :Kolej
 STR_RAIL_NAME_ELRAIL                                            :Kolej elektryczna
@@ -3248,25 +3248,25 @@ STR_BRIDGE_TUBULAR_SILICON                                      :Cylindryczny, k
 # Road construction toolbar
 STR_ROAD_TOOLBAR_ROAD_CONSTRUCTION_CAPTION                      :{WHITE}Budowa dróg
 STR_ROAD_TOOLBAR_TRAM_CONSTRUCTION_CAPTION                      :{WHITE}Budowa linii tramwajowej
-STR_ROAD_TOOLBAR_TOOLTIP_BUILD_ROAD_SECTION                     :{BLACK}Zbuduj drogę. Ctrl przełącza buduj/usuń dla konstrukcji drogowych. Shift przełącza pomiędzy trybem budowania a szacowaniem jego kosztów
-STR_ROAD_TOOLBAR_TOOLTIP_BUILD_TRAMWAY_SECTION                  :{BLACK}Zbuduj tory tramwajowe. Ctrl przełącza buduj/usuń dla konstrukcji tramwajowych. Shift przełącza pomiędzy trybem budowania a szacowaniem jego kosztów
-STR_ROAD_TOOLBAR_TOOLTIP_BUILD_AUTOROAD                         :{BLACK}Zbuduj drogę używając trybu Autoroad. Ctrl przełącza buduj/usuń dla konstrukcji drogowych. Shift przełącza pomiędzy trybem budowania a szacowaniem jego kosztów
-STR_ROAD_TOOLBAR_TOOLTIP_BUILD_AUTOTRAM                         :{BLACK}Zbuduj tory tramwajowe używając trybu Autotram. Ctrl przełącza buduj/usuń dla konstrukcji tramwajowych. Shift przełącza pomiędzy trybem budowania a szacowaniem jego kosztów
-STR_ROAD_TOOLBAR_TOOLTIP_BUILD_ROAD_VEHICLE_DEPOT               :{BLACK}Wybuduj zajezdnię samochodową (do kupowania i serwisowania pojazdów). Shift przełącza pomiędzy trybem budowania a szacowaniem jego kosztów
-STR_ROAD_TOOLBAR_TOOLTIP_BUILD_TRAM_VEHICLE_DEPOT               :{BLACK}Wybuduj zajezdnię tramwajową (do kupowania i serwisowania pojazdów). Shift przełącza pomiędzy trybem budowania a szacowaniem jego kosztów
-STR_ROAD_TOOLBAR_TOOLTIP_BUILD_BUS_STATION                      :{BLACK}Zbuduj przystanek autobusowy. Ctrl umożliwia łączenie stacji. Shift przełącza pomiędzy trybem budowania a szacowaniem jego kosztów
-STR_ROAD_TOOLBAR_TOOLTIP_BUILD_PASSENGER_TRAM_STATION           :{BLACK}Zbuduj pasażerski przystanek tramwajowy. Ctrl umożliwia łączenie stacji. Shift przełącza pomiędzy trybem budowania a szacowaniem jego kosztów
-STR_ROAD_TOOLBAR_TOOLTIP_BUILD_TRUCK_LOADING_BAY                :{BLACK}Zbuduj stację ciężarówek. Ctrl umożliwia łączenie stacji. Shift przełącza pomiędzy trybem budowania a szacowaniem jego kosztów
-STR_ROAD_TOOLBAR_TOOLTIP_BUILD_CARGO_TRAM_STATION               :{BLACK}Zbuduj tramwajową stację załadunkową. Ctrl umożliwia łączenie stacji. Shift przełącza pomiędzy trybem budowania a szacowaniem jego kosztów
+STR_ROAD_TOOLBAR_TOOLTIP_BUILD_ROAD_SECTION                     :{BLACK}Zbuduj drogę. Użyj Ctrl, aby usunąć fragment drogi. Użyj Shift, aby tylko wyświetlić szacunkowy koszt
+STR_ROAD_TOOLBAR_TOOLTIP_BUILD_TRAMWAY_SECTION                  :{BLACK}Zbuduj tory tramwajowe. Użyj Ctrl, aby usunąć fragment torów. Użyj Shift, aby tylko wyświetlić szacunkowy koszt
+STR_ROAD_TOOLBAR_TOOLTIP_BUILD_AUTOROAD                         :{BLACK}Zbuduj drogę za pomocą trybu Autodroga. Użyj Ctrl, aby usunąć fragment drogi. Użyj Shift, aby tylko wyświetlić szacunkowy koszt
+STR_ROAD_TOOLBAR_TOOLTIP_BUILD_AUTOTRAM                         :{BLACK}Zbuduj tory tramwajowe używając trybu Autotory. Użyj Ctrl, aby usunąć fragment torów. Użyj Shift, aby tylko wyświetlić szacunkowy koszt
+STR_ROAD_TOOLBAR_TOOLTIP_BUILD_ROAD_VEHICLE_DEPOT               :{BLACK}Zbuduj zajezdnię samochodową (do kupowania i serwisowania pojazdów). Użyj Shift, aby tylko wyświetlić szacunkowy koszt
+STR_ROAD_TOOLBAR_TOOLTIP_BUILD_TRAM_VEHICLE_DEPOT               :{BLACK}Zbuduj zajezdnię tramwajową (do kupowania i serwisowania pojazdów). Użyj Shift, aby tylko wyświetlić szacunkowy koszt
+STR_ROAD_TOOLBAR_TOOLTIP_BUILD_BUS_STATION                      :{BLACK}Zbuduj przystanek autobusowy. Użyj Ctrl, aby połączyć z inną stacją. Użyj Shift, aby tylko wyświetlić szacunkowy koszt
+STR_ROAD_TOOLBAR_TOOLTIP_BUILD_PASSENGER_TRAM_STATION           :{BLACK}Zbuduj pasażerski przystanek tramwajowy. Użyj Ctrl, aby połączyć z inną stacją. Użyj Shift, aby tylko wyświetlić szacunkowy koszt
+STR_ROAD_TOOLBAR_TOOLTIP_BUILD_TRUCK_LOADING_BAY                :{BLACK}Zbuduj stację ciężarówek. Użyj Ctrl, aby połączyć z inną stacją. Użyj Shift, aby tylko wyświetlić szacunkowy koszt
+STR_ROAD_TOOLBAR_TOOLTIP_BUILD_CARGO_TRAM_STATION               :{BLACK}Zbuduj tramwajową stację załadunkową. Użyj Ctrl, aby połączyć z inną stacją. Użyj Shift, aby tylko wyświetlić szacunkowy koszt
 STR_ROAD_TOOLBAR_TOOLTIP_TOGGLE_ONE_WAY_ROAD                    :{BLACK}Włącz/wyłącz drogi jednokierunkowe
-STR_ROAD_TOOLBAR_TOOLTIP_BUILD_ROAD_BRIDGE                      :{BLACK}Zbuduj most drogowy. Shift przełącza pomiędzy trybem budowania a szacowaniem jego kosztów
-STR_ROAD_TOOLBAR_TOOLTIP_BUILD_TRAMWAY_BRIDGE                   :{BLACK}Zbuduj most tramwajowy. Shift przełącza pomiędzy trybem budowania a szacowaniem jego kosztów
-STR_ROAD_TOOLBAR_TOOLTIP_BUILD_ROAD_TUNNEL                      :{BLACK}Zbuduj tunel drogowy. Shift przełącza pomiędzy trybem budowania a szacowaniem jego kosztów
-STR_ROAD_TOOLBAR_TOOLTIP_BUILD_TRAMWAY_TUNNEL                   :{BLACK}Zbuduj tunel tramwajowy. Shift przełącza pomiędzy trybem budowania a szacowaniem jego kosztów
+STR_ROAD_TOOLBAR_TOOLTIP_BUILD_ROAD_BRIDGE                      :{BLACK}Zbuduj most drogowy. Użyj Shift, aby tylko wyświetlić szacunkowy koszt
+STR_ROAD_TOOLBAR_TOOLTIP_BUILD_TRAMWAY_BRIDGE                   :{BLACK}Zbuduj most tramwajowy. Użyj Shift, aby tylko wyświetlić szacunkowy koszt
+STR_ROAD_TOOLBAR_TOOLTIP_BUILD_ROAD_TUNNEL                      :{BLACK}Zbuduj tunel drogowy. Użyj Shift, aby tylko wyświetlić szacunkowy koszt
+STR_ROAD_TOOLBAR_TOOLTIP_BUILD_TRAMWAY_TUNNEL                   :{BLACK}Zbuduj tunel tramwajowy. Użyj Shift, aby tylko wyświetlić szacunkowy koszt
 STR_ROAD_TOOLBAR_TOOLTIP_TOGGLE_BUILD_REMOVE_FOR_ROAD           :{BLACK}Przełącz buduj/usuń dla konstrukcji dróg
 STR_ROAD_TOOLBAR_TOOLTIP_TOGGLE_BUILD_REMOVE_FOR_TRAMWAYS       :{BLACK}Przełącz buduj/usuń dla konstrukcji tramwajowej
-STR_ROAD_TOOLBAR_TOOLTIP_CONVERT_ROAD                           :{BLACK}Zamiana typu dróg. Shift przełącza pomiędzy trybem budowania a szacowaniem jego kosztów
-STR_ROAD_TOOLBAR_TOOLTIP_CONVERT_TRAM                           :{BLACK}Zamiana typu torów tramwajowych. Shift przełącza pomiędzy trybem budowania a szacowaniem jego kosztów
+STR_ROAD_TOOLBAR_TOOLTIP_CONVERT_ROAD                           :{BLACK}Zmień typ drogi. Użyj Shift, aby tylko wyświetlić szacunkowy koszt
+STR_ROAD_TOOLBAR_TOOLTIP_CONVERT_TRAM                           :{BLACK}Zmień typ torów tramwajowych. Użyj Shift, aby tylko wyświetlić szacunkowy koszt
 
 STR_ROAD_NAME_ROAD                                              :Droga
 STR_ROAD_NAME_TRAM                                              :Tory tramwajowe
@@ -3335,10 +3335,10 @@ STR_STATION_BUILD_NOISE                                         :{BLACK}Wytwarza
 
 # Landscaping toolbar
 STR_LANDSCAPING_TOOLBAR                                         :{WHITE}Kształtowanie krajobrazu
-STR_LANDSCAPING_TOOLTIP_LOWER_A_CORNER_OF_LAND                  :{BLACK}Obniżenie narożnika terenu. Przeciągnięcie obniża pierwszy zaznaczony róg i wyrównuje zaznaczony obszar do nowej wysokości rogu. Ctrl zaznacza obszar po przekątnej. Shift przełącza pomiędzy trybem budowania a szacowaniem jego kosztów
-STR_LANDSCAPING_TOOLTIP_RAISE_A_CORNER_OF_LAND                  :{BLACK}Podwyższenie narożnika terenu. Przeciągnięcie podnosi pierwszy zaznaczony róg i wyrównuje zaznaczony obszar do nowej wysokości rogu. Ctrl zaznacza obszar po przekątnej. Shift przełącza pomiędzy trybem budowania a szacowaniem jego kosztów
-STR_LANDSCAPING_LEVEL_LAND_TOOLTIP                              :{BLACK}Wyrównaj teren do wysykości pierwszego zaznaczonego rogu. Ctrl zaznacza teren po przekątnej. Shift przełącza pomiędzy trybem budowania a szacowaniem jego kosztów
-STR_LANDSCAPING_TOOLTIP_PURCHASE_LAND                           :{BLACK}Zakup teren do przyszłego użycia. Ctrl zaznacza obszar po przekątnej. Shift przełącza pomiędzy trybem kupowania a szacowaniem jego kosztów
+STR_LANDSCAPING_TOOLTIP_LOWER_A_CORNER_OF_LAND                  :{BLACK}Obniż narożnik terenu. Przeciągnij, aby obniżyć pierwszy zaznaczony narożnik oraz wyrównać zaznaczony obszar do nowej wysokości narożnika. Przeciągnij z użyciem Ctrl, aby zaznaczyć obszar po przekątnej. Użyj Shift, aby tylko wyświetlić szacunkowy koszt
+STR_LANDSCAPING_TOOLTIP_RAISE_A_CORNER_OF_LAND                  :{BLACK}Podwyższ narożnik terenu. Przeciągnij, aby podwyższyć pierwszy zaznaczony narożnik oraz wyrównać zaznaczony obszar do nowej wysokości narożnika. Przeciągnij z użyciem Ctrl, aby zaznaczyć obszar po przekątnej. Użyj Shift, aby tylko wyświetlić szacunkowy koszt
+STR_LANDSCAPING_LEVEL_LAND_TOOLTIP                              :{BLACK}Wyrównaj teren do wysokości pierwszego zaznaczonego rogu. Przeciągnij z użyciem Ctrl, aby zaznaczyć obszar po przekątnej. Użyj Shift, aby tylko wyświetlić szacunkowy koszt
+STR_LANDSCAPING_TOOLTIP_PURCHASE_LAND                           :{BLACK}Zakup teren do przyszłego użycia. Przeciągnij z użyciem Ctrl, aby zaznaczyć obszar po przekątnej. Użyj Shift, aby tylko wyświetlić szacunkowy koszt
 
 # Object construction window
 STR_OBJECT_BUILD_CAPTION                                        :{WHITE}Wybór obiektu
@@ -3354,7 +3354,7 @@ STR_OBJECT_CLASS_TRNS                                           :Nadajniki
 STR_PLANT_TREE_CAPTION                                          :{WHITE}Drzewa
 STR_PLANT_TREE_TOOLTIP                                          :{BLACK}Wybierz typ drzew do sadzenia. Jeśli na wybranym miejscu są już drzewa, to dodasz więcej drzew różnego typu, bez względu na wybraną opcję.
 STR_TREES_RANDOM_TYPE                                           :{BLACK}Drzewa różnych rodzajów
-STR_TREES_RANDOM_TYPE_TOOLTIP                                   :{BLACK}Sadzenie drzew różnych rodzajów. Ctrl zaznacza teren po przekątnej. Shift przełącza pomiędzy trybem sadzenia a szacowaniem jego kosztów
+STR_TREES_RANDOM_TYPE_TOOLTIP                                   :{BLACK}Posadź drzewa różnego rodzaju. Przeciągnij z użyciem Ctrl, aby zaznaczyć obszar po przekątnej. Użyj Shift, aby tylko wyświetlić szacunkowy koszt
 STR_TREES_RANDOM_TREES_BUTTON                                   :{BLACK}Losowe drzewa
 STR_TREES_RANDOM_TREES_TOOLTIP                                  :{BLACK}Pokryj losowo krajobraz drzewami
 STR_TREES_MODE_NORMAL_BUTTON                                    :{BLACK}Normalny
@@ -3367,7 +3367,7 @@ STR_TREES_MODE_FOREST_LG_TOOLTIP                                :Sadź duże las
 # Land generation window (SE)
 STR_TERRAFORM_TOOLBAR_LAND_GENERATION_CAPTION                   :{WHITE}Tworzenie terenu
 STR_TERRAFORM_TOOLTIP_PLACE_ROCKY_AREAS_ON_LANDSCAPE            :{BLACK}Umieść kamieniste tereny
-STR_TERRAFORM_TOOLTIP_DEFINE_DESERT_AREA                        :{BLACK}Definiuj obszar pustyni.{}Wciśnij i trzymaj Ctrl, aby usunąć
+STR_TERRAFORM_TOOLTIP_DEFINE_DESERT_AREA                        :{BLACK}Wyznacz obszar pustyni.{}Użyj Ctrl, aby usunąć obszar pustyni
 STR_TERRAFORM_TOOLTIP_INCREASE_SIZE_OF_LAND_AREA                :{BLACK}Zwiększ powierzchnie do podwyższenia/obniżenia
 STR_TERRAFORM_TOOLTIP_DECREASE_SIZE_OF_LAND_AREA                :{BLACK}Zmniejsz powierzchnie do podwyższenia/obniżenia
 STR_TERRAFORM_TOOLTIP_GENERATE_RANDOM_LAND                      :{BLACK}Tworzenie przypadkowego lądu
@@ -3381,7 +3381,7 @@ STR_RESET_LANDSCAPE_CONFIRMATION_TEXT                           :{WHITE}Czy na p
 # Town generation window (SE)
 STR_FOUND_TOWN_CAPTION                                          :{WHITE}Tworzenie miast
 STR_FOUND_TOWN_NEW_TOWN_BUTTON                                  :{BLACK}Nowe miasto
-STR_FOUND_TOWN_NEW_TOWN_TOOLTIP                                 :{BLACK}Zbuduj nowe miasto. Shift+klik pokazuje szacunkowy koszt
+STR_FOUND_TOWN_NEW_TOWN_TOOLTIP                                 :{BLACK}Zbuduj nowe miasto. Użyj Shift, aby tylko wyświetlić szacunkowy koszt
 STR_FOUND_TOWN_RANDOM_TOWN_BUTTON                               :{BLACK}Losowe miasto
 STR_FOUND_TOWN_RANDOM_TOWN_TOOLTIP                              :{BLACK}Budowa miasta w losowym miejscu
 STR_FOUND_TOWN_MANY_RANDOM_TOWNS                                :{BLACK}Wiele losowych miast
@@ -3442,8 +3442,8 @@ STR_INDUSTRY_CARGOES_NOTIFY_SMALLMAP                            :{BLACK}Pokaż n
 STR_INDUSTRY_CARGOES_NOTIFY_SMALLMAP_TOOLTIP                    :{BLACK}Pokaż aktualnie wyświetlone przedsiębiorstwa na mapie
 STR_INDUSTRY_CARGOES_SELECT_CARGO                               :{BLACK}Wybierz ładunek
 STR_INDUSTRY_CARGOES_SELECT_CARGO_TOOLTIP                       :{BLACK}Wybierz ładunek, który chcesz wyświetlić
-STR_INDUSTRY_CARGOES_SELECT_INDUSTRY                            :{BLACK}Wybierz zakład
-STR_INDUSTRY_CARGOES_SELECT_INDUSTRY_TOOLTIP                    :{BLACK}Wybierz zakład, który chcesz wyświetlić
+STR_INDUSTRY_CARGOES_SELECT_INDUSTRY                            :{BLACK}Wybierz przedsiębiorstwo
+STR_INDUSTRY_CARGOES_SELECT_INDUSTRY_TOOLTIP                    :{BLACK}Wybierz przedsiębiorstwo, które chcesz wyświetlić
 
 # Land area window
 STR_LAND_AREA_INFORMATION_CAPTION                               :{WHITE}Informacja o terenie
@@ -4097,7 +4097,7 @@ STR_SUBSIDIES_OFFERED_FROM_TO                                   :{ORANGE}{STRING
 STR_SUBSIDIES_NONE                                              :{ORANGE}- Brak -
 STR_SUBSIDIES_SUBSIDISED_TITLE                                  :{BLACK}Usługi już dotowane:
 STR_SUBSIDIES_SUBSIDISED_FROM_TO                                :{ORANGE}{STRING} z {STRING} do {STRING}{YELLOW} ({COMPANY}{YELLOW}, {STRING})
-STR_SUBSIDIES_TOOLTIP_CLICK_ON_SERVICE_TO_CENTER                :{BLACK}Kliknij na usługę, aby wyśrodkować widok główny na przedsiębiorstwo/miasto. Ctrl+klik otwiera nowy podgląd na lokalizację przedsiębiorstwa/miasta
+STR_SUBSIDIES_TOOLTIP_CLICK_ON_SERVICE_TO_CENTER                :{BLACK}Kliknij na usługę, aby wyśrodkować widok główny na przedsiębiorstwo/miasto. Użyj Ctrl, aby otworzyć nowy podgląd na lokalizację przedsiębiorstwa/miasta
 STR_SUBSIDIES_OFFERED_EXPIRY_DATE                               :do {DATE_SHORT.d}
 STR_SUBSIDIES_OFFERED_EXPIRY_TIME                               :do {UNITS_MONTHS_OR_MINUTES}
 STR_SUBSIDIES_SUBSIDISED_EXPIRY_DATE                            :do {DATE_SHORT}
@@ -4117,8 +4117,8 @@ STR_STORY_BOOK_NEXT_PAGE_TOOLTIP                                :{BLACK}Idź na 
 STR_STORY_BOOK_INVALID_GOAL_REF                                 :{RED}Niepoprawne odniesienie do celu
 
 # Station list window
-STR_STATION_LIST_TOOLTIP                                        :{BLACK}Nazwy stacji - kliknij na nazwę stacji, aby wyśrodkować na niej widok główny. Ctrl+klik otwiera nowy podgląd na lokalizację stacji
-STR_STATION_LIST_USE_CTRL_TO_SELECT_MORE                        :{BLACK}Przytrzymaj Ctrl, aby zaznaczyć więcej niż jedną opcję
+STR_STATION_LIST_TOOLTIP                                        :{BLACK}Nazwy stacji - kliknij na nazwę, aby wyśrodkować na niej widok główny. Użyj Ctrl, aby otworzyć nowy podgląd na lokalizację stacji
+STR_STATION_LIST_USE_CTRL_TO_SELECT_MORE                        :{BLACK}Kliknij z użyciem Ctrl, aby zaznaczyć więcej niż jedną opcję
 STR_STATION_LIST_CAPTION                                        :{WHITE}{COMPANY} - {COMMA}
 STR_STATION_LIST_STATION                                        :{YELLOW}{STATION} {STATION_FEATURES}
 STR_STATION_LIST_WAYPOINT                                       :{YELLOW}{WAYPOINT}
@@ -4183,7 +4183,7 @@ STR_CARGO_RATING_VERY_GOOD                                      :Bardzo dobre
 STR_CARGO_RATING_EXCELLENT                                      :Wspaniałe
 STR_CARGO_RATING_OUTSTANDING                                    :Niezwykłe
 
-STR_STATION_VIEW_CENTER_TOOLTIP                                 :{BLACK}Wyśrodkuj widok główny na lokalizacji stacji. Ctrl+klik otwiera nowy podgląd na jej lokalizację
+STR_STATION_VIEW_CENTER_TOOLTIP                                 :{BLACK}Wyśrodkuj widok główny na lokalizacji stacji. Użyj Ctrl, aby otworzyć nowy podgląd na jej lokalizację
 STR_STATION_VIEW_RENAME_TOOLTIP                                 :{BLACK}Zmień nazwę stacji
 
 STR_STATION_VIEW_SCHEDULED_TRAINS_TOOLTIP                       :{BLACK}Pokaż wszystkie pociągi, które mają tę stację w swoim rozkładzie
@@ -4276,7 +4276,7 @@ STR_COMPANY_VIEW_BUILD_HQ_TOOLTIP                               :{BLACK}Zbuduj s
 STR_COMPANY_VIEW_VIEW_HQ_BUTTON                                 :{BLACK}Zobacz SG
 STR_COMPANY_VIEW_VIEW_HQ_TOOLTIP                                :{BLACK}Zobacz siedzibę firmy
 STR_COMPANY_VIEW_RELOCATE_HQ                                    :{BLACK}Przenieś SG
-STR_COMPANY_VIEW_RELOCATE_COMPANY_HEADQUARTERS                  :{BLACK}Zbuduj siedzibę główną w innym miejscu za cenę 1% wartości firmy. Shift+klik pokazuje szacunkowy koszt bez przenoszenia siedziby
+STR_COMPANY_VIEW_RELOCATE_COMPANY_HEADQUARTERS                  :{BLACK}Zbuduj siedzibę główną w innym miejscu za cenę 1% wartości firmy. Użyj Shift, aby tylko wyświetlić szacunkowy koszt
 STR_COMPANY_VIEW_INFRASTRUCTURE_BUTTON                          :{BLACK}Szczegóły
 STR_COMPANY_VIEW_INFRASTRUCTURE_TOOLTIP                         :{BLACK}Zobacz szczegółowe wartości infrastruktury
 STR_COMPANY_VIEW_GIVE_MONEY_BUTTON                              :{BLACK}Przekaż pieniądze
@@ -4495,16 +4495,16 @@ STR_BUY_VEHICLE_SHIP_BUY_REFIT_VEHICLE_BUTTON                   :{BLACK}Kup i pr
 STR_BUY_VEHICLE_AIRCRAFT_BUY_REFIT_VEHICLE_BUTTON               :{BLACK}Kup i przebuduj samolot
 
 ###length VEHICLE_TYPES
-STR_BUY_VEHICLE_TRAIN_BUY_VEHICLE_TOOLTIP                       :{BLACK}Kup zaznaczony pociąg. Shift+klik pokazuje szacunkowy koszt bez dokonania zakupu
-STR_BUY_VEHICLE_ROAD_VEHICLE_BUY_VEHICLE_TOOLTIP                :{BLACK}Kup zaznaczony pojazd drogowy. Shift+klik pokazuje szacunkowy koszt bez dokonania zakupu
-STR_BUY_VEHICLE_SHIP_BUY_VEHICLE_TOOLTIP                        :{BLACK}Kup zaznaczony statek. Shift+klik pokazuje szacunkowy koszt bez dokonania zakupu
-STR_BUY_VEHICLE_AIRCRAFT_BUY_VEHICLE_TOOLTIP                    :{BLACK}Kup zaznaczony samolot. Shift+klik pokazuje szacunkowy koszt bez dokonania zakupu
+STR_BUY_VEHICLE_TRAIN_BUY_VEHICLE_TOOLTIP                       :{BLACK}Kup zaznaczony pojazd kolejowy. Użyj Shift, aby tylko wyświetlić szacunkowy koszt
+STR_BUY_VEHICLE_ROAD_VEHICLE_BUY_VEHICLE_TOOLTIP                :{BLACK}Kup zaznaczony pojazd drogowy. Użyj Shift, aby tylko wyświetlić szacunkowy koszt
+STR_BUY_VEHICLE_SHIP_BUY_VEHICLE_TOOLTIP                        :{BLACK}Kup zaznaczony statek. Użyj Shift, aby tylko wyświetlić szacunkowy koszt
+STR_BUY_VEHICLE_AIRCRAFT_BUY_VEHICLE_TOOLTIP                    :{BLACK}Kup zaznaczony samolot. Użyj Shift, aby tylko wyświetlić szacunkowy koszt
 
 ###length VEHICLE_TYPES
-STR_BUY_VEHICLE_TRAIN_BUY_REFIT_VEHICLE_TOOLTIP                 :{BLACK}Kup i przebuduj zaznaczony pociąg. Shift+klik pokazuje szacunkowy koszt bez dokonania zakupu
-STR_BUY_VEHICLE_ROAD_VEHICLE_BUY_REFIT_VEHICLE_TOOLTIP          :{BLACK}Kup i przebuduj zaznaczony pojazd drogowy. Shift+klik pokazuje szacunkowy koszt bez dokonania zakupu
-STR_BUY_VEHICLE_SHIP_BUY_REFIT_VEHICLE_TOOLTIP                  :{BLACK}Kup i przebuduj zaznaczony statek. Shift+klik pokazuje szacunkowy koszt bez dokonania zakupu
-STR_BUY_VEHICLE_AIRCRAFT_BUY_REFIT_VEHICLE_TOOLTIP              :{BLACK}Kup i przebuduj zaznaczony samolot. Shift+klik pokazuje szacunkowy koszt bez dokonania zakupu
+STR_BUY_VEHICLE_TRAIN_BUY_REFIT_VEHICLE_TOOLTIP                 :{BLACK}Kup i przebuduj zaznaczony pojazd kolejowy. Użyj Shift, aby tylko wyświetlić szacunkowy koszt
+STR_BUY_VEHICLE_ROAD_VEHICLE_BUY_REFIT_VEHICLE_TOOLTIP          :{BLACK}Kup i przebuduj zaznaczony pojazd drogowy. Użyj Shift, aby tylko wyświetlić szacunkowy koszt
+STR_BUY_VEHICLE_SHIP_BUY_REFIT_VEHICLE_TOOLTIP                  :{BLACK}Kup i przebuduj zaznaczony statek. Użyj Shift, aby tylko wyświetlić szacunkowy koszt
+STR_BUY_VEHICLE_AIRCRAFT_BUY_REFIT_VEHICLE_TOOLTIP              :{BLACK}Kup i przebuduj zaznaczony samolot. Użyj Shift, aby tylko wyświetlić szacunkowy koszt
 
 ###length VEHICLE_TYPES
 STR_BUY_VEHICLE_TRAIN_RENAME_BUTTON                             :{BLACK}Zmień nazwę
@@ -4596,10 +4596,10 @@ STR_DEPOT_CLONE_SHIP                                            :{BLACK}Klonuj s
 STR_DEPOT_CLONE_AIRCRAFT                                        :{BLACK}Klonuj samolot
 
 ###length VEHICLE_TYPES
-STR_DEPOT_CLONE_TRAIN_DEPOT_INFO                                :{BLACK}Spowoduje zakup kopii pociągu wraz ze wszystkimi wagonami. Kliknij na przycisk, a następnie na pociąg wewnątrz lub na zewnątrz warsztatów. Ctrl+klik spowoduje współdzielenie poleceń. Shift+klik pokazuje szacunkowy koszt bez dokonania zakupu
-STR_DEPOT_CLONE_ROAD_VEHICLE_DEPOT_INFO                         :{BLACK}Spowoduje zakup kopii pojazdu drogowego. Kliknij na przycisk a następnie na pojazd wewnątrz lub na zewnątrz zajezdni. Ctrl+klik spowoduje współdzielenie poleceń. Shift+klik pokazuje szacunkowy koszt bez dokonania zakupu
-STR_DEPOT_CLONE_SHIP_DEPOT_INFO                                 :{BLACK}Spowoduje zakup kopii statku. Kliknij na przycisk a następnie na statek wewnątrz lub na zewnątrz stoczni. Ctrl+klik spowoduje współdzielenie poleceń. Shift+klik pokazuje szacunkowy koszt bez dokonania zakupu
-STR_DEPOT_CLONE_AIRCRAFT_INFO_HANGAR_WINDOW                     :{BLACK}Spowoduje zakup kopii samolotu. Kliknij na przycisk a następnie na samolot wewnątrz lub na zewnątrz hangaru. Ctrl+klik spowoduje współdzielenie poleceń. Shift+klik pokazuje szacunkowy koszt bez dokonania zakupu
+STR_DEPOT_CLONE_TRAIN_DEPOT_INFO                                :{BLACK}Kup kopię pociągu wraz ze wszystkimi wagonami. Kliknij na ten przycisk, a następnie na pociąg wewnątrz lub na zewnątrz warsztatów. Użyj Ctrl, aby współdzielić polecenia. Użyj Shift, aby tylko wyświetlić szacunkowy koszt
+STR_DEPOT_CLONE_ROAD_VEHICLE_DEPOT_INFO                         :{BLACK}Kup kopię pojazdu drogowego. Kliknij na ten przycisk, a następnie na pojazd wewnątrz lub na zewnątrz zajezdni. Użyj Ctrl, aby współdzielić polecenia. Użyj Shift, aby tylko wyświetlić szacunkowy koszt
+STR_DEPOT_CLONE_SHIP_DEPOT_INFO                                 :{BLACK}Kup kopię statku. Kliknij na ten przycisk, a następnie na statek wewnątrz lub na zewnątrz stoczni. Użyj Ctrl, aby współdzielić polecenia. Użyj Shift, aby tylko wyświetlić szacunkowy koszt
+STR_DEPOT_CLONE_AIRCRAFT_INFO_HANGAR_WINDOW                     :{BLACK}Kup kopię samolotu. Kliknij na ten przycisk, a następnie na samolot wewnątrz lub na zewnątrz hangaru. Użyj Ctrl, aby współdzielić polecenia. Użyj Shift, aby tylko wyświetlić szacunkowy koszt
 
 ###length VEHICLE_TYPES
 STR_DEPOT_TRAIN_LOCATION_TOOLTIP                                :{BLACK}Wyśrodkuj widok główny na lokalizacji warsztatów. Ctrl+klik otwiera nowy podgląd na ich lokalizację
@@ -4999,7 +4999,7 @@ STR_ORDER_GO_TO_NEAREST_DEPOT                                   :Idź do najbli�
 STR_ORDER_GO_TO_NEAREST_HANGAR                                  :Leć do najbliższego hangaru
 STR_ORDER_CONDITIONAL                                           :Warunkowy skok poleceń
 STR_ORDER_SHARE                                                 :Współdzielenie poleceń
-STR_ORDERS_GO_TO_TOOLTIP                                        :{BLACK}Dodaj nowe polecenie na końcu listy lub przed zaznaczonym poleceniem. Ctrl+klik ustawia polecenie stacji na „pełny załadunek któregoś z towarów”, posterunku na „bez zatrzymywania się”, a zajezdni na „serwisuj”. Kliknięcie innego pojazdu kopiuje jego polecenia, a Ctrl+klik pozwala na współdzielenie z nim poleceń. Polecenie do zajezdni wyłącza automatyczne serwisowanie tego pojazdu
+STR_ORDERS_GO_TO_TOOLTIP                                        :{BLACK}Dodaj nowe polecenie na końcu listy lub przed zaznaczonym poleceniem. Użyj Ctrl, aby ustawić polecenie stacji na „pełny załadunek któregoś z towarów”, posterunku na odwrotność opcji „domyślnie bez zatrzymywania się”, a zajezdni na „serwisuj”. Kliknij na inny pojazd, aby skopiować jego polecenia lub użyj Ctrl, aby współdzielić z nim jego polecenia. Polecenie do zajezdni wyłącza automatyczne serwisowanie tego pojazdu
 
 STR_ORDERS_VEH_WITH_SHARED_ORDERS_LIST_TOOLTIP                  :{BLACK}Pokaż wszystkie pojazdy współdzielące te polecenia
 
@@ -5115,7 +5115,7 @@ STR_TIMETABLE_CHANGE_TIME                                       :{BLACK}Zmień c
 STR_TIMETABLE_WAIT_TIME_TOOLTIP                                 :{BLACK}Zmień ilość czasu, jaką powinno zająć zaznaczone polecenie. Ctrl+klik ustala czas dla wszystkich poleceń
 
 STR_TIMETABLE_CLEAR_TIME                                        :{BLACK}Usuń czas
-STR_TIMETABLE_CLEAR_TIME_TOOLTIP                                :{BLACK}Wyczyść ilość czasu w zaznaczonym poleceniu. Ctrl+klik wyczyści czas we wszystkich poleceniach
+STR_TIMETABLE_CLEAR_TIME_TOOLTIP                                :{BLACK}Wyczyść podany czas w zaznaczonym poleceniu. Użyj Ctrl, aby wyczyścić czasy we wszystkich poleceniach
 
 STR_TIMETABLE_CHANGE_SPEED                                      :{BLACK}Zmień limit prędkości
 STR_TIMETABLE_CHANGE_SPEED_TOOLTIP                              :{BLACK}Zmień maksymalną prędkość przejazdu w zaznaczonym poleceniu. Ctrl+klik zmieni prędkość we wszystkich poleceniach

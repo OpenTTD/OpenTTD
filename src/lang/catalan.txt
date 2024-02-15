@@ -4614,7 +4614,7 @@ STR_ORDER_GO_TO_NEAREST_DEPOT                                   :Vés al dipòsi
 STR_ORDER_GO_TO_NEAREST_HANGAR                                  :Vés a l'hangar més proper
 STR_ORDER_CONDITIONAL                                           :Ordre de salt condicionada
 STR_ORDER_SHARE                                                 :Comparteix ordres
-STR_ORDERS_GO_TO_TOOLTIP                                        :{BLACK}Afegeix una nova ordre abans de la seleccionada, o afegeix-la al final de la llista. Amb Ctrl+clic, es creen ordres d'estació "carrega qualsevol càrrega", ordres de punt de pas "sense parada" i ordres de cotxeres de "revisió". Si es fa clic en un altre vehicle, es copien les seves ordres; amb Ctrl+clic, a més a més es compartiran les ordres. Una ordre de cotxeres desactiva la revisió automàtica del vehicle.
+STR_ORDERS_GO_TO_TOOLTIP                                        :{BLACK}Afegeix una nova ordre abans de la seleccionada, o afegeix-la al final de la llista. Amb Ctrl+clic, es creen ordres d'estació "carrega qualsevol càrrega", en un punt de pas per invertir la ordre "sense parada per defecte" i ordres de cotxeres de "revisió". Si es fa clic en un altre vehicle, es copien les seves ordres; amb Ctrl+clic, a més a més es compartiran les ordres. Una ordre de cotxeres desactiva la revisió automàtica del vehicle.
 
 STR_ORDERS_VEH_WITH_SHARED_ORDERS_LIST_TOOLTIP                  :{BLACK}Mostra tots els vehicles que tenen les mateixes ordres
 

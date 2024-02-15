@@ -317,6 +317,8 @@ STR_COLOUR_RANDOM                                               :Випадко�
 ###length 17
 STR_COLOUR_SECONDARY_DARK_BLUE                                  :Синій
 STR_COLOUR_SECONDARY_PALE_GREEN                                 :Світло-зелений
+STR_COLOUR_SECONDARY_SECONDARY_PINK                             :Рожевий
+STR_COLOUR_SECONDARY_YELLOW                                     :Жовтий
 STR_COLOUR_SECONDARY_RED                                        :Червоний
 STR_COLOUR_SECONDARY_LIGHT_BLUE                                 :Блакитний
 STR_COLOUR_SECONDARY_GREEN                                      :Зелений
@@ -328,6 +330,7 @@ STR_COLOUR_SECONDARY_PURPLE                                     :Фіолето�
 STR_COLOUR_SECONDARY_ORANGE                                     :Помаранчевий
 STR_COLOUR_SECONDARY_BROWN                                      :Коричневий
 STR_COLOUR_SECONDARY_GREY                                       :Сірий
+STR_COLOUR_SECONDARY_WHITE                                      :Білий
 
 
 # Units used in OpenTTD
@@ -1473,10 +1476,11 @@ STR_CONFIG_SETTING_SIGNALSIDE_DRIVING_SIDE                      :зі сторо
 STR_CONFIG_SETTING_SIGNALSIDE_RIGHT                             :з правої сторони
 
 ###length 2
-STR_CONFIG_SETTING_SHOWFINANCES                                 :Показувати вікно фінансів в кінці року: {STRING}
+STR_CONFIG_SETTING_SHOWFINANCES                                 :Показувати вікно фінансів у кінці року: {STRING}
+STR_CONFIG_SETTING_SHOWFINANCES_PERIOD                          :Показувати вікно фінансів у кінці періоду: {STRING}
 
 ###length 2
-STR_CONFIG_SETTING_SHOWFINANCES_HELPTEXT                        :При включенні на прикінці кожного року відображається вікно фінансів.
+STR_CONFIG_SETTING_SHOWFINANCES_HELPTEXT                        :При включенні наприкінці кожного року виринає вікно фінансів для легшого огляду фінансового стану компанії.
 
 STR_CONFIG_SETTING_NONSTOP_BY_DEFAULT                           :Створювати накази з поміткою «без зупинки»: {STRING}
 STR_CONFIG_SETTING_NONSTOP_BY_DEFAULT_HELPTEXT                  :Якщо в завданні транспортного засобу не вказана помітка «без зупинки», то воно зупиняєтся на всіх станціях на своєму шляху. Включення цієї опції призводить до того, що нові завдання будуть автоматично створюватися з поміткою «без зупинки» і транспортний засіб буде зупинятися лише на заданних станціях. Звичайно, при необхідності помітку можна зняти або встановити власноруч.
@@ -1499,6 +1503,7 @@ STR_CONFIG_SETTING_AUTOSCROLL_EVERY_VIEWPORT                    :Кожне ві
 STR_CONFIG_SETTING_BRIBE                                        :Дозволити підкуп місцевої влади: {STRING}
 ###length 2
 STR_CONFIG_SETTING_BRIBE_HELPTEXT                               :Дозволяє компаніям давати хабарі місцевій владі. Якщо підкуп буде викрито, протягом 6 місяців компанія не матиме змоги взаємодіяти з владою міста.
+STR_CONFIG_SETTING_BRIBE_HELPTEXT_MINUTES                       :Дозволяє компаніям давати хабарі місцевій владі. Якщо підкуп буде викрито, протягом 6 місяців компанія не матиме змоги взаємодіяти з владою міста.
 
 STR_CONFIG_SETTING_ALLOW_EXCLUSIVE                              :Дозволити придбання ексклюзивних прав: {STRING}
 ###length 2
@@ -3370,6 +3375,7 @@ STR_MAPGEN_BORDER_MANUAL                                        :{BLACK}вруч
 
 STR_MAPGEN_HEIGHTMAP_ROTATION                                   :{BLACK}Поворот рельєфу
 STR_MAPGEN_HEIGHTMAP_NAME                                       :{BLACK}Назва рельєфу:
+STR_MAPGEN_HEIGHTMAP_NAME_TOOLTIP                               :{BLACK}Назва файлу мапи висот
 STR_MAPGEN_HEIGHTMAP_SIZE_LABEL                                 :{BLACK}Розмір:
 STR_MAPGEN_HEIGHTMAP_SIZE                                       :{ORANGE}{NUM} x {NUM}
 
@@ -3921,6 +3927,8 @@ STR_COMPANY_INFRASTRUCTURE_VIEW_CANALS                          :{WHITE}Кана
 STR_COMPANY_INFRASTRUCTURE_VIEW_STATION_SECT                    :{GOLD}Станції:
 STR_COMPANY_INFRASTRUCTURE_VIEW_STATIONS                        :{WHITE}Ділянки зі станціями
 STR_COMPANY_INFRASTRUCTURE_VIEW_AIRPORTS                        :{WHITE}Аеропорти
+STR_COMPANY_INFRASTRUCTURE_VIEW_TOTAL_YEAR                      :{WHITE}{CURRENCY_LONG}/рік
+STR_COMPANY_INFRASTRUCTURE_VIEW_TOTAL_PERIOD                    :{WHITE}{CURRENCY_LONG}/період
 
 # Industry directory
 STR_INDUSTRY_DIRECTORY_CAPTION                                  :{WHITE}Підприємства
@@ -3980,6 +3988,7 @@ STR_VEHICLE_LIST_MANAGE_LIST_TOOLTIP                            :{BLACK}Дати
 STR_VEHICLE_LIST_REPLACE_VEHICLES                               :Оновлення
 STR_VEHICLE_LIST_SEND_FOR_SERVICING                             :Відправити на техогляд
 STR_VEHICLE_LIST_PROFIT_THIS_YEAR_LAST_YEAR                     :{TINY_FONT}{BLACK}Прибуток цього року: {CURRENCY_LONG} (торік: {CURRENCY_LONG})
+STR_VEHICLE_LIST_PROFIT_THIS_PERIOD_LAST_PERIOD                 :{TINY_FONT}{BLACK}Прибуток цього періо:ду: {CURRENCY_LONG} (минулого періоду: {CURRENCY_LONG})
 STR_VEHICLE_LIST_CARGO                                          :[{CARGO_LIST}]
 STR_VEHICLE_LIST_NAME_AND_CARGO                                 :{STRING} {STRING}
 
@@ -4417,6 +4426,8 @@ STR_VEHICLE_INFO_FEEDER_CARGO_VALUE                             :{BLACK}Плат
 STR_VEHICLE_DETAILS_SERVICING_INTERVAL_DAYS                     :{BLACK}Інтервал техогляду: {LTBLUE}{COMMA}{NBSP}днів{BLACK} {STRING}
 STR_VEHICLE_DETAILS_SERVICING_INTERVAL_MINUTES                  :{BLACK}Інтервал техогляду: {LTBLUE}{COMMA}{NBSP}хвилин{BLACK} {STRING}
 STR_VEHICLE_DETAILS_SERVICING_INTERVAL_PERCENT                  :{BLACK}Інтервал техогляду: {LTBLUE}{COMMA}%{BLACK} {STRING}
+STR_VEHICLE_DETAILS_LAST_SERVICE_DATE                           :Останній техогляд: {LTBLUE}{DATE_LONG}
+STR_VEHICLE_DETAILS_LAST_SERVICE_MINUTES_AGO                    :Від останнього техогляду минуло хвилин: {LTBLUE}{NUM}
 
 STR_SERVICE_INTERVAL_DROPDOWN_TOOLTIP                           :{BLACK}Відлік інтервалу між техоглядами
 STR_VEHICLE_DETAILS_DEFAULT                                     :Стандартно
@@ -4792,6 +4803,7 @@ STR_AI_SETTINGS_SETTING                                         :{STRING}: {ORAN
 
 
 # Textfile window
+STR_TEXTFILE_JUMPLIST                                           :{WHITE}Зміст
 STR_TEXTFILE_WRAP_TEXT                                          :{WHITE}Розмістити текст
 STR_TEXTFILE_WRAP_TEXT_TOOLTIP                                  :{BLACK}Розмістити текст у вікні без необхідності прокрутки
 STR_TEXTFILE_VIEW_README                                        :{BLACK}Інструкція
@@ -5772,6 +5784,10 @@ STR_TOWN_NAME                                                   :{TOWN}
 STR_VEHICLE_NAME                                                :{VEHICLE}
 STR_WAYPOINT_NAME                                               :{WAYPOINT}
 
+STR_CURRENCY_SHORT_KILO                                         :{NBSP}тис.
+STR_CURRENCY_SHORT_MEGA                                         :{NBSP}млн
+STR_CURRENCY_SHORT_GIGA                                         :{NBSP}млрд
+STR_CURRENCY_SHORT_TERA                                         :{NBSP}трлн
 
 STR_JUST_CARGO                                                  :{CARGO_LONG}
 STR_JUST_RIGHT_ARROW                                            :{RIGHT_ARROW}

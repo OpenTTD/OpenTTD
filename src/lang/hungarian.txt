@@ -317,7 +317,10 @@ STR_UNITS_HEIGHT_METRIC                                         :{DECIMAL}{NBSP}
 STR_UNITS_HEIGHT_SI                                             :{DECIMAL}{NBSP}m
 
 # Time units used in string control characters
+STR_UNITS_DAYS                                                  :{COMMA}{NBSP}nap{P "" s}
 
+STR_UNITS_MONTHS                                                :{NUM}{NBSP}hónap{P "" s}
+STR_UNITS_MINUTES                                               :{NUM}{NBSP}perc{P "" s}
 
 
 # Common window strings
@@ -763,6 +766,7 @@ STR_PLAYLIST_TOOLTIP_CLICK_TO_ADD_TRACK                         :{BLACK}Kattints
 STR_PLAYLIST_TOOLTIP_CLICK_TO_REMOVE_TRACK                      :{BLACK}Kattints a zeneszámra annak az aktuális zenei műsorból való eltávolításához (csak Saját 1 és Saját 2 esetén)
 
 # Highscore window
+STR_HIGHSCORE_TOP_COMPANIES                                     :{BIG_FONT}{BLACK}Legjobb Vállalatok
 STR_HIGHSCORE_POSITION                                          :{BIG_FONT}{BLACK}{COMMA}.
 STR_HIGHSCORE_PERFORMANCE_TITLE_BUSINESSMAN                     :Üzletember
 STR_HIGHSCORE_PERFORMANCE_TITLE_ENTREPRENEUR                    :Vállalkozó
@@ -4212,8 +4216,12 @@ STR_ENGINE_PREVIEW_TRAM_VEHICLE                                 :villamos
 STR_ENGINE_PREVIEW_AIRCRAFT                                     :repülőgép
 STR_ENGINE_PREVIEW_SHIP                                         :hajó
 
+STR_ENGINE_PREVIEW_COST_WEIGHT                                  :Ár: {CURRENCY_LONG}  Súly: {WEIGHT_SHORT}
+STR_ENGINE_PREVIEW_COST_MAX_SPEED                               :Ár: {CURRENCY_LONG}  Végsebesség: {VELOCITY}
 STR_ENGINE_PREVIEW_SPEED_POWER                                  :Sebesség: {VELOCITY} Telj.: {POWER}
 STR_ENGINE_PREVIEW_SPEED_POWER_MAX_TE                           :Sebesség: {VELOCITY} Telj.: {POWER} Vonóerő: {FORCE}
+STR_ENGINE_PREVIEW_CAPACITY                                     :Kapacitás: {CARGO_LONG}
+STR_ENGINE_PREVIEW_CAPACITY_2                                   :Kapacitás: {CARGO_LONG}, {CARGO_LONG}
 
 # Autoreplace window
 STR_REPLACE_VEHICLES_WHITE                                      :{WHITE}{STRING} lecserélése - {STRING}
@@ -4751,6 +4759,7 @@ STR_AI_SETTINGS_CAPTION_GAMESCRIPT                              :Játékszkript
 STR_AI_SETTINGS_CLOSE                                           :{BLACK}Bezárás
 STR_AI_SETTINGS_RESET                                           :{BLACK}Visszaállítás
 STR_AI_SETTINGS_SETTING                                         :{STRING}: {ORANGE}{STRING}
+STR_AI_SETTINGS_SETTING_DEVIATION                               :{STRING}: {ORANGE}[{STRING}, {STRING}]
 
 
 # Textfile window

@@ -356,8 +356,10 @@ STR_SORT_BY_RANGE                                               :{G=f}Autonomia
 STR_SORT_BY_POPULATION                                          :Popolazione
 STR_SORT_BY_RATING                                              :Valutazione
 STR_SORT_BY_NUM_VEHICLES                                        :Numero di veicoli
-STR_SORT_BY_TOTAL_PROFIT_LAST_YEAR                              :Profitto totale dell'anno scorso
-STR_SORT_BY_TOTAL_PROFIT_THIS_YEAR                              :Profitto totale di quest'anno
+STR_SORT_BY_TOTAL_PROFIT_LAST_YEAR                              :Profitto totale per l'anno precedente
+STR_SORT_BY_TOTAL_PROFIT_LAST_PERIOD                            :Profitto totale per lo scorso periodo
+STR_SORT_BY_TOTAL_PROFIT_THIS_YEAR                              :Profitto totale per l'anno corrente
+STR_SORT_BY_TOTAL_PROFIT_THIS_PERIOD                            :Profitto totale per il periodo corrente
 STR_SORT_BY_AVERAGE_PROFIT_LAST_YEAR                            :Profitto medio dell'anno scorso
 STR_SORT_BY_AVERAGE_PROFIT_THIS_YEAR                            :Profitto medio di quest'anno
 
@@ -1472,7 +1474,9 @@ STR_CONFIG_SETTING_WARN_INCOME_LESS_HELPTEXT                    :Se abilitata, v
 STR_CONFIG_SETTING_NEVER_EXPIRE_VEHICLES                        :I veicoli non diventano mai obsoleti: {STRING}
 STR_CONFIG_SETTING_NEVER_EXPIRE_VEHICLES_HELPTEXT               :Se abilitata, dopo la loro introduzione, tutti i tipi di veicoli rimarranno sempre disponibili.
 
+STR_CONFIG_SETTING_TIMEKEEPING_UNITS                            :Unità di tempo: {STRING}
 ###length 2
+STR_CONFIG_SETTING_TIMEKEEPING_UNITS_CALENDAR                   :Calendario
 
 
 ###setting-zero-is-special
@@ -3966,8 +3970,10 @@ STR_GROUP_REMOVE_ALL_VEHICLES                                   :Rimuovi tutti i
 
 STR_GROUP_RENAME_CAPTION                                        :{BLACK}Rinomina un gruppo
 
-STR_GROUP_PROFIT_THIS_YEAR                                      :Profitto anno corrente:
+STR_GROUP_PROFIT_THIS_YEAR                                      :Profitto per l'anno corrente:
+STR_GROUP_PROFIT_THIS_PERIOD                                    :Profitto per il periodo corrente:
 STR_GROUP_PROFIT_LAST_YEAR                                      :Profitto dell'anno scorso:
+STR_GROUP_PROFIT_LAST_PERIOD                                    :Profitto per il periodo precedente:
 STR_GROUP_OCCUPANCY                                             :Utilizzo corrente:
 STR_GROUP_OCCUPANCY_VALUE                                       :{NUM}%
 
@@ -5703,6 +5709,10 @@ STR_TOWN_NAME                                                   :{TOWN}
 STR_VEHICLE_NAME                                                :{VEHICLE}
 STR_WAYPOINT_NAME                                               :{WAYPOINT}
 
+STR_CURRENCY_SHORT_KILO                                         :{NBSP}k
+STR_CURRENCY_SHORT_MEGA                                         :{NBSP}m
+STR_CURRENCY_SHORT_GIGA                                         :{NBSP}bn
+STR_CURRENCY_SHORT_TERA                                         :{NBSP}tn
 
 STR_JUST_CARGO                                                  :{CARGO_LONG}
 STR_JUST_RIGHT_ARROW                                            :{RIGHT_ARROW}

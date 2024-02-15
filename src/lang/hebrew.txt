@@ -480,6 +480,7 @@ STR_NEWS_MENU_MESSAGE_HISTORY_MENU                              :היסטורי�
 
 # About menu
 STR_ABOUT_MENU_LAND_BLOCK_INFO                                  :מידע על שטח קרקע
+STR_ABOUT_MENU_HELP                                             :עזרה ומדריכים
 STR_ABOUT_MENU_TOGGLE_CONSOLE                                   :פתח/סגור קונסולה
 STR_ABOUT_MENU_AI_DEBUG                                         :דיבאג של סקריפטים של בינה מלאכותית או של המשחק
 STR_ABOUT_MENU_SCREENSHOT                                       :צילום מסך
@@ -488,6 +489,7 @@ STR_ABOUT_MENU_ABOUT_OPENTTD                                    :'OpenTTD'{NBSP}
 STR_ABOUT_MENU_SPRITE_ALIGNER                                   :מיישר ספרייטים
 STR_ABOUT_MENU_TOGGLE_BOUNDING_BOXES                            :הדלק/כבה הצגת תיבות גבול של ספרייטים
 STR_ABOUT_MENU_TOGGLE_DIRTY_BLOCKS                              :הפעל/כבה צביעת בלוקים לא מעודכנים
+STR_ABOUT_MENU_TOGGLE_WIDGET_OUTLINES                           :הדלק/כבה קווי מתאר של וידג'טים
 
 ###length 31
 STR_DAY_NUMBER_1ST                                              :1
@@ -1125,7 +1127,9 @@ STR_CONFIG_SETTING_HORIZONTAL_POS_RIGHT                         :ימין
 
 STR_CONFIG_SETTING_MAXIMUM_INITIAL_LOAN                         :סכום הלוואה ראשוני: {STRING}
 STR_CONFIG_SETTING_MAXIMUM_INITIAL_LOAN_HELPTEXT                :סכום מירבי שחברה יכולה ללוות (מבלי לקחת בחשבון אינפלציה)
+STR_CONFIG_SETTING_MAXIMUM_INITIAL_LOAN_VALUE                   :{CURRENCY_LONG}
 ###setting-zero-is-special
+STR_CONFIG_SETTING_MAXIMUM_INITIAL_LOAN_DISABLED                :אין הלוואה {RED}סקריפט משחק נדרש על-מנת לספק סכום ראשוני
 
 STR_CONFIG_SETTING_INTEREST_RATE                                :ריבית: {STRING}
 STR_CONFIG_SETTING_INTEREST_RATE_HELPTEXT                       :ריבית עבור הלוואות; שולטת גם באינפלציה אם זו מאופשרות
@@ -1811,11 +1815,15 @@ STR_CONFIG_SETTING_DEMAND_SIZE_HELPTEXT                         :קביעת ער
 STR_CONFIG_SETTING_SHORT_PATH_SATURATION                        :הרוויה של מסלולים קצרים לפני שימוש במסלולי קיבולת גבוהה: {STRING}
 STR_CONFIG_SETTING_SHORT_PATH_SATURATION_HELPTEXT               :לעיתים קרובות יש מספר מסלולים בין שתי תחנות נתונות. אלגוריתם מרחק-מטען יגרום לרוויה במסלול הקצר ביותר תחילה, אחר כך ישתמש במסלול הקצר הבא אחריו עד שהוא יהיה רווי וכן הלאה. רוויה נקבעת על ידי הערכת הקיבולת והשימוש המתוכנן. ברגע שכל המסלולים רוויים, אם עדיין נותר ביקוש, הוא יעמיס על כל המסלולים, תוך כדי העדפת המסלולים עם קיבולת גבוהה. רוב הזמן האלגוריתם לא יעריך את הקיבלת במדוייק. הגדרה זאת מאפשרת לך לציין עד לאיזה אחוז יש לגרום למסלול קצר לרוויה בפעם הראשונה לפני שייבחר המסלול הבא הארוך ממנו. קבע הגדרה זו לערך קטן מ-100% כדי למנוע תחנות צפופות במקרה של הערכת יתר של הקיבולת.
 
-STR_CONFIG_SETTING_LOCALISATION_UNITS_VELOCITY                  :יחידות מהירות: {STRING}
+STR_CONFIG_SETTING_LOCALISATION_UNITS_VELOCITY                  :יחידות מהירות (יבשתית): {STRING}
+STR_CONFIG_SETTING_LOCALISATION_UNITS_VELOCITY_NAUTICAL         :יחידות מהירות (ימית): {STRING}
 STR_CONFIG_SETTING_LOCALISATION_UNITS_VELOCITY_HELPTEXT         :כאשר מוצגת מהירות השתמש ביחידות הנבחרות
 STR_CONFIG_SETTING_LOCALISATION_UNITS_VELOCITY_IMPERIAL         :בריטית (מייל לשעה)
 STR_CONFIG_SETTING_LOCALISATION_UNITS_VELOCITY_METRIC           :מטרי (קמ"ש)
 STR_CONFIG_SETTING_LOCALISATION_UNITS_VELOCITY_SI               :בינלאומית (מטר לשניה)
+STR_CONFIG_SETTING_LOCALISATION_UNITS_VELOCITY_GAMEUNITS_DAYS   :יחידות משחק (משבצות ליום)
+STR_CONFIG_SETTING_LOCALISATION_UNITS_VELOCITY_GAMEUNITS_SECS   :יחידות משחק (משבצות לשנייה)
+STR_CONFIG_SETTING_LOCALISATION_UNITS_VELOCITY_KNOTS            :קשרים
 
 STR_CONFIG_SETTING_LOCALISATION_UNITS_POWER                     :יחידות הספק כלי תחבורה: {STRING}
 STR_CONFIG_SETTING_LOCALISATION_UNITS_POWER_HELPTEXT            :כאשר מוצג הספק כלי תחבורה השתמש ביחידות הנבחרות
@@ -2618,7 +2626,10 @@ STR_TREES_RANDOM_TYPE                                           :{BLACK}עצים
 STR_TREES_RANDOM_TYPE_TOOLTIP                                   :{BLACK}נטע עצים מסוג אקראי במקום זה. Shift בורר בניה/הצגה של הערכת עלות
 STR_TREES_RANDOM_TREES_BUTTON                                   :{BLACK}עצים אקראיים
 STR_TREES_RANDOM_TREES_TOOLTIP                                  :{BLACK}שתול עצים באופן אקראי על פני השטח
+STR_TREES_MODE_FOREST_SM_BUTTON                                 :{BLACK}חורשה
+STR_TREES_MODE_FOREST_SM_TOOLTIP                                :{BLACK}שתילת יערות קטנים ע"י גרירה לאורך הקרקע
 STR_TREES_MODE_FOREST_LG_BUTTON                                 :{BLACK}יער
+STR_TREES_MODE_FOREST_LG_TOOLTIP                                :{BLACK}שתילת יערות גדולים ע"י גרירה לאורך הקרקע
 
 # Land generation window (SE)
 STR_TERRAFORM_TOOLBAR_LAND_GENERATION_CAPTION                   :{WHITE}יצירת טופוגרפיה
@@ -2883,8 +2894,11 @@ STR_SAVELOAD_DETAIL_CAPTION                                     :{BLACK}פרטי
 STR_SAVELOAD_DETAIL_NOT_AVAILABLE                               :{BLACK}אין מידע זמין
 STR_SAVELOAD_DETAIL_COMPANY_INDEX                               :{SILVER}{COMMA}: {WHITE}{STRING}
 STR_SAVELOAD_DETAIL_GRFSTATUS                                   :{SILVER}NewGRF: {WHITE}{STRING}
-STR_SAVELOAD_FILTER_TITLE                                       :{BLACK}מחרוזת סינון:
+STR_SAVELOAD_FILTER_TITLE                                       :{BLACK}סינון:
 STR_SAVELOAD_OVERWRITE_TITLE                                    :{WHITE}החלף קובץ
+STR_SAVELOAD_OVERWRITE_WARNING                                  :{YELLOW}האם אתה בטוח שברצונך לדרוס את הקובץ הקיים?
+STR_SAVELOAD_DIRECTORY                                          :{STRING} (ספרייה)
+STR_SAVELOAD_PARENT_DIRECTORY                                   :{STRING} (ספריית אב)
 
 STR_SAVELOAD_OSKTITLE                                           :{BLACK}הכנס שם לשמירה
 
@@ -3160,6 +3174,7 @@ STR_SIGN_LIST_MATCH_CASE_TOOLTIP                                :{BLACK}אפשר
 
 # Sign window
 STR_EDIT_SIGN_CAPTION                                           :{WHITE}שנה את המלל של הסימניה
+STR_EDIT_SIGN_LOCATION_TOOLTIP                                  :{BLACK}מקד את התצוגה הראשית על מיקום השלט. Ctrl+לחיצה פותח חלונית תצוגה חדשה במיקום השלט
 STR_EDIT_SIGN_NEXT_SIGN_TOOLTIP                                 :{BLACK}עבור לסימניה הבאה
 STR_EDIT_SIGN_PREVIOUS_SIGN_TOOLTIP                             :{BLACK}עבור לסימניה הקודמת
 
@@ -3373,9 +3388,10 @@ STR_FINANCES_OPERATING_EXPENSES_TITLE                           :{WHITE}הוצא
 STR_FINANCES_SECTION_CONSTRUCTION                               :{GOLD}בנייה
 STR_FINANCES_SECTION_NEW_VEHICLES                               :{GOLD}כלי תחבורה חדשים
 STR_FINANCES_SECTION_TRAIN_RUNNING_COSTS                        :{GOLD}עלות הפעלת רכבות
-STR_FINANCES_SECTION_ROAD_VEHICLE_RUNNING_COSTS                 :{GOLD}עלות תפעול רכבים
+STR_FINANCES_SECTION_ROAD_VEHICLE_RUNNING_COSTS                 :{GOLD}כלי רכב
 STR_FINANCES_SECTION_AIRCRAFT_RUNNING_COSTS                     :{GOLD} עלות הפעלת כלי טייס
 STR_FINANCES_SECTION_SHIP_RUNNING_COSTS                         :{GOLD} עלות הפעלת כלי שייט
+STR_FINANCES_SECTION_ROAD_VEHICLE_REVENUE                       :{GOLD}כלי רכב
 STR_FINANCES_SECTION_AIRCRAFT_REVENUE                           :{GOLD}כלי טייס
 STR_FINANCES_SECTION_SHIP_REVENUE                               :{GOLD}כלי שייט
 STR_FINANCES_SECTION_LOAN_INTEREST                              :{GOLD}ריבית על ההלוואה
@@ -3384,6 +3400,7 @@ STR_FINANCES_SECTION_OTHER                                      :{GOLD}אחר
 STR_FINANCES_NEGATIVE_INCOME                                    :{BLACK}-{CURRENCY_LONG}
 STR_FINANCES_POSITIVE_INCOME                                    :{BLACK}+{CURRENCY_LONG}
 STR_FINANCES_BANK_BALANCE_TITLE                                 :{WHITE}חשבון הבנק
+STR_FINANCES_OWN_FUNDS_TITLE                                    :הון עצמי
 STR_FINANCES_LOAN_TITLE                                         :{WHITE}הלוואה
 STR_FINANCES_MAX_LOAN                                           :{BLACK}{CURRENCY_LONG}{WHITE}: הלוואה מירבית
 STR_FINANCES_TOTAL_CURRENCY                                     :{BLACK}{CURRENCY_LONG}

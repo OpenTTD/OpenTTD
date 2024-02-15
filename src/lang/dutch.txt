@@ -2788,7 +2788,7 @@ STR_RAIL_TOOLBAR_TOOLTIP_BUILD_AUTORAIL                         :{BLACK}Spoor bo
 STR_RAIL_TOOLBAR_TOOLTIP_BUILD_TRAIN_DEPOT_FOR_BUILDING         :{BLACK}Remise bouwen (om treinen te kopen en te onderhouden). Voeg Shift toe voor alleen inschatting van de kosten
 STR_RAIL_TOOLBAR_TOOLTIP_CONVERT_RAIL_TO_WAYPOINT               :{BLACK}Routepunt bouwen op spoor. Ctrl+klik om samen te voegen met ander routepunt. Voeg Shift toe voor alleen inschatting van de kosten
 STR_RAIL_TOOLBAR_TOOLTIP_BUILD_RAILROAD_STATION                 :{BLACK}Treinstation bouwen. Ctrl+klik om samen te voegen met ander station. Voeg Shift toe voor alleen inschatting van de kosten
-STR_RAIL_TOOLBAR_TOOLTIP_BUILD_RAILROAD_SIGNALS                 :{BLACK}Seinen bouwen op spoor. Ctrl+klik voor andere stijl seinen{}Klik+slepen voor seinen tot volgende kruising, station of sein. Voeg Shift toe voor alleen inschatting van de kosten
+STR_RAIL_TOOLBAR_TOOLTIP_BUILD_RAILROAD_SIGNALS                 :{BLACK}Seinen bouwen op spoor. Ctrl+klik voor andere stijl seinen{}Klik+slepen voor seinen tot volgende kruising, station of sein. Voeg Shift toe voor enkel inschatting van de kosten
 STR_RAIL_TOOLBAR_TOOLTIP_BUILD_RAILROAD_BRIDGE                  :{BLACK}Spoorbrug bouwen. Voeg Shift toe voor alleen inschatting van de kosten
 STR_RAIL_TOOLBAR_TOOLTIP_BUILD_RAILROAD_TUNNEL                  :{BLACK}Graaf spoortunnel. Voeg Shift toe voor alleen inschatting van de kosten
 STR_RAIL_TOOLBAR_TOOLTIP_TOGGLE_BUILD_REMOVE_FOR                :{BLACK}Schakelt tussen bouwen en verwijderen van sporen, seinen, routepunten en stations. Ctrl+klik om spoor van routepunten en stations te verwijderen
