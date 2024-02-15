@@ -891,6 +891,7 @@ ERROR: IsEnd() is invalid as Begin() is never called
   GetAirportType():     0
   GetHangarOfAirport(): 32119
   IsHangarTile():       true
+  GetTileOfAirport():   32116
   IsAirportTile():      true
   GetAirportType():     0
   GetBankBalance():     1999989890
@@ -10118,7 +10119,7 @@ Your script made an error: excessive CPU usage in valuator function
 
 CALLSTACK
 *FUNCTION [Valuate()] Valuate line [5]
-*FUNCTION [Start()] regression/main.nut line [2184]
+*FUNCTION [Start()] regression/main.nut line [2185]
 
 LOCALS
 [args] ARRAY
