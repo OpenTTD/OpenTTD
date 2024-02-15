@@ -21,6 +21,7 @@
  * \li GSEventVehicleCrashed::GetVictims
  * \li GSEventCompanyRenamed
  * \li GSEventPresidentRenamed
+ * \li GSAirportTypeList
  *
  * \b 14.0
  *
