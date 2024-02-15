@@ -235,6 +235,7 @@ function Regression::Airport()
 	print("  GetAirportType():     " + AIAirport.GetAirportType(32119));
 	print("  GetHangarOfAirport(): " + AIAirport.GetHangarOfAirport(32116));
 	print("  IsHangarTile():       " + AIAirport.IsHangarTile(32119));
+	print("  GetTileOfAirport():   " + AIAirport.GetTileOfAirport(32119));
 	print("  IsAirportTile():      " + AIAirport.IsAirportTile(32119));
 	print("  GetAirportType():     " + AIAirport.GetAirportType(32119));
 	print("  GetBankBalance():     " + AICompany.GetBankBalance(AICompany.COMPANY_SELF));
