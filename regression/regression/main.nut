@@ -246,6 +246,60 @@ function Regression::Airport()
 	print("  BuildAirport():       " + AIAirport.BuildAirport(32116, 0, AIStation.STATION_JOIN_ADJACENT));
 }
 
+function Regression::AirportTypeList()
+{
+	local list = AIAirportTypeList();
+
+	print("");
+	print("--AirportTypeList--");
+	print("  Count():             " + list.Count());
+	list.Valuate(AIAirport.IsValidAirportType);
+	print("  IsValidAirportType ListDump:");
+	for (local i = list.Begin(); !list.IsEnd(); i = list.Next()) {
+		print("    " + i + " => " + list.GetValue(i));
+	}
+	list.Valuate(AIAirport.IsAirportInformationAvailable);
+	print("  IsAirportInformationAvailable ListDump:");
+	for (local i = list.Begin(); !list.IsEnd(); i = list.Next()) {
+		print("    " + i + " => " + list.GetValue(i));
+	}
+	list.Valuate(AIAirport.GetPrice);
+	print("  GetPrice ListDump:");
+	for (local i = list.Begin(); !list.IsEnd(); i = list.Next()) {
+		print("    " + i + " => " + list.GetValue(i));
+	}
+	list.Valuate(AIAirport.GetAirportWidth);
+	print("  GetAirportWidth ListDump:");
+	for (local i = list.Begin(); !list.IsEnd(); i = list.Next()) {
+		print("    " + i + " => " + list.GetValue(i));
+	}
+	list.Valuate(AIAirport.GetAirportHeight);
+	print("  GetAirportHeight ListDump:");
+	for (local i = list.Begin(); !list.IsEnd(); i = list.Next()) {
+		print("    " + i + " => " + list.GetValue(i));
+	}
+	list.Valuate(AIAirport.GetAirportCoverageRadius);
+	print("  GetAirportCoverageRadius ListDump:");
+	for (local i = list.Begin(); !list.IsEnd(); i = list.Next()) {
+		print("    " + i + " => " + list.GetValue(i));
+	}
+	list.Valuate(AIAirport.GetMaintenanceCostFactor);
+	print("  GetMaintenanceCostFactor ListDump:");
+	for (local i = list.Begin(); !list.IsEnd(); i = list.Next()) {
+		print("    " + i + " => " + list.GetValue(i));
+	}
+	list.Valuate(AIAirport.GetMonthlyMaintenanceCost);
+	print("  GetMonthlyMaintenanceCost ListDump:");
+	for (local i = list.Begin(); !list.IsEnd(); i = list.Next()) {
+		print("    " + i + " => " + list.GetValue(i));
+	}
+	list.Valuate(AIAirport.GetAirportNumHelipads);
+	print("  GetAirportNumHelipads ListDump:");
+	for (local i = list.Begin(); !list.IsEnd(); i = list.Next()) {
+		print("    " + i + " => " + list.GetValue(i));
+	}
+}
+
 function Regression::Bridge()
 {
 	local j = 0;
@@ -2013,6 +2067,7 @@ function Regression::Start()
 
 	this.Commands();
 	this.Airport();
+	this.AirportTypeList()
 	this.Bridge();
 	this.BridgeList();
 	this.Cargo();
