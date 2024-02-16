@@ -24,7 +24,7 @@
 
 /* static */ bool ScriptAirport::IsAirportInformationAvailable(AirportType type)
 {
-	return type >= 0 && type < (AirportType)NUM_AIRPORTS && AirportSpec::Get(type)->enabled;
+	return type == AT_OILRIG || (type >= 0 && type < (AirportType)NUM_AIRPORTS && AirportSpec::Get(type)->enabled);
 }
 
 /* static */ Money ScriptAirport::GetPrice(AirportType type)
@@ -67,6 +67,7 @@
 {
 	if (!IsAirportInformationAvailable(type)) return -1;
 
+	if (type == AT_OILRIG && !_settings_game.station.serve_neutral_industries) return (uint)CA_NONE;
 	return _settings_game.station.modified_catchment ? ::AirportSpec::Get(type)->catchment : (uint)CA_UNMODIFIED;
 }
 
@@ -96,7 +97,7 @@
 	if (!::IsTileType(tile, MP_STATION)) return -1;
 
 	const Station *st = ::Station::GetByTile(tile);
-	if (st->owner != ScriptObject::GetCompany() && ScriptCompanyMode::IsValid()) return -1;
+	if (st->owner != ScriptObject::GetCompany() && ScriptCompanyMode::IsValid() && st->owner != OWNER_NONE) return -1;
 	if ((st->facilities & FACIL_AIRPORT) == 0) return -1;
 
 	return st->airport.GetNumHangars();
@@ -110,7 +111,7 @@
 	if (GetNumHangars(tile) < 1) return INVALID_TILE;
 
 	const Station *st = ::Station::GetByTile(tile);
-	if (st->owner != ScriptObject::GetCompany() && ScriptCompanyMode::IsValid()) return INVALID_TILE;
+	if (st->owner != ScriptObject::GetCompany() && ScriptCompanyMode::IsValid() && st->owner != OWNER_NONE) return INVALID_TILE;
 	if ((st->facilities & FACIL_AIRPORT) == 0) return INVALID_TILE;
 
 	return st->airport.GetHangarTile(0);
@@ -142,7 +143,7 @@
 		return GetAirportNoiseLevelForDistance(as, dist);
 	}
 
-	return 1;
+	return type == AT_OILRIG ? 0 : 1;
 }
 
 /* static */ TownID ScriptAirport::GetNearestTown(TileIndex tile, AirportType type)
