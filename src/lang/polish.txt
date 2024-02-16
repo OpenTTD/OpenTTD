@@ -668,7 +668,7 @@ STR_TOOLTIP_RESIZE                                              :{BLACK}Kliknij 
 STR_TOOLTIP_TOGGLE_LARGE_SMALL_WINDOW                           :{BLACK}Przełącz na duży/mały rozmiar okna
 STR_TOOLTIP_VSCROLL_BAR_SCROLLS_LIST                            :{BLACK}Suwak - przesuwa listę w górę/w dół
 STR_TOOLTIP_HSCROLL_BAR_SCROLLS_LIST                            :{BLACK}Pasek przewijania - przewija listę w prawo/w lewo
-STR_TOOLTIP_DEMOLISH_BUILDINGS_ETC                              :{BLACK}Niszczenie budynków itp. w danym kwadracie terenu. Ctrl zaznacza obszar po przekątnej. Shift przełącza pomiędzy trybem burzenia a szacowaniem jego kosztów
+STR_TOOLTIP_DEMOLISH_BUILDINGS_ETC                              :{BLACK}Zniszcz budynki itp. na danym kwadracie terenu. Przeciągnij z użyciem Ctrl, aby zaznaczyć obszar po przekątnej. Użyj Shift, aby tylko wyświetlić szacunkowy koszt
 
 # Show engines button
 ###length VEHICLE_TYPES
@@ -1425,7 +1425,7 @@ STR_GAME_OPTIONS_VIDEO_VSYNC_TOOLTIP                            :{BLACK}Zaznacz 
 STR_GAME_OPTIONS_VIDEO_DRIVER_INFO                              :{BLACK}Bieżący sterownik: {STRING}
 
 STR_GAME_OPTIONS_GUI_SCALE_FRAME                                :{BLACK}Rozmiar interfejsu
-STR_GAME_OPTIONS_GUI_SCALE_TOOLTIP                              :{BLACK}Przeciągnij suwak, aby ustawić rozmiar interfejsu. Ctrl+przeciągnij, aby uzyskać płynną regulację
+STR_GAME_OPTIONS_GUI_SCALE_TOOLTIP                              :{BLACK}Przeciągnij suwak, aby ustawić rozmiar interfejsu. Przeciągnij z użyciem Ctrl, aby uzyskać płynną regulację
 STR_GAME_OPTIONS_GUI_SCALE_AUTO                                 :{BLACK}Wykryj rozmiar automatycznie
 STR_GAME_OPTIONS_GUI_SCALE_AUTO_TOOLTIP                         :{BLACK}Zaznacz to pole, aby rozmiar interfejsu był wykrywany automatycznie
 
@@ -1741,7 +1741,7 @@ STR_CONFIG_SETTING_FORBID_90_DEG                                :Zabroń pociąg
 STR_CONFIG_SETTING_FORBID_90_DEG_HELPTEXT                       :90-stopniowy zakręt występuje wtedy, gdy bezpośrednio po poziomym odcinku toru występuje odcinek pionowy (lub na odwrót), zmuszając pociąg do ostrzejszego skrętu (zamiast normalnego, 45-stopniowego skrętu w innych kombinacjach torów)
 
 STR_CONFIG_SETTING_DISTANT_JOIN_STATIONS                        :Pozwól na łączenie stacji nie sąsiadujących bezpośrednio: {STRING}
-STR_CONFIG_SETTING_DISTANT_JOIN_STATIONS_HELPTEXT               :Pozwala na dołączanie części stacji nie stykających się ze sobą, wciskając Ctrl+klik przy stawianiu nowej części
+STR_CONFIG_SETTING_DISTANT_JOIN_STATIONS_HELPTEXT               :Pozwól na dodawanie części do stacji bez bezpośredniego stykania się z istniejącymi częściami, używając Ctrl podczas umieszczania nowych części
 
 STR_CONFIG_SETTING_INFLATION                                    :Inflacja: {STRING}
 STR_CONFIG_SETTING_INFLATION_HELPTEXT                           :Włącz lub wyłącz inflację (sytuacja ekonomiczna, w związku z którą koszty rosną nieco szybciej niż zapłaty)
@@ -2309,7 +2309,7 @@ STR_CONFIG_SETTING_SEMAPHORE_BUILD_BEFORE_DATE                  :Automatycznie b
 STR_CONFIG_SETTING_SEMAPHORE_BUILD_BEFORE_DATE_HELPTEXT         :Ustaw rok, w którym semafory świetlne będą używane. Przed tym rokiem w użyciu będą semafory kształtowe (które mają te same właściwości, tylko inny wygląd)
 
 STR_CONFIG_SETTING_CYCLE_SIGNAL_TYPES                           :Przełączaj typy sygnalizatorów: {STRING}
-STR_CONFIG_SETTING_CYCLE_SIGNAL_TYPES_HELPTEXT                  :Wybierz, między jakimi typami sygnalizatorów przełączać po naciśnięciu Ctrl+klik przy budowaniu sygnalizatorów
+STR_CONFIG_SETTING_CYCLE_SIGNAL_TYPES_HELPTEXT                  :Wybierz, między jakimi typami sygnalizatorów przełączać, używając Ctrl przy budowaniu sygnalizacji
 ###length 2
 STR_CONFIG_SETTING_CYCLE_SIGNAL_GROUP                           :Tylko bieżąca grupa
 STR_CONFIG_SETTING_CYCLE_SIGNAL_ALL                             :Wszystkie widoczne
@@ -2570,7 +2570,7 @@ STR_INTRO_AI_SETTINGS                                           :{BLACK}Ustawien
 STR_INTRO_GAMESCRIPT_SETTINGS                                   :{BLACK}Ustawienia Game Script
 STR_INTRO_QUIT                                                  :{BLACK}Wyjście
 
-STR_INTRO_TOOLTIP_NEW_GAME                                      :{BLACK}Rozpocznij nową grę. Ctrl+klik pomija konfigurowanie mapy
+STR_INTRO_TOOLTIP_NEW_GAME                                      :{BLACK}Rozpocznij nową grę. Użyj Ctrl, aby pominąć konfigurowanie mapy
 STR_INTRO_TOOLTIP_LOAD_GAME                                     :{BLACK}Wczytaj zapisaną grę
 STR_INTRO_TOOLTIP_PLAY_HEIGHTMAP                                :{BLACK}Rozpocznij nowa grę, używając mapy wysokości jako krajobrazu
 STR_INTRO_TOOLTIP_PLAY_SCENARIO                                 :{BLACK}Rozpocznij nową grę, używając przygotowanego scenariusza
@@ -2645,9 +2645,9 @@ STR_LIVERY_TRAIN_GROUP_TOOLTIP                                  :{BLACK}Pokaż k
 STR_LIVERY_ROAD_VEHICLE_GROUP_TOOLTIP                           :{BLACK}Pokaż kolory grup pojazdów
 STR_LIVERY_SHIP_GROUP_TOOLTIP                                   :{BLACK}Pokaż kolory grup statków
 STR_LIVERY_AIRCRAFT_GROUP_TOOLTIP                               :{BLACK}Pokaż kolory grup samolotów
-STR_LIVERY_PRIMARY_TOOLTIP                                      :{BLACK}Wybierz główny kolor dla wybranego schematu. Ctrl+klik ustawi ten kolor dla wszystkich schematów
-STR_LIVERY_SECONDARY_TOOLTIP                                    :{BLACK}Wybierz dodatkowy kolor dla wybranego schematu. Ctrl+klik ustawi ten kolor dla wszystkich schematów
-STR_LIVERY_PANEL_TOOLTIP                                        :{BLACK}Wybierz schemat kolorów do zmiany, albo wiele schematów z CTRL+klik. Kliknij na okienku aby wł./wył. używanie schematu.
+STR_LIVERY_PRIMARY_TOOLTIP                                      :{BLACK}Wybierz główny kolor dla wybranego schematu. Użyj Ctrl, aby ustawić ten kolor dla wszystkich schematów
+STR_LIVERY_SECONDARY_TOOLTIP                                    :{BLACK}Wybierz dodatkowy kolor dla wybranego schematu. Użyj Ctrl, aby ustawić ten kolor dla wszystkich schematów
+STR_LIVERY_PANEL_TOOLTIP                                        :{BLACK}Zaznacz schemat kolorów do zmiany, albo zaznacz wiele schematów, używając Ctrl. Kliknij na daną pozycję, aby przełączyć zaznaczenie schematu
 STR_LIVERY_TRAIN_GROUP_EMPTY                                    :Nie utworzono żadnych grup pociągów
 STR_LIVERY_ROAD_VEHICLE_GROUP_EMPTY                             :Nie utworzono żadnych grup pojazdów
 STR_LIVERY_SHIP_GROUP_EMPTY                                     :Nie utworzono żadnych grup statków
@@ -3222,7 +3222,7 @@ STR_BUILD_SIGNAL_ELECTRIC_EXIT_TOOLTIP                          :{BLACK}Sygnaliz
 STR_BUILD_SIGNAL_ELECTRIC_COMBO_TOOLTIP                         :{BLACK}Sygnalizator złożony (elektryczny){}Sygnalizator złożony działa jako sygnał wejściowy i wyjściowy. Umożliwia to budowę wielkich „drzew” presygnalizatorów
 STR_BUILD_SIGNAL_ELECTRIC_PBS_TOOLTIP                           :{BLACK}Sygnalizator trasy (elektryczny){}Sygnalizator trasy umożliwiający wejście więcej niż jednemu pociagowi do bloku sygnalizatorów, o ile pociąg może zarezerwować trasę do bezpiecznego punktu zatrzymania. Zwykłe sygnalizatory trasy mogą być mijane w przeciwnym kierunku
 STR_BUILD_SIGNAL_ELECTRIC_PBS_OWAY_TOOLTIP                      :{BLACK}Jednokierunkowy sygnalizator trasy (elektryczny){}Sygnalizator trasy umożliwiający wejście więcej niż jednemu pociagowi do bloku sygnalizatorów, o ile pociąg może zarezerwować trasę do bezpiecznego punktu zatrzymania. Sygnalizatory jednokierunkowe nie mogą być mijane w przeciwnym kierunku
-STR_BUILD_SIGNAL_CONVERT_TOOLTIP                                :{BLACK}Zamiana sygnałów{}Kliknij na istniejący sygnał, aby zamienić go na wybrany typ i wariant. Ctrl+klik przełącza istniejący wariant. Shift+klik pokazuje szacowany koszt zamiany
+STR_BUILD_SIGNAL_CONVERT_TOOLTIP                                :{BLACK}Zamiana sygnałów{}Kliknij na istniejący sygnał, aby zamienić go na wybrany typ i wariant. Użyj Ctrl, aby przełączyć istniejący wariant. Użyj Shift, aby tylko wyświetlić szacunkowy koszt zamiany
 STR_BUILD_SIGNAL_DRAG_SIGNALS_DENSITY_TOOLTIP                   :{BLACK}Odległość między sygnałami przy przeciąganiu
 STR_BUILD_SIGNAL_DRAG_SIGNALS_DENSITY_DECREASE_TOOLTIP          :{BLACK}Zmniejsz odległość między sygnałami przy przeciąganiu
 STR_BUILD_SIGNAL_DRAG_SIGNALS_DENSITY_INCREASE_TOOLTIP          :{BLACK}Zwiększ odległość między sygnałami przy przeciąganiu
@@ -3290,12 +3290,12 @@ STR_STATION_BUILD_CARGO_TRAM_ORIENTATION_TOOLTIP                :{BLACK}Wybierz 
 # Waterways toolbar (last two for SE only)
 STR_WATERWAYS_TOOLBAR_CAPTION                                   :{WHITE}Konstrukcja kanału wodnego
 STR_WATERWAYS_TOOLBAR_CAPTION_SE                                :{WHITE}Kanał wodny
-STR_WATERWAYS_TOOLBAR_BUILD_CANALS_TOOLTIP                      :{BLACK}Buduj kanały. Shift przełącza pomiędzy trybem budowania a szacowaniem jego kosztów
-STR_WATERWAYS_TOOLBAR_BUILD_LOCKS_TOOLTIP                       :{BLACK}Buduj śluzy. Shift przełącza pomiędzy trybem budowania a szacowaniem jego kosztów
-STR_WATERWAYS_TOOLBAR_BUILD_DEPOT_TOOLTIP                       :{BLACK}Wybuduj stocznię (do kupowania i serwisowania statków). Shift przełącza pomiędzy trybem budowania a szacowaniem jego kosztów
-STR_WATERWAYS_TOOLBAR_BUILD_DOCK_TOOLTIP                        :{BLACK}Zbuduj port. Ctrl umożliwia łączenie stacji. Shift przełącza pomiędzy trybem budowania a szacowaniem jego kosztów
-STR_WATERWAYS_TOOLBAR_BUOY_TOOLTIP                              :{BLACK}Ustaw boję, która może być użyta jako punkt orientacyjny. Shift przełącza pomiędzy trybem budowania a szacowaniem jego kosztów
-STR_WATERWAYS_TOOLBAR_BUILD_AQUEDUCT_TOOLTIP                    :{BLACK}Zbuduj akwedukt. Shift przełącza pomiędzy trybem budowania a szacowaniem jego kosztów
+STR_WATERWAYS_TOOLBAR_BUILD_CANALS_TOOLTIP                      :{BLACK}Zbuduj kanał wodny. Użyj Shift, aby tylko wyświetlić szacunkowy koszt
+STR_WATERWAYS_TOOLBAR_BUILD_LOCKS_TOOLTIP                       :{BLACK}Zbuduj śluzę wodną. Użyj Shift, aby tylko wyświetlić szacunkowy koszt
+STR_WATERWAYS_TOOLBAR_BUILD_DEPOT_TOOLTIP                       :{BLACK}Zbuduj stocznię (do kupowania i serwisowania statków). Użyj Shift, aby tylko wyświetlić szacunkowy koszt
+STR_WATERWAYS_TOOLBAR_BUILD_DOCK_TOOLTIP                        :{BLACK}Zbuduj port. Użyj Ctrl, aby połączyć z inną stacją. Użyj Shift, aby tylko wyświetlić szacunkowy koszt
+STR_WATERWAYS_TOOLBAR_BUOY_TOOLTIP                              :{BLACK}Umieść boję, która może być użyta jako punkt orientacyjny. Użyj Shift, aby tylko wyświetlić szacunkowy koszt
+STR_WATERWAYS_TOOLBAR_BUILD_AQUEDUCT_TOOLTIP                    :{BLACK}Zbuduj akwedukt. Użyj Shift, aby tylko wyświetlić szacunkowy koszt
 STR_WATERWAYS_TOOLBAR_CREATE_LAKE_TOOLTIP                       :{BLACK}Zbuduj kanał. Ctrl+klik na poziomie morza spowoduje zatopienie terenu
 STR_WATERWAYS_TOOLBAR_CREATE_RIVER_TOOLTIP                      :{BLACK}Umieszczanie rzek. Ctrl+klik zaznacza obszar po przekątnej
 
@@ -3308,7 +3308,7 @@ STR_STATION_BUILD_DOCK_CAPTION                                  :{WHITE}Port
 
 # Airport toolbar
 STR_TOOLBAR_AIRCRAFT_CAPTION                                    :{WHITE}Lotniska
-STR_TOOLBAR_AIRCRAFT_BUILD_AIRPORT_TOOLTIP                      :{BLACK}Zbuduj lotnisko. Ctrl umożliwia łączenie stacji. Shift przełącza pomiędzy trybem budowania a szacowaniem jego kosztów
+STR_TOOLBAR_AIRCRAFT_BUILD_AIRPORT_TOOLTIP                      :{BLACK}Zbuduj lotnisko. Użyj Ctrl, aby połączyć z inną stacją. Użyj Shift, aby tylko wyświetlić szacunkowy koszt
 
 # Airport construction window
 STR_STATION_BUILD_AIRPORT_CAPTION                               :{WHITE}Wybór lotniska
@@ -3447,10 +3447,10 @@ STR_INDUSTRY_CARGOES_SELECT_INDUSTRY_TOOLTIP                    :{BLACK}Wybierz 
 
 # Land area window
 STR_LAND_AREA_INFORMATION_CAPTION                               :{WHITE}Informacja o terenie
-STR_LAND_AREA_INFORMATION_LOCATION_TOOLTIP                      :{BLACK}Wyśrodkuj widok główny na lokalizacji kawałka terenu. Ctrl+klik otwiera nowy podgląd na jego lokalizację
+STR_LAND_AREA_INFORMATION_LOCATION_TOOLTIP                      :{BLACK}Wyśrodkuj widok główny na lokalizacji kawałka terenu. Użyj Ctrl, aby otworzyć nowy podgląd na jego lokalizację
 STR_LAND_AREA_INFORMATION_COST_TO_CLEAR_N_A                     :{BLACK}Koszt czyszczenia: {LTBLUE}N/D
 STR_LAND_AREA_INFORMATION_COST_TO_CLEAR                         :{BLACK}Koszt czyszczenia: {RED}{CURRENCY_LONG}
-STR_LAND_AREA_INFORMATION_REVENUE_WHEN_CLEARED                  :{BLACK}Zysk gdy czyszczone: {LTBLUE}{CURRENCY_LONG}
+STR_LAND_AREA_INFORMATION_REVENUE_WHEN_CLEARED                  :{BLACK}Przychód po usunięciu: {LTBLUE}{CURRENCY_LONG}
 STR_LAND_AREA_INFORMATION_OWNER_N_A                             :Brak
 STR_LAND_AREA_INFORMATION_OWNER                                 :{BLACK}Właściciel: {LTBLUE}{STRING}
 STR_LAND_AREA_INFORMATION_ROAD_OWNER                            :{BLACK}Wlasciciel drogi: {LTBLUE}{STRING}
@@ -3974,7 +3974,7 @@ STR_SIGN_LIST_MATCH_CASE_TOOLTIP                                :{BLACK}Przełą
 
 # Sign window
 STR_EDIT_SIGN_CAPTION                                           :{WHITE}Edycja tekstu napisu
-STR_EDIT_SIGN_LOCATION_TOOLTIP                                  :{BLACK}Wyśrodkuj widok główny na lokalizacji napisu. Ctrl+klik otwiera nowy podgląd na lokalizację napisu
+STR_EDIT_SIGN_LOCATION_TOOLTIP                                  :{BLACK}Wyśrodkuj widok główny na lokalizacji napisu. Użyj Ctrl, aby otworzyć nowy podgląd na jego lokalizację
 STR_EDIT_SIGN_NEXT_SIGN_TOOLTIP                                 :{BLACK}Idź do następnego napisu
 STR_EDIT_SIGN_PREVIOUS_SIGN_TOOLTIP                             :{BLACK}Idź do poprzedniego napisu
 
@@ -3985,7 +3985,7 @@ STR_TOWN_DIRECTORY_CAPTION                                      :{WHITE}Miasta
 STR_TOWN_DIRECTORY_NONE                                         :{ORANGE}- Żaden -
 STR_TOWN_DIRECTORY_TOWN                                         :{ORANGE}{TOWN}{BLACK} ({COMMA})
 STR_TOWN_DIRECTORY_CITY                                         :{ORANGE}{TOWN}{YELLOW} (Metropolia){BLACK} ({COMMA})
-STR_TOWN_DIRECTORY_LIST_TOOLTIP                                 :{BLACK}Nazwy miast - kliknij na nazwę miasta, aby wyśrodkować na nim widok główny. Ctrl+klik otwiera nowy podgląd na lokalizację miasta
+STR_TOWN_DIRECTORY_LIST_TOOLTIP                                 :{BLACK}Nazwy miast - kliknij na nazwę miasta, aby wyśrodkować na nim widok główny. Użyj Ctrl, aby otworzyć nowy podgląd na lokalizację miasta
 STR_TOWN_POPULATION                                             :{BLACK}Populacja świata: {COMMA}
 
 # Town view window
@@ -4004,7 +4004,7 @@ STR_TOWN_VIEW_TOWN_GROWS_EVERY                                  :{BLACK}Miasto r
 STR_TOWN_VIEW_TOWN_GROWS_EVERY_FUNDED                           :{BLACK}Miasto rośnie co {ORANGE}{UNITS_DAYS_OR_SECONDS} (ufundowane)
 STR_TOWN_VIEW_TOWN_GROW_STOPPED                                 :{BLACK}Miasto {RED}nie{BLACK} rośnie
 STR_TOWN_VIEW_NOISE_IN_TOWN                                     :{BLACK}Limit hałasu w mieście: {ORANGE}{COMMA}{BLACK}  maksymalnie: {ORANGE}{COMMA}
-STR_TOWN_VIEW_CENTER_TOOLTIP                                    :{BLACK}Wyśrodkuj widok główny na lokalizacji miasta. Ctrl+klik otwiera nowy podgląd na jego lokalizację
+STR_TOWN_VIEW_CENTER_TOOLTIP                                    :{BLACK}Wyśrodkuj widok główny na lokalizacji miasta. Użyj Ctrl, aby otworzyć nowy podgląd na lokalizację miasta
 STR_TOWN_VIEW_LOCAL_AUTHORITY_BUTTON                            :{BLACK}Lokalne Władze
 STR_TOWN_VIEW_LOCAL_AUTHORITY_TOOLTIP                           :{BLACK}Pokaż informacje o lokalnych władzach
 STR_TOWN_VIEW_RENAME_TOOLTIP                                    :{BLACK}Zmień nazwę miasta
@@ -4045,8 +4045,8 @@ STR_LOCAL_AUTHORITY_ACTION_TOOLTIP_ROAD_RECONSTRUCTION_MONTHS   :{PUSH_COLOUR}{Y
 STR_LOCAL_AUTHORITY_ACTION_TOOLTIP_ROAD_RECONSTRUCTION_MINUTES  :{PUSH_COLOUR}{YELLOW}Ufunduj remont sieci dróg miejskich.{}Spowoduje to znaczne zakłócenia w ruchu ulicznym trwające do 6 minut.{}{POP_COLOUR}Koszt: {CURRENCY_LONG}
 STR_LOCAL_AUTHORITY_ACTION_TOOLTIP_STATUE_OF_COMPANY            :{PUSH_COLOUR}{YELLOW}Zbuduj statuę dla uczczenia swojej firmy.{}Trwale podniesie to ocenę twoich stacji w pobliżu tego miasta.{}{POP_COLOUR}Koszt: {CURRENCY_LONG}
 STR_LOCAL_AUTHORITY_ACTION_TOOLTIP_NEW_BUILDINGS                :{PUSH_COLOUR}{YELLOW}Ufunduj nowe budynki w mieście.{}Zapewnia tymczasowe przyspieszenie rozwoju tego miasta.{}{POP_COLOUR}Koszt: {CURRENCY_LONG}
-STR_LOCAL_AUTHORITY_ACTION_TOOLTIP_EXCLUSIVE_TRANSPORT_MONTHS   :{PUSH_COLOUR}{YELLOW}Kup prawo do wyłączności na usługi transportowe w mieście na 12 miesięcy.{}Władze miasta nie pozwolą pasażerom i ładunkowe na korzystanie ze stacji twoich przeciwników. Pomyślne wręczenie łapówki przez przeciwnika spowoduje anulowanie tego kontraktu.{}{POP_COLOUR}Koszt: {CURRENCY_LONG}
-STR_LOCAL_AUTHORITY_ACTION_TOOLTIP_EXCLUSIVE_TRANSPORT_MINUTES  :{PUSH_COLOUR}{YELLOW}Kup prawo do wyłączności na usługi transportowe w mieście na 12 minut.{}Władze miasta nie pozwolą pasażerom i ładunkowe na korzystanie ze stacji twoich przeciwników. Pomyślne wręczenie łapówki przez przeciwnika spowoduje anulowanie tego kontraktu.{}{POP_COLOUR}Koszt: {CURRENCY_LONG}
+STR_LOCAL_AUTHORITY_ACTION_TOOLTIP_EXCLUSIVE_TRANSPORT_MONTHS   :{PUSH_COLOUR}{YELLOW}Kup prawo do wyłączności na usługi transportowe w mieście na okres 12 miesięcy.{}Władze miasta nie pozwolą pasażerom i ładunkom korzystać ze stacji konkurencji. Pomyślne wręczenie łapówki przez przeciwnika spowoduje anulowanie tej umowy.{}{POP_COLOUR}Koszt: {CURRENCY_LONG}
+STR_LOCAL_AUTHORITY_ACTION_TOOLTIP_EXCLUSIVE_TRANSPORT_MINUTES  :{PUSH_COLOUR}{YELLOW}Kup prawo do wyłączności na usługi transportowe w mieście na okres 12 minut.{}Władze miasta nie pozwolą pasażerom i ładunkom korzystać ze stacji konkurencji. Pomyślne wręczenie łapówki przez przeciwnika spowoduje anulowanie tej umowy.{}{POP_COLOUR}Koszt: {CURRENCY_LONG}
 STR_LOCAL_AUTHORITY_ACTION_TOOLTIP_BRIBE                        :{PUSH_COLOUR}{YELLOW}Przekup lokalne władze, aby zwiększyć swoją ocenę i unieważnić wyłączność transportową konkurenta, ryzykując surową karę w przypadku przyłapania.{}{POP_COLOUR}Koszt: {CURRENCY_LONG}
 
 # Goal window
@@ -4061,7 +4061,7 @@ STR_GOALS_TEXT                                                  :{ORANGE}{STRING
 STR_GOALS_NONE                                                  :{ORANGE}- Brak -
 STR_GOALS_PROGRESS                                              :{ORANGE}{STRING}
 STR_GOALS_PROGRESS_COMPLETE                                     :{GREEN}{STRING}
-STR_GOALS_TOOLTIP_CLICK_ON_SERVICE_TO_CENTER                    :{BLACK}Kliknij na celu, aby wyśrodkować widok na przedsiębiorstwie/mieście/polu. Ctrl+klik otwiera nowe okno podglądu
+STR_GOALS_TOOLTIP_CLICK_ON_SERVICE_TO_CENTER                    :{BLACK}Kliknij na celu, aby wyśrodkować widok na przedsiębiorstwie/mieście/polu. Użyj Ctrl, aby otworzyć nowy podgląd na jego lokalizację
 
 # Goal question window
 STR_GOAL_QUESTION_CAPTION_QUESTION                              :Pytanie
@@ -4200,7 +4200,7 @@ STR_STATION_VIEW_CLOSE_AIRPORT_TOOLTIP                          :{BLACK}Nie zezw
 STR_WAYPOINT_VIEW_CAPTION                                       :{WHITE}{WAYPOINT}
 STR_WAYPOINT_VIEW_CENTER_TOOLTIP                                :{BLACK}Wyśrodkuj widok główny na lokalizacji posterunku. Ctrl+klik otwiera nowy podgląd na jego lokalizację
 STR_WAYPOINT_VIEW_CHANGE_WAYPOINT_NAME                          :{BLACK}Zmień nazwę posterunku
-STR_BUOY_VIEW_CENTER_TOOLTIP                                    :{BLACK}Wyśrodkuj widok główny na lokalizacji boi. Ctrl+klik otwiera nowy podgląd na jej lokalizację
+STR_BUOY_VIEW_CENTER_TOOLTIP                                    :{BLACK}Wyśrodkuj widok główny na lokalizacji boi. Użyj Ctrl, aby otworzyć nowy podgląd na jej lokalizację
 STR_BUOY_VIEW_CHANGE_BUOY_NAME                                  :{BLACK}Zmień nazwę boi
 
 STR_EDIT_WAYPOINT_NAME                                          :{WHITE}Edytuj nazwę posterunku
@@ -4245,9 +4245,9 @@ STR_FINANCES_MAX_LOAN                                           :{WHITE}Maksymal
 STR_FINANCES_TOTAL_CURRENCY                                     :{BLACK}{CURRENCY_LONG}
 STR_FINANCES_BANK_BALANCE                                       :{WHITE}{CURRENCY_LONG}
 STR_FINANCES_BORROW_BUTTON                                      :{BLACK}Pożycz {CURRENCY_LONG}
-STR_FINANCES_BORROW_TOOLTIP                                     :{BLACK}Zwiększ wielkość pożyczki. Ctrl+klik pożycza największą możliwą kwotę
+STR_FINANCES_BORROW_TOOLTIP                                     :{BLACK}Zwiększ wielkość pożyczki. Użyj Ctrl, aby pożyczyć największą możliwą kwotę pożyczki
 STR_FINANCES_REPAY_BUTTON                                       :{BLACK}Zwróć {CURRENCY_LONG}
-STR_FINANCES_REPAY_TOOLTIP                                      :{BLACK}Spłać część pożyczki. Ctrl+klik spłaca największą możliwą kwotę pożyczki
+STR_FINANCES_REPAY_TOOLTIP                                      :{BLACK}Spłać część pożyczki. Użyj Ctrl, aby spłacić największą możliwą kwotę pożyczki
 STR_FINANCES_INFRASTRUCTURE_BUTTON                              :{BLACK}Infrastruktura
 
 # Company view
@@ -4323,7 +4323,7 @@ STR_INDUSTRY_DIRECTORY_ITEM_PROD1                               :{ORANGE}{INDUST
 STR_INDUSTRY_DIRECTORY_ITEM_PROD2                               :{ORANGE}{INDUSTRY} {STRING}, {STRING}
 STR_INDUSTRY_DIRECTORY_ITEM_PROD3                               :{ORANGE}{INDUSTRY} {STRING}, {STRING}, {STRING}
 STR_INDUSTRY_DIRECTORY_ITEM_PRODMORE                            :{ORANGE}{INDUSTRY} {STRING}, {STRING}, {STRING} i {NUM} więcej...
-STR_INDUSTRY_DIRECTORY_LIST_CAPTION                             :{BLACK}Nazwy przedsiębiorstw - kliknij na nazwę przedsiębiorstwa, aby wyśrodkować na nim widok główny. Ctrl+klik otwiera nowy podgląd na lokalizację przedsiębiorstwa
+STR_INDUSTRY_DIRECTORY_LIST_CAPTION                             :{BLACK}Nazwy przedsiębiorstw - kliknij na nazwę przedsiębiorstwa, aby wyśrodkować na nim widok główny. Użyj Ctrl, aby otworzyć nowy podgląd na jego lokalizację
 STR_INDUSTRY_DIRECTORY_ACCEPTED_CARGO_FILTER                    :{BLACK}Akceptowany ładunek: {SILVER}{STRING}
 STR_INDUSTRY_DIRECTORY_PRODUCED_CARGO_FILTER                    :{BLACK}Produkowany ładunek: {SILVER}{STRING}
 STR_INDUSTRY_DIRECTORY_FILTER_ALL_TYPES                         :Wszystkie typy ładunków
@@ -4334,7 +4334,7 @@ STR_INDUSTRY_VIEW_CAPTION                                       :{WHITE}{INDUSTR
 STR_INDUSTRY_VIEW_PRODUCTION_LAST_MONTH_TITLE                   :{BLACK}Wyprodukowano w poprzednim miesiącu:
 STR_INDUSTRY_VIEW_PRODUCTION_LAST_MINUTE_TITLE                  :{BLACK}Wyprodukowano w poprzedniej minucie:
 STR_INDUSTRY_VIEW_TRANSPORTED                                   :{YELLOW}{CARGO_LONG}{STRING}{BLACK} ({COMMA}% przetransportowano)
-STR_INDUSTRY_VIEW_LOCATION_TOOLTIP                              :{BLACK}Wyśrodkuj widok główny na lokalizacji przedsiębiorstwa. Ctrl+klik otwiera nowy podgląd na jego lokalizację
+STR_INDUSTRY_VIEW_LOCATION_TOOLTIP                              :{BLACK}Wyśrodkuj widok główny na lokalizacji przedsiębiorstwa. Użyj Ctrl, aby otworzyć nowy podgląd na jego lokalizację
 STR_INDUSTRY_VIEW_PRODUCTION_LEVEL                              :{BLACK}Poziom produkcji: {YELLOW}{COMMA}%
 STR_INDUSTRY_VIEW_INDUSTRY_ANNOUNCED_CLOSURE                    :{YELLOW}Przedsiębiorstwo ogłosiło likwidację!
 
@@ -4409,7 +4409,7 @@ STR_GROUP_CREATE_TOOLTIP                                        :{BLACK}Kliknij 
 STR_GROUP_DELETE_TOOLTIP                                        :{BLACK}Usuń zaznaczoną grupę
 STR_GROUP_RENAME_TOOLTIP                                        :{BLACK}Zmień nazwę zaznaczonej grupy
 STR_GROUP_LIVERY_TOOLTIP                                        :{BLACK}Zmień kolor zaznaczonej grupy
-STR_GROUP_REPLACE_PROTECTION_TOOLTIP                            :{BLACK}Kliknij, aby chronić tę grupę przed globalną zamianą pojazdów. Ctrl+klik, aby chronić również podgrupy
+STR_GROUP_REPLACE_PROTECTION_TOOLTIP                            :{BLACK}Kliknij, aby chronić tę grupę przed globalną zamianą pojazdów. Użyj Ctrl, aby chronić również podgrupy
 
 STR_QUERY_GROUP_DELETE_CAPTION                                  :{WHITE}Skasuj grupę
 STR_GROUP_DELETE_QUERY_TEXT                                     :{WHITE}Czy na pewno chcesz skasować tę grupę i wszystkie podrzędne?
@@ -4477,10 +4477,10 @@ STR_CARGO_TYPE_FILTER_FREIGHT                                   :Fracht
 STR_CARGO_TYPE_FILTER_NONE                                      :Żaden
 
 ###length VEHICLE_TYPES
-STR_BUY_VEHICLE_TRAIN_LIST_TOOLTIP                              :{BLACK}Lista wyboru pociągów. Kliknij na pojazd, aby uzyskać informacje. Ctrl+klik przełącza wyświetlanie/ukrywanie typu pojazdu
-STR_BUY_VEHICLE_ROAD_VEHICLE_LIST_TOOLTIP                       :{BLACK}Lista wyboru pojazdów drogowych. Kliknij na pojazd, aby uzyskać informacje. Ctrl+klik przełącza wyświetlanie/ukrywanie typu pojazdu
-STR_BUY_VEHICLE_SHIP_LIST_TOOLTIP                               :{BLACK}Lista wyboru statków. Kliknij na statek, aby uzyskać informacje. Ctrl+klik przełącza wyświetlanie/ukrywanie typu statku
-STR_BUY_VEHICLE_AIRCRAFT_LIST_TOOLTIP                           :{BLACK}Lista wyboru samolotów. Kliknij na samolot, aby uzyskać informacje. Ctrl+klik przełącza wyświetlanie/ukrywanie typu samolotu
+STR_BUY_VEHICLE_TRAIN_LIST_TOOLTIP                              :{BLACK}Lista wyboru pociągów. Kliknij na pojazd, aby uzyskać informacje. Użyj Ctrl, aby wyświetlić/ukryć ten typ pojazdu
+STR_BUY_VEHICLE_ROAD_VEHICLE_LIST_TOOLTIP                       :{BLACK}Lista wyboru pojazdów drogowych. Kliknij na pojazd, aby uzyskać informacje. Użyj Ctrl, aby wyświetlić/ukryć ten typ pojazdu
+STR_BUY_VEHICLE_SHIP_LIST_TOOLTIP                               :{BLACK}Lista wyboru statków. Kliknij na statek, aby uzyskać informacje. Użyj Ctrl, aby wyświetlić/ukryć ten typ statku
+STR_BUY_VEHICLE_AIRCRAFT_LIST_TOOLTIP                           :{BLACK}Lista wyboru samolotów. Kliknij na samolot, aby uzyskać informacje. Użyj Ctrl, aby wyświetlić/ukryć ten typ samolotu
 
 ###length VEHICLE_TYPES
 STR_BUY_VEHICLE_TRAIN_BUY_VEHICLE_BUTTON                        :{BLACK}Kup tabor kolejowy
@@ -4554,7 +4554,7 @@ STR_DEPOT_VEHICLE_TOOLTIP_CHAIN                                 :{BLACK}{NUM} po
 STR_DEPOT_VEHICLE_TOOLTIP_CARGO                                 :{}{CARGO_LONG} ({CARGO_SHORT})
 
 ###length VEHICLE_TYPES
-STR_DEPOT_TRAIN_LIST_TOOLTIP                                    :{BLACK}Pociągi - przeciągnij pojazd/wagon lewym przyciskiem myszy, aby go dodać/usunąć ze składu pociągu; kliknij prawym, aby uzyskać o nim informacje. Ctrl+klik wykona te funkcje dla ciągu wagonów aż do ostatniego
+STR_DEPOT_TRAIN_LIST_TOOLTIP                                    :{BLACK}Pociągi - przeciągnij pojazd lewym przyciskiem myszy, aby go dodać/usunąć ze składu pociągu; kliknij prawym, aby uzyskać o nim informacje. Użyj Ctrl, aby wykonać te funkcje dla tego pojazdu i kolejnych
 STR_DEPOT_ROAD_VEHICLE_LIST_TOOLTIP                             :{BLACK}Pojazdy - prawy klik na pojeździe pozwala uzyskać więcej informacji
 STR_DEPOT_SHIP_LIST_TOOLTIP                                     :{BLACK}Statki - prawy klik pozwala uzyskać informacje o statku
 STR_DEPOT_AIRCRAFT_LIST_TOOLTIP                                 :{BLACK}Samolot - prawy klik na samolocie pozwala uzyskać informacje
@@ -4602,10 +4602,10 @@ STR_DEPOT_CLONE_SHIP_DEPOT_INFO                                 :{BLACK}Kup kopi
 STR_DEPOT_CLONE_AIRCRAFT_INFO_HANGAR_WINDOW                     :{BLACK}Kup kopię samolotu. Kliknij na ten przycisk, a następnie na samolot wewnątrz lub na zewnątrz hangaru. Użyj Ctrl, aby współdzielić polecenia. Użyj Shift, aby tylko wyświetlić szacunkowy koszt
 
 ###length VEHICLE_TYPES
-STR_DEPOT_TRAIN_LOCATION_TOOLTIP                                :{BLACK}Wyśrodkuj widok główny na lokalizacji warsztatów. Ctrl+klik otwiera nowy podgląd na ich lokalizację
-STR_DEPOT_ROAD_VEHICLE_LOCATION_TOOLTIP                         :{BLACK}Wyśrodkuj widok główny na lokalizacji zajezdni samochodowej. Ctrl+klik otwiera nowy podgląd na jej lokalizację
-STR_DEPOT_SHIP_LOCATION_TOOLTIP                                 :{BLACK}Wyśrodkuj widok główny na lokalizacji stoczni. Ctrl+klik otwiera nowy podgląd na jej lokalizację
-STR_DEPOT_AIRCRAFT_LOCATION_TOOLTIP                             :{BLACK}Wyśrodkuj widok główny na lokalizacji hangaru. Ctrl+klik otwiera nowy podgląd na jego lokalizację
+STR_DEPOT_TRAIN_LOCATION_TOOLTIP                                :{BLACK}Wyśrodkuj widok główny na lokalizacji warsztatów. Użyj Ctrl, aby otworzyć nowy podgląd na ich lokalizację
+STR_DEPOT_ROAD_VEHICLE_LOCATION_TOOLTIP                         :{BLACK}Wyśrodkuj widok główny na lokalizacji zajezdni samochodowej. Użyj Ctrl, aby otworzyć nowy podgląd na jej lokalizację
+STR_DEPOT_SHIP_LOCATION_TOOLTIP                                 :{BLACK}Wyśrodkuj widok główny na lokalizacji stoczni. Użyj Ctrl, aby otworzyć nowy podgląd na jej lokalizację
+STR_DEPOT_AIRCRAFT_LOCATION_TOOLTIP                             :{BLACK}Wyśrodkuj widok główny na lokalizacji hangaru. Użyj Ctrl, aby otworzyć nowy podgląd na jego lokalizację
 
 ###length VEHICLE_TYPES
 STR_DEPOT_VEHICLE_ORDER_LIST_TRAIN_TOOLTIP                      :{BLACK}Pokaż listę wszystkich pociągów z tymi warsztatami w swoich poleceniach
@@ -4717,27 +4717,27 @@ STR_REPLACE_REMOVE_WAGON_GROUP_HELP                             :{STRING}. Ctrl+
 STR_VEHICLE_VIEW_CAPTION                                        :{WHITE}{VEHICLE}
 
 ###length VEHICLE_TYPES
-STR_VEHICLE_VIEW_TRAIN_CENTER_TOOLTIP                           :{BLACK}Wyśrodkuj widok główny na miejscu, w którym znajduje się pociąg. Podwójne kliknięcie spowoduje podążanie za nim w widoku głównym. Ctrl+klik otwiera nowy podgląd miejsca, w którym się znajduje
-STR_VEHICLE_VIEW_ROAD_VEHICLE_CENTER_TOOLTIP                    :{BLACK}Wyśrodkuj widok główny na miejscu, w którym znajduje się pojazd. Podwójne kliknięcie spowoduje podążanie za nim w widoku głównym. Ctrl+klik otwiera nowy podgląd miejsca, w którym się znajduje
-STR_VEHICLE_VIEW_SHIP_CENTER_TOOLTIP                            :{BLACK}Wyśrodkuj widok główny na miejscu, w którym znajduje się statek. Podwójne kliknięcie spowoduje podążanie za nim w widoku głównym. Ctrl+klik otwiera nowy podgląd miejsca, w którym się znajduje
-STR_VEHICLE_VIEW_AIRCRAFT_CENTER_TOOLTIP                        :{BLACK}Wyśrodkuj widok główny na miejscu, w którym znajduje się samolot. Podwójne kliknięcie spowoduje podążanie za nim w widoku głównym. Ctrl+klik otwiera nowy podgląd miejsca, w którym się znajduje
+STR_VEHICLE_VIEW_TRAIN_CENTER_TOOLTIP                           :{BLACK}Wyśrodkuj widok główny na miejscu, w którym znajduje się pociąg. Kliknij dwukrotnie, aby podążać za nim w widoku głównym. Użyj Ctrl, aby otworzyć nowy podgląd na jego lokalizację
+STR_VEHICLE_VIEW_ROAD_VEHICLE_CENTER_TOOLTIP                    :{BLACK}Wyśrodkuj widok główny na miejscu, w którym znajduje się pojazd. Kliknij dwukrotnie, aby podążać za nim w widoku głównym. Użyj Ctrl, aby otworzyć nowy podgląd na jego lokalizację
+STR_VEHICLE_VIEW_SHIP_CENTER_TOOLTIP                            :{BLACK}Wyśrodkuj widok główny na miejscu, w którym znajduje się statek. Kliknij dwukrotnie, aby podążać za nim w widoku głównym. Użyj Ctrl, aby otworzyć nowy podgląd na jego lokalizację
+STR_VEHICLE_VIEW_AIRCRAFT_CENTER_TOOLTIP                        :{BLACK}Wyśrodkuj widok główny na miejscu, w którym znajduje się samolot. Kliknij dwukrotnie, aby podążać za nim w widoku głównym. Użyj Ctrl, aby otworzyć nowy podgląd na jego lokalizację
 
 ###length VEHICLE_TYPES
-STR_VEHICLE_VIEW_TRAIN_SEND_TO_DEPOT_TOOLTIP                    :{BLACK}Wyślij pociąg do warsztatów. Ctrl - tylko serwis
-STR_VEHICLE_VIEW_ROAD_VEHICLE_SEND_TO_DEPOT_TOOLTIP             :{BLACK}Wyślij pojazd do zajezdni. Ctrl - tylko serwis
-STR_VEHICLE_VIEW_SHIP_SEND_TO_DEPOT_TOOLTIP                     :{BLACK}Wyślij statek do stoczni. Ctrl - tylko serwis
-STR_VEHICLE_VIEW_AIRCRAFT_SEND_TO_DEPOT_TOOLTIP                 :{BLACK}Wyślij samolot do hangaru. Ctrl - tylko serwis
+STR_VEHICLE_VIEW_TRAIN_SEND_TO_DEPOT_TOOLTIP                    :{BLACK}Wyślij pociąg do warsztatów. Użyj Ctrl, aby tylko serwisować
+STR_VEHICLE_VIEW_ROAD_VEHICLE_SEND_TO_DEPOT_TOOLTIP             :{BLACK}Wyślij pojazd do zajezdni. Użyj Ctrl, aby tylko serwisować
+STR_VEHICLE_VIEW_SHIP_SEND_TO_DEPOT_TOOLTIP                     :{BLACK}Wyślij statek do stoczni. Użyj Ctrl, aby tylko serwisować
+STR_VEHICLE_VIEW_AIRCRAFT_SEND_TO_DEPOT_TOOLTIP                 :{BLACK}Wyślij samolot do hangaru. Użyj Ctrl, aby tylko serwisować
 
 ###length VEHICLE_TYPES
-STR_VEHICLE_VIEW_CLONE_TRAIN_INFO                               :{BLACK}Spowoduje zakup kopii pociągu wraz ze wszystkimi wagonami. Ctrl+klik spowoduje współdzielenie poleceń. Shift+klik tylko pokazuje szacowany koszt
-STR_VEHICLE_VIEW_CLONE_ROAD_VEHICLE_INFO                        :{BLACK}Spowoduje zakup kopii pojazdu drogowego. Ctrl+klik spowoduje współdzielenie poleceń. Shift+klik tylko pokazuje szacowany koszt
-STR_VEHICLE_VIEW_CLONE_SHIP_INFO                                :{BLACK}Spowoduje zakup kopii statku. Ctrl+klik spowoduje współdzielenie poleceń. Shift+klik tylko pokazuje szacunkowy koszt
-STR_VEHICLE_VIEW_CLONE_AIRCRAFT_INFO                            :{BLACK}Spowoduje zakup kopii samolotu. Ctrl+klik spowoduje współdzielenie poleceń. Shift+klik pokazuje tylko szacowany koszt
+STR_VEHICLE_VIEW_CLONE_TRAIN_INFO                               :{BLACK}Kup kopię pociągu wraz ze wszystkimi wagonami. Użyj Ctrl, aby współdzielić polecenia. Użyj Shift, aby tylko wyświetlić szacunkowy koszt
+STR_VEHICLE_VIEW_CLONE_ROAD_VEHICLE_INFO                        :{BLACK}Kup kopię pojazdu drogowego. Użyj Ctrl, aby współdzielić polecenia. Użyj Shift, aby tylko wyświetlić szacunkowy koszt
+STR_VEHICLE_VIEW_CLONE_SHIP_INFO                                :{BLACK}Kup kopię statku. Użyj Ctrl, aby współdzielić polecenia. Użyj Shift, aby tylko wyświetlić szacunkowy koszt
+STR_VEHICLE_VIEW_CLONE_AIRCRAFT_INFO                            :{BLACK}Kup kopię samolotu. Użyj Ctrl, aby współdzielić polecenia. Użyj Shift, aby tylko wyświetlić szacunkowy koszt
 
 STR_VEHICLE_VIEW_TRAIN_IGNORE_SIGNAL_TOOLTIP                    :{BLACK}Wymuszony start pociągu bez czekania na sygnał
 STR_VEHICLE_VIEW_TRAIN_REVERSE_TOOLTIP                          :{BLACK}Odwróć kierunek jazdy pociągu
 STR_VEHICLE_VIEW_ROAD_VEHICLE_REVERSE_TOOLTIP                   :{BLACK}Zmuś pojazd do zawrócenia
-STR_VEHICLE_VIEW_ORDER_LOCATION_TOOLTIP                         :{BLACK}Wyśrodkuj widok główny na miejscu docelowym polecenia. Ctrl+klik otwiera nowy podgląd na jego lokalizację
+STR_VEHICLE_VIEW_ORDER_LOCATION_TOOLTIP                         :{BLACK}Wyśrodkuj widok główny na miejscu docelowym polecenia. Użyj Ctrl, aby otworzyć nowy podgląd na jego lokalizację
 
 ###length VEHICLE_TYPES
 STR_VEHICLE_VIEW_TRAIN_REFIT_TOOLTIP                            :{BLACK}Przebudowa pociągu do przewozu innego typu ładunku
@@ -4884,7 +4884,7 @@ STR_REFIT_NEW_CAPACITY_COST_OF_REFIT                            :{BLACK}Nowa ła
 STR_REFIT_NEW_CAPACITY_INCOME_FROM_REFIT                        :{BLACK}Nowa ładowność: {GOLD}{CARGO_LONG}{}{BLACK}Przychód z przebudowy: {GREEN}{CURRENCY_LONG}
 STR_REFIT_NEW_CAPACITY_COST_OF_AIRCRAFT_REFIT                   :{BLACK}Nowa ładowność: {GOLD}{CARGO_LONG}, {GOLD}{CARGO_LONG}{}{BLACK}Koszt przebudowy: {RED}{CURRENCY_LONG}
 STR_REFIT_NEW_CAPACITY_INCOME_FROM_AIRCRAFT_REFIT               :{BLACK}Nowa ładowność: {GOLD}{CARGO_LONG}, {GOLD}{CARGO_LONG}{}{BLACK}Przychód z przebudowy: {GREEN}{CURRENCY_LONG}
-STR_REFIT_SELECT_VEHICLES_TOOLTIP                               :{BLACK}Wybierz pojazdy/wagony do przebudowania. Klik+przeciągnięcie zaznacza wiele pojazdów/wagonów. Kliknięcie na puste pole zaznacza cały pojazd. Ctrl+klik zaznacza pojazd/wagon i następne aż do ostatniego
+STR_REFIT_SELECT_VEHICLES_TOOLTIP                               :{BLACK}Wybierz pojazdy do przebudowania. Kliknij i przeciągnij, aby zaznaczyć wiele pojazdów. Kliknij na puste pole, aby zaznaczyć cały skład. Użyj Ctrl, aby zaznaczyć ten pojazd i kolejne
 
 ###length VEHICLE_TYPES
 STR_REFIT_TRAIN_LIST_TOOLTIP                                    :{BLACK}Wybierz jaki ładunek ma przewozić pociąg
@@ -5107,24 +5107,24 @@ STR_TIMETABLE_STATUS_START_AT_DATE                              :{BLACK}Ten rozk
 STR_TIMETABLE_STATUS_START_IN_SECONDS                           :{BLACK}Ten rozkład jazdy rozpocznie się za {COMMA} sekund{P ę y ""}
 
 STR_TIMETABLE_START                                             :{BLACK}Początek rozkładu
-STR_TIMETABLE_START_TOOLTIP                                     :{BLACK}Wybierz moment rozpoczęcia tego rozkładu jazdy. Ctrl+klik rozłoży równomiernie momenty startu wszystkich pojazdów współdzielących te polecenia w oparciu o ich względną kolejność, o ile rozkład jest w pełni zaplanowany
+STR_TIMETABLE_START_TOOLTIP                                     :{BLACK}Wybierz moment rozpoczęcia tego rozkładu jazdy. Użyj Ctrl, aby rozłożyć równomiernie momenty startu wszystkich pojazdów współdzielących te polecenia w oparciu o ich względną kolejność, o ile rozkład jest w pełni zaplanowany
 
 STR_TIMETABLE_START_SECONDS_QUERY                               :Sekundy do uruchomienia rozkładu jazdy
 
 STR_TIMETABLE_CHANGE_TIME                                       :{BLACK}Zmień czas
-STR_TIMETABLE_WAIT_TIME_TOOLTIP                                 :{BLACK}Zmień ilość czasu, jaką powinno zająć zaznaczone polecenie. Ctrl+klik ustala czas dla wszystkich poleceń
+STR_TIMETABLE_WAIT_TIME_TOOLTIP                                 :{BLACK}Ustal ilość czasu, jaką powinno zająć zaznaczone polecenie. Użyj Ctrl, aby ustalić taki czas dla wszystkich poleceń
 
 STR_TIMETABLE_CLEAR_TIME                                        :{BLACK}Usuń czas
 STR_TIMETABLE_CLEAR_TIME_TOOLTIP                                :{BLACK}Wyczyść podany czas w zaznaczonym poleceniu. Użyj Ctrl, aby wyczyścić czasy we wszystkich poleceniach
 
 STR_TIMETABLE_CHANGE_SPEED                                      :{BLACK}Zmień limit prędkości
-STR_TIMETABLE_CHANGE_SPEED_TOOLTIP                              :{BLACK}Zmień maksymalną prędkość przejazdu w zaznaczonym poleceniu. Ctrl+klik zmieni prędkość we wszystkich poleceniach
+STR_TIMETABLE_CHANGE_SPEED_TOOLTIP                              :{BLACK}Ustal maksymalną prędkość przejazdu w zaznaczonym poleceniu. Użyj Ctrl, aby ustalić taką prędkość we wszystkich poleceniach
 
 STR_TIMETABLE_CLEAR_SPEED                                       :{BLACK}Wyczyść limit prędkości
-STR_TIMETABLE_CLEAR_SPEED_TOOLTIP                               :{BLACK}Wyczyść maksymalną prędkość przejazdu w zaznaczonym poleceniu. Ctrl+klik wyczyści prędkość we wszystkich poleceniach
+STR_TIMETABLE_CLEAR_SPEED_TOOLTIP                               :{BLACK}Wyczyść maksymalną prędkość przejazdu w zaznaczonym poleceniu. Użyj Ctrl, aby wyczyścić prędkości we wszystkich poleceniach
 
 STR_TIMETABLE_RESET_LATENESS                                    :{BLACK}Wyzeruj spóźnienia
-STR_TIMETABLE_RESET_LATENESS_TOOLTIP                            :{BLACK}Wyzeruj licznik spóźnienia, aby pojazd podróżował zgodnie z rozkładem jazdy. Ctrl+klik spowoduje wyzerowanie całej grupy, więc ostatni pojazd będzie punktualny, a wszystkie pozostałe będą przed czasem
+STR_TIMETABLE_RESET_LATENESS_TOOLTIP                            :{BLACK}Wyzeruj licznik spóźnienia, aby pojazd podróżował zgodnie z rozkładem jazdy. Użyj Ctrl, aby wyzerować całą grupę, dzięki czemu ostatni pojazd będzie punktualny, a wszystkie pozostałe będą przed czasem
 
 STR_TIMETABLE_AUTOFILL                                          :{BLACK}Automat. wypełnienie
 STR_TIMETABLE_AUTOFILL_TOOLTIP                                  :{BLACK}Wypełnij automatycznie rozkład jazdy wartościami z następnego przejazdu. Ctrl+klik, aby spróbować utrzymać czasy oczekiwania
@@ -5164,9 +5164,9 @@ STR_AI_DEBUG_MATCH_CASE                                         :{BLACK}Uwzględ
 STR_AI_DEBUG_MATCH_CASE_TOOLTIP                                 :{BLACK}Przełącz uwzględnianie wielkości liter przy porównywaniu wyrazu przerywającego
 STR_AI_DEBUG_CONTINUE                                           :{BLACK}Kontynuuj
 STR_AI_DEBUG_CONTINUE_TOOLTIP                                   :{BLACK}Odpauzowanie i kontynuuowanie SI
-STR_AI_DEBUG_SELECT_AI_TOOLTIP                                  :{BLACK}Pokaż okno debugowania tej SI. Ctrl+klik otworzy w nowym oknie
+STR_AI_DEBUG_SELECT_AI_TOOLTIP                                  :{BLACK}Pokaż okno debugowania tej SI. Użyj Ctrl, aby otworzyć w nowym oknie
 STR_AI_GAME_SCRIPT                                              :{BLACK}Game Script
-STR_AI_GAME_SCRIPT_TOOLTIP                                      :{BLACK}Sprawdź log Game Script. Ctrl+klik otworzy w nowym oknie
+STR_AI_GAME_SCRIPT_TOOLTIP                                      :{BLACK}Sprawdź log tego Game Script. Użyj Ctrl, aby otworzyć w nowym oknie
 
 STR_ERROR_AI_NO_AI_FOUND                                        :Nie znaleziono SI do wczytania.{}SI jest nieaktywne i nic nie robi.{}Możesz pobrać kilka SI z przeglądarki „Dodatków Online”
 STR_ERROR_AI_PLEASE_REPORT_CRASH                                :{WHITE}Jeden z uruchomionych skryptów przestał działać. Prosimy o zgłoszenie tego autorowi skryptu dołączając zrzut ekranu okna debugowania SI / GameScript
@@ -5195,7 +5195,7 @@ STR_AI_CONFIG_AI                                                :{SILVER}SI
 
 STR_AI_CONFIG_CHANGE_AI                                         :{BLACK}Wybierz SI
 STR_AI_CONFIG_CHANGE_GAMESCRIPT                                 :{BLACK}Wybierz Game Script
-STR_AI_CONFIG_CHANGE_TOOLTIP                                    :{BLACK}Wczytaj inny skrypt. Ctrl+klik, aby wyświetlić wszystkie dostępne wersje
+STR_AI_CONFIG_CHANGE_TOOLTIP                                    :{BLACK}Wczytaj inny skrypt. Użyj Ctrl, aby wyświetlić wszystkie dostępne wersje
 STR_AI_CONFIG_CONFIGURE                                         :{BLACK}Konfiguruj
 STR_AI_CONFIG_CONFIGURE_TOOLTIP                                 :{BLACK}Konfiguruj parametry skryptu
 

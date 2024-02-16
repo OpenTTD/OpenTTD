@@ -394,7 +394,7 @@ STR_TOOLBAR_TOOLTIP_DISPLAY_STORY_BOOK                          :{BLACK}Hikaye k
 STR_TOOLBAR_TOOLTIP_DISPLAY_GOALS_LIST                          :{BLACK}Hedef listesini görüntüle
 STR_TOOLBAR_TOOLTIP_DISPLAY_GRAPHS                              :{BLACK}Şirket grafiğini ve kargo ödeme oranlarını görüntüleyin
 STR_TOOLBAR_TOOLTIP_DISPLAY_COMPANY_LEAGUE                      :{BLACK}Şirketler ligini göster
-STR_TOOLBAR_TOOLTIP_FUND_CONSTRUCTION_OF_NEW                    :{BLACK}Endüstrileri inceleyin veya yeni endüstri inşasını fonlayın
+STR_TOOLBAR_TOOLTIP_FUND_CONSTRUCTION_OF_NEW                    :{BLACK}Fabrika listesini aç, Endistüri akışını görüntüle, ya da yeni Fabrika inşaa et
 STR_TOOLBAR_TOOLTIP_DISPLAY_LIST_OF_COMPANY_TRAINS              :{BLACK}Şirkete ait trenleri listele. Ctrl+Sol tıklama ile grup/araç listesini açar veya kapatır
 STR_TOOLBAR_TOOLTIP_DISPLAY_LIST_OF_COMPANY_ROAD_VEHICLES       :{BLACK}Şirkete ait karayolu taşıtlarını listele. Ctrl+Sol tıklama ile grup/araç listesini açıp kapatır
 STR_TOOLBAR_TOOLTIP_DISPLAY_LIST_OF_COMPANY_SHIPS               :{BLACK}Şirkete ait gemileri listele. Ctrl+Sol tık ile grup/araç listesini açar veya kapatır
@@ -407,9 +407,9 @@ STR_TOOLBAR_TOOLTIP_BUILD_TRAMWAYS                              :{BLACK}Tramvay 
 STR_TOOLBAR_TOOLTIP_BUILD_SHIP_DOCKS                            :{BLACK}Denizyolları inşaası
 STR_TOOLBAR_TOOLTIP_BUILD_AIRPORTS                              :{BLACK}Havalimanı yapımı
 STR_TOOLBAR_TOOLTIP_LANDSCAPING                                 :{BLACK}Arazi düzenleme araç çubuğunu aç (ağaç dikme, alçaltma/yükseltme vb. için).
-STR_TOOLBAR_TOOLTIP_SHOW_SOUND_MUSIC_WINDOW                     :{BLACK}Ses/müzik penceresini göster
+STR_TOOLBAR_TOOLTIP_SHOW_SOUND_MUSIC_WINDOW                     :{BLACK}Ses/müzik penceresini aç
 STR_TOOLBAR_TOOLTIP_SHOW_LAST_MESSAGE_NEWS                      :{BLACK}Son mesajı/haberi göster, mesaj geçmişini göster veya tüm mesajları sil
-STR_TOOLBAR_TOOLTIP_LAND_BLOCK_INFORMATION                      :{BLACK}Arazi bilgisi, ekran görüntüsü, OpenTTD ve geliştirici araçları hakkında
+STR_TOOLBAR_TOOLTIP_LAND_BLOCK_INFORMATION                      :{BLACK}Arazi bilgisi, ekran görüntüsü menüsü, OpenTTD katkıda bulunanlarını ve geliştirici araçları'nı aç
 STR_TOOLBAR_TOOLTIP_SWITCH_TOOLBAR                              :{BLACK}Araç çubuklarını değiştir
 
 # Extra tooltips for the scenario editor toolbar
@@ -1583,7 +1583,7 @@ STR_CONFIG_SETTING_ROUGHNESS_OF_TERRAIN_ROUGH                   :Engebeli
 STR_CONFIG_SETTING_ROUGHNESS_OF_TERRAIN_VERY_ROUGH              :Çok Engebeli
 
 STR_CONFIG_SETTING_VARIETY                                      :Çeşitlilik dağılımı: {STRING}
-STR_CONFIG_SETTING_VARIETY_HELPTEXT                             :(Sadece TerraGenesis) Haritanın hem dağlık hem de düz alanlar içerip içermeyeceğini denetleyin. Bu haritayı sadece düz yapacağı için, diğer seçenek dağlı seçilmeli.
+STR_CONFIG_SETTING_VARIETY_HELPTEXT                             :Haritanın hem dağları hem de düz alanları içerip içermediğini seçin. Çeşitlilik arttıkça dağlık ve düz alanlar arasındaki yükseklik farkı da artar.
 
 STR_CONFIG_SETTING_RIVER_AMOUNT                                 :Nehir miktarı: {STRING}
 STR_CONFIG_SETTING_RIVER_AMOUNT_HELPTEXT                        :Kaç tane nehir oluşturulacağını seçin
@@ -1832,7 +1832,7 @@ STR_CONFIG_SETTING_SERVINT_AIRCRAFT                             :Hava araçları
 STR_CONFIG_SETTING_SERVINT_AIRCRAFT_HELPTEXT                    :Yeni hava araçları için varsayılan bakım aralığını ayarlar, eğer araç için özel bir bakım aralığı belirtilmemişse geçerlidir
 STR_CONFIG_SETTING_SERVINT_SHIPS                                :Gemiler için varsayılan bakım aralığı: {STRING}
 STR_CONFIG_SETTING_SERVINT_SHIPS_HELPTEXT                       :Yeni gemiler için varsayılan bakım aralığını ayarlar, eğer araç için özel bir bakım aralığı belirtilmemişse geçerlidir
-STR_CONFIG_SETTING_SERVINT_VALUE                                :{COMMA}{NBSP}gün/%
+STR_CONFIG_SETTING_SERVINT_VALUE                                :{COMMA}{NBSP}%gün/dakika
 ###setting-zero-is-special
 STR_CONFIG_SETTING_SERVINT_DISABLED                             :Etkisiz
 
@@ -2266,8 +2266,8 @@ STR_LIVERY_TRAIN_GROUP_TOOLTIP                                  :{BLACK}Tren lis
 STR_LIVERY_ROAD_VEHICLE_GROUP_TOOLTIP                           :{BLACK}Karayolu araç listesi renklerini göster
 STR_LIVERY_SHIP_GROUP_TOOLTIP                                   :{BLACK}Gemi listelerinin renklerini göster
 STR_LIVERY_AIRCRAFT_GROUP_TOOLTIP                               :{BLACK}Uçak listelerinin renklerini göster
-STR_LIVERY_PRIMARY_TOOLTIP                                      :{BLACK}Seçili düzen için birincil rengi seç. Ctrl ile tıklama bu rengi bütün düzenler için kaydedecek
-STR_LIVERY_SECONDARY_TOOLTIP                                    :{BLACK}Seçili düzen için ikincil rengi seç. Ctrl ile tıklama bu rengi bütün düzenler için kaydedecek
+STR_LIVERY_PRIMARY_TOOLTIP                                      :{BLACK}Seçili düzen için birincil rengi seç. Ctrl + Sol Tık bu rengi bütün düzenler için kaydedecek
+STR_LIVERY_SECONDARY_TOOLTIP                                    :{BLACK}Seçili düzen için ikincil rengi seç. Ctrl + Sol Tık bu rengi bütün düzenler için kaydedecek
 STR_LIVERY_PANEL_TOOLTIP                                        :{BLACK}Değiştirilecek bir renk düzeni seçin ya da CTRL+Tıklama ile birden düzen seçin. Düzenin kullanımını açıp kapatmak için kutuya tıklayın.
 STR_LIVERY_TRAIN_GROUP_EMPTY                                    :Hiç tren listesi oluşturulmadı
 STR_LIVERY_ROAD_VEHICLE_GROUP_EMPTY                             :Herhangibir karayolu araç listesi ayarlanmadı
@@ -2877,7 +2877,7 @@ STR_ROAD_TOOLBAR_TOOLTIP_BUILD_ROAD_VEHICLE_DEPOT               :{BLACK}Garaj in
 STR_ROAD_TOOLBAR_TOOLTIP_BUILD_TRAM_VEHICLE_DEPOT               :{BLACK}Tramvay garı inşa et (araç alımı ve bakımı için). Ayrıca maliyetini görmek için Shift tuşuna basabilirsiniz.
 STR_ROAD_TOOLBAR_TOOLTIP_BUILD_BUS_STATION                      :{BLACK}Otobüs durağı inşa et. Ctrl + Sol Tık istasyonları birleştirmeyi aktif eder. Shift'e basılı tutarak tıklarsanız sadece maliyetini gösterir.
 STR_ROAD_TOOLBAR_TOOLTIP_BUILD_PASSENGER_TRAM_STATION           :{BLACK}Yolcu tramvayı istasyonu inşa et. Ctrl + Sol Tık birleştirmeyi mümkün kılar. Shift'e basılı tutarak tıklarsanız sadece maliyetini gösterir.
-STR_ROAD_TOOLBAR_TOOLTIP_BUILD_TRUCK_LOADING_BAY                :{BLACK}Kamyon yükleme bölgesi inşa et. Ctrl istasyonları birleştirmeyi mümkün kılar. Shift ile tıklama maliyet tahminini gösterir
+STR_ROAD_TOOLBAR_TOOLTIP_BUILD_TRUCK_LOADING_BAY                :{BLACK}Kamyon yükleme bölgesi inşa et. Ctrl + Sol Tık istasyonları birleştirmeyi mümkün kılar. Shift'e basılı tutarak tıklarsanız sadece maliyetini gösterir.
 STR_ROAD_TOOLBAR_TOOLTIP_BUILD_CARGO_TRAM_STATION               :{BLACK}Yük tramvayı istasyonu inşa et. Ctrl + Sol Tık ile tıklayarak istasyonları birleştirebilirsiniz. Shift'e basılı tutarak tıklarsanız sadece maliyetini gösterir.
 STR_ROAD_TOOLBAR_TOOLTIP_TOGGLE_ONE_WAY_ROAD                    :{BLACK}Tek yönlü yolları etkinleştir/kapat
 STR_ROAD_TOOLBAR_TOOLTIP_BUILD_ROAD_BRIDGE                      :{BLACK}Köprü inşa et. Shift'e basılı tutarak tıklarsanız sadece maliyetini gösterir.
@@ -2886,8 +2886,8 @@ STR_ROAD_TOOLBAR_TOOLTIP_BUILD_ROAD_TUNNEL                      :{BLACK}Tünel i
 STR_ROAD_TOOLBAR_TOOLTIP_BUILD_TRAMWAY_TUNNEL                   :{BLACK}Tramvay tüneli yap. Ayrıca maliyetini görmek için Shift tuşuna basabilirsiniz.
 STR_ROAD_TOOLBAR_TOOLTIP_TOGGLE_BUILD_REMOVE_FOR_ROAD           :{BLACK}Yol yap/sil arasında geçiş yap
 STR_ROAD_TOOLBAR_TOOLTIP_TOGGLE_BUILD_REMOVE_FOR_TRAMWAYS       :{BLACK}Tramvay yapımı/yıkımı
-STR_ROAD_TOOLBAR_TOOLTIP_CONVERT_ROAD                           :{BLACK}Yol türünü Dönüştür/Geliştir. Shift ile tıklama maliyet tahminini gösterir
-STR_ROAD_TOOLBAR_TOOLTIP_CONVERT_TRAM                           :{BLACK}Tramvay türünü dönüştür / yükselt. Shift'e basma maliyet tahmini gösterir.
+STR_ROAD_TOOLBAR_TOOLTIP_CONVERT_ROAD                           :{BLACK}Yol türünü Dönüştür/Geliştir. Shift'e basılı tutarak tıklarsanız sadece maliyetini gösterir.
+STR_ROAD_TOOLBAR_TOOLTIP_CONVERT_TRAM                           :{BLACK}Tramvay türünü dönüştür / yükselt. Shift'e basılı tutarak tıklarsanız sadece maliyetini gösterir.
 
 STR_ROAD_NAME_ROAD                                              :Yol
 STR_ROAD_NAME_TRAM                                              :Tramvay
@@ -2915,10 +2915,10 @@ STR_WATERWAYS_TOOLBAR_BUILD_CANALS_TOOLTIP                      :{BLACK}Kanal in
 STR_WATERWAYS_TOOLBAR_BUILD_LOCKS_TOOLTIP                       :{BLACK}Yükseltme havuzu inşa et. Shift'e basılı tutarak tıklarsanız sadece maliyetini gösterir.
 STR_WATERWAYS_TOOLBAR_BUILD_DEPOT_TOOLTIP                       :{BLACK}Tersane inşa et (gemi satın alımı ve bakımları için). Shift'e basılı tutarak tıklarsanız sadece maliyetini gösterir
 STR_WATERWAYS_TOOLBAR_BUILD_DOCK_TOOLTIP                        :{BLACK}İskele inşa et. Ctrl + Sol tık yaparak başka istasyonlarla birleştirebilirsiniz. Shift'e basılı tutarak tıklarsanız sadece maliyetini gösterir.
-STR_WATERWAYS_TOOLBAR_BUOY_TOOLTIP                              :{BLACK}Yerimi olarak kullanilabilecek bir şamandıra yerlestir. Shift ile tıklama maliyet tahminini gösterir
+STR_WATERWAYS_TOOLBAR_BUOY_TOOLTIP                              :{BLACK}Yerimi olarak kullanilabilecek bir şamandıra yerlestir. Shift'e basılı tutarak tıklarsanız sadece maliyetini gösterir.
 STR_WATERWAYS_TOOLBAR_BUILD_AQUEDUCT_TOOLTIP                    :{BLACK}Su kemeri inşa et. Shift'e basılı tutarak tıklarsanız sadece maliyetini gösterir.
-STR_WATERWAYS_TOOLBAR_CREATE_LAKE_TOOLTIP                       :{BLACK}Su alanını belirle.{}Deniz seviyesinde CTRL tuşu basılı olmadığı sürece kanal yapar, basılıysa etraftakileri su altında bırakır
-STR_WATERWAYS_TOOLBAR_CREATE_RIVER_TOOLTIP                      :{BLACK}Nehir yerleştir. Ctrl tuşu alanı çapraz olarak seçer
+STR_WATERWAYS_TOOLBAR_CREATE_LAKE_TOOLTIP                       :{BLACK}Kanal İnşa Et.  Su seviyesindeyse Ctrl+ Sol Tık yaparak deniz suyu ile taşırabilirsiniz.
+STR_WATERWAYS_TOOLBAR_CREATE_RIVER_TOOLTIP                      :{BLACK}Nehir yerleştir. Ctrl + Sol Tık ile  çapraz olarak seçersiniz.
 
 # Ship depot construction window
 STR_DEPOT_BUILD_SHIP_CAPTION                                    :{WHITE}Tersane Yönü
@@ -2956,14 +2956,14 @@ STR_STATION_BUILD_NOISE                                         :{BLACK}Üretile
 
 # Landscaping toolbar
 STR_LANDSCAPING_TOOLBAR                                         :{WHITE}Arazi düzenleme
-STR_LANDSCAPING_TOOLTIP_LOWER_A_CORNER_OF_LAND                  :{BLACK}Arazinin bir köşesini alçalt. Sürükleme ilk seçilen köşeyi alçaltır ve seçilen araziyi yeni yüksekliğe indirir. Ctrl bir alanı köşeden köşeye seçer. Shift ile tıklama maliyet tahminini gösterir
-STR_LANDSCAPING_TOOLTIP_RAISE_A_CORNER_OF_LAND                  :{BLACK}Arazinin bir köşesini yükselt. Sürükleme ilk seçilen köşeyi yükseltir ve seçilen araziyi yeni yüksekliğe çıkarır. Ctrl bir alanı köşeden köşeye seçer. Shift ile tıklama maliyet tahminini gösterir
+STR_LANDSCAPING_TOOLTIP_LOWER_A_CORNER_OF_LAND                  :{BLACK}Arazinin bir köşesini alçalt. Sürükleme ilk seçilen köşeyi alçaltır ve seçilen araziyi yeni yüksekliğe indirir. Ctrl + Sol Tık ile sürüklerseniz çapraz olarak seçersiniz. Shift'e basılı tutarak tıklarsanız sadece maliyetini gösterir.
+STR_LANDSCAPING_TOOLTIP_RAISE_A_CORNER_OF_LAND                  :{BLACK}Arazinin bir köşesini yükselt. Sürükleme ilk seçilen köşeyi yükseltir ve seçilen araziyi yeni yüksekliğe çıkarır. Ctrl + Sol Tık ile sürüklerseniz çapraz olarak seçersiniz. Shift'e basılı tutarak tıklarsanız sadece maliyetini gösterir.
 STR_LANDSCAPING_LEVEL_LAND_TOOLTIP                              :{BLACK}Bir alanı ilk seçilen köşenin yüksekliğine düzle. Ctrl + Sol Tık ile sürüklerseniz çapraz olarak seçersiniz. Shift'e basılı tutarak tıklarsanız sadece maliyetini gösterir.
-STR_LANDSCAPING_TOOLTIP_PURCHASE_LAND                           :{BLACK}Gelecekte kullanım için arazi satın al. Ctrl alanı çapraz olarak seçer. Shift ile tıklama maliyet tahminini gösterir
+STR_LANDSCAPING_TOOLTIP_PURCHASE_LAND                           :{BLACK}Gelecekte kullanım için arazi satın al. Ctrl + Sol Tık ile sürüklerseniz çapraz olarak seçersiniz. Shift'e basılı tutarak tıklarsanız sadece maliyetini gösterir.
 
 # Object construction window
 STR_OBJECT_BUILD_CAPTION                                        :{WHITE}Nesne Seçimi
-STR_OBJECT_BUILD_TOOLTIP                                        :{BLACK}Yapılacak nesneyi seçin. Ctrl alanı çapraz olarak seçer. Shift ile tıklama maliyet tahminini gösterir
+STR_OBJECT_BUILD_TOOLTIP                                        :{BLACK}Yapılacak nesneyi seçin.Ctrl + Sol Tık'a basılı tutarak sürüklerseniz çapraz olarak seçersiniz. Ayrıca Shift tuşuna basılı tutarsanız sadece maliyetini görüntülersiniz.
 STR_OBJECT_BUILD_CLASS_TOOLTIP                                  :{BLACK}İnşa edilecek nesnenin sınıfını seçin
 STR_OBJECT_BUILD_PREVIEW_TOOLTIP                                :{BLACK}Nesnenin önizlemesi
 STR_OBJECT_BUILD_SIZE                                           :{BLACK}Boyut: {GOLD}{NUM} x {NUM} kare
@@ -3068,7 +3068,7 @@ STR_INDUSTRY_CARGOES_SELECT_INDUSTRY_TOOLTIP                    :{BLACK}Gösterm
 
 # Land area window
 STR_LAND_AREA_INFORMATION_CAPTION                               :{WHITE}Arazi Bilgisi
-STR_LAND_AREA_INFORMATION_LOCATION_TOOLTIP                      :{BLACK}Ana görünümü karonun konumuna ortalar. Ctrl+Sol Tık karonun konumunu gösteren yeni bir pencere açar
+STR_LAND_AREA_INFORMATION_LOCATION_TOOLTIP                      :{BLACK}Ana görünümü karonun konumuna ortalar. Ctrl + Sol Tıklama karonun olduğu yere ait bir görünüm penceresi açar.
 STR_LAND_AREA_INFORMATION_COST_TO_CLEAR_N_A                     :{BLACK}Temizleme fiyatı: {LTBLUE}Yok
 STR_LAND_AREA_INFORMATION_COST_TO_CLEAR                         :{BLACK}Temizleme fiyatı: {RED}{CURRENCY_LONG}
 STR_LAND_AREA_INFORMATION_REVENUE_WHEN_CLEARED                  :{BLACK}Kaldırıldığında kazanılacak: {LTBLUE}{CURRENCY_LONG}
@@ -3080,7 +3080,7 @@ STR_LAND_AREA_INFORMATION_RAIL_OWNER                            :{BLACK}Demiryol
 STR_LAND_AREA_INFORMATION_LOCAL_AUTHORITY                       :{BLACK}Belediyesi: {LTBLUE}{STRING}
 STR_LAND_AREA_INFORMATION_LOCAL_AUTHORITY_NONE                  :Hiçbiri
 STR_LAND_AREA_INFORMATION_LANDINFO_COORDS                       :{BLACK}Koordinatlar: {LTBLUE}{NUM} x {NUM} x {NUM} ({STRING})
-STR_LAND_AREA_INFORMATION_BUILD_DATE                            :{BLACK}Yapım: {LTBLUE}{DATE_LONG}
+STR_LAND_AREA_INFORMATION_BUILD_DATE                            :{BLACK}İnşa/yenileme tarihi: {LTBLUE}{DATE_LONG}
 STR_LAND_AREA_INFORMATION_STATION_CLASS                         :{BLACK}İstasyon sınıfı: {LTBLUE}{STRING}
 STR_LAND_AREA_INFORMATION_STATION_TYPE                          :{BLACK}İstasyon türü: {LTBLUE}{STRING}
 STR_LAND_AREA_INFORMATION_AIRPORT_CLASS                         :{BLACK}Havalimanı sınıfı: {LTBLUE}{STRING}
@@ -3319,7 +3319,7 @@ STR_MAPGEN_NEWGRF_SETTINGS_TOOLTIP                              :{BLACK}NewGRF a
 STR_MAPGEN_AI_SETTINGS                                          :{BLACK}YZ Ayarları
 STR_MAPGEN_AI_SETTINGS_TOOLTIP                                  :{BLACK}Yapay Zeka ayarlarını göster
 STR_MAPGEN_GS_SETTINGS                                          :{BLACK}Oyun Betiği Ayarları
-STR_MAPGEN_GS_SETTINGS_TOOLTIP                                  :{BLACK}Oyun betiği ayarlarını göster
+STR_MAPGEN_GS_SETTINGS_TOOLTIP                                  :{BLACK}Oyun skripti (betiği) ayarlarını göster
 
 ###length 21
 STR_MAPGEN_TOWN_NAME_ORIGINAL_ENGLISH                           :İngiliz (Özgün)
@@ -3606,7 +3606,7 @@ STR_TOWN_DIRECTORY_CAPTION                                      :{WHITE}Şehirle
 STR_TOWN_DIRECTORY_NONE                                         :{ORANGE}- Hiçbiri -
 STR_TOWN_DIRECTORY_TOWN                                         :{ORANGE}{TOWN}{BLACK} ({COMMA})
 STR_TOWN_DIRECTORY_CITY                                         :{ORANGE}{TOWN}{YELLOW} (Şehir){BLACK} ({COMMA})
-STR_TOWN_DIRECTORY_LIST_TOOLTIP                                 :{BLACK}Şehir isimleri - şehre bakmak için ismine tıkla. Ctrl ile tıklama şehrin konumunu gösteren yeni bir pencere açar
+STR_TOWN_DIRECTORY_LIST_TOOLTIP                                 :{BLACK}Şehir isimleri - şehre bakmak için ismine tıkla. Ctrl + Sol Tıklama şehrin olduğu yere ait bir görünüm penceresi açar.
 STR_TOWN_POPULATION                                             :{BLACK}Dünya nüfusu: {COMMA}
 
 # Town view window
@@ -3682,7 +3682,7 @@ STR_GOALS_TEXT                                                  :{ORANGE}{STRING
 STR_GOALS_NONE                                                  :{ORANGE}- Hiçbiri -
 STR_GOALS_PROGRESS                                              :{ORANGE}{STRING}
 STR_GOALS_PROGRESS_COMPLETE                                     :{GREEN}{STRING}
-STR_GOALS_TOOLTIP_CLICK_ON_SERVICE_TO_CENTER                    :{BLACK}Ana görünümü istenen fabrika/kasaba/kareye getirmek için hedefe tıklayın. Ctrl+Tıklama fabrika/kasaba/kare konumunda yeni bir pencerede görünüm açar
+STR_GOALS_TOOLTIP_CLICK_ON_SERVICE_TO_CENTER                    :{BLACK}Ana görünümü istenen fabrika/şehir/karoya getirmek için hedefe tıklayın. Ctrl + Sol Tıklama fabrikanın/şehrin/karonun olduğu yere ait bir görünüm penceresi açar.
 
 # Goal question window
 STR_GOAL_QUESTION_CAPTION_QUESTION                              :{BLACK}Soru
@@ -3738,7 +3738,7 @@ STR_STORY_BOOK_NEXT_PAGE_TOOLTIP                                :{BLACK}Bir sonr
 STR_STORY_BOOK_INVALID_GOAL_REF                                 :{RED}Geçersiz amaç referansı
 
 # Station list window
-STR_STATION_LIST_TOOLTIP                                        :{BLACK}İstasyon isimleri - gitmek için istasyon ismini tıklayın. Ctrl ile tıklama istasyonun konumunu gösteren yeni bir pencere açar
+STR_STATION_LIST_TOOLTIP                                        :{BLACK}İstasyon isimleri - gitmek için istasyon ismini tıklayın. Ctrl + Sol Tıklama istasyonun olduğu yere ait bir görünüm penceresi açar.
 STR_STATION_LIST_USE_CTRL_TO_SELECT_MORE                        :{BLACK}Birden fazla nesne seçmek için Ctrl+Sol tıklayın
 STR_STATION_LIST_CAPTION                                        :{WHITE}{COMPANY} - {COMMA} İstasyon
 STR_STATION_LIST_STATION                                        :{YELLOW}{STATION} {STATION_FEATURES}
@@ -3821,7 +3821,7 @@ STR_STATION_VIEW_CLOSE_AIRPORT_TOOLTIP                          :{BLACK}Uçağı
 STR_WAYPOINT_VIEW_CAPTION                                       :{WHITE}{WAYPOINT}
 STR_WAYPOINT_VIEW_CENTER_TOOLTIP                                :{BLACK}Ana görünümü güzergaha ortala. Ctrl+Sol tık ile güzegahın konumunu gösteren yeni bir pencere açabilirsiniz
 STR_WAYPOINT_VIEW_CHANGE_WAYPOINT_NAME                          :{BLACK}Ara nokta adını değiştir
-STR_BUOY_VIEW_CENTER_TOOLTIP                                    :{BLACK}Ana görünümü şamandıra konumuna ortala. Ctrl ile tıklama şamandıranın konumunu gösteren yeni bir pencere açar
+STR_BUOY_VIEW_CENTER_TOOLTIP                                    :{BLACK}Ana görünümü şamandıra(duba) konumuna ortala. Ctrl + Sol Tıklama şamandıranın olduğu yere ait bir görünüm penceresi açar.
 STR_BUOY_VIEW_CHANGE_BUOY_NAME                                  :{BLACK}Şamandıra adını değiştir
 
 STR_EDIT_WAYPOINT_NAME                                          :{WHITE}Yerimi adını değiştir
@@ -3897,7 +3897,7 @@ STR_COMPANY_VIEW_BUILD_HQ_TOOLTIP                               :{BLACK}Şirket 
 STR_COMPANY_VIEW_VIEW_HQ_BUTTON                                 :{BLACK}Binaya Bak
 STR_COMPANY_VIEW_VIEW_HQ_TOOLTIP                                :{BLACK}Şirket binasını gör
 STR_COMPANY_VIEW_RELOCATE_HQ                                    :{BLACK}Binayı Taşı
-STR_COMPANY_VIEW_RELOCATE_COMPANY_HEADQUARTERS                  :{BLACK}Şirket değerinin %1'i karşılığında binanın yerini değiştir. Shift+tıklama şirket binasının yerini değiştirmeden tahmini maliyeti gösterir
+STR_COMPANY_VIEW_RELOCATE_COMPANY_HEADQUARTERS                  :{BLACK}Şirket değerinin %1'i karşılığında şirket ana ofisinin yerini değiştir. Shift'e basılı tutarak tıklarsanız sadece maliyetini gösterir.
 STR_COMPANY_VIEW_INFRASTRUCTURE_BUTTON                          :{BLACK}Ayrıntılar
 STR_COMPANY_VIEW_INFRASTRUCTURE_TOOLTIP                         :{BLACK}Ayrıntılı altyapı sayılarını göster
 STR_COMPANY_VIEW_GIVE_MONEY_BUTTON                              :{BLACK}Para ver
@@ -3944,7 +3944,7 @@ STR_INDUSTRY_DIRECTORY_ITEM_PROD1                               :{ORANGE}{INDUST
 STR_INDUSTRY_DIRECTORY_ITEM_PROD2                               :{ORANGE}{INDUSTRY} {STRING}, {STRING}
 STR_INDUSTRY_DIRECTORY_ITEM_PROD3                               :{ORANGE}{INDUSTRY} {STRING}, {STRING}, {STRING}
 STR_INDUSTRY_DIRECTORY_ITEM_PRODMORE                            :{ORANGE}{INDUSTRY} {STRING}, {STRING}, {STRING} ve {NUM} daha...
-STR_INDUSTRY_DIRECTORY_LIST_CAPTION                             :{BLACK}Fabrika adları - görüntüyü fabrikada merkezlemek için adına tıklayın. Ctrl ile tıklama fabrikanın konumunu gösteren yeni bir pencere açar
+STR_INDUSTRY_DIRECTORY_LIST_CAPTION                             :{BLACK}Fabrika adları - görüntüyü fabrikada merkezlemek için adına tıklayın. Ctrl + Sol Tıklama Fabrikanın olduğu yere ait bir görünüm penceresi açar.
 STR_INDUSTRY_DIRECTORY_ACCEPTED_CARGO_FILTER                    :{BLACK}Kabul edilen kargo: {SILVER}{STRING}
 STR_INDUSTRY_DIRECTORY_PRODUCED_CARGO_FILTER                    :{BLACK}Üretilmiş kargo: {SILVER}{STRING}
 STR_INDUSTRY_DIRECTORY_FILTER_ALL_TYPES                         :Tüm kargo tipleri
@@ -4098,10 +4098,10 @@ STR_CARGO_TYPE_FILTER_FREIGHT                                   :Nakliye
 STR_CARGO_TYPE_FILTER_NONE                                      :Hiçbiri
 
 ###length VEHICLE_TYPES
-STR_BUY_VEHICLE_TRAIN_LIST_TOOLTIP                              :{BLACK}Tren seçim listesi. Bilgi için araç tıklayın. Ctrl+Tıklama araç türünün gizlenmesini açar/kapatır
-STR_BUY_VEHICLE_ROAD_VEHICLE_LIST_TOOLTIP                       :{BLACK}Karayolu araçları seçim listesi. Bilgi için araca tıklayın. Ctrl+Tıklama araç türünün gizlenmesini açar/kapatır
-STR_BUY_VEHICLE_SHIP_LIST_TOOLTIP                               :{BLACK}Gemi seçim listesi. Bilgi için gemiye tıklayın. Ctrl+Tıklama gemi türünün gizlenmesini açar/kapatır
-STR_BUY_VEHICLE_AIRCRAFT_LIST_TOOLTIP                           :{BLACK}Uçak seçim listesi. Bilgi için uçağa tıklayın. Ctrl+Tıklama, uçak türünün gizliliğini açar/kapatır
+STR_BUY_VEHICLE_TRAIN_LIST_TOOLTIP                              :{BLACK}Tren seçim listesi. Bilgi için araca tıklayın. Ctrl+Sol Tık araç türünün gizlenmesini açar/kapatır
+STR_BUY_VEHICLE_ROAD_VEHICLE_LIST_TOOLTIP                       :{BLACK}Karayolu araçları seçim listesi. Bilgi için araca tıklayın. Ctrl+Sol Tık araç türünün gizlenmesini açar/kapatır
+STR_BUY_VEHICLE_SHIP_LIST_TOOLTIP                               :{BLACK}Gemi seçim listesi. Bilgi için gemiye tıklayın. Ctrl+Sol Tık gemi türünün gizlenmesini açar/kapatır
+STR_BUY_VEHICLE_AIRCRAFT_LIST_TOOLTIP                           :{BLACK}Uçak seçim listesi. Bilgi için uçağa tıklayın. Ctrl+Sol Tık, uçak türünün gizliliğini açar/kapatır
 
 ###length VEHICLE_TYPES
 STR_BUY_VEHICLE_TRAIN_BUY_VEHICLE_BUTTON                        :{BLACK}Araç Satın Al
@@ -4116,7 +4116,7 @@ STR_BUY_VEHICLE_SHIP_BUY_REFIT_VEHICLE_BUTTON                   :{BLACK}Gemi sat
 STR_BUY_VEHICLE_AIRCRAFT_BUY_REFIT_VEHICLE_BUTTON               :{BLACK}Uçağı satın al veya sahip olduğunla değiştir.
 
 ###length VEHICLE_TYPES
-STR_BUY_VEHICLE_TRAIN_BUY_VEHICLE_TOOLTIP                       :{BLACK}Seçili treni satın al. Shift ile tıklama satın almadan tahmini maliyeti gösterir.
+STR_BUY_VEHICLE_TRAIN_BUY_VEHICLE_TOOLTIP                       :{BLACK}Seçili treni satın al. Shift'e basılı tutarak tıklarsanız sadece maliyetini gösterir.
 STR_BUY_VEHICLE_ROAD_VEHICLE_BUY_VEHICLE_TOOLTIP                :{BLACK}İşaretli aracı al. Ayrıca maliyetini görmek için Shift tuşuna basabilirsiniz.
 STR_BUY_VEHICLE_SHIP_BUY_VEHICLE_TOOLTIP                        :{BLACK}Seçili gemiyi satın al. Ayrıca maliyetini görmek için Shift tuşuna basabilirsiniz.
 STR_BUY_VEHICLE_AIRCRAFT_BUY_VEHICLE_TOOLTIP                    :{BLACK}Seçili uçağı satın al. Ayrıca maliyetini görmek için Shift tuşuna basabilirsiniz.
@@ -4217,15 +4217,15 @@ STR_DEPOT_CLONE_SHIP                                            :{BLACK}Gemiyi k
 STR_DEPOT_CLONE_AIRCRAFT                                        :{BLACK}Uçağı kopyala
 
 ###length VEHICLE_TYPES
-STR_DEPOT_CLONE_TRAIN_DEPOT_INFO                                :{BLACK}Tüm vagonlarla birlikte treni kopyalar. Önce bu düğmeye sonra da garın içindeki veya dışındaki bir trene tıklayın. Ctrl+tıklama talimatları paylaştırır. Shift+tıklama satın almadan tahmini maliyeti gösterir.
+STR_DEPOT_CLONE_TRAIN_DEPOT_INFO                                :{BLACK}Tüm vagonlarla birlikte treni kopyalar. Önce bu düğmeye sonra da garın içindeki veya dışındaki bir trene tıklayın.  Ctrl+ Sol tık yaparsanız kopyalanan tren ile aynı emirleri paylaşır. Shift'e basılı tutarak tıklarsanız sadece maliyetini gösterir.
 STR_DEPOT_CLONE_ROAD_VEHICLE_DEPOT_INFO                         :{BLACK}Karayolu aracının bir kopyasını yapar. Önce bu düğmeye sonra da garın içindeki veya dışındaki bir araca tıklayın. Ctrl+ Sol Tıklama talimatları paylaştırır. Shift'e basılı tutarak tıklarsanız sadece maliyetini gösterir.
 STR_DEPOT_CLONE_SHIP_DEPOT_INFO                                 :{BLACK}Geminin bir kopyasını oluşturun. Önce bu düğmeye sonra da tersanenin içindeki veya dışındaki bir gemiye tıklayın. Ctrl+ Sol tık yaparsanız kopyalanan gemi aynı emirleri paylaşır. Shift'e basılı tutarak tıklarsanız sadece maliyetini gösterir.
-STR_DEPOT_CLONE_AIRCRAFT_INFO_HANGAR_WINDOW                     :{BLACK}Uçağın bir kopyasını oluşturur. Önce bu düğmeye sonra da hangarın içindeki veya dışındaki bir uçaga tıklayın. Ctrl-tıklama talimatları paylaştırır. Shift ile tıklama satın almadan tahmini maliyeti gösterir
+STR_DEPOT_CLONE_AIRCRAFT_INFO_HANGAR_WINDOW                     :{BLACK}Uçağın bir kopyasını oluşturur. Önce bu düğmeye sonra da hangarın içindeki veya dışındaki bir uçaga tıklayın. Ctrl+ Sol tık yaparsanız kopyalanan uçak ile aynı emirleri paylaşır. Shift'e basılı tutarak tıklarsanız sadece maliyetini gösterir.
 
 ###length VEHICLE_TYPES
 STR_DEPOT_TRAIN_LOCATION_TOOLTIP                                :{BLACK}Tren garını göster. Ctrl + Sol Tıklama garın olduğu yere ait bir görünüm penceresi açar.
 STR_DEPOT_ROAD_VEHICLE_LOCATION_TOOLTIP                         :{BLACK}Kara taşıtı garajını göster. Ctrl+Sol tık ile garajın konumunu gösteren yeni bir pencere açabilirsiniz.
-STR_DEPOT_SHIP_LOCATION_TOOLTIP                                 :{BLACK}Tersaneyi göster. Ctrl ile tıklama tershanenin konumunu gösteren yeni bir pencere açar
+STR_DEPOT_SHIP_LOCATION_TOOLTIP                                 :{BLACK}Tersaneyi göster. Ctrl + Sol Tıklama tersanenin olduğu yere ait bir görünüm penceresi açar.
 STR_DEPOT_AIRCRAFT_LOCATION_TOOLTIP                             :{BLACK}Hangarı göster. Ctrl+Sol tık yeni hangarın konumunu gösteren yeni bir pencere açar
 
 ###length VEHICLE_TYPES
@@ -4332,22 +4332,22 @@ STR_REPLACE_REMOVE_WAGON_GROUP_HELP                             :{STRING}. Alt g
 STR_VEHICLE_VIEW_CAPTION                                        :{WHITE}{VEHICLE}
 
 ###length VEHICLE_TYPES
-STR_VEHICLE_VIEW_TRAIN_CENTER_TOOLTIP                           :{BLACK}Ana görünümü trenin konumuna ortalar. Çift tık ana görünümdeki treni takip eder. Ctrl+Sol Tık trenin konumunu gösteren yeni bir pencere açar
+STR_VEHICLE_VIEW_TRAIN_CENTER_TOOLTIP                           :{BLACK}Ana görünümü trenin konumuna ortalar. Çift tık ana görünümdeki treni takip eder. Ctrl + Sol Tıklama trenin olduğu yere ait bir görünüm penceresi açar.
 STR_VEHICLE_VIEW_ROAD_VEHICLE_CENTER_TOOLTIP                    :{BLACK}Ana görünümü aracın konumuna ortalayın. Çift tık ana görünümdeki aracı takip eder. Ctrl+Sol Tık uçağın konumunda yeni bir görünüm penceresi açar
-STR_VEHICLE_VIEW_SHIP_CENTER_TOOLTIP                            :{BLACK}Ana görünümü geminin konumuna ortalar. Çift tık ana görünümdeki gemiyi takip eder. Ctrl+Sol Tık geminin konumunu gösteren yeni bir pencere açar
+STR_VEHICLE_VIEW_SHIP_CENTER_TOOLTIP                            :{BLACK}Ana görünümü geminin konumuna ortalar. Çift tık ana görünümdeki gemiyi takip eder. Ctrl + Sol Tıklama geminin olduğu yere ait bir görünüm penceresi açar.
 STR_VEHICLE_VIEW_AIRCRAFT_CENTER_TOOLTIP                        :{BLACK}Ana görünümü uçağın konumuna ortalayın. Uçağı takip etmek için çift tıklayın. Ctrl+Sol Tık uçağın konumunda yeni bir görünüm penceresi açar
 
 ###length VEHICLE_TYPES
 STR_VEHICLE_VIEW_TRAIN_SEND_TO_DEPOT_TOOLTIP                    :{BLACK}Treni garaja gönder. Ctrl+Sol tık ile sadece servis için gönderebilirsiniz.
 STR_VEHICLE_VIEW_ROAD_VEHICLE_SEND_TO_DEPOT_TOOLTIP             :{BLACK}Aracı garaja gönder. Ctrl + Sol Tık sadece bakıma gönderir.
-STR_VEHICLE_VIEW_SHIP_SEND_TO_DEPOT_TOOLTIP                     :{BLACK}Tersaneye gönder
+STR_VEHICLE_VIEW_SHIP_SEND_TO_DEPOT_TOOLTIP                     :{BLACK}Tersaneye gönder. Ctrl + Sol Tık yaparsanız sadece bakım için gönderir.
 STR_VEHICLE_VIEW_AIRCRAFT_SEND_TO_DEPOT_TOOLTIP                 :{BLACK}Uçağı hangara gönder. Ctrl + Sol Tık yaparsanız sadece bakım için gönderir.
 
 ###length VEHICLE_TYPES
-STR_VEHICLE_VIEW_CLONE_TRAIN_INFO                               :{BLACK}Tüm vagonlarla birlikte treni kopyalar. Ctrl-Tıklama talimatları paylaştırır. Shift+Tıklama satın almadan tahmini maliyeti gösterir
+STR_VEHICLE_VIEW_CLONE_TRAIN_INFO                               :{BLACK}Tüm vagonlarla birlikte treni kopyalar.  Ctrl+ Sol tık yaparsanız kopyalanan araç ile aynı emirleri paylaşır. Shift'e basılı tutarak tıklarsanız sadece maliyetini gösterir.
 STR_VEHICLE_VIEW_CLONE_ROAD_VEHICLE_INFO                        :{BLACK}Karayolu aracının bir kopyasını satın alır. Ctrl+ Sol tık yaparsanız kopyalanan araç ile aynı emirleri paylaşır. Shift'e basılı tutarak tıklarsanız sadece maliyetini gösterir.
 STR_VEHICLE_VIEW_CLONE_SHIP_INFO                                :{BLACK}Geminin bir kopyasını satın al. Ctrl-Tıklama talimatları paylaştırır. Ayrıca maliyetini görmek için Shift tuşuna basabilirsiniz.
-STR_VEHICLE_VIEW_CLONE_AIRCRAFT_INFO                            :{BLACK}Uçağın bir kopyasını satın alır. Ctrl-Tıklama talimatları paylaştırır. Shift-Tıklama satın almadan tahmini maliyeti gösterir
+STR_VEHICLE_VIEW_CLONE_AIRCRAFT_INFO                            :{BLACK}Uçağın bir kopyasını satın alır.   Ctrl+ Sol tık yaparsanız kopyalanan uçak ile aynı emirleri paylaşır. Shift'e basılı tutarak tıklarsanız sadece maliyetini gösterir.
 
 STR_VEHICLE_VIEW_TRAIN_IGNORE_SIGNAL_TOOLTIP                    :{BLACK}Treni sinyale uymadan ilerlemeye zorla
 STR_VEHICLE_VIEW_TRAIN_REVERSE_TOOLTIP                          :{BLACK}Treni ters çevir
@@ -4460,6 +4460,7 @@ STR_VEHICLE_DETAILS_DECREASE_SERVICING_INTERVAL_TOOLTIP_PERCENT :Bakım aralığ
 STR_SERVICE_INTERVAL_DROPDOWN_TOOLTIP                           :{BLACK}Bakım aralığı türünü değiştir
 STR_VEHICLE_DETAILS_DEFAULT                                     :Varsayılan
 STR_VEHICLE_DETAILS_DAYS                                        :Günler
+STR_VEHICLE_DETAILS_MINUTES                                     :Dakika
 STR_VEHICLE_DETAILS_PERCENT                                     :Yüzde
 
 ###length VEHICLE_TYPES
@@ -4721,7 +4722,7 @@ STR_TIMETABLE_STATUS_START_AT_DATE                              :{BLACK}Bu zaman
 STR_TIMETABLE_STATUS_START_IN_SECONDS                           :{BLACK}Bu zaman çizelgesi {COMMA} saniye içinde başlayacak
 
 STR_TIMETABLE_START                                             :{BLACK}Zaman Çizelgesini Başlat
-STR_TIMETABLE_START_TOOLTIP                                     :{BLACK}Bu zaman çizelgesinin ne zaman başlayacağını seçin. Sipariş tamamen zaman çizelgesine uygunsa, Ctrl+Tıklama bu sırayı paylaşan tüm araçların startını göreceli sıralarına göre eşit olarak dağıtır
+STR_TIMETABLE_START_TOOLTIP                                     :{BLACK}Bu zaman çizelgesinin ne zaman başlayacağını seçin. Verilen emir tamamen zaman çizelgesine uygunsa, Ctrl + Sol Tıkladığınızda zaman çizelgesinin başlangıç saatini bütün araçlar arasında eşit olarak dağıtır.
 
 STR_TIMETABLE_START_SECONDS_QUERY                               :Zaman çizelgesinin başlamasına saniyeler kaldı
 
@@ -4778,9 +4779,9 @@ STR_AI_DEBUG_MATCH_CASE                                         :{BLACK}Büyük/
 STR_AI_DEBUG_MATCH_CASE_TOOLTIP                                 :{BLACK}YZ günlük iletilerini durma metni ile karşılaştırırken büyük/küçük harf eşleşmesini aç/kapa
 STR_AI_DEBUG_CONTINUE                                           :{BLACK}Devam et
 STR_AI_DEBUG_CONTINUE_TOOLTIP                                   :{BLACK}YZ'yi devam ettir
-STR_AI_DEBUG_SELECT_AI_TOOLTIP                                  :{BLACK}Bu YZ için hata ayıklama çıktısı göster
+STR_AI_DEBUG_SELECT_AI_TOOLTIP                                  :{BLACK}Seçilen YapayZeka için hata ayıklama çıktısı göster. Ctrl + Sol Tık yeni bir pencerede açar.
 STR_AI_GAME_SCRIPT                                              :{BLACK}Oyun Betiği
-STR_AI_GAME_SCRIPT_TOOLTIP                                      :{BLACK}Oyun Betiği günlüğünü kontrol edin
+STR_AI_GAME_SCRIPT_TOOLTIP                                      :{BLACK}Oyun Skripti (Betiği) kaydını kontrol edin. Ctrl + Sol Tık yeni pencerede açar.
 
 STR_ERROR_AI_NO_AI_FOUND                                        :Yüklenecek uygun bir YZ bulunamadı.{}Bu YZ boş bir YZ'dir ve hiçbir şey yapmaz.{}'Çevrimiçi İçerik" sistemiyle pekçok YZ'yi indirebilirsiniz
 STR_ERROR_AI_PLEASE_REPORT_CRASH                                :{WHITE}Çalışan betiklerden biri çöktü. Lütfen bu durumu YZ Hata Ayıklama Penceresi görüntüsüyle birlikte dosyanın yazarına bildirin

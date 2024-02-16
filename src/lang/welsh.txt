@@ -926,7 +926,7 @@ STR_GAME_OPTIONS_CURRENCY_ISK                                   :Krona Ynys yr I
 STR_GAME_OPTIONS_CURRENCY_ITL                                   :Lira Eidalaidd
 STR_GAME_OPTIONS_CURRENCY_NLG                                   :Guilder
 STR_GAME_OPTIONS_CURRENCY_NOK                                   :Krone Norwyaidd
-STR_GAME_OPTIONS_CURRENCY_PLN                                   :Złoty Pwylaidd
+STR_GAME_OPTIONS_CURRENCY_PLN                                   :Zloty Pwylaidd
 STR_GAME_OPTIONS_CURRENCY_RON                                   :Leu Rwmanaidd
 STR_GAME_OPTIONS_CURRENCY_RUR                                   :Rwbl Rwsaidd
 STR_GAME_OPTIONS_CURRENCY_SIT                                   :Tolar Slofenaidd
@@ -942,10 +942,14 @@ STR_GAME_OPTIONS_CURRENCY_CUSTOM                                :Addasedig...
 STR_GAME_OPTIONS_CURRENCY_GEL                                   :Lari Georgia
 STR_GAME_OPTIONS_CURRENCY_IRR                                   :Rial Iran
 STR_GAME_OPTIONS_CURRENCY_RUB                                   :Rwbl Rwsaidd Newydd
+STR_GAME_OPTIONS_CURRENCY_MXN                                   :Peso Mecsico
 STR_GAME_OPTIONS_CURRENCY_NTD                                   :Doler Newydd Taiwan
 STR_GAME_OPTIONS_CURRENCY_CNY                                   :Renminbi Tseina
 STR_GAME_OPTIONS_CURRENCY_HKD                                   :Doler Hong Kong
+STR_GAME_OPTIONS_CURRENCY_INR                                   :Rwpi India
 STR_GAME_OPTIONS_CURRENCY_IDR                                   :Rupiah Indonesia
+STR_GAME_OPTIONS_CURRENCY_MYR                                   :Ringgit Malaysia
+STR_GAME_OPTIONS_CURRENCY_LVL                                   :Lats Latfia
 
 STR_GAME_OPTIONS_AUTOSAVE_FRAME                                 :{BLACK}Awtogadw
 STR_GAME_OPTIONS_AUTOSAVE_DROPDOWN_TOOLTIP                      :{BLACK}Dewiswch pa mor aml y dylid awtogadw gemau

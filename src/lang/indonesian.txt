@@ -624,6 +624,7 @@ STR_GRAPH_KEY_COMPANY_SELECTION_TOOLTIP                         :{BLACK}Klik dis
 # Company league window
 STR_COMPANY_LEAGUE_TABLE_CAPTION                                :{WHITE}Tabel Liga Perusahaan
 STR_COMPANY_LEAGUE_COMPANY_NAME                                 :{ORANGE}{COMPANY} {BLACK}{COMPANY_NUM} '{STRING}'
+STR_COMPANY_LEAGUE_COMPANY_RANK                                 :{YELLOW}#{NUM}
 STR_COMPANY_LEAGUE_PERFORMANCE_TITLE_ENGINEER                   :Insinyur
 STR_COMPANY_LEAGUE_PERFORMANCE_TITLE_TRAFFIC_MANAGER            :Manajer Lalu lintas
 STR_COMPANY_LEAGUE_PERFORMANCE_TITLE_TRANSPORT_COORDINATOR      :Koordinator trasportasi
@@ -1365,9 +1366,11 @@ STR_CONFIG_SETTING_SIGNALSIDE_RIGHT                             :Di kanan
 
 ###length 2
 STR_CONFIG_SETTING_SHOWFINANCES                                 :Tampilkan laporan keuangan pada akhir tahun: {STRING}
+STR_CONFIG_SETTING_SHOWFINANCES_PERIOD                          :Tampilkan laporan keuangan di akhir periode: {STRING}
 
 ###length 2
 STR_CONFIG_SETTING_SHOWFINANCES_HELPTEXT                        :Jika diaktifkan, jendela keuangan akan muncul setiap akhir tahun untuk memudahkan pemeriksaan status keuangan perusahaan
+STR_CONFIG_SETTING_SHOWFINANCES_HELPTEXT_PERIOD                 :Jika diaktifkan, laporan keuangan akan muncul di akhir setiap periode untuk memudahkan pemeriksaan status keuangan perusahaan
 
 STR_CONFIG_SETTING_NONSTOP_BY_DEFAULT                           :Tujuan baru standarnya adalah 'non-stop': {STRING}
 STR_CONFIG_SETTING_NONSTOP_BY_DEFAULT_HELPTEXT                  :Biasanya, kendaraan akan berhenti di setiap stasiun yang di lewati. Dengan mengaktifkan pengaturan ini, maka kendaraan akan melewati semua stasiun dalam perjalanan ke tujuan akhir. Perhatikan, bahwa pengaturan ini hanya mendefinisikan nilai default. Perintah individu dapat diatur
@@ -1466,6 +1469,8 @@ STR_CONFIG_SETTING_MINUTES_PER_YEAR_VALUE                       :{NUM}
 ###setting-zero-is-special
 STR_CONFIG_SETTING_MINUTES_PER_YEAR_FROZEN                      :0 (kalender dibekukan)
 
+STR_CONFIG_SETTING_TOWN_CARGO_SCALE                             :Tingkatkan produksi kargo kota: {STRING}
+STR_CONFIG_SETTING_TOWN_CARGO_SCALE_HELPTEXT                    :Tingkatkan produksi kargo di kota-kota sebesar persentase ini.
 
 STR_CONFIG_SETTING_AUTORENEW_VEHICLE                            :Perbarui otomatis kendaraan yang telah tua: {STRING}
 STR_CONFIG_SETTING_AUTORENEW_VEHICLE_HELPTEXT                   :Jika dinyalakan, kendaraan mendekati akhir usianya akan secara otomatis diperbarui jika masih tersedia kendaraan itu
@@ -4637,7 +4642,7 @@ STR_AI_DEBUG_MATCH_CASE                                         :{BLACK}Persis B
 STR_AI_DEBUG_MATCH_CASE_TOOLTIP                                 :{BLACK}Hidup matikan pengecekan besar-kecil huruf pada pesan AI dengan kotak pencarian
 STR_AI_DEBUG_CONTINUE                                           :{BLACK}Lanjutkan
 STR_AI_DEBUG_CONTINUE_TOOLTIP                                   :{BLACK}lanjutkan proses AI
-STR_AI_DEBUG_SELECT_AI_TOOLTIP                                  :{BLACK}Lihat proses yang dilakukan AI
+STR_AI_DEBUG_SELECT_AI_TOOLTIP                                  :{BLACK}Lihat proses yang dilakukan AI. Ctrl-Klik untuk membuka di jendela baru
 STR_AI_GAME_SCRIPT                                              :{BLACK}Skrip Permainan
 STR_AI_GAME_SCRIPT_TOOLTIP                                      :{BLACK}Periksa catatan skrip permainan
 

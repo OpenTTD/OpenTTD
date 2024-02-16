@@ -1034,6 +1034,8 @@ STR_NEWS_SERVICE_SUBSIDY_AWARDED_TRIPLE                         :{BIG_FONT}{BLAC
 STR_NEWS_SERVICE_SUBSIDY_AWARDED_QUADRUPLE                      :{BIG_FONT}{BLACK}Компанія {STRING} отримала субсидію!{}{}Перевезення {STRING.r} з {STRING} до {STRING} принесе вчетверо більше прибутків впродовж {UNITS_YEARS_OR_MINUTES}!
 
 STR_NEWS_EXCLUSIVE_RIGHTS_TITLE                                 :{BIG_FONT}{BLACK}Транспортна монополія!
+STR_NEWS_EXCLUSIVE_RIGHTS_DESCRIPTION_MONTHS                    :{BIG_FONT}{BLACK}Влада міста {TOWN} підписала з компанією {STRING} договір про ексклюзивні транспортні права на 1 рік!
+STR_NEWS_EXCLUSIVE_RIGHTS_DESCRIPTION_MINUTES                   :{BIG_FONT}{BLACK}Влада міста {TOWN} підписала з компанією {STRING} договір про ексклюзивні транспортні права на 12 хвилин!
 
 # Extra view window
 STR_EXTRA_VIEWPORT_TITLE                                        :{WHITE}Вікно {COMMA}
@@ -1783,8 +1785,12 @@ STR_CONFIG_SETTING_ADVANCED_VEHICLE_LISTS_HELPTEXT              :Вмикає в
 STR_CONFIG_SETTING_LOADING_INDICATORS                           :Показувати індикатори завантаження: {STRING}
 STR_CONFIG_SETTING_LOADING_INDICATORS_HELPTEXT                  :Вмикає\вимикає відображення індикатора процесу завантаження над транспортними засобами.
 
+STR_CONFIG_SETTING_TIMETABLE_MODE                               :Одиниць часу у розкладі: {STRING}
+STR_CONFIG_SETTING_TIMETABLE_MODE_HELPTEXT                      :Обрати одиниці часу для розкладів транспорту
 ###length 3
 STR_CONFIG_SETTING_TIMETABLE_MODE_DAYS                          :Днів
+STR_CONFIG_SETTING_TIMETABLE_MODE_SECONDS                       :Секунд
+STR_CONFIG_SETTING_TIMETABLE_MODE_TICKS                         :Цоків
 
 STR_CONFIG_SETTING_TIMETABLE_SHOW_ARRIVAL_DEPARTURE             :Показувати час прибуття та відправлення у розкладах: {STRING}
 STR_CONFIG_SETTING_TIMETABLE_SHOW_ARRIVAL_DEPARTURE_HELPTEXT    :Відображати очікуваний час прибуття та відправлення у розкладі
@@ -2761,6 +2767,7 @@ STR_TRANSPARENT_BUILDINGS_TOOLTIP                               :{BLACK}Пере
 STR_TRANSPARENT_BRIDGES_TOOLTIP                                 :{BLACK}Переключити прозорість для мостів. Утримуйте Ctrl, щоб заблокувати
 STR_TRANSPARENT_STRUCTURES_TOOLTIP                              :{BLACK}Переключити прозорість для споруд, таких як маяки та антени. Утримуйте Ctrl, щоб заблокувати
 STR_TRANSPARENT_CATENARY_TOOLTIP                                :{BLACK}Переключити прозорість для ЛЕП. Утримуйте Ctrl, щоб заблокувати
+STR_TRANSPARENT_TEXT_TOOLTIP                                    :{BLACK}Переключити прозорість для написів про завантаження і вартість та прибуток. Утримуйте Ctrl, щоб заблокувати
 STR_TRANSPARENT_INVISIBLE_TOOLTIP                               :{BLACK}Зробити об'єкти невидимими, а не прозорими
 
 # Linkgraph legend window
@@ -3363,6 +3370,7 @@ STR_MAPGEN_TOWN_NAME_CATALAN                                    :Каталон�
 
 # Strings for map borders at game generation
 STR_MAPGEN_BORDER_TYPE                                          :{BLACK}Краї карти:
+STR_MAPGEN_BORDER_TYPE_TOOLTIP                                  :{BLACK}Оберіть межі світу
 STR_MAPGEN_NORTHWEST                                            :{BLACK}північно-західний
 STR_MAPGEN_NORTHEAST                                            :{BLACK}північно-східний
 STR_MAPGEN_SOUTHEAST                                            :{BLACK}південно-східний
@@ -3752,6 +3760,8 @@ STR_STATION_LIST_STATION                                        :{YELLOW}{STATIO
 STR_STATION_LIST_WAYPOINT                                       :{YELLOW}{WAYPOINT}
 STR_STATION_LIST_NONE                                           :{YELLOW}- немає -
 STR_STATION_LIST_SELECT_ALL_FACILITIES                          :{BLACK}Вибрати весь транспорт
+STR_STATION_LIST_CARGO_FILTER_ALL_AND_NO_RATING                 :Всі типи вантажів без рейтингу
+STR_STATION_LIST_CARGO_FILTER_EXPAND                            :Показати ще...
 
 # Station view window
 STR_STATION_VIEW_CAPTION                                        :{WHITE}{STATION} {STATION_FEATURES}
@@ -3995,7 +4005,7 @@ STR_VEHICLE_LIST_NAME_AND_CARGO                                 :{STRING} {STRIN
 STR_VEHICLE_LIST_SEND_TRAIN_TO_DEPOT                            :Відправити до депо
 STR_VEHICLE_LIST_SEND_ROAD_VEHICLE_TO_DEPOT                     :Відправити в гараж
 STR_VEHICLE_LIST_SEND_SHIP_TO_DEPOT                             :Відправити до депо
-STR_VEHICLE_LIST_SEND_AIRCRAFT_TO_HANGAR                        :Відправити в ангар
+STR_VEHICLE_LIST_SEND_AIRCRAFT_TO_HANGAR                        :Направити в ангар
 
 STR_VEHICLE_LIST_MASS_STOP_LIST_TOOLTIP                         :{BLACK}Натисніть для зупинки всіх авто, що у списку
 STR_VEHICLE_LIST_MASS_START_LIST_TOOLTIP                        :{BLACK}Натисніть для запуску всього транспорту, що у списку
@@ -4683,6 +4693,10 @@ STR_TIMETABLE_STATUS_ON_TIME                                    :{BLACK}Цей �
 STR_TIMETABLE_STATUS_LATE                                       :{BLACK}Цей транспорт запізнюється на {STRING}
 STR_TIMETABLE_STATUS_EARLY                                      :{BLACK}Цей транспорт випереджує розклад на {STRING}
 STR_TIMETABLE_STATUS_NOT_STARTED                                :{BLACK}Цей розклад ще не почався
+STR_TIMETABLE_STATUS_START_AT_DATE                              :{BLACK}Цей розклад почнеться {STRING}
+STR_TIMETABLE_STATUS_START_IN_SECONDS                           :{BLACK}Цей розклад почнеться після {COMMA} секунд
+STR_TIMETABLE_STATUS_START_IN_SECONDS.r                         :{BLACK}Цей розклад почнеться після {COMMA} секунди
+STR_TIMETABLE_STATUS_START_IN_SECONDS.d                         :{BLACK}Цей розклад почнеться після {COMMA} секунд
 
 
 
@@ -4708,6 +4722,7 @@ STR_TIMETABLE_EXPECTED                                          :{BLACK}Очік
 STR_TIMETABLE_SCHEDULED                                         :{BLACK}Призначено
 STR_TIMETABLE_EXPECTED_TOOLTIP                                  :{BLACK}Перемкнути очікуване на заплановане
 
+STR_TIMETABLE_DEPARTURE_SECONDS_IN_FUTURE                       :П: {COLOUR}{COMMA} сек
 
 
 # Date window (for timetable)

@@ -360,7 +360,7 @@ STR_SHOW_HIDDEN_ENGINES_VEHICLE_SHIP                            :{BLACK}Montru k
 STR_SHOW_HIDDEN_ENGINES_VEHICLE_AIRCRAFT                        :{BLACK}Montru kaŝitajn
 
 ###length VEHICLE_TYPES
-STR_SHOW_HIDDEN_ENGINES_VEHICLE_TRAIN_TOOLTIP                   :{BLACK}Post aktivigo de tiu ĉi butono, kaŝitaj trajnveturiloj ankaŭ estos montrataj
+STR_SHOW_HIDDEN_ENGINES_VEHICLE_TRAIN_TOOLTIP                   :{BLACK}Post aktivigo de tiu ĉi butono, kaŝitaj vagonaroj ankaŭ estos montrataj
 STR_SHOW_HIDDEN_ENGINES_VEHICLE_ROAD_VEHICLE_TOOLTIP            :{BLACK}Post aktivigo de tiu ĉi butono, kaŝitaj stratveturiloj ankaŭ estos montrataj
 STR_SHOW_HIDDEN_ENGINES_VEHICLE_SHIP_TOOLTIP                    :{BLACK}Post aktivigo de tiu ĉi butono, kaŝitaj ŝipoj ankaŭ estos montrataj
 STR_SHOW_HIDDEN_ENGINES_VEHICLE_AIRCRAFT_TOOLTIP                :{BLACK}Post aktivigo de tiu ĉi butono, kaŝitaj aviadiloj ankaŭ estos montrataj
@@ -447,7 +447,7 @@ STR_TOOLBAR_TOOLTIP_DISPLAY_GOALS_LIST                          :{BLACK}Montru c
 STR_TOOLBAR_TOOLTIP_DISPLAY_GRAPHS                              :{BLACK}Montru grafikojn
 STR_TOOLBAR_TOOLTIP_DISPLAY_COMPANY_LEAGUE                      :{BLACK}Montru kompanian tabelon
 STR_TOOLBAR_TOOLTIP_FUND_CONSTRUCTION_OF_NEW                    :{BLACK}Pagu konstruadon de nova industrio aŭ listigu ĉiujn industriojn
-STR_TOOLBAR_TOOLTIP_DISPLAY_LIST_OF_COMPANY_TRAINS              :{BLACK}Montri trajnliston de la kompanio. Stir+Klak baskulas la grupo/veturilo-liston.
+STR_TOOLBAR_TOOLTIP_DISPLAY_LIST_OF_COMPANY_TRAINS              :{BLACK}Montri vagonarliston de la kompanio. Stir+Klak baskulas la grupo/veturilo-liston.
 STR_TOOLBAR_TOOLTIP_DISPLAY_LIST_OF_COMPANY_ROAD_VEHICLES       :{BLACK}Montristratveturiloliston de la kompanio. Stir+Klak baskulas la grupo/veturilo-liston.
 STR_TOOLBAR_TOOLTIP_DISPLAY_LIST_OF_COMPANY_SHIPS               :{BLACK}Montri ŝipoliston de la kompanio. Stir+Klak baskulas la grupo/veturilo-liston.
 STR_TOOLBAR_TOOLTIP_DISPLAY_LIST_OF_COMPANY_AIRCRAFT            :{BLACK}Montri aviadiloliston de la kompanio. Stir+Klak baskulas la grupo/veturilo-liston.
@@ -803,7 +803,7 @@ STR_SMALLMAP_LEGENDA_RAILROADS                                  :{TINY_FONT}{BLA
 STR_SMALLMAP_LEGENDA_STATIONS_AIRPORTS_DOCKS                    :{TINY_FONT}{BLACK}Stacidomoj/Flughavenoj/Havenoj
 STR_SMALLMAP_LEGENDA_BUILDINGS_INDUSTRIES                       :{TINY_FONT}{BLACK}Konstruaĵoj/Industrioj
 STR_SMALLMAP_LEGENDA_VEHICLES                                   :{TINY_FONT}{BLACK}Veturiloj
-STR_SMALLMAP_LEGENDA_TRAINS                                     :{TINY_FONT}{BLACK}Trajnoj
+STR_SMALLMAP_LEGENDA_TRAINS                                     :{TINY_FONT}{BLACK}Vagonaroj
 STR_SMALLMAP_LEGENDA_ROAD_VEHICLES                              :{TINY_FONT}{BLACK}Stratveturiloj
 STR_SMALLMAP_LEGENDA_SHIPS                                      :{TINY_FONT}{BLACK}Ŝipoj
 STR_SMALLMAP_LEGENDA_AIRCRAFT                                   :{TINY_FONT}{BLACK}Aviadiloj
@@ -863,7 +863,7 @@ STR_MESSAGE_NEWS_FORMAT                                         :{STRING}  -  {S
 STR_NEWS_MESSAGE_CAPTION                                        :{WHITE}Mesaĝo
 STR_NEWS_CUSTOM_ITEM                                            :{BIG_FONT}{BLACK}{STRING}
 
-STR_NEWS_FIRST_TRAIN_ARRIVAL                                    :{BIG_FONT}{BLACK}Enloĝantoj festas . . .{}Unua trajno alvenas ĉe {STATION}!
+STR_NEWS_FIRST_TRAIN_ARRIVAL                                    :{BIG_FONT}{BLACK}Enloĝantoj festas . . .{}Unua vagonaro alvenas ĉe {STATION}!
 STR_NEWS_FIRST_BUS_ARRIVAL                                      :{BIG_FONT}{BLACK}Enloĝantoj festas . . .{}Unua buso alvenas en {STATION}!
 STR_NEWS_FIRST_TRUCK_ARRIVAL                                    :{BIG_FONT}{BLACK}Enloĝantoj festas . . .{}Unua ŝarĝaŭto alvenas en {STATION}!
 STR_NEWS_FIRST_PASSENGER_TRAM_ARRIVAL                           :{BIG_FONT}{BLACK}Enloĝantoj festas . . .{}Unua tramo alvenas al {STATION}!
@@ -871,9 +871,9 @@ STR_NEWS_FIRST_CARGO_TRAM_ARRIVAL                               :{BIG_FONT}{BLAC
 STR_NEWS_FIRST_SHIP_ARRIVAL                                     :{BIG_FONT}{BLACK}Enloĝantoj festas . . .{}Unua ŝipo alvenas en {STATION}!
 STR_NEWS_FIRST_AIRCRAFT_ARRIVAL                                 :{BIG_FONT}{BLACK}Enloĝantoj festas . . .{}Unua aviadilo alvenas en {STATION}!
 
-STR_NEWS_TRAIN_CRASH                                            :{BIG_FONT}{BLACK}Trajna Kraŝo!{}{COMMA} mortis pro fajro post kolizio
-STR_NEWS_ROAD_VEHICLE_CRASH_DRIVER                              :{BIG_FONT}{BLACK}Stratveturila kraŝo!{}Veturanto mortas pro fajro post kolizio kun trajno
-STR_NEWS_ROAD_VEHICLE_CRASH                                     :{BIG_FONT}{BLACK}Stratveturila kraŝo!{}{COMMA} mortas pro fajro post kolizio kun trajno
+STR_NEWS_TRAIN_CRASH                                            :{BIG_FONT}{BLACK}Vagonara Kraŝo!{}{COMMA} mortis pro fajro post kolizio
+STR_NEWS_ROAD_VEHICLE_CRASH_DRIVER                              :{BIG_FONT}{BLACK}Stratveturila kraŝo!{}Veturanto mortas pro fajro post kolizio kun vagonaro
+STR_NEWS_ROAD_VEHICLE_CRASH                                     :{BIG_FONT}{BLACK}Stratveturila kraŝo!{}{COMMA} mortas pro fajro post kolizio kun vagonaro
 STR_NEWS_AIRCRAFT_CRASH                                         :{BIG_FONT}{BLACK}Aviadilo Kraŝas!{}{COMMA} mortas pro fajro en {STATION}
 STR_NEWS_PLANE_CRASH_OUT_OF_FUEL                                :{BIG_FONT}{BLACK}Aviadila Kraŝo!{}Aviadilo ne havis sufiĉan brulaĵon, {COMMA} mortis pro fajro!
 
@@ -1306,8 +1306,8 @@ STR_CONFIG_SETTING_CONSTRUCTION_COSTS_HELPTEXT                  :Ŝanĝu nivelon
 STR_CONFIG_SETTING_RECESSIONS                                   :Recesioj: {STRING}
 STR_CONFIG_SETTING_RECESSIONS_HELPTEXT                          :Kiam tiu ĉi agordo estas aktiva, recesioj povas okazi ĉiujn kelkajn jarojn. Dum recesio ĉia produktado estas signife malpli alta (ĝi revenos al la antaŭa nivelo kiam finiĝas la recesio)
 
-STR_CONFIG_SETTING_TRAIN_REVERSING                              :Malpermesu al trajnoj turniĝi en stacioj: {STRING}
-STR_CONFIG_SETTING_TRAIN_REVERSING_HELPTEXT                     :Se tiu ĉi agordo estas aktiva, trajnoj ne turniĝos en trairaj stacioj, eĉ se troveblus pli mallonga vojo al la sekva celpunkto turniĝinte
+STR_CONFIG_SETTING_TRAIN_REVERSING                              :Malpermesu al vagonaroj turniĝi en stacioj: {STRING}
+STR_CONFIG_SETTING_TRAIN_REVERSING_HELPTEXT                     :Se tiu ĉi agordo estas aktiva, vagonaroj ne turniĝos en trairaj stacioj, eĉ se troveblus pli mallonga vojo al la sekva celpunkto turniĝinte
 
 STR_CONFIG_SETTING_DISASTERS                                    :Katastrofoj: {STRING}
 STR_CONFIG_SETTING_DISASTERS_HELPTEXT                           :Ŝaltu akcidentojn kiuj de temp' al tempo povas bloki veturilojn aŭ infrastrukturon
@@ -1331,27 +1331,27 @@ STR_CONFIG_SETTING_SERVE_NEUTRAL_INDUSTRIES_HELPTEXT            :Kiam tiu ĉi ag
 
 STR_CONFIG_SETTING_EXTRADYNAMITE                                :Permesu forigon de pli da urbaj stratoj, pontoj ktp: {STRING}
 
-STR_CONFIG_SETTING_TRAIN_LENGTH                                 :Maksimuma longeco de trajnoj: {STRING}
-STR_CONFIG_SETTING_TRAIN_LENGTH_HELPTEXT                        :Agordu la maksimuman longecon de trajnoj
+STR_CONFIG_SETTING_TRAIN_LENGTH                                 :Maksimuma longeco de vagonaroj: {STRING}
+STR_CONFIG_SETTING_TRAIN_LENGTH_HELPTEXT                        :Agordu la maksimuman longecon de vagonaroj
 STR_CONFIG_SETTING_TILE_LENGTH                                  :{COMMA} kvadrato{P 0 "" j}
 
 STR_CONFIG_SETTING_SMOKE_AMOUNT                                 :Kvanto da lokomotivo fumo/fajreroj: {STRING}
 STR_CONFIG_SETTING_SMOKE_AMOUNT_HELPTEXT                        :Agordu kiom da fumo aŭ fajreroj eligas veturiloj
 
-STR_CONFIG_SETTING_TRAIN_ACCELERATION_MODEL                     :Modelo de trajnakcelado: {STRING}
+STR_CONFIG_SETTING_TRAIN_ACCELERATION_MODEL                     :Modelo de vagonarakcelado: {STRING}
 
 STR_CONFIG_SETTING_ROAD_VEHICLE_ACCELERATION_MODEL              :Modelo de stratveturilakcelado: {STRING}
 STR_CONFIG_SETTING_ROAD_VEHICLE_ACCELERATION_MODEL_HELPTEXT     :Elektu fizikan modelon por startveturila akcelado. La "originala" modelo malfaciligas deklivojn egale por ĉiuj veturiloj. La "realisma" modelo malfaciligas deklivojn depende de diversaj ecoj de la motoro, ekzemple "trakcia forto".
 
-STR_CONFIG_SETTING_TRAIN_SLOPE_STEEPNESS                        :Deklivkruteco por trajnoj: {STRING}
-STR_CONFIG_SETTING_TRAIN_SLOPE_STEEPNESS_HELPTEXT               :Kruteco de dekliva kahelo por trajno. Kun pli alta valoro estas pli malfacile supreniri altaĵon
+STR_CONFIG_SETTING_TRAIN_SLOPE_STEEPNESS                        :Deklivkruteco por vagonaroj: {STRING}
+STR_CONFIG_SETTING_TRAIN_SLOPE_STEEPNESS_HELPTEXT               :Kruteco de dekliva kahelo por vagonaro. Kun pli alta valoro estas pli malfacile supreniri altaĵon
 STR_CONFIG_SETTING_PERCENTAGE                                   :{COMMA}%
 
 STR_CONFIG_SETTING_ROAD_VEHICLE_SLOPE_STEEPNESS                 :Deklivkruteco por stratveturiloj: {STRING}
 STR_CONFIG_SETTING_ROAD_VEHICLE_SLOPE_STEEPNESS_HELPTEXT        :Kruteco de dekliva kahelo por stratveturilo. Kun pli alta valoro estas pli malfacile supreniri altaĵon
 
-STR_CONFIG_SETTING_FORBID_90_DEG                                :Malpermesi al trajnoj fari 90-gradajn turnojn: {STRING}
-STR_CONFIG_SETTING_FORBID_90_DEG_HELPTEXT                       :90-gradaj turnoj ekzistas kiam horizontalan relpecon tuj sekvas vertikala relpeco sur apuda kahelo, tiel ke la trajno devas turniĝi 90 gradojn trairante la randon de la relo, anstataŭ la kutimaj 45 gradoj por aliaj kombinoj de relpecoj
+STR_CONFIG_SETTING_FORBID_90_DEG                                :Malpermesi al vagonaroj fari 90-gradajn turnojn: {STRING}
+STR_CONFIG_SETTING_FORBID_90_DEG_HELPTEXT                       :90-gradaj turnoj ekzistas kiam horizontalan relpecon tuj sekvas vertikala relpeco sur apuda kahelo, tiel ke la vagonaro devas turniĝi 90 gradojn trairante la randon de la relo, anstataŭ la kutimaj 45 gradoj por aliaj kombinoj de relpecoj
 
 STR_CONFIG_SETTING_DISTANT_JOIN_STATIONS                        :Permesu ligi staciojn ne rekte najbarajn: {STRING}
 STR_CONFIG_SETTING_DISTANT_JOIN_STATIONS_HELPTEXT               :Permesas aldoni al stacio partojn kiuj ne rekte tuŝas jam ekzistantajn partojn. Bezonas Stir+Klak por meti la novajn partojn
@@ -1395,7 +1395,7 @@ STR_CONFIG_SETTING_SHOWFINANCES_HELPTEXT                        :Kiam tiu ĉi ag
 STR_CONFIG_SETTING_NONSTOP_BY_DEFAULT                           :Novaj ordonoj estas 'sen-halte' per defaŭlto: {STRING}
 STR_CONFIG_SETTING_NONSTOP_BY_DEFAULT_HELPTEXT                  :Normale, veturilo haltos ĉe ĉiu stacio kiun ĝi trapasas. Post aktivigo de tiu ĉi agordo, ĝi trairos ĉiujn stacioj survoje al sia fina celo sen halti. Atentu ke tiu ĉi agordo nur difinas defaŭltan valoron por novaj ordonoj. Individuaj ordonoj povas esti eksplicite agorditaj al ajna el la du kondutoj sendepende
 
-STR_CONFIG_SETTING_STOP_LOCATION                                :Novaj trajnordonoj ĉesas defaŭlte ĉe la {STRING} of the platform
+STR_CONFIG_SETTING_STOP_LOCATION                                :Novaj vagonarordonoj ĉesas defaŭlte ĉe la {STRING} of the platform
 ###length 3
 STR_CONFIG_SETTING_STOP_LOCATION_NEAR_END                       :proksima fino
 STR_CONFIG_SETTING_STOP_LOCATION_MIDDLE                         :meza
@@ -1426,7 +1426,7 @@ STR_CONFIG_SETTING_ALLOW_FUND_ROAD_HELPTEXT                     :Permesu al komp
 STR_CONFIG_SETTING_ALLOW_GIVE_MONEY                             :Permesu sendi monon al aliaj kompanioj: {STRING}
 STR_CONFIG_SETTING_ALLOW_GIVE_MONEY_HELPTEXT                    :Permesu ĝiri monon inter kompanioj en pluropaj ludoj
 
-STR_CONFIG_SETTING_FREIGHT_TRAINS                               :Pezpliigo pro ŝarĝo por imiti pezajn trajnojn: {STRING}
+STR_CONFIG_SETTING_FREIGHT_TRAINS                               :Pezpliigo pro ŝarĝo por imiti pezajn vagonarojn: {STRING}
 
 STR_CONFIG_SETTING_PLANE_SPEED                                  :Aviadila rapidecfaktoro: {STRING}
 STR_CONFIG_SETTING_PLANE_SPEED_HELPTEXT                         :Agordu la relativan rapidecon de aviadiloj kompare al aliaj tipoj de veturiloj, por malpliigi enspezojn de transportado per aviadilo
@@ -1691,13 +1691,13 @@ STR_CONFIG_SETTING_DEFAULT_RAIL_TYPE_LAST                       :Laste havebla
 STR_CONFIG_SETTING_DEFAULT_RAIL_TYPE_MOST_USED                  :Pli uzata
 
 STR_CONFIG_SETTING_SHOW_TRACK_RESERVATION                       :Montru rezervitajn trakojn: {STRING}
-STR_CONFIG_SETTING_SHOW_TRACK_RESERVATION_HELPTEXT              :Donu alian koloron al rezervitaj trakoj por helpi je problemoj pri trajnoj kiuj rifuzas eniri voj-bazitajn blokojn
+STR_CONFIG_SETTING_SHOW_TRACK_RESERVATION_HELPTEXT              :Donu alian koloron al rezervitaj trakoj por helpi je problemoj pri vagonaroj kiuj rifuzas eniri voj-bazitajn blokojn
 
 STR_CONFIG_SETTING_PERSISTENT_BUILDINGTOOLS                     :Lasu aktivaj la konstruilojn post uzado: {STRING}
 STR_CONFIG_SETTING_PERSISTENT_BUILDINGTOOLS_HELPTEXT            :Lasu aktivaj la ilojn por konstrui pontojn, tunelojn ktp post uzo
 
 STR_CONFIG_SETTING_AUTO_REMOVE_SIGNALS                          :Aŭtomate forigu semaforojn dum relkonstruado: {STRING}
-STR_CONFIG_SETTING_AUTO_REMOVE_SIGNALS_HELPTEXT                 :Aŭtomate forigu semaforojn dum relkonstruado se ili malhelpas konstrui. Atentu ke tio ĉi eventuale povas kaŭzi trajnkoliziojn.
+STR_CONFIG_SETTING_AUTO_REMOVE_SIGNALS_HELPTEXT                 :Aŭtomate forigu semaforojn dum relkonstruado se ili malhelpas konstrui. Atentu ke tio ĉi eventuale povas kaŭzi vagonarkoliziojn.
 
 STR_CONFIG_SETTING_FAST_FORWARD_SPEED_LIMIT                     :Maksimuma rapideco dum rapidpluigo: {STRING}
 STR_CONFIG_SETTING_FAST_FORWARD_SPEED_LIMIT_VAL                 :{NUM}% de la normala ludrapideco
@@ -1731,8 +1731,8 @@ STR_CONFIG_SETTING_SOUND_VEHICLE_HELPTEXT                       :Ludu sonefektoj
 STR_CONFIG_SETTING_SOUND_AMBIENT                                :Ĉirkaŭaĵo: {STRING}
 STR_CONFIG_SETTING_SOUND_AMBIENT_HELPTEXT                       :Ludu ĉirkaŭaĵa sonefektoj de pejzaĝo, industrioj kaj urboj
 
-STR_CONFIG_SETTING_MAX_TRAINS                                   :Trajna maksimumo por ĉiu kompanio: {STRING}
-STR_CONFIG_SETTING_MAX_TRAINS_HELPTEXT                          :Maksimuma nombro de trajnoj kiun kompanio povas havi
+STR_CONFIG_SETTING_MAX_TRAINS                                   :Vagonara maksimumo por ĉiu kompanio: {STRING}
+STR_CONFIG_SETTING_MAX_TRAINS_HELPTEXT                          :Maksimuma nombro de vagonaroj kiun kompanio povas havi
 
 STR_CONFIG_SETTING_MAX_ROAD_VEHICLES                            :Stratveturila maksimumo por ĉiu kompanio: {STRING}
 STR_CONFIG_SETTING_MAX_ROAD_VEHICLES_HELPTEXT                   :Maksimuma nombro de stratveturiloj kiun kompanio povas havi
@@ -1743,8 +1743,8 @@ STR_CONFIG_SETTING_MAX_AIRCRAFT_HELPTEXT                        :Maksimuma nombr
 STR_CONFIG_SETTING_MAX_SHIPS                                    :Ŝipa maksimumo por ĉiu kompanio: {STRING}
 STR_CONFIG_SETTING_MAX_SHIPS_HELPTEXT                           :Maksimuma nombro de ŝipoj kiun kompanio povas havi
 
-STR_CONFIG_SETTING_AI_BUILDS_TRAINS                             :Malebligu trajnojn por la komputilo: {STRING}
-STR_CONFIG_SETTING_AI_BUILDS_TRAINS_HELPTEXT                    :Se tiu ĉi agordo estas aktiva, komputila ludanto ne povas konstrui trajnojn
+STR_CONFIG_SETTING_AI_BUILDS_TRAINS                             :Malebligu vagonarojn por la komputilo: {STRING}
+STR_CONFIG_SETTING_AI_BUILDS_TRAINS_HELPTEXT                    :Se tiu ĉi agordo estas aktiva, komputila ludanto ne povas konstrui vagonarojn
 
 STR_CONFIG_SETTING_AI_BUILDS_ROAD_VEHICLES                      :Malebligu stratveturilojn por la komputilo: {STRING}
 STR_CONFIG_SETTING_AI_BUILDS_ROAD_VEHICLES_HELPTEXT             :Se tiu ĉi agordo estas aktiva, komputila ludanto ne povas konstrui stratveturilojn
@@ -1765,7 +1765,7 @@ STR_CONFIG_SETTING_SCRIPT_MAX_MEMORY_VALUE                      :{COMMA} MiB
 STR_CONFIG_SETTING_SERVINT_ISPERCENT                            :Prizorgintervala procentaĵo: {STRING}
 STR_CONFIG_SETTING_SERVINT_ISPERCENT_HELPTEXT                   :Kiam tiu ĉi agordo estas aktiva, veturiloj klopodas iri al priservado kiam ilia fidindeco estas je certa procentaĵo malpli alta ol la maksimuma fidindeco.{}{}Ekzemple, se la maksimuma fidindeco de veturilo estas 90% kaj la priservintervalo estas 20%, la veturilo klopodos iri al priservado kiam ĝi atingas fidindecon de 72%.
 
-STR_CONFIG_SETTING_SERVINT_TRAINS                               :Defaŭlta priservintervalo for trajnoj: {STRING}
+STR_CONFIG_SETTING_SERVINT_TRAINS                               :Defaŭlta priservintervalo for vagonaroj: {STRING}
 STR_CONFIG_SETTING_SERVINT_TRAINS_HELPTEXT                      :Elektu la defaŭltan priservintervalon por novaj relveturiloj, se ne estas eksplicite agordita priservintervalo por la veturilo
 STR_CONFIG_SETTING_SERVINT_ROAD_VEHICLES                        :Defaŭlta priservintervalo por stratveturiloj: {STRING}
 STR_CONFIG_SETTING_SERVINT_ROAD_VEHICLES_HELPTEXT               :Elektu la defaŭltan priservintervalon por novaj stratveturiloj, se ne estas eksplicite agordita priservintervalo por la veturilo
@@ -1782,7 +1782,7 @@ STR_CONFIG_SETTING_NOSERVICE_HELPTEXT                           :Kiam tiu ĉi ag
 
 
 STR_CONFIG_SETTING_WAGONSPEEDLIMITS                             :Aktivigu vagonajn rapideclimojn: {STRING}
-STR_CONFIG_SETTING_WAGONSPEEDLIMITS_HELPTEXT                    :Kiam ebligita, ankaŭ uzu rapideco-limigojn de vagonoj por decidi la maksimuman rapidecon de trajno
+STR_CONFIG_SETTING_WAGONSPEEDLIMITS_HELPTEXT                    :Kiam ebligita, ankaŭ uzu rapideco-limigojn de vagonoj por decidi la maksimuman rapidecon de vagonaro
 
 STR_CONFIG_SETTING_DISABLE_ELRAILS                              :Malŝaltu elektrajn relojn: {STRING}
 STR_CONFIG_SETTING_DISABLE_ELRAILS_HELPTEXT                     :Se tiu ĉi agordo estas aktiva, ne necesas elektrigi relojn por ke elektraj lokomotivoj povu veturi sur ili
@@ -2051,11 +2051,11 @@ STR_CONFIG_SETTING_AI                                           :Konkurantoj
 STR_CONFIG_SETTING_AI_NPC                                       :Komputil-ludantoj
 STR_CONFIG_SETTING_NETWORK                                      :Reto
 
-STR_CONFIG_SETTING_PATHFINDER_FOR_TRAINS                        :Padtrovilo por trajnoj: {STRING}
+STR_CONFIG_SETTING_PATHFINDER_FOR_TRAINS                        :Padtrovilo por vagonaroj: {STRING}
 STR_CONFIG_SETTING_PATHFINDER_FOR_ROAD_VEHICLES                 :Padtrovilo por stratveturiloj: {STRING}
 STR_CONFIG_SETTING_PATHFINDER_FOR_SHIPS                         :Padtrovilo por ŝipoj: {STRING}
 STR_CONFIG_SETTING_REVERSE_AT_SIGNALS                           :Aŭtomata dorsflankante ĉe signaloj: {STRING}
-STR_CONFIG_SETTING_REVERSE_AT_SIGNALS_HELPTEXT                  :Permesu al trajno turniĝi ĉe semaforo, se ĝi jam atendis dum longa tempo
+STR_CONFIG_SETTING_REVERSE_AT_SIGNALS_HELPTEXT                  :Permesu al vagonaro turniĝi ĉe semaforo, se ĝi jam atendis dum longa tempo
 ###length 2
 STR_CONFIG_SETTING_PATHFINDER_NPF                               :NPF
 STR_CONFIG_SETTING_PATHFINDER_YAPF                              :YAPF {BLUE}(Rekomendite)
@@ -2100,7 +2100,7 @@ STR_INTRO_GAME_OPTIONS                                          :{BLACK}Ludaj ag
 STR_INTRO_HIGHSCORE                                             :{BLACK}Altpoentara tabelo
 STR_INTRO_CONFIG_SETTINGS_TREE                                  :{BLACK}Agordoj
 STR_INTRO_NEWGRF_SETTINGS                                       :{BLACK}Agordoj de NewGRF
-STR_INTRO_ONLINE_CONTENT                                        :{BLACK}Provu Enretan Enhavon
+STR_INTRO_ONLINE_CONTENT                                        :{BLACK}Kontroli ĉeretajn aldonaĵojn
 STR_INTRO_AI_SETTINGS                                           :{BLACK}AI-agordoj
 STR_INTRO_GAMESCRIPT_SETTINGS                                   :{BLACK}Ludoskriptaj agordoj
 STR_INTRO_QUIT                                                  :{BLACK}Forlasi
@@ -2159,7 +2159,7 @@ STR_CHEAT_SETUP_PROD                                            :{LTBLUE}Ebligu 
 STR_LIVERY_CAPTION                                              :{WHITE}{COMPANY} - kolorskemo
 
 STR_LIVERY_GENERAL_TOOLTIP                                      :{BLACK}Montru ĝeneralajn kolorskemojn
-STR_LIVERY_TRAIN_TOOLTIP                                        :{BLACK}Montru trajnajn kolorskemojn
+STR_LIVERY_TRAIN_TOOLTIP                                        :{BLACK}Montru vagonarajn kolorskemojn
 STR_LIVERY_ROAD_VEHICLE_TOOLTIP                                 :{BLACK}Montru stratveturilajn kolorskemojn
 STR_LIVERY_SHIP_TOOLTIP                                         :{BLACK}Montru ŝipkolorajn skemojn
 STR_LIVERY_AIRCRAFT_TOOLTIP                                     :{BLACK}Montru aviadilajn kolorskemojn
@@ -2581,7 +2581,7 @@ STR_CONTENT_TYPE_GS_LIBRARY                                     :Ludoskripta kod
 STR_CONTENT_DOWNLOAD_TITLE                                      :{WHITE}Enhavo elŝutiĝas...
 STR_CONTENT_DOWNLOAD_INITIALISE                                 :{WHITE}Petante dosierojn...
 STR_CONTENT_DOWNLOAD_FILE                                       :{WHITE}Nuntempe elŝutante {STRING} ({NUM} el {NUM})
-STR_CONTENT_DOWNLOAD_COMPLETE                                   :{WHITE}Elŝuto kompleta
+STR_CONTENT_DOWNLOAD_COMPLETE                                   :{WHITE}Elŝuto finita
 STR_CONTENT_DOWNLOAD_PROGRESS_SIZE                              :{WHITE}{BYTES} el {BYTES} elŝutiĝis ({NUM} %)
 
 # Content downloading error messages
@@ -2654,7 +2654,7 @@ STR_RAIL_TOOLBAR_MAGLEV_CONSTRUCTION_CAPTION                    :Konstruado de M
 
 STR_RAIL_TOOLBAR_TOOLTIP_BUILD_RAILROAD_TRACK                   :{BLACK}Konstrui trakon. Ctrl baskuligas konstrui/forviŝi fervojan konstruon. Majuskliga klavo baskuligas konstrui/(kosto)taksi
 STR_RAIL_TOOLBAR_TOOLTIP_BUILD_AUTORAIL                         :{BLACK}Konstrui trakon per Aŭtomata fervoj-reĝimo. Ctrl baskuligas konstrui/forviŝi fervojan konstruon. La majuskliga klavo baskuligas konstrui/(kosto)taksi
-STR_RAIL_TOOLBAR_TOOLTIP_BUILD_TRAIN_DEPOT_FOR_BUILDING         :{BLACK}Konstrui trajngaraĝon (pri konstrui kaj prizorgi trajnojn). La majuskliga klavo baskuligas konstrui/(kosto)taksi
+STR_RAIL_TOOLBAR_TOOLTIP_BUILD_TRAIN_DEPOT_FOR_BUILDING         :{BLACK}Konstrui vagonartenejon (por konstrui kaj prizorgi vagonarojn). La majuskliga klavo baskuligas konstrui/(kosto)taksi
 STR_RAIL_TOOLBAR_TOOLTIP_CONVERT_RAIL_TO_WAYPOINT               :{BLACK}Ŝanĝi relo al vojpunkto. Ctrl-klavo permesas ligi vojpunktojn. La majuskliga klavo baskuligas inter konstrui/(kosto)taksi
 STR_RAIL_TOOLBAR_TOOLTIP_BUILD_RAILROAD_STATION                 :{BLACK}Konstrui fervojostacion. Premu Stir-butonon por ligi staciojn. La majuskliga klavo baskuligas inter konstrui/(kosto)taksi
 STR_RAIL_TOOLBAR_TOOLTIP_BUILD_RAILROAD_SIGNALS                 :{BLACK}Konstruu signalojn. Ctrl baskuligas inter semaforaj/trafiklumaj signoj{}Treni konstruas rektan lineon da fervojaj signoj. Per Ctrl, signoj konstruiĝas ĝis la sekvonta kuniĝo{}Ctrl+Klaki malfermas fenestron por elekti trafiklumojn. La majuskliga klavo baskuligas inter konstrui/(kosto)taksi
@@ -2669,8 +2669,8 @@ STR_RAIL_NAME_MONORAIL                                          :Unurelo
 STR_RAIL_NAME_MAGLEV                                            :Maglevo
 
 # Rail depot construction window
-STR_BUILD_DEPOT_TRAIN_ORIENTATION_CAPTION                       :{WHITE}Direkto de la trajngaraĝo
-STR_BUILD_DEPOT_TRAIN_ORIENTATION_TOOLTIP                       :{BLACK}Elekti direkton de la trajngaraĝo
+STR_BUILD_DEPOT_TRAIN_ORIENTATION_CAPTION                       :{WHITE}Direkto de la vagonartenejo
+STR_BUILD_DEPOT_TRAIN_ORIENTATION_TOOLTIP                       :{BLACK}Elekti direkton de la vagonartenejo
 
 # Rail waypoint construction window
 STR_WAYPOINT_CAPTION                                            :{WHITE}Vojpunkto
@@ -2698,12 +2698,12 @@ STR_STATION_CLASS_WAYP                                          :Vojpunktoj
 # Signal window
 STR_BUILD_SIGNAL_CAPTION                                        :{WHITE}Elekto de Signalo
 STR_BUILD_SIGNAL_TOGGLE_ADVANCED_SIGNAL_TOOLTIP                 :{BLACK}Ŝaltu montradon de altnivelaj tipoj de semaforoj
-STR_BUILD_SIGNAL_ELECTRIC_NORM_TOOLTIP                          :{BLACK}Bloksignalo (elektra){}Tio ĉi estas la plej baza tipo de signalo, kiu permesas al nur unu trajno esti en la sama bloko dum la sama tempo
+STR_BUILD_SIGNAL_ELECTRIC_NORM_TOOLTIP                          :{BLACK}Bloksignalo (elektra){}Tio ĉi estas la plej baza tipo de signalo, kiu permesas al nur unu vagonaro esti en la sama bloko dum la sama tempo
 STR_BUILD_SIGNAL_ELECTRIC_ENTRY_TOOLTIP                         :{BLACK}Enirsemaforo (elektra){}Restas verda dum estas almenaŭ unu verda elirsemaforo de la sekva traksekcio. Alikaze ĝi estas ruĝa
 STR_BUILD_SIGNAL_ELECTRIC_EXIT_TOOLTIP                          :{BLACK}Elira semaforo (elektra){}Kondutas same kiel bloka semaforo, sed estas bezonata por kaŭzi la ĝustan koloron ĉe eniraj kaj kombinaj antaŭsemaforoj
 STR_BUILD_SIGNAL_ELECTRIC_COMBO_TOOLTIP                         :{BLACK}Kombina semaforo (elektra){}La kombina semaforo simple agas kaj kiel enira kaj kiel elira semaforo. Tio ebligas konstrui grandajn "arbojn" de antaŭsemaforoj
-STR_BUILD_SIGNAL_ELECTRIC_PBS_TOOLTIP                           :{BLACK}Vojrezerva semaforo (elektra){}Vojrezerva semaforo ebligas ke pli ol unu trajno eniru signalan blokon samtempe, se la trajno povas rezervi vojon ĝis sekura haltopunkto. Normalan vojrezervan semaforon eblas trapasi de la malantaŭa flanko
-STR_BUILD_SIGNAL_ELECTRIC_PBS_OWAY_TOOLTIP                      :{BLACK}Unudirekta vojrezerva semaforo (elektra){}Vojrezerva semaforo ebligas ke pli ol unu trajno eniru signalan blokon samtempe, se la trajno povas rezervi vojon ĝis sekura haltopunkto. Unudirektan vojrezervan semaforon ne eblas trapasi de la malantaŭa flanko
+STR_BUILD_SIGNAL_ELECTRIC_PBS_TOOLTIP                           :{BLACK}Vojrezerva semaforo (elektra){}Vojrezerva semaforo ebligas ke pli ol unu vagonaro eniru signalan blokon samtempe, se la vagonaro povas rezervi vojon ĝis sekura haltopunkto. Normalan vojrezervan semaforon eblas trapasi de la malantaŭa flanko
+STR_BUILD_SIGNAL_ELECTRIC_PBS_OWAY_TOOLTIP                      :{BLACK}Unudirekta vojrezerva semaforo (elektra){}Vojrezerva semaforo ebligas ke pli ol unu vagonaro eniru signalan blokon samtempe, se la vagonaro povas rezervi vojon ĝis sekura haltopunkto. Unudirektan vojrezervan semaforon ne eblas trapasi de la malantaŭa flanko
 STR_BUILD_SIGNAL_DRAG_SIGNALS_DENSITY_TOOLTIP                   :{BLACK}Distanco inter semaforoj dum trenado
 STR_BUILD_SIGNAL_DRAG_SIGNALS_DENSITY_DECREASE_TOOLTIP          :{BLACK}Malpliigu semaforan distancon dum trenado
 STR_BUILD_SIGNAL_DRAG_SIGNALS_DENSITY_INCREASE_TOOLTIP          :{BLACK}Pliigu semaforan distancon dum trenado
@@ -2985,7 +2985,7 @@ STR_LAI_RAIL_DESCRIPTION_TRACK_WITH_EXIT_NOENTRYSIGNALS         :Fervoja trako k
 STR_LAI_RAIL_DESCRIPTION_TRACK_WITH_COMBO_PBSSIGNALS            :Fervoja trako kun kombinaj kaj vojrezervaj semaforoj
 STR_LAI_RAIL_DESCRIPTION_TRACK_WITH_COMBO_NOENTRYSIGNALS        :Fervoja trako kun kombinaj kaj unudirektaj vojrezervaj semaforoj
 STR_LAI_RAIL_DESCRIPTION_TRACK_WITH_PBS_NOENTRYSIGNALS          :Fervoja trako kun vojrezervaj kaj unudirektaj vojrezervaj semaforoj
-STR_LAI_RAIL_DESCRIPTION_TRAIN_DEPOT                            :Trajngaraĝo
+STR_LAI_RAIL_DESCRIPTION_TRAIN_DEPOT                            :Vagonartenejo
 
 STR_LAI_ROAD_DESCRIPTION_ROAD                                   :Strato
 STR_LAI_ROAD_DESCRIPTION_ROAD_WITH_STREETLIGHTS                 :Strato kun lampoj
@@ -3077,7 +3077,7 @@ STR_FRAMERATE_GRAPH_SECONDS                                     :{TINY_FONT}{COM
 ###length 15
 STR_FRAMERATE_GAMELOOP                                          :{BLACK}Luda iteracio ensume:
 STR_FRAMERATE_GL_ECONOMY                                        :{BLACK} Traktado de ŝarĝoj:
-STR_FRAMERATE_GL_TRAINS                                         :{BLACK}  Trajnaj tempopulsoj:
+STR_FRAMERATE_GL_TRAINS                                         :{BLACK}  Vagonaraj tempopulsoj:
 STR_FRAMERATE_GL_ROADVEHS                                       :{BLACK}  Stratveturilaj tempopulsoj:
 STR_FRAMERATE_GL_SHIPS                                          :{BLACK}  Ŝipaj tempopulsoj:
 STR_FRAMERATE_GL_AIRCRAFT                                       :{BLACK}  Aviadilaj tempopulsoj:
@@ -3094,7 +3094,7 @@ STR_FRAMERATE_AI                                                :{BLACK}   AI {N
 ###length 15
 STR_FRAMETIME_CAPTION_GAMELOOP                                  :Luda iteracio
 STR_FRAMETIME_CAPTION_GL_ECONOMY                                :Traktado de ŝarĝoj
-STR_FRAMETIME_CAPTION_GL_TRAINS                                 :Trajnaj tempopulsoj
+STR_FRAMETIME_CAPTION_GL_TRAINS                                 :Vagonaraj tempopulsoj
 STR_FRAMETIME_CAPTION_GL_ROADVEHS                               :Stratveturilaj tempopulsoj
 STR_FRAMETIME_CAPTION_GL_SHIPS                                  :Ŝipaj tempopulsoj
 STR_FRAMETIME_CAPTION_GL_AIRCRAFT                               :Aviadilaj tempopulsoj
@@ -3387,7 +3387,7 @@ STR_NEWGRF_LIST_MISSING                                         :{RED}Mankaj dos
 STR_NEWGRF_BROKEN                                               :{WHITE}La konduto de la NewGRF '{0:STRING}' verŝajne kaŭzos malsinkroniĝojn kaj/aŭ paneojn
 STR_NEWGRF_BROKEN_VEHICLE_LENGTH                                :{WHITE}Ĝi ŝanĝis la veturilan longecon de '{1:ENGINE}' dum ĝi ne estis en garaĝo
 STR_NEWGRF_BROKEN_CAPACITY                                      :{WHITE}Ĝi ŝanĝis la veturilan kapaciton de '{1:ENGINE}' dum ĝi ne estis en garaĝo aŭ readaptiĝanta
-STR_BROKEN_VEHICLE_LENGTH                                       :{WHITE}La trajno '{VEHICLE}' apartenanta al '{COMPANY}' havas malvalidan longecon. Tion verŝajne kaŭzis problemoj pri NewGRF-oj. La ludo eventuale malsinkroniĝos aŭ paneos
+STR_BROKEN_VEHICLE_LENGTH                                       :{WHITE}La vagonaro '{VEHICLE}' apartenanta al '{COMPANY}' havas malvalidan longecon. Tion verŝajne kaŭzis problemoj pri NewGRF-oj. La ludo eventuale malsinkroniĝos aŭ paneos
 
 STR_NEWGRF_BUGGY                                                :{WHITE}NewGRF '{0:STRING}' donas malĝustan informon
 STR_NEWGRF_BUGGY_UNKNOWN_CALLBACK_RESULT                        :{WHITE}'Revoko' {1:HEX} revenis nekonatan/malvalidan rezulton {2:HEX}
@@ -3595,7 +3595,7 @@ STR_CARGO_RATING_OUTSTANDING                                    :Elstare bonege
 STR_STATION_VIEW_CENTER_TOOLTIP                                 :{BLACK}Centri ĉefvidon ĉe la stacio. Stir+Klak por malfermi novan vidujon ĉe la stacioloko.
 STR_STATION_VIEW_RENAME_TOOLTIP                                 :{BLACK}Ŝanĝu nomon de stacio
 
-STR_STATION_VIEW_SCHEDULED_TRAINS_TOOLTIP                       :{BLACK}Montru ĉiujn trajnojn kun ĉi tiu stacio en la plano
+STR_STATION_VIEW_SCHEDULED_TRAINS_TOOLTIP                       :{BLACK}Montru ĉiujn vagonarojn kun ĉi tiu stacio en la plano
 STR_STATION_VIEW_SCHEDULED_ROAD_VEHICLES_TOOLTIP                :{BLACK}Montru ĉiujn stratveturilojn kun ĉi tiu stacio en la plano
 STR_STATION_VIEW_SCHEDULED_AIRCRAFT_TOOLTIP                     :{BLACK}Montru ĉiujn aviadilojn kun ĉi tiu stacio en la plano
 STR_STATION_VIEW_SCHEDULED_SHIPS_TOOLTIP                        :{BLACK}Montru ĉiujn ŝipojn kun ĉi tiu stacio en la plano
@@ -3627,12 +3627,12 @@ STR_FINANCES_CAPITAL_EXPENSES_TITLE                             :{WHITE}Kapitala
 ###length 13
 STR_FINANCES_SECTION_CONSTRUCTION                               :{GOLD}Konstruado
 STR_FINANCES_SECTION_NEW_VEHICLES                               :{GOLD}Novaj Veturiloj
-STR_FINANCES_SECTION_TRAIN_RUNNING_COSTS                        :{GOLD}Trajnoj
+STR_FINANCES_SECTION_TRAIN_RUNNING_COSTS                        :{GOLD}Vagonaroj
 STR_FINANCES_SECTION_ROAD_VEHICLE_RUNNING_COSTS                 :{GOLD}Stratveturiloj
 STR_FINANCES_SECTION_AIRCRAFT_RUNNING_COSTS                     :{GOLD}Aviadiloj
 STR_FINANCES_SECTION_SHIP_RUNNING_COSTS                         :{GOLD}Ŝipoj
 STR_FINANCES_SECTION_INFRASTRUCTURE                             :{GOLD}Infrastrukturo
-STR_FINANCES_SECTION_TRAIN_REVENUE                              :{GOLD}Trajnoj
+STR_FINANCES_SECTION_TRAIN_REVENUE                              :{GOLD}Vagonaroj
 STR_FINANCES_SECTION_ROAD_VEHICLE_REVENUE                       :{GOLD}Stratveturiloj
 STR_FINANCES_SECTION_AIRCRAFT_REVENUE                           :{GOLD}Aviadiloj
 STR_FINANCES_SECTION_SHIP_REVENUE                               :{GOLD}Ŝipoj
@@ -3664,7 +3664,7 @@ STR_COMPANY_VIEW_PRESIDENT_MANAGER_TITLE                        :{WHITE}{PRESIDE
 STR_COMPANY_VIEW_INAUGURATED_TITLE                              :{GOLD}Inaŭgurita: {WHITE}{NUM}
 STR_COMPANY_VIEW_COLOUR_SCHEME_TITLE                            :{GOLD}Kolorskemo:
 STR_COMPANY_VIEW_VEHICLES_TITLE                                 :{GOLD}Veturiloj:
-STR_COMPANY_VIEW_TRAINS                                         :{WHITE}{COMMA} trajno{P "" j}
+STR_COMPANY_VIEW_TRAINS                                         :{WHITE}{COMMA} vagonaro{P "" j}
 STR_COMPANY_VIEW_ROAD_VEHICLES                                  :{WHITE}{COMMA} stratveturilo{P "" j}
 STR_COMPANY_VIEW_AIRCRAFT                                       :{WHITE}{COMMA} aviadiloj
 STR_COMPANY_VIEW_SHIPS                                          :{WHITE}{COMMA} ŝipo{P "" j}
@@ -3752,19 +3752,19 @@ STR_CONFIG_GAME_PRODUCTION_LEVEL                                :{WHITE}Ŝanĝu 
 
 # Vehicle lists
 ###length VEHICLE_TYPES
-STR_VEHICLE_LIST_TRAIN_CAPTION                                  :{WHITE}{STRING} - {COMMA} Trajno{P "" j}
+STR_VEHICLE_LIST_TRAIN_CAPTION                                  :{WHITE}{STRING} - {COMMA} Vagonaro{P "" j}
 STR_VEHICLE_LIST_ROAD_VEHICLE_CAPTION                           :{WHITE}{STRING} - {COMMA} Stratveturilo{P "" j}
 STR_VEHICLE_LIST_SHIP_CAPTION                                   :{WHITE}{STRING} - {COMMA} Ŝipo{P "" j}
 STR_VEHICLE_LIST_AIRCRAFT_CAPTION                               :{WHITE}{STRING} - {COMMA} Aviadilo{P "" j}
 
 ###length VEHICLE_TYPES
-STR_VEHICLE_LIST_TRAIN_LIST_TOOLTIP                             :{BLACK}Trajnoj - alklaku trajnon por pliaj informoj
+STR_VEHICLE_LIST_TRAIN_LIST_TOOLTIP                             :{BLACK}Vagonaroj - alklaku vagonaron por pliaj informoj
 STR_VEHICLE_LIST_ROAD_VEHICLE_TOOLTIP                           :{BLACK}Stratveturiloj - alklaku veturilon por informoj
 STR_VEHICLE_LIST_SHIP_TOOLTIP                                   :{BLACK}Ŝipoj - alklaku ŝipon por informoj
 STR_VEHICLE_LIST_AIRCRAFT_TOOLTIP                               :{BLACK}Aviadiloj - alklaku aviadilon por informoj
 
 ###length VEHICLE_TYPES
-STR_VEHICLE_LIST_AVAILABLE_TRAINS                               :Haveblaj Trajnoj
+STR_VEHICLE_LIST_AVAILABLE_TRAINS                               :Haveblaj Vagonaroj
 STR_VEHICLE_LIST_AVAILABLE_ROAD_VEHICLES                        :Haveblaj Veturiloj
 STR_VEHICLE_LIST_AVAILABLE_SHIPS                                :Haveblaj Ŝipoj
 STR_VEHICLE_LIST_AVAILABLE_AIRCRAFT                             :Haveblaj Aviadiloj
@@ -3790,13 +3790,13 @@ STR_VEHICLE_LIST_SHARED_ORDERS_LIST_CAPTION                     :{WHITE}Kunhavaj
 
 # Group window
 ###length VEHICLE_TYPES
-STR_GROUP_ALL_TRAINS                                            :Ĉiuj trajnoj
+STR_GROUP_ALL_TRAINS                                            :Ĉiuj vagonaroj
 STR_GROUP_ALL_ROAD_VEHICLES                                     :Ĉiuj stratveturiloj
 STR_GROUP_ALL_SHIPS                                             :Ĉiuj ŝipoj
 STR_GROUP_ALL_AIRCRAFTS                                         :Ĉiuj aviadiloj
 
 ###length VEHICLE_TYPES
-STR_GROUP_DEFAULT_TRAINS                                        :Sengrupaj trajnoj
+STR_GROUP_DEFAULT_TRAINS                                        :Sengrupaj vagonaroj
 STR_GROUP_DEFAULT_ROAD_VEHICLES                                 :Sengrupaj stratveturiloj
 STR_GROUP_DEFAULT_SHIPS                                         :Sengrupaj ŝipoj
 STR_GROUP_DEFAULT_AIRCRAFTS                                     :Sengrupaj aviadiloj
@@ -3870,7 +3870,7 @@ STR_CARGO_TYPE_FILTER_FREIGHT                                   :Varoj
 STR_CARGO_TYPE_FILTER_NONE                                      :Neniaj
 
 ###length VEHICLE_TYPES
-STR_BUY_VEHICLE_TRAIN_LIST_TOOLTIP                              :{BLACK}Trajnveturila elektolisto - alklaku veturilon por informoj
+STR_BUY_VEHICLE_TRAIN_LIST_TOOLTIP                              :{BLACK}Vagonara elektolisto - alklaku veturilon por informoj
 STR_BUY_VEHICLE_ROAD_VEHICLE_LIST_TOOLTIP                       :{BLACK}Stratveturilelektan liston - alklaku veturilon por informoj
 STR_BUY_VEHICLE_SHIP_LIST_TOOLTIP                               :{BLACK}Ŝipelekta listo - alklaku ŝipon por informoj
 STR_BUY_VEHICLE_AIRCRAFT_LIST_TOOLTIP                           :{BLACK}Aviadilelekta listo - alklaku aviadilon por informoj
@@ -3888,7 +3888,7 @@ STR_BUY_VEHICLE_SHIP_BUY_REFIT_VEHICLE_BUTTON                   :{BLACK}Aĉetu k
 STR_BUY_VEHICLE_AIRCRAFT_BUY_REFIT_VEHICLE_BUTTON               :{BLACK}Aĉetu kaj readaptu la aviadilon
 
 ###length VEHICLE_TYPES
-STR_BUY_VEHICLE_TRAIN_BUY_VEHICLE_TOOLTIP                       :{BLACK}Aĉeti la emfazitan trajnveturilon. Montri taksitaj kostoj sen aĉeti per maljuskliga klavo + Klaki
+STR_BUY_VEHICLE_TRAIN_BUY_VEHICLE_TOOLTIP                       :{BLACK}Aĉeti la emfazitan vagonaron. Montri taksitaj kostoj sen aĉeti per maljuskliga klavo + Klaki
 STR_BUY_VEHICLE_ROAD_VEHICLE_BUY_VEHICLE_TOOLTIP                :{BLACK}Aĉeti la emfazitan stratveturilon. Montri taksitaj kostoj sen aĉeti per maljuskliga klavo + Klaki
 STR_BUY_VEHICLE_SHIP_BUY_VEHICLE_TOOLTIP                        :{BLACK}Aĉeti la emfazitan ŝipon. Montri taksitaj kostoj sen aĉeti per maljuskliga klavo + Klaki
 STR_BUY_VEHICLE_AIRCRAFT_BUY_VEHICLE_TOOLTIP                    :{BLACK}Aĉeti la emfazitan aviadilon. Montri taksitaj kostoj sen aĉeti per maljuskliga klavo + Klaki
@@ -3902,7 +3902,7 @@ STR_BUY_VEHICLE_SHIP_RENAME_BUTTON                              :{BLACK}Alinomi
 STR_BUY_VEHICLE_AIRCRAFT_RENAME_BUTTON                          :{BLACK}Alinomi
 
 ###length VEHICLE_TYPES
-STR_BUY_VEHICLE_TRAIN_RENAME_TOOLTIP                            :{BLACK}Alinomi trajnveturilan tipon
+STR_BUY_VEHICLE_TRAIN_RENAME_TOOLTIP                            :{BLACK}Alinomi vagonaran tipon
 STR_BUY_VEHICLE_ROAD_VEHICLE_RENAME_TOOLTIP                     :{BLACK}Alinomi stratveturilan tipon
 STR_BUY_VEHICLE_SHIP_RENAME_TOOLTIP                             :{BLACK}Alinomi ŝiptipon
 STR_BUY_VEHICLE_AIRCRAFT_RENAME_TOOLTIP                         :{BLACK}Alinomi aviadiltipon
@@ -3920,13 +3920,13 @@ STR_BUY_VEHICLE_SHIP_SHOW_TOGGLE_BUTTON                         :{BLACK}Montru
 STR_BUY_VEHICLE_AIRCRAFT_SHOW_TOGGLE_BUTTON                     :{BLACK}Montru
 
 ###length VEHICLE_TYPES
-STR_BUY_VEHICLE_TRAIN_HIDE_SHOW_TOGGLE_TOOLTIP                  :{BLACK}Ŝaltu kaŝadon/montradon de trajnveturila tipo
+STR_BUY_VEHICLE_TRAIN_HIDE_SHOW_TOGGLE_TOOLTIP                  :{BLACK}Ŝaltu kaŝadon/montradon de vagonara tipo
 STR_BUY_VEHICLE_ROAD_VEHICLE_HIDE_SHOW_TOGGLE_TOOLTIP           :{BLACK}Ŝaltu kaŝadon/montradon de stratveturila tipo
 STR_BUY_VEHICLE_SHIP_HIDE_SHOW_TOGGLE_TOOLTIP                   :{BLACK}Ŝaltu kaŝadon/montradon de ŝipa tipo
 STR_BUY_VEHICLE_AIRCRAFT_HIDE_SHOW_TOGGLE_TOOLTIP               :{BLACK}Ŝaltu kaŝadon/montradon de aviadila tipo
 
 ###length VEHICLE_TYPES
-STR_QUERY_RENAME_TRAIN_TYPE_CAPTION                             :{WHITE}Alinomi trajnan veturiltipon
+STR_QUERY_RENAME_TRAIN_TYPE_CAPTION                             :{WHITE}Alinomi vagonaran tipon
 STR_QUERY_RENAME_ROAD_VEHICLE_TYPE_CAPTION                      :{WHITE}Alinomi stratveturilan tipon
 STR_QUERY_RENAME_SHIP_TYPE_CAPTION                              :{WHITE}Alinomi ŝiptipon
 STR_QUERY_RENAME_AIRCRAFT_TYPE_CAPTION                          :{WHITE}Alinomi aviadiltipon
@@ -3943,25 +3943,25 @@ STR_DEPOT_VEHICLE_TOOLTIP_CHAIN                                 :{BLACK}{NUM} ve
 STR_DEPOT_VEHICLE_TOOLTIP_CARGO                                 :{}{CARGO_LONG} ({CARGO_SHORT})
 
 ###length VEHICLE_TYPES
-STR_DEPOT_TRAIN_LIST_TOOLTIP                                    :{BLACK}Trajnoj - klaku trajnon maldekstre por scii pli, tiru veturilon por aldoni aŭ /origi (dis)de trajno. Ctrl-premi influas ĉiom da sekvantajn trajnerojn
+STR_DEPOT_TRAIN_LIST_TOOLTIP                                    :{BLACK}Vagonaroj - klaku vagonaron maldekstre por scii pli, tiru veturilon por aldoni aŭ /origi (dis)de vagonaro. Ctrl-premi influas ĉiom da sekvantajn vagonojn
 STR_DEPOT_ROAD_VEHICLE_LIST_TOOLTIP                             :{BLACK}Veturiloj - dekstra-alklaku veturilojn por informoj
 STR_DEPOT_SHIP_LIST_TOOLTIP                                     :{BLACK}Ŝipoj - dekstra-alklaku ŝipon por informoj
 STR_DEPOT_AIRCRAFT_LIST_TOOLTIP                                 :{BLACK}Aviadiloj - dekstra-alklaku aviadilon por informoj
 
 ###length VEHICLE_TYPES
-STR_DEPOT_TRAIN_SELL_TOOLTIP                                    :{BLACK}Tiru trajnan veturilon ĉi tien por vendi
+STR_DEPOT_TRAIN_SELL_TOOLTIP                                    :{BLACK}Tiru lokomotivon aŭ vagonaron ĉi tien por vendi
 STR_DEPOT_ROAD_VEHICLE_SELL_TOOLTIP                             :{BLACK}Tiru stratveturilon ĉi tien por vendi
 STR_DEPOT_SHIP_SELL_TOOLTIP                                     :{BLACK}Tiru ŝipon ĉi tien por vendi
 STR_DEPOT_AIRCRAFT_SELL_TOOLTIP                                 :{BLACK}DTiru aviadilon ĉi tien por vendi
 
 ###length VEHICLE_TYPES
-STR_DEPOT_SELL_ALL_BUTTON_TRAIN_TOOLTIP                         :{BLACK}Vendi ĉiujn trajnojn en la garaĝo
+STR_DEPOT_SELL_ALL_BUTTON_TRAIN_TOOLTIP                         :{BLACK}Vendi ĉiujn vagonarojn en la garaĝo
 STR_DEPOT_SELL_ALL_BUTTON_ROAD_VEHICLE_TOOLTIP                  :{BLACK}Vendi ĉiujn stratveturilojn en la garaĝo
 STR_DEPOT_SELL_ALL_BUTTON_SHIP_TOOLTIP                          :{BLACK}Vendi ĉiujn ŝipojn en la garaĝo
 STR_DEPOT_SELL_ALL_BUTTON_AIRCRAFT_TOOLTIP                      :{BLACK}Vendu ĉiujn aviadilojn en la hangaro
 
 ###length VEHICLE_TYPES
-STR_DEPOT_AUTOREPLACE_TRAIN_TOOLTIP                             :{BLACK}Aŭtomate anstataŭi ĉiujn trajnojn en la garaĝo
+STR_DEPOT_AUTOREPLACE_TRAIN_TOOLTIP                             :{BLACK}Aŭtomate anstataŭi ĉiujn vagonarojn en la garaĝo
 STR_DEPOT_AUTOREPLACE_ROAD_VEHICLE_TOOLTIP                      :{BLACK}Aŭtomate anstataŭi ĉiujn stratveturilojn en la garaĝo
 STR_DEPOT_AUTOREPLACE_SHIP_TOOLTIP                              :{BLACK}Aŭtomate anstataŭi ĉiujn ŝipojn en la garaĝo
 STR_DEPOT_AUTOREPLACE_AIRCRAFT_TOOLTIP                          :{BLACK}Aŭtomate anstataŭi ĉiujn aviadilojn en la hangaro
@@ -3973,48 +3973,48 @@ STR_DEPOT_SHIP_NEW_VEHICLES_BUTTON                              :{BLACK}Novaj Ŝ
 STR_DEPOT_AIRCRAFT_NEW_VEHICLES_BUTTON                          :{BLACK}Novaj Aviadiloj
 
 ###length VEHICLE_TYPES
-STR_DEPOT_TRAIN_NEW_VEHICLES_TOOLTIP                            :{BLACK}Aĉeti novan trajnan veturilon
+STR_DEPOT_TRAIN_NEW_VEHICLES_TOOLTIP                            :{BLACK}Aĉeti novan lokomotivon aŭ vagonon
 STR_DEPOT_ROAD_VEHICLE_NEW_VEHICLES_TOOLTIP                     :{BLACK}Aĉeti novan stratveturilon
 STR_DEPOT_SHIP_NEW_VEHICLES_TOOLTIP                             :{BLACK}Aĉeti novan ŝipon
 STR_DEPOT_AIRCRAFT_NEW_VEHICLES_TOOLTIP                         :{BLACK}Aĉeti novan aviadilon
 
 ###length VEHICLE_TYPES
-STR_DEPOT_CLONE_TRAIN                                           :{BLACK}Klonu Trajnon
+STR_DEPOT_CLONE_TRAIN                                           :{BLACK}Klonu Vagonaron
 STR_DEPOT_CLONE_ROAD_VEHICLE                                    :{BLACK}Klonu Veturilon
 STR_DEPOT_CLONE_SHIP                                            :{BLACK}Klonu Ŝipon
 STR_DEPOT_CLONE_AIRCRAFT                                        :{BLACK}Klonu aviadilon
 
 ###length VEHICLE_TYPES
-STR_DEPOT_CLONE_TRAIN_DEPOT_INFO                                :{BLACK}Aĉeti kopion de trajno kun ĉiuj vagonoj. Klaku ĉi tiun butonon kaj poste trajnon en aŭ ekster la garaĝo. Ctrl+Klak kunhavigas la itineron. Maljuskliga klavo+klaku montras taksatan koston sen aĉeti
+STR_DEPOT_CLONE_TRAIN_DEPOT_INFO                                :{BLACK}Aĉeti kopion de vagonaro kun ĉiuj vagonoj. Klaku ĉi tiun butonon kaj poste vagonaron en aŭ ekster la garaĝo. Ctrl+Klak kunhavigas la itineron. Maljuskliga klavo+klaku montras taksatan koston sen aĉeti
 STR_DEPOT_CLONE_ROAD_VEHICLE_DEPOT_INFO                         :{BLACK}Aĉeti kopion de stratveturilo. Klaku ĉi tiun butonon kaj poste veturilon en aŭ ekster la garaĝo. Ctrl+Klak kunhavigas la itineron. Maljuskliga klavo+klaku montras taksatan koston sen aĉeti
 STR_DEPOT_CLONE_SHIP_DEPOT_INFO                                 :{BLACK}Aĉeti kopion de ŝipo. Klaku ĉi tiun butonon kaj poste ŝipon en aŭ ekster garaĝo. Ctrl+Klak kunhavigas la itineron. Maljuskliga klavo+klaku montras taksatan koston sen aĉeti
 STR_DEPOT_CLONE_AIRCRAFT_INFO_HANGAR_WINDOW                     :{BLACK}Aĉeti kopion de la aviadilo. Klaku ĉi tiun butonon kaj poste aviadilon en aŭ ekster la hangaro. Ctrl+Klak kunhavigas la ordonojn. Maljuskliga klavo+klaku montras taksatan koston sen aĉeti
 
 ###length VEHICLE_TYPES
-STR_DEPOT_TRAIN_LOCATION_TOOLTIP                                :{BLACK}Centri ĉefvidon ĉe la trajngaraĝon. Stir+Klak por malfermi novan vidujon ĉe la trajngaraĝa loko.
+STR_DEPOT_TRAIN_LOCATION_TOOLTIP                                :{BLACK}Centri ĉefvidon ĉe la vagonartenejo. Stir+Klak por malfermi novan vidujon ĉe la vagonartenejo loko.
 STR_DEPOT_ROAD_VEHICLE_LOCATION_TOOLTIP                         :{BLACK}Centri ĉefvidon ĉe la stratveturilan garaĝon. Stir+Klak por malfermi novan vidujon ĉe la garaĝa loko.
 STR_DEPOT_SHIP_LOCATION_TOOLTIP                                 :{BLACK}Centri ĉefvidon ĉe la ŝipgaraĝon. Stir+Klak por malfermi novan vidujon ĉe la ŝipgaraĝa loko.
 STR_DEPOT_AIRCRAFT_LOCATION_TOOLTIP                             :{BLACK}Centri ĉefvidon ĉe la hangaro. Stir+Klak por malfermi novan vidujon ĉe la hangara lokon.
 
 ###length VEHICLE_TYPES
-STR_DEPOT_VEHICLE_ORDER_LIST_TRAIN_TOOLTIP                      :{BLACK}Akiri liston da ĉiuj trajnoj kun ĉi tiu garaĝo en siaj itineroj
+STR_DEPOT_VEHICLE_ORDER_LIST_TRAIN_TOOLTIP                      :{BLACK}Akiri liston da ĉiuj vagonaroj kun ĉi tiu garaĝo en siaj itineroj
 STR_DEPOT_VEHICLE_ORDER_LIST_ROAD_VEHICLE_TOOLTIP               :{BLACK}Akiri liston da ĉiuj stratveturiloj kun ĉi tiu garaĝo en siaj itineroj
 STR_DEPOT_VEHICLE_ORDER_LIST_SHIP_TOOLTIP                       :{BLACK}Akiri liston da ĉiuj ŝipoj kun ĉi tiu garaĝo en siaj itineroj
 STR_DEPOT_VEHICLE_ORDER_LIST_AIRCRAFT_TOOLTIP                   :{BLACK}Akiri liston da ĉiuj aviadiloj kun ajna hangaro ĉe tiu ĉi flughaveno en siaj itineroj
 
 ###length VEHICLE_TYPES
-STR_DEPOT_MASS_STOP_DEPOT_TRAIN_TOOLTIP                         :{BLACK}Klaki por haltigi ĉiujn trajnojn en la garaĝo
+STR_DEPOT_MASS_STOP_DEPOT_TRAIN_TOOLTIP                         :{BLACK}Klaki por haltigi ĉiujn vagonarojn en la garaĝo
 STR_DEPOT_MASS_STOP_DEPOT_ROAD_VEHICLE_TOOLTIP                  :{BLACK}Klaku por haltigi ĉiujn stratveturilojn en la garaĝo
 STR_DEPOT_MASS_STOP_DEPOT_SHIP_TOOLTIP                          :{BLACK}Klaku por haltigi ĉiujn ŝipojn en la garaĝo
 STR_DEPOT_MASS_STOP_HANGAR_TOOLTIP                              :{BLACK}Alklaku por haltigi ĉiujn aviadilojn en la hangaro
 
 ###length VEHICLE_TYPES
-STR_DEPOT_MASS_START_DEPOT_TRAIN_TOOLTIP                        :{BLACK}Klaku por starti ĉiujn trajnojn en la garaĝo
+STR_DEPOT_MASS_START_DEPOT_TRAIN_TOOLTIP                        :{BLACK}Klaku por starti ĉiujn vagonarojn en la garaĝo
 STR_DEPOT_MASS_START_DEPOT_ROAD_VEHICLE_TOOLTIP                 :{BLACK}Klaku por starti ĉiujn stratveturilojn en la garaĝo
 STR_DEPOT_MASS_START_DEPOT_SHIP_TOOLTIP                         :{BLACK}Klaku por starti ĉiujn ŝipojn en la garaĝo
 STR_DEPOT_MASS_START_HANGAR_TOOLTIP                             :{BLACK}Alklaku por starti ĉiujn aviadilojn en la hangaro
 
-STR_DEPOT_DRAG_WHOLE_TRAIN_TO_SELL_TOOLTIP                      :{BLACK}Tiru la lokomotivon ĉi tien por vendi la tutan trajnon.
+STR_DEPOT_DRAG_WHOLE_TRAIN_TO_SELL_TOOLTIP                      :{BLACK}Tiru la lokomotivon ĉi tien por vendi la tutan vagonaron.
 STR_DEPOT_SELL_CONFIRMATION_TEXT                                :{YELLOW}Vi vendos ĉiujn veturilojn en la garaĝo. Ĉu vi certas?
 
 # Engine preview window
@@ -4043,7 +4043,7 @@ STR_REPLACE_VEHICLE_VEHICLES_IN_USE_TOOLTIP                     :{BLACK}Kolumno 
 STR_REPLACE_VEHICLE_AVAILABLE_VEHICLES                          :{YELLOW}Haveblaj veturiloj
 
 ###length VEHICLE_TYPES
-STR_REPLACE_VEHICLE_TRAIN                                       :Trajno
+STR_REPLACE_VEHICLE_TRAIN                                       :Vagonaro
 STR_REPLACE_VEHICLE_ROAD_VEHICLE                                :Stratveturilo
 STR_REPLACE_VEHICLE_SHIP                                        :Ŝipo
 STR_REPLACE_VEHICLE_AIRCRAFT                                    :Aviadilo
@@ -4084,54 +4084,54 @@ STR_REPLACE_TRAM_VEHICLES                                       :Tramvojaj vetur
 STR_REPLACE_TRAM_VEHICLES.n                                     :Tramvojajn veturilojn
 
 STR_REPLACE_REMOVE_WAGON                                        :{BLACK}Vagonforigo ({STRING}): {ORANGE}{STRING}
-STR_REPLACE_REMOVE_WAGON_HELP                                   :{BLACK}Ĉe aŭtomata anstataŭigo tenu saman longecon de la trajno per forigo de vagonoj (defronte), se per nova maŝino la trajno plilongiĝas
+STR_REPLACE_REMOVE_WAGON_HELP                                   :{BLACK}Ĉe aŭtomata anstataŭigo tenu saman longecon de la vagonaro per forigo de vagonoj (defronte), se per nova maŝino la vagonaro plilongiĝas
 
 # Vehicle view
 STR_VEHICLE_VIEW_CAPTION                                        :{WHITE}{VEHICLE}
 
 ###length VEHICLE_TYPES
-STR_VEHICLE_VIEW_TRAIN_CENTER_TOOLTIP                           :{BLACK}Centrigu ĉefvidon ĉe la pozicio de la trajno. Duobla klako igas la ĉefvidon sekvi la trajnon. Stir+Klak malfermas novan vidujon ĉe la pozicio de la trajno
+STR_VEHICLE_VIEW_TRAIN_CENTER_TOOLTIP                           :{BLACK}Centrigu ĉefvidon ĉe la pozicio de la vagonaro. Duobla klako igas la ĉefvidon sekvi la vagonaron. Stir+Klak malfermas novan vidujon ĉe la pozicio de la vagonaro
 STR_VEHICLE_VIEW_ROAD_VEHICLE_CENTER_TOOLTIP                    :{BLACK}Centrigu ĉefvidon ĉe la pozicio de la veturilo. Duobla klako igas la ĉefvidon sekvi la veturilon. Stir+Klak malfermas novan vidujon ĉe la pozicio de la veturilo
 STR_VEHICLE_VIEW_SHIP_CENTER_TOOLTIP                            :{BLACK}Centrigu ĉefvidon ĉe la pozicio de la ŝipo. Duobla klako igas la ĉefvidon sekvi la ŝipon. Stir+Klak malfermas novan vidujon ĉe la pozicio de la ŝipo
 STR_VEHICLE_VIEW_AIRCRAFT_CENTER_TOOLTIP                        :{BLACK}Centrigu ĉefvidon ĉe la pozicio de la aviadilo. Duobla klako igas la ĉefvidon sekvi la aviadilon. Stir+Klak malfermas novan vidujon ĉe la pozicio de la aviadilo
 
 ###length VEHICLE_TYPES
-STR_VEHICLE_VIEW_TRAIN_SEND_TO_DEPOT_TOOLTIP                    :{BLACK}Sendi trajnon al garaĝo. Stir+Klak nur prizorgos
+STR_VEHICLE_VIEW_TRAIN_SEND_TO_DEPOT_TOOLTIP                    :{BLACK}Sendi vagonaron al garaĝo. Stir+Klak nur prizorgos
 STR_VEHICLE_VIEW_ROAD_VEHICLE_SEND_TO_DEPOT_TOOLTIP             :{BLACK}Sendi veturilon al garaĝo. Stir+Klak nur prizorgos
 STR_VEHICLE_VIEW_SHIP_SEND_TO_DEPOT_TOOLTIP                     :{BLACK}Sendi ŝipon al garaĝo. Stir+Klak nur prizorgos
 STR_VEHICLE_VIEW_AIRCRAFT_SEND_TO_DEPOT_TOOLTIP                 :{BLACK}Sendi aviadilon al hangaro. Stir+Klak nur prizorgos
 
 ###length VEHICLE_TYPES
-STR_VEHICLE_VIEW_CLONE_TRAIN_INFO                               :{BLACK}Aĉeti kopion de la trajno kun ĉiuj vagonoj. Ctrl+Klak por kunhavigi la itineron
+STR_VEHICLE_VIEW_CLONE_TRAIN_INFO                               :{BLACK}Aĉeti kopion de la vagonaro kun ĉiuj vagonoj. Ctrl+Klak por kunhavigi la itineron
 STR_VEHICLE_VIEW_CLONE_ROAD_VEHICLE_INFO                        :{BLACK}Aĉeti kopion de la stratveturilo. Stir+Klak por kunhavigi la itineron. Montri taksatan koston sen aĉeti per majuskliga klavo + klak
 STR_VEHICLE_VIEW_CLONE_SHIP_INFO                                :{BLACK}Aĉeti kopion de la ŝipo. Stir+Klak por kunhavigi la itineron. Montri taksatan koston sen aĉeti per majuskliga klavo + klak
 STR_VEHICLE_VIEW_CLONE_AIRCRAFT_INFO                            :{BLACK}Aĉeti kopion de la aviadilo. Stir+Klak por kunhavigi la itinero. Maj+klak montros la antaŭvidatan koston sen jam aĉetin.
 
-STR_VEHICLE_VIEW_TRAIN_IGNORE_SIGNAL_TOOLTIP                    :{BLACK}Igu trajnon iri malgraŭ signalo
-STR_VEHICLE_VIEW_TRAIN_REVERSE_TOOLTIP                          :{BLACK}Inversigu trajnan direkton
+STR_VEHICLE_VIEW_TRAIN_IGNORE_SIGNAL_TOOLTIP                    :{BLACK}Igu vagonaron iri malgraŭ signalo
+STR_VEHICLE_VIEW_TRAIN_REVERSE_TOOLTIP                          :{BLACK}Inversigu vagonaran direkton
 STR_VEHICLE_VIEW_ROAD_VEHICLE_REVERSE_TOOLTIP                   :{BLACK}Igu veturilon ĉirkaŭturni
 STR_VEHICLE_VIEW_ORDER_LOCATION_TOOLTIP                         :{BLACK}Centrigu ĉefvidon ĉe la celpunkto de la ordono. Stir+Klak por malfermi novan vidujon ĉe la celpunkto de la ordono
 
 ###length VEHICLE_TYPES
-STR_VEHICLE_VIEW_TRAIN_REFIT_TOOLTIP                            :{BLACK}Transformi trajnon por porti alian ŝarĝtipon
+STR_VEHICLE_VIEW_TRAIN_REFIT_TOOLTIP                            :{BLACK}Transformi vagonaron por porti alian ŝarĝtipon
 STR_VEHICLE_VIEW_ROAD_VEHICLE_REFIT_TOOLTIP                     :{BLACK}Transformi stratveturilon por porti alian ŝarĝtipon
 STR_VEHICLE_VIEW_SHIP_REFIT_TOOLTIP                             :{BLACK}Transformi ŝipon por porti alian ŝarĝotipon
 STR_VEHICLE_VIEW_AIRCRAFT_REFIT_TOOLTIP                         :{BLACK}Transformi aviadilon por porti alian ŝarĝotipon
 
 ###length VEHICLE_TYPES
-STR_VEHICLE_VIEW_TRAIN_ORDERS_TOOLTIP                           :{BLACK}Montri ordonojn de la trajno. Stir+Klak por montri la horaron.
+STR_VEHICLE_VIEW_TRAIN_ORDERS_TOOLTIP                           :{BLACK}Montri ordonojn de la vagonaro. Stir+Klak por montri la horaron.
 STR_VEHICLE_VIEW_ROAD_VEHICLE_ORDERS_TOOLTIP                    :{BLACK}Montri ordonojn de la veturilo. Stir+Klak por montri la horaron.
 STR_VEHICLE_VIEW_SHIP_ORDERS_TOOLTIP                            :{BLACK}Montri ordonojn de la ŝipo. Stir+Klak por montri la horaron.
 STR_VEHICLE_VIEW_AIRCRAFT_ORDERS_TOOLTIP                        :{BLACK}Montri ordonojn de la aviadilo. Stir+Klak por montri la horaron.
 
 ###length VEHICLE_TYPES
-STR_VEHICLE_VIEW_TRAIN_SHOW_DETAILS_TOOLTIP                     :{BLACK}Montru trajnajn detalojn
+STR_VEHICLE_VIEW_TRAIN_SHOW_DETAILS_TOOLTIP                     :{BLACK}Montru vagonarajn detalojn
 STR_VEHICLE_VIEW_ROAD_VEHICLE_SHOW_DETAILS_TOOLTIP              :{BLACK}Montru stratveturilajn detalojn
 STR_VEHICLE_VIEW_SHIP_SHOW_DETAILS_TOOLTIP                      :{BLACK}Montru ŝipajn detalojn
 STR_VEHICLE_VIEW_AIRCRAFT_SHOW_DETAILS_TOOLTIP                  :{BLACK}Montru aviadilajn detalojn
 
 ###length VEHICLE_TYPES
-STR_VEHICLE_VIEW_TRAIN_STATUS_START_STOP_TOOLTIP                :{BLACK}Nuna ago de la trajno - klaku por haltigi/ekigi la trajnon
+STR_VEHICLE_VIEW_TRAIN_STATUS_START_STOP_TOOLTIP                :{BLACK}Nuna ago de la vagonaro - klaku por haltigi/ekigi la vagonaron
 STR_VEHICLE_VIEW_ROAD_VEHICLE_STATUS_START_STOP_TOOLTIP         :{BLACK}Nuna ago de la veturilo - klaku por haltigi/ekigi la veturilon
 STR_VEHICLE_VIEW_SHIP_STATE_STATUS_STOP_TOOLTIP                 :{BLACK}Nuna ago de la ŝipo - klaku por haltigi/ekigi la ŝipon
 STR_VEHICLE_VIEW_AIRCRAFT_STATUS_START_STOP_TOOLTIP             :{BLACK}Nuna ago de la aviadilo - klaku por haltigi/ekigi la aviadilon
@@ -4171,7 +4171,7 @@ STR_VEHICLE_COMMAND_STARTED                                     :{GREEN}Komenca
 STR_VEHICLE_DETAILS_CAPTION                                     :{WHITE}{VEHICLE} (Detaloj)
 
 ###length VEHICLE_TYPES
-STR_VEHICLE_DETAILS_TRAIN_RENAME                                :{BLACK}Nomu trajnon
+STR_VEHICLE_DETAILS_TRAIN_RENAME                                :{BLACK}Nomu vagonaron
 STR_VEHICLE_DETAILS_ROAD_VEHICLE_RENAME                         :{BLACK}Nomi stratveturilon
 STR_VEHICLE_DETAILS_SHIP_RENAME                                 :{BLACK}Nomu ŝipon
 STR_VEHICLE_DETAILS_AIRCRAFT_RENAME                             :{BLACK}Nomu aviadilon
@@ -4206,7 +4206,7 @@ STR_VEHICLE_DETAILS_DEFAULT                                     :Defaŭlto
 STR_VEHICLE_DETAILS_PERCENT                                     :Procentaĵo
 
 ###length VEHICLE_TYPES
-STR_QUERY_RENAME_TRAIN_CAPTION                                  :{WHITE}Nomu trajnon
+STR_QUERY_RENAME_TRAIN_CAPTION                                  :{WHITE}Nomu vagonaron
 STR_QUERY_RENAME_ROAD_VEHICLE_CAPTION                           :{WHITE}Nomi stratveturilon
 STR_QUERY_RENAME_SHIP_CAPTION                                   :{WHITE}Nomu ŝipon
 STR_QUERY_RENAME_AIRCRAFT_CAPTION                               :{WHITE}Nomu aviadilon
@@ -4215,7 +4215,7 @@ STR_QUERY_RENAME_AIRCRAFT_CAPTION                               :{WHITE}Nomu avi
 STR_VEHICLE_DETAILS_TRAIN_ENGINE_BUILT_AND_VALUE                :{LTBLUE}{ENGINE}{BLACK}   Kreite: {LTBLUE}{NUM}{BLACK} Valoro: {LTBLUE}{CURRENCY_LONG}
 STR_VEHICLE_DETAILS_TRAIN_WAGON_VALUE                           :{LTBLUE}{ENGINE}{BLACK}   Valoro: {LTBLUE}{CURRENCY_LONG}
 
-STR_VEHICLE_DETAILS_TRAIN_TOTAL_CAPACITY_TEXT                   :{BLACK}Tuta ŝarĝkapablo de ĉi tiu trajno:
+STR_VEHICLE_DETAILS_TRAIN_TOTAL_CAPACITY_TEXT                   :{BLACK}Tuta ŝarĝkapablo de ĉi tiu vagonaro:
 STR_VEHICLE_DETAILS_TRAIN_TOTAL_CAPACITY                        :{LTBLUE}{CARGO_LONG} ({CARGO_SHORT})
 STR_VEHICLE_DETAILS_TRAIN_TOTAL_CAPACITY_MULT                   :{LTBLUE}{CARGO_LONG} ({CARGO_SHORT}) (x{NUM})
 
@@ -4226,11 +4226,11 @@ STR_VEHICLE_DETAILS_CARGO_FROM_MULT                             :{LTBLUE}{CARGO_
 STR_VEHICLE_DETAIL_TAB_CARGO                                    :{BLACK}Ŝarĝo
 STR_VEHICLE_DETAILS_TRAIN_CARGO_TOOLTIP                         :{BLACK}Montru detalojn de portata ŝarĝo
 STR_VEHICLE_DETAIL_TAB_INFORMATION                              :{BLACK}Informoj
-STR_VEHICLE_DETAILS_TRAIN_INFORMATION_TOOLTIP                   :{BLACK}Montru detalojn de trajnaj veturiloj
+STR_VEHICLE_DETAILS_TRAIN_INFORMATION_TOOLTIP                   :{BLACK}Montru detalojn de vagonaroj
 STR_VEHICLE_DETAIL_TAB_CAPACITIES                               :{BLACK}Kapabloj
 STR_VEHICLE_DETAILS_TRAIN_CAPACITIES_TOOLTIP                    :{BLACK}Montru kapablojn de ĉiu veturilo
 STR_VEHICLE_DETAIL_TAB_TOTAL_CARGO                              :{BLACK}Tuta Ŝarĝo
-STR_VEHICLE_DETAILS_TRAIN_TOTAL_CARGO_TOOLTIP                   :{BLACK}Montru tutan kapablon de trajno, dividite laŭ ŝarĝtipo
+STR_VEHICLE_DETAILS_TRAIN_TOTAL_CARGO_TOOLTIP                   :{BLACK}Montru tutan kapablon de vagonaro, dividite laŭ ŝarĝtipo
 
 STR_VEHICLE_DETAILS_TRAIN_ARTICULATED_RV_CAPACITY               :{BLACK}Kapacito: {LTBLUE}
 
@@ -4244,19 +4244,19 @@ STR_REFIT_NEW_CAPACITY_INCOME_FROM_AIRCRAFT_REFIT               :{BLACK}Nova kap
 STR_REFIT_SELECT_VEHICLES_TOOLTIP                               :{BLACK}Elektu veturilojn por readapti. Vi povas elekti plurajn veturilojn trenante la muskursoron. Se vi klakas malplenan spacon, vi elektos la tutan veturilon. Stir+Klak elektos veturilon kaj la sekvan ĉenon
 
 ###length VEHICLE_TYPES
-STR_REFIT_TRAIN_LIST_TOOLTIP                                    :{BLACK}Elektu ŝarĝospecon portotan de la trajno
+STR_REFIT_TRAIN_LIST_TOOLTIP                                    :{BLACK}Elektu ŝarĝospecon portotan de la vagonaro
 STR_REFIT_ROAD_VEHICLE_LIST_TOOLTIP                             :{BLACK}Elektu portotan ŝarĝon de la stratveturilo
 STR_REFIT_SHIP_LIST_TOOLTIP                                     :{BLACK}Elektu portotan ŝarĝotipon
 STR_REFIT_AIRCRAFT_LIST_TOOLTIP                                 :{BLACK}Elektu portotan ŝarĝon de aviadilo
 
 ###length VEHICLE_TYPES
-STR_REFIT_TRAIN_REFIT_BUTTON                                    :{BLACK}Transformu trajnon
+STR_REFIT_TRAIN_REFIT_BUTTON                                    :{BLACK}Transformu vagonaron
 STR_REFIT_ROAD_VEHICLE_REFIT_BUTTON                             :{BLACK}Transformi stratveturilon
 STR_REFIT_SHIP_REFIT_BUTTON                                     :{BLACK}Transformu ŝipon
 STR_REFIT_AIRCRAFT_REFIT_BUTTON                                 :{BLACK}Transformu aviadilon
 
 ###length VEHICLE_TYPES
-STR_REFIT_TRAIN_REFIT_TOOLTIP                                   :{BLACK}Transformu trajnon por porti la elektitan ŝarĝotipon
+STR_REFIT_TRAIN_REFIT_TOOLTIP                                   :{BLACK}Transformu vagonaron por porti la elektitan ŝarĝotipon
 STR_REFIT_ROAD_VEHICLE_REFIT_TOOLTIP                            :{BLACK}Transformi stratveturilon por porti elektitan ŝarĝon
 STR_REFIT_SHIP_REFIT_TOOLTIP                                    :{BLACK}Transformu ŝipon por porti elektitan ŝarĝotipon
 STR_REFIT_AIRCRAFT_REFIT_TOOLTIP                                :{BLACK}Transformu aviadilon por porti elektitan ŝarĝotipon
@@ -4349,7 +4349,7 @@ STR_ORDER_GO_TO_NEAREST_DEPOT                                   :Iru al la plej 
 STR_ORDER_GO_TO_NEAREST_HANGAR                                  :Iru al la plej proksima hangaro
 STR_ORDER_CONDITIONAL                                           :Kondiĉe transsaltu ordonon
 STR_ORDER_SHARE                                                 :Kunhavu ordonojn
-STR_ORDERS_GO_TO_TOOLTIP                                        :{BLACK}Enigi novan ordonon antaŭ la elektita ordono, aŭ aldoni fine de la listo. Kun Ctrl, trajnordonoj estos 'plenŝargi ia kargo', vojpunkt-ordonoj estos 'ne-halti' kaj depotordono estos 'servado'. Kun 'Komunordonoj'-butono aŭ Ctrl-klaku, ĉi tiu veturilo akiros komunajn ordonojn kun eklekta veturilo. Klaku veturilon por kopii ordonojn de tiu veturilo. Doni ia depotordono maleblas aŭtomatan servadon de ĉi tiu veturilo
+STR_ORDERS_GO_TO_TOOLTIP                                        :{BLACK}Enigi novan ordonon antaŭ la elektita ordono, aŭ aldoni fine de la listo. Kun Ctrl, vagonarordonoj estos 'plenŝargi ia kargo', vojpunkt-ordonoj estos 'ne-halti' kaj depotordono estos 'servado'. Kun 'Komunordonoj'-butono aŭ Ctrl-klaku, ĉi tiu veturilo akiros komunajn ordonojn kun eklekta veturilo. Klaku veturilon por kopii ordonojn de tiu veturilo. Doni ia depotordono maleblas aŭtomatan servadon de ĉi tiu veturilo
 
 STR_ORDERS_VEH_WITH_SHARED_ORDERS_LIST_TOOLTIP                  :{BLACK}Montru ĉiujn veturilojn kiuj dividas ĉi tiun planon
 
@@ -4363,7 +4363,7 @@ STR_ORDER_SERVICE_NON_STOP_AT                                   :Priservo senhal
 STR_ORDER_NEAREST_DEPOT                                         :la plej proksima
 STR_ORDER_NEAREST_HANGAR                                        :la plej proksima Hangaro
 ###length 3
-STR_ORDER_TRAIN_DEPOT                                           :Trajngaraĝo
+STR_ORDER_TRAIN_DEPOT                                           :Vagonartenejo
 STR_ORDER_ROAD_VEHICLE_DEPOT                                    :Stratveturila garaĝo
 STR_ORDER_SHIP_DEPOT                                            :Ŝipgaraĝo
 ###next-name-looks-similar
@@ -4786,17 +4786,17 @@ STR_ERROR_MUST_DEMOLISH_AIRPORT_FIRST                           :{WHITE}Antaŭe 
 STR_ERROR_WAYPOINT_ADJOINS_MORE_THAN_ONE_EXISTING               :{WHITE}Apudas pli ol unu ekzistanta vojpunkto.
 STR_ERROR_TOO_CLOSE_TO_ANOTHER_WAYPOINT                         :{WHITE}Tro proksime al alia vojpunkto.
 
-STR_ERROR_CAN_T_BUILD_TRAIN_WAYPOINT                            :{WHITE}Ne povas konstrui trajnan vojpunkton ĉi tie...
+STR_ERROR_CAN_T_BUILD_TRAIN_WAYPOINT                            :{WHITE}Ne povas konstrui vagonaran vojpunkton ĉi tie...
 STR_ERROR_CAN_T_POSITION_BUOY_HERE                              :{WHITE}Ne povas meti buon ĉi tie...
 STR_ERROR_CAN_T_CHANGE_WAYPOINT_NAME                            :{WHITE}Ne povas ŝanĝi vojpunktan nomon...
 
-STR_ERROR_CAN_T_REMOVE_TRAIN_WAYPOINT                           :{WHITE}Ne povas forigi trajnan vojpunkton ĉi tie...
+STR_ERROR_CAN_T_REMOVE_TRAIN_WAYPOINT                           :{WHITE}Ne povas forigi vagonaran vojpunkton ĉi tie...
 STR_ERROR_MUST_REMOVE_RAILWAYPOINT_FIRST                        :{WHITE}Antaŭe devas forigi fervojan vojpunkton
 STR_ERROR_BUOY_IN_THE_WAY                                       :{WHITE}... buo okupas la lokon
 STR_ERROR_BUOY_IS_IN_USE                                        :{WHITE}... buo estas uzata je alia kompanio!
 
 # Depot related errors
-STR_ERROR_CAN_T_BUILD_TRAIN_DEPOT                               :{WHITE}Ne povas konstrui trajngaraĝon ĉi tie...
+STR_ERROR_CAN_T_BUILD_TRAIN_DEPOT                               :{WHITE}Ne povas konstrui vagonartenejon ĉi tie...
 STR_ERROR_CAN_T_BUILD_ROAD_DEPOT                                :{WHITE}Ne povas konstrui stratveturilan garaĝon ĉi tie...
 STR_ERROR_CAN_T_BUILD_TRAM_DEPOT                                :{WHITE}Ne povas konstrui tramgaraĝon ĉi tie...
 STR_ERROR_CAN_T_BUILD_SHIP_DEPOT                                :{WHITE}Ne povas konstrui ŝipgaraĝon ĉi tie...
@@ -4808,8 +4808,8 @@ STR_ERROR_ROAD_VEHICLE_MUST_BE_STOPPED_INSIDE_DEPOT             :{WHITE}... deva
 STR_ERROR_SHIP_MUST_BE_STOPPED_INSIDE_DEPOT                     :{WHITE}... devas halti en garaĝo
 STR_ERROR_AIRCRAFT_MUST_BE_STOPPED_INSIDE_HANGAR                :{WHITE}... devas esti haltigata en la hangaro
 
-STR_ERROR_TRAINS_CAN_ONLY_BE_ALTERED_INSIDE_A_DEPOT             :{WHITE}Trajnoj povas esti ŝanĝitaj nur dum halto en garaĝo
-STR_ERROR_TRAIN_TOO_LONG                                        :{WHITE}Trajno tro longas
+STR_ERROR_TRAINS_CAN_ONLY_BE_ALTERED_INSIDE_A_DEPOT             :{WHITE}Vagonaroj povas esti ŝanĝitaj nur dum halto en garaĝo
+STR_ERROR_TRAIN_TOO_LONG                                        :{WHITE}Vagonaro tro longas
 STR_ERROR_CAN_T_REVERSE_DIRECTION_RAIL_VEHICLE                  :{WHITE}Ne povas inversigi direkton de veturilo...
 STR_ERROR_CAN_T_REVERSE_DIRECTION_RAIL_VEHICLE_MULTIPLE_UNITS   :{WHITE}... konsistantaj el pluraj unuoj
 STR_ERROR_INCOMPATIBLE_RAIL_TYPES                               :Neinterŝanĝeblaj reltipoj
@@ -4919,37 +4919,37 @@ STR_ERROR_GROUP_CAN_T_ADD_SHARED_VEHICLE                        :{WHITE}Ne povas
 # Generic vehicle errors
 
 ###length VEHICLE_TYPES
-STR_ERROR_TRAIN_IN_THE_WAY                                      :{WHITE}Trajno okupas la lokon
+STR_ERROR_TRAIN_IN_THE_WAY                                      :{WHITE}Vagonaro okupas la lokon
 STR_ERROR_ROAD_VEHICLE_IN_THE_WAY                               :{WHITE}Stratveturilo okupas la lokon
 STR_ERROR_SHIP_IN_THE_WAY                                       :{WHITE}Ŝipo okupas la lokon
 STR_ERROR_AIRCRAFT_IN_THE_WAY                                   :{WHITE}Aviadilo okupas la lokon
 
 ###length VEHICLE_TYPES
-STR_ERROR_RAIL_VEHICLE_NOT_AVAILABLE                            :{WHITE}Trajno ne haveblas
+STR_ERROR_RAIL_VEHICLE_NOT_AVAILABLE                            :{WHITE}Vagonaro ne haveblas
 STR_ERROR_ROAD_VEHICLE_NOT_AVAILABLE                            :{WHITE}Veturilo ne haveblas
 STR_ERROR_SHIP_NOT_AVAILABLE                                    :{WHITE}Ŝipo ne haveblas
 STR_ERROR_AIRCRAFT_NOT_AVAILABLE                                :{WHITE}Aviadilo ne haveblas
 
 ###length VEHICLE_TYPES
-STR_ERROR_CAN_T_REFIT_TRAIN                                     :{WHITE}Ne povas transformi la trajnon...
+STR_ERROR_CAN_T_REFIT_TRAIN                                     :{WHITE}Ne povas transformi la vagonaron...
 STR_ERROR_CAN_T_REFIT_ROAD_VEHICLE                              :{WHITE}Ne povas transformi stratveturilon...
 STR_ERROR_CAN_T_REFIT_SHIP                                      :{WHITE}Ne povas transformi ŝipon...
 STR_ERROR_CAN_T_REFIT_AIRCRAFT                                  :{WHITE}Ne povas reformi aviadilon...
 
 ###length VEHICLE_TYPES
-STR_ERROR_CAN_T_RENAME_TRAIN                                    :{WHITE}Ne povas nomi trajnon...
+STR_ERROR_CAN_T_RENAME_TRAIN                                    :{WHITE}Ne povas nomi vagonaron...
 STR_ERROR_CAN_T_RENAME_ROAD_VEHICLE                             :{WHITE}Ne povas nomi stratveturilon...
 STR_ERROR_CAN_T_RENAME_SHIP                                     :{WHITE}Ne povas nomi ŝipon...
 STR_ERROR_CAN_T_RENAME_AIRCRAFT                                 :{WHITE}Ne povas nomi aviadilon...
 
 ###length VEHICLE_TYPES
-STR_ERROR_CAN_T_STOP_START_TRAIN                                :{WHITE}Ne povas haltigi/starti trajnon...
+STR_ERROR_CAN_T_STOP_START_TRAIN                                :{WHITE}Ne povas haltigi/starti vagonaron...
 STR_ERROR_CAN_T_STOP_START_ROAD_VEHICLE                         :{WHITE}Ne povas haltigi/starti stratveturilon...
 STR_ERROR_CAN_T_STOP_START_SHIP                                 :{WHITE}Ne povas haltigi/starti ŝipon...
 STR_ERROR_CAN_T_STOP_START_AIRCRAFT                             :{WHITE}Ne povas haltigi/starti aviadilon...
 
 ###length VEHICLE_TYPES
-STR_ERROR_CAN_T_SEND_TRAIN_TO_DEPOT                             :{WHITE}Ne povas sendi trajnon al garaĝo...
+STR_ERROR_CAN_T_SEND_TRAIN_TO_DEPOT                             :{WHITE}Ne povas sendi vagonaron al garaĝo...
 STR_ERROR_CAN_T_SEND_ROAD_VEHICLE_TO_DEPOT                      :{WHITE}Ne povas sendi veturilon al garaĝo...
 STR_ERROR_CAN_T_SEND_SHIP_TO_DEPOT                              :{WHITE}Ne povas sendi ŝipon al garaĝo...
 STR_ERROR_CAN_T_SEND_AIRCRAFT_TO_HANGAR                         :{WHITE}Ne povas sendi aviadilon al hangaro...
@@ -4961,7 +4961,7 @@ STR_ERROR_CAN_T_BUY_SHIP                                        :{WHITE}Ne povas
 STR_ERROR_CAN_T_BUY_AIRCRAFT                                    :{WHITE}Ne povas aĉeti aviadilon...
 
 ###length VEHICLE_TYPES
-STR_ERROR_CAN_T_RENAME_TRAIN_TYPE                               :{WHITE}Ne povas alinomi trajnan veturiltipon...
+STR_ERROR_CAN_T_RENAME_TRAIN_TYPE                               :{WHITE}Ne povas alinomi vagonaran tipon...
 STR_ERROR_CAN_T_RENAME_ROAD_VEHICLE_TYPE                        :{WHITE}Ne povas alinomi stratveturilan tipon...
 STR_ERROR_CAN_T_RENAME_SHIP_TYPE                                :{WHITE}Ne povas alinomi ŝiptipon...
 STR_ERROR_CAN_T_RENAME_AIRCRAFT_TYPE                            :{WHITE}Ne povas alinomi aviadiltipon...
@@ -4985,8 +4985,8 @@ STR_ERROR_NO_VEHICLES_AVAILABLE_YET                             :{WHITE}Neniuj v
 STR_ERROR_NO_VEHICLES_AVAILABLE_YET_EXPLANATION                 :{WHITE}Komencu novan ludon post {DATE_SHORT} aŭ uzu NewGRF-on kiu havebligas frutempajn veturilojn
 
 # Specific vehicle errors
-STR_ERROR_CAN_T_MAKE_TRAIN_PASS_SIGNAL                          :{WHITE}Ne povas igi trajnon transiri signalon je danĝero...
-STR_ERROR_CAN_T_REVERSE_DIRECTION_TRAIN                         :{WHITE}Ne povas inversigi direkton de trajno...
+STR_ERROR_CAN_T_MAKE_TRAIN_PASS_SIGNAL                          :{WHITE}Ne povas igi vagonaron transiri signalon je danĝero...
+STR_ERROR_CAN_T_REVERSE_DIRECTION_TRAIN                         :{WHITE}Ne povas inversigi direkton de vagonaro...
 STR_ERROR_TRAIN_START_NO_POWER                                  :Vagonara ne havas forton
 
 STR_ERROR_CAN_T_MAKE_ROAD_VEHICLE_TURN                          :{WHITE}Ne povas turnigi stratveturilon...
@@ -5137,7 +5137,7 @@ STR_INDUSTRY_NAME_SUGAR_MINE                                    :Sukerminejo
 ##id 0x6000
 STR_SV_EMPTY                                                    :
 STR_SV_UNNAMED                                                  :Sennoma
-STR_SV_TRAIN_NAME                                               :Trajno #{COMMA}
+STR_SV_TRAIN_NAME                                               :Vagonaro #{COMMA}
 STR_SV_ROAD_VEHICLE_NAME                                        :Stratveturilo #{COMMA}
 STR_SV_SHIP_NAME                                                :Ŝipo #{COMMA}
 STR_SV_AIRCRAFT_NAME                                            :Aviadilo #{COMMA}
