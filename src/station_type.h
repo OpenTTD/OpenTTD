@@ -74,7 +74,7 @@ enum StationHadVehicleOfType : uint8_t {
 DECLARE_ENUM_AS_BIT_SET(StationHadVehicleOfType)
 
 /* The different catchment area sizes. */
-static constexpr uint CA_NONE = 0; ///< Catchment when the station has no facilities
+static constexpr uint CA_NONE = 0; ///< Catchment when the station has no facilities or with "serve neutral industries" enabled
 static constexpr uint CA_BUS = 3; ///< Catchment for bus stops with "modified catchment" enabled
 static constexpr uint CA_TRUCK = 3; ///< Catchment for truck stops with "modified catchment" enabled
 static constexpr uint CA_TRAIN = 4; ///< Catchment for train stations with "modified catchment" enabled
