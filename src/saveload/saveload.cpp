@@ -623,9 +623,16 @@ static inline byte SlCalcConvFileLen(VarType conv)
 {
 	static const byte conv_file_size[] = {0, 1, 1, 2, 2, 4, 4, 8, 8, 2};
 
-	uint8_t type = GetVarFileType(conv);
-	assert(type < lengthof(conv_file_size));
-	return conv_file_size[type];
+	switch (GetVarFileType(conv)) {
+		case SLE_FILE_STRING:
+			return SlReadArrayLength();
+
+		default:
+			uint8_t type = GetVarFileType(conv);
+			if (type >= lengthof(conv_file_size)) fmt::println("{}", type);
+			assert(type < lengthof(conv_file_size));
+			return conv_file_size[type];
+	}
 }
 
 /** Return the size in bytes of a reference (pointer) */
@@ -1864,7 +1871,7 @@ std::vector<SaveLoad> SlCompatTableHeader(const SaveLoadTable &slt, const SaveLo
 			/* In old savegames there can be data we no longer care for. We
 			 * skip this by simply reading the amount of bytes indicated and
 			 * send those to /dev/null. */
-			saveloads.push_back({"", SL_NULL, SLE_FILE_U8 | SLE_VAR_NULL, slc.length, slc.version_from, slc.version_to, 0, nullptr, 0, nullptr});
+			saveloads.push_back({"", SL_NULL, GetVarFileType(slc.null_type) | SLE_VAR_NULL, slc.null_length, slc.version_from, slc.version_to, 0, nullptr, 0, nullptr});
 		} else {
 			auto sld_it = key_lookup.find(slc.name);
 			/* If this branch triggers, it means that an entry in the
