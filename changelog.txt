@@ -1,3 +1,43 @@
+14.0-RC1 (2024-02-18)
+------------------------------------------------------------------------
+Feature: Fully user configurable number format and abbreviations (#11993)
+Add: Show cargo icons on subsidy list window (#12079)
+Add: [Script] GetAirportNumHelipads (#12085)
+Change: Show 6 or 2 orientation buttons in NewGRF road stop picker as appropriate (#12090)
+Change: Show cargo icons on Industry View window (#12071)
+Change: Improve performance of finding free pool slots (#12055)
+Change: Draw north-side farm fences/hedges/walls on tile edge, instead of 1/16th in (#12048)
+Change: When adding orders, Ctrl+Click on a depot to unbunch, instead of service if required (#12023)
+Change: Store running AI config inside Company (#12003)
+Change: Show speed before destination in vehicle status bar (#11932)
+Change: Replace long list of cargo filter buttons with a multi-select dropdown list (#11552)
+Change: [Script] Use company randomizer when adding random deviation (#12065)
+Fix #12074: Don't allow "part" command for dedicated servers (#12075)
+Fix #12052: NewGRFs clearing industry cargo slots could fallback to default instead of empty (#12053)
+Fix #12050: Add default size, shade and pin control buttons to company livery widget (#12080)
+Fix #12041: Tarball extraction failing due to incorrect filename (#12044)
+Fix #12037: Blurry OpenTTD font on Mac OS (#12047)
+Fix #12029: Don't show Sandbox Options in multiplayer (#12032)
+Fix #12024: Autoreplace failed news message for trains must go to lead engine (#12025)
+Fix #12022: Adjust economy date when changing timekeeping units in Scenario Editor (#12042)
+Fix #12020: Unbunch and service if needed should be mutually exclusive depot order types (#12021)
+Fix #12019: Correctly highlight depot unbunch action in dropdown (#12021)
+Fix #12014: Remove water when area clearing ship depot (#12030)
+Fix #11840: Ship pathfinder always returns a valid trackdir if one is available (#12031)
+Fix #10983: [AdminPort] Correct order of messages (#11140)
+Fix #10405: [Script] Test engine and vehicle type validity for ScriptGroup::GetNumEngines (#11887)
+Fix #10079: Don't render at 1000fps if HW acceleration + vsync is requested but not active (#12067)
+Fix: Shadows of individual character glyphs could be drawn over other characters (#12115)
+Fix: Don't invalidate station list on vehicle load/unload (#12112)
+Fix: NewGRF roadstops were ignored if only in default class (#12089)
+Fix: Visually also disable vsync when not using HW acceleration (#12066)
+Fix: Industry tiles and houses could accept incorrect cargo types (#12062)
+Fix: Redraw orders when a station feature is added/removed (#12061)
+Fix: For content service, fallback to TCP downloads when HTTP stalls (#12056)
+Fix: Don't issue autoreplace failed news message for command test mode (#12026)
+Remove: Setting "no_http_content_downloads" (#12058)
+
+
 14.0-beta3 (2024-02-06)
 ------------------------------------------------------------------------
 Add: [Script] ScriptTileList_StationCoverage to get station coverage area (#12015)
@@ -7050,3 +7090,8 @@ Note: OpenTTD was migrated to GitHub for 1.9, so SVN revision and FlySpray numbe
 - Fix: Colours in map window for routes
 - Fix: Road drive side
 - Fix: 'Fund road construction' not clickable when unavailable
+
+
+0.1.0 (2004-03-06)
+------------------------------------------------------------------------
+Initial release
