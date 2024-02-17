@@ -4,7 +4,7 @@
 ##plural 1
 ##textdir ltr
 ##numberformat 0000京0000兆0000億0000萬0000
-##numberabbreviations 4=0000京0000兆0000億0000萬|8=0000京0000兆0000萬|12=0000京0000兆|16=0000京
+##numberabbreviations 4=0000京0000兆0000億0000萬|8=0000京0000兆0000億|12=0000京0000兆|16=0000京
 ##decimalsep .
 ##winlangid 0x0404
 ##grflangid 0x0c
