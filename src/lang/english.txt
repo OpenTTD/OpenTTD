@@ -4778,9 +4778,9 @@ STR_AI_DEBUG_MATCH_CASE                                         :{BLACK}Match ca
 STR_AI_DEBUG_MATCH_CASE_TOOLTIP                                 :{BLACK}Toggle matching case when comparing AI log messages against the break string
 STR_AI_DEBUG_CONTINUE                                           :{BLACK}Continue
 STR_AI_DEBUG_CONTINUE_TOOLTIP                                   :{BLACK}Unpause and continue the AI
-STR_AI_DEBUG_SELECT_AI_TOOLTIP                                  :{BLACK}View debug output of this AI. Ctrl-Click to open in a new window
+STR_AI_DEBUG_SELECT_AI_TOOLTIP                                  :{BLACK}View debug output of this AI. Ctrl+Click to open in a new window
 STR_AI_GAME_SCRIPT                                              :{BLACK}Game Script
-STR_AI_GAME_SCRIPT_TOOLTIP                                      :{BLACK}Check the Game Script log. Ctrl-Click to open in a new window
+STR_AI_GAME_SCRIPT_TOOLTIP                                      :{BLACK}Check the Game Script log. Ctrl+Click to open in a new window
 
 STR_ERROR_AI_NO_AI_FOUND                                        :No suitable AI found to load.{}This AI is a dummy AI and won't do anything.{}You can download several AIs via the 'Online Content' system
 STR_ERROR_AI_PLEASE_REPORT_CRASH                                :{WHITE}One of the running scripts crashed. Please report this to the script author with a screenshot of the AI/Game Script Debug Window
