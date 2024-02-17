@@ -874,25 +874,25 @@ STR_INDUSTRY_MENU_INDUSTRY_CHAIN                                :Łańcuchy prod
 STR_INDUSTRY_MENU_FUND_NEW_INDUSTRY                             :Ufunduj nowe przedsiębiorstwo
 
 # URailway construction menu
-STR_RAIL_MENU_RAILROAD_CONSTRUCTION                             :Konstrukcja linii kolejowej
-STR_RAIL_MENU_ELRAIL_CONSTRUCTION                               :Konstrukcja linii zelektryfikowanej
-STR_RAIL_MENU_MONORAIL_CONSTRUCTION                             :Konstrukcja linii jednoszynowej
-STR_RAIL_MENU_MAGLEV_CONSTRUCTION                               :Konstrukcja linii Maglev
+STR_RAIL_MENU_RAILROAD_CONSTRUCTION                             :Budowa linii kolejowej
+STR_RAIL_MENU_ELRAIL_CONSTRUCTION                               :Budowa linii zelektryfikowanej
+STR_RAIL_MENU_MONORAIL_CONSTRUCTION                             :Budowa linii jednoszynowej
+STR_RAIL_MENU_MAGLEV_CONSTRUCTION                               :Budowa linii Maglev
 
 # Road construction menu
 STR_ROAD_MENU_ROAD_CONSTRUCTION                                 :Budowa drogi
 STR_ROAD_MENU_TRAM_CONSTRUCTION                                 :Budowa linii tramwajowej
 
 # Waterways construction menu
-STR_WATERWAYS_MENU_WATERWAYS_CONSTRUCTION                       :Konstrukcja kanału wodnego
+STR_WATERWAYS_MENU_WATERWAYS_CONSTRUCTION                       :Budowa dróg wodnych
 
 # Aairport construction menu
-STR_AIRCRAFT_MENU_AIRPORT_CONSTRUCTION                          :Konstrukcje lotnicze
+STR_AIRCRAFT_MENU_AIRPORT_CONSTRUCTION                          :Budowa lotnisk
 
 # Landscaping menu
 STR_LANDSCAPING_MENU_LANDSCAPING                                :Kształtowanie krajobrazu
-STR_LANDSCAPING_MENU_PLANT_TREES                                :Posadź drzewa
-STR_LANDSCAPING_MENU_PLACE_SIGN                                 :Umieść napis
+STR_LANDSCAPING_MENU_PLANT_TREES                                :Sadzenie drzew
+STR_LANDSCAPING_MENU_PLACE_SIGN                                 :Umieszczanie napisów
 
 # Music menu
 STR_TOOLBAR_SOUND_MUSIC                                         :Dźwięk/muzyka
@@ -1240,7 +1240,7 @@ STR_NEWS_COMPANY_LAUNCH_DESCRIPTION                             :{BIG_FONT}{BLAC
 STR_NEWS_MERGER_TAKEOVER_TITLE                                  :{BIG_FONT}{BLACK}{STRING} zostało przejęte przez {STRING} za nieujawnioną kwotę!
 STR_PRESIDENT_NAME_MANAGER                                      :{BLACK}{PRESIDENT_NAME}{}(Prezes)
 
-STR_NEWS_NEW_TOWN                                               :{BLACK}{BIG_FONT}{STRING} sponsoruje konstrukcję nowego miasta {TOWN}!
+STR_NEWS_NEW_TOWN                                               :{BLACK}{BIG_FONT}{STRING} sponsoruje budowę nowego miasta {TOWN}!
 STR_NEWS_NEW_TOWN_UNSPONSORED                                   :{BLACK}{BIG_FONT}Zostało wybudowane nowe miasto o nazwie {TOWN}!
 
 STR_NEWS_INDUSTRY_CONSTRUCTION                                  :{BIG_FONT}{BLACK}Rozpoczęto budowę nowe{G go j go} {STRING.d} blisko {TOWN}!
@@ -1666,7 +1666,7 @@ STR_CONFIG_SETTING_RUNNING_COSTS                                :Koszty amortyza
 STR_CONFIG_SETTING_RUNNING_COSTS_HELPTEXT                       :Ustaw poziom kosztów utrzymania i amortyzacji pojazdów i infrastruktury
 
 STR_CONFIG_SETTING_CONSTRUCTION_SPEED                           :Szybkość budowy: {STRING}
-STR_CONFIG_SETTING_CONSTRUCTION_SPEED_HELPTEXT                  :Ogranicz ilość czynności konstrukcyjnych wykonywanych przez SI
+STR_CONFIG_SETTING_CONSTRUCTION_SPEED_HELPTEXT                  :Ogranicz ilość czynności budowlanych wykonywanych przez SI
 
 STR_CONFIG_SETTING_VEHICLE_BREAKDOWNS                           :Awarie pojazdów: {STRING}
 STR_CONFIG_SETTING_VEHICLE_BREAKDOWNS_HELPTEXT                  :Kontroluj jak często nieodpowiednio serwisowane pojazdy mogą się psuć
@@ -1683,8 +1683,8 @@ STR_CONFIG_SETTING_SUBSIDY_DURATION_VALUE                       :{UNITS_YEARS_OR
 ###setting-zero-is-special
 STR_CONFIG_SETTING_SUBSIDY_DURATION_DISABLED                    :Brak dotacji
 
-STR_CONFIG_SETTING_CONSTRUCTION_COSTS                           :Koszty konstrukcji: {STRING}
-STR_CONFIG_SETTING_CONSTRUCTION_COSTS_HELPTEXT                  :Ustaw poziom kosztów konstrukcji i kupna
+STR_CONFIG_SETTING_CONSTRUCTION_COSTS                           :Koszty budowy: {STRING}
+STR_CONFIG_SETTING_CONSTRUCTION_COSTS_HELPTEXT                  :Ustaw poziom kosztów budowy i kupna
 
 STR_CONFIG_SETTING_RECESSIONS                                   :Kryzys: {STRING}
 STR_CONFIG_SETTING_RECESSIONS_HELPTEXT                          :Jeśli włączone, kryzys może występować okresowo. Podczas kryzysu produkcja jest znacznie niższa (powraca do poprzedniego poziomu, kiedy kryzys się kończy)
@@ -1756,7 +1756,7 @@ STR_CONFIG_SETTING_MAX_TUNNEL_LENGTH                            :Maksymalna dłu
 STR_CONFIG_SETTING_MAX_TUNNEL_LENGTH_HELPTEXT                   :Maksymalna długość budowanych tuneli
 
 STR_CONFIG_SETTING_RAW_INDUSTRY_CONSTRUCTION_METHOD             :Budowa przedsiębiorstw wydobywczych: {STRING}
-STR_CONFIG_SETTING_RAW_INDUSTRY_CONSTRUCTION_METHOD_HELPTEXT    :Metoda finansowania podstawowych przedsiębiorstw. „Niedostępna” oznacza brak możliwości finansowania czegokolwiek, „poszukiwania” oznacza, że finansowanie jest możliwe, ale konstrukcja pojawi się w losowym miejscu na mapie (oraz losowo budowa może zakończyć się porażką), „jak inne przedsiębiorstwa” oznacza, że przemysł wydobywczy może być budowany tak jak fabryki przetwórcze, w dowolnym miejscu
+STR_CONFIG_SETTING_RAW_INDUSTRY_CONSTRUCTION_METHOD_HELPTEXT    :Metoda finansowania przedsiębiorstw wydobywczych. „Niedostępna” oznacza brak możliwości finansowania czegokolwiek, „poszukiwania” oznacza, że finansowanie jest możliwe, ale budowa pojawi się w losowym miejscu na mapie (oraz losowo budowa może zakończyć się porażką), „jak inne przedsiębiorstwa” oznacza, że przedsiębiorstwa wydobywcze mogą być budowane przez firmy tak jak przedsiębiorstwa przetwórcze, w dowolnym miejscu
 ###length 3
 STR_CONFIG_SETTING_RAW_INDUSTRY_CONSTRUCTION_METHOD_NONE        :Niedostępna
 STR_CONFIG_SETTING_RAW_INDUSTRY_CONSTRUCTION_METHOD_NORMAL      :Jak inne przedsiębiorstwa
@@ -1998,8 +1998,8 @@ STR_CONFIG_SETTING_STATION_SPREAD_HELPTEXT                      :Maksymalny obsz
 STR_CONFIG_SETTING_SERVICEATHELIPAD                             :Automatycznie serwisuj helikoptery na lądowiskach: {STRING}
 STR_CONFIG_SETTING_SERVICEATHELIPAD_HELPTEXT                    :Serwisuj helikoptery po każdym lądowaniu, nawet jeśli na lądowisku nie ma hangaru
 
-STR_CONFIG_SETTING_LINK_TERRAFORM_TOOLBAR                       :Przyłącz narzędzia krajobrazu do okien środków transportu: {STRING}
-STR_CONFIG_SETTING_LINK_TERRAFORM_TOOLBAR_HELPTEXT              :Otwierając pasek konstrukcji typu transportu, otwieraj też pasek formowania terenu
+STR_CONFIG_SETTING_LINK_TERRAFORM_TOOLBAR                       :Przyłącz narzędzia kształtowania krajobrazu do narzędzi budowy środków transportu: {STRING}
+STR_CONFIG_SETTING_LINK_TERRAFORM_TOOLBAR_HELPTEXT              :Otwierając pasek budowy typu transportu, otwieraj też pasek kształtowania terenu
 
 STR_CONFIG_SETTING_SMALLMAP_LAND_COLOUR                         :Kolor lądu używany w minimapie: {STRING}
 STR_CONFIG_SETTING_SMALLMAP_LAND_COLOUR_HELPTEXT                :Kolor terenu na minimapie
@@ -2093,7 +2093,7 @@ STR_CONFIG_SETTING_COMMAND_PAUSE_LEVEL                          :Zezwól w czasi
 STR_CONFIG_SETTING_COMMAND_PAUSE_LEVEL_HELPTEXT                 :Wybierz, jakich akcji można dokonywać, gdy gra jest wstrzymana (włączona jest pauza)
 ###length 4
 STR_CONFIG_SETTING_COMMAND_PAUSE_LEVEL_NO_ACTIONS               :Brak działań
-STR_CONFIG_SETTING_COMMAND_PAUSE_LEVEL_ALL_NON_CONSTRUCTION     :Wszystkie niezwiązane z konstrukcją
+STR_CONFIG_SETTING_COMMAND_PAUSE_LEVEL_ALL_NON_CONSTRUCTION     :Wszystkie niezwiązane z budowaniem
 STR_CONFIG_SETTING_COMMAND_PAUSE_LEVEL_ALL_NON_LANDSCAPING      :Wszystkie oprócz modyfikowania terenu
 STR_CONFIG_SETTING_COMMAND_PAUSE_LEVEL_ALL_ACTIONS              :Wszystkie działania
 
@@ -2489,7 +2489,7 @@ STR_CONFIG_SETTING_SOUND                                        :Dźwięk
 STR_CONFIG_SETTING_INTERFACE                                    :Interfejs
 STR_CONFIG_SETTING_INTERFACE_GENERAL                            :Ogólne
 STR_CONFIG_SETTING_INTERFACE_VIEWPORTS                          :Widok
-STR_CONFIG_SETTING_INTERFACE_CONSTRUCTION                       :Konstrukcje
+STR_CONFIG_SETTING_INTERFACE_CONSTRUCTION                       :Budowa
 STR_CONFIG_SETTING_ADVISORS                                     :Wiadomości i porady
 STR_CONFIG_SETTING_COMPANY                                      :Firma
 STR_CONFIG_SETTING_ACCOUNTING                                   :Finanse
@@ -3158,10 +3158,10 @@ STR_JOIN_WAYPOINT_CREATE_SPLITTED_WAYPOINT                      :{YELLOW}Zbuduj 
 STR_TOOLBAR_DISABLED_NO_VEHICLE_AVAILABLE                       :{BLACK}Nieaktywne, ponieważ nie są dostępne pojazdy korzystające z takiej infrastruktury
 
 # Rail construction toolbar
-STR_RAIL_TOOLBAR_RAILROAD_CONSTRUCTION_CAPTION                  :Konstrukcja linii kolejowej
-STR_RAIL_TOOLBAR_ELRAIL_CONSTRUCTION_CAPTION                    :Konstrukcja linii zelektryfikowanej
-STR_RAIL_TOOLBAR_MONORAIL_CONSTRUCTION_CAPTION                  :Konstrukcja linii jednoszynowej
-STR_RAIL_TOOLBAR_MAGLEV_CONSTRUCTION_CAPTION                    :Konstrukcja linii Maglev
+STR_RAIL_TOOLBAR_RAILROAD_CONSTRUCTION_CAPTION                  :Budowa linii kolejowej
+STR_RAIL_TOOLBAR_ELRAIL_CONSTRUCTION_CAPTION                    :Budowa linii zelektryfikowanej
+STR_RAIL_TOOLBAR_MONORAIL_CONSTRUCTION_CAPTION                  :Budowa linii jednoszynowej
+STR_RAIL_TOOLBAR_MAGLEV_CONSTRUCTION_CAPTION                    :Budowa linii Maglev
 
 STR_RAIL_TOOLBAR_TOOLTIP_BUILD_RAILROAD_TRACK                   :{BLACK}Zbuduj tory kolejowe. Użyj Ctrl, aby usunąć tory. Użyj Shift, aby tylko wyświetlić szacunkowy koszt
 STR_RAIL_TOOLBAR_TOOLTIP_BUILD_AUTORAIL                         :{BLACK}Zbuduj tory kolejowe za pomocą trybu Autotory. Użyj Ctrl, aby usunąć tory. Użyj Shift, aby tylko wyświetlić szacunkowy koszt
@@ -3263,8 +3263,8 @@ STR_ROAD_TOOLBAR_TOOLTIP_BUILD_ROAD_BRIDGE                      :{BLACK}Zbuduj m
 STR_ROAD_TOOLBAR_TOOLTIP_BUILD_TRAMWAY_BRIDGE                   :{BLACK}Zbuduj most tramwajowy. Użyj Shift, aby tylko wyświetlić szacunkowy koszt
 STR_ROAD_TOOLBAR_TOOLTIP_BUILD_ROAD_TUNNEL                      :{BLACK}Zbuduj tunel drogowy. Użyj Shift, aby tylko wyświetlić szacunkowy koszt
 STR_ROAD_TOOLBAR_TOOLTIP_BUILD_TRAMWAY_TUNNEL                   :{BLACK}Zbuduj tunel tramwajowy. Użyj Shift, aby tylko wyświetlić szacunkowy koszt
-STR_ROAD_TOOLBAR_TOOLTIP_TOGGLE_BUILD_REMOVE_FOR_ROAD           :{BLACK}Przełącz buduj/usuń dla konstrukcji dróg
-STR_ROAD_TOOLBAR_TOOLTIP_TOGGLE_BUILD_REMOVE_FOR_TRAMWAYS       :{BLACK}Przełącz buduj/usuń dla konstrukcji tramwajowej
+STR_ROAD_TOOLBAR_TOOLTIP_TOGGLE_BUILD_REMOVE_FOR_ROAD           :{BLACK}Przełącz budowanie/usuwanie dróg
+STR_ROAD_TOOLBAR_TOOLTIP_TOGGLE_BUILD_REMOVE_FOR_TRAMWAYS       :{BLACK}Przełącz budowanie/usuwanie linii tramwajowej
 STR_ROAD_TOOLBAR_TOOLTIP_CONVERT_ROAD                           :{BLACK}Zmień typ drogi. Użyj Shift, aby tylko wyświetlić szacunkowy koszt
 STR_ROAD_TOOLBAR_TOOLTIP_CONVERT_TRAM                           :{BLACK}Zmień typ torów tramwajowych. Użyj Shift, aby tylko wyświetlić szacunkowy koszt
 
@@ -3288,7 +3288,7 @@ STR_STATION_BUILD_CARGO_TRAM_ORIENTATION                        :{WHITE}Ukierunk
 STR_STATION_BUILD_CARGO_TRAM_ORIENTATION_TOOLTIP                :{BLACK}Wybierz ukierunkowanie tramwajowej stacji załadunkowej
 
 # Waterways toolbar (last two for SE only)
-STR_WATERWAYS_TOOLBAR_CAPTION                                   :{WHITE}Konstrukcja kanału wodnego
+STR_WATERWAYS_TOOLBAR_CAPTION                                   :{WHITE}Budowa dróg wodnych
 STR_WATERWAYS_TOOLBAR_CAPTION_SE                                :{WHITE}Kanał wodny
 STR_WATERWAYS_TOOLBAR_BUILD_CANALS_TOOLTIP                      :{BLACK}Zbuduj kanał wodny. Użyj Shift, aby tylko wyświetlić szacunkowy koszt
 STR_WATERWAYS_TOOLBAR_BUILD_LOCKS_TOOLTIP                       :{BLACK}Zbuduj śluzę wodną. Użyj Shift, aby tylko wyświetlić szacunkowy koszt
@@ -3352,8 +3352,8 @@ STR_OBJECT_CLASS_TRNS                                           :Nadajniki
 
 # Tree planting window (last eight for SE only)
 STR_PLANT_TREE_CAPTION                                          :{WHITE}Drzewa
-STR_PLANT_TREE_TOOLTIP                                          :{BLACK}Wybierz typ drzew do sadzenia. Jeśli na wybranym miejscu są już drzewa, to dodasz więcej drzew różnego typu, bez względu na wybraną opcję.
-STR_TREES_RANDOM_TYPE                                           :{BLACK}Drzewa różnych rodzajów
+STR_PLANT_TREE_TOOLTIP                                          :{BLACK}Wybierz typ drzew do zasadzenia. Jeśli w wybranym miejscu są już drzewa, to zostanie dodanych więcej drzew różnego typu, bez względu na wybraną opcję
+STR_TREES_RANDOM_TYPE                                           :{BLACK}Drzewa różnego rodzaju
 STR_TREES_RANDOM_TYPE_TOOLTIP                                   :{BLACK}Posadź drzewa różnego rodzaju. Przeciągnij z użyciem Ctrl, aby zaznaczyć obszar po przekątnej. Użyj Shift, aby tylko wyświetlić szacunkowy koszt
 STR_TREES_RANDOM_TREES_BUTTON                                   :{BLACK}Losowe drzewa
 STR_TREES_RANDOM_TREES_TOOLTIP                                  :{BLACK}Pokryj losowo krajobraz drzewami
@@ -4218,7 +4218,7 @@ STR_FINANCES_CAPITAL_EXPENSES_TITLE                             :{WHITE}Wydatki 
 
 
 ###length 13
-STR_FINANCES_SECTION_CONSTRUCTION                               :{GOLD}Konstrukcje
+STR_FINANCES_SECTION_CONSTRUCTION                               :{GOLD}Budowa
 STR_FINANCES_SECTION_NEW_VEHICLES                               :{GOLD}Nowe pojazdy
 STR_FINANCES_SECTION_TRAIN_RUNNING_COSTS                        :{GOLD}Pociągi
 STR_FINANCES_SECTION_ROAD_VEHICLE_RUNNING_COSTS                 :{GOLD}Pojazdy drogowe
@@ -4271,11 +4271,11 @@ STR_COMPANY_VIEW_INFRASTRUCTURE_STATION                         :{WHITE}{COMMA} 
 STR_COMPANY_VIEW_INFRASTRUCTURE_AIRPORT                         :{WHITE}{COMMA} lotnisk{P o a ""}
 STR_COMPANY_VIEW_INFRASTRUCTURE_NONE                            :{WHITE}Brak
 
-STR_COMPANY_VIEW_BUILD_HQ_BUTTON                                :{BLACK}Budowa Siedziby
+STR_COMPANY_VIEW_BUILD_HQ_BUTTON                                :{BLACK}Zbuduj Siedzibę
 STR_COMPANY_VIEW_BUILD_HQ_TOOLTIP                               :{BLACK}Zbuduj siedzibę firmy
-STR_COMPANY_VIEW_VIEW_HQ_BUTTON                                 :{BLACK}Zobacz SG
+STR_COMPANY_VIEW_VIEW_HQ_BUTTON                                 :{BLACK}Zobacz Siedzibę
 STR_COMPANY_VIEW_VIEW_HQ_TOOLTIP                                :{BLACK}Zobacz siedzibę firmy
-STR_COMPANY_VIEW_RELOCATE_HQ                                    :{BLACK}Przenieś SG
+STR_COMPANY_VIEW_RELOCATE_HQ                                    :{BLACK}Przenieś Siedzibę
 STR_COMPANY_VIEW_RELOCATE_COMPANY_HEADQUARTERS                  :{BLACK}Zbuduj siedzibę główną w innym miejscu za cenę 1% wartości firmy. Użyj Shift, aby tylko wyświetlić szacunkowy koszt
 STR_COMPANY_VIEW_INFRASTRUCTURE_BUTTON                          :{BLACK}Szczegóły
 STR_COMPANY_VIEW_INFRASTRUCTURE_TOOLTIP                         :{BLACK}Zobacz szczegółowe wartości infrastruktury
@@ -6250,11 +6250,6 @@ STR_STATION_NAME                                                :{STATION}
 STR_TOWN_NAME                                                   :{TOWN}
 STR_VEHICLE_NAME                                                :{VEHICLE}
 STR_WAYPOINT_NAME                                               :{WAYPOINT}
-
-STR_CURRENCY_SHORT_KILO                                         :{NBSP}k
-STR_CURRENCY_SHORT_MEGA                                         :{NBSP}M
-STR_CURRENCY_SHORT_GIGA                                         :{NBSP}G
-STR_CURRENCY_SHORT_TERA                                         :{NBSP}T
 
 STR_JUST_CARGO                                                  :{CARGO_LONG}
 STR_JUST_RIGHT_ARROW                                            :{RIGHT_ARROW}

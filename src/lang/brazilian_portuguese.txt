@@ -521,7 +521,7 @@ STR_TOOLBAR_SOUND_MUSIC                                         :Som/música
 
 # Message menu
 STR_NEWS_MENU_LAST_MESSAGE_NEWS_REPORT                          :Última mensagem/notícia
-STR_NEWS_MENU_MESSAGE_HISTORY_MENU                              :Histórico de Mensagens
+STR_NEWS_MENU_MESSAGE_HISTORY_MENU                              :Histórico de mensagens
 STR_NEWS_MENU_DELETE_ALL_MESSAGES                               :Apagar todas as mensagens
 
 # About menu
@@ -853,11 +853,11 @@ STR_NEWS_DISASTER_FLOOD_VEHICLE                                 :{BIG_FONT}{BLAC
 STR_NEWS_COMPANY_IN_TROUBLE_TITLE                               :{BIG_FONT}{BLACK}Empresa de transporte em apuros!
 STR_NEWS_COMPANY_IN_TROUBLE_DESCRIPTION                         :{BIG_FONT}{BLACK}{STRING} será vendida ou declarada falida a menos que aumente o desempenho em breve!
 STR_NEWS_COMPANY_MERGER_TITLE                                   :{BIG_FONT}{BLACK}Fusão de empresas de transportes!
-STR_NEWS_COMPANY_MERGER_DESCRIPTION                             :{BIG_FONT}{BLACK}{STRING} foi vendida a {STRING} por {CURRENCY_LONG}!
+STR_NEWS_COMPANY_MERGER_DESCRIPTION                             :{BIG_FONT}{BLACK}{STRING} foi vendida para {STRING} por {CURRENCY_LONG}!
 STR_NEWS_COMPANY_BANKRUPT_TITLE                                 :{BIG_FONT}{BLACK}Falida!
 STR_NEWS_COMPANY_BANKRUPT_DESCRIPTION                           :{BIG_FONT}{BLACK}{STRING} foi fechada pelos credores e todos os seus bens foram vendidos!
-STR_NEWS_COMPANY_LAUNCH_TITLE                                   :{BIG_FONT}{BLACK}Nova empresa de transportes lançada!
-STR_NEWS_COMPANY_LAUNCH_DESCRIPTION                             :{BIG_FONT}{BLACK}{STRING} inicia construção próximo a {TOWN}!
+STR_NEWS_COMPANY_LAUNCH_TITLE                                   :{BIG_FONT}{BLACK}Nova empresa de transportes foi lançada!
+STR_NEWS_COMPANY_LAUNCH_DESCRIPTION                             :{BIG_FONT}{BLACK}{STRING} inicia construção próxima de {TOWN}!
 STR_NEWS_MERGER_TAKEOVER_TITLE                                  :{BIG_FONT}{BLACK}{STRING} foi comprada por {STRING} por um valor não revelado!
 STR_PRESIDENT_NAME_MANAGER                                      :{BLACK}{PRESIDENT_NAME}{}(Gerente)
 
@@ -876,9 +876,9 @@ STR_NEWS_BEGIN_OF_RECESSION                                     :{BIG_FONT}{BLAC
 STR_NEWS_END_OF_RECESSION                                       :{BIG_FONT}{BLACK}Fim da recessão!{}{}Melhoras no comércio inspiram confiança nas indústrias à medida que a economia se fortalece!
 
 STR_NEWS_INDUSTRY_PRODUCTION_INCREASE_GENERAL                   :{BIG_FONT}{BLACK}{INDUSTRY} aumenta a produção!
-STR_NEWS_INDUSTRY_PRODUCTION_INCREASE_COAL                      :{BIG_FONT}{BLACK}Nova camada de carvão encontrada em {INDUSTRY}!{}A produção deverá duplicar!
-STR_NEWS_INDUSTRY_PRODUCTION_INCREASE_OIL                       :{BIG_FONT}{BLACK}Novas reservas de petróleo encontradas em {INDUSTRY}!{}A produção deverá duplicar!
-STR_NEWS_INDUSTRY_PRODUCTION_INCREASE_FARM                      :{BIG_FONT}{BLACK}Métodos melhorados de agricultura em {INDUSTRY} deverão duplicar a produção!
+STR_NEWS_INDUSTRY_PRODUCTION_INCREASE_COAL                      :{BIG_FONT}{BLACK}Nova camada de carvão encontrada na {INDUSTRY}!{}A produção deverá duplicar!
+STR_NEWS_INDUSTRY_PRODUCTION_INCREASE_OIL                       :{BIG_FONT}{BLACK}Novas reservas de petróleo encontradas {G nos na} {INDUSTRY}!{}A produção deverá duplicar!
+STR_NEWS_INDUSTRY_PRODUCTION_INCREASE_FARM                      :{BIG_FONT}{BLACK}Métodos melhorados de agricultura na {INDUSTRY} deverão duplicar a produção!
 STR_NEWS_INDUSTRY_PRODUCTION_INCREASE_SMOOTH                    :{BIG_FONT}{BLACK}A produção de {STRING} em {INDUSTRY} aumentou em {COMMA}%!
 STR_NEWS_INDUSTRY_PRODUCTION_DECREASE_GENERAL                   :{BIG_FONT}{BLACK}A produção de {INDUSTRY} caiu em 50%
 STR_NEWS_INDUSTRY_PRODUCTION_DECREASE_FARM                      :{BIG_FONT}{BLACK}Infestação de insetos causa destruição em {INDUSTRY}!{}A produção caiu em 50%
@@ -919,8 +919,8 @@ STR_NEWS_SHOW_VEHICLE_GROUP_TOOLTIP                             :{BLACK}Abrir a 
 STR_NEWS_STATION_NO_LONGER_ACCEPTS_CARGO_LIST                   :{WHITE}{STATION} não aceita mais: {CARGO_LIST}
 STR_NEWS_STATION_NOW_ACCEPTS_CARGO_LIST                         :{WHITE}{STATION} agora aceita: {CARGO_LIST}
 
-STR_NEWS_OFFER_OF_SUBSIDY_EXPIRED                               :{BIG_FONT}{BLACK}Oferta do subsídio expirou:{}{}{STRING} de {STRING} para {STRING} já não será subsidiado
-STR_NEWS_SUBSIDY_WITHDRAWN_SERVICE                              :{BIG_FONT}{BLACK}Subsídio retirado:{}{}Serviço de {STRING} de {STRING} para {STRING} não é mais subsidiado
+STR_NEWS_OFFER_OF_SUBSIDY_EXPIRED                               :{BIG_FONT}{BLACK}Oferta do subsídio expirou:{}{}{STRING} de {STRING} para {STRING} agora não será subsidiado
+STR_NEWS_SUBSIDY_WITHDRAWN_SERVICE                              :{BIG_FONT}{BLACK}Subsídio retirado:{}{}Transportar {STRING} de {STRING} para {STRING} não é mais subsidiado
 STR_NEWS_SERVICE_SUBSIDY_OFFERED                                :{BIG_FONT}{BLACK}Subsídio de serviço oferecido:{}{}Primeiro {STRING} de {STRING} para {STRING} irá receber {UNITS_YEARS_OR_MINUTES} de subsídio da autoridade local!
 ###length 4
 STR_NEWS_SERVICE_SUBSIDY_AWARDED_HALF                           :{BIG_FONT}{BLACK}Subsídio de serviço concedido a {STRING}!{}{}{STRING} de {STRING} para {STRING} será pago a 150%  pelos próximos {UNITS_YEARS_OR_MINUTES}!
@@ -1917,8 +1917,8 @@ STR_CONFIG_SETTING_ECONOMY_TYPE_ORIGINAL                        :Original
 STR_CONFIG_SETTING_ECONOMY_TYPE_SMOOTH                          :Suave
 STR_CONFIG_SETTING_ECONOMY_TYPE_FROZEN                          :Congelada
 
-STR_CONFIG_SETTING_FEEDER_PAYMENT_SHARE                         :Porcentagem do lucro paga em cada etapa em sistemas de baldeação: {STRING}
-STR_CONFIG_SETTING_FEEDER_PAYMENT_SHARE_HELPTEXT                :Porcentagem da receita dada às etapas intermediárias em sistemas de baldeação, dando mais controle sobre a receita
+STR_CONFIG_SETTING_FEEDER_PAYMENT_SHARE                         :Porcentagem do lucro da etapa a pagar em sistemas de transbordo: {STRING}
+STR_CONFIG_SETTING_FEEDER_PAYMENT_SHARE_HELPTEXT                :Porcentagem da receita dada a trajetos intermediários em sistemas de transbordo, dando mais controle sobre a receita
 
 STR_CONFIG_SETTING_DRAG_SIGNALS_DENSITY                         :Ao arrastar, colocar sinais a cada: {STRING}
 STR_CONFIG_SETTING_DRAG_SIGNALS_DENSITY_HELPTEXT                :Define a distância na qual os sinais serão construídos em uma via até o próximo obstáculo (sinal, junção), ao clicar e arrastar sinais
@@ -2949,7 +2949,7 @@ STR_AIRPORT_HELISTATION                                         :Heliponto
 
 STR_AIRPORT_CLASS_SMALL                                         :Aeroportos pequenos
 STR_AIRPORT_CLASS_LARGE                                         :Aeroportos grandes
-STR_AIRPORT_CLASS_HUB                                           :Aeroportos modulares
+STR_AIRPORT_CLASS_HUB                                           :Aeroportos de conexão
 STR_AIRPORT_CLASS_HELIPORTS                                     :Heliportos
 
 STR_STATION_BUILD_NOISE                                         :{BLACK}Ruído gerado: {GOLD}{COMMA}
@@ -5001,7 +5001,7 @@ STR_ERROR_CAN_T_EXPAND_TOWN                                     :{WHITE}Não é 
 STR_ERROR_TOO_CLOSE_TO_EDGE_OF_MAP_SUB                          :{WHITE}... muito perto da borda do mapa
 STR_ERROR_TOO_CLOSE_TO_ANOTHER_TOWN                             :{WHITE}... muito perto de outra localidade
 STR_ERROR_TOO_MANY_TOWNS                                        :{WHITE}... existem muitas localidades
-STR_ERROR_NO_SPACE_FOR_TOWN                                     :{WHITE}... não há mais espaço no mapa
+STR_ERROR_NO_SPACE_FOR_TOWN                                     :{WHITE}... não existe mais espaço no mapa
 STR_ERROR_ROAD_WORKS_IN_PROGRESS                                :{WHITE}Trabalhos na estrada sendo realizados
 STR_ERROR_TOWN_CAN_T_DELETE                                     :{WHITE}Não é possível remover esta localidade...{}Uma estação ou depósito refere-se à localidade ou não é possível remover um quadrado pertencente à mesma
 STR_ERROR_STATUE_NO_SUITABLE_PLACE                              :{WHITE}... não há local adequado para uma estátua no centro desta localidade
@@ -5029,7 +5029,7 @@ STR_ERROR_CAN_ONLY_BE_BUILT_BELOW_SNOW_LINE                     :{WHITE}... só 
 STR_ERROR_PROSPECTING_WAS_UNLUCKY                               :{WHITE}O financiamento falhou em prospectar devido ao azar; tente novamente
 STR_ERROR_NO_SUITABLE_PLACES_FOR_PROSPECTING                    :{WHITE}Não havia locais adequados para prospectar por esta indústria
 STR_ERROR_NO_SUITABLE_PLACES_FOR_INDUSTRIES                     :{WHITE}Não havia locais adequados para indústrias de '{STRING}'
-STR_ERROR_NO_SUITABLE_PLACES_FOR_INDUSTRIES_EXPLANATION         :{WHITE}Mude os parâmetros de geração do mapa para obter um mapa melhor
+STR_ERROR_NO_SUITABLE_PLACES_FOR_INDUSTRIES_EXPLANATION         :{WHITE}Alterar os parâmetros de geração do mapa para obter um mapa melhor
 
 # Station construction related errors
 STR_ERROR_CAN_T_BUILD_RAILROAD_STATION                          :{WHITE}Não é possível construir estação ferroviária neste local...
@@ -5128,7 +5128,7 @@ STR_ERROR_AUTOREPLACE_INCOMPATIBLE_REFIT                        :{WHITE}O novo v
 # Rail construction errors
 STR_ERROR_IMPOSSIBLE_TRACK_COMBINATION                          :{WHITE}Combinação de linhas impossível
 STR_ERROR_MUST_REMOVE_SIGNALS_FIRST                             :{WHITE}Precisa remover os sinais primeiro
-STR_ERROR_NO_SUITABLE_RAILROAD_TRACK                            :{WHITE}Tipo de ferrovia inadequado
+STR_ERROR_NO_SUITABLE_RAILROAD_TRACK                            :{WHITE}Ferrovia não adequada
 STR_ERROR_MUST_REMOVE_RAILROAD_TRACK                            :{WHITE}Precisa remover a ferrovia primeiro
 STR_ERROR_CROSSING_ON_ONEWAY_ROAD                               :{WHITE}Estrada de sentido único ou bloqueada
 STR_ERROR_CROSSING_DISALLOWED_RAIL                              :{WHITE}Cruzamentos de nível não são permitidos neste tipo de linha
@@ -5154,8 +5154,8 @@ STR_ERROR_THERE_IS_NO_ROAD                                      :{WHITE}... não
 STR_ERROR_THERE_IS_NO_TRAMWAY                                   :{WHITE}... não há linha de bonde
 STR_ERROR_CAN_T_CONVERT_ROAD                                    :{WHITE}Não é possível converter o tipo de estrada deste local...
 STR_ERROR_CAN_T_CONVERT_TRAMWAY                                 :{WHITE}Não é possível converter o tipo de linha de bonde deste local...
-STR_ERROR_NO_SUITABLE_ROAD                                      :{WHITE}Sem estrada adequada
-STR_ERROR_NO_SUITABLE_TRAMWAY                                   :{WHITE}Nenhuma linha de bonde adequada
+STR_ERROR_NO_SUITABLE_ROAD                                      :{WHITE}Estrada não adequada
+STR_ERROR_NO_SUITABLE_TRAMWAY                                   :{WHITE}Linha de bonde não adequada
 
 # Waterway construction errors
 STR_ERROR_CAN_T_BUILD_CANALS                                    :{WHITE}Não é possível construir canais neste local...
@@ -5163,7 +5163,7 @@ STR_ERROR_CAN_T_BUILD_LOCKS                                     :{WHITE}Não é 
 STR_ERROR_CAN_T_PLACE_RIVERS                                    :{WHITE}Não é possível colocar rios neste local...
 STR_ERROR_MUST_BE_BUILT_ON_WATER                                :{WHITE}... deve ser construído na água
 STR_ERROR_CAN_T_BUILD_ON_WATER                                  :{WHITE}... não é possível construir na água
-STR_ERROR_CAN_T_BUILD_ON_SEA                                    :{WHITE}... não é possível construir no mar aberto
+STR_ERROR_CAN_T_BUILD_ON_SEA                                    :{WHITE}... não é possível construir em mar aberto
 STR_ERROR_CAN_T_BUILD_ON_CANAL                                  :{WHITE}... não é possível construir em um canal
 STR_ERROR_CAN_T_BUILD_ON_RIVER                                  :{WHITE}... não é possível construir em um rio
 STR_ERROR_MUST_DEMOLISH_CANAL_FIRST                             :{WHITE}Precisa demolir o canal primeiro
@@ -5278,8 +5278,8 @@ STR_ERROR_VEHICLE_IS_DESTROYED                                  :{WHITE}... o ve
 STR_ERROR_CAN_T_CLONE_VEHICLE_LIST                              :{WHITE}... nem todos os veículos são idênticos
 
 STR_ERROR_NO_VEHICLES_AVAILABLE_AT_ALL                          :{WHITE}Nenhum veículo estará disponível
-STR_ERROR_NO_VEHICLES_AVAILABLE_AT_ALL_EXPLANATION              :{WHITE}Mudar a sua configuração de NewGRF
-STR_ERROR_NO_VEHICLES_AVAILABLE_YET                             :{WHITE}Não há veículos disponíveis ainda
+STR_ERROR_NO_VEHICLES_AVAILABLE_AT_ALL_EXPLANATION              :{WHITE}Mudar a configuração de NewGRF
+STR_ERROR_NO_VEHICLES_AVAILABLE_YET                             :{WHITE}Não existem veículos disponíveis ainda
 STR_ERROR_NO_VEHICLES_AVAILABLE_YET_EXPLANATION                 :{WHITE}Começar um novo jogo depois de {DATE_SHORT} ou utilizar um NewGRF que forneça os veículos iniciais
 
 # Specific vehicle errors
@@ -5313,18 +5313,18 @@ STR_ERROR_TOO_FAR_FROM_PREVIOUS_DESTINATION                     :{WHITE}... muit
 STR_ERROR_AIRCRAFT_NOT_ENOUGH_RANGE                             :{WHITE}... aeronave não tem alcance suficiente
 
 # Extra messages which go on the third line of errors, explaining why orders failed
-STR_ERROR_NO_RAIL_STATION                                       :{WHITE}Não há estação ferroviária
-STR_ERROR_NO_BUS_STATION                                        :{WHITE}Não há estação de ônibus
-STR_ERROR_NO_TRUCK_STATION                                      :{WHITE}Não há estação de caminhões
-STR_ERROR_NO_DOCK                                               :{WHITE}Não há doca
-STR_ERROR_NO_AIRPORT                                            :{WHITE}Não há aeroporto/heliporto
-STR_ERROR_NO_STOP_COMPATIBLE_ROAD_TYPE                          :{WHITE}Não há paradas com um tipo de estrada compatível
-STR_ERROR_NO_STOP_COMPATIBLE_TRAM_TYPE                          :{WHITE}Não há paradas com um tipo de bonde compatível
-STR_ERROR_NO_STOP_ARTICULATED_VEHICLE                           :{WHITE}Não há paradas adequadas para veículos rodoviários articulados.{}Os veículos rodoviários articulados precisam parar em estações de passagem ("drive-through") e não em estações padrão
+STR_ERROR_NO_RAIL_STATION                                       :{WHITE}Não existe uma estação ferroviária
+STR_ERROR_NO_BUS_STATION                                        :{WHITE}Não existe uma estação de ônibus
+STR_ERROR_NO_TRUCK_STATION                                      :{WHITE}Não existe uma estação de caminhões
+STR_ERROR_NO_DOCK                                               :{WHITE}Não existe uma doca
+STR_ERROR_NO_AIRPORT                                            :{WHITE}Não existe um aeroporto/heliporto
+STR_ERROR_NO_STOP_COMPATIBLE_ROAD_TYPE                          :{WHITE}Não existem paradas com tipo de estrada compatível
+STR_ERROR_NO_STOP_COMPATIBLE_TRAM_TYPE                          :{WHITE}Não existem paradas com tipo de bonde compatível
+STR_ERROR_NO_STOP_ARTICULATED_VEHICLE                           :{WHITE}Não existem paradas adequadas para veículos rodoviários articulados.{}Os veículos rodoviários articulados precisam parar em estações de passagem ("drive-through") e não em estações padrão
 STR_ERROR_AIRPORT_NO_PLANES                                     :{WHITE}Este avião não pode pousar neste heliporto
 STR_ERROR_AIRPORT_NO_HELICOPTERS                                :{WHITE}Este helicóptero não pode pousar neste aeroporto
-STR_ERROR_NO_RAIL_WAYPOINT                                      :{WHITE}Não há ponto de controle ferroviário
-STR_ERROR_NO_BUOY                                               :{WHITE}Não há boia
+STR_ERROR_NO_RAIL_WAYPOINT                                      :{WHITE}Não existe um ponto de controle ferroviário
+STR_ERROR_NO_BUOY                                               :{WHITE}Não existe uma boia
 
 # Timetable related errors
 STR_ERROR_CAN_T_TIMETABLE_VEHICLE                               :{WHITE}Não é possível programar veículo...
@@ -5337,7 +5337,7 @@ STR_ERROR_TIMETABLE_NOT_STARTED                                 :{WHITE}... o ho
 STR_ERROR_TOO_MANY_SIGNS                                        :{WHITE}... existem muitas placas
 STR_ERROR_CAN_T_PLACE_SIGN_HERE                                 :{WHITE}Não é possível colocar placa neste local...
 STR_ERROR_CAN_T_CHANGE_SIGN_NAME                                :{WHITE}Não é possível alterar o nome da placa...
-STR_ERROR_CAN_T_DELETE_SIGN                                     :{WHITE}Não é possível remover placa
+STR_ERROR_CAN_T_DELETE_SIGN                                     :{WHITE}Não é possível remover a placa...
 
 # Translatable comment for OpenTTD's desktop shortcut
 ###external 1
@@ -5429,7 +5429,7 @@ STR_INDUSTRY_NAME_TOY_FACTORY                                   :Fábrica de Bri
 STR_INDUSTRY_NAME_PLASTIC_FOUNTAINS                             :Fontes de Plástico
 STR_INDUSTRY_NAME_FIZZY_DRINK_FACTORY                           :Fábrica de Refrigerantes
 STR_INDUSTRY_NAME_BUBBLE_GENERATOR                              :Gerador de Bolhas
-STR_INDUSTRY_NAME_TOFFEE_QUARRY                                 :Extração de Caramelo
+STR_INDUSTRY_NAME_TOFFEE_QUARRY                                 :Pedreira de Caramelo
 STR_INDUSTRY_NAME_SUGAR_MINE                                    :Mina de Açúcar
 
 ############ WARNING, using range 0x6000 for strings that are stored in the savegame
@@ -5439,7 +5439,7 @@ STR_INDUSTRY_NAME_SUGAR_MINE                                    :Mina de Açúca
 STR_SV_EMPTY                                                    :
 STR_SV_UNNAMED                                                  :Sem nome
 STR_SV_TRAIN_NAME                                               :Trem #{COMMA}
-STR_SV_ROAD_VEHICLE_NAME                                        :Veículo Rodoviário #{COMMA}
+STR_SV_ROAD_VEHICLE_NAME                                        :Veículo #{COMMA}
 STR_SV_SHIP_NAME                                                :Embarcação #{COMMA}
 STR_SV_AIRCRAFT_NAME                                            :Aeronave #{COMMA}
 
@@ -5449,12 +5449,12 @@ STR_SV_STNAME_NORTH                                             :Norte de {STRIN
 STR_SV_STNAME_SOUTH                                             :Sul de {STRING}
 STR_SV_STNAME_EAST                                              :Leste de {STRING}
 STR_SV_STNAME_WEST                                              :Oeste de {STRING}
-STR_SV_STNAME_CENTRAL                                           :Central de {STRING}
-STR_SV_STNAME_TRANSFER                                          :Baldeação de {STRING}
+STR_SV_STNAME_CENTRAL                                           :Centro de {STRING}
+STR_SV_STNAME_TRANSFER                                          :Transbordo de {STRING}
 STR_SV_STNAME_HALT                                              :Parada de {STRING}
 STR_SV_STNAME_VALLEY                                            :Vale de {STRING}
 STR_SV_STNAME_HEIGHTS                                           :Montes de {STRING}
-STR_SV_STNAME_WOODS                                             :Floresta de {STRING}
+STR_SV_STNAME_WOODS                                             :Bosques de {STRING}
 STR_SV_STNAME_LAKESIDE                                          :Lago de {STRING}
 STR_SV_STNAME_EXCHANGE                                          :Intercâmbio de {STRING}
 STR_SV_STNAME_AIRPORT                                           :Aeroporto de {STRING}
@@ -5467,8 +5467,8 @@ STR_SV_STNAME_WAYPOINT                                          :{STRING}
 STR_SV_STNAME_ANNEXE                                            :Anexo de {STRING}
 STR_SV_STNAME_SIDINGS                                           :Desvios de {STRING}
 STR_SV_STNAME_BRANCH                                            :Ramal de {STRING}
-STR_SV_STNAME_UPPER                                             :{STRING} Superior
-STR_SV_STNAME_LOWER                                             :{STRING} Inferior
+STR_SV_STNAME_UPPER                                             :{STRING} de Cima
+STR_SV_STNAME_LOWER                                             :{STRING} de Baixo
 STR_SV_STNAME_HELIPORT                                          :Heliporto de {STRING}
 STR_SV_STNAME_FOREST                                            :Floresta de {STRING}
 STR_SV_STNAME_FALLBACK                                          :Estação de {STRING} #{NUM}
@@ -5530,7 +5530,7 @@ STR_VEHICLE_NAME_TRAIN_WAGON_RAIL_COLA_TANKER                   :Vagão de Xarop
 STR_VEHICLE_NAME_TRAIN_WAGON_RAIL_CANDY_VAN                     :Vagão de Doces
 STR_VEHICLE_NAME_TRAIN_WAGON_RAIL_TOY_VAN                       :Vagão de Brinquedos
 STR_VEHICLE_NAME_TRAIN_WAGON_RAIL_BATTERY_TRUCK                 :Vagão de Pilhas
-STR_VEHICLE_NAME_TRAIN_WAGON_RAIL_FIZZY_DRINK_TRUCK             :Tanque de Refrigerante
+STR_VEHICLE_NAME_TRAIN_WAGON_RAIL_FIZZY_DRINK_TRUCK             :Vagão de Refrigerantes
 STR_VEHICLE_NAME_TRAIN_WAGON_RAIL_PLASTIC_TRUCK                 :Vagão de Plástico
 STR_VEHICLE_NAME_TRAIN_ENGINE_MONORAIL_X2001_ELECTRIC           :'X2001' (Elétrico)
 STR_VEHICLE_NAME_TRAIN_ENGINE_MONORAIL_MILLENNIUM_Z1_ELECTRIC   :'Millennium Z1' (Elétrico)
@@ -5749,7 +5749,7 @@ STR_FORMAT_DATE_LONG                                            :{STRING} {STRIN
 STR_FORMAT_DATE_ISO                                             :{2:NUM}-{1:ZEROFILL_NUM}-{0:ZEROFILL_NUM}
 
 STR_FORMAT_COMPANY_NUM                                          :(Empresa {COMMA})
-STR_FORMAT_GROUP_NAME                                           :Agrupar {COMMA}
+STR_FORMAT_GROUP_NAME                                           :Grupo {COMMA}
 STR_FORMAT_GROUP_VEHICLE_NAME                                   :{GROUP} #{COMMA}
 STR_FORMAT_INDUSTRY_NAME                                        :{1:STRING} de {0:TOWN}
 
@@ -5764,8 +5764,8 @@ STR_FORMAT_WAYPOINT_NAME_SERIAL                                 :Ponto de contro
 ###length 6
 STR_FORMAT_DEPOT_NAME_TRAIN                                     :Depósito Ferroviário de {TOWN}
 STR_FORMAT_DEPOT_NAME_TRAIN_SERIAL                              :Depósito Ferroviário de {TOWN} #{COMMA}
-STR_FORMAT_DEPOT_NAME_ROAD_VEHICLE                              :Depósito de Veículos Rodoviários de {TOWN}
-STR_FORMAT_DEPOT_NAME_ROAD_VEHICLE_SERIAL                       :Depósito de Veículos Rodoviários de {TOWN} #{COMMA}
+STR_FORMAT_DEPOT_NAME_ROAD_VEHICLE                              :Depósito Rodoviário de {TOWN}
+STR_FORMAT_DEPOT_NAME_ROAD_VEHICLE_SERIAL                       :Depósito Rodoviário de {TOWN} #{COMMA}
 STR_FORMAT_DEPOT_NAME_SHIP                                      :Depósito de Embarcações de {TOWN}
 STR_FORMAT_DEPOT_NAME_SHIP_SERIAL                               :Depósito de Embarcações de {TOWN} #{COMMA}
 ###next-name-looks-similar
@@ -5810,11 +5810,6 @@ STR_STATION_NAME                                                :{STATION}
 STR_TOWN_NAME                                                   :{TOWN}
 STR_VEHICLE_NAME                                                :{VEHICLE}
 STR_WAYPOINT_NAME                                               :{WAYPOINT}
-
-STR_CURRENCY_SHORT_KILO                                         :{NBSP}k
-STR_CURRENCY_SHORT_MEGA                                         :{NBSP}m
-STR_CURRENCY_SHORT_GIGA                                         :{NBSP}bn
-STR_CURRENCY_SHORT_TERA                                         :{NBSP}tn
 
 STR_JUST_CARGO                                                  :{CARGO_LONG}
 STR_JUST_RIGHT_ARROW                                            :{RIGHT_ARROW}

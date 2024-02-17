@@ -6030,11 +6030,6 @@ STR_TOWN_NAME                                                   :{TOWN}
 STR_VEHICLE_NAME                                                :{VEHICLE}
 STR_WAYPOINT_NAME                                               :{WAYPOINT}
 
-STR_CURRENCY_SHORT_KILO                                         :{NBSP}tis.
-STR_CURRENCY_SHORT_MEGA                                         :{NBSP}mil.
-STR_CURRENCY_SHORT_GIGA                                         :{NBSP}mld.
-STR_CURRENCY_SHORT_TERA                                         :{NBSP}bil.
-
 STR_JUST_CARGO                                                  :{CARGO_LONG}
 STR_JUST_RIGHT_ARROW                                            :{RIGHT_ARROW}
 STR_JUST_CHECKMARK                                              :{CHECKMARK}

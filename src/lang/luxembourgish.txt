@@ -5810,11 +5810,6 @@ STR_TOWN_NAME                                                   :{TOWN}
 STR_VEHICLE_NAME                                                :{VEHICLE}
 STR_WAYPOINT_NAME                                               :{WAYPOINT}
 
-STR_CURRENCY_SHORT_KILO                                         :{NBSP}d
-STR_CURRENCY_SHORT_MEGA                                         :{NBSP}Mio
-STR_CURRENCY_SHORT_GIGA                                         :{NBSP}Mrd
-STR_CURRENCY_SHORT_TERA                                         :{NBSP}Bio
-
 STR_JUST_CARGO                                                  :{CARGO_LONG}
 STR_JUST_RIGHT_ARROW                                            :{RIGHT_ARROW}
 STR_JUST_CHECKMARK                                              :{CHECKMARK}

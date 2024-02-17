@@ -990,6 +990,11 @@ STR_GAME_OPTIONS_TAB_SOCIAL_TT                                  :{BLACK}Vali sot
 
 STR_GAME_OPTIONS_VOLUME                                         :Helitase
 
+STR_GAME_OPTIONS_VOLUME_0                                       :0%
+STR_GAME_OPTIONS_VOLUME_25                                      :25%
+STR_GAME_OPTIONS_VOLUME_50                                      :50%
+STR_GAME_OPTIONS_VOLUME_75                                      :75%
+STR_GAME_OPTIONS_VOLUME_100                                     :100%
 
 STR_GAME_OPTIONS_CURRENCY_UNITS_FRAME                           :{BLACK}Valuuta
 STR_GAME_OPTIONS_CURRENCY_UNITS_DROPDOWN_TOOLTIP                :{BLACK}Valuuta valimine
@@ -1121,6 +1126,7 @@ STR_GAME_OPTIONS_BASE_MUSIC_DESCRIPTION_TOOLTIP                 :{BLACK}Rohkem t
 
 
 
+STR_BASESET_STATUS                                              :{STRING} {RED}({NUM} puuduv/vigane fail{P "" s})
 
 STR_ERROR_RESOLUTION_LIST_FAILED                                :{WHITE}Ei õnnestunud tuvastada toetatud resulutsioone
 STR_ERROR_FULLSCREEN_FAILED                                     :{WHITE}Täisekraanrežiim ebaõnnestus
@@ -2217,7 +2223,7 @@ STR_HELP_WINDOW_BUGTRACKER                                      :{BLACK}Teata ve
 STR_HELP_WINDOW_COMMUNITY                                       :{BLACK}Kogukond
 
 # Cheat window
-STR_CHEATS                                                      :{WHITE}Petmine
+STR_CHEATS                                                      :{WHITE}Liivakasti valikud
 STR_CHEAT_MONEY                                                 :{LTBLUE}Suurenda raha hulka {CURRENCY_LONG} võrra
 STR_CHEAT_CHANGE_COMPANY                                        :{LTBLUE}Mängimine ettevõttena: {ORANGE}{COMMA}
 STR_CHEAT_EXTRA_DYNAMITE                                        :{LTBLUE}Võlubuldooser (eemaldab tööstused, paiksed objektid): {ORANGE}{STRING}
@@ -2725,6 +2731,8 @@ STR_STATION_BUILD_COVERAGE_AREA_OFF_TOOLTIP                     :{BLACK}Lülita 
 STR_STATION_BUILD_COVERAGE_AREA_ON_TOOLTIP                      :{BLACK}Lülita sisse jaama mõjupiirkonna näitamine
 STR_STATION_BUILD_ACCEPTS_CARGO                                 :{BLACK}Võtab vastu: {GOLD}{CARGO_LIST}
 STR_STATION_BUILD_SUPPLIES_CARGO                                :{BLACK}Tarnib: {GOLD}{CARGO_LIST}
+STR_STATION_BUILD_INFRASTRUCTURE_COST_YEAR                      :{BLACK}Hoolduskulu: {GOLD}{CURRENCY_SHORT}/aasta
+STR_STATION_BUILD_INFRASTRUCTURE_COST_PERIOD                    :{BLACK}Hoolduskulu: {GOLD}{CURRENCY_SHORT}/periood
 
 # Join station window
 STR_JOIN_STATION_CAPTION                                        :{WHITE}Liida jaamale
@@ -3665,6 +3673,8 @@ STR_SUBSIDIES_NONE                                              :{ORANGE}Mitte �
 STR_SUBSIDIES_SUBSIDISED_TITLE                                  :{BLACK}Juba toetatavad veoteenused:
 STR_SUBSIDIES_SUBSIDISED_FROM_TO                                :{ORANGE}{STRING} kohast {STRING} kohta {STRING}{YELLOW} ({COMPANY}{YELLOW}, {STRING})
 STR_SUBSIDIES_TOOLTIP_CLICK_ON_SERVICE_TO_CENTER                :{BLACK}Vajuta pakkumisele, et keskendada vaade tööstusele/asustusele. Ctrl+klõps avab uue vaate ettevõtte/asustuse asukohas
+STR_SUBSIDIES_SUBSIDISED_EXPIRY_DATE                            :kuni {DATE_SHORT}
+STR_SUBSIDIES_SUBSIDISED_EXPIRY_TIME                            :{UNITS_MONTHS_OR_MINUTES} jäänud
 
 # Story book window
 STR_STORY_BOOK_CAPTION                                          :{WHITE}«{COMPANY}» juturaamat
@@ -3974,7 +3984,9 @@ STR_GROUP_REMOVE_ALL_VEHICLES                                   :Eemalda kõik s
 STR_GROUP_RENAME_CAPTION                                        :{BLACK}Ümbernimeta jagu
 
 STR_GROUP_PROFIT_THIS_YEAR                                      :Selle aasta kasum:
+STR_GROUP_PROFIT_THIS_PERIOD                                    :Kasum sellel perioodil:
 STR_GROUP_PROFIT_LAST_YEAR                                      :Eelmise aasta kasum:
+STR_GROUP_PROFIT_LAST_PERIOD                                    :Kasum eelmisel perioodil:
 STR_GROUP_OCCUPANCY                                             :Koormatus:
 STR_GROUP_OCCUPANCY_VALUE                                       :{NUM}%
 
@@ -4653,6 +4665,8 @@ STR_TIMETABLE_EXPECTED                                          :{BLACK}Eeldatav
 STR_TIMETABLE_SCHEDULED                                         :{BLACK}Plaanis
 STR_TIMETABLE_EXPECTED_TOOLTIP                                  :{BLACK}Vaheta eeldatava ja graafiku vahel
 
+STR_TIMETABLE_ARRIVAL_DATE                                      :A: {COLOUR}{DATE_TINY}
+STR_TIMETABLE_DEPARTURE_DATE                                    :D: {COLOUR}{DATE_TINY}
 STR_TIMETABLE_ARRIVAL_SECONDS_IN_FUTURE                         :A: {COLOUR}{COMMA} sek
 STR_TIMETABLE_DEPARTURE_SECONDS_IN_FUTURE                       :D: {COLOUR}{COMMA} sek
 
@@ -5694,11 +5708,6 @@ STR_STATION_NAME                                                :{STATION}
 STR_TOWN_NAME                                                   :{TOWN}
 STR_VEHICLE_NAME                                                :{VEHICLE}
 STR_WAYPOINT_NAME                                               :{WAYPOINT}
-
-STR_CURRENCY_SHORT_KILO                                         :{NBSP}k
-STR_CURRENCY_SHORT_MEGA                                         :{NBSP}m
-STR_CURRENCY_SHORT_GIGA                                         :{NBSP}bn
-STR_CURRENCY_SHORT_TERA                                         :{NBSP}tn
 
 STR_JUST_CARGO                                                  :{CARGO_LONG}
 STR_JUST_CHECKMARK                                              :{CHECKMARK}
