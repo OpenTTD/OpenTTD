@@ -83,6 +83,9 @@ struct Pool : PoolBase {
 
 	static constexpr size_t MAX_SIZE = Tmax_size; ///< Make template parameter accessible from outside
 
+	using BitmapStorage = size_t;
+	static constexpr size_t BITMAP_SIZE = std::numeric_limits<BitmapStorage>::digits;
+
 	const char * const name; ///< Name of this pool
 
 	size_t size;         ///< Current allocated size
@@ -95,6 +98,7 @@ struct Pool : PoolBase {
 	bool cleaning;       ///< True if cleaning pool (deleting all items)
 
 	Titem **data;        ///< Pointer to array of pointers to Titem
+	std::vector<BitmapStorage> used_bitmap; ///< Bitmap of used indices.
 
 	Pool(const char *name);
 	void CleanPool() override;
