@@ -404,7 +404,7 @@ void InitializeNumberFormats()
 		loaded_number_abbreviations = !res.has_value();
 	}
 	if (!loaded_number_abbreviations) ParseNumberAbbreviations(_number_abbreviations, _current_language->number_abbreviations);
-	_number_abbreviations.emplace_back(0, _number_format_separators);
+	_number_abbreviations.emplace_back(1, _number_format_separators);
 }
 
 /**
