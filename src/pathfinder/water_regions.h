@@ -18,6 +18,7 @@ using TWaterRegionIndex = uint;
 
 constexpr int WATER_REGION_EDGE_LENGTH = 16;
 constexpr int WATER_REGION_NUMBER_OF_TILES = WATER_REGION_EDGE_LENGTH * WATER_REGION_EDGE_LENGTH;
+constexpr TWaterRegionPatchLabel INVALID_WATER_REGION_PATCH = 0;
 
 /**
  * Describes a single interconnected patch of water within a particular water region.

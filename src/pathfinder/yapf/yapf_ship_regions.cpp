@@ -102,6 +102,7 @@ private:
 public:
 	void AddOrigin(const WaterRegionPatchDesc &water_region_patch)
 	{
+		if (water_region_patch.label == INVALID_WATER_REGION_PATCH) return;
 		if (!HasOrigin(water_region_patch)) m_origin_keys.push_back(CYapfRegionPatchNodeKey{ water_region_patch });
 	}
 
