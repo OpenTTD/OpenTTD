@@ -967,7 +967,7 @@ STR_GAME_OPTIONS_CURRENCY_UNITS_DROPDOWN_TOOLTIP                :{BLACK}Currency
 
 STR_GAME_OPTIONS_CURRENCY_CODE                                  :{STRING} ({RAW_STRING})
 
-###length 43
+###length 44
 STR_GAME_OPTIONS_CURRENCY_GBP                                   :British Pound
 STR_GAME_OPTIONS_CURRENCY_USD                                   :American Dollar
 STR_GAME_OPTIONS_CURRENCY_EUR                                   :Euro
@@ -1011,6 +1011,7 @@ STR_GAME_OPTIONS_CURRENCY_INR                                   :Indian Rupee
 STR_GAME_OPTIONS_CURRENCY_IDR                                   :Indonesian Rupiah
 STR_GAME_OPTIONS_CURRENCY_MYR                                   :Malaysian Ringgit
 STR_GAME_OPTIONS_CURRENCY_LVL                                   :Latvian Lats
+STR_GAME_OPTIONS_CURRENCY_PTE                                   :Portuguese Escudo
 
 STR_GAME_OPTIONS_AUTOSAVE_FRAME                                 :{BLACK}Autosave
 STR_GAME_OPTIONS_AUTOSAVE_DROPDOWN_TOOLTIP                      :{BLACK}Select interval between automatic game saves
