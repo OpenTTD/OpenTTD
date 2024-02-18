@@ -10709,6 +10709,9 @@ ERROR: IsEnd() is invalid as Begin() is never called
   AreOrderFlagsValid():  true
   AreOrderFlagsValid():  true
   AreOrderFlagsValid():  true
+  AreOrderFlagsValid():  false
+  AreOrderFlagsValid():  true
+  AreOrderFlagsValid():  true
   IsValidConditionalOrder(): true
   IsValidConditionalOrder(): false
   IsValidConditionalOrder(): true
@@ -10750,6 +10753,35 @@ ERROR: IsEnd() is invalid as Begin() is never called
   GetStopLocation():     2
   SetStopLocation():     true
   GetStopLocation():     1
+  BuildVehicle():        21
+  GetLastErrorString():  ERR_NONE
+  ShareOrders():         true
+  GetLastErrorString():  ERR_NONE
+  AppendOrder():         true
+  GetLastErrorString():  ERR_NONE
+  InsertOrder():         false
+  GetLastErrorString():  ERR_ORDER_NO_UNBUNCH_WITH_FULL_LOAD
+  SetOrderFlags():       true
+  GetLastErrorString():  ERR_NONE
+  AppendConditionalOrder(): true
+  GetLastErrorString():  ERR_NONE
+  AppendOrder():         false
+  GetLastErrorString():  ERR_ORDER_NO_UNBUNCH_WITH_CONDITIONAL
+  RemoveOrder():         true
+  GetLastErrorString():  ERR_NONE
+  InsertOrder():         true
+  GetLastErrorString():  ERR_NONE
+  InsertOrder():         false
+  GetLastErrorString():  ERR_ORDER_ONLY_ONE_UNBUNCH_ALLOWED
+  InsertOrder():         false
+  GetLastErrorString():  ERR_ORDER_NO_FULL_LOAD_WITH_UNBUNCH
+  SetOrderFlags():       false
+  GetLastErrorString():  ERR_ORDER_NO_FULL_LOAD_WITH_UNBUNCH
+  InsertConditionalOrder(): false
+  GetLastErrorString():  ERR_ORDER_NO_CONDITIONAL_WITH_UNBUNCH
+  SetOrderFlags():       true
+  GetLastErrorString():  ERR_NONE
+  GetOrderCount():       2
 
 --VehicleList_Station--
   Count():             1
@@ -10880,7 +10912,7 @@ CALLSTACK WITH LOCALS
 *FUNCTION [Valuate()] Valuate line [5]
   [args] ARRAY
   [this] INSTANCE
-*FUNCTION [Start()] regression/main.nut line [2412]
+*FUNCTION [Start()] regression/main.nut line [2445]
   [Infinite] CLOSURE
   [list] INSTANCE
   [this] INSTANCE

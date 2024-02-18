@@ -205,7 +205,7 @@ static ScriptOrder::OrderPosition RealOrderPositionToScriptOrderPosition(Vehicle
 
 		case OT_GOTO_DEPOT:
 			return (order_flags & ~(OF_NON_STOP_FLAGS | OF_DEPOT_FLAGS)) == 0 &&
-					((order_flags & OF_SERVICE_IF_NEEDED) == 0 || (order_flags & OF_STOP_IN_DEPOT) == 0);
+					HasAtMostOneBit(order_flags & (OF_SERVICE_IF_NEEDED | OF_STOP_IN_DEPOT | OF_UNBUNCH_IN_DEPOT));
 
 		case OT_GOTO_WAYPOINT: return (order_flags & ~(OF_NON_STOP_FLAGS)) == 0;
 		default:               return false;
@@ -312,6 +312,7 @@ static ScriptOrder::OrderPosition RealOrderPositionToScriptOrderPosition(Vehicle
 			if (order->GetDepotOrderType().Test(OrderDepotTypeFlag::Service)) order_flags |= OF_SERVICE_IF_NEEDED;
 			if (order->GetDepotActionType().Test(OrderDepotActionFlag::Halt)) order_flags |= OF_STOP_IN_DEPOT;
 			if (order->GetDepotActionType().Test(OrderDepotActionFlag::NearestDepot)) order_flags |= OF_GOTO_NEAREST_DEPOT;
+			if (order->GetDepotActionType().Test(OrderDepotActionFlag::Unbunch)) order_flags |= OF_UNBUNCH_IN_DEPOT;
 			break;
 
 		case OT_GOTO_STATION:
@@ -491,6 +492,7 @@ static ScriptOrder::OrderPosition RealOrderPositionToScriptOrderPosition(Vehicle
 
 			OrderDepotActionFlags odaf{};
 			if ((order_flags & OF_STOP_IN_DEPOT) != 0) odaf.Set(OrderDepotActionFlag::Halt);
+			if ((order_flags & OF_UNBUNCH_IN_DEPOT) != 0) odaf.Set(OrderDepotActionFlag::Unbunch);
 
 			OrderNonStopFlags onsf{};
 			if (v->IsGroundVehicle() && (order_flags & OF_NON_STOP_INTERMEDIATE) != 0) onsf.Set(OrderNonStopFlag::NoIntermediate);
@@ -621,6 +623,7 @@ static void _DoCommandReturnSetOrderFlags(class ScriptInstance &instance)
 				OrderDepotAction data = OrderDepotAction::AlwaysGo;
 				if ((order_flags & OF_SERVICE_IF_NEEDED) != 0) data = OrderDepotAction::Service;
 				if ((order_flags & OF_STOP_IN_DEPOT) != 0) data = OrderDepotAction::Stop;
+				if ((order_flags & OF_UNBUNCH_IN_DEPOT) != 0) data = OrderDepotAction::Unbunch;
 				return ScriptObject::Command<Commands::ModifyOrder>::Do(&::_DoCommandReturnSetOrderFlags, vehicle_id, order_pos, MOF_DEPOT_ACTION, to_underlying(data));
 			}
 			break;

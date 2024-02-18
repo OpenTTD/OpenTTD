@@ -19,6 +19,14 @@
  *
  * This version is not yet released. The following changes are not set in stone yet.
  *
+ * API additions:
+ * \li GSOrder::OF_UNBUNCH_IN_DEPOT
+ * \li GSOrder::ERR_ORDER_ONLY_ONE_UNBUNCH_ALLOWED
+ * \li GSOrder::ERR_ORDER_NO_FULL_LOAD_WITH_UNBUNCH
+ * \li GSOrder::ERR_ORDER_NO_UNBUNCH_WITH_FULL_LOAD
+ * \li GSOrder::ERR_ORDER_NO_CONDITIONAL_WITH_UNBUNCH
+ * \li GSOrder::ERR_ORDER_NO_UNBUNCH_WITH_CONDITIONAL
+ *
  * \b 15.0
  *
  * API additions:
