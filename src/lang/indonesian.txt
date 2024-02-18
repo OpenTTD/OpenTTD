@@ -1087,9 +1087,6 @@ STR_CURRENCY_DECREASE_EXCHANGE_RATE_TOOLTIP                     :{BLACK}Menurunk
 STR_CURRENCY_INCREASE_EXCHANGE_RATE_TOOLTIP                     :{BLACK}Meningkatkan nilai mata uang satu Pound (£)
 STR_CURRENCY_SET_EXCHANGE_RATE_TOOLTIP                          :{BLACK}Atur penukaran nilai mata uang per satu Pound (£)
 
-STR_CURRENCY_SEPARATOR                                          :{LTBLUE}Pemisah: {ORANGE}{STRING}
-STR_CURRENCY_SET_CUSTOM_CURRENCY_SEPARATOR_TOOLTIP              :{BLACK}Atur pemisah nilai mata uang Anda
-
 STR_CURRENCY_PREFIX                                             :{LTBLUE}Awalan: {ORANGE}{STRING}
 STR_CURRENCY_SET_CUSTOM_CURRENCY_PREFIX_TOOLTIP                 :{BLACK}Masukkan awalan untuk mata uang
 STR_CURRENCY_SUFFIX                                             :{LTBLUE}Akhiran: {ORANGE}{STRING}

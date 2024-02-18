@@ -1274,9 +1274,6 @@ STR_CURRENCY_DECREASE_EXCHANGE_RATE_TOOLTIP                     :{BLACK}Падв
 STR_CURRENCY_INCREASE_EXCHANGE_RATE_TOOLTIP                     :{BLACK}Зьнізіць курс вашае валюты ў адносінах да фунта (£)
 STR_CURRENCY_SET_EXCHANGE_RATE_TOOLTIP                          :{BLACK}Усталяваць курс вашае валюты ў адносінах да фунта (£)
 
-STR_CURRENCY_SEPARATOR                                          :{LTBLUE}Разьдзяляльнік: {ORANGE}{STRING}
-STR_CURRENCY_SET_CUSTOM_CURRENCY_SEPARATOR_TOOLTIP              :{BLACK}Усталяваць разьдзяляльнік разрадаў (тысяч) для вашае валюты
-
 STR_CURRENCY_PREFIX                                             :{LTBLUE}Прэфікс: {ORANGE}{STRING}
 STR_CURRENCY_SET_CUSTOM_CURRENCY_PREFIX_TOOLTIP                 :{BLACK}Усталяваць прэфікс для вашае валюты
 STR_CURRENCY_SUFFIX                                             :{LTBLUE}Суфікс: {ORANGE}{STRING}

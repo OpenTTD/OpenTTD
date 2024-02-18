@@ -1117,9 +1117,6 @@ STR_CURRENCY_DECREASE_EXCHANGE_RATE_TOOLTIP                     :{BLACK}Minska v
 STR_CURRENCY_INCREASE_EXCHANGE_RATE_TOOLTIP                     :{BLACK}Öka värdet för din valuta med ett pund (£)
 STR_CURRENCY_SET_EXCHANGE_RATE_TOOLTIP                          :{BLACK}Sätt växelkursen för din valuta mot ett pund (£)
 
-STR_CURRENCY_SEPARATOR                                          :{LTBLUE}Avskiljare: {ORANGE}{STRING}
-STR_CURRENCY_SET_CUSTOM_CURRENCY_SEPARATOR_TOOLTIP              :{BLACK}Sätt separatorn för din valuta
-
 STR_CURRENCY_PREFIX                                             :{LTBLUE}Prefix: {ORANGE}{STRING}
 STR_CURRENCY_SET_CUSTOM_CURRENCY_PREFIX_TOOLTIP                 :{BLACK}Sätt prefix-sträng för din valuta
 STR_CURRENCY_SUFFIX                                             :{LTBLUE}Ändelse: {ORANGE}{STRING}

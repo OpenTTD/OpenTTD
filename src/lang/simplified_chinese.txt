@@ -1117,9 +1117,6 @@ STR_CURRENCY_DECREASE_EXCHANGE_RATE_TOOLTIP                     :{BLACK}减少�
 STR_CURRENCY_INCREASE_EXCHANGE_RATE_TOOLTIP                     :{BLACK}增加英磅(£)兑换自定义货币的数量
 STR_CURRENCY_SET_EXCHANGE_RATE_TOOLTIP                          :{BLACK}设置自定义货币与英磅(£)的兑换比率
 
-STR_CURRENCY_SEPARATOR                                          :{LTBLUE}分隔符： {ORANGE}{STRING}
-STR_CURRENCY_SET_CUSTOM_CURRENCY_SEPARATOR_TOOLTIP              :{BLACK}设置千位分隔符
-
 STR_CURRENCY_PREFIX                                             :{LTBLUE}前缀： {ORANGE}{STRING}
 STR_CURRENCY_SET_CUSTOM_CURRENCY_PREFIX_TOOLTIP                 :{BLACK}设置自定义货币的首字
 STR_CURRENCY_SUFFIX                                             :{LTBLUE}后缀： {ORANGE}{STRING}

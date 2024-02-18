@@ -434,7 +434,6 @@ STR_GAME_OPTIONS_RESOLUTION_OTHER                               :oħrajn
 
 
 
-
 ###length 5
 
 ###length 6

@@ -1119,9 +1119,6 @@ STR_CURRENCY_DECREASE_EXCHANGE_RATE_TOOLTIP                     :{BLACK}Riduce l
 STR_CURRENCY_INCREASE_EXCHANGE_RATE_TOOLTIP                     :{BLACK}Aumenta l'ammontare della valuta per una Sterlina (£)
 STR_CURRENCY_SET_EXCHANGE_RATE_TOOLTIP                          :{BLACK}Imposta il tasso di cambio della valuta per una Sterlina (£)
 
-STR_CURRENCY_SEPARATOR                                          :{LTBLUE}Separatore: {ORANGE}{STRING}
-STR_CURRENCY_SET_CUSTOM_CURRENCY_SEPARATOR_TOOLTIP              :{BLACK}Imposta il separatore delle migliaia utilizzato dalla valuta
-
 STR_CURRENCY_PREFIX                                             :{LTBLUE}Prefisso: {ORANGE}{STRING}
 STR_CURRENCY_SET_CUSTOM_CURRENCY_PREFIX_TOOLTIP                 :{BLACK}Imposta il prefisso per la valuta
 STR_CURRENCY_SUFFIX                                             :{LTBLUE}Suffisso: {ORANGE}{STRING}

@@ -1053,9 +1053,6 @@ STR_CURRENCY_DECREASE_EXCHANGE_RATE_TOOLTIP                     :{BLACK}降低�
 STR_CURRENCY_INCREASE_EXCHANGE_RATE_TOOLTIP                     :{BLACK}提升自訂幣值對 1 英鎊 (£) 的匯率
 STR_CURRENCY_SET_EXCHANGE_RATE_TOOLTIP                          :{BLACK}設定自訂幣值對 1 英鎊 (£) 的匯率
 
-STR_CURRENCY_SEPARATOR                                          :{LTBLUE}分隔符號：{ORANGE}{STRING}
-STR_CURRENCY_SET_CUSTOM_CURRENCY_SEPARATOR_TOOLTIP              :{BLACK}設定貨幣的分隔符
-
 STR_CURRENCY_PREFIX                                             :{LTBLUE}前置字：{ORANGE}{STRING}
 STR_CURRENCY_SET_CUSTOM_CURRENCY_PREFIX_TOOLTIP                 :{BLACK}為你的貨幣指定前置字串
 STR_CURRENCY_SUFFIX                                             :{LTBLUE}後置字：{ORANGE}{STRING}

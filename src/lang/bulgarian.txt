@@ -1019,9 +1019,6 @@ STR_CURRENCY_DECREASE_EXCHANGE_RATE_TOOLTIP                     :{BLACK}Нама
 STR_CURRENCY_INCREASE_EXCHANGE_RATE_TOOLTIP                     :{BLACK}Увеличи стойността на твоята валута за една лира (£)
 STR_CURRENCY_SET_EXCHANGE_RATE_TOOLTIP                          :{BLACK}Сложи обменния курс на твоята валута за една лира (£)
 
-STR_CURRENCY_SEPARATOR                                          :{LTBLUE}Разделител: {ORANGE}{STRING}
-STR_CURRENCY_SET_CUSTOM_CURRENCY_SEPARATOR_TOOLTIP              :{BLACK}Укажете разделител за валутата
-
 STR_CURRENCY_PREFIX                                             :{LTBLUE}Представка: {ORANGE}{STRING}
 STR_CURRENCY_SET_CUSTOM_CURRENCY_PREFIX_TOOLTIP                 :{BLACK}Укажете префиксен текст за валутата
 STR_CURRENCY_SUFFIX                                             :{LTBLUE}Надставка: {ORANGE}{STRING}

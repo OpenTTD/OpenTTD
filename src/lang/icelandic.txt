@@ -913,9 +913,6 @@ STR_CURRENCY_DECREASE_EXCHANGE_RATE_TOOLTIP                     :{BLACK}Hækka g
 STR_CURRENCY_INCREASE_EXCHANGE_RATE_TOOLTIP                     :{BLACK}Lækka gengi miðað við pund (£)
 STR_CURRENCY_SET_EXCHANGE_RATE_TOOLTIP                          :{BLACK}Setja gengi gjaldmiðils miðað við pund (£)
 
-STR_CURRENCY_SEPARATOR                                          :{LTBLUE}Aðgreiningarmerki: {ORANGE}{STRING}
-STR_CURRENCY_SET_CUSTOM_CURRENCY_SEPARATOR_TOOLTIP              :{BLACK}Veldu aðgreiningarmerki fyrir gjaldmiðilinn
-
 STR_CURRENCY_PREFIX                                             :{LTBLUE}Forskeyti: {ORANGE}{STRING}
 STR_CURRENCY_SET_CUSTOM_CURRENCY_PREFIX_TOOLTIP                 :{BLACK}Veldu forskeyti fyrir gjaldmiðilinn
 STR_CURRENCY_SUFFIX                                             :{LTBLUE}Viðskeyti: {ORANGE}{STRING}

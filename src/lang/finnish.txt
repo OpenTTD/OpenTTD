@@ -1117,9 +1117,6 @@ STR_CURRENCY_DECREASE_EXCHANGE_RATE_TOOLTIP                     :{BLACK}Pienenn�
 STR_CURRENCY_INCREASE_EXCHANGE_RATE_TOOLTIP                     :{BLACK}Suurenna vaihtokurssia verrattuna puntaan (£)
 STR_CURRENCY_SET_EXCHANGE_RATE_TOOLTIP                          :{BLACK}Aseta vaihtokurssi valuutallesi verrattuna puntaan (£)
 
-STR_CURRENCY_SEPARATOR                                          :{LTBLUE}Välimerkki: {ORANGE}{STRING}
-STR_CURRENCY_SET_CUSTOM_CURRENCY_SEPARATOR_TOOLTIP              :{BLACK}Valitse välimerkki valuutallesi
-
 STR_CURRENCY_PREFIX                                             :{LTBLUE}Etuliite: {ORANGE}{STRING}
 STR_CURRENCY_SET_CUSTOM_CURRENCY_PREFIX_TOOLTIP                 :{BLACK}Valitse alkuliite valuutallesi
 STR_CURRENCY_SUFFIX                                             :{LTBLUE}Jälkiliite: {ORANGE}{STRING}

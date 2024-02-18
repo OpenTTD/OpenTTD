@@ -1161,9 +1161,6 @@ STR_CURRENCY_DECREASE_EXCHANGE_RATE_TOOLTIP                     :{BLACK}Átvált
 STR_CURRENCY_INCREASE_EXCHANGE_RATE_TOOLTIP                     :{BLACK}Átváltási arány növelése egy Fonthoz (£) képest
 STR_CURRENCY_SET_EXCHANGE_RATE_TOOLTIP                          :{BLACK}Átváltási arány beállítása egy Fonthoz (£) képest
 
-STR_CURRENCY_SEPARATOR                                          :{LTBLUE}Elválasztó: {ORANGE}{STRING}
-STR_CURRENCY_SET_CUSTOM_CURRENCY_SEPARATOR_TOOLTIP              :{BLACK}Elválasztó beállítása a pénznemedhez
-
 STR_CURRENCY_PREFIX                                             :{LTBLUE}Előtag: {ORANGE}{STRING}
 STR_CURRENCY_SET_CUSTOM_CURRENCY_PREFIX_TOOLTIP                 :{BLACK}Előtag beállítása a pénznemedhez
 STR_CURRENCY_SUFFIX                                             :{LTBLUE}Utótag: {ORANGE}{STRING}

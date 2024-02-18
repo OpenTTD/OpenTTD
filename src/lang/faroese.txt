@@ -914,9 +914,6 @@ STR_CURRENCY_DECREASE_EXCHANGE_RATE_TOOLTIP                     :{BLACK}Minka um
 STR_CURRENCY_INCREASE_EXCHANGE_RATE_TOOLTIP                     :{BLACK}Vaks um hvussu nógv av tínum gjaldoyra skal til fyri at keypa eitt pund (£)
 STR_CURRENCY_SET_EXCHANGE_RATE_TOOLTIP                          :{BLACK}Set gjaldsoyra kursin av tínum gjaldsoyra fyri eitt pund (£)
 
-STR_CURRENCY_SEPARATOR                                          :{LTBLUE}Separator: {ORANGE}{STRING}
-STR_CURRENCY_SET_CUSTOM_CURRENCY_SEPARATOR_TOOLTIP              :{BLACK}Set separatorin fyri títt gjaldsoyra
-
 STR_CURRENCY_PREFIX                                             :{LTBLUE}Prefiks: {ORANGE}{STRING}
 STR_CURRENCY_SET_CUSTOM_CURRENCY_PREFIX_TOOLTIP                 :{BLACK}Set prefiksi fyri títt gjaldsoyra
 STR_CURRENCY_SUFFIX                                             :{LTBLUE}Suffiks: {ORANGE}{STRING}

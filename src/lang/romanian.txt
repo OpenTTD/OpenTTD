@@ -1117,9 +1117,6 @@ STR_CURRENCY_DECREASE_EXCHANGE_RATE_TOOLTIP                     :{BLACK}Scade va
 STR_CURRENCY_INCREASE_EXCHANGE_RATE_TOOLTIP                     :{BLACK}Mărește valoarea monedei tale pentru o liră sterlină (£)
 STR_CURRENCY_SET_EXCHANGE_RATE_TOOLTIP                          :{BLACK}Setează rata de schimb pentru o liră sterlină (£)
 
-STR_CURRENCY_SEPARATOR                                          :{LTBLUE}Separator: {ORANGE}{STRING}
-STR_CURRENCY_SET_CUSTOM_CURRENCY_SEPARATOR_TOOLTIP              :{BLACK}Caracterul separator pentru monedă
-
 STR_CURRENCY_PREFIX                                             :{LTBLUE}Prefix: {ORANGE}{STRING}
 STR_CURRENCY_SET_CUSTOM_CURRENCY_PREFIX_TOOLTIP                 :{BLACK}Setează prefixul monedei
 STR_CURRENCY_SUFFIX                                             :{LTBLUE}Sufix: {ORANGE}{STRING}

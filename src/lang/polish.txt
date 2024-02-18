@@ -1497,9 +1497,6 @@ STR_CURRENCY_DECREASE_EXCHANGE_RATE_TOOLTIP                     :{BLACK}Zmniejsz
 STR_CURRENCY_INCREASE_EXCHANGE_RATE_TOOLTIP                     :{BLACK}Zwiększ kurs wymiany za jednego funta (£)
 STR_CURRENCY_SET_EXCHANGE_RATE_TOOLTIP                          :{BLACK}Ustal kurs wymiany za jednego funta (£)
 
-STR_CURRENCY_SEPARATOR                                          :{LTBLUE}Separator: {ORANGE}{STRING}
-STR_CURRENCY_SET_CUSTOM_CURRENCY_SEPARATOR_TOOLTIP              :{BLACK}Ustaw znak oddzielający w twojej walucie
-
 STR_CURRENCY_PREFIX                                             :{LTBLUE}Prefiks: {ORANGE}{STRING}
 STR_CURRENCY_SET_CUSTOM_CURRENCY_PREFIX_TOOLTIP                 :{BLACK}Ustaw przedrostek dla swojej waluty
 STR_CURRENCY_SUFFIX                                             :{LTBLUE}Sufiks: {ORANGE}{STRING}

@@ -1118,9 +1118,6 @@ STR_CURRENCY_DECREASE_EXCHANGE_RATE_TOOLTIP                     :{BLACK}Disminue
 STR_CURRENCY_INCREASE_EXCHANGE_RATE_TOOLTIP                     :{BLACK}Augmenta la quantitat de moneda per cada lliura (£)
 STR_CURRENCY_SET_EXCHANGE_RATE_TOOLTIP                          :{BLACK}Estableix el tipus de canvi de la moneda per cada Lliura (£)
 
-STR_CURRENCY_SEPARATOR                                          :{LTBLUE}Separador: {ORANGE}{STRING}
-STR_CURRENCY_SET_CUSTOM_CURRENCY_SEPARATOR_TOOLTIP              :{BLACK}Estableix el separador per la moneda
-
 STR_CURRENCY_PREFIX                                             :{LTBLUE}Prefix: {ORANGE}{STRING}
 STR_CURRENCY_SET_CUSTOM_CURRENCY_PREFIX_TOOLTIP                 :{BLACK}Estableix el prefix de text per a la moneda
 STR_CURRENCY_SUFFIX                                             :{LTBLUE}Sufix: {ORANGE}{STRING}

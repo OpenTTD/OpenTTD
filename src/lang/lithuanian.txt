@@ -1208,9 +1208,6 @@ STR_CURRENCY_DECREASE_EXCHANGE_RATE_TOOLTIP                     :{BLACK}Sumažin
 STR_CURRENCY_INCREASE_EXCHANGE_RATE_TOOLTIP                     :{BLACK}Padidinti valiutos kiekį vienu svaru (£)
 STR_CURRENCY_SET_EXCHANGE_RATE_TOOLTIP                          :{BLACK}Nustatyti valiutos keitimo kursą vienam svarui (£)
 
-STR_CURRENCY_SEPARATOR                                          :{LTBLUE}Skyriklis: {ORANGE}{STRING}
-STR_CURRENCY_SET_CUSTOM_CURRENCY_SEPARATOR_TOOLTIP              :{BLACK}Nustatyti daliklį jūsų valiutai
-
 STR_CURRENCY_PREFIX                                             :{LTBLUE}Priešdėlis: {ORANGE}{STRING}
 STR_CURRENCY_SET_CUSTOM_CURRENCY_PREFIX_TOOLTIP                 :{BLACK}Nustatyti prefiksą valiutai
 STR_CURRENCY_SUFFIX                                             :{LTBLUE}Pavadinimas: {ORANGE}{STRING}

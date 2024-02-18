@@ -1262,9 +1262,6 @@ STR_CURRENCY_DECREASE_EXCHANGE_RATE_TOOLTIP                     :{BLACK}Повы
 STR_CURRENCY_INCREASE_EXCHANGE_RATE_TOOLTIP                     :{BLACK}Снизить курс вашей валюты по отношению к фунту (£)
 STR_CURRENCY_SET_EXCHANGE_RATE_TOOLTIP                          :{BLACK}Установить курс вашей валюты по отношению к фунту (£)
 
-STR_CURRENCY_SEPARATOR                                          :{LTBLUE}Разделитель: {ORANGE}{STRING}
-STR_CURRENCY_SET_CUSTOM_CURRENCY_SEPARATOR_TOOLTIP              :{BLACK}Установить разделитель тысяч
-
 STR_CURRENCY_PREFIX                                             :{LTBLUE}Префикс: {ORANGE}{STRING}
 STR_CURRENCY_SET_CUSTOM_CURRENCY_PREFIX_TOOLTIP                 :{BLACK}Установить префикс вашей валюты
 STR_CURRENCY_SUFFIX                                             :{LTBLUE}Суффикс: {ORANGE}{STRING}
@@ -4965,9 +4962,9 @@ STR_AI_DEBUG_MATCH_CASE                                         :{BLACK}Реги
 STR_AI_DEBUG_MATCH_CASE_TOOLTIP                                 :{BLACK}Переключить проверку регистра при сравнении строк
 STR_AI_DEBUG_CONTINUE                                           :{BLACK}Продолжить
 STR_AI_DEBUG_CONTINUE_TOOLTIP                                   :{BLACK}Продолжить игру
-STR_AI_DEBUG_SELECT_AI_TOOLTIP                                  :{BLACK}Просмотрите выходные данные отладки этого AI. Ctrl-щелчок, чтобы открыть в новом окне
+STR_AI_DEBUG_SELECT_AI_TOOLTIP                                  :{BLACK}Просмотр диагностической информации этого модуля ИИ. Ctrl+щелчок откроет в новом окне.
 STR_AI_GAME_SCRIPT                                              :{BLACK}Игровой скрипт
-STR_AI_GAME_SCRIPT_TOOLTIP                                      :{BLACK}Проверьте журнал игровых сценариев. Ctrl-щелчок, чтобы открыть в новом окне
+STR_AI_GAME_SCRIPT_TOOLTIP                                      :{BLACK}Просмотр журнала игрового сценария. Ctrl+щелчок откроет в новом окне.
 
 STR_ERROR_AI_NO_AI_FOUND                                        :Не найдено подходящих модулей ИИ, поэтому конкуренты ничего делать не будут.{}Вы можете скачать модули ИИ через систему онлайн-контента.
 STR_ERROR_AI_PLEASE_REPORT_CRASH                                :{WHITE}Один из запущенных ИИ / скриптов завершил свою работу аварийно. Пожалуйста, сообщите об этом автору скрипта, приложив снимок окна отладки.

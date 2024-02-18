@@ -1117,9 +1117,6 @@ STR_CURRENCY_DECREASE_EXCHANGE_RATE_TOOLTIP                     :{BLACK}Znížen
 STR_CURRENCY_INCREASE_EXCHANGE_RATE_TOOLTIP                     :{BLACK}Zvýšenie hodnoty vašej meny oproti jednej libre (£)
 STR_CURRENCY_SET_EXCHANGE_RATE_TOOLTIP                          :{BLACK}Nastaviť kurz pre vašu menu oproti libre (£)
 
-STR_CURRENCY_SEPARATOR                                          :{LTBLUE}Oddeľovač: {ORANGE}{STRING}
-STR_CURRENCY_SET_CUSTOM_CURRENCY_SEPARATOR_TOOLTIP              :{BLACK}Nastaviť oddeľovač meny
-
 STR_CURRENCY_PREFIX                                             :{LTBLUE}Predpona: {ORANGE}{STRING}
 STR_CURRENCY_SET_CUSTOM_CURRENCY_PREFIX_TOOLTIP                 :{BLACK}Nastavit prefix pre vašu menu
 STR_CURRENCY_SUFFIX                                             :{LTBLUE}Prípona: {ORANGE}{STRING}

@@ -1148,9 +1148,6 @@ STR_CURRENCY_DECREASE_EXCHANGE_RATE_TOOLTIP                     :{BLACK}Lùghdai
 STR_CURRENCY_INCREASE_EXCHANGE_RATE_TOOLTIP                     :{BLACK}Meudaich meud an airgeadra agad airson not (£)
 STR_CURRENCY_SET_EXCHANGE_RATE_TOOLTIP                          :{BLACK}Suidhich luach-iomlaid an airgeadra agad airson not (£)
 
-STR_CURRENCY_SEPARATOR                                          :{LTBLUE}Sgaradair: {ORANGE}{STRING}
-STR_CURRENCY_SET_CUSTOM_CURRENCY_SEPARATOR_TOOLTIP              :{BLACK}Suidhich sgaradair an airgeadra agad
-
 STR_CURRENCY_PREFIX                                             :{LTBLUE}Ro-leasachan: {ORANGE}{STRING}
 STR_CURRENCY_SET_CUSTOM_CURRENCY_PREFIX_TOOLTIP                 :{BLACK}Suidhich sreang ro-leasachain an airgeadra agad
 STR_CURRENCY_SUFFIX                                             :{LTBLUE}Iar-leasachan: {ORANGE}{STRING}

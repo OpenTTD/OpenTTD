@@ -1114,9 +1114,6 @@ STR_CURRENCY_DECREASE_EXCHANGE_RATE_TOOLTIP                     :{BLACK}Reducer 
 STR_CURRENCY_INCREASE_EXCHANGE_RATE_TOOLTIP                     :{BLACK}Forøg beløb i din valuta for et pund (£)
 STR_CURRENCY_SET_EXCHANGE_RATE_TOOLTIP                          :{BLACK}Sæt vekselkursen i din valuta for et pund (£)
 
-STR_CURRENCY_SEPARATOR                                          :{LTBLUE}Tilskuer: {ORANGE}{STRING}
-STR_CURRENCY_SET_CUSTOM_CURRENCY_SEPARATOR_TOOLTIP              :{BLACK}Sæt separatortegn for din valuta
-
 STR_CURRENCY_PREFIX                                             :{LTBLUE}Præfiks: {ORANGE}{STRING}
 STR_CURRENCY_SET_CUSTOM_CURRENCY_PREFIX_TOOLTIP                 :{BLACK}Sæt præfiks-streng for din valuta
 STR_CURRENCY_SUFFIX                                             :{LTBLUE}Endetillæg: {ORANGE}{STRING}

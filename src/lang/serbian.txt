@@ -1220,9 +1220,6 @@ STR_CURRENCY_DECREASE_EXCHANGE_RATE_TOOLTIP                     :{BLACK}Smanji v
 STR_CURRENCY_INCREASE_EXCHANGE_RATE_TOOLTIP                     :{BLACK}Povećaj vrednost svoje valute u odnosu na jednu funtu (£)
 STR_CURRENCY_SET_EXCHANGE_RATE_TOOLTIP                          :{BLACK}Postavi vrednost svoje valute u odnosu na jednu funtu (£)
 
-STR_CURRENCY_SEPARATOR                                          :{LTBLUE}Razdelnik: {ORANGE}{STRING}
-STR_CURRENCY_SET_CUSTOM_CURRENCY_SEPARATOR_TOOLTIP              :{BLACK}Postavi razdelnik za svoju valutu
-
 STR_CURRENCY_PREFIX                                             :{LTBLUE}Prefiks: {ORANGE}{STRING}
 STR_CURRENCY_SET_CUSTOM_CURRENCY_PREFIX_TOOLTIP                 :{BLACK}Postavi prefiks za svoju valutu
 STR_CURRENCY_SUFFIX                                             :{LTBLUE}Sufiks: {ORANGE}{STRING}

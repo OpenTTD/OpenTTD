@@ -1118,9 +1118,6 @@ STR_CURRENCY_DECREASE_EXCHANGE_RATE_TOOLTIP                     :{BLACK}Eigene W
 STR_CURRENCY_INCREASE_EXCHANGE_RATE_TOOLTIP                     :{BLACK}Eigene Währung gegenüber dem Pfund (£) verbilligen
 STR_CURRENCY_SET_EXCHANGE_RATE_TOOLTIP                          :{BLACK}Umrechnungskurs der eigenen Währung gegenüber dem Pfund (£) festlegen
 
-STR_CURRENCY_SEPARATOR                                          :{LTBLUE}Trennsymbol: {ORANGE}{STRING}
-STR_CURRENCY_SET_CUSTOM_CURRENCY_SEPARATOR_TOOLTIP              :{BLACK}Das Tausender-Trennzeichen für die eigene Währung festlegen
-
 STR_CURRENCY_PREFIX                                             :{LTBLUE}Präfix: {ORANGE}{STRING}
 STR_CURRENCY_SET_CUSTOM_CURRENCY_PREFIX_TOOLTIP                 :{BLACK}Das Zeichen für die eigene Währung festlegen (Prefix)
 STR_CURRENCY_SUFFIX                                             :{LTBLUE}Suffix: {ORANGE}{STRING}

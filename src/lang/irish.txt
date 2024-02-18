@@ -990,9 +990,6 @@ STR_CURRENCY_DECREASE_EXCHANGE_RATE_TOOLTIP                     :{BLACK}Laghdaig
 STR_CURRENCY_INCREASE_EXCHANGE_RATE_TOOLTIP                     :{BLACK}Méadaigh méid d'airgeadra ar Euro (€) amháin
 STR_CURRENCY_SET_EXCHANGE_RATE_TOOLTIP                          :{BLACK}Socraigh ráta malairte d'airgeadra ar Euro (€) amháin
 
-STR_CURRENCY_SEPARATOR                                          :{LTBLUE}Deighilteoir: {ORANGE}{STRING}
-STR_CURRENCY_SET_CUSTOM_CURRENCY_SEPARATOR_TOOLTIP              :{BLACK}Socraigh an deighilteoir dod' airgeadra
-
 STR_CURRENCY_PREFIX                                             :{LTBLUE}Réimír: {ORANGE}{STRING}
 STR_CURRENCY_SET_CUSTOM_CURRENCY_PREFIX_TOOLTIP                 :{BLACK}Socraigh an teaghrán réimíre dod' airgeadra
 STR_CURRENCY_SUFFIX                                             :{LTBLUE}Iarmhír: {ORANGE}{STRING}

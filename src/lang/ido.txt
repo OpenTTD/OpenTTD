@@ -498,7 +498,6 @@ STR_GAME_OPTIONS_RESOLUTION_OTHER                               :altra
 
 
 
-
 STR_NUM_LOW                                                     :Basa
 STR_NUM_NORMAL                                                  :Normala
 STR_NUM_HIGH                                                    :Alta

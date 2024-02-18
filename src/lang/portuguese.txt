@@ -1118,9 +1118,6 @@ STR_CURRENCY_DECREASE_EXCHANGE_RATE_TOOLTIP                     :{BLACK}Diminuir
 STR_CURRENCY_INCREASE_EXCHANGE_RATE_TOOLTIP                     :{BLACK}Aumentar a quantidade da sua moeda para uma Libra (£)
 STR_CURRENCY_SET_EXCHANGE_RATE_TOOLTIP                          :{BLACK}Definir a taxa de câmbio da sua moeda para uma Libra (£)
 
-STR_CURRENCY_SEPARATOR                                          :{LTBLUE}Separador: {ORANGE}{STRING}
-STR_CURRENCY_SET_CUSTOM_CURRENCY_SEPARATOR_TOOLTIP              :{BLACK}Definir o separador para a sua moeda
-
 STR_CURRENCY_PREFIX                                             :{LTBLUE}Prefixo: {ORANGE}{STRING}
 STR_CURRENCY_SET_CUSTOM_CURRENCY_PREFIX_TOOLTIP                 :{BLACK}Definir o prefixo para a sua moeda
 STR_CURRENCY_SUFFIX                                             :{LTBLUE}Sufixo: {ORANGE}{STRING}
@@ -4781,7 +4778,7 @@ STR_AI_DEBUG_CONTINUE                                           :{BLACK}Continua
 STR_AI_DEBUG_CONTINUE_TOOLTIP                                   :{BLACK}Sair da pausa e continuar a IA
 STR_AI_DEBUG_SELECT_AI_TOOLTIP                                  :{BLACK}Ver saída de depuração desta IA. Ctrl+Clique para abrir numa nova janela
 STR_AI_GAME_SCRIPT                                              :{BLACK}Script de jogo
-STR_AI_GAME_SCRIPT_TOOLTIP                                      :{BLACK}Verifique o registo do Script de jogo. Ctrl+Clique para abrir numa nova janela
+STR_AI_GAME_SCRIPT_TOOLTIP                                      :{BLACK}Verifique o registo do Script de Jogo. Ctrl+Clique para abrir numa nova janela
 
 STR_ERROR_AI_NO_AI_FOUND                                        :Não foi encontrada IA adequada para carregar.{}Esta IA é um pacote vazio e não fará nada.{}Pode descarregar várias IA através do sistema 'Conteúdo Online'
 STR_ERROR_AI_PLEASE_REPORT_CRASH                                :{WHITE}Houve um erro num script. Por favor reporte isto ao autor do script com uma imagem da janela Depuramento de IA/Scripts de Jogo.

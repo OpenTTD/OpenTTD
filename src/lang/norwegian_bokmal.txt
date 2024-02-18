@@ -998,9 +998,6 @@ STR_CURRENCY_DECREASE_EXCHANGE_RATE_TOOLTIP                     :{BLACK}Reduser 
 STR_CURRENCY_INCREASE_EXCHANGE_RATE_TOOLTIP                     :{BLACK}Øk valutaen din i forhold til ett pund (£)
 STR_CURRENCY_SET_EXCHANGE_RATE_TOOLTIP                          :{BLACK}Still inn valutakursen din i forhold til ett pund (£)
 
-STR_CURRENCY_SEPARATOR                                          :{LTBLUE}Skilletegn: {ORANGE}{STRING}
-STR_CURRENCY_SET_CUSTOM_CURRENCY_SEPARATOR_TOOLTIP              :{BLACK}Velg desimalskilletegn for din valuta
-
 STR_CURRENCY_PREFIX                                             :{LTBLUE}Prefiks: {ORANGE}{STRING}
 STR_CURRENCY_SET_CUSTOM_CURRENCY_PREFIX_TOOLTIP                 :{BLACK}Velg prefiks for din valuta
 STR_CURRENCY_SUFFIX                                             :{LTBLUE}Suffiks: {ORANGE}{STRING}

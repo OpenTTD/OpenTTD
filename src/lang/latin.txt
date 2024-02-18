@@ -1140,9 +1140,6 @@ STR_CURRENCY_DECREASE_EXCHANGE_RATE_TOOLTIP                     :{BLACK}Minuere 
 STR_CURRENCY_INCREASE_EXCHANGE_RATE_TOOLTIP                     :{BLACK}Augere copiam nummi tui quae aequa est uni Librae Brittanicae (£)
 STR_CURRENCY_SET_EXCHANGE_RATE_TOOLTIP                          :{BLACK}Eligere collybum nummi tui
 
-STR_CURRENCY_SEPARATOR                                          :{LTBLUE}Symbolum separans: {ORANGE}{STRING}
-STR_CURRENCY_SET_CUSTOM_CURRENCY_SEPARATOR_TOOLTIP              :{BLACK}Eligere symbolum separans nummi tui
-
 STR_CURRENCY_PREFIX                                             :{LTBLUE}Praefixum: {ORANGE}{STRING}
 STR_CURRENCY_SET_CUSTOM_CURRENCY_PREFIX_TOOLTIP                 :{BLACK}Eligere praefixum nummi tui
 STR_CURRENCY_SUFFIX                                             :{LTBLUE}Suffixum: {ORANGE}{STRING}

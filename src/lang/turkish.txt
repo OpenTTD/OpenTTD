@@ -1118,9 +1118,6 @@ STR_CURRENCY_DECREASE_EXCHANGE_RATE_TOOLTIP                     :{BLACK}Bir Ster
 STR_CURRENCY_INCREASE_EXCHANGE_RATE_TOOLTIP                     :{BLACK}Bir Sterlin'e (£) karşılık gelen para biriminizi arttırın
 STR_CURRENCY_SET_EXCHANGE_RATE_TOOLTIP                          :{BLACK}Bir Sterlin'e (£) karşılık gelen para biriminizi belirleyin
 
-STR_CURRENCY_SEPARATOR                                          :{LTBLUE}Ayraç: {ORANGE}{STRING}
-STR_CURRENCY_SET_CUSTOM_CURRENCY_SEPARATOR_TOOLTIP              :{BLACK}Para biriminiz için ondalık ayıracı belirleyin
-
 STR_CURRENCY_PREFIX                                             :{LTBLUE}Ön ek: {ORANGE}{STRING}
 STR_CURRENCY_SET_CUSTOM_CURRENCY_PREFIX_TOOLTIP                 :{BLACK}Para biriminiz için ön ek belirleyin
 STR_CURRENCY_SUFFIX                                             :{LTBLUE}Son ek: {ORANGE}{STRING}

@@ -976,9 +976,6 @@ STR_CURRENCY_DECREASE_EXCHANGE_RATE_TOOLTIP                     :{BLACK} הקט�
 STR_CURRENCY_INCREASE_EXCHANGE_RATE_TOOLTIP                     :{BLACK}הגדל את ערך המטבע שלך עבור פאונד (£) אחד
 STR_CURRENCY_SET_EXCHANGE_RATE_TOOLTIP                          :{BLACK}קבע את שער החליפין של המטבע שלך עם פאונד (£) אחד
 
-STR_CURRENCY_SEPARATOR                                          :{LTBLUE}תו מפריד: {ORANGE}{STRING}
-STR_CURRENCY_SET_CUSTOM_CURRENCY_SEPARATOR_TOOLTIP              :{BLACK}קבע תו מפריד עבור סוג המטבע שלך
-
 STR_CURRENCY_PREFIX                                             :{LTBLUE}תחילית: {ORANGE}{STRING}
 STR_CURRENCY_SET_CUSTOM_CURRENCY_PREFIX_TOOLTIP                 :{BLACK}קבע את המחרוזת התחילית עבור המטבע שלך
 STR_CURRENCY_SUFFIX                                             :{LTBLUE}סופית: {ORANGE}{STRING}

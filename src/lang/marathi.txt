@@ -732,7 +732,6 @@ STR_GAME_OPTIONS_RESOLUTION_OTHER                               :अन्य
 
 
 
-
 ###length 5
 
 ###length 6

@@ -795,7 +795,6 @@ STR_GAME_OPTIONS_CAPTION                                        :{WHITE}Опци
 
 
 
-
 STR_NUM_CUSTOM_NUMBER                                           :Прилагодено ({NUM})
 
 

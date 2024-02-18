@@ -1118,9 +1118,6 @@ STR_CURRENCY_DECREASE_EXCHANGE_RATE_TOOLTIP                     :{BLACK}(1 파�
 STR_CURRENCY_INCREASE_EXCHANGE_RATE_TOOLTIP                     :{BLACK}(1 파운드(£)에 대한) 사용자 화폐 단위 양을 증가시킵니다
 STR_CURRENCY_SET_EXCHANGE_RATE_TOOLTIP                          :{BLACK}1 파운드(£)에 해당하는 사용자 화폐 단위의 환율을 설정하십시오
 
-STR_CURRENCY_SEPARATOR                                          :{LTBLUE}단위 구분: {ORANGE}{STRING}
-STR_CURRENCY_SET_CUSTOM_CURRENCY_SEPARATOR_TOOLTIP              :{BLACK}사용자 화폐 단위의 단위 구분자를 설정하십시오
-
 STR_CURRENCY_PREFIX                                             :{LTBLUE}접두어: {ORANGE}{STRING}
 STR_CURRENCY_SET_CUSTOM_CURRENCY_PREFIX_TOOLTIP                 :{BLACK}사용자 화폐 단위 앞에 붙는 문구를 설정하십시오
 STR_CURRENCY_SUFFIX                                             :{LTBLUE}접미어: {ORANGE}{STRING}
@@ -1689,8 +1686,8 @@ STR_CONFIG_SETTING_USE_RELAY_SERVICE_ALLOW                      :사용
 STR_CONFIG_SETTING_RIGHT_MOUSE_BTN_EMU                          :오른쪽 클릭 매크로: {STRING}
 STR_CONFIG_SETTING_RIGHT_MOUSE_BTN_EMU_HELPTEXT                 :오른쪽 마우스 버튼 클릭을 대신할 방법을 선택합니다.
 ###length 3
-STR_CONFIG_SETTING_RIGHT_MOUSE_BTN_EMU_COMMAND                  :커맨드 + 클릭
-STR_CONFIG_SETTING_RIGHT_MOUSE_BTN_EMU_CONTROL                  :CTRL + 클릭
+STR_CONFIG_SETTING_RIGHT_MOUSE_BTN_EMU_COMMAND                  :커맨드+클릭
+STR_CONFIG_SETTING_RIGHT_MOUSE_BTN_EMU_CONTROL                  :CTRL+클릭
 STR_CONFIG_SETTING_RIGHT_MOUSE_BTN_EMU_OFF                      :끄기
 
 STR_CONFIG_SETTING_RIGHT_MOUSE_WND_CLOSE                        :오른쪽 클릭으로 창 닫기: {STRING}
@@ -4779,9 +4776,9 @@ STR_AI_DEBUG_MATCH_CASE                                         :{BLACK}대소�
 STR_AI_DEBUG_MATCH_CASE_TOOLTIP                                 :{BLACK}인공지능 기록 메시지에서 중단 문구를 검색할 때 대소문자를 구분할지 여부를 선택합니다
 STR_AI_DEBUG_CONTINUE                                           :{BLACK}계속
 STR_AI_DEBUG_CONTINUE_TOOLTIP                                   :{BLACK}중단된 인공지능의 연산을 재개합니다
-STR_AI_DEBUG_SELECT_AI_TOOLTIP                                  :{BLACK}이 인공지능에서 출력된 기록 메시지를 보여줍니다. CTRL + 클릭하면 새 창으로 엽니다
+STR_AI_DEBUG_SELECT_AI_TOOLTIP                                  :{BLACK}이 인공지능에서 출력된 기록 메시지를 보여줍니다. CTRL+클릭하면 새 창으로 엽니다
 STR_AI_GAME_SCRIPT                                              :{BLACK}게임 스크립트
-STR_AI_GAME_SCRIPT_TOOLTIP                                      :{BLACK}게임 스크립트 기록을 확인합니다. CTRL + 클릭하면 새 창으로 엽니다
+STR_AI_GAME_SCRIPT_TOOLTIP                                      :{BLACK}게임 스크립트 기록을 확인합니다. CTRL+클릭하면 새 창으로 엽니다
 
 STR_ERROR_AI_NO_AI_FOUND                                        :사용할 수 있는 인공지능이 없습니다.{}따라서 이 경쟁사는 아무 것도 하지 못하는 회사입니다.{}'온라인 컨텐츠 다운로드'에서 새로운 인공지능을 다운로드받으세요
 STR_ERROR_AI_PLEASE_REPORT_CRASH                                :{WHITE}작동 중이던 스크립트 중 하나에서 오류가 발생하여 중단되었습니다. 인공지능/게임 스크립트 디버그 창에서 스크린샷을 찍어 스크립트 제작자에게 보고하십시오
@@ -4810,7 +4807,7 @@ STR_AI_CONFIG_AI                                                :{SILVER}인공�
 
 STR_AI_CONFIG_CHANGE_AI                                         :{BLACK}인공지능을 선택하세요
 STR_AI_CONFIG_CHANGE_GAMESCRIPT                                 :{BLACK}게임 스크립트 선택
-STR_AI_CONFIG_CHANGE_TOOLTIP                                    :{BLACK}다른 게임 스크립트를 불러옵니다. CTRL + 클릭하면 사용 가능한 모든 버전을 보여줍니다
+STR_AI_CONFIG_CHANGE_TOOLTIP                                    :{BLACK}다른 게임 스크립트를 불러옵니다. CTRL+클릭하면 사용 가능한 모든 버전을 보여줍니다
 STR_AI_CONFIG_CONFIGURE                                         :{BLACK}설정
 STR_AI_CONFIG_CONFIGURE_TOOLTIP                                 :{BLACK}인공지능의 매개 변수를 설정합니다
 

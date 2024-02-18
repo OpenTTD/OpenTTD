@@ -1118,9 +1118,6 @@ STR_CURRENCY_DECREASE_EXCHANGE_RATE_TOOLTIP                     :{BLACK}Disminu�
 STR_CURRENCY_INCREASE_EXCHANGE_RATE_TOOLTIP                     :{BLACK}Incrementa-la cantidade da túa moeda por unha Libra esterlina (£)
 STR_CURRENCY_SET_EXCHANGE_RATE_TOOLTIP                          :{G=n}{BLACK}Configura-lo cambio da túa moeda por unha Libra esterlina (£)
 
-STR_CURRENCY_SEPARATOR                                          :{LTBLUE}Separador: {ORANGE}{STRING}
-STR_CURRENCY_SET_CUSTOM_CURRENCY_SEPARATOR_TOOLTIP              :{BLACK}Configura-lo separador para a túa moeda
-
 STR_CURRENCY_PREFIX                                             :{LTBLUE}Prefixo: {ORANGE}{STRING}
 STR_CURRENCY_SET_CUSTOM_CURRENCY_PREFIX_TOOLTIP                 :{BLACK}Configura-lo prefixo para a túa moeda
 STR_CURRENCY_SUFFIX                                             :{LTBLUE}Sufixo: {ORANGE}{STRING}

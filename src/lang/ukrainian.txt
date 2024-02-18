@@ -1202,9 +1202,6 @@ STR_CURRENCY_DECREASE_EXCHANGE_RATE_TOOLTIP                     :{BLACK}Змен
 STR_CURRENCY_INCREASE_EXCHANGE_RATE_TOOLTIP                     :{BLACK}Збільшити кількість своєї валюти за 1 фунт (£)
 STR_CURRENCY_SET_EXCHANGE_RATE_TOOLTIP                          :{BLACK}Встановити обмінний курс своєї валюти до 1 фунта (£)
 
-STR_CURRENCY_SEPARATOR                                          :{LTBLUE}Роздільник: {ORANGE}{STRING}
-STR_CURRENCY_SET_CUSTOM_CURRENCY_SEPARATOR_TOOLTIP              :{BLACK}Встановити роздільник для своєї валюти
-
 STR_CURRENCY_PREFIX                                             :{LTBLUE}Префікс: {ORANGE}{STRING}
 STR_CURRENCY_SET_CUSTOM_CURRENCY_PREFIX_TOOLTIP                 :{BLACK}Встановити префікс для своєї валюти
 STR_CURRENCY_SUFFIX                                             :{LTBLUE}Суфікс: {ORANGE}{STRING}

@@ -1104,9 +1104,6 @@ STR_CURRENCY_DECREASE_EXCHANGE_RATE_TOOLTIP                     :{BLACK}Μείω
 STR_CURRENCY_INCREASE_EXCHANGE_RATE_TOOLTIP                     :{BLACK}Αυξήστε το ποσό της ισοτιμίας σας για μία Λίρα (£)
 STR_CURRENCY_SET_EXCHANGE_RATE_TOOLTIP                          :{BLACK}Ρυθμίστε τη συναλλαγματική ισοτιμία του νομίσματος για μια λίρα (£)
 
-STR_CURRENCY_SEPARATOR                                          :{LTBLUE}Διαχωριστικό: {ORANGE}{STRING}
-STR_CURRENCY_SET_CUSTOM_CURRENCY_SEPARATOR_TOOLTIP              :{BLACK}Ορίστε το διαχωριστικό για το νόμισμά σας
-
 STR_CURRENCY_PREFIX                                             :{LTBLUE}Πρόθεμα: {ORANGE}{STRING}
 STR_CURRENCY_SET_CUSTOM_CURRENCY_PREFIX_TOOLTIP                 :{BLACK}Ορίστε το πρόθεμα για το νόμισμά σας
 STR_CURRENCY_SUFFIX                                             :{LTBLUE}Επίθεμα: {ORANGE}{STRING}

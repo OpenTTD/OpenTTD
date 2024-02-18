@@ -1117,9 +1117,6 @@ STR_CURRENCY_DECREASE_EXCHANGE_RATE_TOOLTIP                     :{BLACK}Giảm t
 STR_CURRENCY_INCREASE_EXCHANGE_RATE_TOOLTIP                     :{BLACK}Tăng tỉ giá tiền của bạn đối với 1 Pound (£)
 STR_CURRENCY_SET_EXCHANGE_RATE_TOOLTIP                          :{BLACK}Điều chỉnh tỉ giá tiền của bạn đối với 1 Pound (£)
 
-STR_CURRENCY_SEPARATOR                                          :{LTBLUE}Ký tự cách: {ORANGE}{STRING}
-STR_CURRENCY_SET_CUSTOM_CURRENCY_SEPARATOR_TOOLTIP              :{BLACK}Chọn ký tự cách cho tiền tệ của bạn
-
 STR_CURRENCY_PREFIX                                             :{LTBLUE}Tiền tố: {ORANGE}{STRING}
 STR_CURRENCY_SET_CUSTOM_CURRENCY_PREFIX_TOOLTIP                 :{BLACK}Chỉnh tiếp đầu ngữ cho tiền tệ của bạn
 STR_CURRENCY_SUFFIX                                             :{LTBLUE}Hậu tố: {ORANGE}{STRING}

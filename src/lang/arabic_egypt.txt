@@ -1002,9 +1002,6 @@ STR_CURRENCY_DECREASE_EXCHANGE_RATE_TOOLTIP                     :{BLACK} £ قل
 STR_CURRENCY_INCREASE_EXCHANGE_RATE_TOOLTIP                     :{BLACK} £ زد قيمة عملتك لكل جنية استرليني
 STR_CURRENCY_SET_EXCHANGE_RATE_TOOLTIP                          :{BLACK} حدد قيمة الصرف لعملتك مقابل الجنية الاسترليني (£)
 
-STR_CURRENCY_SEPARATOR                                          :{LTBLUE} فاصل العملة: {ORANGE}{STRING}
-STR_CURRENCY_SET_CUSTOM_CURRENCY_SEPARATOR_TOOLTIP              :{BLACK} حدد الفاصل لعملتك
-
 STR_CURRENCY_PREFIX                                             :{LTBLUE} علامة العملة السابقة: {ORANGE}{STRING}
 STR_CURRENCY_SET_CUSTOM_CURRENCY_PREFIX_TOOLTIP                 :{BLACK} حدد الرمز الاستهلالي لعملتك
 STR_CURRENCY_SUFFIX                                             :{LTBLUE} علامة العملة الاخيرة: {ORANGE}{STRING}

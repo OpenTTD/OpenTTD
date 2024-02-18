@@ -496,7 +496,6 @@ STR_GAME_OPTIONS_RESOLUTION_OTHER                               :расна
 # Custom currency window
 
 
-
 STR_CURRENCY_PREFIX                                             :{LTBLUE}Префикс: {ORANGE}{STRING}
 STR_CURRENCY_SUFFIX                                             :{LTBLUE}Суффикс: {ORANGE}{STRING}
 

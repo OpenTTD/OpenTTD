@@ -1204,9 +1204,6 @@ STR_CURRENCY_DECREASE_EXCHANGE_RATE_TOOLTIP                     :{BLACK}Snížit
 STR_CURRENCY_INCREASE_EXCHANGE_RATE_TOOLTIP                     :{BLACK}Zvýšit hodnotu vlastní měny oproti libře (£)
 STR_CURRENCY_SET_EXCHANGE_RATE_TOOLTIP                          :{BLACK}Určit směnný kurz vlastní měny oproti libře (£)
 
-STR_CURRENCY_SEPARATOR                                          :{LTBLUE}Oddělovač: {ORANGE}{STRING}
-STR_CURRENCY_SET_CUSTOM_CURRENCY_SEPARATOR_TOOLTIP              :{BLACK}Určit oddělovač v zápisu měny
-
 STR_CURRENCY_PREFIX                                             :{LTBLUE}Předpona: {ORANGE}{STRING}
 STR_CURRENCY_SET_CUSTOM_CURRENCY_PREFIX_TOOLTIP                 :{BLACK}Určit předponu pro vlastní měnu
 STR_CURRENCY_SUFFIX                                             :{LTBLUE}Přípona: {ORANGE}{STRING}
