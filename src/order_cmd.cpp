@@ -824,10 +824,11 @@ CommandCost CmdInsertOrder(DoCommandFlag flags, VehicleID veh, VehicleOrderID se
 			if ((new_order.GetDepotOrderType() & ODTFB_SERVICE) && (new_order.GetDepotActionType() & (ODATFB_HALT | ODATFB_UNBUNCH))) return CMD_ERROR;
 
 			/* Check if we're allowed to have a new unbunching order. */
-			if ((new_order.GetDepotActionType() & ODATFB_UNBUNCH)) {
-				if (v->HasFullLoadOrder()) return CommandCost(STR_ERROR_CAN_T_ADD_ORDER, STR_ERROR_UNBUNCHING_NO_UNBUNCHING_FULL_LOAD);
-				if (v->HasUnbunchingOrder()) return CommandCost(STR_ERROR_CAN_T_ADD_ORDER, STR_ERROR_UNBUNCHING_ONLY_ONE_ALLOWED);
-				if (v->HasConditionalOrder()) return CommandCost(STR_ERROR_CAN_T_ADD_ORDER, STR_ERROR_UNBUNCHING_NO_UNBUNCHING_CONDITIONAL);
+			if ((new_order.GetDepotOrderType() & ODTFB_PART_OF_ORDERS) && (new_order.GetDepotActionType() & ODATFB_UNBUNCH)) {
+				if (new_order.GetDepotActionType() & ODATFB_HALT) return CMD_ERROR;
+				if (v->HasFullLoadOrder()) return_cmd_error(STR_ERROR_UNBUNCHING_NO_UNBUNCHING_FULL_LOAD);
+				if (v->HasUnbunchingOrder()) return_cmd_error(STR_ERROR_UNBUNCHING_ONLY_ONE_ALLOWED);
+				if (v->HasConditionalOrder()) return_cmd_error(STR_ERROR_UNBUNCHING_NO_UNBUNCHING_CONDITIONAL);
 			}
 			break;
 		}
