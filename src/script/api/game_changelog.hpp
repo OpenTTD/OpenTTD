@@ -31,6 +31,12 @@
  * \li GSBaseStation::GetOwner
  * \li GSError::ERR_BRIDGE_TOO_LOW
  * \li GSEngine::GetAllRailTypes
+ * \li GSOrder::OF_UNBUNCH_IN_DEPOT
+ * \li GSOrder::ERR_ORDER_ONLY_ONE_UNBUNCH_ALLOWED
+ * \li GSOrder::ERR_ORDER_NO_FULL_LOAD_WITH_UNBUNCH
+ * \li GSOrder::ERR_ORDER_NO_UNBUNCH_WITH_FULL_LOAD
+ * \li GSOrder::ERR_ORDER_NO_CONDITIONAL_WITH_UNBUNCH
+ * \li GSOrder::ERR_ORDER_NO_UNBUNCH_WITH_CONDITIONAL
  *
  * Other changes:
  * \li GSBridge::GetBridgeID renamed to GSBridge::GetBridgeType
