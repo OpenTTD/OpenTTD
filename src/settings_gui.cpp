@@ -2989,7 +2989,6 @@ struct CustomCurrencyWindow : Window {
 	{
 		switch (widget) {
 			case WID_CC_RATE:      SetDParam(0, 1); SetDParam(1, 1);            break;
-			case WID_CC_SEPARATOR: SetDParamStr(0, _custom_currency.separator); break;
 			case WID_CC_PREFIX:    SetDParamStr(0, _custom_currency.prefix);    break;
 			case WID_CC_SUFFIX:    SetDParamStr(0, _custom_currency.suffix);    break;
 			case WID_CC_YEAR:
@@ -3015,7 +3014,6 @@ struct CustomCurrencyWindow : Window {
 				break;
 
 			/* Set the appropriate width for the edit buttons. */
-			case WID_CC_SEPARATOR_EDIT:
 			case WID_CC_PREFIX_EDIT:
 			case WID_CC_SUFFIX_EDIT:
 				*size = maxdim(*size, {(uint)SETTING_BUTTON_WIDTH, (uint)SETTING_BUTTON_HEIGHT});
@@ -3056,14 +3054,6 @@ struct CustomCurrencyWindow : Window {
 				len = 5;
 				line = WID_CC_RATE;
 				afilter = CS_NUMERAL;
-				break;
-
-			case WID_CC_SEPARATOR_EDIT:
-			case WID_CC_SEPARATOR:
-				SetDParamStr(0, _custom_currency.separator);
-				str = STR_JUST_RAW_STRING;
-				len = 7;
-				line = WID_CC_SEPARATOR;
 				break;
 
 			case WID_CC_PREFIX_EDIT:
@@ -3121,10 +3111,6 @@ struct CustomCurrencyWindow : Window {
 				_custom_currency.rate = Clamp(atoi(str), 1, UINT16_MAX);
 				break;
 
-			case WID_CC_SEPARATOR: // Thousands separator
-				_custom_currency.separator = str;
-				break;
-
 			case WID_CC_PREFIX:
 				_custom_currency.prefix = str;
 				break;
@@ -3164,10 +3150,6 @@ static constexpr NWidgetPart _nested_cust_currency_widgets[] = {
 						NWidget(WWT_PUSHARROWBTN, COLOUR_YELLOW, WID_CC_RATE_UP), SetDataTip(AWV_INCREASE, STR_CURRENCY_INCREASE_EXCHANGE_RATE_TOOLTIP),
 					EndContainer(),
 					NWidget(WWT_TEXT, COLOUR_BLUE, WID_CC_RATE), SetDataTip(STR_CURRENCY_EXCHANGE_RATE, STR_CURRENCY_SET_EXCHANGE_RATE_TOOLTIP), SetFill(1, 0),
-				EndContainer(),
-				NWidget(NWID_HORIZONTAL), SetPIP(0, WidgetDimensions::unscaled.hsep_wide, 0),
-					NWidget(WWT_PUSHBTN, COLOUR_DARK_BLUE, WID_CC_SEPARATOR_EDIT), SetDataTip(0x0, STR_CURRENCY_SET_CUSTOM_CURRENCY_SEPARATOR_TOOLTIP), SetFill(0, 1),
-					NWidget(WWT_TEXT, COLOUR_BLUE, WID_CC_SEPARATOR), SetDataTip(STR_CURRENCY_SEPARATOR, STR_CURRENCY_SET_CUSTOM_CURRENCY_SEPARATOR_TOOLTIP), SetFill(1, 0),
 				EndContainer(),
 				NWidget(NWID_HORIZONTAL), SetPIP(0, WidgetDimensions::unscaled.hsep_wide, 0),
 					NWidget(WWT_PUSHBTN, COLOUR_DARK_BLUE, WID_CC_PREFIX_EDIT), SetDataTip(0x0, STR_CURRENCY_SET_CUSTOM_CURRENCY_PREFIX_TOOLTIP), SetFill(0, 1),
