@@ -575,59 +575,52 @@ static int DrawLayoutLine(const ParagraphLayouter::Line &line, int y, int left, 
 
 	const uint shadow_offset = ScaleGUITrad(1);
 
-	TextColour colour = TC_BLACK;
-	bool draw_shadow = false;
-	for (int run_index = 0; run_index < line.CountRuns(); run_index++) {
-		const ParagraphLayouter::VisualRun &run = line.GetVisualRun(run_index);
-		const auto &glyphs = run.GetGlyphs();
-		const auto &positions = run.GetPositions();
-		const Font *f = run.GetFont();
+	/* Draw shadow, then foreground */
+	for (bool do_shadow : { true, false }) {
+		TextColour colour = TC_BLACK;
+		for (int run_index = 0; run_index < line.CountRuns(); run_index++) {
+			const ParagraphLayouter::VisualRun &run = line.GetVisualRun(run_index);
+			const auto &glyphs = run.GetGlyphs();
+			const auto &positions = run.GetPositions();
+			const Font *f = run.GetFont();
 
-		FontCache *fc = f->fc;
-		colour = f->colour;
-		SetColourRemap(colour);
+			FontCache *fc = f->fc;
+			colour = f->colour;
+			if (do_shadow && (!fc->GetDrawGlyphShadow() || (colour & TC_NO_SHADE) != 0 || colour == TC_BLACK)) continue;
+			SetColourRemap(do_shadow ? TC_BLACK : colour);
 
-		DrawPixelInfo *dpi = _cur_dpi;
-		int dpi_left  = dpi->left;
-		int dpi_right = dpi->left + dpi->width - 1;
+			DrawPixelInfo *dpi = _cur_dpi;
+			int dpi_left  = dpi->left;
+			int dpi_right = dpi->left + dpi->width - 1;
 
-		draw_shadow = fc->GetDrawGlyphShadow() && (colour & TC_NO_SHADE) == 0 && colour != TC_BLACK;
+			for (int i = 0; i < run.GetGlyphCount(); i++) {
+				GlyphID glyph = glyphs[i];
 
-		for (int i = 0; i < run.GetGlyphCount(); i++) {
-			GlyphID glyph = glyphs[i];
+				/* Not a valid glyph (empty) */
+				if (glyph == 0xFFFF) continue;
 
-			/* Not a valid glyph (empty) */
-			if (glyph == 0xFFFF) continue;
+				int begin_x = positions[i].x     + left - offset_x;
+				int end_x   = positions[i + 1].x + left - offset_x  - 1;
+				int top     = positions[i].y + y;
 
-			int begin_x = positions[i].x     + left - offset_x;
-			int end_x   = positions[i + 1].x + left - offset_x  - 1;
-			int top     = positions[i].y + y;
+				/* Truncated away. */
+				if (truncation && (begin_x < min_x || end_x > max_x)) continue;
 
-			/* Truncated away. */
-			if (truncation && (begin_x < min_x || end_x > max_x)) continue;
+				const Sprite *sprite = fc->GetGlyph(glyph);
+				/* Check clipping (the "+ 1" is for the shadow). */
+				if (begin_x + sprite->x_offs > dpi_right || begin_x + sprite->x_offs + sprite->width /* - 1 + 1 */ < dpi_left) continue;
 
-			const Sprite *sprite = fc->GetGlyph(glyph);
-			/* Check clipping (the "+ 1" is for the shadow). */
-			if (begin_x + sprite->x_offs > dpi_right || begin_x + sprite->x_offs + sprite->width /* - 1 + 1 */ < dpi_left) continue;
+				if (do_shadow && (glyph & SPRITE_GLYPH) != 0) continue;
 
-			if (draw_shadow && (glyph & SPRITE_GLYPH) == 0) {
-				SetColourRemap(TC_BLACK);
-				GfxMainBlitter(sprite, begin_x + shadow_offset, top + shadow_offset, BM_COLOUR_REMAP);
-				SetColourRemap(colour);
+				GfxMainBlitter(sprite, begin_x + (do_shadow ? shadow_offset : 0), top + (do_shadow ? shadow_offset : 0), BM_COLOUR_REMAP);
 			}
-			GfxMainBlitter(sprite, begin_x, top, BM_COLOUR_REMAP);
 		}
-	}
 
-	if (truncation) {
-		int x = (_current_text_dir == TD_RTL) ? left : (right - 3 * dot_width);
-		for (int i = 0; i < 3; i++, x += dot_width) {
-			if (draw_shadow) {
-				SetColourRemap(TC_BLACK);
-				GfxMainBlitter(dot_sprite, x + shadow_offset, y + shadow_offset, BM_COLOUR_REMAP);
-				SetColourRemap(colour);
+		if (truncation) {
+			int x = (_current_text_dir == TD_RTL) ? left : (right - 3 * dot_width);
+			for (int i = 0; i < 3; i++, x += dot_width) {
+				GfxMainBlitter(dot_sprite, x + (do_shadow ? shadow_offset : 0), y + (do_shadow ? shadow_offset : 0), BM_COLOUR_REMAP);
 			}
-			GfxMainBlitter(dot_sprite, x, y, BM_COLOUR_REMAP);
 		}
 	}
 
