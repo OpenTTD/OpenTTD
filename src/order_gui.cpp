@@ -398,8 +398,17 @@ static Order GetOrderCmdFromTile(const Vehicle *v, TileIndex tile)
 				ODTFB_PART_OF_ORDERS,
 				(_settings_client.gui.new_nonstop && v->IsGroundVehicle()) ? ONSF_NO_STOP_AT_INTERMEDIATE_STATIONS : ONSF_STOP_EVERYWHERE);
 
-		if (_ctrl_pressed) order.SetDepotOrderType((OrderDepotTypeFlags)(order.GetDepotOrderType() ^ ODTFB_SERVICE));
-
+		if (_ctrl_pressed) {
+			/* Don't allow a new unbunching order if we already have one. */
+			if (v->HasUnbunchingOrder()) {
+				ShowErrorMessage(STR_ERROR_CAN_T_INSERT_NEW_ORDER, STR_ERROR_UNBUNCHING_ONLY_ONE_ALLOWED, WL_ERROR);
+				/* Return an empty order to bail out. */
+				order.Free();
+				return order;
+			} else {
+				order.SetDepotActionType(ODATFB_UNBUNCH);
+			}
+		}
 		return order;
 	}
 
