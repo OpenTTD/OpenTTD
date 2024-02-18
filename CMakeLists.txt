@@ -5,7 +5,7 @@ if(NOT BINARY_NAME)
 endif()
 
 project(${BINARY_NAME}
-    VERSION 14.0
+    VERSION 15.0
     LANGUAGES CXX
 )
 
