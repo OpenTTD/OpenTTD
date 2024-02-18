@@ -36,6 +36,21 @@ public:
 
 		/** Aircraft has not enough range to copy/share orders. */
 		ERR_ORDER_AIRCRAFT_NOT_ENOUGH_RANGE,                 // [STR_ERROR_AIRCRAFT_NOT_ENOUGH_RANGE]
+
+		/** Can only have one unbunching order. */
+		ERR_ORDER_ONLY_ONE_UNBUNCH_ALLOWED,                  // [STR_ERROR_UNBUNCHING_ONLY_ONE_ALLOWED]
+
+		/** Cannot use full load orders when vehicle has an unbunching order. */
+		ERR_ORDER_NO_FULL_LOAD_WITH_UNBUNCH,                 // [STR_ERROR_UNBUNCHING_NO_FULL_LOAD]
+
+		/** Cannot unbunch a vehicle with a full load order. */
+		ERR_ORDER_NO_UNBUNCH_WITH_FULL_LOAD,                 // [STR_ERROR_UNBUNCHING_NO_UNBUNCHING_FULL_LOAD]
+
+		/** Cannot use conditional orders when vehicle has an unbunching order. */
+		ERR_ORDER_NO_CONDITIONAL_WITH_UNBUNCH,               // [STR_ERROR_UNBUNCHING_NO_CONDITIONAL]
+
+		/** Cannot unbunch a vehicle with a conditional order. */
+		ERR_ORDER_NO_UNBUNCH_WITH_CONDITIONAL,               // [STR_ERROR_UNBUNCHING_NO_UNBUNCHING_CONDITIONAL]
 	};
 
 	/**
@@ -68,6 +83,8 @@ public:
 		OF_SERVICE_IF_NEEDED = 1 << 2,
 		/** Stop in the depot instead of only go there for servicing; only for depots. */
 		OF_STOP_IN_DEPOT     = 1 << 3,
+		/** Unbunch vehicle; only for depots. */
+		OF_UNBUNCH_IN_DEPOT  = 1 << 4,
 		/** Go to nearest depot. */
 		OF_GOTO_NEAREST_DEPOT = 1 << 8,
 
@@ -78,7 +95,7 @@ public:
 		/** All flags related to loading. */
 		OF_LOAD_FLAGS        = OF_FULL_LOAD | OF_FULL_LOAD_ANY | OF_NO_LOAD,
 		/** All flags related to depots. */
-		OF_DEPOT_FLAGS       = OF_SERVICE_IF_NEEDED | OF_STOP_IN_DEPOT | OF_GOTO_NEAREST_DEPOT,
+		OF_DEPOT_FLAGS       = OF_SERVICE_IF_NEEDED | OF_STOP_IN_DEPOT | OF_UNBUNCH_IN_DEPOT | OF_GOTO_NEAREST_DEPOT,
 
 		/** For marking invalid order flags */
 		OF_INVALID           = 0xFFFF,
@@ -440,6 +457,10 @@ public:
 	 * @exception ScriptError::ERR_OWNED_BY_ANOTHER_COMPANY
 	 * @exception ScriptOrder::ERR_ORDER_TOO_MANY
 	 * @exception ScriptOrder::ERR_ORDER_TOO_FAR_AWAY_FROM_PREVIOUS_DESTINATION
+	 * @exception ScriptOrder::ERR_ORDER_ONLY_ONE_UNBUNCH_ALLOWED
+	 * @exception ScriptOrder::ERR_ORDER_NO_FULL_LOAD_WITH_UNBUNCH
+	 * @exception ScriptOrder::ERR_ORDER_NO_UNBUNCH_WITH_FULL_LOAD
+	 * @exception ScriptOrder::ERR_ORDER_NO_UNBUNCH_WITH_CONDITIONAL
 	 * @return True if and only if the order was appended.
 	 */
 	static bool AppendOrder(VehicleID vehicle_id, TileIndex destination, ScriptOrderFlags order_flags);
@@ -453,6 +474,7 @@ public:
 	 * @game @pre ScriptCompanyMode::IsValid().
 	 * @exception ScriptError::ERR_OWNED_BY_ANOTHER_COMPANY
 	 * @exception ScriptOrder::ERR_ORDER_TOO_MANY
+	 * @exception ScriptOrder::ERR_ORDER_NO_CONDITIONAL_WITH_UNBUNCH
 	 * @return True if and only if the order was appended.
 	 */
 	static bool AppendConditionalOrder(VehicleID vehicle_id, OrderPosition jump_to);
@@ -470,6 +492,10 @@ public:
 	 * @exception ScriptError::ERR_OWNED_BY_ANOTHER_COMPANY
 	 * @exception ScriptOrder::ERR_ORDER_TOO_MANY
 	 * @exception ScriptOrder::ERR_ORDER_TOO_FAR_AWAY_FROM_PREVIOUS_DESTINATION
+	 * @exception ScriptOrder::ERR_ORDER_ONLY_ONE_UNBUNCH_ALLOWED
+	 * @exception ScriptOrder::ERR_ORDER_NO_FULL_LOAD_WITH_UNBUNCH
+	 * @exception ScriptOrder::ERR_ORDER_NO_UNBUNCH_WITH_FULL_LOAD
+	 * @exception ScriptOrder::ERR_ORDER_NO_UNBUNCH_WITH_CONDITIONAL
 	 * @return True if and only if the order was inserted.
 	 */
 	static bool InsertOrder(VehicleID vehicle_id, OrderPosition order_position, TileIndex destination, ScriptOrderFlags order_flags);
@@ -485,6 +511,7 @@ public:
 	 * @game @pre ScriptCompanyMode::IsValid().
 	 * @exception ScriptError::ERR_OWNED_BY_ANOTHER_COMPANY
 	 * @exception ScriptOrder::ERR_ORDER_TOO_MANY
+	 * @exception ScriptOrder::ERR_ORDER_NO_CONDITIONAL_WITH_UNBUNCH
 	 * @return True if and only if the order was inserted.
 	 */
 	static bool InsertConditionalOrder(VehicleID vehicle_id, OrderPosition order_position, OrderPosition jump_to);
