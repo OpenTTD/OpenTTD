@@ -379,6 +379,8 @@ enum SaveLoadVersion : uint16_t {
 	SLV_SCRIPT_RANDOMIZER,                  ///< 333  PR#12063 v14.0-RC1 Save script randomizers.
 	SLV_VEHICLE_ECONOMY_AGE,                ///< 334  PR#12141 v14.0 Add vehicle age in economy year, for profit stats minimum age
 
+	SLV_ADD_DEPOTS_TO_HANGARS,              ///< XXX  PR#10691 Add depots to airports that have a hangar.
+
 	SL_MAX_VERSION,                         ///< Highest possible saveload version
 };
 
@@ -593,6 +595,7 @@ enum SLRefType {
 	REF_STORAGE        =  9, ///< Load/save a reference to a persistent storage.
 	REF_LINK_GRAPH     = 10, ///< Load/save a reference to a link graph.
 	REF_LINK_GRAPH_JOB = 11, ///< Load/save a reference to a link graph job.
+	REF_DEPOT          = 12, ///< Load/save a reference to a depot.
 };
 
 /**
