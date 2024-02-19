@@ -2425,28 +2425,6 @@ bool AfterLoadGame()
 		for (Depot *d : Depot::Iterate()) d->build_date = TimerGameCalendar::date;
 	}
 
-	/* In old versions it was possible to remove an airport while a plane was
-	 * taking off or landing. This gives all kind of problems when building
-	 * another airport in the same station so we don't allow that anymore.
-	 * For old savegames with such aircraft we just throw them in the air and
-	 * treat the aircraft like they were flying already. */
-	if (IsSavegameVersionBefore(SLV_146)) {
-		for (Aircraft *v : Aircraft::Iterate()) {
-			if (!v->IsNormalAircraft()) continue;
-			Station *st = GetTargetAirportIfValid(v);
-			if (st == nullptr && v->state != FLYING) {
-				v->state = FLYING;
-				UpdateAircraftCache(v);
-				AircraftNextAirportPos_and_Order(v);
-				/* get aircraft back on running altitude */
-				if ((v->vehstatus & VS_CRASHED) == 0) {
-					GetAircraftFlightLevelBounds(v, &v->z_pos, nullptr);
-					SetAircraftPosition(v, v->x_pos, v->y_pos, GetAircraftFlightLevel(v));
-				}
-			}
-		}
-	}
-
 	/* Move the animation frame to the same location (m7) for all objects. */
 	if (IsSavegameVersionBefore(SLV_147)) {
 		for (auto t : Map::Iterate()) {
@@ -2787,6 +2765,43 @@ bool AfterLoadGame()
 					delete st->airport.psa;
 					st->airport.psa = nullptr;
 
+				}
+			}
+		}
+	}
+
+	if (IsSavegameVersionBefore(SLV_ADD_DEPOTS_TO_HANGARS)) {
+		for (Station *st : Station::Iterate()) {
+			if ((st->facilities & FACIL_AIRPORT) && st->airport.HasHangar()) {
+				/* Add a built-in hangar for some airport types. */
+				assert(Depot::CanAllocateItem());
+				st->airport.AddHangar();
+			} else {
+				/* If airport has no hangar, remove old go to hangar orders
+				 * that could remain from removing an airport with a hangar
+				 * and rebuilding it with an airport with no hangar. */
+				RemoveOrderFromAllVehicles(OT_GOTO_DEPOT, st->index);
+			}
+		}
+	}
+
+	/* In old versions it was possible to remove an airport while a plane was
+	 * taking off or landing. This gives all kind of problems when building
+	 * another airport in the same station so we don't allow that anymore.
+	 * For old savegames with such aircraft we just throw them in the air and
+	 * treat the aircraft like they were flying already. */
+	if (IsSavegameVersionBefore(SLV_146)) {
+		for (Aircraft *v : Aircraft::Iterate()) {
+			if (!v->IsNormalAircraft()) continue;
+			Station *st = GetTargetAirportIfValid(v);
+			if (st == nullptr && v->state != FLYING) {
+				v->state = FLYING;
+				UpdateAircraftCache(v);
+				AircraftNextAirportPos_and_Order(v);
+				/* get aircraft back on running altitude */
+				if ((v->vehstatus & VS_CRASHED) == 0) {
+					GetAircraftFlightLevelBounds(v, &v->z_pos, nullptr);
+					SetAircraftPosition(v, v->x_pos, v->y_pos, GetAircraftFlightLevel(v));
 				}
 			}
 		}
