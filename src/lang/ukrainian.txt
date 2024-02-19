@@ -337,6 +337,8 @@ STR_COLOUR_SECONDARY_WHITE                                      :Білий
 STR_UNITS_VELOCITY_IMPERIAL                                     :{DECIMAL}{NBSP}миль/год
 STR_UNITS_VELOCITY_METRIC                                       :{DECIMAL}{NBSP}км/год
 STR_UNITS_VELOCITY_SI                                           :{DECIMAL}{NBSP}м/с
+STR_UNITS_VELOCITY_GAMEUNITS_DAY                                :{DECIMAL}{NBSP}клітинок/день
+STR_UNITS_VELOCITY_GAMEUNITS_SEC                                :{DECIMAL}{NBSP}клітинок/сек
 STR_UNITS_VELOCITY_KNOTS                                        :{DECIMAL}{NBSP}вуз{P ол ла лів}
 
 STR_UNITS_POWER_IMPERIAL                                        :{DECIMAL}{NBSP}к.с.
@@ -1757,6 +1759,9 @@ STR_CONFIG_SETTING_RIGHT_MOUSE_BTN_EMU_OFF                      :не емулю
 STR_CONFIG_SETTING_RIGHT_MOUSE_WND_CLOSE                        :Закрити вікно правою кнопкою миші: {STRING}
 STR_CONFIG_SETTING_RIGHT_MOUSE_WND_CLOSE_HELPTEXT               :Закривати вікно кліком правої кнопки миші по ньому. При цьому віключається поява підказок за правою кнопкою.
 ###length 3
+STR_CONFIG_SETTING_RIGHT_MOUSE_WND_CLOSE_NO                     :Ні
+STR_CONFIG_SETTING_RIGHT_MOUSE_WND_CLOSE_YES                    :Так
+STR_CONFIG_SETTING_RIGHT_MOUSE_WND_CLOSE_YES_EXCEPT_STICKY      :Так, крім прилипання
 
 STR_CONFIG_SETTING_DATE_FORMAT_IN_SAVE_NAMES                    :Формат дати в іменах файлів збереження: {STRING}
 STR_CONFIG_SETTING_DATE_FORMAT_IN_SAVE_NAMES_HELPTEXT           :Формат дати в іменах файлів збереження
@@ -2279,7 +2284,7 @@ STR_HELP_WINDOW_BUGTRACKER                                      :{BLACK}Пові
 STR_HELP_WINDOW_COMMUNITY                                       :{BLACK}Спільнота
 
 # Cheat window
-STR_CHEATS                                                      :{WHITE}Гратиму нечесно
+STR_CHEATS                                                      :{WHITE}Налаштування пісочниці
 STR_CHEAT_MONEY                                                 :{LTBLUE}Збільшити кошти на {CURRENCY_LONG}
 STR_CHEAT_CHANGE_COMPANY                                        :{LTBLUE}Грає як компанія: {ORANGE}{COMMA}
 STR_CHEAT_EXTRA_DYNAMITE                                        :{LTBLUE}Супербульдозер (руйнує все): {ORANGE}{STRING}
@@ -2290,6 +2295,7 @@ STR_CHEAT_EDIT_MAX_HL_QUERY_CAPT                                :{WHITE}Змін
 STR_CHEAT_CHANGE_DATE                                           :{LTBLUE}Змінити дату: {ORANGE}{DATE_SHORT}
 STR_CHEAT_CHANGE_DATE_QUERY_CAPT                                :{WHITE}Змінити поточний рік
 STR_CHEAT_SETUP_PROD                                            :{LTBLUE}Дозволити зміну рівня виробництва: {ORANGE}{STRING}
+STR_CHEAT_STATION_RATING                                        :{LTBLUE}Закріпити рейтинг станції на рівні 100%: {ORANGE}{STRING}
 
 # Livery window
 STR_LIVERY_CAPTION                                              :{WHITE}Кольори компанії «{COMPANY}»
@@ -3758,6 +3764,10 @@ STR_STATION_LIST_WAYPOINT                                       :{YELLOW}{WAYPOI
 STR_STATION_LIST_NONE                                           :{YELLOW}- немає -
 STR_STATION_LIST_SELECT_ALL_FACILITIES                          :{BLACK}Вибрати весь транспорт
 STR_STATION_LIST_CARGO_FILTER_ALL_AND_NO_RATING                 :Всі типи вантажів без рейтингу
+STR_STATION_LIST_CARGO_FILTER_MULTIPLE                          :Кілька типів вантажів
+STR_STATION_LIST_CARGO_FILTER_NO_CARGO_TYPES                    :Жодного типу вантажів
+STR_STATION_LIST_CARGO_FILTER_ONLY_NO_RATING                    :тільки без рейтингу вантажів
+STR_STATION_LIST_CARGO_FILTER_NO_RATING                         :жодного рейтингу вантажів
 STR_STATION_LIST_CARGO_FILTER_EXPAND                            :Показати ще...
 
 # Station view window
@@ -4825,6 +4835,7 @@ STR_TEXTFILE_VIEW_LICENCE                                       :{BLACK}Ліце
 STR_TEXTFILE_README_CAPTION                                     :{WHITE}Документація до {STRING} {STRING}
 STR_TEXTFILE_CHANGELOG_CAPTION                                  :{WHITE}Зміни в {STRING} {STRING}
 STR_TEXTFILE_LICENCE_CAPTION                                    :{WHITE}Ліцензія до {STRING} {STRING}
+STR_TEXTFILE_GAME_MANUAL_CAPTION                                :{WHITE}документ OpenTTD '{STRING}'
 
 
 # Vehicle loading indicators
