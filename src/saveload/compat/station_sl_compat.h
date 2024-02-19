@@ -108,6 +108,7 @@ const SaveLoadCompat _station_normal_sl_compat[] = {
 	SLC_VAR("airport.layout"),
 	SLC_VAR("airport.flags"),
 	SLC_VAR("airport.rotation"),
+	SLC_VAR("airport.hangar"),
 	SLC_VAR("storage"),
 	SLC_VAR("airport.psa"),
 	SLC_VAR("indtype"),

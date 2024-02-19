@@ -26,6 +26,7 @@
 #include "core/random_func.hpp"
 #include "linkgraph/linkgraph.h"
 #include "linkgraph/linkgraphschedule.h"
+#include "depot_base.h"
 
 #include "table/strings.h"
 
@@ -725,6 +726,29 @@ Money AirportMaintenanceCost(Owner owner)
 	}
 	/* 3 bits fraction for the maintenance cost factor. */
 	return total_cost >> 3;
+}
+
+/**
+ * Create a hangar on the airport.
+ */
+void Airport::AddHangar()
+{
+	assert(this->hangar == nullptr);
+	assert(Depot::CanAllocateItem());
+	assert(this->GetNumHangars() > 0);
+	Station *st = Station::GetByTile(this->GetHangarTile(0));
+	this->hangar = new Depot(this->GetHangarTile(0));
+	this->hangar->build_date = st->build_date;
+	this->hangar->town = st->town;
+}
+
+/**
+ * Delete the hangar on the airport.
+ */
+void Airport::RemoveHangar()
+{
+	delete this->hangar;
+	this->hangar = nullptr;
 }
 
 bool StationCompare::operator() (const Station *lhs, const Station *rhs) const
