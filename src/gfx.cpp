@@ -522,6 +522,7 @@ static int DrawLayoutLine(const ParagraphLayouter::Line &line, int y, int left, 
 	truncation &= max_w < w;         // Whether we need to do truncation.
 	int dot_width = 0;               // Cache for the width of the dot.
 	const Sprite *dot_sprite = nullptr; // Cache for the sprite of the dot.
+	bool dot_has_shadow = false;     // Whether the dot's font requires shadows.
 
 	if (truncation) {
 		/*
@@ -531,6 +532,7 @@ static int DrawLayoutLine(const ParagraphLayouter::Line &line, int y, int left, 
 		 * the truncation dots.
 		 */
 		FontCache *fc = line.GetVisualRun(0).GetFont()->fc;
+		dot_has_shadow = fc->GetDrawGlyphShadow();
 		GlyphID dot_glyph = fc->MapCharToGlyph('.');
 		dot_width = fc->GetGlyphWidth(dot_glyph);
 		dot_sprite = fc->GetGlyph(dot_glyph);
@@ -577,7 +579,7 @@ static int DrawLayoutLine(const ParagraphLayouter::Line &line, int y, int left, 
 
 	/* Draw shadow, then foreground */
 	for (bool do_shadow : { true, false }) {
-		TextColour colour = TC_BLACK;
+		bool colour_has_shadow = false;
 		for (int run_index = 0; run_index < line.CountRuns(); run_index++) {
 			const ParagraphLayouter::VisualRun &run = line.GetVisualRun(run_index);
 			const auto &glyphs = run.GetGlyphs();
@@ -585,9 +587,10 @@ static int DrawLayoutLine(const ParagraphLayouter::Line &line, int y, int left, 
 			const Font *f = run.GetFont();
 
 			FontCache *fc = f->fc;
-			colour = f->colour;
-			if (do_shadow && (!fc->GetDrawGlyphShadow() || (colour & TC_NO_SHADE) != 0 || colour == TC_BLACK)) continue;
-			SetColourRemap(do_shadow ? TC_BLACK : colour);
+			TextColour colour = f->colour;
+			colour_has_shadow = (colour & TC_NO_SHADE) == 0 && colour != TC_BLACK;
+			SetColourRemap(do_shadow ? TC_BLACK : colour); // the last run also sets the colour for the truncation dots
+			if (do_shadow && (!fc->GetDrawGlyphShadow() || !colour_has_shadow)) continue;
 
 			DrawPixelInfo *dpi = _cur_dpi;
 			int dpi_left  = dpi->left;
@@ -616,7 +619,7 @@ static int DrawLayoutLine(const ParagraphLayouter::Line &line, int y, int left, 
 			}
 		}
 
-		if (truncation) {
+		if (truncation && (!do_shadow || (dot_has_shadow && colour_has_shadow))) {
 			int x = (_current_text_dir == TD_RTL) ? left : (right - 3 * dot_width);
 			for (int i = 0; i < 3; i++, x += dot_width) {
 				GfxMainBlitter(dot_sprite, x + (do_shadow ? shadow_offset : 0), y + (do_shadow ? shadow_offset : 0), BM_COLOUR_REMAP);
