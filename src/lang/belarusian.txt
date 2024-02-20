@@ -495,13 +495,27 @@ STR_COLOUR_BLUE                                                 :Сiнi
 STR_COLOUR_CREAM                                                :Крэмавы
 STR_COLOUR_MAUVE                                                :Лiловы
 STR_COLOUR_PURPLE                                               :Пурпурны
-STR_COLOUR_ORANGE                                               :Памаранчавы
+STR_COLOUR_ORANGE                                               :Памяранцавы
 STR_COLOUR_BROWN                                                :Карычневы
 STR_COLOUR_GREY                                                 :Шэры
 STR_COLOUR_WHITE                                                :Белы
 STR_COLOUR_RANDOM                                               :Выпадковы
 
 ###length 17
+STR_COLOUR_SECONDARY_DARK_BLUE                                  :Цёмна-сіні
+STR_COLOUR_SECONDARY_PALE_GREEN                                 :Бледна-зялёны
+STR_COLOUR_SECONDARY_RED                                        :Чырвоны
+STR_COLOUR_SECONDARY_LIGHT_BLUE                                 :Блакiтны
+STR_COLOUR_SECONDARY_GREEN                                      :Зялёны
+STR_COLOUR_SECONDARY_DARK_GREEN                                 :Цёмна-зялёны
+STR_COLOUR_SECONDARY_BLUE                                       :Сіні
+STR_COLOUR_SECONDARY_CREAM                                      :Крэмавы
+STR_COLOUR_SECONDARY_MAUVE                                      :Лiловы
+STR_COLOUR_SECONDARY_PURPLE                                     :Пурпурны
+STR_COLOUR_SECONDARY_ORANGE                                     :Памяранцавы
+STR_COLOUR_SECONDARY_BROWN                                      :Карычневы
+STR_COLOUR_SECONDARY_GREY                                       :Шэры
+STR_COLOUR_SECONDARY_SAME_AS_PRIMARY                            :Той жа, што і фірмовы
 
 
 # Units used in OpenTTD
@@ -513,6 +527,9 @@ STR_UNITS_POWER_IMPERIAL                                        :{DECIMAL}{NBSP}
 STR_UNITS_POWER_METRIC                                          :{DECIMAL}{NBSP}к.с.
 STR_UNITS_POWER_SI                                              :{DECIMAL}{NBSP}кВт
 
+STR_UNITS_POWER_METRIC_TO_WEIGHT_IMPERIAL                       :{DECIMAL}{NBSP}кс/т
+STR_UNITS_POWER_METRIC_TO_WEIGHT_METRIC                         :{DECIMAL}{NBSP}кс/т
+STR_UNITS_POWER_METRIC_TO_WEIGHT_SI                             :{DECIMAL}{NBSP}кс/Мг
 
 STR_UNITS_WEIGHT_SHORT_IMPERIAL                                 :{DECIMAL}{NBSP}т
 STR_UNITS_WEIGHT_SHORT_METRIC                                   :{DECIMAL}{NBSP}т
@@ -539,8 +556,12 @@ STR_UNITS_HEIGHT_METRIC                                         :{DECIMAL}{NBSP}
 STR_UNITS_HEIGHT_SI                                             :{DECIMAL}{NBSP}м
 
 # Time units used in string control characters
+STR_UNITS_DAYS                                                  :{COMMA}{NBSP}д{P зень ня зён}
 
+STR_UNITS_MONTHS                                                :{NUM}{NBSP}месяц{P "" а аў}
+STR_UNITS_MINUTES                                               :{NUM}{NBSP}хвілін{P а ы ""}
 
+STR_UNITS_PERIODS                                               :{NUM}{NBSP}цыкл{P "" а аў}
 
 # Common window strings
 STR_LIST_FILTER_TITLE                                           :{BLACK}Фільтар:
@@ -632,6 +653,10 @@ STR_SORT_BY_CARGO_CAPACITY                                      :Ёмiстась
 STR_SORT_BY_RANGE                                               :Далёкасьць
 STR_SORT_BY_POPULATION                                          :Насельніцтва
 STR_SORT_BY_RATING                                              :Рэйтынґ
+STR_SORT_BY_AVERAGE_PROFIT_LAST_YEAR                            :Сярэдні прыбытак летась
+STR_SORT_BY_AVERAGE_PROFIT_LAST_PERIOD                          :Сярэдні прыбытак у мінулым цыкле
+STR_SORT_BY_AVERAGE_PROFIT_THIS_YEAR                            :Сярэдні прыбытак сёлета
+STR_SORT_BY_AVERAGE_PROFIT_THIS_PERIOD                          :Сярэдні прыбытак у бягучым цыкле
 
 # Group by options for vehicle list
 
@@ -865,8 +890,11 @@ STR_GRAPH_CARGO_DELIVERED_CAPTION                               :{WHITE}Коль
 STR_GRAPH_COMPANY_PERFORMANCE_RATINGS_CAPTION                   :{WHITE}Рэйтынґ кампаніі (макс. = 1000)
 STR_GRAPH_COMPANY_VALUES_CAPTION                                :{WHITE}Вартасьць кампаніі
 
+STR_GRAPH_LAST_72_MINUTES_TIME_LABEL                            :{TINY_FONT}{BLACK}Апошнія 72 хвіліны
 
 STR_GRAPH_CARGO_PAYMENT_RATES_CAPTION                           :{WHITE}Тарыфы на перавозку грузаў
+STR_GRAPH_CARGO_PAYMENT_RATES_DAYS                              :{TINY_FONT}{BLACK}Дзён у дарозе
+STR_GRAPH_CARGO_PAYMENT_RATES_SECONDS                           :{TINY_FONT}{BLACK}Секунд у дарозе
 STR_GRAPH_CARGO_PAYMENT_RATES_TITLE                             :{TINY_FONT}{BLACK}Плата за дастаўку 10 адзінак (альбо 10.000 літраў) грузу на адлегласьць ў 20 квадратаў
 STR_GRAPH_CARGO_ENABLE_ALL                                      :{TINY_FONT}{BLACK}Паказаць усё
 STR_GRAPH_CARGO_DISABLE_ALL                                     :{TINY_FONT}{BLACK}Схаваць усё
@@ -916,6 +944,8 @@ STR_PERFORMANCE_DETAIL_TOTAL                                    :{BLACK}Усяг
 ###next-name-looks-similar
 
 STR_PERFORMANCE_DETAIL_STATIONS_TOOLTIP                         :{BLACK}Колькасьць станцыяў, якія нядаўна абслугоўваліся. Асобна улічваецца кожная частка злучанай станцыі (чыгуначная, аўтамабільная, аэрапорт).
+STR_PERFORMANCE_DETAIL_MIN_PROFIT_TOOLTIP_YEARS                 :{BLACK}Найменшы прыбытак сярод транспартных сродкаў узростам больш двух гадоў
+STR_PERFORMANCE_DETAIL_MIN_PROFIT_TOOLTIP_PERIODS               :{BLACK}Найменшы прыбытак сярод транспартных сродкаў узростам больш двух цыклаў
 STR_PERFORMANCE_DETAIL_MIN_INCOME_TOOLTIP                       :{BLACK}Найменшы квартальны прыбытак за апошнія 4 гады (12 кварталаў).
 STR_PERFORMANCE_DETAIL_MAX_INCOME_TOOLTIP                       :{BLACK}Найвялікшы квартальны прыбытак за апошнія 4 гады (12 кварталаў).
 STR_PERFORMANCE_DETAIL_DELIVERED_TOOLTIP                        :{BLACK}Колькасьць грузаў, перавезеных за апошнія 4 кварталы
@@ -1143,10 +1173,12 @@ STR_NEWS_VEHICLE_IS_GETTING_VERY_OLD                            :{WHITE}{VEHICLE
 STR_NEWS_VEHICLE_IS_GETTING_VERY_OLD_AND                        :{WHITE}{VEHICLE} цалкам састарэў і патрабуе безадкладнай замены
 STR_NEWS_TRAIN_IS_STUCK                                         :{WHITE}{VEHICLE} ня можа знайсьці шлях для працягу руху
 STR_NEWS_VEHICLE_IS_LOST                                        :{WHITE}{VEHICLE} заблудзіўся.
+STR_NEWS_VEHICLE_UNPROFITABLE_YEAR                              :{WHITE}Прыбытак ТС «{VEHICLE}» летась склаў {CURRENCY_LONG}
+STR_NEWS_VEHICLE_UNPROFITABLE_PERIOD                            :{WHITE}Прыбытак ТС «{VEHICLE}» у мінулым перыядзе: {CURRENCY_LONG}
 STR_NEWS_AIRCRAFT_DEST_TOO_FAR                                  :{WHITE}{VEHICLE} ня можа дасягнусь наступнага пункту: не хапае далёкасьцi
 
 STR_NEWS_ORDER_REFIT_FAILED                                     :{WHITE}{VEHICLE} спынены, паколькі пераабсталяваньне не ўдалося
-STR_NEWS_VEHICLE_AUTORENEW_FAILED                               :{WHITE}Памылка аўтаабнаўленьня для {VEHICLE}{}{STRING}
+STR_NEWS_VEHICLE_AUTORENEW_FAILED                               :{WHITE}Збой аўтаабнаўленьня ТС «{VEHICLE}»{}{STRING}
 
 STR_NEWS_NEW_VEHICLE_NOW_AVAILABLE                              :{BIG_FONT}{BLACK}З'явіўся новы {STRING}!
 STR_NEWS_NEW_VEHICLE_TYPE                                       :{BIG_FONT}{BLACK}{ENGINE}
@@ -1159,7 +1191,10 @@ STR_NEWS_OFFER_OF_SUBSIDY_EXPIRED                               :{BIG_FONT}{BLAC
 STR_NEWS_SUBSIDY_WITHDRAWN_SERVICE                              :{BIG_FONT}{BLACK}Тэрмін субсыдыі сышоў:{}{}Перавозка {STRING.gen} па маршруце {STRING} — {STRING} больш не субсыдуецца.
 ###length 4
 
+STR_NEWS_ROAD_REBUILDING_MINUTES                                :{BIG_FONT}{BLACK}Хаос на дарогах г.{NBSP}{TOWN}!{}{}Рэканструкцыя дарожнай сеткі, прафінансаваная кампаніяй «{STRING}», прынясе кіроўцам 6{NBSP}хвілін пакут!
 STR_NEWS_EXCLUSIVE_RIGHTS_TITLE                                 :{BIG_FONT}{BLACK}Транспартная манаполія!
+STR_NEWS_EXCLUSIVE_RIGHTS_DESCRIPTION_MONTHS                    :{BIG_FONT}{BLACK}Адміністрацыя г.{NBSP}{TOWN} падала кампаніі «{STRING}» эксклюзіўныя транспартныя правы тэрмінам на 12 месяцаў!
+STR_NEWS_EXCLUSIVE_RIGHTS_DESCRIPTION_MINUTES                   :{BIG_FONT}{BLACK}Адміністрацыя г.{NBSP}{TOWN} падала кампаніі «{STRING}» эксклюзіўныя транспартныя правы тэрмінам на 12 хвілін!
 
 # Extra view window
 STR_EXTRA_VIEWPORT_TITLE                                        :{WHITE}Вакно прагляду {COMMA}
@@ -1171,12 +1206,22 @@ STR_EXTRA_VIEW_MOVE_MAIN_TO_VIEW_TT                             :{BLACK}Пера
 # Game options window
 STR_GAME_OPTIONS_CAPTION                                        :{WHITE}Наладкі гульні
 
+STR_GAME_OPTIONS_TAB_GENERAL                                    :Асноўныя
+STR_GAME_OPTIONS_TAB_GENERAL_TT                                 :{BLACK}Асноўныя наладкі гульні
+STR_GAME_OPTIONS_TAB_GRAPHICS                                   :Графіка
+STR_GAME_OPTIONS_TAB_GRAPHICS_TT                                :{BLACK}Наладкі графікі
+STR_GAME_OPTIONS_TAB_SOUND                                      :Гук
+STR_GAME_OPTIONS_TAB_SOUND_TT                                   :{BLACK}Наладкі гуку і музыкі
+STR_GAME_OPTIONS_TAB_SOCIAL                                     :Сацыяльныя
+STR_GAME_OPTIONS_TAB_SOCIAL_TT                                  :{BLACK}Наладкі сацыяльнай інтэграцыі
 
+STR_GAME_OPTIONS_MUSIC_VOLUME                                   :Музыка
 
 
 STR_GAME_OPTIONS_CURRENCY_UNITS_FRAME                           :{BLACK}Валюта
 STR_GAME_OPTIONS_CURRENCY_UNITS_DROPDOWN_TOOLTIP                :{BLACK}Выбар валюты
 
+STR_GAME_OPTIONS_CURRENCY_CODE                                  :{STRING} ({STRING})
 
 ###length 43
 STR_GAME_OPTIONS_CURRENCY_GBP                                   :Брытанскі фунт
@@ -1213,11 +1258,15 @@ STR_GAME_OPTIONS_CURRENCY_ZAR                                   :Паўднёв�
 STR_GAME_OPTIONS_CURRENCY_CUSTOM                                :Уласная...
 STR_GAME_OPTIONS_CURRENCY_GEL                                   :Грузінскі лары
 STR_GAME_OPTIONS_CURRENCY_IRR                                   :Іранскі рыал
+STR_GAME_OPTIONS_CURRENCY_RUB                                   :Расійскі рубель
 STR_GAME_OPTIONS_CURRENCY_MXN                                   :Мексіканскі песа
 STR_GAME_OPTIONS_CURRENCY_NTD                                   :Новы тайваньскі даляр
 STR_GAME_OPTIONS_CURRENCY_CNY                                   :Кітайскі юань
 STR_GAME_OPTIONS_CURRENCY_HKD                                   :Ганконскі даляр
 STR_GAME_OPTIONS_CURRENCY_INR                                   :Індыйская рупія
+STR_GAME_OPTIONS_CURRENCY_IDR                                   :Інданэзійская рупія
+STR_GAME_OPTIONS_CURRENCY_MYR                                   :Малайзійскі рынгіт
+STR_GAME_OPTIONS_CURRENCY_LVL                                   :Латвійскі лат
 
 STR_GAME_OPTIONS_AUTOSAVE_FRAME                                 :{BLACK}Аўтазахаваньне
 STR_GAME_OPTIONS_AUTOSAVE_DROPDOWN_TOOLTIP                      :{BLACK}Інтэрвал паміж аўтаматычнымі захаваньнямі гульні
@@ -1225,9 +1274,14 @@ STR_GAME_OPTIONS_AUTOSAVE_DROPDOWN_TOOLTIP                      :{BLACK}Інтэ
 # Autosave dropdown
 ###length 5
 STR_GAME_OPTIONS_AUTOSAVE_DROPDOWN_OFF                          :Выключана
+STR_GAME_OPTIONS_AUTOSAVE_DROPDOWN_EVERY_10_MINUTES             :кожныя 10 хвілін
+STR_GAME_OPTIONS_AUTOSAVE_DROPDOWN_EVERY_30_MINUTES             :кожныя 30 хвілін
+STR_GAME_OPTIONS_AUTOSAVE_DROPDOWN_EVERY_60_MINUTES             :кожныя 60 хвілін
+STR_GAME_OPTIONS_AUTOSAVE_DROPDOWN_EVERY_120_MINUTES            :кожныя 120 хвілін
 
 STR_GAME_OPTIONS_LANGUAGE                                       :{BLACK}Мова
 STR_GAME_OPTIONS_LANGUAGE_TOOLTIP                               :{BLACK}Выбраць мову інтэрфэйсу
+STR_GAME_OPTIONS_LANGUAGE_PERCENTAGE                            :{STRING} ({NUM}% перакладзены)
 
 STR_GAME_OPTIONS_FULLSCREEN                                     :{BLACK}Поўны экран
 STR_GAME_OPTIONS_FULLSCREEN_TOOLTIP                             :{BLACK}Уключыць/выключыць поўнаэкранны рэжым
@@ -1239,13 +1293,39 @@ STR_GAME_OPTIONS_RESOLUTION_OTHER                               :Iншае
 
 
 
+STR_GAME_OPTIONS_GUI_SCALE_FRAME                                :{BLACK}Маштаб інтэрфейсу
+STR_GAME_OPTIONS_GUI_SCALE_TOOLTIP                              :{BLACK}Змяняйце маштаб інтэрфейсу з дапамогай паўзунка. Утрымлівайце Ctrl для дакладнай наладкі.
+STR_GAME_OPTIONS_GUI_SCALE_AUTO                                 :{BLACK}Аўтавызначэньне
+STR_GAME_OPTIONS_GUI_SCALE_AUTO_TOOLTIP                         :{BLACK}Пастаўце адзнаку для аўтаматычнай усталёўкі маштабу інтэрфейсу
 
+STR_GAME_OPTIONS_GUI_SCALE_BEVELS                               :{BLACK}Рэльефныя элементы
+STR_GAME_OPTIONS_GUI_SCALE_BEVELS_TOOLTIP                       :{BLACK}Пастаўце адзнаку, каб маштабаваць рэльефныя элементы інтэрфейсу
 
+STR_GAME_OPTIONS_GUI_FONT_SPRITE                                :{BLACK}Выкарыстоўваць растравы шрыфт
+STR_GAME_OPTIONS_GUI_FONT_SPRITE_TOOLTIP                        :{BLACK}Пастаўце адзнаку, каб выкарыстоўваць класічны растравы шрыфт фіксаванага памеру.
+STR_GAME_OPTIONS_GUI_FONT_AA                                    :{BLACK}Згладжваньне шрыфтоў
+STR_GAME_OPTIONS_GUI_FONT_AA_TOOLTIP                            :{BLACK}Пастаўце адзнаку, каб уключыць згладжваньне маштабуемых шрыфтоў
 
+STR_GAME_OPTIONS_GUI_SCALE_1X                                   :1x
+STR_GAME_OPTIONS_GUI_SCALE_2X                                   :2x
+STR_GAME_OPTIONS_GUI_SCALE_3X                                   :3x
+STR_GAME_OPTIONS_GUI_SCALE_4X                                   :4x
+STR_GAME_OPTIONS_GUI_SCALE_5X                                   :5x
 
+STR_GAME_OPTIONS_PARTICIPATE_SURVEY_FRAME                       :{BLACK}Аўтаматычны збор дадзеных
+STR_GAME_OPTIONS_PARTICIPATE_SURVEY                             :{BLACK}Дазволіць збор і адпраўку дадзеных
+STR_GAME_OPTIONS_PARTICIPATE_SURVEY_TOOLTIP                     :{BLACK}Дазволіць аўтаматычны збор дадзеных пра вашы наладкі гульні і выкарыстаныя модулі. OpenTTD адправіць гэтыя дадзеныя пры зачыненьні гульні.
+STR_GAME_OPTIONS_PARTICIPATE_SURVEY_LINK                        :{BLACK}Пра збор дадзеных і прыватнасьць
+STR_GAME_OPTIONS_PARTICIPATE_SURVEY_LINK_TOOLTIP                :{BLACK}Адкрыць спасылку з інфармацыяй пра аўтаматычны збор дадзеных
+STR_GAME_OPTIONS_PARTICIPATE_SURVEY_PREVIEW                     :{BLACK}Прагляд сабраных дадзеных
+STR_GAME_OPTIONS_PARTICIPATE_SURVEY_PREVIEW_TOOLTIP             :{BLACK}Паказаць дадзеныя, сабраныя ў бягучым сеансе і падрыхтаваныя да адпраўкі
 
+STR_GAME_OPTIONS_GRAPHICS                                       :{BLACK}Наладкі ґрафікі
 
 STR_GAME_OPTIONS_REFRESH_RATE                                   :{BLACK}Чашчыня абнаўлення экрана
+STR_GAME_OPTIONS_REFRESH_RATE_TOOLTIP                           :{BLACK}Выбар чашчыні абнаўленьня экрана
+STR_GAME_OPTIONS_REFRESH_RATE_ITEM                              :{NUM}{NBSP}Гц
+STR_GAME_OPTIONS_REFRESH_RATE_WARNING                           :{WHITE}Чашчыня абнаўленьня вышэй 60{NBSP}Гц можа адмоўна адбіцца на прадукцыйнасці.
 
 STR_GAME_OPTIONS_BASE_GRF                                       :{BLACK}Набор базавай ґрафікі
 STR_GAME_OPTIONS_BASE_GRF_TOOLTIP                               :{BLACK}Выбар базавага набору ґрафічных аб'ектаў
@@ -1262,6 +1342,7 @@ STR_GAME_OPTIONS_BASE_MUSIC_DESCRIPTION_TOOLTIP                 :{BLACK}Дада
 
 
 
+STR_BASESET_STATUS                                              :{STRING} {RED}({NUM} адсутнічаючы{P "" х х}/пашкоджаны{P "" х х} файл{P "" а аў})
 
 STR_ERROR_RESOLUTION_LIST_FAILED                                :{WHITE}Не атрымалася атрымаць сьпіс падтрымліваемых разрозненьняў экрана
 STR_ERROR_FULLSCREEN_FAILED                                     :{WHITE}Памылка поўнаэкраннага рэжыму
@@ -1420,7 +1501,9 @@ STR_CONFIG_SETTING_HORIZONTAL_POS_RIGHT                         :правару�
 
 STR_CONFIG_SETTING_MAXIMUM_INITIAL_LOAN                         :Максымальная сума пазыкі: {STRING}
 STR_CONFIG_SETTING_MAXIMUM_INITIAL_LOAN_HELPTEXT                :Максымальная сума пазыкі для кампаніі (без уліку інфляцыі)
+STR_CONFIG_SETTING_MAXIMUM_INITIAL_LOAN_VALUE                   :{CURRENCY_LONG}
 ###setting-zero-is-special
+STR_CONFIG_SETTING_MAXIMUM_INITIAL_LOAN_DISABLED                :няма {RED}(неабходзен гульнёвы скрыпт, які прадстаўляе пачатковыя сродкі)
 
 STR_CONFIG_SETTING_INTEREST_RATE                                :Адсоткавая стаўка: {STRING}
 STR_CONFIG_SETTING_INTEREST_RATE_HELPTEXT                       :Адсоткавая стаўка па пазыках; таксама кантралюе інфляцыю, калі тая ўключана
@@ -1533,9 +1616,11 @@ STR_CONFIG_SETTING_SIGNALSIDE_RIGHT                             :Справа
 
 ###length 2
 STR_CONFIG_SETTING_SHOWFINANCES                                 :Паказваць фінансавую статыстыку напрыканцы года: {STRING}
+STR_CONFIG_SETTING_SHOWFINANCES_PERIOD                          :Паказваць фінансавую статыстыку кожны цыкл: {STRING}
 
 ###length 2
 STR_CONFIG_SETTING_SHOWFINANCES_HELPTEXT                        :Калі ўключана, вакно фінансаў адкрываецца напрыканцы кожнага года, каб палегчыць праверку фінансавага становішча кампаніі.
+STR_CONFIG_SETTING_SHOWFINANCES_HELPTEXT_PERIOD                 :Паказваць акно з фінансавай інфармацыяй у канцы кожнага цыклу для спрашчэньня кантролю фінансавага стану кампаніі
 
 STR_CONFIG_SETTING_NONSTOP_BY_DEFAULT                           :Ствараць заданні з пазнакай «без прыпынкаў»: {STRING}
 STR_CONFIG_SETTING_NONSTOP_BY_DEFAULT_HELPTEXT                  :Звычайна транспартны сродак спыняецца на кожнай станцыі, праз якую праходзіць. Калі ўключыць гэту наладку, ён будзе мінаць усе станцыі без прыпынкаў, пакуль не дасягне канцавога пункта прызначэньня. Зазначце, што гэтая наладка датычыць толькі від новых заданьняў па змоўчаньні. Але ўсе заданьні могуць быць усталяваны дэталёва для абодвух тыпаў паводзінаў.
@@ -1558,10 +1643,12 @@ STR_CONFIG_SETTING_AUTOSCROLL_EVERY_VIEWPORT                    :ва ўсіх �
 STR_CONFIG_SETTING_BRIBE                                        :Дазволіць падкупляць мясцовыя ўлады: {STRING}
 ###length 2
 STR_CONFIG_SETTING_BRIBE_HELPTEXT                               :Дазволіць кампаніям спрабаваць даць хабар мясцовай адміністрацыі. Калі хабар будзе выкрыты інспэктарам, кампанія ўвогуле ня зможа дзейнічаць у гэтым населеным пункце на працягу 6-ці месяцаў.
+STR_CONFIG_SETTING_BRIBE_HELPTEXT_MINUTES                       :Дазволіць кампаніям спрабаваць даць хабар мясцовай адміністрацыі. Калі хабар будзе выкрыты інспэктарам, кампанія ўвогуле ня зможа дзейнічаць у гэтым населеным пункце на працягу 6-ці хвілін.
 
 STR_CONFIG_SETTING_ALLOW_EXCLUSIVE                              :Дазволіць купляць эксклюзыўныя трансп. правы: {STRING}
 ###length 2
-STR_CONFIG_SETTING_ALLOW_EXCLUSIVE_HELPTEXT                     :Калі кампанія набывае эксклюзыўныя транспартныя правы ў населеным пункце, станцыі апанэнтаў (пасажырскія ды грузавыя) не атрымаюць ніводнага грузу за цэлы год.
+STR_CONFIG_SETTING_ALLOW_EXCLUSIVE_HELPTEXT                     :Калі кампанія набывае эксклюзыўныя транспартныя правы ў населеным пункце, то на станцыі апанэнтаў не будзе паступаць груз і не будуць прыходзіць пасажыры на працягу 12{NBSP}месяцаў
+STR_CONFIG_SETTING_ALLOW_EXCLUSIVE_HELPTEXT_MINUTES             :Калі кампанія купляе эксклюзіўныя транспартныя правы, то на станцыі канкурэнтаў не будзе паступаць груз і не будуць прыходзіць пасажыры на працягу 12{NBSP}хвілін.
 
 STR_CONFIG_SETTING_ALLOW_FUND_BUILDINGS                         :Дазволіць фінансаваньне будаўніцтва будынкаў: {STRING}
 STR_CONFIG_SETTING_ALLOW_FUND_BUILDINGS_HELPTEXT                :Дазволіць кампаніям даваць грошы гарадзкім уладам для заснаваньня новых будынкаў
@@ -1597,7 +1684,10 @@ STR_CONFIG_SETTING_INFRASTRUCTURE_MAINTENANCE                   :Утрыман�
 STR_CONFIG_SETTING_INFRASTRUCTURE_MAINTENANCE_HELPTEXT          :Калі ўключана, інфраструктура патрабуе выдаткаў на ўтрыманьне. Кошт расьце прапарцыянальна памерам сеткі, таму гэта больш датычыць вялікіх кампаніяў, ніж малых.
 
 STR_CONFIG_SETTING_COMPANY_STARTING_COLOUR                      :Фірмовы колер кампаніі: {STRING}
+STR_CONFIG_SETTING_COMPANY_STARTING_COLOUR_HELPTEXT             :Абярыце пачатковы фірмовы колер кампаніі
 
+STR_CONFIG_SETTING_COMPANY_STARTING_COLOUR_SECONDARY            :Дадатковы колер кампаніі: {STRING}
+STR_CONFIG_SETTING_COMPANY_STARTING_COLOUR_SECONDARY_HELPTEXT   :Дадатковы колер транспарта кампаніі. Ён будзе выкарыстоўвацца, калі далучаны модуль NewGRF з падтрымкай дадатковага колеру.
 
 STR_CONFIG_SETTING_NEVER_EXPIRE_AIRPORTS                        :Малыя аэрапорты ніколі не састарэюць: {STRING}
 STR_CONFIG_SETTING_NEVER_EXPIRE_AIRPORTS_HELPTEXT               :Уключэньне гэтай наладкі робіць усе віды аэрапортаў даступнымі назаўжды.
@@ -1621,9 +1711,17 @@ STR_CONFIG_SETTING_NEVER_EXPIRE_VEHICLES_HELPTEXT               :Калі ўкл
 
 ###length 2
 
+STR_CONFIG_SETTING_MINUTES_PER_YEAR                             :Працягласць года: {STRING} мін.
+STR_CONFIG_SETTING_MINUTES_PER_YEAR_HELPTEXT                    :Вызначце, колькі хвілін рэальнага часу доўжыцца год у гульні. Па змаўчаньні{NBSP}- 12{NBSP}хвілін. Значэнне «0» спыніць каляндарны час. Гэта наладка не ўплывае на разлік эканамічнай мадэлі ў гульні, і працуе толькі ў рэжыме рэальнага часу.
 
+STR_CONFIG_SETTING_MINUTES_PER_YEAR_VALUE                       :{NUM}
 ###setting-zero-is-special
+STR_CONFIG_SETTING_MINUTES_PER_YEAR_FROZEN                      :0 (каляндарны час спынены)
 
+STR_CONFIG_SETTING_TOWN_CARGO_SCALE                             :Множнік прадуктыўнасьці гарадоў: {STRING}
+STR_CONFIG_SETTING_TOWN_CARGO_SCALE_HELPTEXT                    :Памножыць прадуктыўнасьць гарадоў на паказанае значэньне.
+STR_CONFIG_SETTING_INDUSTRY_CARGO_SCALE                         :Множнік прадуктыўнасьці прадпрыемстваў: {STRING}
+STR_CONFIG_SETTING_INDUSTRY_CARGO_SCALE_HELPTEXT                :Памножыць прадуктыўнасьць прадпрыемстваў на паказанае значэнне.
 
 STR_CONFIG_SETTING_AUTORENEW_VEHICLE                            :Аўтазамена старых транспартных сродкаў: {STRING}
 STR_CONFIG_SETTING_AUTORENEW_VEHICLE_HELPTEXT                   :Калі ўключана, транспарт напрыканцы свайго пэўнага тэрміна службы будзе аўтаматычна заменены, калі ўмовы замены будуць выкананыя.
@@ -1673,8 +1771,11 @@ STR_CONFIG_SETTING_OIL_REF_EDGE_DISTANCE                        :Макс. ад�
 STR_CONFIG_SETTING_OIL_REF_EDGE_DISTANCE_HELPTEXT               :Гэта наладка абмяжоўвае адлегласьць ад краю мапы да нафтавых платформаў і нафтаперапрацоўчых заводаў. Такім чынам, на краях мапы, якія сканчаюцца вадою, яны будуць будавацца ля берага. На мапах памерам больш 256 гэта значэньне будзе адпаведна павялічана.
 
 STR_CONFIG_SETTING_SNOWLINE_HEIGHT                              :Вышыня сьнегавой лініі: {STRING}
-STR_CONFIG_SETTING_SNOWLINE_HEIGHT_HELPTEXT                     :Азначце, на якой вышыні ў субарктычным клімаце ўсталёўваецца снегавы полаг. Наяўнасьць снега ўплывае на расстаноўку прадпрыемстваў і на ўмовы росту гарадоў.
+STR_CONFIG_SETTING_SNOWLINE_HEIGHT_HELPTEXT                     :Азначце, на якой вышыні ў субарктычным клімаце ўсталёўваецца снегавы полаг. Наяўнасьць снега ўплывае на расстаноўку прадпрыемстваў і на ўмовы росту гарадоў.{}Значэньне можа быць зменена толькі ў рэдактары сцэнараў; інакш яно разлічваецца ў залежнасьці ад значэньня «снежнага пакрыцця».
 
+STR_CONFIG_SETTING_SNOW_COVERAGE                                :Снежнае пакрыццё: {STRING}
+STR_CONFIG_SETTING_SNOW_COVERAGE_HELPTEXT                       :Абярыце прыкладную адносную плошчу сушы, пакрытай снегам у субарктычным клімаце. Наяўнасць снега ўплывае на размяшчэньне прадпрыемстваў і на ўмовы росту гарадоў.{}Гэта значэньне выкарыстоўваецца толькі пры стварэньні карты. Зямля на ўзроўні мора і берагавыя клеткі ніколі не пакрываюцца снегам.
+STR_CONFIG_SETTING_SNOW_COVERAGE_VALUE                          :{NUM}%
 
 STR_CONFIG_SETTING_DESERT_COVERAGE_HELPTEXT                     :Гэта значэнне вызначае прыкладны адносны плошчу сушы, пакрытай пяском у трапічным клімаце. Пустэльні ўплываюць на размяшчэнне прадпрыемстваў.{}Выкарыстоўваецца толькі пры стварэнні карты.
 
@@ -1707,6 +1808,7 @@ STR_CONFIG_SETTING_ROAD_SIDE_LEFT                               :Езьдзіц�
 STR_CONFIG_SETTING_ROAD_SIDE_RIGHT                              :Езьдзіць праваруч
 
 STR_CONFIG_SETTING_HEIGHTMAP_ROTATION                           :Кручэньне мапы вышыняў: {STRING}
+STR_CONFIG_SETTING_HEIGHTMAP_ROTATION_TOOLTIP                   :Выберыце, у які бок будзе павернута адлюстраванне мапы вышынь, каб упісацца ў гульнёвы свет
 ###length 2
 STR_CONFIG_SETTING_HEIGHTMAP_ROTATION_COUNTER_CLOCKWISE         :супраць руху гадзіньнікавай стрэлкі
 STR_CONFIG_SETTING_HEIGHTMAP_ROTATION_CLOCKWISE                 :па гадзіньнікавай стрэлцы
@@ -1733,6 +1835,8 @@ STR_CONFIG_SETTING_SMALLMAP_LAND_COLOUR_DARK_GREEN              :цёмна-зя
 STR_CONFIG_SETTING_SMALLMAP_LAND_COLOUR_VIOLET                  :фіялетавы
 
 ###length 4
+STR_CONFIG_SETTING_LINKGRAPH_COLOURS_GREEN_TO_RED               :зялёны і чырвоны (арыгінальныя)
+STR_CONFIG_SETTING_LINKGRAPH_COLOURS_GREEN_TO_BLUE              :зялёны і сіні
 
 STR_CONFIG_SETTING_SCROLLMODE                                   :Перамяшчэнне агляду: {STRING}
 STR_CONFIG_SETTING_SCROLLMODE_HELPTEXT                          :Спосаб перамяшчэння па гульнёваму полю
@@ -1835,8 +1939,14 @@ STR_CONFIG_SETTING_SHOW_TRACK_RESERVATION_HELPTEXT              :Зарэзэр�
 STR_CONFIG_SETTING_PERSISTENT_BUILDINGTOOLS                     :Захоўваць актыўнымі інструмэнты будаўніцтва пасьля ўжываньня: {STRING}
 STR_CONFIG_SETTING_PERSISTENT_BUILDINGTOOLS_HELPTEXT            :Захаваць будаўнічыя інструмэнты для мастоў, тунэляў і г.д. пасля выкарыстаньня.
 
+STR_CONFIG_SETTING_AUTO_REMOVE_SIGNALS                          :Прыбіраць чыг. сыґналы, што замінаюць пры будаўніцтве: {STRING}
+STR_CONFIG_SETTING_AUTO_REMOVE_SIGNALS_HELPTEXT                 :Аўтаматычна прыбіраць сыґналы, што замінаюць пабудове новых рэйкавых шляхоў. Гэта можа прывесці да сутыкнення цягнікоў.
 
+STR_CONFIG_SETTING_FAST_FORWARD_SPEED_LIMIT                     :Мяжа паскарэньня гульні: {STRING}
+STR_CONFIG_SETTING_FAST_FORWARD_SPEED_LIMIT_HELPTEXT            :Наладка мяжы паскарэньня гульні.{}0 - мяжы няма; гульня будзе ісці з максімальна магчымай хуткасцю.{}Пры значэньнях ніжэй 100% гульня будзе запавольвацца.{}Рэальнае значэньне паскарэньня залежыць ад канфігурацыі кампутара і колькасці аб'ектаў у гульні.
+STR_CONFIG_SETTING_FAST_FORWARD_SPEED_LIMIT_VAL                 :{NUM}% звычайнай хуткасьці
 ###setting-zero-is-special
+STR_CONFIG_SETTING_FAST_FORWARD_SPEED_LIMIT_ZERO                :няма (настолькі хутка, наколькі дазваляе кампутар)
 
 STR_CONFIG_SETTING_SOUND_TICKER                                 :Бягучы радок: {STRING}
 STR_CONFIG_SETTING_SOUND_TICKER_HELPTEXT                        :Прайграваць гук пры з'яўленьні бягучага радка з навінамі
@@ -1895,6 +2005,7 @@ STR_CONFIG_SETTING_AI_IN_MULTIPLAYER_HELPTEXT                   :Дазволі�
 STR_CONFIG_SETTING_SCRIPT_MAX_OPCODES                           :Колькасьць апэрацыяў перад спыненьнем скрыптоў: {STRING}
 STR_CONFIG_SETTING_SCRIPT_MAX_OPCODES_HELPTEXT                  :Максымальная колькасьць вылічэньняў, якія скрыпт можа выканаць за раз.
 STR_CONFIG_SETTING_SCRIPT_MAX_MEMORY                            :Макс. аб'ём памяці для скрыпту: {STRING}
+STR_CONFIG_SETTING_SCRIPT_MAX_MEMORY_HELPTEXT                   :Аб'ём памяці, які можа выкарыстоўваць скрыпт. Пры перавышэнні гэтага аб'ёму скрыпт будзе прымусова завершаны. Для вялікіх карт гэта значэнне, магчыма, запатрабуецца павялічыць.
 STR_CONFIG_SETTING_SCRIPT_MAX_MEMORY_VALUE                      :{COMMA} МіБ
 
 STR_CONFIG_SETTING_SERVINT_ISPERCENT                            :Інтэрвал абслугоўваньня ў адсотках (%): {STRING}
@@ -1915,6 +2026,8 @@ STR_CONFIG_SETTING_SERVINT_DISABLED                             :адключа�
 STR_CONFIG_SETTING_NOSERVICE                                    :Адключыць абслугоўваньне, калі скасаваны паломкі: {STRING}
 STR_CONFIG_SETTING_NOSERVICE_HELPTEXT                           :Калі ўключана, транспарт не абслугоўваецца ўвогуле, калі адключаны паломкі.
 
+STR_CONFIG_SETTING_STATION_LENGTH_LOADING_PENALTY               :Павольная загрузка доўгіх саставаў: {STRING}
+STR_CONFIG_SETTING_STATION_LENGTH_LOADING_PENALTY_HELPTEXT      :Пры ўключэньні - саставы, даўжыня якіх перавышае даўжыню станцыі, загружаюцца павольней тых, што цалкам змяшчаюцца на станцыі. Гэта не ўплывае на пабудову маршрутаў.
 
 STR_CONFIG_SETTING_WAGONSPEEDLIMITS                             :Уключыць абмежаваньне хуткасьці ваґонаў: {STRING}
 STR_CONFIG_SETTING_WAGONSPEEDLIMITS_HELPTEXT                    :Калі ўключана, выкарыстоўваць таксама й ліміты хуткасьці ў асобных ваґонаў для вызначэньня максымальнай хуткасьці ўсяго цягніка.
@@ -1976,6 +2089,8 @@ STR_CONFIG_SETTING_COLOURED_NEWS_YEAR                           :Каляров�
 STR_CONFIG_SETTING_COLOURED_NEWS_YEAR_HELPTEXT                  :Год, у якім ґазэты пачынаюць друкавацца каляровымі. Да гэтага году — выходзяць чорна-белымі.
 STR_CONFIG_SETTING_STARTING_YEAR                                :Год пачатку гульні: {STRING}
 
+STR_CONFIG_SETTING_ENDING_YEAR                                  :Апошні год гульні: {STRING}
+STR_CONFIG_SETTING_ENDING_YEAR_HELPTEXT                         :Па сканчэнні азначанага года разлічваецца рэйтынг кампаніі і выводзіцца табліца рэкордаў. Пасля гэтага гульню можна працягнуць.{}Калі азначаны год папярэднічае году пачатку гульні, то табліца рэкордаў не адлюстроўваецца.
 STR_CONFIG_SETTING_ENDING_YEAR_VALUE                            :{NUM}
 ###setting-zero-is-special
 STR_CONFIG_SETTING_ENDING_YEAR_ZERO                             :Ніколі
@@ -1995,11 +2110,16 @@ STR_CONFIG_SETTING_SEMAPHORE_BUILD_BEFORE_DATE                  :Будавац�
 STR_CONFIG_SETTING_SEMAPHORE_BUILD_BEFORE_DATE_HELPTEXT         :Выбраць год, калі на чыгунцы з'яўляюцца сьветлафоры. Да гэтага году ўжываюцца сэмафоры (якія выконваюць тыя ж функцыі, але выглядаюць інакш).
 
 STR_CONFIG_SETTING_CYCLE_SIGNAL_TYPES                           :Выбар сыґналаў (Ctrl+клік): {STRING}
-STR_CONFIG_SETTING_CYCLE_SIGNAL_TYPES_HELPTEXT                  :Якія тыпы сыґналаў можна выбраць, пстрыкаюцы з націснутым Ctrl па гатовым сыґнале.
+STR_CONFIG_SETTING_CYCLE_SIGNAL_TYPES_HELPTEXT                  :Выбар прапанаваных тыпаў сыґналаў пры іх мадыфікацыі з дапамогай Ctrl+пстрычкі па ўсталяваным сыґнале
 ###length 2
-STR_CONFIG_SETTING_CYCLE_SIGNAL_ALL                             :усе
+STR_CONFIG_SETTING_CYCLE_SIGNAL_GROUP                           :толькі бягучая група
+STR_CONFIG_SETTING_CYCLE_SIGNAL_ALL                             :усе адлюстроўваемыя
 
+STR_CONFIG_SETTING_SIGNAL_GUI_MODE                              :Тыпы сыгналаў у панэлі будаўніцтва: {STRING}
+STR_CONFIG_SETTING_SIGNAL_GUI_MODE_HELPTEXT                     :Выбар тыпаў сыґналаў, якія адлюстроўваюцца ў панэлі будаўніцтва.
 ###length 2
+STR_CONFIG_SETTING_SIGNAL_GUI_MODE_PATH                         :толькі маршрутныя
+STR_CONFIG_SETTING_SIGNAL_GUI_MODE_ALL_CYCLE_PATH               :усе
 
 STR_CONFIG_SETTING_TOWN_LAYOUT                                  :Тып дарожнай сеткі для новых горадоў: {STRING}
 STR_CONFIG_SETTING_TOWN_LAYOUT_HELPTEXT                         :Пляніроўка сеткі дарогаў у населеных пунктах.
@@ -2063,8 +2183,12 @@ STR_CONFIG_SETTING_ZOOM_LVL_OUT_2X                              :2x
 STR_CONFIG_SETTING_ZOOM_LVL_OUT_4X                              :4x
 STR_CONFIG_SETTING_ZOOM_LVL_OUT_8X                              :8x
 
+STR_CONFIG_SETTING_SPRITE_ZOOM_MIN                              :Выкарыстоўваць спрайты з разрозненьнем да: {STRING}
 STR_CONFIG_SETTING_SPRITE_ZOOM_MIN_HELPTEXT                     :Абмежаванне максімальнага разрознення спрайтаў адключае выкарыстанне графікі высокага разрознення, нават калі яна даступная. Гэта можна выкарыстоўваць для ўніфікацыі вонкавага выгляду гульні пры адначасовым выкарыстанні розных модуляў NewGRF, некаторыя з якіх утрымоўваюць графіку высокага разрознення, а іншыя - не.
 ###length 3
+STR_CONFIG_SETTING_SPRITE_ZOOM_LVL_MIN                          :4x
+STR_CONFIG_SETTING_SPRITE_ZOOM_LVL_IN_2X                        :2x
+STR_CONFIG_SETTING_SPRITE_ZOOM_LVL_NORMAL                       :1x
 
 STR_CONFIG_SETTING_TOWN_GROWTH                                  :Хуткасьць росту гарадоў: {STRING}
 STR_CONFIG_SETTING_TOWN_GROWTH_HELPTEXT                         :Хуткасьць, зь якой растуць населеныя пункты.
@@ -2083,6 +2207,10 @@ STR_CONFIG_SETTING_LARGER_TOWNS_DISABLED                        :нiводнае
 STR_CONFIG_SETTING_CITY_SIZE_MULTIPLIER                         :Першапачатковы множнік памеру населенага пункта: {STRING}
 STR_CONFIG_SETTING_CITY_SIZE_MULTIPLIER_HELPTEXT                :Адносная колькасьць гарадоў у параўнаньні з мястэчкамі на пачатку гульні.
 
+STR_CONFIG_SETTING_LINKGRAPH_RECALC_INTERVAL                    :Інтэрвал абнаўленьня ґрафа размеркаваньня: {STRING}
+STR_CONFIG_SETTING_LINKGRAPH_RECALC_INTERVAL_HELPTEXT           :Інтэрвалы паміж пераразлікамі ґрафаў размеркаваьння грузаў. Кожны пераразлік абнаўляе адзін кампанент ґрафа. Гэта значыць, па заканчэньні паказанага тут чаканьня будзе абноўлены не ўвесь ґраф, а толькі адзін з яго кампанентаў. Чым ніжэй значэньне, тым вышэй нагрузка на працэсар. Чым вышэй значэньне, тым даўжэй не будзе працаваць размеркаваньне грузаў на новых маршрутах.
+STR_CONFIG_SETTING_LINKGRAPH_RECALC_TIME                        :Працягласць пераразліку ґрафа размеркаваньня: {STRING}
+STR_CONFIG_SETTING_LINKGRAPH_RECALC_TIME_HELPTEXT               :Час, які выдаткоўваецца на кожны пераразлік аднаго з кампанентаў ґрафа размеркаваньня грузаў. Разлік выконваецца ў асобным вылічальным струмені. Чым ніжэй значэньне, тым вышэй верагоднасць таго, што разлік не будзе выкананы за паказаны час; у такім разе гульня будзе прыпынена да завяршэння разліку. Чым вышэй значэньне, тым павольней будзе абнаўляцца ґраф размеркаваньня ў выпадку змены маршрутаў.
 
 STR_CONFIG_SETTING_DISTRIBUTION_PAX                             :Разьмеркаваньне пасажыраў: {STRING}
 STR_CONFIG_SETTING_DISTRIBUTION_PAX_HELPTEXT                    :«Сымэтрычнае» азначае, што прыкладна аднолькавая колькасьць пасажыраў будзе накіроўвацца па прамым і зваротным маршрутам.{}«Несымэтрычнае» азначае, што пасажырапатокі ў любых кірунках не будуць залежаць адзін ад аднаго.{}«Уручную» — не выкарыстоўваць аўтаматычнае разьмеркаваньне для пасажыраў.
@@ -2108,11 +2236,15 @@ STR_CONFIG_SETTING_DEMAND_SIZE_HELPTEXT                         :Усталёў�
 STR_CONFIG_SETTING_SHORT_PATH_SATURATION                        :Насычэньне кароткіх маршрутаў перад выкарыстаньнем ёмістых: {STRING}
 STR_CONFIG_SETTING_SHORT_PATH_SATURATION_HELPTEXT               :Пры наяўнасці некалькіх маршрутаў паміж станцыямі альґарытм разьмеркаваньня грузаў будзе выкарыстоўваць карацейшы маршрут да яго насычэньня, потым наступны па даўжыні, пакуль ён таксама не будзе насычаны, і г.{NBSP}д. Насычэньне вызначаецца па ацэнцы ёмістасьці ды плянуемай напружанасьці выкарыстаньня. Калі ўсе шляхі насычаныя, а попыт застаецца, Cargodist будзе перагружаць усе маршруты, аддаючы перавагу больш ёмістым. Збольшага альґарытм ня будзе дакладна вылічваць ёмістасьць. Гэта наладка дазваляе вызнасыць, наколькі загружаць маршрут, перад тым як пачаць выкарыстоўваць даўжэйшы. Усталюйце значэньне ніжэй за 100%, каб пазьбегнуць перагрузкі станцыяў у выпадку, калі прапускная здольнасьць маршруту будзе пераацэнена альґарытмам.
 
-STR_CONFIG_SETTING_LOCALISATION_UNITS_VELOCITY                  :Сыстэма адзінак для хуткасьці: {STRING}
+STR_CONFIG_SETTING_LOCALISATION_UNITS_VELOCITY                  :Сістэма адзінак хуткасьці наземных ТС: {STRING}
+STR_CONFIG_SETTING_LOCALISATION_UNITS_VELOCITY_NAUTICAL         :Сістэма адзінак хуткасьці водных і паветраных ТС: {STRING}
 STR_CONFIG_SETTING_LOCALISATION_UNITS_VELOCITY_HELPTEXT         :Паказваць значэньні хуткасьці ў выбранай сыстэме адзінак
 STR_CONFIG_SETTING_LOCALISATION_UNITS_VELOCITY_IMPERIAL         :ангельскія (міль/г)
 STR_CONFIG_SETTING_LOCALISATION_UNITS_VELOCITY_METRIC           :мэтрычная (км/г)
 STR_CONFIG_SETTING_LOCALISATION_UNITS_VELOCITY_SI               :СІ (м/с)
+STR_CONFIG_SETTING_LOCALISATION_UNITS_VELOCITY_GAMEUNITS_DAYS   :Унутраныя адзінкі (клетак/дзень)
+STR_CONFIG_SETTING_LOCALISATION_UNITS_VELOCITY_GAMEUNITS_SECS   :Унутраныя адзінкі (клетак/сек.)
+STR_CONFIG_SETTING_LOCALISATION_UNITS_VELOCITY_KNOTS            :вузлы
 
 STR_CONFIG_SETTING_LOCALISATION_UNITS_POWER                     :Сыстэма адзінак для магутнасьці: {STRING}
 STR_CONFIG_SETTING_LOCALISATION_UNITS_POWER_HELPTEXT            :Паказваць магутнасьць рухавікоў транспартных сродкаў у выбранай сыстэме адзінак
@@ -2208,6 +2340,7 @@ STR_CONFIG_ERROR_OUT_OF_MEMORY                                  :{WHITE}Неда
 STR_CONFIG_ERROR_SPRITECACHE_TOO_BIG                            :{WHITE}Не атрымалася вылучыць {BYTES} для кэша спрайтаў. Памер кэша зніжаны да {BYTES}. Гэта адмоўна адаб'ецца на прадукцыйнасьці OpenTTD. Каб зьменшыць выдаткі памяці, адключыце 32-бітную ґрафіку й зьменшыце максімальны ўзровень набліжэньня.
 
 # Video initalization errors
+STR_VIDEO_DRIVER_ERROR_HARDWARE_ACCELERATION_CRASH              :{WHITE}... драйвер відэакарты выклікаў крытычную памылку. Апаратнае паскарэньне адключана.
 
 # Intro window
 STR_INTRO_CAPTION                                               :{WHITE}OpenTTD {REV}
@@ -2221,9 +2354,12 @@ STR_INTRO_MULTIPLAYER                                           :{BLACK}Сетк
 
 STR_INTRO_GAME_OPTIONS                                          :{BLACK}Наладкі гульні
 STR_INTRO_HIGHSCORE                                             :{BLACK}Табліца рэкордаў
+STR_INTRO_HELP                                                  :{BLACK}Дапамога і дакументацыя
 STR_INTRO_CONFIG_SETTINGS_TREE                                  :{BLACK}Наладкі
 STR_INTRO_NEWGRF_SETTINGS                                       :{BLACK}Наладкi NewGRF
 STR_INTRO_ONLINE_CONTENT                                        :{BLACK}Праверыць анлайн-кантэнт
+STR_INTRO_AI_SETTINGS                                           :{BLACK}Наладкі ШІ
+STR_INTRO_GAMESCRIPT_SETTINGS                                   :{BLACK}Наладкі гульнёвых скрыптоў
 STR_INTRO_QUIT                                                  :{BLACK}Выхад
 
 STR_INTRO_TOOLTIP_NEW_GAME                                      :{BLACK}Пачаць новую гульню. Ctrl+клік прапускае этап наладак мапы
@@ -2240,9 +2376,12 @@ STR_INTRO_TOOLTIP_TOYLAND_LANDSCAPE                             :{BLACK}Выбр
 
 STR_INTRO_TOOLTIP_GAME_OPTIONS                                  :{BLACK}Паказаць наладкі гульні
 STR_INTRO_TOOLTIP_HIGHSCORE                                     :{BLACK}Паказаць табліцу рэкордаў
-STR_INTRO_TOOLTIP_CONFIG_SETTINGS_TREE                          :{BLACK}Акно наладак
+STR_INTRO_TOOLTIP_HELP                                          :{BLACK}Спасылкі на дакументацыю і інтэрнэт-рэсурсы
+STR_INTRO_TOOLTIP_CONFIG_SETTINGS_TREE                          :{BLACK}Адкрыць наладкі
 STR_INTRO_TOOLTIP_NEWGRF_SETTINGS                               :{BLACK}Паказаць наладкі NewGRF
 STR_INTRO_TOOLTIP_ONLINE_CONTENT                                :{BLACK}Праверыць новы й абноўлены кантэнт, каб спампаваць
+STR_INTRO_TOOLTIP_AI_SETTINGS                                   :{BLACK}Адкрыць наладкі ШІ
+STR_INTRO_TOOLTIP_GAMESCRIPT_SETTINGS                           :{BLACK}Адкрыць наладкі гульнёвых скрыптоў
 STR_INTRO_TOOLTIP_QUIT                                          :{BLACK}Выйсьці з OpenTTD
 
 STR_INTRO_BASESET                                               :{BLACK}У абраным наборы базавай графікі адсутнічае {NUM} спрайт{P "" а аў}. Калі ласка, абнавіце набор графікі.
@@ -2259,6 +2398,17 @@ STR_ABANDON_GAME_QUERY                                          :{YELLOW}Вы с
 STR_ABANDON_SCENARIO_QUERY                                      :{YELLOW}Вы ўпэўнены, што хочаце пакінуць гэты сцэнар?
 
 # Help window
+STR_HELP_WINDOW_CAPTION                                         :{WHITE}Дапамога і дакументацыя
+STR_HELP_WINDOW_WEBSITES                                        :{BLACK}Вэб-сайты
+STR_HELP_WINDOW_DOCUMENTS                                       :{BLACK}Дакументы
+STR_HELP_WINDOW_README                                          :{BLACK}Readme
+STR_HELP_WINDOW_CHANGELOG                                       :{BLACK}Гісторыя зьмен
+STR_HELP_WINDOW_KNOWN_BUGS                                      :{BLACK}Вядомыя памылкі
+STR_HELP_WINDOW_LICENSE                                         :{BLACK}Ліцэнзія
+STR_HELP_WINDOW_MAIN_WEBSITE                                    :{BLACK}OpenTTD
+STR_HELP_WINDOW_MANUAL_WIKI                                     :{BLACK}Інструкцыя / Wiki
+STR_HELP_WINDOW_BUGTRACKER                                      :{BLACK}Паведаміць пра памылку
+STR_HELP_WINDOW_COMMUNITY                                       :{BLACK}Супольнасць
 
 # Cheat window
 STR_CHEATS                                                      :{WHITE}Махлярства (чыты)
@@ -2281,9 +2431,11 @@ STR_LIVERY_TRAIN_TOOLTIP                                        :{BLACK}Пака
 STR_LIVERY_ROAD_VEHICLE_TOOLTIP                                 :{BLACK}Паказаць каляровыя схэмы аўтатранспарту
 STR_LIVERY_SHIP_TOOLTIP                                         :{BLACK}Паказаць каляровыя схэмы караблёў
 STR_LIVERY_AIRCRAFT_TOOLTIP                                     :{BLACK}Паказаць каляровыя схэмы самалётаў
+STR_LIVERY_ROAD_VEHICLE_GROUP_TOOLTIP                           :{BLACK}Паказаць колеры аўтамабільных груп
 STR_LIVERY_PRIMARY_TOOLTIP                                      :{BLACK}Налада асноўнага колеру абранага тыпу транспарта. Ctrl+пстрычка ўсталюе абраны колер для ўсіх тыпаў транспарта.
 STR_LIVERY_SECONDARY_TOOLTIP                                    :{BLACK}Налада дадатковага колеру абранага тыпу транспарта. Ctrl+пстрычка ўсталюе абраны колер для ўсіх тыпаў транспарта.
 STR_LIVERY_PANEL_TOOLTIP                                        :{BLACK}Выберыце каляровую схэму ці некалькі схэмаў з Ctrl, пастаўце птушку для праверкі выбранай схэмы
+STR_LIVERY_ROAD_VEHICLE_GROUP_EMPTY                             :Групы аўтамабільных транспартных сродкаў не наладжаны
 
 ###length 23
 STR_LIVERY_DEFAULT                                              :Стандартная афарбоўка
@@ -2419,6 +2571,7 @@ STR_NETWORK_SERVER_LIST_START_SERVER                            :{BLACK}Запу
 STR_NETWORK_SERVER_LIST_START_SERVER_TOOLTIP                    :{BLACK}Запуск сэрвэра на вашым кампутары. Да гэтае гульні змогуць далучыцца іншыя гульцы.
 
 STR_NETWORK_SERVER_LIST_PLAYER_NAME_OSKTITLE                    :{BLACK}Увядзіце вашае імя
+STR_NETWORK_SERVER_LIST_ENTER_SERVER_ADDRESS                    :{BLACK}Увядзіце адрас сэрвэра ці код-запрашэньне
 
 # Start new multiplayer server
 STR_NETWORK_START_SERVER_CAPTION                                :{WHITE}Запуск новай сеткавай гульні
@@ -2463,14 +2616,28 @@ STR_NETWORK_NEED_COMPANY_PASSWORD_CAPTION                       :{WHITE}Камп
 STR_NETWORK_COMPANY_LIST_CLIENT_LIST                            :Сьпіс кліентаў
 
 # Network client list
+STR_NETWORK_CLIENT_LIST_SERVER_CONNECTION_TYPE                  :{BLACK}Злучэньне
+STR_NETWORK_CLIENT_LIST_SERVER_CONNECTION_TYPE_TOOLTIP          :{BLACK}Спосаб далучэння іншых гульцоў да вашага сервера
+STR_NETWORK_CLIENT_LIST_ADMIN_CLIENT_TOOLTIP                    :{BLACK}Адміністрацыйныя дзеяньні, што магчыма ўжыць да гэтага гульца
+STR_NETWORK_CLIENT_LIST_ADMIN_COMPANY_TOOLTIP                   :{BLACK}Адміністрацыйныя дзеяньні, што магчыма ўжыць да гэтагй кампаніі
 STR_NETWORK_CLIENT_LIST_CHAT_CLIENT_TOOLTIP                     :{BLACK}Адправіць паведамленне гэтаму гульцу
 STR_NETWORK_CLIENT_LIST_NEW_COMPANY_TOOLTIP                     :{BLACK}Заснаваць новую транспартную кампанію й далучыцца да яе
 STR_NETWORK_CLIENT_LIST_PLAYER_ICON_HOST_TOOLTIP                :{BLACK}Гэта арганізатар гульні
+STR_NETWORK_CLIENT_LIST_CLIENT_COMPANY_COUNT                    :{BLACK}{NUM} кліент{P "" а аў} - {NUM}/{NUM} кампані{P я і й}
+STR_NETWORK_CLIENT_LIST_CLIENT_COMPANY_COUNT_TOOLTIP            :{BLACK}Колькасць далучаных у дадзены момант кліентаў, існуючых кампаній і максімальна дапушчальная колькасць кампаній
 
 # Matches ConnectionType
 ###length 5
+STR_NETWORK_CLIENT_LIST_SERVER_CONNECTION_TYPE_UNKNOWN          :{BLACK}Лакальнае
+STR_NETWORK_CLIENT_LIST_SERVER_CONNECTION_TYPE_ISOLATED         :{RED}Іншыя гульцы не могуць далучыцца
+STR_NETWORK_CLIENT_LIST_SERVER_CONNECTION_TYPE_DIRECT           :{BLACK}Публічнае
+STR_NETWORK_CLIENT_LIST_SERVER_CONNECTION_TYPE_STUN             :{BLACK}Сервер за NAT
+STR_NETWORK_CLIENT_LIST_SERVER_CONNECTION_TYPE_TURN             :{BLACK}Праз транслятар
 
 STR_NETWORK_CLIENT_LIST_ADMIN_CLIENT_KICK                       :Адключыць
+STR_NETWORK_CLIENT_LIST_ADMIN_CLIENT_BAN                        :Заблакаваць
+STR_NETWORK_CLIENT_LIST_ADMIN_COMPANY_RESET                     :Выдаліць
+STR_NETWORK_CLIENT_LIST_ADMIN_COMPANY_UNLOCK                    :Скінуць пароль
 
 STR_NETWORK_CLIENT_LIST_ASK_CLIENT_KICK                         :{YELLOW}Адключыць гульца «{STRING}»?
 
@@ -2527,7 +2694,7 @@ STR_NETWORK_ERROR_TIMEOUT_COMPUTER                              :{WHITE}Ваш �
 STR_NETWORK_ERROR_TIMEOUT_MAP                                   :{WHITE}Ваш кампутар задоўга пампуе мапу
 STR_NETWORK_ERROR_TIMEOUT_JOIN                                  :{WHITE}Ваш кампутар задоўга далучаецца да сэрвэру
 
-STR_NETWORK_ERROR_CLIENT_GUI_LOST_CONNECTION_CAPTION            :{WHITE}Падключэньне згублена
+STR_NETWORK_ERROR_CLIENT_GUI_LOST_CONNECTION_CAPTION            :{WHITE}Злучэньне згублена
 STR_NETWORK_ERROR_CLIENT_GUI_LOST_CONNECTION                    :{WHITE}На працягу {NUM} сэкунд{P ы аў аў} не атрымана ніякіх дадзеных з боку сэрвэра
 
 ###length 21
@@ -2561,22 +2728,26 @@ STR_NETWORK_SERVER_MESSAGE_GAME_STILL_PAUSED_1                  :Гульня ў
 STR_NETWORK_SERVER_MESSAGE_GAME_STILL_PAUSED_2                  :Гульня ўсё яшчэ спынена ({STRING}, {STRING})
 STR_NETWORK_SERVER_MESSAGE_GAME_STILL_PAUSED_3                  :Гульня ўсё яшчэ спынена ({STRING}, {STRING}, {STRING})
 STR_NETWORK_SERVER_MESSAGE_GAME_STILL_PAUSED_4                  :Гульня ўсё яшчэ ў паўзе ({STRING}, {STRING}, {STRING}, {STRING})
+STR_NETWORK_SERVER_MESSAGE_GAME_STILL_PAUSED_5                  :Гульня ўсё яшчэ прыпынена ({STRING}, {STRING}, {STRING}, {STRING}, {STRING})
 STR_NETWORK_SERVER_MESSAGE_GAME_UNPAUSED                        :Гульня працягнута ({STRING})
 STR_NETWORK_SERVER_MESSAGE_GAME_REASON_NOT_ENOUGH_PLAYERS       :колькасьць гульцоў
 STR_NETWORK_SERVER_MESSAGE_GAME_REASON_CONNECTING_CLIENTS       :злучэньне кліентаў
 STR_NETWORK_SERVER_MESSAGE_GAME_REASON_MANUAL                   :уручную
 STR_NETWORK_SERVER_MESSAGE_GAME_REASON_GAME_SCRIPT              :гульнёвы скрыпт
+STR_NETWORK_SERVER_MESSAGE_GAME_REASON_LINK_GRAPH               :чакае абнаўленьня ґрафа размеркаваньня
 
 STR_NETWORK_MESSAGE_CLIENT_LEAVING                              :выходзіць
 STR_NETWORK_MESSAGE_CLIENT_JOINED                               :*** {STRING} далучыўся да гульні
-STR_NETWORK_MESSAGE_CLIENT_JOINED_ID                            :*** {STRING} далучыўся да гульні (кліент #{2:NUM})
-STR_NETWORK_MESSAGE_CLIENT_COMPANY_JOIN                         :*** {STRING} далучыўся да кампаніі #{2:NUM}
+STR_NETWORK_MESSAGE_CLIENT_JOINED_ID                            :*** {0:STRING} далучыўся да гульні (кліент №{2:NUM})
+STR_NETWORK_MESSAGE_CLIENT_COMPANY_JOIN                         :*** {0:STRING} далучыўся да кампаніі №{2:NUM}
 STR_NETWORK_MESSAGE_CLIENT_COMPANY_SPECTATE                     :*** {STRING} далучыўся да назіральнікаў
-STR_NETWORK_MESSAGE_CLIENT_COMPANY_NEW                          :*** {STRING} распачаў новую кампанію (#{2:NUM})
-STR_NETWORK_MESSAGE_CLIENT_LEFT                                 :*** {STRING} выйшаў з гульні ({2:STRING})
+STR_NETWORK_MESSAGE_CLIENT_COMPANY_NEW                          :*** {0:STRING} распачаў новую кампанію (№{2:NUM})
+STR_NETWORK_MESSAGE_CLIENT_LEFT                                 :*** {0:STRING} выйшаў з гульні ({2:STRING})
 STR_NETWORK_MESSAGE_NAME_CHANGE                                 :*** {STRING} зьмяніў сваё імя на {STRING}
+STR_NETWORK_MESSAGE_GIVE_MONEY                                  :*** Кампанія «{0:STRING}» перадала «{1:STRING}» {2:CURRENCY_LONG}
 STR_NETWORK_MESSAGE_SERVER_SHUTDOWN                             :{WHITE}Гэты сэрвэр закрыў сэсію
 STR_NETWORK_MESSAGE_SERVER_REBOOT                               :{WHITE}Гэты сэрвэр перазапускаецца...{}Пачакайце, калі ласка
+STR_NETWORK_MESSAGE_KICKED                                      :*** {STRING} быў выключаны з гульні. Чыннік: ({STRING})
 
 STR_NETWORK_ERROR_COORDINATOR_ISOLATED_DETAIL                   :{WHITE}Іншыя гульцы не змогуць далучыцца да вашага сервера
 
@@ -2684,6 +2855,7 @@ STR_TRANSPARENT_BUILDINGS_TOOLTIP                               :{BLACK}Пера
 STR_TRANSPARENT_BRIDGES_TOOLTIP                                 :{BLACK}Пераключыць празрыстасьць для мастоў. Ctrl+клік — заблякаваць.
 STR_TRANSPARENT_STRUCTURES_TOOLTIP                              :{BLACK}Пераключыць празрыстасьць для пабудоў кшталту маякоў і антэнаў. Ctrl+клік — заблякаваць.
 STR_TRANSPARENT_CATENARY_TOOLTIP                                :{BLACK}Пераключыць празрыстасьць для кантактнай сеткі. Ctrl+клік — заблякаваць.
+STR_TRANSPARENT_TEXT_TOOLTIP                                    :{BLACK}Пераключэньне празрыстасці індыкатараў пагрузкі, прыбыткаў і выдаткаў. Ctrl+пстрычка - заблакаваць.
 STR_TRANSPARENT_INVISIBLE_TOOLTIP                               :{BLACK}Зрабіць аб'екты не празрыстымі, а цалкам нябачнымі
 
 # Linkgraph legend window
@@ -2699,6 +2871,10 @@ STR_LINKGRAPH_LEGEND_SATURATED                                  :{TINY_FONT}{BLA
 STR_LINKGRAPH_LEGEND_OVERLOADED                                 :{TINY_FONT}{BLACK}перагруз
 
 # Linkgraph tooltip
+STR_LINKGRAPH_STATS_TOOLTIP_MONTH                               :{BLACK}{CARGO_LONG}/мес. да транспартаваньня ад {STATION} да {STATION} ({COMMA}% ёмістасці){STRING}
+STR_LINKGRAPH_STATS_TOOLTIP_MINUTE                              :{BLACK}{CARGO_LONG}/мін. да транспартаваньня ад {STATION} да {STATION} ({COMMA}% ёмістасці){STRING}
+STR_LINKGRAPH_STATS_TOOLTIP_RETURN_EXTENSION                    :{}{CARGO_LONG} да звароту ({COMMA}% ёмістасці)
+STR_LINKGRAPH_STATS_TOOLTIP_TIME_EXTENSION                      :{}Сярэдні час у дарозе: {UNITS_DAYS_OR_SECONDS}
 
 # Base for station construction window(s)
 STR_STATION_BUILD_COVERAGE_AREA_TITLE                           :{BLACK}Падсьветка зоны пакрыцьця
@@ -2708,6 +2884,8 @@ STR_STATION_BUILD_COVERAGE_AREA_OFF_TOOLTIP                     :{BLACK}Не п�
 STR_STATION_BUILD_COVERAGE_AREA_ON_TOOLTIP                      :{BLACK}Паказваць зону пакрыцьця
 STR_STATION_BUILD_ACCEPTS_CARGO                                 :{BLACK}Прымае: {GOLD}{CARGO_LIST}
 STR_STATION_BUILD_SUPPLIES_CARGO                                :{BLACK}Прапаноўвае: {GOLD}{CARGO_LIST}
+STR_STATION_BUILD_INFRASTRUCTURE_COST_YEAR                      :{BLACK}Утрыманьне: {GOLD}{CURRENCY_SHORT}/год
+STR_STATION_BUILD_INFRASTRUCTURE_COST_PERIOD                    :{BLACK}Утрыманьне: {GOLD}{CURRENCY_SHORT}/цыкл
 
 # Join station window
 STR_JOIN_STATION_CAPTION                                        :{WHITE}Аб'яднаць станцыі
@@ -2789,6 +2967,10 @@ STR_BUILD_SIGNAL_DRAG_SIGNALS_DENSITY_INCREASE_TOOLTIP          :{BLACK}Павя
 STR_SELECT_RAIL_BRIDGE_CAPTION                                  :{WHITE}Выберыце чыгуначны мост
 STR_SELECT_ROAD_BRIDGE_CAPTION                                  :{WHITE}Выберыце аўтамабiльны мост
 STR_SELECT_BRIDGE_SELECTION_TOOLTIP                             :{BLACK}Выбар моста — пстрыкніце па малюнку моста, які Вы хочаце пабудаваць
+STR_SELECT_BRIDGE_INFO_NAME                                     :{GOLD}{STRING}
+STR_SELECT_BRIDGE_INFO_NAME_MAX_SPEED                           :{GOLD}{STRING},{} {VELOCITY}
+STR_SELECT_BRIDGE_INFO_NAME_COST                                :{GOLD}{0:STRING},{} {WHITE}{2:CURRENCY_LONG}
+STR_SELECT_BRIDGE_INFO_NAME_MAX_SPEED_COST                      :{GOLD}{STRING},{} {VELOCITY} {WHITE}{CURRENCY_LONG}
 STR_BRIDGE_NAME_SUSPENSION_STEEL                                :Падвесны сталёвы
 STR_BRIDGE_NAME_GIRDER_STEEL                                    :Бэлечны сталёвы
 STR_BRIDGE_NAME_CANTILEVER_STEEL                                :Кансольны сталёвы
@@ -3010,8 +3192,10 @@ STR_LAND_AREA_INFORMATION_CARGO_ACCEPTED                        :{BLACK}Прым
 STR_LAND_AREA_INFORMATION_CARGO_EIGHTS                          :({COMMA}/8 {STRING})
 STR_LANG_AREA_INFORMATION_RAIL_TYPE                             :{BLACK}Тып чыгуначнага палатна: {LTBLUE}{STRING}
 STR_LANG_AREA_INFORMATION_ROAD_TYPE                             :{BLACK}Тып дарожнага палатна: {LTBLUE}{STRING}
+STR_LANG_AREA_INFORMATION_TRAM_TYPE                             :{BLACK}Тып трамвайных шляхоў: {LTBLUE}{STRING}
 STR_LANG_AREA_INFORMATION_RAIL_SPEED_LIMIT                      :{BLACK}Макс. хуткасьць чыгункi: {LTBLUE}{VELOCITY}
 STR_LANG_AREA_INFORMATION_ROAD_SPEED_LIMIT                      :{BLACK}Макс. хуткасьць аўтамабіляў: {LTBLUE}{VELOCITY}
+STR_LANG_AREA_INFORMATION_TRAM_SPEED_LIMIT                      :{BLACK}Макс. хуткасьць трамваяў: {LTBLUE}{VELOCITY}
 
 # Description of land area of different tiles
 STR_LAI_CLEAR_DESCRIPTION_ROCKS                                 :Камяні
@@ -3114,13 +3298,19 @@ STR_ABOUT_COPYRIGHT_OPENTTD                                     :{BLACK}OpenTTD 
 STR_FRAMERATE_CAPTION                                           :{WHITE}Хуткасць гульні
 STR_FRAMERATE_CAPTION_SMALL                                     :{STRING}{WHITE} ({DECIMAL}x)
 STR_FRAMERATE_RATE_GAMELOOP                                     :{BLACK}Хуткасць разліку гульні: {STRING}
+STR_FRAMERATE_RATE_GAMELOOP_TOOLTIP                             :{BLACK}Колькасьць гульнёвых цыклаў, разлічаных у секунду.
+STR_FRAMERATE_RATE_BLITTER                                      :{BLACK}Вывад на экран: {STRING}
 STR_FRAMERATE_RATE_BLITTER_TOOLTIP                              :{BLACK}Колькасць адлюстроўваных кадраў у секунду.
 STR_FRAMERATE_SPEED_FACTOR                                      :{BLACK}Бягучая хуткасьць гульні: {DECIMAL}x
 STR_FRAMERATE_SPEED_FACTOR_TOOLTIP                              :{BLACK}Фактычная хуткасьць гульні (у параўнаньні з чаканаю хуткасьцю пры звычайнай хуткасьці сімуляцыі).
+STR_FRAMERATE_CURRENT                                           :{WHITE}Цяпер
+STR_FRAMERATE_AVERAGE                                           :{WHITE}У сярэднім
+STR_FRAMERATE_MEMORYUSE                                         :{WHITE}Аб'ём памяці
 STR_FRAMERATE_DATA_POINTS                                       :{BLACK}Дадзеныя па {COMMA} вымярэнь{P ню ям ям}
 STR_FRAMERATE_MS_GOOD                                           :{LTBLUE}{DECIMAL} мс
 STR_FRAMERATE_MS_WARN                                           :{YELLOW}{DECIMAL} мс
 STR_FRAMERATE_MS_BAD                                            :{RED}{DECIMAL} мс
+STR_FRAMERATE_FPS_GOOD                                          :{LTBLUE}{DECIMAL} кадр{P "" а аў}/с
 STR_FRAMERATE_FPS_WARN                                          :{YELLOW}{DECIMAL} кадр{P "" а аў}/с
 STR_FRAMERATE_FPS_BAD                                           :{RED}{DECIMAL} кадр{P "" а аў}/с
 STR_FRAMERATE_BYTES_GOOD                                        :{LTBLUE}{BYTES}
@@ -3129,10 +3319,15 @@ STR_FRAMERATE_GRAPH_SECONDS                                     :{TINY_FONT}{COM
 
 ###length 15
 STR_FRAMERATE_GAMELOOP                                          :{BLACK}Разлік гульнявога цыклу:
+STR_FRAMERATE_GL_ECONOMY                                        :{BLACK} Разлік аб'ёмаў грузу:
+STR_FRAMERATE_GL_TRAINS                                         :{BLACK} Рух цягнікоў:
 STR_FRAMERATE_GL_ROADVEHS                                       :{BLACK} Рух аўтамабіляў:
+STR_FRAMERATE_GL_SHIPS                                          :{BLACK} Рух судоў:
 STR_FRAMERATE_GL_AIRCRAFT                                       :{BLACK} Рух паветраных судоў:
+STR_FRAMERATE_GL_LANDSCAPE                                      :{BLACK} Змены на мапе:
 STR_FRAMERATE_GL_LINKGRAPH                                      :{BLACK} Затрымка ґрафа размеркаваньня:
 STR_FRAMERATE_DRAWING                                           :{BLACK}Адмалёўка адлюстравання:
+STR_FRAMERATE_DRAWING_VIEWPORTS                                 :{BLACK} Дадатковыя вокны:
 STR_FRAMERATE_ALLSCRIPTS                                        :{BLACK}Усяго скрыптоў/ШІ:
 STR_FRAMERATE_GAMESCRIPT                                        :{BLACK}   Гульнявы скрыпт:
 STR_FRAMERATE_AI                                                :{BLACK}   ШІ {NUM} {STRING}
@@ -3183,15 +3378,25 @@ STR_SAVELOAD_OSKTITLE                                           :{BLACK}Увяд
 # World generation
 STR_MAPGEN_WORLD_GENERATION_CAPTION                             :{WHITE}Стварэньне сусьвету
 STR_MAPGEN_MAPSIZE                                              :{BLACK}Памер мапы:
-STR_MAPGEN_MAPSIZE_TOOLTIP                                      :{BLACK}Выберыце памер памы ў клетках. Колькасьць даступных клетак будзе трохі меншай
+STR_MAPGEN_MAPSIZE_TOOLTIP                                      :{BLACK}Выберыце памер мапы ў клетках. Колькасьць даступных клетак будзе трохі меншай
 STR_MAPGEN_BY                                                   :{BLACK}*
 STR_MAPGEN_NUMBER_OF_TOWNS                                      :{BLACK}Колькасьць гарадоў:
 STR_MAPGEN_TOWN_NAME_LABEL                                      :{BLACK}Назвы гарадоў
 STR_MAPGEN_TOWN_NAME_DROPDOWN_TOOLTIP                           :{BLACK}На якой мове будуць назвы населеных пунктаў
 STR_MAPGEN_DATE                                                 :{BLACK}Дата:
 STR_MAPGEN_NUMBER_OF_INDUSTRIES                                 :{BLACK}Колькасьць прадпрыемстваў:
+STR_MAPGEN_HEIGHTMAP_HEIGHT                                     :{BLACK}Cамая высокая вяршыня:
+STR_MAPGEN_HEIGHTMAP_HEIGHT_TOOLTIP                             :{BLACK}Азначце максімальную вышыню гор, створаных генератарам карт (адносна ўзроўня мора)
+STR_MAPGEN_HEIGHTMAP_HEIGHT_UP                                  :{BLACK}Павялічыць максімальную вышыню гор на карце на 1
+STR_MAPGEN_HEIGHTMAP_HEIGHT_DOWN                                :{BLACK}Паменшыць максімальную вышыню гор на карце на 1
+STR_MAPGEN_SNOW_COVERAGE                                        :{BLACK}Снежнае пакрыццё:
+STR_MAPGEN_SNOW_COVERAGE_UP                                     :{BLACK}Павялічыць плошчу снежнага пакрыцця на 10%
+STR_MAPGEN_SNOW_COVERAGE_DOWN                                   :{BLACK}Паменшыць плошчу снежнага пакрыцця на 10%
 STR_MAPGEN_SNOW_COVERAGE_TEXT                                   :{BLACK}{NUM}%
+STR_MAPGEN_DESERT_COVERAGE                                      :{BLACK}Пяшчанае пакрыццё:
+STR_MAPGEN_DESERT_COVERAGE_UP                                   :{BLACK}Павялічыць плошчу пяшчанага пакрыцця на 10%
 STR_MAPGEN_DESERT_COVERAGE_DOWN                                 :{BLACK}Паменшыць плошчу пяшчанага пакрыцця на 10%
+STR_MAPGEN_DESERT_COVERAGE_TEXT                                 :{BLACK}{NUM}%
 STR_MAPGEN_TERRAIN_TYPE                                         :{BLACK}Тып ляндшафту:
 STR_MAPGEN_SEA_LEVEL                                            :{BLACK}Колькасьць азёраў/мораў:
 STR_MAPGEN_QUANTITY_OF_RIVERS                                   :{BLACK}Колькасьць рэк:
@@ -3236,9 +3441,15 @@ STR_MAPGEN_BORDER_MANUAL                                        :{BLACK}Уруч
 
 STR_MAPGEN_HEIGHTMAP_ROTATION                                   :{BLACK}Паварот мапы:
 STR_MAPGEN_HEIGHTMAP_NAME                                       :{BLACK}Назва мапы:
+STR_MAPGEN_HEIGHTMAP_NAME_TOOLTIP                               :{BLACK}Імя файла з адлюстраваньнем, выкарыстаным для мапы вышынь
 STR_MAPGEN_HEIGHTMAP_SIZE_LABEL                                 :{BLACK}Памер:
+STR_MAPGEN_HEIGHTMAP_SIZE_LABEL_TOOLTIP                         :{BLACK}Памеры зыходнага адлюстраваньня для мапы вышынь. Для найлепшага выніку яны павінны адпавядаць памерам мапы OpenTTD: 256, 512, 1024 і{NBSP}г.{NBSP}д.
 STR_MAPGEN_HEIGHTMAP_SIZE                                       :{ORANGE}{NUM} * {NUM}
 
+STR_MAPGEN_TERRAIN_TYPE_QUERY_CAPT                              :{WHITE}Максімальная вышыня
+STR_MAPGEN_HEIGHTMAP_HEIGHT_QUERY_CAPT                          :{WHITE}Cамая высокая вяршыня
+STR_MAPGEN_SNOW_COVERAGE_QUERY_CAPT                             :{WHITE}Снежнае пакрыццё (у %)
+STR_MAPGEN_DESERT_COVERAGE_QUERY_CAPT                           :{WHITE}Пяшчанае пакрыццё (у %)
 STR_MAPGEN_START_DATE_QUERY_CAPT                                :{WHITE}Зьмяніць год пачатку гульні
 
 # SE Map generation
@@ -3247,6 +3458,7 @@ STR_SE_MAPGEN_FLAT_WORLD                                        :{WHITE}Пляс
 STR_SE_MAPGEN_FLAT_WORLD_TOOLTIP                                :{BLACK}Стварыць роўную зямлю
 STR_SE_MAPGEN_RANDOM_LAND                                       :{WHITE}Выпадковы рэльеф
 STR_SE_MAPGEN_FLAT_WORLD_HEIGHT                                 :{BLACK}Вышыня над узроўнем мора:
+STR_SE_MAPGEN_FLAT_WORLD_HEIGHT_TOOLTIP                         :{BLACK}Абярыце вышыню ландшафту над узроўнем мора
 STR_SE_MAPGEN_FLAT_WORLD_HEIGHT_DOWN                            :{BLACK}Падняць ўзровень роўнай зямлі на 1
 STR_SE_MAPGEN_FLAT_WORLD_HEIGHT_UP                              :{BLACK}Апусьціць ўзровень роўнай зямлі на 1
 
@@ -3310,6 +3522,8 @@ STR_NEWGRF_SETTINGS_VERSION                                     :{BLACK}Вэрс
 STR_NEWGRF_SETTINGS_MIN_VERSION                                 :{BLACK}Патрэбна вэрсiя гульнi не ніжэй за {SILVER}{NUM}
 STR_NEWGRF_SETTINGS_MD5SUM                                      :{BLACK}Сума MD5: {SILVER}{STRING}
 STR_NEWGRF_SETTINGS_PALETTE                                     :{BLACK}Палітра: {SILVER}{STRING}
+STR_NEWGRF_SETTINGS_PALETTE_DEFAULT                             :Стандартная (D)
+STR_NEWGRF_SETTINGS_PALETTE_DEFAULT_32BPP                       :Стандартная (D) / 32 bpp
 STR_NEWGRF_SETTINGS_PALETTE_LEGACY                              :Састарэлая (W)
 STR_NEWGRF_SETTINGS_PALETTE_LEGACY_32BPP                        :Састарэлая (W) / 32 bpp
 STR_NEWGRF_SETTINGS_PARAMETER                                   :{BLACK}Парамэтры: {SILVER}{STRING}
@@ -3331,6 +3545,7 @@ STR_SAVE_PRESET_SAVE                                            :{BLACK}Заха
 STR_SAVE_PRESET_SAVE_TOOLTIP                                    :{BLACK}Захаваць набор пад выбраным імем
 
 # NewGRF parameters window
+STR_BASEGRF_PARAMETERS_CAPTION                                  :{WHITE}Зьмена параметраў базавага графічнага пакета
 STR_NEWGRF_PARAMETERS_CAPTION                                   :{WHITE}Зьмяніць парамэтры NewGRF
 STR_NEWGRF_PARAMETERS_CLOSE                                     :{BLACK}Закрыць
 STR_NEWGRF_PARAMETERS_RESET                                     :{BLACK}Ськiд
@@ -3378,8 +3593,10 @@ STR_NEWGRF_ERROR_MSG_INFO                                       :{SILVER}{STRING
 STR_NEWGRF_ERROR_MSG_WARNING                                    :{RED}Увага: {SILVER}{STRING}
 STR_NEWGRF_ERROR_MSG_ERROR                                      :{RED}Памылка: {SILVER}{STRING}
 STR_NEWGRF_ERROR_MSG_FATAL                                      :{RED}Крытычная памылка: {SILVER}{STRING}
+STR_NEWGRF_ERROR_FATAL_POPUP                                    :{WHITE}У модулі NewGRF «{STRING}» адбылася крытычная памылка:{}{STRING}
+STR_NEWGRF_ERROR_POPUP                                          :{WHITE}У модулі NewGRF «{STRING}» адбылася памылка:{}{STRING}
 STR_NEWGRF_ERROR_VERSION_NUMBER                                 :{1:STRING} ня будзе працаваць з вэрсіяй TTDPatch, паведламленай OpenTTD.
-STR_NEWGRF_ERROR_DOS_OR_WINDOWS                                 :Файл {1:STRING} патрабуе {STRING}-вэрсію TTD.
+STR_NEWGRF_ERROR_DOS_OR_WINDOWS                                 :Файл {1:STRING} патрабуе TTD вэрсіі {2:STRING}
 STR_NEWGRF_ERROR_UNSET_SWITCH                                   :{1:STRING} зроблены для выкарыстаньня сумесна з {STRING}
 STR_NEWGRF_ERROR_INVALID_PARAMETER                              :Няправільны парамэтр {1:STRING}: парамэтр {STRING} ({NUM})
 STR_NEWGRF_ERROR_LOAD_BEFORE                                    :{1:STRING} павінен быць загружаны перад {STRING}.
@@ -3474,6 +3691,7 @@ STR_TOWN_VIEW_TOWN_CAPTION                                      :{WHITE}{TOWN}
 STR_TOWN_VIEW_CITY_CAPTION                                      :{WHITE}{TOWN} (Мэґаполіс)
 STR_TOWN_VIEW_POPULATION_HOUSES                                 :{BLACK}Насельніцтва: {ORANGE}{COMMA}{BLACK}  Будынкаў: {ORANGE}{COMMA}
 STR_TOWN_VIEW_CARGO_LAST_MONTH_MAX                              :{BLACK}{CARGO_LIST} у мінулым месяцы: {ORANGE}{COMMA}{BLACK} Макс.: {ORANGE}{COMMA}
+STR_TOWN_VIEW_CARGO_LAST_MINUTE_MAX                             :{BLACK}{CARGO_LIST} у хвіліну: {ORANGE}{COMMA}{BLACK} Макс: {ORANGE}{COMMA}
 STR_TOWN_VIEW_CARGO_FOR_TOWNGROWTH                              :{BLACK}Груз, неабходны для росту горада:
 STR_TOWN_VIEW_CARGO_FOR_TOWNGROWTH_REQUIRED_GENERAL             :{ORANGE}{STRING}{RED} патрабу{G 0 е e e ю}цца
 STR_TOWN_VIEW_CARGO_FOR_TOWNGROWTH_REQUIRED_WINTER              :{ORANGE}{STRING}{BLACK} патрабу{G 0 е e e ю}цца ўзімку
@@ -3518,14 +3736,18 @@ STR_LOCAL_AUTHORITY_ACTION_BRIBE                                :Даць хаб
 STR_LOCAL_AUTHORITY_ACTION_TOOLTIP_SMALL_ADVERTISING            :{YELLOW}Правесьці малую рэклямную кампанію для павелічэньня груза-і пасажырапатоку на вашых станцыях.{}Кошт: {CURRENCY_LONG}
 STR_LOCAL_AUTHORITY_ACTION_TOOLTIP_MEDIUM_ADVERTISING           :{YELLOW}Правесьці сярэднюю рэклямную кампанію для павелічэньня груза-і пасажырапатоку на вашых станцыях.{}Кошт: {CURRENCY_LONG}
 STR_LOCAL_AUTHORITY_ACTION_TOOLTIP_LARGE_ADVERTISING            :{YELLOW}Правесьці вялікую рэклямную кампанію для павелічэньня груза-і пасажырапатоку на вашых станцыях.{}Кошт: {CURRENCY_LONG}
+STR_LOCAL_AUTHORITY_ACTION_TOOLTIP_ROAD_RECONSTRUCTION_MINUTES  :{PUSH_COLOUR}{YELLOW}Прафінансаваць рэканструкцыю гарадской дарожнай сеткі.{}Працы, працягласцю да 6 хвілін, прыводзяць да значных дарожных затораў.{}{POP_COLOUR}Кошт: {CURRENCY_LONG}
 STR_LOCAL_AUTHORITY_ACTION_TOOLTIP_STATUE_OF_COMPANY            :{YELLOW}Усталяваць статую ў гонар вашай кампаніі.{}Кошт: {CURRENCY_LONG}
 STR_LOCAL_AUTHORITY_ACTION_TOOLTIP_NEW_BUILDINGS                :{YELLOW}Прафінансаваць будаўніцтва новых камерцыйных будынкаў у горадзе.{}Кошт: {CURRENCY_LONG}
+STR_LOCAL_AUTHORITY_ACTION_TOOLTIP_EXCLUSIVE_TRANSPORT_MINUTES  :{PUSH_COLOUR}{YELLOW}Набыць эксклюзіўныя транспартныя правы ў населеным пункце тэрмінам на 12{NBSP}хвілін.{}Мясцовая адміністрацыя не дазволіць пасажырам і прадпрыемствам выкарыстоўваць станцыі вашых канкурэнтаў. Паспяховая дача хабару з боку канкурэнта анулёўвае гэты кантракт.{}{POP_COLOUR}Кошт: {CURRENCY_LONG}
 STR_LOCAL_AUTHORITY_ACTION_TOOLTIP_BRIBE                        :{YELLOW}Даць хабар гарадзкой адміністрацыі для павышэньня рэйтынґу. Існуе рызыка санкцыяў, калі факт хабару раскрыецца.{}Кошт: {CURRENCY_LONG}
 
 # Goal window
 STR_GOALS_CAPTION                                               :{WHITE}Задачы кампаніі «{COMPANY}»
 STR_GOALS_SPECTATOR_CAPTION                                     :{WHITE}Глабальныя задачы
 STR_GOALS_SPECTATOR                                             :Агульныя задачы
+STR_GOALS_GLOBAL_BUTTON                                         :{BLACK}Глабальныя
+STR_GOALS_GLOBAL_BUTTON_HELPTEXT                                :{BLACK}Паказаць глабальныя задачы
 STR_GOALS_TEXT                                                  :{ORANGE}{STRING}
 STR_GOALS_NONE                                                  :{ORANGE}- Няма -
 STR_GOALS_PROGRESS                                              :{ORANGE}{STRING}
@@ -3564,7 +3786,10 @@ STR_SUBSIDIES_CAPTION                                           :{WHITE}Субс
 STR_SUBSIDIES_OFFERED_TITLE                                     :{BLACK}Прапанаваныя субсыдыі:
 STR_SUBSIDIES_NONE                                              :{ORANGE}- Няма -
 STR_SUBSIDIES_SUBSIDISED_TITLE                                  :{BLACK}Маршруты, якія ўжо субсыдуюцца:
+STR_SUBSIDIES_SUBSIDISED_FROM_TO                                :{ORANGE}{STRING} па маршруце з {STRING} у {STRING}{YELLOW} ({COMPANY}{YELLOW}, {STRING})
 STR_SUBSIDIES_TOOLTIP_CLICK_ON_SERVICE_TO_CENTER                :{BLACK}Націсьніце на маршрут для адлюстраваньня прадпрыемства/горада. Ctrl+пстрычка паказвае ў дадатковым вакне.
+STR_SUBSIDIES_SUBSIDISED_EXPIRY_DATE                            :па {DATE_SHORT}
+STR_SUBSIDIES_SUBSIDISED_EXPIRY_TIME                            :засталося {UNITS_MONTHS_OR_MINUTES}
 
 # Story book window
 STR_STORY_BOOK_CAPTION                                          :{WHITE}Гісторыя кампаніі «{COMPANY}»
@@ -3663,6 +3888,7 @@ STR_FINANCES_CAPTION                                            :{WHITE}Фіна
 STR_FINANCES_YEAR                                               :{WHITE}{NUM}
 
 ###length 3
+STR_FINANCES_CAPITAL_EXPENSES_TITLE                             :{WHITE}Капітальныя выдаткі
 
 
 ###length 13
@@ -3681,6 +3907,7 @@ STR_FINANCES_BANK_BALANCE_TITLE                                 :{WHITE}Банк
 STR_FINANCES_LOAN_TITLE                                         :{WHITE}Пазыка
 STR_FINANCES_MAX_LOAN                                           :{WHITE}Макс. пазыка: {BLACK}{CURRENCY_LONG}
 STR_FINANCES_TOTAL_CURRENCY                                     :{BLACK}{CURRENCY_LONG}
+STR_FINANCES_BANK_BALANCE                                       :{WHITE}{CURRENCY_LONG}
 STR_FINANCES_BORROW_BUTTON                                      :{BLACK}Пазычыць {CURRENCY_LONG}
 STR_FINANCES_BORROW_TOOLTIP                                     :{BLACK}Павелічыць памер пазыкі. Ctrl+клiк — пазычыць да максымальнай сумы.
 STR_FINANCES_REPAY_BUTTON                                       :{BLACK}Аддаць {CURRENCY_LONG}
@@ -3736,21 +3963,27 @@ STR_COMPANY_INFRASTRUCTURE_VIEW_CAPTION                         :{WHITE}Iнфр�
 STR_COMPANY_INFRASTRUCTURE_VIEW_RAIL_SECT                       :{GOLD}Чыгуначныя элемэнты:
 STR_COMPANY_INFRASTRUCTURE_VIEW_SIGNALS                         :{WHITE}Сыґналы
 STR_COMPANY_INFRASTRUCTURE_VIEW_ROAD_SECT                       :{GOLD}Дарожныя элемэнты:
+STR_COMPANY_INFRASTRUCTURE_VIEW_TRAM_SECT                       :{GOLD}Трамвайныя ўчасткі:
 STR_COMPANY_INFRASTRUCTURE_VIEW_WATER_SECT                      :{GOLD}Водныя клеткi:
 STR_COMPANY_INFRASTRUCTURE_VIEW_CANALS                          :{WHITE}Каналы
 STR_COMPANY_INFRASTRUCTURE_VIEW_STATION_SECT                    :{GOLD}Станцыi:
 STR_COMPANY_INFRASTRUCTURE_VIEW_STATIONS                        :{WHITE}Станцыйныя клеткi
 STR_COMPANY_INFRASTRUCTURE_VIEW_AIRPORTS                        :{WHITE}Аэрапорты
+STR_COMPANY_INFRASTRUCTURE_VIEW_TOTAL_YEAR                      :{WHITE}{CURRENCY_LONG}/год
+STR_COMPANY_INFRASTRUCTURE_VIEW_TOTAL_PERIOD                    :{WHITE}{CURRENCY_LONG}/перыяд
 
 # Industry directory
 STR_INDUSTRY_DIRECTORY_CAPTION                                  :{WHITE}Прамысловасьць
 STR_INDUSTRY_DIRECTORY_NONE                                     :{ORANGE}- Няма -
+STR_INDUSTRY_DIRECTORY_ITEM_INFO                                :{BLACK}{CARGO_LONG}{STRING}{YELLOW} ({COMMA}% перавезена){BLACK}
 STR_INDUSTRY_DIRECTORY_ITEM_NOPROD                              :{ORANGE}{INDUSTRY}
 STR_INDUSTRY_DIRECTORY_ITEM_PROD1                               :{ORANGE}{INDUSTRY} {STRING}
 STR_INDUSTRY_DIRECTORY_ITEM_PROD2                               :{ORANGE}{INDUSTRY} {STRING}, {STRING}
+STR_INDUSTRY_DIRECTORY_ITEM_PROD3                               :{ORANGE}{INDUSTRY} {STRING}, {STRING}, {STRING}
 STR_INDUSTRY_DIRECTORY_ITEM_PRODMORE                            :{ORANGE}{INDUSTRY} {STRING}, {STRING}, {STRING} і яшчэ {NUM}...
 STR_INDUSTRY_DIRECTORY_LIST_CAPTION                             :{BLACK}Сьпіс прадпрыемстваў: пстрычка па назьве паказвае прадпрыемства ў асноўным вакне. Ctrl+клік - у дадатковым вакне.
 STR_INDUSTRY_DIRECTORY_ACCEPTED_CARGO_FILTER                    :{BLACK}Прыманы груз: {SILVER}{STRING}
+STR_INDUSTRY_DIRECTORY_PRODUCED_CARGO_FILTER                    :{BLACK}Выраблены груз: {SILVER}{STRING}
 STR_INDUSTRY_DIRECTORY_FILTER_ALL_TYPES                         :Любы
 STR_INDUSTRY_DIRECTORY_FILTER_NONE                              :Адсутнічае
 
@@ -3795,7 +4028,10 @@ STR_VEHICLE_LIST_MANAGE_LIST                                    :{BLACK}Арга
 STR_VEHICLE_LIST_MANAGE_LIST_TOOLTIP                            :{BLACK}Упраўленьне транспартам, які знаходзіцца ў гэтым сьпісе
 STR_VEHICLE_LIST_REPLACE_VEHICLES                               :Замена транспарту
 STR_VEHICLE_LIST_SEND_FOR_SERVICING                             :Накіраваць на абслугоўваньне
+STR_VEHICLE_LIST_CREATE_GROUP                                   :Стварыць групу
 STR_VEHICLE_LIST_PROFIT_THIS_YEAR_LAST_YEAR                     :{TINY_FONT}{BLACK}Прыбытак сёлета: {CURRENCY_LONG} (летась: {CURRENCY_LONG})
+STR_VEHICLE_LIST_CARGO                                          :[{CARGO_LIST}]
+STR_VEHICLE_LIST_NAME_AND_CARGO                                 :{STRING} {STRING}
 
 STR_VEHICLE_LIST_SEND_TRAIN_TO_DEPOT                            :Накіраваць у дэпо
 STR_VEHICLE_LIST_SEND_ROAD_VEHICLE_TO_DEPOT                     :Накіраваць у гараж
@@ -3860,6 +4096,7 @@ STR_BUY_VEHICLE_SHIP_CAPTION                                    :Новы кар
 STR_BUY_VEHICLE_AIRCRAFT_CAPTION                                :Новы авiятранспарт
 
 STR_PURCHASE_INFO_COST_WEIGHT                                   :{BLACK}Кошт: {GOLD}{CURRENCY_LONG}{BLACK} Вага: {GOLD}{WEIGHT_SHORT}
+STR_PURCHASE_INFO_COST_REFIT_WEIGHT                             :{BLACK}Кошт: {GOLD}{CURRENCY_LONG}{BLACK} (Кошт пераабсталяваньня: {GOLD}{CURRENCY_LONG}{BLACK}) Маса: {GOLD}{WEIGHT_SHORT}
 STR_PURCHASE_INFO_SPEED_POWER                                   :{BLACK}Хуткасьць: {GOLD}{VELOCITY}{BLACK} Магутнасьць: {GOLD}{POWER}
 STR_PURCHASE_INFO_SPEED                                         :{BLACK}Хуткасьць: {GOLD}{VELOCITY}
 STR_PURCHASE_INFO_SPEED_OCEAN                                   :{BLACK}Хуткасьць у акіяне: {GOLD}{VELOCITY}
@@ -4041,6 +4278,8 @@ STR_ENGINE_PREVIEW_MESSAGE                                      :{GOLD}Мы ст
 STR_ENGINE_PREVIEW_RAILROAD_LOCOMOTIVE                          :{G=m}чыгуначны лякаматыў
 STR_ENGINE_PREVIEW_RAILROAD_LOCOMOTIVE.gen                      :чыгуначнага лакаматыва
 STR_ENGINE_PREVIEW_RAILROAD_LOCOMOTIVE.acc                      :чыгуначны лякаматыў
+STR_ENGINE_PREVIEW_ELRAIL_LOCOMOTIVE                            :электравоз
+STR_ENGINE_PREVIEW_ELRAIL_LOCOMOTIVE.gen                        :электравоза
 STR_ENGINE_PREVIEW_MONORAIL_LOCOMOTIVE                          :{G=m}монарэйкавы лякаматыў
 STR_ENGINE_PREVIEW_MONORAIL_LOCOMOTIVE.gen                      :монарэйкавага лякаматыва
 STR_ENGINE_PREVIEW_MONORAIL_LOCOMOTIVE.acc                      :монарэйкавы лякаматыў
@@ -4051,6 +4290,8 @@ STR_ENGINE_PREVIEW_MAGLEV_LOCOMOTIVE.acc                        :магніта�
 STR_ENGINE_PREVIEW_ROAD_VEHICLE                                 :{G=m}аўтамабiль
 STR_ENGINE_PREVIEW_ROAD_VEHICLE.gen                             :аўтамабiля
 STR_ENGINE_PREVIEW_ROAD_VEHICLE.acc                             :аўтамабіль
+STR_ENGINE_PREVIEW_TRAM_VEHICLE                                 :трамвай
+STR_ENGINE_PREVIEW_TRAM_VEHICLE.gen                             :трамвая
 
 STR_ENGINE_PREVIEW_AIRCRAFT                                     :{G=m}авiятранспарт
 STR_ENGINE_PREVIEW_AIRCRAFT.gen                                 :авiятранспарту
@@ -4059,6 +4300,18 @@ STR_ENGINE_PREVIEW_SHIP                                         :{G=m}караб
 STR_ENGINE_PREVIEW_SHIP.gen                                     :карабля
 STR_ENGINE_PREVIEW_SHIP.acc                                     :карабель
 
+STR_ENGINE_PREVIEW_TEXT3                                        :{BLACK}{STRING}{}{5:STRING}{}{STRING}
+STR_ENGINE_PREVIEW_TEXT4                                        :{BLACK}{STRING}{}{STRING}{}{STRING}{}{STRING}
+STR_ENGINE_PREVIEW_COST_WEIGHT                                  :Кошт: {CURRENCY_LONG} Маса: {WEIGHT_SHORT}
+STR_ENGINE_PREVIEW_COST_MAX_SPEED                               :Кошт: {CURRENCY_LONG} Макс. хуткасць: {VELOCITY}
+STR_ENGINE_PREVIEW_SPEED_POWER                                  :Хуткасць: {VELOCITY} Магутнасць: {POWER}
+STR_ENGINE_PREVIEW_SPEED_POWER_MAX_TE                           :Хуткасць: {VELOCITY} Магутнасць: {POWER} Макс. ЦН: {FORCE}
+STR_ENGINE_PREVIEW_TYPE                                         :Тып паветранага судна: {STRING}
+STR_ENGINE_PREVIEW_TYPE_RANGE                                   :Паветр. судна: {STRING} Далёкасць: {COMMA}{NBSP}клет{P ка ки ак}
+STR_ENGINE_PREVIEW_RUNCOST_YEAR                                 :Кошт абслугоўваньня: {CURRENCY_LONG}/год
+STR_ENGINE_PREVIEW_RUNCOST_PERIOD                               :Кошт абслугоўваньня: {CURRENCY_LONG}/цыкл
+STR_ENGINE_PREVIEW_CAPACITY                                     :Ёмістасць: {CARGO_LONG}
+STR_ENGINE_PREVIEW_CAPACITY_2                                   :Ёмістасць: {CARGO_LONG}, {CARGO_LONG}
 
 # Autoreplace window
 STR_REPLACE_VEHICLES_WHITE                                      :{WHITE}Замена {STRING.gen} — {STRING}
@@ -4168,12 +4421,17 @@ STR_VEHICLE_STATUS_TRAIN_NO_POWER                               :{RED}Няма �
 STR_VEHICLE_STATUS_TRAIN_STUCK                                  :{ORANGE}Чакае вольнай каляіны
 STR_VEHICLE_STATUS_AIRCRAFT_TOO_FAR                             :{ORANGE}Занадта далёка да наступнага месца прызначэньня
 
-STR_VEHICLE_STATUS_HEADING_FOR_STATION_VEL                      :{LTBLUE}Iдзе да {STATION}; {VELOCITY}
+STR_VEHICLE_STATUS_HEADING_FOR_STATION_VEL                      :{LTBLUE}{1:VELOCITY} - ідзе да {0:STATION}
 STR_VEHICLE_STATUS_NO_ORDERS_VEL                                :{LTBLUE}Няма заданьняў; {VELOCITY}
-STR_VEHICLE_STATUS_HEADING_FOR_WAYPOINT_VEL                     :{LTBLUE}Iдзе да {WAYPOINT}; {VELOCITY}
-STR_VEHICLE_STATUS_HEADING_FOR_DEPOT_VEL                        :{ORANGE}Iдзе ў {DEPOT}; {VELOCITY}
-STR_VEHICLE_STATUS_HEADING_FOR_DEPOT_SERVICE_VEL                :{LTBLUE}Абслуг. у {DEPOT}; {VELOCITY}
+STR_VEHICLE_STATUS_HEADING_FOR_WAYPOINT_VEL                     :{LTBLUE}{1:VELOCITY} - ідзе да {0:WAYPOINT}
+STR_VEHICLE_STATUS_HEADING_FOR_DEPOT_VEL                        :{ORANGE}{1:VELOCITY} - ідзе ў {0:DEPOT}
+STR_VEHICLE_STATUS_HEADING_FOR_DEPOT_SERVICE_VEL                :{LTBLUE}{1:VELOCITY} - ТА ў {0:DEPOT}
+STR_VEHICLE_STATUS_HEADING_FOR_DEPOT_UNBUNCH_VEL                :{LTBLUE}{1:VELOCITY} - ТА і размеркаванне ў {0:DEPOT}
 
+STR_VEHICLE_STATUS_CANNOT_REACH_STATION_VEL                     :{LTBLUE}{1:VELOCITY} - няма шляху да {0:STATION}
+STR_VEHICLE_STATUS_CANNOT_REACH_WAYPOINT_VEL                    :{LTBLUE}{1:VELOCITY} - няма шляху да {0:WAYPOINT}
+STR_VEHICLE_STATUS_CANNOT_REACH_DEPOT_VEL                       :{ORANGE}{1:VELOCITY} - няма шляху да {0:DEPOT}
+STR_VEHICLE_STATUS_CANNOT_REACH_DEPOT_SERVICE_VEL               :{LTBLUE}{1:VELOCITY} - няма шляху да {0:DEPOT}
 
 # Vehicle stopped/started animations
 ###length 2
@@ -4214,9 +4472,18 @@ STR_VEHICLE_INFO_CAPACITY_CAPACITY                              :{BLACK}Ёмiс�
 
 STR_VEHICLE_INFO_FEEDER_CARGO_VALUE                             :{BLACK}Выручка перавозкі: {LTBLUE}{CURRENCY_LONG}
 
+STR_VEHICLE_DETAILS_SERVICING_INTERVAL_DAYS                     :{BLACK}ТА кожныя {LTBLUE}{COMMA}{NBSP}дзён{BLACK}. {STRING}
+STR_VEHICLE_DETAILS_SERVICING_INTERVAL_MINUTES                  :{BLACK}ТА кожныя {LTBLUE}{COMMA}{NBSP}хвілін{BLACK}. {STRING}
+STR_VEHICLE_DETAILS_SERVICING_INTERVAL_PERCENT                  :{BLACK}ТА пры зніж. на {LTBLUE}{COMMA}%{BLACK}. {STRING}
+STR_VEHICLE_DETAILS_LAST_SERVICE_DATE                           :ТА: {LTBLUE}{DATE_LONG}
+STR_VEHICLE_DETAILS_LAST_SERVICE_MINUTES_AGO                    :ТА: {LTBLUE}{NUM}{NBSP}хв. назад
+STR_VEHICLE_DETAILS_INCREASE_SERVICING_INTERVAL_TOOLTIP_MINUTES :{BLACK}Павялічыць інтэрвал ТА на 5{NBSP}хвілін. Ctrl+пстрычка{NBSP}- павялічыць на 1{NBSP}хвіліну.
+STR_VEHICLE_DETAILS_DECREASE_SERVICING_INTERVAL_TOOLTIP_MINUTES :{BLACK}Паменшыць інтэрвал ТА на 5{NBSP}хвілін. Ctrl+пстрычка{NBSP}- паменшыць на 1{NBSP}хвіліну.
 
 STR_SERVICE_INTERVAL_DROPDOWN_TOOLTIP                           :{BLACK}Зьмяніць прынцып разьліку інтэрвалу абслугоўваньня
 STR_VEHICLE_DETAILS_DEFAULT                                     :Па змоўчаньні
+STR_VEHICLE_DETAILS_DAYS                                        :Дзён
+STR_VEHICLE_DETAILS_MINUTES                                     :Хвілін
 STR_VEHICLE_DETAILS_PERCENT                                     :У адсотках
 
 ###length VEHICLE_TYPES
@@ -4321,6 +4588,7 @@ STR_ORDER_DROP_HALT_DEPOT                                       :Стоп
 
 # Depot action tooltips, one per vehicle type
 ###length VEHICLE_TYPES
+STR_ORDER_ROAD_DEPOT_ACTION_TOOLTIP                             :{BLACK}Выберыце дзеяньне, якое трэба выканаць у гэтым гаражы
 ###next-name-looks-similar
 
 STR_ORDER_CONDITIONAL_VARIABLE_TOOLTIP                          :{BLACK}Парамэтр транспарту для параўнаньня
@@ -4466,7 +4734,7 @@ STR_TIMETABLE_TOTAL_TIME_INCOMPLETE                             :{BLACK}Рух �
 STR_TIMETABLE_STATUS_ON_TIME                                    :{BLACK}Гэты транспарт прыходзіць своечасова
 STR_TIMETABLE_STATUS_LATE                                       :{BLACK}Гэты транспарт спазьняецца на {STRING}
 STR_TIMETABLE_STATUS_EARLY                                      :{BLACK}Гэты транспарт апярэджвае ґрафік на {STRING}
-STR_TIMETABLE_STATUS_NOT_STARTED                                :{BLACK}Ґрафік руху яшчэ не ўсталяваны
+STR_TIMETABLE_STATUS_NOT_STARTED                                :{BLACK}Ґрафік руху яшчэ ня вызначаны
 
 
 
@@ -4528,12 +4796,16 @@ STR_ERROR_AI_PLEASE_REPORT_CRASH                                :{WHITE}Адзі
 STR_ERROR_AI_DEBUG_SERVER_ONLY                                  :{YELLOW}Вакно адладкі ШІ / скрыпту даступна толькі для сэрвэра
 
 # AI configuration window
+STR_AI_CONFIG_CAPTION_AI                                        :{WHITE}Наладкі ШІ
+STR_AI_CONFIG_CAPTION_GAMESCRIPT                                :{WHITE}Наладкі гульнявых скрыптоў
 STR_AI_CONFIG_GAMELIST_TOOLTIP                                  :{BLACK}Гульнёвы скрыпт, які будзе загружаны ў наступнай гульні
 STR_AI_CONFIG_AILIST_TOOLTIP                                    :{BLACK}Модулі ШІ, якія будуць загружаны ў наступнай гульні
 STR_AI_CONFIG_HUMAN_PLAYER                                      :Чалавек
 STR_AI_CONFIG_RANDOM_AI                                         :Выпадковы ШI
 STR_AI_CONFIG_NONE                                              :(няма)
+STR_AI_CONFIG_NAME_VERSION                                      :{STRING} {YELLOW}v{NUM}
 STR_AI_CONFIG_MAX_COMPETITORS                                   :{LTBLUE}Максымальная колькасьць канкурэнтаў: {ORANGE}{COMMA}
+STR_AI_CONFIG_COMPETITORS_INTERVAL                              :{LTBLUE}Інтэрвал паміж запускам канкурэнтаў: {ORANGE}{COMMA} хвілін{P а ы ""}
 
 STR_AI_CONFIG_MOVE_UP                                           :{BLACK}Уверх
 STR_AI_CONFIG_MOVE_UP_TOOLTIP                                   :{BLACK}Перамясьціць гэты модуль ШI ўверх па сьпісе
@@ -4541,11 +4813,12 @@ STR_AI_CONFIG_MOVE_DOWN                                         :{BLACK}Уніз
 STR_AI_CONFIG_MOVE_DOWN_TOOLTIP                                 :{BLACK}Перамясьціць гэты модуль ШI ўніз па сьпісе
 
 STR_AI_CONFIG_GAMESCRIPT                                        :{SILVER}Гульнёвы скрыпт
+STR_AI_CONFIG_GAMESCRIPT_PARAM                                  :{SILVER}Параметры
 STR_AI_CONFIG_AI                                                :{SILVER}ШI
 
-STR_AI_CONFIG_CHANGE_AI                                         :ШI
-STR_AI_CONFIG_CHANGE_GAMESCRIPT                                 :Гульнёвы скрыпт
-STR_AI_CONFIG_CHANGE_TOOLTIP                                    :{BLACK}Загрузіць іншы скрыпт
+STR_AI_CONFIG_CHANGE_AI                                         :{BLACK}ШI
+STR_AI_CONFIG_CHANGE_GAMESCRIPT                                 :{BLACK}Гульнёвы скрыпт
+STR_AI_CONFIG_CHANGE_TOOLTIP                                    :{BLACK}Загрузіць іншы скрыпт. Ctrl+пстрычка - паказаць усе даступныя версіі.
 STR_AI_CONFIG_CONFIGURE                                         :{BLACK}Канфігурацыя
 STR_AI_CONFIG_CONFIGURE_TOOLTIP                                 :{BLACK}Наладзіць парамэтры скрыпту
 
@@ -4564,7 +4837,13 @@ STR_AI_LIST_ACCEPT_TOOLTIP                                      :{BLACK}Выбр
 STR_AI_LIST_CANCEL                                              :{BLACK}Скасаваць
 STR_AI_LIST_CANCEL_TOOLTIP                                      :{BLACK}Не змяняць скрыпт
 
+STR_SCREENSHOT_CAPTION                                          :{WHITE}Здымак экрана
+STR_SCREENSHOT_SCREENSHOT                                       :{BLACK}Звычайны здымак
 STR_SCREENSHOT_ZOOMIN_SCREENSHOT                                :{BLACK}Бачная вобласць у максімальным набліжэнні
+STR_SCREENSHOT_DEFAULTZOOM_SCREENSHOT                           :{BLACK}Бачная вобласць у звычайным маштабе
+STR_SCREENSHOT_WORLD_SCREENSHOT                                 :{BLACK}Здымак усёй мапы
+STR_SCREENSHOT_HEIGHTMAP_SCREENSHOT                             :{BLACK}Здымак мапы вышынь
+STR_SCREENSHOT_MINIMAP_SCREENSHOT                               :{BLACK}Здымак мінімапы
 
 # Script Parameters
 STR_AI_SETTINGS_CAPTION_AI                                      :ШI
@@ -4576,9 +4855,12 @@ STR_AI_SETTINGS_SETTING                                         :{STRING}: {ORAN
 # Textfile window
 STR_TEXTFILE_WRAP_TEXT                                          :{WHITE}Пераносіць тэкст
 STR_TEXTFILE_WRAP_TEXT_TOOLTIP                                  :{BLACK}Пераносіць тэкст так, каб ён зьмяшчаўся ў вакне без неабходнасьці пракруткі
-STR_TEXTFILE_VIEW_README                                        :{BLACK}Прагледзець iнструкцыю
+STR_TEXTFILE_VIEW_README                                        :{BLACK}Інструкцыя
+STR_TEXTFILE_VIEW_README_TOOLTIP                                :Прагляд інструкцыі
 STR_TEXTFILE_VIEW_CHANGELOG                                     :{BLACK}Журнал зьменаў
+STR_TEXTFILE_VIEW_CHANGELOG_TOOLTIP                             :Прагляд спісу змен
 STR_TEXTFILE_VIEW_LICENCE                                       :{BLACK}Ліцэнзія
+STR_TEXTFILE_VIEW_LICENCE_TOOLTIP                               :Прагляд ліцэнзіі
 ###length 5
 STR_TEXTFILE_README_CAPTION                                     :{WHITE}{STRING} iнструкцыя {STRING}
 STR_TEXTFILE_CHANGELOG_CAPTION                                  :{WHITE}{STRING} сьпiс зьменаў {STRING}
@@ -4649,6 +4931,7 @@ STR_WARNING_FALLBACK_SOUNDSET                                   :{WHITE}Бягу
 STR_WARNING_SCREENSHOT_SIZE_CAPTION                             :{WHITE}Велізарны здымак экрана
 STR_WARNING_SCREENSHOT_SIZE_MESSAGE                             :{YELLOW}Здымак экрана будзе мець памеры {COMMA} х {COMMA} піксэляў. Яго стварэньне зойме некаторы час. Працягнуць?
 
+STR_MESSAGE_HEIGHTMAP_SUCCESSFULLY                              :{WHITE}Мапа вышынь паспяхова захавана пад імем «{STRING}». Максімальная вышыня - {NUM}.
 STR_MESSAGE_SCREENSHOT_SUCCESSFULLY                             :{WHITE}Здымак экрана захаваны пад імем «{STRING}»
 STR_ERROR_SCREENSHOT_FAILED                                     :{WHITE}Не атрымалася захаваць здымак экрана
 
@@ -4737,6 +5020,7 @@ STR_ERROR_FOREST_CAN_ONLY_BE_PLANTED                            :{WHITE}... ле
 STR_ERROR_CAN_ONLY_BE_BUILT_ABOVE_SNOW_LINE                     :{WHITE}... магчыма пабудаваць толькi вышэй за сьнегавую лiнiю
 STR_ERROR_CAN_ONLY_BE_BUILT_BELOW_SNOW_LINE                     :{WHITE}... магчыма пабудаваць толькi нiжэй за сьнегавую лiнiю
 
+STR_ERROR_NO_SUITABLE_PLACES_FOR_PROSPECTING                    :{WHITE}Няма прыдатнага месца для геолагаразведкі.
 STR_ERROR_NO_SUITABLE_PLACES_FOR_INDUSTRIES                     :{WHITE}Няма прыдатных месцаў для прамысловасьці "{STRING}"
 STR_ERROR_NO_SUITABLE_PLACES_FOR_INDUSTRIES_EXPLANATION         :{WHITE}Змяніце наладкі стварэньня мапы для атрыманьня лепшай мапы
 
@@ -4821,11 +5105,18 @@ STR_ERROR_UNABLE_TO_FIND_LOCAL_DEPOT                            :{WHITE}Нема
 STR_ERROR_DEPOT_WRONG_DEPOT_TYPE                                :Няправільны тып дэпо
 
 # Depot unbunching related errors
+STR_ERROR_UNBUNCHING_ONLY_ONE_ALLOWED                           :{WHITE}... дапушчаецца толькі адно заданне з размеркаваньнем па маршруце
+STR_ERROR_UNBUNCHING_NO_FULL_LOAD                               :{WHITE}... нельга чакаць поўнай загрузкі, калі ў спісе заданняў ёсць «размеркаваньне»
+STR_ERROR_UNBUNCHING_NO_UNBUNCHING_FULL_LOAD                    :{WHITE}... нельга раўнамерна размеркаваць па маршруце транспартныя сродкі з заданьнямі чаканьня поўнай пагрузкі
+STR_ERROR_UNBUNCHING_NO_CONDITIONAL                             :{WHITE}... нельга выкарыстоўваць умоўныя заданьні, калі ў спісе заданняў ёсць «размеркаваньне»
+STR_ERROR_UNBUNCHING_NO_UNBUNCHING_CONDITIONAL                  :{WHITE}... нельга раўнамерна размеркаваць па маршруце транспартныя сродкі з умоўнымі заданьнямі
 
 # Autoreplace related errors
 STR_ERROR_TRAIN_TOO_LONG_AFTER_REPLACEMENT                      :{WHITE}ТС «{VEHICLE}» занадта доўгі пасьля замены
 STR_ERROR_AUTOREPLACE_NOTHING_TO_DO                             :{WHITE}Правілы аўтазамены/абнаўленьня не былі ўжыты
 STR_ERROR_AUTOREPLACE_MONEY_LIMIT                               :(мала грошай)
+STR_ERROR_AUTOREPLACE_INCOMPATIBLE_CARGO                        :{WHITE}Новы транспартны сродак ня можа вазіць {STRING.acc}
+STR_ERROR_AUTOREPLACE_INCOMPATIBLE_REFIT                        :{WHITE}Памылка ў {NUM}-м пункце раскладу: нельга пераабсталяваць ТС
 
 # Rail construction errors
 STR_ERROR_IMPOSSIBLE_TRACK_COMBINATION                          :{WHITE}Недапушчальная камбінацыя каляінаў
@@ -4972,6 +5263,7 @@ STR_ERROR_CAN_T_CHANGE_SERVICING                                :{WHITE}Не а�
 
 STR_ERROR_VEHICLE_IS_DESTROYED                                  :{WHITE}... транспартны сродак зьнішчаны
 
+STR_ERROR_CAN_T_CLONE_VEHICLE_LIST                              :{WHITE}... не ўсе ТС ідэнтычныя адзін аднаму
 
 STR_ERROR_NO_VEHICLES_AVAILABLE_AT_ALL                          :{WHITE}Усе транспартныя сродкі будуць недаступныя
 STR_ERROR_NO_VEHICLES_AVAILABLE_AT_ALL_EXPLANATION              :{WHITE}Зьмяніце канфігурацыю модуля NewGRF
@@ -4999,6 +5291,7 @@ STR_ERROR_CAN_T_SKIP_TO_ORDER                                   :{WHITE}Не а�
 STR_ERROR_CAN_T_COPY_SHARE_ORDER                                :{WHITE}... ТС ня можа дасягнуць усіх станцыяў
 STR_ERROR_CAN_T_ADD_ORDER                                       :{WHITE}... ТС ня можа дасягнуць гэтай станцыі
 STR_ERROR_CAN_T_ADD_ORDER_SHARED                                :{WHITE}... ТС з агульным заданьнем ня можа дасягнуць гэтай станцыі
+STR_ERROR_CAN_T_SHARE_ORDER_VEHICLE_LIST                        :{WHITE}... не ва ўсіх ТС аднолькавы агульны маршрут
 
 STR_ERROR_CAN_T_SHARE_ORDER_LIST                                :{WHITE}Немагчыма выкарыстоўваць агульны сьпіс заданьняў
 STR_ERROR_CAN_T_STOP_SHARING_ORDER_LIST                         :{WHITE}Немагчыма стварыць індывідуальны сьпіс заданьняў...
@@ -5007,11 +5300,22 @@ STR_ERROR_TOO_FAR_FROM_PREVIOUS_DESTINATION                     :{WHITE}... за
 STR_ERROR_AIRCRAFT_NOT_ENOUGH_RANGE                             :{WHITE}... Паветранаму судну не хапае далёкасьцi
 
 # Extra messages which go on the third line of errors, explaining why orders failed
+STR_ERROR_NO_RAIL_STATION                                       :{WHITE}Чыгуначныя станцыі адсутнічаюць
+STR_ERROR_NO_BUS_STATION                                        :{WHITE}Аўтобусныя прыпынкі адсутнічаюць
+STR_ERROR_NO_DOCK                                               :{WHITE}Прыстані адсутнічаюць
+STR_ERROR_NO_AIRPORT                                            :{WHITE}Аэрапорты і шрубалётныя пляцоўкі адсутнічаюць
+STR_ERROR_NO_STOP_COMPATIBLE_ROAD_TYPE                          :{WHITE}Адсутнічаюць прыпынкі з прыдатным тыпам дарогі
+STR_ERROR_NO_STOP_COMPATIBLE_TRAM_TYPE                          :{WHITE}Адсутнічаюць прыпынкі з прыдатным тыпам трамвайных шляхоў
+STR_ERROR_NO_STOP_ARTICULATED_VEHICLE                           :{WHITE}Адсутнічаюць прыпынкі, здольныя абслугоўваць сучлененыя транспартныя сродкі.{}Для такога транспарта патрабуюцца скразныя прыпынкі; канцавыя не падыходзяць.
+STR_ERROR_NO_RAIL_WAYPOINT                                      :{WHITE}Маршрутныя кропкі адсутнічаюць
+STR_ERROR_NO_BUOY                                               :{WHITE}Буі адсутнічаюць
 
 # Timetable related errors
 STR_ERROR_CAN_T_TIMETABLE_VEHICLE                               :{WHITE}Не атрымалася скласьці расклад руху...
 STR_ERROR_TIMETABLE_ONLY_WAIT_AT_STATIONS                       :{WHITE}Транспарт можа чакаць толькі на станцыі.
 STR_ERROR_TIMETABLE_NOT_STOPPING_HERE                           :{WHITE}Гэты транспарт не спыняецца на гэтай станцыі.
+STR_ERROR_TIMETABLE_INCOMPLETE                                  :{WHITE}... графік руху няпоўны
+STR_ERROR_TIMETABLE_NOT_STARTED                                 :{WHITE}... ґрафік руху яшчэ ня вызначаны
 
 # Sign related errors
 STR_ERROR_TOO_MANY_SIGNS                                        :{WHITE}... занадта шмат знакаў

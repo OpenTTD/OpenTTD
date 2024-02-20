@@ -1048,7 +1048,7 @@ STR_NEWS_VEHICLE_IS_GETTING_VERY_OLD_AND                        :{WHITE}ТС «{
 STR_NEWS_TRAIN_IS_STUCK                                         :{WHITE}ТС «{VEHICLE}» не может найти путь для продолжения движения
 STR_NEWS_VEHICLE_IS_LOST                                        :{WHITE}ТС «{VEHICLE}» заблудилось
 STR_NEWS_VEHICLE_UNPROFITABLE_YEAR                              :{WHITE}Доход ТС «{VEHICLE}» в прошлом году составил {CURRENCY_LONG}
-STR_NEWS_VEHICLE_UNPROFITABLE_PERIOD                            :{WHITE}Доход ТС «{VEHICLE}» в прошлом периоде: {CURRENCY_LONG}
+STR_NEWS_VEHICLE_UNPROFITABLE_PERIOD                            :{WHITE}Доход ТС «{VEHICLE}» в прошлом цикле: {CURRENCY_LONG}
 STR_NEWS_AIRCRAFT_DEST_TOO_FAR                                  :{WHITE}ТС «{VEHICLE}» не может достичь пункта назначения - слишком далеко
 
 STR_NEWS_ORDER_REFIT_FAILED                                     :{WHITE}ТС «{VEHICLE}» остановлено из-за сбоя переоборудования
@@ -1094,8 +1094,8 @@ STR_GAME_OPTIONS_TAB_GRAPHICS                                   :Графика
 STR_GAME_OPTIONS_TAB_GRAPHICS_TT                                :{BLACK}Настройки графики
 STR_GAME_OPTIONS_TAB_SOUND                                      :Звук
 STR_GAME_OPTIONS_TAB_SOUND_TT                                   :{BLACK}Настройки звука и музыки
-STR_GAME_OPTIONS_TAB_SOCIAL                                     :Социальный
-STR_GAME_OPTIONS_TAB_SOCIAL_TT                                  :Выберите настройки социальной интеграции
+STR_GAME_OPTIONS_TAB_SOCIAL                                     :Социальные
+STR_GAME_OPTIONS_TAB_SOCIAL_TT                                  :{BLACK}Настройки социальной интеграции
 
 STR_GAME_OPTIONS_VOLUME                                         :Громкость
 STR_GAME_OPTIONS_SFX_VOLUME                                     :Звуковые эффекты
@@ -1576,8 +1576,8 @@ STR_CONFIG_SETTING_BRIBE_HELPTEXT_MINUTES                       :Позволя�
 
 STR_CONFIG_SETTING_ALLOW_EXCLUSIVE                              :Разрешить покупать эксклюзивные транспортные права: {STRING}
 ###length 2
-STR_CONFIG_SETTING_ALLOW_EXCLUSIVE_HELPTEXT                     :Если компания покапает эксклюзивные транспортные права, то на станции конкурентов не будет поступать груз и не будут приходить пассажиры в течение 12{NBSP}месяцев
-STR_CONFIG_SETTING_ALLOW_EXCLUSIVE_HELPTEXT_MINUTES             :Если компания покапает эксклюзивные транспортные права, то на станции конкурентов не будет поступать груз и не будут приходить пассажиры в течение 12{NBSP}минут.
+STR_CONFIG_SETTING_ALLOW_EXCLUSIVE_HELPTEXT                     :Если компания покупает эксклюзивные транспортные права, то на станции конкурентов не будет поступать груз и не будут приходить пассажиры в течение 12{NBSP}месяцев
+STR_CONFIG_SETTING_ALLOW_EXCLUSIVE_HELPTEXT_MINUTES             :Если компания покупает эксклюзивные транспортные права, то на станции конкурентов не будет поступать груз и не будут приходить пассажиры в течение 12{NBSP}минут.
 
 STR_CONFIG_SETTING_ALLOW_FUND_BUILDINGS                         :Разрешить финансирование строительства зданий: {STRING}
 STR_CONFIG_SETTING_ALLOW_FUND_BUILDINGS_HELPTEXT                :Разрешить транспортым компаниям финансировать строительство новых городских зданий
@@ -2643,7 +2643,7 @@ STR_NETWORK_CLIENT_LIST_NEW_COMPANY                             :(Новая к�
 STR_NETWORK_CLIENT_LIST_NEW_COMPANY_TOOLTIP                     :{BLACK}Основать новую транспортную компанию и присоединиться к ней
 STR_NETWORK_CLIENT_LIST_PLAYER_ICON_SELF_TOOLTIP                :{BLACK}Это вы!
 STR_NETWORK_CLIENT_LIST_PLAYER_ICON_HOST_TOOLTIP                :{BLACK}Это организатор игры
-STR_NETWORK_CLIENT_LIST_CLIENT_COMPANY_COUNT                    :{BLACK}Клиентов: {NUM}; компаний: {NUM}/{NUM}
+STR_NETWORK_CLIENT_LIST_CLIENT_COMPANY_COUNT                    :{BLACK}{NUM} клиент{P "" а ов} - {NUM}/{NUM} компани{P я и й}
 STR_NETWORK_CLIENT_LIST_CLIENT_COMPANY_COUNT_TOOLTIP            :{BLACK}Количество подключённых в данный момент клиентов, существующих компаний и максимально допустимое количество компаний
 
 # Matches ConnectionType
@@ -2925,7 +2925,7 @@ STR_STATION_BUILD_COVERAGE_AREA_ON_TOOLTIP                      :{BLACK}Пока
 STR_STATION_BUILD_ACCEPTS_CARGO                                 :{BLACK}Принимается: {GOLD}{CARGO_LIST}
 STR_STATION_BUILD_SUPPLIES_CARGO                                :{BLACK}Отправляется: {GOLD}{CARGO_LIST}
 STR_STATION_BUILD_INFRASTRUCTURE_COST_YEAR                      :{BLACK}Содержание: {GOLD}{CURRENCY_SHORT}/год
-STR_STATION_BUILD_INFRASTRUCTURE_COST_PERIOD                    :{BLACK}Стоимость обслуживания: {GOLD}{CURRENCY_SHORT}/цикл
+STR_STATION_BUILD_INFRASTRUCTURE_COST_PERIOD                    :{BLACK}Содержание: {GOLD}{CURRENCY_SHORT}/цикл
 
 # Join station window
 STR_JOIN_STATION_CAPTION                                        :{WHITE}Объединить станции
@@ -4001,7 +4001,7 @@ STR_EDIT_WAYPOINT_NAME                                          :{WHITE}Назв
 STR_FINANCES_CAPTION                                            :{WHITE}Финансы - {COMPANY} {BLACK}{COMPANY_NUM}
 STR_FINANCES_YEAR                                               :{WHITE}{NUM}
 STR_FINANCES_YEAR_CAPTION                                       :{WHITE}Год
-STR_FINANCES_PERIOD_CAPTION                                     :{WHITE}Период
+STR_FINANCES_PERIOD_CAPTION                                     :{WHITE}Цикл
 
 ###length 3
 STR_FINANCES_REVENUE_TITLE                                      :{WHITE}Доходы
@@ -4104,7 +4104,7 @@ STR_COMPANY_INFRASTRUCTURE_VIEW_STATION_SECT                    :{GOLD}Стан�
 STR_COMPANY_INFRASTRUCTURE_VIEW_STATIONS                        :{WHITE}Площадь станций
 STR_COMPANY_INFRASTRUCTURE_VIEW_AIRPORTS                        :{WHITE}Аэропорты
 STR_COMPANY_INFRASTRUCTURE_VIEW_TOTAL_YEAR                      :{WHITE}{CURRENCY_LONG}/год
-STR_COMPANY_INFRASTRUCTURE_VIEW_TOTAL_PERIOD                    :{WHITE}{CURRENCY_LONG}/период
+STR_COMPANY_INFRASTRUCTURE_VIEW_TOTAL_PERIOD                    :{WHITE}{CURRENCY_LONG}/цикл
 
 # Industry directory
 STR_INDUSTRY_DIRECTORY_CAPTION                                  :{WHITE}Предприятия
@@ -4212,9 +4212,9 @@ STR_GROUP_REMOVE_ALL_VEHICLES                                   :Удалить 
 STR_GROUP_RENAME_CAPTION                                        :{BLACK}Название группы
 
 STR_GROUP_PROFIT_THIS_YEAR                                      :Прибыль в текущем году:
-STR_GROUP_PROFIT_THIS_PERIOD                                    :Прибыль в текущем периоде:
+STR_GROUP_PROFIT_THIS_PERIOD                                    :Прибыль в текущем цикле:
 STR_GROUP_PROFIT_LAST_YEAR                                      :Прибыль в прошлом году:
-STR_GROUP_PROFIT_LAST_PERIOD                                    :Прибыль за последний период времени:
+STR_GROUP_PROFIT_LAST_PERIOD                                    :Прибыль в прошлом цикле:
 STR_GROUP_OCCUPANCY                                             :Средняя загрузка ТС:
 STR_GROUP_OCCUPANCY_VALUE                                       :{NUM}%
 

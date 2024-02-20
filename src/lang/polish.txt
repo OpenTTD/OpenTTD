@@ -1330,7 +1330,7 @@ STR_GAME_OPTIONS_TAB_GRAPHICS_TT                                :{BLACK}Wybierz 
 STR_GAME_OPTIONS_TAB_SOUND                                      :Dźwięk
 STR_GAME_OPTIONS_TAB_SOUND_TT                                   :{BLACK}Wybierz opcje dźwięku i muzyki
 STR_GAME_OPTIONS_TAB_SOCIAL                                     :Społeczność
-STR_GAME_OPTIONS_TAB_SOCIAL_TT                                  :{BLACK}Wybierz ustawienia integracji sieci społecznościowych
+STR_GAME_OPTIONS_TAB_SOCIAL_TT                                  :{BLACK}Wybierz opcje integracji sieci społecznościowych
 
 STR_GAME_OPTIONS_VOLUME                                         :Głośność
 STR_GAME_OPTIONS_SFX_VOLUME                                     :Efekty dźwiękowe
