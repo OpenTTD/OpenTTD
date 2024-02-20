@@ -5113,6 +5113,7 @@ STR_ERROR_UNBUNCHING_NO_FULL_LOAD                               :{WHITE}... cann
 STR_ERROR_UNBUNCHING_NO_UNBUNCHING_FULL_LOAD                    :{WHITE}... cannot unbunch a vehicle with a full load order
 STR_ERROR_UNBUNCHING_NO_CONDITIONAL                             :{WHITE}... cannot use conditional orders when vehicle has an unbunching order
 STR_ERROR_UNBUNCHING_NO_UNBUNCHING_CONDITIONAL                  :{WHITE}... cannot unbunch a vehicle with a conditional order
+STR_ERROR_UNBUNCHING_NO_UNBUNCHING_NEAREST_DEPOT                :{WHITE}... must choose a depot to unbunch at
 
 # Autoreplace related errors
 STR_ERROR_TRAIN_TOO_LONG_AFTER_REPLACEMENT                      :{WHITE}{VEHICLE} is too long after replacement

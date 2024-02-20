@@ -820,6 +820,9 @@ CommandCost CmdInsertOrder(DoCommandFlag flags, VehicleID veh, VehicleOrderID se
 			if (new_order.GetDepotOrderType() & ~(ODTFB_PART_OF_ORDERS | ((new_order.GetDepotOrderType() & ODTFB_PART_OF_ORDERS) != 0 ? ODTFB_SERVICE : 0))) return CMD_ERROR;
 			if (new_order.GetDepotActionType() & ~(ODATFB_HALT | ODATFB_NEAREST_DEPOT | ODATFB_UNBUNCH)) return CMD_ERROR;
 			if ((new_order.GetDepotOrderType() & ODTFB_SERVICE) && (new_order.GetDepotActionType() & ODATFB_HALT)) return CMD_ERROR;
+
+			/* We don't allow unbunching at the nearest depot. The player must choose a specific depot. */
+			if ((new_order.GetDepotActionType() & ODATFB_NEAREST_DEPOT) && new_order.GetDepotActionType() & ODATFB_UNBUNCH) return CMD_ERROR;
 			break;
 		}
 
@@ -1310,6 +1313,8 @@ CommandCost CmdModifyOrder(DoCommandFlag flags, VehicleID veh, VehicleOrderID se
 					/* We don't allow unbunching if the vehicle has a full load order. */
 					if (o->IsType(OT_GOTO_STATION) && o->GetLoadType() & (OLFB_FULL_LOAD | OLF_FULL_LOAD_ANY)) return_cmd_error(STR_ERROR_UNBUNCHING_NO_UNBUNCHING_FULL_LOAD);
 				}
+				/* We don't allow unbunching at the nearest depot. The player must choose a specific depot. */
+				if (order->GetDepotActionType() & ODATFB_NEAREST_DEPOT) return_cmd_error(STR_ERROR_UNBUNCHING_NO_UNBUNCHING_NEAREST_DEPOT);
 			}
 			break;
 
