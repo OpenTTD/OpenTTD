@@ -327,14 +327,14 @@ static void DistributeQueue(CommandQueue &queue, const NetworkClientSocket *owne
 
 	/* Not technically the most performant way, but consider clients rarely click more than once per tick. */
 	for (auto cp = queue.begin(); cp != queue.end(); /* removing some items */) {
-		/* Limit the number of commands per client per tick. */
-		if (--to_go < 0) break;
-
 		/* Do not distribute commands when paused and the command is not allowed while paused. */
 		if (_pause_mode != PM_UNPAUSED && !IsCommandAllowedWhilePaused(cp->cmd)) {
 			++cp;
 			continue;
 		}
+
+		/* Limit the number of commands per client per tick. */
+		if (--to_go < 0) break;
 
 		DistributeCommandPacket(*cp, owner);
 		NetworkAdminCmdLogging(owner, *cp);
