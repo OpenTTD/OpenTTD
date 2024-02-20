@@ -285,14 +285,18 @@
 {
 	if (!_networking || _network_server) {
 		Company *c = Company::GetIfValid(company);
-		assert(c != nullptr && c->ai_instance != nullptr);
+		assert(c != nullptr);
 
-		Backup<CompanyID> cur_company(_current_company, company, FILE_LINE);
-		c->ai_instance->Save();
-		cur_company.Restore();
-	} else {
-		AIInstance::SaveEmpty();
+		/* When doing emergency saving, an AI can be not fully initialised. */
+		if (c->ai_instance != nullptr) {
+			Backup<CompanyID> cur_company(_current_company, company, FILE_LINE);
+			c->ai_instance->Save();
+			cur_company.Restore();
+			return;
+		}
 	}
+
+	AIInstance::SaveEmpty();
 }
 
 /* static */ void AI::GetConsoleList(std::back_insert_iterator<std::string> &output_iterator, bool newest_only)
