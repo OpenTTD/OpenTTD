@@ -157,7 +157,7 @@ enum SomeEnumeration {
 * Use curly braces and put the contained statements on their own lines (e.g., don't put them directly after the **if**).
 * Opening curly bracket **{** stays on the first line, closing curly bracket **}** gets a line to itself (except for the **}** preceding an **else**, which should be on the same line as the **else**).
 * When only a single statement is contained, the brackets can be omitted. In this case, put the single statement on the same line as the preceding keyword (**if**, **while**, etc.). Note that this is only allowed for if statements without an **else** clause.
-* All fall throughs must be documented, using a **FALLTHROUGH** define/macro.
+* Non-trivial fall throughs must be documented, using a `[[fallthrough]]` attribute.
 * The NOT_REACHED() macro can be used in default constructs that should never be reached.
 * Unconditional loops are written with **`for (;;) {`**
 
@@ -180,7 +180,7 @@ switch (a) {
 
 	case 1:
 		DoSomething();
-		FALLTHROUGH;
+		[[fallthrough]];
 
 	case 2:
 		DoMore();
@@ -191,7 +191,7 @@ switch (a) {
 		int r = 2;
 
 		DoEvenMore(a);
-		FALLTHROUGH;
+		[[fallthrough]];
 	}
 
 	case 4: {
