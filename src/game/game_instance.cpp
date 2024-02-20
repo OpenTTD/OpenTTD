@@ -67,6 +67,9 @@ void GameInstance::Died()
 {
 	ScriptInstance::Died();
 
+	/* Don't show errors while loading savegame. They will be shown at end of loading anyway. */
+	if (_switch_mode != SM_NONE) return;
+
 	ShowScriptDebugWindow(OWNER_DEITY);
 
 	const GameInfo *info = Game::GetInfo();
