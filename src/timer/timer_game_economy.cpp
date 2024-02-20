@@ -52,7 +52,7 @@ TimerGameEconomy::DateFract TimerGameEconomy::date_fract = {};
 	TimerGameEconomy::YearMonthDay ymd;
 	ymd.year = date.base() / EconomyTime::DAYS_IN_ECONOMY_YEAR;
 	ymd.month = (date.base() % EconomyTime::DAYS_IN_ECONOMY_YEAR) / EconomyTime::DAYS_IN_ECONOMY_MONTH;
-	ymd.day = date.base() % EconomyTime::DAYS_IN_ECONOMY_MONTH;
+	ymd.day = (date.base() % EconomyTime::DAYS_IN_ECONOMY_MONTH) + 1;
 	return ymd;
 }
 
