@@ -1419,15 +1419,24 @@ bool Vehicle::HandleBreakdown()
 }
 
 /**
+ * Update economy age of a vehicle.
+ * @param v Vehicle to update.
+ */
+void EconomyAgeVehicle(Vehicle *v)
+{
+	if (v->economy_age < EconomyTime::MAX_DATE) {
+		v->economy_age++;
+		if (v->IsPrimaryVehicle() && v->economy_age == VEHICLE_PROFIT_MIN_AGE + 1) GroupStatistics::VehicleReachedMinAge(v);
+	}
+}
+
+/**
  * Update age of a vehicle.
  * @param v Vehicle to update.
  */
 void AgeVehicle(Vehicle *v)
 {
-	if (v->age < CalendarTime::MAX_DATE) {
-		v->age++;
-		if (v->IsPrimaryVehicle() && v->age == VEHICLE_PROFIT_MIN_AGE + 1) GroupStatistics::VehicleReachedMinAge(v);
-	}
+	if (v->age < CalendarTime::MAX_DATE) v->age++;
 
 	if (!v->IsPrimaryVehicle() && (v->type != VEH_TRAIN || !Train::From(v)->IsEngine())) return;
 
@@ -2966,7 +2975,7 @@ static IntervalTimer<TimerGameEconomy> _economy_vehicles_yearly({TimerGameEconom
 		if (v->IsPrimaryVehicle()) {
 			/* show warning if vehicle is not generating enough income last 2 years (corresponds to a red icon in the vehicle list) */
 			Money profit = v->GetDisplayProfitThisYear();
-			if (v->age >= 730 && profit < 0) {
+			if (v->economy_age >= VEHICLE_PROFIT_MIN_AGE && profit < 0) {
 				if (_settings_client.gui.vehicle_income_warn && v->owner == _local_company) {
 					SetDParam(0, v->index);
 					SetDParam(1, profit);
