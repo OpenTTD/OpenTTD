@@ -1271,10 +1271,10 @@ STR_CONFIG_SETTING_INFINITE_MONEY                               :Infinite money:
 STR_CONFIG_SETTING_INFINITE_MONEY_HELPTEXT                      :Allow unlimited spending and disable bankruptcy of companies
 
 STR_CONFIG_SETTING_MAXIMUM_INITIAL_LOAN                         :Maximum initial loan: {STRING2}
-STR_CONFIG_SETTING_MAXIMUM_INITIAL_LOAN_HELPTEXT                :Maximum amount a company can loan (without taking inflation into account)
+STR_CONFIG_SETTING_MAXIMUM_INITIAL_LOAN_HELPTEXT                :Maximum amount a company can loan (without taking inflation into account). If set to "No loan", no money will be available unless provided by a Game Script or the "Infinite money" setting.
 STR_CONFIG_SETTING_MAXIMUM_INITIAL_LOAN_VALUE                   :{CURRENCY_LONG}
 ###setting-zero-is-special
-STR_CONFIG_SETTING_MAXIMUM_INITIAL_LOAN_DISABLED                :No loan {RED}Requires Game Script to provide initial funds
+STR_CONFIG_SETTING_MAXIMUM_INITIAL_LOAN_DISABLED                :No loan
 
 STR_CONFIG_SETTING_INTEREST_RATE                                :Interest rate: {STRING2}
 STR_CONFIG_SETTING_INTEREST_RATE_HELPTEXT                       :Loan interest rate; also controls inflation, if enabled
