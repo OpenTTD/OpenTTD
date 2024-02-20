@@ -107,18 +107,21 @@ static int32_t ClickChangeDateCheat(int32_t new_value, int32_t)
 
 	TimerGameCalendar::YearMonthDay ymd = TimerGameCalendar::ConvertDateToYMD(TimerGameCalendar::date);
 	TimerGameCalendar::Date new_calendar_date = TimerGameCalendar::ConvertYMDToDate(new_year, ymd.month, ymd.day);
-	/* Keep economy and calendar dates synced. */
-	TimerGameEconomy::Date new_economy_date = new_calendar_date.base();
 
-	/* Shift cached dates before we change the date. */
-	for (auto v : Vehicle::Iterate()) v->ShiftDates(new_economy_date - TimerGameEconomy::date);
-	LinkGraphSchedule::instance.ShiftDates(new_economy_date - TimerGameEconomy::date);
-
-	/* Now it's safe to actually change the date. */
 	TimerGameCalendar::SetDate(new_calendar_date, TimerGameCalendar::date_fract);
 
 	/* If not using wallclock units, we keep economy date in sync with calendar date and must change it also. */
-	if (!TimerGameEconomy::UsingWallclockUnits()) TimerGameEconomy::SetDate(new_economy_date, TimerGameEconomy::date_fract);
+	if (!TimerGameEconomy::UsingWallclockUnits()) {
+		/* Keep economy and calendar dates synced. */
+		TimerGameEconomy::Date new_economy_date = new_calendar_date.base();
+
+		/* Shift cached dates before we change the date. */
+		for (auto v : Vehicle::Iterate()) v->ShiftDates(new_economy_date - TimerGameEconomy::date);
+		LinkGraphSchedule::instance.ShiftDates(new_economy_date - TimerGameEconomy::date);
+
+		/* Now it's safe to actually change the date. */
+		TimerGameEconomy::SetDate(new_economy_date, TimerGameEconomy::date_fract);
+	}
 
 	CalendarEnginesMonthlyLoop();
 	SetWindowDirty(WC_STATUS_BAR, 0);
