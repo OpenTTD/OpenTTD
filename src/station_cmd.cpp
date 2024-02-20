@@ -10,6 +10,7 @@
 #include "stdafx.h"
 #include "aircraft.h"
 #include "bridge_map.h"
+#include "vehiclelist_func.h"
 #include "viewport_func.h"
 #include "viewport_kdtree.h"
 #include "command_func.h"
@@ -2176,13 +2177,18 @@ static CommandCost RemoveRoadStop(TileIndex tile, DoCommandFlag flags, int repla
 
 		delete cur_stop;
 
-		/* Make sure no vehicle is going to the old roadstop */
-		for (RoadVehicle *v : RoadVehicle::Iterate()) {
-			if (v->First() == v && v->current_order.IsType(OT_GOTO_STATION) &&
-					v->dest_tile == tile) {
-				v->SetDestTile(v->GetOrderStationLocation(st->index));
+		/* Make sure no vehicle is going to the old roadstop. Narrow the search to any road vehicles with an order to
+		 * this station, then look for any currently heading to the tile. */
+		StationID station_id = st->index;
+		FindVehiclesWithOrder(
+			[](const Vehicle *v) { return v->type == VEH_ROAD; },
+			[station_id](const Order *order) { return order->IsType(OT_GOTO_STATION) && order->GetDestination() == station_id; },
+			[station_id, tile](Vehicle *v) {
+				if (v->dest_tile == tile) {
+					v->SetDestTile(v->GetOrderStationLocation(station_id));
+				}
 			}
-		}
+		);
 
 		st->rect.AfterRemoveTile(st, tile);
 
