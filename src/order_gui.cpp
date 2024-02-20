@@ -399,16 +399,32 @@ static Order GetOrderCmdFromTile(const Vehicle *v, TileIndex tile)
 				(_settings_client.gui.new_nonstop && v->IsGroundVehicle()) ? ONSF_NO_STOP_AT_INTERMEDIATE_STATIONS : ONSF_STOP_EVERYWHERE);
 
 		if (_ctrl_pressed) {
-			/* Don't allow a new unbunching order if we already have one. */
-			if (v->HasUnbunchingOrder()) {
+			/* Check to see if we are allowed to make this an unbunching order. */
+			bool failed = false;
+			if (v->HasFullLoadOrder()) {
+				/* We don't allow unbunching if the vehicle has a full load order. */
+				ShowErrorMessage(STR_ERROR_CAN_T_INSERT_NEW_ORDER, STR_ERROR_UNBUNCHING_NO_UNBUNCHING_FULL_LOAD, WL_ERROR);
+				failed = true;
+			} else if (v->HasUnbunchingOrder()) {
+				/* Don't allow a new unbunching order if we already have one. */
 				ShowErrorMessage(STR_ERROR_CAN_T_INSERT_NEW_ORDER, STR_ERROR_UNBUNCHING_ONLY_ONE_ALLOWED, WL_ERROR);
-				/* Return an empty order to bail out. */
+				failed = true;
+			} else if (v->HasConditionalOrder()) {
+				/* We don't allow unbunching if the vehicle has a conditional order. */
+				ShowErrorMessage(STR_ERROR_CAN_T_INSERT_NEW_ORDER, STR_ERROR_UNBUNCHING_NO_UNBUNCHING_CONDITIONAL, WL_ERROR);
+				failed = true;
+			}
+
+			/* Return an empty order to bail out. */
+			if (failed) {
 				order.Free();
 				return order;
-			} else {
-				order.SetDepotActionType(ODATFB_UNBUNCH);
 			}
+
+			/* Now we are allowed to set the action type. */
+			order.SetDepotActionType(ODATFB_UNBUNCH);
 		}
+
 		return order;
 	}
 
