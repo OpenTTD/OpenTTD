@@ -1201,6 +1201,10 @@ static void FormatString(StringBuilder &builder, const char *str_arg, StringPara
 				case SCC_DECIMAL: { // {DECIMAL}
 					int64_t number = args.GetNextParameter<int64_t>();
 					int digits = args.GetNextParameter<int>();
+					if (digits == 0) {
+						FormatNumber(builder, number, _number_format_separators);
+						break;
+					}
 
 					int64_t divisor = PowerOfTen(digits);
 					int64_t fractional = number % divisor;
