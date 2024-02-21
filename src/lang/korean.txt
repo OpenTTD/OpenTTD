@@ -4,6 +4,7 @@
 ##plural 11
 ##textdir ltr
 ##numberformat 0000경0000조0000억0000만0000
+##currencyformat 0000경0000조0000억0000만0000
 ##currencyabbreviations 4=0000경0000조0000억0000만|8=0000경0000조0000억|12=0000경0000조|16=0000경
 ##decimalsep .
 ##winlangid 0x0412

@@ -33,6 +33,8 @@ struct LanguagePackHeader {
 
 	/** The raw formatting string for numbers. */
 	char number_format[64];
+	/** The raw formatting string for currency numbers. */
+	char currency_format[64];
 	/** The raw formatting string for currency abbreviations. */
 	char currency_abbreviations[256];
 	/** Decimal separator */

@@ -4,6 +4,7 @@
 ##plural 0
 ##textdir ltr
 ##numberformat 00{NBSP}000{NBSP}000{NBSP}000{NBSP}000{NBSP}000{NBSP}000
+##currencyformat 00{NBSP}000{NBSP}000{NBSP}000{NBSP}000{NBSP}000{NBSP}000
 ##currencyabbreviations 6=00{NBSP}000{NBSP}000{NBSP}000{NBSP}000{NBSP}milj.|9=00{NBSP}000{NBSP}000{NBSP}000{NBSP}mrd.|12=00{NBSP}000{NBSP}000{NBSP} t|15=00{NBSP}000{NBSP}Qa|18=00{NBSP}Qi
 ##decimalsep ,
 ##winlangid 0x040b

@@ -56,6 +56,7 @@ const LanguageMetadata *_current_language = nullptr; ///< The currently loaded l
 TextDirection _current_text_dir; ///< Text direction of the currently selected language.
 
 static NumberFormatSeparators _number_format_separators;
+static NumberFormatSeparators _currency_format_separators;
 static NumberAbbreviations _currency_abbreviations;
 
 #ifdef WITH_ICU_I18N
@@ -397,6 +398,14 @@ void InitializeNumberFormats()
 	}
 	if (!loaded_number_format) ParseNumberFormatSeparators(_number_format_separators, _current_language->number_format);
 
+	bool loaded_currency_format = false;
+	if (!_settings_client.gui.currency_format.empty()) {
+		auto res = ParseNumberFormatSeparators(_currency_format_separators, _settings_client.gui.currency_format);
+		if (res.has_value()) UserError("The setting 'currency_format' under 'gui' is invalid: {}", *res);
+		loaded_currency_format = !res.has_value();
+	}
+	if (!loaded_currency_format) ParseNumberFormatSeparators(_currency_format_separators, _current_language->currency_format);
+
 	bool loaded_currency_abbreviations = false;
 	if (!_settings_client.gui.currency_abbreviations.empty()) {
 		auto res = ParseNumberAbbreviations(_currency_abbreviations, _settings_client.gui.currency_abbreviations);
@@ -404,7 +413,7 @@ void InitializeNumberFormats()
 		loaded_currency_abbreviations = !res.has_value();
 	}
 	if (!loaded_currency_abbreviations) ParseNumberAbbreviations(_currency_abbreviations, _current_language->currency_abbreviations);
-	_currency_abbreviations.emplace_back(1, _number_format_separators);
+	_currency_abbreviations.emplace_back(1, _currency_format_separators);
 }
 
 /**
@@ -532,7 +541,7 @@ static void FormatGenericCurrency(StringBuilder &builder, const CurrencySpec *sp
 	 * The only remaining value is 1 (suffix), so everything that is not 1 */
 	if (spec->symbol_pos != 1) builder += spec->prefix;
 
-	NumberFormatSeparators *format = &_number_format_separators;
+	NumberFormatSeparators *format = &_currency_format_separators;
 
 	/* For huge numbers, compact the number. */
 	if (compact) {
@@ -1895,6 +1904,7 @@ bool LanguagePackHeader::IsValid() const
 	       StrValid(this->own_name,                       lastof(this->own_name)) &&
 	       StrValid(this->isocode,                        lastof(this->isocode)) &&
 	       StrValid(this->number_format,                  lastof(this->number_format)) &&
+	       StrValid(this->currency_format,                lastof(this->currency_format)) &&
 	       StrValid(this->currency_abbreviations,         lastof(this->currency_abbreviations)) &&
 	       StrValid(this->digit_decimal_separator,        lastof(this->digit_decimal_separator));
 }

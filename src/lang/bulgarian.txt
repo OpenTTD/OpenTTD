@@ -4,6 +4,7 @@
 ##plural 0
 ##textdir ltr
 ##numberformat 00.000.000.000.000.000.000
+##currencyformat 00.000.000.000.000.000.000
 ##currencyabbreviations 3=00.000.000.000.000.000{NBSP}k|6=00.000.000.000.000{NBSP}m|9=00.000.000.000{NBSP}bn|12=00.000.000{NBSP}tn|15=00.000{NBSP}Qa|18=00{NBSP}Qi
 ##decimalsep ,
 ##winlangid 0x0402

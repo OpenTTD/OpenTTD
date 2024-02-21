@@ -129,6 +129,14 @@ void FileStringReader::HandlePragma(char *str)
 		if (result.has_value()) FatalError("Invalid number format: {}", *result);
 
 		strecpy(_lang.number_format, str, lastof(_lang.number_format));
+	} else if (!memcmp(str, "currencyformat ", 15)) {
+		str += 15;
+
+		NumberFormatSeparators separators;
+		auto result = ParseNumberFormatSeparators(separators, str);
+		if (result.has_value()) FatalError("Invalid currency format: {}", *result);
+
+		strecpy(_lang.currency_format, str, lastof(_lang.currency_format));
 	} else if (!memcmp(str, "currencyabbreviations ", 22)) {
 		str += 22;
 

@@ -4,6 +4,7 @@
 ##plural 0
 ##textdir ltr
 ##numberformat 00.000.000.000.000.000.000
+##currencyformat 00.000.000.000.000.000.000
 ##currencyabbreviations 3=00.000.000.000.000.000{NBSP}Tsd.|6=00.000.000.000.000{NBSP}Mio.|9=00.000.000.000{NBSP}Mrd.|12=00.000.000{NBSP}Bio.|15=00.000{NBSP}Brd.|18=00{NBSP}Trill.
 ##decimalsep ,
 ##winlangid 0x0407
