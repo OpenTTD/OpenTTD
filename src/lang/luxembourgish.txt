@@ -4,7 +4,7 @@
 ##plural 0
 ##textdir ltr
 ##numberformat 00.000.000.000.000.000.000
-##numberabbreviations 3=00.000.000.000.000.000{NBSP}d|6=00.000.000.000.000{NBSP}Mio|9=00.000.000.000{NBSP}Mrd|12=00.000.000{NBSP}Bio|15=00.000{NBSP}Qa|18=00{NBSP}Qi
+##currencyabbreviations 3=00.000.000.000.000.000{NBSP}d|6=00.000.000.000.000{NBSP}Mio|9=00.000.000.000{NBSP}Mrd|12=00.000.000{NBSP}Bio|15=00.000{NBSP}Qa|18=00{NBSP}Qi
 ##decimalsep ,
 ##winlangid 0x046e
 ##grflangid 0x23

@@ -757,7 +757,7 @@ void StringReader::ParseFile()
 	/* For each new file we parse, reset the genders, and language codes. */
 	MemSetT(&_lang, 0);
 	strecpy(_lang.number_format, "00,000,000,000,000,000,000", lastof(_lang.number_format));
-	strecpy(_lang.number_abbreviations, "3=00,000,000,000,000,000{NBSP}k|6=00,000,000,000,000{NBSP}m|9=00,000,000,000{NBSP}bn|12=00,000,000{NBSP}tn|15=00,000{NBSP}Qa|18=00{NBSP}Qi", lastof(_lang.number_abbreviations));
+	strecpy(_lang.currency_abbreviations, "3=00,000,000,000,000,000{NBSP}k|6=00,000,000,000,000{NBSP}m|9=00,000,000,000{NBSP}bn|12=00,000,000{NBSP}tn|15=00,000{NBSP}Qa|18=00{NBSP}Qi", lastof(_lang.currency_abbreviations));
 	strecpy(_lang.digit_decimal_separator, ".", lastof(_lang.digit_decimal_separator));
 
 	_cur_line = 1;

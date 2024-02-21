@@ -56,7 +56,7 @@ const LanguageMetadata *_current_language = nullptr; ///< The currently loaded l
 TextDirection _current_text_dir; ///< Text direction of the currently selected language.
 
 static NumberFormatSeparators _number_format_separators;
-static NumberAbbreviations _number_abbreviations;
+static NumberAbbreviations _currency_abbreviations;
 
 #ifdef WITH_ICU_I18N
 std::unique_ptr<icu::Collator> _current_collator;    ///< Collator for the language currently in use.
@@ -397,14 +397,14 @@ void InitializeNumberFormats()
 	}
 	if (!loaded_number_format) ParseNumberFormatSeparators(_number_format_separators, _current_language->number_format);
 
-	bool loaded_number_abbreviations = false;
-	if (!_settings_client.gui.number_abbreviations.empty()) {
-		auto res = ParseNumberAbbreviations(_number_abbreviations, _settings_client.gui.number_abbreviations);
-		if (res.has_value()) UserError("The setting 'number_abbreviations' under 'gui' is invalid: {}", *res);
-		loaded_number_abbreviations = !res.has_value();
+	bool loaded_currency_abbreviations = false;
+	if (!_settings_client.gui.currency_abbreviations.empty()) {
+		auto res = ParseNumberAbbreviations(_currency_abbreviations, _settings_client.gui.currency_abbreviations);
+		if (res.has_value()) UserError("The setting 'currency_abbreviations' under 'gui' is invalid: {}", *res);
+		loaded_currency_abbreviations = !res.has_value();
 	}
-	if (!loaded_number_abbreviations) ParseNumberAbbreviations(_number_abbreviations, _current_language->number_abbreviations);
-	_number_abbreviations.emplace_back(1, _number_format_separators);
+	if (!loaded_currency_abbreviations) ParseNumberAbbreviations(_currency_abbreviations, _current_language->currency_abbreviations);
+	_currency_abbreviations.emplace_back(1, _number_format_separators);
 }
 
 /**
@@ -536,11 +536,11 @@ static void FormatGenericCurrency(StringBuilder &builder, const CurrencySpec *sp
 
 	/* For huge numbers, compact the number. */
 	if (compact) {
-		auto it = _number_abbreviations.begin();
+		auto it = _currency_abbreviations.begin();
 		for (;;) {
 			int64_t threshold = it->threshold;
 			++it;
-			if (it == _number_abbreviations.end()) break;
+			if (it == _currency_abbreviations.end()) break;
 
 			int64_t divisor = it->threshold;
 			threshold -= divisor / 2;
@@ -1895,7 +1895,7 @@ bool LanguagePackHeader::IsValid() const
 	       StrValid(this->own_name,                       lastof(this->own_name)) &&
 	       StrValid(this->isocode,                        lastof(this->isocode)) &&
 	       StrValid(this->number_format,                  lastof(this->number_format)) &&
-	       StrValid(this->number_abbreviations,           lastof(this->number_abbreviations)) &&
+	       StrValid(this->currency_abbreviations,         lastof(this->currency_abbreviations)) &&
 	       StrValid(this->digit_decimal_separator,        lastof(this->digit_decimal_separator));
 }
 

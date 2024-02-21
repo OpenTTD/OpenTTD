@@ -223,7 +223,7 @@ struct GUISettings {
 	bool   scale_bevels;                     ///< bevels are scaled with GUI scale.
 
 	std::string number_format; ///< formatting string for numbers (like "thousands" grouping)
-	std::string number_abbreviations; ///< mapping to number formats for different powers of ten/thresholds
+	std::string currency_abbreviations; ///< mapping to currency number formats for different powers of ten/thresholds
 	std::string digit_decimal_separator; ///< decimal separator
 
 	/**

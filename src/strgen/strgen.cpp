@@ -129,14 +129,14 @@ void FileStringReader::HandlePragma(char *str)
 		if (result.has_value()) FatalError("Invalid number format: {}", *result);
 
 		strecpy(_lang.number_format, str, lastof(_lang.number_format));
-	} else if (!memcmp(str, "numberabbreviations ", 20)) {
-		str += 20;
+	} else if (!memcmp(str, "currencyabbreviations ", 22)) {
+		str += 22;
 
 		NumberAbbreviations abbreviations;
 		auto result = ParseNumberAbbreviations(abbreviations, str);
-		if (result.has_value()) FatalError("Invalid number abbreviations: {}", *result);
+		if (result.has_value()) FatalError("Invalid currency abbreviations: {}", *result);
 
-		strecpy(_lang.number_abbreviations, str, lastof(_lang.number_abbreviations));
+		strecpy(_lang.currency_abbreviations, str, lastof(_lang.currency_abbreviations));
 	} else if (!memcmp(str, "decimalsep ", 11)) {
 		str += 11;
 		strecpy(_lang.digit_decimal_separator, strcmp(str, "{NBSP}") == 0 ? NBSP : str, lastof(_lang.digit_decimal_separator));
