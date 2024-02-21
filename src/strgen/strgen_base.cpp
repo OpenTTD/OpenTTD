@@ -994,6 +994,15 @@ static std::string ReplaceNBSP(std::string string)
 	return string;
 }
 
+static DigitFormat::EmitBehaviour GetEmitBehaviour(char c)
+{
+	switch (c) {
+		case '0': return DigitFormat::DEFAULT;
+		case '1': return DigitFormat::RESET_HIGHER_DIGIT;
+		default: NOT_REACHED();
+	}
+}
+
 /**
  * Parse the \c NumberFormatSeparators out of the given format string, with the expected number of digits.
  *
@@ -1008,7 +1017,7 @@ static std::string ReplaceNBSP(std::string string)
  * configured. The simplest solution is just defining what character to place between each of the digits, i.e what
  * characters separate each of the digits. These are the \c NumberFormatSeparators.
  *
- * To define these, you simply write a string of \c length zeros and then add any characters in between at the right
+ * To define these, you simply write a string of \c length digits and then add any characters in between at the right
  * locations so the digit grouping is correct. When formatting numbers, it will start at the appropriate digit and
  * continue from there with separators.
  *
@@ -1021,22 +1030,26 @@ static std::string ReplaceNBSP(std::string string)
  */
 std::optional<std::string> ParseNumberFormatSeparators(NumberFormatSeparators &separators, std::string_view format, size_t length)
 {
+	static const std::string EXPECTED_DIGIT = "01";
 	separators.fill({});
-	size_t seen_zeros = 0;
+	size_t seen_digits = 0;
 
 	auto it_separator = separators.rbegin();
-	auto iter = format.find_last_of('0');
+	auto iter = format.find_last_of(EXPECTED_DIGIT);
 	while (iter != std::string_view::npos && it_separator != separators.rend())  {
-		seen_zeros++;
+		seen_digits++;
 
-		*it_separator = ReplaceNBSP(std::string(format.substr(iter + 1)));
+		it_separator->emit_behaviour = GetEmitBehaviour(format[iter]);
+		it_separator->separator = ReplaceNBSP(std::string(format.substr(iter + 1)));
 		++it_separator;
 
 		format = format.substr(0, iter);
-		iter = format.find_last_of('0');
+		iter = format.find_last_of(EXPECTED_DIGIT);
 	}
 
-	if (seen_zeros != length) return fmt::format("Unexpected number of digits ({} vs {}) in format string: [{}]", seen_zeros, length, format);
+	/* Always emit the last digit when nothing is emitted. */
+	separators.rbegin()->emit_behaviour = DigitFormat::EMIT_WHEN_NOTHING_IS_EMITTED_YET;
+	if (seen_digits != length) return fmt::format("Unexpected number of digits ({} vs {}) in format string: [{}]", seen_digits, length, format);
 
 	return std::nullopt;
 }

@@ -109,13 +109,23 @@ extern std::unique_ptr<icu::Collator> _current_collator;
 
 /** The number digits available in a uint64_t. */
 constexpr int DIGITS_IN_UINT64_T = 20;
+/** Container for the formatting of a single digit. */
+struct DigitFormat {
+	enum EmitBehaviour {
+		DEFAULT, ///< Only emit the digit when it's not zero, or there is a higher digit not zero.
+		EMIT_WHEN_NOTHING_IS_EMITTED_YET, ///< Emit the digit when it's not zero, or there is a higher digit not zero, or no digit has been emitted yet.
+		RESET_HIGHER_DIGIT, ///< Only emit the digit when it is not zero, and reset the 'there is a higher digit not zero'-flag.
+	};
+	std::string separator; ///< The string to write after the digit, when the digit is emitted.
+	EmitBehaviour emit_behaviour; ///< The behaviour with respect to emitting the digit.
+};
 /**
  * Table with the text to place after each of the digits of a number. The text at index "20 - i" will be
  * inserted after the digit with value "10**i". So, for "normal" thousand separators, the strings at indices
  * 3, 6, 9, 12, 15 and 18 will be filled. For CJK the strings at indices 0, 4, 8, 12 and 16 will be filled.
  * @see ParseNumberFormatSeparators
  */
-using NumberFormatSeparators = std::array<std::string, DIGITS_IN_UINT64_T>;
+using NumberFormatSeparators = std::array<DigitFormat, DIGITS_IN_UINT64_T>;
 /** Container for the power to abbreviation mapping for formatting short numbers. */
 struct NumberAbbreviation {
 	NumberAbbreviation(int64_t threshold, NumberFormatSeparators &format) : threshold(threshold), format(format) {}

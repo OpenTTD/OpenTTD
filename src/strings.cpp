@@ -423,15 +423,20 @@ static void FormatNumber(StringBuilder &builder, int64_t number, const NumberFor
 	uint64_t divisor = 10000000000000000000ULL;
 	uint64_t num = number;
 	uint64_t tot = 0;
-	for (size_t i = 0; i < separators.size(); i++) {
+	bool emitted = false;
+	for (const DigitFormat &format : separators) {
 		uint64_t quot = 0;
 		if (num >= divisor) {
 			quot = num / divisor;
 			num = num % divisor;
 		}
-		if ((tot |= quot) != 0 || i == separators.size() - 1) {
+
+		if (format.emit_behaviour == DigitFormat::RESET_HIGHER_DIGIT) tot = 0;
+
+		if ((tot |= quot) != 0 || (format.emit_behaviour == DigitFormat::EMIT_WHEN_NOTHING_IS_EMITTED_YET && !emitted)) {
 			builder += '0' + quot; // quot is a single digit
-			builder += separators[i].data();
+			builder += format.separator.data();
+			emitted = true;
 		}
 
 		divisor /= 10;
