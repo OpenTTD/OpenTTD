@@ -1774,8 +1774,8 @@ void NWidgetMatrix::SetClicked(int clicked)
 		int vpos = (this->clicked / this->widgets_x) * this->widget_h; // Vertical position of the top.
 		/* Need to scroll down -> Scroll to the bottom.
 		 * However, last entry has no 'this->pip_inter' underneath, and we must stay below this->sb->GetCount() */
-		if (this->sb->GetPosition() < vpos) vpos += this->widget_h - this->pip_inter - 1;
-		this->sb->ScrollTowards(vpos);
+		if (this->sb->GetPosition() * this->count_adjust < vpos) vpos += this->widget_h - this->pip_inter - 1;
+		this->sb->ScrollTowards(vpos / this->count_adjust);
 	}
 }
 
@@ -1799,9 +1799,11 @@ void NWidgetMatrix::SetCount(int count)
 	count *= (this->sb->IsVertical() ? this->children.front()->smallest_y : this->children.front()->smallest_x) + this->pip_inter;
 	if (count > 0) count -= this->pip_inter; // We counted an inter too much in the multiplication above
 	count += this->pip_pre + this->pip_post;
+	this->count_adjust = CeilDiv(count, Scrollbar::GetMaxCount());
+	count /= this->count_adjust;
 	this->sb->SetCount(count);
-	this->sb->SetCapacity(this->sb->IsVertical() ? this->current_y : this->current_x);
-	this->sb->SetStepSize(this->sb->IsVertical() ? this->widget_h  : this->widget_w);
+	this->sb->SetCapacity((this->sb->IsVertical() ? this->current_y : this->current_x) / this->count_adjust);
+	this->sb->SetStepSize((this->sb->IsVertical() ? this->widget_h  : this->widget_w) / this->count_adjust);
 }
 
 /**
@@ -1966,11 +1968,11 @@ void NWidgetMatrix::GetScrollOffsets(int &start_x, int &start_y, int &base_offs_
 	start_y = 0;
 	if (this->sb != nullptr) {
 		if (this->sb->IsVertical()) {
-			start_y = this->sb->GetPosition() / this->widget_h;
-			base_offs_y += -this->sb->GetPosition() + start_y * this->widget_h;
+			start_y = this->sb->GetPosition() * this->count_adjust / this->widget_h;
+			base_offs_y += -this->sb->GetPosition() * this->count_adjust + start_y * this->widget_h;
 		} else {
-			start_x = this->sb->GetPosition() / this->widget_w;
-			int sub_x = this->sb->GetPosition() - start_x * this->widget_w;
+			start_x = this->sb->GetPosition() * this->count_adjust / this->widget_w;
+			int sub_x = this->sb->GetPosition() * this->count_adjust - start_x * this->widget_w;
 			if (_current_text_dir == TD_RTL) {
 				base_offs_x += sub_x;
 			} else {

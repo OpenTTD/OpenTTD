@@ -607,6 +607,7 @@ private:
 	int widget_h;   ///< The height of the child widget including inter spacing.
 	int widgets_x;  ///< The number of visible widgets in horizontal direction.
 	int widgets_y;  ///< The number of visible widgets in vertical direction.
+	int count_adjust; ///< Multiplier/divisor applied to count to ensure it fits below Scrollbar's storage type.
 
 	void GetScrollOffsets(int &start_x, int &start_y, int &base_offs_x, int &base_offs_y);
 };
@@ -695,6 +696,15 @@ public:
 
 	Scrollbar(bool is_vertical) : is_vertical(is_vertical), stepsize(1)
 	{
+	}
+
+	/**
+	 * Get the maximum possible number of elements in a list.
+	 * @return the maximum possible number of elements.
+	 */
+	static constexpr uint16_t GetMaxCount()
+	{
+		return std::numeric_limits<decltype(count)>::max();
 	}
 
 	/**
