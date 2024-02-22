@@ -3,8 +3,8 @@
 ##isocode ca_ES
 ##plural 0
 ##textdir ltr
-##numberformat 00.000.000.000.000.000.000
-##numberabbreviations 3=00.000.000.000.000.000{NBSP}k|6=00.000.000.000.000{NBSP}M|9=00.000.000.000{NBSP}G|12=00.000.000{NBSP}T|15=00.000{NBSP}Qa|18=00{NBSP}Qi
+##digitsep .
+##digitsepcur .
 ##decimalsep ,
 ##winlangid 0x0403
 ##grflangid 0x22

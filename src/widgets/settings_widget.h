@@ -82,6 +82,8 @@ enum CustomCurrencyWidgets : WidgetID {
 	WID_CC_RATE_DOWN,      ///< Down button.
 	WID_CC_RATE_UP,        ///< Up button.
 	WID_CC_RATE,           ///< Rate of currency.
+	WID_CC_SEPARATOR_EDIT, ///< Separator edit button.
+	WID_CC_SEPARATOR,      ///< Current separator.
 	WID_CC_PREFIX_EDIT,    ///< Prefix edit button.
 	WID_CC_PREFIX,         ///< Current prefix.
 	WID_CC_SUFFIX_EDIT,    ///< Suffix edit button.

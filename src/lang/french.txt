@@ -3,8 +3,8 @@
 ##isocode fr_FR
 ##plural 2
 ##textdir ltr
-##numberformat 00{NBSP}000{NBSP}000{NBSP}000{NBSP}000{NBSP}000{NBSP}000
-##numberabbreviations 3=00{NBSP}000{NBSP}000{NBSP}000{NBSP}000{NBSP}000{NBSP}k|6=00{NBSP}000{NBSP}000{NBSP}000{NBSP}000{NBSP}Mio|9=00{NBSP}000{NBSP}000{NBSP}000{NBSP}Mrd|12=00{NBSP}000{NBSP}000{NBSP}kMrd|15=00{NBSP}000{NBSP}Qa|18=00{NBSP}Qi
+##digitsep {NBSP}
+##digitsepcur {NBSP}
 ##decimalsep ,
 ##winlangid 0x040c
 ##grflangid 0x03

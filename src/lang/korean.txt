@@ -3,8 +3,8 @@
 ##isocode ko_KR
 ##plural 11
 ##textdir ltr
-##numberformat 0000경0000조0000억0000만0000
-##numberabbreviations 4=0000경0000조0000억0000만|8=0000경0000조0000억|12=0000경0000조|16=0000경
+##digitsep ,
+##digitsepcur ,
 ##decimalsep .
 ##winlangid 0x0412
 ##grflangid 0x3a
