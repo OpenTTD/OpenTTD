@@ -3,8 +3,8 @@
 ##isocode fi_FI
 ##plural 0
 ##textdir ltr
-##numberformat 00{NBSP}000{NBSP}000{NBSP}000{NBSP}000{NBSP}000{NBSP}000
-##numberabbreviations 6=00{NBSP}000{NBSP}000{NBSP}000{NBSP}000{NBSP}milj.|9=00{NBSP}000{NBSP}000{NBSP}000{NBSP}mrd.|12=00{NBSP}000{NBSP}000{NBSP} t|15=00{NBSP}000{NBSP}Qa|18=00{NBSP}Qi
+##digitsep {NBSP}
+##digitsepcur {NBSP}
 ##decimalsep ,
 ##winlangid 0x040b
 ##grflangid 0x35

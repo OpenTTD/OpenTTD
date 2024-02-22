@@ -3,8 +3,8 @@
 ##isocode ru_RU
 ##plural 6
 ##textdir ltr
-##numberformat 00{NBSP}000{NBSP}000{NBSP}000{NBSP}000{NBSP}000{NBSP}000
-##numberabbreviations 3=00{NBSP}000{NBSP}000{NBSP}000{NBSP}000{NBSP}000{NBSP}тыс.|6=00{NBSP}000{NBSP}000{NBSP}000{NBSP}000{NBSP}млн|9=00{NBSP}000{NBSP}000{NBSP}000{NBSP}млрд.|12=00{NBSP}000{NBSP}000{NBSP}трлн.|15=00{NBSP}000{NBSP}Qa|18=00{NBSP}Qi
+##digitsep {NBSP}
+##digitsepcur {NBSP}
 ##decimalsep ,
 ##winlangid 0x0419
 ##grflangid 0x07
