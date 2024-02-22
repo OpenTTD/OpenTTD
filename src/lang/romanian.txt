@@ -3,8 +3,8 @@
 ##isocode ro_RO
 ##plural 14
 ##textdir ltr
-##numberformat 00.000.000.000.000.000.000
-##numberabbreviations 3=00.000.000.000.000.000{NBSP}mii|6=00.000.000.000.000{NBSP}mil.|9=00.000.000.000{NBSP}mld.|12=00.000.000{NBSP}bil.|15=00.000{NBSP}Qa|18=00{NBSP}Qi
+##digitsep .
+##digitsepcur .
 ##decimalsep ,
 ##winlangid 0x0418
 ##grflangid 0x28
