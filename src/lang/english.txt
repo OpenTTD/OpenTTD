@@ -3,8 +3,8 @@
 ##isocode en_GB
 ##plural 0
 ##textdir ltr
-##numberformat 00,000,000,000,000,000,000
-##numberabbreviations 3=00,000,000,000,000,000{NBSP}k|6=00,000,000,000,000{NBSP}m|9=00,000,000,000{NBSP}bn|12=00,000,000{NBSP}tn|15=00,000{NBSP}Qa|18=00{NBSP}Qi
+##digitsep ,
+##digitsepcur ,
 ##decimalsep .
 ##winlangid 0x0809
 ##grflangid 0x01
@@ -1116,6 +1116,9 @@ STR_CURRENCY_EXCHANGE_RATE                                      :{LTBLUE}Exchang
 STR_CURRENCY_DECREASE_EXCHANGE_RATE_TOOLTIP                     :{BLACK}Decrease the amount of your currency for one Pound (£)
 STR_CURRENCY_INCREASE_EXCHANGE_RATE_TOOLTIP                     :{BLACK}Increase the amount of your currency for one Pound (£)
 STR_CURRENCY_SET_EXCHANGE_RATE_TOOLTIP                          :{BLACK}Set the exchange rate of your currency for one Pound (£)
+
+STR_CURRENCY_SEPARATOR                                          :{LTBLUE}Separator: {ORANGE}{RAW_STRING}
+STR_CURRENCY_SET_CUSTOM_CURRENCY_SEPARATOR_TOOLTIP              :{BLACK}Set the separator for your currency
 
 STR_CURRENCY_PREFIX                                             :{LTBLUE}Prefix: {ORANGE}{RAW_STRING}
 STR_CURRENCY_SET_CUSTOM_CURRENCY_PREFIX_TOOLTIP                 :{BLACK}Set the prefix string for your currency
@@ -5806,6 +5809,11 @@ STR_STATION_NAME                                                :{STATION}
 STR_TOWN_NAME                                                   :{TOWN}
 STR_VEHICLE_NAME                                                :{VEHICLE}
 STR_WAYPOINT_NAME                                               :{WAYPOINT}
+
+STR_CURRENCY_SHORT_KILO                                         :{NBSP}k
+STR_CURRENCY_SHORT_MEGA                                         :{NBSP}m
+STR_CURRENCY_SHORT_GIGA                                         :{NBSP}bn
+STR_CURRENCY_SHORT_TERA                                         :{NBSP}tn
 
 STR_JUST_CARGO                                                  :{CARGO_LONG}
 STR_JUST_RIGHT_ARROW                                            :{RIGHT_ARROW}
