@@ -1112,7 +1112,7 @@ STR_ERROR_FULLSCREEN_FAILED                                     :{WHITE}Modo de 
 
 # Custom currency window
 
-STR_CURRENCY_WINDOW                                             :{WHITE}Moeda Modificada
+STR_CURRENCY_WINDOW                                             :{WHITE}Moeda personalizada
 STR_CURRENCY_EXCHANGE_RATE                                      :{LTBLUE}Taxa de conversão: {ORANGE}{CURRENCY_LONG} = £ {COMMA}
 STR_CURRENCY_DECREASE_EXCHANGE_RATE_TOOLTIP                     :{BLACK}Diminuir a quantidade da sua moeda para uma Libra (£)
 STR_CURRENCY_INCREASE_EXCHANGE_RATE_TOOLTIP                     :{BLACK}Aumentar a quantidade da sua moeda para uma Libra (£)
@@ -1131,7 +1131,7 @@ STR_CURRENCY_INCREASE_CUSTOM_CURRENCY_TO_EURO_TOOLTIP           :{BLACK}Mudar pa
 
 STR_CURRENCY_PREVIEW                                            :{LTBLUE}Pré-visualizar: {ORANGE}{CURRENCY_LONG}
 STR_CURRENCY_CUSTOM_CURRENCY_PREVIEW_TOOLTIP                    :{BLACK}10000 Libras (£) na sua moeda
-STR_CURRENCY_CHANGE_PARAMETER                                   :{BLACK}Mudar parâmetro de moeda modificada
+STR_CURRENCY_CHANGE_PARAMETER                                   :{BLACK}Mudar parâmetro da moeda personalizada
 
 STR_NONE                                                        :Nenhum
 STR_FUNDING_ONLY                                                :Financiamento apenas
@@ -1272,10 +1272,10 @@ STR_CONFIG_SETTING_INFINITE_MONEY                               :Dinheiro ilimit
 STR_CONFIG_SETTING_INFINITE_MONEY_HELPTEXT                      :Permitir gastos ilimitados e desabilitar a falência de empresas
 
 STR_CONFIG_SETTING_MAXIMUM_INITIAL_LOAN                         :Valor máximo do empréstimo inicial: {STRING}
-STR_CONFIG_SETTING_MAXIMUM_INITIAL_LOAN_HELPTEXT                :Valor máximo do empréstimo para cada empresa (sem ter em conta a inflação)
+STR_CONFIG_SETTING_MAXIMUM_INITIAL_LOAN_HELPTEXT                :Valor máximo do empréstimo para cada empresa (sem ter em conta a inflação)Se definido como "Sem empréstimo", não haverá dinheiro disponível, a menos que seja fornecido por um Script de Jogo ou pela configuração "Dinheiro ilimitado".
 STR_CONFIG_SETTING_MAXIMUM_INITIAL_LOAN_VALUE                   :{CURRENCY_LONG}
 ###setting-zero-is-special
-STR_CONFIG_SETTING_MAXIMUM_INITIAL_LOAN_DISABLED                :Sem empréstimo {RED}Requer Script de Jogo para fornecer fundos iniciais
+STR_CONFIG_SETTING_MAXIMUM_INITIAL_LOAN_DISABLED                :Sem empréstimo
 
 STR_CONFIG_SETTING_INTEREST_RATE                                :Taxa de juro: {STRING}
 STR_CONFIG_SETTING_INTEREST_RATE_HELPTEXT                       :Taxa de juro do empréstimo; também controla a inflação, se ativo

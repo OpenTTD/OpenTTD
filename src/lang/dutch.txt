@@ -4610,7 +4610,7 @@ STR_ORDER_GO_TO_NEAREST_DEPOT                                   :Ga naar dichtst
 STR_ORDER_GO_TO_NEAREST_HANGAR                                  :Ga naar dichtstbijzijnde hangar
 STR_ORDER_CONDITIONAL                                           :Voorwaardelijk overgeslagen order
 STR_ORDER_SHARE                                                 :Orders delen
-STR_ORDERS_GO_TO_TOOLTIP                                        :{BLACK}Voegt een nieuwe order toe voor de geselecteerde order of aan het eind van de lijst. Ctrl+klik maakt stationsorders 'Eén soort vracht volledig laden', controlepost-orders 'Ga non-stop via' en depot-orders 'Onderhoud bij'. Klikken op een ander voertuig kopieert de orders van dat voertuig, Ctrl+klik om de orders te delen. Een depot-order schakelt automatisch onderhoud van een voertuig uit.
+STR_ORDERS_GO_TO_TOOLTIP                                        :{BLACK}Voegt een nieuwe order toe voor de geselecteerde order of aan het eind van de lijst. Ctrl+klik op een station om 'Eén soort vracht volledig te laden', op een tussenpunt om de 'Ga non-stop via'n om te keren en op een depot voor 'Onderhoud'. Klikken op een ander voertuig om de orders van dat voertuig te kopiëren, of Ctrl+klik om de orders te delen. Een depot-order schakelt automatisch onderhoud van een voertuig uit.
 
 STR_ORDERS_VEH_WITH_SHARED_ORDERS_LIST_TOOLTIP                  :{BLACK}Alle voertuigen weergeven met dezelfde gedeelde orders
 

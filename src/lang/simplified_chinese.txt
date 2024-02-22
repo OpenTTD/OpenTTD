@@ -293,10 +293,10 @@ STR_TOOLTIP_DEMOLISH_BUILDINGS_ETC                              :{BLACK}拆除�
 
 # Show engines button
 ###length VEHICLE_TYPES
-STR_SHOW_HIDDEN_ENGINES_VEHICLE_TRAIN                           :{BLACK}显示被隐藏的
-STR_SHOW_HIDDEN_ENGINES_VEHICLE_ROAD_VEHICLE                    :{BLACK}显示被隐藏的
-STR_SHOW_HIDDEN_ENGINES_VEHICLE_SHIP                            :{BLACK}显示被隐藏的
-STR_SHOW_HIDDEN_ENGINES_VEHICLE_AIRCRAFT                        :{BLACK}显示被隐藏的
+STR_SHOW_HIDDEN_ENGINES_VEHICLE_TRAIN                           :{BLACK}显示隐藏载具
+STR_SHOW_HIDDEN_ENGINES_VEHICLE_ROAD_VEHICLE                    :{BLACK}显示隐藏载具
+STR_SHOW_HIDDEN_ENGINES_VEHICLE_SHIP                            :{BLACK}显示隐藏载具
+STR_SHOW_HIDDEN_ENGINES_VEHICLE_AIRCRAFT                        :{BLACK}显示隐藏载具
 
 ###length VEHICLE_TYPES
 STR_SHOW_HIDDEN_ENGINES_VEHICLE_TRAIN_TOOLTIP                   :{BLACK}如启用此按键，被隐藏的铁路列车也会被显示出来
@@ -599,7 +599,7 @@ STR_MONTH_DEC                                                   :12
 
 # Graph window
 STR_GRAPH_KEY_BUTTON                                            :{BLACK}索引
-STR_GRAPH_KEY_TOOLTIP                                           :{BLACK}显示图表的公司索引
+STR_GRAPH_KEY_TOOLTIP                                           :{BLACK}显示图例
 STR_GRAPH_X_LABEL_MONTH                                         :{TINY_FONT}{STRING}
 STR_GRAPH_X_LABEL_MONTH_YEAR                                    :{TINY_FONT}{STRING}{}{NUM}
 STR_GRAPH_Y_LABEL                                               :{TINY_FONT}{STRING}
@@ -653,7 +653,7 @@ STR_PERFORMANCE_DETAIL_PERCENT                                  :{WHITE}{NUM}%
 STR_PERFORMANCE_DETAIL_SELECT_COMPANY_TOOLTIP                   :{BLACK}查看该公司详情
 
 ###length 10
-STR_PERFORMANCE_DETAIL_VEHICLES                                 :{BLACK}车船数量：
+STR_PERFORMANCE_DETAIL_VEHICLES                                 :{BLACK}载具数量：
 STR_PERFORMANCE_DETAIL_STATIONS                                 :{BLACK}站台数量：
 STR_PERFORMANCE_DETAIL_MIN_PROFIT                               :{BLACK}最小利润：
 STR_PERFORMANCE_DETAIL_MIN_INCOME                               :{BLACK}最小收入：
@@ -863,8 +863,8 @@ STR_PRESIDENT_NAME_MANAGER                                      :{BLACK}{PRESIDE
 STR_NEWS_NEW_TOWN                                               :{BLACK}{BIG_FONT}{STRING} 赞助了城镇 {TOWN} 的建设！
 STR_NEWS_NEW_TOWN_UNSPONSORED                                   :{BLACK}{BIG_FONT}一个名叫{TOWN}的城镇刚刚成立了！
 
-STR_NEWS_INDUSTRY_CONSTRUCTION                                  :{BIG_FONT}{BLACK}新 {STRING} 正在 {TOWN} 加紧建设！
-STR_NEWS_INDUSTRY_PLANTED                                       :{BIG_FONT}{BLACK}新 {STRING} 即将落户 {TOWN}！
+STR_NEWS_INDUSTRY_CONSTRUCTION                                  :{BIG_FONT}{BLACK}新的{STRING} 正在 {TOWN} 加紧建设！
+STR_NEWS_INDUSTRY_PLANTED                                       :{BIG_FONT}{BLACK}新的{STRING} 即将落户 {TOWN}！
 
 STR_NEWS_INDUSTRY_CLOSURE_GENERAL                               :{BIG_FONT}{BLACK}{STRING} 即将倒闭！
 STR_NEWS_INDUSTRY_CLOSURE_SUPPLY_PROBLEMS                       :{BIG_FONT}{BLACK}{STRING} 没有原料供应，即将倒闭！
@@ -1042,7 +1042,7 @@ STR_GAME_OPTIONS_VIDEO_ACCELERATION_RESTART                     :{WHITE}修改�
 STR_GAME_OPTIONS_VIDEO_VSYNC                                    :{BLACK}垂直同步
 STR_GAME_OPTIONS_VIDEO_VSYNC_TOOLTIP                            :{BLACK}点击该复选框开启垂直同步(V-sync)。修改后的设置将在游戏重启后生效。仅开启硬件加速时有效
 
-STR_GAME_OPTIONS_VIDEO_DRIVER_INFO                              :{BLACK}使用中的驱动程序: {STRING}
+STR_GAME_OPTIONS_VIDEO_DRIVER_INFO                              :{BLACK}驱动程序：{STRING}
 
 STR_GAME_OPTIONS_GUI_SCALE_FRAME                                :{BLACK}界面大小
 STR_GAME_OPTIONS_GUI_SCALE_TOOLTIP                              :{BLACK}拖动滑块以设置界面大小。按住 <Ctrl> 键以精准调整。
@@ -2952,7 +2952,7 @@ STR_STATION_BUILD_NOISE                                         :{BLACK}产生�
 
 # Landscaping toolbar
 STR_LANDSCAPING_TOOLBAR                                         :{WHITE}景观美化
-STR_LANDSCAPING_TOOLTIP_LOWER_A_CORNER_OF_LAND                  :{BLACK}降低地块的一角
+STR_LANDSCAPING_TOOLTIP_LOWER_A_CORNER_OF_LAND                  :{BLACK}降低地面。按住 <Ctrl> 键以沿对角线操作，按住 <Shift> 键操作以显示预计成本。
 STR_LANDSCAPING_TOOLTIP_RAISE_A_CORNER_OF_LAND                  :{BLACK}升高地块的一角
 STR_LANDSCAPING_LEVEL_LAND_TOOLTIP                              :{BLACK}拉平地面。按住 <Ctrl> 键以沿对角线操作，按住 <Shift> 键操作以显示预计成本。
 STR_LANDSCAPING_TOOLTIP_PURCHASE_LAND                           :{BLACK}购买土地以备将来使用。按 Ctrl 键可选择对角线区域。按 Shift 键可以预览所需资金。
@@ -3407,7 +3407,7 @@ STR_NEWGRF_SETTINGS_PRESET_SAVE                                 :{BLACK}保存�
 STR_NEWGRF_SETTINGS_PRESET_SAVE_TOOLTIP                         :{BLACK}将当前激活列表保存为预设
 STR_NEWGRF_SETTINGS_PRESET_DELETE                               :{BLACK}删除预设
 STR_NEWGRF_SETTINGS_PRESET_DELETE_TOOLTIP                       :{BLACK}删除选定的预设
-STR_NEWGRF_SETTINGS_ADD                                         :{BLACK}增加
+STR_NEWGRF_SETTINGS_ADD                                         :{BLACK}激活
 STR_NEWGRF_SETTINGS_ADD_FILE_TOOLTIP                            :{BLACK}将选定的 NewGRF 文件添加到你的配置中
 STR_NEWGRF_SETTINGS_RESCAN_FILES                                :{BLACK}重新检索文件
 STR_NEWGRF_SETTINGS_RESCAN_FILES_TOOLTIP                        :{BLACK}刷新可用的 NewGRF 文件列表
@@ -3817,7 +3817,7 @@ STR_STATION_VIEW_CLOSE_AIRPORT_TOOLTIP                          :{BLACK}禁止�
 STR_WAYPOINT_VIEW_CAPTION                                       :{WHITE}{WAYPOINT}
 STR_WAYPOINT_VIEW_CENTER_TOOLTIP                                :{BLACK}将屏幕中心移动到路点所在的位置。按住 <Ctrl> 单击会在新视点中显示路点。
 STR_WAYPOINT_VIEW_CHANGE_WAYPOINT_NAME                          :{BLACK}修改路点名
-STR_BUOY_VIEW_CENTER_TOOLTIP                                    :{BLACK}将屏幕中心移动到浮标所在的位置. 单击的同时按住Ctrl会在新视点中显示浮标位置
+STR_BUOY_VIEW_CENTER_TOOLTIP                                    :{BLACK}将屏幕中心移动到浮标所在的位置。按住 <Ctrl> 单击会在新视点中显示目标位置。
 STR_BUOY_VIEW_CHANGE_BUOY_NAME                                  :{BLACK}修改浮标名
 
 STR_EDIT_WAYPOINT_NAME                                          :{WHITE}编辑路点名称
@@ -3873,14 +3873,14 @@ STR_COMPANY_VIEW_PRESIDENT_MANAGER_TITLE                        :{WHITE}{PRESIDE
 
 STR_COMPANY_VIEW_INAUGURATED_TITLE                              :{GOLD}开业时间：{WHITE}{NUM}
 STR_COMPANY_VIEW_COLOUR_SCHEME_TITLE                            :{GOLD}色彩方案：
-STR_COMPANY_VIEW_VEHICLES_TITLE                                 :{GOLD}车船概况：
+STR_COMPANY_VIEW_VEHICLES_TITLE                                 :{GOLD}载具总数：
 STR_COMPANY_VIEW_TRAINS                                         :{WHITE}{COMMA} 列火车
 STR_COMPANY_VIEW_ROAD_VEHICLES                                  :{WHITE}{COMMA} 辆汽车
 STR_COMPANY_VIEW_AIRCRAFT                                       :{WHITE}{COMMA} 架飞机
 STR_COMPANY_VIEW_SHIPS                                          :{WHITE}{COMMA} 艘轮船
 STR_COMPANY_VIEW_VEHICLES_NONE                                  :{WHITE}无
 STR_COMPANY_VIEW_COMPANY_VALUE                                  :{GOLD}公司市值：{WHITE}{CURRENCY_LONG}
-STR_COMPANY_VIEW_INFRASTRUCTURE                                 :{GOLD}设施:
+STR_COMPANY_VIEW_INFRASTRUCTURE                                 :{GOLD}基建设施：
 STR_COMPANY_VIEW_INFRASTRUCTURE_RAIL                            :{WHITE}轨道 {COMMA} 块
 STR_COMPANY_VIEW_INFRASTRUCTURE_ROAD                            :{WHITE}公路 {COMMA} 块
 STR_COMPANY_VIEW_INFRASTRUCTURE_WATER                           :{WHITE}水运 {COMMA} 块
@@ -3904,7 +3904,7 @@ STR_COMPANY_VIEW_HOSTILE_TAKEOVER_TOOLTIP                       :{BLACK}恶意�
 STR_COMPANY_VIEW_NEW_FACE_BUTTON                                :{BLACK}新的头像
 STR_COMPANY_VIEW_NEW_FACE_TOOLTIP                               :{BLACK}为总裁选择新头像
 STR_COMPANY_VIEW_COLOUR_SCHEME_BUTTON                           :{BLACK}色彩方案
-STR_COMPANY_VIEW_COLOUR_SCHEME_TOOLTIP                          :{BLACK}改变公司车船的颜色
+STR_COMPANY_VIEW_COLOUR_SCHEME_TOOLTIP                          :{BLACK}修改公司载具颜色
 STR_COMPANY_VIEW_COMPANY_NAME_BUTTON                            :{BLACK}公司名称
 STR_COMPANY_VIEW_COMPANY_NAME_TOOLTIP                           :{BLACK}改变公司的名称
 STR_COMPANY_VIEW_PRESIDENT_NAME_BUTTON                          :{BLACK}总裁姓名
@@ -4114,8 +4114,8 @@ STR_BUY_VEHICLE_AIRCRAFT_BUY_REFIT_VEHICLE_BUTTON               :{BLACK}购买�
 ###length VEHICLE_TYPES
 STR_BUY_VEHICLE_TRAIN_BUY_VEHICLE_TOOLTIP                       :{BLACK}购买选定的列车，按住 <Shift> 键单击以显示预计费用。
 STR_BUY_VEHICLE_ROAD_VEHICLE_BUY_VEHICLE_TOOLTIP                :{BLACK}购买选定的汽车，按住 <Shift> 键单击以显示预计费用
-STR_BUY_VEHICLE_SHIP_BUY_VEHICLE_TOOLTIP                        :{BLACK}购买选定的船只，按住 Shift 键单击可以显示所需资金
-STR_BUY_VEHICLE_AIRCRAFT_BUY_VEHICLE_TOOLTIP                    :{BLACK}购买选定的飞机，按住 Shift 键单击可以显示所需资金
+STR_BUY_VEHICLE_SHIP_BUY_VEHICLE_TOOLTIP                        :{BLACK}购买选定的船只，按住 <Shift> 键单击以显示预计费用
+STR_BUY_VEHICLE_AIRCRAFT_BUY_VEHICLE_TOOLTIP                    :{BLACK}购买选定的飞机。按住 <Shift> 键单击以显示预计费用
 
 ###length VEHICLE_TYPES
 STR_BUY_VEHICLE_TRAIN_BUY_REFIT_VEHICLE_TOOLTIP                 :{BLACK}购买并改装选定的列车。按住 <Shift> 键单击可以显示所需资金
@@ -4215,7 +4215,7 @@ STR_DEPOT_CLONE_AIRCRAFT                                        :{BLACK}克隆�
 ###length VEHICLE_TYPES
 STR_DEPOT_CLONE_TRAIN_DEPOT_INFO                                :{BLACK}复制火车。点击此按钮然后再点击任意一列在车库内或车库外的火车以复制购买。按住 <Ctrl> 键单击以共享调度计划。按住 <Shift> 键单击以显示预计费用。
 STR_DEPOT_CLONE_ROAD_VEHICLE_DEPOT_INFO                         :{BLACK}复制汽车。点击此按钮然后再点击任意一辆在车库内或车库外的载具以复制购买。按住 <Ctrl> 键单击以共享调度计划。按住 <Shift> 键单击以显示预计费用。
-STR_DEPOT_CLONE_SHIP_DEPOT_INFO                                 :{BLACK}复制船只。按此按钮后{}点击一个在船坞内或外面的船只即可。按住 Ctrl 键单击可以同时共享调度计划，按住 Shift 键单击可以显示所需资金
+STR_DEPOT_CLONE_SHIP_DEPOT_INFO                                 :{BLACK}复制船只。点击此按钮然后再点击任意一辆在车库内或车库外的载具以复制购买。按住 <Ctrl> 键单击以共享调度计划。按住 <Shift> 键单击以显示预计费用。
 STR_DEPOT_CLONE_AIRCRAFT_INFO_HANGAR_WINDOW                     :{BLACK}复制飞机。按此按钮后{}点击一个在机库内或外面的飞机即可。按住 Ctrl 键单击可以同时共享调度计划，按住 Shift 键单击可以显示所需资金
 
 ###length VEHICLE_TYPES

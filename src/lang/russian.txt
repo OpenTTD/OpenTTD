@@ -575,7 +575,7 @@ STR_SETTINGS_MENU_SANDBOX_OPTIONS                               :Настрой�
 STR_SETTINGS_MENU_TRANSPARENCY_OPTIONS                          :Настройки прозрачности
 STR_SETTINGS_MENU_TOWN_NAMES_DISPLAYED                          :Показывать названия городов
 STR_SETTINGS_MENU_STATION_NAMES_DISPLAYED                       :Показывать названия станций
-STR_SETTINGS_MENU_WAYPOINTS_DISPLAYED                           :Показывать имена точек пути
+STR_SETTINGS_MENU_WAYPOINTS_DISPLAYED                           :Показывать названия маршрутных точек
 STR_SETTINGS_MENU_SIGNS_DISPLAYED                               :Показывать метки
 STR_SETTINGS_MENU_SHOW_COMPETITOR_SIGNS                         :Показывать названия станций конкурентов
 STR_SETTINGS_MENU_FULL_ANIMATION                                :Полная анимация
@@ -771,7 +771,7 @@ STR_GRAPH_KEY_COMPANY_SELECTION_TOOLTIP                         :{BLACK}Вклю
 # Company league window
 STR_COMPANY_LEAGUE_TABLE_CAPTION                                :{WHITE}Сравнительная таблица компаний
 STR_COMPANY_LEAGUE_COMPANY_NAME                                 :{ORANGE}{COMPANY} {BLACK}{COMPANY_NUM} «{STRING}»
-STR_COMPANY_LEAGUE_COMPANY_RANK                                 :{YELLOW}#{NUM}
+STR_COMPANY_LEAGUE_COMPANY_RANK                                 :{YELLOW}№{NUM}
 STR_COMPANY_LEAGUE_PERFORMANCE_TITLE_ENGINEER                   :Инженер
 STR_COMPANY_LEAGUE_PERFORMANCE_TITLE_TRAFFIC_MANAGER            :Регулировщик
 STR_COMPANY_LEAGUE_PERFORMANCE_TITLE_TRANSPORT_COORDINATOR      :Диспетчер
@@ -1422,10 +1422,10 @@ STR_CONFIG_SETTING_INFINITE_MONEY                               :Неогран�
 STR_CONFIG_SETTING_INFINITE_MONEY_HELPTEXT                      :Разрешить компаниям неограниченные расходы; банкротство им в таком случае грозить не будет.
 
 STR_CONFIG_SETTING_MAXIMUM_INITIAL_LOAN                         :Максимальная сумма кредита: {STRING}
-STR_CONFIG_SETTING_MAXIMUM_INITIAL_LOAN_HELPTEXT                :Максимальная сумма кредита для компании (без учета инфляции)
+STR_CONFIG_SETTING_MAXIMUM_INITIAL_LOAN_HELPTEXT                :Максимальная сумма кредита для компании (без учета инфляции). Если установлено значение «нет», деньги не будут доступны, если их не предоставит игровой скрипт или настройка «Неограниченные финансы».
 STR_CONFIG_SETTING_MAXIMUM_INITIAL_LOAN_VALUE                   :{CURRENCY_LONG}
 ###setting-zero-is-special
-STR_CONFIG_SETTING_MAXIMUM_INITIAL_LOAN_DISABLED                :нет {RED}(необходим игровой скрипт, предоставляющий начальные средства)
+STR_CONFIG_SETTING_MAXIMUM_INITIAL_LOAN_DISABLED                :нет
 
 STR_CONFIG_SETTING_INTEREST_RATE                                :Процентная ставка: {STRING}
 STR_CONFIG_SETTING_INTEREST_RATE_HELPTEXT                       :Процентная ставка по кредитам; также устанавливает уровень инфляции, если та включена.
@@ -1605,7 +1605,7 @@ STR_CONFIG_SETTING_PLANE_CRASHES_NORMAL                         :обычная
 STR_CONFIG_SETTING_CROSSING_WITH_COMPETITOR                     :Ж/д переезды на дорогах и путях конкурентов: {STRING}
 STR_CONFIG_SETTING_CROSSING_WITH_COMPETITOR_HELPTEXT            :Разрешить строить железнодорожные пути сквозь автомобильные и железные дороги конкурентов
 
-STR_CONFIG_SETTING_STOP_ON_TOWN_ROAD                            :Позволять строить остановки на муниципальных дорогах: {STRING}
+STR_CONFIG_SETTING_STOP_ON_TOWN_ROAD                            :Позволять строить сквозные остановки на муниципальных дорогах: {STRING}
 STR_CONFIG_SETTING_STOP_ON_TOWN_ROAD_HELPTEXT                   :Разрешить компаниям строить сквозные остановки на дорогах, построенных за счёт городского бюджета
 STR_CONFIG_SETTING_STOP_ON_COMPETITOR_ROAD                      :Разрешить строить остановки на дорогах конкурентов: {STRING}
 STR_CONFIG_SETTING_STOP_ON_COMPETITOR_ROAD_HELPTEXT             :Разрешить компаниям строить сквозные остановки на дорогах, принадлежащих другим транспортным компаниям
@@ -2931,8 +2931,8 @@ STR_STATION_BUILD_INFRASTRUCTURE_COST_PERIOD                    :{BLACK}Соде
 STR_JOIN_STATION_CAPTION                                        :{WHITE}Объединить станции
 STR_JOIN_STATION_CREATE_SPLITTED_STATION                        :{YELLOW}Построить отдельную станцию
 
-STR_JOIN_WAYPOINT_CAPTION                                       :{WHITE}Объединить точки
-STR_JOIN_WAYPOINT_CREATE_SPLITTED_WAYPOINT                      :{YELLOW}Поставить отдельную точку пути
+STR_JOIN_WAYPOINT_CAPTION                                       :{WHITE}Объединить маршрутные точки
+STR_JOIN_WAYPOINT_CREATE_SPLITTED_WAYPOINT                      :{YELLOW}Поставить отдельную маршрутную точку
 
 # Generic toolbar
 STR_TOOLBAR_DISABLED_NO_VEHICLE_AVAILABLE                       :{BLACK}Отключено, так как нет подходящих транспортных средств для этой инфраструктуры
@@ -2972,8 +2972,8 @@ STR_BUILD_DEPOT_TRAIN_ORIENTATION_CAPTION                       :{WHITE}Напр
 STR_BUILD_DEPOT_TRAIN_ORIENTATION_TOOLTIP                       :{BLACK}Выбор ориентации депо
 
 # Rail waypoint construction window
-STR_WAYPOINT_CAPTION                                            :{WHITE}Точка пути
-STR_WAYPOINT_GRAPHICS_TOOLTIP                                   :{BLACK}Выбор типа точки пути
+STR_WAYPOINT_CAPTION                                            :{WHITE}Маршрутная точка
+STR_WAYPOINT_GRAPHICS_TOOLTIP                                   :{BLACK}Выбор типа маршрутной точки
 
 # Rail station construction window
 STR_STATION_BUILD_RAIL_CAPTION                                  :{WHITE}Выбор ж/д станции
@@ -2992,8 +2992,8 @@ STR_STATION_BUILD_STATION_TYPE_TOOLTIP                          :{BLACK}Выбе
 STR_STATION_CLASS_DFLT                                          :Стандартная станция
 STR_STATION_CLASS_DFLT_STATION                                  :Стандартная ж/д станция
 STR_STATION_CLASS_DFLT_ROADSTOP                                 :Стандартная остановка
-STR_STATION_CLASS_WAYP                                          :Точки пути
-STR_STATION_CLASS_WAYP_WAYPOINT                                 :Стандартная путевая точка
+STR_STATION_CLASS_WAYP                                          :Маршрутные точки
+STR_STATION_CLASS_WAYP_WAYPOINT                                 :Стандартная маршрутная точка
 
 # Signal window
 STR_BUILD_SIGNAL_CAPTION                                        :{WHITE}Выбор сигналов
@@ -3221,7 +3221,7 @@ STR_FUND_INDUSTRY_REMOVE_ALL_INDUSTRIES_CAPTION                 :{WHITE}Убра
 STR_FUND_INDUSTRY_REMOVE_ALL_INDUSTRIES_QUERY                   :{YELLOW}Убрать все предприятия с карты?
 
 # Industry cargoes window
-STR_INDUSTRY_CARGOES_INDUSTRY_CAPTION                           :{WHITE}Цепочка грузоперевозок - {STRING}
+STR_INDUSTRY_CARGOES_INDUSTRY_CAPTION                           :{WHITE}Производственная цепочка - {STRING}
 STR_INDUSTRY_CARGOES_CARGO_CAPTION                              :{WHITE}Цепочка грузоперевозок - {STRING}
 STR_INDUSTRY_CARGOES_PRODUCERS                                  :{WHITE}Производители
 STR_INDUSTRY_CARGOES_CUSTOMERS                                  :{WHITE}Потребители
@@ -3321,7 +3321,7 @@ STR_LAI_STATION_DESCRIPTION_TRUCK_LOADING_AREA                  :Грузово�
 STR_LAI_STATION_DESCRIPTION_BUS_STATION                         :Автобусная остановка
 STR_LAI_STATION_DESCRIPTION_SHIP_DOCK                           :Пристань
 STR_LAI_STATION_DESCRIPTION_BUOY                                :Буй
-STR_LAI_STATION_DESCRIPTION_WAYPOINT                            :Точка пути
+STR_LAI_STATION_DESCRIPTION_WAYPOINT                            :Маршрутная точка
 
 STR_LAI_WATER_DESCRIPTION_WATER                                 :Вода
 STR_LAI_WATER_DESCRIPTION_CANAL                                 :Канал
@@ -3991,11 +3991,11 @@ STR_STATION_VIEW_CLOSE_AIRPORT_TOOLTIP                          :{BLACK}Запр
 # Waypoint/buoy view window
 STR_WAYPOINT_VIEW_CAPTION                                       :{WHITE}{WAYPOINT}
 STR_WAYPOINT_VIEW_CENTER_TOOLTIP                                :{BLACK}Показать маршрутную точку в основном окне. Ctrl+щелчок{}NBSP- показать в дополнительном окне.
-STR_WAYPOINT_VIEW_CHANGE_WAYPOINT_NAME                          :{BLACK}Переименовать точку пути
+STR_WAYPOINT_VIEW_CHANGE_WAYPOINT_NAME                          :{BLACK}Переименовать маршрутную точку
 STR_BUOY_VIEW_CENTER_TOOLTIP                                    :{BLACK}Показать буй в основном окне. Ctrl+щелчок - показать в дополнительном окне.
 STR_BUOY_VIEW_CHANGE_BUOY_NAME                                  :{BLACK}Изменить название буя
 
-STR_EDIT_WAYPOINT_NAME                                          :{WHITE}Название точки пути
+STR_EDIT_WAYPOINT_NAME                                          :{WHITE}Название маршрутной точки
 
 # Finances window
 STR_FINANCES_CAPTION                                            :{WHITE}Финансы - {COMPANY} {BLACK}{COMPANY_NUM}
@@ -4718,8 +4718,8 @@ STR_ORDERS_END_OF_SHARED_ORDERS                                 :- - Конец 
 STR_ORDER_NON_STOP                                              :{BLACK}Без остановок
 STR_ORDER_GO_TO                                                 :Идти в
 STR_ORDER_GO_NON_STOP_TO                                        :Идти без остановок в
-STR_ORDER_GO_VIA                                                :Идти через
-STR_ORDER_GO_NON_STOP_VIA                                       :Идти без остановок через
+STR_ORDER_GO_VIA                                                :Ехать через
+STR_ORDER_GO_NON_STOP_VIA                                       :Ехать без остановок через
 STR_ORDER_TOOLTIP_NON_STOP                                      :{BLACK}Изменить режим остановок при выполнении выделенного задания
 
 STR_ORDER_TOGGLE_FULL_LOAD                                      :{BLACK}Полн. загр. любым грузом
@@ -5256,15 +5256,15 @@ STR_ERROR_MUST_DEMOLISH_DOCK_FIRST                              :{WHITE}Снач
 STR_ERROR_MUST_DEMOLISH_AIRPORT_FIRST                           :{WHITE}Сначала снесите аэропорт
 
 # Waypoint related errors
-STR_ERROR_WAYPOINT_ADJOINS_MORE_THAN_ONE_EXISTING               :{WHITE}Примыкает к нескольким точкам пути
-STR_ERROR_TOO_CLOSE_TO_ANOTHER_WAYPOINT                         :{WHITE}Слишком близко к другой точке пути
+STR_ERROR_WAYPOINT_ADJOINS_MORE_THAN_ONE_EXISTING               :{WHITE}Примыкает к нескольким маршрутным точкам
+STR_ERROR_TOO_CLOSE_TO_ANOTHER_WAYPOINT                         :{WHITE}Слишком близко к другой маршрутной точке
 
-STR_ERROR_CAN_T_BUILD_TRAIN_WAYPOINT                            :{WHITE}Здесь невозможно поставить точку пути...
+STR_ERROR_CAN_T_BUILD_TRAIN_WAYPOINT                            :{WHITE}Здесь невозможно поставить маршрутную точку...
 STR_ERROR_CAN_T_POSITION_BUOY_HERE                              :{WHITE}Не удалось установить здесь буй...
-STR_ERROR_CAN_T_CHANGE_WAYPOINT_NAME                            :{WHITE}Невозможно переименовать точку пути...
+STR_ERROR_CAN_T_CHANGE_WAYPOINT_NAME                            :{WHITE}Невозможно переименовать маршрутную точку...
 
-STR_ERROR_CAN_T_REMOVE_TRAIN_WAYPOINT                           :{WHITE}Невозможно удалить точку пути...
-STR_ERROR_MUST_REMOVE_RAILWAYPOINT_FIRST                        :{WHITE}Сначала удалите точку пути
+STR_ERROR_CAN_T_REMOVE_TRAIN_WAYPOINT                           :{WHITE}Невозможно удалить маршрутную точку...
+STR_ERROR_MUST_REMOVE_RAILWAYPOINT_FIRST                        :{WHITE}Сначала удалите маршрутную точку
 STR_ERROR_BUOY_IN_THE_WAY                                       :{WHITE}... буй мешает
 STR_ERROR_BUOY_IS_IN_USE                                        :{WHITE}... этот буй используется другой компанией!
 
@@ -5978,8 +5978,8 @@ STR_FORMAT_BUOY_NAME                                            :Буй {TOWN}
 STR_FORMAT_BUOY_NAME_SERIAL                                     :Буй {TOWN} №{COMMA}
 
 ###length 2
-STR_FORMAT_WAYPOINT_NAME                                        :Точка пути {TOWN}
-STR_FORMAT_WAYPOINT_NAME_SERIAL                                 :Точка пути {TOWN} №{COMMA}
+STR_FORMAT_WAYPOINT_NAME                                        :Маршрутная точка {TOWN}
+STR_FORMAT_WAYPOINT_NAME_SERIAL                                 :Маршрутная точка {TOWN} №{COMMA}
 
 ###length 6
 STR_FORMAT_DEPOT_NAME_TRAIN                                     :Депо {TOWN}

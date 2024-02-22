@@ -388,6 +388,9 @@ STR_COLOUR_SECONDARY_SAME_AS_PRIMARY                            :Identično prim
 STR_UNITS_VELOCITY_IMPERIAL                                     :{DECIMAL} milja na sat
 STR_UNITS_VELOCITY_METRIC                                       :{DECIMAL} km/h
 STR_UNITS_VELOCITY_SI                                           :{DECIMAL} m/s
+STR_UNITS_VELOCITY_GAMEUNITS_DAY                                :{DECIMAL}{NBSP}pločica/dan
+STR_UNITS_VELOCITY_GAMEUNITS_SEC                                :{DECIMAL}{NBSP}pločica/sekundi
+STR_UNITS_VELOCITY_KNOTS                                        :{DECIMAL}{NBSP}čvorova
 
 STR_UNITS_POWER_IMPERIAL                                        :{DECIMAL}ks
 STR_UNITS_POWER_METRIC                                          :{DECIMAL}ks
@@ -428,8 +431,14 @@ STR_UNITS_HEIGHT_METRIC                                         :{DECIMAL} m
 STR_UNITS_HEIGHT_SI                                             :{DECIMAL} m
 
 # Time units used in string control characters
+STR_UNITS_DAYS                                                  :{COMMA}{NBSP}dan{P "" a a}
+STR_UNITS_SECONDS                                               :{COMMA}{NBSP}sekund{P a e e}
+STR_UNITS_TICKS                                                 :{COMMA}{NBSP}otkucaj{P "" a a}
 
+STR_UNITS_MONTHS                                                :{NUM}{NBSP}mesec{P "" a a}
+STR_UNITS_MINUTES                                               :{NUM}{NBSP}minut{P "" a a}
 
+STR_UNITS_PERIODS                                               :{NUM}{NBSP}period{P "" a a}
 
 # Common window strings
 STR_LIST_FILTER_TITLE                                           :{BLACK}Pretraga:
@@ -1086,6 +1095,7 @@ STR_GAME_OPTIONS_CAPTION                                        :{WHITE}Opcije
 
 STR_GAME_OPTIONS_TAB_GRAPHICS                                   :Grrafika
 
+STR_GAME_OPTIONS_VOLUME                                         :Jačina zvuka
 STR_GAME_OPTIONS_SFX_VOLUME                                     :Zvučni efekti
 
 STR_GAME_OPTIONS_VOLUME_0                                       :0%
@@ -1146,6 +1156,9 @@ STR_GAME_OPTIONS_AUTOSAVE_DROPDOWN_TOOLTIP                      :{BLACK}Izbor vr
 ###length 5
 STR_GAME_OPTIONS_AUTOSAVE_DROPDOWN_OFF                          :Isključeno
 STR_GAME_OPTIONS_AUTOSAVE_DROPDOWN_EVERY_10_MINUTES             :Svakih 10 minuta
+STR_GAME_OPTIONS_AUTOSAVE_DROPDOWN_EVERY_30_MINUTES             :Svakih 30 minuta
+STR_GAME_OPTIONS_AUTOSAVE_DROPDOWN_EVERY_60_MINUTES             :Svakih 60 minuta
+STR_GAME_OPTIONS_AUTOSAVE_DROPDOWN_EVERY_120_MINUTES            :Svakih 120 minuta
 
 STR_GAME_OPTIONS_LANGUAGE                                       :{BLACK}Jezik
 STR_GAME_OPTIONS_LANGUAGE_TOOLTIP                               :{BLACK}Odaberi jezik za interfejs
@@ -1369,6 +1382,7 @@ STR_CONFIG_SETTING_HORIZONTAL_POS_RIGHT                         :Desno
 
 STR_CONFIG_SETTING_SECONDS_VALUE                                :{COMMA}{NBSP}sekund{P a e e}
 
+STR_CONFIG_SETTING_INFINITE_MONEY                               :Neograničen novac: {STRING}
 
 STR_CONFIG_SETTING_MAXIMUM_INITIAL_LOAN                         :Najveći zajam na početku: {STRING}
 STR_CONFIG_SETTING_MAXIMUM_INITIAL_LOAN_HELPTEXT                :Najveći iznos koji preduzeće može da pozajmi (ne uzimajući u obzir inflaciju)
@@ -1519,7 +1533,7 @@ STR_CONFIG_SETTING_BRIBE_HELPTEXT                               :Dozvoljava pred
 
 STR_CONFIG_SETTING_ALLOW_EXCLUSIVE                              :Dozvoljena kupovina ekskluzivnih prava prevoza: {STRING}
 ###length 2
-STR_CONFIG_SETTING_ALLOW_EXCLUSIVE_HELPTEXT                     :Ako preduzeće kupi ekskluzivna prava prevoza u naselju, protivničke stanice neće primati nikakav teret ni putnike cele godine
+STR_CONFIG_SETTING_ALLOW_EXCLUSIVE_HELPTEXT                     :Ako preduzeće kupi ekskluzivna prava prevoza u naselju, protivničke stanice neće primati nikakav teret ni putnike dvanaest meseci
 
 STR_CONFIG_SETTING_ALLOW_FUND_BUILDINGS                         :Dozvoljeno finansiranje zgrada: {STRING}
 STR_CONFIG_SETTING_ALLOW_FUND_BUILDINGS_HELPTEXT                :Dozvoljava preduzećima da naselju daju novac za gradnju novih kuća
@@ -1590,8 +1604,8 @@ STR_CONFIG_SETTING_AUTORENEW_VEHICLE_HELPTEXT                   :Kada je omoguc�
 STR_CONFIG_SETTING_AUTORENEW_MONTHS                             :Automatska zamena kada je vozilo staro najviše {STRING}
 STR_CONFIG_SETTING_AUTORENEW_MONTHS_HELPTEXT                    :Starost vozila pri kojoj postaje kandidat za automatsku zamenu
 ###length 2
-STR_CONFIG_SETTING_AUTORENEW_MONTHS_VALUE_BEFORE                :{COMMA} mesec{P "" a i} pre
-STR_CONFIG_SETTING_AUTORENEW_MONTHS_VALUE_AFTER                 :{COMMA} mesec{P "" a i} posle
+STR_CONFIG_SETTING_AUTORENEW_MONTHS_VALUE_BEFORE                :{COMMA} mesec{P "" a a} pre
+STR_CONFIG_SETTING_AUTORENEW_MONTHS_VALUE_AFTER                 :{COMMA} mesec{P "" a a} posle
 
 STR_CONFIG_SETTING_AUTORENEW_MONEY                              :Najmanja potrebna količina novca za zamenu: {STRING}
 STR_CONFIG_SETTING_AUTORENEW_MONEY_HELPTEXT                     :Najmanji iznos novca koji mora ostati u banci pre automatskog obnavljanja vozila
@@ -2777,7 +2791,10 @@ STR_LINKGRAPH_LEGEND_SATURATED                                  :{TINY_FONT}{BLA
 STR_LINKGRAPH_LEGEND_OVERLOADED                                 :{TINY_FONT}{BLACK}Preopterećen
 
 # Linkgraph tooltip
+STR_LINKGRAPH_STATS_TOOLTIP_MONTH                               :{BLACK}{CARGO_LONG} će biti prevezen mesečno od {STATION} do {STATION} ({COMMA}% kapaciteta){STRING}
+STR_LINKGRAPH_STATS_TOOLTIP_MINUTE                              :{BLACK}{CARGO_LONG} će biti prevezen po minutu od {STATION} do {STATION} ({COMMA}% kapaciteta){STRING}
 STR_LINKGRAPH_STATS_TOOLTIP_RETURN_EXTENSION                    :{}{CARGO_LONG} će biti prevezeno nazad ({COMMA}% kapaciteta)
+STR_LINKGRAPH_STATS_TOOLTIP_TIME_EXTENSION                      :{}Prosečno vreme putovanja: {UNITS_DAYS_OR_SECONDS}
 
 # Base for station construction window(s)
 STR_STATION_BUILD_COVERAGE_AREA_TITLE                           :{BLACK}Označavanje zahvaćenog područja
@@ -3881,6 +3898,8 @@ STR_COMPANY_VIEW_INFRASTRUCTURE_BUTTON                          :{BLACK}Detalji
 STR_COMPANY_VIEW_INFRASTRUCTURE_TOOLTIP                         :{BLACK}Detaljni pregled računa za infrastrukturu
 STR_COMPANY_VIEW_GIVE_MONEY_BUTTON                              :{BLACK}Daj novac
 STR_COMPANY_VIEW_GIVE_MONEY_TOOLTIP                             :{BLACK}Daj novac ovom preduzeću
+STR_COMPANY_VIEW_HOSTILE_TAKEOVER_BUTTON                        :{BLACK}Nasilno preuzimanje
+STR_COMPANY_VIEW_HOSTILE_TAKEOVER_TOOLTIP                       :{BLACK}Nasilno preuzmi ovo preduzeće
 
 STR_COMPANY_VIEW_NEW_FACE_BUTTON                                :{BLACK}Novo lice
 STR_COMPANY_VIEW_NEW_FACE_TOOLTIP                               :{BLACK}Odabir novog lica za vlasnika
@@ -4235,6 +4254,14 @@ STR_ENGINE_PREVIEW_AIRCRAFT.aku                                 :letelice
 STR_ENGINE_PREVIEW_SHIP                                         :{G=muški}brod
 STR_ENGINE_PREVIEW_SHIP.aku                                     :broda
 
+STR_ENGINE_PREVIEW_COST_WEIGHT                                  :Cena: {CURRENCY_LONG}  Težina: {WEIGHT_SHORT}
+STR_ENGINE_PREVIEW_COST_MAX_SPEED                               :Cena: {CURRENCY_LONG}  Maks. brzina: {VELOCITY}
+STR_ENGINE_PREVIEW_SPEED_POWER                                  :Brzina: {VELOCITY}  Snaga: {POWER}
+STR_ENGINE_PREVIEW_SPEED_POWER_MAX_TE                           :Brzina: {VELOCITY}  Snaga: {POWER}  Maks. vučna snaga.: {FORCE}
+STR_ENGINE_PREVIEW_RUNCOST_YEAR                                 :Troškovi održavanja: {CURRENCY_LONG}/godina
+STR_ENGINE_PREVIEW_RUNCOST_PERIOD                               :Troškovi održavanja: {CURRENCY_LONG}/period
+STR_ENGINE_PREVIEW_CAPACITY                                     :Kapacitet: {CARGO_LONG}
+STR_ENGINE_PREVIEW_CAPACITY_2                                   :Kapacitet: {CARGO_LONG}, {CARGO_LONG}
 
 # Autoreplace window
 STR_REPLACE_VEHICLES_WHITE                                      :{WHITE}Zameni {STRING} - {STRING}
@@ -4395,7 +4422,7 @@ STR_VEHICLE_INFO_MAX_SPEED                                      :{BLACK}Najveća
 STR_VEHICLE_INFO_MAX_SPEED_TYPE                                 :{BLACK}Maks. brzina: {LTBLUE}{VELOCITY} {BLACK}Vrsta letelice: {LTBLUE}{STRING}
 STR_VEHICLE_INFO_MAX_SPEED_TYPE_RANGE                           :{BLACK} Maks. brzina: {LTBLUE} {VELOCITY} {BLACK}Vrsta letelice: {LTBLUE} {STRING} {BLACK} Domet: {LTBLUE} {COMMA} pločice
 STR_VEHICLE_INFO_WEIGHT_POWER_MAX_SPEED                         :{BLACK}Težina: {LTBLUE}{WEIGHT_SHORT} {BLACK}Snaga: {LTBLUE}{POWER}{BLACK} Najveća brzina: {LTBLUE}{VELOCITY}
-STR_VEHICLE_INFO_WEIGHT_POWER_MAX_SPEED_MAX_TE                  :{BLACK}Težina: {LTBLUE}{WEIGHT_SHORT} {BLACK}Snaga: {LTBLUE}{POWER}{BLACK} Najveća brzina: {LTBLUE}{VELOCITY} {BLACK} Najveća vučna snaga: {LTBLUE}{FORCE}
+STR_VEHICLE_INFO_WEIGHT_POWER_MAX_SPEED_MAX_TE                  :{BLACK}Težina: {LTBLUE}{WEIGHT_SHORT} {BLACK}Snaga: {LTBLUE}{POWER}{BLACK} Najveća brzina: {LTBLUE}{VELOCITY} {BLACK} Maks. vučna snaga: {LTBLUE}{FORCE}
 
 STR_VEHICLE_INFO_PROFIT_THIS_YEAR_LAST_YEAR                     :{BLACK}Ovogodišnja zarada: {LTBLUE}{CURRENCY_LONG} (prošlogodišnja: {CURRENCY_LONG})
 STR_VEHICLE_INFO_PROFIT_THIS_YEAR_LAST_YEAR_MIN_PERFORMANCE     :{BLACK}Ovogodišnja zarada: {LTBLUE}{CURRENCY_LONG} (prošlogodišnja: {CURRENCY_LONG}) {BLACK}Najlošiji učinak: {LTBLUE}{POWER_TO_WEIGHT}
@@ -4477,6 +4504,7 @@ STR_ORDERS_TIMETABLE_VIEW_TOOLTIP                               :{BLACK}Prelazi 
 
 STR_ORDERS_LIST_TOOLTIP                                         :{BLACK}Spisak naredbi - klikom se obeležava naredba. Ctrl+klik pomera prikaz na lokaciju stanice
 STR_ORDER_INDEX                                                 :{COMMA}:{NBSP}
+STR_ORDER_TEXT                                                  :{STRING} {STRING} {STRING} {STRING}
 
 STR_ORDERS_END_OF_ORDERS                                        :- - Kraj Naredbi - -
 STR_ORDERS_END_OF_SHARED_ORDERS                                 :- - Kraj Zajedničkih Naredbi - -
@@ -4780,12 +4808,16 @@ STR_AI_SETTINGS_SETTING                                         :{STRING}: {ORAN
 
 
 # Textfile window
+STR_TEXTFILE_JUMPLIST                                           :{WHITE}Sadržaj
 STR_TEXTFILE_JUMPLIST_ITEM                                      :{WHITE}{STRING}
 STR_TEXTFILE_WRAP_TEXT                                          :{WHITE}Prelomiti tekst
 STR_TEXTFILE_WRAP_TEXT_TOOLTIP                                  :{BLACK} Prelomiti tekst prozora tako da stane bez potrebe skrolovanja
-STR_TEXTFILE_VIEW_README                                        :{BLACK}Prikaži uputstvo
+STR_TEXTFILE_VIEW_README                                        :{BLACK}Uputstvo
+STR_TEXTFILE_VIEW_README_TOOLTIP                                :Prikaži uputstvo za ovaj sadržaj
 STR_TEXTFILE_VIEW_CHANGELOG                                     :{BLACK}Izmene
+STR_TEXTFILE_VIEW_CHANGELOG_TOOLTIP                             :Prikaži dnevnik promena za ovaj sadržaj
 STR_TEXTFILE_VIEW_LICENCE                                       :{BLACK}Licenca
+STR_TEXTFILE_VIEW_LICENCE_TOOLTIP                               :Prikaži licencu za ovaj sadržaj
 ###length 5
 STR_TEXTFILE_README_CAPTION                                     :{WHITE}{STRING} uputstvo za {STRING}
 STR_TEXTFILE_CHANGELOG_CAPTION                                  :{WHITE}{STRING} izmene od {STRING}
@@ -5231,7 +5263,12 @@ STR_ERROR_TOO_FAR_FROM_PREVIOUS_DESTINATION                     :{WHITE}... prev
 STR_ERROR_AIRCRAFT_NOT_ENOUGH_RANGE                             :{WHITE}... letelica nema dovoljan domet
 
 # Extra messages which go on the third line of errors, explaining why orders failed
+STR_ERROR_NO_RAIL_STATION                                       :{WHITE}Ne postoji železnička stanica
 STR_ERROR_NO_BUS_STATION                                        :{WHITE}Nema autobuske stanice
+STR_ERROR_NO_DOCK                                               :{WHITE}Ne postoji pristanište
+STR_ERROR_NO_AIRPORT                                            :{WHITE}Ne postoji aerodrom/heliodrom
+STR_ERROR_NO_RAIL_WAYPOINT                                      :{WHITE}Ne postoji železničko čvorište
+STR_ERROR_NO_BUOY                                               :{WHITE}Ne postoji bova
 
 # Timetable related errors
 STR_ERROR_CAN_T_TIMETABLE_VEHICLE                               :{WHITE}Raspored se ne može dodeliti vozilu...

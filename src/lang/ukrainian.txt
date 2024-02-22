@@ -1534,6 +1534,8 @@ STR_CONFIG_SETTING_PLANE_CRASHES_NONE                           :Немає
 STR_CONFIG_SETTING_PLANE_CRASHES_REDUCED                        :Низька
 STR_CONFIG_SETTING_PLANE_CRASHES_NORMAL                         :Нормальна
 
+STR_CONFIG_SETTING_CROSSING_WITH_COMPETITOR                     :Дозволити переїзди на дорогах або залізницях, якими володіють конкуренти: {STRING}
+STR_CONFIG_SETTING_CROSSING_WITH_COMPETITOR_HELPTEXT            :Дозволяє будівництво переїздів на дорогах або залізницях, якими володіють конкуренти
 
 STR_CONFIG_SETTING_STOP_ON_TOWN_ROAD                            :Дозволити встановлення зупинок на дорогах міста: {STRING}
 STR_CONFIG_SETTING_STOP_ON_TOWN_ROAD_HELPTEXT                   :Дозволяє встановлення зупинок на дорогах, якими володіє місто.
@@ -2220,6 +2222,7 @@ STR_CONFIG_ERROR_SPRITECACHE_TOO_BIG                            :{WHITE}Не в�
 # Video initalization errors
 STR_VIDEO_DRIVER_ERROR                                          :{WHITE}Помилка з налаштуванням зображення...
 STR_VIDEO_DRIVER_ERROR_NO_HARDWARE_ACCELERATION                 :{WHITE}... не знайдено сумісного графічного процесора. Відключено прискорення апаратного забезпечення
+STR_VIDEO_DRIVER_ERROR_HARDWARE_ACCELERATION_CRASH              :{WHITE}... драйвер графічного процесора спричинив виліт гри. Відключено прискорення апаратного забезпечення
 
 # Intro window
 STR_INTRO_CAPTION                                               :{WHITE}OpenTTD {REV}
@@ -2310,6 +2313,7 @@ STR_LIVERY_SHIP_TOOLTIP                                         :{BLACK}Пока
 STR_LIVERY_AIRCRAFT_TOOLTIP                                     :{BLACK}Показати фарбування авіації
 STR_LIVERY_TRAIN_GROUP_TOOLTIP                                  :{BLACK}Показати кольори груп поїздів
 STR_LIVERY_SHIP_GROUP_TOOLTIP                                   :{BLACK}Показати кольори груп кораблів
+STR_LIVERY_AIRCRAFT_GROUP_TOOLTIP                               :{BLACK}Показати кольори груп повітряних апаратів
 STR_LIVERY_PRIMARY_TOOLTIP                                      :{BLACK}Оберіть основний колір для обраної схеми. Ctrl+клац мишею встановить обраний колір для всіх схем
 STR_LIVERY_SECONDARY_TOOLTIP                                    :{BLACK}Оберіть другорядний колір для обраної схеми. Ctrl+клац мишею встановить обраний колір для всіх схем
 STR_LIVERY_PANEL_TOOLTIP                                        :{BLACK}Оберіть кольорову схему для зміни, чи декілька з Ctrl+клац мишею. Клацніть на прямокутнику, щоб ввімкнути/вимкнути використання схем
@@ -2805,6 +2809,8 @@ STR_STATION_BUILD_COVERAGE_AREA_OFF_TOOLTIP                     :{BLACK}Не п�
 STR_STATION_BUILD_COVERAGE_AREA_ON_TOOLTIP                      :{BLACK}Підсвічувати зону покриття станції
 STR_STATION_BUILD_ACCEPTS_CARGO                                 :{BLACK}Приймає: {GOLD}{CARGO_LIST}
 STR_STATION_BUILD_SUPPLIES_CARGO                                :{BLACK}Постачає: {GOLD}{CARGO_LIST}
+STR_STATION_BUILD_INFRASTRUCTURE_COST_YEAR                      :{BLACK} Вартість експлуатації: {GOLD}{CURRENCY_SHORT}/рік
+STR_STATION_BUILD_INFRASTRUCTURE_COST_PERIOD                    :{BLACK} Вартість експлуатації: {GOLD}{CURRENCY_SHORT}/період
 
 # Join station window
 STR_JOIN_STATION_CAPTION                                        :{WHITE}Об'єднати станцію
@@ -2930,7 +2936,7 @@ STR_ROAD_NAME_TRAM                                              :Трамвай
 
 # Road depot construction window
 STR_BUILD_DEPOT_ROAD_ORIENTATION_CAPTION                        :{WHITE}Орієнтація депо
-STR_BUILD_DEPOT_ROAD_ORIENTATION_SELECT_TOOLTIP                 :{BLACK}Виберіть орієнтацію депо
+STR_BUILD_DEPOT_ROAD_ORIENTATION_SELECT_TOOLTIP                 :{BLACK}Виберіть орієнтацію гаража
 STR_BUILD_DEPOT_TRAM_ORIENTATION_CAPTION                        :{WHITE}Орієнтація трамвайного депо
 STR_BUILD_DEPOT_TRAM_ORIENTATION_SELECT_TOOLTIP                 :{BLACK}Виберіть орієнтацію трамвайного депо
 
@@ -2957,8 +2963,8 @@ STR_WATERWAYS_TOOLBAR_CREATE_LAKE_TOOLTIP                       :{BLACK}Позн
 STR_WATERWAYS_TOOLBAR_CREATE_RIVER_TOOLTIP                      :{BLACK}Прокласти річки. Ctrl для вибору діагональних ділянок
 
 # Ship depot construction window
-STR_DEPOT_BUILD_SHIP_CAPTION                                    :{WHITE}Орієнтація депо
-STR_DEPOT_BUILD_SHIP_ORIENTATION_TOOLTIP                        :{BLACK}Виберіть орієнтацію корабельного депо
+STR_DEPOT_BUILD_SHIP_CAPTION                                    :{WHITE}Орієнтація елінга
+STR_DEPOT_BUILD_SHIP_ORIENTATION_TOOLTIP                        :{BLACK}Виберіть орієнтацію елінга
 
 # Dock construction window
 STR_STATION_BUILD_DOCK_CAPTION                                  :{WHITE}Порт
@@ -3340,6 +3346,7 @@ STR_MAPGEN_DESERT_COVERAGE_DOWN                                 :{BLACK}Змен
 STR_MAPGEN_DESERT_COVERAGE_TEXT                                 :{BLACK}{NUM}%
 STR_MAPGEN_TERRAIN_TYPE                                         :{BLACK}Тип ландшафту:
 STR_MAPGEN_SEA_LEVEL                                            :{BLACK}Рівень моря:
+STR_MAPGEN_SEA_LEVEL_TOOLTIP                                    :{BLACK}Обрати рівень моря
 STR_MAPGEN_QUANTITY_OF_RIVERS                                   :{BLACK}Ріки:
 STR_MAPGEN_SMOOTHNESS                                           :{BLACK}Гладкість:
 STR_MAPGEN_VARIETY                                              :{BLACK}Розподіл різноманітності:
@@ -3507,6 +3514,7 @@ STR_NEWGRF_INSPECT_PARENT_TOOLTIP                               :{BLACK}Пере
 STR_NEWGRF_INSPECT_CAPTION_OBJECT_AT                            :{STRING} в {HEX}
 STR_NEWGRF_INSPECT_CAPTION_OBJECT_AT_OBJECT                     :Об'єкт
 STR_NEWGRF_INSPECT_CAPTION_OBJECT_AT_RAIL_TYPE                  :Тип колії
+STR_NEWGRF_INSPECT_CAPTION_OBJECT_AT_ROAD_TYPE                  :Тип дороги
 
 STR_NEWGRF_INSPECT_QUERY_CAPTION                                :{WHITE}Параметр змінної NewGRF 60+x (шістнадцятковий)
 
@@ -3687,6 +3695,8 @@ STR_LOCAL_AUTHORITY_ACTION_BRIBE                                :Підкупи�
 STR_LOCAL_AUTHORITY_ACTION_TOOLTIP_SMALL_ADVERTISING            :{PUSH_COLOUR}{YELLOW}Провести малу локальну рекламну кампанію, щоб залучити більше пасажирів і вантажу до послуг вашої компанії.{}Тимчасово збільшить рейтинг станції у малому радіусі від міського центру.{}{POP_COLOUR}Вартість: {CURRENCY_LONG}
 STR_LOCAL_AUTHORITY_ACTION_TOOLTIP_MEDIUM_ADVERTISING           :{PUSH_COLOUR}{YELLOW}Провести середню локальну рекламну кампанію, щоб залучити більше пасажирів і вантажу до послуг вашої компанії.{}Тимчасово збільшить рейтинг станції у середньому радіусі від міського центру.{}{POP_COLOUR}Вартість: {CURRENCY_LONG}
 STR_LOCAL_AUTHORITY_ACTION_TOOLTIP_LARGE_ADVERTISING            :{PUSH_COLOUR}{YELLOW}Провести велику локальну рекламну кампанію, щоб залучити більше пасажирів і вантажу до послуг вашої компанії.{}Тимчасово збільшить рейтинг станції у великому радіусі від міського центру.{}{POP_COLOUR}Вартість: {CURRENCY_LONG}
+STR_LOCAL_AUTHORITY_ACTION_TOOLTIP_ROAD_RECONSTRUCTION_MONTHS   :{PUSH_COLOUR}{YELLOW}Профінансувати реконструкцію міських доріг.{}Спричинить значні корки у місті тривалістю до 6ти місяців.{}{POP_COLOUR}Вартість: {CURRENCY_LONG}
+STR_LOCAL_AUTHORITY_ACTION_TOOLTIP_ROAD_RECONSTRUCTION_MINUTES  :{PUSH_COLOUR}{YELLOW}Профінансувати реконструкцію міських доріг.{}Спричинить значні корки у місті тривалістю до 6ти хвилин.{}{POP_COLOUR}Вартість: {CURRENCY_LONG}
 STR_LOCAL_AUTHORITY_ACTION_TOOLTIP_STATUE_OF_COMPANY            :{PUSH_COLOUR}{YELLOW}Збудувати монумент на честь вашої компанії.{}Постійно збільшує рейтинг станцій у місті.{}{POP_COLOUR}Вартість: {CURRENCY_LONG}
 STR_LOCAL_AUTHORITY_ACTION_TOOLTIP_NEW_BUILDINGS                :{PUSH_COLOUR}{YELLOW}Фінансувати будівництво нових офісів у місті.{}Тимчасово прискорить зростання міста.{}{POP_COLOUR}Вартість: {CURRENCY_LONG}
 STR_LOCAL_AUTHORITY_ACTION_TOOLTIP_EXCLUSIVE_TRANSPORT_MONTHS   :{PUSH_COLOUR}{YELLOW}Придбати ексклюзивні транспортні права в місті на 12 місяців.{}Міська влада заборонить пасажирам і вантажам наповнювати станції конкурентів. Успішний підкуп конкурентом скасує цю угоду.{}{POP_COLOUR}Вартість: {CURRENCY_LONG}
@@ -4277,11 +4287,16 @@ STR_ENGINE_PREVIEW_TRAM_VEHICLE                                 :трамваї
 STR_ENGINE_PREVIEW_AIRCRAFT                                     :літак
 STR_ENGINE_PREVIEW_SHIP                                         :корабель
 
+STR_ENGINE_PREVIEW_TEXT3                                        :{BLACK}{STRING}{}{5:STRING}{}{STRING}
+STR_ENGINE_PREVIEW_TEXT4                                        :{BLACK}{STRING}{}{STRING}{}{STRING}{}{STRING}
 STR_ENGINE_PREVIEW_COST_WEIGHT                                  :Ціна: {CURRENCY_LONG}  Маса: {WEIGHT_SHORT}
 STR_ENGINE_PREVIEW_COST_MAX_SPEED                               :Ціна: {CURRENCY_LONG}  Швидкість: {VELOCITY}
 STR_ENGINE_PREVIEW_SPEED_POWER                                  :Швидкість: {VELOCITY}  Потужність: {POWER}
 STR_ENGINE_PREVIEW_SPEED_POWER_MAX_TE                           :Швидкість: {VELOCITY} Потужність: {POWER} Макс. тяга: {FORCE}
 STR_ENGINE_PREVIEW_TYPE                                         :Тип літального апарата: {STRING}
+STR_ENGINE_PREVIEW_TYPE_RANGE                                   :Тип літального апарата: {STRING} Дальність: {COMMA} клітин{P ка ки ок }
+STR_ENGINE_PREVIEW_RUNCOST_YEAR                                 :Вартість експлуатації: {CURRENCY_LONG}/рік
+STR_ENGINE_PREVIEW_RUNCOST_PERIOD                               :Вартість експлуатації: {CURRENCY_LONG}/період
 STR_ENGINE_PREVIEW_CAPACITY                                     :Місткість: {CARGO_LONG}
 STR_ENGINE_PREVIEW_CAPACITY_2                                   :Місткість: {CARGO_LONG}, {CARGO_LONG}
 
@@ -4429,6 +4444,7 @@ STR_VEHICLE_DETAILS_AIRCRAFT_RENAME                             :{BLACK}Назв
 STR_VEHICLE_INFO_AGE                                            :{COMMA} р{P ік оки оків} ({COMMA})
 STR_VEHICLE_INFO_AGE_RED                                        :{RED}{COMMA} р{P ік оки оків} ({COMMA})
 STR_VEHICLE_INFO_AGE_RUNNING_COST_YR                            :{BLACK}Вік: {LTBLUE}{STRING}{BLACK}   Вартість експлуатації: {LTBLUE}{CURRENCY_LONG}/рік
+STR_VEHICLE_INFO_AGE_RUNNING_COST_PERIOD                        :{BLACK}Вік: {LTBLUE}{STRING}{BLACK} Вартість експлуатації: {LTBLUE}{CURRENCY_LONG}/період
 
 STR_VEHICLE_INFO_MAX_SPEED                                      :{BLACK}Макс. швидкість: {LTBLUE}{VELOCITY}
 STR_VEHICLE_INFO_MAX_SPEED_TYPE                                 :{BLACK}Макс. швидкість: {LTBLUE}{VELOCITY} {BLACK}Тип: {LTBLUE}{STRING}
@@ -4562,6 +4578,8 @@ STR_ORDER_DROP_HALT_DEPOT                                       :Прямува�
 
 # Depot action tooltips, one per vehicle type
 ###length VEHICLE_TYPES
+STR_ORDER_TRAIN_DEPOT_ACTION_TOOLTIP                            :{BLACK}Виберіть дію до виконання в цьому депо
+STR_ORDER_ROAD_DEPOT_ACTION_TOOLTIP                             :{BLACK}Виберіть дію до виконання в цьому гаражі
 ###next-name-looks-similar
 
 STR_ORDER_CONDITIONAL_VARIABLE_TOOLTIP                          :{BLACK}Дані транспорту для базування наказу

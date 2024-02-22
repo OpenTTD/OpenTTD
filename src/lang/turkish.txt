@@ -4382,22 +4382,22 @@ STR_VEHICLE_STATUS_WAITING_UNBUNCHING                           :{LTBLUE}Gruptan
 STR_VEHICLE_STATUS_CRASHED                                      :{RED}Çarptı!
 STR_VEHICLE_STATUS_BROKEN_DOWN                                  :{RED}Arızalı
 STR_VEHICLE_STATUS_STOPPED                                      :{RED}Durdu
-STR_VEHICLE_STATUS_TRAIN_STOPPING_VEL                           :{RED}Frenliyor, {VELOCITY}
+STR_VEHICLE_STATUS_TRAIN_STOPPING_VEL                           :{RED}{VELOCITY} - Frenliyor
 STR_VEHICLE_STATUS_TRAIN_NO_POWER                               :{RED}Elektrik yok
 STR_VEHICLE_STATUS_TRAIN_STUCK                                  :{ORANGE}Boş yol bekleniyor
 STR_VEHICLE_STATUS_AIRCRAFT_TOO_FAR                             :{ORANGE}Bir sonraki hedefe çok uzak
 
-STR_VEHICLE_STATUS_HEADING_FOR_STATION_VEL                      :{LTBLUE}{STATION} istikametine gidiyor, {VELOCITY}
-STR_VEHICLE_STATUS_NO_ORDERS_VEL                                :{LTBLUE}Talimat yok, {VELOCITY}
-STR_VEHICLE_STATUS_HEADING_FOR_WAYPOINT_VEL                     :{LTBLUE}Gidilen -> {WAYPOINT}, {VELOCITY}
-STR_VEHICLE_STATUS_HEADING_FOR_DEPOT_VEL                        :{ORANGE}{DEPOT} istikametine gidiyor, {VELOCITY}
-STR_VEHICLE_STATUS_HEADING_FOR_DEPOT_SERVICE_VEL                :{LTBLUE}{DEPOT}'nda bakıma gir, {VELOCITY}
-STR_VEHICLE_STATUS_HEADING_FOR_DEPOT_UNBUNCH_VEL                :{LTBLUE} {DEPOT}'da gruptan ayır ve bakıma gir, {VELOCITY}
+STR_VEHICLE_STATUS_HEADING_FOR_STATION_VEL                      :{LTBLUE}{1:VELOCITY} - {0:STATION} istikametine gidiyor
+STR_VEHICLE_STATUS_NO_ORDERS_VEL                                :{LTBLUE}{VELOCITY} - Talimat yok
+STR_VEHICLE_STATUS_HEADING_FOR_WAYPOINT_VEL                     :{LTBLUE}{1:VELOCITY} - {0:WAYPOINT} istikametine gidiyor
+STR_VEHICLE_STATUS_HEADING_FOR_DEPOT_VEL                        :{ORANGE}{1:VELOCITY} - {0:DEPOT} istikametine gidiyor
+STR_VEHICLE_STATUS_HEADING_FOR_DEPOT_SERVICE_VEL                :{LTBLUE}{1:VELOCITY} - {0:DEPOT} garajında bakıma gir
+STR_VEHICLE_STATUS_HEADING_FOR_DEPOT_UNBUNCH_VEL                :{LTBLUE}{1:VELOCITY} - {0:DEPOT} garajında gruptan ayır ve bakıma gir
 
-STR_VEHICLE_STATUS_CANNOT_REACH_STATION_VEL                     :{LTBLUE}{STATION} istasyonuna ulaşılamıyor, {VELOCITY}
-STR_VEHICLE_STATUS_CANNOT_REACH_WAYPOINT_VEL                    :{LTBLUE}{WAYPOINT} yerimine ulaşılamıyor, {VELOCITY}
-STR_VEHICLE_STATUS_CANNOT_REACH_DEPOT_VEL                       :{ORANGE}{DEPOT} garajına ulaşılamıyor, {VELOCITY}
-STR_VEHICLE_STATUS_CANNOT_REACH_DEPOT_SERVICE_VEL               :{LTBLUE}{DEPOT} garajına ulaşılamıyor, {VELOCITY}
+STR_VEHICLE_STATUS_CANNOT_REACH_STATION_VEL                     :{LTBLUE}{1:VELOCITY} - {0:STATION} istasyonuna ulaşamıyor
+STR_VEHICLE_STATUS_CANNOT_REACH_WAYPOINT_VEL                    :{LTBLUE}{1:VELOCITY} - {0:WAYPOINT} yerimine ulaşamıyor
+STR_VEHICLE_STATUS_CANNOT_REACH_DEPOT_VEL                       :{ORANGE}{1:VELOCITY} - {0:DEPOT} garajına ulaşamıyor
+STR_VEHICLE_STATUS_CANNOT_REACH_DEPOT_SERVICE_VEL               :{LTBLUE}{1:VELOCITY} - {0:DEPOT} garajına ulaşamıyor
 
 # Vehicle stopped/started animations
 ###length 2
@@ -4611,7 +4611,7 @@ STR_ORDER_GO_TO_NEAREST_DEPOT                                   :En yakın gara 
 STR_ORDER_GO_TO_NEAREST_HANGAR                                  :En yakın hangara git
 STR_ORDER_CONDITIONAL                                           :Duruma göre dallan
 STR_ORDER_SHARE                                                 :Emirleri paylaştır
-STR_ORDERS_GO_TO_TOOLTIP                                        :{BLACK}Seçili talimatın önüne ya da listenin sonuna yeni talimat ekle. Ctrl + Sol tık yapmak; istasyon talimatlarını 'bir kargo türünü tam yükle', yol imi talimatlarını 'durmaksızın', garaj talimatlarını 'bakıma gir' olarak değiştirir. 'Talimatları paylaş' veya Ctrl + Sol tık yaparak bu aracın talimatlarını seçili araçla paylaşmasını sağlayın. Bir araca tıklamak o aracın talimatlarını kopyalar. Bir hangar talimatı araca otomatik olarak bakım yapılması özelliğini kapatır
+STR_ORDERS_GO_TO_TOOLTIP                                        :{BLACK}Seçili talimatın önüne ya da listenin sonuna yeni talimat ekle. Ctrl + Sol tık yapmak; istasyon talimatlarını 'bir kargo türünü tam yükle', yol imi talimatlarını 'durmaksızın', garaj talimatlarını 'gruptan ayrıl' olarak değiştirir. 'Talimatları paylaş' veya Ctrl + Sol tık yaparak bu aracın talimatlarını seçili araçla paylaşmasını sağlayın. Bir araca tıklamak o aracın talimatlarını kopyalar. Bir hangar talimatı araca otomatik olarak bakım yapılması özelliğini kapatır
 
 STR_ORDERS_VEH_WITH_SHARED_ORDERS_LIST_TOOLTIP                  :{BLACK}Aynı talimatlara sahip bütün araçları göster
 
@@ -4776,9 +4776,9 @@ STR_AI_DEBUG_MATCH_CASE                                         :{BLACK}Büyük/
 STR_AI_DEBUG_MATCH_CASE_TOOLTIP                                 :{BLACK}YZ günlük iletilerini durma metni ile karşılaştırırken büyük/küçük harf eşleşmesini aç/kapa
 STR_AI_DEBUG_CONTINUE                                           :{BLACK}Devam et
 STR_AI_DEBUG_CONTINUE_TOOLTIP                                   :{BLACK}YZ'yi devam ettir
-STR_AI_DEBUG_SELECT_AI_TOOLTIP                                  :{BLACK}Seçilen YapayZeka için hata ayıklama çıktısı göster. Ctrl + Sol Tık yeni bir pencerede açar.
+STR_AI_DEBUG_SELECT_AI_TOOLTIP                                  :{BLACK}Bu YapayZeka için hata ayıklama çıktısını göster. Ctrl+Sol Tık yeni bir pencerede açar
 STR_AI_GAME_SCRIPT                                              :{BLACK}Oyun Betiği
-STR_AI_GAME_SCRIPT_TOOLTIP                                      :{BLACK}Oyun Skripti (Betiği) kaydını kontrol edin. Ctrl + Sol Tık yeni pencerede açar.
+STR_AI_GAME_SCRIPT_TOOLTIP                                      :{BLACK}Oyun Betiği kaydını kontrol edin. Ctrl + Sol Tık yeni pencerede açar
 
 STR_ERROR_AI_NO_AI_FOUND                                        :Yüklenecek uygun bir YZ bulunamadı.{}Bu YZ boş bir YZ'dir ve hiçbir şey yapmaz.{}'Çevrimiçi İçerik" sistemiyle pekçok YZ'yi indirebilirsiniz
 STR_ERROR_AI_PLEASE_REPORT_CRASH                                :{WHITE}Çalışan betiklerden biri çöktü. Lütfen bu durumu YZ Hata Ayıklama Penceresi görüntüsüyle birlikte dosyanın yazarına bildirin

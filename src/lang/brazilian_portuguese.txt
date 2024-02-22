@@ -671,12 +671,12 @@ STR_PERFORMANCE_DETAIL_VEHICLES_TOOLTIP_PERIODS                 :{BLACK}Número 
 STR_PERFORMANCE_DETAIL_STATIONS_TOOLTIP                         :{BLACK}Número de estações recentemente atendidas. Estações de trem, paradas de ônibus, aeroportos, etc. são contados individualmente, mesmo que pertençam à mesma estação
 STR_PERFORMANCE_DETAIL_MIN_PROFIT_TOOLTIP_YEARS                 :{BLACK}Lucro do veículo com a menor receita (somente veículos com mais de dois anos são considerados)
 STR_PERFORMANCE_DETAIL_MIN_PROFIT_TOOLTIP_PERIODS               :{BLACK}Lucro do veículo com a menor receita (somente veículos com mais de dois períodos são considerados)
-STR_PERFORMANCE_DETAIL_MIN_INCOME_TOOLTIP                       :{BLACK}Quantidade de dinheiro ganho no trimestre com o menor lucro dos últimos 12 trimestres
-STR_PERFORMANCE_DETAIL_MAX_INCOME_TOOLTIP                       :{BLACK}Quantidade de dinheiro ganho no trimestre com o maior lucro dos últimos 12 trimestres
+STR_PERFORMANCE_DETAIL_MIN_INCOME_TOOLTIP                       :{BLACK}Quantia de dinheiro obtido no trimestre com o menor lucro dos últimos 12 trimestres
+STR_PERFORMANCE_DETAIL_MAX_INCOME_TOOLTIP                       :{BLACK}Quantia de dinheiro obtido no trimestre com o maior lucro dos últimos 12 trimestres
 STR_PERFORMANCE_DETAIL_DELIVERED_TOOLTIP                        :{BLACK}Unidades de carga entregue nos últimos quatro trimestres
 STR_PERFORMANCE_DETAIL_CARGO_TOOLTIP                            :{BLACK}Número de tipos de carga entregues no último trimestre
-STR_PERFORMANCE_DETAIL_MONEY_TOOLTIP                            :{BLACK}Quantidade de dinheiro que esta empresa tem no banco
-STR_PERFORMANCE_DETAIL_LOAN_TOOLTIP                             :{BLACK}Quantidade de dinheiro que esta empresa tomou por empréstimo
+STR_PERFORMANCE_DETAIL_MONEY_TOOLTIP                            :{BLACK}Quantia de dinheiro que esta empresa tem no banco
+STR_PERFORMANCE_DETAIL_LOAN_TOOLTIP                             :{BLACK}A quantia de dinheiro que esta empresa tomou por empréstimo
 STR_PERFORMANCE_DETAIL_TOTAL_TOOLTIP                            :{BLACK}Total de pontos de pontos possíveis
 
 # Music window
@@ -837,9 +837,9 @@ STR_NEWS_FIRST_SHIP_ARRIVAL                                     :{BIG_FONT}{BLAC
 STR_NEWS_FIRST_AIRCRAFT_ARRIVAL                                 :{BIG_FONT}{BLACK}Cidadãos celebram . . .{}Primeira aeronave chega no {STATION}!
 
 STR_NEWS_TRAIN_CRASH                                            :{BIG_FONT}{BLACK}Acidente de Trem!{}{COMMA} morrem em explosão após colisão
-STR_NEWS_ROAD_VEHICLE_CRASH_DRIVER                              :{BIG_FONT}{BLACK}Acidente Rodoviário!{} Condutor morre em explosão após colisão com um trem
-STR_NEWS_ROAD_VEHICLE_CRASH                                     :{BIG_FONT}{BLACK}Acidente Rodoviário!{} {COMMA} morrem em explosão após colisão com um trem
-STR_NEWS_AIRCRAFT_CRASH                                         :{BIG_FONT}{BLACK}Acidente Aéreo!{} {COMMA} morrem em explosão na {STATION}
+STR_NEWS_ROAD_VEHICLE_CRASH_DRIVER                              :{BIG_FONT}{BLACK}Acidente Rodoviário!{}Condutor morre em explosão após colisão com um trem
+STR_NEWS_ROAD_VEHICLE_CRASH                                     :{BIG_FONT}{BLACK}Acidente Rodoviário!{}{COMMA} morrem em explosão após colisão com um trem
+STR_NEWS_AIRCRAFT_CRASH                                         :{BIG_FONT}{BLACK}Acidente Aéreo!{}{COMMA} morrem em explosão na {STATION}
 STR_NEWS_PLANE_CRASH_OUT_OF_FUEL                                :{BIG_FONT}{BLACK}Acidente Aéreo!{}Aeronave ficou sem combustível, {COMMA} morrem em explosão
 
 STR_NEWS_DISASTER_ZEPPELIN                                      :{BIG_FONT}{BLACK}Desastre de Zepelin em {STATION}!
@@ -864,7 +864,7 @@ STR_PRESIDENT_NAME_MANAGER                                      :{BLACK}{PRESIDE
 STR_NEWS_NEW_TOWN                                               :{BLACK}{BIG_FONT}{STRING} financiou a construção da nova localidade de {TOWN}!
 STR_NEWS_NEW_TOWN_UNSPONSORED                                   :{BLACK}{BIG_FONT}Uma nova localidade chamada {TOWN} foi fundada!
 
-STR_NEWS_INDUSTRY_CONSTRUCTION                                  :{BIG_FONT}{BLACK}Nov{G o a} {STRING} em construção perto de {TOWN}!
+STR_NEWS_INDUSTRY_CONSTRUCTION                                  :{BIG_FONT}{BLACK}Nov{G o a} {STRING} under construction near {TOWN}!
 STR_NEWS_INDUSTRY_PLANTED                                       :{BIG_FONT}{BLACK}Nov{G o a} {STRING} sendo plantada perto de {TOWN}!
 
 STR_NEWS_INDUSTRY_CLOSURE_GENERAL                               :{BIG_FONT}{BLACK}{STRING} anuncia o encerramento iminente!
@@ -905,7 +905,7 @@ STR_NEWS_TRAIN_IS_STUCK                                         :{WHITE}{VEHICLE
 STR_NEWS_VEHICLE_IS_LOST                                        :{WHITE}{VEHICLE} está perdido
 STR_NEWS_VEHICLE_UNPROFITABLE_YEAR                              :{WHITE}{VEHICLE} gerou um lucro de {CURRENCY_LONG} no último ano
 STR_NEWS_VEHICLE_UNPROFITABLE_PERIOD                            :{WHITE}{VEHICLE} gerou um lucro de {CURRENCY_LONG} no último período
-STR_NEWS_AIRCRAFT_DEST_TOO_FAR                                  :{WHITE}{VEHICLE} não pode chegar no próximo destino porque ele está além da autonomia
+STR_NEWS_AIRCRAFT_DEST_TOO_FAR                                  :{WHITE}{VEHICLE} não pode chegar no próximo destino porque ele está fora da autonomia
 
 STR_NEWS_ORDER_REFIT_FAILED                                     :{WHITE}{VEHICLE} parou porque uma ordem de adaptação falhou
 STR_NEWS_VEHICLE_AUTORENEW_FAILED                               :{WHITE}Renovação automática falhou para {VEHICLE}{}{STRING}
@@ -1114,8 +1114,8 @@ STR_ERROR_FULLSCREEN_FAILED                                     :{WHITE}Modo de 
 
 STR_CURRENCY_WINDOW                                             :{WHITE}Moeda personalizada
 STR_CURRENCY_EXCHANGE_RATE                                      :{LTBLUE}Taxa de câmbio: {ORANGE}{CURRENCY_LONG} = £ {COMMA}
-STR_CURRENCY_DECREASE_EXCHANGE_RATE_TOOLTIP                     :{BLACK}Diminuir a quantidade de sua moeda por uma Libra(£)
-STR_CURRENCY_INCREASE_EXCHANGE_RATE_TOOLTIP                     :{BLACK}Aumentar a quantidade de sua moeda por uma Libra(£)
+STR_CURRENCY_DECREASE_EXCHANGE_RATE_TOOLTIP                     :{BLACK}Diminuir o valor da sua moeda para uma Libra(£)
+STR_CURRENCY_INCREASE_EXCHANGE_RATE_TOOLTIP                     :{BLACK}Aumentar o valor da sua moeda para uma Libra(£)
 STR_CURRENCY_SET_EXCHANGE_RATE_TOOLTIP                          :{BLACK}Definir a taxa de câmbio de sua moeda por uma Libra(£)
 
 STR_CURRENCY_PREFIX                                             :{LTBLUE}Prefixo: {ORANGE}{STRING}
@@ -1272,10 +1272,10 @@ STR_CONFIG_SETTING_INFINITE_MONEY                               :Dinheiro infini
 STR_CONFIG_SETTING_INFINITE_MONEY_HELPTEXT                      :Permite gastos ilimitados e desabilita a falência de empresas
 
 STR_CONFIG_SETTING_MAXIMUM_INITIAL_LOAN                         :Valor máximo do empréstimo inicial: {STRING}
-STR_CONFIG_SETTING_MAXIMUM_INITIAL_LOAN_HELPTEXT                :Valor máximo do empréstimo para cada empresa (sem considerar a inflação)
+STR_CONFIG_SETTING_MAXIMUM_INITIAL_LOAN_HELPTEXT                :Valor máximo que uma empresa pode emprestar (sem considerar a inflação). Se definido como "Sem empréstimo", não haverá dinheiro disponível a menos que seja fornecido por um Script de Jogo ou pela definição "Dinheiro ilimitado".
 STR_CONFIG_SETTING_MAXIMUM_INITIAL_LOAN_VALUE                   :{CURRENCY_LONG}
 ###setting-zero-is-special
-STR_CONFIG_SETTING_MAXIMUM_INITIAL_LOAN_DISABLED                :Sem empréstimo {RED}Precisa de Script de Jogo para fornecer fundos iniciais
+STR_CONFIG_SETTING_MAXIMUM_INITIAL_LOAN_DISABLED                :Sem empréstimo
 
 STR_CONFIG_SETTING_INTEREST_RATE                                :Taxa de Juros: {STRING}
 STR_CONFIG_SETTING_INTEREST_RATE_HELPTEXT                       :Taxa de juros do empréstimo; também controla a inflação, se ativado
@@ -1284,7 +1284,7 @@ STR_CONFIG_SETTING_RUNNING_COSTS                                :Custos de Opera
 STR_CONFIG_SETTING_RUNNING_COSTS_HELPTEXT                       :Configurar nível de manutenção e custos operacionais de veículos e infraestrutura
 
 STR_CONFIG_SETTING_CONSTRUCTION_SPEED                           :Velocidade de construção: {STRING}
-STR_CONFIG_SETTING_CONSTRUCTION_SPEED_HELPTEXT                  :Limita a quantidade de ações de construção para IAs
+STR_CONFIG_SETTING_CONSTRUCTION_SPEED_HELPTEXT                  :Limitar a quantidade ações de construção para IAs
 
 STR_CONFIG_SETTING_VEHICLE_BREAKDOWNS                           :Quebra de veículos: {STRING}
 STR_CONFIG_SETTING_VEHICLE_BREAKDOWNS_HELPTEXT                  :Controla a frequência com a qual veículos com manutenção inadequada podem quebrar
@@ -1510,14 +1510,14 @@ STR_CONFIG_SETTING_INDUSTRY_CARGO_SCALE                         :Escalar a produ
 STR_CONFIG_SETTING_INDUSTRY_CARGO_SCALE_HELPTEXT                :Escalar a produção de carga das indústrias nesta porcentagem.
 STR_CONFIG_SETTING_CARGO_SCALE_VALUE                            :{NUM}%
 
-STR_CONFIG_SETTING_AUTORENEW_VEHICLE                            :Renovação automática de veículos quando ficam velhos: {STRING}
-STR_CONFIG_SETTING_AUTORENEW_VEHICLE_HELPTEXT                   :Quando ativado, um veículo próximo do fim da vida útil é automaticamente substituído quando as condições de renovação forem satisfeitas
+STR_CONFIG_SETTING_AUTORENEW_VEHICLE                            :Renovar automaticamente um veículo quando ele ficar velho: {STRING}
+STR_CONFIG_SETTING_AUTORENEW_VEHICLE_HELPTEXT                   :Quando ativado, um veículo próximo do fim da vida útil é automaticamente substituído quando as condições de renovação são satisfeitas
 
-STR_CONFIG_SETTING_AUTORENEW_MONTHS                             :Renovar automaticamente quando um veículo tem {STRING} de idade máxima
-STR_CONFIG_SETTING_AUTORENEW_MONTHS_HELPTEXT                    :Idade relativa com a qual um veículo deve ser considerado para renovação automática
+STR_CONFIG_SETTING_AUTORENEW_MONTHS                             :Renovar automaticamente o veículo {STRING} da idade máxima
+STR_CONFIG_SETTING_AUTORENEW_MONTHS_HELPTEXT                    :Idade relativa em que um veículo deve ser considerado para renovação automática
 ###length 2
 STR_CONFIG_SETTING_AUTORENEW_MONTHS_VALUE_BEFORE                :{COMMA} m{P 0 ês eses} antes
-STR_CONFIG_SETTING_AUTORENEW_MONTHS_VALUE_AFTER                 :{COMMA} m{P 0 ês eses} após
+STR_CONFIG_SETTING_AUTORENEW_MONTHS_VALUE_AFTER                 :{COMMA} m{P 0 ês eses} depois
 
 STR_CONFIG_SETTING_AUTORENEW_MONEY                              :Quantia mínima de dinheiro necessária para fazer renovação automática: {STRING}
 STR_CONFIG_SETTING_AUTORENEW_MONEY_HELPTEXT                     :Quantia mínima de dinheiro que deve existir na conta bancária para a renovação automática de veículos ser considerada
@@ -1785,17 +1785,17 @@ STR_CONFIG_SETTING_SOUND_VEHICLE_HELPTEXT                       :Reproduzir efei
 STR_CONFIG_SETTING_SOUND_AMBIENT                                :Ambiente: {STRING}
 STR_CONFIG_SETTING_SOUND_AMBIENT_HELPTEXT                       :Reproduzir efeitos sonoros da paisagem, indústrias e localidades
 
-STR_CONFIG_SETTING_MAX_TRAINS                                   :Quantidade máxima de trens por empresa: {STRING}
-STR_CONFIG_SETTING_MAX_TRAINS_HELPTEXT                          :Quantidade máxima de trens que uma empresa pode ter
+STR_CONFIG_SETTING_MAX_TRAINS                                   :Número máximo de trens por empresa: {STRING}
+STR_CONFIG_SETTING_MAX_TRAINS_HELPTEXT                          :Número máximo de trens que uma empresa pode ter
 
-STR_CONFIG_SETTING_MAX_ROAD_VEHICLES                            :Quantidade máxima de veículos por empresa: {STRING}
-STR_CONFIG_SETTING_MAX_ROAD_VEHICLES_HELPTEXT                   :Quantidade máxima de veículos rodoviários que uma empresa pode ter
+STR_CONFIG_SETTING_MAX_ROAD_VEHICLES                            :Número máximo de veículos por empresa: {STRING}
+STR_CONFIG_SETTING_MAX_ROAD_VEHICLES_HELPTEXT                   :Número máximo de veículos rodoviários que uma empresa pode ter
 
-STR_CONFIG_SETTING_MAX_AIRCRAFT                                 :Quantidade máxima de aeronaves por empresa: {STRING}
-STR_CONFIG_SETTING_MAX_AIRCRAFT_HELPTEXT                        :Quantidade máxima de aeronaves que uma empresa pode ter
+STR_CONFIG_SETTING_MAX_AIRCRAFT                                 :Número máximo de aeronaves por empresa: {STRING}
+STR_CONFIG_SETTING_MAX_AIRCRAFT_HELPTEXT                        :Número máximo de aeronaves que uma empresa pode ter
 
-STR_CONFIG_SETTING_MAX_SHIPS                                    :Quantidade máxima de embarcações por empresa: {STRING}
-STR_CONFIG_SETTING_MAX_SHIPS_HELPTEXT                           :Quantidade máxima de embarcações que uma empresa pode ter
+STR_CONFIG_SETTING_MAX_SHIPS                                    :Número máximo de embarcações por empresa: {STRING}
+STR_CONFIG_SETTING_MAX_SHIPS_HELPTEXT                           :Número máximo de embarcações que uma empresa pode ter
 
 STR_CONFIG_SETTING_AI_BUILDS_TRAINS                             :Desativar trens para o computador: {STRING}
 STR_CONFIG_SETTING_AI_BUILDS_TRAINS_HELPTEXT                    :Se ativado, não permite que jogadores controlados pelo computador construam trens
@@ -2243,7 +2243,7 @@ STR_CHEAT_MONEY                                                 :{LTBLUE}Aumenta
 STR_CHEAT_CHANGE_COMPANY                                        :{LTBLUE}Jogando como empresa: {ORANGE}{COMMA}
 STR_CHEAT_EXTRA_DYNAMITE                                        :{LTBLUE}Escavadeira mágica (remove indústrias, objetos estáticos): {ORANGE}{STRING}
 STR_CHEAT_CROSSINGTUNNELS                                       :{LTBLUE}Os túneis podem se cruzar: {ORANGE}{STRING}
-STR_CHEAT_NO_JETCRASH                                           :{LTBLUE}Aeronaves a jato não irão se acidentar (frequentemente) em aeroportos pequenos: {ORANGE} {STRING}
+STR_CHEAT_NO_JETCRASH                                           :{LTBLUE}Aeronaves a jato não irão se acidentar (frequentemente) em aeroportos pequenos: {ORANGE}{STRING}
 STR_CHEAT_EDIT_MAX_HL                                           :{LTBLUE}Editar a altura máxima do mapa: {ORANGE}{NUM}
 STR_CHEAT_EDIT_MAX_HL_QUERY_CAPT                                :{WHITE}Editar a altura máxima das montanhas no mapa
 STR_CHEAT_CHANGE_DATE                                           :{LTBLUE}Alterar data: {ORANGE}{DATE_SHORT}
@@ -2660,7 +2660,7 @@ STR_CONTENT_UNSELECT_ALL_CAPTION_TOOLTIP                        :{BLACK}Marcar t
 STR_CONTENT_SEARCH_EXTERNAL                                     :{BLACK}Procurar em sites externos
 STR_CONTENT_SEARCH_EXTERNAL_TOOLTIP                             :{BLACK}Conteúdo procurado não está disponível no servidor de conteúdo do OpenTTD se hospedado em websites não relacionados ao OpenTTD
 STR_CONTENT_SEARCH_EXTERNAL_DISCLAIMER_CAPTION                  :{WHITE}Você está saindo do OpenTTD!
-STR_CONTENT_SEARCH_EXTERNAL_DISCLAIMER                          :{WHITE}Os termos e condições ao baixar conteúdo de fontes externas pode variar.{}Você deverá consultar as fontes para obter instruções de como instalar o conteúdo no OpenTTD.{} Você deseja continuar?
+STR_CONTENT_SEARCH_EXTERNAL_DISCLAIMER                          :{WHITE}Os termos e condições ao baixar conteúdo de fontes externas pode variar.{}Você deverá consultar as fontes para obter instruções de como instalar o conteúdo no OpenTTD.{}Você deseja continuar?
 STR_CONTENT_FILTER_TITLE                                        :{BLACK}Filtrar por etiqueta/nome:
 STR_CONTENT_OPEN_URL                                            :{BLACK}Visitar a página web
 STR_CONTENT_OPEN_URL_TOOLTIP                                    :{BLACK}Visitar o site desse conteúdo
@@ -2704,7 +2704,7 @@ STR_CONTENT_TYPE_GS_LIBRARY                                     :Biblioteca de G
 # Content downloading progress window
 STR_CONTENT_DOWNLOAD_TITLE                                      :{WHITE}Baixando conteúdo...
 STR_CONTENT_DOWNLOAD_INITIALISE                                 :{WHITE}Requisitando arquivos...
-STR_CONTENT_DOWNLOAD_FILE                                       :{WHITE}Baixando {STRING} ({NUM} de {NUM} no total)
+STR_CONTENT_DOWNLOAD_FILE                                       :{WHITE}Baixando {STRING} ({NUM} de {NUM})
 STR_CONTENT_DOWNLOAD_COMPLETE                                   :{WHITE}Concluído
 STR_CONTENT_DOWNLOAD_PROGRESS_SIZE                              :{WHITE}{BYTES} de {BYTES} foram baixados ({NUM} %)
 
@@ -3215,20 +3215,20 @@ STR_FRAMERATE_GRAPH_SECONDS                                     :{TINY_FONT}{COM
 
 ###length 15
 STR_FRAMERATE_GAMELOOP                                          :{BLACK}Total no Loop do jogo:
-STR_FRAMERATE_GL_ECONOMY                                        :{BLACK} Movimentação de carga:
-STR_FRAMERATE_GL_TRAINS                                         :{BLACK} Tiques de trem:
-STR_FRAMERATE_GL_ROADVEHS                                       :{BLACK} Tiques de veículo rodoviário:
-STR_FRAMERATE_GL_SHIPS                                          :{BLACK} Tiques de embarcação:
-STR_FRAMERATE_GL_AIRCRAFT                                       :{BLACK} Tiques de aeronave:
-STR_FRAMERATE_GL_LANDSCAPE                                      :{BLACK} Tiques do mundo:
-STR_FRAMERATE_GL_LINKGRAPH                                      :{BLACK} Atraso na rede de conexões:
+STR_FRAMERATE_GL_ECONOMY                                        :{BLACK}  Movimentação de carga:
+STR_FRAMERATE_GL_TRAINS                                         :{BLACK}  Tiques de trem:
+STR_FRAMERATE_GL_ROADVEHS                                       :{BLACK}  Tiques de veículo rodoviário:
+STR_FRAMERATE_GL_SHIPS                                          :{BLACK}  Tiques de embarcação:
+STR_FRAMERATE_GL_AIRCRAFT                                       :{BLACK}  Tiques de aeronave:
+STR_FRAMERATE_GL_LANDSCAPE                                      :{BLACK}  Tiques do mundo:
+STR_FRAMERATE_GL_LINKGRAPH                                      :{BLACK}  Atraso na rede de conexões:
 STR_FRAMERATE_DRAWING                                           :{BLACK}Renderização de gráficos:
-STR_FRAMERATE_DRAWING_VIEWPORTS                                 :{BLACK} Visualizadores do mundo:
+STR_FRAMERATE_DRAWING_VIEWPORTS                                 :{BLACK}  Visualizadores do mundo:
 STR_FRAMERATE_VIDEO                                             :{BLACK}Saída de video:
 STR_FRAMERATE_SOUND                                             :{BLACK}Mixagem de áudio:
-STR_FRAMERATE_ALLSCRIPTS                                        :{BLACK} SJ/IA total:
-STR_FRAMERATE_GAMESCRIPT                                        :{BLACK} Script de jogo:
-STR_FRAMERATE_AI                                                :{BLACK} IA {NUM} {STRING}
+STR_FRAMERATE_ALLSCRIPTS                                        :{BLACK}  SJ/IA total:
+STR_FRAMERATE_GAMESCRIPT                                        :{BLACK}   Script de jogo:
+STR_FRAMERATE_AI                                                :{BLACK}   IA {NUM} {STRING}
 
 ###length 15
 STR_FRAMETIME_CAPTION_GAMELOOP                                  :Loop do jogo
@@ -3609,9 +3609,9 @@ STR_TOWN_POPULATION                                             :{BLACK}Populaç
 # Town view window
 STR_TOWN_VIEW_TOWN_CAPTION                                      :{WHITE}{TOWN}
 STR_TOWN_VIEW_CITY_CAPTION                                      :{WHITE}{TOWN} (Cidade)
-STR_TOWN_VIEW_POPULATION_HOUSES                                 :{BLACK}População: {ORANGE}{COMMA}{BLACK} Casas: {ORANGE}{COMMA}
-STR_TOWN_VIEW_CARGO_LAST_MONTH_MAX                              :{BLACK}{CARGO_LIST} último mês: {ORANGE}{COMMA}{BLACK} máx: {ORANGE}{COMMA}
-STR_TOWN_VIEW_CARGO_LAST_MINUTE_MAX                             :{BLACK}{CARGO_LIST} último minuto: {ORANGE}{COMMA}{BLACK} máx: {ORANGE}{COMMA}
+STR_TOWN_VIEW_POPULATION_HOUSES                                 :{BLACK}População: {ORANGE}{COMMA}{BLACK}  Casas: {ORANGE}{COMMA}
+STR_TOWN_VIEW_CARGO_LAST_MONTH_MAX                              :{BLACK}{CARGO_LIST} último mês: {ORANGE}{COMMA}{BLACK}  máx: {ORANGE}{COMMA}
+STR_TOWN_VIEW_CARGO_LAST_MINUTE_MAX                             :{BLACK}{CARGO_LIST} último minuto: {ORANGE}{COMMA}{BLACK}  máx: {ORANGE}{COMMA}
 STR_TOWN_VIEW_CARGO_FOR_TOWNGROWTH                              :{BLACK}Carga necessária para o crescimento da localidade:
 STR_TOWN_VIEW_CARGO_FOR_TOWNGROWTH_REQUIRED_GENERAL             :{ORANGE}{STRING}{RED} é necessário
 STR_TOWN_VIEW_CARGO_FOR_TOWNGROWTH_REQUIRED_WINTER              :{ORANGE}{STRING}{BLACK} é necessário no inverno
@@ -3621,7 +3621,7 @@ STR_TOWN_VIEW_CARGO_FOR_TOWNGROWTH_DELIVERED                    :{ORANGE}{CARGO_
 STR_TOWN_VIEW_TOWN_GROWS_EVERY                                  :{BLACK}Localidade cresce a cada {ORANGE}{UNITS_DAYS_OR_SECONDS}
 STR_TOWN_VIEW_TOWN_GROWS_EVERY_FUNDED                           :{BLACK}Localidade cresce a cada {ORANGE}{UNITS_DAYS_OR_SECONDS} (financiada)
 STR_TOWN_VIEW_TOWN_GROW_STOPPED                                 :{BLACK}Localidade {RED}não{BLACK} está crescendo
-STR_TOWN_VIEW_NOISE_IN_TOWN                                     :{BLACK}Limite de ruído na localidade: {ORANGE}{COMMA}{BLACK} máx: {ORANGE}{COMMA}
+STR_TOWN_VIEW_NOISE_IN_TOWN                                     :{BLACK}Limite de ruído na localidade: {ORANGE}{COMMA}{BLACK}  máx: {ORANGE}{COMMA}
 STR_TOWN_VIEW_CENTER_TOOLTIP                                    :{BLACK}Centralizar visualização na localização da localidade. Ctrl+Clique abre uma nova visualização na localização da localidade
 STR_TOWN_VIEW_LOCAL_AUTHORITY_BUTTON                            :{BLACK}Autoridade Local
 STR_TOWN_VIEW_LOCAL_AUTHORITY_TOOLTIP                           :{BLACK}Mostrar informações sobre a autoridade local
@@ -3717,7 +3717,7 @@ STR_SUBSIDIES_SUBSIDISED_TITLE                                  :{BLACK}Serviço
 STR_SUBSIDIES_SUBSIDISED_FROM_TO                                :{ORANGE}{STRING} de {STRING} para {STRING}{YELLOW} ({COMPANY}{YELLOW}, {STRING})
 STR_SUBSIDIES_TOOLTIP_CLICK_ON_SERVICE_TO_CENTER                :{BLACK}Clique em um serviço para centralizar a visualização em uma indústria/localidade. Ctrl+Clique abre uma nova visualização na localização da indústria/localidade
 STR_SUBSIDIES_OFFERED_EXPIRY_DATE                               :até {DATE_SHORT}
-STR_SUBSIDIES_OFFERED_EXPIRY_TIME                               :por {UNITS_MONTHS_OR_MINUTES}
+STR_SUBSIDIES_OFFERED_EXPIRY_TIME                               :durante {UNITS_MONTHS_OR_MINUTES}
 STR_SUBSIDIES_SUBSIDISED_EXPIRY_DATE                            :até {DATE_SHORT}
 STR_SUBSIDIES_SUBSIDISED_EXPIRY_TIME                            :{UNITS_MONTHS_OR_MINUTES} restante{P "" s}
 
@@ -3913,7 +3913,7 @@ STR_COMPANY_VIEW_PRESIDENT_NAME_TOOLTIP                         :{BLACK}Alterar 
 
 STR_COMPANY_VIEW_COMPANY_NAME_QUERY_CAPTION                     :Nome da Empresa
 STR_COMPANY_VIEW_PRESIDENT_S_NAME_QUERY_CAPTION                 :Nome do Presidente
-STR_COMPANY_VIEW_GIVE_MONEY_QUERY_CAPTION                       :Inserir a quantidade de dinheiro que você deseja dar
+STR_COMPANY_VIEW_GIVE_MONEY_QUERY_CAPTION                       :Inserir a quantia de dinheiro que você deseja dar
 
 STR_BUY_COMPANY_MESSAGE                                         :{WHITE}Estamos à procura de uma empresa de transportes para comprar a nossa empresa.{}{}Você deseja comprar {COMPANY} por {CURRENCY_LONG}?
 STR_BUY_COMPANY_HOSTILE_TAKEOVER                                :{WHITE}Na aquisição hostil de {COMPANY} você irá adquirir todos os ativos, liquidar todos os empréstimos e pagar o valor de 2 anos de lucros.{}{}O total estimado é de {CURRENCY_LONG}.{}{}Você deseja continuar esta aquisição hostil?
@@ -4263,12 +4263,12 @@ STR_ENGINE_PREVIEW_SHIP                                         :embarcação
 
 STR_ENGINE_PREVIEW_TEXT3                                        :{BLACK}{STRING}{}{5:STRING}{}{STRING}
 STR_ENGINE_PREVIEW_TEXT4                                        :{BLACK}{STRING}{}{STRING}{}{STRING}{}{STRING}
-STR_ENGINE_PREVIEW_COST_WEIGHT                                  :Custo: {CURRENCY_LONG} Peso: {WEIGHT_SHORT}
+STR_ENGINE_PREVIEW_COST_WEIGHT                                  :Custo: {CURRENCY_LONG}  Peso: {WEIGHT_SHORT}
 STR_ENGINE_PREVIEW_COST_MAX_SPEED                               :Custo: {CURRENCY_LONG}  Velocidade máx.: {VELOCITY}
-STR_ENGINE_PREVIEW_SPEED_POWER                                  :Velocidade: {VELOCITY} Potência: {POWER}
-STR_ENGINE_PREVIEW_SPEED_POWER_MAX_TE                           :Velocidade: {VELOCITY} Potência: {POWER} Força de Tração máx.: {FORCE}
+STR_ENGINE_PREVIEW_SPEED_POWER                                  :Velocidade: {VELOCITY}  Potência: {POWER}
+STR_ENGINE_PREVIEW_SPEED_POWER_MAX_TE                           :Velocidade: {VELOCITY}  Potência: {POWER}  Força de Tração máx.: {FORCE}
 STR_ENGINE_PREVIEW_TYPE                                         :Tipo da aeronave: {STRING}
-STR_ENGINE_PREVIEW_TYPE_RANGE                                   :Tipo de aeronave: {STRING} Autonomia: {COMMA} quadrados
+STR_ENGINE_PREVIEW_TYPE_RANGE                                   :Tipo de aeronave: {STRING}   Autonomia: {COMMA} quadrados
 STR_ENGINE_PREVIEW_RUNCOST_YEAR                                 :Custo de Operação: {CURRENCY_LONG}/ano
 STR_ENGINE_PREVIEW_RUNCOST_PERIOD                               :Custo de Operação: {CURRENCY_LONG}/período
 STR_ENGINE_PREVIEW_CAPACITY                                     :Capacidade: {CARGO_LONG}
@@ -4419,8 +4419,8 @@ STR_VEHICLE_DETAILS_AIRCRAFT_RENAME                             :{BLACK}Renomear
 
 STR_VEHICLE_INFO_AGE                                            :{COMMA} ano{P "" s} ({COMMA})
 STR_VEHICLE_INFO_AGE_RED                                        :{RED}{COMMA} ano{P "" s} ({COMMA})
-STR_VEHICLE_INFO_AGE_RUNNING_COST_YR                            :{BLACK}Idade: {LTBLUE}{STRING}{BLACK} Custo de Operação: {LTBLUE}{CURRENCY_LONG}/ano
-STR_VEHICLE_INFO_AGE_RUNNING_COST_PERIOD                        :{BLACK}Idade: {LTBLUE}{STRING}{BLACK} Custo de Operação: {LTBLUE}{CURRENCY_LONG}/período
+STR_VEHICLE_INFO_AGE_RUNNING_COST_YR                            :{BLACK}Idade: {LTBLUE}{STRING}{BLACK}   Custo de Operação: {LTBLUE}{CURRENCY_LONG}/ano
+STR_VEHICLE_INFO_AGE_RUNNING_COST_PERIOD                        :{BLACK}Idade: {LTBLUE}{STRING}{BLACK}   Custo de Operação: {LTBLUE}{CURRENCY_LONG}/período
 
 STR_VEHICLE_INFO_MAX_SPEED                                      :{BLACK}Velocidade máx: {LTBLUE}{VELOCITY}
 STR_VEHICLE_INFO_MAX_SPEED_TYPE                                 :{BLACK}Velocidade máx.: {LTBLUE}{VELOCITY} {BLACK}Tipo de aeronave: {LTBLUE}{STRING}
@@ -4442,9 +4442,9 @@ STR_VEHICLE_INFO_CAPACITY_CAPACITY                              :{BLACK}Capacida
 
 STR_VEHICLE_INFO_FEEDER_CARGO_VALUE                             :{BLACK}Créditos de Transferência: {LTBLUE}{CURRENCY_LONG}
 
-STR_VEHICLE_DETAILS_SERVICING_INTERVAL_DAYS                     :{BLACK}Intervalo de manutenção: {LTBLUE}{COMMA}{NBSP}dias{BLACK} {STRING}
-STR_VEHICLE_DETAILS_SERVICING_INTERVAL_MINUTES                  :{BLACK}Intervalo de manutenção: {LTBLUE}{COMMA}{NBSP}minutos{BLACK} {STRING}
-STR_VEHICLE_DETAILS_SERVICING_INTERVAL_PERCENT                  :{BLACK}Intervalo de manutenção: {LTBLUE}{COMMA}%{BLACK} {STRING}
+STR_VEHICLE_DETAILS_SERVICING_INTERVAL_DAYS                     :{BLACK}Intervalo de manutenção: {LTBLUE}{COMMA}{NBSP}dias{BLACK}   {STRING}
+STR_VEHICLE_DETAILS_SERVICING_INTERVAL_MINUTES                  :{BLACK}Intervalo de manutenção: {LTBLUE}{COMMA}{NBSP}minutos{BLACK}   {STRING}
+STR_VEHICLE_DETAILS_SERVICING_INTERVAL_PERCENT                  :{BLACK}Intervalo de manutenção: {LTBLUE}{COMMA}%{BLACK}   {STRING}
 STR_VEHICLE_DETAILS_LAST_SERVICE_DATE                           :Última manutenção: {LTBLUE}{DATE_LONG}
 STR_VEHICLE_DETAILS_LAST_SERVICE_MINUTES_AGO                    :Última manutenção: {LTBLUE}{NUM} minuto{P "" s} atrás
 STR_VEHICLE_DETAILS_INCREASE_SERVICING_INTERVAL_TOOLTIP_DAYS    :{BLACK}Aumentar o intervalo de manutenção em 10 dias. Ctrl+Click para aumentar o intervalo de manutenção em 5 dias
@@ -4467,8 +4467,8 @@ STR_QUERY_RENAME_SHIP_CAPTION                                   :{WHITE}Renomear
 STR_QUERY_RENAME_AIRCRAFT_CAPTION                               :{WHITE}Renomear aeronave
 
 # Extra buttons for train details windows
-STR_VEHICLE_DETAILS_TRAIN_ENGINE_BUILT_AND_VALUE                :{LTBLUE}{ENGINE}{BLACK} Construído: {LTBLUE}{NUM}{BLACK} Valor: {LTBLUE}{CURRENCY_LONG}
-STR_VEHICLE_DETAILS_TRAIN_WAGON_VALUE                           :{LTBLUE}{ENGINE}{BLACK} Valor: {LTBLUE}{CURRENCY_LONG}
+STR_VEHICLE_DETAILS_TRAIN_ENGINE_BUILT_AND_VALUE                :{LTBLUE}{ENGINE}{BLACK}   Construído: {LTBLUE}{NUM}{BLACK} Valor: {LTBLUE}{CURRENCY_LONG}
+STR_VEHICLE_DETAILS_TRAIN_WAGON_VALUE                           :{LTBLUE}{ENGINE}{BLACK}   Valor: {LTBLUE}{CURRENCY_LONG}
 
 STR_VEHICLE_DETAILS_TRAIN_TOTAL_CAPACITY_TEXT                   :{BLACK}Capacidade total deste trem:
 STR_VEHICLE_DETAILS_TRAIN_TOTAL_CAPACITY                        :{LTBLUE}{CARGO_LONG} ({CARGO_SHORT})
@@ -4492,9 +4492,9 @@ STR_VEHICLE_DETAILS_TRAIN_ARTICULATED_RV_CAPACITY               :{BLACK}Capacida
 # Vehicle refit
 STR_REFIT_CAPTION                                               :{WHITE}{VEHICLE} (Adaptar)
 STR_REFIT_TITLE                                                 :{GOLD}Selecionar tipo de carga para transportar:
-STR_REFIT_NEW_CAPACITY_COST_OF_REFIT                            :{BLACK}Nova capacidade: {GOLD}{CARGO_LONG}{}{BLACK}Custo da adaptação: {RED}{CURRENCY_LONG}
+STR_REFIT_NEW_CAPACITY_COST_OF_REFIT                            :{BLACK}Nova capacidade: {GOLD}{CARGO_LONG}{}{BLACK}Custo de adaptação: {RED}{CURRENCY_LONG}
 STR_REFIT_NEW_CAPACITY_INCOME_FROM_REFIT                        :{BLACK}Nova capacidade: {GOLD}{CARGO_LONG}{}{BLACK}Receita com a adaptação: {GREEN}{CURRENCY_LONG}
-STR_REFIT_NEW_CAPACITY_COST_OF_AIRCRAFT_REFIT                   :{BLACK}Nova capacidade: {GOLD}{CARGO_LONG}, {GOLD}{CARGO_LONG}{}{BLACK}Custo da adaptação: {RED}{CURRENCY_LONG}
+STR_REFIT_NEW_CAPACITY_COST_OF_AIRCRAFT_REFIT                   :{BLACK}Nova capacidade: {GOLD}{CARGO_LONG}, {GOLD}{CARGO_LONG}{}{BLACK}Custo de adaptação: {RED}{CURRENCY_LONG}
 STR_REFIT_NEW_CAPACITY_INCOME_FROM_AIRCRAFT_REFIT               :{BLACK}Nova capacidade: {GOLD}{CARGO_LONG}, {GOLD}{CARGO_LONG}{}{BLACK}Receita com a adaptação: {GREEN}{CURRENCY_LONG}
 STR_REFIT_SELECT_VEHICLES_TOOLTIP                               :{BLACK}Selecionar os veículos para adaptar. Clique+Arraste para selecionar vários veículos. Clique em um espaço vazio para selecionar todo o veículo. Ctrl+Clique para selecionar um veículo e a sequência restante
 
@@ -4521,12 +4521,12 @@ STR_ORDERS_CAPTION                                              :{WHITE}{VEHICLE
 STR_ORDERS_TIMETABLE_VIEW                                       :{BLACK}Horários
 STR_ORDERS_TIMETABLE_VIEW_TOOLTIP                               :{BLACK}Mudar para a visão de horários
 
-STR_ORDERS_LIST_TOOLTIP                                         :{BLACK}Lista de ordens - Clique em uma ordem para selecionar. Ctrl+Clique mostra o destino da ordem
+STR_ORDERS_LIST_TOOLTIP                                         :{BLACK}Lista de ordens - Clique em uma ordem para selecioná-la. Ctrl+Clique mostra o destino da ordem
 STR_ORDER_INDEX                                                 :{COMMA}:{NBSP}
 STR_ORDER_TEXT                                                  :{STRING} {STRING} {STRING} {STRING}
 
-STR_ORDERS_END_OF_ORDERS                                        :- - Fim de Ordens - -
-STR_ORDERS_END_OF_SHARED_ORDERS                                 :- - Fim de Ordens Compartilhadas - -
+STR_ORDERS_END_OF_ORDERS                                        :- - Fim das Ordens - -
+STR_ORDERS_END_OF_SHARED_ORDERS                                 :- - Fim das Ordens Compartilhadas - -
 
 # Order bottom buttons
 STR_ORDER_NON_STOP                                              :{BLACK}Sem parar
@@ -4534,21 +4534,21 @@ STR_ORDER_GO_TO                                                 :Ir para
 STR_ORDER_GO_NON_STOP_TO                                        :Ir sem parar para
 STR_ORDER_GO_VIA                                                :Ir via
 STR_ORDER_GO_NON_STOP_VIA                                       :Ir sem parar via
-STR_ORDER_TOOLTIP_NON_STOP                                      :{BLACK}Alterar o comportamento de parada da ordem selecionada
+STR_ORDER_TOOLTIP_NON_STOP                                      :{BLACK}Alterar o modo de parada da ordem selecionada
 
 STR_ORDER_TOGGLE_FULL_LOAD                                      :{BLACK}Carga completa de qualquer carga
 STR_ORDER_DROP_LOAD_IF_POSSIBLE                                 :Carregar se disponível
 STR_ORDER_DROP_FULL_LOAD_ALL                                    :Carga completa de todas as cargas
 STR_ORDER_DROP_FULL_LOAD_ANY                                    :Carga completa de qualquer carga
 STR_ORDER_DROP_NO_LOADING                                       :Não carregar
-STR_ORDER_TOOLTIP_FULL_LOAD                                     :{BLACK}Alterar o modo de carregamento da ordem selecionada
+STR_ORDER_TOOLTIP_FULL_LOAD                                     :{BLACK}Alterar o modo de carregar da ordem selecionada
 
 STR_ORDER_TOGGLE_UNLOAD                                         :{BLACK}Descarregar tudo
 STR_ORDER_DROP_UNLOAD_IF_ACCEPTED                               :Descarregar se aceito
 STR_ORDER_DROP_UNLOAD                                           :Descarregar tudo
 STR_ORDER_DROP_TRANSFER                                         :Transferir
 STR_ORDER_DROP_NO_UNLOADING                                     :Não descarregar
-STR_ORDER_TOOLTIP_UNLOAD                                        :{BLACK}Alterar o comportamento de descarga da ordem selecionada
+STR_ORDER_TOOLTIP_UNLOAD                                        :{BLACK}Alterar o modo de descarregar da ordem selecionada
 
 STR_ORDER_REFIT                                                 :{BLACK}Adaptar
 STR_ORDER_REFIT_TOOLTIP                                         :{BLACK}Selecionar para qual tipo de carga adaptar nesta ordem. Ctrl+Clique remove a instrução de adaptação
@@ -4570,21 +4570,21 @@ STR_ORDER_SHIP_DEPOT_ACTION_TOOLTIP                             :{BLACK}Selecion
 STR_ORDER_HANGAR_ACTION_TOOLTIP                                 :{BLACK}Selecionar qual ação executar neste hangar
 ###next-name-looks-similar
 
-STR_ORDER_CONDITIONAL_VARIABLE_TOOLTIP                          :{BLACK}Dados do veículo para basear o salto
+STR_ORDER_CONDITIONAL_VARIABLE_TOOLTIP                          :{BLACK}Dados do veículo para basear o salto de ordem
 
 # Conditional order variables, must follow order of OrderConditionVariable enum
 ###length 8
-STR_ORDER_CONDITIONAL_LOAD_PERCENTAGE                           :Percentual carregado
+STR_ORDER_CONDITIONAL_LOAD_PERCENTAGE                           :Porcentagem de carga
 STR_ORDER_CONDITIONAL_RELIABILITY                               :Confiabilidade
 STR_ORDER_CONDITIONAL_MAX_SPEED                                 :Velocidade máxima
 STR_ORDER_CONDITIONAL_AGE                                       :Idade (anos)
-STR_ORDER_CONDITIONAL_REQUIRES_SERVICE                          :Necessita de manutenção
+STR_ORDER_CONDITIONAL_REQUIRES_SERVICE                          :Necessita manutenção
 STR_ORDER_CONDITIONAL_UNCONDITIONALLY                           :Sempre
 STR_ORDER_CONDITIONAL_REMAINING_LIFETIME                        :Tempo de vida restante (anos)
 STR_ORDER_CONDITIONAL_MAX_RELIABILITY                           :Confiabilidade máxima
 ###next-name-looks-similar
 
-STR_ORDER_CONDITIONAL_COMPARATOR_TOOLTIP                        :{BLACK}Como comparar os dados do veículo com o parâmetro informado
+STR_ORDER_CONDITIONAL_COMPARATOR_TOOLTIP                        :{BLACK}Como comparar os dados do veículo com o valor introduzido
 STR_ORDER_CONDITIONAL_COMPARATOR_EQUALS                         :é igual a
 STR_ORDER_CONDITIONAL_COMPARATOR_NOT_EQUALS                     :é não igual a
 STR_ORDER_CONDITIONAL_COMPARATOR_LESS_THAN                      :é menor que
@@ -4594,8 +4594,8 @@ STR_ORDER_CONDITIONAL_COMPARATOR_MORE_EQUALS                    :é maior ou igu
 STR_ORDER_CONDITIONAL_COMPARATOR_IS_TRUE                        :é verdadeiro
 STR_ORDER_CONDITIONAL_COMPARATOR_IS_FALSE                       :é falso
 
-STR_ORDER_CONDITIONAL_VALUE_TOOLTIP                             :{BLACK}Parâmetro para comparar com os dados do veículo
-STR_ORDER_CONDITIONAL_VALUE_CAPT                                :{WHITE}Introduza o parâmetro para comparar
+STR_ORDER_CONDITIONAL_VALUE_TOOLTIP                             :{BLACK}O valor para comparar com os dados do veículo
+STR_ORDER_CONDITIONAL_VALUE_CAPT                                :{WHITE}Introduza um valor para comparar
 
 STR_ORDERS_SKIP_BUTTON                                          :{BLACK}Saltar
 STR_ORDERS_SKIP_TOOLTIP                                         :{BLACK}Saltar a ordem atual e iniciar a próxima. Ctrl+Clique para saltar até a ordem selecionada
@@ -4611,7 +4611,7 @@ STR_ORDER_GO_TO_NEAREST_DEPOT                                   :Ir para o depó
 STR_ORDER_GO_TO_NEAREST_HANGAR                                  :Ir para o hangar mais próximo
 STR_ORDER_CONDITIONAL                                           :Saltar ordem condicional
 STR_ORDER_SHARE                                                 :Compartilhar ordens
-STR_ORDERS_GO_TO_TOOLTIP                                        :{BLACK}Inserir uma nova ordem antes da ordem selecionada ou adicionar ao final da lista. Ctrl+Clique em uma estação para 'carga completa de qualquer carga', em um ponto de controle para inverter a definição padrão 'sem parar' ou em um depósito para 'desagrupar'. Clique em outro veículo para copiar suas ordens ou Ctrl+Clique para compartilhar as ordens. Uma ordem de depósito desativa a manutenção automática do veículo
+STR_ORDERS_GO_TO_TOOLTIP                                        :{BLACK}Inserir uma nova ordem antes da ordem selecionada ou adicionar no final da lista. Ctrl+Clique em uma estação para 'carga completa de qualquer carga', em um ponto de controle para inverter a definição padrão 'sem parar' ou em um depósito para 'desagrupar'. Clique em outro veículo para copiar suas ordens ou Ctrl+Clique para compartilhar as ordens. Uma ordem de depósito desativa a manutenção automática do veículo
 
 STR_ORDERS_VEH_WITH_SHARED_ORDERS_LIST_TOOLTIP                  :{BLACK}Mostrar todos os veículos que compartilham essa programação
 
@@ -4619,11 +4619,11 @@ STR_ORDERS_VEH_WITH_SHARED_ORDERS_LIST_TOOLTIP                  :{BLACK}Mostrar 
 STR_ORDER_GO_TO_WAYPOINT                                        :Ir via {WAYPOINT}
 STR_ORDER_GO_NON_STOP_TO_WAYPOINT                               :Ir sem parar via {WAYPOINT}
 
-STR_ORDER_SERVICE_AT                                            :Manutenção no
-STR_ORDER_SERVICE_NON_STOP_AT                                   :Manutenção sem parada no
+STR_ORDER_SERVICE_AT                                            :Manutenção em
+STR_ORDER_SERVICE_NON_STOP_AT                                   :Manutenção sem parar em
 
-STR_ORDER_NEAREST_DEPOT                                         :depósito mais próximo
-STR_ORDER_NEAREST_HANGAR                                        :hangar mais próximo
+STR_ORDER_NEAREST_DEPOT                                         :o mais próximo
+STR_ORDER_NEAREST_HANGAR                                        :o Hangar mais próximo
 ###length 3
 STR_ORDER_TRAIN_DEPOT                                           :Depósito Ferroviário
 STR_ORDER_ROAD_VEHICLE_DEPOT                                    :Depósito Rodoviário
@@ -4653,8 +4653,8 @@ STR_ORDER_UNLOAD_FULL_LOAD_ANY                                  :(Descarregar e 
 STR_ORDER_UNLOAD_NO_LOAD                                        :(Descarregar e partir vazio)
 STR_ORDER_TRANSFER                                              :(Transferir e pegar carga)
 STR_ORDER_TRANSFER_FULL_LOAD                                    :(Transferir e aguardar por carga completa)
-STR_ORDER_TRANSFER_FULL_LOAD_ANY                                :(Transferir e aguardar por qualquer carregamento completo)
-STR_ORDER_TRANSFER_NO_LOAD                                      :(Transferir e sair vazio)
+STR_ORDER_TRANSFER_FULL_LOAD_ANY                                :(Transferir e aguardar por qualquer carga completa)
+STR_ORDER_TRANSFER_NO_LOAD                                      :(Transferir e partir vazio)
 STR_ORDER_NO_UNLOAD                                             :(Não descarregar e pegar carga)
 STR_ORDER_NO_UNLOAD_FULL_LOAD                                   :(Não descarregar e aquardar por carga completa)
 STR_ORDER_NO_UNLOAD_FULL_LOAD_ANY                               :(Não descarregar e aguardar por qualquer carga completa)
@@ -4680,7 +4680,7 @@ STR_ORDER_STOP_LOCATION_NEAR_END                                :[início]
 STR_ORDER_STOP_LOCATION_MIDDLE                                  :[meio]
 STR_ORDER_STOP_LOCATION_FAR_END                                 :[fim]
 
-STR_ORDER_OUT_OF_RANGE                                          :{RED} (Próximo destino está além da autonomia)
+STR_ORDER_OUT_OF_RANGE                                          :{RED} (Próximo destino está fora da autonomia)
 
 STR_ORDER_CONDITIONAL_UNCONDITIONAL                             :Saltar para a ordem {COMMA}
 STR_ORDER_CONDITIONAL_NUM                                       :Saltar para a ordem {COMMA} quando {STRING} {STRING} {COMMA}
@@ -4697,14 +4697,14 @@ STR_TIMETABLE_TOOLTIP                                           :{BLACK}Horário
 
 STR_TIMETABLE_NO_TRAVEL                                         :Não viajar
 STR_TIMETABLE_NOT_TIMETABLEABLE                                 :Viajar (automático; programado pela próxima ordem manual)
-STR_TIMETABLE_TRAVEL_NOT_TIMETABLED                             :Viajar (sem programação)
-STR_TIMETABLE_TRAVEL_NOT_TIMETABLED_SPEED                       :Viajar (sem programação) no máximo a {2:VELOCITY}
+STR_TIMETABLE_TRAVEL_NOT_TIMETABLED                             :Viajar (não programado)
+STR_TIMETABLE_TRAVEL_NOT_TIMETABLED_SPEED                       :Viajar (não programado) no máximo a {2:VELOCITY}
 STR_TIMETABLE_TRAVEL_FOR                                        :Viajar por {STRING}
 STR_TIMETABLE_TRAVEL_FOR_SPEED                                  :Viajar por {STRING} no máximo a {VELOCITY}
-STR_TIMETABLE_TRAVEL_FOR_ESTIMATED                              :Viajar (por {STRING}, sem programação)
-STR_TIMETABLE_TRAVEL_FOR_SPEED_ESTIMATED                        :Viajar (por {STRING}, sem programação) no máximo a {VELOCITY}
-STR_TIMETABLE_STAY_FOR_ESTIMATED                                :(ficar por {STRING}, sem programação)
-STR_TIMETABLE_AND_TRAVEL_FOR_ESTIMATED                          :(viajar por {STRING}, sem programação)
+STR_TIMETABLE_TRAVEL_FOR_ESTIMATED                              :Viajar (por {STRING}, não programado)
+STR_TIMETABLE_TRAVEL_FOR_SPEED_ESTIMATED                        :Viajar (por {STRING}, não programado) no máximo a {VELOCITY}
+STR_TIMETABLE_STAY_FOR_ESTIMATED                                :(ficar por {STRING}, não programado)
+STR_TIMETABLE_AND_TRAVEL_FOR_ESTIMATED                          :(viajar por {STRING}, não programado)
 STR_TIMETABLE_STAY_FOR                                          :e ficar por {STRING}
 STR_TIMETABLE_AND_TRAVEL_FOR                                    :e viajar por {STRING}
 
@@ -4719,7 +4719,7 @@ STR_TIMETABLE_STATUS_START_AT_DATE                              :{BLACK}Este hor
 STR_TIMETABLE_STATUS_START_IN_SECONDS                           :{BLACK}Este horário irá iniciar em {COMMA} segundos
 
 STR_TIMETABLE_START                                             :{BLACK}Iniciar Horário
-STR_TIMETABLE_START_TOOLTIP                                     :{BLACK}Selecionar quando esse horário começa. Ctrl+Clique distribui igualmente a partida de todos os veículos que compartilham esta ordem com base em sua ordem relativa, se a ordem estiver totalmente programada
+STR_TIMETABLE_START_TOOLTIP                                     :{BLACK}Selecionar quando este horário começa. Ctrl+Clique distribui igualmente a partida de todos os veículos que compartilham esta ordem com base em suas ordens relativas, se a ordem estiver totalmente programada
 
 STR_TIMETABLE_START_SECONDS_QUERY                               :Segundos até o horário iniciar
 
@@ -4738,7 +4738,7 @@ STR_TIMETABLE_CLEAR_SPEED_TOOLTIP                               :{BLACK}Apagar a
 STR_TIMETABLE_RESET_LATENESS                                    :{BLACK}Reiniciar o Contador de Atrasos
 STR_TIMETABLE_RESET_LATENESS_TOOLTIP                            :{BLACK}Reiniciar o contador de atrasos, assim o veículo ficará no horário. Ctrl+Clique para reiniciar todo o grupo, de modo que o último veículo ficará pontual e todos os outros estarão antecipados
 
-STR_TIMETABLE_AUTOFILL                                          :{BLACK}Auto preencher
+STR_TIMETABLE_AUTOFILL                                          :{BLACK}Preencher automaticamente
 STR_TIMETABLE_AUTOFILL_TOOLTIP                                  :{BLACK}Preencher o horário automaticamente com os valores da próxima viagem. Ctrl+Clique para tentar manter os tempos de espera
 
 STR_TIMETABLE_EXPECTED                                          :{BLACK}Esperado
@@ -4747,8 +4747,8 @@ STR_TIMETABLE_EXPECTED_TOOLTIP                                  :{BLACK}Alternar
 
 STR_TIMETABLE_ARRIVAL_DATE                                      :A: {COLOUR}{DATE_TINY}
 STR_TIMETABLE_DEPARTURE_DATE                                    :D: {COLOUR}{DATE_TINY}
-STR_TIMETABLE_ARRIVAL_SECONDS_IN_FUTURE                         :A: {COLOUR}{COMMA} segundos
-STR_TIMETABLE_DEPARTURE_SECONDS_IN_FUTURE                       :D: {COLOUR}{COMMA} segundos
+STR_TIMETABLE_ARRIVAL_SECONDS_IN_FUTURE                         :A: {COLOUR}{COMMA} seg.
+STR_TIMETABLE_DEPARTURE_SECONDS_IN_FUTURE                       :D: {COLOUR}{COMMA} seg.
 
 
 # Date window (for timetable)
@@ -4767,8 +4767,8 @@ STR_AI_DEBUG_NAME_TOOLTIP                                       :{BLACK}Nome do 
 STR_AI_DEBUG_SETTINGS                                           :{BLACK}Definições
 STR_AI_DEBUG_SETTINGS_TOOLTIP                                   :{BLACK}Alterar as configurações do script
 STR_AI_DEBUG_RELOAD                                             :{BLACK}Recarregar IA
-STR_AI_DEBUG_RELOAD_TOOLTIP                                     :{BLACK}Parar a IA, recarregar o script e reiniciar a IA
-STR_AI_DEBUG_BREAK_STR_ON_OFF_TOOLTIP                           :{BLACK}Ativar/desativar a pausa quando uma mensagem de registo da IA corresponder à sequência de pausa
+STR_AI_DEBUG_RELOAD_TOOLTIP                                     :{BLACK}Interromper a IA, recarregar o script e reiniciar a IA
+STR_AI_DEBUG_BREAK_STR_ON_OFF_TOOLTIP                           :{BLACK}Ativar/desativar pausa quando uma mensagem de registo da IA corresponder à sequência de pausa
 STR_AI_DEBUG_BREAK_ON_LABEL                                     :{BLACK}Parar em:
 STR_AI_DEBUG_BREAK_STR_OSKTITLE                                 :{BLACK}Parar em
 STR_AI_DEBUG_BREAK_STR_TOOLTIP                                  :{BLACK}Quando uma mensagem de registo da IA for igual a esta sequência, o jogo é pausado
@@ -4788,17 +4788,17 @@ STR_ERROR_AI_DEBUG_SERVER_ONLY                                  :{YELLOW}A janel
 STR_AI_CONFIG_CAPTION_AI                                        :{WHITE}Configurações de IA
 STR_AI_CONFIG_CAPTION_GAMESCRIPT                                :{WHITE}Configurações de Script de Jogo
 STR_AI_CONFIG_GAMELIST_TOOLTIP                                  :{BLACK}Script de Jogo que será carregado no próximo jogo
-STR_AI_CONFIG_AILIST_TOOLTIP                                    :{BLACK}As IA's que serão carregadas no próximo jogo
+STR_AI_CONFIG_AILIST_TOOLTIP                                    :{BLACK}IA's que serão carregadas no próximo jogo
 STR_AI_CONFIG_HUMAN_PLAYER                                      :Jogador humano
 STR_AI_CONFIG_RANDOM_AI                                         :IA aleatória
 STR_AI_CONFIG_NONE                                              :(nenhum)
 STR_AI_CONFIG_NAME_VERSION                                      :{STRING} {YELLOW}v{NUM}
-STR_AI_CONFIG_MAX_COMPETITORS                                   :{LTBLUE}Número máximo de competidores: {ORANGE}{COMMA}
+STR_AI_CONFIG_MAX_COMPETITORS                                   :{LTBLUE}Número máx. de competidores: {ORANGE}{COMMA}
 STR_AI_CONFIG_COMPETITORS_INTERVAL                              :{LTBLUE}Intervalo entre o início dos competidores: {ORANGE}{COMMA} minuto{P "" s}
 
-STR_AI_CONFIG_MOVE_UP                                           :{BLACK}Subir
+STR_AI_CONFIG_MOVE_UP                                           :{BLACK}Mover para cima
 STR_AI_CONFIG_MOVE_UP_TOOLTIP                                   :{BLACK}Mover a IA selecionada para cima na lista
-STR_AI_CONFIG_MOVE_DOWN                                         :{BLACK}Descer
+STR_AI_CONFIG_MOVE_DOWN                                         :{BLACK}Mover para baixo
 STR_AI_CONFIG_MOVE_DOWN_TOOLTIP                                 :{BLACK}Mover a IA selecionada para baixo na lista
 
 STR_AI_CONFIG_GAMESCRIPT                                        :{SILVER}Script de Jogo
@@ -4807,13 +4807,13 @@ STR_AI_CONFIG_AI                                                :{SILVER}IAs
 
 STR_AI_CONFIG_CHANGE_AI                                         :{BLACK}Selecionar IA
 STR_AI_CONFIG_CHANGE_GAMESCRIPT                                 :{BLACK}Selecionar Script de Jogo
-STR_AI_CONFIG_CHANGE_TOOLTIP                                    :{BLACK}Carregar outro script. Ctrl+Clique para mostrar todas as versões disponíveis
+STR_AI_CONFIG_CHANGE_TOOLTIP                                    :{BLACK}Carregar outro script. Ctrl+Clique mostra todas as versões disponíveis
 STR_AI_CONFIG_CONFIGURE                                         :{BLACK}Configurar
 STR_AI_CONFIG_CONFIGURE_TOOLTIP                                 :{BLACK}Configurar os parâmetros do Script
 
 # Available AIs window
 STR_AI_LIST_CAPTION                                             :{WHITE}Disponíveis {STRING}
-STR_AI_LIST_CAPTION_AI                                          :IAs
+STR_AI_LIST_CAPTION_AI                                          :IA's
 STR_AI_LIST_CAPTION_GAMESCRIPT                                  :Scripts de jogo
 STR_AI_LIST_TOOLTIP                                             :{BLACK}Clique para selecionar um script
 
@@ -4852,19 +4852,19 @@ STR_TEXTFILE_JUMPLIST_ITEM                                      :{WHITE}{STRING}
 STR_TEXTFILE_NAVBACK_TOOLTIP                                    :{BLACK}Retornar no histórico de navegação
 STR_TEXTFILE_NAVFORWARD_TOOLTIP                                 :{BLACK}Avançar no histórico de navegação
 STR_TEXTFILE_WRAP_TEXT                                          :{WHITE}Quebrar linhas do texto
-STR_TEXTFILE_WRAP_TEXT_TOOLTIP                                  :{BLACK}Quebrar as linhas do texto para caber na janela e não precisar rolar o conteúdo para ler
-STR_TEXTFILE_VIEW_README                                        :{BLACK}Ver o arquivo Leia-me
+STR_TEXTFILE_WRAP_TEXT_TOOLTIP                                  :{BLACK}Ajustar o comprimento das linhas para o texto preencher a janela e, assim, não precisar rolar o conteúdo
+STR_TEXTFILE_VIEW_README                                        :{BLACK}Leia-me
 STR_TEXTFILE_VIEW_README_TOOLTIP                                :Ver o arquivo Leia-me para este conteúdo
 STR_TEXTFILE_VIEW_CHANGELOG                                     :{BLACK}Registro de modificações
 STR_TEXTFILE_VIEW_CHANGELOG_TOOLTIP                             :Ver o registro de modificações para este conteúdo
 STR_TEXTFILE_VIEW_LICENCE                                       :{BLACK}Licença
 STR_TEXTFILE_VIEW_LICENCE_TOOLTIP                               :Ver a licença para este conteúdo
 ###length 5
-STR_TEXTFILE_README_CAPTION                                     :{WHITE}{STRING} Leia-me de {STRING}
-STR_TEXTFILE_CHANGELOG_CAPTION                                  :{WHITE}{STRING} registro de modificações de {STRING}
-STR_TEXTFILE_LICENCE_CAPTION                                    :{WHITE}{STRING} licença de {STRING}
+STR_TEXTFILE_README_CAPTION                                     :{WHITE}Leia-me {STRING} de {STRING}
+STR_TEXTFILE_CHANGELOG_CAPTION                                  :{WHITE}Registro de modificações {STRING} de {STRING}
+STR_TEXTFILE_LICENCE_CAPTION                                    :{WHITE}Licença {STRING} de {STRING}
 STR_TEXTFILE_SURVEY_RESULT_CAPTION                              :{WHITE}Pré-visualização do resultado da pesquisa
-STR_TEXTFILE_GAME_MANUAL_CAPTION                                :{WHITE}OpenTTD documento '{STRING}'
+STR_TEXTFILE_GAME_MANUAL_CAPTION                                :{WHITE}Documento '{STRING}' OpenTTD
 
 
 # Vehicle loading indicators
@@ -4923,10 +4923,10 @@ STR_ERROR_BMPMAP_IMAGE_TYPE                                     :{WHITE}... não
 STR_ERROR_HEIGHTMAP_TOO_LARGE                                   :{WHITE}... imagem é muito grande
 
 STR_WARNING_HEIGHTMAP_SCALE_CAPTION                             :{WHITE}Aviso de redimensionamento
-STR_WARNING_HEIGHTMAP_SCALE_MESSAGE                             :{YELLOW}Alterar muito o tamanho do mapa original não é recomendado. Continuar com a geração?
+STR_WARNING_HEIGHTMAP_SCALE_MESSAGE                             :{YELLOW}Redimensionar muito o mapa original não é recomendado. Continuar com a geração?
 
 # Soundset messages
-STR_WARNING_FALLBACK_SOUNDSET                                   :{WHITE}Apenas um conjunto de som vazio foi encontrado. Se quiser sons, instale um conjunto através do sistema de download de conteúdo
+STR_WARNING_FALLBACK_SOUNDSET                                   :{WHITE}Somente um conjunto de sons de reserva foi encontrado. Se você quiser sons, instale um conjunto usando o sistema de 'Conteúdo Online'
 
 # Screenshot related messages
 STR_WARNING_SCREENSHOT_SIZE_CAPTION                             :{WHITE}Captura tela enorme
@@ -4941,18 +4941,18 @@ STR_ERROR_MESSAGE_CAPTION                                       :{YELLOW}Mensage
 STR_ERROR_MESSAGE_CAPTION_OTHER_COMPANY                         :{YELLOW}Mensagem de {STRING}
 
 # Generic construction errors
-STR_ERROR_OFF_EDGE_OF_MAP                                       :{WHITE}Fora do mapa
+STR_ERROR_OFF_EDGE_OF_MAP                                       :{WHITE}Fora dos limites do mapa
 STR_ERROR_TOO_CLOSE_TO_EDGE_OF_MAP                              :{WHITE}Muito perto da borda do mapa
 STR_ERROR_NOT_ENOUGH_CASH_REQUIRES_CURRENCY                     :{WHITE}Não há dinheiro - requer {CURRENCY_LONG}
 STR_ERROR_FLAT_LAND_REQUIRED                                    :{WHITE}Necessário terreno plano
 STR_ERROR_LAND_SLOPED_IN_WRONG_DIRECTION                        :{WHITE}Terreno inclinado na direção errada
 STR_ERROR_CAN_T_DO_THIS                                         :{WHITE}Não é possível fazer isto...
-STR_ERROR_BUILDING_MUST_BE_DEMOLISHED                           :{WHITE}O edifício deve ser demolido primeiro
+STR_ERROR_BUILDING_MUST_BE_DEMOLISHED                           :{WHITE}Edifício deve ser demolido primeiro
 STR_ERROR_CAN_T_CLEAR_THIS_AREA                                 :{WHITE}Não é possível limpar esta área...
 STR_ERROR_SITE_UNSUITABLE                                       :{WHITE}... local inadequado
 STR_ERROR_ALREADY_BUILT                                         :{WHITE}... já construído
 STR_ERROR_OWNED_BY                                              :{WHITE}... propriedade de {STRING}
-STR_ERROR_AREA_IS_OWNED_BY_ANOTHER                              :{WHITE}... a área é propriedade de outra empresa
+STR_ERROR_AREA_IS_OWNED_BY_ANOTHER                              :{WHITE}... área é propriedade de outra empresa
 STR_ERROR_TERRAFORM_LIMIT_REACHED                               :{WHITE}... limite de paisagismo atingido
 STR_ERROR_CLEARING_LIMIT_REACHED                                :{WHITE}... limite de remoção de quadrado atingido
 STR_ERROR_TREE_PLANT_LIMIT_REACHED                              :{WHITE}... limite de plantação de árvore atingido
@@ -4972,7 +4972,7 @@ STR_ERROR_CAN_T_LOWER_LAND_HERE                                 :{WHITE}Não é 
 STR_ERROR_CAN_T_LEVEL_LAND_HERE                                 :{WHITE}Não é possível nivelar o terreno deste local...
 STR_ERROR_EXCAVATION_WOULD_DAMAGE                               :{WHITE}A escavação estragaria o túnel
 STR_ERROR_ALREADY_AT_SEA_LEVEL                                  :{WHITE}... já está ao nível do mar
-STR_ERROR_TOO_HIGH                                              :{WHITE}Muito alto
+STR_ERROR_TOO_HIGH                                              :{WHITE}... muito alto
 STR_ERROR_ALREADY_LEVELLED                                      :{WHITE}... já está plano
 STR_ERROR_BRIDGE_TOO_HIGH_AFTER_LOWER_LAND                      :{WHITE}Depois disso, a ponte sobre ela ficaria muito alta.
 
@@ -4980,7 +4980,7 @@ STR_ERROR_BRIDGE_TOO_HIGH_AFTER_LOWER_LAND                      :{WHITE}Depois d
 STR_ERROR_CAN_T_CHANGE_COMPANY_NAME                             :{WHITE}Não é possível alterar o nome da empresa...
 STR_ERROR_CAN_T_CHANGE_PRESIDENT                                :{WHITE}Não é possível alterar o nome do presidente...
 
-STR_ERROR_MAXIMUM_PERMITTED_LOAN                                :{WHITE}... o valor máximo de empréstimo permitido é de {CURRENCY_LONG}
+STR_ERROR_MAXIMUM_PERMITTED_LOAN                                :{WHITE}... o valor máximo de empréstimo permitido é {CURRENCY_LONG}
 STR_ERROR_CAN_T_BORROW_ANY_MORE_MONEY                           :{WHITE}Não é possível pedir mais dinheiro emprestado...
 STR_ERROR_LOAN_ALREADY_REPAYED                                  :{WHITE}... não há empréstimo para pagar
 STR_ERROR_CURRENCY_REQUIRED                                     :{WHITE}... é necessário {CURRENCY_LONG}
@@ -5039,8 +5039,8 @@ STR_ERROR_CAN_T_BUILD_AIRPORT_HERE                              :{WHITE}Não é 
 
 STR_ERROR_ADJOINS_MORE_THAN_ONE_EXISTING                        :{WHITE}Unir mais de uma estação/área de carga existente
 STR_ERROR_STATION_TOO_SPREAD_OUT                                :{WHITE}... estação muito extensa
-STR_ERROR_TOO_MANY_STATIONS_LOADING                             :{WHITE}Existem muitas estações/áreas de carga
-STR_ERROR_TOO_MANY_STATION_SPECS                                :{WHITE}A estação já tem muitas partes
+STR_ERROR_TOO_MANY_STATIONS_LOADING                             :{WHITE}Muitas estações/locais de carga
+STR_ERROR_TOO_MANY_STATION_SPECS                                :{WHITE}Muitas partes de estação ferroviária
 STR_ERROR_TOO_MANY_BUS_STOPS                                    :{WHITE}Muitas paradas de ônibus
 STR_ERROR_TOO_MANY_TRUCK_STOPS                                  :{WHITE}Existem muitas áreas de carga
 STR_ERROR_TOO_CLOSE_TO_ANOTHER_DOCK                             :{WHITE}Muito perto de outra doca
@@ -5053,9 +5053,9 @@ STR_ERROR_DRIVE_THROUGH_JUNCTION                                :{WHITE}... esta
 
 # Station destruction related errors
 STR_ERROR_CAN_T_REMOVE_PART_OF_STATION                          :{WHITE}Não é possível remover parte da estação...
-STR_ERROR_MUST_REMOVE_RAILWAY_STATION_FIRST                     :{WHITE}Precisa remover a estação de trem primeiro
+STR_ERROR_MUST_REMOVE_RAILWAY_STATION_FIRST                     :{WHITE}Precisa remover a estação ferroviária primeiro
 STR_ERROR_CAN_T_REMOVE_BUS_STATION                              :{WHITE}Não é possível remover estação de ônibus...
-STR_ERROR_CAN_T_REMOVE_TRUCK_STATION                            :{WHITE}Não é possível remover área de carga...
+STR_ERROR_CAN_T_REMOVE_TRUCK_STATION                            :{WHITE}Não é possível remover estação de caminhão...
 STR_ERROR_CAN_T_REMOVE_PASSENGER_TRAM_STATION                   :{WHITE}Não é possível remover estação de bonde de passageiros...
 STR_ERROR_CAN_T_REMOVE_CARGO_TRAM_STATION                       :{WHITE}Não é possível remover estação de bonde de carga...
 STR_ERROR_MUST_REMOVE_ROAD_STOP_FIRST                           :{WHITE}Precisa remover o ponto de parada primeiro
@@ -5063,7 +5063,7 @@ STR_ERROR_THERE_IS_NO_STATION                                   :{WHITE}...não 
 
 STR_ERROR_MUST_DEMOLISH_RAILROAD                                :{WHITE}Precisa demolir a estação ferroviária primeiro
 STR_ERROR_MUST_DEMOLISH_BUS_STATION_FIRST                       :{WHITE}Precisa demolir a estação de ônibus primeiro
-STR_ERROR_MUST_DEMOLISH_TRUCK_STATION_FIRST                     :{WHITE}Precisa demolir a estação de carga primeiro
+STR_ERROR_MUST_DEMOLISH_TRUCK_STATION_FIRST                     :{WHITE}Precisa demolir a estação de caminhão primeiro
 STR_ERROR_MUST_DEMOLISH_PASSENGER_TRAM_STATION_FIRST            :{WHITE}Precisa demolir a estação de bonde de passageiros primeiro
 STR_ERROR_MUST_DEMOLISH_CARGO_TRAM_STATION_FIRST                :{WHITE}Precisa demolir a estação de bonde primeiro
 STR_ERROR_MUST_DEMOLISH_DOCK_FIRST                              :{WHITE}Precisa demolir a doca primeiro
@@ -5078,7 +5078,7 @@ STR_ERROR_CAN_T_POSITION_BUOY_HERE                              :{WHITE}Não é 
 STR_ERROR_CAN_T_CHANGE_WAYPOINT_NAME                            :{WHITE}Não é possível alterar o nome do ponto de controle...
 
 STR_ERROR_CAN_T_REMOVE_TRAIN_WAYPOINT                           :{WHITE}Não é possível remover ponto de controle de trem deste local...
-STR_ERROR_MUST_REMOVE_RAILWAYPOINT_FIRST                        :{WHITE}Precisa remover o ponto de controle primeiro
+STR_ERROR_MUST_REMOVE_RAILWAYPOINT_FIRST                        :{WHITE}Precisa remover o ponto de controle de trem primeiro
 STR_ERROR_BUOY_IN_THE_WAY                                       :{WHITE}... bóia no caminho
 STR_ERROR_BUOY_IS_IN_USE                                        :{WHITE}... bóia está em uso por outra empresa!
 
@@ -5103,21 +5103,21 @@ STR_ERROR_INCOMPATIBLE_RAIL_TYPES                               :Tipo de ferrovi
 
 STR_ERROR_CAN_T_MOVE_VEHICLE                                    :{WHITE}Não é possível mover veículo...
 STR_ERROR_REAR_ENGINE_FOLLOW_FRONT                              :{WHITE}A locomotiva traseira sempre seguirá a sua equivalente dianteira
-STR_ERROR_UNABLE_TO_FIND_ROUTE_TO                               :{WHITE}Não é possível encontrar uma rota para o depósito local
-STR_ERROR_UNABLE_TO_FIND_LOCAL_DEPOT                            :{WHITE}Não é possível encontrar o depósito local
+STR_ERROR_UNABLE_TO_FIND_ROUTE_TO                               :{WHITE}Não é possível encontrar uma rota para depósito local
+STR_ERROR_UNABLE_TO_FIND_LOCAL_DEPOT                            :{WHITE}Não é possível encontrar depósito local
 
 STR_ERROR_DEPOT_WRONG_DEPOT_TYPE                                :Tipo de depósito errado
 
 # Depot unbunching related errors
-STR_ERROR_UNBUNCHING_ONLY_ONE_ALLOWED                           :{WHITE}... pode haver somente uma ordem de desagrupar
+STR_ERROR_UNBUNCHING_ONLY_ONE_ALLOWED                           :{WHITE}... só pode ter uma ordem de desagrupar
 STR_ERROR_UNBUNCHING_NO_FULL_LOAD                               :{WHITE}... não é possível usar ordens de carga completa quando o veículo tem uma ordem de desagrupar
 STR_ERROR_UNBUNCHING_NO_UNBUNCHING_FULL_LOAD                    :{WHITE}... não é possível desagrupar um veículo com uma ordem de carga completa
 STR_ERROR_UNBUNCHING_NO_CONDITIONAL                             :{WHITE}... não é possível usar ordens condicionais quando um veículo tem uma ordem de desagrupar
 STR_ERROR_UNBUNCHING_NO_UNBUNCHING_CONDITIONAL                  :{WHITE}... não é possível desagrupar um veículo com uma ordem condicional
 
 # Autoreplace related errors
-STR_ERROR_TRAIN_TOO_LONG_AFTER_REPLACEMENT                      :{WHITE}{VEHICLE} é muito longo depois de substituído
-STR_ERROR_AUTOREPLACE_NOTHING_TO_DO                             :{WHITE}Regras de substituição automática/renovação não estão ativadas
+STR_ERROR_TRAIN_TOO_LONG_AFTER_REPLACEMENT                      :{WHITE}{VEHICLE} é muito longo depois da substituíção
+STR_ERROR_AUTOREPLACE_NOTHING_TO_DO                             :{WHITE}Regras de substituição automática/renovação não foram aplicadas
 STR_ERROR_AUTOREPLACE_MONEY_LIMIT                               :(limite de dinheiro)
 STR_ERROR_AUTOREPLACE_INCOMPATIBLE_CARGO                        :{WHITE}O novo veículo não pode transportar {STRING}
 STR_ERROR_AUTOREPLACE_INCOMPATIBLE_REFIT                        :{WHITE}O novo veículo não pode ser adaptado na ordem {NUM}
@@ -5128,7 +5128,7 @@ STR_ERROR_MUST_REMOVE_SIGNALS_FIRST                             :{WHITE}Precisa 
 STR_ERROR_NO_SUITABLE_RAILROAD_TRACK                            :{WHITE}Ferrovia não adequada
 STR_ERROR_MUST_REMOVE_RAILROAD_TRACK                            :{WHITE}Precisa remover a ferrovia primeiro
 STR_ERROR_CROSSING_ON_ONEWAY_ROAD                               :{WHITE}Estrada de sentido único ou bloqueada
-STR_ERROR_CROSSING_DISALLOWED_RAIL                              :{WHITE}Cruzamentos de nível não são permitidos neste tipo de linha
+STR_ERROR_CROSSING_DISALLOWED_RAIL                              :{WHITE}Passagens de nível não são permitidas para este tipo de linha
 STR_ERROR_CROSSING_DISALLOWED_ROAD                              :{WHITE}Passagens de nível não permitidas para este tipo de estrada
 STR_ERROR_CAN_T_BUILD_SIGNALS_HERE                              :{WHITE}Não é possível construir sinais neste local...
 STR_ERROR_CAN_T_BUILD_RAILROAD_TRACK                            :{WHITE}Não é possível construir ferrovia neste local...
@@ -5176,7 +5176,7 @@ STR_ERROR_CAN_T_BUILD_BRIDGE_HERE                               :{WHITE}Não é 
 STR_ERROR_MUST_DEMOLISH_BRIDGE_FIRST                            :{WHITE}Precisa demolir a ponte primeiro
 STR_ERROR_CAN_T_START_AND_END_ON                                :{WHITE}Não é possível iniciar e terminar no mesmo ponto
 STR_ERROR_BRIDGEHEADS_NOT_SAME_HEIGHT                           :{WHITE}Extremidades da ponte não estão no mesmo nível
-STR_ERROR_BRIDGE_TOO_LOW_FOR_TERRAIN                            :{WHITE}A ponte é muito baixa para o terreno
+STR_ERROR_BRIDGE_TOO_LOW_FOR_TERRAIN                            :{WHITE}A ponte é muito baixa para este terreno
 STR_ERROR_BRIDGE_TOO_HIGH_FOR_TERRAIN                           :{WHITE}A ponte é muito alta para este terreno.
 STR_ERROR_START_AND_END_MUST_BE_IN                              :{WHITE}Inicio e fim devem estar alinhados
 STR_ERROR_ENDS_OF_BRIDGE_MUST_BOTH                              :{WHITE}... os extremos da ponte devem estar sobre a terra
@@ -5209,7 +5209,7 @@ STR_ERROR_GROUP_CAN_T_SET_PARENT                                :{WHITE}Não é 
 STR_ERROR_GROUP_CAN_T_SET_PARENT_RECURSION                      :{WHITE}... não são permitidos ciclos na hierarquia de grupos
 STR_ERROR_GROUP_CAN_T_REMOVE_ALL_VEHICLES                       :{WHITE}Não é possível remover todos os veículos desse grupo...
 STR_ERROR_GROUP_CAN_T_ADD_VEHICLE                               :{WHITE}Não é possível adicionar o veículo a esse grupo...
-STR_ERROR_GROUP_CAN_T_ADD_SHARED_VEHICLE                        :{WHITE}Não é possível adicionar veículos com ordens compartilhadas ao grupo...
+STR_ERROR_GROUP_CAN_T_ADD_SHARED_VEHICLE                        :{WHITE}Não é possível adicionar veículos compartilhados ao grupo...
 
 # Generic vehicle errors
 
@@ -5222,8 +5222,8 @@ STR_ERROR_AIRCRAFT_IN_THE_WAY                                   :{WHITE}Aeronave
 ###length VEHICLE_TYPES
 STR_ERROR_RAIL_VEHICLE_NOT_AVAILABLE                            :{WHITE}Trem não está disponível
 STR_ERROR_ROAD_VEHICLE_NOT_AVAILABLE                            :{WHITE}Veículo não está disponível
-STR_ERROR_SHIP_NOT_AVAILABLE                                    :{WHITE}Embarcação não disponível
-STR_ERROR_AIRCRAFT_NOT_AVAILABLE                                :{WHITE}Aeronave indisponível
+STR_ERROR_SHIP_NOT_AVAILABLE                                    :{WHITE}Embarcação não está disponível
+STR_ERROR_AIRCRAFT_NOT_AVAILABLE                                :{WHITE}Aeronave não está disponível
 
 ###length VEHICLE_TYPES
 STR_ERROR_CAN_T_REFIT_TRAIN                                     :{WHITE}Não é possível adaptar o trem...
@@ -5238,10 +5238,10 @@ STR_ERROR_CAN_T_RENAME_SHIP                                     :{WHITE}Não é 
 STR_ERROR_CAN_T_RENAME_AIRCRAFT                                 :{WHITE}Não é possível renomear a aeronave...
 
 ###length VEHICLE_TYPES
-STR_ERROR_CAN_T_STOP_START_TRAIN                                :{WHITE}Não é possível iniciar/parar o trem...
-STR_ERROR_CAN_T_STOP_START_ROAD_VEHICLE                         :{WHITE}Não é possível iniciar/parar o veículo rodoviário...
-STR_ERROR_CAN_T_STOP_START_SHIP                                 :{WHITE}Não é possível iniciar/parar a embarcação...
-STR_ERROR_CAN_T_STOP_START_AIRCRAFT                             :{WHITE}Não é possível iniciar/parar a aeronave...
+STR_ERROR_CAN_T_STOP_START_TRAIN                                :{WHITE}Não é possível parar/iniciar trem...
+STR_ERROR_CAN_T_STOP_START_ROAD_VEHICLE                         :{WHITE}Não é possível parar/iniciar veículo rodoviário...
+STR_ERROR_CAN_T_STOP_START_SHIP                                 :{WHITE}Não é possível parar/iniciar embarcação...
+STR_ERROR_CAN_T_STOP_START_AIRCRAFT                             :{WHITE}Não é possível parar/iniciar aeronave...
 
 ###length VEHICLE_TYPES
 STR_ERROR_CAN_T_SEND_TRAIN_TO_DEPOT                             :{WHITE}Não é possível enviar o trem para o depósito...
@@ -5274,10 +5274,10 @@ STR_ERROR_VEHICLE_IS_DESTROYED                                  :{WHITE}... o ve
 
 STR_ERROR_CAN_T_CLONE_VEHICLE_LIST                              :{WHITE}... nem todos os veículos são idênticos
 
-STR_ERROR_NO_VEHICLES_AVAILABLE_AT_ALL                          :{WHITE}Nenhum veículo estará disponível
-STR_ERROR_NO_VEHICLES_AVAILABLE_AT_ALL_EXPLANATION              :{WHITE}Mudar a configuração de NewGRF
+STR_ERROR_NO_VEHICLES_AVAILABLE_AT_ALL                          :{WHITE}Não haverá veículos disponíveis
+STR_ERROR_NO_VEHICLES_AVAILABLE_AT_ALL_EXPLANATION              :{WHITE}Mudar a sua configuração NewGRF
 STR_ERROR_NO_VEHICLES_AVAILABLE_YET                             :{WHITE}Não existem veículos disponíveis ainda
-STR_ERROR_NO_VEHICLES_AVAILABLE_YET_EXPLANATION                 :{WHITE}Começar um novo jogo depois de {DATE_SHORT} ou utilizar um NewGRF que forneça os veículos iniciais
+STR_ERROR_NO_VEHICLES_AVAILABLE_YET_EXPLANATION                 :{WHITE}Inicie um novo jogo depois de {DATE_SHORT} ou utilize um NewGRF que forneça veículos iniciais
 
 # Specific vehicle errors
 STR_ERROR_CAN_T_MAKE_TRAIN_PASS_SIGNAL                          :{WHITE}Não é possível fazer o trem passar o sinal em perigo...
@@ -5290,16 +5290,16 @@ STR_ERROR_AIRCRAFT_IS_IN_FLIGHT                                 :{WHITE}Aeronave
 
 # Order related errors
 STR_ERROR_NO_MORE_SPACE_FOR_ORDERS                              :{WHITE}Não há espaço para mais ordens
-STR_ERROR_TOO_MANY_ORDERS                                       :{WHITE}Existem muitas ordens
+STR_ERROR_TOO_MANY_ORDERS                                       :{WHITE}Muitas ordens
 STR_ERROR_CAN_T_INSERT_NEW_ORDER                                :{WHITE}Não é possível inserir nova ordem...
-STR_ERROR_CAN_T_DELETE_THIS_ORDER                               :{WHITE}Não é possível eliminar esta ordem...
+STR_ERROR_CAN_T_DELETE_THIS_ORDER                               :{WHITE}Não é possível excluir esta ordem...
 STR_ERROR_CAN_T_MODIFY_THIS_ORDER                               :{WHITE}Não é possível modificar esta ordem...
 STR_ERROR_CAN_T_MOVE_THIS_ORDER                                 :{WHITE}Não é possível mover esta ordem...
 STR_ERROR_CAN_T_SKIP_ORDER                                      :{WHITE}Não é possível saltar a ordem atual...
 STR_ERROR_CAN_T_SKIP_TO_ORDER                                   :{WHITE}Não é possível saltar a ordem selecionada...
 STR_ERROR_CAN_T_COPY_SHARE_ORDER                                :{WHITE}... veiculo não pode ir a todas as estações
 STR_ERROR_CAN_T_ADD_ORDER                                       :{WHITE}... veiculo não pode ir a essa estação
-STR_ERROR_CAN_T_ADD_ORDER_SHARED                                :{WHITE}... um veículo compartilhando esta ordem não pode ir a essa estação
+STR_ERROR_CAN_T_ADD_ORDER_SHARED                                :{WHITE}... um veículo compartilhando esta ordem não pode ir à essa estação
 STR_ERROR_CAN_T_COPY_ORDER_VEHICLE_LIST                         :{WHITE}... nem todos os veículos possuem as mesmas ordens
 STR_ERROR_CAN_T_SHARE_ORDER_VEHICLE_LIST                        :{WHITE}... nem todos os veículos estão compartilhando ordens
 
@@ -5325,13 +5325,13 @@ STR_ERROR_NO_BUOY                                               :{WHITE}Não exi
 
 # Timetable related errors
 STR_ERROR_CAN_T_TIMETABLE_VEHICLE                               :{WHITE}Não é possível programar veículo...
-STR_ERROR_TIMETABLE_ONLY_WAIT_AT_STATIONS                       :{WHITE}Veículos podem aguardar apenas em estações
+STR_ERROR_TIMETABLE_ONLY_WAIT_AT_STATIONS                       :{WHITE}Veículos podem aguardar somente em estações
 STR_ERROR_TIMETABLE_NOT_STOPPING_HERE                           :{WHITE}Este veículo não para nesta estação
 STR_ERROR_TIMETABLE_INCOMPLETE                                  :{WHITE}... horário incompleto
 STR_ERROR_TIMETABLE_NOT_STARTED                                 :{WHITE}... o horário ainda não começou
 
 # Sign related errors
-STR_ERROR_TOO_MANY_SIGNS                                        :{WHITE}... existem muitas placas
+STR_ERROR_TOO_MANY_SIGNS                                        :{WHITE}... há placas demais
 STR_ERROR_CAN_T_PLACE_SIGN_HERE                                 :{WHITE}Não é possível colocar placa neste local...
 STR_ERROR_CAN_T_CHANGE_SIGN_NAME                                :{WHITE}Não é possível alterar o nome da placa...
 STR_ERROR_CAN_T_DELETE_SIGN                                     :{WHITE}Não é possível remover a placa...
@@ -5347,19 +5347,19 @@ STR_BASEGRAPHICS_DOS_DE_DESCRIPTION                             :Gráficos Origi
 STR_BASEGRAPHICS_WIN_DESCRIPTION                                :Gráficos Originais do Transport Tycoon, edição Windows.
 STR_BASESOUNDS_DOS_DESCRIPTION                                  :Sons Originais do Transport Tycoon Deluxe, edição DOS.
 STR_BASESOUNDS_WIN_DESCRIPTION                                  :Sons Originais do Transport Tycoon Deluxe, edição Windows.
-STR_BASESOUNDS_NONE_DESCRIPTION                                 :Um pacote de sons sem sons.
+STR_BASESOUNDS_NONE_DESCRIPTION                                 :Um conjunto de sons vazio.
 STR_BASEMUSIC_WIN_DESCRIPTION                                   :Música Original do Transport Tycoon Deluxe, edição Windows.
 STR_BASEMUSIC_DOS_DESCRIPTION                                   :Música Original do Transport Tycoon Deluxe, edição DOS.
 STR_BASEMUSIC_TTO_DESCRIPTION                                   :Música Original do Transport Tycoon, edição (Original/Editor de Mundo) DOS.
-STR_BASEMUSIC_NONE_DESCRIPTION                                  :Um pacote de músicas sem músicas.
+STR_BASEMUSIC_NONE_DESCRIPTION                                  :Um conjunto de música vazio.
 
 ##id 0x2000
 # Town building names
-STR_TOWN_BUILDING_NAME_TALL_OFFICE_BLOCK_1                      :Edifício de escritórios alto
+STR_TOWN_BUILDING_NAME_TALL_OFFICE_BLOCK_1                      :Edifício alto de escritórios
 STR_TOWN_BUILDING_NAME_OFFICE_BLOCK_1                           :Edifício de escritórios
-STR_TOWN_BUILDING_NAME_SMALL_BLOCK_OF_FLATS_1                   :Edifício de apartamentos grande
+STR_TOWN_BUILDING_NAME_SMALL_BLOCK_OF_FLATS_1                   :Edifício pequeno de apartamentos
 STR_TOWN_BUILDING_NAME_CHURCH_1                                 :Igreja
-STR_TOWN_BUILDING_NAME_LARGE_OFFICE_BLOCK_1                     :Edifício de escritórios grande
+STR_TOWN_BUILDING_NAME_LARGE_OFFICE_BLOCK_1                     :Edifício grande de escritórios
 STR_TOWN_BUILDING_NAME_TOWN_HOUSES_1                            :Casas
 STR_TOWN_BUILDING_NAME_HOTEL_1                                  :Hotel
 STR_TOWN_BUILDING_NAME_STATUE_1                                 :Estátua
@@ -5367,7 +5367,7 @@ STR_TOWN_BUILDING_NAME_FOUNTAIN_1                               :Fonte
 STR_TOWN_BUILDING_NAME_PARK_1                                   :Parque
 STR_TOWN_BUILDING_NAME_OFFICE_BLOCK_2                           :Edifício de escritórios
 STR_TOWN_BUILDING_NAME_SHOPS_AND_OFFICES_1                      :Lojas e escritórios
-STR_TOWN_BUILDING_NAME_MODERN_OFFICE_BUILDING_1                 :Edifício de escritórios moderno
+STR_TOWN_BUILDING_NAME_MODERN_OFFICE_BUILDING_1                 :Edifício moderno de escritórios
 STR_TOWN_BUILDING_NAME_WAREHOUSE_1                              :Armazém
 STR_TOWN_BUILDING_NAME_OFFICE_BLOCK_3                           :Edifício de escritórios
 STR_TOWN_BUILDING_NAME_STADIUM_1                                :Estádio
@@ -5375,7 +5375,7 @@ STR_TOWN_BUILDING_NAME_OLD_HOUSES_1                             :Casas antigas
 STR_TOWN_BUILDING_NAME_COTTAGES_1                               :Casas de campo
 STR_TOWN_BUILDING_NAME_HOUSES_1                                 :Casas
 STR_TOWN_BUILDING_NAME_FLATS_1                                  :Apartamentos
-STR_TOWN_BUILDING_NAME_TALL_OFFICE_BLOCK_2                      :Edifício de escritórios alto
+STR_TOWN_BUILDING_NAME_TALL_OFFICE_BLOCK_2                      :Edifício alto de escritórios
 STR_TOWN_BUILDING_NAME_SHOPS_AND_OFFICES_2                      :Lojas e escritórios
 STR_TOWN_BUILDING_NAME_SHOPS_AND_OFFICES_3                      :Lojas e escritórios
 STR_TOWN_BUILDING_NAME_THEATER_1                                :Teatro
@@ -5477,9 +5477,9 @@ STR_SV_STNAME_FALLBACK                                          :Estação de {S
 # Vehicle names
 STR_VEHICLE_NAME_TRAIN_ENGINE_RAIL_KIRBY_PAUL_TANK_STEAM        :Kirby Paul Tank (Vapor)
 STR_VEHICLE_NAME_TRAIN_ENGINE_RAIL_MJS_250_DIESEL               :MJS 250 (Diesel)
-STR_VEHICLE_NAME_TRAIN_ENGINE_RAIL_PLODDYPHUT_CHOO_CHOO         :Ploddyphut (Choo-Choo)
-STR_VEHICLE_NAME_TRAIN_ENGINE_RAIL_POWERNAUT_CHOO_CHOO          :Powernaut (Choo-Choo)
-STR_VEHICLE_NAME_TRAIN_ENGINE_RAIL_MIGHTYMOVER_CHOO_CHOO        :MightyMover (Choo-Choo)
+STR_VEHICLE_NAME_TRAIN_ENGINE_RAIL_PLODDYPHUT_CHOO_CHOO         :Ploddyphut Choo-Choo
+STR_VEHICLE_NAME_TRAIN_ENGINE_RAIL_POWERNAUT_CHOO_CHOO          :Powernaut Choo-Choo
+STR_VEHICLE_NAME_TRAIN_ENGINE_RAIL_MIGHTYMOVER_CHOO_CHOO        :MightyMover Choo-Choo
 STR_VEHICLE_NAME_TRAIN_ENGINE_RAIL_PLODDYPHUT_DIESEL            :Ploddyphut (Diesel)
 STR_VEHICLE_NAME_TRAIN_ENGINE_RAIL_POWERNAUT_DIESEL             :Powernaut (Diesel)
 STR_VEHICLE_NAME_TRAIN_ENGINE_RAIL_WILLS_2_8_0_STEAM            :Wills 2-8-0 (Vapor)

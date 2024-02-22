@@ -1273,10 +1273,10 @@ STR_CONFIG_SETTING_INFINITE_MONEY                               :Bezgalīga naud
 STR_CONFIG_SETTING_INFINITE_MONEY_HELPTEXT                      :Atļaut neierobežotus tēriņus un izslēgt uzņēmumu bankrotu
 
 STR_CONFIG_SETTING_MAXIMUM_INITIAL_LOAN                         :Maksimālais sākotnējais aizdevums: {STRING}
-STR_CONFIG_SETTING_MAXIMUM_INITIAL_LOAN_HELPTEXT                :Maksimālais aizdevuma daudzums, ko uzņēmums var izsniegt (neskaitot inflāciju)
+STR_CONFIG_SETTING_MAXIMUM_INITIAL_LOAN_HELPTEXT                :Maksimālais aizdevuma daudzums, ko uzņēmumam var izsniegt (neskaitot inflāciju). Ja iestatīts uz “Nav aizdevuma”, nauda nebūs pieejama, ja vien to nenodrošina spēles skripts vai iestatījums “Bezgalīga nauda”.
 STR_CONFIG_SETTING_MAXIMUM_INITIAL_LOAN_VALUE                   :{CURRENCY_LONG}
 ###setting-zero-is-special
-STR_CONFIG_SETTING_MAXIMUM_INITIAL_LOAN_DISABLED                :Nav aizdevuma {RED}Lai nodrošinātu sākotnējos līdzekļus, ir nepieciešams spēles skripts
+STR_CONFIG_SETTING_MAXIMUM_INITIAL_LOAN_DISABLED                :Nav aizdevuma
 
 STR_CONFIG_SETTING_INTEREST_RATE                                :Procentu likme: {STRING}
 STR_CONFIG_SETTING_INTEREST_RATE_HELPTEXT                       :Aizdevumu procentu likme; ja ieslēgts, ietekmē arī inflāciju

@@ -1272,10 +1272,10 @@ STR_CONFIG_SETTING_INFINITE_MONEY                               :Dinero infinito
 STR_CONFIG_SETTING_INFINITE_MONEY_HELPTEXT                      :Permite el gasto infinito y desactiva la bancarrota de empresas
 
 STR_CONFIG_SETTING_MAXIMUM_INITIAL_LOAN                         :Préstamo máximo inicial: {STRING}
-STR_CONFIG_SETTING_MAXIMUM_INITIAL_LOAN_HELPTEXT                :Cantidad máxima que una empresa puede recibir como préstamo (sin tener en cuenta la inflación)
+STR_CONFIG_SETTING_MAXIMUM_INITIAL_LOAN_HELPTEXT                :Cantidad máxima que una empresa puede recibir como préstamo (sin tener en cuenta la inflación). Si se selecciona "Sin préstamo", no habrá fondos disponibles a menos que un script the juego los proporcione o esté activada la opción "Dinero infinito"
 STR_CONFIG_SETTING_MAXIMUM_INITIAL_LOAN_VALUE                   :{CURRENCY_LONG}
 ###setting-zero-is-special
-STR_CONFIG_SETTING_MAXIMUM_INITIAL_LOAN_DISABLED                :Sin préstamo {RED} Se necesita un script de juego para proporcionar fondos iniciales
+STR_CONFIG_SETTING_MAXIMUM_INITIAL_LOAN_DISABLED                :Sin préstamo
 
 STR_CONFIG_SETTING_INTEREST_RATE                                :Porcentaje de interés: {STRING}
 STR_CONFIG_SETTING_INTEREST_RATE_HELPTEXT                       :Porcentaje de interés de los préstamos; también controla la inflación, en caso de que esté activada
@@ -4382,22 +4382,22 @@ STR_VEHICLE_STATUS_WAITING_UNBUNCHING                           :{LTBLUE}Esperan
 STR_VEHICLE_STATUS_CRASHED                                      :{RED}¡Siniestrado!
 STR_VEHICLE_STATUS_BROKEN_DOWN                                  :{RED}Averiado
 STR_VEHICLE_STATUS_STOPPED                                      :{RED}Detenido
-STR_VEHICLE_STATUS_TRAIN_STOPPING_VEL                           :{RED}Deteniéndose, {VELOCITY}
+STR_VEHICLE_STATUS_TRAIN_STOPPING_VEL                           :{RED}{VELOCITY} - Deteniéndose
 STR_VEHICLE_STATUS_TRAIN_NO_POWER                               :{RED}Sin potencia
 STR_VEHICLE_STATUS_TRAIN_STUCK                                  :{ORANGE}Esperando vía libre
 STR_VEHICLE_STATUS_AIRCRAFT_TOO_FAR                             :{ORANGE}Demasiado lejos del próximo destino
 
-STR_VEHICLE_STATUS_HEADING_FOR_STATION_VEL                      :{LTBLUE}Hacia {STATION}, {VELOCITY}
-STR_VEHICLE_STATUS_NO_ORDERS_VEL                                :{LTBLUE}Sin órdenes, {VELOCITY}
-STR_VEHICLE_STATUS_HEADING_FOR_WAYPOINT_VEL                     :{LTBLUE}Hacia {WAYPOINT}, {VELOCITY}
-STR_VEHICLE_STATUS_HEADING_FOR_DEPOT_VEL                        :{ORANGE}Hacia {DEPOT}, {VELOCITY}
-STR_VEHICLE_STATUS_HEADING_FOR_DEPOT_SERVICE_VEL                :{LTBLUE}Mantenimiento en {DEPOT}, {VELOCITY}
-STR_VEHICLE_STATUS_HEADING_FOR_DEPOT_UNBUNCH_VEL                :{LTBLUE}Distanciarse y dar mantenimiento en {DEPOT}, {VELOCITY}
+STR_VEHICLE_STATUS_HEADING_FOR_STATION_VEL                      :{LTBLUE}{1:VELOCITY} - Hacia {0:STATION}
+STR_VEHICLE_STATUS_NO_ORDERS_VEL                                :{LTBLUE}{VELOCITY} - Sin órdenes
+STR_VEHICLE_STATUS_HEADING_FOR_WAYPOINT_VEL                     :{LTBLUE}{1:VELOCITY} - Hacia {0:WAYPOINT}
+STR_VEHICLE_STATUS_HEADING_FOR_DEPOT_VEL                        :{ORANGE}{1:VELOCITY} - Hacia {0:DEPOT}
+STR_VEHICLE_STATUS_HEADING_FOR_DEPOT_SERVICE_VEL                :{LTBLUE}{1:VELOCITY} - Mantenimiento en {0:DEPOT}
+STR_VEHICLE_STATUS_HEADING_FOR_DEPOT_UNBUNCH_VEL                :{LTBLUE}{1:VELOCITY} - Distanciarse y dar mantenimiento en {0:DEPOT}
 
-STR_VEHICLE_STATUS_CANNOT_REACH_STATION_VEL                     :{LTBLUE}No se puede llegar a {STATION}, {VELOCITY}
-STR_VEHICLE_STATUS_CANNOT_REACH_WAYPOINT_VEL                    :{LTBLUE}No se puede llegar a {WAYPOINT}, {VELOCITY}
-STR_VEHICLE_STATUS_CANNOT_REACH_DEPOT_VEL                       :{ORANGE}No se puede llegar a {DEPOT}, {VELOCITY}
-STR_VEHICLE_STATUS_CANNOT_REACH_DEPOT_SERVICE_VEL               :{LTBLUE}No se puede llegar a {DEPOT}, {VELOCITY}
+STR_VEHICLE_STATUS_CANNOT_REACH_STATION_VEL                     :{LTBLUE}{1:VELOCITY} - No se puede llegar a {0:STATION}
+STR_VEHICLE_STATUS_CANNOT_REACH_WAYPOINT_VEL                    :{LTBLUE}{1:VELOCITY} - No se puede llegar a {0:WAYPOINT}
+STR_VEHICLE_STATUS_CANNOT_REACH_DEPOT_VEL                       :{ORANGE}{1:VELOCITY} - No se puede llegar a {0:DEPOT}
+STR_VEHICLE_STATUS_CANNOT_REACH_DEPOT_SERVICE_VEL               :{LTBLUE}{1:VELOCITY} - No se puede llegar a {0:DEPOT}
 
 # Vehicle stopped/started animations
 ###length 2
@@ -4611,7 +4611,7 @@ STR_ORDER_GO_TO_NEAREST_DEPOT                                   :Ir al depósito
 STR_ORDER_GO_TO_NEAREST_HANGAR                                  :Ir al hangar más cercano
 STR_ORDER_CONDITIONAL                                           :Salto de orden condicional
 STR_ORDER_SHARE                                                 :Compartir órdenes
-STR_ORDERS_GO_TO_TOOLTIP                                        :{BLACK}Añade una nueva orden antes de la orden resaltada, o la añade al final de la lista. Ctrl+clic sobre estaciones ordena 'Carga completa de cualquier carga', sobre puntos de ruta ordena 'sin paradas' y sobre depósitos ordena 'mantenimiento'. Clica sobre un vehículo para copiar sus órdenes, o Ctrl+clic para también compartir sus órdenes. Una órden de depósito desactiva el mantenimiento automático del vehículo
+STR_ORDERS_GO_TO_TOOLTIP                                        :{BLACK}Añade una nueva orden antes de la orden resaltada, o la añade al final de la lista. Ctrl+clic sobre estaciones añade 'Carga completa de cualquier carga', sobre puntos de ruta añade lo contrario a lo establecido por la opción 'sin paradas por defecto', y sobre depósitos añade 'Distanciarse'. Clica sobre un vehículo para copiar sus órdenes, o Ctrl+clic para copiar y compartir sus órdenes. Una orden de depósito desactiva el mantenimiento automático del vehículo
 
 STR_ORDERS_VEH_WITH_SHARED_ORDERS_LIST_TOOLTIP                  :{BLACK}Muestra todos los vehículos que comparten estas órdenes y este horario
 
@@ -4778,7 +4778,7 @@ STR_AI_DEBUG_CONTINUE                                           :{BLACK}Continua
 STR_AI_DEBUG_CONTINUE_TOOLTIP                                   :{BLACK}Quita la pausa y hace que la IA continúe
 STR_AI_DEBUG_SELECT_AI_TOOLTIP                                  :{BLACK}Muestra la salida de depuración de esta IA. Ctrl+clic para abrirla en una ventana nueva
 STR_AI_GAME_SCRIPT                                              :{BLACK}Script de Juego
-STR_AI_GAME_SCRIPT_TOOLTIP                                      :{BLACK}Visualizar el registro del script de juego. Ctrl+click para abrir en una nueva ventana
+STR_AI_GAME_SCRIPT_TOOLTIP                                      :{BLACK}Analizar el registro del script de juego. Ctrl+click para abrir en una nueva ventana
 
 STR_ERROR_AI_NO_AI_FOUND                                        :No se encontró ninguna IA apropiada para cargar.{}Ésta es una IA por defecto que no realiza acción alguna.{}Puedes descargar nuevas IA mediante el sistema de 'Contenido Online'
 STR_ERROR_AI_PLEASE_REPORT_CRASH                                :{WHITE}Uno de los scripts ejecutados ha fallado. Por favor, informa del fallo al autor del script con una captura de la ventana de depuración de script/IA

@@ -1272,10 +1272,10 @@ STR_CONFIG_SETTING_INFINITE_MONEY                               :Unbegrenzte fin
 STR_CONFIG_SETTING_INFINITE_MONEY_HELPTEXT                      :Erlaubt Firmen, unbeschränkte Ausgaben zu tätigen und deaktiviert Insolvenz
 
 STR_CONFIG_SETTING_MAXIMUM_INITIAL_LOAN                         :Kreditlimit bei Spielbeginn: {STRING}
-STR_CONFIG_SETTING_MAXIMUM_INITIAL_LOAN_HELPTEXT                :Maximaler Kredit für eine Firma (ohne Berücksichtigung der Inflation)
+STR_CONFIG_SETTING_MAXIMUM_INITIAL_LOAN_HELPTEXT                :Maximaler Kredit für eine Firma (ohne Berücksichtigung der Inflation). Falls auf „Kein Darlehen“ gesetzt, wird kein Geld zur Verfügung stehen, außer, wenn es von einem Spielskript oder der „Unendlich Geld“-Einstellung zur Verfügung gestellt wird.
 STR_CONFIG_SETTING_MAXIMUM_INITIAL_LOAN_VALUE                   :{CURRENCY_LONG}
 ###setting-zero-is-special
-STR_CONFIG_SETTING_MAXIMUM_INITIAL_LOAN_DISABLED                :Kein Darlehen {RED}Benötigt Spielskript, um Startgeld zur Verfügung zu stellen
+STR_CONFIG_SETTING_MAXIMUM_INITIAL_LOAN_DISABLED                :Kein Darlehen
 
 STR_CONFIG_SETTING_INTEREST_RATE                                :Zinssatz: {STRING}
 STR_CONFIG_SETTING_INTEREST_RATE_HELPTEXT                       :Zinssatz für Kredite; beeinflusst auch die Inflation, falls aktiv

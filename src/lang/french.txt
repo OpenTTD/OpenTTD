@@ -1272,10 +1272,10 @@ STR_CONFIG_SETTING_INFINITE_MONEY                               :Argent infini{N
 STR_CONFIG_SETTING_INFINITE_MONEY_HELPTEXT                      :Autoriser les dépenses illimitées et désactiver la banqueroute des compagnies
 
 STR_CONFIG_SETTING_MAXIMUM_INITIAL_LOAN                         :Emprunt initial maximum{NBSP}: {STRING}
-STR_CONFIG_SETTING_MAXIMUM_INITIAL_LOAN_HELPTEXT                :Montant maximum qu'une compagnie peut emprunter (sans tenir compte de l'inflation)
+STR_CONFIG_SETTING_MAXIMUM_INITIAL_LOAN_HELPTEXT                :Montant maximum qu'une compagnie peut emprunter (sans tenir compte de l'inflation). Si ce paramètre est défini sur "Pas de prêt", alors aucun argent ne sera disponible tant qu'un script de jeu ne le fournira pas ou que le paramètre "Argent infini" ne sera pas activé.
 STR_CONFIG_SETTING_MAXIMUM_INITIAL_LOAN_VALUE                   :{CURRENCY_LONG}
 ###setting-zero-is-special
-STR_CONFIG_SETTING_MAXIMUM_INITIAL_LOAN_DISABLED                :Pas d'emprunt {RED}Nécessite un script de jeu qui fournit les fonds initiaux
+STR_CONFIG_SETTING_MAXIMUM_INITIAL_LOAN_DISABLED                :Pas d'emprunt
 
 STR_CONFIG_SETTING_INTEREST_RATE                                :Taux d'intérêt{NBSP}: {STRING}
 STR_CONFIG_SETTING_INTEREST_RATE_HELPTEXT                       :Taux d’intérêt de l'emprunt{NBSP}; contrôle également l'inflation si activé

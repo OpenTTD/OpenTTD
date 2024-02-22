@@ -1651,10 +1651,10 @@ STR_CONFIG_SETTING_INFINITE_MONEY                               :Nieskończona i
 STR_CONFIG_SETTING_INFINITE_MONEY_HELPTEXT                      :Pozwól na nieograniczone wydatki i wyłącz bankructwa firm
 
 STR_CONFIG_SETTING_MAXIMUM_INITIAL_LOAN                         :Maksymalna wysokość początkowej pożyczki: {STRING}
-STR_CONFIG_SETTING_MAXIMUM_INITIAL_LOAN_HELPTEXT                :Maksymalna wysokość pożyczki, jaką firma może zaciągnąć (bez uwzględnienia inflacji)
+STR_CONFIG_SETTING_MAXIMUM_INITIAL_LOAN_HELPTEXT                :Maksymalna wysokość pożyczki, jaką firma może zaciągnąć (bez uwzględnienia inflacji). W przypadku ustawienia „Brak pożyczki” żadne pieniądze nie będą dostępne, chyba że zostaną dostarczone przez Game Script lub ustawienie „Nieskończona ilość pieniędzy”
 STR_CONFIG_SETTING_MAXIMUM_INITIAL_LOAN_VALUE                   :{CURRENCY_LONG}
 ###setting-zero-is-special
-STR_CONFIG_SETTING_MAXIMUM_INITIAL_LOAN_DISABLED                :Brak pożyczki {RED}Wymagany Game Script, aby zapewnić początkowe fundusze
+STR_CONFIG_SETTING_MAXIMUM_INITIAL_LOAN_DISABLED                :Brak pożyczki
 
 STR_CONFIG_SETTING_INTEREST_RATE                                :Oprocentowanie: {STRING}
 STR_CONFIG_SETTING_INTEREST_RATE_HELPTEXT                       :Oprocentowanie pożyczki; kontroluje też inflację, jeśli jest włączona
