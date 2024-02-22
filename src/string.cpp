@@ -255,30 +255,6 @@ bool StrValid(const char *str, const char *last)
 }
 
 /**
- * Trim the spaces from the begin of given string in place, i.e. the string buffer
- * that is passed will be modified whenever spaces exist in the given string.
- * When there are spaces at the begin, the whole string is moved forward.
- * @param str The string to perform the in place left trimming on.
- */
-static void StrLeftTrimInPlace(std::string &str)
-{
-	size_t pos = str.find_first_not_of(' ');
-	str.erase(0, pos);
-}
-
-/**
- * Trim the spaces from the end of given string in place, i.e. the string buffer
- * that is passed will be modified whenever spaces exist in the given string.
- * When there are spaces at the end, the '\0' will be moved forward.
- * @param str The string to perform the in place left trimming on.
- */
-static void StrRightTrimInPlace(std::string &str)
-{
-	size_t pos = str.find_last_not_of(' ');
-	if (pos != std::string::npos) str.erase(pos + 1);
-}
-
-/**
  * Trim the spaces from given string in place, i.e. the string buffer that
  * is passed will be modified whenever spaces exist in the given string.
  * When there are spaces at the begin, the whole string is moved forward
@@ -287,8 +263,17 @@ static void StrRightTrimInPlace(std::string &str)
  */
 void StrTrimInPlace(std::string &str)
 {
-	StrLeftTrimInPlace(str);
-	StrRightTrimInPlace(str);
+	str = StrTrimView(str);
+}
+
+std::string_view StrTrimView(std::string_view str)
+{
+	size_t first_pos = str.find_first_not_of(' ');
+	if (first_pos == std::string::npos) {
+		return std::string_view{};
+	}
+	size_t last_pos = str.find_last_not_of(' ');
+	return str.substr(first_pos, last_pos - first_pos + 1);
 }
 
 /**

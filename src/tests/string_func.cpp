@@ -384,3 +384,27 @@ TEST_CASE("ConvertHexToBytes")
 	CHECK(bytes3[6] == 0xde);
 	CHECK(bytes3[7] == 0xf0);
 }
+
+static const std::vector<std::pair<std::string, std::string>> _str_trim_testcases = {
+	{"a", "a"},
+	{"  a", "a"},
+	{"a  ", "a"},
+	{"  a   ", "a"},
+	{"  a  b  c  ", "a  b  c"},
+	{"   ", ""}
+};
+
+TEST_CASE("StrTrimInPlace")
+{
+	for (auto [input, expected] : _str_trim_testcases) {
+		StrTrimInPlace(input);
+		CHECK(input == expected);
+	}
+}
+
+TEST_CASE("StrTrimView") {
+	for (const auto& [input, expected] : _str_trim_testcases) {
+		CHECK(StrTrimView(input) == expected);
+	}
+}
+
