@@ -2433,10 +2433,27 @@ bool Vehicle::HasUnbunchingOrder() const
 }
 
 /**
+ * Check if the previous order is a depot unbunching order.
+ * @return true Iff the previous order is a depot order with the unbunch flag.
+ */
+static bool PreviousOrderIsUnbunching(const Vehicle *v)
+{
+	/* If we are headed for the first order, we must wrap around back to the last order. */
+	bool is_first_order = (v->GetOrder(v->cur_real_order_index) == v->GetFirstOrder());
+	Order *previous_order = (is_first_order) ? v->GetLastOrder() : v->GetOrder(v->cur_real_order_index - 1);
+
+	if (previous_order == nullptr || !previous_order->IsType(OT_GOTO_DEPOT)) return false;
+	return (previous_order->GetDepotActionType() & ODATFB_UNBUNCH) != 0;
+}
+
+/**
  * Leave an unbunching depot and calculate the next departure time for shared order vehicles.
  */
 void Vehicle::LeaveUnbunchingDepot()
 {
+	/* Don't do anything if this is not our unbunching order. */
+	if (!PreviousOrderIsUnbunching(this)) return;
+
 	/* Set the start point for this round trip time. */
 	this->depot_unbunching_last_departure = TimerGameTick::counter;
 
@@ -2488,13 +2505,8 @@ bool Vehicle::IsWaitingForUnbunching() const
 	/* Don't do anything if there aren't enough orders. */
 	if (this->GetNumOrders() <= 1) return false;
 
-	/*
-	 * Make sure this is the correct depot for unbunching.
-	 * If we are headed for the first order, we must wrap around back to the last order.
-	 */
-	bool is_first_order = (this->GetOrder(this->cur_real_order_index) == this->GetFirstOrder());
-	Order *previous_order = (is_first_order) ? this->GetLastOrder() : this->GetOrder(this->cur_real_order_index - 1);
-	if (previous_order == nullptr || !previous_order->IsType(OT_GOTO_DEPOT) || !(previous_order->GetDepotActionType() & ODATFB_UNBUNCH)) return false;
+	/* Don't do anything if this is not our unbunching order. */
+	if (!PreviousOrderIsUnbunching(this)) return false;
 
 	return (this->depot_unbunching_next_departure > TimerGameTick::counter);
 };
