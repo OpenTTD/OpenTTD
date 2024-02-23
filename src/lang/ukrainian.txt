@@ -1204,6 +1204,7 @@ STR_CURRENCY_DECREASE_EXCHANGE_RATE_TOOLTIP                     :{BLACK}Змен
 STR_CURRENCY_INCREASE_EXCHANGE_RATE_TOOLTIP                     :{BLACK}Збільшити кількість своєї валюти за 1 фунт (£)
 STR_CURRENCY_SET_EXCHANGE_RATE_TOOLTIP                          :{BLACK}Встановити обмінний курс своєї валюти до 1 фунта (£)
 
+
 STR_CURRENCY_PREFIX                                             :{LTBLUE}Префікс: {ORANGE}{STRING}
 STR_CURRENCY_SET_CUSTOM_CURRENCY_PREFIX_TOOLTIP                 :{BLACK}Встановити префікс для своєї валюти
 STR_CURRENCY_SUFFIX                                             :{LTBLUE}Суфікс: {ORANGE}{STRING}
@@ -1547,8 +1548,10 @@ STR_CONFIG_SETTING_INFRASTRUCTURE_MAINTENANCE                   :Витрати 
 STR_CONFIG_SETTING_INFRASTRUCTURE_MAINTENANCE_HELPTEXT          :При включенні інфраструктура потребує коштів для утримання. Витрати збільшуються не пропорційно з ростом розміру мережі, більше впливаючи на великі компанії ніж на малі
 
 STR_CONFIG_SETTING_COMPANY_STARTING_COLOUR                      :Колір компанії: {STRING}
-STR_CONFIG_SETTING_COMPANY_STARTING_COLOUR_HELPTEXT             :Виберіть початковий колір для компанії
+STR_CONFIG_SETTING_COMPANY_STARTING_COLOUR_HELPTEXT             :Оберіть початковий колір для компанії
 
+STR_CONFIG_SETTING_COMPANY_STARTING_COLOUR_SECONDARY            :Початковий другорядний колір для компанії: {STRING}
+STR_CONFIG_SETTING_COMPANY_STARTING_COLOUR_SECONDARY_HELPTEXT   :Оберіть початковий другорядний колір для компанії, якщо використовується NewGRF, у якому він допускається
 
 STR_CONFIG_SETTING_NEVER_EXPIRE_AIRPORTS                        :Аеропорти не застарівають: {STRING}
 STR_CONFIG_SETTING_NEVER_EXPIRE_AIRPORTS_HELPTEXT               :При включенні кожен аеропорт буде доступним для будівництва безстроково після його впровадження.
@@ -2177,10 +2180,12 @@ STR_CONFIG_SETTING_LIMITATIONS                                  :Обмежен�
 STR_CONFIG_SETTING_ACCIDENTS                                    :Катастрофи
 STR_CONFIG_SETTING_GENWORLD                                     :Створення світу
 STR_CONFIG_SETTING_ENVIRONMENT                                  :Довкілля
+STR_CONFIG_SETTING_ENVIRONMENT_TIME                             :Час
 STR_CONFIG_SETTING_ENVIRONMENT_AUTHORITIES                      :Органи влади
 STR_CONFIG_SETTING_ENVIRONMENT_TOWNS                            :Міста
 STR_CONFIG_SETTING_ENVIRONMENT_INDUSTRIES                       :Підприємства
 STR_CONFIG_SETTING_ENVIRONMENT_CARGODIST                        :Розподіл вантажів
+STR_CONFIG_SETTING_ENVIRONMENT_TREES                            :Дерева
 STR_CONFIG_SETTING_AI                                           :Конкуренти
 STR_CONFIG_SETTING_AI_NPC                                       :Віртуальні гравці
 STR_CONFIG_SETTING_NETWORK                                      :Мережа
@@ -2260,7 +2265,7 @@ STR_INTRO_TOOLTIP_HIGHSCORE                                     :{BLACK}Пока
 STR_INTRO_TOOLTIP_CONFIG_SETTINGS_TREE                          :{BLACK}Налаштування відображення
 STR_INTRO_TOOLTIP_NEWGRF_SETTINGS                               :{BLACK}Показати налаштування NewGRF
 STR_INTRO_TOOLTIP_ONLINE_CONTENT                                :{BLACK}Перевірити доступний для завантаження додатковий контент
-STR_INTRO_TOOLTIP_AI_SETTINGS                                   :{BLACK}Показати налаштування ШІ
+STR_INTRO_TOOLTIP_AI_SETTINGS                                   :{BLACK}Відкрити налаштування ШІ
 STR_INTRO_TOOLTIP_GAMESCRIPT_SETTINGS                           :{BLACK}Показати налаштування ігрового скрипту
 STR_INTRO_TOOLTIP_QUIT                                          :{BLACK}Вийти з OpenTTD
 
@@ -2911,20 +2916,20 @@ STR_BRIDGE_TUBULAR_SILICON                                      :Трубчас�
 # Road construction toolbar
 STR_ROAD_TOOLBAR_ROAD_CONSTRUCTION_CAPTION                      :{WHITE}Автомобільне будівництво
 STR_ROAD_TOOLBAR_TRAM_CONSTRUCTION_CAPTION                      :{WHITE}Будівництво трамвайних колій
-STR_ROAD_TOOLBAR_TOOLTIP_BUILD_ROAD_SECTION                     :{BLACK}Будувати дорогу. Ctrl переключає побудову/знесення для будівництва доріг. Утримуйте Shift для показу витрат
+STR_ROAD_TOOLBAR_TOOLTIP_BUILD_ROAD_SECTION                     :{BLACK}Будувати дорогу. Ctrl+клац для знесення доріг. Утримуйте Shift для показу тільки витрат
 STR_ROAD_TOOLBAR_TOOLTIP_BUILD_TRAMWAY_SECTION                  :{BLACK}Будувати трамвайну колію. Ctrl переключає побудову/знесення для будівництва трамвайної колії. Утримуйте Shift для показу витрат на будівництво
-STR_ROAD_TOOLBAR_TOOLTIP_BUILD_AUTOROAD                         :{BLACK}Будувати дорогу в режимі Автобудування. Ctrl переключає побудову/знесення для будівництва доріг. Утримуйте Shift для показу витрат на будівництво
-STR_ROAD_TOOLBAR_TOOLTIP_BUILD_AUTOTRAM                         :{BLACK}Будувати трамвайну лінію в режимі Автобудування. Ctrl переключає побудову/знесення для будівництва трамвайної колії. Утримуйте Shift для показу витрат на будівництво
-STR_ROAD_TOOLBAR_TOOLTIP_BUILD_ROAD_VEHICLE_DEPOT               :{BLACK}Будувати автомобільне депо (для будівництва і обслуговування автомобілів). Утримуйте Shift для показу витрат на будівництво
+STR_ROAD_TOOLBAR_TOOLTIP_BUILD_AUTOROAD                         :{BLACK}Будувати дорогу в режимі Автобудування. Ctrl+клац для знесення доріг. Утримуйте Shift для показу тільки витрат
+STR_ROAD_TOOLBAR_TOOLTIP_BUILD_AUTOTRAM                         :{BLACK}Будувати трамвайну колію в режимі Автобудування. Ctrl+клац для знесення колій. Утримуйте Shift для показу тільки витрат
+STR_ROAD_TOOLBAR_TOOLTIP_BUILD_ROAD_VEHICLE_DEPOT               :{BLACK}Будувати гараж (для будівництва і обслуговування автомобілів). Утримуйте Shift для показу витрат на будівництво
 STR_ROAD_TOOLBAR_TOOLTIP_BUILD_TRAM_VEHICLE_DEPOT               :{BLACK}Будувати трамвайне депо (для будівництва та обслуговування трамваїв). Утримуйте Shift для показу витрат на будівництво
-STR_ROAD_TOOLBAR_TOOLTIP_BUILD_BUS_STATION                      :{BLACK}Будувати автобусну зупинку. Ctrl дозволяє об'єднувати станції. Утримуйте Shift для показу витрат на будівництво
+STR_ROAD_TOOLBAR_TOOLTIP_BUILD_BUS_STATION                      :{BLACK}Будувати автобусну зупинку. Ctrl+клац щоб обрати іншу зупинку для приєднання. Утримуйте Shift для показу тільки витрат на будівництво
 STR_ROAD_TOOLBAR_TOOLTIP_BUILD_PASSENGER_TRAM_STATION           :{BLACK}Будувати пасажирську трамвайну станцію. Ctrl дозволяє об'єднувати станції. Утримуйте Shift для показу витрат на будівництво
 STR_ROAD_TOOLBAR_TOOLTIP_BUILD_TRUCK_LOADING_BAY                :{BLACK}Будувати вантажний майданчик. Ctrl дозволяє об'єднувати станції. Утримуйте Shift для показу витрат на будівництво
-STR_ROAD_TOOLBAR_TOOLTIP_BUILD_CARGO_TRAM_STATION               :{BLACK}Побудувати товарну трамвайну станцію. Ctrl дозволяє об'єднувати станції. Утримуйте Shift для показу витрат на побудову
+STR_ROAD_TOOLBAR_TOOLTIP_BUILD_CARGO_TRAM_STATION               :{BLACK}Побудувати вантажну трамвайну станцію. Ctrl+клац щоб обрати іншу зупинку для приєднання. Утримуйте Shift для показу тільки витрат на будівництво
 STR_ROAD_TOOLBAR_TOOLTIP_TOGGLE_ONE_WAY_ROAD                    :{BLACK}Вкл./відкл. односторонні дороги
-STR_ROAD_TOOLBAR_TOOLTIP_BUILD_ROAD_BRIDGE                      :{BLACK}Будувати міст. Утримуйте Shift для показу витрат на придбання
+STR_ROAD_TOOLBAR_TOOLTIP_BUILD_ROAD_BRIDGE                      :{BLACK}Будувати дорожній міст. Утримуйте Shift для показу тільки витрат на придбання
 STR_ROAD_TOOLBAR_TOOLTIP_BUILD_TRAMWAY_BRIDGE                   :{BLACK}Побудувати трамвайний міст. Утримуйте Shift для показу витрат на придбання
-STR_ROAD_TOOLBAR_TOOLTIP_BUILD_ROAD_TUNNEL                      :{BLACK}Будувати тунель. Утримуйте Shift для показу витрат на придбання
+STR_ROAD_TOOLBAR_TOOLTIP_BUILD_ROAD_TUNNEL                      :{BLACK}Будувати дорожній тунель. Утримуйте Shift для показу тільки витрат на придбання
 STR_ROAD_TOOLBAR_TOOLTIP_BUILD_TRAMWAY_TUNNEL                   :{BLACK}Побудувати трамвайний тунель. Утримуйте Shift для показу витрат на придбання
 STR_ROAD_TOOLBAR_TOOLTIP_TOGGLE_BUILD_REMOVE_FOR_ROAD           :{BLACK}Будувати/зруйнувати дорогу
 STR_ROAD_TOOLBAR_TOOLTIP_TOGGLE_BUILD_REMOVE_FOR_TRAMWAYS       :{BLACK}Будувати/демонтувати колію
@@ -4136,7 +4141,7 @@ STR_BUY_VEHICLE_AIRCRAFT_BUY_VEHICLE_BUTTON                     :{BLACK}Купи
 STR_BUY_VEHICLE_TRAIN_BUY_REFIT_VEHICLE_BUTTON                  :{BLACK}Купити і переобладнати авто
 STR_BUY_VEHICLE_ROAD_VEHICLE_BUY_REFIT_VEHICLE_BUTTON           :{BLACK}Купити і переобладнати авто
 STR_BUY_VEHICLE_SHIP_BUY_REFIT_VEHICLE_BUTTON                   :{BLACK}Купіть і переобладнайте корабель
-STR_BUY_VEHICLE_AIRCRAFT_BUY_REFIT_VEHICLE_BUTTON               :{BLACK}Купуйте та переобладнайте літаки
+STR_BUY_VEHICLE_AIRCRAFT_BUY_REFIT_VEHICLE_BUTTON               :{BLACK}Купуйте та переобладнайте повітряні апарати
 
 ###length VEHICLE_TYPES
 STR_BUY_VEHICLE_TRAIN_BUY_VEHICLE_TOOLTIP                       :{BLACK}Купити вибраний поїзд. Утримуйте Shift для показу витрат на придбання
@@ -4148,7 +4153,7 @@ STR_BUY_VEHICLE_AIRCRAFT_BUY_VEHICLE_TOOLTIP                    :{BLACK}Купи
 STR_BUY_VEHICLE_TRAIN_BUY_REFIT_VEHICLE_TOOLTIP                 :{BLACK}Придбайте та переобладнайте виділений поїзд. Shift+клац показує орієнтовну вартість без покупки
 STR_BUY_VEHICLE_ROAD_VEHICLE_BUY_REFIT_VEHICLE_TOOLTIP          :{BLACK}Придбайте та переобладнайте авто. Shift+клац показує орієнтовну вартість без покупки
 STR_BUY_VEHICLE_SHIP_BUY_REFIT_VEHICLE_TOOLTIP                  :{BLACK}Придбайте та переобладнайте виділене судно. Shift+клац показує орієнтовну вартість без покупки
-STR_BUY_VEHICLE_AIRCRAFT_BUY_REFIT_VEHICLE_TOOLTIP              :{BLACK}Придбайте та переобладнайте виділені літаки. Shift+клац показує орієнтовну вартість без покупки
+STR_BUY_VEHICLE_AIRCRAFT_BUY_REFIT_VEHICLE_TOOLTIP              :{BLACK}Придбайте та переобладнайте виділений повітряний апарат. Утримуйте Shift, щоб побачити тільки орієнтовну вартість
 
 ###length VEHICLE_TYPES
 STR_BUY_VEHICLE_TRAIN_RENAME_BUTTON                             :{BLACK}Назва
@@ -4454,6 +4459,7 @@ STR_VEHICLE_INFO_WEIGHT_POWER_MAX_SPEED_MAX_TE                  :{BLACK}Вага
 
 STR_VEHICLE_INFO_PROFIT_THIS_YEAR_LAST_YEAR                     :{BLACK}Дохід цього року: {LTBLUE}{CURRENCY_LONG} (торік: {CURRENCY_LONG})
 STR_VEHICLE_INFO_PROFIT_THIS_YEAR_LAST_YEAR_MIN_PERFORMANCE     :{BLACK}Дохід цього року: {LTBLUE}{CURRENCY_LONG} (минулого року: {CURRENCY_LONG}) {BLACK}Найгірше: {LTBLUE}{POWER_TO_WEIGHT}
+STR_VEHICLE_INFO_PROFIT_THIS_PERIOD_LAST_PERIOD                 :{BLACK}Прибуток цього періоду: {LTBLUE}{CURRENCY_LONG} (минулого періоду: {CURRENCY_LONG})
 STR_VEHICLE_INFO_RELIABILITY_BREAKDOWNS                         :{BLACK}Надійність: {LTBLUE}{COMMA}%  {BLACK}Аварії після останнього техогляду: {LTBLUE}{COMMA}
 
 STR_VEHICLE_INFO_BUILT_VALUE                                    :{LTBLUE}{ENGINE} {BLACK}Побудований: {LTBLUE}{NUM}{BLACK} Вартість: {LTBLUE}{CURRENCY_LONG}
@@ -4580,6 +4586,8 @@ STR_ORDER_DROP_HALT_DEPOT                                       :Прямува�
 ###length VEHICLE_TYPES
 STR_ORDER_TRAIN_DEPOT_ACTION_TOOLTIP                            :{BLACK}Виберіть дію до виконання в цьому депо
 STR_ORDER_ROAD_DEPOT_ACTION_TOOLTIP                             :{BLACK}Виберіть дію до виконання в цьому гаражі
+STR_ORDER_SHIP_DEPOT_ACTION_TOOLTIP                             :{BLACK}Виберіть дію до виконання в цьому депо
+STR_ORDER_HANGAR_ACTION_TOOLTIP                                 :{BLACK}Виберіть дію до виконання в цьому ангарі
 ###next-name-looks-similar
 
 STR_ORDER_CONDITIONAL_VARIABLE_TOOLTIP                          :{BLACK}Дані транспорту для базування наказу
@@ -4731,6 +4739,7 @@ STR_TIMETABLE_STATUS_START_IN_SECONDS                           :{BLACK}Цей �
 STR_TIMETABLE_STATUS_START_IN_SECONDS.r                         :{BLACK}Цей розклад почнеться після {COMMA} секунди
 STR_TIMETABLE_STATUS_START_IN_SECONDS.d                         :{BLACK}Цей розклад почнеться після {COMMA} секунд
 
+STR_TIMETABLE_START                                             :{BLACK}Початок розкладу
 
 
 STR_TIMETABLE_CHANGE_TIME                                       :{BLACK}Змінити час
@@ -4755,6 +4764,8 @@ STR_TIMETABLE_EXPECTED                                          :{BLACK}Очік
 STR_TIMETABLE_SCHEDULED                                         :{BLACK}Призначено
 STR_TIMETABLE_EXPECTED_TOOLTIP                                  :{BLACK}Перемкнути очікуване на заплановане
 
+STR_TIMETABLE_ARRIVAL_DATE                                      :В: {COLOUR}{DATE_TINY}
+STR_TIMETABLE_ARRIVAL_SECONDS_IN_FUTURE                         :В: {COLOUR}{COMMA} сек
 STR_TIMETABLE_DEPARTURE_SECONDS_IN_FUTURE                       :П: {COLOUR}{COMMA} сек
 
 
@@ -4848,6 +4859,8 @@ STR_AI_SETTINGS_CAPTION_GAMESCRIPT                              :Ігровий 
 STR_AI_SETTINGS_CLOSE                                           :{BLACK}Закрити
 STR_AI_SETTINGS_RESET                                           :{BLACK}Скидання
 STR_AI_SETTINGS_SETTING                                         :{STRING}: {ORANGE}{STRING}
+STR_AI_SETTINGS_SETTING_DEVIATION                               :{STRING}: {ORANGE}[{STRING}, {STRING}]
+STR_AI_SETTINGS_JUST_DEVIATION                                  :[{STRING}, {STRING}]
 
 
 # Textfile window
@@ -4862,6 +4875,7 @@ STR_TEXTFILE_VIEW_LICENCE                                       :{BLACK}Ліце
 STR_TEXTFILE_README_CAPTION                                     :{WHITE}Документація до {STRING} {STRING}
 STR_TEXTFILE_CHANGELOG_CAPTION                                  :{WHITE}Зміни в {STRING} {STRING}
 STR_TEXTFILE_LICENCE_CAPTION                                    :{WHITE}Ліцензія до {STRING} {STRING}
+STR_TEXTFILE_SURVEY_RESULT_CAPTION                              :{BLACK}Попередній перегляд геологічної розвідки
 STR_TEXTFILE_GAME_MANUAL_CAPTION                                :{WHITE}документ OpenTTD '{STRING}'
 
 
@@ -5833,6 +5847,7 @@ STR_STATION_NAME                                                :{STATION}
 STR_TOWN_NAME                                                   :{TOWN}
 STR_VEHICLE_NAME                                                :{VEHICLE}
 STR_WAYPOINT_NAME                                               :{WAYPOINT}
+
 
 STR_JUST_CARGO                                                  :{CARGO_LONG}
 STR_JUST_RIGHT_ARROW                                            :{RIGHT_ARROW}

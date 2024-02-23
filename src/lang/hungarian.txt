@@ -320,10 +320,14 @@ STR_UNITS_HEIGHT_SI                                             :{DECIMAL}{NBSP}
 
 # Time units used in string control characters
 STR_UNITS_DAYS                                                  :{COMMA}{NBSP}nap{P "" s}
+STR_UNITS_SECONDS                                               :{COMMA}{NBSP}másodperc
+STR_UNITS_TICKS                                                 :{COMMA}{NBSP}tick
 
-STR_UNITS_MONTHS                                                :{NUM}{NBSP}hónap{P "" s}
-STR_UNITS_MINUTES                                               :{NUM}{NBSP}perc{P "" s}
+STR_UNITS_MONTHS                                                :{NUM}{NBSP}hónap
+STR_UNITS_MINUTES                                               :{NUM}{NBSP}perc
 
+STR_UNITS_YEARS                                                 :{NUM}{NBSP}év
+STR_UNITS_PERIODS                                               :{NUM}{NBSP}időszak
 
 # Common window strings
 STR_LIST_FILTER_TITLE                                           :{BLACK}Szűrő kifejezés:
@@ -390,7 +394,9 @@ STR_SORT_BY_TYPE                                                :Típus
 STR_SORT_BY_TRANSPORTED                                         :Elszállítás
 STR_SORT_BY_NUMBER                                              :Szám
 STR_SORT_BY_PROFIT_LAST_YEAR                                    :Tavalyi profit
+STR_SORT_BY_PROFIT_LAST_PERIOD                                  :Nyereség az elmúlt időszakban
 STR_SORT_BY_PROFIT_THIS_YEAR                                    :Idei profit
+STR_SORT_BY_PROFIT_THIS_PERIOD                                  :Nyereség ebben az időszakban
 STR_SORT_BY_AGE                                                 :Életkor
 STR_SORT_BY_RELIABILITY                                         :Megbízhatóság
 STR_SORT_BY_TOTAL_CAPACITY_PER_CARGOTYPE                        :Rakomány sz. összkapacitás
@@ -418,7 +424,9 @@ STR_SORT_BY_POPULATION                                          :Lakosság
 STR_SORT_BY_RATING                                              :Értékelés
 STR_SORT_BY_NUM_VEHICLES                                        :Járművek száma
 STR_SORT_BY_TOTAL_PROFIT_LAST_YEAR                              :Tavalyi összes profit
+STR_SORT_BY_TOTAL_PROFIT_LAST_PERIOD                            :Összes nyereség az elmúlt időszakban
 STR_SORT_BY_TOTAL_PROFIT_THIS_YEAR                              :Idei összes profit
+STR_SORT_BY_TOTAL_PROFIT_THIS_PERIOD                            :Összes nyereség ebben az időszakban
 STR_SORT_BY_AVERAGE_PROFIT_LAST_YEAR                            :Tavalyi átlagos profit
 STR_SORT_BY_AVERAGE_PROFIT_LAST_PERIOD                          :Átlagos nyereség az elmúlt időszakban
 STR_SORT_BY_AVERAGE_PROFIT_THIS_YEAR                            :Idei átlagos profit
@@ -720,7 +728,11 @@ STR_PERFORMANCE_DETAIL_LOAN                                     :{BLACK}Kölcsö
 STR_PERFORMANCE_DETAIL_TOTAL                                    :{BLACK}Összesen:
 ###next-name-looks-similar
 
+STR_PERFORMANCE_DETAIL_VEHICLES_TOOLTIP_YEARS                   :{BLACK}A nyereséget termelő járművek száma a múlt évben. Ide tartoznak a közúti járművek, vonatok, hajók és repülőgépek
+STR_PERFORMANCE_DETAIL_VEHICLES_TOOLTIP_PERIODS                 :{BLACK}A nyereséget termelő járművek száma az elmúlt időszakban. Ide tartoznak a közúti járművek, vonatok, hajók és repülőgépek
 STR_PERFORMANCE_DETAIL_STATIONS_TOOLTIP                         :{BLACK}Közelmúltban kiszolgált állomásrészek száma. Vasútállomás, buszmegálló, repülőtér külön számolódik, még akkor is, ha egy állomáshoz tartoznak
+STR_PERFORMANCE_DETAIL_MIN_PROFIT_TOOLTIP_YEARS                 :{BLACK}A legalacsonyabb bevétellel rendelkező jármű nyeresége ( csak két évnél régebbi járműveknél)
+STR_PERFORMANCE_DETAIL_MIN_PROFIT_TOOLTIP_PERIODS               :{BLACK}A legalacsonyabb bevétellel rendelkező jármű nyeresége (csak a két időszaknál régebbi járműveknél)
 STR_PERFORMANCE_DETAIL_MIN_INCOME_TOOLTIP                       :{BLACK}Megkeresett pénz a negyedévben a legkisebb profitnál az utolsó 12 negyedévben.
 STR_PERFORMANCE_DETAIL_MAX_INCOME_TOOLTIP                       :{BLACK}Megkeresett pénz a negyedévben a legnagyobb profitnál az utolsó 12 negyedévben
 STR_PERFORMANCE_DETAIL_DELIVERED_TOOLTIP                        :{BLACK}Utolsó négy negyedévben elszállított rakomány
@@ -992,11 +1004,13 @@ STR_EXTRA_VIEW_MOVE_MAIN_TO_VIEW_TT                             :{BLACK}A látk�
 STR_GAME_OPTIONS_CAPTION                                        :{WHITE}Alapbeállítások
 
 STR_GAME_OPTIONS_TAB_GENERAL                                    :Általános
-STR_GAME_OPTIONS_TAB_GENERAL_TT                                 :{BLACK}Állítsd be az általános beállításokat
+STR_GAME_OPTIONS_TAB_GENERAL_TT                                 :{BLACK}Általános beállítások módosítása
 STR_GAME_OPTIONS_TAB_GRAPHICS                                   :Grafika
-STR_GAME_OPTIONS_TAB_GRAPHICS_TT                                :{BLACK}Állítsd be a grafikával kapcsolatos beállításokat
+STR_GAME_OPTIONS_TAB_GRAPHICS_TT                                :{BLACK}Grafikus beállítások módosítása
 STR_GAME_OPTIONS_TAB_SOUND                                      :Hang effektek
-STR_GAME_OPTIONS_TAB_SOUND_TT                                   :{BLACK}Állítsd be a hanggal és zenével kapcsolatos beállításokat
+STR_GAME_OPTIONS_TAB_SOUND_TT                                   :{BLACK}Hang- és zenebeállítások módosítása
+STR_GAME_OPTIONS_TAB_SOCIAL                                     :Közösségi
+STR_GAME_OPTIONS_TAB_SOCIAL_TT                                  :{BLACK}Közösségi beállítások módosítása
 
 STR_GAME_OPTIONS_VOLUME                                         :Hangerő
 STR_GAME_OPTIONS_SFX_VOLUME                                     :Hang effektek
@@ -1056,6 +1070,7 @@ STR_GAME_OPTIONS_CURRENCY_HKD                                   :Hongkongi Doll�
 STR_GAME_OPTIONS_CURRENCY_INR                                   :Indiai Rúpia
 STR_GAME_OPTIONS_CURRENCY_IDR                                   :Indonéz rúpia
 STR_GAME_OPTIONS_CURRENCY_MYR                                   :Maláj ringgit
+STR_GAME_OPTIONS_CURRENCY_LVL                                   :Lett Lat
 
 STR_GAME_OPTIONS_AUTOSAVE_FRAME                                 :{BLACK}Automatikus mentés
 STR_GAME_OPTIONS_AUTOSAVE_DROPDOWN_TOOLTIP                      :{BLACK}Az automatikus mentések közötti időtartam kiválasztása
@@ -1137,6 +1152,7 @@ STR_GAME_OPTIONS_BASE_MUSIC_DESCRIPTION_TOOLTIP                 :{BLACK}További
 
 STR_GAME_OPTIONS_SOCIAL_PLUGINS_NONE                            :{LTBLUE}(nincs közösségi média integrációhoz szükséges kiegészítő telepítve)
 
+STR_GAME_OPTIONS_SOCIAL_PLUGIN_TITLE                            :{BLACK}{STRING} ({STRING})
 STR_GAME_OPTIONS_SOCIAL_PLUGIN_PLATFORM                         :{BLACK}Platform:
 STR_GAME_OPTIONS_SOCIAL_PLUGIN_STATE                            :{BLACK}Kiegészítő állapota:
 
@@ -1160,6 +1176,7 @@ STR_CURRENCY_EXCHANGE_RATE                                      :{LTBLUE}Átvál
 STR_CURRENCY_DECREASE_EXCHANGE_RATE_TOOLTIP                     :{BLACK}Átváltási arány csökkentése egy Fonthoz (£) képest
 STR_CURRENCY_INCREASE_EXCHANGE_RATE_TOOLTIP                     :{BLACK}Átváltási arány növelése egy Fonthoz (£) képest
 STR_CURRENCY_SET_EXCHANGE_RATE_TOOLTIP                          :{BLACK}Átváltási arány beállítása egy Fonthoz (£) képest
+
 
 STR_CURRENCY_PREFIX                                             :{LTBLUE}Előtag: {ORANGE}{STRING}
 STR_CURRENCY_SET_CUSTOM_CURRENCY_PREFIX_TOOLTIP                 :{BLACK}Előtag beállítása a pénznemedhez
@@ -1338,7 +1355,9 @@ STR_CONFIG_SETTING_SUBSIDY_MULTIPLIER_HELPTEXT                  :Támogatott kap
 STR_CONFIG_SETTING_SUBSIDY_DURATION                             :Támogatások hossza: {STRING}
 ###length 2
 STR_CONFIG_SETTING_SUBSIDY_DURATION_HELPTEXT                    :Az elnyert támogatások ennyi időn keresztül lesznek érvényesek.
+STR_CONFIG_SETTING_SUBSIDY_DURATION_HELPTEXT_PERIODS            :Itt beállítható a támogatások megadásának gyakorisága
 
+STR_CONFIG_SETTING_SUBSIDY_DURATION_VALUE                       :{UNITS_YEARS_OR_PERIODS}
 ###setting-zero-is-special
 STR_CONFIG_SETTING_SUBSIDY_DURATION_DISABLED                    :Nincsenek támogatások
 
@@ -1526,7 +1545,8 @@ STR_CONFIG_SETTING_ORDER_REVIEW_ON                              :minden járműr
 
 STR_CONFIG_SETTING_WARN_INCOME_LESS                             :Figyelmeztetés veszteséges jármű esetén: {STRING}
 ###length 2
-STR_CONFIG_SETTING_WARN_INCOME_LESS_HELPTEXT                    :Üzenetek megjelenítése azokról a járművekről, melyek nem termeltek profitot egy naptári év alatt
+STR_CONFIG_SETTING_WARN_INCOME_LESS_HELPTEXT                    :Üzenetek megjelenítése azokról a járművekről, melyek nem termeltek profitot egy év alatt
+STR_CONFIG_SETTING_WARN_INCOME_LESS_HELPTEXT_PERIOD             :Üzenetek megjelenítése azokról a járművekről, melyek nem termeltek profitot egy időszakon belül
 
 STR_CONFIG_SETTING_NEVER_EXPIRE_VEHICLES                        :Járművek sosem avulnak el: {STRING}
 STR_CONFIG_SETTING_NEVER_EXPIRE_VEHICLES_HELPTEXT               :Bekapcsolva minden járműmodell örökké elérhető marad bevezetése után
@@ -1546,6 +1566,8 @@ STR_CONFIG_SETTING_MINUTES_PER_YEAR_FROZEN                      :0 (calendar tim
 
 STR_CONFIG_SETTING_TOWN_CARGO_SCALE                             :Települések rakománytermelésének mértéke: {STRING}
 STR_CONFIG_SETTING_TOWN_CARGO_SCALE_HELPTEXT                    :A települések rakománytermelésének mértéke százalékban.
+STR_CONFIG_SETTING_INDUSTRY_CARGO_SCALE                         :Gazdasági épületek rakománytermelésének mértéke: {STRING}
+STR_CONFIG_SETTING_INDUSTRY_CARGO_SCALE_HELPTEXT                :A gazdasági épületek rakománytermelésének mértéke százalékban.
 STR_CONFIG_SETTING_CARGO_SCALE_VALUE                            :{NUM}%
 
 STR_CONFIG_SETTING_AUTORENEW_VEHICLE                            :Automatikusan felújítja a járművet ha elöregedik: {STRING}
@@ -2156,10 +2178,12 @@ STR_CONFIG_SETTING_LIMITATIONS                                  :Korlátozások
 STR_CONFIG_SETTING_ACCIDENTS                                    :Katasztrófák / Balesetek
 STR_CONFIG_SETTING_GENWORLD                                     :Térképgenerálás
 STR_CONFIG_SETTING_ENVIRONMENT                                  :Környezet
+STR_CONFIG_SETTING_ENVIRONMENT_TIME                             :Idő
 STR_CONFIG_SETTING_ENVIRONMENT_AUTHORITIES                      :Önkormányzatok
 STR_CONFIG_SETTING_ENVIRONMENT_TOWNS                            :Települések
 STR_CONFIG_SETTING_ENVIRONMENT_INDUSTRIES                       :Gazdasági épületek
 STR_CONFIG_SETTING_ENVIRONMENT_CARGODIST                        :Rakományok szétosztása (úticélok)
+STR_CONFIG_SETTING_ENVIRONMENT_TREES                            :Fák
 STR_CONFIG_SETTING_AI                                           :Ellenfelek
 STR_CONFIG_SETTING_AI_NPC                                       :Számítógép által vezérelt ellenfelek
 STR_CONFIG_SETTING_NETWORK                                      :Hálózat
@@ -2406,6 +2430,9 @@ STR_NETWORK_SERVER_LIST_MAP_SIZE_CAPTION                        :{BLACK}Térkép
 STR_NETWORK_SERVER_LIST_MAP_SIZE_CAPTION_TOOLTIP                :{BLACK}A játék térképének mérete{}Kattints ide a rendezéshez
 STR_NETWORK_SERVER_LIST_DATE_CAPTION                            :{BLACK}Dátum
 STR_NETWORK_SERVER_LIST_DATE_CAPTION_TOOLTIP                    :{BLACK}Az aktuális dátum
+STR_NETWORK_SERVER_LIST_PLAY_TIME_SHORT                         :{BLACK}{NUM} óra {NUM} perc
+STR_NETWORK_SERVER_LIST_PLAY_TIME_CAPTION                       :{BLACK}Játékidő
+STR_NETWORK_SERVER_LIST_PLAY_TIME_CAPTION_TOOLTIP               :{BLACK}Játékidő{}amíg a játék nem volt szünetben
 STR_NETWORK_SERVER_LIST_INFO_ICONS_TOOLTIP                      :{BLACK}Nyelv, szerver verzió stb.
 
 STR_NETWORK_SERVER_LIST_CLICK_GAME_TO_SELECT                    :{BLACK}Kattintással a listában szereplő játék kiválasztása
@@ -2421,6 +2448,7 @@ STR_NETWORK_SERVER_LIST_SERVER_ADDRESS                          :{SILVER}A szerv
 STR_NETWORK_SERVER_LIST_INVITE_CODE                             :{SILVER}Meghívókód: {WHITE}{STRING}
 STR_NETWORK_SERVER_LIST_START_DATE                              :{SILVER}Kezdési dátum: {WHITE}{DATE_SHORT}
 STR_NETWORK_SERVER_LIST_CURRENT_DATE                            :{SILVER}Jelenlegi dátum: {WHITE}{DATE_SHORT}
+STR_NETWORK_SERVER_LIST_PLAY_TIME                               :{SILVER}Játékidő: {WHITE}{NUM} óra {NUM} perc
 STR_NETWORK_SERVER_LIST_GAMESCRIPT                              :{SILVER}Játékszkript: {WHITE}{STRING} (v{NUM})
 STR_NETWORK_SERVER_LIST_PASSWORD                                :{SILVER}Jelszóval védve!
 STR_NETWORK_SERVER_LIST_SERVER_OFFLINE                          :{SILVER}SZERVER OFFLINE
@@ -2786,6 +2814,8 @@ STR_STATION_BUILD_COVERAGE_AREA_OFF_TOOLTIP                     :{BLACK}Az állo
 STR_STATION_BUILD_COVERAGE_AREA_ON_TOOLTIP                      :{BLACK}Az állomással lefedett terület mutatása (vonzáskörzet)
 STR_STATION_BUILD_ACCEPTS_CARGO                                 :{BLACK}Elfogad:{GOLD}{CARGO_LIST}
 STR_STATION_BUILD_SUPPLIES_CARGO                                :{BLACK}Termel: {GOLD}{CARGO_LIST}
+STR_STATION_BUILD_INFRASTRUCTURE_COST_YEAR                      :{BLACK}Üzemeltetés: {GOLD}{CURRENCY_SHORT}/év
+STR_STATION_BUILD_INFRASTRUCTURE_COST_PERIOD                    :{BLACK}Üzemeltetés: {GOLD}{CURRENCY_SHORT}/időszak
 
 # Join station window
 STR_JOIN_STATION_CAPTION                                        :{WHITE}Állomás egyesítése
@@ -3327,6 +3357,7 @@ STR_MAPGEN_DESERT_COVERAGE_DOWN                                 :{BLACK}A sivata
 STR_MAPGEN_DESERT_COVERAGE_TEXT                                 :{BLACK}{NUM}%
 STR_MAPGEN_TERRAIN_TYPE                                         :{BLACK}Tereptípus:
 STR_MAPGEN_SEA_LEVEL                                            :{BLACK}Tengerszint:
+STR_MAPGEN_SEA_LEVEL_TOOLTIP                                    :{BLACK}Tengerszint kiválasztása
 STR_MAPGEN_QUANTITY_OF_RIVERS                                   :{BLACK}Folyók:
 STR_MAPGEN_SMOOTHNESS                                           :{BLACK}Simaság:
 STR_MAPGEN_VARIETY                                              :{BLACK}Változatosság eloszlása:
@@ -3394,6 +3425,7 @@ STR_SE_MAPGEN_FLAT_WORLD                                        :{WHITE}Lapos te
 STR_SE_MAPGEN_FLAT_WORLD_TOOLTIP                                :{BLACK}Egy lapos terepet generál
 STR_SE_MAPGEN_RANDOM_LAND                                       :{WHITE}Véletlen térkép
 STR_SE_MAPGEN_FLAT_WORLD_HEIGHT                                 :{BLACK}Lapos terep magassága:
+STR_SE_MAPGEN_FLAT_WORLD_HEIGHT_TOOLTIP                         :{BLACK}A szárazföld tengerszint feletti magasságának kiválasztása
 STR_SE_MAPGEN_FLAT_WORLD_HEIGHT_DOWN                            :{BLACK}Lapos terep magasságának csökkentése eggyel
 STR_SE_MAPGEN_FLAT_WORLD_HEIGHT_UP                              :{BLACK}Lapos terep magasságának növelése eggyel
 
@@ -3637,6 +3669,8 @@ STR_TOWN_VIEW_CARGO_FOR_TOWNGROWTH_REQUIRED_WINTER              :{ORANGE}{STRING
 STR_TOWN_VIEW_CARGO_FOR_TOWNGROWTH_DELIVERED_GENERAL            :{ORANGE}{STRING}{GREEN} szállítva
 STR_TOWN_VIEW_CARGO_FOR_TOWNGROWTH_REQUIRED                     :{ORANGE}{CARGO_TINY} / {CARGO_LONG}{RED} (több szükséges)
 STR_TOWN_VIEW_CARGO_FOR_TOWNGROWTH_DELIVERED                    :{ORANGE}{CARGO_TINY} / {CARGO_LONG}{GREEN} (szállítva)
+STR_TOWN_VIEW_TOWN_GROWS_EVERY                                  :{BLACK}A település {ORANGE}{UNITS_DAYS_OR_SECONDS} növekszik
+STR_TOWN_VIEW_TOWN_GROWS_EVERY_FUNDED                           :{BLACK}{BLACK}A település {ORANGE}{UNITS_DAYS_OR_SECONDS} növekszik (támogatást kapott)
 STR_TOWN_VIEW_TOWN_GROW_STOPPED                                 :{BLACK}A település {RED}nem{BLACK} növekszik
 STR_TOWN_VIEW_NOISE_IN_TOWN                                     :{BLACK}Zajszint a városban: {ORANGE}{COMMA}{BLACK}  max: {ORANGE}{COMMA}
 STR_TOWN_VIEW_CENTER_TOOLTIP                                    :{BLACK}A fő nézetet a városra állítja. Ctrl+kattintás esetén új nézetet nyit a város pozíciójára
@@ -3676,6 +3710,8 @@ STR_LOCAL_AUTHORITY_ACTION_BRIBE                                :Önkormányzat 
 STR_LOCAL_AUTHORITY_ACTION_TOOLTIP_SMALL_ADVERTISING            :{PUSH_COLOUR}{YELLOW}Kis helyi reklámhadjárat indítása, hogy több utast és rakományt vonzz a megállóidba.{}A város körül kis területen ideiglenesen javítja az állomásaid minősítését.{}{POP_COLOUR}Ára: {CURRENCY_LONG}
 STR_LOCAL_AUTHORITY_ACTION_TOOLTIP_MEDIUM_ADVERTISING           :{PUSH_COLOUR}{YELLOW}Közepes helyi reklámhadjárat indítása, hogy több utast és rakományt vonzz a megállóidba.{}A város körül közepes méretű területen ideiglenesen javítja az állomásaid minősítését.{}{POP_COLOUR}Ára: {CURRENCY_LONG}
 STR_LOCAL_AUTHORITY_ACTION_TOOLTIP_LARGE_ADVERTISING            :{PUSH_COLOUR}{YELLOW}Nagy helyi reklámhadjárat indítása, hogy több utast és rakományt vonzz a megállóidba.{}A város körül nagy területen ideiglenesen javítja az állomásaid minősítését.{}{POP_COLOUR}Ára: {CURRENCY_LONG}
+STR_LOCAL_AUTHORITY_ACTION_TOOLTIP_ROAD_RECONSTRUCTION_MONTHS   :{PUSH_COLOUR}{YELLOW}A városi úthálózat felújításának finanszírozása.{}Akár 6 hónapig is jelentős fennakadást okoz a közúti forgalomban.{}{POP_COLOUR}Ára: {CURRENCY_LONG}
+STR_LOCAL_AUTHORITY_ACTION_TOOLTIP_ROAD_RECONSTRUCTION_MINUTES  :{PUSH_COLOUR}{YELLOW}A városi úthálózat felújításának finanszírozása.{}Akár 6 percig is jelentős fennakadást okoz a közúti forgalomban.{}{POP_COLOUR}Ára: {CURRENCY_LONG}
 STR_LOCAL_AUTHORITY_ACTION_TOOLTIP_STATUE_OF_COMPANY            :{PUSH_COLOUR}{YELLOW}Szobor építése a vállalatod tiszteletére.{}Javítja az állomásaid értékelését a városban.{}{POP_COLOUR}Ára: {CURRENCY_LONG}
 STR_LOCAL_AUTHORITY_ACTION_TOOLTIP_NEW_BUILDINGS                :{PUSH_COLOUR}{YELLOW}Új kereskedelmi épületek építésének támogatása a városban.{}A város egy ideig gyorsabban fog növekedni.{}{POP_COLOUR}Ára: {CURRENCY_LONG}
 STR_LOCAL_AUTHORITY_ACTION_TOOLTIP_BRIBE                        :{PUSH_COLOUR}{YELLOW}A megítélésed növelése az önkormányzat megvesztegetésével, komoly büntetést kockáztatva, ha az kiderül.Ezzel megszüntetheted egy versenytársad kizárólagos szállítási jogát is.{}{POP_COLOUR}Ára: {CURRENCY_LONG}
@@ -3756,7 +3792,12 @@ STR_STATION_LIST_WAYPOINT                                       :{YELLOW}{WAYPOI
 STR_STATION_LIST_NONE                                           :{YELLOW}- Nincs -
 STR_STATION_LIST_SELECT_ALL_FACILITIES                          :{BLACK}Minden szállítóegység kiválasztása
 STR_STATION_LIST_CARGO_FILTER_ALL_AND_NO_RATING                 :Minden rakománytípus és semmi minősítés
+STR_STATION_LIST_CARGO_FILTER_MULTIPLE                          :Többféle rakománytípus
+STR_STATION_LIST_CARGO_FILTER_NO_CARGO_TYPES                    :Semmilyen rakománytípus
 STR_STATION_LIST_CARGO_FILTER_ONLY_NO_RATING                    :Csak rakományértékelés nélkül
+STR_STATION_LIST_CARGO_FILTER_SELECT_ALL                        :Összes rakománytípus és értékelés nélküli
+STR_STATION_LIST_CARGO_FILTER_NO_RATING                         :Rakományértékelés nélkül
+STR_STATION_LIST_CARGO_FILTER_EXPAND                            :Több megjelenítése...
 
 # Station view window
 STR_STATION_VIEW_CAPTION                                        :{WHITE}{STATION} {STATION_FEATURES}
@@ -3772,6 +3813,7 @@ STR_STATION_VIEW_EXCLUSIVE_RIGHTS_COMPANY                       :{YELLOW}{COMPAN
 
 STR_STATION_VIEW_RATINGS_BUTTON                                 :{BLACK}Vélemény
 STR_STATION_VIEW_RATINGS_TOOLTIP                                :{BLACK}Vélemény megmutatása az állomásról
+STR_STATION_VIEW_SUPPLY_RATINGS_TITLE_MINUTE                    :{BLACK}Percenkénti ellátás és helyi minősítés:
 STR_STATION_VIEW_CARGO_SUPPLY_RATING                            :{WHITE}{STRING}: {YELLOW}{COMMA} / {STRING} ({COMMA}%)
 
 STR_STATION_VIEW_GROUP                                          :{BLACK}Csoportosítás
@@ -3956,6 +3998,7 @@ STR_INDUSTRY_DIRECTORY_FILTER_NONE                              :Semmi
 # Industry view
 STR_INDUSTRY_VIEW_CAPTION                                       :{WHITE}{INDUSTRY}
 STR_INDUSTRY_VIEW_PRODUCTION_LAST_MONTH_TITLE                   :{BLACK}Múlt havi termelés:
+STR_INDUSTRY_VIEW_PRODUCTION_LAST_MINUTE_TITLE                  :{BLACK}Termelés az elmúlt percben:
 STR_INDUSTRY_VIEW_TRANSPORTED                                   :{YELLOW}{CARGO_LONG}{STRING}{BLACK} ({COMMA}% elszállítva)
 STR_INDUSTRY_VIEW_LOCATION_TOOLTIP                              :{BLACK}A fő nézetet a gazdasági épületre állítja. Ctrl+kattintás esetén új látképet nyit a gazdasági épület pozíciójára
 STR_INDUSTRY_VIEW_PRODUCTION_LEVEL                              :{BLACK}Termelési szint: {YELLOW}{COMMA}%
@@ -4397,10 +4440,10 @@ STR_VEHICLE_STATUS_HEADING_FOR_DEPOT_VEL                        :{ORANGE}Útban 
 STR_VEHICLE_STATUS_HEADING_FOR_DEPOT_SERVICE_VEL                :{LTBLUE}Javítás {DEPOT}ban, {VELOCITY}
 STR_VEHICLE_STATUS_HEADING_FOR_DEPOT_UNBUNCH_VEL                :{LTBLUE}Csoport bontás és szervizelés itt: {DEPOT}, {VELOCITY}
 
-STR_VEHICLE_STATUS_CANNOT_REACH_STATION_VEL                     :{LTBLUE}{STATION} nem elérhető, {VELOCITY}
-STR_VEHICLE_STATUS_CANNOT_REACH_WAYPOINT_VEL                    :{LTBLUE}{WAYPOINT} nem elérhető, {VELOCITY}
-STR_VEHICLE_STATUS_CANNOT_REACH_DEPOT_VEL                       :{ORANGE}{DEPOT} nem elérhető, {VELOCITY}
-STR_VEHICLE_STATUS_CANNOT_REACH_DEPOT_SERVICE_VEL               :{LTBLUE}{DEPOT} nem elérhető, {VELOCITY}
+STR_VEHICLE_STATUS_CANNOT_REACH_STATION_VEL                     :{LTBLUE}{1:VELOCITY} - {0:STATION} nem elérhető
+STR_VEHICLE_STATUS_CANNOT_REACH_WAYPOINT_VEL                    :{LTBLUE}{1:VELOCITY} - {0:WAYPOINT} nem elérhető,
+STR_VEHICLE_STATUS_CANNOT_REACH_DEPOT_VEL                       :{ORANGE}{1:VELOCITY} - {0:DEPOT} nem elérhető
+STR_VEHICLE_STATUS_CANNOT_REACH_DEPOT_SERVICE_VEL               :{LTBLUE}{1:VELOCITY} - {0:DEPOT} nem elérhető
 
 # Vehicle stopped/started animations
 ###length 2
@@ -4446,7 +4489,11 @@ STR_VEHICLE_INFO_FEEDER_CARGO_VALUE                             :{BLACK}Szállí
 STR_VEHICLE_DETAILS_SERVICING_INTERVAL_DAYS                     :{BLACK}Javítási időköz: {LTBLUE}{COMMA}{NBSP}nap{BLACK}   {STRING}
 STR_VEHICLE_DETAILS_SERVICING_INTERVAL_MINUTES                  :{BLACK}Szervizintervallum: {LTBLUE}{COMMA}{NBSP}perc{BLACK}   {STRING}
 STR_VEHICLE_DETAILS_SERVICING_INTERVAL_PERCENT                  :{BLACK}Szervizintervallum: {LTBLUE}{COMMA}%{BLACK}   {STRING}
+STR_VEHICLE_DETAILS_LAST_SERVICE_DATE                           :Utolsó javítás: {LTBLUE}{DATE_LONG}
+STR_VEHICLE_DETAILS_LAST_SERVICE_MINUTES_AGO                    :Utolsó javítás: {LTBLUE}{NUM} perce
 STR_VEHICLE_DETAILS_INCREASE_SERVICING_INTERVAL_TOOLTIP_DAYS    :{BLACK}Szervizintervallum növelése 10 nappal. Ctrl+kattintással 5 nappal növelhető a szervizintervallum
+STR_VEHICLE_DETAILS_INCREASE_SERVICING_INTERVAL_TOOLTIP_MINUTES :{BLACK}Szervizintervallum növelése 5 perccel. Ctrl+kattintással 1 perccel növelhető a szervizintervallum
+STR_VEHICLE_DETAILS_INCREASE_SERVICING_INTERVAL_TOOLTIP_PERCENT :{BLACK}Szervizintervallum növelése 10 százalékkal. Ctrl+kattintással 5 százalékkal növelhető a szervizintervallum
 STR_VEHICLE_DETAILS_DECREASE_SERVICING_INTERVAL_TOOLTIP_DAYS    :{BLACK}Szervizintervallum csökkentése 10 nappal. Ctrl+kattintással 5 nappal csökkenthető a szervizintervallum
 STR_VEHICLE_DETAILS_DECREASE_SERVICING_INTERVAL_TOOLTIP_MINUTES :{BLACK}Szervizintervallum csökkentése 5 perccel. Ctrl+kattintással 1 perccel csökkenthető a szervizintervallum
 STR_VEHICLE_DETAILS_DECREASE_SERVICING_INTERVAL_TOOLTIP_PERCENT :{BLACK}Szervizintervallum csökkentése 10 százalékkal. Ctrl+kattintással 5 százalékkal csökkenthető a szervizintervallum
@@ -4706,9 +4753,12 @@ STR_TIMETABLE_STATUS_ON_TIME                                    :{BLACK}Ez a já
 STR_TIMETABLE_STATUS_LATE                                       :{BLACK}Ez a jármű jelenleg {STRING} eltéréssel, késéssel közlekedik
 STR_TIMETABLE_STATUS_EARLY                                      :{BLACK}Ez a jármű jelenleg {STRING} eltéréssel, korábban közlekedik
 STR_TIMETABLE_STATUS_NOT_STARTED                                :{BLACK}A menetrend még nincs megkezdve
+STR_TIMETABLE_STATUS_START_AT_DATE                              :{BLACK}A menetrend ekkor kezdődik: {STRING}
+STR_TIMETABLE_STATUS_START_IN_SECONDS                           :{BLACK}A menetrend {COMMA} másodperc múlva kezdődik
 
 STR_TIMETABLE_START                                             :{BLACK}Menetrend megkezdése
 
+STR_TIMETABLE_START_SECONDS_QUERY                               :Másodpercek a menetrend kezdetéig
 
 STR_TIMETABLE_CHANGE_TIME                                       :{BLACK}Idő megváltoztatása
 STR_TIMETABLE_WAIT_TIME_TOOLTIP                                 :{BLACK}A kijelölt utasítás végrehajtási idejét változtatja meg. Ctrl+kattintással beállítod az időt az összes utasításhoz.
@@ -5095,6 +5145,10 @@ STR_ERROR_DEPOT_WRONG_DEPOT_TYPE                                :Rossz járműte
 
 # Depot unbunching related errors
 STR_ERROR_UNBUNCHING_ONLY_ONE_ALLOWED                           :{WHITE}... csak egy csoportbontási utasítás lehetséges
+STR_ERROR_UNBUNCHING_NO_FULL_LOAD                               :{WHITE}... a telerakodás utasítás nem használható a csoportbontás utasításnál
+STR_ERROR_UNBUNCHING_NO_UNBUNCHING_FULL_LOAD                    :{WHITE}... a csoportbontás nem lehetséges egy telerakodás utasítással rendelkező járműnél
+STR_ERROR_UNBUNCHING_NO_CONDITIONAL                             :{WHITE}... a feltételes utasítások nem használhatóak a csoportbontás utasításnál
+STR_ERROR_UNBUNCHING_NO_UNBUNCHING_CONDITIONAL                  :{WHITE}... a csoportbontás nem lehetséges egy feltételes utasítással rendelkező járműnél
 
 # Autoreplace related errors
 STR_ERROR_TRAIN_TOO_LONG_AFTER_REPLACEMENT                      :{WHITE}{VEHICLE} túl hosszú a csere után
@@ -5829,6 +5883,7 @@ STR_STATION_NAME                                                :{STATION}
 STR_TOWN_NAME                                                   :{TOWN}
 STR_VEHICLE_NAME                                                :{VEHICLE}
 STR_WAYPOINT_NAME                                               :{WAYPOINT}
+
 
 STR_JUST_CARGO                                                  :{CARGO_LONG}
 STR_JUST_RIGHT_ARROW                                            :{RIGHT_ARROW}

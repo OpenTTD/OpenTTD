@@ -1117,6 +1117,7 @@ STR_CURRENCY_DECREASE_EXCHANGE_RATE_TOOLTIP                     :{BLACK}减少�
 STR_CURRENCY_INCREASE_EXCHANGE_RATE_TOOLTIP                     :{BLACK}增加英磅(£)兑换自定义货币的数量
 STR_CURRENCY_SET_EXCHANGE_RATE_TOOLTIP                          :{BLACK}设置自定义货币与英磅(£)的兑换比率
 
+
 STR_CURRENCY_PREFIX                                             :{LTBLUE}前缀： {ORANGE}{STRING}
 STR_CURRENCY_SET_CUSTOM_CURRENCY_PREFIX_TOOLTIP                 :{BLACK}设置自定义货币的首字
 STR_CURRENCY_SUFFIX                                             :{LTBLUE}后缀： {ORANGE}{STRING}
@@ -3735,7 +3736,7 @@ STR_STORY_BOOK_INVALID_GOAL_REF                                 :{RED}无效的�
 
 # Station list window
 STR_STATION_LIST_TOOLTIP                                        :{BLACK}车站名称{}点击可将屏幕中心移动到车站所在位置. 单击的同时按住Ctrl会在新视点中显示车站位置
-STR_STATION_LIST_USE_CTRL_TO_SELECT_MORE                        :{BLACK}按住 CTRL 可以同时选择多项
+STR_STATION_LIST_USE_CTRL_TO_SELECT_MORE                        :{BLACK}按住 <Ctrl> 键点选以选择多个项目
 STR_STATION_LIST_CAPTION                                        :{WHITE}{COMPANY} - {COMMA} 车站
 STR_STATION_LIST_STATION                                        :{YELLOW}{STATION} {STATION_FEATURES}
 STR_STATION_LIST_WAYPOINT                                       :{YELLOW}{WAYPOINT}
@@ -4320,7 +4321,7 @@ STR_REPLACE_MAGLEV_VEHICLES                                     :磁悬浮列车
 STR_REPLACE_ROAD_VEHICLES                                       :路面交通工具
 STR_REPLACE_TRAM_VEHICLES                                       :电车
 
-STR_REPLACE_REMOVE_WAGON                                        :{BLACK}清理挂车（{STRING}）：{ORANGE}{STRING}
+STR_REPLACE_REMOVE_WAGON                                        :{BLACK}移除车厢（{STRING}）：{ORANGE}{STRING}
 STR_REPLACE_REMOVE_WAGON_HELP                                   :{BLACK}当车辆升级可能造成列车变长时{}自动从最前面的挂车去掉若干节以保证列车长度不变
 STR_REPLACE_REMOVE_WAGON_GROUP_HELP                             :{STRING}. 按下CTRL并点击来同样应用于子组
 
@@ -4442,8 +4443,8 @@ STR_VEHICLE_INFO_CAPACITY_CAPACITY                              :{BLACK}运载�
 STR_VEHICLE_INFO_FEEDER_CARGO_VALUE                             :{BLACK}转运成本： {LTBLUE}{CURRENCY_LONG}
 
 STR_VEHICLE_DETAILS_SERVICING_INTERVAL_DAYS                     :{BLACK}每 {LTBLUE}{COMMA}{NBSP}天进行维护{BLACK}   上次维护日期：{LTBLUE}{STRING}
-STR_VEHICLE_DETAILS_SERVICING_INTERVAL_MINUTES                  :{BLACK}服务间隔：{LTBLUE}{COMMA}{NBSP}分钟{BLACK}   {STRING}
-STR_VEHICLE_DETAILS_SERVICING_INTERVAL_PERCENT                  :{BLACK}保养周期：{LTBLUE}{COMMA}%{BLACK}   上次保养：{LTBLUE}{STRING}
+STR_VEHICLE_DETAILS_SERVICING_INTERVAL_MINUTES                  :{BLACK}维修间隔：{LTBLUE}{COMMA}{NBSP}分钟{BLACK}   {STRING}
+STR_VEHICLE_DETAILS_SERVICING_INTERVAL_PERCENT                  :{BLACK}维护间隔：{LTBLUE}{COMMA}%{BLACK} {STRING}
 STR_VEHICLE_DETAILS_LAST_SERVICE_DATE                           :最近保养：{LTBLUE}{DATE_LONG}
 STR_VEHICLE_DETAILS_LAST_SERVICE_MINUTES_AGO                    :最近保养：{LTBLUE}{NUM}{NBSP}分钟前
 STR_VEHICLE_DETAILS_INCREASE_SERVICING_INTERVAL_TOOLTIP_DAYS    :将维修间隔增大 10 天。按住 <Ctrl> 点击可将维修间隔增大 5 天。
@@ -4775,7 +4776,7 @@ STR_AI_DEBUG_MATCH_CASE                                         :{BLACK}符合�
 STR_AI_DEBUG_MATCH_CASE_TOOLTIP                                 :{BLACK}切换对比AI 记录信息是否与断点字符串相符时是否要符合大小写
 STR_AI_DEBUG_CONTINUE                                           :{BLACK}继续
 STR_AI_DEBUG_CONTINUE_TOOLTIP                                   :{BLACK}取消暂停AI
-STR_AI_DEBUG_SELECT_AI_TOOLTIP                                  :{BLACK}查看此AI的调试输出。按住Ctrl键点选以打开新窗口
+STR_AI_DEBUG_SELECT_AI_TOOLTIP                                  :{BLACK}查看此 AI 的调试输出。按住 <Ctrl> 操作以打开新窗口。
 STR_AI_GAME_SCRIPT                                              :{BLACK}游戏脚本
 STR_AI_GAME_SCRIPT_TOOLTIP                                      :{BLACK}检查游戏脚本日志。按住Ctrl键点选以打开新窗口
 
@@ -5806,6 +5807,7 @@ STR_STATION_NAME                                                :{STATION}
 STR_TOWN_NAME                                                   :{TOWN}
 STR_VEHICLE_NAME                                                :{VEHICLE}
 STR_WAYPOINT_NAME                                               :{WAYPOINT}
+
 
 STR_JUST_CARGO                                                  :{CARGO_LONG}
 STR_JUST_RIGHT_ARROW                                            :{RIGHT_ARROW}

@@ -1117,6 +1117,7 @@ STR_CURRENCY_DECREASE_EXCHANGE_RATE_TOOLTIP                     :{BLACK}Pienenn�
 STR_CURRENCY_INCREASE_EXCHANGE_RATE_TOOLTIP                     :{BLACK}Suurenna vaihtokurssia verrattuna puntaan (£)
 STR_CURRENCY_SET_EXCHANGE_RATE_TOOLTIP                          :{BLACK}Aseta vaihtokurssi valuutallesi verrattuna puntaan (£)
 
+
 STR_CURRENCY_PREFIX                                             :{LTBLUE}Etuliite: {ORANGE}{STRING}
 STR_CURRENCY_SET_CUSTOM_CURRENCY_PREFIX_TOOLTIP                 :{BLACK}Valitse alkuliite valuutallesi
 STR_CURRENCY_SUFFIX                                             :{LTBLUE}Jälkiliite: {ORANGE}{STRING}
@@ -1271,10 +1272,10 @@ STR_CONFIG_SETTING_INFINITE_MONEY                               :Loputon raha: {
 STR_CONFIG_SETTING_INFINITE_MONEY_HELPTEXT                      :Salli rajaton rahankäyttö ja estä yritysten konkurssit
 
 STR_CONFIG_SETTING_MAXIMUM_INITIAL_LOAN                         :Suurin mahdollinen laina alussa: {STRING}
-STR_CONFIG_SETTING_MAXIMUM_INITIAL_LOAN_HELPTEXT                :Suurin mahdollinen yhtiön ottama laina (ottamatta huomioon inflaatiota)
+STR_CONFIG_SETTING_MAXIMUM_INITIAL_LOAN_HELPTEXT                :Enimmäissumma, jonka yritys voi lainata (ottamatta huomioon inflaatiota). Jos tämä on ”ei lainaa”, rahaa ei ole käytettävissä ilman peliskriptiä tai ”loputon raha” -asetusta.
 STR_CONFIG_SETTING_MAXIMUM_INITIAL_LOAN_VALUE                   :{CURRENCY_LONG}
 ###setting-zero-is-special
-STR_CONFIG_SETTING_MAXIMUM_INITIAL_LOAN_DISABLED                :Ei lainaa {RED}Vaatii peliskriptin, joka tarjoaa alkupääoman
+STR_CONFIG_SETTING_MAXIMUM_INITIAL_LOAN_DISABLED                :Ei lainaa
 
 STR_CONFIG_SETTING_INTEREST_RATE                                :Korko: {STRING}
 STR_CONFIG_SETTING_INTEREST_RATE_HELPTEXT                       :Lainan korko; ohjaa myös inflaatiota mikäli käytössä
@@ -5806,6 +5807,7 @@ STR_STATION_NAME                                                :{STATION}
 STR_TOWN_NAME                                                   :{TOWN}
 STR_VEHICLE_NAME                                                :{VEHICLE}
 STR_WAYPOINT_NAME                                               :{WAYPOINT}
+
 
 STR_JUST_CARGO                                                  :{CARGO_LONG}
 STR_JUST_RIGHT_ARROW                                            :{RIGHT_ARROW}

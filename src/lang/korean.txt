@@ -1118,6 +1118,7 @@ STR_CURRENCY_DECREASE_EXCHANGE_RATE_TOOLTIP                     :{BLACK}(1 파�
 STR_CURRENCY_INCREASE_EXCHANGE_RATE_TOOLTIP                     :{BLACK}(1 파운드(£)에 대한) 사용자 화폐 단위 양을 증가시킵니다
 STR_CURRENCY_SET_EXCHANGE_RATE_TOOLTIP                          :{BLACK}1 파운드(£)에 해당하는 사용자 화폐 단위의 환율을 설정하십시오
 
+
 STR_CURRENCY_PREFIX                                             :{LTBLUE}접두어: {ORANGE}{STRING}
 STR_CURRENCY_SET_CUSTOM_CURRENCY_PREFIX_TOOLTIP                 :{BLACK}사용자 화폐 단위 앞에 붙는 문구를 설정하십시오
 STR_CURRENCY_SUFFIX                                             :{LTBLUE}접미어: {ORANGE}{STRING}
@@ -5807,6 +5808,7 @@ STR_STATION_NAME                                                :{STATION}
 STR_TOWN_NAME                                                   :{TOWN}
 STR_VEHICLE_NAME                                                :{VEHICLE}
 STR_WAYPOINT_NAME                                               :{WAYPOINT}
+
 
 STR_JUST_CARGO                                                  :{CARGO_LONG}
 STR_JUST_RIGHT_ARROW                                            :{RIGHT_ARROW}

@@ -1144,6 +1144,7 @@ STR_CURRENCY_DECREASE_EXCHANGE_RATE_TOOLTIP                     :{BLACK}Langeta 
 STR_CURRENCY_INCREASE_EXCHANGE_RATE_TOOLTIP                     :{BLACK}Tõsta oma valuuta väärtust naela (£) suhtes
 STR_CURRENCY_SET_EXCHANGE_RATE_TOOLTIP                          :{BLACK}Määra oma valuuta kurss naela (£) suhtes
 
+
 STR_CURRENCY_PREFIX                                             :{LTBLUE}Eesliide: {ORANGE}{STRING}
 STR_CURRENCY_SET_CUSTOM_CURRENCY_PREFIX_TOOLTIP                 :{BLACK}Määra oma valuuta eesliide
 STR_CURRENCY_SUFFIX                                             :{LTBLUE}Järelliide: {ORANGE}{STRING}
@@ -5722,6 +5723,7 @@ STR_STATION_NAME                                                :{STATION}
 STR_TOWN_NAME                                                   :{TOWN}
 STR_VEHICLE_NAME                                                :{VEHICLE}
 STR_WAYPOINT_NAME                                               :{WAYPOINT}
+
 
 STR_JUST_CARGO                                                  :{CARGO_LONG}
 STR_JUST_CHECKMARK                                              :{CHECKMARK}

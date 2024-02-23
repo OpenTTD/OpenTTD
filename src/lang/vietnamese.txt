@@ -1117,6 +1117,7 @@ STR_CURRENCY_DECREASE_EXCHANGE_RATE_TOOLTIP                     :{BLACK}Giảm t
 STR_CURRENCY_INCREASE_EXCHANGE_RATE_TOOLTIP                     :{BLACK}Tăng tỉ giá tiền của bạn đối với 1 Pound (£)
 STR_CURRENCY_SET_EXCHANGE_RATE_TOOLTIP                          :{BLACK}Điều chỉnh tỉ giá tiền của bạn đối với 1 Pound (£)
 
+
 STR_CURRENCY_PREFIX                                             :{LTBLUE}Tiền tố: {ORANGE}{STRING}
 STR_CURRENCY_SET_CUSTOM_CURRENCY_PREFIX_TOOLTIP                 :{BLACK}Chỉnh tiếp đầu ngữ cho tiền tệ của bạn
 STR_CURRENCY_SUFFIX                                             :{LTBLUE}Hậu tố: {ORANGE}{STRING}
@@ -1271,10 +1272,10 @@ STR_CONFIG_SETTING_INFINITE_MONEY                               :Tiền vô hạ
 STR_CONFIG_SETTING_INFINITE_MONEY_HELPTEXT                      :Cho phép chi tiêu không giới hạn và tắt bỏ việc phá sản của các công ty
 
 STR_CONFIG_SETTING_MAXIMUM_INITIAL_LOAN                         :Khoảng vay khởi nghiệp tối đa: {STRING}
-STR_CONFIG_SETTING_MAXIMUM_INITIAL_LOAN_HELPTEXT                :Hạn mức tối đa một công ty có thể vay (không tính lạm phát)
+STR_CONFIG_SETTING_MAXIMUM_INITIAL_LOAN_HELPTEXT                :Hạn mức vay khởi nghiệp tối đa một công ty có thể vay (không tính lạm phát). Nếu chọn "Không có khoản vay", tiền sẽ không có sẵn trừ khi được cung cấp bằng Game Script hoặc thiêt lập "Tiền vô hạn".
 STR_CONFIG_SETTING_MAXIMUM_INITIAL_LOAN_VALUE                   :{CURRENCY_LONG}
 ###setting-zero-is-special
-STR_CONFIG_SETTING_MAXIMUM_INITIAL_LOAN_DISABLED                :Không có khoản vay {RED}Cần Game Script để cung cấp khoảng vốn ban đầu
+STR_CONFIG_SETTING_MAXIMUM_INITIAL_LOAN_DISABLED                :Không có khoản vay
 
 STR_CONFIG_SETTING_INTEREST_RATE                                :Lãi suất vay: {STRING}
 STR_CONFIG_SETTING_INTEREST_RATE_HELPTEXT                       :Lãi xuất vay; ảnh hưởng tới cả lạm phát nếu bật tùy chọn đó
@@ -3560,7 +3561,7 @@ STR_NEWGRF_BROKEN                                               :{WHITE}Hoạt �
 STR_NEWGRF_BROKEN_POWERED_WAGON                                 :{WHITE}Trạng thái đầu kéo '{1:ENGINE}' được thay đổi khi không ở trong xưởng sửa chữa.
 STR_NEWGRF_BROKEN_VEHICLE_LENGTH                                :{WHITE}Nó cắt ngắn độ dài của đoàn tàu '{1:ENGINE}' nếu không ở trong xưởng.
 STR_NEWGRF_BROKEN_CAPACITY                                      :{WHITE}Sức chứa của phương tiện bị thay đổi '{1:ENGINE}' khi không ở trong xưởng hoặc vì cải biến
-STR_BROKEN_VEHICLE_LENGTH                                       :{WHITE}Đoàn tàu '{VEHICLE}' của '{COMPANY}' có độ dài không hợp lệ. Có thể gây sự cố với NewGRFs. Ván chơi có thể mất đồng bộ hoặc bị treo
+STR_BROKEN_VEHICLE_LENGTH                                       :{WHITE}Đoàn tàu '{VEHICLE}' của '{COMPANY}' có độ dài không hợp lệ. Sự cố có thể có căn nguyên từ NewGRFs. Ván chơi có thể mất đồng bộ hoặc bị treo
 
 STR_NEWGRF_BUGGY                                                :{WHITE}NewGRF '{0:STRING}' không hợp lệ.
 STR_NEWGRF_BUGGY_ARTICULATED_CARGO                              :{WHITE}Danh mục hàng hoá/cải biến được cho '{1:ENGINE}' khác với danh mục mua được sau khi đã có. Việc này khiến cho việc tự thay thế hay là tự cải biến không chính xác.
@@ -5806,6 +5807,7 @@ STR_STATION_NAME                                                :{STATION}
 STR_TOWN_NAME                                                   :{TOWN}
 STR_VEHICLE_NAME                                                :{VEHICLE}
 STR_WAYPOINT_NAME                                               :{WAYPOINT}
+
 
 STR_JUST_CARGO                                                  :{CARGO_LONG}
 STR_JUST_RIGHT_ARROW                                            :{RIGHT_ARROW}

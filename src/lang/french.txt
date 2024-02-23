@@ -1118,6 +1118,7 @@ STR_CURRENCY_DECREASE_EXCHANGE_RATE_TOOLTIP                     :{BLACK}Réduire
 STR_CURRENCY_INCREASE_EXCHANGE_RATE_TOOLTIP                     :{BLACK}Augmenter le montant de cette devise pour une livre (£)
 STR_CURRENCY_SET_EXCHANGE_RATE_TOOLTIP                          :{BLACK}Définir le taux de change de cette devise pour une livre (£)
 
+
 STR_CURRENCY_PREFIX                                             :{LTBLUE}Préfixe{NBSP}: {ORANGE}{STRING}
 STR_CURRENCY_SET_CUSTOM_CURRENCY_PREFIX_TOOLTIP                 :{BLACK}Définir le préfixe pour cette devise
 STR_CURRENCY_SUFFIX                                             :{LTBLUE}Suffixe{NBSP}: {ORANGE}{STRING}
@@ -5807,6 +5808,7 @@ STR_STATION_NAME                                                :{STATION}
 STR_TOWN_NAME                                                   :{TOWN}
 STR_VEHICLE_NAME                                                :{VEHICLE}
 STR_WAYPOINT_NAME                                               :{WAYPOINT}
+
 
 STR_JUST_CARGO                                                  :{CARGO_LONG}
 STR_JUST_RIGHT_ARROW                                            :{RIGHT_ARROW}

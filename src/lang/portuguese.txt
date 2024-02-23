@@ -1118,6 +1118,7 @@ STR_CURRENCY_DECREASE_EXCHANGE_RATE_TOOLTIP                     :{BLACK}Diminuir
 STR_CURRENCY_INCREASE_EXCHANGE_RATE_TOOLTIP                     :{BLACK}Aumentar a quantidade da sua moeda para uma Libra (£)
 STR_CURRENCY_SET_EXCHANGE_RATE_TOOLTIP                          :{BLACK}Definir a taxa de câmbio da sua moeda para uma Libra (£)
 
+
 STR_CURRENCY_PREFIX                                             :{LTBLUE}Prefixo: {ORANGE}{STRING}
 STR_CURRENCY_SET_CUSTOM_CURRENCY_PREFIX_TOOLTIP                 :{BLACK}Definir o prefixo para a sua moeda
 STR_CURRENCY_SUFFIX                                             :{LTBLUE}Sufixo: {ORANGE}{STRING}
@@ -5807,6 +5808,7 @@ STR_STATION_NAME                                                :{STATION}
 STR_TOWN_NAME                                                   :{TOWN}
 STR_VEHICLE_NAME                                                :{VEHICLE}
 STR_WAYPOINT_NAME                                               :{WAYPOINT}
+
 
 STR_JUST_CARGO                                                  :{CARGO_LONG}
 STR_JUST_RIGHT_ARROW                                            :{RIGHT_ARROW}

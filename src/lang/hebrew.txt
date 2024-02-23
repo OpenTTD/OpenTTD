@@ -976,6 +976,7 @@ STR_CURRENCY_DECREASE_EXCHANGE_RATE_TOOLTIP                     :{BLACK} הקט�
 STR_CURRENCY_INCREASE_EXCHANGE_RATE_TOOLTIP                     :{BLACK}הגדל את ערך המטבע שלך עבור פאונד (£) אחד
 STR_CURRENCY_SET_EXCHANGE_RATE_TOOLTIP                          :{BLACK}קבע את שער החליפין של המטבע שלך עם פאונד (£) אחד
 
+
 STR_CURRENCY_PREFIX                                             :{LTBLUE}תחילית: {ORANGE}{STRING}
 STR_CURRENCY_SET_CUSTOM_CURRENCY_PREFIX_TOOLTIP                 :{BLACK}קבע את המחרוזת התחילית עבור המטבע שלך
 STR_CURRENCY_SUFFIX                                             :{LTBLUE}סופית: {ORANGE}{STRING}
@@ -5203,6 +5204,7 @@ STR_STATION_NAME                                                :{STATION}
 STR_TOWN_NAME                                                   :{TOWN}
 STR_VEHICLE_NAME                                                :{VEHICLE}
 STR_WAYPOINT_NAME                                               :{WAYPOINT}
+
 
 STR_JUST_CARGO                                                  :{CARGO_LONG}
 STR_JUST_CHECKMARK                                              :{CHECKMARK}

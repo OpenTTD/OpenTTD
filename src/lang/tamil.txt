@@ -1080,6 +1080,7 @@ STR_CURRENCY_DECREASE_EXCHANGE_RATE_TOOLTIP                     :{BLACK}உங�
 STR_CURRENCY_INCREASE_EXCHANGE_RATE_TOOLTIP                     :{BLACK}உங்கள் நாணய மதிப்பினை ஒரு பவுண்டு (£) அளவு அதிகரிக்கவும்
 STR_CURRENCY_SET_EXCHANGE_RATE_TOOLTIP                          :{BLACK}உங்களது நாணயத்தின் நாணயமாற்று விகிதத்தை ஒரு பவுண்டாக (£) அமைக்கவும்
 
+
 STR_CURRENCY_PREFIX                                             :{LTBLUE}முன் ஒட்டு: {ORANGE}{STRING}
 STR_CURRENCY_SET_CUSTOM_CURRENCY_PREFIX_TOOLTIP                 :{BLACK}உங்கள் நாணயத்தின் முன் ஒட்டத்தினை அமையுங்கள்
 STR_CURRENCY_SUFFIX                                             :{LTBLUE}பின் ஒட்டு: {ORANGE}{STRING}
@@ -5372,6 +5373,7 @@ STR_STATION_NAME                                                :{STATION}
 STR_TOWN_NAME                                                   :{TOWN}
 STR_VEHICLE_NAME                                                :{VEHICLE}
 STR_WAYPOINT_NAME                                               :{WAYPOINT}
+
 
 STR_JUST_CARGO                                                  :{CARGO_LONG}
 STR_JUST_RIGHT_ARROW                                            :{RIGHT_ARROW}

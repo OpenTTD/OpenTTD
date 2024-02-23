@@ -935,6 +935,7 @@ STR_CURRENCY_DECREASE_EXCHANGE_RATE_TOOLTIP                     :{BLACK}کم ک�
 STR_CURRENCY_INCREASE_EXCHANGE_RATE_TOOLTIP                     :{BLACK}زیاد کردن ارزش واحد پول در ازای یک پوند (£)
 STR_CURRENCY_SET_EXCHANGE_RATE_TOOLTIP                          :{BLACK}نرخ ارز واحد پول را در ازای یک پوند تنظیم کنید (£)
 
+
 STR_CURRENCY_PREFIX                                             :{LTBLUE}پیشوند: {ORANGE}{STRING}
 STR_CURRENCY_SET_CUSTOM_CURRENCY_PREFIX_TOOLTIP                 :{BLACK}پیشوند واحد پولتان را انتخاب کنید
 STR_CURRENCY_SUFFIX                                             :{LTBLUE}پسوند: {ORANGE}{STRING}
@@ -4228,6 +4229,7 @@ STR_STATION_NAME                                                :{STATION}
 STR_TOWN_NAME                                                   :{TOWN}
 STR_VEHICLE_NAME                                                :{VEHICLE}
 STR_WAYPOINT_NAME                                               :{WAYPOINT}
+
 
 STR_JUST_CARGO                                                  :{CARGO_LONG}
 STR_JUST_CHECKMARK                                              :{CHECKMARK}

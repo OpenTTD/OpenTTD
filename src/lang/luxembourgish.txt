@@ -1117,6 +1117,7 @@ STR_CURRENCY_DECREASE_EXCHANGE_RATE_TOOLTIP                     :{BLACK}Setz de 
 STR_CURRENCY_INCREASE_EXCHANGE_RATE_TOOLTIP                     :{BLACK}Setz de Betrag Suen dee fir 1 Pond (£) gebraucht gëtt erop
 STR_CURRENCY_SET_EXCHANGE_RATE_TOOLTIP                          :{BLACK}Setzt de Wiesselcours fir deng Währung fir 1 Pond (£)
 
+
 STR_CURRENCY_PREFIX                                             :{LTBLUE}Prefix: {ORANGE}{STRING}
 STR_CURRENCY_SET_CUSTOM_CURRENCY_PREFIX_TOOLTIP                 :{BLACK}Setzt de Prefix fir deng Währung
 STR_CURRENCY_SUFFIX                                             :{LTBLUE}Suffix: {ORANGE}{STRING}
@@ -5806,6 +5807,7 @@ STR_STATION_NAME                                                :{STATION}
 STR_TOWN_NAME                                                   :{TOWN}
 STR_VEHICLE_NAME                                                :{VEHICLE}
 STR_WAYPOINT_NAME                                               :{WAYPOINT}
+
 
 STR_JUST_CARGO                                                  :{CARGO_LONG}
 STR_JUST_RIGHT_ARROW                                            :{RIGHT_ARROW}

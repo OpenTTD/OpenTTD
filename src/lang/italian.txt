@@ -1119,6 +1119,7 @@ STR_CURRENCY_DECREASE_EXCHANGE_RATE_TOOLTIP                     :{BLACK}Riduce l
 STR_CURRENCY_INCREASE_EXCHANGE_RATE_TOOLTIP                     :{BLACK}Aumenta l'ammontare della valuta per una Sterlina (£)
 STR_CURRENCY_SET_EXCHANGE_RATE_TOOLTIP                          :{BLACK}Imposta il tasso di cambio della valuta per una Sterlina (£)
 
+
 STR_CURRENCY_PREFIX                                             :{LTBLUE}Prefisso: {ORANGE}{STRING}
 STR_CURRENCY_SET_CUSTOM_CURRENCY_PREFIX_TOOLTIP                 :{BLACK}Imposta il prefisso per la valuta
 STR_CURRENCY_SUFFIX                                             :{LTBLUE}Suffisso: {ORANGE}{STRING}
@@ -5847,6 +5848,7 @@ STR_STATION_NAME                                                :{STATION}
 STR_TOWN_NAME                                                   :{TOWN}
 STR_VEHICLE_NAME                                                :{VEHICLE}
 STR_WAYPOINT_NAME                                               :{WAYPOINT}
+
 
 STR_JUST_CARGO                                                  :{CARGO_LONG}
 STR_JUST_RIGHT_ARROW                                            :{RIGHT_ARROW}

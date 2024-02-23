@@ -913,6 +913,7 @@ STR_CURRENCY_DECREASE_EXCHANGE_RATE_TOOLTIP                     :{BLACK}Hækka g
 STR_CURRENCY_INCREASE_EXCHANGE_RATE_TOOLTIP                     :{BLACK}Lækka gengi miðað við pund (£)
 STR_CURRENCY_SET_EXCHANGE_RATE_TOOLTIP                          :{BLACK}Setja gengi gjaldmiðils miðað við pund (£)
 
+
 STR_CURRENCY_PREFIX                                             :{LTBLUE}Forskeyti: {ORANGE}{STRING}
 STR_CURRENCY_SET_CUSTOM_CURRENCY_PREFIX_TOOLTIP                 :{BLACK}Veldu forskeyti fyrir gjaldmiðilinn
 STR_CURRENCY_SUFFIX                                             :{LTBLUE}Viðskeyti: {ORANGE}{STRING}
@@ -4765,6 +4766,7 @@ STR_STATION_NAME                                                :{STATION}
 STR_TOWN_NAME                                                   :{TOWN}
 STR_VEHICLE_NAME                                                :{VEHICLE}
 STR_WAYPOINT_NAME                                               :{WAYPOINT}
+
 
 STR_JUST_CARGO                                                  :{CARGO_LONG}
 STR_JUST_CHECKMARK                                              :{CHECKMARK}

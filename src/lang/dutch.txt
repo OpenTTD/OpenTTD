@@ -1117,6 +1117,7 @@ STR_CURRENCY_DECREASE_EXCHANGE_RATE_TOOLTIP                     :{BLACK}Verlaag 
 STR_CURRENCY_INCREASE_EXCHANGE_RATE_TOOLTIP                     :{BLACK}Verhoog de wisselkoers van jouw munteenheid ten opzichte van het pond (£)
 STR_CURRENCY_SET_EXCHANGE_RATE_TOOLTIP                          :{BLACK}Stel de wisselkoers in van jouw munteenheid ten opzichte van het pond (£)
 
+
 STR_CURRENCY_PREFIX                                             :{LTBLUE}Voorvoegsel: {ORANGE}{STRING}
 STR_CURRENCY_SET_CUSTOM_CURRENCY_PREFIX_TOOLTIP                 :{BLACK}Stel het voorvoegsel in voor jouw munteenheid
 STR_CURRENCY_SUFFIX                                             :{LTBLUE}Achtervoegsel: {ORANGE}{STRING}
@@ -5806,6 +5807,7 @@ STR_STATION_NAME                                                :{STATION}
 STR_TOWN_NAME                                                   :{TOWN}
 STR_VEHICLE_NAME                                                :{VEHICLE}
 STR_WAYPOINT_NAME                                               :{WAYPOINT}
+
 
 STR_JUST_CARGO                                                  :{CARGO_LONG}
 STR_JUST_RIGHT_ARROW                                            :{RIGHT_ARROW}
