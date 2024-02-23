@@ -846,6 +846,8 @@ void Vehicle::PreDestructor()
 		DeleteGroupHighlightOfVehicle(this);
 	}
 
+	Company::Get(this->owner)->freeunits[this->type].ReleaseID(this->unitnumber);
+
 	if (this->type == VEH_AIRCRAFT && this->IsPrimaryVehicle()) {
 		Aircraft *a = Aircraft::From(this);
 		Station *st = GetTargetAirportIfValid(a);
@@ -1816,44 +1818,50 @@ VehicleEnterTileStatus VehicleEnterTile(Vehicle *v, TileIndex tile, int x, int y
 }
 
 /**
- * Initializes the structure. Vehicle unit numbers are supposed not to change after
- * struct initialization, except after each call to this->NextID() the returned value
- * is assigned to a vehicle.
- * @param type type of vehicle
- * @param owner owner of vehicles
+ * Find first unused unit number.
+ * This does not mark the unit number as used.
+ * @returns First unused unit number.
  */
-FreeUnitIDGenerator::FreeUnitIDGenerator(VehicleType type, CompanyID owner) : cache(nullptr), maxid(0), curid(0)
+UnitID FreeUnitIDGenerator::NextID() const
 {
-	/* Find maximum */
-	for (const Vehicle *v : Vehicle::Iterate()) {
-		if (v->type == type && v->owner == owner) {
-			this->maxid = std::max<UnitID>(this->maxid, v->unitnumber);
-		}
+	for (auto it = std::begin(this->used_bitmap); it != std::end(this->used_bitmap); ++it) {
+		BitmapStorage available = ~(*it);
+		if (available == 0) continue;
+		return static_cast<UnitID>(std::distance(std::begin(this->used_bitmap), it) * BITMAP_SIZE + FindFirstBit(available) + 1);
 	}
-
-	if (this->maxid == 0) return;
-
-	/* Reserving 'maxid + 2' because we need:
-	 * - space for the last item (with v->unitnumber == maxid)
-	 * - one free slot working as loop terminator in FreeUnitIDGenerator::NextID() */
-	this->cache = CallocT<bool>(this->maxid + 2);
-
-	/* Fill the cache */
-	for (const Vehicle *v : Vehicle::Iterate()) {
-		if (v->type == type && v->owner == owner) {
-			this->cache[v->unitnumber] = true;
-		}
-	}
+	return static_cast<UnitID>(this->used_bitmap.size() * BITMAP_SIZE + 1);
 }
 
-/** Returns next free UnitID. Supposes the last returned value was assigned to a vehicle. */
-UnitID FreeUnitIDGenerator::NextID()
+/**
+ * Use a unit number. If the unit number is not valid it is ignored.
+ * @param index Unit number to use.
+ * @returns Unit number used.
+ */
+UnitID FreeUnitIDGenerator::UseID(UnitID index)
 {
-	if (this->maxid <= this->curid) return ++this->curid;
+	if (index == 0 || index == UINT16_MAX) return index;
 
-	while (this->cache[++this->curid]) { } // it will stop, we reserved more space than needed
+	index--;
 
-	return this->curid;
+	size_t slot = index / BITMAP_SIZE;
+	if (slot >= this->used_bitmap.size()) this->used_bitmap.resize(slot + 1);
+	SetBit(this->used_bitmap[index / BITMAP_SIZE], index % BITMAP_SIZE);
+
+	return index + 1;
+}
+
+/**
+ * Release a unit number. If the unit number is not valid it is ignored.
+ * @param index Unit number to release.
+ */
+void FreeUnitIDGenerator::ReleaseID(UnitID index)
+{
+	if (index == 0 || index == UINT16_MAX) return;
+
+	index--;
+
+	assert(index / BITMAP_SIZE < this->used_bitmap.size());
+	ClrBit(this->used_bitmap[index / BITMAP_SIZE], index % BITMAP_SIZE);
 }
 
 /**
@@ -1876,9 +1884,7 @@ UnitID GetFreeUnitNumber(VehicleType type)
 	const Company *c = Company::Get(_current_company);
 	if (c->group_all[type].num_vehicle >= max_veh) return UINT16_MAX; // Currently already at the limit, no room to make a new one.
 
-	FreeUnitIDGenerator gen(type, _current_company);
-
-	return gen.NextID();
+	return c->freeunits[type].NextID();
 }
 
 

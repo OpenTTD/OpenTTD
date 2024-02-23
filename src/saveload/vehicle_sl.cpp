@@ -517,6 +517,10 @@ void AfterLoadVehicles(bool part_of_load)
 			default: break;
 		}
 
+		if (part_of_load && v->unitnumber != 0) {
+			Company::Get(v->owner)->freeunits[v->type].UseID(v->unitnumber);
+		}
+
 		v->UpdateDeltaXY();
 		v->coord.left = INVALID_COORD;
 		v->sprite_cache.old_coord.left = INVALID_COORD;
