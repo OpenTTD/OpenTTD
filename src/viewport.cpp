@@ -90,6 +90,8 @@
 #include "network/network_func.h"
 #include "framerate_type.h"
 #include "viewport_cmd.h"
+#include "company_gui.h"
+#include "road_map.h"
 
 #include <forward_list>
 #include <stack>
@@ -1036,6 +1038,33 @@ static TileHighlightType GetTileHighlightType(TileIndex t)
 		}
 	}
 
+	if (_current_company < MAX_COMPANIES && _infrastructure_window_open) {
+		/* Edge case of company owned tramway on non-company owned tile */
+		if (IsTileType(t, MP_ROAD) && !IsRoadDepot(t) && HasTileRoadType(t, RTT_TRAM)) {
+			if (IsRoadOwner(t, RTT_TRAM, _current_company)) {
+				return THT_WHITE;
+			}
+		}
+
+		switch (GetTileType(t)) {
+			case MP_ROAD:
+			case MP_RAILWAY:
+			case MP_TUNNELBRIDGE:
+			case MP_WATER:
+			{
+				CommandCost ret = CheckTileOwnership(t);
+				if (!ret.Failed()) {
+					return THT_WHITE;
+				}
+				break;
+			}
+			default:
+			{
+				return THT_NONE;
+				break;
+			}
+		}
+	}
 	return THT_NONE;
 }
 

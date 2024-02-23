@@ -26,4 +26,6 @@ void InvalidateCompanyWindows(const Company *c);
 void CloseCompanyWindows(CompanyID company);
 void DirtyCompanyInfrastructureWindows(CompanyID company);
 
+extern bool _infrastructure_window_open;
+
 #endif /* COMPANY_GUI_H */

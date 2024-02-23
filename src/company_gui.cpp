@@ -53,6 +53,7 @@
 /** Company GUI constants. */
 static void DoSelectCompanyManagerFace(Window *parent);
 static void ShowCompanyInfrastructure(CompanyID company);
+bool _infrastructure_window_open = false;
 
 /** List of revenues. */
 static const std::initializer_list<ExpensesType> _expenses_list_revenue = {
@@ -1830,6 +1831,16 @@ struct CompanyInfrastructureWindow : Window
 	RoadTypes roadtypes; ///< Valid roadtypes.
 
 	uint total_width; ///< String width of the total cost line.
+	/**
+	 * Hide the window and all its child windows, and mark them for a later deletion.
+	 * Stop white highlight of company owned infrastructure
+	 */
+	void Close([[maybe_unused]] int data) override
+	{
+		_infrastructure_window_open = false;
+		MarkWholeScreenDirty();
+		this->Window::Close();
+	}
 
 	CompanyInfrastructureWindow(WindowDesc *desc, WindowNumber window_number) : Window(desc)
 	{
@@ -2150,12 +2161,15 @@ static WindowDesc _company_infrastructure_desc(__FILE__, __LINE__,
 
 /**
  * Open the infrastructure window of a company.
+ * Signal to the viewport to highlight company owned infrastructure
  * @param company Company to show infrastructure of.
  */
 static void ShowCompanyInfrastructure(CompanyID company)
 {
 	if (!Company::IsValidID(company)) return;
 	AllocateWindowDescFront<CompanyInfrastructureWindow>(&_company_infrastructure_desc, company);
+	_infrastructure_window_open = true;
+	MarkWholeScreenDirty();
 }
 
 static constexpr NWidgetPart _nested_company_widgets[] = {
