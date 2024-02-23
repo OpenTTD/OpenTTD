@@ -1298,7 +1298,7 @@ protected:
 							if (type == _smallmap_industry_highlight) {
 								if (_smallmap_industry_highlight_state) return MKCOLOUR_XXXX(PC_WHITE.m);
 							} else {
-								return GetIndustrySpec(type)->map_colour * 0x01010101;
+								return GetIndustrySpec(type)->map_colour.m * 0x01010101;
 							}
 						}
 						/* Otherwise make it disappear */
