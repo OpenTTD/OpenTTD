@@ -1132,9 +1132,11 @@ private:
 		const RoadStopSpec *spec = RoadStopClass::Get(_roadstop_gui_settings.roadstop_class)->GetSpec(_roadstop_gui_settings.roadstop_type);
 
 		/* Raise and lower to ensure the correct widget is lowered after changing displayed orientation plane. */
-		this->RaiseWidget(WID_BROS_STATION_NE + _roadstop_gui_settings.orientation);
-		this->GetWidget<NWidgetStacked>(WID_BROS_AVAILABLE_ORIENTATIONS)->SetDisplayedPlane((spec != nullptr && HasBit(spec->flags, RSF_DRIVE_THROUGH_ONLY)) ? 1 : 0);
-		this->LowerWidget(WID_BROS_STATION_NE + _roadstop_gui_settings.orientation);
+		if (RoadTypeIsRoad(_cur_roadtype)) {
+			this->RaiseWidget(WID_BROS_STATION_NE + _roadstop_gui_settings.orientation);
+			this->GetWidget<NWidgetStacked>(WID_BROS_AVAILABLE_ORIENTATIONS)->SetDisplayedPlane((spec != nullptr && HasBit(spec->flags, RSF_DRIVE_THROUGH_ONLY)) ? 1 : 0);
+			this->LowerWidget(WID_BROS_STATION_NE + _roadstop_gui_settings.orientation);
+		}
 
 		if (_roadstop_gui_settings.orientation >= DIAGDIR_END) return;
 
