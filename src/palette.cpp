@@ -15,6 +15,7 @@
 #include "landscape_type.h"
 #include "palette_func.h"
 #include "settings_type.h"
+#include "sprite.h"
 #include "thread.h"
 
 #include "table/palettes.h"
@@ -23,7 +24,7 @@
 
 Palette _cur_palette;
 
-byte _colour_gradient[COLOUR_END][8];
+RgbMColour _colour_gradient[COLOUR_END][8];
 
 static std::recursive_mutex _palette_mutex; ///< To coordinate access to _cur_palette.
 
@@ -69,7 +70,7 @@ inline uint CrunchColour(uint c)
  * @param b2 Blue component of second colour.
  * @returns Euclidean distance between first and second colour.
  */
-static uint CalculateColourDistance(const Colour &col1, int r2, int g2, int b2)
+static uint CalculateColourDistance(const RgbaColour &col1, int r2, int g2, int b2)
 {
 	/* Euclidean colour distance for sRGB based on https://en.wikipedia.org/wiki/Color_difference#sRGB */
 	int r = (int)col1.r - (int)r2;
@@ -82,9 +83,12 @@ static uint CalculateColourDistance(const Colour &col1, int r2, int g2, int b2)
 
 /* Palette indexes for conversion. See docs/palettes/palette_key.png */
 const uint8_t PALETTE_INDEX_CC_START = 198; ///< Palette index of start of company colour remap area.
-const uint8_t PALETTE_INDEX_CC_END = PALETTE_INDEX_CC_START + 8; ///< Palette index of end of company colour remap area.
+const uint8_t PALETTE_INDEX_CC_COUNT = 8; ///< Number of colours in the remap area.
+const uint8_t PALETTE_INDEX_CC_END = PALETTE_INDEX_CC_START + PALETTE_INDEX_CC_COUNT; ///< Palette index of end of company colour remap area.
+const uint8_t PALETTE_INDEX_CC2_START = 80; ///< Palette index of start of second company colour remap area.
 const uint8_t PALETTE_INDEX_START = 1; ///< Palette index of start of defined palette.
 const uint8_t PALETTE_INDEX_END = 215; ///< Palette index of end of defined palette.
+const uint8_t PALETTE_INDEX_CC_OFFSET = 3; ///< Offset from PALETTE_INDEX_CC_START of 'main' company colour.
 
 /**
  * Find nearest colour palette index for a 32bpp pixel.
@@ -180,9 +184,9 @@ void DoPaletteAnimations()
 	palette_animation_counter += 8;
 
 	Blitter *blitter = BlitterFactory::GetCurrentBlitter();
-	const Colour *s;
+	const RgbaColour *s;
 	const ExtraPaletteValues *ev = &_extra_palette_values;
-	Colour old_val[PALETTE_ANIM_SIZE];
+	RgbaColour old_val[PALETTE_ANIM_SIZE];
 	const uint old_tc = palette_animation_counter;
 	uint j;
 
@@ -190,7 +194,7 @@ void DoPaletteAnimations()
 		palette_animation_counter = 0;
 	}
 
-	Colour *palette_pos = &_cur_palette.palette[PALETTE_ANIM_START];  // Points to where animations are taking place on the palette
+	RgbaColour *palette_pos = &_cur_palette.palette[PALETTE_ANIM_START];  // Points to where animations are taking place on the palette
 	/* Makes a copy of the current animation palette in old_val,
 	 * so the work on the current palette could be compared, see if there has been any changes */
 	memcpy(old_val, palette_pos, sizeof(old_val));
@@ -286,12 +290,200 @@ void DoPaletteAnimations()
  * @param threshold Background colour brightness threshold below which the background is considered dark and TC_WHITE is returned, range: 0 - 255, default 128.
  * @return TC_BLACK or TC_WHITE depending on what gives a better contrast.
  */
-TextColour GetContrastColour(uint8_t background, uint8_t threshold)
+TextColour GetContrastColour(RgbMColour background, uint8_t threshold)
 {
-	Colour c = _cur_palette.palette[background];
+	RgbaColour c = background.HasRgb() ? background.Rgb() : _cur_palette.palette[background.m];
 	/* Compute brightness according to http://www.w3.org/TR/AERT#color-contrast.
 	 * The following formula computes 1000 * brightness^2, with brightness being in range 0 to 255. */
 	uint sq1000_brightness = c.r * c.r * 299 + c.g * c.g * 587 + c.b * c.b * 114;
 	/* Compare with threshold brightness which defaults to 128 (50%) */
 	return sq1000_brightness < ((uint) threshold) * ((uint) threshold) * 1000 ? TC_WHITE : TC_BLACK;
+}
+
+HsvColour ConvertRgbToHsv(RgbaColour rgb)
+{
+	HsvColour hsv;
+
+	uint8_t rgbmin = std::min({rgb.r, rgb.g, rgb.b});
+	uint8_t rgbmax = std::max({rgb.r, rgb.g, rgb.b});
+
+	hsv.v = rgbmax;
+	if (hsv.v == 0) {
+		hsv.h = 0;
+		hsv.s = 0;
+		return hsv;
+	}
+
+	int d = rgbmax - rgbmin;
+	hsv.s = HsvColour::SAT_MAX * d / rgbmax;
+	if (hsv.s == 0) {
+		hsv.h = 0;
+		return hsv;
+	}
+
+	int hue;
+	if (rgbmax == rgb.r) {
+		hue = HsvColour::HUE_RGN * 0 + HsvColour::HUE_RGN * ((int)rgb.g - (int)rgb.b) / d;
+	} else if (rgbmax == rgb.g) {
+		hue = HsvColour::HUE_RGN * 2 + HsvColour::HUE_RGN * ((int)rgb.b - (int)rgb.r) / d;
+	} else {
+		hue = HsvColour::HUE_RGN * 4 + HsvColour::HUE_RGN * ((int)rgb.r - (int)rgb.g) / d;
+	}
+	if (hue > HsvColour::HUE_MAX) hue -= HsvColour::HUE_MAX;
+	if (hue < 0) hue += HsvColour::HUE_MAX;
+	hsv.h = hue;
+
+	return hsv;
+}
+
+RgbaColour ConvertHsvToRgb(HsvColour hsv)
+{
+	if (hsv.s == 0) return RgbaColour(hsv.v, hsv.v, hsv.v);
+	if (hsv.h >= HsvColour::HUE_MAX) hsv.h = 0;
+
+	int region = hsv.h / HsvColour::HUE_RGN;
+	int remainder = (hsv.h - (region * HsvColour::HUE_RGN)) * 6;
+	int p = (hsv.v * (UINT8_MAX - hsv.s)) / UINT8_MAX;
+	int q = (hsv.v * (UINT8_MAX - ((hsv.s * remainder) / HsvColour::HUE_MAX))) / UINT8_MAX;
+	int t = (hsv.v * (UINT8_MAX - ((hsv.s * (HsvColour::HUE_MAX - remainder)) / HsvColour::HUE_MAX))) / UINT8_MAX;
+
+	switch (region) {
+		case 0: return RgbaColour(hsv.v, t, p);
+		case 1: return RgbaColour(q, hsv.v, p);
+		case 2: return RgbaColour(p, hsv.v, t);
+		case 3: return RgbaColour(p, q, hsv.v);
+		case 4: return RgbaColour(t, p, hsv.v);
+		default: return RgbaColour(hsv.v, p, q);
+	}
+}
+
+/**
+ * Adjust brightness of an HSV colour.
+ * @param hsv colour to adjust.
+ * @param amt amount to adjust brightness.
+ * @returns Adjusted HSV colour.
+ **/
+HsvColour AdjustHsvColourBrightness(HsvColour hsv, int amt)
+{
+	HsvColour r = hsv;
+	int overflow = (hsv.v + amt) - HsvColour::VAL_MAX;
+	r.v = ClampTo<uint8_t>(hsv.v + amt);
+	r.s = ClampTo<uint8_t>(hsv.s - std::max(0, overflow));
+	return r;
+}
+
+static const uint COLOUR_MASK = 0xF;
+static const uint BRIGHTNESS_MASK = 0x7;
+
+static_assert(lengthof(_colour_gradient) == COLOUR_MASK + 1);
+static_assert(lengthof(_colour_gradient[0]) == BRIGHTNESS_MASK + 1);
+
+/**
+ * Get colour gradient palette index.
+ * @param colour Colour.
+ * @param brightness Brightness level from 1 to 7.
+ * @returns palette index of colour.
+ */
+RgbMColour GetColourGradient(Colours colour, uint8_t brightness)
+{
+	ColoursPacker colourp(colour);
+	RgbMColour c = _colour_gradient[colour & COLOUR_MASK][brightness & BRIGHTNESS_MASK];
+	if (colourp.IsCustom()) {
+		/* Adjust brightness to approximately the same levels as those of paletted Colours. */
+		RgbaColour rgb = ConvertHsvToRgb(AdjustHsvColourBrightness(colourp.Hsv(), (brightness - PALETTE_INDEX_CC_OFFSET) * colourp.C() / 4));
+		if ((rgb.r | rgb.g | rgb.b) == 0) {
+			/* All values 0 means no custom colour, so use very dark grey instead.*/
+			c.r = 1;
+			c.g = 1;
+			c.b = 1;
+		} else {
+			c.r = rgb.r;
+			c.g = rgb.g;
+			c.b = rgb.b;
+		}
+	}
+	return c;
+}
+
+/**
+ * Convert a colour to a TextColour.
+ * @param colour Colour of text.
+ * @param brightness Brightness level from 1 to 7.
+ * @returns TextColour set to palette index of colour
+ */
+TextColour TextColourGradient(Colours colour, uint8_t brightness)
+{
+	RgbMColour rgbm = GetColourGradient(colour, brightness);
+	TextColour tc = TextColour(rgbm.m | TC_IS_PALETTE_COLOUR);
+	if (rgbm.HasRgb()) {
+		TextColourPacker tcp(tc);
+		tc |= TC_IS_RGB_COLOUR;
+		tcp.SetR(rgbm.r);
+		tcp.SetG(rgbm.g);
+		tcp.SetB(rgbm.b);
+	}
+	return tc;
+}
+
+/**
+ * Set colour gradient palette index.
+ * @param colour Colour.
+ * @param brightness Brightness level from 1 to 7.
+ * @param palette_colour Palette colour to set.
+ */
+void SetColourGradient(Colours colour, uint8_t brightness, RgbMColour palette_colour)
+{
+	_colour_gradient[colour & COLOUR_MASK][brightness & BRIGHTNESS_MASK] = palette_colour;
+}
+
+RgbaColour GetCompanyColourRGB(Colours colour)
+{
+	static const uint8_t CC_PALETTE_CONTRAST = 90;
+
+	PaletteID pal = GENERAL_SPRITE_COLOUR(colour & 0xF);
+	const RecolourSprite *map = reinterpret_cast<const RecolourSprite *>(GetNonSprite(pal, SpriteType::Recolour));
+
+	RgbaColour rgb = _palette.palette[map->remap_index[PALETTE_INDEX_CC_START + PALETTE_INDEX_CC_OFFSET]];
+	rgb.a = CC_PALETTE_CONTRAST;
+	return rgb;
+}
+
+PaletteID CreateCompanyColourRemap(Colours colour1, Colours colour2, bool twocc, PaletteID basemap, PaletteID hint)
+{
+	DeallocateDynamicSprite(hint);
+
+	PaletteID pal = AllocateDynamicSprite();
+	const RecolourSprite *base = reinterpret_cast<const RecolourSprite *>(GetNonSprite(basemap, SpriteType::Recolour));
+	RecolourSprite *p = new (InjectSprite(SpriteType::Recolour, pal, sizeof(RecolourSprite))) RecolourSprite;
+
+	/* Mark as RGB recolour */
+	p->is_rgba = true;
+
+	/* Copy base remap */
+	p->remap_index = base->remap_index;
+	for (uint i = 0; i < uint(p->remap_rgba.size()); ++i) {
+		p->remap_rgba[i] = _palette.palette[p->remap_index[i]];
+	}
+
+	if (ColoursPacker(colour1).IsCustom()) {
+		/* First recolour region */
+		HsvColour cc1hsv = ColoursPacker(colour1).Hsv();
+		uint8_t cc1con = ColoursPacker(colour1).C();
+		for (uint i = 0; i < PALETTE_INDEX_CC_COUNT; ++i) {
+			int adj = ((int)i - PALETTE_INDEX_CC_OFFSET) * cc1con / 4;
+			p->remap_rgba[i + PALETTE_INDEX_CC_START] = ConvertHsvToRgb(AdjustHsvColourBrightness(cc1hsv, adj));
+		}
+	}
+
+	if (twocc && ColoursPacker(colour2).IsCustom()) {
+		/* Second recolour region */
+		HsvColour cc2hsv = ColoursPacker(colour2).Hsv();
+		uint8_t cc2con = ColoursPacker(colour2).C();
+		for (uint i = 0; i < PALETTE_INDEX_CC_COUNT; ++i) {
+			int adj = ((int)i - PALETTE_INDEX_CC_OFFSET) * cc2con / 4;
+			p->remap_rgba[i + PALETTE_INDEX_CC2_START] = ConvertHsvToRgb(AdjustHsvColourBrightness(cc2hsv, adj));
+		}
+	}
+
+	return pal;
 }

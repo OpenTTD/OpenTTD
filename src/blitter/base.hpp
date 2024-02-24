@@ -15,12 +15,13 @@
 
 /** The modes of blitting we can do. */
 enum BlitterMode {
-	BM_NORMAL,       ///< Perform the simple blitting.
-	BM_COLOUR_REMAP, ///< Perform a colour remapping.
-	BM_TRANSPARENT,  ///< Perform transparency darkening remapping.
+	BM_NORMAL,            ///< Perform the simple blitting.
+	BM_COLOUR_REMAP,      ///< Perform a colour remapping.
+	BM_COLOUR_REMAP_RGB,  ///< Perform an RGB colour remapping.
+	BM_TRANSPARENT,       ///< Perform transparency darkening remapping.
 	BM_TRANSPARENT_REMAP, ///< Perform transparency colour remapping.
-	BM_CRASH_REMAP,  ///< Perform a crash remapping.
-	BM_BLACK_REMAP,  ///< Perform remapping to a completely blackened sprite
+	BM_CRASH_REMAP,       ///< Perform a crash remapping.
+	BM_BLACK_REMAP,       ///< Perform remapping to a completely blackened sprite
 };
 
 /**
@@ -31,7 +32,7 @@ public:
 	/** Parameters related to blitting. */
 	struct BlitterParams {
 		const void *sprite; ///< Pointer to the sprite how ever the encoder stored it
-		const byte *remap;  ///< XXX -- Temporary storage for remap array
+		const RecolourSprite *remap; ///< Pointer to the colour remap sprite.
 
 		int skip_left;      ///< How much pixels of the source to skip on the left (based on zoom of dst)
 		int skip_top;       ///< How much pixels of the source to skip on the top (based on zoom of dst)
@@ -95,18 +96,18 @@ public:
 	 * @param video The destination pointer (video-buffer).
 	 * @param x The x position within video-buffer.
 	 * @param y The y position within video-buffer.
-	 * @param colour A 8bpp mapping colour.
+	 * @param colour A 8bpp mapping colour with optional packed RGB colour.
 	 */
-	virtual void SetPixel(void *video, int x, int y, uint8_t colour) = 0;
+	virtual void SetPixel(void *video, int x, int y, RgbMColour colour) = 0;
 
 	/**
 	 * Make a single horizontal line in a single colour on the video-buffer.
 	 * @param video The destination pointer (video-buffer).
 	 * @param width The length of the line.
 	 * @param height The height of the line.
-	 * @param colour A 8bpp mapping colour.
+	 * @param colour A 8bpp mapping colour with optional packed RGB colour.
 	 */
-	virtual void DrawRect(void *video, int width, int height, uint8_t colour) = 0;
+	virtual void DrawRect(void *video, int width, int height, RgbMColour colour) = 0;
 
 	/**
 	 * Draw a line with a given colour.
@@ -117,11 +118,11 @@ public:
 	 * @param y2 The y coordinate to where the lines goes.
 	 * @param screen_width The width of the screen you are drawing in (to avoid buffer-overflows).
 	 * @param screen_height The height of the screen you are drawing in (to avoid buffer-overflows).
-	 * @param colour A 8bpp mapping colour.
+	 * @param colour A 8bpp mapping colour with optional packed RGB colour.
 	 * @param width Line width.
 	 * @param dash Length of dashes for dashed lines. 0 means solid line.
 	 */
-	virtual void DrawLine(void *video, int x, int y, int x2, int y2, int screen_width, int screen_height, uint8_t colour, int width, int dash = 0) = 0;
+	virtual void DrawLine(void *video, int x, int y, int x2, int y2, int screen_width, int screen_height, RgbMColour colour, int width, int dash = 0) = 0;
 
 	/**
 	 * Copy from a buffer to the screen.

@@ -20,9 +20,9 @@ class Blitter_32bppBase : public Blitter {
 public:
 	uint8_t GetScreenDepth() override { return 32; }
 	void *MoveTo(void *video, int x, int y) override;
-	void SetPixel(void *video, int x, int y, uint8_t colour) override;
-	void DrawLine(void *video, int x, int y, int x2, int y2, int screen_width, int screen_height, uint8_t colour, int width, int dash) override;
-	void DrawRect(void *video, int width, int height, uint8_t colour) override;
+	void SetPixel(void *video, int x, int y, RgbMColour colour) override;
+	void DrawLine(void *video, int x, int y, int x2, int y2, int screen_width, int screen_height, RgbMColour colour, int width, int dash) override;
+	void DrawRect(void *video, int width, int height, RgbMColour colour) override;
 	void CopyFromBuffer(void *video, const void *src, int width, int height) override;
 	void CopyToBuffer(const void *video, void *dst, int width, int height) override;
 	void CopyImageToBuffer(const void *video, void *dst, int width, int height, int dst_pitch) override;
@@ -34,22 +34,28 @@ public:
 	/**
 	 * Look up the colour in the current palette.
 	 */
-	static inline Colour LookupColourInPalette(uint index)
+	static inline RgbaColour LookupColourInPalette(uint index)
 	{
 		return _cur_palette.palette[index];
+	}
+
+	static inline RgbaColour UnpackColour(RgbMColour colour)
+	{
+		if (colour.HasRgb()) return colour.Rgb();
+		return LookupColourInPalette(colour.m);
 	}
 
 	/**
 	 * Compose a colour based on RGBA values and the current pixel value.
 	 */
-	static inline Colour ComposeColourRGBANoCheck(uint r, uint g, uint b, uint a, Colour current)
+	static inline RgbaColour ComposeColourRGBANoCheck(uint r, uint g, uint b, uint a, RgbaColour current)
 	{
 		uint cr = current.r;
 		uint cg = current.g;
 		uint cb = current.b;
 
 		/* The 256 is wrong, it should be 255, but 256 is much faster... */
-		return Colour(
+		return RgbaColour(
 							((int)(r - cr) * a) / 256 + cr,
 							((int)(g - cg) * a) / 256 + cg,
 							((int)(b - cb) * a) / 256 + cb);
@@ -59,10 +65,10 @@ public:
 	 * Compose a colour based on RGBA values and the current pixel value.
 	 * Handles fully transparent and solid pixels in a special (faster) way.
 	 */
-	static inline Colour ComposeColourRGBA(uint r, uint g, uint b, uint a, Colour current)
+	static inline RgbaColour ComposeColourRGBA(uint r, uint g, uint b, uint a, RgbaColour current)
 	{
 		if (a == 0) return current;
-		if (a >= 255) return Colour(r, g, b);
+		if (a >= 255) return RgbaColour(r, g, b);
 
 		return ComposeColourRGBANoCheck(r, g, b, a, current);
 	}
@@ -70,7 +76,7 @@ public:
 	/**
 	 * Compose a colour based on Pixel value, alpha value, and the current pixel value.
 	 */
-	static inline Colour ComposeColourPANoCheck(Colour colour, uint a, Colour current)
+	static inline RgbaColour ComposeColourPANoCheck(RgbaColour colour, uint a, RgbaColour current)
 	{
 		uint r  = colour.r;
 		uint g  = colour.g;
@@ -83,7 +89,7 @@ public:
 	 * Compose a colour based on Pixel value, alpha value, and the current pixel value.
 	 * Handles fully transparent and solid pixels in a special (faster) way.
 	 */
-	static inline Colour ComposeColourPA(Colour colour, uint a, Colour current)
+	static inline RgbaColour ComposeColourPA(RgbaColour colour, uint a, RgbaColour current)
 	{
 		if (a == 0) return current;
 		if (a >= 255) {
@@ -101,13 +107,13 @@ public:
 	 * @param denom denominator, makes colour darker.
 	 * @return the new colour for the screen.
 	 */
-	static inline Colour MakeTransparent(Colour colour, uint nom, uint denom = 256)
+	static inline RgbaColour MakeTransparent(RgbaColour colour, uint nom, uint denom = 256)
 	{
 		uint r = colour.r;
 		uint g = colour.g;
 		uint b = colour.b;
 
-		return Colour(r * nom / denom, g * nom / denom, b * nom / denom);
+		return RgbaColour(r * nom / denom, g * nom / denom, b * nom / denom);
 	}
 
 	/**
@@ -128,11 +134,11 @@ public:
 	 * @param colour the colour to make dark.
 	 * @return the new colour, now darker.
 	 */
-	static inline Colour MakeDark(Colour colour)
+	static inline RgbaColour MakeDark(RgbaColour colour)
 	{
 		uint8_t d = MakeDark(colour.r, colour.g, colour.b);
 
-		return Colour(d, d, d);
+		return RgbaColour(d, d, d);
 	}
 
 	/**
@@ -140,7 +146,7 @@ public:
 	 * @param colour the colour to make grey.
 	 * @return the new colour, now grey.
 	 */
-	static inline Colour MakeGrey(Colour colour)
+	static inline RgbaColour MakeGrey(RgbaColour colour)
 	{
 		uint r = colour.r;
 		uint g = colour.g;
@@ -151,14 +157,14 @@ public:
 		 *  information about the formula. */
 		uint grey = ((r * 19595) + (g * 38470) + (b * 7471)) / 65536;
 
-		return Colour(grey, grey, grey);
+		return RgbaColour(grey, grey, grey);
 	}
 
 	static const int DEFAULT_BRIGHTNESS = 128;
 
-	static Colour ReallyAdjustBrightness(Colour colour, uint8_t brightness);
+	static RgbaColour ReallyAdjustBrightness(RgbaColour colour, uint8_t brightness);
 
-	static inline Colour AdjustBrightness(Colour colour, uint8_t brightness)
+	static inline RgbaColour AdjustBrightness(RgbaColour colour, uint8_t brightness)
 	{
 		/* Shortcut for normal brightness */
 		if (brightness == DEFAULT_BRIGHTNESS) return colour;
@@ -166,7 +172,7 @@ public:
 		return ReallyAdjustBrightness(colour, brightness);
 	}
 
-	static inline uint8_t GetColourBrightness(Colour colour)
+	static inline uint8_t GetColourBrightness(RgbaColour colour)
 	{
 		uint8_t rgb_max = std::max(colour.r, std::max(colour.g, colour.b));
 

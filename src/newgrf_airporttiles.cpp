@@ -16,6 +16,7 @@
 #include "water.h"
 #include "landscape.h"
 #include "company_base.h"
+#include "company_func.h"
 #include "town.h"
 #include "table/strings.h"
 #include "table/airporttiles.h"
@@ -237,7 +238,7 @@ uint16_t GetAirportTileCallback(CallbackID callback, uint32_t param1, uint32_t p
 	return object.ResolveCallback();
 }
 
-static void AirportDrawTileLayout(const TileInfo *ti, const TileLayoutSpriteGroup *group, byte colour)
+static void AirportDrawTileLayout(const TileInfo *ti, const TileLayoutSpriteGroup *group, PaletteID cc_pal)
 {
 	const DrawTileSprites *dts = group->ProcessRegisters(nullptr);
 
@@ -248,11 +249,11 @@ static void AirportDrawTileLayout(const TileInfo *ti, const TileLayoutSpriteGrou
 		if (image == SPR_FLAT_WATER_TILE && IsTileOnWater(ti->tile)) {
 			DrawWaterClassGround(ti);
 		} else {
-			DrawGroundSprite(image, GroundSpritePaletteTransform(image, pal, GENERAL_SPRITE_COLOUR(colour)));
+			DrawGroundSprite(image, GroundSpritePaletteTransform(image, pal, cc_pal));
 		}
 	}
 
-	DrawNewGRFTileSeq(ti, dts, TO_BUILDINGS, 0, GENERAL_SPRITE_COLOUR(colour));
+	DrawNewGRFTileSeq(ti, dts, TO_BUILDINGS, 0, cc_pal);
 }
 
 bool DrawNewAirportTile(TileInfo *ti, Station *st, const AirportTileSpec *airts)
@@ -275,7 +276,7 @@ bool DrawNewAirportTile(TileInfo *ti, Station *st, const AirportTileSpec *airts)
 	}
 
 	const TileLayoutSpriteGroup *tlgroup = (const TileLayoutSpriteGroup *)group;
-	AirportDrawTileLayout(ti, tlgroup, Company::Get(st->owner)->colour);
+	AirportDrawTileLayout(ti, tlgroup, COMPANY_SPRITE_COLOUR(st->owner));
 	return true;
 }
 

@@ -23,7 +23,7 @@ struct BmpInfo {
 };
 
 struct BmpData {
-	Colour *palette;
+	RgbaColour *palette;
 	byte   *bitmap;
 };
 

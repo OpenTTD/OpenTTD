@@ -7,6 +7,7 @@
 
 /** @file main_gui.cpp Handling of the main viewport. */
 
+#include "gfx_func.h"
 #include "stdafx.h"
 #include "currency.h"
 #include "spritecache.h"
@@ -541,10 +542,11 @@ void ShowSelectGameWindow();
 void SetupColoursAndInitialWindow()
 {
 	for (uint i = 0; i != 16; i++) {
-		const byte *b = GetNonSprite(GENERAL_SPRITE_COLOUR(i), SpriteType::Recolour);
-
-		assert(b);
-		memcpy(_colour_gradient[i], b + 0xC6, sizeof(_colour_gradient[i]));
+		const RecolourSprite *s = reinterpret_cast<const RecolourSprite *>(GetNonSprite(GENERAL_SPRITE_COLOUR(i), SpriteType::Recolour));
+		assert(s != nullptr);
+		for (uint j = 0; j < 8; j++) {
+			SetColourGradient(Colours(i), j, RgbMColour(s->remap_rgba[0xC5 + j].r, s->remap_rgba[0xC5 + j].g, s->remap_rgba[0xC5 + j].b, s->remap_index[0xC5 + j]));
+		}
 	}
 
 	new MainWindow(&_main_window_desc);

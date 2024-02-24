@@ -22,6 +22,12 @@ struct Sprite {
 	byte data[];   ///< Sprite data.
 };
 
+struct RecolourSprite {
+	std::array<uint8_t, 256> remap_index{};
+	std::array<RgbaColour, 256> remap_rgba{};
+	bool is_rgba;
+};
+
 enum SpriteCacheCtrlFlags {
 	SCCF_ALLOW_ZOOM_MIN_1X_PAL    = 0, ///< Allow use of sprite min zoom setting at 1x in palette mode.
 	SCCF_ALLOW_ZOOM_MIN_1X_32BPP  = 1, ///< Allow use of sprite min zoom setting at 1x in 32bpp mode.
@@ -68,5 +74,10 @@ size_t GetGRFSpriteOffset(uint32_t id);
 bool LoadNextSprite(int load_index, SpriteFile &file, uint file_sprite_id);
 bool SkipSpriteData(SpriteFile &file, byte type, uint16_t num);
 void DupSprite(SpriteID old_spr, SpriteID new_spr);
+void *InjectSprite(SpriteType type, int load_index, size_t len);
+
+void ClearDynamicSprites(SpriteID base);
+SpriteID AllocateDynamicSprite();
+void DeallocateDynamicSprite(SpriteID spite);
 
 #endif /* SPRITECACHE_H */

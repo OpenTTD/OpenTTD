@@ -79,6 +79,10 @@ struct Livery {
 	byte in_use;  ///< Bit 0 set if this livery should override the default livery first colour, Bit 1 for the second colour.
 	Colours colour1; ///< First colour, for all vehicles.
 	Colours colour2; ///< Second colour, for vehicles with 2CC support.
+
+	PaletteID cached_pal_1cc; ///< NOSAVE: cached 1CC palette.
+	PaletteID cached_pal_2cc; ///< NOSAVE: cached 2CC palette.
+	PaletteID cached_pal_2cr; ///< NOSAVE: cached reversed 2CC palette.
 };
 
 void ResetCompanyLivery(Company *c);

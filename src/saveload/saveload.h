@@ -377,6 +377,7 @@ enum SaveLoadVersion : uint16_t {
 	SLV_DEPOT_UNBUNCHING,                   ///< 331  PR#11945 Allow unbunching shared order vehicles at a depot.
 	SLV_AI_LOCAL_CONFIG,                    ///< 332  PR#12003 Config of running AI is stored inside Company.
 	SLV_SCRIPT_RANDOMIZER,                  ///< 333  PR#12063 v14.0 Save script randomizers.
+	SLV_RGB_CC,                             ///< 334  PR#11634 RGB company colours.
 
 	SL_MAX_VERSION,                         ///< Highest possible saveload version
 };

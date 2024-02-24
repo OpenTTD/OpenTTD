@@ -156,7 +156,7 @@ struct DrawPixelInfo {
 };
 
 /** Structure to access the alpha, red, green, and blue channels from a 32 bit number. */
-union Colour {
+union RgbaColour {
 	uint32_t data; ///< Conversion of the channel information to a 32 bit number.
 	struct {
 #if defined(__EMSCRIPTEN__)
@@ -175,7 +175,7 @@ union Colour {
 	 * @param b The channel for the blue colour.
 	 * @param a The channel for the alpha/transparency.
 	 */
-	Colour(uint8_t r, uint8_t g, uint8_t b, uint8_t a = 0xFF) :
+	constexpr RgbaColour(uint8_t r, uint8_t g, uint8_t b, uint8_t a = 0xFF) :
 #if defined(__EMSCRIPTEN__)
 		r(r), g(g), b(b), a(a)
 #elif TTD_ENDIAN == TTD_BIG_ENDIAN
@@ -190,13 +190,84 @@ union Colour {
 	 * Create a new colour.
 	 * @param data The colour in the correct packed format.
 	 */
-	Colour(uint data = 0) : data(data)
+	constexpr RgbaColour(uint data = 0) : data(data)
 	{
 	}
 };
 
-static_assert(sizeof(Colour) == sizeof(uint32_t));
+static_assert(sizeof(RgbaColour) == sizeof(uint32_t));
 
+static inline bool operator <(const RgbaColour &lhs, const RgbaColour &rhs)
+{
+	return lhs.data < rhs.data;
+}
+
+/** Structure to access the palette index, red, green, and blue channels from a 32 bit number. */
+union RgbMColour {
+	uint32_t data; ///< Conversion of the channel information to a 32 bit number.
+	struct {
+#if defined(__EMSCRIPTEN__)
+		uint8_t r, g, b, m;  ///< colour channels as used in browsers
+#elif TTD_ENDIAN == TTD_BIG_ENDIAN
+		uint8_t m, r, g, b; ///< colour channels in BE order
+#else
+		uint8_t b, g, r, m; ///< colour channels in LE order
+#endif /* TTD_ENDIAN == TTD_BIG_ENDIAN */
+	};
+
+	/**
+	 * Create a new colour.
+	 * @param r The channel for the red colour.
+	 * @param g The channel for the green colour.
+	 * @param b The channel for the blue colour.
+	 * @param m The channel for the plaette index.
+	 */
+	constexpr RgbMColour(uint8_t r, uint8_t g, uint8_t b, uint8_t m) :
+#if defined(__EMSCRIPTEN__)
+		r(r), g(g), b(b), m(m)
+#elif TTD_ENDIAN == TTD_BIG_ENDIAN
+		m(m), r(r), g(g), b(b)
+#else
+		b(b), g(g), r(r), m(m)
+#endif /* TTD_ENDIAN == TTD_BIG_ENDIAN */
+	{
+	}
+
+	/**
+	 * Create a new colour.
+	 * @param data The colour in the correct packed format.
+	 */
+	constexpr RgbMColour(uint8_t m = 0) : RgbMColour(0, 0, 0, m)
+	{
+	}
+
+	constexpr RgbMColour(const RgbaColour &colour) : RgbMColour(colour.r, colour.g, colour.b, 0) { }
+
+	inline constexpr bool HasRgb() const
+	{
+		return (this->r | this->g | this->b) != 0;
+	}
+
+	inline constexpr RgbaColour Rgb() const
+	{
+		RgbaColour colour = RgbaColour(this->data);
+		colour.a = UINT8_MAX;
+		return colour;
+	}
+};
+
+static_assert(sizeof(RgbMColour) == sizeof(uint32_t));
+
+struct HsvColour {
+	static inline const int HUE_MAX = 360 * 128; ///< Maximum value for hue.
+	static inline const int SAT_MAX = 255; ///< Maximum value for saturation.
+	static inline const int VAL_MAX = 255; ///< Maximum value for value.
+	static inline const int HUE_RGN = HUE_MAX / 6;
+
+	uint16_t h; ///< Hue ranging from 0 to HUE_MAX.
+	uint8_t s; ///< Saturation ranging from 0 to SAT_MAX.
+	uint8_t v; ///< Value ranging from 0 to VAL_MAX.
+};
 
 /** Available font sizes */
 enum FontSize {
@@ -226,7 +297,7 @@ struct SubSprite {
 	int left, top, right, bottom;
 };
 
-enum Colours : byte {
+enum Colours : uint32_t {
 	COLOUR_BEGIN,
 	COLOUR_DARK_BLUE = COLOUR_BEGIN,
 	COLOUR_PALE_GREEN,
@@ -245,9 +316,10 @@ enum Colours : byte {
 	COLOUR_GREY,
 	COLOUR_WHITE,
 	COLOUR_END,
-	INVALID_COLOUR = 0xFF,
+	INVALID_COLOUR = UINT32_MAX,
 };
 DECLARE_ENUM_AS_ADDABLE(Colours)
+DECLARE_ENUM_AS_BIT_SET(Colours)
 
 /** Colour of the strings, see _string_colourmap in table/string_colours.h or docs/ottd-colourtext-palette.png */
 enum TextColour {
@@ -276,9 +348,10 @@ enum TextColour {
 	TC_IS_PALETTE_COLOUR = 0x100, ///< Colour value is already a real palette colour index, not an index of a StringColour.
 	TC_NO_SHADE          = 0x200, ///< Do not add shading to this text colour.
 	TC_FORCED            = 0x400, ///< Ignore colour changes from strings.
+	TC_IS_RGB_COLOUR     = 0x800, ///< Colour includes 18-bit RGB value in bits 12 to 29.
 
 	TC_COLOUR_MASK = 0xFF, ///< Mask to test if TextColour (without flags) is within limits.
-	TC_FLAGS_MASK = 0x700, ///< Mask to test if TextColour (with flags) is within limits.
+	TC_FLAGS_MASK = 0xF00, ///< Mask to test if TextColour (with flags) is within limits.
 };
 DECLARE_ENUM_AS_BIT_SET(TextColour)
 
@@ -321,7 +394,7 @@ static const uint MILLISECONDS_PER_TICK = 27;
 
 /** Information about the currently used palette. */
 struct Palette {
-	Colour palette[256]; ///< Current palette. Entry 0 has to be always fully transparent!
+	RgbaColour palette[256]; ///< Current palette. Entry 0 has to be always fully transparent!
 	int first_dirty;     ///< The first dirty element.
 	int count_dirty;     ///< The number of dirty elements.
 };

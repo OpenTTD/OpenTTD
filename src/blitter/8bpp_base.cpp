@@ -16,10 +16,10 @@
 
 void Blitter_8bppBase::DrawColourMappingRect(void *dst, int width, int height, PaletteID pal)
 {
-	const uint8_t *ctab = GetNonSprite(pal, SpriteType::Recolour) + 1;
+	const RecolourSprite *ctab = reinterpret_cast<const RecolourSprite *>(GetNonSprite(pal, SpriteType::Recolour));
 
 	do {
-		for (int i = 0; i != width; i++) *((uint8_t *)dst + i) = ctab[((uint8_t *)dst)[i]];
+		for (int i = 0; i != width; i++) *((uint8_t *)dst + i) = ctab->remap_index[((uint8_t *)dst)[i]];
 		dst = (uint8_t *)dst + _screen.pitch;
 	} while (--height);
 }
@@ -29,22 +29,22 @@ void *Blitter_8bppBase::MoveTo(void *video, int x, int y)
 	return (uint8_t *)video + x + y * _screen.pitch;
 }
 
-void Blitter_8bppBase::SetPixel(void *video, int x, int y, uint8_t colour)
+void Blitter_8bppBase::SetPixel(void *video, int x, int y, RgbMColour colour)
 {
-	*((uint8_t *)video + x + y * _screen.pitch) = colour;
+	*((uint8_t *)video + x + y * _screen.pitch) = colour.m;
 }
 
-void Blitter_8bppBase::DrawLine(void *video, int x, int y, int x2, int y2, int screen_width, int screen_height, uint8_t colour, int width, int dash)
+void Blitter_8bppBase::DrawLine(void *video, int x, int y, int x2, int y2, int screen_width, int screen_height, RgbMColour colour, int width, int dash)
 {
 	this->DrawLineGeneric(x, y, x2, y2, screen_width, screen_height, width, dash, [=](int x, int y) {
-		*((uint8_t *)video + x + y * _screen.pitch) = colour;
+		*((uint8_t *)video + x + y * _screen.pitch) = colour.m;
 	});
 }
 
-void Blitter_8bppBase::DrawRect(void *video, int width, int height, uint8_t colour)
+void Blitter_8bppBase::DrawRect(void *video, int width, int height, RgbMColour colour)
 {
 	do {
-		memset(video, colour, width);
+		memset(video, colour.m, width);
 		video = (uint8_t *)video + _screen.pitch;
 	} while (--height);
 }

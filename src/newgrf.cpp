@@ -49,6 +49,7 @@
 #include "vehicle_base.h"
 #include "road.h"
 #include "newgrf_roadstop.h"
+#include "company_func.h"
 
 #include "table/strings.h"
 #include "table/build_industry.h"
@@ -3729,7 +3730,7 @@ static ChangeInfoResult IndustriesChangeInfo(uint indid, int numinfo, int prop, 
 				break;
 
 			case 0x19: // Map colour
-				indsp->map_colour = buf->ReadByte();
+				indsp->map_colour = RgbMColour(buf->ReadByte());
 				break;
 
 			case 0x1A: // Special industry flags to define special behavior
@@ -9983,6 +9984,9 @@ static void AfterLoadGRFs()
 	InitRailTypes();
 	InitRoadTypes();
 
+	/* Force cached palettes to be refreshed */
+	ResetVehicleColourMap();
+
 	for (Engine *e : Engine::IterateType(VEH_ROAD)) {
 		if (_gted[e->index].rv_max_speed != 0) {
 			/* Set RV maximum speed from the mph/0.8 unit value */
@@ -10155,6 +10159,9 @@ void LoadNewGRF(uint load_index, uint num_baseset)
 
 	/* Pseudo sprite processing is finished; free temporary stuff */
 	_cur.ClearDataForNextFile();
+
+	/* Make note of last sprite ID loaded for dynamic sprite management */
+	ClearDynamicSprites(_cur.spriteid);
 
 	/* Call any functions that should be run after GRFs have been loaded. */
 	AfterLoadGRFs();

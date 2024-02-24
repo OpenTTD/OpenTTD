@@ -70,8 +70,8 @@ int _gui_scale_cfg;                         ///< GUI scale in config.
  * @ingroup dirty
  */
 static Rect _invalid_rect;
-static const byte *_colour_remap_ptr;
-static byte _string_colourremap[3]; ///< Recoloursprite for stringdrawing. The grf loader ensures that #SpriteType::Font sprites only use colours 0 to 2.
+static const RecolourSprite *_colour_remap_ptr;
+static RecolourSprite _string_colourremap; ///< Recolour sprite for string drawing.
 
 static const uint DIRTY_BLOCK_HEIGHT   = 8;
 static const uint DIRTY_BLOCK_WIDTH    = 64;
@@ -110,7 +110,7 @@ void GfxScroll(int left, int top, int width, int height, int xo, int yo)
  *         FILLRECT_CHECKER:  Like FILLRECT_OPAQUE, but only draw every second pixel (used to grey out things)
  *         FILLRECT_RECOLOUR:  Apply a recolour sprite to every pixel in the rectangle currently on screen
  */
-void GfxFillRect(int left, int top, int right, int bottom, int colour, FillRectMode mode)
+void GfxFillRect(int left, int top, int right, int bottom, std::variant<RgbMColour, PaletteID> colour, FillRectMode mode)
 {
 	Blitter *blitter = BlitterFactory::GetCurrentBlitter();
 	const DrawPixelInfo *dpi = _cur_dpi;
@@ -139,17 +139,18 @@ void GfxFillRect(int left, int top, int right, int bottom, int colour, FillRectM
 
 	switch (mode) {
 		default: // FILLRECT_OPAQUE
-			blitter->DrawRect(dst, right, bottom, (uint8_t)colour);
+			blitter->DrawRect(dst, right, bottom, std::get<RgbMColour>(colour));
 			break;
 
 		case FILLRECT_RECOLOUR:
-			blitter->DrawColourMappingRect(dst, right, bottom, GB(colour, 0, PALETTE_WIDTH));
+			blitter->DrawColourMappingRect(dst, right, bottom, GB(std::get<PaletteID>(colour), 0, PALETTE_WIDTH));
 			break;
 
 		case FILLRECT_CHECKER: {
 			byte bo = (oleft - left + dpi->left + otop - top + dpi->top) & 1;
+			RgbMColour rgbm = std::get<RgbMColour>(colour);
 			do {
-				for (int i = (bo ^= 1); i < right; i += 2) blitter->SetPixel(dst, i, 0, (uint8_t)colour);
+				for (int i = (bo ^= 1); i < right; i += 2) blitter->SetPixel(dst, i, 0, rgbm);
 				dst = blitter->MoveTo(dst, 0, 1);
 			} while (--bottom > 0);
 			break;
@@ -206,7 +207,7 @@ static std::vector<LineSegment> MakePolygonSegments(const std::vector<Point> &sh
  *         FILLRECT_CHECKER:  Fill every other pixel with the specified colour, in a checkerboard pattern.
  *         FILLRECT_RECOLOUR: Apply a recolour sprite to every pixel in the polygon.
  */
-void GfxFillPolygon(const std::vector<Point> &shape, int colour, FillRectMode mode)
+void GfxFillPolygon(const std::vector<Point> &shape, std::variant<RgbMColour, PaletteID> colour, FillRectMode mode)
 {
 	Blitter *blitter = BlitterFactory::GetCurrentBlitter();
 	const DrawPixelInfo *dpi = _cur_dpi;
@@ -275,18 +276,20 @@ void GfxFillPolygon(const std::vector<Point> &shape, int colour, FillRectMode mo
 			void *dst = blitter->MoveTo(dpi->dst_ptr, x1, y);
 			switch (mode) {
 				default: // FILLRECT_OPAQUE
-					blitter->DrawRect(dst, x2 - x1, 1, (uint8_t)colour);
+					blitter->DrawRect(dst, x2 - x1, 1, std::get<RgbMColour>(colour));
 					break;
 				case FILLRECT_RECOLOUR:
-					blitter->DrawColourMappingRect(dst, x2 - x1, 1, GB(colour, 0, PALETTE_WIDTH));
+					blitter->DrawColourMappingRect(dst, x2 - x1, 1, GB(std::get<PaletteID>(colour), 0, PALETTE_WIDTH));
 					break;
-				case FILLRECT_CHECKER:
+				case FILLRECT_CHECKER: {
 					/* Fill every other pixel, offset such that the sum of filled pixels' X and Y coordinates is odd.
 					 * This creates a checkerboard effect. */
+					RgbMColour rgbm = std::get<RgbMColour>(colour);
 					for (int x = (x1 + y) & 1; x < x2 - x1; x += 2) {
-						blitter->SetPixel(dst, x, 0, (uint8_t)colour);
+						blitter->SetPixel(dst, x, 0, rgbm);
 					}
 					break;
+				}
 			}
 		}
 
@@ -309,7 +312,7 @@ void GfxFillPolygon(const std::vector<Point> &shape, int colour, FillRectMode mo
  * @param width Width of the line.
  * @param dash Length of dashes for dashed lines. 0 means solid line.
  */
-static inline void GfxDoDrawLine(void *video, int x, int y, int x2, int y2, int screen_width, int screen_height, uint8_t colour, int width, int dash = 0)
+static inline void GfxDoDrawLine(void *video, int x, int y, int x2, int y2, int screen_width, int screen_height, RgbMColour colour, int width, int dash = 0)
 {
 	Blitter *blitter = BlitterFactory::GetCurrentBlitter();
 
@@ -382,7 +385,7 @@ static inline bool GfxPreprocessLine(DrawPixelInfo *dpi, int &x, int &y, int &x2
 	return true;
 }
 
-void GfxDrawLine(int x, int y, int x2, int y2, int colour, int width, int dash)
+void GfxDrawLine(int x, int y, int x2, int y2, RgbMColour colour, int width, int dash)
 {
 	DrawPixelInfo *dpi = _cur_dpi;
 	if (GfxPreprocessLine(dpi, x, y, x2, y2, width)) {
@@ -390,7 +393,7 @@ void GfxDrawLine(int x, int y, int x2, int y2, int colour, int width, int dash)
 	}
 }
 
-void GfxDrawLineUnscaled(int x, int y, int x2, int y2, int colour)
+void GfxDrawLineUnscaled(int x, int y, int x2, int y2, RgbMColour colour)
 {
 	DrawPixelInfo *dpi = _cur_dpi;
 	if (GfxPreprocessLine(dpi, x, y, x2, y2, 1)) {
@@ -431,7 +434,7 @@ void DrawBox(int x, int y, int dx1, int dy1, int dx2, int dy2, int dx3, int dy3)
 	 *            ....V.
 	 */
 
-	static const byte colour = PC_WHITE;
+	static const RgbMColour colour = PC_WHITE;
 
 	GfxDrawLineUnscaled(x, y, x + dx1, y + dy1, colour);
 	GfxDrawLineUnscaled(x, y, x + dx2, y + dy2, colour);
@@ -452,7 +455,7 @@ void DrawBox(int x, int y, int dx1, int dy1, int dx2, int dy2, int dx3, int dy3)
  * @param width Width of the outline.
  * @param dash Length of dashes for dashed lines. 0 means solid lines.
  */
-void DrawRectOutline(const Rect &r, int colour, int width, int dash)
+void DrawRectOutline(const Rect &r, RgbMColour colour, int width, int dash)
 {
 	GfxDrawLine(r.left,  r.top,    r.right, r.top,    colour, width, dash);
 	GfxDrawLine(r.left,  r.top,    r.left,  r.bottom, colour, width, dash);
@@ -463,20 +466,33 @@ void DrawRectOutline(const Rect &r, int colour, int width, int dash)
 /**
  * Set the colour remap to be for the given colour.
  * @param colour the new colour of the remap.
+ * @return blitter mode to draw characters with.
  */
-static void SetColourRemap(TextColour colour)
+static BlitterMode SetColourRemap(TextColour colour)
 {
-	if (colour == TC_INVALID) return;
+	if (colour == TC_INVALID) return BM_COLOUR_REMAP;
 
 	/* Black strings have no shading ever; the shading is black, so it
 	 * would be invisible at best, but it actually makes it illegible. */
-	bool no_shade   = (colour & TC_NO_SHADE) != 0 || colour == TC_BLACK;
-	bool raw_colour = (colour & TC_IS_PALETTE_COLOUR) != 0;
-	colour &= ~(TC_NO_SHADE | TC_IS_PALETTE_COLOUR | TC_FORCED);
+	bool no_shade = (colour & TC_NO_SHADE) != 0 || colour == TC_BLACK;
 
-	_string_colourremap[1] = raw_colour ? (byte)colour : _string_colourmap[colour];
-	_string_colourremap[2] = no_shade ? 0 : 1;
-	_colour_remap_ptr = _string_colourremap;
+	if ((colour & TC_IS_RGB_COLOUR) && BlitterFactory::GetCurrentBlitter()->GetScreenDepth() == 32) {
+		/* Unpack RGB TextColour */
+		TextColourPacker tcp(colour);
+		_string_colourremap.remap_rgba[1] = tcp.Rgba();
+		_string_colourremap.remap_rgba[2].a = no_shade ? 0 : 255;
+		_colour_remap_ptr = &_string_colourremap;
+
+		return BM_COLOUR_REMAP_RGB;
+	}
+
+	bool raw_colour = (colour & TC_IS_PALETTE_COLOUR) != 0;
+
+	_string_colourremap.remap_index[1] = raw_colour ? (byte)colour : _string_colourmap[(byte)colour];
+	_string_colourremap.remap_index[2] = no_shade ? 0 : 1;
+	_colour_remap_ptr = &_string_colourremap;
+
+	return BM_COLOUR_REMAP;
 }
 
 /**
@@ -580,6 +596,7 @@ static int DrawLayoutLine(const ParagraphLayouter::Line &line, int y, int left, 
 	/* Draw shadow, then foreground */
 	for (bool do_shadow : { true, false }) {
 		bool colour_has_shadow = false;
+		BlitterMode bm = BM_COLOUR_REMAP;
 		for (int run_index = 0; run_index < line.CountRuns(); run_index++) {
 			const ParagraphLayouter::VisualRun &run = line.GetVisualRun(run_index);
 			const auto &glyphs = run.GetGlyphs();
@@ -589,7 +606,7 @@ static int DrawLayoutLine(const ParagraphLayouter::Line &line, int y, int left, 
 			FontCache *fc = f->fc;
 			TextColour colour = f->colour;
 			colour_has_shadow = (colour & TC_NO_SHADE) == 0 && colour != TC_BLACK;
-			SetColourRemap(do_shadow ? TC_BLACK : colour); // the last run also sets the colour for the truncation dots
+			bm = SetColourRemap(do_shadow ? TC_BLACK : colour); // the last run also sets the colour for the truncation dots
 			if (do_shadow && (!fc->GetDrawGlyphShadow() || !colour_has_shadow)) continue;
 
 			DrawPixelInfo *dpi = _cur_dpi;
@@ -615,20 +632,20 @@ static int DrawLayoutLine(const ParagraphLayouter::Line &line, int y, int left, 
 
 				if (do_shadow && (glyph & SPRITE_GLYPH) != 0) continue;
 
-				GfxMainBlitter(sprite, begin_x + (do_shadow ? shadow_offset : 0), top + (do_shadow ? shadow_offset : 0), BM_COLOUR_REMAP);
+				GfxMainBlitter(sprite, begin_x + (do_shadow ? shadow_offset : 0), top + (do_shadow ? shadow_offset : 0), bm);
 			}
 		}
 
 		if (truncation && (!do_shadow || (dot_has_shadow && colour_has_shadow))) {
 			int x = (_current_text_dir == TD_RTL) ? left : (right - 3 * dot_width);
 			for (int i = 0; i < 3; i++, x += dot_width) {
-				GfxMainBlitter(dot_sprite, x + (do_shadow ? shadow_offset : 0), y + (do_shadow ? shadow_offset : 0), BM_COLOUR_REMAP);
+				GfxMainBlitter(dot_sprite, x + (do_shadow ? shadow_offset : 0), y + (do_shadow ? shadow_offset : 0), bm);
 			}
 		}
 	}
 
 	if (underline) {
-		GfxFillRect(left, y + h, right, y + h + WidgetDimensions::scaled.bevel.top - 1, _string_colourremap[1]);
+		GfxFillRect(left, y + h, right, y + h + WidgetDimensions::scaled.bevel.top - 1, RgbMColour(_string_colourremap.remap_index[1]));
 	}
 
 	return (align & SA_HOR_MASK) == SA_RIGHT ? left : right;
@@ -919,11 +936,11 @@ ptrdiff_t GetCharAtPosition(std::string_view str, int x, FontSize start_fontsize
  */
 void DrawCharCentered(char32_t c, const Rect &r, TextColour colour)
 {
-	SetColourRemap(colour);
+	BlitterMode bm = SetColourRemap(colour);
 	GfxMainBlitter(GetGlyph(FS_NORMAL, c),
 		CenterBounds(r.left, r.right, GetCharacterWidth(FS_NORMAL, c)),
 		CenterBounds(r.top, r.bottom, GetCharacterHeight(FS_NORMAL)),
-		BM_COLOUR_REMAP);
+		bm);
 }
 
 /**
@@ -977,13 +994,18 @@ void DrawSpriteViewport(SpriteID img, PaletteID pal, int x, int y, const SubSpri
 	SpriteID real_sprite = GB(img, 0, SPRITE_WIDTH);
 	if (HasBit(img, PALETTE_MODIFIER_TRANSPARENT)) {
 		pal = GB(pal, 0, PALETTE_WIDTH);
-		_colour_remap_ptr = GetNonSprite(pal, SpriteType::Recolour) + 1;
+		_colour_remap_ptr = reinterpret_cast<const RecolourSprite *>(GetNonSprite(pal, SpriteType::Recolour));
 		GfxMainBlitterViewport(GetSprite(real_sprite, SpriteType::Normal), x, y, pal == PALETTE_TO_TRANSPARENT ? BM_TRANSPARENT : BM_TRANSPARENT_REMAP, sub, real_sprite);
 	} else if (pal != PAL_NONE) {
 		if (HasBit(pal, PALETTE_TEXT_RECOLOUR)) {
 			SetColourRemap((TextColour)GB(pal, 0, PALETTE_WIDTH));
 		} else {
-			_colour_remap_ptr = GetNonSprite(GB(pal, 0, PALETTE_WIDTH), SpriteType::Recolour) + 1;
+			_colour_remap_ptr = reinterpret_cast<const RecolourSprite *>(GetNonSprite(GB(pal, 0, PALETTE_WIDTH), SpriteType::Recolour));
+			if (_colour_remap_ptr->is_rgba && BlitterFactory::GetCurrentBlitter()->GetScreenDepth() == 32) {
+				/* Skip 8bpp remap */
+				GfxMainBlitterViewport(GetSprite(real_sprite, SpriteType::Normal), x, y, BM_COLOUR_REMAP_RGB, sub, real_sprite);
+				return;
+			}
 		}
 		GfxMainBlitterViewport(GetSprite(real_sprite, SpriteType::Normal), x, y, GetBlitterMode(pal), sub, real_sprite);
 	} else {
@@ -1005,13 +1027,18 @@ void DrawSprite(SpriteID img, PaletteID pal, int x, int y, const SubSprite *sub,
 	SpriteID real_sprite = GB(img, 0, SPRITE_WIDTH);
 	if (HasBit(img, PALETTE_MODIFIER_TRANSPARENT)) {
 		pal = GB(pal, 0, PALETTE_WIDTH);
-		_colour_remap_ptr = GetNonSprite(pal, SpriteType::Recolour) + 1;
+		_colour_remap_ptr = reinterpret_cast<const RecolourSprite *>(GetNonSprite(pal, SpriteType::Recolour));
 		GfxMainBlitter(GetSprite(real_sprite, SpriteType::Normal), x, y, pal == PALETTE_TO_TRANSPARENT ? BM_TRANSPARENT : BM_TRANSPARENT_REMAP, sub, real_sprite, zoom);
 	} else if (pal != PAL_NONE) {
 		if (HasBit(pal, PALETTE_TEXT_RECOLOUR)) {
 			SetColourRemap((TextColour)GB(pal, 0, PALETTE_WIDTH));
 		} else {
-			_colour_remap_ptr = GetNonSprite(GB(pal, 0, PALETTE_WIDTH), SpriteType::Recolour) + 1;
+			_colour_remap_ptr = reinterpret_cast<const RecolourSprite *>(GetNonSprite(GB(pal, 0, PALETTE_WIDTH), SpriteType::Recolour));
+			if (_colour_remap_ptr->is_rgba && BlitterFactory::GetCurrentBlitter()->GetScreenDepth() == 32) {
+				/* Skip 8bpp remap */
+				GfxMainBlitter(GetSprite(real_sprite, SpriteType::Normal), x, y, BM_COLOUR_REMAP_RGB, sub, real_sprite, zoom);
+				return;
+			}
 		}
 		GfxMainBlitter(GetSprite(real_sprite, SpriteType::Normal), x, y, GetBlitterMode(pal), sub, real_sprite, zoom);
 	} else {

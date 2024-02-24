@@ -31,7 +31,7 @@ void Blitter_32bppSSE2_Anim::PaletteAnimate(const Palette &palette)
 	assert(this->palette.first_dirty == PALETTE_ANIM_START || this->palette.first_dirty == 0);
 
 	const uint16_t *anim = this->anim_buf;
-	Colour *dst = (Colour *)_screen.dst_ptr;
+	RgbaColour *dst = (RgbaColour *)_screen.dst_ptr;
 
 	bool screen_dirty = false;
 
@@ -43,7 +43,7 @@ void Blitter_32bppSSE2_Anim::PaletteAnimate(const Palette &palette)
 	__m128i brightness_cmp = _mm_set1_epi16(Blitter_32bppBase::DEFAULT_BRIGHTNESS);
 	__m128i colour_mask = _mm_set1_epi16(0xFF);
 	for (int y = this->anim_buf_height; y != 0 ; y--) {
-		Colour *next_dst_ln = dst + screen_pitch;
+		RgbaColour *next_dst_ln = dst + screen_pitch;
 		const uint16_t *next_anim_ln = anim + anim_pitch;
 		int x = width;
 		while (x > 0) {

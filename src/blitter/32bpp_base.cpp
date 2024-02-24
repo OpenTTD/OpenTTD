@@ -18,25 +18,25 @@ void *Blitter_32bppBase::MoveTo(void *video, int x, int y)
 	return (uint32_t *)video + x + y * _screen.pitch;
 }
 
-void Blitter_32bppBase::SetPixel(void *video, int x, int y, uint8_t colour)
+void Blitter_32bppBase::SetPixel(void *video, int x, int y, RgbMColour colour)
 {
-	*((Colour *)video + x + y * _screen.pitch) = LookupColourInPalette(colour);
+	*((RgbaColour *)video + x + y * _screen.pitch) = this->UnpackColour(colour);
 }
 
-void Blitter_32bppBase::DrawLine(void *video, int x, int y, int x2, int y2, int screen_width, int screen_height, uint8_t colour, int width, int dash)
+void Blitter_32bppBase::DrawLine(void *video, int x, int y, int x2, int y2, int screen_width, int screen_height, RgbMColour colour, int width, int dash)
 {
-	const Colour c = LookupColourInPalette(colour);
+	const RgbaColour c = this->UnpackColour(colour);
 	this->DrawLineGeneric(x, y, x2, y2, screen_width, screen_height, width, dash, [=](int x, int y) {
-		*((Colour *)video + x + y * _screen.pitch) = c;
+		*((RgbaColour *)video + x + y * _screen.pitch) = c;
 	});
 }
 
-void Blitter_32bppBase::DrawRect(void *video, int width, int height, uint8_t colour)
+void Blitter_32bppBase::DrawRect(void *video, int width, int height, RgbMColour colour)
 {
-	Colour colour32 = LookupColourInPalette(colour);
+	RgbaColour colour32 = this->UnpackColour(colour);
 
 	do {
-		Colour *dst = (Colour *)video;
+		RgbaColour *dst = (RgbaColour *)video;
 		for (int i = width; i > 0; i--) {
 			*dst = colour32;
 			dst++;
@@ -150,7 +150,7 @@ void Blitter_32bppBase::PaletteAnimate(const Palette &)
 	/* By default, 32bpp doesn't have palette animation */
 }
 
-Colour Blitter_32bppBase::ReallyAdjustBrightness(Colour colour, uint8_t brightness)
+RgbaColour Blitter_32bppBase::ReallyAdjustBrightness(RgbaColour colour, uint8_t brightness)
 {
 	assert(DEFAULT_BRIGHTNESS == 1 << 7);
 
@@ -162,7 +162,7 @@ Colour Blitter_32bppBase::ReallyAdjustBrightness(Colour colour, uint8_t brightne
 	uint16_t b = GB(combined, 7, 9);
 
 	if ((combined & 0x800080008000L) == 0L) {
-		return Colour(r, g, b, colour.a);
+		return RgbaColour(r, g, b, colour.a);
 	}
 
 	uint16_t ob = 0;
@@ -173,7 +173,7 @@ Colour Blitter_32bppBase::ReallyAdjustBrightness(Colour colour, uint8_t brightne
 
 	/* Reduce overbright strength */
 	ob /= 2;
-	return Colour(
+	return RgbaColour(
 		r >= 255 ? 255 : std::min(r + ob * (255 - r) / 256, 255),
 		g >= 255 ? 255 : std::min(g + ob * (255 - g) / 256, 255),
 		b >= 255 ? 255 : std::min(b + ob * (255 - b) / 256, 255),

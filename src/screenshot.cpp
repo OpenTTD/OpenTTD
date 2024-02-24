@@ -65,7 +65,7 @@ typedef void ScreenshotCallback(void *userdata, void *buf, uint y, uint pitch, u
  * @param palette     %Colour palette (for 8bpp images).
  * @return File was written successfully.
  */
-typedef bool ScreenshotHandlerProc(const char *name, ScreenshotCallback *callb, void *userdata, uint w, uint h, int pixelformat, const Colour *palette);
+typedef bool ScreenshotHandlerProc(const char *name, ScreenshotCallback *callb, void *userdata, uint w, uint h, int pixelformat, const RgbaColour *palette);
 
 /** Screenshot format information. */
 struct ScreenshotFormat {
@@ -115,7 +115,7 @@ static_assert(sizeof(RgbQuad) == 4);
  * @return was everything ok?
  * @see ScreenshotHandlerProc
  */
-static bool MakeBMPImage(const char *name, ScreenshotCallback *callb, void *userdata, uint w, uint h, int pixelformat, const Colour *palette)
+static bool MakeBMPImage(const char *name, ScreenshotCallback *callb, void *userdata, uint w, uint h, int pixelformat, const RgbaColour *palette)
 {
 	uint bpp; // bytes per pixel
 	switch (pixelformat) {
@@ -200,7 +200,7 @@ static bool MakeBMPImage(const char *name, ScreenshotCallback *callb, void *user
 			} else {
 				/* Convert from 'native' 32bpp to BMP-like 24bpp.
 				 * Works for both big and little endian machines */
-				Colour *src = ((Colour *)buff) + n * w;
+				RgbaColour *src = ((RgbaColour *)buff) + n * w;
 				byte *dst = line;
 				for (uint i = 0; i < w; i++) {
 					dst[i * 3    ] = src[i].b;
@@ -262,7 +262,7 @@ static void PNGAPI png_my_warning(png_structp png_ptr, png_const_charp message)
  * @return File was written successfully.
  * @see ScreenshotHandlerProc
  */
-static bool MakePNGImage(const char *name, ScreenshotCallback *callb, void *userdata, uint w, uint h, int pixelformat, const Colour *palette)
+static bool MakePNGImage(const char *name, ScreenshotCallback *callb, void *userdata, uint w, uint h, int pixelformat, const RgbaColour *palette)
 {
 	png_color rq[256];
 	FILE *f;
@@ -437,7 +437,7 @@ static_assert(sizeof(PcxHeader) == 128);
  * @return File was written successfully.
  * @see ScreenshotHandlerProc
  */
-static bool MakePCXImage(const char *name, ScreenshotCallback *callb, void *userdata, uint w, uint h, int pixelformat, const Colour *palette)
+static bool MakePCXImage(const char *name, ScreenshotCallback *callb, void *userdata, uint w, uint h, int pixelformat, const RgbaColour *palette)
 {
 	FILE *f;
 	uint maxlines;
@@ -838,7 +838,7 @@ static void HeightmapCallback(void *, void *buffer, uint y, uint, uint n)
  */
 bool MakeHeightmapScreenshot(const char *filename)
 {
-	Colour palette[256];
+	RgbaColour palette[256];
 	for (uint i = 0; i < lengthof(palette); i++) {
 		palette[i].a = 0xff;
 		palette[i].r = i;

@@ -19,6 +19,7 @@
 #include "core/pool_func.hpp"
 #include "order_backup.h"
 #include "group_cmd.h"
+#include "spritecache.h"
 
 #include "table/strings.h"
 
@@ -298,6 +299,7 @@ static void PropagateChildLivery(const Group *g, bool reset_cache)
 		if (cg->parent == g->index) {
 			if (!HasBit(cg->livery.in_use, 0)) cg->livery.colour1 = g->livery.colour1;
 			if (!HasBit(cg->livery.in_use, 1)) cg->livery.colour2 = g->livery.colour2;
+			UpdateLivery(cg->livery, false);
 			PropagateChildLivery(cg, reset_cache);
 		}
 	}
@@ -314,6 +316,7 @@ void UpdateCompanyGroupLiveries(const Company *c)
 		if (g->owner == c->index && g->parent == INVALID_GROUP) {
 			if (!HasBit(g->livery.in_use, 0)) g->livery.colour1 = c->livery[LS_DEFAULT].colour1;
 			if (!HasBit(g->livery.in_use, 1)) g->livery.colour2 = c->livery[LS_DEFAULT].colour2;
+			UpdateLivery(g->livery, false);
 			PropagateChildLivery(g, false);
 		}
 	}
@@ -325,6 +328,14 @@ Group::Group(Owner owner)
 	this->folded = false;
 }
 
+Group::~Group()
+{
+	if (CleaningPool()) return;
+
+	DeallocateDynamicSprite(this->livery.cached_pal_1cc);
+	DeallocateDynamicSprite(this->livery.cached_pal_2cc);
+	DeallocateDynamicSprite(this->livery.cached_pal_2cr);
+}
 
 /**
  * Create a new vehicle group.
@@ -470,8 +481,9 @@ CommandCost CmdAlterGroup(DoCommandFlag flags, AlterGroupMode mode, GroupID grou
 			if (!HasBit(g->livery.in_use, 0) || !HasBit(g->livery.in_use, 1)) {
 				/* Update livery with new parent's colours if either colour is default. */
 				const Livery *livery = GetParentLivery(g);
-				if (!HasBit(g->livery.in_use, 0)) g->livery.colour1 = livery->colour1;
-				if (!HasBit(g->livery.in_use, 1)) g->livery.colour2 = livery->colour2;
+				if (!HasBit(g->livery.in_use, 0)) if (!HasBit(g->livery.in_use, 0)) g->livery.colour1 = livery->colour1;
+				if (!HasBit(g->livery.in_use, 1)) if (!HasBit(g->livery.in_use, 1)) g->livery.colour2 = livery->colour2;
+				UpdateLivery(g->livery, false);
 
 				PropagateChildLivery(g, true);
 				MarkWholeScreenDirty();
@@ -668,8 +680,6 @@ CommandCost CmdSetGroupLivery(DoCommandFlag flags, GroupID group_id, bool primar
 
 	if (g == nullptr || g->owner != _current_company) return CMD_ERROR;
 
-	if (colour >= COLOUR_END && colour != INVALID_COLOUR) return CMD_ERROR;
-
 	if (flags & DC_EXEC) {
 		if (primary) {
 			SB(g->livery.in_use, 0, 1, colour != INVALID_COLOUR);
@@ -680,6 +690,7 @@ CommandCost CmdSetGroupLivery(DoCommandFlag flags, GroupID group_id, bool primar
 			if (colour == INVALID_COLOUR) colour = GetParentLivery(g)->colour2;
 			g->livery.colour2 = colour;
 		}
+		UpdateLivery(g->livery, false);
 
 		PropagateChildLivery(g, true);
 		MarkWholeScreenDirty();

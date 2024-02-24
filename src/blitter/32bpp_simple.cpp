@@ -22,11 +22,11 @@ static FBlitter_32bppSimple iFBlitter_32bppSimple;
 void Blitter_32bppSimple::Draw(Blitter::BlitterParams *bp, BlitterMode mode, ZoomLevel zoom)
 {
 	const Blitter_32bppSimple::Pixel *src, *src_line;
-	Colour *dst, *dst_line;
+	RgbaColour *dst, *dst_line;
 
 	/* Find where to start reading in the source sprite */
 	src_line = (const Blitter_32bppSimple::Pixel *)bp->sprite + (bp->skip_top * bp->sprite_width + bp->skip_left) * ScaleByZoom(1, zoom);
-	dst_line = (Colour *)bp->dst + bp->top * bp->pitch + bp->left;
+	dst_line = (RgbaColour *)bp->dst + bp->top * bp->pitch + bp->left;
 
 	for (int y = 0; y < bp->height; y++) {
 		dst = dst_line;
@@ -42,7 +42,18 @@ void Blitter_32bppSimple::Draw(Blitter::BlitterParams *bp, BlitterMode mode, Zoo
 					if (src->m == 0) {
 						if (src->a != 0) *dst = ComposeColourRGBA(src->r, src->g, src->b, src->a, *dst);
 					} else {
-						if (bp->remap[src->m] != 0) *dst = ComposeColourPA(this->AdjustBrightness(this->LookupColourInPalette(bp->remap[src->m]), src->v), src->a, *dst);
+						if (bp->remap->remap_index[src->m] != 0) *dst = ComposeColourPA(this->AdjustBrightness(this->LookupColourInPalette(bp->remap->remap_index[src->m]), src->v), src->a, *dst);
+					}
+					break;
+
+				case BM_COLOUR_REMAP_RGB:
+					if (src->m == 0) {
+						if (src->a != 0) *dst = ComposeColourRGBANoCheck(src->r, src->g, src->b, src->a, *dst);
+					} else {
+						const RgbaColour c = bp->remap->remap_rgba[src->m];
+						if (c.a != 0) {
+							*dst = ComposeColourPA(this->AdjustBrightness(c, src->v), src->a, *dst);
+						}
 					}
 					break;
 
@@ -53,13 +64,13 @@ void Blitter_32bppSimple::Draw(Blitter::BlitterParams *bp, BlitterMode mode, Zoo
 							*dst = ComposeColourRGBA(g, g, g, src->a, *dst);
 						}
 					} else {
-						if (bp->remap[src->m] != 0) *dst = ComposeColourPA(this->AdjustBrightness(this->LookupColourInPalette(bp->remap[src->m]), src->v), src->a, *dst);
+						if (bp->remap->remap_index[src->m] != 0) *dst = ComposeColourPA(this->AdjustBrightness(this->LookupColourInPalette(bp->remap->remap_index[src->m]), src->v), src->a, *dst);
 					}
 					break;
 
 				case BM_BLACK_REMAP:
 					if (src->a != 0) {
-						*dst = Colour(0, 0, 0);
+						*dst = RgbaColour(0, 0, 0);
 					}
 					break;
 
@@ -73,7 +84,7 @@ void Blitter_32bppSimple::Draw(Blitter::BlitterParams *bp, BlitterMode mode, Zoo
 				case BM_TRANSPARENT_REMAP:
 					/* Apply custom transparency remap. */
 					if (src->a != 0) {
-						*dst = this->LookupColourInPalette(bp->remap[GetNearestColourIndex(*dst)]);
+						*dst = this->LookupColourInPalette(bp->remap->remap_index[GetNearestColourIndex(*dst)]);
 					}
 					break;
 
@@ -89,7 +100,7 @@ void Blitter_32bppSimple::Draw(Blitter::BlitterParams *bp, BlitterMode mode, Zoo
 
 void Blitter_32bppSimple::DrawColourMappingRect(void *dst, int width, int height, PaletteID pal)
 {
-	Colour *udst = (Colour *)dst;
+	RgbaColour *udst = (RgbaColour *)dst;
 
 	if (pal == PALETTE_TO_TRANSPARENT) {
 		do {
@@ -145,7 +156,7 @@ Sprite *Blitter_32bppSimple::Encode(const SpriteLoader::SpriteCollection &sprite
 			dst[i].v = rgb_max;
 
 			/* Pre-convert the mapping channel to a RGB value */
-			Colour colour = this->AdjustBrightness(this->LookupColourInPalette(src->m), dst[i].v);
+			RgbaColour colour = this->AdjustBrightness(this->LookupColourInPalette(src->m), dst[i].v);
 			dst[i].r = colour.r;
 			dst[i].g = colour.g;
 			dst[i].b = colour.b;
