@@ -1038,31 +1038,28 @@ static TileHighlightType GetTileHighlightType(TileIndex t)
 		}
 	}
 
-	if (_current_company < MAX_COMPANIES && _infrastructure_window_open) {
-		/* Edge case of company owned tramway on non-company owned tile */
-		if (IsTileType(t, MP_ROAD) && !IsRoadDepot(t) && HasTileRoadType(t, RTT_TRAM)) {
-			if (IsRoadOwner(t, RTT_TRAM, _current_company)) {
-				return THT_WHITE;
-			}
-		}
-
+	/* Highlight infrastructure owned by the company with the most recently currently opened infrastructure window */
+	if (!_viewport_infrastructure_window_order.empty()) {
 		switch (GetTileType(t)) {
 			case MP_ROAD:
+				/* Edge case of company owned tramway on non-company owned tile */
+				if (IsTileType(t, MP_ROAD) && !IsRoadDepot(t) && HasTileRoadType(t, RTT_TRAM)) {
+					if (IsRoadOwner(t, RTT_TRAM, _viewport_infrastructure_window_order.back())) {
+						return THT_WHITE;
+					}
+				}
+				[[fallthrough]];
 			case MP_RAILWAY:
 			case MP_TUNNELBRIDGE:
 			case MP_WATER:
-			{
-				CommandCost ret = CheckTileOwnership(t);
-				if (!ret.Failed()) {
+				if (GetTileOwner(t) == _viewport_infrastructure_window_order.back()) {
 					return THT_WHITE;
 				}
 				break;
-			}
 			default:
-			{
 				return THT_NONE;
 				break;
-			}
+
 		}
 	}
 	return THT_NONE;

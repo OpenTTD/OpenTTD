@@ -53,7 +53,7 @@
 /** Company GUI constants. */
 static void DoSelectCompanyManagerFace(Window *parent);
 static void ShowCompanyInfrastructure(CompanyID company);
-bool _infrastructure_window_open = false;
+std::vector<CompanyID> _viewport_infrastructure_window_order;
 
 /** List of revenues. */
 static const std::initializer_list<ExpensesType> _expenses_list_revenue = {
@@ -1831,13 +1831,20 @@ struct CompanyInfrastructureWindow : Window
 	RoadTypes roadtypes; ///< Valid roadtypes.
 
 	uint total_width; ///< String width of the total cost line.
+
 	/**
 	 * Hide the window and all its child windows, and mark them for a later deletion.
 	 * Stop white highlight of company owned infrastructure
 	 */
 	void Close([[maybe_unused]] int data) override
 	{
-		_infrastructure_window_open = false;
+		auto to_remove_from_order = std::find(_viewport_infrastructure_window_order.begin(), _viewport_infrastructure_window_order.end(), (CompanyID)this->window_number);
+
+		/* Cautious error checking */
+		if (to_remove_from_order != _viewport_infrastructure_window_order.end()) {
+			_viewport_infrastructure_window_order.erase(to_remove_from_order);
+		}
+
 		MarkWholeScreenDirty();
 		this->Window::Close();
 	}
@@ -2168,7 +2175,7 @@ static void ShowCompanyInfrastructure(CompanyID company)
 {
 	if (!Company::IsValidID(company)) return;
 	AllocateWindowDescFront<CompanyInfrastructureWindow>(&_company_infrastructure_desc, company);
-	_infrastructure_window_open = true;
+	_viewport_infrastructure_window_order.push_back(company);
 	MarkWholeScreenDirty();
 }
 
