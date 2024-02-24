@@ -341,7 +341,7 @@ void LinkGraphOverlay::DrawStationDots(const DrawPixelInfo *dpi) const
  * Draw a square symbolizing a producer of cargo.
  * @param x X coordinate of the middle of the vertex.
  * @param y Y coordinate of the middle of the vertex.
- * @param size Y and y extend of the vertex.
+ * @param size x and y extent of the vertex.
  * @param colour Colour with which the vertex will be filled.
  * @param border_colour Colour for the border of the vertex.
  */
@@ -350,15 +350,10 @@ void LinkGraphOverlay::DrawStationDots(const DrawPixelInfo *dpi) const
 	size--;
 	int w1 = size / 2;
 	int w2 = size / 2 + size % 2;
+	int borderwidth = ScaleGUITrad(1);
 
+	GfxFillRect(x - w1 - borderwidth, y - w1 - borderwidth, x + w2 + borderwidth, y + w2 + borderwidth, border_colour);
 	GfxFillRect(x - w1, y - w1, x + w2, y + w2, colour);
-
-	w1++;
-	w2++;
-	GfxDrawLine(x - w1, y - w1, x + w2, y - w1, border_colour);
-	GfxDrawLine(x - w1, y + w2, x + w2, y + w2, border_colour);
-	GfxDrawLine(x - w1, y - w1, x - w1, y + w2, border_colour);
-	GfxDrawLine(x + w2, y - w1, x + w2, y + w2, border_colour);
 }
 
 bool LinkGraphOverlay::ShowTooltip(Point pt, TooltipCloseCondition close_cond)
