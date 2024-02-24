@@ -2175,6 +2175,15 @@ static void ShowCompanyInfrastructure(CompanyID company)
 {
 	if (!Company::IsValidID(company)) return;
 	AllocateWindowDescFront<CompanyInfrastructureWindow>(&_company_infrastructure_desc, company);
+
+	/* Check if already open then move up in the order */
+	auto to_moveup_in_order = std::find(_viewport_infrastructure_window_order.begin(), _viewport_infrastructure_window_order.end(), company);
+
+	/* Cautious error checking */
+	if (to_moveup_in_order != _viewport_infrastructure_window_order.end()) {
+		_viewport_infrastructure_window_order.erase(to_moveup_in_order);
+	}
+
 	_viewport_infrastructure_window_order.push_back(company);
 	MarkWholeScreenDirty();
 }

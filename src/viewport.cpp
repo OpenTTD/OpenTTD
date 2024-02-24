@@ -1042,9 +1042,16 @@ static TileHighlightType GetTileHighlightType(TileIndex t)
 	if (!_viewport_infrastructure_window_order.empty()) {
 		switch (GetTileType(t)) {
 			case MP_ROAD:
-				/* Edge case of company owned tramway on non-company owned tile */
-				if (IsTileType(t, MP_ROAD) && !IsRoadDepot(t) && HasTileRoadType(t, RTT_TRAM)) {
+				/* Edge case of company owned tramway on non-company owned road/rail tile */
+				if (!IsRoadDepot(t) && HasTileRoadType(t, RTT_TRAM)) {
 					if (IsRoadOwner(t, RTT_TRAM, _viewport_infrastructure_window_order.back())) {
+						return THT_WHITE;
+					}
+				}
+
+				/* Edge case of company owned road on non-company owned rail tile */
+				if (!IsRoadDepot(t) && HasTileRoadType(t, RTT_ROAD)) {
+					if (IsRoadOwner(t, RTT_ROAD, _viewport_infrastructure_window_order.back())) {
 						return THT_WHITE;
 					}
 				}
