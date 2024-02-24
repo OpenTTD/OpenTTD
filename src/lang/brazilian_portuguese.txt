@@ -50,7 +50,7 @@ STR_CARGO_PLURAL_RUBBER                                         :Borracha
 STR_CARGO_PLURAL_SUGAR                                          :Açúcar
 STR_CARGO_PLURAL_TOYS                                           :Brinquedos
 STR_CARGO_PLURAL_SWEETS                                         :Doces
-STR_CARGO_PLURAL_COLA                                           :Bebida de cola
+STR_CARGO_PLURAL_COLA                                           :Bebida de Cola
 STR_CARGO_PLURAL_CANDYFLOSS                                     :Algodão Doce
 STR_CARGO_PLURAL_BUBBLES                                        :Bolhas
 STR_CARGO_PLURAL_TOFFEE                                         :Caramelo
@@ -84,7 +84,7 @@ STR_CARGO_SINGULAR_RUBBER                                       :Borracha
 STR_CARGO_SINGULAR_SUGAR                                        :Açúcar
 STR_CARGO_SINGULAR_TOY                                          :Brinquedo
 STR_CARGO_SINGULAR_SWEETS                                       :Doce
-STR_CARGO_SINGULAR_COLA                                         :Bebida de cola
+STR_CARGO_SINGULAR_COLA                                         :Bebida de Cola
 STR_CARGO_SINGULAR_CANDYFLOSS                                   :Algodão Doce
 STR_CARGO_SINGULAR_BUBBLE                                       :Bolha
 STR_CARGO_SINGULAR_TOFFEE                                       :Caramelo
@@ -118,7 +118,7 @@ STR_QUANTITY_RUBBER                                             :{VOLUME_LONG} d
 STR_QUANTITY_SUGAR                                              :{WEIGHT_LONG} de açúcar
 STR_QUANTITY_TOYS                                               :{COMMA}{NBSP}brinquedo{P "" s}
 STR_QUANTITY_SWEETS                                             :{COMMA}{NBSP}saco{P "" s} de doces
-STR_QUANTITY_COLA                                               :{VOLUME_LONG} de bebida de cola
+STR_QUANTITY_COLA                                               :{VOLUME_LONG} de bebida de Cola
 STR_QUANTITY_CANDYFLOSS                                         :{WEIGHT_LONG} de algodão doce
 STR_QUANTITY_BUBBLES                                            :{COMMA} bolha{P "" s}
 STR_QUANTITY_TOFFEE                                             :{WEIGHT_LONG} de caramelo
@@ -1041,7 +1041,7 @@ STR_GAME_OPTIONS_VIDEO_ACCELERATION_TOOLTIP                     :{BLACK}Marque e
 STR_GAME_OPTIONS_VIDEO_ACCELERATION_RESTART                     :{WHITE}A configuração terá efeito somente após reiniciar o jogo
 
 STR_GAME_OPTIONS_VIDEO_VSYNC                                    :{BLACK}VSync
-STR_GAME_OPTIONS_VIDEO_VSYNC_TOOLTIP                            :{BLACK}Marque esta caixa para ativar Vsync na tela. Quando modificada, esta configuração será aplicada somente ao reiniciar o jogo. Só funciona com a aceleração de hardware habilitada
+STR_GAME_OPTIONS_VIDEO_VSYNC_TOOLTIP                            :{BLACK}Marque esta caixa para ativar Vsync na tela. Se modificada, esta configuração só terá efeito quado o jogo for reiniciado. Só funciona com aceleração de hardware habilitada
 
 STR_GAME_OPTIONS_VIDEO_DRIVER_INFO                              :{BLACK}"Driver" atual: {STRING}
 
@@ -1118,6 +1118,8 @@ STR_CURRENCY_DECREASE_EXCHANGE_RATE_TOOLTIP                     :{BLACK}Diminuir
 STR_CURRENCY_INCREASE_EXCHANGE_RATE_TOOLTIP                     :{BLACK}Aumentar o valor da sua moeda para uma Libra(£)
 STR_CURRENCY_SET_EXCHANGE_RATE_TOOLTIP                          :{BLACK}Definir a taxa de câmbio de sua moeda por uma Libra(£)
 
+STR_CURRENCY_SEPARATOR                                          :{LTBLUE}Separador: {ORANGE}{STRING}
+STR_CURRENCY_SET_CUSTOM_CURRENCY_SEPARATOR_TOOLTIP              :{BLACK}Definir o separador para a sua moeda
 
 STR_CURRENCY_PREFIX                                             :{LTBLUE}Prefixo: {ORANGE}{STRING}
 STR_CURRENCY_SET_CUSTOM_CURRENCY_PREFIX_TOOLTIP                 :{BLACK}Definir o prefixo para a sua moeda
@@ -1273,7 +1275,7 @@ STR_CONFIG_SETTING_INFINITE_MONEY                               :Dinheiro infini
 STR_CONFIG_SETTING_INFINITE_MONEY_HELPTEXT                      :Permite gastos ilimitados e desabilita a falência de empresas
 
 STR_CONFIG_SETTING_MAXIMUM_INITIAL_LOAN                         :Valor máximo do empréstimo inicial: {STRING}
-STR_CONFIG_SETTING_MAXIMUM_INITIAL_LOAN_HELPTEXT                :Valor máximo que uma empresa pode emprestar (sem considerar a inflação). Se definido como "Sem empréstimo", não haverá dinheiro disponível a menos que seja fornecido por um Script de Jogo ou pela definição "Dinheiro ilimitado".
+STR_CONFIG_SETTING_MAXIMUM_INITIAL_LOAN_HELPTEXT                :Valor máximo que uma empresa pode emprestar (sem considerar a inflação). Se definido como "Sem empréstimo", não haverá dinheiro disponível a menos que seja fornecido por um Script de Jogo ou pela configuração "Dinheiro ilimitado".
 STR_CONFIG_SETTING_MAXIMUM_INITIAL_LOAN_VALUE                   :{CURRENCY_LONG}
 ###setting-zero-is-special
 STR_CONFIG_SETTING_MAXIMUM_INITIAL_LOAN_DISABLED                :Sem empréstimo
@@ -1405,7 +1407,7 @@ STR_CONFIG_SETTING_SHOWFINANCES_HELPTEXT_PERIOD                 :Se ativado, a j
 STR_CONFIG_SETTING_NONSTOP_BY_DEFAULT                           :Novas ordens são 'sem parar' por padrão: {STRING}
 STR_CONFIG_SETTING_NONSTOP_BY_DEFAULT_HELPTEXT                  :Normalmente, um veículo irá parar em cada estação por onde passa. Ativando esta configuração, o veículo passará por todas as estações na sua rota, sem parar, até o destino final. Esta opção define somente um modo padrão para novas ordens. Ordens individuais podem ser definidas explicitamente para qualquer um dos dois comportamentos
 
-STR_CONFIG_SETTING_STOP_LOCATION                                :Novas ordens de trem param por padrão no {STRING} da plataforma
+STR_CONFIG_SETTING_STOP_LOCATION                                :Novas ordens de trem, por padrão, têm parada no {STRING} da plataforma
 STR_CONFIG_SETTING_STOP_LOCATION_HELPTEXT                       :Local padrão onde um trem irá parar na plataforma. No 'início' significa próximo à entrada, 'meio' significa no meio da plataforma e 'fim' significa parar na saída da plataforma. Esta opção apenas define um padrão para as novas ordens. Ordens individuais podem ter o local de parada definido clicando no texto da ordem
 ###length 3
 STR_CONFIG_SETTING_STOP_LOCATION_NEAR_END                       :início
@@ -1844,7 +1846,7 @@ STR_CONFIG_SETTING_WAGONSPEEDLIMITS                             :Ativar limites 
 STR_CONFIG_SETTING_WAGONSPEEDLIMITS_HELPTEXT                    :Quando ativado, aplica os limites de velocidade dos vagões para definir a velocidade máxima de um trem
 
 STR_CONFIG_SETTING_DISABLE_ELRAILS                              :Desativar ferrovias elétricas: {STRING}
-STR_CONFIG_SETTING_DISABLE_ELRAILS_HELPTEXT                     :Se ativado, essa opção desativa a necessidade de eletrificar os trilhos para que locomotivas elétricas possam utilizá-los
+STR_CONFIG_SETTING_DISABLE_ELRAILS_HELPTEXT                     :Se ativado, essa configuração desativa a necessidade de eletrificar os trilhos para que locomotivas elétricas possam utilizá-los
 
 STR_CONFIG_SETTING_NEWS_ARRIVAL_FIRST_VEHICLE_OWN               :Chegada do primeiro veículo à estação do jogador: {STRING}
 STR_CONFIG_SETTING_NEWS_ARRIVAL_FIRST_VEHICLE_OWN_HELPTEXT      :Mostrar um jornal quando o primeiro veículo chegar a uma estação nova do jogador
@@ -2148,7 +2150,7 @@ STR_CONFIG_SETTING_QUERY_CAPTION                                :{WHITE}Alterar 
 STR_CONFIG_ERROR                                                :{WHITE}Erro no arquivo de configuração...
 STR_CONFIG_ERROR_ARRAY                                          :{WHITE}... erro no array '{STRING}'
 STR_CONFIG_ERROR_INVALID_VALUE                                  :{WHITE}... valor inválido '{STRING}' para '{STRING}'
-STR_CONFIG_ERROR_TRAILING_CHARACTERS                            :{WHITE}... caracteres extras no fim da definição '{STRING}'
+STR_CONFIG_ERROR_TRAILING_CHARACTERS                            :{WHITE}... caracteres extras no final de '{STRING}'
 STR_CONFIG_ERROR_DUPLICATE_GRFID                                :{WHITE}... ignorando NewGRF '{STRING}': ID do GRF é idêntico a '{STRING}'
 STR_CONFIG_ERROR_INVALID_GRF                                    :{WHITE}... ignorando NewGRF inválido '{STRING}': {STRING}
 STR_CONFIG_ERROR_INVALID_GRF_NOT_FOUND                          :não encontrado
@@ -2971,7 +2973,7 @@ STR_OBJECT_CLASS_TRNS                                           :Transmissores
 
 # Tree planting window (last eight for SE only)
 STR_PLANT_TREE_CAPTION                                          :{WHITE}Árvores
-STR_PLANT_TREE_TOOLTIP                                          :{BLACK}Escolher tipo de árvore para plantar. Se no quadrado já existir uma árvore, serão adicionadas mais árvores de diferentes tipos independentemente do tipo selecionado
+STR_PLANT_TREE_TOOLTIP                                          :{BLACK}Escolher tipo de árvore para plantar. Se no quadrado já existir uma árvore, serão adicionadas mais árvores de diferentes tipos, ignorando o tipo selecionado
 STR_TREES_RANDOM_TYPE                                           :{BLACK}Árvores de tipo aleatório
 STR_TREES_RANDOM_TYPE_TOOLTIP                                   :{BLACK}Plantar árvores de tipo aleatório. Ctrl+Clique+Arraste para selecionar a área diagonalmente. Ctrl+Shift+Clique+Arrastar mostra o custo estimado
 STR_TREES_RANDOM_TREES_BUTTON                                   :{BLACK}Plantar Aleatoriamente
@@ -3393,7 +3395,7 @@ STR_GENERATION_TREE_GENERATION                                  :{BLACK}Geraçã
 STR_GENERATION_OBJECT_GENERATION                                :{BLACK}Geração de objetos
 STR_GENERATION_CLEARING_TILES                                   :{BLACK}Geração de área rochosa e irregular
 STR_GENERATION_SETTINGUP_GAME                                   :{BLACK}Configurando o jogo
-STR_GENERATION_PREPARING_TILELOOP                               :{BLACK}Executando o tile-loop
+STR_GENERATION_PREPARING_TILELOOP                               :{BLACK}Configurando o terreno
 STR_GENERATION_PREPARING_SCRIPT                                 :{BLACK}Executando o script
 STR_GENERATION_PREPARING_GAME                                   :{BLACK}Preparando o jogo
 
@@ -3524,7 +3526,7 @@ STR_NEWGRF_ERROR_LOAD_AFTER                                     :{1:STRING} deve
 STR_NEWGRF_ERROR_OTTD_VERSION_NUMBER                            :{1:STRING} requer OpenTTD versão {2:STRING} ou superior
 STR_NEWGRF_ERROR_AFTER_TRANSLATED_FILE                          :o arquivo GRF foi designado para tradução
 STR_NEWGRF_ERROR_TOO_MANY_NEWGRFS_LOADED                        :Foram carregados NewGRFs demais
-STR_NEWGRF_ERROR_STATIC_GRF_CAUSES_DESYNC                       :Carregar {1:STRING} como NewGRF estático com {2:STRING} pode causar dessincronização
+STR_NEWGRF_ERROR_STATIC_GRF_CAUSES_DESYNC                       :Carregar {1:STRING} como NewGRF estático com {2:STRING} pode causar erro de sincronização
 STR_NEWGRF_ERROR_UNEXPECTED_SPRITE                              :Sprite inesperado (sprite {3:NUM})
 STR_NEWGRF_ERROR_UNKNOWN_PROPERTY                               :Propriedade de Ação 0 desconhecida {4:HEX} (sprite {3:NUM})
 STR_NEWGRF_ERROR_INVALID_ID                                     :Tentativa de uso de ID inválido (sprite {3:NUM})
@@ -4945,7 +4947,7 @@ STR_ERROR_MESSAGE_CAPTION_OTHER_COMPANY                         :{YELLOW}Mensage
 STR_ERROR_OFF_EDGE_OF_MAP                                       :{WHITE}Fora dos limites do mapa
 STR_ERROR_TOO_CLOSE_TO_EDGE_OF_MAP                              :{WHITE}Muito perto da borda do mapa
 STR_ERROR_NOT_ENOUGH_CASH_REQUIRES_CURRENCY                     :{WHITE}Não há dinheiro - requer {CURRENCY_LONG}
-STR_ERROR_FLAT_LAND_REQUIRED                                    :{WHITE}Necessário terreno plano
+STR_ERROR_FLAT_LAND_REQUIRED                                    :{WHITE}É necessário terreno plano
 STR_ERROR_LAND_SLOPED_IN_WRONG_DIRECTION                        :{WHITE}Terreno inclinado na direção errada
 STR_ERROR_CAN_T_DO_THIS                                         :{WHITE}Não é possível fazer isto...
 STR_ERROR_BUILDING_MUST_BE_DEMOLISHED                           :{WHITE}Edifício deve ser demolido primeiro
@@ -5421,7 +5423,7 @@ STR_INDUSTRY_NAME_LUMBER_MILL                                   :{G=f}Madeireira
 STR_INDUSTRY_NAME_COTTON_CANDY_FOREST                           :{G=f}Floresta de Algodão Doce
 STR_INDUSTRY_NAME_CANDY_FACTORY                                 :{G=f}Fábrica de Doces
 STR_INDUSTRY_NAME_BATTERY_FARM                                  :{G=f}Fazenda de Pilhas
-STR_INDUSTRY_NAME_COLA_WELLS                                    :{G=m}Poços de Xarope de cola
+STR_INDUSTRY_NAME_COLA_WELLS                                    :{G=m}Poços de Xarope de Cola
 STR_INDUSTRY_NAME_TOY_SHOP                                      :{G=f}Loja de Brinquedos
 STR_INDUSTRY_NAME_TOY_FACTORY                                   :{G=f}Fábrica de Brinquedos
 STR_INDUSTRY_NAME_PLASTIC_FOUNTAINS                             :{G=f}Fontes de Plástico
@@ -5809,6 +5811,10 @@ STR_TOWN_NAME                                                   :{TOWN}
 STR_VEHICLE_NAME                                                :{VEHICLE}
 STR_WAYPOINT_NAME                                               :{WAYPOINT}
 
+STR_CURRENCY_SHORT_KILO                                         :{NBSP}k
+STR_CURRENCY_SHORT_MEGA                                         :{NBSP}M
+STR_CURRENCY_SHORT_GIGA                                         :{NBSP}G
+STR_CURRENCY_SHORT_TERA                                         :{NBSP}T
 
 STR_JUST_CARGO                                                  :{CARGO_LONG}
 STR_JUST_RIGHT_ARROW                                            :{RIGHT_ARROW}

@@ -729,6 +729,7 @@ STR_GRAPH_CARGO_DELIVERED_CAPTION                               :{WHITE}Кіль
 STR_GRAPH_COMPANY_PERFORMANCE_RATINGS_CAPTION                   :{WHITE}Рейтинг продуктивності компанії (найбільший рейтинг=1000)
 STR_GRAPH_COMPANY_VALUES_CAPTION                                :{WHITE}Вартість компанії
 
+STR_GRAPH_LAST_72_MINUTES_TIME_LABEL                            :{TINY_FONT}{BLACK}Останні 72 хвилини
 
 STR_GRAPH_CARGO_PAYMENT_RATES_CAPTION                           :{WHITE}Тарифи на доставку вантажів
 STR_GRAPH_CARGO_PAYMENT_RATES_TITLE                             :{TINY_FONT}{BLACK}Плата за доставку 10 одиниць (або 10,000 літрів) вантажу на відстань 20 квадратів
@@ -748,6 +749,7 @@ STR_GRAPH_KEY_COMPANY_SELECTION_TOOLTIP                         :{BLACK}Нати
 # Company league window
 STR_COMPANY_LEAGUE_TABLE_CAPTION                                :{WHITE}Рейтингова таблиця
 STR_COMPANY_LEAGUE_COMPANY_NAME                                 :{ORANGE}{COMPANY} {BLACK}{COMPANY_NUM} '{STRING}'
+STR_COMPANY_LEAGUE_COMPANY_RANK                                 :{YELLOW}#{NUM}
 STR_COMPANY_LEAGUE_PERFORMANCE_TITLE_ENGINEER                   :Інженер
 STR_COMPANY_LEAGUE_PERFORMANCE_TITLE_TRAFFIC_MANAGER            :Регулювальник
 STR_COMPANY_LEAGUE_PERFORMANCE_TITLE_TRANSPORT_COORDINATOR      :Диспетчер
@@ -3334,10 +3336,12 @@ STR_MAPGEN_MAPSIZE                                              :{BLACK}Розм
 STR_MAPGEN_MAPSIZE_TOOLTIP                                      :{BLACK}Оберіть розмір карти в клітинках. Кількість доступних клітинок буде трохи меншою
 STR_MAPGEN_BY                                                   :{BLACK}*
 STR_MAPGEN_NUMBER_OF_TOWNS                                      :{BLACK}Міста:
+STR_MAPGEN_NUMBER_OF_TOWNS_TOOLTIP                              :BLACK}Оберіть щільність міст або випадкову кількість
 STR_MAPGEN_TOWN_NAME_LABEL                                      :{BLACK}Назви міст:
 STR_MAPGEN_TOWN_NAME_DROPDOWN_TOOLTIP                           :{BLACK}Виберіть стиль назв міст
 STR_MAPGEN_DATE                                                 :{BLACK}Дата:
 STR_MAPGEN_NUMBER_OF_INDUSTRIES                                 :{BLACK}Кількість виробництв:
+STR_MAPGEN_NUMBER_OF_INDUSTRIES_TOOLTIP                         :BLACK}Оберіть щільність виробництв або випадкову кількість
 STR_MAPGEN_HEIGHTMAP_HEIGHT                                     :{BLACK}Найвища гора:
 STR_MAPGEN_HEIGHTMAP_HEIGHT_UP                                  :{BLACK}Збільшити на одиницю максимальну висоту найвищої гори на мапі
 STR_MAPGEN_HEIGHTMAP_HEIGHT_DOWN                                :{BLACK}Зменшити на одиницю максимальну висоту найвищої гори на мапі
@@ -3417,6 +3421,7 @@ STR_SE_MAPGEN_FLAT_WORLD                                        :{WHITE}Рівн
 STR_SE_MAPGEN_FLAT_WORLD_TOOLTIP                                :{BLACK}Генерувати рівнину
 STR_SE_MAPGEN_RANDOM_LAND                                       :{WHITE}Випадково
 STR_SE_MAPGEN_FLAT_WORLD_HEIGHT                                 :{BLACK}Висота рівня моря
+STR_SE_MAPGEN_FLAT_WORLD_HEIGHT_TOOLTIP                         :{BLACK}Обрати висоту суходолу над рівнем моря
 STR_SE_MAPGEN_FLAT_WORLD_HEIGHT_DOWN                            :{BLACK}Підняти рівень рівної землі на 1
 STR_SE_MAPGEN_FLAT_WORLD_HEIGHT_UP                              :{BLACK}Опустити рівень рівної землі на 1
 
@@ -4866,6 +4871,7 @@ STR_AI_SETTINGS_JUST_DEVIATION                                  :[{STRING}, {STR
 # Textfile window
 STR_TEXTFILE_JUMPLIST                                           :{WHITE}Зміст
 STR_TEXTFILE_JUMPLIST_ITEM                                      :{WHITE}{STRING}
+STR_TEXTFILE_NAVBACK_TOOLTIP                                    :{BLACK}Повернутися до історії навігації
 STR_TEXTFILE_WRAP_TEXT                                          :{WHITE}Розмістити текст
 STR_TEXTFILE_WRAP_TEXT_TOOLTIP                                  :{BLACK}Розмістити текст у вікні без необхідності прокрутки
 STR_TEXTFILE_VIEW_README                                        :{BLACK}Інструкція
@@ -5322,6 +5328,7 @@ STR_ERROR_NO_BUS_STATION                                        :{WHITE}Нема
 STR_ERROR_NO_TRUCK_STATION                                      :{WHITE}Немає вантажної станції
 STR_ERROR_NO_DOCK                                               :{WHITE}Немає порту
 STR_ERROR_NO_AIRPORT                                            :{WHITE}Немає аеропорту або геліпорту
+STR_ERROR_NO_STOP_COMPATIBLE_ROAD_TYPE                          :{WHITE}Немає зупинок із сумісним типом дороги
 STR_ERROR_NO_STOP_COMPATIBLE_TRAM_TYPE                          :{WHITE}Немає зупинок із сумісним типом трамвайної колії
 STR_ERROR_AIRPORT_NO_PLANES                                     :{WHITE}Цей літак не може приземлятися у цьому геліпорті
 STR_ERROR_AIRPORT_NO_HELICOPTERS                                :{WHITE}Цей гелікоптер не може приземлятися у цьому аеропорту

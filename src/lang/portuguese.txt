@@ -538,37 +538,37 @@ STR_ABOUT_MENU_TOGGLE_DIRTY_BLOCKS                              :Ativar coloraç
 STR_ABOUT_MENU_TOGGLE_WIDGET_OUTLINES                           :Alternar contornos de "widget"
 
 ###length 31
-STR_DAY_NUMBER_1ST                                              :1
-STR_DAY_NUMBER_2ND                                              :2
-STR_DAY_NUMBER_3RD                                              :3
-STR_DAY_NUMBER_4TH                                              :4
-STR_DAY_NUMBER_5TH                                              :5
-STR_DAY_NUMBER_6TH                                              :6
-STR_DAY_NUMBER_7TH                                              :7
-STR_DAY_NUMBER_8TH                                              :8
-STR_DAY_NUMBER_9TH                                              :9
-STR_DAY_NUMBER_10TH                                             :10
-STR_DAY_NUMBER_11TH                                             :11
-STR_DAY_NUMBER_12TH                                             :12
-STR_DAY_NUMBER_13TH                                             :13
-STR_DAY_NUMBER_14TH                                             :14
-STR_DAY_NUMBER_15TH                                             :15
-STR_DAY_NUMBER_16TH                                             :16
-STR_DAY_NUMBER_17TH                                             :17
-STR_DAY_NUMBER_18TH                                             :18
-STR_DAY_NUMBER_19TH                                             :19
-STR_DAY_NUMBER_20TH                                             :20
-STR_DAY_NUMBER_21ST                                             :21
-STR_DAY_NUMBER_22ND                                             :22
-STR_DAY_NUMBER_23RD                                             :23
-STR_DAY_NUMBER_24TH                                             :24
-STR_DAY_NUMBER_25TH                                             :25
-STR_DAY_NUMBER_26TH                                             :26
-STR_DAY_NUMBER_27TH                                             :27
-STR_DAY_NUMBER_28TH                                             :28
-STR_DAY_NUMBER_29TH                                             :29
-STR_DAY_NUMBER_30TH                                             :30
-STR_DAY_NUMBER_31ST                                             :31
+STR_DAY_NUMBER_1ST                                              :1.º
+STR_DAY_NUMBER_2ND                                              :2.º
+STR_DAY_NUMBER_3RD                                              :3.º
+STR_DAY_NUMBER_4TH                                              :4.º
+STR_DAY_NUMBER_5TH                                              :5.º
+STR_DAY_NUMBER_6TH                                              :6.º
+STR_DAY_NUMBER_7TH                                              :7.º
+STR_DAY_NUMBER_8TH                                              :8.º
+STR_DAY_NUMBER_9TH                                              :9.º
+STR_DAY_NUMBER_10TH                                             :10.º
+STR_DAY_NUMBER_11TH                                             :11.º
+STR_DAY_NUMBER_12TH                                             :12.º
+STR_DAY_NUMBER_13TH                                             :13.º
+STR_DAY_NUMBER_14TH                                             :14.º
+STR_DAY_NUMBER_15TH                                             :15.º
+STR_DAY_NUMBER_16TH                                             :16.º
+STR_DAY_NUMBER_17TH                                             :17.º
+STR_DAY_NUMBER_18TH                                             :18.º
+STR_DAY_NUMBER_19TH                                             :19.º
+STR_DAY_NUMBER_20TH                                             :20.º
+STR_DAY_NUMBER_21ST                                             :21.º
+STR_DAY_NUMBER_22ND                                             :22.º
+STR_DAY_NUMBER_23RD                                             :23.º
+STR_DAY_NUMBER_24TH                                             :24.º
+STR_DAY_NUMBER_25TH                                             :25.º
+STR_DAY_NUMBER_26TH                                             :26.º
+STR_DAY_NUMBER_27TH                                             :27.º
+STR_DAY_NUMBER_28TH                                             :28.º
+STR_DAY_NUMBER_29TH                                             :29.º
+STR_DAY_NUMBER_30TH                                             :30.º
+STR_DAY_NUMBER_31ST                                             :31.º
 
 ###length 12
 STR_MONTH_ABBREV_JAN                                            :Jan
@@ -1118,6 +1118,8 @@ STR_CURRENCY_DECREASE_EXCHANGE_RATE_TOOLTIP                     :{BLACK}Diminuir
 STR_CURRENCY_INCREASE_EXCHANGE_RATE_TOOLTIP                     :{BLACK}Aumentar a quantidade da sua moeda para uma Libra (£)
 STR_CURRENCY_SET_EXCHANGE_RATE_TOOLTIP                          :{BLACK}Definir a taxa de câmbio da sua moeda para uma Libra (£)
 
+STR_CURRENCY_SEPARATOR                                          :{LTBLUE}Separador: {ORANGE}{STRING}
+STR_CURRENCY_SET_CUSTOM_CURRENCY_SEPARATOR_TOOLTIP              :{BLACK}Define o separador para a sua moeda
 
 STR_CURRENCY_PREFIX                                             :{LTBLUE}Prefixo: {ORANGE}{STRING}
 STR_CURRENCY_SET_CUSTOM_CURRENCY_PREFIX_TOOLTIP                 :{BLACK}Definir o prefixo para a sua moeda
@@ -5809,6 +5811,10 @@ STR_TOWN_NAME                                                   :{TOWN}
 STR_VEHICLE_NAME                                                :{VEHICLE}
 STR_WAYPOINT_NAME                                               :{WAYPOINT}
 
+STR_CURRENCY_SHORT_KILO                                         :{NBSP}k
+STR_CURRENCY_SHORT_MEGA                                         :{NBSP}M
+STR_CURRENCY_SHORT_GIGA                                         :{NBSP}G
+STR_CURRENCY_SHORT_TERA                                         :{NBSP}T
 
 STR_JUST_CARGO                                                  :{CARGO_LONG}
 STR_JUST_RIGHT_ARROW                                            :{RIGHT_ARROW}

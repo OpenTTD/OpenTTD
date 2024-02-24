@@ -1119,6 +1119,8 @@ STR_CURRENCY_DECREASE_EXCHANGE_RATE_TOOLTIP                     :{BLACK}Samazin�
 STR_CURRENCY_INCREASE_EXCHANGE_RATE_TOOLTIP                     :{BLACK}Palielināt savas valūtas vienību daudzumu attiecībā pret vienu mārciņu (£)
 STR_CURRENCY_SET_EXCHANGE_RATE_TOOLTIP                          :{BLACK}Uzstādīt savas valūtas maiņas kursu pret vienu mārciņu (£)
 
+STR_CURRENCY_SEPARATOR                                          :{LTBLUE}Atdalītājs: {ORANGE}{STRING}
+STR_CURRENCY_SET_CUSTOM_CURRENCY_SEPARATOR_TOOLTIP              :{BLACK}Iestatiet savas valūtas atdalītāju
 
 STR_CURRENCY_PREFIX                                             :{LTBLUE}Priedēklis: {ORANGE}{STRING}
 STR_CURRENCY_SET_CUSTOM_CURRENCY_PREFIX_TOOLTIP                 :{BLACK}Uzstādīt priedēkli savai valūtai
@@ -5819,6 +5821,10 @@ STR_TOWN_NAME                                                   :{TOWN}
 STR_VEHICLE_NAME                                                :{VEHICLE}
 STR_WAYPOINT_NAME                                               :{WAYPOINT}
 
+STR_CURRENCY_SHORT_KILO                                         :{NBSP}tūkst.
+STR_CURRENCY_SHORT_MEGA                                         :{NBSP}milj.
+STR_CURRENCY_SHORT_GIGA                                         :{NBSP}mljrd.
+STR_CURRENCY_SHORT_TERA                                         :{NBSP}trlj.
 
 STR_JUST_CARGO                                                  :{CARGO_LONG}
 STR_JUST_RIGHT_ARROW                                            :{RIGHT_ARROW}
