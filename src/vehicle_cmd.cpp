@@ -194,6 +194,8 @@ std::tuple<CommandCost, VehicleID, uint, uint16_t, CargoArray> CmdBuildVehicle(D
 				GroupStatistics::CountVehicle(v, 1);
 				if (!(subflags & DC_AUTOREPLACE)) OrderBackup::Restore(v, client_id);
 			}
+
+			Company::Get(v->owner)->freeunits[v->type].UseID(v->unitnumber);
 		}
 
 

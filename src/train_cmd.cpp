@@ -1178,7 +1178,7 @@ static void NormaliseTrainHead(Train *head)
 
 	/* If we don't have a unit number yet, set one. */
 	if (head->unitnumber != 0) return;
-	head->unitnumber = GetFreeUnitNumber(VEH_TRAIN);
+	head->unitnumber = Company::Get(head->owner)->freeunits[head->type].UseID(GetFreeUnitNumber(VEH_TRAIN));
 }
 
 /**
@@ -1336,6 +1336,7 @@ CommandCost CmdMoveRailVehicle(DoCommandFlag flags, VehicleID src_veh, VehicleID
 			}
 			/* Remove stuff not valid anymore for non-front engines. */
 			DeleteVehicleOrders(src);
+			Company::Get(src->owner)->freeunits[src->type].ReleaseID(src->unitnumber);
 			src->unitnumber = 0;
 			src->name.clear();
 		}
