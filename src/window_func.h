@@ -26,7 +26,7 @@ Window *FindWindowById(WindowClass cls, T number)
 	return FindWindowById(cls, number.base());
 }
 
-void ResizeWindow(Window *w, int x, int y, bool clamp_to_screen = true);
+void ResizeWindow(Window *w, int x, int y, bool clamp_to_screen = true, bool schedule_resize = true);
 int PositionMainToolbar(Window *w);
 int PositionStatusbar(Window *w);
 int PositionNewsMessage(Window *w);
