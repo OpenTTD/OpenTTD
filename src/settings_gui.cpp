@@ -2560,8 +2560,8 @@ struct GameSettingsWindow : Window {
 
 		if (widget != WID_GS_OPTIONSPANEL) return;
 
-		uint btn = this->vscroll->GetScrolledRowFromWidget(pt.y, this, WID_GS_OPTIONSPANEL, WidgetDimensions::scaled.framerect.top);
-		if (btn == INT_MAX || (int)btn < this->warn_lines) return;
+		int32_t btn = this->vscroll->GetScrolledRowFromWidget(pt.y, this, WID_GS_OPTIONSPANEL, WidgetDimensions::scaled.framerect.top);
+		if (btn == INT32_MAX || btn < this->warn_lines) return;
 		btn -= this->warn_lines;
 
 		uint cur_row = 0;

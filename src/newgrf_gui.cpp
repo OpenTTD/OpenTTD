@@ -146,11 +146,11 @@ static void ShowNewGRFInfo(const GRFConfig *c, const Rect &r, bool show_params)
 struct NewGRFParametersWindow : public Window {
 	static GRFParameterInfo dummy_parameter_info; ///< Dummy info in case a newgrf didn't provide info about some parameter.
 	GRFConfig *grf_config; ///< Set the parameters of this GRFConfig.
-	uint clicked_button;   ///< The row in which a button was clicked or UINT_MAX.
+	int32_t clicked_button; ///< The row in which a button was clicked or INT_MAX when none is selected.
 	bool clicked_increase; ///< True if the increase button was clicked, false for the decrease button.
 	bool clicked_dropdown; ///< Whether the dropdown is open.
 	bool closing_dropdown; ///< True, if the dropdown list is currently closing.
-	uint clicked_row;      ///< The selected parameter
+	int32_t clicked_row; ///< The selected parameter, or INT_MAX when none is selected.
 	int line_height;       ///< Height of a row in the matrix widget.
 	Scrollbar *vscroll;
 	bool action14present;  ///< True if action14 information is present.
@@ -158,10 +158,10 @@ struct NewGRFParametersWindow : public Window {
 
 	NewGRFParametersWindow(WindowDesc *desc, bool is_baseset, GRFConfig *c, bool editable) : Window(desc),
 		grf_config(c),
-		clicked_button(UINT_MAX),
+		clicked_button(INT32_MAX),
 		clicked_dropdown(false),
 		closing_dropdown(false),
-		clicked_row(UINT_MAX),
+		clicked_row(INT32_MAX),
 		editable(editable)
 	{
 		this->action14present = (c->num_valid_params != c->param.size() || !c->param_info.empty());
@@ -282,7 +282,7 @@ struct NewGRFParametersWindow : public Window {
 
 		int button_y_offset = (this->line_height - SETTING_BUTTON_HEIGHT) / 2;
 		int text_y_offset = (this->line_height - GetCharacterHeight(FS_NORMAL)) / 2;
-		for (uint i = this->vscroll->GetPosition(); this->vscroll->IsVisible(i) && i < this->vscroll->GetCount(); i++) {
+		for (int32_t i = this->vscroll->GetPosition(); this->vscroll->IsVisible(i) && i < this->vscroll->GetCount(); i++) {
 			GRFParameterInfo &par_info = this->GetParameterInfo(i);
 			uint32_t current_value = par_info.GetValue(this->grf_config);
 			bool selected = (i == this->clicked_row);
@@ -354,7 +354,7 @@ struct NewGRFParametersWindow : public Window {
 
 			case WID_NP_BACKGROUND: {
 				if (!this->editable) break;
-				uint num = this->vscroll->GetScrolledRowFromWidget(pt.y, this, WID_NP_BACKGROUND);
+				int32_t num = this->vscroll->GetScrolledRowFromWidget(pt.y, this, WID_NP_BACKGROUND);
 				if (num >= this->vscroll->GetCount()) break;
 
 				if (this->clicked_row != num) {
@@ -493,15 +493,15 @@ struct NewGRFParametersWindow : public Window {
 		}
 
 		this->vscroll->SetCount(this->action14present ? this->grf_config->num_valid_params : this->grf_config->num_params);
-		if (this->clicked_row != UINT_MAX && this->clicked_row >= this->vscroll->GetCount()) {
-			this->clicked_row = UINT_MAX;
+		if (this->clicked_row != INT32_MAX && this->clicked_row >= this->vscroll->GetCount()) {
+			this->clicked_row = INT32_MAX;
 			this->CloseChildWindows(WC_QUERY_STRING);
 		}
 	}
 
 	/** When reset, unclick the button after a small timeout. */
 	TimeoutTimer<TimerWindow> unclick_timeout = {std::chrono::milliseconds(150), [this]() {
-		this->clicked_button = UINT_MAX;
+		this->clicked_button = INT32_MAX;
 		this->SetDirty();
 	}};
 };

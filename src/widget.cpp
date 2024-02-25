@@ -2262,13 +2262,13 @@ void NWidgetViewport::UpdateViewportCoordinates(Window *w)
  * @param widget      Widget number of the widget clicked in.
  * @param padding     Amount of empty space between the widget edge and the top of the first row. Default value is \c 0.
  * @param line_height Height of a single row. A negative value means using the vertical resize step of the widget.
- * @return Row number clicked at. If clicked at a wrong position, #INT_MAX is returned.
+ * @return Row number clicked at. If clicked at a wrong position, #Scrollbar::npos is returned.
  */
-int Scrollbar::GetScrolledRowFromWidget(int clickpos, const Window * const w, WidgetID widget, int padding, int line_height) const
+Scrollbar::size_type Scrollbar::GetScrolledRowFromWidget(int clickpos, const Window * const w, WidgetID widget, int padding, int line_height) const
 {
-	uint pos = w->GetRowFromWidget(clickpos, widget, padding, line_height);
+	int pos = w->GetRowFromWidget(clickpos, widget, padding, line_height);
 	if (pos != INT_MAX) pos += this->GetPosition();
-	return (pos >= this->GetCount()) ? INT_MAX : pos;
+	return (pos < 0 || pos >= this->GetCount()) ? Scrollbar::npos : pos;
 }
 
 /**
