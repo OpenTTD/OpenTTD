@@ -1118,6 +1118,8 @@ STR_CURRENCY_DECREASE_EXCHANGE_RATE_TOOLTIP                     :{BLACK}(1 파�
 STR_CURRENCY_INCREASE_EXCHANGE_RATE_TOOLTIP                     :{BLACK}(1 파운드(£)에 대한) 사용자 화폐 단위 양을 증가시킵니다
 STR_CURRENCY_SET_EXCHANGE_RATE_TOOLTIP                          :{BLACK}1 파운드(£)에 해당하는 사용자 화폐 단위의 환율을 설정하십시오
 
+STR_CURRENCY_SEPARATOR                                          :{LTBLUE}단위 구분: {ORANGE}{STRING}
+STR_CURRENCY_SET_CUSTOM_CURRENCY_SEPARATOR_TOOLTIP              :{BLACK}화폐의 단위를 구분할 구분자를 설정합니다
 
 STR_CURRENCY_PREFIX                                             :{LTBLUE}접두어: {ORANGE}{STRING}
 STR_CURRENCY_SET_CUSTOM_CURRENCY_PREFIX_TOOLTIP                 :{BLACK}사용자 화폐 단위 앞에 붙는 문구를 설정하십시오
@@ -1273,10 +1275,10 @@ STR_CONFIG_SETTING_INFINITE_MONEY                               :돈 무제한: 
 STR_CONFIG_SETTING_INFINITE_MONEY_HELPTEXT                      :돈을 무제한으로 만들고 회사가 파산하지 않게 만듭니다
 
 STR_CONFIG_SETTING_MAXIMUM_INITIAL_LOAN                         :최대 초기 대출금: {STRING}
-STR_CONFIG_SETTING_MAXIMUM_INITIAL_LOAN_HELPTEXT                :한 회사가 최대한 빌릴 수 있는 대출금의 양을 조절할 수 있습니다. (여기서 설정한 값은 인플레이션에 의한 효과를 적용하지 않은 값입니다.)
+STR_CONFIG_SETTING_MAXIMUM_INITIAL_LOAN_HELPTEXT                :(인플레이션 효과를 적용하지 않고) 한 회사가 최대한 빌릴 수 있는 대출금의 양을 조절할 수 있습니다. 이 설정을 "대출 불가"로 설정하면, 게임 스크립트가 돈을 지급하거나  "돈 무한 모드" 설정을 사용하지 않는 한, 돈을 사용할 수 없습니다.
 STR_CONFIG_SETTING_MAXIMUM_INITIAL_LOAN_VALUE                   :{CURRENCY_LONG}
 ###setting-zero-is-special
-STR_CONFIG_SETTING_MAXIMUM_INITIAL_LOAN_DISABLED                :대출 불가 {RED}초기 자금을 제공하려면 게임 스크립트가 필요합니다
+STR_CONFIG_SETTING_MAXIMUM_INITIAL_LOAN_DISABLED                :대출 불가
 
 STR_CONFIG_SETTING_INTEREST_RATE                                :대출 금리: {STRING}
 STR_CONFIG_SETTING_INTEREST_RATE_HELPTEXT                       :대출 금리입니다. 인플레이션 설정이 켜져있는 경우 인플레이션의 영향을 받습니다.
@@ -1493,7 +1495,7 @@ STR_CONFIG_SETTING_NEVER_EXPIRE_VEHICLES                        :옛날 차량�
 STR_CONFIG_SETTING_NEVER_EXPIRE_VEHICLES_HELPTEXT               :이 설정을 켜면, 오래된 차량 모델을 포함하여 모든 차량 모델을 도입 이후에 계속 사용할 수 있게 됩니다.
 
 STR_CONFIG_SETTING_TIMEKEEPING_UNITS                            :시간 단위: {STRING}
-STR_CONFIG_SETTING_TIMEKEEPING_UNITS_HELPTEXT                   :게임에서 사용할 시간 표시 단위를 선택합니다. 나중에 변경할 수 없습니다.{}{}달력 기반은 1년 12개월, 매월 28~31일로 구성된 고전적인 OpenTTD 환경입니다.{}{}벽시계 기반은 차량 이동, 화물 생산 및 재정이 1분 단위로 대신 계산됩니다. 1분은 달력 기반 모드에서 한 달, 즉 30일 정도 걸리는 시간으로, 12분 간격으로 묶어서 1년을 구성합니다.{}{}두 단위 모두, 시간 표시 단위와 상관없이 차량, 건물 및 기타 기반 시설 도입 날짜 등에는 기존의 달력 시스템을 별도로 사용합니다.
+STR_CONFIG_SETTING_TIMEKEEPING_UNITS_HELPTEXT                   :게임에서 사용할 시간 표시 단위를 선택합니다. 나중에 변경할 수 없습니다.{}{}달력 기반은 1년 12개월, 매월 28~31일로 구성된 고전적인 OpenTTD 환경입니다.{}{}벽시계 기반은 화물 생산 및 재정이 1분 단위로 대신 계산됩니다. 1분은 달력 기반 모드에서 한 달, 즉 30일 정도 걸리는 시간으로, 12분 간격으로 묶어서 1년을 구성합니다.{}{}두 단위 모두, 시간 표시 단위와 상관없이 차량, 건물 및 기타 기반 시설 도입 날짜 등에는 기존의 달력 시스템을 별도로 사용합니다.
 ###length 2
 STR_CONFIG_SETTING_TIMEKEEPING_UNITS_CALENDAR                   :달력
 STR_CONFIG_SETTING_TIMEKEEPING_UNITS_WALLCLOCK                  :벽시계
@@ -4383,22 +4385,22 @@ STR_VEHICLE_STATUS_WAITING_UNBUNCHING                           :{LTBLUE}배차 
 STR_VEHICLE_STATUS_CRASHED                                      :{RED}충돌!
 STR_VEHICLE_STATUS_BROKEN_DOWN                                  :{RED}고장
 STR_VEHICLE_STATUS_STOPPED                                      :{RED}정지함
-STR_VEHICLE_STATUS_TRAIN_STOPPING_VEL                           :{RED}멈추는 중, {VELOCITY}
+STR_VEHICLE_STATUS_TRAIN_STOPPING_VEL                           :{RED}{VELOCITY} - 멈추는 중
 STR_VEHICLE_STATUS_TRAIN_NO_POWER                               :{RED}동력 없음
 STR_VEHICLE_STATUS_TRAIN_STUCK                                  :{ORANGE}빈 경로 탐색중
 STR_VEHICLE_STATUS_AIRCRAFT_TOO_FAR                             :{ORANGE}다음 목적지가 너무 멀리 있습니다
 
-STR_VEHICLE_STATUS_HEADING_FOR_STATION_VEL                      :{LTBLUE}다음 목적지: {STATION} ({VELOCITY})
-STR_VEHICLE_STATUS_NO_ORDERS_VEL                                :{LTBLUE}경로 없음 ({VELOCITY})
-STR_VEHICLE_STATUS_HEADING_FOR_WAYPOINT_VEL                     :{LTBLUE}다음 목적지: {WAYPOINT} ({VELOCITY})
-STR_VEHICLE_STATUS_HEADING_FOR_DEPOT_VEL                        :{ORANGE}다음 목적지: {DEPOT} ({VELOCITY})
-STR_VEHICLE_STATUS_HEADING_FOR_DEPOT_SERVICE_VEL                :{LTBLUE}점검: {DEPOT} ({VELOCITY})
-STR_VEHICLE_STATUS_HEADING_FOR_DEPOT_UNBUNCH_VEL                :{LTBLUE}점검 및 배차 간격 대기: {DEPOT}, {VELOCITY}
+STR_VEHICLE_STATUS_HEADING_FOR_STATION_VEL                      :{LTBLUE}{1:VELOCITY} - 다음 목적지: {0:STATION}
+STR_VEHICLE_STATUS_NO_ORDERS_VEL                                :{LTBLUE}{VELOCITY} - 경로 없음
+STR_VEHICLE_STATUS_HEADING_FOR_WAYPOINT_VEL                     :{LTBLUE}{1:VELOCITY} - 다음 목적지: {0:WAYPOINT}
+STR_VEHICLE_STATUS_HEADING_FOR_DEPOT_VEL                        :{ORANGE}{1:VELOCITY} - 다음 목적지: {0:DEPOT}
+STR_VEHICLE_STATUS_HEADING_FOR_DEPOT_SERVICE_VEL                :{LTBLUE}{1:VELOCITY} - {0:DEPOT}에서 점검
+STR_VEHICLE_STATUS_HEADING_FOR_DEPOT_UNBUNCH_VEL                :{LTBLUE}{1:VELOCITY} - {0:DEPOT}에서 점검 및 배차 간격 대기
 
-STR_VEHICLE_STATUS_CANNOT_REACH_STATION_VEL                     :{LTBLUE}{STATION}에 갈 수 없음, {VELOCITY}
-STR_VEHICLE_STATUS_CANNOT_REACH_WAYPOINT_VEL                    :{LTBLUE}{WAYPOINT}에 갈 수 없음, {VELOCITY}
-STR_VEHICLE_STATUS_CANNOT_REACH_DEPOT_VEL                       :{ORANGE}{DEPOT}에 갈 수 없음, {VELOCITY}
-STR_VEHICLE_STATUS_CANNOT_REACH_DEPOT_SERVICE_VEL               :{LTBLUE}{DEPOT}에 갈 수 없음, {VELOCITY}
+STR_VEHICLE_STATUS_CANNOT_REACH_STATION_VEL                     :{LTBLUE}{1:VELOCITY} - {0:STATION}에 갈 수 없음
+STR_VEHICLE_STATUS_CANNOT_REACH_WAYPOINT_VEL                    :{LTBLUE}{1:VELOCITY} - {0:WAYPOINT}에 갈 수 없음
+STR_VEHICLE_STATUS_CANNOT_REACH_DEPOT_VEL                       :{ORANGE}{1:VELOCITY} - {0:DEPOT}에 갈 수 없음
+STR_VEHICLE_STATUS_CANNOT_REACH_DEPOT_SERVICE_VEL               :{LTBLUE}{1:VELOCITY} - {0:DEPOT}에 갈 수 없음
 
 # Vehicle stopped/started animations
 ###length 2
@@ -4612,7 +4614,7 @@ STR_ORDER_GO_TO_NEAREST_DEPOT                                   :가까운 차�
 STR_ORDER_GO_TO_NEAREST_HANGAR                                  :가까운 격납고로
 STR_ORDER_CONDITIONAL                                           :조건부 경로 건너뛰기
 STR_ORDER_SHARE                                                 :경로 공유하기
-STR_ORDERS_GO_TO_TOOLTIP                                        :{BLACK}선택된 경로 바로 전이나 목록 맨 끝에 새 경로를 삽입합니다. CTRL+클릭하면, 역에서는 '아무 화물이나 가득 싣기'로, 경유지에서는 '기본적으로 직행' 설정에서 설정한 완행/직행을 반대로 적용하고, 차량기지에서는 '점검'으로 지정됩니다. '공유된 경로'를 클릭하거나 CTRL+클릭하면 선택한 차량과 이 차량의 경로를 공유합니다. 단순히 클릭하면 그 차량의 경로를 복사하기만 합니다. 차량기지를 경로에 포함시키면 이 차량은 자동으로 점검을 하러 가지 않게 됩니다
+STR_ORDERS_GO_TO_TOOLTIP                                        :{BLACK}선택된 경로 바로 전이나 목록 맨 끝에 새 경로를 삽입합니다. CTRL+클릭하면, 역에서는 '아무 화물이나 가득 싣기'로, 경유지에서는 '기본적으로 직행' 설정에서 설정한 완행/직행을 반대로 적용하고, 차량기지에서는 '배차 간격 유지'로 지정됩니다. '공유된 경로'를 클릭하거나 CTRL+클릭하면 선택한 차량과 이 차량의 경로를 공유합니다. 단순히 클릭하면 그 차량의 경로를 복사하기만 합니다. 차량기지를 경로에 포함시키면 이 차량은 자동으로 점검을 하러 가지 않게 됩니다
 
 STR_ORDERS_VEH_WITH_SHARED_ORDERS_LIST_TOOLTIP                  :{BLACK}이 경로를 공유하고 있는 모든 차량을 표시합니다
 
@@ -5809,6 +5811,10 @@ STR_TOWN_NAME                                                   :{TOWN}
 STR_VEHICLE_NAME                                                :{VEHICLE}
 STR_WAYPOINT_NAME                                               :{WAYPOINT}
 
+STR_CURRENCY_SHORT_KILO                                         :{NBSP}k
+STR_CURRENCY_SHORT_MEGA                                         :{NBSP}m
+STR_CURRENCY_SHORT_GIGA                                         :{NBSP}bn
+STR_CURRENCY_SHORT_TERA                                         :{NBSP}tn
 
 STR_JUST_CARGO                                                  :{CARGO_LONG}
 STR_JUST_RIGHT_ARROW                                            :{RIGHT_ARROW}

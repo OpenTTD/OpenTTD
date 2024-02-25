@@ -1117,6 +1117,8 @@ STR_CURRENCY_DECREASE_EXCHANGE_RATE_TOOLTIP                     :{BLACK}Reducer 
 STR_CURRENCY_INCREASE_EXCHANGE_RATE_TOOLTIP                     :{BLACK}Forøg beløb i din valuta for et pund (£)
 STR_CURRENCY_SET_EXCHANGE_RATE_TOOLTIP                          :{BLACK}Sæt vekselkursen i din valuta for et pund (£)
 
+STR_CURRENCY_SEPARATOR                                          :{LTBLUE}Separator: {ORANGE}{STRING}
+STR_CURRENCY_SET_CUSTOM_CURRENCY_SEPARATOR_TOOLTIP              :{BLACK}Indstil separatoren for din valuta
 
 STR_CURRENCY_PREFIX                                             :{LTBLUE}Præfiks: {ORANGE}{STRING}
 STR_CURRENCY_SET_CUSTOM_CURRENCY_PREFIX_TOOLTIP                 :{BLACK}Sæt præfiks-streng for din valuta
@@ -1492,7 +1494,7 @@ STR_CONFIG_SETTING_NEVER_EXPIRE_VEHICLES                        :Køretøjernes 
 STR_CONFIG_SETTING_NEVER_EXPIRE_VEHICLES_HELPTEXT               :Når aktiveret, forbliver alle biltyper tilgængelige for evigt efter indførelse
 
 STR_CONFIG_SETTING_TIMEKEEPING_UNITS                            :Tidtagning: {STRING}
-STR_CONFIG_SETTING_TIMEKEEPING_UNITS_HELPTEXT                   :Vælg spillets tidtagningsenheder. Dette kan ikke ændres senere.{}{}Kalenderbaseret er den klassiske OpenTTD-oplevelse, med et år bestående af 12 måneder, og hver måned har 28-31 dage.{}{}I vægur-baseret tid, køretøjsbevægelser, gods produktion, og økonomi er i stedet baseret på trin på et minut, hvilket er omtrent lige så lang tid, som en måned på 30 dage tager i kalenderbaseret tilstand. Disse er grupperet i 12-minutters perioder, svarende til et år i kalenderbaseret tilstand.{}{}I begge tilstande er der altid en klassisk kalender, som bruges til introduktionsdatoer for køretøjer, huse og anden infrastruktur.
+STR_CONFIG_SETTING_TIMEKEEPING_UNITS_HELPTEXT                   :Vælg spillets tidtagningsenheder. Dette kan ikke ændres senere.{}{}Kalenderbaseret er den klassiske OpenTTD-oplevelse, med et år bestående af 12 måneder, og hver måned har 28-31 dage.{}{}I Vægur-baseret tid, lastproduktion og økonomi er i stedet baseret på trin på et minut, hvilket er omtrent lige så lang tid, som en måned på 30 dage tager i kalenderbaseret tilstand. Disse er grupperet i 12-minutters perioder, svarende til et år i kalenderbaseret tilstand.{}{}I begge tilstande er der altid en klassisk kalender, som bruges til introduktionsdatoer for køretøjer, huse og anden infrastruktur.
 ###length 2
 STR_CONFIG_SETTING_TIMEKEEPING_UNITS_CALENDAR                   :Kalender
 STR_CONFIG_SETTING_TIMEKEEPING_UNITS_WALLCLOCK                  :Vægur
@@ -5808,6 +5810,10 @@ STR_TOWN_NAME                                                   :{TOWN}
 STR_VEHICLE_NAME                                                :{VEHICLE}
 STR_WAYPOINT_NAME                                               :{WAYPOINT}
 
+STR_CURRENCY_SHORT_KILO                                         :{NBSP}k
+STR_CURRENCY_SHORT_MEGA                                         :{NBSP}m
+STR_CURRENCY_SHORT_GIGA                                         :{NBSP}bn
+STR_CURRENCY_SHORT_TERA                                         :{NBSP}tn
 
 STR_JUST_CARGO                                                  :{CARGO_LONG}
 STR_JUST_RIGHT_ARROW                                            :{RIGHT_ARROW}

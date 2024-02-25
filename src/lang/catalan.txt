@@ -1118,6 +1118,8 @@ STR_CURRENCY_DECREASE_EXCHANGE_RATE_TOOLTIP                     :{BLACK}Disminue
 STR_CURRENCY_INCREASE_EXCHANGE_RATE_TOOLTIP                     :{BLACK}Augmenta la quantitat de moneda per cada lliura (£)
 STR_CURRENCY_SET_EXCHANGE_RATE_TOOLTIP                          :{BLACK}Estableix el tipus de canvi de la moneda per cada Lliura (£)
 
+STR_CURRENCY_SEPARATOR                                          :{LTBLUE}Separador: {ORANGE}{STRING}
+STR_CURRENCY_SET_CUSTOM_CURRENCY_SEPARATOR_TOOLTIP              :{BLACK}Establiu el separador de la vostra moneda.
 
 STR_CURRENCY_PREFIX                                             :{LTBLUE}Prefix: {ORANGE}{STRING}
 STR_CURRENCY_SET_CUSTOM_CURRENCY_PREFIX_TOOLTIP                 :{BLACK}Estableix el prefix de text per a la moneda
@@ -1273,10 +1275,10 @@ STR_CONFIG_SETTING_INFINITE_MONEY                               :Diners infinits
 STR_CONFIG_SETTING_INFINITE_MONEY_HELPTEXT                      :Permet gastar diners sense límit i desactiva les bancarrotes de les companyies.
 
 STR_CONFIG_SETTING_MAXIMUM_INITIAL_LOAN                         :Préstec inicial màxim: {STRING}
-STR_CONFIG_SETTING_MAXIMUM_INITIAL_LOAN_HELPTEXT                :Quantitat màxima del préstec que pot demanar una companyia (sense tenir en compte la inflació)
+STR_CONFIG_SETTING_MAXIMUM_INITIAL_LOAN_HELPTEXT                :Quantitat màxima del préstec que pot demanar una companyia (sense tenir en compte la inflació). Si s'estableix a "Sense préstecs", no es podran aconseguir diners a no ser que els proporcionin els scripts de partida o l'opció "Diners infinits".
 STR_CONFIG_SETTING_MAXIMUM_INITIAL_LOAN_VALUE                   :{CURRENCY_LONG}
 ###setting-zero-is-special
-STR_CONFIG_SETTING_MAXIMUM_INITIAL_LOAN_DISABLED                :Sense préstec {RED}Fa falta un script de partida que doni els fons inicials
+STR_CONFIG_SETTING_MAXIMUM_INITIAL_LOAN_DISABLED                :Sense préstecs
 
 STR_CONFIG_SETTING_INTEREST_RATE                                :Taxa d'interès: {STRING}
 STR_CONFIG_SETTING_INTEREST_RATE_HELPTEXT                       :Tipus d'interès dels préstecs; també controla la inflació, si està activada
@@ -1493,7 +1495,7 @@ STR_CONFIG_SETTING_NEVER_EXPIRE_VEHICLES                        :Els vehicles ma
 STR_CONFIG_SETTING_NEVER_EXPIRE_VEHICLES_HELPTEXT               :Si està activat, tots els models de vehicles continuen disponibles per sempre després de la seva introducció.
 
 STR_CONFIG_SETTING_TIMEKEEPING_UNITS                            :Mode temporal: {STRING}
-STR_CONFIG_SETTING_TIMEKEEPING_UNITS_HELPTEXT                   :Trieu les unitats del mode temporal de la partida. Una vegada començada la partida, no es pot canviar.{}{}El mode calendari ofereix l'experiència clàssica de l'OpenTTD, on un any té 12 mesos i cada mes té entre 28 i 31 dies.{}{}Amb el mode de rellotge de paret, el moviment del vehicle, la producció de càrrega i les finances es basen en increments d'un minut, que equival més o menys a un mes d'uns 30 dies en el mode calendari.{}{}En tots els modes sempre hi ha un calendari clàssic, que es fa servir per a la data d'introducció dels vehicles, cases i altres infraestructures.
+STR_CONFIG_SETTING_TIMEKEEPING_UNITS_HELPTEXT                   :Trieu les unitats del mode temporal de la partida. Una vegada començada la partida, no es pot canviar.{}{}El mode calendari ofereix l'experiència clàssica de l'OpenTTD, on un any té 12 mesos i cada mes té entre 28 i 31 dies.{}{}Amb el mode de rellotge de paret, la producció de càrrega i les finances es basen en increments d'un minut, que equival més o menys a un mes d'uns 30 dies en el mode calendari.{}{}En tots els modes sempre hi ha un calendari clàssic, que es fa servir per a la data d'introducció dels vehicles, cases i altres infraestructures.
 ###length 2
 STR_CONFIG_SETTING_TIMEKEEPING_UNITS_CALENDAR                   :Calendari
 STR_CONFIG_SETTING_TIMEKEEPING_UNITS_WALLCLOCK                  :Rellotge de paret
@@ -5809,6 +5811,10 @@ STR_TOWN_NAME                                                   :{TOWN}
 STR_VEHICLE_NAME                                                :{VEHICLE}
 STR_WAYPOINT_NAME                                               :{WAYPOINT}
 
+STR_CURRENCY_SHORT_KILO                                         :{NBSP}k
+STR_CURRENCY_SHORT_MEGA                                         :{NBSP}M
+STR_CURRENCY_SHORT_GIGA                                         :{NBSP}G
+STR_CURRENCY_SHORT_TERA                                         :{NBSP}T
 
 STR_JUST_CARGO                                                  :{CARGO_LONG}
 STR_JUST_RIGHT_ARROW                                            :{RIGHT_ARROW}

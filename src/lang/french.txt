@@ -1118,6 +1118,8 @@ STR_CURRENCY_DECREASE_EXCHANGE_RATE_TOOLTIP                     :{BLACK}Réduire
 STR_CURRENCY_INCREASE_EXCHANGE_RATE_TOOLTIP                     :{BLACK}Augmenter le montant de cette devise pour une livre (£)
 STR_CURRENCY_SET_EXCHANGE_RATE_TOOLTIP                          :{BLACK}Définir le taux de change de cette devise pour une livre (£)
 
+STR_CURRENCY_SEPARATOR                                          :{LTBLUE}Séparateur : {ORANGE}{STRING}
+STR_CURRENCY_SET_CUSTOM_CURRENCY_SEPARATOR_TOOLTIP              :{BLACK}Définir le séparateur pour votre monnaie
 
 STR_CURRENCY_PREFIX                                             :{LTBLUE}Préfixe{NBSP}: {ORANGE}{STRING}
 STR_CURRENCY_SET_CUSTOM_CURRENCY_PREFIX_TOOLTIP                 :{BLACK}Définir le préfixe pour cette devise
@@ -1493,7 +1495,7 @@ STR_CONFIG_SETTING_NEVER_EXPIRE_VEHICLES                        :Les véhicules 
 STR_CONFIG_SETTING_NEVER_EXPIRE_VEHICLES_HELPTEXT               :Quand il est actif, tous les modèles de véhicule restent disponibles pour toujours après leur introduction
 
 STR_CONFIG_SETTING_TIMEKEEPING_UNITS                            :Mesure du temps{NBSP}: {STRING}
-STR_CONFIG_SETTING_TIMEKEEPING_UNITS_HELPTEXT                   :Sélectionner les unités de mesure du temps pour la partie. Ce choix ne peut pas être modifié par la suite.{}{}"Calendrier" correspond à l’expérience classique d'OpenTTD, avec une année de 12 mois et chaque mois ayant de 28 à 31 jours.{}{}Quand le temps est basé sur la "pendule", les mouvements des véhicules, la production de marchandises et les finances sont basés sur des incréments d'une minute, équivalent à des mois de 30 jours dans le mode "calendrier". Ceux-ci sont groupés par période de 12 minutes, équivalent à une année dans le mode "calendrier".{}{}Quelque soit le mode, il y a toujours un calendrier classique, utilisé pour les dates d'introduction des véhicules, maisons, et autres infrastructures.
+STR_CONFIG_SETTING_TIMEKEEPING_UNITS_HELPTEXT                   :Sélectionner les unités de mesure du temps pour la partie. Ce choix ne peut pas être modifié par la suite.{}{}"Calendrier" correspond à l’expérience classique d'OpenTTD, avec une année de 12 mois et chaque mois ayant de 28 à 31 jours.{}{}Quand le temps est basé sur la "pendule", la production de marchandises et les finances sont basées sur des incréments d'une minute, équivalent à des mois de 30 jours dans le mode "calendrier". Ceux-ci sont groupés par période de 12 minutes, équivalent à une année dans le mode "calendrier".{}{}Quelque soit le mode, il y a toujours un calendrier classique, utilisé pour les dates d'introduction des véhicules, maisons, et autres infrastructures.
 ###length 2
 STR_CONFIG_SETTING_TIMEKEEPING_UNITS_CALENDAR                   :Calendrier
 STR_CONFIG_SETTING_TIMEKEEPING_UNITS_WALLCLOCK                  :Pendule
@@ -5809,6 +5811,10 @@ STR_TOWN_NAME                                                   :{TOWN}
 STR_VEHICLE_NAME                                                :{VEHICLE}
 STR_WAYPOINT_NAME                                               :{WAYPOINT}
 
+STR_CURRENCY_SHORT_KILO                                         :{NBSP}K
+STR_CURRENCY_SHORT_MEGA                                         :{NBSP}M
+STR_CURRENCY_SHORT_GIGA                                         :{NBSP}G
+STR_CURRENCY_SHORT_TERA                                         :{NBSP}T
 
 STR_JUST_CARGO                                                  :{CARGO_LONG}
 STR_JUST_RIGHT_ARROW                                            :{RIGHT_ARROW}

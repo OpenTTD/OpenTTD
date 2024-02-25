@@ -215,7 +215,7 @@ STR_UNITS_VELOCITY_IMPERIAL                                     :{DECIMAL}{NBSP}
 STR_UNITS_VELOCITY_METRIC                                       :{DECIMAL}{NBSP}km/h
 STR_UNITS_VELOCITY_SI                                           :{DECIMAL}{NBSP}m/s
 STR_UNITS_VELOCITY_GAMEUNITS_DAY                                :{DECIMAL}{NBSP}quadrados/dia
-STR_UNITS_VELOCITY_GAMEUNITS_SEC                                :{DECIMAL}{NBSP}quadrados/segundo
+STR_UNITS_VELOCITY_GAMEUNITS_SEC                                :{DECIMAL}{NBSP}quadrados/s
 STR_UNITS_VELOCITY_KNOTS                                        :{DECIMAL}{NBSP}nós
 
 STR_UNITS_POWER_IMPERIAL                                        :{DECIMAL}{NBSP}hp
@@ -278,19 +278,19 @@ STR_TOOLTIP_SORT_CRITERIA                                       :{BLACK}Selecion
 STR_TOOLTIP_FILTER_CRITERIA                                     :{BLACK}Selecionar critério de busca
 STR_BUTTON_SORT_BY                                              :{BLACK}Ordenar por
 STR_BUTTON_CATCHMENT                                            :{BLACK}Cobertura
-STR_TOOLTIP_CATCHMENT                                           :{BLACK}Mostrar/ocultar a área de cobertura
+STR_TOOLTIP_CATCHMENT                                           :{BLACK}Mostrar/Ocultar a área de cobertura
 
 STR_TOOLTIP_CLOSE_WINDOW                                        :{BLACK}Fechar janela
-STR_TOOLTIP_WINDOW_TITLE_DRAG_THIS                              :{BLACK}Título da janela - arraste isto para mover a janela
+STR_TOOLTIP_WINDOW_TITLE_DRAG_THIS                              :{BLACK}Título da janela - Clique+Arraste isto para mover a janela
 STR_TOOLTIP_SHADE                                               :{BLACK}Encolher janela - mostrar apenas a barra de título
-STR_TOOLTIP_DEBUG                                               :{BLACK}Mostrar informações de depuração de NewGRF
+STR_TOOLTIP_DEBUG                                               :{BLACK}Mostrar informação de depuração de NewGRF
 STR_TOOLTIP_DEFSIZE                                             :{BLACK}Redimensionar a janela para o tamanho padrão. Ctrl+Clique para salvar o tamanho atual como padrão
 STR_TOOLTIP_STICKY                                              :{BLACK}Marcar esta janela para não ser fechada pela tecla 'Fechar Todas as Janelas'. Ctrl+Clique para salvar o estado como padrão
 STR_TOOLTIP_RESIZE                                              :{BLACK}Clique e arraste para redimensionar esta janela
 STR_TOOLTIP_TOGGLE_LARGE_SMALL_WINDOW                           :{BLACK}Alternar entre janela grande/pequena
-STR_TOOLTIP_VSCROLL_BAR_SCROLLS_LIST                            :{BLACK}Barra de rolagem - rola a lista acima/abaixo
-STR_TOOLTIP_HSCROLL_BAR_SCROLLS_LIST                            :{BLACK}Barra de rolagem - rola a lista para esquerda/direita
-STR_TOOLTIP_DEMOLISH_BUILDINGS_ETC                              :{BLACK}Demolir construções etc. em um quadrado do terreno. Ctrl+Clique+Arrastar seleciona a área diagonalmente. Ctrl+Shift+Clique+Arrastar mostra o custo estimado
+STR_TOOLTIP_VSCROLL_BAR_SCROLLS_LIST                            :{BLACK}Barra de rolagem - desloca a lista para cima/baixo
+STR_TOOLTIP_HSCROLL_BAR_SCROLLS_LIST                            :{BLACK}Barra de rolagem - desloca a lista para a esquerda/direita
+STR_TOOLTIP_DEMOLISH_BUILDINGS_ETC                              :{BLACK}Demolir construções etc. em um quadrado do terreno. Ctrl+Clique+Arrastar seleciona a área diagonalmente. Pressione também Shift para apenas mostrar o custo estimado
 
 # Show engines button
 ###length VEHICLE_TYPES
@@ -318,7 +318,7 @@ STR_OSK_KEYBOARD_LAYOUT_CAPS                                    :~!@#$%^&*()_+|Q
 # Measurement tooltip
 STR_MEASURE_LENGTH                                              :{BLACK}Comprimento: {NUM}
 STR_MEASURE_AREA                                                :{BLACK}Área: {NUM} x {NUM}
-STR_MEASURE_LENGTH_HEIGHTDIFF                                   :{BLACK}Comprimento: {NUM}{}Diferença de Altura: {HEIGHT}
+STR_MEASURE_LENGTH_HEIGHTDIFF                                   :{BLACK}Comprimento: {NUM}{}Diferença de altura: {HEIGHT}
 STR_MEASURE_AREA_HEIGHTDIFF                                     :{BLACK}Área: {NUM} x {NUM}{}Diferença de altura: {HEIGHT}
 
 
@@ -394,7 +394,7 @@ STR_TOOLBAR_TOOLTIP_DISPLAY_STORY_BOOK                          :{BLACK}Abrir li
 STR_TOOLBAR_TOOLTIP_DISPLAY_GOALS_LIST                          :{BLACK}Abrir lista de objetivos
 STR_TOOLBAR_TOOLTIP_DISPLAY_GRAPHS                              :{BLACK}Abrir gráficos da empresa e receitas por carga
 STR_TOOLBAR_TOOLTIP_DISPLAY_COMPANY_LEAGUE                      :{BLACK}Abrir tabela de classificação das empresas
-STR_TOOLBAR_TOOLTIP_FUND_CONSTRUCTION_OF_NEW                    :{BLACK}Abrir catálogo de indústrias, cadeia industrial ou financiar a construção de uma nova indústria
+STR_TOOLBAR_TOOLTIP_FUND_CONSTRUCTION_OF_NEW                    :{BLACK}Abrir lista de indústrias, cadeia industrial ou financiar a construção de uma nova indústria
 STR_TOOLBAR_TOOLTIP_DISPLAY_LIST_OF_COMPANY_TRAINS              :{BLACK}Abrir lista de trens da empresa. Ctrl+Clique para mostrar ou ocultar os grupos de veículos, em oposição à configuração escolhida
 STR_TOOLBAR_TOOLTIP_DISPLAY_LIST_OF_COMPANY_ROAD_VEHICLES       :{BLACK}Abrir lista de veículos da empresa. Ctrl+Clique para mostrar ou ocultar os grupos de veículos, em oposição à configuração escolhida
 STR_TOOLBAR_TOOLTIP_DISPLAY_LIST_OF_COMPANY_SHIPS               :{BLACK}Abrir lista de embarcações da empresa. Ctrl+Clique para mostrar ou ocultar os grupos de veículos, em oposição à configuração escolhida
@@ -406,10 +406,10 @@ STR_TOOLBAR_TOOLTIP_BUILD_ROADS                                 :{BLACK}Construi
 STR_TOOLBAR_TOOLTIP_BUILD_TRAMWAYS                              :{BLACK}Construir infraestrutura para bondes
 STR_TOOLBAR_TOOLTIP_BUILD_SHIP_DOCKS                            :{BLACK}Construir infraestrutura de hidrovias
 STR_TOOLBAR_TOOLTIP_BUILD_AIRPORTS                              :{BLACK}Construir aeroportos
-STR_TOOLBAR_TOOLTIP_LANDSCAPING                                 :{BLACK}Abrir menu de paisagismo, menu de árvores ou colocar um sinal
+STR_TOOLBAR_TOOLTIP_LANDSCAPING                                 :{BLACK}Abrir menu de paisagismo, menu de árvores ou colocar uma placa
 STR_TOOLBAR_TOOLTIP_SHOW_SOUND_MUSIC_WINDOW                     :{BLACK}Abrir janela de som/música
 STR_TOOLBAR_TOOLTIP_SHOW_LAST_MESSAGE_NEWS                      :{BLACK}Abrir última mensagem/notícia, histórico de mensagens ou apagar todas as mensagens
-STR_TOOLBAR_TOOLTIP_LAND_BLOCK_INFORMATION                      :{BLACK}Abrir menu informações do terreno, captura de tela, sobre o OpenTTD e ferramentas de desenvolvedor
+STR_TOOLBAR_TOOLTIP_LAND_BLOCK_INFORMATION                      :{BLACK}Abrir informações do terreno, menu de captura de tela, créditos do OpenTTD ou ferramentas de desenvolvedor
 STR_TOOLBAR_TOOLTIP_SWITCH_TOOLBAR                              :{BLACK}Trocar a barra de ferramentas
 
 # Extra tooltips for the scenario editor toolbar
@@ -425,16 +425,16 @@ STR_SCENEDIT_TOOLBAR_TOWN_GENERATION                            :{BLACK}Construi
 STR_SCENEDIT_TOOLBAR_INDUSTRY_GENERATION                        :{BLACK}Construir ou gerar indústrias
 STR_SCENEDIT_TOOLBAR_ROAD_CONSTRUCTION                          :{BLACK}Construir infraestrutura rodoviária
 STR_SCENEDIT_TOOLBAR_TRAM_CONSTRUCTION                          :{BLACK}Construir infraestrutura de bondes
-STR_SCENEDIT_TOOLBAR_PLANT_TREES                                :{BLACK}Plantar árvores. Ctrl+Clique+Arrastar seleciona a área diagonalmente. Ctrl+Shift+Clique+Arrastar mostra o custo estimado
+STR_SCENEDIT_TOOLBAR_PLANT_TREES                                :{BLACK}Plantar árvores. Ctrl+Clique+Arrastar seleciona a área diagonalmente. Pressione também Shift para apenas mostrar o custo estimado
 STR_SCENEDIT_TOOLBAR_PLACE_SIGN                                 :{BLACK}Colocar placa
-STR_SCENEDIT_TOOLBAR_PLACE_OBJECT                               :{BLACK}Colocar objeto. Ctrl+Clique+Arrastar seleciona a área diagonalmente. Ctrl+Shift+Clique+Arrastar mostra o custo estimado
+STR_SCENEDIT_TOOLBAR_PLACE_OBJECT                               :{BLACK}Colocar objeto. Ctrl+Clique+Arrastar seleciona a área diagonalmente. Pressione também Shift para apenas mostrar o custo estimado
 
 # Scenario editor file menu
 ###length 7
 STR_SCENEDIT_FILE_MENU_SAVE_SCENARIO                            :Salvar cenário
-STR_SCENEDIT_FILE_MENU_LOAD_SCENARIO                            :Carregar cenário
+STR_SCENEDIT_FILE_MENU_LOAD_SCENARIO                            :Abrir cenário
 STR_SCENEDIT_FILE_MENU_SAVE_HEIGHTMAP                           :Salvar mapa topográfico
-STR_SCENEDIT_FILE_MENU_LOAD_HEIGHTMAP                           :Carregar mapa topográfico
+STR_SCENEDIT_FILE_MENU_LOAD_HEIGHTMAP                           :Abrir mapa topográfico
 STR_SCENEDIT_FILE_MENU_QUIT_EDITOR                              :Sair do editor de cenários
 STR_SCENEDIT_FILE_MENU_SEPARATOR                                :
 STR_SCENEDIT_FILE_MENU_QUIT                                     :Sair
@@ -444,14 +444,14 @@ STR_SCENEDIT_FILE_MENU_QUIT                                     :Sair
 STR_SETTINGS_MENU_GAME_OPTIONS                                  :Opções do jogo
 STR_SETTINGS_MENU_CONFIG_SETTINGS_TREE                          :Configurações
 STR_SETTINGS_MENU_AI_SETTINGS                                   :Configurações de IA
-STR_SETTINGS_MENU_GAMESCRIPT_SETTINGS                           :Configurações de script de jogo
+STR_SETTINGS_MENU_GAMESCRIPT_SETTINGS                           :Configurações de Script de Jogo
 STR_SETTINGS_MENU_NEWGRF_SETTINGS                               :Configurações de NewGRF
-STR_SETTINGS_MENU_SANDBOX_OPTIONS                               :Opções da "sandbox"
+STR_SETTINGS_MENU_SANDBOX_OPTIONS                               :Opções da "Sandbox"
 STR_SETTINGS_MENU_TRANSPARENCY_OPTIONS                          :Opções de transparência
 STR_SETTINGS_MENU_TOWN_NAMES_DISPLAYED                          :Mostrar nomes de localidades
 STR_SETTINGS_MENU_STATION_NAMES_DISPLAYED                       :Mostrar nomes de estações
 STR_SETTINGS_MENU_WAYPOINTS_DISPLAYED                           :Mostrar nomes dos pontos de controle
-STR_SETTINGS_MENU_SIGNS_DISPLAYED                               :Mostrar sinais
+STR_SETTINGS_MENU_SIGNS_DISPLAYED                               :Mostrar placas
 STR_SETTINGS_MENU_SHOW_COMPETITOR_SIGNS                         :Mostrar placas e nomes dos concorrentes
 STR_SETTINGS_MENU_FULL_ANIMATION                                :Animação completa
 STR_SETTINGS_MENU_FULL_DETAIL                                   :Máximo de detalhes
@@ -491,7 +491,7 @@ STR_GRAPH_MENU_DETAILED_PERFORMANCE_RATING                      :Classificação
 STR_GRAPH_MENU_HIGHSCORE                                        :Tabela de classificações
 
 # Industry menu
-STR_INDUSTRY_MENU_INDUSTRY_DIRECTORY                            :Catálogo de indústrias
+STR_INDUSTRY_MENU_INDUSTRY_DIRECTORY                            :Lista de indústrias
 STR_INDUSTRY_MENU_INDUSTRY_CHAIN                                :Cadeias industriais
 STR_INDUSTRY_MENU_FUND_NEW_INDUSTRY                             :Fundar nova indústria
 
@@ -527,15 +527,15 @@ STR_NEWS_MENU_DELETE_ALL_MESSAGES                               :Apagar todas as
 # About menu
 STR_ABOUT_MENU_LAND_BLOCK_INFO                                  :Informações do terreno
 STR_ABOUT_MENU_HELP                                             :Ajuda & manuais
-STR_ABOUT_MENU_TOGGLE_CONSOLE                                   :Mostrar/ocultar console
+STR_ABOUT_MENU_TOGGLE_CONSOLE                                   :Mostrar/Ocultar console
 STR_ABOUT_MENU_AI_DEBUG                                         :Depuração de IA/Script de jogo
 STR_ABOUT_MENU_SCREENSHOT                                       :Captura de tela
 STR_ABOUT_MENU_SHOW_FRAMERATE                                   :Mostrar taxa de quadros
 STR_ABOUT_MENU_ABOUT_OPENTTD                                    :Sobre 'OpenTTD'
 STR_ABOUT_MENU_SPRITE_ALIGNER                                   :Alinhador de sprites
-STR_ABOUT_MENU_TOGGLE_BOUNDING_BOXES                            :Mostrar/ocultar as bordas delimitadoras
-STR_ABOUT_MENU_TOGGLE_DIRTY_BLOCKS                              :Ativar/desativar a colorização dos blocos sujos
-STR_ABOUT_MENU_TOGGLE_WIDGET_OUTLINES                           :Mostrar/ocultar os contornos do elemento
+STR_ABOUT_MENU_TOGGLE_BOUNDING_BOXES                            :Mostrar/Ocultar as caixas delimitadoras
+STR_ABOUT_MENU_TOGGLE_DIRTY_BLOCKS                              :Ativar/Desativar a coloração dos blocos sujos
+STR_ABOUT_MENU_TOGGLE_WIDGET_OUTLINES                           :Mostrar/Ocultar contornos do elemento
 
 ###length 31
 STR_DAY_NUMBER_1ST                                              :1
@@ -622,7 +622,7 @@ STR_GRAPH_CARGO_ENABLE_ALL                                      :{TINY_FONT}{BLA
 STR_GRAPH_CARGO_DISABLE_ALL                                     :{TINY_FONT}{BLACK}Desabilitar tudo
 STR_GRAPH_CARGO_TOOLTIP_ENABLE_ALL                              :{BLACK}Mostrar todas as cargas no gráfico de receitas por carga
 STR_GRAPH_CARGO_TOOLTIP_DISABLE_ALL                             :{BLACK}Não mostrar cargas no gráfico de receitas por carga
-STR_GRAPH_CARGO_PAYMENT_TOGGLE_CARGO                            :{BLACK}Mostrar/ocultar gráfico para o tipo de carga
+STR_GRAPH_CARGO_PAYMENT_TOGGLE_CARGO                            :{BLACK}Mostrar/Ocultar gráfico para o tipo de carga
 STR_GRAPH_CARGO_PAYMENT_CARGO                                   :{TINY_FONT}{BLACK}{STRING}
 
 STR_GRAPH_PERFORMANCE_DETAIL_TOOLTIP                            :{BLACK}Mostrar avaliações detalhadas de desempenho
@@ -671,8 +671,8 @@ STR_PERFORMANCE_DETAIL_VEHICLES_TOOLTIP_PERIODS                 :{BLACK}Número 
 STR_PERFORMANCE_DETAIL_STATIONS_TOOLTIP                         :{BLACK}Número de estações recentemente atendidas. Estações de trem, paradas de ônibus, aeroportos, etc. são contados individualmente, mesmo que pertençam à mesma estação
 STR_PERFORMANCE_DETAIL_MIN_PROFIT_TOOLTIP_YEARS                 :{BLACK}Lucro do veículo com a menor receita (somente veículos com mais de dois anos são considerados)
 STR_PERFORMANCE_DETAIL_MIN_PROFIT_TOOLTIP_PERIODS               :{BLACK}Lucro do veículo com a menor receita (somente veículos com mais de dois períodos são considerados)
-STR_PERFORMANCE_DETAIL_MIN_INCOME_TOOLTIP                       :{BLACK}Quantia de dinheiro obtido no trimestre com o menor lucro dos últimos 12 trimestres
-STR_PERFORMANCE_DETAIL_MAX_INCOME_TOOLTIP                       :{BLACK}Quantia de dinheiro obtido no trimestre com o maior lucro dos últimos 12 trimestres
+STR_PERFORMANCE_DETAIL_MIN_INCOME_TOOLTIP                       :{BLACK}Quantia de dinheiro obtida no trimestre com o menor lucro dos últimos 12 trimestres
+STR_PERFORMANCE_DETAIL_MAX_INCOME_TOOLTIP                       :{BLACK}Quantia de dinheiro obtida no trimestre com o maior lucro dos últimos 12 trimestres
 STR_PERFORMANCE_DETAIL_DELIVERED_TOOLTIP                        :{BLACK}Unidades de carga entregue nos últimos quatro trimestres
 STR_PERFORMANCE_DETAIL_CARGO_TOOLTIP                            :{BLACK}Número de tipos de carga entregues no último trimestre
 STR_PERFORMANCE_DETAIL_MONEY_TOOLTIP                            :{BLACK}Quantia de dinheiro que esta empresa tem no banco
@@ -754,7 +754,7 @@ STR_SMALLMAP_TYPE_OWNERS                                        :Proprietários
 STR_SMALLMAP_TOOLTIP_SHOW_LAND_CONTOURS_ON_MAP                  :{BLACK}Mostrar contornos do terreno no mapa
 STR_SMALLMAP_TOOLTIP_SHOW_VEHICLES_ON_MAP                       :{BLACK}Mostrar veículos no mapa
 STR_SMALLMAP_TOOLTIP_SHOW_INDUSTRIES_ON_MAP                     :{BLACK}Mostrar indústrias no mapa
-STR_SMALLMAP_TOOLTIP_SHOW_LINK_STATS_ON_MAP                     :{BLACK}Mostrar fluxo de cargas no mapa
+STR_SMALLMAP_TOOLTIP_SHOW_LINK_STATS_ON_MAP                     :{BLACK}Mostrar fluxo de carga no mapa
 STR_SMALLMAP_TOOLTIP_SHOW_TRANSPORT_ROUTES_ON                   :{BLACK}Mostrar rotas de transporte no mapa
 STR_SMALLMAP_TOOLTIP_SHOW_VEGETATION_ON_MAP                     :{BLACK}Mostrar vegetação no mapa
 STR_SMALLMAP_TOOLTIP_SHOW_LAND_OWNERS_ON_MAP                    :{BLACK}Mostrar proprietários dos terrenos no mapa
@@ -792,7 +792,7 @@ STR_SMALLMAP_LEGENDA_INDUSTRIES                                 :{TINY_FONT}{BLA
 STR_SMALLMAP_LEGENDA_DESERT                                     :{TINY_FONT}{BLACK}Deserto
 STR_SMALLMAP_LEGENDA_SNOW                                       :{TINY_FONT}{BLACK}Neve
 
-STR_SMALLMAP_TOOLTIP_TOGGLE_TOWN_NAMES_ON_OFF                   :{BLACK}Mostrar/ocultar nomes das localidades no mapa
+STR_SMALLMAP_TOOLTIP_TOGGLE_TOWN_NAMES_ON_OFF                   :{BLACK}Mostrar/Ocultar nomes das localidades no mapa
 STR_SMALLMAP_CENTER                                             :{BLACK}Centralizar o minimapa na localização atual
 STR_SMALLMAP_INDUSTRY                                           :{TINY_FONT}{STRING} ({NUM})
 STR_SMALLMAP_LINKSTATS                                          :{TINY_FONT}{STRING}
@@ -803,7 +803,7 @@ STR_SMALLMAP_ENABLE_ALL                                         :{BLACK}Habilita
 STR_SMALLMAP_SHOW_HEIGHT                                        :{BLACK}Mostrar altura
 STR_SMALLMAP_TOOLTIP_DISABLE_ALL_INDUSTRIES                     :{BLACK}Não mostrar indústrias no mapa
 STR_SMALLMAP_TOOLTIP_ENABLE_ALL_INDUSTRIES                      :{BLACK}Mostrar todas as indústrias no mapa
-STR_SMALLMAP_TOOLTIP_SHOW_HEIGHT                                :{BLACK}Mostrar/ocultar mapa topográfico
+STR_SMALLMAP_TOOLTIP_SHOW_HEIGHT                                :{BLACK}Mostrar/Ocultar mapa topográfico
 STR_SMALLMAP_TOOLTIP_DISABLE_ALL_COMPANIES                      :{BLACK}Mostrar no mapa as propriedades que não pertencem às empresas
 STR_SMALLMAP_TOOLTIP_ENABLE_ALL_COMPANIES                       :{BLACK}Mostrar no mapa as propriedades de todas as empresas
 STR_SMALLMAP_TOOLTIP_DISABLE_ALL_CARGOS                         :{BLACK}Não mostrar as cargas no mapa
@@ -836,11 +836,11 @@ STR_NEWS_FIRST_CARGO_TRAM_ARRIVAL                               :{BIG_FONT}{BLAC
 STR_NEWS_FIRST_SHIP_ARRIVAL                                     :{BIG_FONT}{BLACK}Cidadãos celebram . . .{}Primeira embarcação chega nas {STATION}!
 STR_NEWS_FIRST_AIRCRAFT_ARRIVAL                                 :{BIG_FONT}{BLACK}Cidadãos celebram . . .{}Primeira aeronave chega no {STATION}!
 
-STR_NEWS_TRAIN_CRASH                                            :{BIG_FONT}{BLACK}Acidente de Trem!{}{COMMA} morrem em explosão após colisão
-STR_NEWS_ROAD_VEHICLE_CRASH_DRIVER                              :{BIG_FONT}{BLACK}Acidente Rodoviário!{}Condutor morre em explosão após colisão com um trem
-STR_NEWS_ROAD_VEHICLE_CRASH                                     :{BIG_FONT}{BLACK}Acidente Rodoviário!{}{COMMA} morrem em explosão após colisão com um trem
-STR_NEWS_AIRCRAFT_CRASH                                         :{BIG_FONT}{BLACK}Acidente Aéreo!{}{COMMA} morrem em explosão na {STATION}
-STR_NEWS_PLANE_CRASH_OUT_OF_FUEL                                :{BIG_FONT}{BLACK}Acidente Aéreo!{}Aeronave ficou sem combustível, {COMMA} morrem em explosão
+STR_NEWS_TRAIN_CRASH                                            :{BIG_FONT}{BLACK}Acidente de Trem!{}{COMMA} morrem na explosão após a colisão
+STR_NEWS_ROAD_VEHICLE_CRASH_DRIVER                              :{BIG_FONT}{BLACK}Acidente Rodoviário!{}Condutor morre na explosão após a colisão com um trem
+STR_NEWS_ROAD_VEHICLE_CRASH                                     :{BIG_FONT}{BLACK}Acidente Rodoviário!{}{COMMA} morrem na explosão após a colisão com um trem
+STR_NEWS_AIRCRAFT_CRASH                                         :{BIG_FONT}{BLACK}Acidente Aéreo!{}{COMMA} morrem na explosão em {STATION}
+STR_NEWS_PLANE_CRASH_OUT_OF_FUEL                                :{BIG_FONT}{BLACK}Acidente Aéreo!{}Aeronave ficou sem combustível, {COMMA} morrem na explosão
 
 STR_NEWS_DISASTER_ZEPPELIN                                      :{BIG_FONT}{BLACK}Desastre de Zepelim em {STATION}!
 STR_NEWS_DISASTER_SMALL_UFO                                     :{BIG_FONT}{BLACK}Veículo rodoviário destruído em colisão com OVNI!
@@ -848,9 +848,9 @@ STR_NEWS_DISASTER_AIRPLANE_OIL_REFINERY                         :{BIG_FONT}{BLAC
 STR_NEWS_DISASTER_HELICOPTER_FACTORY                            :{BIG_FONT}{BLACK}Fábrica destruída em circunstâncias suspeitas perto de {TOWN}!
 STR_NEWS_DISASTER_BIG_UFO                                       :{BIG_FONT}{BLACK}OVNI pousa em {TOWN}!
 STR_NEWS_DISASTER_COAL_MINE_SUBSIDENCE                          :{BIG_FONT}{BLACK}Afundamento da mina de carvão deixa rastro de destruição perto de {TOWN}!
-STR_NEWS_DISASTER_FLOOD_VEHICLE                                 :{BIG_FONT}{BLACK}Inundações!{}Pelo menos {COMMA} desaparecidos, supostamente mortos após inundações significativas!
+STR_NEWS_DISASTER_FLOOD_VEHICLE                                 :{BIG_FONT}{BLACK}Inundações!{}Pelo menos {COMMA} desaparecidos, supostamente mortos após terríveis inundações!
 
-STR_NEWS_COMPANY_IN_TROUBLE_TITLE                               :{BIG_FONT}{BLACK}Empresa de transporte em apuros!
+STR_NEWS_COMPANY_IN_TROUBLE_TITLE                               :{BIG_FONT}{BLACK}Empresa de transporte em dificuldades!
 STR_NEWS_COMPANY_IN_TROUBLE_DESCRIPTION                         :{BIG_FONT}{BLACK}{STRING} será vendida ou declarada falida a menos que aumente o desempenho em breve!
 STR_NEWS_COMPANY_MERGER_TITLE                                   :{BIG_FONT}{BLACK}Fusão de empresas de transportes!
 STR_NEWS_COMPANY_MERGER_DESCRIPTION                             :{BIG_FONT}{BLACK}{STRING} foi vendida para {STRING} por {CURRENCY_LONG}!
@@ -864,7 +864,7 @@ STR_PRESIDENT_NAME_MANAGER                                      :{BLACK}{PRESIDE
 STR_NEWS_NEW_TOWN                                               :{BLACK}{BIG_FONT}{STRING} financiou a construção da nova localidade de {TOWN}!
 STR_NEWS_NEW_TOWN_UNSPONSORED                                   :{BLACK}{BIG_FONT}Uma nova localidade chamada {TOWN} foi fundada!
 
-STR_NEWS_INDUSTRY_CONSTRUCTION                                  :{BIG_FONT}{BLACK}Nov{G o a} {STRING} under construction near {TOWN}!
+STR_NEWS_INDUSTRY_CONSTRUCTION                                  :{BIG_FONT}{BLACK}Nov{G o a} {STRING} em construção perto de {TOWN}!
 STR_NEWS_INDUSTRY_PLANTED                                       :{BIG_FONT}{BLACK}Nov{G o a} {STRING} sendo plantada perto de {TOWN}!
 
 STR_NEWS_INDUSTRY_CLOSURE_GENERAL                               :{BIG_FONT}{BLACK}{STRING} anuncia o encerramento iminente!
@@ -872,17 +872,17 @@ STR_NEWS_INDUSTRY_CLOSURE_SUPPLY_PROBLEMS                       :{BIG_FONT}{BLAC
 STR_NEWS_INDUSTRY_CLOSURE_LACK_OF_TREES                         :{BIG_FONT}{BLACK}Falta de árvores nas proximidades faz {STRING} anunciar o encerramento iminente!
 
 STR_NEWS_EURO_INTRODUCTION                                      :{BIG_FONT}{BLACK}União Monetária Europeia!{}{}O Euro é introduzido como moeda única para as operações diárias em seu país!
-STR_NEWS_BEGIN_OF_RECESSION                                     :{BIG_FONT}{BLACK}Recessão Mundial!{}{}Especialistas financeiros temem o pior enquanto a economia afunda!
+STR_NEWS_BEGIN_OF_RECESSION                                     :{BIG_FONT}{BLACK}Recessão Mundial!{}{}Especialistas financeiros temem o pior com a economia em queda!
 STR_NEWS_END_OF_RECESSION                                       :{BIG_FONT}{BLACK}Fim da recessão!{}{}Melhoras no comércio inspiram confiança nas indústrias à medida que a economia se fortalece!
 
 STR_NEWS_INDUSTRY_PRODUCTION_INCREASE_GENERAL                   :{BIG_FONT}{BLACK}{INDUSTRY} aumenta a produção!
 STR_NEWS_INDUSTRY_PRODUCTION_INCREASE_COAL                      :{BIG_FONT}{BLACK}Nova camada de carvão encontrada na {INDUSTRY}!{}A produção deverá duplicar!
 STR_NEWS_INDUSTRY_PRODUCTION_INCREASE_OIL                       :{BIG_FONT}{BLACK}Novas reservas de petróleo encontradas {G nos na} {INDUSTRY}!{}A produção deverá duplicar!
 STR_NEWS_INDUSTRY_PRODUCTION_INCREASE_FARM                      :{BIG_FONT}{BLACK}Métodos agrícolas aperfeiçoados na {INDUSTRY} deverão duplicar a produção!
-STR_NEWS_INDUSTRY_PRODUCTION_INCREASE_SMOOTH                    :{BIG_FONT}{BLACK}A produção de {STRING} {G nos na} {INDUSTRY} aumentou em {COMMA}%!
+STR_NEWS_INDUSTRY_PRODUCTION_INCREASE_SMOOTH                    :{BIG_FONT}{BLACK}Produção de {STRING} {G nos na} {INDUSTRY} aumenta {COMMA}%!
 STR_NEWS_INDUSTRY_PRODUCTION_DECREASE_GENERAL                   :{BIG_FONT}{BLACK}A produção de {INDUSTRY} foi reduzida em 50%
-STR_NEWS_INDUSTRY_PRODUCTION_DECREASE_FARM                      :{BIG_FONT}{BLACK}Infestação de insetos causa destruição {G no na} {INDUSTRY}!{}A produção caiu em 50%
-STR_NEWS_INDUSTRY_PRODUCTION_DECREASE_SMOOTH                    :{BIG_FONT}{BLACK}A produção de {STRING} {G nos na} {INDUSTRY} diminui {COMMA}%!
+STR_NEWS_INDUSTRY_PRODUCTION_DECREASE_FARM                      :{BIG_FONT}{BLACK}Infestação de insetos causa destruição {G no na} {INDUSTRY}!{}Produção diminui em 50%
+STR_NEWS_INDUSTRY_PRODUCTION_DECREASE_SMOOTH                    :{BIG_FONT}{BLACK}Produção de {STRING} {G nos na} {INDUSTRY} diminui {COMMA}%!
 
 ###length VEHICLE_TYPES
 STR_NEWS_TRAIN_IS_WAITING                                       :{WHITE}{VEHICLE} está aguardando no depósito
@@ -1041,7 +1041,7 @@ STR_GAME_OPTIONS_VIDEO_ACCELERATION_TOOLTIP                     :{BLACK}Marque e
 STR_GAME_OPTIONS_VIDEO_ACCELERATION_RESTART                     :{WHITE}A configuração terá efeito somente após reiniciar o jogo
 
 STR_GAME_OPTIONS_VIDEO_VSYNC                                    :{BLACK}VSync
-STR_GAME_OPTIONS_VIDEO_VSYNC_TOOLTIP                            :{BLACK}Marque esta caixa para ativar Vsync na tela. Se modificada, esta configuração só terá efeito quado o jogo for reiniciado. Só funciona com aceleração de hardware habilitada
+STR_GAME_OPTIONS_VIDEO_VSYNC_TOOLTIP                            :{BLACK}Marque esta caixa para ativar v-sync na tela. Se modificada, esta configuração só terá efeito quado o jogo for reiniciado. Só funciona com aceleração de hardware habilitada
 
 STR_GAME_OPTIONS_VIDEO_DRIVER_INFO                              :{BLACK}"Driver" atual: {STRING}
 
@@ -1287,7 +1287,7 @@ STR_CONFIG_SETTING_RUNNING_COSTS                                :Custos de Opera
 STR_CONFIG_SETTING_RUNNING_COSTS_HELPTEXT                       :Configurar nível de manutenção e custos operacionais de veículos e infraestrutura
 
 STR_CONFIG_SETTING_CONSTRUCTION_SPEED                           :Velocidade de construção: {STRING}
-STR_CONFIG_SETTING_CONSTRUCTION_SPEED_HELPTEXT                  :Limitar a quantidade ações de construção para IAs
+STR_CONFIG_SETTING_CONSTRUCTION_SPEED_HELPTEXT                  :Limitar a quantidade ações de construção para IA's
 
 STR_CONFIG_SETTING_VEHICLE_BREAKDOWNS                           :Quebra de veículos: {STRING}
 STR_CONFIG_SETTING_VEHICLE_BREAKDOWNS_HELPTEXT                  :Controla a frequência com a qual veículos com manutenção inadequada podem quebrar
@@ -1436,7 +1436,7 @@ STR_CONFIG_SETTING_ALLOW_FUND_BUILDINGS                         :Permitir financ
 STR_CONFIG_SETTING_ALLOW_FUND_BUILDINGS_HELPTEXT                :Permite que empresas doem dinheiro às localidades para custear novas casas
 
 STR_CONFIG_SETTING_ALLOW_FUND_ROAD                              :Permitir financiar a reconstrução de estradas locais:{STRING}
-STR_CONFIG_SETTING_ALLOW_FUND_ROAD_HELPTEXT                     :Permitir que empresas doem dinheiro para localidades reconstruirem estradas para sabotar os serviços rodoviários na localidade
+STR_CONFIG_SETTING_ALLOW_FUND_ROAD_HELPTEXT                     :Permitir que empresas doem dinheiro às localidades para reconstrução de estradas para sabotar os serviços rodoviários na localidade
 
 STR_CONFIG_SETTING_ALLOW_GIVE_MONEY                             :Permitir enviar dinheiro para outras empresas: {STRING}
 STR_CONFIG_SETTING_ALLOW_GIVE_MONEY_HELPTEXT                    :Permite a transferências de dinheiro entre empresas em modo multijogador
@@ -1495,7 +1495,7 @@ STR_CONFIG_SETTING_NEVER_EXPIRE_VEHICLES                        :Veículos nunca
 STR_CONFIG_SETTING_NEVER_EXPIRE_VEHICLES_HELPTEXT               :Quanto ativado, todos os modelos de veículos permanecerão disponíveis para sempre após a sua introdução
 
 STR_CONFIG_SETTING_TIMEKEEPING_UNITS                            :Unidades de tempo: {STRING}
-STR_CONFIG_SETTING_TIMEKEEPING_UNITS_HELPTEXT                   :Selecionar as unidades de tempo do jogo. Isso não pode ser alterado posteriormente.{}{}O modo clássico de tempo do OpenTTD é baseado em um calendário, com um ano composto de 12 meses e cada mês com 28-31 dias.{}{}No tempo baseado em relógio de parede, a movimentação de veículos, a produção de carga e as finanças são baseadas em incrementos de um minuto, que tem aproximadamente a mesma duração que um mês de 30 dias no modo baseado em calendário. Esses incrementos são agrupados em períodos de 12 minutos, equivalentes a um ano no modo baseado em calendário.{}{}Nos dois modos, há sempre um calendário clássico, que é usado para datas de introdução de veículos, casas e outras infraestruturas.
+STR_CONFIG_SETTING_TIMEKEEPING_UNITS_HELPTEXT                   :Selecionar as unidades de tempo para o jogo. Isto não pode ser alterado posteriormente.{}{}O modo clássico no OpenTTD é baseado em um calendário, em que um ano é composto de 12 meses e cada mês tem 28-31 dias.{}{}No tempo baseado no relógio de parede, a produção de carga e as finanças são baseadas em incrementos de um minuto, que tem aproximadamente a mesma duração de um mês de 30 dias no modo baseado em calendário. Esses incrementos são agrupados em períodos de 12 minutos, equivalentes a um ano no modo baseado em calendário.{}{}Nos dois modos, há sempre um calendário clássico, que é usado para datas de introdução de veículos, casas e outras infraestruturas.
 ###length 2
 STR_CONFIG_SETTING_TIMEKEEPING_UNITS_CALENDAR                   :Calendário
 STR_CONFIG_SETTING_TIMEKEEPING_UNITS_WALLCLOCK                  :Relógio de parede
@@ -1546,7 +1546,7 @@ STR_CONFIG_SETTING_SHOW_CARGO_IN_LISTS                          :Mostrar as carg
 STR_CONFIG_SETTING_SHOW_CARGO_IN_LISTS_HELPTEXT                 :Se ativado, a carga transportável do veículo aparecerá acima dele nas listas de veículos
 
 STR_CONFIG_SETTING_LANDSCAPE                                    :Clima: {STRING}
-STR_CONFIG_SETTING_LANDSCAPE_HELPTEXT                           :Os climas definem a jogabilidade básica com diferentes cargas e requerimentos para o crescimento das localidades. NewGRF's e Scripts de Jogo permitem um controle mais fino
+STR_CONFIG_SETTING_LANDSCAPE_HELPTEXT                           :Os climas definem a jogabilidade básica com diferentes cargas e requerimentos para o crescimento das localidades. NewGRFs e Scripts de Jogo permitem um controle mais fino
 
 STR_CONFIG_SETTING_LAND_GENERATOR                               :Gerador de Terreno: {STRING}
 STR_CONFIG_SETTING_LAND_GENERATOR_HELPTEXT                      :O gerador original depende do conjunto gráfico base e produz formas de terreno pré-definidas. TerraGenesis é um gerador baseado no algoritmo de ruído de Perlin com definições mais refinadas
@@ -2784,16 +2784,16 @@ STR_RAIL_TOOLBAR_ELRAIL_CONSTRUCTION_CAPTION                    :Construção de
 STR_RAIL_TOOLBAR_MONORAIL_CONSTRUCTION_CAPTION                  :Construção de Ferrovias (monotrilho)
 STR_RAIL_TOOLBAR_MAGLEV_CONSTRUCTION_CAPTION                    :Construção de Ferrovias Maglev
 
-STR_RAIL_TOOLBAR_TOOLTIP_BUILD_RAILROAD_TRACK                   :{BLACK}Construir ferrovia. Ctrl+Clique remove a ferrovia. Ctrl+Shift+Clique mostra o custo estimado
-STR_RAIL_TOOLBAR_TOOLTIP_BUILD_AUTORAIL                         :{BLACK}Construir ferrovia usando o modo Autotrilho. Ctrl+Clique remove seção da ferrovia. Ctrl+Shift+Clique mostra o custo estimado
-STR_RAIL_TOOLBAR_TOOLTIP_BUILD_TRAIN_DEPOT_FOR_BUILDING         :{BLACK}Construir depósito de trem (para compra e manutenção de trens). Shift+Clique mostra o custo estimado
-STR_RAIL_TOOLBAR_TOOLTIP_CONVERT_RAIL_TO_WAYPOINT               :{BLACK}Construir ponto de controle na ferrovia. Ctrl+Clique para selecionar outro ponto de controle e unir com este. Ctrl+Shift+Clique mostra o custo estimado
-STR_RAIL_TOOLBAR_TOOLTIP_BUILD_RAILROAD_STATION                 :{BLACK}Construir estação ferroviária. Ctrl+Clique para selecionar outra estação e unir com esta. Ctrl+Shift+Clique mostra o custo estimado
-STR_RAIL_TOOLBAR_TOOLTIP_BUILD_RAILROAD_SIGNALS                 :{BLACK}Construir sinal na ferrovia. Ctrl+Clique para construir o sinal com estilo diferente{}Clique+Arraste para preencher a seção selecionada da ferrovia com os sinais no espaçamento escolhido. Ctrl+Clique+Arraste para colocar sinais até a próxima junção, estação ou sinal. Ctrl+Shift+Clique+Arrastar mostra o custo estimado
-STR_RAIL_TOOLBAR_TOOLTIP_BUILD_RAILROAD_BRIDGE                  :{BLACK}Construir ponte ferroviária. Pressionar Shift mostra o custo estimado
-STR_RAIL_TOOLBAR_TOOLTIP_BUILD_RAILROAD_TUNNEL                  :{BLACK}Construir túnel ferroviário. Shift+Clique mostra o custo estimado
-STR_RAIL_TOOLBAR_TOOLTIP_TOGGLE_BUILD_REMOVE_FOR                :{BLACK}Construir/remover ferrovia, sinais, pontos de controle e estações. Ctrl+Clique para também remover os trilhos de pontos de controle e das estações
-STR_RAIL_TOOLBAR_TOOLTIP_CONVERT_RAIL                           :{BLACK}Converter/Atualizar tipo de trilho. Shift+Clique mostra o custo estimado
+STR_RAIL_TOOLBAR_TOOLTIP_BUILD_RAILROAD_TRACK                   :{BLACK}Construir ferrovia. Ctrl+Clique remove a ferrovia. Pressione também Shift para apenas mostrar o custo estimado
+STR_RAIL_TOOLBAR_TOOLTIP_BUILD_AUTORAIL                         :{BLACK}Construir ferrovia usando o modo Autotrilho. Ctrl+Clique remove seção da ferrovia. Pressione também Shift para apenas mostrar o custo estimado
+STR_RAIL_TOOLBAR_TOOLTIP_BUILD_TRAIN_DEPOT_FOR_BUILDING         :{BLACK}Construir depósito de trem (para compra e manutenção de trens). Pressione também Shift para apenas mostrar o custo estimado
+STR_RAIL_TOOLBAR_TOOLTIP_CONVERT_RAIL_TO_WAYPOINT               :{BLACK}Construir ponto de controle na ferrovia. Ctrl+Clique para selecionar outro ponto de controle e unir com este. Pressione também Shift para apenas mostrar o custo estimado
+STR_RAIL_TOOLBAR_TOOLTIP_BUILD_RAILROAD_STATION                 :{BLACK}Construir estação ferroviária. Ctrl+Clique para selecionar outra estação e unir com esta. Pressione também Shift para apenas mostrar o custo estimado
+STR_RAIL_TOOLBAR_TOOLTIP_BUILD_RAILROAD_SIGNALS                 :{BLACK}Construir sinal na ferrovia. Ctrl+Clique para construir o sinal com estilo diferente{}Clique+Arraste para preencher a seção selecionada da ferrovia com os sinais no espaçamento escolhido. Ctrl+Clique+Arraste para colocar sinais até a próxima junção, estação ou sinal. Pressione também Shift para apenas mostrar o custo estimado
+STR_RAIL_TOOLBAR_TOOLTIP_BUILD_RAILROAD_BRIDGE                  :{BLACK}Construir ponte ferroviária. Pressione também Shift para apenas mostrar o custo estimado
+STR_RAIL_TOOLBAR_TOOLTIP_BUILD_RAILROAD_TUNNEL                  :{BLACK}Construir túnel ferroviário. Pressione também Shift para apenas mostrar o custo estimado
+STR_RAIL_TOOLBAR_TOOLTIP_TOGGLE_BUILD_REMOVE_FOR                :{BLACK}Construir/Remover ferrovia, sinais, pontos de controle e estações. Ctrl+Clique para também remover os trilhos de pontos de controle e das estações
+STR_RAIL_TOOLBAR_TOOLTIP_CONVERT_RAIL                           :{BLACK}Converter/Atualizar tipo de trilho. Pressione também Shift para apenas mostrar o custo estimado
 
 STR_RAIL_NAME_RAILROAD                                          :Ferrovia
 STR_RAIL_NAME_ELRAIL                                            :Ferrovia eletrificada
@@ -2830,7 +2830,7 @@ STR_STATION_CLASS_WAYP_WAYPOINT                                 :Ponto de contro
 
 # Signal window
 STR_BUILD_SIGNAL_CAPTION                                        :{WHITE}Seleção de Sinais
-STR_BUILD_SIGNAL_TOGGLE_ADVANCED_SIGNAL_TOOLTIP                 :{BLACK}Mostrar/ocultar os tipos de sinais avançados
+STR_BUILD_SIGNAL_TOGGLE_ADVANCED_SIGNAL_TOOLTIP                 :{BLACK}Mostrar/Ocultar tipos de sinais avançados
 STR_BUILD_SIGNAL_SEMAPHORE_NORM_TOOLTIP                         :{BLACK}Sinal de Bloqueio (semáforo){}Este é o tipo mais básico de sinal, permitindo apenas um trem passar no mesmo bloco de linha ao mesmo tempo
 STR_BUILD_SIGNAL_SEMAPHORE_ENTRY_TOOLTIP                        :{BLACK}Sinal de Entrada (semáforo){}Permanece verde enquanto houver um ou mais sinais de saída verdes na seção da linha. Caso contrário, ficará vermelho
 STR_BUILD_SIGNAL_SEMAPHORE_EXIT_TOOLTIP                         :{BLACK}Sinal de Saída (semáforo){}Funciona da mesma forma que o sinal de bloqueio, mas é necessário para ativar a cor correta nos pré-sinais de entrada e combinado.
@@ -2843,7 +2843,7 @@ STR_BUILD_SIGNAL_ELECTRIC_EXIT_TOOLTIP                          :{BLACK}Sinal de
 STR_BUILD_SIGNAL_ELECTRIC_COMBO_TOOLTIP                         :{BLACK}Sinal Combinado (elétrico){}O sinal combinado funciona simultaneamente como um sinal de entrada e de saída. Isto permite construir ramificações complexas de pré-sinais.
 STR_BUILD_SIGNAL_ELECTRIC_PBS_TOOLTIP                           :{BLACK}Sinal de Caminho (elétrico){}Um sinal de caminho que permite mais de um trem passar por um sinal de bloqueio ao mesmo tempo, se o trem puder reservar um caminho para um ponto de parada seguro. Sinais de caminho padrões podem ser passados no sentido contrário
 STR_BUILD_SIGNAL_ELECTRIC_PBS_OWAY_TOOLTIP                      :{BLACK}Sinal de Sentido Único (elétrico){}Um sinal de caminho que permite mais de um trem passar por um sinal de bloqueio ao mesmo tempo, se o trem puder reservar um caminho para um ponto de parada seguro. Os sinais de sentido único não podem ser passados no sentido contrário
-STR_BUILD_SIGNAL_CONVERT_TOOLTIP                                :{BLACK}Converter sinal{}Clique em um sinal existente para convertê-lo para o tipo e variante de sinal selecionado. Ctrl+Clique muda a variante existente. Shift+Clique mostra o custo estimado da conversão
+STR_BUILD_SIGNAL_CONVERT_TOOLTIP                                :{BLACK}Converter sinal{}Clique em um sinal existente para convertê-lo para o tipo e variante de sinal selecionado. Ctrl+Clique muda a variante existente. Shift+Clique mostra o custo estimado de conversão
 STR_BUILD_SIGNAL_DRAG_SIGNALS_DENSITY_TOOLTIP                   :{BLACK}Distância entre os sinais quando arrastar
 STR_BUILD_SIGNAL_DRAG_SIGNALS_DENSITY_DECREASE_TOOLTIP          :{BLACK}Diminuir a distância entre os sinais quando arrastar
 STR_BUILD_SIGNAL_DRAG_SIGNALS_DENSITY_INCREASE_TOOLTIP          :{BLACK}Aumentar a distância entre os sinais quando arrastar
@@ -2869,25 +2869,25 @@ STR_BRIDGE_TUBULAR_SILICON                                      :Tubular, Silíc
 # Road construction toolbar
 STR_ROAD_TOOLBAR_ROAD_CONSTRUCTION_CAPTION                      :{WHITE}Construção de estradas
 STR_ROAD_TOOLBAR_TRAM_CONSTRUCTION_CAPTION                      :{WHITE}Construção de Linhas de Bonde
-STR_ROAD_TOOLBAR_TOOLTIP_BUILD_ROAD_SECTION                     :{BLACK}Construir seção de estrada. Ctrl+Clique remove seção da estrada. Ctrl+Shift+Clique mostra o custo estimado
-STR_ROAD_TOOLBAR_TOOLTIP_BUILD_TRAMWAY_SECTION                  :{BLACK}Construir linha de bonde. Ctrl+Clique remove seção da linha. Ctrl+Shift+Clique mostra o custo estimado
-STR_ROAD_TOOLBAR_TOOLTIP_BUILD_AUTOROAD                         :{BLACK}Construir estrada usando o modo Autoestrada. Ctrl+Clique remove seção da estrada. Ctrl+Shift+Clique mostra o custo estimado
-STR_ROAD_TOOLBAR_TOOLTIP_BUILD_AUTOTRAM                         :{BLACK}Construir linha de bonde usando o modo Autotrilho. Ctrl+Clique remove uma seção da linha. Ctrl+Shift+Clique mostra o custo estimado
-STR_ROAD_TOOLBAR_TOOLTIP_BUILD_ROAD_VEHICLE_DEPOT               :{BLACK}Construir depósito para veículos rodoviários (para compra e manutenção de veículos). Shift+Clique mostra o custo estimado
-STR_ROAD_TOOLBAR_TOOLTIP_BUILD_TRAM_VEHICLE_DEPOT               :{BLACK}Construir depósito de bonde (para compra e manutenção de bondes). Shift+Clique mostra o custo estimado
-STR_ROAD_TOOLBAR_TOOLTIP_BUILD_BUS_STATION                      :{BLACK}Construir estação de ônibus. Ctrl+Clique para selecionar outra estação e unir com esta. Ctrl+Shift+Clique mostra o custo estimado
-STR_ROAD_TOOLBAR_TOOLTIP_BUILD_PASSENGER_TRAM_STATION           :{BLACK}Construir estação de bonde de passageiros. Ctrl+Clique para selecionar outra estação e unir com esta. Ctrl+Shift+Clique mostra o  custo estimado
-STR_ROAD_TOOLBAR_TOOLTIP_BUILD_TRUCK_LOADING_BAY                :{BLACK}Construir estação de caminhão. Ctrl+Clique para selecionar outra estação e unir com esta. Ctrl+Shift+Clique mostra o custo estimado
-STR_ROAD_TOOLBAR_TOOLTIP_BUILD_CARGO_TRAM_STATION               :{BLACK}Construir estação de bonde de carga. Ctrl+Clique para selecionar outra estação e unir com esta. Ctrl+Shift+Clique mostra o custo estimado
+STR_ROAD_TOOLBAR_TOOLTIP_BUILD_ROAD_SECTION                     :{BLACK}Construir seção de estrada. Ctrl+Clique remove seção da estrada. Pressione também Shift para apenas mostrar o custo estimado
+STR_ROAD_TOOLBAR_TOOLTIP_BUILD_TRAMWAY_SECTION                  :{BLACK}Construir linha de bonde. Ctrl+Clique remove seção da linha. Pressione também Shift para apenas mostrar o custo estimado
+STR_ROAD_TOOLBAR_TOOLTIP_BUILD_AUTOROAD                         :{BLACK}Construir estrada usando o modo Autoestrada. Ctrl+Clique remove seção da estrada. Pressione também Shift para apenas mostrar o custo estimado
+STR_ROAD_TOOLBAR_TOOLTIP_BUILD_AUTOTRAM                         :{BLACK}Construir linha de bonde usando o modo Autotrilho. Ctrl+Clique remove uma seção da linha. Pressione também Shift para apenas mostrar o custo estimado
+STR_ROAD_TOOLBAR_TOOLTIP_BUILD_ROAD_VEHICLE_DEPOT               :{BLACK}Construir depósito para veículos rodoviários (para compra e manutenção de veículos). Pressione também Shift para apenas mostrar o custo estimado
+STR_ROAD_TOOLBAR_TOOLTIP_BUILD_TRAM_VEHICLE_DEPOT               :{BLACK}Construir depósito de bonde (para compra e manutenção de bondes). Pressione também Shift para apenas mostrar o custo estimado
+STR_ROAD_TOOLBAR_TOOLTIP_BUILD_BUS_STATION                      :{BLACK}Construir estação de ônibus. Ctrl+Clique para selecionar outra estação e unir com esta. Pressione também Shift para apenas mostrar o custo estimado
+STR_ROAD_TOOLBAR_TOOLTIP_BUILD_PASSENGER_TRAM_STATION           :{BLACK}Construir estação de bonde de passageiros. Ctrl+Clique para selecionar outra estação e unir com esta. Pressione também Shift para apenas mostrar o custo estimado
+STR_ROAD_TOOLBAR_TOOLTIP_BUILD_TRUCK_LOADING_BAY                :{BLACK}Construir estação de caminhão. Ctrl+Clique para selecionar outra estação e unir com esta. Pressione também Shift para apenas mostrar o custo estimado
+STR_ROAD_TOOLBAR_TOOLTIP_BUILD_CARGO_TRAM_STATION               :{BLACK}Construir estação de bonde de carga. Ctrl+Clique para selecionar outra estação e unir com esta. Pressione também Shift para apenas mostrar o custo estimado
 STR_ROAD_TOOLBAR_TOOLTIP_TOGGLE_ONE_WAY_ROAD                    :{BLACK}Ativar/Desativar estradas de sentido único
-STR_ROAD_TOOLBAR_TOOLTIP_BUILD_ROAD_BRIDGE                      :{BLACK}Construir ponte rodoviária. Shift+Clique mostra o custo estimado
-STR_ROAD_TOOLBAR_TOOLTIP_BUILD_TRAMWAY_BRIDGE                   :{BLACK}Construir ponte para bondes. Shift+Clique mostra o custo estimado
-STR_ROAD_TOOLBAR_TOOLTIP_BUILD_ROAD_TUNNEL                      :{BLACK}Construir túnel rodoviário. Shift+Clique mostra o custo estimado
-STR_ROAD_TOOLBAR_TOOLTIP_BUILD_TRAMWAY_TUNNEL                   :{BLACK}Construir túnel para bondes. Shift+Clique mostra o custo estimado
-STR_ROAD_TOOLBAR_TOOLTIP_TOGGLE_BUILD_REMOVE_FOR_ROAD           :{BLACK}Construir/remover estradas
-STR_ROAD_TOOLBAR_TOOLTIP_TOGGLE_BUILD_REMOVE_FOR_TRAMWAYS       :{BLACK}Construir/remover linhas de bonde
-STR_ROAD_TOOLBAR_TOOLTIP_CONVERT_ROAD                           :{BLACK}Converter/Atualizar o tipo de estrada. Shift+Clique mostra custo estimado
-STR_ROAD_TOOLBAR_TOOLTIP_CONVERT_TRAM                           :{BLACK}Converter/Atualizar o tipo de bonde. Shift+Clique mostra o custo estimado
+STR_ROAD_TOOLBAR_TOOLTIP_BUILD_ROAD_BRIDGE                      :{BLACK}Construir ponte rodoviária. Pressione também Shift para apenas mostrar o custo estimado
+STR_ROAD_TOOLBAR_TOOLTIP_BUILD_TRAMWAY_BRIDGE                   :{BLACK}Construir ponte para bondes. Pressione também Shift para apenas mostrar o custo estimado
+STR_ROAD_TOOLBAR_TOOLTIP_BUILD_ROAD_TUNNEL                      :{BLACK}Construir túnel rodoviário. Pressione também Shift para apenas mostrar o custo estimado
+STR_ROAD_TOOLBAR_TOOLTIP_BUILD_TRAMWAY_TUNNEL                   :{BLACK}Construir túnel para bondes. Pressione também Shift para apenas mostrar o custo estimado
+STR_ROAD_TOOLBAR_TOOLTIP_TOGGLE_BUILD_REMOVE_FOR_ROAD           :{BLACK}Construir/Remover estradas
+STR_ROAD_TOOLBAR_TOOLTIP_TOGGLE_BUILD_REMOVE_FOR_TRAMWAYS       :{BLACK}Construir/Remover linhas de bonde
+STR_ROAD_TOOLBAR_TOOLTIP_CONVERT_ROAD                           :{BLACK}Converter/Atualizar o tipo de estrada. Pressione também Shift para apenas mostrar o custo estimado
+STR_ROAD_TOOLBAR_TOOLTIP_CONVERT_TRAM                           :{BLACK}Converter/Atualizar o tipo de bonde. Pressione também Shift para apenas mostrar o custo estimado
 
 STR_ROAD_NAME_ROAD                                              :Estrada
 STR_ROAD_NAME_TRAM                                              :Bonde
@@ -2911,12 +2911,12 @@ STR_STATION_BUILD_CARGO_TRAM_ORIENTATION_TOOLTIP                :{BLACK}Selecion
 # Waterways toolbar (last two for SE only)
 STR_WATERWAYS_TOOLBAR_CAPTION                                   :{WHITE}Construção de Hidrovias
 STR_WATERWAYS_TOOLBAR_CAPTION_SE                                :{WHITE}Hidrovias
-STR_WATERWAYS_TOOLBAR_BUILD_CANALS_TOOLTIP                      :{BLACK}Construir canais. Shift+Clique mostra o custo estimado
-STR_WATERWAYS_TOOLBAR_BUILD_LOCKS_TOOLTIP                       :{BLACK}Construir eclusas. Shift+Clique mostra o custo estimado
-STR_WATERWAYS_TOOLBAR_BUILD_DEPOT_TOOLTIP                       :{BLACK}Construir depósito de embarcações (para compra e manutenção de embarcações). Shift+Clique mostra o custo estimado
-STR_WATERWAYS_TOOLBAR_BUILD_DOCK_TOOLTIP                        :{BLACK}Construir doca naval. Ctrl+Clique para selecionar outra estação e unir com esta. Ctrl+Shift+Clique mostra o custo estimado
-STR_WATERWAYS_TOOLBAR_BUOY_TOOLTIP                              :{BLACK}Colocar uma boia que pode ser usada como ponto de controle. Shift+Clique mostra o custo estimado
-STR_WATERWAYS_TOOLBAR_BUILD_AQUEDUCT_TOOLTIP                    :{BLACK}Construir aqueduto. Shift+Clique mostra o custo estimado
+STR_WATERWAYS_TOOLBAR_BUILD_CANALS_TOOLTIP                      :{BLACK}Construir canais. Pressione também Shift para apenas mostrar o custo estimado
+STR_WATERWAYS_TOOLBAR_BUILD_LOCKS_TOOLTIP                       :{BLACK}Construir eclusas. Pressione também Shift para apenas mostrar o custo estimado
+STR_WATERWAYS_TOOLBAR_BUILD_DEPOT_TOOLTIP                       :{BLACK}Construir depósito de embarcações (para compra e manutenção de embarcações). Pressione também Shift para apenas mostrar o custo estimado
+STR_WATERWAYS_TOOLBAR_BUILD_DOCK_TOOLTIP                        :{BLACK}Construir doca naval. Ctrl+Clique para selecionar outra estação e unir com esta. Pressione também Shift para apenas mostrar o custo estimado
+STR_WATERWAYS_TOOLBAR_BUOY_TOOLTIP                              :{BLACK}Colocar uma boia que pode ser usada como ponto de controle. Pressione também Shift para apenas mostrar o custo estimado
+STR_WATERWAYS_TOOLBAR_BUILD_AQUEDUCT_TOOLTIP                    :{BLACK}Construir aqueduto. Pressione também Shift para apenas mostrar o custo estimado
 STR_WATERWAYS_TOOLBAR_CREATE_LAKE_TOOLTIP                       :{BLACK}Construir canal. Usar Ctrl+Clique no nível do mar para inundar com água do mar
 STR_WATERWAYS_TOOLBAR_CREATE_RIVER_TOOLTIP                      :{BLACK}Colocar rios. Ctrl+Clique para selecionar diagonalmente
 
@@ -2929,7 +2929,7 @@ STR_STATION_BUILD_DOCK_CAPTION                                  :{WHITE}Doca
 
 # Airport toolbar
 STR_TOOLBAR_AIRCRAFT_CAPTION                                    :{WHITE}Aeroportos
-STR_TOOLBAR_AIRCRAFT_BUILD_AIRPORT_TOOLTIP                      :{BLACK}Construir aeroporto. Ctrl+Clique para selecionar outro aeroporto e unir com este. Ctrl+Shift+Clique mostra o custo estimado
+STR_TOOLBAR_AIRCRAFT_BUILD_AIRPORT_TOOLTIP                      :{BLACK}Construir aeroporto. Ctrl+Clique para selecionar outro aeroporto e unir com este. Pressione também Shift para apenas mostrar o custo estimado
 
 # Airport construction window
 STR_STATION_BUILD_AIRPORT_CAPTION                               :{WHITE}Seleção de Aeroporto
@@ -2956,14 +2956,14 @@ STR_STATION_BUILD_NOISE                                         :{BLACK}Ruído g
 
 # Landscaping toolbar
 STR_LANDSCAPING_TOOLBAR                                         :{WHITE}Paisagismo
-STR_LANDSCAPING_TOOLTIP_LOWER_A_CORNER_OF_LAND                  :{BLACK}Abaixar um canto do terreno. Clique+Arraste para abaixar o primeiro canto selecionado e nivelar a área selecionada à nova altura do canto. Ctrl+Clique+Arrastar seleciona a área diagonalmente. Ctrl+Shift+Clique+Arrastar mostra o custo estimado
-STR_LANDSCAPING_TOOLTIP_RAISE_A_CORNER_OF_LAND                  :{BLACK}Elevar um canto do terreno. Clique+Arraste para elevar o primeiro canto selecionado e nivelar a área selecionada à nova altura do canto. Ctrl+Clique+Arraste para selecionar a área diagonalmente. Ctrl+Shift+Clique+Arrastar mostra o custo estimado
-STR_LANDSCAPING_LEVEL_LAND_TOOLTIP                              :{BLACK}Nivelar uma área do terreno à altura do primeiro canto selecionado. Ctrl+Clique+Arrastar seleciona a área diagonalmente. Ctrl+Shift+Clique+Arrastar mostra o custo estimado
-STR_LANDSCAPING_TOOLTIP_PURCHASE_LAND                           :{BLACK}Comprar terreno para uso futuro. Ctrl+Clique+Arrastar seleciona a área diagonalmente. Ctrl+Shift+Clique+Arrastar mostra o custo estimado
+STR_LANDSCAPING_TOOLTIP_LOWER_A_CORNER_OF_LAND                  :{BLACK}Abaixar um canto do terreno. Clique+Arraste para abaixar o primeiro canto selecionado e nivelar a área selecionada à nova altura do canto. Ctrl+Clique+Arrastar seleciona a área diagonalmente. Pressione também Shift para apenas mostrar o custo estimado
+STR_LANDSCAPING_TOOLTIP_RAISE_A_CORNER_OF_LAND                  :{BLACK}Elevar um canto do terreno. Clique+Arraste para elevar o primeiro canto selecionado e nivelar a área selecionada à nova altura do canto. Ctrl+Clique+Arraste para selecionar a área diagonalmente. Pressione também Shift para apenas mostrar o custo estimado
+STR_LANDSCAPING_LEVEL_LAND_TOOLTIP                              :{BLACK}Nivelar uma área do terreno à altura do primeiro canto selecionado. Ctrl+Clique+Arrastar seleciona a área diagonalmente. Pressione também Shift para apenas mostrar o custo estimado
+STR_LANDSCAPING_TOOLTIP_PURCHASE_LAND                           :{BLACK}Comprar terreno para uso futuro. Ctrl+Clique+Arrastar seleciona a área diagonalmente. Pressione também Shift para apenas mostrar o custo estimado
 
 # Object construction window
 STR_OBJECT_BUILD_CAPTION                                        :{WHITE}Seleção de Objeto
-STR_OBJECT_BUILD_TOOLTIP                                        :{BLACK}Selecionar objeto para construir. Ctrl+Clique+Arrastar seleciona a área diagonalmente. Ctrl+Shift+Clique+Arrastar mostra o custo estimado
+STR_OBJECT_BUILD_TOOLTIP                                        :{BLACK}Selecionar objeto para construir. Ctrl+Clique+Arrastar seleciona a área diagonalmente. Pressione também Shift para apenas mostrar o custo estimado
 STR_OBJECT_BUILD_CLASS_TOOLTIP                                  :{BLACK}Selecionar classe do objeto para construir
 STR_OBJECT_BUILD_PREVIEW_TOOLTIP                                :{BLACK}Pré-visualização do objeto
 STR_OBJECT_BUILD_SIZE                                           :{BLACK}Tamanho: {GOLD}{NUM} x {NUM} quadrados
@@ -2975,7 +2975,7 @@ STR_OBJECT_CLASS_TRNS                                           :Transmissores
 STR_PLANT_TREE_CAPTION                                          :{WHITE}Árvores
 STR_PLANT_TREE_TOOLTIP                                          :{BLACK}Escolher tipo de árvore para plantar. Se no quadrado já existir uma árvore, serão adicionadas mais árvores de diferentes tipos, ignorando o tipo selecionado
 STR_TREES_RANDOM_TYPE                                           :{BLACK}Árvores de tipo aleatório
-STR_TREES_RANDOM_TYPE_TOOLTIP                                   :{BLACK}Plantar árvores de tipo aleatório. Ctrl+Clique+Arraste para selecionar a área diagonalmente. Ctrl+Shift+Clique+Arrastar mostra o custo estimado
+STR_TREES_RANDOM_TYPE_TOOLTIP                                   :{BLACK}Plantar árvores de tipo aleatório. Ctrl+Clique+Arraste para selecionar a área diagonalmente. Pressione também Shift para apenas mostrar o custo estimado
 STR_TREES_RANDOM_TREES_BUTTON                                   :{BLACK}Plantar Aleatoriamente
 STR_TREES_RANDOM_TREES_TOOLTIP                                  :{BLACK}Plantar árvores aleatoriamente no terreno
 STR_TREES_MODE_NORMAL_BUTTON                                    :{BLACK}Normal
@@ -3002,7 +3002,7 @@ STR_RESET_LANDSCAPE_CONFIRMATION_TEXT                           :{WHITE}Você te
 # Town generation window (SE)
 STR_FOUND_TOWN_CAPTION                                          :{WHITE}Geração de Localidades
 STR_FOUND_TOWN_NEW_TOWN_BUTTON                                  :{BLACK}Nova Localidade
-STR_FOUND_TOWN_NEW_TOWN_TOOLTIP                                 :{BLACK}Fundar nova localidade. Shift+Clique mostra o custo estimado
+STR_FOUND_TOWN_NEW_TOWN_TOOLTIP                                 :{BLACK}Fundar nova localidade. Pressione também Shift para apenas mostrar o custo estimado
 STR_FOUND_TOWN_RANDOM_TOWN_BUTTON                               :{BLACK}Localidade Aleatória
 STR_FOUND_TOWN_RANDOM_TOWN_TOOLTIP                              :{BLACK}Fundar localidade em um local aleatório
 STR_FOUND_TOWN_MANY_RANDOM_TOWNS                                :{BLACK}Várias localidades aleatórias
@@ -3428,7 +3428,7 @@ STR_NEWGRF_SETTINGS_FILE_TOOLTIP                                :{BLACK}Uma list
 STR_NEWGRF_SETTINGS_SET_PARAMETERS                              :{BLACK}Definir parâmetros
 STR_NEWGRF_SETTINGS_SHOW_PARAMETERS                             :{BLACK}Mostrar parâmetros
 STR_NEWGRF_SETTINGS_TOGGLE_PALETTE                              :{BLACK}Alternar paleta
-STR_NEWGRF_SETTINGS_TOGGLE_PALETTE_TOOLTIP                      :{BLACK}Ativar/desativar a paleta de NewGRF selecionado.{}Faça isso quando os gráficos deste NewGRF ficarem cor de rosa no jogo
+STR_NEWGRF_SETTINGS_TOGGLE_PALETTE_TOOLTIP                      :{BLACK}Ativar/Desativar a paleta de NewGRF selecionado.{}Faça isso quando os gráficos deste NewGRF ficarem cor de rosa no jogo
 STR_NEWGRF_SETTINGS_APPLY_CHANGES                               :{BLACK}Aplicar alterações
 
 STR_NEWGRF_SETTINGS_FIND_MISSING_CONTENT_BUTTON                 :{BLACK}Procurar o conteúdo online
@@ -3545,7 +3545,7 @@ STR_NEWGRF_CONFIRMATION_TEXT                                    :{YELLOW}Você e
 
 STR_NEWGRF_DUPLICATE_GRFID                                      :{WHITE}Não é possível adicionar arquivo: ID do GRF duplicado
 STR_NEWGRF_COMPATIBLE_LOADED                                    :{ORANGE}Arquivo correspondente não encontrado (GRF compatível carregado)
-STR_NEWGRF_TOO_MANY_NEWGRFS                                     :{WHITE}Não é possível adicionar arquivo: limite de NewGRF's atingido
+STR_NEWGRF_TOO_MANY_NEWGRFS                                     :{WHITE}Não é possível adicionar arquivo: limite de NewGRFs atingido
 
 STR_NEWGRF_COMPATIBLE_LOAD_WARNING                              :{WHITE}GRF(s) compatíveis foram carregados para os arquivos ausentes
 STR_NEWGRF_DISABLED_WARNING                                     :{WHITE}Arquivo(s) GRF ausentes foram desativados
@@ -3897,7 +3897,7 @@ STR_COMPANY_VIEW_BUILD_HQ_TOOLTIP                               :{BLACK}Construi
 STR_COMPANY_VIEW_VIEW_HQ_BUTTON                                 :{BLACK}Ver sede
 STR_COMPANY_VIEW_VIEW_HQ_TOOLTIP                                :{BLACK}Ver sede da empresa
 STR_COMPANY_VIEW_RELOCATE_HQ                                    :{BLACK}Mover sede
-STR_COMPANY_VIEW_RELOCATE_COMPANY_HEADQUARTERS                  :{BLACK}Reconstruir sede da empresa em outro local por 1% do valor da empresa. Shift+Clique mostra o custo estimado
+STR_COMPANY_VIEW_RELOCATE_COMPANY_HEADQUARTERS                  :{BLACK}Reconstruir sede da empresa em outro local por 1% do valor da empresa. Pressione também Shift para apenas mostrar o custo estimado
 STR_COMPANY_VIEW_INFRASTRUCTURE_BUTTON                          :{BLACK}Detalhes
 STR_COMPANY_VIEW_INFRASTRUCTURE_TOOLTIP                         :{BLACK}Ver contagens detalhadas da infraestrutura
 STR_COMPANY_VIEW_GIVE_MONEY_BUTTON                              :{BLACK}Dar dinheiro
@@ -4116,16 +4116,16 @@ STR_BUY_VEHICLE_SHIP_BUY_REFIT_VEHICLE_BUTTON                   :{BLACK}Comprar 
 STR_BUY_VEHICLE_AIRCRAFT_BUY_REFIT_VEHICLE_BUTTON               :{BLACK}Comprar e Adaptar Aeronaves
 
 ###length VEHICLE_TYPES
-STR_BUY_VEHICLE_TRAIN_BUY_VEHICLE_TOOLTIP                       :{BLACK}Comprar o veículo ferroviário selecionado. Shift+Clique mostra o custo estimado
-STR_BUY_VEHICLE_ROAD_VEHICLE_BUY_VEHICLE_TOOLTIP                :{BLACK}Comprar o veículo rodoviário selecionado. Shift+Clique mostra o custo estimado
-STR_BUY_VEHICLE_SHIP_BUY_VEHICLE_TOOLTIP                        :{BLACK}Comprar a embarcação selecionada. Shift+Clique mostra o custo estimado
-STR_BUY_VEHICLE_AIRCRAFT_BUY_VEHICLE_TOOLTIP                    :{BLACK}Comprar aeronave selecionada. Shift+Clique mostra o custo estimado
+STR_BUY_VEHICLE_TRAIN_BUY_VEHICLE_TOOLTIP                       :{BLACK}Comprar o veículo ferroviário selecionado. Pressione também Shift para apenas mostrar o custo estimado
+STR_BUY_VEHICLE_ROAD_VEHICLE_BUY_VEHICLE_TOOLTIP                :{BLACK}Comprar o veículo rodoviário selecionado. Pressione também Shift para apenas mostrar o custo estimado
+STR_BUY_VEHICLE_SHIP_BUY_VEHICLE_TOOLTIP                        :{BLACK}Comprar a embarcação selecionada. Pressione também Shift para apenas mostrar o custo estimado
+STR_BUY_VEHICLE_AIRCRAFT_BUY_VEHICLE_TOOLTIP                    :{BLACK}Comprar aeronave selecionada. Pressione também Shift para apenas mostrar o custo estimado
 
 ###length VEHICLE_TYPES
-STR_BUY_VEHICLE_TRAIN_BUY_REFIT_VEHICLE_TOOLTIP                 :{BLACK}Comprar e adaptar o veículo ferroviário selecionado. Shift+Clique mostra o custo estimado
-STR_BUY_VEHICLE_ROAD_VEHICLE_BUY_REFIT_VEHICLE_TOOLTIP          :{BLACK}Comprar e adaptar o veículo rodoviário selecionado. Shift+Clique mostra o custo estimado
-STR_BUY_VEHICLE_SHIP_BUY_REFIT_VEHICLE_TOOLTIP                  :{BLACK}Comprar e adaptar a embarcação selecionada. Shift+Clique mostra o custo estimado
-STR_BUY_VEHICLE_AIRCRAFT_BUY_REFIT_VEHICLE_TOOLTIP              :{BLACK}Comprar e adaptar a aeronave selecionada. Shift+Clique mostra o custo estimado
+STR_BUY_VEHICLE_TRAIN_BUY_REFIT_VEHICLE_TOOLTIP                 :{BLACK}Comprar e adaptar o veículo ferroviário selecionado. Pressione também Shift para apenas mostrar o custo estimado
+STR_BUY_VEHICLE_ROAD_VEHICLE_BUY_REFIT_VEHICLE_TOOLTIP          :{BLACK}Comprar e adaptar o veículo rodoviário selecionado. Pressione também Shift para apenas mostrar o custo estimado
+STR_BUY_VEHICLE_SHIP_BUY_REFIT_VEHICLE_TOOLTIP                  :{BLACK}Comprar e adaptar a embarcação selecionada. Pressione também Shift para apenas mostrar o custo estimado
+STR_BUY_VEHICLE_AIRCRAFT_BUY_REFIT_VEHICLE_TOOLTIP              :{BLACK}Comprar e adaptar a aeronave selecionada. Pressione também Shift para apenas mostrar o custo estimado
 
 ###length VEHICLE_TYPES
 STR_BUY_VEHICLE_TRAIN_RENAME_BUTTON                             :{BLACK}Renomear
@@ -4152,10 +4152,10 @@ STR_BUY_VEHICLE_SHIP_SHOW_TOGGLE_BUTTON                         :{BLACK}Mostrar
 STR_BUY_VEHICLE_AIRCRAFT_SHOW_TOGGLE_BUTTON                     :{BLACK}Mostrar
 
 ###length VEHICLE_TYPES
-STR_BUY_VEHICLE_TRAIN_HIDE_SHOW_TOGGLE_TOOLTIP                  :{BLACK}Mostrar/ocultar o tipo de veículo ferroviário
-STR_BUY_VEHICLE_ROAD_VEHICLE_HIDE_SHOW_TOGGLE_TOOLTIP           :{BLACK}Mostrar/ocultar o tipo de veículo rodoviário
-STR_BUY_VEHICLE_SHIP_HIDE_SHOW_TOGGLE_TOOLTIP                   :{BLACK}Mostrar/ocultar o tipo de embarcação
-STR_BUY_VEHICLE_AIRCRAFT_HIDE_SHOW_TOGGLE_TOOLTIP               :{BLACK}Mostrar/ocultar o tipo de aeronave
+STR_BUY_VEHICLE_TRAIN_HIDE_SHOW_TOGGLE_TOOLTIP                  :{BLACK}Mostrar/Ocultar tipo de veículo ferroviário
+STR_BUY_VEHICLE_ROAD_VEHICLE_HIDE_SHOW_TOGGLE_TOOLTIP           :{BLACK}Mostrar/Ocultar tipo de veículo rodoviário
+STR_BUY_VEHICLE_SHIP_HIDE_SHOW_TOGGLE_TOOLTIP                   :{BLACK}Mostrar/Ocultar tipo de embarcação
+STR_BUY_VEHICLE_AIRCRAFT_HIDE_SHOW_TOGGLE_TOOLTIP               :{BLACK}Mostrar/Ocultar tipo de aeronave
 
 ###length VEHICLE_TYPES
 STR_QUERY_RENAME_TRAIN_TYPE_CAPTION                             :{WHITE}Renomear tipo de veículo ferroviário
@@ -4217,10 +4217,10 @@ STR_DEPOT_CLONE_SHIP                                            :{BLACK}Clonar E
 STR_DEPOT_CLONE_AIRCRAFT                                        :{BLACK}Clonar Aeronave
 
 ###length VEHICLE_TYPES
-STR_DEPOT_CLONE_TRAIN_DEPOT_INFO                                :{BLACK}Comprar uma cópia de um trem incluindo todos os vagões. Clique nesse botão e depois em um trem que estiver dentro ou fora de um depósito. Ctrl+Clique compartilha as ordens. Ctrl+Shift+Clique mostra o custo estimado
-STR_DEPOT_CLONE_ROAD_VEHICLE_DEPOT_INFO                         :{BLACK}Comprar uma cópia de um veículo rodoviário. Clique nesse botão e depois em um veículo que estiver dentro ou fora de um depósito. Ctrl+Clique compartilha as ordens. Ctrl+Shift+Clique mostra o custo estimado
-STR_DEPOT_CLONE_SHIP_DEPOT_INFO                                 :{BLACK}Comprar uma cópia de uma embarcação. Clique nesse botão e depois em uma embarcação que estiver dentro ou fora de um depósito. Ctrl+Clique compartilha as ordens. Ctrl+Shift+Clique mostra o custo estimado
-STR_DEPOT_CLONE_AIRCRAFT_INFO_HANGAR_WINDOW                     :{BLACK}Comprar uma cópia de uma aeronave. Clique nesse botão e depois em uma aeronave que estiver dentro ou fora de um hangar. Ctrl+Clique compartilha as ordens. Ctrl+Shift+Clique  mostra o custo estimado
+STR_DEPOT_CLONE_TRAIN_DEPOT_INFO                                :{BLACK}Comprar uma cópia de um trem incluindo todos os vagões. Clique nesse botão e depois em um trem que estiver dentro ou fora de um depósito. Ctrl+Clique compartilha as ordens. Pressione também Shift para apenas mostrar o custo estimado
+STR_DEPOT_CLONE_ROAD_VEHICLE_DEPOT_INFO                         :{BLACK}Comprar uma cópia de um veículo rodoviário. Clique nesse botão e depois em um veículo que estiver dentro ou fora de um depósito. Ctrl+Clique compartilha as ordens. Pressione também Shift para apenas mostrar o custo estimado
+STR_DEPOT_CLONE_SHIP_DEPOT_INFO                                 :{BLACK}Comprar uma cópia de uma embarcação. Clique nesse botão e depois em uma embarcação que estiver dentro ou fora de um depósito. Ctrl+Clique compartilha as ordens. Pressione também Shift para apenas mostrar o custo estimado
+STR_DEPOT_CLONE_AIRCRAFT_INFO_HANGAR_WINDOW                     :{BLACK}Comprar uma cópia de uma aeronave. Clique nesse botão e depois em uma aeronave que estiver dentro ou fora de um hangar. Ctrl+Clique compartilha as ordens. Pressione também Shift para apenas mostrar o custo estimado
 
 ###length VEHICLE_TYPES
 STR_DEPOT_TRAIN_LOCATION_TOOLTIP                                :{BLACK}Centralizar visualização na localização do depósito ferroviário. Ctrl+Clique abre uma nova visualização na localização do depósito ferroviário
@@ -4344,10 +4344,10 @@ STR_VEHICLE_VIEW_SHIP_SEND_TO_DEPOT_TOOLTIP                     :{BLACK}Enviar e
 STR_VEHICLE_VIEW_AIRCRAFT_SEND_TO_DEPOT_TOOLTIP                 :{BLACK}Enviar aeronave para o hangar. Ctrl+Clique fará apenas manutenção
 
 ###length VEHICLE_TYPES
-STR_VEHICLE_VIEW_CLONE_TRAIN_INFO                               :{BLACK}Comprar uma cópia do trem incluindo todos os vagões. Ctrl+Clique compartilha as ordens. Ctrl+Shift+Clique mostra o custo estimado
-STR_VEHICLE_VIEW_CLONE_ROAD_VEHICLE_INFO                        :{BLACK}Comprar uma cópia do veículo rodoviário. Ctrl+Clique compartilha as ordens. Ctrl+Shift+Clique mostra o custo estimado
-STR_VEHICLE_VIEW_CLONE_SHIP_INFO                                :{BLACK}Comprar uma cópia da embarcação. Ctrl+Clique compartilha as ordens. Ctrl+Shift+Clique mostra o custo estimado
-STR_VEHICLE_VIEW_CLONE_AIRCRAFT_INFO                            :{BLACK}Comprar uma cópia da aeronave. Ctrl+Clique compartilha as ordens. Ctrl+Shift+Clique mostra o custo estimado
+STR_VEHICLE_VIEW_CLONE_TRAIN_INFO                               :{BLACK}Comprar uma cópia do trem incluindo todos os vagões. Ctrl+Clique compartilha as ordens. Pressione também Shift para apenas mostrar o custo estimado
+STR_VEHICLE_VIEW_CLONE_ROAD_VEHICLE_INFO                        :{BLACK}Comprar uma cópia do veículo rodoviário. Ctrl+Clique compartilha as ordens. Pressione também Shift para apenas mostrar o custo estimado
+STR_VEHICLE_VIEW_CLONE_SHIP_INFO                                :{BLACK}Comprar uma cópia da embarcação. Ctrl+Clique compartilha as ordens. Pressione também Shift para apenas mostrar o custo estimado
+STR_VEHICLE_VIEW_CLONE_AIRCRAFT_INFO                            :{BLACK}Comprar uma cópia da aeronave. Ctrl+Clique compartilha as ordens. Pressione também Shift para apenas mostrar o custo estimado
 
 STR_VEHICLE_VIEW_TRAIN_IGNORE_SIGNAL_TOOLTIP                    :{BLACK}Forçar o trem a prosseguir sem aguardar o sinal de liberação
 STR_VEHICLE_VIEW_TRAIN_REVERSE_TOOLTIP                          :{BLACK}Inverter a direção do trem
@@ -4771,7 +4771,7 @@ STR_AI_DEBUG_SETTINGS                                           :{BLACK}Definiç
 STR_AI_DEBUG_SETTINGS_TOOLTIP                                   :{BLACK}Alterar as configurações do script
 STR_AI_DEBUG_RELOAD                                             :{BLACK}Recarregar IA
 STR_AI_DEBUG_RELOAD_TOOLTIP                                     :{BLACK}Interromper a IA, recarregar o script e reiniciar a IA
-STR_AI_DEBUG_BREAK_STR_ON_OFF_TOOLTIP                           :{BLACK}Ativar/desativar pausa quando uma mensagem de registo da IA corresponder à sequência de pausa
+STR_AI_DEBUG_BREAK_STR_ON_OFF_TOOLTIP                           :{BLACK}Ativar/Desativar pausa quando uma mensagem de registo da IA corresponder à sequência de pausa
 STR_AI_DEBUG_BREAK_ON_LABEL                                     :{BLACK}Parar em:
 STR_AI_DEBUG_BREAK_STR_OSKTITLE                                 :{BLACK}Parar em
 STR_AI_DEBUG_BREAK_STR_TOOLTIP                                  :{BLACK}Quando uma mensagem de registo da IA for igual a esta sequência, o jogo é pausado
@@ -4806,7 +4806,7 @@ STR_AI_CONFIG_MOVE_DOWN_TOOLTIP                                 :{BLACK}Mover a 
 
 STR_AI_CONFIG_GAMESCRIPT                                        :{SILVER}Script de Jogo
 STR_AI_CONFIG_GAMESCRIPT_PARAM                                  :{SILVER}Parâmetros
-STR_AI_CONFIG_AI                                                :{SILVER}IAs
+STR_AI_CONFIG_AI                                                :{SILVER}IA's
 
 STR_AI_CONFIG_CHANGE_AI                                         :{BLACK}Selecionar IA
 STR_AI_CONFIG_CHANGE_GAMESCRIPT                                 :{BLACK}Selecionar Script de Jogo
