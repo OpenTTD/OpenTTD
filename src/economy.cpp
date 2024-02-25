@@ -430,17 +430,13 @@ void ChangeOwnershipOfCompanyItems(Owner old_owner, Owner new_owner)
 	}
 
 	{
-		FreeUnitIDGenerator unitidgen[] = {
-			FreeUnitIDGenerator(VEH_TRAIN, new_owner), FreeUnitIDGenerator(VEH_ROAD,     new_owner),
-			FreeUnitIDGenerator(VEH_SHIP,  new_owner), FreeUnitIDGenerator(VEH_AIRCRAFT, new_owner)
-		};
+		Company *new_company = new_owner == INVALID_OWNER ? nullptr : Company::Get(new_owner);
 
 		/* Override company settings to new company defaults in case we need to convert them.
 		 * This is required as the CmdChangeServiceInt doesn't copy the supplied value when it is non-custom
 		 */
 		if (new_owner != INVALID_OWNER) {
 			Company *old_company = Company::Get(old_owner);
-			Company *new_company = Company::Get(new_owner);
 
 			old_company->settings.vehicle.servint_aircraft = new_company->settings.vehicle.servint_aircraft;
 			old_company->settings.vehicle.servint_trains = new_company->settings.vehicle.servint_trains;
@@ -457,8 +453,6 @@ void ChangeOwnershipOfCompanyItems(Owner old_owner, Owner new_owner)
 				 * This prevents invalid values on mismatching company defaults being accepted.
 				 */
 				if (!v->ServiceIntervalIsCustom()) {
-					Company *new_company = Company::Get(new_owner);
-
 					/* Technically, passing the interval is not needed as the command will query the default value itself.
 					 * However, do not rely on that behaviour.
 					 */
@@ -477,7 +471,8 @@ void ChangeOwnershipOfCompanyItems(Owner old_owner, Owner new_owner)
 				}
 				if (v->IsPrimaryVehicle()) {
 					GroupStatistics::CountVehicle(v, 1);
-					v->unitnumber = unitidgen[v->type].NextID();
+					auto &unitidgen = new_company->freeunits[v->type];
+					v->unitnumber = unitidgen.UseID(unitidgen.NextID());
 				}
 
 				/* Invalidate the vehicle's cargo payment "owner cache". */

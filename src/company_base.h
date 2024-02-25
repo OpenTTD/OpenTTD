@@ -49,6 +49,19 @@ struct CompanyInfrastructure {
 	uint32_t GetTramTotal() const;
 };
 
+class FreeUnitIDGenerator {
+public:
+	UnitID NextID() const;
+	UnitID UseID(UnitID index);
+	void ReleaseID(UnitID index);
+
+private:
+	using BitmapStorage = size_t;
+	static constexpr size_t BITMAP_SIZE = std::numeric_limits<BitmapStorage>::digits;
+
+	std::vector<BitmapStorage> used_bitmap;
+};
+
 typedef Pool<Company, CompanyID, 1, MAX_COMPANIES> CompanyPool;
 extern CompanyPool _company_pool;
 
@@ -128,6 +141,8 @@ struct Company : CompanyProperties, CompanyPool::PoolItem<&_company_pool> {
 	GroupStatistics group_default[VEH_COMPANY_END];  ///< NOSAVE: Statistics for the DEFAULT_GROUP group.
 
 	CompanyInfrastructure infrastructure; ///< NOSAVE: Counts of company owned infrastructure.
+
+	FreeUnitIDGenerator freeunits[VEH_COMPANY_END];
 
 	Money GetMaxLoan() const;
 
