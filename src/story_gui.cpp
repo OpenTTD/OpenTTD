@@ -495,12 +495,12 @@ protected:
 	 * Get the total height of the content displayed in this window.
 	 * @return the height in pixels
 	 */
-	uint GetContentHeight()
+	int32_t GetContentHeight()
 	{
 		this->EnsureStoryPageElementLayout();
 
 		/* The largest bottom coordinate of any element is the height of the content */
-		uint max_y = std::accumulate(this->layout_cache.begin(), this->layout_cache.end(), 0, [](uint max_y, const LayoutCacheElement &ce) -> uint { return std::max<uint>(max_y, ce.bounds.bottom); });
+		int32_t max_y = std::accumulate(this->layout_cache.begin(), this->layout_cache.end(), 0, [](int32_t max_y, const LayoutCacheElement &ce) -> int32_t { return std::max<int32_t>(max_y, ce.bounds.bottom); });
 
 		return max_y;
 	}
