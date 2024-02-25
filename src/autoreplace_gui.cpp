@@ -33,7 +33,7 @@
 
 #include "safeguards.h"
 
-void DrawEngineList(VehicleType type, const Rect &r, const GUIEngineList &eng_list, uint16_t min, uint16_t max, EngineID selected_id, bool show_count, GroupID selected_group);
+void DrawEngineList(VehicleType type, const Rect &r, const GUIEngineList &eng_list, const Scrollbar &sb, EngineID selected_id, bool show_count, GroupID selected_group);
 
 static bool EngineNumberSorter(const GUIEngineListItem &a, const GUIEngineListItem &b)
 {
@@ -487,11 +487,9 @@ public:
 			case WID_RV_LEFT_MATRIX:
 			case WID_RV_RIGHT_MATRIX: {
 				int side = (widget == WID_RV_LEFT_MATRIX) ? 0 : 1;
-				EngineID start  = static_cast<EngineID>(this->vscroll[side]->GetPosition()); // what is the offset for the start (scrolling)
-				EngineID end    = static_cast<EngineID>(std::min<size_t>(this->vscroll[side]->GetCapacity() + start, this->engines[side].size()));
 
 				/* Do the actual drawing */
-				DrawEngineList((VehicleType)this->window_number, r, this->engines[side], start, end, this->sel_engine[side], side == 0, this->sel_group);
+				DrawEngineList((VehicleType)this->window_number, r, this->engines[side], *this->vscroll[side], this->sel_engine[side], side == 0, this->sel_group);
 				break;
 			}
 		}
