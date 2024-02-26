@@ -252,7 +252,7 @@ public:
 			path_found = pf.FindPath(v);
 			Node *node = pf.GetBestNode();
 			if (attempt == 0 && !path_found) continue; // Try again with restricted search area.
-			if (!path_found || node == nullptr) GetRandomFollowUpTrackdir(v, src_tile, trackdir, true);
+			if (!path_found || node == nullptr) return GetRandomFollowUpTrackdir(v, src_tile, trackdir, true);
 
 			/* Return only the path within the current water region if an intermediate destination was returned. If not, cache the entire path
 			 * to the final destination tile. The low-level pathfinder might actually prefer a different docking tile in a nearby region. Without
