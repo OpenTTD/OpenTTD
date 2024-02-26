@@ -834,6 +834,20 @@ public:
 	int GetScrolledRowFromWidget(int clickpos, const Window * const w, WidgetID widget, int padding = 0, int line_height = -1) const;
 
 	/**
+	 * Get a pair of iterators for the range of visible elements in a container.
+	 * @param container Container of elements represented by the scrollbar.
+	 * @returns Pair of iterators of visible elements.
+	 */
+	template <typename Tcontainer>
+	auto GetVisibleRangeIterators(Tcontainer &container) const
+	{
+		assert(this->GetCount() == container.size()); // Scrollbar and container size must match.
+		auto first = std::next(std::begin(container), this->GetPosition());
+		auto last = std::next(first, std::min<size_t>(this->GetCapacity(), this->GetCount() - this->GetPosition()));
+		return std::make_pair(first, last);
+	}
+
+	/**
 	 * Return an iterator pointing to the element of a scrolled widget that a user clicked in.
 	 * @param container   Container of elements represented by the scrollbar.
 	 * @param clickpos    Vertical position of the mouse click (without taking scrolling into account).
