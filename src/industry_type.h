@@ -26,12 +26,12 @@ static const IndustryType NEW_INDUSTRYOFFSET     = 37;                ///< origi
 static const IndustryType NUM_INDUSTRYTYPES      = 240;               ///< total number of industry types, new and old; limited to 240 because we need some special ids like INVALID_INDUSTRYTYPE, IT_AI_UNKNOWN, IT_AI_TOWN, ...
 static const IndustryType INVALID_INDUSTRYTYPE   = NUM_INDUSTRYTYPES; ///< one above amount is considered invalid
 
-static const IndustryGfx  NUM_INDUSTRYTILES_PER_GRF = 255;            ///< Maximum number of industry tiles per NewGRF; limited to 255 to allow extending Action3 with an extended byte later on.
-
 static const IndustryGfx  INDUSTRYTILE_NOANIM    = 0xFF;              ///< flag to mark industry tiles as having no animation
 static const IndustryGfx  NEW_INDUSTRYTILEOFFSET = 175;               ///< original number of tiles
 static const IndustryGfx  NUM_INDUSTRYTILES      = 512;               ///< total number of industry tiles, new and old
 static const IndustryGfx  INVALID_INDUSTRYTILE   = NUM_INDUSTRYTILES; ///< one above amount is considered invalid
+
+static const IndustryGfx  NUM_INDUSTRYTILES_PER_GRF = NUM_INDUSTRYTILES - NEW_INDUSTRYTILEOFFSET; ///< Maximum number of industry tiles per NewGRF.
 
 static const int INDUSTRY_COMPLETED = 3; ///< final stage of industry construction.
 
