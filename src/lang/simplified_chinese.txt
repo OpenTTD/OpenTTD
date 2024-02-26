@@ -1494,7 +1494,7 @@ STR_CONFIG_SETTING_NEVER_EXPIRE_VEHICLES                        :载具永不过
 STR_CONFIG_SETTING_NEVER_EXPIRE_VEHICLES_HELPTEXT               :启用时，所有载具一经面世，就可以永远选择购买使用。
 
 STR_CONFIG_SETTING_TIMEKEEPING_UNITS                            :时间模式：{STRING}
-STR_CONFIG_SETTING_TIMEKEEPING_UNITS_HELPTEXT                   :选择游戏的计时模式。 请注意此项无法在游戏进行时更改{}{}日历模式为经典的 OpenTTD 体验，在此模式中，一年由 12 个月组成，每个月有 28-31 天。{}{}在挂钟模式中，车辆移动、货物生产和财务计算等都以分钟为单位，一分钟约等于日历模式中的一个月，即 30 天。此模式下每12分钟即日历模式下的一年。{}{}两种模式都包含一个用来记录载具、房屋与其他基础设施引入日期的计时器。
+STR_CONFIG_SETTING_TIMEKEEPING_UNITS_HELPTEXT                   :选择游戏的计时模式。 请注意此项无法在游戏进行时更改{}{}日历模式为经典的 OpenTTD 体验，在此模式中，一年由 12 个月组成，每个月有 28-31 天。{}{}在挂钟模式中，车辆移动、货物生产和财务计算等都以分钟为单位，一分钟约等于日历模式中的一个月，即 30 天。此模式下每 12 分钟即日历模式下的一年。{}{}两种模式都包含一个用来记录载具、房屋与其他基础设施引入日期的计时器。
 ###length 2
 STR_CONFIG_SETTING_TIMEKEEPING_UNITS_CALENDAR                   :日历
 STR_CONFIG_SETTING_TIMEKEEPING_UNITS_WALLCLOCK                  :挂钟
@@ -2791,7 +2791,7 @@ STR_RAIL_TOOLBAR_TOOLTIP_BUILD_RAILROAD_STATION                 :{BLACK}建设�
 STR_RAIL_TOOLBAR_TOOLTIP_BUILD_RAILROAD_SIGNALS                 :{BLACK}建设铁路信号。建筑时按住 <Ctrl> 键单击以对信号应用不同风格样式。{}在建设时拖拽以在拖拽区间内按照设定的信号间距均匀建设信号。按住 <Ctrl> 键拖拽以按设定的检举建设信号至下一个岔道 / 车站 / 信号。按住 <Shift> 以显示预计费用。
 STR_RAIL_TOOLBAR_TOOLTIP_BUILD_RAILROAD_BRIDGE                  :{BLACK}建设铁路桥梁。按住 <Shift> 键显示预计费用。
 STR_RAIL_TOOLBAR_TOOLTIP_BUILD_RAILROAD_TUNNEL                  :{BLACK}建设铁路隧道。按住 <Shift> 键以显示预计费用。
-STR_RAIL_TOOLBAR_TOOLTIP_TOGGLE_BUILD_REMOVE_FOR                :{BLACK}切换建设/拆除轨道、信号灯、路点和车站。按住 Ctrl 键可在移除路点和车站时同时移除轨道。
+STR_RAIL_TOOLBAR_TOOLTIP_TOGGLE_BUILD_REMOVE_FOR                :{BLACK}切换建筑 / 拆除铁轨、信号机、路点以及车站。按住 <Ctrl> 键点选以同时移除路点及车站中的铁轨
 STR_RAIL_TOOLBAR_TOOLTIP_CONVERT_RAIL                           :{BLACK}转换/升级 铁路类型。按住 Shift 键显示预计费用。
 
 STR_RAIL_NAME_RAILROAD                                          :铁路
@@ -2914,7 +2914,7 @@ STR_WATERWAYS_TOOLBAR_BUILD_CANALS_TOOLTIP                      :{BLACK}修建�
 STR_WATERWAYS_TOOLBAR_BUILD_LOCKS_TOOLTIP                       :{BLACK}建设船闸。按住 <Shift> 键点选以显示预计费用。
 STR_WATERWAYS_TOOLBAR_BUILD_DEPOT_TOOLTIP                       :{BLACK}建造船坞（可以购买或保养船只），按住 <Shift> 键以显示预计费用。
 STR_WATERWAYS_TOOLBAR_BUILD_DOCK_TOOLTIP                        :{BLACK}建造码头。按住 <Ctrl> 键以合并车站，按住 Shift 键以显示预计费用。
-STR_WATERWAYS_TOOLBAR_BUOY_TOOLTIP                              :{BLACK}放置一个浮标，该浮标可以用作路点，按住 Shift 键操作可以显示所需资金
+STR_WATERWAYS_TOOLBAR_BUOY_TOOLTIP                              :{BLACK}放置一个浮标，可以用作路点。按住 <Shift> 键操作以显示预计费用
 STR_WATERWAYS_TOOLBAR_BUILD_AQUEDUCT_TOOLTIP                    :{BLACK}建设渡槽，按住 Shift 键操作可以显示所需资金
 STR_WATERWAYS_TOOLBAR_CREATE_LAKE_TOOLTIP                       :{BLACK}修建运河。在海平面按住 <Ctrl> 键则会淹没周围土地。
 STR_WATERWAYS_TOOLBAR_CREATE_RIVER_TOOLTIP                      :{BLACK}放置河流。按住 <Ctrl> 键以沿对角线放置。
@@ -2974,7 +2974,7 @@ STR_OBJECT_CLASS_TRNS                                           :发射机
 STR_PLANT_TREE_CAPTION                                          :{WHITE}树木
 STR_PLANT_TREE_TOOLTIP                                          :{BLACK}选择要种植的树木类型。如果格子内已经有树木，将种植随机类型的树木
 STR_TREES_RANDOM_TYPE                                           :{BLACK}随机类型的树木
-STR_TREES_RANDOM_TYPE_TOOLTIP                                   :{BLACK}种植随机类型的树木。按 Ctrl 键沿对角线建造，按住 Shift 键可以显示所需资金
+STR_TREES_RANDOM_TYPE_TOOLTIP                                   :{BLACK}种植随机类型的树木。按 <Ctrl> 键操作以沿对角线建造，按住 <Shift> 键以显示预计费用
 STR_TREES_RANDOM_TREES_BUTTON                                   :{BLACK}随机树木
 STR_TREES_RANDOM_TREES_TOOLTIP                                  :{BLACK}随机地种植一些树木
 STR_TREES_MODE_NORMAL_BUTTON                                    :{BLACK}正常
@@ -3877,10 +3877,10 @@ STR_COMPANY_VIEW_PRESIDENT_MANAGER_TITLE                        :{WHITE}{PRESIDE
 STR_COMPANY_VIEW_INAUGURATED_TITLE                              :{GOLD}开业时间：{WHITE}{NUM}
 STR_COMPANY_VIEW_COLOUR_SCHEME_TITLE                            :{GOLD}色彩方案：
 STR_COMPANY_VIEW_VEHICLES_TITLE                                 :{GOLD}载具总数：
-STR_COMPANY_VIEW_TRAINS                                         :{WHITE}{COMMA} 列火车
-STR_COMPANY_VIEW_ROAD_VEHICLES                                  :{WHITE}{COMMA} 辆汽车
-STR_COMPANY_VIEW_AIRCRAFT                                       :{WHITE}{COMMA} 架飞机
-STR_COMPANY_VIEW_SHIPS                                          :{WHITE}{COMMA} 艘轮船
+STR_COMPANY_VIEW_TRAINS                                         :{WHITE}列车 {COMMA} 列
+STR_COMPANY_VIEW_ROAD_VEHICLES                                  :{WHITE}车辆 {COMMA} 辆
+STR_COMPANY_VIEW_AIRCRAFT                                       :{WHITE}飞机 {COMMA} 架
+STR_COMPANY_VIEW_SHIPS                                          :{WHITE}船舶 {COMMA} 艘
 STR_COMPANY_VIEW_VEHICLES_NONE                                  :{WHITE}无
 STR_COMPANY_VIEW_COMPANY_VALUE                                  :{GOLD}公司市值：{WHITE}{CURRENCY_LONG}
 STR_COMPANY_VIEW_INFRASTRUCTURE                                 :{GOLD}基建设施：
@@ -4498,7 +4498,7 @@ STR_REFIT_NEW_CAPACITY_COST_OF_REFIT                            :{BLACK}新的�
 STR_REFIT_NEW_CAPACITY_INCOME_FROM_REFIT                        :{BLACK}新装载量: {GOLD}{CARGO_LONG}{}{BLACK}改装后收入: {GREEN}{CURRENCY_LONG}
 STR_REFIT_NEW_CAPACITY_COST_OF_AIRCRAFT_REFIT                   :{BLACK}新的运载类型： {GOLD}{CARGO_LONG}, {GOLD}{CARGO_LONG}{}{BLACK}改装所需： {RED}{CURRENCY_LONG}
 STR_REFIT_NEW_CAPACITY_INCOME_FROM_AIRCRAFT_REFIT               :{BLACK}新装载量: {GOLD}{CARGO_LONG}, {GOLD}{CARGO_LONG}{}{BLACK}改装后收入: {GREEN}{CURRENCY_LONG}
-STR_REFIT_SELECT_VEHICLES_TOOLTIP                               :{BLACK}请选择要改装的车辆. 拖动鼠标可多选.点击空白区域选择整辆列车. Ctrl+左键 选定该车厢及其之后车厢。
+STR_REFIT_SELECT_VEHICLES_TOOLTIP                               :{BLACK}选择改装的车厢。按 <Ctrl> 键拖曳以选择多节车厢。点选空白的区域以选择整列列车。按 <Ctrl> 键选择车厢以选择该车厢及其之后的车厢
 
 ###length VEHICLE_TYPES
 STR_REFIT_TRAIN_LIST_TOOLTIP                                    :{BLACK}选择希望列车装载的货物类型
@@ -4613,7 +4613,7 @@ STR_ORDER_GO_TO_NEAREST_DEPOT                                   :前往最近的
 STR_ORDER_GO_TO_NEAREST_HANGAR                                  :前往最近的机库
 STR_ORDER_CONDITIONAL                                           :条件性命令跳过
 STR_ORDER_SHARE                                                 :共享调度计划
-STR_ORDERS_GO_TO_TOOLTIP                                        :{BLACK}在调度列表的结尾或选定项目前{}增加一条新指令，按住Ctrl使命令为“装满任意货物”{}路点命令为“不停车”{}车库命令为“保养”
+STR_ORDERS_GO_TO_TOOLTIP                                        :{BLACK}在选定的指令前插入新指令，或者添加新指令至计划末尾。按 <Ctrl> 键点选车站、路点或车库以分别应用“满载任意一种货物”、“不停车前往”以及“班次均匀”。点击另一辆载具以复制其调度计划，按住 <Ctrl> 点选则可共享调度计划。如果调度计划上有任何指令涉及车库，则该载具不会自行维护。
 
 STR_ORDERS_VEH_WITH_SHARED_ORDERS_LIST_TOOLTIP                  :{BLACK}显示所有共享此调度计划的{}车辆/船只/飞机
 

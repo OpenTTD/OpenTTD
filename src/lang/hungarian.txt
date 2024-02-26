@@ -352,7 +352,7 @@ STR_TOOLTIP_RESIZE                                              :{BLACK}Fogd és
 STR_TOOLTIP_TOGGLE_LARGE_SMALL_WINDOW                           :{BLACK}Kicsi/nagy ablakméret közötti váltás
 STR_TOOLTIP_VSCROLL_BAR_SCROLLS_LIST                            :{BLACK}Görgetősáv - fel/le görgeti a listát
 STR_TOOLTIP_HSCROLL_BAR_SCROLLS_LIST                            :{BLACK}Görgetősáv - jobbra/balra görgeti a listát
-STR_TOOLTIP_DEMOLISH_BUILDINGS_ETC                              :{BLACK}Építmények lerombolása egy mezőről. Ctrl lenyomásával átlós terület jelölhető ki. Shift lenyomásával megmutatja a becsült költséget
+STR_TOOLTIP_DEMOLISH_BUILDINGS_ETC                              :{BLACK}Építmények lerombolása egy mezőről. Ctrl+kattintás+húzással átlós terület jelölhető ki. Shift lenyomásával megmutatja a becsült költséget
 
 # Show engines button
 ###length VEHICLE_TYPES
@@ -446,32 +446,32 @@ STR_TOOLBAR_TOOLTIP_PAUSE_GAME                                  :{BLACK}Játék 
 STR_TOOLBAR_TOOLTIP_FORWARD                                     :{BLACK}Játék gyorsítása
 STR_TOOLBAR_TOOLTIP_OPTIONS                                     :{BLACK}Alapbeállítások és beállítások
 STR_TOOLBAR_TOOLTIP_SAVE_GAME_ABANDON_GAME                      :{BLACK}Játék mentése vagy játék elhagyása, kilépés
-STR_TOOLBAR_TOOLTIP_DISPLAY_MAP                                 :{BLACK}Térkép, extra látkép, rakományáramlás és feliratok listája
-STR_TOOLBAR_TOOLTIP_DISPLAY_TOWN_DIRECTORY                      :{BLACK}Településlista mutatása
-STR_TOOLBAR_TOOLTIP_DISPLAY_SUBSIDIES                           :{BLACK}Támogatások megjelenítése
-STR_TOOLBAR_TOOLTIP_DISPLAY_LIST_OF_COMPANY_STATIONS            :{BLACK}Állomások listája
+STR_TOOLBAR_TOOLTIP_DISPLAY_MAP                                 :{BLACK}Térkép, extra látkép, rakományáramlás és feliratlista megnyitása
+STR_TOOLBAR_TOOLTIP_DISPLAY_TOWN_DIRECTORY                      :{BLACK}Településlista megnyitása
+STR_TOOLBAR_TOOLTIP_DISPLAY_SUBSIDIES                           :{BLACK}Támogatások megnyitása
+STR_TOOLBAR_TOOLTIP_DISPLAY_LIST_OF_COMPANY_STATIONS            :{BLACK}Állomáslista megnyitása
 STR_TOOLBAR_TOOLTIP_DISPLAY_COMPANY_FINANCES                    :{BLACK}Pénzügyi adatok megnyitása
 STR_TOOLBAR_TOOLTIP_DISPLAY_COMPANY_GENERAL                     :{BLACK}Általános adatok
-STR_TOOLBAR_TOOLTIP_DISPLAY_STORY_BOOK                          :{BLACK}Napló
-STR_TOOLBAR_TOOLTIP_DISPLAY_GOALS_LIST                          :{BLACK}Célok listája
-STR_TOOLBAR_TOOLTIP_DISPLAY_GRAPHS                              :{BLACK}Vállalati grafikonok és rakományok szállítási díja
+STR_TOOLBAR_TOOLTIP_DISPLAY_STORY_BOOK                          :{BLACK}Napló megnyitása
+STR_TOOLBAR_TOOLTIP_DISPLAY_GOALS_LIST                          :{BLACK}Céllista megnyitása
+STR_TOOLBAR_TOOLTIP_DISPLAY_GRAPHS                              :{BLACK}Vállalati grafikonok és rakományszállítási díjak megnyitása
 STR_TOOLBAR_TOOLTIP_DISPLAY_COMPANY_LEAGUE                      :{BLACK}A vállalatok helyezése
 STR_TOOLBAR_TOOLTIP_FUND_CONSTRUCTION_OF_NEW                    :{BLACK}Gazdasági épületek listázása, ipari lánc megnyitása, vagy új gazdasági épületek építése
-STR_TOOLBAR_TOOLTIP_DISPLAY_LIST_OF_COMPANY_TRAINS              :{BLACK}Vonatok listája. Ctrl+kattintással válszthatsz a csoport- vagy járműlista között
-STR_TOOLBAR_TOOLTIP_DISPLAY_LIST_OF_COMPANY_ROAD_VEHICLES       :{BLACK}Közúti járművek listája. Ctrl+kattintással válszthatsz a csoport- vagy járműlista között
-STR_TOOLBAR_TOOLTIP_DISPLAY_LIST_OF_COMPANY_SHIPS               :{BLACK}Hajók listája. Ctrl+kattintással válszthatsz a csoport- vagy járműlista között
-STR_TOOLBAR_TOOLTIP_DISPLAY_LIST_OF_COMPANY_AIRCRAFT            :{BLACK}Repülőgépek listája. Ctrl+kattintással válszthatsz a csoport- vagy járműlista között
-STR_TOOLBAR_TOOLTIP_ZOOM_THE_VIEW_IN                            :{BLACK}Közelítés
-STR_TOOLBAR_TOOLTIP_ZOOM_THE_VIEW_OUT                           :{BLACK}Távolítás
-STR_TOOLBAR_TOOLTIP_BUILD_RAILROAD_TRACK                        :{BLACK}Vasúti pálya építése
-STR_TOOLBAR_TOOLTIP_BUILD_ROADS                                 :{BLACK}Út építése
-STR_TOOLBAR_TOOLTIP_BUILD_TRAMWAYS                              :{BLACK}Villamospálya építése
-STR_TOOLBAR_TOOLTIP_BUILD_SHIP_DOCKS                            :{BLACK}Vízi út építése
+STR_TOOLBAR_TOOLTIP_DISPLAY_LIST_OF_COMPANY_TRAINS              :{BLACK}Vonatlista megnyitása. Ctrl+kattintással válszthatsz a csoport- vagy járműlista között
+STR_TOOLBAR_TOOLTIP_DISPLAY_LIST_OF_COMPANY_ROAD_VEHICLES       :{BLACK}Közúti járműlista megnyitása. Ctrl+kattintással válszthatsz a csoport- vagy járműlista között
+STR_TOOLBAR_TOOLTIP_DISPLAY_LIST_OF_COMPANY_SHIPS               :{BLACK}Hajóista megnyitása. Ctrl+kattintással válszthatsz a csoport- vagy járműlista között
+STR_TOOLBAR_TOOLTIP_DISPLAY_LIST_OF_COMPANY_AIRCRAFT            :{BLACK}Repülőgéplista megnyitása. Ctrl+kattintással válszthatsz a csoport- vagy járműlista között
+STR_TOOLBAR_TOOLTIP_ZOOM_THE_VIEW_IN                            :{BLACK}Nagyítás
+STR_TOOLBAR_TOOLTIP_ZOOM_THE_VIEW_OUT                           :{BLACK}Kicsinyítés
+STR_TOOLBAR_TOOLTIP_BUILD_RAILROAD_TRACK                        :{BLACK}Vasúti infrastruktúra építése
+STR_TOOLBAR_TOOLTIP_BUILD_ROADS                                 :{BLACK}Közúti infrastruktúra építése
+STR_TOOLBAR_TOOLTIP_BUILD_TRAMWAYS                              :{BLACK}Villamos infrastruktúra építése
+STR_TOOLBAR_TOOLTIP_BUILD_SHIP_DOCKS                            :{BLACK}Vízi úti infrastruktúra építése
 STR_TOOLBAR_TOOLTIP_BUILD_AIRPORTS                              :{BLACK}Repülőtér építése
-STR_TOOLBAR_TOOLTIP_LANDSCAPING                                 :{BLACK}Nyisd meg a tájrendező ablakot a talaj emeléséhez vagy süllyesztéséhez, faültetéshez stb.
+STR_TOOLBAR_TOOLTIP_LANDSCAPING                                 :{BLACK}Tájszerkesztő, faültető vagy feliratlétrehozó menü megnyitása
 STR_TOOLBAR_TOOLTIP_SHOW_SOUND_MUSIC_WINDOW                     :{BLACK}Hang/zene beállításai
 STR_TOOLBAR_TOOLTIP_SHOW_LAST_MESSAGE_NEWS                      :{BLACK}Legutóbbi üzenet/újsághír megmutatása, üzenetelőzmények vagy minden üzenet törlése
-STR_TOOLBAR_TOOLTIP_LAND_BLOCK_INFORMATION                      :{BLACK}Terület-információ, konzol, képmentések, az OpenTTD-ről és fejlesztői eszközök
+STR_TOOLBAR_TOOLTIP_LAND_BLOCK_INFORMATION                      :{BLACK}Terület-információ, képernyőmentések, OpenTTD névjegy vagy fejlesztői eszközök megnyitása
 STR_TOOLBAR_TOOLTIP_SWITCH_TOOLBAR                              :{BLACK}Eszköztár váltás
 
 # Extra tooltips for the scenario editor toolbar
@@ -481,12 +481,12 @@ STR_SCENEDIT_TOOLBAR_SCENARIO_EDITOR                            :{YELLOW}Pályas
 STR_SCENEDIT_TOOLBAR_TOOLTIP_MOVE_THE_STARTING_DATE_BACKWARD    :{BLACK}A kezdődátum hátrébb állítása egy évvel
 STR_SCENEDIT_TOOLBAR_TOOLTIP_MOVE_THE_STARTING_DATE_FORWARD     :{BLACK}A kezdődátum előrébb állítása egy évvel
 STR_SCENEDIT_TOOLBAR_TOOLTIP_SET_DATE                           :{BLACK}Kattints ide a kezdődátum beírásához
-STR_SCENEDIT_TOOLBAR_TOOLTIP_DISPLAY_MAP_TOWN_DIRECTORY         :{BLACK}Térkép, városlista
-STR_SCENEDIT_TOOLBAR_LANDSCAPE_GENERATION                       :{BLACK}Táj szerkesztése
-STR_SCENEDIT_TOOLBAR_TOWN_GENERATION                            :{BLACK}Település-generálás
-STR_SCENEDIT_TOOLBAR_INDUSTRY_GENERATION                        :{BLACK}Gazdasági épület-generálás
-STR_SCENEDIT_TOOLBAR_ROAD_CONSTRUCTION                          :{BLACK}Út építése
-STR_SCENEDIT_TOOLBAR_TRAM_CONSTRUCTION                          :{BLACK}Villamospálya építése
+STR_SCENEDIT_TOOLBAR_TOOLTIP_DISPLAY_MAP_TOWN_DIRECTORY         :{BLACK}Térkép, extra látkép, feliratok listája, városlista és gazdasági épületlista
+STR_SCENEDIT_TOOLBAR_LANDSCAPE_GENERATION                       :{BLACK}Tájszerkesztő megnyitása vagy új világ létrehozása
+STR_SCENEDIT_TOOLBAR_TOWN_GENERATION                            :{BLACK}Települések építése vagy generálása
+STR_SCENEDIT_TOOLBAR_INDUSTRY_GENERATION                        :{BLACK}Gazdasági épületek építése vagy generálása
+STR_SCENEDIT_TOOLBAR_ROAD_CONSTRUCTION                          :{BLACK}Közúti infrastruktúra építése
+STR_SCENEDIT_TOOLBAR_TRAM_CONSTRUCTION                          :{BLACK}Villamos infrastruktúra építése
 STR_SCENEDIT_TOOLBAR_PLANT_TREES                                :{BLACK}Faültetés. Ctrl lenyomásával átlós terület jelölhető ki. Shift lenyomásával megmutatja a becsült építési költséget.
 STR_SCENEDIT_TOOLBAR_PLACE_SIGN                                 :{BLACK}Felirat lerakása
 STR_SCENEDIT_TOOLBAR_PLACE_OBJECT                               :{BLACK}Objektum építése. Ctrl lenyomásával átlós terület jelölhető ki. Shift lenyomásával megmutatja a becsült építési költséget.
@@ -503,12 +503,12 @@ STR_SCENEDIT_FILE_MENU_QUIT                                     :Kilépés
 
 # Settings menu
 ###length 16
-STR_SETTINGS_MENU_GAME_OPTIONS                                  :Alapbeállítások
+STR_SETTINGS_MENU_GAME_OPTIONS                                  :Játékbeállítások
 STR_SETTINGS_MENU_CONFIG_SETTINGS_TREE                          :Beállítások
 STR_SETTINGS_MENU_AI_SETTINGS                                   :MI Beállítások
 STR_SETTINGS_MENU_GAMESCRIPT_SETTINGS                           :Játékszkript beállítások
 STR_SETTINGS_MENU_NEWGRF_SETTINGS                               :NewGRF beállítások
-STR_SETTINGS_MENU_SANDBOX_OPTIONS                               :Homokozó mód beállításai
+STR_SETTINGS_MENU_SANDBOX_OPTIONS                               :Homokozó mód beállítások
 STR_SETTINGS_MENU_TRANSPARENCY_OPTIONS                          :Átlátszósági beállítások
 STR_SETTINGS_MENU_TOWN_NAMES_DISPLAYED                          :Városnevek mutatása
 STR_SETTINGS_MENU_STATION_NAMES_DISPLAYED                       :Állomásnevek mutatása
@@ -1005,7 +1005,7 @@ STR_EXTRA_VIEW_MOVE_MAIN_TO_VIEW                                :{BLACK}Fő néz
 STR_EXTRA_VIEW_MOVE_MAIN_TO_VIEW_TT                             :{BLACK}A látkép pozícióját a fő nézetre másolja
 
 # Game options window
-STR_GAME_OPTIONS_CAPTION                                        :{WHITE}Alapbeállítások
+STR_GAME_OPTIONS_CAPTION                                        :{WHITE}Játékbeállítások
 
 STR_GAME_OPTIONS_TAB_GENERAL                                    :Általános
 STR_GAME_OPTIONS_TAB_GENERAL_TT                                 :{BLACK}Általános beállítások módosítása
@@ -1089,7 +1089,7 @@ STR_GAME_OPTIONS_AUTOSAVE_DROPDOWN_EVERY_120_MINUTES            :120 percenként
 
 STR_GAME_OPTIONS_LANGUAGE                                       :{BLACK}Nyelv
 STR_GAME_OPTIONS_LANGUAGE_TOOLTIP                               :{BLACK}Válassz nyelvet
-STR_GAME_OPTIONS_LANGUAGE_PERCENTAGE                            :{STRING} ({NUM}% teljesítve)
+STR_GAME_OPTIONS_LANGUAGE_PERCENTAGE                            :{STRING} ({NUM}% lefordítva)
 
 STR_GAME_OPTIONS_FULLSCREEN                                     :{BLACK}Teljes képernyő
 STR_GAME_OPTIONS_FULLSCREEN_TOOLTIP                             :{BLACK}Jelöld be ezt, ha teljes képernyős módban szeretnél játszani az OpenTTD-vel
@@ -1109,7 +1109,7 @@ STR_GAME_OPTIONS_VIDEO_VSYNC_TOOLTIP                            :{BLACK}Jelöld 
 STR_GAME_OPTIONS_VIDEO_DRIVER_INFO                              :{BLACK}Jelenlegi meghajtó: {STRING}
 
 STR_GAME_OPTIONS_GUI_SCALE_FRAME                                :{BLACK}Felület mérete
-STR_GAME_OPTIONS_GUI_SCALE_TOOLTIP                              :{BLACK}Használd a csúszkát a felület méretének beállításához. Ctrl nyomva tartásával további folyamatos állítás
+STR_GAME_OPTIONS_GUI_SCALE_TOOLTIP                              :{BLACK}Használd a csúszkát a felület méretének beállításához. Ctrl+húzás a finom állításhoz
 STR_GAME_OPTIONS_GUI_SCALE_AUTO                                 :{BLACK}Méret automatikus felismerése
 STR_GAME_OPTIONS_GUI_SCALE_AUTO_TOOLTIP                         :{BLACK}Jelöld be ezt, a felület méretének automatikus felismeréséhez
 
@@ -1618,7 +1618,7 @@ STR_CONFIG_SETTING_LAND_GENERATOR_ORIGINAL                      :Eredeti
 STR_CONFIG_SETTING_LAND_GENERATOR_TERRA_GENESIS                 :TerraGenesis
 
 STR_CONFIG_SETTING_TERRAIN_TYPE                                 :Tereptípus: {STRING}
-STR_CONFIG_SETTING_TERRAIN_TYPE_HELPTEXT                        :A térkép domborzata
+STR_CONFIG_SETTING_TERRAIN_TYPE_HELPTEXT                        :A dombok és hegyek magasságának beállítása
 
 STR_CONFIG_SETTING_INDUSTRY_DENSITY                             :Gazdasági épületek száma: {STRING}
 STR_CONFIG_SETTING_INDUSTRY_DENSITY_HELPTEXT                    :Mennyi gazdasági épület legyen, és mennyire legyenek fenntartva a játék folyamán
@@ -1638,7 +1638,7 @@ STR_CONFIG_SETTING_DESERT_COVERAGE_HELPTEXT                     :Beállíthatod,
 STR_CONFIG_SETTING_DESERT_COVERAGE_VALUE                        :{NUM}%
 
 STR_CONFIG_SETTING_ROUGHNESS_OF_TERRAIN                         :A terep durvasága: {STRING}
-STR_CONFIG_SETTING_ROUGHNESS_OF_TERRAIN_HELPTEXT                :(csak TerraGenesis esetén) Kiválaszthatod a hegyek mennyiségét: a sima térképeken kevesebb, de kiterjedtebb hegy van, míg a durva térképeken sok hegy van, amik kissé ismétlődőnek tűnhetnek.
+STR_CONFIG_SETTING_ROUGHNESS_OF_TERRAIN_HELPTEXT                :A dombok mennyiségének beállítása. A sima térképeken kevesebb, de nagyobb dombok vannak, míg a durva térképeken sok kisebb domb van, amik kissé ismétlődőnek tűnhetnek.
 ###length 4
 STR_CONFIG_SETTING_ROUGHNESS_OF_TERRAIN_VERY_SMOOTH             :Nagyon sima
 STR_CONFIG_SETTING_ROUGHNESS_OF_TERRAIN_SMOOTH                  :Sima
@@ -1895,7 +1895,7 @@ STR_CONFIG_SETTING_SERVINT_AIRCRAFT                             :Alapértelmezet
 STR_CONFIG_SETTING_SERVINT_AIRCRAFT_HELPTEXT                    :Alapértelmezett javítási intervallum beállítása új repülőgépeknek, ha nincs külön javítási intervallum beállítva a járműre
 STR_CONFIG_SETTING_SERVINT_SHIPS                                :Alapértelmezett javítási intervallum hajóknak: {STRING}
 STR_CONFIG_SETTING_SERVINT_SHIPS_HELPTEXT                       :Alapértelmezett javítási intervallum beállítása új hajóknak, ha nincs külön javítási intervallum beállítva a járműre
-STR_CONFIG_SETTING_SERVINT_VALUE                                :{COMMA}{NBSP}nap/%
+STR_CONFIG_SETTING_SERVINT_VALUE                                :{COMMA}{NBSP}Nap/Perc/%
 ###setting-zero-is-special
 STR_CONFIG_SETTING_SERVINT_DISABLED                             :kikapcsolva
 
@@ -2266,14 +2266,14 @@ STR_INTRO_TOOLTIP_SUB_ARCTIC_LANDSCAPE                          :{BLACK}Szubarkt
 STR_INTRO_TOOLTIP_SUB_TROPICAL_LANDSCAPE                        :{BLACK}Szubtrópusi táj kiválasztása
 STR_INTRO_TOOLTIP_TOYLAND_LANDSCAPE                             :{BLACK}Játékvilág táj kiválasztása
 
-STR_INTRO_TOOLTIP_GAME_OPTIONS                                  :{BLACK}A játék alapvető beállításainak (pl. nyelv, grafikus alapcsomag, stb.) megjelenítése
-STR_INTRO_TOOLTIP_HIGHSCORE                                     :{BLACK}Rekord tábla megjelenítése
+STR_INTRO_TOOLTIP_GAME_OPTIONS                                  :{BLACK}A játékbeállítások megnyitása
+STR_INTRO_TOOLTIP_HIGHSCORE                                     :{BLACK}Rekord tábla megnyitása
 STR_INTRO_TOOLTIP_HELP                                          :{BLACK}Férj hozzá a dokumentációhoz és az online tartalmakhoz
-STR_INTRO_TOOLTIP_CONFIG_SETTINGS_TREE                          :{BLACK}A beállítások megjelenítése
-STR_INTRO_TOOLTIP_NEWGRF_SETTINGS                               :{BLACK}NewGRF beállítások megjelenítése
+STR_INTRO_TOOLTIP_CONFIG_SETTINGS_TREE                          :{BLACK}A beállítások megnyitása
+STR_INTRO_TOOLTIP_NEWGRF_SETTINGS                               :{BLACK}NewGRF beállítások megnyitása
 STR_INTRO_TOOLTIP_ONLINE_CONTENT                                :{BLACK}Új és frissített tartalmak megtekintése és letöltése
-STR_INTRO_TOOLTIP_AI_SETTINGS                                   :{BLACK}MI beállítások megjelenítése
-STR_INTRO_TOOLTIP_GAMESCRIPT_SETTINGS                           :{BLACK}Játékszkript beállítások megjelenítése
+STR_INTRO_TOOLTIP_AI_SETTINGS                                   :{BLACK}MI beállítások megnyitása
+STR_INTRO_TOOLTIP_GAMESCRIPT_SETTINGS                           :{BLACK}Játékszkript beállítások megnyitása
 STR_INTRO_TOOLTIP_QUIT                                          :{BLACK}Kilépés az OpenTTD-ből
 
 STR_INTRO_BASESET                                               :{BLACK}A jelenleg kiválasztott grafikus alapcsomagból {NUM} sprite hiányzik. Frissítsd a grafikus alapcsomagot!
@@ -2304,7 +2304,7 @@ STR_HELP_WINDOW_BUGTRACKER                                      :{BLACK}Hiba jel
 STR_HELP_WINDOW_COMMUNITY                                       :{BLACK}Közösség
 
 # Cheat window
-STR_CHEATS                                                      :{WHITE}Csalások
+STR_CHEATS                                                      :{WHITE}Homokozó mód beállítások
 STR_CHEAT_MONEY                                                 :{LTBLUE}Tőkeemelés {CURRENCY_LONG}
 STR_CHEAT_CHANGE_COMPANY                                        :{LTBLUE}Irányított vállalat: {ORANGE}{COMMA}
 STR_CHEAT_EXTRA_DYNAMITE                                        :{LTBLUE}Csodabuldózer (lerombol gazdasági épületeket, mozgathatatlan objektumokat): {ORANGE}{STRING}
@@ -2493,7 +2493,7 @@ STR_NETWORK_START_SERVER_NEW_GAME_NAME_TOOLTIP                  :{BLACK}A játé
 STR_NETWORK_START_SERVER_SET_PASSWORD                           :{BLACK}Jelszó beállítása
 STR_NETWORK_START_SERVER_PASSWORD_TOOLTIP                       :{BLACK}Védd le a játékodat jelszóval, ha nem akarod hogy illetéktelenek csatlakozzanak
 
-STR_NETWORK_START_SERVER_VISIBILITY_LABEL                       :{BLACK}Láthatóság
+STR_NETWORK_START_SERVER_VISIBILITY_LABEL                       :{BLACK}Láthatóság:
 STR_NETWORK_START_SERVER_VISIBILITY_TOOLTIP                     :{BLACK}Mások láthassák-e a szerveredet a publikus listában
 STR_NETWORK_START_SERVER_CLIENTS_SELECT                         :{BLACK}{NUM} kliens
 STR_NETWORK_START_SERVER_NUMBER_OF_CLIENTS                      :{BLACK}Játékosok max. száma:
@@ -2588,7 +2588,7 @@ STR_NETWORK_ASK_RELAY_YES_ONCE                                  :{BLACK}Igen, mo
 STR_NETWORK_ASK_RELAY_YES_ALWAYS                                :{BLACK}Igen, ne kérdezd újra
 
 STR_NETWORK_ASK_SURVEY_CAPTION                                  :Részvétel automata felmérésben?
-STR_NETWORK_ASK_SURVEY_TEXT                                     :Szeretnél részt venni az automata felmérésben?{}Az OpenTTD a játékból kilépéskor egy felmérést fog továbbítani.{}Ezt a beállítást bármikor megváltoztathatod a "Játék beállítások" menüpontban.
+STR_NETWORK_ASK_SURVEY_TEXT                                     :Szeretnél részt venni az automata felmérésben?{}Az OpenTTD a játékból kilépéskor egy felmérést fog továbbítani.{}Ezt a beállítást bármikor megváltoztathatod a "Játékbeállítások" menüpontban.
 STR_NETWORK_ASK_SURVEY_PREVIEW                                  :Felmérés eredményének előnézete
 STR_NETWORK_ASK_SURVEY_LINK                                     :Felmérésről és titoktartásról
 STR_NETWORK_ASK_SURVEY_NO                                       :Nem
@@ -2906,7 +2906,7 @@ STR_BUILD_SIGNAL_ELECTRIC_EXIT_TOOLTIP                          :{BLACK}Kijárat
 STR_BUILD_SIGNAL_ELECTRIC_COMBO_TOOLTIP                         :{BLACK}Kombinált jelző (fény){}A kombinált jelző voltaképpen egy kijárati- és egy bejárati jelző egybeépítve. Segítségével komoly váltókörzetek építhetőek bejárati jelzőkből
 STR_BUILD_SIGNAL_ELECTRIC_PBS_TOOLTIP                           :{BLACK}Irányjelző (fény){}Egy irányjelző lehetővé teszi, hogy amennyiben a vonatok le tudnak foglalni maguknak egy biztonságos vágányutat a következő jelzőig, több vonat is beléphessen ugyanabba a jelzőblokkba. Az irányjelzők mellett hátulról is el lehet haladni
 STR_BUILD_SIGNAL_ELECTRIC_PBS_OWAY_TOOLTIP                      :{BLACK}Egyirányú irányjelző (fény){}Egy irányjelző lehetővé teszi, hogy amennyiben a vonatok le tudnak foglalni maguknak egy biztonságos vágányutat a következő jelzőig, több vonat is beléphessen ugyanabba a jelzőblokkba. Az egyirányú jelzők mellett nem lehet hátulról elhaladni
-STR_BUILD_SIGNAL_CONVERT_TOOLTIP                                :{BLACK}Jelző átalakítás{}Amikor ki van jelölve, egy meglévő jelzőre való kattintással átkonvertálja a kiválasztott jelzőtípusra és -variációra, CTRL+kattintás a variációt fogja változtatni. Shift+kattintással megmutatja a becsült átalakítási költséget
+STR_BUILD_SIGNAL_CONVERT_TOOLTIP                                :{BLACK}Jelző átalakítás{}Amikor ki van jelölve, egy meglévő jelzőre való kattintással átalakítja a kiválasztott jelzőtípusra és -változatra, Ctrl+kattintás a változatok között fog váltani. Shift+kattintással megmutatja a becsült átalakítási költséget
 STR_BUILD_SIGNAL_DRAG_SIGNALS_DENSITY_TOOLTIP                   :{BLACK}Automata jelzőtelepítés esetén a jelzők távolsága
 STR_BUILD_SIGNAL_DRAG_SIGNALS_DENSITY_DECREASE_TOOLTIP          :{BLACK}Automata jelzőtelepítés esetén a jelzők távolságának csökkentése
 STR_BUILD_SIGNAL_DRAG_SIGNALS_DENSITY_INCREASE_TOOLTIP          :{BLACK}Automata jelzőtelepítés esetén a jelzők távolságának növelése
@@ -2977,11 +2977,11 @@ STR_WATERWAYS_TOOLBAR_CAPTION_SE                                :{WHITE}Vízi ut
 STR_WATERWAYS_TOOLBAR_BUILD_CANALS_TOOLTIP                      :{BLACK}Csatorna építése. Shift lenyomásával megmutatja a becsült építési költséget
 STR_WATERWAYS_TOOLBAR_BUILD_LOCKS_TOOLTIP                       :{BLACK}Zsilip építése. Shift lenyomásával megmutatja a várható építési költséget
 STR_WATERWAYS_TOOLBAR_BUILD_DEPOT_TOOLTIP                       :{BLACK}Dokk építése (hajók vételére és karbantartására). Shift lenyomásával megmutatja a becsült építési költséget
-STR_WATERWAYS_TOOLBAR_BUILD_DOCK_TOOLTIP                        :{BLACK}Kikötő építése. A Ctrl lenyomásával egyesítheted más állomásokkal. Shift lenyomásával megmutatja a becsült építési költséget
+STR_WATERWAYS_TOOLBAR_BUILD_DOCK_TOOLTIP                        :{BLACK}Kikötő építése. Ctrl+kattintással egyesítheted más állomásokkal. Shift lenyomásával megmutatja a becsült építési költséget
 STR_WATERWAYS_TOOLBAR_BUOY_TOOLTIP                              :{BLACK}Bója lerakása, amit a hajók útirányjelző pontként használhatnak. Shift lenyomásával megmutatja a becsült építési költséget
 STR_WATERWAYS_TOOLBAR_BUILD_AQUEDUCT_TOOLTIP                    :{BLACK}Csatornahíd építése. Shift lenyomásával megmutatja a várható építési költséget
-STR_WATERWAYS_TOOLBAR_CREATE_LAKE_TOOLTIP                       :{BLACK}Vizi terület definiálása.{}Csatornát készít, kivéve ha tengerszinten Ctrl gombot lenyomva használod, ekkor elárasztja a területet
-STR_WATERWAYS_TOOLBAR_CREATE_RIVER_TOOLTIP                      :{BLACK}Folyók elhelyezése
+STR_WATERWAYS_TOOLBAR_CREATE_LAKE_TOOLTIP                       :{BLACK}Csatorna építése. Ctrl+kattintással elárasztja a területet tengervízzel a tengerszinten
+STR_WATERWAYS_TOOLBAR_CREATE_RIVER_TOOLTIP                      :{BLACK}Folyók elhelyezése. Ctrl+kattintással átlós terület jelölhető ki
 
 # Ship depot construction window
 STR_DEPOT_BUILD_SHIP_CAPTION                                    :{WHITE}Dokk helyzete
@@ -3038,7 +3038,7 @@ STR_OBJECT_CLASS_TRNS                                           :Adótornyok
 STR_PLANT_TREE_CAPTION                                          :{WHITE}Fák
 STR_PLANT_TREE_TOOLTIP                                          :{BLACK}Ültetendő fa kiválasztása. Ha már van fa a mezőn, akkor újabb fák ültetése a kiválasztott fatípustól függetlenül
 STR_TREES_RANDOM_TYPE                                           :{BLACK}Véletlenszerű fafélék
-STR_TREES_RANDOM_TYPE_TOOLTIP                                   :{BLACK}Véletlenszerűen kiválasztott fákat helyez el. Ctrl lenyomásával átlós terület jelölhető ki. Shift lenyomásával megmutatja a becsült építési költséget.
+STR_TREES_RANDOM_TYPE_TOOLTIP                                   :{BLACK}Véletlenszerűen kiválasztott fákat helyez el. Ctrl+kattintás+húzással átlós terület jelölhető ki. Shift lenyomásával megmutatja a becsült építési költséget.
 STR_TREES_RANDOM_TREES_BUTTON                                   :{BLACK}Véletlenszerű fák
 STR_TREES_RANDOM_TREES_TOOLTIP                                  :{BLACK}Véletlenszerűen fákat ültet a térképre
 STR_TREES_MODE_NORMAL_BUTTON                                    :{BLACK}Normál
@@ -3131,7 +3131,7 @@ STR_INDUSTRY_CARGOES_SELECT_INDUSTRY_TOOLTIP                    :{BLACK}Válaszd
 
 # Land area window
 STR_LAND_AREA_INFORMATION_CAPTION                               :{WHITE}Terület-információ
-STR_LAND_AREA_INFORMATION_LOCATION_TOOLTIP                      :{BLACK}A főnézetet a csempére állítja. Ctrl+Klikk megnyit egy új főnézetet a csempén.
+STR_LAND_AREA_INFORMATION_LOCATION_TOOLTIP                      :{BLACK}A fő nézetet a csempére állítja. Ctrl+kattintás esetén új látképet nyit a csempe pozíciójára
 STR_LAND_AREA_INFORMATION_COST_TO_CLEAR_N_A                     :{BLACK}{LTBLUE}Nem lehet lerombolni
 STR_LAND_AREA_INFORMATION_COST_TO_CLEAR                         :{BLACK}A megtisztítás költsége: {RED}{CURRENCY_LONG}
 STR_LAND_AREA_INFORMATION_REVENUE_WHEN_CLEARED                  :{BLACK}Bevétel lerombolás esetén: {LTBLUE}{CURRENCY_LONG}
@@ -3143,7 +3143,7 @@ STR_LAND_AREA_INFORMATION_RAIL_OWNER                            :{BLACK}A vasút
 STR_LAND_AREA_INFORMATION_LOCAL_AUTHORITY                       :{BLACK}Helyi önkormányzat: {LTBLUE}{STRING}
 STR_LAND_AREA_INFORMATION_LOCAL_AUTHORITY_NONE                  :Nincs
 STR_LAND_AREA_INFORMATION_LANDINFO_COORDS                       :{BLACK}Koordináták: {LTBLUE}{NUM} x {NUM} x {NUM} ({STRING})
-STR_LAND_AREA_INFORMATION_BUILD_DATE                            :{BLACK}Épült: {LTBLUE}{DATE_LONG}
+STR_LAND_AREA_INFORMATION_BUILD_DATE                            :{BLACK}Épült/felújítva: {LTBLUE}{DATE_LONG}
 STR_LAND_AREA_INFORMATION_STATION_CLASS                         :{BLACK}Állomás osztálya: {LTBLUE}{STRING}
 STR_LAND_AREA_INFORMATION_STATION_TYPE                          :{BLACK}Állomás típusa: {LTBLUE}{STRING}
 STR_LAND_AREA_INFORMATION_AIRPORT_CLASS                         :{BLACK}Repülőtér osztály: {LTBLUE}{STRING}
@@ -3378,11 +3378,11 @@ STR_MAPGEN_VARIETY                                              :{BLACK}Változa
 STR_MAPGEN_GENERATE                                             :{WHITE}Generál
 STR_MAPGEN_GENERATE_TOOLTIP                                     :{BLACK}Készíts egy világot és játssz OpenTTD-t!
 STR_MAPGEN_NEWGRF_SETTINGS                                      :NewGRF Beállítások
-STR_MAPGEN_NEWGRF_SETTINGS_TOOLTIP                              :{BLACK}NewGRF beállítások megjelenítése
+STR_MAPGEN_NEWGRF_SETTINGS_TOOLTIP                              :{BLACK}NewGRF beállítások megnyitása
 STR_MAPGEN_AI_SETTINGS                                          :{BLACK}MI Beállítások
-STR_MAPGEN_AI_SETTINGS_TOOLTIP                                  :{BLACK}MI beállítások megjelenítése
+STR_MAPGEN_AI_SETTINGS_TOOLTIP                                  :{BLACK}MI beállítások megnyitása
 STR_MAPGEN_GS_SETTINGS                                          :{BLACK}Játékszkript Beállítások
-STR_MAPGEN_GS_SETTINGS_TOOLTIP                                  :{BLACK}Játékszkript beállítások megjelenítése
+STR_MAPGEN_GS_SETTINGS_TOOLTIP                                  :{BLACK}Játékszkript beállítások megnyitása
 
 ###length 21
 STR_MAPGEN_TOWN_NAME_ORIGINAL_ENGLISH                           :Angol (Eredeti)
@@ -4288,7 +4288,7 @@ STR_DEPOT_CLONE_AIRCRAFT_INFO_HANGAR_WINDOW                     :{BLACK}Ide katt
 ###length VEHICLE_TYPES
 STR_DEPOT_TRAIN_LOCATION_TOOLTIP                                :{BLACK}A fő nézetet a járműtelepre állítja. Ctrl+kattintás esetén új látképet nyit a járműtelep pozíciójára
 STR_DEPOT_ROAD_VEHICLE_LOCATION_TOOLTIP                         :{BLACK}A fő nézetet a garázsra állítja. Ctrl+kattintás esetén új látképet nyit a garázs pozíciójára
-STR_DEPOT_SHIP_LOCATION_TOOLTIP                                 :{BLACK}A fő nézetet a dokkra állítja. Ctrl+kattintás esetén új látképet nyit a dokk pozíciójára
+STR_DEPOT_SHIP_LOCATION_TOOLTIP                                 :{BLACK}A fő nézetet a dokkra állítja. Ctrl+kattintással új látképet nyit a dokk pozíciójára
 STR_DEPOT_AIRCRAFT_LOCATION_TOOLTIP                             :{BLACK}A fő nézetet a hangárra állítja. Ctrl+kattintás esetén új látképet nyit a hangár pozíciójára
 
 ###length VEHICLE_TYPES
@@ -4562,7 +4562,7 @@ STR_REFIT_NEW_CAPACITY_COST_OF_REFIT                            :{BLACK}Új kapa
 STR_REFIT_NEW_CAPACITY_INCOME_FROM_REFIT                        :{BLACK}Új kapacitás: {GOLD}{CARGO_LONG}{}{BLACK}Bevétel átalakításból: {GREEN}{CURRENCY_LONG}
 STR_REFIT_NEW_CAPACITY_COST_OF_AIRCRAFT_REFIT                   :{BLACK}Új kapacitás: {GOLD}{CARGO_LONG}, {GOLD}{CARGO_LONG}{}{BLACK}Átalakítás költsége: {RED}{CURRENCY_LONG}
 STR_REFIT_NEW_CAPACITY_INCOME_FROM_AIRCRAFT_REFIT               :{BLACK}Új kapacitás: {GOLD}{CARGO_LONG}, {GOLD}{CARGO_LONG}{}{BLACK}Bevétel átalakításból: {GREEN}{CURRENCY_LONG}
-STR_REFIT_SELECT_VEHICLES_TOOLTIP                               :{BLACK}Átalakítandó járművek kiválasztása. Egérrel húzva több jármű választható ki. Üres helyre kattintva az egész jármű jelölhető ki. Ctrl+Kattintással a jármű és az azt követő szerelvény jelölhető ki
+STR_REFIT_SELECT_VEHICLES_TOOLTIP                               :{BLACK}Átalakítandó járművek kiválasztása. Ctrk+húzással több jármű választható ki. Üres helyre kattintva az egész jármű jelölhető ki. Ctrl+kattintással a jármű és az azt követő szerelvény jelölhető ki
 
 ###length VEHICLE_TYPES
 STR_REFIT_TRAIN_LIST_TOOLTIP                                    :{BLACK}Vonat által szállítandó rakomány kiválasztása
@@ -4654,9 +4654,9 @@ STR_ORDER_CONDITIONAL_COMPARATOR_TOOLTIP                        :{BLACK}Hogyan v
 STR_ORDER_CONDITIONAL_COMPARATOR_EQUALS                         :egyenlő
 STR_ORDER_CONDITIONAL_COMPARATOR_NOT_EQUALS                     :nem egyenlő
 STR_ORDER_CONDITIONAL_COMPARATOR_LESS_THAN                      :kevesebb, mint
-STR_ORDER_CONDITIONAL_COMPARATOR_LESS_EQUALS                    :nem több, mint
+STR_ORDER_CONDITIONAL_COMPARATOR_LESS_EQUALS                    :kevesebb vagy egyenlő, mint
 STR_ORDER_CONDITIONAL_COMPARATOR_MORE_THAN                      :több, mint
-STR_ORDER_CONDITIONAL_COMPARATOR_MORE_EQUALS                    :nem kevesebb, mint
+STR_ORDER_CONDITIONAL_COMPARATOR_MORE_EQUALS                    :több vagy egyenlő, mint
 STR_ORDER_CONDITIONAL_COMPARATOR_IS_TRUE                        :igaz
 STR_ORDER_CONDITIONAL_COMPARATOR_IS_FALSE                       :hamis
 
@@ -4793,13 +4793,13 @@ STR_TIMETABLE_CHANGE_TIME                                       :{BLACK}Idő meg
 STR_TIMETABLE_WAIT_TIME_TOOLTIP                                 :{BLACK}A kijelölt utasítás végrehajtási idejét változtatja meg. Ctrl+kattintással beállítod az időt az összes utasításhoz.
 
 STR_TIMETABLE_CLEAR_TIME                                        :{BLACK}Idő törlése
-STR_TIMETABLE_CLEAR_TIME_TOOLTIP                                :{BLACK}A kijelölt menetrendi sorhoz tartozó végrehajtási idő törlése. Ctrl+Klikkel kitörlöd az időt az összes utasításnál.
+STR_TIMETABLE_CLEAR_TIME_TOOLTIP                                :{BLACK}A kijelölt utasításhoz tartozó idő törlése. Ctrl+kattintás az összes utasításból törli  az időt
 
 STR_TIMETABLE_CHANGE_SPEED                                      :{BLACK}Sebességkorlátozás megváltoztatása
 STR_TIMETABLE_CHANGE_SPEED_TOOLTIP                              :{BLACK}Kijelölt utasítás sebességkorlátozásának megváltoztatása. Ctrl+kattintással beállítható a sebesség az összes utasítás számára
 
 STR_TIMETABLE_CLEAR_SPEED                                       :{BLACK}Sebességkorlátozás törlése
-STR_TIMETABLE_CLEAR_SPEED_TOOLTIP                               :{BLACK}Sebességkorlátozás törlése a kijelölt utasításból. Ctrl+kattintással kitörlöd a sebességet az összes utasításból.
+STR_TIMETABLE_CLEAR_SPEED_TOOLTIP                               :{BLACK}Sebességkorlátozás törlése a kijelölt utasításból. Ctrl+kattintás az összes utasításból törli a sebességkorlátozást
 
 STR_TIMETABLE_RESET_LATENESS                                    :{BLACK}Késés nullázása
 STR_TIMETABLE_RESET_LATENESS_TOOLTIP                            :{BLACK}Késés-számláló nullázása, azaz a jármű pontos lesz. Ctrl+kattintással az egész csoportot nullázhatod, vagyis a legutolsó pont időben lesz a többi pedig korán
@@ -4844,7 +4844,7 @@ STR_AI_DEBUG_CONTINUE                                           :{BLACK}Folytat�
 STR_AI_DEBUG_CONTINUE_TOOLTIP                                   :{BLACK}Játék folytatása és MI visszakapcsolása
 STR_AI_DEBUG_SELECT_AI_TOOLTIP                                  :{BLACK}A MI kimeneti nyomonkövetésének megtekintése. Ctrl+Kattintás új ablakban történő megnyitáshoz
 STR_AI_GAME_SCRIPT                                              :{BLACK}Játékszkript
-STR_AI_GAME_SCRIPT_TOOLTIP                                      :{BLACK}Játékszkript napló ellenőrzése
+STR_AI_GAME_SCRIPT_TOOLTIP                                      :{BLACK}Játékszkript napló ellenőrzése. Ctrl+kattintás új ablakban történő megnyitáshoz
 
 STR_ERROR_AI_NO_AI_FOUND                                        :Nincs MI, amit be lehetne tölteni.{}A jelenlegi MI csak dísz és nem fog semmit csinálni.{}MI-k letöltéséhez használd a tartalomletöltő rendszert
 STR_ERROR_AI_PLEASE_REPORT_CRASH                                :{WHITE}Az egyik futó szkript futása közben hiba történt. Kérjük jelezd ezt a szkript készítőjének az MI / Játékzkript nyomkövetés ablakról készített képernyőmentéssel

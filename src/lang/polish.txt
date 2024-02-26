@@ -1500,9 +1500,9 @@ STR_CURRENCY_SET_EXCHANGE_RATE_TOOLTIP                          :{BLACK}Ustal ku
 STR_CURRENCY_SEPARATOR                                          :{LTBLUE}Separator: {ORANGE}{STRING}
 STR_CURRENCY_SET_CUSTOM_CURRENCY_SEPARATOR_TOOLTIP              :{BLACK}Ustaw separator dla twojej waluty
 
-STR_CURRENCY_PREFIX                                             :{LTBLUE}Prefiks: {ORANGE}{STRING}
+STR_CURRENCY_PREFIX                                             :{LTBLUE}Przedrostek: {ORANGE}{STRING}
 STR_CURRENCY_SET_CUSTOM_CURRENCY_PREFIX_TOOLTIP                 :{BLACK}Ustaw przedrostek dla swojej waluty
-STR_CURRENCY_SUFFIX                                             :{LTBLUE}Sufiks: {ORANGE}{STRING}
+STR_CURRENCY_SUFFIX                                             :{LTBLUE}Przyrostek: {ORANGE}{STRING}
 STR_CURRENCY_SET_CUSTOM_CURRENCY_SUFFIX_TOOLTIP                 :{BLACK}Ustaw symbol dla twojej waluty
 
 STR_CURRENCY_SWITCH_TO_EURO                                     :{LTBLUE}Przejście na euro: {ORANGE}w {NUM} roku
@@ -6251,10 +6251,10 @@ STR_TOWN_NAME                                                   :{TOWN}
 STR_VEHICLE_NAME                                                :{VEHICLE}
 STR_WAYPOINT_NAME                                               :{WAYPOINT}
 
-STR_CURRENCY_SHORT_KILO                                         :{NBSP}k
-STR_CURRENCY_SHORT_MEGA                                         :{NBSP}m
+STR_CURRENCY_SHORT_KILO                                         :{NBSP}tys.
+STR_CURRENCY_SHORT_MEGA                                         :{NBSP}mln
 STR_CURRENCY_SHORT_GIGA                                         :{NBSP}mld
-STR_CURRENCY_SHORT_TERA                                         :{NBSP}tn
+STR_CURRENCY_SHORT_TERA                                         :{NBSP}bln
 
 STR_JUST_CARGO                                                  :{CARGO_LONG}
 STR_JUST_RIGHT_ARROW                                            :{RIGHT_ARROW}

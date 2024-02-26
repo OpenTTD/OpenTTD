@@ -251,6 +251,12 @@ STR_COLOUR_WHITE                                                :Λευκό
 STR_COLOUR_RANDOM                                               :Τυχαία
 
 ###length 17
+STR_COLOUR_SECONDARY_DARK_BLUE                                  :Σκούρο Μπλε
+STR_COLOUR_SECONDARY_GREEN                                      :Πράσινο
+STR_COLOUR_SECONDARY_DARK_GREEN                                 :Σκούρο Πράσινο
+STR_COLOUR_SECONDARY_BLUE                                       :Μπλε
+STR_COLOUR_SECONDARY_CREAM                                      :Κρεμ
+STR_COLOUR_SECONDARY_BROWN                                      :Καφέ
 
 
 # Units used in OpenTTD
@@ -1587,7 +1593,7 @@ STR_CONFIG_SETTING_LINKGRAPH_COLOURS_HELPTEXT                   :Θέσημο τ
 ###length 4
 STR_CONFIG_SETTING_LINKGRAPH_COLOURS_GREEN_TO_RED               :Πράσινο σε κόκκινο (Αρχικό)
 STR_CONFIG_SETTING_LINKGRAPH_COLOURS_GREEN_TO_BLUE              :Πράσινο σε μπλέ
-STR_CONFIG_SETTING_LINKGRAPH_COLOURS_GREY_TO_RED                :Γκρι σε μπλε
+STR_CONFIG_SETTING_LINKGRAPH_COLOURS_GREY_TO_RED                :Γκρι σε Κόκκινο
 STR_CONFIG_SETTING_LINKGRAPH_COLOURS_GREYSCALE                  :Ασπρόμαυρο
 
 STR_CONFIG_SETTING_SCROLLMODE                                   :Συμπεριφορά κύλισης του παραθύρου εμφάνισης: {STRING}
@@ -4626,10 +4632,14 @@ STR_SCREENSHOT_HEIGHTMAP_SCREENSHOT                             :{BLACK}Στιγ
 STR_SCREENSHOT_MINIMAP_SCREENSHOT                               :{BLACK}Στιγμιότυπο μίνι χάρτη
 
 # Script Parameters
+STR_AI_SETTINGS_CAPTION                                         :{WHITE}{STRING} Παράμετροι
 STR_AI_SETTINGS_CAPTION_AI                                      :AI
+STR_AI_SETTINGS_CAPTION_GAMESCRIPT                              :Σενάριο Παιχνιδιού
 STR_AI_SETTINGS_CLOSE                                           :{BLACK}Κλείσιμο
 STR_AI_SETTINGS_RESET                                           :{BLACK}Επαναφορά
 STR_AI_SETTINGS_SETTING                                         :{STRING}: {ORANGE}{STRING}
+STR_AI_SETTINGS_SETTING_DEVIATION                               :{STRING}: {ORANGE}[{STRING}, {STRING}]
+STR_AI_SETTINGS_JUST_DEVIATION                                  :[{STRING}, {STRING}]
 
 
 # Textfile window

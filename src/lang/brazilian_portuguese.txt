@@ -285,7 +285,7 @@ STR_TOOLTIP_WINDOW_TITLE_DRAG_THIS                              :{BLACK}Título 
 STR_TOOLTIP_SHADE                                               :{BLACK}Encolher janela - mostrar apenas a barra de título
 STR_TOOLTIP_DEBUG                                               :{BLACK}Mostrar informação de depuração de NewGRF
 STR_TOOLTIP_DEFSIZE                                             :{BLACK}Redimensionar a janela para o tamanho padrão. Ctrl+Clique para salvar o tamanho atual como padrão
-STR_TOOLTIP_STICKY                                              :{BLACK}Marcar esta janela para não ser fechada pela tecla 'Fechar Todas as Janelas'. Ctrl+Clique para salvar o estado como padrão
+STR_TOOLTIP_STICKY                                              :{BLACK}Fixar esta janela para ela não ser fechada pela tecla 'Fechar Todas as Janelas'. Use Ctrl+Clique para salvar o estado como padrão
 STR_TOOLTIP_RESIZE                                              :{BLACK}Clique e arraste para redimensionar esta janela
 STR_TOOLTIP_TOGGLE_LARGE_SMALL_WINDOW                           :{BLACK}Alternar entre janela grande/pequena
 STR_TOOLTIP_VSCROLL_BAR_SCROLLS_LIST                            :{BLACK}Barra de rolagem - desloca a lista para cima/baixo
@@ -302,8 +302,8 @@ STR_SHOW_HIDDEN_ENGINES_VEHICLE_AIRCRAFT                        :{BLACK}Mostrar 
 ###length VEHICLE_TYPES
 STR_SHOW_HIDDEN_ENGINES_VEHICLE_TRAIN_TOOLTIP                   :{BLACK}Ativando este botão, os veículos ferroviários ocultos também serão mostrados
 STR_SHOW_HIDDEN_ENGINES_VEHICLE_ROAD_VEHICLE_TOOLTIP            :{BLACK}Ativando este botão, os veículos rodoviários ocultos também serão mostrados
-STR_SHOW_HIDDEN_ENGINES_VEHICLE_SHIP_TOOLTIP                    :{BLACK}Ativando esse botão, as embarcações ocultas também serão mostradas
-STR_SHOW_HIDDEN_ENGINES_VEHICLE_AIRCRAFT_TOOLTIP                :{BLACK}Ativando esse botão, as aeronaves ocultas também serão mostradas
+STR_SHOW_HIDDEN_ENGINES_VEHICLE_SHIP_TOOLTIP                    :{BLACK}Ativando este botão, as embarcações ocultas também serão mostradas
+STR_SHOW_HIDDEN_ENGINES_VEHICLE_AIRCRAFT_TOOLTIP                :{BLACK}Ativando este botão, as aeronaves ocultas também serão mostradas
 
 # Query window
 STR_BUTTON_DEFAULT                                              :{BLACK}Padrão
@@ -382,7 +382,7 @@ STR_GOTO_ORDER_VIEW_TOOLTIP                                     :{BLACK}Abrir a 
 ###length 31
 STR_TOOLBAR_TOOLTIP_PAUSE_GAME                                  :{BLACK}Pausar jogo
 STR_TOOLBAR_TOOLTIP_FORWARD                                     :{BLACK}Acelerar o jogo
-STR_TOOLBAR_TOOLTIP_OPTIONS                                     :{BLACK}Opções e definições
+STR_TOOLBAR_TOOLTIP_OPTIONS                                     :{BLACK}Opções e configurações
 STR_TOOLBAR_TOOLTIP_SAVE_GAME_ABANDON_GAME                      :{BLACK}Salvar, abrir ou abandonar jogo, sair do OpenTTD
 STR_TOOLBAR_TOOLTIP_DISPLAY_MAP                                 :{BLACK}Abrir mapa, nova visualização, fluxo de cargas ou lista de sinais
 STR_TOOLBAR_TOOLTIP_DISPLAY_TOWN_DIRECTORY                      :{BLACK}Abrir lista de localidades ou encontrar localidade
@@ -881,7 +881,7 @@ STR_NEWS_INDUSTRY_PRODUCTION_INCREASE_OIL                       :{BIG_FONT}{BLAC
 STR_NEWS_INDUSTRY_PRODUCTION_INCREASE_FARM                      :{BIG_FONT}{BLACK}Métodos agrícolas aperfeiçoados na {INDUSTRY} deverão duplicar a produção!
 STR_NEWS_INDUSTRY_PRODUCTION_INCREASE_SMOOTH                    :{BIG_FONT}{BLACK}Produção de {STRING} {G nos na} {INDUSTRY} aumenta {COMMA}%!
 STR_NEWS_INDUSTRY_PRODUCTION_DECREASE_GENERAL                   :{BIG_FONT}{BLACK}A produção de {INDUSTRY} foi reduzida em 50%
-STR_NEWS_INDUSTRY_PRODUCTION_DECREASE_FARM                      :{BIG_FONT}{BLACK}Infestação de insetos causa destruição {G no na} {INDUSTRY}!{}Produção diminui em 50%
+STR_NEWS_INDUSTRY_PRODUCTION_DECREASE_FARM                      :{BIG_FONT}{BLACK}Infestação de insetos causa destruição {G no na} {INDUSTRY}!{}Produção diminui 50%
 STR_NEWS_INDUSTRY_PRODUCTION_DECREASE_SMOOTH                    :{BIG_FONT}{BLACK}Produção de {STRING} {G nos na} {INDUSTRY} diminui {COMMA}%!
 
 ###length VEHICLE_TYPES
@@ -936,10 +936,10 @@ STR_NEWS_EXCLUSIVE_RIGHTS_DESCRIPTION_MINUTES                   :{BIG_FONT}{BLAC
 
 # Extra view window
 STR_EXTRA_VIEWPORT_TITLE                                        :{WHITE}Janela de visualização {COMMA}
-STR_EXTRA_VIEW_MOVE_VIEW_TO_MAIN                                :{BLACK}Trocar de visualização
+STR_EXTRA_VIEW_MOVE_VIEW_TO_MAIN                                :{BLACK}Mudar a visualização
 STR_EXTRA_VIEW_MOVE_VIEW_TO_MAIN_TT                             :{BLACK}Copiar a localização da visualização principal para esta visualização
-STR_EXTRA_VIEW_MOVE_MAIN_TO_VIEW                                :{BLACK}Colar da visualização principal
-STR_EXTRA_VIEW_MOVE_MAIN_TO_VIEW_TT                             :{BLACK}Colar a localização desta janela de visualização para a visualização principal
+STR_EXTRA_VIEW_MOVE_MAIN_TO_VIEW                                :{BLACK}Mudar a visualização principal
+STR_EXTRA_VIEW_MOVE_MAIN_TO_VIEW_TT                             :{BLACK}Copiar a localização desta visualização para a visualização principal
 
 # Game options window
 STR_GAME_OPTIONS_CAPTION                                        :{WHITE}Opções do Jogo
@@ -1037,16 +1037,16 @@ STR_GAME_OPTIONS_RESOLUTION_OTHER                               :outra
 STR_GAME_OPTIONS_RESOLUTION_ITEM                                :{NUM}x{NUM}
 
 STR_GAME_OPTIONS_VIDEO_ACCELERATION                             :{BLACK}Aceleração de hardware
-STR_GAME_OPTIONS_VIDEO_ACCELERATION_TOOLTIP                     :{BLACK}Marque esta caixa para permitir que o OpenTTD tente usar a aceleração de hardware. Qualquer mudança nesta configuração será aplicada somente após reiniciar o jogo
+STR_GAME_OPTIONS_VIDEO_ACCELERATION_TOOLTIP                     :{BLACK}Marque esta caixa para permitir que o OpenTTD tente usar aceleração de hardware. Se modificada, esta configuração terá efeito somente após reiniciar o jogo
 STR_GAME_OPTIONS_VIDEO_ACCELERATION_RESTART                     :{WHITE}A configuração terá efeito somente após reiniciar o jogo
 
 STR_GAME_OPTIONS_VIDEO_VSYNC                                    :{BLACK}VSync
-STR_GAME_OPTIONS_VIDEO_VSYNC_TOOLTIP                            :{BLACK}Marque esta caixa para ativar v-sync na tela. Se modificada, esta configuração só terá efeito quado o jogo for reiniciado. Só funciona com aceleração de hardware habilitada
+STR_GAME_OPTIONS_VIDEO_VSYNC_TOOLTIP                            :{BLACK}Marque esta caixa para ativar v-sync na tela. Se modificada, esta configuração terá efeito somente após reiniciar o jogo. Só funciona com aceleração de hardware habilitada
 
 STR_GAME_OPTIONS_VIDEO_DRIVER_INFO                              :{BLACK}"Driver" atual: {STRING}
 
 STR_GAME_OPTIONS_GUI_SCALE_FRAME                                :{BLACK}Tamanho da interface
-STR_GAME_OPTIONS_GUI_SCALE_TOOLTIP                              :{BLACK}Arraste o controle deslizante para definir o tamanho da interface. Ctrl+Arrastar para fazer um ajuste contínuo
+STR_GAME_OPTIONS_GUI_SCALE_TOOLTIP                              :{BLACK}Arraste o controle deslizante para definir o tamanho da interface. Ctrl+Arrastar para um ajuste contínuo
 STR_GAME_OPTIONS_GUI_SCALE_AUTO                                 :{BLACK}Detetar automaticamente o tamanho
 STR_GAME_OPTIONS_GUI_SCALE_AUTO_TOOLTIP                         :{BLACK}Marque esta caixa para detetar automaticamente o tamanho da interface
 
@@ -1056,7 +1056,7 @@ STR_GAME_OPTIONS_GUI_SCALE_BEVELS_TOOLTIP                       :{BLACK}Marque e
 STR_GAME_OPTIONS_GUI_FONT_SPRITE                                :{BLACK}Usar a fonte sprite tradicional
 STR_GAME_OPTIONS_GUI_FONT_SPRITE_TOOLTIP                        :{BLACK}Marque esta caixa se preferir usar o tipo de fonte tradicional de tamanho fixo.
 STR_GAME_OPTIONS_GUI_FONT_AA                                    :{BLACK}Fontes com bordas suaves
-STR_GAME_OPTIONS_GUI_FONT_AA_TOOLTIP                            :{BLACK}Marque esta caixa para fontes redimensionáveis com bordas suaves.
+STR_GAME_OPTIONS_GUI_FONT_AA_TOOLTIP                            :{BLACK}Marque esta caixa para fontes redimensionáveis com contornos suaves.
 
 STR_GAME_OPTIONS_GUI_SCALE_1X                                   :1x
 STR_GAME_OPTIONS_GUI_SCALE_2X                                   :2x
@@ -1066,7 +1066,7 @@ STR_GAME_OPTIONS_GUI_SCALE_5X                                   :5x
 
 STR_GAME_OPTIONS_PARTICIPATE_SURVEY_FRAME                       :{BLACK}Pesquisa automatizada
 STR_GAME_OPTIONS_PARTICIPATE_SURVEY                             :{BLACK}Participar de pesquisa automatizada
-STR_GAME_OPTIONS_PARTICIPATE_SURVEY_TOOLTIP                     :{BLACK}Quando ativado, o OpenTTD transmitirá uma pesquisa ao sair de um jogo
+STR_GAME_OPTIONS_PARTICIPATE_SURVEY_TOOLTIP                     :{BLACK}Quando ativado, o OpenTTD enviará uma pesquisa ao sair de um jogo
 STR_GAME_OPTIONS_PARTICIPATE_SURVEY_LINK                        :{BLACK}Sobre pesquisa e privacidade
 STR_GAME_OPTIONS_PARTICIPATE_SURVEY_LINK_TOOLTIP                :{BLACK}Isso abre um navegador com mais informações sobre a pesquisa automatizada
 STR_GAME_OPTIONS_PARTICIPATE_SURVEY_PREVIEW                     :{BLACK}Pré-visualizar resultado da pesquisa
@@ -1075,20 +1075,20 @@ STR_GAME_OPTIONS_PARTICIPATE_SURVEY_PREVIEW_TOOLTIP             :{BLACK}Mostrar 
 STR_GAME_OPTIONS_GRAPHICS                                       :{BLACK}Gráficos
 
 STR_GAME_OPTIONS_REFRESH_RATE                                   :{BLACK}Taxa de atualização da tela
-STR_GAME_OPTIONS_REFRESH_RATE_TOOLTIP                           :{BLACK}Selecionar qual taxa de atualização da tela usar
+STR_GAME_OPTIONS_REFRESH_RATE_TOOLTIP                           :{BLACK}Selecione qual taxa de atualização da tela será usada
 STR_GAME_OPTIONS_REFRESH_RATE_ITEM                              :{NUM}Hz
-STR_GAME_OPTIONS_REFRESH_RATE_WARNING                           :{WHITE}Taxas de atualização superiores a 60Hz podem afetar o desempenho.
+STR_GAME_OPTIONS_REFRESH_RATE_WARNING                           :{WHITE}Taxas de atualização superiores a 60Hz podem interferir no desempenho.
 
 STR_GAME_OPTIONS_BASE_GRF                                       :{BLACK}Conjunto de gráficos base
-STR_GAME_OPTIONS_BASE_GRF_TOOLTIP                               :{BLACK}Selecionar qual conjunto de gráficos base usar (não pode ser alterado no jogo, só a partir do menu principal)
+STR_GAME_OPTIONS_BASE_GRF_TOOLTIP                               :{BLACK}Selecione qual conjunto de gráficos base usar (não pode ser alterado no jogo, só a partir do menu principal)
 STR_GAME_OPTIONS_BASE_GRF_DESCRIPTION_TOOLTIP                   :{BLACK}Informações adicionais sobre o conjunto de gráficos base
 
 STR_GAME_OPTIONS_BASE_SFX                                       :{BLACK}Conjunto de sons base
-STR_GAME_OPTIONS_BASE_SFX_TOOLTIP                               :{BLACK}Selecionar qual conjunto de sons base usar (não pode ser alterado no jogo, só a partir do menu principal)
+STR_GAME_OPTIONS_BASE_SFX_TOOLTIP                               :{BLACK}Selecione qual conjunto de sons base usar (não pode ser alterado no jogo, só a partir do menu principal)
 STR_GAME_OPTIONS_BASE_SFX_DESCRIPTION_TOOLTIP                   :{BLACK}Informações sobre o conjunto de sons base
 
 STR_GAME_OPTIONS_BASE_MUSIC                                     :{BLACK}Conjunto de músicas base
-STR_GAME_OPTIONS_BASE_MUSIC_TOOLTIP                             :{BLACK}Selecionar qual conjunto de músicas base usar
+STR_GAME_OPTIONS_BASE_MUSIC_TOOLTIP                             :{BLACK}Selecione qual conjunto de músicas base usar
 STR_GAME_OPTIONS_BASE_MUSIC_DESCRIPTION_TOOLTIP                 :{BLACK}Informação adicional sobre o conjunto de músicas base
 
 STR_GAME_OPTIONS_SOCIAL_PLUGINS_NONE                            :{LTBLUE}(não exitem plugins para integrar com as plataformas sociais instaladas)
@@ -1098,7 +1098,7 @@ STR_GAME_OPTIONS_SOCIAL_PLUGIN_PLATFORM                         :{BLACK}Platafor
 STR_GAME_OPTIONS_SOCIAL_PLUGIN_STATE                            :{BLACK}Estado do plugin:
 
 STR_GAME_OPTIONS_SOCIAL_PLUGIN_STATE_RUNNING                    :{GREEN}Executando
-STR_GAME_OPTIONS_SOCIAL_PLUGIN_STATE_FAILED                     :{RED}Falha na inicialização
+STR_GAME_OPTIONS_SOCIAL_PLUGIN_STATE_FAILED                     :{RED}Falha ao inicializar
 STR_GAME_OPTIONS_SOCIAL_PLUGIN_STATE_PLATFORM_NOT_RUNNING       :{ORANGE}{STRING} não executando
 STR_GAME_OPTIONS_SOCIAL_PLUGIN_STATE_UNLOADED                   :{RED}Descarregado
 STR_GAME_OPTIONS_SOCIAL_PLUGIN_STATE_DUPLICATE                  :{RED}Plugin duplicado
@@ -1107,7 +1107,7 @@ STR_GAME_OPTIONS_SOCIAL_PLUGIN_STATE_INVALID_SIGNATURE          :{RED}Assinatura
 
 STR_BASESET_STATUS                                              :{STRING} {RED}({NUM} arquivo{P "" s} em falta/corrompido{P "" s})
 
-STR_ERROR_RESOLUTION_LIST_FAILED                                :{WHITE}Falha ao obter a lista de resoluções suportadas
+STR_ERROR_RESOLUTION_LIST_FAILED                                :{WHITE}Falha ao obter uma lista de resoluções suportadas
 STR_ERROR_FULLSCREEN_FAILED                                     :{WHITE}Modo de tela cheia falhou
 
 # Custom currency window
@@ -1189,7 +1189,7 @@ STR_SUBSIDY_X4                                                  :x4
 STR_CLIMATE_TEMPERATE_LANDSCAPE                                 :Clima temperado
 STR_CLIMATE_SUB_ARCTIC_LANDSCAPE                                :Clima subárctico
 STR_CLIMATE_SUB_TROPICAL_LANDSCAPE                              :Clima subtropical
-STR_CLIMATE_TOYLAND_LANDSCAPE                                   :"Clima" Terra dos Brinquedos
+STR_CLIMATE_TOYLAND_LANDSCAPE                                   :Paisagem Terra dos Brinquedos
 
 ###length 7
 STR_TERRAIN_TYPE_VERY_FLAT                                      :Muito Plano
@@ -1211,27 +1211,27 @@ STR_WARNING_NO_SUITABLE_AI                                      :{WHITE}Não exi
 # Settings tree window
 STR_CONFIG_SETTING_TREE_CAPTION                                 :{WHITE}Configurações
 STR_CONFIG_SETTING_FILTER_TITLE                                 :{BLACK}Filtro:
-STR_CONFIG_SETTING_EXPAND_ALL                                   :{BLACK}Expandir todas
-STR_CONFIG_SETTING_COLLAPSE_ALL                                 :{BLACK}Colapsar todas
+STR_CONFIG_SETTING_EXPAND_ALL                                   :{BLACK}Expandir tudo
+STR_CONFIG_SETTING_COLLAPSE_ALL                                 :{BLACK}Colapsar tudo
 STR_CONFIG_SETTING_RESET_ALL                                    :{BLACK}Restaurar todos os valores
 STR_CONFIG_SETTING_NO_EXPLANATION_AVAILABLE_HELPTEXT            :(sem explicação disponível)
 STR_CONFIG_SETTING_VALUE                                        :{PUSH_COLOUR}{ORANGE}{STRING}{POP_COLOUR}
 STR_CONFIG_SETTING_DEFAULT_VALUE                                :{LTBLUE}Valor padrão: {ORANGE}{STRING}
 STR_CONFIG_SETTING_TYPE                                         :{LTBLUE}Tipo de configuração: {ORANGE}{STRING}
-STR_CONFIG_SETTING_TYPE_CLIENT                                  :Configuração de cliente (não é incluída em jogos salvos; afeta todos os jogos)
+STR_CONFIG_SETTING_TYPE_CLIENT                                  :Configuração de cliente (não é armazenada em jogos salvos; afeta todos os jogos)
 STR_CONFIG_SETTING_TYPE_GAME_MENU                               :Configuração do jogo (armazenado no jogo salvo; afeta apenas novos jogos)
 STR_CONFIG_SETTING_TYPE_GAME_INGAME                             :Configuração do jogo (armazenado no jogo salvo; afeta apenas o jogo atual)
-STR_CONFIG_SETTING_TYPE_COMPANY_MENU                            :Configurações da empresa (armazenadas no jogo salvo; afeta apenas novos jogos)
-STR_CONFIG_SETTING_TYPE_COMPANY_INGAME                          :Configurações da empresa (armazenadas no jogo salvo; afeta apenas a empresa atual)
+STR_CONFIG_SETTING_TYPE_COMPANY_MENU                            :Configuração da empresa (armazenada no jogo salvo; afeta apenas novos jogos)
+STR_CONFIG_SETTING_TYPE_COMPANY_INGAME                          :Configuração da empresa (armazenada no jogo salvo; afeta apenas a empresa atual)
 STR_CONFIG_SETTING_RESET_ALL_CONFIRMATION_DIALOG_CAPTION        :{WHITE}Cuidado!
-STR_CONFIG_SETTING_RESET_ALL_CONFIRMATION_DIALOG_TEXT           :{WHITE}Essa ação irá restaurar todas as configurações para os valores padrão.{}Tem certeza que deseja continuar?
+STR_CONFIG_SETTING_RESET_ALL_CONFIRMATION_DIALOG_TEXT           :{WHITE}Esta ação irá restaurar todas as configurações do jogo para os seus valores padrão.{}Você tem certeza que deseja continuar?
 
 STR_CONFIG_SETTING_RESTRICT_CATEGORY                            :{BLACK}Categoria:
 STR_CONFIG_SETTING_RESTRICT_TYPE                                :{BLACK}Tipo:
 STR_CONFIG_SETTING_RESTRICT_DROPDOWN_HELPTEXT                   :{BLACK}Restringe a lista abaixo usando filtros pré-definidos
 STR_CONFIG_SETTING_RESTRICT_BASIC                               :Básico (mostrar apenas as configurações importantes)
-STR_CONFIG_SETTING_RESTRICT_ADVANCED                            :Avançado (mostra a maioria das definições)
-STR_CONFIG_SETTING_RESTRICT_ALL                                 :Especialista (mostrar todas as definições, incluindo as estranhas)
+STR_CONFIG_SETTING_RESTRICT_ADVANCED                            :Avançado (mostrar a maioria das configurações)
+STR_CONFIG_SETTING_RESTRICT_ALL                                 :Especialista (mostrar todas as configurações, incluindo as estranhas)
 STR_CONFIG_SETTING_RESTRICT_CHANGED_AGAINST_DEFAULT             :Configurações com um valor diferente do padrão
 STR_CONFIG_SETTING_RESTRICT_CHANGED_AGAINST_NEW                 :Configurações com um valor diferente das preferências para novos jogos
 
@@ -1262,7 +1262,7 @@ STR_CONFIG_SETTING_COMPANIES_ALL                                :Todas as empres
 ###length 3
 STR_CONFIG_SETTING_NONE                                         :Nenhum
 STR_CONFIG_SETTING_ORIGINAL                                     :Original
-STR_CONFIG_SETTING_REALISTIC                                    :Realístico
+STR_CONFIG_SETTING_REALISTIC                                    :Realista
 
 ###length 3
 STR_CONFIG_SETTING_HORIZONTAL_POS_LEFT                          :Esquerda
@@ -1271,7 +1271,7 @@ STR_CONFIG_SETTING_HORIZONTAL_POS_RIGHT                         :Direita
 
 STR_CONFIG_SETTING_SECONDS_VALUE                                :{COMMA}{NBSP}segundo{P 0 "" s}
 
-STR_CONFIG_SETTING_INFINITE_MONEY                               :Dinheiro infinito: {STRING}
+STR_CONFIG_SETTING_INFINITE_MONEY                               :Dinheiro ilimitado: {STRING}
 STR_CONFIG_SETTING_INFINITE_MONEY_HELPTEXT                      :Permite gastos ilimitados e desabilita a falência de empresas
 
 STR_CONFIG_SETTING_MAXIMUM_INITIAL_LOAN                         :Valor máximo do empréstimo inicial: {STRING}
@@ -1320,7 +1320,7 @@ STR_CONFIG_SETTING_CITY_APPROVAL                                :Atitude da auto
 STR_CONFIG_SETTING_CITY_APPROVAL_HELPTEXT                       :Define de que forma o ruído sonoro e os danos ambientais causados pelas empresas afetam a sua classificação na localidade e as futuras ações de construção na localidade
 
 STR_CONFIG_SETTING_MAP_HEIGHT_LIMIT                             :Limite de altura do mapa: {STRING}
-STR_CONFIG_SETTING_MAP_HEIGHT_LIMIT_HELPTEXT                    :Define a altura máxima do terreno do mapa. Com "(auto)" um bom valor será escolhido após a geração do terreno
+STR_CONFIG_SETTING_MAP_HEIGHT_LIMIT_HELPTEXT                    :Define a altura máxima do terreno do mapa. Com "(automático)" um valor adequado será escolhido após a geração do terreno
 STR_CONFIG_SETTING_MAP_HEIGHT_LIMIT_VALUE                       :{NUM}
 ###setting-zero-is-special
 STR_CONFIG_SETTING_MAP_HEIGHT_LIMIT_AUTO                        :(automático)
@@ -1333,7 +1333,7 @@ STR_CONFIG_SETTING_CATCHMENT                                    :Permitir áreas
 STR_CONFIG_SETTING_CATCHMENT_HELPTEXT                           :Usa área de abrangência de tamanhos diferentes para diferentes tipos de estações e aeroportos
 
 STR_CONFIG_SETTING_SERVE_NEUTRAL_INDUSTRIES                     :Estações de empresas podem servir indústrias com estações neutras anexadas: {STRING}
-STR_CONFIG_SETTING_SERVE_NEUTRAL_INDUSTRIES_HELPTEXT            :Se ativado, indústrias com estações incluídas (como as Petrolíferas) podem ser servidas por estações da empresa que estão nas redondezas. Quando desativado, essas indústrias só podem ser servidas pela sua própria estação. Qualquer estação da empresa nas redondezas não poderá servir as indústrias e a estação incluída não poderá servir outra entidade senão a própria indústria
+STR_CONFIG_SETTING_SERVE_NEUTRAL_INDUSTRIES_HELPTEXT            :Quando ativado, indústrias com estações incluídas (como as Petrolíferas) podem ser servidas por estações da empresa construídas nas proximidades. Quando desativado, essas indústrias só podem ser servidas pela sua própria estação. Qualquer estação da empresa nas redondezas não poderá servir a indústria e a estação incluída não poderá atender outra senão a própria indústria
 
 STR_CONFIG_SETTING_EXTRADYNAMITE                                :Permitir a remoção de mais estradas, pontes e túneis das cidades: {STRING}
 STR_CONFIG_SETTING_EXTRADYNAMITE_HELPTEXT                       :Torna mais fácil remover edifícios e infraestruturas das localidades
@@ -1365,7 +1365,7 @@ STR_CONFIG_SETTING_DISTANT_JOIN_STATIONS                        :Permitir a uni�
 STR_CONFIG_SETTING_DISTANT_JOIN_STATIONS_HELPTEXT               :Permite adicionar partes a uma estação sem tocar diretamente nas partes já existentes usando Ctrl+Clique quando for adicionar partes novas
 
 STR_CONFIG_SETTING_INFLATION                                    :Inflação: {STRING}
-STR_CONFIG_SETTING_INFLATION_HELPTEXT                           :Permitir inflação na economia, na qual os custos aumentam ligeiramente mais depressa do que os recebimentos
+STR_CONFIG_SETTING_INFLATION_HELPTEXT                           :Permitir inflação na economia, na qual os custos aumentam ligeiramente mais depressa do que as receitas
 
 STR_CONFIG_SETTING_MAX_BRIDGE_LENGTH                            :Comprimento máximo de pontes: {STRING}
 STR_CONFIG_SETTING_MAX_BRIDGE_LENGTH_HELPTEXT                   :Comprimento máximo para construção de pontes
@@ -1387,7 +1387,7 @@ STR_CONFIG_SETTING_INDUSTRY_PLATFORM                            :Área plana ao 
 STR_CONFIG_SETTING_INDUSTRY_PLATFORM_HELPTEXT                   :Quantidade de terreno plano à volta de uma indústria. Isto garante que um espaço vazio permanecerá disponível em torno da indústria para a construção de linhas, etc.
 
 STR_CONFIG_SETTING_MULTIPINDTOWN                                :Permitir várias indústrias semelhantes por localidade: {STRING}
-STR_CONFIG_SETTING_MULTIPINDTOWN_HELPTEXT                       :Normalmente, localidades não aceitam mais de uma indústria de cada tipo. Se ativado, permite várias indústrias do mesmo tipo na mesma localidade
+STR_CONFIG_SETTING_MULTIPINDTOWN_HELPTEXT                       :Normalmente, localidades não aceitam mais de uma indústria de cada tipo. Com esta configuração, será possível existir várias indústrias do mesmo tipo na mesma localidade
 
 STR_CONFIG_SETTING_SIGNALSIDE                                   :Mostrar sinais: {STRING}
 STR_CONFIG_SETTING_SIGNALSIDE_HELPTEXT                          :Escolher em que lado da via colocar sinais
@@ -1401,8 +1401,8 @@ STR_CONFIG_SETTING_SHOWFINANCES                                 :Mostrar janela 
 STR_CONFIG_SETTING_SHOWFINANCES_PERIOD                          :Mostrar janela de finanças no fim do período: {STRING}
 
 ###length 2
-STR_CONFIG_SETTING_SHOWFINANCES_HELPTEXT                        :Se ativado, a janela de finanças é aberta ao final de cada ano para permitir uma inspeção fácil do estado financeiro da empresa
-STR_CONFIG_SETTING_SHOWFINANCES_HELPTEXT_PERIOD                 :Se ativado, a janela de finanças é aberta no final de cada período permitindo uma inspeção fácil do estado financeiro da empresa
+STR_CONFIG_SETTING_SHOWFINANCES_HELPTEXT                        :Se ativado, a janela de finanças é aberta ao final de cada ano, permitindo uma inspeção fácil do estado financeiro da empresa
+STR_CONFIG_SETTING_SHOWFINANCES_HELPTEXT_PERIOD                 :Se ativado, a janela de finanças é aberta no final de cada período, permitindo uma inspeção fácil do estado financeiro da empresa
 
 STR_CONFIG_SETTING_NONSTOP_BY_DEFAULT                           :Novas ordens são 'sem parar' por padrão: {STRING}
 STR_CONFIG_SETTING_NONSTOP_BY_DEFAULT_HELPTEXT                  :Normalmente, um veículo irá parar em cada estação por onde passa. Ativando esta configuração, o veículo passará por todas as estações na sua rota, sem parar, até o destino final. Esta opção define somente um modo padrão para novas ordens. Ordens individuais podem ser definidas explicitamente para qualquer um dos dois comportamentos
@@ -1415,7 +1415,7 @@ STR_CONFIG_SETTING_STOP_LOCATION_MIDDLE                         :meio
 STR_CONFIG_SETTING_STOP_LOCATION_FAR_END                        :fim
 
 STR_CONFIG_SETTING_AUTOSCROLL                                   :Mover a janela quando o cursor está na borda do mapa: {STRING}
-STR_CONFIG_SETTING_AUTOSCROLL_HELPTEXT                          :Quando ativado, a visualização irá se mover quando o mouse se aproximar das bordas da janela
+STR_CONFIG_SETTING_AUTOSCROLL_HELPTEXT                          :Quando ativado, as visualizações começarão a se mover quando o mouse se aproximar das bordas da janela
 ###length 4
 STR_CONFIG_SETTING_AUTOSCROLL_DISABLED                          :Desativado
 STR_CONFIG_SETTING_AUTOSCROLL_MAIN_VIEWPORT_FULLSCREEN          :Visualização principal, apenas em tela cheia
@@ -1455,8 +1455,8 @@ STR_CONFIG_SETTING_PLANE_CRASHES_NONE                           :Nenhum
 STR_CONFIG_SETTING_PLANE_CRASHES_REDUCED                        :Reduzido
 STR_CONFIG_SETTING_PLANE_CRASHES_NORMAL                         :Normal
 
-STR_CONFIG_SETTING_CROSSING_WITH_COMPETITOR                     :Permitir passagens de nível nas estradas ou trilhos de outras empresas: {STRING}
-STR_CONFIG_SETTING_CROSSING_WITH_COMPETITOR_HELPTEXT            :Permitir a construção de passagens de nível nas estradas ou trilhos de outras empresas
+STR_CONFIG_SETTING_CROSSING_WITH_COMPETITOR                     :Permitir passagens de nível com estradas ou trilhos dos concorrentes: {STRING}
+STR_CONFIG_SETTING_CROSSING_WITH_COMPETITOR_HELPTEXT            :Permitir a construção de passagens de nível nas estradas ou trilhos que pertencem aos concorrentes
 
 STR_CONFIG_SETTING_STOP_ON_TOWN_ROAD                            :Permitir estações de passagem nas estradas das localidades: {STRING}
 STR_CONFIG_SETTING_STOP_ON_TOWN_ROAD_HELPTEXT                   :Permitir a construção de estações de passagem nas estradas que pertencem às localidades
@@ -1474,7 +1474,7 @@ STR_CONFIG_SETTING_COMPANY_STARTING_COLOUR_SECONDARY            :Cor inicial sec
 STR_CONFIG_SETTING_COMPANY_STARTING_COLOUR_SECONDARY_HELPTEXT   :Escolher a cor inicial secundária para a empresa, se um NewGRF precisar usá-la.
 
 STR_CONFIG_SETTING_NEVER_EXPIRE_AIRPORTS                        :Aeroportos nunca expiram: {STRING}
-STR_CONFIG_SETTING_NEVER_EXPIRE_AIRPORTS_HELPTEXT               :Se ativado, cada tipo de aeroporto ficará disponível para sempre após a sua introdução
+STR_CONFIG_SETTING_NEVER_EXPIRE_AIRPORTS_HELPTEXT               :Quando ativada, esta configuração torna cada tipo de aeroporto disponível para sempre após a sua introdução
 
 STR_CONFIG_SETTING_WARN_LOST_VEHICLE                            :Avisar se o veículo está perdido: {STRING}
 STR_CONFIG_SETTING_WARN_LOST_VEHICLE_HELPTEXT                   :Mostrar mensagens sobre veículos que não conseguem encontrar um caminho para o destino ordenado
@@ -1492,7 +1492,7 @@ STR_CONFIG_SETTING_WARN_INCOME_LESS_HELPTEXT                    :Quando ativado,
 STR_CONFIG_SETTING_WARN_INCOME_LESS_HELPTEXT_PERIOD             :Quando ativado, uma mensagem é enviada quando um veículo não gerou qualquer lucro durante um período
 
 STR_CONFIG_SETTING_NEVER_EXPIRE_VEHICLES                        :Veículos nunca saem de linha: {STRING}
-STR_CONFIG_SETTING_NEVER_EXPIRE_VEHICLES_HELPTEXT               :Quanto ativado, todos os modelos de veículos permanecerão disponíveis para sempre após a sua introdução
+STR_CONFIG_SETTING_NEVER_EXPIRE_VEHICLES_HELPTEXT               :Quando ativado, todos os modelos de veículos permanecerão disponíveis para sempre após a sua introdução
 
 STR_CONFIG_SETTING_TIMEKEEPING_UNITS                            :Unidades de tempo: {STRING}
 STR_CONFIG_SETTING_TIMEKEEPING_UNITS_HELPTEXT                   :Selecionar as unidades de tempo para o jogo. Isto não pode ser alterado posteriormente.{}{}O modo clássico no OpenTTD é baseado em um calendário, em que um ano é composto de 12 meses e cada mês tem 28-31 dias.{}{}No tempo baseado no relógio de parede, a produção de carga e as finanças são baseadas em incrementos de um minuto, que tem aproximadamente a mesma duração de um mês de 30 dias no modo baseado em calendário. Esses incrementos são agrupados em períodos de 12 minutos, equivalentes a um ano no modo baseado em calendário.{}{}Nos dois modos, há sempre um calendário clássico, que é usado para datas de introdução de veículos, casas e outras infraestruturas.
@@ -1543,7 +1543,7 @@ STR_CONFIG_SETTING_GRAPH_LINE_THICKNESS_HELPTEXT                :Espessura da li
 STR_CONFIG_SETTING_SHOW_NEWGRF_NAME                             :Mostrar o nome do NewGRF na janela de comprar veículos: {STRING}
 STR_CONFIG_SETTING_SHOW_NEWGRF_NAME_HELPTEXT                    :Adiciona uma linha à janela de aquisição de veículos, mostrando a qual NewGRF pertence o veículo selecionado.
 STR_CONFIG_SETTING_SHOW_CARGO_IN_LISTS                          :Mostrar as cargas que os veículos podem transportar nas janelas de listagem {STRING}
-STR_CONFIG_SETTING_SHOW_CARGO_IN_LISTS_HELPTEXT                 :Se ativado, a carga transportável do veículo aparecerá acima dele nas listas de veículos
+STR_CONFIG_SETTING_SHOW_CARGO_IN_LISTS_HELPTEXT                 :Se ativado, a carga transportável pelo veículo aparecerá acima dele nas listas de veículos
 
 STR_CONFIG_SETTING_LANDSCAPE                                    :Clima: {STRING}
 STR_CONFIG_SETTING_LANDSCAPE_HELPTEXT                           :Os climas definem a jogabilidade básica com diferentes cargas e requerimentos para o crescimento das localidades. NewGRFs e Scripts de Jogo permitem um controle mais fino
@@ -1645,17 +1645,17 @@ STR_CONFIG_SETTING_SCROLLMODE_RMB_LOCKED                        :Mover mapa com 
 STR_CONFIG_SETTING_SCROLLMODE_RMB                               :Mover mapa com Botão Direito Mouse
 STR_CONFIG_SETTING_SCROLLMODE_LMB                               :Move mapa com Botão Esquerdo Mouse
 
-STR_CONFIG_SETTING_SMOOTH_SCROLLING                             :Suavizar rolamento da visualização: {STRING}
-STR_CONFIG_SETTING_SMOOTH_SCROLLING_HELPTEXT                    :Controla como a visualização principal se move para uma localização específica ao clicar no minimapa ou ao dar um comando para ir a um objeto específico no mapa. Se ativado, a visualização principal se move suavemente, se desativado a visualização salta diretamente para o ponto escolhido
+STR_CONFIG_SETTING_SMOOTH_SCROLLING                             :Suavizar deslocamento da visualização: {STRING}
+STR_CONFIG_SETTING_SMOOTH_SCROLLING_HELPTEXT                    :Controla como a visualização principal se move para uma localização específica ao clicar no minimapa ou quando é dado um comando para ir até um objeto específico no mapa. Se ativado, a visualização principal se move suavemente, se desativado a visualização salta diretamente para o ponto escolhido
 
 STR_CONFIG_SETTING_MEASURE_TOOLTIP                              :Mostrar medidas quando usar as ferramentas de construção: {STRING}
-STR_CONFIG_SETTING_MEASURE_TOOLTIP_HELPTEXT                     :Mostrar as distâncias em quadrados e diferenças de altura quando Clicar+Arrastar nas ações de construção
+STR_CONFIG_SETTING_MEASURE_TOOLTIP_HELPTEXT                     :Mostrar distâncias em quadrados e diferenças de altura quando Clicar+Arrastar nas ações de construção
 
 STR_CONFIG_SETTING_LIVERIES                                     :Mostrar pinturas específicas do tipo de veículo: {STRING}
 STR_CONFIG_SETTING_LIVERIES_HELPTEXT                            :Controla a utilização de pinturas específicas por tipo de veículo (em vez de pinturas por empresa)
 ###length 3
 STR_CONFIG_SETTING_LIVERIES_NONE                                :Nenhum
-STR_CONFIG_SETTING_LIVERIES_OWN                                 :Minha empresa
+STR_CONFIG_SETTING_LIVERIES_OWN                                 :Própria empresa
 STR_CONFIG_SETTING_LIVERIES_ALL                                 :Todas as empresas
 
 STR_CONFIG_SETTING_PREFER_TEAMCHAT                              :Preferir chat de equipe com <ENTER>: {STRING}
@@ -1686,8 +1686,8 @@ STR_CONFIG_SETTING_USE_RELAY_SERVICE_NEVER                      :Nunca
 STR_CONFIG_SETTING_USE_RELAY_SERVICE_ASK                        :Perguntar
 STR_CONFIG_SETTING_USE_RELAY_SERVICE_ALLOW                      :Permitir
 
-STR_CONFIG_SETTING_RIGHT_MOUSE_BTN_EMU                          :Simulação de clique com botão direito: {STRING}
-STR_CONFIG_SETTING_RIGHT_MOUSE_BTN_EMU_HELPTEXT                 :Selecionar o método para simular os cliques do botão direito do mouse
+STR_CONFIG_SETTING_RIGHT_MOUSE_BTN_EMU                          :Emulação de clique com botão direito: {STRING}
+STR_CONFIG_SETTING_RIGHT_MOUSE_BTN_EMU_HELPTEXT                 :Selecionar o método para emular os cliques do botão direito do mouse
 ###length 3
 STR_CONFIG_SETTING_RIGHT_MOUSE_BTN_EMU_COMMAND                  :Command+Clique
 STR_CONFIG_SETTING_RIGHT_MOUSE_BTN_EMU_CONTROL                  :Ctrl+Clique
@@ -1698,7 +1698,7 @@ STR_CONFIG_SETTING_RIGHT_MOUSE_WND_CLOSE_HELPTEXT               :Fecha uma janel
 ###length 3
 STR_CONFIG_SETTING_RIGHT_MOUSE_WND_CLOSE_NO                     :Não
 STR_CONFIG_SETTING_RIGHT_MOUSE_WND_CLOSE_YES                    :Sim
-STR_CONFIG_SETTING_RIGHT_MOUSE_WND_CLOSE_YES_EXCEPT_STICKY      :Sim, exceto as aderidas
+STR_CONFIG_SETTING_RIGHT_MOUSE_WND_CLOSE_YES_EXCEPT_STICKY      :Sim, exceto fixadas
 
 STR_CONFIG_SETTING_DATE_FORMAT_IN_SAVE_NAMES                    :Usar o formato de data {STRING} ao salvar os arquivos de jogos
 STR_CONFIG_SETTING_DATE_FORMAT_IN_SAVE_NAMES_HELPTEXT           :Formato da data nos nomes dos jogos salvos
@@ -1801,19 +1801,19 @@ STR_CONFIG_SETTING_MAX_SHIPS                                    :Número máximo
 STR_CONFIG_SETTING_MAX_SHIPS_HELPTEXT                           :Número máximo de embarcações que uma empresa pode ter
 
 STR_CONFIG_SETTING_AI_BUILDS_TRAINS                             :Desativar trens para o computador: {STRING}
-STR_CONFIG_SETTING_AI_BUILDS_TRAINS_HELPTEXT                    :Se ativado, não permite que jogadores controlados pelo computador construam trens
+STR_CONFIG_SETTING_AI_BUILDS_TRAINS_HELPTEXT                    :Quando ativada, esta configuração não permite a construção de trens por um competidor controlado por IA
 
 STR_CONFIG_SETTING_AI_BUILDS_ROAD_VEHICLES                      :Desativar veículos rodoviários para o computador: {STRING}
-STR_CONFIG_SETTING_AI_BUILDS_ROAD_VEHICLES_HELPTEXT             :Se ativado, não permite a construção de veículos rodoviários por um jogador controlado pelo computador
+STR_CONFIG_SETTING_AI_BUILDS_ROAD_VEHICLES_HELPTEXT             :Quando ativada, esta configuração não permite a construção de veículos rodoviários por um competidor controlado por IA
 
 STR_CONFIG_SETTING_AI_BUILDS_AIRCRAFT                           :Desativar aeronaves para o computador: {STRING}
-STR_CONFIG_SETTING_AI_BUILDS_AIRCRAFT_HELPTEXT                  :Se ativado, não permite a construção de aeronaves por um jogador controlado pelo computador
+STR_CONFIG_SETTING_AI_BUILDS_AIRCRAFT_HELPTEXT                  :Quando ativada, esta configuração não permite a construção de aeronaves por um competidor controlado por IA
 
 STR_CONFIG_SETTING_AI_BUILDS_SHIPS                              :Desativar embarcação para o computador: {STRING}
-STR_CONFIG_SETTING_AI_BUILDS_SHIPS_HELPTEXT                     :Se ativado, não permite que jogadores controlados pelo computador construam embarcações
+STR_CONFIG_SETTING_AI_BUILDS_SHIPS_HELPTEXT                     :Quando ativada, esta configuração não permite a construção de embarcações por um competidor controlado por IA
 
 STR_CONFIG_SETTING_AI_IN_MULTIPLAYER                            :Permitir IA's em multijogador: {STRING}
-STR_CONFIG_SETTING_AI_IN_MULTIPLAYER_HELPTEXT                   :Permite que jogadores controlados pelo computador participem de jogos multijogador
+STR_CONFIG_SETTING_AI_IN_MULTIPLAYER_HELPTEXT                   :Permite que competidores controlados por IA participem de jogos multijogador
 
 STR_CONFIG_SETTING_SCRIPT_MAX_OPCODES                           :#opcodes antes de scripts serem suspensos: {STRING}
 STR_CONFIG_SETTING_SCRIPT_MAX_OPCODES_HELPTEXT                  :Número máximo de passos computacionais que um script pode executar em um turno
@@ -1840,25 +1840,25 @@ STR_CONFIG_SETTING_NOSERVICE                                    :Desativar manut
 STR_CONFIG_SETTING_NOSERVICE_HELPTEXT                           :Quando ativado, veículos não recebem manutenção se não puderem quebrar
 
 STR_CONFIG_SETTING_STATION_LENGTH_LOADING_PENALTY               :Penalidade de velocidade de carregamento para trens que são mais longos que a estação: {STRING}
-STR_CONFIG_SETTING_STATION_LENGTH_LOADING_PENALTY_HELPTEXT      :Quando ativado, os trens que são muito compridos para a estação demoram mais tempo para carregar do que um trem que cabe na estação. Esta definição não afeta a geração de rotas.
+STR_CONFIG_SETTING_STATION_LENGTH_LOADING_PENALTY_HELPTEXT      :Quando ativado, os trens que são muito compridos para a estação demoram mais tempo para carregar do que um trem que cabe na estação. Esta configuração não afeta a geração de rotas.
 
 STR_CONFIG_SETTING_WAGONSPEEDLIMITS                             :Ativar limites de velocidade para vagões: {STRING}
 STR_CONFIG_SETTING_WAGONSPEEDLIMITS_HELPTEXT                    :Quando ativado, aplica os limites de velocidade dos vagões para definir a velocidade máxima de um trem
 
 STR_CONFIG_SETTING_DISABLE_ELRAILS                              :Desativar ferrovias elétricas: {STRING}
-STR_CONFIG_SETTING_DISABLE_ELRAILS_HELPTEXT                     :Se ativado, essa configuração desativa a necessidade de eletrificar os trilhos para que locomotivas elétricas possam utilizá-los
+STR_CONFIG_SETTING_DISABLE_ELRAILS_HELPTEXT                     :Quando ativada, esta configuração desativa a necessidade de eletrificar os trilhos para que locomotivas elétricas possam utilizá-los
 
 STR_CONFIG_SETTING_NEWS_ARRIVAL_FIRST_VEHICLE_OWN               :Chegada do primeiro veículo à estação do jogador: {STRING}
 STR_CONFIG_SETTING_NEWS_ARRIVAL_FIRST_VEHICLE_OWN_HELPTEXT      :Mostrar um jornal quando o primeiro veículo chegar a uma estação nova do jogador
 
-STR_CONFIG_SETTING_NEWS_ARRIVAL_FIRST_VEHICLE_OTHER             :Chegada do primeiro veículo na estação concorrente: {STRING}
+STR_CONFIG_SETTING_NEWS_ARRIVAL_FIRST_VEHICLE_OTHER             :Chegada do primeiro veículo à estação de um concorrente: {STRING}
 STR_CONFIG_SETTING_NEWS_ARRIVAL_FIRST_VEHICLE_OTHER_HELPTEXT    :Mostrar um jornal quando o primeiro veículo chegar a uma estação nova de um concorrente
 
 STR_CONFIG_SETTING_NEWS_ACCIDENTS_DISASTERS                     :Acidentes / desastres: {STRING}
 STR_CONFIG_SETTING_NEWS_ACCIDENTS_DISASTERS_HELPTEXT            :Mostrar um jornal quando ocorrem acidentes ou desastres
 
 STR_CONFIG_SETTING_NEWS_ACCIDENT_OTHER                          :Acidentes de veículos dos concorrentes: {STRING}
-STR_CONFIG_SETTING_NEWS_ACCIDENT_OTHER_HELPTEXT                 :Mostrar um jornal para os concorrentes sobre veículos acidentados
+STR_CONFIG_SETTING_NEWS_ACCIDENT_OTHER_HELPTEXT                 :Mostrar um jornal sobre veículos acidentados para concorrentes
 
 STR_CONFIG_SETTING_NEWS_COMPANY_INFORMATION                     :Informações da empresa: {STRING}
 STR_CONFIG_SETTING_NEWS_COMPANY_INFORMATION_HELPTEXT            :Mostrar um jornal quando uma nova empresa é criada ou quando empresas estão à beira da falência
@@ -1953,13 +1953,13 @@ STR_CONFIG_SETTING_TOWN_LAYOUT_RANDOM                           :Aleatório
 STR_CONFIG_SETTING_ALLOW_TOWN_ROADS                             :Localidades podem construir estradas: {STRING}
 STR_CONFIG_SETTING_ALLOW_TOWN_ROADS_HELPTEXT                    :Permitir que localidades construam estradas para crescimento. Desative para prevenir a construção de estradas pelas autoridades locais
 STR_CONFIG_SETTING_ALLOW_TOWN_LEVEL_CROSSINGS                   :Localidades podem construir passagens de nível: {STRING}
-STR_CONFIG_SETTING_ALLOW_TOWN_LEVEL_CROSSINGS_HELPTEXT          :Se ativado, permite que as localidades construam ruas que atravessam ferrovias
+STR_CONFIG_SETTING_ALLOW_TOWN_LEVEL_CROSSINGS_HELPTEXT          :Quando ativada, esta configuração permite que as localidades construam passagens de nível
 
 STR_CONFIG_SETTING_NOISE_LEVEL                                  :Limitar a localização do aeroporto em função do nível de ruído: {STRING}
-STR_CONFIG_SETTING_NOISE_LEVEL_HELPTEXT                         :Permitir que as localidades impeçam a construção de aeroportos em função da aceitação do nível de ruído, que é baseado no total de habitantes da localidade e no tamanho e distância do aeroporto. Se esta definição estiver desativada, as localidades permitirão apenas dois aeroportos, a menos que a atitude da autoridade local esteja definida como "Permissiva"
+STR_CONFIG_SETTING_NOISE_LEVEL_HELPTEXT                         :Permitir que as localidades impeçam a construção de aeroportos em função da aceitação do nível de ruído, que é baseado no total de habitantes da localidade e no tamanho e distância do aeroporto. Se esta configuração estiver desativada, as localidades permitirão apenas dois aeroportos, a menos que a atitude da autoridade local esteja definida como "Permissiva"
 
 STR_CONFIG_SETTING_TOWN_FOUNDING                                :Fundar localidades no jogo: {STRING}
-STR_CONFIG_SETTING_TOWN_FOUNDING_HELPTEXT                       :Se ativado, permite aos jogadores fundar novas localidades no jogo
+STR_CONFIG_SETTING_TOWN_FOUNDING_HELPTEXT                       :Quando ativada, esta configuração permite aos jogadores fundar novas localidades no jogo
 ###length 3
 STR_CONFIG_SETTING_TOWN_FOUNDING_FORBIDDEN                      :Proibido
 STR_CONFIG_SETTING_TOWN_FOUNDING_ALLOWED                        :Permitido
@@ -1983,13 +1983,13 @@ STR_CONFIG_SETTING_TOOLBAR_POS                                  :Posição da ba
 STR_CONFIG_SETTING_TOOLBAR_POS_HELPTEXT                         :Posição horizontal da barra de ferramentas principal na parte superior da tela
 STR_CONFIG_SETTING_STATUSBAR_POS                                :Posição da barra de status: {STRING}
 STR_CONFIG_SETTING_STATUSBAR_POS_HELPTEXT                       :Posição horizontal da barra de status na parte inferior da tela
-STR_CONFIG_SETTING_SNAP_RADIUS                                  :Distância mínima para adesão automática entre as janelas: {STRING}
-STR_CONFIG_SETTING_SNAP_RADIUS_HELPTEXT                         :Distância entre janelas antes que a janela que está a ser movida seja automaticamente alinhada com as janelas mais próximas
+STR_CONFIG_SETTING_SNAP_RADIUS                                  :Distância para alinhamento de janelas: {STRING}
+STR_CONFIG_SETTING_SNAP_RADIUS_HELPTEXT                         :Distância entre janelas para que a janela que está sendo movida se alinhe automaticamente às janelas mais próximas
 STR_CONFIG_SETTING_SNAP_RADIUS_VALUE                            :{COMMA} pixel{P 0 "" s}
 ###setting-zero-is-special
 STR_CONFIG_SETTING_SNAP_RADIUS_DISABLED                         :Desativado
-STR_CONFIG_SETTING_SOFT_LIMIT                                   :Número máximo de janelas livres: {STRING}
-STR_CONFIG_SETTING_SOFT_LIMIT_HELPTEXT                          :Número de janelas abertas não aderidas antes que as janelas antigas sejam automaticamente fechadas, liberando espaço para novas janelas
+STR_CONFIG_SETTING_SOFT_LIMIT                                   :Número máximo de janelas não fixadas: {STRING}
+STR_CONFIG_SETTING_SOFT_LIMIT_HELPTEXT                          :Número de janelas não fixadas abertas antes que as janelas antigas sejam automaticamente fechadas, liberando espaço para novas janelas
 STR_CONFIG_SETTING_SOFT_LIMIT_VALUE                             :{COMMA}
 ###setting-zero-is-special
 STR_CONFIG_SETTING_SOFT_LIMIT_DISABLED                          :desativado
@@ -2129,7 +2129,7 @@ STR_CONFIG_SETTING_ENVIRONMENT_INDUSTRIES                       :Indústrias
 STR_CONFIG_SETTING_ENVIRONMENT_CARGODIST                        :Distribuição de Carga
 STR_CONFIG_SETTING_ENVIRONMENT_TREES                            :Árvores
 STR_CONFIG_SETTING_AI                                           :Competidores
-STR_CONFIG_SETTING_AI_NPC                                       :Jogadores IA
+STR_CONFIG_SETTING_AI_NPC                                       :Competidores IA
 STR_CONFIG_SETTING_NETWORK                                      :Rede
 
 STR_CONFIG_SETTING_PATHFINDER_FOR_TRAINS                        :Gerador de rotas para os trens: {STRING}
@@ -2144,7 +2144,7 @@ STR_CONFIG_SETTING_REVERSE_AT_SIGNALS_HELPTEXT                  :Permitir que os
 STR_CONFIG_SETTING_PATHFINDER_NPF                               :NPF
 STR_CONFIG_SETTING_PATHFINDER_YAPF                              :YAPF {BLUE}(Recomendado)
 
-STR_CONFIG_SETTING_QUERY_CAPTION                                :{WHITE}Alterar valor
+STR_CONFIG_SETTING_QUERY_CAPTION                                :{WHITE}Alterar valor da definição
 
 # Config errors
 STR_CONFIG_ERROR                                                :{WHITE}Erro no arquivo de configuração...
@@ -2477,7 +2477,7 @@ STR_NETWORK_CLIENT_LIST_SERVER_NAME_QUERY_CAPTION               :Nome do servido
 STR_NETWORK_CLIENT_LIST_SERVER_VISIBILITY                       :{BLACK}Visibilidade
 STR_NETWORK_CLIENT_LIST_SERVER_VISIBILITY_TOOLTIP               :{BLACK}Se outras pessoas podem ver seu servidor na lista pública
 STR_NETWORK_CLIENT_LIST_SERVER_INVITE_CODE                      :{BLACK}Código de convite
-STR_NETWORK_CLIENT_LIST_SERVER_INVITE_CODE_TOOLTIP              :{BLACK}Código de convite que outros jogadores podem usar para se juntar a esse servidor
+STR_NETWORK_CLIENT_LIST_SERVER_INVITE_CODE_TOOLTIP              :{BLACK}Código de convite que outros jogadores podem usar para acessar este servidor
 STR_NETWORK_CLIENT_LIST_SERVER_CONNECTION_TYPE                  :{BLACK}Tipo de conexão
 STR_NETWORK_CLIENT_LIST_SERVER_CONNECTION_TYPE_TOOLTIP          :{BLACK}Se e como seu servidor pode ser acessado por outros
 STR_NETWORK_CLIENT_LIST_PLAYER                                  :{BLACK}Jogador
@@ -2525,7 +2525,7 @@ STR_NETWORK_ASK_RELAY_YES_ONCE                                  :{BLACK}Sim, ape
 STR_NETWORK_ASK_RELAY_YES_ALWAYS                                :{BLACK}Sim, não perguntar novamente
 
 STR_NETWORK_ASK_SURVEY_CAPTION                                  :Participar de pesquisa automatizada?
-STR_NETWORK_ASK_SURVEY_TEXT                                     :Você gostaria de participar da pesquisa automatizada?{}O OpenTTD transmitirá uma pesquisa ao sair do jogo.{}Você pode alterar isso a qualquer momento em "Opções do jogo".
+STR_NETWORK_ASK_SURVEY_TEXT                                     :Você gostaria de participar da pesquisa automatizada?{}O OpenTTD enviará uma pesquisa ao sair de um jogo.{}Você pode alterar isso a qualquer momento em "Opções do jogo".
 STR_NETWORK_ASK_SURVEY_PREVIEW                                  :Pré-visualizar resultado da pesquisa
 STR_NETWORK_ASK_SURVEY_LINK                                     :Sobre pesquisa e privacidade
 STR_NETWORK_ASK_SURVEY_NO                                       :Não
@@ -3668,7 +3668,7 @@ STR_LOCAL_AUTHORITY_ACTION_TOOLTIP_STATUE_OF_COMPANY            :{PUSH_COLOUR}{Y
 STR_LOCAL_AUTHORITY_ACTION_TOOLTIP_NEW_BUILDINGS                :{PUSH_COLOUR}{YELLOW}Financiar a construção de novos edifícios na localidade.{}Produz um aumento temporário no crescimento desta localidade.{}{POP_COLOUR}Custo: {CURRENCY_LONG}
 STR_LOCAL_AUTHORITY_ACTION_TOOLTIP_EXCLUSIVE_TRANSPORT_MONTHS   :{PUSH_COLOUR}{YELLOW}Comprar os direitos exclusivos de transporte na localidade por 12 meses.{}A autoridade local não permitirá que passageiros e cargas usem as estações dos concorrentes. Um suborno bem sucedido feito por um concorrente irá cancelar este contrato.{}{POP_COLOUR}Custo: {CURRENCY_LONG}
 STR_LOCAL_AUTHORITY_ACTION_TOOLTIP_EXCLUSIVE_TRANSPORT_MINUTES  :{PUSH_COLOUR}{YELLOW}Comprar os direitos exclusivos de transporte na localidade por 12 minutos.{}A autoridade local não permitirá que passageiros e cargas usem as estações dos concorrentes. Um suborno bem sucedido feito por um concorrente irá cancelar este contrato.{}{POP_COLOUR}Custo: {CURRENCY_LONG}
-STR_LOCAL_AUTHORITY_ACTION_TOOLTIP_BRIBE                        :{PUSH_COLOUR}{YELLOW}Subornar a autoridade local para aumentar a sua avaliação e anular o direito exclusivo de transporte da concorrência, correndo o risco de uma penalidade severa se for apanhado.{}{POP_COLOUR}Custo: {CURRENCY_LONG}
+STR_LOCAL_AUTHORITY_ACTION_TOOLTIP_BRIBE                        :{PUSH_COLOUR}{YELLOW}Subornar a autoridade local para aumentar a sua avaliação e anular um direito exclusivo de transporte de um concorrente, correndo o risco de uma penalidade severa se for apanhado.{}{POP_COLOUR}Custo: {CURRENCY_LONG}
 
 # Goal window
 STR_GOALS_CAPTION                                               :{WHITE}{COMPANY} - Objetivos
@@ -4614,7 +4614,7 @@ STR_ORDER_GO_TO_NEAREST_DEPOT                                   :Ir para o depó
 STR_ORDER_GO_TO_NEAREST_HANGAR                                  :Ir para o hangar mais próximo
 STR_ORDER_CONDITIONAL                                           :Saltar ordem condicional
 STR_ORDER_SHARE                                                 :Compartilhar ordens
-STR_ORDERS_GO_TO_TOOLTIP                                        :{BLACK}Inserir uma nova ordem antes da ordem selecionada ou adicionar no final da lista. Ctrl+Clique em uma estação para 'carga completa de qualquer carga', em um ponto de controle para inverter a definição padrão 'sem parar' ou em um depósito para 'desagrupar'. Clique em outro veículo para copiar suas ordens ou Ctrl+Clique para compartilhar as ordens. Uma ordem de depósito desativa a manutenção automática do veículo
+STR_ORDERS_GO_TO_TOOLTIP                                        :{BLACK}Inserir uma nova ordem antes da ordem selecionada ou adicionar no final da lista. Ctrl+Clique em uma estação para 'carga completa de qualquer carga', em um ponto de controle para inverter a configuração padrão 'sem parar' ou em um depósito para 'desagrupar'. Clique em outro veículo para copiar suas ordens ou Ctrl+Clique para compartilhar as ordens. Uma ordem de depósito desativa a manutenção automática do veículo
 
 STR_ORDERS_VEH_WITH_SHARED_ORDERS_LIST_TOOLTIP                  :{BLACK}Mostrar todos os veículos que compartilham essa programação
 
@@ -4767,7 +4767,7 @@ STR_DATE_YEAR_TOOLTIP                                           :{BLACK}Selecion
 STR_AI_DEBUG                                                    :{WHITE}Depuração de IA/Script do Jogo
 STR_AI_DEBUG_NAME_AND_VERSION                                   :{BLACK}{STRING} (v{NUM})
 STR_AI_DEBUG_NAME_TOOLTIP                                       :{BLACK}Nome do script
-STR_AI_DEBUG_SETTINGS                                           :{BLACK}Definições
+STR_AI_DEBUG_SETTINGS                                           :{BLACK}Configurações
 STR_AI_DEBUG_SETTINGS_TOOLTIP                                   :{BLACK}Alterar as configurações do script
 STR_AI_DEBUG_RELOAD                                             :{BLACK}Recarregar IA
 STR_AI_DEBUG_RELOAD_TOOLTIP                                     :{BLACK}Interromper a IA, recarregar o script e reiniciar a IA
@@ -4796,7 +4796,7 @@ STR_AI_CONFIG_HUMAN_PLAYER                                      :Jogador humano
 STR_AI_CONFIG_RANDOM_AI                                         :IA aleatória
 STR_AI_CONFIG_NONE                                              :(nenhum)
 STR_AI_CONFIG_NAME_VERSION                                      :{STRING} {YELLOW}v{NUM}
-STR_AI_CONFIG_MAX_COMPETITORS                                   :{LTBLUE}Número máx. de competidores: {ORANGE}{COMMA}
+STR_AI_CONFIG_MAX_COMPETITORS                                   :{LTBLUE}Número máximo de competidores: {ORANGE}{COMMA}
 STR_AI_CONFIG_COMPETITORS_INTERVAL                              :{LTBLUE}Intervalo entre o início dos competidores: {ORANGE}{COMMA} minuto{P "" s}
 
 STR_AI_CONFIG_MOVE_UP                                           :{BLACK}Mover para cima
