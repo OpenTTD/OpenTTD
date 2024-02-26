@@ -40,6 +40,7 @@
 #include "company_cmd.h"
 #include "economy_cmd.h"
 #include "group_cmd.h"
+#include "group_gui.h"
 #include "misc_cmd.h"
 #include "object_cmd.h"
 #include "timer/timer.h"
@@ -591,8 +592,6 @@ public:
 	}
 };
 
-typedef GUIList<const Group*> GUIGroupList;
-
 /** Company livery colour scheme window. */
 struct SelectCompanyLiveryWindow : public Window {
 private:
@@ -602,7 +601,6 @@ private:
 	uint rows;
 	uint line_height;
 	GUIGroupList groups;
-	std::vector<int> indents;
 	Scrollbar *vscroll;
 
 	void ShowColourDropDownMenu(uint32_t widget)
@@ -660,57 +658,15 @@ private:
 		ShowDropDownList(this, std::move(list), sel, widget);
 	}
 
-	void AddChildren(GUIGroupList &source, GroupID parent, int indent)
-	{
-		for (const Group *g : source) {
-			if (g->parent != parent) continue;
-			this->groups.push_back(g);
-			this->indents.push_back(indent);
-			AddChildren(source, g->index, indent + 1);
-		}
-	}
-
 	void BuildGroupList(CompanyID owner)
 	{
 		if (!this->groups.NeedRebuild()) return;
 
 		this->groups.clear();
-		this->indents.clear();
 
 		if (this->livery_class >= LC_GROUP_RAIL) {
-			GUIGroupList list;
 			VehicleType vtype = (VehicleType)(this->livery_class - LC_GROUP_RAIL);
-
-			for (const Group *g : Group::Iterate()) {
-				if (g->owner == owner && g->vehicle_type == vtype) {
-					list.push_back(g);
-				}
-			}
-
-			list.ForceResort();
-
-			/* Sort the groups by their name */
-			const Group *last_group[2] = { nullptr, nullptr };
-			std::string last_name[2] = { {}, {} };
-			list.Sort([&](const Group * const &a, const Group * const &b) -> bool {
-				if (a != last_group[0]) {
-					last_group[0] = a;
-					SetDParam(0, a->index);
-					last_name[0] = GetString(STR_GROUP_NAME);
-				}
-
-				if (b != last_group[1]) {
-					last_group[1] = b;
-					SetDParam(0, b->index);
-					last_name[1] = GetString(STR_GROUP_NAME);
-				}
-
-				int r = StrNaturalCompare(last_name[0], last_name[1]); // Sort by name (natural sorting).
-				if (r == 0) return a->index < b->index;
-				return r < 0;
-			});
-
-			AddChildren(list, INVALID_GROUP, 0);
+			BuildGuiGroupList(this->groups, false, owner, vtype);
 		}
 
 		this->groups.shrink_to_fit();
@@ -774,7 +730,7 @@ public:
 
 		/* Position scrollbar to selected group */
 		for (uint i = 0; i < this->rows; i++) {
-			if (this->groups[i]->index == sel) {
+			if (this->groups[i].group->index == sel) {
 				this->vscroll->SetPosition(i - this->vscroll->GetCapacity() / 2);
 				break;
 			}
@@ -944,11 +900,11 @@ public:
 				}
 			}
 		} else {
-			uint max = static_cast<uint>(std::min<size_t>(this->vscroll->GetPosition() + this->vscroll->GetCapacity(), this->groups.size()));
-			for (uint i = this->vscroll->GetPosition(); i < max; ++i) {
-				const Group *g = this->groups[i];
+			auto [first, last] = this->vscroll->GetVisibleRangeIterators(this->groups);
+			for (auto it = first; it != last; ++it) {
+				const Group *g = it->group;
 				SetDParam(0, g->index);
-				draw_livery(STR_GROUP_NAME, g->livery, this->sel == g->index, false, this->indents[i] * WidgetDimensions::scaled.hsep_indent);
+				draw_livery(STR_GROUP_NAME, g->livery, this->sel == g->index, false, it->indent * WidgetDimensions::scaled.hsep_indent);
 			}
 
 			if (this->vscroll->GetCount() == 0) {
@@ -991,7 +947,7 @@ public:
 					this->BuildGroupList((CompanyID)this->window_number);
 
 					if (!this->groups.empty()) {
-						this->sel = this->groups[0]->index;
+						this->sel = this->groups[0].group->index;
 					}
 				}
 
@@ -1008,10 +964,10 @@ public:
 				break;
 
 			case WID_SCL_MATRIX: {
-				uint row = this->vscroll->GetScrolledRowFromWidget(pt.y, this, WID_SCL_MATRIX);
-				if (row >= this->rows) return;
-
 				if (this->livery_class < LC_GROUP_RAIL) {
+					uint row = this->vscroll->GetScrolledRowFromWidget(pt.y, this, widget);
+					if (row >= this->rows) return;
+
 					LiveryScheme j = (LiveryScheme)row;
 
 					for (LiveryScheme scheme = LS_BEGIN; scheme <= j && scheme < LS_END; scheme++) {
@@ -1025,7 +981,10 @@ public:
 						this->sel = 1 << j;
 					}
 				} else {
-					this->sel = this->groups[row]->index;
+					auto it = this->vscroll->GetScrolledItemFromWidget(this->groups, pt.y, this, widget);
+					if (it == std::end(this->groups)) return;
+
+					this->sel = it->group->index;
 				}
 				this->SetDirty();
 				break;
@@ -1078,7 +1037,7 @@ public:
 
 				if (!Group::IsValidID(this->sel)) {
 					this->sel = INVALID_GROUP;
-					if (!this->groups.empty()) this->sel = this->groups[0]->index;
+					if (!this->groups.empty()) this->sel = this->groups[0].group->index;
 				}
 
 				this->SetDirty();
