@@ -1023,13 +1023,11 @@ struct PaymentRatesGraphWindow : BaseGraphWindow {
 
 		bool rtl = _current_text_dir == TD_RTL;
 
-		int pos = this->vscroll->GetPosition();
-		int max = pos + this->vscroll->GetCapacity();
+		auto [first, last] = this->vscroll->GetVisibleRangeIterators(_sorted_standard_cargo_specs);
 
 		Rect line = r.WithHeight(this->line_height);
-		for (const CargoSpec *cs : _sorted_standard_cargo_specs) {
-			if (pos-- > 0) continue;
-			if (--max < 0) break;
+		for (auto it = first; it != last; ++it) {
+			const CargoSpec *cs = *it;
 
 			bool lowered = !HasBit(_legend_excluded_cargo, cs->Index());
 

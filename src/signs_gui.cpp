@@ -211,9 +211,9 @@ struct SignListWindow : Window, SignList {
 				tr = tr.Indent(this->text_offset, rtl);
 
 				/* At least one sign available. */
-				for (uint16_t i = this->vscroll->GetPosition(); this->vscroll->IsVisible(i) && i < this->vscroll->GetCount(); i++)
-				{
-					const Sign *si = this->signs[i];
+				auto [first, last] = this->vscroll->GetVisibleRangeIterators(this->signs);
+				for (auto it = first; it != last; ++it) {
+					const Sign *si = *it;
 
 					if (si->owner != OWNER_NONE) DrawCompanyIcon(si->owner, icon_left, tr.top + sprite_offset_y);
 

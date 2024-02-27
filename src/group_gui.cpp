@@ -626,9 +626,9 @@ public:
 				if (this->vli.index != ALL_GROUP && this->grouping == GB_NONE) {
 					/* Mark vehicles which are in sub-groups (only if we are not using shared order coalescing) */
 					Rect mr = r.WithHeight(this->resize.step_height);
-					size_t max = std::min<size_t>(this->vscroll->GetPosition() + this->vscroll->GetCapacity(), this->vehgroups.size());
-					for (size_t i = this->vscroll->GetPosition(); i < max; ++i) {
-						const Vehicle *v = this->vehgroups[i].GetSingleVehicle();
+					auto [first, last] = this->vscroll->GetVisibleRangeIterators(this->vehgroups);
+					for (auto it = first; it != last; ++it) {
+						const Vehicle *v = it->GetSingleVehicle();
 						if (v->group_id != this->vli.index) {
 							GfxFillRect(mr.Shrink(WidgetDimensions::scaled.bevel), GetColourGradient(COLOUR_GREY, SHADE_DARK), FILLRECT_CHECKER);
 						}

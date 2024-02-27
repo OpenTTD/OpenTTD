@@ -441,8 +441,8 @@ public:
 				GfxFillRect(br, PC_BLACK);
 
 				Rect tr = r.Shrink(WidgetDimensions::scaled.inset).WithHeight(this->resize.step_height);
-				uint scroll_pos = this->vscroll->GetPosition();
-				for (auto it = this->display_list.begin() + scroll_pos; it != this->display_list.end() && tr.top < br.bottom; ++it) {
+				auto [first, last] = this->vscroll->GetVisibleRangeIterators(this->display_list);
+				for (auto it = first; it != last; ++it) {
 					const FiosItem *item = *it;
 
 					if (item == this->selected) {

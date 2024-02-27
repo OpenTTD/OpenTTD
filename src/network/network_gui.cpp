@@ -527,10 +527,9 @@ public:
 			case WID_NG_MATRIX: {
 				uint16_t y = r.top;
 
-				const int max = std::min(this->vscroll->GetPosition() + this->vscroll->GetCapacity(), (int)this->servers.size());
-
-				for (int i = this->vscroll->GetPosition(); i < max; ++i) {
-					const NetworkGameList *ngl = this->servers[i];
+				auto [first, last] = this->vscroll->GetVisibleRangeIterators(this->servers);
+				for (auto it = first; it != last; ++it) {
+					const NetworkGameList *ngl = *it;
 					this->DrawServerLine(ngl, y, ngl == this->server);
 					y += this->resize.step_height;
 				}

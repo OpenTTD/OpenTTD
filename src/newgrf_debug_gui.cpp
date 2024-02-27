@@ -933,13 +933,13 @@ struct SpriteAlignerWindow : Window {
 				const NWidgetBase *nwid = this->GetWidget<NWidgetBase>(widget);
 				int step_size = nwid->resize_y;
 
-				std::vector<SpriteID> &list = _newgrf_debug_sprite_picker.sprites;
-				int max = std::min<int>(this->vscroll->GetPosition() + this->vscroll->GetCapacity(), (uint)list.size());
+				const std::vector<SpriteID> &list = _newgrf_debug_sprite_picker.sprites;
 
 				Rect ir = r.Shrink(WidgetDimensions::scaled.matrix);
-				for (int i = this->vscroll->GetPosition(); i < max; i++) {
-					SetDParam(0, list[i]);
-					DrawString(ir, STR_JUST_COMMA, list[i] == this->current_sprite ? TC_WHITE : TC_BLACK, SA_RIGHT | SA_FORCE);
+				auto [first, last] = this->vscroll->GetVisibleRangeIterators(list);
+				for (auto it = first; it != last; ++it) {
+					SetDParam(0, *it);
+					DrawString(ir, STR_JUST_COMMA, *it == this->current_sprite ? TC_WHITE : TC_BLACK, SA_RIGHT | SA_FORCE);
 					ir.top += step_size;
 				}
 				break;

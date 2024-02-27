@@ -927,7 +927,7 @@ struct ScriptDebugWindow : public Window {
 	{
 		if (this->filter.script_debug_company == INVALID_COMPANY) return;
 
-		ScriptLogTypes::LogData &log = this->GetLogData();
+		const ScriptLogTypes::LogData &log = this->GetLogData();
 		if (log.empty()) return;
 
 		Rect fr = r.Shrink(WidgetDimensions::scaled.framerect);
@@ -943,8 +943,9 @@ struct ScriptDebugWindow : public Window {
 
 		fr.left -= this->hscroll->GetPosition();
 
-		for (int i = this->vscroll->GetPosition(); this->vscroll->IsVisible(i) && (size_t)i < log.size(); i++) {
-			const ScriptLogTypes::LogLine &line = log[i];
+		auto [first, last] = this->vscroll->GetVisibleRangeIterators(log);
+		for (auto it = first; it != last; ++it) {
+			const ScriptLogTypes::LogLine &line = *it;
 
 			TextColour colour;
 			switch (line.type) {
@@ -957,7 +958,7 @@ struct ScriptDebugWindow : public Window {
 			}
 
 			/* Check if the current line should be highlighted */
-			if (i == this->highlight_row) {
+			if (std::distance(std::begin(log), it) == this->highlight_row) {
 				fr.bottom = fr.top + this->resize.step_height - 1;
 				GfxFillRect(fr, PC_BLACK);
 				if (colour == TC_BLACK) colour = TC_WHITE; // Make black text readable by inverting it to white.

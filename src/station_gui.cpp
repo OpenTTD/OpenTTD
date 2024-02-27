@@ -455,7 +455,6 @@ public:
 
 			case WID_STL_LIST: {
 				bool rtl = _current_text_dir == TD_RTL;
-				size_t max = std::min<size_t>(this->vscroll->GetPosition() + this->vscroll->GetCapacity(), this->stations.size());
 				Rect tr = r.Shrink(WidgetDimensions::scaled.framerect);
 				uint line_height = this->GetWidget<NWidgetBase>(widget)->resize_y;
 				/* Spacing between station name and first rating graph. */
@@ -463,8 +462,9 @@ public:
 				/* Spacing between additional rating graphs. */
 				int rating_spacing = WidgetDimensions::scaled.hsep_normal;
 
-				for (size_t i = this->vscroll->GetPosition(); i < max; ++i) { // do until max number of stations of owner
-					const Station *st = this->stations[i];
+				auto [first, last] = this->vscroll->GetVisibleRangeIterators(this->stations);
+				for (auto it = first; it != last; ++it) {
+					const Station *st = *it;
 					assert(st->xy != INVALID_TILE);
 
 					/* Do not do the complex check HasStationInUse here, it may be even false
@@ -2320,11 +2320,12 @@ struct SelectStationWindow : Window {
 		if (widget != WID_JS_PANEL) return;
 
 		Rect tr = r.Shrink(WidgetDimensions::scaled.framerect);
-		for (uint i = this->vscroll->GetPosition(); i < _stations_nearby_list.size(); ++i, tr.top += this->resize.step_height) {
-			if (_stations_nearby_list[i] == NEW_STATION) {
+		auto [first, last] = this->vscroll->GetVisibleRangeIterators(_stations_nearby_list);
+		for (auto it = first; it != last; ++it, tr.top += this->resize.step_height) {
+			if (*it == NEW_STATION) {
 				DrawString(tr, T::EXPECTED_FACIL == FACIL_WAYPOINT ? STR_JOIN_WAYPOINT_CREATE_SPLITTED_WAYPOINT : STR_JOIN_STATION_CREATE_SPLITTED_STATION);
 			} else {
-				const T *st = T::Get(_stations_nearby_list[i]);
+				const T *st = T::Get(*it);
 				SetDParam(0, st->index);
 				SetDParam(1, st->facilities);
 				DrawString(tr, T::EXPECTED_FACIL == FACIL_WAYPOINT ? STR_STATION_LIST_WAYPOINT : STR_STATION_LIST_STATION);
