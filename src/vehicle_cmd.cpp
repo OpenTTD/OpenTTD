@@ -670,9 +670,7 @@ CommandCost CmdMassStartStopVehicle(DoCommandFlag flags, TileIndex tile, bool do
 		BuildDepotVehicleList(vli.vtype, tile, &list, nullptr);
 	}
 
-	for (uint i = 0; i < list.size(); i++) {
-		const Vehicle *v = list[i];
-
+	for (const Vehicle *v : list) {
 		if (!!(v->vehstatus & VS_STOPPED) != do_start) continue;
 
 		if (!vehicle_list_window && !v->IsChainInDepot()) continue;
@@ -705,8 +703,8 @@ CommandCost CmdDepotSellAllVehicles(DoCommandFlag flags, TileIndex tile, Vehicle
 
 	CommandCost last_error = CMD_ERROR;
 	bool had_success = false;
-	for (uint i = 0; i < list.size(); i++) {
-		CommandCost ret = Command<CMD_SELL_VEHICLE>::Do(flags, list[i]->index, true, false, INVALID_CLIENT_ID);
+	for (const Vehicle *v : list) {
+		CommandCost ret = Command<CMD_SELL_VEHICLE>::Do(flags, v->index, true, false, INVALID_CLIENT_ID);
 		if (ret.Succeeded()) {
 			cost.AddCost(ret);
 			had_success = true;
@@ -736,9 +734,7 @@ CommandCost CmdDepotMassAutoReplace(DoCommandFlag flags, TileIndex tile, Vehicle
 	/* Get the list of vehicles in the depot */
 	BuildDepotVehicleList(vehicle_type, tile, &list, &list, true);
 
-	for (uint i = 0; i < list.size(); i++) {
-		const Vehicle *v = list[i];
-
+	for (const Vehicle *v : list) {
 		/* Ensure that the vehicle completely in the depot */
 		if (!v->IsChainInDepot()) continue;
 
