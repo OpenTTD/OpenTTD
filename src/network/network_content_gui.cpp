@@ -652,11 +652,8 @@ public:
 		int text_y_offset   = (this->resize.step_height - GetCharacterHeight(FS_NORMAL)) / 2;
 
 		Rect mr = r.WithHeight(this->resize.step_height);
-		auto iter = this->content.begin() + this->vscroll->GetPosition();
-		size_t last = this->vscroll->GetPosition() + this->vscroll->GetCapacity();
-		auto end = (last < this->content.size()) ? this->content.begin() + last : this->content.end();
-
-		for (/**/; iter != end; iter++) {
+		auto [first, last] = this->vscroll->GetVisibleRangeIterators(this->content);
+		for (auto iter = first; iter != last; iter++) {
 			const ContentInfo *ci = *iter;
 
 			if (ci == this->selected) GfxFillRect(mr.Shrink(WidgetDimensions::scaled.bevel), PC_GREY);

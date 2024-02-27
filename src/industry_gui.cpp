@@ -528,8 +528,9 @@ public:
 				icon.top    = r.top + (this->resize.step_height - this->legend.height + 1) / 2;
 				icon.bottom = icon.top + this->legend.height - 1;
 
-				for (uint16_t i = this->vscroll->GetPosition(); this->vscroll->IsVisible(i) && i < this->vscroll->GetCount(); i++) {
-					IndustryType type = this->list[i];
+				auto [first, last] = this->vscroll->GetVisibleRangeIterators(this->list);
+				for (auto it = first; it != last; ++it) {
+					IndustryType type = *it;
 					bool selected = this->selected_type == type;
 					const IndustrySpec *indsp = GetIndustrySpec(type);
 
@@ -1699,20 +1700,19 @@ public:
 					DrawString(ir, STR_INDUSTRY_DIRECTORY_NONE);
 					break;
 				}
-				int n = 0;
 				const CargoID acf_cid = this->accepted_cargo_filter_criteria;
-				for (uint i = this->vscroll->GetPosition(); i < this->industries.size(); i++) {
+				auto [first, last] = this->vscroll->GetVisibleRangeIterators(this->industries);
+				for (auto it = first; it != last; ++it) {
 					TextColour tc = TC_FROMSTRING;
 					if (acf_cid != CargoFilterCriteria::CF_ANY && acf_cid != CargoFilterCriteria::CF_NONE) {
-						Industry *ind = const_cast<Industry *>(this->industries[i]);
+						Industry *ind = const_cast<Industry *>(*it);
 						if (IndustryTemporarilyRefusesCargo(ind, acf_cid)) {
 							tc = TC_GREY | TC_FORCED;
 						}
 					}
-					DrawString(ir, this->GetIndustryString(this->industries[i]), tc);
+					DrawString(ir, this->GetIndustryString(*it), tc);
 
 					ir.top += this->resize.step_height;
-					if (++n == this->vscroll->GetCapacity()) break; // max number of industries in 1 window
 				}
 				break;
 			}

@@ -909,11 +909,10 @@ struct NewGRFWindow : public Window, NewGRFScanCallback {
 				Rect tr = r.Shrink(WidgetDimensions::scaled.framerect);
 				uint step_height = this->GetWidget<NWidgetBase>(WID_NS_AVAIL_LIST)->resize_y;
 				int offset_y = (step_height - GetCharacterHeight(FS_NORMAL)) / 2;
-				uint min_index = this->vscroll2->GetPosition();
-				uint max_index = std::min(min_index + this->vscroll2->GetCapacity(), (uint)this->avails.size());
 
-				for (uint i = min_index; i < max_index; i++) {
-					const GRFConfig *c = this->avails[i];
+				auto [first, last] = this->vscroll2->GetVisibleRangeIterators(this->avails);
+				for (auto it = first; it != last; ++it) {
+					const GRFConfig *c = *it;
 					bool h = (c == this->avail_sel);
 					const char *text = c->GetName();
 
@@ -2127,13 +2126,13 @@ struct SavePresetWindow : public Window {
 				uint step_height = this->GetWidget<NWidgetBase>(WID_SVP_PRESET_LIST)->resize_y;
 				int offset_y = (step_height - GetCharacterHeight(FS_NORMAL)) / 2;
 				Rect tr = r.Shrink(WidgetDimensions::scaled.framerect);
-				uint min_index = this->vscroll->GetPosition();
-				uint max_index = std::min(min_index + this->vscroll->GetCapacity(), (uint)this->presets.size());
 
-				for (uint i = min_index; i < max_index; i++) {
-					if ((int)i == this->selected) GfxFillRect(br.left, tr.top, br.right, tr.top + step_height - 1, PC_DARK_BLUE);
+				auto [first, last] = this->vscroll->GetVisibleRangeIterators(this->presets);
+				for (auto it = first; it != last; ++it) {
+					int row = static_cast<int>(std::distance(std::begin(this->presets), it));
+					if (row == this->selected) GfxFillRect(br.left, tr.top, br.right, tr.top + step_height - 1, PC_DARK_BLUE);
 
-					DrawString(tr.left, tr.right, tr.top + offset_y, this->presets[i], ((int)i == this->selected) ? TC_WHITE : TC_SILVER);
+					DrawString(tr.left, tr.right, tr.top + offset_y, *it, (row == this->selected) ? TC_WHITE : TC_SILVER);
 					tr.top += step_height;
 				}
 				break;

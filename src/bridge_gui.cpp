@@ -231,11 +231,11 @@ public:
 			case WID_BBS_BRIDGE_LIST: {
 				Rect tr = r.WithHeight(this->resize.step_height).Shrink(WidgetDimensions::scaled.matrix);
 				bool rtl = _current_text_dir == TD_RTL;
-				for (int i = this->vscroll->GetPosition(); this->vscroll->IsVisible(i) && i < (int)this->bridges.size(); i++) {
-					const BuildBridgeData &bridge_data = this->bridges.at(i);
-					const BridgeSpec *b = bridge_data.spec;
+				auto [first, last] = this->vscroll->GetVisibleRangeIterators(this->bridges);
+				for (auto it = first; it != last; ++it) {
+					const BridgeSpec *b = it->spec;
 					DrawSpriteIgnorePadding(b->sprite, b->pal, tr.WithWidth(this->icon_width, rtl), SA_HOR_CENTER | SA_BOTTOM);
-					DrawStringMultiLine(tr.Indent(this->icon_width + WidgetDimensions::scaled.hsep_normal, rtl), GetBridgeSelectString(bridge_data));
+					DrawStringMultiLine(tr.Indent(this->icon_width + WidgetDimensions::scaled.hsep_normal, rtl), GetBridgeSelectString(*it));
 					tr = tr.Translate(0, this->resize.step_height);
 				}
 				break;

@@ -840,7 +840,6 @@ public:
 				break;
 
 			case WID_TD_LIST: {
-				int n = 0;
 				Rect tr = r.Shrink(WidgetDimensions::scaled.framerect);
 				if (this->towns.empty()) { // No towns available.
 					DrawString(tr, STR_TOWN_DIRECTORY_NONE);
@@ -853,8 +852,9 @@ public:
 				int icon_x = tr.WithWidth(icon_size.width, rtl).left;
 				tr = tr.Indent(icon_size.width + WidgetDimensions::scaled.hsep_normal, rtl);
 
-				for (uint i = this->vscroll->GetPosition(); i < this->towns.size(); i++) {
-					const Town *t = this->towns[i];
+				auto [first, last] = this->vscroll->GetVisibleRangeIterators(this->towns);
+				for (auto it = first; it != last; ++it) {
+					const Town *t = *it;
 					assert(t->xy != INVALID_TILE);
 
 					/* Draw rating icon. */
@@ -872,7 +872,6 @@ public:
 					DrawString(tr.left, tr.right, tr.top + (this->resize.step_height - GetCharacterHeight(FS_NORMAL)) / 2, GetTownString(t));
 
 					tr.top += this->resize.step_height;
-					if (++n == this->vscroll->GetCapacity()) break; // max number of towns in 1 window
 				}
 				break;
 			}
