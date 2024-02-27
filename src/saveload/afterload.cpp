@@ -1771,6 +1771,11 @@ bool AfterLoadGame()
 			if (!order->IsType(OT_GOTO_DEPOT)) continue;
 			order->SetDepotActionType((OrderDepotActionFlags)(order->GetDepotActionType() >> 1));
 		}
+
+		for (Vehicle *v : Vehicle::Iterate()) {
+			if (!v->current_order.IsType(OT_GOTO_DEPOT)) continue;
+			v->current_order.SetDepotActionType((OrderDepotActionFlags)(v->current_order.GetDepotActionType() >> 1));
+		}
 	}
 
 	/* The water class was moved/unified. */
