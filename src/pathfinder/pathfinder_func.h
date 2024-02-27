@@ -12,6 +12,40 @@
 
 #include "../tile_cmd.h"
 #include "../waypoint_base.h"
+#include "../ship.h"
+
+/**
+ * Creates a list containing possible destination tiles for a ship.
+ * @param v The ship
+ * return Vector of tiles filled with all possible destinations.
+ */
+inline std::vector<TileIndex> GetShipDestinationTiles(const Ship *v)
+{
+	std::vector<TileIndex> dest_tiles;
+
+	if (v->current_order.IsType(OT_GOTO_STATION)) {
+		const StationID station = v->current_order.GetDestination();
+
+		const BaseStation *st = BaseStation::Get(station);
+		TileArea ta;
+		st->GetTileArea(&ta, STATION_DOCK);
+		/* If the dock station is (temporarily) not present, use the station sign to drive near the station. */
+		if (ta.tile == INVALID_TILE) {
+			dest_tiles.push_back(st->xy);
+		} else {
+			for (const TileIndex &docking_tile : ta) {
+				if (!IsDockingTile(docking_tile) || !IsShipDestinationTile(docking_tile, station)) continue;
+				dest_tiles.push_back(docking_tile);
+			}
+		}
+	} else {
+		dest_tiles.push_back(v->dest_tile);
+	}
+
+	assert(!dest_tiles.empty());
+
+	return dest_tiles;
+}
 
 /**
  * Calculates the tile of given station that is closest to a given tile
@@ -30,6 +64,19 @@ inline TileIndex CalcClosestStationTile(StationID station, TileIndex tile, Stati
 
 	/* If the rail station is (temporarily) not present, use the station sign to drive near the station */
 	if (ta.tile == INVALID_TILE) return st->xy;
+
+	if (station_type == STATION_DOCK) {
+		uint closest_dist = std::numeric_limits<uint>::max();
+		TileIndex closest_tile;
+		for (const TileIndex &docking_tile : ta) {
+			if (!IsDockingTile(docking_tile) || !IsShipDestinationTile(docking_tile, station)) continue;
+			const uint dist = DistanceManhattan(docking_tile, tile);
+			if (dist >= closest_dist) continue;
+			closest_dist = dist;
+			closest_tile = docking_tile;
+		}
+		return closest_tile;
+	}
 
 	uint minx = TileX(ta.tile);  // topmost corner of station
 	uint miny = TileY(ta.tile);

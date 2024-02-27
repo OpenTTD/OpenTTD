@@ -34,25 +34,21 @@ public:
 	typedef typename Node::Key Key;                      ///< key to hash tables.
 
 protected:
-	TileIndex    m_destTile;
-	TrackdirBits m_destTrackdirs;
-	StationID    m_destStation;
+	std::span<TileIndex> m_destTiles;
+	StationID            m_destStation;
 
 	bool                 m_has_intermediate_dest = false;
 	TileIndex            m_intermediate_dest_tile;
 	WaterRegionPatchDesc m_intermediate_dest_region_patch;
 
 public:
-	void SetDestination(const Ship *v)
+	void SetDestination(const Ship *v, const std::span<TileIndex> dest_tiles)
 	{
+		m_destTiles = dest_tiles;
 		if (v->current_order.IsType(OT_GOTO_STATION)) {
 			m_destStation = v->current_order.GetDestination();
-			m_destTile = CalcClosestStationTile(m_destStation, v->tile, STATION_DOCK);
-			m_destTrackdirs = INVALID_TRACKDIR_BIT;
 		} else {
 			m_destStation = INVALID_STATION;
-			m_destTile = v->dest_tile;
-			m_destTrackdirs = TrackStatusToTrackdirBits(GetTileTrackStatus(v->dest_tile, TRANSPORT_WATER, 0));
 		}
 	}
 
@@ -74,11 +70,8 @@ public:
 	/** Called by YAPF to detect if node ends in the desired destination. */
 	inline bool PfDetectDestination(Node &n)
 	{
-		return PfDetectDestinationTile(n.m_segment_last_tile, n.m_segment_last_td);
-	}
+		const TileIndex tile = n.m_segment_last_tile;
 
-	inline bool PfDetectDestinationTile(TileIndex tile, Trackdir trackdir)
-	{
 		if (m_has_intermediate_dest) {
 			/* GetWaterRegionInfo is much faster than GetWaterRegionPatchInfo so we try that first. */
 			if (GetWaterRegionInfo(tile) != m_intermediate_dest_region_patch) return false;
@@ -87,23 +80,14 @@ public:
 
 		if (m_destStation != INVALID_STATION) return IsDockingTile(tile) && IsShipDestinationTile(tile, m_destStation);
 
-		return tile == m_destTile && ((m_destTrackdirs & TrackdirToTrackdirBits(trackdir)) != TRACKDIR_BIT_NONE);
+		assert(m_destTiles.size() == 1);
+		return tile == m_destTiles.front();
 	}
 
-	/**
-	 * Called by YAPF to calculate cost estimate. Calculates distance to the destination
-	 * adds it to the actual cost from origin and stores the sum to the Node::m_estimate.
-	 */
-	inline bool PfCalcEstimate(Node &n)
+	static inline int CalcEstimate(Node &n, TileIndex destination_tile)
 	{
-		const TileIndex destination_tile = m_has_intermediate_dest ? m_intermediate_dest_tile : m_destTile;
-
 		static const int dg_dir_to_x_offs[] = { -1, 0, 1, 0 };
 		static const int dg_dir_to_y_offs[] = { 0, 1, 0, -1 };
-		if (PfDetectDestination(n)) {
-			n.m_estimate = n.m_cost;
-			return true;
-		}
 
 		TileIndex tile = n.m_segment_last_tile;
 		DiagDirection exitdir = TrackdirToExitdir(n.m_segment_last_td);
@@ -116,8 +100,33 @@ public:
 		int dmin = std::min(dx, dy);
 		int dxy = abs(dx - dy);
 		int d = dmin * YAPF_TILE_CORNER_LENGTH + (dxy - 1) * (YAPF_TILE_LENGTH / 2);
-		n.m_estimate = n.m_cost + d;
-		assert(n.m_estimate >= n.m_parent->m_estimate);
+		int estimate = n.m_cost + d;
+		assert(estimate >= n.m_parent->m_estimate);
+		return estimate;
+	}
+
+	/**
+	 * Called by YAPF to calculate cost estimate. Calculates distance to the destination
+	 * adds it to the actual cost from origin and stores the sum to the Node::m_estimate.
+	 */
+	inline bool PfCalcEstimate(Node &n)
+	{
+		if (PfDetectDestination(n)) {
+			n.m_estimate = n.m_cost;
+			return true;
+		}
+
+		int shortest_estimate = std::numeric_limits<int>::max();
+		if (m_has_intermediate_dest) {
+			shortest_estimate = CalcEstimate(n, m_intermediate_dest_tile);
+		} else {
+			for (const TileIndex &destination_tile : m_destTiles) {
+				int estimate = CalcEstimate(n, destination_tile);
+				if (estimate < shortest_estimate) shortest_estimate = estimate;
+			}
+		}
+
+		n.m_estimate = shortest_estimate;
 		return true;
 	}
 };
@@ -204,7 +213,7 @@ public:
 		return result;
 	}
 
-	static Trackdir ChooseShipTrack(const Ship *v, TileIndex tile, bool &path_found, ShipPathCache &path_cache)
+	static Trackdir ChooseShipTrack(const Ship *v, TileIndex tile, bool &path_found, ShipPathCache &path_cache, const std::span<TileIndex> dest_tiles)
 	{
 		const Trackdir trackdir = v->GetVehicleTrackdir();
 		assert(IsValidTrackdir(trackdir));
@@ -212,7 +221,7 @@ public:
 		/* Convert origin trackdir to TrackdirBits. */
 		const TrackdirBits trackdirs = TrackdirToTrackdirBits(trackdir);
 
-		const std::vector<WaterRegionPatchDesc> high_level_path = YapfShipFindWaterRegionPath(v, tile, NUMBER_OR_WATER_REGIONS_LOOKAHEAD + 1);
+		const std::vector<WaterRegionPatchDesc> high_level_path = YapfShipFindWaterRegionPath(v, tile, NUMBER_OR_WATER_REGIONS_LOOKAHEAD + 1, dest_tiles);
 		if (high_level_path.empty()) {
 			path_found = false;
 			/* Make the ship move around aimlessly. This prevents repeated pathfinder calls and clearly indicates that the ship is lost. */
@@ -227,7 +236,7 @@ public:
 
 			/* Set origin and destination nodes */
 			pf.SetOrigin(v->tile, trackdirs);
-			pf.SetDestination(v);
+			pf.SetDestination(v, dest_tiles);
 			const bool is_intermediate_destination = static_cast<int>(high_level_path.size()) >= NUMBER_OR_WATER_REGIONS_LOOKAHEAD + 1;
 			if (is_intermediate_destination) pf.SetIntermediateDestination(high_level_path.back());
 
@@ -288,11 +297,12 @@ public:
 	 * @param td1 Forward direction.
 	 * @param td2 Reverse direction.
 	 * @param trackdir [out] the best of all possible reversed trackdirs.
+	 * @param dest_tiles List of destination tiles.
 	 * @return true if the reverse direction is better.
 	 */
-	static bool CheckShipReverse(const Ship *v, TileIndex tile, Trackdir td1, Trackdir td2, Trackdir *trackdir)
+	static bool CheckShipReverse(const Ship *v, TileIndex tile, Trackdir td1, Trackdir td2, Trackdir *trackdir, const std::span<TileIndex> dest_tiles)
 	{
-		const std::vector<WaterRegionPatchDesc> high_level_path = YapfShipFindWaterRegionPath(v, tile, NUMBER_OR_WATER_REGIONS_LOOKAHEAD + 1);
+		const std::vector<WaterRegionPatchDesc> high_level_path = YapfShipFindWaterRegionPath(v, tile, NUMBER_OR_WATER_REGIONS_LOOKAHEAD + 1, dest_tiles);
 		if (high_level_path.empty()) {
 			if (trackdir) *trackdir = INVALID_TRACKDIR;
 			return false;
@@ -308,7 +318,7 @@ public:
 			TrackdirBits rtds = DiagdirReachesTrackdirs(entry) & TrackStatusToTrackdirBits(GetTileTrackStatus(tile, TRANSPORT_WATER, 0, entry));
 			pf.SetOrigin(tile, rtds);
 		}
-		pf.SetDestination(v);
+		pf.SetDestination(v, dest_tiles);
 		if (high_level_path.size() > 1) pf.SetIntermediateDestination(high_level_path.back());
 		pf.RestrictSearch(high_level_path);
 
@@ -437,7 +447,8 @@ struct CYapfShip : CYapfT<CYapfShip_TypesT<CYapfShip, CFollowTrackWater, CShipNo
 /** Ship controller helper - path finder invoker. */
 Track YapfShipChooseTrack(const Ship *v, TileIndex tile, bool &path_found, ShipPathCache &path_cache)
 {
-	Trackdir td_ret = CYapfShip::ChooseShipTrack(v, tile, path_found, path_cache);
+	std::vector<TileIndex> dest_tiles = GetShipDestinationTiles(v);
+	Trackdir td_ret = CYapfShip::ChooseShipTrack(v, tile, path_found, path_cache, dest_tiles);
 	return (td_ret != INVALID_TRACKDIR) ? TrackdirToTrack(td_ret) : INVALID_TRACK;
 }
 
@@ -446,5 +457,6 @@ bool YapfShipCheckReverse(const Ship *v, Trackdir *trackdir)
 	Trackdir td = v->GetVehicleTrackdir();
 	Trackdir td_rev = ReverseTrackdir(td);
 	TileIndex tile = v->tile;
-	return CYapfShip::CheckShipReverse(v, tile, td, td_rev, trackdir);
+	std::vector<TileIndex> dest_tiles = GetShipDestinationTiles(v);
+	return CYapfShip::CheckShipReverse(v, tile, td, td_rev, trackdir, dest_tiles);
 }
