@@ -129,7 +129,7 @@ public:
 
 private:
 	using ScriptTextRef = ScriptObjectRef<ScriptText>;
-	using StringIDList = std::vector<StringID>;
+	using ScriptTextList = std::vector<ScriptText *>;
 	using Param = std::variant<SQInteger, std::string, ScriptTextRef>;
 
 	struct ParamCheck {
@@ -155,17 +155,18 @@ private:
 	 * The parameters are added as _GetEncodedText used to encode them
 	 *  before the addition of parameter validation.
 	 * @param params The list of parameters to fill.
+	 * @param seen_texts The list of seen ScriptText.
 	 */
-	void _FillParamList(ParamList &params);
+	void _FillParamList(ParamList &params, ScriptTextList &seen_texts);
 
 	/**
 	 * Internal function for recursive calling this function over multiple
 	 *  instances, while writing in the same buffer.
 	 * @param output The output to write the encoded text to.
-	 * @param param_count The number of parameters that are in the string.
-	 * @param seen_ids The list of seen StringID.
+	 * @param param_count The number of parameters that are consumed by the string.
+	 * @param args The parameters to be consumed.
 	 */
-	void _GetEncodedText(std::back_insert_iterator<std::string> &output, int &param_count, StringIDList &seen_ids, ParamSpan args);
+	void _GetEncodedText(std::back_insert_iterator<std::string> &output, int &param_count, ParamSpan args);
 
 	/**
 	 * Set a parameter, where the value is the first item on the stack.
