@@ -292,44 +292,61 @@ public:
 	 */
 	static bool CheckShipReverse(const Ship *v, TileIndex tile, Trackdir td1, Trackdir td2, Trackdir *trackdir)
 	{
+		bool reverse = false;
+
 		const std::vector<WaterRegionPatchDesc> high_level_path = YapfShipFindWaterRegionPath(v, tile, NUMBER_OR_WATER_REGIONS_LOOKAHEAD + 1);
-		if (high_level_path.empty()) {
-			if (trackdir) *trackdir = INVALID_TRACKDIR;
-			return false;
-		}
+		if (high_level_path.empty()) return reverse;
 
-		/* Create pathfinder instance. */
-		Tpf pf(MAX_SHIP_PF_NODES);
-		/* Set origin and destination nodes. */
+		TrackdirBits trackdirs;
 		if (trackdir == nullptr) {
-			pf.SetOrigin(tile, TrackdirToTrackdirBits(td1) | TrackdirToTrackdirBits(td2));
+			/* Leaving station or depot. */
+			trackdirs = TrackdirToTrackdirBits(td1) | TrackdirToTrackdirBits(td2);
 		} else {
+			/* At the end of path, no path ahead, reversing. */
 			DiagDirection entry = ReverseDiagDir(VehicleExitDir(v->direction, v->state));
-			TrackdirBits rtds = DiagdirReachesTrackdirs(entry) & TrackStatusToTrackdirBits(GetTileTrackStatus(tile, TRANSPORT_WATER, 0, entry));
-			pf.SetOrigin(tile, rtds);
-		}
-		pf.SetDestination(v);
-		if (high_level_path.size() > 1) pf.SetIntermediateDestination(high_level_path.back());
-		pf.RestrictSearch(high_level_path);
-
-		/* Find best path. */
-		if (!pf.FindPath(v)) return false;
-
-		Node *pNode = pf.GetBestNode();
-		if (pNode == nullptr) return false;
-
-		/* Path was found, walk through the path back to the origin. */
-		while (pNode->m_parent != nullptr) {
-			pNode = pNode->m_parent;
+			trackdirs = DiagdirReachesTrackdirs(entry) & TrackStatusToTrackdirBits(GetTileTrackStatus(tile, TRANSPORT_WATER, 0, entry));
 		}
 
-		Trackdir best_trackdir = pNode->GetTrackdir();
-		if (trackdir != nullptr) {
-			*trackdir = best_trackdir;
-		} else {
-			assert(best_trackdir == td1 || best_trackdir == td2);
+		for (int attempt = 0; attempt < 2; ++attempt) {
+			/* Create pathfinder instance. */
+			Tpf pf(MAX_SHIP_PF_NODES);
+
+			/* Set origin and destination nodes. */
+			pf.SetOrigin(tile, trackdirs);
+			pf.SetDestination(v);
+			const bool is_intermediate_destination = static_cast<int>(high_level_path.size()) >= NUMBER_OR_WATER_REGIONS_LOOKAHEAD + 1;
+			if (is_intermediate_destination) pf.SetIntermediateDestination(high_level_path.back());
+
+			/* Restrict the search area to prevent the low level pathfinder from expanding too many nodes. This can happen
+			 * when the terrain is very "maze-like" or when the high level path "teleports" via a very long aqueduct. */
+			if (attempt > 0) pf.RestrictSearch(high_level_path);
+
+			/* Find best path. */
+			if (!pf.FindPath(v)) {
+				if (attempt == 0) continue; // Try again with restricted search area.
+				break; // Returns false.
+			}
+
+			Node *pNode = pf.GetBestNode();
+			if (pNode == nullptr) break; // Returns false.
+
+			/* Path was found, walk through the path back to the origin. */
+			while (pNode->m_parent != nullptr) {
+				pNode = pNode->m_parent;
+			}
+
+			Trackdir best_trackdir = pNode->GetTrackdir();
+			if (trackdir != nullptr) {
+				*trackdir = best_trackdir;
+			} else {
+				assert(best_trackdir == td1 || best_trackdir == td2);
+			}
+			reverse = best_trackdir != td1;
+
+			break;
 		}
-		return best_trackdir != td1;
+
+		return reverse;
 	}
 };
 
