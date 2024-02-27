@@ -1190,10 +1190,18 @@ STR_GAME_OPTIONS_BASE_MUSIC                                     :{BLACK}Базо
 STR_GAME_OPTIONS_BASE_MUSIC_TOOLTIP                             :{BLACK}Оберіть базовий музичний набір для використання
 STR_GAME_OPTIONS_BASE_MUSIC_DESCRIPTION_TOOLTIP                 :{BLACK}Допоміжна інформація про базовий музичний набір
 
+STR_GAME_OPTIONS_SOCIAL_PLUGINS_NONE                            :{LTBLUE}(не встановлено додатків для інтеграції з соціальними платформами)
 
 STR_GAME_OPTIONS_SOCIAL_PLUGIN_PLATFORM                         :{BLACK}Платформа:
+STR_GAME_OPTIONS_SOCIAL_PLUGIN_STATE                            :{BLACK}Стан додатка:
 
+STR_GAME_OPTIONS_SOCIAL_PLUGIN_STATE_RUNNING                    :{GREEN}Працює
+STR_GAME_OPTIONS_SOCIAL_PLUGIN_STATE_FAILED                     :{RED}Не вдалося з'єднатися
+STR_GAME_OPTIONS_SOCIAL_PLUGIN_STATE_PLATFORM_NOT_RUNNING       :{ORANGE}{STRING} не працює
+STR_GAME_OPTIONS_SOCIAL_PLUGIN_STATE_DUPLICATE                  :{RED}Подвоєння додатка
+STR_GAME_OPTIONS_SOCIAL_PLUGIN_STATE_INVALID_SIGNATURE          :{RED}Неправильний підпис
 
+STR_BASESET_STATUS                                              :{STRING} {RED}(відсутніх або зіпсованих файлів: {NUM})
 
 STR_ERROR_RESOLUTION_LIST_FAILED                                :{WHITE}Не вдалося отримати список підтримуваних дозволів
 STR_ERROR_FULLSCREEN_FAILED                                     :{WHITE}Повноекранний режим не працює
@@ -1909,6 +1917,8 @@ STR_CONFIG_SETTING_SERVINT_DISABLED                             :Відключ�
 STR_CONFIG_SETTING_NOSERVICE                                    :Не відправляти на техогляд, якщо відключені аварії: {STRING}
 STR_CONFIG_SETTING_NOSERVICE_HELPTEXT                           :Включення цієї опції дозволяє не проводити автоматичний техогляд у разі, якщо поломки транспорту вимкнено.
 
+STR_CONFIG_SETTING_STATION_LENGTH_LOADING_PENALTY               :Зменшення швидкості завантаження потягів, які довші за станцію: {STRING}
+STR_CONFIG_SETTING_STATION_LENGTH_LOADING_PENALTY_HELPTEXT      :Якщо увімкнуто, потяги довші за станцію завантажуються значно повільніше, ніж потяги які вміщуються на станції. Налаштування не впливає на пошук шляху.
 
 STR_CONFIG_SETTING_WAGONSPEEDLIMITS                             :Враховувати обмеження швидкості вагонів: {STRING}
 STR_CONFIG_SETTING_WAGONSPEEDLIMITS_HELPTEXT                    :При включенні максимальна швидкість потяга враховує обмеження швидкості вагонів.
@@ -2264,10 +2274,10 @@ STR_INTRO_TOOLTIP_TOYLAND_LANDSCAPE                             :{BLACK}Вибр
 
 STR_INTRO_TOOLTIP_GAME_OPTIONS                                  :{BLACK}Показати налаштування гри
 STR_INTRO_TOOLTIP_HIGHSCORE                                     :{BLACK}Показати таблицю рекордів
-STR_INTRO_TOOLTIP_CONFIG_SETTINGS_TREE                          :{BLACK}Налаштування відображення
+STR_INTRO_TOOLTIP_CONFIG_SETTINGS_TREE                          :{BLACK}Показати налаштування
 STR_INTRO_TOOLTIP_NEWGRF_SETTINGS                               :{BLACK}Показати налаштування NewGRF
 STR_INTRO_TOOLTIP_ONLINE_CONTENT                                :{BLACK}Перевірити доступний для завантаження додатковий контент
-STR_INTRO_TOOLTIP_AI_SETTINGS                                   :{BLACK}Відкрити налаштування ШІ
+STR_INTRO_TOOLTIP_AI_SETTINGS                                   :{BLACK}Показати налаштування ШІ
 STR_INTRO_TOOLTIP_GAMESCRIPT_SETTINGS                           :{BLACK}Показати налаштування ігрового скрипту
 STR_INTRO_TOOLTIP_QUIT                                          :{BLACK}Вийти з OpenTTD
 
@@ -4480,6 +4490,9 @@ STR_VEHICLE_DETAILS_SERVICING_INTERVAL_MINUTES                  :{BLACK}Інте
 STR_VEHICLE_DETAILS_SERVICING_INTERVAL_PERCENT                  :{BLACK}Інтервал техогляду: {LTBLUE}{COMMA}%{BLACK} {STRING}
 STR_VEHICLE_DETAILS_LAST_SERVICE_DATE                           :Останній техогляд: {LTBLUE}{DATE_LONG}
 STR_VEHICLE_DETAILS_LAST_SERVICE_MINUTES_AGO                    :Від останнього техогляду минуло хвилин: {LTBLUE}{NUM}
+STR_VEHICLE_DETAILS_DECREASE_SERVICING_INTERVAL_TOOLTIP_DAYS    :{BLACK}Зменшити період обслуговування на 10 днів. Ctrl+клац зменшує період обслуговування на 5 днів
+STR_VEHICLE_DETAILS_DECREASE_SERVICING_INTERVAL_TOOLTIP_MINUTES :{BLACK}Зменшити період обслуговування на 5 хвилин. Ctrl+клац зменшує період обслуговування на 1 хвилину
+STR_VEHICLE_DETAILS_DECREASE_SERVICING_INTERVAL_TOOLTIP_PERCENT :{BLACK}Зменшити період обслуговування на 10 відсотків. Ctrl+клац зменшує період обслуговування на 5 відсотків
 
 STR_SERVICE_INTERVAL_DROPDOWN_TOOLTIP                           :{BLACK}Відлік інтервалу між техоглядами
 STR_VEHICLE_DETAILS_DEFAULT                                     :Стандартно
@@ -5855,6 +5868,10 @@ STR_TOWN_NAME                                                   :{TOWN}
 STR_VEHICLE_NAME                                                :{VEHICLE}
 STR_WAYPOINT_NAME                                               :{WAYPOINT}
 
+STR_CURRENCY_SHORT_KILO                                         :{NBSP}тис.
+STR_CURRENCY_SHORT_MEGA                                         :{NBSP}млн
+STR_CURRENCY_SHORT_GIGA                                         :{NBSP}млрд
+STR_CURRENCY_SHORT_TERA                                         :{NBSP}трлн
 
 STR_JUST_CARGO                                                  :{CARGO_LONG}
 STR_JUST_RIGHT_ARROW                                            :{RIGHT_ARROW}

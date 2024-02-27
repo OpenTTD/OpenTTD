@@ -319,7 +319,7 @@ STR_UNITS_HEIGHT_METRIC                                         :{DECIMAL}{NBSP}
 STR_UNITS_HEIGHT_SI                                             :{DECIMAL}{NBSP}m
 
 # Time units used in string control characters
-STR_UNITS_DAYS                                                  :{COMMA}{NBSP}nap{P "" s}
+STR_UNITS_DAYS                                                  :{COMMA}{NBSP}nap
 STR_UNITS_SECONDS                                               :{COMMA}{NBSP}másodperc
 STR_UNITS_TICKS                                                 :{COMMA}{NBSP}tick
 
@@ -352,7 +352,7 @@ STR_TOOLTIP_RESIZE                                              :{BLACK}Fogd és
 STR_TOOLTIP_TOGGLE_LARGE_SMALL_WINDOW                           :{BLACK}Kicsi/nagy ablakméret közötti váltás
 STR_TOOLTIP_VSCROLL_BAR_SCROLLS_LIST                            :{BLACK}Görgetősáv - fel/le görgeti a listát
 STR_TOOLTIP_HSCROLL_BAR_SCROLLS_LIST                            :{BLACK}Görgetősáv - jobbra/balra görgeti a listát
-STR_TOOLTIP_DEMOLISH_BUILDINGS_ETC                              :{BLACK}Építmények lerombolása egy mezőről. Ctrl+kattintás+húzással átlós terület jelölhető ki. Shift lenyomásával megmutatja a becsült költséget
+STR_TOOLTIP_DEMOLISH_BUILDINGS_ETC                              :{BLACK}Építmények lerombolása egy mezőről. Ctrl+kattintás+húzással átlós terület jelölhető ki. Shift+kattintással csak a becsült költséget jeleníti meg
 
 # Show engines button
 ###length VEHICLE_TYPES
@@ -469,8 +469,8 @@ STR_TOOLBAR_TOOLTIP_BUILD_TRAMWAYS                              :{BLACK}Villamos
 STR_TOOLBAR_TOOLTIP_BUILD_SHIP_DOCKS                            :{BLACK}Vízi úti infrastruktúra építése
 STR_TOOLBAR_TOOLTIP_BUILD_AIRPORTS                              :{BLACK}Repülőtér építése
 STR_TOOLBAR_TOOLTIP_LANDSCAPING                                 :{BLACK}Tájszerkesztő, faültető vagy feliratlétrehozó menü megnyitása
-STR_TOOLBAR_TOOLTIP_SHOW_SOUND_MUSIC_WINDOW                     :{BLACK}Hang/zene beállításai
-STR_TOOLBAR_TOOLTIP_SHOW_LAST_MESSAGE_NEWS                      :{BLACK}Legutóbbi üzenet/újsághír megmutatása, üzenetelőzmények vagy minden üzenet törlése
+STR_TOOLBAR_TOOLTIP_SHOW_SOUND_MUSIC_WINDOW                     :{BLACK}Hang/zene ablak megnyitása
+STR_TOOLBAR_TOOLTIP_SHOW_LAST_MESSAGE_NEWS                      :{BLACK}Legutóbbi üzenet/újsághír megnyitása, üzenetelőzmények vagy minden üzenet törlése
 STR_TOOLBAR_TOOLTIP_LAND_BLOCK_INFORMATION                      :{BLACK}Terület-információ, képernyőmentések, OpenTTD névjegy vagy fejlesztői eszközök megnyitása
 STR_TOOLBAR_TOOLTIP_SWITCH_TOOLBAR                              :{BLACK}Eszköztár váltás
 
@@ -487,9 +487,9 @@ STR_SCENEDIT_TOOLBAR_TOWN_GENERATION                            :{BLACK}Települ
 STR_SCENEDIT_TOOLBAR_INDUSTRY_GENERATION                        :{BLACK}Gazdasági épületek építése vagy generálása
 STR_SCENEDIT_TOOLBAR_ROAD_CONSTRUCTION                          :{BLACK}Közúti infrastruktúra építése
 STR_SCENEDIT_TOOLBAR_TRAM_CONSTRUCTION                          :{BLACK}Villamos infrastruktúra építése
-STR_SCENEDIT_TOOLBAR_PLANT_TREES                                :{BLACK}Faültetés. Ctrl lenyomásával átlós terület jelölhető ki. Shift lenyomásával megmutatja a becsült építési költséget.
+STR_SCENEDIT_TOOLBAR_PLANT_TREES                                :{BLACK}Fák ültetése. Ctrl+kattintás+húzással átlós terület jelölhető ki. Shift+kattintással csak a becsült költséget jeleníti meg
 STR_SCENEDIT_TOOLBAR_PLACE_SIGN                                 :{BLACK}Felirat lerakása
-STR_SCENEDIT_TOOLBAR_PLACE_OBJECT                               :{BLACK}Objektum építése. Ctrl lenyomásával átlós terület jelölhető ki. Shift lenyomásával megmutatja a becsült építési költséget.
+STR_SCENEDIT_TOOLBAR_PLACE_OBJECT                               :{BLACK}Objektum építése. Ctrl+kattintás+húzással átlós terület jelölhető ki. Shift+kattintással csak a becsült költséget jeleníti meg
 
 # Scenario editor file menu
 ###length 7
@@ -499,7 +499,7 @@ STR_SCENEDIT_FILE_MENU_SAVE_HEIGHTMAP                           :Magasságtérk�
 STR_SCENEDIT_FILE_MENU_LOAD_HEIGHTMAP                           :Magasságtérkép betöltése
 STR_SCENEDIT_FILE_MENU_QUIT_EDITOR                              :Pályaszerkesztő elhagyása
 STR_SCENEDIT_FILE_MENU_SEPARATOR                                :
-STR_SCENEDIT_FILE_MENU_QUIT                                     :Kilépés
+STR_SCENEDIT_FILE_MENU_QUIT                                     :Kilépés az OpenTTD-ből
 
 # Settings menu
 ###length 16
@@ -523,8 +523,8 @@ STR_SETTINGS_MENU_TRANSPARENT_SIGNS                             :Átlátszó fel
 # File menu
 STR_FILE_MENU_SAVE_GAME                                         :Játék mentése
 STR_FILE_MENU_LOAD_GAME                                         :Játék betöltése
-STR_FILE_MENU_QUIT_GAME                                         :Kilépés a játékból
-STR_FILE_MENU_EXIT                                              :Kilépés
+STR_FILE_MENU_QUIT_GAME                                         :Kilépés ebből a játékból
+STR_FILE_MENU_EXIT                                              :Kilépés az OpenTTD-ből
 
 # Map menu
 STR_MAP_MENU_MAP_OF_WORLD                                       :Világtérkép
@@ -837,7 +837,7 @@ STR_SMALLMAP_LEGENDA_TRANSPORT_ROUTES                           :{TINY_FONT}{BLA
 STR_SMALLMAP_LEGENDA_FOREST                                     :{TINY_FONT}{BLACK}Erdő
 STR_SMALLMAP_LEGENDA_FOREST.t                                   :{TINY_FONT}{BLACK}erdőt
 STR_SMALLMAP_LEGENDA_RAILROAD_STATION                           :{TINY_FONT}{BLACK}Vasútállomás
-STR_SMALLMAP_LEGENDA_TRUCK_LOADING_BAY                          :{TINY_FONT}{BLACK}Teherautó-rakodóhely
+STR_SMALLMAP_LEGENDA_TRUCK_LOADING_BAY                          :{TINY_FONT}{BLACK}Teherautó-állomás
 STR_SMALLMAP_LEGENDA_BUS_STATION                                :{TINY_FONT}{BLACK}Buszmegálló
 STR_SMALLMAP_LEGENDA_AIRPORT_HELIPORT                           :{TINY_FONT}{BLACK}Repülőtér/Helikopter-leszálló
 STR_SMALLMAP_LEGENDA_DOCK                                       :{TINY_FONT}{BLACK}Kikötő
@@ -1332,7 +1332,7 @@ STR_CONFIG_SETTING_HORIZONTAL_POS_LEFT                          :Balra
 STR_CONFIG_SETTING_HORIZONTAL_POS_CENTER                        :Középen
 STR_CONFIG_SETTING_HORIZONTAL_POS_RIGHT                         :Jobbra
 
-STR_CONFIG_SETTING_SECONDS_VALUE                                :{COMMA}{NBSP}másodperc{P 0 "" ek}
+STR_CONFIG_SETTING_SECONDS_VALUE                                :{COMMA}{NBSP}másodperc
 
 STR_CONFIG_SETTING_INFINITE_MONEY                               :Végtelen pénz: {STRING}
 STR_CONFIG_SETTING_INFINITE_MONEY_HELPTEXT                      :Végtelen költés engedélyezése és vállalatok csődhelyzet-lehetőségének kikapcsolása
@@ -1371,7 +1371,7 @@ STR_CONFIG_SETTING_CONSTRUCTION_COSTS                           :Építkezési k
 STR_CONFIG_SETTING_CONSTRUCTION_COSTS_HELPTEXT                  :Építkezések és beszerzésk költségeinek szintje
 
 STR_CONFIG_SETTING_RECESSIONS                                   :Gazdasági válságok: {STRING}
-STR_CONFIG_SETTING_RECESSIONS_HELPTEXT                          :Ha bekapcsolod, gazdasági válság fog kitörni néhány évente. A válság alatt az összes ipar jelentősen kevesebbet termel. (A válság végével a termelés visszaáll az eredeti szintre.)
+STR_CONFIG_SETTING_RECESSIONS_HELPTEXT                          :Ha bekapcsolod, időszakonként gazdasági válság fog kitörni. A válság alatt az összes ipar jelentősen kevesebbet termel. (A válság végével a termelés visszaáll az eredeti szintre.)
 
 STR_CONFIG_SETTING_TRAIN_REVERSING                              :Vonatok állomáson történő megfordulásának tiltása: {STRING}
 STR_CONFIG_SETTING_TRAIN_REVERSING_HELPTEXT                     :Ha engedélyezve van, a vonatok nem fordulnak vissza egy (nem vég-) állomáson, még ha lenne egy rövidebb út is visszafordulva
@@ -1425,7 +1425,7 @@ STR_CONFIG_SETTING_FORBID_90_DEG                                :Vonatok nem teh
 STR_CONFIG_SETTING_FORBID_90_DEG_HELPTEXT                       :90 fokos kanyarok akkor fordulnak elő, ha egy vízszintes pályaelemet egy függőleges elem követ közvetlenül a következő mezőn, ami által a vonat egy 90 fokos kanyart tesz a szokásos 45 fokos helyett.
 
 STR_CONFIG_SETTING_DISTANT_JOIN_STATIONS                        :Nem közvetlen szomszédos állomások egyesítése: {STRING}
-STR_CONFIG_SETTING_DISTANT_JOIN_STATIONS_HELPTEXT               :Állomásrészek hozzáadásának engedélyezése úgy, hogy az nem érinti közvetlenül a meglévő részeket. Ctrl+kattintás szükséges hozzá az új részek elhelyezése közben
+STR_CONFIG_SETTING_DISTANT_JOIN_STATIONS_HELPTEXT               :Állomásrészek hozzáadásának engedélyezése úgy, hogy az nem érinti közvetlenül a meglévő részeket. Ez Ctrl+kattintással tehető meg az új részek elhelyezése közben
 
 STR_CONFIG_SETTING_INFLATION                                    :Infláció: {STRING}
 STR_CONFIG_SETTING_INFLATION_HELPTEXT                           :Infláció engedélyezése a gazdaságban, ahol a költségek jobban emelkednek, mint a bevételek
@@ -1558,7 +1558,7 @@ STR_CONFIG_SETTING_NEVER_EXPIRE_VEHICLES                        :Járművek sose
 STR_CONFIG_SETTING_NEVER_EXPIRE_VEHICLES_HELPTEXT               :Bekapcsolva minden járműmodell örökké elérhető marad bevezetése után
 
 STR_CONFIG_SETTING_TIMEKEEPING_UNITS                            :Időszámítás: {STRING}
-STR_CONFIG_SETTING_TIMEKEEPING_UNITS_HELPTEXT                   :Válaszd ki a játék időszámítási egységeit. Ez később nem módosítható.{}{}A naptár alapú a klasszikus OpenTTD-élmény, ahol egy év 12 hónapból, és minden hónap 28-31 napból áll.{}{}A faliórás időszámításban a járművek mozgása, a rakománytermelés és a pénzügyek ehelyett egyperces lépéseken alapulnak, ami nagyjából annyi idő, mint amennyi egy 30 napos hónap tart a naptár alapú módban. Ezek 12 perces időszakokba vannak csoportosítva, ami egy évnek felel meg a naptáralapú időben.{}{}Mindkét módban mindig van egy klasszikus naptár, amelyet a járművek, házak és egyéb infrastruktúra bevezetési dátumaihoz használnak.
+STR_CONFIG_SETTING_TIMEKEEPING_UNITS_HELPTEXT                   :Válaszd ki a játék időszámítási egységeit. Ez később nem módosítható.{}{}A naptár alapú a klasszikus OpenTTD-élmény, ahol egy év 12 hónapból, és minden hónap 28-31 napból áll.{}{}A faliórás időszámításban a rakománytermelés és a pénzügyek ehelyett egyperces lépéseken alapulnak, ami nagyjából annyi idő, mint amennyi egy 30 napos hónap tart a naptár alapú módban. Ezek 12 perces időszakokba vannak csoportosítva, ami egy évnek felel meg a naptáralapú időben.{}{}Mindkét módban mindig van egy klasszikus naptár, amelyet a járművek, házak és egyéb infrastruktúra bevezetési dátumaihoz használnak.
 ###length 2
 STR_CONFIG_SETTING_TIMEKEEPING_UNITS_CALENDAR                   :Naptár
 STR_CONFIG_SETTING_TIMEKEEPING_UNITS_WALLCLOCK                  :Falióra
@@ -1630,7 +1630,7 @@ STR_CONFIG_SETTING_SNOWLINE_HEIGHT                              :Hóhatár magas
 STR_CONFIG_SETTING_SNOWLINE_HEIGHT_HELPTEXT                     :Ez a beállítás szabályozza szub-arktikus táj hóhatárát. A hó befolyással lehet a gazdasági épületek generálására és a települések növekedésére. Csak a pályaszerkesztőben lehet állítani, más esetben a havas terület százalékos kiterjedéséből kerül kiszámításra.
 
 STR_CONFIG_SETTING_SNOW_COVERAGE                                :Havas terület kiterjedése: {STRING}
-STR_CONFIG_SETTING_SNOW_COVERAGE_HELPTEXT                       :Beállíthatod, hogy a szub-arktikus tájon a térkép mekkora részét fedje hó. A hó befolyással van a gazdasági épületek elhelyezésére és a települések növekedésére. A beállítás csak a térképgenerátort érinti. A tengerszint feletti legelső szintet sosem fedheti hó.
+STR_CONFIG_SETTING_SNOW_COVERAGE_HELPTEXT                       :Beállíthatod, hogy a szub-arktikus tájon a térkép mekkora részét fedje hó. A hó befolyással van a gazdasági épületek elhelyezésére és a települések növekedésére. A beállítás csak a térképgenerátort érinti. A tengerszintet és a partokat szintet sosem fedheti hó.
 STR_CONFIG_SETTING_SNOW_COVERAGE_VALUE                          :{NUM}%
 
 STR_CONFIG_SETTING_DESERT_COVERAGE                              :Sivatag kiterjedése: {STRING}
@@ -1646,7 +1646,7 @@ STR_CONFIG_SETTING_ROUGHNESS_OF_TERRAIN_ROUGH                   :Durva
 STR_CONFIG_SETTING_ROUGHNESS_OF_TERRAIN_VERY_ROUGH              :Nagyon durva
 
 STR_CONFIG_SETTING_VARIETY                                      :Változatosság eloszlása: {STRING}
-STR_CONFIG_SETTING_VARIETY_HELPTEXT                             :(csak TerraGenesis esetén) Bekapcsolása esetén a térképen lesznek hegyvidékes és sík területek is. Mivel ettől a térkép csak simább lesz, ezért javasolt a 'Hegyes' beállítás használata a tereptípushoz.
+STR_CONFIG_SETTING_VARIETY_HELPTEXT                             :Bekapcsolása esetén a térképen lesznek hegyvidékes és sík területek is. Nagyobb változatosság esetén nagyobb lesz a magasságkülönbség a sík és hegyvidékes területek között.
 
 STR_CONFIG_SETTING_RIVER_AMOUNT                                 :A folyók mennyisége: {STRING}
 STR_CONFIG_SETTING_RIVER_AMOUNT_HELPTEXT                        :Mennyi folyó legyen a térképen
@@ -2281,12 +2281,12 @@ STR_INTRO_TRANSLATION                                           :{BLACK}Ebből a
 
 # Quit window
 STR_QUIT_CAPTION                                                :{WHITE}Kilépés
-STR_QUIT_ARE_YOU_SURE_YOU_WANT_TO_EXIT_OPENTTD                  :{YELLOW}Biztosan bezárod ezt a programot?
+STR_QUIT_ARE_YOU_SURE_YOU_WANT_TO_EXIT_OPENTTD                  :{YELLOW}Biztosan bezárod az OpenTTD-t?
 STR_QUIT_YES                                                    :{BLACK}Igen
 STR_QUIT_NO                                                     :{BLACK}Nem
 
 # Abandon game
-STR_ABANDON_GAME_CAPTION                                        :{WHITE}Kilépés a játékból
+STR_ABANDON_GAME_CAPTION                                        :{WHITE}Kilépés ebből a játékból
 STR_ABANDON_GAME_QUERY                                          :{YELLOW}Biztosan kilépsz ebből a játékból?
 STR_ABANDON_SCENARIO_QUERY                                      :{YELLOW}Biztosan abba akarod hagyni a pálya szerkesztését?
 
@@ -2847,16 +2847,16 @@ STR_RAIL_TOOLBAR_ELRAIL_CONSTRUCTION_CAPTION                    :Villamosított 
 STR_RAIL_TOOLBAR_MONORAIL_CONSTRUCTION_CAPTION                  :Egysínű vasút építése
 STR_RAIL_TOOLBAR_MAGLEV_CONSTRUCTION_CAPTION                    :Maglev vasút építése
 
-STR_RAIL_TOOLBAR_TOOLTIP_BUILD_RAILROAD_TRACK                   :{BLACK}Pályafektetés. A Ctrl billentyűvel válthatsz építés és rombolás között. Shift lenyomásával megmutatja a becsült építési/bontási költséget
-STR_RAIL_TOOLBAR_TOOLTIP_BUILD_AUTORAIL                         :{BLACK}Vasúti pálya építése egyszerűsített módon. A Ctrl billentyű segítségével lehet váltani az építés/rombolás között. Shift lenyomásával megmutatja a becsült építési/eltávolítási költséget
-STR_RAIL_TOOLBAR_TOOLTIP_BUILD_TRAIN_DEPOT_FOR_BUILDING         :{BLACK}Vasúti járműtelep építése (vonatok vételére és karbantartására). Shift lenyomásával becsült építési költséget mutat
-STR_RAIL_TOOLBAR_TOOLTIP_CONVERT_RAIL_TO_WAYPOINT               :{BLACK}Ellenőrző pont építése vágányra. A Ctrl lenyomásával az ellenőrző pontok egyesíthetőek. Shift lenyomásával megmutatja a becsült építési költséget
-STR_RAIL_TOOLBAR_TOOLTIP_BUILD_RAILROAD_STATION                 :{BLACK}Vasútállomás építése. A Ctrl lenyomásával egyesítheted más állomásokkal. Shift lenyomásával megmutatja a becsült építési költséget
-STR_RAIL_TOOLBAR_TOOLTIP_BUILD_RAILROAD_SIGNALS                 :{BLACK}Vasúti jelzők építése. Ctrl gombbal váltás az alak- és fényjelzők között{}Húzással a sínek mentén végig jelzők épülnek. Húzva Ctrl gombbal a következő pályakiágazásig vagy jelzőig épít jelzőket. Ctrl+kattintással válthatod a megnyitandó jelzőépítés-kezelő ablakot. Shift lenyomásával megmutatja a becsült építési költséget
-STR_RAIL_TOOLBAR_TOOLTIP_BUILD_RAILROAD_BRIDGE                  :{BLACK}Vasúti híd építése. Shift lenyomásával megmutatja a becsült építési költséget
-STR_RAIL_TOOLBAR_TOOLTIP_BUILD_RAILROAD_TUNNEL                  :{BLACK}Vasúti alagút építése. Shift lenyomásával megmutatja a becsült építési költséget
-STR_RAIL_TOOLBAR_TOOLTIP_TOGGLE_BUILD_REMOVE_FOR                :{BLACK}Váltás építés/feleszedés között vasúti pályák, jelzők, ellenőrző pontok és vasútállomások esetében. Ctrl nyomvatartásával az ellenőrző pontokon és állomásokon a vasúti pályát is eltávolítja
-STR_RAIL_TOOLBAR_TOOLTIP_CONVERT_RAIL                           :{BLACK}Sínek átalakítása a kiválasztott típusra. Shift lenyomásával megmutatja a becsült építési költséget
+STR_RAIL_TOOLBAR_TOOLTIP_BUILD_RAILROAD_TRACK                   :{BLACK}Pályafektetés. Ctrl+kattintással válthatsz építés és rombolás között. Shift+kattintással csak a becsült költséget jeleníti meg
+STR_RAIL_TOOLBAR_TOOLTIP_BUILD_AUTORAIL                         :{BLACK}Vasúti pálya építése egyszerűsített módon. A Ctrl billentyű segítségével lehet váltani az építés/rombolás között. Shift+kattintással csak a becsült költséget jeleníti meg
+STR_RAIL_TOOLBAR_TOOLTIP_BUILD_TRAIN_DEPOT_FOR_BUILDING         :{BLACK}Vasúti járműtelep építése (vonatok vételére és karbantartására). Shift+kattintással csak a becsült költséget jeleníti meg
+STR_RAIL_TOOLBAR_TOOLTIP_CONVERT_RAIL_TO_WAYPOINT               :{BLACK}Ellenőrző pont építése vágányra. Ctrl+kattintással egyesíthető más ellenőrző pontokkal. Shift+kattintással csak a becsült költséget jeleníti meg
+STR_RAIL_TOOLBAR_TOOLTIP_BUILD_RAILROAD_STATION                 :{BLACK}Vasútállomás építése. Ctrl+kattintással egyesíthető más állomásokkal. Shift+kattintással csak a becsült költséget jeleníti meg
+STR_RAIL_TOOLBAR_TOOLTIP_BUILD_RAILROAD_SIGNALS                 :{BLACK}Vasúti jelzők építése. Ctrl+kattintással váltás az alak- és fényjelzők között{}Kattintás+húzással a sínek mentén végig jelzők épülnek. Ctrl+kattintás+húzással a következő pályakiágazásig vagy jelzőig épít jelzőket. Shift+kattintással csak a becsült költséget jeleníti meg
+STR_RAIL_TOOLBAR_TOOLTIP_BUILD_RAILROAD_BRIDGE                  :{BLACK}Vasúti híd építése. Shift+kattintással csak a becsült költséget jeleníti meg
+STR_RAIL_TOOLBAR_TOOLTIP_BUILD_RAILROAD_TUNNEL                  :{BLACK}Vasúti alagút építése. Shift+kattintással csak a becsült költséget jeleníti meg
+STR_RAIL_TOOLBAR_TOOLTIP_TOGGLE_BUILD_REMOVE_FOR                :{BLACK}Váltás építés/feleszedés között vasúti pályák, jelzők, ellenőrző pontok és vasútállomások esetében. Ctrl+kattintással az ellenőrző pontokon és állomásokon a vasúti pályát is eltávolítja
+STR_RAIL_TOOLBAR_TOOLTIP_CONVERT_RAIL                           :{BLACK}Sínek átalakítása a kiválasztott típusra. Shift+kattintással csak a becsült költséget jeleníti meg
 
 STR_RAIL_NAME_RAILROAD                                          :Vasút
 STR_RAIL_NAME_ELRAIL                                            :Villamosított vasút
@@ -2932,25 +2932,25 @@ STR_BRIDGE_TUBULAR_SILICON                                      :Cső, Szilikon
 # Road construction toolbar
 STR_ROAD_TOOLBAR_ROAD_CONSTRUCTION_CAPTION                      :{WHITE}Út építése
 STR_ROAD_TOOLBAR_TRAM_CONSTRUCTION_CAPTION                      :{WHITE}Villamospálya építése
-STR_ROAD_TOOLBAR_TOOLTIP_BUILD_ROAD_SECTION                     :{BLACK}Út építése. A Ctrl billentyűvel válthatsz építés és rombolás között. Shift lenyomásával megmutatja a becsült építési/bontási költséget
-STR_ROAD_TOOLBAR_TOOLTIP_BUILD_TRAMWAY_SECTION                  :{BLACK}Villamospálya építése. A Ctrl billentyűvel válthatsz építés és rombolás között. Shift lenyomásával megmutatja a becsült építési/bontási költséget
-STR_ROAD_TOOLBAR_TOOLTIP_BUILD_AUTOROAD                         :{BLACK}Közút építése egyszerűsített módon. A Ctrl billentyűvel válthatsz építés és rombolás között. Shift lenyomásával megmutatja a becsült építési költséget
-STR_ROAD_TOOLBAR_TOOLTIP_BUILD_AUTOTRAM                         :{BLACK}Villamospálya építése egyszerűsített módon. A Ctrl billentyűvel válthatsz építés és rombolás között. Shift lenyomásával megmutatja a becsült építési költséget
-STR_ROAD_TOOLBAR_TOOLTIP_BUILD_ROAD_VEHICLE_DEPOT               :{BLACK}Garázs építése (járművek vételére és karbantartására). Shift lenyomásával megmutatja a becsült építési költséget
-STR_ROAD_TOOLBAR_TOOLTIP_BUILD_TRAM_VEHICLE_DEPOT               :{BLACK}Villamos remíz építése (járművek megépítésére és javítására). Shift lenyomásával megmutatja a becsült építési költséget
-STR_ROAD_TOOLBAR_TOOLTIP_BUILD_BUS_STATION                      :{BLACK}Buszmegálló építése. A Ctrl lenyomásával egyesítheted más állomásokkal. Shift lenyomásával megmutatja a becsült építési költséget
-STR_ROAD_TOOLBAR_TOOLTIP_BUILD_PASSENGER_TRAM_STATION           :{BLACK}Villamosmegálló építése. A Ctrl lenyomásával egyesítheted más állomásokkal. Shift lenyomásával megmutatja a becsült építési költséget
-STR_ROAD_TOOLBAR_TOOLTIP_BUILD_TRUCK_LOADING_BAY                :{BLACK}Teherautó-rakodóhely építése. A Ctrl lenyomásával egyesítheted más állomásokkal. Shift lenyomásával megmutatja a becsült építési költséget
-STR_ROAD_TOOLBAR_TOOLTIP_BUILD_CARGO_TRAM_STATION               :{BLACK}Tehervillamos-állomás építése. A Ctrl lenyomásával egyesítheted más állomásokkal. Shift lenyomásával megmutatja a becsült építési költséget
+STR_ROAD_TOOLBAR_TOOLTIP_BUILD_ROAD_SECTION                     :{BLACK}Út építése. Ctrl+kattintás az út lerombolásához. Shift+kattintással csak a becsült költséget jeleníti meg
+STR_ROAD_TOOLBAR_TOOLTIP_BUILD_TRAMWAY_SECTION                  :{BLACK}Villamospálya építése. Ctrl+kattintás a pálya lerombolásához. Shift+kattintással csak a becsült költséget jeleníti meg
+STR_ROAD_TOOLBAR_TOOLTIP_BUILD_AUTOROAD                         :{BLACK}Közút építése egyszerűsített módon. Ctrl+kattintás az út lerombolásához. Shift+kattintással csak a becsült költséget jeleníti meg
+STR_ROAD_TOOLBAR_TOOLTIP_BUILD_AUTOTRAM                         :{BLACK}Villamospálya építése egyszerűsített módon. Ctrl+kattintás a pálya lerombolásához. Shift+kattintással csak a becsült költséget jeleníti meg
+STR_ROAD_TOOLBAR_TOOLTIP_BUILD_ROAD_VEHICLE_DEPOT               :{BLACK}Garázs építése (járművek vételére és karbantartására). Shift+kattintással csak a becsült költséget jeleníti meg
+STR_ROAD_TOOLBAR_TOOLTIP_BUILD_TRAM_VEHICLE_DEPOT               :{BLACK}Villamos remíz építése (járművek megépítésére és javítására). Shift+kattintással csak a becsült költséget jeleníti meg
+STR_ROAD_TOOLBAR_TOOLTIP_BUILD_BUS_STATION                      :{BLACK}Buszmegálló építése. Ctrl+kattintással egyesíthető más állomásokkal. Shift+kattintással csak a becsült költséget jeleníti meg
+STR_ROAD_TOOLBAR_TOOLTIP_BUILD_PASSENGER_TRAM_STATION           :{BLACK}Villamosmegálló építése. Ctrl+kattintással egyesíthető más állomásokkal. SShift+kattintással csak a becsült költséget jeleníti meg
+STR_ROAD_TOOLBAR_TOOLTIP_BUILD_TRUCK_LOADING_BAY                :{BLACK}Teherautó-állomás építése. Ctrl+kattintással egyesíthető más állomásokkal. Shift+kattintással csak a becsült költséget jeleníti meg
+STR_ROAD_TOOLBAR_TOOLTIP_BUILD_CARGO_TRAM_STATION               :{BLACK}Tehervillamos-állomás építése. Ctrl+kattintással egyesíthető más állomásokkal. Shift+kattintással csak a becsült költséget jeleníti meg
 STR_ROAD_TOOLBAR_TOOLTIP_TOGGLE_ONE_WAY_ROAD                    :{BLACK}Egyirányú utak be/kikapcsolása
-STR_ROAD_TOOLBAR_TOOLTIP_BUILD_ROAD_BRIDGE                      :{BLACK}Közúti híd építése. Shift lenyomásával megmutatja a becsült építési költséget
-STR_ROAD_TOOLBAR_TOOLTIP_BUILD_TRAMWAY_BRIDGE                   :{BLACK}Villamos-híd építése. Shift lenyomásával megmutatja a becsült építési költséget
-STR_ROAD_TOOLBAR_TOOLTIP_BUILD_ROAD_TUNNEL                      :{BLACK}Közúti alagút építése. Shift lenyomásával megmutatja a becsült építési költséget
-STR_ROAD_TOOLBAR_TOOLTIP_BUILD_TRAMWAY_TUNNEL                   :{BLACK}Villamos-alagút építése. Shift lenyomásával megmutatja a becsült építési költséget
+STR_ROAD_TOOLBAR_TOOLTIP_BUILD_ROAD_BRIDGE                      :{BLACK}Közúti híd építése. Shift+kattintással csak a becsült költséget jeleníti meg
+STR_ROAD_TOOLBAR_TOOLTIP_BUILD_TRAMWAY_BRIDGE                   :{BLACK}Villamos-híd építése. Shift+kattintással csak a becsült költséget jeleníti meg
+STR_ROAD_TOOLBAR_TOOLTIP_BUILD_ROAD_TUNNEL                      :{BLACK}Közúti alagút építése. Shift+kattintással csak a becsült költséget jeleníti meg
+STR_ROAD_TOOLBAR_TOOLTIP_BUILD_TRAMWAY_TUNNEL                   :{BLACK}Villamos-alagút építése. Shift+kattintással csak a becsült költséget jeleníti meg
 STR_ROAD_TOOLBAR_TOOLTIP_TOGGLE_BUILD_REMOVE_FOR_ROAD           :{BLACK}Építés és felszedés közötti váltás utaknál
 STR_ROAD_TOOLBAR_TOOLTIP_TOGGLE_BUILD_REMOVE_FOR_TRAMWAYS       :{BLACK}Építés és bontás közötti váltás villamospályáknál
-STR_ROAD_TOOLBAR_TOOLTIP_CONVERT_ROAD                           :{BLACK}Út átalakítása a kiválasztott típusra. Shift lenyomásával megmutatja a becsült építési költséget
-STR_ROAD_TOOLBAR_TOOLTIP_CONVERT_TRAM                           :{BLACK}Villamospálya átalakítása a kiválasztott típusra. Shift lenyomásával megmutatja a becsült építési költséget
+STR_ROAD_TOOLBAR_TOOLTIP_CONVERT_ROAD                           :{BLACK}Út átalakítása a kiválasztott típusra. Shift+kattintással csak a becsült költséget jeleníti meg
+STR_ROAD_TOOLBAR_TOOLTIP_CONVERT_TRAM                           :{BLACK}Villamospálya átalakítása a kiválasztott típusra. Shift+kattintással csak a becsült költséget jeleníti meg
 
 STR_ROAD_NAME_ROAD                                              :Út
 STR_ROAD_NAME_TRAM                                              :Villamospálya
@@ -2965,7 +2965,7 @@ STR_BUILD_DEPOT_TRAM_ORIENTATION_SELECT_TOOLTIP                 :{BLACK}Remíz h
 STR_STATION_BUILD_BUS_ORIENTATION                               :{WHITE}Buszmegálló helyzete
 STR_STATION_BUILD_BUS_ORIENTATION_TOOLTIP                       :{BLACK}Buszmegálló helyzetének kiválasztása
 STR_STATION_BUILD_TRUCK_ORIENTATION                             :{WHITE}Rakodóhely helyzete
-STR_STATION_BUILD_TRUCK_ORIENTATION_TOOLTIP                     :{BLACK}Teherautó-rakodó helyzetének kiválasztása
+STR_STATION_BUILD_TRUCK_ORIENTATION_TOOLTIP                     :{BLACK}Teherautó-állomás helyzetének kiválasztása
 STR_STATION_BUILD_PASSENGER_TRAM_ORIENTATION                    :{WHITE}Villamosmegálló helyzete
 STR_STATION_BUILD_PASSENGER_TRAM_ORIENTATION_TOOLTIP            :{BLACK}Villamosmegálló helyzetének kiválasztása
 STR_STATION_BUILD_CARGO_TRAM_ORIENTATION                        :{WHITE}Tehervillamos-állomás helyzete
@@ -2974,12 +2974,12 @@ STR_STATION_BUILD_CARGO_TRAM_ORIENTATION_TOOLTIP                :{BLACK}Tehervil
 # Waterways toolbar (last two for SE only)
 STR_WATERWAYS_TOOLBAR_CAPTION                                   :{WHITE}Vízi utak építése
 STR_WATERWAYS_TOOLBAR_CAPTION_SE                                :{WHITE}Vízi utak
-STR_WATERWAYS_TOOLBAR_BUILD_CANALS_TOOLTIP                      :{BLACK}Csatorna építése. Shift lenyomásával megmutatja a becsült építési költséget
-STR_WATERWAYS_TOOLBAR_BUILD_LOCKS_TOOLTIP                       :{BLACK}Zsilip építése. Shift lenyomásával megmutatja a várható építési költséget
-STR_WATERWAYS_TOOLBAR_BUILD_DEPOT_TOOLTIP                       :{BLACK}Dokk építése (hajók vételére és karbantartására). Shift lenyomásával megmutatja a becsült építési költséget
-STR_WATERWAYS_TOOLBAR_BUILD_DOCK_TOOLTIP                        :{BLACK}Kikötő építése. Ctrl+kattintással egyesítheted más állomásokkal. Shift lenyomásával megmutatja a becsült építési költséget
-STR_WATERWAYS_TOOLBAR_BUOY_TOOLTIP                              :{BLACK}Bója lerakása, amit a hajók útirányjelző pontként használhatnak. Shift lenyomásával megmutatja a becsült építési költséget
-STR_WATERWAYS_TOOLBAR_BUILD_AQUEDUCT_TOOLTIP                    :{BLACK}Csatornahíd építése. Shift lenyomásával megmutatja a várható építési költséget
+STR_WATERWAYS_TOOLBAR_BUILD_CANALS_TOOLTIP                      :{BLACK}Csatorna építése. Shift+kattintással csak a becsült költséget jeleníti meg
+STR_WATERWAYS_TOOLBAR_BUILD_LOCKS_TOOLTIP                       :{BLACK}Zsilip építése. Shift+kattintással csak a becsült költséget jeleníti meg
+STR_WATERWAYS_TOOLBAR_BUILD_DEPOT_TOOLTIP                       :{BLACK}Dokk építése (hajók vételére és karbantartására). Shift+kattintással csak a becsült költséget jeleníti meg
+STR_WATERWAYS_TOOLBAR_BUILD_DOCK_TOOLTIP                        :{BLACK}Kikötő építése. Ctrl+kattintással egyesíthető más állomásokkal. Shift+kattintással csak a becsült költséget jeleníti meg
+STR_WATERWAYS_TOOLBAR_BUOY_TOOLTIP                              :{BLACK}Bója lerakása, amit a hajók útirányjelző pontként használhatnak. Shift+kattintással csak a becsült költséget jeleníti meg
+STR_WATERWAYS_TOOLBAR_BUILD_AQUEDUCT_TOOLTIP                    :{BLACK}Csatornahíd építése. Shift+kattintással csak a becsült költséget jeleníti meg
 STR_WATERWAYS_TOOLBAR_CREATE_LAKE_TOOLTIP                       :{BLACK}Csatorna építése. Ctrl+kattintással elárasztja a területet tengervízzel a tengerszinten
 STR_WATERWAYS_TOOLBAR_CREATE_RIVER_TOOLTIP                      :{BLACK}Folyók elhelyezése. Ctrl+kattintással átlós terület jelölhető ki
 
@@ -2992,7 +2992,7 @@ STR_STATION_BUILD_DOCK_CAPTION                                  :{WHITE}Kikötő
 
 # Airport toolbar
 STR_TOOLBAR_AIRCRAFT_CAPTION                                    :{WHITE}Repülőterek
-STR_TOOLBAR_AIRCRAFT_BUILD_AIRPORT_TOOLTIP                      :{BLACK}Repülőtér építése. A Ctrl lenyomásával egyesítheted más állomásokkal. Shift lenyomásával megmutatja a becsült építési költséget
+STR_TOOLBAR_AIRCRAFT_BUILD_AIRPORT_TOOLTIP                      :{BLACK}Repülőtér építése. Ctrl+kattintással egyesíthető más állomásokkal. Shift+kattintással csak a becsült költséget jeleníti meg
 
 # Airport construction window
 STR_STATION_BUILD_AIRPORT_CAPTION                               :{WHITE}Repülőtér beállítása
@@ -3019,14 +3019,14 @@ STR_STATION_BUILD_NOISE                                         :{BLACK}Zajterme
 
 # Landscaping toolbar
 STR_LANDSCAPING_TOOLBAR                                         :{WHITE}Tájrendezés
-STR_LANDSCAPING_TOOLTIP_LOWER_A_CORNER_OF_LAND                  :{BLACK}Egy pont lesüllyesztése. Húzással az első kiválasztott sarkot lesüllyeszti, majd a kiválasztott területet vele egy szintbe hozza. Ctrl lenyomásával átlós terület jelölhető ki. Shift lenyomásával megmutatja a terepsüllyesztés várható építési költségét
-STR_LANDSCAPING_TOOLTIP_RAISE_A_CORNER_OF_LAND                  :{BLACK}Egy sarokpont megemelése. Húzással az első kiválasztott sarkot megemeli, majd a kiválasztott területet vele egy szintbe hozza. Ctrl lenyomásával átlós terület jelölhető ki. Shift lenyomásával megmutatja a terepemelés várható építési költségét
-STR_LANDSCAPING_LEVEL_LAND_TOOLTIP                              :{BLACK}Talaj a kijelölt sarokpont szintjére hozása. Ctrl lenyomásával átlós terület jelölhető ki. Shift lenyomásával megmutatja az átalakítás várható költségét
-STR_LANDSCAPING_TOOLTIP_PURCHASE_LAND                           :{BLACK}Földterület megvétele későbbi használatra. Ctrl lenyomásával átlós terület jelölhető ki. Shift lenyomásával megmutatja a várható költséget
+STR_LANDSCAPING_TOOLTIP_LOWER_A_CORNER_OF_LAND                  :{BLACK}Egy pont lesüllyesztése. Húzással az első kiválasztott sarkot lesüllyeszti, majd a kiválasztott területet vele egy szintbe hozza. Ctrl+kattintás+húzással átlós terület jelölhető ki. Shift+kattintással csak a becsült költséget jeleníti meg
+STR_LANDSCAPING_TOOLTIP_RAISE_A_CORNER_OF_LAND                  :{BLACK}Egy sarokpont megemelése. Húzással az első kiválasztott sarkot megemeli, majd a kiválasztott területet vele egy szintbe hozza. Ctrl+kattintás+húzással átlós terület jelölhető ki. Shift+kattintással csak a becsült költséget jeleníti meg
+STR_LANDSCAPING_LEVEL_LAND_TOOLTIP                              :{BLACK}Talaj a kijelölt sarokpont szintjére hozása. Ctrl+kattintás+húzással átlós terület jelölhető ki. Shift+kattintással csak a becsült költséget jeleníti meg
+STR_LANDSCAPING_TOOLTIP_PURCHASE_LAND                           :{BLACK}Földterület megvétele későbbi használatra. Ctrl+kattintás+húzással átlós terület jelölhető ki. Shift+kattintással csak a becsült költséget jeleníti meg
 
 # Object construction window
 STR_OBJECT_BUILD_CAPTION                                        :{WHITE}Objektum kiválasztása
-STR_OBJECT_BUILD_TOOLTIP                                        :{BLACK}Építendő objektum kiválasztása. Ctrl lenyomásával átlós terület jelölhető ki. Shift lenyomásával megmutatja a becsült költséget
+STR_OBJECT_BUILD_TOOLTIP                                        :{BLACK}Építendő objektum kiválasztása. Ctrl+kattintás+húzással átlós terület jelölhető ki. Shift+kattintással csak a becsült költséget jeleníti meg
 STR_OBJECT_BUILD_CLASS_TOOLTIP                                  :{BLACK}Építendő objektum típusának kiválasztása
 STR_OBJECT_BUILD_PREVIEW_TOOLTIP                                :{BLACK}Objektum előnézete
 STR_OBJECT_BUILD_SIZE                                           :{BLACK}Méret: {GOLD}{NUM} x {NUM} mező
@@ -3038,7 +3038,7 @@ STR_OBJECT_CLASS_TRNS                                           :Adótornyok
 STR_PLANT_TREE_CAPTION                                          :{WHITE}Fák
 STR_PLANT_TREE_TOOLTIP                                          :{BLACK}Ültetendő fa kiválasztása. Ha már van fa a mezőn, akkor újabb fák ültetése a kiválasztott fatípustól függetlenül
 STR_TREES_RANDOM_TYPE                                           :{BLACK}Véletlenszerű fafélék
-STR_TREES_RANDOM_TYPE_TOOLTIP                                   :{BLACK}Véletlenszerűen kiválasztott fákat helyez el. Ctrl+kattintás+húzással átlós terület jelölhető ki. Shift lenyomásával megmutatja a becsült építési költséget.
+STR_TREES_RANDOM_TYPE_TOOLTIP                                   :{BLACK}Véletlenszerűen kiválasztott fákat helyez el. Ctrl+kattintás+húzással átlós terület jelölhető ki. Shift+kattintással csak a becsült költséget jeleníti meg
 STR_TREES_RANDOM_TREES_BUTTON                                   :{BLACK}Véletlenszerű fák
 STR_TREES_RANDOM_TREES_TOOLTIP                                  :{BLACK}Véletlenszerűen fákat ültet a térképre
 STR_TREES_MODE_NORMAL_BUTTON                                    :{BLACK}Normál
@@ -3051,7 +3051,7 @@ STR_TREES_MODE_FOREST_LG_TOOLTIP                                :{BLACK}A tájon
 # Land generation window (SE)
 STR_TERRAFORM_TOOLBAR_LAND_GENERATION_CAPTION                   :{WHITE}Táj szerkesztése
 STR_TERRAFORM_TOOLTIP_PLACE_ROCKY_AREAS_ON_LANDSCAPE            :{BLACK}Sziklás területek elhelyezése a térképen
-STR_TERRAFORM_TOOLTIP_DEFINE_DESERT_AREA                        :{BLACK}Sivatagot hoz létre.{}Nyomj Ctrl-t az eltávolításához
+STR_TERRAFORM_TOOLTIP_DEFINE_DESERT_AREA                        :{BLACK}Sivatag létrehozása.{}Ctrl+kattintás a sivatag eltávolításához
 STR_TERRAFORM_TOOLTIP_INCREASE_SIZE_OF_LAND_AREA                :{BLACK}Az emelendő/süllyesztendő földterület növelése
 STR_TERRAFORM_TOOLTIP_DECREASE_SIZE_OF_LAND_AREA                :{BLACK}Az emelendő/süllyesztendő földterület csökkentése
 STR_TERRAFORM_TOOLTIP_GENERATE_RANDOM_LAND                      :{BLACK}Véletlenszerű táj készítése
@@ -3065,7 +3065,7 @@ STR_RESET_LANDSCAPE_CONFIRMATION_TEXT                           :{WHITE}Biztos v
 # Town generation window (SE)
 STR_FOUND_TOWN_CAPTION                                          :{WHITE}Városkészítés
 STR_FOUND_TOWN_NEW_TOWN_BUTTON                                  :{BLACK}Új település
-STR_FOUND_TOWN_NEW_TOWN_TOOLTIP                                 :{BLACK}Új település építése. Shift+kattintással megmutatja a becsült költséget
+STR_FOUND_TOWN_NEW_TOWN_TOOLTIP                                 :{BLACK}Új település építése. Shift+kattintással csak a becsült költséget jeleníti meg
 STR_FOUND_TOWN_RANDOM_TOWN_BUTTON                               :{BLACK}Egy véletlen település
 STR_FOUND_TOWN_RANDOM_TOWN_TOOLTIP                              :{BLACK}Település építése véletlenszerű helyre
 STR_FOUND_TOWN_MANY_RANDOM_TOWNS                                :{BLACK}Sok véletlen település
@@ -3209,7 +3209,7 @@ STR_LAI_TREE_NAME_CACTUS_PLANTS                                 :Kaktusz
 STR_LAI_STATION_DESCRIPTION_RAILROAD_STATION                    :Vasútállomás
 STR_LAI_STATION_DESCRIPTION_AIRCRAFT_HANGAR                     :Repülőtéri hangár
 STR_LAI_STATION_DESCRIPTION_AIRPORT                             :Repülőtér
-STR_LAI_STATION_DESCRIPTION_TRUCK_LOADING_AREA                  :Teherautó-rakodóhely
+STR_LAI_STATION_DESCRIPTION_TRUCK_LOADING_AREA                  :Teherautó-állomás
 STR_LAI_STATION_DESCRIPTION_BUS_STATION                         :Buszmegálló
 STR_LAI_STATION_DESCRIPTION_SHIP_DOCK                           :Kikötő
 STR_LAI_STATION_DESCRIPTION_BUOY                                :Bója
@@ -3658,7 +3658,7 @@ STR_SIGN_LIST_MATCH_CASE_TOOLTIP                                :{BLACK}Kis- és
 
 # Sign window
 STR_EDIT_SIGN_CAPTION                                           :{WHITE}Felirat szerkesztése
-STR_EDIT_SIGN_LOCATION_TOOLTIP                                  :{BLACK}A fő nézetet a felirat helyére állítja. Ctrl+kattintás esetén új nézetet nyit a felirat helyére.
+STR_EDIT_SIGN_LOCATION_TOOLTIP                                  :{BLACK}A fő nézetet a felirat helyére állítja. Ctrl+kattintással új nézet nyílik a felirat helyzeténél
 STR_EDIT_SIGN_NEXT_SIGN_TOOLTIP                                 :{BLACK}Következő felirat
 STR_EDIT_SIGN_PREVIOUS_SIGN_TOOLTIP                             :{BLACK}Előző felirat
 
@@ -3669,7 +3669,7 @@ STR_TOWN_DIRECTORY_CAPTION                                      :{WHITE}Városok
 STR_TOWN_DIRECTORY_NONE                                         :{ORANGE}- Nincs -
 STR_TOWN_DIRECTORY_TOWN                                         :{ORANGE}{TOWN}{BLACK} ({COMMA})
 STR_TOWN_DIRECTORY_CITY                                         :{ORANGE}{TOWN}{YELLOW} (Város){BLACK} ({COMMA})
-STR_TOWN_DIRECTORY_LIST_TOOLTIP                                 :{BLACK}Városnevek - kattints egy névre a város megnézéséhez. Ctrl+kattintás esetén új látképet nyit a város pozíciójára
+STR_TOWN_DIRECTORY_LIST_TOOLTIP                                 :{BLACK}Városnevek - kattints egy névre a város megnézéséhez. Ctrl+kattintással új nézet nyílik a városnál
 STR_TOWN_POPULATION                                             :{BLACK}Világnépesség: {COMMA}
 
 # Town view window
@@ -3684,11 +3684,11 @@ STR_TOWN_VIEW_CARGO_FOR_TOWNGROWTH_REQUIRED_WINTER              :{ORANGE}{STRING
 STR_TOWN_VIEW_CARGO_FOR_TOWNGROWTH_DELIVERED_GENERAL            :{ORANGE}{STRING}{GREEN} szállítva
 STR_TOWN_VIEW_CARGO_FOR_TOWNGROWTH_REQUIRED                     :{ORANGE}{CARGO_TINY} / {CARGO_LONG}{RED} (több szükséges)
 STR_TOWN_VIEW_CARGO_FOR_TOWNGROWTH_DELIVERED                    :{ORANGE}{CARGO_TINY} / {CARGO_LONG}{GREEN} (szállítva)
-STR_TOWN_VIEW_TOWN_GROWS_EVERY                                  :{BLACK}A település {ORANGE}{UNITS_DAYS_OR_SECONDS} növekszik
+STR_TOWN_VIEW_TOWN_GROWS_EVERY                                  :{BLACK}A település {ORANGE}{UNITS_DAYS_OR_SECONDS}onta növekszik
 STR_TOWN_VIEW_TOWN_GROWS_EVERY_FUNDED                           :{BLACK}{BLACK}A település {ORANGE}{UNITS_DAYS_OR_SECONDS} növekszik (támogatást kapott)
 STR_TOWN_VIEW_TOWN_GROW_STOPPED                                 :{BLACK}A település {RED}nem{BLACK} növekszik
 STR_TOWN_VIEW_NOISE_IN_TOWN                                     :{BLACK}Zajszint a városban: {ORANGE}{COMMA}{BLACK}  max: {ORANGE}{COMMA}
-STR_TOWN_VIEW_CENTER_TOOLTIP                                    :{BLACK}A fő nézetet a városra állítja. Ctrl+kattintás esetén új nézetet nyit a város pozíciójára
+STR_TOWN_VIEW_CENTER_TOOLTIP                                    :{BLACK}A fő nézetet a városra állítja. Ctrl+kattintással új nézet nyílik a város helyzeténél
 STR_TOWN_VIEW_LOCAL_AUTHORITY_BUTTON                            :{BLACK}Önkormányzat
 STR_TOWN_VIEW_LOCAL_AUTHORITY_TOOLTIP                           :{BLACK}Az önkormányzat adatainak megmutatása
 STR_TOWN_VIEW_RENAME_TOOLTIP                                    :{BLACK}A város nevének megváltoztatása
@@ -3745,7 +3745,7 @@ STR_GOALS_TEXT                                                  :{ORANGE}{STRING
 STR_GOALS_NONE                                                  :{ORANGE}- Nincs -
 STR_GOALS_PROGRESS                                              :{ORANGE}{STRING}
 STR_GOALS_PROGRESS_COMPLETE                                     :{GREEN}{STRING}
-STR_GOALS_TOOLTIP_CLICK_ON_SERVICE_TO_CENTER                    :{BLACK}Kattintással a fő nézetet a célra állítja. Ctrl+kattintással új látképet nyit a gazdasági épület/település/mező helyéről
+STR_GOALS_TOOLTIP_CLICK_ON_SERVICE_TO_CENTER                    :{BLACK}Kattintással a fő nézetet a célra állítja. Ctrl+kattintással új nézet nyílik a gazdasági épület/település/mező helyzeténél
 
 # Goal question window
 STR_GOAL_QUESTION_CAPTION_QUESTION                              :{BLACK}Kérdés
@@ -3781,7 +3781,7 @@ STR_SUBSIDIES_OFFERED_FROM_TO                                   :{ORANGE}{STRING
 STR_SUBSIDIES_NONE                                              :{ORANGE}---
 STR_SUBSIDIES_SUBSIDISED_TITLE                                  :{BLACK}Már támogatást kap
 STR_SUBSIDIES_SUBSIDISED_FROM_TO                                :{ORANGE}{STRING} szállításáért {STRING} és {STRING} között {YELLOW} ({COMPANY}{YELLOW}, {STRING})
-STR_SUBSIDIES_TOOLTIP_CLICK_ON_SERVICE_TO_CENTER                :{BLACK}Kattints egy sorra a város/gazdasági épület megnézéséhez. Ctrl+kattintás esetén új látképet nyit a város/gazdasági épület pozíciójára
+STR_SUBSIDIES_TOOLTIP_CLICK_ON_SERVICE_TO_CENTER                :{BLACK}Kattints egy sorra a város/gazdasági épület megnézéséhez. Ctrl+kattintással új nézet nyílik a város/gazdasági épület helyzeténél
 STR_SUBSIDIES_OFFERED_EXPIRY_DATE                               :eddig: {DATE_SHORT}
 STR_SUBSIDIES_OFFERED_EXPIRY_TIME                               :ezen belül: {UNITS_MONTHS_OR_MINUTES}
 STR_SUBSIDIES_SUBSIDISED_EXPIRY_DATE                            :eddig: {DATE_SHORT}
@@ -3801,8 +3801,8 @@ STR_STORY_BOOK_NEXT_PAGE_TOOLTIP                                :{BLACK}Követke
 STR_STORY_BOOK_INVALID_GOAL_REF                                 :{RED}Érvénytelen cél referencia
 
 # Station list window
-STR_STATION_LIST_TOOLTIP                                        :{BLACK}Állomásnevek - kattints egy névre az állomás megnézéséhez. Ctrl+kattintásra új látképet nyit az állomás pozíciójára
-STR_STATION_LIST_USE_CTRL_TO_SELECT_MORE                        :{BLACK}Több elem kiválasztásához tartsd lenyomva a Ctrl gombot
+STR_STATION_LIST_TOOLTIP                                        :{BLACK}Állomásnevek - kattints egy névre az állomás megnézéséhez. Ctrl+kattintással új nézet nyílik az állomás helyzeténél
+STR_STATION_LIST_USE_CTRL_TO_SELECT_MORE                        :{BLACK}Ctrl+kattintás több elem kiválasztásához
 STR_STATION_LIST_CAPTION                                        :{WHITE}{COMPANY} állomásai - {COMMA}
 STR_STATION_LIST_STATION                                        :{YELLOW}{STATION} {STATION_FEATURES}
 STR_STATION_LIST_WAYPOINT                                       :{YELLOW}{WAYPOINT}
@@ -3867,7 +3867,7 @@ STR_CARGO_RATING_VERY_GOOD                                      :nagyon jó
 STR_CARGO_RATING_EXCELLENT                                      :kiváló
 STR_CARGO_RATING_OUTSTANDING                                    :kimagasló
 
-STR_STATION_VIEW_CENTER_TOOLTIP                                 :{BLACK}A fő nézetet az állomásra állítja. Ctrl+kattintás esetén új látképet nyit az állomás pozíciójára
+STR_STATION_VIEW_CENTER_TOOLTIP                                 :{BLACK}A fő nézetet az állomásra állítja. Ctrl+kattintással új nézet nyílik az állomás helyzeténél
 STR_STATION_VIEW_RENAME_TOOLTIP                                 :{BLACK}Az állomás nevének megváltoztatása
 
 STR_STATION_VIEW_SCHEDULED_TRAINS_TOOLTIP                       :{BLACK}Kilistázza az összes vonatot, aminek a menetrendjében szerepel ez az állomás
@@ -3882,9 +3882,9 @@ STR_STATION_VIEW_CLOSE_AIRPORT_TOOLTIP                          :{BLACK}Repülő
 
 # Waypoint/buoy view window
 STR_WAYPOINT_VIEW_CAPTION                                       :{WHITE}{WAYPOINT}
-STR_WAYPOINT_VIEW_CENTER_TOOLTIP                                :{BLACK}A fő nézetet az ellenőrző pontra állítja. Ctrl+kattintás esetén új látképet nyit az ellenőrző pont pozíciójára
+STR_WAYPOINT_VIEW_CENTER_TOOLTIP                                :{BLACK}A fő nézetet az ellenőrző pontra állítja. Ctrl+kattintással új nézet nyílik az ellenőrzőpontnál
 STR_WAYPOINT_VIEW_CHANGE_WAYPOINT_NAME                          :{BLACK}Átnevezi az ellenőrző pontot
-STR_BUOY_VIEW_CENTER_TOOLTIP                                    :{BLACK}A fő nézetet a bójára állítja. Ctrl+kattintás esetén új látképet nyit a bója pozíciójára
+STR_BUOY_VIEW_CENTER_TOOLTIP                                    :{BLACK}A fő nézetet a bójára állítja. Ctrl+kattintással új nézet nyílik a bója helyzeténél
 STR_BUOY_VIEW_CHANGE_BUOY_NAME                                  :{BLACK}Bója átnevezése
 
 STR_EDIT_WAYPOINT_NAME                                          :{WHITE}Ellenőrző pont nevének módosítása
@@ -3960,7 +3960,7 @@ STR_COMPANY_VIEW_BUILD_HQ_TOOLTIP                               :{BLACK}A válla
 STR_COMPANY_VIEW_VIEW_HQ_BUTTON                                 :{BLACK}Székház
 STR_COMPANY_VIEW_VIEW_HQ_TOOLTIP                                :{BLACK}Székház megtekintése
 STR_COMPANY_VIEW_RELOCATE_HQ                                    :{BLACK}SZH áthelyezése
-STR_COMPANY_VIEW_RELOCATE_COMPANY_HEADQUARTERS                  :{BLACK}A vállalat székházának újraépítése máshol a vállalat értékének 1%-áért. Shift+kattintással megmutatja a becsült költséget a székhely áthelyezése nélkül
+STR_COMPANY_VIEW_RELOCATE_COMPANY_HEADQUARTERS                  :{BLACK}A vállalat székházának újraépítése máshol a vállalat értékének 1%-áért. Shift+kattintással csak a becsült költséget jeleníti meg
 STR_COMPANY_VIEW_INFRASTRUCTURE_BUTTON                          :{BLACK}Részletek
 STR_COMPANY_VIEW_INFRASTRUCTURE_TOOLTIP                         :{BLACK}Részletes információk megtekintése az infrastruktúráról
 STR_COMPANY_VIEW_GIVE_MONEY_BUTTON                              :{BLACK}Adományozz pénzt
@@ -4007,7 +4007,7 @@ STR_INDUSTRY_DIRECTORY_ITEM_PROD1                               :{ORANGE}{INDUST
 STR_INDUSTRY_DIRECTORY_ITEM_PROD2                               :{ORANGE}{INDUSTRY} {STRING}, {STRING}
 STR_INDUSTRY_DIRECTORY_ITEM_PROD3                               :{ORANGE}{INDUSTRY} {STRING}, {STRING}, {STRING}
 STR_INDUSTRY_DIRECTORY_ITEM_PRODMORE                            :{ORANGE}{INDUSTRY} {STRING}, {STRING}, {STRING} és {NUM} további...
-STR_INDUSTRY_DIRECTORY_LIST_CAPTION                             :{BLACK}Gazdasági épületek neve - a névre kattintva a fő nézetet a választott objektumra irányíthatod. Ctrl+kattintással új látképet nyit a gazdasági épület pozíciójára
+STR_INDUSTRY_DIRECTORY_LIST_CAPTION                             :{BLACK}Gazdasági épületek neve - a névre kattintva a fő nézetet a választott objektumra irányíthatod. Ctrl+kattintással új nézet nyílik a gazdasági épület helyzeténél
 STR_INDUSTRY_DIRECTORY_ACCEPTED_CARGO_FILTER                    :{BLACK}Elfogad: {SILVER}{STRING}
 STR_INDUSTRY_DIRECTORY_PRODUCED_CARGO_FILTER                    :{BLACK}Termel: {SILVER}{STRING}
 STR_INDUSTRY_DIRECTORY_FILTER_ALL_TYPES                         :Minden rakománytípus
@@ -4018,7 +4018,7 @@ STR_INDUSTRY_VIEW_CAPTION                                       :{WHITE}{INDUSTR
 STR_INDUSTRY_VIEW_PRODUCTION_LAST_MONTH_TITLE                   :{BLACK}Múlt havi termelés:
 STR_INDUSTRY_VIEW_PRODUCTION_LAST_MINUTE_TITLE                  :{BLACK}Termelés az elmúlt percben:
 STR_INDUSTRY_VIEW_TRANSPORTED                                   :{YELLOW}{CARGO_LONG}{STRING}{BLACK} ({COMMA}% elszállítva)
-STR_INDUSTRY_VIEW_LOCATION_TOOLTIP                              :{BLACK}A fő nézetet a gazdasági épületre állítja. Ctrl+kattintás esetén új látképet nyit a gazdasági épület pozíciójára
+STR_INDUSTRY_VIEW_LOCATION_TOOLTIP                              :{BLACK}A fő nézetet a gazdasági épületre állítja. Ctrl+kattintással új nézet nyílik a gazdasági épület helyzeténél
 STR_INDUSTRY_VIEW_PRODUCTION_LEVEL                              :{BLACK}Termelési szint: {YELLOW}{COMMA}%
 STR_INDUSTRY_VIEW_INDUSTRY_ANNOUNCED_CLOSURE                    :{YELLOW}A gyár bejelentette a közelgő bezárását!
 
@@ -4179,16 +4179,16 @@ STR_BUY_VEHICLE_SHIP_BUY_REFIT_VEHICLE_BUTTON                   :{BLACK}Megvesz 
 STR_BUY_VEHICLE_AIRCRAFT_BUY_REFIT_VEHICLE_BUTTON               :{BLACK}Megvesz és átalakít
 
 ###length VEHICLE_TYPES
-STR_BUY_VEHICLE_TRAIN_BUY_VEHICLE_TOOLTIP                       :{BLACK}A kijelölt vasúti jármű megvétele. Shift+kattintással megmutatja a becsült költséget vásárlás nélkül
-STR_BUY_VEHICLE_ROAD_VEHICLE_BUY_VEHICLE_TOOLTIP                :{BLACK}A kijelölt közúti jármű megvétele. Shift+kattintással megmutatja a becsült költséget vásárlás nélkül
-STR_BUY_VEHICLE_SHIP_BUY_VEHICLE_TOOLTIP                        :{BLACK}A kijelölt hajó megvétele. Shift+kattintással megmutatja a becsült költséget vásárlás nélkül
-STR_BUY_VEHICLE_AIRCRAFT_BUY_VEHICLE_TOOLTIP                    :{BLACK}A kijelölt repülőgép megvétele. Shift+kattintással megmutatja a becsült költséget vásárlás nélkül
+STR_BUY_VEHICLE_TRAIN_BUY_VEHICLE_TOOLTIP                       :{BLACK}A kijelölt vasúti jármű megvétele. Shift+kattintással csak a becsült költséget jeleníti meg
+STR_BUY_VEHICLE_ROAD_VEHICLE_BUY_VEHICLE_TOOLTIP                :{BLACK}A kijelölt közúti jármű megvétele. Shift+kattintással csak a becsült költséget jeleníti meg
+STR_BUY_VEHICLE_SHIP_BUY_VEHICLE_TOOLTIP                        :{BLACK}A kijelölt hajó megvétele. Shift+kattintással csak a becsült költséget jeleníti meg
+STR_BUY_VEHICLE_AIRCRAFT_BUY_VEHICLE_TOOLTIP                    :{BLACK}A kijelölt repülőgép megvétele. Shift+kattintással csak a becsült költséget jeleníti meg
 
 ###length VEHICLE_TYPES
-STR_BUY_VEHICLE_TRAIN_BUY_REFIT_VEHICLE_TOOLTIP                 :{BLACK}A kijelölt vasúti jármű megvétele és átalakítása a kijelölt rakománytípusra. Shift+kattintással megmutatja a becsült költséget vásárlás nélkül
-STR_BUY_VEHICLE_ROAD_VEHICLE_BUY_REFIT_VEHICLE_TOOLTIP          :{BLACK}A kijelölt közúti jármű megvétele és átalakítása a kijelölt rakománytípusra. Shift+kattintással megmutatja a becsült költséget vásárlás nélkül
-STR_BUY_VEHICLE_SHIP_BUY_REFIT_VEHICLE_TOOLTIP                  :{BLACK}A kijelölt hajó megvétele és átalakítása a kijelölt rakománytípusra. Shift+kattintással megmutatja a becsült költséget vásárlás nélkül
-STR_BUY_VEHICLE_AIRCRAFT_BUY_REFIT_VEHICLE_TOOLTIP              :{BLACK}A kijelölt repülőgép megvétele és átalakítása a kijelölt rakománytípusra. Shift+kattintással megmutatja a becsült költséget vásárlás nélkül
+STR_BUY_VEHICLE_TRAIN_BUY_REFIT_VEHICLE_TOOLTIP                 :{BLACK}A kijelölt vasúti jármű megvétele és átalakítása a kijelölt rakománytípusra. Shift+kattintással csak a becsült költséget jeleníti meg
+STR_BUY_VEHICLE_ROAD_VEHICLE_BUY_REFIT_VEHICLE_TOOLTIP          :{BLACK}A kijelölt közúti jármű megvétele és átalakítása a kijelölt rakománytípusra. Shift+kattintással csak a becsült költséget jeleníti meg
+STR_BUY_VEHICLE_SHIP_BUY_REFIT_VEHICLE_TOOLTIP                  :{BLACK}A kijelölt hajó megvétele és átalakítása a kijelölt rakománytípusra. Shift+kattintással csak a becsült költséget jeleníti meg
+STR_BUY_VEHICLE_AIRCRAFT_BUY_REFIT_VEHICLE_TOOLTIP              :{BLACK}A kijelölt repülőgép megvétele és átalakítása a kijelölt rakománytípusra. Shift+kattintással csak a becsült költséget jeleníti meg
 
 ###length VEHICLE_TYPES
 STR_BUY_VEHICLE_TRAIN_RENAME_BUTTON                             :{BLACK}Átnevez
@@ -4238,7 +4238,7 @@ STR_DEPOT_VEHICLE_TOOLTIP_CHAIN                                 :{BLACK}{NUM} j�
 STR_DEPOT_VEHICLE_TOOLTIP_CARGO                                 :{}{CARGO_LONG} ({CARGO_SHORT})
 
 ###length VEHICLE_TYPES
-STR_DEPOT_TRAIN_LIST_TOOLTIP                                    :{BLACK}Vonatok - bal gombbal húzással áthelyezheted a járműveket a vonatba/vonatból, jobb gombbal kattintással járműinformáció. Ctrl lenyomásával a funkciókat a szerelvényre alkalmazod.
+STR_DEPOT_TRAIN_LIST_TOOLTIP                                    :{BLACK}Vonatok - bal gombbal húzással áthelyezheted a járműveket a vonatba/vonatból, jobb gombbal kattintással járműinformáció. Ctrl+kattintással a funkciókat a szerelvényre alkalmazod.
 STR_DEPOT_ROAD_VEHICLE_LIST_TOOLTIP                             :{BLACK}Járművek - kattints jobb gombbal egy járműre az adataihoz
 STR_DEPOT_SHIP_LIST_TOOLTIP                                     :{BLACK}Hajók - kattints jobb gombbal egy hajóra az adataihoz
 STR_DEPOT_AIRCRAFT_LIST_TOOLTIP                                 :{BLACK}Repülőgépek - kattints jobb gombbal egy repülőgépre az adataihoz
@@ -4280,16 +4280,16 @@ STR_DEPOT_CLONE_SHIP                                            :{BLACK}Hajó m�
 STR_DEPOT_CLONE_AIRCRAFT                                        :{BLACK}Repülőgép másolása
 
 ###length VEHICLE_TYPES
-STR_DEPOT_CLONE_TRAIN_DEPOT_INFO                                :{BLACK}Ide kattintva elkészítheted egy teljes vonat másolatát annak összes kocsijával. Kattints erre a gombra, majd a vonatra kívül vagy belül a járműtelepen. Kattints ide, majd a másolandó vonatra. Ctrl+kattintással az utasításlistát is megosztod. Shift+kattintással megmutatja a becsült költséget vásárlás nélkül
-STR_DEPOT_CLONE_ROAD_VEHICLE_DEPOT_INFO                         :{BLACK}Ide kattintva megveheted egy közúti jármű másolatát. Kattints ide, majd a másolandó járműre a járműtelepen belül vagy kívül. Ctrl+kattintással az utasításlistát is megosztod. Shift+kattintással megmutatja a becsült költséget vásárlás nélkül
-STR_DEPOT_CLONE_SHIP_DEPOT_INFO                                 :{BLACK}Ide kattintva elkészítheted egy hajó másolatát. Kattints ide, majd a másolandó hajóra. Ctrl+Kattintással a menetrendet is megosztod. Shift+kattintással megmutatja a becsült költséget vásárlás nélkül
-STR_DEPOT_CLONE_AIRCRAFT_INFO_HANGAR_WINDOW                     :{BLACK}Ide kattintva elkészítheted egy repülőgép másolatát. Kattints ide, majd a másolandó repülőgépre. Ctrl+kattintással a menetrendet is megosztod. Shift+kattintással megmutatja a becsült költséget vásárlás nélkül
+STR_DEPOT_CLONE_TRAIN_DEPOT_INFO                                :{BLACK}Ide kattintva elkészítheted egy teljes vonat másolatát annak összes kocsijával. Kattints erre a gombra, majd a vonatra kívül vagy belül a járműtelepen. Kattints ide, majd a másolandó vonatra. Ctrl+kattintás az utasítások megosztásához. Shift+kattintással csak a becsült költséget jeleníti meg
+STR_DEPOT_CLONE_ROAD_VEHICLE_DEPOT_INFO                         :{BLACK}Ide kattintva megveheted egy közúti jármű másolatát. Kattints ide, majd a másolandó járműre a járműtelepen belül vagy kívül. Ctrl+kattintás az utasítások megosztásához. Shift+kattintással csak a becsült költséget jeleníti meg
+STR_DEPOT_CLONE_SHIP_DEPOT_INFO                                 :{BLACK}Ide kattintva elkészítheted egy hajó másolatát. Kattints ide, majd a másolandó hajóra. Ctrl+kattintás az utasítások megosztásához. Shift+kattintással csak a becsült költséget jeleníti meg
+STR_DEPOT_CLONE_AIRCRAFT_INFO_HANGAR_WINDOW                     :{BLACK}Ide kattintva elkészítheted egy repülőgép másolatát. Kattints ide, majd a másolandó repülőgépre. Ctrl+kattintás az utasítások megosztásához. Shift+kattintással csak a becsült költséget jeleníti meg
 
 ###length VEHICLE_TYPES
-STR_DEPOT_TRAIN_LOCATION_TOOLTIP                                :{BLACK}A fő nézetet a járműtelepre állítja. Ctrl+kattintás esetén új látképet nyit a járműtelep pozíciójára
-STR_DEPOT_ROAD_VEHICLE_LOCATION_TOOLTIP                         :{BLACK}A fő nézetet a garázsra állítja. Ctrl+kattintás esetén új látképet nyit a garázs pozíciójára
-STR_DEPOT_SHIP_LOCATION_TOOLTIP                                 :{BLACK}A fő nézetet a dokkra állítja. Ctrl+kattintással új látképet nyit a dokk pozíciójára
-STR_DEPOT_AIRCRAFT_LOCATION_TOOLTIP                             :{BLACK}A fő nézetet a hangárra állítja. Ctrl+kattintás esetén új látképet nyit a hangár pozíciójára
+STR_DEPOT_TRAIN_LOCATION_TOOLTIP                                :{BLACK}A fő nézetet a járműtelepre állítja. Ctrl+kattintással új nézet nyílik a járműtelep helyzeténél
+STR_DEPOT_ROAD_VEHICLE_LOCATION_TOOLTIP                         :{BLACK}A fő nézetet a garázsra állítja. Ctrl+kattintással új nézet nyílik a garázs helyzeténél
+STR_DEPOT_SHIP_LOCATION_TOOLTIP                                 :{BLACK}A fő nézetet a dokkra állítja. Ctrl+kattintással új nézet nyíilik a dokk helyzeténél
+STR_DEPOT_AIRCRAFT_LOCATION_TOOLTIP                             :{BLACK}A fő nézetet a hangárra állítja. Ctrl+kattintással új nézet nyílik a hangár helyzeténél
 
 ###length VEHICLE_TYPES
 STR_DEPOT_VEHICLE_ORDER_LIST_TRAIN_TOOLTIP                      :{BLACK}Vonatok listája, amelyek menetrendjében a járműtelep szerepel
@@ -4396,9 +4396,9 @@ STR_VEHICLE_VIEW_CAPTION                                        :{WHITE}{VEHICLE
 
 ###length VEHICLE_TYPES
 STR_VEHICLE_VIEW_TRAIN_CENTER_TOOLTIP                           :{BLACK}Közelítés a vonat jelenlegi helyzetére. Dupla kattintással a fő nézetben követni fogja a vonatot. Ctrl+kattintással új nézet nyílik a vonat helyzetére.
-STR_VEHICLE_VIEW_ROAD_VEHICLE_CENTER_TOOLTIP                    :{BLACK}Közelítés a közúti jármű jelenlegi helyzetére. Dupla kattintással a fő nézetben követni fogja a járművet. Ctrl+kattintással új nézet nyílik a jármű helyzetére.
-STR_VEHICLE_VIEW_SHIP_CENTER_TOOLTIP                            :{BLACK}Közelítés a hajó jelenlegi helyzetére. Dupla kattintással a fő nézetben követni fogja a hajót. Ctrl+kattintással új nézet nyílik a hajó helyzetére.
-STR_VEHICLE_VIEW_AIRCRAFT_CENTER_TOOLTIP                        :{BLACK}Közelítés a repülőgép jelenlegi helyzetére. Dupla kattintással a fő nézetben követni fogja a repülőgépet. Ctrl+kattintással új nézet nyílik a repülőgép helyzetére.
+STR_VEHICLE_VIEW_ROAD_VEHICLE_CENTER_TOOLTIP                    :{BLACK}Közelítés a közúti jármű jelenlegi helyzetére. Dupla kattintással a fő nézetben követni fogja a járművet. Ctrl+kattintással új nézet nyílik a jármű helyzeténél
+STR_VEHICLE_VIEW_SHIP_CENTER_TOOLTIP                            :{BLACK}Közelítés a hajó jelenlegi helyzetére. Dupla kattintással a fő nézetben követni fogja a hajót. Ctrl+kattintással új nézet nyílik a hajó helyzeténél
+STR_VEHICLE_VIEW_AIRCRAFT_CENTER_TOOLTIP                        :{BLACK}Közelítés a repülőgép jelenlegi helyzetére. Dupla kattintással a fő nézetben követni fogja a repülőgépet. Ctrl+kattintással új nézet nyílik a repülőgép helyzeténél
 
 ###length VEHICLE_TYPES
 STR_VEHICLE_VIEW_TRAIN_SEND_TO_DEPOT_TOOLTIP                    :{BLACK}A járműtelepre küldi a vonatot. Ctrl+kattintással csak javításra
@@ -4407,15 +4407,15 @@ STR_VEHICLE_VIEW_SHIP_SEND_TO_DEPOT_TOOLTIP                     :{BLACK}Dokkba k
 STR_VEHICLE_VIEW_AIRCRAFT_SEND_TO_DEPOT_TOOLTIP                 :{BLACK}Hangárba küldi a repülőgépet. Ctrl+kattintással csak javításra
 
 ###length VEHICLE_TYPES
-STR_VEHICLE_VIEW_CLONE_TRAIN_INFO                               :{BLACK}Ide kattintva a teljes vonat másolatát készítheted el. Ctrl+kattintással az utasításlistát is megosztod. Shift+kattintással megmutatja a becsült költséget vásárlás nélkül
-STR_VEHICLE_VIEW_CLONE_ROAD_VEHICLE_INFO                        :{BLACK}Ide kattintva a jármű másolatát készítheted el. Ctrl+kattintással az utasításlistát is megosztod. Shift+kattintással megmutatja a becsült költséget vásárlás nélkül
-STR_VEHICLE_VIEW_CLONE_SHIP_INFO                                :{BLACK}Ide kattintva a hajó másolatát készítheted el. Ctrl+kattintással az utasításlistát is megosztod. Shift+kattintással megmutatja a becsült költséget vásárlás nélkül
-STR_VEHICLE_VIEW_CLONE_AIRCRAFT_INFO                            :{BLACK}Ide kattintva a repülőgép másolatát készítheted el. Ctrl+kattintással az utasításlistát is megosztod. Shift+kattintással megmutatja a becsült költséget vásárlás nélkül
+STR_VEHICLE_VIEW_CLONE_TRAIN_INFO                               :{BLACK}Ide kattintva a teljes vonat másolatát készítheted el. Ctrl+kattintás az utasítások megosztásához. Shift+kattintással csak a becsült költséget jeleníti meg
+STR_VEHICLE_VIEW_CLONE_ROAD_VEHICLE_INFO                        :{BLACK}Egy közúti jármű másolatának vásárlása. Ctrl+kattintás az utasítások megosztásához. Shift+kattintással csak a becsült költséget jeleníti meg
+STR_VEHICLE_VIEW_CLONE_SHIP_INFO                                :{BLACK}Ide kattintva a hajó másolatát készítheted el. Ctrl+kattintás az utasítások megosztásához. Shift+kattintással csak a becsült költséget jeleníti meg
+STR_VEHICLE_VIEW_CLONE_AIRCRAFT_INFO                            :{BLACK}Ide kattintva a repülőgép másolatát készítheted el. Ctrl+kattintás az utasítások megosztásához. Shift+kattintással csak a becsült költséget jeleníti meg
 
 STR_VEHICLE_VIEW_TRAIN_IGNORE_SIGNAL_TOOLTIP                    :{BLACK}A vonat rákényszerítése a megállj jelzés meghaladására
 STR_VEHICLE_VIEW_TRAIN_REVERSE_TOOLTIP                          :{BLACK}Vonat megfordítása
 STR_VEHICLE_VIEW_ROAD_VEHICLE_REVERSE_TOOLTIP                   :{BLACK}Jármű rákényszerítése megfordulásra
-STR_VEHICLE_VIEW_ORDER_LOCATION_TOOLTIP                         :{BLACK}Közelítés a célpontra. Ctrl+kattintással új nézet nyílik a célpont helyére.
+STR_VEHICLE_VIEW_ORDER_LOCATION_TOOLTIP                         :{BLACK}Közelítés a célpontra. Ctrl+kattintással új nézet nyílik a célpont helyénél.
 
 ###length VEHICLE_TYPES
 STR_VEHICLE_VIEW_TRAIN_REFIT_TOOLTIP                            :{BLACK}A vonat átalakítása másfajta rakomány szállítására
@@ -4677,7 +4677,7 @@ STR_ORDER_GO_TO_NEAREST_DEPOT                                   :Legközelebbi j
 STR_ORDER_GO_TO_NEAREST_HANGAR                                  :Legközelebbi hangárba
 STR_ORDER_CONDITIONAL                                           :Feltételes ugrás
 STR_ORDER_SHARE                                                 :Utasításlista megosztása
-STR_ORDERS_GO_TO_TOOLTIP                                        :{BLACK}Új utasítás beillesztése a kijelölt utasítás elé vagy a lista végére. Ctrl+kattintás állomásoknál 'bármiből teljes rakományra vár'-t, ellenőrző pontoknál 'Non-stop'-ot, járműtelepeknél 'Javításra menj' parancsot ad a célponthoz. 'Menetrend megosztása' esetén a jármű megosztja az utasításait a kiválasztott járművel. Ha járműtelep szerepel a menetrendben, kikapcsolja az automatikus javításokat
+STR_ORDERS_GO_TO_TOOLTIP                                        :{BLACK}Új utasítás beillesztése a kijelölt utasítás elé vagy a lista végére. Ctrl+kattintás állomásoknál 'bármiből teljes rakományra vár'-t, ellenőrző pontoknál a 'Minden új utasítás alapból non-stop' beállítás fordítottját, járműtelepeknél 'várakozás csoportbontásra' parancsot ad a célponthoz. Kattints egy másik járműre, hogy lemásold az utasításait, vagy Ctrl+kattints, hogy megoszd vele az utasításait. Ha járműtelep szerepel a menetrendben, kikapcsolja az automatikus javításokat
 
 STR_ORDERS_VEH_WITH_SHARED_ORDERS_LIST_TOOLTIP                  :{BLACK}Megmutatja az összes járművet, amik megosztják ezt az utasításlistát
 
@@ -4860,7 +4860,7 @@ STR_AI_CONFIG_RANDOM_AI                                         :Véletlenszerű
 STR_AI_CONFIG_NONE                                              :(nincs)
 STR_AI_CONFIG_NAME_VERSION                                      :{STRING} {YELLOW}v{NUM}
 STR_AI_CONFIG_MAX_COMPETITORS                                   :{LTBLUE}Ellenfelek száma legfeljebb: {ORANGE}{COMMA}
-STR_AI_CONFIG_COMPETITORS_INTERVAL                              :{LTBLUE}Ellenfelek indítása közötti időtartam: {ORANGE}{COMMA} perc{P "" s}
+STR_AI_CONFIG_COMPETITORS_INTERVAL                              :{LTBLUE}Ellenfelek indítása közötti időtartam: {ORANGE}{COMMA} perc
 
 STR_AI_CONFIG_MOVE_UP                                           :{BLACK}Mozgatás Fel
 STR_AI_CONFIG_MOVE_UP_TOOLTIP                                   :{BLACK}Kiválasztott MI mozgatása felfelé a listában
@@ -5097,7 +5097,7 @@ STR_ERROR_NO_SUITABLE_PLACES_FOR_INDUSTRIES_EXPLANATION         :{WHITE}Változt
 # Station construction related errors
 STR_ERROR_CAN_T_BUILD_RAILROAD_STATION                          :{WHITE}Nem építhetsz ide vasútállomást...
 STR_ERROR_CAN_T_BUILD_BUS_STATION                               :{WHITE}Nem építhetsz ide buszmegállót...
-STR_ERROR_CAN_T_BUILD_TRUCK_STATION                             :{WHITE}Nem építhetsz ide teherautó-rakodóhelyet...
+STR_ERROR_CAN_T_BUILD_TRUCK_STATION                             :{WHITE}Nem építhetsz ide teherautó-állomást...
 STR_ERROR_CAN_T_BUILD_PASSENGER_TRAM_STATION                    :{WHITE}Nem építhetsz ide villamosmegállót...
 STR_ERROR_CAN_T_BUILD_CARGO_TRAM_STATION                        :{WHITE}Nem építhetsz ide tehervillamos-állomást...
 STR_ERROR_CAN_T_BUILD_DOCK_HERE                                 :{WHITE}Nem építhetsz ide kikötőt...
@@ -5108,7 +5108,7 @@ STR_ERROR_STATION_TOO_SPREAD_OUT                                :{WHITE}... az �
 STR_ERROR_TOO_MANY_STATIONS_LOADING                             :{WHITE}Túl sok az állomás/rakodóhely
 STR_ERROR_TOO_MANY_STATION_SPECS                                :{WHITE}Túl sok vasútállomás-rész
 STR_ERROR_TOO_MANY_BUS_STOPS                                    :{WHITE}Túl sok buszmegálló
-STR_ERROR_TOO_MANY_TRUCK_STOPS                                  :{WHITE}Túl sok a teherautó-rakodóhely
+STR_ERROR_TOO_MANY_TRUCK_STOPS                                  :{WHITE}Túl sok a teherautó-állomás
 STR_ERROR_TOO_CLOSE_TO_ANOTHER_DOCK                             :{WHITE}Túl közel van egy másik kikötőhöz
 STR_ERROR_TOO_CLOSE_TO_ANOTHER_AIRPORT                          :{WHITE}Túl közel van egy másik repülőtérhez
 STR_ERROR_CAN_T_RENAME_STATION                                  :{WHITE}Nem nevezheted át az állomást...
@@ -5121,7 +5121,7 @@ STR_ERROR_DRIVE_THROUGH_JUNCTION                                :{WHITE}... áth
 STR_ERROR_CAN_T_REMOVE_PART_OF_STATION                          :{WHITE}Nem lehet eltávolítani az állomás részét...
 STR_ERROR_MUST_REMOVE_RAILWAY_STATION_FIRST                     :{WHITE}Előbb le kell rombolnod a vasútállomást
 STR_ERROR_CAN_T_REMOVE_BUS_STATION                              :{WHITE}Nem távolíthatod el ezt a buszmegállót...
-STR_ERROR_CAN_T_REMOVE_TRUCK_STATION                            :{WHITE}Nem távolíthatod el ezt a teherautó-rakodóhelyet...
+STR_ERROR_CAN_T_REMOVE_TRUCK_STATION                            :{WHITE}Nem távolíthatod el ezt a teherautó-állomást...
 STR_ERROR_CAN_T_REMOVE_PASSENGER_TRAM_STATION                   :{WHITE}Nem lehet a villamosmegállót eltávolítani...
 STR_ERROR_CAN_T_REMOVE_CARGO_TRAM_STATION                       :{WHITE}Nem lehet a tehervillamos-állomást eltávolítani
 STR_ERROR_MUST_REMOVE_ROAD_STOP_FIRST                           :{WHITE}Előbb el kell távolítanod a megállóhelyet
@@ -5129,7 +5129,7 @@ STR_ERROR_THERE_IS_NO_STATION                                   :{WHITE}... ninc
 
 STR_ERROR_MUST_DEMOLISH_RAILROAD                                :{WHITE}Előbb le kell rombolnod a vasútállomást
 STR_ERROR_MUST_DEMOLISH_BUS_STATION_FIRST                       :{WHITE}Előbb le kell rombolnod a buszmegállót
-STR_ERROR_MUST_DEMOLISH_TRUCK_STATION_FIRST                     :{WHITE}Előbb le kell rombolnod a teherautó-rakodóhelyet
+STR_ERROR_MUST_DEMOLISH_TRUCK_STATION_FIRST                     :{WHITE}Előbb le kell rombolnod a teherautó-állomást
 STR_ERROR_MUST_DEMOLISH_PASSENGER_TRAM_STATION_FIRST            :{WHITE}Előbb le kell rombolni a villamosmegállót
 STR_ERROR_MUST_DEMOLISH_CARGO_TRAM_STATION_FIRST                :{WHITE}Előbb le kell rombolni a tehervillamos-állomást
 STR_ERROR_MUST_DEMOLISH_DOCK_FIRST                              :{WHITE}Előbb le kell rombolnod a kikötőt
@@ -5378,7 +5378,7 @@ STR_ERROR_AIRCRAFT_NOT_ENOUGH_RANGE                             :{WHITE}... a re
 # Extra messages which go on the third line of errors, explaining why orders failed
 STR_ERROR_NO_RAIL_STATION                                       :{WHITE}Nem található vasútállomás
 STR_ERROR_NO_BUS_STATION                                        :{WHITE}Nem található buszmegálló
-STR_ERROR_NO_TRUCK_STATION                                      :{WHITE}Nem található teherautó-rakodóhely
+STR_ERROR_NO_TRUCK_STATION                                      :{WHITE}Nem található teherautó-állomás
 STR_ERROR_NO_DOCK                                               :{WHITE}Kikötő nem található
 STR_ERROR_NO_AIRPORT                                            :{WHITE}Nem található repülőtér/Helikopter-leszálló
 STR_ERROR_NO_STOP_COMPATIBLE_ROAD_TYPE                          :{WHITE}Nem található megálló kompatibilis úttípussal

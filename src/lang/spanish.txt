@@ -353,7 +353,7 @@ STR_SORT_BY_ENGINE_ID                                           :Identificador d
 STR_SORT_BY_COST                                                :Precio
 STR_SORT_BY_POWER                                               :Potencia
 STR_SORT_BY_TRACTIVE_EFFORT                                     :Fuerza de tracción
-STR_SORT_BY_INTRO_DATE                                          :Fecha introducción
+STR_SORT_BY_INTRO_DATE                                          :Fecha de lanzamiento
 STR_SORT_BY_RUNNING_COST                                        :Coste operación
 STR_SORT_BY_POWER_VS_RUNNING_COST                               :Potencia/coste operación
 STR_SORT_BY_CARGO_CAPACITY                                      :Capacidad de carga
@@ -1118,6 +1118,8 @@ STR_CURRENCY_DECREASE_EXCHANGE_RATE_TOOLTIP                     :{BLACK}Reduce l
 STR_CURRENCY_INCREASE_EXCHANGE_RATE_TOOLTIP                     :{BLACK}Incrementa la cantidad de tu moneda en una Libra (£)
 STR_CURRENCY_SET_EXCHANGE_RATE_TOOLTIP                          :{BLACK}Configura el valor de cambio de tu moneda por una Libra (£)
 
+STR_CURRENCY_SEPARATOR                                          :{LTBLUE}Separador: {ORANGE}{STRING}
+STR_CURRENCY_SET_CUSTOM_CURRENCY_SEPARATOR_TOOLTIP              :{BLACK}Establece el separador para la moneda
 
 STR_CURRENCY_PREFIX                                             :{LTBLUE}Prefijo: {ORANGE}{STRING}
 STR_CURRENCY_SET_CUSTOM_CURRENCY_PREFIX_TOOLTIP                 :{BLACK}Configura el prefijo de tu moneda
@@ -1493,7 +1495,7 @@ STR_CONFIG_SETTING_NEVER_EXPIRE_VEHICLES                        :Los vehículos 
 STR_CONFIG_SETTING_NEVER_EXPIRE_VEHICLES_HELPTEXT               :Si se activa, todos los modelos de vehículos permanecen disponibles para siempre una vez han sido introducidos
 
 STR_CONFIG_SETTING_TIMEKEEPING_UNITS                            :Modo temporal: {STRING}
-STR_CONFIG_SETTING_TIMEKEEPING_UNITS_HELPTEXT                   :Selecciona el modo temporal del juego. Este ajuste no puede ser cambiado más adelante.{}{}"Calendario" es la experiencia clásica de OpenTTD, donde un año tiene 12 meses y cada mes entre 28 y 31 días.{}{}En el modo "Reloj", el movimiento de los vehículos, la producción de carga y la gestión financiera se basan en incrementos de un minuto, que es similar a lo que tarda un mes de 30 días en el modo "Calendario". Éstos se agrupan en períodos de 12 minutos, que equivalen a un año en el modo "Calendario".{}{}En uno y otro modo siempre hay un calendario clásico que es usado para las fechas de aparición de vehículos, casas y otras infraestructuras.
+STR_CONFIG_SETTING_TIMEKEEPING_UNITS_HELPTEXT                   :Selecciona el modo temporal del juego. Este ajuste no puede ser cambiado más adelante.{}{}"Calendario" es la experiencia clásica de OpenTTD, donde un año tiene 12 meses y cada mes entre 28 y 31 días.{}{}En el modo "Reloj", la producción de carga y la gestión financiera se basan en incrementos de un minuto, que es similar a lo que tarda un mes de 30 días en el modo "Calendario". Éstos se agrupan en períodos de 12 minutos, que equivalen a un año en el modo "Calendario".{}{}En uno y otro modo siempre existe un calendario clásico que es usado para las fechas de lanzamiento de vehículos, casas y otras infraestructuras.
 ###length 2
 STR_CONFIG_SETTING_TIMEKEEPING_UNITS_CALENDAR                   :Calendario
 STR_CONFIG_SETTING_TIMEKEEPING_UNITS_WALLCLOCK                  :Reloj
@@ -2388,7 +2390,7 @@ STR_NETWORK_SERVER_LIST_CLICK_TO_SELECT_LAST                    :{BLACK}Clica pa
 STR_NETWORK_SERVER_LIST_GAME_INFO                               :{SILVER}INFORMACIÓN DEL JUEGO
 STR_NETWORK_SERVER_LIST_CLIENTS                                 :{SILVER}Clientes: {WHITE}{COMMA} / {COMMA} - {COMMA} / {COMMA}
 STR_NETWORK_SERVER_LIST_LANDSCAPE                               :{SILVER}Terreno: {WHITE}{STRING}
-STR_NETWORK_SERVER_LIST_MAP_SIZE                                :{SILVER}Tamaño del Mapa: {WHITE}{COMMA}x{COMMA}
+STR_NETWORK_SERVER_LIST_MAP_SIZE                                :{SILVER}Tamaño del mapa: {WHITE}{COMMA}x{COMMA}
 STR_NETWORK_SERVER_LIST_SERVER_VERSION                          :{SILVER}Versión del servidor: {WHITE}{STRING}
 STR_NETWORK_SERVER_LIST_SERVER_ADDRESS                          :{SILVER}Dirección del servidor: {WHITE}{STRING}
 STR_NETWORK_SERVER_LIST_INVITE_CODE                             :{SILVER}Código de invitación: {WHITE}{STRING}
@@ -5809,6 +5811,10 @@ STR_TOWN_NAME                                                   :{TOWN}
 STR_VEHICLE_NAME                                                :{VEHICLE}
 STR_WAYPOINT_NAME                                               :{WAYPOINT}
 
+STR_CURRENCY_SHORT_KILO                                         :{NBSP}k
+STR_CURRENCY_SHORT_MEGA                                         :{NBSP}M
+STR_CURRENCY_SHORT_GIGA                                         :{NBSP}kM
+STR_CURRENCY_SHORT_TERA                                         :{NBSP}MM
 
 STR_JUST_CARGO                                                  :{CARGO_LONG}
 STR_JUST_RIGHT_ARROW                                            :{RIGHT_ARROW}
