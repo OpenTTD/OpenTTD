@@ -517,6 +517,8 @@ static const OptionData _options[] = {
  */
 int openttd_main(int argc, char *argv[])
 {
+	_switch_mode_time = std::chrono::steady_clock::now();
+
 	std::string musicdriver;
 	std::string sounddriver;
 	std::string videodriver;
