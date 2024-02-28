@@ -1105,7 +1105,7 @@ STR_GAME_OPTIONS_SOCIAL_PLUGIN_STATE_DUPLICATE                  :{RED}Plugin dup
 STR_GAME_OPTIONS_SOCIAL_PLUGIN_STATE_UNSUPPORTED_API            :{RED}Versão não suportada
 STR_GAME_OPTIONS_SOCIAL_PLUGIN_STATE_INVALID_SIGNATURE          :{RED}Assinatura inválida
 
-STR_BASESET_STATUS                                              :{STRING} {RED}({NUM} arquivo{P "" s} em falta/corrompido{P "" s})
+STR_BASESET_STATUS                                              :{STRING} {RED}({NUM} arquivo{P "" s} faltando/corrompido{P "" s})
 
 STR_ERROR_RESOLUTION_LIST_FAILED                                :{WHITE}Falha ao obter uma lista de resoluções suportadas
 STR_ERROR_FULLSCREEN_FAILED                                     :{WHITE}Modo de tela cheia falhou
@@ -2717,7 +2717,7 @@ STR_CONTENT_ERROR_COULD_NOT_DOWNLOAD                            :{WHITE}O downlo
 STR_CONTENT_ERROR_COULD_NOT_DOWNLOAD_FILE_NOT_WRITABLE          :{WHITE}... arquivo não pode ser gravado
 STR_CONTENT_ERROR_COULD_NOT_EXTRACT                             :{WHITE}Falha na descompactação do arquivo
 
-STR_MISSING_GRAPHICS_SET_CAPTION                                :{WHITE}Gráficos ausentes
+STR_MISSING_GRAPHICS_SET_CAPTION                                :{WHITE}Gráficos não instalados
 STR_MISSING_GRAPHICS_SET_MESSAGE                                :{BLACK}OpenTTD precisa de gráficos para funcionar, mas nenhum foi encontrado. Você permite ao OpenTTD fazer o download e instalar esses gráficos?
 STR_MISSING_GRAPHICS_YES_DOWNLOAD                               :{BLACK}Sim, obter os gráficos pela rede
 STR_MISSING_GRAPHICS_NO_QUIT                                    :{BLACK}Não, sair do OpenTTD
@@ -3299,12 +3299,12 @@ STR_MAPGEN_HEIGHTMAP_HEIGHT_TOOLTIP                             :{BLACK}Escolher
 STR_MAPGEN_HEIGHTMAP_HEIGHT_UP                                  :{BLACK}Aumentar de uma unidade a altura máxima do pico mais alto no mapa
 STR_MAPGEN_HEIGHTMAP_HEIGHT_DOWN                                :{BLACK}Diminuir de uma unidade a altura máxima do pico mais alto no mapa
 STR_MAPGEN_SNOW_COVERAGE                                        :{BLACK}Cobertura de neve:
-STR_MAPGEN_SNOW_COVERAGE_UP                                     :{BLACK}Aumentar em dez porcento a cobertura de neve
-STR_MAPGEN_SNOW_COVERAGE_DOWN                                   :{BLACK}Reduzir em dez porcento a cobertura de neve
+STR_MAPGEN_SNOW_COVERAGE_UP                                     :{BLACK}Aumentar a cobertura de neve em dez por cento
+STR_MAPGEN_SNOW_COVERAGE_DOWN                                   :{BLACK}Diminuir a cobertura de neve em dez por cento
 STR_MAPGEN_SNOW_COVERAGE_TEXT                                   :{BLACK}{NUM}%
 STR_MAPGEN_DESERT_COVERAGE                                      :{BLACK}Cobertura do deserto:
-STR_MAPGEN_DESERT_COVERAGE_UP                                   :{BLACK}Aumentar a cobertura do deserto em dez porcento
-STR_MAPGEN_DESERT_COVERAGE_DOWN                                 :{BLACK}Diminuir a cobertura do deserto em dez por cento
+STR_MAPGEN_DESERT_COVERAGE_UP                                   :{BLACK}Aumentar a cobertura de deserto em dez por cento
+STR_MAPGEN_DESERT_COVERAGE_DOWN                                 :{BLACK}Diminuir a cobertura de deserto em dez por cento
 STR_MAPGEN_DESERT_COVERAGE_TEXT                                 :{BLACK}{NUM}%
 STR_MAPGEN_TERRAIN_TYPE                                         :{BLACK}Tipo de terreno:
 STR_MAPGEN_SEA_LEVEL                                            :{BLACK}Nível do mar:
@@ -3351,7 +3351,7 @@ STR_MAPGEN_NORTHWEST                                            :{BLACK}Noroeste
 STR_MAPGEN_NORTHEAST                                            :{BLACK}Nordeste
 STR_MAPGEN_SOUTHEAST                                            :{BLACK}Sudeste
 STR_MAPGEN_SOUTHWEST                                            :{BLACK}Sudoeste
-STR_MAPGEN_BORDER_FREEFORM                                      :{BLACK}Livre
+STR_MAPGEN_BORDER_FREEFORM                                      :{BLACK}Forma livre
 STR_MAPGEN_BORDER_WATER                                         :{BLACK}Água
 STR_MAPGEN_BORDER_RANDOM                                        :{BLACK}Aleatório
 STR_MAPGEN_BORDER_RANDOMIZE                                     :{BLACK}Aleatório
@@ -3361,7 +3361,7 @@ STR_MAPGEN_HEIGHTMAP_ROTATION                                   :{BLACK}Rotaçã
 STR_MAPGEN_HEIGHTMAP_NAME                                       :{BLACK}Nome do mapa topográfico:
 STR_MAPGEN_HEIGHTMAP_NAME_TOOLTIP                               :{BLACK}O nome do arquivo de imagem do mapa topográfico
 STR_MAPGEN_HEIGHTMAP_SIZE_LABEL                                 :{BLACK}Tamanho:
-STR_MAPGEN_HEIGHTMAP_SIZE_LABEL_TOOLTIP                         :{BLACK}O tamanho da imagem do mapa topográfico original. Para melhores resultados, cada lado deve ser igual a um comprimento de lado de mapa disponível no OpenTTD, como 256, 512, 1024, etc.
+STR_MAPGEN_HEIGHTMAP_SIZE_LABEL_TOOLTIP                         :{BLACK}O tamanho da imagem original do mapa topográfico. Para melhores resultados, cada lado deve corresponder a um comprimento de lado de mapa disponível no OpenTTD, tais como 256, 512, 1024, etc.
 STR_MAPGEN_HEIGHTMAP_SIZE                                       :{ORANGE}{NUM} x {NUM}
 
 STR_MAPGEN_TERRAIN_TYPE_QUERY_CAPT                              :{WHITE}Altura desejada do pico
@@ -3395,7 +3395,7 @@ STR_GENERATION_TREE_GENERATION                                  :{BLACK}Geraçã
 STR_GENERATION_OBJECT_GENERATION                                :{BLACK}Geração de objetos
 STR_GENERATION_CLEARING_TILES                                   :{BLACK}Geração de área rochosa e irregular
 STR_GENERATION_SETTINGUP_GAME                                   :{BLACK}Configurando o jogo
-STR_GENERATION_PREPARING_TILELOOP                               :{BLACK}Configurando o terreno
+STR_GENERATION_PREPARING_TILELOOP                               :{BLACK}Preparando o terreno
 STR_GENERATION_PREPARING_SCRIPT                                 :{BLACK}Executando o script
 STR_GENERATION_PREPARING_GAME                                   :{BLACK}Preparando o jogo
 
@@ -3431,7 +3431,7 @@ STR_NEWGRF_SETTINGS_TOGGLE_PALETTE                              :{BLACK}Alternar
 STR_NEWGRF_SETTINGS_TOGGLE_PALETTE_TOOLTIP                      :{BLACK}Ativar/Desativar a paleta de NewGRF selecionado.{}Faça isso quando os gráficos deste NewGRF ficarem cor de rosa no jogo
 STR_NEWGRF_SETTINGS_APPLY_CHANGES                               :{BLACK}Aplicar alterações
 
-STR_NEWGRF_SETTINGS_FIND_MISSING_CONTENT_BUTTON                 :{BLACK}Procurar o conteúdo online
+STR_NEWGRF_SETTINGS_FIND_MISSING_CONTENT_BUTTON                 :{BLACK}Procurar conteúdo que falta online
 STR_NEWGRF_SETTINGS_FIND_MISSING_CONTENT_TOOLTIP                :{BLACK}Verificar se o conteúdo em falta pode ser encontrado online
 
 STR_NEWGRF_SETTINGS_FILENAME                                    :{BLACK}Nome do arquivo: {SILVER}{STRING}
@@ -3442,8 +3442,8 @@ STR_NEWGRF_SETTINGS_MD5SUM                                      :{BLACK}Soma MD5
 STR_NEWGRF_SETTINGS_PALETTE                                     :{BLACK}Paleta: {SILVER}{STRING}
 STR_NEWGRF_SETTINGS_PALETTE_DEFAULT                             :Padrão (D)
 STR_NEWGRF_SETTINGS_PALETTE_DEFAULT_32BPP                       :Padrão (D) / 32 bpp
-STR_NEWGRF_SETTINGS_PALETTE_LEGACY                              :Legado (W)
-STR_NEWGRF_SETTINGS_PALETTE_LEGACY_32BPP                        :Legado (W) / 32 bpp
+STR_NEWGRF_SETTINGS_PALETTE_LEGACY                              :Antiga (W)
+STR_NEWGRF_SETTINGS_PALETTE_LEGACY_32BPP                        :Antiga (W) / 32 bpp
 STR_NEWGRF_SETTINGS_PARAMETER                                   :{BLACK}Parâmetros: {SILVER}{STRING}
 STR_NEWGRF_SETTINGS_PARAMETER_NONE                              :Nenhum
 
@@ -3454,7 +3454,7 @@ STR_NEWGRF_SETTINGS_INCOMPATIBLE                                :{RED}Incompatí
 
 # NewGRF save preset window
 STR_SAVE_PRESET_CAPTION                                         :{WHITE}Salvar predefinição
-STR_SAVE_PRESET_LIST_TOOLTIP                                    :{BLACK}Lista de predefinições disponíveis, selecione uma para copiá-la como nome da gravação abaixo
+STR_SAVE_PRESET_LIST_TOOLTIP                                    :{BLACK}Lista de predefinições disponíveis, selecione uma para copiá-la como nome para a gravação abaixo
 STR_SAVE_PRESET_TITLE                                           :{BLACK}Introduzir um nome para a predefinição
 STR_SAVE_PRESET_EDITBOX_TOOLTIP                                 :{BLACK}Nome que está selecionado para a gravação da predefinição
 STR_SAVE_PRESET_CANCEL                                          :{BLACK}Cancelar
@@ -3466,7 +3466,7 @@ STR_SAVE_PRESET_SAVE_TOOLTIP                                    :{BLACK}Salvar a
 STR_BASEGRF_PARAMETERS_CAPTION                                  :{WHITE}Alterar parâmetros dos gráficos base
 STR_NEWGRF_PARAMETERS_CAPTION                                   :{WHITE}Alterar parâmetros de NewGRF
 STR_NEWGRF_PARAMETERS_CLOSE                                     :{BLACK}Fechar
-STR_NEWGRF_PARAMETERS_RESET                                     :{BLACK}Redefinir
+STR_NEWGRF_PARAMETERS_RESET                                     :{BLACK}Restaurar
 STR_NEWGRF_PARAMETERS_RESET_TOOLTIP                             :{BLACK}Restaurar todos os parâmetros para os valores padrão
 STR_NEWGRF_PARAMETERS_DEFAULT_NAME                              :Parâmetro {NUM}
 STR_NEWGRF_PARAMETERS_SETTING                                   :{STRING}: {ORANGE}{STRING}
@@ -3487,11 +3487,11 @@ STR_NEWGRF_INSPECT_QUERY_CAPTION                                :{WHITE}Parâmet
 # Sprite aligner window
 STR_SPRITE_ALIGNER_CAPTION                                      :{WHITE}Alinhando sprite {COMMA} ({STRING})
 STR_SPRITE_ALIGNER_NEXT_BUTTON                                  :{BLACK}Próximo sprite
-STR_SPRITE_ALIGNER_NEXT_TOOLTIP                                 :{BLACK}Ir para o próximo sprite normal, pulando quaisquer sprites falsos, recoloridos ou de fontes e junta tudo do último sprite ao primeiro
+STR_SPRITE_ALIGNER_NEXT_TOOLTIP                                 :{BLACK}Ir para o próximo sprite normal, pulando quaisquer sprites falsos/recoloridos/tipo de letra e retornar do último sprite ao primeiro
 STR_SPRITE_ALIGNER_GOTO_BUTTON                                  :{BLACK}Ir para o sprite
-STR_SPRITE_ALIGNER_GOTO_TOOLTIP                                 :{BLACK}Ir para o sprite determinado. Se o sprite não é um sprite normal, segue para o próximo sprite normal
+STR_SPRITE_ALIGNER_GOTO_TOOLTIP                                 :{BLACK}Ir para o sprite selecionado. Se o sprite não for um sprite normal, seguir para o próximo sprite normal
 STR_SPRITE_ALIGNER_PREVIOUS_BUTTON                              :{BLACK}Sprite anterior
-STR_SPRITE_ALIGNER_PREVIOUS_TOOLTIP                             :{BLACK}Ir para o sprite normal anterior, pulando quaisquer sprites falsos, recoloridos ou de fontes e junta tudo do primeiro sprite ao último
+STR_SPRITE_ALIGNER_PREVIOUS_TOOLTIP                             :{BLACK}Ir para o sprite normal anterior, pulando quaisquer sprites falsos/recoloridos/tipo de letra e retornar do primeiro sprite ao último
 STR_SPRITE_ALIGNER_SPRITE_TOOLTIP                               :{BLACK}Representação do sprite atualmente selecionado. O alinhamento é ignorado ao desenhar este sprite
 STR_SPRITE_ALIGNER_MOVE_TOOLTIP                                 :{BLACK}Move o sprite, alterando os deslocamentos X e Y. Ctrl+Clique move o sprite 8 unidades por vez
 
@@ -3499,10 +3499,10 @@ STR_SPRITE_ALIGNER_MOVE_TOOLTIP                                 :{BLACK}Move o s
 STR_SPRITE_ALIGNER_CENTRE_OFFSET                                :{BLACK}Deslocamento centralizado
 STR_SPRITE_ALIGNER_CENTRE_SPRITE                                :{BLACK}Sprite centralizado
 
-STR_SPRITE_ALIGNER_CROSSHAIR                                    :{BLACK}Mira
+STR_SPRITE_ALIGNER_CROSSHAIR                                    :{BLACK}Retículo
 
-STR_SPRITE_ALIGNER_RESET_BUTTON                                 :{BLACK}Redefinir relativo
-STR_SPRITE_ALIGNER_RESET_TOOLTIP                                :{BLACK}Redefinir os deslocamentos relativos atuais
+STR_SPRITE_ALIGNER_RESET_BUTTON                                 :{BLACK}Restaurar relativo
+STR_SPRITE_ALIGNER_RESET_TOOLTIP                                :{BLACK}Restaurar os deslocamentos relativos atuais
 STR_SPRITE_ALIGNER_OFFSETS_ABS                                  :{BLACK}Deslocamento X: {NUM}, Deslocamento Y: {NUM} (Absoluto)
 STR_SPRITE_ALIGNER_OFFSETS_REL                                  :{BLACK}Deslocamento X: {NUM}, Deslocamento Y: {NUM} (Relativo)
 STR_SPRITE_ALIGNER_PICKER_BUTTON                                :{BLACK}Escolher sprite
@@ -3524,32 +3524,32 @@ STR_NEWGRF_ERROR_INVALID_PARAMETER                              :Parâmetro inv�
 STR_NEWGRF_ERROR_LOAD_BEFORE                                    :{1:STRING} deve ser carregado antes de {2:STRING}
 STR_NEWGRF_ERROR_LOAD_AFTER                                     :{1:STRING} deve ser carregado depois de {2:STRING}
 STR_NEWGRF_ERROR_OTTD_VERSION_NUMBER                            :{1:STRING} requer OpenTTD versão {2:STRING} ou superior
-STR_NEWGRF_ERROR_AFTER_TRANSLATED_FILE                          :o arquivo GRF foi designado para tradução
+STR_NEWGRF_ERROR_AFTER_TRANSLATED_FILE                          :o arquivo GRF que foi desenvolvido para traduzir
 STR_NEWGRF_ERROR_TOO_MANY_NEWGRFS_LOADED                        :Foram carregados NewGRFs demais
 STR_NEWGRF_ERROR_STATIC_GRF_CAUSES_DESYNC                       :Carregar {1:STRING} como NewGRF estático com {2:STRING} pode causar erro de sincronização
 STR_NEWGRF_ERROR_UNEXPECTED_SPRITE                              :Sprite inesperado (sprite {3:NUM})
-STR_NEWGRF_ERROR_UNKNOWN_PROPERTY                               :Propriedade de Ação 0 desconhecida {4:HEX} (sprite {3:NUM})
+STR_NEWGRF_ERROR_UNKNOWN_PROPERTY                               :Propriedade Action 0 desconhecida {4:HEX} (sprite {3:NUM})
 STR_NEWGRF_ERROR_INVALID_ID                                     :Tentativa de uso de ID inválido (sprite {3:NUM})
 STR_NEWGRF_ERROR_CORRUPT_SPRITE                                 :{YELLOW}{STRING} contém um sprite corrompido. Todos os sprites corrompidos serão apresentados como um ponto de interrogação (?) vermelho
-STR_NEWGRF_ERROR_MULTIPLE_ACTION_8                              :Contém múltiplas entradas Ação 8 (sprite {3:NUM})
-STR_NEWGRF_ERROR_READ_BOUNDS                                    :Leitura após o final do pseudo-sprite (sprite {3:NUM})
+STR_NEWGRF_ERROR_MULTIPLE_ACTION_8                              :Contém múltiplas entradas Action 8 (sprite {3:NUM})
+STR_NEWGRF_ERROR_READ_BOUNDS                                    :Leitura depois do fim do pseudo-sprite (sprite {3:NUM})
 STR_NEWGRF_ERROR_GRM_FAILED                                     :Recursos GRF necessários estão indisponíveis (sprite {3:NUM})
 STR_NEWGRF_ERROR_FORCEFULLY_DISABLED                            :{1:STRING} foi desativado por {STRING}
-STR_NEWGRF_ERROR_INVALID_SPRITE_LAYOUT                          :Formato de layout de sprite inválido/desconhecido (sprite {3:NUM})
+STR_NEWGRF_ERROR_INVALID_SPRITE_LAYOUT                          :Formato de disposição de sprite inválido/desconhecido (sprite {3:NUM})
 STR_NEWGRF_ERROR_LIST_PROPERTY_TOO_LONG                         :Há elementos demais na lista de valores de propriedade (sprite {3:NUM}, propriedade {4:HEX})
-STR_NEWGRF_ERROR_INDPROD_CALLBACK                               :Retorno de produção da indústria inválido (sprite {3:NUM}, "{2:STRING}")
+STR_NEWGRF_ERROR_INDPROD_CALLBACK                               :Chamada de produção da indústria inválido (sprite {3:NUM}, "{2:STRING}")
 
 # NewGRF related 'general' warnings
 STR_NEWGRF_POPUP_CAUTION_CAPTION                                :{WHITE}Cuidado!
-STR_NEWGRF_CONFIRMATION_TEXT                                    :{YELLOW}Você está prestes a efetuar alterações em um jogo em andamento. Isto pode travar o OpenTTD ou quebrar o estado do jogo. Não envie relatórios de erros sobre esses problemas.{}Tem certeza de que realmente deseja continuar?
+STR_NEWGRF_CONFIRMATION_TEXT                                    :{YELLOW}Você está prestes a efetuar alterações em um jogo em andamento. Isto pode fazer o OpenTTD terminar abruptamente ou travar o jogo. Não envie relatórios de erros sobre estas questões.{}Tem certeza de que realmente deseja continuar?
 
 STR_NEWGRF_DUPLICATE_GRFID                                      :{WHITE}Não é possível adicionar arquivo: ID do GRF duplicado
 STR_NEWGRF_COMPATIBLE_LOADED                                    :{ORANGE}Arquivo correspondente não encontrado (GRF compatível carregado)
 STR_NEWGRF_TOO_MANY_NEWGRFS                                     :{WHITE}Não é possível adicionar arquivo: limite de NewGRFs atingido
 
-STR_NEWGRF_COMPATIBLE_LOAD_WARNING                              :{WHITE}GRF(s) compatíveis foram carregados para os arquivos ausentes
-STR_NEWGRF_DISABLED_WARNING                                     :{WHITE}Arquivo(s) GRF ausentes foram desativados
-STR_NEWGRF_UNPAUSE_WARNING_TITLE                                :{YELLOW}Arquivo(s) GRF ausentes
+STR_NEWGRF_COMPATIBLE_LOAD_WARNING                              :{WHITE}GRF's compatíveis foram carregados para os arquivos que faltam
+STR_NEWGRF_DISABLED_WARNING                                     :{WHITE}Arquivos GRF ausentes foram desativados
+STR_NEWGRF_UNPAUSE_WARNING_TITLE                                :{YELLOW}Arquivos GRF em falta
 STR_NEWGRF_UNPAUSE_WARNING                                      :{WHITE}Sair da pausa pode travar o OpenTTD. Não envie relatórios de erros sobre travamentos subsequentes.{}Você realmente deseja sair da pausa?
 
 # NewGRF status
@@ -3557,20 +3557,20 @@ STR_NEWGRF_LIST_NONE                                            :Nenhum
 ###length 3
 STR_NEWGRF_LIST_ALL_FOUND                                       :Todos os arquivos estão presentes
 STR_NEWGRF_LIST_COMPATIBLE                                      :{YELLOW}Foram encontrados arquivos compatíveis
-STR_NEWGRF_LIST_MISSING                                         :{RED}Arquivos ausentes
+STR_NEWGRF_LIST_MISSING                                         :{RED}Arquivos em falta
 
 # NewGRF 'it's broken' warnings
-STR_NEWGRF_BROKEN                                               :{WHITE}O comportamento de NewGRF '{0:STRING}' pode causar dessincronizações e/ou travamentos
+STR_NEWGRF_BROKEN                                               :{WHITE}O comportamento de NewGRF '{0:STRING}' pode causar erros de sincronização e/ou travamentos
 STR_NEWGRF_BROKEN_POWERED_WAGON                                 :{WHITE}O estado do vagão motorizado mudou para '{1:ENGINE}' quando estiver fora do depósito
 STR_NEWGRF_BROKEN_VEHICLE_LENGTH                                :{WHITE}O comprimento do veículo mudou para '{1:ENGINE}' quando estiver fora do depósito
 STR_NEWGRF_BROKEN_CAPACITY                                      :{WHITE}A capacidade do veículo mudou para '{1:ENGINE}' quando estiver fora do depósito ou em adaptação
-STR_BROKEN_VEHICLE_LENGTH                                       :{WHITE}O trem '{VEHICLE}' pertencente a '{COMPANY}' tem um comprimento inválido. Possivelmente devido a problemas com NewGRFs. Pode ocorrer erros de sincronização ou travamento
+STR_BROKEN_VEHICLE_LENGTH                                       :{WHITE}O trem '{VEHICLE}' pertencente a '{COMPANY}' tem um comprimento inválido, possivelmente devido à problemas com NewGRFs. Podem ocorrer erros de sincronização ou travamento do jogo
 
-STR_NEWGRF_BUGGY                                                :{WHITE}O NewGRF '{0:STRING}' retorna informação incorreta
+STR_NEWGRF_BUGGY                                                :{WHITE}NewGRF '{0:STRING}' fornece informação incorreta
 STR_NEWGRF_BUGGY_ARTICULATED_CARGO                              :{WHITE}A informação de carga/adaptação para '{1:ENGINE}' é diferente da lista de compra depois da construção. Isto pode fazer a renovação/substituição automática falhar se adaptar corretamente
-STR_NEWGRF_BUGGY_ENDLESS_PRODUCTION_CALLBACK                    :{WHITE}'{1:STRING}' causou um loop infinito no retorno de chamada de produção
-STR_NEWGRF_BUGGY_UNKNOWN_CALLBACK_RESULT                        :{WHITE}Retorno de chamada {1:HEX} devolveu um resultado desconhecido/inválido {2:HEX}
-STR_NEWGRF_BUGGY_INVALID_CARGO_PRODUCTION_CALLBACK              :{WHITE}'{1:STRING}' retornou tipo de carga inválido no retorno de chamada de produção em {2:HEX}
+STR_NEWGRF_BUGGY_ENDLESS_PRODUCTION_CALLBACK                    :{WHITE}'{1:STRING}' causou um loop infinito na chamada de produção
+STR_NEWGRF_BUGGY_UNKNOWN_CALLBACK_RESULT                        :{WHITE}Chamada {1:HEX} devolveu resultado desconhecido/inválido {2:HEX}
+STR_NEWGRF_BUGGY_INVALID_CARGO_PRODUCTION_CALLBACK              :{WHITE}'{1:STRING}' devolveu tipo de carga inválido na chamada de produção em {2:HEX}
 
 # 'User removed essential NewGRFs'-placeholders for stuff without specs
 STR_NEWGRF_INVALID_CARGO                                        :<carga inválida>
@@ -3620,7 +3620,7 @@ STR_TOWN_VIEW_CARGO_FOR_TOWNGROWTH_REQUIRED_GENERAL             :{ORANGE}{STRING
 STR_TOWN_VIEW_CARGO_FOR_TOWNGROWTH_REQUIRED_WINTER              :{ORANGE}{STRING}{BLACK} é necessário no inverno
 STR_TOWN_VIEW_CARGO_FOR_TOWNGROWTH_DELIVERED_GENERAL            :{ORANGE}{STRING}{GREEN} entregue
 STR_TOWN_VIEW_CARGO_FOR_TOWNGROWTH_REQUIRED                     :{ORANGE}{CARGO_TINY} / {CARGO_LONG}{RED} (ainda necessário)
-STR_TOWN_VIEW_CARGO_FOR_TOWNGROWTH_DELIVERED                    :{ORANGE}{CARGO_TINY} / {CARGO_LONG}{GREEN} (entregue{P "" s})
+STR_TOWN_VIEW_CARGO_FOR_TOWNGROWTH_DELIVERED                    :{ORANGE}{CARGO_TINY} / {CARGO_LONG}{GREEN} (entregue)
 STR_TOWN_VIEW_TOWN_GROWS_EVERY                                  :{BLACK}Localidade cresce a cada {ORANGE}{UNITS_DAYS_OR_SECONDS}
 STR_TOWN_VIEW_TOWN_GROWS_EVERY_FUNDED                           :{BLACK}Localidade cresce a cada {ORANGE}{UNITS_DAYS_OR_SECONDS} (financiada)
 STR_TOWN_VIEW_TOWN_GROW_STOPPED                                 :{BLACK}Localidade {RED}não{BLACK} está crescendo
@@ -3671,7 +3671,7 @@ STR_LOCAL_AUTHORITY_ACTION_TOOLTIP_EXCLUSIVE_TRANSPORT_MINUTES  :{PUSH_COLOUR}{Y
 STR_LOCAL_AUTHORITY_ACTION_TOOLTIP_BRIBE                        :{PUSH_COLOUR}{YELLOW}Subornar a autoridade local para aumentar a sua avaliação e anular um direito exclusivo de transporte de um concorrente, correndo o risco de uma penalidade severa se for apanhado.{}{POP_COLOUR}Custo: {CURRENCY_LONG}
 
 # Goal window
-STR_GOALS_CAPTION                                               :{WHITE}{COMPANY} - Objetivos
+STR_GOALS_CAPTION                                               :{WHITE}Objetivos de {COMPANY}
 STR_GOALS_SPECTATOR_CAPTION                                     :{WHITE}Objetivos globais
 STR_GOALS_SPECTATOR                                             :Objetivos Globais
 STR_GOALS_GLOBAL_BUTTON                                         :{BLACK}Globais
@@ -3725,7 +3725,7 @@ STR_SUBSIDIES_SUBSIDISED_EXPIRY_DATE                            :até {DATE_SHOR
 STR_SUBSIDIES_SUBSIDISED_EXPIRY_TIME                            :{UNITS_MONTHS_OR_MINUTES} restante{P "" s}
 
 # Story book window
-STR_STORY_BOOK_CAPTION                                          :{WHITE}{COMPANY} - Livro de História
+STR_STORY_BOOK_CAPTION                                          :{WHITE}Livro de História de {COMPANY}
 STR_STORY_BOOK_SPECTATOR_CAPTION                                :{WHITE}Livro de Histórias Global
 STR_STORY_BOOK_SPECTATOR                                        :Livro de Histórias Global
 STR_STORY_BOOK_TITLE                                            :{YELLOW}{STRING}
@@ -3740,7 +3740,7 @@ STR_STORY_BOOK_INVALID_GOAL_REF                                 :{RED}Referênci
 # Station list window
 STR_STATION_LIST_TOOLTIP                                        :{BLACK}Nomes das estações - Clique no nome para centralizar a visualização na estação. Ctrl+Clique abre uma nova visualização na localização da estação
 STR_STATION_LIST_USE_CTRL_TO_SELECT_MORE                        :{BLACK}Ctrl+Clique para selecionar vários itens
-STR_STATION_LIST_CAPTION                                        :{WHITE}{COMPANY} - {COMMA} Estações
+STR_STATION_LIST_CAPTION                                        :{WHITE}{COMPANY} - {COMMA} Estaç{P ão ões}
 STR_STATION_LIST_STATION                                        :{YELLOW}{STATION} {STATION_FEATURES}
 STR_STATION_LIST_WAYPOINT                                       :{YELLOW}{WAYPOINT}
 STR_STATION_LIST_NONE                                           :{YELLOW}- Nenhum -
@@ -4452,10 +4452,10 @@ STR_VEHICLE_DETAILS_LAST_SERVICE_DATE                           :Última manuten
 STR_VEHICLE_DETAILS_LAST_SERVICE_MINUTES_AGO                    :Última manutenção: {LTBLUE}{NUM} minuto{P "" s} atrás
 STR_VEHICLE_DETAILS_INCREASE_SERVICING_INTERVAL_TOOLTIP_DAYS    :{BLACK}Aumentar o intervalo de manutenção em 10 dias. Ctrl+Clique para aumentar o intervalo de manutenção em 5 dias
 STR_VEHICLE_DETAILS_INCREASE_SERVICING_INTERVAL_TOOLTIP_MINUTES :{BLACK}Aumentar o intervalo de manutenção em 5 minutos. Ctrl+Clique para aumentar o intervalo de manutenção em 1 minuto
-STR_VEHICLE_DETAILS_INCREASE_SERVICING_INTERVAL_TOOLTIP_PERCENT :{BLACK}Aumentar o intervalo de manutenção em 10 porcento. Ctrl+Clique para aumentar o intervalo de manutenção em 5 porcento
+STR_VEHICLE_DETAILS_INCREASE_SERVICING_INTERVAL_TOOLTIP_PERCENT :{BLACK}Aumentar o intervalo de manutenção em 10 por cento. Ctrl+Clique para aumentar o intervalo de manutenção em 5 por cento
 STR_VEHICLE_DETAILS_DECREASE_SERVICING_INTERVAL_TOOLTIP_DAYS    :{BLACK}Diminuir o intervalo de manutenção em 10 dias. Ctrl+Clique para diminuir o intervalo de manutenção em 5 dias
 STR_VEHICLE_DETAILS_DECREASE_SERVICING_INTERVAL_TOOLTIP_MINUTES :{BLACK}Diminuir o intervalo de manutenção em 5 minutos. Ctrl+Clique para diminuir o intervalo de manutenção em 1 minuto
-STR_VEHICLE_DETAILS_DECREASE_SERVICING_INTERVAL_TOOLTIP_PERCENT :{BLACK}Diminuir o intervalo de manutenção em 10 porcento. Ctrl+Clique para diminuir o intervalo de manutenção em 5 porcento
+STR_VEHICLE_DETAILS_DECREASE_SERVICING_INTERVAL_TOOLTIP_PERCENT :{BLACK}Diminuir o intervalo de manutenção em 10 por cento. Ctrl+Clique para diminuir o intervalo de manutenção em 5 por cento
 
 STR_SERVICE_INTERVAL_DROPDOWN_TOOLTIP                           :{BLACK}Alterar o tipo de intervalo entre manutenções
 STR_VEHICLE_DETAILS_DEFAULT                                     :Padrão

@@ -289,7 +289,7 @@ STR_TOOLTIP_RESIZE                                              :{BLACK}点击�
 STR_TOOLTIP_TOGGLE_LARGE_SMALL_WINDOW                           :{BLACK}切换窗口大小
 STR_TOOLTIP_VSCROLL_BAR_SCROLLS_LIST                            :{BLACK}滚动条 - 上下滚动列表
 STR_TOOLTIP_HSCROLL_BAR_SCROLLS_LIST                            :{BLACK}滚动条 - 左右滚动列表
-STR_TOOLTIP_DEMOLISH_BUILDINGS_ETC                              :{BLACK}拆除地块上的建筑物等设施，按住Ctrl键选择对角线区域，按住Shift键操作只提示预计成本
+STR_TOOLTIP_DEMOLISH_BUILDINGS_ETC                              :{BLACK}清除地面。按住 <Ctrl> 键以沿对角线操作，按住 <Shift> 键操作以显示预计成本。
 
 # Show engines button
 ###length VEHICLE_TYPES
@@ -398,7 +398,7 @@ STR_TOOLBAR_TOOLTIP_DISPLAY_LIST_OF_COMPANY_TRAINS              :{BLACK}显示�
 STR_TOOLBAR_TOOLTIP_DISPLAY_LIST_OF_COMPANY_ROAD_VEHICLES       :{BLACK}显示公司汽车列表。按住 <Ctrl> 键单击以显示/隐藏载具组。
 STR_TOOLBAR_TOOLTIP_DISPLAY_LIST_OF_COMPANY_SHIPS               :{BLACK}显示公司船只列表。按住 <Ctrl> 键单击以显示/隐藏载具组。
 STR_TOOLBAR_TOOLTIP_DISPLAY_LIST_OF_COMPANY_AIRCRAFT            :{BLACK}显示公司飞机列表。按住 <Ctrl> 键单击以显示/隐藏载具组。
-STR_TOOLBAR_TOOLTIP_ZOOM_THE_VIEW_IN                            :{BLACK}放大视图
+STR_TOOLBAR_TOOLTIP_ZOOM_THE_VIEW_IN                            :{BLACK}放大
 STR_TOOLBAR_TOOLTIP_ZOOM_THE_VIEW_OUT                           :{BLACK}缩小
 STR_TOOLBAR_TOOLTIP_BUILD_RAILROAD_TRACK                        :{BLACK}建设铁路设施
 STR_TOOLBAR_TOOLTIP_BUILD_ROADS                                 :{BLACK}建设公路设施
@@ -1274,10 +1274,10 @@ STR_CONFIG_SETTING_INFINITE_MONEY                               :无限资金: {
 STR_CONFIG_SETTING_INFINITE_MONEY_HELPTEXT                      :允许无限制的支出并禁止公司破产
 
 STR_CONFIG_SETTING_MAXIMUM_INITIAL_LOAN                         :最大初始贷款: {STRING}
-STR_CONFIG_SETTING_MAXIMUM_INITIAL_LOAN_HELPTEXT                :公司最大贷款额（不考虑通货膨胀的影响）
+STR_CONFIG_SETTING_MAXIMUM_INITIAL_LOAN_HELPTEXT                :公司最大贷款额（不考虑通货膨胀的影响）。如果此项被设为“无贷款”则开局时不会有任何金钱提供。此时金钱需要由沙盒选项、无限金钱或者游戏脚本提供。
 STR_CONFIG_SETTING_MAXIMUM_INITIAL_LOAN_VALUE                   :{CURRENCY_LONG}
 ###setting-zero-is-special
-STR_CONFIG_SETTING_MAXIMUM_INITIAL_LOAN_DISABLED                :无贷款 {RED}需要有游戏脚本以提供初始资金
+STR_CONFIG_SETTING_MAXIMUM_INITIAL_LOAN_DISABLED                :无贷款
 
 STR_CONFIG_SETTING_INTEREST_RATE                                :贷款利率: {STRING}
 STR_CONFIG_SETTING_INTEREST_RATE_HELPTEXT                       :贷款利率；如果通货膨胀启用，将同时影响通货膨胀率。
@@ -2956,9 +2956,9 @@ STR_STATION_BUILD_NOISE                                         :{BLACK}产生�
 # Landscaping toolbar
 STR_LANDSCAPING_TOOLBAR                                         :{WHITE}景观美化
 STR_LANDSCAPING_TOOLTIP_LOWER_A_CORNER_OF_LAND                  :{BLACK}降低地面。按住 <Ctrl> 键以沿对角线操作，按住 <Shift> 键操作以显示预计成本。
-STR_LANDSCAPING_TOOLTIP_RAISE_A_CORNER_OF_LAND                  :{BLACK}升高地块的一角
+STR_LANDSCAPING_TOOLTIP_RAISE_A_CORNER_OF_LAND                  :{BLACK}升高地面。按住 <Ctrl> 键以沿对角线操作，按住 <Shift> 键操作以显示预计成本。
 STR_LANDSCAPING_LEVEL_LAND_TOOLTIP                              :{BLACK}拉平地面。按住 <Ctrl> 键以沿对角线操作，按住 <Shift> 键操作以显示预计成本。
-STR_LANDSCAPING_TOOLTIP_PURCHASE_LAND                           :{BLACK}购买土地以备将来使用。按 Ctrl 键可选择对角线区域。按 Shift 键可以预览所需资金。
+STR_LANDSCAPING_TOOLTIP_PURCHASE_LAND                           :{BLACK}购买土地以备将来使用。按住 <Ctrl> 键以沿对角线操作，按住 <Shift> 键操作以显示预计成本。
 
 # Object construction window
 STR_OBJECT_BUILD_CAPTION                                        :{WHITE}物体选单
@@ -3943,7 +3943,7 @@ STR_INDUSTRY_DIRECTORY_ITEM_PROD1                               :{ORANGE}{INDUST
 STR_INDUSTRY_DIRECTORY_ITEM_PROD2                               :{ORANGE}{INDUSTRY} {STRING}, {STRING}
 STR_INDUSTRY_DIRECTORY_ITEM_PROD3                               :{ORANGE}{INDUSTRY} {STRING}, {STRING}, {STRING}
 STR_INDUSTRY_DIRECTORY_ITEM_PRODMORE                            :{ORANGE}{INDUSTRY} {STRING}，{STRING}，{STRING}以及其余 {NUM} 个……
-STR_INDUSTRY_DIRECTORY_LIST_CAPTION                             :{BLACK}工业设施{}点击可以将屏幕中心移动到其所在位置. 单击的同时按住Ctrl会在新视点中显示工业位置
+STR_INDUSTRY_DIRECTORY_LIST_CAPTION                             :{BLACK}工业名称 - 点选名称以将屏幕中心移动到当前工业的位置。按住 <Ctrl> 键点选会在新视点中显示工业位置。
 STR_INDUSTRY_DIRECTORY_ACCEPTED_CARGO_FILTER                    :{BLACK}接受的货物：{SILVER}{STRING}
 STR_INDUSTRY_DIRECTORY_PRODUCED_CARGO_FILTER                    :{BLACK}产出的货物：{SILVER}{STRING}
 STR_INDUSTRY_DIRECTORY_FILTER_ALL_TYPES                         :所有货物类型
@@ -4098,7 +4098,7 @@ STR_CARGO_TYPE_FILTER_NONE                                      :没有
 
 ###length VEHICLE_TYPES
 STR_BUY_VEHICLE_TRAIN_LIST_TOOLTIP                              :{BLACK}列车选择列表。点击载具以展示信息。按住 <Ctrl> 键点选以显示 / 隐藏当前载具。
-STR_BUY_VEHICLE_ROAD_VEHICLE_LIST_TOOLTIP                       :{BLACK}路面车辆选择列表。点击车辆查看详细信息，或者按住 Ctrl 键再点击以切换是否隐藏车辆的种类
+STR_BUY_VEHICLE_ROAD_VEHICLE_LIST_TOOLTIP                       :{BLACK}汽车选择列表。点击载具以展示信息。按住 <Ctrl> 键点选以显示 / 隐藏当前载具。
 STR_BUY_VEHICLE_SHIP_LIST_TOOLTIP                               :{BLACK}船舶选择列表。点击船舶查看详细信息，或者按住 Ctrl 键再点击以切换是否隐藏船舶的种类
 STR_BUY_VEHICLE_AIRCRAFT_LIST_TOOLTIP                           :{BLACK}飞机选择列表。点击飞机查看详细信息，或者按住 Ctrl 键再点击以切换是否隐藏飞机的种类
 
@@ -4219,13 +4219,13 @@ STR_DEPOT_CLONE_AIRCRAFT                                        :{BLACK}克隆�
 STR_DEPOT_CLONE_TRAIN_DEPOT_INFO                                :{BLACK}复制火车。点击此按钮然后再点击任意一列在车库内或车库外的火车以复制购买。按住 <Ctrl> 键单击以共享调度计划。按住 <Shift> 键单击以显示预计费用。
 STR_DEPOT_CLONE_ROAD_VEHICLE_DEPOT_INFO                         :{BLACK}复制汽车。点击此按钮然后再点击任意一辆在车库内或车库外的载具以复制购买。按住 <Ctrl> 键单击以共享调度计划。按住 <Shift> 键单击以显示预计费用。
 STR_DEPOT_CLONE_SHIP_DEPOT_INFO                                 :{BLACK}复制船只。点击此按钮然后再点击任意一辆在车库内或车库外的载具以复制购买。按住 <Ctrl> 键单击以共享调度计划。按住 <Shift> 键单击以显示预计费用。
-STR_DEPOT_CLONE_AIRCRAFT_INFO_HANGAR_WINDOW                     :{BLACK}复制飞机。按此按钮后{}点击一个在机库内或外面的飞机即可。按住 Ctrl 键单击可以同时共享调度计划，按住 Shift 键单击可以显示所需资金
+STR_DEPOT_CLONE_AIRCRAFT_INFO_HANGAR_WINDOW                     :{BLACK}复制飞机。点击此按钮然后再点击任意一辆在车库内或车库外的载具以复制购买。按住 <Ctrl> 键单击以共享调度计划。按住 <Shift> 键单击以显示预计费用。
 
 ###length VEHICLE_TYPES
 STR_DEPOT_TRAIN_LOCATION_TOOLTIP                                :{BLACK}将屏幕中心移动到列车车库所在的位置。按住 <Ctrl> 单击会在新视点中显示列车车库位置。
 STR_DEPOT_ROAD_VEHICLE_LOCATION_TOOLTIP                         :{BLACK}将屏幕中心移动到车库所在的位置。按住 <Ctrl> 单击会在新视点中显示目标位置。
 STR_DEPOT_SHIP_LOCATION_TOOLTIP                                 :{BLACK}将屏幕中心移动到当前船坞的位置. 单击的同时按住Ctrl会在新视点中显示船坞位置
-STR_DEPOT_AIRCRAFT_LOCATION_TOOLTIP                             :{BLACK}将屏幕中心移动到当前机库的位置. 单击的同时按住Ctrl会在新视点中显示机库位置
+STR_DEPOT_AIRCRAFT_LOCATION_TOOLTIP                             :{BLACK}将屏幕中心移动到机库所在的位置。按住 <Ctrl> 单击会在新视点中显示目标位置。
 
 ###length VEHICLE_TYPES
 STR_DEPOT_VEHICLE_ORDER_LIST_TRAIN_TOOLTIP                      :{BLACK}显示所有调度计划中含有此车库的列车
@@ -4334,13 +4334,13 @@ STR_VEHICLE_VIEW_CAPTION                                        :{WHITE}{VEHICLE
 STR_VEHICLE_VIEW_TRAIN_CENTER_TOOLTIP                           :{BLACK}将主视角中心移动到列车所在的位置。双击将会在主视角中跟踪列车。单击的同时按住Ctrl会在新视点中显示列车位置
 STR_VEHICLE_VIEW_ROAD_VEHICLE_CENTER_TOOLTIP                    :{BLACK} 将主视角中心移动到车辆所在的位置。双击将会在主视角中跟踪车辆。单击的同时按住 Ctrl 会在新视点中显示车辆位置
 STR_VEHICLE_VIEW_SHIP_CENTER_TOOLTIP                            :{BLACK}将主视角中心移动到船只所在的位置。双击将会在主视角中跟踪船只。单击的同时按住Ctrl会在新视点中显示船只位置
-STR_VEHICLE_VIEW_AIRCRAFT_CENTER_TOOLTIP                        :{BLACK}将主视角中心移动到飞机所在的位置。双击将会在主视角中跟踪飞机。单击的同时按住Ctrl会在新视点中显示飞机位置
+STR_VEHICLE_VIEW_AIRCRAFT_CENTER_TOOLTIP                        :{BLACK}将主视角中心移动到飞机所在的位置。双击将会在主视角中跟踪飞机。按 <Ctrl> 键操作以在新视点中显示飞机
 
 ###length VEHICLE_TYPES
 STR_VEHICLE_VIEW_TRAIN_SEND_TO_DEPOT_TOOLTIP                    :{BLACK}命令列车前往车库。按住 <Ctrl> 键操作以仅作保养。
-STR_VEHICLE_VIEW_ROAD_VEHICLE_SEND_TO_DEPOT_TOOLTIP             :{BLACK}命令汽车前往车库{}Ctrl+单击 时汽车只进行保养
+STR_VEHICLE_VIEW_ROAD_VEHICLE_SEND_TO_DEPOT_TOOLTIP             :{BLACK}命令汽车前往车库。按住 <Ctrl> 键操作以仅作保养。
 STR_VEHICLE_VIEW_SHIP_SEND_TO_DEPOT_TOOLTIP                     :{BLACK}命令船只前往船坞{}Ctrl+单击 时船只只进行保养
-STR_VEHICLE_VIEW_AIRCRAFT_SEND_TO_DEPOT_TOOLTIP                 :{BLACK}命令飞机前往机库{}Ctrl+单击 时飞机只进行保养
+STR_VEHICLE_VIEW_AIRCRAFT_SEND_TO_DEPOT_TOOLTIP                 :{BLACK}命令飞机前往机库。按住 <Ctrl> 键操作以仅作保养。
 
 ###length VEHICLE_TYPES
 STR_VEHICLE_VIEW_CLONE_TRAIN_INFO                               :{BLACK}复制这列火车。按住 <Ctrl> 键单击以共享调度计划。按住 <Shift> 键单击以显示预计费用。
@@ -4384,7 +4384,7 @@ STR_VEHICLE_STATUS_WAITING_UNBUNCHING                           :{LTBLUE}等待�
 STR_VEHICLE_STATUS_CRASHED                                      :{RED}已撞毁!
 STR_VEHICLE_STATUS_BROKEN_DOWN                                  :{RED}抛锚
 STR_VEHICLE_STATUS_STOPPED                                      :{RED}停运
-STR_VEHICLE_STATUS_TRAIN_STOPPING_VEL                           :{RED}正在停止，{VELOCITY}
+STR_VEHICLE_STATUS_TRAIN_STOPPING_VEL                           :{RED}{VELOCITY} - 正在停止
 STR_VEHICLE_STATUS_TRAIN_NO_POWER                               :{RED}没有电力
 STR_VEHICLE_STATUS_TRAIN_STUCK                                  :{ORANGE}等待空余轨道
 STR_VEHICLE_STATUS_AIRCRAFT_TOO_FAR                             :{ORANGE}距离下一目的地过远
@@ -4523,7 +4523,7 @@ STR_ORDERS_CAPTION                                              :{WHITE}{VEHICLE
 STR_ORDERS_TIMETABLE_VIEW                                       :{BLACK}时刻表
 STR_ORDERS_TIMETABLE_VIEW_TOOLTIP                               :{BLACK}切换到时刻表视图
 
-STR_ORDERS_LIST_TOOLTIP                                         :{BLACK}调度列表{}单击一个调度指令以选定{}CTRL+左键{}将视点移动到相应的车站
+STR_ORDERS_LIST_TOOLTIP                                         :{BLACK}调度列表 - 点击命令以选定命令。按 <Ctrl> 键操作以跳至命令目标在地图上的位置
 STR_ORDER_INDEX                                                 :{COMMA}:{NBSP}
 STR_ORDER_TEXT                                                  :{STRING} {STRING} {STRING} {STRING}
 
@@ -4600,13 +4600,13 @@ STR_ORDER_CONDITIONAL_VALUE_TOOLTIP                             :{BLACK}要比�
 STR_ORDER_CONDITIONAL_VALUE_CAPT                                :{WHITE}请输入要比较的值
 
 STR_ORDERS_SKIP_BUTTON                                          :{BLACK}跳过
-STR_ORDERS_SKIP_TOOLTIP                                         :{BLACK}跳过当前命令并执行下一条命令{}CTRL+单击 可以跳过选定的命令
+STR_ORDERS_SKIP_TOOLTIP                                         :{BLACK}跳过当前命令并执行下一条命令。按 <Ctrl> 键操作以直接跳至选定的命令
 
 STR_ORDERS_DELETE_BUTTON                                        :{BLACK}删除
 STR_ORDERS_DELETE_TOOLTIP                                       :{BLACK}删除高亮的调度命令
 STR_ORDERS_DELETE_ALL_TOOLTIP                                   :{BLACK}删除全部调度
 STR_ORDERS_STOP_SHARING_BUTTON                                  :{BLACK}退出共享调度计划
-STR_ORDERS_STOP_SHARING_TOOLTIP                                 :{BLACK}退出共享调度计划。 按住 Ctrl 键单击可以同时清除此载具的调度计划。
+STR_ORDERS_STOP_SHARING_TOOLTIP                                 :{BLACK}退出共享调度计划。 按 <Ctrl> 键单击可以同时清除此载具的调度计划。
 
 STR_ORDERS_GO_TO_BUTTON                                         :{BLACK}前往
 STR_ORDER_GO_TO_NEAREST_DEPOT                                   :前往最近的车库
@@ -4738,7 +4738,7 @@ STR_TIMETABLE_CLEAR_SPEED                                       :{BLACK}取消�
 STR_TIMETABLE_CLEAR_SPEED_TOOLTIP                               :{BLACK}清除选定命令设定的限速。按住 <Ctrl> 键操作以清除所有命令的限速。
 
 STR_TIMETABLE_RESET_LATENESS                                    :{BLACK}清除晚点计数器
-STR_TIMETABLE_RESET_LATENESS_TOOLTIP                            :{BLACK}重置晚点计数器，从而使车辆被视为准时到达。CTRL+点击会重置全分组的计数器，从而使晚点最多的载具被视为准点而其他被视为早点
+STR_TIMETABLE_RESET_LATENESS_TOOLTIP                            :{BLACK}重置晚点计数器，从而使车辆被视为准时到达。按 <Ctrl> 键操作以重置全分组的计数器，从而使晚点最多的载具被视为准点而其他被视为早点
 
 STR_TIMETABLE_AUTOFILL                                          :{BLACK}自动填充
 STR_TIMETABLE_AUTOFILL_TOOLTIP                                  :{BLACK}根据下一次运行的时间自动填充时刻表。按住Ctrl单击可保持等候时间
@@ -4780,7 +4780,7 @@ STR_AI_DEBUG_CONTINUE                                           :{BLACK}继续
 STR_AI_DEBUG_CONTINUE_TOOLTIP                                   :{BLACK}取消暂停AI
 STR_AI_DEBUG_SELECT_AI_TOOLTIP                                  :{BLACK}查看此 AI 的调试输出。按住 <Ctrl> 操作以打开新窗口。
 STR_AI_GAME_SCRIPT                                              :{BLACK}游戏脚本
-STR_AI_GAME_SCRIPT_TOOLTIP                                      :{BLACK}检查游戏脚本日志。按住Ctrl键点选以打开新窗口
+STR_AI_GAME_SCRIPT_TOOLTIP                                      :{BLACK}检查游戏脚本日志。按住 <Ctrl> 操作以打开新窗口
 
 STR_ERROR_AI_NO_AI_FOUND                                        :找不到可用的AI。{}本AI是一个演示AI，并不会在游戏中做任何动作，{}您可以通过“在线查找扩展包”功能下载新的AI。
 STR_ERROR_AI_PLEASE_REPORT_CRASH                                :{WHITE}您使用的一个AI崩溃了。请附上一张AI调试窗口的截图，将此错误通报AI作者。

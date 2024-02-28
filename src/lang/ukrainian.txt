@@ -1578,7 +1578,8 @@ STR_CONFIG_SETTING_ORDER_REVIEW_ON                              :Так, для 
 
 STR_CONFIG_SETTING_WARN_INCOME_LESS                             :Попереджувати про збиткові транспортні засоби: {STRING}
 ###length 2
-STR_CONFIG_SETTING_WARN_INCOME_LESS_HELPTEXT                    :Вмикає/вимикає повідомлення про транспортні засоби, що не принесли прибутку на протязі року.
+STR_CONFIG_SETTING_WARN_INCOME_LESS_HELPTEXT                    :При включенні виринають повідомлення про транспортні засоби, що не принесли прибутку впродовж року.
+STR_CONFIG_SETTING_WARN_INCOME_LESS_HELPTEXT_PERIOD             :При включенні виринають повідомлення про транспортні засоби, що не принесли прибутку впродовж періоду
 
 STR_CONFIG_SETTING_NEVER_EXPIRE_VEHICLES                        :Транспортні засоби не застарівають: {STRING}
 STR_CONFIG_SETTING_NEVER_EXPIRE_VEHICLES_HELPTEXT               :При включенні будь-яка модель транспортного засобу буде доступна для придбання безстроково після її впровадження.
@@ -1847,9 +1848,11 @@ STR_CONFIG_SETTING_SOUND_NEWS_HELPTEXT                          :Відтвор�
 
 ###length 2
 STR_CONFIG_SETTING_SOUND_NEW_YEAR                               :Кінець року: {STRING}
+STR_CONFIG_SETTING_SOUND_NEW_PERIOD                             :Кінець періоду: {STRING}
 
 ###length 2
 STR_CONFIG_SETTING_SOUND_NEW_YEAR_HELPTEXT                      :Грати звуковий ефект у кінці року при підбитті результатів річної діяльності компанії порівняно з попереднім роком
+STR_CONFIG_SETTING_SOUND_NEW_PERIOD_HELPTEXT                    :Грати звуковий ефект у кінці періоду при підбитті результатів періодної діяльності компанії порівняно з попереднім періодом
 
 STR_CONFIG_SETTING_SOUND_CONFIRM                                :Будівництво: {STRING}
 STR_CONFIG_SETTING_SOUND_CONFIRM_HELPTEXT                       :Відтворювати звуковий ефект при успішному будівництві споруд або інших діях
@@ -3819,6 +3822,8 @@ STR_STATION_VIEW_EXCLUSIVE_RIGHTS_COMPANY                       :{YELLOW}{COMPAN
 
 STR_STATION_VIEW_RATINGS_BUTTON                                 :{BLACK}Рейтинг
 STR_STATION_VIEW_RATINGS_TOOLTIP                                :{BLACK}Показати рейтинг станції
+STR_STATION_VIEW_SUPPLY_RATINGS_TITLE_MONTH                     :{BLACK}Постачання впродовж місяця і місцевий рейтинг:
+STR_STATION_VIEW_SUPPLY_RATINGS_TITLE_MINUTE                    :BLACK}Постачання впродовж хвилини і місцевий рейтинг:
 STR_STATION_VIEW_CARGO_SUPPLY_RATING                            :{WHITE}{STRING}: {YELLOW}{COMMA} / {STRING} ({COMMA}%)
 
 STR_STATION_VIEW_GROUP                                          :{BLACK}Групувати по
@@ -4490,6 +4495,9 @@ STR_VEHICLE_DETAILS_SERVICING_INTERVAL_MINUTES                  :{BLACK}Інте
 STR_VEHICLE_DETAILS_SERVICING_INTERVAL_PERCENT                  :{BLACK}Інтервал техогляду: {LTBLUE}{COMMA}%{BLACK} {STRING}
 STR_VEHICLE_DETAILS_LAST_SERVICE_DATE                           :Останній техогляд: {LTBLUE}{DATE_LONG}
 STR_VEHICLE_DETAILS_LAST_SERVICE_MINUTES_AGO                    :Від останнього техогляду минуло хвилин: {LTBLUE}{NUM}
+STR_VEHICLE_DETAILS_INCREASE_SERVICING_INTERVAL_TOOLTIP_DAYS    :{BLACK}Збільшити період обслуговування на 10 днів. Ctrl+клац збільшує період обслуговування на 5 днів
+STR_VEHICLE_DETAILS_INCREASE_SERVICING_INTERVAL_TOOLTIP_MINUTES :{BLACK}Збільшити період обслуговування на 5 хвилин. Ctrl+клац збільшує період обслуговування на 1 хвилину
+STR_VEHICLE_DETAILS_INCREASE_SERVICING_INTERVAL_TOOLTIP_PERCENT :{BLACK}Збільшити період обслуговування на 10 відсотків. Ctrl+клац збільшує період обслуговування на 5 відсотків
 STR_VEHICLE_DETAILS_DECREASE_SERVICING_INTERVAL_TOOLTIP_DAYS    :{BLACK}Зменшити період обслуговування на 10 днів. Ctrl+клац зменшує період обслуговування на 5 днів
 STR_VEHICLE_DETAILS_DECREASE_SERVICING_INTERVAL_TOOLTIP_MINUTES :{BLACK}Зменшити період обслуговування на 5 хвилин. Ctrl+клац зменшує період обслуговування на 1 хвилину
 STR_VEHICLE_DETAILS_DECREASE_SERVICING_INTERVAL_TOOLTIP_PERCENT :{BLACK}Зменшити період обслуговування на 10 відсотків. Ctrl+клац зменшує період обслуговування на 5 відсотків
