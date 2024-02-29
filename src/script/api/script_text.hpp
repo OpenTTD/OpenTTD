@@ -165,8 +165,9 @@ private:
 	 * @param output The output to write the encoded text to.
 	 * @param param_count The number of parameters that are consumed by the string.
 	 * @param args The parameters to be consumed.
+	 * @param first Whether it's the first call in the recursion.
 	 */
-	void _GetEncodedText(std::back_insert_iterator<std::string> &output, int &param_count, ParamSpan args);
+	void _GetEncodedText(std::back_insert_iterator<std::string> &output, int &param_count, ParamSpan args, bool first);
 
 	/**
 	 * Set a parameter, where the value is the first item on the stack.
