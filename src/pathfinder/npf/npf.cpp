@@ -1040,6 +1040,10 @@ static NPFFoundTargetData NPFRouteInternal(AyStarNode *start1, bool ignore_start
 	/* Initialize user_data */
 	_npf_aystar.user_data = user;
 
+	/* We will limit the number of nodes for now, until we have a better
+	 * solution to really fix performance */
+	_npf_aystar.max_search_nodes = _settings_game.pf.npf.npf_max_search_nodes;
+
 	/* GO! */
 	[[maybe_unused]] int r = _npf_aystar.Main();
 	assert(r != AYSTAR_STILL_BUSY);
@@ -1113,9 +1117,6 @@ void InitializeNPF()
 	}
 	_npf_aystar.loops_per_tick = 0;
 	_npf_aystar.max_path_cost = 0;
-	/* We will limit the number of nodes for now, until we have a better
-	 * solution to really fix performance */
-	_npf_aystar.max_search_nodes = _settings_game.pf.npf.npf_max_search_nodes;
 }
 
 static void NPFFillWithOrderData(NPFFindStationOrTileData *fstd, const Vehicle *v, bool reserve_path = false)
