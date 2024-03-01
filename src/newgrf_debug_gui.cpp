@@ -930,6 +930,9 @@ struct SpriteAlignerWindow : Window {
 			}
 
 			case WID_SA_LIST: {
+				/* Don't redraw sprite list while it is still being filled by picker. */
+				if (_newgrf_debug_sprite_picker.mode == SPM_REDRAW) break;
+
 				const NWidgetBase *nwid = this->GetWidget<NWidgetBase>(widget);
 				int step_size = nwid->resize_y;
 
