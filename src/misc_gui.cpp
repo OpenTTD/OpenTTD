@@ -418,7 +418,7 @@ static const char * const _credits[] = {
 	"  Peter Nelson (peter1138) - Spiritual descendant from NewGRF gods (since 0.4.5)",
 	"  Remko Bijker (Rubidium) - Coder and way more (since 0.4.5)",
 	"  Patric Stout (TrueBrain) - NoProgrammer (since 0.3), sys op",
-	"  Tyler Trahan (2TallTyler) - General coding (since 13)",
+	"  Tyler Trahan (2TallTyler) - General / Time Lord (since 13)",
 	"",
 	"Inactive Developers:",
 	"  Grzegorz Duczy\u0144ski (adf88) - General coding (1.7 - 1.8)",
