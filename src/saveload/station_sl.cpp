@@ -564,8 +564,6 @@ public:
 	};
 	inline const static SaveLoadCompatTable compat_description = {};
 
-	static uint8_t last_num_specs; ///< Number of specs of the last loaded station.
-
 	void Save(BaseStation *bst) const override
 	{
 		SlSetStructListLength(bst->custom_roadstop_tile_data.size());
