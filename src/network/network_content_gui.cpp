@@ -466,6 +466,8 @@ class NetworkContentListWindow : public Window, ContentCallback {
 	/** Filter content by tags/name */
 	static bool CDECL TagNameFilter(const ContentInfo * const *a, ContentListFilterData &filter)
 	{
+		if ((*a)->state == ContentInfo::SELECTED || (*a)->state == ContentInfo::AUTOSELECTED) return true;
+
 		filter.string_filter.ResetState();
 		for (auto &tag : (*a)->tags) filter.string_filter.AddLine(tag);
 
@@ -811,6 +813,7 @@ public:
 				if (click_count > 1 || IsInsideBS(pt.x, checkbox->pos_x, checkbox->current_x)) {
 					_network_content_client.ToggleSelectedState(this->selected);
 					this->content.ForceResort();
+					this->content.ForceRebuild();
 				}
 
 				if (this->filter_data.types.any()) {
