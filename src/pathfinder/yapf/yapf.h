@@ -21,11 +21,10 @@
  * Finds the best path for given ship using YAPF.
  * @param v        the ship that needs to find a path
  * @param tile     the tile to find the path from (should be next tile the ship is about to enter)
- * @param enterdir diagonal direction which the ship will enter this new tile from
  * @param path_found [out] Whether a path has been found (true) or has been guessed (false)
  * @return         the best trackdir for next turn or INVALID_TRACK if the path could not be found
  */
-Track YapfShipChooseTrack(const Ship *v, TileIndex tile, DiagDirection enterdir, bool &path_found, ShipPathCache &path_cache);
+Track YapfShipChooseTrack(const Ship *v, TileIndex tile, bool &path_found, ShipPathCache &path_cache);
 
 /**
  * Returns true if it is better to reverse the ship before leaving depot using YAPF.
