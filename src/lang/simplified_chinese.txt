@@ -406,7 +406,7 @@ STR_TOOLBAR_TOOLTIP_BUILD_TRAMWAYS                              :{BLACK}建设�
 STR_TOOLBAR_TOOLTIP_BUILD_SHIP_DOCKS                            :{BLACK}建设水运设施
 STR_TOOLBAR_TOOLTIP_BUILD_AIRPORTS                              :{BLACK}建设机场
 STR_TOOLBAR_TOOLTIP_LANDSCAPING                                 :{BLACK}打开景观美化工具栏以修改地形、设置地貌等
-STR_TOOLBAR_TOOLTIP_SHOW_SOUND_MUSIC_WINDOW                     :{BLACK}显示 声音/音乐 控制菜单
+STR_TOOLBAR_TOOLTIP_SHOW_SOUND_MUSIC_WINDOW                     :{BLACK}显示声音与音乐控制菜单
 STR_TOOLBAR_TOOLTIP_SHOW_LAST_MESSAGE_NEWS                      :{BLACK}显示最新消息、新闻，消息历史或删除所有消息
 STR_TOOLBAR_TOOLTIP_LAND_BLOCK_INFORMATION                      :{BLACK}查询地块信息、截图、关于 OpenTTD 和开发者工具
 STR_TOOLBAR_TOOLTIP_SWITCH_TOOLBAR                              :{BLACK}切换工具栏
@@ -423,7 +423,7 @@ STR_SCENEDIT_TOOLBAR_LANDSCAPE_GENERATION                       :{BLACK}修改�
 STR_SCENEDIT_TOOLBAR_TOWN_GENERATION                            :{BLACK}城镇生成
 STR_SCENEDIT_TOOLBAR_INDUSTRY_GENERATION                        :{BLACK}建造或生成工业
 STR_SCENEDIT_TOOLBAR_ROAD_CONSTRUCTION                          :{BLACK}建设公路设施
-STR_SCENEDIT_TOOLBAR_TRAM_CONSTRUCTION                          :{BLACK}电车道建设
+STR_SCENEDIT_TOOLBAR_TRAM_CONSTRUCTION                          :{BLACK}建设电车设施
 STR_SCENEDIT_TOOLBAR_PLANT_TREES                                :{BLACK}种植树木。按住 <Ctrl> 以沿对角线建造。按住 <Shift> 键以显示预计费用。
 STR_SCENEDIT_TOOLBAR_PLACE_SIGN                                 :{BLACK}放置标志
 STR_SCENEDIT_TOOLBAR_PLACE_OBJECT                               :{BLACK}放置物件。按住 <Ctrl> 以沿对角线放置，按住 <Shift> 以显示预计费用。
@@ -1929,7 +1929,7 @@ STR_CONFIG_SETTING_SEMAPHORE_BUILD_BEFORE_DATE                  :在 {STRING} �
 STR_CONFIG_SETTING_SEMAPHORE_BUILD_BEFORE_DATE_HELPTEXT         :设置电子信号灯出现的时间，在此之前，使用悬臂信号灯（功能相同，外观不同）
 
 STR_CONFIG_SETTING_CYCLE_SIGNAL_TYPES                           :在以下信号类型中循环： {STRING}
-STR_CONFIG_SETTING_CYCLE_SIGNAL_TYPES_HELPTEXT                  :选择用Ctrl+点击的方式切换信号灯类型时的备选类型
+STR_CONFIG_SETTING_CYCLE_SIGNAL_TYPES_HELPTEXT                  :选择按 <Ctrl> 键操作以切换信号灯类型时使用的信号备选类型
 ###length 2
 STR_CONFIG_SETTING_CYCLE_SIGNAL_GROUP                           :仅当前信号组
 STR_CONFIG_SETTING_CYCLE_SIGNAL_ALL                             :全部可见
@@ -2786,13 +2786,13 @@ STR_RAIL_TOOLBAR_MAGLEV_CONSTRUCTION_CAPTION                    :磁悬浮铁路
 STR_RAIL_TOOLBAR_TOOLTIP_BUILD_RAILROAD_TRACK                   :{BLACK}建设铁轨。按住 <Ctrl> 键以移除铁轨。按住 <Shift> 键以显示预计费用。
 STR_RAIL_TOOLBAR_TOOLTIP_BUILD_AUTORAIL                         :{BLACK}使用多向路轨工具铺设轨道。按住 <Ctrl> 键点选以移除轨道。按住 <Shift> 键点选以显示预计费用。
 STR_RAIL_TOOLBAR_TOOLTIP_BUILD_TRAIN_DEPOT_FOR_BUILDING         :{BLACK}建设列车车库（可以购买或维护列车）。按住 <Shift> 键以显示预计费用。
-STR_RAIL_TOOLBAR_TOOLTIP_CONVERT_RAIL_TO_WAYPOINT               :{BLACK}建设铁路路点。按住 Ctrl 键允许合并路点。按住 Shift 键显示预计费用。
+STR_RAIL_TOOLBAR_TOOLTIP_CONVERT_RAIL_TO_WAYPOINT               :{BLACK}建设铁路路点。按住 <Ctrl> 键以合并路点。按住 <Shift> 键以显示预计费用。
 STR_RAIL_TOOLBAR_TOOLTIP_BUILD_RAILROAD_STATION                 :{BLACK}建设火车站。按住 <Ctrl> 键以合并车站。按住 <Shift> 键以显示预计费用。
 STR_RAIL_TOOLBAR_TOOLTIP_BUILD_RAILROAD_SIGNALS                 :{BLACK}建设铁路信号。建筑时按住 <Ctrl> 键单击以对信号应用不同风格样式。{}在建设时拖拽以在拖拽区间内按照设定的信号间距均匀建设信号。按住 <Ctrl> 键拖拽以按设定的检举建设信号至下一个岔道 / 车站 / 信号。按住 <Shift> 以显示预计费用。
 STR_RAIL_TOOLBAR_TOOLTIP_BUILD_RAILROAD_BRIDGE                  :{BLACK}建设铁路桥梁。按住 <Shift> 键显示预计费用。
 STR_RAIL_TOOLBAR_TOOLTIP_BUILD_RAILROAD_TUNNEL                  :{BLACK}建设铁路隧道。按住 <Shift> 键以显示预计费用。
 STR_RAIL_TOOLBAR_TOOLTIP_TOGGLE_BUILD_REMOVE_FOR                :{BLACK}切换建筑 / 拆除铁轨、信号机、路点以及车站。按住 <Ctrl> 键点选以同时移除路点及车站中的铁轨
-STR_RAIL_TOOLBAR_TOOLTIP_CONVERT_RAIL                           :{BLACK}转换/升级 铁路类型。按住 Shift 键显示预计费用。
+STR_RAIL_TOOLBAR_TOOLTIP_CONVERT_RAIL                           :{BLACK}转换或升级铁路类型。按住 <Shift> 键单击以显示预计费用。
 
 STR_RAIL_NAME_RAILROAD                                          :铁路
 STR_RAIL_NAME_ELRAIL                                            :电气化铁路
@@ -2886,7 +2886,7 @@ STR_ROAD_TOOLBAR_TOOLTIP_BUILD_TRAMWAY_TUNNEL                   :{BLACK}建设�
 STR_ROAD_TOOLBAR_TOOLTIP_TOGGLE_BUILD_REMOVE_FOR_ROAD           :{BLACK}建设/拆除 公路
 STR_ROAD_TOOLBAR_TOOLTIP_TOGGLE_BUILD_REMOVE_FOR_TRAMWAYS       :{BLACK}建设/拆除 电车轨道
 STR_ROAD_TOOLBAR_TOOLTIP_CONVERT_ROAD                           :{BLACK}转换或升级道路类型。按住 <Shift> 键单击以显示预计费用。
-STR_ROAD_TOOLBAR_TOOLTIP_CONVERT_TRAM                           :转换/升级 电车道类型。按住 Shift 键显示预计费用。
+STR_ROAD_TOOLBAR_TOOLTIP_CONVERT_TRAM                           :{BLACK}转换或升级电车轨道类型。按住 <Shift> 键单击以显示预计费用。
 
 STR_ROAD_NAME_ROAD                                              :公路
 STR_ROAD_NAME_TRAM                                              :电车轨道
@@ -2928,7 +2928,7 @@ STR_STATION_BUILD_DOCK_CAPTION                                  :{WHITE}码头
 
 # Airport toolbar
 STR_TOOLBAR_AIRCRAFT_CAPTION                                    :{WHITE}机场
-STR_TOOLBAR_AIRCRAFT_BUILD_AIRPORT_TOOLTIP                      :{BLACK}新建机场。按住 Ctrl 键允许合并站台，按住 Shift 键操作可以显示所需资金
+STR_TOOLBAR_AIRCRAFT_BUILD_AIRPORT_TOOLTIP                      :{BLACK}建设机场。按住 <Ctrl> 键以合并车站。按住 <Shift> 键以显示预计费用。
 
 # Airport construction window
 STR_STATION_BUILD_AIRPORT_CAPTION                               :{WHITE}飞机场选单
@@ -2987,7 +2987,7 @@ STR_TREES_MODE_FOREST_LG_TOOLTIP                                :{BLACK}在地�
 # Land generation window (SE)
 STR_TERRAFORM_TOOLBAR_LAND_GENERATION_CAPTION                   :{WHITE}生成土地
 STR_TERRAFORM_TOOLTIP_PLACE_ROCKY_AREAS_ON_LANDSCAPE            :{BLACK}在地图上设置岩石区域
-STR_TERRAFORM_TOOLTIP_DEFINE_DESERT_AREA                        :{BLACK}划出沙漠区域.{}按住 Ctrl键 可以移除沙漠区域
+STR_TERRAFORM_TOOLTIP_DEFINE_DESERT_AREA                        :{BLACK}划出沙漠区域{}按住 <Ctrl> 键操作以移除沙漠区域
 STR_TERRAFORM_TOOLTIP_INCREASE_SIZE_OF_LAND_AREA                :{BLACK}增加要升高/降低的土地面积
 STR_TERRAFORM_TOOLTIP_DECREASE_SIZE_OF_LAND_AREA                :{BLACK}减少要升高/降低的土地面积
 STR_TERRAFORM_TOOLTIP_GENERATE_RANDOM_LAND                      :{BLACK}随机生成土地
@@ -3594,7 +3594,7 @@ STR_SIGN_LIST_MATCH_CASE_TOOLTIP                                :{BLACK}显示�
 
 # Sign window
 STR_EDIT_SIGN_CAPTION                                           :{WHITE}标记标志文字
-STR_EDIT_SIGN_LOCATION_TOOLTIP                                  :{BLACK}将屏幕中心移动到标志的位置. 单击的同时按住Ctrl会在新视点中显示标志位置
+STR_EDIT_SIGN_LOCATION_TOOLTIP                                  :{BLACK}将屏幕中心移动到标志所在的位置。按住 <Ctrl> 单击会在新视点中显示目标位置。
 STR_EDIT_SIGN_NEXT_SIGN_TOOLTIP                                 :{BLACK}前往下个标记
 STR_EDIT_SIGN_PREVIOUS_SIGN_TOOLTIP                             :{BLACK}前往上个标记
 
@@ -3624,7 +3624,7 @@ STR_TOWN_VIEW_TOWN_GROWS_EVERY                                  :{BLACK}城镇�
 STR_TOWN_VIEW_TOWN_GROWS_EVERY_FUNDED                           :{BLACK}城镇每 {ORANGE}{UNITS_DAYS_OR_SECONDS}{BLACK}{NBSP}成长一次（正接受资助）
 STR_TOWN_VIEW_TOWN_GROW_STOPPED                                 :{BLACK} 城镇发展正在 {RED}停滞 {BLACK}！
 STR_TOWN_VIEW_NOISE_IN_TOWN                                     :{BLACK}当前城镇噪音: {ORANGE}{COMMA}{BLACK}  最大: {ORANGE}{COMMA}
-STR_TOWN_VIEW_CENTER_TOOLTIP                                    :{BLACK}将屏幕中心移动到城镇所在的位置. 单击的同时按住Ctrl会在新视点中显示城镇位置
+STR_TOWN_VIEW_CENTER_TOOLTIP                                    :{BLACK}将屏幕中心移动到城镇的位置。按住 <Ctrl> 键点选会在新视点中显示目标位置。
 STR_TOWN_VIEW_LOCAL_AUTHORITY_BUTTON                            :{BLACK}地方政府
 STR_TOWN_VIEW_LOCAL_AUTHORITY_TOOLTIP                           :{BLACK}显示地方政府的信息
 STR_TOWN_VIEW_RENAME_TOOLTIP                                    :{BLACK}城镇改名
@@ -3681,7 +3681,7 @@ STR_GOALS_TEXT                                                  :{ORANGE}{STRING
 STR_GOALS_NONE                                                  :{ORANGE}- 无目标 -
 STR_GOALS_PROGRESS                                              :{ORANGE}{STRING}
 STR_GOALS_PROGRESS_COMPLETE                                     :{GREEN}{STRING}
-STR_GOALS_TOOLTIP_CLICK_ON_SERVICE_TO_CENTER                    :{BLACK}点击使得视图移动到该工业/城镇/地块. Ctrl+左键 在该处创建一个视点.
+STR_GOALS_TOOLTIP_CLICK_ON_SERVICE_TO_CENTER                    :{BLACK}将屏幕中心移动到当前工业或城镇所占格的位置。按住 <Ctrl> 键点选会在新视点中显示目标位置。
 
 # Goal question window
 STR_GOAL_QUESTION_CAPTION_QUESTION                              :{BLACK}帮助索引
@@ -3737,7 +3737,7 @@ STR_STORY_BOOK_NEXT_PAGE_TOOLTIP                                :{BLACK}转到�
 STR_STORY_BOOK_INVALID_GOAL_REF                                 :{RED}无效的目标参照
 
 # Station list window
-STR_STATION_LIST_TOOLTIP                                        :{BLACK}车站名称{}点击可将屏幕中心移动到车站所在位置. 单击的同时按住Ctrl会在新视点中显示车站位置
+STR_STATION_LIST_TOOLTIP                                        :{BLACK}车站名称 - 点选名称以将屏幕中心移动到车站的位置。按住 <Ctrl> 键点选会在新视点中显示车站位置。
 STR_STATION_LIST_USE_CTRL_TO_SELECT_MORE                        :{BLACK}按住 <Ctrl> 键点选以选择多个项目
 STR_STATION_LIST_CAPTION                                        :{WHITE}{COMPANY} - {COMMA} 车站
 STR_STATION_LIST_STATION                                        :{YELLOW}{STATION} {STATION_FEATURES}
@@ -3803,7 +3803,7 @@ STR_CARGO_RATING_VERY_GOOD                                      :优秀
 STR_CARGO_RATING_EXCELLENT                                      :卓越
 STR_CARGO_RATING_OUTSTANDING                                    :完美（最高评价）
 
-STR_STATION_VIEW_CENTER_TOOLTIP                                 :{BLACK}将屏幕中心移动到车站所在的位置. 单击的同时按住Ctrl会在新视点中显示车站位置
+STR_STATION_VIEW_CENTER_TOOLTIP                                 :{BLACK}将屏幕中心移动到车站所在的位置。按住 <Ctrl> 单击会在新视点中显示目标位置。
 STR_STATION_VIEW_RENAME_TOOLTIP                                 :{BLACK}重命名车站
 
 STR_STATION_VIEW_SCHEDULED_TRAINS_TOOLTIP                       :{BLACK}显示所有调度计划中含有此车站的列车
@@ -4099,7 +4099,7 @@ STR_CARGO_TYPE_FILTER_NONE                                      :没有
 ###length VEHICLE_TYPES
 STR_BUY_VEHICLE_TRAIN_LIST_TOOLTIP                              :{BLACK}列车选择列表。点击载具以展示信息。按住 <Ctrl> 键点选以显示 / 隐藏当前载具。
 STR_BUY_VEHICLE_ROAD_VEHICLE_LIST_TOOLTIP                       :{BLACK}汽车选择列表。点击载具以展示信息。按住 <Ctrl> 键点选以显示 / 隐藏当前载具。
-STR_BUY_VEHICLE_SHIP_LIST_TOOLTIP                               :{BLACK}船舶选择列表。点击船舶查看详细信息，或者按住 Ctrl 键再点击以切换是否隐藏船舶的种类
+STR_BUY_VEHICLE_SHIP_LIST_TOOLTIP                               :{BLACK}船舶选择列表。点击载具以展示信息。按住 <Ctrl> 键点选以显示 / 隐藏当前载具。
 STR_BUY_VEHICLE_AIRCRAFT_LIST_TOOLTIP                           :{BLACK}飞机选择列表。点击飞机查看详细信息，或者按住 Ctrl 键再点击以切换是否隐藏飞机的种类
 
 ###length VEHICLE_TYPES
@@ -4174,7 +4174,7 @@ STR_DEPOT_VEHICLE_TOOLTIP_CHAIN                                 :{BLACK}{NUM} �
 STR_DEPOT_VEHICLE_TOOLTIP_CARGO                                 :{}{CARGO_LONG} ({CARGO_SHORT})
 
 ###length VEHICLE_TYPES
-STR_DEPOT_TRAIN_LIST_TOOLTIP                                    :{BLACK}列车 - 左键拖动可调整车厢，右击可查看详情。按Ctrl执行上述操作可同时操作之后车厢。
+STR_DEPOT_TRAIN_LIST_TOOLTIP                                    :{BLACK}列车 - 左键拖动可调整车厢，右击可查看详情。按 <Ctrl> 操作以同时操作该车厢与其之后的所有车厢。
 STR_DEPOT_ROAD_VEHICLE_LIST_TOOLTIP                             :{BLACK}汽车 - 右击可查看详细信息
 STR_DEPOT_SHIP_LIST_TOOLTIP                                     :{BLACK}船只 - 右击可查看详细信息
 STR_DEPOT_AIRCRAFT_LIST_TOOLTIP                                 :{BLACK}飞机 - 右击可查看详细信息
@@ -4224,7 +4224,7 @@ STR_DEPOT_CLONE_AIRCRAFT_INFO_HANGAR_WINDOW                     :{BLACK}复制�
 ###length VEHICLE_TYPES
 STR_DEPOT_TRAIN_LOCATION_TOOLTIP                                :{BLACK}将屏幕中心移动到列车车库所在的位置。按住 <Ctrl> 单击会在新视点中显示列车车库位置。
 STR_DEPOT_ROAD_VEHICLE_LOCATION_TOOLTIP                         :{BLACK}将屏幕中心移动到车库所在的位置。按住 <Ctrl> 单击会在新视点中显示目标位置。
-STR_DEPOT_SHIP_LOCATION_TOOLTIP                                 :{BLACK}将屏幕中心移动到当前船坞的位置. 单击的同时按住Ctrl会在新视点中显示船坞位置
+STR_DEPOT_SHIP_LOCATION_TOOLTIP                                 :{BLACK}将屏幕中心移动到船坞所在的位置。按住 <Ctrl> 单击会在新视点中显示目标位置。
 STR_DEPOT_AIRCRAFT_LOCATION_TOOLTIP                             :{BLACK}将屏幕中心移动到机库所在的位置。按住 <Ctrl> 单击会在新视点中显示目标位置。
 
 ###length VEHICLE_TYPES
@@ -4331,15 +4331,15 @@ STR_REPLACE_REMOVE_WAGON_GROUP_HELP                             :{STRING}. 按�
 STR_VEHICLE_VIEW_CAPTION                                        :{WHITE}{VEHICLE}
 
 ###length VEHICLE_TYPES
-STR_VEHICLE_VIEW_TRAIN_CENTER_TOOLTIP                           :{BLACK}将主视角中心移动到列车所在的位置。双击将会在主视角中跟踪列车。单击的同时按住Ctrl会在新视点中显示列车位置
-STR_VEHICLE_VIEW_ROAD_VEHICLE_CENTER_TOOLTIP                    :{BLACK} 将主视角中心移动到车辆所在的位置。双击将会在主视角中跟踪车辆。单击的同时按住 Ctrl 会在新视点中显示车辆位置
-STR_VEHICLE_VIEW_SHIP_CENTER_TOOLTIP                            :{BLACK}将主视角中心移动到船只所在的位置。双击将会在主视角中跟踪船只。单击的同时按住Ctrl会在新视点中显示船只位置
+STR_VEHICLE_VIEW_TRAIN_CENTER_TOOLTIP                           :{BLACK}将主视角中心移动到列车所在的位置。双击将会在主视角中跟踪列车。按 <Ctrl> 键操作以在新视点中显示列车
+STR_VEHICLE_VIEW_ROAD_VEHICLE_CENTER_TOOLTIP                    :{BLACK}将主视角中心移动到载具所在的位置。双击将会在主视角中跟踪载具。按 <Ctrl> 键操作以在新视点中显示载具
+STR_VEHICLE_VIEW_SHIP_CENTER_TOOLTIP                            :{BLACK}将主视角中心移动到船舶所在的位置。双击将会在主视角中跟踪船舶。按 <Ctrl> 键操作以在新视点中显示船舶
 STR_VEHICLE_VIEW_AIRCRAFT_CENTER_TOOLTIP                        :{BLACK}将主视角中心移动到飞机所在的位置。双击将会在主视角中跟踪飞机。按 <Ctrl> 键操作以在新视点中显示飞机
 
 ###length VEHICLE_TYPES
 STR_VEHICLE_VIEW_TRAIN_SEND_TO_DEPOT_TOOLTIP                    :{BLACK}命令列车前往车库。按住 <Ctrl> 键操作以仅作保养。
 STR_VEHICLE_VIEW_ROAD_VEHICLE_SEND_TO_DEPOT_TOOLTIP             :{BLACK}命令汽车前往车库。按住 <Ctrl> 键操作以仅作保养。
-STR_VEHICLE_VIEW_SHIP_SEND_TO_DEPOT_TOOLTIP                     :{BLACK}命令船只前往船坞{}Ctrl+单击 时船只只进行保养
+STR_VEHICLE_VIEW_SHIP_SEND_TO_DEPOT_TOOLTIP                     :{BLACK}命令船舶前往船坞。按住 <Ctrl> 键操作以仅作保养。
 STR_VEHICLE_VIEW_AIRCRAFT_SEND_TO_DEPOT_TOOLTIP                 :{BLACK}命令飞机前往机库。按住 <Ctrl> 键操作以仅作保养。
 
 ###length VEHICLE_TYPES
@@ -4351,7 +4351,7 @@ STR_VEHICLE_VIEW_CLONE_AIRCRAFT_INFO                            :{BLACK}复制�
 STR_VEHICLE_VIEW_TRAIN_IGNORE_SIGNAL_TOOLTIP                    :{BLACK}命令列车强行通过信号
 STR_VEHICLE_VIEW_TRAIN_REVERSE_TOOLTIP                          :{BLACK}命令列车调头
 STR_VEHICLE_VIEW_ROAD_VEHICLE_REVERSE_TOOLTIP                   :{BLACK}强制汽车掉头
-STR_VEHICLE_VIEW_ORDER_LOCATION_TOOLTIP                         :{BLACK}将屏幕中心移动到当前指令的目的地。单击的同时按住Ctrl会在新视点中显示指令目的地的位置
+STR_VEHICLE_VIEW_ORDER_LOCATION_TOOLTIP                         :{BLACK}将屏幕中心移动到指令目的地所在的位置。按住 <Ctrl> 单击会在新视点中显示目标位置。
 
 ###length VEHICLE_TYPES
 STR_VEHICLE_VIEW_TRAIN_REFIT_TOOLTIP                            :{BLACK}改装列车以装载另一类型的货物
@@ -4390,7 +4390,7 @@ STR_VEHICLE_STATUS_TRAIN_STUCK                                  :{ORANGE}等待�
 STR_VEHICLE_STATUS_AIRCRAFT_TOO_FAR                             :{ORANGE}距离下一目的地过远
 
 STR_VEHICLE_STATUS_HEADING_FOR_STATION_VEL                      :{LTBLUE}{1:VELOCITY} - 正前往 {0:STATION}
-STR_VEHICLE_STATUS_NO_ORDERS_VEL                                :{LTBLUE}没有目标，{VELOCITY}
+STR_VEHICLE_STATUS_NO_ORDERS_VEL                                :{LTBLUE}{VELOCITY} - 没有目标
 STR_VEHICLE_STATUS_HEADING_FOR_WAYPOINT_VEL                     :{LTBLUE}{1:VELOCITY} - 正前往 {0:WAYPOINT}
 STR_VEHICLE_STATUS_HEADING_FOR_DEPOT_VEL                        :{ORANGE}{1:VELOCITY} - 正前往 {0:DEPOT}
 STR_VEHICLE_STATUS_HEADING_FOR_DEPOT_SERVICE_VEL                :{LTBLUE}{1:VELOCITY} - 正在前往 {0:DEPOT} 以进行维护
@@ -4421,7 +4421,7 @@ STR_VEHICLE_DETAILS_AIRCRAFT_RENAME                             :{BLACK}命名�
 
 STR_VEHICLE_INFO_AGE                                            :{COMMA} 年 ({COMMA})
 STR_VEHICLE_INFO_AGE_RED                                        :{RED}{COMMA} 年 ({COMMA})
-STR_VEHICLE_INFO_AGE_RUNNING_COST_YR                            :{BLACK}年龄：{LTBLUE}{STRING}{BLACK}   运行成本：{LTBLUE}{CURRENCY_LONG} /年
+STR_VEHICLE_INFO_AGE_RUNNING_COST_YR                            :{BLACK}年龄：{LTBLUE}{STRING}{BLACK}   运行成本：{LTBLUE}{CURRENCY_LONG}/年
 STR_VEHICLE_INFO_AGE_RUNNING_COST_PERIOD                        :{BLACK}年龄：{LTBLUE}{STRING}{BLACK}   运行费用：{LTBLUE}{CURRENCY_LONG}/周期
 
 STR_VEHICLE_INFO_MAX_SPEED                                      :{BLACK}最大速度：{LTBLUE}{VELOCITY}
@@ -4721,18 +4721,18 @@ STR_TIMETABLE_STATUS_START_AT_DATE                              :{BLACK}本时�
 STR_TIMETABLE_STATUS_START_IN_SECONDS                           :{BLACK}本时刻表将会在 {COMMA} 秒内开始
 
 STR_TIMETABLE_START                                             :{BLACK}开始时刻表
-STR_TIMETABLE_START_TOOLTIP                                     :{BLACK}选择此时刻表开始的时间。如果订单完全按时刻表安排，则按住Ctrl键并单击会根据它们的相对顺序，且均匀分配共享此订单的所有车辆的开始时间。
+STR_TIMETABLE_START_TOOLTIP                                     :{BLACK}选择此时刻表开始的时间。如果调度计划有完善的时刻表，则按住 <Ctrl> 键单击会根据它们的相对顺序均匀分配共享此调度计划的所有车辆的出开始时间。
 
 STR_TIMETABLE_START_SECONDS_QUERY                               :直至时刻表开始的秒数
 
 STR_TIMETABLE_CHANGE_TIME                                       :{BLACK}改变时间
-STR_TIMETABLE_WAIT_TIME_TOOLTIP                                 :{BLACK}改变高亮选择的命令执行的时间，按住Ctrl单击可为所有命令设置时间
+STR_TIMETABLE_WAIT_TIME_TOOLTIP                                 :{BLACK}修改选定命令设定的时间。按住 <Ctrl> 键操作以修改所有命令的限时。
 
 STR_TIMETABLE_CLEAR_TIME                                        :{BLACK}清除时间
 STR_TIMETABLE_CLEAR_TIME_TOOLTIP                                :{BLACK}清除选定命令设定的时间。按住 <Ctrl> 键操作以清除所有命令的限时。
 
 STR_TIMETABLE_CHANGE_SPEED                                      :{BLACK}更改限速
-STR_TIMETABLE_CHANGE_SPEED_TOOLTIP                              :{BLACK}更改高亮调度命令的最高限速。按住Ctrl键单击可为所有命令设置速度
+STR_TIMETABLE_CHANGE_SPEED_TOOLTIP                              :{BLACK}修改选定命令设定的限速。按住 <Ctrl> 键操作以修改所有命令的限速。
 
 STR_TIMETABLE_CLEAR_SPEED                                       :{BLACK}取消限速
 STR_TIMETABLE_CLEAR_SPEED_TOOLTIP                               :{BLACK}清除选定命令设定的限速。按住 <Ctrl> 键操作以清除所有命令的限速。

@@ -3745,12 +3745,12 @@ STR_STATION_LIST_STATION                                        :{YELLOW}{STATIO
 STR_STATION_LIST_WAYPOINT                                       :{YELLOW}{WAYPOINT}
 STR_STATION_LIST_NONE                                           :{YELLOW}- 없음 -
 STR_STATION_LIST_SELECT_ALL_FACILITIES                          :{BLACK}모든 시설을 선택합니다.
-STR_STATION_LIST_CARGO_FILTER_ALL_AND_NO_RATING                 :등급이 없는 모든 화물
+STR_STATION_LIST_CARGO_FILTER_ALL_AND_NO_RATING                 :모든 화물
 STR_STATION_LIST_CARGO_FILTER_MULTIPLE                          :여러 개의 화물
-STR_STATION_LIST_CARGO_FILTER_NO_CARGO_TYPES                    :등급이 없는 화물
-STR_STATION_LIST_CARGO_FILTER_ONLY_NO_RATING                    :등급이 없는 화물만
-STR_STATION_LIST_CARGO_FILTER_SELECT_ALL                        :등급이 없는 모든 화물
-STR_STATION_LIST_CARGO_FILTER_NO_RATING                         :등급이 없는 화물
+STR_STATION_LIST_CARGO_FILTER_NO_CARGO_TYPES                    :등급 없는 화물
+STR_STATION_LIST_CARGO_FILTER_ONLY_NO_RATING                    :등급 없는 화물만
+STR_STATION_LIST_CARGO_FILTER_SELECT_ALL                        :모든 화물
+STR_STATION_LIST_CARGO_FILTER_NO_RATING                         :등급 없는 화물
 STR_STATION_LIST_CARGO_FILTER_EXPAND                            :더 보기...
 
 # Station view window

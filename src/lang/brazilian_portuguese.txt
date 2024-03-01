@@ -308,7 +308,7 @@ STR_SHOW_HIDDEN_ENGINES_VEHICLE_AIRCRAFT_TOOLTIP                :{BLACK}Ativando
 # Query window
 STR_BUTTON_DEFAULT                                              :{BLACK}Padrão
 STR_BUTTON_CANCEL                                               :{BLACK}Cancelar
-STR_BUTTON_OK                                                   :{BLACK}OK
+STR_BUTTON_OK                                                   :{BLACK}Confirmar
 STR_WARNING_PASSWORD_SECURITY                                   :{YELLOW}Aviso: os administradores do servidor podem ler qualquer texto inserido aqui.
 
 # On screen keyboard window
@@ -499,7 +499,7 @@ STR_INDUSTRY_MENU_FUND_NEW_INDUSTRY                             :Fundar nova ind
 STR_RAIL_MENU_RAILROAD_CONSTRUCTION                             :Construção de ferrovia
 STR_RAIL_MENU_ELRAIL_CONSTRUCTION                               :Construção de ferrovia eletrificada
 STR_RAIL_MENU_MONORAIL_CONSTRUCTION                             :Construção de monotrilho
-STR_RAIL_MENU_MAGLEV_CONSTRUCTION                               :Construção de Maglev
+STR_RAIL_MENU_MAGLEV_CONSTRUCTION                               :Construção de MagLev
 
 # Road construction menu
 STR_ROAD_MENU_ROAD_CONSTRUCTION                                 :Construção de estradas
@@ -717,7 +717,7 @@ STR_PLAYLIST_MUSIC_SELECTION_SETNAME                            :{WHITE}Programa
 STR_PLAYLIST_TRACK_NAME                                         :{TINY_FONT}{LTBLUE}{ZEROFILL_NUM} '{STRING}'
 STR_PLAYLIST_TRACK_INDEX                                        :{TINY_FONT}{BLACK}Índice de faixas
 STR_PLAYLIST_PROGRAM                                            :{TINY_FONT}{BLACK}Programa - '{STRING}'
-STR_PLAYLIST_CLEAR                                              :{TINY_FONT}{BLACK}Limpar
+STR_PLAYLIST_CLEAR                                              :{TINY_FONT}{BLACK}Apagar
 STR_PLAYLIST_CHANGE_SET                                         :{BLACK}Mudar conjunto
 STR_PLAYLIST_TOOLTIP_CLEAR_CURRENT_PROGRAM_CUSTOM1              :{BLACK}Apagar o programa atual (apenas Personalizado 1 ou Personalizado 2)
 STR_PLAYLIST_TOOLTIP_CHANGE_SET                                 :{BLACK}Mudar a seleção musical para outro conjunto instalado
@@ -1001,7 +1001,7 @@ STR_GAME_OPTIONS_CURRENCY_LTL                                   :Litas Lituano
 STR_GAME_OPTIONS_CURRENCY_KRW                                   :Won Sul Coreano
 STR_GAME_OPTIONS_CURRENCY_ZAR                                   :Rand Sul Africano
 STR_GAME_OPTIONS_CURRENCY_CUSTOM                                :Personalizado...
-STR_GAME_OPTIONS_CURRENCY_GEL                                   :Lari da Georgia
+STR_GAME_OPTIONS_CURRENCY_GEL                                   :Lari da Geórgia
 STR_GAME_OPTIONS_CURRENCY_IRR                                   :Rial Iraniano
 STR_GAME_OPTIONS_CURRENCY_RUB                                   :Novo Rublo Russo
 STR_GAME_OPTIONS_CURRENCY_MXN                                   :Peso Mexicano
@@ -1918,7 +1918,7 @@ STR_CONFIG_SETTING_ECONOMY_TYPE_SMOOTH                          :Suave
 STR_CONFIG_SETTING_ECONOMY_TYPE_FROZEN                          :Congelada
 
 STR_CONFIG_SETTING_FEEDER_PAYMENT_SHARE                         :Porcentagem do lucro da etapa a pagar em sistemas de transbordo: {STRING}
-STR_CONFIG_SETTING_FEEDER_PAYMENT_SHARE_HELPTEXT                :Porcentagem da receita dada a trajetos intermediários em sistemas de transbordo, dando mais controle sobre a receita
+STR_CONFIG_SETTING_FEEDER_PAYMENT_SHARE_HELPTEXT                :Porcentagem da receita dada às etapas intermediárias em sistemas de transbordo, dando maior controle sobre a receita
 
 STR_CONFIG_SETTING_DRAG_SIGNALS_DENSITY                         :Quando arrastar, colocar sinais a cada: {STRING}
 STR_CONFIG_SETTING_DRAG_SIGNALS_DENSITY_HELPTEXT                :Define a distância na qual os sinais serão construídos em uma linha até o próximo obstáculo (sinal, junção), quando colocar sinais arrastando
@@ -2280,7 +2280,7 @@ STR_LIVERY_STEAM                                                :Máquina a Vapo
 STR_LIVERY_DIESEL                                               :Locomotiva Diesel
 STR_LIVERY_ELECTRIC                                             :Locomotiva Elétrica
 STR_LIVERY_MONORAIL                                             :Locomotiva Monotrilho
-STR_LIVERY_MAGLEV                                               :Locomotiva Maglev
+STR_LIVERY_MAGLEV                                               :Locomotiva MagLev
 STR_LIVERY_DMU                                                  :DMU
 STR_LIVERY_EMU                                                  :EMU
 STR_LIVERY_PASSENGER_WAGON_STEAM                                :Vagão de Passageiros (Vapor)
@@ -2496,7 +2496,7 @@ STR_NETWORK_CLIENT_LIST_NEW_COMPANY                             :(Nova empresa)
 STR_NETWORK_CLIENT_LIST_NEW_COMPANY_TOOLTIP                     :{BLACK}Criar uma nova empresa e juntar-se a ela
 STR_NETWORK_CLIENT_LIST_PLAYER_ICON_SELF_TOOLTIP                :{BLACK}Esse é você
 STR_NETWORK_CLIENT_LIST_PLAYER_ICON_HOST_TOOLTIP                :{BLACK}Este é o hospedeiro do jogo
-STR_NETWORK_CLIENT_LIST_CLIENT_COMPANY_COUNT                    :{BLACK}{NUM} cliente{P "" s} - {NUM}/{NUM} empres{P a as}
+STR_NETWORK_CLIENT_LIST_CLIENT_COMPANY_COUNT                    :{BLACK}{NUM} cliente{P "" s} - {NUM}/{NUM} empresa{P "" s}
 STR_NETWORK_CLIENT_LIST_CLIENT_COMPANY_COUNT_TOOLTIP            :{BLACK}Número de clientes atualmente conectados, número de empresas e número máximo de empresas permitido pelo administrador do servidor
 
 # Matches ConnectionType
@@ -2779,10 +2779,10 @@ STR_JOIN_WAYPOINT_CREATE_SPLITTED_WAYPOINT                      :{YELLOW}Constru
 STR_TOOLBAR_DISABLED_NO_VEHICLE_AVAILABLE                       :{BLACK}Desativado pois não existem atualmente veículos disponíveis para esta infraestrutura
 
 # Rail construction toolbar
-STR_RAIL_TOOLBAR_RAILROAD_CONSTRUCTION_CAPTION                  :Construção de Ferrovias
-STR_RAIL_TOOLBAR_ELRAIL_CONSTRUCTION_CAPTION                    :Construção de Ferrovias (elétricas)
-STR_RAIL_TOOLBAR_MONORAIL_CONSTRUCTION_CAPTION                  :Construção de Ferrovias (monotrilho)
-STR_RAIL_TOOLBAR_MAGLEV_CONSTRUCTION_CAPTION                    :Construção de Ferrovias Maglev
+STR_RAIL_TOOLBAR_RAILROAD_CONSTRUCTION_CAPTION                  :Construção de Ferrovia
+STR_RAIL_TOOLBAR_ELRAIL_CONSTRUCTION_CAPTION                    :Construção de Ferrovia Eletrificada
+STR_RAIL_TOOLBAR_MONORAIL_CONSTRUCTION_CAPTION                  :Construção de Monotrilho
+STR_RAIL_TOOLBAR_MAGLEV_CONSTRUCTION_CAPTION                    :Construção de MagLev
 
 STR_RAIL_TOOLBAR_TOOLTIP_BUILD_RAILROAD_TRACK                   :{BLACK}Construir ferrovia. Ctrl+Clique remove a ferrovia. Pressione também Shift para apenas mostrar o custo estimado
 STR_RAIL_TOOLBAR_TOOLTIP_BUILD_AUTORAIL                         :{BLACK}Construir ferrovia usando o modo Autotrilho. Ctrl+Clique remove seção da ferrovia. Pressione também Shift para apenas mostrar o custo estimado
@@ -3092,7 +3092,7 @@ STR_LAND_AREA_INFORMATION_CARGO_EIGHTS                          :({COMMA}/8 {STR
 STR_LANG_AREA_INFORMATION_RAIL_TYPE                             :{BLACK}Tipo de ferrovia: {LTBLUE}{STRING}
 STR_LANG_AREA_INFORMATION_ROAD_TYPE                             :{BLACK}Tipo de estrada: {LTBLUE}{STRING}
 STR_LANG_AREA_INFORMATION_TRAM_TYPE                             :{BLACK}Tipo de bonde: {LTBLUE}{STRING}
-STR_LANG_AREA_INFORMATION_RAIL_SPEED_LIMIT                      :{BLACK}Limite de velocidade da linha: {LTBLUE}{VELOCITY}
+STR_LANG_AREA_INFORMATION_RAIL_SPEED_LIMIT                      :{BLACK}Limite de velocidade da ferrovia {LTBLUE}{VELOCITY}
 STR_LANG_AREA_INFORMATION_ROAD_SPEED_LIMIT                      :{BLACK}Limite de velocidade da estrada: {LTBLUE}{VELOCITY}
 STR_LANG_AREA_INFORMATION_TRAM_SPEED_LIMIT                      :{BLACK}Limite de velocidade dos bondes: {LTBLUE}{VELOCITY}
 
@@ -4052,7 +4052,7 @@ STR_GROUP_OCCUPANCY_VALUE                                       :{NUM}%
 STR_BUY_VEHICLE_TRAIN_RAIL_CAPTION                              :Novos Veículos Ferroviários
 STR_BUY_VEHICLE_TRAIN_ELRAIL_CAPTION                            :Novos Veículos Ferroviários Elétricos
 STR_BUY_VEHICLE_TRAIN_MONORAIL_CAPTION                          :Novos Veículos Monotrilho
-STR_BUY_VEHICLE_TRAIN_MAGLEV_CAPTION                            :Novos Veículos Maglev
+STR_BUY_VEHICLE_TRAIN_MAGLEV_CAPTION                            :Novos Veículos MagLev
 
 STR_BUY_VEHICLE_ROAD_VEHICLE_CAPTION                            :Novos Veículos Rodoviários
 STR_BUY_VEHICLE_TRAM_VEHICLE_CAPTION                            :Novos Bondes
@@ -5452,25 +5452,25 @@ STR_SV_STNAME_WEST                                              :{STRING} - Oest
 STR_SV_STNAME_CENTRAL                                           :{STRING} - Centro
 STR_SV_STNAME_TRANSFER                                          :{STRING} - Transbordo
 STR_SV_STNAME_HALT                                              :{STRING} - Parada
-STR_SV_STNAME_VALLEY                                            :Vale de {STRING}
-STR_SV_STNAME_HEIGHTS                                           :Montes de {STRING}
-STR_SV_STNAME_WOODS                                             :Bosques de {STRING}
-STR_SV_STNAME_LAKESIDE                                          :Lago de {STRING}
+STR_SV_STNAME_VALLEY                                            :{STRING} - Vale
+STR_SV_STNAME_HEIGHTS                                           :{STRING} - Colinas
+STR_SV_STNAME_WOODS                                             :{STRING} - Bosques
+STR_SV_STNAME_LAKESIDE                                          :{STRING} - Litoral
 STR_SV_STNAME_EXCHANGE                                          :{STRING} - Intercâmbio
-STR_SV_STNAME_AIRPORT                                           :Aeroporto de {STRING}
-STR_SV_STNAME_OILFIELD                                          :Petrolífera de {STRING}
-STR_SV_STNAME_MINES                                             :Minas de {STRING}
-STR_SV_STNAME_DOCKS                                             :Docas de {STRING}
+STR_SV_STNAME_AIRPORT                                           :{STRING} - Aeroporto
+STR_SV_STNAME_OILFIELD                                          :{STRING} - Petrolífera
+STR_SV_STNAME_MINES                                             :{STRING} - Minas
+STR_SV_STNAME_DOCKS                                             :{STRING} - Docas
 STR_SV_STNAME_BUOY                                              :{STRING}
 STR_SV_STNAME_WAYPOINT                                          :{STRING}
 ##id 0x6020
 STR_SV_STNAME_ANNEXE                                            :{STRING} - Anexo
 STR_SV_STNAME_SIDINGS                                           :{STRING} - Desvios
 STR_SV_STNAME_BRANCH                                            :{STRING} - Ramal
-STR_SV_STNAME_UPPER                                             :{STRING} de Cima
-STR_SV_STNAME_LOWER                                             :{STRING} de Baixo
-STR_SV_STNAME_HELIPORT                                          :Heliporto de {STRING}
-STR_SV_STNAME_FOREST                                            :Floresta de {STRING}
+STR_SV_STNAME_UPPER                                             :{STRING} - Superior
+STR_SV_STNAME_LOWER                                             :{STRING} - Inferior
+STR_SV_STNAME_HELIPORT                                          :{STRING} - Heliporto
+STR_SV_STNAME_FOREST                                            :{STRING} - Floresta
 STR_SV_STNAME_FALLBACK                                          :{STRING} - Estação #{NUM}
 
 ############ end of savegame specific region!
