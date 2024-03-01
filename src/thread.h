@@ -12,6 +12,7 @@
 
 #include "debug.h"
 #include "crashlog.h"
+#include "error_func.h"
 #include <system_error>
 #include <thread>
 #include <mutex>
@@ -62,6 +63,8 @@ inline bool StartNewThread(std::thread *thr, const char *name, TFn&& _Fx, TArgs&
 				try {
 					/* Call user function with the given arguments. */
 					F(A...);
+				} catch (std::exception &e) {
+					FatalError("Unhandled exception in {} thread: {}", name, e.what());
 				} catch (...) {
 					NOT_REACHED();
 				}
