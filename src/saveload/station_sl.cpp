@@ -205,9 +205,9 @@ static void SwapPackets(GoodsEntry *ge)
 class SlStationSpecList : public DefaultSaveLoadHandler<SlStationSpecList, BaseStation> {
 public:
 	inline static const SaveLoad description[] = {
-		SLE_CONDVAR(StationSpecList, grfid,    SLE_UINT32,                SLV_27,                    SL_MAX_VERSION),
-		SLE_CONDVAR(StationSpecList, localidx, SLE_FILE_U8 | SLE_VAR_U16, SLV_27,                    SLV_EXTEND_ENTITY_MAPPING),
-		SLE_CONDVAR(StationSpecList, localidx, SLE_UINT16,                SLV_EXTEND_ENTITY_MAPPING, SL_MAX_VERSION),
+		SLE_CONDVAR(SpecMapping<StationSpec>, grfid,    SLE_UINT32,                SLV_27,                    SL_MAX_VERSION),
+		SLE_CONDVAR(SpecMapping<StationSpec>, localidx, SLE_FILE_U8 | SLE_VAR_U16, SLV_27,                    SLV_EXTEND_ENTITY_MAPPING),
+		SLE_CONDVAR(SpecMapping<StationSpec>, localidx, SLE_UINT16,                SLV_EXTEND_ENTITY_MAPPING, SL_MAX_VERSION),
 	};
 	inline const static SaveLoadCompatTable compat_description = _station_spec_list_sl_compat;
 
@@ -237,9 +237,9 @@ uint8_t SlStationSpecList::last_num_specs;
 class SlRoadStopSpecList : public DefaultSaveLoadHandler<SlRoadStopSpecList, BaseStation> {
 public:
 	inline static const SaveLoad description[] = {
-		    SLE_VAR(RoadStopSpecList, grfid,    SLE_UINT32),
-		SLE_CONDVAR(RoadStopSpecList, localidx, SLE_FILE_U8 | SLE_VAR_U16, SLV_27,                    SLV_EXTEND_ENTITY_MAPPING),
-		SLE_CONDVAR(RoadStopSpecList, localidx, SLE_UINT16,                SLV_EXTEND_ENTITY_MAPPING, SL_MAX_VERSION),
+		    SLE_VAR(SpecMapping<RoadStopSpec>, grfid,    SLE_UINT32),
+		SLE_CONDVAR(SpecMapping<RoadStopSpec>, localidx, SLE_FILE_U8 | SLE_VAR_U16, SLV_27,                    SLV_EXTEND_ENTITY_MAPPING),
+		SLE_CONDVAR(SpecMapping<RoadStopSpec>, localidx, SLE_UINT16,                SLV_EXTEND_ENTITY_MAPPING, SL_MAX_VERSION),
 	};
 	inline const static SaveLoadCompatTable compat_description = _station_road_stop_spec_list_sl_compat;
 
