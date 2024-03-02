@@ -555,13 +555,6 @@ static void MaxVehiclesChanged(int32_t)
 	MarkWholeScreenDirty();
 }
 
-static void InvalidateShipPathCache(int32_t)
-{
-	for (Ship *s : Ship::Iterate()) {
-		s->path.clear();
-	}
-}
-
 /**
  * Replace a passwords that are a literal asterisk with an empty string.
  * @param newval The new string value for this password field.
