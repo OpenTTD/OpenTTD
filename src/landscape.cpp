@@ -30,7 +30,7 @@
 #include "core/random_func.hpp"
 #include "object_base.h"
 #include "company_func.h"
-#include "pathfinder/npf/aystar.h"
+#include "pathfinder/aystar.h"
 #include "saveload/saveload.h"
 #include "framerate_type.h"
 #include "landscape_cmd.h"

@@ -1880,25 +1880,6 @@ bool AfterLoadGame()
 				if (!Company::IsValidID(GetTileOwner(t))) FixOwnerOfRailTrack(t);
 			}
 		}
-
-		/* Convert old PF settings to new */
-		if (_settings_game.pf.yapf.rail_use_yapf || IsSavegameVersionBefore(SLV_28)) {
-			_settings_game.pf.pathfinder_for_trains = VPF_YAPF;
-		} else {
-			_settings_game.pf.pathfinder_for_trains = VPF_NPF;
-		}
-
-		if (_settings_game.pf.yapf.road_use_yapf || IsSavegameVersionBefore(SLV_28)) {
-			_settings_game.pf.pathfinder_for_roadvehs = VPF_YAPF;
-		} else {
-			_settings_game.pf.pathfinder_for_roadvehs = VPF_NPF;
-		}
-
-		if (_settings_game.pf.yapf.ship_use_yapf) {
-			_settings_game.pf.pathfinder_for_ships = VPF_YAPF;
-		} else {
-			_settings_game.pf.pathfinder_for_ships = VPF_NPF;
-		}
 	}
 
 	if (IsSavegameVersionBefore(SLV_88)) {

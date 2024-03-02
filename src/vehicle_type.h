@@ -56,7 +56,7 @@ static const VehicleID INVALID_VEHICLE = 0xFFFFF; ///< Constant representing a n
 /** Pathfinding option states */
 enum VehiclePathFinders {
 	// Original PathFinder (OPF) used to be 0
-	VPF_NPF  = 1, ///< New PathFinder
+	// New PathFinder (NPF) used to be 1
 	VPF_YAPF = 2, ///< Yet Another PathFinder
 };
 
