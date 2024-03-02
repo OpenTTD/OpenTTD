@@ -381,6 +381,7 @@ STR_UNITS_HEIGHT_SI                                             :{DECIMAL}{NBSP}
 
 # Time units used in string control characters
 
+STR_UNITS_MINUTES                                               :{NUM}{NBSP}хвилин{P а и ""}
 
 
 # Common window strings
@@ -1027,6 +1028,7 @@ STR_NEWS_NEW_VEHICLE_NOW_AVAILABLE_WITH_TYPE                    :{BLACK}Відт
 
 STR_NEWS_SHOW_VEHICLE_GROUP_TOOLTIP                             :{BLACK}Відкрити вікно групи з центром на групах транспорту
 
+STR_NEWS_STATION_NOW_ACCEPTS_CARGO_LIST                         :{WHITE}{STATION} тепер приймає: {CARGO_LIST}
 
 STR_NEWS_OFFER_OF_SUBSIDY_EXPIRED                               :{BIG_FONT}{BLACK}Субсидія більше не пропонується:{}{}Перевезення {STRING.r} з {STRING} до {STRING}
 STR_NEWS_SUBSIDY_WITHDRAWN_SERVICE                              :{BIG_FONT}{BLACK}Субсидію скасовано:{}{}Перевезення {STRING.r} з {STRING.r} до {STRING.r}
@@ -1214,6 +1216,7 @@ STR_CURRENCY_DECREASE_EXCHANGE_RATE_TOOLTIP                     :{BLACK}Змен
 STR_CURRENCY_INCREASE_EXCHANGE_RATE_TOOLTIP                     :{BLACK}Збільшити кількість своєї валюти за 1 фунт (£)
 STR_CURRENCY_SET_EXCHANGE_RATE_TOOLTIP                          :{BLACK}Встановити обмінний курс своєї валюти до 1 фунта (£)
 
+STR_CURRENCY_SET_CUSTOM_CURRENCY_SEPARATOR_TOOLTIP              :{BLACK}Встановити роздільник для своєї валюти
 
 STR_CURRENCY_PREFIX                                             :{LTBLUE}Префікс: {ORANGE}{STRING}
 STR_CURRENCY_SET_CUSTOM_CURRENCY_PREFIX_TOOLTIP                 :{BLACK}Встановити префікс для своєї валюти
@@ -2011,8 +2014,9 @@ STR_CONFIG_SETTING_SEMAPHORE_BUILD_BEFORE_DATE                  :Автомат�
 STR_CONFIG_SETTING_SEMAPHORE_BUILD_BEFORE_DATE_HELPTEXT         :Налаштування року впровадження світлофорів замість семафорів. До цього року будуть встановлюватись лише семафори.
 
 STR_CONFIG_SETTING_CYCLE_SIGNAL_TYPES                           :Сигнали, доступні при циклічному переборі: {STRING}
-STR_CONFIG_SETTING_CYCLE_SIGNAL_TYPES_HELPTEXT                  :Налаштування типу сигналів, що доступні при зміні типу за допомогою Ctrl+клац мишею
+STR_CONFIG_SETTING_CYCLE_SIGNAL_TYPES_HELPTEXT                  :Налаштування типу сигналів, що доступні при циклічному переборі в панелі будівництва сигналів за допомогою Ctrl+клац мишею
 ###length 2
+STR_CONFIG_SETTING_CYCLE_SIGNAL_GROUP                           :Тільки поточна група
 STR_CONFIG_SETTING_CYCLE_SIGNAL_ALL                             :всі видимі
 
 STR_CONFIG_SETTING_SIGNAL_GUI_MODE                              :Показувати типи сигналів: {STRING}
@@ -2446,6 +2450,7 @@ STR_NETWORK_SERVER_LIST_DATE_CAPTION                            :{BLACK}Дата
 STR_NETWORK_SERVER_LIST_DATE_CAPTION_TOOLTIP                    :{BLACK}Поточна дата
 STR_NETWORK_SERVER_LIST_PLAY_TIME_SHORT                         :{BLACK}{NUM}год {NUM}хв
 STR_NETWORK_SERVER_LIST_PLAY_TIME_CAPTION                       :{BLACK}Тривалість гри
+STR_NETWORK_SERVER_LIST_PLAY_TIME_CAPTION_TOOLTIP               :{BLACK}Тривалість гри{}без паузи
 STR_NETWORK_SERVER_LIST_INFO_ICONS_TOOLTIP                      :{BLACK}Мова, версія сервера, та інше.
 
 STR_NETWORK_SERVER_LIST_CLICK_GAME_TO_SELECT                    :{BLACK}Натисніть на гру із списку, щоб вибрати її
@@ -3353,6 +3358,7 @@ STR_MAPGEN_NUMBER_OF_TOWNS_TOOLTIP                              :BLACK}Обер�
 STR_MAPGEN_TOWN_NAME_LABEL                                      :{BLACK}Назви міст:
 STR_MAPGEN_TOWN_NAME_DROPDOWN_TOOLTIP                           :{BLACK}Виберіть стиль назв міст
 STR_MAPGEN_DATE                                                 :{BLACK}Дата:
+STR_MAPGEN_DATE_TOOLTIP                                         :{BLACK}Обрати початкову дату
 STR_MAPGEN_NUMBER_OF_INDUSTRIES                                 :{BLACK}Кількість виробництв:
 STR_MAPGEN_NUMBER_OF_INDUSTRIES_TOOLTIP                         :BLACK}Оберіть щільність виробництв або випадкову кількість
 STR_MAPGEN_HEIGHTMAP_HEIGHT                                     :{BLACK}Найвища гора:
@@ -3373,6 +3379,7 @@ STR_MAPGEN_QUANTITY_OF_RIVERS                                   :{BLACK}Ріки
 STR_MAPGEN_SMOOTHNESS                                           :{BLACK}Гладкість:
 STR_MAPGEN_VARIETY                                              :{BLACK}Розподіл різноманітності:
 STR_MAPGEN_GENERATE                                             :{WHITE}Генерувати
+STR_MAPGEN_GENERATE_TOOLTIP                                     :{BLACK}Створити світ для гри в OpenTTD!
 STR_MAPGEN_NEWGRF_SETTINGS                                      :{BLACK}Налаштування NewGRF
 STR_MAPGEN_NEWGRF_SETTINGS_TOOLTIP                              :{BLACK}Показати налаштування NewGRF
 STR_MAPGEN_AI_SETTINGS                                          :{BLACK}Налаштування ШІ
@@ -4832,7 +4839,7 @@ STR_ERROR_AI_DEBUG_SERVER_ONLY                                  :{YELLOW}Вік�
 STR_AI_CONFIG_CAPTION_AI                                        :{WHITE}Налаштування ШІ
 STR_AI_CONFIG_CAPTION_GAMESCRIPT                                :{WHITE}Налаштування ігрового скрипту
 STR_AI_CONFIG_GAMELIST_TOOLTIP                                  :{BLACK}Ігровий скрипт, який буде завантажено в наступній грі
-STR_AI_CONFIG_AILIST_TOOLTIP                                    :{BLACK}АІ, які будуть завантажені в наступній грі
+STR_AI_CONFIG_AILIST_TOOLTIP                                    :{BLACK}ШІ, які будуть завантажені в наступній грі
 STR_AI_CONFIG_HUMAN_PLAYER                                      :Гравець-людина
 STR_AI_CONFIG_RANDOM_AI                                         :Випадковий ШІ
 STR_AI_CONFIG_NONE                                              :(нема)
@@ -4892,7 +4899,8 @@ STR_AI_SETTINGS_JUST_DEVIATION                                  :[{STRING}, {STR
 # Textfile window
 STR_TEXTFILE_JUMPLIST                                           :{WHITE}Зміст
 STR_TEXTFILE_JUMPLIST_ITEM                                      :{WHITE}{STRING}
-STR_TEXTFILE_NAVBACK_TOOLTIP                                    :{BLACK}Повернутися до історії навігації
+STR_TEXTFILE_NAVBACK_TOOLTIP                                    :{BLACK}Крок назад в історії навігації
+STR_TEXTFILE_NAVFORWARD_TOOLTIP                                 :{BLACK}Крок вперед в історії навігації
 STR_TEXTFILE_WRAP_TEXT                                          :{WHITE}Розмістити текст
 STR_TEXTFILE_WRAP_TEXT_TOOLTIP                                  :{BLACK}Розмістити текст у вікні без необхідності прокрутки
 STR_TEXTFILE_VIEW_README                                        :{BLACK}Інструкція

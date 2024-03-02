@@ -256,9 +256,9 @@ STR_UNITS_HEIGHT_METRIC                                         :{DECIMAL}{NBSP}
 STR_UNITS_HEIGHT_SI                                             :{DECIMAL}{NBSP}米
 
 # Time units used in string control characters
-STR_UNITS_DAYS                                                  :{COMMA}{NBSP} 日
-STR_UNITS_SECONDS                                               :{COMMA}{NBSP} 秒
-STR_UNITS_TICKS                                                 :{COMMA}{NBSP} 刻
+STR_UNITS_DAYS                                                  :{COMMA}{NBSP}日
+STR_UNITS_SECONDS                                               :{COMMA}{NBSP}秒
+STR_UNITS_TICKS                                                 :{COMMA}{NBSP}刻
 
 STR_UNITS_MONTHS                                                :{NUM}{NBSP}个月
 STR_UNITS_MINUTES                                               :{NUM}{NBSP}分
@@ -3563,7 +3563,7 @@ STR_NEWGRF_BROKEN                                               :{WHITE}NewGRF '
 STR_NEWGRF_BROKEN_POWERED_WAGON                                 :{WHITE}{1:ENGINE}机车车厢的状态没在车库内发生变动
 STR_NEWGRF_BROKEN_VEHICLE_LENGTH                                :{WHITE}当车辆不在车库中时,这将改变 '{1:ENGINE}' 的车辆长度.
 STR_NEWGRF_BROKEN_CAPACITY                                      :{WHITE}它会在 '{1:ENGINE}' 在机厂外或不在接受改装时改変其运载能力
-STR_BROKEN_VEHICLE_LENGTH                                       :{WHITE} '{1:COMPANY}' 公司的列车 '{0:VEHICLE}' 长度无效。这可能是 NewGRF 导致。游戏可能会失去同步或崩溃。
+STR_BROKEN_VEHICLE_LENGTH                                       :{WHITE}{1:COMPANY} 所拥有的列车 {0:VEHICLE} 长度无效。这个错误可能是由 NewGRF 导致的。游戏可能会无法同步或崩溃。
 
 STR_NEWGRF_BUGGY                                                :{WHITE}NewGRF '{STRING}' 的信息不正确
 STR_NEWGRF_BUGGY_ARTICULATED_CARGO                              :{WHITE}购买'{1:ENGINE}' 后，将造成货物/运费的参数与购买列表不符，这将有可能造成自动更新/购买不成功。
@@ -3613,7 +3613,7 @@ STR_TOWN_VIEW_TOWN_CAPTION                                      :{WHITE}{TOWN}
 STR_TOWN_VIEW_CITY_CAPTION                                      :{WHITE}{TOWN} (都市)
 STR_TOWN_VIEW_POPULATION_HOUSES                                 :{BLACK}人口：{ORANGE}{COMMA}{BLACK}  房屋：{ORANGE}{COMMA}
 STR_TOWN_VIEW_CARGO_LAST_MONTH_MAX                              :{BLACK}{CARGO_LIST} 上月：{ORANGE}{COMMA}{BLACK}  最大：{ORANGE}{COMMA}
-STR_TOWN_VIEW_CARGO_LAST_MINUTE_MAX                             :{BLACK}{CARGO_LIST} 最后分钟：{ORANGE}{COMMA}{BLACK} 最大：{ORANGE}{COMMA}
+STR_TOWN_VIEW_CARGO_LAST_MINUTE_MAX                             :{BLACK}上分钟产出的{CARGO_LIST}：{ORANGE}{COMMA}{BLACK}最大产量：{ORANGE}{COMMA}
 STR_TOWN_VIEW_CARGO_FOR_TOWNGROWTH                              :{BLACK}城镇发展所必需的货物：
 STR_TOWN_VIEW_CARGO_FOR_TOWNGROWTH_REQUIRED_GENERAL             :{RED} 需要： {ORANGE}{STRING}
 STR_TOWN_VIEW_CARGO_FOR_TOWNGROWTH_REQUIRED_WINTER              :{ORANGE}{STRING}{BLACK} 冬季的需求
@@ -3964,7 +3964,7 @@ STR_INDUSTRY_VIEW_CARGO_LIST_EXTENSION                          :, {STRING}{STRI
 
 STR_INDUSTRY_VIEW_REQUIRES                                      :{BLACK}需要：
 STR_INDUSTRY_VIEW_ACCEPT_CARGO                                  :{YELLOW}{0:STRING}{BLACK}{3:STRING}
-STR_INDUSTRY_VIEW_ACCEPT_CARGO_AMOUNT                           :{YELLOW}{STRING}{BLACK}: {CARGO_SHORT} 等待中{STRING}
+STR_INDUSTRY_VIEW_ACCEPT_CARGO_AMOUNT                           :{YELLOW}{STRING}{BLACK}：{CARGO_SHORT}在库存中{STRING}
 
 STR_CONFIG_GAME_PRODUCTION                                      :{WHITE}改变产量
 STR_CONFIG_GAME_PRODUCTION_LEVEL                                :{WHITE}修改产量 (百分比, 最高 800%)

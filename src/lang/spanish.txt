@@ -610,7 +610,7 @@ STR_GRAPH_OPERATING_PROFIT_CAPTION                              :{WHITE}Gráfica
 STR_GRAPH_INCOME_CAPTION                                        :{WHITE}Gráfica de Ingresos
 STR_GRAPH_CARGO_DELIVERED_CAPTION                               :{WHITE}Unidades de carga entregadas
 STR_GRAPH_COMPANY_PERFORMANCE_RATINGS_CAPTION                   :{WHITE}Nivel de desempeño de empresas (máximo=1000)
-STR_GRAPH_COMPANY_VALUES_CAPTION                                :{WHITE}Gráfica del Valor de la Empresa
+STR_GRAPH_COMPANY_VALUES_CAPTION                                :{WHITE}Gráfica de Valor de la Empresa
 
 STR_GRAPH_LAST_72_MINUTES_TIME_LABEL                            :{TINY_FONT}{BLACK}Últimos 72 minutos
 
