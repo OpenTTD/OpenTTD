@@ -153,8 +153,8 @@ uint32_t RoadStopScopeResolver::GetVariable(byte variable, [[maybe_unused]] uint
 			if (type == this->type) SetBit(res, 20);
 
 			if (IsCustomRoadStopSpecIndex(nearby_tile)) {
-				const RoadStopSpecList ssl = BaseStation::GetByTile(nearby_tile)->roadstop_speclist[GetCustomRoadStopSpecIndex(nearby_tile)];
-				res |= 1 << (ssl.grfid != grfid ? 9 : 8) | ClampTo<uint8_t>(ssl.localidx);
+				const auto &sm = BaseStation::GetByTile(nearby_tile)->roadstop_speclist[GetCustomRoadStopSpecIndex(nearby_tile)];
+				res |= 1 << (sm.grfid != grfid ? 9 : 8) | ClampTo<uint8_t>(sm.localidx);
 			}
 			return res;
 		}
@@ -167,8 +167,8 @@ uint32_t RoadStopScopeResolver::GetVariable(byte variable, [[maybe_unused]] uint
 			if (!IsRoadStopTile(nearby_tile)) return 0xFFFFFFFF;
 			if (!IsCustomRoadStopSpecIndex(nearby_tile)) return 0;
 
-			const RoadStopSpecList ssl = BaseStation::GetByTile(nearby_tile)->roadstop_speclist[GetCustomRoadStopSpecIndex(nearby_tile)];
-			return ssl.grfid;
+			const auto &sm = BaseStation::GetByTile(nearby_tile)->roadstop_speclist[GetCustomRoadStopSpecIndex(nearby_tile)];
+			return sm.grfid;
 		}
 
 		/* 16 bit road stop ID of nearby tiles */
@@ -180,9 +180,9 @@ uint32_t RoadStopScopeResolver::GetVariable(byte variable, [[maybe_unused]] uint
 
 			uint32_t grfid = this->st->roadstop_speclist[GetCustomRoadStopSpecIndex(this->tile)].grfid;
 
-			const RoadStopSpecList ssl = BaseStation::GetByTile(nearby_tile)->roadstop_speclist[GetCustomRoadStopSpecIndex(nearby_tile)];
-			if (ssl.grfid == grfid) {
-				return ssl.localidx;
+			const auto &sm = BaseStation::GetByTile(nearby_tile)->roadstop_speclist[GetCustomRoadStopSpecIndex(nearby_tile)];
+			if (sm.grfid == grfid) {
+				return sm.localidx;
 			}
 
 			return 0xFFFE;
