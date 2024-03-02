@@ -1,8 +1,11 @@
-add_subdirectory(npf)
 add_subdirectory(yapf)
 
 add_files(
+    aystar.h
+    aystar.cpp
     follow_track.hpp
+    queue.h
+    queue.cpp
     pathfinder_func.h
     pathfinder_type.h
     water_regions.h
