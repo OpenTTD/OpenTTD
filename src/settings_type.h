@@ -409,42 +409,11 @@ struct ScriptSettings {
 	uint32_t script_max_memory_megabytes;      ///< limit on memory a single script instance may have allocated
 };
 
-/** Settings related to the new pathfinder. */
-struct NPFSettings {
-	/**
-	 * The maximum amount of search nodes a single NPF run should take. This
-	 * limit should make sure performance stays at acceptable levels at the cost
-	 * of not being perfect anymore.
-	 */
-	uint32_t npf_max_search_nodes;
-	uint32_t maximum_go_to_depot_penalty;      ///< What is the maximum penalty that may be endured for going to a depot
-
-	uint32_t npf_rail_firstred_penalty;        ///< the penalty for when the first signal is red (and it is not an exit or combo signal)
-	uint32_t npf_rail_firstred_exit_penalty;   ///< the penalty for when the first signal is red (and it is an exit or combo signal)
-	uint32_t npf_rail_lastred_penalty;         ///< the penalty for when the last signal is red
-	uint32_t npf_rail_station_penalty;         ///< the penalty for station tiles
-	uint32_t npf_rail_slope_penalty;           ///< the penalty for sloping upwards
-	uint32_t npf_rail_curve_penalty;           ///< the penalty for curves
-	uint32_t npf_rail_depot_reverse_penalty;   ///< the penalty for reversing in depots
-	uint32_t npf_rail_pbs_cross_penalty;       ///< the penalty for crossing a reserved rail track
-	uint32_t npf_rail_pbs_signal_back_penalty; ///< the penalty for passing a pbs signal from the backside
-	uint32_t npf_buoy_penalty;                 ///< the penalty for going over (through) a buoy
-	uint32_t npf_water_curve_penalty;          ///< the penalty for curves
-	uint32_t npf_road_curve_penalty;           ///< the penalty for curves
-	uint32_t npf_crossing_penalty;             ///< the penalty for level crossings
-	uint32_t npf_road_drive_through_penalty;   ///< the penalty for going through a drive-through road stop
-	uint32_t npf_road_dt_occupied_penalty;     ///< the penalty multiplied by the fill percentage of a drive-through road stop
-	uint32_t npf_road_bay_occupied_penalty;    ///< the penalty multiplied by the fill percentage of a road bay
-};
-
 /** Settings related to the yet another pathfinder. */
 struct YAPFSettings {
 	bool   disable_node_optimization;        ///< whether to use exit-dir instead of trackdir in node key
 	uint32_t max_search_nodes;                 ///< stop path-finding when this number of nodes visited
 	uint32_t maximum_go_to_depot_penalty;      ///< What is the maximum penalty that may be endured for going to a depot
-	bool   ship_use_yapf;                    ///< use YAPF for ships
-	bool   road_use_yapf;                    ///< use YAPF for road
-	bool   rail_use_yapf;                    ///< use YAPF for rail
 	uint32_t road_slope_penalty;               ///< penalty for up-hill slope
 	uint32_t road_curve_penalty;               ///< penalty for curves
 	uint32_t road_crossing_penalty;            ///< penalty for level crossing
@@ -481,11 +450,6 @@ struct YAPFSettings {
 
 /** Settings related to all pathfinders. */
 struct PathfinderSettings {
-	uint8_t  pathfinder_for_trains;            ///< the pathfinder to use for trains
-	uint8_t  pathfinder_for_roadvehs;          ///< the pathfinder to use for roadvehicles
-	uint8_t  pathfinder_for_ships;             ///< the pathfinder to use for ships
-	bool   new_pathfinding_all;              ///< use the newest pathfinding algorithm for all
-
 	bool   roadveh_queue;                    ///< buggy road vehicle queueing
 	bool   forbid_90_deg;                    ///< forbid trains to make 90 deg turns
 
@@ -497,7 +461,6 @@ struct PathfinderSettings {
 	uint8_t wait_for_pbs_path;                ///< how long to wait for a path reservation.
 	uint8_t path_backoff_interval;            ///< ticks between checks for a free path.
 
-	NPFSettings  npf;                        ///< pathfinder settings for the new pathfinder
 	YAPFSettings yapf;                       ///< pathfinder settings for the yet another pathfinder
 };
 

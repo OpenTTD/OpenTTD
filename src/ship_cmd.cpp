@@ -13,7 +13,6 @@
 #include "timetable.h"
 #include "news_func.h"
 #include "company_func.h"
-#include "pathfinder/npf/npf_func.h"
 #include "depot_base.h"
 #include "station_base.h"
 #include "newgrf_engine.h"
@@ -210,12 +209,7 @@ static void CheckIfShipNeedsService(Vehicle *v)
 		return;
 	}
 
-	uint max_distance;
-	switch (_settings_game.pf.pathfinder_for_ships) {
-		case VPF_NPF:  max_distance = _settings_game.pf.npf.maximum_go_to_depot_penalty  / NPF_TILE_LENGTH;  break;
-		case VPF_YAPF: max_distance = _settings_game.pf.yapf.maximum_go_to_depot_penalty / YAPF_TILE_LENGTH; break;
-		default: NOT_REACHED();
-	}
+	uint max_distance = _settings_game.pf.yapf.maximum_go_to_depot_penalty / YAPF_TILE_LENGTH;
 
 	const Depot *depot = FindClosestShipDepot(v, max_distance);
 
@@ -376,13 +370,7 @@ static Vehicle *EnsureNoMovingShipProc(Vehicle *v, void *)
 static bool CheckReverseShip(const Ship *v, Trackdir *trackdir = nullptr)
 {
 	/* Ask pathfinder for best direction */
-	bool reverse = false;
-	switch (_settings_game.pf.pathfinder_for_ships) {
-		case VPF_NPF: reverse = NPFShipCheckReverse(v, trackdir); break;
-		case VPF_YAPF: reverse = YapfShipCheckReverse(v, trackdir); break;
-		default: NOT_REACHED();
-	}
-	return reverse;
+	return YapfShipCheckReverse(v, trackdir);
 }
 
 static bool CheckShipLeaveDepot(Ship *v)
@@ -530,11 +518,7 @@ static Track ChooseShipTrack(Ship *v, TileIndex tile, TrackBits tracks)
 			v->path.clear();
 		}
 
-		switch (_settings_game.pf.pathfinder_for_ships) {
-			case VPF_NPF: track = NPFShipChooseTrack(v, path_found); break;
-			case VPF_YAPF: track = YapfShipChooseTrack(v, tile, path_found, v->path); break;
-			default: NOT_REACHED();
-		}
+		track = YapfShipChooseTrack(v, tile, path_found, v->path);
 	}
 
 	v->HandlePathfindingResult(path_found);

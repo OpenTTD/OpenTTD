@@ -42,7 +42,6 @@ int _debug_misc_level;
 int _debug_net_level;
 int _debug_sprite_level;
 int _debug_oldloader_level;
-int _debug_npf_level;
 int _debug_yapf_level;
 int _debug_fontcache_level;
 int _debug_script_level;
@@ -68,7 +67,6 @@ static const DebugLevel _debug_levels[] = {
 	DEBUG_LEVEL(net),
 	DEBUG_LEVEL(sprite),
 	DEBUG_LEVEL(oldloader),
-	DEBUG_LEVEL(npf),
 	DEBUG_LEVEL(yapf),
 	DEBUG_LEVEL(fontcache),
 	DEBUG_LEVEL(script),
