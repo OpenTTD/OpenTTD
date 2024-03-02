@@ -768,6 +768,11 @@ bool IntSettingDesc::IsDefaultValue(void *object) const
 	return this->def == object_value;
 }
 
+void IntSettingDesc::ResetToDefault(void *object) const
+{
+	this->Write(object, this->def);
+}
+
 std::string StringSettingDesc::FormatValue(const void *object) const
 {
 	const std::string &str = this->Read(object);
@@ -800,6 +805,11 @@ bool StringSettingDesc::IsDefaultValue(void *object) const
 	return this->def == str;
 }
 
+void StringSettingDesc::ResetToDefault(void *object) const
+{
+	this->Write(object, this->def);
+}
+
 bool ListSettingDesc::IsSameValue(const IniItem *, void *) const
 {
 	/* Checking for equality is way more expensive than just writing the value. */
@@ -810,6 +820,12 @@ bool ListSettingDesc::IsDefaultValue(void *) const
 {
 	/* Defaults of lists are often complicated, and hard to compare. */
 	return false;
+}
+
+void ListSettingDesc::ResetToDefault(void *) const
+{
+	/* Resetting a list to default is not supported. */
+	NOT_REACHED();
 }
 
 /**
