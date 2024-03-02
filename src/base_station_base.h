@@ -305,4 +305,14 @@ struct SpecializedStation : public BaseStation {
 	static Pool::IterateWrapper<T> Iterate(size_t from = 0) { return Pool::IterateWrapper<T>(from); }
 };
 
+/**
+ * Get spec mapping list for each supported custom spec type.
+ * @tparam T Spec type.
+ * @param bst Station of custom spec list.
+ * @return Speclist of custom spec type.
+ */
+template <class T> std::vector<SpecMapping<T>> &GetStationSpecList(BaseStation *bst);
+template <> inline std::vector<SpecMapping<StationSpec>> &GetStationSpecList<StationSpec>(BaseStation *bst) { return bst->speclist; }
+template <> inline std::vector<SpecMapping<RoadStopSpec>> &GetStationSpecList<RoadStopSpec>(BaseStation *bst) { return bst->roadstop_speclist; }
+
 #endif /* BASE_STATION_BASE_H */
