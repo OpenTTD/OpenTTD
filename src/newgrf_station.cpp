@@ -360,8 +360,8 @@ TownScopeResolver *StationResolverObject::GetTown()
 			uint32_t res = GB(GetStationGfx(nearby_tile), 1, 2) << 12 | !!perpendicular << 11 | !!same_station << 10;
 
 			if (IsCustomStationSpecIndex(nearby_tile)) {
-				const StationSpecList ssl = BaseStation::GetByTile(nearby_tile)->speclist[GetCustomStationSpecIndex(nearby_tile)];
-				res |= 1 << (ssl.grfid != grfid ? 9 : 8) | ClampTo<uint8_t>(ssl.localidx);
+				const auto &sm = BaseStation::GetByTile(nearby_tile)->speclist[GetCustomStationSpecIndex(nearby_tile)];
+				res |= 1 << (sm.grfid != grfid ? 9 : 8) | ClampTo<uint8_t>(sm.localidx);
 			}
 			return res;
 		}
@@ -372,8 +372,8 @@ TownScopeResolver *StationResolverObject::GetTown()
 			if (!HasStationTileRail(nearby_tile)) return 0xFFFFFFFF;
 			if (!IsCustomStationSpecIndex(nearby_tile)) return 0;
 
-			const StationSpecList ssl = BaseStation::GetByTile(nearby_tile)->speclist[GetCustomStationSpecIndex(nearby_tile)];
-			return ssl.grfid;
+			const auto &sm = BaseStation::GetByTile(nearby_tile)->speclist[GetCustomStationSpecIndex(nearby_tile)];
+			return sm.grfid;
 		}
 
 		case 0x6B: { // 16 bit Station ID of nearby tiles
@@ -384,9 +384,9 @@ TownScopeResolver *StationResolverObject::GetTown()
 
 			uint32_t grfid = this->st->speclist[GetCustomStationSpecIndex(this->tile)].grfid;
 
-			const StationSpecList ssl = BaseStation::GetByTile(nearby_tile)->speclist[GetCustomStationSpecIndex(nearby_tile)];
-			if (ssl.grfid == grfid) {
-				return ssl.localidx;
+			const auto &sm = BaseStation::GetByTile(nearby_tile)->speclist[GetCustomStationSpecIndex(nearby_tile)];
+			if (sm.grfid == grfid) {
+				return sm.localidx;
 			}
 
 			return 0xFFFE;
