@@ -19,16 +19,11 @@
 typedef Pool<BaseStation, StationID, 32, 64000> StationPool;
 extern StationPool _station_pool;
 
-struct StationSpecList {
-	const StationSpec *spec;
-	uint32_t grfid;      ///< GRF ID of this custom station
-	uint16_t localidx; ///< Station ID within GRF of station
-};
-
-struct RoadStopSpecList {
-	const RoadStopSpec *spec;
-	uint32_t grfid;      ///< GRF ID of this custom road stop
-	uint16_t localidx; ///< Station ID within GRF of road stop
+template <typename T>
+struct SpecMapping {
+	const T *spec; ///< Custom spec.
+	uint32_t grfid; ///< GRF ID of this custom spec.
+	uint16_t localidx; ///< Local ID within GRF of this custom spec.
 };
 
 struct RoadStopTileData {
@@ -74,8 +69,8 @@ struct BaseStation : StationPool::PoolItem<&_station_pool> {
 	Owner owner;                    ///< The owner of this station
 	StationFacility facilities;     ///< The facilities that this station has
 
-	std::vector<StationSpecList> speclist;           ///< List of rail station specs of this station.
-	std::vector<RoadStopSpecList> roadstop_speclist; ///< List of road stop specs of this station
+	std::vector<SpecMapping<StationSpec>> speclist;           ///< List of rail station specs of this station.
+	std::vector<SpecMapping<RoadStopSpec>> roadstop_speclist; ///< List of road stop specs of this station
 
 	TimerGameCalendar::Date build_date; ///< Date of construction
 
