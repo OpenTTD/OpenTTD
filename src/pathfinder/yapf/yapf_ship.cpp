@@ -259,10 +259,19 @@ public:
 			 * caching the full path the ship can get stuck in a loop. */
 			const WaterRegionPatchDesc end_water_patch = GetWaterRegionPatchInfo(node->GetTile());
 			const WaterRegionPatchDesc start_water_patch = GetWaterRegionPatchInfo(tile);
+			assert(start_water_patch == high_level_path.front());
 			while (node->m_parent) {
 				const WaterRegionPatchDesc node_water_patch = GetWaterRegionPatchInfo(node->GetTile());
-				if (node_water_patch == start_water_patch || (!is_intermediate_destination && node_water_patch != end_water_patch)) {
+
+				const bool node_water_patch_on_high_level_path = std::find(high_level_path.begin(), high_level_path.end(), node_water_patch) != high_level_path.end();
+				const bool add_full_path = !is_intermediate_destination && node_water_patch != end_water_patch;
+
+				/* The cached path must always lead to a region patch that's on the high level path.
+				 * This is what can happen when that's not the case https://github.com/OpenTTD/OpenTTD/issues/12176. */
+				if (add_full_path || !node_water_patch_on_high_level_path || node_water_patch == start_water_patch) {
 					path_cache.push_front(node->GetTrackdir());
+				} else {
+					path_cache.clear();
 				}
 				node = node->m_parent;
 			}
