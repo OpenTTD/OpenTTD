@@ -44,7 +44,6 @@ extern int _debug_misc_level;
 extern int _debug_net_level;
 extern int _debug_sprite_level;
 extern int _debug_oldloader_level;
-extern int _debug_npf_level;
 extern int _debug_yapf_level;
 extern int _debug_fontcache_level;
 extern int _debug_script_level;
