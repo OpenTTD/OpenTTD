@@ -4657,7 +4657,7 @@ STR_ORDERS_DELETE_BUTTON                                        :{BLACK}Вида
 STR_ORDERS_DELETE_TOOLTIP                                       :{BLACK}Видалити виділене завдання
 STR_ORDERS_DELETE_ALL_TOOLTIP                                   :{BLACK}Видалити всі накази
 STR_ORDERS_STOP_SHARING_BUTTON                                  :{BLACK}Скасувати спільні накази
-STR_ORDERS_STOP_SHARING_TOOLTIP                                 :{BLACK}Перестати використовути спільні накази. Ctrl+клац мишою видаляє всі накази для цього транспорту
+STR_ORDERS_STOP_SHARING_TOOLTIP                                 :{BLACK}Припинити використовути спільні накази. Ctrl+клац мишою видаляє всі накази для цього транспорту
 
 STR_ORDERS_GO_TO_BUTTON                                         :{BLACK}Прямувати
 STR_ORDER_GO_TO_NEAREST_DEPOT                                   :Прямувати до найближчого депо

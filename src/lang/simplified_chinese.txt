@@ -2823,7 +2823,7 @@ STR_STATION_BUILD_STATION_TYPE_TOOLTIP                          :{BLACK}选择�
 
 STR_STATION_CLASS_DFLT                                          :默认
 STR_STATION_CLASS_DFLT_STATION                                  :默认车站
-STR_STATION_CLASS_DFLT_ROADSTOP                                 :默认道路站点
+STR_STATION_CLASS_DFLT_ROADSTOP                                 :默认车站
 STR_STATION_CLASS_WAYP                                          :路标
 STR_STATION_CLASS_WAYP_WAYPOINT                                 :默认路点
 
@@ -3613,7 +3613,7 @@ STR_TOWN_VIEW_TOWN_CAPTION                                      :{WHITE}{TOWN}
 STR_TOWN_VIEW_CITY_CAPTION                                      :{WHITE}{TOWN} (都市)
 STR_TOWN_VIEW_POPULATION_HOUSES                                 :{BLACK}人口：{ORANGE}{COMMA}{BLACK}  房屋：{ORANGE}{COMMA}
 STR_TOWN_VIEW_CARGO_LAST_MONTH_MAX                              :{BLACK}{CARGO_LIST} 上月：{ORANGE}{COMMA}{BLACK}  最大：{ORANGE}{COMMA}
-STR_TOWN_VIEW_CARGO_LAST_MINUTE_MAX                             :{BLACK}上分钟产出的{CARGO_LIST}：{ORANGE}{COMMA}{BLACK}最大产量：{ORANGE}{COMMA}
+STR_TOWN_VIEW_CARGO_LAST_MINUTE_MAX                             :{BLACK}上分钟产出的{WHITE}{CARGO_LIST}{BLACK}：{ORANGE}{COMMA}{NBSP}{BLACK}最大产量：{ORANGE}{COMMA}
 STR_TOWN_VIEW_CARGO_FOR_TOWNGROWTH                              :{BLACK}城镇发展所必需的货物：
 STR_TOWN_VIEW_CARGO_FOR_TOWNGROWTH_REQUIRED_GENERAL             :{RED} 需要： {ORANGE}{STRING}
 STR_TOWN_VIEW_CARGO_FOR_TOWNGROWTH_REQUIRED_WINTER              :{ORANGE}{STRING}{BLACK} 冬季的需求
@@ -3622,7 +3622,7 @@ STR_TOWN_VIEW_CARGO_FOR_TOWNGROWTH_REQUIRED                     :{ORANGE}已运�
 STR_TOWN_VIEW_CARGO_FOR_TOWNGROWTH_DELIVERED                    :{ORANGE}{CARGO_TINY} / {CARGO_LONG}{GREEN} (已运输)
 STR_TOWN_VIEW_TOWN_GROWS_EVERY                                  :{BLACK}城镇每 {ORANGE}{UNITS_DAYS_OR_SECONDS}{BLACK}{NBSP}成长一次
 STR_TOWN_VIEW_TOWN_GROWS_EVERY_FUNDED                           :{BLACK}城镇每 {ORANGE}{UNITS_DAYS_OR_SECONDS}{BLACK}{NBSP}成长一次（正接受资助）
-STR_TOWN_VIEW_TOWN_GROW_STOPPED                                 :{BLACK} 城镇发展正在 {RED}停滞 {BLACK}！
+STR_TOWN_VIEW_TOWN_GROW_STOPPED                                 :{BLACK}城镇发展已{RED}停滞
 STR_TOWN_VIEW_NOISE_IN_TOWN                                     :{BLACK}当前城镇噪音: {ORANGE}{COMMA}{BLACK}  最大: {ORANGE}{COMMA}
 STR_TOWN_VIEW_CENTER_TOOLTIP                                    :{BLACK}将屏幕中心移动到城镇的位置。按住 <Ctrl> 键点选会在新视点中显示目标位置。
 STR_TOWN_VIEW_LOCAL_AUTHORITY_BUTTON                            :{BLACK}地方政府
@@ -3716,7 +3716,7 @@ STR_SUBSIDIES_OFFERED_TITLE                                     :{BLACK}尚未�
 STR_SUBSIDIES_OFFERED_FROM_TO                                   :{ORANGE}将{STRING}从{STRING}运至{STRING}{YELLOW} ({STRING})
 STR_SUBSIDIES_NONE                                              :{ORANGE}没有
 STR_SUBSIDIES_SUBSIDISED_TITLE                                  :{BLACK}已经中标的项目：
-STR_SUBSIDIES_SUBSIDISED_FROM_TO                                :{ORANGE}将 {STRING} 从 {STRING} 运送到 {STRING}{YELLOW} ({COMPANY}{YELLOW}，截止日期为 {STRING})
+STR_SUBSIDIES_SUBSIDISED_FROM_TO                                :{ORANGE}将 {STRING} 从 {STRING} 运送到 {STRING}{YELLOW} ({COMPANY}{YELLOW}，{STRING})
 STR_SUBSIDIES_TOOLTIP_CLICK_ON_SERVICE_TO_CENTER                :{BLACK}将屏幕中心移动到当前工业或城镇的位置。按住 <Ctrl> 键点选会在新视点中显示目标位置。
 STR_SUBSIDIES_OFFERED_EXPIRY_DATE                               :在 {DATE_SHORT} 之前
 STR_SUBSIDIES_OFFERED_EXPIRY_TIME                               :剩余时间：{UNITS_MONTHS_OR_MINUTES}
@@ -3768,7 +3768,7 @@ STR_STATION_VIEW_RATINGS_BUTTON                                 :{BLACK}评价
 STR_STATION_VIEW_RATINGS_TOOLTIP                                :{BLACK}显示车站评价
 STR_STATION_VIEW_SUPPLY_RATINGS_TITLE_MONTH                     :{BLACK}每月供应数量与本地评价：
 STR_STATION_VIEW_SUPPLY_RATINGS_TITLE_MINUTE                    :{BLACK}每分钟供应量与本地评价：
-STR_STATION_VIEW_CARGO_SUPPLY_RATING                            :{WHITE}{STRING}: {YELLOW}{COMMA} / {STRING} ({COMMA}%)
+STR_STATION_VIEW_CARGO_SUPPLY_RATING                            :{WHITE}{STRING}: {YELLOW}{COMMA} / {STRING}（{COMMA}%）
 
 STR_STATION_VIEW_GROUP                                          :{BLACK}群组方式
 STR_STATION_VIEW_WAITING_STATION                                :车站名：等候中
@@ -3964,7 +3964,7 @@ STR_INDUSTRY_VIEW_CARGO_LIST_EXTENSION                          :, {STRING}{STRI
 
 STR_INDUSTRY_VIEW_REQUIRES                                      :{BLACK}需要：
 STR_INDUSTRY_VIEW_ACCEPT_CARGO                                  :{YELLOW}{0:STRING}{BLACK}{3:STRING}
-STR_INDUSTRY_VIEW_ACCEPT_CARGO_AMOUNT                           :{YELLOW}{STRING}{BLACK}：{CARGO_SHORT}在库存中{STRING}
+STR_INDUSTRY_VIEW_ACCEPT_CARGO_AMOUNT                           :{YELLOW}{STRING}{BLACK}：库存 {CARGO_SHORT} {STRING}
 
 STR_CONFIG_GAME_PRODUCTION                                      :{WHITE}改变产量
 STR_CONFIG_GAME_PRODUCTION_LEVEL                                :{WHITE}修改产量 (百分比, 最高 800%)

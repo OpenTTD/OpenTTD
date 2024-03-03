@@ -1095,6 +1095,7 @@ STR_NEWS_NEW_VEHICLE_NOW_AVAILABLE_WITH_TYPE                    :{BLACK}Nov{G ""
 STR_NEWS_SHOW_VEHICLE_GROUP_TOOLTIP                             :{BLACK}Otvori grupni prozor fokusiran na grupu vozila
 
 STR_NEWS_STATION_NO_LONGER_ACCEPTS_CARGO_LIST                   :{WHITE}{STATION} više ne prihvata: {CARGO_LIST}
+STR_NEWS_STATION_NOW_ACCEPTS_CARGO_LIST                         :{WHITE}{STATION} sada prihvata: {CARGO_LIST}
 
 STR_NEWS_OFFER_OF_SUBSIDY_EXPIRED                               :{BIG_FONT}{BLACK}Ponuda subvencije istekla:{}{}Prevoz {STRING.gen} iz {STRING} u {STRING} se više neće stimulisati
 STR_NEWS_SUBSIDY_WITHDRAWN_SERVICE                              :{BIG_FONT}{BLACK}Subvencija povučena:{}{}Usluga prevoza {STRING.gen} između stanica {STRING} i {STRING} više nije u opticaju
@@ -1632,6 +1633,7 @@ STR_CONFIG_SETTING_INFRASTRUCTURE_MAINTENANCE_HELPTEXT          :Ako je omoguće
 STR_CONFIG_SETTING_COMPANY_STARTING_COLOUR                      :Početna boja preduzeća: {STRING}
 STR_CONFIG_SETTING_COMPANY_STARTING_COLOUR_HELPTEXT             :Izaberi početnu boju za preduzeće
 
+STR_CONFIG_SETTING_COMPANY_STARTING_COLOUR_SECONDARY_HELPTEXT   :Odabir početne sekundarne boje preduzeća, ako se koristi NewGRF koji to podržava.
 
 STR_CONFIG_SETTING_NEVER_EXPIRE_AIRPORTS                        :Nezastarevanje aerodroma: {STRING}
 STR_CONFIG_SETTING_NEVER_EXPIRE_AIRPORTS_HELPTEXT               :Omogućavanje ovog podešavanja čini svaki tip aerodroma zauvek pristupan nakon njegovog uvođenja
@@ -1922,6 +1924,7 @@ STR_CONFIG_SETTING_SOUND_NEWS_HELPTEXT                          :Reprodukuj zvu�
 
 ###length 2
 STR_CONFIG_SETTING_SOUND_NEW_YEAR                               :Kraj godine: {STRING}
+STR_CONFIG_SETTING_SOUND_NEW_PERIOD                             :Kraj perioda: {STRING}
 
 ###length 2
 STR_CONFIG_SETTING_SOUND_NEW_YEAR_HELPTEXT                      :Reprodukuj zvučne efekte prilikom ispisa rezultata poslovanja preduzeća na kraju svake godine
@@ -3746,6 +3749,8 @@ STR_TOWN_VIEW_CARGO_FOR_TOWNGROWTH_REQUIRED_WINTER              :{ORANGE}{STRING
 STR_TOWN_VIEW_CARGO_FOR_TOWNGROWTH_DELIVERED_GENERAL            :{ORANGE}{STRING}{GREEN} dostavljeno
 STR_TOWN_VIEW_CARGO_FOR_TOWNGROWTH_REQUIRED                     :{ORANGE}{CARGO_TINY} / {CARGO_LONG}{RED} (potrebno)
 STR_TOWN_VIEW_CARGO_FOR_TOWNGROWTH_DELIVERED                    :{ORANGE}{CARGO_TINY} / {CARGO_LONG}{GREEN} (dostavljeno)
+STR_TOWN_VIEW_TOWN_GROWS_EVERY                                  :{BLACK}Naselje raste {ORANGE}{UNITS_DAYS_OR_SECONDS}
+STR_TOWN_VIEW_TOWN_GROWS_EVERY_FUNDED                           :{BLACK}Naselje raste {ORANGE}{UNITS_DAYS_OR_SECONDS} (sponzorisano)
 STR_TOWN_VIEW_TOWN_GROW_STOPPED                                 :{BLACK}Naselje se {RED}ne{BLACK} razvija
 STR_TOWN_VIEW_NOISE_IN_TOWN                                     :{BLACK}Nivo buke u naselju: {ORANGE}{COMMA}{BLACK}  najviše: {ORANGE}{COMMA}
 STR_TOWN_VIEW_CENTER_TOOLTIP                                    :{BLACK}Prebacuje glavni pogled na lokaciju naselja. Ctrl+klik otvara novi pogled na lokaciju naselja
@@ -4108,7 +4113,11 @@ STR_VEHICLE_LIST_MANAGE_LIST                                    :{BLACK}Upravlja
 STR_VEHICLE_LIST_MANAGE_LIST_TOOLTIP                            :{BLACK}Pošalji naredbu svim vozilima na ovoj listi
 STR_VEHICLE_LIST_REPLACE_VEHICLES                               :Obnovi vozila
 STR_VEHICLE_LIST_SEND_FOR_SERVICING                             :Pošalji na servis
+STR_VEHICLE_LIST_CREATE_GROUP                                   :Napravi grupu
 STR_VEHICLE_LIST_PROFIT_THIS_YEAR_LAST_YEAR                     :{TINY_FONT}{BLACK}Ovogodišnja zarada: {CURRENCY_LONG} (prošle godine: {CURRENCY_LONG})
+STR_VEHICLE_LIST_PROFIT_THIS_PERIOD_LAST_PERIOD                 :{TINY_FONT}{BLACK}Profit trenutnog perioda: {CURRENCY_LONG} (prethodni period: {CURRENCY_LONG})
+STR_VEHICLE_LIST_CARGO                                          :[{CARGO_LIST}]
+STR_VEHICLE_LIST_NAME_AND_CARGO                                 :{STRING} {STRING}
 
 STR_VEHICLE_LIST_SEND_TRAIN_TO_DEPOT                            :Pošalji u depo
 STR_VEHICLE_LIST_SEND_ROAD_VEHICLE_TO_DEPOT                     :Pošalji u depo
@@ -4563,11 +4572,14 @@ STR_VEHICLE_INFO_CAPACITY_CAPACITY                              :{BLACK}Nosivost
 
 STR_VEHICLE_INFO_FEEDER_CARGO_VALUE                             :{BLACK}Zarada od transfera: {LTBLUE}{CURRENCY_LONG}
 
+STR_VEHICLE_DETAILS_SERVICING_INTERVAL_DAYS                     :{BLACK}Interval servisiranja: {LTBLUE}{COMMA}dana{BLACK} {STRING}
+STR_VEHICLE_DETAILS_SERVICING_INTERVAL_MINUTES                  :{BLACK}Interval servisiranja: {LTBLUE}{COMMA}{NBSP}minut{P "" a a}{BLACK}   {STRING}
+STR_VEHICLE_DETAILS_SERVICING_INTERVAL_PERCENT                  :{BLACK}Interval servisiranja: {LTBLUE}{COMMA}%{BLACK} {STRING}
 STR_VEHICLE_DETAILS_INCREASE_SERVICING_INTERVAL_TOOLTIP_DAYS    :{BLACK}Povećava interval servisiranja za 10 dana. Ctrl+klik povećava interval servisiranja za 5 dana
 STR_VEHICLE_DETAILS_INCREASE_SERVICING_INTERVAL_TOOLTIP_MINUTES :{BLACK}Povećava interval servisiranja za 5 minuta. Ctrl+klik povećava interval servisiranja za 1 minut
 STR_VEHICLE_DETAILS_INCREASE_SERVICING_INTERVAL_TOOLTIP_PERCENT :{BLACK}Povećava interval servisiranja za 10 procenata. Ctrl+klik povećava interval servisiranja za 5 procenata
 
-STR_SERVICE_INTERVAL_DROPDOWN_TOOLTIP                           :{BLACK}Promeni tip intervala za servis
+STR_SERVICE_INTERVAL_DROPDOWN_TOOLTIP                           :{BLACK}Promeni tip intervala servisiranja
 STR_VEHICLE_DETAILS_DEFAULT                                     :Podrazumevano
 STR_VEHICLE_DETAILS_PERCENT                                     :Procenat
 
@@ -4897,6 +4909,7 @@ STR_AI_CONFIG_AILIST_TOOLTIP                                    :{BLACK}Veštač
 STR_AI_CONFIG_HUMAN_PLAYER                                      :Ljudsko biće
 STR_AI_CONFIG_RANDOM_AI                                         :Proizvoljna VI
 STR_AI_CONFIG_NONE                                              :(nijedna)
+STR_AI_CONFIG_NAME_VERSION                                      :{STRING} {YELLOW}v{NUM}
 STR_AI_CONFIG_MAX_COMPETITORS                                   :{LTBLUE}Najveći broj suparnika: {ORANGE}{COMMA}
 
 STR_AI_CONFIG_MOVE_UP                                           :{BLACK}Pomeri naviše
@@ -5362,7 +5375,7 @@ STR_ERROR_CAN_T_SELL_SHIP                                       :{WHITE}Brod se 
 STR_ERROR_CAN_T_SELL_AIRCRAFT                                   :{WHITE}Letelica se ne može prodati...
 
 STR_ERROR_TOO_MANY_VEHICLES_IN_GAME                             :{WHITE}Previše je vozila u igri
-STR_ERROR_CAN_T_CHANGE_SERVICING                                :{WHITE}Servisni interval nije moguće promeniti...
+STR_ERROR_CAN_T_CHANGE_SERVICING                                :{WHITE}Interval servisiranja nije moguće promeniti...
 
 STR_ERROR_VEHICLE_IS_DESTROYED                                  :{WHITE}... vozilo je uništeno
 
@@ -5412,6 +5425,7 @@ STR_ERROR_NO_STOP_COMPATIBLE_ROAD_TYPE                          :{WHITE}Ne posto
 STR_ERROR_NO_STOP_COMPATIBLE_TRAM_TYPE                          :{WHITE}Ne postoje stanice sa odgovarajućim tipom tramvajske železnice
 STR_ERROR_NO_STOP_ARTICULATED_VEHICLE                           :{WHITE}Ne postoje odgovarajuće stanice za zglobna drumska vozila.{}Zglobnim drumskim vozilima su neophodne stanice kroz koje se prolazi
 STR_ERROR_AIRPORT_NO_PLANES                                     :{WHITE}Ovaj avion ne može sleteti na ovaj heliodrom
+STR_ERROR_AIRPORT_NO_HELICOPTERS                                :{WHITE}Ovaj helikopter ne može sleteti na ovaj aerodrom
 STR_ERROR_NO_RAIL_WAYPOINT                                      :{WHITE}Ne postoji železničko čvorište
 STR_ERROR_NO_BUOY                                               :{WHITE}Ne postoji bova
 
