@@ -1002,12 +1002,10 @@ void StationUpdateCachedTriggers(BaseStation *st)
 
 	/* Combine animation trigger bitmask for all station specs
 	 * of this station. */
-	for (uint i = 0; i < st->speclist.size(); i++) {
-		const StationSpec *ss = st->speclist[i].spec;
-		if (ss != nullptr) {
-			st->cached_anim_triggers |= ss->animation.triggers;
-			st->cached_cargo_triggers |= ss->cargo_triggers;
-		}
+	for (const auto &sm : GetStationSpecList<StationSpec>(st)) {
+		if (sm.spec == nullptr) continue;
+		st->cached_anim_triggers |= sm.spec->animation.triggers;
+		st->cached_cargo_triggers |= sm.spec->cargo_triggers;
 	}
 }
 

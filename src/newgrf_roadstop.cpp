@@ -612,11 +612,9 @@ void RoadStopUpdateCachedTriggers(BaseStation *st)
 
 	/* Combine animation trigger bitmask for all road stop specs
 	 * of this station. */
-	for (uint i = 0; i < st->roadstop_speclist.size(); i++) {
-		const RoadStopSpec *ss = st->roadstop_speclist[i].spec;
-		if (ss != nullptr) {
-			st->cached_roadstop_anim_triggers |= ss->animation.triggers;
-			st->cached_roadstop_cargo_triggers |= ss->cargo_triggers;
-		}
+	for (const auto &sm : GetStationSpecList<RoadStopSpec>(st)) {
+		if (sm.spec == nullptr) continue;
+		st->cached_roadstop_anim_triggers |= sm.spec->animation.triggers;
+		st->cached_roadstop_cargo_triggers |= sm.spec->cargo_triggers;
 	}
 }
