@@ -204,20 +204,8 @@ public:
 		return result;
 	}
 
-	static Trackdir ChooseShipTrack(const Ship *v, TileIndex tile, DiagDirection enterdir, TrackBits tracks, bool &path_found, ShipPathCache &path_cache)
+	static Trackdir ChooseShipTrack(const Ship *v, TileIndex tile, DiagDirection enterdir, bool &path_found, ShipPathCache &path_cache)
 	{
-		/* Handle special case - when next tile is destination tile. */
-		if (tile == v->dest_tile) {
-			/* Convert tracks to trackdirs */
-			TrackdirBits trackdirs = TrackBitsToTrackdirBits(tracks);
-			/* Limit to trackdirs reachable from enterdir. */
-			trackdirs &= DiagdirReachesTrackdirs(enterdir);
-
-			/* use vehicle's current direction if that's possible, otherwise use first usable one. */
-			Trackdir veh_dir = v->GetVehicleTrackdir();
-			return (HasTrackdir(trackdirs, veh_dir)) ? veh_dir : (Trackdir)FindFirstBit(trackdirs);
-		}
-
 		/* Move back to the old tile/trackdir (where ship is coming from). */
 		const TileIndex src_tile = TileAddByDiagDir(tile, ReverseDiagDir(enterdir));
 		const Trackdir trackdir = v->GetVehicleTrackdir();
@@ -449,9 +437,9 @@ struct CYapfShip : CYapfT<CYapfShip_TypesT<CYapfShip, CFollowTrackWater, CShipNo
 };
 
 /** Ship controller helper - path finder invoker. */
-Track YapfShipChooseTrack(const Ship *v, TileIndex tile, DiagDirection enterdir, TrackBits tracks, bool &path_found, ShipPathCache &path_cache)
+Track YapfShipChooseTrack(const Ship *v, TileIndex tile, DiagDirection enterdir, bool &path_found, ShipPathCache &path_cache)
 {
-	Trackdir td_ret = CYapfShip::ChooseShipTrack(v, tile, enterdir, tracks, path_found, path_cache);
+	Trackdir td_ret = CYapfShip::ChooseShipTrack(v, tile, enterdir, path_found, path_cache);
 	return (td_ret != INVALID_TRACKDIR) ? TrackdirToTrack(td_ret) : INVALID_TRACK;
 }
 
