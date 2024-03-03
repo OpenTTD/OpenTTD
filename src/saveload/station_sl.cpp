@@ -112,15 +112,13 @@ void AfterLoadStations()
 {
 	/* Update the speclists of all stations to point to the currently loaded custom stations. */
 	for (BaseStation *st : BaseStation::Iterate()) {
-		for (uint i = 0; i < st->speclist.size(); i++) {
-			if (st->speclist[i].grfid == 0) continue;
-
-			st->speclist[i].spec = StationClass::GetByGrf(st->speclist[i].grfid, st->speclist[i].localidx, nullptr);
+		for (auto &sm : GetStationSpecList<StationSpec>(st)) {
+			if (sm.grfid == 0) continue;
+			sm.spec = StationClass::GetByGrf(sm.grfid, sm.localidx, nullptr);
 		}
-		for (uint i = 0; i < st->roadstop_speclist.size(); i++) {
-			if (st->roadstop_speclist[i].grfid == 0) continue;
-
-			st->roadstop_speclist[i].spec = RoadStopClass::GetByGrf(st->roadstop_speclist[i].grfid, st->roadstop_speclist[i].localidx, nullptr);
+		for (auto &sm : GetStationSpecList<RoadStopSpec>(st)) {
+			if (sm.grfid == 0) continue;
+			sm.spec = RoadStopClass::GetByGrf(sm.grfid, sm.localidx, nullptr);
 		}
 
 		if (Station::IsExpected(st)) {
