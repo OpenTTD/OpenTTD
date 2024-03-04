@@ -547,11 +547,11 @@ static void StartScripts()
 
 	/* Start the AIs. */
 	for (const Company *c : Company::Iterate()) {
-		if (Company::IsValidAiID(c->index)) AI::StartNew(c->index, false);
+		if (Company::IsValidAiID(c->index)) AI::StartNew(c->index);
 	}
 
 	/* Start the GameScript. */
-	Game::StartNew(false);
+	Game::StartNew();
 
 	ShowScriptDebugWindowIfScriptError();
 }

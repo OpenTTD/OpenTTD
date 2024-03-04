@@ -27,9 +27,8 @@ public:
 	/**
 	 * Start a new AI company.
 	 * @param company At which slot the AI company should start.
-	 * @param deviate Whether to apply random deviation to the configured AI.
 	 */
-	static void StartNew(CompanyID company, bool deviate = true);
+	static void StartNew(CompanyID company);
 
 	/**
 	 * Called every game-tick to let AIs do something.
