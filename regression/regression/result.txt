@@ -7510,7 +7510,7 @@ ERROR: IsEnd() is invalid as Begin() is never called
     BuildRailDepot():              false
     BuildRailDepot():              true
     BuildRailDepot():              true
-    BuildRailDepot():              false
+    BuildRailDepot():              true
     GetRailDepotFrontTile():       33412
     IsBuildable():                 false
     DepotList
@@ -7604,12 +7604,12 @@ ERROR: IsEnd() is invalid as Begin() is never called
     BuildRoadDepot():              false
     BuildRoadDepot():              true
     BuildRoadDepot():              true
-    BuildRoadDepot():              false
+    BuildRoadDepot():              true
     HasRoadType(Road):             true
     HasRoadType(Tram):             false
-    GetLastError():                259
-    GetLastErrorString():          ERR_ALREADY_BUILT
-    GetErrorCategory():            1
+    GetLastError():                0
+    GetLastErrorString():          ERR_NONE
+    GetErrorCategory():            0
     IsRoadTile():                  false
     GetRoadDepotFrontTile():       33412
     IsRoadDepotTile():             true
@@ -9471,7 +9471,7 @@ ERROR: IsEnd() is invalid as Begin() is never called
   IsStoppedInDepot():   false
   --Accounting--
     GetCosts():         -5947
-    Should be:          -5946
+    Should be:          -5947
   GetName():            Road Vehicle #1
   SetName():            true
   GetName():            MyVehicleName
@@ -9485,7 +9485,7 @@ ERROR: IsEnd() is invalid as Begin() is never called
     GetAgeLeft():        5489
     GetCurrentSpeed():   7
     GetRunningCost():    421
-    GetProfitThisYear(): -1
+    GetProfitThisYear(): 0
     GetProfitLastYear(): 0
     GetCurrentValue():   5947
     GetVehicleType():    1
@@ -9604,7 +9604,7 @@ ERROR: IsEnd() is invalid as Begin() is never called
     16 => 0
     14 => 0
     13 => 0
-    12 => -1
+    12 => 0
   ProfitLastYear ListDump:
     17 => 0
     16 => 0
