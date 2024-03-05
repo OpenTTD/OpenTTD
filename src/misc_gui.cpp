@@ -118,7 +118,7 @@ public:
 #else
 #	define LANDINFOD_LEVEL 1
 #endif
-		Debug(misc, LANDINFOD_LEVEL, "TILE: 0x{:x} ({},{})", (TileIndex)tile, TileX(tile), TileY(tile));
+		Debug(misc, LANDINFOD_LEVEL, "TILE: {0} (0x{0:x}) ({1},{2})", (TileIndex)tile, TileX(tile), TileY(tile));
 		Debug(misc, LANDINFOD_LEVEL, "type   = 0x{:x}", tile.type());
 		Debug(misc, LANDINFOD_LEVEL, "height = 0x{:x}", tile.height());
 		Debug(misc, LANDINFOD_LEVEL, "m1     = 0x{:x}", tile.m1());
@@ -209,14 +209,15 @@ public:
 		this->landinfo_data.push_back(GetString(str));
 
 		/* Location */
-		std::stringstream tile_ss;
-		tile_ss << "0x" << std::setfill('0') << std::setw(4) << std::hex << std::uppercase << tile.base(); // 0x%.4X
-
 		SetDParam(0, TileX(tile));
 		SetDParam(1, TileY(tile));
 		SetDParam(2, GetTileZ(tile));
-		SetDParamStr(3, tile_ss.str());
 		this->landinfo_data.push_back(GetString(STR_LAND_AREA_INFORMATION_LANDINFO_COORDS));
+
+		/* Tile index */
+		SetDParam(0, tile);
+		SetDParam(1, tile);
+		this->landinfo_data.push_back(GetString(STR_LAND_AREA_INFORMATION_LANDINFO_INDEX));
 
 		/* Local authority */
 		SetDParam(0, STR_LAND_AREA_INFORMATION_LOCAL_AUTHORITY_NONE);
