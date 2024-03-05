@@ -424,12 +424,24 @@ void Station::RemoveIndustryToDeliver(Industry *ind)
 
 
 /**
- * Remove this station from the nearby stations lists of all towns and industries.
+ * Remove this station from the nearby stations lists of nearby towns and industries.
  */
 void Station::RemoveFromAllNearbyLists()
 {
-	for (Town *t : Town::Iterate()) { t->stations_near.erase(this); }
-	for (Industry *i : Industry::Iterate()) { i->stations_near.erase(this); }
+	std::set<TownID> towns;
+	std::set<IndustryID> industries;
+
+	for (const auto &tile : this->catchment_tiles) {
+		TileType type = GetTileType(tile);
+		if (type == MP_HOUSE) {
+			towns.insert(GetTownIndex(tile));
+		} else if (type == MP_INDUSTRY) {
+			industries.insert(GetIndustryIndex(tile));
+		}
+	}
+
+	for (const TownID &townid : towns) { Town::Get(townid)->stations_near.erase(this); }
+	for (const IndustryID &industryid : industries) { Industry::Get(industryid)->stations_near.erase(this); }
 }
 
 /**
