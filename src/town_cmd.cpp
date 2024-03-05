@@ -1637,8 +1637,6 @@ static void GrowTownInTile(TileIndex *tile_ptr, RoadBits cur_rb, DiagDirection t
 		}
 
 		if (!TownCanGrowRoad(tile)) return;
-
-		_grow_town_result = GROWTH_SEARCH_STOPPED;
 	}
 
 	/* Return if a water tile */
