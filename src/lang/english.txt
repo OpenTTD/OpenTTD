@@ -4843,8 +4843,6 @@ STR_AI_SETTINGS_CAPTION_GAMESCRIPT                              :Game Script
 STR_AI_SETTINGS_CLOSE                                           :{BLACK}Close
 STR_AI_SETTINGS_RESET                                           :{BLACK}Reset
 STR_AI_SETTINGS_SETTING                                         :{RAW_STRING}: {ORANGE}{STRING1}
-STR_AI_SETTINGS_SETTING_DEVIATION                               :{RAW_STRING}: {ORANGE}[{STRING1}, {STRING1}]
-STR_AI_SETTINGS_JUST_DEVIATION                                  :[{STRING1}, {STRING1}]
 
 
 # Textfile window

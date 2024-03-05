@@ -35,7 +35,6 @@ struct ScriptConfigItem {
 	int min_value = 0;            ///< The minimal value this configuration setting can have.
 	int max_value = 1;            ///< The maximal value this configuration setting can have.
 	int default_value = 0;        ///< The default value of this configuration setting.
-	int random_deviation = 0;     ///< The maximum random deviation from the default value.
 	int step_size = 1;            ///< The step size in the gui.
 	ScriptConfigFlags flags = SCRIPTCONFIG_NONE; ///< Flags for the configuration setting.
 	LabelMapping labels;          ///< Text labels for the integer values.
@@ -131,11 +130,6 @@ public:
 	 * Reset only editable and visible settings to their default value.
 	 */
 	void ResetEditableSettings(bool yet_to_start);
-
-	/**
-	 * Randomize all settings the Script requested to be randomized.
-	 */
-	void AddRandomDeviation(CompanyID owner);
 
 	/**
 	 * Is this config attached to an Script? In other words, is there a Script
