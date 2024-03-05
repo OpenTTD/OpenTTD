@@ -43,6 +43,9 @@
       "name": "lzo"
     },
     {
+      "name": "opusfile"
+    },
+    {
       "name": "sdl2",
       "platform": "linux"
     },

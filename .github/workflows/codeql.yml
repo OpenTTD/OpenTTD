@@ -54,6 +54,8 @@ jobs:
           libicu-dev \
           liblzma-dev \
           liblzo2-dev \
+          libopus-dev \
+          libopusfile-dev \
           libsdl2-dev \
           zlib1g-dev \
           # EOF
