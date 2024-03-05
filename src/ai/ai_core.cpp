@@ -33,7 +33,7 @@
 	return !_networking || (_network_server && _settings_game.ai.ai_in_multiplayer);
 }
 
-/* static */ void AI::StartNew(CompanyID company, bool deviate)
+/* static */ void AI::StartNew(CompanyID company)
 {
 	assert(Company::IsValidID(company));
 
@@ -56,7 +56,6 @@
 		/* Load default data and store the name in the settings */
 		config->Change(info->GetName(), -1, false);
 	}
-	if (deviate) config->AddRandomDeviation(company);
 	config->AnchorUnchangeableSettings();
 
 	c->ai_info = info;
@@ -221,7 +220,7 @@
 					 * killing the offending AI we start a random other one in it's place, just
 					 * like what would happen if the AI was missing during loading. */
 					AI::Stop(c);
-					AI::StartNew(c, false);
+					AI::StartNew(c);
 				}
 			} else if (Company::IsValidAiID(c)) {
 				/* Update the reference in the Company struct. */
