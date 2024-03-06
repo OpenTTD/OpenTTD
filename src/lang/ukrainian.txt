@@ -2342,12 +2342,14 @@ STR_LIVERY_ROAD_VEHICLE_TOOLTIP                                 :{BLACK}Пока
 STR_LIVERY_SHIP_TOOLTIP                                         :{BLACK}Показати фарбування кораблів
 STR_LIVERY_AIRCRAFT_TOOLTIP                                     :{BLACK}Показати фарбування авіації
 STR_LIVERY_TRAIN_GROUP_TOOLTIP                                  :{BLACK}Показати кольори груп поїздів
+STR_LIVERY_ROAD_VEHICLE_GROUP_TOOLTIP                           :{BLACK}Показати кольори груп дорожнього транспорту
 STR_LIVERY_SHIP_GROUP_TOOLTIP                                   :{BLACK}Показати кольори груп кораблів
 STR_LIVERY_AIRCRAFT_GROUP_TOOLTIP                               :{BLACK}Показати кольори груп повітряних апаратів
 STR_LIVERY_PRIMARY_TOOLTIP                                      :{BLACK}Оберіть основний колір для обраної схеми. Ctrl+клац мишею встановить обраний колір для всіх схем
 STR_LIVERY_SECONDARY_TOOLTIP                                    :{BLACK}Оберіть другорядний колір для обраної схеми. Ctrl+клац мишею встановить обраний колір для всіх схем
 STR_LIVERY_PANEL_TOOLTIP                                        :{BLACK}Оберіть кольорову схему для зміни, чи декілька з Ctrl+клац мишею. Клацніть на прямокутнику, щоб ввімкнути/вимкнути використання схем
 STR_LIVERY_TRAIN_GROUP_EMPTY                                    :Кольори груп поїздів відсутні
+STR_LIVERY_ROAD_VEHICLE_GROUP_EMPTY                             :Не налаштовано груп дорожнього транспорту
 STR_LIVERY_SHIP_GROUP_EMPTY                                     :Групи корабілв не налаштовано
 
 ###length 23
@@ -3152,7 +3154,6 @@ STR_LAND_AREA_INFORMATION_TRAM_OWNER                            :{BLACK}Влас
 STR_LAND_AREA_INFORMATION_RAIL_OWNER                            :{BLACK}Власник залізниці: {LTBLUE}{STRING}
 STR_LAND_AREA_INFORMATION_LOCAL_AUTHORITY                       :{BLACK}Місцева влада: {LTBLUE}{STRING}
 STR_LAND_AREA_INFORMATION_LOCAL_AUTHORITY_NONE                  :Немає
-STR_LAND_AREA_INFORMATION_LANDINFO_COORDS                       :{BLACK}Координати: {LTBLUE}{NUM} x {NUM} x {NUM} ({STRING})
 STR_LAND_AREA_INFORMATION_BUILD_DATE                            :{BLACK}Рік випуску: {LTBLUE}{DATE_LONG}
 STR_LAND_AREA_INFORMATION_STATION_CLASS                         :{BLACK}Клас станції: {LTBLUE}{STRING}
 STR_LAND_AREA_INFORMATION_STATION_TYPE                          :{BLACK}Тип станції: {LTBLUE}{STRING}
@@ -4495,6 +4496,7 @@ STR_VEHICLE_INFO_WEIGHT_POWER_MAX_SPEED_MAX_TE                  :{BLACK}Вага
 STR_VEHICLE_INFO_PROFIT_THIS_YEAR_LAST_YEAR                     :{BLACK}Дохід цього року: {LTBLUE}{CURRENCY_LONG} (торік: {CURRENCY_LONG})
 STR_VEHICLE_INFO_PROFIT_THIS_YEAR_LAST_YEAR_MIN_PERFORMANCE     :{BLACK}Дохід цього року: {LTBLUE}{CURRENCY_LONG} (минулого року: {CURRENCY_LONG}) {BLACK}Найгірше: {LTBLUE}{POWER_TO_WEIGHT}
 STR_VEHICLE_INFO_PROFIT_THIS_PERIOD_LAST_PERIOD                 :{BLACK}Прибуток цього періоду: {LTBLUE}{CURRENCY_LONG} (минулого періоду: {CURRENCY_LONG})
+STR_VEHICLE_INFO_PROFIT_THIS_PERIOD_LAST_PERIOD_MIN_PERFORMANCE :{BLACK}Прибуток цього періоду: {LTBLUE}{CURRENCY_LONG} (минулого періоду: {CURRENCY_LONG}) {BLACK}Питома потужність: {LTBLUE}{POWER_TO_WEIGHT}
 STR_VEHICLE_INFO_RELIABILITY_BREAKDOWNS                         :{BLACK}Надійність: {LTBLUE}{COMMA}%  {BLACK}Аварії після останнього техогляду: {LTBLUE}{COMMA}
 
 STR_VEHICLE_INFO_BUILT_VALUE                                    :{LTBLUE}{ENGINE} {BLACK}Побудований: {LTBLUE}{NUM}{BLACK} Вартість: {LTBLUE}{CURRENCY_LONG}
@@ -4900,8 +4902,6 @@ STR_AI_SETTINGS_CAPTION_GAMESCRIPT                              :Ігровий 
 STR_AI_SETTINGS_CLOSE                                           :{BLACK}Закрити
 STR_AI_SETTINGS_RESET                                           :{BLACK}Скидання
 STR_AI_SETTINGS_SETTING                                         :{STRING}: {ORANGE}{STRING}
-STR_AI_SETTINGS_SETTING_DEVIATION                               :{STRING}: {ORANGE}[{STRING}, {STRING}]
-STR_AI_SETTINGS_JUST_DEVIATION                                  :[{STRING}, {STRING}]
 
 
 # Textfile window
@@ -4912,8 +4912,11 @@ STR_TEXTFILE_NAVFORWARD_TOOLTIP                                 :{BLACK}Крок
 STR_TEXTFILE_WRAP_TEXT                                          :{WHITE}Розмістити текст
 STR_TEXTFILE_WRAP_TEXT_TOOLTIP                                  :{BLACK}Розмістити текст у вікні без необхідності прокрутки
 STR_TEXTFILE_VIEW_README                                        :{BLACK}Інструкція
+STR_TEXTFILE_VIEW_README_TOOLTIP                                :Показати довідку вмісту
 STR_TEXTFILE_VIEW_CHANGELOG                                     :{BLACK}Зміни
+STR_TEXTFILE_VIEW_CHANGELOG_TOOLTIP                             :Показати зміни вмісту
 STR_TEXTFILE_VIEW_LICENCE                                       :{BLACK}Ліцензія
+STR_TEXTFILE_VIEW_LICENCE_TOOLTIP                               :Показати ліцензію вмісту
 ###length 5
 STR_TEXTFILE_README_CAPTION                                     :{WHITE}Документація до {STRING} {STRING}
 STR_TEXTFILE_CHANGELOG_CAPTION                                  :{WHITE}Зміни в {STRING} {STRING}

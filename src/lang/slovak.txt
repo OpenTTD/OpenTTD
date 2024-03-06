@@ -317,8 +317,13 @@ STR_UNITS_HEIGHT_METRIC                                         :{DECIMAL} m
 STR_UNITS_HEIGHT_SI                                             :{DECIMAL} m
 
 # Time units used in string control characters
+STR_UNITS_DAYS                                                  :{COMMA}{NBSP}{P deň dni dní}
+STR_UNITS_SECONDS                                               :{COMMA}{NBSP}sek{P 0 "unda" "undy" "únd"}
 
+STR_UNITS_MONTHS                                                :{NUM}{NBSP}mesiac{P "" "e" "ov"}
+STR_UNITS_MINUTES                                               :{NUM}{NBSP}{P minúta minút minút}
 
+STR_UNITS_PERIODS                                               :{NUM}{NBSP}{P obdobie obdobia období}
 
 # Common window strings
 STR_LIST_FILTER_TITLE                                           :{BLACK}Filter:
@@ -971,8 +976,13 @@ STR_EXTRA_VIEW_MOVE_MAIN_TO_VIEW_TT                             :{BLACK}Nastavi�
 STR_GAME_OPTIONS_CAPTION                                        :{WHITE}Možnosti hry
 
 STR_GAME_OPTIONS_TAB_GENERAL                                    :Všeobecné
+STR_GAME_OPTIONS_TAB_GENERAL_TT                                 :{BLACK}Vyberte všeobecné nastavenia
 STR_GAME_OPTIONS_TAB_GRAPHICS                                   :Grafika
+STR_GAME_OPTIONS_TAB_GRAPHICS_TT                                :{BLACK}Vyberte nastavenia grafiky
 STR_GAME_OPTIONS_TAB_SOUND                                      :Zvuk
+STR_GAME_OPTIONS_TAB_SOUND_TT                                   :{BLACK}Vyberte nastavenia zvuku a hudby
+STR_GAME_OPTIONS_TAB_SOCIAL                                     :Sociálne
+STR_GAME_OPTIONS_TAB_SOCIAL_TT                                  :{BLACK}Vyberte nastavenia sociálnej integrácie
 
 STR_GAME_OPTIONS_VOLUME                                         :Hlasitosť
 STR_GAME_OPTIONS_SFX_VOLUME                                     :Zvukové efekty
@@ -1102,8 +1112,15 @@ STR_GAME_OPTIONS_BASE_MUSIC                                     :{BLACK}Základn
 STR_GAME_OPTIONS_BASE_MUSIC_TOOLTIP                             :{BLACK}Výber sady hudby, ktorá má byť použitá
 STR_GAME_OPTIONS_BASE_MUSIC_DESCRIPTION_TOOLTIP                 :{BLACK}Dodatočné informácie o základnej sade hudby
 
+STR_GAME_OPTIONS_SOCIAL_PLUGINS_NONE                            :{LTBLUE}(žiadne nainštalované doplnky na integráciu so sociálnymi platformami)
 
+STR_GAME_OPTIONS_SOCIAL_PLUGIN_PLATFORM                         :Platforma:
+STR_GAME_OPTIONS_SOCIAL_PLUGIN_STATE                            :{BLACK}Stav pluginu:
 
+STR_GAME_OPTIONS_SOCIAL_PLUGIN_STATE_FAILED                     :{RED}Nepodarilo sa inicializovať
+STR_GAME_OPTIONS_SOCIAL_PLUGIN_STATE_PLATFORM_NOT_RUNNING       :{ORANGE}{STRING} nebeží
+STR_GAME_OPTIONS_SOCIAL_PLUGIN_STATE_DUPLICATE                  :{RED}Duplicitný doplnok
+STR_GAME_OPTIONS_SOCIAL_PLUGIN_STATE_INVALID_SIGNATURE          :{RED}Neplatný podpis
 
 
 STR_ERROR_RESOLUTION_LIST_FAILED                                :{WHITE}Nepodarilo sa načítať zoznam podporovaných rozlíšení
@@ -1391,9 +1408,11 @@ STR_CONFIG_SETTING_SIGNALSIDE_RIGHT                             :Vpravo
 
 ###length 2
 STR_CONFIG_SETTING_SHOWFINANCES                                 :Zobraziť rozpočet na konci roku: {STRING}
+STR_CONFIG_SETTING_SHOWFINANCES_PERIOD                          :Zobraziť rozpočet na konci obdobia: {STRING}
 
 ###length 2
 STR_CONFIG_SETTING_SHOWFINANCES_HELPTEXT                        :Ak zapnuté, okno s financiami sa ukáže na konci každého roku a umožňuje tak rýchly náhľad na stav financií spoločnosti.
+STR_CONFIG_SETTING_SHOWFINANCES_HELPTEXT_PERIOD                 :Ak zapnuté, okno s financiami sa ukáže na konci každého obdobia a umožňuje tak rýchly náhľad na stav financií spoločnosti.
 
 STR_CONFIG_SETTING_NONSTOP_BY_DEFAULT                           :Nové príkazy sú štandardne 'nonstop': {STRING}
 STR_CONFIG_SETTING_NONSTOP_BY_DEFAULT_HELPTEXT                  :Normálne, vlak vždy zastaví v každej stanici cez ktorú prechádza. Povolením tohoto nastavenia, vlak bude pokračovať cez všetky stanice ktoré má v ceste až do svojej cieľovej stanice. Uvedomte si to, že toto nastavenie definuje "pôvodné" nastavenie LEN pre nové trasy. Samostatne zadávané cesty môžu byť nastavené aj inak.
@@ -1799,6 +1818,8 @@ STR_CONFIG_SETTING_SERVINT_DISABLED                             :vypnuté
 STR_CONFIG_SETTING_NOSERVICE                                    :Vypnúť servisy, ak sú vypnuté poruchy: {STRING}
 STR_CONFIG_SETTING_NOSERVICE_HELPTEXT                           :Ak je zapnuté, vozidlá nebudú servisované ak sú vypnuté poruchy.
 
+STR_CONFIG_SETTING_STATION_LENGTH_LOADING_PENALTY               :Pokuta za rýchlosť nakládky pre vlaky, ktoré sú dlhšie ako stanica: {STRING}
+STR_CONFIG_SETTING_STATION_LENGTH_LOADING_PENALTY_HELPTEXT      :Keď je táto možnosť povolená, vlaky, ktoré sú pre stanicu príliš dlhé, nakladajú pomalšie ako vlak, ktorý sa do stanice zmestí. Toto nastavenie neovplyvňuje hľadanie cesty.
 
 STR_CONFIG_SETTING_WAGONSPEEDLIMITS                             :Obmedzenie rýchlosti pre vagóny: {STRING}
 STR_CONFIG_SETTING_WAGONSPEEDLIMITS_HELPTEXT                    :Ak je zapnuté, použijú sa tiež rýchlostné obmedzenia pre vagóny na obmedzenie celkovej rýchlosti vlakov.
@@ -2303,6 +2324,9 @@ STR_NETWORK_SERVER_LIST_MAP_SIZE_CAPTION                        :{BLACK}Veľkos�
 STR_NETWORK_SERVER_LIST_MAP_SIZE_CAPTION_TOOLTIP                :{BLACK}Veľkosť mapy v hre{}Klikni pre triedenie podľa rozlohy
 STR_NETWORK_SERVER_LIST_DATE_CAPTION                            :{BLACK}Dátum
 STR_NETWORK_SERVER_LIST_DATE_CAPTION_TOOLTIP                    :{BLACK}Aktuálny dátum
+STR_NETWORK_SERVER_LIST_PLAY_TIME_SHORT                         :{BLACK}{NUM}h {NUM}m
+STR_NETWORK_SERVER_LIST_PLAY_TIME_CAPTION                       :{BLACK}Hrací čas
+STR_NETWORK_SERVER_LIST_PLAY_TIME_CAPTION_TOOLTIP               :{BLACK}Hrací čas, keď hra{}nebola pozastavená
 STR_NETWORK_SERVER_LIST_INFO_ICONS_TOOLTIP                      :{BLACK}Jazyk, verzia serveru, atd.
 
 STR_NETWORK_SERVER_LIST_CLICK_GAME_TO_SELECT                    :{BLACK}Vyberte hru zo zoznamu
@@ -2318,6 +2342,7 @@ STR_NETWORK_SERVER_LIST_SERVER_ADDRESS                          :{SILVER}Adresa 
 STR_NETWORK_SERVER_LIST_INVITE_CODE                             :{SILVER}Kód pozvánky: {WHITE}{STRING}
 STR_NETWORK_SERVER_LIST_START_DATE                              :{SILVER}Počiatočný dátum: {WHITE}{DATE_SHORT}
 STR_NETWORK_SERVER_LIST_CURRENT_DATE                            :{SILVER}Aktuálny dátum: {WHITE}{DATE_SHORT}
+STR_NETWORK_SERVER_LIST_PLAY_TIME                               :{SILVER}Hrací čas: {WHITE}{NUM}h {NUM}m
 STR_NETWORK_SERVER_LIST_GAMESCRIPT                              :{SILVER}Herný skript: {WHITE}{STRING} (v{NUM})
 STR_NETWORK_SERVER_LIST_PASSWORD                                :{SILVER}Heslo:
 STR_NETWORK_SERVER_LIST_SERVER_OFFLINE                          :{SILVER}SERVER JE OFFLINE
@@ -2678,6 +2703,8 @@ STR_STATION_BUILD_COVERAGE_AREA_OFF_TOOLTIP                     :{BLACK}Nezvýra
 STR_STATION_BUILD_COVERAGE_AREA_ON_TOOLTIP                      :{BLACK}Zobraziť oblasť pokrytia stavanej plochy
 STR_STATION_BUILD_ACCEPTS_CARGO                                 :{BLACK}Prijíma: {GOLD}{CARGO_LIST}
 STR_STATION_BUILD_SUPPLIES_CARGO                                :{BLACK}Dodáva: {GOLD}{CARGO_LIST}
+STR_STATION_BUILD_INFRASTRUCTURE_COST_YEAR                      :{BLACK}Výdavky na údržbu: {GOLD}{CURRENCY_SHORT}/year
+STR_STATION_BUILD_INFRASTRUCTURE_COST_PERIOD                    :{BLACK}Výdavky na údržbu: {GOLD}{CURRENCY_SHORT}/period
 
 # Join station window
 STR_JOIN_STATION_CAPTION                                        :{WHITE}Spojiť stanicu
@@ -2988,7 +3015,6 @@ STR_LAND_AREA_INFORMATION_TRAM_OWNER                            :{BLACK}Vlastní
 STR_LAND_AREA_INFORMATION_RAIL_OWNER                            :{BLACK}Vlastník železnice: {LTBLUE}{STRING}
 STR_LAND_AREA_INFORMATION_LOCAL_AUTHORITY                       :{BLACK}Miestna správa: {LTBLUE}{STRING}
 STR_LAND_AREA_INFORMATION_LOCAL_AUTHORITY_NONE                  :Neznáme
-STR_LAND_AREA_INFORMATION_LANDINFO_COORDS                       :{BLACK}Súradnice: {LTBLUE}{NUM} x {NUM} x {NUM} ({STRING})
 STR_LAND_AREA_INFORMATION_BUILD_DATE                            :{BLACK}Postavené: {LTBLUE}{DATE_LONG}
 STR_LAND_AREA_INFORMATION_STATION_CLASS                         :{BLACK}Trieda stanice: {LTBLUE}{STRING}
 STR_LAND_AREA_INFORMATION_STATION_TYPE                          :{BLACK}Typ stanice: {LTBLUE}{STRING}
@@ -3907,7 +3933,9 @@ STR_GROUP_REMOVE_ALL_VEHICLES                                   :Odstrániť vš
 STR_GROUP_RENAME_CAPTION                                        :{BLACK}Premenovať skupinu
 
 STR_GROUP_PROFIT_THIS_YEAR                                      :Zisk v tomto roku:
+STR_GROUP_PROFIT_THIS_PERIOD                                    :Zisk za toto obdobie:
 STR_GROUP_PROFIT_LAST_YEAR                                      :Zisk v minulom roku:
+STR_GROUP_PROFIT_LAST_PERIOD                                    :Zisk za posledné obdobie:
 STR_GROUP_OCCUPANCY                                             :Súčasné využitie:
 STR_GROUP_OCCUPANCY_VALUE                                       :{NUM}%
 
@@ -4243,7 +4271,7 @@ STR_VEHICLE_STATUS_HEADING_FOR_STATION_VEL                      :{LTBLUE}Smeruje
 STR_VEHICLE_STATUS_NO_ORDERS_VEL                                :{LTBLUE}Bez určenia, {VELOCITY}
 STR_VEHICLE_STATUS_HEADING_FOR_WAYPOINT_VEL                     :{LTBLUE}Smeruje do {WAYPOINT}, {VELOCITY}
 STR_VEHICLE_STATUS_HEADING_FOR_DEPOT_VEL                        :{ORANGE}Smeruje do {DEPOT}, {VELOCITY}
-STR_VEHICLE_STATUS_HEADING_FOR_DEPOT_SERVICE_VEL                :{LTBLUE}Servis v {DEPOT}, {VELOCITY}
+STR_VEHICLE_STATUS_HEADING_FOR_DEPOT_SERVICE_VEL                :{LTBLUE}{1:VELOCITY} - Servis v {0:DEPOT}
 
 STR_VEHICLE_STATUS_CANNOT_REACH_STATION_VEL                     :{LTBLUE}Nedokáže sa dostať do {STATION}, {VELOCITY}
 STR_VEHICLE_STATUS_CANNOT_REACH_WAYPOINT_VEL                    :{LTBLUE}Nedokáže sa dostať do {WAYPOINT}, {VELOCITY}
