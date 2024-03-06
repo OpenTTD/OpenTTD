@@ -199,7 +199,7 @@ void SQFuncState::Dump(SQFunctionProto *func)
 			}
 		}
 		else if(inst.op==_OP_LOADFLOAT) {
-			printf("[%03d] %15s %d %f %d %d\n",n,g_InstrDesc[inst.op].name,inst._arg0,*((SQFloat*)&inst._arg1),inst._arg2,inst._arg3);
+			printf("[%03d] %15s %d %f %d %d\n",n,g_InstrDesc[inst.op].name,inst._arg0,std::bit_cast<SQFloat>(inst._arg1),inst._arg2,inst._arg3);
 		}
 		else if(inst.op==_OP_ARITH){
 			printf("[%03d] %15s %d %d %d %c\n",n,g_InstrDesc[inst.op].name,inst._arg0,inst._arg1,inst._arg2,inst._arg3);
@@ -242,19 +242,20 @@ SQInteger SQFuncState::GetConstant(const SQObject &cons)
 
 void SQFuncState::SetIntructionParams(SQInteger pos,SQInteger arg0,SQInteger arg1,SQInteger arg2,SQInteger arg3)
 {
-	_instructions[pos]._arg0=(unsigned char)*((SQUnsignedInteger *)&arg0);
-	_instructions[pos]._arg1=(SQInt32)*((SQUnsignedInteger *)&arg1);
-	_instructions[pos]._arg2=(unsigned char)*((SQUnsignedInteger *)&arg2);
-	_instructions[pos]._arg3=(unsigned char)*((SQUnsignedInteger *)&arg3);
+	_instructions[pos]._arg0 = (unsigned char)std::bit_cast<SQUnsignedInteger>(arg0);
+	_instructions[pos]._arg1 = (SQInt32)std::bit_cast<SQUnsignedInteger>(arg1);
+	_instructions[pos]._arg2 = (unsigned char)std::bit_cast<SQUnsignedInteger>(arg2);
+	_instructions[pos]._arg3 = (unsigned char)std::bit_cast<SQUnsignedInteger>(arg3);
 }
 
 void SQFuncState::SetIntructionParam(SQInteger pos,SQInteger arg,SQInteger val)
 {
 	switch(arg){
-		case 0:_instructions[pos]._arg0=(unsigned char)*((SQUnsignedInteger *)&val);break;
-		case 1:case 4:_instructions[pos]._arg1=(SQInt32)*((SQUnsignedInteger *)&val);break;
-		case 2:_instructions[pos]._arg2=(unsigned char)*((SQUnsignedInteger *)&val);break;
-		case 3:_instructions[pos]._arg3=(unsigned char)*((SQUnsignedInteger *)&val);break;
+		case 0: _instructions[pos]._arg0 = (unsigned char)std::bit_cast<SQUnsignedInteger>(val); break;
+		case 1:
+		case 4: _instructions[pos]._arg1 = (SQInt32)std::bit_cast<SQUnsignedInteger>(val); break;
+		case 2: _instructions[pos]._arg2 = (unsigned char)std::bit_cast<SQUnsignedInteger>(val); break;
+		case 3: _instructions[pos]._arg3 = (unsigned char)std::bit_cast<SQUnsignedInteger>(val); break;
 	};
 }
 
