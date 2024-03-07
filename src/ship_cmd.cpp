@@ -13,7 +13,7 @@
 #include "timetable.h"
 #include "news_func.h"
 #include "company_func.h"
-#include "depot_map.h"
+#include "depot_base.h"
 #include "station_base.h"
 #include "newgrf_engine.h"
 #include "pathfinder/yapf/yapf.h"
@@ -142,11 +142,11 @@ void Ship::GetImage(Direction direction, EngineImageType image_type, VehicleSpri
 	result->Set(_ship_sprites[spritenum] + direction);
 }
 
-static FindDepotData FindClosestShipDepot(const Ship *v, int max_distance)
+static FindDepotData FindClosestShipDepot(const Ship *v, int max_distance, bool may_reverse = false)
 {
-	if (IsShipDepotTile(v->tile) && GetShipDepotPart(v->tile) == DEPOT_PART_NORTH && IsTileOwner(v->tile, v->owner)) return FindDepotData(v->tile, 0);
+	if (IsShipDepotTile(v->tile) && IsTileOwner(v->tile, v->owner)) return FindDepotData(Depot::GetByTile(v->tile)->xy, 0);
 
-	return YapfShipFindNearestDepot(v, max_distance);
+	return YapfShipFindNearestDepot(v, max_distance, may_reverse);
 }
 
 static void CheckIfShipNeedsService(Vehicle *v)
@@ -904,9 +904,9 @@ CommandCost CmdBuildShip(DoCommandFlag flags, TileIndex tile, const Engine *e, V
 	return CommandCost();
 }
 
-ClosestDepot Ship::FindClosestDepot()
+ClosestDepot Ship::FindClosestDepot(bool may_reverse)
 {
-	const FindDepotData sfdd = FindClosestShipDepot(this, 0);
+	const FindDepotData sfdd = FindClosestShipDepot(this, 0, may_reverse);
 	if (sfdd.best_length == UINT_MAX) return ClosestDepot();
 
 	return ClosestDepot(sfdd.tile, GetDepotIndex(sfdd.tile), sfdd.reverse);
