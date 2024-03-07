@@ -276,6 +276,8 @@ STR_COLOUR_SECONDARY_WHITE                                      :Biela
 STR_UNITS_VELOCITY_IMPERIAL                                     :{DECIMAL} mph
 STR_UNITS_VELOCITY_METRIC                                       :{DECIMAL} km/h
 STR_UNITS_VELOCITY_SI                                           :{DECIMAL} m/s
+STR_UNITS_VELOCITY_GAMEUNITS_DAY                                :{DECIMAL}{NBSP}políčok/deň
+STR_UNITS_VELOCITY_GAMEUNITS_SEC                                :{DECIMAL}{NBSP}políčok/sek
 STR_UNITS_VELOCITY_KNOTS                                        :{DECIMAL}{NBSP}uzlov
 
 STR_UNITS_POWER_IMPERIAL                                        :{DECIMAL}hp
@@ -946,6 +948,8 @@ STR_NEWS_VEHICLE_IS_GETTING_VERY_OLD                            :{WHITE}{VEHICLE
 STR_NEWS_VEHICLE_IS_GETTING_VERY_OLD_AND                        :{WHITE}{VEHICLE} je veľmi zastaralé a urgentne potrebuje výmenu
 STR_NEWS_TRAIN_IS_STUCK                                         :{WHITE}{VEHICLE} nemôže nájsť cestu k pokračovaniu
 STR_NEWS_VEHICLE_IS_LOST                                        :{WHITE}{VEHICLE} sa stratil{G 0 "" "a" "o"}
+STR_NEWS_VEHICLE_UNPROFITABLE_YEAR                              :{WHITE}{VEHICLE} zisk za posledný rok bol {CURRENCY_LONG}
+STR_NEWS_VEHICLE_UNPROFITABLE_PERIOD                            :{WHITE}{VEHICLE} zisk za posledné obdobie bol {CURRENCY_LONG}
 STR_NEWS_AIRCRAFT_DEST_TOO_FAR                                  :{WHITE}{VEHICLE} sa nemôže dostať do ďalšej stanice, pretože tá je príliš ďaleko
 
 STR_NEWS_ORDER_REFIT_FAILED                                     :{WHITE}Príkaz zmeňiť tovar po zlyhaní zastavil {VEHICLE}
@@ -1083,6 +1087,10 @@ STR_GAME_OPTIONS_GUI_SCALE_AUTO_TOOLTIP                         :{BLACK}Začiark
 STR_GAME_OPTIONS_GUI_SCALE_BEVELS                               :{BLACK}Mierkové úkosy
 STR_GAME_OPTIONS_GUI_SCALE_BEVELS_TOOLTIP                       :{BLACK}Začiarknutím tohto políčka zmeníte úkosy podľa veľkosti rozhrania
 
+STR_GAME_OPTIONS_GUI_FONT_SPRITE                                :{BLACK}Použite tradičné sprite písmo
+STR_GAME_OPTIONS_GUI_FONT_SPRITE_TOOLTIP                        :{BLACK}Začiarknite toto políčko, ak uprednostňujete použitie tradičného písma sprite s pevnou veľkosťou.
+STR_GAME_OPTIONS_GUI_FONT_AA                                    :{BLACK}Vyhladzovacie písma
+STR_GAME_OPTIONS_GUI_FONT_AA_TOOLTIP                            :{BLACK}Začiarknite toto políčko, ak chcete vyhladiť písma s meniteľnou veľkosťou.
 
 STR_GAME_OPTIONS_GUI_SCALE_1X                                   :1x
 STR_GAME_OPTIONS_GUI_SCALE_2X                                   :2x
@@ -1122,6 +1130,7 @@ STR_GAME_OPTIONS_SOCIAL_PLUGIN_STATE_PLATFORM_NOT_RUNNING       :{ORANGE}{STRING
 STR_GAME_OPTIONS_SOCIAL_PLUGIN_STATE_DUPLICATE                  :{RED}Duplicitný doplnok
 STR_GAME_OPTIONS_SOCIAL_PLUGIN_STATE_INVALID_SIGNATURE          :{RED}Neplatný podpis
 
+STR_BASESET_STATUS                                              :{STRING} {RED}({NUM} chýbajúc{P i e e}/poškoden{P ý é é} súbor{P "" y y})
 
 STR_ERROR_RESOLUTION_LIST_FAILED                                :{WHITE}Nepodarilo sa načítať zoznam podporovaných rozlíšení
 STR_ERROR_FULLSCREEN_FAILED                                     :{WHITE}Zobrazovanie na celú obrazovku zlyhalo
@@ -1435,6 +1444,7 @@ STR_CONFIG_SETTING_AUTOSCROLL_EVERY_VIEWPORT                    :Každý pohľad
 STR_CONFIG_SETTING_BRIBE                                        :Umožniť podplácanie miestnej správy: {STRING}
 ###length 2
 STR_CONFIG_SETTING_BRIBE_HELPTEXT                               :Povolí podplácanie miestnej samosprávy. Ak podplácanie zistí inšpektor, spoločnosť nebude môcť podplácať v danom meste počas nasledujúcich 6 mesiacov.
+STR_CONFIG_SETTING_BRIBE_HELPTEXT_MINUTES                       :Umožnite firmám pokúsiť sa podplatiť miestny mestský úrad. Ak si úplatok všimne kontrolór, firma nebude môcť v meste konať šesť minút
 
 STR_CONFIG_SETTING_ALLOW_EXCLUSIVE                              :Povoliť zakúpenie exkluzívnych dopravných práv: {STRING}
 ###length 2
@@ -1685,6 +1695,9 @@ STR_CONFIG_SETTING_RIGHT_MOUSE_BTN_EMU_OFF                      :Žiadna
 STR_CONFIG_SETTING_RIGHT_MOUSE_WND_CLOSE                        :Zatvoriť okno kliknutím pravým tlačidlom: {STRING}
 STR_CONFIG_SETTING_RIGHT_MOUSE_WND_CLOSE_HELPTEXT               :Zatvorí okno kliknutím pravým tlačidlom do vnútra. Prestane ukazovať nápovedu pri kliknutí pravým tlačidlom!
 ###length 3
+STR_CONFIG_SETTING_RIGHT_MOUSE_WND_CLOSE_NO                     :Nie
+STR_CONFIG_SETTING_RIGHT_MOUSE_WND_CLOSE_YES                    :Áno
+STR_CONFIG_SETTING_RIGHT_MOUSE_WND_CLOSE_YES_EXCEPT_STICKY      :Áno, okrem zamknutých
 
 STR_CONFIG_SETTING_DATE_FORMAT_IN_SAVE_NAMES                    :Použiť {STRING} formát dátumu v názve uloženej hry
 STR_CONFIG_SETTING_DATE_FORMAT_IN_SAVE_NAMES_HELPTEXT           :Formát dátumu v názvoch uložených hier
@@ -2138,6 +2151,7 @@ STR_CONFIG_ERROR_SPRITECACHE_TOO_BIG                            :{WHITE}Pridelen
 # Video initalization errors
 STR_VIDEO_DRIVER_ERROR                                          :{WHITE}Chyba v nastavení videa...
 STR_VIDEO_DRIVER_ERROR_NO_HARDWARE_ACCELERATION                 :{WHITE}... nenašlo sa kompatibilné GPU. Hardvérové zrýchlenie vypnuté
+STR_VIDEO_DRIVER_ERROR_HARDWARE_ACCELERATION_CRASH              :{WHITE}... Hra spadla kvôli ovládaču GPU. Hardvérová akcelerácia je vypnutá
 
 # Intro window
 STR_INTRO_CAPTION                                               :{WHITE}OpenTTD {REV}
@@ -2194,6 +2208,17 @@ STR_ABANDON_GAME_QUERY                                          :{YELLOW}Ste si 
 STR_ABANDON_SCENARIO_QUERY                                      :{YELLOW}Ste si istý, že chcete opustiť tento scenár?
 
 # Help window
+STR_HELP_WINDOW_CAPTION                                         :{WHITE}Nápoveda a manuály
+STR_HELP_WINDOW_WEBSITES                                        :{BLACK}Webstránky
+STR_HELP_WINDOW_DOCUMENTS                                       :{BLACK}Dokumenty
+STR_HELP_WINDOW_README                                          :{BLACK}Čítajma
+STR_HELP_WINDOW_CHANGELOG                                       :{BLACK}Log zmien
+STR_HELP_WINDOW_KNOWN_BUGS                                      :{BLACK}Známe chyby
+STR_HELP_WINDOW_LICENSE                                         :{BLACK}Licencia
+STR_HELP_WINDOW_MAIN_WEBSITE                                    :{BLACK}OpenTTD
+STR_HELP_WINDOW_MANUAL_WIKI                                     :{BLACK}Manuál / Wiki
+STR_HELP_WINDOW_BUGTRACKER                                      :{BLACK}Nahlásiť chybu
+STR_HELP_WINDOW_COMMUNITY                                       :{BLACK}Komunita
 
 # Cheat window
 STR_CHEATS                                                      :{WHITE}Cheaty
@@ -3225,8 +3250,10 @@ STR_MAPGEN_NUMBER_OF_TOWNS                                      :{BLACK}Počet m
 STR_MAPGEN_TOWN_NAME_LABEL                                      :{BLACK}Názvy miest:
 STR_MAPGEN_TOWN_NAME_DROPDOWN_TOOLTIP                           :{BLACK}Výber štýlu názvov miest
 STR_MAPGEN_DATE                                                 :{BLACK}Rok:
+STR_MAPGEN_DATE_TOOLTIP                                         :{BLACK}Vyberte dátum začiatku
 STR_MAPGEN_NUMBER_OF_INDUSTRIES                                 :{BLACK}Počet priemyslu:
 STR_MAPGEN_HEIGHTMAP_HEIGHT                                     :{BLACK}Najvyšší vrchol:
+STR_MAPGEN_HEIGHTMAP_HEIGHT_TOOLTIP                             :{BLACK}Vyberte najvyšší vrchol, ktorý sa hra pokúsi vytvoriť, meraný v nadmorskej výške
 STR_MAPGEN_HEIGHTMAP_HEIGHT_UP                                  :{BLACK}Zvýšiť maximálnu výšku najvyššieho vrchola na mape o jeden
 STR_MAPGEN_HEIGHTMAP_HEIGHT_DOWN                                :{BLACK}Znížiť maximálnu výšku najvyššieho vrchola na mape o jeden
 STR_MAPGEN_SNOW_COVERAGE                                        :{BLACK}Pokrytie snehom:
@@ -3243,6 +3270,7 @@ STR_MAPGEN_QUANTITY_OF_RIVERS                                   :{BLACK}Rieky:
 STR_MAPGEN_SMOOTHNESS                                           :{BLACK}Členitosť:
 STR_MAPGEN_VARIETY                                              :{BLACK}Rozmanitosť distribúcie:
 STR_MAPGEN_GENERATE                                             :{WHITE}Generovať
+STR_MAPGEN_GENERATE_TOOLTIP                                     :{BLACK}Vytvorte si svet a hrajte OpenTTD!
 STR_MAPGEN_NEWGRF_SETTINGS                                      :{BLACK}Nastavenia NewGRF
 STR_MAPGEN_NEWGRF_SETTINGS_TOOLTIP                              :{BLACK}Zobraziť nastavenia NewGRF
 STR_MAPGEN_AI_SETTINGS                                          :{BLACK}Nastavenia AI
@@ -3275,6 +3303,7 @@ STR_MAPGEN_TOWN_NAME_CATALAN                                    :Katalánske
 
 # Strings for map borders at game generation
 STR_MAPGEN_BORDER_TYPE                                          :{BLACK}Okraje mapy:
+STR_MAPGEN_BORDER_TYPE_TOOLTIP                                  :{BLACK}Vyberte si hranice herného sveta
 STR_MAPGEN_NORTHWEST                                            :{BLACK}Severo-západ
 STR_MAPGEN_NORTHEAST                                            :{BLACK}Severo-východ
 STR_MAPGEN_SOUTHEAST                                            :{BLACK}Juho-východ
@@ -3287,7 +3316,9 @@ STR_MAPGEN_BORDER_MANUAL                                        :{BLACK}Manuáln
 
 STR_MAPGEN_HEIGHTMAP_ROTATION                                   :{BLACK}Orientácia výškovej mapy:
 STR_MAPGEN_HEIGHTMAP_NAME                                       :{BLACK}Názov výškovej mapy:
+STR_MAPGEN_HEIGHTMAP_NAME_TOOLTIP                               :{BLACK}Názov obrazového súboru s výškovou mapou
 STR_MAPGEN_HEIGHTMAP_SIZE_LABEL                                 :{BLACK}Veľkosť:
+STR_MAPGEN_HEIGHTMAP_SIZE_LABEL_TOOLTIP                         :{BLACK}Veľkosť zdrojového obrázka výškovej mapy. Aby ste dosiahli čo najlepšie výsledky, každý okraj by mal zodpovedať dostupnej dĺžke okraja mapy v OpenTTD, ako napríklad 256, 512, 1024 atď.
 STR_MAPGEN_HEIGHTMAP_SIZE                                       :{ORANGE}{NUM} x {NUM}
 
 STR_MAPGEN_TERRAIN_TYPE_QUERY_CAPT                              :{WHITE}Cieľová výška vrcholu
@@ -3655,6 +3686,7 @@ STR_STATION_LIST_STATION                                        :{YELLOW}{STATIO
 STR_STATION_LIST_WAYPOINT                                       :{YELLOW}{WAYPOINT}
 STR_STATION_LIST_NONE                                           :{YELLOW}- Žiadne -
 STR_STATION_LIST_SELECT_ALL_FACILITIES                          :{BLACK}Označiť všetky možnosti
+STR_STATION_LIST_CARGO_FILTER_ONLY_NO_RATING                    :Iba hodnotenie bez nákladu
 
 # Station view window
 STR_STATION_VIEW_CAPTION                                        :{WHITE}{STATION} {STATION_FEATURES}
@@ -4318,6 +4350,8 @@ STR_VEHICLE_INFO_CAPACITY_CAPACITY                              :{BLACK}Kapacita
 
 STR_VEHICLE_INFO_FEEDER_CARGO_VALUE                             :{BLACK}Transfer kredity: {LTBLUE}{CURRENCY_LONG}
 
+STR_VEHICLE_DETAILS_DECREASE_SERVICING_INTERVAL_TOOLTIP_DAYS    :{BLACK}Zníži servisný interval o 10 dní. Ctrl+klik skráti servisný interval o 5 dní
+STR_VEHICLE_DETAILS_DECREASE_SERVICING_INTERVAL_TOOLTIP_MINUTES :{BLACK}Zníži servisný interval o 5 minút. Ctrl+klik skráti servisný interval o 1 minútu
 
 STR_SERVICE_INTERVAL_DROPDOWN_TOOLTIP                           :{BLACK}Zmeniť typ servisného intervalu
 STR_VEHICLE_DETAILS_DEFAULT                                     :Štandardné

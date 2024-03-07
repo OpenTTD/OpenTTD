@@ -783,6 +783,8 @@ STR_PERFORMANCE_DETAIL_LOAN                                     :{BLACK}Кред
 STR_PERFORMANCE_DETAIL_TOTAL                                    :{BLACK}Підсумок:
 ###next-name-looks-similar
 
+STR_PERFORMANCE_DETAIL_VEHICLES_TOOLTIP_YEARS                   :{BLACK}Кількість транспортних засобів, які були прибутковими минулого року (дорожній транспорт, потяги, кораблі, літаки).
+STR_PERFORMANCE_DETAIL_VEHICLES_TOOLTIP_PERIODS                 :{BLACK}Кількість транспортних засобів, які були прибутковими минулого періоду (дорожній транспорт, потяги, кораблі, літаки).
 STR_PERFORMANCE_DETAIL_STATIONS_TOOLTIP                         :{BLACK}Кількість нещодавно обслуговуваних частин станцій. Кожна частина станції (залізнична станція, автобусна зупинка, аеропорт) враховується окремо, навіть якщо вони об'єднані в одну станцію
 STR_PERFORMANCE_DETAIL_MIN_INCOME_TOOLTIP                       :{BLACK}Найменший квартальний прибуток за останні 12 кварталів
 STR_PERFORMANCE_DETAIL_MAX_INCOME_TOOLTIP                       :{BLACK}Найбільший квартальний прибуток за останні 12 кварталів
@@ -1177,6 +1179,7 @@ STR_GAME_OPTIONS_GUI_SCALE_5X                                   :5x
 
 STR_GAME_OPTIONS_PARTICIPATE_SURVEY_FRAME                       :{BLACK}Автоматизований збір даних
 STR_GAME_OPTIONS_PARTICIPATE_SURVEY                             :{BLACK}Участь в автоматизованому зборі даних
+STR_GAME_OPTIONS_PARTICIPATE_SURVEY_PREVIEW                     :{BLACK}Попередній перегляд геологічної розвідки
 
 STR_GAME_OPTIONS_GRAPHICS                                       :{BLACK}Графіка
 
@@ -2310,12 +2313,14 @@ STR_ABANDON_SCENARIO_QUERY                                      :{YELLOW}Ви д
 
 # Help window
 STR_HELP_WINDOW_CAPTION                                         :Допомога й довідка
+STR_HELP_WINDOW_WEBSITES                                        :{BLACK}Вебсайти
 STR_HELP_WINDOW_DOCUMENTS                                       :{BLACK}Документація
 STR_HELP_WINDOW_README                                          :{BLACK}Інструкція
 STR_HELP_WINDOW_CHANGELOG                                       :{BLACK}Зміни
 STR_HELP_WINDOW_KNOWN_BUGS                                      :{BLACK}Відомі збої
 STR_HELP_WINDOW_LICENSE                                         :{BLACK}Ліцензія
 STR_HELP_WINDOW_MAIN_WEBSITE                                    :{BLACK}OpenTTD
+STR_HELP_WINDOW_MANUAL_WIKI                                     :{BLACK}Довідка / Вікі
 STR_HELP_WINDOW_BUGTRACKER                                      :{BLACK}Повідомити про помилку
 STR_HELP_WINDOW_COMMUNITY                                       :{BLACK}Спільнота
 
@@ -2734,12 +2739,12 @@ STR_CONTENT_SELECT_UPDATES_CAPTION                              :{BLACK}Вибр
 STR_CONTENT_SELECT_UPDATES_CAPTION_TOOLTIP                      :{BLACK}Позначити весь вміст, що є оновленням існуючого, для завантаження
 STR_CONTENT_UNSELECT_ALL_CAPTION                                :{BLACK}Зняти позначки
 STR_CONTENT_UNSELECT_ALL_CAPTION_TOOLTIP                        :{BLACK}Не завантажувати нічого
-STR_CONTENT_SEARCH_EXTERNAL                                     :{BLACK}Шукати на сторонніх веб-сайтах
-STR_CONTENT_SEARCH_EXTERNAL_TOOLTIP                             :{BLACK}Шукати додатки, недоступні на серверах OpenTTD на сторонніх веб-сайтах
+STR_CONTENT_SEARCH_EXTERNAL                                     :{BLACK}Шукати на сторонніх вебсайтах
+STR_CONTENT_SEARCH_EXTERNAL_TOOLTIP                             :{BLACK}Шукати додатки, недоступні на серверах OpenTTD на сторонніх вебсайтах
 STR_CONTENT_SEARCH_EXTERNAL_DISCLAIMER_CAPTION                  :{WHITE}Ви виходите з OpenTTD!
-STR_CONTENT_SEARCH_EXTERNAL_DISCLAIMER                          :{WHITE}Умови використання додатків з зовнішніх веб-сайтів можуть відрізнятися.{}Інструкції по встановленню даних додатків у OpenTTD шукайте на відповідних веб-сайтах.{}Продовжити?
+STR_CONTENT_SEARCH_EXTERNAL_DISCLAIMER                          :{WHITE}Умови використання додатків з зовнішніх вебсайтів можуть відрізнятися.{}Інструкції по встановленню даних додатків у OpenTTD шукайте на відповідних вебсайтах.{}Продовжити?
 STR_CONTENT_FILTER_TITLE                                        :{BLACK}Фільтр за назвою:
-STR_CONTENT_OPEN_URL                                            :{BLACK}Відвідати вебсайт
+STR_CONTENT_OPEN_URL                                            :{BLACK}Вебсайт
 STR_CONTENT_OPEN_URL_TOOLTIP                                    :{BLACK}Відвітати вебсайт цього контенту
 STR_CONTENT_DOWNLOAD_CAPTION                                    :{BLACK}Завантажити
 STR_CONTENT_DOWNLOAD_CAPTION_TOOLTIP                            :{BLACK}Почати завантаження обраного вмісту
@@ -3154,7 +3159,9 @@ STR_LAND_AREA_INFORMATION_TRAM_OWNER                            :{BLACK}Влас
 STR_LAND_AREA_INFORMATION_RAIL_OWNER                            :{BLACK}Власник залізниці: {LTBLUE}{STRING}
 STR_LAND_AREA_INFORMATION_LOCAL_AUTHORITY                       :{BLACK}Місцева влада: {LTBLUE}{STRING}
 STR_LAND_AREA_INFORMATION_LOCAL_AUTHORITY_NONE                  :Немає
-STR_LAND_AREA_INFORMATION_BUILD_DATE                            :{BLACK}Рік випуску: {LTBLUE}{DATE_LONG}
+STR_LAND_AREA_INFORMATION_LANDINFO_COORDS                       :{BLACK}Координати: {LTBLUE}{NUM} x {NUM} x {NUM}
+STR_LAND_AREA_INFORMATION_LANDINFO_INDEX                        :{BLACK}Координати клітинки: {LTBLUE}{NUM} ({HEX})
+STR_LAND_AREA_INFORMATION_BUILD_DATE                            :{BLACK}Рік випуску чи оновлення: {LTBLUE}{DATE_LONG}
 STR_LAND_AREA_INFORMATION_STATION_CLASS                         :{BLACK}Клас станції: {LTBLUE}{STRING}
 STR_LAND_AREA_INFORMATION_STATION_TYPE                          :{BLACK}Тип станції: {LTBLUE}{STRING}
 STR_LAND_AREA_INFORMATION_AIRPORT_CLASS                         :{BLACK}Клас аеропорта: {LTBLUE}{STRING}
@@ -3535,6 +3542,7 @@ STR_SAVE_PRESET_SAVE                                            :{BLACK}Збер
 STR_SAVE_PRESET_SAVE_TOOLTIP                                    :{BLACK}Зберегти шаблон для поточного обраного імені
 
 # NewGRF parameters window
+STR_BASEGRF_PARAMETERS_CAPTION                                  :{WHITE}Змінити параметри базового набору графіки
 STR_NEWGRF_PARAMETERS_CAPTION                                   :{WHITE}Змінити параметри NewGRF
 STR_NEWGRF_PARAMETERS_CLOSE                                     :{BLACK}Закрити
 STR_NEWGRF_PARAMETERS_RESET                                     :{BLACK}Очистити
@@ -3972,6 +3980,8 @@ STR_COMPANY_VIEW_INFRASTRUCTURE_BUTTON                          :{BLACK}Дета
 STR_COMPANY_VIEW_INFRASTRUCTURE_TOOLTIP                         :{BLACK}Переглянути детальну інформацію про інфраструктуру
 STR_COMPANY_VIEW_GIVE_MONEY_BUTTON                              :{BLACK}Дати грошей
 STR_COMPANY_VIEW_GIVE_MONEY_TOOLTIP                             :{BLACK}Дати грошей цій компанії
+STR_COMPANY_VIEW_HOSTILE_TAKEOVER_BUTTON                        :{BLACK}Агресивне захоплення
+STR_COMPANY_VIEW_HOSTILE_TAKEOVER_TOOLTIP                       :{BLACK}Агресивно захопити компанію
 
 STR_COMPANY_VIEW_NEW_FACE_BUTTON                                :{BLACK}Нове обличчя
 STR_COMPANY_VIEW_NEW_FACE_TOOLTIP                               :{BLACK}Вибрати нове обличчя керівника
@@ -4059,15 +4069,16 @@ STR_VEHICLE_LIST_AVAILABLE_AIRCRAFT                             :Доступн�
 STR_VEHICLE_LIST_MANAGE_LIST                                    :{BLACK}Редагувати список
 STR_VEHICLE_LIST_MANAGE_LIST_TOOLTIP                            :{BLACK}Дати завдання всьому транспорту зі списку
 STR_VEHICLE_LIST_REPLACE_VEHICLES                               :Оновлення
-STR_VEHICLE_LIST_SEND_FOR_SERVICING                             :Відправити на техогляд
+STR_VEHICLE_LIST_SEND_FOR_SERVICING                             :Направити на техогляд
+STR_VEHICLE_LIST_CREATE_GROUP                                   :Створити групу
 STR_VEHICLE_LIST_PROFIT_THIS_YEAR_LAST_YEAR                     :{TINY_FONT}{BLACK}Прибуток цього року: {CURRENCY_LONG} (торік: {CURRENCY_LONG})
 STR_VEHICLE_LIST_PROFIT_THIS_PERIOD_LAST_PERIOD                 :{TINY_FONT}{BLACK}Прибуток цього періо:ду: {CURRENCY_LONG} (минулого періоду: {CURRENCY_LONG})
 STR_VEHICLE_LIST_CARGO                                          :[{CARGO_LIST}]
 STR_VEHICLE_LIST_NAME_AND_CARGO                                 :{STRING} {STRING}
 
-STR_VEHICLE_LIST_SEND_TRAIN_TO_DEPOT                            :Відправити до депо
-STR_VEHICLE_LIST_SEND_ROAD_VEHICLE_TO_DEPOT                     :Відправити в гараж
-STR_VEHICLE_LIST_SEND_SHIP_TO_DEPOT                             :Відправити до депо
+STR_VEHICLE_LIST_SEND_TRAIN_TO_DEPOT                            :Направити до депо
+STR_VEHICLE_LIST_SEND_ROAD_VEHICLE_TO_DEPOT                     :Направити в гараж
+STR_VEHICLE_LIST_SEND_SHIP_TO_DEPOT                             :Направити до депо
 STR_VEHICLE_LIST_SEND_AIRCRAFT_TO_HANGAR                        :Направити в ангар
 
 STR_VEHICLE_LIST_MASS_STOP_LIST_TOOLTIP                         :{BLACK}Натисніть для зупинки всіх авто, що у списку
@@ -4107,7 +4118,9 @@ STR_GROUP_REMOVE_ALL_VEHICLES                                   :Позбути�
 STR_GROUP_RENAME_CAPTION                                        :{BLACK}Перейменувати групу
 
 STR_GROUP_PROFIT_THIS_YEAR                                      :Прибуток цього року:
+STR_GROUP_PROFIT_THIS_PERIOD                                    :Прибуток цього періоду:
 STR_GROUP_PROFIT_LAST_YEAR                                      :Прибуток минулого року:
+STR_GROUP_PROFIT_LAST_PERIOD                                    :Прибуток минулого періоду:
 STR_GROUP_OCCUPANCY                                             :Використання:
 STR_GROUP_OCCUPANCY_VALUE                                       :{NUM}%
 
@@ -4457,7 +4470,7 @@ STR_VEHICLE_STATUS_HEADING_FOR_STATION_VEL                      :{LTBLUE}Пря�
 STR_VEHICLE_STATUS_NO_ORDERS_VEL                                :{LTBLUE}Без завдань, {VELOCITY}
 STR_VEHICLE_STATUS_HEADING_FOR_WAYPOINT_VEL                     :{LTBLUE}Прямує до {WAYPOINT}, {VELOCITY}
 STR_VEHICLE_STATUS_HEADING_FOR_DEPOT_VEL                        :{ORANGE}Прямує до {DEPOT}, {VELOCITY}
-STR_VEHICLE_STATUS_HEADING_FOR_DEPOT_SERVICE_VEL                :{LTBLUE}Техогляд у {DEPOT}, {VELOCITY}
+STR_VEHICLE_STATUS_HEADING_FOR_DEPOT_SERVICE_VEL                :{LTBLUE}{1:VELOCITY} - Техогляд у {0:DEPOT}
 
 STR_VEHICLE_STATUS_CANNOT_REACH_STATION_VEL                     :{LTBLUE}Неможливо досягти {STATION}, {VELOCITY}
 STR_VEHICLE_STATUS_CANNOT_REACH_WAYPOINT_VEL                    :{LTBLUE}Неможливо досягти {WAYPOINT}, {VELOCITY}
@@ -4784,6 +4797,7 @@ STR_TIMETABLE_STATUS_START_IN_SECONDS.d                         :{BLACK}Цей �
 
 STR_TIMETABLE_START                                             :{BLACK}Початок розкладу
 
+STR_TIMETABLE_START_SECONDS_QUERY                               :Секунд до початку розкладу
 
 STR_TIMETABLE_CHANGE_TIME                                       :{BLACK}Змінити час
 STR_TIMETABLE_WAIT_TIME_TOOLTIP                                 :{BLACK}Змінити час, впродовж якого має виконуватись наказ. Ctrl+клац змінить час в усіх завданнях
@@ -5058,7 +5072,7 @@ STR_ERROR_TOO_CLOSE_TO_ANOTHER_TOWN                             :{WHITE}... на
 STR_ERROR_TOO_MANY_TOWNS                                        :{WHITE}... забагато міст
 STR_ERROR_NO_SPACE_FOR_TOWN                                     :{WHITE}... на карті немає вільного місця
 STR_ERROR_ROAD_WORKS_IN_PROGRESS                                :{WHITE}Дорога ремонтується
-STR_ERROR_TOWN_CAN_T_DELETE                                     :{WHITE}Не можна видалити це місто...{}Станція або депо, що відносяться до міста або знаходяться на землі у власності міста, не можуть бути видалені
+STR_ERROR_TOWN_CAN_T_DELETE                                     :{WHITE}Не можна видалити це місто...{}Станція або депо, що належать місту або перебувають на землі у власності міста, не можуть бути видалені
 STR_ERROR_STATUE_NO_SUITABLE_PLACE                              :{WHITE}... немає придатного місця для статуї в центрі цього міста
 
 # Industry related errors
@@ -5297,7 +5311,7 @@ STR_ERROR_CAN_T_STOP_START_SHIP                                 :{WHITE}Немо
 STR_ERROR_CAN_T_STOP_START_AIRCRAFT                             :{WHITE}Неможливо зупинити літак...
 
 ###length VEHICLE_TYPES
-STR_ERROR_CAN_T_SEND_TRAIN_TO_DEPOT                             :{WHITE}Неможливо відправити поїзд в депо...
+STR_ERROR_CAN_T_SEND_TRAIN_TO_DEPOT                             :{WHITE}Неможливо направити поїзд в депо...
 STR_ERROR_CAN_T_SEND_ROAD_VEHICLE_TO_DEPOT                      :{WHITE}Неможливо направити авто в депо...
 STR_ERROR_CAN_T_SEND_SHIP_TO_DEPOT                              :{WHITE}Неможливо направити корабель в депо...
 STR_ERROR_CAN_T_SEND_AIRCRAFT_TO_HANGAR                         :{WHITE}Неможливо направити літак до ангару...
@@ -5863,6 +5877,7 @@ STR_UNKNOWN_STATION                                             :невідом�
 STR_DEFAULT_SIGN_NAME                                           :Позначка
 STR_COMPANY_SOMEONE                                             :дехто
 
+STR_SAVEGAME_DURATION_REALTIME                                  :{NUM}год {NUM}хв
 STR_SAVEGAME_NAME_DEFAULT                                       :{COMPANY}, {STRING}
 STR_SAVEGAME_NAME_SPECTATOR                                     :Спостерігач, {1:STRING}
 

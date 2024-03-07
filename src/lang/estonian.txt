@@ -439,7 +439,7 @@ STR_GOTO_ORDER_VIEW_TOOLTIP                                     :{BLACK}Ava korr
 STR_TOOLBAR_TOOLTIP_PAUSE_GAME                                  :{BLACK}Mängu paus
 STR_TOOLBAR_TOOLTIP_FORWARD                                     :{BLACK}Kiirenda mängu
 STR_TOOLBAR_TOOLTIP_OPTIONS                                     :{BLACK}Seadistus
-STR_TOOLBAR_TOOLTIP_SAVE_GAME_ABANDON_GAME                      :{BLACK}Mängu salvestamine/jätkamine, mängust lahkumine, väljumine
+STR_TOOLBAR_TOOLTIP_SAVE_GAME_ABANDON_GAME                      :{BLACK}Mängu salvestamine/jätkamine, mängust lahkumine, programmist väljumine
 STR_TOOLBAR_TOOLTIP_DISPLAY_MAP                                 :{BLACK}Ava kaart, uus vaateaken, kaubavood või siltide loend
 STR_TOOLBAR_TOOLTIP_DISPLAY_TOWN_DIRECTORY                      :{BLACK}Ava asustuste register või asuta asustus
 STR_TOOLBAR_TOOLTIP_DISPLAY_SUBSIDIES                           :{BLACK}Ava toetuste loend
@@ -476,9 +476,9 @@ STR_SCENEDIT_TOOLBAR_TOOLTIP_MOVE_THE_STARTING_DATE_BACKWARD    :{BLACK}Alguse l
 STR_SCENEDIT_TOOLBAR_TOOLTIP_MOVE_THE_STARTING_DATE_FORWARD     :{BLACK}Alguse liigutamine 1 aasta võrra edasi
 STR_SCENEDIT_TOOLBAR_TOOLTIP_SET_DATE                           :{BLACK}Alustamise aasta valikuks klõpsi siin
 STR_SCENEDIT_TOOLBAR_TOOLTIP_DISPLAY_MAP_TOWN_DIRECTORY         :{BLACK}Ava kaart, asustuste register
-STR_SCENEDIT_TOOLBAR_LANDSCAPE_GENERATION                       :{BLACK}Maastiku tekitamine
+STR_SCENEDIT_TOOLBAR_LANDSCAPE_GENERATION                       :{BLACK}Ava maastikukujunduse menüü või genereeri uus maailm
 STR_SCENEDIT_TOOLBAR_TOWN_GENERATION                            :{BLACK}Asustuste tekitamine
-STR_SCENEDIT_TOOLBAR_INDUSTRY_GENERATION                        :{BLACK}Tööstuste tekitamine
+STR_SCENEDIT_TOOLBAR_INDUSTRY_GENERATION                        :{BLACK}Tööstuste ehitamine või tekitamine
 STR_SCENEDIT_TOOLBAR_ROAD_CONSTRUCTION                          :{BLACK}Maanteede ehitamine
 STR_SCENEDIT_TOOLBAR_TRAM_CONSTRUCTION                          :{BLACK}Trammiteede ehitamine
 STR_SCENEDIT_TOOLBAR_PLANT_TREES                                :{BLACK}Istuta puid. Ctrl valib piirkonna diagonaalselt. Shift valib ehitamise/hinna kuvamise režiimi vahel
@@ -4282,7 +4282,7 @@ STR_DEPOT_CLONE_AIRCRAFT_INFO_HANGAR_WINDOW                     :{BLACK}Ostetaks
 STR_DEPOT_TRAIN_LOCATION_TOOLTIP                                :{BLACK}Keskenda põhivaade rongidepoo kohale
 STR_DEPOT_ROAD_VEHICLE_LOCATION_TOOLTIP                         :{BLACK}Vii vaade garaažile. Ctrl+klõps avab garaažil uue vaate.
 STR_DEPOT_SHIP_LOCATION_TOOLTIP                                 :{BLACK}Vii pea vaade paadikuuri juurde
-STR_DEPOT_AIRCRAFT_LOCATION_TOOLTIP                             :{BLACK}Vii vaade angaarile
+STR_DEPOT_AIRCRAFT_LOCATION_TOOLTIP                             :{BLACK}Vii vaade angaarile. Ctrl+klõps avab angaari kohal uue vaateakna
 
 ###length VEHICLE_TYPES
 STR_DEPOT_VEHICLE_ORDER_LIST_TRAIN_TOOLTIP                      :{BLACK}Koosta nimekiri kõikidest rongidest, mille korralduste hulgas on see depoo
