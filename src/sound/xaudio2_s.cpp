@@ -205,7 +205,7 @@ const char *SoundDriver_XAudio2::Start(const StringList &parm)
 	wfex.nAvgBytesPerSec = wfex.nSamplesPerSec * wfex.nBlockAlign;
 
 	// Limit buffer size to prevent overflows
-	int bufsize = GetDriverParamInt(parm, "bufsize", 8192);
+	int bufsize = GetDriverParamInt(parm, "samples", 1024);
 	bufsize = std::min<int>(bufsize, UINT16_MAX);
 
 	_voice_context = new StreamingVoiceContext(bufsize * 4);
