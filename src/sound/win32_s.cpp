@@ -70,7 +70,7 @@ const char *SoundDriver_Win32::Start(const StringList &parm)
 	wfex.nAvgBytesPerSec = wfex.nSamplesPerSec * wfex.nBlockAlign;
 
 	/* Limit buffer size to prevent overflows. */
-	_bufsize = GetDriverParamInt(parm, "bufsize", 8192);
+	_bufsize = GetDriverParamInt(parm, "samples", 1024);
 	_bufsize = std::min<int>(_bufsize, UINT16_MAX);
 
 	try {
