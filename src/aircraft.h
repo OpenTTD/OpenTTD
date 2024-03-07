@@ -111,7 +111,7 @@ struct Aircraft final : public SpecializedVehicle<Aircraft, VEH_AIRCRAFT> {
 	void OnNewEconomyDay() override;
 	uint Crash(bool flooded = false) override;
 	TileIndex GetOrderStationLocation(StationID station) override;
-	ClosestDepot FindClosestDepot() override;
+	ClosestDepot FindClosestDepot(bool may_reverse = false) override;
 
 	/**
 	 * Check if the aircraft type is a normal flying device; eg

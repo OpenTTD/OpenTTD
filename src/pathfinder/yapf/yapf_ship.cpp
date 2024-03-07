@@ -166,12 +166,6 @@ public:
 		for (const WaterRegionPatchDesc &path_entry : path) m_water_region_corridor.push_back(path_entry);
 	}
 
-	inline void RestrictSearch(const std::vector<HighNode> &path)
-	{
-		m_water_region_corridor.clear();
-		for (const HighNode &path_entry : path) m_water_region_corridor.push_back(std::get<0>(path_entry));
-	}
-
 	/** Return debug report character to identify the transportation type. */
 	inline char TransportTypeChar() const
 	{
@@ -300,98 +294,125 @@ public:
 	{
 		const std::vector<WaterRegionPatchDesc> high_level_path = YapfShipFindWaterRegionPath(v, tile, NUMBER_OR_WATER_REGIONS_LOOKAHEAD + 1);
 		if (high_level_path.empty()) {
-			if (trackdir) *trackdir = INVALID_TRACKDIR;
+			if (trackdir != nullptr) *trackdir = INVALID_TRACKDIR;
 			return false;
 		}
 
-		/* Create pathfinder instance. */
-		Tpf pf(MAX_SHIP_PF_NODES);
-		/* Set origin and destination nodes. */
+		TrackdirBits trackdirs;
 		if (trackdir == nullptr) {
-			pf.SetOrigin(tile, TrackdirToTrackdirBits(td1) | TrackdirToTrackdirBits(td2));
+			/* Leaving station or depot. */
+			trackdirs = TrackdirToTrackdirBits(td1) | TrackdirToTrackdirBits(td2);
 		} else {
+			/* At the end of path, no path ahead, reversing. */
 			DiagDirection entry = ReverseDiagDir(VehicleExitDir(v->direction, v->state));
-			TrackdirBits rtds = DiagdirReachesTrackdirs(entry) & TrackStatusToTrackdirBits(GetTileTrackStatus(tile, TRANSPORT_WATER, 0, entry));
-			pf.SetOrigin(tile, rtds);
-		}
-		pf.SetDestination(v);
-		if (high_level_path.size() > 1) pf.SetIntermediateDestination(high_level_path.back());
-		pf.RestrictSearch(high_level_path);
-
-		/* Find best path. */
-		if (!pf.FindPath(v)) return false;
-
-		Node *pNode = pf.GetBestNode();
-		if (pNode == nullptr) return false;
-
-		/* Path was found, walk through the path back to the origin. */
-		while (pNode->m_parent != nullptr) {
-			pNode = pNode->m_parent;
+			trackdirs = DiagdirReachesTrackdirs(entry) & TrackStatusToTrackdirBits(GetTileTrackStatus(tile, TRANSPORT_WATER, 0, entry));
 		}
 
-		Trackdir best_trackdir = pNode->GetTrackdir();
-		if (trackdir != nullptr) {
-			*trackdir = best_trackdir;
-		} else {
-			assert(best_trackdir == td1 || best_trackdir == td2);
+		for (int attempt = 0; attempt < 2; ++attempt) {
+			/* Create pathfinder instance. */
+			Tpf pf(MAX_SHIP_PF_NODES);
+
+			/* Set origin and destination nodes. */
+			pf.SetOrigin(tile, trackdirs);
+			pf.SetDestination(v);
+			const bool is_intermediate_destination = static_cast<int>(high_level_path.size()) >= NUMBER_OR_WATER_REGIONS_LOOKAHEAD + 1;
+			if (is_intermediate_destination) pf.SetIntermediateDestination(high_level_path.back());
+
+			/* Restrict the search area to prevent the low level pathfinder from expanding too many nodes. This can happen
+			 * when the terrain is very "maze-like" or when the high level path "teleports" via a very long aqueduct. */
+			if (attempt > 0) pf.RestrictSearch(high_level_path);
+
+			/* Find best path. */
+			if (!pf.FindPath(v)) {
+				if (attempt == 0) continue; // Try again with restricted search area.
+				return false;
+			}
+
+			Node *pNode = pf.GetBestNode();
+			if (pNode == nullptr) return false;
+
+			/* Path was found, walk through the path back to the origin. */
+			while (pNode->m_parent != nullptr) {
+				pNode = pNode->m_parent;
+			}
+
+			Trackdir best_trackdir = pNode->GetTrackdir();
+			if (trackdir != nullptr) {
+				*trackdir = best_trackdir;
+			} else {
+				assert(best_trackdir == td1 || best_trackdir == td2);
+			}
+			return best_trackdir != td1;
 		}
-		return best_trackdir != td1;
+
+		return false;
 	}
 
 	/**
 	 * Find the best depot for a ship.
 	 * @param v Ship
 	 * @param max_penalty maximum pathfinder cost.
+	 * @param may_reverse whether the ship is allowed to reverse.
 	 * @return FindDepotData with the best depot tile, cost and whether to reverse.
 	 */
-	static inline FindDepotData FindNearestDepot(const Ship *v, int max_penalty)
+	static inline FindDepotData FindNearestDepot(const Ship *v, int max_penalty, bool may_reverse)
 	{
 		FindDepotData depot;
 
-		const std::vector<HighNode> high_level_path = YapfFindShipDepotRegionPath(v, max_penalty);
+		const bool servicing = max_penalty != 0;
+
+		std::vector<WaterRegionPatchDesc> high_level_path;
+		/* Only use the high level pathfinder when not servicing. */
+		if (!servicing) high_level_path = YapfFindShipDepotRegionPath(v);
 
 		const Trackdir td = v->GetVehicleTrackdir();
-		const Trackdir td_rev = ReverseTrackdir(td);
-		const TrackdirBits trackdirs = TrackdirToTrackdirBits(td) | TrackdirToTrackdirBits(td_rev);
+		TrackdirBits trackdirs = TrackdirToTrackdirBits(td);
+		if (may_reverse) {
+			const Trackdir td_rev = ReverseTrackdir(td);
+			trackdirs |= TrackdirToTrackdirBits(td_rev);
+		}
 
-		/* Run the pathfinder restricted only to the regions provided by the region pathfinder. */
-		Tpf pf(MAX_SHIP_PF_NODES);
+		/* Run the pathfinder. */
+		for (int attempt = 0; attempt < 2; ++attempt) {
+			Tpf pf(MAX_SHIP_PF_NODES);
 
-		/* Set origin and max cost. */
-		pf.SetOrigin(v->tile, trackdirs);
-		pf.SetMaxCost(max_penalty);
+			/* Set origin and max cost. */
+			pf.SetOrigin(v->tile, trackdirs);
+			pf.SetMaxCost(max_penalty);
 
-		/* Restrict the search area to prevent the low level pathfinder from expanding too many nodes. This can happen
-		 * when the terrain is very "maze-like" or when the high level path "teleports" via a very long aqueduct. */
-		pf.RestrictSearch(high_level_path);
+			/* Restrict the search area to prevent the low level pathfinder from expanding too many nodes. This can happen
+			 * when the terrain is very "maze-like" or when the high level path "teleports" via a very long aqueduct. */
+			if (attempt > 0) pf.RestrictSearch(high_level_path);
 
-		/* Find best path. */
-		const bool path_found = pf.FindPath(v);
+			/* Find best path. */
+			if (!pf.FindPath(v)) { // No depot found by low level pathfinder.
+				if (!servicing && attempt == 0) continue; // Try again with restricted search area.
+				if (high_level_path.empty()) break; // Returns no depot found at all.
 
-		if (!path_found) { // No depot found by low level pathfinder.
-			if (high_level_path.empty()) return depot; // Returns no depot found at all.
+				/* Set the cost of the best path and its depot. */
+				depot.tile = pf.GetShipDepotDestination(high_level_path.back());
+				depot.best_length = static_cast<uint>(high_level_path.size()) * YAPF_TILE_LENGTH * WATER_REGION_EDGE_LENGTH;
 
+				break; // Returns depot found only by the high level pathfinder.
+			}
+
+			const Node *n = pf.GetBestNode();
 			/* Set the cost of the best path and its depot. */
-			const HighNode hNode = high_level_path.back();
-			depot.tile = pf.GetShipDepotDestination(hNode);
-			depot.best_length = std::get<1>(hNode);
+			depot.tile = n->m_segment_last_tile;
+			depot.best_length = n->m_cost;
+			if (!may_reverse || servicing) break; // Returns depot found by low level pathfinder, without reversing.
 
-			return depot; // Returns depot found only by the high level pathfinder.
+			/* Walk through the path back to the origin. */
+			while (n->m_parent != nullptr) {
+				n = n->m_parent;
+			}
+			/* If the origin node is the ship's Trackdir then we didn't reverse. */
+			depot.reverse = n->m_segment_last_td != td;
+
+			break; // Returns depot found by low level pathfinder.
 		}
 
-		const Node *n = pf.GetBestNode();
-		/* Set the cost of the best path and its depot. */
-		depot.tile = n->m_segment_last_tile;
-		depot.best_length = n->m_cost;
-
-		/* Walk through the path back to the origin. */
-		while (n->m_parent != nullptr) {
-			n = n->m_parent;
-		}
-		/* If the origin node is the ship's Trackdir then we didn't reverse. */
-		depot.reverse = n->m_segment_last_td != td;
-
-		return depot; // Returns depot found by low level pathfinder.
+		return depot;
 	}
 };
 
@@ -493,6 +514,11 @@ public:
 	typedef typename Node::Key Key;                      ///< key to hash tables
 
 protected:
+	IsShipDepotRegionCallBack m_detect_destination = [&](const TileIndex tile)
+	{
+		return IsShipDepotTile(tile) && GetShipDepotPart(tile) == DEPOT_PART_NORTH && IsTileOwner(tile, Yapf().GetVehicle()->owner);
+	};
+
 	/** to access inherited path finder */
 	Tpf &Yapf()
 	{
@@ -500,19 +526,15 @@ protected:
 	}
 
 public:
-	inline TileIndex GetShipDepotDestination(const HighNode &hnode)
-	{
-		IsShipDepotRegionCallBack GetShipDepot = [&](const TileIndex tile)
-		{
-			return IsShipDepotTile(tile) && GetShipDepotPart(tile) == DEPOT_PART_NORTH && IsTileOwner(tile, Yapf().GetVehicle()->owner);
-		};
-		return GetShipDepotInWaterRegionPatch(GetShipDepot, std::get<0>(hnode));
-	}
-
 	/** Called by YAPF to detect if node ends in the desired destination */
 	inline bool PfDetectDestination(Node &n)
 	{
-		return IsShipDepotTile(n.m_key.m_tile) && GetShipDepotPart(n.m_key.m_tile) == DEPOT_PART_NORTH && IsTileOwner(n.m_key.m_tile, Yapf().GetVehicle()->owner);
+		return m_detect_destination(n.m_key.m_tile);
+	}
+
+	inline TileIndex GetShipDepotDestination(const WaterRegionPatchDesc &water_region_patch)
+	{
+		return GetShipDepotInWaterRegionPatch(m_detect_destination, water_region_patch);
 	}
 
 	/**
@@ -573,7 +595,7 @@ bool YapfShipCheckReverse(const Ship *v, Trackdir *trackdir)
 	return CYapfShip::CheckShipReverse(v, tile, td, td_rev, trackdir);
 }
 
-FindDepotData YapfShipFindNearestDepot(const Ship *v, int max_penalty)
+FindDepotData YapfShipFindNearestDepot(const Ship *v, int max_penalty, bool may_reverse)
 {
-	return CYapfShipAnyDepot::FindNearestDepot(v, max_penalty);
+	return CYapfShipAnyDepot::FindNearestDepot(v, max_penalty, may_reverse);
 }
