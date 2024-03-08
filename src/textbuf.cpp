@@ -413,9 +413,11 @@ void Textbuf::Assign(StringID string)
  */
 void Textbuf::Assign(const std::string_view text)
 {
-	const char *last_of = &this->buf[this->max_bytes - 1];
-	strecpy(this->buf, text.data(), last_of);
-	StrMakeValidInPlace(this->buf, last_of, SVS_NONE);
+	size_t bytes = std::min<size_t>(this->max_bytes - 1, text.size());
+	memcpy(this->buf, text.data(), bytes);
+	this->buf[bytes] = '\0';
+
+	StrMakeValidInPlace(this->buf, &this->buf[bytes], SVS_NONE);
 
 	/* Make sure the name isn't too long for the text buffer in the number of
 	 * characters (not bytes). max_chars also counts the '\0' characters. */
