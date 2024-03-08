@@ -67,8 +67,8 @@ void CcPlaySound_CONSTRUCTION_WATER(Commands, const CommandCost &result, TileInd
  */
 static TileIndex GetOtherAqueductEnd(TileIndex tile_from, TileIndex *tile_to = nullptr)
 {
-	int z;
-	DiagDirection dir = GetInclinedSlopeDirection(GetTileSlope(tile_from, &z));
+	auto [slope, z] = GetTileSlopeZ(tile_from);
+	DiagDirection dir = GetInclinedSlopeDirection(slope);
 
 	/* If the direction isn't right, just return the next tile so the command
 	 * complains about the wrong slope instead of the ends not matching up.

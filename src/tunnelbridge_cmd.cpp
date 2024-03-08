@@ -324,10 +324,8 @@ CommandCost CmdBuildBridge(DoCommandFlag flags, TileIndex tile_end, TileIndex ti
 	}
 	bridge_len += 2; // begin and end tiles/ramps
 
-	int z_start;
-	int z_end;
-	Slope tileh_start = GetTileSlope(tile_start, &z_start);
-	Slope tileh_end = GetTileSlope(tile_end, &z_end);
+	auto [tileh_start, z_start] = GetTileSlopeZ(tile_start);
+	auto [tileh_end, z_end] = GetTileSlopeZ(tile_end);
 	bool pbs_reservation = false;
 
 	CommandCost terraform_cost_north = CheckBridgeSlope(BRIDGE_PIECE_NORTH, direction, &tileh_start, &z_start);
@@ -655,9 +653,7 @@ CommandCost CmdBuildTunnel(DoCommandFlag flags, TileIndex start_tile, TransportT
 		}
 	}
 
-	int start_z;
-	int end_z;
-	Slope start_tileh = GetTileSlope(start_tile, &start_z);
+	auto [start_tileh, start_z] = GetTileSlopeZ(start_tile);
 	DiagDirection direction = GetInclinedSlopeDirection(start_tileh);
 	if (direction == INVALID_DIAGDIR) return_cmd_error(STR_ERROR_SITE_UNSUITABLE_FOR_TUNNEL);
 
@@ -690,10 +686,11 @@ CommandCost CmdBuildTunnel(DoCommandFlag flags, TileIndex start_tile, TransportT
 
 	CommandCost cost(EXPENSES_CONSTRUCTION);
 	Slope end_tileh;
+	int end_z;
 	for (;;) {
 		end_tile += delta;
 		if (!IsValidTile(end_tile)) return_cmd_error(STR_ERROR_TUNNEL_THROUGH_MAP_BORDER);
-		end_tileh = GetTileSlope(end_tile, &end_z);
+		std::tie(end_tileh, end_z) = GetTileSlopeZ(end_tile);
 
 		if (start_z == end_z) break;
 
@@ -1666,8 +1663,7 @@ void DrawBridgeMiddle(const TileInfo *ti)
 
 static int GetSlopePixelZ_TunnelBridge(TileIndex tile, uint x, uint y, bool ground_vehicle)
 {
-	int z;
-	Slope tileh = GetTilePixelSlope(tile, &z);
+	auto [tileh, z] = GetTilePixelSlope(tile);
 
 	x &= 0xF;
 	y &= 0xF;
@@ -2042,8 +2038,7 @@ static CommandCost TerraformTile_TunnelBridge(TileIndex tile, DoCommandFlag flag
 		DiagDirection direction = GetTunnelBridgeDirection(tile);
 		Axis axis = DiagDirToAxis(direction);
 		CommandCost res;
-		int z_old;
-		Slope tileh_old = GetTileSlope(tile, &z_old);
+		auto [tileh_old, z_old] = GetTileSlopeZ(tile);
 
 		/* Check if new slope is valid for bridges in general (so we can safely call GetBridgeFoundation()) */
 		if ((direction == DIAGDIR_NW) || (direction == DIAGDIR_NE)) {

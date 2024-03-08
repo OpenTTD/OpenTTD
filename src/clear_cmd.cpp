@@ -129,8 +129,7 @@ static void DrawTile_Clear(TileInfo *ti)
 
 static int GetSlopePixelZ_Clear(TileIndex tile, uint x, uint y, bool)
 {
-	int z;
-	Slope tileh = GetTilePixelSlope(tile, &z);
+	auto [tileh, z] = GetTilePixelSlope(tile);
 
 	return z + GetPartialPixelZ(x & 0xF, y & 0xF, tileh);
 }

@@ -1926,8 +1926,7 @@ static int GetSlopePixelZ_Road(TileIndex tile, uint x, uint y, bool)
 {
 
 	if (IsNormalRoad(tile)) {
-		int z;
-		Slope tileh = GetTilePixelSlope(tile, &z);
+		auto [tileh, z] = GetTilePixelSlope(tile);
 		if (tileh == SLOPE_FLAT) return z;
 
 		Foundation f = GetRoadFoundation(tileh, GetAllRoadBits(tile));
@@ -1999,7 +1998,7 @@ static void TileLoop_Road(TileIndex tile)
 			if (t->road_build_months != 0 &&
 					(DistanceManhattan(t->xy, tile) < 8 || grp != HZB_TOWN_EDGE) &&
 					IsNormalRoad(tile) && !HasAtMostOneBit(GetAllRoadBits(tile))) {
-				if (GetFoundationSlope(tile) == SLOPE_FLAT && EnsureNoVehicleOnGround(tile).Succeeded() && Chance16(1, 40)) {
+				if (std::get<0>(GetFoundationSlope(tile)) == SLOPE_FLAT && EnsureNoVehicleOnGround(tile).Succeeded() && Chance16(1, 40)) {
 					StartRoadWorks(tile);
 
 					if (_settings_client.sound.ambient) SndPlayTileFx(SND_21_ROAD_WORKS, tile);
@@ -2343,8 +2342,7 @@ static CommandCost TerraformTile_Road(TileIndex tile, DoCommandFlag flags, int z
 				if (CheckRoadSlope(tileh_new, &bits_copy, ROAD_NONE, ROAD_NONE).Succeeded()) {
 					/* CheckRoadSlope() sometimes changes the road_bits, if it does not agree with them. */
 					if (bits == bits_copy) {
-						int z_old;
-						Slope tileh_old = GetTileSlope(tile, &z_old);
+						auto [tileh_old, z_old] = GetTileSlopeZ(tile);
 
 						/* Get the slope on top of the foundation */
 						z_old += ApplyFoundationToSlope(GetRoadFoundation(tileh_old, bits), &tileh_old);

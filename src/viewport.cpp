@@ -1242,10 +1242,10 @@ static void ViewportAddLandscape()
 
 			if (tile_type != MP_VOID) {
 				/* We are inside the map => paint landscape. */
-				_cur_ti.tileh = GetTilePixelSlope(_cur_ti.tile, &_cur_ti.z);
+				std::tie(_cur_ti.tileh, _cur_ti.z) = GetTilePixelSlope(_cur_ti.tile);
 			} else {
 				/* We are outside the map => paint black. */
-				_cur_ti.tileh = GetTilePixelSlopeOutsideMap(tilecoord.x, tilecoord.y, &_cur_ti.z);
+				std::tie(_cur_ti.tileh, _cur_ti.z) = GetTilePixelSlopeOutsideMap(tilecoord.x, tilecoord.y);
 			}
 
 			int viewport_y = GetViewportY(tilecoord);

@@ -199,8 +199,7 @@
 {
 	if (!::IsValidTile(tile) || !::IsValidCorner((::Corner)corner)) return -1;
 
-	int z;
-	::Slope slope = ::GetTileSlope(tile, &z);
+	auto [slope, z] = ::GetTileSlopeZ(tile);
 	return (z + ::GetSlopeZInCorner(slope, (::Corner)corner));
 }
 

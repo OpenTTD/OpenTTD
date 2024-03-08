@@ -210,8 +210,7 @@ void MakeWaterKeepingClass(TileIndex tile, Owner o)
 	WaterClass wc = GetWaterClass(tile);
 
 	/* Autoslope might turn an originally canal or river tile into land */
-	int z;
-	Slope slope = GetTileSlope(tile, &z);
+	auto [slope, z] = GetTileSlopeZ(tile);
 
 	if (slope != SLOPE_FLAT) {
 		if (wc == WATER_CLASS_CANAL) {
@@ -951,8 +950,7 @@ void DrawShipDepotSprite(int x, int y, Axis axis, DepotPart part)
 
 static int GetSlopePixelZ_Water(TileIndex tile, uint x, uint y, bool)
 {
-	int z;
-	Slope tileh = GetTilePixelSlope(tile, &z);
+	auto [tileh, z] = GetTilePixelSlope(tile);
 
 	return z + GetPartialPixelZ(x & 0xF, y & 0xF, tileh);
 }
@@ -1245,18 +1243,17 @@ void TileLoop_Water(TileIndex tile)
 				/* TREE_GROUND_SHORE is the sign of a previous flood. */
 				if (IsTileType(dest, MP_TREES) && GetTreeGround(dest) == TREE_GROUND_SHORE) continue;
 
-				int z_dest;
-				Slope slope_dest = GetFoundationSlope(dest, &z_dest) & ~SLOPE_HALFTILE_MASK & ~SLOPE_STEEP;
+				auto [slope_dest, z_dest] = GetFoundationSlope(dest);
 				if (z_dest > 0) continue;
 
-				if (!HasBit(_flood_from_dirs[slope_dest], ReverseDir(dir))) continue;
+				if (!HasBit(_flood_from_dirs[slope_dest & ~SLOPE_HALFTILE_MASK & ~SLOPE_STEEP], ReverseDir(dir))) continue;
 
 				DoFloodTile(dest);
 			}
 			break;
 
 		case FLOOD_DRYUP: {
-			Slope slope_here = GetFoundationSlope(tile) & ~SLOPE_HALFTILE_MASK & ~SLOPE_STEEP;
+			Slope slope_here = std::get<0>(GetFoundationSlope(tile)) & ~SLOPE_HALFTILE_MASK & ~SLOPE_STEEP;
 			for (uint dir : SetBitIterator(_flood_from_dirs[slope_here])) {
 				TileIndex dest = tile + TileOffsByDir((Direction)dir);
 				if (dest >= Map::Size()) continue;
@@ -1274,10 +1271,8 @@ void TileLoop_Water(TileIndex tile)
 
 void ConvertGroundTilesIntoWaterTiles()
 {
-	int z;
-
 	for (TileIndex tile = 0; tile < Map::Size(); ++tile) {
-		Slope slope = GetTileSlope(tile, &z);
+		auto [slope, z] = GetTileSlopeZ(tile);
 		if (IsTileType(tile, MP_CLEAR) && z == 0) {
 			/* Make both water for tiles at level 0
 			 * and make shore, as that looks much better
