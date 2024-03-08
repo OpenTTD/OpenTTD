@@ -3,6 +3,7 @@
 - Matthijs Kooijman (blathijs) - Pathfinder-guru, Debian port (since 0.3)
 - Christoph Elsenhans (frosch) - General coding (since 0.6)
 - Loïc Guilloux (glx) - General / Windows Expert (since 0.4.5)
+- Koen Bussemaker (Kuhnovic) - General / Ship pathfinder (since 14)
 - Charles Pigott (LordAro) - General / Correctness police (since 1.9)
 - Michael Lutz (michi_cc) - General / Path based signals (since 0.7)
 - Niels Martin Hansen (nielsm) - Music system, general coding (since 1.9)
