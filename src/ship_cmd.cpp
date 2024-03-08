@@ -217,19 +217,24 @@ static void CheckIfShipNeedsService(Vehicle *v)
 		default: NOT_REACHED();
 	}
 
-	const Depot *depot = FindClosestShipDepot(v, max_distance);
-
-	if (depot == nullptr) {
-		if (v->current_order.IsType(OT_GOTO_DEPOT)) {
-			v->current_order.MakeDummy();
+	if (v->current_order.IsType(OT_GOTO_DEPOT)) {
+		const Depot *depot = Depot::GetByTile(v->dest_tile);
+		if (depot) {
+			v->current_order.MakeGoToDepot(depot->index, ODTFB_SERVICE);
 			SetWindowWidgetDirty(WC_VEHICLE_VIEW, v->index, WID_VV_START_STOP);
+			return;
 		}
+	}
+
+	const Depot *depot = FindClosestShipDepot(v, max_distance);
+	if (depot) {
+		v->current_order.MakeGoToDepot(depot->index, ODTFB_SERVICE);
+		v->SetDestTile(depot->xy);
+		SetWindowWidgetDirty(WC_VEHICLE_VIEW, v->index, WID_VV_START_STOP);
 		return;
 	}
 
-	v->current_order.MakeGoToDepot(depot->index, ODTFB_SERVICE);
-	v->SetDestTile(depot->xy);
-	SetWindowWidgetDirty(WC_VEHICLE_VIEW, v->index, WID_VV_START_STOP);
+	v->current_order.MakeDummy();
 }
 
 /**
