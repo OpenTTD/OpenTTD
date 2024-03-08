@@ -73,5 +73,5 @@ int GetBridgeHeight(TileIndex t)
 	Foundation f = GetBridgeFoundation(tileh, DiagDirToAxis(GetTunnelBridgeDirection(t)));
 
 	/* one height level extra for the ramp */
-	return h + 1 + ApplyFoundationToSlope(f, &tileh);
+	return h + 1 + ApplyFoundationToSlope(f, tileh);
 }
