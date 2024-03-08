@@ -4433,29 +4433,37 @@ static void ChangeTileOwner_Station(TileIndex tile, Owner old_owner, Owner new_o
  * Check if a drive-through road stop tile can be cleared.
  * Road stops built on town-owned roads check the conditions
  * that would allow clearing of the original road.
- * @param tile road stop tile to check
- * @param flags command flags
- * @return true if the road can be cleared
+ * @param tile The road stop tile to check.
+ * @param flags Command flags.
+ * @return A succeeded command if the road can be removed, a failed command with the relevant error message otherwise.
  */
-static bool CanRemoveRoadWithStop(TileIndex tile, DoCommandFlag flags)
+static CommandCost CanRemoveRoadWithStop(TileIndex tile, DoCommandFlag flags)
 {
-	/* Yeah... water can always remove stops, right? */
-	if (_current_company == OWNER_WATER) return true;
+	/* Water flooding can always clear road stops. */
+	if (_current_company == OWNER_WATER) return CommandCost();
+
+	CommandCost ret;
 
 	if (GetRoadTypeTram(tile) != INVALID_ROADTYPE) {
 		Owner tram_owner = GetRoadOwner(tile, RTT_TRAM);
-		if (tram_owner != OWNER_NONE && CheckOwnership(tram_owner).Failed()) return false;
-	}
-	if (GetRoadTypeRoad(tile) != INVALID_ROADTYPE) {
-		Owner road_owner = GetRoadOwner(tile, RTT_ROAD);
-		if (road_owner != OWNER_TOWN) {
-			if (road_owner != OWNER_NONE && CheckOwnership(road_owner).Failed()) return false;
-		} else {
-			if (CheckAllowRemoveRoad(tile, GetAnyRoadBits(tile, RTT_ROAD), OWNER_TOWN, RTT_ROAD, flags).Failed()) return false;
+		if (tram_owner != OWNER_NONE) {
+			ret = CheckOwnership(tram_owner);
+			if (ret.Failed()) return ret;
 		}
 	}
 
-	return true;
+	if (GetRoadTypeRoad(tile) != INVALID_ROADTYPE) {
+		Owner road_owner = GetRoadOwner(tile, RTT_ROAD);
+		if (road_owner == OWNER_TOWN) {
+			ret = CheckAllowRemoveRoad(tile, GetAnyRoadBits(tile, RTT_ROAD), OWNER_TOWN, RTT_ROAD, flags);
+			if (ret.Failed()) return ret;
+		} else if (road_owner != OWNER_NONE) {
+			ret = CheckOwnership(road_owner);
+			if (ret.Failed()) return ret;
+		}
+	}
+
+	return CommandCost();
 }
 
 /**
@@ -4486,14 +4494,11 @@ CommandCost ClearTile_Station(TileIndex tile, DoCommandFlag flags)
 		case STATION_RAIL:     return RemoveRailStation(tile, flags);
 		case STATION_WAYPOINT: return RemoveRailWaypoint(tile, flags);
 		case STATION_AIRPORT:  return RemoveAirport(tile, flags);
-		case STATION_TRUCK:
-			if (IsDriveThroughStopTile(tile) && !CanRemoveRoadWithStop(tile, flags)) {
-				return_cmd_error(STR_ERROR_MUST_DEMOLISH_TRUCK_STATION_FIRST);
-			}
-			return RemoveRoadStop(tile, flags);
+		case STATION_TRUCK:    [[fallthrough]];
 		case STATION_BUS:
-			if (IsDriveThroughStopTile(tile) && !CanRemoveRoadWithStop(tile, flags)) {
-				return_cmd_error(STR_ERROR_MUST_DEMOLISH_BUS_STATION_FIRST);
+			if (IsDriveThroughStopTile(tile)) {
+				CommandCost remove_road = CanRemoveRoadWithStop(tile, flags);
+				if (remove_road.Failed()) return remove_road;
 			}
 			return RemoveRoadStop(tile, flags);
 		case STATION_BUOY:     return RemoveBuoy(tile, flags);
