@@ -66,6 +66,8 @@
 #include "timer/timer_game_economy.h"
 #include "timer/timer_game_tick.h"
 #include "cheat_type.h"
+#include "depot_base.h"
+#include "platform_func.h"
 
 #include "table/strings.h"
 
@@ -1229,9 +1231,10 @@ CommandCost FindJoiningWaypoint(StationID existing_waypoint, StationID waypoint_
 static void FreeTrainReservation(Train *v)
 {
 	FreeTrainTrackReservation(v);
-	if (IsRailStationTile(v->tile)) SetRailStationPlatformReservation(v->tile, TrackdirToExitdir(v->GetVehicleTrackdir()), false);
+	if (IsPlatformTile(v->tile)) SetPlatformReservation(v->tile, TrackdirToExitdir(v->GetVehicleTrackdir()), false);
 	v = v->Last();
-	if (IsRailStationTile(v->tile)) SetRailStationPlatformReservation(v->tile, TrackdirToExitdir(ReverseTrackdir(v->GetVehicleTrackdir())), false);
+	if (IsPlatformTile(v->tile)) SetPlatformReservation(v->tile, TrackdirToExitdir(ReverseTrackdir(v->GetVehicleTrackdir())), false);
+
 }
 
 /**
@@ -1240,10 +1243,10 @@ static void FreeTrainReservation(Train *v)
  */
 static void RestoreTrainReservation(Train *v)
 {
-	if (IsRailStationTile(v->tile)) SetRailStationPlatformReservation(v->tile, TrackdirToExitdir(v->GetVehicleTrackdir()), true);
+	if (IsPlatformTile(v->tile)) SetPlatformReservation(v->tile, TrackdirToExitdir(v->GetVehicleTrackdir()), true);
 	TryPathReserve(v, true, true);
 	v = v->Last();
-	if (IsRailStationTile(v->tile)) SetRailStationPlatformReservation(v->tile, TrackdirToExitdir(ReverseTrackdir(v->GetVehicleTrackdir())), true);
+	if (IsPlatformTile(v->tile)) SetPlatformReservation(v->tile, TrackdirToExitdir(ReverseTrackdir(v->GetVehicleTrackdir())), true);
 }
 
 /**
@@ -1501,21 +1504,21 @@ CommandCost CmdBuildRailStation(DoCommandFlag flags, TileIndex tile_org, RailTyp
 			TileIndex platform_end = tile;
 
 			/* We can only account for tiles that are reachable from this tile, so ignore primarily blocked tiles while finding the platform begin and end. */
-			for (TileIndex next_tile = platform_begin - tile_offset; IsCompatibleTrainStationTile(next_tile, platform_begin); next_tile -= tile_offset) {
+			for (TileIndex next_tile = platform_begin - tile_offset; IsCompatiblePlatformTile(next_tile, platform_begin); next_tile -= tile_offset) {
 				platform_begin = next_tile;
 			}
-			for (TileIndex next_tile = platform_end + tile_offset; IsCompatibleTrainStationTile(next_tile, platform_end); next_tile += tile_offset) {
+			for (TileIndex next_tile = platform_end + tile_offset; IsCompatiblePlatformTile(next_tile, platform_end); next_tile += tile_offset) {
 				platform_end = next_tile;
 			}
 
 			/* If there is at least on reservation on the platform, we reserve the whole platform. */
 			bool reservation = false;
 			for (TileIndex t = platform_begin; !reservation && t <= platform_end; t += tile_offset) {
-				reservation = HasStationReservation(t);
+				reservation = HasPlatformReservation(t);
 			}
 
 			if (reservation) {
-				SetRailStationPlatformReservation(platform_begin, dir, true);
+				SetPlatformReservation(platform_begin, dir, true);
 			}
 		}
 
@@ -2399,6 +2402,8 @@ CommandCost CmdBuildAirport(DoCommandFlag flags, TileIndex tile, byte airport_ty
 
 	/* Check if a valid, buildable airport was chosen for construction */
 	const AirportSpec *as = AirportSpec::Get(airport_type);
+
+	if (as->nof_depots > 0 && !Depot::CanAllocateItem()) return CMD_ERROR;
 	if (!as->IsAvailable() || layout >= as->num_table) return CMD_ERROR;
 	if (!as->IsWithinMapBounds(layout, tile)) return CMD_ERROR;
 
@@ -2492,6 +2497,8 @@ CommandCost CmdBuildAirport(DoCommandFlag flags, TileIndex tile, byte airport_ty
 			AirportTileAnimationTrigger(st, iter, AAT_BUILT);
 		}
 
+		if (as->nof_depots > 0) st->airport.AddHangar();
+
 		UpdateAirplanesOnNewStation(st);
 
 		Company::Get(st->owner)->infrastructure.airport++;
@@ -2534,11 +2541,7 @@ static CommandCost RemoveAirport(TileIndex tile, DoCommandFlag flags)
 	}
 
 	if (flags & DC_EXEC) {
-		for (uint i = 0; i < st->airport.GetNumHangars(); ++i) {
-			TileIndex tile_cur = st->airport.GetHangarTile(i);
-			OrderBackup::Reset(tile_cur, false);
-			CloseWindowById(WC_VEHICLE_DEPOT, tile_cur);
-		}
+		st->airport.RemoveHangar();
 
 		/* The noise level is the noise from the airport and reduce it to account for the distance to the town center.
 		 * And as for construction, always remove it, even if the setting is not set, in order to avoid the
@@ -3490,8 +3493,8 @@ static bool ClickTile_Station(TileIndex tile)
 	if (bst->facilities & FACIL_WAYPOINT) {
 		ShowWaypointWindow(Waypoint::From(bst));
 	} else if (IsHangar(tile)) {
-		const Station *st = Station::From(bst);
-		ShowDepotWindow(st->airport.GetHangarTile(st->airport.GetHangarNum(tile)), VEH_AIRCRAFT);
+		assert(Station::From(bst)->airport.HasHangar());
+		ShowDepotWindow(Station::From(bst)->airport.hangar->index);
 	} else {
 		ShowStationViewWindow(bst->index);
 	}

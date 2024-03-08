@@ -119,15 +119,37 @@ debug_inline static bool IsRoadDepotTile(Tile t)
 }
 
 /**
+ * Return whether a road depot tile is an extended one.
+ * @param t Tile to query.
+ * @return True if extended road depot tile.
+ */
+static inline bool IsExtendedRoadDepot(Tile t)
+{
+	assert(IsTileType(t, MP_ROAD));
+	assert(IsRoadDepot(t));
+	return HasBit(t.m5(), 5);
+}
+
+/**
+ * Return whether a tile is an extended road depot tile.
+ * @param t Tile to query.
+ * @return True if extended road depot tile.
+ */
+static inline bool IsExtendedRoadDepotTile(Tile t)
+{
+	return IsTileType(t, MP_ROAD) && IsRoadDepot(t) && IsExtendedRoadDepot(t);
+}
+
+/**
  * Get the present road bits for a specific road type.
  * @param t  The tile to query.
- * @param rt Road type.
- * @pre IsNormalRoad(t)
+ * @param rtt Road tram type.
+ * @pre IsNormalRoad(t) || IsRoadDepotTile(t)
  * @return The present road bits for the road type.
  */
 inline RoadBits GetRoadBits(Tile t, RoadTramType rtt)
 {
-	assert(IsNormalRoad(t));
+	assert(IsNormalRoad(t) || IsRoadDepotTile(t));
 	if (rtt == RTT_TRAM) return (RoadBits)GB(t.m3(), 0, 4);
 	return (RoadBits)GB(t.m5(), 0, 4);
 }
@@ -152,7 +174,7 @@ inline RoadBits GetAllRoadBits(Tile tile)
  */
 inline void SetRoadBits(Tile t, RoadBits r, RoadTramType rtt)
 {
-	assert(IsNormalRoad(t)); // XXX incomplete
+	assert(IsNormalRoad(t) || IsRoadDepotTile(t));
 	if (rtt == RTT_TRAM) {
 		SB(t.m3(), 0, 4, r);
 	} else {
@@ -556,18 +578,27 @@ inline void TerminateRoadWorks(Tile t)
 	SB(t.m7(), 0, 4, 0);
 }
 
+/**
+ * Set the direction of the exit of a road depot.
+ * @param t The tile to query.
+ * @return Diagonal direction of the depot exit.
+ */
+static inline void SetRoadDepotDirection(Tile t, DiagDirection dir)
+{
+	assert(IsRoadDepot(t));
+	SB(t.m6(), 6, 2, dir);
+}
 
 /**
- * Get the direction of the exit of a road depot.
+ * Get the direction of the exit of a road depot (or the image of the depot for extended road depots).
  * @param t The tile to query.
  * @return Diagonal direction of the depot exit.
  */
 inline DiagDirection GetRoadDepotDirection(Tile t)
 {
 	assert(IsRoadDepot(t));
-	return (DiagDirection)GB(t.m5(), 0, 2);
+	return (DiagDirection)GB(t.m6(), 6, 2);
 }
-
 
 RoadBits GetAnyRoadBits(Tile tile, RoadTramType rtt, bool straight_tunnel_bridge_entrance = false);
 
@@ -680,7 +711,7 @@ inline void MakeRoadCrossing(Tile t, Owner road, Owner tram, Owner rail, Axis ro
 inline void SetRoadDepotExitDirection(Tile tile, DiagDirection dir)
 {
 	assert(IsRoadDepotTile(tile));
-	SB(tile.m5(), 0, 2, dir);
+	SB(tile.m6(), 6, 2, dir);
 }
 
 /**
@@ -698,8 +729,9 @@ inline void MakeRoadDepot(Tile tile, Owner owner, DepotID depot_id, DiagDirectio
 	tile.m2() = depot_id;
 	tile.m3() = 0;
 	tile.m4() = INVALID_ROADTYPE;
-	tile.m5() = ROAD_TILE_DEPOT << 6 | dir;
-	SB(tile.m6(), 2, 4, 0);
+	tile.m5() = ROAD_TILE_DEPOT << 6;
+	SB(tile.m6(), 0, 6, 0);
+	SB(tile.m6(), 6, 2, dir);
 	tile.m7() = owner;
 	tile.m8() = INVALID_ROADTYPE << 6;
 	SetRoadType(tile, GetRoadTramType(rt), rt);

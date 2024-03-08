@@ -330,6 +330,9 @@ add_files(
     palette_func.h
     pbs.cpp
     pbs.h
+    platform_func.h
+    platform_type.h
+    platform.cpp
     progress.cpp
     progress.h
     querystring_gui.h
@@ -488,6 +491,8 @@ add_files(
     train.h
     train_cmd.cpp
     train_cmd.h
+    train_placement.cpp
+    train_placement.h
     train_gui.cpp
     transparency.h
     transparency_gui.cpp

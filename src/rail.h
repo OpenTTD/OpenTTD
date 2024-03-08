@@ -328,13 +328,26 @@ inline bool IsCompatibleRail(RailType enginetype, RailType tiletype)
  * Checks if an engine of the given RailType got power on a tile with a given
  * RailType. This would normally just be an equality check, but for electric
  * rails (which also support non-electric engines).
- * @return Whether the engine got power on this tile.
  * @param  enginetype The RailType of the engine we are considering.
  * @param  tiletype   The RailType of the tile we are considering.
+ * @return Whether the engine got power on this tile.
  */
 inline bool HasPowerOnRail(RailType enginetype, RailType tiletype)
 {
 	return HasBit(GetRailTypeInfo(enginetype)->powered_railtypes, tiletype);
+}
+
+/**
+ * Checks if an engine with a given \a enginetype is powered on \a rail_types.
+ * This would normally just be an equality check,
+ * but for electric rails (which also support non-electric vehicles).
+ * @return Whether the engine got power on this tile.
+ * @param  enginetype The RailType of the engine we are considering.
+ * @param  rail_types The RailTypes we are considering.
+ */
+static inline bool HasPowerOnRails(RailType enginetype, RailTypes rail_types)
+{
+	return (GetRailTypeInfo(enginetype)->powered_railtypes & rail_types) != 0;
 }
 
 /**

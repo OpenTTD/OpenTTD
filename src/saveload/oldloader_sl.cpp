@@ -690,6 +690,8 @@ static bool LoadOldDepot(LoadgameState *ls, int num)
 	if (d->xy != 0) {
 		d->town = RemapTown(d->xy);
 	} else {
+		d->owner = INVALID_OWNER;
+		d->veh_type = VEH_INVALID;
 		delete d;
 	}
 

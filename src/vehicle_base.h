@@ -52,6 +52,7 @@ enum VehicleFlags {
 	VF_PATHFINDER_LOST,         ///< Vehicle's pathfinder is lost.
 	VF_SERVINT_IS_CUSTOM,       ///< Service interval is custom.
 	VF_SERVINT_IS_PERCENT,      ///< Service interval is percent.
+	VF_IS_SERVICING,            ///< Vehicle is servicing.
 };
 
 /** Bit numbers used to indicate which of the #NewGRFCache values are valid. */
@@ -320,10 +321,11 @@ public:
 	TextEffectID fill_percent_te_id;    ///< a text-effect id to a loading indicator object
 	UnitID unitnumber;                  ///< unit number, for display purposes only
 
-	uint16_t cur_speed;                   ///< current speed
+	uint16_t cur_speed;                 ///< current speed
 	byte subspeed;                      ///< fractional speed
 	byte acceleration;                  ///< used by train & aircraft
-	uint32_t motion_counter;              ///< counter to occasionally play a vehicle sound.
+	uint16_t wait_counter;              ///< waiting ticks (servicing, waiting in front of a signal or forced proceeding)
+	uint32_t motion_counter;            ///< counter to occasionally play a vehicle sound.
 	byte progress;                      ///< The percentage (if divided by 256) this vehicle already crossed the tile unit.
 
 	uint16_t random_bits; ///< Bits used for randomized variational spritegroups.
@@ -772,6 +774,12 @@ public:
 
 
 	bool HandleBreakdown();
+
+	bool IsServicing() const { return HasBit(this->vehicle_flags, VF_IS_SERVICING); }
+
+	void StartService();
+	bool ContinueServicing();
+	void StopServicing();
 
 	bool NeedsAutorenewing(const Company *c, bool use_renew_setting = true) const;
 

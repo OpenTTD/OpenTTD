@@ -60,7 +60,7 @@ ScriptVehicleList_Depot::ScriptVehicleList_Depot(TileIndex tile)
 		case MP_STATION: // Aircraft
 			if (!IsAirport(tile)) return;
 			type = VEH_AIRCRAFT;
-			dest = GetStationIndex(tile);
+			dest = GetDepotIndex(tile);
 			break;
 
 		case MP_RAILWAY:

@@ -11,11 +11,17 @@
 #define DEPOT_BASE_H
 
 #include "depot_map.h"
+#include "viewport_type.h"
 #include "core/pool_type.hpp"
 #include "timer/timer_game_calendar.h"
+#include "rail_type.h"
+#include "road_type.h"
 
 typedef Pool<Depot, DepotID, 64, 64000> DepotPool;
 extern DepotPool _depot_pool;
+
+class CommandCost;
+struct Vehicle;
 
 struct Depot : DepotPool::PoolItem<&_depot_pool> {
 	/* DepotID index member of DepotPool is 2 bytes. */
@@ -25,13 +31,34 @@ struct Depot : DepotPool::PoolItem<&_depot_pool> {
 	std::string name;
 	TimerGameCalendar::Date build_date; ///< Date of construction
 
-	Depot(TileIndex xy = INVALID_TILE) : xy(xy) {}
+	Owner owner;
+	VehicleType veh_type;
+	byte delete_ctr;      ///< Delete counter. If greater than 0 then it is decremented until it reaches 0; the depot is then deleted.
+	ViewportSign sign;    ///< NOSAVE: Dimensions of sign
+
+	union {
+		RoadTypes road_types;
+		RailTypes rail_types;
+	} r_types;
+
+	TileArea ta;
+	std::vector<TileIndex> depot_tiles;
+
+	Depot(TileIndex xy = INVALID_TILE, VehicleType type = VEH_INVALID, Owner owner = INVALID_OWNER) :
+			xy(xy),
+			owner(owner),
+			veh_type(type),
+			ta(xy, 1, 1) {}
+
 	~Depot();
 
 	static inline Depot *GetByTile(TileIndex tile)
 	{
+		assert(Depot::IsValidID(GetDepotIndex(tile)));
 		return Depot::Get(GetDepotIndex(tile));
 	}
+
+	TileIndex GetBestDepotTile(Vehicle *v) const;
 
 	/**
 	 * Is the "type" of depot the same as the given depot,
@@ -41,8 +68,35 @@ struct Depot : DepotPool::PoolItem<&_depot_pool> {
 	 */
 	inline bool IsOfType(const Depot *d) const
 	{
-		return GetTileType(d->xy) == GetTileType(this->xy);
+		return d->veh_type == this->veh_type;
 	}
+
+	/**
+	 * Check whether the depot currently is in use; in use means
+	 * that it is not scheduled for deletion and that it still has
+	 * a building on the map. Otherwise the building is demolished
+	 * and the depot awaits to be deleted.
+	 * @return true iff still in use
+	 * @see Depot::Disuse
+	 * @see Depot::Reuse
+	 */
+	inline bool IsInUse() const
+	{
+		return this->delete_ctr == 0;
+	}
+
+	void Reuse(TileIndex xy);
+	void Disuse();
+	void UpdateVirtCoord();
+
+	/* Check we can add some tiles to this depot. */
+	CommandCost BeforeAddTiles(TileArea ta);
+
+	/* Add some tiles to this depot and rescan area for depot_tiles. */
+	void AfterAddRemove(TileArea ta, bool adding);
+
+	/* Rescan depot_tiles. Done after AfterAddRemove and SaveLoad. */
+	void RescanDepotTiles();
 };
 
 #endif /* DEPOT_BASE_H */

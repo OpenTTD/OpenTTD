@@ -13,21 +13,22 @@
 /** Widgets of the #BuildRailToolbarWindow class. */
 enum RailToolbarWidgets : WidgetID {
 	/* Name starts with RA instead of R, because of collision with RoadToolbarWidgets */
-	WID_RAT_CAPTION,        ///< Caption of the window.
-	WID_RAT_BUILD_NS,       ///< Build rail along the game view Y axis.
-	WID_RAT_BUILD_X,        ///< Build rail along the game grid X axis.
-	WID_RAT_BUILD_EW,       ///< Build rail along the game view X axis.
-	WID_RAT_BUILD_Y,        ///< Build rail along the game grid Y axis.
-	WID_RAT_AUTORAIL,       ///< Autorail tool.
-	WID_RAT_DEMOLISH,       ///< Destroy something with dynamite!
-	WID_RAT_BUILD_DEPOT,    ///< Build a depot.
-	WID_RAT_BUILD_WAYPOINT, ///< Build a waypoint.
-	WID_RAT_BUILD_STATION,  ///< Build a station.
-	WID_RAT_BUILD_SIGNALS,  ///< Build signals.
-	WID_RAT_BUILD_BRIDGE,   ///< Build a bridge.
-	WID_RAT_BUILD_TUNNEL,   ///< Build a tunnel.
-	WID_RAT_REMOVE,         ///< Bulldozer to remove rail.
-	WID_RAT_CONVERT_RAIL,   ///< Convert other rail to this type.
+	WID_RAT_CAPTION,              ///< Caption of the window.
+	WID_RAT_BUILD_NS,             ///< Build rail along the game view Y axis.
+	WID_RAT_BUILD_X,              ///< Build rail along the game grid X axis.
+	WID_RAT_BUILD_EW,             ///< Build rail along the game view X axis.
+	WID_RAT_BUILD_Y,              ///< Build rail along the game grid Y axis.
+	WID_RAT_AUTORAIL,             ///< Autorail tool.
+	WID_RAT_DEMOLISH,             ///< Destroy something with dynamite!
+	WID_RAT_BUILD_DEPOT,          ///< Build a depot.
+	WID_RAT_BUILD_EXTENDED_DEPOT, ///< Build an extended depot.
+	WID_RAT_BUILD_WAYPOINT,       ///< Build a waypoint.
+	WID_RAT_BUILD_STATION,        ///< Build a station.
+	WID_RAT_BUILD_SIGNALS,        ///< Build signals.
+	WID_RAT_BUILD_BRIDGE,         ///< Build a bridge.
+	WID_RAT_BUILD_TUNNEL,         ///< Build a tunnel.
+	WID_RAT_REMOVE,               ///< Bulldozer to remove rail.
+	WID_RAT_CONVERT_RAIL,         ///< Convert other rail to this type.
 
 	INVALID_WID_RAT = -1,
 };

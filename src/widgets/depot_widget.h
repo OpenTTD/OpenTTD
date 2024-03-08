@@ -27,9 +27,17 @@ enum DepotWidgets : WidgetID {
 	WID_D_LOCATION,        ///< Location button.
 	WID_D_SHOW_RENAME,     ///< Show rename panel.
 	WID_D_RENAME,          ///< Rename button.
+	WID_D_HIGHLIGHT,       ///< Highlight button.
 	WID_D_VEHICLE_LIST,    ///< List of vehicles.
 	WID_D_STOP_ALL,        ///< Stop all button.
 	WID_D_START_ALL,       ///< Start all button.
+};
+
+/** Widgets of the #SelectDepotWindow class. */
+enum JoinDepotWidgets {
+	WID_JD_CAPTION,   // Caption of the window.
+	WID_JD_PANEL,     // Main panel.
+	WID_JD_SCROLLBAR, // Scrollbar of the panel.
 };
 
 #endif /* WIDGETS_DEPOT_WIDGET_H */
