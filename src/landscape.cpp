@@ -373,28 +373,24 @@ void GetSlopePixelZOnEdge(Slope tileh, DiagDirection edge, int *z1, int *z2)
  * If a tile does not have a foundation, the function returns the same as GetTileSlope.
  *
  * @param tile The tile of interest.
- * @param z returns the z of the foundation slope. (Can be nullptr, if not needed)
- * @return The slope on top of the foundation.
+ * @return The slope on top of the foundation and the z of the foundation slope.
  */
-Slope GetFoundationSlope(TileIndex tile, int *z)
+std::tuple<Slope, int> GetFoundationSlope(TileIndex tile)
 {
-	Slope tileh = GetTileSlope(tile, z);
+	auto [tileh, z] = GetTileSlopeZ(tile);
 	Foundation f = _tile_type_procs[GetTileType(tile)]->get_foundation_proc(tile, tileh);
-	uint z_inc = ApplyFoundationToSlope(f, &tileh);
-	if (z != nullptr) *z += z_inc;
-	return tileh;
+	z += ApplyFoundationToSlope(f, &tileh);
+	return {tileh, z};
 }
 
 
 bool HasFoundationNW(TileIndex tile, Slope slope_here, uint z_here)
 {
-	int z;
-
 	int z_W_here = z_here;
 	int z_N_here = z_here;
 	GetSlopePixelZOnEdge(slope_here, DIAGDIR_NW, &z_W_here, &z_N_here);
 
-	Slope slope = GetFoundationPixelSlope(TILE_ADDXY(tile, 0, -1), &z);
+	auto [slope, z] = GetFoundationPixelSlope(TILE_ADDXY(tile, 0, -1));
 	int z_W = z;
 	int z_N = z;
 	GetSlopePixelZOnEdge(slope, DIAGDIR_SE, &z_W, &z_N);
@@ -405,13 +401,11 @@ bool HasFoundationNW(TileIndex tile, Slope slope_here, uint z_here)
 
 bool HasFoundationNE(TileIndex tile, Slope slope_here, uint z_here)
 {
-	int z;
-
 	int z_E_here = z_here;
 	int z_N_here = z_here;
 	GetSlopePixelZOnEdge(slope_here, DIAGDIR_NE, &z_E_here, &z_N_here);
 
-	Slope slope = GetFoundationPixelSlope(TILE_ADDXY(tile, -1, 0), &z);
+	auto [slope, z] = GetFoundationPixelSlope(TILE_ADDXY(tile, -1, 0));
 	int z_E = z;
 	int z_N = z;
 	GetSlopePixelZOnEdge(slope, DIAGDIR_SW, &z_E, &z_N);
@@ -432,8 +426,7 @@ void DrawFoundation(TileInfo *ti, Foundation f)
 	assert(f != FOUNDATION_STEEP_BOTH);
 
 	uint sprite_block = 0;
-	int z;
-	Slope slope = GetFoundationPixelSlope(ti->tile, &z);
+	auto [slope, z] = GetFoundationPixelSlope(ti->tile);
 
 	/* Select the needed block of foundations sprites
 	 * Block 0: Walls at NW and NE edge
@@ -1194,10 +1187,8 @@ static bool FlowsDown(TileIndex begin, TileIndex end)
 {
 	assert(DistanceManhattan(begin, end) == 1);
 
-	int heightBegin;
-	int heightEnd;
-	Slope slopeBegin = GetTileSlope(begin, &heightBegin);
-	Slope slopeEnd   = GetTileSlope(end, &heightEnd);
+	auto [slopeBegin, heightBegin] = GetTileSlopeZ(begin);
+	auto [slopeEnd, heightEnd] = GetTileSlopeZ(end);
 
 	return heightEnd <= heightBegin &&
 			/* Slope either is inclined or flat; rivers don't support other slopes. */

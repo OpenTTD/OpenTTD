@@ -805,8 +805,7 @@ CommandCost CheckBuildableTile(TileIndex tile, uint invalid_dirs, int &allowed_z
 	CommandCost ret = EnsureNoVehicleOnGround(tile);
 	if (ret.Failed()) return ret;
 
-	int z;
-	Slope tileh = GetTileSlope(tile, &z);
+	auto [tileh, z] = GetTileSlopeZ(tile);
 
 	/* Prohibit building if
 	 *   1) The tile is "steep" (i.e. stretches two height levels).
@@ -3031,8 +3030,7 @@ static void DrawTile_Station(TileInfo *ti)
 			/* Station has custom foundations.
 			 * Check whether the foundation continues beyond the tile's upper sides. */
 			uint edge_info = 0;
-			int z;
-			Slope slope = GetFoundationPixelSlope(ti->tile, &z);
+			auto [slope, z] = GetFoundationPixelSlope(ti->tile);
 			if (!HasFoundationNW(ti->tile, slope, z)) SetBit(edge_info, 0);
 			if (!HasFoundationNE(ti->tile, slope, z)) SetBit(edge_info, 1);
 			SpriteID image = GetCustomStationFoundationRelocation(statspec, st, ti->tile, tile_layout, edge_info);

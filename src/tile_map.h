@@ -265,26 +265,34 @@ inline void SetAnimationFrame(Tile t, byte frame)
 	t.m7() = frame;
 }
 
-Slope GetTileSlope(TileIndex tile, int *h = nullptr);
+std::tuple<Slope, int> GetTileSlopeZ(TileIndex tile);
 int GetTileZ(TileIndex tile);
 int GetTileMaxZ(TileIndex tile);
 
 bool IsTileFlat(TileIndex tile, int *h = nullptr);
 
 /**
- * Return the slope of a given tile
+ * Return the slope of a given tile inside the map.
  * @param tile Tile to compute slope of
- * @param h    If not \c nullptr, pointer to storage of z height
  * @return Slope of the tile, except for the HALFTILE part
  */
-inline Slope GetTilePixelSlope(TileIndex tile, int *h)
+inline Slope GetTileSlope(TileIndex tile)
 {
-	Slope s = GetTileSlope(tile, h);
-	if (h != nullptr) *h *= TILE_HEIGHT;
-	return s;
+	return std::get<0>(GetTileSlopeZ(tile));
 }
 
-Slope GetTilePixelSlopeOutsideMap(int x, int y, int *h);
+/**
+ * Return the slope of a given tile
+ * @param tile Tile to compute slope of
+ * @return Slope of the tile, except for the HALFTILE part, and the z height.
+ */
+inline std::tuple<Slope, int> GetTilePixelSlope(TileIndex tile)
+{
+	auto [s, h] = GetTileSlopeZ(tile);
+	return {s, h * TILE_HEIGHT};
+}
+
+std::tuple<Slope, int> GetTilePixelSlopeOutsideMap(int x, int y);
 
 /**
  * Get bottom height of the tile
