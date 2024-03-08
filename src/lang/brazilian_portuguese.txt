@@ -1564,7 +1564,7 @@ STR_CONFIG_SETTING_OIL_REF_EDGE_DISTANCE                        :Distância máx
 STR_CONFIG_SETTING_OIL_REF_EDGE_DISTANCE_HELPTEXT               :Limite de distância entre a borda do mapa e o local de construção de refinarias e plataformas de petróleo. Em mapas de ilhas isso garante que elas fiquem perto da costa. Em mapas com mais de 256 quadrados esse valor é aumentado.
 
 STR_CONFIG_SETTING_SNOWLINE_HEIGHT                              :Altura da linha de neve: {STRING}
-STR_CONFIG_SETTING_SNOWLINE_HEIGHT_HELPTEXT                     :Escolher a que altura a neve começa na paisagem subártica. A neve também afeta a geração de indústrias e os requisitos de crescimento das localidades. Pode ser modificado somente no Editor de Cenário ou então é calculado usando a "cobertura de neve"
+STR_CONFIG_SETTING_SNOWLINE_HEIGHT_HELPTEXT                     :Escolher a que altura a neve começa na paisagem subártica. A neve também afeta a geração de indústrias e os requisitos de crescimento das localidades. Só pode ser modificado no Editor de Cenário ou então é calculado usando a "cobertura de neve"
 
 STR_CONFIG_SETTING_SNOW_COVERAGE                                :Cobertura de neve: {STRING}
 STR_CONFIG_SETTING_SNOW_COVERAGE_HELPTEXT                       :Escolher a quantidade aproximada de neve na paisagem subártica. A neve também afeta a geração das indústrias e os requisitos para crescimento das localidades. Usado somente durante a geração do mapa. O nível do mar e as suas encostas nunca têm neve.
@@ -1651,8 +1651,8 @@ STR_CONFIG_SETTING_SMOOTH_SCROLLING_HELPTEXT                    :Controla como a
 STR_CONFIG_SETTING_MEASURE_TOOLTIP                              :Mostrar medidas quando usar as ferramentas de construção: {STRING}
 STR_CONFIG_SETTING_MEASURE_TOOLTIP_HELPTEXT                     :Mostrar distâncias em quadrados e diferenças de altura quando Clicar+Arrastar nas ações de construção
 
-STR_CONFIG_SETTING_LIVERIES                                     :Mostrar pinturas específicas do tipo de veículo: {STRING}
-STR_CONFIG_SETTING_LIVERIES_HELPTEXT                            :Controla a utilização de pinturas específicas por tipo de veículo (em vez de pinturas por empresa)
+STR_CONFIG_SETTING_LIVERIES                                     :Mostrar cores específicas do tipo de veículo: {STRING}
+STR_CONFIG_SETTING_LIVERIES_HELPTEXT                            :Controla a utilização de cores específicas, por tipo de veículo, para os veículos(em vez de cores por empresa)
 ###length 3
 STR_CONFIG_SETTING_LIVERIES_NONE                                :Nenhuma
 STR_CONFIG_SETTING_LIVERIES_OWN                                 :Própria empresa
@@ -2268,14 +2268,14 @@ STR_LIVERY_SHIP_GROUP_TOOLTIP                                   :{BLACK}Mostrar 
 STR_LIVERY_AIRCRAFT_GROUP_TOOLTIP                               :{BLACK}Mostrar cores dos grupos de aeronaves
 STR_LIVERY_PRIMARY_TOOLTIP                                      :{BLACK}Escolher a cor principal para o esquema selecionado. Ctrl+Clique para definir esta cor para todos os esquemas
 STR_LIVERY_SECONDARY_TOOLTIP                                    :{BLACK}Escolher a cor secundária para o esquema selecionado. Ctrl+Clique para definir esta cor para todos os esquemas
-STR_LIVERY_PANEL_TOOLTIP                                        :{BLACK}Selecionar o esquema de cores a alterar, ou esquemas múltiplos,- utilizando Ctrl+Clique. Clique na caixa para usar o esquema de cores
+STR_LIVERY_PANEL_TOOLTIP                                        :{BLACK}Selecionar um esquema de cores para alterar ou vários esquemas com Ctrl+Clique. Clique na caixa para usar o esquema de cores
 STR_LIVERY_TRAIN_GROUP_EMPTY                                    :Não há grupos de trens configurados
 STR_LIVERY_ROAD_VEHICLE_GROUP_EMPTY                             :Não há grupos de veículos configurados
 STR_LIVERY_SHIP_GROUP_EMPTY                                     :Não há grupos de embarcações configurados
 STR_LIVERY_AIRCRAFT_GROUP_EMPTY                                 :Não há grupos de aeronaves configurados
 
 ###length 23
-STR_LIVERY_DEFAULT                                              :Pintura Padrão
+STR_LIVERY_DEFAULT                                              :Cor Padrão
 STR_LIVERY_STEAM                                                :Locomotiva a Vapor
 STR_LIVERY_DIESEL                                               :Locomotiva Diesel
 STR_LIVERY_ELECTRIC                                             :Locomotiva Elétrica
@@ -3562,12 +3562,12 @@ STR_NEWGRF_LIST_MISSING                                         :{RED}Arquivos e
 
 # NewGRF 'it's broken' warnings
 STR_NEWGRF_BROKEN                                               :{WHITE}O comportamento do NewGRF '{0:STRING}' pode causar erros de sincronização e/ou travamentos
-STR_NEWGRF_BROKEN_POWERED_WAGON                                 :{WHITE}O estado do vagão motorizado mudou para '{1:ENGINE}' quando estiver fora do depósito
-STR_NEWGRF_BROKEN_VEHICLE_LENGTH                                :{WHITE}O comprimento do veículo mudou para '{1:ENGINE}' quando estiver fora do depósito
-STR_NEWGRF_BROKEN_CAPACITY                                      :{WHITE}A capacidade do veículo mudou para '{1:ENGINE}' quando estiver fora do depósito ou em adaptação
+STR_NEWGRF_BROKEN_POWERED_WAGON                                 :{WHITE}Ele alterou o estado do vagão motorizado '{1:ENGINE}' quando não estava em um depósito
+STR_NEWGRF_BROKEN_VEHICLE_LENGTH                                :{WHITE}Ele alterou o comprimento do veículo '{1:ENGINE}' quando não estava em um depósito
+STR_NEWGRF_BROKEN_CAPACITY                                      :{WHITE}Ele alterou a capacidade do veículo '{1:ENGINE}' quando não estava em um depósito ou em adaptação
 STR_BROKEN_VEHICLE_LENGTH                                       :{WHITE}O trem '{VEHICLE}' pertencente a '{COMPANY}' tem um comprimento inválido, possivelmente devido à problemas com NewGRFs. Podem ocorrer erros de sincronização ou travamento do jogo
 
-STR_NEWGRF_BUGGY                                                :{WHITE}NewGRF '{0:STRING}' fornece informação incorreta
+STR_NEWGRF_BUGGY                                                :{WHITE}NewGRF '{0:STRING}' produz informação incorreta
 STR_NEWGRF_BUGGY_ARTICULATED_CARGO                              :{WHITE}A informação de carga/adaptação para '{1:ENGINE}' é diferente da lista de compra depois da construção. Isto pode fazer a renovação/substituição automática falhar se adaptar corretamente
 STR_NEWGRF_BUGGY_ENDLESS_PRODUCTION_CALLBACK                    :{WHITE}'{1:STRING}' causou um loop infinito na chamada de produção
 STR_NEWGRF_BUGGY_UNKNOWN_CALLBACK_RESULT                        :{WHITE}Chamada {1:HEX} devolveu resultado desconhecido/inválido {2:HEX}
@@ -3620,7 +3620,7 @@ STR_TOWN_VIEW_CARGO_FOR_TOWNGROWTH                              :{BLACK}Carga ne
 STR_TOWN_VIEW_CARGO_FOR_TOWNGROWTH_REQUIRED_GENERAL             :{ORANGE}{STRING}{RED} é necessário
 STR_TOWN_VIEW_CARGO_FOR_TOWNGROWTH_REQUIRED_WINTER              :{ORANGE}{STRING}{BLACK} é necessário no inverno
 STR_TOWN_VIEW_CARGO_FOR_TOWNGROWTH_DELIVERED_GENERAL            :{ORANGE}{STRING}{GREEN} entregue
-STR_TOWN_VIEW_CARGO_FOR_TOWNGROWTH_REQUIRED                     :{ORANGE}{CARGO_TINY} / {CARGO_LONG}{RED} (ainda necessário)
+STR_TOWN_VIEW_CARGO_FOR_TOWNGROWTH_REQUIRED                     :{ORANGE}{CARGO_TINY} / {CARGO_LONG}{RED} (ainda é necessário)
 STR_TOWN_VIEW_CARGO_FOR_TOWNGROWTH_DELIVERED                    :{ORANGE}{CARGO_TINY} / {CARGO_LONG}{GREEN} (entregue)
 STR_TOWN_VIEW_TOWN_GROWS_EVERY                                  :{BLACK}Localidade cresce a cada {ORANGE}{UNITS_DAYS_OR_SECONDS}
 STR_TOWN_VIEW_TOWN_GROWS_EVERY_FUNDED                           :{BLACK}Localidade cresce a cada {ORANGE}{UNITS_DAYS_OR_SECONDS} (financiada)
@@ -3656,7 +3656,7 @@ STR_LOCAL_AUTHORITY_ACTION_LARGE_ADVERTISING_CAMPAIGN           :Campanha public
 STR_LOCAL_AUTHORITY_ACTION_ROAD_RECONSTRUCTION                  :Financiar a reconstrução das estradas locais
 STR_LOCAL_AUTHORITY_ACTION_STATUE_OF_COMPANY                    :Construir estátua do proprietário da empresa
 STR_LOCAL_AUTHORITY_ACTION_NEW_BUILDINGS                        :Financiar novos edifícios
-STR_LOCAL_AUTHORITY_ACTION_EXCLUSIVE_TRANSPORT                  :Comprar direitos exclusivos de transportes
+STR_LOCAL_AUTHORITY_ACTION_EXCLUSIVE_TRANSPORT                  :Comprar direitos exclusivos de transporte
 STR_LOCAL_AUTHORITY_ACTION_BRIBE                                :Subornar a autoridade local
 ###next-name-looks-similar
 
@@ -3665,7 +3665,7 @@ STR_LOCAL_AUTHORITY_ACTION_TOOLTIP_MEDIUM_ADVERTISING           :{PUSH_COLOUR}{Y
 STR_LOCAL_AUTHORITY_ACTION_TOOLTIP_LARGE_ADVERTISING            :{PUSH_COLOUR}{YELLOW}Iniciar uma campanha publicitária grande local, para atrair mais passageiros e cargas para seus serviços de transporte.{}Produz um aumento temporário na avaliação da estação em um raio grande ao redor do centro da localidade{}{POP_COLOUR}Custo: {CURRENCY_LONG}
 STR_LOCAL_AUTHORITY_ACTION_TOOLTIP_ROAD_RECONSTRUCTION_MONTHS   :{PUSH_COLOUR}{YELLOW}Financiar a reconstrução da rede urbana de estradas.{}Provoca uma perturbação considerável no tráfego por até 6 meses.{}{POP_COLOUR}Custo: {CURRENCY_LONG}
 STR_LOCAL_AUTHORITY_ACTION_TOOLTIP_ROAD_RECONSTRUCTION_MINUTES  :{PUSH_COLOUR}{YELLOW}Financiar a reconstrução da rede urbana de estradas.{}Provoca uma perturbação considerável no tráfego por até 6 minutos.{}{POP_COLOUR}Custo: {CURRENCY_LONG}
-STR_LOCAL_AUTHORITY_ACTION_TOOLTIP_STATUE_OF_COMPANY            :{PUSH_COLOUR}{YELLOW}Construir uma estátua em homenagem à sua empresa.{}Produz um aumento permanente na classificação da estação nesta cidade..{}{POP_COLOUR}Custo: {CURRENCY_LONG}
+STR_LOCAL_AUTHORITY_ACTION_TOOLTIP_STATUE_OF_COMPANY            :{PUSH_COLOUR}{YELLOW}Construir uma estátua em homenagem à sua empresa.{}Produz um aumento permanente na classificação da estação nesta localidade.{}{POP_COLOUR}Custo: {CURRENCY_LONG}
 STR_LOCAL_AUTHORITY_ACTION_TOOLTIP_NEW_BUILDINGS                :{PUSH_COLOUR}{YELLOW}Financiar a construção de novos edifícios na localidade.{}Produz um aumento temporário no crescimento desta localidade.{}{POP_COLOUR}Custo: {CURRENCY_LONG}
 STR_LOCAL_AUTHORITY_ACTION_TOOLTIP_EXCLUSIVE_TRANSPORT_MONTHS   :{PUSH_COLOUR}{YELLOW}Comprar os direitos exclusivos de transporte na localidade por 12 meses.{}A autoridade local não permitirá que passageiros e cargas usem as estações dos concorrentes. Um suborno bem sucedido feito por um concorrente irá cancelar este contrato.{}{POP_COLOUR}Custo: {CURRENCY_LONG}
 STR_LOCAL_AUTHORITY_ACTION_TOOLTIP_EXCLUSIVE_TRANSPORT_MINUTES  :{PUSH_COLOUR}{YELLOW}Comprar os direitos exclusivos de transporte na localidade por 12 minutos.{}A autoridade local não permitirá que passageiros e cargas usem as estações dos concorrentes. Um suborno bem sucedido feito por um concorrente irá cancelar este contrato.{}{POP_COLOUR}Custo: {CURRENCY_LONG}
@@ -3721,7 +3721,7 @@ STR_SUBSIDIES_SUBSIDISED_TITLE                                  :{BLACK}Serviço
 STR_SUBSIDIES_SUBSIDISED_FROM_TO                                :{ORANGE}{STRING} de {STRING} para {STRING}{YELLOW} ({COMPANY}{YELLOW}, {STRING})
 STR_SUBSIDIES_TOOLTIP_CLICK_ON_SERVICE_TO_CENTER                :{BLACK}Clique em um serviço para centralizar visualização principal em uma indústria/localidade. Ctrl+Clique para abrir uma nova visualização na localização da indústria/localidade
 STR_SUBSIDIES_OFFERED_EXPIRY_DATE                               :até {DATE_SHORT}
-STR_SUBSIDIES_OFFERED_EXPIRY_TIME                               :durante {UNITS_MONTHS_OR_MINUTES}
+STR_SUBSIDIES_OFFERED_EXPIRY_TIME                               :por {UNITS_MONTHS_OR_MINUTES}
 STR_SUBSIDIES_SUBSIDISED_EXPIRY_DATE                            :até {DATE_SHORT}
 STR_SUBSIDIES_SUBSIDISED_EXPIRY_TIME                            :{UNITS_MONTHS_OR_MINUTES} restante{P "" s}
 
@@ -3749,7 +3749,7 @@ STR_STATION_LIST_SELECT_ALL_FACILITIES                          :{BLACK}Selecion
 STR_STATION_LIST_CARGO_FILTER_ALL_AND_NO_RATING                 :Todos os tipos de carga e sem classificação
 STR_STATION_LIST_CARGO_FILTER_MULTIPLE                          :Vários tipos de carga
 STR_STATION_LIST_CARGO_FILTER_NO_CARGO_TYPES                    :Sem tipos de carga
-STR_STATION_LIST_CARGO_FILTER_ONLY_NO_RATING                    :Somente sem classificação de carga
+STR_STATION_LIST_CARGO_FILTER_ONLY_NO_RATING                    :Apenas sem classificação de carga
 STR_STATION_LIST_CARGO_FILTER_SELECT_ALL                        :Selecionar tudo e sem classificação
 STR_STATION_LIST_CARGO_FILTER_NO_RATING                         :Sem classificação de carga
 STR_STATION_LIST_CARGO_FILTER_EXPAND                            :Mostrar mais...
@@ -3760,8 +3760,8 @@ STR_STATION_VIEW_WAITING_CARGO                                  :{WHITE}{CARGO_L
 STR_STATION_VIEW_RESERVED                                       :{YELLOW}({CARGO_SHORT} reservado para carregamento)
 
 STR_STATION_VIEW_ACCEPTS_BUTTON                                 :{BLACK}Aceitas
-STR_STATION_VIEW_ACCEPTS_TOOLTIP                                :{BLACK}Mostrar lista de cargas aceitas
-STR_STATION_VIEW_ACCEPTS_CARGO                                  :{BLACK}Aceita: {WHITE}{CARGO_LIST}
+STR_STATION_VIEW_ACCEPTS_TOOLTIP                                :{BLACK}Mostrar lista de cargas que são aceitas
+STR_STATION_VIEW_ACCEPTS_CARGO                                  :{BLACK}Aceitas: {WHITE}{CARGO_LIST}
 
 STR_STATION_VIEW_EXCLUSIVE_RIGHTS_SELF                          :{BLACK}Esta estação tem direitos exclusivos de transporte nesta localidade.
 STR_STATION_VIEW_EXCLUSIVE_RIGHTS_COMPANY                       :{YELLOW}{COMPANY}{BLACK} adquiriu direitos exclusivos de transporte nesta localidade.
@@ -3780,7 +3780,7 @@ STR_STATION_VIEW_PLANNED_AMOUNT                                 :Quantidade: Pla
 STR_STATION_VIEW_FROM                                           :{YELLOW}{CARGO_SHORT} de {STATION}
 STR_STATION_VIEW_VIA                                            :{YELLOW}{CARGO_SHORT} via {STATION}
 STR_STATION_VIEW_TO                                             :{YELLOW}{CARGO_SHORT} para {STATION}
-STR_STATION_VIEW_FROM_ANY                                       :{RED}{CARGO_SHORT} de estação desconhecida
+STR_STATION_VIEW_FROM_ANY                                       :{RED}{CARGO_SHORT} de qualquer estação
 STR_STATION_VIEW_TO_ANY                                         :{RED}{CARGO_SHORT} para qualquer estação
 STR_STATION_VIEW_VIA_ANY                                        :{RED}{CARGO_SHORT} via qualquer estação
 STR_STATION_VIEW_FROM_HERE                                      :{GREEN}{CARGO_SHORT} desta estação
@@ -3825,7 +3825,7 @@ STR_WAYPOINT_VIEW_CHANGE_WAYPOINT_NAME                          :{BLACK}Alterar 
 STR_BUOY_VIEW_CENTER_TOOLTIP                                    :{BLACK}Centralizar visualização principal na localização da boia. Ctrl+Clique para abrir uma nova visualização na localização da boia
 STR_BUOY_VIEW_CHANGE_BUOY_NAME                                  :{BLACK}Alterar o nome da boia
 
-STR_EDIT_WAYPOINT_NAME                                          :{WHITE}Editar nome do ponto de controle
+STR_EDIT_WAYPOINT_NAME                                          :{WHITE}Editar o nome do ponto de controle
 
 # Finances window
 STR_FINANCES_CAPTION                                            :{WHITE}Finanças de {COMPANY} {BLACK}{COMPANY_NUM}
@@ -3876,7 +3876,7 @@ STR_FINANCES_INFRASTRUCTURE_BUTTON                              :{BLACK}Infraest
 STR_COMPANY_VIEW_CAPTION                                        :{WHITE}{COMPANY} {BLACK}{COMPANY_NUM}
 STR_COMPANY_VIEW_PRESIDENT_MANAGER_TITLE                        :{WHITE}{PRESIDENT_NAME}{}{GOLD}(Presidente)
 
-STR_COMPANY_VIEW_INAUGURATED_TITLE                              :{GOLD}Inauguração: {WHITE}{NUM}
+STR_COMPANY_VIEW_INAUGURATED_TITLE                              :{GOLD}Inaugurado: {WHITE}{NUM}
 STR_COMPANY_VIEW_COLOUR_SCHEME_TITLE                            :{GOLD}Esquema de Cores:
 STR_COMPANY_VIEW_VEHICLES_TITLE                                 :{GOLD}Veículos:
 STR_COMPANY_VIEW_TRAINS                                         :{WHITE}{COMMA} tre{P m ns}
@@ -3909,11 +3909,11 @@ STR_COMPANY_VIEW_HOSTILE_TAKEOVER_TOOLTIP                       :{BLACK}Fazer a 
 STR_COMPANY_VIEW_NEW_FACE_BUTTON                                :{BLACK}Nova Face
 STR_COMPANY_VIEW_NEW_FACE_TOOLTIP                               :{BLACK}Escolher nova face para o presidente
 STR_COMPANY_VIEW_COLOUR_SCHEME_BUTTON                           :{BLACK}Esquema de Cores
-STR_COMPANY_VIEW_COLOUR_SCHEME_TOOLTIP                          :{BLACK}Alterar pintura dos veículos da empresa
+STR_COMPANY_VIEW_COLOUR_SCHEME_TOOLTIP                          :{BLACK}Alterar a cor dos veículos da empresa
 STR_COMPANY_VIEW_COMPANY_NAME_BUTTON                            :{BLACK}Nome da Empresa
-STR_COMPANY_VIEW_COMPANY_NAME_TOOLTIP                           :{BLACK}Alterar nome da empresa
+STR_COMPANY_VIEW_COMPANY_NAME_TOOLTIP                           :{BLACK}Alterar o nome da empresa
 STR_COMPANY_VIEW_PRESIDENT_NAME_BUTTON                          :{BLACK}Nome do Presidente
-STR_COMPANY_VIEW_PRESIDENT_NAME_TOOLTIP                         :{BLACK}Alterar nome do presidente
+STR_COMPANY_VIEW_PRESIDENT_NAME_TOOLTIP                         :{BLACK}Alterar o nome do presidente
 
 STR_COMPANY_VIEW_COMPANY_NAME_QUERY_CAPTION                     :Nome da Empresa
 STR_COMPANY_VIEW_PRESIDENT_S_NAME_QUERY_CAPTION                 :Nome do Presidente
@@ -4030,7 +4030,7 @@ STR_GROUPS_CLICK_ON_GROUP_FOR_TOOLTIP                           :{BLACK}Grupos -
 STR_GROUP_CREATE_TOOLTIP                                        :{BLACK}Clique para criar um grupo
 STR_GROUP_DELETE_TOOLTIP                                        :{BLACK}Excluir o grupo selecionado
 STR_GROUP_RENAME_TOOLTIP                                        :{BLACK}Alterar o nome do grupo selecionado
-STR_GROUP_LIVERY_TOOLTIP                                        :{BLACK}Alterar a pintura do grupo selecionado
+STR_GROUP_LIVERY_TOOLTIP                                        :{BLACK}Alterar a cor do grupo selecionado
 STR_GROUP_REPLACE_PROTECTION_TOOLTIP                            :{BLACK}Clique para proteger este grupo da substituição automática global. Ctrl+Clique para também proteger os subgrupos.
 
 STR_QUERY_GROUP_DELETE_CAPTION                                  :{WHITE}Excluir grupo
@@ -4088,7 +4088,7 @@ STR_PURCHASE_INFO_REFITTABLE_TO                                 :{BLACK}Adaptáv
 STR_PURCHASE_INFO_ALL_TYPES                                     :Todos os tipos de carga
 STR_PURCHASE_INFO_NONE                                          :Nenhuma
 STR_PURCHASE_INFO_ENGINES_ONLY                                  :Somente locomotivas
-STR_PURCHASE_INFO_ALL_BUT                                       :Todas menos {CARGO_LIST}
+STR_PURCHASE_INFO_ALL_BUT                                       :Todas, exceto {CARGO_LIST}
 STR_PURCHASE_INFO_MAX_TE                                        :{BLACK}Força de Tração máx.: {GOLD}{FORCE}
 STR_PURCHASE_INFO_AIRCRAFT_RANGE                                :{BLACK}Autonomia: {GOLD}{COMMA} quadrados
 STR_PURCHASE_INFO_AIRCRAFT_TYPE                                 :{BLACK}Tipo de aeronave: {GOLD}{STRING}
@@ -4120,7 +4120,7 @@ STR_BUY_VEHICLE_AIRCRAFT_BUY_REFIT_VEHICLE_BUTTON               :{BLACK}Comprar 
 STR_BUY_VEHICLE_TRAIN_BUY_VEHICLE_TOOLTIP                       :{BLACK}Comprar o veículo ferroviário selecionado. Pressione também Shift para apenas mostrar o custo estimado
 STR_BUY_VEHICLE_ROAD_VEHICLE_BUY_VEHICLE_TOOLTIP                :{BLACK}Comprar o veículo rodoviário selecionado. Pressione também Shift para apenas mostrar o custo estimado
 STR_BUY_VEHICLE_SHIP_BUY_VEHICLE_TOOLTIP                        :{BLACK}Comprar a embarcação selecionada. Pressione também Shift para apenas mostrar o custo estimado
-STR_BUY_VEHICLE_AIRCRAFT_BUY_VEHICLE_TOOLTIP                    :{BLACK}Comprar aeronave selecionada. Pressione também Shift para apenas mostrar o custo estimado
+STR_BUY_VEHICLE_AIRCRAFT_BUY_VEHICLE_TOOLTIP                    :{BLACK}Comprar a aeronave selecionada. Pressione também Shift para apenas mostrar o custo estimado
 
 ###length VEHICLE_TYPES
 STR_BUY_VEHICLE_TRAIN_BUY_REFIT_VEHICLE_TOOLTIP                 :{BLACK}Comprar e adaptar o veículo ferroviário selecionado. Pressione também Shift para apenas mostrar o custo estimado
@@ -4218,10 +4218,10 @@ STR_DEPOT_CLONE_SHIP                                            :{BLACK}Clonar E
 STR_DEPOT_CLONE_AIRCRAFT                                        :{BLACK}Clonar Aeronave
 
 ###length VEHICLE_TYPES
-STR_DEPOT_CLONE_TRAIN_DEPOT_INFO                                :{BLACK}Comprar uma cópia de um trem incluindo todos os vagões. Clique neste botão e depois em um trem que estiver dentro ou fora de um depósito. Ctrl+Clique para compartilhar as ordens. Pressione também Shift para apenas mostrar o custo estimado
-STR_DEPOT_CLONE_ROAD_VEHICLE_DEPOT_INFO                         :{BLACK}Comprar uma cópia de um veículo rodoviário. Clique neste botão e depois em um veículo que estiver dentro ou fora de um depósito. Ctrl+Clique para compartilhar as ordens. Pressione também Shift para apenas mostrar o custo estimado
-STR_DEPOT_CLONE_SHIP_DEPOT_INFO                                 :{BLACK}Comprar uma cópia de uma embarcação. Clique neste botão e depois em uma embarcação que estiver dentro ou fora de um depósito. Ctrl+Clique para compartilhar as ordens. Pressione também Shift para apenas mostrar o custo estimado
-STR_DEPOT_CLONE_AIRCRAFT_INFO_HANGAR_WINDOW                     :{BLACK}Comprar uma cópia de uma aeronave. Clique neste botão e depois em uma aeronave que estiver dentro ou fora de um hangar. Ctrl+Clique para compartilhar as ordens. Pressione também Shift para apenas mostrar o custo estimado
+STR_DEPOT_CLONE_TRAIN_DEPOT_INFO                                :{BLACK}Comprar uma cópia de um trem incluindo todos os vagões. Clique neste botão e depois em um trem que está dentro ou fora do depósito. Ctrl+Clique para compartilhar as ordens. Pressione também Shift para apenas mostrar o custo estimado
+STR_DEPOT_CLONE_ROAD_VEHICLE_DEPOT_INFO                         :{BLACK}Comprar uma cópia de um veículo rodoviário. Clique neste botão e depois em um veículo que está dentro ou fora do depósito. Ctrl+Clique para compartilhar as ordens. Pressione também Shift para apenas mostrar o custo estimado
+STR_DEPOT_CLONE_SHIP_DEPOT_INFO                                 :{BLACK}Comprar uma cópia de uma embarcação. Clique neste botão e depois em uma embarcação que está dentro ou fora do depósito. Ctrl+Clique para compartilhar as ordens. Pressione também Shift para apenas mostrar o custo estimado
+STR_DEPOT_CLONE_AIRCRAFT_INFO_HANGAR_WINDOW                     :{BLACK}Comprar uma cópia de uma aeronave. Clique neste botão e depois em uma aeronave que está dentro ou fora do hangar. Ctrl+Clique para compartilhar as ordens. Pressione também Shift para apenas mostrar o custo estimado
 
 ###length VEHICLE_TYPES
 STR_DEPOT_TRAIN_LOCATION_TOOLTIP                                :{BLACK}Centralizar visualização principal na localização do depósito ferroviário. Ctrl+Clique para abrir uma nova visualização na localização do depósito ferroviário
@@ -4297,7 +4297,7 @@ STR_REPLACE_HELP_RIGHT_ARRAY                                    :{BLACK}Escolher
 
 STR_REPLACE_VEHICLES_START                                      :{BLACK}Iniciar Substituição de Veículos
 STR_REPLACE_VEHICLES_NOW                                        :Substituir todos os veículos agora
-STR_REPLACE_VEHICLES_WHEN_OLD                                   :Substituir somente veículos velhos
+STR_REPLACE_VEHICLES_WHEN_OLD                                   :Substituir apenas veículos velhos
 STR_REPLACE_HELP_START_BUTTON                                   :{BLACK}Pressione para iniciar a substituição do tipo de locomotiva selecionada à esquerda com o tipo de locomotiva selecionada à direita
 STR_REPLACE_NOT_REPLACING                                       :{BLACK}Não substituindo
 STR_REPLACE_NOT_REPLACING_VEHICLE_SELECTED                      :{BLACK}Nenhum veículo selecionado
@@ -4326,7 +4326,7 @@ STR_REPLACE_ROAD_VEHICLES                                       :Veículos Rodov
 STR_REPLACE_TRAM_VEHICLES                                       :Bondes
 
 STR_REPLACE_REMOVE_WAGON                                        :{BLACK}Remoção de vagões ({STRING}): {ORANGE}{STRING}
-STR_REPLACE_REMOVE_WAGON_HELP                                   :{BLACK}A substituição automática irá manter o trem com o mesmo comprimento removendo vagões (começando pela frente), se a substituição da locomotiva aumentar o comprimento do trem
+STR_REPLACE_REMOVE_WAGON_HELP                                   :{BLACK}Forçar a substituição automática a manter o trem com o mesmo comprimento removendo vagões (começando pela frente), se a substituição da locomotiva aumentar o comprimento do trem
 STR_REPLACE_REMOVE_WAGON_GROUP_HELP                             :{STRING}. Ctrl+Clique para também aplicar aos subgrupos
 
 # Vehicle view
@@ -4786,7 +4786,7 @@ STR_AI_GAME_SCRIPT_TOOLTIP                                      :{BLACK}Verifica
 
 STR_ERROR_AI_NO_AI_FOUND                                        :Não foi encontrada IA adequada para carregar.{}Esta IA é um pacote vazio e não fará nada.{}Você pode obter várias IAs usando o sistema de 'Conteúdo Online'
 STR_ERROR_AI_PLEASE_REPORT_CRASH                                :{WHITE}Um dos scripts em execução travou. Favor relatar isto ao autor do script com uma captura de tela da Janela de Depuração de IA/Script de Jogo
-STR_ERROR_AI_DEBUG_SERVER_ONLY                                  :{YELLOW}A janela de Depuração de IA/Script de Jogo está disponível somente para o servidor
+STR_ERROR_AI_DEBUG_SERVER_ONLY                                  :{YELLOW}A janela de Depuração de IA/Script de Jogo está disponível apenas para o servidor
 
 # AI configuration window
 STR_AI_CONFIG_CAPTION_AI                                        :{WHITE}Configurações de IA
@@ -5097,7 +5097,7 @@ STR_ERROR_ROAD_VEHICLE_MUST_BE_STOPPED_INSIDE_DEPOT             :{WHITE}... deve
 STR_ERROR_SHIP_MUST_BE_STOPPED_INSIDE_DEPOT                     :{WHITE}... deve estar parado em um depósito
 STR_ERROR_AIRCRAFT_MUST_BE_STOPPED_INSIDE_HANGAR                :{WHITE}... deve estar parado em um hangar
 
-STR_ERROR_TRAINS_CAN_ONLY_BE_ALTERED_INSIDE_A_DEPOT             :{WHITE}Trens podem ser modificados somente quando estão parados em um depósito
+STR_ERROR_TRAINS_CAN_ONLY_BE_ALTERED_INSIDE_A_DEPOT             :{WHITE}Trens só podem ser modificados quando estão parados em um depósito
 STR_ERROR_TRAIN_TOO_LONG                                        :{WHITE}Trem muito longo
 STR_ERROR_CAN_T_REVERSE_DIRECTION_RAIL_VEHICLE                  :{WHITE}Não é possível inverter a direção do veículo...
 STR_ERROR_CAN_T_REVERSE_DIRECTION_RAIL_VEHICLE_MULTIPLE_UNITS   :{WHITE}... composto por múltiplas unidades
@@ -5111,7 +5111,7 @@ STR_ERROR_UNABLE_TO_FIND_LOCAL_DEPOT                            :{WHITE}Não é 
 STR_ERROR_DEPOT_WRONG_DEPOT_TYPE                                :Tipo de depósito errado
 
 # Depot unbunching related errors
-STR_ERROR_UNBUNCHING_ONLY_ONE_ALLOWED                           :{WHITE}... pode ter somente uma ordem de desagrupar
+STR_ERROR_UNBUNCHING_ONLY_ONE_ALLOWED                           :{WHITE}... só pode ter uma ordem de desagrupar
 STR_ERROR_UNBUNCHING_NO_FULL_LOAD                               :{WHITE}... não é possível usar ordens de carga completa quando o veículo tem uma ordem de desagrupar
 STR_ERROR_UNBUNCHING_NO_UNBUNCHING_FULL_LOAD                    :{WHITE}... não é possível desagrupar um veículo com uma ordem de carga completa
 STR_ERROR_UNBUNCHING_NO_CONDITIONAL                             :{WHITE}... não é possível usar ordens condicionais quando um veículo tem uma ordem de desagrupar
@@ -5327,7 +5327,7 @@ STR_ERROR_NO_BUOY                                               :{WHITE}Não exi
 
 # Timetable related errors
 STR_ERROR_CAN_T_TIMETABLE_VEHICLE                               :{WHITE}Não é possível programar veículo...
-STR_ERROR_TIMETABLE_ONLY_WAIT_AT_STATIONS                       :{WHITE}Veículos podem aguardar somente em estações
+STR_ERROR_TIMETABLE_ONLY_WAIT_AT_STATIONS                       :{WHITE}Veículos só podem aguardar em estações
 STR_ERROR_TIMETABLE_NOT_STOPPING_HERE                           :{WHITE}Este veículo não para nesta estação
 STR_ERROR_TIMETABLE_INCOMPLETE                                  :{WHITE}... horário incompleto
 STR_ERROR_TIMETABLE_NOT_STARTED                                 :{WHITE}... o horário ainda não começou

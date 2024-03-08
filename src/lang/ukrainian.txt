@@ -1031,6 +1031,7 @@ STR_NEWS_NEW_VEHICLE_NOW_AVAILABLE_WITH_TYPE                    :{BLACK}Відт
 
 STR_NEWS_SHOW_VEHICLE_GROUP_TOOLTIP                             :{BLACK}Відкрити вікно групи з центром на групах транспорту
 
+STR_NEWS_STATION_NO_LONGER_ACCEPTS_CARGO_LIST                   :{WHITE}{STATION} більше не приймає: {CARGO_LIST}
 STR_NEWS_STATION_NOW_ACCEPTS_CARGO_LIST                         :{WHITE}{STATION} тепер приймає: {CARGO_LIST}
 
 STR_NEWS_OFFER_OF_SUBSIDY_EXPIRED                               :{BIG_FONT}{BLACK}Субсидія більше не пропонується:{}{}Перевезення {STRING.r} з {STRING} до {STRING}
@@ -2288,13 +2289,14 @@ STR_INTRO_TOOLTIP_SUB_ARCTIC_LANDSCAPE                          :{BLACK}Вибр
 STR_INTRO_TOOLTIP_SUB_TROPICAL_LANDSCAPE                        :{BLACK}Вибрати 'тропічний' ландшафт
 STR_INTRO_TOOLTIP_TOYLAND_LANDSCAPE                             :{BLACK}Вибрати 'іграшковий' ландшафт
 
-STR_INTRO_TOOLTIP_GAME_OPTIONS                                  :{BLACK}Показати налаштування гри
-STR_INTRO_TOOLTIP_HIGHSCORE                                     :{BLACK}Показати таблицю рекордів
+STR_INTRO_TOOLTIP_GAME_OPTIONS                                  :{BLACK}Відкрити налаштування гри
+STR_INTRO_TOOLTIP_HIGHSCORE                                     :{BLACK}Відкрити таблицю рекордів
+STR_INTRO_TOOLTIP_HELP                                          :{BLACK}Отримати доступ до довідки й мережевих ресурсів
 STR_INTRO_TOOLTIP_CONFIG_SETTINGS_TREE                          :{BLACK}Показати налаштування
-STR_INTRO_TOOLTIP_NEWGRF_SETTINGS                               :{BLACK}Показати налаштування NewGRF
+STR_INTRO_TOOLTIP_NEWGRF_SETTINGS                               :{BLACK}Відкрити налаштування NewGRF
 STR_INTRO_TOOLTIP_ONLINE_CONTENT                                :{BLACK}Перевірити доступний для завантаження додатковий контент
 STR_INTRO_TOOLTIP_AI_SETTINGS                                   :{BLACK}Показати налаштування ШІ
-STR_INTRO_TOOLTIP_GAMESCRIPT_SETTINGS                           :{BLACK}Показати налаштування ігрового скрипту
+STR_INTRO_TOOLTIP_GAMESCRIPT_SETTINGS                           :{BLACK}Відкрити налаштування ігрового скрипту
 STR_INTRO_TOOLTIP_QUIT                                          :{BLACK}Вийти з OpenTTD
 
 STR_INTRO_BASESET                                               :{BLACK}В обраному наборі базової графіки немає {NUM} спрайт{P а ів ів}. Будь ласка, оновіть набір графіки.
@@ -2906,7 +2908,9 @@ STR_STATION_BUILD_STATION_TYPE_TOOLTIP                          :{BLACK}Вибе
 
 STR_STATION_CLASS_DFLT                                          :Звичайна
 STR_STATION_CLASS_DFLT_STATION                                  :Звичайна станція
+STR_STATION_CLASS_DFLT_ROADSTOP                                 :Звичайна зупинка
 STR_STATION_CLASS_WAYP                                          :Пункт
+STR_STATION_CLASS_WAYP_WAYPOINT                                 :Звичайна точка маршруту
 
 # Signal window
 STR_BUILD_SIGNAL_CAPTION                                        :{WHITE}Вибір сигналів
@@ -3693,6 +3697,7 @@ STR_TOWN_VIEW_TOWN_CAPTION                                      :{WHITE}{TOWN}
 STR_TOWN_VIEW_CITY_CAPTION                                      :{WHITE}{TOWN} (місто)
 STR_TOWN_VIEW_POPULATION_HOUSES                                 :{BLACK}Населення: {ORANGE}{COMMA}{BLACK}  Будинки: {ORANGE}{COMMA}
 STR_TOWN_VIEW_CARGO_LAST_MONTH_MAX                              :{BLACK}{CARGO_LIST} минулого місяця: {ORANGE}{COMMA}{BLACK}  макс: {ORANGE}{COMMA}
+STR_TOWN_VIEW_CARGO_LAST_MINUTE_MAX                             :{BLACK}{CARGO_LIST} минулої хвилини: {ORANGE}{COMMA}{BLACK}  найбільше: {ORANGE}{COMMA}
 STR_TOWN_VIEW_CARGO_FOR_TOWNGROWTH                              :{BLACK}Вантаж, потрібний для зростання міста:
 STR_TOWN_VIEW_CARGO_FOR_TOWNGROWTH_REQUIRED_GENERAL             :{ORANGE}{STRING}{RED} потрібно
 STR_TOWN_VIEW_CARGO_FOR_TOWNGROWTH_REQUIRED_WINTER              :{ORANGE}{STRING}{BLACK} потрібно взимку
@@ -4822,6 +4827,7 @@ STR_TIMETABLE_SCHEDULED                                         :{BLACK}Приз
 STR_TIMETABLE_EXPECTED_TOOLTIP                                  :{BLACK}Перемкнути очікуване на заплановане
 
 STR_TIMETABLE_ARRIVAL_DATE                                      :В: {COLOUR}{DATE_TINY}
+STR_TIMETABLE_DEPARTURE_DATE                                    :В: {COLOUR}{DATE_TINY}
 STR_TIMETABLE_ARRIVAL_SECONDS_IN_FUTURE                         :В: {COLOUR}{COMMA} сек
 STR_TIMETABLE_DEPARTURE_SECONDS_IN_FUTURE                       :П: {COLOUR}{COMMA} сек
 
