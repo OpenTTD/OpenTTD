@@ -39,7 +39,7 @@ std::tuple<Slope, int> GetFoundationSlope(TileIndex tile);
 uint GetPartialPixelZ(int x, int y, Slope corners);
 int GetSlopePixelZ(int x, int y, bool ground_vehicle = false);
 int GetSlopePixelZOutsideMap(int x, int y);
-void GetSlopePixelZOnEdge(Slope tileh, DiagDirection edge, int *z1, int *z2);
+void GetSlopePixelZOnEdge(Slope tileh, DiagDirection edge, int &z1, int &z2);
 
 /**
  * Determine the Z height of a corner relative to TileZ.
@@ -114,7 +114,7 @@ inline Point InverseRemapCoords(int x, int y)
 
 Point InverseRemapCoords2(int x, int y, bool clamp_to_map = false, bool *clamped = nullptr);
 
-uint ApplyFoundationToSlope(Foundation f, Slope *s);
+uint ApplyFoundationToSlope(Foundation f, Slope &s);
 /**
  * Applies a foundation to a slope.
  *
@@ -123,7 +123,7 @@ uint ApplyFoundationToSlope(Foundation f, Slope *s);
  * @param s  The #Slope to modify.
  * @return   Increment to the tile Z coordinate.
  */
-inline uint ApplyPixelFoundationToSlope(Foundation f, Slope *s)
+inline uint ApplyPixelFoundationToSlope(Foundation f, Slope &s)
 {
 	return ApplyFoundationToSlope(f, s) * TILE_HEIGHT;
 }

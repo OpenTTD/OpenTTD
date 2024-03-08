@@ -1930,7 +1930,7 @@ static int GetSlopePixelZ_Road(TileIndex tile, uint x, uint y, bool)
 		if (tileh == SLOPE_FLAT) return z;
 
 		Foundation f = GetRoadFoundation(tileh, GetAllRoadBits(tile));
-		z += ApplyPixelFoundationToSlope(f, &tileh);
+		z += ApplyPixelFoundationToSlope(f, tileh);
 		return z + GetPartialPixelZ(x & 0xF, y & 0xF, tileh);
 	} else {
 		return GetTileMaxPixelZ(tile);
@@ -2345,8 +2345,8 @@ static CommandCost TerraformTile_Road(TileIndex tile, DoCommandFlag flags, int z
 						auto [tileh_old, z_old] = GetTileSlopeZ(tile);
 
 						/* Get the slope on top of the foundation */
-						z_old += ApplyFoundationToSlope(GetRoadFoundation(tileh_old, bits), &tileh_old);
-						z_new += ApplyFoundationToSlope(GetRoadFoundation(tileh_new, bits), &tileh_new);
+						z_old += ApplyFoundationToSlope(GetRoadFoundation(tileh_old, bits), tileh_old);
+						z_new += ApplyFoundationToSlope(GetRoadFoundation(tileh_new, bits), tileh_new);
 
 						/* The surface slope must not be changed */
 						if ((z_old == z_new) && (tileh_old == tileh_new)) return CommandCost(EXPENSES_CONSTRUCTION, _price[PR_BUILD_FOUNDATION]);
