@@ -275,7 +275,10 @@ public:
 				}
 				node = node->m_parent;
 			}
-			assert(!path_cache.empty());
+
+			/* A empty path means we are already at the destination. The pathfinder shouldn't have been called at all.
+			 * Return a random reachable trackdir to hopefully nudge the ship out of this strange situation. */
+			if (path_cache.empty()) return GetRandomFollowUpTrackdir(v, src_tile, trackdir, true);
 
 			/* Take out the last trackdir as the result. */
 			const Trackdir result = path_cache.front();
