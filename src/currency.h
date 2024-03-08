@@ -72,7 +72,7 @@ enum Currencies {
 
 /** Specification of a currency. */
 struct CurrencySpec {
-	float rate;           ///< The conversion rate compared to the base currency.
+	uint16_t rate;           ///< The conversion rate compared to the base currency.
 	std::string separator; ///< The thousands separator for this currency.
 	TimerGameCalendar::Year to_euro; ///< Year of switching to the Euro. May also be #CF_NOEURO or #CF_ISEURO.
 	std::string prefix;    ///< Prefix to apply when formatting money in this currency.
