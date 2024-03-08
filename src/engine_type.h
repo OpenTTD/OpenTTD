@@ -201,7 +201,7 @@ inline uint64_t PackEngineNameDParam(EngineID engine_id, EngineNameContext conte
 	return engine_id | (static_cast<uint64_t>(context) << 32) | (static_cast<uint64_t>(extra_data) << 40);
 }
 
-static const uint MAX_LENGTH_ENGINE_NAME_CHARS = 32; ///< The maximum length of an engine name in characters including '\0'
+static const uint MAX_LENGTH_ENGINE_NAME_CHARS = 256; ///< The maximum length of an engine name in characters including '\0'
 
 static const EngineID INVALID_ENGINE = 0xFFFF; ///< Constant denoting an invalid engine.
 
