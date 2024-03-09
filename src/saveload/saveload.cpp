@@ -2204,39 +2204,37 @@ static void SlFixPointers()
 
 /** Yes, simply reading from a file. */
 struct FileReader : LoadFilter {
-	FILE *file; ///< The file to read from.
+	std::optional<FileHandle> file; ///< The file to read from.
 	long begin; ///< The begin of the file.
 
 	/**
 	 * Create the file reader, so it reads from a specific file.
 	 * @param file The file to read from.
 	 */
-	FileReader(FILE *file) : LoadFilter(nullptr), file(file), begin(ftell(file))
+	FileReader(FileHandle &&file) : LoadFilter(nullptr), file(std::move(file)), begin(ftell(*this->file))
 	{
 	}
 
 	/** Make sure everything is cleaned up. */
 	~FileReader()
 	{
-		if (this->file != nullptr) {
-			_game_session_stats.savegame_size = ftell(this->file) - this->begin;
-			fclose(this->file);
+		if (this->file.has_value()) {
+			_game_session_stats.savegame_size = ftell(*this->file) - this->begin;
 		}
-		this->file = nullptr;
 	}
 
 	size_t Read(uint8_t *buf, size_t size) override
 	{
 		/* We're in the process of shutting down, i.e. in "failure" mode. */
-		if (this->file == nullptr) return 0;
+		if (!this->file.has_value()) return 0;
 
-		return fread(buf, 1, size, this->file);
+		return fread(buf, 1, size, *this->file);
 	}
 
 	void Reset() override
 	{
-		clearerr(this->file);
-		if (fseek(this->file, this->begin, SEEK_SET)) {
+		clearerr(*this->file);
+		if (fseek(*this->file, this->begin, SEEK_SET)) {
 			Debug(sl, 1, "Could not reset the file reading");
 		}
 	}
@@ -2244,13 +2242,13 @@ struct FileReader : LoadFilter {
 
 /** Yes, simply writing to a file. */
 struct FileWriter : SaveFilter {
-	FILE *file; ///< The file to write to.
+	std::optional<FileHandle> file; ///< The file to write to.
 
 	/**
 	 * Create the file writer, so it writes to a specific file.
 	 * @param file The file to write to.
 	 */
-	FileWriter(FILE *file) : SaveFilter(nullptr), file(file)
+	FileWriter(FileHandle &&file) : SaveFilter(nullptr), file(std::move(file))
 	{
 	}
 
@@ -2263,18 +2261,17 @@ struct FileWriter : SaveFilter {
 	void Write(uint8_t *buf, size_t size) override
 	{
 		/* We're in the process of shutting down, i.e. in "failure" mode. */
-		if (this->file == nullptr) return;
+		if (this->file.has_value()) return;
 
-		if (fwrite(buf, 1, size, this->file) != size) SlError(STR_GAME_SAVELOAD_ERROR_FILE_NOT_WRITEABLE);
+		if (fwrite(buf, 1, size, *this->file) != size) SlError(STR_GAME_SAVELOAD_ERROR_FILE_NOT_WRITEABLE);
 	}
 
 	void Finish() override
 	{
-		if (this->file != nullptr) {
-			_game_session_stats.savegame_size = ftell(this->file);
-			fclose(this->file);
+		if (this->file.has_value()) {
+			_game_session_stats.savegame_size = ftell(*this->file);
+			this->file.reset();
 		}
-		this->file = nullptr;
 	}
 };
 
@@ -3144,14 +3141,14 @@ SaveOrLoadResult SaveOrLoad(const std::string &filename, SaveLoadOperation fop, 
 			default: NOT_REACHED();
 		}
 
-		FILE *fh = (fop == SLO_SAVE) ? FioFOpenFile(filename, "wb", sb) : FioFOpenFile(filename, "rb", sb);
+		auto fh = (fop == SLO_SAVE) ? FioFOpenFile(filename, "wb", sb) : FioFOpenFile(filename, "rb", sb);
 
 		/* Make it a little easier to load savegames from the console */
-		if (fh == nullptr && fop != SLO_SAVE) fh = FioFOpenFile(filename, "rb", SAVE_DIR);
-		if (fh == nullptr && fop != SLO_SAVE) fh = FioFOpenFile(filename, "rb", BASE_DIR);
-		if (fh == nullptr && fop != SLO_SAVE) fh = FioFOpenFile(filename, "rb", SCENARIO_DIR);
+		if (!fh.has_value() && fop != SLO_SAVE) fh = FioFOpenFile(filename, "rb", SAVE_DIR);
+		if (!fh.has_value() && fop != SLO_SAVE) fh = FioFOpenFile(filename, "rb", BASE_DIR);
+		if (!fh.has_value() && fop != SLO_SAVE) fh = FioFOpenFile(filename, "rb", SCENARIO_DIR);
 
-		if (fh == nullptr) {
+		if (!fh.has_value()) {
 			SlError(fop == SLO_SAVE ? STR_GAME_SAVELOAD_ERROR_FILE_NOT_WRITEABLE : STR_GAME_SAVELOAD_ERROR_FILE_NOT_READABLE);
 		}
 
@@ -3159,13 +3156,13 @@ SaveOrLoadResult SaveOrLoad(const std::string &filename, SaveLoadOperation fop, 
 			Debug(desync, 1, "save: {:08x}; {:02x}; {}", TimerGameEconomy::date, TimerGameEconomy::date_fract, filename);
 			if (!_settings_client.gui.threaded_saves) threaded = false;
 
-			return DoSave(std::make_shared<FileWriter>(fh), threaded);
+			return DoSave(std::make_shared<FileWriter>(std::move(*fh)), threaded);
 		}
 
 		/* LOAD game */
 		assert(fop == SLO_LOAD || fop == SLO_CHECK);
 		Debug(desync, 1, "load: {}", filename);
-		return DoLoad(std::make_shared<FileReader>(fh), fop == SLO_CHECK);
+		return DoLoad(std::make_shared<FileReader>(std::move(*fh)), fop == SLO_CHECK);
 	} catch (...) {
 		/* This code may be executed both for old and new save games. */
 		ClearSaveLoadState();

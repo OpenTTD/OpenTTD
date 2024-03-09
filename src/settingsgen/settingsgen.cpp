@@ -156,17 +156,17 @@ struct SettingsIniFile : IniLoadFile {
 	{
 	}
 
-	FILE *OpenFile(const std::string &filename, Subdirectory, size_t *size) override
+	std::optional<FileHandle> OpenFile(const std::string &filename, Subdirectory, size_t *size) override
 	{
 		/* Open the text file in binary mode to prevent end-of-line translations
 		 * done by ftell() and friends, as defined by K&R. */
-		FILE *in = fopen(filename.c_str(), "rb");
-		if (in == nullptr) return nullptr;
+		auto in = FileHandle::Open(filename, "rb");
+		if (!in.has_value()) return in;
 
-		fseek(in, 0L, SEEK_END);
-		*size = ftell(in);
+		fseek(*in, 0L, SEEK_END);
+		*size = ftell(*in);
+		fseek(*in, 0L, SEEK_SET); // Seek back to the start of the file.
 
-		fseek(in, 0L, SEEK_SET); // Seek back to the start of the file.
 		return in;
 	}
 
@@ -327,21 +327,19 @@ static void AppendFile(const char *fname, FILE *out_fp)
 {
 	if (fname == nullptr) return;
 
-	FILE *in_fp = fopen(fname, "r");
-	if (in_fp == nullptr) {
+	auto in_fp = FileHandle::Open(fname, "r");
+	if (!in_fp.has_value()) {
 		FatalError("Cannot open file {} for copying", fname);
 	}
 
 	char buffer[4096];
 	size_t length;
 	do {
-		length = fread(buffer, 1, lengthof(buffer), in_fp);
+		length = fread(buffer, 1, lengthof(buffer), *in_fp);
 		if (fwrite(buffer, 1, length, out_fp) != length) {
 			FatalError("Cannot copy file");
 		}
 	} while (length == lengthof(buffer));
-
-	fclose(in_fp);
 }
 
 /**
@@ -352,12 +350,11 @@ static void AppendFile(const char *fname, FILE *out_fp)
  */
 static bool CompareFiles(const char *n1, const char *n2)
 {
-	FILE *f2 = fopen(n2, "rb");
-	if (f2 == nullptr) return false;
+	auto f2 = FileHandle::Open(n2, "rb");
+	if (!f2.has_value()) return false;
 
-	FILE *f1 = fopen(n1, "rb");
-	if (f1 == nullptr) {
-		fclose(f2);
+	auto f1 = FileHandle::Open(n1, "rb");
+	if (!f1.has_value()) {
 		FatalError("can't open {}", n1);
 	}
 
@@ -365,18 +362,14 @@ static bool CompareFiles(const char *n1, const char *n2)
 	do {
 		char b1[4096];
 		char b2[4096];
-		l1 = fread(b1, 1, sizeof(b1), f1);
-		l2 = fread(b2, 1, sizeof(b2), f2);
+		l1 = fread(b1, 1, sizeof(b1), *f1);
+		l2 = fread(b2, 1, sizeof(b2), *f2);
 
 		if (l1 != l2 || memcmp(b1, b2, l1) != 0) {
-			fclose(f2);
-			fclose(f1);
 			return false;
 		}
 	} while (l1 != 0);
 
-	fclose(f2);
-	fclose(f1);
 	return true;
 }
 
@@ -480,15 +473,15 @@ int CDECL main(int argc, char *argv[])
 	} else {
 		static const char * const tmp_output = "tmp2.xxx";
 
-		FILE *fp = fopen(tmp_output, "w");
-		if (fp == nullptr) {
+		auto fp = FileHandle::Open(tmp_output, "w");
+		if (!fp.has_value()) {
 			FatalError("Cannot open file {}", tmp_output);
 		}
-		AppendFile(before_file, fp);
-		_stored_output.Write(fp);
-		_post_amble_output.Write(fp);
-		AppendFile(after_file, fp);
-		fclose(fp);
+		AppendFile(before_file, *fp);
+		_stored_output.Write(*fp);
+		_post_amble_output.Write(*fp);
+		AppendFile(after_file, *fp);
+		fp.reset();
 
 		std::error_code error_code;
 		if (CompareFiles(tmp_output, output_file)) {
@@ -501,4 +494,17 @@ int CDECL main(int argc, char *argv[])
 		}
 	}
 	return 0;
+}
+
+/**
+ * Simplified FileHandle::Open which ignores OTTD2FS. Required as settingsgen does not include all of the fileio system.
+ * @param filename UTF-8 encoded filename to open.
+ * @param mode Mode to open file.
+ * @return FileHandle, or std::nullopt on failure.
+ */
+std::optional<FileHandle> FileHandle::Open(const std::string &filename, const std::string &mode)
+{
+	auto f = fopen(filename.c_str(), mode.c_str());
+	if (f == nullptr) return std::nullopt;
+	return FileHandle(f);
 }

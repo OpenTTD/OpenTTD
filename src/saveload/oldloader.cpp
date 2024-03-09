@@ -65,7 +65,7 @@ static uint8_t ReadByteFromFile(LoadgameState *ls)
 	if (ls->buffer_cur >= ls->buffer_count) {
 
 		/* Read some new bytes from the file */
-		int count = (int)fread(ls->buffer, 1, BUFFER_SIZE, ls->file);
+		int count = static_cast<int>(fread(ls->buffer, 1, BUFFER_SIZE, *ls->file));
 
 		/* We tried to read, but there is nothing in the file anymore.. */
 		if (count == 0) {
@@ -235,7 +235,7 @@ static bool VerifyOldNameChecksum(char *title, uint len)
 	return sum == sum2;
 }
 
-static std::tuple<SavegameType, std::string> DetermineOldSavegameTypeAndName(FILE *f)
+static std::tuple<SavegameType, std::string> DetermineOldSavegameTypeAndName(FileHandle &f)
 {
 	long pos = ftell(f);
 	char buffer[std::max(TTO_HEADER_SIZE, TTD_HEADER_SIZE)];
@@ -267,13 +267,13 @@ bool LoadOldSaveGame(const std::string &file)
 	/* Open file */
 	ls.file = FioFOpenFile(file, "rb", NO_DIRECTORY);
 
-	if (ls.file == nullptr) {
+	if (!ls.file.has_value()) {
 		Debug(oldloader, 0, "Cannot open file '{}'", file);
 		return false;
 	}
 
 	SavegameType type;
-	std::tie(type, std::ignore) = DetermineOldSavegameTypeAndName(ls.file);
+	std::tie(type, std::ignore) = DetermineOldSavegameTypeAndName(*ls.file);
 
 	LoadOldMainProc *proc = nullptr;
 
@@ -296,7 +296,7 @@ bool LoadOldSaveGame(const std::string &file)
 
 	if (!game_loaded) {
 		SetSaveLoadError(STR_GAME_SAVELOAD_ERROR_DATA_INTEGRITY_CHECK_FAILED);
-		fclose(ls.file);
+		ls.file.reset();
 		return false;
 	}
 
@@ -307,11 +307,10 @@ bool LoadOldSaveGame(const std::string &file)
 
 std::string GetOldSaveGameName(const std::string &file)
 {
-	FILE *f = FioFOpenFile(file, "rb", NO_DIRECTORY);
-	if (f == nullptr) return {};
+	auto f = FioFOpenFile(file, "rb", NO_DIRECTORY);
+	if (!f.has_value()) return {};
 
 	std::string name;
-	std::tie(std::ignore, name) = DetermineOldSavegameTypeAndName(f);
-	fclose(f);
+	std::tie(std::ignore, name) = DetermineOldSavegameTypeAndName(*f);
 	return name;
 }

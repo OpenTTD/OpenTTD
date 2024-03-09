@@ -404,16 +404,16 @@ static bool GunzipFile(const ContentInfo *ci)
 	bool ret = true;
 
 	/* Need to open the file with fopen() to support non-ASCII on Windows. */
-	FILE *ftmp = fopen(GetFullFilename(ci, true).c_str(), "rb");
-	if (ftmp == nullptr) return false;
+	auto ftmp = FileHandle::Open(GetFullFilename(ci, true), "rb");
+	if (!ftmp.has_value()) return false;
 	/* Duplicate the handle, and close the FILE*, to avoid double-closing the handle later. */
-	int fdup = dup(fileno(ftmp));
+	int fdup = dup(fileno(*ftmp));
 	gzFile fin = gzdopen(fdup, "rb");
-	fclose(ftmp);
+	ftmp.reset();
 
-	FILE *fout = fopen(GetFullFilename(ci, false).c_str(), "wb");
+	auto fout = FileHandle::Open(GetFullFilename(ci, false), "wb");
 
-	if (fin == nullptr || fout == nullptr) {
+	if (fin == nullptr || !fout.has_value()) {
 		ret = false;
 	} else {
 		uint8_t buff[8192];
@@ -437,7 +437,7 @@ static bool GunzipFile(const ContentInfo *ci)
 				if (errnum != 0 && errnum != Z_STREAM_END) ret = false;
 				break;
 			}
-			if (read < 0 || static_cast<size_t>(read) != fwrite(buff, 1, read, fout)) {
+			if (read < 0 || static_cast<size_t>(read) != fwrite(buff, 1, read, *fout)) {
 				/* If gzread() returns -1, there was an error in archive */
 				ret = false;
 				break;
@@ -453,7 +453,6 @@ static bool GunzipFile(const ContentInfo *ci)
 		/* Failing gzdopen does not close the passed file descriptor. */
 		close(fdup);
 	}
-	if (fout != nullptr) fclose(fout);
 
 	return ret;
 #else
@@ -468,14 +467,14 @@ static bool GunzipFile(const ContentInfo *ci)
  * @param amount The number of bytes to write.
  * @return The number of bytes that were written.
  */
-static inline ssize_t TransferOutFWrite(FILE *file, const char *buffer, size_t amount)
+static inline ssize_t TransferOutFWrite(std::optional<FileHandle> &file, const char *buffer, size_t amount)
 {
-	return fwrite(buffer, 1, amount, file);
+	return fwrite(buffer, 1, amount, *file);
 }
 
 bool ClientNetworkContentSocketHandler::Receive_SERVER_CONTENT(Packet &p)
 {
-	if (this->curFile == nullptr) {
+	if (!this->curFile.has_value()) {
 		delete this->curInfo;
 		/* When we haven't opened a file this must be our first packet with metadata. */
 		this->curInfo = new ContentInfo;
@@ -491,12 +490,11 @@ bool ClientNetworkContentSocketHandler::Receive_SERVER_CONTENT(Packet &p)
 	} else {
 		/* We have a file opened, thus are downloading internal content */
 		size_t toRead = p.RemainingBytesToTransfer();
-		if (toRead != 0 && static_cast<size_t>(p.TransferOut(TransferOutFWrite, this->curFile)) != toRead) {
+		if (toRead != 0 && static_cast<size_t>(p.TransferOut(TransferOutFWrite, std::ref(this->curFile))) != toRead) {
 			CloseWindowById(WC_NETWORK_STATUS_WINDOW, WN_NETWORK_STATUS_WINDOW_CONTENT_DOWNLOAD);
 			ShowErrorMessage(STR_CONTENT_ERROR_COULD_NOT_DOWNLOAD, STR_CONTENT_ERROR_COULD_NOT_DOWNLOAD_FILE_NOT_WRITABLE, WL_ERROR);
 			this->CloseConnection();
-			fclose(this->curFile);
-			this->curFile = nullptr;
+			this->curFile.reset();
 
 			return false;
 		}
@@ -524,7 +522,7 @@ bool ClientNetworkContentSocketHandler::BeforeDownload()
 	if (this->curInfo->filesize != 0) {
 		/* The filesize is > 0, so we are going to download it */
 		std::string filename = GetFullFilename(this->curInfo, true);
-		if (filename.empty() || (this->curFile = fopen(filename.c_str(), "wb")) == nullptr) {
+		if (filename.empty() || !(this->curFile = FileHandle::Open(filename, "wb")).has_value()) {
 			/* Unless that fails of course... */
 			CloseWindowById(WC_NETWORK_STATUS_WINDOW, WN_NETWORK_STATUS_WINDOW_CONTENT_DOWNLOAD);
 			ShowErrorMessage(STR_CONTENT_ERROR_COULD_NOT_DOWNLOAD, STR_CONTENT_ERROR_COULD_NOT_DOWNLOAD_FILE_NOT_WRITABLE, WL_ERROR);
@@ -542,8 +540,7 @@ void ClientNetworkContentSocketHandler::AfterDownload()
 {
 	/* We read nothing; that's our marker for end-of-stream.
 	 * Now gunzip the tar and make it known. */
-	fclose(this->curFile);
-	this->curFile = nullptr;
+	this->curFile.reset();
 
 	if (GunzipFile(this->curInfo)) {
 		FioRemove(GetFullFilename(this->curInfo, true));
@@ -583,11 +580,10 @@ void ClientNetworkContentSocketHandler::OnFailure()
 	this->http_response.shrink_to_fit();
 	this->http_response_index = -2;
 
-	if (this->curFile != nullptr) {
+	if (this->curFile.has_value()) {
 		this->OnDownloadProgress(this->curInfo, -1);
 
-		fclose(this->curFile);
-		this->curFile = nullptr;
+		this->curFile.reset();
 	}
 
 	/* If we fail, download the rest via the 'old' system. */
@@ -623,7 +619,7 @@ void ClientNetworkContentSocketHandler::OnReceiveData(std::unique_ptr<char[]> da
 
 	if (data != nullptr) {
 		/* We have data, so write it to the file. */
-		if (fwrite(data.get(), 1, length, this->curFile) != length) {
+		if (fwrite(data.get(), 1, length, *this->curFile) != length) {
 			/* Writing failed somehow, let try via the old method. */
 			this->OnFailure();
 		} else {
@@ -635,7 +631,7 @@ void ClientNetworkContentSocketHandler::OnReceiveData(std::unique_ptr<char[]> da
 		return;
 	}
 
-	if (this->curFile != nullptr) {
+	if (this->curFile.has_value()) {
 		/* We've finished downloading a file. */
 		this->AfterDownload();
 	}
@@ -732,7 +728,7 @@ void ClientNetworkContentSocketHandler::OnReceiveData(std::unique_ptr<char[]> da
 ClientNetworkContentSocketHandler::ClientNetworkContentSocketHandler() :
 	NetworkContentSocketHandler(),
 	http_response_index(-2),
-	curFile(nullptr),
+	curFile(std::nullopt),
 	curInfo(nullptr),
 	isConnecting(false),
 	isCancelled(false)
@@ -744,7 +740,6 @@ ClientNetworkContentSocketHandler::ClientNetworkContentSocketHandler() :
 ClientNetworkContentSocketHandler::~ClientNetworkContentSocketHandler()
 {
 	delete this->curInfo;
-	if (this->curFile != nullptr) fclose(this->curFile);
 
 	for (ContentInfo *ci : this->infos) delete ci;
 }

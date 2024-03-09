@@ -82,23 +82,23 @@ struct DLSFile {
 	std::vector<DLSWave> waves;
 
 	/** Try loading a DLS file into memory. */
-	bool LoadFile(const wchar_t *file);
+	bool LoadFile(const std::string &file);
 
 private:
 	/** Load an articulation structure from a DLS file. */
-	bool ReadDLSArticulation(FILE *f, DWORD list_length, std::vector<CONNECTION> &out);
+	bool ReadDLSArticulation(FileHandle &f, DWORD list_length, std::vector<CONNECTION> &out);
 	/** Load a list of regions from a DLS file. */
-	bool ReadDLSRegionList(FILE *f, DWORD list_length, DLSInstrument &instrument);
+	bool ReadDLSRegionList(FileHandle &f, DWORD list_length, DLSInstrument &instrument);
 	/** Load a single region from a DLS file. */
-	bool ReadDLSRegion(FILE *f, DWORD list_length, std::vector<DLSRegion> &out);
+	bool ReadDLSRegion(FileHandle &f, DWORD list_length, std::vector<DLSRegion> &out);
 	/** Load a list of instruments from a DLS file. */
-	bool ReadDLSInstrumentList(FILE *f, DWORD list_length);
+	bool ReadDLSInstrumentList(FileHandle &f, DWORD list_length);
 	/** Load a single instrument from a DLS file. */
-	bool ReadDLSInstrument(FILE *f, DWORD list_length);
+	bool ReadDLSInstrument(FileHandle &f, DWORD list_length);
 	/** Load a list of waves from a DLS file. */
-	bool ReadDLSWaveList(FILE *f, DWORD list_length);
+	bool ReadDLSWaveList(FileHandle &f, DWORD list_length);
 	/** Load a single wave from a DLS file. */
-	bool ReadDLSWave(FILE *f, DWORD list_length, long offset);
+	bool ReadDLSWave(FileHandle &f, DWORD list_length, long offset);
 };
 
 /** A RIFF chunk header. */
@@ -154,7 +154,7 @@ static std::vector<IDirectMusicDownload *> _dls_downloads;
 static FMusicDriver_DMusic iFMusicDriver_DMusic;
 
 
-bool DLSFile::ReadDLSArticulation(FILE *f, DWORD list_length, std::vector<CONNECTION> &out)
+bool DLSFile::ReadDLSArticulation(FileHandle &f, DWORD list_length, std::vector<CONNECTION> &out)
 {
 	while (list_length > 0) {
 		ChunkHeader chunk;
@@ -180,7 +180,7 @@ bool DLSFile::ReadDLSArticulation(FILE *f, DWORD list_length, std::vector<CONNEC
 	return true;
 }
 
-bool DLSFile::ReadDLSRegion(FILE *f, DWORD list_length, std::vector<DLSRegion> &out)
+bool DLSFile::ReadDLSRegion(FileHandle &f, DWORD list_length, std::vector<DLSRegion> &out)
 {
 	out.push_back(DLSRegion());
 	DLSRegion &region = out.back();
@@ -239,7 +239,7 @@ bool DLSFile::ReadDLSRegion(FILE *f, DWORD list_length, std::vector<DLSRegion> &
 	return true;
 }
 
-bool DLSFile::ReadDLSRegionList(FILE *f, DWORD list_length, DLSInstrument &instrument)
+bool DLSFile::ReadDLSRegionList(FileHandle &f, DWORD list_length, DLSInstrument &instrument)
 {
 	while (list_length > 0) {
 		ChunkHeader chunk;
@@ -265,7 +265,7 @@ bool DLSFile::ReadDLSRegionList(FILE *f, DWORD list_length, DLSInstrument &instr
 	return true;
 }
 
-bool DLSFile::ReadDLSInstrument(FILE *f, DWORD list_length)
+bool DLSFile::ReadDLSInstrument(FileHandle &f, DWORD list_length)
 {
 	this->instruments.push_back(DLSInstrument());
 	DLSInstrument &instrument = this->instruments.back();
@@ -309,7 +309,7 @@ bool DLSFile::ReadDLSInstrument(FILE *f, DWORD list_length)
 	return true;
 }
 
-bool DLSFile::ReadDLSInstrumentList(FILE *f, DWORD list_length)
+bool DLSFile::ReadDLSInstrumentList(FileHandle &f, DWORD list_length)
 {
 	while (list_length > 0) {
 		ChunkHeader chunk;
@@ -337,7 +337,7 @@ bool DLSFile::ReadDLSInstrumentList(FILE *f, DWORD list_length)
 	return true;
 }
 
-bool DLSFile::ReadDLSWave(FILE *f, DWORD list_length, long offset)
+bool DLSFile::ReadDLSWave(FileHandle &f, DWORD list_length, long offset)
 {
 	this->waves.push_back(DLSWave());
 	DLSWave &wave = this->waves.back();
@@ -397,7 +397,7 @@ bool DLSFile::ReadDLSWave(FILE *f, DWORD list_length, long offset)
 	return true;
 }
 
-bool DLSFile::ReadDLSWaveList(FILE *f, DWORD list_length)
+bool DLSFile::ReadDLSWaveList(FileHandle &f, DWORD list_length)
 {
 	long base_offset = ftell(f);
 
@@ -429,14 +429,13 @@ bool DLSFile::ReadDLSWaveList(FILE *f, DWORD list_length)
 	return true;
 }
 
-bool DLSFile::LoadFile(const wchar_t *file)
+bool DLSFile::LoadFile(const std::string &file)
 {
-	Debug(driver, 2, "DMusic: Try to load DLS file {}", FS2OTTD(file));
+	Debug(driver, 2, "DMusic: Try to load DLS file {}", file);
 
-	FILE *f = _wfopen(file, L"rb");
-	if (f == nullptr) return false;
-
-	FileCloser f_scope(f);
+	auto of = FileHandle::Open(file, "rb");
+	if (!of.has_value()) return false;
+	auto &f = *of;
 
 	/* Check DLS file header. */
 	ChunkHeader hdr;
@@ -871,7 +870,7 @@ static const char *LoadDefaultDLSFile(const char *user_dls)
 				if (SUCCEEDED(RegQueryValueEx(hkDM, L"GMFilePath", nullptr, nullptr, (LPBYTE)dls_path, &buf_size))) {
 					wchar_t expand_path[MAX_PATH * 2];
 					ExpandEnvironmentStrings(dls_path, expand_path, static_cast<DWORD>(std::size(expand_path)));
-					if (!dls_file.LoadFile(expand_path)) Debug(driver, 1, "Failed to load default GM DLS file from registry");
+					if (!dls_file.LoadFile(FS2OTTD(expand_path))) Debug(driver, 1, "Failed to load default GM DLS file from registry");
 				}
 				RegCloseKey(hkDM);
 			}
@@ -882,10 +881,10 @@ static const char *LoadDefaultDLSFile(const char *user_dls)
 				wchar_t path[MAX_PATH];
 				ExpandEnvironmentStrings(DLS_GM_FILE, path, static_cast<DWORD>(std::size(path)));
 
-				if (!dls_file.LoadFile(path)) return "Can't load GM DLS collection";
+				if (!dls_file.LoadFile(FS2OTTD(path))) return "Can't load GM DLS collection";
 			}
 		} else {
-			if (!dls_file.LoadFile(OTTD2FS(user_dls).c_str())) return "Can't load GM DLS collection";
+			if (!dls_file.LoadFile(user_dls)) return "Can't load GM DLS collection";
 		}
 
 		/* Get download port and allocate download IDs. */
