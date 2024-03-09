@@ -416,7 +416,8 @@ extern FileToSaveLoad _file_to_saveload;
 
 std::string GenerateDefaultSaveName();
 void SetSaveLoadError(StringID str);
-const char *GetSaveLoadErrorString();
+StringID GetSaveLoadErrorType();
+StringID GetSaveLoadErrorMessage();
 SaveOrLoadResult SaveOrLoad(const std::string &filename, SaveLoadOperation fop, DetailedFileType dft, Subdirectory sb, bool threaded = true);
 void WaitTillSaved();
 void ProcessAsyncSaveFinish();
