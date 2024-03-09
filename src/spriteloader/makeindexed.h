@@ -5,19 +5,19 @@
  * See the GNU General Public License for more details. You should have received a copy of the GNU General Public License along with OpenTTD. If not, see <http://www.gnu.org/licenses/>.
  */
 
-/** @file grf.hpp Base for reading sprites from (New)GRFs. */
+/** @file makeindexed.h Base for converting sprites from another source from 32bpp RGBA to indexed 8bpp. */
 
-#ifndef SPRITELOADER_GRF_HPP
-#define SPRITELOADER_GRF_HPP
+#ifndef SPRITELOADER_MAKEINDEXED_H
+#define SPRITELOADER_MAKEINDEXED_H
 
 #include "spriteloader.hpp"
 
-/** Sprite loader for graphics coming from a (New)GRF. */
-class SpriteLoaderGrf : public SpriteLoader {
-	byte container_ver;
+/** Sprite loader for converting graphics coming from another source. */
+class SpriteLoaderMakeIndexed : public SpriteLoader {
+	SpriteLoader &baseloader;
 public:
-	SpriteLoaderGrf(byte container_ver) : container_ver(container_ver) {}
+	SpriteLoaderMakeIndexed(SpriteLoader &baseloader) : baseloader(baseloader) {}
 	uint8_t LoadSprite(SpriteLoader::SpriteCollection &sprite, SpriteFile &file, size_t file_pos, SpriteType sprite_type, bool load_32bpp, byte control_flags, uint8_t &avail_8bpp, uint8_t &avail_32bpp) override;
 };
 
-#endif /* SPRITELOADER_GRF_HPP */
+#endif /* SPRITELOADER_MAKEINDEXED_H */
