@@ -1118,6 +1118,9 @@ STR_CURRENCY_DECREASE_EXCHANGE_RATE_TOOLTIP                     :{BLACK}Réduire
 STR_CURRENCY_INCREASE_EXCHANGE_RATE_TOOLTIP                     :{BLACK}Augmenter le montant de cette devise pour une livre (£)
 STR_CURRENCY_SET_EXCHANGE_RATE_TOOLTIP                          :{BLACK}Définir le taux de change de cette devise pour une livre (£)
 
+STR_CURRENCY_SEPARATOR                                          :{LTBLUE}Séparateur : {ORANGE}{STRING}
+STR_CURRENCY_SET_CUSTOM_CURRENCY_SEPARATOR_TOOLTIP              :{BLACK}Définir le séparateur pour votre monnaie
+
 STR_CURRENCY_PREFIX                                             :{LTBLUE}Préfixe{NBSP}: {ORANGE}{STRING}
 STR_CURRENCY_SET_CUSTOM_CURRENCY_PREFIX_TOOLTIP                 :{BLACK}Définir le préfixe pour cette devise
 STR_CURRENCY_SUFFIX                                             :{LTBLUE}Suffixe{NBSP}: {ORANGE}{STRING}
@@ -1272,10 +1275,10 @@ STR_CONFIG_SETTING_INFINITE_MONEY                               :Argent infini{N
 STR_CONFIG_SETTING_INFINITE_MONEY_HELPTEXT                      :Autoriser les dépenses illimitées et désactiver la banqueroute des compagnies
 
 STR_CONFIG_SETTING_MAXIMUM_INITIAL_LOAN                         :Emprunt initial maximum{NBSP}: {STRING}
-STR_CONFIG_SETTING_MAXIMUM_INITIAL_LOAN_HELPTEXT                :Montant maximum qu'une compagnie peut emprunter (sans tenir compte de l'inflation)
+STR_CONFIG_SETTING_MAXIMUM_INITIAL_LOAN_HELPTEXT                :Montant maximum qu'une compagnie peut emprunter (sans tenir compte de l'inflation). Si ce paramètre est défini sur "Pas de prêt", alors aucun argent ne sera disponible tant qu'un script de jeu ne le fournira pas ou que le paramètre "Argent infini" ne sera pas activé.
 STR_CONFIG_SETTING_MAXIMUM_INITIAL_LOAN_VALUE                   :{CURRENCY_LONG}
 ###setting-zero-is-special
-STR_CONFIG_SETTING_MAXIMUM_INITIAL_LOAN_DISABLED                :Pas d'emprunt {RED}Nécessite un script de jeu qui fournit les fonds initiaux
+STR_CONFIG_SETTING_MAXIMUM_INITIAL_LOAN_DISABLED                :Pas d'emprunt
 
 STR_CONFIG_SETTING_INTEREST_RATE                                :Taux d'intérêt{NBSP}: {STRING}
 STR_CONFIG_SETTING_INTEREST_RATE_HELPTEXT                       :Taux d’intérêt de l'emprunt{NBSP}; contrôle également l'inflation si activé
@@ -1492,7 +1495,7 @@ STR_CONFIG_SETTING_NEVER_EXPIRE_VEHICLES                        :Les véhicules 
 STR_CONFIG_SETTING_NEVER_EXPIRE_VEHICLES_HELPTEXT               :Quand il est actif, tous les modèles de véhicule restent disponibles pour toujours après leur introduction
 
 STR_CONFIG_SETTING_TIMEKEEPING_UNITS                            :Mesure du temps{NBSP}: {STRING}
-STR_CONFIG_SETTING_TIMEKEEPING_UNITS_HELPTEXT                   :Sélectionner les unités de mesure du temps pour la partie. Ce choix ne peut pas être modifié par la suite.{}{}"Calendrier" correspond à l’expérience classique d'OpenTTD, avec une année de 12 mois et chaque mois ayant de 28 à 31 jours.{}{}Quand le temps est basé sur la "pendule", les mouvements des véhicules, la production de marchandises et les finances sont basés sur des incréments d'une minute, équivalent à des mois de 30 jours dans le mode "calendrier". Ceux-ci sont groupés par période de 12 minutes, équivalent à une année dans le mode "calendrier".{}{}Quelque soit le mode, il y a toujours un calendrier classique, utilisé pour les dates d'introduction des véhicules, maisons, et autres infrastructures.
+STR_CONFIG_SETTING_TIMEKEEPING_UNITS_HELPTEXT                   :Sélectionner les unités de mesure du temps pour la partie. Ce choix ne peut pas être modifié par la suite.{}{}"Calendrier" correspond à l’expérience classique d'OpenTTD, avec une année de 12 mois et chaque mois ayant de 28 à 31 jours.{}{}Quand le temps est basé sur la "pendule", la production de marchandises et les finances sont basées sur des incréments d'une minute, équivalent à des mois de 30 jours dans le mode "calendrier". Ceux-ci sont groupés par période de 12 minutes, équivalent à une année dans le mode "calendrier".{}{}Quelque soit le mode, il y a toujours un calendrier classique, utilisé pour les dates d'introduction des véhicules, maisons, et autres infrastructures.
 ###length 2
 STR_CONFIG_SETTING_TIMEKEEPING_UNITS_CALENDAR                   :Calendrier
 STR_CONFIG_SETTING_TIMEKEEPING_UNITS_WALLCLOCK                  :Pendule
@@ -1700,9 +1703,9 @@ STR_CONFIG_SETTING_RIGHT_MOUSE_WND_CLOSE_YES_EXCEPT_STICKY      :Oui, sauf les f
 STR_CONFIG_SETTING_DATE_FORMAT_IN_SAVE_NAMES                    :Utiliser le format de date {STRING} pour le nom des sauvegardes
 STR_CONFIG_SETTING_DATE_FORMAT_IN_SAVE_NAMES_HELPTEXT           :Format de la date dans les noms des fichiers de sauvegarde
 ###length 3
-STR_CONFIG_SETTING_DATE_FORMAT_IN_SAVE_NAMES_LONG               :Long (31 Déc 2008)
-STR_CONFIG_SETTING_DATE_FORMAT_IN_SAVE_NAMES_SHORT              :Court (31-12-2008)
-STR_CONFIG_SETTING_DATE_FORMAT_IN_SAVE_NAMES_ISO                :ISO (2008-12-31)
+STR_CONFIG_SETTING_DATE_FORMAT_IN_SAVE_NAMES_LONG               :Long (31 Déc 2023)
+STR_CONFIG_SETTING_DATE_FORMAT_IN_SAVE_NAMES_SHORT              :Court (31-12-2023)
+STR_CONFIG_SETTING_DATE_FORMAT_IN_SAVE_NAMES_ISO                :ISO (2023-12-31)
 
 STR_CONFIG_SETTING_PAUSE_ON_NEW_GAME                            :Pause automatique en début de nouvelle partie{NBSP}: {STRING}
 STR_CONFIG_SETTING_PAUSE_ON_NEW_GAME_HELPTEXT                   :Lorsqu'il est activé, la partie sera mise en pause automatiquement au démarrage, afin de permettre une étude approfondie de la carte
@@ -2249,7 +2252,7 @@ STR_CHEAT_EDIT_MAX_HL_QUERY_CAPT                                :{WHITE}Modifier
 STR_CHEAT_CHANGE_DATE                                           :{LTBLUE}Changer la date{NBSP}: {ORANGE}{DATE_SHORT}
 STR_CHEAT_CHANGE_DATE_QUERY_CAPT                                :{WHITE}Modifier l'année courante
 STR_CHEAT_SETUP_PROD                                            :{LTBLUE}Permettre la modification des valeurs de production{NBSP}: {ORANGE}{STRING}
-STR_CHEAT_STATION_RATING                                        :{LTBLUE}Fixer la qualité de service de la station à 100 % : {ORANGE}{STRING}
+STR_CHEAT_STATION_RATING                                        :{LTBLUE}Fixer la qualité de service de la station à 100% : {ORANGE}{STRING}
 
 # Livery window
 STR_LIVERY_CAPTION                                              :{WHITE}{COMPANY} - Couleur
@@ -2261,14 +2264,14 @@ STR_LIVERY_SHIP_TOOLTIP                                         :{BLACK}Montrer 
 STR_LIVERY_AIRCRAFT_TOOLTIP                                     :{BLACK}Montrer les livrées d'aéronefs
 STR_LIVERY_TRAIN_GROUP_TOOLTIP                                  :{BLACK}Afficher les couleurs des groupes de trains
 STR_LIVERY_ROAD_VEHICLE_GROUP_TOOLTIP                           :{BLACK}Afficher les couleurs des groupes de véhicules
-STR_LIVERY_SHIP_GROUP_TOOLTIP                                   :{BLACK}Afficher les couleurs des groupes de bateaux
+STR_LIVERY_SHIP_GROUP_TOOLTIP                                   :{BLACK}Afficher les couleurs des groupes de naivres
 STR_LIVERY_AIRCRAFT_GROUP_TOOLTIP                               :{BLACK}Afficher les couleurs des groupes d'avions
 STR_LIVERY_PRIMARY_TOOLTIP                                      :{BLACK}Choisir la couleur primaire de la livrée sélectionnée. Ctrl-clic pour appliquer cette couleur à toutes les livrées.
 STR_LIVERY_SECONDARY_TOOLTIP                                    :{BLACK}Choisir la couleur secondaire de la livrée sélectionnée. Ctrl-clic pour appliquer cette couleur à toutes les livrées.
 STR_LIVERY_PANEL_TOOLTIP                                        :{BLACK}Sélectionner la livrée à modifier ou plusieurs d'entre elles par Ctrl-clic. Cliquer sur la case à cocher pour en activer l'utilisation ou non.
 STR_LIVERY_TRAIN_GROUP_EMPTY                                    :Aucun groupe de trains
 STR_LIVERY_ROAD_VEHICLE_GROUP_EMPTY                             :Aucun groupe de véhicules
-STR_LIVERY_SHIP_GROUP_EMPTY                                     :Aucun groupe de bateaux
+STR_LIVERY_SHIP_GROUP_EMPTY                                     :Aucun groupe de navires
 STR_LIVERY_AIRCRAFT_GROUP_EMPTY                                 :Aucun groupe d'avions
 
 ###length 23
@@ -3903,7 +3906,7 @@ STR_COMPANY_VIEW_HOSTILE_TAKEOVER_BUTTON                        :{BLACK}Rachat d
 STR_COMPANY_VIEW_HOSTILE_TAKEOVER_TOOLTIP                       :{BLACK}Racheter de force cette compagnie
 
 STR_COMPANY_VIEW_NEW_FACE_BUTTON                                :{BLACK}Nouveau visage
-STR_COMPANY_VIEW_NEW_FACE_TOOLTIP                               :{BLACK}Choix d'un nouveau visage pour le P.D.G.
+STR_COMPANY_VIEW_NEW_FACE_TOOLTIP                               :{BLACK}Choisir un nouveau visage pour le P.D.G.
 STR_COMPANY_VIEW_COLOUR_SCHEME_BUTTON                           :{BLACK}Couleur
 STR_COMPANY_VIEW_COLOUR_SCHEME_TOOLTIP                          :{BLACK}Changer la couleur des véhicules
 STR_COMPANY_VIEW_COMPANY_NAME_BUTTON                            :{BLACK}Nom de la société
@@ -4109,7 +4112,7 @@ STR_BUY_VEHICLE_AIRCRAFT_BUY_VEHICLE_BUTTON                     :{BLACK}Acheter
 ###length VEHICLE_TYPES
 STR_BUY_VEHICLE_TRAIN_BUY_REFIT_VEHICLE_BUTTON                  :Achat et réaménagement du véhicule
 STR_BUY_VEHICLE_ROAD_VEHICLE_BUY_REFIT_VEHICLE_BUTTON           :{BLACK}Acheter et réaménager
-STR_BUY_VEHICLE_SHIP_BUY_REFIT_VEHICLE_BUTTON                   :Acheter et réaménager le bateau
+STR_BUY_VEHICLE_SHIP_BUY_REFIT_VEHICLE_BUTTON                   :{BLACK}Acheter et réaménager le navire
 STR_BUY_VEHICLE_AIRCRAFT_BUY_REFIT_VEHICLE_BUTTON               :{BLACK}Acheter et réaménager
 
 ###length VEHICLE_TYPES
@@ -4216,7 +4219,7 @@ STR_DEPOT_CLONE_AIRCRAFT                                        :{BLACK}Copier u
 ###length VEHICLE_TYPES
 STR_DEPOT_CLONE_TRAIN_DEPOT_INFO                                :{BLACK}Acheter une copie d'un train et de ses wagons. Cliquer ici puis sur un train dans ou hors d'un dépôt.{}Ctrl-clic pour partager les ordres.{}Shift-clic pour afficher seulement le coût estimé.
 STR_DEPOT_CLONE_ROAD_VEHICLE_DEPOT_INFO                         :{BLACK}Acheter une copie d'un véhicule routier. Cliquer ici puis sur un véhicule routier dans ou hors d'un dépôt.{}Ctrl-clic pour partager les ordres.{}Shift-clic pour afficher seulement le coût estimé.
-STR_DEPOT_CLONE_SHIP_DEPOT_INFO                                 :{BLACK}Acheter une copie du bateau. Cliquer sur ce bouton et sur un bateau dans ou en dehors du dépôt. Ctrl+Clic pour partager les ordres. Utiliser Shift pour afficher le coût estimé seulement.
+STR_DEPOT_CLONE_SHIP_DEPOT_INFO                                 :{BLACK}Acheter une copie du navire. Cliquer sur ce bouton et sur un navire dans ou en dehors du dépôt. Ctrl+Clic pour partager les ordres. Utiliser Shift pour afficher le coût estimé seulement.
 STR_DEPOT_CLONE_AIRCRAFT_INFO_HANGAR_WINDOW                     :{BLACK}Acheter une copie d'un aéronef. Cliquer ici puis sur un aéronef dans ou hors d'un hangar.{}Ctrl-clic pour partager les ordres.{}Shift-clic pour afficher seulement le coût estimé.
 
 ###length VEHICLE_TYPES
@@ -4382,20 +4385,20 @@ STR_VEHICLE_STATUS_WAITING_UNBUNCHING                           :{LTBLUE}En atte
 STR_VEHICLE_STATUS_CRASHED                                      :{RED}Accidenté{NBSP}!
 STR_VEHICLE_STATUS_BROKEN_DOWN                                  :{RED}En panne
 STR_VEHICLE_STATUS_STOPPED                                      :{RED}Arrêté
-STR_VEHICLE_STATUS_TRAIN_STOPPING_VEL                           :{RED}Ralentit, {VELOCITY}
+STR_VEHICLE_STATUS_TRAIN_STOPPING_VEL                           :{RED}{VELOCITY} - Freinage en cours
 STR_VEHICLE_STATUS_TRAIN_NO_POWER                               :{RED}Pas de puissance
 STR_VEHICLE_STATUS_TRAIN_STUCK                                  :{ORANGE}En attente d'un chemin libre
 STR_VEHICLE_STATUS_AIRCRAFT_TOO_FAR                             :{ORANGE}Trop éloigné de la prochaine destination
 
 STR_VEHICLE_STATUS_HEADING_FOR_STATION_VEL                      :{LTBLUE}En route pour {STATION}, {VELOCITY}
-STR_VEHICLE_STATUS_NO_ORDERS_VEL                                :{LTBLUE}Aucun ordre, {VELOCITY}
-STR_VEHICLE_STATUS_HEADING_FOR_WAYPOINT_VEL                     :{LTBLUE}En route pour {WAYPOINT}, {VELOCITY}
-STR_VEHICLE_STATUS_HEADING_FOR_DEPOT_VEL                        :{ORANGE}En route pour le {DEPOT}, {VELOCITY}
+STR_VEHICLE_STATUS_NO_ORDERS_VEL                                :{LTBLUE}{VELOCITY} - Aucun ordre
+STR_VEHICLE_STATUS_HEADING_FOR_WAYPOINT_VEL                     :{LTBLUE}{1:VELOCITY} - En route pour {0:WAYPOINT}
+STR_VEHICLE_STATUS_HEADING_FOR_DEPOT_VEL                        :{ORANGE}En route vers {DEPOT}, {VELOCITY}
 STR_VEHICLE_STATUS_HEADING_FOR_DEPOT_SERVICE_VEL                :{LTBLUE}Entretien au {DEPOT}, {VELOCITY}
 STR_VEHICLE_STATUS_HEADING_FOR_DEPOT_UNBUNCH_VEL                :{LTBLUE}Répartition et entretien au {DEPOT}, {VELOCITY}
 
-STR_VEHICLE_STATUS_CANNOT_REACH_STATION_VEL                     :{LTBLUE}Ne peut pas atteindre {STATION}, {VELOCITY}
-STR_VEHICLE_STATUS_CANNOT_REACH_WAYPOINT_VEL                    :{LTBLUE}Ne peut pas atteindre {WAYPOINT}, {VELOCITY}
+STR_VEHICLE_STATUS_CANNOT_REACH_STATION_VEL                     :{LTBLUE}{1:VELOCITY} - Impossible d'atteindre {0:STATION}
+STR_VEHICLE_STATUS_CANNOT_REACH_WAYPOINT_VEL                    :{LTBLUE}{1:VELOCITY} - Impossible d'atteindre {0:WAYPOINT}
 STR_VEHICLE_STATUS_CANNOT_REACH_DEPOT_VEL                       :{ORANGE}Ne peut pas atteindre {DEPOT}, {VELOCITY}
 STR_VEHICLE_STATUS_CANNOT_REACH_DEPOT_SERVICE_VEL               :{LTBLUE}Ne peut pas atteindre {DEPOT}, {VELOCITY}
 
@@ -4611,7 +4614,7 @@ STR_ORDER_GO_TO_NEAREST_DEPOT                                   :Aller au dépô
 STR_ORDER_GO_TO_NEAREST_HANGAR                                  :Aller au hangar le plus proche
 STR_ORDER_CONDITIONAL                                           :Saut conditionnel d'ordre
 STR_ORDER_SHARE                                                 :Partager les ordres
-STR_ORDERS_GO_TO_TOOLTIP                                        :{BLACK}Insérer un nouvel ordre avant l'ordre sélectionné, ou l'ajouter à la fin. Ctrl-clic sur une station pour «{NBSP}Chargement complet par un seul type{NBSP}», sur un point de contrôle pour inverser le paramètre «{NBSP}sans arrêt par défaut{NBSP}» ou sur un dépôt pour «{NBSP}entretien{NBSP}». Cliquer sur un véhicule pour copier ses ordres ou Ctrl-clic pour les partager. Un ordre de dépôt désactive l'entretien automatique du véhicule
+STR_ORDERS_GO_TO_TOOLTIP                                        :{BLACK}Insérer un nouvel ordre avant l'ordre sélectionné, ou l'ajouter à la fin. Ctrl-clic sur une station pour «{NBSP}Chargement complet par un seul type{NBSP}», sur un point de contrôle pour inverser le paramètre «{NBSP}sans arrêt par défaut{NBSP}» ou sur un dépôt pour «{NBSP}répartir{NBSP}». Cliquer sur un véhicule pour copier ses ordres ou Ctrl-clic pour les partager. Un ordre de dépôt désactive l'entretien automatique du véhicule
 
 STR_ORDERS_VEH_WITH_SHARED_ORDERS_LIST_TOOLTIP                  :{BLACK}Afficher tous les véhicules partageant ce programme
 
@@ -4776,9 +4779,9 @@ STR_AI_DEBUG_MATCH_CASE                                         :{BLACK}Respecte
 STR_AI_DEBUG_MATCH_CASE_TOOLTIP                                 :{BLACK}Activer/Désactiver le respect de la casse pour comparer les messages d'IA avec la chaîne d'arrêt
 STR_AI_DEBUG_CONTINUE                                           :{BLACK}Continuer
 STR_AI_DEBUG_CONTINUE_TOOLTIP                                   :{BLACK}Reprendre la partie et continuer l'IA
-STR_AI_DEBUG_SELECT_AI_TOOLTIP                                  :{BLACK}Afficher la sortie de débogage de cette IA. Ctrl+Click pour ouvrir dans une nouvelle fenêtre
+STR_AI_DEBUG_SELECT_AI_TOOLTIP                                  :{BLACK}Afficher la sortie de débogage de cette IA. Ctrl+Clic pour ouvrir dans une nouvelle fenêtre
 STR_AI_GAME_SCRIPT                                              :{BLACK}Script de jeu
-STR_AI_GAME_SCRIPT_TOOLTIP                                      :{BLACK}Examiner le journal du script de jeu. Ctrl+Click pour ouvrir dans une nouvelle fenêtre
+STR_AI_GAME_SCRIPT_TOOLTIP                                      :{BLACK}Examiner le journal du script de jeu. Ctrl+Clic pour ouvrir dans une nouvelle fenêtre
 
 STR_ERROR_AI_NO_AI_FOUND                                        :Aucune IA n'a été trouvée.{}Cette IA est factice et ne fera rien.{}Vous pouvez télécharger diverses IA via le système de «{NBSP}Contenu en ligne{NBSP}».
 STR_ERROR_AI_PLEASE_REPORT_CRASH                                :{WHITE}L'un des scripts a rencontré un problème. Merci de rapporter ceci à l'auteur du script avec une capture d'écran de la fenêtre de débogage de scripts.
@@ -4841,8 +4844,6 @@ STR_AI_SETTINGS_CAPTION_GAMESCRIPT                              :du script de je
 STR_AI_SETTINGS_CLOSE                                           :{BLACK}Fermer
 STR_AI_SETTINGS_RESET                                           :{BLACK}Réinitialiser
 STR_AI_SETTINGS_SETTING                                         :{STRING}{NBSP}: {ORANGE}{STRING}
-STR_AI_SETTINGS_SETTING_DEVIATION                               :{STRING}{NBSP}: {ORANGE}[{STRING}, {STRING}]
-STR_AI_SETTINGS_JUST_DEVIATION                                  :[{STRING}, {STRING}]
 
 
 # Textfile window
@@ -5807,6 +5808,11 @@ STR_STATION_NAME                                                :{STATION}
 STR_TOWN_NAME                                                   :{TOWN}
 STR_VEHICLE_NAME                                                :{VEHICLE}
 STR_WAYPOINT_NAME                                               :{WAYPOINT}
+
+STR_CURRENCY_SHORT_KILO                                         :{NBSP}K
+STR_CURRENCY_SHORT_MEGA                                         :{NBSP}M
+STR_CURRENCY_SHORT_GIGA                                         :{NBSP}G
+STR_CURRENCY_SHORT_TERA                                         :{NBSP}T
 
 STR_JUST_CARGO                                                  :{CARGO_LONG}
 STR_JUST_RIGHT_ARROW                                            :{RIGHT_ARROW}

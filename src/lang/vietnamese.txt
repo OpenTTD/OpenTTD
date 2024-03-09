@@ -1117,6 +1117,7 @@ STR_CURRENCY_DECREASE_EXCHANGE_RATE_TOOLTIP                     :{BLACK}Giảm t
 STR_CURRENCY_INCREASE_EXCHANGE_RATE_TOOLTIP                     :{BLACK}Tăng tỉ giá tiền của bạn đối với 1 Pound (£)
 STR_CURRENCY_SET_EXCHANGE_RATE_TOOLTIP                          :{BLACK}Điều chỉnh tỉ giá tiền của bạn đối với 1 Pound (£)
 
+
 STR_CURRENCY_PREFIX                                             :{LTBLUE}Tiền tố: {ORANGE}{STRING}
 STR_CURRENCY_SET_CUSTOM_CURRENCY_PREFIX_TOOLTIP                 :{BLACK}Chỉnh tiếp đầu ngữ cho tiền tệ của bạn
 STR_CURRENCY_SUFFIX                                             :{LTBLUE}Hậu tố: {ORANGE}{STRING}
@@ -1271,10 +1272,10 @@ STR_CONFIG_SETTING_INFINITE_MONEY                               :Tiền vô hạ
 STR_CONFIG_SETTING_INFINITE_MONEY_HELPTEXT                      :Cho phép chi tiêu không giới hạn và tắt bỏ việc phá sản của các công ty
 
 STR_CONFIG_SETTING_MAXIMUM_INITIAL_LOAN                         :Khoảng vay khởi nghiệp tối đa: {STRING}
-STR_CONFIG_SETTING_MAXIMUM_INITIAL_LOAN_HELPTEXT                :Hạn mức tối đa một công ty có thể vay (không tính lạm phát)
+STR_CONFIG_SETTING_MAXIMUM_INITIAL_LOAN_HELPTEXT                :Hạn mức vay khởi nghiệp tối đa một công ty có thể vay (không tính lạm phát). Nếu chọn "Không có khoản vay", tiền sẽ không có sẵn trừ khi được cung cấp bằng Game Script hoặc thiêt lập "Tiền vô hạn".
 STR_CONFIG_SETTING_MAXIMUM_INITIAL_LOAN_VALUE                   :{CURRENCY_LONG}
 ###setting-zero-is-special
-STR_CONFIG_SETTING_MAXIMUM_INITIAL_LOAN_DISABLED                :Không có khoản vay {RED}Cần Game Script để cung cấp khoảng vốn ban đầu
+STR_CONFIG_SETTING_MAXIMUM_INITIAL_LOAN_DISABLED                :Không có khoản vay
 
 STR_CONFIG_SETTING_INTEREST_RATE                                :Lãi suất vay: {STRING}
 STR_CONFIG_SETTING_INTEREST_RATE_HELPTEXT                       :Lãi xuất vay; ảnh hưởng tới cả lạm phát nếu bật tùy chọn đó
@@ -3560,7 +3561,7 @@ STR_NEWGRF_BROKEN                                               :{WHITE}Hoạt �
 STR_NEWGRF_BROKEN_POWERED_WAGON                                 :{WHITE}Trạng thái đầu kéo '{1:ENGINE}' được thay đổi khi không ở trong xưởng sửa chữa.
 STR_NEWGRF_BROKEN_VEHICLE_LENGTH                                :{WHITE}Nó cắt ngắn độ dài của đoàn tàu '{1:ENGINE}' nếu không ở trong xưởng.
 STR_NEWGRF_BROKEN_CAPACITY                                      :{WHITE}Sức chứa của phương tiện bị thay đổi '{1:ENGINE}' khi không ở trong xưởng hoặc vì cải biến
-STR_BROKEN_VEHICLE_LENGTH                                       :{WHITE}Đoàn tàu '{VEHICLE}' của '{COMPANY}' có độ dài không hợp lệ. Có thể gây sự cố với NewGRFs. Ván chơi có thể mất đồng bộ hoặc bị treo
+STR_BROKEN_VEHICLE_LENGTH                                       :{WHITE}Đoàn tàu '{VEHICLE}' của '{COMPANY}' có độ dài không hợp lệ. Sự cố có thể có căn nguyên từ NewGRFs. Ván chơi có thể mất đồng bộ hoặc bị treo
 
 STR_NEWGRF_BUGGY                                                :{WHITE}NewGRF '{0:STRING}' không hợp lệ.
 STR_NEWGRF_BUGGY_ARTICULATED_CARGO                              :{WHITE}Danh mục hàng hoá/cải biến được cho '{1:ENGINE}' khác với danh mục mua được sau khi đã có. Việc này khiến cho việc tự thay thế hay là tự cải biến không chính xác.
@@ -4381,22 +4382,22 @@ STR_VEHICLE_STATUS_WAITING_UNBUNCHING                           :{LTBLUE}Chờ g
 STR_VEHICLE_STATUS_CRASHED                                      :{RED}Tai nạn!
 STR_VEHICLE_STATUS_BROKEN_DOWN                                  :{RED}Hỏng hóc
 STR_VEHICLE_STATUS_STOPPED                                      :{RED}Dừng
-STR_VEHICLE_STATUS_TRAIN_STOPPING_VEL                           :{RED}Đang dừng, {VELOCITY}
+STR_VEHICLE_STATUS_TRAIN_STOPPING_VEL                           :{RED}{VELOCITY} - Đang dừng
 STR_VEHICLE_STATUS_TRAIN_NO_POWER                               :{RED}Không có năng lượng
 STR_VEHICLE_STATUS_TRAIN_STUCK                                  :{ORANGE}Chờ đường thông
 STR_VEHICLE_STATUS_AIRCRAFT_TOO_FAR                             :{ORANGE}Quá xa để tới điểm kế tiếp
 
-STR_VEHICLE_STATUS_HEADING_FOR_STATION_VEL                      :{LTBLUE}Nhắm tới {STATION}, {VELOCITY}
-STR_VEHICLE_STATUS_NO_ORDERS_VEL                                :{LTBLUE}Không lộ trình, {VELOCITY}
-STR_VEHICLE_STATUS_HEADING_FOR_WAYPOINT_VEL                     :{LTBLUE}Nhắm tới {WAYPOINT}, {VELOCITY}
-STR_VEHICLE_STATUS_HEADING_FOR_DEPOT_VEL                        :{ORANGE}Nhắm tới {DEPOT}, {VELOCITY}
-STR_VEHICLE_STATUS_HEADING_FOR_DEPOT_SERVICE_VEL                :{LTBLUE}Phục vụ tại {DEPOT}, {VELOCITY}
-STR_VEHICLE_STATUS_HEADING_FOR_DEPOT_UNBUNCH_VEL                :{LTBLUE}Gỡ gộp và bảo trì ở {DEPOT}, {VELOCITY}
+STR_VEHICLE_STATUS_HEADING_FOR_STATION_VEL                      :{LTBLUE}{1:VELOCITY} - Nhắm tới {0:STATION}
+STR_VEHICLE_STATUS_NO_ORDERS_VEL                                :{LTBLUE}{VELOCITY} - Không lộ trình
+STR_VEHICLE_STATUS_HEADING_FOR_WAYPOINT_VEL                     :{LTBLUE}{1:VELOCITY} - Nhắm tới {0:WAYPOINT}
+STR_VEHICLE_STATUS_HEADING_FOR_DEPOT_VEL                        :{ORANGE}{1:VELOCITY} - Nhắm tới {0:DEPOT}
+STR_VEHICLE_STATUS_HEADING_FOR_DEPOT_SERVICE_VEL                :{LTBLUE}{1:VELOCITY} - Phục vụ tại {0:DEPOT}
+STR_VEHICLE_STATUS_HEADING_FOR_DEPOT_UNBUNCH_VEL                :{LTBLUE}{1:VELOCITY} - Gỡ gộp và bảo trì ở {0:DEPOT}
 
-STR_VEHICLE_STATUS_CANNOT_REACH_STATION_VEL                     :{LTBLUE}Không thể đi tới {STATION}, {VELOCITY}
-STR_VEHICLE_STATUS_CANNOT_REACH_WAYPOINT_VEL                    :{LTBLUE}Không thể đi tới {WAYPOINT}, {VELOCITY}
-STR_VEHICLE_STATUS_CANNOT_REACH_DEPOT_VEL                       :{ORANGE}Không thể đi tới {DEPOT}, {VELOCITY}
-STR_VEHICLE_STATUS_CANNOT_REACH_DEPOT_SERVICE_VEL               :{LTBLUE}Không thể đi tới {DEPOT}, {VELOCITY}
+STR_VEHICLE_STATUS_CANNOT_REACH_STATION_VEL                     :{LTBLUE}{1:VELOCITY} - Không thể đi tới {0:STATION}
+STR_VEHICLE_STATUS_CANNOT_REACH_WAYPOINT_VEL                    :{LTBLUE}{1:VELOCITY} - Không thể đi tới {0:WAYPOINT}
+STR_VEHICLE_STATUS_CANNOT_REACH_DEPOT_VEL                       :{ORANGE}{1:VELOCITY} - Không thể đi tới {0:DEPOT}
+STR_VEHICLE_STATUS_CANNOT_REACH_DEPOT_SERVICE_VEL               :{LTBLUE}{1:VELOCITY} - Không thể đi tới {0:DEPOT}
 
 # Vehicle stopped/started animations
 ###length 2
@@ -4610,7 +4611,7 @@ STR_ORDER_GO_TO_NEAREST_DEPOT                                   :Đi tới xư�
 STR_ORDER_GO_TO_NEAREST_HANGAR                                  :Đi tới xưởng ở sân bay gần nhất
 STR_ORDER_CONDITIONAL                                           :Điểm lộ trình có điều kiện
 STR_ORDER_SHARE                                                 :Lịch trình chia sẻ
-STR_ORDERS_GO_TO_TOOLTIP                                        :{BLACK}Thêm một điểm lộ trình trước điểm đã chọn, hoặc thêm nó vào cuối danh sách. Ctrl nếu là ga thì 'bốc xếp đủ bất kỳ hàng nào', là điểm mốc thì 'đi suốt' và là xưởng thì 'bảo trì'. 'Lộ trình chia sẻ" hoặc giữ Ctrl để cho phép phương tiện này chia sẻ lộ trình với phương tiện đã chọn. Nháy vào một phương tiện để sao chép lộ trình từ phương tiện đó. Lệnh dẫn đến xưởng sẽ dừng việc bảo trì tự động cho phương tiện
+STR_ORDERS_GO_TO_TOOLTIP                                        :{BLACK}Thêm một điểm lộ trình trước điểm đã chọn, hoặc thêm nó vào cuối danh sách. Ctrl+Click nếu là ga thì 'bốc xếp đủ bất kỳ hàng nào', là điểm mốc thì 'đi suốt' và là xưởng thì 'gỡ gộp'. Click vào một phương tiện để sao chép lộ trình từ phương tiện đó, hoặc giữ Ctrl+Click để cho phép phương tiện này chia sẻ lộ trình với phương tiện đã chọn. Lệnh dẫn đến xưởng sẽ dừng việc bảo trì tự động cho phương tiện
 
 STR_ORDERS_VEH_WITH_SHARED_ORDERS_LIST_TOOLTIP                  :{BLACK}Hiện tất cả phương tiện chia sẻ lộ trình này
 
@@ -4777,7 +4778,7 @@ STR_AI_DEBUG_CONTINUE                                           :{BLACK}Tiếp t
 STR_AI_DEBUG_CONTINUE_TOOLTIP                                   :{BLACK}Cho máy tiếp tục chơi
 STR_AI_DEBUG_SELECT_AI_TOOLTIP                                  :{BLACK}Xem thông tin debug của AI này. Ctrl+Click để mở cửa sổ mới
 STR_AI_GAME_SCRIPT                                              :{BLACK}Game Script
-STR_AI_GAME_SCRIPT_TOOLTIP                                      :{BLACK}Kiểm tra lịch sử Game Script. Ctrl + Click mở cửa sổ mới
+STR_AI_GAME_SCRIPT_TOOLTIP                                      :{BLACK}Kiểm tra lịch sử Game Script. Ctrl+Click mở cửa sổ mới
 
 STR_ERROR_AI_NO_AI_FOUND                                        :Không có AI phù hợp để nạp.{}AI này là AI giả và sẽ không làm gì cả.{}Bạn có thể tải các AI tại mục 'Nội dung trực tuyến'.
 STR_ERROR_AI_PLEASE_REPORT_CRASH                                :{WHITE}Có một script bị treo. Hãy báo cho tác giả script kèm với màn hình chụp cửa sổ gỡ lỗi AI/Game Script
@@ -4840,8 +4841,6 @@ STR_AI_SETTINGS_CAPTION_GAMESCRIPT                              :Game Script
 STR_AI_SETTINGS_CLOSE                                           :{BLACK}Đóng
 STR_AI_SETTINGS_RESET                                           :{BLACK}Thiết Lập Lại
 STR_AI_SETTINGS_SETTING                                         :{STRING}: {ORANGE}{STRING}
-STR_AI_SETTINGS_SETTING_DEVIATION                               :{STRING}: {ORANGE}[{STRING}, {STRING}]
-STR_AI_SETTINGS_JUST_DEVIATION                                  :[{STRING}, {STRING}]
 
 
 # Textfile window
@@ -5806,6 +5805,7 @@ STR_STATION_NAME                                                :{STATION}
 STR_TOWN_NAME                                                   :{TOWN}
 STR_VEHICLE_NAME                                                :{VEHICLE}
 STR_WAYPOINT_NAME                                               :{WAYPOINT}
+
 
 STR_JUST_CARGO                                                  :{CARGO_LONG}
 STR_JUST_RIGHT_ARROW                                            :{RIGHT_ARROW}

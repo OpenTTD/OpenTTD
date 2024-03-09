@@ -918,6 +918,7 @@ STR_CURRENCY_DECREASE_EXCHANGE_RATE_TOOLTIP                     :{BLACK}Kurangka
 STR_CURRENCY_INCREASE_EXCHANGE_RATE_TOOLTIP                     :{BLACK}Tambahkan nilai matawang anda untuk satu Pound (£)
 STR_CURRENCY_SET_EXCHANGE_RATE_TOOLTIP                          :{BLACK}Tetapkan kadar pertukaran mata wang anda untuk stau Paun (£)
 
+
 STR_CURRENCY_PREFIX                                             :{LTBLUE}Imbuhan awalan: {ORANGE}{STRING}
 STR_CURRENCY_SET_CUSTOM_CURRENCY_PREFIX_TOOLTIP                 :{BLACK}Tetapkan permulaan untuk mata wang anda
 STR_CURRENCY_SUFFIX                                             :{LTBLUE}Imbuhan akhiran: {ORANGE}{STRING}
@@ -4672,6 +4673,7 @@ STR_STATION_NAME                                                :{STATION}
 STR_TOWN_NAME                                                   :{TOWN}
 STR_VEHICLE_NAME                                                :{VEHICLE}
 STR_WAYPOINT_NAME                                               :{WAYPOINT}
+
 
 STR_JUST_CARGO                                                  :{CARGO_LONG}
 STR_JUST_CHECKMARK                                              :{CHECKMARK}

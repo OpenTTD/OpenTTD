@@ -1117,6 +1117,9 @@ STR_CURRENCY_DECREASE_EXCHANGE_RATE_TOOLTIP                     :{BLACK}Verlaag 
 STR_CURRENCY_INCREASE_EXCHANGE_RATE_TOOLTIP                     :{BLACK}Verhoog de wisselkoers van jouw munteenheid ten opzichte van het pond (£)
 STR_CURRENCY_SET_EXCHANGE_RATE_TOOLTIP                          :{BLACK}Stel de wisselkoers in van jouw munteenheid ten opzichte van het pond (£)
 
+STR_CURRENCY_SEPARATOR                                          :{LTBLUE}Scheidingsteken: {ORANGE}{STRING}
+STR_CURRENCY_SET_CUSTOM_CURRENCY_SEPARATOR_TOOLTIP              :{BLACK}Stel het scheidingsteken voor je munteenheid in
+
 STR_CURRENCY_PREFIX                                             :{LTBLUE}Voorvoegsel: {ORANGE}{STRING}
 STR_CURRENCY_SET_CUSTOM_CURRENCY_PREFIX_TOOLTIP                 :{BLACK}Stel het voorvoegsel in voor jouw munteenheid
 STR_CURRENCY_SUFFIX                                             :{LTBLUE}Achtervoegsel: {ORANGE}{STRING}
@@ -1271,10 +1274,10 @@ STR_CONFIG_SETTING_INFINITE_MONEY                               :Onbeperkt geld:
 STR_CONFIG_SETTING_INFINITE_MONEY_HELPTEXT                      :Je kunt onbeperkt geld uitgeven en bedrijven gaan niet failliet
 
 STR_CONFIG_SETTING_MAXIMUM_INITIAL_LOAN                         :Maximale beginlening: {STRING}
-STR_CONFIG_SETTING_MAXIMUM_INITIAL_LOAN_HELPTEXT                :Maximaal bedrag dat een bedrijf kan lenen (zonder rekening te houden met de inflatie)
+STR_CONFIG_SETTING_MAXIMUM_INITIAL_LOAN_HELPTEXT                :Maximaal bedrag dat een bedrijf kan lenen (zonder rekening te houden met de inflatie). Als je dit instelt op 'Geen lening' kun je geen geld krijgen tenzij door middel van een spelscript of de instelling 'Onbeperkt geld'.
 STR_CONFIG_SETTING_MAXIMUM_INITIAL_LOAN_VALUE                   :{CURRENCY_LONG}
 ###setting-zero-is-special
-STR_CONFIG_SETTING_MAXIMUM_INITIAL_LOAN_DISABLED                :Geen lening {RED}Spelscript vereist voor aanvankelijk saldo
+STR_CONFIG_SETTING_MAXIMUM_INITIAL_LOAN_DISABLED                :Geen lening
 
 STR_CONFIG_SETTING_INTEREST_RATE                                :Rente van lening: {STRING}
 STR_CONFIG_SETTING_INTEREST_RATE_HELPTEXT                       :Percentage rente op lening; bepaald ook het inflatiecijfer wanneer ingeschakeld
@@ -1491,7 +1494,7 @@ STR_CONFIG_SETTING_NEVER_EXPIRE_VEHICLES                        :Voertuigen verl
 STR_CONFIG_SETTING_NEVER_EXPIRE_VEHICLES_HELPTEXT               :Wanneer ingeschakeld, alle voertuig modellen blijven voor altijd beschikbaar na hun introductie
 
 STR_CONFIG_SETTING_TIMEKEEPING_UNITS                            :Tijd bijhouden: {STRING}
-STR_CONFIG_SETTING_TIMEKEEPING_UNITS_HELPTEXT                   :Selecteer de tijdbasis voor het spel. Dit kan later niet meer worden gewijzigd.{}{}Kalender is het klassieke OpenTTD, met een jaar met 12 maanden en maanden met 28-31 dagen.{}{}Bij Muurklok worden voertuigbewegingen, vrachtproductie en financiën gebaseerd op stappen van één minuut, ongeveer zolang als maanden van 30 dagen in Kalender-modus. Deze worden gegroepeerd in perioden van 12 minuten, equivalent aan een jaar in Kalender-modus.{}{}In beide modi heb je altijd een klassieke kalender die wordt gebruikt voor de introductiedatums van voertuigen, huizen en andere infrastructuur.
+STR_CONFIG_SETTING_TIMEKEEPING_UNITS_HELPTEXT                   :Selecteer de tijdbasis voor het spel. Dit kan later niet meer worden gewijzigd.{}{}Kalender is het klassieke OpenTTD, met een jaar met 12 maanden en maanden met 28-31 dagen.{}{}Bij Muurklok worden vrachtproductie en financiën gebaseerd op stappen van één minuut, ongeveer zolang als maanden van 30 dagen in Kalender-modus. Deze worden gegroepeerd in perioden van 12 minuten, equivalent aan een jaar in Kalender-modus.{}{}In beide modi heb je altijd een klassieke kalender die wordt gebruikt voor de introductiedatums van voertuigen, huizen en andere infrastructuur.
 ###length 2
 STR_CONFIG_SETTING_TIMEKEEPING_UNITS_CALENDAR                   :Kalender
 STR_CONFIG_SETTING_TIMEKEEPING_UNITS_WALLCLOCK                  :Muurklok
@@ -4610,7 +4613,7 @@ STR_ORDER_GO_TO_NEAREST_DEPOT                                   :Ga naar dichtst
 STR_ORDER_GO_TO_NEAREST_HANGAR                                  :Ga naar dichtstbijzijnde hangar
 STR_ORDER_CONDITIONAL                                           :Voorwaardelijk overgeslagen order
 STR_ORDER_SHARE                                                 :Orders delen
-STR_ORDERS_GO_TO_TOOLTIP                                        :{BLACK}Voegt een nieuwe order toe voor de geselecteerde order of aan het eind van de lijst. Ctrl+klik maakt stationsorders 'Eén soort vracht volledig laden', controlepost-orders 'Ga non-stop via' en depot-orders 'Onderhoud bij'. Klikken op een ander voertuig kopieert de orders van dat voertuig, Ctrl+klik om de orders te delen. Een depot-order schakelt automatisch onderhoud van een voertuig uit.
+STR_ORDERS_GO_TO_TOOLTIP                                        :{BLACK}Voegt een nieuwe order toe voor de geselecteerde order of aan het eind van de lijst. Ctrl+klik op een station om 'Eén soort vracht volledig te laden', op een tussenpunt om de 'Ga non-stop via'n om te keren en op een depot voor 'Onderhoud'. Klikken op een ander voertuig om de orders van dat voertuig te kopiëren, of Ctrl+klik om de orders te delen. Een depot-order schakelt automatisch onderhoud van een voertuig uit.
 
 STR_ORDERS_VEH_WITH_SHARED_ORDERS_LIST_TOOLTIP                  :{BLACK}Alle voertuigen weergeven met dezelfde gedeelde orders
 
@@ -4840,8 +4843,6 @@ STR_AI_SETTINGS_CAPTION_GAMESCRIPT                              :Spelscript
 STR_AI_SETTINGS_CLOSE                                           :{BLACK}Sluiten
 STR_AI_SETTINGS_RESET                                           :{BLACK}Terugstellen
 STR_AI_SETTINGS_SETTING                                         :{STRING}: {ORANGE}{STRING}
-STR_AI_SETTINGS_SETTING_DEVIATION                               :{STRING}: {ORANGE}[{STRING}, {STRING}]
-STR_AI_SETTINGS_JUST_DEVIATION                                  :[{STRING}, {STRING}]
 
 
 # Textfile window
@@ -5806,6 +5807,11 @@ STR_STATION_NAME                                                :{STATION}
 STR_TOWN_NAME                                                   :{TOWN}
 STR_VEHICLE_NAME                                                :{VEHICLE}
 STR_WAYPOINT_NAME                                               :{WAYPOINT}
+
+STR_CURRENCY_SHORT_KILO                                         :{NBSP}k
+STR_CURRENCY_SHORT_MEGA                                         :{NBSP}mjn
+STR_CURRENCY_SHORT_GIGA                                         :{NBSP}mjd
+STR_CURRENCY_SHORT_TERA                                         :{NBSP}bn
 
 STR_JUST_CARGO                                                  :{CARGO_LONG}
 STR_JUST_RIGHT_ARROW                                            :{RIGHT_ARROW}

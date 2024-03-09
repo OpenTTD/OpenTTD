@@ -956,6 +956,7 @@ STR_CURRENCY_DECREASE_EXCHANGE_RATE_TOOLTIP                     :{BLACK}ลด�
 STR_CURRENCY_INCREASE_EXCHANGE_RATE_TOOLTIP                     :{BLACK}เพิ่มจำนวนสกุลเงินของคุณสำหรับหนึ่งปอนด์ (£)
 STR_CURRENCY_SET_EXCHANGE_RATE_TOOLTIP                          :{BLACK}กำหนดอัตราแลกเปลี่ยนของสกุลเงินหนึ่งปอนด์ (£)
 
+
 STR_CURRENCY_PREFIX                                             :{LTBLUE}คำนำหน้า: {ORANGE}{STRING}
 STR_CURRENCY_SET_CUSTOM_CURRENCY_PREFIX_TOOLTIP                 :{BLACK}สัญลักษณ์หน้าสกุลเงินของท่าน
 STR_CURRENCY_SUFFIX                                             :{LTBLUE}คำเสริมท้าย: {ORANGE}{STRING}
@@ -5113,6 +5114,7 @@ STR_STATION_NAME                                                :{STATION}
 STR_TOWN_NAME                                                   :{TOWN}
 STR_VEHICLE_NAME                                                :{VEHICLE}
 STR_WAYPOINT_NAME                                               :{WAYPOINT}
+
 
 STR_JUST_CARGO                                                  :{CARGO_LONG}
 STR_JUST_CHECKMARK                                              :{CHECKMARK}

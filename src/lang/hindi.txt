@@ -194,6 +194,8 @@ STR_RAIL_MENU_ELRAIL_CONSTRUCTION                               :विद्य
 STR_ABOUT_MENU_LAND_BLOCK_INFO                                  :भूमि क्षेत्र की जानकारी
 STR_ABOUT_MENU_HELP                                             :सहायता और नियमावली
 STR_ABOUT_MENU_AI_DEBUG                                         :एआई/गेम स्क्रिप्ट डिबग
+STR_ABOUT_MENU_SCREENSHOT                                       :स्क्रीनशॉट
+STR_ABOUT_MENU_SHOW_FRAMERATE                                   :फ्रेमदर दिखाएं
 STR_ABOUT_MENU_ABOUT_OPENTTD                                    :'OpenTTD' के बारे में
 
 ###length 31
@@ -362,6 +364,7 @@ STR_GAME_OPTIONS_GUI_SCALE_FRAME                                :{BLACK}इं�
 # Custom currency window
 
 STR_CURRENCY_DECREASE_EXCHANGE_RATE_TOOLTIP                     :{BLACK}एक पाउंड (£) की तुलना में अपनी मुद्रा का अवमूल्यन करें
+
 
 
 
@@ -1711,6 +1714,7 @@ STR_STATION_NAME                                                :{STATION}
 STR_TOWN_NAME                                                   :{TOWN}
 STR_VEHICLE_NAME                                                :{VEHICLE}
 STR_WAYPOINT_NAME                                               :{WAYPOINT}
+
 
 STR_JUST_CARGO                                                  :{CARGO_LONG}
 STR_JUST_CHECKMARK                                              :{CHECKMARK}

@@ -496,6 +496,7 @@ STR_GAME_OPTIONS_RESOLUTION_OTHER                               :расна
 # Custom currency window
 
 
+
 STR_CURRENCY_PREFIX                                             :{LTBLUE}Префикс: {ORANGE}{STRING}
 STR_CURRENCY_SUFFIX                                             :{LTBLUE}Суффикс: {ORANGE}{STRING}
 
@@ -1809,6 +1810,7 @@ STR_STATION_NAME                                                :{STATION}
 STR_TOWN_NAME                                                   :{TOWN}
 STR_VEHICLE_NAME                                                :{VEHICLE}
 STR_WAYPOINT_NAME                                               :{WAYPOINT}
+
 
 STR_JUST_CARGO                                                  :{CARGO_LONG}
 STR_JUST_CHECKMARK                                              :{CHECKMARK}

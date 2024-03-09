@@ -957,6 +957,7 @@ STR_CURRENCY_DECREASE_EXCHANGE_RATE_TOOLTIP                     :{BLACK}Ferleegj
 STR_CURRENCY_INCREASE_EXCHANGE_RATE_TOOLTIP                     :{BLACK}Ferheegje de wikselkoers fan jo faluta yn ferlyk mei de Britske Pûn (£)
 STR_CURRENCY_SET_EXCHANGE_RATE_TOOLTIP                          :{BLACK}Stel de wikselkoers fan dyn faluta yn ferlyk mei de Britske Pûn (£)
 
+
 STR_CURRENCY_PREFIX                                             :{LTBLUE}Foarheaksel: {ORANGE}{STRING}
 STR_CURRENCY_SET_CUSTOM_CURRENCY_PREFIX_TOOLTIP                 :{BLACK}Stel it foarrinteken yn foar jo faluta
 STR_CURRENCY_SUFFIX                                             :{LTBLUE}Efterheaksel: {ORANGE}{STRING}
@@ -4715,6 +4716,7 @@ STR_STATION_NAME                                                :{STATION}
 STR_TOWN_NAME                                                   :{TOWN}
 STR_VEHICLE_NAME                                                :{VEHICLE}
 STR_WAYPOINT_NAME                                               :{WAYPOINT}
+
 
 STR_JUST_CARGO                                                  :{CARGO_LONG}
 STR_JUST_CHECKMARK                                              :{CHECKMARK}

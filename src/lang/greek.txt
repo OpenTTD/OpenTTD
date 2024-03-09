@@ -251,6 +251,20 @@ STR_COLOUR_WHITE                                                :Λευκό
 STR_COLOUR_RANDOM                                               :Τυχαία
 
 ###length 17
+STR_COLOUR_SECONDARY_DARK_BLUE                                  :Σκούρο Μπλε
+STR_COLOUR_SECONDARY_PALE_GREEN                                 :Ανοικτό Πράσινο
+STR_COLOUR_SECONDARY_RED                                        :Κόκκινο
+STR_COLOUR_SECONDARY_LIGHT_BLUE                                 :Γαλάζιο
+STR_COLOUR_SECONDARY_GREEN                                      :Πράσινο
+STR_COLOUR_SECONDARY_DARK_GREEN                                 :Σκούρο Πράσινο
+STR_COLOUR_SECONDARY_BLUE                                       :Μπλε
+STR_COLOUR_SECONDARY_CREAM                                      :Κρεμ
+STR_COLOUR_SECONDARY_MAUVE                                      :Μωβ
+STR_COLOUR_SECONDARY_PURPLE                                     :Πορφυρό μωβ
+STR_COLOUR_SECONDARY_ORANGE                                     :Πορτοκαλί
+STR_COLOUR_SECONDARY_BROWN                                      :Καφέ
+STR_COLOUR_SECONDARY_GREY                                       :Γκρι
+STR_COLOUR_SECONDARY_SAME_AS_PRIMARY                            :Ίδιο με το πρωταρχικό
 
 
 # Units used in OpenTTD
@@ -392,7 +406,9 @@ STR_SORT_BY_POPULATION                                          :Πληθυσμ�
 STR_SORT_BY_RATING                                              :Εκτίμηση
 STR_SORT_BY_NUM_VEHICLES                                        :Αριθμός οχημάτων
 STR_SORT_BY_TOTAL_PROFIT_LAST_YEAR                              :Συνολικό κέρδος προηγούμενου έτους
+STR_SORT_BY_TOTAL_PROFIT_LAST_PERIOD                            :Συνολικό κέρδος προηγούμενου έτους
 STR_SORT_BY_TOTAL_PROFIT_THIS_YEAR                              :Συνολικό κέρδος τρέχοντος έτους
+STR_SORT_BY_TOTAL_PROFIT_THIS_PERIOD                            :Συνολικό κέρδος τρέχοντος έτους
 STR_SORT_BY_AVERAGE_PROFIT_LAST_YEAR                            :Μέσο κέρδος τελευταίου έτους
 STR_SORT_BY_AVERAGE_PROFIT_THIS_YEAR                            :Μέσος όρος κέρδους τρέχοντος έτους
 
@@ -863,6 +879,7 @@ STR_STATUSBAR_AUTOSAVE                                          :{RED}ΑΥΤΟΜ
 STR_STATUSBAR_SAVING_GAME                                       :{RED}*  *  ΑΠΟΘΗΚΕΥΣΗ ΠΑΙΧΝΙΔΙΟΥ  *  *
 
 STR_STATUSBAR_SPECTATOR                                         :{WHITE}(θεατής)
+STR_STATUSBAR_INFINITE_MONEY                                    :{WHITE}(άπειρα χρήματα)
 
 # News message history
 STR_MESSAGE_HISTORY                                             :{WHITE}Ιστορικό Μηνυμάτων
@@ -975,6 +992,8 @@ STR_EXTRA_VIEW_MOVE_MAIN_TO_VIEW_TT                             :{BLACK}Επικ
 # Game options window
 STR_GAME_OPTIONS_CAPTION                                        :{WHITE}Επιλογές Παιχνιδιού
 
+STR_GAME_OPTIONS_TAB_GENERAL                                    :Γενικά
+STR_GAME_OPTIONS_TAB_SOUND                                      :Ήχος
 
 
 
@@ -1032,6 +1051,10 @@ STR_GAME_OPTIONS_AUTOSAVE_DROPDOWN_TOOLTIP                      :{BLACK}Επιλ
 # Autosave dropdown
 ###length 5
 STR_GAME_OPTIONS_AUTOSAVE_DROPDOWN_OFF                          :Ανενεργό
+STR_GAME_OPTIONS_AUTOSAVE_DROPDOWN_EVERY_10_MINUTES             :Ανά 10 λεπτά
+STR_GAME_OPTIONS_AUTOSAVE_DROPDOWN_EVERY_30_MINUTES             :Ανά 30 λεπτά
+STR_GAME_OPTIONS_AUTOSAVE_DROPDOWN_EVERY_60_MINUTES             :Ανά 60 λεπτά
+STR_GAME_OPTIONS_AUTOSAVE_DROPDOWN_EVERY_120_MINUTES            :Ανά 120 λεπτά
 
 STR_GAME_OPTIONS_LANGUAGE                                       :{BLACK}Γλώσσα
 STR_GAME_OPTIONS_LANGUAGE_TOOLTIP                               :{BLACK}Επιλογή της γλώσσας του παιχνιδιού
@@ -1062,6 +1085,10 @@ STR_GAME_OPTIONS_GUI_SCALE_AUTO_TOOLTIP                         :{BLACK}Τσεκ
 STR_GAME_OPTIONS_GUI_SCALE_BEVELS                               :{BLACK}Κλίση κλίμακας
 STR_GAME_OPTIONS_GUI_SCALE_BEVELS_TOOLTIP                       :{BLACK}Τσεκάρετε αυτό το κουτί για να αλλάζει μέγεθος το περίγραμμα με βάση το μέγεθος της διεπαφής
 
+STR_GAME_OPTIONS_GUI_FONT_SPRITE                                :{BLACK}Χρήση παραδοσιακής γραμματοσειράς
+STR_GAME_OPTIONS_GUI_FONT_SPRITE_TOOLTIP                        :{BLACK}Επιλέξτε αυτό το κουτάκι εάν προτιμάτε να χρησιμοποιήσετε την παραδοσιακή γραμματοσειρά σταθερού μεγέθους.
+STR_GAME_OPTIONS_GUI_FONT_AA                                    :{BLACK}Γραμματοσειρά με εξομάλυνση εμφάνισης
+STR_GAME_OPTIONS_GUI_FONT_AA_TOOLTIP                            :{BLACK}Τσεκάρετε αυτό το κουτάκι για γραμματοσειρά με εξομάλυνση εμφάνισης.
 
 STR_GAME_OPTIONS_GUI_SCALE_1X                                   :1x
 STR_GAME_OPTIONS_GUI_SCALE_2X                                   :2x
@@ -1069,6 +1096,13 @@ STR_GAME_OPTIONS_GUI_SCALE_3X                                   :3x
 STR_GAME_OPTIONS_GUI_SCALE_4X                                   :4x
 STR_GAME_OPTIONS_GUI_SCALE_5X                                   :5x
 
+STR_GAME_OPTIONS_PARTICIPATE_SURVEY_FRAME                       :{BLACK}Αυτοματοποιημένη έρευνα
+STR_GAME_OPTIONS_PARTICIPATE_SURVEY                             :{BLACK}Συμμετοχή σε αυτοματοποιημένη έρευνα
+STR_GAME_OPTIONS_PARTICIPATE_SURVEY_TOOLTIP                     :{BLACK}Όταν είναι ενεργοποιημένο, το OpenTTD θα μεταδίδει μια έρευνα κατά την έξοδο παιχνιδιού
+STR_GAME_OPTIONS_PARTICIPATE_SURVEY_LINK                        :{BLACK}Πληροφορίες για την αυτοματοποιημένη έρευνα και ιδιωτικότητα
+STR_GAME_OPTIONS_PARTICIPATE_SURVEY_LINK_TOOLTIP                :{BLACK}Αυτό ανοίγει ένα πρόγραμμα περιήγησης/browser με περισσότερες πληροφορίες σχετικά με την αυτοματοποιημένη έρευνα
+STR_GAME_OPTIONS_PARTICIPATE_SURVEY_PREVIEW                     :{BLACK}Προεπισκόπηση αποτελέσματος έρευνας
+STR_GAME_OPTIONS_PARTICIPATE_SURVEY_PREVIEW_TOOLTIP             :{BLACK}Εμφάνιση του αποτελέσματος της έρευνας του τρέχοντος παιχνιδιού
 
 STR_GAME_OPTIONS_GRAPHICS                                       :{BLACK}Γραφικά
 
@@ -1103,6 +1137,7 @@ STR_CURRENCY_EXCHANGE_RATE                                      :{LTBLUE}Ισο�
 STR_CURRENCY_DECREASE_EXCHANGE_RATE_TOOLTIP                     :{BLACK}Μείωση του ποσού της ισοτιμίας σας για μία λίρα (£)
 STR_CURRENCY_INCREASE_EXCHANGE_RATE_TOOLTIP                     :{BLACK}Αυξήστε το ποσό της ισοτιμίας σας για μία Λίρα (£)
 STR_CURRENCY_SET_EXCHANGE_RATE_TOOLTIP                          :{BLACK}Ρυθμίστε τη συναλλαγματική ισοτιμία του νομίσματος για μια λίρα (£)
+
 
 STR_CURRENCY_PREFIX                                             :{LTBLUE}Πρόθεμα: {ORANGE}{STRING}
 STR_CURRENCY_SET_CUSTOM_CURRENCY_PREFIX_TOOLTIP                 :{BLACK}Ορίστε το πρόθεμα για το νόμισμά σας
@@ -1276,6 +1311,7 @@ STR_CONFIG_SETTING_SUBSIDY_DURATION                             :Διάρκει�
 ###length 2
 STR_CONFIG_SETTING_SUBSIDY_DURATION_HELPTEXT                    :Ορίστε τον αριθμό των ετών για τα οποία θα ισχύει η επιδότηση
 
+STR_CONFIG_SETTING_SUBSIDY_DURATION_VALUE                       :{UNITS_YEARS_OR_PERIODS}
 ###setting-zero-is-special
 STR_CONFIG_SETTING_SUBSIDY_DURATION_DISABLED                    :Χωρίς επιχορηγήσεις
 
@@ -1460,11 +1496,14 @@ STR_CONFIG_SETTING_WARN_INCOME_LESS_HELPTEXT                    :Όταν είν
 STR_CONFIG_SETTING_NEVER_EXPIRE_VEHICLES                        :Τα οχήματα δεν λήγουν ποτέ: {STRING}
 STR_CONFIG_SETTING_NEVER_EXPIRE_VEHICLES_HELPTEXT               :Όταν είναι ενεργοποιημένη, όλα τα μοντέλα οχημάτων παραμένουν διαθέσιμα για πάντα μετά την παρουσίασή τους
 
+STR_CONFIG_SETTING_TIMEKEEPING_UNITS                            :Χρονομέτρηση: {STRING}
 ###length 2
+STR_CONFIG_SETTING_TIMEKEEPING_UNITS_CALENDAR                   :Ημερολόγιο
 
 
 ###setting-zero-is-special
 
+STR_CONFIG_SETTING_TOWN_CARGO_SCALE_HELPTEXT                    :Κλιμακώστε την παραγωγή φορτίου των πόλεων κατά αυτό το ποσοστό.
 
 STR_CONFIG_SETTING_AUTORENEW_VEHICLE                            :Αυτόματη ανανέωση όταν ένα όχημα παλιώνει: {STRING}
 STR_CONFIG_SETTING_AUTORENEW_VEHICLE_HELPTEXT                   :Όταν είναι ενεργοποιημένη, τα οχήματα που πλησιάζουν το τέλος της ζωής τους αντικαθίσταται αυτόματα όταν πληρούνται οι προϋποθέσεις αντικατάστασής του
@@ -1586,7 +1625,7 @@ STR_CONFIG_SETTING_LINKGRAPH_COLOURS_HELPTEXT                   :Θέσημο τ
 ###length 4
 STR_CONFIG_SETTING_LINKGRAPH_COLOURS_GREEN_TO_RED               :Πράσινο σε κόκκινο (Αρχικό)
 STR_CONFIG_SETTING_LINKGRAPH_COLOURS_GREEN_TO_BLUE              :Πράσινο σε μπλέ
-STR_CONFIG_SETTING_LINKGRAPH_COLOURS_GREY_TO_RED                :Γκρι σε μπλε
+STR_CONFIG_SETTING_LINKGRAPH_COLOURS_GREY_TO_RED                :Γκρι σε Κόκκινο
 STR_CONFIG_SETTING_LINKGRAPH_COLOURS_GREYSCALE                  :Ασπρόμαυρο
 
 STR_CONFIG_SETTING_SCROLLMODE                                   :Συμπεριφορά κύλισης του παραθύρου εμφάνισης: {STRING}
@@ -1648,6 +1687,9 @@ STR_CONFIG_SETTING_RIGHT_MOUSE_BTN_EMU_OFF                      :Απενεργ�
 STR_CONFIG_SETTING_RIGHT_MOUSE_WND_CLOSE                        :Κλείσιμο παραθύρου με δεξί-κλικ: {STRING}
 STR_CONFIG_SETTING_RIGHT_MOUSE_WND_CLOSE_HELPTEXT               :Κλείνει το παράθυρο με δεξί πάτημα μέσα του. Απενεργοποιεί την ανάδυση επεξηγήσεων με το δεξί κουμπί!
 ###length 3
+STR_CONFIG_SETTING_RIGHT_MOUSE_WND_CLOSE_NO                     :Όχι
+STR_CONFIG_SETTING_RIGHT_MOUSE_WND_CLOSE_YES                    :Ναι
+STR_CONFIG_SETTING_RIGHT_MOUSE_WND_CLOSE_YES_EXCEPT_STICKY      :Ναι, εκτός από το καρφιτσωμένο
 
 STR_CONFIG_SETTING_DATE_FORMAT_IN_SAVE_NAMES                    :Χρήση της {STRING} ημερολογιακής μορφής στα ονόματα αποθηκευμένων παιχνιδιών
 STR_CONFIG_SETTING_DATE_FORMAT_IN_SAVE_NAMES_HELPTEXT           :Μορφή της ημερομηνίας στα αρχεία αποθήκευσης παιχνιδιών
@@ -1994,11 +2036,15 @@ STR_CONFIG_SETTING_DEMAND_SIZE_HELPTEXT                         :Θέτοντα�
 STR_CONFIG_SETTING_SHORT_PATH_SATURATION                        :Κορεσμός σύντομων οδών πριν τη χρήση οδών μεγάλης χωρητικότητας: {STRING}
 STR_CONFIG_SETTING_SHORT_PATH_SATURATION_HELPTEXT               :Συχνά υπάρχουν πολλαπλές οδοί μεατξύ δύο σταθμών. Η διανομή φορτίων θα κορέσει την πιο σύντομη οδό πρώτα, και μετέπειτα θα χρησιμοποιήσει τη δεύτερ συντομότερη οδό μέχρι αυτή να κορεστεί και τα λοιπά. Ο κορεσμός εξαρτάται από μια εκτίμηση της χωρητικότητας και ενδεχόμενης χρήσης. Όταν έχει κορεστεί όλες οι οδοί, θα υπερφορτώσει όλες τισ οδούς, προτιμώντας αυτές με μεγάλη χωρητικότητα. Τις περισσότερες φορές όμως ο αλγόριθμος δεν εκτιμά σωστά την χωριτικότητα. Αυτή η ρύθμιση επιτρέπει τον προσδιορισμό μέχρι ποιό ποσοστό μια σύντομοτερη οδός πρέπει να κορεστεί τη πρώτη φορά πριν διαλέξει μια μακρύτερη. Θέστε τη σε λιγότερο απο το 100% για την αποφυγή υπερφορτωμένων σταθμών σε περίπτωση υπερεκτιμημένης χωρητικότητας.
 
-STR_CONFIG_SETTING_LOCALISATION_UNITS_VELOCITY                  :Μονάδες μέτρησης ταχύτητας: {STRING}
+STR_CONFIG_SETTING_LOCALISATION_UNITS_VELOCITY                  :Μονάδες μέτρησης ταχύτητας (ξηράς): {STRING}
+STR_CONFIG_SETTING_LOCALISATION_UNITS_VELOCITY_NAUTICAL         :Μονάδες ταχύτητας (ναυτικές): {STRING}
 STR_CONFIG_SETTING_LOCALISATION_UNITS_VELOCITY_HELPTEXT         :Όποτε εμφανίζεται μια ταχύτητα στη διεπαφή χρήστη, να εμφανίζεται στην επιλεγμένη μονάδα
 STR_CONFIG_SETTING_LOCALISATION_UNITS_VELOCITY_IMPERIAL         :Αυτοκρατορικό (μίλια/ώρα)
 STR_CONFIG_SETTING_LOCALISATION_UNITS_VELOCITY_METRIC           :Μετρικό (χλμ/ώρα)
 STR_CONFIG_SETTING_LOCALISATION_UNITS_VELOCITY_SI               :SI (m/s)
+STR_CONFIG_SETTING_LOCALISATION_UNITS_VELOCITY_GAMEUNITS_DAYS   :Μονάδες παιχνιδιού (πλακάκια/ημέρα)
+STR_CONFIG_SETTING_LOCALISATION_UNITS_VELOCITY_GAMEUNITS_SECS   :Μονάδες παιχνιδιού (πλακάκια/δευτερόλεπτο)
+STR_CONFIG_SETTING_LOCALISATION_UNITS_VELOCITY_KNOTS            :Κόμβοι
 
 STR_CONFIG_SETTING_LOCALISATION_UNITS_POWER                     :Μονάδες ισχύος οχημάτων: {STRING}
 STR_CONFIG_SETTING_LOCALISATION_UNITS_POWER_HELPTEXT            :Όποτε εμφανίζεται η ισχύς ενός οχήματος στη διεπαφή χρήστη, να εμφανίζεται στην επιλεγμένη μονάδα
@@ -2097,6 +2143,7 @@ STR_CONFIG_ERROR_SPRITECACHE_TOO_BIG                            :{WHITE}Η κα�
 # Video initalization errors
 STR_VIDEO_DRIVER_ERROR                                          :{WHITE}Πρόβλημα με τις ρυθμίσεις βίντεο...
 STR_VIDEO_DRIVER_ERROR_NO_HARDWARE_ACCELERATION                 :{WHITE}... δεν βρέθηκε συμβατή GPU. Η επιτάχυνση υλικού έχει απενεργοποιηθεί
+STR_VIDEO_DRIVER_ERROR_HARDWARE_ACCELERATION_CRASH              :{WHITE}... Το πρόγραμμα οδήγησης της κάρτας γραφικών προκάλεσε πρόβλημα στο παιχνίδι. Η επιτάχυνση υλικού απενεργοποιήθηκε
 
 # Intro window
 STR_INTRO_CAPTION                                               :{WHITE}OpenTTD {REV}
@@ -2153,6 +2200,16 @@ STR_ABANDON_GAME_QUERY                                          :{YELLOW}Είσ�
 STR_ABANDON_SCENARIO_QUERY                                      :{YELLOW}Είστε σίγουροι ότι θέλετε να εγκαταλείψετε το σενάριο;
 
 # Help window
+STR_HELP_WINDOW_CAPTION                                         :{WHITE}Βοήθεια και εγχειρίδια
+STR_HELP_WINDOW_DOCUMENTS                                       :{BLACK}Έγγραφα
+STR_HELP_WINDOW_README                                          :{BLACK}Εμφάνιση readme
+STR_HELP_WINDOW_CHANGELOG                                       :{BLACK}Ιστορικό αλλαγών
+STR_HELP_WINDOW_KNOWN_BUGS                                      :{BLACK}Γνωστά σφάλματα/bugs
+STR_HELP_WINDOW_LICENSE                                         :{BLACK}Άδεια
+STR_HELP_WINDOW_MAIN_WEBSITE                                    :{BLACK}OpenTTD
+STR_HELP_WINDOW_MANUAL_WIKI                                     :{BLACK}Εγχειρίδιο / Wiki
+STR_HELP_WINDOW_BUGTRACKER                                      :{BLACK}Αναφορά σφάλματος/bug
+STR_HELP_WINDOW_COMMUNITY                                       :{BLACK}Κοινότητα
 
 # Cheat window
 STR_CHEATS                                                      :{WHITE}Απατεωνιές
@@ -2397,6 +2454,8 @@ STR_NETWORK_CLIENT_LIST_NEW_COMPANY                             :(Νέα ετα�
 STR_NETWORK_CLIENT_LIST_NEW_COMPANY_TOOLTIP                     :{BLACK}Δημιουργήστε μία νέα εταιρία και συμμετέχετε σε αυτήν
 STR_NETWORK_CLIENT_LIST_PLAYER_ICON_SELF_TOOLTIP                :{BLACK}Αυτός/η είστε εσείς
 STR_NETWORK_CLIENT_LIST_PLAYER_ICON_HOST_TOOLTIP                :{BLACK}Αυτός/η είναι ο/η οικοδεσπότης του παιχνιδιού
+STR_NETWORK_CLIENT_LIST_CLIENT_COMPANY_COUNT                    :{BLACK}{NUM} πελάτ{P ης ες} - {NUM}/{NUM} εταιρί{P α ες}
+STR_NETWORK_CLIENT_LIST_CLIENT_COMPANY_COUNT_TOOLTIP            :{BLACK}Ο αριθμός των συνδεδεμένων πελατών, ο αριθμός των εταιρειών και ο μέγιστος αριθμός εταιρειών που επιτρέπεται από τον διαχειριστή του διακομιστή
 
 # Matches ConnectionType
 ###length 5
@@ -2423,6 +2482,12 @@ STR_NETWORK_ASK_RELAY_NO                                        :{BLACK}Όχι
 STR_NETWORK_ASK_RELAY_YES_ONCE                                  :{BLACK}Ναι, μόνο αυτή τη φορά
 STR_NETWORK_ASK_RELAY_YES_ALWAYS                                :{BLACK}Ναι, μην ρωτήσεις ξανά
 
+STR_NETWORK_ASK_SURVEY_CAPTION                                  :Συμμετοχή σε αυτοματοποιημένη έρευνα;
+STR_NETWORK_ASK_SURVEY_TEXT                                     :Θα θέλατε να συμμετάσχετε στην αυτοματοποιημένη έρευνα;{}Το OpenTTD θα μεταδώσει μια έρευνα όταν αποχωρείτε από ένα παιχνίδι.{}Μπορείτε να το αλλάξετε ανά πάσα στιγμή στις "Επιλογές παιχνιδιού".
+STR_NETWORK_ASK_SURVEY_PREVIEW                                  :Προεπισκόπηση αποτελέσματος έρευνας
+STR_NETWORK_ASK_SURVEY_LINK                                     :Πληροφορίες για την αυτοματοποιημένη έρευνα και ιδιωτικότητα
+STR_NETWORK_ASK_SURVEY_NO                                       :Όχι
+STR_NETWORK_ASK_SURVEY_YES                                      :Ναι
 
 STR_NETWORK_SPECTATORS                                          :Θεατές
 
@@ -2629,6 +2694,7 @@ STR_TRANSPARENT_BUILDINGS_TOOLTIP                               :{BLACK}Εναλ
 STR_TRANSPARENT_BRIDGES_TOOLTIP                                 :{BLACK}Εναλλαγή διαφάνειας για γέφυρες. Ctrl+Κλικ για να την κλειδώσετε
 STR_TRANSPARENT_STRUCTURES_TOOLTIP                              :{BLACK}Εναλλαγή διαφάνειας για κτίρια όπως φάρους και κεραίες. Ctrl+Κλικ για να την κλειδώσετε
 STR_TRANSPARENT_CATENARY_TOOLTIP                                :{BLACK}Εναλλαγή διαφάνειας για τις συνδέσεις. Ctrl+Κλικ για να την κλειδώσετε
+STR_TRANSPARENT_TEXT_TOOLTIP                                    :{BLACK}Εναλλαγή διαφάνειας για φόρτωση και κείμενο κόστους/εσόδων. Ctrl+Click για να την κλειδώσετε
 STR_TRANSPARENT_INVISIBLE_TOOLTIP                               :{BLACK}Επιλέξτε τα αντικείμενα που θα είναι αόρατα αντί για διάφανα
 
 # Linkgraph legend window
@@ -2645,6 +2711,7 @@ STR_LINKGRAPH_LEGEND_OVERLOADED                                 :{TINY_FONT}{BLA
 
 # Linkgraph tooltip
 STR_LINKGRAPH_STATS_TOOLTIP_RETURN_EXTENSION                    :{}{CARGO_LONG} προς μεταφορά πίσω ({COMMA}% της χωρητικότητας)
+STR_LINKGRAPH_STATS_TOOLTIP_TIME_EXTENSION                      :{}Μέσος χρόνος ταξιδιού: {UNITS_DAYS_OR_SECONDS}
 
 # Base for station construction window(s)
 STR_STATION_BUILD_COVERAGE_AREA_TITLE                           :{BLACK}Κάλυψη περιοχής
@@ -2654,6 +2721,8 @@ STR_STATION_BUILD_COVERAGE_AREA_OFF_TOOLTIP                     :{BLACK}Μη ε�
 STR_STATION_BUILD_COVERAGE_AREA_ON_TOOLTIP                      :{BLACK}Εμφάνιση κάλυψης του προτεινόμενου τόπου
 STR_STATION_BUILD_ACCEPTS_CARGO                                 :{BLACK}Δέχεται: {GOLD}{CARGO_LIST}
 STR_STATION_BUILD_SUPPLIES_CARGO                                :{BLACK}Προμηθεύει : {GOLD}{CARGO_LIST}
+STR_STATION_BUILD_INFRASTRUCTURE_COST_YEAR                      :{BLACK}Κόστος συντήρησης: {GOLD}{CURRENCY_SHORT}/έτος
+STR_STATION_BUILD_INFRASTRUCTURE_COST_PERIOD                    :{BLACK}Κόστος συντήρησης: {GOLD}{CURRENCY_SHORT}/περίοδο
 
 # Join station window
 STR_JOIN_STATION_CAPTION                                        :{WHITE}Συνένωση σταθμού
@@ -3188,6 +3257,7 @@ STR_MAPGEN_QUANTITY_OF_RIVERS                                   :{BLACK}Ποτά
 STR_MAPGEN_SMOOTHNESS                                           :{BLACK}Ομαλότητα:
 STR_MAPGEN_VARIETY                                              :{BLACK}Διανομή ποικιλομορφίας:
 STR_MAPGEN_GENERATE                                             :{WHITE}Δημιουργία
+STR_MAPGEN_GENERATE_TOOLTIP                                     :{BLACK}Δημιουργήστε τον κόσμο και παίξτε OpenTTD!
 STR_MAPGEN_NEWGRF_SETTINGS                                      :{BLACK}Ρυθμίσεις NewGRF
 STR_MAPGEN_NEWGRF_SETTINGS_TOOLTIP                              :{BLACK}Εμφάνιση ρυθμίσεων NewGRF
 STR_MAPGEN_AI_SETTINGS                                          :{BLACK}Ρυθμίσεις AI
@@ -3220,6 +3290,7 @@ STR_MAPGEN_TOWN_NAME_CATALAN                                    :Καταλαν�
 
 # Strings for map borders at game generation
 STR_MAPGEN_BORDER_TYPE                                          :{BLACK}Άκρες χάρτη:
+STR_MAPGEN_BORDER_TYPE_TOOLTIP                                  :{BLACK}Επιλέξτε τα όρια του κόσμου του παιχνιδιού
 STR_MAPGEN_NORTHWEST                                            :{BLACK}Βορειοδυτικά
 STR_MAPGEN_NORTHEAST                                            :{BLACK}Βορειοανατολικά
 STR_MAPGEN_SOUTHEAST                                            :{BLACK}Νοτιοανατολικά
@@ -3382,8 +3453,10 @@ STR_NEWGRF_ERROR_MSG_INFO                                       :{SILVER}{STRING
 STR_NEWGRF_ERROR_MSG_WARNING                                    :{RED}Προειδοποίηση: {SILVER}{STRING}
 STR_NEWGRF_ERROR_MSG_ERROR                                      :{RED}Λάθος: {SILVER}{STRING}
 STR_NEWGRF_ERROR_MSG_FATAL                                      :{RED}Καταστροφικό: {SILVER}{STRING}
+STR_NEWGRF_ERROR_FATAL_POPUP                                    :{WHITE}Το NewGRF "{STRING}" επέστρεψε ένα καταστροφικό λάθος:{}{STRING}
+STR_NEWGRF_ERROR_POPUP                                          :{WHITE}Το NewGRF "{STRING}" επέστρεψε ένα λάθος:{}{STRING}
 STR_NEWGRF_ERROR_VERSION_NUMBER                                 :Το {1:STRING} δεν θα δουλέψει με την έκδοση του TTDPatch όπως αναφέρεται από το OpenTTD
-STR_NEWGRF_ERROR_DOS_OR_WINDOWS                                 :Το {1:STRING} είναι για την έκδοση {STRING} του TTD
+STR_NEWGRF_ERROR_DOS_OR_WINDOWS                                 :Το {1:STRING} είναι για την έκδοση {2:STRING} του TTD
 STR_NEWGRF_ERROR_UNSET_SWITCH                                   :{1:STRING} είναι σχεδιασμένο να δουλέψει με το {STRING}
 STR_NEWGRF_ERROR_INVALID_PARAMETER                              :Λάθος παράμετρος για το {1:STRING}: παράμετρος {STRING} ({NUM})
 STR_NEWGRF_ERROR_LOAD_BEFORE                                    :Το {1:STRING} πρέπει να φορτωθεί πριν από το {2:STRING}
@@ -3572,9 +3645,11 @@ STR_GOAL_QUESTION_BUTTON_CLOSE                                  :Κλείσιμ�
 # Subsidies window
 STR_SUBSIDIES_CAPTION                                           :{WHITE}Χρηματοδοτήσεις
 STR_SUBSIDIES_OFFERED_TITLE                                     :{BLACK}Τρέχουσες χρηματοδοτήσεις για ανάληψη υπηρεσιών:
+STR_SUBSIDIES_OFFERED_FROM_TO                                   :{ORANGE}{STRING} από {STRING} προς {STRING}{YELLOW} ({STRING})
 STR_SUBSIDIES_NONE                                              :{ORANGE}- Καμία -
 STR_SUBSIDIES_SUBSIDISED_TITLE                                  :{BLACK}Υπηρεσίες που έχουν χρηματοδοτηθεί:
 STR_SUBSIDIES_TOOLTIP_CLICK_ON_SERVICE_TO_CENTER                :{BLACK}Πατήστε στην υπηρεσία για κεντράρισμα στην βιομηχανία/πόλη. Με Ctrl+Κλικ ανοίγει νέο παράθυρο προβολής στην τοποθεσία της βιομηχανίας/πόλης
+STR_SUBSIDIES_OFFERED_EXPIRY_DATE                               :ανά {DATE_SHORT}
 
 # Story book window
 STR_STORY_BOOK_CAPTION                                          :{WHITE}{COMPANY} Βιβλίο Ιστορίας
@@ -4099,6 +4174,11 @@ STR_ENGINE_PREVIEW_AIRCRAFT.geniki                              :αεροσκά�
 STR_ENGINE_PREVIEW_SHIP                                         :{G=n}πλοίου
 STR_ENGINE_PREVIEW_SHIP.geniki                                  :πλοίου
 
+STR_ENGINE_PREVIEW_COST_WEIGHT                                  :Κόστος: {CURRENCY_LONG}  Βάρος: {WEIGHT_SHORT}
+STR_ENGINE_PREVIEW_COST_MAX_SPEED                               :Κόστος: {CURRENCY_LONG}  Μεγ. Ταχύτητα: {VELOCITY}
+STR_ENGINE_PREVIEW_RUNCOST_PERIOD                               :Τρέχον κόστος: {CURRENCY_LONG}/περίοδο
+STR_ENGINE_PREVIEW_CAPACITY                                     :Χωρητικότητα: {CARGO_LONG}
+STR_ENGINE_PREVIEW_CAPACITY_2                                   :Χωρητικότητα: {CARGO_LONG}, {CARGO_LONG}
 
 # Autoreplace window
 STR_REPLACE_VEHICLES_WHITE                                      :{WHITE}Αντικατάσταση {STRING} - {STRING}
@@ -4263,6 +4343,11 @@ STR_VEHICLE_INFO_CAPACITY_CAPACITY                              :{BLACK}Χωρη
 
 STR_VEHICLE_INFO_FEEDER_CARGO_VALUE                             :{BLACK}Έσοδα μεταφοράς: {LTBLUE}{CURRENCY_LONG}
 
+STR_VEHICLE_DETAILS_SERVICING_INTERVAL_DAYS                     :{BLACK}Διάστημα μεταξύ επισκευών: {LTBLUE}{COMMA}{NBSP}ημέρες{BLACK}   {STRING}
+STR_VEHICLE_DETAILS_SERVICING_INTERVAL_MINUTES                  :{BLACK}Διάστημα μεταξύ επισκευών: {LTBLUE}{COMMA}{NBSP}λεπτά{BLACK}   {STRING}
+STR_VEHICLE_DETAILS_SERVICING_INTERVAL_PERCENT                  :{BLACK}Διάστημα επισκευών: {LTBLUE}{COMMA}%{BLACK}   {STRING}
+STR_VEHICLE_DETAILS_DECREASE_SERVICING_INTERVAL_TOOLTIP_DAYS    :Μειώστε το διάστημα μεταξύ των σέρβις κατά 10 ημέρες. Ctrl+Click για να μειώσετε το διάστημα συντήρησης κατά 5 ημέρες
+STR_VEHICLE_DETAILS_DECREASE_SERVICING_INTERVAL_TOOLTIP_MINUTES :Μειώστε το διάστημα μεταξύ των σέρβις κατά 5 λεπτά. Ctrl+Click για να μειώσετε το διάστημα συντήρησης κατά 1 λεπτό
 
 STR_SERVICE_INTERVAL_DROPDOWN_TOOLTIP                           :{BLACK}Αλλάξτε τον τύπο διαστήματος επισκευών
 STR_VEHICLE_DETAILS_DEFAULT                                     :Προκαθορισμένο
@@ -4331,6 +4416,7 @@ STR_ORDERS_TIMETABLE_VIEW_TOOLTIP                               :{BLACK}Αλλα
 
 STR_ORDERS_LIST_TOOLTIP                                         :{BLACK}Λίστα εντολών - πατήστε σε μια εντολή για να την επιλέξετε. Με Ctrl+Κλικ γίνεται μετακίνηση στον προορισμό της οδηγίας
 STR_ORDER_INDEX                                                 :{COMMA}:{NBSP}
+STR_ORDER_TEXT                                                  :{STRING} {STRING} {STRING} {STRING}
 
 STR_ORDERS_END_OF_ORDERS                                        :- - Τέλος Εντολών - -
 STR_ORDERS_END_OF_SHARED_ORDERS                                 :- - Τέλος Μοιρασμένων Οδηγιών - -
@@ -4541,6 +4627,7 @@ STR_TIMETABLE_EXPECTED                                          :{BLACK}Αναμ
 STR_TIMETABLE_SCHEDULED                                         :{BLACK}Προγραμματισμένη
 STR_TIMETABLE_EXPECTED_TOOLTIP                                  :{BLACK}Εναλλαγή μεταξύ αναμενόμενης και προγραμματισμένης
 
+STR_TIMETABLE_ARRIVAL_DATE                                      :A: {COLOUR}{DATE_TINY}
 
 
 # Date window (for timetable)
@@ -4625,7 +4712,9 @@ STR_SCREENSHOT_HEIGHTMAP_SCREENSHOT                             :{BLACK}Στιγ
 STR_SCREENSHOT_MINIMAP_SCREENSHOT                               :{BLACK}Στιγμιότυπο μίνι χάρτη
 
 # Script Parameters
+STR_AI_SETTINGS_CAPTION                                         :{WHITE}{STRING} Παράμετροι
 STR_AI_SETTINGS_CAPTION_AI                                      :AI
+STR_AI_SETTINGS_CAPTION_GAMESCRIPT                              :Σενάριο Παιχνιδιού
 STR_AI_SETTINGS_CLOSE                                           :{BLACK}Κλείσιμο
 STR_AI_SETTINGS_RESET                                           :{BLACK}Επαναφορά
 STR_AI_SETTINGS_SETTING                                         :{STRING}: {ORANGE}{STRING}
@@ -5534,6 +5623,7 @@ STR_UNKNOWN_STATION                                             :άγνωστο�
 STR_DEFAULT_SIGN_NAME                                           :Πινακίδα
 STR_COMPANY_SOMEONE                                             :κάποιος
 
+STR_SAVEGAME_DURATION_REALTIME                                  :{NUM}ω {NUM}λ
 STR_SAVEGAME_NAME_DEFAULT                                       :{COMPANY}, {STRING}
 STR_SAVEGAME_NAME_SPECTATOR                                     :Θεατής, {1:STRING}
 
@@ -5566,6 +5656,7 @@ STR_STATION_NAME                                                :{STATION}
 STR_TOWN_NAME                                                   :{TOWN}
 STR_VEHICLE_NAME                                                :{VEHICLE}
 STR_WAYPOINT_NAME                                               :{WAYPOINT}
+
 
 STR_JUST_CARGO                                                  :{CARGO_LONG}
 STR_JUST_CHECKMARK                                              :{CHECKMARK}

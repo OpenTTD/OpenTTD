@@ -191,12 +191,29 @@ STR_COLOUR_WHITE                                                :Blanco
 STR_COLOUR_RANDOM                                               :Aleatorio
 
 ###length 17
+STR_COLOUR_SECONDARY_DARK_BLUE                                  :Azul oscuro
+STR_COLOUR_SECONDARY_PALE_GREEN                                 :Verde pálido
+STR_COLOUR_SECONDARY_RED                                        :Rojo
+STR_COLOUR_SECONDARY_LIGHT_BLUE                                 :Azul claro
+STR_COLOUR_SECONDARY_GREEN                                      :Verde
+STR_COLOUR_SECONDARY_DARK_GREEN                                 :Verde oscuro
+STR_COLOUR_SECONDARY_BLUE                                       :Azul
+STR_COLOUR_SECONDARY_CREAM                                      :Crema
+STR_COLOUR_SECONDARY_MAUVE                                      :Malva
+STR_COLOUR_SECONDARY_PURPLE                                     :Morado
+STR_COLOUR_SECONDARY_ORANGE                                     :Naranja
+STR_COLOUR_SECONDARY_BROWN                                      :Café
+STR_COLOUR_SECONDARY_GREY                                       :Gris
+STR_COLOUR_SECONDARY_SAME_AS_PRIMARY                            :Igual que el principal
 
 
 # Units used in OpenTTD
 STR_UNITS_VELOCITY_IMPERIAL                                     :{DECIMAL}{NBSP}mph
 STR_UNITS_VELOCITY_METRIC                                       :{DECIMAL}{NBSP}km/h
 STR_UNITS_VELOCITY_SI                                           :{DECIMAL}{NBSP}m/s
+STR_UNITS_VELOCITY_GAMEUNITS_DAY                                :{DECIMAL}{NBSP}casillas/día
+STR_UNITS_VELOCITY_GAMEUNITS_SEC                                :{DECIMAL}{NBSP}casillas/seg.
+STR_UNITS_VELOCITY_KNOTS                                        :{DECIMAL}{NBSP}nudos
 
 STR_UNITS_POWER_IMPERIAL                                        :{DECIMAL}{NBSP}hp
 STR_UNITS_POWER_METRIC                                          :{DECIMAL}{NBSP}cv
@@ -237,9 +254,15 @@ STR_UNITS_HEIGHT_METRIC                                         :{DECIMAL}{NBSP}
 STR_UNITS_HEIGHT_SI                                             :{DECIMAL}{NBSP}m
 
 # Time units used in string control characters
+STR_UNITS_DAYS                                                  :{COMMA}{NBSP}día{P "" s}
+STR_UNITS_SECONDS                                               :{COMMA}{NBSP}segundo{P "" s}
+STR_UNITS_TICKS                                                 :{COMMA}{NBSP}tic{P "" s}
 
 STR_UNITS_MONTHS                                                :{NUM}{NBSP}mes{P "" es}
+STR_UNITS_MINUTES                                               :{NUM}{NBSP}minuto{P "" s}
 
+STR_UNITS_YEARS                                                 :{NUM}{NBSP}año{P "" s}
+STR_UNITS_PERIODS                                               :{NUM}{NBSP}período{P "" s}
 
 # Common window strings
 STR_LIST_FILTER_TITLE                                           :{BLACK}Filtrar:
@@ -306,7 +329,9 @@ STR_SORT_BY_TYPE                                                :Tipo
 STR_SORT_BY_TRANSPORTED                                         :Transportado
 STR_SORT_BY_NUMBER                                              :Número
 STR_SORT_BY_PROFIT_LAST_YEAR                                    :Ganancias último año
+STR_SORT_BY_PROFIT_LAST_PERIOD                                  :Beneficio del último periodo
 STR_SORT_BY_PROFIT_THIS_YEAR                                    :Ganancias este año
+STR_SORT_BY_PROFIT_THIS_PERIOD                                  :Beneficio de este período
 STR_SORT_BY_AGE                                                 :Edad
 STR_SORT_BY_RELIABILITY                                         :Fiabilidad
 STR_SORT_BY_TOTAL_CAPACITY_PER_CARGOTYPE                        :Capacidad por tipo de carga
@@ -336,7 +361,9 @@ STR_SORT_BY_NUM_VEHICLES                                        :Número de veh�
 STR_SORT_BY_TOTAL_PROFIT_LAST_YEAR                              :Ganancias totales último año
 STR_SORT_BY_TOTAL_PROFIT_THIS_YEAR                              :Ganancias totales de este año
 STR_SORT_BY_AVERAGE_PROFIT_LAST_YEAR                            :Ganancias medias último año
+STR_SORT_BY_AVERAGE_PROFIT_LAST_PERIOD                          :Beneficio promedio del último período
 STR_SORT_BY_AVERAGE_PROFIT_THIS_YEAR                            :Ganancias promedio de este año
+STR_SORT_BY_AVERAGE_PROFIT_THIS_PERIOD                          :Beneficio promedio de este período
 
 # Group by options for vehicle list
 STR_GROUP_BY_NONE                                               :Ninguno
@@ -502,6 +529,7 @@ STR_ABOUT_MENU_ABOUT_OPENTTD                                    :Acerca de OpenT
 STR_ABOUT_MENU_SPRITE_ALIGNER                                   :Alineador de sprites
 STR_ABOUT_MENU_TOGGLE_BOUNDING_BOXES                            :Activar cajas delimitadoras
 STR_ABOUT_MENU_TOGGLE_DIRTY_BLOCKS                              :Activar coloreado de bloques modificados
+STR_ABOUT_MENU_TOGGLE_WIDGET_OUTLINES                           :Activa/Desactiva los bordes de los "widgets"
 
 ###length 31
 STR_DAY_NUMBER_1ST                                              :1
@@ -580,6 +608,8 @@ STR_GRAPH_COMPANY_VALUES_CAPTION                                :{WHITE}Valor de
 
 
 STR_GRAPH_CARGO_PAYMENT_RATES_CAPTION                           :{WHITE}Tasas de pago por carga
+STR_GRAPH_CARGO_PAYMENT_RATES_DAYS                              :{TINY_FONT}{BLACK}Días en tránsito
+STR_GRAPH_CARGO_PAYMENT_RATES_SECONDS                           :{TINY_FONT}{BLACK}Segundos en tránsito
 STR_GRAPH_CARGO_PAYMENT_RATES_TITLE                             :{TINY_FONT}{BLACK}Pago por entregar 10 unidades (o 10,000 litros) de carga por distancia de 20 casillas
 STR_GRAPH_CARGO_ENABLE_ALL                                      :{TINY_FONT}{BLACK}Activar todos
 STR_GRAPH_CARGO_DISABLE_ALL                                     :{TINY_FONT}{BLACK}Desactivar todos
@@ -629,6 +659,8 @@ STR_PERFORMANCE_DETAIL_LOAN                                     :{BLACK}Préstam
 STR_PERFORMANCE_DETAIL_TOTAL                                    :{BLACK}Total:
 ###next-name-looks-similar
 
+STR_PERFORMANCE_DETAIL_VEHICLES_TOOLTIP_YEARS                   :{BLACK}Número de vehículos que consiguieron beneficios el último año. Se incluyen vehículos de carretera, trenes, barcos y aeronaves
+STR_PERFORMANCE_DETAIL_VEHICLES_TOOLTIP_PERIODS                 :{BLACK}Número de vehículos que consiguieron beneficios en el último periodo. Se incluyen vehículos de carretera, trenes, barcos y aeronaves
 STR_PERFORMANCE_DETAIL_STATIONS_TOOLTIP                         :{BLACK}Número de estaciones abastecidas recientemente. Las estaciones de tren, paradas de autobuses, aeropuertos y demás se contabilizan aparte, aun si pertenecen a la misma estación
 STR_PERFORMANCE_DETAIL_MIN_INCOME_TOOLTIP                       :{BLACK}Cantidad de efectivo ganado en el trimestre con la utilidad más baja de los últimos 12 trimestres
 STR_PERFORMANCE_DETAIL_MAX_INCOME_TOOLTIP                       :{BLACK}Cantidad de efectivo ganado en el trimestre con la utilidad más alta de los últimos 12 trimestres
@@ -776,6 +808,7 @@ STR_STATUSBAR_AUTOSAVE                                          :{RED}GUARDADO A
 STR_STATUSBAR_SAVING_GAME                                       :{RED}*  *  GUARDANDO PARTIDA  *  *
 
 STR_STATUSBAR_SPECTATOR                                         :{WHITE}(espectador)
+STR_STATUSBAR_INFINITE_MONEY                                    :{WHITE}(dinero infinito)
 
 # News message history
 STR_MESSAGE_HISTORY                                             :{WHITE}Historial de mensajes
@@ -877,6 +910,8 @@ STR_NEWS_SUBSIDY_WITHDRAWN_SERVICE                              :{BIG_FONT}{BLAC
 ###length 4
 
 STR_NEWS_EXCLUSIVE_RIGHTS_TITLE                                 :{BIG_FONT}{BLACK}¡Monopolio de transportes!
+STR_NEWS_EXCLUSIVE_RIGHTS_DESCRIPTION_MONTHS                    :{BIG_FONT}{BLACK}¡Las autoridades locales de {TOWN} firman un contrato de exclusividad de derechos de transporte con {STRING} durante 12 meses!
+STR_NEWS_EXCLUSIVE_RIGHTS_DESCRIPTION_MINUTES                   :{BIG_FONT}{BLACK}¡Las autoridades locales de {TOWN} firman un contrato de exclusividad sobre derechos de transporte con {STRING} durante 12 minutos!
 
 # Extra view window
 STR_EXTRA_VIEWPORT_TITLE                                        :{WHITE}Vista {COMMA}
@@ -888,6 +923,14 @@ STR_EXTRA_VIEW_MOVE_MAIN_TO_VIEW_TT                             :{BLACK}Copiar u
 # Game options window
 STR_GAME_OPTIONS_CAPTION                                        :{WHITE}Opciones de juego
 
+STR_GAME_OPTIONS_TAB_GENERAL                                    :General
+STR_GAME_OPTIONS_TAB_GENERAL_TT                                 :{BLACK}Selecciona los ajustes generales
+STR_GAME_OPTIONS_TAB_GRAPHICS                                   :Gráficos
+STR_GAME_OPTIONS_TAB_GRAPHICS_TT                                :{BLACK}Selecciona los ajustes gráficos
+STR_GAME_OPTIONS_TAB_SOUND                                      :Sonido
+STR_GAME_OPTIONS_TAB_SOUND_TT                                   :{BLACK}Selecciona los ajustes de sonido y música
+STR_GAME_OPTIONS_TAB_SOCIAL                                     :Social
+STR_GAME_OPTIONS_TAB_SOCIAL_TT                                  :{BLACK}Selecciona los ajustes de integración social
 
 
 
@@ -945,6 +988,10 @@ STR_GAME_OPTIONS_AUTOSAVE_DROPDOWN_TOOLTIP                      :{BLACK}Elegir e
 # Autosave dropdown
 ###length 5
 STR_GAME_OPTIONS_AUTOSAVE_DROPDOWN_OFF                          :Desactivado
+STR_GAME_OPTIONS_AUTOSAVE_DROPDOWN_EVERY_10_MINUTES             :Cada 10 minutos
+STR_GAME_OPTIONS_AUTOSAVE_DROPDOWN_EVERY_30_MINUTES             :Cada 30 minutos
+STR_GAME_OPTIONS_AUTOSAVE_DROPDOWN_EVERY_60_MINUTES             :Cada 60 minutos
+STR_GAME_OPTIONS_AUTOSAVE_DROPDOWN_EVERY_120_MINUTES            :Cada 120 minutos
 
 STR_GAME_OPTIONS_LANGUAGE                                       :{BLACK}Idioma
 STR_GAME_OPTIONS_LANGUAGE_TOOLTIP                               :{BLACK}Elegir el idioma de la interfaz
@@ -977,6 +1024,8 @@ STR_GAME_OPTIONS_GUI_SCALE_BEVELS_TOOLTIP                       :{BLACK}Ajustar 
 
 STR_GAME_OPTIONS_GUI_FONT_SPRITE                                :{BLACK}Usar la fuente sprite tradicional
 STR_GAME_OPTIONS_GUI_FONT_SPRITE_TOOLTIP                        :{BLACK}Marca esta casilla si prefieres usar la fuente de letra tradicional.
+STR_GAME_OPTIONS_GUI_FONT_AA                                    :{BLACK}Tipos de letra suavizadas
+STR_GAME_OPTIONS_GUI_FONT_AA_TOOLTIP                            :{BLACK}Marca esta casilla para suavizar los tipos de letra escalables.
 
 STR_GAME_OPTIONS_GUI_SCALE_1X                                   :1x
 STR_GAME_OPTIONS_GUI_SCALE_2X                                   :2x
@@ -984,6 +1033,13 @@ STR_GAME_OPTIONS_GUI_SCALE_3X                                   :3x
 STR_GAME_OPTIONS_GUI_SCALE_4X                                   :4x
 STR_GAME_OPTIONS_GUI_SCALE_5X                                   :5x
 
+STR_GAME_OPTIONS_PARTICIPATE_SURVEY_FRAME                       :{BLACK}Encuesta automática
+STR_GAME_OPTIONS_PARTICIPATE_SURVEY                             :{BLACK}Participar en la encuesta automática
+STR_GAME_OPTIONS_PARTICIPATE_SURVEY_TOOLTIP                     :{BLACK}Si está activado, OpenTTD enviará una encuesta al salir el juego
+STR_GAME_OPTIONS_PARTICIPATE_SURVEY_LINK                        :{BLACK}Acerca de la encuesta y la privacidad
+STR_GAME_OPTIONS_PARTICIPATE_SURVEY_LINK_TOOLTIP                :{BLACK}Esto abrirá el navegador web con más información sobre la encuesta automática
+STR_GAME_OPTIONS_PARTICIPATE_SURVEY_PREVIEW                     :{BLACK}Vista previa del resultado de la encuesta
+STR_GAME_OPTIONS_PARTICIPATE_SURVEY_PREVIEW_TOOLTIP             :{BLACK}Muestra el resultado de la encuesta para el juego actual
 
 STR_GAME_OPTIONS_GRAPHICS                                       :{BLACK}Gráficos
 
@@ -1004,8 +1060,18 @@ STR_GAME_OPTIONS_BASE_MUSIC                                     :{BLACK}Música 
 STR_GAME_OPTIONS_BASE_MUSIC_TOOLTIP                             :{BLACK}Elegir música base
 STR_GAME_OPTIONS_BASE_MUSIC_DESCRIPTION_TOOLTIP                 :{BLACK}Información adicional sobre música base
 
+STR_GAME_OPTIONS_SOCIAL_PLUGINS_NONE                            :{LTBLUE}(no se han instalado "plugins" para integrar plataformas sociales)
 
+STR_GAME_OPTIONS_SOCIAL_PLUGIN_PLATFORM                         :{BLACK}Plataforma:
+STR_GAME_OPTIONS_SOCIAL_PLUGIN_STATE                            :{BLACK}Estado del "plugin":
 
+STR_GAME_OPTIONS_SOCIAL_PLUGIN_STATE_RUNNING                    :{GREEN}En ejecución
+STR_GAME_OPTIONS_SOCIAL_PLUGIN_STATE_FAILED                     :{RED}No se ha podido inicializar
+STR_GAME_OPTIONS_SOCIAL_PLUGIN_STATE_PLATFORM_NOT_RUNNING       :{ORANGE}{STRING} no se está ejecutando
+STR_GAME_OPTIONS_SOCIAL_PLUGIN_STATE_UNLOADED                   :{RED}Descargado
+STR_GAME_OPTIONS_SOCIAL_PLUGIN_STATE_DUPLICATE                  :{RED}"Plugin" duplicado
+STR_GAME_OPTIONS_SOCIAL_PLUGIN_STATE_UNSUPPORTED_API            :{RED}Versión no soportada
+STR_GAME_OPTIONS_SOCIAL_PLUGIN_STATE_INVALID_SIGNATURE          :{RED}Firma no válida
 
 STR_BASESET_STATUS                                              :{STRING} {RED}({NUM} archivo{P "" s} ausente{P "" s} o dañado{P "" s})
 
@@ -1019,6 +1085,7 @@ STR_CURRENCY_EXCHANGE_RATE                                      :{LTBLUE}Tasa de
 STR_CURRENCY_DECREASE_EXCHANGE_RATE_TOOLTIP                     :{BLACK}Reducir el valor de la moneda por una libra (£)
 STR_CURRENCY_INCREASE_EXCHANGE_RATE_TOOLTIP                     :{BLACK}Incrementar el valor de la moneda por una libra (£)
 STR_CURRENCY_SET_EXCHANGE_RATE_TOOLTIP                          :{BLACK}Ajustar el valor de cambio de la moneda por una Libra (£)
+
 
 STR_CURRENCY_PREFIX                                             :{LTBLUE}Prefijo: {ORANGE}{STRING}
 STR_CURRENCY_SET_CUSTOM_CURRENCY_PREFIX_TOOLTIP                 :{BLACK}Establecer el prefijo de la moneda
@@ -1361,6 +1428,8 @@ STR_CONFIG_SETTING_INFRASTRUCTURE_MAINTENANCE_HELPTEXT          :Al activarse, l
 STR_CONFIG_SETTING_COMPANY_STARTING_COLOUR                      :Color inicial de la empresa: {STRING}
 STR_CONFIG_SETTING_COMPANY_STARTING_COLOUR_HELPTEXT             :Elegir el color inicial de la empresa
 
+STR_CONFIG_SETTING_COMPANY_STARTING_COLOUR_SECONDARY            :Color secundario de la empresa inicial: {STRING}
+STR_CONFIG_SETTING_COMPANY_STARTING_COLOUR_SECONDARY_HELPTEXT   :Selecciona un color secundario para la empresa, si usas un NewGRF que lo permita.
 
 STR_CONFIG_SETTING_NEVER_EXPIRE_AIRPORTS                        :Aeropuertos siempre disponibles: {STRING}
 STR_CONFIG_SETTING_NEVER_EXPIRE_AIRPORTS_HELPTEXT               :Los tipos de aeropuertos estarán disponibles todo el tiempo tras haber sido introducidos
@@ -1385,10 +1454,14 @@ STR_CONFIG_SETTING_NEVER_EXPIRE_VEHICLES_HELPTEXT               :Todos los model
 ###length 2
 
 STR_CONFIG_SETTING_MINUTES_PER_YEAR                             :Minutos por año: {STRING}
+STR_CONFIG_SETTING_MINUTES_PER_YEAR_HELPTEXT                    :Selecciona el número de minutos de un año de calendario. Por defecto es 12 minutos. Introduce 0 para evitar que cambie el tiempo del calendario. Este ajuste no afecta a la simulación de la economía del juego y sólo está disponible cuando se usa el modo "Reloj" .
 
+STR_CONFIG_SETTING_MINUTES_PER_YEAR_VALUE                       :{NUM}
 ###setting-zero-is-special
 STR_CONFIG_SETTING_MINUTES_PER_YEAR_FROZEN                      :0 (tiempo de calendario congelado)
 
+STR_CONFIG_SETTING_INDUSTRY_CARGO_SCALE                         :Escalar producción de carga industrial al: {STRING}
+STR_CONFIG_SETTING_INDUSTRY_CARGO_SCALE_HELPTEXT                :Escala la producción de carga de las industrias a este porcentaje.
 STR_CONFIG_SETTING_CARGO_SCALE_VALUE                            :{NUM}%
 
 STR_CONFIG_SETTING_AUTORENEW_VEHICLE                            :Renovar automáticamente vehículos viejos: {STRING}
@@ -1640,9 +1713,11 @@ STR_CONFIG_SETTING_SOUND_NEWS_HELPTEXT                          :Reproducir soni
 
 ###length 2
 STR_CONFIG_SETTING_SOUND_NEW_YEAR                               :Fin de año: {STRING}
+STR_CONFIG_SETTING_SOUND_NEW_PERIOD                             :Fin del periodo: {STRING}
 
 ###length 2
 STR_CONFIG_SETTING_SOUND_NEW_YEAR_HELPTEXT                      :Reproducir sonido al mostrar el resumen anual del desempeño de la empresa al terminar el año
+STR_CONFIG_SETTING_SOUND_NEW_PERIOD_HELPTEXT                    :Reproducir un sonido al finalizar un periodo cuando se muestre el resumen comparativo de rendimiento de la empresa del periodo actual respecto al anterior
 
 STR_CONFIG_SETTING_SOUND_CONFIRM                                :Construcción: {STRING}
 STR_CONFIG_SETTING_SOUND_CONFIRM_HELPTEXT                       :Reproducir sonido al construir con éxito o realizar otras acciones
@@ -2033,6 +2108,7 @@ STR_CONFIG_ERROR_SPRITECACHE_TOO_BIG                            :{WHITE}La asign
 # Video initalization errors
 STR_VIDEO_DRIVER_ERROR                                          :{WHITE}Error en la configuración de video...
 STR_VIDEO_DRIVER_ERROR_NO_HARDWARE_ACCELERATION                 :{WHITE}... no se encontró una tarjeta gráfica compatible. La aceleración por hardware está deshabilitada
+STR_VIDEO_DRIVER_ERROR_HARDWARE_ACCELERATION_CRASH              :{WHITE}... el controlador de GPU ha hecho fallar el juego. Se ha deshabilitado la aceleración por hardware
 
 # Intro window
 STR_INTRO_CAPTION                                               :{WHITE}OpenTTD {REV}
@@ -2067,10 +2143,11 @@ STR_INTRO_TOOLTIP_TOYLAND_LANDSCAPE                             :{BLACK}Elegir m
 
 STR_INTRO_TOOLTIP_GAME_OPTIONS                                  :{BLACK}Mostrar las opciones de juego
 STR_INTRO_TOOLTIP_HIGHSCORE                                     :{BLACK}Mostrar tabla de puntuaciones
-STR_INTRO_TOOLTIP_CONFIG_SETTINGS_TREE                          :{BLACK}Mostrar configuración
+STR_INTRO_TOOLTIP_HELP                                          :{BLACK}Proporciona acceso a documentación y recursos en línea
+STR_INTRO_TOOLTIP_CONFIG_SETTINGS_TREE                          :{BLACK}Abre la configuración
 STR_INTRO_TOOLTIP_NEWGRF_SETTINGS                               :{BLACK}Mostrar configuración de NewGRF
 STR_INTRO_TOOLTIP_ONLINE_CONTENT                                :{BLACK}Revisar si hay nuevos contenidos actualizados para descargar
-STR_INTRO_TOOLTIP_AI_SETTINGS                                   :{BLACK}Mostrar configuración de IA
+STR_INTRO_TOOLTIP_AI_SETTINGS                                   :{BLACK}Abre la configuración de IA
 STR_INTRO_TOOLTIP_GAMESCRIPT_SETTINGS                           :{BLACK}Mostrar configuración de scripts de juego
 STR_INTRO_TOOLTIP_QUIT                                          :{BLACK}Salir de 'OpenTTD'
 
@@ -2089,6 +2166,17 @@ STR_ABANDON_GAME_QUERY                                          :{YELLOW}¿Está
 STR_ABANDON_SCENARIO_QUERY                                      :{YELLOW}¿Estás seguro de que deseas salir de este mapa?
 
 # Help window
+STR_HELP_WINDOW_CAPTION                                         :{WHITE}Ayuda y manuales
+STR_HELP_WINDOW_WEBSITES                                        :{BLACK}Sitios web
+STR_HELP_WINDOW_DOCUMENTS                                       :{BLACK}Documentos
+STR_HELP_WINDOW_README                                          :{BLACK}Léeme
+STR_HELP_WINDOW_CHANGELOG                                       :{BLACK}Registro de cambios
+STR_HELP_WINDOW_KNOWN_BUGS                                      :{BLACK}Errores conocidos
+STR_HELP_WINDOW_LICENSE                                         :{BLACK}Licencia
+STR_HELP_WINDOW_MAIN_WEBSITE                                    :{BLACK}OpenTTD
+STR_HELP_WINDOW_MANUAL_WIKI                                     :{BLACK}Manual / Wiki
+STR_HELP_WINDOW_BUGTRACKER                                      :{BLACK}Reportar un error
+STR_HELP_WINDOW_COMMUNITY                                       :{BLACK}Comunidad
 
 # Cheat window
 STR_CHEATS                                                      :{WHITE}Trucos
@@ -2112,9 +2200,11 @@ STR_LIVERY_TRAIN_TOOLTIP                                        :{BLACK}Mostrar 
 STR_LIVERY_ROAD_VEHICLE_TOOLTIP                                 :{BLACK}Mostrar cromáticas de autotransportes
 STR_LIVERY_SHIP_TOOLTIP                                         :{BLACK}Mostrar cromáticas para barcos
 STR_LIVERY_AIRCRAFT_TOOLTIP                                     :{BLACK}Mostrar cromáticas para aeronaves
+STR_LIVERY_SHIP_GROUP_TOOLTIP                                   :{BLACK}Muestra los colores de los grupos de barcos
 STR_LIVERY_PRIMARY_TOOLTIP                                      :{BLACK}Elegir el color principal para la cromática elegida. Ctrl+Clic para establecerlo como cromática general
 STR_LIVERY_SECONDARY_TOOLTIP                                    :{BLACK}Elegir el color secundario para el diseño seleccionado. Ctrl+Clic para establecerlo como cromática general
 STR_LIVERY_PANEL_TOOLTIP                                        :{BLACK}Elegir un solo tipo de cromática, o Ctrl+Clic para elegir varios. Marcar las casillas para establecer diferentes combinaciones según el tipo de vehículo
+STR_LIVERY_SHIP_GROUP_EMPTY                                     :No se han definido grupos de barcos
 
 ###length 23
 STR_LIVERY_DEFAULT                                              :Cromática estándar
@@ -2360,6 +2450,12 @@ STR_NETWORK_ASK_RELAY_NO                                        :{BLACK}No
 STR_NETWORK_ASK_RELAY_YES_ONCE                                  :{BLACK}Sí, solo esta vez
 STR_NETWORK_ASK_RELAY_YES_ALWAYS                                :{BLACK}Sí, no volver a preguntar
 
+STR_NETWORK_ASK_SURVEY_CAPTION                                  :¿Participar en una encuesta automatizada?
+STR_NETWORK_ASK_SURVEY_TEXT                                     :¿Quieres participar en una encuesta automatizada?{}OpenTTD enviará información al abandonar una partida.{}Puedes cambiar este ajuste en cualquier momento desde las "Opciones del Juego"
+STR_NETWORK_ASK_SURVEY_PREVIEW                                  :Vista previa de la encuesta
+STR_NETWORK_ASK_SURVEY_LINK                                     :Acerca de la encuesta y la privacidad
+STR_NETWORK_ASK_SURVEY_NO                                       :No
+STR_NETWORK_ASK_SURVEY_YES                                      :Sí
 
 STR_NETWORK_SPECTATORS                                          :Espectadores
 
@@ -2646,8 +2742,11 @@ STR_STATION_BUILD_DRAG_DROP_TOOLTIP                             :{BLACK}Construi
 STR_STATION_BUILD_STATION_CLASS_TOOLTIP                         :{BLACK}Mostrar el tipo de estación elegida
 STR_STATION_BUILD_STATION_TYPE_TOOLTIP                          :{BLACK}Construir el tipo de estación elegida
 
-STR_STATION_CLASS_DFLT                                          :Estación por defecto
+STR_STATION_CLASS_DFLT                                          :por defecto
+STR_STATION_CLASS_DFLT_STATION                                  :Estación por defecto
+STR_STATION_CLASS_DFLT_ROADSTOP                                 :Estación de carretera por defecto
 STR_STATION_CLASS_WAYP                                          :Puntos de ruta
+STR_STATION_CLASS_WAYP_WAYPOINT                                 :Punto de ruta por defecto
 
 # Signal window
 STR_BUILD_SIGNAL_CAPTION                                        :{WHITE}Selección de señales
@@ -3108,10 +3207,12 @@ STR_MAPGEN_MAPSIZE                                              :{BLACK}Tamaño 
 STR_MAPGEN_MAPSIZE_TOOLTIP                                      :{BLACK}Elegir el tamaño del mapa en número de casillas. El número real de casillas disponibles en el mapa será ligeramente inferior
 STR_MAPGEN_BY                                                   :{BLACK}×
 STR_MAPGEN_NUMBER_OF_TOWNS                                      :{BLACK}Núm. de localidades:
+STR_MAPGEN_NUMBER_OF_TOWNS_TOOLTIP                              :{BLACK}Selecciona la densidad de ciudades, o un número personalizado
 STR_MAPGEN_TOWN_NAME_LABEL                                      :{BLACK}Nombres de localidades:
 STR_MAPGEN_TOWN_NAME_DROPDOWN_TOOLTIP                           :{BLACK}Elegir el estilo de nombres para las localidades
 STR_MAPGEN_DATE                                                 :{BLACK}Fecha:
 STR_MAPGEN_NUMBER_OF_INDUSTRIES                                 :{BLACK}Núm. de industrias:
+STR_MAPGEN_NUMBER_OF_INDUSTRIES_TOOLTIP                         :{BLACK}Selecciona la densidad industrial, o un número personalizado
 STR_MAPGEN_HEIGHTMAP_HEIGHT                                     :{BLACK}Cima más alta:
 STR_MAPGEN_HEIGHTMAP_HEIGHT_UP                                  :{BLACK}Incrementar altura de cima más alta en 1
 STR_MAPGEN_HEIGHTMAP_HEIGHT_DOWN                                :{BLACK}Disminuir altura de cima más alta en 1
@@ -3161,6 +3262,7 @@ STR_MAPGEN_TOWN_NAME_CATALAN                                    :Catalán
 
 # Strings for map borders at game generation
 STR_MAPGEN_BORDER_TYPE                                          :{BLACK}Bordes del mapa:
+STR_MAPGEN_BORDER_TYPE_TOOLTIP                                  :{BLACK}Elige los bordes del mapa del mundo
 STR_MAPGEN_NORTHWEST                                            :{BLACK}Noroeste
 STR_MAPGEN_NORTHEAST                                            :{BLACK}Noreste
 STR_MAPGEN_SOUTHEAST                                            :{BLACK}Sureste
@@ -3174,6 +3276,7 @@ STR_MAPGEN_BORDER_MANUAL                                        :{BLACK}Manual
 STR_MAPGEN_HEIGHTMAP_ROTATION                                   :{BLACK}Rotación del mapa de alturas:
 STR_MAPGEN_HEIGHTMAP_NAME                                       :{BLACK}Nombre del mapa de alturas:
 STR_MAPGEN_HEIGHTMAP_SIZE_LABEL                                 :{BLACK}Tamaño:
+STR_MAPGEN_HEIGHTMAP_SIZE_LABEL_TOOLTIP                         :{BLACK}Tamaño de la imagen del mapa de alturas. Para obtener resultados óptimos, cada dimensión debería coincidir con una de las longitudes disponibles en OpenTTD, tales como 256, 512, 1024, etc.
 STR_MAPGEN_HEIGHTMAP_SIZE                                       :{ORANGE}{NUM}×{NUM}
 
 STR_MAPGEN_TERRAIN_TYPE_QUERY_CAPT                              :{WHITE}Altura de cima
@@ -3468,6 +3571,8 @@ STR_LOCAL_AUTHORITY_ACTION_BRIBE                                :Sobornar al ayu
 STR_LOCAL_AUTHORITY_ACTION_TOOLTIP_SMALL_ADVERTISING            :{PUSH_COLOUR}{YELLOW}Iniciar una pequeña campaña publicitaria local para atraer más pasajeros y carga a tus servicios de transporte.{}Otorga un aumento temporal a la evaluación de estaciones en un radio pequeño alrededor del centro de la localidad.{}{POP_COLOUR}Costo: {CURRENCY_LONG}
 STR_LOCAL_AUTHORITY_ACTION_TOOLTIP_MEDIUM_ADVERTISING           :{PUSH_COLOUR}{YELLOW}Iniciar una campaña publicitaria local mediana para atraer más pasajeros y carga a tus servicios de transporte.{}Otorga un aumento temporal a la evaluación de estaciones en un radio mediano alrededor del centro de la localidad.{}{POP_COLOUR}Costo: {CURRENCY_LONG}
 STR_LOCAL_AUTHORITY_ACTION_TOOLTIP_LARGE_ADVERTISING            :{PUSH_COLOUR}{YELLOW}Iniciar una gran campaña publicitaria local para atraer más pasajeros y carga a tus servicios de transporte.{}Otorga un aumento temporal a la evaluación de estaciones en un radio grande alrededor del centro de la localidad.{}{POP_COLOUR}Costo: {CURRENCY_LONG}
+STR_LOCAL_AUTHORITY_ACTION_TOOLTIP_ROAD_RECONSTRUCTION_MONTHS   :{PUSH_COLOUR}{YELLOW}Financiar la reconstrucción de la red urbana de carreteras.{}Causa una afectación importante al tráfico rodado por un período que puede llegar a los 6 meses.{}{POP_COLOUR}Coste: {CURRENCY_LONG}
+STR_LOCAL_AUTHORITY_ACTION_TOOLTIP_ROAD_RECONSTRUCTION_MINUTES  :{PUSH_COLOUR}{YELLOW}Financiar la reconstrucción de la red urbana de carreteras.{}Causa una afectación importante al tráfico rodado por un período que puede llegar a los 6 minutos.{}{POP_COLOUR}Coste: {CURRENCY_LONG}
 STR_LOCAL_AUTHORITY_ACTION_TOOLTIP_STATUE_OF_COMPANY            :{PUSH_COLOUR}{YELLOW}Construir una estatua en honor a tu empresa.{}Otorga un aumento permanente a la evaluación estaciones en esta localidad.{}Costo: {CURRENCY_LONG}
 STR_LOCAL_AUTHORITY_ACTION_TOOLTIP_NEW_BUILDINGS                :{PUSH_COLOUR}{YELLOW}Pagar la construcción de nuevos edificios comerciales en la localidad.{}Otorga un aumento temporal a su crecimiento.{}{POP_COLOUR}Costo: {CURRENCY_LONG}
 STR_LOCAL_AUTHORITY_ACTION_TOOLTIP_BRIBE                        :{PUSH_COLOUR}{YELLOW}Sobornar al ayuntamiento para aumentar mejorar tu evaluación, con el riesgo de una severa penalización si llegas a ser descubierto.{}{POP_COLOUR}Costo: {CURRENCY_LONG}
@@ -3556,6 +3661,8 @@ STR_STATION_VIEW_EXCLUSIVE_RIGHTS_COMPANY                       :{YELLOW}{COMPAN
 
 STR_STATION_VIEW_RATINGS_BUTTON                                 :{BLACK}Evaluación
 STR_STATION_VIEW_RATINGS_TOOLTIP                                :{BLACK}Ver evaluación de la estación
+STR_STATION_VIEW_SUPPLY_RATINGS_TITLE_MONTH                     :{BLACK}Suministro por mes y calificación local:
+STR_STATION_VIEW_SUPPLY_RATINGS_TITLE_MINUTE                    :{BLACK}Suministro por minuto y calificación local:
 STR_STATION_VIEW_CARGO_SUPPLY_RATING                            :{WHITE}{STRING}: {YELLOW}{COMMA}/{STRING} ({COMMA}%)
 
 STR_STATION_VIEW_GROUP                                          :{BLACK}Agrupar por
@@ -3616,6 +3723,8 @@ STR_EDIT_WAYPOINT_NAME                                          :{WHITE}Cambiar 
 # Finances window
 STR_FINANCES_CAPTION                                            :{WHITE}Finanzas de {COMPANY} {BLACK}{COMPANY_NUM}
 STR_FINANCES_YEAR                                               :{WHITE}{NUM}
+STR_FINANCES_YEAR_CAPTION                                       :{WHITE}Año
+STR_FINANCES_PERIOD_CAPTION                                     :{WHITE}Periodo
 
 ###length 3
 STR_FINANCES_REVENUE_TITLE                                      :{WHITE}Ingresos
@@ -3653,7 +3762,7 @@ STR_FINANCES_BANK_BALANCE                                       :{WHITE}{CURRENC
 STR_FINANCES_BORROW_BUTTON                                      :{BLACK}Pedir préstamo de {CURRENCY_LONG}
 STR_FINANCES_BORROW_TOOLTIP                                     :{BLACK}Incrementar préstamo. Ctrl+Clic solicita todo el préstamo posible
 STR_FINANCES_REPAY_BUTTON                                       :{BLACK}Abonar {CURRENCY_LONG} del préstamo
-STR_FINANCES_REPAY_TOOLTIP                                      :{BLACK}Pagar una parte del préstamo. Ctrl+Clic liquida la mayor cantidad posible
+STR_FINANCES_REPAY_TOOLTIP                                      :{BLACK}Pagar una parte del préstamo. Ctrl+Clic paga la mayor cantidad posible
 STR_FINANCES_INFRASTRUCTURE_BUTTON                              :{BLACK}Infraestructura
 
 # Company view
@@ -3738,6 +3847,7 @@ STR_INDUSTRY_DIRECTORY_FILTER_NONE                              :Ninguno
 # Industry view
 STR_INDUSTRY_VIEW_CAPTION                                       :{WHITE}{INDUSTRY}
 STR_INDUSTRY_VIEW_PRODUCTION_LAST_MONTH_TITLE                   :{BLACK}Producción último mes:
+STR_INDUSTRY_VIEW_PRODUCTION_LAST_MINUTE_TITLE                  :{BLACK}Producción del minuto anterior:
 STR_INDUSTRY_VIEW_TRANSPORTED                                   :{YELLOW}{CARGO_LONG}{STRING}{BLACK} ({COMMA}% transportad{G 0 o a}{P 0 "" s})
 STR_INDUSTRY_VIEW_LOCATION_TOOLTIP                              :{BLACK}Centrar la vista en la industria. Ctrl+Clic abre una vista aparte
 STR_INDUSTRY_VIEW_PRODUCTION_LEVEL                              :{BLACK}Nivel de producción: {YELLOW}{COMMA}%
@@ -3821,7 +3931,9 @@ STR_GROUP_REMOVE_ALL_VEHICLES                                   :Quitar todos lo
 STR_GROUP_RENAME_CAPTION                                        :{BLACK}Cambiar nombre del grupo
 
 STR_GROUP_PROFIT_THIS_YEAR                                      :Ganancias de este año:
+STR_GROUP_PROFIT_THIS_PERIOD                                    :Beneficio de este período:
 STR_GROUP_PROFIT_LAST_YEAR                                      :Ganancias último año:
+STR_GROUP_PROFIT_LAST_PERIOD                                    :Beneficio del último periodo
 STR_GROUP_OCCUPANCY                                             :Uso actual:
 STR_GROUP_OCCUPANCY_VALUE                                       :{NUM}%
 
@@ -4040,7 +4152,18 @@ STR_ENGINE_PREVIEW_TRAM_VEHICLE                                 :tranvía
 STR_ENGINE_PREVIEW_AIRCRAFT                                     :{G=f}aeronave
 STR_ENGINE_PREVIEW_SHIP                                         :{G=m}barco
 
+STR_ENGINE_PREVIEW_TEXT3                                        :{BLACK}{STRING}{}{5:STRING}{}{STRING}
+STR_ENGINE_PREVIEW_TEXT4                                        :{BLACK}{STRING}{}{STRING}{}{STRING}{}{STRING}
+STR_ENGINE_PREVIEW_COST_WEIGHT                                  :Coste: {CURRENCY_LONG} Peso: {WEIGHT_SHORT}
+STR_ENGINE_PREVIEW_COST_MAX_SPEED                               :Coste: {CURRENCY_LONG} Vel. máx.: {VELOCITY}
 STR_ENGINE_PREVIEW_SPEED_POWER                                  :Velocidad: {VELOCITY} Potencia: {POWER}
+STR_ENGINE_PREVIEW_SPEED_POWER_MAX_TE                           :Velocidad: {VELOCITY} Potencia: {POWER} F.T. Máx.: {FORCE}
+STR_ENGINE_PREVIEW_TYPE                                         :Tipo de aeronave: {STRING}
+STR_ENGINE_PREVIEW_TYPE_RANGE                                   :Tipo de aeronave: {STRING} Alcance: {COMMA} casillas
+STR_ENGINE_PREVIEW_RUNCOST_YEAR                                 :Coste de operación: {CURRENCY_LONG}/año
+STR_ENGINE_PREVIEW_RUNCOST_PERIOD                               :Coste operacional: {CURRENCY_LONG}/período
+STR_ENGINE_PREVIEW_CAPACITY                                     :Capacidad: {CARGO_LONG}
+STR_ENGINE_PREVIEW_CAPACITY_2                                   :Capacidad: {CARGO_LONG}, {CARGO_LONG}
 
 # Autoreplace window
 STR_REPLACE_VEHICLES_WHITE                                      :{WHITE}Reemplazar {STRING} - {STRING}
@@ -4154,11 +4277,12 @@ STR_VEHICLE_STATUS_TRAIN_NO_POWER                               :{RED}Sin potenc
 STR_VEHICLE_STATUS_TRAIN_STUCK                                  :{ORANGE}Esperando ruta libre
 STR_VEHICLE_STATUS_AIRCRAFT_TOO_FAR                             :{ORANGE}Muy lejos del próximo destino
 
-STR_VEHICLE_STATUS_HEADING_FOR_STATION_VEL                      :{LTBLUE}Hacia {STATION}, {VELOCITY}
+STR_VEHICLE_STATUS_HEADING_FOR_STATION_VEL                      :{LTBLUE}Hacia {0:STATION}, {1:VELOCITY}
 STR_VEHICLE_STATUS_NO_ORDERS_VEL                                :{LTBLUE}Sin recorridos, {VELOCITY}
 STR_VEHICLE_STATUS_HEADING_FOR_WAYPOINT_VEL                     :{LTBLUE}Hacia {WAYPOINT}, {VELOCITY}
-STR_VEHICLE_STATUS_HEADING_FOR_DEPOT_VEL                        :{ORANGE}Hacia {DEPOT}, {VELOCITY}
-STR_VEHICLE_STATUS_HEADING_FOR_DEPOT_SERVICE_VEL                :{LTBLUE}Mantenimiento en {DEPOT}, {VELOCITY}
+STR_VEHICLE_STATUS_HEADING_FOR_DEPOT_VEL                        :{ORANGE}Hacia {0:DEPOT}, {1:VELOCITY}
+STR_VEHICLE_STATUS_HEADING_FOR_DEPOT_SERVICE_VEL                :{LTBLUE}Mantenimiento en {0:DEPOT}, {1:VELOCITY}
+STR_VEHICLE_STATUS_HEADING_FOR_DEPOT_UNBUNCH_VEL                :{LTBLUE}Distanciarse y dar mantenimiento en {0:DEPOT}, {1:VELOCITY}
 
 STR_VEHICLE_STATUS_CANNOT_REACH_STATION_VEL                     :{LTBLUE}No puede llegar a {STATION}, {VELOCITY}
 STR_VEHICLE_STATUS_CANNOT_REACH_WAYPOINT_VEL                    :{LTBLUE}No puede llegar a {WAYPOINT}, {VELOCITY}
@@ -4313,6 +4437,9 @@ STR_ORDER_DROP_HALT_DEPOT                                       :Detenerse
 # Depot action tooltips, one per vehicle type
 ###length VEHICLE_TYPES
 STR_ORDER_TRAIN_DEPOT_ACTION_TOOLTIP                            :Seleccione una acción que quiera realizar en este depósito.
+STR_ORDER_ROAD_DEPOT_ACTION_TOOLTIP                             :{BLACK}Selecciona la acción a realizar en este depósito
+STR_ORDER_SHIP_DEPOT_ACTION_TOOLTIP                             :{BLACK}Selecciona la acción que harás en este depósito
+STR_ORDER_HANGAR_ACTION_TOOLTIP                                 :{BLACK}Selecciona la acción a realizar en este hangar
 ###next-name-looks-similar
 
 STR_ORDER_CONDITIONAL_VARIABLE_TOOLTIP                          :{BLACK}Datos del vehículo para recorridos condicionales
@@ -4484,6 +4611,7 @@ STR_TIMETABLE_EXPECTED                                          :{BLACK}Esperado
 STR_TIMETABLE_SCHEDULED                                         :{BLACK}Programado
 STR_TIMETABLE_EXPECTED_TOOLTIP                                  :{BLACK}Cambiar entre esperado y programado
 
+STR_TIMETABLE_ARRIVAL_SECONDS_IN_FUTURE                         :L: {COLOUR}{COMMA} s
 
 
 # Date window (for timetable)
@@ -4521,7 +4649,7 @@ STR_ERROR_AI_DEBUG_SERVER_ONLY                                  :{YELLOW}La vent
 
 # AI configuration window
 STR_AI_CONFIG_CAPTION_AI                                        :{WHITE}Configuración de IA
-STR_AI_CONFIG_CAPTION_GAMESCRIPT                                :Configuración de scripts de juego
+STR_AI_CONFIG_CAPTION_GAMESCRIPT                                :{WHITE}Configuración de scripts del juego
 STR_AI_CONFIG_GAMELIST_TOOLTIP                                  :{BLACK}Script de juego que será cargado en la próxima partida
 STR_AI_CONFIG_AILIST_TOOLTIP                                    :{BLACK}Scripts de IA que serán cargados la próxima partida
 STR_AI_CONFIG_HUMAN_PLAYER                                      :Jugador humano
@@ -4529,6 +4657,7 @@ STR_AI_CONFIG_RANDOM_AI                                         :IA aleatoria
 STR_AI_CONFIG_NONE                                              :(ninguno)
 STR_AI_CONFIG_NAME_VERSION                                      :{STRING} {YELLOW}v{NUM}
 STR_AI_CONFIG_MAX_COMPETITORS                                   :{LTBLUE}Núm. máximo de jugadores: {ORANGE}{COMMA}
+STR_AI_CONFIG_COMPETITORS_INTERVAL                              :{LTBLUE}Intervalo de comienzo entre empresas competidoras: {ORANGE}{COMMA} minuto{P "" s}
 
 STR_AI_CONFIG_MOVE_UP                                           :{BLACK}Mover hacia arriba
 STR_AI_CONFIG_MOVE_UP_TOOLTIP                                   :{BLACK}Mover la IA elegida una posición hacia arriba
@@ -4541,7 +4670,7 @@ STR_AI_CONFIG_AI                                                :{SILVER}IA
 
 STR_AI_CONFIG_CHANGE_AI                                         :{BLACK}Elegir IA
 STR_AI_CONFIG_CHANGE_GAMESCRIPT                                 :{BLACK}Elegir script de juego
-STR_AI_CONFIG_CHANGE_TOOLTIP                                    :{BLACK}Cargar otro script
+STR_AI_CONFIG_CHANGE_TOOLTIP                                    :{BLACK}Carga otro script. Ctrl+clic muestra todas las versiones disponibles
 STR_AI_CONFIG_CONFIGURE                                         :{BLACK}Configurar
 STR_AI_CONFIG_CONFIGURE_TOOLTIP                                 :{BLACK}Configurar los parámetros del script
 
@@ -4577,15 +4706,25 @@ STR_AI_SETTINGS_SETTING                                         :{STRING}: {ORAN
 
 
 # Textfile window
+STR_TEXTFILE_JUMPLIST                                           :{WHITE}Índice de contenidos
+STR_TEXTFILE_JUMPLIST_TOOLTIP                                   :{BLACK}Salta rápidamente a una sección del archivo visualizado a través de esta lista
+STR_TEXTFILE_JUMPLIST_ITEM                                      :{WHITE}{STRING}
+STR_TEXTFILE_NAVBACK_TOOLTIP                                    :{BLACK}Vuelve atrás en el historial de navegación
+STR_TEXTFILE_NAVFORWARD_TOOLTIP                                 :{BLACK}Vuelve hacia adelante en el historial de navegación
 STR_TEXTFILE_WRAP_TEXT                                          :{WHITE}Unir texto
 STR_TEXTFILE_WRAP_TEXT_TOOLTIP                                  :{BLACK}Unir el texto de la ventana para que quepa sin tener que desplazarse
-STR_TEXTFILE_VIEW_README                                        :{BLACK}Ver archivo Léeme
+STR_TEXTFILE_VIEW_README                                        :{BLACK}Léeme
+STR_TEXTFILE_VIEW_README_TOOLTIP                                :Ver el "léeme" de este contenido
 STR_TEXTFILE_VIEW_CHANGELOG                                     :{BLACK}Registro de cambios
+STR_TEXTFILE_VIEW_CHANGELOG_TOOLTIP                             :Ver el registro de cambios de este contenido
 STR_TEXTFILE_VIEW_LICENCE                                       :{BLACK}Licencia
+STR_TEXTFILE_VIEW_LICENCE_TOOLTIP                               :Ver licencia de este contenido
 ###length 5
 STR_TEXTFILE_README_CAPTION                                     :{WHITE}Archivo Léeme del {STRING} {STRING}
 STR_TEXTFILE_CHANGELOG_CAPTION                                  :{WHITE}Registro de cambios del {STRING} {STRING}
 STR_TEXTFILE_LICENCE_CAPTION                                    :{WHITE}Licencia del {STRING} {STRING}
+STR_TEXTFILE_SURVEY_RESULT_CAPTION                              :{WHITE}Vista preliminar del resultado de la encuesta
+STR_TEXTFILE_GAME_MANUAL_CAPTION                                :{WHITE}Documento de OpenTTD '{STRING}'
 
 
 # Vehicle loading indicators
@@ -5027,6 +5166,7 @@ STR_ERROR_AIRCRAFT_NOT_ENOUGH_RANGE                             :{WHITE}... la a
 
 # Extra messages which go on the third line of errors, explaining why orders failed
 STR_ERROR_NO_BUS_STATION                                        :{WHITE}No hay una estación de autobus
+STR_ERROR_NO_STOP_COMPATIBLE_ROAD_TYPE                          :{WHITE}No hay paradas con un tipo de carretera compatible
 STR_ERROR_NO_STOP_COMPATIBLE_TRAM_TYPE                          :{WHITE}No hay paradas con un tipo de tramo compatible
 STR_ERROR_AIRPORT_NO_HELICOPTERS                                :{WHITE}El helicóptero no puede aterrizar en este aeropuerto
 
@@ -5511,6 +5651,7 @@ STR_STATION_NAME                                                :{STATION}
 STR_TOWN_NAME                                                   :{TOWN}
 STR_VEHICLE_NAME                                                :{VEHICLE}
 STR_WAYPOINT_NAME                                               :{WAYPOINT}
+
 
 STR_JUST_CARGO                                                  :{CARGO_LONG}
 STR_JUST_CHECKMARK                                              :{CHECKMARK}

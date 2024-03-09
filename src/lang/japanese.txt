@@ -1032,6 +1032,7 @@ STR_CURRENCY_DECREASE_EXCHANGE_RATE_TOOLTIP                     :{BLACK}英ポ�
 STR_CURRENCY_INCREASE_EXCHANGE_RATE_TOOLTIP                     :{BLACK}英ポンドに対するお使いの通貨の為替レートを増やします
 STR_CURRENCY_SET_EXCHANGE_RATE_TOOLTIP                          :{BLACK}英ポンドに対するお使いの通貨の為替レートを設定します
 
+
 STR_CURRENCY_PREFIX                                             :{LTBLUE}接頭文字: {ORANGE}{STRING}
 STR_CURRENCY_SET_CUSTOM_CURRENCY_PREFIX_TOOLTIP                 :{BLACK}通貨の接頭文字を入力します
 STR_CURRENCY_SUFFIX                                             :{LTBLUE}接尾文字: {ORANGE}{STRING}
@@ -5517,6 +5518,7 @@ STR_STATION_NAME                                                :{STATION}
 STR_TOWN_NAME                                                   :{TOWN}
 STR_VEHICLE_NAME                                                :{VEHICLE}
 STR_WAYPOINT_NAME                                               :{WAYPOINT}
+
 
 STR_JUST_CARGO                                                  :{CARGO_LONG}
 STR_JUST_CHECKMARK                                              :{CHECKMARK}

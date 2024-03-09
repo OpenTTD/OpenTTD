@@ -1031,6 +1031,7 @@ STR_CURRENCY_DECREASE_EXCHANGE_RATE_TOOLTIP                     :{BLACK}Llehad y
 STR_CURRENCY_INCREASE_EXCHANGE_RATE_TOOLTIP                     :{BLACK}Amlhau yr swm o eich arian cyfred am un Punt (£)
 STR_CURRENCY_SET_EXCHANGE_RATE_TOOLTIP                          :{BLACK}newid y raddfa gyfnewid o eich arian cyfred i un Punt (£)
 
+
 STR_CURRENCY_PREFIX                                             :{LTBLUE}Rhagddodiad: {ORANGE}{STRING}
 STR_CURRENCY_SET_CUSTOM_CURRENCY_PREFIX_TOOLTIP                 :{BLACK}Dewis y rhagddodiad ar gyfer eich arian
 STR_CURRENCY_SUFFIX                                             :{LTBLUE}Olddodiad: {ORANGE}{STRING}
@@ -5404,6 +5405,7 @@ STR_STATION_NAME                                                :{STATION}
 STR_TOWN_NAME                                                   :{TOWN}
 STR_VEHICLE_NAME                                                :{VEHICLE}
 STR_WAYPOINT_NAME                                               :{WAYPOINT}
+
 
 STR_JUST_CARGO                                                  :{CARGO_LONG}
 STR_JUST_CHECKMARK                                              :{CHECKMARK}

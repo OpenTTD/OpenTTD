@@ -795,6 +795,7 @@ STR_GAME_OPTIONS_CAPTION                                        :{WHITE}Опци
 
 
 
+
 STR_NUM_CUSTOM_NUMBER                                           :Прилагодено ({NUM})
 
 
@@ -2219,6 +2220,7 @@ STR_STATION_NAME                                                :{STATION}
 STR_TOWN_NAME                                                   :{TOWN}
 STR_VEHICLE_NAME                                                :{VEHICLE}
 STR_WAYPOINT_NAME                                               :{WAYPOINT}
+
 
 STR_JUST_CARGO                                                  :{CARGO_LONG}
 STR_JUST_CHECKMARK                                              :{CHECKMARK}

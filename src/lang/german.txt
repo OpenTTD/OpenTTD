@@ -265,7 +265,7 @@ STR_UNITS_MONTHS                                                :{NUM}{NBSP}Mona
 STR_UNITS_MINUTES                                               :{NUM}{NBSP}minute{P "" n}
 
 STR_UNITS_YEARS                                                 :{NUM}{NBSP}Jahr{P "" e}
-STR_UNITS_PERIODS                                               :{NUM}{NBSP}Zeitr{P "aum" "äume"}
+STR_UNITS_PERIODS                                               :{NUM}{NBSP}Zykl{P "us" "en"}
 
 # Common window strings
 STR_LIST_FILTER_TITLE                                           :{BLACK}Filter:
@@ -332,9 +332,9 @@ STR_SORT_BY_TYPE                                                :Typ
 STR_SORT_BY_TRANSPORTED                                         :Transportiert
 STR_SORT_BY_NUMBER                                              :Nummer
 STR_SORT_BY_PROFIT_LAST_YEAR                                    :Gewinn im letzten Jahr
-STR_SORT_BY_PROFIT_LAST_PERIOD                                  :Gewinn im letzten Quartal
+STR_SORT_BY_PROFIT_LAST_PERIOD                                  :Gewinn im letzten Zyklus
 STR_SORT_BY_PROFIT_THIS_YEAR                                    :Gewinn in diesem Jahr
-STR_SORT_BY_PROFIT_THIS_PERIOD                                  :Gewinn in diesem Zeitraum
+STR_SORT_BY_PROFIT_THIS_PERIOD                                  :Gewinn in diesem Zyklus
 STR_SORT_BY_AGE                                                 :Alter
 STR_SORT_BY_RELIABILITY                                         :Zuverlässigkeit
 STR_SORT_BY_TOTAL_CAPACITY_PER_CARGOTYPE                        :Gesamtkapazität pro Fracht
@@ -362,13 +362,13 @@ STR_SORT_BY_POPULATION                                          :Bevölkerung
 STR_SORT_BY_RATING                                              :Bewertung
 STR_SORT_BY_NUM_VEHICLES                                        :Anzahl der Fahrzeuge
 STR_SORT_BY_TOTAL_PROFIT_LAST_YEAR                              :Gewinn im letzten Jahr
-STR_SORT_BY_TOTAL_PROFIT_LAST_PERIOD                            :Gesamter Gewinn im letzten Quartal
+STR_SORT_BY_TOTAL_PROFIT_LAST_PERIOD                            :Gesamter Gewinn im letzten Zyklus
 STR_SORT_BY_TOTAL_PROFIT_THIS_YEAR                              :Gewinn in diesem Jahr
-STR_SORT_BY_TOTAL_PROFIT_THIS_PERIOD                            :Gesamter Gewinn in diesem Zeitraum
+STR_SORT_BY_TOTAL_PROFIT_THIS_PERIOD                            :Gesamter Gewinn in diesem Zyklus
 STR_SORT_BY_AVERAGE_PROFIT_LAST_YEAR                            :Durchschnittlicher Gewinn im letzten Jahr
-STR_SORT_BY_AVERAGE_PROFIT_LAST_PERIOD                          :Durchschnittlicher Gewinn im letzten Zeitraum
+STR_SORT_BY_AVERAGE_PROFIT_LAST_PERIOD                          :Durchschnittlicher Gewinn im letzten Zyklus
 STR_SORT_BY_AVERAGE_PROFIT_THIS_YEAR                            :Durchschnittlicher Gewinn in diesem Jahr
-STR_SORT_BY_AVERAGE_PROFIT_THIS_PERIOD                          :Durchschnittlicher Gewinn in diesem Zeitraum
+STR_SORT_BY_AVERAGE_PROFIT_THIS_PERIOD                          :Durchschnittlicher Gewinn in diesem Zyklus
 
 # Group by options for vehicle list
 STR_GROUP_BY_NONE                                               :Keine
@@ -667,10 +667,10 @@ STR_PERFORMANCE_DETAIL_TOTAL                                    :{BLACK}Gesamt:
 ###next-name-looks-similar
 
 STR_PERFORMANCE_DETAIL_VEHICLES_TOOLTIP_YEARS                   :{BLACK}Anzahl der Fahrzeuge, die im letzten Jahr einen Gewinn erzielt haben. Diese beinhaltet Straßenfahrzeuge, Züge, Schiffe und Flugzeuge
-STR_PERFORMANCE_DETAIL_VEHICLES_TOOLTIP_PERIODS                 :{BLACK}Anzahl der Fahrzeuge, die im letzten Zeitraum einen Gewinn erzielt haben. Diese beinhaltet Straßenfahrzeuge, Züge, Schiffe und Flugzeuge
+STR_PERFORMANCE_DETAIL_VEHICLES_TOOLTIP_PERIODS                 :{BLACK}Anzahl der Fahrzeuge, die im letzten Zyklus einen Gewinn erzielt haben. Dies beinhaltet Straßenfahrzeuge, Züge, Schiffe und Flugzeuge
 STR_PERFORMANCE_DETAIL_STATIONS_TOOLTIP                         :{BLACK}Anzahl vor kurzem genutzter Stationen (wenn Stationen verschiedener Typen verbunden sind, werden sie trotzdem einzeln gezählt)
-STR_PERFORMANCE_DETAIL_MIN_PROFIT_TOOLTIP_YEARS                 :{BLACK}Der Gewinn des unptofitabelsten Fahrzeugs. Hierbei werden nur Fahrzeuge älter als 2 Jahre mit einbezogen.
-STR_PERFORMANCE_DETAIL_MIN_PROFIT_TOOLTIP_PERIODS               :{BLACK}Der Gewinn des unptofitabelsten Fahrzeugs. Hierbei werden nur Fahrzeuge älter als 2 Quartale mit einbezogen.
+STR_PERFORMANCE_DETAIL_MIN_PROFIT_TOOLTIP_YEARS                 :{BLACK}Der Gewinn des unprofitabelsten Fahrzeugs. Hierbei werden nur Fahrzeuge älter als 2 Jahre mit einbezogen.
+STR_PERFORMANCE_DETAIL_MIN_PROFIT_TOOLTIP_PERIODS               :{BLACK}Der Gewinn des unprofitabelsten Fahrzeugs. Hierbei werden nur Fahrzeuge älter als 2 Zyklen mit einbezogen.
 STR_PERFORMANCE_DETAIL_MIN_INCOME_TOOLTIP                       :{BLACK}Geringste Quartalseinnahmen in den letzten 3 Jahren
 STR_PERFORMANCE_DETAIL_MAX_INCOME_TOOLTIP                       :{BLACK}Höchste Quartalseinnahmen in den letzten 3 Jahren
 STR_PERFORMANCE_DETAIL_DELIVERED_TOOLTIP                        :{BLACK}Im letzten Jahr gelieferte Frachteinheiten
@@ -903,8 +903,8 @@ STR_NEWS_VEHICLE_IS_GETTING_VERY_OLD                            :{WHITE}{VEHICLE
 STR_NEWS_VEHICLE_IS_GETTING_VERY_OLD_AND                        :{WHITE}{VEHICLE} wird sehr alt und sollte dringend ersetzt werden
 STR_NEWS_TRAIN_IS_STUCK                                         :{WHITE}{VEHICLE} findet keinen Weg zum Vorankommen
 STR_NEWS_VEHICLE_IS_LOST                                        :{WHITE}{VEHICLE} hat sich verirrt
-STR_NEWS_VEHICLE_UNPROFITABLE_YEAR                              :{WHITE} Gewinn durch {VEHICLE} betrug {CURRENCY_LONG} im letzten Jahr
-STR_NEWS_VEHICLE_UNPROFITABLE_PERIOD                            :{WHITE}Gewinn durch {VEHICLE} betrug {CURRENCY_LONG} im letzten Zeitraum
+STR_NEWS_VEHICLE_UNPROFITABLE_YEAR                              :{WHITE}Jahres-Gewinn durch {VEHICLE} betrug {CURRENCY_LONG}
+STR_NEWS_VEHICLE_UNPROFITABLE_PERIOD                            :{WHITE}Zyklus-Gewinn durch {VEHICLE} betrug {CURRENCY_LONG}
 STR_NEWS_AIRCRAFT_DEST_TOO_FAR                                  :{WHITE}{VEHICLE} kann sein Ziel nicht erreichen, da es außer Reichweite liegt
 
 STR_NEWS_ORDER_REFIT_FAILED                                     :{WHITE}Umrüstung fehlgeschlagen bei {VEHICLE}
@@ -1118,6 +1118,9 @@ STR_CURRENCY_DECREASE_EXCHANGE_RATE_TOOLTIP                     :{BLACK}Eigene W
 STR_CURRENCY_INCREASE_EXCHANGE_RATE_TOOLTIP                     :{BLACK}Eigene Währung gegenüber dem Pfund (£) verbilligen
 STR_CURRENCY_SET_EXCHANGE_RATE_TOOLTIP                          :{BLACK}Umrechnungskurs der eigenen Währung gegenüber dem Pfund (£) festlegen
 
+STR_CURRENCY_SEPARATOR                                          :{LTBLUE}Trennzeichen: {ORANGE}{STRING}
+STR_CURRENCY_SET_CUSTOM_CURRENCY_SEPARATOR_TOOLTIP              :{BLACK}Das Tausender-Trennzeichen für die eigene Währung festlegen
+
 STR_CURRENCY_PREFIX                                             :{LTBLUE}Präfix: {ORANGE}{STRING}
 STR_CURRENCY_SET_CUSTOM_CURRENCY_PREFIX_TOOLTIP                 :{BLACK}Das Zeichen für die eigene Währung festlegen (Prefix)
 STR_CURRENCY_SUFFIX                                             :{LTBLUE}Suffix: {ORANGE}{STRING}
@@ -1272,10 +1275,10 @@ STR_CONFIG_SETTING_INFINITE_MONEY                               :Unbegrenzte fin
 STR_CONFIG_SETTING_INFINITE_MONEY_HELPTEXT                      :Erlaubt Firmen, unbeschränkte Ausgaben zu tätigen und deaktiviert Insolvenz
 
 STR_CONFIG_SETTING_MAXIMUM_INITIAL_LOAN                         :Kreditlimit bei Spielbeginn: {STRING}
-STR_CONFIG_SETTING_MAXIMUM_INITIAL_LOAN_HELPTEXT                :Maximaler Kredit für eine Firma (ohne Berücksichtigung der Inflation)
+STR_CONFIG_SETTING_MAXIMUM_INITIAL_LOAN_HELPTEXT                :Maximaler Kredit für eine Firma (ohne Berücksichtigung der Inflation). Falls auf „Kein Darlehen“ gesetzt, wird kein Geld zur Verfügung stehen, außer, wenn es von einem Spielskript oder der „Unendlich Geld“-Einstellung zur Verfügung gestellt wird.
 STR_CONFIG_SETTING_MAXIMUM_INITIAL_LOAN_VALUE                   :{CURRENCY_LONG}
 ###setting-zero-is-special
-STR_CONFIG_SETTING_MAXIMUM_INITIAL_LOAN_DISABLED                :Kein Darlehen {RED}Benötigt Spielskript, um Startgeld zur Verfügung zu stellen
+STR_CONFIG_SETTING_MAXIMUM_INITIAL_LOAN_DISABLED                :Kein Darlehen
 
 STR_CONFIG_SETTING_INTEREST_RATE                                :Zinssatz: {STRING}
 STR_CONFIG_SETTING_INTEREST_RATE_HELPTEXT                       :Zinssatz für Kredite; beeinflusst auch die Inflation, falls aktiv
@@ -1295,7 +1298,7 @@ STR_CONFIG_SETTING_SUBSIDY_MULTIPLIER_HELPTEXT                  :Einstellen, wie
 STR_CONFIG_SETTING_SUBSIDY_DURATION                             :Subventionsdauer: {STRING}
 ###length 2
 STR_CONFIG_SETTING_SUBSIDY_DURATION_HELPTEXT                    :Wähle die Anzahl der Jahre, für die eine Subvention vergeben wird
-STR_CONFIG_SETTING_SUBSIDY_DURATION_HELPTEXT_PERIODS            :Wähle die Anzahl der Zeiträume, für die eine Subvention vergeben wird
+STR_CONFIG_SETTING_SUBSIDY_DURATION_HELPTEXT_PERIODS            :Wähle die Anzahl an Zyklen, für die eine Subvention vergeben wird
 
 STR_CONFIG_SETTING_SUBSIDY_DURATION_VALUE                       :{UNITS_YEARS_OR_PERIODS}
 ###setting-zero-is-special
@@ -1395,11 +1398,11 @@ STR_CONFIG_SETTING_SIGNALSIDE_RIGHT                             :Auf der rechten
 
 ###length 2
 STR_CONFIG_SETTING_SHOWFINANCES                                 :Zeige Firmenfinanzen am Ende des Jahres: {STRING}
-STR_CONFIG_SETTING_SHOWFINANCES_PERIOD                          :Zeige Firmenfinanzen am Ende des Zeitraums: {STRING}
+STR_CONFIG_SETTING_SHOWFINANCES_PERIOD                          :Zeige Firmenfinanzen am Ende jedes Zyklus: {STRING}
 
 ###length 2
 STR_CONFIG_SETTING_SHOWFINANCES_HELPTEXT                        :Blende am Ende jedes Jahres automatisch die Einkommensübersicht des Unternehmes ein, um eine schnelle Übersicht über den finanziellen Status zu bekommen
-STR_CONFIG_SETTING_SHOWFINANCES_HELPTEXT_PERIOD                 :Wenn aktiviert, erscheint das Finanz-Fenster immer am Ende des Quartals. Dies ermöglicht einen einfachen Überblick über die finanzielle Situation und Entwicklung der Firma.
+STR_CONFIG_SETTING_SHOWFINANCES_HELPTEXT_PERIOD                 :Wenn aktiviert, erscheint das Finanz-Fenster immer am Ende jedes Zyklus. Dies ermöglicht einen einfachen Überblick über die finanzielle Situation und Entwicklung der Firma.
 
 STR_CONFIG_SETTING_NONSTOP_BY_DEFAULT                           :Aufträge standardmäßig ohne Zwischenhalt anfahren: {STRING}
 STR_CONFIG_SETTING_NONSTOP_BY_DEFAULT_HELPTEXT                  :Normalerweise hält ein Fahrzeug an jeder Station, die es passiert. Wird diese Einstellung aktiviert, hält das Fahrzeug nur an den Stationen, die explizit in den Aufträgen angeführt sind. Bedenke, dass dieses nur das Standard-Verhalten für neue Aufträge beschreibt. Einzelne Aufträge können explizit auf jedes gewünschte Verhalten geändert werden
@@ -1486,13 +1489,13 @@ STR_CONFIG_SETTING_ORDER_REVIEW_ON                              :Für alle Fahrz
 STR_CONFIG_SETTING_WARN_INCOME_LESS                             :Warnen, wenn Einnahmen eines Fahrzeuges negativ sind: {STRING}
 ###length 2
 STR_CONFIG_SETTING_WARN_INCOME_LESS_HELPTEXT                    :Falls aktiviert, wird eine Nachricht gesendet, falls ein Fahrzeug innerhalb eines Jahres keinen Gewinn erwirtschaftet hat
-STR_CONFIG_SETTING_WARN_INCOME_LESS_HELPTEXT_PERIOD             :Falls aktiviert, wird eine Nachricht gesendet, falls ein Fahrzeug innerhalb einer Zeitspanne keinen Gewinn erwirtschaftet hat
+STR_CONFIG_SETTING_WARN_INCOME_LESS_HELPTEXT_PERIOD             :Falls aktiviert, wird eine Nachricht gesendet, falls ein Fahrzeug innerhalb eines Zyklus keinen Gewinn erwirtschaftet hat
 
 STR_CONFIG_SETTING_NEVER_EXPIRE_VEHICLES                        :Fahrzeuge veralten nie: {STRING}
 STR_CONFIG_SETTING_NEVER_EXPIRE_VEHICLES_HELPTEXT               :Erlauben, dass Fahrzeuge nach ihrem Einführungsdatum ewig verfügbar bleiben
 
 STR_CONFIG_SETTING_TIMEKEEPING_UNITS                            :Zeiteinheit: {STRING}
-STR_CONFIG_SETTING_TIMEKEEPING_UNITS_HELPTEXT                   :Wähle die Zeiteinheit des Spiels. Diese kann später nicht geändert werden.{}{}Kalender-basiert ist die klassische OpenTTD Erfahrung, in dem ein Jahr aus 12 Monaten besteht und jeder Monat 28-31 Tage hat.{}{}In Wanduhr-basierter Zeit sind Fahrzeuggeschwindigkeit, Güterproduktion und Finanzen basierend auf 1-minütigen Inkrementen, welche etwa so lang wie ein 30-tägiger Monat im Kalender-basierten Modus sind. Diese sind in 12-minütige Zeiträume gruppiert, equivalent zu einem Kalender-Jahr.{}{}In beiden Modi ist immer ein klassischer Kalender, welcher für das Einführungdatum von Fahrzeugen, Häusern und anderer Infrastruktur genutzt wird.
+STR_CONFIG_SETTING_TIMEKEEPING_UNITS_HELPTEXT                   :Wähle die Zeitbasis des Spiels. Diese kann später nicht geändert werden.{}{}Kalender-basiert ist die klassische OpenTTD Erfahrung, in dem ein Jahr aus 12 Monaten besteht und jeder Monat 28-31 Tage hat.{}{}In Wanduhr-basierter Zeit sind Güterproduktion und Finanzen basierend auf 1-minütigen Intervallen, welche etwa so lang wie ein 30-tägiger Monat im Kalender-basierten Modus sind. Diese sind in 12-minütigen Zyklen gruppiert, equivalent zu einem Kalender-Jahr.{}{}In beiden Modi gilt immer auch ein klassischer Kalender für das Einführungdatum von Fahrzeugen, Häusern und anderer Infrastruktur.
 ###length 2
 STR_CONFIG_SETTING_TIMEKEEPING_UNITS_CALENDAR                   :Kalender
 STR_CONFIG_SETTING_TIMEKEEPING_UNITS_WALLCLOCK                  :Wanduhr
@@ -1764,11 +1767,11 @@ STR_CONFIG_SETTING_SOUND_NEWS_HELPTEXT                          :Soundeffekte be
 
 ###length 2
 STR_CONFIG_SETTING_SOUND_NEW_YEAR                               :Bericht am Jahresende: {STRING}
-STR_CONFIG_SETTING_SOUND_NEW_PERIOD                             :Ende des Zeitraums: {STRING}
+STR_CONFIG_SETTING_SOUND_NEW_PERIOD                             :Ende eines Zyklus: {STRING}
 
 ###length 2
 STR_CONFIG_SETTING_SOUND_NEW_YEAR_HELPTEXT                      :Soundeffekte beim Jahresrückblick auf die Bilanzen der vergangenen Jahre abspielen
-STR_CONFIG_SETTING_SOUND_NEW_PERIOD_HELPTEXT                    :Spiele ein Geräusch am Ende eines Quartals ab, welches die Firmenbilanz im Vergleich zum letzten Quartal wiedergibt
+STR_CONFIG_SETTING_SOUND_NEW_PERIOD_HELPTEXT                    :Spiele ein Geräusch am Ende jedes Zyklus ab, welches die Firmenbilanz im Vergleich zum vorherigen Zyklus wiedergibt
 
 STR_CONFIG_SETTING_SOUND_CONFIRM                                :Baumaßnahmen: {STRING}
 STR_CONFIG_SETTING_SOUND_CONFIRM_HELPTEXT                       :Soundeffekte bei Baumaßnahmen oder anderen Aktionen abspielen
@@ -2763,7 +2766,7 @@ STR_STATION_BUILD_COVERAGE_AREA_ON_TOOLTIP                      :{BLACK}Einzugsg
 STR_STATION_BUILD_ACCEPTS_CARGO                                 :{BLACK}Nimmt an: {GOLD}{CARGO_LIST}
 STR_STATION_BUILD_SUPPLIES_CARGO                                :{BLACK}Liefert: {GOLD}{CARGO_LIST}
 STR_STATION_BUILD_INFRASTRUCTURE_COST_YEAR                      :{BLACK}Unterhaltskosten: {GOLD}{CURRENCY_SHORT}/Jahr
-STR_STATION_BUILD_INFRASTRUCTURE_COST_PERIOD                    :{BLACK}Wartungskosten: {GOLD}{CURRENCY_SHORT}/Quartal
+STR_STATION_BUILD_INFRASTRUCTURE_COST_PERIOD                    :{BLACK}Wartungskosten: {GOLD}{CURRENCY_SHORT}/Zyklus
 
 # Join station window
 STR_JOIN_STATION_CAPTION                                        :{WHITE}Verbinde mit Station
@@ -3827,7 +3830,7 @@ STR_EDIT_WAYPOINT_NAME                                          :{WHITE}Namen de
 STR_FINANCES_CAPTION                                            :{WHITE}{COMPANY} – Finanzen {BLACK}{COMPANY_NUM}
 STR_FINANCES_YEAR                                               :{WHITE}{NUM}
 STR_FINANCES_YEAR_CAPTION                                       :{WHITE}Jahr
-STR_FINANCES_PERIOD_CAPTION                                     :{WHITE}Zeitraum
+STR_FINANCES_PERIOD_CAPTION                                     :{WHITE}Zyklus
 
 ###length 3
 STR_FINANCES_REVENUE_TITLE                                      :{WHITE}Einnahmen
@@ -3930,7 +3933,7 @@ STR_COMPANY_INFRASTRUCTURE_VIEW_STATION_SECT                    :{GOLD}Stationen
 STR_COMPANY_INFRASTRUCTURE_VIEW_STATIONS                        :{WHITE}Stationsfelder
 STR_COMPANY_INFRASTRUCTURE_VIEW_AIRPORTS                        :{WHITE}Flughäfen
 STR_COMPANY_INFRASTRUCTURE_VIEW_TOTAL_YEAR                      :{WHITE}{CURRENCY_LONG}/Jahr
-STR_COMPANY_INFRASTRUCTURE_VIEW_TOTAL_PERIOD                    :{WHITE}{CURRENCY_LONG}/Zeitraum
+STR_COMPANY_INFRASTRUCTURE_VIEW_TOTAL_PERIOD                    :{WHITE}{CURRENCY_LONG}/Zyklus
 
 # Industry directory
 STR_INDUSTRY_DIRECTORY_CAPTION                                  :{WHITE}Industrien
@@ -3992,7 +3995,7 @@ STR_VEHICLE_LIST_REPLACE_VEHICLES                               :Fahrzeuge erset
 STR_VEHICLE_LIST_SEND_FOR_SERVICING                             :Zur Wartung schicken
 STR_VEHICLE_LIST_CREATE_GROUP                                   :Gruppe erstellen
 STR_VEHICLE_LIST_PROFIT_THIS_YEAR_LAST_YEAR                     :{TINY_FONT}{BLACK}Gewinn im laufenden Jahr: {CURRENCY_LONG} (vergangenes Jahr: {CURRENCY_LONG})
-STR_VEHICLE_LIST_PROFIT_THIS_PERIOD_LAST_PERIOD                 :{TINY_FONT}{BLACK}Profit in diesem Zeitraum: {CURRENCY_LONG} (letzter Zeitraum: {CURRENCY_LONG})
+STR_VEHICLE_LIST_PROFIT_THIS_PERIOD_LAST_PERIOD                 :{TINY_FONT}{BLACK}Profit in diesem Zyklus: {CURRENCY_LONG} (letzter Zyklus: {CURRENCY_LONG})
 STR_VEHICLE_LIST_CARGO                                          :[{CARGO_LIST}]
 STR_VEHICLE_LIST_NAME_AND_CARGO                                 :{STRING} {STRING}
 
@@ -4038,9 +4041,9 @@ STR_GROUP_REMOVE_ALL_VEHICLES                                   :Liste leeren
 STR_GROUP_RENAME_CAPTION                                        :{BLACK}Gruppe umbenennen
 
 STR_GROUP_PROFIT_THIS_YEAR                                      :Gewinn dieses Jahr:
-STR_GROUP_PROFIT_THIS_PERIOD                                    :Gewinn in diesem Zeitraum:
+STR_GROUP_PROFIT_THIS_PERIOD                                    :Gewinn in diesem Zyklus:
 STR_GROUP_PROFIT_LAST_YEAR                                      :Gewinn letztes Jahr:
-STR_GROUP_PROFIT_LAST_PERIOD                                    :Gewinn im letzten Zeitraum:
+STR_GROUP_PROFIT_LAST_PERIOD                                    :Gewinn im letzten Zyklus:
 STR_GROUP_OCCUPANCY                                             :Aktuelle Nutzung:
 STR_GROUP_OCCUPANCY_VALUE                                       :{NUM}%
 
@@ -4068,7 +4071,7 @@ STR_PURCHASE_INFO_SPEED                                         :{BLACK}Geschwin
 STR_PURCHASE_INFO_SPEED_OCEAN                                   :{BLACK}Geschwindigkeit auf dem Meer: {GOLD}{VELOCITY}
 STR_PURCHASE_INFO_SPEED_CANAL                                   :{BLACK}Geschwindigkeit auf Kanälen und Flüssen: {GOLD}{VELOCITY}
 STR_PURCHASE_INFO_RUNNINGCOST_YEAR                              :{BLACK}Betriebskosten: {GOLD}{CURRENCY_LONG}/Jahr
-STR_PURCHASE_INFO_RUNNINGCOST_PERIOD                            :{BLACK}Betriebskosten: {GOLD}{CURRENCY_LONG}/Zeitraum
+STR_PURCHASE_INFO_RUNNINGCOST_PERIOD                            :{BLACK}Betriebskosten: {GOLD}{CURRENCY_LONG}/Zyklus
 STR_PURCHASE_INFO_CAPACITY                                      :{BLACK}Kapazität: {GOLD}{CARGO_LONG} {STRING}
 STR_PURCHASE_INFO_REFITTABLE                                    :(umrüstbar)
 STR_PURCHASE_INFO_DESIGNED_LIFE                                 :{BLACK}Entworfen: {GOLD}{NUM}{BLACK} Betriebsdauer: {GOLD}{COMMA} Jahr{P "" e}
@@ -4270,7 +4273,7 @@ STR_ENGINE_PREVIEW_SPEED_POWER_MAX_TE                           :Geschw.: {VELOC
 STR_ENGINE_PREVIEW_TYPE                                         :Flugzeugtyp: {STRING}
 STR_ENGINE_PREVIEW_TYPE_RANGE                                   :Flugzeugtyp: {STRING} Reichweite: {COMMA} Felder
 STR_ENGINE_PREVIEW_RUNCOST_YEAR                                 :Betriebskosten: {CURRENCY_LONG}/Jahr
-STR_ENGINE_PREVIEW_RUNCOST_PERIOD                               :Betriebskosten: {CURRENCY_LONG}/Zeitraum
+STR_ENGINE_PREVIEW_RUNCOST_PERIOD                               :Betriebskosten: {CURRENCY_LONG}/Zyklus
 STR_ENGINE_PREVIEW_CAPACITY                                     :Kapazität: {CARGO_LONG}
 STR_ENGINE_PREVIEW_CAPACITY_2                                   :Kapazität: {CARGO_LONG}, {CARGO_LONG}
 
@@ -4382,22 +4385,22 @@ STR_VEHICLE_STATUS_WAITING_UNBUNCHING                           :{LTBLUE}Warten 
 STR_VEHICLE_STATUS_CRASHED                                      :{RED}Unfall!
 STR_VEHICLE_STATUS_BROKEN_DOWN                                  :{RED}Panne
 STR_VEHICLE_STATUS_STOPPED                                      :{RED}Angehalten
-STR_VEHICLE_STATUS_TRAIN_STOPPING_VEL                           :{RED}Halte an, {VELOCITY}
+STR_VEHICLE_STATUS_TRAIN_STOPPING_VEL                           :{RED}{VELOCITY} – Anhalten
 STR_VEHICLE_STATUS_TRAIN_NO_POWER                               :{RED}Keine Energie
 STR_VEHICLE_STATUS_TRAIN_STUCK                                  :{ORANGE}Warte auf freie Wege
 STR_VEHICLE_STATUS_AIRCRAFT_TOO_FAR                             :{ORANGE}Zu weit zum nächsten Ziel
 
-STR_VEHICLE_STATUS_HEADING_FOR_STATION_VEL                      :{LTBLUE}Unterwegs nach {STATION}, {VELOCITY}
-STR_VEHICLE_STATUS_NO_ORDERS_VEL                                :{LTBLUE}Keine Aufträge, {VELOCITY}
-STR_VEHICLE_STATUS_HEADING_FOR_WAYPOINT_VEL                     :{LTBLUE}Fahre zu {WAYPOINT}, {VELOCITY}
-STR_VEHICLE_STATUS_HEADING_FOR_DEPOT_VEL                        :{ORANGE}Fährt zu {DEPOT}, {VELOCITY}
-STR_VEHICLE_STATUS_HEADING_FOR_DEPOT_SERVICE_VEL                :{LTBLUE}Wartung in {DEPOT}, {VELOCITY}
-STR_VEHICLE_STATUS_HEADING_FOR_DEPOT_UNBUNCH_VEL                :{LTBLUE}Entladen und Wartung am Depot {DEPOT}, {VELOCITY}
+STR_VEHICLE_STATUS_HEADING_FOR_STATION_VEL                      :{LTBLUE}{1:VELOCITY} – Unterwegs nach {0:STATION}
+STR_VEHICLE_STATUS_NO_ORDERS_VEL                                :{LTBLUE}{VELOCITY} – Keine Aufträge
+STR_VEHICLE_STATUS_HEADING_FOR_WAYPOINT_VEL                     :{LTBLUE}{1:VELOCITY} – Unterwegs nach {0:WAYPOINT}
+STR_VEHICLE_STATUS_HEADING_FOR_DEPOT_VEL                        :{ORANGE}{1:VELOCITY} – Fährt zu {0:DEPOT}
+STR_VEHICLE_STATUS_HEADING_FOR_DEPOT_SERVICE_VEL                :{LTBLUE}{1:VELOCITY} – Wartung in {0:DEPOT}
+STR_VEHICLE_STATUS_HEADING_FOR_DEPOT_UNBUNCH_VEL                :{LTBLUE}{1:VELOCITY} – Entpulkung und Wartung bei {0:DEPOT}
 
-STR_VEHICLE_STATUS_CANNOT_REACH_STATION_VEL                     :{LTBLUE} Kann nicht {STATION}, ´{VELOCITY} erreichen
-STR_VEHICLE_STATUS_CANNOT_REACH_WAYPOINT_VEL                    :{LTBLUE}Kann nicht {WAYPOINT},{VELOCITY} erreichen
-STR_VEHICLE_STATUS_CANNOT_REACH_DEPOT_VEL                       :{ORANGE}Kann nicht {DEPOT},{VELOCITY} erreichen
-STR_VEHICLE_STATUS_CANNOT_REACH_DEPOT_SERVICE_VEL               :{LTBLUE}Kann {DEPOT},{VELOCITY} nicht erreichen
+STR_VEHICLE_STATUS_CANNOT_REACH_STATION_VEL                     :{LTBLUE}{1:VELOCITY} – Kann {0:STATION} nicht erreichen
+STR_VEHICLE_STATUS_CANNOT_REACH_WAYPOINT_VEL                    :{LTBLUE}{1:VELOCITY} – Kann {0:WAYPOINT} nicht erreichen
+STR_VEHICLE_STATUS_CANNOT_REACH_DEPOT_VEL                       :{ORANGE}{1:VELOCITY} – Kann {0:DEPOT} nicht erreichen
+STR_VEHICLE_STATUS_CANNOT_REACH_DEPOT_SERVICE_VEL               :{LTBLUE}{1:VELOCITY} – Kann {0:DEPOT} nicht erreichen
 
 # Vehicle stopped/started animations
 ###length 2
@@ -4420,7 +4423,7 @@ STR_VEHICLE_DETAILS_AIRCRAFT_RENAME                             :{BLACK}Name des
 STR_VEHICLE_INFO_AGE                                            :{COMMA} Jahr{P "" e} ({COMMA})
 STR_VEHICLE_INFO_AGE_RED                                        :{RED}{COMMA} Jahr{P "" e} ({COMMA})
 STR_VEHICLE_INFO_AGE_RUNNING_COST_YR                            :{BLACK}Alter: {LTBLUE}{STRING}{BLACK} Betriebskosten: {LTBLUE}{CURRENCY_LONG}/Jahr
-STR_VEHICLE_INFO_AGE_RUNNING_COST_PERIOD                        :{BLACK}Alter: {LTBLUE}{STRING}{BLACK} Betriebskosten: {LTBLUE}{CURRENCY_LONG}/Zeitraum
+STR_VEHICLE_INFO_AGE_RUNNING_COST_PERIOD                        :{BLACK}Alter: {LTBLUE}{STRING}{BLACK} Betriebskosten: {LTBLUE}{CURRENCY_LONG}/Zyklus
 
 STR_VEHICLE_INFO_MAX_SPEED                                      :{BLACK}Max. Geschw.: {LTBLUE}{VELOCITY}
 STR_VEHICLE_INFO_MAX_SPEED_TYPE                                 :{BLACK}Max. Geschw.: {LTBLUE}{VELOCITY} {BLACK}Flugzeugtyp: {LTBLUE}{STRING}
@@ -4429,9 +4432,9 @@ STR_VEHICLE_INFO_WEIGHT_POWER_MAX_SPEED                         :{BLACK}Gewicht:
 STR_VEHICLE_INFO_WEIGHT_POWER_MAX_SPEED_MAX_TE                  :{BLACK}Gewicht: {LTBLUE}{WEIGHT_SHORT} {BLACK}Leistung: {LTBLUE}{POWER}{BLACK} Max. Geschw.: {LTBLUE}{VELOCITY} {BLACK}Max. Zugkraft: {LTBLUE}{FORCE}
 
 STR_VEHICLE_INFO_PROFIT_THIS_YEAR_LAST_YEAR                     :{BLACK}Gewinn dieses Jahr: {LTBLUE}{CURRENCY_LONG} (letztes Jahr: {CURRENCY_LONG})
-STR_VEHICLE_INFO_PROFIT_THIS_YEAR_LAST_YEAR_MIN_PERFORMANCE     :{BLACK}Gewinn im laufenden Jahr: {LTBLUE}{CURRENCY_LONG} (vergangenes Jahr: {CURRENCY_LONG}) {BLACK}Min. Leistung: {LTBLUE}{POWER_TO_WEIGHT}
-STR_VEHICLE_INFO_PROFIT_THIS_PERIOD_LAST_PERIOD                 :{BLACK}Gewinn in diesem Zeitraum: {LTBLUE}{CURRENCY_LONG} (im letzten Zeitraum: {CURRENCY_LONG})
-STR_VEHICLE_INFO_PROFIT_THIS_PERIOD_LAST_PERIOD_MIN_PERFORMANCE :{BLACK}Gewinn in diesem Zeitraum: {LTBLUE}{CURRENCY_LONG} (im letzten Zeitraum: {CURRENCY_LONG}) {BLACK}Min. Leistung: {LTBLUE}{POWER_TO_WEIGHT}
+STR_VEHICLE_INFO_PROFIT_THIS_YEAR_LAST_YEAR_MIN_PERFORMANCE     :{BLACK}Gewinn im laufenden Jahr: {LTBLUE}{CURRENCY_LONG} (vergangenes Jahr: {CURRENCY_LONG}) {BLACK}Min. Leistungsdichte: {LTBLUE}{POWER_TO_WEIGHT}
+STR_VEHICLE_INFO_PROFIT_THIS_PERIOD_LAST_PERIOD                 :{BLACK}Gewinn in diesem Zyklus: {LTBLUE}{CURRENCY_LONG} (im letzten Zyklus: {CURRENCY_LONG})
+STR_VEHICLE_INFO_PROFIT_THIS_PERIOD_LAST_PERIOD_MIN_PERFORMANCE :{BLACK}Gewinn in diesem Zyklus: {LTBLUE}{CURRENCY_LONG} (im letzten Zyklus: {CURRENCY_LONG}) {BLACK}Min. Leistungsdichte: {LTBLUE}{POWER_TO_WEIGHT}
 STR_VEHICLE_INFO_RELIABILITY_BREAKDOWNS                         :{BLACK}Zuverlässigkeit: {LTBLUE}{COMMA}%  {BLACK}Pannen seit der letzten Wartung: {LTBLUE}{COMMA}
 
 STR_VEHICLE_INFO_BUILT_VALUE                                    :{LTBLUE}{ENGINE} {BLACK}Gebaut: {LTBLUE}{NUM}{BLACK} Wert: {LTBLUE}{CURRENCY_LONG}
@@ -4611,7 +4614,7 @@ STR_ORDER_GO_TO_NEAREST_DEPOT                                   :Nächstes Depot
 STR_ORDER_GO_TO_NEAREST_HANGAR                                  :Nächster Hangar
 STR_ORDER_CONDITIONAL                                           :Bedingter Sprung zu Auftrag
 STR_ORDER_SHARE                                                 :Gemeinsame Aufträge
-STR_ORDERS_GO_TO_TOOLTIP                                        :{BLACK}Einen neuen Auftrag vor dem markierten Auftrag oder am Ende der Liste einfügen. Strg+Klick auf einer Station für den Auftrag „Vollladen einer Fracht“, auf Wegpunkten, um die Einstellung „standardmäßig ohne Zwischenhalt“ zu invertieren und auf Depots für den Auftrag „Wartung“. Mit einem Klick auf ein anderes Fahrzeug werden seine Aufträge kopiert, mit Strg+Klick werden gemeinsame Aufträge erzeugt. Ein Depotauftrag schaltet die automatische Wartung für das Fahrzeug aus.
+STR_ORDERS_GO_TO_TOOLTIP                                        :{BLACK}Einen neuen Auftrag vor dem markierten Auftrag oder am Ende der Liste einfügen. Strg+Klick auf einer Station für den Auftrag „Vollladen einer Fracht“, auf Wegpunkten, um die Einstellung „standardmäßig ohne Zwischenhalt“ zu invertieren und auf Depots für den Auftrag „Entpulken“. Mit einem Klick auf ein anderes Fahrzeug werden seine Aufträge kopiert, mit Strg+Klick werden gemeinsame Aufträge erzeugt. Ein Depotauftrag schaltet die automatische Wartung für das Fahrzeug aus.
 
 STR_ORDERS_VEH_WITH_SHARED_ORDERS_LIST_TOOLTIP                  :{BLACK}Alle Fahrzeuge mit demselben Fahrplan anzeigen
 
@@ -4637,7 +4640,7 @@ STR_ORDER_REFIT_ORDER                                           :(auf {STRING} u
 STR_ORDER_REFIT_STOP_ORDER                                      :(auf {STRING} umrüsten und stoppen)
 STR_ORDER_STOP_ORDER                                            :(Stopp)
 
-STR_ORDER_WAIT_TO_UNBUNCH                                       :(warte auf Entladen)
+STR_ORDER_WAIT_TO_UNBUNCH                                       :(warte auf Entpulkung)
 
 STR_ORDER_GO_TO_STATION                                         :{STRING} {STATION} {STRING}
 STR_ORDER_GO_TO_STATION_CAN_T_USE_STATION                       :{PUSH_COLOUR}{RED}(Station unbenutzbar){POP_COLOUR} {STRING} {STATION} {STRING}
@@ -4841,8 +4844,6 @@ STR_AI_SETTINGS_CAPTION_GAMESCRIPT                              :Spielskript
 STR_AI_SETTINGS_CLOSE                                           :{BLACK}Schließen
 STR_AI_SETTINGS_RESET                                           :{BLACK}Zurücksetzen
 STR_AI_SETTINGS_SETTING                                         :{STRING}: {ORANGE}{STRING}
-STR_AI_SETTINGS_SETTING_DEVIATION                               :{STRING}: {ORANGE}[{STRING}, {STRING}]
-STR_AI_SETTINGS_JUST_DEVIATION                                  :[{STRING}, {STRING}]
 
 
 # Textfile window
@@ -5109,11 +5110,11 @@ STR_ERROR_UNABLE_TO_FIND_LOCAL_DEPOT                            :{WHITE}Fahrzeug
 STR_ERROR_DEPOT_WRONG_DEPOT_TYPE                                :Falscher Depottyp
 
 # Depot unbunching related errors
-STR_ERROR_UNBUNCHING_ONLY_ONE_ALLOWED                           :{WHITE}... kann nur einen Entladeauftrag haben
+STR_ERROR_UNBUNCHING_ONLY_ONE_ALLOWED                           :{WHITE}... kann nur einen Entpulkungsauftrag haben
 STR_ERROR_UNBUNCHING_NO_FULL_LOAD                               :{WHITE}… es können keine Volle-Ladungs-Aufträge benutzt werden, falls Fahrzeug einen Entpulkungsauftrag hat
-STR_ERROR_UNBUNCHING_NO_UNBUNCHING_FULL_LOAD                    :{WHITE}... kann kein Fahrzeug mit einem Vollladeauftrag entladen
+STR_ERROR_UNBUNCHING_NO_UNBUNCHING_FULL_LOAD                    :{WHITE}... kann kein Fahrzeug mit einem Vollladeauftrag entpulken
 STR_ERROR_UNBUNCHING_NO_CONDITIONAL                             :{WHITE}… es können keine bedingte Aufträge benutzt werden, falls Fahrzeug einen Entpulkungsauftrag hat
-STR_ERROR_UNBUNCHING_NO_UNBUNCHING_CONDITIONAL                  :{WHITE}... kann kein Fahrzeug mit einem an Bedingungen geknüpften Auftrag entladen
+STR_ERROR_UNBUNCHING_NO_UNBUNCHING_CONDITIONAL                  :{WHITE}... kann kein Fahrzeug mit einem an Bedingungen geknüpften Auftrag entpulken
 
 # Autoreplace related errors
 STR_ERROR_TRAIN_TOO_LONG_AFTER_REPLACEMENT                      :{WHITE}{VEHICLE} ist nach Ersetzung zu lang
@@ -5807,6 +5808,11 @@ STR_STATION_NAME                                                :{STATION}
 STR_TOWN_NAME                                                   :{TOWN}
 STR_VEHICLE_NAME                                                :{VEHICLE}
 STR_WAYPOINT_NAME                                               :{WAYPOINT}
+
+STR_CURRENCY_SHORT_KILO                                         :{NBSP}Tsd.
+STR_CURRENCY_SHORT_MEGA                                         :{NBSP}Mio.
+STR_CURRENCY_SHORT_GIGA                                         :{NBSP}Mrd.
+STR_CURRENCY_SHORT_TERA                                         :{NBSP}Bio.
 
 STR_JUST_CARGO                                                  :{CARGO_LONG}
 STR_JUST_RIGHT_ARROW                                            :{RIGHT_ARROW}
