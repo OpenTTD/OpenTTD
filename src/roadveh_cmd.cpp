@@ -1728,6 +1728,7 @@ void RoadVehicle::OnNewCalendarDay()
 void RoadVehicle::OnNewEconomyDay()
 {
 	if (!this->IsFrontEngine()) return;
+	EconomyAgeVehicle(this);
 
 	if ((++this->day_counter & 7) == 0) DecreaseVehicleValue(this);
 	if (this->blocked_ctr == 0) CheckVehicleBreakdown(this);

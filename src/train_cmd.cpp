@@ -4186,6 +4186,8 @@ void Train::OnNewCalendarDay()
 /** Economy day handler. */
 void Train::OnNewEconomyDay()
 {
+	EconomyAgeVehicle(this);
+
 	if ((++this->day_counter & 7) == 0) DecreaseVehicleValue(this);
 
 	if (this->IsFrontEngine()) {

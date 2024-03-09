@@ -398,6 +398,13 @@ void AfterLoadVehicles(bool part_of_load)
 				v->timetable_start = GetStartTickFromDate(v->timetable_start);
 			}
 		}
+
+		if (IsSavegameVersionBefore(SLV_VEHICLE_ECONOMY_AGE)) {
+			/* Set vehicle economy age based on calendar age. */
+			for (Vehicle *v : Vehicle::Iterate()) {
+				v->economy_age = v->age.base();
+			}
+		}
 	}
 
 	CheckValidVehicles();
@@ -718,6 +725,7 @@ public:
 
 		SLE_CONDVAR(Vehicle, age,                   SLE_FILE_U16 | SLE_VAR_I32,   SL_MIN_VERSION,  SLV_31),
 		SLE_CONDVAR(Vehicle, age,                   SLE_INT32,                   SLV_31, SL_MAX_VERSION),
+		SLE_CONDVAR(Vehicle, economy_age,           SLE_INT32,  SLV_VEHICLE_ECONOMY_AGE, SL_MAX_VERSION),
 		SLE_CONDVAR(Vehicle, max_age,               SLE_FILE_U16 | SLE_VAR_I32,   SL_MIN_VERSION,  SLV_31),
 		SLE_CONDVAR(Vehicle, max_age,               SLE_INT32,                   SLV_31, SL_MAX_VERSION),
 		SLE_CONDVAR(Vehicle, date_of_last_service,  SLE_FILE_U16 | SLE_VAR_I32,   SL_MIN_VERSION,  SLV_31),
