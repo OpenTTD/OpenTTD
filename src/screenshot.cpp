@@ -124,8 +124,9 @@ static bool MakeBMPImage(const char *name, ScreenshotCallback *callb, void *user
 		default: return false;
 	}
 
-	FILE *f = fopen(name, "wb");
-	if (f == nullptr) return false;
+	auto of = FileHandle::Open(name, "wb");
+	if (!of.has_value()) return false;
+	auto &f = *of;
 
 	/* Each scanline must be aligned on a 32bit boundary */
 	uint bytewidth = Align(w * bpp, 4); // bytes per line in file
@@ -156,7 +157,6 @@ static bool MakeBMPImage(const char *name, ScreenshotCallback *callb, void *user
 
 	/* Write file header and info header */
 	if (fwrite(&bfh, sizeof(bfh), 1, f) != 1 || fwrite(&bih, sizeof(bih), 1, f) != 1) {
-		fclose(f);
 		return false;
 	}
 
@@ -171,7 +171,6 @@ static bool MakeBMPImage(const char *name, ScreenshotCallback *callb, void *user
 		}
 		/* Write the palette */
 		if (fwrite(rq, sizeof(rq), 1, f) != 1) {
-			fclose(f);
 			return false;
 		}
 	}
@@ -210,7 +209,6 @@ static bool MakeBMPImage(const char *name, ScreenshotCallback *callb, void *user
 			if (fwrite(line, bytewidth, 1, f) != 1) {
 				free(line);
 				free(buff);
-				fclose(f);
 				return false;
 			}
 		}
@@ -218,7 +216,6 @@ static bool MakeBMPImage(const char *name, ScreenshotCallback *callb, void *user
 
 	free(line);
 	free(buff);
-	fclose(f);
 
 	return true;
 }
@@ -263,7 +260,6 @@ static void PNGAPI png_my_warning(png_structp png_ptr, png_const_charp message)
 static bool MakePNGImage(const char *name, ScreenshotCallback *callb, void *userdata, uint w, uint h, int pixelformat, const Colour *palette)
 {
 	png_color rq[256];
-	FILE *f;
 	uint i, y, n;
 	uint maxlines;
 	uint bpp = pixelformat / 8;
@@ -273,26 +269,24 @@ static bool MakePNGImage(const char *name, ScreenshotCallback *callb, void *user
 	/* only implemented for 8bit and 32bit images so far. */
 	if (pixelformat != 8 && pixelformat != 32) return false;
 
-	f = fopen(name, "wb");
-	if (f == nullptr) return false;
+	auto of = FileHandle::Open(name, "wb");
+	if (!of.has_value()) return false;
+	auto &f = *of;
 
 	png_ptr = png_create_write_struct(PNG_LIBPNG_VER_STRING, const_cast<char *>(name), png_my_error, png_my_warning);
 
 	if (png_ptr == nullptr) {
-		fclose(f);
 		return false;
 	}
 
 	info_ptr = png_create_info_struct(png_ptr);
 	if (info_ptr == nullptr) {
 		png_destroy_write_struct(&png_ptr, (png_infopp)nullptr);
-		fclose(f);
 		return false;
 	}
 
 	if (setjmp(png_jmpbuf(png_ptr))) {
 		png_destroy_write_struct(&png_ptr, &info_ptr);
-		fclose(f);
 		return false;
 	}
 
@@ -393,7 +387,6 @@ static bool MakePNGImage(const char *name, ScreenshotCallback *callb, void *user
 	png_destroy_write_struct(&png_ptr, &info_ptr);
 
 	free(buff);
-	fclose(f);
 	return true;
 }
 #endif /* WITH_PNG */
@@ -437,7 +430,6 @@ static_assert(sizeof(PcxHeader) == 128);
  */
 static bool MakePCXImage(const char *name, ScreenshotCallback *callb, void *userdata, uint w, uint h, int pixelformat, const Colour *palette)
 {
-	FILE *f;
 	uint maxlines;
 	uint y;
 	PcxHeader pcx;
@@ -449,8 +441,9 @@ static bool MakePCXImage(const char *name, ScreenshotCallback *callb, void *user
 	}
 	if (pixelformat != 8 || w == 0) return false;
 
-	f = fopen(name, "wb");
-	if (f == nullptr) return false;
+	auto of = FileHandle::Open(name, "wb");
+	if (!of.has_value()) return false;
+	auto &f = *of;
 
 	memset(&pcx, 0, sizeof(pcx));
 
@@ -471,7 +464,6 @@ static bool MakePCXImage(const char *name, ScreenshotCallback *callb, void *user
 
 	/* write pcx header */
 	if (fwrite(&pcx, sizeof(pcx), 1, f) != 1) {
-		fclose(f);
 		return false;
 	}
 
@@ -506,13 +498,11 @@ static bool MakePCXImage(const char *name, ScreenshotCallback *callb, void *user
 					if (runcount > 1 || (runchar & 0xC0) == 0xC0) {
 						if (fputc(0xC0 | runcount, f) == EOF) {
 							free(buff);
-							fclose(f);
 							return false;
 						}
 					}
 					if (fputc(runchar, f) == EOF) {
 						free(buff);
-						fclose(f);
 						return false;
 					}
 					runcount = 0;
@@ -525,13 +515,11 @@ static bool MakePCXImage(const char *name, ScreenshotCallback *callb, void *user
 			if (runcount > 1 || (runchar & 0xC0) == 0xC0) {
 				if (fputc(0xC0 | runcount, f) == EOF) {
 					free(buff);
-					fclose(f);
 					return false;
 				}
 			}
 			if (fputc(runchar, f) == EOF) {
 				free(buff);
-				fclose(f);
 				return false;
 			}
 		}
@@ -541,7 +529,6 @@ static bool MakePCXImage(const char *name, ScreenshotCallback *callb, void *user
 
 	/* write 8-bit colour palette */
 	if (fputc(12, f) == EOF) {
-		fclose(f);
 		return false;
 	}
 
@@ -554,8 +541,6 @@ static bool MakePCXImage(const char *name, ScreenshotCallback *callb, void *user
 		tmp[i * 3 + 2] = palette[i].b;
 	}
 	success = fwrite(tmp, sizeof(tmp), 1, f) == 1;
-
-	fclose(f);
 
 	return success;
 }

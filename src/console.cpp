@@ -34,11 +34,11 @@ static const uint ICON_MAX_RECURSE = 10;     ///< Maximum number of recursion
 	return aliases;
 }
 
-FILE *_iconsole_output_file;
+std::optional<FileHandle> _iconsole_output_file;
 
 void IConsoleInit()
 {
-	_iconsole_output_file = nullptr;
+	_iconsole_output_file = std::nullopt;
 	_redirect_console_to_client = INVALID_CLIENT_ID;
 	_redirect_console_to_admin  = INVALID_ADMIN_ID;
 
@@ -49,13 +49,12 @@ void IConsoleInit()
 
 static void IConsoleWriteToLogFile(const std::string &string)
 {
-	if (_iconsole_output_file != nullptr) {
+	if (_iconsole_output_file.has_value()) {
 		/* if there is an console output file ... also print it there */
 		try {
-			fmt::print(_iconsole_output_file, "{}{}\n", GetLogPrefix(), string);
+			fmt::print(*_iconsole_output_file, "{}{}\n", GetLogPrefix(), string);
 		} catch (const std::system_error &) {
-			fclose(_iconsole_output_file);
-			_iconsole_output_file = nullptr;
+			_iconsole_output_file.reset();
 			IConsolePrint(CC_ERROR, "Cannot write to console log file; closing the log file.");
 		}
 	}
@@ -63,10 +62,9 @@ static void IConsoleWriteToLogFile(const std::string &string)
 
 bool CloseConsoleLogIfActive()
 {
-	if (_iconsole_output_file != nullptr) {
+	if (_iconsole_output_file.has_value()) {
 		IConsolePrint(CC_INFO, "Console log file closed.");
-		fclose(_iconsole_output_file);
-		_iconsole_output_file = nullptr;
+		_iconsole_output_file.reset();
 		return true;
 	}
 

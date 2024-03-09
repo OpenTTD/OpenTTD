@@ -26,7 +26,7 @@ class RandomAccessFile {
 	std::string filename;            ///< Full name of the file; relative path to subdir plus the extension of the file.
 	std::string simplified_filename; ///< Simplified lowecase name of the file; only the name, no path or extension.
 
-	FILE *file_handle;               ///< File handle of the open file.
+	std::optional<FileHandle> file_handle; ///< File handle of the open file.
 	size_t pos;                      ///< Position in the file of the end of the read buffer.
 
 	uint8_t *buffer;                    ///< Current position within the local buffer.
@@ -38,7 +38,7 @@ public:
 	RandomAccessFile(const RandomAccessFile&) = delete;
 	void operator=(const RandomAccessFile&) = delete;
 
-	virtual ~RandomAccessFile();
+	virtual ~RandomAccessFile() {}
 
 	const std::string &GetFilename() const;
 	const std::string &GetSimplifiedFilename() const;

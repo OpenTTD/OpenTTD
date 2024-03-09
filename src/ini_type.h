@@ -71,9 +71,9 @@ struct IniLoadFile {
 	 * @param filename Name of the INI file.
 	 * @param subdir The subdir to load the file from.
 	 * @param[out] size Size of the opened file.
-	 * @return File handle of the opened file, or \c nullptr.
+	 * @return File handle of the opened file, or \c std::nullopt.
 	 */
-	virtual FILE *OpenFile(const std::string &filename, Subdirectory subdir, size_t *size) = 0;
+	virtual std::optional<FileHandle> OpenFile(const std::string &filename, Subdirectory subdir, size_t *size) = 0;
 
 	/**
 	 * Report an error about the file contents.
@@ -90,7 +90,7 @@ struct IniFile : IniLoadFile {
 
 	bool SaveToDisk(const std::string &filename);
 
-	FILE *OpenFile(const std::string &filename, Subdirectory subdir, size_t *size) override;
+	std::optional<FileHandle> OpenFile(const std::string &filename, Subdirectory subdir, size_t *size) override;
 	void ReportFileError(const char * const pre, const char * const buffer, const char * const post) override;
 };
 

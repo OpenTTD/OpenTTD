@@ -104,15 +104,18 @@ uint32_t NewGRFProfiler::Finish()
 	std::string filename = this->GetOutputFilename();
 	IConsolePrint(CC_DEBUG, "Finished profile of NewGRF [{:08X}], writing {} events to '{}'.", BSWAP32(this->grffile->grfid), this->calls.size(), filename);
 
-	FILE *f = FioFOpenFile(filename, "wt", Subdirectory::NO_DIRECTORY);
-	FileCloser fcloser(f);
-
 	uint32_t total_microseconds = 0;
 
-	fmt::print(f, "Tick,Sprite,Feature,Item,CallbackID,Microseconds,Depth,Result\n");
-	for (const Call &c : this->calls) {
-		fmt::print(f, "{},{},{:#X},{},{:#X},{},{},{}\n", c.tick, c.root_sprite, c.feat, c.item, (uint)c.cb, c.time, c.subs, c.result);
-		total_microseconds += c.time;
+	auto f = FioFOpenFile(filename, "wt", Subdirectory::NO_DIRECTORY);
+
+	if (!f.has_value()) {
+		IConsolePrint(CC_ERROR, "Failed to open '{}' for writing.", filename);
+	} else {
+		fmt::print(*f, "Tick,Sprite,Feature,Item,CallbackID,Microseconds,Depth,Result\n");
+		for (const Call &c : this->calls) {
+			fmt::print(*f, "{},{},{:#X},{},{:#X},{},{},{}\n", c.tick, c.root_sprite, c.feat, c.item, (uint)c.cb, c.time, c.subs, c.result);
+			total_microseconds += c.time;
+		}
 	}
 
 	this->Abort();

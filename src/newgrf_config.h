@@ -210,7 +210,7 @@ struct NewGRFScanCallback {
 	virtual void OnNewGRFsScanned() = 0;
 };
 
-size_t GRFGetSizeOfDataSection(FILE *f);
+size_t GRFGetSizeOfDataSection(FileHandle &f);
 
 void ScanNewGRFFiles(NewGRFScanCallback *callback);
 const GRFConfig *FindGRFConfig(uint32_t grfid, FindGRFConfigMode mode, const MD5Hash *md5sum = nullptr, uint32_t desired_version = 0);

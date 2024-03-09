@@ -33,11 +33,12 @@ struct BmpBuffer {
 	uint8_t data[BMP_BUFFER_SIZE];
 	int pos;
 	int read;
-	FILE *file;
+	FileHandle file;
 	uint real_pos;
+
+	BmpBuffer(FileHandle &&file);
 };
 
-void BmpInitializeBuffer(BmpBuffer *buffer, FILE *file);
 bool BmpReadHeader(BmpBuffer *buffer, BmpInfo *info, BmpData *data);
 bool BmpReadBitmap(BmpBuffer *buffer, BmpInfo *info, BmpData *data);
 void BmpDestroyData(BmpData *data);

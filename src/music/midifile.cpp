@@ -70,7 +70,7 @@ public:
 	 * @param file file to read from at current position
 	 * @param len number of bytes to read
 	 */
-	ByteBuffer(FILE *file, size_t len)
+	ByteBuffer(FileHandle &file, size_t len)
 	{
 		this->buf.resize(len);
 		if (fread(this->buf.data(), 1, len, file) == len) {
@@ -186,7 +186,7 @@ public:
 	}
 };
 
-static bool ReadTrackChunk(FILE *file, MidiFile &target)
+static bool ReadTrackChunk(FileHandle &file, MidiFile &target)
 {
 	uint8_t buf[4];
 
@@ -405,10 +405,9 @@ static bool FixupMidiData(MidiFile &target)
  */
 bool MidiFile::ReadSMFHeader(const std::string &filename, SMFHeader &header)
 {
-	FILE *file = FioFOpenFile(filename, "rb", Subdirectory::BASESET_DIR);
-	if (!file) return false;
-	bool result = ReadSMFHeader(file, header);
-	FioFCloseFile(file);
+	auto file = FioFOpenFile(filename, "rb", Subdirectory::BASESET_DIR);
+	if (!file.has_value()) return false;
+	bool result = ReadSMFHeader(*file, header);
 	return result;
 }
 
@@ -419,7 +418,7 @@ bool MidiFile::ReadSMFHeader(const std::string &filename, SMFHeader &header)
  * @param[out] header filled with data read
  * @return true if a header in correct format could be read from the file
  */
-bool MidiFile::ReadSMFHeader(FILE *file, SMFHeader &header)
+bool MidiFile::ReadSMFHeader(FileHandle &file, SMFHeader &header)
 {
 	/* Try to read header, fixed size */
 	uint8_t buffer[14];
@@ -453,31 +452,26 @@ bool MidiFile::LoadFile(const std::string &filename)
 	this->tempos.clear();
 	this->tickdiv = 0;
 
-	bool success = false;
-	FILE *file = FioFOpenFile(filename, "rb", Subdirectory::BASESET_DIR);
-	if (file == nullptr) return false;
+	auto file = FioFOpenFile(filename, "rb", Subdirectory::BASESET_DIR);
+	if (!file.has_value()) return false;
 
 	SMFHeader header;
-	if (!ReadSMFHeader(file, header)) goto cleanup;
+	if (!ReadSMFHeader(*file, header)) return false;
 
 	/* Only format 0 (single-track) and format 1 (multi-track single-song) are accepted for now */
-	if (header.format != 0 && header.format != 1) goto cleanup;
+	if (header.format != 0 && header.format != 1) return false;
 	/* Doesn't support SMPTE timecode files */
-	if ((header.tickdiv & 0x8000) != 0) goto cleanup;
+	if ((header.tickdiv & 0x8000) != 0) return false;
 
 	this->tickdiv = header.tickdiv;
 
 	for (; header.tracks > 0; header.tracks--) {
-		if (!ReadTrackChunk(file, *this)) {
-			goto cleanup;
+		if (!ReadTrackChunk(*file, *this)) {
+			return false;
 		}
 	}
 
-	success = FixupMidiData(*this);
-
-cleanup:
-	FioFCloseFile(file);
-	return success;
+	return FixupMidiData(*this);
 }
 
 
@@ -873,7 +867,7 @@ void MidiFile::MoveFrom(MidiFile &other)
 	other.tickdiv = 0;
 }
 
-static void WriteVariableLen(FILE *f, uint32_t value)
+static void WriteVariableLen(FileHandle &f, uint32_t value)
 {
 	if (value <= 0x7F) {
 		uint8_t tb = value;
@@ -906,10 +900,9 @@ static void WriteVariableLen(FILE *f, uint32_t value)
  */
 bool MidiFile::WriteSMF(const std::string &filename)
 {
-	FILE *f = FioFOpenFile(filename, "wb", Subdirectory::NO_DIRECTORY);
-	if (!f) {
-		return false;
-	}
+	auto of = FioFOpenFile(filename, "wb", Subdirectory::NO_DIRECTORY);
+	if (!of.has_value()) return false;
+	auto &f = *of;
 
 	/* SMF header */
 	const uint8_t fileheader[] = {
@@ -1007,7 +1000,6 @@ bool MidiFile::WriteSMF(const std::string &filename)
 			}
 
 			/* Fail for any other commands */
-			fclose(f);
 			return false;
 		}
 	}
@@ -1023,7 +1015,6 @@ bool MidiFile::WriteSMF(const std::string &filename)
 	tracksize = TO_BE32(tracksize);
 	fwrite(&tracksize, 4, 1, f);
 
-	fclose(f);
 	return true;
 }
 
