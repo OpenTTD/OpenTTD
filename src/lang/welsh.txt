@@ -906,7 +906,7 @@ STR_GAME_OPTIONS_CURRENCY_UNITS_DROPDOWN_TOOLTIP                :{BLACK}Dewis un
 
 STR_GAME_OPTIONS_CURRENCY_CODE                                  :{STRING} ({STRING})
 
-###length 43
+###length 44
 STR_GAME_OPTIONS_CURRENCY_GBP                                   :Punnoedd Prydeinig
 STR_GAME_OPTIONS_CURRENCY_USD                                   :Doler America
 STR_GAME_OPTIONS_CURRENCY_EUR                                   :Ewro

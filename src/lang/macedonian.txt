@@ -762,7 +762,7 @@ STR_GAME_OPTIONS_CAPTION                                        :{WHITE}Опци
 
 
 
-###length 43
+###length 44
 
 
 # Autosave dropdown

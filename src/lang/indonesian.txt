@@ -656,6 +656,8 @@ STR_PERFORMANCE_DETAIL_LOAN                                     :{BLACK}Hutang:
 STR_PERFORMANCE_DETAIL_TOTAL                                    :{BLACK}Total:
 ###next-name-looks-similar
 
+STR_PERFORMANCE_DETAIL_VEHICLES_TOOLTIP_YEARS                   :{BLACK}Jumlah kendaraan yang menghasilkan keuntungan tahun lalu. Ini termasuk kendaraan jalan raya, kereta api, kapal laut dan pesawat terbang
+STR_PERFORMANCE_DETAIL_VEHICLES_TOOLTIP_PERIODS                 :{BLACK}Jumlah kendaraan yang menghasilkan keuntungan pada periode terakhir. Ini termasuk kendaraan jalan raya, kereta api, kapal laut dan pesawat terbang
 STR_PERFORMANCE_DETAIL_STATIONS_TOOLTIP                         :{BLACK}Jumlah bagian dari stasiun yang diperbaiki baru-baru ini. Setiap bagian dari stasiun (misal: stasiun kereta, terminal bus, bandara) dihitung, meskipun mereka dihubungkan menjadi satu kesatuan stasiun
 STR_PERFORMANCE_DETAIL_MIN_INCOME_TOOLTIP                       :{BLACK}Banyaknya uang yang dihasilkan dalam satu kuartal dengan keuntungan terendah pada 12 kuartal terakhir
 STR_PERFORMANCE_DETAIL_MAX_INCOME_TOOLTIP                       :{BLACK}Banyaknya uang tunai yang dihasilkan dalam satu kuartal dengan keuntungan tertinggi pada 12 kuartal terakhir
@@ -944,7 +946,7 @@ STR_GAME_OPTIONS_CURRENCY_UNITS_DROPDOWN_TOOLTIP                :{BLACK}Pilih ma
 
 STR_GAME_OPTIONS_CURRENCY_CODE                                  :{STRING} ({STRING})
 
-###length 43
+###length 44
 STR_GAME_OPTIONS_CURRENCY_GBP                                   :Poundsterling
 STR_GAME_OPTIONS_CURRENCY_USD                                   :Dollar
 STR_GAME_OPTIONS_CURRENCY_EUR                                   :Euro
@@ -1391,6 +1393,7 @@ STR_CONFIG_SETTING_AUTOSCROLL_EVERY_VIEWPORT                    :Semua viewport
 STR_CONFIG_SETTING_BRIBE                                        :Ijinkan kolusi pada penguasa setempat: {STRING}
 ###length 2
 STR_CONFIG_SETTING_BRIBE_HELPTEXT                               :Membolehkan perusahaan untuk menyuap pemerintah kota. Jika tertangkap, perusahaan tidak bisa berinteraksi dengan kota selama 6 bulan
+STR_CONFIG_SETTING_BRIBE_HELPTEXT_MINUTES                       :Membolehkan perusahaan untuk menyuap pemerintah kota. Jika tertangkap, perusahaan tidak bisa berinteraksi dengan kota selama 6 menit
 
 STR_CONFIG_SETTING_ALLOW_EXCLUSIVE                              :Ijinkan pembelian hak ekslusif pengelolaan transportasi: {STRING}
 ###length 2
@@ -1680,7 +1683,12 @@ STR_CONFIG_SETTING_ADVANCED_VEHICLE_LISTS_HELPTEXT              :Mengaktifkan pe
 STR_CONFIG_SETTING_LOADING_INDICATORS                           :Tampilkan indikator pengangkutan: {STRING}
 STR_CONFIG_SETTING_LOADING_INDICATORS_HELPTEXT                  :Pilih apakah petunjuk beban ditayangkan di atas kendaran yang sedang mengisi atau menurunkan beban
 
+STR_CONFIG_SETTING_TIMETABLE_MODE                               :Satuan waktu untuk jadwal: {STRING}
+STR_CONFIG_SETTING_TIMETABLE_MODE_HELPTEXT                      :Pilih satuan waktu yang digunakan untuk jadwal kendaraan
 ###length 3
+STR_CONFIG_SETTING_TIMETABLE_MODE_DAYS                          :Hari
+STR_CONFIG_SETTING_TIMETABLE_MODE_SECONDS                       :Detik
+STR_CONFIG_SETTING_TIMETABLE_MODE_TICKS                         :Titik
 
 STR_CONFIG_SETTING_TIMETABLE_SHOW_ARRIVAL_DEPARTURE             :Tampilkan keberangkatan dan kedatangan pada jadwal: {STRING}
 STR_CONFIG_SETTING_TIMETABLE_SHOW_ARRIVAL_DEPARTURE_HELPTEXT    :Tampilkan waktu diantisipasi kedatangan dan keberangkatan di jadwal
@@ -2208,9 +2216,13 @@ STR_LIVERY_TRAIN_TOOLTIP                                        :{BLACK}Tampilka
 STR_LIVERY_ROAD_VEHICLE_TOOLTIP                                 :{BLACK}Tampilkan skema warna kendaraan
 STR_LIVERY_SHIP_TOOLTIP                                         :{BLACK}Tampilkan skema warna kapal
 STR_LIVERY_AIRCRAFT_TOOLTIP                                     :{BLACK}Tampilkan skema warna pesawat
+STR_LIVERY_TRAIN_GROUP_TOOLTIP                                  :{BLACK}Tampilkan warna grup kereta
+STR_LIVERY_SHIP_GROUP_TOOLTIP                                   :{BLACK}Tampilkan warna grup kapal
 STR_LIVERY_PRIMARY_TOOLTIP                                      :{BLACK}Pilih warna utama untuk skema terpilih, Ctrl+Klik akan mengatur warna ini di semua skema
 STR_LIVERY_SECONDARY_TOOLTIP                                    :{BLACK}Pilih warna kedua untuk skema terpilih. Ctrl+Klik akan mengatur warna ini di semua skema
 STR_LIVERY_PANEL_TOOLTIP                                        :{BLACK}Pilih skema warna untuk diganti, atau banyak skema dengan CTRL+klik. Klik pada kotak untuk berganti dari skema warna yang digunakan
+STR_LIVERY_TRAIN_GROUP_EMPTY                                    :Tidak ada grup kereta yang dibentuk
+STR_LIVERY_SHIP_GROUP_EMPTY                                     :Tidak ada grup kapal yang dibentuk
 
 ###length 23
 STR_LIVERY_DEFAULT                                              :Warna Standar
@@ -2316,6 +2328,9 @@ STR_NETWORK_SERVER_LIST_MAP_SIZE_CAPTION                        :{BLACK}Ukuran p
 STR_NETWORK_SERVER_LIST_MAP_SIZE_CAPTION_TOOLTIP                :{BLACK}Ukuran Peta dari permainan{}Klik untuk diurutkan berdasarkan area
 STR_NETWORK_SERVER_LIST_DATE_CAPTION                            :{BLACK}Tanggal
 STR_NETWORK_SERVER_LIST_DATE_CAPTION_TOOLTIP                    :{BLACK}Tanggal sekarang
+STR_NETWORK_SERVER_LIST_PLAY_TIME_SHORT                         :{BLACK}{NUM}j {NUM}m
+STR_NETWORK_SERVER_LIST_PLAY_TIME_CAPTION                       :{BLACK}Waktu bermain
+STR_NETWORK_SERVER_LIST_PLAY_TIME_CAPTION_TOOLTIP               :{BLACK}Waktu dimainkan saat{}permainan tidak dijeda
 STR_NETWORK_SERVER_LIST_INFO_ICONS_TOOLTIP                      :{BLACK}Bahasa, versi server, dll.
 
 STR_NETWORK_SERVER_LIST_CLICK_GAME_TO_SELECT                    :{BLACK}Klik untuk memilih sesi permainan dari daftar
@@ -2331,6 +2346,7 @@ STR_NETWORK_SERVER_LIST_SERVER_ADDRESS                          :{SILVER}Alamat 
 STR_NETWORK_SERVER_LIST_INVITE_CODE                             :{SILVER}Kode undangan: {WHITE}{STRING}
 STR_NETWORK_SERVER_LIST_START_DATE                              :{SILVER}Tgl mulai: {WHITE}{DATE_SHORT}
 STR_NETWORK_SERVER_LIST_CURRENT_DATE                            :{SILVER}Tgl sekarang: {WHITE}{DATE_SHORT}
+STR_NETWORK_SERVER_LIST_PLAY_TIME                               :{SILVER}Waktu bermain: {WHITE}{NUM}j {NUM}m
 STR_NETWORK_SERVER_LIST_GAMESCRIPT                              :{SILVER}Skrip Permainan: {WHITE}{STRING} (v{NUM})
 STR_NETWORK_SERVER_LIST_PASSWORD                                :{SILVER}Terproteksi dengan kata kunci!
 STR_NETWORK_SERVER_LIST_SERVER_OFFLINE                          :{SILVER}SERVER OFFLINE
@@ -3009,6 +3025,7 @@ STR_LAND_AREA_INFORMATION_TRAM_OWNER                            :{BLACK}Pemilik 
 STR_LAND_AREA_INFORMATION_RAIL_OWNER                            :{BLACK}Pemilik Rel Kereta: {LTBLUE}{STRING}
 STR_LAND_AREA_INFORMATION_LOCAL_AUTHORITY                       :{BLACK}Pemkot setempat: {LTBLUE}{STRING}
 STR_LAND_AREA_INFORMATION_LOCAL_AUTHORITY_NONE                  :Kosong
+STR_LAND_AREA_INFORMATION_LANDINFO_COORDS                       :{BLACK}Koordinat: {LTBLUE}{NUM} x {NUM} x {NUM}
 STR_LAND_AREA_INFORMATION_BUILD_DATE                            :{BLACK}Dibuat: {LTBLUE}{DATE_LONG}
 STR_LAND_AREA_INFORMATION_STATION_CLASS                         :{BLACK}Kelas Stasiun: {LTBLUE}{STRING}
 STR_LAND_AREA_INFORMATION_STATION_TYPE                          :{BLACK}Tipe Stasiun: {LTBLUE}{STRING}
@@ -3284,6 +3301,7 @@ STR_MAPGEN_BORDER_MANUAL                                        :{BLACK}Manual
 STR_MAPGEN_HEIGHTMAP_ROTATION                                   :{BLACK}Rotasi Heightmap:
 STR_MAPGEN_HEIGHTMAP_NAME                                       :{BLACK}Nama Peta Heightmap:
 STR_MAPGEN_HEIGHTMAP_SIZE_LABEL                                 :{BLACK}Luas:
+STR_MAPGEN_HEIGHTMAP_SIZE_LABEL_TOOLTIP                         :{BLACK}Ukuran sumber gambar heightmap. Untuk hasil terbaik, setiap tepi harus sesuai dengan panjang tepi peta yang tersedia di OpenTTD, seperti 256, 512, 1024, dll.
 STR_MAPGEN_HEIGHTMAP_SIZE                                       :{ORANGE}{NUM} x {NUM}
 
 STR_MAPGEN_TERRAIN_TYPE_QUERY_CAPT                              :{WHITE}Target ketinggian puncak
@@ -3637,6 +3655,8 @@ STR_SUBSIDIES_NONE                                              :{ORANGE}- Tidak
 STR_SUBSIDIES_SUBSIDISED_TITLE                                  :{BLACK}Jasa transportasi bersubsidi:
 STR_SUBSIDIES_SUBSIDISED_FROM_TO                                :{ORANGE}{STRING} dari {STRING} ke {STRING}{YELLOW} ({COMPANY}{YELLOW}, {STRING})
 STR_SUBSIDIES_TOOLTIP_CLICK_ON_SERVICE_TO_CENTER                :{BLACK}Klik pada layanan untuk mengarahkan pandangan utama pada industri/kota. Ctrl+Click akan membuka viewport baru pada lokasi industri/kota
+STR_SUBSIDIES_SUBSIDISED_EXPIRY_DATE                            :hingga {DATE_SHORT}
+STR_SUBSIDIES_SUBSIDISED_EXPIRY_TIME                            :tersisa {UNITS_MONTHS_OR_MINUTES}
 
 # Story book window
 STR_STORY_BOOK_CAPTION                                          :{WHITE}{COMPANY} Buku Cerita
@@ -4161,6 +4181,14 @@ STR_ENGINE_PREVIEW_TRAM_VEHICLE                                 :kendaraan jalan
 STR_ENGINE_PREVIEW_AIRCRAFT                                     :pesawat
 STR_ENGINE_PREVIEW_SHIP                                         :kapal
 
+STR_ENGINE_PREVIEW_COST_WEIGHT                                  :Biaya: {CURRENCY_LONG}  Berat: {WEIGHT_SHORT}
+STR_ENGINE_PREVIEW_COST_MAX_SPEED                               :Biaya: {CURRENCY_LONG}  Kecepatan maks.: {VELOCITY}
+STR_ENGINE_PREVIEW_SPEED_POWER                                  :Kecepatan: {VELOCITY} Daya: {POWER}
+STR_ENGINE_PREVIEW_SPEED_POWER_MAX_TE                           :Kecepatan: {VELOCITY}  Daya: {POWER}  Maks. T.E.: {FORCE}
+STR_ENGINE_PREVIEW_RUNCOST_YEAR                                 :Biaya operasional: {CURRENCY_LONG}/tahun
+STR_ENGINE_PREVIEW_RUNCOST_PERIOD                               :Biaya operasional: {CURRENCY_LONG}/periode
+STR_ENGINE_PREVIEW_CAPACITY                                     :Kapasitas: {CARGO_LONG}
+STR_ENGINE_PREVIEW_CAPACITY_2                                   :Kapasitas: {CARGO_LONG}, {CARGO_LONG}
 
 # Autoreplace window
 STR_REPLACE_VEHICLES_WHITE                                      :{WHITE}Ganti {STRING} - {STRING}
@@ -4329,12 +4357,16 @@ STR_VEHICLE_INFO_FEEDER_CARGO_VALUE                             :{BLACK}Nilai Tr
 
 STR_VEHICLE_DETAILS_SERVICING_INTERVAL_DAYS                     :{BLACK}Perbaikan interval: {LTBLUE}{COMMA}{NBSP}hari{BLACK} {STRING}
 STR_VEHICLE_DETAILS_SERVICING_INTERVAL_PERCENT                  :{BLACK}Jangka waktu perbaikan: {LTBLUE}{COMMA} %{BLACK} {STRING}
+STR_VEHICLE_DETAILS_INCREASE_SERVICING_INTERVAL_TOOLTIP_DAYS    :{BLACK}Tingkatkan jangka waktu servis sebanyak 10 hari. Ctrl+Klik untuk menambah sebanyak 5 hari
+STR_VEHICLE_DETAILS_INCREASE_SERVICING_INTERVAL_TOOLTIP_MINUTES :{BLACK}Tingkatkan jangka waktu servis sebanyak 5 menit. Ctrl+Click untuk menambah sebanyak 1 menit
+STR_VEHICLE_DETAILS_INCREASE_SERVICING_INTERVAL_TOOLTIP_PERCENT :{BLACK}Tingkatkan jangka waktu servis sebanyak 10 persen. Ctrl+Click untuk menambah sebanyak 5 persen
 STR_VEHICLE_DETAILS_DECREASE_SERVICING_INTERVAL_TOOLTIP_DAYS    :{BLACK}Kurangi jangka waktu servis sebanyak 10 hari. Ctrl+Click untuk mengurangi sebanyak 5 hari
 STR_VEHICLE_DETAILS_DECREASE_SERVICING_INTERVAL_TOOLTIP_MINUTES :{BLACK}Kurangi jangka waktu servis sebanyak 5 menit. Ctrl+Click untuk mengurangi sebanyak 1 menit
 STR_VEHICLE_DETAILS_DECREASE_SERVICING_INTERVAL_TOOLTIP_PERCENT :{BLACK}Kurangi jangka waktu servis sebanyak 10 persen. Ctrl+Click untuk mengurangi sebanyak 5 persen
 
 STR_SERVICE_INTERVAL_DROPDOWN_TOOLTIP                           :{BLACK}Ubah jenis interval perbaikan
 STR_VEHICLE_DETAILS_DEFAULT                                     :Standar
+STR_VEHICLE_DETAILS_DAYS                                        :Hari
 STR_VEHICLE_DETAILS_PERCENT                                     :Persentase
 
 ###length VEHICLE_TYPES

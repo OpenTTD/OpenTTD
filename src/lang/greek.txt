@@ -252,11 +252,19 @@ STR_COLOUR_RANDOM                                               :Τυχαία
 
 ###length 17
 STR_COLOUR_SECONDARY_DARK_BLUE                                  :Σκούρο Μπλε
+STR_COLOUR_SECONDARY_PALE_GREEN                                 :Ανοικτό Πράσινο
+STR_COLOUR_SECONDARY_RED                                        :Κόκκινο
+STR_COLOUR_SECONDARY_LIGHT_BLUE                                 :Γαλάζιο
 STR_COLOUR_SECONDARY_GREEN                                      :Πράσινο
 STR_COLOUR_SECONDARY_DARK_GREEN                                 :Σκούρο Πράσινο
 STR_COLOUR_SECONDARY_BLUE                                       :Μπλε
 STR_COLOUR_SECONDARY_CREAM                                      :Κρεμ
+STR_COLOUR_SECONDARY_MAUVE                                      :Μωβ
+STR_COLOUR_SECONDARY_PURPLE                                     :Πορφυρό μωβ
+STR_COLOUR_SECONDARY_ORANGE                                     :Πορτοκαλί
 STR_COLOUR_SECONDARY_BROWN                                      :Καφέ
+STR_COLOUR_SECONDARY_GREY                                       :Γκρι
+STR_COLOUR_SECONDARY_SAME_AS_PRIMARY                            :Ίδιο με το πρωταρχικό
 
 
 # Units used in OpenTTD
@@ -398,7 +406,9 @@ STR_SORT_BY_POPULATION                                          :Πληθυσμ�
 STR_SORT_BY_RATING                                              :Εκτίμηση
 STR_SORT_BY_NUM_VEHICLES                                        :Αριθμός οχημάτων
 STR_SORT_BY_TOTAL_PROFIT_LAST_YEAR                              :Συνολικό κέρδος προηγούμενου έτους
+STR_SORT_BY_TOTAL_PROFIT_LAST_PERIOD                            :Συνολικό κέρδος προηγούμενου έτους
 STR_SORT_BY_TOTAL_PROFIT_THIS_YEAR                              :Συνολικό κέρδος τρέχοντος έτους
+STR_SORT_BY_TOTAL_PROFIT_THIS_PERIOD                            :Συνολικό κέρδος τρέχοντος έτους
 STR_SORT_BY_AVERAGE_PROFIT_LAST_YEAR                            :Μέσο κέρδος τελευταίου έτους
 STR_SORT_BY_AVERAGE_PROFIT_THIS_YEAR                            :Μέσος όρος κέρδους τρέχοντος έτους
 
@@ -991,7 +1001,7 @@ STR_GAME_OPTIONS_CURRENCY_UNITS_FRAME                           :{BLACK}Νομι
 STR_GAME_OPTIONS_CURRENCY_UNITS_DROPDOWN_TOOLTIP                :{BLACK}Επιλογή νομισματικών μονάδων
 
 
-###length 43
+###length 44
 STR_GAME_OPTIONS_CURRENCY_GBP                                   :Στερλίνα Ηνωμένου Βασιλείου
 STR_GAME_OPTIONS_CURRENCY_USD                                   :Δολλάριο Η.Π.Α.
 STR_GAME_OPTIONS_CURRENCY_EUR                                   :Ευρώ
@@ -1041,6 +1051,10 @@ STR_GAME_OPTIONS_AUTOSAVE_DROPDOWN_TOOLTIP                      :{BLACK}Επιλ
 # Autosave dropdown
 ###length 5
 STR_GAME_OPTIONS_AUTOSAVE_DROPDOWN_OFF                          :Ανενεργό
+STR_GAME_OPTIONS_AUTOSAVE_DROPDOWN_EVERY_10_MINUTES             :Ανά 10 λεπτά
+STR_GAME_OPTIONS_AUTOSAVE_DROPDOWN_EVERY_30_MINUTES             :Ανά 30 λεπτά
+STR_GAME_OPTIONS_AUTOSAVE_DROPDOWN_EVERY_60_MINUTES             :Ανά 60 λεπτά
+STR_GAME_OPTIONS_AUTOSAVE_DROPDOWN_EVERY_120_MINUTES            :Ανά 120 λεπτά
 
 STR_GAME_OPTIONS_LANGUAGE                                       :{BLACK}Γλώσσα
 STR_GAME_OPTIONS_LANGUAGE_TOOLTIP                               :{BLACK}Επιλογή της γλώσσας του παιχνιδιού
@@ -1082,6 +1096,13 @@ STR_GAME_OPTIONS_GUI_SCALE_3X                                   :3x
 STR_GAME_OPTIONS_GUI_SCALE_4X                                   :4x
 STR_GAME_OPTIONS_GUI_SCALE_5X                                   :5x
 
+STR_GAME_OPTIONS_PARTICIPATE_SURVEY_FRAME                       :{BLACK}Αυτοματοποιημένη έρευνα
+STR_GAME_OPTIONS_PARTICIPATE_SURVEY                             :{BLACK}Συμμετοχή σε αυτοματοποιημένη έρευνα
+STR_GAME_OPTIONS_PARTICIPATE_SURVEY_TOOLTIP                     :{BLACK}Όταν είναι ενεργοποιημένο, το OpenTTD θα μεταδίδει μια έρευνα κατά την έξοδο παιχνιδιού
+STR_GAME_OPTIONS_PARTICIPATE_SURVEY_LINK                        :{BLACK}Πληροφορίες για την αυτοματοποιημένη έρευνα και ιδιωτικότητα
+STR_GAME_OPTIONS_PARTICIPATE_SURVEY_LINK_TOOLTIP                :{BLACK}Αυτό ανοίγει ένα πρόγραμμα περιήγησης/browser με περισσότερες πληροφορίες σχετικά με την αυτοματοποιημένη έρευνα
+STR_GAME_OPTIONS_PARTICIPATE_SURVEY_PREVIEW                     :{BLACK}Προεπισκόπηση αποτελέσματος έρευνας
+STR_GAME_OPTIONS_PARTICIPATE_SURVEY_PREVIEW_TOOLTIP             :{BLACK}Εμφάνιση του αποτελέσματος της έρευνας του τρέχοντος παιχνιδιού
 
 STR_GAME_OPTIONS_GRAPHICS                                       :{BLACK}Γραφικά
 
@@ -1475,11 +1496,14 @@ STR_CONFIG_SETTING_WARN_INCOME_LESS_HELPTEXT                    :Όταν είν
 STR_CONFIG_SETTING_NEVER_EXPIRE_VEHICLES                        :Τα οχήματα δεν λήγουν ποτέ: {STRING}
 STR_CONFIG_SETTING_NEVER_EXPIRE_VEHICLES_HELPTEXT               :Όταν είναι ενεργοποιημένη, όλα τα μοντέλα οχημάτων παραμένουν διαθέσιμα για πάντα μετά την παρουσίασή τους
 
+STR_CONFIG_SETTING_TIMEKEEPING_UNITS                            :Χρονομέτρηση: {STRING}
 ###length 2
+STR_CONFIG_SETTING_TIMEKEEPING_UNITS_CALENDAR                   :Ημερολόγιο
 
 
 ###setting-zero-is-special
 
+STR_CONFIG_SETTING_TOWN_CARGO_SCALE_HELPTEXT                    :Κλιμακώστε την παραγωγή φορτίου των πόλεων κατά αυτό το ποσοστό.
 
 STR_CONFIG_SETTING_AUTORENEW_VEHICLE                            :Αυτόματη ανανέωση όταν ένα όχημα παλιώνει: {STRING}
 STR_CONFIG_SETTING_AUTORENEW_VEHICLE_HELPTEXT                   :Όταν είναι ενεργοποιημένη, τα οχήματα που πλησιάζουν το τέλος της ζωής τους αντικαθίσταται αυτόματα όταν πληρούνται οι προϋποθέσεις αντικατάστασής του
@@ -2176,6 +2200,16 @@ STR_ABANDON_GAME_QUERY                                          :{YELLOW}Είσ�
 STR_ABANDON_SCENARIO_QUERY                                      :{YELLOW}Είστε σίγουροι ότι θέλετε να εγκαταλείψετε το σενάριο;
 
 # Help window
+STR_HELP_WINDOW_CAPTION                                         :{WHITE}Βοήθεια και εγχειρίδια
+STR_HELP_WINDOW_DOCUMENTS                                       :{BLACK}Έγγραφα
+STR_HELP_WINDOW_README                                          :{BLACK}Εμφάνιση readme
+STR_HELP_WINDOW_CHANGELOG                                       :{BLACK}Ιστορικό αλλαγών
+STR_HELP_WINDOW_KNOWN_BUGS                                      :{BLACK}Γνωστά σφάλματα/bugs
+STR_HELP_WINDOW_LICENSE                                         :{BLACK}Άδεια
+STR_HELP_WINDOW_MAIN_WEBSITE                                    :{BLACK}OpenTTD
+STR_HELP_WINDOW_MANUAL_WIKI                                     :{BLACK}Εγχειρίδιο / Wiki
+STR_HELP_WINDOW_BUGTRACKER                                      :{BLACK}Αναφορά σφάλματος/bug
+STR_HELP_WINDOW_COMMUNITY                                       :{BLACK}Κοινότητα
 
 # Cheat window
 STR_CHEATS                                                      :{WHITE}Απατεωνιές
@@ -2660,6 +2694,7 @@ STR_TRANSPARENT_BUILDINGS_TOOLTIP                               :{BLACK}Εναλ
 STR_TRANSPARENT_BRIDGES_TOOLTIP                                 :{BLACK}Εναλλαγή διαφάνειας για γέφυρες. Ctrl+Κλικ για να την κλειδώσετε
 STR_TRANSPARENT_STRUCTURES_TOOLTIP                              :{BLACK}Εναλλαγή διαφάνειας για κτίρια όπως φάρους και κεραίες. Ctrl+Κλικ για να την κλειδώσετε
 STR_TRANSPARENT_CATENARY_TOOLTIP                                :{BLACK}Εναλλαγή διαφάνειας για τις συνδέσεις. Ctrl+Κλικ για να την κλειδώσετε
+STR_TRANSPARENT_TEXT_TOOLTIP                                    :{BLACK}Εναλλαγή διαφάνειας για φόρτωση και κείμενο κόστους/εσόδων. Ctrl+Click για να την κλειδώσετε
 STR_TRANSPARENT_INVISIBLE_TOOLTIP                               :{BLACK}Επιλέξτε τα αντικείμενα που θα είναι αόρατα αντί για διάφανα
 
 # Linkgraph legend window
@@ -2686,6 +2721,8 @@ STR_STATION_BUILD_COVERAGE_AREA_OFF_TOOLTIP                     :{BLACK}Μη ε�
 STR_STATION_BUILD_COVERAGE_AREA_ON_TOOLTIP                      :{BLACK}Εμφάνιση κάλυψης του προτεινόμενου τόπου
 STR_STATION_BUILD_ACCEPTS_CARGO                                 :{BLACK}Δέχεται: {GOLD}{CARGO_LIST}
 STR_STATION_BUILD_SUPPLIES_CARGO                                :{BLACK}Προμηθεύει : {GOLD}{CARGO_LIST}
+STR_STATION_BUILD_INFRASTRUCTURE_COST_YEAR                      :{BLACK}Κόστος συντήρησης: {GOLD}{CURRENCY_SHORT}/έτος
+STR_STATION_BUILD_INFRASTRUCTURE_COST_PERIOD                    :{BLACK}Κόστος συντήρησης: {GOLD}{CURRENCY_SHORT}/περίοδο
 
 # Join station window
 STR_JOIN_STATION_CAPTION                                        :{WHITE}Συνένωση σταθμού
@@ -3219,6 +3256,7 @@ STR_MAPGEN_QUANTITY_OF_RIVERS                                   :{BLACK}Ποτά
 STR_MAPGEN_SMOOTHNESS                                           :{BLACK}Ομαλότητα:
 STR_MAPGEN_VARIETY                                              :{BLACK}Διανομή ποικιλομορφίας:
 STR_MAPGEN_GENERATE                                             :{WHITE}Δημιουργία
+STR_MAPGEN_GENERATE_TOOLTIP                                     :{BLACK}Δημιουργήστε τον κόσμο και παίξτε OpenTTD!
 STR_MAPGEN_NEWGRF_SETTINGS                                      :{BLACK}Ρυθμίσεις NewGRF
 STR_MAPGEN_NEWGRF_SETTINGS_TOOLTIP                              :{BLACK}Εμφάνιση ρυθμίσεων NewGRF
 STR_MAPGEN_AI_SETTINGS                                          :{BLACK}Ρυθμίσεις AI
@@ -3251,6 +3289,7 @@ STR_MAPGEN_TOWN_NAME_CATALAN                                    :Καταλαν�
 
 # Strings for map borders at game generation
 STR_MAPGEN_BORDER_TYPE                                          :{BLACK}Άκρες χάρτη:
+STR_MAPGEN_BORDER_TYPE_TOOLTIP                                  :{BLACK}Επιλέξτε τα όρια του κόσμου του παιχνιδιού
 STR_MAPGEN_NORTHWEST                                            :{BLACK}Βορειοδυτικά
 STR_MAPGEN_NORTHEAST                                            :{BLACK}Βορειοανατολικά
 STR_MAPGEN_SOUTHEAST                                            :{BLACK}Νοτιοανατολικά
@@ -4306,6 +4345,8 @@ STR_VEHICLE_INFO_FEEDER_CARGO_VALUE                             :{BLACK}Έσοδ
 STR_VEHICLE_DETAILS_SERVICING_INTERVAL_DAYS                     :{BLACK}Διάστημα μεταξύ επισκευών: {LTBLUE}{COMMA}{NBSP}ημέρες{BLACK}   {STRING}
 STR_VEHICLE_DETAILS_SERVICING_INTERVAL_MINUTES                  :{BLACK}Διάστημα μεταξύ επισκευών: {LTBLUE}{COMMA}{NBSP}λεπτά{BLACK}   {STRING}
 STR_VEHICLE_DETAILS_SERVICING_INTERVAL_PERCENT                  :{BLACK}Διάστημα επισκευών: {LTBLUE}{COMMA}%{BLACK}   {STRING}
+STR_VEHICLE_DETAILS_DECREASE_SERVICING_INTERVAL_TOOLTIP_DAYS    :Μειώστε το διάστημα μεταξύ των σέρβις κατά 10 ημέρες. Ctrl+Click για να μειώσετε το διάστημα συντήρησης κατά 5 ημέρες
+STR_VEHICLE_DETAILS_DECREASE_SERVICING_INTERVAL_TOOLTIP_MINUTES :Μειώστε το διάστημα μεταξύ των σέρβις κατά 5 λεπτά. Ctrl+Click για να μειώσετε το διάστημα συντήρησης κατά 1 λεπτό
 
 STR_SERVICE_INTERVAL_DROPDOWN_TOOLTIP                           :{BLACK}Αλλάξτε τον τύπο διαστήματος επισκευών
 STR_VEHICLE_DETAILS_DEFAULT                                     :Προκαθορισμένο
@@ -4585,6 +4626,7 @@ STR_TIMETABLE_EXPECTED                                          :{BLACK}Αναμ
 STR_TIMETABLE_SCHEDULED                                         :{BLACK}Προγραμματισμένη
 STR_TIMETABLE_EXPECTED_TOOLTIP                                  :{BLACK}Εναλλαγή μεταξύ αναμενόμενης και προγραμματισμένης
 
+STR_TIMETABLE_ARRIVAL_DATE                                      :A: {COLOUR}{DATE_TINY}
 
 
 # Date window (for timetable)

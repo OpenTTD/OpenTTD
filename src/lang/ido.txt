@@ -464,7 +464,7 @@ STR_GAME_OPTIONS_CAPTION                                        :{WHITE}Ludo Sel
 
 
 
-###length 43
+###length 44
 
 
 # Autosave dropdown
