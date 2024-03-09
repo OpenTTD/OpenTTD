@@ -1117,6 +1117,9 @@ STR_CURRENCY_DECREASE_EXCHANGE_RATE_TOOLTIP                     :{BLACK}Setz de 
 STR_CURRENCY_INCREASE_EXCHANGE_RATE_TOOLTIP                     :{BLACK}Setz de Betrag Suen dee fir 1 Pond (£) gebraucht gëtt erop
 STR_CURRENCY_SET_EXCHANGE_RATE_TOOLTIP                          :{BLACK}Setzt de Wiesselcours fir deng Währung fir 1 Pond (£)
 
+STR_CURRENCY_SEPARATOR                                          :{LTBLUE}Separator: {ORANGE}{STRING}
+STR_CURRENCY_SET_CUSTOM_CURRENCY_SEPARATOR_TOOLTIP              :{BLACK}Setz de Separator fir deng Wähung
+
 STR_CURRENCY_PREFIX                                             :{LTBLUE}Prefix: {ORANGE}{STRING}
 STR_CURRENCY_SET_CUSTOM_CURRENCY_PREFIX_TOOLTIP                 :{BLACK}Setzt de Prefix fir deng Währung
 STR_CURRENCY_SUFFIX                                             :{LTBLUE}Suffix: {ORANGE}{STRING}
@@ -1271,10 +1274,10 @@ STR_CONFIG_SETTING_INFINITE_MONEY                               :Endlos Geld: {S
 STR_CONFIG_SETTING_INFINITE_MONEY_HELPTEXT                      :Erlaab fir endlos Geld auszeginn an schalt de Bankrott vu Firmen aus
 
 STR_CONFIG_SETTING_MAXIMUM_INITIAL_LOAN                         :Maximalen Ufanksloun: {STRING}
-STR_CONFIG_SETTING_MAXIMUM_INITIAL_LOAN_HELPTEXT                :Maximalwäert den eng Firma kann léinen (ouni Inflatioun matzerechnen)
+STR_CONFIG_SETTING_MAXIMUM_INITIAL_LOAN_HELPTEXT                :Maximalwäert den eng Firma ka léinen (ouni Inflatioun matzerechnen). Wann "keen Kredit" gewielt gouf, gëtt et kee Geld ausser e Game Script, oder d'"Endlos geld" Astellung gëtt es.
 STR_CONFIG_SETTING_MAXIMUM_INITIAL_LOAN_VALUE                   :{CURRENCY_LONG}
 ###setting-zero-is-special
-STR_CONFIG_SETTING_MAXIMUM_INITIAL_LOAN_DISABLED                :Kee Kredit {RED}Spill-Script muss am Ufank e Geldbetrag zur Verfügung ginn
+STR_CONFIG_SETTING_MAXIMUM_INITIAL_LOAN_DISABLED                :Kee Kredit
 
 STR_CONFIG_SETTING_INTEREST_RATE                                :Zënssaz: {STRING}
 STR_CONFIG_SETTING_INTEREST_RATE_HELPTEXT                       :Zënssaz; kontrolléiert och d'Inflatioun wann ugeschalt
@@ -1491,7 +1494,7 @@ STR_CONFIG_SETTING_NEVER_EXPIRE_VEHICLES                        :Gefierer lafen 
 STR_CONFIG_SETTING_NEVER_EXPIRE_VEHICLES_HELPTEXT               :Wann ugeschalt, bleiwen all Modeller vu Gefierer éiweg verfügbar
 
 STR_CONFIG_SETTING_TIMEKEEPING_UNITS                            :Zäitmiessung: {STRING}
-STR_CONFIG_SETTING_TIMEKEEPING_UNITS_HELPTEXT                   :Wiel d'Zäitmiessungsuniten déi am Spill benotzt ginn. Dat kann spéider net méi geännert ginn.{}{}Kalennerbaséiert ass d'standart OpenTTD Erfahrung, wou all Joer 12 Méint huet an all Mount 28-31 Deeg.{}{}Wann d'Auer un der Mauer ausgewielt gëtt, si Gefierbewegungen, Wuereproduktioun an finanziell Saachen op 1-Minut-Schrëtt baséiert, wat ongeféiert esou laang ass wéi en 30 Deeg Mount am kalennerbaséierte Modus. Déi si gruppéiert an 12-Minute Perdioden, equivalent zu engem Joer am kalennerbaséierte Modus.{}{}An béide Modi gëtt et emmer e klassesche Kalenner de gebraucht fir d'Aféirungsdaten fir Gefier, Häiser an aner Infrastrukturen.
+STR_CONFIG_SETTING_TIMEKEEPING_UNITS_HELPTEXT                   :Wiel d'Zäitmiessungsuniten déi am Spill benotzt ginn. Dat kann spéider net méi geännert ginn.{}{}Kalennerbaséiert ass d'standart OpenTTD Erfahrung, wou all Joer 12 Méint huet an all Mount 28-31 Deeg.{}{}Wann d'Auer un der Mauer ausgewielt gëtt, Wuereproduktioun an finanziell Saachen op 1-Minut-Schrëtt baséiert, wat ongeféiert esou laang ass wéi en 30 Deeg Mount am kalennerbaséierte Modus. Déi si gruppéiert an 12-Minute Perdioden, equivalent zu engem Joer am kalennerbaséierte Modus.{}{}An béide Modi gëtt et emmer e klassesche Kalenner de gebraucht fir d'Aféirungsdaten fir Gefier, Häiser an aner Infrastrukturen.
 ###length 2
 STR_CONFIG_SETTING_TIMEKEEPING_UNITS_CALENDAR                   :Kalenner
 STR_CONFIG_SETTING_TIMEKEEPING_UNITS_WALLCLOCK                  :Auer un der Mauer
@@ -4381,22 +4384,22 @@ STR_VEHICLE_STATUS_WAITING_UNBUNCHING                           :{LTBLUE}Warden 
 STR_VEHICLE_STATUS_CRASHED                                      :{RED}Accident!
 STR_VEHICLE_STATUS_BROKEN_DOWN                                  :{RED}Pann
 STR_VEHICLE_STATUS_STOPPED                                      :{RED}Gestoppt
-STR_VEHICLE_STATUS_TRAIN_STOPPING_VEL                           :{RED}Stoppt, {VELOCITY}
+STR_VEHICLE_STATUS_TRAIN_STOPPING_VEL                           :{RED}{VELOCITY} - Am gaang ze stoppen
 STR_VEHICLE_STATUS_TRAIN_NO_POWER                               :{RED}Keng Energie
 STR_VEHICLE_STATUS_TRAIN_STUCK                                  :{ORANGE}Waard op en fräie Wee
 STR_VEHICLE_STATUS_AIRCRAFT_TOO_FAR                             :{ORANGE}Ze wäit op nächst Destinatioun
 
-STR_VEHICLE_STATUS_HEADING_FOR_STATION_VEL                      :{LTBLUE}Ennerwee op {STATION}, {VELOCITY}
-STR_VEHICLE_STATUS_NO_ORDERS_VEL                                :{LTBLUE}Keng Opträg, {VELOCITY}
-STR_VEHICLE_STATUS_HEADING_FOR_WAYPOINT_VEL                     :{LTBLUE}Ennerwee op {WAYPOINT}, {VELOCITY}
-STR_VEHICLE_STATUS_HEADING_FOR_DEPOT_VEL                        :{ORANGE}Ennerwee an den {DEPOT}, {VELOCITY}
-STR_VEHICLE_STATUS_HEADING_FOR_DEPOT_SERVICE_VEL                :{LTBLUE}Revisioun am {DEPOT}, {VELOCITY}
-STR_VEHICLE_STATUS_HEADING_FOR_DEPOT_UNBUNCH_VEL                :{LTBLUE}Verspreeën a Revisioun am Schapp {DEPOT}, {VELOCITY}
+STR_VEHICLE_STATUS_HEADING_FOR_STATION_VEL                      :{LTBLUE}{1:VELOCITY} - Ennerwee op {0:STATION}
+STR_VEHICLE_STATUS_NO_ORDERS_VEL                                :{LTBLUE}{VELOCITY} - Keng Opträg
+STR_VEHICLE_STATUS_HEADING_FOR_WAYPOINT_VEL                     :{LTBLUE}{1:VELOCITY} - Ennerwee op {0:WAYPOINT}
+STR_VEHICLE_STATUS_HEADING_FOR_DEPOT_VEL                        :{ORANGE}{1:VELOCITY} - Ennerwee an den {0:DEPOT}
+STR_VEHICLE_STATUS_HEADING_FOR_DEPOT_SERVICE_VEL                :{LTBLUE}{1:VELOCITY} - Revisoun am {0:DEPOT}
+STR_VEHICLE_STATUS_HEADING_FOR_DEPOT_UNBUNCH_VEL                :{LTBLUE}{1:VELOCITY} - Verspreeën a Revisioun am Schapp {0:DEPOT}
 
-STR_VEHICLE_STATUS_CANNOT_REACH_STATION_VEL                     :{LTBLUE}Kann {STATION} net erreechen, {VELOCITY}
-STR_VEHICLE_STATUS_CANNOT_REACH_WAYPOINT_VEL                    :{LTBLUE}Kann {WAYPOINT} net erreechen, {VELOCITY}
-STR_VEHICLE_STATUS_CANNOT_REACH_DEPOT_VEL                       :{ORANGE}Kann {DEPOT} net erreechen, {VELOCITY}
-STR_VEHICLE_STATUS_CANNOT_REACH_DEPOT_SERVICE_VEL               :{LTBLUE}Kann den {DEPOT} net erreechen, {VELOCITY}
+STR_VEHICLE_STATUS_CANNOT_REACH_STATION_VEL                     :{LTBLUE}{1:VELOCITY} - Kann {0:STATION} net erreechen
+STR_VEHICLE_STATUS_CANNOT_REACH_WAYPOINT_VEL                    :{LTBLUE}{1:VELOCITY} - Kann {0:WAYPOINT} net erreechen
+STR_VEHICLE_STATUS_CANNOT_REACH_DEPOT_VEL                       :{ORANGE}{1:VELOCITY} - Kann {0:DEPOT} net erreechen,
+STR_VEHICLE_STATUS_CANNOT_REACH_DEPOT_SERVICE_VEL               :{LTBLUE}{1:VELOCITY} - Kann den {0:DEPOT} net erreechen
 
 # Vehicle stopped/started animations
 ###length 2
@@ -4610,7 +4613,7 @@ STR_ORDER_GO_TO_NEAREST_DEPOT                                   :Géi an den noo
 STR_ORDER_GO_TO_NEAREST_HANGAR                                  :Géi an den noosten Hangar
 STR_ORDER_CONDITIONAL                                           :Bedéngten Optragssprong
 STR_ORDER_SHARE                                                 :Opträg deelen
-STR_ORDERS_GO_TO_TOOLTIP                                        :{BLACK}Setzt en neien Optrag firun den ungewielten Optrag, oder un d'Enn vun der Lëscht. Ctrl+Klick op eng Statioun fir 'voll belueden mat all Wueren', op e Weepunkt fir den 'non-stop Standard' emzeschalten, oder op e Schapp fir eng 'Revisioun'. Klick op e Gefier fir seng Opträg ze kopéieren oder Ctrl+Klick fir seng Opträg ze deelen. En Depot Optrag schalt d'automatesch Revisioun vum Gefier aus
+STR_ORDERS_GO_TO_TOOLTIP                                        :{BLACK}Setzt en neien Optrag firun den ungewielten Optrag, oder un d'Enn vun der Lëscht. Ctrl+Klick op eng Statioun fir 'voll belueden mat all Wueren', op e Weepunkt fir den 'non-stop Standard' emzeschalten, oder op e Schapp fir ze 'verspreeën'. Klick op e Gefier fir seng Opträg ze kopéieren oder Ctrl+Klick fir seng Opträg ze deelen. En Depot Optrag schalt d'automatesch Revisioun vum Gefier aus
 
 STR_ORDERS_VEH_WITH_SHARED_ORDERS_LIST_TOOLTIP                  :{BLACK}Weis all Gefierer déi dësen Plang deelen
 
@@ -4840,8 +4843,6 @@ STR_AI_SETTINGS_CAPTION_GAMESCRIPT                              :Spill-Script
 STR_AI_SETTINGS_CLOSE                                           :{BLACK}Zoumaachen
 STR_AI_SETTINGS_RESET                                           :{BLACK}Reset
 STR_AI_SETTINGS_SETTING                                         :{STRING}: {ORANGE}{STRING}
-STR_AI_SETTINGS_SETTING_DEVIATION                               :{STRING}: {ORANGE}[{STRING}, {STRING}]
-STR_AI_SETTINGS_JUST_DEVIATION                                  :[{STRING}, {STRING}]
 
 
 # Textfile window
@@ -5806,6 +5807,11 @@ STR_STATION_NAME                                                :{STATION}
 STR_TOWN_NAME                                                   :{TOWN}
 STR_VEHICLE_NAME                                                :{VEHICLE}
 STR_WAYPOINT_NAME                                               :{WAYPOINT}
+
+STR_CURRENCY_SHORT_KILO                                         :{NBSP}k
+STR_CURRENCY_SHORT_MEGA                                         :{NBSP}m
+STR_CURRENCY_SHORT_GIGA                                         :{NBSP}mia
+STR_CURRENCY_SHORT_TERA                                         :{NBSP}bn
 
 STR_JUST_CARGO                                                  :{CARGO_LONG}
 STR_JUST_RIGHT_ARROW                                            :{RIGHT_ARROW}

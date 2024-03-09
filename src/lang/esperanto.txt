@@ -1118,6 +1118,7 @@ STR_CURRENCY_DECREASE_EXCHANGE_RATE_TOOLTIP                     :{BLACK}Malpliig
 STR_CURRENCY_INCREASE_EXCHANGE_RATE_TOOLTIP                     :{BLACK}Pliigu la kvanton de via valuto kiu egalas al unu pundo (£)
 STR_CURRENCY_SET_EXCHANGE_RATE_TOOLTIP                          :{BLACK}Indiku la kurzon de via valuto por unu pundo (£)
 
+
 STR_CURRENCY_PREFIX                                             :{LTBLUE}Prefikso: {ORANGE}{STRING}
 STR_CURRENCY_SET_CUSTOM_CURRENCY_PREFIX_TOOLTIP                 :{BLACK}Ekekti simbolon de via valuto
 STR_CURRENCY_SUFFIX                                             :{LTBLUE}Sufikso: {ORANGE}{STRING}
@@ -4563,7 +4564,6 @@ STR_AI_SETTINGS_CAPTION_GAMESCRIPT                              :Ludoskripto
 STR_AI_SETTINGS_CLOSE                                           :{BLACK}Fermi
 STR_AI_SETTINGS_RESET                                           :{BLACK}Reŝargo
 STR_AI_SETTINGS_SETTING                                         :{STRING}: {ORANGE}{STRING}
-STR_AI_SETTINGS_SETTING_DEVIATION                               :{STRING}: {ORANGE}[{STRING}, {STRING}]
 
 
 # Textfile window
@@ -5506,6 +5506,7 @@ STR_STATION_NAME                                                :{STATION}
 STR_TOWN_NAME                                                   :{TOWN}
 STR_VEHICLE_NAME                                                :{VEHICLE}
 STR_WAYPOINT_NAME                                               :{WAYPOINT}
+
 
 STR_JUST_CARGO                                                  :{CARGO_LONG}
 STR_JUST_RIGHT_ARROW                                            :{RIGHT_ARROW}

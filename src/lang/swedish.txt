@@ -1117,6 +1117,9 @@ STR_CURRENCY_DECREASE_EXCHANGE_RATE_TOOLTIP                     :{BLACK}Minska v
 STR_CURRENCY_INCREASE_EXCHANGE_RATE_TOOLTIP                     :{BLACK}Öka värdet för din valuta med ett pund (£)
 STR_CURRENCY_SET_EXCHANGE_RATE_TOOLTIP                          :{BLACK}Sätt växelkursen för din valuta mot ett pund (£)
 
+STR_CURRENCY_SEPARATOR                                          :{LTBLUE}Skiljetecken: {ORANGE}{STRING}
+STR_CURRENCY_SET_CUSTOM_CURRENCY_SEPARATOR_TOOLTIP              :{BLACK}Ange skiljetecknet för din valuta
+
 STR_CURRENCY_PREFIX                                             :{LTBLUE}Prefix: {ORANGE}{STRING}
 STR_CURRENCY_SET_CUSTOM_CURRENCY_PREFIX_TOOLTIP                 :{BLACK}Sätt prefix-sträng för din valuta
 STR_CURRENCY_SUFFIX                                             :{LTBLUE}Ändelse: {ORANGE}{STRING}
@@ -1271,10 +1274,10 @@ STR_CONFIG_SETTING_INFINITE_MONEY                               :Obegränsat kap
 STR_CONFIG_SETTING_INFINITE_MONEY_HELPTEXT                      :Tillåt obegränsat spenderande och inaktivera konkurser av företag
 
 STR_CONFIG_SETTING_MAXIMUM_INITIAL_LOAN                         :Maximalt startlån: {STRING}
-STR_CONFIG_SETTING_MAXIMUM_INITIAL_LOAN_HELPTEXT                :Maximalt belopp ett företag kan låna (där inflationen inte tas med i beräkningen)
+STR_CONFIG_SETTING_MAXIMUM_INITIAL_LOAN_HELPTEXT                :Maximalt belopp ett företag kan låna (där inflationen inte tas med i beräkningen). Om inställt på "Inga lån" kommer inga pengar finnas tillgängliga såvida inte utdelat av ett spelskript eller inställningen "Obegränsat kapital".
 STR_CONFIG_SETTING_MAXIMUM_INITIAL_LOAN_VALUE                   :{CURRENCY_LONG}
 ###setting-zero-is-special
-STR_CONFIG_SETTING_MAXIMUM_INITIAL_LOAN_DISABLED                :Inget lån {RED}Kräver spelskript som sätter startkapital
+STR_CONFIG_SETTING_MAXIMUM_INITIAL_LOAN_DISABLED                :Inga lån
 
 STR_CONFIG_SETTING_INTEREST_RATE                                :Räntenivå: {STRING}
 STR_CONFIG_SETTING_INTEREST_RATE_HELPTEXT                       :Räntenivå för lån; styr även inflationen om sådan är aktiverad
@@ -1491,7 +1494,7 @@ STR_CONFIG_SETTING_NEVER_EXPIRE_VEHICLES                        :Fordon blir ald
 STR_CONFIG_SETTING_NEVER_EXPIRE_VEHICLES_HELPTEXT               :Om det är aktiverat förblir alla fordonstyper tillgängliga i obegränsad tid efter att de introducerats
 
 STR_CONFIG_SETTING_TIMEKEEPING_UNITS                            :Tidhållning: {STRING}
-STR_CONFIG_SETTING_TIMEKEEPING_UNITS_HELPTEXT                   :Välj enheter för spelets tidhållning. Detta kan inte ändras senare.{}{}Kalenderbaserat spelläge är den klassiska OpenTTD-upplevelsen, där ett år består av 12 månader och varje månad har 28-31 dagar.{}{}I Väggklockbaserat spelläge är fordonsrörelse, godsproduktion, och finanser istället baserade på enminutssteg, vilket är ungefär så länge som en 30-dagarsmånad tar i Kalenderbaserat spelläge. Dessa är grupperade i 12-minutersperioder motsvarande ett år i Kalenderbaserat spelläge.{}{}Oavsett spelläge finns det alltid en klassisk kalender som används för introduktionsdatum av fordon, byggnader, och annan infrastruktur.
+STR_CONFIG_SETTING_TIMEKEEPING_UNITS_HELPTEXT                   :Välj enheter för spelets tidhållning. Detta kan inte ändras senare.{}{}Kalenderbaserat spelläge är den klassiska OpenTTD-upplevelsen, där ett år består av 12 månader och varje månad har 28-31 dagar.{}{}I Väggklockbaserat spelläge är godsproduktion och finanser istället baserade på enminutssteg, vilket är ungefär så länge som en 30-dagarsmånad tar i Kalenderbaserat spelläge. Dessa är grupperade i 12-minutersperioder motsvarande ett år i Kalenderbaserat spelläge.{}{}Oavsett spelläge finns det alltid en klassisk kalender som används för introduktionsdatum av fordon, byggnader, och annan infrastruktur.
 ###length 2
 STR_CONFIG_SETTING_TIMEKEEPING_UNITS_CALENDAR                   :Kalender
 STR_CONFIG_SETTING_TIMEKEEPING_UNITS_WALLCLOCK                  :Väggklocka
@@ -4381,22 +4384,22 @@ STR_VEHICLE_STATUS_WAITING_UNBUNCHING                           :{LTBLUE}Väntar
 STR_VEHICLE_STATUS_CRASHED                                      :{RED}Kraschad!
 STR_VEHICLE_STATUS_BROKEN_DOWN                                  :{RED}Motorstopp
 STR_VEHICLE_STATUS_STOPPED                                      :{RED}Stoppat
-STR_VEHICLE_STATUS_TRAIN_STOPPING_VEL                           :{RED}Stannar, {VELOCITY}
+STR_VEHICLE_STATUS_TRAIN_STOPPING_VEL                           :{RED}{VELOCITY} - Stannar
 STR_VEHICLE_STATUS_TRAIN_NO_POWER                               :{RED}Ingen kraft
 STR_VEHICLE_STATUS_TRAIN_STUCK                                  :{ORANGE}Väntar på ledig väg
 STR_VEHICLE_STATUS_AIRCRAFT_TOO_FAR                             :{ORANGE}Nästa destination ligger för långt bort
 
-STR_VEHICLE_STATUS_HEADING_FOR_STATION_VEL                      :{LTBLUE}På väg mot {STATION}, {VELOCITY}
-STR_VEHICLE_STATUS_NO_ORDERS_VEL                                :{LTBLUE}Inga order, {VELOCITY}
+STR_VEHICLE_STATUS_HEADING_FOR_STATION_VEL                      :{LTBLUE}{1:VELOCITY} -På väg mot {0:STATION}
+STR_VEHICLE_STATUS_NO_ORDERS_VEL                                :{LTBLUE}{VELOCITY} - Inga ordrar
 STR_VEHICLE_STATUS_HEADING_FOR_WAYPOINT_VEL                     :{LTBLUE}På väg mot {WAYPOINT} i {VELOCITY}
-STR_VEHICLE_STATUS_HEADING_FOR_DEPOT_VEL                        :{ORANGE}På väg mot {DEPOT}, {VELOCITY}
-STR_VEHICLE_STATUS_HEADING_FOR_DEPOT_SERVICE_VEL                :{LTBLUE}Service vid {DEPOT}, {VELOCITY}
-STR_VEHICLE_STATUS_HEADING_FOR_DEPOT_UNBUNCH_VEL                :{LTBLUE}Glesa ut och serva vid {DEPOT}, {VELOCITY}
+STR_VEHICLE_STATUS_HEADING_FOR_DEPOT_VEL                        :{ORANGE}{1:VELOCITY} - På väg mot {0:DEPOT}
+STR_VEHICLE_STATUS_HEADING_FOR_DEPOT_SERVICE_VEL                :{LTBLUE}{1:VELOCITY} - Service vid {0:DEPOT}
+STR_VEHICLE_STATUS_HEADING_FOR_DEPOT_UNBUNCH_VEL                :{LTBLUE}{1:VELOCITY} - Glesa ut och serva vid {0:DEPOT}
 
-STR_VEHICLE_STATUS_CANNOT_REACH_STATION_VEL                     :{LTBLUE} Kan inte nå {STATION}, {VELOCITY}
-STR_VEHICLE_STATUS_CANNOT_REACH_WAYPOINT_VEL                    :{LTBLUE}Kan inte nå {WAYPOINT}, {VELOCITY}
-STR_VEHICLE_STATUS_CANNOT_REACH_DEPOT_VEL                       :{ORANGE}Kan inte nå {DEPOT}, {VELOCITY}
-STR_VEHICLE_STATUS_CANNOT_REACH_DEPOT_SERVICE_VEL               :{LTBLUE}Kan inte nå {DEPOT}, {VELOCITY}
+STR_VEHICLE_STATUS_CANNOT_REACH_STATION_VEL                     :{LTBLUE}{1:VELOCITY} - Kan inte nå {0:STATION}
+STR_VEHICLE_STATUS_CANNOT_REACH_WAYPOINT_VEL                    :{LTBLUE}{1:VELOCITY} - Kan inte nå {0:WAYPOINT}
+STR_VEHICLE_STATUS_CANNOT_REACH_DEPOT_VEL                       :{ORANGE}{1:VELOCITY} - Kan inte nå {0:DEPOT}
+STR_VEHICLE_STATUS_CANNOT_REACH_DEPOT_SERVICE_VEL               :{LTBLUE}{1:VELOCITY} - Kan inte nå {0:DEPOT}
 
 # Vehicle stopped/started animations
 ###length 2
@@ -4610,7 +4613,7 @@ STR_ORDER_GO_TO_NEAREST_DEPOT                                   :Åk till närms
 STR_ORDER_GO_TO_NEAREST_HANGAR                                  :Åk till närmsta hangar
 STR_ORDER_CONDITIONAL                                           :Villkorat order-hopp
 STR_ORDER_SHARE                                                 :Dela order
-STR_ORDERS_GO_TO_TOOLTIP                                        :{BLACK}Infoga ny order före markerad order, eller lägg till i slutet av listan. Ctrl+Klick på en station för 'full last någon godstyp', på ett riktmärke för att invertera inställningen 'non-stop som standard', och på en depå för 'service'.  Klicka på ett annat fordon för att kopiera dess ordrar eller Ctrl+Klick för att dela ordrar. En depåorder stänger av automatisk service av fordonet
+STR_ORDERS_GO_TO_TOOLTIP                                        :{BLACK}Infoga ny order före markerad order, eller lägg till i slutet av listan. Ctrl+Klick på en station för 'full last någon godstyp', på ett riktmärke för att invertera inställningen 'non-stop som standard', och på en depå för 'glesa ut'. Klicka på ett annat fordon för att kopiera dess ordrar eller Ctrl+Klick för att dela ordrar. En depåorder stänger av automatisk service av fordonet
 
 STR_ORDERS_VEH_WITH_SHARED_ORDERS_LIST_TOOLTIP                  :{BLACK}Visa alla fordon som har samma schema
 
@@ -4840,8 +4843,6 @@ STR_AI_SETTINGS_CAPTION_GAMESCRIPT                              :Spelskript
 STR_AI_SETTINGS_CLOSE                                           :{BLACK}Stäng
 STR_AI_SETTINGS_RESET                                           :{BLACK}Återställ
 STR_AI_SETTINGS_SETTING                                         :{STRING}: {ORANGE}{STRING}
-STR_AI_SETTINGS_SETTING_DEVIATION                               :{STRING}: {ORANGE}[{STRING}, {STRING}]
-STR_AI_SETTINGS_JUST_DEVIATION                                  :[{STRING}, {STRING}]
 
 
 # Textfile window
@@ -5806,6 +5807,11 @@ STR_STATION_NAME                                                :{STATION}
 STR_TOWN_NAME                                                   :{TOWN}
 STR_VEHICLE_NAME                                                :{VEHICLE}
 STR_WAYPOINT_NAME                                               :{WAYPOINT}
+
+STR_CURRENCY_SHORT_KILO                                         :{NBSP}t
+STR_CURRENCY_SHORT_MEGA                                         :{NBSP}mn
+STR_CURRENCY_SHORT_GIGA                                         :{NBSP}md
+STR_CURRENCY_SHORT_TERA                                         :{NBSP}bn
 
 STR_JUST_CARGO                                                  :{CARGO_LONG}
 STR_JUST_RIGHT_ARROW                                            :{RIGHT_ARROW}

@@ -99,7 +99,7 @@ STR_QUANTITY_COAL                                               :{WEIGHT_LONG} d
 STR_QUANTITY_MAIL                                               :{COMMA} saco{P "" s} de correio
 STR_QUANTITY_OIL                                                :{VOLUME_LONG} de petróleo
 STR_QUANTITY_LIVESTOCK                                          :{COMMA} ite{P m ns} de gado
-STR_QUANTITY_GOODS                                              :{COMMA} caixa{P "" s} de bens
+STR_QUANTITY_GOODS                                              :{COMMA}{NBSP}caixa{P "" s} de bens
 STR_QUANTITY_GRAIN                                              :{WEIGHT_LONG} de cereais
 STR_QUANTITY_WOOD                                               :{WEIGHT_LONG} de madeira
 STR_QUANTITY_IRON_ORE                                           :{WEIGHT_LONG} de minério de ferro
@@ -163,12 +163,12 @@ STR_ABBREV_FIZZY_DRINKS                                         :RF
 STR_ABBREV_ALL                                                  :TUDO
 
 # 'Mode' of transport for cargoes
-STR_PASSENGERS                                                  :{COMMA} passageiro{P "" s}
-STR_BAGS                                                        :{COMMA} saco{P "" s}
-STR_TONS                                                        :{COMMA} tonelada{P "" s}
-STR_LITERS                                                      :{COMMA} litro{P "" s}
-STR_ITEMS                                                       :{COMMA} item{P "" s}
-STR_CRATES                                                      :{COMMA} caixa{P "" s}
+STR_PASSENGERS                                                  :{COMMA}{NBSP}passageiro{P "" s}
+STR_BAGS                                                        :{COMMA}{NBSP}saco{P "" s}
+STR_TONS                                                        :{COMMA}{NBSP}tonelada{P "" s}
+STR_LITERS                                                      :{COMMA}{NBSP}litro{P "" s}
+STR_ITEMS                                                       :{COMMA}{NBSP}ite{P m ns}
+STR_CRATES                                                      :{COMMA}{NBSP}caixa{P "" s}
 
 STR_COLOUR_DEFAULT                                              :Padrão
 ###length 17
@@ -211,9 +211,9 @@ STR_COLOUR_SECONDARY_SAME_AS_PRIMARY                            :Igual à Primá
 
 
 # Units used in OpenTTD
-STR_UNITS_VELOCITY_IMPERIAL                                     :{DECIMAL} mph
-STR_UNITS_VELOCITY_METRIC                                       :{DECIMAL} km/h
-STR_UNITS_VELOCITY_SI                                           :{DECIMAL} m/s
+STR_UNITS_VELOCITY_IMPERIAL                                     :{DECIMAL}{NBSP}mph
+STR_UNITS_VELOCITY_METRIC                                       :{DECIMAL}{NBSP}km/h
+STR_UNITS_VELOCITY_SI                                           :{DECIMAL}{NBSP}m/s
 STR_UNITS_VELOCITY_GAMEUNITS_DAY                                :{DECIMAL}{NBSP}mosaicos/dia
 STR_UNITS_VELOCITY_GAMEUNITS_SEC                                :{DECIMAL}{NBSP}mosaicos/seg
 STR_UNITS_VELOCITY_KNOTS                                        :{DECIMAL}{NBSP}nós
@@ -236,25 +236,25 @@ STR_UNITS_WEIGHT_SHORT_IMPERIAL                                 :{DECIMAL}t
 STR_UNITS_WEIGHT_SHORT_METRIC                                   :{DECIMAL}t
 STR_UNITS_WEIGHT_SHORT_SI                                       :{DECIMAL}kg
 
-STR_UNITS_WEIGHT_LONG_IMPERIAL                                  :{DECIMAL} small ton{P "" s}
-STR_UNITS_WEIGHT_LONG_METRIC                                    :{DECIMAL} tonelada{P "" s}
-STR_UNITS_WEIGHT_LONG_SI                                        :{DECIMAL} quilogramas
+STR_UNITS_WEIGHT_LONG_IMPERIAL                                  :{DECIMAL}{NBSP}ton{P "" s}
+STR_UNITS_WEIGHT_LONG_METRIC                                    :{DECIMAL}{NBSP}tonelada{P "" s}
+STR_UNITS_WEIGHT_LONG_SI                                        :{DECIMAL}{NBSP}kg
 
 STR_UNITS_VOLUME_SHORT_IMPERIAL                                 :{DECIMAL}gal
 STR_UNITS_VOLUME_SHORT_METRIC                                   :{DECIMAL}l
 STR_UNITS_VOLUME_SHORT_SI                                       :{DECIMAL}m³
 
-STR_UNITS_VOLUME_LONG_IMPERIAL                                  :{DECIMAL} gal{P ão ões}
-STR_UNITS_VOLUME_LONG_METRIC                                    :{DECIMAL} litro{P "" s}
-STR_UNITS_VOLUME_LONG_SI                                        :{DECIMAL} metros³
+STR_UNITS_VOLUME_LONG_IMPERIAL                                  :{DECIMAL}{NBSP}gal{P ão ões}
+STR_UNITS_VOLUME_LONG_METRIC                                    :{DECIMAL}{NBSP}litro{P "" s}
+STR_UNITS_VOLUME_LONG_SI                                        :{DECIMAL}{NBSP}m³
 
-STR_UNITS_FORCE_IMPERIAL                                        :{DECIMAL} lbf
-STR_UNITS_FORCE_METRIC                                          :{DECIMAL} kgf
-STR_UNITS_FORCE_SI                                              :{DECIMAL} kN
+STR_UNITS_FORCE_IMPERIAL                                        :{DECIMAL}{NBSP}lbf
+STR_UNITS_FORCE_METRIC                                          :{DECIMAL}{NBSP}kgf
+STR_UNITS_FORCE_SI                                              :{DECIMAL}{NBSP}kN
 
-STR_UNITS_HEIGHT_IMPERIAL                                       :{DECIMAL} pé(s)
-STR_UNITS_HEIGHT_METRIC                                         :{DECIMAL} m
-STR_UNITS_HEIGHT_SI                                             :{DECIMAL} m
+STR_UNITS_HEIGHT_IMPERIAL                                       :{DECIMAL}{NBSP}pé{P "" s}
+STR_UNITS_HEIGHT_METRIC                                         :{DECIMAL}{NBSP}m
+STR_UNITS_HEIGHT_SI                                             :{DECIMAL}{NBSP}m
 
 # Time units used in string control characters
 STR_UNITS_DAYS                                                  :{COMMA}{NBSP}dia{P "" s}
@@ -538,37 +538,37 @@ STR_ABOUT_MENU_TOGGLE_DIRTY_BLOCKS                              :Ativar coloraç
 STR_ABOUT_MENU_TOGGLE_WIDGET_OUTLINES                           :Alternar contornos de "widget"
 
 ###length 31
-STR_DAY_NUMBER_1ST                                              :1
-STR_DAY_NUMBER_2ND                                              :2
-STR_DAY_NUMBER_3RD                                              :3
-STR_DAY_NUMBER_4TH                                              :4
-STR_DAY_NUMBER_5TH                                              :5
-STR_DAY_NUMBER_6TH                                              :6
-STR_DAY_NUMBER_7TH                                              :7
-STR_DAY_NUMBER_8TH                                              :8
-STR_DAY_NUMBER_9TH                                              :9
-STR_DAY_NUMBER_10TH                                             :10
-STR_DAY_NUMBER_11TH                                             :11
-STR_DAY_NUMBER_12TH                                             :12
-STR_DAY_NUMBER_13TH                                             :13
-STR_DAY_NUMBER_14TH                                             :14
-STR_DAY_NUMBER_15TH                                             :15
-STR_DAY_NUMBER_16TH                                             :16
-STR_DAY_NUMBER_17TH                                             :17
-STR_DAY_NUMBER_18TH                                             :18
-STR_DAY_NUMBER_19TH                                             :19
-STR_DAY_NUMBER_20TH                                             :20
-STR_DAY_NUMBER_21ST                                             :21
-STR_DAY_NUMBER_22ND                                             :22
-STR_DAY_NUMBER_23RD                                             :23
-STR_DAY_NUMBER_24TH                                             :24
-STR_DAY_NUMBER_25TH                                             :25
-STR_DAY_NUMBER_26TH                                             :26
-STR_DAY_NUMBER_27TH                                             :27
-STR_DAY_NUMBER_28TH                                             :28
-STR_DAY_NUMBER_29TH                                             :29
-STR_DAY_NUMBER_30TH                                             :30
-STR_DAY_NUMBER_31ST                                             :31
+STR_DAY_NUMBER_1ST                                              :1.º
+STR_DAY_NUMBER_2ND                                              :2.º
+STR_DAY_NUMBER_3RD                                              :3.º
+STR_DAY_NUMBER_4TH                                              :4.º
+STR_DAY_NUMBER_5TH                                              :5.º
+STR_DAY_NUMBER_6TH                                              :6.º
+STR_DAY_NUMBER_7TH                                              :7.º
+STR_DAY_NUMBER_8TH                                              :8.º
+STR_DAY_NUMBER_9TH                                              :9.º
+STR_DAY_NUMBER_10TH                                             :10.º
+STR_DAY_NUMBER_11TH                                             :11.º
+STR_DAY_NUMBER_12TH                                             :12.º
+STR_DAY_NUMBER_13TH                                             :13.º
+STR_DAY_NUMBER_14TH                                             :14.º
+STR_DAY_NUMBER_15TH                                             :15.º
+STR_DAY_NUMBER_16TH                                             :16.º
+STR_DAY_NUMBER_17TH                                             :17.º
+STR_DAY_NUMBER_18TH                                             :18.º
+STR_DAY_NUMBER_19TH                                             :19.º
+STR_DAY_NUMBER_20TH                                             :20.º
+STR_DAY_NUMBER_21ST                                             :21.º
+STR_DAY_NUMBER_22ND                                             :22.º
+STR_DAY_NUMBER_23RD                                             :23.º
+STR_DAY_NUMBER_24TH                                             :24.º
+STR_DAY_NUMBER_25TH                                             :25.º
+STR_DAY_NUMBER_26TH                                             :26.º
+STR_DAY_NUMBER_27TH                                             :27.º
+STR_DAY_NUMBER_28TH                                             :28.º
+STR_DAY_NUMBER_29TH                                             :29.º
+STR_DAY_NUMBER_30TH                                             :30.º
+STR_DAY_NUMBER_31ST                                             :31.º
 
 ###length 12
 STR_MONTH_ABBREV_JAN                                            :Jan
@@ -1005,7 +1005,7 @@ STR_GAME_OPTIONS_CURRENCY_GEL                                   :Lari Georgiano
 STR_GAME_OPTIONS_CURRENCY_IRR                                   :Rial Iraniano
 STR_GAME_OPTIONS_CURRENCY_RUB                                   :Novo Rublo Russo
 STR_GAME_OPTIONS_CURRENCY_MXN                                   :Peso Mexicano
-STR_GAME_OPTIONS_CURRENCY_NTD                                   :Novo dólar taiwanês
+STR_GAME_OPTIONS_CURRENCY_NTD                                   :Novo Dólar Taiwanês
 STR_GAME_OPTIONS_CURRENCY_CNY                                   :Renminbi chinês
 STR_GAME_OPTIONS_CURRENCY_HKD                                   :Dólar de Hong Kong
 STR_GAME_OPTIONS_CURRENCY_INR                                   :Rupia Indiana
@@ -1026,7 +1026,7 @@ STR_GAME_OPTIONS_AUTOSAVE_DROPDOWN_EVERY_120_MINUTES            :A cada 120 minu
 
 STR_GAME_OPTIONS_LANGUAGE                                       :{BLACK}Idioma
 STR_GAME_OPTIONS_LANGUAGE_TOOLTIP                               :{BLACK}Seleccionar o idioma da interface do jogo
-STR_GAME_OPTIONS_LANGUAGE_PERCENTAGE                            :{STRING} ({NUM}% completado)
+STR_GAME_OPTIONS_LANGUAGE_PERCENTAGE                            :{STRING} ({NUM}% concluído)
 
 STR_GAME_OPTIONS_FULLSCREEN                                     :{BLACK}Ecrã Inteiro
 STR_GAME_OPTIONS_FULLSCREEN_TOOLTIP                             :{BLACK}Seleccione esta opção para jogar o OpenTTD em modo de ecrã inteiro
@@ -1112,11 +1112,14 @@ STR_ERROR_FULLSCREEN_FAILED                                     :{WHITE}Modo de 
 
 # Custom currency window
 
-STR_CURRENCY_WINDOW                                             :{WHITE}Moeda Modificada
-STR_CURRENCY_EXCHANGE_RATE                                      :{LTBLUE}Taxa de troca: {ORANGE}{CURRENCY_LONG} = £ {COMMA}
+STR_CURRENCY_WINDOW                                             :{WHITE}Moeda personalizada
+STR_CURRENCY_EXCHANGE_RATE                                      :{LTBLUE}Taxa de conversão: {ORANGE}{CURRENCY_LONG} = £ {COMMA}
 STR_CURRENCY_DECREASE_EXCHANGE_RATE_TOOLTIP                     :{BLACK}Diminuir a quantidade da sua moeda para uma Libra (£)
 STR_CURRENCY_INCREASE_EXCHANGE_RATE_TOOLTIP                     :{BLACK}Aumentar a quantidade da sua moeda para uma Libra (£)
 STR_CURRENCY_SET_EXCHANGE_RATE_TOOLTIP                          :{BLACK}Definir a taxa de câmbio da sua moeda para uma Libra (£)
+
+STR_CURRENCY_SEPARATOR                                          :{LTBLUE}Separador: {ORANGE}{STRING}
+STR_CURRENCY_SET_CUSTOM_CURRENCY_SEPARATOR_TOOLTIP              :{BLACK}Define o separador para a sua moeda
 
 STR_CURRENCY_PREFIX                                             :{LTBLUE}Prefixo: {ORANGE}{STRING}
 STR_CURRENCY_SET_CUSTOM_CURRENCY_PREFIX_TOOLTIP                 :{BLACK}Definir o prefixo para a sua moeda
@@ -1131,7 +1134,7 @@ STR_CURRENCY_INCREASE_CUSTOM_CURRENCY_TO_EURO_TOOLTIP           :{BLACK}Mudar pa
 
 STR_CURRENCY_PREVIEW                                            :{LTBLUE}Pré-visualizar: {ORANGE}{CURRENCY_LONG}
 STR_CURRENCY_CUSTOM_CURRENCY_PREVIEW_TOOLTIP                    :{BLACK}10000 Libras (£) na sua moeda
-STR_CURRENCY_CHANGE_PARAMETER                                   :{BLACK}Mudar parâmetro de moeda modificada
+STR_CURRENCY_CHANGE_PARAMETER                                   :{BLACK}Mudar parâmetro da moeda personalizada
 
 STR_NONE                                                        :Nenhum
 STR_FUNDING_ONLY                                                :Financiamento apenas
@@ -1272,10 +1275,10 @@ STR_CONFIG_SETTING_INFINITE_MONEY                               :Dinheiro ilimit
 STR_CONFIG_SETTING_INFINITE_MONEY_HELPTEXT                      :Permitir gastos ilimitados e desabilitar a falência de empresas
 
 STR_CONFIG_SETTING_MAXIMUM_INITIAL_LOAN                         :Valor máximo do empréstimo inicial: {STRING}
-STR_CONFIG_SETTING_MAXIMUM_INITIAL_LOAN_HELPTEXT                :Valor máximo do empréstimo para cada empresa (sem ter em conta a inflação)
+STR_CONFIG_SETTING_MAXIMUM_INITIAL_LOAN_HELPTEXT                :Valor máximo do empréstimo para cada empresa (sem ter em conta a inflação)Se definido como "Sem empréstimo", não haverá dinheiro disponível, a menos que seja fornecido por um Script de Jogo ou pela configuração "Dinheiro ilimitado".
 STR_CONFIG_SETTING_MAXIMUM_INITIAL_LOAN_VALUE                   :{CURRENCY_LONG}
 ###setting-zero-is-special
-STR_CONFIG_SETTING_MAXIMUM_INITIAL_LOAN_DISABLED                :Sem empréstimo {RED}Requer Script de Jogo para fornecer fundos iniciais
+STR_CONFIG_SETTING_MAXIMUM_INITIAL_LOAN_DISABLED                :Sem empréstimo
 
 STR_CONFIG_SETTING_INTEREST_RATE                                :Taxa de juro: {STRING}
 STR_CONFIG_SETTING_INTEREST_RATE_HELPTEXT                       :Taxa de juro do empréstimo; também controla a inflação, se ativo
@@ -1337,7 +1340,7 @@ STR_CONFIG_SETTING_EXTRADYNAMITE_HELPTEXT                       :Facilitar a rem
 
 STR_CONFIG_SETTING_TRAIN_LENGTH                                 :Tamanho máximo de comboios: {STRING}
 STR_CONFIG_SETTING_TRAIN_LENGTH_HELPTEXT                        :Assignar o tamanho máximo dos comboios
-STR_CONFIG_SETTING_TILE_LENGTH                                  :{COMMA} quadrado{P 0 "" s}
+STR_CONFIG_SETTING_TILE_LENGTH                                  :{COMMA} mosaico{P 0 "" s}
 
 STR_CONFIG_SETTING_SMOKE_AMOUNT                                 :Quantidade de fumo/faíscas de veículos: {STRING}
 STR_CONFIG_SETTING_SMOKE_AMOUNT_HELPTEXT                        :Assignar quanto fumo ou quantas faíscas são emitidas pelos veículos
@@ -1349,14 +1352,14 @@ STR_CONFIG_SETTING_ROAD_VEHICLE_ACCELERATION_MODEL              :Tipo de acelera
 STR_CONFIG_SETTING_ROAD_VEHICLE_ACCELERATION_MODEL_HELPTEXT     :Escolha o modelo de física para a aceleração de veículos de estrada. O modelo "original" penaliza as inclinações para todos os veículos. O modelo "realista" penaliza as curvas e inclinações tendo em conta várias propriedades do motor, tais como o esforço de tração
 
 STR_CONFIG_SETTING_TRAIN_SLOPE_STEEPNESS                        :Ângulo de inclinação para comboios: {STRING}
-STR_CONFIG_SETTING_TRAIN_SLOPE_STEEPNESS_HELPTEXT               :Ângulo de inclinação de um quadrado para um comboio. Valores mais elevados tornam a subida mais difícil
+STR_CONFIG_SETTING_TRAIN_SLOPE_STEEPNESS_HELPTEXT               :Ângulo de inclinação de um mosaico para um comboio. Valores mais elevados tornam a subida mais difícil
 STR_CONFIG_SETTING_PERCENTAGE                                   :{COMMA}%
 
 STR_CONFIG_SETTING_ROAD_VEHICLE_SLOPE_STEEPNESS                 :Ângulo de inclínação para veículos rodoviários: {STRING}
-STR_CONFIG_SETTING_ROAD_VEHICLE_SLOPE_STEEPNESS_HELPTEXT        :Declive de um quadrado inclinado para um veiculo de estrada. Valores mais altos tornam mais difícil de subir.
+STR_CONFIG_SETTING_ROAD_VEHICLE_SLOPE_STEEPNESS_HELPTEXT        :Declive de um mosaico inclinado para um veiculo de estrada. Valores mais altos tornam mais difícil de subir.
 
 STR_CONFIG_SETTING_FORBID_90_DEG                                :Proibir comboios fazer curvas de 90º: {STRING}
-STR_CONFIG_SETTING_FORBID_90_DEG_HELPTEXT                       :Curvas de 90 graus ocorrem quando uma pista horizontal é directamente seguida por outra vertical num quadrado adjacente, fazendo com que o combóio vire 90 graus quando atravessa a fronteira dos quadrados, ao invés dos habituais 45 graus para outras combinações de pistas.
+STR_CONFIG_SETTING_FORBID_90_DEG_HELPTEXT                       :Curvas de 90 graus ocorrem quando uma pista horizontal é diretamente seguida por outra vertical num mosaico adjacente, fazendo com que o comboio vire 90 graus quando atravessa a fronteira dos mosaicos, ao invés dos habituais 45 graus para outras combinações de pistas.
 
 STR_CONFIG_SETTING_DISTANT_JOIN_STATIONS                        :Permitir juntar estações não adjacentes: {STRING}
 STR_CONFIG_SETTING_DISTANT_JOIN_STATIONS_HELPTEXT               :Permite acrescentar partes a uma estação sem tocar diretamente nas partes já existentes, fazendo Ctrl+Clique enquanto coloca as novas partes
@@ -1492,7 +1495,7 @@ STR_CONFIG_SETTING_NEVER_EXPIRE_VEHICLES                        :Veículos nunca
 STR_CONFIG_SETTING_NEVER_EXPIRE_VEHICLES_HELPTEXT               :Quando ativo, todos os modelos de veículos permanecerão disponíveis para sempre após a sua introdução
 
 STR_CONFIG_SETTING_TIMEKEEPING_UNITS                            :Unidades de cronometragem: {STRING}
-STR_CONFIG_SETTING_TIMEKEEPING_UNITS_HELPTEXT                   :Selecione as unidades de cronometragem do jogo. Isso não pode ser alterado posteriormente.{}{}O uso baseado no calendário é a experiência clássica do OpenTTD, em que um ano corresponde a 12 meses e cada mês tem 28 a 31 dias.{}{}No tempo baseado no relógio de parede, o movimento de veículos, a produção de carga e as finanças baseiam-se em incrementos de um minuto, o que equivale a um mês de 30 dias no modo baseado no calendário. Eles são agrupados em períodos de 12 minutos, equivalentes a um ano no modo baseado em calendário.{}{}Em ambos os modos há sempre um calendário clássico, que é usado para datas de introdução de veículos, casas e outras infraestruturas.
+STR_CONFIG_SETTING_TIMEKEEPING_UNITS_HELPTEXT                   :Selecione as unidades de cronometragem do jogo. Isto não pode ser alterado posteriormente.{}{}O uso baseado no calendário é a experiência clássica do OpenTTD, em que um ano corresponde a 12 meses e cada mês tem 28 a 31 dias.{}{}No tempo baseado no relógio de parede, o movimento de veículos, a produção de carga e as finanças baseiam-se em incrementos de um minuto, o que equivale a um mês de 30 dias no modo baseado no calendário. Estes são agrupados em períodos de 12 minutos, equivalentes a um ano no modo baseado em calendário.{}{}Em ambos os modos há sempre um calendário clássico, que é usado para datas de introdução de veículos, casas e outras infraestruturas.
 ###length 2
 STR_CONFIG_SETTING_TIMEKEEPING_UNITS_CALENDAR                   :Calendário
 STR_CONFIG_SETTING_TIMEKEEPING_UNITS_WALLCLOCK                  :Relógio de parede
@@ -1646,7 +1649,7 @@ STR_CONFIG_SETTING_SMOOTH_SCROLLING                             :Suavizar desloc
 STR_CONFIG_SETTING_SMOOTH_SCROLLING_HELPTEXT                    :Controla como a vista principal navega para uma posição específica ao clicar no mapa pequeno ou ao dar um comando para navegar para um objeto específico no mapa. Se ativo, a vista principal navega suavemente, se inativo a vista salta diretamente para o destino.
 
 STR_CONFIG_SETTING_MEASURE_TOOLTIP                              :Mostrar medidas nas várias ferramentas de construção: {STRING}
-STR_CONFIG_SETTING_MEASURE_TOOLTIP_HELPTEXT                     :Mostrar distâncias em quadrados e diferenças de altura enquanto arrasta o rato durante tarefas de construção
+STR_CONFIG_SETTING_MEASURE_TOOLTIP_HELPTEXT                     :Mostrar distâncias em mosaicos e diferenças de altura enquanto arrasta o rato durante tarefas de construção
 
 STR_CONFIG_SETTING_LIVERIES                                     :Mostrar estampagens da empresa: {STRING}
 STR_CONFIG_SETTING_LIVERIES_HELPTEXT                            :Controla a utilização de decorações específicas por tipo de veículo (em vez de decorações por empresa)
@@ -1919,7 +1922,7 @@ STR_CONFIG_SETTING_FEEDER_PAYMENT_SHARE_HELPTEXT                :Percentagem da 
 
 STR_CONFIG_SETTING_DRAG_SIGNALS_DENSITY                         :Ao arrastar, colocar sinais a cada: {STRING}
 STR_CONFIG_SETTING_DRAG_SIGNALS_DENSITY_HELPTEXT                :Define a distância a que os sinais serão construídos num carril até ao próximo obstáculo (sinal, junção), se os sinais são arrastados
-STR_CONFIG_SETTING_DRAG_SIGNALS_DENSITY_VALUE                   :{COMMA} quadrado{P 0 "" s}
+STR_CONFIG_SETTING_DRAG_SIGNALS_DENSITY_VALUE                   :{COMMA} mosaico{P 0 "" s}
 STR_CONFIG_SETTING_DRAG_SIGNALS_FIXED_DISTANCE                  :Ao arrastar, manter distância fixa entre sinais: {STRING}
 STR_CONFIG_SETTING_DRAG_SIGNALS_FIXED_DISTANCE_HELPTEXT         :Selecionar o comportamento da colocação de sinais ao Ctrl+Arrastar os sinais. Se desativado, os sinais são colocados à volta de túneis ou pontes para evitar longos trajetos sem sinais. Se ativo, os sinais são colocados a cada N mosaicos, facilitando o alinhamento de sinais em linhas paralelas
 
@@ -2410,7 +2413,7 @@ STR_NETWORK_SERVER_LIST_REFRESH_TOOLTIP                         :{BLACK}Renovar 
 STR_NETWORK_SERVER_LIST_SEARCH_SERVER_INTERNET                  :{BLACK}Pesquisar na internet
 STR_NETWORK_SERVER_LIST_SEARCH_SERVER_INTERNET_TOOLTIP          :{BLACK}Pesquisar servidores públicos na internet
 STR_NETWORK_SERVER_LIST_SEARCH_SERVER_LAN                       :{BLACK}Search LAN
-STR_NETWORK_SERVER_LIST_SEARCH_SERVER_LAN_TOOLTIP               :{BLACK} Pesquisa de rede local para servidores
+STR_NETWORK_SERVER_LIST_SEARCH_SERVER_LAN_TOOLTIP               :{BLACK}Pesquisar por servidores na rede local
 STR_NETWORK_SERVER_LIST_ADD_SERVER                              :{BLACK}Adicionar servidor
 STR_NETWORK_SERVER_LIST_ADD_SERVER_TOOLTIP                      :{BLACK}Adiciona um servidor à lista. Pode ser um endereço de servidor ou um código de convite
 STR_NETWORK_SERVER_LIST_START_SERVER                            :{BLACK}Iniciar servidor
@@ -2963,14 +2966,14 @@ STR_OBJECT_BUILD_CAPTION                                        :{WHITE}Selecç�
 STR_OBJECT_BUILD_TOOLTIP                                        :{BLACK}Selecionar objeto para construir. Ctrl+Clique+Arrastar para selecionar a área diagonalmente. Pressione também Shift para apenas mostrar o custo estimado
 STR_OBJECT_BUILD_CLASS_TOOLTIP                                  :{BLACK}Selecionar a classe do objecto a construir
 STR_OBJECT_BUILD_PREVIEW_TOOLTIP                                :{BLACK}Pré-visualização do objecto
-STR_OBJECT_BUILD_SIZE                                           :{BLACK}Tamanho: {GOLD}{NUM} x {NUM} quadrados
+STR_OBJECT_BUILD_SIZE                                           :{BLACK}Tamanho: {GOLD}{NUM} x {NUM} mosaicos
 
 STR_OBJECT_CLASS_LTHS                                           :Faróis
 STR_OBJECT_CLASS_TRNS                                           :Transmissores
 
 # Tree planting window (last eight for SE only)
 STR_PLANT_TREE_CAPTION                                          :{WHITE}Árvores
-STR_PLANT_TREE_TOOLTIP                                          :{BLACK}Escolha um tipo de árvore para plantar. Se o quadrado já tiver uma árvore, serão adicionadas mais árvores de difrentes tipos independentemente do tipo selecionado
+STR_PLANT_TREE_TOOLTIP                                          :{BLACK}Escolha um tipo de árvore para plantar. Se o mosaico já tiver uma árvore, serão adicionadas mais árvores de difrentes tipos independentemente do tipo selecionado
 STR_TREES_RANDOM_TYPE                                           :{BLACK}Árvores de tipo aleatório
 STR_TREES_RANDOM_TYPE_TOOLTIP                                   :{BLACK}Plantar árvores de tipo aleatório. Ctrl+Clique+Arrastar para selecionar a área na diagonal. Pressione também Shift para apenas mostrar o custo estimado
 STR_TREES_RANDOM_TREES_BUTTON                                   :{BLACK}Plantar aleatoriamente
@@ -3082,7 +3085,7 @@ STR_LAND_AREA_INFORMATION_STATION_CLASS                         :{BLACK}Tipo de 
 STR_LAND_AREA_INFORMATION_STATION_TYPE                          :{BLACK}Tipo de estação: {LTBLUE}{STRING}
 STR_LAND_AREA_INFORMATION_AIRPORT_CLASS                         :{BLACK}Tipo de aeroporto: {LTBLUE}{STRING}
 STR_LAND_AREA_INFORMATION_AIRPORT_NAME                          :{BLACK}Nome do aeroporto: {LTBLUE}{STRING}
-STR_LAND_AREA_INFORMATION_AIRPORTTILE_NAME                      :{BLACK}Nome do quadrado do aeroporto: {LTBLUE}{STRING}
+STR_LAND_AREA_INFORMATION_AIRPORTTILE_NAME                      :{BLACK}Nome do mosaico do aeroporto: {LTBLUE}{STRING}
 STR_LAND_AREA_INFORMATION_NEWGRF_NAME                           :{BLACK}NewGRF: {LTBLUE}{STRING}
 STR_LAND_AREA_INFORMATION_CARGO_ACCEPTED                        :{BLACK}Carga aceite: {LTBLUE}
 STR_LAND_AREA_INFORMATION_CARGO_EIGHTS                          :({COMMA}/8 {STRING})
@@ -3218,9 +3221,9 @@ STR_FRAMERATE_GAMELOOP                                          :Total de loops 
 STR_FRAMERATE_GL_ECONOMY                                        :{BLACK}  Movimentação de carga:
 STR_FRAMERATE_GL_TRAINS                                         :{BLACK}  Quantidade de atraso no percurso do Comboio:
 STR_FRAMERATE_GL_ROADVEHS                                       :{BLACK}Quantidade de atraso no percurso do veículo rodoviário:
-STR_FRAMERATE_GL_SHIPS                                          :{BLACK}  Ship ticks:
+STR_FRAMERATE_GL_SHIPS                                          :{BLACK}  Tiques de navio:
 STR_FRAMERATE_GL_AIRCRAFT                                       :{BLACK} Quantidade de atraso no percurso de Aeronave:
-STR_FRAMERATE_GL_LANDSCAPE                                      :{BLACK}  World ticks:
+STR_FRAMERATE_GL_LANDSCAPE                                      :{BLACK} Tiques do mundo:
 STR_FRAMERATE_GL_LINKGRAPH                                      :{BLACK}  Atraso no gráfico de ligação:
 STR_FRAMERATE_DRAWING                                           :{BLACK}Renderização gráfica:
 STR_FRAMERATE_DRAWING_VIEWPORTS                                 :{BLACK}  Visualizadores do mundo:
@@ -3884,8 +3887,8 @@ STR_COMPANY_VIEW_COMPANY_VALUE                                  :{GOLD}Valor da 
 STR_COMPANY_VIEW_INFRASTRUCTURE                                 :{GOLD}Infraestrutura:
 STR_COMPANY_VIEW_INFRASTRUCTURE_RAIL                            :{WHITE}{COMMA} {P "secção" "secções" } de caminho-de-ferro
 STR_COMPANY_VIEW_INFRASTRUCTURE_ROAD                            :{WHITE}{COMMA} {P "secção" "secções"} de estrada
-STR_COMPANY_VIEW_INFRASTRUCTURE_WATER                           :{WHITE}{COMMA} mosaico{P "" s} de água
-STR_COMPANY_VIEW_INFRASTRUCTURE_STATION                         :{WHITE}{COMMA} bloco{P "" s} de estação
+STR_COMPANY_VIEW_INFRASTRUCTURE_WATER                           :{WHITE}{COMMA} mosaico{P "" s} com água
+STR_COMPANY_VIEW_INFRASTRUCTURE_STATION                         :{WHITE}{COMMA} mosaico{P "" s} de estação
 STR_COMPANY_VIEW_INFRASTRUCTURE_AIRPORT                         :{WHITE}{COMMA} aeroporto{P "" s}
 STR_COMPANY_VIEW_INFRASTRUCTURE_NONE                            :{WHITE}Nenhum
 
@@ -3924,7 +3927,7 @@ STR_COMPANY_INFRASTRUCTURE_VIEW_RAIL_SECT                       :{GOLD}Secções
 STR_COMPANY_INFRASTRUCTURE_VIEW_SIGNALS                         :{WHITE}Sinais
 STR_COMPANY_INFRASTRUCTURE_VIEW_ROAD_SECT                       :{GOLD}Secções de estrada:
 STR_COMPANY_INFRASTRUCTURE_VIEW_TRAM_SECT                       :{GOLD}Secções de elétricos:
-STR_COMPANY_INFRASTRUCTURE_VIEW_WATER_SECT                      :{GOLD}Mosaicos de água:
+STR_COMPANY_INFRASTRUCTURE_VIEW_WATER_SECT                      :{GOLD}Mosaicos com água:
 STR_COMPANY_INFRASTRUCTURE_VIEW_CANALS                          :{WHITE}Canais
 STR_COMPANY_INFRASTRUCTURE_VIEW_STATION_SECT                    :{GOLD}Estações:
 STR_COMPANY_INFRASTRUCTURE_VIEW_STATIONS                        :{WHITE}Mosaicos de estações
@@ -4086,7 +4089,7 @@ STR_PURCHASE_INFO_NONE                                          :Nenhum
 STR_PURCHASE_INFO_ENGINES_ONLY                                  :Apenas locomotivas
 STR_PURCHASE_INFO_ALL_BUT                                       :Todas menos {CARGO_LIST}
 STR_PURCHASE_INFO_MAX_TE                                        :{BLACK}Máx. Força de Tracção: {GOLD}{FORCE}
-STR_PURCHASE_INFO_AIRCRAFT_RANGE                                :{BLACK}Alcance: {GOLD}{COMMA} quadrados
+STR_PURCHASE_INFO_AIRCRAFT_RANGE                                :{BLACK}Alcance: {GOLD}{COMMA} mosaicos
 STR_PURCHASE_INFO_AIRCRAFT_TYPE                                 :{BLACK}Tipo de aeronave: {GOLD}{STRING}
 
 ###length 3
@@ -4382,22 +4385,22 @@ STR_VEHICLE_STATUS_WAITING_UNBUNCHING                           :{LTBLUE}Em espe
 STR_VEHICLE_STATUS_CRASHED                                      :{RED}Acidentado!
 STR_VEHICLE_STATUS_BROKEN_DOWN                                  :{RED}Avariado
 STR_VEHICLE_STATUS_STOPPED                                      :{RED}Parado
-STR_VEHICLE_STATUS_TRAIN_STOPPING_VEL                           :{RED}A Parar, {VELOCITY}
+STR_VEHICLE_STATUS_TRAIN_STOPPING_VEL                           :{RED}{VELOCITY} - A parar
 STR_VEHICLE_STATUS_TRAIN_NO_POWER                               :{RED}Sem energia
 STR_VEHICLE_STATUS_TRAIN_STUCK                                  :{ORANGE}Esperando por caminho livre
 STR_VEHICLE_STATUS_AIRCRAFT_TOO_FAR                             :{ORANGE}Longe de mais ao próximo destino
 
-STR_VEHICLE_STATUS_HEADING_FOR_STATION_VEL                      :{LTBLUE}Dirige-se a {STATION}, {VELOCITY}
-STR_VEHICLE_STATUS_NO_ORDERS_VEL                                :{LTBLUE}Sem ordens, {VELOCITY}
-STR_VEHICLE_STATUS_HEADING_FOR_WAYPOINT_VEL                     :{LTBLUE}Dirige-se a {WAYPOINT}, {VELOCITY}
-STR_VEHICLE_STATUS_HEADING_FOR_DEPOT_VEL                        :{ORANGE}Dirige-se para {DEPOT}, {VELOCITY}
-STR_VEHICLE_STATUS_HEADING_FOR_DEPOT_SERVICE_VEL                :{LTBLUE}Manutenção em {DEPOT}, {VELOCITY}
-STR_VEHICLE_STATUS_HEADING_FOR_DEPOT_UNBUNCH_VEL                :{LTBLUE}Desagrupar e efetuar manutenção em {DEPOT}, {VELOCITY}
+STR_VEHICLE_STATUS_HEADING_FOR_STATION_VEL                      :{LTBLUE}{1:VELOCITY} - Dirige-se para {0:STATION}
+STR_VEHICLE_STATUS_NO_ORDERS_VEL                                :{LTBLUE}{VELOCITY} - Sem ordens
+STR_VEHICLE_STATUS_HEADING_FOR_WAYPOINT_VEL                     :{LTBLUE}{1:VELOCITY} - Dirige-se para {0:WAYPOINT}
+STR_VEHICLE_STATUS_HEADING_FOR_DEPOT_VEL                        :{ORANGE}{1:VELOCITY} - Dirige-se para {0:DEPOT}
+STR_VEHICLE_STATUS_HEADING_FOR_DEPOT_SERVICE_VEL                :{LTBLUE}{1:VELOCITY} - Manutenção em {0:DEPOT}
+STR_VEHICLE_STATUS_HEADING_FOR_DEPOT_UNBUNCH_VEL                :{LTBLUE}{1:VELOCITY} - Desagrupar e efetuar manutenção em {0:DEPOT}
 
-STR_VEHICLE_STATUS_CANNOT_REACH_STATION_VEL                     :{LTBLUE}Não é possível chegar a {STATION}, {VELOCITY}
-STR_VEHICLE_STATUS_CANNOT_REACH_WAYPOINT_VEL                    :{LTBLUE}Não é possível chegar a {WAYPOINT}, {VELOCITY}
-STR_VEHICLE_STATUS_CANNOT_REACH_DEPOT_VEL                       :{ORANGE}Não é possível chegar a {DEPOT}, {VELOCITY}
-STR_VEHICLE_STATUS_CANNOT_REACH_DEPOT_SERVICE_VEL               :{LTBLUE}Não é possível chegar a {DEPOT}, {VELOCITY}
+STR_VEHICLE_STATUS_CANNOT_REACH_STATION_VEL                     :{LTBLUE}{1:VELOCITY} - Não é possível chegar a {0:STATION}
+STR_VEHICLE_STATUS_CANNOT_REACH_WAYPOINT_VEL                    :{LTBLUE}{1:VELOCITY} - Não é possível chegar a {0:WAYPOINT}
+STR_VEHICLE_STATUS_CANNOT_REACH_DEPOT_VEL                       :{ORANGE}{1:VELOCITY} - Não é possível chegar a {0:DEPOT}
+STR_VEHICLE_STATUS_CANNOT_REACH_DEPOT_SERVICE_VEL               :{LTBLUE}{1:VELOCITY} - Não é possível chegar a {0:DEPOT}
 
 # Vehicle stopped/started animations
 ###length 2
@@ -4611,7 +4614,7 @@ STR_ORDER_GO_TO_NEAREST_DEPOT                                   :Ir para o depó
 STR_ORDER_GO_TO_NEAREST_HANGAR                                  :Ir para o hangar mais próximo
 STR_ORDER_CONDITIONAL                                           :Saltar ordem condicional
 STR_ORDER_SHARE                                                 :Partilhar ordens
-STR_ORDERS_GO_TO_TOOLTIP                                        :{BLACK}Inserir uma nova ordem antes da ordem selecionada, ou acrescentar ao fim da lista. Ctrl+Clique numa estação para 'encher completamente qualquer carga'; num ponto de controlo para inverter a definição 'sem paragem por omissão', ou num depósito para 'manutenção'. Clique noutro veículo para copiar as suas ordens ou Ctrl+Clique para partilhar ordens. Uma ordem para depósito desativa a manutenção programada automática do veículo.
+STR_ORDERS_GO_TO_TOOLTIP                                        :{BLACK}Inserir uma nova ordem antes da ordem selecionada, ou acrescentar ao fim da lista. Ctrl+Clique numa estação para 'encher completamente qualquer carga'; num ponto de controlo para inverter a definição 'sem paragem por omissão', ou num depósito para 'desagrupar'. Clique noutro veículo para copiar as suas ordens ou Ctrl+Clique para partilhar ordens. Uma ordem para depósito desativa a manutenção programada automática do veículo.
 
 STR_ORDERS_VEH_WITH_SHARED_ORDERS_LIST_TOOLTIP                  :{BLACK}Mostra todos os veículos que seguem este mesmo trajecto
 
@@ -4841,8 +4844,6 @@ STR_AI_SETTINGS_CAPTION_GAMESCRIPT                              :Script de Jogo
 STR_AI_SETTINGS_CLOSE                                           :{BLACK}Fechar
 STR_AI_SETTINGS_RESET                                           :{BLACK}Repor
 STR_AI_SETTINGS_SETTING                                         :{STRING}: {ORANGE}{STRING}
-STR_AI_SETTINGS_SETTING_DEVIATION                               :{STRING}: {ORANGE}[{STRING}, {STRING}]
-STR_AI_SETTINGS_JUST_DEVIATION                                  :[{STRING}, {STRING}]
 
 
 # Textfile window
@@ -4909,7 +4910,7 @@ STR_GAME_SAVELOAD_NOT_AVAILABLE                                 :<indisponível>
 STR_WARNING_LOADGAME_REMOVED_TRAMS                              :{WHITE}O jogo foi salvo numa versão sem suporte para eléctricos. Todos os elétricos foram removidos.
 
 # Map generation messages
-STR_ERROR_COULD_NOT_CREATE_TOWN                                 :{WHITE}Geração de mapa abortada...{}... não há locais apropriados para localidades
+STR_ERROR_COULD_NOT_CREATE_TOWN                                 :{WHITE}Geração de mapa cancelada...{}... não há locais apropriados para localidades
 STR_ERROR_NO_TOWN_IN_SCENARIO                                   :{WHITE}... não existe nenhuma localidade neste cenário
 
 STR_ERROR_PNGMAP                                                :{WHITE}Impossível carregar paisagem do PNG...
@@ -4954,7 +4955,7 @@ STR_ERROR_ALREADY_BUILT                                         :{WHITE}... já 
 STR_ERROR_OWNED_BY                                              :{WHITE}... propriedade de {STRING}
 STR_ERROR_AREA_IS_OWNED_BY_ANOTHER                              :{WHITE}... a área é propriedade de outra empresa
 STR_ERROR_TERRAFORM_LIMIT_REACHED                               :{WHITE}... atingido o limite para terraformação
-STR_ERROR_CLEARING_LIMIT_REACHED                                :{WHITE}... atingido o limite para limpeza de quadrados
+STR_ERROR_CLEARING_LIMIT_REACHED                                :{WHITE}... limite para limpeza de mosaicos atingido
 STR_ERROR_TREE_PLANT_LIMIT_REACHED                              :{WHITE}... limite de plantação de árvores alcançado
 STR_ERROR_NAME_MUST_BE_UNIQUE                                   :{WHITE}Nome deve ser único
 STR_ERROR_GENERIC_OBJECT_IN_THE_WAY                             :{WHITE}{1:STRING} no caminho
@@ -5807,6 +5808,11 @@ STR_STATION_NAME                                                :{STATION}
 STR_TOWN_NAME                                                   :{TOWN}
 STR_VEHICLE_NAME                                                :{VEHICLE}
 STR_WAYPOINT_NAME                                               :{WAYPOINT}
+
+STR_CURRENCY_SHORT_KILO                                         :{NBSP}k
+STR_CURRENCY_SHORT_MEGA                                         :{NBSP}M
+STR_CURRENCY_SHORT_GIGA                                         :{NBSP}G
+STR_CURRENCY_SHORT_TERA                                         :{NBSP}T
 
 STR_JUST_CARGO                                                  :{CARGO_LONG}
 STR_JUST_RIGHT_ARROW                                            :{RIGHT_ARROW}
