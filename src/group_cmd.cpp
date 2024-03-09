@@ -142,7 +142,7 @@ uint16_t GroupStatistics::GetNumEngines(EngineID engine) const
 	stats.num_vehicle += delta;
 	stats.profit_last_year += v->GetDisplayProfitLastYear() * delta;
 
-	if (v->age > VEHICLE_PROFIT_MIN_AGE) {
+	if (v->economy_age > VEHICLE_PROFIT_MIN_AGE) {
 		stats_all.num_vehicle_min_age += delta;
 		stats_all.profit_last_year_min_age += v->GetDisplayProfitLastYear() * delta;
 		stats.num_vehicle_min_age += delta;
@@ -209,7 +209,7 @@ uint16_t GroupStatistics::GetNumEngines(EngineID engine) const
 	for (const Vehicle *v : Vehicle::Iterate()) {
 		if (v->IsPrimaryVehicle()) {
 			GroupStatistics::AddProfitLastYear(v);
-			if (v->age > VEHICLE_PROFIT_MIN_AGE) GroupStatistics::VehicleReachedMinAge(v);
+			if (v->economy_age > VEHICLE_PROFIT_MIN_AGE) GroupStatistics::VehicleReachedMinAge(v);
 		}
 	}
 }

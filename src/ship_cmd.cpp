@@ -266,6 +266,8 @@ void Ship::OnNewCalendarDay()
 /** Economy day handler. */
 void Ship::OnNewEconomyDay()
 {
+	EconomyAgeVehicle(this);
+
 	if ((++this->day_counter & 7) == 0) {
 		DecreaseVehicleValue(this);
 	}

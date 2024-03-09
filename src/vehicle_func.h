@@ -12,6 +12,7 @@
 
 #include "gfx_type.h"
 #include "direction_type.h"
+#include "timer/timer_game_economy.h"
 #include "command_type.h"
 #include "vehicle_type.h"
 #include "engine_type.h"
@@ -24,7 +25,7 @@
 #define IS_CUSTOM_FIRSTHEAD_SPRITE(x) (x == 0xFD)
 #define IS_CUSTOM_SECONDHEAD_SPRITE(x) (x == 0xFE)
 
-static const int VEHICLE_PROFIT_MIN_AGE = CalendarTime::DAYS_IN_YEAR * 2; ///< Only vehicles older than this have a meaningful profit.
+static const TimerGameEconomy::Date VEHICLE_PROFIT_MIN_AGE = CalendarTime::DAYS_IN_YEAR * 2; ///< Only vehicles older than this have a meaningful profit.
 static const Money VEHICLE_PROFIT_THRESHOLD = 10000;        ///< Threshold for a vehicle to be considered making good profit.
 
 /**
@@ -61,6 +62,7 @@ CommandCost TunnelBridgeIsFree(TileIndex tile, TileIndex endtile, const Vehicle 
 
 void DecreaseVehicleValue(Vehicle *v);
 void CheckVehicleBreakdown(Vehicle *v);
+void EconomyAgeVehicle(Vehicle *v);
 void AgeVehicle(Vehicle *v);
 void RunVehicleCalendarDayProc();
 void VehicleEnteredDepotThisTick(Vehicle *v);
