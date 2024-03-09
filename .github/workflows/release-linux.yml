@@ -124,7 +124,7 @@ jobs:
         )
 
         echo "::group::Install breakpad dependencies"
-        cargo install dump_syms
+        cargo install --locked dump_syms
         echo "::endgroup::"
 
     - name: Install GCC problem matcher

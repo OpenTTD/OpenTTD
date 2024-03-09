@@ -19,7 +19,7 @@ Now simply open up the `crash.dmp`, and start debugging.
 The best tool to use is `minidump-stackwalk` as published in the Rust's cargo index:
 
 ```bash
-cargo install minidump-stackwalk
+cargo install --locked minidump-stackwalk
 ```
 
 For how to install Rust, please see [here](https://doc.rust-lang.org/cargo/getting-started/installation.html).
