@@ -17,8 +17,8 @@ struct MusicSongInfo;
 
 struct MidiFile {
 	struct DataBlock {
-		uint32_t ticktime;        ///< tick number since start of file this block should be triggered at
-		uint32_t realtime;        ///< real-time (microseconds) since start of file this block should be triggered at
+		uint32_t ticktime; ///< tick number since start of file this block should be triggered at
+		uint32_t realtime = 0; ///< real-time (microseconds) since start of file this block should be triggered at
 		std::vector<byte> data; ///< raw midi data contained in block
 		DataBlock(uint32_t _ticktime = 0) : ticktime(_ticktime) { }
 	};
