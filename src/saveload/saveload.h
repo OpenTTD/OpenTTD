@@ -376,7 +376,8 @@ enum SaveLoadVersion : uint16_t {
 	SLV_MAX_LOAN_FOR_COMPANY,               ///< 330  PR#11224 Separate max loan for each company.
 	SLV_DEPOT_UNBUNCHING,                   ///< 331  PR#11945 Allow unbunching shared order vehicles at a depot.
 	SLV_AI_LOCAL_CONFIG,                    ///< 332  PR#12003 Config of running AI is stored inside Company.
-	SLV_SCRIPT_RANDOMIZER,                  ///< 333  PR#12063 Save script randomizers.
+	SLV_SCRIPT_RANDOMIZER,                  ///< 333  PR#12063 v14.0-RC1 Save script randomizers.
+	SLV_VEHICLE_ECONOMY_AGE,                ///< 334  PR#12141 v14.0 Add vehicle age in economy year, for profit stats minimum age
 
 	SL_MAX_VERSION,                         ///< Highest possible saveload version
 };

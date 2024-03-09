@@ -285,7 +285,8 @@ public:
 
 	/* Related to age and service time */
 	TimerGameCalendar::Year build_year;           ///< Year the vehicle has been built.
-	TimerGameCalendar::Date age;                  ///< Age in days
+	TimerGameCalendar::Date age;                  ///< Age in calendar days.
+	TimerGameEconomy::Date economy_age;           ///< Age in economy days.
 	TimerGameCalendar::Date max_age;              ///< Maximum age
 	TimerGameEconomy::Date date_of_last_service; ///< Last economy date the vehicle had a service at a depot.
 	TimerGameCalendar::Date date_of_last_service_newgrf; ///< Last calendar date the vehicle had a service at a depot, unchanged by the date cheat to protect against unsafe NewGRF behavior.

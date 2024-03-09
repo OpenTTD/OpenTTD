@@ -456,6 +456,7 @@ void Aircraft::OnNewCalendarDay()
 void Aircraft::OnNewEconomyDay()
 {
 	if (!this->IsNormalAircraft()) return;
+	EconomyAgeVehicle(this);
 
 	if ((++this->day_counter & 7) == 0) DecreaseVehicleValue(this);
 
