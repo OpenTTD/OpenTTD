@@ -1007,55 +1007,49 @@ CommandCost CmdBuildLongRoad(DoCommandFlag flags, TileIndex end_tile, TileIndex 
 	bool had_bridge = false;
 	bool had_tunnel = false;
 	bool had_success = false;
-	bool under_tunnelbridge = false;
 
 	/* Start tile is the first tile clicked by the user. */
 	for (;;) {
-		/* Don't try to place road between tunnelbridge ends */
-		if (IsTileType(tile, MP_TUNNELBRIDGE)) {
-			under_tunnelbridge = !under_tunnelbridge;
-		} else if (!under_tunnelbridge) {
-			RoadBits bits = AxisToRoadBits(axis);
+		RoadBits bits = AxisToRoadBits(axis);
 
-			/* Determine which road parts should be built. */
-			if (!is_ai && start_tile != end_tile) {
-				/* Only build the first and last roadbit if they can connect to something. */
-				if (tile == end_tile && !CanConnectToRoad(tile, rt, dir)) {
-					bits = DiagDirToRoadBits(ReverseDiagDir(dir));
-				} else if (tile == start_tile && !CanConnectToRoad(tile, rt, ReverseDiagDir(dir))) {
-					bits = DiagDirToRoadBits(dir);
-				}
-			} else {
-				/* Road parts only have to be built at the start tile or at the end tile. */
-				if (tile == end_tile && !end_half) bits &= DiagDirToRoadBits(ReverseDiagDir(dir));
-				if (tile == start_tile && start_half) bits &= DiagDirToRoadBits(dir);
+		/* Determine which road parts should be built. */
+		if (!is_ai && start_tile != end_tile) {
+			/* Only build the first and last roadbit if they can connect to something. */
+			if (tile == end_tile && !CanConnectToRoad(tile, rt, dir)) {
+				bits = DiagDirToRoadBits(ReverseDiagDir(dir));
+			} else if (tile == start_tile && !CanConnectToRoad(tile, rt, ReverseDiagDir(dir))) {
+				bits = DiagDirToRoadBits(dir);
 			}
+		} else {
+			/* Road parts only have to be built at the start tile or at the end tile. */
+			if (tile == end_tile && !end_half) bits &= DiagDirToRoadBits(ReverseDiagDir(dir));
+			if (tile == start_tile && start_half) bits &= DiagDirToRoadBits(dir);
+		}
 
-			CommandCost ret = Command<CMD_BUILD_ROAD>::Do(flags, tile, bits, rt, drd, 0);
-			if (ret.Failed()) {
-				last_error = ret;
-				if (last_error.GetErrorMessage() != STR_ERROR_ALREADY_BUILT) {
-					if (is_ai) return last_error;
-					if (had_success) break; // Keep going if we haven't constructed any road yet, skipping the start of the drag
+		CommandCost ret = Command<CMD_BUILD_ROAD>::Do(flags, tile, bits, rt, drd, 0);
+		if (ret.Failed()) {
+			last_error = ret;
+			if (last_error.GetErrorMessage() != STR_ERROR_ALREADY_BUILT) {
+				if (is_ai) return last_error;
+				if (had_success) break; // Keep going if we haven't constructed any road yet, skipping the start of the drag
+			}
+		} else {
+			had_success = true;
+			/* Only pay for the upgrade on one side of the bridges and tunnels */
+			if (IsTileType(tile, MP_TUNNELBRIDGE)) {
+				if (IsBridge(tile)) {
+					if (!had_bridge || GetTunnelBridgeDirection(tile) == dir) {
+						cost.AddCost(ret);
+					}
+					had_bridge = true;
+				} else { // IsTunnel(tile)
+					if (!had_tunnel || GetTunnelBridgeDirection(tile) == dir) {
+						cost.AddCost(ret);
+					}
+					had_tunnel = true;
 				}
 			} else {
-				had_success = true;
-				/* Only pay for the upgrade on one side of the bridges and tunnels */
-				if (IsTileType(tile, MP_TUNNELBRIDGE)) {
-					if (IsBridge(tile)) {
-						if (!had_bridge || GetTunnelBridgeDirection(tile) == dir) {
-							cost.AddCost(ret);
-						}
-						had_bridge = true;
-					} else { // IsTunnel(tile)
-						if (!had_tunnel || GetTunnelBridgeDirection(tile) == dir) {
-							cost.AddCost(ret);
-						}
-						had_tunnel = true;
-					}
-				} else {
-					cost.AddCost(ret);
-				}
+				cost.AddCost(ret);
 			}
 		}
 
