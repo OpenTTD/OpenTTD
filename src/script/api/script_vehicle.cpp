@@ -13,6 +13,7 @@
 #include "script_gamesettings.hpp"
 #include "script_group.hpp"
 #include "script_map.hpp"
+#include "script_timemode.hpp"
 #include "../script_instance.hpp"
 #include "../../string_func.h"
 #include "../../strings_func.h"
@@ -307,37 +308,43 @@
 	return GetString(STR_VEHICLE_NAME);
 }
 
-/* static */ SQInteger ScriptVehicle::GetAge(VehicleID vehicle_id)
+/* static */ ScriptDate::Date ScriptVehicle::GetAge(VehicleID vehicle_id)
 {
-	if (!IsValidVehicle(vehicle_id)) return -1;
+	if (!IsValidVehicle(vehicle_id)) return ScriptDate::DATE_INVALID;
 
-	return ::Vehicle::Get(vehicle_id)->age.base();
+	if (ScriptTimeMode::IsCalendarMode()) return (ScriptDate::Date)::Vehicle::Get(vehicle_id)->age.base();
+
+	return (ScriptDate::Date)::Vehicle::Get(vehicle_id)->economy_age.base();
 }
 
-/* static */ SQInteger ScriptVehicle::GetWagonAge(VehicleID vehicle_id, SQInteger wagon)
+/* static */ ScriptDate::Date ScriptVehicle::GetWagonAge(VehicleID vehicle_id, SQInteger wagon)
 {
-	if (!IsValidVehicle(vehicle_id)) return -1;
-	if (wagon >= GetNumWagons(vehicle_id)) return -1;
+	if (!IsValidVehicle(vehicle_id)) return ScriptDate::DATE_INVALID;
+	if (wagon >= GetNumWagons(vehicle_id)) return ScriptDate::DATE_INVALID;
 
 	const Vehicle *v = ::Vehicle::Get(vehicle_id);
 	if (v->type == VEH_TRAIN) {
 		while (wagon-- > 0) v = ::Train::From(v)->GetNextUnit();
 	}
-	return v->age.base();
+	if (ScriptTimeMode::IsCalendarMode()) return (ScriptDate::Date)v->age.base();
+
+	return (ScriptDate::Date)v->economy_age.base();
 }
 
-/* static */ SQInteger ScriptVehicle::GetMaxAge(VehicleID vehicle_id)
+/* static */ ScriptDate::Date ScriptVehicle::GetMaxAge(VehicleID vehicle_id)
 {
-	if (!IsPrimaryVehicle(vehicle_id)) return -1;
+	if (!IsPrimaryVehicle(vehicle_id)) return ScriptDate::DATE_INVALID;
 
-	return ::Vehicle::Get(vehicle_id)->max_age.base();
+	if (ScriptTimeMode::IsCalendarMode()) return (ScriptDate::Date)::Vehicle::Get(vehicle_id)->max_age.base();
+
+	return (ScriptDate::Date)(::Vehicle::Get(vehicle_id)->max_age.base() * std::max<uint>(_settings_game.economy.minutes_per_calendar_year, CalendarTime::DEF_MINUTES_PER_YEAR) / CalendarTime::DEF_MINUTES_PER_YEAR);
 }
 
-/* static */ SQInteger ScriptVehicle::GetAgeLeft(VehicleID vehicle_id)
+/* static */ ScriptDate::Date ScriptVehicle::GetAgeLeft(VehicleID vehicle_id)
 {
-	if (!IsPrimaryVehicle(vehicle_id)) return -1;
+	if (!IsPrimaryVehicle(vehicle_id)) return ScriptDate::DATE_INVALID;
 
-	return (::Vehicle::Get(vehicle_id)->max_age - ::Vehicle::Get(vehicle_id)->age).base();
+	return (ScriptDate::Date)(GetMaxAge(vehicle_id) - GetAge(vehicle_id));
 }
 
 /* static */ SQInteger ScriptVehicle::GetCurrentSpeed(VehicleID vehicle_id)

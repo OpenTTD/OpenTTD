@@ -11,6 +11,7 @@
 #define SCRIPT_VEHICLE_HPP
 
 #include "script_road.hpp"
+#include "script_date.hpp"
 
 /**
  * Class that handles all vehicle related functions.
@@ -189,7 +190,7 @@ public:
 	 * @return The current age the vehicle has.
 	 * @note The age is in days.
 	 */
-	static SQInteger GetAge(VehicleID vehicle_id);
+	static ScriptDate::Date GetAge(VehicleID vehicle_id);
 
 	/**
 	 * Get the current age of a second (or third, etc.) engine in a train vehicle.
@@ -200,7 +201,7 @@ public:
 	 * @return The current age the vehicle has.
 	 * @note The age is in days.
 	 */
-	static SQInteger GetWagonAge(VehicleID vehicle_id, SQInteger wagon);
+	static ScriptDate::Date GetWagonAge(VehicleID vehicle_id, SQInteger wagon);
 
 	/**
 	 * Get the maximum age of a vehicle.
@@ -209,7 +210,7 @@ public:
 	 * @return The maximum age the vehicle has.
 	 * @note The age is in days.
 	 */
-	static SQInteger GetMaxAge(VehicleID vehicle_id);
+	static ScriptDate::Date GetMaxAge(VehicleID vehicle_id);
 
 	/**
 	 * Get the age a vehicle has left (maximum - current).
@@ -218,7 +219,7 @@ public:
 	 * @return The age the vehicle has left.
 	 * @note The age is in days.
 	 */
-	static SQInteger GetAgeLeft(VehicleID vehicle_id);
+	static ScriptDate::Date GetAgeLeft(VehicleID vehicle_id);
 
 	/**
 	 * Get the current speed of a vehicle.

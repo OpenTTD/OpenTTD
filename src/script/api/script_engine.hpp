@@ -128,7 +128,7 @@ public:
 	 * @returns The maximum age of a new engine in days.
 	 * @note Age is in days; divide by 366 to get per year.
 	 */
-	static SQInteger GetMaxAge(EngineID engine_id);
+	static ScriptDate::Date GetMaxAge(EngineID engine_id);
 
 	/**
 	 * Get the running cost of an engine.

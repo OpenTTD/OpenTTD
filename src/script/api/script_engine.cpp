@@ -10,6 +10,7 @@
 #include "../../stdafx.h"
 #include "script_engine.hpp"
 #include "script_cargo.hpp"
+#include "script_timemode.hpp"
 #include "../../company_base.h"
 #include "../../strings_func.h"
 #include "../../rail.h"
@@ -128,12 +129,14 @@
 	return ::Engine::Get(engine_id)->GetCost();
 }
 
-/* static */ SQInteger ScriptEngine::GetMaxAge(EngineID engine_id)
+/* static */ ScriptDate::Date ScriptEngine::GetMaxAge(EngineID engine_id)
 {
-	if (!IsValidEngine(engine_id)) return -1;
-	if (GetVehicleType(engine_id) == ScriptVehicle::VT_RAIL && IsWagon(engine_id)) return -1;
+	if (!IsValidEngine(engine_id)) return ScriptDate::DATE_INVALID;
+	if (GetVehicleType(engine_id) == ScriptVehicle::VT_RAIL && IsWagon(engine_id)) return ScriptDate::DATE_INVALID;
 
-	return ::Engine::Get(engine_id)->GetLifeLengthInDays().base();
+	if (ScriptTimeMode::IsCalendarMode()) return (ScriptDate::Date)::Engine::Get(engine_id)->GetLifeLengthInDays().base();
+
+	return (ScriptDate::Date)(::Engine::Get(engine_id)->GetLifeLengthInDays().base() * std::max<uint>(_settings_game.economy.minutes_per_calendar_year, CalendarTime::DEF_MINUTES_PER_YEAR) / CalendarTime::DEF_MINUTES_PER_YEAR);
 }
 
 /* static */ Money ScriptEngine::GetRunningCost(EngineID engine_id)
