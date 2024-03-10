@@ -258,13 +258,10 @@ CommandCost CmdBuildRailWaypoint(DoCommandFlag flags, TileIndex start_tile, Axis
 		wp->UpdateVirtCoord();
 
 		const StationSpec *spec = StationClass::Get(spec_class)->GetSpec(spec_index);
-		byte *layout_ptr = new byte[count];
-		if (spec == nullptr) {
-			/* The layout must be 0 for the 'normal' waypoints by design. */
-			memset(layout_ptr, 0, count);
-		} else {
-			/* But for NewGRF waypoints we like to have their style. */
-			GetStationLayout(layout_ptr, count, 1, spec);
+		std::vector<byte> layout(count);
+		if (spec != nullptr) {
+			/* For NewGRF waypoints we like to have their style. */
+			GetStationLayout(layout.data(), count, 1, spec);
 		}
 		byte map_spec_index = AllocateSpecToStation(spec, wp, true);
 
@@ -276,7 +273,7 @@ CommandCost CmdBuildRailWaypoint(DoCommandFlag flags, TileIndex start_tile, Axis
 			bool reserved = IsTileType(tile, MP_RAILWAY) ?
 					HasBit(GetRailReservationTrackBits(tile), AxisToTrack(axis)) :
 					HasStationReservation(tile);
-			MakeRailWaypoint(tile, wp->owner, wp->index, axis, layout_ptr[i], GetRailType(tile));
+			MakeRailWaypoint(tile, wp->owner, wp->index, axis, layout[i], GetRailType(tile));
 			SetCustomStationSpecIndex(tile, map_spec_index);
 
 			/* Should be the same as layout but axis component could be wrong... */
@@ -297,7 +294,6 @@ CommandCost CmdBuildRailWaypoint(DoCommandFlag flags, TileIndex start_tile, Axis
 			YapfNotifyTrackLayoutChange(tile, AxisToTrack(axis));
 		}
 		DirtyCompanyInfrastructureWindows(wp->owner);
-		delete[] layout_ptr;
 	}
 
 	return cost;
