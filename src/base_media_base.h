@@ -313,7 +313,7 @@ static const uint NUM_SONGS_AVAILABLE = 1 + NUM_SONG_CLASSES * NUM_SONGS_CLASS;
 static const uint NUM_SONGS_PLAYLIST  = 32;
 
 /* Functions to read DOS music CAT files, similar to but not quite the same as sound effect CAT files */
-char *GetMusicCatEntryName(const std::string &filename, size_t entrynum);
+std::optional<std::string> GetMusicCatEntryName(const std::string &filename, size_t entrynum);
 uint8_t *GetMusicCatEntryData(const std::string &filename, size_t entrynum, size_t &entrylen);
 
 enum MusicTrackType {
