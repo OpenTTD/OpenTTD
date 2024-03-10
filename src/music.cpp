@@ -47,29 +47,26 @@ std::optional<std::string> GetMusicCatEntryName(const std::string &filename, siz
  * Read the full data of a music CAT file entry.
  * @param filename Name of CAT file to read from.
  * @param entrynum Index of entry to read
- * @param[out] entrylen Receives length of data read
- * @return Pointer to buffer with data read, caller is responsible for freeind memory,
- *         nullptr if entrynum does not exist.
+ * @return Data of CAT file entry.
  */
-uint8_t *GetMusicCatEntryData(const std::string &filename, size_t entrynum, size_t &entrylen)
+std::optional<std::vector<uint8_t>> GetMusicCatEntryData(const std::string &filename, size_t entrynum)
 {
-	entrylen = 0;
-	if (!FioCheckFileExists(filename, BASESET_DIR)) return nullptr;
+	if (!FioCheckFileExists(filename, BASESET_DIR)) return std::nullopt;
 
 	RandomAccessFile file(filename, BASESET_DIR);
 	uint32_t ofs = file.ReadDword();
 	size_t entry_count = ofs / 8;
-	if (entrynum < entry_count) {
-		file.SeekTo(entrynum * 8, SEEK_SET);
-		size_t entrypos = file.ReadDword();
-		entrylen = file.ReadDword();
-		file.SeekTo(entrypos, SEEK_SET);
-		file.SkipBytes(file.ReadByte());
-		uint8_t *data = MallocT<uint8_t>(entrylen);
-		file.ReadBlock(data, entrylen);
-		return data;
-	}
-	return nullptr;
+	if (entrynum >= entry_count) return std::nullopt;
+
+	file.SeekTo(entrynum * 8, SEEK_SET);
+	size_t entrypos = file.ReadDword();
+	size_t entrylen = file.ReadDword();
+	file.SeekTo(entrypos, SEEK_SET);
+	file.SkipBytes(file.ReadByte());
+
+	std::vector<uint8_t> data(entrylen);
+	file.ReadBlock(data.data(), entrylen);
+	return data;
 }
 
 INSTANTIATE_BASE_MEDIA_METHODS(BaseMedia<MusicSet>, MusicSet)

@@ -314,7 +314,7 @@ static const uint NUM_SONGS_PLAYLIST  = 32;
 
 /* Functions to read DOS music CAT files, similar to but not quite the same as sound effect CAT files */
 std::optional<std::string> GetMusicCatEntryName(const std::string &filename, size_t entrynum);
-uint8_t *GetMusicCatEntryData(const std::string &filename, size_t entrynum, size_t &entrylen);
+std::optional<std::vector<uint8_t>> GetMusicCatEntryData(const std::string &filename, size_t entrynum);
 
 enum MusicTrackType {
 	MTT_STANDARDMIDI, ///< Standard MIDI file
