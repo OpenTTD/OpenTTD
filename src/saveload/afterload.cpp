@@ -957,7 +957,7 @@ bool AfterLoadGame()
 						 * an oil rig which got shut down, but not completely removed from
 						 * the map
 						 */
-						TileIndex t1 = TILE_ADDXY(t, 0, 1);
+						TileIndex t1 = TileAddXY(t, 0, 1);
 						if (!IsTileType(t1, MP_INDUSTRY) || GetIndustryGfx(t1) != GFX_OILRIG_1) {
 							DeleteOilRig(t);
 						}
@@ -2804,12 +2804,12 @@ bool AfterLoadGame()
 			if (!IsTileType(t, MP_CLEAR) && !IsTileType(t, MP_TREES)) continue;
 			if (IsTileType(t, MP_CLEAR) && IsClearGround(t, CLEAR_FIELDS)) continue;
 			uint fence = GB(t.m4(), 5, 3);
-			if (fence != 0 && IsTileType(TILE_ADDXY(t, 1, 0), MP_CLEAR) && IsClearGround(TILE_ADDXY(t, 1, 0), CLEAR_FIELDS)) {
-				SetFence(TILE_ADDXY(t, 1, 0), DIAGDIR_NE, fence);
+			if (fence != 0 && IsTileType(TileAddXY(t, 1, 0), MP_CLEAR) && IsClearGround(TileAddXY(t, 1, 0), CLEAR_FIELDS)) {
+				SetFence(TileAddXY(t, 1, 0), DIAGDIR_NE, fence);
 			}
 			fence = GB(t.m4(), 2, 3);
-			if (fence != 0 && IsTileType(TILE_ADDXY(t, 0, 1), MP_CLEAR) && IsClearGround(TILE_ADDXY(t, 0, 1), CLEAR_FIELDS)) {
-				SetFence(TILE_ADDXY(t, 0, 1), DIAGDIR_NW, fence);
+			if (fence != 0 && IsTileType(TileAddXY(t, 0, 1), MP_CLEAR) && IsClearGround(TileAddXY(t, 0, 1), CLEAR_FIELDS)) {
+				SetFence(TileAddXY(t, 0, 1), DIAGDIR_NW, fence);
 			}
 			SB(t.m4(), 2, 3, 0);
 			SB(t.m4(), 5, 3, 0);

@@ -390,7 +390,7 @@ bool HasFoundationNW(TileIndex tile, Slope slope_here, uint z_here)
 	int z_N_here = z_here;
 	GetSlopePixelZOnEdge(slope_here, DIAGDIR_NW, z_W_here, z_N_here);
 
-	auto [slope, z] = GetFoundationPixelSlope(TILE_ADDXY(tile, 0, -1));
+	auto [slope, z] = GetFoundationPixelSlope(TileAddXY(tile, 0, -1));
 	int z_W = z;
 	int z_N = z;
 	GetSlopePixelZOnEdge(slope, DIAGDIR_SE, z_W, z_N);
@@ -405,7 +405,7 @@ bool HasFoundationNE(TileIndex tile, Slope slope_here, uint z_here)
 	int z_N_here = z_here;
 	GetSlopePixelZOnEdge(slope_here, DIAGDIR_NE, z_E_here, z_N_here);
 
-	auto [slope, z] = GetFoundationPixelSlope(TILE_ADDXY(tile, -1, 0));
+	auto [slope, z] = GetFoundationPixelSlope(TileAddXY(tile, -1, 0));
 	int z_E = z;
 	int z_N = z;
 	GetSlopePixelZOnEdge(slope, DIAGDIR_SW, z_E, z_N);

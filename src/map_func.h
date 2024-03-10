@@ -463,10 +463,9 @@ inline TileIndexDiff ToTileIndexDiff(TileIndexDiffC tidc)
 	 * @param y Another tile to add
 	 * @return The resulting tile(index)
 	 */
-#	define TILE_ADD(x, y) ((x) + (y))
+#	define TileAdd(x, y) ((x) + (y))
 #else
 	extern TileIndex TileAdd(TileIndex tile, TileIndexDiff offset);
-#	define TILE_ADD(x, y) (TileAdd((x), (y))
 #endif
 
 /**
@@ -476,7 +475,7 @@ inline TileIndexDiff ToTileIndexDiff(TileIndexDiffC tidc)
  * @param x The x offset to add to the tile
  * @param y The y offset to add to the tile
  */
-#define TILE_ADDXY(tile, x, y) TILE_ADD(tile, TileDiffXY(x, y))
+#define TileAddXY(tile, x, y) TileAdd(tile, TileDiffXY(x, y))
 
 TileIndex TileAddWrap(TileIndex tile, int addx, int addy);
 
@@ -590,7 +589,7 @@ inline TileIndexDiff TileOffsByDir(Direction dir)
  */
 inline TileIndex TileAddByDir(TileIndex tile, Direction dir)
 {
-	return TILE_ADD(tile, TileOffsByDir(dir));
+	return TileAdd(tile, TileOffsByDir(dir));
 }
 
 /**
@@ -602,7 +601,7 @@ inline TileIndex TileAddByDir(TileIndex tile, Direction dir)
  */
 inline TileIndex TileAddByDiagDir(TileIndex tile, DiagDirection dir)
 {
-	return TILE_ADD(tile, TileOffsByDiagDir(dir));
+	return TileAdd(tile, TileOffsByDiagDir(dir));
 }
 
 /**

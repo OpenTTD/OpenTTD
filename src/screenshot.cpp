@@ -825,7 +825,7 @@ static void HeightmapCallback(void *, void *buffer, uint y, uint, uint n)
 			*buf = 256 * TileHeight(ti) / (1 + _heightmap_highest_peak);
 			buf++;
 			if (x == 0) break;
-			ti = TILE_ADDXY(ti, -1, 0);
+			ti = TileAddXY(ti, -1, 0);
 		}
 		y++;
 		n--;

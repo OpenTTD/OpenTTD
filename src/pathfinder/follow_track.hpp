@@ -376,7 +376,7 @@ protected:
 			/* move to the platform end */
 			TileIndexDiff diff = TileOffsByDiagDir(m_exitdir);
 			diff *= m_tiles_skipped;
-			m_new_tile = TILE_ADD(m_new_tile, diff);
+			m_new_tile = TileAdd(m_new_tile, diff);
 			return true;
 		}
 

@@ -2893,8 +2893,8 @@ static int CalcHeightdiff(HighLightStyle style, uint distance, TileIndex start_t
 			/* In the case of an area we can determine whether we were dragging south or
 			 * east by checking the X-coordinates of the tiles */
 			byte style_t = (byte)(TileX(end_tile) > TileX(start_tile));
-			start_tile = TILE_ADD(start_tile, ToTileIndexDiff(heightdiff_area_by_dir[style_t]));
-			end_tile   = TILE_ADD(end_tile, ToTileIndexDiff(heightdiff_area_by_dir[2 + style_t]));
+			start_tile = TileAdd(start_tile, ToTileIndexDiff(heightdiff_area_by_dir[style_t]));
+			end_tile   = TileAdd(end_tile, ToTileIndexDiff(heightdiff_area_by_dir[2 + style_t]));
 			[[fallthrough]];
 		}
 
@@ -2928,16 +2928,16 @@ static int CalcHeightdiff(HighLightStyle style, uint distance, TileIndex start_t
 			/* Use lookup table for start-tile based on HighLightStyle direction */
 			byte style_t = style * 2;
 			assert(style_t < lengthof(heightdiff_line_by_dir) - 13);
-			h0 = TileHeight(TILE_ADD(start_tile, ToTileIndexDiff(heightdiff_line_by_dir[style_t])));
-			uint ht = TileHeight(TILE_ADD(start_tile, ToTileIndexDiff(heightdiff_line_by_dir[style_t + 1])));
+			h0 = TileHeight(TileAdd(start_tile, ToTileIndexDiff(heightdiff_line_by_dir[style_t])));
+			uint ht = TileHeight(TileAdd(start_tile, ToTileIndexDiff(heightdiff_line_by_dir[style_t + 1])));
 			h0 = std::max(h0, ht);
 
 			/* Use lookup table for end-tile based on HighLightStyle direction
 			 * flip around side (lower/upper, left/right) based on distance */
 			if (distance == 0) style_t = flip_style_direction[style] * 2;
 			assert(style_t < lengthof(heightdiff_line_by_dir) - 13);
-			h1 = TileHeight(TILE_ADD(end_tile, ToTileIndexDiff(heightdiff_line_by_dir[12 + style_t])));
-			ht = TileHeight(TILE_ADD(end_tile, ToTileIndexDiff(heightdiff_line_by_dir[12 + style_t + 1])));
+			h1 = TileHeight(TileAdd(end_tile, ToTileIndexDiff(heightdiff_line_by_dir[12 + style_t])));
+			ht = TileHeight(TileAdd(end_tile, ToTileIndexDiff(heightdiff_line_by_dir[12 + style_t + 1])));
 			h1 = std::max(h1, ht);
 			break;
 		}
