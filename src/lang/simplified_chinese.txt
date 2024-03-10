@@ -1011,6 +1011,7 @@ STR_GAME_OPTIONS_CURRENCY_INR                                   :印度卢布
 STR_GAME_OPTIONS_CURRENCY_IDR                                   :印尼盾
 STR_GAME_OPTIONS_CURRENCY_MYR                                   :马来西亚林吉特
 STR_GAME_OPTIONS_CURRENCY_LVL                                   :拉脱维亚拉特
+STR_GAME_OPTIONS_CURRENCY_PTE                                   :葡萄牙埃斯库多
 
 STR_GAME_OPTIONS_AUTOSAVE_FRAME                                 :{BLACK}自动保存
 STR_GAME_OPTIONS_AUTOSAVE_DROPDOWN_TOOLTIP                      :{BLACK}选择自动保存的周期

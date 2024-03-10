@@ -1012,6 +1012,7 @@ STR_GAME_OPTIONS_CURRENCY_INR                                   :Roupie indienne
 STR_GAME_OPTIONS_CURRENCY_IDR                                   :Roupie indonésienne
 STR_GAME_OPTIONS_CURRENCY_MYR                                   :Malaysian Ringgit
 STR_GAME_OPTIONS_CURRENCY_LVL                                   :Lats letton
+STR_GAME_OPTIONS_CURRENCY_PTE                                   :Escudo portugais
 
 STR_GAME_OPTIONS_AUTOSAVE_FRAME                                 :{BLACK}Sauvegarde automatique
 STR_GAME_OPTIONS_AUTOSAVE_DROPDOWN_TOOLTIP                      :{BLACK}Sélectionner l'intervalle de temps entre les sauvegardes automatiques
@@ -3079,6 +3080,8 @@ STR_LAND_AREA_INFORMATION_TRAM_OWNER                            :{BLACK}Proprié
 STR_LAND_AREA_INFORMATION_RAIL_OWNER                            :{BLACK}Propriétaire des rails{NBSP}: {LTBLUE}{STRING}
 STR_LAND_AREA_INFORMATION_LOCAL_AUTHORITY                       :{BLACK}Municipalité{NBSP}: {LTBLUE}{STRING}
 STR_LAND_AREA_INFORMATION_LOCAL_AUTHORITY_NONE                  :Aucune
+STR_LAND_AREA_INFORMATION_LANDINFO_COORDS                       :{BLACK}Coordonnées{NBSP}: {LTBLUE}{NUM} × {NUM} × {NUM}
+STR_LAND_AREA_INFORMATION_LANDINFO_INDEX                        :{BLACK}Index de tuile : {LTBLUE}{NUM} ({HEX})
 STR_LAND_AREA_INFORMATION_BUILD_DATE                            :{BLACK}Construit/rénové le{NBSP}: {LTBLUE}{DATE_LONG}
 STR_LAND_AREA_INFORMATION_STATION_CLASS                         :{BLACK}Type de station{NBSP}: {LTBLUE}{STRING}
 STR_LAND_AREA_INFORMATION_STATION_TYPE                          :{BLACK}Type de station{NBSP}: {LTBLUE}{STRING}

@@ -1156,6 +1156,7 @@ STR_GAME_OPTIONS_CURRENCY_INR                                   :Индийск�
 STR_GAME_OPTIONS_CURRENCY_IDR                                   :Индонезийская рупия
 STR_GAME_OPTIONS_CURRENCY_MYR                                   :Малайзийский ринггит
 STR_GAME_OPTIONS_CURRENCY_LVL                                   :Латвийский лат
+STR_GAME_OPTIONS_CURRENCY_PTE                                   :Португальский эскудо
 
 STR_GAME_OPTIONS_AUTOSAVE_FRAME                                 :{BLACK}Автосохранение
 STR_GAME_OPTIONS_AUTOSAVE_DROPDOWN_TOOLTIP                      :{BLACK}Интервал автосохранения игры

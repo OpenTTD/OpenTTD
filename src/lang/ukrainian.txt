@@ -380,10 +380,24 @@ STR_UNITS_HEIGHT_METRIC                                         :{DECIMAL}{NBSP}
 STR_UNITS_HEIGHT_SI                                             :{DECIMAL}{NBSP}м
 
 # Time units used in string control characters
+STR_UNITS_DAYS                                                  :{COMMA}{NBSP}день
+STR_UNITS_DAYS.z                                                :{COMMA}{NBSP}днів
+STR_UNITS_SECONDS                                               :{COMMA}{NBSP}секунда
+STR_UNITS_SECONDS.d                                             :{COMMA}{NBSP}секунди
+STR_UNITS_SECONDS.z                                             :{COMMA}{NBSP}секунд
+STR_UNITS_TICKS                                                 :{COMMA}{NBSP}цок
+STR_UNITS_TICKS.d                                               :{COMMA}{NBSP}цоки
+STR_UNITS_TICKS.z                                               :{COMMA}{NBSP}цоків
 
 STR_UNITS_MONTHS                                                :{NUM}{NBSP}місяц{P ь я ів}
 STR_UNITS_MINUTES                                               :{NUM}{NBSP}хвилин{P а и ""}
 
+STR_UNITS_YEARS                                                 :{NUM}{NBSP}рік
+STR_UNITS_YEARS.d                                               :{NUM}{NBSP}роки
+STR_UNITS_YEARS.z                                               :{NUM}{NBSP}ріків
+STR_UNITS_PERIODS                                               :{NUM}{NBSP}період
+STR_UNITS_PERIODS.d                                             :{NUM}{NBSP}періоди
+STR_UNITS_PERIODS.z                                             :{NUM}{NBSP}періодів
 
 # Common window strings
 STR_LIST_FILTER_TITLE                                           :{BLACK}Фільтр:
@@ -1082,7 +1096,7 @@ STR_GAME_OPTIONS_CURRENCY_UNITS_DROPDOWN_TOOLTIP                :{BLACK}Вибе
 
 STR_GAME_OPTIONS_CURRENCY_CODE                                  :{STRING} ({STRING})
 
-###length 43
+###length 44
 STR_GAME_OPTIONS_CURRENCY_GBP                                   :Британський фунт
 STR_GAME_OPTIONS_CURRENCY_USD                                   :Американський долар
 STR_GAME_OPTIONS_CURRENCY_EUR                                   :Євро
@@ -1597,6 +1611,7 @@ STR_CONFIG_SETTING_WARN_INCOME_LESS_HELPTEXT_PERIOD             :При вклю
 STR_CONFIG_SETTING_NEVER_EXPIRE_VEHICLES                        :Транспортні засоби не застарівають: {STRING}
 STR_CONFIG_SETTING_NEVER_EXPIRE_VEHICLES_HELPTEXT               :При включенні будь-яка модель транспортного засобу буде доступна для придбання безстроково після її впровадження.
 
+STR_CONFIG_SETTING_TIMEKEEPING_UNITS                            :Дотримання розкладу: {STRING}
 ###length 2
 STR_CONFIG_SETTING_TIMEKEEPING_UNITS_CALENDAR                   :Календар
 
@@ -2609,6 +2624,7 @@ STR_NETWORK_ASK_RELAY_YES_ONCE                                  :{BLACK}Так, 
 STR_NETWORK_ASK_RELAY_YES_ALWAYS                                :{BLACK}Так, більше не питати
 
 STR_NETWORK_ASK_SURVEY_CAPTION                                  :Дозволити автоматизований збір даних?
+STR_NETWORK_ASK_SURVEY_LINK                                     :Про збір даних і приватність
 STR_NETWORK_ASK_SURVEY_NO                                       :Ні
 STR_NETWORK_ASK_SURVEY_YES                                      :Так
 

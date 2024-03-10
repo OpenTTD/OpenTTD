@@ -1012,6 +1012,7 @@ STR_GAME_OPTIONS_CURRENCY_INR                                   :Rúpia Indiana
 STR_GAME_OPTIONS_CURRENCY_IDR                                   :Rupia da Indonésia
 STR_GAME_OPTIONS_CURRENCY_MYR                                   :Ringgit da Malásia
 STR_GAME_OPTIONS_CURRENCY_LVL                                   :Lats da Letônia
+STR_GAME_OPTIONS_CURRENCY_PTE                                   :Escudo Português
 
 STR_GAME_OPTIONS_AUTOSAVE_FRAME                                 :{BLACK}Salvar automaticamente
 STR_GAME_OPTIONS_AUTOSAVE_DROPDOWN_TOOLTIP                      :{BLACK}Escolher o intervalo entre jogos salvos automaticamente
@@ -1250,8 +1251,8 @@ STR_CONFIG_SETTING_TYPE_HIDES                                   :{BLACK}Mostrar 
 STR_CONFIG_SETTING_CATEGORY_AND_TYPE_HIDES                      :{BLACK}Mostrar todos os resultados da pesquisa por configuração{}{SILVER}Categoria {BLACK}para {WHITE}{STRING} {BLACK}e {SILVER}Tipo {BLACK}para {WHITE}Todos os tipos de configuração
 
 ###length 3
-STR_CONFIG_SETTING_OFF                                          :Desligado
-STR_CONFIG_SETTING_ON                                           :Ligado
+STR_CONFIG_SETTING_OFF                                          :Desativado
+STR_CONFIG_SETTING_ON                                           :Ativado
 STR_CONFIG_SETTING_DISABLED                                     :Desativado
 
 ###length 3
@@ -1529,7 +1530,7 @@ STR_CONFIG_SETTING_ERRMSG_DURATION                              :Duração da me
 STR_CONFIG_SETTING_ERRMSG_DURATION_HELPTEXT                     :Duração da visualização de mensagens de erro em uma janela vermelha. Algumas mensagens de erro (crítico) não são fechadas automaticamente após este tempo, mas precisam ser fechadas manualmente
 
 STR_CONFIG_SETTING_HOVER_DELAY                                  :Mostrar textos de ajuda: {STRING}
-STR_CONFIG_SETTING_HOVER_DELAY_HELPTEXT                         :Atraso após o qual os textos de ajuda são mostrados quando o cursor ficar sobre algum elemento da interface. Alternativamente, os textos de ajuda podem ser mostrados com o botão direito do mouse quando este valor está definido como 0
+STR_CONFIG_SETTING_HOVER_DELAY_HELPTEXT                         :Tempo que o cursor deve ficar sobre algum elemento da interface para que os textos de ajuda sejam mostrados. Alternativamente, os textos de ajuda podem ser mostrados com o botão direito do mouse quando este valor está definido como 0
 STR_CONFIG_SETTING_HOVER_DELAY_VALUE                            :Manter o cursor por {COMMA} milissegundo{P 0 "" s}
 ###setting-zero-is-special
 STR_CONFIG_SETTING_HOVER_DELAY_DISABLED                         :Botão direito
@@ -1542,7 +1543,7 @@ STR_CONFIG_SETTING_GRAPH_LINE_THICKNESS_HELPTEXT                :Espessura da li
 
 STR_CONFIG_SETTING_SHOW_NEWGRF_NAME                             :Mostrar o nome do NewGRF na janela de comprar veículos: {STRING}
 STR_CONFIG_SETTING_SHOW_NEWGRF_NAME_HELPTEXT                    :Adiciona uma linha na janela de aquisição de veículos, mostrando a qual NewGRF pertence o veículo selecionado.
-STR_CONFIG_SETTING_SHOW_CARGO_IN_LISTS                          :Mostrar as cargas que os veículos podem transportar nas janelas de listagem {STRING}
+STR_CONFIG_SETTING_SHOW_CARGO_IN_LISTS                          :Mostrar as cargas que os veículos podem transportar nas janelas de listagem: {STRING}
 STR_CONFIG_SETTING_SHOW_CARGO_IN_LISTS_HELPTEXT                 :Se ativado, a carga transportável pelo veículo aparecerá acima dele nas listas de veículos
 
 STR_CONFIG_SETTING_LANDSCAPE                                    :Clima: {STRING}
@@ -1646,13 +1647,13 @@ STR_CONFIG_SETTING_SCROLLMODE_RMB                               :Mover mapa com 
 STR_CONFIG_SETTING_SCROLLMODE_LMB                               :Mover mapa com Botão Esquerdo Mouse
 
 STR_CONFIG_SETTING_SMOOTH_SCROLLING                             :Suavizar deslocamento da visualização: {STRING}
-STR_CONFIG_SETTING_SMOOTH_SCROLLING_HELPTEXT                    :Controla como a visualização principal se move para uma localização específica ao clicar no minimapa ou quando é dado um comando para ir até um objeto específico no mapa. Se ativado, a visualização se move suavemente, se desativado a visualização salta diretamente para o ponto escolhido
+STR_CONFIG_SETTING_SMOOTH_SCROLLING_HELPTEXT                    :Controla como a visualização principal se move para uma localização específica ao clicar no minimapa ou quando é dado um comando para ir até um objeto específico no mapa. Se ativado, a visualização se move suavemente. Se desativado, a visualização salta diretamente para o destino escolhido
 
 STR_CONFIG_SETTING_MEASURE_TOOLTIP                              :Mostrar medidas quando usar as ferramentas de construção: {STRING}
 STR_CONFIG_SETTING_MEASURE_TOOLTIP_HELPTEXT                     :Mostrar distâncias em quadrados e diferenças de altura quando Clicar+Arrastar nas ações de construção
 
 STR_CONFIG_SETTING_LIVERIES                                     :Mostrar cores específicas do tipo de veículo: {STRING}
-STR_CONFIG_SETTING_LIVERIES_HELPTEXT                            :Controla a utilização de cores específicas, por tipo de veículo, para os veículos(em vez de cores por empresa)
+STR_CONFIG_SETTING_LIVERIES_HELPTEXT                            :Controla a utilização de cores específicas, por tipo de veículo, para os veículos (em vez de cores por empresa)
 ###length 3
 STR_CONFIG_SETTING_LIVERIES_NONE                                :Nenhuma
 STR_CONFIG_SETTING_LIVERIES_OWN                                 :Própria empresa
@@ -1694,7 +1695,7 @@ STR_CONFIG_SETTING_RIGHT_MOUSE_BTN_EMU_CONTROL                  :Ctrl+Clique
 STR_CONFIG_SETTING_RIGHT_MOUSE_BTN_EMU_OFF                      :Desligado
 
 STR_CONFIG_SETTING_RIGHT_MOUSE_WND_CLOSE                        :Fechar janela com botão direito do mouse: {STRING}
-STR_CONFIG_SETTING_RIGHT_MOUSE_WND_CLOSE_HELPTEXT               :Fecha uma janela ao clicar com o botão direito do mouse nela. Desativa os textos de ajuda (dicas) com o botão direito!
+STR_CONFIG_SETTING_RIGHT_MOUSE_WND_CLOSE_HELPTEXT               :Fechar uma janela ao clicar com o botão direito do mouse sobre ela. Desativa os textos de ajuda (dicas) com o botão direito!
 ###length 3
 STR_CONFIG_SETTING_RIGHT_MOUSE_WND_CLOSE_NO                     :Não
 STR_CONFIG_SETTING_RIGHT_MOUSE_WND_CLOSE_YES                    :Sim
@@ -1760,21 +1761,21 @@ STR_CONFIG_SETTING_FAST_FORWARD_SPEED_LIMIT_VAL                 :{NUM}% da veloc
 STR_CONFIG_SETTING_FAST_FORWARD_SPEED_LIMIT_ZERO                :Sem limite (o máximo que o seu computador suporta)
 
 STR_CONFIG_SETTING_SOUND_TICKER                                 :Notícias: {STRING}
-STR_CONFIG_SETTING_SOUND_TICKER_HELPTEXT                        :Reproduzir efeito sonoro para mensagens com notícias resumidas
+STR_CONFIG_SETTING_SOUND_TICKER_HELPTEXT                        :Reproduzir som para mensagens com notícias resumidas
 
 STR_CONFIG_SETTING_SOUND_NEWS                                   :Jornal: {STRING}
-STR_CONFIG_SETTING_SOUND_NEWS_HELPTEXT                          :Reproduzir efeito sonoro ao mostrar um jornal
+STR_CONFIG_SETTING_SOUND_NEWS_HELPTEXT                          :Reproduzir som ao mostrar um jornal
 
 ###length 2
 STR_CONFIG_SETTING_SOUND_NEW_YEAR                               :Fim do ano: {STRING}
 STR_CONFIG_SETTING_SOUND_NEW_PERIOD                             :Fim do período: {STRING}
 
 ###length 2
-STR_CONFIG_SETTING_SOUND_NEW_YEAR_HELPTEXT                      :Reproduzir um som no fim do ano e apresentar o desempenho da empresa neste ano em comparação com o desempenho no ano anterior
-STR_CONFIG_SETTING_SOUND_NEW_PERIOD_HELPTEXT                    :Reproduzir um som no fim do período e apresentar o desempenho da empresa neste período em comparação com o desempenho no período anterior
+STR_CONFIG_SETTING_SOUND_NEW_YEAR_HELPTEXT                      :Reproduzir som no fim do ano e apresentar o desempenho da empresa neste ano comparado com o desempenho no ano anterior
+STR_CONFIG_SETTING_SOUND_NEW_PERIOD_HELPTEXT                    :Reproduzir som no fim do período e apresentar o desempenho da empresa neste período comparado com o desempenho no período anterior
 
 STR_CONFIG_SETTING_SOUND_CONFIRM                                :Construção: {STRING}
-STR_CONFIG_SETTING_SOUND_CONFIRM_HELPTEXT                       :Reproduzir efeito sonoro para construções ou outras ações bem sucedidas
+STR_CONFIG_SETTING_SOUND_CONFIRM_HELPTEXT                       :Reproduzir som para construções ou outras ações bem sucedidas
 
 STR_CONFIG_SETTING_SOUND_CLICK                                  :Cliques de botões: {STRING}
 STR_CONFIG_SETTING_SOUND_CLICK_HELPTEXT                         :Reproduzir um bip quando botões são clicados
@@ -1930,7 +1931,7 @@ STR_CONFIG_SETTING_SEMAPHORE_BUILD_BEFORE_DATE                  :Usar automatica
 STR_CONFIG_SETTING_SEMAPHORE_BUILD_BEFORE_DATE_HELPTEXT         :Definir o ano em que os sinais elétricos serão usados nas ferrovias. Antes deste ano, sinais não-elétricos serão usados (eles têm a mesma funcionalidade, mas aparência diferente)
 
 STR_CONFIG_SETTING_CYCLE_SIGNAL_TYPES                           :Alternar entre tipos de sinais: {STRING}
-STR_CONFIG_SETTING_CYCLE_SIGNAL_TYPES_HELPTEXT                  :Escolher quais os tipos de sinal serão alternados quando usar Ctrl+Clique em um sinal construído com a ferramenta de sinais
+STR_CONFIG_SETTING_CYCLE_SIGNAL_TYPES_HELPTEXT                  :Escolher quais os tipos de sinais serão alternados quando usar Ctrl+Clique em um sinal construído com a ferramenta de sinais
 ###length 2
 STR_CONFIG_SETTING_CYCLE_SIGNAL_GROUP                           :Somente grupo atual
 STR_CONFIG_SETTING_CYCLE_SIGNAL_ALL                             :Todos visíveis
@@ -1989,14 +1990,14 @@ STR_CONFIG_SETTING_SNAP_RADIUS_VALUE                            :{COMMA} pixel{P
 ###setting-zero-is-special
 STR_CONFIG_SETTING_SNAP_RADIUS_DISABLED                         :Desativado
 STR_CONFIG_SETTING_SOFT_LIMIT                                   :Número máximo de janelas não fixadas: {STRING}
-STR_CONFIG_SETTING_SOFT_LIMIT_HELPTEXT                          :Número de janelas não fixadas abertas antes que as janelas antigas sejam automaticamente fechadas, liberando espaço para novas janelas
+STR_CONFIG_SETTING_SOFT_LIMIT_HELPTEXT                          :Número de janelas, não fixadas, abertas antes que as janelas antigas sejam automaticamente fechadas, liberando espaço para novas janelas
 STR_CONFIG_SETTING_SOFT_LIMIT_VALUE                             :{COMMA}
 ###setting-zero-is-special
 STR_CONFIG_SETTING_SOFT_LIMIT_DISABLED                          :desativado
 
 STR_CONFIG_SETTING_ZOOM_MIN                                     :Nível máximo de ampliação: {STRING}
 STR_CONFIG_SETTING_ZOOM_MIN_HELPTEXT                            :Nível máximo de ampliação para visualizações. Níveis de ampliação muito grandes aumentam os requisitos de memória
-STR_CONFIG_SETTING_ZOOM_MAX                                     :Nível máximo de redução da visualização: {STRING}
+STR_CONFIG_SETTING_ZOOM_MAX                                     :Nível máximo de redução: {STRING}
 STR_CONFIG_SETTING_ZOOM_MAX_HELPTEXT                            :Nível máximo de redução para visualizações. Níveis de redução muito grandes podem causar atrasos quando utilizados
 ###length 6
 STR_CONFIG_SETTING_ZOOM_LVL_MIN                                 :4x
@@ -2656,10 +2657,10 @@ STR_CONTENT_NAME_CAPTION_TOOLTIP                                :{BLACK}Nome do 
 STR_CONTENT_MATRIX_TOOLTIP                                      :{BLACK}Clique em uma linha para ver os detalhes{}Clique na caixa de seleção para marcar e fazer o download
 STR_CONTENT_SELECT_ALL_CAPTION                                  :{BLACK}Selecionar tudo
 STR_CONTENT_SELECT_ALL_CAPTION_TOOLTIP                          :{BLACK}Marcar todo o conteúdo para ser baixado
-STR_CONTENT_SELECT_UPDATES_CAPTION                              :{BLACK}Selecionar upgrades
-STR_CONTENT_SELECT_UPDATES_CAPTION_TOOLTIP                      :{BLACK}Marcar para baixar todo o conteúdo que seja atualização para o conteúdo existente
+STR_CONTENT_SELECT_UPDATES_CAPTION                              :{BLACK}Selecionar atualizações
+STR_CONTENT_SELECT_UPDATES_CAPTION_TOOLTIP                      :{BLACK}Marcar para baixar todo conteúdo que seja atualização para um conteúdo existente
 STR_CONTENT_UNSELECT_ALL_CAPTION                                :{BLACK}Desmarcar tudo
-STR_CONTENT_UNSELECT_ALL_CAPTION_TOOLTIP                        :{BLACK}Marcar todo o conteúdo para não ser baixado
+STR_CONTENT_UNSELECT_ALL_CAPTION_TOOLTIP                        :{BLACK}Desmarcar todo o conteúdo selecionado
 STR_CONTENT_SEARCH_EXTERNAL                                     :{BLACK}Procurar em sites externos
 STR_CONTENT_SEARCH_EXTERNAL_TOOLTIP                             :{BLACK}Procurar conteúdo, que não está disponível no servidor de conteúdo do OpenTTD, em sites não associados ao OpenTTD
 STR_CONTENT_SEARCH_EXTERNAL_DISCLAIMER_CAPTION                  :{WHITE}Você está saindo do OpenTTD!
@@ -4863,8 +4864,8 @@ STR_TEXTFILE_VIEW_LICENCE                                       :{BLACK}Licença
 STR_TEXTFILE_VIEW_LICENCE_TOOLTIP                               :Ver a licença para este conteúdo
 ###length 5
 STR_TEXTFILE_README_CAPTION                                     :{WHITE}Leia-me {STRING} de {STRING}
-STR_TEXTFILE_CHANGELOG_CAPTION                                  :{WHITE}Registro de modificações {STRING} de {STRING}
-STR_TEXTFILE_LICENCE_CAPTION                                    :{WHITE}Licença {STRING} de {STRING}
+STR_TEXTFILE_CHANGELOG_CAPTION                                  :{WHITE}Registro de modificações em {STRING} de {STRING}
+STR_TEXTFILE_LICENCE_CAPTION                                    :{WHITE}Licença de {STRING} de {STRING}
 STR_TEXTFILE_SURVEY_RESULT_CAPTION                              :{WHITE}Pré-visualização do resultado da pesquisa
 STR_TEXTFILE_GAME_MANUAL_CAPTION                                :{WHITE}Documento '{STRING}' OpenTTD
 

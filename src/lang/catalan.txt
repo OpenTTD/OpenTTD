@@ -1012,6 +1012,7 @@ STR_GAME_OPTIONS_CURRENCY_INR                                   :Rúpia índia
 STR_GAME_OPTIONS_CURRENCY_IDR                                   :Rupia indonèsia
 STR_GAME_OPTIONS_CURRENCY_MYR                                   :Ringgit
 STR_GAME_OPTIONS_CURRENCY_LVL                                   :Lats letó
+STR_GAME_OPTIONS_CURRENCY_PTE                                   :Escut portuguès
 
 STR_GAME_OPTIONS_AUTOSAVE_FRAME                                 :{BLACK}Desa automàticament
 STR_GAME_OPTIONS_AUTOSAVE_DROPDOWN_TOOLTIP                      :{BLACK}Selecciona l'interval de desada automàtica de la partida

@@ -1012,6 +1012,7 @@ STR_GAME_OPTIONS_CURRENCY_INR                                   :Rupia India
 STR_GAME_OPTIONS_CURRENCY_IDR                                   :Rupia Indonesia
 STR_GAME_OPTIONS_CURRENCY_MYR                                   :Ringgit malaio
 STR_GAME_OPTIONS_CURRENCY_LVL                                   :Lats letón
+STR_GAME_OPTIONS_CURRENCY_PTE                                   :Escudo portugués
 
 STR_GAME_OPTIONS_AUTOSAVE_FRAME                                 :{BLACK}Autogravado
 STR_GAME_OPTIONS_AUTOSAVE_DROPDOWN_TOOLTIP                      :{BLACK}Selecciona o intervalo entre autogravados
@@ -1118,6 +1119,8 @@ STR_CURRENCY_DECREASE_EXCHANGE_RATE_TOOLTIP                     :{BLACK}Disminu�
 STR_CURRENCY_INCREASE_EXCHANGE_RATE_TOOLTIP                     :{BLACK}Incrementa-la cantidade da túa moeda por unha Libra esterlina (£)
 STR_CURRENCY_SET_EXCHANGE_RATE_TOOLTIP                          :{G=n}{BLACK}Configura-lo cambio da túa moeda por unha Libra esterlina (£)
 
+STR_CURRENCY_SEPARATOR                                          :{LTBLUE}Separador: {ORANGE}{STRING}
+STR_CURRENCY_SET_CUSTOM_CURRENCY_SEPARATOR_TOOLTIP              :{BLACK}Configurar o separador da túa moeda
 
 STR_CURRENCY_PREFIX                                             :{LTBLUE}Prefixo: {ORANGE}{STRING}
 STR_CURRENCY_SET_CUSTOM_CURRENCY_PREFIX_TOOLTIP                 :{BLACK}Configura-lo prefixo para a túa moeda
@@ -1273,10 +1276,10 @@ STR_CONFIG_SETTING_INFINITE_MONEY                               :Cartos infinito
 STR_CONFIG_SETTING_INFINITE_MONEY_HELPTEXT                      :Permite o gasto ilimitado e desactiva a bancarrota das compañías
 
 STR_CONFIG_SETTING_MAXIMUM_INITIAL_LOAN                         :Crédito máximo inicial: {STRING}
-STR_CONFIG_SETTING_MAXIMUM_INITIAL_LOAN_HELPTEXT                :Cantidade máxima de cartos que unha compañía pode pedir (sen ter en conta a inflación)
+STR_CONFIG_SETTING_MAXIMUM_INITIAL_LOAN_HELPTEXT                :Cantidade máxima de cartos que unha compañía pode pedir (sen ter en conta a inflación). Se se configura "Sen prestamo", non haberá cartos dispoñibles a non ser que os proporcione un script de xogo ou a configuración de "cartos infinitos".
 STR_CONFIG_SETTING_MAXIMUM_INITIAL_LOAN_VALUE                   :{CURRENCY_LONG}
 ###setting-zero-is-special
-STR_CONFIG_SETTING_MAXIMUM_INITIAL_LOAN_DISABLED                :Non hai empréstitos. {RED}Require dun script do xogo para ter fondos iniciais
+STR_CONFIG_SETTING_MAXIMUM_INITIAL_LOAN_DISABLED                :Sen empréstitos.
 
 STR_CONFIG_SETTING_INTEREST_RATE                                :Taxa de interés: {STRING}
 STR_CONFIG_SETTING_INTEREST_RATE_HELPTEXT                       :A taxa de interés do préstamo; controla tamén a inflación, se está activada
@@ -1493,7 +1496,7 @@ STR_CONFIG_SETTING_NEVER_EXPIRE_VEHICLES                        :Os vehículos n
 STR_CONFIG_SETTING_NEVER_EXPIRE_VEHICLES_HELPTEXT               :Cando se activa, tódolos modelos de vehículos seguen a estar dispoñíbeis para sempre dende a súa aparición
 
 STR_CONFIG_SETTING_TIMEKEEPING_UNITS                            :Cronometraxe: {STRING}
-STR_CONFIG_SETTING_TIMEKEEPING_UNITS_HELPTEXT                   :Selecciona as unidades de cronometraxe do xogo. Isto non se pode mudar despois.{}{}A experiencia clásica de OpenTTD é basada en calendario, cun ano que consite de 12 meses e cada mes ten 28-31 días.{}{}No tempo baseado no reloxo, o movemento dos vehículos, producción de mercadorías e as finanzas baseanse en minutos, sendo o que dura aproximadamente un mes de 30 días no modo de Calendario. Estes agrúpanse en períodos de 12 minutos, equivalente o ano no modo de Calendario.{}{}En ambos modos hai sempre un calendario clásico, que se utiliza para a data de introdución de vehículos, casas e outras infraestruturas.
+STR_CONFIG_SETTING_TIMEKEEPING_UNITS_HELPTEXT                   :Selecciona as unidades de cronometraxe do xogo. Isto non se pode mudar despois.{}{}A experiencia clásica de OpenTTD é basada en calendario, cun ano que consite de 12 meses e cada mes ten 28-31 días.{}{}No tempo baseado no reloxo, a producción de mercadorías e as finanzas baseanse en minutos, sendo o que dura aproximadamente un mes de 30 días no modo de Calendario. Estes agrúpanse en períodos de 12 minutos, equivalente o ano no modo de Calendario.{}{}En ambos modos hai sempre un calendario clásico, que se utiliza para a data de introdución de vehículos, casas e outras infraestruturas.
 ###length 2
 STR_CONFIG_SETTING_TIMEKEEPING_UNITS_CALENDAR                   :Calendario
 STR_CONFIG_SETTING_TIMEKEEPING_UNITS_WALLCLOCK                  :Reloxo
@@ -3077,6 +3080,8 @@ STR_LAND_AREA_INFORMATION_TRAM_OWNER                            :{BLACK}Propieta
 STR_LAND_AREA_INFORMATION_RAIL_OWNER                            :{BLACK}Propietario da vía ferroviaria: {LTBLUE}{STRING}
 STR_LAND_AREA_INFORMATION_LOCAL_AUTHORITY                       :{BLACK}Autoridade local: {LTBLUE}{STRING}
 STR_LAND_AREA_INFORMATION_LOCAL_AUTHORITY_NONE                  :Ningunha
+STR_LAND_AREA_INFORMATION_LANDINFO_COORDS                       :{BLACK}Coordeadas: {LTBLUE}{NUM} x {NUM} x {NUM}
+STR_LAND_AREA_INFORMATION_LANDINFO_INDEX                        :{BLACK}Índice de cadro: {LTBLUE}{NUM} ({HEX})
 STR_LAND_AREA_INFORMATION_BUILD_DATE                            :{BLACK}Construído/anovado: {LTBLUE}{DATE_LONG}
 STR_LAND_AREA_INFORMATION_STATION_CLASS                         :{BLACK}Clase de estación: {LTBLUE}{STRING}
 STR_LAND_AREA_INFORMATION_STATION_TYPE                          :{BLACK}Tipo de estación: {LTBLUE}{STRING}
@@ -4382,22 +4387,22 @@ STR_VEHICLE_STATUS_WAITING_UNBUNCHING                           :{LTBLUE}Esperan
 STR_VEHICLE_STATUS_CRASHED                                      :{RED}Estrelado!
 STR_VEHICLE_STATUS_BROKEN_DOWN                                  :{RED}Avariado
 STR_VEHICLE_STATUS_STOPPED                                      :{RED}Parado
-STR_VEHICLE_STATUS_TRAIN_STOPPING_VEL                           :{RED}Parando, {VELOCITY}
+STR_VEHICLE_STATUS_TRAIN_STOPPING_VEL                           :{RED}{VELOCITY} - Parando
 STR_VEHICLE_STATUS_TRAIN_NO_POWER                               :{RED}Sen enerxía
 STR_VEHICLE_STATUS_TRAIN_STUCK                                  :{ORANGE}Esperando camiño libre
 STR_VEHICLE_STATUS_AIRCRAFT_TOO_FAR                             :{ORANGE}Demasiado lonxe do próximo destino
 
-STR_VEHICLE_STATUS_HEADING_FOR_STATION_VEL                      :{LTBLUE}Dirixíndose a {STATION}, {VELOCITY}
-STR_VEHICLE_STATUS_NO_ORDERS_VEL                                :{LTBLUE}Sen ordes, {VELOCITY}
-STR_VEHICLE_STATUS_HEADING_FOR_WAYPOINT_VEL                     :{LTBLUE}Dirixíndose a {WAYPOINT}, {VELOCITY}
-STR_VEHICLE_STATUS_HEADING_FOR_DEPOT_VEL                        :{ORANGE}Dirixíndose a {DEPOT}, {VELOCITY}
-STR_VEHICLE_STATUS_HEADING_FOR_DEPOT_SERVICE_VEL                :{LTBLUE}Servizo en {DEPOT}, {VELOCITY}
-STR_VEHICLE_STATUS_HEADING_FOR_DEPOT_UNBUNCH_VEL                :{LTBLUE}Desamontoarse e ir o servizo en {DEPOT}, {VELOCITY}
+STR_VEHICLE_STATUS_HEADING_FOR_STATION_VEL                      :{LTBLUE}{1:VELOCITY} - Dirixíndose a {0:STATION}
+STR_VEHICLE_STATUS_NO_ORDERS_VEL                                :{LTBLUE}{VELOCITY} - Sen ordes
+STR_VEHICLE_STATUS_HEADING_FOR_WAYPOINT_VEL                     :{LTBLUE}{1:VELOCITY} - Dirixíndose a {0:WAYPOINT}
+STR_VEHICLE_STATUS_HEADING_FOR_DEPOT_VEL                        :{ORANGE}{1:VELOCITY} - Dirixíndose a {0:DEPOT}
+STR_VEHICLE_STATUS_HEADING_FOR_DEPOT_SERVICE_VEL                :{LTBLUE}{1:VELOCITY} - Servizo en {0:DEPOT}
+STR_VEHICLE_STATUS_HEADING_FOR_DEPOT_UNBUNCH_VEL                :{LTBLUE}{1:VELOCITY} - Desamontoarse e ir o servizo en {0:DEPOT}
 
-STR_VEHICLE_STATUS_CANNOT_REACH_STATION_VEL                     :{LTBLUE}Non pode chegar a {STATION}, {VELOCITY}
-STR_VEHICLE_STATUS_CANNOT_REACH_WAYPOINT_VEL                    :{LTBLUE}Non pode chegar a {WAYPOINT}, {VELOCITY}
-STR_VEHICLE_STATUS_CANNOT_REACH_DEPOT_VEL                       :{ORANGE}Non pode chegar a {DEPOT}, {VELOCITY}
-STR_VEHICLE_STATUS_CANNOT_REACH_DEPOT_SERVICE_VEL               :{LTBLUE}Non pode chegar a {DEPOT}, {VELOCITY}
+STR_VEHICLE_STATUS_CANNOT_REACH_STATION_VEL                     :{LTBLUE}{1:VELOCITY} - Non pode chegar a {0:STATION}
+STR_VEHICLE_STATUS_CANNOT_REACH_WAYPOINT_VEL                    :{LTBLUE}{1:VELOCITY} - Non pode chegar a {0:WAYPOINT}
+STR_VEHICLE_STATUS_CANNOT_REACH_DEPOT_VEL                       :{ORANGE}{1:VELOCITY} - Non pode chegar a {0:DEPOT}
+STR_VEHICLE_STATUS_CANNOT_REACH_DEPOT_SERVICE_VEL               :{LTBLUE}{1:VELOCITY} - Non pode chegar a {0:DEPOT}
 
 # Vehicle stopped/started animations
 ###length 2
@@ -4611,7 +4616,7 @@ STR_ORDER_GO_TO_NEAREST_DEPOT                                   :Ir ó depósito
 STR_ORDER_GO_TO_NEAREST_HANGAR                                  :Ir ó hangar máis cercano
 STR_ORDER_CONDITIONAL                                           :Salto de orde condicional
 STR_ORDER_SHARE                                                 :Comparte as ordes
-STR_ORDERS_GO_TO_TOOLTIP                                        :{BLACK}Engadir unha nova orde antes da seleccionada ou engadi-la ao final da lista. Ctrl+Clic sobre estacións ordea “Cargar completamente calquera carga”, sobre puntos de ruta ordea sen paradas e sobre depósitos ordea mantemento. Clic noutro vehículo copia as ordes e Ctr+clic as comparte. Unha orde de depósito desactiva o mantemento automático do vehículo
+STR_ORDERS_GO_TO_TOOLTIP                                        :{BLACK}Engadir unha nova orde antes da seleccionada ou engadi-la ao final da lista. Ctrl+Clic sobre estacións ordea “Cargar completamente calquera carga”, sobre puntos de ruta para invertir a opción "sen paradas por defecto" ou sobre depósitos para "desamontoar". Clic noutro vehículo copia as ordes e Ctr+clic as comparte. Unha orde de depósito desactiva o mantemento automático do vehículo
 
 STR_ORDERS_VEH_WITH_SHARED_ORDERS_LIST_TOOLTIP                  :{BLACK}Mostrar tódolos vehículos que comparten esta planificación
 
@@ -5806,6 +5811,10 @@ STR_TOWN_NAME                                                   :{TOWN}
 STR_VEHICLE_NAME                                                :{VEHICLE}
 STR_WAYPOINT_NAME                                               :{WAYPOINT}
 
+STR_CURRENCY_SHORT_KILO                                         :{NBSP}k
+STR_CURRENCY_SHORT_MEGA                                         :{NBSP}m
+STR_CURRENCY_SHORT_GIGA                                         :{NBSP}bn
+STR_CURRENCY_SHORT_TERA                                         :{NBSP}tn
 
 STR_JUST_CARGO                                                  :{CARGO_LONG}
 STR_JUST_RIGHT_ARROW                                            :{RIGHT_ARROW}

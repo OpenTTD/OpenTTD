@@ -1011,6 +1011,7 @@ STR_GAME_OPTIONS_CURRENCY_INR                                   :Indian Rupee
 STR_GAME_OPTIONS_CURRENCY_IDR                                   :Indonesian Rupiah
 STR_GAME_OPTIONS_CURRENCY_MYR                                   :Malaysian Ringgit
 STR_GAME_OPTIONS_CURRENCY_LVL                                   :Latvian Lats
+STR_GAME_OPTIONS_CURRENCY_PTE                                   :Portuguese Escudo
 
 STR_GAME_OPTIONS_AUTOSAVE_FRAME                                 :{BLACK}Autosave
 STR_GAME_OPTIONS_AUTOSAVE_DROPDOWN_TOOLTIP                      :{BLACK}Select interval between automatic game saves

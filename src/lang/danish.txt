@@ -1011,6 +1011,7 @@ STR_GAME_OPTIONS_CURRENCY_INR                                   :Indisk rupi
 STR_GAME_OPTIONS_CURRENCY_IDR                                   :Indonesisk Rupiah
 STR_GAME_OPTIONS_CURRENCY_MYR                                   :Malaysisk Ringgit
 STR_GAME_OPTIONS_CURRENCY_LVL                                   :lettiske lats
+STR_GAME_OPTIONS_CURRENCY_PTE                                   :Portugisiske Escudo
 
 STR_GAME_OPTIONS_AUTOSAVE_FRAME                                 :{BLACK}Automatisk gemning
 STR_GAME_OPTIONS_AUTOSAVE_DROPDOWN_TOOLTIP                      :{BLACK}Vælg interval imellem automatisk gemning

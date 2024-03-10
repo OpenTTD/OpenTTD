@@ -1011,6 +1011,7 @@ STR_GAME_OPTIONS_CURRENCY_INR                                   :Intian rupia
 STR_GAME_OPTIONS_CURRENCY_IDR                                   :Indonesian rupia
 STR_GAME_OPTIONS_CURRENCY_MYR                                   :Malesian ringgit
 STR_GAME_OPTIONS_CURRENCY_LVL                                   :Latvian lati
+STR_GAME_OPTIONS_CURRENCY_PTE                                   :Portugalin escudo
 
 STR_GAME_OPTIONS_AUTOSAVE_FRAME                                 :{BLACK}Automaattitallennus
 STR_GAME_OPTIONS_AUTOSAVE_DROPDOWN_TOOLTIP                      :{BLACK}Valitse aikaväli automaattisille pelitallennuksille
@@ -1494,7 +1495,7 @@ STR_CONFIG_SETTING_NEVER_EXPIRE_VEHICLES                        :Kulkuneuvot eiv
 STR_CONFIG_SETTING_NEVER_EXPIRE_VEHICLES_HELPTEXT               :Mikäli käytössä, kaikki kulkuneuvot ovat saatavilla ikuisesti niiden julkistamisen jälkeen
 
 STR_CONFIG_SETTING_TIMEKEEPING_UNITS                            :Ajanlasku: {STRING}
-STR_CONFIG_SETTING_TIMEKEEPING_UNITS_HELPTEXT                   :Valitse pelin aikayksiköt. Tätä ei voi muuttaa myöhemmin.{}{}Kalenteripohjainen on klassinen OpenTTD-kokemus, jossa vuosi koostuu 12 kuukaudesta ja jokaisessa kuukaudessa on 28–31 päivää.{}{}Seinäkellopohjaisessa ajassa sen sijaan kulkuneuvojen liikkuminen, rahdin tuotanto ja talous perustuvat yhden minuutin askeliin, mikä on suunnilleen yhtä pitkä aika kuin 30 päivän kuukausi kalenteripohjaisessa tilassa. Nämä on ryhmitelty 12 minuutin jaksoihin, jotka vastaavat vuotta kalenteripohjaisessa tilassa.{}{}Kummassakin tilassa on aina myös klassinen kalenteri, jota käytetään kulkuneuvojen sekä talojen ja muun infrastruktuurin käyttöönottoajankohtiin.
+STR_CONFIG_SETTING_TIMEKEEPING_UNITS_HELPTEXT                   :Valitse pelin aikayksiköt. Tätä ei voi muuttaa myöhemmin.{}{}Kalenteripohjainen on klassinen OpenTTD-kokemus, jossa vuosi koostuu 12 kuukaudesta ja jokaisessa kuukaudessa on 28–31 päivää.{}{}Seinäkellopohjaisessa ajassa sen sijaan rahdin tuotanto ja talous perustuvat yhden minuutin askeliin, mikä on suunnilleen yhtä pitkä aika kuin 30 päivän kuukausi kalenteripohjaisessa tilassa. Nämä on ryhmitelty 12 minuutin jaksoihin, jotka vastaavat vuotta kalenteripohjaisessa tilassa.{}{}Kummassakin tilassa on aina myös klassinen kalenteri, jota käytetään kulkuneuvojen sekä talojen ja muun infrastruktuurin käyttöönottoajankohtiin.
 ###length 2
 STR_CONFIG_SETTING_TIMEKEEPING_UNITS_CALENDAR                   :Kalenteri
 STR_CONFIG_SETTING_TIMEKEEPING_UNITS_WALLCLOCK                  :Seinäkello
@@ -3078,6 +3079,8 @@ STR_LAND_AREA_INFORMATION_TRAM_OWNER                            :{BLACK}Raitioti
 STR_LAND_AREA_INFORMATION_RAIL_OWNER                            :{BLACK}Rautatien omistaja: {LTBLUE}{STRING}
 STR_LAND_AREA_INFORMATION_LOCAL_AUTHORITY                       :{BLACK}Kunta: {LTBLUE}{STRING}
 STR_LAND_AREA_INFORMATION_LOCAL_AUTHORITY_NONE                  :Ei mitään
+STR_LAND_AREA_INFORMATION_LANDINFO_COORDS                       :{BLACK}Koordinaatit: {LTBLUE}{NUM} x {NUM} x {NUM}
+STR_LAND_AREA_INFORMATION_LANDINFO_INDEX                        :{BLACK}Ruudun indeksi: {LTBLUE}{NUM} ({HEX})
 STR_LAND_AREA_INFORMATION_BUILD_DATE                            :{BLACK}Rakennettu/peruskorjattu: {LTBLUE}{DATE_LONG}
 STR_LAND_AREA_INFORMATION_STATION_CLASS                         :{BLACK}Aseman luokka: {LTBLUE}{STRING}
 STR_LAND_AREA_INFORMATION_STATION_TYPE                          :{BLACK}Aseman tyyppi: {LTBLUE}{STRING}

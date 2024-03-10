@@ -1012,6 +1012,7 @@ STR_GAME_OPTIONS_CURRENCY_INR                                   :Rupia Indiana
 STR_GAME_OPTIONS_CURRENCY_IDR                                   :Rupia Indonésia
 STR_GAME_OPTIONS_CURRENCY_MYR                                   :Ringgit da Malásia
 STR_GAME_OPTIONS_CURRENCY_LVL                                   :Lats da Letónia
+STR_GAME_OPTIONS_CURRENCY_PTE                                   :Escudo Português
 
 STR_GAME_OPTIONS_AUTOSAVE_FRAME                                 :{BLACK}Guardar automaticamente
 STR_GAME_OPTIONS_AUTOSAVE_DROPDOWN_TOOLTIP                      :{BLACK}Seleccionar o intervalo para guardar automático

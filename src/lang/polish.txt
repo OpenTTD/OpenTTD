@@ -1391,6 +1391,7 @@ STR_GAME_OPTIONS_CURRENCY_INR                                   :Rupia Indyjska
 STR_GAME_OPTIONS_CURRENCY_IDR                                   :Rupia Indonezyjska
 STR_GAME_OPTIONS_CURRENCY_MYR                                   :Ringgit malezyjski
 STR_GAME_OPTIONS_CURRENCY_LVL                                   :Łat łotewski
+STR_GAME_OPTIONS_CURRENCY_PTE                                   :Escudo portugalskie
 
 STR_GAME_OPTIONS_AUTOSAVE_FRAME                                 :{BLACK}Autozapis
 STR_GAME_OPTIONS_AUTOSAVE_DROPDOWN_TOOLTIP                      :{BLACK}Częstotliwość automatycznego zapisu stanu gry
