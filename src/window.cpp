@@ -1927,9 +1927,6 @@ static void HandleMouseOver()
 	}
 }
 
-/** The minimum number of pixels of the title bar must be visible in both the X or Y direction */
-static const int MIN_VISIBLE_TITLE_BAR = 13;
-
 /** Direction for moving the window. */
 enum PreventHideDirection {
 	PHD_UP,   ///< Above v is a safe position.
@@ -1941,7 +1938,7 @@ enum PreventHideDirection {
  * If needed, move the window base coordinates to keep it visible.
  * @param nx   Base horizontal coordinate of the rectangle.
  * @param ny   Base vertical coordinate of the rectangle.
- * @param rect Rectangle that must stay visible for #MIN_VISIBLE_TITLE_BAR pixels (horizontally, vertically, or both)
+ * @param rect Rectangle that must stay visible (horizontally, vertically, or both)
  * @param v    Window lying in front of the rectangle.
  * @param px   Previous horizontal base coordinate.
  * @param dir  If no room horizontally, move the rectangle to the indicated position.
@@ -1950,10 +1947,10 @@ static void PreventHiding(int *nx, int *ny, const Rect &rect, const Window *v, i
 {
 	if (v == nullptr) return;
 
-	const int min_visible = ScaleGUITrad(MIN_VISIBLE_TITLE_BAR);
+	const int min_visible = rect.Height();
 
-	int v_bottom = v->top + v->height;
-	int v_right = v->left + v->width;
+	int v_bottom = v->top + v->height - 1;
+	int v_right = v->left + v->width - 1;
 	int safe_y = (dir == PHD_UP) ? (v->top - min_visible - rect.top) : (v_bottom + min_visible - rect.bottom); // Compute safe vertical position.
 
 	if (*ny + rect.top <= v->top - min_visible) return; // Above v is enough space
@@ -1989,12 +1986,11 @@ static void PreventHiding(int *nx, int *ny, const Rect &rect, const Window *v, i
 static void EnsureVisibleCaption(Window *w, int nx, int ny)
 {
 	/* Search for the title bar rectangle. */
-	Rect caption_rect;
 	const NWidgetBase *caption = w->nested_root->GetWidgetOfType(WWT_CAPTION);
 	if (caption != nullptr) {
-		caption_rect = caption->GetCurrentRect();
+		const Rect caption_rect = caption->GetCurrentRect();
 
-		const int min_visible = ScaleGUITrad(MIN_VISIBLE_TITLE_BAR);
+		const int min_visible = caption_rect.Height();
 
 		/* Make sure the window doesn't leave the screen */
 		nx = Clamp(nx, min_visible - caption_rect.right, _screen.width - min_visible - caption_rect.left);
