@@ -455,27 +455,31 @@ inline TileIndexDiff ToTileIndexDiff(TileIndexDiffC tidc)
 }
 
 
+/**
+ * Adds a given offset to a tile.
+ *
+ * @param tile The tile to add an offset to.
+ * @param offset The offset to add.
+ * @return The resulting tile.
+ */
 #ifndef _DEBUG
-	/**
-	 * Adds two tiles together.
-	 *
-	 * @param x One tile
-	 * @param y Another tile to add
-	 * @return The resulting tile(index)
-	 */
-#	define TileAdd(x, y) ((x) + (y))
+	constexpr TileIndex TileAdd(TileIndex tile, TileIndexDiff offset) { return tile + offset; }
 #else
-	extern TileIndex TileAdd(TileIndex tile, TileIndexDiff offset);
+	TileIndex TileAdd(TileIndex tile, TileIndexDiff offset);
 #endif
 
 /**
  * Adds a given offset to a tile.
  *
- * @param tile The tile to add an offset on it
- * @param x The x offset to add to the tile
- * @param y The y offset to add to the tile
+ * @param tile The tile to add an offset to.
+ * @param x The x offset to add to the tile.
+ * @param y The y offset to add to the tile.
+ * @return The resulting tile.
  */
-#define TileAddXY(tile, x, y) TileAdd(tile, TileDiffXY(x, y))
+inline TileIndex TileAddXY(TileIndex tile, int x, int y)
+{
+	return TileAdd(tile, TileDiffXY(x, y));
+}
 
 TileIndex TileAddWrap(TileIndex tile, int addx, int addy);
 
