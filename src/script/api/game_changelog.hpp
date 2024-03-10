@@ -21,6 +21,8 @@
  * \li GSEventVehicleCrashed::GetVictims
  * \li GSEventCompanyRenamed
  * \li GSEventPresidentRenamed
+ * \li GSError::GetExtraLastError
+ * \li GSError::GetExtraLastErrorString
  *
  * \b 14.0
  *

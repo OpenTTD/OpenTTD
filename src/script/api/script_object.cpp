@@ -150,9 +150,19 @@ ScriptObject::ActiveInstance::~ActiveInstance()
 	GetStorage()->last_error = last_error;
 }
 
+/* static */ void ScriptObject::SetExtraLastError(ScriptErrorType extra_last_error)
+{
+	GetStorage()->extra_last_error = extra_last_error;
+}
+
 /* static */ ScriptErrorType ScriptObject::GetLastError()
 {
 	return GetStorage()->last_error;
+}
+
+/* static */ ScriptErrorType ScriptObject::GetExtraLastError()
+{
+	return GetStorage()->extra_last_error;
 }
 
 /* static */ void ScriptObject::SetLastCost(Money last_cost)
@@ -286,6 +296,7 @@ std::tuple<bool, bool, bool, bool> ScriptObject::DoCommandPrep()
 
 	if (!ScriptCompanyMode::IsDeity() && !ScriptCompanyMode::IsValid()) {
 		ScriptObject::SetLastError(ScriptError::ERR_PRECONDITION_INVALID_COMPANY);
+		ScriptObject::SetExtraLastError(ScriptError::ERR_UNKNOWN);
 		return { true, estimate_only, asynchronous, networking };
 	}
 
@@ -300,11 +311,13 @@ bool ScriptObject::DoCommandProcessResult(const CommandCost &res, Script_Suspend
 	/* We failed; set the error and bail out */
 	if (res.Failed()) {
 		SetLastError(ScriptError::StringToError(res.GetErrorMessage()));
+		SetExtraLastError(ScriptError::StringToError(res.GetExtraErrorMessage()));
 		return false;
 	}
 
 	/* No error, then clear it. */
 	SetLastError(ScriptError::ERR_NONE);
+	SetExtraLastError(ScriptError::ERR_NONE);
 
 	/* Estimates, update the cost for the estimate and be done */
 	if (estimate_only) {

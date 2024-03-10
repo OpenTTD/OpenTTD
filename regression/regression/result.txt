@@ -9546,6 +9546,17 @@ ERROR: IsEnd() is invalid as Begin() is never called
     GetLastErrorString():  ERR_VEHICLE_NOT_IN_DEPOT
     SendVehicleToDepot():  false
     GetLastErrorString():  ERR_UNKNOWN
+    BuildVehicle():        20
+    AppendOrder():         false
+    GetLastError():        1
+    GetLastErrorString():  ERR_UNKNOWN
+    GetExtraLastError():   1
+    GetExtraLastErrorString(): ERR_UNKNOWN
+    SellVehicle():         true
+    GetLastError():        0
+    GetLastErrorString():  ERR_NONE
+    GetExtraLastError():   0
+    GetExtraLastErrorString(): ERR_NONE
 
 --VehicleList--
   Count():             5
@@ -9588,7 +9599,7 @@ ERROR: IsEnd() is invalid as Begin() is never called
     13 => 5490
     12 => 5489
   CurrentSpeed ListDump:
-    12 => 27
+    12 => 31
     17 => 0
     16 => 0
     14 => 0
@@ -9763,9 +9774,9 @@ ERROR: IsEnd() is invalid as Begin() is never called
 --Valuate() with excessive CPU usage--
 Your script made an error: excessive CPU usage in valuator function
 
-*FUNCTION [unknown()] regression/main.nut line [2065]
+*FUNCTION [unknown()] regression/main.nut line [2076]
 *FUNCTION [Valuate()] NATIVE line [-1]
-*FUNCTION [Start()] regression/main.nut line [2066]
+*FUNCTION [Start()] regression/main.nut line [2077]
 
 [id] 0
 [this] TABLE
@@ -9774,7 +9785,7 @@ Your script made an error: excessive CPU usage in valuator function
 [this] INSTANCE
 Your script made an error: excessive CPU usage in valuator function
 
-*FUNCTION [Start()] regression/main.nut line [2066]
+*FUNCTION [Start()] regression/main.nut line [2077]
 
 [Infinite] CLOSURE
 [list] INSTANCE

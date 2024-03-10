@@ -21,6 +21,8 @@
  * \li AIEventVehicleCrashed::GetVictims
  * \li AIEventCompanyRenamed
  * \li AIEventPresidentRenamed
+ * \li AIError::GetExtraLastError
+ * \li AIError::GetExtraLastErrorString
  *
  * \b 14.0
  *

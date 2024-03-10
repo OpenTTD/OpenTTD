@@ -23,9 +23,19 @@ ScriptError::ScriptErrorMapString ScriptError::error_map_string = ScriptError::S
 	return ScriptObject::GetLastError();
 }
 
+/* static */ ScriptErrorType ScriptError::GetExtraLastError()
+{
+	return ScriptObject::GetExtraLastError();
+}
+
 /* static */ std::optional<std::string> ScriptError::GetLastErrorString()
 {
 	return (*error_map_string.find(ScriptError::GetLastError())).second;
+}
+
+/* static */ std::optional<std::string> ScriptError::GetExtraLastErrorString()
+{
+	return (*error_map_string.find(ScriptError::GetExtraLastError())).second;
 }
 
 /* static */ ScriptErrorType ScriptError::StringToError(StringID internal_string_id)

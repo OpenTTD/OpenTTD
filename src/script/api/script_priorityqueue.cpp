@@ -52,6 +52,7 @@ SQInteger ScriptPriorityQueue::Pop(HSQUIRRELVM vm)
 {
 	if (this->IsEmpty()) {
 		ScriptObject::SetLastError(ScriptError::ERR_PRECONDITION_FAILED);
+		ScriptObject::SetExtraLastError(ScriptError::ERR_UNKNOWN);
 		sq_pushnull(vm);
 		return 1;
 	}
@@ -70,6 +71,7 @@ SQInteger ScriptPriorityQueue::Peek(HSQUIRRELVM vm)
 {
 	if (this->IsEmpty()) {
 		ScriptObject::SetLastError(ScriptError::ERR_PRECONDITION_FAILED);
+		ScriptObject::SetExtraLastError(ScriptError::ERR_UNKNOWN);
 		sq_pushnull(vm);
 		return 1;
 	}
