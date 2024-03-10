@@ -10760,25 +10760,25 @@ ERROR: IsEnd() is invalid as Begin() is never called
   AppendOrder():         true
   GetLastErrorString():  ERR_NONE
   InsertOrder():         false
-  GetLastErrorString():  ERR_ORDER_NO_UNBUNCH_WITH_FULL_LOAD
+  GetLastErrorString():  ERR_ORDER_UNBUNCH
   SetOrderFlags():       true
   GetLastErrorString():  ERR_NONE
   AppendConditionalOrder(): true
   GetLastErrorString():  ERR_NONE
   AppendOrder():         false
-  GetLastErrorString():  ERR_ORDER_NO_UNBUNCH_WITH_CONDITIONAL
+  GetLastErrorString():  ERR_ORDER_UNBUNCH
   RemoveOrder():         true
   GetLastErrorString():  ERR_NONE
   InsertOrder():         true
   GetLastErrorString():  ERR_NONE
   InsertOrder():         false
-  GetLastErrorString():  ERR_ORDER_ONLY_ONE_UNBUNCH_ALLOWED
+  GetLastErrorString():  ERR_ORDER_UNBUNCH
   InsertOrder():         false
-  GetLastErrorString():  ERR_ORDER_NO_FULL_LOAD_WITH_UNBUNCH
+  GetLastErrorString():  ERR_ORDER_UNBUNCH
   SetOrderFlags():       false
-  GetLastErrorString():  ERR_ORDER_NO_FULL_LOAD_WITH_UNBUNCH
+  GetLastErrorString():  ERR_ORDER_UNBUNCH
   InsertConditionalOrder(): false
-  GetLastErrorString():  ERR_ORDER_NO_CONDITIONAL_WITH_UNBUNCH
+  GetLastErrorString():  ERR_ORDER_UNBUNCH
   SetOrderFlags():       true
   GetLastErrorString():  ERR_NONE
   GetOrderCount():       2
