@@ -2644,7 +2644,12 @@ static ChangeInfoResult TownHouseChangeInfo(uint hid, int numinfo, int prop, Byt
 {
 	/* LanguageID "MAX_LANG", i.e. 7F is any. This language can't have a gender/case mapping, but has to be handled gracefully. */
 	const GRFFile *grffile = GetFileByGRFID(grfid);
-	return (grffile != nullptr && grffile->language_map != nullptr && language_id < MAX_LANG) ? &grffile->language_map[language_id] : nullptr;
+	if (grffile == nullptr) return nullptr;
+
+	auto it = grffile->language_map.find(language_id);
+	if (it == std::end(grffile->language_map)) return nullptr;
+
+	return &it->second;
 }
 
 /**
@@ -2858,8 +2863,6 @@ static ChangeInfoResult GlobalVarChangeInfo(uint gvid, int numinfo, int prop, By
 					}
 					break;
 				}
-
-				if (_cur.grffile->language_map == nullptr) _cur.grffile->language_map = new LanguageMap[MAX_LANG];
 
 				if (prop == 0x15) {
 					uint plural_form = buf->ReadByte();
@@ -8931,11 +8934,6 @@ GRFFile::GRFFile(const GRFConfig *config)
 	 * 'Uninitialised' parameters are zeroed as that is their default value when dynamically creating them. */
 	this->param = config->param;
 	this->param_end = config->num_params;
-}
-
-GRFFile::~GRFFile()
-{
-	delete[] this->language_map;
 }
 
 /**
