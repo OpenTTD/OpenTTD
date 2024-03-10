@@ -8,6 +8,7 @@
 /** @file music.cpp The songs that OpenTTD knows. */
 
 #include "stdafx.h"
+#include "string_func.h"
 
 
 /** The type of set we're replacing */
@@ -22,26 +23,24 @@
  * Read the name of a music CAT file entry.
  * @param filename Name of CAT file to read from
  * @param entrynum Index of entry whose name to read
- * @return Pointer to string, caller is responsible for freeing memory,
- *         nullptr if entrynum does not exist.
+ * @return Name of CAT file entry if it could be read.
  */
-char *GetMusicCatEntryName(const std::string &filename, size_t entrynum)
+std::optional<std::string> GetMusicCatEntryName(const std::string &filename, size_t entrynum)
 {
-	if (!FioCheckFileExists(filename, BASESET_DIR)) return nullptr;
+	if (!FioCheckFileExists(filename, BASESET_DIR)) return std::nullopt;
 
 	RandomAccessFile file(filename, BASESET_DIR);
 	uint32_t ofs = file.ReadDword();
 	size_t entry_count = ofs / 8;
-	if (entrynum < entry_count) {
-		file.SeekTo(entrynum * 8, SEEK_SET);
-		file.SeekTo(file.ReadDword(), SEEK_SET);
-		uint8_t namelen = file.ReadByte();
-		char *name = MallocT<char>(namelen + 1);
-		file.ReadBlock(name, namelen);
-		name[namelen] = '\0';
-		return name;
-	}
-	return nullptr;
+	if (entrynum >= entry_count) return std::nullopt;
+
+	file.SeekTo(entrynum * 8, SEEK_SET);
+	file.SeekTo(file.ReadDword(), SEEK_SET);
+	uint8_t namelen = file.ReadByte();
+
+	std::string name(namelen, '\0');
+	file.ReadBlock(name.data(), namelen);
+	return StrMakeValid(name);
 }
 
 /**
@@ -138,13 +137,12 @@ bool MusicSet::FillSetDetails(const IniFile &ini, const std::string &path, const
 				/* Song has a CAT file index, assume it's MPS MIDI format */
 				this->songinfo[i].filetype = MTT_MPSMIDI;
 				this->songinfo[i].cat_index = atoi(item->value->c_str());
-				char *songname = GetMusicCatEntryName(filename, this->songinfo[i].cat_index);
-				if (songname == nullptr) {
+				auto songname = GetMusicCatEntryName(filename, this->songinfo[i].cat_index);
+				if (!songname.has_value()) {
 					Debug(grf, 0, "Base music set song missing from CAT file: {}/{}", filename, this->songinfo[i].cat_index);
 					continue;
 				}
-				this->songinfo[i].songname = songname;
-				free(songname);
+				this->songinfo[i].songname = *songname;
 			} else {
 				this->songinfo[i].filetype = MTT_STANDARDMIDI;
 			}
