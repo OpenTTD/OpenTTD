@@ -274,7 +274,7 @@ jobs:
     strategy:
       fail-fast: false
       matrix:
-        os: [windows-latest, windows-2019]
+        os: [windows-latest]
         arch: [x86, x64]
 
     name: Windows (${{ matrix.os }} / ${{ matrix.arch }})
