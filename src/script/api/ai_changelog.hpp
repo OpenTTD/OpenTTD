@@ -19,6 +19,8 @@
  *
  * API additions:
  * \li AIEventVehicleCrashed::GetVictims
+ * \li AIError::GetExtraLastError
+ * \li AIError::GetExtraLastErrorString
  *
  * \b 14.0
  *
