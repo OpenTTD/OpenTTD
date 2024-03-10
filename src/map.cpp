@@ -17,11 +17,6 @@
 
 #include "safeguards.h"
 
-#if defined(_MSC_VER)
-/* Why the hell is that not in all MSVC headers?? */
-extern "C" _CRTIMP void __cdecl _assert(void *, void *, unsigned);
-#endif
-
 /* static */ uint Map::log_x;     ///< 2^_map_log_x == _map_size_x
 /* static */ uint Map::log_y;     ///< 2^_map_log_y == _map_size_y
 /* static */ uint Map::size_x;    ///< Size of the map along the X
@@ -75,19 +70,11 @@ TileIndex TILE_ADD(TileIndex tile, TileIndexDiff offset, std::source_location lo
 	if (dx >= (int)Map::SizeX() / 2) dx -= Map::SizeX();
 	int dy = (offset - dx) / (int)Map::SizeX();
 
-	uint x = TileX(tile) + dx;
-	uint y = TileY(tile) + dy;
+	uint32_t x = TileX(tile) + dx;
+	uint32_t y = TileY(tile) + dy;
 
-	if (x >= Map::SizeX() || y >= Map::SizeY()) {
-		std::string message = fmt::format("TILE_ADD when adding 0x{:04X} and 0x{:04X} failed",
-			tile, offset);
-#if !defined(_MSC_VER)
-		fmt::print(stderr, "{}:{}:{} {}\n", location.file_name(), location.line(), location.column(), message);
-#else
-		_assert(message.data(), (char*)location.file_name(), location.line());
-#endif
-	}
-
+	assert(x < Map::SizeX());
+	assert(y < Map::SizeY());
 	assert(TileXY(x, y) == Map::WrapToMap(tile + offset));
 
 	return TileXY(x, y);
