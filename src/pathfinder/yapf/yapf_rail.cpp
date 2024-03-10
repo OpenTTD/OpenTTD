@@ -446,6 +446,11 @@ public:
 
 				this->FindSafePositionOnNode(pPrev);
 			}
+
+			/* If the best PF node has no parent, then there is no (valid) best next trackdir to return.
+			 * This occurs when the PF is called while the train is already at its destination. */
+			if (pPrev == nullptr) return INVALID_TRACKDIR;
+
 			/* return trackdir from the best origin node (one of start nodes) */
 			Node &best_next_node = *pPrev;
 			next_trackdir = best_next_node.GetTrackdir();
