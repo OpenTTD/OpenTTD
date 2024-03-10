@@ -1,4 +1,4 @@
-name: CI
+name: CI - Build
 
 on:
   pull_request:
@@ -38,10 +38,6 @@ jobs:
           compiler: gcc
           cxxcompiler: g++
           libraries: libsdl2-dev
-        - name: GCC - SDL1.2
-          compiler: gcc
-          cxxcompiler: g++
-          libraries: libsdl1.2-dev
         - name: GCC - Dedicated
           compiler: gcc
           cxxcompiler: g++
@@ -83,38 +79,17 @@ jobs:
       matrix:
         include:
         - os: windows-latest
-          name: Windows
           arch: x86
         - os: windows-latest
-          name: Windows
           arch: x64
 
-    name: ${{ matrix.name }} (${{ matrix.arch }})
+    name: Windows (${{ matrix.arch }})
 
     uses: ./.github/workflows/ci-windows.yml
     secrets: inherit
 
     with:
       os: ${{ matrix.os }}
-      arch: ${{ matrix.arch }}
-
-  mingw:
-    strategy:
-      fail-fast: false
-      matrix:
-        include:
-          - msystem: MINGW64
-            arch: x86_64
-          - msystem: MINGW32
-            arch: i686
-
-    name: MinGW (${{ matrix.arch }})
-
-    uses: ./.github/workflows/ci-mingw.yml
-    secrets: inherit
-
-    with:
-      msystem: ${{ matrix.msystem }}
       arch: ${{ matrix.arch }}
 
   check_annotations:
@@ -124,7 +99,6 @@ jobs:
     - linux
     - macos
     - windows
-    - mingw
 
     if: always() && github.event_name == 'pull_request'
 

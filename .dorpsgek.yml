@@ -17,3 +17,4 @@ notifications:
   workflow-run:
     only:
     - .github/workflows/release.yml
+    - .github/workflows/ci-nightly.yml
