@@ -765,6 +765,7 @@ bool ScriptInstance::DoCommandCallback(const CommandCost &result, const CommandD
 
 	if (result.Failed()) {
 		ScriptObject::SetLastError(ScriptError::StringToError(result.GetErrorMessage()));
+		ScriptObject::SetExtraLastError(ScriptError::StringToError(result.GetExtraErrorMessage()));
 	} else {
 		ScriptObject::IncreaseDoCommandCosts(result.GetCost());
 		ScriptObject::SetLastCost(result.GetCost());

@@ -17,6 +17,10 @@
  *
  * This version is not yet released. The following changes are not set in stone yet.
  *
+ * API additions:
+ * \li GSError::GetExtraLastError
+ * \li GSError::GetExtraLastErrorString
+ *
  * \b 14.0
  *
  * API additions:

@@ -51,6 +51,7 @@ private:
 	CommandCost costs;               ///< The costs the script is tracking.
 	Money last_cost;                 ///< The last cost of the command.
 	uint last_error;                 ///< The last error of the command.
+	uint extra_last_error;           ///< The extra last error of the command.
 	bool last_command_res;           ///< The last result of the command.
 
 	CommandDataBuffer last_data;     ///< The last data passed to a command.
@@ -79,6 +80,7 @@ public:
 		/* costs (can't be set) */
 		last_cost         (0),
 		last_error        (STR_NULL),
+		extra_last_error  (STR_NULL),
 		last_command_res  (true),
 		last_cmd          (CMD_END),
 		/* calback_value (can't be set) */

@@ -305,6 +305,7 @@
 	uint32_t townnameparts;
 	if (!GenerateTownName(ScriptObject::GetRandomizer(), &townnameparts)) {
 		ScriptObject::SetLastError(ScriptError::ERR_NAME_IS_NOT_UNIQUE);
+		ScriptObject::SetExtraLastError(ScriptError::ERR_UNKNOWN);
 		return false;
 	}
 
