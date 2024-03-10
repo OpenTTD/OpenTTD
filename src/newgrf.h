@@ -14,6 +14,7 @@
 #include "rail_type.h"
 #include "road_type.h"
 #include "fileio_type.h"
+#include "newgrf_text_type.h"
 #include "core/bitmath_func.hpp"
 #include "core/alloc_type.hpp"
 #include "core/mem_func.hpp"
@@ -140,7 +141,7 @@ struct GRFFile : ZeroedMemoryAllocator {
 
 	CanalProperties canal_local_properties[CF_END]; ///< Canal properties as set by this NewGRF
 
-	struct LanguageMap *language_map; ///< Mappings related to the languages.
+	std::unordered_map<uint8_t, LanguageMap> language_map; ///< Mappings related to the languages.
 
 	int traininfo_vehicle_pitch;  ///< Vertical offset for drawing train images in depot GUI and vehicle details
 	uint traininfo_vehicle_width; ///< Width (in pixels) of a 8/8 train vehicle in depot GUI and vehicle details
@@ -149,7 +150,6 @@ struct GRFFile : ZeroedMemoryAllocator {
 	PriceMultipliers price_base_multipliers; ///< Price base multipliers as set by the grf.
 
 	GRFFile(const struct GRFConfig *config);
-	~GRFFile();
 
 	/** Get GRF Parameter with range checking */
 	uint32_t GetParam(uint number) const
