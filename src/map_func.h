@@ -463,9 +463,9 @@ inline TileIndexDiff ToTileIndexDiff(TileIndexDiffC tidc)
  * @return The resulting tile.
  */
 #ifndef _DEBUG
-	constexpr TileIndex TILE_ADD(TileIndex tile, TileIndexDiff offset, [[maybe_unused]] const std::source_location location = std::source_location::current()) { return tile + offset; }
+	constexpr TileIndex TILE_ADD(TileIndex tile, TileIndexDiff offset) { return tile + offset; }
 #else
-	TileIndex TILE_ADD(TileIndex tile, TileIndexDiff offset, const std::source_location location = std::source_location::current());
+	TileIndex TILE_ADD(TileIndex tile, TileIndexDiff offset);
 #endif
 
 /**
@@ -476,9 +476,9 @@ inline TileIndexDiff ToTileIndexDiff(TileIndexDiffC tidc)
  * @param y The y offset to add to the tile.
  * @return The resulting tile.
  */
-inline TileIndex TILE_ADDXY(TileIndex tile, int x, int y, const std::source_location location = std::source_location::current())
+inline TileIndex TILE_ADDXY(TileIndex tile, int x, int y)
 {
-	return TILE_ADD(tile, TileDiffXY(x, y), location);
+	return TILE_ADD(tile, TileDiffXY(x, y));
 }
 
 TileIndex TileAddWrap(TileIndex tile, int addx, int addy);

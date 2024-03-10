@@ -64,7 +64,7 @@
 
 
 #ifdef _DEBUG
-TileIndex TILE_ADD(TileIndex tile, TileIndexDiff offset, std::source_location location)
+TileIndex TILE_ADD(TileIndex tile, TileIndexDiff offset)
 {
 	int dx = offset & Map::MaxX();
 	if (dx >= (int)Map::SizeX() / 2) dx -= Map::SizeX();
