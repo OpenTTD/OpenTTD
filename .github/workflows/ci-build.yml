@@ -203,8 +203,8 @@ jobs:
       fail-fast: false
       matrix:
         include:
-        - arch: x64
-          full_arch: x86_64
+        - arch: arm64
+          full_arch: arm64
 
     name: Mac OS (${{ matrix.arch }})
 
