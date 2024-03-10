@@ -843,11 +843,9 @@ bool MidiFile::LoadSong(const MusicSongInfo &song)
 			return this->LoadFile(song.filename);
 		case MTT_MPSMIDI:
 		{
-			size_t songdatalen = 0;
-			uint8_t *songdata = GetMusicCatEntryData(song.filename, song.cat_index, songdatalen);
-			if (songdata != nullptr) {
-				bool result = this->LoadMpsData(songdata, songdatalen);
-				free(songdata);
+			auto songdata = GetMusicCatEntryData(song.filename, song.cat_index);
+			if (songdata.has_value()) {
+				bool result = this->LoadMpsData(songdata->data(), songdata->size());
 				return result;
 			} else {
 				return false;
@@ -1078,17 +1076,13 @@ std::string MidiFile::GetSMFFile(const MusicSongInfo &song)
 		return output_filename;
 	}
 
-	uint8_t *data;
-	size_t datalen;
-	data = GetMusicCatEntryData(song.filename, song.cat_index, datalen);
-	if (data == nullptr) return std::string();
+	auto songdata = GetMusicCatEntryData(song.filename, song.cat_index);
+	if (!songdata.has_value()) return std::string();
 
 	MidiFile midifile;
-	if (!midifile.LoadMpsData(data, datalen)) {
-		free(data);
+	if (!midifile.LoadMpsData(songdata->data(), songdata->size())) {
 		return std::string();
 	}
-	free(data);
 
 	if (midifile.WriteSMF(output_filename)) {
 		return output_filename;
