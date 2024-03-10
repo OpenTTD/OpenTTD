@@ -613,7 +613,7 @@ CommandCost StationRect::BeforeAddRect(TileIndex tile, int w, int h, StationRect
 	if (mode == ADD_FORCE || (w <= _settings_game.station.station_spread && h <= _settings_game.station.station_spread)) {
 		/* Important when the old rect is completely inside the new rect, resp. the old one was empty. */
 		CommandCost ret = this->BeforeAddTile(tile, mode);
-		if (ret.Succeeded()) ret = this->BeforeAddTile(TILE_ADDXY(tile, w - 1, h - 1), mode);
+		if (ret.Succeeded()) ret = this->BeforeAddTile(TileAddXY(tile, w - 1, h - 1), mode);
 		return ret;
 	}
 	return CommandCost();
@@ -694,7 +694,7 @@ bool StationRect::AfterRemoveRect(BaseStation *st, TileArea ta)
 	assert(this->PtInExtendedRect(TileX(ta.tile) + ta.w - 1, TileY(ta.tile) + ta.h - 1));
 
 	bool empty = this->AfterRemoveTile(st, ta.tile);
-	if (ta.w != 1 || ta.h != 1) empty = empty || this->AfterRemoveTile(st, TILE_ADDXY(ta.tile, ta.w - 1, ta.h - 1));
+	if (ta.w != 1 || ta.h != 1) empty = empty || this->AfterRemoveTile(st, TileAddXY(ta.tile, ta.w - 1, ta.h - 1));
 	return empty;
 }
 

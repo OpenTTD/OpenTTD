@@ -77,7 +77,7 @@ private:
 			if (HasStationReservation(tile)) return false;
 			SetRailStationReservation(tile, true);
 			MarkTileDirtyByTile(tile);
-			tile = TILE_ADD(tile, diff);
+			tile = TileAdd(tile, diff);
 		} while (IsCompatibleTrainStationTile(tile, start) && tile != m_origin_tile);
 
 		TriggerStationRandomisation(nullptr, start, SRT_PATH_RESERVATION);
@@ -114,7 +114,7 @@ private:
 			TileIndexDiff diff = TileOffsByDiagDir(TrackdirToExitdir(ReverseTrackdir(td)));
 			while ((tile != m_res_fail_tile || td != m_res_fail_td) && IsCompatibleTrainStationTile(tile, start)) {
 				SetRailStationReservation(tile, false);
-				tile = TILE_ADD(tile, diff);
+				tile = TileAdd(tile, diff);
 			}
 		} else if (tile != m_res_fail_tile || td != m_res_fail_td) {
 			UnreserveRailTrack(tile, TrackdirToTrack(td));

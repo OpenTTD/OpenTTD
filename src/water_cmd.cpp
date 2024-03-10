@@ -722,10 +722,10 @@ static void DrawWaterEdges(bool canal, uint offset, TileIndex tile)
 	uint wa;
 
 	/* determine the edges around with water. */
-	wa  = IsWateredTile(TILE_ADDXY(tile, -1,  0), DIR_SW) << 0;
-	wa += IsWateredTile(TILE_ADDXY(tile,  0,  1), DIR_NW) << 1;
-	wa += IsWateredTile(TILE_ADDXY(tile,  1,  0), DIR_NE) << 2;
-	wa += IsWateredTile(TILE_ADDXY(tile,  0, -1), DIR_SE) << 3;
+	wa  = IsWateredTile(TileAddXY(tile, -1,  0), DIR_SW) << 0;
+	wa += IsWateredTile(TileAddXY(tile,  0,  1), DIR_NW) << 1;
+	wa += IsWateredTile(TileAddXY(tile,  1,  0), DIR_NE) << 2;
+	wa += IsWateredTile(TileAddXY(tile,  0, -1), DIR_SE) << 3;
 
 	if (!(wa & 1)) DrawWaterSprite(base, offset,     feature, tile);
 	if (!(wa & 2)) DrawWaterSprite(base, offset + 1, feature, tile);
@@ -735,25 +735,25 @@ static void DrawWaterEdges(bool canal, uint offset, TileIndex tile)
 	/* right corner */
 	switch (wa & 0x03) {
 		case 0: DrawWaterSprite(base, offset + 4, feature, tile); break;
-		case 3: if (!IsWateredTile(TILE_ADDXY(tile, -1, 1), DIR_W)) DrawWaterSprite(base, offset + 8, feature, tile); break;
+		case 3: if (!IsWateredTile(TileAddXY(tile, -1, 1), DIR_W)) DrawWaterSprite(base, offset + 8, feature, tile); break;
 	}
 
 	/* bottom corner */
 	switch (wa & 0x06) {
 		case 0: DrawWaterSprite(base, offset + 5, feature, tile); break;
-		case 6: if (!IsWateredTile(TILE_ADDXY(tile, 1, 1), DIR_N)) DrawWaterSprite(base, offset + 9, feature, tile); break;
+		case 6: if (!IsWateredTile(TileAddXY(tile, 1, 1), DIR_N)) DrawWaterSprite(base, offset + 9, feature, tile); break;
 	}
 
 	/* left corner */
 	switch (wa & 0x0C) {
 		case  0: DrawWaterSprite(base, offset + 6, feature, tile); break;
-		case 12: if (!IsWateredTile(TILE_ADDXY(tile, 1, -1), DIR_E)) DrawWaterSprite(base, offset + 10, feature, tile); break;
+		case 12: if (!IsWateredTile(TileAddXY(tile, 1, -1), DIR_E)) DrawWaterSprite(base, offset + 10, feature, tile); break;
 	}
 
 	/* upper corner */
 	switch (wa & 0x09) {
 		case 0: DrawWaterSprite(base, offset + 7, feature, tile); break;
-		case 9: if (!IsWateredTile(TILE_ADDXY(tile, -1, -1), DIR_S)) DrawWaterSprite(base, offset + 11, feature, tile); break;
+		case 9: if (!IsWateredTile(TileAddXY(tile, -1, -1), DIR_S)) DrawWaterSprite(base, offset + 11, feature, tile); break;
 	}
 }
 

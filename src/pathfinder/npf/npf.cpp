@@ -658,7 +658,7 @@ static void NPFSaveTargetData(AyStar *as, OpenListNode *current)
 		if (IsRailStationTile(target->node.tile)) {
 			DiagDirection dir = TrackdirToExitdir(target->node.direction);
 			uint len = Station::GetByTile(target->node.tile)->GetPlatformLength(target->node.tile, dir);
-			TileIndex end_tile = TILE_ADD(target->node.tile, (len - 1) * TileOffsByDiagDir(dir));
+			TileIndex end_tile = TileAdd(target->node.tile, (len - 1) * TileOffsByDiagDir(dir));
 
 			/* Update only end tile, trackdir of a station stays the same. */
 			ftd->node.tile = end_tile;

@@ -514,10 +514,10 @@ static void AdvanceSingleHouseConstruction(TileIndex tile)
 static void AdvanceHouseConstruction(TileIndex tile)
 {
 	uint flags = HouseSpec::Get(GetHouseType(tile))->building_flags;
-	if (flags & BUILDING_HAS_1_TILE)  AdvanceSingleHouseConstruction(TILE_ADDXY(tile, 0, 0));
-	if (flags & BUILDING_2_TILES_Y)   AdvanceSingleHouseConstruction(TILE_ADDXY(tile, 0, 1));
-	if (flags & BUILDING_2_TILES_X)   AdvanceSingleHouseConstruction(TILE_ADDXY(tile, 1, 0));
-	if (flags & BUILDING_HAS_4_TILES) AdvanceSingleHouseConstruction(TILE_ADDXY(tile, 1, 1));
+	if (flags & BUILDING_HAS_1_TILE)  AdvanceSingleHouseConstruction(TileAddXY(tile, 0, 0));
+	if (flags & BUILDING_2_TILES_Y)   AdvanceSingleHouseConstruction(TileAddXY(tile, 0, 1));
+	if (flags & BUILDING_2_TILES_X)   AdvanceSingleHouseConstruction(TileAddXY(tile, 1, 0));
+	if (flags & BUILDING_HAS_4_TILES) AdvanceSingleHouseConstruction(TileAddXY(tile, 1, 1));
 }
 
 /**
@@ -686,11 +686,11 @@ static void TileLoop_Town(TileIndex tile)
 				int y = Clamp(grid_pos.y, 0, 1);
 
 				if (hs->building_flags & TILE_SIZE_2x2) {
-					tile = TILE_ADDXY(tile, x, y);
+					tile = TileAddXY(tile, x, y);
 				} else if (hs->building_flags & TILE_SIZE_1x2) {
-					tile = TILE_ADDXY(tile, 0, y);
+					tile = TileAddXY(tile, 0, y);
 				} else if (hs->building_flags & TILE_SIZE_2x1) {
-					tile = TILE_ADDXY(tile, x, 0);
+					tile = TileAddXY(tile, x, 0);
 				}
 			}
 
@@ -971,7 +971,7 @@ static bool IsNeighborRoadTile(TileIndex tile, const DiagDirection dir, uint dis
 
 		/* Test for roadbit parallel to dir and facing towards the middle axis */
 		if (IsValidTile(tile + cur) &&
-				GetTownRoadBits(TILE_ADD(tile, cur)) & DiagDirToRoadBits((pos & 2) ? dir : ReverseDiagDir(dir))) return true;
+				GetTownRoadBits(TileAdd(tile, cur)) & DiagDirToRoadBits((pos & 2) ? dir : ReverseDiagDir(dir))) return true;
 	}
 	return false;
 }
@@ -1833,7 +1833,7 @@ static bool GrowTown(Town *t)
 			cur_company.Restore();
 			return success;
 		}
-		tile = TILE_ADD(tile, ToTileIndexDiff(*ptr));
+		tile = TileAdd(tile, ToTileIndexDiff(*ptr));
 	}
 
 	/* No road available, try to build a random road block by
@@ -1850,7 +1850,7 @@ static bool GrowTown(Town *t)
 					return true;
 				}
 			}
-			tile = TILE_ADD(tile, ToTileIndexDiff(*ptr));
+			tile = TileAdd(tile, ToTileIndexDiff(*ptr));
 		}
 	}
 

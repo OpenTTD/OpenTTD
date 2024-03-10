@@ -1307,7 +1307,7 @@ static CommandCost CheckNewIndustry_OilRefinery(TileIndex tile)
 {
 	if (_game_mode == GM_EDITOR) return CommandCost();
 
-	if (CheckScaledDistanceFromEdge(TILE_ADDXY(tile, 1, 1), _settings_game.game_creation.oil_refinery_limit)) return CommandCost();
+	if (CheckScaledDistanceFromEdge(TileAddXY(tile, 1, 1), _settings_game.game_creation.oil_refinery_limit)) return CommandCost();
 
 	return_cmd_error(STR_ERROR_CAN_ONLY_BE_POSITIONED);
 }
@@ -1324,7 +1324,7 @@ static CommandCost CheckNewIndustry_OilRig(TileIndex tile)
 	if (_game_mode == GM_EDITOR && _ignore_restrictions) return CommandCost();
 
 	if (TileHeight(tile) == 0 &&
-			CheckScaledDistanceFromEdge(TILE_ADDXY(tile, 1, 1), _settings_game.game_creation.oil_refinery_limit)) return CommandCost();
+			CheckScaledDistanceFromEdge(TileAddXY(tile, 1, 1), _settings_game.game_creation.oil_refinery_limit)) return CommandCost();
 
 	return_cmd_error(STR_ERROR_CAN_ONLY_BE_POSITIONED);
 }
