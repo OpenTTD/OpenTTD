@@ -51,6 +51,7 @@ private:
 	CommandCost costs;               ///< The costs the script is tracking.
 	Money last_cost;                 ///< The last cost of the command.
 	ScriptErrorType last_error{}; ///< The last error of the command.
+	ScriptErrorType extra_last_error{}; ///< The extra last error of the command.
 	bool last_command_res;           ///< The last result of the command.
 
 	CommandDataBuffer last_data;     ///< The last data passed to a command.

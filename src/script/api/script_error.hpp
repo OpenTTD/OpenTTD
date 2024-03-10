@@ -21,6 +21,7 @@
 #define EnforcePrecondition(returnval, condition)               \
 	if (!(condition)) {                                           \
 		ScriptObject::SetLastError(ScriptError::ERR_PRECONDITION_FAILED);   \
+		ScriptObject::SetExtraLastError(ScriptError::ERR_UNKNOWN);             \
 		return returnval;                                           \
 	}
 
@@ -33,6 +34,7 @@
 #define EnforcePreconditionCustomError(returnval, condition, error_code)   \
 	if (!(condition)) {                                                      \
 		ScriptObject::SetLastError(error_code);                                    \
+		ScriptObject::SetExtraLastError(ScriptError::ERR_UNKNOWN);             \
 		return returnval;                                                      \
 	}
 
@@ -44,6 +46,7 @@
 #define EnforcePreconditionEncodedText(returnval, string)   \
 	if (string.empty()) { \
 		ScriptObject::SetLastError(ScriptError::ERR_PRECONDITION_FAILED); \
+		ScriptObject::SetExtraLastError(ScriptError::ERR_UNKNOWN);             \
 		return returnval; \
 	}
 
@@ -60,6 +63,7 @@
 #define EnforceCompanyModeValid_Void() \
 	if (!ScriptCompanyMode::IsValid()) { \
 		ScriptObject::SetLastError(ScriptError::ERR_PRECONDITION_INVALID_COMPANY); \
+		ScriptObject::SetExtraLastError(ScriptError::ERR_UNKNOWN);             \
 		return; \
 	}
 
@@ -83,6 +87,7 @@
 #define EnforceDeityOrCompanyModeValid_Void() \
 	if (!(ScriptCompanyMode::IsDeity() || ScriptCompanyMode::IsValid())) { \
 		ScriptObject::SetLastError(ScriptError::ERR_PRECONDITION_INVALID_COMPANY); \
+		ScriptObject::SetExtraLastError(ScriptError::ERR_UNKNOWN);             \
 		return; \
 	}
 
@@ -191,10 +196,22 @@ public:
 	static ScriptErrorType GetLastError();
 
 	/**
+	 * Get the extra last error.
+	 * @return An ErrorMessages enum value.
+	 */
+	static ScriptErrorType GetExtraLastError();
+
+	/**
 	 * Get the last error in string format (for human readability).
 	 * @return An ErrorMessage enum item, as string.
 	 */
 	static std::optional<std::string> GetLastErrorString();
+
+	/**
+	 * Get the extra last error in string format (for human readability).
+	 * @return An ErrorMessage enum item, as string.
+	 */
+	static std::optional<std::string> GetExtraLastErrorString();
 
 	/**
 	 * Get the error based on the OpenTTD StringID.
