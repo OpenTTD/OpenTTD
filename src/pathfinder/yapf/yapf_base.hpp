@@ -290,61 +290,6 @@ public:
 		dmp.WriteStructT("m_nodes", &m_nodes);
 		dmp.WriteValue("m_num_steps", m_num_steps);
 	}
-
-	/* methods that should be implemented at derived class Types::Tpf (derived from CYapfBaseT) */
-
-#if 0
-	/** Example: PfSetStartupNodes() - set source (origin) nodes */
-	inline void PfSetStartupNodes()
-	{
-		/* example: */
-		Node &n1 = *base::m_nodes.CreateNewNode();
-		.
-		. // setup node members here
-		.
-		base::m_nodes.InsertOpenNode(n1);
-	}
-
-	/** Example: PfFollowNode() - set following (child) nodes of the given node */
-	inline void PfFollowNode(Node &org)
-	{
-		for (each follower of node org) {
-			Node &n = *base::m_nodes.CreateNewNode();
-			.
-			. // setup node members here
-			.
-			n.m_parent   = &org; // set node's parent to allow back tracking
-			AddNewNode(n);
-		}
-	}
-
-	/** Example: PfCalcCost() - set path cost from origin to the given node */
-	inline bool PfCalcCost(Node &n)
-	{
-		/* evaluate last step cost */
-		int cost = ...;
-		/* set the node cost as sum of parent's cost and last step cost */
-		n.m_cost = n.m_parent->m_cost + cost;
-		return true; // true if node is valid follower (i.e. no obstacle was found)
-	}
-
-	/** Example: PfCalcEstimate() - set path cost estimate from origin to the target through given node */
-	inline bool PfCalcEstimate(Node &n)
-	{
-		/* evaluate the distance to our destination */
-		int distance = ...;
-		/* set estimate as sum of cost from origin + distance to the target */
-		n.m_estimate = n.m_cost + distance;
-		return true; // true if node is valid (i.e. not too far away :)
-	}
-
-	/** Example: PfDetectDestination() - return true if the given node is our destination */
-	inline bool PfDetectDestination(Node &n)
-	{
-		bool bDest = (n.m_key.m_x == m_x2) && (n.m_key.m_y == m_y2);
-		return bDest;
-	}
-#endif
 };
 
 #endif /* YAPF_BASE_HPP */
