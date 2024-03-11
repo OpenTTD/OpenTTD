@@ -1013,6 +1013,7 @@ STR_GAME_OPTIONS_CURRENCY_INR                                   :Indijas rūpija
 STR_GAME_OPTIONS_CURRENCY_IDR                                   :Indonēzijas rūpija
 STR_GAME_OPTIONS_CURRENCY_MYR                                   :Malaizijas Ringits
 STR_GAME_OPTIONS_CURRENCY_LVL                                   :Latvijas lati
+STR_GAME_OPTIONS_CURRENCY_PTE                                   :Portugāles eskudo
 
 STR_GAME_OPTIONS_AUTOSAVE_FRAME                                 :{BLACK}Automātiskā saglabāšana
 STR_GAME_OPTIONS_AUTOSAVE_DROPDOWN_TOOLTIP                      :{BLACK}Izvēlēties spēles automātiskās saglabāšanas starplaikus

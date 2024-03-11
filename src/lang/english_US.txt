@@ -1011,6 +1011,7 @@ STR_GAME_OPTIONS_CURRENCY_INR                                   :Indian Rupee
 STR_GAME_OPTIONS_CURRENCY_IDR                                   :Indonesian Rupiah
 STR_GAME_OPTIONS_CURRENCY_MYR                                   :Malaysian Ringgit
 STR_GAME_OPTIONS_CURRENCY_LVL                                   :Latvian Lats
+STR_GAME_OPTIONS_CURRENCY_PTE                                   :Portuguese Escudo
 
 STR_GAME_OPTIONS_AUTOSAVE_FRAME                                 :{BLACK}Autosave
 STR_GAME_OPTIONS_AUTOSAVE_DROPDOWN_TOOLTIP                      :{BLACK}Select interval between automatic game saves
@@ -3078,6 +3079,8 @@ STR_LAND_AREA_INFORMATION_TRAM_OWNER                            :{BLACK}Streetca
 STR_LAND_AREA_INFORMATION_RAIL_OWNER                            :{BLACK}Railroad owner: {LTBLUE}{STRING}
 STR_LAND_AREA_INFORMATION_LOCAL_AUTHORITY                       :{BLACK}Local authority: {LTBLUE}{STRING}
 STR_LAND_AREA_INFORMATION_LOCAL_AUTHORITY_NONE                  :None
+STR_LAND_AREA_INFORMATION_LANDINFO_COORDS                       :{BLACK}Coordinates: {LTBLUE}{NUM} x {NUM} x {NUM}
+STR_LAND_AREA_INFORMATION_LANDINFO_INDEX                        :{BLACK}Tile index: {LTBLUE}{NUM} ({HEX})
 STR_LAND_AREA_INFORMATION_BUILD_DATE                            :{BLACK}Built/renovated: {LTBLUE}{DATE_LONG}
 STR_LAND_AREA_INFORMATION_STATION_CLASS                         :{BLACK}Station class: {LTBLUE}{STRING}
 STR_LAND_AREA_INFORMATION_STATION_TYPE                          :{BLACK}Station type: {LTBLUE}{STRING}

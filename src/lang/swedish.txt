@@ -1011,6 +1011,7 @@ STR_GAME_OPTIONS_CURRENCY_INR                                   :Indisk rupie
 STR_GAME_OPTIONS_CURRENCY_IDR                                   :Indonesisk rupie
 STR_GAME_OPTIONS_CURRENCY_MYR                                   :Malaysisk ringgit
 STR_GAME_OPTIONS_CURRENCY_LVL                                   :Lettiska Lats
+STR_GAME_OPTIONS_CURRENCY_PTE                                   :Portugisisk escudo
 
 STR_GAME_OPTIONS_AUTOSAVE_FRAME                                 :{BLACK}Spara automatiskt
 STR_GAME_OPTIONS_AUTOSAVE_DROPDOWN_TOOLTIP                      :{BLACK}Välj intervall mellan automatiskt sparande
@@ -3078,6 +3079,8 @@ STR_LAND_AREA_INFORMATION_TRAM_OWNER                            :{BLACK}Spårvä
 STR_LAND_AREA_INFORMATION_RAIL_OWNER                            :{BLACK}Järnvägens ägare: {LTBLUE}{STRING}
 STR_LAND_AREA_INFORMATION_LOCAL_AUTHORITY                       :{BLACK}Lokala myndigheter: {LTBLUE}{STRING}
 STR_LAND_AREA_INFORMATION_LOCAL_AUTHORITY_NONE                  :Ingen
+STR_LAND_AREA_INFORMATION_LANDINFO_COORDS                       :{BLACK}Koordinater: {LTBLUE}{NUM} x {NUM} x {NUM}
+STR_LAND_AREA_INFORMATION_LANDINFO_INDEX                        :{BLACK}Rutindex: {LTBLUE}{NUM} ({HEX})
 STR_LAND_AREA_INFORMATION_BUILD_DATE                            :{BLACK}Byggd/renoverad: {LTBLUE}{DATE_LONG}
 STR_LAND_AREA_INFORMATION_STATION_CLASS                         :{BLACK}Stationsklass: {LTBLUE}{STRING}
 STR_LAND_AREA_INFORMATION_STATION_TYPE                          :{BLACK}Stationstyp: {LTBLUE}{STRING}
@@ -4336,10 +4339,10 @@ STR_VEHICLE_VIEW_SHIP_CENTER_TOOLTIP                            :{BLACK}Centrera
 STR_VEHICLE_VIEW_AIRCRAFT_CENTER_TOOLTIP                        :{BLACK}Centrera huvudvyn på flygfarkostens position. Dubbelklicka för att följa flygfarkosten i huvudvyn. Ctrl+Klick för att öppna en ny fönstervy över flygfarkostens position
 
 ###length VEHICLE_TYPES
-STR_VEHICLE_VIEW_TRAIN_SEND_TO_DEPOT_TOOLTIP                    :{BLACK}Skicka tåg till depå. Ctrl+Klick för service endast
-STR_VEHICLE_VIEW_ROAD_VEHICLE_SEND_TO_DEPOT_TOOLTIP             :{BLACK}Skicka fordon till depå. Ctrl+Klick för service endast
-STR_VEHICLE_VIEW_SHIP_SEND_TO_DEPOT_TOOLTIP                     :{BLACK}Skicka skepp till depå. Ctrl+Klick för service endast
-STR_VEHICLE_VIEW_AIRCRAFT_SEND_TO_DEPOT_TOOLTIP                 :{BLACK}Skicka flygfarkost till hangar. Ctrl+Klick för service endast
+STR_VEHICLE_VIEW_TRAIN_SEND_TO_DEPOT_TOOLTIP                    :{BLACK}Skicka tåg till depå. Ctrl+Klick för att endast serva
+STR_VEHICLE_VIEW_ROAD_VEHICLE_SEND_TO_DEPOT_TOOLTIP             :{BLACK}Skicka fordon till depå. Ctrl+Klick för att endast serva
+STR_VEHICLE_VIEW_SHIP_SEND_TO_DEPOT_TOOLTIP                     :{BLACK}Skicka skepp till depå. Ctrl+Klick för att endast serva
+STR_VEHICLE_VIEW_AIRCRAFT_SEND_TO_DEPOT_TOOLTIP                 :{BLACK}Skicka flygfarkost till hangar. Ctrl+Klick för att endast serva
 
 ###length VEHICLE_TYPES
 STR_VEHICLE_VIEW_CLONE_TRAIN_INFO                               :{BLACK}Köp en kopia av tåget inklusive alla vagnar. Ctrl+Klick för att dela ordrar. Håll även in Shift för att endast visa uppskattad kostnad

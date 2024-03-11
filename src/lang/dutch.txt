@@ -1011,6 +1011,7 @@ STR_GAME_OPTIONS_CURRENCY_INR                                   :Indiase rupee
 STR_GAME_OPTIONS_CURRENCY_IDR                                   :Indonesische roepia
 STR_GAME_OPTIONS_CURRENCY_MYR                                   :Maleisische Ringgit
 STR_GAME_OPTIONS_CURRENCY_LVL                                   :Letse lats
+STR_GAME_OPTIONS_CURRENCY_PTE                                   :Portugese Escudo
 
 STR_GAME_OPTIONS_AUTOSAVE_FRAME                                 :{BLACK}Automatisch opslaan
 STR_GAME_OPTIONS_AUTOSAVE_DROPDOWN_TOOLTIP                      :{BLACK}Tijdsduur kiezen tussen automatisch opgeslagen spellen

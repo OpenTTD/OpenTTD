@@ -28,7 +28,7 @@ STR_JUST_NOTHING                                                :Nada
 STR_CARGO_PLURAL_NOTHING                                        :
 STR_CARGO_PLURAL_PASSENGERS                                     :Passageiros
 STR_CARGO_PLURAL_COAL                                           :Carvão
-STR_CARGO_PLURAL_MAIL                                           :Correspondências
+STR_CARGO_PLURAL_MAIL                                           :Correio
 STR_CARGO_PLURAL_OIL                                            :Petróleo
 STR_CARGO_PLURAL_LIVESTOCK                                      :Gado
 STR_CARGO_PLURAL_GOODS                                          :Bens
@@ -62,7 +62,7 @@ STR_CARGO_PLURAL_FIZZY_DRINKS                                   :Refrigerantes
 STR_CARGO_SINGULAR_NOTHING                                      :
 STR_CARGO_SINGULAR_PASSENGER                                    :Passageiro
 STR_CARGO_SINGULAR_COAL                                         :Carvão
-STR_CARGO_SINGULAR_MAIL                                         :Correspondência
+STR_CARGO_SINGULAR_MAIL                                         :Correio
 STR_CARGO_SINGULAR_OIL                                          :Petróleo
 STR_CARGO_SINGULAR_LIVESTOCK                                    :Gado
 STR_CARGO_SINGULAR_GOODS                                        :Bens
@@ -96,7 +96,7 @@ STR_CARGO_SINGULAR_FIZZY_DRINK                                  :Refrigerante
 STR_QUANTITY_NOTHING                                            :
 STR_QUANTITY_PASSENGERS                                         :{COMMA}{NBSP}passageiro{P "" s}
 STR_QUANTITY_COAL                                               :{WEIGHT_LONG} de carvão
-STR_QUANTITY_MAIL                                               :{COMMA}{NBSP}saco{P "" s} de correspondência
+STR_QUANTITY_MAIL                                               :{COMMA}{NBSP}saco{P "" s} de correio
 STR_QUANTITY_OIL                                                :{VOLUME_LONG} de petróleo
 STR_QUANTITY_LIVESTOCK                                          :{COMMA}{NBSP}cabeça{P "" s} de gado
 STR_QUANTITY_GOODS                                              :{COMMA}{NBSP}caixa{P "" s} de bens
@@ -1033,7 +1033,7 @@ STR_GAME_OPTIONS_FULLSCREEN                                     :{BLACK}Tela che
 STR_GAME_OPTIONS_FULLSCREEN_TOOLTIP                             :{BLACK}Marque esta caixa para jogar o OpenTTD em modo de tela cheia
 
 STR_GAME_OPTIONS_RESOLUTION                                     :{BLACK}Resolução da tela
-STR_GAME_OPTIONS_RESOLUTION_TOOLTIP                             :{BLACK}Escolher a resolução da tela que será usada
+STR_GAME_OPTIONS_RESOLUTION_TOOLTIP                             :{BLACK}Selecione uma resolução de tela para usar
 STR_GAME_OPTIONS_RESOLUTION_OTHER                               :outra
 STR_GAME_OPTIONS_RESOLUTION_ITEM                                :{NUM}x{NUM}
 
@@ -1076,20 +1076,20 @@ STR_GAME_OPTIONS_PARTICIPATE_SURVEY_PREVIEW_TOOLTIP             :{BLACK}Mostrar 
 STR_GAME_OPTIONS_GRAPHICS                                       :{BLACK}Gráficos
 
 STR_GAME_OPTIONS_REFRESH_RATE                                   :{BLACK}Taxa de atualização da tela
-STR_GAME_OPTIONS_REFRESH_RATE_TOOLTIP                           :{BLACK}Escolher qual taxa de atualização da tela será usada
+STR_GAME_OPTIONS_REFRESH_RATE_TOOLTIP                           :{BLACK}Selecione uma taxa de atualização de tela para usar
 STR_GAME_OPTIONS_REFRESH_RATE_ITEM                              :{NUM}Hz
 STR_GAME_OPTIONS_REFRESH_RATE_WARNING                           :{WHITE}Taxas de atualização superiores a 60Hz podem interferir no desempenho.
 
 STR_GAME_OPTIONS_BASE_GRF                                       :{BLACK}Conjunto de gráficos base
-STR_GAME_OPTIONS_BASE_GRF_TOOLTIP                               :{BLACK}Escolher qual conjunto de gráficos base usar (não pode ser alterado no jogo, só a partir do menu principal)
+STR_GAME_OPTIONS_BASE_GRF_TOOLTIP                               :{BLACK}Selecione um conjunto de gráficos base para usar (não pode ser alterado no jogo, só a partir do menu principal)
 STR_GAME_OPTIONS_BASE_GRF_DESCRIPTION_TOOLTIP                   :{BLACK}Informação adicional sobre sobre o conjunto de gráficos base
 
 STR_GAME_OPTIONS_BASE_SFX                                       :{BLACK}Conjunto de sons base
-STR_GAME_OPTIONS_BASE_SFX_TOOLTIP                               :{BLACK}Escolher qual conjunto de sons base usar (não pode ser alterado no jogo, só a partir do menu principal)
+STR_GAME_OPTIONS_BASE_SFX_TOOLTIP                               :{BLACK}Selecione um conjunto de sons base para usar (não pode ser alterado no jogo, só a partir do menu principal)
 STR_GAME_OPTIONS_BASE_SFX_DESCRIPTION_TOOLTIP                   :{BLACK}Informação adicional sobre sobre o conjunto de sons base
 
 STR_GAME_OPTIONS_BASE_MUSIC                                     :{BLACK}Conjunto de músicas base
-STR_GAME_OPTIONS_BASE_MUSIC_TOOLTIP                             :{BLACK}Escolher qual conjunto de músicas base usar
+STR_GAME_OPTIONS_BASE_MUSIC_TOOLTIP                             :{BLACK}Selecione um conjunto de músicas base para usar
 STR_GAME_OPTIONS_BASE_MUSIC_DESCRIPTION_TOOLTIP                 :{BLACK}Informação adicional sobre o conjunto de músicas base
 
 STR_GAME_OPTIONS_SOCIAL_PLUGINS_NONE                            :{LTBLUE}(não existem plugins instalados para integrar com as plataformas sociais)
@@ -1202,10 +1202,10 @@ STR_TERRAIN_TYPE_CUSTOM                                         :Altura personal
 STR_TERRAIN_TYPE_CUSTOM_VALUE                                   :Altura personalizada ({NUM})
 
 ###length 4
-STR_CITY_APPROVAL_LENIENT                                       :Brando
+STR_CITY_APPROVAL_LENIENT                                       :Leniente
 STR_CITY_APPROVAL_TOLERANT                                      :Tolerante
 STR_CITY_APPROVAL_HOSTILE                                       :Hostil
-STR_CITY_APPROVAL_PERMISSIVE                                    :Permissivo (sem efeito nas ações da empresa)
+STR_CITY_APPROVAL_PERMISSIVE                                    :Permissiva (sem efeito nas ações da empresa)
 
 STR_WARNING_NO_SUITABLE_AI                                      :{WHITE}Não existem IAs disponíveis...{}Você pode obter várias IAs usando o sistema de 'Conteúdo Online'
 
@@ -1256,7 +1256,7 @@ STR_CONFIG_SETTING_ON                                           :Ativado
 STR_CONFIG_SETTING_DISABLED                                     :Desativado
 
 ###length 3
-STR_CONFIG_SETTING_COMPANIES_OFF                                :Desligado
+STR_CONFIG_SETTING_COMPANIES_OFF                                :Desativado
 STR_CONFIG_SETTING_COMPANIES_OWN                                :Própria empresa
 STR_CONFIG_SETTING_COMPANIES_ALL                                :Todas as empresas
 
@@ -1670,7 +1670,7 @@ STR_CONFIG_SETTING_SCROLLWHEEL_SCROLLING_HELPTEXT               :Ativar o rolame
 ###length 3
 STR_CONFIG_SETTING_SCROLLWHEEL_ZOOM                             :Ampliar mapa
 STR_CONFIG_SETTING_SCROLLWHEEL_SCROLL                           :Mover o mapa
-STR_CONFIG_SETTING_SCROLLWHEEL_OFF                              :Desligado
+STR_CONFIG_SETTING_SCROLLWHEEL_OFF                              :Desativado
 
 STR_CONFIG_SETTING_OSK_ACTIVATION                               :Teclado virtual: {STRING}
 STR_CONFIG_SETTING_OSK_ACTIVATION_HELPTEXT                      :Escolher o método para mostrar o teclado virtual para inserir texto em caixas de diálogo usando o cursor. Isto é útil para dispositivos pequenos que não possuem teclados
@@ -1692,7 +1692,7 @@ STR_CONFIG_SETTING_RIGHT_MOUSE_BTN_EMU_HELPTEXT                 :Escolher o mét
 ###length 3
 STR_CONFIG_SETTING_RIGHT_MOUSE_BTN_EMU_COMMAND                  :Command+Clique
 STR_CONFIG_SETTING_RIGHT_MOUSE_BTN_EMU_CONTROL                  :Ctrl+Clique
-STR_CONFIG_SETTING_RIGHT_MOUSE_BTN_EMU_OFF                      :Desligado
+STR_CONFIG_SETTING_RIGHT_MOUSE_BTN_EMU_OFF                      :Desativado
 
 STR_CONFIG_SETTING_RIGHT_MOUSE_WND_CLOSE                        :Fechar janela com botão direito do mouse: {STRING}
 STR_CONFIG_SETTING_RIGHT_MOUSE_WND_CLOSE_HELPTEXT               :Fechar uma janela ao clicar com o botão direito do mouse sobre ela. Desativa os textos de ajuda (dicas) com o botão direito!
@@ -1859,9 +1859,9 @@ STR_CONFIG_SETTING_NEWS_ACCIDENTS_DISASTERS                     :Acidentes / des
 STR_CONFIG_SETTING_NEWS_ACCIDENTS_DISASTERS_HELPTEXT            :Mostrar um jornal quando ocorrem acidentes ou desastres
 
 STR_CONFIG_SETTING_NEWS_ACCIDENT_OTHER                          :Acidentes de veículos dos concorrentes: {STRING}
-STR_CONFIG_SETTING_NEWS_ACCIDENT_OTHER_HELPTEXT                 :Mostrar um jornal sobre veículos acidentados para os concorrentes
+STR_CONFIG_SETTING_NEWS_ACCIDENT_OTHER_HELPTEXT                 :Mostrar um jornal sobre veículos acidentados dos concorrentes
 
-STR_CONFIG_SETTING_NEWS_COMPANY_INFORMATION                     :Informações da empresa: {STRING}
+STR_CONFIG_SETTING_NEWS_COMPANY_INFORMATION                     :Informações de empresa: {STRING}
 STR_CONFIG_SETTING_NEWS_COMPANY_INFORMATION_HELPTEXT            :Mostrar um jornal quando uma nova empresa é criada ou quando empresas estão à beira da falência
 
 STR_CONFIG_SETTING_NEWS_INDUSTRY_OPEN                           :Abertura de indústrias: {STRING}
@@ -1897,7 +1897,7 @@ STR_CONFIG_SETTING_NEWS_SUBSIDIES_HELPTEXT                      :Mostrar um jorn
 STR_CONFIG_SETTING_NEWS_GENERAL_INFORMATION                     :Informações gerais: {STRING}
 STR_CONFIG_SETTING_NEWS_GENERAL_INFORMATION_HELPTEXT            :Mostrar um jornal sobre eventos gerais, como a compra de direitos de exclusividade ou financiamento para a reconstrução de estradas
 ###length 3
-STR_CONFIG_SETTING_NEWS_MESSAGES_OFF                            :Desligado
+STR_CONFIG_SETTING_NEWS_MESSAGES_OFF                            :Desativado
 STR_CONFIG_SETTING_NEWS_MESSAGES_SUMMARY                        :Resumo
 STR_CONFIG_SETTING_NEWS_MESSAGES_FULL                           :Completo
 
@@ -2038,8 +2038,8 @@ STR_CONFIG_SETTING_LINKGRAPH_RECALC_TIME_HELPTEXT               :Tempo gasto par
 
 STR_CONFIG_SETTING_DISTRIBUTION_PAX                             :Modo de distribuição para passageiros: {STRING}
 STR_CONFIG_SETTING_DISTRIBUTION_PAX_HELPTEXT                    :"Simétrico" significa que aproximadamente o mesmo número de passageiros irá de uma estação A para uma estação B, assim como de B para A. "Assimétrico" significa que um número arbitrário de passageiros pode ir em qualquer direção. "Manual" significa que não haverá distribuição automática dos passageiros.
-STR_CONFIG_SETTING_DISTRIBUTION_MAIL                            :Modo de distribuição para correspondências: {STRING}
-STR_CONFIG_SETTING_DISTRIBUTION_MAIL_HELPTEXT                   :"Simétrico" significa que aproximadamente a mesma quantidade de correspondência será enviada de uma estação A para uma estação B, assim como de B para A. "Assimétrica" significa que quantidades arbitrárias de correspondência podem ser enviadas em qualquer direção. "Manual" significa que não haverá distribuição automática de correspondências.
+STR_CONFIG_SETTING_DISTRIBUTION_MAIL                            :Modo de distribuição para correio: {STRING}
+STR_CONFIG_SETTING_DISTRIBUTION_MAIL_HELPTEXT                   :"Simétrico" significa que aproximadamente a mesma quantidade de correio será enviada de uma estação A para uma estação B, assim como de B para A. "Assimétrica" significa que quantidades arbitrárias de correio podem ser enviadas em qualquer direção. "Manual" significa que não haverá distribuição automática para correio.
 STR_CONFIG_SETTING_DISTRIBUTION_ARMOURED                        :Modo de distribuição para a classe de carga BLINDADA: {STRING}
 STR_CONFIG_SETTING_DISTRIBUTION_ARMOURED_HELPTEXT               :A classe de carga BLINDADA contém objetos de valor em clima temperado, diamantes em clima subtropical ou ouro em clima subártico. NewGRFs podem modificar isso. "Simétrica" significa que aproximadamente a mesma quantidade dessa carga será enviada de uma estação A para uma estação B, assim como de B para A. "Assimétrica" significa que quantidades arbitrárias dessa carga podem ser enviadas em qualquer direção. "Manual" significa que não haverá distribuição automática para aquela carga. Recomenda-se definir isso como assimétrico ou manual ao jogar subártico ou subtropical, pois os bancos só recebem carga nesses climas. Para temperado, você também pode escolher simétrico, pois os bancos enviarão objetos de valor de volta ao banco de origem.
 STR_CONFIG_SETTING_DISTRIBUTION_DEFAULT                         :Modo de distribuição para outras classes de carga: {STRING}
@@ -2050,7 +2050,7 @@ STR_CONFIG_SETTING_DISTRIBUTION_ASYMMETRIC                      :assimétrico
 STR_CONFIG_SETTING_DISTRIBUTION_SYMMETRIC                       :simétrico
 
 STR_CONFIG_SETTING_LINKGRAPH_ACCURACY                           :Precisão da distribuição: {STRING}
-STR_CONFIG_SETTING_LINKGRAPH_ACCURACY_HELPTEXT                  :Quanto maior for esse valor, mais tempo de CPU será necessário para calcular a rede de conexões. Se levar muito tempo muito você poderá notar atrasos. Entretanto, se o valor for muito pequeno, a distribuição será imprecisa e você irá perceber que cargas não estão sendo enviadas para os locais esperados.
+STR_CONFIG_SETTING_LINKGRAPH_ACCURACY_HELPTEXT                  :Quanto maior for esse valor, mais tempo de CPU será necessário para calcular a rede de conexões. Se demorar muito, você poderá notar um atraso. Entretanto, se o valor for muito pequeno, a distribuição será imprecisa e você irá perceber que cargas não estão sendo enviadas para os locais esperados.
 
 STR_CONFIG_SETTING_DEMAND_DISTANCE                              :Efeito da distância na demanda: {STRING}
 STR_CONFIG_SETTING_DEMAND_DISTANCE_HELPTEXT                     :Se for definido um valor maior que 0, a distância entre a estação de origem A de alguma carga e um possível destino B terá um efeito na quantidade de carga transportada de A até B. Quanto mais distante B estiver de A, menos carga será enviada. Quanto maior o valor definido, menos carga será transportada para estações distantes e mais carga será enviada para estações mais próximas.
