@@ -42,8 +42,8 @@ jobs:
 
     - name: Install vcpkg
       run: |
-        git clone https://github.com/microsoft/vcpkg
-        ./vcpkg/bootstrap-vcpkg.sh -disableMetrics
+        git clone https://github.com/microsoft/vcpkg ${{ runner.temp }}/vcpkg
+        ${{ runner.temp }}/vcpkg/bootstrap-vcpkg.sh -disableMetrics
 
     - name: Install dependencies
       env:
@@ -99,7 +99,7 @@ jobs:
         cmake ${GITHUB_WORKSPACE} \
           -DCMAKE_OSX_ARCHITECTURES=arm64 \
           -DVCPKG_TARGET_TRIPLET=arm64-osx \
-          -DCMAKE_TOOLCHAIN_FILE=${GITHUB_WORKSPACE}/vcpkg/scripts/buildsystems/vcpkg.cmake \
+          -DCMAKE_TOOLCHAIN_FILE=${{ runner.temp }}/vcpkg/scripts/buildsystems/vcpkg.cmake \
           -DHOST_BINARY_DIR=${GITHUB_WORKSPACE}/build-host \
           -DCMAKE_BUILD_TYPE=RelWithDebInfo \
           -DOPTION_SURVEY_KEY=${{ inputs.survey_key }} \
@@ -120,7 +120,7 @@ jobs:
         cmake ${GITHUB_WORKSPACE} \
           -DCMAKE_OSX_ARCHITECTURES=x86_64 \
           -DVCPKG_TARGET_TRIPLET=x64-osx \
-          -DCMAKE_TOOLCHAIN_FILE=${GITHUB_WORKSPACE}/vcpkg/scripts/buildsystems/vcpkg.cmake \
+          -DCMAKE_TOOLCHAIN_FILE=${{ runner.temp }}/vcpkg/scripts/buildsystems/vcpkg.cmake \
           -DHOST_BINARY_DIR=${GITHUB_WORKSPACE}/build-host \
           -DCMAKE_BUILD_TYPE=RelWithDebInfo \
           -DOPTION_SURVEY_KEY=${{ inputs.survey_key }} \

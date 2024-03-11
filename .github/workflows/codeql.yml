@@ -36,8 +36,8 @@ jobs:
 
     - name: Install vcpkg
       run: |
-        git clone https://github.com/microsoft/vcpkg
-        ./vcpkg/bootstrap-vcpkg.sh -disableMetrics
+        git clone https://github.com/microsoft/vcpkg ${{ runner.temp }}/vcpkg
+        ${{ runner.temp }}/vcpkg/bootstrap-vcpkg.sh -disableMetrics
 
     - name: Install dependencies
       run: |
@@ -65,7 +65,7 @@ jobs:
 
         # We only use breakpad from vcpkg, as its CMake files
         # are a bit special. So the Ubuntu's variant doesn't work.
-        ./vcpkg/vcpkg install breakpad
+        ${{ runner.temp }}/vcpkg/vcpkg install breakpad
 
         echo "::endgroup::"
       env:
@@ -77,7 +77,7 @@ jobs:
         cd build
 
         echo "::group::CMake"
-        cmake .. -DCMAKE_TOOLCHAIN_FILE=${GITHUB_WORKSPACE}/vcpkg/scripts/buildsystems/vcpkg.cmake
+        cmake .. -DCMAKE_TOOLCHAIN_FILE=${{ runner.temp }}/vcpkg/scripts/buildsystems/vcpkg.cmake
         echo "::endgroup::"
 
     - name: Initialize CodeQL

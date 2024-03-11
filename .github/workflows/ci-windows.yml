@@ -33,8 +33,8 @@ jobs:
 
     - name: Install vcpkg
       run: |
-        git clone https://github.com/microsoft/vcpkg
-        .\vcpkg\bootstrap-vcpkg.bat -disableMetrics
+        git clone https://github.com/microsoft/vcpkg ${{ runner.temp }}\vcpkg
+        ${{ runner.temp }}\vcpkg\bootstrap-vcpkg.bat -disableMetrics
 
     - name: Install OpenGFX
       shell: bash
@@ -72,7 +72,7 @@ jobs:
         cmake .. \
           -GNinja \
           -DVCPKG_TARGET_TRIPLET=${{ inputs.arch }}-windows-static \
-          -DCMAKE_TOOLCHAIN_FILE="${GITHUB_WORKSPACE}\vcpkg\scripts\buildsystems\vcpkg.cmake" \
+          -DCMAKE_TOOLCHAIN_FILE="${{ runner.temp }}\vcpkg\scripts\buildsystems\vcpkg.cmake" \
           # EOF
         echo "::endgroup::"
 
