@@ -380,10 +380,24 @@ STR_UNITS_HEIGHT_METRIC                                         :{DECIMAL}{NBSP}
 STR_UNITS_HEIGHT_SI                                             :{DECIMAL}{NBSP}м
 
 # Time units used in string control characters
+STR_UNITS_DAYS                                                  :{COMMA}{NBSP}день
+STR_UNITS_DAYS.z                                                :{COMMA}{NBSP}днів
+STR_UNITS_SECONDS                                               :{COMMA}{NBSP}секунда
+STR_UNITS_SECONDS.d                                             :{COMMA}{NBSP}секунди
+STR_UNITS_SECONDS.z                                             :{COMMA}{NBSP}секунд
+STR_UNITS_TICKS                                                 :{COMMA}{NBSP}цок
+STR_UNITS_TICKS.d                                               :{COMMA}{NBSP}цоки
+STR_UNITS_TICKS.z                                               :{COMMA}{NBSP}цоків
 
 STR_UNITS_MONTHS                                                :{NUM}{NBSP}місяц{P ь я ів}
 STR_UNITS_MINUTES                                               :{NUM}{NBSP}хвилин{P а и ""}
 
+STR_UNITS_YEARS                                                 :{NUM}{NBSP}рік
+STR_UNITS_YEARS.d                                               :{NUM}{NBSP}роки
+STR_UNITS_YEARS.z                                               :{NUM}{NBSP}ріків
+STR_UNITS_PERIODS                                               :{NUM}{NBSP}період
+STR_UNITS_PERIODS.d                                             :{NUM}{NBSP}періоди
+STR_UNITS_PERIODS.z                                             :{NUM}{NBSP}періодів
 
 # Common window strings
 STR_LIST_FILTER_TITLE                                           :{BLACK}Фільтр:
@@ -918,7 +932,7 @@ STR_SMALLMAP_ENABLE_ALL                                         :{BLACK}Пока
 STR_SMALLMAP_SHOW_HEIGHT                                        :{BLACK}Показати рельєф
 STR_SMALLMAP_TOOLTIP_DISABLE_ALL_INDUSTRIES                     :{BLACK}Не показувати жодного виду підприємств на карті
 STR_SMALLMAP_TOOLTIP_ENABLE_ALL_INDUSTRIES                      :{BLACK}Показати всі види підприємств на карті
-STR_SMALLMAP_TOOLTIP_SHOW_HEIGHT                                :{BLACK}Вкл./відкл. карту висот
+STR_SMALLMAP_TOOLTIP_SHOW_HEIGHT                                :{BLACK}Увімкнути/вимкнути мапу висот
 STR_SMALLMAP_TOOLTIP_DISABLE_ALL_COMPANIES                      :{BLACK}Не показувати власність жодної компанії на карті
 STR_SMALLMAP_TOOLTIP_ENABLE_ALL_COMPANIES                       :{BLACK}Показати власність всіх компаній на карті
 STR_SMALLMAP_TOOLTIP_DISABLE_ALL_CARGOS                         :{BLACK}Не показувати вантажі на карті
@@ -1180,7 +1194,8 @@ STR_GAME_OPTIONS_GUI_SCALE_5X                                   :5x
 
 STR_GAME_OPTIONS_PARTICIPATE_SURVEY_FRAME                       :{BLACK}Автоматизований збір даних
 STR_GAME_OPTIONS_PARTICIPATE_SURVEY                             :{BLACK}Участь в автоматизованому зборі даних
-STR_GAME_OPTIONS_PARTICIPATE_SURVEY_PREVIEW                     :{BLACK}Попередній перегляд геологічної розвідки
+STR_GAME_OPTIONS_PARTICIPATE_SURVEY_LINK                        :{BLACK}Про збір даних і приватність
+STR_GAME_OPTIONS_PARTICIPATE_SURVEY_PREVIEW                     :{BLACK}Попередній перегляд збору даних
 
 STR_GAME_OPTIONS_GRAPHICS                                       :{BLACK}Графіка
 
@@ -1203,13 +1218,16 @@ STR_GAME_OPTIONS_BASE_MUSIC_DESCRIPTION_TOOLTIP                 :{BLACK}Допо
 
 STR_GAME_OPTIONS_SOCIAL_PLUGINS_NONE                            :{LTBLUE}(не встановлено додатків для інтеграції з соціальними платформами)
 
+STR_GAME_OPTIONS_SOCIAL_PLUGIN_TITLE                            :{BLACK}{STRING} ({STRING})
 STR_GAME_OPTIONS_SOCIAL_PLUGIN_PLATFORM                         :{BLACK}Платформа:
 STR_GAME_OPTIONS_SOCIAL_PLUGIN_STATE                            :{BLACK}Стан додатка:
 
 STR_GAME_OPTIONS_SOCIAL_PLUGIN_STATE_RUNNING                    :{GREEN}Працює
 STR_GAME_OPTIONS_SOCIAL_PLUGIN_STATE_FAILED                     :{RED}Не вдалося з'єднатися
 STR_GAME_OPTIONS_SOCIAL_PLUGIN_STATE_PLATFORM_NOT_RUNNING       :{ORANGE}{STRING} не працює
+STR_GAME_OPTIONS_SOCIAL_PLUGIN_STATE_UNLOADED                   :{RED}Вивантажено
 STR_GAME_OPTIONS_SOCIAL_PLUGIN_STATE_DUPLICATE                  :{RED}Подвоєння додатка
+STR_GAME_OPTIONS_SOCIAL_PLUGIN_STATE_UNSUPPORTED_API            :{RED}Версія не підтримується
 STR_GAME_OPTIONS_SOCIAL_PLUGIN_STATE_INVALID_SIGNATURE          :{RED}Неправильний підпис
 
 STR_BASESET_STATUS                                              :{STRING} {RED}(відсутніх або зіпсованих файлів: {NUM})
@@ -1225,6 +1243,7 @@ STR_CURRENCY_DECREASE_EXCHANGE_RATE_TOOLTIP                     :{BLACK}Змен
 STR_CURRENCY_INCREASE_EXCHANGE_RATE_TOOLTIP                     :{BLACK}Збільшити кількість своєї валюти за 1 фунт (£)
 STR_CURRENCY_SET_EXCHANGE_RATE_TOOLTIP                          :{BLACK}Встановити обмінний курс своєї валюти до 1 фунта (£)
 
+STR_CURRENCY_SEPARATOR                                          :{LTBLUE}Роздільник: {ORANGE}{STRING}
 STR_CURRENCY_SET_CUSTOM_CURRENCY_SEPARATOR_TOOLTIP              :{BLACK}Встановити роздільник для своєї валюти
 
 STR_CURRENCY_PREFIX                                             :{LTBLUE}Префікс: {ORANGE}{STRING}
@@ -1597,6 +1616,7 @@ STR_CONFIG_SETTING_WARN_INCOME_LESS_HELPTEXT_PERIOD             :При вклю
 STR_CONFIG_SETTING_NEVER_EXPIRE_VEHICLES                        :Транспортні засоби не застарівають: {STRING}
 STR_CONFIG_SETTING_NEVER_EXPIRE_VEHICLES_HELPTEXT               :При включенні будь-яка модель транспортного засобу буде доступна для придбання безстроково після її впровадження.
 
+STR_CONFIG_SETTING_TIMEKEEPING_UNITS                            :Дотримання розкладу: {STRING}
 ###length 2
 STR_CONFIG_SETTING_TIMEKEEPING_UNITS_CALENDAR                   :Календар
 
@@ -1697,7 +1717,7 @@ STR_CONFIG_SETTING_ROAD_SIDE_HELPTEXT                           :Виберіт�
 STR_CONFIG_SETTING_ROAD_SIDE_LEFT                               :лівосторонній рух
 STR_CONFIG_SETTING_ROAD_SIDE_RIGHT                              :правосторонній рух
 
-STR_CONFIG_SETTING_HEIGHTMAP_ROTATION                           :Поворот карти висот: {STRING}
+STR_CONFIG_SETTING_HEIGHTMAP_ROTATION                           :Поворот мапи висот: {STRING}
 ###length 2
 STR_CONFIG_SETTING_HEIGHTMAP_ROTATION_COUNTER_CLOCKWISE         :проти годинникової стрілки
 STR_CONFIG_SETTING_HEIGHTMAP_ROTATION_CLOCKWISE                 :за годинниковою стрілкою
@@ -2205,6 +2225,7 @@ STR_CONFIG_SETTING_ACCOUNTING                                   :Облік
 STR_CONFIG_SETTING_VEHICLES                                     :Транспорт
 STR_CONFIG_SETTING_VEHICLES_PHYSICS                             :Фізика
 STR_CONFIG_SETTING_VEHICLES_ROUTING                             :Маршрути
+STR_CONFIG_SETTING_VEHICLES_ORDERS                              :Накази
 STR_CONFIG_SETTING_LIMITATIONS                                  :Обмеження
 STR_CONFIG_SETTING_ACCIDENTS                                    :Катастрофи
 STR_CONFIG_SETTING_GENWORLD                                     :Створення світу
@@ -2264,12 +2285,13 @@ STR_INTRO_CAPTION                                               :{WHITE}OpenTTD 
 STR_INTRO_NEW_GAME                                              :{BLACK}Нова гра
 STR_INTRO_LOAD_GAME                                             :{BLACK}Завантажити гру
 STR_INTRO_PLAY_SCENARIO                                         :{BLACK}Грати за сценарієм
-STR_INTRO_PLAY_HEIGHTMAP                                        :{BLACK}Грати з картою висот
+STR_INTRO_PLAY_HEIGHTMAP                                        :{BLACK}Грати з мапою висот
 STR_INTRO_SCENARIO_EDITOR                                       :{BLACK}Редактор сценаріїв
 STR_INTRO_MULTIPLAYER                                           :{BLACK}Мережева гра
 
 STR_INTRO_GAME_OPTIONS                                          :{BLACK}Налаштування гри
 STR_INTRO_HIGHSCORE                                             :{BLACK}Таблиця рекордів
+STR_INTRO_HELP                                                  :{BLACK}Допомога й довідка
 STR_INTRO_CONFIG_SETTINGS_TREE                                  :{BLACK}Налаштування
 STR_INTRO_NEWGRF_SETTINGS                                       :{BLACK}Налаштування NewGRF
 STR_INTRO_ONLINE_CONTENT                                        :{BLACK}Додатковий контент
@@ -2358,6 +2380,7 @@ STR_LIVERY_PANEL_TOOLTIP                                        :{BLACK}Обер
 STR_LIVERY_TRAIN_GROUP_EMPTY                                    :Кольори груп поїздів відсутні
 STR_LIVERY_ROAD_VEHICLE_GROUP_EMPTY                             :Не налаштовано груп дорожнього транспорту
 STR_LIVERY_SHIP_GROUP_EMPTY                                     :Групи корабілв не налаштовано
+STR_LIVERY_AIRCRAFT_GROUP_EMPTY                                 :Не налаштовано груп повітряного транспорту
 
 ###length 23
 STR_LIVERY_DEFAULT                                              :Стандартний колір
@@ -2609,6 +2632,9 @@ STR_NETWORK_ASK_RELAY_YES_ONCE                                  :{BLACK}Так, 
 STR_NETWORK_ASK_RELAY_YES_ALWAYS                                :{BLACK}Так, більше не питати
 
 STR_NETWORK_ASK_SURVEY_CAPTION                                  :Дозволити автоматизований збір даних?
+STR_NETWORK_ASK_SURVEY_TEXT                                     :Бажаєте долучитись до автоматичного збору даних?{}OpenTTD передаватиме дані при виході з гри.{}Це можна будь-коли змінити в "Налаштуваннях гри".
+STR_NETWORK_ASK_SURVEY_PREVIEW                                  :Попередній перегляд збору даних
+STR_NETWORK_ASK_SURVEY_LINK                                     :Про збір даних і приватність
 STR_NETWORK_ASK_SURVEY_NO                                       :Ні
 STR_NETWORK_ASK_SURVEY_YES                                      :Так
 
@@ -2779,7 +2805,7 @@ STR_CONTENT_TYPE_NEWGRF                                         :NewGRF
 STR_CONTENT_TYPE_AI                                             :AI
 STR_CONTENT_TYPE_AI_LIBRARY                                     :Бібліотека ШІ
 STR_CONTENT_TYPE_SCENARIO                                       :Сценарій
-STR_CONTENT_TYPE_HEIGHTMAP                                      :Карта висот
+STR_CONTENT_TYPE_HEIGHTMAP                                      :Мапа висот
 STR_CONTENT_TYPE_BASE_SOUNDS                                    :Основні звуки
 STR_CONTENT_TYPE_BASE_MUSIC                                     :Основна музика
 STR_CONTENT_TYPE_GAME_SCRIPT                                    :Ігровий скрипт
@@ -3368,7 +3394,7 @@ STR_SAVELOAD_OSKTITLE                                           :{BLACK}Введ
 # World generation
 STR_MAPGEN_WORLD_GENERATION_CAPTION                             :{WHITE}Створення світу
 STR_MAPGEN_MAPSIZE                                              :{BLACK}Розмір карти:
-STR_MAPGEN_MAPSIZE_TOOLTIP                                      :{BLACK}Оберіть розмір карти в клітинках. Кількість доступних клітинок буде трохи меншою
+STR_MAPGEN_MAPSIZE_TOOLTIP                                      :{BLACK}Оберіть розмір мапи в клітинках. Кількість доступних клітинок буде трохи меншою
 STR_MAPGEN_BY                                                   :{BLACK}*
 STR_MAPGEN_NUMBER_OF_TOWNS                                      :{BLACK}Міста:
 STR_MAPGEN_NUMBER_OF_TOWNS_TOOLTIP                              :BLACK}Оберіть щільність міст або випадкову кількість
@@ -3379,6 +3405,7 @@ STR_MAPGEN_DATE_TOOLTIP                                         :{BLACK}Обра
 STR_MAPGEN_NUMBER_OF_INDUSTRIES                                 :{BLACK}Кількість виробництв:
 STR_MAPGEN_NUMBER_OF_INDUSTRIES_TOOLTIP                         :BLACK}Оберіть щільність виробництв або випадкову кількість
 STR_MAPGEN_HEIGHTMAP_HEIGHT                                     :{BLACK}Найвища гора:
+STR_MAPGEN_HEIGHTMAP_HEIGHT_TOOLTIP                             :{BLACK}Обрати найвищу гору відносно рівня моря, яку гра спробує створити.
 STR_MAPGEN_HEIGHTMAP_HEIGHT_UP                                  :{BLACK}Збільшити на одиницю максимальну висоту найвищої гори на мапі
 STR_MAPGEN_HEIGHTMAP_HEIGHT_DOWN                                :{BLACK}Зменшити на одиницю максимальну висоту найвищої гори на мапі
 STR_MAPGEN_SNOW_COVERAGE                                        :{BLACK}Покриття снігом:
@@ -3441,9 +3468,10 @@ STR_MAPGEN_BORDER_RANDOMIZE                                     :{BLACK}дові
 STR_MAPGEN_BORDER_MANUAL                                        :{BLACK}вручну
 
 STR_MAPGEN_HEIGHTMAP_ROTATION                                   :{BLACK}Поворот рельєфу
-STR_MAPGEN_HEIGHTMAP_NAME                                       :{BLACK}Назва рельєфу:
-STR_MAPGEN_HEIGHTMAP_NAME_TOOLTIP                               :{BLACK}Назва файлу мапи висот
+STR_MAPGEN_HEIGHTMAP_NAME                                       :{BLACK}Назва мапи висот:
+STR_MAPGEN_HEIGHTMAP_NAME_TOOLTIP                               :{BLACK}Назва образу мапи висот
 STR_MAPGEN_HEIGHTMAP_SIZE_LABEL                                 :{BLACK}Розмір:
+STR_MAPGEN_HEIGHTMAP_SIZE_LABEL_TOOLTIP                         :{BLACK}Розмір образу мапи висот. Найкращим буде розмір, однаковий з довжиною мапи в OpenTTD, тобто 256, 512, 1024, тощо.
 STR_MAPGEN_HEIGHTMAP_SIZE                                       :{ORANGE}{NUM} x {NUM}
 
 STR_MAPGEN_TERRAIN_TYPE_QUERY_CAPT                              :{WHITE}Висота обраної гори
@@ -4940,7 +4968,7 @@ STR_TEXTFILE_VIEW_LICENCE_TOOLTIP                               :Показат�
 STR_TEXTFILE_README_CAPTION                                     :{WHITE}Документація до {STRING} {STRING}
 STR_TEXTFILE_CHANGELOG_CAPTION                                  :{WHITE}Зміни в {STRING} {STRING}
 STR_TEXTFILE_LICENCE_CAPTION                                    :{WHITE}Ліцензія до {STRING} {STRING}
-STR_TEXTFILE_SURVEY_RESULT_CAPTION                              :{BLACK}Попередній перегляд геологічної розвідки
+STR_TEXTFILE_SURVEY_RESULT_CAPTION                              :{WHITE}Попередній перегляд збору даних
 STR_TEXTFILE_GAME_MANUAL_CAPTION                                :{WHITE}документ OpenTTD '{STRING}'
 
 
