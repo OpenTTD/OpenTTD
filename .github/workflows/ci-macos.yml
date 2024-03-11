@@ -35,8 +35,8 @@ jobs:
 
     - name: Install vcpkg
       run: |
-        git clone https://github.com/microsoft/vcpkg
-        ./vcpkg/bootstrap-vcpkg.sh -disableMetrics
+        git clone https://github.com/microsoft/vcpkg ${{ runner.temp }}/vcpkg
+        ${{ runner.temp }}/vcpkg/bootstrap-vcpkg.sh -disableMetrics
 
     - name: Install OpenGFX
       run: |
@@ -65,7 +65,7 @@ jobs:
         cmake .. \
           -DCMAKE_OSX_ARCHITECTURES=${{ inputs.full_arch }} \
           -DVCPKG_TARGET_TRIPLET=${{ inputs.arch }}-osx \
-          -DCMAKE_TOOLCHAIN_FILE=${GITHUB_WORKSPACE}/vcpkg/scripts/buildsystems/vcpkg.cmake \
+          -DCMAKE_TOOLCHAIN_FILE=${{ runner.temp }}/vcpkg/scripts/buildsystems/vcpkg.cmake \
           # EOF
         echo "::endgroup::"
 
