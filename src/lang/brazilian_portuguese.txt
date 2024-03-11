@@ -28,7 +28,7 @@ STR_JUST_NOTHING                                                :Nada
 STR_CARGO_PLURAL_NOTHING                                        :
 STR_CARGO_PLURAL_PASSENGERS                                     :Passageiros
 STR_CARGO_PLURAL_COAL                                           :Carvão
-STR_CARGO_PLURAL_MAIL                                           :Correspondências
+STR_CARGO_PLURAL_MAIL                                           :Correio
 STR_CARGO_PLURAL_OIL                                            :Petróleo
 STR_CARGO_PLURAL_LIVESTOCK                                      :Gado
 STR_CARGO_PLURAL_GOODS                                          :Bens
@@ -62,7 +62,7 @@ STR_CARGO_PLURAL_FIZZY_DRINKS                                   :Refrigerantes
 STR_CARGO_SINGULAR_NOTHING                                      :
 STR_CARGO_SINGULAR_PASSENGER                                    :Passageiro
 STR_CARGO_SINGULAR_COAL                                         :Carvão
-STR_CARGO_SINGULAR_MAIL                                         :Correspondência
+STR_CARGO_SINGULAR_MAIL                                         :Correio
 STR_CARGO_SINGULAR_OIL                                          :Petróleo
 STR_CARGO_SINGULAR_LIVESTOCK                                    :Gado
 STR_CARGO_SINGULAR_GOODS                                        :Bens
@@ -96,7 +96,7 @@ STR_CARGO_SINGULAR_FIZZY_DRINK                                  :Refrigerante
 STR_QUANTITY_NOTHING                                            :
 STR_QUANTITY_PASSENGERS                                         :{COMMA}{NBSP}passageiro{P "" s}
 STR_QUANTITY_COAL                                               :{WEIGHT_LONG} de carvão
-STR_QUANTITY_MAIL                                               :{COMMA}{NBSP}saco{P "" s} de correspondência
+STR_QUANTITY_MAIL                                               :{COMMA}{NBSP}saco{P "" s} de correio
 STR_QUANTITY_OIL                                                :{VOLUME_LONG} de petróleo
 STR_QUANTITY_LIVESTOCK                                          :{COMMA}{NBSP}cabeça{P "" s} de gado
 STR_QUANTITY_GOODS                                              :{COMMA}{NBSP}caixa{P "" s} de bens
@@ -1032,7 +1032,7 @@ STR_GAME_OPTIONS_FULLSCREEN                                     :{BLACK}Tela che
 STR_GAME_OPTIONS_FULLSCREEN_TOOLTIP                             :{BLACK}Marque esta caixa para jogar o OpenTTD em modo de tela cheia
 
 STR_GAME_OPTIONS_RESOLUTION                                     :{BLACK}Resolução da tela
-STR_GAME_OPTIONS_RESOLUTION_TOOLTIP                             :{BLACK}Escolher a resolução da tela que será usada
+STR_GAME_OPTIONS_RESOLUTION_TOOLTIP                             :{BLACK}Selecione uma resolução de tela para usar
 STR_GAME_OPTIONS_RESOLUTION_OTHER                               :outra
 STR_GAME_OPTIONS_RESOLUTION_ITEM                                :{NUM}x{NUM}
 
@@ -1075,20 +1075,20 @@ STR_GAME_OPTIONS_PARTICIPATE_SURVEY_PREVIEW_TOOLTIP             :{BLACK}Mostrar 
 STR_GAME_OPTIONS_GRAPHICS                                       :{BLACK}Gráficos
 
 STR_GAME_OPTIONS_REFRESH_RATE                                   :{BLACK}Taxa de atualização da tela
-STR_GAME_OPTIONS_REFRESH_RATE_TOOLTIP                           :{BLACK}Escolher qual taxa de atualização da tela será usada
+STR_GAME_OPTIONS_REFRESH_RATE_TOOLTIP                           :{BLACK}Selecione uma taxa de atualização de tela para usar
 STR_GAME_OPTIONS_REFRESH_RATE_ITEM                              :{NUM}Hz
 STR_GAME_OPTIONS_REFRESH_RATE_WARNING                           :{WHITE}Taxas de atualização superiores a 60Hz podem interferir no desempenho.
 
 STR_GAME_OPTIONS_BASE_GRF                                       :{BLACK}Conjunto de gráficos base
-STR_GAME_OPTIONS_BASE_GRF_TOOLTIP                               :{BLACK}Escolher qual conjunto de gráficos base usar (não pode ser alterado no jogo, só a partir do menu principal)
+STR_GAME_OPTIONS_BASE_GRF_TOOLTIP                               :{BLACK}Selecione um conjunto de gráficos base para usar (não pode ser alterado no jogo, só a partir do menu principal)
 STR_GAME_OPTIONS_BASE_GRF_DESCRIPTION_TOOLTIP                   :{BLACK}Informação adicional sobre sobre o conjunto de gráficos base
 
 STR_GAME_OPTIONS_BASE_SFX                                       :{BLACK}Conjunto de sons base
-STR_GAME_OPTIONS_BASE_SFX_TOOLTIP                               :{BLACK}Escolher qual conjunto de sons base usar (não pode ser alterado no jogo, só a partir do menu principal)
+STR_GAME_OPTIONS_BASE_SFX_TOOLTIP                               :{BLACK}Selecione um conjunto de sons base para usar (não pode ser alterado no jogo, só a partir do menu principal)
 STR_GAME_OPTIONS_BASE_SFX_DESCRIPTION_TOOLTIP                   :{BLACK}Informação adicional sobre sobre o conjunto de sons base
 
 STR_GAME_OPTIONS_BASE_MUSIC                                     :{BLACK}Conjunto de músicas base
-STR_GAME_OPTIONS_BASE_MUSIC_TOOLTIP                             :{BLACK}Escolher qual conjunto de músicas base usar
+STR_GAME_OPTIONS_BASE_MUSIC_TOOLTIP                             :{BLACK}Selecione um conjunto de músicas base para usar
 STR_GAME_OPTIONS_BASE_MUSIC_DESCRIPTION_TOOLTIP                 :{BLACK}Informação adicional sobre o conjunto de músicas base
 
 STR_GAME_OPTIONS_SOCIAL_PLUGINS_NONE                            :{LTBLUE}(não existem plugins instalados para integrar com as plataformas sociais)
@@ -1201,10 +1201,10 @@ STR_TERRAIN_TYPE_CUSTOM                                         :Altura personal
 STR_TERRAIN_TYPE_CUSTOM_VALUE                                   :Altura personalizada ({NUM})
 
 ###length 4
-STR_CITY_APPROVAL_LENIENT                                       :Brando
+STR_CITY_APPROVAL_LENIENT                                       :Leniente
 STR_CITY_APPROVAL_TOLERANT                                      :Tolerante
 STR_CITY_APPROVAL_HOSTILE                                       :Hostil
-STR_CITY_APPROVAL_PERMISSIVE                                    :Permissivo (sem efeito nas ações da empresa)
+STR_CITY_APPROVAL_PERMISSIVE                                    :Permissiva (sem efeito nas ações da empresa)
 
 STR_WARNING_NO_SUITABLE_AI                                      :{WHITE}Não existem IAs disponíveis...{}Você pode obter várias IAs usando o sistema de 'Conteúdo Online'
 
@@ -1250,12 +1250,12 @@ STR_CONFIG_SETTING_TYPE_HIDES                                   :{BLACK}Mostrar 
 STR_CONFIG_SETTING_CATEGORY_AND_TYPE_HIDES                      :{BLACK}Mostrar todos os resultados da pesquisa por configuração{}{SILVER}Categoria {BLACK}para {WHITE}{STRING} {BLACK}e {SILVER}Tipo {BLACK}para {WHITE}Todos os tipos de configuração
 
 ###length 3
-STR_CONFIG_SETTING_OFF                                          :Desligado
-STR_CONFIG_SETTING_ON                                           :Ligado
+STR_CONFIG_SETTING_OFF                                          :Desativado
+STR_CONFIG_SETTING_ON                                           :Ativado
 STR_CONFIG_SETTING_DISABLED                                     :Desativado
 
 ###length 3
-STR_CONFIG_SETTING_COMPANIES_OFF                                :Desligado
+STR_CONFIG_SETTING_COMPANIES_OFF                                :Desativado
 STR_CONFIG_SETTING_COMPANIES_OWN                                :Própria empresa
 STR_CONFIG_SETTING_COMPANIES_ALL                                :Todas as empresas
 
@@ -1529,7 +1529,7 @@ STR_CONFIG_SETTING_ERRMSG_DURATION                              :Duração da me
 STR_CONFIG_SETTING_ERRMSG_DURATION_HELPTEXT                     :Duração da visualização de mensagens de erro em uma janela vermelha. Algumas mensagens de erro (crítico) não são fechadas automaticamente após este tempo, mas precisam ser fechadas manualmente
 
 STR_CONFIG_SETTING_HOVER_DELAY                                  :Mostrar textos de ajuda: {STRING}
-STR_CONFIG_SETTING_HOVER_DELAY_HELPTEXT                         :Atraso após o qual os textos de ajuda são mostrados quando o cursor ficar sobre algum elemento da interface. Alternativamente, os textos de ajuda podem ser mostrados com o botão direito do mouse quando este valor está definido como 0
+STR_CONFIG_SETTING_HOVER_DELAY_HELPTEXT                         :Tempo que o cursor deve ficar sobre algum elemento da interface para que os textos de ajuda sejam mostrados. Alternativamente, os textos de ajuda podem ser mostrados com o botão direito do mouse quando este valor está definido como 0
 STR_CONFIG_SETTING_HOVER_DELAY_VALUE                            :Manter o cursor por {COMMA} milissegundo{P 0 "" s}
 ###setting-zero-is-special
 STR_CONFIG_SETTING_HOVER_DELAY_DISABLED                         :Botão direito
@@ -1542,7 +1542,7 @@ STR_CONFIG_SETTING_GRAPH_LINE_THICKNESS_HELPTEXT                :Espessura da li
 
 STR_CONFIG_SETTING_SHOW_NEWGRF_NAME                             :Mostrar o nome do NewGRF na janela de comprar veículos: {STRING}
 STR_CONFIG_SETTING_SHOW_NEWGRF_NAME_HELPTEXT                    :Adiciona uma linha na janela de aquisição de veículos, mostrando a qual NewGRF pertence o veículo selecionado.
-STR_CONFIG_SETTING_SHOW_CARGO_IN_LISTS                          :Mostrar as cargas que os veículos podem transportar nas janelas de listagem {STRING}
+STR_CONFIG_SETTING_SHOW_CARGO_IN_LISTS                          :Mostrar as cargas que os veículos podem transportar nas janelas de listagem: {STRING}
 STR_CONFIG_SETTING_SHOW_CARGO_IN_LISTS_HELPTEXT                 :Se ativado, a carga transportável pelo veículo aparecerá acima dele nas listas de veículos
 
 STR_CONFIG_SETTING_LANDSCAPE                                    :Clima: {STRING}
@@ -1646,13 +1646,13 @@ STR_CONFIG_SETTING_SCROLLMODE_RMB                               :Mover mapa com 
 STR_CONFIG_SETTING_SCROLLMODE_LMB                               :Mover mapa com Botão Esquerdo Mouse
 
 STR_CONFIG_SETTING_SMOOTH_SCROLLING                             :Suavizar deslocamento da visualização: {STRING}
-STR_CONFIG_SETTING_SMOOTH_SCROLLING_HELPTEXT                    :Controla como a visualização principal se move para uma localização específica ao clicar no minimapa ou quando é dado um comando para ir até um objeto específico no mapa. Se ativado, a visualização se move suavemente, se desativado a visualização salta diretamente para o ponto escolhido
+STR_CONFIG_SETTING_SMOOTH_SCROLLING_HELPTEXT                    :Controla como a visualização principal se move para uma localização específica ao clicar no minimapa ou quando é dado um comando para ir até um objeto específico no mapa. Se ativado, a visualização se move suavemente. Se desativado, a visualização salta diretamente para o destino escolhido
 
 STR_CONFIG_SETTING_MEASURE_TOOLTIP                              :Mostrar medidas quando usar as ferramentas de construção: {STRING}
 STR_CONFIG_SETTING_MEASURE_TOOLTIP_HELPTEXT                     :Mostrar distâncias em quadrados e diferenças de altura quando Clicar+Arrastar nas ações de construção
 
 STR_CONFIG_SETTING_LIVERIES                                     :Mostrar cores específicas do tipo de veículo: {STRING}
-STR_CONFIG_SETTING_LIVERIES_HELPTEXT                            :Controla a utilização de cores específicas, por tipo de veículo, para os veículos(em vez de cores por empresa)
+STR_CONFIG_SETTING_LIVERIES_HELPTEXT                            :Controla a utilização de cores específicas, por tipo de veículo, para os veículos (em vez de cores por empresa)
 ###length 3
 STR_CONFIG_SETTING_LIVERIES_NONE                                :Nenhuma
 STR_CONFIG_SETTING_LIVERIES_OWN                                 :Própria empresa
@@ -1669,7 +1669,7 @@ STR_CONFIG_SETTING_SCROLLWHEEL_SCROLLING_HELPTEXT               :Ativar o rolame
 ###length 3
 STR_CONFIG_SETTING_SCROLLWHEEL_ZOOM                             :Ampliar mapa
 STR_CONFIG_SETTING_SCROLLWHEEL_SCROLL                           :Mover o mapa
-STR_CONFIG_SETTING_SCROLLWHEEL_OFF                              :Desligado
+STR_CONFIG_SETTING_SCROLLWHEEL_OFF                              :Desativado
 
 STR_CONFIG_SETTING_OSK_ACTIVATION                               :Teclado virtual: {STRING}
 STR_CONFIG_SETTING_OSK_ACTIVATION_HELPTEXT                      :Escolher o método para mostrar o teclado virtual para inserir texto em caixas de diálogo usando o cursor. Isto é útil para dispositivos pequenos que não possuem teclados
@@ -1691,10 +1691,10 @@ STR_CONFIG_SETTING_RIGHT_MOUSE_BTN_EMU_HELPTEXT                 :Escolher o mét
 ###length 3
 STR_CONFIG_SETTING_RIGHT_MOUSE_BTN_EMU_COMMAND                  :Command+Clique
 STR_CONFIG_SETTING_RIGHT_MOUSE_BTN_EMU_CONTROL                  :Ctrl+Clique
-STR_CONFIG_SETTING_RIGHT_MOUSE_BTN_EMU_OFF                      :Desligado
+STR_CONFIG_SETTING_RIGHT_MOUSE_BTN_EMU_OFF                      :Desativado
 
 STR_CONFIG_SETTING_RIGHT_MOUSE_WND_CLOSE                        :Fechar janela com botão direito do mouse: {STRING}
-STR_CONFIG_SETTING_RIGHT_MOUSE_WND_CLOSE_HELPTEXT               :Fecha uma janela ao clicar com o botão direito do mouse nela. Desativa os textos de ajuda (dicas) com o botão direito!
+STR_CONFIG_SETTING_RIGHT_MOUSE_WND_CLOSE_HELPTEXT               :Fechar uma janela ao clicar com o botão direito do mouse sobre ela. Desativa os textos de ajuda (dicas) com o botão direito!
 ###length 3
 STR_CONFIG_SETTING_RIGHT_MOUSE_WND_CLOSE_NO                     :Não
 STR_CONFIG_SETTING_RIGHT_MOUSE_WND_CLOSE_YES                    :Sim
@@ -1760,21 +1760,21 @@ STR_CONFIG_SETTING_FAST_FORWARD_SPEED_LIMIT_VAL                 :{NUM}% da veloc
 STR_CONFIG_SETTING_FAST_FORWARD_SPEED_LIMIT_ZERO                :Sem limite (o máximo que o seu computador suporta)
 
 STR_CONFIG_SETTING_SOUND_TICKER                                 :Notícias: {STRING}
-STR_CONFIG_SETTING_SOUND_TICKER_HELPTEXT                        :Reproduzir efeito sonoro para mensagens com notícias resumidas
+STR_CONFIG_SETTING_SOUND_TICKER_HELPTEXT                        :Reproduzir som para mensagens com notícias resumidas
 
 STR_CONFIG_SETTING_SOUND_NEWS                                   :Jornal: {STRING}
-STR_CONFIG_SETTING_SOUND_NEWS_HELPTEXT                          :Reproduzir efeito sonoro ao mostrar um jornal
+STR_CONFIG_SETTING_SOUND_NEWS_HELPTEXT                          :Reproduzir som ao mostrar um jornal
 
 ###length 2
 STR_CONFIG_SETTING_SOUND_NEW_YEAR                               :Fim do ano: {STRING}
 STR_CONFIG_SETTING_SOUND_NEW_PERIOD                             :Fim do período: {STRING}
 
 ###length 2
-STR_CONFIG_SETTING_SOUND_NEW_YEAR_HELPTEXT                      :Reproduzir um som no fim do ano e apresentar o desempenho da empresa neste ano em comparação com o desempenho no ano anterior
-STR_CONFIG_SETTING_SOUND_NEW_PERIOD_HELPTEXT                    :Reproduzir um som no fim do período e apresentar o desempenho da empresa neste período em comparação com o desempenho no período anterior
+STR_CONFIG_SETTING_SOUND_NEW_YEAR_HELPTEXT                      :Reproduzir som no fim do ano e apresentar o desempenho da empresa neste ano comparado com o desempenho no ano anterior
+STR_CONFIG_SETTING_SOUND_NEW_PERIOD_HELPTEXT                    :Reproduzir som no fim do período e apresentar o desempenho da empresa neste período comparado com o desempenho no período anterior
 
 STR_CONFIG_SETTING_SOUND_CONFIRM                                :Construção: {STRING}
-STR_CONFIG_SETTING_SOUND_CONFIRM_HELPTEXT                       :Reproduzir efeito sonoro para construções ou outras ações bem sucedidas
+STR_CONFIG_SETTING_SOUND_CONFIRM_HELPTEXT                       :Reproduzir som para construções ou outras ações bem sucedidas
 
 STR_CONFIG_SETTING_SOUND_CLICK                                  :Cliques de botões: {STRING}
 STR_CONFIG_SETTING_SOUND_CLICK_HELPTEXT                         :Reproduzir um bip quando botões são clicados
@@ -1858,9 +1858,9 @@ STR_CONFIG_SETTING_NEWS_ACCIDENTS_DISASTERS                     :Acidentes / des
 STR_CONFIG_SETTING_NEWS_ACCIDENTS_DISASTERS_HELPTEXT            :Mostrar um jornal quando ocorrem acidentes ou desastres
 
 STR_CONFIG_SETTING_NEWS_ACCIDENT_OTHER                          :Acidentes de veículos dos concorrentes: {STRING}
-STR_CONFIG_SETTING_NEWS_ACCIDENT_OTHER_HELPTEXT                 :Mostrar um jornal sobre veículos acidentados para os concorrentes
+STR_CONFIG_SETTING_NEWS_ACCIDENT_OTHER_HELPTEXT                 :Mostrar um jornal sobre veículos acidentados dos concorrentes
 
-STR_CONFIG_SETTING_NEWS_COMPANY_INFORMATION                     :Informações da empresa: {STRING}
+STR_CONFIG_SETTING_NEWS_COMPANY_INFORMATION                     :Informações de empresa: {STRING}
 STR_CONFIG_SETTING_NEWS_COMPANY_INFORMATION_HELPTEXT            :Mostrar um jornal quando uma nova empresa é criada ou quando empresas estão à beira da falência
 
 STR_CONFIG_SETTING_NEWS_INDUSTRY_OPEN                           :Abertura de indústrias: {STRING}
@@ -1896,7 +1896,7 @@ STR_CONFIG_SETTING_NEWS_SUBSIDIES_HELPTEXT                      :Mostrar um jorn
 STR_CONFIG_SETTING_NEWS_GENERAL_INFORMATION                     :Informações gerais: {STRING}
 STR_CONFIG_SETTING_NEWS_GENERAL_INFORMATION_HELPTEXT            :Mostrar um jornal sobre eventos gerais, como a compra de direitos de exclusividade ou financiamento para a reconstrução de estradas
 ###length 3
-STR_CONFIG_SETTING_NEWS_MESSAGES_OFF                            :Desligado
+STR_CONFIG_SETTING_NEWS_MESSAGES_OFF                            :Desativado
 STR_CONFIG_SETTING_NEWS_MESSAGES_SUMMARY                        :Resumo
 STR_CONFIG_SETTING_NEWS_MESSAGES_FULL                           :Completo
 
@@ -1930,7 +1930,7 @@ STR_CONFIG_SETTING_SEMAPHORE_BUILD_BEFORE_DATE                  :Usar automatica
 STR_CONFIG_SETTING_SEMAPHORE_BUILD_BEFORE_DATE_HELPTEXT         :Definir o ano em que os sinais elétricos serão usados nas ferrovias. Antes deste ano, sinais não-elétricos serão usados (eles têm a mesma funcionalidade, mas aparência diferente)
 
 STR_CONFIG_SETTING_CYCLE_SIGNAL_TYPES                           :Alternar entre tipos de sinais: {STRING}
-STR_CONFIG_SETTING_CYCLE_SIGNAL_TYPES_HELPTEXT                  :Escolher quais os tipos de sinal serão alternados quando usar Ctrl+Clique em um sinal construído com a ferramenta de sinais
+STR_CONFIG_SETTING_CYCLE_SIGNAL_TYPES_HELPTEXT                  :Escolher quais os tipos de sinais serão alternados quando usar Ctrl+Clique em um sinal construído com a ferramenta de sinais
 ###length 2
 STR_CONFIG_SETTING_CYCLE_SIGNAL_GROUP                           :Somente grupo atual
 STR_CONFIG_SETTING_CYCLE_SIGNAL_ALL                             :Todos visíveis
@@ -1989,14 +1989,14 @@ STR_CONFIG_SETTING_SNAP_RADIUS_VALUE                            :{COMMA} pixel{P
 ###setting-zero-is-special
 STR_CONFIG_SETTING_SNAP_RADIUS_DISABLED                         :Desativado
 STR_CONFIG_SETTING_SOFT_LIMIT                                   :Número máximo de janelas não fixadas: {STRING}
-STR_CONFIG_SETTING_SOFT_LIMIT_HELPTEXT                          :Número de janelas não fixadas abertas antes que as janelas antigas sejam automaticamente fechadas, liberando espaço para novas janelas
+STR_CONFIG_SETTING_SOFT_LIMIT_HELPTEXT                          :Número de janelas, não fixadas, abertas antes que as janelas antigas sejam automaticamente fechadas, liberando espaço para novas janelas
 STR_CONFIG_SETTING_SOFT_LIMIT_VALUE                             :{COMMA}
 ###setting-zero-is-special
 STR_CONFIG_SETTING_SOFT_LIMIT_DISABLED                          :desativado
 
 STR_CONFIG_SETTING_ZOOM_MIN                                     :Nível máximo de ampliação: {STRING}
 STR_CONFIG_SETTING_ZOOM_MIN_HELPTEXT                            :Nível máximo de ampliação para visualizações. Níveis de ampliação muito grandes aumentam os requisitos de memória
-STR_CONFIG_SETTING_ZOOM_MAX                                     :Nível máximo de redução da visualização: {STRING}
+STR_CONFIG_SETTING_ZOOM_MAX                                     :Nível máximo de redução: {STRING}
 STR_CONFIG_SETTING_ZOOM_MAX_HELPTEXT                            :Nível máximo de redução para visualizações. Níveis de redução muito grandes podem causar atrasos quando utilizados
 ###length 6
 STR_CONFIG_SETTING_ZOOM_LVL_MIN                                 :4x
@@ -2037,8 +2037,8 @@ STR_CONFIG_SETTING_LINKGRAPH_RECALC_TIME_HELPTEXT               :Tempo gasto par
 
 STR_CONFIG_SETTING_DISTRIBUTION_PAX                             :Modo de distribuição para passageiros: {STRING}
 STR_CONFIG_SETTING_DISTRIBUTION_PAX_HELPTEXT                    :"Simétrico" significa que aproximadamente o mesmo número de passageiros irá de uma estação A para uma estação B, assim como de B para A. "Assimétrico" significa que um número arbitrário de passageiros pode ir em qualquer direção. "Manual" significa que não haverá distribuição automática dos passageiros.
-STR_CONFIG_SETTING_DISTRIBUTION_MAIL                            :Modo de distribuição para correspondências: {STRING}
-STR_CONFIG_SETTING_DISTRIBUTION_MAIL_HELPTEXT                   :"Simétrico" significa que aproximadamente a mesma quantidade de correspondência será enviada de uma estação A para uma estação B, assim como de B para A. "Assimétrica" significa que quantidades arbitrárias de correspondência podem ser enviadas em qualquer direção. "Manual" significa que não haverá distribuição automática de correspondências.
+STR_CONFIG_SETTING_DISTRIBUTION_MAIL                            :Modo de distribuição para correio: {STRING}
+STR_CONFIG_SETTING_DISTRIBUTION_MAIL_HELPTEXT                   :"Simétrico" significa que aproximadamente a mesma quantidade de correio será enviada de uma estação A para uma estação B, assim como de B para A. "Assimétrica" significa que quantidades arbitrárias de correio podem ser enviadas em qualquer direção. "Manual" significa que não haverá distribuição automática para correio.
 STR_CONFIG_SETTING_DISTRIBUTION_ARMOURED                        :Modo de distribuição para a classe de carga BLINDADA: {STRING}
 STR_CONFIG_SETTING_DISTRIBUTION_ARMOURED_HELPTEXT               :A classe de carga BLINDADA contém objetos de valor em clima temperado, diamantes em clima subtropical ou ouro em clima subártico. NewGRFs podem modificar isso. "Simétrica" significa que aproximadamente a mesma quantidade dessa carga será enviada de uma estação A para uma estação B, assim como de B para A. "Assimétrica" significa que quantidades arbitrárias dessa carga podem ser enviadas em qualquer direção. "Manual" significa que não haverá distribuição automática para aquela carga. Recomenda-se definir isso como assimétrico ou manual ao jogar subártico ou subtropical, pois os bancos só recebem carga nesses climas. Para temperado, você também pode escolher simétrico, pois os bancos enviarão objetos de valor de volta ao banco de origem.
 STR_CONFIG_SETTING_DISTRIBUTION_DEFAULT                         :Modo de distribuição para outras classes de carga: {STRING}
@@ -2049,7 +2049,7 @@ STR_CONFIG_SETTING_DISTRIBUTION_ASYMMETRIC                      :assimétrico
 STR_CONFIG_SETTING_DISTRIBUTION_SYMMETRIC                       :simétrico
 
 STR_CONFIG_SETTING_LINKGRAPH_ACCURACY                           :Precisão da distribuição: {STRING}
-STR_CONFIG_SETTING_LINKGRAPH_ACCURACY_HELPTEXT                  :Quanto maior for esse valor, mais tempo de CPU será necessário para calcular a rede de conexões. Se levar muito tempo muito você poderá notar atrasos. Entretanto, se o valor for muito pequeno, a distribuição será imprecisa e você irá perceber que cargas não estão sendo enviadas para os locais esperados.
+STR_CONFIG_SETTING_LINKGRAPH_ACCURACY_HELPTEXT                  :Quanto maior for esse valor, mais tempo de CPU será necessário para calcular a rede de conexões. Se demorar muito, você poderá notar um atraso. Entretanto, se o valor for muito pequeno, a distribuição será imprecisa e você irá perceber que cargas não estão sendo enviadas para os locais esperados.
 
 STR_CONFIG_SETTING_DEMAND_DISTANCE                              :Efeito da distância na demanda: {STRING}
 STR_CONFIG_SETTING_DEMAND_DISTANCE_HELPTEXT                     :Se for definido um valor maior que 0, a distância entre a estação de origem A de alguma carga e um possível destino B terá um efeito na quantidade de carga transportada de A até B. Quanto mais distante B estiver de A, menos carga será enviada. Quanto maior o valor definido, menos carga será transportada para estações distantes e mais carga será enviada para estações mais próximas.
@@ -2656,10 +2656,10 @@ STR_CONTENT_NAME_CAPTION_TOOLTIP                                :{BLACK}Nome do 
 STR_CONTENT_MATRIX_TOOLTIP                                      :{BLACK}Clique em uma linha para ver os detalhes{}Clique na caixa de seleção para marcar e fazer o download
 STR_CONTENT_SELECT_ALL_CAPTION                                  :{BLACK}Selecionar tudo
 STR_CONTENT_SELECT_ALL_CAPTION_TOOLTIP                          :{BLACK}Marcar todo o conteúdo para ser baixado
-STR_CONTENT_SELECT_UPDATES_CAPTION                              :{BLACK}Selecionar upgrades
-STR_CONTENT_SELECT_UPDATES_CAPTION_TOOLTIP                      :{BLACK}Marcar para baixar todo o conteúdo que seja atualização para o conteúdo existente
+STR_CONTENT_SELECT_UPDATES_CAPTION                              :{BLACK}Selecionar atualizações
+STR_CONTENT_SELECT_UPDATES_CAPTION_TOOLTIP                      :{BLACK}Marcar para baixar todo conteúdo que seja atualização para um conteúdo existente
 STR_CONTENT_UNSELECT_ALL_CAPTION                                :{BLACK}Desmarcar tudo
-STR_CONTENT_UNSELECT_ALL_CAPTION_TOOLTIP                        :{BLACK}Marcar todo o conteúdo para não ser baixado
+STR_CONTENT_UNSELECT_ALL_CAPTION_TOOLTIP                        :{BLACK}Desmarcar todo o conteúdo selecionado
 STR_CONTENT_SEARCH_EXTERNAL                                     :{BLACK}Procurar em sites externos
 STR_CONTENT_SEARCH_EXTERNAL_TOOLTIP                             :{BLACK}Procurar conteúdo, que não está disponível no servidor de conteúdo do OpenTTD, em sites não associados ao OpenTTD
 STR_CONTENT_SEARCH_EXTERNAL_DISCLAIMER_CAPTION                  :{WHITE}Você está saindo do OpenTTD!
@@ -4862,8 +4862,8 @@ STR_TEXTFILE_VIEW_LICENCE                                       :{BLACK}Licença
 STR_TEXTFILE_VIEW_LICENCE_TOOLTIP                               :Ver a licença para este conteúdo
 ###length 5
 STR_TEXTFILE_README_CAPTION                                     :{WHITE}Leia-me {STRING} de {STRING}
-STR_TEXTFILE_CHANGELOG_CAPTION                                  :{WHITE}Registro de modificações {STRING} de {STRING}
-STR_TEXTFILE_LICENCE_CAPTION                                    :{WHITE}Licença {STRING} de {STRING}
+STR_TEXTFILE_CHANGELOG_CAPTION                                  :{WHITE}Registro de modificações em {STRING} de {STRING}
+STR_TEXTFILE_LICENCE_CAPTION                                    :{WHITE}Licença de {STRING} de {STRING}
 STR_TEXTFILE_SURVEY_RESULT_CAPTION                              :{WHITE}Pré-visualização do resultado da pesquisa
 STR_TEXTFILE_GAME_MANUAL_CAPTION                                :{WHITE}Documento '{STRING}' OpenTTD
 

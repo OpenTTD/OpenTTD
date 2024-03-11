@@ -4337,10 +4337,10 @@ STR_VEHICLE_VIEW_SHIP_CENTER_TOOLTIP                            :{BLACK}Centrera
 STR_VEHICLE_VIEW_AIRCRAFT_CENTER_TOOLTIP                        :{BLACK}Centrera huvudvyn på flygfarkostens position. Dubbelklicka för att följa flygfarkosten i huvudvyn. Ctrl+Klick för att öppna en ny fönstervy över flygfarkostens position
 
 ###length VEHICLE_TYPES
-STR_VEHICLE_VIEW_TRAIN_SEND_TO_DEPOT_TOOLTIP                    :{BLACK}Skicka tåg till depå. Ctrl+Klick för service endast
-STR_VEHICLE_VIEW_ROAD_VEHICLE_SEND_TO_DEPOT_TOOLTIP             :{BLACK}Skicka fordon till depå. Ctrl+Klick för service endast
-STR_VEHICLE_VIEW_SHIP_SEND_TO_DEPOT_TOOLTIP                     :{BLACK}Skicka skepp till depå. Ctrl+Klick för service endast
-STR_VEHICLE_VIEW_AIRCRAFT_SEND_TO_DEPOT_TOOLTIP                 :{BLACK}Skicka flygfarkost till hangar. Ctrl+Klick för service endast
+STR_VEHICLE_VIEW_TRAIN_SEND_TO_DEPOT_TOOLTIP                    :{BLACK}Skicka tåg till depå. Ctrl+Klick för att endast serva
+STR_VEHICLE_VIEW_ROAD_VEHICLE_SEND_TO_DEPOT_TOOLTIP             :{BLACK}Skicka fordon till depå. Ctrl+Klick för att endast serva
+STR_VEHICLE_VIEW_SHIP_SEND_TO_DEPOT_TOOLTIP                     :{BLACK}Skicka skepp till depå. Ctrl+Klick för att endast serva
+STR_VEHICLE_VIEW_AIRCRAFT_SEND_TO_DEPOT_TOOLTIP                 :{BLACK}Skicka flygfarkost till hangar. Ctrl+Klick för att endast serva
 
 ###length VEHICLE_TYPES
 STR_VEHICLE_VIEW_CLONE_TRAIN_INFO                               :{BLACK}Köp en kopia av tåget inklusive alla vagnar. Ctrl+Klick för att dela ordrar. Håll även in Shift för att endast visa uppskattad kostnad
