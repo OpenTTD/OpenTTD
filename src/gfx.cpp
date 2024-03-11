@@ -1169,9 +1169,7 @@ std::unique_ptr<uint32_t[]> DrawSpriteToRgbaBuffer(SpriteID spriteId, ZoomLevel 
 	const Sprite *sprite = GetSprite(real_sprite, SpriteType::Normal);
 	Dimension dim = GetSpriteSize(real_sprite, nullptr, zoom);
 	size_t dim_size = static_cast<size_t>(dim.width) * dim.height;
-	std::unique_ptr<uint32_t[]> result(new uint32_t[dim_size]);
-	/* Set buffer to fully transparent. */
-	MemSetT(result.get(), 0, dim_size);
+	std::unique_ptr<uint32_t[]> result = std::make_unique<uint32_t[]>(dim_size);
 
 	/* Prepare new DrawPixelInfo - Normally this would be the screen but we want to draw to another buffer here.
 	 * Normally, pitch would be scaled screen width, but in our case our "screen" is only the sprite width wide. */
@@ -1189,9 +1187,7 @@ std::unique_ptr<uint32_t[]> DrawSpriteToRgbaBuffer(SpriteID spriteId, ZoomLevel 
 	/* If the current blitter is a paletted blitter, we have to render to an extra buffer and resolve the palette later. */
 	std::unique_ptr<byte[]> pal_buffer{};
 	if (blitter->GetScreenDepth() == 8) {
-		pal_buffer.reset(new byte[dim_size]);
-		MemSetT(pal_buffer.get(), 0, dim_size);
-
+		pal_buffer = std::make_unique<byte[]>(dim_size);
 		dpi.dst_ptr = pal_buffer.get();
 	}
 
