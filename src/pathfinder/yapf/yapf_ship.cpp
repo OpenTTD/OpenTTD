@@ -172,6 +172,14 @@ public:
 		return 'w';
 	}
 
+	static Trackdir PickRandomTrackdir(TrackdirBits trackdirs)
+	{
+		assert(trackdirs != TRACKDIR_BIT_NONE);
+		const int strip_amount = RandomRange(CountBits(trackdirs));
+		for (int s = 0; s < strip_amount; ++s) RemoveFirstTrackdir(&trackdirs);
+		return FindFirstTrackdir(trackdirs);
+	}
+
 	/** Returns a random tile/trackdir that can be reached from the current tile/trackdir, or tile/INVALID_TRACK if none is available. */
 	static std::pair<TileIndex, Trackdir> GetRandomFollowUpTileTrackdir(const Ship *v, TileIndex tile, Trackdir dir)
 	{
@@ -180,9 +188,7 @@ public:
 			TrackdirBits dirs = follower.m_new_td_bits;
 			const TrackdirBits dirs_without_90_degree = dirs & ~TrackdirCrossesTrackdirs(dir);
 			if (dirs_without_90_degree != TRACKDIR_BIT_NONE) dirs = dirs_without_90_degree;
-			const int strip_amount = RandomRange(CountBits(dirs));
-			for (int s = 0; s < strip_amount; ++s) RemoveFirstTrackdir(&dirs);
-			return { follower.m_new_tile, FindFirstTrackdir(dirs) };
+			return { follower.m_new_tile, PickRandomTrackdir(dirs) };
 		}
 		return { follower.m_new_tile, INVALID_TRACKDIR };
 	}
@@ -295,7 +301,7 @@ public:
 		bool reverse = false;
 
 		const std::vector<WaterRegionPatchDesc> high_level_path = YapfShipFindWaterRegionPath(v, tile, NUMBER_OR_WATER_REGIONS_LOOKAHEAD + 1);
-		if (high_level_path.empty()) return reverse;
+		if (high_level_path.empty() && trackdir == nullptr) return reverse;
 
 		TrackdirBits trackdirs;
 		if (trackdir == nullptr) {
@@ -305,6 +311,10 @@ public:
 			/* At the end of path, no path ahead, reversing. */
 			DiagDirection entry = ReverseDiagDir(VehicleExitDir(v->direction, v->state));
 			trackdirs = DiagdirReachesTrackdirs(entry) & TrackStatusToTrackdirBits(GetTileTrackStatus(tile, TRANSPORT_WATER, 0, entry));
+			if (high_level_path.empty()) {
+				*trackdir = PickRandomTrackdir(trackdirs);
+				return reverse;
+			}
 		}
 
 		for (int attempt = 0; attempt < 2; ++attempt) {
@@ -324,11 +334,19 @@ public:
 			/* Find best path. */
 			if (!pf.FindPath(v)) {
 				if (attempt == 0) continue; // Try again with restricted search area.
+				if (trackdir != nullptr) {
+					*trackdir = PickRandomTrackdir(trackdirs);
+				}
 				break; // Returns false.
 			}
 
 			Node *pNode = pf.GetBestNode();
-			if (pNode == nullptr) break; // Returns false.
+			if (pNode == nullptr) {
+				if (trackdir != nullptr) {
+					*trackdir = PickRandomTrackdir(trackdirs);
+				}
+				break; // Returns false.
+			}
 
 			/* Path was found, walk through the path back to the origin. */
 			while (pNode->m_parent != nullptr) {
