@@ -91,6 +91,7 @@ void ResetHouseClassIDs();
 HouseClassID AllocateHouseClassID(byte grf_class_id, uint32_t grfid);
 
 void InitializeBuildingCounts();
+void InitializeBuildingCounts(Town *t);
 void IncreaseBuildingCount(Town *t, HouseID house_id);
 void DecreaseBuildingCount(Town *t, HouseID house_id);
 

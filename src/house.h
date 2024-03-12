@@ -31,12 +31,6 @@ static const HouseID INVALID_HOUSE_ID = 0xFFFF;
 
 static const uint HOUSE_NUM_ACCEPTS = 16; ///< Max number of cargoes accepted by a tile
 
-/**
- * There can only be as many classes as there are new houses, plus one for
- * NO_CLASS, as the original houses don't have classes.
- */
-static const uint HOUSE_CLASS_MAX  = NUM_HOUSES - NEW_HOUSE_OFFSET + 1;
-
 enum BuildingFlags {
 	TILE_NO_FLAG         =       0,
 	TILE_SIZE_1x1        = 1U << 0,
@@ -123,14 +117,11 @@ struct HouseSpec {
 	byte minimum_life;                        ///< The minimum number of years this house will survive before the town rebuilds it
 	CargoTypes watched_cargoes;               ///< Cargo types watched for acceptance.
 
+	HouseID Index() const;
 	Money GetRemovalCost() const;
 
-	static inline HouseSpec *Get(size_t house_id)
-	{
-		assert(house_id < NUM_HOUSES);
-		extern HouseSpec _house_specs[];
-		return &_house_specs[house_id];
-	}
+	static std::vector<HouseSpec> &Specs();
+	static HouseSpec *Get(size_t house_id);
 };
 
 /**

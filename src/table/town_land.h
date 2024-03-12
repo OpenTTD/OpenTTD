@@ -1817,7 +1817,7 @@ static_assert(lengthof(_town_draw_tile_data) == (NEW_HOUSE_OFFSET) * 4 * 4);
 	bf, ba, true, GRFFileProps(INVALID_HOUSE_ID), 0, {COLOUR_BEGIN, COLOUR_BEGIN, COLOUR_BEGIN, COLOUR_BEGIN}, \
 	16, NO_EXTRA_FLAG, HOUSE_NO_CLASS, {0, 2, 0, 0}, 0, 0, 0}
 /** House specifications from original data */
-static const HouseSpec _original_house_specs[] = {
+extern const HouseSpec _original_house_specs[] = {
 	/**
 	 *                                                                              remove_rating_decrease
 	 *                                                                              |    mail_generation
