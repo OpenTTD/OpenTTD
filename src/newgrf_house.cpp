@@ -457,7 +457,7 @@ static uint32_t GetDistanceFromNearbyHouse(uint8_t parameter, TileIndex tile, Ho
 				local_houseid = nearby_house_id;
 			} else {
 				local_houseid = (hs->grf_prop.grffile == this->ro.grffile ? 1 : 2) << 8;
-				local_houseid |= hs->grf_prop.local_id;
+				local_houseid |= ClampTo<uint8_t>(hs->grf_prop.local_id);
 			}
 			return houseclass << 16 | local_houseid;
 		}
