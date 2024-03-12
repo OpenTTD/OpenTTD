@@ -782,7 +782,7 @@ STR_PERFORMANCE_DETAIL_KEY                                      :{BLACK}Дета
 STR_PERFORMANCE_DETAIL_AMOUNT_CURRENCY                          :{BLACK}({CURRENCY_SHORT}/{CURRENCY_SHORT})
 STR_PERFORMANCE_DETAIL_AMOUNT_INT                               :{BLACK}({COMMA}/{COMMA})
 STR_PERFORMANCE_DETAIL_PERCENT                                  :{WHITE}{NUM}%
-STR_PERFORMANCE_DETAIL_SELECT_COMPANY_TOOLTIP                   :{BLACK}Проглянути деталі рейтинга цієї компанії
+STR_PERFORMANCE_DETAIL_SELECT_COMPANY_TOOLTIP                   :{BLACK}Проглянути деталі рейтингу цієї компанії
 
 ###length 10
 STR_PERFORMANCE_DETAIL_VEHICLES                                 :{BLACK}Транспорт:
@@ -800,6 +800,8 @@ STR_PERFORMANCE_DETAIL_TOTAL                                    :{BLACK}Підс
 STR_PERFORMANCE_DETAIL_VEHICLES_TOOLTIP_YEARS                   :{BLACK}Кількість транспортних засобів, які були прибутковими минулого року (дорожній транспорт, потяги, кораблі, літаки).
 STR_PERFORMANCE_DETAIL_VEHICLES_TOOLTIP_PERIODS                 :{BLACK}Кількість транспортних засобів, які були прибутковими минулого періоду (дорожній транспорт, потяги, кораблі, літаки).
 STR_PERFORMANCE_DETAIL_STATIONS_TOOLTIP                         :{BLACK}Кількість нещодавно обслуговуваних частин станцій. Кожна частина станції (залізнична станція, автобусна зупинка, аеропорт) враховується окремо, навіть якщо вони об'єднані в одну станцію
+STR_PERFORMANCE_DETAIL_MIN_PROFIT_TOOLTIP_YEARS                 :{BLACK}Прибуток транспортного засобу з найменшим заробітком (враховується тільки транспорт старший за два роки)
+STR_PERFORMANCE_DETAIL_MIN_PROFIT_TOOLTIP_PERIODS               :{BLACK}Прибуток транспортного засобу з найменшим заробітком (враховується тільки транспорт старший за два періоди)
 STR_PERFORMANCE_DETAIL_MIN_INCOME_TOOLTIP                       :{BLACK}Найменший квартальний прибуток за останні 12 кварталів
 STR_PERFORMANCE_DETAIL_MAX_INCOME_TOOLTIP                       :{BLACK}Найбільший квартальний прибуток за останні 12 кварталів
 STR_PERFORMANCE_DETAIL_DELIVERED_TOOLTIP                        :{BLACK}Кількість одиниць вантажу, доставлених за останні 4 квартали
@@ -1619,6 +1621,7 @@ STR_CONFIG_SETTING_NEVER_EXPIRE_VEHICLES_HELPTEXT               :При вклю
 STR_CONFIG_SETTING_TIMEKEEPING_UNITS                            :Дотримання розкладу: {STRING}
 ###length 2
 STR_CONFIG_SETTING_TIMEKEEPING_UNITS_CALENDAR                   :Календар
+STR_CONFIG_SETTING_TIMEKEEPING_UNITS_WALLCLOCK                  :Настінний годинник
 
 STR_CONFIG_SETTING_MINUTES_PER_YEAR                             :Хвилин у році: {STRING}
 
@@ -1626,6 +1629,10 @@ STR_CONFIG_SETTING_MINUTES_PER_YEAR_VALUE                       :{NUM}
 ###setting-zero-is-special
 STR_CONFIG_SETTING_MINUTES_PER_YEAR_FROZEN                      :0 (час календаря зупинено)
 
+STR_CONFIG_SETTING_TOWN_CARGO_SCALE                             :Зміна виробництва вантажів у містах: {STRING}
+STR_CONFIG_SETTING_TOWN_CARGO_SCALE_HELPTEXT                    :Змінити виробництво вантажів у містах на цей відсоток
+STR_CONFIG_SETTING_INDUSTRY_CARGO_SCALE                         :Змінити виробництво вантажів підприємствами: {STRING}
+STR_CONFIG_SETTING_INDUSTRY_CARGO_SCALE_HELPTEXT                :Змінити виробництво вантажів підприємствами на цей відсоток
 STR_CONFIG_SETTING_CARGO_SCALE_VALUE                            :{NUM}%
 
 STR_CONFIG_SETTING_AUTORENEW_VEHICLE                            :Автозаміна зношених транспортних засобів: {STRING}
@@ -2080,7 +2087,7 @@ STR_CONFIG_SETTING_TOWN_FOUNDING_ALLOWED                        :Дозволе�
 STR_CONFIG_SETTING_TOWN_FOUNDING_ALLOWED_CUSTOM_LAYOUT          :Дозволено (з вибором дорожньої сітки)
 
 STR_CONFIG_SETTING_TOWN_CARGOGENMODE                            :Кількість вантажів та пасажирів у містах: {STRING}
-STR_CONFIG_SETTING_TOWN_CARGOGENMODE_HELPTEXT                   :Скільки вантажів генерується будинками в містах відносно населення.{}Квадратична залежність: Вдвічі більше місто генерує вчетверо більше вантажів.{}Лінійна:  Вдвічі більше місто генерує вдвічі більше вантажів.
+STR_CONFIG_SETTING_TOWN_CARGOGENMODE_HELPTEXT                   :Скільки вантажів створюється будинками в містах відносно населення.{}Квадратична залежність: Вдвічі більше місто створює вчетверо більше вантажів.{}Лінійна:  Вдвічі більше місто створює вдвічі більше вантажів.
 ###length 2
 STR_CONFIG_SETTING_TOWN_CARGOGENMODE_ORIGINAL                   :Квадратична(оригінальна)
 STR_CONFIG_SETTING_TOWN_CARGOGENMODE_BITCOUNT                   :лінійна залежність
@@ -2176,6 +2183,9 @@ STR_CONFIG_SETTING_LOCALISATION_UNITS_VELOCITY_HELPTEXT         :Показув�
 STR_CONFIG_SETTING_LOCALISATION_UNITS_VELOCITY_IMPERIAL         :Імперські (милі/год)
 STR_CONFIG_SETTING_LOCALISATION_UNITS_VELOCITY_METRIC           :Метричні (км/год)
 STR_CONFIG_SETTING_LOCALISATION_UNITS_VELOCITY_SI               :СІ (м/с)
+STR_CONFIG_SETTING_LOCALISATION_UNITS_VELOCITY_GAMEUNITS_DAYS   :Ігрових одиниць (клітинок/день)
+STR_CONFIG_SETTING_LOCALISATION_UNITS_VELOCITY_GAMEUNITS_SECS   :Ігрових одиниць (клітинок/секунду)
+STR_CONFIG_SETTING_LOCALISATION_UNITS_VELOCITY_KNOTS            :вузли
 
 STR_CONFIG_SETTING_LOCALISATION_UNITS_POWER                     :Одиниці потужності: {STRING}
 STR_CONFIG_SETTING_LOCALISATION_UNITS_POWER_HELPTEXT            :Показувати потужності в таких одиницях:
@@ -4499,16 +4509,17 @@ STR_VEHICLE_STATUS_TRAIN_NO_POWER                               :{RED}Не до�
 STR_VEHICLE_STATUS_TRAIN_STUCK                                  :{ORANGE}Очікування вільного шляху
 STR_VEHICLE_STATUS_AIRCRAFT_TOO_FAR                             :{ORANGE}Занадто далеко до наступного місця призначення
 
-STR_VEHICLE_STATUS_HEADING_FOR_STATION_VEL                      :{LTBLUE}Прямує до {STATION}, {VELOCITY}
+STR_VEHICLE_STATUS_HEADING_FOR_STATION_VEL                      :{LTBLUE}{1:VELOCITY} - Прямує до {0:STATION}
 STR_VEHICLE_STATUS_NO_ORDERS_VEL                                :{LTBLUE}Без завдань, {VELOCITY}
-STR_VEHICLE_STATUS_HEADING_FOR_WAYPOINT_VEL                     :{LTBLUE}Прямує до {WAYPOINT}, {VELOCITY}
-STR_VEHICLE_STATUS_HEADING_FOR_DEPOT_VEL                        :{ORANGE}Прямує до {DEPOT}, {VELOCITY}
+STR_VEHICLE_STATUS_HEADING_FOR_WAYPOINT_VEL                     :{LTBLUE}{1:VELOCITY} - Прямує до {0:WAYPOINT}
+STR_VEHICLE_STATUS_HEADING_FOR_DEPOT_VEL                        :{ORANGE}{1:VELOCITY} - Прямує до  {0:DEPOT}
 STR_VEHICLE_STATUS_HEADING_FOR_DEPOT_SERVICE_VEL                :{LTBLUE}{1:VELOCITY} - Техогляд у {0:DEPOT}
+STR_VEHICLE_STATUS_HEADING_FOR_DEPOT_UNBUNCH_VEL                :{LTBLUE}{1:VELOCITY} - Звільнити і обслужити в {0:DEPOT}
 
-STR_VEHICLE_STATUS_CANNOT_REACH_STATION_VEL                     :{LTBLUE}Неможливо досягти {STATION}, {VELOCITY}
-STR_VEHICLE_STATUS_CANNOT_REACH_WAYPOINT_VEL                    :{LTBLUE}Неможливо досягти {WAYPOINT}, {VELOCITY}
-STR_VEHICLE_STATUS_CANNOT_REACH_DEPOT_VEL                       :{ORANGE}Неможливо досягти {DEPOT}, {VELOCITY}
-STR_VEHICLE_STATUS_CANNOT_REACH_DEPOT_SERVICE_VEL               :{LTBLUE}Неможливо досягти {DEPOT}, {VELOCITY}
+STR_VEHICLE_STATUS_CANNOT_REACH_STATION_VEL                     :{LTBLUE}{1:VELOCITY} - Неможливо досягти {0:STATION}
+STR_VEHICLE_STATUS_CANNOT_REACH_WAYPOINT_VEL                    :{LTBLUE}{1:VELOCITY} - Неможливо досягти {0:WAYPOINT}
+STR_VEHICLE_STATUS_CANNOT_REACH_DEPOT_VEL                       :{ORANGE}{1:VELOCITY} - Неможливо досягти {0:DEPOT}
+STR_VEHICLE_STATUS_CANNOT_REACH_DEPOT_SERVICE_VEL               :{LTBLUE}{1:VELOCITY} - Неможливо досягти {0:DEPOT}
 
 # Vehicle stopped/started animations
 ###length 2

@@ -1542,7 +1542,7 @@ STR_CONFIG_SETTING_GRAPH_LINE_THICKNESS_HELPTEXT                :Bredde af linje
 
 STR_CONFIG_SETTING_SHOW_NEWGRF_NAME                             :Vis navn på NewGRF i byg fartøj vinduet: {STRING}
 STR_CONFIG_SETTING_SHOW_NEWGRF_NAME_HELPTEXT                    :Tilføjer en linje til byg fartøj vinduet som viser, hvilken NewGRF det valgte fartøj stammer fra.
-STR_CONFIG_SETTING_SHOW_CARGO_IN_LISTS                          :Vis de laster, køretøjerne kan bære i listevinduerne {STRING}
+STR_CONFIG_SETTING_SHOW_CARGO_IN_LISTS                          :Vis de laster, køretøjerne kan bære i listevinduerne: {STRING}
 STR_CONFIG_SETTING_SHOW_CARGO_IN_LISTS_HELPTEXT                 :Hvis det er aktiveret, vises køretøjets transportable last over det på køretøjslisterne
 
 STR_CONFIG_SETTING_LANDSCAPE                                    :Landskab: {STRING}
@@ -1575,7 +1575,7 @@ STR_CONFIG_SETTING_DESERT_COVERAGE_HELPTEXT                     :Vælg den omtre
 STR_CONFIG_SETTING_DESERT_COVERAGE_VALUE                        :{NUM}%
 
 STR_CONFIG_SETTING_ROUGHNESS_OF_TERRAIN                         :Tærrenets hårdhed (kun TerraGenesis) : {STRING}
-STR_CONFIG_SETTING_ROUGHNESS_OF_TERRAIN_HELPTEXT                :Vælg formen og antallet af bakker. Glatte landskaber har færre, bredere bakker, mens barske landskaber har flere mindre bakker.
+STR_CONFIG_SETTING_ROUGHNESS_OF_TERRAIN_HELPTEXT                :Vælg formen og antallet af bakker. Glatte landskaber har færre, bredere bakker, mens barske landskaber har flere mindre bakker
 ###length 4
 STR_CONFIG_SETTING_ROUGHNESS_OF_TERRAIN_VERY_SMOOTH             :Meget blødt
 STR_CONFIG_SETTING_ROUGHNESS_OF_TERRAIN_SMOOTH                  :Blødt
@@ -1630,7 +1630,7 @@ STR_CONFIG_SETTING_SMALLMAP_LAND_COLOUR_DARK_GREEN              :Mørkegrøn
 STR_CONFIG_SETTING_SMALLMAP_LAND_COLOUR_VIOLET                  :Violet
 
 STR_CONFIG_SETTING_LINKGRAPH_COLOURS                            :Overlejringsfarver til lastflow: {STRING}
-STR_CONFIG_SETTING_LINKGRAPH_COLOURS_HELPTEXT                   :Indstil det farveskema, der bruges til laststrømsoverlejringen.
+STR_CONFIG_SETTING_LINKGRAPH_COLOURS_HELPTEXT                   :Indstil det farveskema, der bruges til laststrøms overlejringen
 ###length 4
 STR_CONFIG_SETTING_LINKGRAPH_COLOURS_GREEN_TO_RED               :Grøn til rød (original)
 STR_CONFIG_SETTING_LINKGRAPH_COLOURS_GREEN_TO_BLUE              :Grøn til blå
@@ -1751,7 +1751,7 @@ STR_CONFIG_SETTING_PERSISTENT_BUILDINGTOOLS                     :Hold byggeværk
 STR_CONFIG_SETTING_PERSISTENT_BUILDINGTOOLS_HELPTEXT            :Hold bygnings-værktøjer til broer, tunneler, mv. åben efter brug
 
 STR_CONFIG_SETTING_AUTO_REMOVE_SIGNALS                          :Fjern automatisk signaler under jernbane-bygning: {STRING}
-STR_CONFIG_SETTING_AUTO_REMOVE_SIGNALS_HELPTEXT                 :Fjerner automatisk signaler under jernbane-bygning, hvis signalerne er i vejen. Bemærk at dette potentielt kan føre til togsammenstød.
+STR_CONFIG_SETTING_AUTO_REMOVE_SIGNALS_HELPTEXT                 :Fjerner automatisk signaler under jernbane-bygning, hvis signalerne er i vejen. Bemærk at dette potentielt kan føre til togsammenstød
 
 STR_CONFIG_SETTING_FAST_FORWARD_SPEED_LIMIT                     :Hurtig kørsel hastighedsgrænse: {STRING}
 STR_CONFIG_SETTING_FAST_FORWARD_SPEED_LIMIT_HELPTEXT            :Begrænser hvor hurtigt spillet kører, når hurtig kørsel er aktiveret. 0 = ingen grænse (så hurtigt som din computer er i stand til.) Værdier under 100% sænker spillets hastighed. Den øvre grænse afhænger af din computers specifikationer og kan variere afhængig af spillet.
@@ -2031,25 +2031,25 @@ STR_CONFIG_SETTING_CITY_SIZE_MULTIPLIER                         :Startværdi for
 STR_CONFIG_SETTING_CITY_SIZE_MULTIPLIER_HELPTEXT                :Gennemsnitlig størrelse af storbyer i forhold til normale byer ved start af spillet
 
 STR_CONFIG_SETTING_LINKGRAPH_RECALC_INTERVAL                    :Opdater distributionsgraf hver {STRING}{NBSP}sekund{P 0:2 "" er}
-STR_CONFIG_SETTING_LINKGRAPH_RECALC_INTERVAL_HELPTEXT           :Tid mellem efterfølgende genberegninger af linkgrafen. Hver genberegning beregner planerne for én komponent af grafen. Det betyder, at en værdi X for denne indstilling ikke betyder, at hele grafen vil blive opdateret hvert X sekund. Kun en komponent vil. Jo kortere du indstiller det, jo mere CPU-tid vil være nødvendigt for at beregne det. Jo længere du indstiller det, jo længere tid vil det tage, før godsfordelingen starter på nye ruter.
+STR_CONFIG_SETTING_LINKGRAPH_RECALC_INTERVAL_HELPTEXT           :Tid mellem efterfølgende genberegninger af linkgrafen. Hver genberegning beregner planerne for én komponent af grafen. Det betyder, at en værdi X for denne indstilling ikke betyder, at hele grafen vil blive opdateret hvert X sekund. Kun en komponent vil. Jo kortere du indstiller det, jo mere CPU-tid vil være nødvendigt for at beregne det. Jo længere du indstiller det, jo længere tid vil det tage, før godsfordelingen starter på nye ruter
 STR_CONFIG_SETTING_LINKGRAPH_RECALC_TIME                        :Tag {STRING}{NBSP}sekund{P 0:2 "" er} til genberegning af fordelingsgraf
-STR_CONFIG_SETTING_LINKGRAPH_RECALC_TIME_HELPTEXT               :Tid det tager for hver genberegning af en linkgrafkomponent. Når en genberegning startes, dannes en tråd, som får lov til at køre i dette antal sekunder. Jo kortere du indstiller dette, jo mere sandsynligt er det, at tråden ikke er færdig, når den skal. Så stopper spillet, indtil det er ("lag"). Jo længere du indstiller det, jo længere tid tager det for distributionen at blive opdateret, når ruter ændres.
+STR_CONFIG_SETTING_LINKGRAPH_RECALC_TIME_HELPTEXT               :Tid det tager for hver genberegning af en linkgrafkomponent. Når en genberegning startes, dannes en tråd, som får lov til at køre i dette antal sekunder. Jo kortere du indstiller dette, jo mere sandsynligt er det, at tråden ikke er færdig, når den skal. Så stopper spillet, indtil det er ("lag"). Jo længere du indstiller det, jo længere tid tager det for distributionen at blive opdateret, når ruter ændres
 
 STR_CONFIG_SETTING_DISTRIBUTION_PAX                             :Distributionsmodel for passagerer: {STRING}
 STR_CONFIG_SETTING_DISTRIBUTION_PAX_HELPTEXT                    :"Symmetrisk" betyder, at omtrent det samme antal passagerer vil gå fra en station A til en station B som fra B til A. "Asymmetrisk" betyder, at vilkårlige antal passagerer kan gå i begge retninger. "Manuel" betyder, at der ikke finder nogen automatisk distribution sted for passagerer.
 STR_CONFIG_SETTING_DISTRIBUTION_MAIL                            :Distributionsmodel for post: {STRING}
-STR_CONFIG_SETTING_DISTRIBUTION_MAIL_HELPTEXT                   :"symmetrisk" betyder, at der sendes omtrent den samme mængde post fra en station A til en station B som fra B til A. "asymmetrisk" betyder, at vilkårlige mængder post kan sendes i begge retninger. "Manuel" betyder, at der ikke finder automatisk distribution sted for post.
+STR_CONFIG_SETTING_DISTRIBUTION_MAIL_HELPTEXT                   :"symmetrisk" betyder, at der sendes omtrent den samme mængde post fra en station A til en station B som fra B til A. "asymmetrisk" betyder, at vilkårlige mængder post kan sendes i begge retninger. "Manuel" betyder, at der ikke finder automatisk distribution sted for post
 STR_CONFIG_SETTING_DISTRIBUTION_ARMOURED                        :Distributionsmodel for PANSRET last-klasse: {STRING}
-STR_CONFIG_SETTING_DISTRIBUTION_ARMOURED_HELPTEXT               :PANSRET last-klasse indeholder værdigenstande i tempereret, diamanter i det subtropiske eller guld i det subarktiske klima. NewGRF'er kan ændre det. "Symmetrisk" betyder, at omtrent den samme mængde af denne last vil blive sendt fra en station A til en station B som fra B til A. "Asymmetrisk" betyder, at vilkårlige mængder af denne last kan sendes i begge retninger. "Manuel" betyder, at der ikke finder nogen automatisk distribution sted for den pågældende last. Det anbefales at indstille dette til asymmetrisk eller manuel, når du spiller subarktisk eller subtropisk, da banker kun modtager gods i disse klimaer. For tempereret kan du også vælge symmetrisk, da banker sender værdigenstande tilbage til oprindelsesbanken.
+STR_CONFIG_SETTING_DISTRIBUTION_ARMOURED_HELPTEXT               :PANSRET last-klasse indeholder værdigenstande i tempereret, diamanter i det subtropiske eller guld i det subarktiske klima. NewGRF'er kan ændre det. "Symmetrisk" betyder, at omtrent den samme mængde af denne last vil blive sendt fra en station A til en station B som fra B til A. "Asymmetrisk" betyder, at vilkårlige mængder af denne last kan sendes i begge retninger. "Manuel" betyder, at der ikke finder nogen automatisk distribution sted for den pågældende last. Det anbefales at indstille dette til asymmetrisk eller manuel, når du spiller subarktisk eller subtropisk, da banker kun modtager gods i disse klimaer. For tempereret kan du også vælge symmetrisk, da banker sender værdigenstande tilbage til oprindelsesbanken
 STR_CONFIG_SETTING_DISTRIBUTION_DEFAULT                         :Distributionsmodel for andre lastklasser: {STRING}
-STR_CONFIG_SETTING_DISTRIBUTION_DEFAULT_HELPTEXT                :"asymmetrisk" betyder, at vilkårlige mængder last kan sendes i begge retninger. "manuel" betyder, at der ikke finder nogen automatisk distribution sted for disse laster.
+STR_CONFIG_SETTING_DISTRIBUTION_DEFAULT_HELPTEXT                :"asymmetrisk" betyder, at vilkårlige mængder last kan sendes i begge retninger. "manuel" betyder, at der ikke finder nogen automatisk distribution sted for disse laster
 ###length 3
 STR_CONFIG_SETTING_DISTRIBUTION_MANUAL                          :manuel
 STR_CONFIG_SETTING_DISTRIBUTION_ASYMMETRIC                      :asymmetrisk
 STR_CONFIG_SETTING_DISTRIBUTION_SYMMETRIC                       :symmetrisk
 
 STR_CONFIG_SETTING_LINKGRAPH_ACCURACY                           :Distributionsnøjagtighed: {STRING}
-STR_CONFIG_SETTING_LINKGRAPH_ACCURACY_HELPTEXT                  :Jo højere du sætter denne indstilling, jo mere CPU-tid vil beregningen af forbindelsesgrafen tage. Hvis den tager for længe, kan du opleve lag. Hvis du derimod sætter indstillingen til en lav værdi, vil distributionen være unøjagtig, og du kan opleve last ikke blive sendt til de steder, du forventer.
+STR_CONFIG_SETTING_LINKGRAPH_ACCURACY_HELPTEXT                  :Jo højere du sætter denne indstilling, jo mere CPU-tid vil beregningen af forbindelsesgrafen tage. Hvis den tager for længe, kan du opleve lag. Hvis du derimod sætter indstillingen til en lav værdi, vil distributionen være unøjagtig, og du kan opleve last ikke blive sendt til de steder, du forventer
 
 STR_CONFIG_SETTING_DEMAND_DISTANCE                              :Effekt af afstand på efterspørgsel: {STRING}
 STR_CONFIG_SETTING_DEMAND_DISTANCE_HELPTEXT                     :Hvis du sætter denne indstilling til en værdi større end 0, vil afstanden mellem oprindelsesstation A for noget last og en mulig destination B have en effekt på mængden af last sendt fra A til B. Jo længere væk B er fra A, jo mindre last vil blive sendt. Jo højere du sætter denne indstilling, jo mindre last vil blive sendt til fjerne stationer, og jo mere last vil blive sendt til nærliggende stationer.
@@ -3202,7 +3202,7 @@ STR_FRAMERATE_RATE_GAMELOOP_TOOLTIP                             :{BLACK}Antal sp
 STR_FRAMERATE_RATE_BLITTER                                      :{BLACK}Grafik hastighed: {STRING}
 STR_FRAMERATE_RATE_BLITTER_TOOLTIP                              :{BLACK}Antal billeder tegnet i sekundet.
 STR_FRAMERATE_SPEED_FACTOR                                      :{BLACK}Aktuel spilhastighedsfaktor: {DECIMAL}x
-STR_FRAMERATE_SPEED_FACTOR_TOOLTIP                              :{BLACK}Hvor hurtigt spillet aktuelt kører, i forhold til det forventede ved normal simulationshastighed.
+STR_FRAMERATE_SPEED_FACTOR_TOOLTIP                              :{BLACK}Hvor hurtigt spillet aktuelt kører, i forhold til det forventede ved normal simulationshastighed
 STR_FRAMERATE_CURRENT                                           :{WHITE}Aktuel
 STR_FRAMERATE_AVERAGE                                           :{WHITE}Gennemsnit
 STR_FRAMERATE_MEMORYUSE                                         :{WHITE}Hukommelse

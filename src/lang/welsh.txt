@@ -1054,7 +1054,7 @@ STR_GAME_OPTIONS_GUI_SCALE_BEVELS                               :Helaethu befela
 STR_GAME_OPTIONS_GUI_SCALE_BEVELS_TOOLTIP                       :{BLACK}Marciwch y blwch hwn i helaethu befelau yn ôl maint y rhyngwyneb
 
 STR_GAME_OPTIONS_GUI_FONT_SPRITE                                :{BLACK}Defnyddio wynebfath corlun traddodiadol
-STR_GAME_OPTIONS_GUI_FONT_SPRITE_TOOLTIP                        :{BLACK}Marciwch y blwch hwn os oes well gennych ddefnyddio y wynebfath corlun un-maint traddodiadol.
+STR_GAME_OPTIONS_GUI_FONT_SPRITE_TOOLTIP                        :{BLACK}Marciwch y blwch hwn os oes well gennych ddefnyddio y wynebfath corlun un-maint traddodiadol
 STR_GAME_OPTIONS_GUI_FONT_AA                                    :{BLACK}Gwynebfathau dadamgenu
 STR_GAME_OPTIONS_GUI_FONT_AA_TOOLTIP                            :{BLACK}Marciwch y blwch hwn i ddadamgennu ffontiau y gellir eu hailfeintio
 
@@ -1275,7 +1275,7 @@ STR_CONFIG_SETTING_INFINITE_MONEY                               :Arian di-derfyn
 STR_CONFIG_SETTING_INFINITE_MONEY_HELPTEXT                      :Caniatáu gwario di-derfyn ac analluogi methdaledd cwmnïau
 
 STR_CONFIG_SETTING_MAXIMUM_INITIAL_LOAN                         :Benthyciad agoriadol uchafsymol: {STRING}
-STR_CONFIG_SETTING_MAXIMUM_INITIAL_LOAN_HELPTEXT                :Y swm uchaf y gall cwmni fenthyca (heb ystyried chwyddiant). Os y gosodir ar "dim benthyciad", ni fydd arian ar gael oni bai y caiff ei roi gan Sgript Gêm neu'r gosodiad "Arian di-derfyn".
+STR_CONFIG_SETTING_MAXIMUM_INITIAL_LOAN_HELPTEXT                :Y swm uchaf y gall cwmni fenthyca (heb ystyried chwyddiant). Os y gosodir ar "dim benthyciad", ni fydd arian ar gael oni bai y caiff ei roi gan Sgript Gêm neu'r gosodiad "Arian di-derfyn"
 STR_CONFIG_SETTING_MAXIMUM_INITIAL_LOAN_VALUE                   :{CURRENCY_LONG}
 ###setting-zero-is-special
 STR_CONFIG_SETTING_MAXIMUM_INITIAL_LOAN_DISABLED                :Dim benthyciad
@@ -1359,7 +1359,7 @@ STR_CONFIG_SETTING_ROAD_VEHICLE_SLOPE_STEEPNESS                 :Serthrwydd llet
 STR_CONFIG_SETTING_ROAD_VEHICLE_SLOPE_STEEPNESS_HELPTEXT        :Serthrwydd teil llethr ar gyfer cerbyd ffordd. Mae gwerthoedd uwch yn ei gwneud yn anoddach i ddringo allt
 
 STR_CONFIG_SETTING_FORBID_90_DEG                                :Rhwystro trenau a llongau rhag troi 90 gradd: {STRING}
-STR_CONFIG_SETTING_FORBID_90_DEG_HELPTEXT                       :Tro 90 gradd yw pan fo trac llorweddol yn cael ei ddilyn yn syth gan drac fertigol at y teil cyfagos, gan wneud i'r trên droi 90 gradd wrth groesi ochr y teil yn hytrach na'r 45 gradd sydd i'w gael gyda chyfuniadau trac eraill. Mae hyn hefyd yn effeithio ar gylch troi llongau
+STR_CONFIG_SETTING_FORBID_90_DEG_HELPTEXT                       :Tro 90 gradd yw pan fo trac llorweddol yn cael ei ddilyn yn syth gan drac fertigol at y teil cyfagos, gan wneud i'r trên droi 90 gradd wrth groesi ochr y teil yn hytrach na'r 45 gradd sydd i'w gael gyda chyfuniadau trac eraill
 
 STR_CONFIG_SETTING_DISTANT_JOIN_STATIONS                        :Caniatáu cyfuno gorsafoedd nad ydynt yn union gyfochrog: {STRING}
 STR_CONFIG_SETTING_DISTANT_JOIN_STATIONS_HELPTEXT               :Caniatáu ychwanegu rhannau at orsaf heb gyffwrdd yn uniongyrchol a'r rhai sydd eisoes yn bodoli, trwy Ctrl+Clicio wrth osod y darnau newydd
@@ -1471,7 +1471,7 @@ STR_CONFIG_SETTING_COMPANY_STARTING_COLOUR                      :Lliw dechreuol 
 STR_CONFIG_SETTING_COMPANY_STARTING_COLOUR_HELPTEXT             :Dewiswch liw dechreuol am y cwmni
 
 STR_CONFIG_SETTING_COMPANY_STARTING_COLOUR_SECONDARY            :Ail liw dechreuol y cwmni: {STRING}
-STR_CONFIG_SETTING_COMPANY_STARTING_COLOUR_SECONDARY_HELPTEXT   :Dewiswch ail liw dechreuol ar gyfer y cwmni, os yn defnyddio NewGRF sy'n ei alluogi.
+STR_CONFIG_SETTING_COMPANY_STARTING_COLOUR_SECONDARY_HELPTEXT   :Dewiswch ail liw dechreuol ar gyfer y cwmni, os yn defnyddio NewGRF sy'n ei alluogi
 
 STR_CONFIG_SETTING_NEVER_EXPIRE_AIRPORTS                        :Maes awyr ddim yn dibennu: {STRING}
 STR_CONFIG_SETTING_NEVER_EXPIRE_AIRPORTS_HELPTEXT               :Mae galluogi'r dewis yma'n peri i bob math o faes awyr aros ar gael am byth wedi ei gyflwyniad gyntaf
@@ -1495,22 +1495,22 @@ STR_CONFIG_SETTING_NEVER_EXPIRE_VEHICLES                        :Nid yw cerbydau
 STR_CONFIG_SETTING_NEVER_EXPIRE_VEHICLES_HELPTEXT               :Pan fo wedi'i alluogi, bydd bob math o gerbyd yn aros ar gael am byth wedi eu cyflwyniad gyntaf
 
 STR_CONFIG_SETTING_TIMEKEEPING_UNITS                            :Cadw amser: {STRING}
-STR_CONFIG_SETTING_TIMEKEEPING_UNITS_HELPTEXT                   :Dewis unedau cadw amser y gêm. Ni ellir newid hyn yn ddiweddarach.{}{}Dull calendr yw'r profiad clasurol OpenTTD, gyda blwyddyn yn cynnwys 12 mis o 28-31 diwrnod.{}{}Yn y dull cloc wal, mae cynhyrchiant cargo a materion ariannol yn cael eu cyfrifo fesul munud, sef tua'r un amser a mis 30 diwrnod yn y modd calendr. Mae'r rhain yn cael eu grwpio i gyfnodau 12 munud, sydd gyfystyr â blwyddyn yn y modd calendr..{}{}Yn y naill modd neu'r llall, mae wastad calendr traddodiadol, sydd yn cael ei ddefnyddio ar gyfer dyddiadau cyflwyno cerbydau, tai a thanadeiledd arall.
+STR_CONFIG_SETTING_TIMEKEEPING_UNITS_HELPTEXT                   :Dewis unedau cadw amser y gêm. Ni ellir newid hyn yn ddiweddarach.{}{}Dull calendr yw'r profiad clasurol OpenTTD, gyda blwyddyn yn cynnwys 12 mis o 28-31 diwrnod.{}{}Yn y dull cloc wal, mae cynhyrchiant cargo a materion ariannol yn cael eu cyfrifo fesul munud, sef tua'r un amser a mis 30 diwrnod yn y modd calendr. Mae'r rhain yn cael eu grwpio i gyfnodau 12 munud, sydd gyfystyr â blwyddyn yn y modd calendr..{}{}Yn y naill modd neu'r llall, mae wastad calendr traddodiadol, sydd yn cael ei ddefnyddio ar gyfer dyddiadau cyflwyno cerbydau, tai a thanadeiledd arall
 ###length 2
 STR_CONFIG_SETTING_TIMEKEEPING_UNITS_CALENDAR                   :Calendr
 STR_CONFIG_SETTING_TIMEKEEPING_UNITS_WALLCLOCK                  :Cloc wal
 
 STR_CONFIG_SETTING_MINUTES_PER_YEAR                             :Munudau i bob blwyddyn: {STRING}
-STR_CONFIG_SETTING_MINUTES_PER_YEAR_HELPTEXT                    :Dewis y nifer o funudau mewn blwyddyn calendr. Y rhagosodiad yw 12 munud. Gosodwch at 0 i rwystro'r flwyddyn calendr rhag newid. Nid yw'r gosodiad yma'n effeithio ar efelychiad economaidd y gêm, ac mae ond ar gael pan yn defnyddio amseru cloc wal.
+STR_CONFIG_SETTING_MINUTES_PER_YEAR_HELPTEXT                    :Dewis y nifer o funudau mewn blwyddyn calendr. Y rhagosodiad yw 12 munud. Gosodwch at 0 i rwystro'r flwyddyn calendr rhag newid. Nid yw'r gosodiad yma'n effeithio ar efelychiad economaidd y gêm, ac mae ond ar gael pan yn defnyddio amseru cloc wal
 
 STR_CONFIG_SETTING_MINUTES_PER_YEAR_VALUE                       :{NUM}
 ###setting-zero-is-special
 STR_CONFIG_SETTING_MINUTES_PER_YEAR_FROZEN                      :0 (amser calendr wedi'i rewi)
 
 STR_CONFIG_SETTING_TOWN_CARGO_SCALE                             :Helaethu cynhyrchiant cargo trefi: {STRING}
-STR_CONFIG_SETTING_TOWN_CARGO_SCALE_HELPTEXT                    :Helaethu cynhyrchiant cargo trefi gyda'r canran yma.
+STR_CONFIG_SETTING_TOWN_CARGO_SCALE_HELPTEXT                    :Helaethu cynhyrchiant cargo trefi gyda'r canran yma
 STR_CONFIG_SETTING_INDUSTRY_CARGO_SCALE                         :Helaethu cynhyrchiant cargo diwydiannau: {STRING}
-STR_CONFIG_SETTING_INDUSTRY_CARGO_SCALE_HELPTEXT                :Helaethu cynhyrchiant cargo diwydiannau gyda'r canran yma.
+STR_CONFIG_SETTING_INDUSTRY_CARGO_SCALE_HELPTEXT                :Helaethu cynhyrchiant cargo diwydiannau gyda'r canran yma
 STR_CONFIG_SETTING_CARGO_SCALE_VALUE                            :{NUM}%
 
 STR_CONFIG_SETTING_AUTORENEW_VEHICLE                            :Awtoadnewyddu cerbyd pan aiff yn hen: {STRING}
@@ -1529,7 +1529,7 @@ STR_CONFIG_SETTING_ERRMSG_DURATION                              :Ystod neges gwa
 STR_CONFIG_SETTING_ERRMSG_DURATION_HELPTEXT                     :Amser i ddangos negeseuon gwall mewn ffenestr coch. Sylwer ni gaiff rhai negeseuon gwall (difrifol) eu cau'n ddiofyn
 
 STR_CONFIG_SETTING_HOVER_DELAY                                  :Dangos cynghorion: {STRING}
-STR_CONFIG_SETTING_HOVER_DELAY_HELPTEXT                         :Oediad cyn y dangosir cynghorion wrth ddal y cyrchydd dros rhyw elfen rhyngwyneb. Fel arall rhwymir cynghorion at botwm dde'r llygoden pan fo'r gwerth yma'n 0.
+STR_CONFIG_SETTING_HOVER_DELAY_HELPTEXT                         :Oediad cyn y dangosir cynghorion wrth ddal y cyrchydd dros rhyw elfen rhyngwyneb. Fel arall rhwymir cynghorion at botwm dde'r llygoden pan fo'r gwerth yma'n 0
 STR_CONFIG_SETTING_HOVER_DELAY_VALUE                            :Oedi am {COMMA} milfed o eiliad
 ###setting-zero-is-special
 STR_CONFIG_SETTING_HOVER_DELAY_DISABLED                         :De glicio
@@ -1541,8 +1541,8 @@ STR_CONFIG_SETTING_GRAPH_LINE_THICKNESS                         :Trwch llinellau
 STR_CONFIG_SETTING_GRAPH_LINE_THICKNESS_HELPTEXT                :Lled y linell mewn graffiau. Bydd llinell fain yn fwy manwl, tra y bydd llinell trwchus yn haws i'w weld gyda lliwiau'n fwy amlwg
 
 STR_CONFIG_SETTING_SHOW_NEWGRF_NAME                             :Dangos enw'r NewGRF yn y ffenest adeiladu cerbyd: {STRING}
-STR_CONFIG_SETTING_SHOW_NEWGRF_NAME_HELPTEXT                    :Ychwanegu llinell i'r ffenestr adeiladu cerbyd, gan ddangos pa NewGRF mae'r cerbyd a ddewisir yn dod o.
-STR_CONFIG_SETTING_SHOW_CARGO_IN_LISTS                          :Dangos y llwythi y gall cerbydau eu cario yn y ffenestri rhestr {STRING}
+STR_CONFIG_SETTING_SHOW_NEWGRF_NAME_HELPTEXT                    :Ychwanegu llinell i'r ffenestr adeiladu cerbyd, gan ddangos pa NewGRF mae'r cerbyd a ddewisir yn dod o
+STR_CONFIG_SETTING_SHOW_CARGO_IN_LISTS                          :Dangos y llwythi y gall cerbydau eu cario yn y ffenestri rhestr: {STRING}
 STR_CONFIG_SETTING_SHOW_CARGO_IN_LISTS_HELPTEXT                 :Os y galluogir, bydd llwyth cludadwy'r cerbyd yn dangos uwch ei ben yn y rhestrau cerbyd
 
 STR_CONFIG_SETTING_LANDSCAPE                                    :Tirwedd: {STRING}
@@ -1561,13 +1561,13 @@ STR_CONFIG_SETTING_INDUSTRY_DENSITY                             :Dwysedd diwydia
 STR_CONFIG_SETTING_INDUSTRY_DENSITY_HELPTEXT                    :Gosod faint o ddiwydiannau y dylid eu creu a pha lefel caiff eu cynnal drwy'r gêm
 
 STR_CONFIG_SETTING_OIL_REF_EDGE_DISTANCE                        :Pellter uchafsymol o'r ochr ar gyfer Purfeydd olew: {STRING}
-STR_CONFIG_SETTING_OIL_REF_EDGE_DISTANCE_HELPTEXT               :Codir purfeydd olew ger ymylon y map yn unig, h.y. ar yr arfordir mewn mapiau ynys
+STR_CONFIG_SETTING_OIL_REF_EDGE_DISTANCE_HELPTEXT               :Cyfyngiad pa mor bell o ymyl y map y gellid adeiladu purfeydd a rigiau olew. Ar mapiau ynys mae hyn yn sicrhau eu bod ger y môr. Ar mapiau sy'n fwy na 256 teil, bydd y gwerth yma'n cael ei helaethu i fyny
 
 STR_CONFIG_SETTING_SNOWLINE_HEIGHT                              :Uchder Llinell Eira: {STRING}
 STR_CONFIG_SETTING_SNOWLINE_HEIGHT_HELPTEXT                     :Rheoli'r uchder y mae eira'n ymddangos mewn tirwedd is-arctig. Mae eira hefyd yn effeithio ar gynhyrchu diwydiannau a gofynion twf trefi. Dim ond yn y Golygydd Senario y gellir ei newid, neu fel arall caiff ei gyfrifo trwy "gorchudd eira"
 
 STR_CONFIG_SETTING_SNOW_COVERAGE                                :Gorchuddiad eira: {STRING}
-STR_CONFIG_SETTING_SNOW_COVERAGE_HELPTEXT                       :Dewis faint o eira ar gyfer y tirwedd is-arctig. Mae eira'n effeithio ar gynhyrchu diwydiannau a gofynion twf trefi. Dim ond yn cael ei ddefnyddio wrth greu map. Nid yw teiliau lefel môr ac arfordir byth o dan eira.
+STR_CONFIG_SETTING_SNOW_COVERAGE_HELPTEXT                       :Dewis faint o eira ar gyfer y tirwedd is-arctig. Mae eira'n effeithio ar gynhyrchu diwydiannau a gofynion twf trefi. Dim ond yn cael ei ddefnyddio wrth greu map. Nid yw teiliau lefel môr ac arfordir byth o dan eira
 STR_CONFIG_SETTING_SNOW_COVERAGE_VALUE                          :{NUM}%
 
 STR_CONFIG_SETTING_DESERT_COVERAGE                              :Gorchudd anialwch: {STRING}
@@ -1583,7 +1583,7 @@ STR_CONFIG_SETTING_ROUGHNESS_OF_TERRAIN_ROUGH                   :Garw
 STR_CONFIG_SETTING_ROUGHNESS_OF_TERRAIN_VERY_ROUGH              :Garw Iawn
 
 STR_CONFIG_SETTING_VARIETY                                      :Dosraniad amrywiaeth: {STRING}
-STR_CONFIG_SETTING_VARIETY_HELPTEXT                             :Rheoli a yw'r map yn cynnwys ardaloedd mynyddig a gwastad. Y mwyaf o amrywiaeth, y mwy o wahaniaeth uchder rhwng ardaloedd mynyddig a gwastad.
+STR_CONFIG_SETTING_VARIETY_HELPTEXT                             :Rheoli a yw'r map yn cynnwys ardaloedd mynyddig a gwastad. Y mwyaf o amrywiaeth, y mwy o wahaniaeth uchder rhwng ardaloedd mynyddig a gwastad
 
 STR_CONFIG_SETTING_RIVER_AMOUNT                                 :Nifer afonydd: {STRING}
 STR_CONFIG_SETTING_RIVER_AMOUNT_HELPTEXT                        :Dewis sawl afon i'w creu
@@ -1630,7 +1630,7 @@ STR_CONFIG_SETTING_SMALLMAP_LAND_COLOUR_DARK_GREEN              :Gwyrdd tywyll
 STR_CONFIG_SETTING_SMALLMAP_LAND_COLOUR_VIOLET                  :Fioled
 
 STR_CONFIG_SETTING_LINKGRAPH_COLOURS                            :Gorliw llif cargo: {STRING}
-STR_CONFIG_SETTING_LINKGRAPH_COLOURS_HELPTEXT                   :Gosod y cynllun lliw a ddefnyddir ar gyfer y gwedd llif cargo.
+STR_CONFIG_SETTING_LINKGRAPH_COLOURS_HELPTEXT                   :Gosod y cynllun lliw a ddefnyddir ar gyfer y gwedd llif cargo
 ###length 4
 STR_CONFIG_SETTING_LINKGRAPH_COLOURS_GREEN_TO_RED               :Gwyrdd i goch (gwreiddiol)
 STR_CONFIG_SETTING_LINKGRAPH_COLOURS_GREEN_TO_BLUE              :Gwyrdd at las
@@ -1751,10 +1751,10 @@ STR_CONFIG_SETTING_PERSISTENT_BUILDINGTOOLS                     :Cadw'r offer ad
 STR_CONFIG_SETTING_PERSISTENT_BUILDINGTOOLS_HELPTEXT            :Cadw'r offer adeiladu pontydd, twneli, a.y.y.b. ar agor wedi eu defnydd
 
 STR_CONFIG_SETTING_AUTO_REMOVE_SIGNALS                          :Tynnu signalau'n ddiofyn wrth adeiladu rheilffordd: {STRING}
-STR_CONFIG_SETTING_AUTO_REMOVE_SIGNALS_HELPTEXT                 :Tynnu signalau'n ddiofyn wrth adeiladu rheilffordd os ydynt ar y ffordd. Sylwch y gall hyn arwain at ddamwain rheilffordd posibl.
+STR_CONFIG_SETTING_AUTO_REMOVE_SIGNALS_HELPTEXT                 :Tynnu signalau'n ddiofyn wrth adeiladu rheilffordd os ydynt ar y ffordd. Sylwch y gall hyn arwain at ddamwain rheilffordd posibl
 
 STR_CONFIG_SETTING_FAST_FORWARD_SPEED_LIMIT                     :Cyfyngiad cyflymu'r gêm: {STRING}
-STR_CONFIG_SETTING_FAST_FORWARD_SPEED_LIMIT_HELPTEXT            :Cyfyngu pa mor gyflym mae'r gêm yn mynd pan yn cyflymu'r gêm. Mae 0 yn golygu dim cyfyngiad (pa mor gyflym y gall eich cyfrifiadur fynd). Mae gwerthoedd o dan 100% yn arafu'r gêm i lawr. Mae'r terfyn uchaf yn dibynnu ar briodweddau'ch cyfrifiadur a gall amrywio yn ôl y gêm.
+STR_CONFIG_SETTING_FAST_FORWARD_SPEED_LIMIT_HELPTEXT            :Cyfyngu pa mor gyflym mae'r gêm yn mynd pan yn cyflymu'r gêm. Mae 0 yn golygu dim cyfyngiad (pa mor gyflym y gall eich cyfrifiadur fynd). Mae gwerthoedd o dan 100% yn arafu'r gêm i lawr. Mae'r terfyn uchaf yn dibynnu ar briodweddau'ch cyfrifiadur a gall amrywio yn ôl y gêm
 STR_CONFIG_SETTING_FAST_FORWARD_SPEED_LIMIT_VAL                 :{NUM}% cyflymder gêm arferol
 ###setting-zero-is-special
 STR_CONFIG_SETTING_FAST_FORWARD_SPEED_LIMIT_ZERO                :Dim terfyn (mor gyflym ag y gall eich cyfrifiadur fynd)
@@ -1818,11 +1818,11 @@ STR_CONFIG_SETTING_AI_IN_MULTIPLAYER_HELPTEXT                   :Caniatáu i chw
 STR_CONFIG_SETTING_SCRIPT_MAX_OPCODES                           :Nifer y gweithredoedd cyn diarddel sgriptiau: {STRING}
 STR_CONFIG_SETTING_SCRIPT_MAX_OPCODES_HELPTEXT                  :Uchafswm y nifer o gamau cyfrifo y gall sgript ei gymeryd mewn un tro
 STR_CONFIG_SETTING_SCRIPT_MAX_MEMORY                            :Defnydd cof uchaf i bob sgript: {STRING}
-STR_CONFIG_SETTING_SCRIPT_MAX_MEMORY_HELPTEXT                   :Faint o gof y gall sgript unigol ei ddefnyddio cyn y gaiff ei ddiffodd yn orfodol. Gall fod angen cynyddu hyn ar gyfer mapiau mawr.
+STR_CONFIG_SETTING_SCRIPT_MAX_MEMORY_HELPTEXT                   :Faint o gof y gall sgript unigol ei ddefnyddio cyn y gaiff ei ddiffodd yn orfodol. Gall fod angen cynyddu hyn ar gyfer mapiau mawr
 STR_CONFIG_SETTING_SCRIPT_MAX_MEMORY_VALUE                      :{COMMA} MiB
 
 STR_CONFIG_SETTING_SERVINT_ISPERCENT                            :Dangos y cyfnod rhwng gwasanaethau mewn canrannau: {STRING}
-STR_CONFIG_SETTING_SERVINT_ISPERCENT_HELPTEXT                   :Pan y galluogir, bydd cerbydau'n ceisio gwasanaeth pan fo'u dibynadwyedd yn disgyn canran penodol o'u dibynadwyedd uchafsymol.{}{}Er enghraifft, os yw dibynadwyedd uchafsymol cerbyd yn 90% a'r ystod gwasanaeth yn 20%, bydd y cerbyg yn ceisio gwasanaeth pan mae'r dibynadwyedd yn cyrraedd 72%.Dewis os y bydd gwasanaethu cerbydau'n digwydd yn ôl yr amser ers y gwasanaeth olaf, neu wrth i'w dibynadwyedd ddisgyn islaw ganran penodol o'r dibynadwyedd uchafsymol
+STR_CONFIG_SETTING_SERVINT_ISPERCENT_HELPTEXT                   :Pan y galluogir, bydd cerbydau'n ceisio gwasanaeth pan fo'u dibynadwyedd yn disgyn canran penodol o'u dibynadwyedd uchafsymol.{}{}Er enghraifft, os yw dibynadwyedd uchafsymol cerbyd yn 90% a'r ystod gwasanaeth yn 20%, bydd y cerbyg yn ceisio gwasanaeth pan mae'r dibynadwyedd yn cyrraedd 72%
 
 STR_CONFIG_SETTING_SERVINT_TRAINS                               :Ystod gwasanaethu rhagosodedig ar gyfer trenau: {STRING}
 STR_CONFIG_SETTING_SERVINT_TRAINS_HELPTEXT                      :Gosod yr ystod gwasanaethu rhagosodedig ar gyfer cerbydau rheilffordd newydd, os na ddynodir ystod gwasanaethu penodol ar gyfer y cerbyd
@@ -1840,7 +1840,7 @@ STR_CONFIG_SETTING_NOSERVICE                                    :Analluogi gwasa
 STR_CONFIG_SETTING_NOSERVICE_HELPTEXT                           :Pan y galluogir, ni wasanaethir cerbydau os na allent dorri i lawr
 
 STR_CONFIG_SETTING_STATION_LENGTH_LOADING_PENALTY               :Cosb cyflymder llwytho ar gyfer trenau sy'n hirach na'r orsaf: {STRING}
-STR_CONFIG_SETTING_STATION_LENGTH_LOADING_PENALTY_HELPTEXT      :Pan y galluogir, bydd trenau sy'n rhy hir i'r orsaf yn llwytho'r arafach na thrên sydd yn ffitio'r orsaf. Nid yw'r gosodiad yma'n effeithio ar lwybro.
+STR_CONFIG_SETTING_STATION_LENGTH_LOADING_PENALTY_HELPTEXT      :Pan y galluogir, bydd trenau sy'n rhy hir i'r orsaf yn llwytho'r arafach na thrên sydd yn ffitio'r orsaf. Nid yw'r gosodiad yma'n effeithio ar lwybro
 
 STR_CONFIG_SETTING_WAGONSPEEDLIMITS                             :Galluogi terfynau cyflymder wagenni: {STRING}
 STR_CONFIG_SETTING_WAGONSPEEDLIMITS_HELPTEXT                    :Pan y galluogir, fe ddefnyddir terfynnau cyflymder pob cerbyd mewn trên pan yn cyfrifo ei gyflymder uchafsymol
@@ -1905,13 +1905,13 @@ STR_CONFIG_SETTING_COLOURED_NEWS_YEAR_HELPTEXT                  :Y blwyddyn y ca
 STR_CONFIG_SETTING_STARTING_YEAR                                :Blwyddyn dechreuol: {STRING}
 
 STR_CONFIG_SETTING_ENDING_YEAR                                  :Sgorio diwedd blwyddyn: {STRING}
-STR_CONFIG_SETTING_ENDING_YEAR_HELPTEXT                         :Y flwyddyn y bydd y gêm yn gorffen ar gyfer dibenion sgorio. Ar ddiwedd y flwyddyn yma, bydd sgôr y cwmni'n cael ei gofnodi a bydd y sgôr uchaf yn cael ei arddangos, ond gall y chwaraewyr barhau i chwarae wedi hynny.{}Os yr hyn cyn y blwyddyn dechrau, ni fydd y sgrin sgôr uchaf byth yn cael ei arddangos.
+STR_CONFIG_SETTING_ENDING_YEAR_HELPTEXT                         :Y flwyddyn y bydd y gêm yn gorffen ar gyfer dibenion sgorio. Ar ddiwedd y flwyddyn yma, bydd sgôr y cwmni'n cael ei gofnodi a bydd y sgôr uchaf yn cael ei arddangos, ond gall y chwaraewyr barhau i chwarae wedi hynny.{}Os yr hyn cyn y blwyddyn dechrau, ni fydd y sgrin sgôr uchaf byth yn cael ei arddangos
 STR_CONFIG_SETTING_ENDING_YEAR_VALUE                            :{NUM}
 ###setting-zero-is-special
 STR_CONFIG_SETTING_ENDING_YEAR_ZERO                             :Byth
 
 STR_CONFIG_SETTING_ECONOMY_TYPE                                 :Math economi: {STRING}
-STR_CONFIG_SETTING_ECONOMY_TYPE_HELPTEXT                        :Mae economi llyfn yn gwneud newidiadau cynhyrchiant yn fwy aml, ac mewn camau llai. Mae economi rhewiedig yn atal newidiadau cynhyrchiant a chau diwydiannau. Efallai ni fydd effaith gan y gosodiadau yma os yw mathau diwydiant yn cael eu darparu gan NewGRF/.
+STR_CONFIG_SETTING_ECONOMY_TYPE_HELPTEXT                        :Mae economi llyfn yn gwneud newidiadau cynhyrchiant yn fwy aml, ac mewn camau llai. Mae economi rhewiedig yn atal newidiadau cynhyrchiant a chau diwydiannau. Efallai ni fydd effaith gan y gosodiadau yma os yw mathau diwydiant yn cael eu darparu gan NewGRF
 ###length 3
 STR_CONFIG_SETTING_ECONOMY_TYPE_ORIGINAL                        :Gwreiddiol
 STR_CONFIG_SETTING_ECONOMY_TYPE_SMOOTH                          :Llyfn
@@ -1966,7 +1966,7 @@ STR_CONFIG_SETTING_TOWN_FOUNDING_ALLOWED                        :Caniatáu
 STR_CONFIG_SETTING_TOWN_FOUNDING_ALLOWED_CUSTOM_LAYOUT          :Caniatáu, cynllun tref addasiedig
 
 STR_CONFIG_SETTING_TOWN_CARGOGENMODE                            :Cynhyrchiant cargo tref: {STRING}
-STR_CONFIG_SETTING_TOWN_CARGOGENMODE_HELPTEXT                   :Faint o gargo sy'n cael ei greu gan dai mewn trefi, o gymharu efo poblogaeth cyfansymiol y dref.{}Tyfiant cwadratig: Mae tref dwywaith y main yn creu pedair gwaith gymaint o deithwyr.{}Tyfiant llinol: Mae tref dwywaith y main yn creu dwywaith gymaint o deithwyr.
+STR_CONFIG_SETTING_TOWN_CARGOGENMODE_HELPTEXT                   :Faint o gargo sy'n cael ei greu gan dai mewn trefi, o gymharu efo poblogaeth cyfansymiol y dref.{}Tyfiant cwadratig: Mae tref dwywaith y main yn creu pedair gwaith gymaint o deithwyr.{}Tyfiant llinol: Mae tref dwywaith y main yn creu dwywaith gymaint o deithwyr
 ###length 2
 STR_CONFIG_SETTING_TOWN_CARGOGENMODE_ORIGINAL                   :Cwadratig (gwreiddiol)
 STR_CONFIG_SETTING_TOWN_CARGOGENMODE_BITCOUNT                   :Llinol
@@ -2007,7 +2007,7 @@ STR_CONFIG_SETTING_ZOOM_LVL_OUT_4X                              :4x
 STR_CONFIG_SETTING_ZOOM_LVL_OUT_8X                              :8x
 
 STR_CONFIG_SETTING_SPRITE_ZOOM_MIN                              :Cydraniad uchaf o gorluniau i'w defnyddio: {STRING}
-STR_CONFIG_SETTING_SPRITE_ZOOM_MIN_HELPTEXT                     :Cyfyngu y cyfraniad uchaf a ddefnyddir ar gyfer corluniau. Bydd cyfyngu cydraniad corluniau yn osgoi defnyddio graffigau cydraniad uchel hyn yn oed pan font ar gael. Gall hyn helpu cadw ymddangosiad y gêm yn gyson pan yn defnyddio cymysgedd o ffeiliau GRF gyda a heb graffigau cydraniad uchel.
+STR_CONFIG_SETTING_SPRITE_ZOOM_MIN_HELPTEXT                     :Cyfyngu y cyfraniad uchaf a ddefnyddir ar gyfer corluniau. Bydd cyfyngu cydraniad corluniau yn osgoi defnyddio graffigau cydraniad uchel hyn yn oed pan font ar gael. Gall hyn helpu cadw ymddangosiad y gêm yn gyson pan yn defnyddio cymysgedd o ffeiliau GRF gyda a heb graffigau cydraniad uchel
 ###length 3
 STR_CONFIG_SETTING_SPRITE_ZOOM_LVL_MIN                          :4x
 STR_CONFIG_SETTING_SPRITE_ZOOM_LVL_IN_2X                        :2x
@@ -2031,33 +2031,33 @@ STR_CONFIG_SETTING_CITY_SIZE_MULTIPLIER                         :Lluosydd cychwy
 STR_CONFIG_SETTING_CITY_SIZE_MULTIPLIER_HELPTEXT                :Maint cymhedrol dinasoedd o gymharu â threfi arferol ar ddechrau'r gêm
 
 STR_CONFIG_SETTING_LINKGRAPH_RECALC_INTERVAL                    :Diweddaru'r graff dosraniad bob {STRING}
-STR_CONFIG_SETTING_LINKGRAPH_RECALC_INTERVAL_HELPTEXT           :Amser rhwng ailgyfrifiadau o'r graff cyswllt. Mae bob ailgyfrifiad yn cyfrifo'r cynlluniau ar gyfer un cydran o'r graff. Mae hyn yn golygu nad yw gwerth o X yn golygu y bydd y graff gyfan yn cael ei ddiweddaru bob X eiliad, dim ond rhyw gydran ohono. Po fyrraf y gwerth y mwyaf o amser prosesydd y bydd ei angen i'w gyfrifo. Yr hiraf y gwerth y mwyaf yr amser cyn y bydd dosbarthiad cargo yn dechrau ar lwybrau newydd.
+STR_CONFIG_SETTING_LINKGRAPH_RECALC_INTERVAL_HELPTEXT           :Amser rhwng ailgyfrifiadau o'r graff cyswllt. Mae bob ailgyfrifiad yn cyfrifo'r cynlluniau ar gyfer un cydran o'r graff. Mae hyn yn golygu nad yw gwerth o X yn golygu y bydd y graff gyfan yn cael ei ddiweddaru bob X eiliad, dim ond rhyw gydran ohono. Po fyrraf y gwerth y mwyaf o amser prosesydd y bydd ei angen i'w gyfrifo. Yr hiraf y gwerth y mwyaf yr amser cyn y bydd dosbarthiad cargo yn dechrau ar lwybrau newydd
 STR_CONFIG_SETTING_LINKGRAPH_RECALC_TIME                        :Cymryd {STRING} eiliad ar gyfer ailgyfrifo'r graff dosraniad
-STR_CONFIG_SETTING_LINKGRAPH_RECALC_TIME_HELPTEXT               :Amser a gymerir ar gyfer ailgyfrifo pob cydran o graff cyswllt. Pan fo ailgyfrifiad yn cael ei ddechrau, bydd edefyn yn cael ei ddechrau sy'n cael rhedeg am y nifer yma o eiliadau. Y byrraf yr amser y mwyaf tebygol na fydd yr edefyn wedi gorffen erbyn hyn. Yna bydd y gêm yn aros tan y bydd ("lag"). Yr hiraf yr amser y hiraf y bydd yn cymryd i ddiweddaru  dosraniad pan fydd llwybrau'n newid.
+STR_CONFIG_SETTING_LINKGRAPH_RECALC_TIME_HELPTEXT               :Amser a gymerir ar gyfer ailgyfrifo pob cydran o graff cyswllt. Pan fo ailgyfrifiad yn cael ei ddechrau, bydd edefyn yn cael ei ddechrau sy'n cael rhedeg am y nifer yma o eiliadau. Y byrraf yr amser y mwyaf tebygol na fydd yr edefyn wedi gorffen erbyn hyn. Yna bydd y gêm yn aros tan y bydd ("lag"). Yr hiraf yr amser y hiraf y bydd yn cymryd i ddiweddaru  dosraniad pan fydd llwybrau'n newid
 
 STR_CONFIG_SETTING_DISTRIBUTION_PAX                             :Dull dosrannu ar gyfer teithwyr: {STRING}
-STR_CONFIG_SETTING_DISTRIBUTION_PAX_HELPTEXT                    :Mae "cymesur" yn golygu y bydd tua'r un faint o deithwyr yn mynd o orsaf A i orsaf B ac yr aiff o B i A. Mae "anghymesur" yn golygu y gall niferoedd mympwyol fynd yn y naill cyfeiriad neu'r llall. Mae "â llaw" yn golygu ni fydd dosrannu diofyn yn digwydd ar gyfer teithwyr.
+STR_CONFIG_SETTING_DISTRIBUTION_PAX_HELPTEXT                    :Mae "cymesur" yn golygu y bydd tua'r un faint o deithwyr yn mynd o orsaf A i orsaf B ac yr aiff o B i A. Mae "anghymesur" yn golygu y gall niferoedd mympwyol fynd yn y naill cyfeiriad neu'r llall. Mae "â llaw" yn golygu ni fydd dosrannu diofyn yn digwydd ar gyfer teithwyr
 STR_CONFIG_SETTING_DISTRIBUTION_MAIL                            :Dull dosrannu ar gyfer post: {STRING}
-STR_CONFIG_SETTING_DISTRIBUTION_MAIL_HELPTEXT                   :Mae "cymesur" yn golygu y bydd tua'r un faint o bost yn cael ei yrru o orsaf A i orsaf B ac y gyrrir o B i A. Mae "anghymesur" yn golygu y gall llwythi mympwyol eu gyrru yn y naill cyfeiriad neu'r llall. Mae "â llaw" yn golygu ni fydd dosrannu diofyn yn digwydd ar gyfer post.
+STR_CONFIG_SETTING_DISTRIBUTION_MAIL_HELPTEXT                   :Mae "cymesur" yn golygu y bydd tua'r un faint o bost yn cael ei yrru o orsaf A i orsaf B ac y gyrrir o B i A. Mae "anghymesur" yn golygu y gall llwythi mympwyol eu gyrru yn y naill cyfeiriad neu'r llall. Mae "â llaw" yn golygu ni fydd dosrannu diofyn yn digwydd ar gyfer post
 STR_CONFIG_SETTING_DISTRIBUTION_ARMOURED                        :Dull dosrannu ar gyfer llwythi ARFOG: {STRING}
-STR_CONFIG_SETTING_DISTRIBUTION_ARMOURED_HELPTEXT               :Mae llwythi ARFOG yn cynnwys trysorau mewn ardaloedd tymherus, diemwntau yn y trofannau, neu aur yn yr is-arctig. Gall NewGRFau newid hyn, Mae "cymesur" yn golygu y bydd tua'r un faint o lwythi'n cael eu gyrru o orsaf A i orsaf B ac y gyrrir o B i A. Mae "anghymesur" yn golygu y gall llwythi mympwyol eu gyrru yn y naill cyfeiriad neu'r llall. Mae "â llaw" yn golygu ni fydd dosrannu diofyn yn digwydd ar gyfer y llwythi yma. Fe argymhellir eich bod yn dewis anghymesur neu â llaw pan yn chwarae mewn ardal is-arctig, gan na fydd banciau'n gyrru aur yn ôl i gloddfeydd aur. Ar gyfer ardaloedd tymherus neu trofannol gallwch hefyd ddewis cymesur gan y bydd banciau'n gyrru trysorau'n ôl i rai banciau tardd.
+STR_CONFIG_SETTING_DISTRIBUTION_ARMOURED_HELPTEXT               :Mae llwythi ARFOG yn cynnwys trysorau mewn ardaloedd tymherus, diemwntau yn y trofannau, neu aur yn yr is-arctig. Gall NewGRFau newid hyn, Mae "cymesur" yn golygu y bydd tua'r un faint o lwythi'n cael eu gyrru o orsaf A i orsaf B ac y gyrrir o B i A. Mae "anghymesur" yn golygu y gall llwythi mympwyol eu gyrru yn y naill cyfeiriad neu'r llall. Mae "â llaw" yn golygu ni fydd dosrannu diofyn yn digwydd ar gyfer y llwythi yma. Fe argymhellir eich bod yn dewis anghymesur neu â llaw pan yn chwarae mewn ardal is-arctig, gan na fydd banciau'n gyrru aur yn ôl i gloddfeydd aur. Ar gyfer ardaloedd tymherus neu trofannol gallwch hefyd ddewis cymesur gan y bydd banciau'n gyrru trysorau'n ôl i rai banciau tardd
 STR_CONFIG_SETTING_DISTRIBUTION_DEFAULT                         :Dull dosrannu ar gyfer llwythi eraill: {STRING}
-STR_CONFIG_SETTING_DISTRIBUTION_DEFAULT_HELPTEXT                :Mae "anghymesur" yn golygu y gall llwythi mympwyol eu gyrru yn y naill cyfeiriad neu'r llall. Mae "â llaw" yn golygu ni fydd dosrannu diofyn yn digwydd ar gyfer y llwythi hyn.
+STR_CONFIG_SETTING_DISTRIBUTION_DEFAULT_HELPTEXT                :Mae "anghymesur" yn golygu y gall llwythi mympwyol eu gyrru yn y naill cyfeiriad neu'r llall. Mae "â llaw" yn golygu ni fydd dosrannu diofyn yn digwydd ar gyfer y llwythi hyn
 ###length 3
 STR_CONFIG_SETTING_DISTRIBUTION_MANUAL                          :â llaw
 STR_CONFIG_SETTING_DISTRIBUTION_ASYMMETRIC                      :anghymesur
 STR_CONFIG_SETTING_DISTRIBUTION_SYMMETRIC                       :cymesur
 
 STR_CONFIG_SETTING_LINKGRAPH_ACCURACY                           :Manylder dosrannu: {STRING}
-STR_CONFIG_SETTING_LINKGRAPH_ACCURACY_HELPTEXT                  :Mae'r gosodiad yma'n pennu faint o amser prosesydd y bydd cyfrifo'r graff cyswllt yn ei gymeryd. Os yw'n cymryd gormod o amser efallai bydd peth oedi ar y gêm. Os ydych yn gosod gwerth isel, fodd bynnag, ni fyddy dosraniad yn fanwl gywir, a gallwch nodi nad yw llwythi'n cael ei yrru i'r mannau y bydddech y disgwyl.
+STR_CONFIG_SETTING_LINKGRAPH_ACCURACY_HELPTEXT                  :Mae'r gosodiad yma'n pennu faint o amser prosesydd y bydd cyfrifo'r graff cyswllt yn ei gymeryd. Os yw'n cymryd gormod o amser efallai bydd peth oedi ar y gêm. Os ydych yn gosod gwerth isel, fodd bynnag, ni fydd y dosraniad yn fanwl gywir, a gallwch nodi nad yw llwythi'n cael ei yrru i'r mannau y byddech y disgwyl
 
 STR_CONFIG_SETTING_DEMAND_DISTANCE                              :Effaith pellter ar y galw am lwythi: {STRING}
-STR_CONFIG_SETTING_DEMAND_DISTANCE_HELPTEXT                     :Os ydych yn gosod at werth yn uwch na 0, bydd y pellter rhwng gorsaf tardd rhyw gargo a cyrchfan posibl B yn dylanwadu ar faint o llwythi a yrrir o A i B. Y pellaf y mae B o A, y lleiaf o gargo a yrrir. Gyda gosodiad uwch, bydd llai o gargo yn cael ei yrru i orsafoedd pell a mwy'n cael ei yrru at orsafoedd agos.
+STR_CONFIG_SETTING_DEMAND_DISTANCE_HELPTEXT                     :Os ydych yn gosod at werth yn uwch na 0, bydd y pellter rhwng gorsaf tardd rhyw gargo a cyrchfan posibl B yn dylanwadu ar faint o llwythi a yrrir o A i B. Y pellaf y mae B o A, y lleiaf o gargo a yrrir. Gyda gosodiad uwch, bydd llai o gargo yn cael ei yrru i orsafoedd pell a mwy'n cael ei yrru at orsafoedd agos
 STR_CONFIG_SETTING_DEMAND_SIZE                                  :Cyfanswm y llwythi'n dychwelyd ar gyfer modd cymesur: {STRING}
-STR_CONFIG_SETTING_DEMAND_SIZE_HELPTEXT                         :Bydd gosod hwn at llai na 100% yn gwneud y dosraniad cymesur yn fwy fel yr un anghymesur. Caiff llai o llwythi eu gyrru'n ôl yn orfodol os y bydd peth penodol yn cael ei yrru i orsaf. Gyda gosodiad o 0% bydd y dosraniad cymesur yn ymddwyn fel yr un anghymesur.
+STR_CONFIG_SETTING_DEMAND_SIZE_HELPTEXT                         :Bydd gosod hwn at llai na 100% yn gwneud y dosraniad cymesur yn fwy fel yr un anghymesur. Caiff llai o llwythi eu gyrru'n ôl yn orfodol os y bydd peth penodol yn cael ei yrru i orsaf. Gyda gosodiad o 0% bydd y dosraniad cymesur yn ymddwyn fel yr un anghymesur
 
 STR_CONFIG_SETTING_SHORT_PATH_SATURATION                        :Llenwi llwybrau byr cyn troi at rhai uwch eu cynhwysedd: {STRING}
-STR_CONFIG_SETTING_SHORT_PATH_SATURATION_HELPTEXT               :Yn aml mae mwy nag un llwybr rhwng dwy orsaf. Bydd Cargodist yn llenwi'r llwybr byrraf yn gyntaf, yna'n symyd at yr ail fyrraf nes ei fod yn llawn, ayyb. Fe ystyrir llwybr yn llawn yn ôl amcangyfrif o gynhwysedd y llwybr a'r defnydd a gynllunwyd. Gyda fod pob llwybr wedi ei lenwi, os oes galw o hyd, bydd yn gorlwytho pob llwybr, gan ffafrio'r rhai gyda chynhwysedd uchel. Ni fydd yr algorithm yn amcangyfrif y cynhwysedd yn fanwl gywir. Mae'r gosodiad yma'n eich galluogi i nodi pa mor llawn y dylai llwybr byrrach fod (fel canran) cyn dewis y llwybr nesaf. Gosodwch at llai na 100% i osgoi tagfeydd mewn gorsafoedd oherwydd goramcangyfrif cynhwysedd.
+STR_CONFIG_SETTING_SHORT_PATH_SATURATION_HELPTEXT               :Yn aml mae mwy nag un llwybr rhwng dwy orsaf. Bydd Cargodist yn llenwi'r llwybr byrraf yn gyntaf, yna'n symyd at yr ail fyrraf nes ei fod yn llawn, ayyb. Fe ystyrir llwybr yn llawn yn ôl amcangyfrif o gynhwysedd y llwybr a'r defnydd a gynllunwyd. Gyda fod pob llwybr wedi ei lenwi, os oes galw o hyd, bydd yn gorlwytho pob llwybr, gan ffafrio'r rhai gyda chynhwysedd uchel. Ni fydd yr algorithm yn amcangyfrif y cynhwysedd yn fanwl gywir. Mae'r gosodiad yma'n eich galluogi i nodi pa mor llawn y dylai llwybr byrrach fod (fel canran) cyn dewis y llwybr nesaf. Gosodwch at llai na 100% i osgoi tagfeydd mewn gorsafoedd oherwydd goramcangyfrif cynhwysedd
 
 STR_CONFIG_SETTING_LOCALISATION_UNITS_VELOCITY                  :Unedau cyflymder (tir): {STRING}
 STR_CONFIG_SETTING_LOCALISATION_UNITS_VELOCITY_NAUTICAL         :Unedau cyflymder (môr): {STRING}
@@ -2979,9 +2979,9 @@ STR_TREES_RANDOM_TYPE_TOOLTIP                                   :{BLACK}Gosod co
 STR_TREES_RANDOM_TREES_BUTTON                                   :{BLACK}Coed ar hap
 STR_TREES_RANDOM_TREES_TOOLTIP                                  :{BLACK}Plannu coed ar hap ar draws y tirwedd
 STR_TREES_MODE_NORMAL_BUTTON                                    :{BLACK}Arferol
-STR_TREES_MODE_NORMAL_TOOLTIP                                   :{BLACK}Plannu coed unigol trwy lusgo ar draws y tirwedd.
+STR_TREES_MODE_NORMAL_TOOLTIP                                   :{BLACK}Plannu coed unigol trwy lusgo ar draws y tirwedd
 STR_TREES_MODE_FOREST_SM_BUTTON                                 :{BLACK}Coedlwyn
-STR_TREES_MODE_FOREST_SM_TOOLTIP                                :{BLACK}Plannu coedwigoedd bach trwy lusgo ar draws y tirwedd.
+STR_TREES_MODE_FOREST_SM_TOOLTIP                                :{BLACK}Plannu coedwigoedd bach trwy lusgo ar draws y tirwedd
 STR_TREES_MODE_FOREST_LG_BUTTON                                 :{BLACK}Coedwig
 STR_TREES_MODE_FOREST_LG_TOOLTIP                                :{BLACK}Plannu coedwigoedd mawr trwy lusgo ar draws y tirwedd
 
@@ -3198,11 +3198,11 @@ STR_ABOUT_COPYRIGHT_OPENTTD                                     :{BLACK}OpenTTD 
 STR_FRAMERATE_CAPTION                                           :{WHITE}Cyfradd Fframiau
 STR_FRAMERATE_CAPTION_SMALL                                     :{STRING}{WHITE} ({DECIMAL}x)
 STR_FRAMERATE_RATE_GAMELOOP                                     :{BLACK}Cyfradd efelychu: {STRING}
-STR_FRAMERATE_RATE_GAMELOOP_TOOLTIP                             :{BLACK}Nifer y ticiau gêm a efelychir bob eiliad.
+STR_FRAMERATE_RATE_GAMELOOP_TOOLTIP                             :{BLACK}Nifer y ticiau gêm a efelychir bob eiliad
 STR_FRAMERATE_RATE_BLITTER                                      :{BLACK}Cyfradd fframiau graffeg: {STRING}
-STR_FRAMERATE_RATE_BLITTER_TOOLTIP                              :{BLACK}Nifer o fframiau fideo a lunir bob eiliad.
+STR_FRAMERATE_RATE_BLITTER_TOOLTIP                              :{BLACK}Nifer o fframiau fideo a lunir bob eiliad
 STR_FRAMERATE_SPEED_FACTOR                                      :{BLACK}Ffactor cyflymder gêm presennol: {DECIMAL}x
-STR_FRAMERATE_SPEED_FACTOR_TOOLTIP                              :{BLACK}Pa mor gyflym mae'r gêm yn rhedeg, o gymharu a'r cyflymder i'w ddisgwyl ar gyfradd efelychu arferol.
+STR_FRAMERATE_SPEED_FACTOR_TOOLTIP                              :{BLACK}Pa mor gyflym mae'r gêm yn rhedeg, o gymharu a'r cyflymder i'w ddisgwyl ar gyfradd efelychu arferol
 STR_FRAMERATE_CURRENT                                           :{WHITE}Presennol
 STR_FRAMERATE_AVERAGE                                           :{WHITE}Cymedr
 STR_FRAMERATE_MEMORYUSE                                         :{WHITE}Cof
@@ -3731,7 +3731,7 @@ STR_STORY_BOOK_SPECTATOR_CAPTION                                :{WHITE}Llyfr Ha
 STR_STORY_BOOK_SPECTATOR                                        :Llyfr Hanes Bydol
 STR_STORY_BOOK_TITLE                                            :{YELLOW}{STRING}
 STR_STORY_BOOK_GENERIC_PAGE_ITEM                                :Tudalen {NUM}
-STR_STORY_BOOK_SEL_PAGE_TOOLTIP                                 :{BLACK}Neidio i dudalen benodol dwy ei ddewis o'r cwymplen yma.
+STR_STORY_BOOK_SEL_PAGE_TOOLTIP                                 :{BLACK}Neidio i dudalen benodol dwy ei ddewis o'r cwymplen yma
 STR_STORY_BOOK_PREV_PAGE                                        :{BLACK}Blaenorol
 STR_STORY_BOOK_PREV_PAGE_TOOLTIP                                :{BLACK}Mynd i'r dudalen blaenorol
 STR_STORY_BOOK_NEXT_PAGE                                        :{BLACK}Nesaf
@@ -4026,7 +4026,7 @@ STR_GROUP_DEFAULT_AIRCRAFTS                                     :Awyrenau heb eu
 
 STR_GROUP_COUNT_WITH_SUBGROUP                                   :{TINY_FONT}{COMMA} (+{COMMA})
 
-STR_GROUPS_CLICK_ON_GROUP_FOR_TOOLTIP                           :{BLACK}Grŵp - cliciwch ar grŵp i restru pob cerbyd yn y grŵp hwn. Gallwch glico a llusgo grwpiau i drefnu'r hierarchaeth.
+STR_GROUPS_CLICK_ON_GROUP_FOR_TOOLTIP                           :{BLACK}Grŵp - cliciwch ar grŵp i restru pob cerbyd yn y grŵp hwn. Gallwch glicio a llusgo grwpiau i drefnu'r hierarchaeth
 STR_GROUP_CREATE_TOOLTIP                                        :{BLACK}Cliciwch i greu grŵp
 STR_GROUP_DELETE_TOOLTIP                                        :{BLACK}Dileu'r grŵp a ddewiswyd
 STR_GROUP_RENAME_TOOLTIP                                        :{BLACK}Ailenwi'r grŵp a ddewiswyd

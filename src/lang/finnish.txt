@@ -1359,7 +1359,7 @@ STR_CONFIG_SETTING_ROAD_VEHICLE_SLOPE_STEEPNESS                 :Mäkien jyrkkyy
 STR_CONFIG_SETTING_ROAD_VEHICLE_SLOPE_STEEPNESS_HELPTEXT        :Mäkien jyrkkyys ajoneuvoille. Korkeammat arvot tekevät mäkien nousemisesta vaikeampaa
 
 STR_CONFIG_SETTING_FORBID_90_DEG                                :90 asteen käännökset kielletty junilta: {STRING}
-STR_CONFIG_SETTING_FORBID_90_DEG_HELPTEXT                       :90 asteen käännöksiä esiintyy kun vaakasuuntaista rataa seuraa pystysuuntainen rata viereisellä ruudulla, tämä vaatii junan kääntymään 90 astetta ruutujen reunalla normaalin 45 asteen sijasta.
+STR_CONFIG_SETTING_FORBID_90_DEG_HELPTEXT                       :90 asteen käännöksiä esiintyy, kun vaakasuuntaista raidetta seuraa välittömästi pystysuuntainen raidepala viereisessä ruudussa, jolloin juna joutuu kääntymään 90 astetta kulkiessaan ruudun reunan yli muiden raideyhdistelmien tavanomaisen 45 asteen sijaan
 
 STR_CONFIG_SETTING_DISTANT_JOIN_STATIONS                        :Salli ei-vierekkäisten asemien yhdistäminen: {STRING}
 STR_CONFIG_SETTING_DISTANT_JOIN_STATIONS_HELPTEXT               :Mahdollistaa aseman osien rakentamisen vaikka ne eivät olisi kosketuksissa olemassaoleviin aseman osiin painamalla Ctrl-näppäintä rakennettaessa
@@ -1508,7 +1508,7 @@ STR_CONFIG_SETTING_MINUTES_PER_YEAR_VALUE                       :{NUM}
 STR_CONFIG_SETTING_MINUTES_PER_YEAR_FROZEN                      :0 (kalenteriaika jäädytetty)
 
 STR_CONFIG_SETTING_TOWN_CARGO_SCALE                             :Skaalaa taajamarahdin tuotantoa: {STRING}
-STR_CONFIG_SETTING_TOWN_CARGO_SCALE_HELPTEXT                    :Skaalaa kuntien tuottaman rahdin määrää tällä prosenttiluvulla.
+STR_CONFIG_SETTING_TOWN_CARGO_SCALE_HELPTEXT                    :Skaalaa kuntien tuottaman rahdin määrää tällä prosenttiluvulla
 STR_CONFIG_SETTING_INDUSTRY_CARGO_SCALE                         :Skaalaa teollisuusrahdin tuotantoa: {STRING}
 STR_CONFIG_SETTING_INDUSTRY_CARGO_SCALE_HELPTEXT                :Skaalaa tuotantolaitosten tuottaman rahdin määrää tällä prosenttiluvulla.
 STR_CONFIG_SETTING_CARGO_SCALE_VALUE                            :{NUM}{NBSP}%
@@ -1529,7 +1529,7 @@ STR_CONFIG_SETTING_ERRMSG_DURATION                              :Virheilmoituste
 STR_CONFIG_SETTING_ERRMSG_DURATION_HELPTEXT                     :Aika virheilmoitusten näyttämiseen punaisessa ikkunassa. Huomaa, että jotkut (kriittiset) virheilmoitukset eivät sulkeudu automaattisesti tämän ajan jälkeen, vaan ne on suljettava käsin
 
 STR_CONFIG_SETTING_HOVER_DELAY                                  :Näytä työkaluvihjeet: {STRING}
-STR_CONFIG_SETTING_HOVER_DELAY_HELPTEXT                         :Viive ennen työkaluvihjeen näyttämistä, kun hiiren kursoria pidetään käyttöliittymäelementin päällä. Vaihtoehtoisesti työkaluvihjeen saa myös näkymiin painamalla hiiren oikeata painiketta, kun arvoksi on määritetty 0.
+STR_CONFIG_SETTING_HOVER_DELAY_HELPTEXT                         :Viive ennen työkaluvihjeen näyttämistä, kun hiiren osoitinta pidetään käyttöliittymäelementin päällä. Vaihtoehtoisesti työkaluvihjeen saa myös näkyviin painamalla hiiren oikeaa painiketta, kun arvoksi on määritetty 0
 STR_CONFIG_SETTING_HOVER_DELAY_VALUE                            :Pidä hiirtä päällä {COMMA} millisekunti{P 0 "" a}
 ###setting-zero-is-special
 STR_CONFIG_SETTING_HOVER_DELAY_DISABLED                         :Hiiren oikea painike
@@ -1541,8 +1541,8 @@ STR_CONFIG_SETTING_GRAPH_LINE_THICKNESS                         :Viivojen paksuu
 STR_CONFIG_SETTING_GRAPH_LINE_THICKNESS_HELPTEXT                :Viivan leveys kuvaajissa. Ohut viiva on tarkasti luettavissa kun taas paksumpi viiva on helpompi nähdä ja sen värit ovat helpommin havaittavissa
 
 STR_CONFIG_SETTING_SHOW_NEWGRF_NAME                             :Näytä NewGRF:n nimi kulkuneuvoikkunassa: {STRING}
-STR_CONFIG_SETTING_SHOW_NEWGRF_NAME_HELPTEXT                    :Lisää kulkuneuvovalikoimaikkunaan rivin, joka kertoo mistä NewGRF:stä valittu kulkuneuvo on peräisin.
-STR_CONFIG_SETTING_SHOW_CARGO_IN_LISTS                          :Näytä kulkuneuvojen kuljetettavissa olevat rahdit listaikkunoissa {STRING}
+STR_CONFIG_SETTING_SHOW_NEWGRF_NAME_HELPTEXT                    :Lisää kulkuneuvovalikoimaikkunaan rivin, joka kertoo mistä NewGRF:stä valittu kulkuneuvo on peräisin
+STR_CONFIG_SETTING_SHOW_CARGO_IN_LISTS                          :Näytä kulkuneuvojen kuljetettavissa olevat rahdit listaikkunoissa: {STRING}
 STR_CONFIG_SETTING_SHOW_CARGO_IN_LISTS_HELPTEXT                 :Mikäli käytössä, kuljetettavissa oleva rahti näytetään kulkuneuvolistoissa kulkuneuvon yllä
 
 STR_CONFIG_SETTING_LANDSCAPE                                    :Maasto: {STRING}
@@ -1561,13 +1561,13 @@ STR_CONFIG_SETTING_INDUSTRY_DENSITY                             :Teollisuuden m�
 STR_CONFIG_SETTING_INDUSTRY_DENSITY_HELPTEXT                    :Määritä, kuinka paljon teollisuutta tulisi luoda ja millä tasolla teollisuuden tulisi pysytellä pelin aikana
 
 STR_CONFIG_SETTING_OIL_REF_EDGE_DISTANCE                        :Suurin sallittu etäisyys kartan reunoilta öljyteollisuudelle: {STRING}
-STR_CONFIG_SETTING_OIL_REF_EDGE_DISTANCE_HELPTEXT               :Öljynjalostamojen ja öljynporauslauttojen suurin etäisyys kartan reunasta. Saarikartoilla tämä takaa sen, että ne ovat lähellä rannikkoa. Yli 256 ruudun kartoilla tämä arvo suhteutetaan kartan kokoon.
+STR_CONFIG_SETTING_OIL_REF_EDGE_DISTANCE_HELPTEXT               :Öljynjalostamojen ja öljynporauslauttojen suurin etäisyys kartan reunasta. Saarikartoilla tämä takaa sen, että ne ovat lähellä rannikkoa. Yli 256 ruudun kartoilla tämä arvo suhteutetaan kartan kokoon
 
 STR_CONFIG_SETTING_SNOWLINE_HEIGHT                              :Lumirajan korkeus: {STRING}
 STR_CONFIG_SETTING_SNOWLINE_HEIGHT_HELPTEXT                     :Säätää lumirajan korkeutta pohjoisessa maastossa. Lumi vaikuttaa myös teollisuuslaitosten luontiin ja kuntien kasvuedellytyksiin. Voidaan muuttaa vain skenaariomuokkaimessa, lasketaan muutoin ”lumen peiton” perusteella
 
 STR_CONFIG_SETTING_SNOW_COVERAGE                                :Lumen peitto: {STRING}
-STR_CONFIG_SETTING_SNOW_COVERAGE_HELPTEXT                       :Säätää lumen määrän suuruusluokkaa pohjoisessa maastossa. Lumi vaikuttaa myös teollisuuslaitosten luontiin ja kuntien kasvuedellytyksiin. Käytetään vain karttaa luotaessa. Merenpinnan tasolla sijaitsevat ruudut ja rannikkoruudut ovat aina lumettomat.
+STR_CONFIG_SETTING_SNOW_COVERAGE_HELPTEXT                       :Säätää lumen määrän suuruusluokkaa pohjoisessa maastossa. Lumi vaikuttaa myös teollisuuslaitosten luontiin ja kuntien kasvuedellytyksiin. Käytetään vain karttaa luotaessa. Merenpinnan tasolla sijaitsevat ruudut ja rannikkoruudut ovat aina lumettomat
 STR_CONFIG_SETTING_SNOW_COVERAGE_VALUE                          :{NUM}{NBSP}%
 
 STR_CONFIG_SETTING_DESERT_COVERAGE                              :Aavikon peitto: {STRING}
@@ -1751,7 +1751,7 @@ STR_CONFIG_SETTING_PERSISTENT_BUILDINGTOOLS                     :Pidä rakennust
 STR_CONFIG_SETTING_PERSISTENT_BUILDINGTOOLS_HELPTEXT            :Pidä siltojen, tunneleiden, jne. rakennustyökalut käytössä käytön jälkeen
 
 STR_CONFIG_SETTING_AUTO_REMOVE_SIGNALS                          :Poista automaattisesti opastimia rautateitä rakennettaessa: {STRING}
-STR_CONFIG_SETTING_AUTO_REMOVE_SIGNALS_HELPTEXT                 :Poista automaattisesti opastimia, jos ne ovat rautatien rakentamisen tiellä. Huomaa, että tämä saattaa johtaa junien yhteentörmäyksiin.
+STR_CONFIG_SETTING_AUTO_REMOVE_SIGNALS_HELPTEXT                 :Poista automaattisesti opastimia, jos ne ovat rautatien rakentamisen tiellä. Huomaa, että tämä saattaa johtaa junien yhteentörmäyksiin
 
 STR_CONFIG_SETTING_FAST_FORWARD_SPEED_LIMIT                     :Nopeutetun pelin enimmäisnopeus: {STRING}
 STR_CONFIG_SETTING_FAST_FORWARD_SPEED_LIMIT_HELPTEXT            :Yläraja pelin nopeudelle, kun pelin nopeutus on käytössä. 0 = ei rajoitusta (niin nopeasti kuin tietokoneesi sallii). Alle 100 %:n arvot hidastavat peliä. Yläraja riippuu tietokoneesi ominaisuuksista ja voi vaihdella pelistä riippuen.
@@ -1822,7 +1822,7 @@ STR_CONFIG_SETTING_SCRIPT_MAX_MEMORY_HELPTEXT                   :Kuinka paljon m
 STR_CONFIG_SETTING_SCRIPT_MAX_MEMORY_VALUE                      :{COMMA} MiB
 
 STR_CONFIG_SETTING_SERVINT_ISPERCENT                            :Huoltovälit ovat prosentteina: {STRING}
-STR_CONFIG_SETTING_SERVINT_ISPERCENT_HELPTEXT                   :Kun tämä on valittuna, kulkuneuvot yrittävät mennä huoltoon niiden luotettavuuden laskettua annetun prosenttiosuuden verran enimmäisluotettavuudesta.{}{}Jos esimerkiksi kulkuneuvon enimmäisluotettavuus on 90 % ja huoltoväli 20 %, kulkuneuvo pyrkii huoltoon luotettavuuden laskettua 72 %:iin.
+STR_CONFIG_SETTING_SERVINT_ISPERCENT_HELPTEXT                   :Kun tämä on valittuna, kulkuneuvot yrittävät mennä huoltoon niiden luotettavuuden laskettua annetun prosenttiosuuden verran enimmäisluotettavuudesta.{}{}Jos esimerkiksi kulkuneuvon enimmäisluotettavuus on 90 % ja huoltoväli 20 %, kulkuneuvo pyrkii huoltoon luotettavuuden laskettua 72 %:iin
 
 STR_CONFIG_SETTING_SERVINT_TRAINS                               :Junien oletushuoltoväli: {STRING}
 STR_CONFIG_SETTING_SERVINT_TRAINS_HELPTEXT                      :Määritä oletushuoltoväli uusille junille, mikäli kulkuneuvolle ei ole määritelty erillistä huoltoväliä
@@ -1966,7 +1966,7 @@ STR_CONFIG_SETTING_TOWN_FOUNDING_ALLOWED                        :Sallittu
 STR_CONFIG_SETTING_TOWN_FOUNDING_ALLOWED_CUSTOM_LAYOUT          :Sallittu, oma tiekaava
 
 STR_CONFIG_SETTING_TOWN_CARGOGENMODE                            :Taajamarahdin luonti: {STRING}
-STR_CONFIG_SETTING_TOWN_CARGOGENMODE_HELPTEXT                   :Talojen tuottaman rahdin määrä suhteessa kunnan asukaslukuun.{}Neliöllinen kasvu: Kaksinkertainen asukasmäärä tuottaa matkustajia nelinkertaisesti.{}Lineaarinen kasvu: Kaksinkertainen asukasmäärä tuottaa matkustajia kaksinkertaisesti.
+STR_CONFIG_SETTING_TOWN_CARGOGENMODE_HELPTEXT                   :Talojen tuottaman rahdin määrä suhteessa kunnan asukaslukuun.{}Neliöllinen kasvu: Kaksinkertainen asukasmäärä tuottaa matkustajia nelinkertaisesti.{}Lineaarinen kasvu: Kaksinkertainen asukasmäärä tuottaa matkustajia kaksinkertaisesti
 ###length 2
 STR_CONFIG_SETTING_TOWN_CARGOGENMODE_ORIGINAL                   :Neliöllinen (alkuperäinen)
 STR_CONFIG_SETTING_TOWN_CARGOGENMODE_BITCOUNT                   :Lineaarinen
@@ -2031,18 +2031,18 @@ STR_CONFIG_SETTING_CITY_SIZE_MULTIPLIER                         :Kasvukerroin al
 STR_CONFIG_SETTING_CITY_SIZE_MULTIPLIER_HELPTEXT                :Kaupunkien keskimääräinen koko suhteessa muihin kuntiin pelin alussa
 
 STR_CONFIG_SETTING_LINKGRAPH_RECALC_INTERVAL                    :Yhteyskuvaajan päivitysväli: {STRING}
-STR_CONFIG_SETTING_LINKGRAPH_RECALC_INTERVAL_HELPTEXT           :Yhteyskuvaajan uudelleenlaskentojen välinen aika. Jokainen uudelleenlaskenta laskee suunnitelmat kuvaajan yhdelle osalle. Tämän asetuksen arvo X ei siis tarkoita, että koko kuvaaja päivittyisi X sekunnin välein, vaan ainoastaan sen yksi osa. Mitä lyhyemmäksi asetat tämän ajan, sitä enemmän suoritinaikaa kuluu laskentaan. Mitä pitemmäksi asetat ajan, sitä pitempään kestää rahdin jakautumisen alkaminen uusille reiteille.
+STR_CONFIG_SETTING_LINKGRAPH_RECALC_INTERVAL_HELPTEXT           :Yhteyskuvaajan uudelleenlaskentojen välinen aika. Jokainen uudelleenlaskenta laskee suunnitelmat kuvaajan yhdelle osalle. Tämän asetuksen arvo X ei siis tarkoita, että koko kuvaaja päivittyisi X sekunnin välein, vaan ainoastaan sen yksi osa. Mitä lyhyemmäksi asetat tämän ajan, sitä enemmän suoritinaikaa kuluu laskentaan. Mitä pitemmäksi asetat ajan, sitä pitempään kestää rahdin jakautumisen alkaminen uusille reiteille
 STR_CONFIG_SETTING_LINKGRAPH_RECALC_TIME                        :Käytä {STRING} yhteyskuvaajan uudelleenlaskentaan
-STR_CONFIG_SETTING_LINKGRAPH_RECALC_TIME_HELPTEXT               :Yhteyskuvaajan kunkin osan uudelleenlaskentaan käytettävä aika. Uudelleenlaskennan alkaessa käynnistetään säie, jonka annetaan toimia näin monta sekuntia. Mitä lyhyemmäksi asetat tämän ajan, sitä todennäköisemmin säie ei ehdi päättymään ajoissa, jolloin peli pysähtyy (”jumii”) säikeen valmistumiseen asti. Mitä pitemmäksi asetat ajan, sitä pitempään rahdin jakautumisen päivittyminen kestää reittien muuttuessa.
+STR_CONFIG_SETTING_LINKGRAPH_RECALC_TIME_HELPTEXT               :Yhteyskuvaajan kunkin osan uudelleenlaskentaan käytettävä aika. Uudelleenlaskennan alkaessa käynnistetään säie, jonka annetaan toimia näin monta sekuntia. Mitä lyhyemmäksi asetat tämän ajan, sitä todennäköisemmin säie ei ehdi päättymään ajoissa, jolloin peli pysähtyy (”jumii”) säikeen valmistumiseen asti. Mitä pitemmäksi asetat ajan, sitä pitempään rahdin jakautumisen päivittyminen kestää reittien muuttuessa
 
 STR_CONFIG_SETTING_DISTRIBUTION_PAX                             :Matkustajien jakautuminen: {STRING}
-STR_CONFIG_SETTING_DISTRIBUTION_PAX_HELPTEXT                    :”Symmetrinen” tarkoittaa, että suunnilleen sama määrä matkustajia kulkee asemalta A asemalle B kuin asemalta B asemalle A. ”Epäsymmetrinen” tarkoittaa, että matkustajia voi kulkea mielivaltainen määrä kumpaankin suuntaan. ”Manuaalinen” tarkoittaa, että automaattista jakautumista ei sovelleta matkustajiin.
+STR_CONFIG_SETTING_DISTRIBUTION_PAX_HELPTEXT                    :”Symmetrinen” tarkoittaa, että suunnilleen sama määrä matkustajia kulkee asemalta A asemalle B kuin asemalta B asemalle A. ”Epäsymmetrinen” tarkoittaa, että matkustajia voi kulkea mielivaltainen määrä kumpaankin suuntaan. ”Manuaalinen” tarkoittaa, että automaattista jakautumista ei sovelleta matkustajiin
 STR_CONFIG_SETTING_DISTRIBUTION_MAIL                            :Postin jakautuminen: {STRING}
-STR_CONFIG_SETTING_DISTRIBUTION_MAIL_HELPTEXT                   :”Symmetrinen” tarkoittaa, että suunnilleen sama määrä postia kulkee asemalta A asemalle B kuin asemalta B asemalle A. ”Epäsymmetrinen” tarkoittaa, että postia voi kulkea mielivaltainen määrä kumpaankin suuntaan. ”Manuaalinen” tarkoittaa, että automaattista jakautumista ei sovelleta postiin.
+STR_CONFIG_SETTING_DISTRIBUTION_MAIL_HELPTEXT                   :”Symmetrinen” tarkoittaa, että suunnilleen sama määrä postia kulkee asemalta A asemalle B kuin asemalta B asemalle A. ”Epäsymmetrinen” tarkoittaa, että postia voi kulkea mielivaltainen määrä kumpaankin suuntaan. ”Manuaalinen” tarkoittaa, että automaattista jakautumista ei sovelleta postiin
 STR_CONFIG_SETTING_DISTRIBUTION_ARMOURED                        :Arvokuljetusten jakautuminen: {STRING}
-STR_CONFIG_SETTING_DISTRIBUTION_ARMOURED_HELPTEXT               :Arvokuljetuksiin kuuluvat arvotavarat lauhkeassa ilmastossa, timantit subtrooppisessa ilmastossa ja kulta pohjoisessa ilmastossa. NewGRF:t voivat kuitenkin muuttaa näitä rahteja. ”Symmetrinen” tarkoittaa, että suunnilleen sama määrä rahtia lähetetään asemalta A asemalle B kuin asemalta B asemalle A. ”Epäsymmetrinen” tarkoittaa, että tätä rahtia lähetetään mielivaltainen määrä kumpaankin suuntaan. ”Manuaalinen” tarkoittaa, että automaattista jakautumista ei sovelleta tähän rahtiin. Suositeltavia asetuksia ovat ”epäsymmetrinen” tai ”manuaalinen” pelattaessa pohjoisessa tai subtrooppisessa ilmastossa, sillä näissä pankit ottavat ainoastaan vastaan rahtia. Lauhkeassa ilmastossa pelatessa voidaan myös valita ”symmetrinen”, sillä pankit myös lähettävät arvotavaroita takaisin lähtöpankille.
+STR_CONFIG_SETTING_DISTRIBUTION_ARMOURED_HELPTEXT               :Arvokuljetuksiin kuuluvat arvotavarat lauhkeassa ilmastossa, timantit subtrooppisessa ilmastossa ja kulta pohjoisessa ilmastossa. NewGRF:t voivat kuitenkin muuttaa näitä rahteja. ”Symmetrinen” tarkoittaa, että suunnilleen sama määrä rahtia lähetetään asemalta A asemalle B kuin asemalta B asemalle A. ”Epäsymmetrinen” tarkoittaa, että tätä rahtia voidaan lähettää mielivaltainen määrä kumpaankin suuntaan. ”Manuaalinen” tarkoittaa, että automaattista jakautumista ei sovelleta tähän rahtiin. Suositeltavia asetuksia ovat ”epäsymmetrinen” tai ”manuaalinen” pelattaessa pohjoisessa tai subtrooppisessa ilmastossa, sillä näissä pankit ottavat ainoastaan vastaan rahtia. Lauhkeassa ilmastossa pelatessa voidaan myös valita ”symmetrinen”, sillä pankit myös lähettävät arvotavaroita takaisin lähtöpankille
 STR_CONFIG_SETTING_DISTRIBUTION_DEFAULT                         :Muiden rahtityyppien jakautuminen: {STRING}
-STR_CONFIG_SETTING_DISTRIBUTION_DEFAULT_HELPTEXT                :”Epäsymmetrinen” tarkoittaa, että rahtia lähetetään mielivaltainen määrä kumpaankin suuntaan. ”Manuaalinen” tarkoittaa, että automaattista jakautumista ei sovelleta näihin rahteihin.
+STR_CONFIG_SETTING_DISTRIBUTION_DEFAULT_HELPTEXT                :”Epäsymmetrinen” tarkoittaa, että rahtia voidaan lähettää mielivaltainen määrä kumpaankin suuntaan. ”Manuaalinen” tarkoittaa, että automaattista jakautumista ei sovelleta näihin rahteihin
 ###length 3
 STR_CONFIG_SETTING_DISTRIBUTION_MANUAL                          :manuaalinen
 STR_CONFIG_SETTING_DISTRIBUTION_ASYMMETRIC                      :epäsymmetrinen
@@ -2052,9 +2052,9 @@ STR_CONFIG_SETTING_LINKGRAPH_ACCURACY                           :Jakautumisen ta
 STR_CONFIG_SETTING_LINKGRAPH_ACCURACY_HELPTEXT                  :Mitä suuremmaksi tämä asetus on määritetty, sitä enemmän prosessoriaikaa yhteyskuvaajan laskemiseen kuluu. Mikäli tähän kuluu liian paljon aikaa, saatat havaita pelin nykimistä. Jos arvo on määritetty liian pieneksi, jakauman laskeminen ei ole tarkka ja rahtia ei välttämättä lähetetä odotetuille asemille.
 
 STR_CONFIG_SETTING_DEMAND_DISTANCE                              :Välimatkan vaikutus kysyntään: {STRING}
-STR_CONFIG_SETTING_DEMAND_DISTANCE_HELPTEXT                     :Mikäli asetuksen arvo on määritelty suuremmaksi kuin 0, alkuperäisen aseman A ja mahdollisen määränpään B välimatkalla on vaikutus A:sta B:hen lähetetyn rahdin määrään. Mitä kauempana B on A:sta, sitä vähemmän rahtia lähetetään. Mitä suuremmaksi tämä asetus on määritetty, sitä vähemmän rahtia lähetetään kaukana oleville ja enemmän lähellä oleville asemille.
+STR_CONFIG_SETTING_DEMAND_DISTANCE_HELPTEXT                     :Mikäli tämä arvo on asetettu suuremmaksi kuin 0, rahdin lähtöaseman A ja mahdollisen määränpään B välimatka vaikuttaa A:sta B:hen lähetetyn rahdin määrään. Mitä kauempana B on A:sta, sitä vähemmän rahtia lähetetään. Mitä suurempi tämän asetuksen arvo on, sitä vähemmän rahtia lähetetään kaukana oleville asemille ja sitä enemmän lähellä oleville
 STR_CONFIG_SETTING_DEMAND_SIZE                                  :Palautettavan rahdin määrä symmetrisessä tilassa: {STRING}
-STR_CONFIG_SETTING_DEMAND_SIZE_HELPTEXT                         :Mikäli asetuksen arvoksi on määritetty alle 100{NBSP}%, symmetrinen jakauma toimii enemmän epäsymmetrisen jakauman tavoin, ja vähemmän rahtia pakotetaan lähetettäväksi takaisin alkuperäiselle asemalle. Jos arvoksi määritetään 0{NBSP}%, symmetrinen jakauma toimii täysin epäsymmetrisen jakauman tavoin.
+STR_CONFIG_SETTING_DEMAND_SIZE_HELPTEXT                         :Mikäli asetuksen arvoksi on määritetty alle 100{NBSP}%, symmetrinen jakauma toimii enemmän epäsymmetrisen jakauman tavoin, ja vähemmän rahtia pakotetaan lähetettäväksi takaisin alkuperäiselle asemalle. Jos arvoksi määritetään 0{NBSP}%, symmetrinen jakauma toimii täysin epäsymmetrisen jakauman tavoin
 
 STR_CONFIG_SETTING_SHORT_PATH_SATURATION                        :Lyhyiden reittien kuormittuminen ennen vapaampien reittien käyttämistä: {STRING}
 STR_CONFIG_SETTING_SHORT_PATH_SATURATION_HELPTEXT               :Kahden aseman välillä on usein useita reittejä. Lyhintä reittiä käytetään ensisijaisesti, toiseksi lyhintä ensimmäisen kuormittuessa ja niin edelleen. Kuormitus määritellään arvioidun kapasiteetin ja suunnitellun käytön mukaan. Kaikkien reittien ollessa kuormittuneita reittejä aletaan ylikuormittaa, suurimman kapasiteetin omaavista reiteista aloittaen. Algoritmi ei kuitenkaan aina arvioi kapasiteettia oikein. Tämä asetus mahdollistaa reitin kuormitustason määrittämisen ennen seuraavan reitin käyttämistä. Määritä arvoksi vähemmän kuin 100{NBSP}% välttääksesi ylikuormittuneita asemia, jos kapasiteetti yliarvioidaan.

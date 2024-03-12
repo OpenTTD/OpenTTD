@@ -1055,9 +1055,9 @@ STR_GAME_OPTIONS_GUI_SCALE_BEVELS                               :{BLACK}Escalar 
 STR_GAME_OPTIONS_GUI_SCALE_BEVELS_TOOLTIP                       :{BLACK}Marque esta caixa para dimensionar os chanfros por tamanho de interface
 
 STR_GAME_OPTIONS_GUI_FONT_SPRITE                                :{BLACK}Usar a fonte "sprite" tradicional
-STR_GAME_OPTIONS_GUI_FONT_SPRITE_TOOLTIP                        :{BLACK}Marque esta caixa se prefere usar o tipo de fonte tradicional de tamanho fixo.
+STR_GAME_OPTIONS_GUI_FONT_SPRITE_TOOLTIP                        :{BLACK}Marque esta caixa se prefere usar o tipo de fonte tradicional de tamanho fixo
 STR_GAME_OPTIONS_GUI_FONT_AA                                    :{BLACK}Fontes anti-alias
-STR_GAME_OPTIONS_GUI_FONT_AA_TOOLTIP                            :{BLACK}Marque esta caixa para fontes redimensionáveis com anti-alias.
+STR_GAME_OPTIONS_GUI_FONT_AA_TOOLTIP                            :{BLACK}Marque esta caixa para fontes redimensionáveis com anti-alias
 
 STR_GAME_OPTIONS_GUI_SCALE_1X                                   :1x
 STR_GAME_OPTIONS_GUI_SCALE_2X                                   :2x
@@ -1276,7 +1276,7 @@ STR_CONFIG_SETTING_INFINITE_MONEY                               :Dinheiro ilimit
 STR_CONFIG_SETTING_INFINITE_MONEY_HELPTEXT                      :Permitir gastos ilimitados e desabilitar a falência de empresas
 
 STR_CONFIG_SETTING_MAXIMUM_INITIAL_LOAN                         :Valor máximo do empréstimo inicial: {STRING}
-STR_CONFIG_SETTING_MAXIMUM_INITIAL_LOAN_HELPTEXT                :Valor máximo do empréstimo para cada empresa (sem ter em conta a inflação)Se definido como "Sem empréstimo", não haverá dinheiro disponível, a menos que seja fornecido por um Script de Jogo ou pela configuração "Dinheiro ilimitado".
+STR_CONFIG_SETTING_MAXIMUM_INITIAL_LOAN_HELPTEXT                :Valor máximo do empréstimo para cada empresa (sem ter em conta a inflação). Se definido como "Sem empréstimo", não haverá dinheiro disponível, a menos que seja fornecido por um Script de Jogo ou pela configuração "Dinheiro ilimitado"
 STR_CONFIG_SETTING_MAXIMUM_INITIAL_LOAN_VALUE                   :{CURRENCY_LONG}
 ###setting-zero-is-special
 STR_CONFIG_SETTING_MAXIMUM_INITIAL_LOAN_DISABLED                :Sem empréstimo
@@ -1360,7 +1360,7 @@ STR_CONFIG_SETTING_ROAD_VEHICLE_SLOPE_STEEPNESS                 :Ângulo de incl
 STR_CONFIG_SETTING_ROAD_VEHICLE_SLOPE_STEEPNESS_HELPTEXT        :Declive de um mosaico inclinado para um veiculo de estrada. Valores mais altos tornam mais difícil de subir.
 
 STR_CONFIG_SETTING_FORBID_90_DEG                                :Proibir comboios fazer curvas de 90º: {STRING}
-STR_CONFIG_SETTING_FORBID_90_DEG_HELPTEXT                       :Curvas de 90 graus ocorrem quando uma pista horizontal é diretamente seguida por outra vertical num mosaico adjacente, fazendo com que o comboio vire 90 graus quando atravessa a fronteira dos mosaicos, ao invés dos habituais 45 graus para outras combinações de pistas.
+STR_CONFIG_SETTING_FORBID_90_DEG_HELPTEXT                       :Curvas de 90 graus ocorrem quando uma pista horizontal é diretamente seguida por outra vertical num mosaico adjacente, fazendo com que o comboio vire 90 graus quando atravessa a fronteira dos mosaicos, ao invés dos habituais 45 graus para outras combinações de pistas
 
 STR_CONFIG_SETTING_DISTANT_JOIN_STATIONS                        :Permitir juntar estações não adjacentes: {STRING}
 STR_CONFIG_SETTING_DISTANT_JOIN_STATIONS_HELPTEXT               :Permite acrescentar partes a uma estação sem tocar diretamente nas partes já existentes, fazendo Ctrl+Clique enquanto coloca as novas partes
@@ -1472,7 +1472,7 @@ STR_CONFIG_SETTING_COMPANY_STARTING_COLOUR                      :Cor inicial da 
 STR_CONFIG_SETTING_COMPANY_STARTING_COLOUR_HELPTEXT             :Escolher a cor inicial da empresa
 
 STR_CONFIG_SETTING_COMPANY_STARTING_COLOUR_SECONDARY            :Cor secundária da empresa inicial: {STRING}
-STR_CONFIG_SETTING_COMPANY_STARTING_COLOUR_SECONDARY_HELPTEXT   :Escolha a cor inicial secundária para a empresa, se estiver a usar um NewGRF que a permita.
+STR_CONFIG_SETTING_COMPANY_STARTING_COLOUR_SECONDARY_HELPTEXT   :Escolha a cor inicial secundária para a empresa, se estiver a usar um NewGRF que a permita
 
 STR_CONFIG_SETTING_NEVER_EXPIRE_AIRPORTS                        :Aeroportos nunca expiram: {STRING}
 STR_CONFIG_SETTING_NEVER_EXPIRE_AIRPORTS_HELPTEXT               :Ativar esta preferência torna cada tipo de aeroporto disponível para sempre após a sua introdução
@@ -1496,22 +1496,22 @@ STR_CONFIG_SETTING_NEVER_EXPIRE_VEHICLES                        :Veículos nunca
 STR_CONFIG_SETTING_NEVER_EXPIRE_VEHICLES_HELPTEXT               :Quando ativo, todos os modelos de veículos permanecerão disponíveis para sempre após a sua introdução
 
 STR_CONFIG_SETTING_TIMEKEEPING_UNITS                            :Unidades de cronometragem: {STRING}
-STR_CONFIG_SETTING_TIMEKEEPING_UNITS_HELPTEXT                   :Selecione as unidades de cronometragem do jogo. Isto não pode ser alterado posteriormente.{}{}O uso baseado no calendário é a experiência clássica do OpenTTD, em que um ano corresponde a 12 meses e cada mês tem 28 a 31 dias.{}{}No tempo baseado no relógio de parede, o movimento de veículos, a produção de carga e as finanças baseiam-se em incrementos de um minuto, o que equivale a um mês de 30 dias no modo baseado no calendário. Estes são agrupados em períodos de 12 minutos, equivalentes a um ano no modo baseado em calendário.{}{}Em ambos os modos há sempre um calendário clássico, que é usado para datas de introdução de veículos, casas e outras infraestruturas.
+STR_CONFIG_SETTING_TIMEKEEPING_UNITS_HELPTEXT                   :Selecione as unidades de cronometragem do jogo. Isto não pode ser alterado posteriormente.{}{}O uso baseado no calendário é a experiência clássica do OpenTTD, em que um ano corresponde a 12 meses e cada mês tem 28 a 31 dias.{}{}No tempo baseado no relógio de parede, o movimento de veículos, a produção de carga e as finanças baseiam-se em incrementos de um minuto, o que equivale a um mês de 30 dias no modo baseado no calendário. Estes são agrupados em períodos de 12 minutos, equivalentes a um ano no modo baseado em calendário.{}{}Em ambos os modos há sempre um calendário clássico, que é usado para datas de introdução de veículos, casas e outras infraestruturas
 ###length 2
 STR_CONFIG_SETTING_TIMEKEEPING_UNITS_CALENDAR                   :Calendário
 STR_CONFIG_SETTING_TIMEKEEPING_UNITS_WALLCLOCK                  :Relógio de parede
 
 STR_CONFIG_SETTING_MINUTES_PER_YEAR                             :Minutos por ano: {STRING}
-STR_CONFIG_SETTING_MINUTES_PER_YEAR_HELPTEXT                    :Escolher o número de minutos num ano civil. Por omissão é 12 minutos. Defina como 0 para impedir que a hora do calendário seja alterada. Esta configuração não afeta a simulação económica do jogo e só está disponível ao usar a cronometragem do relógio de parede.
+STR_CONFIG_SETTING_MINUTES_PER_YEAR_HELPTEXT                    :Escolher o número de minutos num ano civil. Valor por omissão é 12 minutos. Defina como 0 para impedir que a hora do calendário seja alterada. Esta configuração não afeta a simulação económica do jogo e só está disponível ao usar a cronometragem do relógio de parede
 
 STR_CONFIG_SETTING_MINUTES_PER_YEAR_VALUE                       :{NUM}
 ###setting-zero-is-special
 STR_CONFIG_SETTING_MINUTES_PER_YEAR_FROZEN                      :0 (tempo do calendário congelado)
 
 STR_CONFIG_SETTING_TOWN_CARGO_SCALE                             :Escalar a produção de carga da localidade: {STRING}
-STR_CONFIG_SETTING_TOWN_CARGO_SCALE_HELPTEXT                    :Escalar a produção de carga das localidades nesta percentagem.
+STR_CONFIG_SETTING_TOWN_CARGO_SCALE_HELPTEXT                    :Escalar a produção de carga das localidades nesta percentagem
 STR_CONFIG_SETTING_INDUSTRY_CARGO_SCALE                         :Escalar a produção de carga da indústria: {STRING}
-STR_CONFIG_SETTING_INDUSTRY_CARGO_SCALE_HELPTEXT                :Escalar a produção de carga das indústrias nesta percentagem.
+STR_CONFIG_SETTING_INDUSTRY_CARGO_SCALE_HELPTEXT                :Escalar a produção de carga das indústrias nesta percentagem
 STR_CONFIG_SETTING_CARGO_SCALE_VALUE                            :{NUM}%
 
 STR_CONFIG_SETTING_AUTORENEW_VEHICLE                            :Auto-renovação de veículos quando ficam velhos: {STRING}
@@ -1542,8 +1542,8 @@ STR_CONFIG_SETTING_GRAPH_LINE_THICKNESS                         :Grossura das li
 STR_CONFIG_SETTING_GRAPH_LINE_THICKNESS_HELPTEXT                :Largura da linha nos gráficos. Uma linha mais estreita é de leitura mais precisa, enquanto uma linha mais espessa é mais fácil de ver e as cores distinguem-se melhor.
 
 STR_CONFIG_SETTING_SHOW_NEWGRF_NAME                             :Exibir o nome do "NewGRF" na janela de compra de veículos: {STRING}
-STR_CONFIG_SETTING_SHOW_NEWGRF_NAME_HELPTEXT                    :Adiciona uma linha à janela de compra de veículos, mostrando a qual "NewGRF" pertence o veículo selecionado.
-STR_CONFIG_SETTING_SHOW_CARGO_IN_LISTS                          :Mostrar as cargas que os veículos podem transportar nas janelas de listagem {STRING}
+STR_CONFIG_SETTING_SHOW_NEWGRF_NAME_HELPTEXT                    :Adiciona uma linha à janela de compra de veículos, mostrando a qual "NewGRF" pertence o veículo selecionado
+STR_CONFIG_SETTING_SHOW_CARGO_IN_LISTS                          :Mostrar as cargas que os veículos podem transportar nas janelas de listagem: {STRING}
 STR_CONFIG_SETTING_SHOW_CARGO_IN_LISTS_HELPTEXT                 :Quando ativo, a carga transportável do veículo aparecerá acima nas listas de veículos
 
 STR_CONFIG_SETTING_LANDSCAPE                                    :Cenário: {STRING}
@@ -1562,13 +1562,13 @@ STR_CONFIG_SETTING_INDUSTRY_DENSITY                             :Densidade indus
 STR_CONFIG_SETTING_INDUSTRY_DENSITY_HELPTEXT                    :Define quantas indústrias devem ser geradas e que nível deve ser mantido durante o jogo
 
 STR_CONFIG_SETTING_OIL_REF_EDGE_DISTANCE                        :Distância máxima entre o limite do mapa e Refinarias de Petróleo: {STRING}
-STR_CONFIG_SETTING_OIL_REF_EDGE_DISTANCE_HELPTEXT               :Refinarias de petróleo são construídas apenas próximo da borda do mapa, isto é, na costa para mapas de ilha
+STR_CONFIG_SETTING_OIL_REF_EDGE_DISTANCE_HELPTEXT               :Limite de distância entre a borda do mapa e o local de construção de refinarias e plataformas de petróleo. Em mapas de ilhas isto garante que elas fiquem perto da costa. Em mapas com mais de 256 quadrados esse valor é aumentado
 
 STR_CONFIG_SETTING_SNOWLINE_HEIGHT                              :Altura da linha de neve: {STRING}
 STR_CONFIG_SETTING_SNOWLINE_HEIGHT_HELPTEXT                     :Escolher a que altura a neve começa na paisagem subártica. A neve também afeta a geração de indústrias e os requisitos de crescimento das localidades. Só pode ser modificado através do Editor de Cenários ou é calculado através da "cobertura de neve"
 
 STR_CONFIG_SETTING_SNOW_COVERAGE                                :Cobertura de neve: {STRING}
-STR_CONFIG_SETTING_SNOW_COVERAGE_HELPTEXT                       :Escolher a quantidade aproximada de neve no clima subártico. A neve também afeta a geração de indústrias e os requisitos de crescimento das localidades. Usado apenas durante a geração do mapa. O nível do mar e as suas encostas nunca têm neve.
+STR_CONFIG_SETTING_SNOW_COVERAGE_HELPTEXT                       :Escolher a quantidade aproximada de neve no clima subártico. A neve também afeta a geração de indústrias e os requisitos de crescimento das localidades. Usado apenas durante a geração do mapa. O nível do mar e as suas encostas nunca têm neve
 STR_CONFIG_SETTING_SNOW_COVERAGE_VALUE                          :{NUM}%
 
 STR_CONFIG_SETTING_DESERT_COVERAGE                              :Cobertura do deserto: {STRING}
@@ -1576,7 +1576,7 @@ STR_CONFIG_SETTING_DESERT_COVERAGE_HELPTEXT                     :Escolher a quan
 STR_CONFIG_SETTING_DESERT_COVERAGE_VALUE                        :{NUM}%
 
 STR_CONFIG_SETTING_ROUGHNESS_OF_TERRAIN                         :Rudeza do terreno: {STRING}
-STR_CONFIG_SETTING_ROUGHNESS_OF_TERRAIN_HELPTEXT                :Escolher a forma e o número de colinas. As paisagens suaves têm poucas colinas, largas, enquanto as paisagens acidentadas possuem mais, colinas pequenas.
+STR_CONFIG_SETTING_ROUGHNESS_OF_TERRAIN_HELPTEXT                :Escolher a forma e o número de colinas. As paisagens suaves têm poucas colinas, largas, enquanto as paisagens acidentadas possuem mais, colinas pequenas
 ###length 4
 STR_CONFIG_SETTING_ROUGHNESS_OF_TERRAIN_VERY_SMOOTH             :Muito suave
 STR_CONFIG_SETTING_ROUGHNESS_OF_TERRAIN_SMOOTH                  :Suave
@@ -1584,7 +1584,7 @@ STR_CONFIG_SETTING_ROUGHNESS_OF_TERRAIN_ROUGH                   :Acidentado
 STR_CONFIG_SETTING_ROUGHNESS_OF_TERRAIN_VERY_ROUGH              :Muito acidentado
 
 STR_CONFIG_SETTING_VARIETY                                      :Distribuição de variedade: {STRING}
-STR_CONFIG_SETTING_VARIETY_HELPTEXT                             :Escolher se o mapa contém tanto áreas montanhosas como áreas planas. Quanto maior a variedade, maiores as diferenças de altitude entre essas as áreas.
+STR_CONFIG_SETTING_VARIETY_HELPTEXT                             :Escolher se o mapa contém tanto áreas montanhosas como áreas planas. Quanto maior a variedade, maiores as diferenças de altitude entre essas as áreas
 
 STR_CONFIG_SETTING_RIVER_AMOUNT                                 :Quantidade de rios: {STRING}
 STR_CONFIG_SETTING_RIVER_AMOUNT_HELPTEXT                        :Escolhe quantos rios serão gerados
@@ -1631,7 +1631,7 @@ STR_CONFIG_SETTING_SMALLMAP_LAND_COLOUR_DARK_GREEN              :Verde Escuro
 STR_CONFIG_SETTING_SMALLMAP_LAND_COLOUR_VIOLET                  :Violeta
 
 STR_CONFIG_SETTING_LINKGRAPH_COLOURS                            :Cores de sobreposição de fluxo de carga: {STRING}
-STR_CONFIG_SETTING_LINKGRAPH_COLOURS_HELPTEXT                   :Define o esquema de cores usado para a sobreposição do fluxo de carga.
+STR_CONFIG_SETTING_LINKGRAPH_COLOURS_HELPTEXT                   :Define o esquema de cores usado para a sobreposição do fluxo de carga
 ###length 4
 STR_CONFIG_SETTING_LINKGRAPH_COLOURS_GREEN_TO_RED               :Verde para vermelho (original)
 STR_CONFIG_SETTING_LINKGRAPH_COLOURS_GREEN_TO_BLUE              :Verde para azul
@@ -1752,10 +1752,10 @@ STR_CONFIG_SETTING_PERSISTENT_BUILDINGTOOLS                     :Deixar ferramen
 STR_CONFIG_SETTING_PERSISTENT_BUILDINGTOOLS_HELPTEXT            :Manter as ferramentas de construção de pontes, túneis, etc. abertas após uso
 
 STR_CONFIG_SETTING_AUTO_REMOVE_SIGNALS                          :Remover automaticamente os sinais durante a construção de vias férreas: {STRING}
-STR_CONFIG_SETTING_AUTO_REMOVE_SIGNALS_HELPTEXT                 :Remova automaticamente os sinais durante a construção do trilho se os sinais estiverem no caminho. Observe que isso pode potencialmente levar a acidentes de comboio.
+STR_CONFIG_SETTING_AUTO_REMOVE_SIGNALS_HELPTEXT                 :Remova automaticamente os sinais durante a construção da ferrovia se os sinais estiverem no caminho. Isto pode potencialmente causar acidentes de comboio
 
 STR_CONFIG_SETTING_FAST_FORWARD_SPEED_LIMIT                     :Limite de velocidade do avanço rápido: {STRING}
-STR_CONFIG_SETTING_FAST_FORWARD_SPEED_LIMIT_HELPTEXT            :Limite da velocidade do jogo quando o avanço rápido está ativado. 0 = sem limite (tão rápido quanto o seu computador permitir). Valores abaixo de 100% tornam o jogo mais lento. O limite superior depende das especificações do seu computador e pode variar dependendo do jogo.
+STR_CONFIG_SETTING_FAST_FORWARD_SPEED_LIMIT_HELPTEXT            :Limite da velocidade do jogo quando o avanço rápido está ativado. 0 = sem limite (tão rápido quanto o seu computador permitir). Valores abaixo de 100% tornam o jogo mais lento. O limite superior depende das especificações do seu computador e pode variar dependendo do jogo
 STR_CONFIG_SETTING_FAST_FORWARD_SPEED_LIMIT_VAL                 :{NUM}% velocidade normal do jogo
 ###setting-zero-is-special
 STR_CONFIG_SETTING_FAST_FORWARD_SPEED_LIMIT_ZERO                :Sem limite (tão rápido quanto o seu computador permitir)
@@ -1819,11 +1819,11 @@ STR_CONFIG_SETTING_AI_IN_MULTIPLAYER_HELPTEXT                   :Permite a jogad
 STR_CONFIG_SETTING_SCRIPT_MAX_OPCODES                           :#opcodes antes de os scripts serem suspensos: {STRING}
 STR_CONFIG_SETTING_SCRIPT_MAX_OPCODES_HELPTEXT                  :Número máximo de passos computacionais que um script pode executar num turno
 STR_CONFIG_SETTING_SCRIPT_MAX_MEMORY                            :Utilização máxima de memória por script: {STRING}
-STR_CONFIG_SETTING_SCRIPT_MAX_MEMORY_HELPTEXT                   :Definir o volume máximo de memória que pode ser utilizada por um script antes de este ser terminado. Para mapas maiores é possível que este parâmetro tenha de ser aumentado.
+STR_CONFIG_SETTING_SCRIPT_MAX_MEMORY_HELPTEXT                   :Definir o volume máximo de memória que pode ser utilizada por um script antes de este ser terminado. Para mapas maiores é possível que este parâmetro tenha de ser aumentado
 STR_CONFIG_SETTING_SCRIPT_MAX_MEMORY_VALUE                      :{COMMA} MiB
 
 STR_CONFIG_SETTING_SERVINT_ISPERCENT                            :Os intervalos de manutenção são em percentagem: {STRING}
-STR_CONFIG_SETTING_SERVINT_ISPERCENT_HELPTEXT                   :Quando ativado, os veículos procuram fazer a manutenção quando sua fiabilidade reduz para uma determinada percentagem da fiabilidade máxima.{}{}Por exemplo, se a fiabilidade máxima de um veículo for 90% e o intervalo de manutenção for 20%, o veículo tentará fazer a manutenção quando atinge 72% de fiabilidade.
+STR_CONFIG_SETTING_SERVINT_ISPERCENT_HELPTEXT                   :Quando ativado, os veículos procuram fazer a manutenção quando sua fiabilidade reduz para uma determinada percentagem da fiabilidade máxima.{}{}Por exemplo, se a fiabilidade máxima de um veículo for 90% e o intervalo de manutenção for 20%, o veículo tentará fazer a manutenção quando atinge 72% de fiabilidade
 
 STR_CONFIG_SETTING_SERVINT_TRAINS                               :Intervalo de serviço para comboios por omissão: {STRING}
 STR_CONFIG_SETTING_SERVINT_TRAINS_HELPTEXT                      :Definir o intervalo de manutenção por omissão para novos veículos sobre carris, se não for configurado um intervalo de manutenção explícito para o veículo
@@ -1841,7 +1841,7 @@ STR_CONFIG_SETTING_NOSERVICE                                    :Não fazer manu
 STR_CONFIG_SETTING_NOSERVICE_HELPTEXT                           :Quando ativo, os veículos não farão manutenção se não puderem avariar
 
 STR_CONFIG_SETTING_STATION_LENGTH_LOADING_PENALTY               :Penalidade de velocidade de carregamento para comboios mais compridos do que a estação: {STRING}
-STR_CONFIG_SETTING_STATION_LENGTH_LOADING_PENALTY_HELPTEXT      :Quando ativo, os comboios que são muito compridos para a estação demoram mais tempo a carregar/encher do que um comboio que caiba na estação. Esta definição não afeta a procura de itinerários.
+STR_CONFIG_SETTING_STATION_LENGTH_LOADING_PENALTY_HELPTEXT      :Quando ativo, os comboios que são muito compridos para a estação demoram mais tempo a carregar do que um comboio que caiba na estação. Esta definição não afeta a procura de itinerários
 
 STR_CONFIG_SETTING_WAGONSPEEDLIMITS                             :Ativar limites de velocidade para vagões: {STRING}
 STR_CONFIG_SETTING_WAGONSPEEDLIMITS_HELPTEXT                    :Quando ativo, aplica também os limites de velocidade dos vagões para decidir a velocidade máxima do comboio
@@ -1906,13 +1906,13 @@ STR_CONFIG_SETTING_COLOURED_NEWS_YEAR_HELPTEXT                  :Ano em que os a
 STR_CONFIG_SETTING_STARTING_YEAR                                :Data de início: {STRING}
 
 STR_CONFIG_SETTING_ENDING_YEAR                                  :Ano final de pontuação: {STRING}
-STR_CONFIG_SETTING_ENDING_YEAR_HELPTEXT                         :Ano em que o jogo termina para fins de pontuação. No final deste ano, a pontuação da empresa é registada e a tabela de pontuação máxima é exibida, mas os jogadores podem continuar a jogar depois disso.{} Se isto for antes do ano inicial, a tabela de pontuação máxima nunca será exibida.
+STR_CONFIG_SETTING_ENDING_YEAR_HELPTEXT                         :Ano em que o jogo termina para fins de pontuação. No final deste ano, a pontuação da empresa é registada e a tabela de pontuação máxima é exibida, mas os jogadores podem continuar a jogar depois disso.{} Se isto for antes do ano inicial, a tabela de pontuação máxima nunca será exibida
 STR_CONFIG_SETTING_ENDING_YEAR_VALUE                            :{NUM}
 ###setting-zero-is-special
 STR_CONFIG_SETTING_ENDING_YEAR_ZERO                             :Nunca
 
 STR_CONFIG_SETTING_ECONOMY_TYPE                                 :Tipo de economia: {STRING}
-STR_CONFIG_SETTING_ECONOMY_TYPE_HELPTEXT                        :A economia suave faz mudanças na produção com mais frequência e em etapas menores. Economia congelada impede mudanças de produção e fechamentos de indústrias. Esta configuração pode não ter efeito se os tipos de indústria forem fornecidos por um NewGRF.
+STR_CONFIG_SETTING_ECONOMY_TYPE_HELPTEXT                        :A economia suave faz mudanças na produção com mais frequência e em etapas menores. Economia congelada impede mudanças de produção e fechamentos de indústrias. Esta configuração poderá não ter efeito se os tipos de indústria forem fornecidos por um NewGRF
 ###length 3
 STR_CONFIG_SETTING_ECONOMY_TYPE_ORIGINAL                        :Original
 STR_CONFIG_SETTING_ECONOMY_TYPE_SMOOTH                          :Suave
@@ -1967,7 +1967,7 @@ STR_CONFIG_SETTING_TOWN_FOUNDING_ALLOWED                        :Permitido
 STR_CONFIG_SETTING_TOWN_FOUNDING_ALLOWED_CUSTOM_LAYOUT          :Permitido, estrutura personalizada da localidade
 
 STR_CONFIG_SETTING_TOWN_CARGOGENMODE                            :Geração de carga citadina: {STRING}
-STR_CONFIG_SETTING_TOWN_CARGOGENMODE_HELPTEXT                   :Quantidade de carga produzida por casas em localidades, relativa à população total da mesma.{}Crescimento quadrático: Uma localidade do dobro do tamanho gera 4x mais passageiros.{}Crescimento linear: Uma localidade do dobro do tamanho gera 2x a quantidade de passageiros.
+STR_CONFIG_SETTING_TOWN_CARGOGENMODE_HELPTEXT                   :Quantidade de carga produzida por casas em localidades, relativa à população total da mesma.{}Crescimento quadrático: Uma localidade do dobro do tamanho gera quatro vezes mais passageiros.{}Crescimento linear: Uma localidade do dobro do tamanho gera duas vezes a quantidade de passageiros
 ###length 2
 STR_CONFIG_SETTING_TOWN_CARGOGENMODE_ORIGINAL                   :Quadrático (original)
 STR_CONFIG_SETTING_TOWN_CARGOGENMODE_BITCOUNT                   :Linear
@@ -2008,7 +2008,7 @@ STR_CONFIG_SETTING_ZOOM_LVL_OUT_4X                              :4x
 STR_CONFIG_SETTING_ZOOM_LVL_OUT_8X                              :8x
 
 STR_CONFIG_SETTING_SPRITE_ZOOM_MIN                              :Resolução máxima de "sprites" a usar: {STRING}
-STR_CONFIG_SETTING_SPRITE_ZOOM_MIN_HELPTEXT                     :Limita a resolução máxima a ser usada para "sprites". Limitar a resolução dos "sprites" evitará o uso de gráficos de alta resolução, mesmo quando disponíveis. Isto pode ajudar a manter a aparência do jogo unificada ao usar uma combinação de ficheiros GRF com e sem gráficos de alta resolução.
+STR_CONFIG_SETTING_SPRITE_ZOOM_MIN_HELPTEXT                     :Limita a resolução máxima a ser usada para sprites. Limitar a resolução dos sprites evitará o uso de gráficos de alta resolução, mesmo quando disponíveis. Isto pode ajudar a manter a aparência do jogo unificada ao usar uma combinação de ficheiros GRF com e sem gráficos de alta resolução
 ###length 3
 STR_CONFIG_SETTING_SPRITE_ZOOM_LVL_MIN                          :4x
 STR_CONFIG_SETTING_SPRITE_ZOOM_LVL_IN_2X                        :2x
@@ -2032,33 +2032,33 @@ STR_CONFIG_SETTING_CITY_SIZE_MULTIPLIER                         :Multiplicador i
 STR_CONFIG_SETTING_CITY_SIZE_MULTIPLIER_HELPTEXT                :Tamanho relativo das cidades em relação ao tamanho normal das localidades aquando o início do jogo
 
 STR_CONFIG_SETTING_LINKGRAPH_RECALC_INTERVAL                    :Atualizar o gráfico de distribuição a cada {STRING}
-STR_CONFIG_SETTING_LINKGRAPH_RECALC_INTERVAL_HELPTEXT           :Tempo de intervalo entre recalculos subsequentes do gráfico de ligações. Cada recalculo calcula os planos para um componente do gráfico. Isso significa que um valor X para esta configuração não significa que todo o gráfico será atualizado a cada X segundos. Apenas algum componente será. Quanto mais curto escolher, mais tempo de CPU será necessário para calcular. Quanto mais tempo for definido, mais tempo levará até que a distribuição de carga inicie nas novas rotas.
+STR_CONFIG_SETTING_LINKGRAPH_RECALC_INTERVAL_HELPTEXT           :Tempo de intervalo entre recalculos subsequentes do gráfico de ligações. Cada recalculo calcula os planos para um componente do gráfico. Isso significa que um valor X para esta configuração não significa que todo o gráfico será atualizado a cada X segundos. Apenas algum componente será. Quanto mais curto escolher, mais tempo de CPU será necessário para calcular. Quanto mais tempo for definido, mais tempo levará até que a distribuição de carga inicie nas novas rotas
 STR_CONFIG_SETTING_LINKGRAPH_RECALC_TIME                        :Usar {STRING} para recalcular o gráfico de distribuição
-STR_CONFIG_SETTING_LINKGRAPH_RECALC_TIME_HELPTEXT               :Tempo gasto para cada recalculo de um componente de gráfico de ligação. Quando um recalculo é iniciado, um encadeamento é gerado e pode ser executado nesse número de segundos. Quanto mais curto você definir, mais provável será que o encadeamento não seja concluído quando deveria. Então o jogo pára até que seja ("lag"). Quanto mais tempo você definir, mais tempo levará para a distribuição ser atualizada quando as rotas mudarem.
+STR_CONFIG_SETTING_LINKGRAPH_RECALC_TIME_HELPTEXT               :Tempo gasto para cada recalculo de um componente de gráfico de ligação. Quando um recalculo é iniciado, um encadeamento é gerado e pode ser executado nesse número de segundos. Quanto mais curto você definir, mais provável será que o encadeamento não seja concluído quando deveria. Então o jogo para até que aconteça ("lag"). Quanto mais tempo você definir, mais tempo levará para a distribuição ser atualizada quando as rotas mudarem
 
 STR_CONFIG_SETTING_DISTRIBUTION_PAX                             :Modo de distribuição para os passageiros: {STRING}
-STR_CONFIG_SETTING_DISTRIBUTION_PAX_HELPTEXT                    :"Simétrico" significa que aproximadamente o mesmo numero de passageiros irá de uma estação A para uma estação B e de B para A. "Assimétrico" significa que um numero arbitrário de passageiros poderá seguir em qualquer direção. "Manual" significa que nenhuma distribuição automática terá lugar para passageiros.
+STR_CONFIG_SETTING_DISTRIBUTION_PAX_HELPTEXT                    :"Simétrico" significa que aproximadamente o mesmo numero de passageiros irá de uma estação A para uma estação B e de B para A. "Assimétrico" significa que um numero arbitrário de passageiros poderá seguir em qualquer direção. "Manual" significa que nenhuma distribuição automática terá lugar para passageiros
 STR_CONFIG_SETTING_DISTRIBUTION_MAIL                            :Modo de distribuição para o correio: {STRING}
-STR_CONFIG_SETTING_DISTRIBUTION_MAIL_HELPTEXT                   :"Simétrico" significa que aproximadamente a mesma quantidade de correio será enviada de uma estação A para a estação B assim como de B para A. "Assimétrico" significa que uma quantidade arbitrária de correio poderá ser enviada em qualquer direção. "Manual" significa que nenhuma distribuição automática terá lugar para o correio.
+STR_CONFIG_SETTING_DISTRIBUTION_MAIL_HELPTEXT                   :"Simétrico" significa que aproximadamente a mesma quantidade de correio será enviada de uma estação A para a estação B assim como de B para A. "Assimétrico" significa que uma quantidade arbitrária de correio poderá ser enviada em qualquer direção. "Manual" significa que nenhuma distribuição automática terá lugar para o correio
 STR_CONFIG_SETTING_DISTRIBUTION_ARMOURED                        :Modo de distribuição para a classe de carga ARMOURED: {STRING}
-STR_CONFIG_SETTING_DISTRIBUTION_ARMOURED_HELPTEXT               :A classe de carga "ARMOURED" (Blindado) contém valores no clima temperado, diamantes no tropical ou ouro no ártico. Os NewGRFs podem mudar isto. "Simétrico" significa que aproximadamente a mesma quantidade de carga será enviada da estação A para a estação B assim como da B para a A. "Assimétrico" significa que quantidades arbitrárias dessa carga podem ser enviadas em qualquer direção. "Manual" significa que nenhuma distribuição automática ocorrerá para essa carga. Recomenda-se que seja definido para assimétrico ou manual quando a jogar no ártico ou no tropical, pois os bancos nesses climas só recebem mercadorias. Para o temperado pode ser também escolhido simétrico pois os bancos irão remeter valores ao banco de origem.
+STR_CONFIG_SETTING_DISTRIBUTION_ARMOURED_HELPTEXT               :A classe de carga BLINDADA contém valores no clima temperado, diamantes no tropical ou ouro no ártico. Os NewGRFs podem mudar isto. "Simétrico" significa que aproximadamente a mesma quantidade de carga será enviada da estação A para a estação B assim como da B para a A. "Assimétrico" significa que quantidades arbitrárias dessa carga podem ser enviadas em qualquer direção. "Manual" significa que nenhuma distribuição automática ocorrerá para essa carga. Recomenda-se que seja definido para assimétrico ou manual quando a jogar no ártico ou no tropical, pois os bancos nesses climas só recebem mercadorias. Para o temperado pode ser também escolhido simétrico pois os bancos irão remeter valores ao banco de origem
 STR_CONFIG_SETTING_DISTRIBUTION_DEFAULT                         :Modo de distribuição para outras classes de carga: {STRING}
-STR_CONFIG_SETTING_DISTRIBUTION_DEFAULT_HELPTEXT                :"Assimétrico" significa que quantidades arbitrárias de carga podem ser enviadas em qualquer direção. "Manual" significa que nenhuma distribuição automática ocorrerá para essas cargas.
+STR_CONFIG_SETTING_DISTRIBUTION_DEFAULT_HELPTEXT                :"Assimétrico" significa que quantidades arbitrárias de carga podem ser enviadas em qualquer direção. "Manual" significa que nenhuma distribuição automática ocorrerá para essas cargas
 ###length 3
 STR_CONFIG_SETTING_DISTRIBUTION_MANUAL                          :manual
 STR_CONFIG_SETTING_DISTRIBUTION_ASYMMETRIC                      :asimétrico
 STR_CONFIG_SETTING_DISTRIBUTION_SYMMETRIC                       :simétrico
 
 STR_CONFIG_SETTING_LINKGRAPH_ACCURACY                           :Precisão de distribuição: {STRING}
-STR_CONFIG_SETTING_LINKGRAPH_ACCURACY_HELPTEXT                  :Quanto mais alto o definir, mais tempo o CPU demorará a calcular o gráfico de ligações. Se demorar muito poderá notar-se algum lag. Se no entanto for definido um valor reduzido a distribuição será imprecisa, e poderá verificar cargas não serem entregues onde seriam esperadas.
+STR_CONFIG_SETTING_LINKGRAPH_ACCURACY_HELPTEXT                  :Quanto mais alto o definir, mais tempo o CPU demorará a calcular o gráfico de ligações. Se demorar muito poderá notar-se algum lag. Se no entanto for definido um valor reduzido a distribuição será imprecisa, e poderá verificar cargas não serem entregues onde seriam esperadas
 
 STR_CONFIG_SETTING_DEMAND_DISTANCE                              :Efeito de distância nos pedidos: {STRING}
-STR_CONFIG_SETTING_DEMAND_DISTANCE_HELPTEXT                     :Se definir para um valor maior que 0, a distância entre a estação de origem A para alguma carga e um possível destino B terá um efeito na quantidade de carga transportada de A para B. Quanto maior a distância de B para A, menos carga será enviada. Quanto maior o valor definido, menos carga será transportada para estações distantes, e mais carga será levada para estações próximas.
+STR_CONFIG_SETTING_DEMAND_DISTANCE_HELPTEXT                     :Se definir para um valor maior que 0, a distância entre a estação de origem A para alguma carga e um possível destino B terá um efeito na quantidade de carga transportada de A para B. Quanto maior a distância de B para A, menos carga será enviada. Quanto maior o valor definido, menos carga será transportada para estações distantes, e mais carga será levada para estações próximas
 STR_CONFIG_SETTING_DEMAND_SIZE                                  :Quantidade de carga a regressar para o modo simétrico: {STRING}
-STR_CONFIG_SETTING_DEMAND_SIZE_HELPTEXT                         :Definir isto para menos de 100% torna a distribuição simétrica reagir mais como a assimétrica. Menos carga será forçada a ser devolvida se uma determinada quantidade for enviada para uma estação. Se for definido para 0% a distribuição simétrica irá reagir como a assimétrica.
+STR_CONFIG_SETTING_DEMAND_SIZE_HELPTEXT                         :Definir isto para menos de 100% torna a distribuição simétrica reagir mais como a assimétrica. Menos carga será forçada a ser devolvida se uma determinada quantidade for enviada para uma estação. Se for definido para 0% a distribuição simétrica irá reagir como a assimétrica
 
 STR_CONFIG_SETTING_SHORT_PATH_SATURATION                        :Saturação de percursos curtos antes de usar percursos de grande capacidade: {STRING}
-STR_CONFIG_SETTING_SHORT_PATH_SATURATION_HELPTEXT               :Frequentemente existem múltiplos trajectos entre duas estações. Cargodist irá saturar o trajecto mais curto primeiro, depois usar o segundo trajecto mais curto até o saturar, e assim por diante. A saturação é determinada pelo estimativa da capacidade do uso planeado. Ao saturar todos os caminhos, se ainda existir procura, irá sobrecarregar todos os trajectos, com preferência pelos de maior capacidade. No entanto, grande parte das vezes o algoritmo não irá estimar correctamente a capacidade. Esta configuração permite definir até que percentagem um trajecto mais curto deverá ser saturado na primeira passagem antes do algoritmo proceder ao próximo. Defina-o para menos de 100% para evitar estações sobrecarregadas no caso de capacidade super-estimada.
+STR_CONFIG_SETTING_SHORT_PATH_SATURATION_HELPTEXT               :Frequentemente existem múltiplos trajectos entre duas estações. Cargodist irá saturar o trajecto mais curto primeiro, depois usar o segundo trajecto mais curto até o saturar, e assim por diante. A saturação é determinada pelo estimativa da capacidade do uso planeado. Ao saturar todos os caminhos, se ainda existir procura, irá sobrecarregar todos os trajectos, com preferência pelos de maior capacidade. No entanto, grande parte das vezes o algoritmo não irá estimar correctamente a capacidade. Esta configuração permite definir até que percentagem um trajecto mais curto deverá ser saturado na primeira passagem antes do algoritmo proceder ao próximo. Defina-o para menos de 100% para evitar estações sobrecarregadas no caso de capacidade super-estimada
 
 STR_CONFIG_SETTING_LOCALISATION_UNITS_VELOCITY                  :Unidades de velocidade (terrestre): {STRING}
 STR_CONFIG_SETTING_LOCALISATION_UNITS_VELOCITY_NAUTICAL         :Unidades de velocidade (náutica): {STRING}
@@ -2980,11 +2980,11 @@ STR_TREES_RANDOM_TYPE_TOOLTIP                                   :{BLACK}Plantar 
 STR_TREES_RANDOM_TREES_BUTTON                                   :{BLACK}Plantar aleatoriamente
 STR_TREES_RANDOM_TREES_TOOLTIP                                  :{BLACK}Plantar árvores aleatoriamente no terreno
 STR_TREES_MODE_NORMAL_BUTTON                                    :{BLACK}Normal
-STR_TREES_MODE_NORMAL_TOOLTIP                                   :{BLACK}Plante árvores isoladas arrastando-as pela paisagem.
+STR_TREES_MODE_NORMAL_TOOLTIP                                   :{BLACK}Plantar árvores isoladas arrastando-as pela paisagem
 STR_TREES_MODE_FOREST_SM_BUTTON                                 :{BLACK}Arvoredo
-STR_TREES_MODE_FOREST_SM_TOOLTIP                                :{BLACK}Plantar florestas pequenas ao arrastar pelo terreno.
+STR_TREES_MODE_FOREST_SM_TOOLTIP                                :{BLACK}Plantar florestas pequenas ao arrastar pelo terreno
 STR_TREES_MODE_FOREST_LG_BUTTON                                 :{BLACK}Floresta
-STR_TREES_MODE_FOREST_LG_TOOLTIP                                :{BLACK}Plantar florestas grandes ao arrastar pelo terreno.
+STR_TREES_MODE_FOREST_LG_TOOLTIP                                :{BLACK}Plantar florestas grandes ao arrastar pelo terreno
 
 # Land generation window (SE)
 STR_TERRAFORM_TOOLBAR_LAND_GENERATION_CAPTION                   :{WHITE}Gerar Terreno
@@ -3199,11 +3199,11 @@ STR_ABOUT_COPYRIGHT_OPENTTD                                     :{BLACK}OpenTTD 
 STR_FRAMERATE_CAPTION                                           :{WHITE}Taxa de fotogramas
 STR_FRAMERATE_CAPTION_SMALL                                     :{STRING}{WHITE} ({DECIMAL}x)
 STR_FRAMERATE_RATE_GAMELOOP                                     :{BLACK}Taxa de simulação: {STRING}
-STR_FRAMERATE_RATE_GAMELOOP_TOOLTIP                             :{BLACK}Numero de quantidades de atraso no percurso simulados por segundo.
+STR_FRAMERATE_RATE_GAMELOOP_TOOLTIP                             :{BLACK}Número de tiques simulados por segundo
 STR_FRAMERATE_RATE_BLITTER                                      :{BLACK}Taxa de fotogramas dos gráficos: {STRING}
-STR_FRAMERATE_RATE_BLITTER_TOOLTIP                              :{BLACK}Número de fotogramas de video renderizados por segundo.
+STR_FRAMERATE_RATE_BLITTER_TOOLTIP                              :{BLACK}Número de fotogramas de video renderizados por segundo
 STR_FRAMERATE_SPEED_FACTOR                                      :{BLACK}Factor de velocidade actual do jogo: {DECIMAL}x
-STR_FRAMERATE_SPEED_FACTOR_TOOLTIP                              :{BLACK}Quão rápido o jogo está a ser executado, comparado com a velocidade esperada na taxa de simulação normal.
+STR_FRAMERATE_SPEED_FACTOR_TOOLTIP                              :{BLACK}Quão rápido o jogo está a ser executado, comparado com a velocidade esperada na taxa de simulação normal
 STR_FRAMERATE_CURRENT                                           :{WHITE}Actual
 STR_FRAMERATE_AVERAGE                                           :{WHITE}Média
 STR_FRAMERATE_MEMORYUSE                                         :{WHITE}Memória
@@ -3732,7 +3732,7 @@ STR_STORY_BOOK_SPECTATOR_CAPTION                                :{WHITE}Livro de
 STR_STORY_BOOK_SPECTATOR                                        :Livro de Histórico Global
 STR_STORY_BOOK_TITLE                                            :{YELLOW}{STRING}
 STR_STORY_BOOK_GENERIC_PAGE_ITEM                                :Página nº {NUM}
-STR_STORY_BOOK_SEL_PAGE_TOOLTIP                                 :{BLACK}Saltar para uma pagina especifica escolhendo-a nesta lista.
+STR_STORY_BOOK_SEL_PAGE_TOOLTIP                                 :{BLACK}Saltar para uma pagina especifica escolhendo-a nesta lista
 STR_STORY_BOOK_PREV_PAGE                                        :{BLACK}Anterior
 STR_STORY_BOOK_PREV_PAGE_TOOLTIP                                :{BLACK}Ir para a página anterior
 STR_STORY_BOOK_NEXT_PAGE                                        :{BLACK}Próxima
@@ -4027,12 +4027,12 @@ STR_GROUP_DEFAULT_AIRCRAFTS                                     :Aeronaves sem g
 
 STR_GROUP_COUNT_WITH_SUBGROUP                                   :{TINY_FONT}{COMMA} (+{COMMA})
 
-STR_GROUPS_CLICK_ON_GROUP_FOR_TOOLTIP                           :{BLACK}Grupos - clique num grupo para listar todos os veículos contidos
+STR_GROUPS_CLICK_ON_GROUP_FOR_TOOLTIP                           :{BLACK}Grupos - Clique em um grupo para listar todos os veículos do grupo. Clique+Arraste para organizar a hierarquia
 STR_GROUP_CREATE_TOOLTIP                                        :{BLACK}Clique para criar um grupo
 STR_GROUP_DELETE_TOOLTIP                                        :{BLACK}Remover o grupo seleccionado
 STR_GROUP_RENAME_TOOLTIP                                        :{BLACK}Mudar o nome do grupo seleccionado
 STR_GROUP_LIVERY_TOOLTIP                                        :{BLACK}Alterar a imagem do grupo selecionado
-STR_GROUP_REPLACE_PROTECTION_TOOLTIP                            :{BLACK}Clique para proteger este grupo da auto-substituição global. Ctrl+Clique para proteger também sub-grupos.
+STR_GROUP_REPLACE_PROTECTION_TOOLTIP                            :{BLACK}Clique para proteger este grupo da auto-substituição global. Ctrl+Clique para proteger também sub-grupos
 
 STR_QUERY_GROUP_DELETE_CAPTION                                  :{WHITE}Apagar Grupo
 STR_GROUP_DELETE_QUERY_TEXT                                     :{WHITE}Tem a certeza de que quer apagar este grupo e quaisquer descendentes?

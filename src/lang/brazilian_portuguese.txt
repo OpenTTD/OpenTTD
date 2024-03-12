@@ -50,7 +50,7 @@ STR_CARGO_PLURAL_RUBBER                                         :Borracha
 STR_CARGO_PLURAL_SUGAR                                          :Açúcar
 STR_CARGO_PLURAL_TOYS                                           :Brinquedos
 STR_CARGO_PLURAL_SWEETS                                         :Doces
-STR_CARGO_PLURAL_COLA                                           :Bebida de Cola
+STR_CARGO_PLURAL_COLA                                           :Xarope de Cola
 STR_CARGO_PLURAL_CANDYFLOSS                                     :Algodão Doce
 STR_CARGO_PLURAL_BUBBLES                                        :Bolhas
 STR_CARGO_PLURAL_TOFFEE                                         :Caramelo
@@ -84,7 +84,7 @@ STR_CARGO_SINGULAR_RUBBER                                       :Borracha
 STR_CARGO_SINGULAR_SUGAR                                        :Açúcar
 STR_CARGO_SINGULAR_TOY                                          :Brinquedo
 STR_CARGO_SINGULAR_SWEETS                                       :Doce
-STR_CARGO_SINGULAR_COLA                                         :Bebida de Cola
+STR_CARGO_SINGULAR_COLA                                         :Xarope de Cola
 STR_CARGO_SINGULAR_CANDYFLOSS                                   :Algodão Doce
 STR_CARGO_SINGULAR_BUBBLE                                       :Bolha
 STR_CARGO_SINGULAR_TOFFEE                                       :Caramelo
@@ -118,7 +118,7 @@ STR_QUANTITY_RUBBER                                             :{VOLUME_LONG} d
 STR_QUANTITY_SUGAR                                              :{WEIGHT_LONG} de açúcar
 STR_QUANTITY_TOYS                                               :{COMMA}{NBSP}brinquedo{P "" s}
 STR_QUANTITY_SWEETS                                             :{COMMA}{NBSP}saco{P "" s} de doces
-STR_QUANTITY_COLA                                               :{VOLUME_LONG} de bebida de Cola
+STR_QUANTITY_COLA                                               :{VOLUME_LONG} de xarope de Cola
 STR_QUANTITY_CANDYFLOSS                                         :{WEIGHT_LONG} de algodão doce
 STR_QUANTITY_BUBBLES                                            :{COMMA} bolha{P "" s}
 STR_QUANTITY_TOFFEE                                             :{WEIGHT_LONG} de caramelo
@@ -290,7 +290,7 @@ STR_TOOLTIP_RESIZE                                              :{BLACK}Clique e
 STR_TOOLTIP_TOGGLE_LARGE_SMALL_WINDOW                           :{BLACK}Alternar entre janela grande/pequena
 STR_TOOLTIP_VSCROLL_BAR_SCROLLS_LIST                            :{BLACK}Barra de rolagem - desloca a lista para cima/baixo
 STR_TOOLTIP_HSCROLL_BAR_SCROLLS_LIST                            :{BLACK}Barra de rolagem - desloca a lista para a esquerda/direita
-STR_TOOLTIP_DEMOLISH_BUILDINGS_ETC                              :{BLACK}Demolir construções, etc. em um quadrado do terreno. Ctrl+Clique+Arraste para selecionar a área diagonalmente. Pressione também Shift para apenas mostrar o custo estimado
+STR_TOOLTIP_DEMOLISH_BUILDINGS_ETC                              :{BLACK}Demolir construções, etc. em um quadrado do terreno. Ctrl+Clique+Arraste para selecionar a área diagonalmente. Pressione também Shift para só mostrar o custo estimado
 
 # Show engines button
 ###length VEHICLE_TYPES
@@ -380,7 +380,7 @@ STR_GOTO_ORDER_VIEW_TOOLTIP                                     :{BLACK}Abrir a 
 
 # Tooltips for the main toolbar
 ###length 31
-STR_TOOLBAR_TOOLTIP_PAUSE_GAME                                  :{BLACK}Pausar jogo
+STR_TOOLBAR_TOOLTIP_PAUSE_GAME                                  :{BLACK}Pausar o jogo
 STR_TOOLBAR_TOOLTIP_FORWARD                                     :{BLACK}Avanço rápido do jogo
 STR_TOOLBAR_TOOLTIP_OPTIONS                                     :{BLACK}Opções e configurações
 STR_TOOLBAR_TOOLTIP_SAVE_GAME_ABANDON_GAME                      :{BLACK}Salvar, abrir ou abandonar jogo, sair do programa
@@ -425,9 +425,9 @@ STR_SCENEDIT_TOOLBAR_TOWN_GENERATION                            :{BLACK}Construi
 STR_SCENEDIT_TOOLBAR_INDUSTRY_GENERATION                        :{BLACK}Construir ou gerar indústrias
 STR_SCENEDIT_TOOLBAR_ROAD_CONSTRUCTION                          :{BLACK}Construir infraestrutura rodoviária
 STR_SCENEDIT_TOOLBAR_TRAM_CONSTRUCTION                          :{BLACK}Construir infraestrutura para bondes
-STR_SCENEDIT_TOOLBAR_PLANT_TREES                                :{BLACK}Plantar árvores. Ctrl+Clique+Arraste para selecionar a área diagonalmente. Pressione também Shift para apenas mostrar o custo estimado
+STR_SCENEDIT_TOOLBAR_PLANT_TREES                                :{BLACK}Plantar árvores. Ctrl+Clique+Arraste para selecionar a área diagonalmente. Pressione também Shift para só mostrar o custo estimado
 STR_SCENEDIT_TOOLBAR_PLACE_SIGN                                 :{BLACK}Colocar placa
-STR_SCENEDIT_TOOLBAR_PLACE_OBJECT                               :{BLACK}Colocar objeto. Ctrl+Clique+Arraste para selecionar a área diagonalmente. Pressione também Shift para apenas mostrar o custo estimado
+STR_SCENEDIT_TOOLBAR_PLACE_OBJECT                               :{BLACK}Colocar objeto. Ctrl+Clique+Arraste para selecionar a área diagonalmente. Pressione também Shift para só mostrar o custo estimado
 
 # Scenario editor file menu
 ###length 7
@@ -479,7 +479,7 @@ STR_SUBSIDIES_MENU_SUBSIDIES                                    :Subsídios
 
 # Graph menu
 STR_GRAPH_MENU_OPERATING_PROFIT_GRAPH                           :Gráfico do lucro operacional
-STR_GRAPH_MENU_INCOME_GRAPH                                     :Gráfico das receitas
+STR_GRAPH_MENU_INCOME_GRAPH                                     :Gráfico de rendimentos
 STR_GRAPH_MENU_DELIVERED_CARGO_GRAPH                            :Gráfico das cargas entregues
 STR_GRAPH_MENU_PERFORMANCE_HISTORY_GRAPH                        :Gráfico do histórico de desempenho
 STR_GRAPH_MENU_COMPANY_VALUE_GRAPH                              :Gráfico do valor da empresa
@@ -606,8 +606,8 @@ STR_GRAPH_X_LABEL_MONTH_YEAR                                    :{TINY_FONT}{STR
 STR_GRAPH_Y_LABEL                                               :{TINY_FONT}{STRING}
 STR_GRAPH_Y_LABEL_NUMBER                                        :{TINY_FONT}{COMMA}
 
-STR_GRAPH_OPERATING_PROFIT_CAPTION                              :{WHITE}Gráfico de Lucro Operacional
-STR_GRAPH_INCOME_CAPTION                                        :{WHITE}Gráfico de Receitas
+STR_GRAPH_OPERATING_PROFIT_CAPTION                              :{WHITE}Gráfico do Lucro Operacional
+STR_GRAPH_INCOME_CAPTION                                        :{WHITE}Gráfico de Rendimentos
 STR_GRAPH_CARGO_DELIVERED_CAPTION                               :{WHITE}Unidades de carga entregues
 STR_GRAPH_COMPANY_PERFORMANCE_RATINGS_CAPTION                   :{WHITE}Classificações do desempenho da empresa (máximo=1000)
 STR_GRAPH_COMPANY_VALUES_CAPTION                                :{WHITE}Gráfico de Valor da Empresa
@@ -657,8 +657,8 @@ STR_PERFORMANCE_DETAIL_SELECT_COMPANY_TOOLTIP                   :{BLACK}Ver deta
 STR_PERFORMANCE_DETAIL_VEHICLES                                 :{BLACK}Veículos:
 STR_PERFORMANCE_DETAIL_STATIONS                                 :{BLACK}Estações:
 STR_PERFORMANCE_DETAIL_MIN_PROFIT                               :{BLACK}Lucro mín.:
-STR_PERFORMANCE_DETAIL_MIN_INCOME                               :{BLACK}Receita mín.:
-STR_PERFORMANCE_DETAIL_MAX_INCOME                               :{BLACK}Receita máx.:
+STR_PERFORMANCE_DETAIL_MIN_INCOME                               :{BLACK}Renda mín.:
+STR_PERFORMANCE_DETAIL_MAX_INCOME                               :{BLACK}Renda máx.:
 STR_PERFORMANCE_DETAIL_DELIVERED                                :{BLACK}Entregue:
 STR_PERFORMANCE_DETAIL_CARGO                                    :{BLACK}Carga:
 STR_PERFORMANCE_DETAIL_MONEY                                    :{BLACK}Dinheiro:
@@ -877,12 +877,12 @@ STR_NEWS_END_OF_RECESSION                                       :{BIG_FONT}{BLAC
 
 STR_NEWS_INDUSTRY_PRODUCTION_INCREASE_GENERAL                   :{BIG_FONT}{BLACK}{INDUSTRY} aumenta a produção!
 STR_NEWS_INDUSTRY_PRODUCTION_INCREASE_COAL                      :{BIG_FONT}{BLACK}Nova camada de carvão encontrada na {INDUSTRY}!{}A produção deverá duplicar!
-STR_NEWS_INDUSTRY_PRODUCTION_INCREASE_OIL                       :{BIG_FONT}{BLACK}Novas reservas de petróleo encontradas {G nos na} {INDUSTRY}!{}A produção deverá duplicar!
+STR_NEWS_INDUSTRY_PRODUCTION_INCREASE_OIL                       :{BIG_FONT}{BLACK}Novas reservas de petróleo encontradas n{G o a} {INDUSTRY}!{}A produção deverá duplicar!
 STR_NEWS_INDUSTRY_PRODUCTION_INCREASE_FARM                      :{BIG_FONT}{BLACK}Métodos agrícolas aperfeiçoados na {INDUSTRY} deverão duplicar a produção!
-STR_NEWS_INDUSTRY_PRODUCTION_INCREASE_SMOOTH                    :{BIG_FONT}{BLACK}Produção de {STRING} {G nos na} {INDUSTRY} aumenta {COMMA}%!
+STR_NEWS_INDUSTRY_PRODUCTION_INCREASE_SMOOTH                    :{BIG_FONT}{BLACK}Produção de {STRING} n{G o a} {INDUSTRY} aumenta {COMMA}%!
 STR_NEWS_INDUSTRY_PRODUCTION_DECREASE_GENERAL                   :{BIG_FONT}{BLACK}A produção de {INDUSTRY} foi reduzida em 50%
 STR_NEWS_INDUSTRY_PRODUCTION_DECREASE_FARM                      :{BIG_FONT}{BLACK}Infestação de insetos causa destruição {G no na} {INDUSTRY}!{}Produção diminui 50%
-STR_NEWS_INDUSTRY_PRODUCTION_DECREASE_SMOOTH                    :{BIG_FONT}{BLACK}Produção de {STRING} {G nos na} {INDUSTRY} diminui {COMMA}%!
+STR_NEWS_INDUSTRY_PRODUCTION_DECREASE_SMOOTH                    :{BIG_FONT}{BLACK}Produção de {STRING} n{G o a} {INDUSTRY} diminui {COMMA}%!
 
 ###length VEHICLE_TYPES
 STR_NEWS_TRAIN_IS_WAITING                                       :{WHITE}{VEHICLE} está aguardando no depósito
@@ -919,14 +919,14 @@ STR_NEWS_SHOW_VEHICLE_GROUP_TOOLTIP                             :{BLACK}Abrir a 
 STR_NEWS_STATION_NO_LONGER_ACCEPTS_CARGO_LIST                   :{WHITE}{STATION} não aceita mais: {CARGO_LIST}
 STR_NEWS_STATION_NOW_ACCEPTS_CARGO_LIST                         :{WHITE}{STATION} agora aceita: {CARGO_LIST}
 
-STR_NEWS_OFFER_OF_SUBSIDY_EXPIRED                               :{BIG_FONT}{BLACK}Oferta do subsídio expirou:{}{}{STRING} de {STRING} para {STRING} agora não será subsidiado
-STR_NEWS_SUBSIDY_WITHDRAWN_SERVICE                              :{BIG_FONT}{BLACK}Subsídio retirado:{}{}Transportar {STRING} de {STRING} para {STRING} não é mais subsidiado
-STR_NEWS_SERVICE_SUBSIDY_OFFERED                                :{BIG_FONT}{BLACK}Subsídio de serviço oferecido:{}{}Primeiro transporte de {STRING} de {STRING} para {STRING} irá receber {UNITS_YEARS_OR_MINUTES} de subsídio da autoridade local!
+STR_NEWS_OFFER_OF_SUBSIDY_EXPIRED                               :{BIG_FONT}{BLACK}Oferta do subsídio expirou:{}{}{STRING} d{G o a} {STRING} para {STRING} agora não será subsidiado
+STR_NEWS_SUBSIDY_WITHDRAWN_SERVICE                              :{BIG_FONT}{BLACK}Subsídio retirado:{}{}Transportar {STRING} d{G o a} {STRING} para {STRING} não é mais subsidiado
+STR_NEWS_SERVICE_SUBSIDY_OFFERED                                :{BIG_FONT}{BLACK}Subsídio de serviço oferecido:{}{}Primeiro transporte de {STRING} d{G o a} {STRING} para {STRING} irá receber {UNITS_YEARS_OR_MINUTES} de subsídio da autoridade local!
 ###length 4
-STR_NEWS_SERVICE_SUBSIDY_AWARDED_HALF                           :{BIG_FONT}{BLACK}Subsídio de serviço concedido a {STRING}!{}{}{STRING} de {STRING} para {STRING} será pago a 150% pelos próximos {UNITS_YEARS_OR_MINUTES}!
-STR_NEWS_SERVICE_SUBSIDY_AWARDED_DOUBLE                         :{BIG_FONT}{BLACK}Subsídio de serviço concedido a {STRING}!{}{}{STRING} de {STRING} para {STRING} será pago a 200% pelos próximos {UNITS_YEARS_OR_MINUTES}!
-STR_NEWS_SERVICE_SUBSIDY_AWARDED_TRIPLE                         :{BIG_FONT}{BLACK}Subsídio de serviço concedido a {STRING}!{}{}{STRING} de {STRING} para {STRING} será pago a 300% pelos próximos {UNITS_YEARS_OR_MINUTES}!
-STR_NEWS_SERVICE_SUBSIDY_AWARDED_QUADRUPLE                      :{BIG_FONT}{BLACK}Subsídio de serviço concedido a {STRING}!{}{}{STRING} de {STRING} para {STRING} será pago a 400% pelos próximos {UNITS_YEARS_OR_MINUTES}!
+STR_NEWS_SERVICE_SUBSIDY_AWARDED_HALF                           :{BIG_FONT}{BLACK}Subsídio de serviço concedido a {STRING}!{}{}{STRING} d{G o a} {STRING} para {STRING} será pago a 150% pelos próximos {UNITS_YEARS_OR_MINUTES}!
+STR_NEWS_SERVICE_SUBSIDY_AWARDED_DOUBLE                         :{BIG_FONT}{BLACK}Subsídio de serviço concedido a {STRING}!{}{}{STRING} d{G o a} {STRING} para {STRING} será pago a 200% pelos próximos {UNITS_YEARS_OR_MINUTES}!
+STR_NEWS_SERVICE_SUBSIDY_AWARDED_TRIPLE                         :{BIG_FONT}{BLACK}Subsídio de serviço concedido a {STRING}!{}{}{STRING} d{G o a} {STRING} para {STRING} será pago a 300% pelos próximos {UNITS_YEARS_OR_MINUTES}!
+STR_NEWS_SERVICE_SUBSIDY_AWARDED_QUADRUPLE                      :{BIG_FONT}{BLACK}Subsídio de serviço concedido a {STRING}!{}{}{STRING} d{G o a} {STRING} para {STRING} será pago a 400% pelos próximos {UNITS_YEARS_OR_MINUTES}!
 
 STR_NEWS_ROAD_REBUILDING_MONTHS                                 :{BIG_FONT}{BLACK}Tráfego caótico em {TOWN}!{}{}Programa de reconstrução de estradas financiado por {STRING} provoca 6 meses de sofrimento aos motoristas!
 STR_NEWS_ROAD_REBUILDING_MINUTES                                :{BIG_FONT}{BLACK}Tráfego caótico em {TOWN}!{}{}Programa de reconstrução de estradas financiado por {STRING} provoca 6 minutos de sofrimento aos motoristas!
@@ -945,13 +945,13 @@ STR_EXTRA_VIEW_MOVE_MAIN_TO_VIEW_TT                             :{BLACK}Copiar a
 STR_GAME_OPTIONS_CAPTION                                        :{WHITE}Opções do Jogo
 
 STR_GAME_OPTIONS_TAB_GENERAL                                    :Geral
-STR_GAME_OPTIONS_TAB_GENERAL_TT                                 :{BLACK}Escolher as configurações gerais
+STR_GAME_OPTIONS_TAB_GENERAL_TT                                 :{BLACK}Selecionar as configurações gerais
 STR_GAME_OPTIONS_TAB_GRAPHICS                                   :Gráficos
-STR_GAME_OPTIONS_TAB_GRAPHICS_TT                                :{BLACK}Escolher as configurações gráficas
+STR_GAME_OPTIONS_TAB_GRAPHICS_TT                                :{BLACK}Selecionar as configurações gráficas
 STR_GAME_OPTIONS_TAB_SOUND                                      :Som
-STR_GAME_OPTIONS_TAB_SOUND_TT                                   :{BLACK}Escolher as configurações de sons e música
+STR_GAME_OPTIONS_TAB_SOUND_TT                                   :{BLACK}Selecionar as configurações de sons e música
 STR_GAME_OPTIONS_TAB_SOCIAL                                     :Social
-STR_GAME_OPTIONS_TAB_SOCIAL_TT                                  :{BLACK}Escolher as configurações de integração social
+STR_GAME_OPTIONS_TAB_SOCIAL_TT                                  :{BLACK}Selecionar as configurações de integração social
 
 STR_GAME_OPTIONS_VOLUME                                         :Volume
 STR_GAME_OPTIONS_SFX_VOLUME                                     :Efeitos sonoros
@@ -1000,7 +1000,7 @@ STR_GAME_OPTIONS_CURRENCY_EEK                                   :Coroa Estoniana
 STR_GAME_OPTIONS_CURRENCY_LTL                                   :Litas Lituano
 STR_GAME_OPTIONS_CURRENCY_KRW                                   :Won Sul Coreano
 STR_GAME_OPTIONS_CURRENCY_ZAR                                   :Rand Sul Africano
-STR_GAME_OPTIONS_CURRENCY_CUSTOM                                :Personalizado...
+STR_GAME_OPTIONS_CURRENCY_CUSTOM                                :Personalizada...
 STR_GAME_OPTIONS_CURRENCY_GEL                                   :Lari da Geórgia
 STR_GAME_OPTIONS_CURRENCY_IRR                                   :Rial Iraniano
 STR_GAME_OPTIONS_CURRENCY_RUB                                   :Novo Rublo Russo
@@ -1054,10 +1054,10 @@ STR_GAME_OPTIONS_GUI_SCALE_AUTO_TOOLTIP                         :{BLACK}Marque e
 STR_GAME_OPTIONS_GUI_SCALE_BEVELS                               :{BLACK}Escalar chanfros
 STR_GAME_OPTIONS_GUI_SCALE_BEVELS_TOOLTIP                       :{BLACK}Marque esta caixa para dimensionar os chanfros pelo tamanho de interface
 
-STR_GAME_OPTIONS_GUI_FONT_SPRITE                                :{BLACK}Usar a fonte sprite tradicional
-STR_GAME_OPTIONS_GUI_FONT_SPRITE_TOOLTIP                        :{BLACK}Marque esta caixa se preferir usar o tipo de fonte tradicional de tamanho fixo.
+STR_GAME_OPTIONS_GUI_FONT_SPRITE                                :{BLACK}Usar a fonte fixa tradicional
+STR_GAME_OPTIONS_GUI_FONT_SPRITE_TOOLTIP                        :{BLACK}Marque esta caixa se preferir usar o tipo de fonte tradicional de tamanho fixo
 STR_GAME_OPTIONS_GUI_FONT_AA                                    :{BLACK}Fontes com bordas suaves
-STR_GAME_OPTIONS_GUI_FONT_AA_TOOLTIP                            :{BLACK}Marque esta caixa para fontes redimensionáveis com contornos suaves.
+STR_GAME_OPTIONS_GUI_FONT_AA_TOOLTIP                            :{BLACK}Marque esta caixa para fontes redimensionáveis com contornos suaves
 
 STR_GAME_OPTIONS_GUI_SCALE_1X                                   :1x
 STR_GAME_OPTIONS_GUI_SCALE_2X                                   :2x
@@ -1069,7 +1069,7 @@ STR_GAME_OPTIONS_PARTICIPATE_SURVEY_FRAME                       :{BLACK}Pesquisa
 STR_GAME_OPTIONS_PARTICIPATE_SURVEY                             :{BLACK}Participar de pesquisa automatizada
 STR_GAME_OPTIONS_PARTICIPATE_SURVEY_TOOLTIP                     :{BLACK}Quando ativado, o OpenTTD enviará uma pesquisa ao sair de um jogo
 STR_GAME_OPTIONS_PARTICIPATE_SURVEY_LINK                        :{BLACK}Sobre pesquisa e privacidade
-STR_GAME_OPTIONS_PARTICIPATE_SURVEY_LINK_TOOLTIP                :{BLACK}Isso abre um navegador com mais informações sobre a pesquisa automatizada
+STR_GAME_OPTIONS_PARTICIPATE_SURVEY_LINK_TOOLTIP                :{BLACK}Abrir um navegador com mais informações sobre a pesquisa automatizada
 STR_GAME_OPTIONS_PARTICIPATE_SURVEY_PREVIEW                     :{BLACK}Pré-visualizar resultado da pesquisa
 STR_GAME_OPTIONS_PARTICIPATE_SURVEY_PREVIEW_TOOLTIP             :{BLACK}Mostrar o resultado da pesquisa do jogo atual em execução
 
@@ -1219,7 +1219,7 @@ STR_CONFIG_SETTING_NO_EXPLANATION_AVAILABLE_HELPTEXT            :(sem explicaç�
 STR_CONFIG_SETTING_VALUE                                        :{PUSH_COLOUR}{ORANGE}{STRING}{POP_COLOUR}
 STR_CONFIG_SETTING_DEFAULT_VALUE                                :{LTBLUE}Valor padrão: {ORANGE}{STRING}
 STR_CONFIG_SETTING_TYPE                                         :{LTBLUE}Tipo de configuração: {ORANGE}{STRING}
-STR_CONFIG_SETTING_TYPE_CLIENT                                  :Configuração do cliente (não é armazenada em jogos salvos; afeta todos os jogos)
+STR_CONFIG_SETTING_TYPE_CLIENT                                  :Configuração do cliente (não é armazenada no jogo salvo; afeta todos os jogos)
 STR_CONFIG_SETTING_TYPE_GAME_MENU                               :Configuração do jogo (armazenada no jogo salvo; só afeta novos jogos)
 STR_CONFIG_SETTING_TYPE_GAME_INGAME                             :Configuração do jogo (armazenada no jogo salvo; só afeta o jogo atual)
 STR_CONFIG_SETTING_TYPE_COMPANY_MENU                            :Configuração da empresa (armazenada no jogo salvo; só afeta novos jogos)
@@ -1238,7 +1238,7 @@ STR_CONFIG_SETTING_RESTRICT_CHANGED_AGAINST_NEW                 :Configurações
 
 STR_CONFIG_SETTING_TYPE_DROPDOWN_HELPTEXT                       :{BLACK}Restringe a lista abaixo a determinados tipos
 STR_CONFIG_SETTING_TYPE_DROPDOWN_ALL                            :Todos os tipos de configuração
-STR_CONFIG_SETTING_TYPE_DROPDOWN_CLIENT                         :Configuração do cliente (não armazenada no jogo salvo; afeta todos os jogos)
+STR_CONFIG_SETTING_TYPE_DROPDOWN_CLIENT                         :Configuração do cliente (não é armazenada no jogo salvo; afeta todos os jogos)
 STR_CONFIG_SETTING_TYPE_DROPDOWN_GAME_MENU                      :Configurações do jogo (armazenadas no jogo salvo; só afeta novos jogos)
 STR_CONFIG_SETTING_TYPE_DROPDOWN_GAME_INGAME                    :Configurações do jogo (armazenadas no jogo salvo; só afeta o jogo atual)
 STR_CONFIG_SETTING_TYPE_DROPDOWN_COMPANY_MENU                   :Configurações da empresa (armazenadas no jogo salvo; só afeta novos jogos)
@@ -1276,7 +1276,7 @@ STR_CONFIG_SETTING_INFINITE_MONEY                               :Dinheiro ilimit
 STR_CONFIG_SETTING_INFINITE_MONEY_HELPTEXT                      :Permite gastos ilimitados e desabilita a falência de empresas
 
 STR_CONFIG_SETTING_MAXIMUM_INITIAL_LOAN                         :Valor máximo do empréstimo inicial: {STRING}
-STR_CONFIG_SETTING_MAXIMUM_INITIAL_LOAN_HELPTEXT                :Valor máximo que uma empresa pode emprestar (sem considerar a inflação). Se definido como "Sem empréstimo", não haverá dinheiro disponível a menos que seja fornecido por um Script de Jogo ou pela configuração "Dinheiro ilimitado".
+STR_CONFIG_SETTING_MAXIMUM_INITIAL_LOAN_HELPTEXT                :Valor máximo que uma empresa pode emprestar (sem considerar a inflação). Se definido como "Sem empréstimo", não haverá dinheiro disponível a menos que seja fornecido por um Script de Jogo ou pela configuração "Dinheiro ilimitado"
 STR_CONFIG_SETTING_MAXIMUM_INITIAL_LOAN_VALUE                   :{CURRENCY_LONG}
 ###setting-zero-is-special
 STR_CONFIG_SETTING_MAXIMUM_INITIAL_LOAN_DISABLED                :Sem empréstimo
@@ -1330,8 +1330,8 @@ STR_CONFIG_SETTING_TOO_HIGH_MOUNTAIN                            :{WHITE}Você n�
 STR_CONFIG_SETTING_AUTOSLOPE                                    :Permitir paisagismo sob edifícios, vias, etc.: {STRING}
 STR_CONFIG_SETTING_AUTOSLOPE_HELPTEXT                           :Permite paisagismo sob edifícios e vias sem precisar removê-lo(a)s
 
-STR_CONFIG_SETTING_CATCHMENT                                    :Permitir áreas de abrangência com dimensões mais realistas: {STRING}
-STR_CONFIG_SETTING_CATCHMENT_HELPTEXT                           :Usa área de abrangência de tamanhos diferentes para diferentes tipos de estações e aeroportos
+STR_CONFIG_SETTING_CATCHMENT                                    :Área de cobertura com dimensões mais realistas: {STRING}
+STR_CONFIG_SETTING_CATCHMENT_HELPTEXT                           :Usar áreas de cobertura de tamanhos diferentes para diferentes tipos de estações e aeroportos
 
 STR_CONFIG_SETTING_SERVE_NEUTRAL_INDUSTRIES                     :Estações de empresas podem servir indústrias com estações neutras próprias: {STRING}
 STR_CONFIG_SETTING_SERVE_NEUTRAL_INDUSTRIES_HELPTEXT            :Quando ativado, indústrias com estações próprias (como as Petrolíferas) podem ser servidas por estações da empresa construídas nas proximidades. Quando desativado, essas indústrias só podem ser servidas pela sua própria estação. Qualquer estação da empresa nas redondezas não poderá servir a indústria e a estação própria não poderá atender outra senão a própria indústria
@@ -1340,17 +1340,17 @@ STR_CONFIG_SETTING_EXTRADYNAMITE                                :Permitir a remo
 STR_CONFIG_SETTING_EXTRADYNAMITE_HELPTEXT                       :Torna mais fácil remover edifícios e infraestruturas das localidades
 
 STR_CONFIG_SETTING_TRAIN_LENGTH                                 :Comprimento máximo de trens: {STRING}
-STR_CONFIG_SETTING_TRAIN_LENGTH_HELPTEXT                        :Define o tamanho máximo dos trens
+STR_CONFIG_SETTING_TRAIN_LENGTH_HELPTEXT                        :Define o comprimento máximo dos trens
 STR_CONFIG_SETTING_TILE_LENGTH                                  :{COMMA} quadrado{P 0 "" s}
 
 STR_CONFIG_SETTING_SMOKE_AMOUNT                                 :Quantidade de fumaça/fagulhas das locomotivas: {STRING}
 STR_CONFIG_SETTING_SMOKE_AMOUNT_HELPTEXT                        :Define a quantidade de fumaça ou fagulhas emitidas pelos veículos
 
 STR_CONFIG_SETTING_TRAIN_ACCELERATION_MODEL                     :Modelo de aceleração dos trens: {STRING}
-STR_CONFIG_SETTING_TRAIN_ACCELERATION_MODEL_HELPTEXT            :Escolher o modelo físico para a aceleração dos trens. O modelo "original" penaliza as inclinações igualmente para todos os veículos. O modelo "realista" penaliza as inclinações e curvas considerando várias propriedades do trem, tais como 'comprimento' e 'força de tração'
+STR_CONFIG_SETTING_TRAIN_ACCELERATION_MODEL_HELPTEXT            :Escolher o modelo físico para a aceleração dos trens. O modelo "original" penaliza as inclinações igualmente para todos os veículos. O modelo "realista" penaliza as inclinações e curvas considerando várias propriedades do trem, tais como comprimento e força de tração
 
 STR_CONFIG_SETTING_ROAD_VEHICLE_ACCELERATION_MODEL              :Modelo de aceleração dos veículos: {STRING}
-STR_CONFIG_SETTING_ROAD_VEHICLE_ACCELERATION_MODEL_HELPTEXT     :Escolher o modelo físico para a aceleração dos veículos rodoviários. O modelo "original" penaliza as inclinações igualmente para todos os veículos. O modelo "realista" penaliza as inclinações e curvas considerando várias propriedades do veículo, por exemplo a 'força de tração'
+STR_CONFIG_SETTING_ROAD_VEHICLE_ACCELERATION_MODEL_HELPTEXT     :Escolher o modelo físico para a aceleração dos veículos rodoviários. O modelo "original" penaliza as inclinações igualmente para todos os veículos. O modelo "realista" penaliza as inclinações e curvas considerando várias propriedades do veículo, por exemplo a força de tração
 
 STR_CONFIG_SETTING_TRAIN_SLOPE_STEEPNESS                        :Inclinação do terreno para trens: {STRING}
 STR_CONFIG_SETTING_TRAIN_SLOPE_STEEPNESS_HELPTEXT               :Inclinação de um quadrado inclinado para um trem. Valores grandes tornam mais difícil para um trem subir uma colina
@@ -1360,7 +1360,7 @@ STR_CONFIG_SETTING_ROAD_VEHICLE_SLOPE_STEEPNESS                 :Inclinação do
 STR_CONFIG_SETTING_ROAD_VEHICLE_SLOPE_STEEPNESS_HELPTEXT        :Inclinação de um quadrado inclinado para um veículo rodoviário. Valores grandes tornam mais difícil para um veículo subir uma colina
 
 STR_CONFIG_SETTING_FORBID_90_DEG                                :Proibir trens de fazer curvas de 90 graus: {STRING}
-STR_CONFIG_SETTING_FORBID_90_DEG_HELPTEXT                       :Curvas de 90 graus ocorrem quando uma pista horizontal é seguida diretamente por outra vertical em um quadrado adjacente, fazendo com que o trem vire 90 graus quando passa de um quadrado para o próximo, ao invés dos habituais 45 graus para outras combinações de pistas.
+STR_CONFIG_SETTING_FORBID_90_DEG_HELPTEXT                       :Curvas de 90 graus ocorrem quando uma pista horizontal é seguida diretamente por outra vertical em um quadrado adjacente, fazendo com que o trem vire 90 graus quando passa de um quadrado para o próximo, ao invés dos habituais 45 graus para outras combinações de pistas
 
 STR_CONFIG_SETTING_DISTANT_JOIN_STATIONS                        :Permitir a união de estações não adjacentes: {STRING}
 STR_CONFIG_SETTING_DISTANT_JOIN_STATIONS_HELPTEXT               :Permite acrescentar partes a uma estação sem tocar diretamente nas partes já existentes, usando Ctrl+Clique enquanto coloca as novas partes
@@ -1402,8 +1402,8 @@ STR_CONFIG_SETTING_SHOWFINANCES                                 :Mostrar janela 
 STR_CONFIG_SETTING_SHOWFINANCES_PERIOD                          :Mostrar janela de finanças no fim do período: {STRING}
 
 ###length 2
-STR_CONFIG_SETTING_SHOWFINANCES_HELPTEXT                        :Se ativado, a janela de finanças é exibida no fim de cada ano, permitindo uma inspeção fácil do estado financeiro da empresa
-STR_CONFIG_SETTING_SHOWFINANCES_HELPTEXT_PERIOD                 :Se ativado, a janela de finanças é exibida no fim de cada período, permitindo uma inspeção fácil do estado financeiro da empresa
+STR_CONFIG_SETTING_SHOWFINANCES_HELPTEXT                        :Se ativado, a janela de finanças será exibida no fim de cada ano, permitindo uma inspeção fácil da situação financeira da empresa
+STR_CONFIG_SETTING_SHOWFINANCES_HELPTEXT_PERIOD                 :Se ativado, a janela de finanças será exibida no fim de cada período, permitindo uma inspeção fácil da situação financeira da empresa
 
 STR_CONFIG_SETTING_NONSTOP_BY_DEFAULT                           :Novas ordens, por padrão, são 'sem parar' : {STRING}
 STR_CONFIG_SETTING_NONSTOP_BY_DEFAULT_HELPTEXT                  :Normalmente, um veículo irá parar em cada estação por onde passa. Ativando esta configuração, o veículo passará por todas as estações na sua rota, sem parar, até o destino final. Esta opção só define um modo padrão para novas ordens. Ordens individuais podem ser definidas explicitamente para qualquer um dos dois comportamentos
@@ -1442,7 +1442,7 @@ STR_CONFIG_SETTING_ALLOW_FUND_ROAD_HELPTEXT                     :Permitir que em
 STR_CONFIG_SETTING_ALLOW_GIVE_MONEY                             :Permitir enviar dinheiro para outras empresas: {STRING}
 STR_CONFIG_SETTING_ALLOW_GIVE_MONEY_HELPTEXT                    :Permite a transferências de dinheiro entre empresas em modo multijogador
 
-STR_CONFIG_SETTING_FREIGHT_TRAINS                               :Multiplicador de peso para cargas para simular trens pesados: {STRING}
+STR_CONFIG_SETTING_FREIGHT_TRAINS                               :Multiplicador de peso da carga para simular trens pesados: {STRING}
 STR_CONFIG_SETTING_FREIGHT_TRAINS_HELPTEXT                      :Define o impacto do transporte de carga nos trens. Um valor grande torna o transporte de carga mais difícil para os trens, especialmente em inclinações
 
 STR_CONFIG_SETTING_PLANE_SPEED                                  :Fator de velocidade de aviões: {STRING}
@@ -1472,7 +1472,7 @@ STR_CONFIG_SETTING_COMPANY_STARTING_COLOUR                      :Cor inicial da 
 STR_CONFIG_SETTING_COMPANY_STARTING_COLOUR_HELPTEXT             :Escolher a cor inicial para a empresa
 
 STR_CONFIG_SETTING_COMPANY_STARTING_COLOUR_SECONDARY            :Cor inicial secundária da empresa: {STRING}
-STR_CONFIG_SETTING_COMPANY_STARTING_COLOUR_SECONDARY_HELPTEXT   :Escolher a cor inicial secundária para a empresa, se um NewGRF precisar usá-la.
+STR_CONFIG_SETTING_COMPANY_STARTING_COLOUR_SECONDARY_HELPTEXT   :Escolher a cor inicial secundária para a empresa, se estiver usando um NewGRF que permite isso
 
 STR_CONFIG_SETTING_NEVER_EXPIRE_AIRPORTS                        :Aeroportos nunca expiram: {STRING}
 STR_CONFIG_SETTING_NEVER_EXPIRE_AIRPORTS_HELPTEXT               :Quando ativada, esta configuração torna cada tipo de aeroporto disponível para sempre após a sua introdução
@@ -1496,22 +1496,22 @@ STR_CONFIG_SETTING_NEVER_EXPIRE_VEHICLES                        :Veículos nunca
 STR_CONFIG_SETTING_NEVER_EXPIRE_VEHICLES_HELPTEXT               :Quando ativado, todos os modelos de veículos permanecerão disponíveis para sempre após a sua introdução
 
 STR_CONFIG_SETTING_TIMEKEEPING_UNITS                            :Unidades de tempo: {STRING}
-STR_CONFIG_SETTING_TIMEKEEPING_UNITS_HELPTEXT                   :Escolher as unidades de tempo para o jogo. Isto não pode ser alterado posteriormente.{}{}O modo clássico no OpenTTD é baseado em um calendário, em que um ano é composto de 12 meses e cada mês tem 28-31 dias.{}{}No tempo baseado em relógio de parede, a produção de carga e as finanças são baseadas em incrementos de um minuto, que tem aproximadamente a mesma duração de um mês de 30 dias no modo baseado em calendário. Esses incrementos são agrupados em períodos de 12 minutos, equivalentes a um ano no modo baseado em calendário.{}{}Nos dois modos, há sempre um calendário clássico, que é usado para datas de introdução de veículos, casas e outras infraestruturas.
+STR_CONFIG_SETTING_TIMEKEEPING_UNITS_HELPTEXT                   :Escolher as unidades de tempo para o jogo. Isto não pode ser alterado posteriormente.{}{}O modo clássico no OpenTTD é baseado em um calendário, em que um ano é composto de 12 meses e cada mês tem 28-31 dias.{}{}No tempo baseado em relógio de parede, a produção de carga e as finanças são baseadas em incrementos de um minuto, que tem aproximadamente a mesma duração de um mês de 30 dias no modo baseado em calendário. Esses incrementos são agrupados em períodos de 12 minutos, equivalentes a um ano no modo baseado em calendário.{}{}Nos dois modos, há sempre um calendário clássico, que é usado para datas de introdução de veículos, casas e outras infraestruturas
 ###length 2
 STR_CONFIG_SETTING_TIMEKEEPING_UNITS_CALENDAR                   :Calendário
 STR_CONFIG_SETTING_TIMEKEEPING_UNITS_WALLCLOCK                  :Relógio de parede
 
 STR_CONFIG_SETTING_MINUTES_PER_YEAR                             :Minutos por ano: {STRING}
-STR_CONFIG_SETTING_MINUTES_PER_YEAR_HELPTEXT                    :Escolher o número de minutos para o ano do calendário. O padrão é 12 minutos. Defina como 0 para o tempo do calendário não mudar. Essa configuração não afeta a simulação econômica do jogo e só está disponível quando o tempo é baseado em relógio de parede.
+STR_CONFIG_SETTING_MINUTES_PER_YEAR_HELPTEXT                    :Escolher o número de minutos para o ano do calendário. O padrão é 12 minutos. Defina como 0 para o tempo do calendário não mudar. Essa configuração não afeta a simulação econômica do jogo e só está disponível quando o tempo é baseado em relógio de parede
 
 STR_CONFIG_SETTING_MINUTES_PER_YEAR_VALUE                       :{NUM}
 ###setting-zero-is-special
 STR_CONFIG_SETTING_MINUTES_PER_YEAR_FROZEN                      :0 (tempo de calendário congelado)
 
 STR_CONFIG_SETTING_TOWN_CARGO_SCALE                             :Escalar a produção de carga da localidade: {STRING}
-STR_CONFIG_SETTING_TOWN_CARGO_SCALE_HELPTEXT                    :Ajustar a produção de carga das localidades nesta porcentagem.
+STR_CONFIG_SETTING_TOWN_CARGO_SCALE_HELPTEXT                    :Ajustar a produção de carga das localidades nesta porcentagem
 STR_CONFIG_SETTING_INDUSTRY_CARGO_SCALE                         :Escalar a produção de carga da indústria: {STRING}
-STR_CONFIG_SETTING_INDUSTRY_CARGO_SCALE_HELPTEXT                :Ajustar a produção de carga das indústrias nesta porcentagem.
+STR_CONFIG_SETTING_INDUSTRY_CARGO_SCALE_HELPTEXT                :Ajustar a produção de carga das indústrias nesta porcentagem
 STR_CONFIG_SETTING_CARGO_SCALE_VALUE                            :{NUM}%
 
 STR_CONFIG_SETTING_AUTORENEW_VEHICLE                            :Renovar automaticamente um veículo quando ele ficar velho: {STRING}
@@ -1542,7 +1542,7 @@ STR_CONFIG_SETTING_GRAPH_LINE_THICKNESS                         :Espessura das l
 STR_CONFIG_SETTING_GRAPH_LINE_THICKNESS_HELPTEXT                :Espessura da linha nos gráficos. Linhas finas são mais precisas, enquanto linhas grossas são mais fáceis de distinguir
 
 STR_CONFIG_SETTING_SHOW_NEWGRF_NAME                             :Mostrar o nome do NewGRF na janela de comprar veículos: {STRING}
-STR_CONFIG_SETTING_SHOW_NEWGRF_NAME_HELPTEXT                    :Adiciona uma linha na janela de aquisição de veículos, mostrando a qual NewGRF pertence o veículo selecionado.
+STR_CONFIG_SETTING_SHOW_NEWGRF_NAME_HELPTEXT                    :Adiciona uma linha na janela de aquisição de veículos, mostrando a qual NewGRF pertence o veículo selecionado
 STR_CONFIG_SETTING_SHOW_CARGO_IN_LISTS                          :Mostrar as cargas que os veículos podem transportar nas janelas de listagem: {STRING}
 STR_CONFIG_SETTING_SHOW_CARGO_IN_LISTS_HELPTEXT                 :Se ativado, a carga transportável pelo veículo aparecerá acima dele nas listas de veículos
 
@@ -1562,13 +1562,13 @@ STR_CONFIG_SETTING_INDUSTRY_DENSITY                             :Densidade de in
 STR_CONFIG_SETTING_INDUSTRY_DENSITY_HELPTEXT                    :Define quantas indústrias devem ser geradas e que nível deve ser mantido durante o jogo
 
 STR_CONFIG_SETTING_OIL_REF_EDGE_DISTANCE                        :Distância máxima entre a borda do mapa para Refinarias de Petróleo: {STRING}
-STR_CONFIG_SETTING_OIL_REF_EDGE_DISTANCE_HELPTEXT               :Limite de distância entre a borda do mapa e o local de construção de refinarias e plataformas de petróleo. Em mapas de ilhas isso garante que elas fiquem perto da costa. Em mapas com mais de 256 quadrados esse valor é aumentado.
+STR_CONFIG_SETTING_OIL_REF_EDGE_DISTANCE_HELPTEXT               :Limite de distância entre a borda do mapa e o local de construção de refinarias e plataformas de petróleo. Em mapas de ilhas isso garante que elas fiquem perto da costa. Em mapas com mais de 256 quadrados esse valor é aumentado
 
 STR_CONFIG_SETTING_SNOWLINE_HEIGHT                              :Altura da linha de neve: {STRING}
 STR_CONFIG_SETTING_SNOWLINE_HEIGHT_HELPTEXT                     :Escolher a que altura a neve começa na paisagem subártica. A neve também afeta a geração de indústrias e os requisitos de crescimento das localidades. Só pode ser modificado no Editor de Cenário ou então é calculado usando a "cobertura de neve"
 
 STR_CONFIG_SETTING_SNOW_COVERAGE                                :Cobertura de neve: {STRING}
-STR_CONFIG_SETTING_SNOW_COVERAGE_HELPTEXT                       :Escolher a quantidade aproximada de neve na paisagem subártica. A neve também afeta a geração das indústrias e os requisitos para crescimento das localidades. Usado apenas durante a geração do mapa. O nível do mar e as suas encostas nunca têm neve.
+STR_CONFIG_SETTING_SNOW_COVERAGE_HELPTEXT                       :Escolher a quantidade aproximada de neve na paisagem subártica. A neve também afeta a geração das indústrias e os requisitos para crescimento das localidades. Usado apenas durante a geração do mapa. O nível do mar e as suas encostas nunca têm neve
 STR_CONFIG_SETTING_SNOW_COVERAGE_VALUE                          :{NUM}%
 
 STR_CONFIG_SETTING_DESERT_COVERAGE                              :Cobertura do deserto: {STRING}
@@ -1576,7 +1576,7 @@ STR_CONFIG_SETTING_DESERT_COVERAGE_HELPTEXT                     :Escolher a quan
 STR_CONFIG_SETTING_DESERT_COVERAGE_VALUE                        :{NUM}%
 
 STR_CONFIG_SETTING_ROUGHNESS_OF_TERRAIN                         :Irregularidade do terreno: {STRING}
-STR_CONFIG_SETTING_ROUGHNESS_OF_TERRAIN_HELPTEXT                :Escolher a forma e o número de colinas. As paisagens suaves têm poucas colinas largas, enquanto as paisagens acidentadas possuem mais colinas pequenas.
+STR_CONFIG_SETTING_ROUGHNESS_OF_TERRAIN_HELPTEXT                :Escolher a forma e o número de colinas. As paisagens suaves têm poucas colinas largas, enquanto as paisagens acidentadas possuem mais colinas pequenas
 ###length 4
 STR_CONFIG_SETTING_ROUGHNESS_OF_TERRAIN_VERY_SMOOTH             :Muito Regular
 STR_CONFIG_SETTING_ROUGHNESS_OF_TERRAIN_SMOOTH                  :Regular
@@ -1584,7 +1584,7 @@ STR_CONFIG_SETTING_ROUGHNESS_OF_TERRAIN_ROUGH                   :Irregular
 STR_CONFIG_SETTING_ROUGHNESS_OF_TERRAIN_VERY_ROUGH              :Muito Irregular
 
 STR_CONFIG_SETTING_VARIETY                                      :Distribuição de variedade: {STRING}
-STR_CONFIG_SETTING_VARIETY_HELPTEXT                             :Escolher se o mapa conterá tanto áreas montanhosas como áreas planas. Quanto maior a variedade, maiores as diferenças de altura entre as áreas montanhosas e as planas.
+STR_CONFIG_SETTING_VARIETY_HELPTEXT                             :Escolher se o mapa conterá tanto áreas montanhosas como áreas planas. Quanto maior a variedade, maiores as diferenças de altura entre as áreas montanhosas e as planas
 
 STR_CONFIG_SETTING_RIVER_AMOUNT                                 :Quantidade de rios: {STRING}
 STR_CONFIG_SETTING_RIVER_AMOUNT_HELPTEXT                        :Escolher quantos rios serão gerados
@@ -1631,7 +1631,7 @@ STR_CONFIG_SETTING_SMALLMAP_LAND_COLOUR_DARK_GREEN              :Verde escuro
 STR_CONFIG_SETTING_SMALLMAP_LAND_COLOUR_VIOLET                  :Violeta
 
 STR_CONFIG_SETTING_LINKGRAPH_COLOURS                            :Cores de sobreposição do fluxo de carga: {STRING}
-STR_CONFIG_SETTING_LINKGRAPH_COLOURS_HELPTEXT                   :Define o esquema de cores usado na sobreposição do fluxo de carga.
+STR_CONFIG_SETTING_LINKGRAPH_COLOURS_HELPTEXT                   :Define o esquema de cores usado na sobreposição do fluxo de carga
 ###length 4
 STR_CONFIG_SETTING_LINKGRAPH_COLOURS_GREEN_TO_RED               :Verde para vermelho (original)
 STR_CONFIG_SETTING_LINKGRAPH_COLOURS_GREEN_TO_BLUE              :Verde para azul
@@ -1668,7 +1668,7 @@ STR_CONFIG_SETTING_SCROLLWHEEL_MULTIPLIER_HELPTEXT              :Controla a sens
 STR_CONFIG_SETTING_SCROLLWHEEL_SCROLLING                        :Função da roda do mouse: {STRING}
 STR_CONFIG_SETTING_SCROLLWHEEL_SCROLLING_HELPTEXT               :Ativar o rolamento com rodas de mouse bidimensionais
 ###length 3
-STR_CONFIG_SETTING_SCROLLWHEEL_ZOOM                             :Ampliar mapa
+STR_CONFIG_SETTING_SCROLLWHEEL_ZOOM                             :Ampliar o mapa
 STR_CONFIG_SETTING_SCROLLWHEEL_SCROLL                           :Mover o mapa
 STR_CONFIG_SETTING_SCROLLWHEEL_OFF                              :Desativado
 
@@ -1712,7 +1712,7 @@ STR_CONFIG_SETTING_PAUSE_ON_NEW_GAME                            :Pausar automati
 STR_CONFIG_SETTING_PAUSE_ON_NEW_GAME_HELPTEXT                   :Quando ativado, o jogo irá pausar automaticamente quando um novo jogo começar, permitindo o estudo detalhado do mapa
 
 STR_CONFIG_SETTING_COMMAND_PAUSE_LEVEL                          :Durante uma pausa permitir: {STRING}
-STR_CONFIG_SETTING_COMMAND_PAUSE_LEVEL_HELPTEXT                 :Escolher quais ações podem ser executadas com o jogo pausado
+STR_CONFIG_SETTING_COMMAND_PAUSE_LEVEL_HELPTEXT                 :Selecionar quais ações podem ser executadas com o jogo pausado
 ###length 4
 STR_CONFIG_SETTING_COMMAND_PAUSE_LEVEL_NO_ACTIONS               :Nenhuma ação
 STR_CONFIG_SETTING_COMMAND_PAUSE_LEVEL_ALL_NON_CONSTRUCTION     :Todas as ações, exceto construção
@@ -1739,7 +1739,7 @@ STR_CONFIG_SETTING_QUICKGOTO                                    :Criação rápi
 STR_CONFIG_SETTING_QUICKGOTO_HELPTEXT                           :Pré-selecionar o cursor 'Ir Para' ao abrir a janela de ordens
 
 STR_CONFIG_SETTING_DEFAULT_RAIL_TYPE                            :Tipo de trilho padrão (ao criar novo ou abrir jogo): {STRING}
-STR_CONFIG_SETTING_DEFAULT_RAIL_TYPE_HELPTEXT                   :Tipo de trilhos a ser selecionado ao carregar/iniciar um jogo. 'Primeiro disponível' seleciona o tipo de trilho mais antigo. 'Último disponível' seleciona o tipo mais novo de trilho e 'Mais utilizado' seleciona o tipo que é mais usado atualmente
+STR_CONFIG_SETTING_DEFAULT_RAIL_TYPE_HELPTEXT                   :Tipo de trilho a ser selecionado ao carregar/iniciar um jogo. 'Primeiro disponível' seleciona o tipo de trilho mais antigo. 'Último disponível' seleciona o tipo mais novo de trilho e 'Mais utilizado' seleciona o tipo que é mais usado atualmente
 ###length 3
 STR_CONFIG_SETTING_DEFAULT_RAIL_TYPE_FIRST                      :Primeiro disponível
 STR_CONFIG_SETTING_DEFAULT_RAIL_TYPE_LAST                       :Último disponível
@@ -1752,10 +1752,10 @@ STR_CONFIG_SETTING_PERSISTENT_BUILDINGTOOLS                     :Manter as ferra
 STR_CONFIG_SETTING_PERSISTENT_BUILDINGTOOLS_HELPTEXT            :Manter ativas as ferramentas de construção para pontes, túneis, etc. após o uso
 
 STR_CONFIG_SETTING_AUTO_REMOVE_SIGNALS                          :Remover automaticamente os sinais durante a construção de ferrovias: {STRING}
-STR_CONFIG_SETTING_AUTO_REMOVE_SIGNALS_HELPTEXT                 :Remover automaticamente os sinais durante a construção de ferrovias se os sinais estiverem no caminho. Isso pode potencialmente causar acidentes de trens.
+STR_CONFIG_SETTING_AUTO_REMOVE_SIGNALS_HELPTEXT                 :Remover automaticamente os sinais durante a construção de ferrovias se os sinais estiverem no caminho. Isso pode, potencialmente, causar acidentes de trens
 
 STR_CONFIG_SETTING_FAST_FORWARD_SPEED_LIMIT                     :Limite de velocidade do avanço rápido: {STRING}
-STR_CONFIG_SETTING_FAST_FORWARD_SPEED_LIMIT_HELPTEXT            :Limite da velocidade do jogo quando o avanço rápido está ativado. 0 = sem limite (tão rápido quanto o seu computador permitir). Valores abaixo de 100% tornam o jogo mais lento. O limite superior depende das especificações do seu computador e pode variar dependendo do jogo.
+STR_CONFIG_SETTING_FAST_FORWARD_SPEED_LIMIT_HELPTEXT            :Limite da velocidade do jogo quando o avanço rápido está ativado. 0 = sem limite (tão rápido quanto o seu computador permitir). Valores abaixo de 100% tornam o jogo mais lento. O limite superior depende das especificações do seu computador e pode variar dependendo do jogo
 STR_CONFIG_SETTING_FAST_FORWARD_SPEED_LIMIT_VAL                 :{NUM}% da velocidade normal do jogo
 ###setting-zero-is-special
 STR_CONFIG_SETTING_FAST_FORWARD_SPEED_LIMIT_ZERO                :Sem limite (o máximo que o seu computador suporta)
@@ -1819,11 +1819,11 @@ STR_CONFIG_SETTING_AI_IN_MULTIPLAYER_HELPTEXT                   :Permite que com
 STR_CONFIG_SETTING_SCRIPT_MAX_OPCODES                           :#opcodes antes de scripts serem suspensos: {STRING}
 STR_CONFIG_SETTING_SCRIPT_MAX_OPCODES_HELPTEXT                  :Número máximo de passos computacionais que um script pode executar em um turno
 STR_CONFIG_SETTING_SCRIPT_MAX_MEMORY                            :Utilização máxima de memória por script: {STRING}
-STR_CONFIG_SETTING_SCRIPT_MAX_MEMORY_HELPTEXT                   :Quantidade de memória que um script pode usar antes dele ser terminado automaticamente. Para mapas maiores pode ser necessário aumentar este valor.
+STR_CONFIG_SETTING_SCRIPT_MAX_MEMORY_HELPTEXT                   :Quantidade de memória que um script pode usar antes dele ser terminado automaticamente. Para mapas maiores pode ser necessário aumentar este valor
 STR_CONFIG_SETTING_SCRIPT_MAX_MEMORY_VALUE                      :{COMMA} MB
 
 STR_CONFIG_SETTING_SERVINT_ISPERCENT                            :Intervalos de manutenção são em porcentagem: {STRING}
-STR_CONFIG_SETTING_SERVINT_ISPERCENT_HELPTEXT                   :Quando ativado, os veículos tentam fazer a manutenção quando sua confiabilidade atingir uma determinada porcentagem da confiabilidade máxima.{}{}Por exemplo, se a confiabilidade máxima de um veículo for 90% e o intervalo de manutenção for 20%, o veículo tentará fazer a manutenção quando atingir 72% de confiabilidade.
+STR_CONFIG_SETTING_SERVINT_ISPERCENT_HELPTEXT                   :Quando ativado, os veículos tentam fazer a manutenção quando sua confiabilidade atingir uma determinada porcentagem da confiabilidade máxima.{}{}Por exemplo, se a confiabilidade máxima de um veículo for 90% e o intervalo de manutenção for 20%, o veículo tentará fazer a manutenção quando atingir 72% de confiabilidade
 
 STR_CONFIG_SETTING_SERVINT_TRAINS                               :Intervalo padrão de manutenção para trens: {STRING}
 STR_CONFIG_SETTING_SERVINT_TRAINS_HELPTEXT                      :Define o intervalo padrão de manutenção para novos veículos ferroviários, se não for configurado um intervalo de manutenção explícito para o veículo
@@ -1841,10 +1841,10 @@ STR_CONFIG_SETTING_NOSERVICE                                    :Desativar manut
 STR_CONFIG_SETTING_NOSERVICE_HELPTEXT                           :Quando ativado, veículos não recebem manutenção se não puderem quebrar
 
 STR_CONFIG_SETTING_STATION_LENGTH_LOADING_PENALTY               :Penalidade de velocidade de carregamento para trens que são mais longos que a estação: {STRING}
-STR_CONFIG_SETTING_STATION_LENGTH_LOADING_PENALTY_HELPTEXT      :Quando ativado, os trens que são muito compridos para a estação demoram mais tempo para carregar do que um trem que cabe na estação. Esta configuração não afeta a geração de rotas.
+STR_CONFIG_SETTING_STATION_LENGTH_LOADING_PENALTY_HELPTEXT      :Quando ativado, os trens que são muito compridos para a estação demoram mais tempo para carregar do que um trem que cabe na estação. Esta configuração não afeta a geração de rotas
 
-STR_CONFIG_SETTING_WAGONSPEEDLIMITS                             :Ativar limites de velocidade para vagões: {STRING}
-STR_CONFIG_SETTING_WAGONSPEEDLIMITS_HELPTEXT                    :Quando ativado, aplica os limites de velocidade dos vagões para definir a velocidade máxima de um trem
+STR_CONFIG_SETTING_WAGONSPEEDLIMITS                             :Ativar limite de velocidade para vagões: {STRING}
+STR_CONFIG_SETTING_WAGONSPEEDLIMITS_HELPTEXT                    :Quando ativado, aplica o limite de velocidade dos vagões para definir a velocidade máxima de um trem
 
 STR_CONFIG_SETTING_DISABLE_ELRAILS                              :Desativar ferrovias elétricas: {STRING}
 STR_CONFIG_SETTING_DISABLE_ELRAILS_HELPTEXT                     :Quando ativada, esta configuração desativa a necessidade de eletrificar os trilhos para que locomotivas elétricas possam utilizá-los
@@ -1886,7 +1886,7 @@ STR_CONFIG_SETTING_NEWS_ADVICE                                  :Avisos / inform
 STR_CONFIG_SETTING_NEWS_ADVICE_HELPTEXT                         :Mostrar mensagens sobre veículos que requerem atenção
 
 STR_CONFIG_SETTING_NEWS_NEW_VEHICLES                            :Novos veículos: {STRING}
-STR_CONFIG_SETTING_NEWS_NEW_VEHICLES_HELPTEXT                   :Mostrar um jornal quando é disponibilizado um novo tipo de veículo
+STR_CONFIG_SETTING_NEWS_NEW_VEHICLES_HELPTEXT                   :Mostrar um jornal quando um novo tipo de veículo é disponibilizado
 
 STR_CONFIG_SETTING_NEWS_CHANGES_ACCEPTANCE                      :Mudanças de aceitação de carga: {STRING}
 STR_CONFIG_SETTING_NEWS_CHANGES_ACCEPTANCE_HELPTEXT             :Exibir mensagens quando estações alterarem a aceitação de algumas cargas
@@ -1906,20 +1906,20 @@ STR_CONFIG_SETTING_COLOURED_NEWS_YEAR_HELPTEXT                  :Ano em que os j
 STR_CONFIG_SETTING_STARTING_YEAR                                :Data de início: {STRING}
 
 STR_CONFIG_SETTING_ENDING_YEAR                                  :Pontuação no fim do ano: {STRING}
-STR_CONFIG_SETTING_ENDING_YEAR_HELPTEXT                         :Ano em que o jogo termina para fins de pontuação. No fim desse ano, a pontuação da empresa é registrada e a tela de pontuação máxima é exibida, mas os jogadores podem continuar jogando depois disso.{}Se isso for antes do ano de início, a tela de pontuação máxima nunca é exibida.
+STR_CONFIG_SETTING_ENDING_YEAR_HELPTEXT                         :Ano em que o jogo termina para fins de pontuação. No fim desse ano, a pontuação da empresa é registrada e a tela de pontuação máxima é exibida, mas os jogadores podem continuar jogando depois disso.{}Se isso for antes do ano de início, a tela de pontuação máxima nunca será exibida
 STR_CONFIG_SETTING_ENDING_YEAR_VALUE                            :{NUM}
 ###setting-zero-is-special
 STR_CONFIG_SETTING_ENDING_YEAR_ZERO                             :Nunca
 
 STR_CONFIG_SETTING_ECONOMY_TYPE                                 :Tipo de economia: {STRING}
-STR_CONFIG_SETTING_ECONOMY_TYPE_HELPTEXT                        :Economia 'Suave' faz alterações de produção com mais frequência e em etapas menores. Economia 'Congelada' não permite alterações de produção e fechamentos de indústrias. Esta configuração pode não ter efeito se os tipos de indústria forem fornecidos por um NewGRF.
+STR_CONFIG_SETTING_ECONOMY_TYPE_HELPTEXT                        :Economia 'Suave' faz alterações de produção com mais frequência e em etapas menores. Economia 'Congelada' não permite alterações de produção e fechamentos de indústrias. Esta configuração pode não ter efeito se os tipos de indústria forem fornecidos por um NewGRF
 ###length 3
 STR_CONFIG_SETTING_ECONOMY_TYPE_ORIGINAL                        :Original
 STR_CONFIG_SETTING_ECONOMY_TYPE_SMOOTH                          :Suave
 STR_CONFIG_SETTING_ECONOMY_TYPE_FROZEN                          :Congelada
 
 STR_CONFIG_SETTING_FEEDER_PAYMENT_SHARE                         :Porcentagem do lucro da etapa a pagar em sistemas de transbordo: {STRING}
-STR_CONFIG_SETTING_FEEDER_PAYMENT_SHARE_HELPTEXT                :Porcentagem da receita dada às etapas intermediárias em sistemas de transbordo, dando maior controle sobre a receita
+STR_CONFIG_SETTING_FEEDER_PAYMENT_SHARE_HELPTEXT                :Porcentagem da receita dada às etapas intermediárias em sistemas de transbordo, dando maior controle sobre a renda
 
 STR_CONFIG_SETTING_DRAG_SIGNALS_DENSITY                         :Quando arrastar, colocar sinais a cada: {STRING}
 STR_CONFIG_SETTING_DRAG_SIGNALS_DENSITY_HELPTEXT                :Define a distância na qual os sinais serão construídos em uma linha até o próximo obstáculo (sinal, junção), quando colocar sinais arrastando
@@ -1931,13 +1931,13 @@ STR_CONFIG_SETTING_SEMAPHORE_BUILD_BEFORE_DATE                  :Usar automatica
 STR_CONFIG_SETTING_SEMAPHORE_BUILD_BEFORE_DATE_HELPTEXT         :Definir o ano em que os sinais elétricos serão usados nas ferrovias. Antes deste ano, sinais não-elétricos serão usados (eles têm a mesma funcionalidade, mas aparência diferente)
 
 STR_CONFIG_SETTING_CYCLE_SIGNAL_TYPES                           :Alternar entre tipos de sinais: {STRING}
-STR_CONFIG_SETTING_CYCLE_SIGNAL_TYPES_HELPTEXT                  :Escolher quais os tipos de sinais serão alternados quando usar Ctrl+Clique em um sinal construído com a ferramenta de sinais
+STR_CONFIG_SETTING_CYCLE_SIGNAL_TYPES_HELPTEXT                  :Selecionar quais os tipos de sinais serão alternados quando usar Ctrl+Clique em um sinal construído com a ferramenta de sinais
 ###length 2
 STR_CONFIG_SETTING_CYCLE_SIGNAL_GROUP                           :Somente grupo atual
 STR_CONFIG_SETTING_CYCLE_SIGNAL_ALL                             :Todos visíveis
 
 STR_CONFIG_SETTING_SIGNAL_GUI_MODE                              :Mostrar tipos de sinais: {STRING}
-STR_CONFIG_SETTING_SIGNAL_GUI_MODE_HELPTEXT                     :Escolher quais tipos de sinais são mostrados na barra de ferramentas de sinais
+STR_CONFIG_SETTING_SIGNAL_GUI_MODE_HELPTEXT                     :Selecionar quais tipos de sinais são mostrados na barra de ferramentas de sinais
 ###length 2
 STR_CONFIG_SETTING_SIGNAL_GUI_MODE_PATH                         :Somente sinais de caminho
 STR_CONFIG_SETTING_SIGNAL_GUI_MODE_ALL_CYCLE_PATH               :Todos os sinais
@@ -1967,7 +1967,7 @@ STR_CONFIG_SETTING_TOWN_FOUNDING_ALLOWED                        :Permitido
 STR_CONFIG_SETTING_TOWN_FOUNDING_ALLOWED_CUSTOM_LAYOUT          :Permitido, estrutura personalizada da localidade
 
 STR_CONFIG_SETTING_TOWN_CARGOGENMODE                            :Geração de carga da localidade: {STRING}
-STR_CONFIG_SETTING_TOWN_CARGOGENMODE_HELPTEXT                   :Quanta carga é produzida pelas casas nas localidades, em relação à população geral da localidade.{}Crescimento quadrático: uma localidade com o dobro do tamanho gera quatro vezes mais passageiros.{}Crescimento linear: uma localidade com o dobro do tamanho gera o dobro da quantidade de passageiros.
+STR_CONFIG_SETTING_TOWN_CARGOGENMODE_HELPTEXT                   :Quanta carga é produzida pelas casas nas localidades, em relação à população geral da localidade.{}Crescimento quadrático: uma localidade com o dobro do tamanho gera quatro vezes mais passageiros.{}Crescimento linear: uma localidade com o dobro do tamanho gera o dobro da quantidade de passageiros
 ###length 2
 STR_CONFIG_SETTING_TOWN_CARGOGENMODE_ORIGINAL                   :Quadrático (original)
 STR_CONFIG_SETTING_TOWN_CARGOGENMODE_BITCOUNT                   :Linear
@@ -1976,7 +1976,7 @@ STR_CONFIG_SETTING_EXTRA_TREE_PLACEMENT                         :Surgimento de �
 STR_CONFIG_SETTING_EXTRA_TREE_PLACEMENT_HELPTEXT                :Controla o aparecimento aleatório de árvores durante o jogo. Isto poderá afetar indústrias que dependem do crescimento de árvores, como as madeireiras
 ###length 4
 STR_CONFIG_SETTING_EXTRA_TREE_PLACEMENT_NO_SPREAD               :Crescer sem espalhar {RED}(afeta madeireiras)
-STR_CONFIG_SETTING_EXTRA_TREE_PLACEMENT_SPREAD_RAINFOREST       :Crescer mas espalhar somente em florestas tropicais
+STR_CONFIG_SETTING_EXTRA_TREE_PLACEMENT_SPREAD_RAINFOREST       :Crescer, mas espalhar somente em florestas tropicais
 STR_CONFIG_SETTING_EXTRA_TREE_PLACEMENT_SPREAD_ALL              :Crescer e espalhar em todos os lugares
 STR_CONFIG_SETTING_EXTRA_TREE_PLACEMENT_NO_GROWTH_NO_SPREAD     :Não crescer e não espalhar {RED}(afeta madeireiras)
 
@@ -2008,7 +2008,7 @@ STR_CONFIG_SETTING_ZOOM_LVL_OUT_4X                              :4x
 STR_CONFIG_SETTING_ZOOM_LVL_OUT_8X                              :8x
 
 STR_CONFIG_SETTING_SPRITE_ZOOM_MIN                              :Resolução máxima de sprites: {STRING}
-STR_CONFIG_SETTING_SPRITE_ZOOM_MIN_HELPTEXT                     :Limita a resolução máxima a ser usada para sprites. Limitar a resolução de sprites evitará o uso de gráficos de alta resolução, mesmo quando estiverem disponíveis. Isso pode ajudar a manter a aparência uniforme do jogo quando estiver usando uma mistura de arquivos GRF com e sem gráficos de alta resolução.
+STR_CONFIG_SETTING_SPRITE_ZOOM_MIN_HELPTEXT                     :Limita a resolução máxima a ser usada para sprites. Limitar a resolução de sprites evitará o uso de gráficos de alta resolução, mesmo quando estiverem disponíveis. Isso pode ajudar a manter a aparência uniforme do jogo quando estiver usando uma mistura de arquivos GRF com e sem gráficos de alta resolução
 ###length 3
 STR_CONFIG_SETTING_SPRITE_ZOOM_LVL_MIN                          :4x
 STR_CONFIG_SETTING_SPRITE_ZOOM_LVL_IN_2X                        :2x
@@ -2032,33 +2032,33 @@ STR_CONFIG_SETTING_CITY_SIZE_MULTIPLIER                         :Multiplicador d
 STR_CONFIG_SETTING_CITY_SIZE_MULTIPLIER_HELPTEXT                :Tamanho médio das cidades em relação às localidades normais no início do jogo
 
 STR_CONFIG_SETTING_LINKGRAPH_RECALC_INTERVAL                    :Atualizar a distribuição a cada {STRING}
-STR_CONFIG_SETTING_LINKGRAPH_RECALC_INTERVAL_HELPTEXT           :Tempo entre recálculos subsequentes da rede de conexões. Cada recálculo atualiza os planos para um componente da rede. Isso significa que um valor X para esta configuração não significa que toda a rede será atualizada a cada X segundos. Apenas algum componente será atualizado. Quanto menor o tempo definido, mais tempo de CPU será necessário para calculá-lo. Quanto maior o valor definido, mais tempo será necessário até que a distribuição de carga inicie nas novas rotas.
+STR_CONFIG_SETTING_LINKGRAPH_RECALC_INTERVAL_HELPTEXT           :Tempo entre recálculos subsequentes da rede de conexões. Cada recálculo atualiza os planos para um componente da rede. Isso significa que um valor X para esta configuração não significa que toda a rede será atualizada a cada X segundos. Apenas algum componente será atualizado. Quanto menor o tempo definido, mais tempo de CPU será necessário para calculá-lo. Quanto maior o valor definido, mais tempo será necessário até que a distribuição de carga inicie nas novas rotas
 STR_CONFIG_SETTING_LINKGRAPH_RECALC_TIME                        :Usar {STRING} para recalcular a distribuição
-STR_CONFIG_SETTING_LINKGRAPH_RECALC_TIME_HELPTEXT               :Tempo gasto para cada recálculo de um componente da rede de conexões. Quando um recálculo é iniciado, uma tarefa é gerada e pode ser executada por esse número de segundos. Quanto menor for esse valor, maior a chance de que a tarefa não seja concluída quando deveria. Então o jogo para até que ela seja completada, causando um atraso. Quanto maior for esse valor, mais tempo será necessário para a distribuição ser atualizada quando as rotas mudam.
+STR_CONFIG_SETTING_LINKGRAPH_RECALC_TIME_HELPTEXT               :Tempo gasto para cada recálculo de um componente da rede de conexões. Quando um recálculo é iniciado, uma tarefa é gerada e pode ser executada por esse número de segundos. Quanto menor for esse valor, maior a chance de que a tarefa não seja concluída quando deveria. Então o jogo para até que ela seja completada, causando um atraso. Quanto maior for esse valor, mais tempo será necessário para a distribuição ser atualizada quando as rotas mudam
 
 STR_CONFIG_SETTING_DISTRIBUTION_PAX                             :Modo de distribuição para passageiros: {STRING}
-STR_CONFIG_SETTING_DISTRIBUTION_PAX_HELPTEXT                    :"Simétrico" significa que aproximadamente o mesmo número de passageiros irá de uma estação A para uma estação B, assim como de B para A. "Assimétrico" significa que um número arbitrário de passageiros pode ir em qualquer direção. "Manual" significa que não haverá distribuição automática dos passageiros.
+STR_CONFIG_SETTING_DISTRIBUTION_PAX_HELPTEXT                    :"Simétrico" significa que aproximadamente o mesmo número de passageiros irá de uma estação A para uma estação B, assim como de B para A. "Assimétrico" significa que um número arbitrário de passageiros pode ir em qualquer direção. "Manual" significa que não haverá distribuição automática dos passageiros
 STR_CONFIG_SETTING_DISTRIBUTION_MAIL                            :Modo de distribuição para correio: {STRING}
-STR_CONFIG_SETTING_DISTRIBUTION_MAIL_HELPTEXT                   :"Simétrico" significa que aproximadamente a mesma quantidade de correio será enviada de uma estação A para uma estação B, assim como de B para A. "Assimétrica" significa que quantidades arbitrárias de correio podem ser enviadas em qualquer direção. "Manual" significa que não haverá distribuição automática para correio.
+STR_CONFIG_SETTING_DISTRIBUTION_MAIL_HELPTEXT                   :"Simétrico" significa que aproximadamente a mesma quantidade de correio será enviada de uma estação A para uma estação B, assim como de B para A. "Assimétrica" significa que quantidades arbitrárias de correio podem ser enviadas em qualquer direção. "Manual" significa que não haverá distribuição automática para correio
 STR_CONFIG_SETTING_DISTRIBUTION_ARMOURED                        :Modo de distribuição para a classe de carga BLINDADA: {STRING}
-STR_CONFIG_SETTING_DISTRIBUTION_ARMOURED_HELPTEXT               :A classe de carga BLINDADA contém objetos de valor em clima temperado, diamantes em clima subtropical ou ouro em clima subártico. NewGRFs podem modificar isso. "Simétrica" significa que aproximadamente a mesma quantidade dessa carga será enviada de uma estação A para uma estação B, assim como de B para A. "Assimétrica" significa que quantidades arbitrárias dessa carga podem ser enviadas em qualquer direção. "Manual" significa que não haverá distribuição automática para aquela carga. Recomenda-se definir isso como assimétrico ou manual ao jogar subártico ou subtropical, pois os bancos só recebem carga nesses climas. Para temperado, você também pode escolher simétrico, pois os bancos enviarão objetos de valor de volta ao banco de origem.
+STR_CONFIG_SETTING_DISTRIBUTION_ARMOURED_HELPTEXT               :A classe de carga BLINDADA contém objetos de valor no clima temperado, diamantes no clima subtropical e ouro no clima subártico. NewGRFs podem modificar isso. "Simétrico" significa que aproximadamente a mesma quantidade dessa carga será enviada de uma estação A para uma estação B, assim como de B para A. "Assimétrico" significa que quantidades arbitrárias dessa carga podem ser enviadas em qualquer direção. "Manual" significa que não haverá distribuição automática para aquela carga. Recomenda-se definir isso como assimétrico ou manual ao jogar subártico ou subtropical, pois os bancos só recebem carga nesses climas. Para temperado, você também pode escolher simétrico, pois os bancos enviarão objetos de valor de volta ao banco de origem
 STR_CONFIG_SETTING_DISTRIBUTION_DEFAULT                         :Modo de distribuição para outras classes de carga: {STRING}
-STR_CONFIG_SETTING_DISTRIBUTION_DEFAULT_HELPTEXT                :"Assimétrico" significa que quantidades arbitrárias de carga podem ser enviadas em qualquer direção. "Manual" significa que não haverá distribuição automática dessas cargas.
+STR_CONFIG_SETTING_DISTRIBUTION_DEFAULT_HELPTEXT                :"Assimétrico" significa que quantidades arbitrárias de carga podem ser enviadas em qualquer direção. "Manual" significa que não haverá distribuição automática dessas cargas
 ###length 3
 STR_CONFIG_SETTING_DISTRIBUTION_MANUAL                          :manual
 STR_CONFIG_SETTING_DISTRIBUTION_ASYMMETRIC                      :assimétrico
 STR_CONFIG_SETTING_DISTRIBUTION_SYMMETRIC                       :simétrico
 
 STR_CONFIG_SETTING_LINKGRAPH_ACCURACY                           :Precisão da distribuição: {STRING}
-STR_CONFIG_SETTING_LINKGRAPH_ACCURACY_HELPTEXT                  :Quanto maior for esse valor, mais tempo de CPU será necessário para calcular a rede de conexões. Se demorar muito, você poderá notar um atraso. Entretanto, se o valor for muito pequeno, a distribuição será imprecisa e você irá perceber que cargas não estão sendo enviadas para os locais esperados.
+STR_CONFIG_SETTING_LINKGRAPH_ACCURACY_HELPTEXT                  :Quanto maior for esse valor, mais tempo de CPU será necessário para calcular a rede de conexões. Se demorar muito, você poderá notar um atraso. Entretanto, se o valor for muito pequeno, a distribuição será imprecisa e você irá perceber que cargas não estão sendo enviadas para os locais esperados
 
 STR_CONFIG_SETTING_DEMAND_DISTANCE                              :Efeito da distância na demanda: {STRING}
-STR_CONFIG_SETTING_DEMAND_DISTANCE_HELPTEXT                     :Se for definido um valor maior que 0, a distância entre a estação de origem A de alguma carga e um possível destino B terá um efeito na quantidade de carga transportada de A até B. Quanto mais distante B estiver de A, menos carga será enviada. Quanto maior o valor definido, menos carga será transportada para estações distantes e mais carga será enviada para estações mais próximas.
+STR_CONFIG_SETTING_DEMAND_DISTANCE_HELPTEXT                     :Se for definido um valor maior que 0, a distância entre a estação de origem A de alguma carga e um possível destino B terá um efeito na quantidade de carga enviada de A até B. Quanto mais distante B estiver de A, menos carga será enviada. Quanto maior o valor definido, menos carga será transportada para estações distantes e mais carga será enviada para estações mais próximas
 STR_CONFIG_SETTING_DEMAND_SIZE                                  :Quantidade de carga retornada no modo simétrico: {STRING}
-STR_CONFIG_SETTING_DEMAND_SIZE_HELPTEXT                         :Definindo isto para menos de 100% faz com que a distribuição simétrica comporte-se mais como a assimétrica. Menos carga será forçadamente devolvida se uma certa quantidade for enviada a uma estação. Se você definir para 0% a distribuição simétrica se comportará exatamente como a assimétrica.
+STR_CONFIG_SETTING_DEMAND_SIZE_HELPTEXT                         :Definindo isto para menos de 100% faz com que a distribuição simétrica comporte-se mais como a assimétrica. Menos carga será forçadamente devolvida se uma certa quantidade for enviada a uma estação. Se você definir para 0% a distribuição simétrica se comportará exatamente como a assimétrica
 
 STR_CONFIG_SETTING_SHORT_PATH_SATURATION                        :Saturação de rotas curtas antes de usar rotas de grande capacidade: {STRING}
-STR_CONFIG_SETTING_SHORT_PATH_SATURATION_HELPTEXT               :Frequentemente há diversas rotas entre duas estações. Cargodist irá saturar a rota mais curta primeiro, depois usar a segunda rota mais curta até saturá-la, e assim por diante. A saturação é determinada por uma estimativa da capacidade e da utilização prevista. Ao saturar todas as rotas, se ainda existir demanda não atendida, CargoDist irá sobrecarregar todas as rotas, dando preferência àquelas de maior capacidade. Entretanto, na maioria das vezes o algoritmo não irá estimar corretamente a capacidade. Esta configuração permite definir até que porcentagem uma rota mais curta deverá ser saturada na primeira passada antes do algoritmo selecionar a próxima rota mais longa. Defina-o para menos de 100% para evitar estações sobrecarregadas no caso de capacidade superestimada.
+STR_CONFIG_SETTING_SHORT_PATH_SATURATION_HELPTEXT               :Frequentemente há diversas rotas entre duas estações. Cargodist irá saturar a rota mais curta primeiro, depois usar a segunda rota mais curta até saturá-la, e assim por diante. A saturação é determinada por uma estimativa da capacidade e da utilização prevista. Ao saturar todas as rotas, se ainda existir demanda não atendida, CargoDist irá sobrecarregar todas as rotas, dando preferência àquelas de maior capacidade. Entretanto, na maioria das vezes o algoritmo não irá estimar corretamente a capacidade. Esta configuração permite definir até que porcentagem uma rota mais curta deverá ser saturada na primeira passada antes do algoritmo selecionar a próxima rota mais longa. Defina-o para menos de 100% para evitar estações sobrecarregadas no caso de capacidade superestimada
 
 STR_CONFIG_SETTING_LOCALISATION_UNITS_VELOCITY                  :Unidades de velocidade (terrestre): {STRING}
 STR_CONFIG_SETTING_LOCALISATION_UNITS_VELOCITY_NAUTICAL         :Unidades de velocidade (náutica): {STRING}
@@ -2307,9 +2307,9 @@ STR_FACE_OK_TOOLTIP                                             :{BLACK}Aceitar 
 STR_FACE_RANDOM                                                 :{BLACK}Seleção aleatória
 
 STR_FACE_MALE_BUTTON                                            :{BLACK}Masculino
-STR_FACE_MALE_TOOLTIP                                           :{BLACK}Escolher faces masculinas
+STR_FACE_MALE_TOOLTIP                                           :{BLACK}Selecionar faces masculinas
 STR_FACE_FEMALE_BUTTON                                          :{BLACK}Feminino
-STR_FACE_FEMALE_TOOLTIP                                         :{BLACK}Escolher faces femininas
+STR_FACE_FEMALE_TOOLTIP                                         :{BLACK}Selecionar faces femininas
 STR_FACE_NEW_FACE_BUTTON                                        :{BLACK}Nova Face
 STR_FACE_NEW_FACE_TOOLTIP                                       :{BLACK}Gerar nova face aleatoriamente
 STR_FACE_ADVANCED                                               :{BLACK}Avançado
@@ -2785,16 +2785,16 @@ STR_RAIL_TOOLBAR_ELRAIL_CONSTRUCTION_CAPTION                    :Construção de
 STR_RAIL_TOOLBAR_MONORAIL_CONSTRUCTION_CAPTION                  :Construção de Monotrilho
 STR_RAIL_TOOLBAR_MAGLEV_CONSTRUCTION_CAPTION                    :Construção de MagLev
 
-STR_RAIL_TOOLBAR_TOOLTIP_BUILD_RAILROAD_TRACK                   :{BLACK}Construir ferrovia. Ctrl+Clique para remover a ferrovia. Pressione também Shift para apenas mostrar o custo estimado
-STR_RAIL_TOOLBAR_TOOLTIP_BUILD_AUTORAIL                         :{BLACK}Construir ferrovia usando o modo Autotrilho. Ctrl+Clique para remover seção da ferrovia. Pressione também Shift para apenas mostrar o custo estimado
-STR_RAIL_TOOLBAR_TOOLTIP_BUILD_TRAIN_DEPOT_FOR_BUILDING         :{BLACK}Construir depósito ferroviário (para compra e manutenção de trens). Pressione também Shift para apenas mostrar o custo estimado
-STR_RAIL_TOOLBAR_TOOLTIP_CONVERT_RAIL_TO_WAYPOINT               :{BLACK}Construir ponto de controle na ferrovia. Ctrl+Clique para selecionar outro ponto de controle e unir com este. Pressione também Shift para apenas mostrar o custo estimado
-STR_RAIL_TOOLBAR_TOOLTIP_BUILD_RAILROAD_STATION                 :{BLACK}Construir estação ferroviária. Ctrl+Clique para selecionar outra estação e unir com esta. Pressione também Shift para apenas mostrar o custo estimado
-STR_RAIL_TOOLBAR_TOOLTIP_BUILD_RAILROAD_SIGNALS                 :{BLACK}Construir sinal na ferrovia. Ctrl+Clique para construir o sinal com estilo diferente{}Clique+Arraste para preencher a seção selecionada da ferrovia com os sinais no espaçamento escolhido. Ctrl+Clique+Arraste para colocar sinais até a próxima junção, estação ou sinal. Pressione também Shift para apenas mostrar o custo estimado
-STR_RAIL_TOOLBAR_TOOLTIP_BUILD_RAILROAD_BRIDGE                  :{BLACK}Construir ponte ferroviária. Pressione também Shift para apenas mostrar o custo estimado
-STR_RAIL_TOOLBAR_TOOLTIP_BUILD_RAILROAD_TUNNEL                  :{BLACK}Construir túnel ferroviário. Pressione também Shift para apenas mostrar o custo estimado
+STR_RAIL_TOOLBAR_TOOLTIP_BUILD_RAILROAD_TRACK                   :{BLACK}Construir ferrovia. Ctrl+Clique para remover a ferrovia. Pressione também Shift para só mostrar o custo estimado
+STR_RAIL_TOOLBAR_TOOLTIP_BUILD_AUTORAIL                         :{BLACK}Construir ferrovia usando o modo Autotrilho. Ctrl+Clique para remover seção da ferrovia. Pressione também Shift para só mostrar o custo estimado
+STR_RAIL_TOOLBAR_TOOLTIP_BUILD_TRAIN_DEPOT_FOR_BUILDING         :{BLACK}Construir depósito ferroviário (para compra e manutenção de trens). Pressione também Shift para só mostrar o custo estimado
+STR_RAIL_TOOLBAR_TOOLTIP_CONVERT_RAIL_TO_WAYPOINT               :{BLACK}Construir ponto de controle na ferrovia. Ctrl+Clique para selecionar outro ponto de controle e unir com este. Pressione também Shift para só mostrar o custo estimado
+STR_RAIL_TOOLBAR_TOOLTIP_BUILD_RAILROAD_STATION                 :{BLACK}Construir estação ferroviária. Ctrl+Clique para selecionar outra estação e unir com esta. Pressione também Shift para só mostrar o custo estimado
+STR_RAIL_TOOLBAR_TOOLTIP_BUILD_RAILROAD_SIGNALS                 :{BLACK}Construir sinal na ferrovia. Ctrl+Clique para construir o sinal com estilo diferente{}Clique+Arraste para preencher a seção selecionada da ferrovia com os sinais no espaçamento escolhido. Ctrl+Clique+Arraste para colocar sinais até a próxima junção, estação ou sinal. Pressione também Shift para só mostrar o custo estimado
+STR_RAIL_TOOLBAR_TOOLTIP_BUILD_RAILROAD_BRIDGE                  :{BLACK}Construir ponte ferroviária. Pressione também Shift para só mostrar o custo estimado
+STR_RAIL_TOOLBAR_TOOLTIP_BUILD_RAILROAD_TUNNEL                  :{BLACK}Construir túnel ferroviário. Pressione também Shift para só mostrar o custo estimado
 STR_RAIL_TOOLBAR_TOOLTIP_TOGGLE_BUILD_REMOVE_FOR                :{BLACK}Construir/Remover ferrovia, sinais, pontos de controle e estações. Ctrl+Clique para também remover os trilhos de pontos de controle e das estações
-STR_RAIL_TOOLBAR_TOOLTIP_CONVERT_RAIL                           :{BLACK}Converter/Atualizar tipo de trilho. Pressione também Shift para apenas mostrar o custo estimado
+STR_RAIL_TOOLBAR_TOOLTIP_CONVERT_RAIL                           :{BLACK}Converter/Atualizar tipo de trilho. Pressione também Shift para só mostrar o custo estimado
 
 STR_RAIL_NAME_RAILROAD                                          :Ferrovia
 STR_RAIL_NAME_ELRAIL                                            :Ferrovia eletrificada
@@ -2844,7 +2844,7 @@ STR_BUILD_SIGNAL_ELECTRIC_EXIT_TOOLTIP                          :{BLACK}Sinal de
 STR_BUILD_SIGNAL_ELECTRIC_COMBO_TOOLTIP                         :{BLACK}Sinal Combinado (elétrico){}O sinal combinado funciona simultaneamente como um sinal de entrada e de saída. Isto permite construir ramificações complexas de pré-sinais.
 STR_BUILD_SIGNAL_ELECTRIC_PBS_TOOLTIP                           :{BLACK}Sinal de Caminho (elétrico){}Um sinal de caminho que permite mais de um trem entrar em uma seção sinalizada ao mesmo tempo, se o trem puder reservar um caminho para um ponto de parada seguro. Sinais de caminho padrões podem ser passados no sentido contrário
 STR_BUILD_SIGNAL_ELECTRIC_PBS_OWAY_TOOLTIP                      :{BLACK}Sinal de Sentido Único (elétrico){}Um sinal de caminho que permite mais de um trem entrar em uma seção sinalizada ao mesmo tempo, se o trem puder reservar um caminho para um ponto de parada seguro. Os sinais de sentido único não podem ser passados no sentido contrário
-STR_BUILD_SIGNAL_CONVERT_TOOLTIP                                :{BLACK}Converter sinal{}Clique em um sinal existente para convertê-lo para o tipo e variante de sinal selecionado. Ctrl+Clique para mudar a variante existente. Shift+Clique para mostrar o custo estimado de conversão
+STR_BUILD_SIGNAL_CONVERT_TOOLTIP                                :{BLACK}Converter sinal{}Clique em um sinal existente para convertê-lo para o tipo e variante de sinal selecionado. Ctrl+Clique para mudar a variante existente. Shift+Clique para só mostrar o custo estimado de conversão
 STR_BUILD_SIGNAL_DRAG_SIGNALS_DENSITY_TOOLTIP                   :{BLACK}Distância entre os sinais quando arrastar
 STR_BUILD_SIGNAL_DRAG_SIGNALS_DENSITY_DECREASE_TOOLTIP          :{BLACK}Diminuir a distância entre os sinais quando arrastar
 STR_BUILD_SIGNAL_DRAG_SIGNALS_DENSITY_INCREASE_TOOLTIP          :{BLACK}Aumentar a distância entre os sinais quando arrastar
@@ -2870,25 +2870,25 @@ STR_BRIDGE_TUBULAR_SILICON                                      :Tubular, Silíc
 # Road construction toolbar
 STR_ROAD_TOOLBAR_ROAD_CONSTRUCTION_CAPTION                      :{WHITE}Construção de estradas
 STR_ROAD_TOOLBAR_TRAM_CONSTRUCTION_CAPTION                      :{WHITE}Construção de Linhas de Bonde
-STR_ROAD_TOOLBAR_TOOLTIP_BUILD_ROAD_SECTION                     :{BLACK}Construir seção de estrada. Ctrl+Clique para remover seção da estrada. Pressione também Shift para apenas mostrar o custo estimado
-STR_ROAD_TOOLBAR_TOOLTIP_BUILD_TRAMWAY_SECTION                  :{BLACK}Construir seção de linha de bonde. Ctrl+Clique para remover seção da linha. Pressione também Shift para apenas mostrar o custo estimado
-STR_ROAD_TOOLBAR_TOOLTIP_BUILD_AUTOROAD                         :{BLACK}Construir estrada usando o modo Autoestrada. Ctrl+Clique para remover seção da estrada. Pressione também Shift para apenas mostrar o custo estimado
-STR_ROAD_TOOLBAR_TOOLTIP_BUILD_AUTOTRAM                         :{BLACK}Construir linha de bonde usando o modo Autotrilho. Ctrl+Clique para remover seção da linha. Pressione também Shift para apenas mostrar o custo estimado
-STR_ROAD_TOOLBAR_TOOLTIP_BUILD_ROAD_VEHICLE_DEPOT               :{BLACK}Construir depósito rodoviário (para compra e manutenção de veículos). Pressione também Shift para apenas mostrar o custo estimado
-STR_ROAD_TOOLBAR_TOOLTIP_BUILD_TRAM_VEHICLE_DEPOT               :{BLACK}Construir depósito de bondes (para compra e manutenção de bondes). Pressione também Shift para apenas mostrar o custo estimado
-STR_ROAD_TOOLBAR_TOOLTIP_BUILD_BUS_STATION                      :{BLACK}Construir estação de ônibus. Ctrl+Clique para selecionar outra estação e unir com esta. Pressione também Shift para apenas mostrar o custo estimado
-STR_ROAD_TOOLBAR_TOOLTIP_BUILD_PASSENGER_TRAM_STATION           :{BLACK}Construir estação de bondes de passageiros. Ctrl+Clique para selecionar outra estação e unir com esta. Pressione também Shift para apenas mostrar o custo estimado
-STR_ROAD_TOOLBAR_TOOLTIP_BUILD_TRUCK_LOADING_BAY                :{BLACK}Construir estação de caminhões. Ctrl+Clique para selecionar outra estação e unir com esta. Pressione também Shift para apenas mostrar o custo estimado
-STR_ROAD_TOOLBAR_TOOLTIP_BUILD_CARGO_TRAM_STATION               :{BLACK}Construir estação de bondes de carga. Ctrl+Clique para selecionar outra estação e unir com esta. Pressione também Shift para apenas mostrar o custo estimado
+STR_ROAD_TOOLBAR_TOOLTIP_BUILD_ROAD_SECTION                     :{BLACK}Construir seção de estrada. Ctrl+Clique para remover seção da estrada. Pressione também Shift para só mostrar o custo estimado
+STR_ROAD_TOOLBAR_TOOLTIP_BUILD_TRAMWAY_SECTION                  :{BLACK}Construir seção de linha de bonde. Ctrl+Clique para remover seção da linha. Pressione também Shift para só mostrar o custo estimado
+STR_ROAD_TOOLBAR_TOOLTIP_BUILD_AUTOROAD                         :{BLACK}Construir estrada usando o modo Autoestrada. Ctrl+Clique para remover seção da estrada. Pressione também Shift para só mostrar o custo estimado
+STR_ROAD_TOOLBAR_TOOLTIP_BUILD_AUTOTRAM                         :{BLACK}Construir linha de bonde usando o modo Autotrilho. Ctrl+Clique para remover seção da linha. Pressione também Shift para só mostrar o custo estimado
+STR_ROAD_TOOLBAR_TOOLTIP_BUILD_ROAD_VEHICLE_DEPOT               :{BLACK}Construir depósito rodoviário (para compra e manutenção de veículos). Pressione também Shift para só mostrar o custo estimado
+STR_ROAD_TOOLBAR_TOOLTIP_BUILD_TRAM_VEHICLE_DEPOT               :{BLACK}Construir depósito de bondes (para compra e manutenção de bondes). Pressione também Shift para só mostrar o custo estimado
+STR_ROAD_TOOLBAR_TOOLTIP_BUILD_BUS_STATION                      :{BLACK}Construir estação de ônibus. Ctrl+Clique para selecionar outra estação e unir com esta. Pressione também Shift para só mostrar o custo estimado
+STR_ROAD_TOOLBAR_TOOLTIP_BUILD_PASSENGER_TRAM_STATION           :{BLACK}Construir estação de bondes de passageiros. Ctrl+Clique para selecionar outra estação e unir com esta. Pressione também Shift para só mostrar o custo estimado
+STR_ROAD_TOOLBAR_TOOLTIP_BUILD_TRUCK_LOADING_BAY                :{BLACK}Construir estação de caminhões. Ctrl+Clique para selecionar outra estação e unir com esta. Pressione também Shift para só mostrar o custo estimado
+STR_ROAD_TOOLBAR_TOOLTIP_BUILD_CARGO_TRAM_STATION               :{BLACK}Construir estação de bondes de carga. Ctrl+Clique para selecionar outra estação e unir com esta. Pressione também Shift para só mostrar o custo estimado
 STR_ROAD_TOOLBAR_TOOLTIP_TOGGLE_ONE_WAY_ROAD                    :{BLACK}Ativar/Desativar estradas de sentido único
-STR_ROAD_TOOLBAR_TOOLTIP_BUILD_ROAD_BRIDGE                      :{BLACK}Construir ponte rodoviária. Pressione também Shift para apenas mostrar o custo estimado
-STR_ROAD_TOOLBAR_TOOLTIP_BUILD_TRAMWAY_BRIDGE                   :{BLACK}Construir ponte para bondes. Pressione também Shift para apenas mostrar o custo estimado
-STR_ROAD_TOOLBAR_TOOLTIP_BUILD_ROAD_TUNNEL                      :{BLACK}Construir túnel rodoviário. Pressione também Shift para apenas mostrar o custo estimado
-STR_ROAD_TOOLBAR_TOOLTIP_BUILD_TRAMWAY_TUNNEL                   :{BLACK}Construir túnel para bondes. Pressione também Shift para apenas mostrar o custo estimado
+STR_ROAD_TOOLBAR_TOOLTIP_BUILD_ROAD_BRIDGE                      :{BLACK}Construir ponte rodoviária. Pressione também Shift para só mostrar o custo estimado
+STR_ROAD_TOOLBAR_TOOLTIP_BUILD_TRAMWAY_BRIDGE                   :{BLACK}Construir ponte para bondes. Pressione também Shift para só mostrar o custo estimado
+STR_ROAD_TOOLBAR_TOOLTIP_BUILD_ROAD_TUNNEL                      :{BLACK}Construir túnel rodoviário. Pressione também Shift para só mostrar o custo estimado
+STR_ROAD_TOOLBAR_TOOLTIP_BUILD_TRAMWAY_TUNNEL                   :{BLACK}Construir túnel para bondes. Pressione também Shift para só mostrar o custo estimado
 STR_ROAD_TOOLBAR_TOOLTIP_TOGGLE_BUILD_REMOVE_FOR_ROAD           :{BLACK}Construir/Remover estrada
 STR_ROAD_TOOLBAR_TOOLTIP_TOGGLE_BUILD_REMOVE_FOR_TRAMWAYS       :{BLACK}Construir/Remover linhas de bonde
-STR_ROAD_TOOLBAR_TOOLTIP_CONVERT_ROAD                           :{BLACK}Converter/Atualizar o tipo de estrada. Pressione também Shift para apenas mostrar o custo estimado
-STR_ROAD_TOOLBAR_TOOLTIP_CONVERT_TRAM                           :{BLACK}Converter/Atualizar o tipo de bonde. Pressione também Shift para apenas mostrar o custo estimado
+STR_ROAD_TOOLBAR_TOOLTIP_CONVERT_ROAD                           :{BLACK}Converter/Atualizar o tipo de estrada. Pressione também Shift para só mostrar o custo estimado
+STR_ROAD_TOOLBAR_TOOLTIP_CONVERT_TRAM                           :{BLACK}Converter/Atualizar o tipo de bonde. Pressione também Shift para só mostrar o custo estimado
 
 STR_ROAD_NAME_ROAD                                              :Estrada
 STR_ROAD_NAME_TRAM                                              :Bonde
@@ -2912,12 +2912,12 @@ STR_STATION_BUILD_CARGO_TRAM_ORIENTATION_TOOLTIP                :{BLACK}Escolher
 # Waterways toolbar (last two for SE only)
 STR_WATERWAYS_TOOLBAR_CAPTION                                   :{WHITE}Construção de Hidrovias
 STR_WATERWAYS_TOOLBAR_CAPTION_SE                                :{WHITE}Hidrovias
-STR_WATERWAYS_TOOLBAR_BUILD_CANALS_TOOLTIP                      :{BLACK}Construir canais. Pressione também Shift para apenas mostrar o custo estimado
-STR_WATERWAYS_TOOLBAR_BUILD_LOCKS_TOOLTIP                       :{BLACK}Construir eclusas. Pressione também Shift para apenas mostrar o custo estimado
-STR_WATERWAYS_TOOLBAR_BUILD_DEPOT_TOOLTIP                       :{BLACK}Construir depósito de embarcações (para compra e manutenção de embarcações). Pressione também Shift para apenas mostrar o custo estimado
-STR_WATERWAYS_TOOLBAR_BUILD_DOCK_TOOLTIP                        :{BLACK}Construir doca naval. Ctrl+Clique para selecionar outra estação e unir com esta. Pressione também Shift para apenas mostrar o custo estimado
-STR_WATERWAYS_TOOLBAR_BUOY_TOOLTIP                              :{BLACK}Colocar uma boia que pode ser usada como ponto de controle. Pressione também Shift para apenas mostrar o custo estimado
-STR_WATERWAYS_TOOLBAR_BUILD_AQUEDUCT_TOOLTIP                    :{BLACK}Construir aqueduto. Pressione também Shift para apenas mostrar o custo estimado
+STR_WATERWAYS_TOOLBAR_BUILD_CANALS_TOOLTIP                      :{BLACK}Construir canais. Pressione também Shift para só mostrar o custo estimado
+STR_WATERWAYS_TOOLBAR_BUILD_LOCKS_TOOLTIP                       :{BLACK}Construir eclusas. Pressione também Shift para só mostrar o custo estimado
+STR_WATERWAYS_TOOLBAR_BUILD_DEPOT_TOOLTIP                       :{BLACK}Construir depósito de embarcações (para compra e manutenção de embarcações). Pressione também Shift para só mostrar o custo estimado
+STR_WATERWAYS_TOOLBAR_BUILD_DOCK_TOOLTIP                        :{BLACK}Construir doca naval. Ctrl+Clique para selecionar outra estação e unir com esta. Pressione também Shift para só mostrar o custo estimado
+STR_WATERWAYS_TOOLBAR_BUOY_TOOLTIP                              :{BLACK}Colocar uma boia que pode ser usada como ponto de controle. Pressione também Shift para só mostrar o custo estimado
+STR_WATERWAYS_TOOLBAR_BUILD_AQUEDUCT_TOOLTIP                    :{BLACK}Construir aqueduto. Pressione também Shift para só mostrar o custo estimado
 STR_WATERWAYS_TOOLBAR_CREATE_LAKE_TOOLTIP                       :{BLACK}Construir canal. Ctrl+Clique no nível do mar para inundar com água do mar
 STR_WATERWAYS_TOOLBAR_CREATE_RIVER_TOOLTIP                      :{BLACK}Colocar rios. Ctrl+Clique para selecionar diagonalmente
 
@@ -2930,7 +2930,7 @@ STR_STATION_BUILD_DOCK_CAPTION                                  :{WHITE}Doca
 
 # Airport toolbar
 STR_TOOLBAR_AIRCRAFT_CAPTION                                    :{WHITE}Aeroportos
-STR_TOOLBAR_AIRCRAFT_BUILD_AIRPORT_TOOLTIP                      :{BLACK}Construir aeroporto. Ctrl+Clique para selecionar outro aeroporto e unir com este. Pressione também Shift para apenas mostrar o custo estimado
+STR_TOOLBAR_AIRCRAFT_BUILD_AIRPORT_TOOLTIP                      :{BLACK}Construir aeroporto. Ctrl+Clique para selecionar outro aeroporto e unir com este. Pressione também Shift para só mostrar o custo estimado
 
 # Airport construction window
 STR_STATION_BUILD_AIRPORT_CAPTION                               :{WHITE}Seleção de Aeroporto
@@ -2957,14 +2957,14 @@ STR_STATION_BUILD_NOISE                                         :{BLACK}Ruído g
 
 # Landscaping toolbar
 STR_LANDSCAPING_TOOLBAR                                         :{WHITE}Paisagismo
-STR_LANDSCAPING_TOOLTIP_LOWER_A_CORNER_OF_LAND                  :{BLACK}Abaixar um canto do terreno. Clique+Arraste para abaixar o primeiro canto selecionado e nivelar a área selecionada à nova altura do canto. Ctrl+Clique+Arraste para selecionar a área diagonalmente. Pressione também Shift para apenas mostrar o custo estimado
-STR_LANDSCAPING_TOOLTIP_RAISE_A_CORNER_OF_LAND                  :{BLACK}Elevar um canto do terreno. Clique+Arraste para elevar o primeiro canto selecionado e nivelar a área selecionada à nova altura do canto. Ctrl+Clique+Arraste para selecionar a área diagonalmente. Pressione também Shift para apenas mostrar o custo estimado
-STR_LANDSCAPING_LEVEL_LAND_TOOLTIP                              :{BLACK}Nivelar uma área do terreno à altura do primeiro canto selecionado. Ctrl+Clique+Arraste para selecionar a área diagonalmente. Pressione também Shift para apenas mostrar o custo estimado
-STR_LANDSCAPING_TOOLTIP_PURCHASE_LAND                           :{BLACK}Comprar terreno para uso futuro. Ctrl+Clique+Arraste para selecionar a área diagonalmente. Pressione também Shift para apenas mostrar o custo estimado
+STR_LANDSCAPING_TOOLTIP_LOWER_A_CORNER_OF_LAND                  :{BLACK}Abaixar um canto do terreno. Clique+Arraste para abaixar o primeiro canto selecionado e nivelar a área selecionada à nova altura do canto. Ctrl+Clique+Arraste para selecionar a área diagonalmente. Pressione também Shift para só mostrar o custo estimado
+STR_LANDSCAPING_TOOLTIP_RAISE_A_CORNER_OF_LAND                  :{BLACK}Elevar um canto do terreno. Clique+Arraste para elevar o primeiro canto selecionado e nivelar a área selecionada à nova altura do canto. Ctrl+Clique+Arraste para selecionar a área diagonalmente. Pressione também Shift para só mostrar o custo estimado
+STR_LANDSCAPING_LEVEL_LAND_TOOLTIP                              :{BLACK}Nivelar uma área do terreno à altura do primeiro canto selecionado. Ctrl+Clique+Arraste para selecionar a área diagonalmente. Pressione também Shift para só mostrar o custo estimado
+STR_LANDSCAPING_TOOLTIP_PURCHASE_LAND                           :{BLACK}Comprar terreno para uso futuro. Ctrl+Clique+Arraste para selecionar a área diagonalmente. Pressione também Shift para só mostrar o custo estimado
 
 # Object construction window
 STR_OBJECT_BUILD_CAPTION                                        :{WHITE}Seleção de Objeto
-STR_OBJECT_BUILD_TOOLTIP                                        :{BLACK}Escolher objeto para construir. Ctrl+Clique+Arraste para selecionar a área diagonalmente. Pressione também Shift para apenas mostrar o custo estimado
+STR_OBJECT_BUILD_TOOLTIP                                        :{BLACK}Escolher objeto para construir. Ctrl+Clique+Arraste para selecionar a área diagonalmente. Pressione também Shift para só mostrar o custo estimado
 STR_OBJECT_BUILD_CLASS_TOOLTIP                                  :{BLACK}Escolher a classe do objeto para construir
 STR_OBJECT_BUILD_PREVIEW_TOOLTIP                                :{BLACK}Pré-visualização do objeto
 STR_OBJECT_BUILD_SIZE                                           :{BLACK}Tamanho: {GOLD}{NUM} x {NUM} quadrados
@@ -2974,17 +2974,17 @@ STR_OBJECT_CLASS_TRNS                                           :Transmissores
 
 # Tree planting window (last eight for SE only)
 STR_PLANT_TREE_CAPTION                                          :{WHITE}Árvores
-STR_PLANT_TREE_TOOLTIP                                          :{BLACK}Escolher tipo de árvore para plantar. Se no quadrado já existir uma árvore, serão adicionadas mais árvores de diferentes tipos, ignorando o tipo selecionado
+STR_PLANT_TREE_TOOLTIP                                          :{BLACK}Escolher um tipo de árvore para plantar. Se no quadrado já existir uma árvore, serão adicionadas mais árvores de diferentes tipos, ignorando o tipo selecionado
 STR_TREES_RANDOM_TYPE                                           :{BLACK}Árvores de tipo aleatório
-STR_TREES_RANDOM_TYPE_TOOLTIP                                   :{BLACK}Plantar árvores de tipo aleatório. Ctrl+Clique+Arraste para selecionar a área diagonalmente. Pressione também Shift para apenas mostrar o custo estimado
+STR_TREES_RANDOM_TYPE_TOOLTIP                                   :{BLACK}Plantar árvores de tipo aleatório. Ctrl+Clique+Arraste para selecionar a área diagonalmente. Pressione também Shift para só mostrar o custo estimado
 STR_TREES_RANDOM_TREES_BUTTON                                   :{BLACK}Plantar Aleatoriamente
 STR_TREES_RANDOM_TREES_TOOLTIP                                  :{BLACK}Plantar árvores aleatoriamente no terreno
 STR_TREES_MODE_NORMAL_BUTTON                                    :{BLACK}Normal
-STR_TREES_MODE_NORMAL_TOOLTIP                                   :{BLACK}Plantar árvores isoladas ao arrastar o cursor sobre o terreno.
+STR_TREES_MODE_NORMAL_TOOLTIP                                   :{BLACK}Plantar árvores isoladas ao arrastar o cursor sobre o terreno
 STR_TREES_MODE_FOREST_SM_BUTTON                                 :{BLACK}Bosque
-STR_TREES_MODE_FOREST_SM_TOOLTIP                                :{BLACK}Plantar florestas pequenas ao arrastar o cursor sobre o terreno.
+STR_TREES_MODE_FOREST_SM_TOOLTIP                                :{BLACK}Plantar florestas pequenas ao arrastar o cursor sobre o terreno
 STR_TREES_MODE_FOREST_LG_BUTTON                                 :{BLACK}Floresta
-STR_TREES_MODE_FOREST_LG_TOOLTIP                                :{BLACK}Plantar florestas grandes ao arrastar o cursor sobre o terreno.
+STR_TREES_MODE_FOREST_LG_TOOLTIP                                :{BLACK}Plantar florestas grandes ao arrastar o cursor sobre o terreno
 
 # Land generation window (SE)
 STR_TERRAFORM_TOOLBAR_LAND_GENERATION_CAPTION                   :{WHITE}Geração de Terreno
@@ -3003,7 +3003,7 @@ STR_RESET_LANDSCAPE_CONFIRMATION_TEXT                           :{WHITE}Você qu
 # Town generation window (SE)
 STR_FOUND_TOWN_CAPTION                                          :{WHITE}Geração de Localidades
 STR_FOUND_TOWN_NEW_TOWN_BUTTON                                  :{BLACK}Nova Localidade
-STR_FOUND_TOWN_NEW_TOWN_TOOLTIP                                 :{BLACK}Fundar nova localidade. Pressione também Shift para apenas mostrar o custo estimado
+STR_FOUND_TOWN_NEW_TOWN_TOOLTIP                                 :{BLACK}Fundar nova localidade. Pressione também Shift para só mostrar o custo estimado
 STR_FOUND_TOWN_RANDOM_TOWN_BUTTON                               :{BLACK}Localidade Aleatória
 STR_FOUND_TOWN_RANDOM_TOWN_TOOLTIP                              :{BLACK}Fundar localidade em um local aleatório
 STR_FOUND_TOWN_MANY_RANDOM_TOWNS                                :{BLACK}Várias localidades aleatórias
@@ -3199,11 +3199,11 @@ STR_ABOUT_COPYRIGHT_OPENTTD                                     :{BLACK}OpenTTD 
 STR_FRAMERATE_CAPTION                                           :{WHITE}Taxa de quadros
 STR_FRAMERATE_CAPTION_SMALL                                     :{STRING}{WHITE} ({DECIMAL}x)
 STR_FRAMERATE_RATE_GAMELOOP                                     :{BLACK}Taxa de simulação: {STRING}
-STR_FRAMERATE_RATE_GAMELOOP_TOOLTIP                             :{BLACK}Número de tiques simulados por segundo.
+STR_FRAMERATE_RATE_GAMELOOP_TOOLTIP                             :{BLACK}Número de tiques simulados por segundo
 STR_FRAMERATE_RATE_BLITTER                                      :{BLACK}Taxa de quadros gráficos: {STRING}
-STR_FRAMERATE_RATE_BLITTER_TOOLTIP                              :{BLACK}Número de quadros de vídeo renderizados por segundo.
+STR_FRAMERATE_RATE_BLITTER_TOOLTIP                              :{BLACK}Número de quadros de vídeo renderizados por segundo
 STR_FRAMERATE_SPEED_FACTOR                                      :{BLACK}Fator de velocidade atual do jogo: {DECIMAL}x
-STR_FRAMERATE_SPEED_FACTOR_TOOLTIP                              :{BLACK}Quão rápido o jogo está sendo executado, comparado com a velocidade esperada na taxa de simulação normal.
+STR_FRAMERATE_SPEED_FACTOR_TOOLTIP                              :{BLACK}Quão rápido o jogo está sendo executado, comparado com a velocidade esperada na taxa de simulação normal
 STR_FRAMERATE_CURRENT                                           :{WHITE}Atual
 STR_FRAMERATE_AVERAGE                                           :{WHITE}Média
 STR_FRAMERATE_MEMORYUSE                                         :{WHITE}Memória
@@ -3286,16 +3286,16 @@ STR_SAVELOAD_OSKTITLE                                           :{BLACK}Digitar 
 # World generation
 STR_MAPGEN_WORLD_GENERATION_CAPTION                             :{WHITE}Geração de Mapas
 STR_MAPGEN_MAPSIZE                                              :{BLACK}Dimensões do mapa:
-STR_MAPGEN_MAPSIZE_TOOLTIP                                      :{BLACK}Escolher o tamanho do mapa em quadrados. O número de quadrados disponíveis será um pouco menor
+STR_MAPGEN_MAPSIZE_TOOLTIP                                      :{BLACK}Escolher o tamanho do mapa, em quadrados. O número de quadrados disponíveis será um pouco menor
 STR_MAPGEN_BY                                                   :{BLACK}*
 STR_MAPGEN_NUMBER_OF_TOWNS                                      :{BLACK}Núm. de localidades:
-STR_MAPGEN_NUMBER_OF_TOWNS_TOOLTIP                              :{BLACK}Escolher a densidade de localidades ou um número personalizado
+STR_MAPGEN_NUMBER_OF_TOWNS_TOOLTIP                              :{BLACK}Escolher a densidade de localidades ou um número de localidades
 STR_MAPGEN_TOWN_NAME_LABEL                                      :{BLACK}Nomes das localidades:
 STR_MAPGEN_TOWN_NAME_DROPDOWN_TOOLTIP                           :{BLACK}Escolher o estilo dos nomes das localidades
 STR_MAPGEN_DATE                                                 :{BLACK}Data:
 STR_MAPGEN_DATE_TOOLTIP                                         :{BLACK}Escolher a data inicial
 STR_MAPGEN_NUMBER_OF_INDUSTRIES                                 :{BLACK}Núm. de indústrias:
-STR_MAPGEN_NUMBER_OF_INDUSTRIES_TOOLTIP                         :{BLACK}Escolher a densidade de indústrias ou um número personalizado
+STR_MAPGEN_NUMBER_OF_INDUSTRIES_TOOLTIP                         :{BLACK}Escolher a densidade de indústrias ou um número de indústrias
 STR_MAPGEN_HEIGHTMAP_HEIGHT                                     :{BLACK}Pico mais alto:
 STR_MAPGEN_HEIGHTMAP_HEIGHT_TOOLTIP                             :{BLACK}Escolher o pico mais alto que o jogo tentará criar, medido em elevação acima do nível do mar
 STR_MAPGEN_HEIGHTMAP_HEIGHT_UP                                  :{BLACK}Aumentar de uma unidade a altura máxima do pico mais alto no mapa
@@ -3348,7 +3348,7 @@ STR_MAPGEN_TOWN_NAME_CATALAN                                    :Catalão
 
 # Strings for map borders at game generation
 STR_MAPGEN_BORDER_TYPE                                          :{BLACK}Bordas do mapa:
-STR_MAPGEN_BORDER_TYPE_TOOLTIP                                  :{BLACK}Escolher as bordas do mapa do jogo
+STR_MAPGEN_BORDER_TYPE_TOOLTIP                                  :{BLACK}Escolher as bordas do mundo do jogo
 STR_MAPGEN_NORTHWEST                                            :{BLACK}Noroeste
 STR_MAPGEN_NORTHEAST                                            :{BLACK}Nordeste
 STR_MAPGEN_SOUTHEAST                                            :{BLACK}Sudeste
@@ -3732,7 +3732,7 @@ STR_STORY_BOOK_SPECTATOR_CAPTION                                :{WHITE}Livro de
 STR_STORY_BOOK_SPECTATOR                                        :Livro de Histórias Global
 STR_STORY_BOOK_TITLE                                            :{YELLOW}{STRING}
 STR_STORY_BOOK_GENERIC_PAGE_ITEM                                :Página {NUM}
-STR_STORY_BOOK_SEL_PAGE_TOOLTIP                                 :{BLACK}Saltar para uma página específica escolhendo-a nesta lista.
+STR_STORY_BOOK_SEL_PAGE_TOOLTIP                                 :{BLACK}Saltar para uma página específica escolhendo-a nesta lista
 STR_STORY_BOOK_PREV_PAGE                                        :{BLACK}Anterior
 STR_STORY_BOOK_PREV_PAGE_TOOLTIP                                :{BLACK}Ir para a página anterior
 STR_STORY_BOOK_NEXT_PAGE                                        :{BLACK}Próxima
@@ -3899,7 +3899,7 @@ STR_COMPANY_VIEW_BUILD_HQ_TOOLTIP                               :{BLACK}Construi
 STR_COMPANY_VIEW_VIEW_HQ_BUTTON                                 :{BLACK}Ver sede
 STR_COMPANY_VIEW_VIEW_HQ_TOOLTIP                                :{BLACK}Ver sede da empresa
 STR_COMPANY_VIEW_RELOCATE_HQ                                    :{BLACK}Mover sede
-STR_COMPANY_VIEW_RELOCATE_COMPANY_HEADQUARTERS                  :{BLACK}Reconstruir sede da empresa em outro local por 1% do valor da empresa. Pressione também Shift para apenas mostrar o custo estimado
+STR_COMPANY_VIEW_RELOCATE_COMPANY_HEADQUARTERS                  :{BLACK}Reconstruir sede da empresa em outro local por 1% do valor da empresa. Pressione também Shift para só mostrar o custo estimado
 STR_COMPANY_VIEW_INFRASTRUCTURE_BUTTON                          :{BLACK}Detalhes
 STR_COMPANY_VIEW_INFRASTRUCTURE_TOOLTIP                         :{BLACK}Ver contagens detalhadas da infraestrutura
 STR_COMPANY_VIEW_GIVE_MONEY_BUTTON                              :{BLACK}Dar dinheiro
@@ -4027,12 +4027,12 @@ STR_GROUP_DEFAULT_AIRCRAFTS                                     :Aeronaves sem g
 
 STR_GROUP_COUNT_WITH_SUBGROUP                                   :{TINY_FONT}{COMMA} (+{COMMA})
 
-STR_GROUPS_CLICK_ON_GROUP_FOR_TOOLTIP                           :{BLACK}Grupos - Clique em um grupo para listar todos os veículos do grupo. Clique+Arraste para organizar a hierarquia.
+STR_GROUPS_CLICK_ON_GROUP_FOR_TOOLTIP                           :{BLACK}Grupos - Clique em um grupo para listar todos os veículos do grupo. Clique+Arraste para organizar a hierarquia
 STR_GROUP_CREATE_TOOLTIP                                        :{BLACK}Clique para criar um grupo
 STR_GROUP_DELETE_TOOLTIP                                        :{BLACK}Excluir o grupo selecionado
 STR_GROUP_RENAME_TOOLTIP                                        :{BLACK}Alterar o nome do grupo selecionado
 STR_GROUP_LIVERY_TOOLTIP                                        :{BLACK}Alterar a cor do grupo selecionado
-STR_GROUP_REPLACE_PROTECTION_TOOLTIP                            :{BLACK}Clique para proteger este grupo da substituição automática global. Ctrl+Clique para também proteger os subgrupos.
+STR_GROUP_REPLACE_PROTECTION_TOOLTIP                            :{BLACK}Clique para proteger este grupo da substituição automática global. Ctrl+Clique para também proteger os subgrupos
 
 STR_QUERY_GROUP_DELETE_CAPTION                                  :{WHITE}Excluir grupo
 STR_GROUP_DELETE_QUERY_TEXT                                     :{WHITE}Você quer mesmo excluir este grupo e seus descendentes?
@@ -4118,16 +4118,16 @@ STR_BUY_VEHICLE_SHIP_BUY_REFIT_VEHICLE_BUTTON                   :{BLACK}Comprar 
 STR_BUY_VEHICLE_AIRCRAFT_BUY_REFIT_VEHICLE_BUTTON               :{BLACK}Comprar e Adaptar Aeronave
 
 ###length VEHICLE_TYPES
-STR_BUY_VEHICLE_TRAIN_BUY_VEHICLE_TOOLTIP                       :{BLACK}Comprar o veículo ferroviário selecionado. Pressione também Shift para apenas mostrar o custo estimado
-STR_BUY_VEHICLE_ROAD_VEHICLE_BUY_VEHICLE_TOOLTIP                :{BLACK}Comprar o veículo rodoviário selecionado. Pressione também Shift para apenas mostrar o custo estimado
-STR_BUY_VEHICLE_SHIP_BUY_VEHICLE_TOOLTIP                        :{BLACK}Comprar a embarcação selecionada. Pressione também Shift para apenas mostrar o custo estimado
-STR_BUY_VEHICLE_AIRCRAFT_BUY_VEHICLE_TOOLTIP                    :{BLACK}Comprar a aeronave selecionada. Pressione também Shift para apenas mostrar o custo estimado
+STR_BUY_VEHICLE_TRAIN_BUY_VEHICLE_TOOLTIP                       :{BLACK}Comprar o veículo ferroviário selecionado. Pressione também Shift para só mostrar o custo estimado
+STR_BUY_VEHICLE_ROAD_VEHICLE_BUY_VEHICLE_TOOLTIP                :{BLACK}Comprar o veículo rodoviário selecionado. Pressione também Shift para só mostrar o custo estimado
+STR_BUY_VEHICLE_SHIP_BUY_VEHICLE_TOOLTIP                        :{BLACK}Comprar a embarcação selecionada. Pressione também Shift para só mostrar o custo estimado
+STR_BUY_VEHICLE_AIRCRAFT_BUY_VEHICLE_TOOLTIP                    :{BLACK}Comprar a aeronave selecionada. Pressione também Shift para só mostrar o custo estimado
 
 ###length VEHICLE_TYPES
-STR_BUY_VEHICLE_TRAIN_BUY_REFIT_VEHICLE_TOOLTIP                 :{BLACK}Comprar e adaptar o veículo ferroviário selecionado. Pressione também Shift para apenas mostrar o custo estimado
-STR_BUY_VEHICLE_ROAD_VEHICLE_BUY_REFIT_VEHICLE_TOOLTIP          :{BLACK}Comprar e adaptar o veículo rodoviário selecionado. Pressione também Shift para apenas mostrar o custo estimado
-STR_BUY_VEHICLE_SHIP_BUY_REFIT_VEHICLE_TOOLTIP                  :{BLACK}Comprar e adaptar a embarcação selecionada. Pressione também Shift para apenas mostrar o custo estimado
-STR_BUY_VEHICLE_AIRCRAFT_BUY_REFIT_VEHICLE_TOOLTIP              :{BLACK}Comprar e adaptar a aeronave selecionada. Pressione também Shift para apenas mostrar o custo estimado
+STR_BUY_VEHICLE_TRAIN_BUY_REFIT_VEHICLE_TOOLTIP                 :{BLACK}Comprar e adaptar o veículo ferroviário selecionado. Pressione também Shift para só mostrar o custo estimado
+STR_BUY_VEHICLE_ROAD_VEHICLE_BUY_REFIT_VEHICLE_TOOLTIP          :{BLACK}Comprar e adaptar o veículo rodoviário selecionado. Pressione também Shift para só mostrar o custo estimado
+STR_BUY_VEHICLE_SHIP_BUY_REFIT_VEHICLE_TOOLTIP                  :{BLACK}Comprar e adaptar a embarcação selecionada. Pressione também Shift para só mostrar o custo estimado
+STR_BUY_VEHICLE_AIRCRAFT_BUY_REFIT_VEHICLE_TOOLTIP              :{BLACK}Comprar e adaptar a aeronave selecionada. Pressione também Shift para só mostrar o custo estimado
 
 ###length VEHICLE_TYPES
 STR_BUY_VEHICLE_TRAIN_RENAME_BUTTON                             :{BLACK}Renomear
@@ -4219,10 +4219,10 @@ STR_DEPOT_CLONE_SHIP                                            :{BLACK}Clonar E
 STR_DEPOT_CLONE_AIRCRAFT                                        :{BLACK}Clonar Aeronave
 
 ###length VEHICLE_TYPES
-STR_DEPOT_CLONE_TRAIN_DEPOT_INFO                                :{BLACK}Comprar uma cópia de um trem incluindo todos os vagões. Clique neste botão e depois em um trem que está dentro ou fora do depósito. Ctrl+Clique para compartilhar as ordens. Pressione também Shift para apenas mostrar o custo estimado
-STR_DEPOT_CLONE_ROAD_VEHICLE_DEPOT_INFO                         :{BLACK}Comprar uma cópia de um veículo rodoviário. Clique neste botão e depois em um veículo que está dentro ou fora do depósito. Ctrl+Clique para compartilhar as ordens. Pressione também Shift para apenas mostrar o custo estimado
-STR_DEPOT_CLONE_SHIP_DEPOT_INFO                                 :{BLACK}Comprar uma cópia de uma embarcação. Clique neste botão e depois em uma embarcação que está dentro ou fora do depósito. Ctrl+Clique para compartilhar as ordens. Pressione também Shift para apenas mostrar o custo estimado
-STR_DEPOT_CLONE_AIRCRAFT_INFO_HANGAR_WINDOW                     :{BLACK}Comprar uma cópia de uma aeronave. Clique neste botão e depois em uma aeronave que está dentro ou fora do hangar. Ctrl+Clique para compartilhar as ordens. Pressione também Shift para apenas mostrar o custo estimado
+STR_DEPOT_CLONE_TRAIN_DEPOT_INFO                                :{BLACK}Comprar uma cópia de um trem incluindo todos os vagões. Clique neste botão e depois em um trem que está dentro ou fora do depósito. Ctrl+Clique para compartilhar as ordens. Pressione também Shift para só mostrar o custo estimado
+STR_DEPOT_CLONE_ROAD_VEHICLE_DEPOT_INFO                         :{BLACK}Comprar uma cópia de um veículo rodoviário. Clique neste botão e depois em um veículo que está dentro ou fora do depósito. Ctrl+Clique para compartilhar as ordens. Pressione também Shift para só mostrar o custo estimado
+STR_DEPOT_CLONE_SHIP_DEPOT_INFO                                 :{BLACK}Comprar uma cópia de uma embarcação. Clique neste botão e depois em uma embarcação que está dentro ou fora do depósito. Ctrl+Clique para compartilhar as ordens. Pressione também Shift para só mostrar o custo estimado
+STR_DEPOT_CLONE_AIRCRAFT_INFO_HANGAR_WINDOW                     :{BLACK}Comprar uma cópia de uma aeronave. Clique neste botão e depois em uma aeronave que está dentro ou fora do hangar. Ctrl+Clique para compartilhar as ordens. Pressione também Shift para só mostrar o custo estimado
 
 ###length VEHICLE_TYPES
 STR_DEPOT_TRAIN_LOCATION_TOOLTIP                                :{BLACK}Centralizar visualização principal na localização do depósito ferroviário. Ctrl+Clique para abrir uma nova visualização na localização do depósito ferroviário
@@ -4346,10 +4346,10 @@ STR_VEHICLE_VIEW_SHIP_SEND_TO_DEPOT_TOOLTIP                     :{BLACK}Enviar e
 STR_VEHICLE_VIEW_AIRCRAFT_SEND_TO_DEPOT_TOOLTIP                 :{BLACK}Enviar aeronave para o hangar. Ctrl+Clique para fazer apenas manutenção
 
 ###length VEHICLE_TYPES
-STR_VEHICLE_VIEW_CLONE_TRAIN_INFO                               :{BLACK}Comprar uma cópia do trem, incluindo todos os vagões. Ctrl+Clique para compartilhar as ordens. Pressione também Shift para apenas mostrar o custo estimado
-STR_VEHICLE_VIEW_CLONE_ROAD_VEHICLE_INFO                        :{BLACK}Comprar uma cópia do veículo. Ctrl+Clique para compartilhar as ordens. Pressione também Shift para apenas mostrar o custo estimado
-STR_VEHICLE_VIEW_CLONE_SHIP_INFO                                :{BLACK}Comprar uma cópia da embarcação. Ctrl+Clique para compartilhar as ordens. Pressione também Shift para apenas mostrar o custo estimado
-STR_VEHICLE_VIEW_CLONE_AIRCRAFT_INFO                            :{BLACK}Comprar uma cópia da aeronave. Ctrl+Clique para compartilhar as ordens. Pressione também Shift para apenas mostrar o custo estimado
+STR_VEHICLE_VIEW_CLONE_TRAIN_INFO                               :{BLACK}Comprar uma cópia do trem, incluindo todos os vagões. Ctrl+Clique para compartilhar as ordens. Pressione também Shift para só mostrar o custo estimado
+STR_VEHICLE_VIEW_CLONE_ROAD_VEHICLE_INFO                        :{BLACK}Comprar uma cópia do veículo. Ctrl+Clique para compartilhar as ordens. Pressione também Shift para só mostrar o custo estimado
+STR_VEHICLE_VIEW_CLONE_SHIP_INFO                                :{BLACK}Comprar uma cópia da embarcação. Ctrl+Clique para compartilhar as ordens. Pressione também Shift para só mostrar o custo estimado
+STR_VEHICLE_VIEW_CLONE_AIRCRAFT_INFO                            :{BLACK}Comprar uma cópia da aeronave. Ctrl+Clique para compartilhar as ordens. Pressione também Shift para só mostrar o custo estimado
 
 STR_VEHICLE_VIEW_TRAIN_IGNORE_SIGNAL_TOOLTIP                    :{BLACK}Forçar o trem a prosseguir sem aguardar o sinal de liberação
 STR_VEHICLE_VIEW_TRAIN_REVERSE_TOOLTIP                          :{BLACK}Inverter a direção do trem
@@ -4475,7 +4475,7 @@ STR_QUERY_RENAME_AIRCRAFT_CAPTION                               :{WHITE}Renomear
 STR_VEHICLE_DETAILS_TRAIN_ENGINE_BUILT_AND_VALUE                :{LTBLUE}{ENGINE}{BLACK}   Construído: {LTBLUE}{NUM}{BLACK} Valor: {LTBLUE}{CURRENCY_LONG}
 STR_VEHICLE_DETAILS_TRAIN_WAGON_VALUE                           :{LTBLUE}{ENGINE}{BLACK}   Valor: {LTBLUE}{CURRENCY_LONG}
 
-STR_VEHICLE_DETAILS_TRAIN_TOTAL_CAPACITY_TEXT                   :{BLACK}Capacidade total deste trem:
+STR_VEHICLE_DETAILS_TRAIN_TOTAL_CAPACITY_TEXT                   :{BLACK}Capacidade total de carga deste trem:
 STR_VEHICLE_DETAILS_TRAIN_TOTAL_CAPACITY                        :{LTBLUE}{CARGO_LONG} ({CARGO_SHORT})
 STR_VEHICLE_DETAILS_TRAIN_TOTAL_CAPACITY_MULT                   :{LTBLUE}{CARGO_LONG} ({CARGO_SHORT}) (x{NUM})
 
@@ -4935,8 +4935,8 @@ STR_WARNING_FALLBACK_SOUNDSET                                   :{WHITE}Somente 
 STR_WARNING_SCREENSHOT_SIZE_CAPTION                             :{WHITE}Captura tela enorme
 STR_WARNING_SCREENSHOT_SIZE_MESSAGE                             :{YELLOW}A captura de tela terá uma resolução de {COMMA}x{COMMA} pixels. Essa captura pode demorar. Deseja continuar?
 
-STR_MESSAGE_HEIGHTMAP_SUCCESSFULLY                              :{WHITE}Mapa topográfico gravado como '{STRING}' com sucesso. O pico mais alto tem {NUM}
-STR_MESSAGE_SCREENSHOT_SUCCESSFULLY                             :{WHITE}Captura de tela gravada como '{STRING}' com sucesso
+STR_MESSAGE_HEIGHTMAP_SUCCESSFULLY                              :{WHITE}Mapa topográfico '{STRING}' gravado com sucesso. O pico mais alto tem {NUM}
+STR_MESSAGE_SCREENSHOT_SUCCESSFULLY                             :{WHITE}Captura de tela '{STRING}' gravada com sucesso
 STR_ERROR_SCREENSHOT_FAILED                                     :{WHITE}A captura de tela falhou!
 
 # Error message titles
@@ -4954,14 +4954,14 @@ STR_ERROR_BUILDING_MUST_BE_DEMOLISHED                           :{WHITE}Edifíci
 STR_ERROR_CAN_T_CLEAR_THIS_AREA                                 :{WHITE}Não é possível limpar esta área...
 STR_ERROR_SITE_UNSUITABLE                                       :{WHITE}... local inadequado
 STR_ERROR_ALREADY_BUILT                                         :{WHITE}... já construído
-STR_ERROR_OWNED_BY                                              :{WHITE}... propriedade de {STRING}
+STR_ERROR_OWNED_BY                                              :{WHITE}... é propriedade de {STRING}
 STR_ERROR_AREA_IS_OWNED_BY_ANOTHER                              :{WHITE}... área é propriedade de outra empresa
 STR_ERROR_TERRAFORM_LIMIT_REACHED                               :{WHITE}... limite de paisagismo atingido
 STR_ERROR_CLEARING_LIMIT_REACHED                                :{WHITE}... limite de limpeza de quadrados atingido
 STR_ERROR_TREE_PLANT_LIMIT_REACHED                              :{WHITE}... limite de plantação de árvores atingido
 STR_ERROR_NAME_MUST_BE_UNIQUE                                   :{WHITE}Nome deve ser único
 STR_ERROR_GENERIC_OBJECT_IN_THE_WAY                             :{WHITE}{1:STRING} no caminho
-STR_ERROR_NOT_ALLOWED_WHILE_PAUSED                              :{WHITE}Não permitido enquanto pausado
+STR_ERROR_NOT_ALLOWED_WHILE_PAUSED                              :{WHITE}Não é permitido enquanto pausado
 
 # Local authority errors
 STR_ERROR_LOCAL_AUTHORITY_REFUSES_TO_ALLOW_THIS                 :{WHITE}A autoridade local de {TOWN} recusa-se a permitir isso
@@ -5099,7 +5099,7 @@ STR_ERROR_SHIP_MUST_BE_STOPPED_INSIDE_DEPOT                     :{WHITE}... deve
 STR_ERROR_AIRCRAFT_MUST_BE_STOPPED_INSIDE_HANGAR                :{WHITE}... deve estar parado em um hangar
 
 STR_ERROR_TRAINS_CAN_ONLY_BE_ALTERED_INSIDE_A_DEPOT             :{WHITE}Trens só podem ser modificados quando estão parados em um depósito
-STR_ERROR_TRAIN_TOO_LONG                                        :{WHITE}Trem muito longo
+STR_ERROR_TRAIN_TOO_LONG                                        :{WHITE}Trem é muito longo
 STR_ERROR_CAN_T_REVERSE_DIRECTION_RAIL_VEHICLE                  :{WHITE}Não é possível inverter a direção do veículo...
 STR_ERROR_CAN_T_REVERSE_DIRECTION_RAIL_VEHICLE_MULTIPLE_UNITS   :{WHITE}... composto por múltiplas unidades
 STR_ERROR_INCOMPATIBLE_RAIL_TYPES                               :Tipos de trilhos incompatíveis
@@ -5178,13 +5178,13 @@ STR_ERROR_CAN_T_PLANT_TREE_HERE                                 :{WHITE}Não é 
 STR_ERROR_CAN_T_BUILD_BRIDGE_HERE                               :{WHITE}Não é possível construir ponte aqui...
 STR_ERROR_MUST_DEMOLISH_BRIDGE_FIRST                            :{WHITE}É necessário demolir a ponte primeiro
 STR_ERROR_CAN_T_START_AND_END_ON                                :{WHITE}Não é possível iniciar e terminar no mesmo ponto
-STR_ERROR_BRIDGEHEADS_NOT_SAME_HEIGHT                           :{WHITE}Extremidades da ponte não estão no mesmo nível
+STR_ERROR_BRIDGEHEADS_NOT_SAME_HEIGHT                           :{WHITE}As extremidades da ponte não estão no mesmo nível
 STR_ERROR_BRIDGE_TOO_LOW_FOR_TERRAIN                            :{WHITE}A ponte é muito baixa para este terreno
 STR_ERROR_BRIDGE_TOO_HIGH_FOR_TERRAIN                           :{WHITE}A ponte é muito alta para este terreno
 STR_ERROR_START_AND_END_MUST_BE_IN                              :{WHITE}Início e final devem estar alinhados
 STR_ERROR_ENDS_OF_BRIDGE_MUST_BOTH                              :{WHITE}... os extremos da ponte devem estar sobre a terra
 STR_ERROR_BRIDGE_TOO_LONG                                       :{WHITE}... ponte muito longa
-STR_ERROR_BRIDGE_THROUGH_MAP_BORDER                             :{WHITE}Ponte terminaria fora do mapa
+STR_ERROR_BRIDGE_THROUGH_MAP_BORDER                             :{WHITE}A ponte terminaria fora do mapa
 
 # Tunnel related errors
 STR_ERROR_CAN_T_BUILD_TUNNEL_HERE                               :{WHITE}Não é possível construir túnel aqui...
@@ -5405,7 +5405,7 @@ STR_INDUSTRY_NAME_PRINTING_WORKS                                :{G=f}Gráfica
 STR_INDUSTRY_NAME_STEEL_MILL                                    :{G=f}Siderúrgica
 STR_INDUSTRY_NAME_FARM                                          :{G=f}Fazenda
 STR_INDUSTRY_NAME_COPPER_ORE_MINE                               :{G=f}Mina de Cobre
-STR_INDUSTRY_NAME_OIL_WELLS                                     :{G=m}Poços de Petróleo
+STR_INDUSTRY_NAME_OIL_WELLS                                     :{G=m}Campo de Petróleo
 STR_INDUSTRY_NAME_BANK                                          :{G=m}Banco
 STR_INDUSTRY_NAME_FOOD_PROCESSING_PLANT                         :{G=f}Indústria de Alimentos
 STR_INDUSTRY_NAME_PAPER_MILL                                    :{G=f}Fábrica de Papel
@@ -5415,7 +5415,7 @@ STR_INDUSTRY_NAME_DIAMOND_MINE                                  :{G=f}Mina de Di
 STR_INDUSTRY_NAME_IRON_ORE_MINE                                 :{G=f}Mina de Ferro
 STR_INDUSTRY_NAME_FRUIT_PLANTATION                              :{G=f}Plantação de Frutas
 STR_INDUSTRY_NAME_RUBBER_PLANTATION                             :{G=f}Plantação de Seringueiras
-STR_INDUSTRY_NAME_WATER_SUPPLY                                  :{G=m}Abastecimento de Água
+STR_INDUSTRY_NAME_WATER_SUPPLY                                  :{G=m}Fornecimento de Água
 STR_INDUSTRY_NAME_WATER_TOWER                                   :{G=m}Reservatório de Água
 STR_INDUSTRY_NAME_FACTORY_2                                     :{G=f}Fábrica
 STR_INDUSTRY_NAME_FARM_2                                        :{G=f}Fazenda
@@ -5423,10 +5423,10 @@ STR_INDUSTRY_NAME_LUMBER_MILL                                   :{G=f}Madeireira
 STR_INDUSTRY_NAME_COTTON_CANDY_FOREST                           :{G=f}Floresta de Algodão Doce
 STR_INDUSTRY_NAME_CANDY_FACTORY                                 :{G=f}Fábrica de Doces
 STR_INDUSTRY_NAME_BATTERY_FARM                                  :{G=f}Fazenda de Pilhas
-STR_INDUSTRY_NAME_COLA_WELLS                                    :{G=m}Poços de Xarope de Cola
+STR_INDUSTRY_NAME_COLA_WELLS                                    :{G=m}Poço de Xarope de Cola
 STR_INDUSTRY_NAME_TOY_SHOP                                      :{G=f}Loja de Brinquedos
 STR_INDUSTRY_NAME_TOY_FACTORY                                   :{G=f}Fábrica de Brinquedos
-STR_INDUSTRY_NAME_PLASTIC_FOUNTAINS                             :{G=f}Fontes de Plástico
+STR_INDUSTRY_NAME_PLASTIC_FOUNTAINS                             :{G=f}Fonte de Plástico
 STR_INDUSTRY_NAME_FIZZY_DRINK_FACTORY                           :{G=f}Fábrica de Refrigerantes
 STR_INDUSTRY_NAME_BUBBLE_GENERATOR                              :{G=m}Gerador de Bolhas
 STR_INDUSTRY_NAME_TOFFEE_QUARRY                                 :{G=f}Pedreira de Caramelo
