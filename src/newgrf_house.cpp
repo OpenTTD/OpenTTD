@@ -53,6 +53,15 @@ std::vector<HouseSpec> &HouseSpec::Specs()
 }
 
 /**
+ * Gets the index of this spec.
+ * @return The index.
+ */
+HouseID HouseSpec::Index() const
+{
+	return static_cast<HouseID>(this - _house_specs.data());
+}
+
+/**
  * Get the spec for a house ID.
  * @param house_id The ID of the house.
  * @return The HouseSpec associated with the ID.

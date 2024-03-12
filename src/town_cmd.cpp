@@ -2658,31 +2658,28 @@ static bool BuildTownHouse(Town *t, TileIndex tile)
 	/* bits 0-4 are used
 	 * bits 11-15 are used
 	 * bits 5-10 are not used. */
-	HouseID houses[NUM_HOUSES];
-	uint num = 0;
-	uint probs[NUM_HOUSES];
+	static std::vector<std::pair<HouseID, uint>> probs;
+	probs.clear();
+
 	uint probability_max = 0;
 
 	/* Generate a list of all possible houses that can be built. */
-	for (uint i = 0; i < NUM_HOUSES; i++) {
-		const HouseSpec *hs = HouseSpec::Get(i);
-
+	for (const auto &hs : HouseSpec::Specs()) {
 		/* Verify that the candidate house spec matches the current tile status */
-		if ((~hs->building_availability & bitmask) != 0 || !hs->enabled || hs->grf_prop.override != INVALID_HOUSE_ID) continue;
+		if ((~hs.building_availability & bitmask) != 0 || !hs.enabled || hs.grf_prop.override != INVALID_HOUSE_ID) continue;
 
 		/* Don't let these counters overflow. Global counters are 32bit, there will never be that many houses. */
-		if (hs->class_id != HOUSE_NO_CLASS) {
+		if (hs.class_id != HOUSE_NO_CLASS) {
 			/* id_count is always <= class_count, so it doesn't need to be checked */
-			if (t->cache.building_counts.class_count[hs->class_id] == UINT16_MAX) continue;
+			if (t->cache.building_counts.class_count[hs.class_id] == UINT16_MAX) continue;
 		} else {
 			/* If the house has no class, check id_count instead */
-			if (t->cache.building_counts.id_count[i] == UINT16_MAX) continue;
+			if (t->cache.building_counts.id_count[hs.Index()] == UINT16_MAX) continue;
 		}
 
-		uint cur_prob = hs->probability;
+		uint cur_prob = hs.probability;
 		probability_max += cur_prob;
-		probs[num] = cur_prob;
-		houses[num++] = (HouseID)i;
+		probs.emplace_back(std::make_pair(hs.Index(), cur_prob));
 	}
 
 	TileIndex baseTile = tile;
@@ -2697,18 +2694,17 @@ static bool BuildTownHouse(Town *t, TileIndex tile)
 
 		uint r = RandomRange(probability_max);
 		uint i;
-		for (i = 0; i < num; i++) {
-			if (probs[i] > r) break;
-			r -= probs[i];
+		for (i = 0; i < probs.size(); i++) {
+			if (probs[i].second > r) break;
+			r -= probs[i].second;
 		}
 
-		HouseID house = houses[i];
-		probability_max -= probs[i];
+		HouseID house = probs[i].first;
+		probability_max -= probs[i].second;
 
 		/* remove tested house from the set */
-		num--;
-		houses[i] = houses[num];
-		probs[i] = probs[num];
+		probs[i] = probs.back();
+		probs.pop_back();
 
 		const HouseSpec *hs = HouseSpec::Get(house);
 

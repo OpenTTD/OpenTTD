@@ -2504,12 +2504,11 @@ struct CargoesRow {
 		} else {
 			/* Houses only display what is demanded. */
 			for (uint i = 0; i < cargo_fld->u.cargo.num_cargoes; i++) {
-				for (uint h = 0; h < NUM_HOUSES; h++) {
-					HouseSpec *hs = HouseSpec::Get(h);
-					if (!hs->enabled) continue;
+				for (const auto &hs : HouseSpec::Specs()) {
+					if (!hs.enabled) continue;
 
-					for (uint j = 0; j < lengthof(hs->accepts_cargo); j++) {
-						if (hs->cargo_acceptance[j] > 0 && cargo_fld->u.cargo.vertical_cargoes[i] == hs->accepts_cargo[j]) {
+					for (uint j = 0; j < lengthof(hs.accepts_cargo); j++) {
+						if (hs.cargo_acceptance[j] > 0 && cargo_fld->u.cargo.vertical_cargoes[i] == hs.accepts_cargo[j]) {
 							cargo_fld->ConnectCargo(cargo_fld->u.cargo.vertical_cargoes[i], false);
 							goto next_cargo;
 						}
@@ -2726,12 +2725,11 @@ struct IndustryCargoesWindow : public Window {
 		for (uint i = 0; i < length; i++) {
 			if (!IsValidCargoID(cargoes[i])) continue;
 
-			for (uint h = 0; h < NUM_HOUSES; h++) {
-				HouseSpec *hs = HouseSpec::Get(h);
-				if (!hs->enabled || !(hs->building_availability & climate_mask)) continue;
+			for (const auto &hs : HouseSpec::Specs()) {
+				if (!hs.enabled || !(hs.building_availability & climate_mask)) continue;
 
-				for (uint j = 0; j < lengthof(hs->accepts_cargo); j++) {
-					if (hs->cargo_acceptance[j] > 0 && cargoes[i] == hs->accepts_cargo[j]) return true;
+				for (uint j = 0; j < lengthof(hs.accepts_cargo); j++) {
+					if (hs.cargo_acceptance[j] > 0 && cargoes[i] == hs.accepts_cargo[j]) return true;
 				}
 			}
 		}

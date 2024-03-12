@@ -9329,20 +9329,18 @@ static void EnsureEarlyHouse(HouseZones bitmask)
 {
 	TimerGameCalendar::Year min_year = CalendarTime::MAX_YEAR;
 
-	for (int i = 0; i < NUM_HOUSES; i++) {
-		HouseSpec *hs = HouseSpec::Get(i);
-		if (hs == nullptr || !hs->enabled) continue;
-		if ((hs->building_availability & bitmask) != bitmask) continue;
-		if (hs->min_year < min_year) min_year = hs->min_year;
+	for (const auto &hs : HouseSpec::Specs()) {
+		if (!hs.enabled) continue;
+		if ((hs.building_availability & bitmask) != bitmask) continue;
+		if (hs.min_year < min_year) min_year = hs.min_year;
 	}
 
 	if (min_year == 0) return;
 
-	for (int i = 0; i < NUM_HOUSES; i++) {
-		HouseSpec *hs = HouseSpec::Get(i);
-		if (hs == nullptr || !hs->enabled) continue;
-		if ((hs->building_availability & bitmask) != bitmask) continue;
-		if (hs->min_year == min_year) hs->min_year = 0;
+	for (auto &hs : HouseSpec::Specs()) {
+		if (!hs.enabled) continue;
+		if ((hs.building_availability & bitmask) != bitmask) continue;
+		if (hs.min_year == min_year) hs.min_year = 0;
 	}
 }
 
@@ -9382,7 +9380,7 @@ static void FinaliseHouseArray()
 		}
 	}
 
-	for (size_t i = 0; i < NUM_HOUSES; i++) {
+	for (size_t i = 0; i < HouseSpec::Specs().size(); i++) {
 		HouseSpec *hs = HouseSpec::Get(i);
 		const HouseSpec *next1 = (i + 1 < NUM_HOUSES ? HouseSpec::Get(i + 1) : nullptr);
 		const HouseSpec *next2 = (i + 2 < NUM_HOUSES ? HouseSpec::Get(i + 2) : nullptr);
