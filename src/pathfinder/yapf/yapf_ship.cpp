@@ -173,12 +173,13 @@ public:
 	}
 
 	/** Returns a random tile/trackdir that can be reached from the current tile/trackdir, or tile/INVALID_TRACK if none is available. */
-	static std::pair<TileIndex, Trackdir> GetRandomFollowUpTileTrackdir(const Ship *v, TileIndex tile, Trackdir dir, bool include_90_degree_turns)
+	static std::pair<TileIndex, Trackdir> GetRandomFollowUpTileTrackdir(const Ship *v, TileIndex tile, Trackdir dir)
 	{
 		TrackFollower follower(v);
 		if (follower.Follow(tile, dir)) {
 			TrackdirBits dirs = follower.m_new_td_bits;
-			if (!include_90_degree_turns) dirs &= ~TrackdirCrossesTrackdirs(dir);
+			const TrackdirBits dirs_without_90_degree = dirs & ~TrackdirCrossesTrackdirs(dir);
+			if (dirs_without_90_degree != TRACKDIR_BIT_NONE) dirs = dirs_without_90_degree;
 			const int strip_amount = _random.Next(CountBits(dirs));
 			for (int s = 0; s < strip_amount; ++s) RemoveFirstTrackdir(&dirs);
 			return { follower.m_new_tile, FindFirstTrackdir(dirs) };
@@ -191,7 +192,7 @@ public:
 	{
 		std::pair<TileIndex, Trackdir> tile_dir = { tile, dir };
 		for (int i = 0; i < path_length; ++i) {
-			tile_dir = GetRandomFollowUpTileTrackdir(v, tile_dir.first, tile_dir.second, false);
+			tile_dir = GetRandomFollowUpTileTrackdir(v, tile_dir.first, tile_dir.second);
 			if (tile_dir.second == INVALID_TRACKDIR) break;
 			path_cache.push_back(tile_dir.second);
 		}
@@ -240,7 +241,7 @@ public:
 			path_found = pf.FindPath(v);
 			Node *node = pf.GetBestNode();
 			if (attempt == 0 && !path_found) continue; // Try again with restricted search area.
-			if (!path_found || node == nullptr) return GetRandomFollowUpTileTrackdir(v, src_tile, trackdir, true).second;
+			if (!path_found || node == nullptr) return GetRandomFollowUpTileTrackdir(v, src_tile, trackdir).second;
 
 			/* Return only the path within the current water region if an intermediate destination was returned. If not, cache the entire path
 			 * to the final destination tile. The low-level pathfinder might actually prefer a different docking tile in a nearby region. Without
@@ -266,7 +267,7 @@ public:
 
 			/* A empty path means we are already at the destination. The pathfinder shouldn't have been called at all.
 			 * Return a random reachable trackdir to hopefully nudge the ship out of this strange situation. */
-			if (path_cache.empty()) return GetRandomFollowUpTileTrackdir(v, src_tile, trackdir, true).second;
+			if (path_cache.empty()) return GetRandomFollowUpTileTrackdir(v, src_tile, trackdir).second;
 
 			/* Take out the last trackdir as the result. */
 			const Trackdir result = path_cache.front();
