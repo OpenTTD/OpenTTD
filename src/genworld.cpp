@@ -26,6 +26,7 @@
 #include "void_map.h"
 #include "town.h"
 #include "newgrf.h"
+#include "newgrf_house.h"
 #include "core/random_func.hpp"
 #include "core/backup_type.hpp"
 #include "progress.h"
@@ -311,6 +312,7 @@ void GenerateWorld(GenWorldMode mode, uint size_x, uint size_y, bool reset_setti
 
 	/* Load the right landscape stuff, and the NewGRFs! */
 	GfxLoadSprites();
+	InitializeBuildingCounts();
 	LoadStringWidthTable();
 
 	/* Re-init the windowing system */

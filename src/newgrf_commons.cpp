@@ -165,7 +165,11 @@ void HouseOverrideManager::SetEntitySpec(const HouseSpec *hs)
 		return;
 	}
 
-	*HouseSpec::Get(house_id) = *hs;
+	auto &house_specs = HouseSpec::Specs();
+
+	/* Now that we know we can use the given id, copy the spec to its final destination. */
+	if (house_id >= house_specs.size()) house_specs.resize(house_id + 1);
+	house_specs[house_id] = *hs;
 
 	/* Now add the overrides. */
 	for (int i = 0; i < this->max_offset; i++) {

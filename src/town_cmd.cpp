@@ -1941,6 +1941,7 @@ static void DoCreateTown(Town *t, TileIndex tile, uint32_t townnameparts, TownSi
 	UpdateTownRadius(t);
 	t->flags = 0;
 	t->cache.population = 0;
+	InitializeBuildingCounts(t);
 	/* Spread growth across ticks so even if there are many
 	 * similar towns they're unlikely to grow all in one tick */
 	t->grow_counter = t->index % Ticks::TOWN_GROWTH_TICKS;
@@ -3969,17 +3970,3 @@ extern const TileTypeProcs _tile_type_town_procs = {
 	GetFoundation_Town,      // get_foundation_proc
 	TerraformTile_Town,      // terraform_tile_proc
 };
-
-
-HouseSpec _house_specs[NUM_HOUSES];
-
-void ResetHouses()
-{
-	ResetHouseClassIDs();
-
-	auto insert = std::copy(std::begin(_original_house_specs), std::end(_original_house_specs), std::begin(_house_specs));
-	std::fill(insert, std::end(_house_specs), HouseSpec{});
-
-	/* Reset any overrides that have been set. */
-	_house_mngr.ResetOverride();
-}

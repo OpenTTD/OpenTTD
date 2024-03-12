@@ -24,8 +24,8 @@
 
 #include "safeguards.h"
 
-static BuildingCounts<uint32_t> _building_counts;
-static std::array<HouseClassMapping, HOUSE_CLASS_MAX> _class_mapping;
+static BuildingCounts<uint32_t> _building_counts{};
+static std::vector<HouseClassMapping> _class_mapping{};
 
 HouseOverrideManager _house_mngr(NEW_HOUSE_OFFSET, NUM_HOUSES, INVALID_HOUSE_ID);
 
@@ -38,6 +38,48 @@ static const GRFFile *GetHouseSpecGrf(HouseID house_id)
 {
 	const HouseSpec *hs  = HouseSpec::Get(house_id);
 	return (hs != nullptr) ? hs->grf_prop.grffile : nullptr;
+}
+
+extern const HouseSpec _original_house_specs[NEW_HOUSE_OFFSET];
+std::vector<HouseSpec> _house_specs;
+
+/**
+ * Get a reference to all HouseSpecs.
+ * @return Reference to vector of all HouseSpecs.
+ */
+std::vector<HouseSpec> &HouseSpec::Specs()
+{
+	return _house_specs;
+}
+
+/**
+ * Get the spec for a house ID.
+ * @param house_id The ID of the house.
+ * @return The HouseSpec associated with the ID.
+ */
+HouseSpec *HouseSpec::Get(size_t house_id)
+{
+	/* Empty house if index is out of range -- this might happen if NewGRFs are changed. */
+	static HouseSpec empty = {};
+
+	assert(house_id < NUM_HOUSES);
+	if (house_id >= _house_specs.size()) return &empty;
+	return &_house_specs[house_id];
+}
+
+/* Reset and initialise house specs. */
+void ResetHouses()
+{
+	_house_specs.clear();
+	_house_specs.reserve(std::size(_original_house_specs));
+
+	ResetHouseClassIDs();
+
+	/* Copy default houses. */
+	_house_specs.insert(std::end(_house_specs), std::begin(_original_house_specs), std::end(_original_house_specs));
+
+	/* Reset any overrides that have been set. */
+	_house_mngr.ResetOverride();
 }
 
 /**
@@ -74,32 +116,47 @@ uint32_t HouseResolverObject::GetDebugID() const
 
 void ResetHouseClassIDs()
 {
-	_class_mapping = {};
+	_class_mapping.clear();
+
+	/* Add initial entry for HOUSE_NO_CLASS. */
+	_class_mapping.emplace_back();
 }
 
 HouseClassID AllocateHouseClassID(uint8_t grf_class_id, uint32_t grfid)
 {
 	/* Start from 1 because 0 means that no class has been assigned. */
-	for (int i = 1; i != lengthof(_class_mapping); i++) {
-		HouseClassMapping *map = &_class_mapping[i];
+	auto it = std::find_if(std::next(std::begin(_class_mapping)), std::end(_class_mapping), [grf_class_id, grfid](const HouseClassMapping &map) { return map.class_id == grf_class_id && map.grfid == grfid; });
 
-		if (map->class_id == grf_class_id && map->grfid == grfid) return (HouseClassID)i;
+	/* HouseClass not found, allocate a new one. */
+	if (it == std::end(_class_mapping)) it = _class_mapping.insert(it, {.grfid = grfid, .class_id = grf_class_id});
 
-		if (map->class_id == 0 && map->grfid == 0) {
-			map->class_id = grf_class_id;
-			map->grfid    = grfid;
-			return (HouseClassID)i;
-		}
-	}
-	return HOUSE_NO_CLASS;
+	return static_cast<HouseClassID>(std::distance(std::begin(_class_mapping), it));
 }
 
+/**
+ * Initialise building counts for a town.
+ * @param t Town cache to initialise.
+ */
+void InitializeBuildingCounts(Town *t)
+{
+	t->cache.building_counts.id_count.clear();
+	t->cache.building_counts.class_count.clear();
+	t->cache.building_counts.id_count.resize(HouseSpec::Specs().size());
+	t->cache.building_counts.class_count.resize(_class_mapping.size());
+}
+
+/**
+ * Initialise global building counts and all town building counts.
+ */
 void InitializeBuildingCounts()
 {
-	memset(&_building_counts, 0, sizeof(_building_counts));
+	_building_counts.id_count.clear();
+	_building_counts.class_count.clear();
+	_building_counts.id_count.resize(HouseSpec::Specs().size());
+	_building_counts.class_count.resize(_class_mapping.size());
 
 	for (Town *t : Town::Iterate()) {
-		memset(&t->cache.building_counts, 0, sizeof(t->cache.building_counts));
+		InitializeBuildingCounts(t);
 	}
 }
 
