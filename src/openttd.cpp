@@ -1600,11 +1600,30 @@ void GameLoop()
 		/* Multiplayer */
 		NetworkGameLoop();
 	} else {
-		if (_network_reconnect > 0 && --_network_reconnect == 0) {
-			/* This means that we want to reconnect to the last host
-			 * We do this here, because it means that the network is really closed */
-			NetworkClientConnectGame(_settings_client.network.last_joined, COMPANY_SPECTATOR);
+		if (_network_reconnect_attempts > 0 && std::chrono::steady_clock::now() > _network_reconnect) {
+			Debug(net, 3, "Reconnect attempt #{}", _network_reconnect_attempts);
+
+			_network_reconnect_attempts--;
+			_network_reconnect_backoff = std::min(_network_reconnect_backoff * 2, std::chrono::seconds(30));
+			_network_reconnect = std::chrono::steady_clock::now() + _network_reconnect_backoff;
+
+			if (_network_reconnect_attempts == 0) {
+				ShowErrorMessage(STR_NETWORK_MESSAGE_SERVER_REBOOT_REJOIN_FAILED, INVALID_STRING_ID, WL_ERROR);
+			} else {
+				/* Show that we are reconnecting the first time we do an attempt.
+				 * We have to do it this late, as switching to the main menu closes
+				 * all errors (except critical, but this isn't critical). */
+				if (_network_reconnect_attempts == NETWORK_RECONNECT_ATTEMPTS - 1) {
+					ShowErrorMessage(STR_NETWORK_MESSAGE_SERVER_REBOOT, INVALID_STRING_ID, WL_ERROR);
+				}
+
+				/* If the AskRelay window is open, don't start a new connect. */
+				if (FindWindowByClass(WC_NETWORK_ASK_RELAY) == nullptr) {
+					NetworkClientConnectGame(_settings_client.network.last_joined, COMPANY_SPECTATOR);
+				}
+			}
 		}
+
 		/* Singleplayer */
 		StateGameLoop();
 	}

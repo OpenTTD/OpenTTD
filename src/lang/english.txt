@@ -2641,6 +2641,7 @@ STR_NETWORK_MESSAGE_GIVE_MONEY                                  :*** {0:RAW_STRI
 STR_NETWORK_MESSAGE_SERVER_SHUTDOWN                             :{WHITE}The server closed the session
 STR_NETWORK_MESSAGE_SERVER_REBOOT                               :{WHITE}The server is restarting...{}Please wait...
 STR_NETWORK_MESSAGE_KICKED                                      :*** {RAW_STRING} was kicked. Reason: ({RAW_STRING})
+STR_NETWORK_MESSAGE_SERVER_REBOOT_REJOIN_FAILED                 :{WHITE}Failed to reconnect to server
 
 STR_NETWORK_ERROR_COORDINATOR_REGISTRATION_FAILED               :{WHITE}Server registration failed
 STR_NETWORK_ERROR_COORDINATOR_REUSE_OF_INVITE_CODE              :{WHITE}Another server with the same invite-code registered itself. Switching to "local" game-type.

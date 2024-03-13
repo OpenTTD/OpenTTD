@@ -344,6 +344,8 @@ NetworkRecvStatus ClientNetworkGameSocketHandler::SendJoin()
 	_network_join_status = NETWORK_JOIN_STATUS_AUTHORIZING;
 	SetWindowDirty(WC_NETWORK_STATUS_WINDOW, WN_NETWORK_STATUS_WINDOW_JOIN);
 
+	_network_reconnect_attempts = 0;
+
 	auto p = std::make_unique<Packet>(PACKET_CLIENT_JOIN);
 	p->Send_string(GetNetworkRevisionString());
 	p->Send_uint32(_openttd_newgrf_version);
@@ -1127,14 +1129,10 @@ NetworkRecvStatus ClientNetworkGameSocketHandler::Receive_SERVER_NEWGAME(Packet 
 {
 	Debug(net, 9, "Client::Receive_SERVER_NEWGAME()");
 
-	/* Only when we're trying to join we really
-	 * care about the server shutting down. */
 	if (this->status >= STATUS_JOIN) {
-		/* To throttle the reconnects a bit, every clients waits its
-		 * Client ID modulo 16 + 1 (value 0 means no reconnect).
-		 * This way reconnects should be spread out a bit. */
-		_network_reconnect = _network_own_client_id % 16 + 1;
-		ShowErrorMessage(STR_NETWORK_MESSAGE_SERVER_REBOOT, INVALID_STRING_ID, WL_CRITICAL);
+		_network_reconnect_attempts = NETWORK_RECONNECT_ATTEMPTS;
+		_network_reconnect_backoff = std::chrono::seconds(1);
+		_network_reconnect = std::chrono::steady_clock::now() + _network_reconnect_backoff;
 	}
 
 	if (this->status == STATUS_ACTIVE) ClientNetworkEmergencySave();

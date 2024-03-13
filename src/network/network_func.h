@@ -28,7 +28,9 @@ extern NetworkCompanyState *_network_company_states;
 
 extern ClientID _network_own_client_id;
 extern ClientID _redirect_console_to_client;
-extern uint8_t _network_reconnect;
+extern uint32_t _network_reconnect_attempts;
+extern std::chrono::seconds _network_reconnect_backoff;
+extern std::chrono::steady_clock::time_point _network_reconnect;
 extern StringList _network_bind_list;
 extern StringList _network_host_list;
 extern StringList _network_ban_list;

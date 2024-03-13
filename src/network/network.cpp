@@ -64,7 +64,9 @@ bool _is_network_server;  ///< Does this client wants to be a network-server?
 NetworkCompanyState *_network_company_states = nullptr; ///< Statistics about some companies.
 ClientID _network_own_client_id;      ///< Our client identifier.
 ClientID _redirect_console_to_client; ///< If not invalid, redirect the console output to a client.
-uint8_t _network_reconnect;             ///< Reconnect timeout
+uint32_t _network_reconnect_attempts = 0; ///< How many attempts to reconnect left.
+std::chrono::seconds _network_reconnect_backoff = {}; ///< How much time to wait for the next reconnect attempt.
+std::chrono::steady_clock::time_point _network_reconnect = {}; ///< The time when to attempt another reconnect.
 StringList _network_bind_list;        ///< The addresses to bind on.
 StringList _network_host_list;        ///< The servers we know.
 StringList _network_ban_list;         ///< The banned clients.
@@ -619,8 +621,6 @@ static void NetworkInitialize(bool close_admins = true)
 
 	_sync_frame = 0;
 	_network_first_time = true;
-
-	_network_reconnect = 0;
 }
 
 /** Non blocking connection to query servers for their game info. */
@@ -738,7 +738,9 @@ public:
 	{
 		Debug(net, 9, "Client::OnFailure(): connection_string={}", this->connection_string);
 
-		ShowNetworkError(STR_NETWORK_ERROR_NOCONNECTION);
+		if (_network_reconnect_attempts == 0) {
+			ShowNetworkError(STR_NETWORK_ERROR_NOCONNECTION);
+		}
 	}
 
 	void OnConnect(SOCKET s) override
