@@ -401,6 +401,17 @@ NetworkRecvStatus ServerNetworkGameSocketHandler::SendNewGRFCheck()
 {
 	Debug(net, 9, "client[{}] SendNewGRFCheck()", this->client_id);
 
+	/* Invalid packet when status is STATUS_NEWGRFS_CHECK or higher */
+	if (this->status >= STATUS_NEWGRFS_CHECK) return this->CloseConnection(NETWORK_RECV_STATUS_MALFORMED_PACKET);
+
+	Debug(net, 9, "client[{}] status = NEWGRFS_CHECK", this->client_id);
+	this->status = STATUS_NEWGRFS_CHECK;
+
+	if (_grfconfig == nullptr) {
+		/* There are no NewGRFs, continue with the game password. */
+		return this->SendNeedGamePassword();
+	}
+
 	auto p = std::make_unique<Packet>(this, PACKET_SERVER_CHECK_NEWGRFS, TCP_MTU);
 	const GRFConfig *c;
 	uint grf_count = 0;
@@ -921,14 +932,6 @@ NetworkRecvStatus ServerNetworkGameSocketHandler::Receive_CLIENT_JOIN(Packet &p)
 
 	/* Make sure companies to which people try to join are not autocleaned */
 	if (Company::IsValidID(playas)) _network_company_states[playas].months_empty = 0;
-
-	Debug(net, 9, "client[{}] status = NEWGRFS_CHECK", this->client_id);
-	this->status = STATUS_NEWGRFS_CHECK;
-
-	if (_grfconfig == nullptr) {
-		/* Continue asking for the game password. */
-		return this->SendNeedGamePassword();
-	}
 
 	return this->SendNewGRFCheck();
 }
