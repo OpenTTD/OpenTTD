@@ -401,8 +401,8 @@ NetworkRecvStatus ServerNetworkGameSocketHandler::SendNewGRFCheck()
 {
 	Debug(net, 9, "client[{}] SendNewGRFCheck()", this->client_id);
 
-	/* Invalid packet when status is STATUS_NEWGRFS_CHECK or higher */
-	if (this->status >= STATUS_NEWGRFS_CHECK) return this->CloseConnection(NETWORK_RECV_STATUS_MALFORMED_PACKET);
+	/* Invalid packet when status is anything but STATUS_INACTIVE. */
+	if (this->status != STATUS_INACTIVE) return this->CloseConnection(NETWORK_RECV_STATUS_MALFORMED_PACKET);
 
 	Debug(net, 9, "client[{}] status = NEWGRFS_CHECK", this->client_id);
 	this->status = STATUS_NEWGRFS_CHECK;
@@ -432,18 +432,19 @@ NetworkRecvStatus ServerNetworkGameSocketHandler::SendNewGRFCheck()
 /** Request the game password. */
 NetworkRecvStatus ServerNetworkGameSocketHandler::SendNeedGamePassword()
 {
+	Debug(net, 9, "client[{}] SendNeedGamePassword()", this->client_id);
+
+	/* Invalid packet when status is anything but STATUS_NEWGRFS_CHECK. */
+	if (this->status != STATUS_NEWGRFS_CHECK) return this->CloseConnection(NETWORK_RECV_STATUS_MALFORMED_PACKET);
+
+	Debug(net, 9, "client[{}] status = AUTH_GAME", this->client_id);
+	this->status = STATUS_AUTH_GAME;
+
 	if (_settings_client.network.server_password.empty()) {
 		/* Do not actually need a game password, continue with the company password. */
 		return this->SendNeedCompanyPassword();
 	}
 
-	Debug(net, 9, "client[{}] SendNeedGamePassword()", this->client_id);
-
-	/* Invalid packet when status is STATUS_AUTH_GAME or higher */
-	if (this->status >= STATUS_AUTH_GAME) return this->CloseConnection(NETWORK_RECV_STATUS_MALFORMED_PACKET);
-
-	Debug(net, 9, "client[{}] status = AUTH_GAME", this->client_id);
-	this->status = STATUS_AUTH_GAME;
 	/* Reset 'lag' counters */
 	this->last_frame = this->last_frame_server = _frame_counter;
 
@@ -455,18 +456,19 @@ NetworkRecvStatus ServerNetworkGameSocketHandler::SendNeedGamePassword()
 /** Request the company password. */
 NetworkRecvStatus ServerNetworkGameSocketHandler::SendNeedCompanyPassword()
 {
+	Debug(net, 9, "client[{}] SendNeedCompanyPassword()", this->client_id);
+
+	/* Invalid packet when status is anything but STATUS_AUTH_GAME. */
+	if (this->status != STATUS_AUTH_GAME) return this->CloseConnection(NETWORK_RECV_STATUS_MALFORMED_PACKET);
+
+	Debug(net, 9, "client[{}] status = AUTH_COMPANY", this->client_id);
+	this->status = STATUS_AUTH_COMPANY;
+
 	NetworkClientInfo *ci = this->GetInfo();
 	if (!Company::IsValidID(ci->client_playas) || _network_company_states[ci->client_playas].password.empty()) {
 		return this->SendWelcome();
 	}
 
-	Debug(net, 9, "client[{}] SendNeedCompanyPassword()", this->client_id);
-
-	/* Invalid packet when status is STATUS_AUTH_COMPANY or higher */
-	if (this->status >= STATUS_AUTH_COMPANY) return this->CloseConnection(NETWORK_RECV_STATUS_MALFORMED_PACKET);
-
-	Debug(net, 9, "client[{}] status = AUTH_COMPANY", this->client_id);
-	this->status = STATUS_AUTH_COMPANY;
 	/* Reset 'lag' counters */
 	this->last_frame = this->last_frame_server = _frame_counter;
 
@@ -482,11 +484,12 @@ NetworkRecvStatus ServerNetworkGameSocketHandler::SendWelcome()
 {
 	Debug(net, 9, "client[{}] SendWelcome()", this->client_id);
 
-	/* Invalid packet when status is AUTH or higher */
-	if (this->status >= STATUS_AUTHORIZED) return this->CloseConnection(NETWORK_RECV_STATUS_MALFORMED_PACKET);
+	/* Invalid packet when status is anything but STATUS_AUTH_COMPANY. */
+	if (this->status != STATUS_AUTH_COMPANY) return this->CloseConnection(NETWORK_RECV_STATUS_MALFORMED_PACKET);
 
 	Debug(net, 9, "client[{}] status = AUTHORIZED", this->client_id);
 	this->status = STATUS_AUTHORIZED;
+
 	/* Reset 'lag' counters */
 	this->last_frame = this->last_frame_server = _frame_counter;
 
