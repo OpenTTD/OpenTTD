@@ -221,7 +221,7 @@ void RoadStop::Leave(RoadVehicle *rv)
 		this->SetEntranceBusy(false);
 	} else {
 		/* Otherwise just leave the drive through's entry cache. */
-		this->GetEntry(DirToDiagDir(rv->direction))->Leave(rv);
+		this->GetEntry(DirToDiagDir(rv->direction))->Leave();
 	}
 }
 
@@ -275,11 +275,17 @@ bool RoadStop::Enter(RoadVehicle *rv)
 
 /**
  * Leave the road stop
- * @param rv the vehicle that leaves the stop
  */
-void RoadStop::Entry::Leave(const RoadVehicle *rv)
+void RoadStop::Entry::Leave()
 {
-	this->occupied -= rv->gcache.cached_total_length;
+	this->vehicles -= 1;
+
+	/* Only re-set occupied when the stop is fully clear of RVs.
+	 * occupied should match the last-entered vehicle so how many free spaces
+	 * at the entry to the stop can be calculated by pathfinders. */
+	if (this->vehicles == 0) this->occupied = 0;
+
+	assert(this->vehicles >= 0);
 	assert(this->occupied >= 0);
 }
 
@@ -292,7 +298,9 @@ void RoadStop::Entry::Enter(const RoadVehicle *rv)
 	/* we cannot assert on this->occupied < this->length because of the
 	 * remote possibility that RVs are running through each other when
 	 * trying to prevention an infinite jam. */
+	this->vehicles += 1;
 	this->occupied += rv->gcache.cached_total_length;
+	assert(this->vehicles >= 0);
 }
 
 /**
@@ -367,8 +375,10 @@ void RoadStop::Entry::Rebuild(const RoadStop *rs, int side)
 	}
 
 	this->occupied = 0;
+	this->vehicles = 0;
 	for (const auto &it : rserh.vehicles) {
 		this->occupied += it->gcache.cached_total_length;
+		this->vehicles += 1;
 	}
 }
 
@@ -386,5 +396,5 @@ void RoadStop::Entry::CheckIntegrity(const RoadStop *rs) const
 
 	Entry temp;
 	temp.Rebuild(rs, rs->east == this);
-	if (temp.length != this->length || temp.occupied != this->occupied) NOT_REACHED();
+	if (temp.length != this->length || temp.occupied != this->occupied || temp.vehicles != this->vehicles) NOT_REACHED();
 }

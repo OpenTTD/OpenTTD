@@ -33,12 +33,13 @@ struct RoadStop : RoadStopPool::PoolItem<&_roadstop_pool> {
 	private:
 		int length;      ///< The length of the stop in tile 'units'
 		int occupied;    ///< The amount of occupied stop in tile 'units'
+		int vehicles;    ///< The number of vehicles in the stop
 
 	public:
 		friend struct RoadStop; ///< Oh yeah, the road stop may play with me.
 
 		/** Create an entry */
-		Entry() : length(0), occupied(0) {}
+		Entry() : length(0), occupied(0), vehicles(0) {}
 
 		/**
 		 * Get the length of this drive through stop.
@@ -58,7 +59,7 @@ struct RoadStop : RoadStopPool::PoolItem<&_roadstop_pool> {
 			return this->occupied;
 		}
 
-		void Leave(const RoadVehicle *rv);
+		void Leave();
 		void Enter(const RoadVehicle *rv);
 		void CheckIntegrity(const RoadStop *rs) const;
 		void Rebuild(const RoadStop *rs, int side = -1);
