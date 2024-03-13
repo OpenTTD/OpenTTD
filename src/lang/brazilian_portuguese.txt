@@ -1360,7 +1360,7 @@ STR_CONFIG_SETTING_ROAD_VEHICLE_SLOPE_STEEPNESS                 :Inclinação do
 STR_CONFIG_SETTING_ROAD_VEHICLE_SLOPE_STEEPNESS_HELPTEXT        :Inclinação de um quadrado inclinado para um veículo rodoviário. Valores grandes tornam mais difícil para um veículo subir uma colina
 
 STR_CONFIG_SETTING_FORBID_90_DEG                                :Proibir trens de fazer curvas de 90 graus: {STRING}
-STR_CONFIG_SETTING_FORBID_90_DEG_HELPTEXT                       :Curvas de 90 graus ocorrem quando uma pista horizontal é seguida diretamente por outra vertical em um quadrado adjacente, fazendo com que o trem vire 90 graus quando passa de um quadrado para o próximo, ao invés dos habituais 45 graus para outras combinações de pistas
+STR_CONFIG_SETTING_FORBID_90_DEG_HELPTEXT                       :Curvas de 90 graus ocorrem quando uma linha horizontal é seguida diretamente por outra vertical em um quadrado adjacente, fazendo com que o trem vire 90 graus quando passa de um quadrado para o próximo, ao invés dos habituais 45 graus para outras combinações de linhas
 
 STR_CONFIG_SETTING_DISTANT_JOIN_STATIONS                        :Permitir a união de estações não adjacentes: {STRING}
 STR_CONFIG_SETTING_DISTANT_JOIN_STATIONS_HELPTEXT               :Permite acrescentar partes a uma estação sem tocar diretamente nas partes já existentes, usando Ctrl+Clique enquanto coloca as novas partes
@@ -2134,11 +2134,11 @@ STR_CONFIG_SETTING_AI_NPC                                       :Competidores IA
 STR_CONFIG_SETTING_NETWORK                                      :Rede
 
 STR_CONFIG_SETTING_PATHFINDER_FOR_TRAINS                        :Gerador de rotas para trens: {STRING}
-STR_CONFIG_SETTING_PATHFINDER_FOR_TRAINS_HELPTEXT               :Gerador de rotas usado para os trens
+STR_CONFIG_SETTING_PATHFINDER_FOR_TRAINS_HELPTEXT               :Algoritmo usado para gerar as rotas dos trens
 STR_CONFIG_SETTING_PATHFINDER_FOR_ROAD_VEHICLES                 :Gerador de rotas para veículos: {STRING}
-STR_CONFIG_SETTING_PATHFINDER_FOR_ROAD_VEHICLES_HELPTEXT        :Gerador de rotas usado para os veículos rodoviários
+STR_CONFIG_SETTING_PATHFINDER_FOR_ROAD_VEHICLES_HELPTEXT        :Algoritmo usado para gerar as rotas dos veículos rodoviários
 STR_CONFIG_SETTING_PATHFINDER_FOR_SHIPS                         :Gerador de rotas para embarcações: {STRING}
-STR_CONFIG_SETTING_PATHFINDER_FOR_SHIPS_HELPTEXT                :Gerador de rotas usado para as embarcações
+STR_CONFIG_SETTING_PATHFINDER_FOR_SHIPS_HELPTEXT                :Algoritmo usado para gerar as rotas das embarcações
 STR_CONFIG_SETTING_REVERSE_AT_SIGNALS                           :Reversão automática em sinais: {STRING}
 STR_CONFIG_SETTING_REVERSE_AT_SIGNALS_HELPTEXT                  :Permitir que os trens invertam a direção em um sinal, se eles esperaram lá muito tempo
 ###length 2
@@ -2176,9 +2176,9 @@ STR_VIDEO_DRIVER_ERROR_HARDWARE_ACCELERATION_CRASH              :{WHITE}... O dr
 STR_INTRO_CAPTION                                               :{WHITE}OpenTTD {REV}
 
 STR_INTRO_NEW_GAME                                              :{BLACK}Novo Jogo
-STR_INTRO_LOAD_GAME                                             :{BLACK}Abrir Jogo
-STR_INTRO_PLAY_SCENARIO                                         :{BLACK}Jogar Cenário
-STR_INTRO_PLAY_HEIGHTMAP                                        :{BLACK}Jogar Mapa Topográfico
+STR_INTRO_LOAD_GAME                                             :{BLACK}Abrir um Jogo
+STR_INTRO_PLAY_SCENARIO                                         :{BLACK}Jogar em Cenário
+STR_INTRO_PLAY_HEIGHTMAP                                        :{BLACK}Jogar em Mapa Topográfico
 STR_INTRO_SCENARIO_EDITOR                                       :{BLACK}Editor de Cenário
 STR_INTRO_MULTIPLAYER                                           :{BLACK}Multijogador
 
@@ -2190,7 +2190,7 @@ STR_INTRO_NEWGRF_SETTINGS                                       :{BLACK}Configur
 STR_INTRO_ONLINE_CONTENT                                        :{BLACK}Verificar Conteúdo Online
 STR_INTRO_AI_SETTINGS                                           :{BLACK}Configurações de IA
 STR_INTRO_GAMESCRIPT_SETTINGS                                   :{BLACK}Configurações de Script de Jogo
-STR_INTRO_QUIT                                                  :{BLACK}Sair
+STR_INTRO_QUIT                                                  :{BLACK}Sair do OpenTTD
 
 STR_INTRO_TOOLTIP_NEW_GAME                                      :{BLACK}Iniciar um novo jogo. Ctrl+Clique para saltar a configuração do mapa
 STR_INTRO_TOOLTIP_LOAD_GAME                                     :{BLACK}Abrir um jogo salvo
@@ -2212,10 +2212,10 @@ STR_INTRO_TOOLTIP_NEWGRF_SETTINGS                               :{BLACK}Abrir co
 STR_INTRO_TOOLTIP_ONLINE_CONTENT                                :{BLACK}Verificar por conteúdo novo e atualizado para download
 STR_INTRO_TOOLTIP_AI_SETTINGS                                   :{BLACK}Abrir configurações de IA
 STR_INTRO_TOOLTIP_GAMESCRIPT_SETTINGS                           :{BLACK}Abrir configurações de Script de Jogo
-STR_INTRO_TOOLTIP_QUIT                                          :{BLACK}Sair do 'OpenTTD'
+STR_INTRO_TOOLTIP_QUIT                                          :{BLACK}Fechar o 'OpenTTD'
 
 STR_INTRO_BASESET                                               :{BLACK}Faltam {NUM} sprite{P "" s} no conjunto de gráficos base selecionado. Por favor, verifique se existem atualizações para o conjunto.
-STR_INTRO_TRANSLATION                                           :{BLACK}Faltam {NUM} frase{P "" s} nesta tradução. Por favor, ajude a melhorar o OpenTTD inscrevendo-se como tradutor. Veja o arquivo readme.txt para mais detalhes.
+STR_INTRO_TRANSLATION                                           :{BLACK}Faltam {NUM} string{P "" s} nesta tradução. Por favor, ajude a melhorar o OpenTTD inscrevendo-se como tradutor. Veja o arquivo readme.txt para mais detalhes.
 
 # Quit window
 STR_QUIT_CAPTION                                                :{WHITE}Sair
@@ -2236,7 +2236,7 @@ STR_HELP_WINDOW_README                                          :{BLACK}Leia-me
 STR_HELP_WINDOW_CHANGELOG                                       :{BLACK}Registro de modificações
 STR_HELP_WINDOW_KNOWN_BUGS                                      :{BLACK}Erros conhecidos
 STR_HELP_WINDOW_LICENSE                                         :{BLACK}Licença
-STR_HELP_WINDOW_MAIN_WEBSITE                                    :{BLACK}OpenTTD
+STR_HELP_WINDOW_MAIN_WEBSITE                                    :{BLACK}Site do OpenTTD
 STR_HELP_WINDOW_MANUAL_WIKI                                     :{BLACK}Manual / Wiki
 STR_HELP_WINDOW_BUGTRACKER                                      :{BLACK}Relatar um erro
 STR_HELP_WINDOW_COMMUNITY                                       :{BLACK}Comunidade
@@ -2429,7 +2429,7 @@ STR_NETWORK_START_SERVER_CAPTION                                :{WHITE}Iniciar 
 STR_NETWORK_START_SERVER_NEW_GAME_NAME                          :{BLACK}Nome do jogo:
 STR_NETWORK_START_SERVER_NEW_GAME_NAME_TOOLTIP                  :{BLACK}O nome do jogo será mostrado aos outros jogadores no menu de seleção de jogos multijogador
 STR_NETWORK_START_SERVER_SET_PASSWORD                           :{BLACK}Definir senha
-STR_NETWORK_START_SERVER_PASSWORD_TOOLTIP                       :{BLACK}Proteja o jogo com uma senha se não desejar que ele seja publicamente acessível
+STR_NETWORK_START_SERVER_PASSWORD_TOOLTIP                       :{BLACK}Proteja o jogo com uma senha se você não quiser que ele seja publicamente acessível
 
 STR_NETWORK_START_SERVER_VISIBILITY_LABEL                       :{BLACK}Visibilidade
 STR_NETWORK_START_SERVER_VISIBILITY_TOOLTIP                     :{BLACK}Se outras pessoas podem ver seu servidor na lista pública
@@ -2480,14 +2480,14 @@ STR_NETWORK_CLIENT_LIST_SERVER_VISIBILITY_TOOLTIP               :{BLACK}Se outra
 STR_NETWORK_CLIENT_LIST_SERVER_INVITE_CODE                      :{BLACK}Código de convite
 STR_NETWORK_CLIENT_LIST_SERVER_INVITE_CODE_TOOLTIP              :{BLACK}Código de convite que outros jogadores podem usar para acessar este servidor
 STR_NETWORK_CLIENT_LIST_SERVER_CONNECTION_TYPE                  :{BLACK}Tipo de conexão
-STR_NETWORK_CLIENT_LIST_SERVER_CONNECTION_TYPE_TOOLTIP          :{BLACK}Se e como seu servidor pode ser acessado por outros
+STR_NETWORK_CLIENT_LIST_SERVER_CONNECTION_TYPE_TOOLTIP          :{BLACK}Como o seu servidor pode ser acessado por outras pessoas
 STR_NETWORK_CLIENT_LIST_PLAYER                                  :{BLACK}Jogador
 STR_NETWORK_CLIENT_LIST_PLAYER_NAME                             :{BLACK}Nome
 STR_NETWORK_CLIENT_LIST_PLAYER_NAME_TOOLTIP                     :{BLACK}Seu nome de jogador
 STR_NETWORK_CLIENT_LIST_PLAYER_NAME_EDIT_TOOLTIP                :{BLACK}Editar o seu nome de jogador
 STR_NETWORK_CLIENT_LIST_PLAYER_NAME_QUERY_CAPTION               :Seu nome de jogador
-STR_NETWORK_CLIENT_LIST_ADMIN_CLIENT_TOOLTIP                    :{BLACK}Ações administrativas para executar para este cliente
-STR_NETWORK_CLIENT_LIST_ADMIN_COMPANY_TOOLTIP                   :{BLACK}Ações administrativas para executar para esta empresa
+STR_NETWORK_CLIENT_LIST_ADMIN_CLIENT_TOOLTIP                    :{BLACK}Ações administrativas para executar neste cliente
+STR_NETWORK_CLIENT_LIST_ADMIN_COMPANY_TOOLTIP                   :{BLACK}Ações administrativas para executar nesta empresa
 STR_NETWORK_CLIENT_LIST_JOIN_TOOLTIP                            :{BLACK}Juntar-se a esta empresa
 STR_NETWORK_CLIENT_LIST_CHAT_CLIENT_TOOLTIP                     :{BLACK}Enviar uma mensagem a este jogador
 STR_NETWORK_CLIENT_LIST_CHAT_COMPANY_TOOLTIP                    :{BLACK}Enviar uma mensagem a todos os jogadores desta empresa
@@ -2511,7 +2511,7 @@ STR_NETWORK_CLIENT_LIST_SERVER_CONNECTION_TYPE_TURN             :{BLACK}Via retr
 STR_NETWORK_CLIENT_LIST_ADMIN_CLIENT_KICK                       :Expulsar
 STR_NETWORK_CLIENT_LIST_ADMIN_CLIENT_BAN                        :Banir
 STR_NETWORK_CLIENT_LIST_ADMIN_COMPANY_RESET                     :Excluir
-STR_NETWORK_CLIENT_LIST_ADMIN_COMPANY_UNLOCK                    :Desbloquear com senha
+STR_NETWORK_CLIENT_LIST_ADMIN_COMPANY_UNLOCK                    :Desbloquear senha
 
 STR_NETWORK_CLIENT_LIST_ASK_CAPTION                             :{WHITE}Ação administrativa
 STR_NETWORK_CLIENT_LIST_ASK_CLIENT_KICK                         :{YELLOW}Você quer mesmo expulsar o jogador '{STRING}'?
@@ -2571,8 +2571,8 @@ STR_NETWORK_ERROR_LOSTCONNECTION                                :{WHITE}A conex�
 STR_NETWORK_ERROR_SAVEGAMEERROR                                 :{WHITE}Não foi possível abrir o jogo
 STR_NETWORK_ERROR_SERVER_START                                  :{WHITE}Não foi possível iniciar o servidor
 STR_NETWORK_ERROR_SERVER_ERROR                                  :{WHITE}Ocorreu um erro de protocolo e a conexão foi encerrada
-STR_NETWORK_ERROR_BAD_PLAYER_NAME                               :{WHITE}Seu nome de jogador não foi definido. O nome pode ser definido no topo da janela de Multijogador
-STR_NETWORK_ERROR_BAD_SERVER_NAME                               :{WHITE}O nome do seu servidor não foi definido. O nome pode ser definido no topo da janela de Multijogador
+STR_NETWORK_ERROR_BAD_PLAYER_NAME                               :{WHITE}Seu nome de jogador não foi definido. O nome pode ser definido na parte superior da janela de Multijogador
+STR_NETWORK_ERROR_BAD_SERVER_NAME                               :{WHITE}O nome do seu servidor não foi definido. O nome pode ser definido na parte superior da janela de Multijogador
 STR_NETWORK_ERROR_WRONG_REVISION                                :{WHITE}A versão deste cliente é incompatível com a versão do servidor
 STR_NETWORK_ERROR_WRONG_PASSWORD                                :{WHITE}Senha incorreta
 STR_NETWORK_ERROR_SERVER_FULL                                   :{WHITE}O servidor está cheio
@@ -2668,7 +2668,7 @@ STR_CONTENT_SEARCH_EXTERNAL_DISCLAIMER                          :{WHITE}Os termo
 STR_CONTENT_FILTER_TITLE                                        :{BLACK}Filtrar por etiqueta/nome:
 STR_CONTENT_OPEN_URL                                            :{BLACK}Página da internet
 STR_CONTENT_OPEN_URL_TOOLTIP                                    :{BLACK}Visitar o site desse conteúdo
-STR_CONTENT_DOWNLOAD_CAPTION                                    :{BLACK}Download
+STR_CONTENT_DOWNLOAD_CAPTION                                    :{BLACK}Fazer download
 STR_CONTENT_DOWNLOAD_CAPTION_TOOLTIP                            :{BLACK}Iniciar o download do conteúdo selecionado
 STR_CONTENT_TOTAL_DOWNLOAD_SIZE                                 :{SILVER}Tamanho total do download: {WHITE}{BYTES}
 STR_CONTENT_DETAIL_TITLE                                        :{SILVER}INFORMAÇÕES DO CONTEÚDO
@@ -2724,7 +2724,7 @@ STR_MISSING_GRAPHICS_YES_DOWNLOAD                               :{BLACK}Sim, obt
 STR_MISSING_GRAPHICS_NO_QUIT                                    :{BLACK}Não, sair do OpenTTD
 
 STR_MISSING_GRAPHICS_ERROR_TITLE                                :{WHITE}O download falhou
-STR_MISSING_GRAPHICS_ERROR                                      :{BLACK}O download de gráficos falhou.{}Por favor, baixe os gráficos manualmente.
+STR_MISSING_GRAPHICS_ERROR                                      :{BLACK}O download de gráficos falhou.{}Por favor, obtenha os gráficos manualmente
 STR_MISSING_GRAPHICS_ERROR_QUIT                                 :{BLACK}Sair do OpenTTD
 
 # Transparency settings window
@@ -2777,7 +2777,7 @@ STR_JOIN_WAYPOINT_CAPTION                                       :{WHITE}Unir pon
 STR_JOIN_WAYPOINT_CREATE_SPLITTED_WAYPOINT                      :{YELLOW}Construir um ponto de controle separado
 
 # Generic toolbar
-STR_TOOLBAR_DISABLED_NO_VEHICLE_AVAILABLE                       :{BLACK}Desativado pois não existem atualmente veículos disponíveis para esta infraestrutura
+STR_TOOLBAR_DISABLED_NO_VEHICLE_AVAILABLE                       :{BLACK}Desativado porque não existem, atualmente, veículos disponíveis para esta infraestrutura
 
 # Rail construction toolbar
 STR_RAIL_TOOLBAR_RAILROAD_CONSTRUCTION_CAPTION                  :Construção de Ferrovia
@@ -2821,7 +2821,7 @@ STR_STATION_BUILD_DRAG_DROP                                     :{BLACK}Arrastar
 STR_STATION_BUILD_DRAG_DROP_TOOLTIP                             :{BLACK}Construir estação usando arrastar & soltar
 
 STR_STATION_BUILD_STATION_CLASS_TOOLTIP                         :{BLACK}Escolher uma classe de estação para mostrar
-STR_STATION_BUILD_STATION_TYPE_TOOLTIP                          :{BLACK}Escolher o tipo de estação para construir
+STR_STATION_BUILD_STATION_TYPE_TOOLTIP                          :{BLACK}Escolher um tipo de estação para construir
 
 STR_STATION_CLASS_DFLT                                          :Padrão
 STR_STATION_CLASS_DFLT_STATION                                  :Estação padrão
@@ -2868,8 +2868,8 @@ STR_BRIDGE_TUBULAR_SILICON                                      :Tubular, Silíc
 
 
 # Road construction toolbar
-STR_ROAD_TOOLBAR_ROAD_CONSTRUCTION_CAPTION                      :{WHITE}Construção de estradas
-STR_ROAD_TOOLBAR_TRAM_CONSTRUCTION_CAPTION                      :{WHITE}Construção de Linhas de Bonde
+STR_ROAD_TOOLBAR_ROAD_CONSTRUCTION_CAPTION                      :{WHITE}Construção de Estradas
+STR_ROAD_TOOLBAR_TRAM_CONSTRUCTION_CAPTION                      :{WHITE}Construção de Linha de Bonde
 STR_ROAD_TOOLBAR_TOOLTIP_BUILD_ROAD_SECTION                     :{BLACK}Construir seção de estrada. Ctrl+Clique para remover seção da estrada. Pressione também Shift para só mostrar o custo estimado
 STR_ROAD_TOOLBAR_TOOLTIP_BUILD_TRAMWAY_SECTION                  :{BLACK}Construir seção de linha de bonde. Ctrl+Clique para remover seção da linha. Pressione também Shift para só mostrar o custo estimado
 STR_ROAD_TOOLBAR_TOOLTIP_BUILD_AUTOROAD                         :{BLACK}Construir estrada usando o modo Autoestrada. Ctrl+Clique para remover seção da estrada. Pressione também Shift para só mostrar o custo estimado
@@ -2886,7 +2886,7 @@ STR_ROAD_TOOLBAR_TOOLTIP_BUILD_TRAMWAY_BRIDGE                   :{BLACK}Construi
 STR_ROAD_TOOLBAR_TOOLTIP_BUILD_ROAD_TUNNEL                      :{BLACK}Construir túnel rodoviário. Pressione também Shift para só mostrar o custo estimado
 STR_ROAD_TOOLBAR_TOOLTIP_BUILD_TRAMWAY_TUNNEL                   :{BLACK}Construir túnel para bondes. Pressione também Shift para só mostrar o custo estimado
 STR_ROAD_TOOLBAR_TOOLTIP_TOGGLE_BUILD_REMOVE_FOR_ROAD           :{BLACK}Construir/Remover estrada
-STR_ROAD_TOOLBAR_TOOLTIP_TOGGLE_BUILD_REMOVE_FOR_TRAMWAYS       :{BLACK}Construir/Remover linhas de bonde
+STR_ROAD_TOOLBAR_TOOLTIP_TOGGLE_BUILD_REMOVE_FOR_TRAMWAYS       :{BLACK}Construir/Remover linha de bonde
 STR_ROAD_TOOLBAR_TOOLTIP_CONVERT_ROAD                           :{BLACK}Converter/Atualizar o tipo de estrada. Pressione também Shift para só mostrar o custo estimado
 STR_ROAD_TOOLBAR_TOOLTIP_CONVERT_TRAM                           :{BLACK}Converter/Atualizar o tipo de bonde. Pressione também Shift para só mostrar o custo estimado
 

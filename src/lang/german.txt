@@ -1012,6 +1012,7 @@ STR_GAME_OPTIONS_CURRENCY_INR                                   :Indische Rupie
 STR_GAME_OPTIONS_CURRENCY_IDR                                   :Indonesische Rupiah
 STR_GAME_OPTIONS_CURRENCY_MYR                                   :Malaysische Ringgit
 STR_GAME_OPTIONS_CURRENCY_LVL                                   :Lettlandischer Lats
+STR_GAME_OPTIONS_CURRENCY_PTE                                   :Portugiesische Escudo
 
 STR_GAME_OPTIONS_AUTOSAVE_FRAME                                 :{BLACK}Autosicherung
 STR_GAME_OPTIONS_AUTOSAVE_DROPDOWN_TOOLTIP                      :{BLACK}Abstand zwischen den automatischen Spielesicherungen wählen
@@ -1054,9 +1055,9 @@ STR_GAME_OPTIONS_GUI_SCALE_BEVELS                               :{BLACK}Schräge
 STR_GAME_OPTIONS_GUI_SCALE_BEVELS_TOOLTIP                       :{BLACK}Dieses Kästchen ankreuzen, um Schrägen nach der Oberflächengröße zu skalieren
 
 STR_GAME_OPTIONS_GUI_FONT_SPRITE                                :{BLACK}Nutze die traditionelle Sprite-Schriftart
-STR_GAME_OPTIONS_GUI_FONT_SPRITE_TOOLTIP                        :{BLACK}Dieses Kästchen ankreuzen, um die traditionelle Sprite-Schriftart mit fester Größe zu verwenden.
+STR_GAME_OPTIONS_GUI_FONT_SPRITE_TOOLTIP                        :{BLACK}Dieses Kästchen ankreuzen, um die traditionelle Sprite-Schrift mit fester Größe zu verwenden
 STR_GAME_OPTIONS_GUI_FONT_AA                                    :{BLACK}Kantenglättung für Schriften
-STR_GAME_OPTIONS_GUI_FONT_AA_TOOLTIP                            :{BLACK}Dieses Kästchen ankreuzen, um Kantenglättung für skalierbare Schriften zu aktivieren.
+STR_GAME_OPTIONS_GUI_FONT_AA_TOOLTIP                            :{BLACK}Dieses Kästchen ankreuzen, um Kantenglättung für skalierbare Schriften zu aktivieren
 
 STR_GAME_OPTIONS_GUI_SCALE_1X                                   :1×
 STR_GAME_OPTIONS_GUI_SCALE_2X                                   :2×
@@ -1275,7 +1276,7 @@ STR_CONFIG_SETTING_INFINITE_MONEY                               :Unbegrenzte fin
 STR_CONFIG_SETTING_INFINITE_MONEY_HELPTEXT                      :Erlaubt Firmen, unbeschränkte Ausgaben zu tätigen und deaktiviert Insolvenz
 
 STR_CONFIG_SETTING_MAXIMUM_INITIAL_LOAN                         :Kreditlimit bei Spielbeginn: {STRING}
-STR_CONFIG_SETTING_MAXIMUM_INITIAL_LOAN_HELPTEXT                :Maximaler Kredit für eine Firma (ohne Berücksichtigung der Inflation). Falls auf „Kein Darlehen“ gesetzt, wird kein Geld zur Verfügung stehen, außer, wenn es von einem Spielskript oder der „Unendlich Geld“-Einstellung zur Verfügung gestellt wird.
+STR_CONFIG_SETTING_MAXIMUM_INITIAL_LOAN_HELPTEXT                :Maximaler Kredit für eine Firma (ohne Berücksichtigung der Inflation). Falls auf „Kein Darlehen“ gesetzt, wird kein Geld zur Verfügung stehen, außer, wenn es von einem Spielskript oder der „Unendlich Geld“-Einstellung zur Verfügung gestellt wird
 STR_CONFIG_SETTING_MAXIMUM_INITIAL_LOAN_VALUE                   :{CURRENCY_LONG}
 ###setting-zero-is-special
 STR_CONFIG_SETTING_MAXIMUM_INITIAL_LOAN_DISABLED                :Kein Darlehen
@@ -1471,7 +1472,7 @@ STR_CONFIG_SETTING_COMPANY_STARTING_COLOUR                      :Firmenfarbe zu 
 STR_CONFIG_SETTING_COMPANY_STARTING_COLOUR_HELPTEXT             :Wähle die Firmenfarbe zu Spielbeginn
 
 STR_CONFIG_SETTING_COMPANY_STARTING_COLOUR_SECONDARY            :Sekundärfirmenfarbe zu Spielbeginn: {STRING}
-STR_CONFIG_SETTING_COMPANY_STARTING_COLOUR_SECONDARY_HELPTEXT   :Initiale Sekundärfarbe für das Unternehmen wählen, falls ein NewGRF verwendet wird, welches sie verwendet.
+STR_CONFIG_SETTING_COMPANY_STARTING_COLOUR_SECONDARY_HELPTEXT   :Initiale Sekundärfarbe für das Unternehmen wählen, falls ein NewGRF verwendet wird, welches sie aktiviert
 
 STR_CONFIG_SETTING_NEVER_EXPIRE_AIRPORTS                        :Flughäfen veralten nie: {STRING}
 STR_CONFIG_SETTING_NEVER_EXPIRE_AIRPORTS_HELPTEXT               :Wird diese Option aktiviert, können Flughäfen, die einmal eingeführt wurden, das ganze Spiel über gebaut werden und veralten nie
@@ -1495,22 +1496,22 @@ STR_CONFIG_SETTING_NEVER_EXPIRE_VEHICLES                        :Fahrzeuge veral
 STR_CONFIG_SETTING_NEVER_EXPIRE_VEHICLES_HELPTEXT               :Erlauben, dass Fahrzeuge nach ihrem Einführungsdatum ewig verfügbar bleiben
 
 STR_CONFIG_SETTING_TIMEKEEPING_UNITS                            :Zeiteinheit: {STRING}
-STR_CONFIG_SETTING_TIMEKEEPING_UNITS_HELPTEXT                   :Wähle die Zeitbasis des Spiels. Diese kann später nicht geändert werden.{}{}Kalender-basiert ist die klassische OpenTTD Erfahrung, in dem ein Jahr aus 12 Monaten besteht und jeder Monat 28-31 Tage hat.{}{}In Wanduhr-basierter Zeit sind Güterproduktion und Finanzen basierend auf 1-minütigen Intervallen, welche etwa so lang wie ein 30-tägiger Monat im Kalender-basierten Modus sind. Diese sind in 12-minütigen Zyklen gruppiert, equivalent zu einem Kalender-Jahr.{}{}In beiden Modi gilt immer auch ein klassischer Kalender für das Einführungdatum von Fahrzeugen, Häusern und anderer Infrastruktur.
+STR_CONFIG_SETTING_TIMEKEEPING_UNITS_HELPTEXT                   :Die Zeitbasis des Spiels wählen. Diese kann später nicht geändert werden.{}{}Kalender-basiert ist die klassische OpenTTD-Erfahrung, in dem ein Jahr aus 12 Monaten besteht und jeder Monat 28-31 Tage hat.{}{}In Wanduhr-basierter Zeit sind Güterproduktion und Finanzen basierend auf 1-minütigen Intervallen, welche etwa so lang wie ein 30-tägiger Monat im Kalender-basierten Modus sind. Diese sind in 12-minütigen Zyklen gruppiert, equivalent zu einem Kalenderjahr.{}{}In beiden Modi gilt immer auch ein klassischer Kalender für das Einführungdatum von Fahrzeugen, Häusern und anderer Infrastruktur
 ###length 2
 STR_CONFIG_SETTING_TIMEKEEPING_UNITS_CALENDAR                   :Kalender
 STR_CONFIG_SETTING_TIMEKEEPING_UNITS_WALLCLOCK                  :Wanduhr
 
 STR_CONFIG_SETTING_MINUTES_PER_YEAR                             :Minuten pro Jahr: {STRING}
-STR_CONFIG_SETTING_MINUTES_PER_YEAR_HELPTEXT                    :Wähle die Anzahl an Minuten in einem Kalenderjahr. Standartmäßig sind das 12 Minuten. Um das wechseln der Kalenderzeit auszuschalten, stelle dies einfach auf 0. Diese Einstellung beeinflusst nicht die wirtschaftssimulation des Spiels und ist nur verfügbar, wenn die Wanduhr als Zeitmesser eingestellt ist.
+STR_CONFIG_SETTING_MINUTES_PER_YEAR_HELPTEXT                    :Die Anzahl an Minuten in einem Kalenderjahr wählen. Standartmäßig sind das 12 Minuten. Um das wechseln der Kalenderzeit auszuschalten, einfach auf 0 stellen. Diese Einstellung beeinflusst nicht die wirtschaftssimulation des Spiels und ist nur verfügbar, wenn die Wanduhr als Zeitmesser eingestellt ist
 
 STR_CONFIG_SETTING_MINUTES_PER_YEAR_VALUE                       :{NUM}
 ###setting-zero-is-special
 STR_CONFIG_SETTING_MINUTES_PER_YEAR_FROZEN                      :0 (Kalenderzeit steht still)
 
 STR_CONFIG_SETTING_TOWN_CARGO_SCALE                             :Skaliere Güterproduktion in Städten: {STRING}
-STR_CONFIG_SETTING_TOWN_CARGO_SCALE_HELPTEXT                    :Skaliere die Güterproduktion in Städten um diesen Prozentsatz.
+STR_CONFIG_SETTING_TOWN_CARGO_SCALE_HELPTEXT                    :Skaliere die Güterproduktion in Städten um diesen Prozentsatz
 STR_CONFIG_SETTING_INDUSTRY_CARGO_SCALE                         :Skaliere Güterproduktion durch Industrie: {STRING}
-STR_CONFIG_SETTING_INDUSTRY_CARGO_SCALE_HELPTEXT                :Skaliere die Güterproduktion durch die Industrie um diesen Prozentsatz.
+STR_CONFIG_SETTING_INDUSTRY_CARGO_SCALE_HELPTEXT                :Skaliere die Güterproduktion durch die Industrie um diesen Prozentsatz
 STR_CONFIG_SETTING_CARGO_SCALE_VALUE                            :{NUM}%
 
 STR_CONFIG_SETTING_AUTORENEW_VEHICLE                            :Fahrzeuge automatisch erneuern, wenn sie alt werden: {STRING}
@@ -1529,7 +1530,7 @@ STR_CONFIG_SETTING_ERRMSG_DURATION                              :Anzeigedauer f�
 STR_CONFIG_SETTING_ERRMSG_DURATION_HELPTEXT                     :Anzeigedauer für Fehlermeldungen in einem roten Fenster. Bedenken Sie, dass einige (kritische) Fehlermeldungen nicht automatisch nach dieser Dauer geschlossen werden, sondern manuell geschlossen werden müssen
 
 STR_CONFIG_SETTING_HOVER_DELAY                                  :Zeige kurzen Hilfetext: {STRING}
-STR_CONFIG_SETTING_HOVER_DELAY_HELPTEXT                         :Einstellen, wie lange man zum Aufruf von Hilfetexten zur Erklärung der Funktionen im Spiel mit dem Mauszeiger über der gewünschten Stelle stehenbleiben muss. Alternativ werden die Hilfetexte bei einem Rechtsklick sofort angezeigt, wenn dieser Wert auf 0 gesetzt wird.
+STR_CONFIG_SETTING_HOVER_DELAY_HELPTEXT                         :Einstellen, wie lange man zum Aufruf von Hilfetexten zur Erklärung der Funktionen im Spiel mit dem Mauszeiger über der gewünschten Stelle stehenbleiben muss. Alternativ werden die Hilfetexte bei einem Rechtsklick sofort angezeigt, wenn dieser Wert auf 0 gesetzt wird
 STR_CONFIG_SETTING_HOVER_DELAY_VALUE                            :Nach {COMMA} Millisekunde{P 0 "" n}
 ###setting-zero-is-special
 STR_CONFIG_SETTING_HOVER_DELAY_DISABLED                         :Rechtsklick
@@ -1541,8 +1542,8 @@ STR_CONFIG_SETTING_GRAPH_LINE_THICKNESS                         :Linienstärke i
 STR_CONFIG_SETTING_GRAPH_LINE_THICKNESS_HELPTEXT                :Strichdicke der Linien in Diagrammen. Dünnere Linien sind genauer ablesbar, dickere Linien sind besser sichtbar und erlauben es, Farben leichter zu unterscheiden
 
 STR_CONFIG_SETTING_SHOW_NEWGRF_NAME                             :NewGRF-Namen im Fahrzeugbaumenü zeigen: {STRING}
-STR_CONFIG_SETTING_SHOW_NEWGRF_NAME_HELPTEXT                    :Eine Textzeile mit dem Namen des NewGRF, von dem ein Fahrzeug stammt, hinzufügen.
-STR_CONFIG_SETTING_SHOW_CARGO_IN_LISTS                          :Die Frachten, die das Fahrzzeug tragen kann, in den Listenfenstern anzeigen {STRING}
+STR_CONFIG_SETTING_SHOW_NEWGRF_NAME_HELPTEXT                    :Eine Textzeile mit dem Namen des NewGRF, von dem ein Fahrzeug stammt, hinzufügen
+STR_CONFIG_SETTING_SHOW_CARGO_IN_LISTS                          :Die Frachten, die das Fahrzzeug tragen kann, in den Listenfenstern anzeigen: {STRING}
 STR_CONFIG_SETTING_SHOW_CARGO_IN_LISTS_HELPTEXT                 :Falls erlaubt, wird die transportierbare Ladung des Fahrzeugs über ihm in den Fahrzeuglisten erscheinen
 
 STR_CONFIG_SETTING_LANDSCAPE                                    :Landschaftstyp: {STRING}
@@ -1561,13 +1562,13 @@ STR_CONFIG_SETTING_INDUSTRY_DENSITY                             :Industriedichte
 STR_CONFIG_SETTING_INDUSTRY_DENSITY_HELPTEXT                    :Wähle wieviele Industrien generiert werden sollen und welche Anzahl während des Spiels angestrebt wird zu erhalten
 
 STR_CONFIG_SETTING_OIL_REF_EDGE_DISTANCE                        :Maximalabstand vom Kartenrand für Ölraffinerien: {STRING}
-STR_CONFIG_SETTING_OIL_REF_EDGE_DISTANCE_HELPTEXT               :Ölraffinerien werden nur in der Nähe des Kartenrands gebaut, bei inselreichen Karten nahe der Küste
+STR_CONFIG_SETTING_OIL_REF_EDGE_DISTANCE_HELPTEXT               :Begrenzen, für wie weit von der Kartengrenze Ölraffinerien und Ölbohrinseln gebaut werden können. Auf Inselkarten stellt dies sicher, dass sie sich nahe der Küste befinden. Auf Karten, die größer als 256 Kacheln sind, wird dieser Wert hochskaliert
 
 STR_CONFIG_SETTING_SNOWLINE_HEIGHT                              :Schneegrenze auf: {STRING}
 STR_CONFIG_SETTING_SNOWLINE_HEIGHT_HELPTEXT                     :Höhe der Schneefallgrenze im subarktischen Klima wählen. Schnee beeinflusst auch die Platzierung von Industrien und Voraussetzungen für Städtewachstum. Dies kann nur im Szenarieneditor geändert werden oder wird ansonsten anhand der Einstellung „Schneebedeckung“ berechnet.
 
 STR_CONFIG_SETTING_SNOW_COVERAGE                                :Schneebedeckung: {STRING}
-STR_CONFIG_SETTING_SNOW_COVERAGE_HELPTEXT                       :Regelt die ungefähre Menge von Schneeflächen im subarktischen Klima. Schnee beeinflusst die Platzierung von Industrien und Vorausstzungen für Städtewachstum. Dies kann nur während der Kartenerzeugung benutzt werden. Am Meerespiegel und auf Küstenkacheln wird sich nie Schnee befinden.
+STR_CONFIG_SETTING_SNOW_COVERAGE_HELPTEXT                       :Regelt die ungefähre Menge von Schneeflächen im subarktischen Klima. Schnee beeinflusst die Platzierung von Industrien und Vorausstzungen für Städtewachstum. Dies kann nur während der Kartenerzeugung benutzt werden. Am Meerespiegel und auf Küstenkacheln wird sich nie Schnee befinden
 STR_CONFIG_SETTING_SNOW_COVERAGE_VALUE                          :{NUM}%
 
 STR_CONFIG_SETTING_DESERT_COVERAGE                              :Wüstenbedeckung: {STRING}
@@ -1575,7 +1576,7 @@ STR_CONFIG_SETTING_DESERT_COVERAGE_HELPTEXT                     :Passt die ungef
 STR_CONFIG_SETTING_DESERT_COVERAGE_VALUE                        :{NUM}%
 
 STR_CONFIG_SETTING_ROUGHNESS_OF_TERRAIN                         :Rauheit des Geländes: {STRING}
-STR_CONFIG_SETTING_ROUGHNESS_OF_TERRAIN_HELPTEXT                :(nur TerraGenesis) Die Häufigkeit von Hügeln wählen: Ebene Landschaften haben wenige breitere Hügel, zerklüftete Landschaften haben viele kleinere Hügel.
+STR_CONFIG_SETTING_ROUGHNESS_OF_TERRAIN_HELPTEXT                :Die Häufigkeit von Hügeln wählen. Ebene Landschaften haben wenige breitere Hügel, zerklüftete Landschaften haben viele kleinere Hügel
 ###length 4
 STR_CONFIG_SETTING_ROUGHNESS_OF_TERRAIN_VERY_SMOOTH             :Sehr eben
 STR_CONFIG_SETTING_ROUGHNESS_OF_TERRAIN_SMOOTH                  :Eben
@@ -1583,7 +1584,7 @@ STR_CONFIG_SETTING_ROUGHNESS_OF_TERRAIN_ROUGH                   :Zerklüftet
 STR_CONFIG_SETTING_ROUGHNESS_OF_TERRAIN_VERY_ROUGH              :Sehr zerklüftet
 
 STR_CONFIG_SETTING_VARIETY                                      :Größe der Geländeformen: {STRING}
-STR_CONFIG_SETTING_VARIETY_HELPTEXT                             :Wählen, ob die Karte sowohl Berge als auch ebene Gebiete enthalten soll. Je höher die Vielfalt, desto häufiger sind Höhenunterschiede zwischen bergigen und flachen Gebieten.
+STR_CONFIG_SETTING_VARIETY_HELPTEXT                             :Wählen, ob die Karte sowohl Berge als auch ebene Gebiete enthalten soll. Je höher die Vielfalt, desto häufiger sind Höhenunterschiede zwischen bergigen und flachen Gebieten
 
 STR_CONFIG_SETTING_RIVER_AMOUNT                                 :Anzahl Flüsse: {STRING}
 STR_CONFIG_SETTING_RIVER_AMOUNT_HELPTEXT                        :Wähle die Anzahl zu erzeugender Flüsse
@@ -1630,7 +1631,7 @@ STR_CONFIG_SETTING_SMALLMAP_LAND_COLOUR_DARK_GREEN              :Dunkelgrün
 STR_CONFIG_SETTING_SMALLMAP_LAND_COLOUR_VIOLET                  :Lila
 
 STR_CONFIG_SETTING_LINKGRAPH_COLOURS                            :Overlay-Farben der Frachtverbindungen: {STRING}
-STR_CONFIG_SETTING_LINKGRAPH_COLOURS_HELPTEXT                   :Bestimme das Farbschema für das Frachtverbindungsoverlay.
+STR_CONFIG_SETTING_LINKGRAPH_COLOURS_HELPTEXT                   :Bestimme das Farbschema für das Frachtverbindungsoverlay
 ###length 4
 STR_CONFIG_SETTING_LINKGRAPH_COLOURS_GREEN_TO_RED               :Grün zu rot (original)
 STR_CONFIG_SETTING_LINKGRAPH_COLOURS_GREEN_TO_BLUE              :Grün zu blau
@@ -1751,10 +1752,10 @@ STR_CONFIG_SETTING_PERSISTENT_BUILDINGTOOLS                     :Belasse Bauwerk
 STR_CONFIG_SETTING_PERSISTENT_BUILDINGTOOLS_HELPTEXT            :Die Bauwerkzeuge für Brücken, Tunnel, etc. nach Benutzung weiter aktiviert lassen
 
 STR_CONFIG_SETTING_AUTO_REMOVE_SIGNALS                          :Automatische Entfernung von Signalen während der Errichtung von Bahntrassen: {STRING}
-STR_CONFIG_SETTING_AUTO_REMOVE_SIGNALS_HELPTEXT                 :Automatische Entfernung von Signalen während der Errichtung der Bahntrasse, wenn diese sich im Weg befinden. Hinweis: Dies kann zu Unfällen führen!
+STR_CONFIG_SETTING_AUTO_REMOVE_SIGNALS_HELPTEXT                 :Automatische Entfernung von Signalen während der Errichtung der Bahntrasse, wenn diese sich im Weg befinden. Hinweis: Dies kann zu Unfällen führen
 
 STR_CONFIG_SETTING_FAST_FORWARD_SPEED_LIMIT                     :Zeitraffer Geschwindigkeitslimit: {STRING}
-STR_CONFIG_SETTING_FAST_FORWARD_SPEED_LIMIT_HELPTEXT            :Limit wie schnell das Spiel läuft, wenn Zeitraffer aktiviert ist. 0= unlimitiert (so schnell, wie ihr Computer es erlaubt). Eingaben unter 100% können das Spiel verlangsamen. Das obere Limit hängt von den technischen Spezifikationen ihres Computer ab und kann großen Einfluss auf das Spiel haben
+STR_CONFIG_SETTING_FAST_FORWARD_SPEED_LIMIT_HELPTEXT            :Begrenzen, wie schnell das Spiel läuft, wenn Zeitraffer aktiviert ist. 0 = unlimitiert (so schnell, wie ihr Computer es erlaubt). Eingaben unter 100% können das Spiel verlangsamen. Das obere Limit hängt von den technischen Spezifikationen ihres Computer ab und kann großen Einfluss auf das Spiel haben
 STR_CONFIG_SETTING_FAST_FORWARD_SPEED_LIMIT_VAL                 :{NUM}% normale Spielgeschwindigkeit
 ###setting-zero-is-special
 STR_CONFIG_SETTING_FAST_FORWARD_SPEED_LIMIT_ZERO                :Keine Beschränkung (so schnell wie ihr Computer es erlaubt)
@@ -1818,11 +1819,11 @@ STR_CONFIG_SETTING_AI_IN_MULTIPLAYER_HELPTEXT                   :Erlaube die Tei
 STR_CONFIG_SETTING_SCRIPT_MAX_OPCODES                           :Rechenoperationen, bevor das Skript angehalten wird: {STRING}
 STR_CONFIG_SETTING_SCRIPT_MAX_OPCODES_HELPTEXT                  :Maximale Anzahl Rechenschritte, die ein Skript in einer Runde zur Verfügung hat
 STR_CONFIG_SETTING_SCRIPT_MAX_MEMORY                            :Maximaler Arbeitsspeicher pro Skript: {STRING}
-STR_CONFIG_SETTING_SCRIPT_MAX_MEMORY_HELPTEXT                   :Wie viel Arbeitsspeicher ein Script maximal benutzen darf bevor es terminiert wird. Diese Wert muss eventuell vergrößert werden für größere Maps.
+STR_CONFIG_SETTING_SCRIPT_MAX_MEMORY_HELPTEXT                   :Wie viel Arbeitsspeicher ein Skript maximal benutzen darf, bevor es terminiert wird. Dieser Wert muss eventuell für große Karten erhöht werden
 STR_CONFIG_SETTING_SCRIPT_MAX_MEMORY_VALUE                      :{COMMA} MiB
 
 STR_CONFIG_SETTING_SERVINT_ISPERCENT                            :Wartungsintervalle in Prozent: {STRING}
-STR_CONFIG_SETTING_SERVINT_ISPERCENT_HELPTEXT                   :Falls aktiviert, werden Fahrzeuge versuchen, sich in die Wartung zu begeben, sobald ihre Zuverlässigkeit unter einer bestimmten Prozentzahl unterhalb der maximalen Zuverlässigkeit liegt.{}{}Zum Beispiel: Wenn die maximale Zuverlässigkeit eines Fahrzeugs 90% beträgt und das Wartungsintervall bei 20% liegt, wird das Fahrzeug versuchen, sich in die Wartung zu begeben, sobald es eine Zuverlässigkeit von 72% erreicht.
+STR_CONFIG_SETTING_SERVINT_ISPERCENT_HELPTEXT                   :Falls aktiviert, werden Fahrzeuge versuchen, sich in die Wartung zu begeben, sobald ihre Zuverlässigkeit unter einer bestimmten Prozentzahl unterhalb der maximalen Zuverlässigkeit liegt.{}{}Zum Beispiel: Wenn die maximale Zuverlässigkeit eines Fahrzeugs 90% beträgt und das Wartungsintervall bei 20% liegt, wird das Fahrzeug versuchen, sich in die Wartung zu begeben, sobald es eine Zuverlässigkeit von 72% erreicht
 
 STR_CONFIG_SETTING_SERVINT_TRAINS                               :Standard-Wartungsintervall für Züge: {STRING}
 STR_CONFIG_SETTING_SERVINT_TRAINS_HELPTEXT                      :Setze das Standardwartungsintervall für Schienenfahrzeuge. Dieses Wartungsintervall wird von allen Zügen eingehalten, denen kein individuelles Wartungsintervall zugewiesen worden ist
@@ -1840,7 +1841,7 @@ STR_CONFIG_SETTING_NOSERVICE                                    :Wartung deaktiv
 STR_CONFIG_SETTING_NOSERVICE_HELPTEXT                           :Schicke Fahrzeuge nicht zur Wartung, wenn Pannen ausgeschaltet sind
 
 STR_CONFIG_SETTING_STATION_LENGTH_LOADING_PENALTY               :Verringerung der Ladegeschwindigkeit für Züge die länger als die Station sind: {STRING}
-STR_CONFIG_SETTING_STATION_LENGTH_LOADING_PENALTY_HELPTEXT      :Wenn aktiviert laden Züge, die zu lang für den Bahnhof sind, langsamer, als solche, die passen. Diese Option hat keine Auswirkung auf die Wegfindung
+STR_CONFIG_SETTING_STATION_LENGTH_LOADING_PENALTY_HELPTEXT      :Falls aktiviert, laden Züge, die zu lang für den Bahnhof sind, langsamer, als solche, die passen. Diese Option hat keine Auswirkung auf die Wegfindung
 
 STR_CONFIG_SETTING_WAGONSPEEDLIMITS                             :Berücksichtige Waggonhöchstgeschwindigkeit: {STRING}
 STR_CONFIG_SETTING_WAGONSPEEDLIMITS_HELPTEXT                    :Begrenze die Höchstgeschwindigkeit eines Zuges durch die jeweiligen Höchstgeschwindigkeiten der mitgeführten Waggons
@@ -1905,13 +1906,13 @@ STR_CONFIG_SETTING_COLOURED_NEWS_YEAR_HELPTEXT                  :Jahr in dem die
 STR_CONFIG_SETTING_STARTING_YEAR                                :Startdatum: {STRING}
 
 STR_CONFIG_SETTING_ENDING_YEAR                                  :Beurteilungsjahr der Firma: {STRING}
-STR_CONFIG_SETTING_ENDING_YEAR_HELPTEXT                         :Jahr, in dem das Spiel zwecks Beurteilung endet. Am Ende diesen Jahres wird die Punktezahl der Firma ermittelt und die Bestenliste wird angezeigt, es kann danach aber noch weitergespielt werden.{}Wenn dieser Wert kleiner als das Anfangsjahr ist, wird die Bestenliste nie angezeigt.
+STR_CONFIG_SETTING_ENDING_YEAR_HELPTEXT                         :Jahr, in dem das Spiel zwecks Beurteilung endet. Am Ende diesen Jahres wird die Punktezahl der Firma ermittelt und die Bestenliste wird angezeigt, es kann danach aber noch weitergespielt werden.{}Wenn dieser Wert kleiner als das Anfangsjahr ist, wird die Bestenliste nie angezeigt
 STR_CONFIG_SETTING_ENDING_YEAR_VALUE                            :{NUM}
 ###setting-zero-is-special
 STR_CONFIG_SETTING_ENDING_YEAR_ZERO                             :Nie
 
 STR_CONFIG_SETTING_ECONOMY_TYPE                                 :Wirtschaftstyp: {STRING}
-STR_CONFIG_SETTING_ECONOMY_TYPE_HELPTEXT                        :„Geglättet“ sorgt für öftere, kleinere Produktionsänderungen. „Statisch“ stoppt Produktionsänderungen und Industrieschließungen. Diese Einstellung hat womöglich keinen Effekt, wenn durch NewGRFs eigene Industrietypen bereitgestellt werden.
+STR_CONFIG_SETTING_ECONOMY_TYPE_HELPTEXT                        :„Geglättet“ sorgt für öftere, kleinere Produktionsänderungen. „Statisch“ stoppt Produktionsänderungen und Industrieschließungen. Diese Einstellung hat womöglich keinen Effekt, wenn durch NewGRFs eigene Industrietypen bereitgestellt werden
 ###length 3
 STR_CONFIG_SETTING_ECONOMY_TYPE_ORIGINAL                        :Original
 STR_CONFIG_SETTING_ECONOMY_TYPE_SMOOTH                          :Geglättet
@@ -1966,7 +1967,7 @@ STR_CONFIG_SETTING_TOWN_FOUNDING_ALLOWED                        :Erlaubt
 STR_CONFIG_SETTING_TOWN_FOUNDING_ALLOWED_CUSTOM_LAYOUT          :Erlaubt, mit wählbarem Straßenbauplan
 
 STR_CONFIG_SETTING_TOWN_CARGOGENMODE                            :Güterproduktion in Städten: {STRING}
-STR_CONFIG_SETTING_TOWN_CARGOGENMODE_HELPTEXT                   :Die Gütermenge, die von Häusern einer Stadt relativ zur Gesamtbevölkerung der Stadt produziert wird.{}Quadratisch: eine doppelt so große Stadt generiert viermal so viele Passagiere.{}Linear: eine doppelt so große Stadt generiert doppelt so viele Passagiere.
+STR_CONFIG_SETTING_TOWN_CARGOGENMODE_HELPTEXT                   :Die Gütermenge, die von Häusern einer Stadt relativ zur Gesamtbevölkerung der Stadt produziert wird.{}Quadratisch: eine doppelt so große Stadt generiert viermal so viele Passagiere.{}Linear: eine doppelt so große Stadt generiert doppelt so viele Passagiere
 ###length 2
 STR_CONFIG_SETTING_TOWN_CARGOGENMODE_ORIGINAL                   :Quadratisch (orginal)
 STR_CONFIG_SETTING_TOWN_CARGOGENMODE_BITCOUNT                   :Linear
@@ -2007,7 +2008,7 @@ STR_CONFIG_SETTING_ZOOM_LVL_OUT_4X                              :4×
 STR_CONFIG_SETTING_ZOOM_LVL_OUT_8X                              :8×
 
 STR_CONFIG_SETTING_SPRITE_ZOOM_MIN                              :Höchste Auflösung der Sprites: {STRING}
-STR_CONFIG_SETTING_SPRITE_ZOOM_MIN_HELPTEXT                     :Limitiert die maximale Auflösung, die von Sprites verwendet wird. Das Limitieren der Sprite-Auflösung verhindert das Verwenden von hochauflösenden Grafiken selbst dann, wenn diese verfügbar sind. Dies kann dabei helfen eine einheitliche Spieldarstellung zu erhalten, wenn GRF-Dateien mit und ohne hochauflösenden Grafiken verwendet werden.
+STR_CONFIG_SETTING_SPRITE_ZOOM_MIN_HELPTEXT                     :Limitiert die maximale Auflösung, die von Sprites verwendet wird. Das Limitieren der Sprite-Auflösung verhindert das Verwenden von hochauflösenden Grafiken selbst dann, wenn diese verfügbar sind. Dies kann dabei helfen, eine einheitliche Spieldarstellung zu erhalten, wenn GRF-Dateien mit und ohne hochauflösenden Grafiken verwendet werden
 ###length 3
 STR_CONFIG_SETTING_SPRITE_ZOOM_LVL_MIN                          :4x
 STR_CONFIG_SETTING_SPRITE_ZOOM_LVL_IN_2X                        :2x
@@ -2031,33 +2032,33 @@ STR_CONFIG_SETTING_CITY_SIZE_MULTIPLIER                         :Größe von Gro
 STR_CONFIG_SETTING_CITY_SIZE_MULTIPLIER_HELPTEXT                :Durchschnittliche Größe von Großstädten relativ zu normalen Städten bei Spielbeginn
 
 STR_CONFIG_SETTING_LINKGRAPH_RECALC_INTERVAL                    :Verteilungsgraphen alle {STRING} aktualisieren
-STR_CONFIG_SETTING_LINKGRAPH_RECALC_INTERVAL_HELPTEXT           :Zeit zwischen anfolgenden Neuberechnungen der Warenverteilung. Jede Neuberechnung berechnet die Pläne für eine Komponente des Graphen. Das bedeutet, dass ein Wert X für diese Einstellung nicht bedeutet, dass der gesamte Graph alle X Sekunden aktualisiert wird. Nur ein Teil wird es. Je kürzer du die Zeit festlegst, desto mehr CPU-Zeit wird nötig sein, um ihn zu berechnen. Je länger du die Zeit festlegst, desto länger wird es dauern, bis die Frachtverteilung auf neuen Strecken beginnt.
+STR_CONFIG_SETTING_LINKGRAPH_RECALC_INTERVAL_HELPTEXT           :Zeit zwischen anfolgenden Neuberechnungen der Warenverteilung. Jede Neuberechnung berechnet die Pläne für eine Komponente des Graphen. Das bedeutet, dass ein Wert X für diese Einstellung nicht bedeutet, dass der gesamte Graph alle X Sekunden aktualisiert wird. Nur ein Teil wird es. Je kürzer die Zeit festgelegt ist, desto mehr CPU-Zeit wird nötig sein, um ihn zu berechnen. Je länger die Zeit festgelegt ist, desto länger wird es dauern, bis die Frachtverteilung auf neuen Strecken beginnt
 STR_CONFIG_SETTING_LINKGRAPH_RECALC_TIME                        :{STRING} für Neuberechnung des Verteilungsgraphen nehmen
-STR_CONFIG_SETTING_LINKGRAPH_RECALC_TIME_HELPTEXT               :Zeit für jede Neuberechnung einer Warenverteilungskomponente. Wenn eine Neuberechnung gestartet wird, wird ein Thread gestartet, der für diese Anzahl von Sekunden laufen darf. Je kürzer du ihn festlegst, desto wahrscheinlicher ist es, dass der Thread nicht beendet ist, wenn er aber sein sollte. Dann wird das Spiel beendet, sobald dies der Fall ist („Lag“). Je länger du es festlegst, desto länger dauert es, bis die Verteilung aktualisiert wird, wenn sich Routen ändern.
+STR_CONFIG_SETTING_LINKGRAPH_RECALC_TIME_HELPTEXT               :Zeit für jede Neuberechnung einer Warenverteilungskomponente. Wenn eine Neuberechnung gestartet wird, wird ein Thread gestartet, der für diese Anzahl von Sekunden laufen darf. Je kürzer diese Dauer festgelegt wird, desto wahrscheinlicher ist es, dass der Thread nicht beendet ist, wenn er aber sein sollte. Dann wird das Spiel beendet, sobald dies der Fall ist („Lag“). Je länger diese Dauer festgelegt wird, desto länger dauert es, bis die Verteilung aktualisiert wird, wenn sich Routen ändern
 
 STR_CONFIG_SETTING_DISTRIBUTION_PAX                             :Verteilungsschema für Passagiere: {STRING}
-STR_CONFIG_SETTING_DISTRIBUTION_PAX_HELPTEXT                    :„Symmetrisch“ heißt, dass etwa die selbe Zahl von Passagieren von einer Station A zu einer anderen Station B reisen, wie von B nach A. „Asymmetrisch“ heißt, dass Passagiere in beliebigen Zahlen hin- und her fahren können. „Manuell“ heißt, dass keine automatische Verteilung der Passagiere stattfindet.
+STR_CONFIG_SETTING_DISTRIBUTION_PAX_HELPTEXT                    :„Symmetrisch“ heißt, dass etwa die selbe Zahl von Passagieren von einer Station A zu einer anderen Station B reisen, wie von B nach A. „Asymmetrisch“ heißt, dass Passagiere in beliebigen Zahlen hin- und her fahren können. „Manuell“ heißt, dass keine automatische Verteilung der Passagiere stattfindet
 STR_CONFIG_SETTING_DISTRIBUTION_MAIL                            :Verteilungsschema für Post: {STRING}
-STR_CONFIG_SETTING_DISTRIBUTION_MAIL_HELPTEXT                   :„Symmetrisch“ heißt, dass etwa die selbe Menge Post von einer Station A zu einer anderen Station B geschickt wird, wie von B nach A. „Asymmetrisch“ heißt, dass Post in beliebigen Mengen hin- und her geschickt werden kann. „Manuell“ heißt, dass keine automatische Verteilung der Post stattfindet.
+STR_CONFIG_SETTING_DISTRIBUTION_MAIL_HELPTEXT                   :„Symmetrisch“ heißt, dass etwa die selbe Menge Post von einer Station A zu einer anderen Station B geschickt wird, wie von B nach A. „Asymmetrisch“ heißt, dass Post in beliebigen Mengen hin- und her geschickt werden kann. „Manuell“ heißt, dass keine automatische Verteilung der Post stattfindet
 STR_CONFIG_SETTING_DISTRIBUTION_ARMOURED                        :Verteilungsschema für Wertsachen: {STRING}
-STR_CONFIG_SETTING_DISTRIBUTION_ARMOURED_HELPTEXT               :Werttransporte (Frachtklasse „ARMOURED“) umfassen Wertsachen im gemäßigten, Diamanten im subtropischen und Gold im subarktischen Klima. NewGRFs könnten dies ändern. „Symmetrisch“ bedeutet, dass etwa dieselbe Anzahl von Station A nach Station B transportiert wird wie umgekehrt von B nach A. „Asymmetrisch“ bedeutet, dass eine unterschiedliche Menge in die jeweiligen Richtungen gesendet wird. „Manuell“ bedeutet, dass keine automatische Verteilung stattfindet. Es wird die Einstellung „asymmetrisch“ oder „manuell“ im subarktischen Gebiet empfohlen, da Banken kein Gold bzw. Diamanten zu den Minen senden. Für das gemäßigte und subtropische Klima kann die Einstellung „symmetrisch“ genommen werden, da Banken Wertsachen untereinander versenden.
+STR_CONFIG_SETTING_DISTRIBUTION_ARMOURED_HELPTEXT               :Werttransporte (Frachtklasse „ARMOURED“) umfassen Wertsachen im gemäßigten, Diamanten im subtropischen und Gold im subarktischen Klima. NewGRFs könnten dies ändern. „Symmetrisch“ bedeutet, dass etwa dieselbe Anzahl von Station A nach Station B transportiert wird wie umgekehrt von B nach A. „Asymmetrisch“ bedeutet, dass eine unterschiedliche Menge in die jeweiligen Richtungen gesendet wird. „Manuell“ bedeutet, dass keine automatische Verteilung stattfindet. Es wird die Einstellung „asymmetrisch“ oder „manuell“ im subarktischen Gebiet empfohlen, da Banken kein Gold bzw. Diamanten zu den Minen senden. Für das gemäßigte und subtropische Klima kann die Einstellung „symmetrisch“ genommen werden, da Banken Wertsachen untereinander versenden
 STR_CONFIG_SETTING_DISTRIBUTION_DEFAULT                         :Verteilungsschema für sonstige Frachtarten: {STRING}
-STR_CONFIG_SETTING_DISTRIBUTION_DEFAULT_HELPTEXT                :„Asymmetrisch“ heißt, dass Waren in beliebigen Mengen hin- und her geschickt werden können. „Manuell“ heißt, dass keine automatische Verteilung der Waren stattfindet.
+STR_CONFIG_SETTING_DISTRIBUTION_DEFAULT_HELPTEXT                :„Asymmetrisch“ heißt, dass Waren in beliebigen Mengen hin- und her geschickt werden können. „Manuell“ heißt, dass keine automatische Verteilung der Waren stattfindet
 ###length 3
 STR_CONFIG_SETTING_DISTRIBUTION_MANUAL                          :manuell
 STR_CONFIG_SETTING_DISTRIBUTION_ASYMMETRIC                      :asymmetrisch
 STR_CONFIG_SETTING_DISTRIBUTION_SYMMETRIC                       :symmetrisch
 
 STR_CONFIG_SETTING_LINKGRAPH_ACCURACY                           :Genauigkeit für die Berechnung der Warenverteilung: {STRING}
-STR_CONFIG_SETTING_LINKGRAPH_ACCURACY_HELPTEXT                  :Je höher dieser Wert ist, desto genauer und rechenintensiver ist die Berechnung der Warenverteilung. Wird ein zu hoher Wert gewählt, kann das Spiel bei der Berechnung „hängen“. Wird ein zu niedriger Wert gewählt, kann es vorkommen, dass Waren nicht dorthin geschickt werden, wo man erwarten würde dass sie hin sollen.
+STR_CONFIG_SETTING_LINKGRAPH_ACCURACY_HELPTEXT                  :Je höher dieser Wert ist, desto genauer und rechenintensiver ist die Berechnung der Warenverteilung. Wird ein zu hoher Wert gewählt, kann das Spiel bei der Berechnung „hängen“. Wird ein zu niedriger Wert gewählt, kann es vorkommen, dass Waren nicht dorthin geschickt werden, wo man erwarten würde dass sie hin sollen
 
 STR_CONFIG_SETTING_DEMAND_DISTANCE                              :Einfluss der Entfernung auf die Transportnachfrage: {STRING}
-STR_CONFIG_SETTING_DEMAND_DISTANCE_HELPTEXT                     :Wenn hier ein Wert größer als 0 gewählt wird, so spielt die Entfernung zwischen dem Ursprung und den möglichen Zielen eine Rolle bei der Verteilung von Waren. Je größer die Entfernung und je höher der Wert, desto geringer der Anteil der Waren, die zu der entsprechenden Station geschickt werden.
+STR_CONFIG_SETTING_DEMAND_DISTANCE_HELPTEXT                     :Wenn hier ein Wert größer als 0 gewählt wird, so spielt die Entfernung zwischen dem Ursprung und den möglichen Zielen eine Rolle bei der Verteilung von Waren. Je größer die Entfernung und je höher der Wert, desto geringer der Anteil der Waren, die zu der entsprechenden Station geschickt werden
 STR_CONFIG_SETTING_DEMAND_SIZE                                  :Einfluss der Beliebtheit der Zielhaltestelle auf die Transportnachfrage bei symmetrischen Verbindungen: {STRING}
-STR_CONFIG_SETTING_DEMAND_SIZE_HELPTEXT                         :Wenn hier weniger als 100% gesetzt wird, so verhält sich die symmetrische Verteilung mehr wie die asymmetrische. Das heißt weniger Waren werden für eine gegebene Menge in einer Richtung reisender Waren zurück geschickt. Wenn hier 0 angegeben wird, verhält sich die symmetrische wie die asymmetrische Verteilung.
+STR_CONFIG_SETTING_DEMAND_SIZE_HELPTEXT                         :Wenn hier weniger als 100% gesetzt wird, so verhält sich die symmetrische Verteilung mehr wie die asymmetrische. Das heißt, weniger Waren werden für eine gegebene Menge in einer Richtung reisender Waren zurück geschickt. Wenn hier 0% angegeben wird, verhält sich die symmetrische wie die asymmetrische Verteilung
 
 STR_CONFIG_SETTING_SHORT_PATH_SATURATION                        :Auslastung der kürzeren Verbindungen bevor längere Verbindungen gewählt werden: {STRING}
-STR_CONFIG_SETTING_SHORT_PATH_SATURATION_HELPTEXT               :Häufig gibt es mehrere Verbindungen um von einer Station zu einer anderen zu kommen. Zuerst wird der Algorithmus die kürzesten Verbindungen auslasten, dann die längeren usw. Wenn alle Verbindungen ausgelastet sind, verteilt er die verbliebene Nachfrage gleichmäßig. Diese Einstellung besagt, ab welcher Auslastung eine Verbinudng als „voll“ gilt und der Algorithmus in der ersten Runde die nächst längere wählt. Da die Kapazität der Verbindungen geschätzt wird, ist es sinnvoll, hier weniger als 100% anzugeben, um etwas „Luft“ für Fehlschätzungen zu lassen.
+STR_CONFIG_SETTING_SHORT_PATH_SATURATION_HELPTEXT               :Häufig gibt es mehrere Verbindungen, um von einer Station zu einer anderen zu kommen. Zuerst wird der Algorithmus die kürzesten Verbindungen auslasten, dann die längeren usw. Die Auslastung wird anhand einer Schätzung der Kapazität und der geplanten Verwendung bestimmt. Wenn alle Verbindungen ausgelastet sind und immer noch Nachfrage besteht, werden alle Pfade überladen, wobei die Pfade mit höherer Kapazität bevorzugt werden. Jedoch wird der Algorithmus die Kapazität meistens nicht richtig abschätzen. Diese Einstellung besagt, ab welcher Auslastung eine Verbindung als „voll“ gilt und der Algorithmus in der ersten Runde die nächstlängere wählt. Da die Kapazität der Verbindungen geschätzt wird, ist es sinnvoll, hier weniger als 100% anzugeben, um etwas „Luft“ für Fehlschätzungen zu lassen
 
 STR_CONFIG_SETTING_LOCALISATION_UNITS_VELOCITY                  :Geschwindigkeitseinheiten (Land): {STRING}
 STR_CONFIG_SETTING_LOCALISATION_UNITS_VELOCITY_NAUTICAL         :Geschwindigkeitseinheit (nautisch): {STRING}
@@ -2979,11 +2980,11 @@ STR_TREES_RANDOM_TYPE_TOOLTIP                                   :{BLACK}Zufälli
 STR_TREES_RANDOM_TREES_BUTTON                                   :{BLACK}Zufällige Bäume
 STR_TREES_RANDOM_TREES_TOOLTIP                                  :{BLACK}Bäume zufällig über die Landschaft verteilen
 STR_TREES_MODE_NORMAL_BUTTON                                    :{BLACK}Normal
-STR_TREES_MODE_NORMAL_TOOLTIP                                   :{BLACK}Einzelne Bäume durch Klicken und Ziehen über die Landschaft pflanzen.
+STR_TREES_MODE_NORMAL_TOOLTIP                                   :{BLACK}Einzelne Bäume durch Klicken und Ziehen über die Landschaft pflanzen
 STR_TREES_MODE_FOREST_SM_BUTTON                                 :{BLACK}Hain
-STR_TREES_MODE_FOREST_SM_TOOLTIP                                :{BLACK}Kleine Haine durch Klicken und Ziehen über die Landschaft pflanzen.
+STR_TREES_MODE_FOREST_SM_TOOLTIP                                :{BLACK}Kleine Haine durch Klicken und Ziehen über die Landschaft pflanzen
 STR_TREES_MODE_FOREST_LG_BUTTON                                 :{BLACK}Wald
-STR_TREES_MODE_FOREST_LG_TOOLTIP                                :{BLACK}Große Wälder durch Klicken und Ziehen über die Landschaft pflanzen.
+STR_TREES_MODE_FOREST_LG_TOOLTIP                                :{BLACK}Große Wälder durch Klicken und Ziehen über die Landschaft pflanzen
 
 # Land generation window (SE)
 STR_TERRAFORM_TOOLBAR_LAND_GENERATION_CAPTION                   :{WHITE}Land erstellen
@@ -3198,11 +3199,11 @@ STR_ABOUT_COPYRIGHT_OPENTTD                                     :{BLACK}OpenTTD 
 STR_FRAMERATE_CAPTION                                           :{WHITE}Bildwiederholrate
 STR_FRAMERATE_CAPTION_SMALL                                     :{STRING}{WHITE} ({DECIMAL}x)
 STR_FRAMERATE_RATE_GAMELOOP                                     :{BLACK}Simulationsrate: {STRING}
-STR_FRAMERATE_RATE_GAMELOOP_TOOLTIP                             :{BLACK}Anzahl an simulierten Ticks pro Sekunde.
+STR_FRAMERATE_RATE_GAMELOOP_TOOLTIP                             :{BLACK}Anzahl an simulierten Ticks pro Sekunde
 STR_FRAMERATE_RATE_BLITTER                                      :{BLACK}Bildwiederholrate: {STRING}
-STR_FRAMERATE_RATE_BLITTER_TOOLTIP                              :{BLACK}Anzahl an Einzelbildern, die pro Sekunde gerendert werden.
+STR_FRAMERATE_RATE_BLITTER_TOOLTIP                              :{BLACK}Anzahl an Einzelbildern, die pro Sekunde gerendert werden
 STR_FRAMERATE_SPEED_FACTOR                                      :{BLACK}Aktueller Geschwindigkeitsfaktor des Spiels: {DECIMAL}x
-STR_FRAMERATE_SPEED_FACTOR_TOOLTIP                              :{BLACK}Wie schnell das Spiel aktuell läuft, verglichen mit der erwarteten Geschwindigkeit bei normaler Simulationsrate.
+STR_FRAMERATE_SPEED_FACTOR_TOOLTIP                              :{BLACK}Wie schnell das Spiel aktuell läuft, verglichen mit der erwarteten Geschwindigkeit bei normaler Simulationsrate
 STR_FRAMERATE_CURRENT                                           :{WHITE}Momentan
 STR_FRAMERATE_AVERAGE                                           :{WHITE}Durchschnitt
 STR_FRAMERATE_MEMORYUSE                                         :{WHITE}Arbeitsspeicher

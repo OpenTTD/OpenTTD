@@ -1012,6 +1012,7 @@ STR_GAME_OPTIONS_CURRENCY_INR                                   :Hindistan Rupis
 STR_GAME_OPTIONS_CURRENCY_IDR                                   :Endonezya Rupiahı
 STR_GAME_OPTIONS_CURRENCY_MYR                                   :Malezya Ringgiti
 STR_GAME_OPTIONS_CURRENCY_LVL                                   :Letonya Latsı
+STR_GAME_OPTIONS_CURRENCY_PTE                                   :Portekiz Esküdosu
 
 STR_GAME_OPTIONS_AUTOSAVE_FRAME                                 :{BLACK}Otomatik Kaydet
 STR_GAME_OPTIONS_AUTOSAVE_DROPDOWN_TOOLTIP                      :{BLACK}Otomatik kaydetme sıklığını seçin
@@ -1054,9 +1055,9 @@ STR_GAME_OPTIONS_GUI_SCALE_BEVELS                               :{BLACK}Eğimi a
 STR_GAME_OPTIONS_GUI_SCALE_BEVELS_TOOLTIP                       :{BLACK}Eğimi arayüz boyutuna göre ayarlamak için bu kutucuğu işaretleyin
 
 STR_GAME_OPTIONS_GUI_FONT_SPRITE                                :{BLACK} Geleneksel yazı tipini kullan
-STR_GAME_OPTIONS_GUI_FONT_SPRITE_TOOLTIP                        :{BLACK} Yazı tipini geleneksel eski haline döndürmek için bu kutucuğu işaretleyin
+STR_GAME_OPTIONS_GUI_FONT_SPRITE_TOOLTIP                        :{BLACK}Yazı tipini geleneksel sabit boyutlu haline döndürmek için bu kutucuğu işaretleyin
 STR_GAME_OPTIONS_GUI_FONT_AA                                    :{BLACK}Yazı tipi kenarlarını yumuşatma
-STR_GAME_OPTIONS_GUI_FONT_AA_TOOLTIP                            :Yeniden boyutlandırılabilir yazı tiplerinin kenarlarını yumuşatmak için bu kutuyu işaretleyin.
+STR_GAME_OPTIONS_GUI_FONT_AA_TOOLTIP                            :{BLACK}Yeniden boyutlandırılabilir yazı tiplerinin kenarlarını yumuşatmak için bu kutuyu işaretleyin
 
 STR_GAME_OPTIONS_GUI_SCALE_1X                                   :1x
 STR_GAME_OPTIONS_GUI_SCALE_2X                                   :2x
@@ -1118,6 +1119,8 @@ STR_CURRENCY_DECREASE_EXCHANGE_RATE_TOOLTIP                     :{BLACK}Bir Ster
 STR_CURRENCY_INCREASE_EXCHANGE_RATE_TOOLTIP                     :{BLACK}Bir Sterlin'e (£) karşılık gelen para biriminizi arttırın
 STR_CURRENCY_SET_EXCHANGE_RATE_TOOLTIP                          :{BLACK}Bir Sterlin'e (£) karşılık gelen para biriminizi belirleyin
 
+STR_CURRENCY_SEPARATOR                                          :{LTBLUE}Ayraç: {ORANGE}{STRING}
+STR_CURRENCY_SET_CUSTOM_CURRENCY_SEPARATOR_TOOLTIP              :{BLACK}Para biriminiz için binler ayracını belirleyin
 
 STR_CURRENCY_PREFIX                                             :{LTBLUE}Ön ek: {ORANGE}{STRING}
 STR_CURRENCY_SET_CUSTOM_CURRENCY_PREFIX_TOOLTIP                 :{BLACK}Para biriminiz için ön ek belirleyin
@@ -1540,7 +1543,7 @@ STR_CONFIG_SETTING_GRAPH_LINE_THICKNESS_HELPTEXT                :Grafiklerdeki �
 
 STR_CONFIG_SETTING_SHOW_NEWGRF_NAME                             :NewGRF'nin adını araç inşa penceresinde  göster: {STRING}
 STR_CONFIG_SETTING_SHOW_NEWGRF_NAME_HELPTEXT                    :Araç inşa penceresine, seçilen aracın hangi NewGRF'den geldiğini gösteren bir satır ekleyin.
-STR_CONFIG_SETTING_SHOW_CARGO_IN_LISTS                          :Liste menüsünde araçların taşıyabildiği kargoları göster {STRING}
+STR_CONFIG_SETTING_SHOW_CARGO_IN_LISTS                          :Liste pencerelerinde araçların taşıyabildiği kargoları göster: {STRING}
 STR_CONFIG_SETTING_SHOW_CARGO_IN_LISTS_HELPTEXT                 :Etkinleştirildiğinde, araç listesinin üstünde aracın nakliye edilebilir yükü gözükür
 
 STR_CONFIG_SETTING_LANDSCAPE                                    :İklim: {STRING}
@@ -1565,7 +1568,7 @@ STR_CONFIG_SETTING_SNOWLINE_HEIGHT                              :Kar kalınlığ
 STR_CONFIG_SETTING_SNOWLINE_HEIGHT_HELPTEXT                     :Kutupsal arazide, karın ne kadar yükseklikten başlayacağını denetleyin. Kar aynı zamanda fabrika oluşumunu ve şehir gelişme gereksinimini de etkiler. Yalnızca Senerya Editörü ile değiştirilebilir veya "kar örtüsü" üzerinden hesaplanır
 
 STR_CONFIG_SETTING_SNOW_COVERAGE                                :Kar örtüsü: {STRING}
-STR_CONFIG_SETTING_SNOW_COVERAGE_HELPTEXT                       :Arktik altındaki yaklaşık kar miktarını kontrol eder. Kar, aynı zamanda endüstri üretimini ve kasaba büyüme gereksinimlerini de etkiler. Yalnızca harita oluşumu sırasında kullanılır. Deniz seviyesinin hemen üzerindeki arazi her zaman karsızdır
+STR_CONFIG_SETTING_SNOW_COVERAGE_HELPTEXT                       :Arktik altındaki yaklaşık kar miktarını ayarlayın. Kar, aynı zamanda endüstri üretimini ve kasaba büyüme gereksinimlerini de etkiler. Yalnızca harita oluşumu sırasında kullanılır. Deniz seviyesindeki ve sahildeki araziler her zaman karsızdır
 STR_CONFIG_SETTING_SNOW_COVERAGE_VALUE                          :%{NUM}
 
 STR_CONFIG_SETTING_DESERT_COVERAGE                              :Çöl örtüsü: {STRING}
@@ -1749,10 +1752,10 @@ STR_CONFIG_SETTING_PERSISTENT_BUILDINGTOOLS                     :Yapı araçlar�
 STR_CONFIG_SETTING_PERSISTENT_BUILDINGTOOLS_HELPTEXT            :Köprü, tünel vb. için kullanılan inşa araçlarını kullanımdan sonra da açık tut
 
 STR_CONFIG_SETTING_AUTO_REMOVE_SIGNALS                          :Ray yapımı sırasında sinyalleri otomatik olarak kaldır: {STRING}
-STR_CONFIG_SETTING_AUTO_REMOVE_SIGNALS_HELPTEXT                 :Ray yapımı sırasında sinyaller yolun üzerinde ise otomatik kaldır. Bunun potansiyel olarak tren kazalarına yol açabileceğini unutmayın.
+STR_CONFIG_SETTING_AUTO_REMOVE_SIGNALS_HELPTEXT                 :Ray yapımı sırasında sinyaller yolun üzerinde ise otomatik kaldır. Bunun potansiyel olarak tren kazalarına yol açabileceğini unutmayın
 
 STR_CONFIG_SETTING_FAST_FORWARD_SPEED_LIMIT                     :İleri sarma hız limiti: {STRING}
-STR_CONFIG_SETTING_FAST_FORWARD_SPEED_LIMIT_HELPTEXT            :Hızlı ileri sarma etkinleştirildiğinde oyunun ne kadar hızlı sarıldığını sınırlayın. 0 = sınır yok (bilgisayarın el verdiği kadar). %100'ün altındaki değerler oyunu yavaşlatır. Üst sınır bilgisayarının özelliklerine ve oyuna göre değişkenlik gösterebilir.
+STR_CONFIG_SETTING_FAST_FORWARD_SPEED_LIMIT_HELPTEXT            :Hızlı ileri sarma etkinleştirildiğinde oyunun ne kadar hızlı sarıldığını sınırlayın. 0 = sınır yok (bilgisayarın el verdiği kadar). %100'ün altındaki değerler oyunu yavaşlatır. Üst sınır bilgisayarının özelliklerine ve oyuna göre değişkenlik gösterebilir
 STR_CONFIG_SETTING_FAST_FORWARD_SPEED_LIMIT_VAL                 :%{NUM} normal oyun hızı
 ###setting-zero-is-special
 STR_CONFIG_SETTING_FAST_FORWARD_SPEED_LIMIT_ZERO                :Limit yok (bilgisayarın izin verdiği maksimum hızda )
@@ -1820,7 +1823,7 @@ STR_CONFIG_SETTING_SCRIPT_MAX_MEMORY_HELPTEXT                   :Tek bir betiği
 STR_CONFIG_SETTING_SCRIPT_MAX_MEMORY_VALUE                      :{COMMA} MiB
 
 STR_CONFIG_SETTING_SERVINT_ISPERCENT                            :Servis gecikmeleri yüzde ile: {STRING}
-STR_CONFIG_SETTING_SERVINT_ISPERCENT_HELPTEXT                   :Etkinleştirildiğinde, araçların güvenilirlik değerinin azami güvenilirliğe kıyasla belli bir yüzde oranında düşmesine bağlı olarak bakım yapar.{}{}Örneğin, eğer aracın azami güvenirliği %90 ve bakım aralığı %20 ise araç %72 güvenilirliğe ulaştığında bakım yapmayı dener.
+STR_CONFIG_SETTING_SERVINT_ISPERCENT_HELPTEXT                   :Etkinleştirildiğinde, araçların güvenilirlik değerinin azami güvenilirliğe kıyasla belli bir yüzde oranında düşmesine bağlı olarak bakım yapar.{}{}Örneğin, eğer aracın azami güvenirliği %90 ve bakım aralığı %20 ise araç %72 güvenilirliğe ulaştığında bakım yapmayı dener
 
 STR_CONFIG_SETTING_SERVINT_TRAINS                               :Trenler için varsayılan bakım aralığı: {STRING}
 STR_CONFIG_SETTING_SERVINT_TRAINS_HELPTEXT                      :Yeni tren yolu araçları için varsayılan bakım aralığını ayarlar, eğer araç için özel bir bakım aralığı belirtilmemişse geçerlidir
@@ -2034,13 +2037,13 @@ STR_CONFIG_SETTING_LINKGRAPH_RECALC_TIME                        :Dağılım graf
 STR_CONFIG_SETTING_LINKGRAPH_RECALC_TIME_HELPTEXT               :Bir bağlantı grafiği bileşeninin her yeniden hesaplanması için geçen süre. Bir yeniden hesaplama başlatıldığında, bu sayıda saniye boyunca çalışmasına izin verilen bir iş parçacığı oluşturulur. Bunu ne kadar kısa ayarlarsanız, iş parçacığının olması gerektiği zamanda bitmemiş olma olasılığı o kadar artar. Ardından oyun ("gecikme") olana kadar durur. Ne kadar uzun ayarlarsanız, rotalar değiştiğinde dağıtımın güncellenmesi o kadar uzun sürer.
 
 STR_CONFIG_SETTING_DISTRIBUTION_PAX                             :Yolcular için dağıtım kipi: {STRING}
-STR_CONFIG_SETTING_DISTRIBUTION_PAX_HELPTEXT                    :"Simetrik" seçildiğinde A durağından B durağına taşınan ile B'den A'ya taşınan yolcu miktarı kabaca eşit olur. "Asimetrik" seçildiğinde iki yönde de rastgele miktarda yolcu gönderilebilir. "el ile" seçildiğinde yolcular için otomatik dağıtım yapılmaz.
+STR_CONFIG_SETTING_DISTRIBUTION_PAX_HELPTEXT                    :"Simetrik" seçildiğinde A durağından B durağına taşınan ile B'den A'ya taşınan yolcu miktarı kabaca eşit olur. "Asimetrik" seçildiğinde iki yönde de rastgele miktarda yolcu gönderilebilir. "el ile" seçildiğinde yolcular için otomatik dağıtım yapılmaz
 STR_CONFIG_SETTING_DISTRIBUTION_MAIL                            :Posta için dağıtım kipi: {STRING}
-STR_CONFIG_SETTING_DISTRIBUTION_MAIL_HELPTEXT                   :"Simetrik" seçildiğinde A durağından B durağına gönderilen ile B'den A'ya gönderilen posta miktarı kabaca eşit olur. "Asimetrik" seçildiğinde iki yönde de rastgele miktarda posta gönderilebilir. "El ile" seçildiğinde posta için otomatik dağıtım yapılmaz.
+STR_CONFIG_SETTING_DISTRIBUTION_MAIL_HELPTEXT                   :"Simetrik" seçildiğinde A durağından B durağına gönderilen ile B'den A'ya gönderilen posta miktarı kabaca eşit olur. "Asimetrik" seçildiğinde iki yönde de rastgele miktarda posta gönderilebilir. "El ile" seçildiğinde posta için otomatik dağıtım yapılmaz
 STR_CONFIG_SETTING_DISTRIBUTION_ARMOURED                        :ZIRHLI kargo sınıfı için dağıtım kipi: {STRING}
-STR_CONFIG_SETTING_DISTRIBUTION_ARMOURED_HELPTEXT               :ZIRHLI kargo sınıfı ılıman iklimde değerli mallar, yarı-tropik iklimde elmaslar, veya yarı-soğuk iklimde altın içerir. NewGRF dosyaları bunu değiştirebilir. "Simetrik" olarak ayarlandığında A durağından B durağına gönderilen kargo miktarı, B'den A'ya gönderilene kabaca eşit olur. "Asimetrik" ise herhangi bir yönde rastgele miktarda kargo gönderilebileceğini gösterir. "El ile" seçildiğinde o kargo için otomatik dağıtım yapılmaz. Yarı-soğuk iklimde oynarken bu değeri "asimetrik" veya "el ile" olarak ayarlamanız tavsiye edilir, çünkü bankalar altınları altın madenine geri göndermez. Ilıman ve yarı-tropik iklim için aynı zamanda "simetrik" seçebilirsiniz, zira bankalar değerli malların bir kısmını malların geldiği kaynak bankaya geri gönderir.
+STR_CONFIG_SETTING_DISTRIBUTION_ARMOURED_HELPTEXT               :ZIRHLI kargo sınıfı ılıman iklimde değerli mallar, yarı-tropik iklimde elmaslar, veya yarı-soğuk iklimde altın içerir. NewGRF dosyaları bunu değiştirebilir. "Simetrik" olarak ayarlandığında A durağından B durağına gönderilen kargo miktarı, B'den A'ya gönderilene kabaca eşit olur. "Asimetrik" ise herhangi bir yönde rastgele miktarda kargo gönderilebileceğini gösterir. "El ile" seçildiğinde o kargo için otomatik dağıtım yapılmaz. Yarı-soğuk iklimde oynarken bu değeri "asimetrik" veya "el ile" olarak ayarlamanız tavsiye edilir, çünkü bankalar altınları altın madenine geri göndermez. Ilıman ve yarı-tropik iklim için aynı zamanda "simetrik" seçebilirsiniz, zira bankalar değerli malların bir kısmını malların geldiği kaynak bankaya geri gönderir
 STR_CONFIG_SETTING_DISTRIBUTION_DEFAULT                         :Diğer kargo sınıfları için dağılım kipi: {STRING}
-STR_CONFIG_SETTING_DISTRIBUTION_DEFAULT_HELPTEXT                :"Asimetrik", kargonun iki yönde de rastgele miktarda gönderileceğini gösterir. "El ile" seçildiği takdirde o kargolar için otomatik dağılım yapılmaz.
+STR_CONFIG_SETTING_DISTRIBUTION_DEFAULT_HELPTEXT                :"Asimetrik", kargonun iki yönde de rastgele miktarda gönderileceğini gösterir. "El ile" seçildiği takdirde o kargolar için otomatik dağılım yapılmaz
 ###length 3
 STR_CONFIG_SETTING_DISTRIBUTION_MANUAL                          :el ile (manual)
 STR_CONFIG_SETTING_DISTRIBUTION_ASYMMETRIC                      :asimetrik
@@ -2055,7 +2058,7 @@ STR_CONFIG_SETTING_DEMAND_SIZE                                  :Simetrik kip i�
 STR_CONFIG_SETTING_DEMAND_SIZE_HELPTEXT                         :Buraya %100'den küçük bir değer girmek simetrik dağılımın asimetrik bir dağılıma benzer şekilde davranmasına sebep olur. Eğer bir durağa belli miktar kargo gönderilmişse, daha az kargo zorla geri gönderilir. Eğer %0 olarak ayarlarsanız simetrik dağılım aynen asimetrik dağılım gibi davranmaya başlar.
 
 STR_CONFIG_SETTING_SHORT_PATH_SATURATION                        :Yüksek kapasiteli güzergahları kullanmadan önce daha kısa güzergah doygunluğu: {STRING}
-STR_CONFIG_SETTING_SHORT_PATH_SATURATION_HELPTEXT               :Sıklıkla iki durak arasında birden fazla güzergah bulunur. Kargo dağıtımı önce en kısa güzergahı doygunluğa ulaştırır, ardından ikinci en kısa güzergahı doygunluğa ulaşana kadar kullanır ve böyle devam eder. Doygunluk, kapasite tahmini ve planlanan kullanım miktarına göre hesaplanır. Tüm güzergahlar doygunluğa ulaştığında eğer hala talep varsa, yüksek kapasiteli olan güzergahları tercih ederek tüm güzergahları aşırı yükler. Fakat çoğu zaman algoritma kapasiteyi isabetli olarak hesaplayamaz. Bu değer, daha kısa bir güzergahın yüzde kaç oranında doygunluğa ulaştığı zaman bir sonraki güzergahın seçileceğini ayarlamanızı sağlar. Yanlış (büyük) kapasite tahmini ihtimaline karşı aşırı dolu durakları önlemek için %100'den daha düşük bir değer seçin.
+STR_CONFIG_SETTING_SHORT_PATH_SATURATION_HELPTEXT               :Sıklıkla iki durak arasında birden fazla güzergah bulunur. Kargo dağıtımı önce en kısa güzergahı doygunluğa ulaştırır, ardından ikinci en kısa güzergahı doygunluğa ulaşana kadar kullanır ve böyle devam eder. Doygunluk, kapasite tahmini ve planlanan kullanım miktarına göre hesaplanır. Tüm güzergahlar doygunluğa ulaştığında eğer hala talep varsa, yüksek kapasiteli olan güzergahları tercih ederek tüm güzergahları aşırı yükler. Fakat çoğu zaman algoritma kapasiteyi isabetli olarak hesaplayamaz. Bu değer, daha kısa bir güzergahın yüzde kaç oranında doygunluğa ulaştığı zaman bir sonraki güzergahın seçileceğini ayarlamanızı sağlar. Yanlış (büyük) kapasite tahmini ihtimaline karşı aşırı dolu durakları önlemek için %100'den daha düşük bir değer seçin
 
 STR_CONFIG_SETTING_LOCALISATION_UNITS_VELOCITY                  :Hız birimi (kara): {STRING}
 STR_CONFIG_SETTING_LOCALISATION_UNITS_VELOCITY_NAUTICAL         :Hız birimleri (denizcilik): {STRING}
@@ -2979,9 +2982,9 @@ STR_TREES_RANDOM_TREES_TOOLTIP                                  :{BLACK}Haritaya
 STR_TREES_MODE_NORMAL_BUTTON                                    :{BLACK}Normal
 STR_TREES_MODE_NORMAL_TOOLTIP                                   :{BLACK}Arazinin üzerine sürükleyerek tekli ağaçlar dikin.
 STR_TREES_MODE_FOREST_SM_BUTTON                                 :{BLACK}Koru
-STR_TREES_MODE_FOREST_SM_TOOLTIP                                :{BLACK}Arazinin üzerine sürükleyerek küçük ormanlar dikin.
+STR_TREES_MODE_FOREST_SM_TOOLTIP                                :{BLACK}Arazinin üzerine sürükleyerek küçük ormanlar dikin
 STR_TREES_MODE_FOREST_LG_BUTTON                                 :{BLACK}Orman
-STR_TREES_MODE_FOREST_LG_TOOLTIP                                :{BLACK}Arazinin üzerine sürükleyerek büyük ormanlar dikin.
+STR_TREES_MODE_FOREST_LG_TOOLTIP                                :{BLACK}Arazinin üzerine sürükleyerek büyük ormanlar dikin
 
 # Land generation window (SE)
 STR_TERRAFORM_TOOLBAR_LAND_GENERATION_CAPTION                   :{WHITE}Arazi Yapımı
@@ -3077,6 +3080,8 @@ STR_LAND_AREA_INFORMATION_TRAM_OWNER                            :{BLACK}Tramvay�
 STR_LAND_AREA_INFORMATION_RAIL_OWNER                            :{BLACK}Demiryolu sahibi: {LTBLUE}{STRING}
 STR_LAND_AREA_INFORMATION_LOCAL_AUTHORITY                       :{BLACK}Belediyesi: {LTBLUE}{STRING}
 STR_LAND_AREA_INFORMATION_LOCAL_AUTHORITY_NONE                  :Hiçbiri
+STR_LAND_AREA_INFORMATION_LANDINFO_COORDS                       :{BLACK}Koordinatlar: {LTBLUE}{NUM} x {NUM} x {NUM}
+STR_LAND_AREA_INFORMATION_LANDINFO_INDEX                        :{BLACK}Kare indeksi: {LTBLUE}{NUM} ({HEX})
 STR_LAND_AREA_INFORMATION_BUILD_DATE                            :{BLACK}İnşa/yenileme tarihi: {LTBLUE}{DATE_LONG}
 STR_LAND_AREA_INFORMATION_STATION_CLASS                         :{BLACK}İstasyon sınıfı: {LTBLUE}{STRING}
 STR_LAND_AREA_INFORMATION_STATION_TYPE                          :{BLACK}İstasyon türü: {LTBLUE}{STRING}
@@ -3198,7 +3203,7 @@ STR_FRAMERATE_RATE_GAMELOOP_TOOLTIP                             :{BLACK}Saniyede
 STR_FRAMERATE_RATE_BLITTER                                      :{BLACK}Grafik kare oranı: {STRING}
 STR_FRAMERATE_RATE_BLITTER_TOOLTIP                              :{BLACK}Saniyede işlenecek video kare sayısı.
 STR_FRAMERATE_SPEED_FACTOR                                      :{BLACK}Şu anki oyun hız çarpanı: {DECIMAL}x
-STR_FRAMERATE_SPEED_FACTOR_TOOLTIP                              :{BLACK}Beklenen normal simülasyon hızı yerine, şu anda oyunun ne kadar hızlı çalıştığı.
+STR_FRAMERATE_SPEED_FACTOR_TOOLTIP                              :{BLACK}Beklenen normal simülasyon hızı yerine, şu anda oyunun ne kadar hızlı çalıştığı
 STR_FRAMERATE_CURRENT                                           :{WHITE}Geçerli
 STR_FRAMERATE_AVERAGE                                           :{WHITE}Ortalama
 STR_FRAMERATE_MEMORYUSE                                         :{WHITE}Bellek
@@ -4022,7 +4027,7 @@ STR_GROUP_DEFAULT_AIRCRAFTS                                     :Gruplanmamış 
 
 STR_GROUP_COUNT_WITH_SUBGROUP                                   :{TINY_FONT}{COMMA} (+{COMMA})
 
-STR_GROUPS_CLICK_ON_GROUP_FOR_TOOLTIP                           :{BLACK}Gruplar - gruba ait araçları listelemek için grubun üzerine tıklayın. Hiyerarşiyi düzenlemek için grupları sürükleyip bırakın.
+STR_GROUPS_CLICK_ON_GROUP_FOR_TOOLTIP                           :{BLACK}Gruplar - gruba ait araçları listelemek için grubun üzerine tıklayın. Hiyerarşiyi düzenlemek için grupları sürükleyip bırakın
 STR_GROUP_CREATE_TOOLTIP                                        :{BLACK}Grup oluşturmak için tıklayın
 STR_GROUP_DELETE_TOOLTIP                                        :{BLACK}Seçili grubu sil
 STR_GROUP_RENAME_TOOLTIP                                        :{BLACK}Seçili grubun ismini değiştir
@@ -5816,6 +5821,10 @@ STR_TOWN_NAME                                                   :{TOWN}
 STR_VEHICLE_NAME                                                :{VEHICLE}
 STR_WAYPOINT_NAME                                               :{WAYPOINT}
 
+STR_CURRENCY_SHORT_KILO                                         :{NBSP}k
+STR_CURRENCY_SHORT_MEGA                                         :{NBSP}m
+STR_CURRENCY_SHORT_GIGA                                         :{NBSP}bn
+STR_CURRENCY_SHORT_TERA                                         :{NBSP}tn
 
 STR_JUST_CARGO                                                  :{CARGO_LONG}
 STR_JUST_RIGHT_ARROW                                            :{RIGHT_ARROW}

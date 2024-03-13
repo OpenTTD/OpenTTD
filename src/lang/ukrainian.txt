@@ -331,6 +331,7 @@ STR_COLOUR_SECONDARY_ORANGE                                     :Помаран�
 STR_COLOUR_SECONDARY_BROWN                                      :Коричневий
 STR_COLOUR_SECONDARY_GREY                                       :Сірий
 STR_COLOUR_SECONDARY_WHITE                                      :Білий
+STR_COLOUR_SECONDARY_SAME_AS_PRIMARY                            :Як базовий
 
 
 # Units used in OpenTTD
@@ -578,6 +579,7 @@ STR_SETTINGS_MENU_CONFIG_SETTINGS_TREE                          :Налашту�
 STR_SETTINGS_MENU_AI_SETTINGS                                   :Налаштування ШІ
 STR_SETTINGS_MENU_GAMESCRIPT_SETTINGS                           :Налаштування ігрового скрипту
 STR_SETTINGS_MENU_NEWGRF_SETTINGS                               :Налаштування NewGRF
+STR_SETTINGS_MENU_SANDBOX_OPTIONS                               :Налаштування пісочниці
 STR_SETTINGS_MENU_TRANSPARENCY_OPTIONS                          :Налаштування прозорості
 STR_SETTINGS_MENU_TOWN_NAMES_DISPLAYED                          :Показувати назви міст
 STR_SETTINGS_MENU_STATION_NAMES_DISPLAYED                       :Показувати назви станцій
@@ -748,6 +750,8 @@ STR_GRAPH_COMPANY_VALUES_CAPTION                                :{WHITE}Варт
 STR_GRAPH_LAST_72_MINUTES_TIME_LABEL                            :{TINY_FONT}{BLACK}Останні 72 хвилини
 
 STR_GRAPH_CARGO_PAYMENT_RATES_CAPTION                           :{WHITE}Тарифи на доставку вантажів
+STR_GRAPH_CARGO_PAYMENT_RATES_DAYS                              :{TINY_FONT}{BLACK}Днів у русі
+STR_GRAPH_CARGO_PAYMENT_RATES_SECONDS                           :{TINY_FONT}{BLACK}Секунд у русі
 STR_GRAPH_CARGO_PAYMENT_RATES_TITLE                             :{TINY_FONT}{BLACK}Плата за доставку 10 одиниць (або 10,000 літрів) вантажу на відстань 20 квадратів
 STR_GRAPH_CARGO_ENABLE_ALL                                      :{TINY_FONT}{BLACK}Включити всі
 STR_GRAPH_CARGO_DISABLE_ALL                                     :{TINY_FONT}{BLACK}Відключити усі
@@ -1573,7 +1577,7 @@ STR_CONFIG_SETTING_PLANE_SPEED_HELPTEXT                         :Налашту�
 STR_CONFIG_SETTING_PLANE_SPEED_VALUE                            :1 / {COMMA}
 
 STR_CONFIG_SETTING_PLANE_CRASHES                                :Частота повітряних катастроф: {STRING}
-STR_CONFIG_SETTING_PLANE_CRASHES_HELPTEXT                       :Налаштування частоти повітряних катастроф.{}* Великі літаки мають більший ризик катастрофив малих аеропортах
+STR_CONFIG_SETTING_PLANE_CRASHES_HELPTEXT                       :Налаштування частоти повітряних катастроф.{}* Великі літаки мають більший ризик катастроф у малих аеропортах
 ###length 3
 STR_CONFIG_SETTING_PLANE_CRASHES_NONE                           :Немає
 STR_CONFIG_SETTING_PLANE_CRASHES_REDUCED                        :Низька
@@ -1725,6 +1729,7 @@ STR_CONFIG_SETTING_ROAD_SIDE_LEFT                               :лівосто�
 STR_CONFIG_SETTING_ROAD_SIDE_RIGHT                              :правосторонній рух
 
 STR_CONFIG_SETTING_HEIGHTMAP_ROTATION                           :Поворот мапи висот: {STRING}
+STR_CONFIG_SETTING_HEIGHTMAP_ROTATION_TOOLTIP                   :Обрати напрям обертання мапи висот для припасування в ігровий світ
 ###length 2
 STR_CONFIG_SETTING_HEIGHTMAP_ROTATION_COUNTER_CLOCKWISE         :проти годинникової стрілки
 STR_CONFIG_SETTING_HEIGHTMAP_ROTATION_CLOCKWISE                 :за годинниковою стрілкою
@@ -1940,7 +1945,7 @@ STR_CONFIG_SETTING_SCRIPT_MAX_OPCODES                           :Максима�
 STR_CONFIG_SETTING_SCRIPT_MAX_OPCODES_HELPTEXT                  :Максимально допустима кількість розрахунків, які може виконати скрипт впродовж одного ходу
 STR_CONFIG_SETTING_SCRIPT_MAX_MEMORY                            :Максимальне використання пам'яті скриптом: {STRING}
 STR_CONFIG_SETTING_SCRIPT_MAX_MEMORY_HELPTEXT                   :Скільки пам'яті може зайняти один скрипт до примусового припинення. Це може знадобитися збільшити для великих карт.
-STR_CONFIG_SETTING_SCRIPT_MAX_MEMORY_VALUE                      :{COMMA} MiB
+STR_CONFIG_SETTING_SCRIPT_MAX_MEMORY_VALUE                      :{COMMA} MБ
 
 STR_CONFIG_SETTING_SERVINT_ISPERCENT                            :Інтервали техогляду вказано у відсотках: {STRING}
 STR_CONFIG_SETTING_SERVINT_ISPERCENT_HELPTEXT                   :Налаштування способу визначення необхідності проведення техогляду: через вказаний проміжок часу після попереднього техогляду чи коли поточна надійність транспортного засобу стане нижчою від максимальної його надійності на вказаний процент.
@@ -2008,7 +2013,7 @@ STR_CONFIG_SETTING_NEWS_ADVICE_HELPTEXT                         :Показат�
 STR_CONFIG_SETTING_NEWS_NEW_VEHICLES                            :Новий транспорт: {STRING}
 STR_CONFIG_SETTING_NEWS_NEW_VEHICLES_HELPTEXT                   :Показати газету, коли стає доступним новий засіб пересування
 
-STR_CONFIG_SETTING_NEWS_CHANGES_ACCEPTANCE                      :Зміни в списку грузів, що приймаються: {STRING}
+STR_CONFIG_SETTING_NEWS_CHANGES_ACCEPTANCE                      :Зміни в списку вантажів, що приймаються: {STRING}
 STR_CONFIG_SETTING_NEWS_CHANGES_ACCEPTANCE_HELPTEXT             :Показати повідомлення, якщо станція змінює приймані типи вантажів
 
 STR_CONFIG_SETTING_NEWS_SUBSIDIES                               :Субсидії: {STRING}
@@ -2615,6 +2620,7 @@ STR_NETWORK_CLIENT_LIST_NEW_COMPANY_TOOLTIP                     :{BLACK}Ство
 STR_NETWORK_CLIENT_LIST_PLAYER_ICON_SELF_TOOLTIP                :{BLACK}Це ти
 STR_NETWORK_CLIENT_LIST_PLAYER_ICON_HOST_TOOLTIP                :{BLACK}Організатор гри
 STR_NETWORK_CLIENT_LIST_CLIENT_COMPANY_COUNT                    :{BLACK}{NUM} клієнт{P "" и ів} - {NUM}/{NUM} компан{P ія ії ій}
+STR_NETWORK_CLIENT_LIST_CLIENT_COMPANY_COUNT_TOOLTIP            :{BLACK}Кількість поточно з'єднаних клієнтів, кількість компаній і максимум компаній, дозволених адміністратором сервера
 
 # Matches ConnectionType
 ###length 5
@@ -4510,7 +4516,7 @@ STR_VEHICLE_STATUS_TRAIN_STUCK                                  :{ORANGE}Очі�
 STR_VEHICLE_STATUS_AIRCRAFT_TOO_FAR                             :{ORANGE}Занадто далеко до наступного місця призначення
 
 STR_VEHICLE_STATUS_HEADING_FOR_STATION_VEL                      :{LTBLUE}{1:VELOCITY} - Прямує до {0:STATION}
-STR_VEHICLE_STATUS_NO_ORDERS_VEL                                :{LTBLUE}Без завдань, {VELOCITY}
+STR_VEHICLE_STATUS_NO_ORDERS_VEL                                :{LTBLUE}{VELOCITY} - Без наказів
 STR_VEHICLE_STATUS_HEADING_FOR_WAYPOINT_VEL                     :{LTBLUE}{1:VELOCITY} - Прямує до {0:WAYPOINT}
 STR_VEHICLE_STATUS_HEADING_FOR_DEPOT_VEL                        :{ORANGE}{1:VELOCITY} - Прямує до  {0:DEPOT}
 STR_VEHICLE_STATUS_HEADING_FOR_DEPOT_SERVICE_VEL                :{LTBLUE}{1:VELOCITY} - Техогляд у {0:DEPOT}
@@ -4757,6 +4763,7 @@ STR_ORDER_REFIT_ORDER                                           :(Переобл
 STR_ORDER_REFIT_STOP_ORDER                                      :(Переобладнати на {STRING} і зупинити)
 STR_ORDER_STOP_ORDER                                            :(зупинити)
 
+STR_ORDER_WAIT_TO_UNBUNCH                                       :(чекає звільнення)
 
 STR_ORDER_GO_TO_STATION                                         :{STRING} {STATION} {STRING}
 STR_ORDER_GO_TO_STATION_CAN_T_USE_STATION                       :{PUSH_COLOUR}{RED}(Неможливо використати станцію){POP_COLOUR} {STRING} {STATION} {STRING}
@@ -5226,6 +5233,7 @@ STR_ERROR_UNABLE_TO_FIND_LOCAL_DEPOT                            :{WHITE}Немо
 STR_ERROR_DEPOT_WRONG_DEPOT_TYPE                                :Неправильний тип депо
 
 # Depot unbunching related errors
+STR_ERROR_UNBUNCHING_ONLY_ONE_ALLOWED                           :{WHITE}... можливий тільки один звільнений наказ
 
 # Autoreplace related errors
 STR_ERROR_TRAIN_TOO_LONG_AFTER_REPLACEMENT                      :{WHITE}{VEHICLE} дуже довгий після оновлення
@@ -5429,6 +5437,7 @@ STR_ERROR_NO_DOCK                                               :{WHITE}Нема
 STR_ERROR_NO_AIRPORT                                            :{WHITE}Немає аеропорту або геліпорту
 STR_ERROR_NO_STOP_COMPATIBLE_ROAD_TYPE                          :{WHITE}Немає зупинок із сумісним типом дороги
 STR_ERROR_NO_STOP_COMPATIBLE_TRAM_TYPE                          :{WHITE}Немає зупинок із сумісним типом трамвайної колії
+STR_ERROR_NO_STOP_ARTICULATED_VEHICLE                           :{WHITE}Відсутні зупинки для зчленованого транспорту.{}Зчленований транспорт потребує проїзної зупинки, не кінцевої
 STR_ERROR_AIRPORT_NO_PLANES                                     :{WHITE}Цей літак не може приземлятися у цьому геліпорті
 STR_ERROR_AIRPORT_NO_HELICOPTERS                                :{WHITE}Цей гелікоптер не може приземлятися у цьому аеропорту
 STR_ERROR_NO_RAIL_WAYPOINT                                      :{WHITE}Немає точки залізничного маршруту
