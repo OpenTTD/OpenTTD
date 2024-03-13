@@ -56,7 +56,10 @@ enum PacketGameType : uint8_t {
 	 * the map and other important data.
 	 */
 
-	/* After the join step, the first is checking NewGRFs. */
+	/* After the initial join, the next step is identification. */
+	PACKET_CLIENT_IDENTIFY,              ///< Client telling the server the client's name and requested company.
+
+	/* After the identify step, the next is checking NewGRFs. */
 	PACKET_SERVER_CHECK_NEWGRFS,         ///< Server sends NewGRF IDs and MD5 checksums for the client to check.
 	PACKET_CLIENT_NEWGRFS_CHECKED,       ///< Client acknowledges that it has all required NewGRFs.
 
@@ -162,10 +165,13 @@ protected:
 
 	/**
 	 * Try to join the server:
-	 * string  OpenTTD revision (norev000 if no revision).
-	 * string  Name of the client (max NETWORK_NAME_LENGTH).
-	 * uint8_t   ID of the company to play as (1..MAX_COMPANIES).
-	 * uint8_t   ID of the clients Language.
+	 * string   OpenTTD revision (norev000 if no revision).
+	 * uint32_t NewGRF version (added in 1.2).
+	 * string   Name of the client (max NETWORK_NAME_LENGTH) (removed in 15).
+	 * uint8_t  ID of the company to play as (1..MAX_COMPANIES) (removed in 15).
+	 * uint8_t  ID of the clients Language (removed in 15).
+	 * string   Client's unique identifier (removed in 1.0).
+	 *
 	 * @param p The packet that was just received.
 	 */
 	virtual NetworkRecvStatus Receive_CLIENT_JOIN(Packet &p);
@@ -198,6 +204,14 @@ protected:
 	 * @param p The packet that was just received.
 	 */
 	virtual NetworkRecvStatus Receive_SERVER_CLIENT_INFO(Packet &p);
+
+	/**
+	 * The client tells the server about the identity of the client:
+	 * string  Name of the client (max NETWORK_NAME_LENGTH).
+	 * uint8_t ID of the company to play as (1..MAX_COMPANIES).
+	 * @param p The packet that was just received.
+	 */
+	virtual NetworkRecvStatus Receive_CLIENT_IDENTIFY(Packet &p);
 
 	/**
 	 * Indication to the client that the server needs a game password.
