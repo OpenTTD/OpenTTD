@@ -510,7 +510,7 @@ NetworkRecvStatus ClientNetworkGameSocketHandler::SendSetName(const std::string 
  */
 NetworkRecvStatus ClientNetworkGameSocketHandler::SendQuit()
 {
-	Debug(net, 9, "Client::SendSetName()");
+	Debug(net, 9, "Client::SendQuit()");
 
 	auto p = std::make_unique<Packet>(PACKET_CLIENT_QUIT);
 
