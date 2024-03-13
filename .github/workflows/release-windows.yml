@@ -100,21 +100,6 @@ jobs:
       with:
         arch: ${{ matrix.host }}
 
-    - name: Import code signing certificate
-      shell: powershell
-      # If this is run on a fork, there may not be a certificate set up - continue in this case
-      continue-on-error: true
-      run: |
-        $tempFile = [System.IO.Path]::GetTempFileName()
-        $bytes = [System.Convert]::FromBase64String($env:WINDOWS_CERTIFICATE_P12)
-        [IO.File]::WriteAllBytes($tempFile, $bytes)
-        $pwd = ConvertTo-SecureString $env:WINDOWS_CERTIFICATE_PASSWORD -AsPlainText -Force
-        Import-PfxCertificate -FilePath $tempFile -CertStoreLocation Cert:\CurrentUser\My -Password $pwd
-        Remove-Item $tempFile
-      env:
-        WINDOWS_CERTIFICATE_P12: ${{ secrets.WINDOWS_CERTIFICATE_P12 }}
-        WINDOWS_CERTIFICATE_PASSWORD: ${{ secrets.WINDOWS_CERTIFICATE_PASSWORD }}
-
     - name: Build (with installer)
       if: inputs.is_tag == 'true'
       shell: bash
@@ -131,7 +116,6 @@ jobs:
           -DHOST_BINARY_DIR=${GITHUB_WORKSPACE}/build-host \
           -DCMAKE_BUILD_TYPE=RelWithDebInfo \
           -DOPTION_SURVEY_KEY=${{ inputs.survey_key }} \
-          -DWINDOWS_CERTIFICATE_COMMON_NAME="${WINDOWS_CERTIFICATE_COMMON_NAME}" \
           # EOF
         echo "::endgroup::"
 
@@ -139,7 +123,12 @@ jobs:
         cmake --build . --target openttd
         echo "::endgroup::"
       env:
-        WINDOWS_CERTIFICATE_COMMON_NAME: ${{ secrets.WINDOWS_CERTIFICATE_COMMON_NAME }}
+        AZURE_TENANT_ID: ${{ secrets.AZURE_TENANT_ID }}
+        AZURE_CLIENT_ID: ${{ secrets.AZURE_CLIENT_ID }}
+        AZURE_CLIENT_SECRET: ${{ secrets.AZURE_CLIENT_SECRET }}
+        AZURE_CODESIGN_ACCOUNT_NAME: ${{ secrets.AZURE_CODESIGN_ACCOUNT_NAME }}
+        AZURE_CODESIGN_ENDPOINT: ${{ secrets.AZURE_CODESIGN_ENDPOINT }}
+        AZURE_CODESIGN_PROFILE_NAME: ${{ secrets.AZURE_CODESIGN_PROFILE_NAME }}
 
     - name: Build (without installer)
       if: inputs.is_tag != 'true'
@@ -156,7 +145,6 @@ jobs:
           -DHOST_BINARY_DIR=${GITHUB_WORKSPACE}/build-host \
           -DCMAKE_BUILD_TYPE=RelWithDebInfo \
           -DOPTION_SURVEY_KEY=${{ inputs.survey_key }} \
-          -DWINDOWS_CERTIFICATE_COMMON_NAME="${WINDOWS_CERTIFICATE_COMMON_NAME}" \
           # EOF
         echo "::endgroup::"
 
@@ -164,7 +152,12 @@ jobs:
         cmake --build . --target openttd
         echo "::endgroup::"
       env:
-        WINDOWS_CERTIFICATE_COMMON_NAME: ${{ secrets.WINDOWS_CERTIFICATE_COMMON_NAME }}
+        AZURE_TENANT_ID: ${{ secrets.AZURE_TENANT_ID }}
+        AZURE_CLIENT_ID: ${{ secrets.AZURE_CLIENT_ID }}
+        AZURE_CLIENT_SECRET: ${{ secrets.AZURE_CLIENT_SECRET }}
+        AZURE_CODESIGN_ACCOUNT_NAME: ${{ secrets.AZURE_CODESIGN_ACCOUNT_NAME }}
+        AZURE_CODESIGN_ENDPOINT: ${{ secrets.AZURE_CODESIGN_ENDPOINT }}
+        AZURE_CODESIGN_PROFILE_NAME: ${{ secrets.AZURE_CODESIGN_PROFILE_NAME }}
 
     - name: Create breakpad symbols
       shell: bash
@@ -198,13 +191,15 @@ jobs:
     - name: Sign installer
       if: inputs.is_tag == 'true'
       shell: bash
-      # If this is run on a fork, there may not be a certificate set up - continue in this case
-      continue-on-error: true
       run: |
-        cd ${GITHUB_WORKSPACE}/build/bundles
-        ../../os/windows/sign.bat *.exe "${WINDOWS_CERTIFICATE_COMMON_NAME}"
+        ${GITHUB_WORKSPACE}/os/windows/sign.bat "${GITHUB_WORKSPACE}/build/bundles"
       env:
-        WINDOWS_CERTIFICATE_COMMON_NAME: ${{ secrets.WINDOWS_CERTIFICATE_COMMON_NAME }}
+        AZURE_TENANT_ID: ${{ secrets.AZURE_TENANT_ID }}
+        AZURE_CLIENT_ID: ${{ secrets.AZURE_CLIENT_ID }}
+        AZURE_CLIENT_SECRET: ${{ secrets.AZURE_CLIENT_SECRET }}
+        AZURE_CODESIGN_ACCOUNT_NAME: ${{ secrets.AZURE_CODESIGN_ACCOUNT_NAME }}
+        AZURE_CODESIGN_ENDPOINT: ${{ secrets.AZURE_CODESIGN_ENDPOINT }}
+        AZURE_CODESIGN_PROFILE_NAME: ${{ secrets.AZURE_CODESIGN_PROFILE_NAME }}
 
     - name: Store bundles
       uses: actions/upload-artifact@v4
