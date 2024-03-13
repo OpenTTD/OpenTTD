@@ -52,6 +52,8 @@ add_files(
     animated_tile_func.h
     articulated_vehicles.cpp
     articulated_vehicles.h
+    autocompletion.cpp
+    autocompletion.h
     autoreplace.cpp
     autoreplace_base.h
     autoreplace_cmd.cpp
