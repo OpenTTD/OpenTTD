@@ -24,6 +24,7 @@ extern NetworkClientSocketPool _networkclientsocket_pool;
 class ServerNetworkGameSocketHandler : public NetworkClientSocketPool::PoolItem<&_networkclientsocket_pool>, public NetworkGameSocketHandler, public TCPListenHandler<ServerNetworkGameSocketHandler, PACKET_SERVER_FULL, PACKET_SERVER_BANNED> {
 protected:
 	NetworkRecvStatus Receive_CLIENT_JOIN(Packet &p) override;
+	NetworkRecvStatus Receive_CLIENT_IDENTIFY(Packet &p) override;
 	NetworkRecvStatus Receive_CLIENT_GAME_INFO(Packet &p) override;
 	NetworkRecvStatus Receive_CLIENT_GAME_PASSWORD(Packet &p) override;
 	NetworkRecvStatus Receive_CLIENT_COMPANY_PASSWORD(Packet &p) override;
@@ -50,6 +51,7 @@ public:
 	/** Status of a client */
 	enum ClientStatus {
 		STATUS_INACTIVE,      ///< The client is not connected nor active.
+		STATUS_IDENTIFY,      ///< The client is identifying itself.
 		STATUS_NEWGRFS_CHECK, ///< The client is checking NewGRFs.
 		STATUS_AUTH_GAME,     ///< The client is authorizing with game (server) password.
 		STATUS_AUTH_COMPANY,  ///< The client is authorizing with company password.

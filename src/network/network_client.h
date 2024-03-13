@@ -71,6 +71,7 @@ protected:
 	static NetworkRecvStatus SendNewGRFsOk();
 	static NetworkRecvStatus SendGetMap();
 	static NetworkRecvStatus SendMapOk();
+	static NetworkRecvStatus SendIdentify();
 	void CheckConnection();
 public:
 	ClientNetworkGameSocketHandler(SOCKET s, const std::string &connection_string);

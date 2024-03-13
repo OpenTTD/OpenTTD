@@ -400,8 +400,8 @@ NetworkRecvStatus ServerNetworkGameSocketHandler::SendNewGRFCheck()
 {
 	Debug(net, 9, "client[{}] SendNewGRFCheck()", this->client_id);
 
-	/* Invalid packet when status is anything but STATUS_INACTIVE. */
-	if (this->status != STATUS_INACTIVE) return this->CloseConnection(NETWORK_RECV_STATUS_MALFORMED_PACKET);
+	/* Invalid packet when status is anything but STATUS_IDENTIFY. */
+	if (this->status != STATUS_IDENTIFY) return this->CloseConnection(NETWORK_RECV_STATUS_MALFORMED_PACKET);
 
 	Debug(net, 9, "client[{}] status = NEWGRFS_CHECK", this->client_id);
 	this->status = STATUS_NEWGRFS_CHECK;
@@ -891,6 +891,21 @@ NetworkRecvStatus ServerNetworkGameSocketHandler::Receive_CLIENT_JOIN(Packet &p)
 		return this->SendError(NETWORK_ERROR_WRONG_REVISION);
 	}
 
+	Debug(net, 9, "client[{}] status = IDENTIFY", this->client_id);
+	this->status = STATUS_IDENTIFY;
+
+	/* Reset 'lag' counters */
+	this->last_frame = this->last_frame_server = _frame_counter;
+
+	return NETWORK_RECV_STATUS_OKAY;
+}
+
+NetworkRecvStatus ServerNetworkGameSocketHandler::Receive_CLIENT_IDENTIFY(Packet &p)
+{
+	if (this->status != STATUS_IDENTIFY) return this->SendError(NETWORK_ERROR_NOT_EXPECTED);
+
+	Debug(net, 9, "client[{}] Receive_CLIENT_IDENTIFY()", this->client_id);
+
 	std::string client_name = p.Recv_string(NETWORK_CLIENT_NAME_LENGTH);
 	CompanyID playas = (Owner)p.Recv_uint8();
 
@@ -905,7 +920,7 @@ NetworkRecvStatus ServerNetworkGameSocketHandler::Receive_CLIENT_JOIN(Packet &p)
 			break;
 		case COMPANY_SPECTATOR: // Spectator
 			break;
-		default: // Join another company (companies 1-8 (index 0-7))
+		default: // Join another company (companies 1..MAX_COMPANIES (index 0..(MAX_COMPANIES-1)))
 			if (!Company::IsValidHumanID(playas)) {
 				return this->SendError(NETWORK_ERROR_COMPANY_MISMATCH);
 			}
@@ -1770,6 +1785,7 @@ void NetworkServer_Tick(bool send_frame)
 				break;
 
 			case NetworkClientSocket::STATUS_INACTIVE:
+			case NetworkClientSocket::STATUS_IDENTIFY:
 			case NetworkClientSocket::STATUS_NEWGRFS_CHECK:
 			case NetworkClientSocket::STATUS_AUTHORIZED:
 				/* NewGRF check and authorized states should be handled almost instantly.
@@ -1962,6 +1978,7 @@ void NetworkServerShowStatusToConsole()
 {
 	static const char * const stat_str[] = {
 		"inactive",
+		"identifing client",
 		"checking NewGRFs",
 		"authorizing (server password)",
 		"authorizing (company password)",

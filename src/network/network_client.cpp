@@ -347,9 +347,18 @@ NetworkRecvStatus ClientNetworkGameSocketHandler::SendJoin()
 	auto p = std::make_unique<Packet>(my_client, PACKET_CLIENT_JOIN);
 	p->Send_string(GetNetworkRevisionString());
 	p->Send_uint32(_openttd_newgrf_version);
+	my_client->SendPacket(std::move(p));
+
+	return ClientNetworkGameSocketHandler::SendIdentify();
+}
+
+NetworkRecvStatus ClientNetworkGameSocketHandler::SendIdentify()
+{
+	Debug(net, 9, "Client::SendIdentify()");
+
+	auto p = std::make_unique<Packet>(my_client, PACKET_CLIENT_IDENTIFY);
 	p->Send_string(_settings_client.network.client_name); // Client name
-	p->Send_uint8 (_network_join.company);     // PlayAs
-	p->Send_uint8 (0); // Used to be language
+	p->Send_uint8(_network_join.company); // PlayAs
 	my_client->SendPacket(std::move(p));
 	return NETWORK_RECV_STATUS_OKAY;
 }
