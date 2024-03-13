@@ -1,7 +1,10 @@
 14.0-RC2 (2024-03-09)
 ------------------------------------------------------------------------
+Update: Bump bundled OpenTTD TTF fonts to version v0.6 (#12276)
 Update: Developer credits (#12173, #12235)
+Change: Use (at least) standard toolbar button size for signal selection buttons (#12265)
 Change: [Script] Match FormatString behaviour more closely (#12205)
+Fix #12255: Inconsistent punctuation in English localisation (#12262)
 Fix #12236: Ship pathfinder causes crash when ship is already at destination (#12238)
 Fix #12225: [Script] Missing AI::ResetConfig support for running AI config (#12226)
 Fix #12203: When unbunching at a depot, don't overlook implicit orders (#12220)
