@@ -25,7 +25,7 @@ private:
 		STATUS_INACTIVE,      ///< The client is not connected nor active.
 		STATUS_JOIN,          ///< We are trying to join a server.
 		STATUS_AUTH_GAME,     ///< Last action was requesting game (server) password.
-		STATUS_AUTHENTICATED, ///< The game authentication has completed.
+		STATUS_ENCRYPTED,     ///< The game authentication has completed and from here on the connection to the server is encrypted.
 		STATUS_NEWGRFS_CHECK, ///< Last action was checking NewGRFs.
 		STATUS_AUTH_COMPANY,  ///< Last action was requesting company password.
 		STATUS_AUTHORIZED,    ///< The client is authorized at the server.
@@ -47,7 +47,7 @@ protected:
 	NetworkRecvStatus Receive_SERVER_ERROR(Packet &p) override;
 	NetworkRecvStatus Receive_SERVER_CLIENT_INFO(Packet &p) override;
 	NetworkRecvStatus Receive_SERVER_AUTH_REQUEST(Packet &p) override;
-	NetworkRecvStatus Receive_SERVER_AUTH_COMPLETED(Packet &p) override;
+	NetworkRecvStatus Receive_SERVER_ENABLE_ENCRYPTION(Packet &p) override;
 	NetworkRecvStatus Receive_SERVER_NEED_COMPANY_PASSWORD(Packet &p) override;
 	NetworkRecvStatus Receive_SERVER_WELCOME(Packet &p) override;
 	NetworkRecvStatus Receive_SERVER_WAIT(Packet &p) override;

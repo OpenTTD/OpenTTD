@@ -20,15 +20,21 @@
 static_assert(NETWORK_SECRET_KEY_LENGTH >= X25519_KEY_SIZE * 2 + 1);
 
 class MockNetworkSocketHandler : public NetworkSocketHandler {
+public:
+	MockNetworkSocketHandler(std::unique_ptr<NetworkEncryptionHandler> &&receive = {}, std::unique_ptr<NetworkEncryptionHandler> &&send = {})
+	{
+		this->receive_encryption_handler = std::move(receive);
+		this->send_encryption_handler = std::move(send);
+	}
 };
 
 static MockNetworkSocketHandler mock_socket_handler;
 
-static Packet CreatePacketForReading(Packet &source)
+static std::tuple<Packet, bool> CreatePacketForReading(Packet &source, MockNetworkSocketHandler *socket_handler)
 {
 	source.PrepareToSend();
 
-	Packet dest(&mock_socket_handler, COMPAT_MTU, source.Size());
+	Packet dest(socket_handler, COMPAT_MTU, source.Size());
 
 	auto transfer_in = [](Packet &source, char *dest_data, size_t length) {
 		auto transfer_out = [](char *dest_data, const char *source_data, size_t length) {
@@ -39,9 +45,9 @@ static Packet CreatePacketForReading(Packet &source)
 	};
 	dest.TransferIn(transfer_in, source);
 
-	dest.PrepareToRead();
+	bool valid = dest.PrepareToRead();
 	dest.Recv_uint8(); // Ignore the type
-	return dest;
+	return { dest, valid };
 }
 
 class TestPasswordRequestHandler : public NetworkAuthenticationPasswordRequestHandler {
@@ -60,13 +66,16 @@ static void TestAuthentication(NetworkAuthenticationServerHandler &server, Netwo
 	Packet request(&mock_socket_handler, PacketType{});
 	server.SendRequest(request);
 
-	request = CreatePacketForReading(request);
+	bool valid;
+	std::tie(request, valid) = CreatePacketForReading(request, &mock_socket_handler);
+	CHECK(valid);
 	CHECK(client.ReceiveRequest(request) == expected_request_result);
 
 	Packet response(&mock_socket_handler, PacketType{});
 	client.SendResponse(response);
 
-	response = CreatePacketForReading(response);
+	std::tie(response, valid) = CreatePacketForReading(response, &mock_socket_handler);
+	CHECK(valid);
 	CHECK(server.ReceiveResponse(response) == expected_response_result);
 }
 
@@ -198,5 +207,64 @@ TEST_CASE("Authentication_Combined")
 		auto server = NetworkAuthenticationServerHandler::Create(&no_password_provider, &no_authorized_key_handler);
 
 		TestAuthentication(*server, *client, NetworkAuthenticationServerHandler::AUTHENTICATED, NetworkAuthenticationClientHandler::READY_FOR_RESPONSE);
+	}
+}
+
+
+static void CheckEncryption(MockNetworkSocketHandler *sending_socket_handler, MockNetworkSocketHandler *receiving_socket_handler)
+{
+	PacketType sent_packet_type{ 1 };
+	uint64_t sent_value = 0x1234567890ABCDEF;
+	std::set<PacketType> encrypted_packet_types;
+
+	for (int i = 0; i < 10; i++) {
+		Packet request(sending_socket_handler, sent_packet_type);
+		request.Send_uint64(sent_value);
+
+		auto [response, valid] = CreatePacketForReading(request, receiving_socket_handler);
+		CHECK(valid);
+		CHECK(response.Recv_uint64() == sent_value);
+
+		encrypted_packet_types.insert(request.GetPacketType());
+	}
+	/*
+	 * Check whether it looks like encryption has happened. This is done by checking the value
+	 * of the packet type after encryption. If after a few iterations more than one encrypted
+	 * value has been seen, then we know that some type of encryption/scrambling is happening.
+	 *
+	 * Technically this check could fail erroneously when 16 subsequent encryptions yield the
+	 * same encrypted packet type. However, with encryption that byte should have random value
+	 * value, so the chance of this happening are tiny given enough iterations.
+	 * Roughly in the order of 2**((iterations - 1) * 8), which with 10 iterations is in the
+	 * one-in-sextillion (10**21) order of magnitude.
+	 */
+	CHECK(encrypted_packet_types.size() != 1);
+
+}
+
+TEST_CASE("Encryption handling")
+{
+	X25519KeyExchangeOnlyServerHandler server(X25519SecretKey::CreateRandom());
+	X25519KeyExchangeOnlyClientHandler client(X25519SecretKey::CreateRandom());
+
+	TestAuthentication(server, client, NetworkAuthenticationServerHandler::AUTHENTICATED, NetworkAuthenticationClientHandler::READY_FOR_RESPONSE);
+
+	MockNetworkSocketHandler server_socket_handler(server.CreateClientToServerEncryptionHandler(), server.CreateServerToClientEncryptionHandler());
+	MockNetworkSocketHandler client_socket_handler(client.CreateServerToClientEncryptionHandler(), client.CreateClientToServerEncryptionHandler());
+
+	SECTION("Encyption happening client -> server") {
+		CheckEncryption(&client_socket_handler, &server_socket_handler);
+	}
+
+	SECTION("Encyption happening server -> client") {
+		CheckEncryption(&server_socket_handler, &client_socket_handler);
+	}
+
+	SECTION("Unencrypted packet sent causes invalid read packet") {
+		Packet request(&mock_socket_handler, PacketType{});
+		request.Send_uint64(0);
+
+		auto [response, valid] = CreatePacketForReading(request, &client_socket_handler);
+		CHECK(!valid);
 	}
 }

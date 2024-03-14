@@ -15,7 +15,6 @@
 #include "os_abstraction.h"
 #include "tcp.h"
 #include "../network_type.h"
-#include "../network_crypto.h"
 #include "../../core/pool_type.hpp"
 #include <chrono>
 
@@ -60,7 +59,7 @@ enum PacketGameType : uint8_t {
 	/* After the join step, the first perform game authentication and enabling encryption. */
 	PACKET_SERVER_AUTH_REQUEST,          ///< The server requests the client to authenticate using a number of methods.
 	PACKET_CLIENT_AUTH_RESPONSE,         ///< The client responds to the authentication request.
-	PACKET_SERVER_AUTH_COMPLETED,        ///< The server indicates the authentication is completed.
+	PACKET_SERVER_ENABLE_ENCRYPTION,     ///< The server tells that authentication has completed and requests to enable encryption with the keys of the last \c PACKET_CLIENT_AUTH_RESPONSE.
 
 	/* After the authentication is done, the next step is identification. */
 	PACKET_CLIENT_IDENTIFY,              ///< Client telling the server the client's name and requested company.
@@ -244,10 +243,10 @@ protected:
 	virtual NetworkRecvStatus Receive_CLIENT_AUTH_RESPONSE(Packet &p);
 
 	/**
-	 * Indication to the client that authentication has completed.
+	 * Indication to the client that authentication is complete and encryption has to be used from here on forward.
 	 * @param p The packet that was just received.
 	 */
-	virtual NetworkRecvStatus Receive_SERVER_AUTH_COMPLETED(Packet &p);
+	virtual NetworkRecvStatus Receive_SERVER_ENABLE_ENCRYPTION(Packet &p);
 
 	/**
 	 * Send a password to the server to authorize

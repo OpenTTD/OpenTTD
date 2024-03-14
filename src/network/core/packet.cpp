@@ -48,7 +48,14 @@ Packet::Packet(NetworkSocketHandler *cs, size_t limit, size_t initial_read_size)
 Packet::Packet(NetworkSocketHandler *cs, PacketType type, size_t limit) : pos(0), limit(limit), cs(cs)
 {
 	/* Allocate space for the the size so we can write that in just before sending the packet. */
-	this->Send_uint16(0);
+	size_t size = EncodedLengthOfPacketSize();
+	if (cs != nullptr && cs->send_encryption_handler != nullptr) {
+		/* Allocate some space for the message authentication code of the encryption. */
+		size += cs->send_encryption_handler->MACSize();
+	}
+	assert(this->CanWriteToPacket(size));
+	this->buffer.resize(size, 0);
+
 	this->Send_uint8(type);
 }
 
@@ -63,6 +70,13 @@ void Packet::PrepareToSend()
 
 	this->buffer[0] = GB(this->Size(), 0, 8);
 	this->buffer[1] = GB(this->Size(), 8, 8);
+
+	if (cs != nullptr && cs->send_encryption_handler != nullptr) {
+		size_t offset = EncodedLengthOfPacketSize();
+		size_t mac_size = cs->send_encryption_handler->MACSize();
+		size_t message_offset = offset + mac_size;
+		cs->send_encryption_handler->Encrypt(std::span(&this->buffer[offset], mac_size), std::span(&this->buffer[message_offset], this->buffer.size() - message_offset));
+	}
 
 	this->pos  = 0; // We start reading from here
 	this->buffer.shrink_to_fit();
@@ -259,11 +273,21 @@ bool Packet::ParsePacketSize()
 
 /**
  * Prepares the packet so it can be read
+ * @return True when the packet was valid, otherwise false.
  */
-void Packet::PrepareToRead()
+bool Packet::PrepareToRead()
 {
 	/* Put the position on the right place */
 	this->pos = static_cast<PacketSize>(EncodedLengthOfPacketSize());
+
+	if (cs == nullptr || cs->receive_encryption_handler == nullptr) return true;
+
+	size_t mac_size = cs->receive_encryption_handler->MACSize();
+	if (this->buffer.size() <= pos + mac_size) return false;
+
+	bool valid = cs->receive_encryption_handler->Decrypt(std::span(&this->buffer[pos], mac_size), std::span(&this->buffer[pos + mac_size], this->buffer.size() - pos - mac_size));
+	this->pos += static_cast<PacketSize>(mac_size);
+	return valid;
 }
 
 /**
@@ -273,7 +297,9 @@ void Packet::PrepareToRead()
 PacketType Packet::GetPacketType() const
 {
 	assert(this->Size() >= EncodedLengthOfPacketSize() + EncodedLengthOfPacketType());
-	return static_cast<PacketType>(buffer[EncodedLengthOfPacketSize()]);
+	size_t offset = EncodedLengthOfPacketSize();
+	if (cs != nullptr && cs->send_encryption_handler != nullptr) offset += cs->send_encryption_handler->MACSize();
+	return static_cast<PacketType>(buffer[offset]);
 }
 
 /**

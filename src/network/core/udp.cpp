@@ -137,7 +137,10 @@ void NetworkUDPSocketHandler::ReceivePackets()
 				Debug(net, 1, "Received a packet with mismatching size from {}", address.GetAddressAsString());
 				continue;
 			}
-			p.PrepareToRead();
+			if (!p.PrepareToRead()) {
+				Debug(net, 1, "Invalid packet received (too small / decryption error)");
+				continue;
+			}
 
 			/* Handle the packet */
 			this->HandleUDPPacket(p, address);
