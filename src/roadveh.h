@@ -113,10 +113,9 @@ struct RoadVehicle final : public GroundVehicle<RoadVehicle, VEH_ROAD> {
 	uint16_t crashed_ctr;     ///< Animation counter when the vehicle has crashed. @see RoadVehIsCrashed
 	uint8_t reverse_ctr;
 
-	RoadType roadtype;              //!< Roadtype of this vehicle.
-	RoadTypes compatible_roadtypes; //!< Roadtypes this consist is powered on.
-
+	RoadType roadtype; ///< NOSAVE: Roadtype of this vehicle.
 	VehicleID disaster_vehicle = INVALID_VEHICLE; ///< NOSAVE: Disaster vehicle targetting this vehicle.
+	RoadTypes compatible_roadtypes; ///< NOSAVE: Roadtypes this consist is powered on.
 
 	/** We don't want GCC to zero our struct! It already is zeroed and has an index! */
 	RoadVehicle() : GroundVehicleBase() {}
