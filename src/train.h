@@ -75,12 +75,10 @@ struct TrainCache {
 
 	/* cached values, recalculated on load and each time a vehicle is added to/removed from the consist. */
 	bool cached_tilt;           ///< train can tilt; feature provides a bonus in curves
-	int cached_curve_speed_mod; ///< curve speed modifier of the entire train
-
 	uint8_t user_def_data;         ///< Cached property 0x25. Can be set by Callback 0x36.
 
-	/* cached max. speed / acceleration data */
-	int cached_max_curve_speed; ///< max consist speed limited by curves
+	int16_t cached_curve_speed_mod; ///< curve speed modifier of the entire train
+	uint16_t cached_max_curve_speed; ///< max consist speed limited by curves
 };
 
 /**
@@ -132,7 +130,7 @@ struct Train final : public GroundVehicle<Train, VEH_TRAIN> {
 
 	void ReserveTrackUnderConsist() const;
 
-	int GetCurveSpeedLimit() const;
+	uint16_t GetCurveSpeedLimit() const;
 
 	void ConsistChanged(ConsistChangeFlags allowed_changes);
 
@@ -328,7 +326,7 @@ protected: // These functions should not be called outside acceleration code.
 	 * Returns the curve speed modifier of this vehicle.
 	 * @return Current curve speed modifier, in fixed-point binary representation with 8 fractional bits.
 	 */
-	inline int GetCurveSpeedModifier() const
+	inline int16_t GetCurveSpeedModifier() const
 	{
 		return GetVehicleProperty(this, PROP_TRAIN_CURVE_SPEED_MOD, RailVehInfo(this->engine_type)->curve_speed_mod, true);
 	}
