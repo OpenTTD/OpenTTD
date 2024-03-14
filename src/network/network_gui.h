@@ -17,7 +17,7 @@
 #include "network_type.h"
 #include "network_gamelist.h"
 
-void ShowNetworkNeedPassword(NetworkPasswordType npt);
+void ShowNetworkNeedPassword(NetworkPasswordType npt, std::shared_ptr<class NetworkAuthenticationPasswordRequest> request);
 void ShowNetworkChatQueryWindow(DestType type, int dest);
 void ShowJoinStatusWindow();
 void ShowNetworkGameWindow();

@@ -15,6 +15,7 @@
 #include "os_abstraction.h"
 #include "tcp.h"
 #include "../network_type.h"
+#include "../network_crypto.h"
 #include "../../core/pool_type.hpp"
 #include <chrono>
 
@@ -56,16 +57,19 @@ enum PacketGameType : uint8_t {
 	 * the map and other important data.
 	 */
 
-	/* After the initial join, the next step is identification. */
+	/* After the join step, the first perform game authentication and enabling encryption. */
+	PACKET_SERVER_AUTH_REQUEST,          ///< The server requests the client to authenticate using a number of methods.
+	PACKET_CLIENT_AUTH_RESPONSE,         ///< The client responds to the authentication request.
+	PACKET_SERVER_AUTH_COMPLETED,        ///< The server indicates the authentication is completed.
+
+	/* After the authentication is done, the next step is identification. */
 	PACKET_CLIENT_IDENTIFY,              ///< Client telling the server the client's name and requested company.
 
 	/* After the identify step, the next is checking NewGRFs. */
 	PACKET_SERVER_CHECK_NEWGRFS,         ///< Server sends NewGRF IDs and MD5 checksums for the client to check.
 	PACKET_CLIENT_NEWGRFS_CHECKED,       ///< Client acknowledges that it has all required NewGRFs.
 
-	/* Checking the game, and then company passwords. */
-	PACKET_SERVER_NEED_GAME_PASSWORD,    ///< Server requests the (hashed) game password.
-	PACKET_CLIENT_GAME_PASSWORD,         ///< Clients sends the (hashed) game password.
+	/* Checking the company passwords. */
 	PACKET_SERVER_NEED_COMPANY_PASSWORD, ///< Server requests the (hashed) company password.
 	PACKET_CLIENT_COMPANY_PASSWORD,      ///< Client sends the (hashed) company password.
 
@@ -214,10 +218,13 @@ protected:
 	virtual NetworkRecvStatus Receive_CLIENT_IDENTIFY(Packet &p);
 
 	/**
-	 * Indication to the client that the server needs a game password.
+	 * Indication to the client that it needs to authenticate:
+	 * bool Whether to use the password in the key exchange.
+	 * 32 * uint8_t Public key of the server.
+	 * 24 * uint8_t Nonce for the key exchange.
 	 * @param p The packet that was just received.
 	 */
-	virtual NetworkRecvStatus Receive_SERVER_NEED_GAME_PASSWORD(Packet &p);
+	virtual NetworkRecvStatus Receive_SERVER_AUTH_REQUEST(Packet &p);
 
 	/**
 	 * Indication to the client that the server needs a company password:
@@ -228,12 +235,19 @@ protected:
 	virtual NetworkRecvStatus Receive_SERVER_NEED_COMPANY_PASSWORD(Packet &p);
 
 	/**
-	 * Send a password to the server to authorize:
-	 * uint8_t   Password type (see NetworkPasswordType).
-	 * string  The password.
+	 * Send the response to the authentication request:
+	 * 32 * uint8_t Public key of the client.
+	 *  8 * uint8_t Random message that got encoded and signed.
+	 * 16 * uint8_t Message authentication code.
 	 * @param p The packet that was just received.
 	 */
-	virtual NetworkRecvStatus Receive_CLIENT_GAME_PASSWORD(Packet &p);
+	virtual NetworkRecvStatus Receive_CLIENT_AUTH_RESPONSE(Packet &p);
+
+	/**
+	 * Indication to the client that authentication has completed.
+	 * @param p The packet that was just received.
+	 */
+	virtual NetworkRecvStatus Receive_SERVER_AUTH_COMPLETED(Packet &p);
 
 	/**
 	 * Send a password to the server to authorize

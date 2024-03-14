@@ -58,6 +58,10 @@ INSTANTIATE_POOL_METHODS(NetworkClientSocket)
 /** Instantiate the listen sockets. */
 template SocketList TCPListenHandler<ServerNetworkGameSocketHandler, PACKET_SERVER_FULL, PACKET_SERVER_BANNED>::sockets;
 
+static NetworkAuthenticationDefaultPasswordProvider _password_provider(_settings_client.network.server_password); ///< Provides the password validation for the game's password.
+static NetworkAuthenticationDefaultAuthorizedKeyHandler _authorized_key_handler(_settings_client.network.server_authorized_keys); ///< Provides the authorized key handling for the game authentication.
+
+
 /** Writing a savegame directly to a number of packets. */
 struct PacketWriter : SaveFilter {
 	ServerNetworkGameSocketHandler *cs; ///< Socket we are associated with.
@@ -407,8 +411,8 @@ NetworkRecvStatus ServerNetworkGameSocketHandler::SendNewGRFCheck()
 	this->status = STATUS_NEWGRFS_CHECK;
 
 	if (_grfconfig == nullptr) {
-		/* There are no NewGRFs, continue with the game password. */
-		return this->SendNeedGamePassword();
+		/* There are no NewGRFs, continue with the company password. */
+		return this->SendNeedCompanyPassword();
 	}
 
 	auto p = std::make_unique<Packet>(this, PACKET_SERVER_CHECK_NEWGRFS, TCP_MTU);
@@ -429,25 +433,39 @@ NetworkRecvStatus ServerNetworkGameSocketHandler::SendNewGRFCheck()
 }
 
 /** Request the game password. */
-NetworkRecvStatus ServerNetworkGameSocketHandler::SendNeedGamePassword()
+NetworkRecvStatus ServerNetworkGameSocketHandler::SendAuthRequest()
 {
-	Debug(net, 9, "client[{}] SendNeedGamePassword()", this->client_id);
+	Debug(net, 9, "client[{}] SendAuthRequest()", this->client_id);
 
-	/* Invalid packet when status is anything but STATUS_NEWGRFS_CHECK. */
-	if (this->status != STATUS_NEWGRFS_CHECK) return this->CloseConnection(NETWORK_RECV_STATUS_MALFORMED_PACKET);
+	/* Invalid packet when status is anything but STATUS_INACTIVE or STATUS_AUTH_GAME. */
+	if (this->status != STATUS_INACTIVE && status != STATUS_AUTH_GAME) return this->CloseConnection(NETWORK_RECV_STATUS_MALFORMED_PACKET);
 
 	Debug(net, 9, "client[{}] status = AUTH_GAME", this->client_id);
 	this->status = STATUS_AUTH_GAME;
 
-	if (_settings_client.network.server_password.empty()) {
-		/* Do not actually need a game password, continue with the company password. */
-		return this->SendNeedCompanyPassword();
-	}
-
 	/* Reset 'lag' counters */
 	this->last_frame = this->last_frame_server = _frame_counter;
 
-	auto p = std::make_unique<Packet>(this, PACKET_SERVER_NEED_GAME_PASSWORD);
+	if (this->authentication_handler == nullptr) {
+		this->authentication_handler = NetworkAuthenticationServerHandler::Create(&_password_provider, &_authorized_key_handler);
+	}
+
+	auto p = std::make_unique<Packet>(this, PACKET_SERVER_AUTH_REQUEST);
+	this->authentication_handler->SendRequest(*p);
+
+	this->SendPacket(std::move(p));
+	return NETWORK_RECV_STATUS_OKAY;
+}
+
+/** Notify the client that the authentication has completed. */
+NetworkRecvStatus ServerNetworkGameSocketHandler::SendAuthCompleted()
+{
+	Debug(net, 9, "client[{}] SendAuthCompleted()", this->client_id);
+
+	/* Invalid packet when status is anything but STATUS_AUTH_GAME. */
+	if (this->status != STATUS_AUTH_GAME) return this->CloseConnection(NETWORK_RECV_STATUS_MALFORMED_PACKET);
+
+	auto p = std::make_unique<Packet>(this, PACKET_SERVER_AUTH_COMPLETED);
 	this->SendPacket(std::move(p));
 	return NETWORK_RECV_STATUS_OKAY;
 }
@@ -457,8 +475,8 @@ NetworkRecvStatus ServerNetworkGameSocketHandler::SendNeedCompanyPassword()
 {
 	Debug(net, 9, "client[{}] SendNeedCompanyPassword()", this->client_id);
 
-	/* Invalid packet when status is anything but STATUS_AUTH_GAME. */
-	if (this->status != STATUS_AUTH_GAME) return this->CloseConnection(NETWORK_RECV_STATUS_MALFORMED_PACKET);
+	/* Invalid packet when status is anything but STATUS_NEWGRFS_CHECK. */
+	if (this->status != STATUS_NEWGRFS_CHECK) return this->CloseConnection(NETWORK_RECV_STATUS_MALFORMED_PACKET);
 
 	Debug(net, 9, "client[{}] status = AUTH_COMPANY", this->client_id);
 	this->status = STATUS_AUTH_COMPANY;
@@ -865,7 +883,7 @@ NetworkRecvStatus ServerNetworkGameSocketHandler::Receive_CLIENT_NEWGRFS_CHECKED
 
 	Debug(net, 9, "client[{}] Receive_CLIENT_NEWGRFS_CHECKED()", this->client_id);
 
-	return this->SendNeedGamePassword();
+	return this->SendNeedCompanyPassword();
 }
 
 NetworkRecvStatus ServerNetworkGameSocketHandler::Receive_CLIENT_JOIN(Packet &p)
@@ -891,13 +909,7 @@ NetworkRecvStatus ServerNetworkGameSocketHandler::Receive_CLIENT_JOIN(Packet &p)
 		return this->SendError(NETWORK_ERROR_WRONG_REVISION);
 	}
 
-	Debug(net, 9, "client[{}] status = IDENTIFY", this->client_id);
-	this->status = STATUS_IDENTIFY;
-
-	/* Reset 'lag' counters */
-	this->last_frame = this->last_frame_server = _frame_counter;
-
-	return NETWORK_RECV_STATUS_OKAY;
+	return this->SendAuthRequest();
 }
 
 NetworkRecvStatus ServerNetworkGameSocketHandler::Receive_CLIENT_IDENTIFY(Packet &p)
@@ -953,24 +965,52 @@ NetworkRecvStatus ServerNetworkGameSocketHandler::Receive_CLIENT_IDENTIFY(Packet
 	return this->SendNewGRFCheck();
 }
 
-NetworkRecvStatus ServerNetworkGameSocketHandler::Receive_CLIENT_GAME_PASSWORD(Packet &p)
+static NetworkErrorCode GetErrorForAuthenticationMethod(NetworkAuthenticationMethod method)
+{
+	switch (method) {
+		case NETWORK_AUTH_METHOD_X25519_PAKE:
+			return NETWORK_ERROR_WRONG_PASSWORD;
+		case NETWORK_AUTH_METHOD_X25519_AUTHORIZED_KEY:
+			return NETWORK_ERROR_NOT_ON_ALLOW_LIST;
+
+		default:
+			NOT_REACHED();
+	}
+}
+
+NetworkRecvStatus ServerNetworkGameSocketHandler::Receive_CLIENT_AUTH_RESPONSE(Packet &p)
 {
 	if (this->status != STATUS_AUTH_GAME) {
 		return this->SendError(NETWORK_ERROR_NOT_EXPECTED);
 	}
 
-	Debug(net, 9, "client[{}] Receive_CLIENT_GAME_PASSWORD()", this->client_id);
+	Debug(net, 9, "client[{}] Receive_CLIENT_AUTH_RESPONSE()", this->client_id);
 
-	std::string password = p.Recv_string(NETWORK_PASSWORD_LENGTH);
+	auto authentication_method = this->authentication_handler->GetAuthenticationMethod();
+	switch (this->authentication_handler->ReceiveResponse(p)) {
+		case NetworkAuthenticationServerHandler::AUTHENTICATED:
+			break;
 
-	/* Check game password. Allow joining if we cleared the password meanwhile */
-	if (!_settings_client.network.server_password.empty() &&
-			_settings_client.network.server_password.compare(password) != 0) {
-		/* Password is invalid */
-		return this->SendError(NETWORK_ERROR_WRONG_PASSWORD);
+		case NetworkAuthenticationServerHandler::RETRY_NEXT_METHOD:
+			return this->SendAuthRequest();
+
+		case NetworkAuthenticationServerHandler::NOT_AUTHENTICATED:
+		default:
+			return this->SendError(GetErrorForAuthenticationMethod(authentication_method));
 	}
 
-	return this->SendNeedCompanyPassword();
+	NetworkRecvStatus status = this->SendAuthCompleted();
+	if (status != NETWORK_RECV_STATUS_OKAY) return status;
+
+	this->authentication_handler = nullptr;
+
+	Debug(net, 9, "client[{}] status = IDENTIFY", this->client_id);
+	this->status = STATUS_IDENTIFY;
+
+	/* Reset 'lag' counters */
+	this->last_frame = this->last_frame_server = _frame_counter;
+
+	return NETWORK_RECV_STATUS_OKAY;
 }
 
 NetworkRecvStatus ServerNetworkGameSocketHandler::Receive_CLIENT_COMPANY_PASSWORD(Packet &p)
@@ -1978,9 +2018,9 @@ void NetworkServerShowStatusToConsole()
 {
 	static const char * const stat_str[] = {
 		"inactive",
+		"authorizing (server password)",
 		"identifing client",
 		"checking NewGRFs",
-		"authorizing (server password)",
 		"authorizing (company password)",
 		"authorized",
 		"waiting",

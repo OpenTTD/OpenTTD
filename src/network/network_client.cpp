@@ -349,7 +349,7 @@ NetworkRecvStatus ClientNetworkGameSocketHandler::SendJoin()
 	p->Send_uint32(_openttd_newgrf_version);
 	my_client->SendPacket(std::move(p));
 
-	return ClientNetworkGameSocketHandler::SendIdentify();
+	return NETWORK_RECV_STATUS_OKAY;
 }
 
 NetworkRecvStatus ClientNetworkGameSocketHandler::SendIdentify()
@@ -377,13 +377,14 @@ NetworkRecvStatus ClientNetworkGameSocketHandler::SendNewGRFsOk()
  * Set the game password as requested.
  * @param password The game password.
  */
-NetworkRecvStatus ClientNetworkGameSocketHandler::SendGamePassword(const std::string &password)
+NetworkRecvStatus ClientNetworkGameSocketHandler::SendAuthResponse()
 {
-	Debug(net, 9, "Client::SendGamePassword()");
+	Debug(net, 9, "Client::SendAuthResponse()");
 
-	auto p = std::make_unique<Packet>(my_client, PACKET_CLIENT_GAME_PASSWORD);
-	p->Send_string(password);
+	auto p = std::make_unique<Packet>(my_client, PACKET_CLIENT_AUTH_RESPONSE);
+	my_client->authentication_handler->SendResponse(*p);
 	my_client->SendPacket(std::move(p));
+
 	return NETWORK_RECV_STATUS_OKAY;
 }
 
@@ -680,6 +681,7 @@ NetworkRecvStatus ClientNetworkGameSocketHandler::Receive_SERVER_ERROR(Packet &p
 		STR_NETWORK_ERROR_TIMEOUT_MAP,         // NETWORK_ERROR_TIMEOUT_MAP
 		STR_NETWORK_ERROR_TIMEOUT_JOIN,        // NETWORK_ERROR_TIMEOUT_JOIN
 		STR_NETWORK_ERROR_INVALID_CLIENT_NAME, // NETWORK_ERROR_INVALID_CLIENT_NAME
+		STR_NETWORK_ERROR_NOT_ON_ALLOW_LIST,   // NETWORK_ERROR_NOT_ON_ALLOW_LIST
 	};
 	static_assert(lengthof(network_error_strings) == NETWORK_ERROR_END);
 
@@ -705,7 +707,7 @@ NetworkRecvStatus ClientNetworkGameSocketHandler::Receive_SERVER_ERROR(Packet &p
 
 NetworkRecvStatus ClientNetworkGameSocketHandler::Receive_SERVER_CHECK_NEWGRFS(Packet &p)
 {
-	if (this->status != STATUS_JOIN) return NETWORK_RECV_STATUS_MALFORMED_PACKET;
+	if (this->status != STATUS_AUTHENTICATED) return NETWORK_RECV_STATUS_MALFORMED_PACKET;
 
 	uint grf_count = p.Recv_uint8();
 	NetworkRecvStatus ret = NETWORK_RECV_STATUS_OKAY;
@@ -736,26 +738,67 @@ NetworkRecvStatus ClientNetworkGameSocketHandler::Receive_SERVER_CHECK_NEWGRFS(P
 	return ret;
 }
 
-NetworkRecvStatus ClientNetworkGameSocketHandler::Receive_SERVER_NEED_GAME_PASSWORD(Packet &)
+class ClientGamePasswordRequestHandler : public NetworkAuthenticationPasswordRequestHandler {
+	virtual void SendResponse() override { MyClient::SendAuthResponse(); }
+	virtual void AskUserForPassword(std::shared_ptr<NetworkAuthenticationPasswordRequest> request) override
+	{
+		if (!_network_join.server_password.empty()) {
+			request->Reply(_network_join.server_password);
+		} else {
+			ShowNetworkNeedPassword(NETWORK_GAME_PASSWORD, request);
+		}
+	}
+};
+
+NetworkRecvStatus ClientNetworkGameSocketHandler::Receive_SERVER_AUTH_REQUEST(Packet &p)
 {
-	if (this->status < STATUS_JOIN || this->status >= STATUS_AUTH_GAME) return NETWORK_RECV_STATUS_MALFORMED_PACKET;
+	if (this->status != STATUS_JOIN && this->status != STATUS_AUTH_GAME) return NETWORK_RECV_STATUS_MALFORMED_PACKET;
 	Debug(net, 9, "Client::status = AUTH_GAME");
 	this->status = STATUS_AUTH_GAME;
 
-	Debug(net, 9, "Client::Receive_SERVER_NEED_GAME_PASSWORD()");
+	Debug(net, 9, "Client::Receive_SERVER_AUTH_REQUEST()");
 
-	if (!_network_join.server_password.empty()) {
-		return SendGamePassword(_network_join.server_password);
+	if (this->authentication_handler == nullptr) {
+		this->authentication_handler = NetworkAuthenticationClientHandler::Create(std::make_shared<ClientGamePasswordRequestHandler>(),
+				_settings_client.network.client_secret_key, _settings_client.network.client_public_key);
 	}
+	switch (this->authentication_handler->ReceiveRequest(p)) {
+		case NetworkAuthenticationClientHandler::READY_FOR_RESPONSE:
+			return SendAuthResponse();
 
-	ShowNetworkNeedPassword(NETWORK_GAME_PASSWORD);
+		case NetworkAuthenticationClientHandler::AWAIT_USER_INPUT:
+			return NETWORK_RECV_STATUS_OKAY;
 
-	return NETWORK_RECV_STATUS_OKAY;
+		case NetworkAuthenticationClientHandler::INVALID:
+		default:
+			return NETWORK_RECV_STATUS_MALFORMED_PACKET;
+	}
 }
+
+NetworkRecvStatus ClientNetworkGameSocketHandler::Receive_SERVER_AUTH_COMPLETED(Packet &)
+{
+	if (this->status != STATUS_AUTH_GAME || this->authentication_handler == nullptr) return NETWORK_RECV_STATUS_MALFORMED_PACKET;
+
+	Debug(net, 9, "Client::Receive_SERVER_AUTH_COMPLETED()");
+
+	this->authentication_handler = nullptr;
+
+	Debug(net, 9, "Client::status = AUTHENTICATED");
+	this->status = STATUS_AUTHENTICATED;
+
+	return this->SendIdentify();
+}
+
+class CompanyPasswordRequest : public NetworkAuthenticationPasswordRequest {
+	virtual void Reply(const std::string &password) override
+	{
+		MyClient::SendCompanyPassword(password);
+	}
+};
 
 NetworkRecvStatus ClientNetworkGameSocketHandler::Receive_SERVER_NEED_COMPANY_PASSWORD(Packet &p)
 {
-	if (this->status < STATUS_JOIN || this->status >= STATUS_AUTH_COMPANY) return NETWORK_RECV_STATUS_MALFORMED_PACKET;
+	if (this->status < STATUS_AUTHENTICATED || this->status >= STATUS_AUTH_COMPANY) return NETWORK_RECV_STATUS_MALFORMED_PACKET;
 	Debug(net, 9, "Client::status = AUTH_COMPANY");
 	this->status = STATUS_AUTH_COMPANY;
 
@@ -769,14 +812,14 @@ NetworkRecvStatus ClientNetworkGameSocketHandler::Receive_SERVER_NEED_COMPANY_PA
 		return SendCompanyPassword(_network_join.company_password);
 	}
 
-	ShowNetworkNeedPassword(NETWORK_COMPANY_PASSWORD);
+	ShowNetworkNeedPassword(NETWORK_COMPANY_PASSWORD, std::make_shared<CompanyPasswordRequest>());
 
 	return NETWORK_RECV_STATUS_OKAY;
 }
 
 NetworkRecvStatus ClientNetworkGameSocketHandler::Receive_SERVER_WELCOME(Packet &p)
 {
-	if (this->status < STATUS_JOIN || this->status >= STATUS_AUTHORIZED) return NETWORK_RECV_STATUS_MALFORMED_PACKET;
+	if (this->status < STATUS_AUTHENTICATED || this->status >= STATUS_AUTHORIZED) return NETWORK_RECV_STATUS_MALFORMED_PACKET;
 	Debug(net, 9, "Client::status = AUTHORIZED");
 	this->status = STATUS_AUTHORIZED;
 
