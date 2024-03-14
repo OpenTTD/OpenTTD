@@ -1054,9 +1054,9 @@ STR_GAME_OPTIONS_GUI_SCALE_BEVELS                               :{BLACK}Skalere 
 STR_GAME_OPTIONS_GUI_SCALE_BEVELS_TOOLTIP                       :{BLACK}Marker dette afkrydsningsfelt for at skalere facetter efter grænsefladestørrelse
 
 STR_GAME_OPTIONS_GUI_FONT_SPRITE                                :{BLACK}Brug traditionel sprite-skrifttype
-STR_GAME_OPTIONS_GUI_FONT_SPRITE_TOOLTIP                        :{BLACK}Marker dette felt, hvis du foretrækker at bruge den traditionelle sprite-skrifttype med fast størrelse.
+STR_GAME_OPTIONS_GUI_FONT_SPRITE_TOOLTIP                        :{BLACK}Marker dette felt, hvis du foretrækker at bruge den traditionelle sprite-skrifttype med fast størrelse
 STR_GAME_OPTIONS_GUI_FONT_AA                                    :{BLACK}Anti-alias skrifttyper
-STR_GAME_OPTIONS_GUI_FONT_AA_TOOLTIP                            :{BLACK}Marker dette felt for at skrifttyper, der kan ændres størrelse, kan udlignes.
+STR_GAME_OPTIONS_GUI_FONT_AA_TOOLTIP                            :{BLACK}Marker dette felt for at skrifttyper, der kan ændres størrelse, kan udlignes
 
 STR_GAME_OPTIONS_GUI_SCALE_1X                                   :1x
 STR_GAME_OPTIONS_GUI_SCALE_2X                                   :2x
@@ -1275,7 +1275,7 @@ STR_CONFIG_SETTING_INFINITE_MONEY                               :Ubegrænset pen
 STR_CONFIG_SETTING_INFINITE_MONEY_HELPTEXT                      :Tillad ubegrænset forbrug og deaktiver virksomheders konkurs
 
 STR_CONFIG_SETTING_MAXIMUM_INITIAL_LOAN                         :Maksimum startlån: {STRING}
-STR_CONFIG_SETTING_MAXIMUM_INITIAL_LOAN_HELPTEXT                :Det maksimale beløb en virksomhed kan låne (uden at tage højde for inflation). Hvis den er indstillet til "Intet lån", vil ingen penge være tilgængelige, medmindre de leveres af et spilscript eller indstillingen "Uendelige penge".
+STR_CONFIG_SETTING_MAXIMUM_INITIAL_LOAN_HELPTEXT                :Det maksimale beløb en virksomhed kan låne (uden at tage højde for inflation). Hvis den er indstillet til "Intet lån", vil ingen penge være tilgængelige, medmindre de leveres af et spilscript eller indstillingen "Uendelige penge"
 STR_CONFIG_SETTING_MAXIMUM_INITIAL_LOAN_VALUE                   :{CURRENCY_LONG}
 ###setting-zero-is-special
 STR_CONFIG_SETTING_MAXIMUM_INITIAL_LOAN_DISABLED                :Intet lån
@@ -1359,7 +1359,7 @@ STR_CONFIG_SETTING_ROAD_VEHICLE_SLOPE_STEEPNESS                 :Skrånings stej
 STR_CONFIG_SETTING_ROAD_VEHICLE_SLOPE_STEEPNESS_HELPTEXT        :Stejlhed af skrå felter for vej køretøjer. Højere værdier gør det vanskeligere at bestige en bakke
 
 STR_CONFIG_SETTING_FORBID_90_DEG                                :Forbyd tog at dreje 90 grader: {STRING}
-STR_CONFIG_SETTING_FORBID_90_DEG_HELPTEXT                       :90 graders drejninger forekommer når et vandret sporstykke er direkte efterfulgt af et lodret sporstykke på det tilstødende felt. Således drejer toget 90 grader når det passerer feltets kant, i stedet for de sædvanlige 45 grader for andre sporkombinationer.
+STR_CONFIG_SETTING_FORBID_90_DEG_HELPTEXT                       :90 graders drejninger forekommer når et vandret sporstykke er direkte efterfulgt af et lodret sporstykke på det tilstødende felt. Således drejer toget 90 grader når det passerer feltets kant, i stedet for de sædvanlige 45 grader for andre sporkombinationer
 
 STR_CONFIG_SETTING_DISTANT_JOIN_STATIONS                        :Tillad sammenkædning af stationer der ikke ligger direkte op ad hinanden: {STRING}
 STR_CONFIG_SETTING_DISTANT_JOIN_STATIONS_HELPTEXT               :Tillad tilføjelse af dele til en station uden direkte at røre de eksisterende dele ved at Ctrl+klikke, mens du placerer de nye dele
@@ -1471,7 +1471,7 @@ STR_CONFIG_SETTING_COMPANY_STARTING_COLOUR                      :Foretrukken sel
 STR_CONFIG_SETTING_COMPANY_STARTING_COLOUR_HELPTEXT             :Vælg den foretrukne farve egne selskaber skal starte med
 
 STR_CONFIG_SETTING_COMPANY_STARTING_COLOUR_SECONDARY            :Startfirma sekundær farve: {STRING}
-STR_CONFIG_SETTING_COMPANY_STARTING_COLOUR_SECONDARY_HELPTEXT   :Vælg startende sekundær farve for virksomheden, hvis du bruger en NewGRF, der aktiverer det.
+STR_CONFIG_SETTING_COMPANY_STARTING_COLOUR_SECONDARY_HELPTEXT   :Vælg startende sekundær farve for virksomheden, hvis du bruger en NewGRF, der aktiverer det
 
 STR_CONFIG_SETTING_NEVER_EXPIRE_AIRPORTS                        :Lufthavnenes levealder udløber aldrig: {STRING}
 STR_CONFIG_SETTING_NEVER_EXPIRE_AIRPORTS_HELPTEXT               :Aktiveres denne indstilling gøres at hver lufthavnstype forbliver tilgængelig for evigt efter dens indførelse
@@ -1495,22 +1495,22 @@ STR_CONFIG_SETTING_NEVER_EXPIRE_VEHICLES                        :Køretøjernes 
 STR_CONFIG_SETTING_NEVER_EXPIRE_VEHICLES_HELPTEXT               :Når aktiveret, forbliver alle biltyper tilgængelige for evigt efter indførelse
 
 STR_CONFIG_SETTING_TIMEKEEPING_UNITS                            :Tidtagning: {STRING}
-STR_CONFIG_SETTING_TIMEKEEPING_UNITS_HELPTEXT                   :Vælg spillets tidtagningsenheder. Dette kan ikke ændres senere.{}{}Kalenderbaseret er den klassiske OpenTTD-oplevelse, med et år bestående af 12 måneder, og hver måned har 28-31 dage.{}{}I Vægur-baseret tid, lastproduktion og økonomi er i stedet baseret på trin på et minut, hvilket er omtrent lige så lang tid, som en måned på 30 dage tager i kalenderbaseret tilstand. Disse er grupperet i 12-minutters perioder, svarende til et år i kalenderbaseret tilstand.{}{}I begge tilstande er der altid en klassisk kalender, som bruges til introduktionsdatoer for køretøjer, huse og anden infrastruktur.
+STR_CONFIG_SETTING_TIMEKEEPING_UNITS_HELPTEXT                   :Vælg spillets tidtagningsenheder. Dette kan ikke ændres senere.{}{}Kalenderbaseret er den klassiske OpenTTD-oplevelse, med et år bestående af 12 måneder, og hver måned har 28-31 dage.{}{}I Vægur-baseret tid, lastproduktion og økonomi er i stedet baseret på trin på et minut, hvilket er omtrent lige så lang tid, som en måned på 30 dage tager i kalenderbaseret tilstand. Disse er grupperet i 12-minutters perioder, svarende til et år i kalenderbaseret tilstand.{}{}I begge tilstande er der altid en klassisk kalender, som bruges til introduktionsdatoer for køretøjer, huse og anden infrastruktur
 ###length 2
 STR_CONFIG_SETTING_TIMEKEEPING_UNITS_CALENDAR                   :Kalender
 STR_CONFIG_SETTING_TIMEKEEPING_UNITS_WALLCLOCK                  :Vægur
 
 STR_CONFIG_SETTING_MINUTES_PER_YEAR                             :Minutter om året: {STRING}
-STR_CONFIG_SETTING_MINUTES_PER_YEAR_HELPTEXT                    :Vælg antallet af minutter i et kalenderår. Standard er 12 minutter. Indstil til 0 for at forhindre kalendertiden i at ændre sig. Denne indstilling påvirker ikke den økonomiske simulering af spillet og er kun tilgængelig, når du bruger vægurs tidtagning.
+STR_CONFIG_SETTING_MINUTES_PER_YEAR_HELPTEXT                    :Vælg antallet af minutter i et kalenderår. Standard er 12 minutter. Indstil til 0 for at forhindre kalendertiden i at ændre sig. Denne indstilling påvirker ikke den økonomiske simulering af spillet og er kun tilgængelig, når du bruger vægurs tidtagning
 
 STR_CONFIG_SETTING_MINUTES_PER_YEAR_VALUE                       :{NUM}
 ###setting-zero-is-special
 STR_CONFIG_SETTING_MINUTES_PER_YEAR_FROZEN                      :0 (kalendertid frosset)
 
 STR_CONFIG_SETTING_TOWN_CARGO_SCALE                             :Skala bygodsproduktion: {STRING}
-STR_CONFIG_SETTING_TOWN_CARGO_SCALE_HELPTEXT                    :Skaler byernes godsproduktion med denne procentdel.
+STR_CONFIG_SETTING_TOWN_CARGO_SCALE_HELPTEXT                    :Skaler byernes godsproduktion med denne procentdel
 STR_CONFIG_SETTING_INDUSTRY_CARGO_SCALE                         :Skaler industri gods produktion: {STRING}
-STR_CONFIG_SETTING_INDUSTRY_CARGO_SCALE_HELPTEXT                :Skaler industriens gods produktion med denne procentdel.
+STR_CONFIG_SETTING_INDUSTRY_CARGO_SCALE_HELPTEXT                :Skaler industriens gods produktion med denne procentdel
 STR_CONFIG_SETTING_CARGO_SCALE_VALUE                            :{NUM}%
 
 STR_CONFIG_SETTING_AUTORENEW_VEHICLE                            :Automatisk fornyelse af gamle køretøjer: {STRING}
@@ -1529,7 +1529,7 @@ STR_CONFIG_SETTING_ERRMSG_DURATION                              :Varighed af fej
 STR_CONFIG_SETTING_ERRMSG_DURATION_HELPTEXT                     :Varighed for visning fejlmeddelelser i en rød vindue. Bemærk, at nogle (kritisk) fejlmeddelelser ikke lukkes automatisk efter dette tidspunkt, men skal lukkes manuelt
 
 STR_CONFIG_SETTING_HOVER_DELAY                                  :Vis værktøjstip: {STRING}
-STR_CONFIG_SETTING_HOVER_DELAY_HELPTEXT                         :Forsinkelse inden tooltips vises, når musen føres over nogle den grænseflade . Alternativt tooltips er bundet til den højre museknap, når denne værdi er sat til 0.
+STR_CONFIG_SETTING_HOVER_DELAY_HELPTEXT                         :Forsinkelse inden tooltips vises, når musen føres over nogle den grænseflade . Alternativt tooltips er bundet til den højre museknap, når denne værdi er sat til 0
 STR_CONFIG_SETTING_HOVER_DELAY_VALUE                            :Hold markøren i {COMMA} sekund{P 0 "" er}
 ###setting-zero-is-special
 STR_CONFIG_SETTING_HOVER_DELAY_DISABLED                         :Højre klik
@@ -1541,7 +1541,7 @@ STR_CONFIG_SETTING_GRAPH_LINE_THICKNESS                         :Linjetykkelse i
 STR_CONFIG_SETTING_GRAPH_LINE_THICKNESS_HELPTEXT                :Bredde af linjerne i graferne. En tynd linie er mere læsbar, en tykkere linje er nemmere at se og det er lettere at skelne mellem farverne
 
 STR_CONFIG_SETTING_SHOW_NEWGRF_NAME                             :Vis navn på NewGRF i byg fartøj vinduet: {STRING}
-STR_CONFIG_SETTING_SHOW_NEWGRF_NAME_HELPTEXT                    :Tilføjer en linje til byg fartøj vinduet som viser, hvilken NewGRF det valgte fartøj stammer fra.
+STR_CONFIG_SETTING_SHOW_NEWGRF_NAME_HELPTEXT                    :Tilføjer en linje til byg fartøj vinduet som viser, hvilken NewGRF det valgte fartøj stammer fra
 STR_CONFIG_SETTING_SHOW_CARGO_IN_LISTS                          :Vis de laster, køretøjerne kan bære i listevinduerne: {STRING}
 STR_CONFIG_SETTING_SHOW_CARGO_IN_LISTS_HELPTEXT                 :Hvis det er aktiveret, vises køretøjets transportable last over det på køretøjslisterne
 
@@ -1561,13 +1561,13 @@ STR_CONFIG_SETTING_INDUSTRY_DENSITY                             :Industri tæthe
 STR_CONFIG_SETTING_INDUSTRY_DENSITY_HELPTEXT                    :Angiv hvor mange industrier skal genereres og hvilket niveau der bevares i løbet af spillet
 
 STR_CONFIG_SETTING_OIL_REF_EDGE_DISTANCE                        :Maksimal afstand fra kant til olieindustrier: {STRING}
-STR_CONFIG_SETTING_OIL_REF_EDGE_DISTANCE_HELPTEXT               :Grænse for hvor langt fra kortets kant olieraffinaderier kan blive bygget. På ø-kort sikrer dette at de er nær kysten. På kort større end 256 felter bliver denne værdi automatisk skaleret op.
+STR_CONFIG_SETTING_OIL_REF_EDGE_DISTANCE_HELPTEXT               :Grænse for hvor langt fra kortets kant olieraffinaderier kan blive bygget. På ø-kort sikrer dette at de er nær kysten. På kort større end 256 felter bliver denne værdi automatisk skaleret op
 
 STR_CONFIG_SETTING_SNOWLINE_HEIGHT                              :Snelinjehøjden: {STRING}
 STR_CONFIG_SETTING_SNOWLINE_HEIGHT_HELPTEXT                     :Vælg, i hvilken højde sneen starter i det subarktiske landskab. Sne påvirker også industriproduktion og byvækstkrav. Kan kun ændres via Scenario Editor eller på anden måde beregnes via "snedækning"
 
 STR_CONFIG_SETTING_SNOW_COVERAGE                                :Snedække: {STRING}
-STR_CONFIG_SETTING_SNOW_COVERAGE_HELPTEXT                       :Vælg den omtrentlige mængde sne på det subarktiske landskab. Sne påvirker også industriproduktion og byvækstkrav. Bruges kun under kortgenerering. Havniveau og kystfliser har aldrig sne.
+STR_CONFIG_SETTING_SNOW_COVERAGE_HELPTEXT                       :Vælg den omtrentlige mængde sne på det subarktiske landskab. Sne påvirker også industriproduktion og byvækstkrav. Bruges kun under kortgenerering. Havniveau og kystfliser har aldrig sne
 STR_CONFIG_SETTING_SNOW_COVERAGE_VALUE                          :{NUM}%
 
 STR_CONFIG_SETTING_DESERT_COVERAGE                              :Ørkendækning: {STRING}
@@ -1583,7 +1583,7 @@ STR_CONFIG_SETTING_ROUGHNESS_OF_TERRAIN_ROUGH                   :Råt
 STR_CONFIG_SETTING_ROUGHNESS_OF_TERRAIN_VERY_ROUGH              :Meget råt
 
 STR_CONFIG_SETTING_VARIETY                                      :Forskelligheds fordeling: {STRING}
-STR_CONFIG_SETTING_VARIETY_HELPTEXT                             :Vælg om kortet indeholder både bjerge og flade områder. Jo højere sorten er, jo flere højdeforskelle mellem bjergrige og flade områder.
+STR_CONFIG_SETTING_VARIETY_HELPTEXT                             :Vælg om kortet indeholder både bjerge og flade områder. Jo højere sorten er, jo flere højdeforskelle mellem bjergrige og flade områder
 
 STR_CONFIG_SETTING_RIVER_AMOUNT                                 :Floder antal: {STRING}
 STR_CONFIG_SETTING_RIVER_AMOUNT_HELPTEXT                        :Vælg, hvor mange floder at skabe
@@ -1754,7 +1754,7 @@ STR_CONFIG_SETTING_AUTO_REMOVE_SIGNALS                          :Fjern automatis
 STR_CONFIG_SETTING_AUTO_REMOVE_SIGNALS_HELPTEXT                 :Fjerner automatisk signaler under jernbane-bygning, hvis signalerne er i vejen. Bemærk at dette potentielt kan føre til togsammenstød
 
 STR_CONFIG_SETTING_FAST_FORWARD_SPEED_LIMIT                     :Hurtig kørsel hastighedsgrænse: {STRING}
-STR_CONFIG_SETTING_FAST_FORWARD_SPEED_LIMIT_HELPTEXT            :Begrænser hvor hurtigt spillet kører, når hurtig kørsel er aktiveret. 0 = ingen grænse (så hurtigt som din computer er i stand til.) Værdier under 100% sænker spillets hastighed. Den øvre grænse afhænger af din computers specifikationer og kan variere afhængig af spillet.
+STR_CONFIG_SETTING_FAST_FORWARD_SPEED_LIMIT_HELPTEXT            :Begrænser hvor hurtigt spillet kører, når hurtig kørsel er aktiveret. 0 = ingen grænse (så hurtigt som din computer er i stand til.) Værdier under 100% sænker spillets hastighed. Den øvre grænse afhænger af din computers specifikationer og kan variere afhængig af spillet
 STR_CONFIG_SETTING_FAST_FORWARD_SPEED_LIMIT_VAL                 :{NUM}% normal simulationshastighed
 ###setting-zero-is-special
 STR_CONFIG_SETTING_FAST_FORWARD_SPEED_LIMIT_ZERO                :Ingen grænse (så hurtigt din computer er i stand til)
@@ -1818,11 +1818,11 @@ STR_CONFIG_SETTING_AI_IN_MULTIPLAYER_HELPTEXT                   :Tillad computer
 STR_CONFIG_SETTING_SCRIPT_MAX_OPCODES                           :#opcodes før scriptet bliver stoppet: {STRING}
 STR_CONFIG_SETTING_SCRIPT_MAX_OPCODES_HELPTEXT                  :Maximale nummer af udregninger et script kan eksekvere i en tur
 STR_CONFIG_SETTING_SCRIPT_MAX_MEMORY                            :Maks hukommelsesforbrug per script: {STRING}
-STR_CONFIG_SETTING_SCRIPT_MAX_MEMORY_HELPTEXT                   :Hvor meget hukommelse et enkelt script må anvende før det bliver tvungent afbrudt. Det kan være nødvendigt at forøge dette for spil på store kort.
+STR_CONFIG_SETTING_SCRIPT_MAX_MEMORY_HELPTEXT                   :Hvor meget hukommelse et enkelt script må anvende før det bliver tvungent afbrudt. Det kan være nødvendigt at forøge dette for spil på store kort
 STR_CONFIG_SETTING_SCRIPT_MAX_MEMORY_VALUE                      :{COMMA} MiB
 
 STR_CONFIG_SETTING_SERVINT_ISPERCENT                            :Service intervaller er i procent: {STRING}
-STR_CONFIG_SETTING_SERVINT_ISPERCENT_HELPTEXT                   :Når den er aktiveret, forsøger køretøjer at servicere, når deres pålidelighed falder med en given procentdel af den maksimale pålidelighed.Hvis f.eks. et køretøjs maksimale pålidelighed er 90 %, og serviceintervallet er 20 %, vil køretøjet forsøge at servicere, når den når 72 % pålidelighed.
+STR_CONFIG_SETTING_SERVINT_ISPERCENT_HELPTEXT                   :Når den er aktiveret, forsøger køretøjer at servicere, når deres pålidelighed falder med en given procentdel af den maksimale pålidelighed.{}{}Hvis f.eks. et køretøjs maksimale pålidelighed er 90 %, og serviceintervallet er 20 %, vil køretøjet forsøge at servicere, når den når 72 % pålidelighed
 
 STR_CONFIG_SETTING_SERVINT_TRAINS                               :Standard vedligeholdelses interval for tog: {STRING}
 STR_CONFIG_SETTING_SERVINT_TRAINS_HELPTEXT                      :Sæt serviceintervallets standardværdi for nye skinnekøretøjer.
@@ -1840,7 +1840,7 @@ STR_CONFIG_SETTING_NOSERVICE                                    :Slå service fr
 STR_CONFIG_SETTING_NOSERVICE_HELPTEXT                           :Når tilladt, bliver køretøjer ikke serviceret, hvis de ikke kan bryde ned
 
 STR_CONFIG_SETTING_STATION_LENGTH_LOADING_PENALTY               :Læsningshastighedsstraf for tog, der er længere end stationen: {STRING}
-STR_CONFIG_SETTING_STATION_LENGTH_LOADING_PENALTY_HELPTEXT      :Når den er aktiveret, læsser et tog, der er for lange til stationen, langsommere end et tog, der passer til stationen. Denne indstilling påvirker ikke stifinding.
+STR_CONFIG_SETTING_STATION_LENGTH_LOADING_PENALTY_HELPTEXT      :Når den er aktiveret, læsser et tog, der er for lange til stationen, langsommere end et tog, der passer til stationen. Denne indstilling påvirker ikke stifinding
 
 STR_CONFIG_SETTING_WAGONSPEEDLIMITS                             :Aktiver hastighedsbegrænsning for vogne: {STRING}
 STR_CONFIG_SETTING_WAGONSPEEDLIMITS_HELPTEXT                    :Når tilladt, brug også fartgrænse på vogne, for at bestemme makshastigheden på tog
@@ -1905,13 +1905,13 @@ STR_CONFIG_SETTING_COLOURED_NEWS_YEAR_HELPTEXT                  :Året hvor nyhe
 STR_CONFIG_SETTING_STARTING_YEAR                                :Start dato: {STRING}
 
 STR_CONFIG_SETTING_ENDING_YEAR                                  :Slutår for pointoptælling: {STRING}
-STR_CONFIG_SETTING_ENDING_YEAR_HELPTEXT                         :Årstal hvor spillet slutter pointoptælling. Ved slutningen af dette år bliver selskabets point optaget, og topresultater-skærmen bliver vist. Spillerne kan fortsætte med at spille efter dette.{}Hvis dette er før spillets start år, bliver topresultater-skærmen aldrig vist.
+STR_CONFIG_SETTING_ENDING_YEAR_HELPTEXT                         :Årstal hvor spillet slutter pointoptælling. Ved slutningen af dette år bliver selskabets point optaget, og topresultater-skærmen bliver vist. Spillerne kan fortsætte med at spille efter dette.{}Hvis dette er før spillets start år, bliver topresultater-skærmen aldrig vist
 STR_CONFIG_SETTING_ENDING_YEAR_VALUE                            :{NUM}
 ###setting-zero-is-special
 STR_CONFIG_SETTING_ENDING_YEAR_ZERO                             :Aldrig
 
 STR_CONFIG_SETTING_ECONOMY_TYPE                                 :Økonomitype: {STRING}
-STR_CONFIG_SETTING_ECONOMY_TYPE_HELPTEXT                        :Udjævnet økonomi ændrer produktionsniveauet oftere, og i mindre trin. Frossen økonomi forhindrer ændringer i produktionsniveauet og industrilukninger. Denne indstilling kan muligvis ikke have nogen effekt hvis industrityperne stammer fra en NewGRF.
+STR_CONFIG_SETTING_ECONOMY_TYPE_HELPTEXT                        :Udjævnet økonomi ændrer produktionsniveauet oftere, og i mindre trin. Frossen økonomi forhindrer ændringer i produktionsniveauet og industrilukninger. Denne indstilling kan muligvis ikke have nogen effekt hvis industrityperne stammer fra en NewGRF
 ###length 3
 STR_CONFIG_SETTING_ECONOMY_TYPE_ORIGINAL                        :Original
 STR_CONFIG_SETTING_ECONOMY_TYPE_SMOOTH                          :Udjævnet
@@ -1966,7 +1966,7 @@ STR_CONFIG_SETTING_TOWN_FOUNDING_ALLOWED                        :Tilladt
 STR_CONFIG_SETTING_TOWN_FOUNDING_ALLOWED_CUSTOM_LAYOUT          :Tilladt, tilpasset by-layout
 
 STR_CONFIG_SETTING_TOWN_CARGOGENMODE                            :Godsgenerering i byer: {STRING}
-STR_CONFIG_SETTING_TOWN_CARGOGENMODE_HELPTEXT                   :Hvor meget gods der bliver produceret af byers bygninger, i forhold til byens samlede indbyggertal.{}Kvadratisk vækst: En by med dobbelt indbyggertal genererer fire gange så mange passagerer.{}Lineær vækst: En by med dobbelt indbyggertal genererer dobbelt så mange passagerer.
+STR_CONFIG_SETTING_TOWN_CARGOGENMODE_HELPTEXT                   :Hvor meget gods der bliver produceret af byers bygninger, i forhold til byens samlede indbyggertal.{}Kvadratisk vækst: En by med dobbelt indbyggertal genererer fire gange så mange passagerer.{}Lineær vækst: En by med dobbelt indbyggertal genererer dobbelt så mange passagerer
 ###length 2
 STR_CONFIG_SETTING_TOWN_CARGOGENMODE_ORIGINAL                   :Kvadratisk (original)
 STR_CONFIG_SETTING_TOWN_CARGOGENMODE_BITCOUNT                   :Lineær
@@ -2007,7 +2007,7 @@ STR_CONFIG_SETTING_ZOOM_LVL_OUT_4X                              :4x
 STR_CONFIG_SETTING_ZOOM_LVL_OUT_8X                              :8x
 
 STR_CONFIG_SETTING_SPRITE_ZOOM_MIN                              :Højeste sprite-opløsning der må anvendes: {STRING}
-STR_CONFIG_SETTING_SPRITE_ZOOM_MIN_HELPTEXT                     :Begrænser den maksimale opløsning for sprites. Denne begrænsning vil forhindre brug af højopløsningsgrafik selv når den er tilgængelig. Dette kan bevare en ensartet fremtoning af spillet når der er en blanding af GRF filer med og uden højopløsningsgrafik.
+STR_CONFIG_SETTING_SPRITE_ZOOM_MIN_HELPTEXT                     :Begrænser den maksimale opløsning for sprites. Denne begrænsning vil forhindre brug af højopløsningsgrafik selv når den er tilgængelig. Dette kan bevare en ensartet fremtoning af spillet når der er en blanding af GRF filer med og uden højopløsningsgrafik
 ###length 3
 STR_CONFIG_SETTING_SPRITE_ZOOM_LVL_MIN                          :4x
 STR_CONFIG_SETTING_SPRITE_ZOOM_LVL_IN_2X                        :2x
@@ -2036,7 +2036,7 @@ STR_CONFIG_SETTING_LINKGRAPH_RECALC_TIME                        :Tag {STRING}{NB
 STR_CONFIG_SETTING_LINKGRAPH_RECALC_TIME_HELPTEXT               :Tid det tager for hver genberegning af en linkgrafkomponent. Når en genberegning startes, dannes en tråd, som får lov til at køre i dette antal sekunder. Jo kortere du indstiller dette, jo mere sandsynligt er det, at tråden ikke er færdig, når den skal. Så stopper spillet, indtil det er ("lag"). Jo længere du indstiller det, jo længere tid tager det for distributionen at blive opdateret, når ruter ændres
 
 STR_CONFIG_SETTING_DISTRIBUTION_PAX                             :Distributionsmodel for passagerer: {STRING}
-STR_CONFIG_SETTING_DISTRIBUTION_PAX_HELPTEXT                    :"Symmetrisk" betyder, at omtrent det samme antal passagerer vil gå fra en station A til en station B som fra B til A. "Asymmetrisk" betyder, at vilkårlige antal passagerer kan gå i begge retninger. "Manuel" betyder, at der ikke finder nogen automatisk distribution sted for passagerer.
+STR_CONFIG_SETTING_DISTRIBUTION_PAX_HELPTEXT                    :"Symmetrisk" betyder, at omtrent det samme antal passagerer vil gå fra en station A til en station B som fra B til A. "Asymmetrisk" betyder, at vilkårlige antal passagerer kan gå i begge retninger. "Manuel" betyder, at der ikke finder nogen automatisk distribution sted for passagerer
 STR_CONFIG_SETTING_DISTRIBUTION_MAIL                            :Distributionsmodel for post: {STRING}
 STR_CONFIG_SETTING_DISTRIBUTION_MAIL_HELPTEXT                   :"symmetrisk" betyder, at der sendes omtrent den samme mængde post fra en station A til en station B som fra B til A. "asymmetrisk" betyder, at vilkårlige mængder post kan sendes i begge retninger. "Manuel" betyder, at der ikke finder automatisk distribution sted for post
 STR_CONFIG_SETTING_DISTRIBUTION_ARMOURED                        :Distributionsmodel for PANSRET last-klasse: {STRING}
@@ -2052,12 +2052,12 @@ STR_CONFIG_SETTING_LINKGRAPH_ACCURACY                           :Distributionsn�
 STR_CONFIG_SETTING_LINKGRAPH_ACCURACY_HELPTEXT                  :Jo højere du sætter denne indstilling, jo mere CPU-tid vil beregningen af forbindelsesgrafen tage. Hvis den tager for længe, kan du opleve lag. Hvis du derimod sætter indstillingen til en lav værdi, vil distributionen være unøjagtig, og du kan opleve last ikke blive sendt til de steder, du forventer
 
 STR_CONFIG_SETTING_DEMAND_DISTANCE                              :Effekt af afstand på efterspørgsel: {STRING}
-STR_CONFIG_SETTING_DEMAND_DISTANCE_HELPTEXT                     :Hvis du sætter denne indstilling til en værdi større end 0, vil afstanden mellem oprindelsesstation A for noget last og en mulig destination B have en effekt på mængden af last sendt fra A til B. Jo længere væk B er fra A, jo mindre last vil blive sendt. Jo højere du sætter denne indstilling, jo mindre last vil blive sendt til fjerne stationer, og jo mere last vil blive sendt til nærliggende stationer.
+STR_CONFIG_SETTING_DEMAND_DISTANCE_HELPTEXT                     :Hvis du sætter denne indstilling til en værdi større end 0, vil afstanden mellem oprindelsesstation A for noget last og en mulig destination B have en effekt på mængden af last sendt fra A til B. Jo længere væk B er fra A, jo mindre last vil blive sendt. Jo højere du sætter denne indstilling, jo mindre last vil blive sendt til fjerne stationer, og jo mere last vil blive sendt til nærliggende stationer
 STR_CONFIG_SETTING_DEMAND_SIZE                                  :Mængde returnerende last for symmetrisk model: {STRING}
-STR_CONFIG_SETTING_DEMAND_SIZE_HELPTEXT                         :Ved at sætte denne indstilling til mindre end 100%, opfører den symmetriske distribution sig mere som den asymmetriske. Mindre last vil blive tvunget sendt tilbage hvis en bestemt mængde er blevet sendt til en station. Hvis du sætter denne indstilling til 0%, vil den symmetriske distribution opfører sig ligesom den asymmetriske.
+STR_CONFIG_SETTING_DEMAND_SIZE_HELPTEXT                         :Ved at sætte denne indstilling til mindre end 100%, opfører den symmetriske distribution sig mere som den asymmetriske. Mindre last vil blive tvunget sendt tilbage hvis en bestemt mængde er blevet sendt til en station. Hvis du sætter denne indstilling til 0%, vil den symmetriske distribution opfører sig ligesom den asymmetriske
 
 STR_CONFIG_SETTING_SHORT_PATH_SATURATION                        :Mætning af korte veje før brug af veje med høj kapacitet: {STRING}
-STR_CONFIG_SETTING_SHORT_PATH_SATURATION_HELPTEXT               :Der er ofte flere veje mellem to givne stationer. Cargodist vil mætte den korteste vej først, så bruge den næstkorteste vej indtil den er mættet, osv.. Mætning bestemmes af en vurdering af kapacitet og planlagt brug. Når den har mættet alle veje, og hvis der stadig er efterspørgsel tilbage, vil den overbelaste alle veje, og foretrække vejene med høj kapacitet. Det meste af tiden vil algoritmen dog ikke vurdere kapaciteten nøjagtigt. Denne indstilling giver dig mulighed for at bestemme op til hvilken procentdel en kortere vej skal være mættet i første omgang før den næste, længere vej vælges. Sæt denne indstilling til mindre end 100% for at undgå overfyldte stationer i tilfælde af overvurderet kapacitet.
+STR_CONFIG_SETTING_SHORT_PATH_SATURATION_HELPTEXT               :Der er ofte flere veje mellem to givne stationer. Cargodist vil mætte den korteste vej først, så bruge den næstkorteste vej indtil den er mættet, osv.. Mætning bestemmes af en vurdering af kapacitet og planlagt brug. Når den har mættet alle veje, og hvis der stadig er efterspørgsel tilbage, vil den overbelaste alle veje, og foretrække vejene med høj kapacitet. Det meste af tiden vil algoritmen dog ikke vurdere kapaciteten nøjagtigt. Denne indstilling giver dig mulighed for at bestemme op til hvilken procentdel en kortere vej skal være mættet i første omgang før den næste, længere vej vælges. Sæt denne indstilling til mindre end 100% for at undgå overfyldte stationer i tilfælde af overvurderet kapacitet
 
 STR_CONFIG_SETTING_LOCALISATION_UNITS_VELOCITY                  :Hastighedsenheder: {STRING}
 STR_CONFIG_SETTING_LOCALISATION_UNITS_VELOCITY_NAUTICAL         :Hastighedsenheder (nautisk): {STRING}
@@ -2979,9 +2979,9 @@ STR_TREES_RANDOM_TYPE_TOOLTIP                                   :{BLACK}Placer t
 STR_TREES_RANDOM_TREES_BUTTON                                   :{BLACK}Tilfældige træer
 STR_TREES_RANDOM_TREES_TOOLTIP                                  :{BLACK}Plant træer tilfældigt i landskabet
 STR_TREES_MODE_NORMAL_BUTTON                                    :{BLACK}Normal
-STR_TREES_MODE_NORMAL_TOOLTIP                                   :{BLACK}Plant individuelle træer ved at trække hen over landskabet.
+STR_TREES_MODE_NORMAL_TOOLTIP                                   :{BLACK}Plant individuelle træer ved at trække hen over landskabet
 STR_TREES_MODE_FOREST_SM_BUTTON                                 :{BLACK}Lund
-STR_TREES_MODE_FOREST_SM_TOOLTIP                                :{BLACK}Plant små skove ved at trække hen over landskabet.
+STR_TREES_MODE_FOREST_SM_TOOLTIP                                :{BLACK}Plant små skove ved at trække hen over landskabet
 STR_TREES_MODE_FOREST_LG_BUTTON                                 :{BLACK}Skov
 STR_TREES_MODE_FOREST_LG_TOOLTIP                                :{BLACK}Plant store skove ved at trække hen over landskabet
 
@@ -3198,9 +3198,9 @@ STR_ABOUT_COPYRIGHT_OPENTTD                                     :{BLACK}OpenTTD 
 STR_FRAMERATE_CAPTION                                           :{WHITE}Billedhastighed
 STR_FRAMERATE_CAPTION_SMALL                                     :{STRING}{WHITE} ({DECIMAL}x)
 STR_FRAMERATE_RATE_GAMELOOP                                     :{BLACK}Simulationshastighed: {STRING}
-STR_FRAMERATE_RATE_GAMELOOP_TOOLTIP                             :{BLACK}Antal spil-trin simuleret i sekundet.
+STR_FRAMERATE_RATE_GAMELOOP_TOOLTIP                             :{BLACK}Antal spil-trin simuleret i sekundet
 STR_FRAMERATE_RATE_BLITTER                                      :{BLACK}Grafik hastighed: {STRING}
-STR_FRAMERATE_RATE_BLITTER_TOOLTIP                              :{BLACK}Antal billeder tegnet i sekundet.
+STR_FRAMERATE_RATE_BLITTER_TOOLTIP                              :{BLACK}Antal billeder tegnet i sekundet
 STR_FRAMERATE_SPEED_FACTOR                                      :{BLACK}Aktuel spilhastighedsfaktor: {DECIMAL}x
 STR_FRAMERATE_SPEED_FACTOR_TOOLTIP                              :{BLACK}Hvor hurtigt spillet aktuelt kører, i forhold til det forventede ved normal simulationshastighed
 STR_FRAMERATE_CURRENT                                           :{WHITE}Aktuel
@@ -3731,7 +3731,7 @@ STR_STORY_BOOK_SPECTATOR_CAPTION                                :{WHITE}Global H
 STR_STORY_BOOK_SPECTATOR                                        :Global Historiebog
 STR_STORY_BOOK_TITLE                                            :{YELLOW}{STRING}
 STR_STORY_BOOK_GENERIC_PAGE_ITEM                                :Side {NUM}
-STR_STORY_BOOK_SEL_PAGE_TOOLTIP                                 :{BLACK}Gå til en bestemt side ved at vælge den i denne rulleliste.
+STR_STORY_BOOK_SEL_PAGE_TOOLTIP                                 :{BLACK}Gå til en bestemt side ved at vælge den i denne rulleliste
 STR_STORY_BOOK_PREV_PAGE                                        :{BLACK}Forrige
 STR_STORY_BOOK_PREV_PAGE_TOOLTIP                                :{BLACK}Gå til forrige side
 STR_STORY_BOOK_NEXT_PAGE                                        :{BLACK}Næste
@@ -4031,7 +4031,7 @@ STR_GROUP_CREATE_TOOLTIP                                        :{BLACK}Klik for
 STR_GROUP_DELETE_TOOLTIP                                        :{BLACK}Slet den valgte gruppe
 STR_GROUP_RENAME_TOOLTIP                                        :{BLACK}Omdøb den valgte gruppe
 STR_GROUP_LIVERY_TOOLTIP                                        :{BLACK}Skift farvetema for den valgte gruppe
-STR_GROUP_REPLACE_PROTECTION_TOOLTIP                            :{BLACK}Klik for at beskytte denne gruppe mod global auto-udskiftning Ctrl+klik beskytter også undergrupper.
+STR_GROUP_REPLACE_PROTECTION_TOOLTIP                            :{BLACK}Klik for at beskytte denne gruppe mod global auto-udskiftning Ctrl+klik beskytter også undergrupper
 
 STR_QUERY_GROUP_DELETE_CAPTION                                  :{WHITE}Slet gruppe
 STR_GROUP_DELETE_QUERY_TEXT                                     :{WHITE}Er du sikker på at du vil slette denne gruppe og eventuelle under grupper?

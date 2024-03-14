@@ -480,7 +480,7 @@ STR_SUBSIDIES_MENU_SUBSIDIES                                    :Subsídios
 # Graph menu
 STR_GRAPH_MENU_OPERATING_PROFIT_GRAPH                           :Gráfico do lucro operacional
 STR_GRAPH_MENU_INCOME_GRAPH                                     :Gráfico de rendimentos
-STR_GRAPH_MENU_DELIVERED_CARGO_GRAPH                            :Gráfico das cargas entregues
+STR_GRAPH_MENU_DELIVERED_CARGO_GRAPH                            :Gráfico da carga entregada
 STR_GRAPH_MENU_PERFORMANCE_HISTORY_GRAPH                        :Gráfico do histórico de desempenho
 STR_GRAPH_MENU_COMPANY_VALUE_GRAPH                              :Gráfico do valor da empresa
 STR_GRAPH_MENU_CARGO_PAYMENT_RATES                              :Receitas por carga
@@ -608,7 +608,7 @@ STR_GRAPH_Y_LABEL_NUMBER                                        :{TINY_FONT}{COM
 
 STR_GRAPH_OPERATING_PROFIT_CAPTION                              :{WHITE}Gráfico do Lucro Operacional
 STR_GRAPH_INCOME_CAPTION                                        :{WHITE}Gráfico de Rendimentos
-STR_GRAPH_CARGO_DELIVERED_CAPTION                               :{WHITE}Unidades de carga entregues
+STR_GRAPH_CARGO_DELIVERED_CAPTION                               :{WHITE}Unidades de carga entregada
 STR_GRAPH_COMPANY_PERFORMANCE_RATINGS_CAPTION                   :{WHITE}Classificações do desempenho da empresa (máximo=1000)
 STR_GRAPH_COMPANY_VALUES_CAPTION                                :{WHITE}Gráfico de Valor da Empresa
 
@@ -651,7 +651,7 @@ STR_PERFORMANCE_DETAIL_KEY                                      :{BLACK}Detalhes
 STR_PERFORMANCE_DETAIL_AMOUNT_CURRENCY                          :{BLACK}({CURRENCY_SHORT}/{CURRENCY_SHORT})
 STR_PERFORMANCE_DETAIL_AMOUNT_INT                               :{BLACK}({COMMA}/{COMMA})
 STR_PERFORMANCE_DETAIL_PERCENT                                  :{WHITE}{NUM}%
-STR_PERFORMANCE_DETAIL_SELECT_COMPANY_TOOLTIP                   :{BLACK}Ver detalhes desta empresa
+STR_PERFORMANCE_DETAIL_SELECT_COMPANY_TOOLTIP                   :{BLACK}Ver detalhes sobre esta empresa
 
 ###length 10
 STR_PERFORMANCE_DETAIL_VEHICLES                                 :{BLACK}Veículos:
@@ -659,7 +659,7 @@ STR_PERFORMANCE_DETAIL_STATIONS                                 :{BLACK}Estaçõ
 STR_PERFORMANCE_DETAIL_MIN_PROFIT                               :{BLACK}Lucro mín.:
 STR_PERFORMANCE_DETAIL_MIN_INCOME                               :{BLACK}Renda mín.:
 STR_PERFORMANCE_DETAIL_MAX_INCOME                               :{BLACK}Renda máx.:
-STR_PERFORMANCE_DETAIL_DELIVERED                                :{BLACK}Entregue:
+STR_PERFORMANCE_DETAIL_DELIVERED                                :{BLACK}Entregado:
 STR_PERFORMANCE_DETAIL_CARGO                                    :{BLACK}Carga:
 STR_PERFORMANCE_DETAIL_MONEY                                    :{BLACK}Dinheiro:
 STR_PERFORMANCE_DETAIL_LOAN                                     :{BLACK}Empréstimo:
@@ -673,8 +673,8 @@ STR_PERFORMANCE_DETAIL_MIN_PROFIT_TOOLTIP_YEARS                 :{BLACK}Lucro do
 STR_PERFORMANCE_DETAIL_MIN_PROFIT_TOOLTIP_PERIODS               :{BLACK}Lucro do veículo com o menor rendimento (apenas veículos com mais de dois períodos são considerados)
 STR_PERFORMANCE_DETAIL_MIN_INCOME_TOOLTIP                       :{BLACK}Quantia de dinheiro obtida no trimestre com o menor lucro dos últimos 12 trimestres
 STR_PERFORMANCE_DETAIL_MAX_INCOME_TOOLTIP                       :{BLACK}Quantia de dinheiro obtida no trimestre com o maior lucro dos últimos 12 trimestres
-STR_PERFORMANCE_DETAIL_DELIVERED_TOOLTIP                        :{BLACK}Unidades de carga entregues nos últimos quatro trimestres
-STR_PERFORMANCE_DETAIL_CARGO_TOOLTIP                            :{BLACK}Número de tipos de carga entregues no último trimestre
+STR_PERFORMANCE_DETAIL_DELIVERED_TOOLTIP                        :{BLACK}Unidades de carga entregada nos últimos quatro trimestres
+STR_PERFORMANCE_DETAIL_CARGO_TOOLTIP                            :{BLACK}Número de tipos de carga entregada no último trimestre
 STR_PERFORMANCE_DETAIL_MONEY_TOOLTIP                            :{BLACK}Quantia de dinheiro que esta empresa tem no banco
 STR_PERFORMANCE_DETAIL_LOAN_TOOLTIP                             :{BLACK}A quantia de dinheiro que esta empresa tomou por empréstimo
 STR_PERFORMANCE_DETAIL_TOTAL_TOOLTIP                            :{BLACK}Total de pontos de pontos possíveis
@@ -900,7 +900,7 @@ STR_NEWS_PLANE_USES_TOO_SHORT_RUNWAY                            :{WHITE}{VEHICLE
 
 STR_NEWS_VEHICLE_IS_GETTING_OLD                                 :{WHITE}{VEHICLE} está ficando velho
 STR_NEWS_VEHICLE_IS_GETTING_VERY_OLD                            :{WHITE}{VEHICLE} está ficando muito velho
-STR_NEWS_VEHICLE_IS_GETTING_VERY_OLD_AND                        :{WHITE}{VEHICLE} está ficando muito velho e necessita urgentemente de substituição
+STR_NEWS_VEHICLE_IS_GETTING_VERY_OLD_AND                        :{WHITE}{VEHICLE} está ficando muito velho e necessita urgentemente ser substituído
 STR_NEWS_TRAIN_IS_STUCK                                         :{WHITE}{VEHICLE} não consegue encontrar um caminho para continuar
 STR_NEWS_VEHICLE_IS_LOST                                        :{WHITE}{VEHICLE} está perdido
 STR_NEWS_VEHICLE_UNPROFITABLE_YEAR                              :{WHITE}{VEHICLE} gerou um lucro de {CURRENCY_LONG} no último ano
@@ -2145,7 +2145,7 @@ STR_CONFIG_SETTING_REVERSE_AT_SIGNALS_HELPTEXT                  :Permitir que os
 STR_CONFIG_SETTING_PATHFINDER_NPF                               :NPF
 STR_CONFIG_SETTING_PATHFINDER_YAPF                              :YAPF {BLUE}(Recomendado)
 
-STR_CONFIG_SETTING_QUERY_CAPTION                                :{WHITE}Alterar valor da definição
+STR_CONFIG_SETTING_QUERY_CAPTION                                :{WHITE}Alterar valor da configuração
 
 # Config errors
 STR_CONFIG_ERROR                                                :{WHITE}Erro no arquivo de configuração...
@@ -2486,8 +2486,8 @@ STR_NETWORK_CLIENT_LIST_PLAYER_NAME                             :{BLACK}Nome
 STR_NETWORK_CLIENT_LIST_PLAYER_NAME_TOOLTIP                     :{BLACK}Seu nome de jogador
 STR_NETWORK_CLIENT_LIST_PLAYER_NAME_EDIT_TOOLTIP                :{BLACK}Editar o seu nome de jogador
 STR_NETWORK_CLIENT_LIST_PLAYER_NAME_QUERY_CAPTION               :Seu nome de jogador
-STR_NETWORK_CLIENT_LIST_ADMIN_CLIENT_TOOLTIP                    :{BLACK}Ações administrativas para executar neste cliente
-STR_NETWORK_CLIENT_LIST_ADMIN_COMPANY_TOOLTIP                   :{BLACK}Ações administrativas para executar nesta empresa
+STR_NETWORK_CLIENT_LIST_ADMIN_CLIENT_TOOLTIP                    :{BLACK}Ações administrativas para aplicar neste cliente
+STR_NETWORK_CLIENT_LIST_ADMIN_COMPANY_TOOLTIP                   :{BLACK}Ações administrativas para aplicar nesta empresa
 STR_NETWORK_CLIENT_LIST_JOIN_TOOLTIP                            :{BLACK}Juntar-se a esta empresa
 STR_NETWORK_CLIENT_LIST_CHAT_CLIENT_TOOLTIP                     :{BLACK}Enviar uma mensagem a este jogador
 STR_NETWORK_CLIENT_LIST_CHAT_COMPANY_TOOLTIP                    :{BLACK}Enviar uma mensagem a todos os jogadores desta empresa
@@ -3260,14 +3260,14 @@ STR_SAVELOAD_SAVE_SCENARIO                                      :{WHITE}Salvar C
 STR_SAVELOAD_LOAD_SCENARIO                                      :{WHITE}Abrir Cenário
 STR_SAVELOAD_LOAD_HEIGHTMAP                                     :{WHITE}Abrir mapa topográfico
 STR_SAVELOAD_SAVE_HEIGHTMAP                                     :{WHITE}Salvar mapa topográfico
-STR_SAVELOAD_HOME_BUTTON                                        :{BLACK}Clique aqui para acessar o diretório padrão atual onde salvar/carregar jogos
+STR_SAVELOAD_HOME_BUTTON                                        :{BLACK}Acessar o diretório padrão atual onde salvar/abrir jogos
 STR_SAVELOAD_BYTES_FREE                                         :{BLACK}{BYTES} livres
 STR_SAVELOAD_LIST_TOOLTIP                                       :{BLACK}Lista de unidades, diretórios e arquivos de jogos gravados
 STR_SAVELOAD_EDITBOX_TOOLTIP                                    :{BLACK}Nome selecionado para salvar o jogo
 STR_SAVELOAD_DELETE_BUTTON                                      :{BLACK}Apagar
 STR_SAVELOAD_DELETE_TOOLTIP                                     :{BLACK}Apagar o jogo salvo selecionado
 STR_SAVELOAD_SAVE_BUTTON                                        :{BLACK}Salvar
-STR_SAVELOAD_SAVE_TOOLTIP                                       :{BLACK}Salvar o jogo atual, usando o nome escolhido
+STR_SAVELOAD_SAVE_TOOLTIP                                       :{BLACK}Salvar o jogo atual usando o nome escolhido
 STR_SAVELOAD_LOAD_BUTTON                                        :{BLACK}Abrir
 STR_SAVELOAD_LOAD_TOOLTIP                                       :{BLACK}Carregar o jogo selecionado
 STR_SAVELOAD_LOAD_HEIGHTMAP_TOOLTIP                             :{BLACK}Carregar o mapa topográfico selecionado
@@ -3363,7 +3363,7 @@ STR_MAPGEN_HEIGHTMAP_ROTATION                                   :{BLACK}Rotaçã
 STR_MAPGEN_HEIGHTMAP_NAME                                       :{BLACK}Nome do mapa topográfico:
 STR_MAPGEN_HEIGHTMAP_NAME_TOOLTIP                               :{BLACK}O nome do arquivo de imagem do mapa topográfico
 STR_MAPGEN_HEIGHTMAP_SIZE_LABEL                                 :{BLACK}Tamanho:
-STR_MAPGEN_HEIGHTMAP_SIZE_LABEL_TOOLTIP                         :{BLACK}O tamanho da imagem original do mapa topográfico. Para melhores resultados, cada lado deve corresponder a um comprimento de lado de mapa disponível no OpenTTD, tais como 256, 512, 1024, etc.
+STR_MAPGEN_HEIGHTMAP_SIZE_LABEL_TOOLTIP                         :{BLACK}O tamanho da imagem original do mapa topográfico. Para obter melhores resultados, cada lado deve corresponder a um comprimento de lado de mapa disponível no OpenTTD, tais como 256, 512, 1024, etc.
 STR_MAPGEN_HEIGHTMAP_SIZE                                       :{ORANGE}{NUM} x {NUM}
 
 STR_MAPGEN_TERRAIN_TYPE_QUERY_CAPT                              :{WHITE}Altura desejada do pico
@@ -3395,7 +3395,7 @@ STR_GENERATION_WORLD_GENERATION                                 :{BLACK}Geraçã
 STR_GENERATION_RIVER_GENERATION                                 :{BLACK}Geração de rios
 STR_GENERATION_TREE_GENERATION                                  :{BLACK}Geração de árvores
 STR_GENERATION_OBJECT_GENERATION                                :{BLACK}Geração de objetos
-STR_GENERATION_CLEARING_TILES                                   :{BLACK}Geração de área rochosa e irregular
+STR_GENERATION_CLEARING_TILES                                   :{BLACK}Geração de áreas irregulares e rochosas
 STR_GENERATION_SETTINGUP_GAME                                   :{BLACK}Configurando o jogo
 STR_GENERATION_PREPARING_TILELOOP                               :{BLACK}Preparando o terreno
 STR_GENERATION_PREPARING_SCRIPT                                 :{BLACK}Executando o script
@@ -3403,29 +3403,29 @@ STR_GENERATION_PREPARING_GAME                                   :{BLACK}Preparan
 
 # NewGRF settings
 STR_NEWGRF_SETTINGS_CAPTION                                     :{WHITE}Configurações de NewGRF
-STR_NEWGRF_SETTINGS_INFO_TITLE                                  :{WHITE}Informação detalhada de NewGRF
+STR_NEWGRF_SETTINGS_INFO_TITLE                                  :{WHITE}Informação detalhada do NewGRF
 STR_NEWGRF_SETTINGS_ACTIVE_LIST                                 :{WHITE}Arquivos NewGRF ativos
 STR_NEWGRF_SETTINGS_INACTIVE_LIST                               :{WHITE}Arquivos NewGRF inativos
 STR_NEWGRF_SETTINGS_SELECT_PRESET                               :{ORANGE}Selecionar predefinição:
 STR_NEWGRF_FILTER_TITLE                                         :{ORANGE}Filtro:
-STR_NEWGRF_SETTINGS_PRESET_LIST_TOOLTIP                         :{BLACK}Carrega a predefinição selecionada
+STR_NEWGRF_SETTINGS_PRESET_LIST_TOOLTIP                         :{BLACK}Carregar a predefinição selecionada
 STR_NEWGRF_SETTINGS_PRESET_SAVE                                 :{BLACK}Salvar predefinição
 STR_NEWGRF_SETTINGS_PRESET_SAVE_TOOLTIP                         :{BLACK}Salvar a lista atual como uma predefinição
 STR_NEWGRF_SETTINGS_PRESET_DELETE                               :{BLACK}Excluir predefinição
 STR_NEWGRF_SETTINGS_PRESET_DELETE_TOOLTIP                       :{BLACK}Excluir a predefinição selecionada
 STR_NEWGRF_SETTINGS_ADD                                         :{BLACK}Adicionar
-STR_NEWGRF_SETTINGS_ADD_FILE_TOOLTIP                            :{BLACK}Adicionar NewGRF selecionado à sua configuração
+STR_NEWGRF_SETTINGS_ADD_FILE_TOOLTIP                            :{BLACK}Adicionar o arquivo NewGRF selecionado à sua configuração
 STR_NEWGRF_SETTINGS_RESCAN_FILES                                :{BLACK}Procurar arquivos NewGRF
-STR_NEWGRF_SETTINGS_RESCAN_FILES_TOOLTIP                        :{BLACK}Atualiza a lista de NewGRF disponíveis
+STR_NEWGRF_SETTINGS_RESCAN_FILES_TOOLTIP                        :{BLACK}Atualizar a lista de arquivos NewGRF disponíveis
 STR_NEWGRF_SETTINGS_REMOVE                                      :{BLACK}Remover
-STR_NEWGRF_SETTINGS_REMOVE_TOOLTIP                              :{BLACK}Remover NewGRF selecionado da lista
+STR_NEWGRF_SETTINGS_REMOVE_TOOLTIP                              :{BLACK}Remover o arquivo NewGRF selecionado da lista
 STR_NEWGRF_SETTINGS_MOVEUP                                      :{BLACK}Para cima
-STR_NEWGRF_SETTINGS_MOVEUP_TOOLTIP                              :{BLACK}Mover NewGRF selecionado para cima na lista
+STR_NEWGRF_SETTINGS_MOVEUP_TOOLTIP                              :{BLACK}Mover o arquivo NewGRF selecionado para cima na lista
 STR_NEWGRF_SETTINGS_MOVEDOWN                                    :{BLACK}Para baixo
-STR_NEWGRF_SETTINGS_MOVEDOWN_TOOLTIP                            :{BLACK}Mover NewGRF selecionado para baixo na lista
+STR_NEWGRF_SETTINGS_MOVEDOWN_TOOLTIP                            :{BLACK}Mover o arquivo NewGRF selecionado para baixo na lista
 STR_NEWGRF_SETTINGS_UPGRADE                                     :{BLACK}Atualizar
 STR_NEWGRF_SETTINGS_UPGRADE_TOOLTIP                             :{BLACK}Atualizar arquivos NewGRF para os quais você tem uma versão mais recente instalada
-STR_NEWGRF_SETTINGS_FILE_TOOLTIP                                :{BLACK}Uma lista de NewGRF que estão instalados
+STR_NEWGRF_SETTINGS_FILE_TOOLTIP                                :{BLACK}Uma lista de arquivos NewGRF que estão instalados
 
 STR_NEWGRF_SETTINGS_SET_PARAMETERS                              :{BLACK}Definir parâmetros
 STR_NEWGRF_SETTINGS_SHOW_PARAMETERS                             :{BLACK}Mostrar parâmetros
@@ -3456,7 +3456,7 @@ STR_NEWGRF_SETTINGS_INCOMPATIBLE                                :{RED}Incompatí
 
 # NewGRF save preset window
 STR_SAVE_PRESET_CAPTION                                         :{WHITE}Salvar predefinição
-STR_SAVE_PRESET_LIST_TOOLTIP                                    :{BLACK}Lista de predefinições disponíveis, selecione uma para copiá-la como nome para a gravação abaixo
+STR_SAVE_PRESET_LIST_TOOLTIP                                    :{BLACK}Lista de predefinições disponíveis, selecione uma para copiar o nome e usar na gravação abaixo
 STR_SAVE_PRESET_TITLE                                           :{BLACK}Digitar um nome para a predefinição
 STR_SAVE_PRESET_EDITBOX_TOOLTIP                                 :{BLACK}Nome que está selecionado para a gravação da predefinição
 STR_SAVE_PRESET_CANCEL                                          :{BLACK}Cancelar
@@ -3484,16 +3484,16 @@ STR_NEWGRF_INSPECT_CAPTION_OBJECT_AT_OBJECT                     :Objeto
 STR_NEWGRF_INSPECT_CAPTION_OBJECT_AT_RAIL_TYPE                  :Tipo de ferrovia
 STR_NEWGRF_INSPECT_CAPTION_OBJECT_AT_ROAD_TYPE                  :Tipo de estrada
 
-STR_NEWGRF_INSPECT_QUERY_CAPTION                                :{WHITE}Parâmetro da variável 60+x de NewGRF (hexadecimal)
+STR_NEWGRF_INSPECT_QUERY_CAPTION                                :{WHITE}Parâmetro da variável 60+x do NewGRF (hexadecimal)
 
 # Sprite aligner window
 STR_SPRITE_ALIGNER_CAPTION                                      :{WHITE}Alinhando sprite {COMMA} ({STRING})
 STR_SPRITE_ALIGNER_NEXT_BUTTON                                  :{BLACK}Próximo sprite
-STR_SPRITE_ALIGNER_NEXT_TOOLTIP                                 :{BLACK}Ir para o próximo sprite normal, pulando quaisquer sprites falsos/recoloridos/tipo de letra e retornar do último sprite ao primeiro
+STR_SPRITE_ALIGNER_NEXT_TOOLTIP                                 :{BLACK}Ir para o próximo sprite normal, pulando quaisquer sprites falsos/recoloridos/tipo de letra, retornando do último sprite para o primeiro
 STR_SPRITE_ALIGNER_GOTO_BUTTON                                  :{BLACK}Ir para o sprite
 STR_SPRITE_ALIGNER_GOTO_TOOLTIP                                 :{BLACK}Ir para o sprite selecionado. Se o sprite não for um sprite normal, seguir para o próximo sprite normal
 STR_SPRITE_ALIGNER_PREVIOUS_BUTTON                              :{BLACK}Sprite anterior
-STR_SPRITE_ALIGNER_PREVIOUS_TOOLTIP                             :{BLACK}Ir para o sprite normal anterior, pulando quaisquer sprites falsos/recoloridos/tipo de letra e retornar do primeiro sprite ao último
+STR_SPRITE_ALIGNER_PREVIOUS_TOOLTIP                             :{BLACK}Ir para o sprite normal anterior, pulando quaisquer sprites falsos/recoloridos/tipo de letra, retornando do primeiro sprite para o último
 STR_SPRITE_ALIGNER_SPRITE_TOOLTIP                               :{BLACK}Representação do sprite atualmente selecionado. O alinhamento é ignorado ao desenhar este sprite
 STR_SPRITE_ALIGNER_MOVE_TOOLTIP                                 :{BLACK}Move o sprite, alterando os deslocamentos X e Y. Ctrl+Clique para mover o sprite 8 unidades por vez
 
@@ -3525,8 +3525,8 @@ STR_NEWGRF_ERROR_UNSET_SWITCH                                   :{1:STRING} é d
 STR_NEWGRF_ERROR_INVALID_PARAMETER                              :Parâmetro inválido para {1:STRING}: parâmetro {2:STRING} ({3:NUM})
 STR_NEWGRF_ERROR_LOAD_BEFORE                                    :{1:STRING} deve ser carregado antes de {2:STRING}
 STR_NEWGRF_ERROR_LOAD_AFTER                                     :{1:STRING} deve ser carregado depois de {2:STRING}
-STR_NEWGRF_ERROR_OTTD_VERSION_NUMBER                            :{1:STRING} requer OpenTTD versão {2:STRING} ou superior
-STR_NEWGRF_ERROR_AFTER_TRANSLATED_FILE                          :o arquivo GRF que foi desenvolvido para traduzir
+STR_NEWGRF_ERROR_OTTD_VERSION_NUMBER                            :{1:STRING} é para OpenTTD versão {2:STRING} ou superior
+STR_NEWGRF_ERROR_AFTER_TRANSLATED_FILE                          :o arquivo GRF que foi desenvolvido para a tradução
 STR_NEWGRF_ERROR_TOO_MANY_NEWGRFS_LOADED                        :Foram carregados NewGRFs demais
 STR_NEWGRF_ERROR_STATIC_GRF_CAUSES_DESYNC                       :Carregar {1:STRING} como NewGRF estático com {2:STRING} pode causar erro de sincronização
 STR_NEWGRF_ERROR_UNEXPECTED_SPRITE                              :Sprite inesperado (sprite {3:NUM})
@@ -3545,14 +3545,14 @@ STR_NEWGRF_ERROR_INDPROD_CALLBACK                               :Chamada de prod
 STR_NEWGRF_POPUP_CAUTION_CAPTION                                :{WHITE}Cuidado!
 STR_NEWGRF_CONFIRMATION_TEXT                                    :{YELLOW}Você está prestes a fazer alterações em um jogo em execução. Isso pode travar o OpenTTD ou interromper o estado do jogo. Não envie relatórios de erros sobre estas questões.{}Você quer mesmo fazer as alterações?
 
-STR_NEWGRF_DUPLICATE_GRFID                                      :{WHITE}Não é possível adicionar arquivo: ID do GRF duplicado
+STR_NEWGRF_DUPLICATE_GRFID                                      :{WHITE}Não é possível adicionar o arquivo: GRF ID duplicado
 STR_NEWGRF_COMPATIBLE_LOADED                                    :{ORANGE}Arquivo correspondente não encontrado (GRF compatível carregado)
-STR_NEWGRF_TOO_MANY_NEWGRFS                                     :{WHITE}Não é possível adicionar arquivo: limite de NewGRFs atingido
+STR_NEWGRF_TOO_MANY_NEWGRFS                                     :{WHITE}Não é possível adicionar o arquivo: limite de NewGRFs atingido
 
-STR_NEWGRF_COMPATIBLE_LOAD_WARNING                              :{WHITE}GRFs compatíveis foram carregados para os arquivos que faltam
+STR_NEWGRF_COMPATIBLE_LOAD_WARNING                              :{WHITE}GRFs compatíveis foram carregados para os arquivos ausentes
 STR_NEWGRF_DISABLED_WARNING                                     :{WHITE}Arquivos GRF ausentes foram desativados
 STR_NEWGRF_UNPAUSE_WARNING_TITLE                                :{YELLOW}Arquivos GRF em falta
-STR_NEWGRF_UNPAUSE_WARNING                                      :{WHITE}Sair da pausa pode travar o OpenTTD. Não envie relatórios de erros sobre travamentos subsequentes.{}Você quer mesmo continuar o jogo?
+STR_NEWGRF_UNPAUSE_WARNING                                      :{WHITE}Sair da pausa pode travar o OpenTTD. Não envie relatórios de erros sobre travamentos subsequentes.{}Você quer mesmo sair da pausa?
 
 # NewGRF status
 STR_NEWGRF_LIST_NONE                                            :Nenhum
@@ -3566,7 +3566,7 @@ STR_NEWGRF_BROKEN                                               :{WHITE}O compor
 STR_NEWGRF_BROKEN_POWERED_WAGON                                 :{WHITE}Ele alterou o estado do vagão motorizado '{1:ENGINE}' quando não estava em um depósito
 STR_NEWGRF_BROKEN_VEHICLE_LENGTH                                :{WHITE}Ele alterou o comprimento do veículo '{1:ENGINE}' quando não estava em um depósito
 STR_NEWGRF_BROKEN_CAPACITY                                      :{WHITE}Ele alterou a capacidade do veículo '{1:ENGINE}' quando não estava em um depósito ou em adaptação
-STR_BROKEN_VEHICLE_LENGTH                                       :{WHITE}O trem '{VEHICLE}' pertencente a '{COMPANY}' tem um comprimento inválido, possivelmente devido a problemas com NewGRFs. Podem ocorrer erros de sincronização ou travamento do jogo
+STR_BROKEN_VEHICLE_LENGTH                                       :{WHITE}O trem '{VEHICLE}' que pertence a '{COMPANY}' tem um comprimento inválido, possivelmente devido a problemas com NewGRFs. Podem ocorrer erros de sincronização ou travamento do jogo
 
 STR_NEWGRF_BUGGY                                                :{WHITE}NewGRF '{0:STRING}' produz informação incorreta
 STR_NEWGRF_BUGGY_ARTICULATED_CARGO                              :{WHITE}A informação de carga/adaptação para '{1:ENGINE}' é diferente da lista de compra depois da construção. Isto pode fazer a renovação/substituição automática falhar se adaptar corretamente
@@ -3615,14 +3615,14 @@ STR_TOWN_POPULATION                                             :{BLACK}Populaç
 STR_TOWN_VIEW_TOWN_CAPTION                                      :{WHITE}{TOWN}
 STR_TOWN_VIEW_CITY_CAPTION                                      :{WHITE}{TOWN} (Cidade)
 STR_TOWN_VIEW_POPULATION_HOUSES                                 :{BLACK}População: {ORANGE}{COMMA}{BLACK}  Casas: {ORANGE}{COMMA}
-STR_TOWN_VIEW_CARGO_LAST_MONTH_MAX                              :{BLACK}{CARGO_LIST} último mês: {ORANGE}{COMMA}{BLACK}  máx: {ORANGE}{COMMA}
-STR_TOWN_VIEW_CARGO_LAST_MINUTE_MAX                             :{BLACK}{CARGO_LIST} último minuto: {ORANGE}{COMMA}{BLACK}  máx: {ORANGE}{COMMA}
+STR_TOWN_VIEW_CARGO_LAST_MONTH_MAX                              :{BLACK}{CARGO_LIST} no último mês: {ORANGE}{COMMA}{BLACK}  máx: {ORANGE}{COMMA}
+STR_TOWN_VIEW_CARGO_LAST_MINUTE_MAX                             :{BLACK}{CARGO_LIST} no último minuto: {ORANGE}{COMMA}{BLACK}  máx: {ORANGE}{COMMA}
 STR_TOWN_VIEW_CARGO_FOR_TOWNGROWTH                              :{BLACK}Carga necessária para o crescimento da localidade:
 STR_TOWN_VIEW_CARGO_FOR_TOWNGROWTH_REQUIRED_GENERAL             :{ORANGE}{STRING}{RED} é necessário
 STR_TOWN_VIEW_CARGO_FOR_TOWNGROWTH_REQUIRED_WINTER              :{ORANGE}{STRING}{BLACK} é necessário no inverno
-STR_TOWN_VIEW_CARGO_FOR_TOWNGROWTH_DELIVERED_GENERAL            :{ORANGE}{STRING}{GREEN} entregue
+STR_TOWN_VIEW_CARGO_FOR_TOWNGROWTH_DELIVERED_GENERAL            :{ORANGE}{STRING}{GREEN} foi entregado
 STR_TOWN_VIEW_CARGO_FOR_TOWNGROWTH_REQUIRED                     :{ORANGE}{CARGO_TINY} / {CARGO_LONG}{RED} (ainda é necessário)
-STR_TOWN_VIEW_CARGO_FOR_TOWNGROWTH_DELIVERED                    :{ORANGE}{CARGO_TINY} / {CARGO_LONG}{GREEN} (entregue)
+STR_TOWN_VIEW_CARGO_FOR_TOWNGROWTH_DELIVERED                    :{ORANGE}{CARGO_TINY} / {CARGO_LONG}{GREEN} (entregado)
 STR_TOWN_VIEW_TOWN_GROWS_EVERY                                  :{BLACK}Localidade cresce a cada {ORANGE}{UNITS_DAYS_OR_SECONDS}
 STR_TOWN_VIEW_TOWN_GROWS_EVERY_FUNDED                           :{BLACK}Localidade cresce a cada {ORANGE}{UNITS_DAYS_OR_SECONDS} (financiada)
 STR_TOWN_VIEW_TOWN_GROW_STOPPED                                 :{BLACK}Localidade {RED}não{BLACK} está crescendo
@@ -3701,7 +3701,7 @@ STR_GOAL_QUESTION_BUTTON_YES                                    :Sim
 STR_GOAL_QUESTION_BUTTON_DECLINE                                :Recusar
 STR_GOAL_QUESTION_BUTTON_ACCEPT                                 :Aceitar
 STR_GOAL_QUESTION_BUTTON_IGNORE                                 :Ignorar
-STR_GOAL_QUESTION_BUTTON_RETRY                                  :Tentar novamente
+STR_GOAL_QUESTION_BUTTON_RETRY                                  :Repetir
 STR_GOAL_QUESTION_BUTTON_PREVIOUS                               :Anterior
 STR_GOAL_QUESTION_BUTTON_NEXT                                   :Próximo
 STR_GOAL_QUESTION_BUTTON_STOP                                   :Parar
@@ -3716,10 +3716,10 @@ STR_GOAL_QUESTION_BUTTON_CLOSE                                  :Fechar
 # Subsidies window
 STR_SUBSIDIES_CAPTION                                           :{WHITE}Subsídios
 STR_SUBSIDIES_OFFERED_TITLE                                     :{BLACK}Oferta de subsídios para execução de serviços:
-STR_SUBSIDIES_OFFERED_FROM_TO                                   :{ORANGE}{STRING} de {STRING} para {STRING}{YELLOW} ({STRING})
+STR_SUBSIDIES_OFFERED_FROM_TO                                   :{ORANGE}{STRING} d{G o a} {STRING} para {STRING}{YELLOW} ({STRING})
 STR_SUBSIDIES_NONE                                              :{ORANGE}- Nenhum -
 STR_SUBSIDIES_SUBSIDISED_TITLE                                  :{BLACK}Serviços já subsidiados:
-STR_SUBSIDIES_SUBSIDISED_FROM_TO                                :{ORANGE}{STRING} de {STRING} para {STRING}{YELLOW} ({COMPANY}{YELLOW}, {STRING})
+STR_SUBSIDIES_SUBSIDISED_FROM_TO                                :{ORANGE}{STRING} d{G o a} {STRING} para {STRING}{YELLOW} ({COMPANY}{YELLOW}, {STRING})
 STR_SUBSIDIES_TOOLTIP_CLICK_ON_SERVICE_TO_CENTER                :{BLACK}Clique em um serviço para centralizar visualização principal em uma indústria/localidade. Ctrl+Clique para abrir uma nova visualização na localização da indústria/localidade
 STR_SUBSIDIES_OFFERED_EXPIRY_DATE                               :até {DATE_SHORT}
 STR_SUBSIDIES_OFFERED_EXPIRY_TIME                               :por {UNITS_MONTHS_OR_MINUTES}
@@ -3734,7 +3734,7 @@ STR_STORY_BOOK_TITLE                                            :{YELLOW}{STRING
 STR_STORY_BOOK_GENERIC_PAGE_ITEM                                :Página {NUM}
 STR_STORY_BOOK_SEL_PAGE_TOOLTIP                                 :{BLACK}Saltar para uma página específica escolhendo-a nesta lista
 STR_STORY_BOOK_PREV_PAGE                                        :{BLACK}Anterior
-STR_STORY_BOOK_PREV_PAGE_TOOLTIP                                :{BLACK}Ir para a página anterior
+STR_STORY_BOOK_PREV_PAGE_TOOLTIP                                :{BLACK}Voltar para a página anterior
 STR_STORY_BOOK_NEXT_PAGE                                        :{BLACK}Próxima
 STR_STORY_BOOK_NEXT_PAGE_TOOLTIP                                :{BLACK}Ir para a próxima página
 STR_STORY_BOOK_INVALID_GOAL_REF                                 :{RED}Referência de objetivo inválida
@@ -3877,7 +3877,7 @@ STR_FINANCES_INFRASTRUCTURE_BUTTON                              :{BLACK}Infraest
 STR_COMPANY_VIEW_CAPTION                                        :{WHITE}{COMPANY} {BLACK}{COMPANY_NUM}
 STR_COMPANY_VIEW_PRESIDENT_MANAGER_TITLE                        :{WHITE}{PRESIDENT_NAME}{}{GOLD}(Presidente)
 
-STR_COMPANY_VIEW_INAUGURATED_TITLE                              :{GOLD}Inaugurado: {WHITE}{NUM}
+STR_COMPANY_VIEW_INAUGURATED_TITLE                              :{GOLD}Inauguração: {WHITE}{NUM}
 STR_COMPANY_VIEW_COLOUR_SCHEME_TITLE                            :{GOLD}Esquema de Cores:
 STR_COMPANY_VIEW_VEHICLES_TITLE                                 :{GOLD}Veículos:
 STR_COMPANY_VIEW_TRAINS                                         :{WHITE}{COMMA} tre{P m ns}
@@ -3897,7 +3897,7 @@ STR_COMPANY_VIEW_INFRASTRUCTURE_NONE                            :{WHITE}Nenhum
 STR_COMPANY_VIEW_BUILD_HQ_BUTTON                                :{BLACK}Construir sede
 STR_COMPANY_VIEW_BUILD_HQ_TOOLTIP                               :{BLACK}Construir sede da empresa
 STR_COMPANY_VIEW_VIEW_HQ_BUTTON                                 :{BLACK}Ver sede
-STR_COMPANY_VIEW_VIEW_HQ_TOOLTIP                                :{BLACK}Ver sede da empresa
+STR_COMPANY_VIEW_VIEW_HQ_TOOLTIP                                :{BLACK}Mostar sede da empresa
 STR_COMPANY_VIEW_RELOCATE_HQ                                    :{BLACK}Mover sede
 STR_COMPANY_VIEW_RELOCATE_COMPANY_HEADQUARTERS                  :{BLACK}Reconstruir sede da empresa em outro local por 1% do valor da empresa. Pressione também Shift para só mostrar o custo estimado
 STR_COMPANY_VIEW_INFRASTRUCTURE_BUTTON                          :{BLACK}Detalhes
@@ -4219,7 +4219,7 @@ STR_DEPOT_CLONE_SHIP                                            :{BLACK}Clonar E
 STR_DEPOT_CLONE_AIRCRAFT                                        :{BLACK}Clonar Aeronave
 
 ###length VEHICLE_TYPES
-STR_DEPOT_CLONE_TRAIN_DEPOT_INFO                                :{BLACK}Comprar uma cópia de um trem incluindo todos os vagões. Clique neste botão e depois em um trem que está dentro ou fora do depósito. Ctrl+Clique para compartilhar as ordens. Pressione também Shift para só mostrar o custo estimado
+STR_DEPOT_CLONE_TRAIN_DEPOT_INFO                                :{BLACK}Comprar uma cópia de um trem, incluindo todos os vagões. Clique neste botão e depois em um trem que está dentro ou fora do depósito. Ctrl+Clique para compartilhar as ordens. Pressione também Shift para só mostrar o custo estimado
 STR_DEPOT_CLONE_ROAD_VEHICLE_DEPOT_INFO                         :{BLACK}Comprar uma cópia de um veículo rodoviário. Clique neste botão e depois em um veículo que está dentro ou fora do depósito. Ctrl+Clique para compartilhar as ordens. Pressione também Shift para só mostrar o custo estimado
 STR_DEPOT_CLONE_SHIP_DEPOT_INFO                                 :{BLACK}Comprar uma cópia de uma embarcação. Clique neste botão e depois em uma embarcação que está dentro ou fora do depósito. Ctrl+Clique para compartilhar as ordens. Pressione também Shift para só mostrar o custo estimado
 STR_DEPOT_CLONE_AIRCRAFT_INFO_HANGAR_WINDOW                     :{BLACK}Comprar uma cópia de uma aeronave. Clique neste botão e depois em uma aeronave que está dentro ou fora do hangar. Ctrl+Clique para compartilhar as ordens. Pressione também Shift para só mostrar o custo estimado
@@ -4272,7 +4272,7 @@ STR_ENGINE_PREVIEW_COST_WEIGHT                                  :Custo: {CURRENC
 STR_ENGINE_PREVIEW_COST_MAX_SPEED                               :Custo: {CURRENCY_LONG}  Velocidade máx.: {VELOCITY}
 STR_ENGINE_PREVIEW_SPEED_POWER                                  :Velocidade: {VELOCITY}  Potência: {POWER}
 STR_ENGINE_PREVIEW_SPEED_POWER_MAX_TE                           :Velocidade: {VELOCITY}  Potência: {POWER}  Força de Tração máx.: {FORCE}
-STR_ENGINE_PREVIEW_TYPE                                         :Tipo da aeronave: {STRING}
+STR_ENGINE_PREVIEW_TYPE                                         :Tipo de aeronave: {STRING}
 STR_ENGINE_PREVIEW_TYPE_RANGE                                   :Tipo de aeronave: {STRING}   Autonomia: {COMMA} quadrados
 STR_ENGINE_PREVIEW_RUNCOST_YEAR                                 :Custo de Operação: {CURRENCY_LONG}/ano
 STR_ENGINE_PREVIEW_RUNCOST_PERIOD                               :Custo de Operação: {CURRENCY_LONG}/período
@@ -4294,11 +4294,11 @@ STR_REPLACE_VEHICLE_SHIP                                        :Embarcação
 STR_REPLACE_VEHICLE_AIRCRAFT                                    :Aeronave
 
 STR_REPLACE_HELP_LEFT_ARRAY                                     :{BLACK}Escolher o tipo de locomotiva para substituir
-STR_REPLACE_HELP_RIGHT_ARRAY                                    :{BLACK}Escolher o novo tipo de locomotiva que será usada para substituir a que foi selecionada à esquerda
+STR_REPLACE_HELP_RIGHT_ARRAY                                    :{BLACK}Escolher o novo tipo de locomotiva que irá substituir a que foi selecionada à esquerda
 
 STR_REPLACE_VEHICLES_START                                      :{BLACK}Iniciar Substituição de Veículos
 STR_REPLACE_VEHICLES_NOW                                        :Substituir todos os veículos agora
-STR_REPLACE_VEHICLES_WHEN_OLD                                   :Substituir apenas veículos velhos
+STR_REPLACE_VEHICLES_WHEN_OLD                                   :Substituir apenas os veículos velhos
 STR_REPLACE_HELP_START_BUTTON                                   :{BLACK}Pressione para iniciar a substituição do tipo de locomotiva selecionada à esquerda com o tipo de locomotiva selecionada à direita
 STR_REPLACE_NOT_REPLACING                                       :{BLACK}Não substituindo
 STR_REPLACE_NOT_REPLACING_VEHICLE_SELECTED                      :{BLACK}Nenhum veículo selecionado
@@ -4327,7 +4327,7 @@ STR_REPLACE_ROAD_VEHICLES                                       :Veículos Rodov
 STR_REPLACE_TRAM_VEHICLES                                       :Bondes
 
 STR_REPLACE_REMOVE_WAGON                                        :{BLACK}Remoção de vagões ({STRING}): {ORANGE}{STRING}
-STR_REPLACE_REMOVE_WAGON_HELP                                   :{BLACK}Forçar a substituição automática a manter o trem com o mesmo comprimento removendo vagões (começando pela frente), se a substituição da locomotiva aumentar o comprimento do trem
+STR_REPLACE_REMOVE_WAGON_HELP                                   :{BLACK}Fazer a substituição automática mantendo o comprimento do trem, removendo vagões (começando pela frente), se a substituição da locomotiva aumentar o comprimento do trem
 STR_REPLACE_REMOVE_WAGON_GROUP_HELP                             :{STRING}. Ctrl+Clique para também aplicar aos subgrupos
 
 # Vehicle view
@@ -4740,7 +4740,7 @@ STR_TIMETABLE_CHANGE_SPEED_TOOLTIP                              :{BLACK}Alterar 
 STR_TIMETABLE_CLEAR_SPEED                                       :{BLACK}Remover limite de velocidade
 STR_TIMETABLE_CLEAR_SPEED_TOOLTIP                               :{BLACK}Apagar a velocidade máxima de viagem da ordem selecionada. Ctrl+Clique para apagar a velocidade de todas as ordens
 
-STR_TIMETABLE_RESET_LATENESS                                    :{BLACK}Reiniciar o Contador de Atrasos
+STR_TIMETABLE_RESET_LATENESS                                    :{BLACK}Reiniciar Contador de Atrasos
 STR_TIMETABLE_RESET_LATENESS_TOOLTIP                            :{BLACK}Reiniciar o contador de atrasos para o veículo ficar pontual. Ctrl+Clique para reiniciar todo o grupo e, com isso, fazer o veículo mais atrasado ficar no horário e todos os outros ficarem adiantados
 
 STR_TIMETABLE_AUTOFILL                                          :{BLACK}Preencher automaticamente
@@ -5278,7 +5278,7 @@ STR_ERROR_VEHICLE_IS_DESTROYED                                  :{WHITE}... o ve
 STR_ERROR_CAN_T_CLONE_VEHICLE_LIST                              :{WHITE}... nem todos os veículos são idênticos
 
 STR_ERROR_NO_VEHICLES_AVAILABLE_AT_ALL                          :{WHITE}Não haverá veículos disponíveis
-STR_ERROR_NO_VEHICLES_AVAILABLE_AT_ALL_EXPLANATION              :{WHITE}Altere a sua configuração NewGRF
+STR_ERROR_NO_VEHICLES_AVAILABLE_AT_ALL_EXPLANATION              :{WHITE}Modifique a sua configuração de NewGRF
 STR_ERROR_NO_VEHICLES_AVAILABLE_YET                             :{WHITE}Não existem veículos disponíveis ainda
 STR_ERROR_NO_VEHICLES_AVAILABLE_YET_EXPLANATION                 :{WHITE}Inicie um novo jogo depois de {DATE_SHORT} ou utilize um NewGRF que forneça veículos iniciais
 

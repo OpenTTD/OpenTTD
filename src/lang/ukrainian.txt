@@ -668,6 +668,7 @@ STR_ABOUT_MENU_ABOUT_OPENTTD                                    :Про гру '
 STR_ABOUT_MENU_SPRITE_ALIGNER                                   :Вирівнювання спрайтів
 STR_ABOUT_MENU_TOGGLE_BOUNDING_BOXES                            :Вкл./відкл. обмежуючі рамки
 STR_ABOUT_MENU_TOGGLE_DIRTY_BLOCKS                              :Вкл./відкл. підсвічування застарілих блоків
+STR_ABOUT_MENU_TOGGLE_WIDGET_OUTLINES                           :Увімкнути межі віджета
 
 ###length 31
 STR_DAY_NUMBER_1ST                                              :1
@@ -1086,6 +1087,7 @@ STR_GAME_OPTIONS_TAB_GRAPHICS_TT                                :{BLACK}Вибе
 STR_GAME_OPTIONS_TAB_SOUND                                      :Звук
 STR_GAME_OPTIONS_TAB_SOUND_TT                                   :{BLACK}Виберіть налаштування звуку та музики
 STR_GAME_OPTIONS_TAB_SOCIAL                                     :Соціальні платформи
+STR_GAME_OPTIONS_TAB_SOCIAL_TT                                  :{BLACK}Оберіть налаштування інтеграції соціальних мереж
 
 STR_GAME_OPTIONS_VOLUME                                         :Гучність
 STR_GAME_OPTIONS_SFX_VOLUME                                     :Звукові ефекти
@@ -1146,6 +1148,7 @@ STR_GAME_OPTIONS_CURRENCY_INR                                   :Індійсь�
 STR_GAME_OPTIONS_CURRENCY_IDR                                   :Індонезійська рупія
 STR_GAME_OPTIONS_CURRENCY_MYR                                   :Малайзійський рингіт
 STR_GAME_OPTIONS_CURRENCY_LVL                                   :Латвійські лати
+STR_GAME_OPTIONS_CURRENCY_PTE                                   :Португальське ескудо
 
 STR_GAME_OPTIONS_AUTOSAVE_FRAME                                 :{BLACK}Автозбереження
 STR_GAME_OPTIONS_AUTOSAVE_DROPDOWN_TOOLTIP                      :{BLACK}Виберіть період автозбереження гри
@@ -1188,9 +1191,9 @@ STR_GAME_OPTIONS_GUI_SCALE_BEVELS                               :{BLACK}Межі
 STR_GAME_OPTIONS_GUI_SCALE_BEVELS_TOOLTIP                       :BLACK}Увімкнутий прапорець дозволить змінити розмір інтерфейсу
 
 STR_GAME_OPTIONS_GUI_FONT_SPRITE                                :{BLACK}Використовувати шрифт звичайної роздільності
-STR_GAME_OPTIONS_GUI_FONT_SPRITE_TOOLTIP                        :{BLACK}Натисніть цю кнопку для використання шрифтів незмінних розмірів
+STR_GAME_OPTIONS_GUI_FONT_SPRITE_TOOLTIP                        :{BLACK}Увімкніть прапорець для використання шрифтів незмінних розмірів
 STR_GAME_OPTIONS_GUI_FONT_AA                                    :{BLACK}Згладжування шрифтів
-STR_GAME_OPTIONS_GUI_FONT_AA_TOOLTIP                            :{BLACK}Натисніть цю кнопку для згладження шрифтів змінних розмірів
+STR_GAME_OPTIONS_GUI_FONT_AA_TOOLTIP                            :{BLACK}Увімкніть прапорець для згладження шрифтів змінних розмірів
 
 STR_GAME_OPTIONS_GUI_SCALE_1X                                   :1x
 STR_GAME_OPTIONS_GUI_SCALE_2X                                   :2x
@@ -1200,8 +1203,11 @@ STR_GAME_OPTIONS_GUI_SCALE_5X                                   :5x
 
 STR_GAME_OPTIONS_PARTICIPATE_SURVEY_FRAME                       :{BLACK}Автоматизований збір даних
 STR_GAME_OPTIONS_PARTICIPATE_SURVEY                             :{BLACK}Участь в автоматизованому зборі даних
+STR_GAME_OPTIONS_PARTICIPATE_SURVEY_TOOLTIP                     :{BLACK}Якщо увімкнено, OpenTTD передаватиме зібрані дані при виході з гри
 STR_GAME_OPTIONS_PARTICIPATE_SURVEY_LINK                        :{BLACK}Про збір даних і приватність
+STR_GAME_OPTIONS_PARTICIPATE_SURVEY_LINK_TOOLTIP                :{BLACK}Відкриє переглядач з детальнішою інформацією про автоматичний збір даних
 STR_GAME_OPTIONS_PARTICIPATE_SURVEY_PREVIEW                     :{BLACK}Попередній перегляд збору даних
+STR_GAME_OPTIONS_PARTICIPATE_SURVEY_PREVIEW_TOOLTIP             :{BLACK}Перегляд збору даних поточної гри
 
 STR_GAME_OPTIONS_GRAPHICS                                       :{BLACK}Графіка
 
@@ -1211,11 +1217,11 @@ STR_GAME_OPTIONS_REFRESH_RATE_ITEM                              :{NUM}Гц
 STR_GAME_OPTIONS_REFRESH_RATE_WARNING                           :{WHITE}Оновлення з частотою понад 60ГГц може зашкодити роботі гри.
 
 STR_GAME_OPTIONS_BASE_GRF                                       :{BLACK}Базовий набір графіки
-STR_GAME_OPTIONS_BASE_GRF_TOOLTIP                               :{BLACK}Оберіть, яку основну графіку використовувати
+STR_GAME_OPTIONS_BASE_GRF_TOOLTIP                               :{BLACK}Оберіть, яку основну графіку використовувати (неможливо змінити у грі, тільки з головного меню)
 STR_GAME_OPTIONS_BASE_GRF_DESCRIPTION_TOOLTIP                   :{BLACK}Додаткова інформація про базовий набір графіки
 
 STR_GAME_OPTIONS_BASE_SFX                                       :{BLACK}Базовий набір звуків
-STR_GAME_OPTIONS_BASE_SFX_TOOLTIP                               :{BLACK}Оберіть базовий набір звуків для використання
+STR_GAME_OPTIONS_BASE_SFX_TOOLTIP                               :{BLACK}Оберіть базовий набір звуків для використання (неможливо змінити у грі, тільки з головного меню)
 STR_GAME_OPTIONS_BASE_SFX_DESCRIPTION_TOOLTIP                   :{BLACK}Додаткова інформація про базовий набір звуків
 
 STR_GAME_OPTIONS_BASE_MUSIC                                     :{BLACK}Базовий музичний набір
@@ -1405,9 +1411,10 @@ STR_CONFIG_SETTING_INFINITE_MONEY                               :Нескінч�
 STR_CONFIG_SETTING_INFINITE_MONEY_HELPTEXT                      :Дозволяє необмежені витрати і вимикає банкрутство компаній
 
 STR_CONFIG_SETTING_MAXIMUM_INITIAL_LOAN                         :Максимальна сума позики: {STRING}
-STR_CONFIG_SETTING_MAXIMUM_INITIAL_LOAN_HELPTEXT                :Максимальна сума позики для компанії (без урахування інфляції)
+STR_CONFIG_SETTING_MAXIMUM_INITIAL_LOAN_HELPTEXT                :Максимальна сума позики для компанії (без урахування інфляції). Якщо обрати "Ніяких позик", гроші будуть недоступні, окрім ігрових скриптів або налаштування "Безкінечні гроші"
 STR_CONFIG_SETTING_MAXIMUM_INITIAL_LOAN_VALUE                   :{CURRENCY_LONG}
 ###setting-zero-is-special
+STR_CONFIG_SETTING_MAXIMUM_INITIAL_LOAN_DISABLED                :Ніяких позик
 
 STR_CONFIG_SETTING_INTEREST_RATE                                :Процентна ставка: {STRING}
 STR_CONFIG_SETTING_INTEREST_RATE_HELPTEXT                       :Процентна ставка за позиками; також контролює інфляцію, якщо вона увімкнена
@@ -4461,13 +4468,13 @@ STR_VEHICLE_VIEW_CAPTION                                        :{WHITE}{VEHICLE
 STR_VEHICLE_VIEW_TRAIN_CENTER_TOOLTIP                           :{BLACK}Показати місце розташування потяга в центрі екрану. Подвійний клац для показу потяга в центрі екрану.Ctrl+клац мишею відкриє нове вікно у місці розташування потяга
 STR_VEHICLE_VIEW_ROAD_VEHICLE_CENTER_TOOLTIP                    :{BLACK}Показати транспорт у вікні. Подвійний клац для показу транспорту в центрі екрану. Ctrl+клац мишою для руху за транспортом.
 STR_VEHICLE_VIEW_SHIP_CENTER_TOOLTIP                            :{BLACK}Показати місце розташування корабля в центрі екрану. Подвійний клац для показу корабля в центрі екрану.Ctrl+клац мишою відкриє нове вікно у місці розташування корабля
-STR_VEHICLE_VIEW_AIRCRAFT_CENTER_TOOLTIP                        :{BLACK}Показати авіатранспорт у вікні. Подвійний клац для показу авіатранспорту в центрі екрану. Ctrl+клац мишою для руху за авіатранспортом.
+STR_VEHICLE_VIEW_AIRCRAFT_CENTER_TOOLTIP                        :{BLACK}Показати авіатранспорт у центрі головного вікна. Подвійний клац для руху за авіатранспортом у головному вікні. Ctrl+клац мишою для показу авіатранспорту в додатковому вікні
 
 ###length VEHICLE_TYPES
 STR_VEHICLE_VIEW_TRAIN_SEND_TO_DEPOT_TOOLTIP                    :{BLACK}Направити поїзд у депо
 STR_VEHICLE_VIEW_ROAD_VEHICLE_SEND_TO_DEPOT_TOOLTIP             :{BLACK}Направити авто в депо
 STR_VEHICLE_VIEW_SHIP_SEND_TO_DEPOT_TOOLTIP                     :{BLACK}Направити корабель в депо
-STR_VEHICLE_VIEW_AIRCRAFT_SEND_TO_DEPOT_TOOLTIP                 :{BLACK}Направити літак в ангар
+STR_VEHICLE_VIEW_AIRCRAFT_SEND_TO_DEPOT_TOOLTIP                 :{BLACK}Направити літак в ангар. Ctrl+клац тільки для техогляду
 
 ###length VEHICLE_TYPES
 STR_VEHICLE_VIEW_CLONE_TRAIN_INFO                               :{BLACK}Купити копію поїзда з усіма вагонами. Утримуйте Ctrl для спільного завдання. Утримуйте Shift для показу витрат на придбання
@@ -4507,10 +4514,11 @@ STR_VEHICLE_VIEW_AIRCRAFT_STATUS_START_STOP_TOOLTIP             :{BLACK}Пото
 # Messages in the start stop button in the vehicle view
 STR_VEHICLE_STATUS_LOADING_UNLOADING                            :{LTBLUE}Вантаження
 STR_VEHICLE_STATUS_LEAVING                                      :{LTBLUE}Відходить
+STR_VEHICLE_STATUS_WAITING_UNBUNCHING                           :{LTBLUE}Чекає на звільнення
 STR_VEHICLE_STATUS_CRASHED                                      :{RED}Аварія!
 STR_VEHICLE_STATUS_BROKEN_DOWN                                  :{RED}Зламався
 STR_VEHICLE_STATUS_STOPPED                                      :{RED}Зупинено
-STR_VEHICLE_STATUS_TRAIN_STOPPING_VEL                           :{RED}Зупиняється, {VELOCITY}
+STR_VEHICLE_STATUS_TRAIN_STOPPING_VEL                           :{RED}{VELOCITY} - Зупиняється
 STR_VEHICLE_STATUS_TRAIN_NO_POWER                               :{RED}Не достатньо потужності
 STR_VEHICLE_STATUS_TRAIN_STUCK                                  :{ORANGE}Очікування вільного шляху
 STR_VEHICLE_STATUS_AIRCRAFT_TOO_FAR                             :{ORANGE}Занадто далеко до наступного місця призначення
@@ -4585,6 +4593,7 @@ STR_VEHICLE_DETAILS_DECREASE_SERVICING_INTERVAL_TOOLTIP_PERCENT :{BLACK}Змен
 STR_SERVICE_INTERVAL_DROPDOWN_TOOLTIP                           :{BLACK}Відлік інтервалу між техоглядами
 STR_VEHICLE_DETAILS_DEFAULT                                     :Стандартно
 STR_VEHICLE_DETAILS_DAYS                                        :Днів
+STR_VEHICLE_DETAILS_MINUTES                                     :Хвилин
 STR_VEHICLE_DETAILS_PERCENT                                     :Проценти
 
 ###length VEHICLE_TYPES
@@ -5234,6 +5243,10 @@ STR_ERROR_DEPOT_WRONG_DEPOT_TYPE                                :Неправи�
 
 # Depot unbunching related errors
 STR_ERROR_UNBUNCHING_ONLY_ONE_ALLOWED                           :{WHITE}... можливий тільки один звільнений наказ
+STR_ERROR_UNBUNCHING_NO_FULL_LOAD                               :{WHITE}... неможливо використати наказ "повне завантаження", якщо транспорт звільнено
+STR_ERROR_UNBUNCHING_NO_UNBUNCHING_FULL_LOAD                    :{WHITE}... неможливо звільнити транспорт з наказом "повне завантаження"
+STR_ERROR_UNBUNCHING_NO_CONDITIONAL                             :{WHITE}... неможливо використати стандартні накази, якщо транспорт звільнено
+STR_ERROR_UNBUNCHING_NO_UNBUNCHING_CONDITIONAL                  :{WHITE}... неможливо звільнити транспорт зі стандартним наказом
 
 # Autoreplace related errors
 STR_ERROR_TRAIN_TOO_LONG_AFTER_REPLACEMENT                      :{WHITE}{VEHICLE} дуже довгий після оновлення

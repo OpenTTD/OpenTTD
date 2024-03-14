@@ -1331,8 +1331,8 @@ STR_CONFIG_SETTING_TOO_HIGH_MOUNTAIN                            :{WHITE}Du kan i
 STR_CONFIG_SETTING_AUTOSLOPE                                    :Tillat endring av landskap under bygninger, spor, osv.: {STRING}
 STR_CONFIG_SETTING_AUTOSLOPE_HELPTEXT                           :Tillat endring av landskapet under bygninger og spor uten å fjerne dem
 
-STR_CONFIG_SETTING_CATCHMENT                                    :Mer realistisk størrelse på oppfangingsområder: {STRING}
-STR_CONFIG_SETTING_CATCHMENT_HELPTEXT                           :Ha oppsamlingsområder i forskjellige størrelser for forskjellige typer stasjoner og lufthavner
+STR_CONFIG_SETTING_CATCHMENT                                    :Mer realistisk størrelse på dekningsområder: {STRING}
+STR_CONFIG_SETTING_CATCHMENT_HELPTEXT                           :Ha dekningssområder i forskjellige størrelser for forskjellige typer stasjoner og lufthavner
 
 STR_CONFIG_SETTING_SERVE_NEUTRAL_INDUSTRIES                     :Selskapets stasjoner kan betjene industrier med tilknyttede nøytrale stasjoner: {STRING}
 STR_CONFIG_SETTING_SERVE_NEUTRAL_INDUSTRIES_HELPTEXT            :Hvis aktivert, vil industrier med tilknyttede stasjoner (slik som oljerigger) også kunne betjenes av selskapseide stasjoner bygget i nærheten. Hvis deaktivert, vil disse industriene bare kunne betjenes av sine tilknyttede stasjoner. Nærliggende selskapsstasjoner vil ikke kunne betjene dem, heller ikke vil den tilknyttede stasjonen betjene noe annet enn industrien
@@ -4384,7 +4384,7 @@ STR_VEHICLE_VIEW_AIRCRAFT_STATUS_START_STOP_TOOLTIP             :{BLACK}Valgt lu
 # Messages in the start stop button in the vehicle view
 STR_VEHICLE_STATUS_LOADING_UNLOADING                            :{LTBLUE}Laster / Losser
 STR_VEHICLE_STATUS_LEAVING                                      :{LTBLUE}Forlater
-STR_VEHICLE_STATUS_WAITING_UNBUNCHING                           :{LTBLUE}Venter på å dele
+STR_VEHICLE_STATUS_WAITING_UNBUNCHING                           :{LTBLUE}Venter på å fjerne klumping
 STR_VEHICLE_STATUS_CRASHED                                      :{RED}Krasjet!
 STR_VEHICLE_STATUS_BROKEN_DOWN                                  :{RED}Havarert
 STR_VEHICLE_STATUS_STOPPED                                      :{RED}Stoppet
@@ -4398,7 +4398,7 @@ STR_VEHICLE_STATUS_NO_ORDERS_VEL                                :{LTBLUE}{VELOCI
 STR_VEHICLE_STATUS_HEADING_FOR_WAYPOINT_VEL                     :{LTBLUE}{1:VELOCITY} - Har kurs mot {0:WAYPOINT}
 STR_VEHICLE_STATUS_HEADING_FOR_DEPOT_VEL                        :{ORANGE}{1:VELOCITY} - På vei til {0:DEPOT}
 STR_VEHICLE_STATUS_HEADING_FOR_DEPOT_SERVICE_VEL                :{LTBLUE}{1:VELOCITY} Vedlikehold ved {0:DEPOT}
-STR_VEHICLE_STATUS_HEADING_FOR_DEPOT_UNBUNCH_VEL                :{LTBLUE}{1:VELOCITY} - Del og vedlikehold ved {0:DEPOT}
+STR_VEHICLE_STATUS_HEADING_FOR_DEPOT_UNBUNCH_VEL                :{LTBLUE}{1:VELOCITY} - Fjern klumping og vedlikehold ved {0:DEPOT}
 
 STR_VEHICLE_STATUS_CANNOT_REACH_STATION_VEL                     :{LTBLUE}{1:VELOCITY} - Kan ikke nå {0:STATION}
 STR_VEHICLE_STATUS_CANNOT_REACH_WAYPOINT_VEL                    :{LTBLUE}{1:VELOCITY} - Kan ikke nå {0:WAYPOINT}
@@ -4566,7 +4566,7 @@ STR_ORDER_DROP_REFIT_AUTO_ANY                                   :Tilgjengelig va
 STR_ORDER_DROP_GO_ALWAYS_DEPOT                                  :Alltid gå
 STR_ORDER_DROP_SERVICE_DEPOT                                    :Vedlikehold ved behov
 STR_ORDER_DROP_HALT_DEPOT                                       :Stopp
-STR_ORDER_DROP_UNBUNCH                                          :Del
+STR_ORDER_DROP_UNBUNCH                                          :Fjern klumping
 
 # Depot action tooltips, one per vehicle type
 ###length VEHICLE_TYPES
@@ -4643,7 +4643,7 @@ STR_ORDER_REFIT_ORDER                                           :(Bygg om til {S
 STR_ORDER_REFIT_STOP_ORDER                                      :(Bygg om til {STRING} og stopp)
 STR_ORDER_STOP_ORDER                                            :(Stopp)
 
-STR_ORDER_WAIT_TO_UNBUNCH                                       :(vent på å dele)
+STR_ORDER_WAIT_TO_UNBUNCH                                       :(vent for å fjerne klumping)
 
 STR_ORDER_GO_TO_STATION                                         :{STRING} {STATION} {STRING}
 STR_ORDER_GO_TO_STATION_CAN_T_USE_STATION                       :{PUSH_COLOUR}{RED}(Kan ikke bruke stasjon){POP_COLOUR} {STRING} {STATION} {STRING}
@@ -5113,11 +5113,11 @@ STR_ERROR_UNABLE_TO_FIND_LOCAL_DEPOT                            :{WHITE}Kan ikke
 STR_ERROR_DEPOT_WRONG_DEPOT_TYPE                                :Feil type garasje/stall/hangar/dokk
 
 # Depot unbunching related errors
-STR_ERROR_UNBUNCHING_ONLY_ONE_ALLOWED                           :{WHITE}... kan bare ha én deleordre
-STR_ERROR_UNBUNCHING_NO_FULL_LOAD                               :{WHITE}... kan ikke bruke full last-ordre når transportmiddel har en deleordre
-STR_ERROR_UNBUNCHING_NO_UNBUNCHING_FULL_LOAD                    :{WHITE}... kan ikke dele et kjøretøy med en full last-ordre
-STR_ERROR_UNBUNCHING_NO_CONDITIONAL                             :{WHITE}... kan ikke bruke ordre med betingelser når transportmiddel har en deleordre
-STR_ERROR_UNBUNCHING_NO_UNBUNCHING_CONDITIONAL                  :{WHITE}... kan ikke dele et kjøretøy med en betinget ordre
+STR_ERROR_UNBUNCHING_ONLY_ONE_ALLOWED                           :{WHITE}... kan bare ha én ordre om å fjerne klumping
+STR_ERROR_UNBUNCHING_NO_FULL_LOAD                               :{WHITE}... kan ikke bruke full last-ordre når kjøretøyet har en ordre om å fjerne klumping
+STR_ERROR_UNBUNCHING_NO_UNBUNCHING_FULL_LOAD                    :{WHITE}... kan ikke fjerne klumping på et kjøretøy med en full last-ordre
+STR_ERROR_UNBUNCHING_NO_CONDITIONAL                             :{WHITE}... kan ikke bruke betingede ordre når kjøretøyet har en ordre om å fjerne klumping
+STR_ERROR_UNBUNCHING_NO_UNBUNCHING_CONDITIONAL                  :{WHITE}... kan ikke fjerne klumping på et kjøretøy med en betinget ordre
 
 # Autoreplace related errors
 STR_ERROR_TRAIN_TOO_LONG_AFTER_REPLACEMENT                      :{WHITE}{VEHICLE} er for langt etter utskiftning

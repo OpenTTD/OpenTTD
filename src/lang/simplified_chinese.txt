@@ -811,7 +811,7 @@ STR_SMALLMAP_TOOLTIP_ENABLE_ALL_CARGOS                          :{BLACK}地图�
 # Status bar messages
 STR_STATUSBAR_TOOLTIP_SHOW_LAST_NEWS                            :{BLACK}显示最后一条消息或新闻
 STR_STATUSBAR_COMPANY_NAME                                      :{SILVER}- -  {COMPANY}  - -
-STR_STATUSBAR_PAUSED                                            :{YELLOW}* *  已暂停  *  *
+STR_STATUSBAR_PAUSED                                            :{YELLOW}* *  已暂停  * *
 STR_STATUSBAR_PAUSED_LINK_GRAPH                                 :{ORANGE}*  *  已暂停 (等待货物分配图更新) *  *
 STR_STATUSBAR_AUTOSAVE                                          :{RED}自动保存
 STR_STATUSBAR_SAVING_GAME                                       :{RED}*  *  保存游戏中  *  *

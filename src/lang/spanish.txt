@@ -1276,7 +1276,7 @@ STR_CONFIG_SETTING_INFINITE_MONEY                               :Dinero infinito
 STR_CONFIG_SETTING_INFINITE_MONEY_HELPTEXT                      :Permite el gasto infinito y desactiva la bancarrota de empresas
 
 STR_CONFIG_SETTING_MAXIMUM_INITIAL_LOAN                         :Préstamo máximo inicial: {STRING}
-STR_CONFIG_SETTING_MAXIMUM_INITIAL_LOAN_HELPTEXT                :Máxima cantidad que una empresa puede pedir prestada (sin tener en cuenta la inflación). Si se selecciona "Sin préstamo", no habrá fondos disponibles a menos que un script del juego los proporcione o esté activada la opción "Dinero infinito"
+STR_CONFIG_SETTING_MAXIMUM_INITIAL_LOAN_HELPTEXT                :Cantidad máxima de dinero que una empresa puede pedir prestada (sin tener en cuenta la inflación). Si se selecciona "Sin préstamo", no habrá fondos disponibles a menos que un script del juego los proporcione o esté activada la opción "Dinero infinito"
 STR_CONFIG_SETTING_MAXIMUM_INITIAL_LOAN_VALUE                   :{CURRENCY_LONG}
 ###setting-zero-is-special
 STR_CONFIG_SETTING_MAXIMUM_INITIAL_LOAN_DISABLED                :Sin préstamo
@@ -1631,7 +1631,7 @@ STR_CONFIG_SETTING_SMALLMAP_LAND_COLOUR_DARK_GREEN              :Verde oscuro
 STR_CONFIG_SETTING_SMALLMAP_LAND_COLOUR_VIOLET                  :Violeta
 
 STR_CONFIG_SETTING_LINKGRAPH_COLOURS                            :Colores de Flujos de Carga: {STRING}
-STR_CONFIG_SETTING_LINKGRAPH_COLOURS_HELPTEXT                   :Esquema de color de los indicadores visuales del flujo de carga
+STR_CONFIG_SETTING_LINKGRAPH_COLOURS_HELPTEXT                   :Esquema de color de los indicadores visuales del grafo de los flujos de carga
 ###length 4
 STR_CONFIG_SETTING_LINKGRAPH_COLOURS_GREEN_TO_RED               :De verde a rojo (original)
 STR_CONFIG_SETTING_LINKGRAPH_COLOURS_GREEN_TO_BLUE              :De verde a azul
@@ -1752,7 +1752,7 @@ STR_CONFIG_SETTING_PERSISTENT_BUILDINGTOOLS                     :Mantener activa
 STR_CONFIG_SETTING_PERSISTENT_BUILDINGTOOLS_HELPTEXT            :Mantiene las herramientas de construcción de puentes, túneles, etcétera, abiertas después de su uso
 
 STR_CONFIG_SETTING_AUTO_REMOVE_SIGNALS                          :Eliminar automáticamente las señales durante la construcción de ferrocarril: {STRING}
-STR_CONFIG_SETTING_AUTO_REMOVE_SIGNALS_HELPTEXT                 :Elimina las señales de forma automática durante al construir vías férreas si las señales están en el camino. Ten en cuenta que esto puede provocar choques entre trenes
+STR_CONFIG_SETTING_AUTO_REMOVE_SIGNALS_HELPTEXT                 :Elimina las señales de forma automática al construir vías férreas si las señales están en el camino. Ten en cuenta que esto puede provocar choques entre trenes
 
 STR_CONFIG_SETTING_FAST_FORWARD_SPEED_LIMIT                     :Límite de velocidad para el avance rápido: {STRING}
 STR_CONFIG_SETTING_FAST_FORWARD_SPEED_LIMIT_HELPTEXT            :Límite de la velocidad de juego cuando se activa el avance rápido. 0 = sin límite (tan rápido como lo permita el ordenador). Los valores inferiores a 100% ralentizan el juego. El límite superior depende de las características del ordenador y pueden variar dependiendo de la partida
@@ -3201,7 +3201,7 @@ STR_FRAMERATE_CAPTION_SMALL                                     :{STRING}{WHITE}
 STR_FRAMERATE_RATE_GAMELOOP                                     :{BLACK}Tasa de Simulación: {STRING}
 STR_FRAMERATE_RATE_GAMELOOP_TOOLTIP                             :{BLACK}Número de tics de juego simulados por segundo
 STR_FRAMERATE_RATE_BLITTER                                      :{BLACK}FPS de gráficos: {STRING}
-STR_FRAMERATE_RATE_BLITTER_TOOLTIP                              :{BLACK}Número de cuadros dibujados por segundo
+STR_FRAMERATE_RATE_BLITTER_TOOLTIP                              :{BLACK}Número de fotogramas de vídeo renderizados por segundo
 STR_FRAMERATE_SPEED_FACTOR                                      :{BLACK}Factor actual de velocidad de juego: {DECIMAL}x
 STR_FRAMERATE_SPEED_FACTOR_TOOLTIP                              :{BLACK}Velocidad actual del juego, comparada con la velocidad esperada durante una simulación a ritmo normal
 STR_FRAMERATE_CURRENT                                           :{WHITE}Actual
@@ -4027,12 +4027,12 @@ STR_GROUP_DEFAULT_AIRCRAFTS                                     :Aeronaves sin a
 
 STR_GROUP_COUNT_WITH_SUBGROUP                                   :{TINY_FONT}{COMMA} (+{COMMA})
 
-STR_GROUPS_CLICK_ON_GROUP_FOR_TOOLTIP                           :{BLACK}Grupos - Haz clic en un grupo para ver la lista de sus vehículos. Es posible arrastrar y soltar grupos para reorganizar los elementos
+STR_GROUPS_CLICK_ON_GROUP_FOR_TOOLTIP                           :{BLACK}Grupos - Haz clic en un grupo para ver la lista de sus vehículos. Arrastra y suelta los grupos para reorganizarlos
 STR_GROUP_CREATE_TOOLTIP                                        :{BLACK}Clica para crear un grupo nuevo
 STR_GROUP_DELETE_TOOLTIP                                        :{BLACK}Borra el grupo seleccionado
 STR_GROUP_RENAME_TOOLTIP                                        :{BLACK}Renombra el grupo seleccionado
 STR_GROUP_LIVERY_TOOLTIP                                        :{BLACK}Cambia el color del grupo seleccionado
-STR_GROUP_REPLACE_PROTECTION_TOOLTIP                            :{BLACK}Haz clic para evitar que los vehículos en este grupo se reemplacen automáticamente. Ctrl+Clic protege también a los subgrupos
+STR_GROUP_REPLACE_PROTECTION_TOOLTIP                            :{BLACK}Clica para evitar que los vehículos en este grupo se reemplacen automáticamente. Ctrl+clic protege también a los subgrupos
 
 STR_QUERY_GROUP_DELETE_CAPTION                                  :{WHITE}Borrar Grupo
 STR_GROUP_DELETE_QUERY_TEXT                                     :{WHITE}¿Estás seguro de que quieres borrar este grupo y todos sus subgrupos?
