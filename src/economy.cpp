@@ -424,8 +424,12 @@ void ChangeOwnershipOfCompanyItems(Owner old_owner, Owner new_owner)
 	if (new_owner == INVALID_OWNER) {
 		RemoveAllGroupsForCompany(old_owner);
 	} else {
+		Company *c = Company::Get(old_owner);
 		for (Group *g : Group::Iterate()) {
-			if (g->owner == old_owner) g->owner = new_owner;
+			if (g->owner == old_owner) {
+				g->owner = new_owner;
+				g->number = c->freegroups.UseID(c->freegroups.NextID());
+			}
 		}
 	}
 
