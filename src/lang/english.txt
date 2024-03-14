@@ -2574,6 +2574,7 @@ STR_NETWORK_ERROR_BAD_PLAYER_NAME                               :{WHITE}Your pla
 STR_NETWORK_ERROR_BAD_SERVER_NAME                               :{WHITE}Your server name has not been set. The name can be set at the top of the Multiplayer window
 STR_NETWORK_ERROR_WRONG_REVISION                                :{WHITE}The revision of this client does not match the server's revision
 STR_NETWORK_ERROR_WRONG_PASSWORD                                :{WHITE}Wrong password
+STR_NETWORK_ERROR_NOT_ON_ALLOW_LIST                             :{WHITE}You are not on the list of allowed clients
 STR_NETWORK_ERROR_SERVER_FULL                                   :{WHITE}The server is full
 STR_NETWORK_ERROR_SERVER_BANNED                                 :{WHITE}You are banned from this server
 STR_NETWORK_ERROR_KICKED                                        :{WHITE}You were kicked out of the game
@@ -2589,7 +2590,7 @@ STR_NETWORK_ERROR_INVALID_CLIENT_NAME                           :{WHITE}Your pla
 STR_NETWORK_ERROR_CLIENT_GUI_LOST_CONNECTION_CAPTION            :{WHITE}Possible connection loss
 STR_NETWORK_ERROR_CLIENT_GUI_LOST_CONNECTION                    :{WHITE}The last {NUM} second{P "" s} no data has arrived from the server
 
-###length 21
+###length 22
 STR_NETWORK_ERROR_CLIENT_GENERAL                                :general error
 STR_NETWORK_ERROR_CLIENT_DESYNC                                 :desync error
 STR_NETWORK_ERROR_CLIENT_SAVEGAME                               :could not load map
@@ -2601,6 +2602,7 @@ STR_NETWORK_ERROR_CLIENT_NOT_EXPECTED                           :received invali
 STR_NETWORK_ERROR_CLIENT_WRONG_REVISION                         :wrong revision
 STR_NETWORK_ERROR_CLIENT_NAME_IN_USE                            :name already in use
 STR_NETWORK_ERROR_CLIENT_WRONG_PASSWORD                         :wrong password
+STR_NETWORK_ERROR_CLIENT_NOT_ON_ALLOW_LIST                      :not on allow list
 STR_NETWORK_ERROR_CLIENT_COMPANY_MISMATCH                       :wrong company in DoCommand
 STR_NETWORK_ERROR_CLIENT_KICKED                                 :kicked by server
 STR_NETWORK_ERROR_CLIENT_CHEATER                                :was trying to use a cheat
