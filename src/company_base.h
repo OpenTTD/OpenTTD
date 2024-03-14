@@ -146,6 +146,7 @@ struct Company : CompanyProperties, CompanyPool::PoolItem<&_company_pool> {
 	CompanyInfrastructure infrastructure; ///< NOSAVE: Counts of company owned infrastructure.
 
 	FreeUnitIDGenerator freeunits[VEH_COMPANY_END];
+	FreeUnitIDGenerator freegroups;
 
 	Money GetMaxLoan() const;
 

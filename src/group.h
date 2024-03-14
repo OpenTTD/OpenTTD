@@ -81,6 +81,7 @@ struct Group : GroupPool::PoolItem<&_group_pool> {
 	bool folded;                ///< NOSAVE: Is this group folded in the group view?
 
 	GroupID parent;             ///< Parent group
+	uint16_t number; ///< Per-company group number.
 
 	Group(CompanyID owner = INVALID_COMPANY);
 };
