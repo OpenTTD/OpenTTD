@@ -513,9 +513,9 @@ bool CanDeleteHouse(TileIndex tile)
 {
 	const HouseSpec *hs = HouseSpec::Get(GetHouseType(tile));
 
-	/* Humans are always allowed to remove buildings, as is water and disasters and
+	/* Companies are always allowed to remove buildings, as is water and disasters and
 	 * anyone using the scenario editor. */
-	if (Company::IsValidHumanID(_current_company) || _current_company == OWNER_WATER || _current_company == OWNER_NONE || _game_mode == GM_EDITOR || _generating_world) {
+	if (Company::IsValidID(_current_company) || _current_company == OWNER_WATER || _current_company == OWNER_NONE || _game_mode == GM_EDITOR || _generating_world) {
 		return true;
 	}
 
