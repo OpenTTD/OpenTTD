@@ -191,8 +191,8 @@ struct VehicleSpriteSeq {
 struct MutableSpriteCache {
 	Direction last_direction;     ///< Last direction we obtained sprites for
 	bool revalidate_before_draw;  ///< We need to do a GetImage() and check bounds before drawing this sprite
-	Rect old_coord;               ///< Co-ordinates from the last valid bounding box
 	bool is_viewport_candidate;   ///< This vehicle can potentially be drawn on a viewport
+	Rect old_coord;               ///< Co-ordinates from the last valid bounding box
 	VehicleSpriteSeq sprite_seq;  ///< Vehicle appearance.
 };
 
@@ -327,26 +327,28 @@ public:
 	uint32_t motion_counter;              ///< counter to occasionally play a vehicle sound.
 	uint8_t progress;                      ///< The percentage (if divided by 256) this vehicle already crossed the tile unit.
 
-	uint16_t random_bits; ///< Bits used for randomized variational spritegroups.
 	uint8_t waiting_triggers;              ///< Triggers to be yet matched before rerandomizing the random bits.
+	uint16_t random_bits; ///< Bits used for randomized variational spritegroups.
 
 	StationID last_station_visited;     ///< The last station we stopped at.
 	StationID last_loading_station;     ///< Last station the vehicle has stopped at and could possibly leave from with any cargo loaded.
 	TimerGameTick::TickCounter last_loading_tick; ///< Last TimerGameTick::counter tick that the vehicle has stopped at a station and could possibly leave with any cargo loaded.
 
+	VehicleCargoList cargo;             ///< The cargo this vehicle is carrying
 	CargoID cargo_type;                 ///< type of cargo this vehicle is carrying
 	uint8_t cargo_subtype;                 ///< Used for livery refits (NewGRF variations)
 	uint16_t cargo_cap;                   ///< total capacity
 	uint16_t refit_cap;                   ///< Capacity left over from before last refit.
-	VehicleCargoList cargo;             ///< The cargo this vehicle is carrying
 	uint16_t cargo_age_counter;           ///< Ticks till cargo is aged next.
 	int8_t trip_occupancy;                ///< NOSAVE: Occupancy of vehicle of the current trip (updated after leaving a station).
 
 	uint8_t day_counter;                   ///< Increased by one for each day
 	uint8_t tick_counter;                  ///< Increased by one for each tick
 	uint8_t running_ticks;                 ///< Number of ticks this vehicle was not stopped this day
+	uint16_t load_unload_ticks;           ///< Ticks to wait before starting next cycle.
 
 	uint8_t vehstatus;                     ///< Status
+	uint8_t subtype;                       ///< subtype (Filled with values from #AircraftSubType/#DisasterSubType/#EffectVehicleType/#GroundVehicleSubtypeFlags)
 	Order current_order;                ///< The current order (+ status, like: loading)
 
 	union {
@@ -354,12 +356,10 @@ public:
 		Order *old_orders;              ///< Only used during conversion of old save games
 	};
 
-	uint16_t load_unload_ticks;           ///< Ticks to wait before starting next cycle.
-	GroupID group_id;                   ///< Index of group Pool array
-	uint8_t subtype;                       ///< subtype (Filled with values from #AircraftSubType/#DisasterSubType/#EffectVehicleType/#GroundVehicleSubtypeFlags)
-
 	NewGRFCache grf_cache;              ///< Cache of often used calculated NewGRF values
 	VehicleCache vcache;                ///< Cache of often used vehicle values.
+
+	GroupID group_id;                   ///< Index of group Pool array
 
 	mutable MutableSpriteCache sprite_cache; ///< Cache of sprites and values related to recalculating them, see #MutableSpriteCache
 

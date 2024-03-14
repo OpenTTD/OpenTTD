@@ -85,21 +85,20 @@ struct TrainCache {
  * 'Train' is either a loco or a wagon.
  */
 struct Train final : public GroundVehicle<Train, VEH_TRAIN> {
+	uint16_t flags;
+	uint16_t crash_anim_pos; ///< Crash animation counter.
+	uint16_t wait_counter; ///< Ticks waiting in front of a signal, ticks being stuck or a counter for forced proceeding through signals.
+
 	TrainCache tcache;
 
 	/* Link between the two ends of a multiheaded engine */
 	Train *other_multiheaded_part;
 
-	uint16_t crash_anim_pos; ///< Crash animation counter.
+	RailTypes compatible_railtypes;
+	RailType railtype;
 
-	uint16_t flags;
 	TrackBits track;
 	TrainForceProceeding force_proceed;
-	RailType railtype;
-	RailTypes compatible_railtypes;
-
-	/** Ticks waiting in front of a signal, ticks being stuck or a counter for forced proceeding through signals. */
-	uint16_t wait_counter;
 
 	/** We don't want GCC to zero our struct! It already is zeroed and has an index! */
 	Train() : GroundVehicleBase() {}
