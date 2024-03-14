@@ -707,7 +707,7 @@ NetworkRecvStatus ClientNetworkGameSocketHandler::Receive_SERVER_ERROR(Packet &p
 
 NetworkRecvStatus ClientNetworkGameSocketHandler::Receive_SERVER_CHECK_NEWGRFS(Packet &p)
 {
-	if (this->status != STATUS_AUTHENTICATED) return NETWORK_RECV_STATUS_MALFORMED_PACKET;
+	if (this->status != STATUS_ENCRYPTED) return NETWORK_RECV_STATUS_MALFORMED_PACKET;
 
 	uint grf_count = p.Recv_uint8();
 	NetworkRecvStatus ret = NETWORK_RECV_STATUS_OKAY;
@@ -775,16 +775,18 @@ NetworkRecvStatus ClientNetworkGameSocketHandler::Receive_SERVER_AUTH_REQUEST(Pa
 	}
 }
 
-NetworkRecvStatus ClientNetworkGameSocketHandler::Receive_SERVER_AUTH_COMPLETED(Packet &)
+NetworkRecvStatus ClientNetworkGameSocketHandler::Receive_SERVER_ENABLE_ENCRYPTION(Packet &)
 {
 	if (this->status != STATUS_AUTH_GAME || this->authentication_handler == nullptr) return NETWORK_RECV_STATUS_MALFORMED_PACKET;
 
-	Debug(net, 9, "Client::Receive_SERVER_AUTH_COMPLETED()");
+	Debug(net, 9, "Client::Receive_SERVER_ENABLE_ENCRYPTION()");
 
+	this->receive_encryption_handler = this->authentication_handler->CreateServerToClientEncryptionHandler();
+	this->send_encryption_handler = this->authentication_handler->CreateClientToServerEncryptionHandler();
 	this->authentication_handler = nullptr;
 
-	Debug(net, 9, "Client::status = AUTHENTICATED");
-	this->status = STATUS_AUTHENTICATED;
+	Debug(net, 9, "Client::status = ENCRYPTED");
+	this->status = STATUS_ENCRYPTED;
 
 	return this->SendIdentify();
 }
@@ -798,7 +800,7 @@ class CompanyPasswordRequest : public NetworkAuthenticationPasswordRequest {
 
 NetworkRecvStatus ClientNetworkGameSocketHandler::Receive_SERVER_NEED_COMPANY_PASSWORD(Packet &p)
 {
-	if (this->status < STATUS_AUTHENTICATED || this->status >= STATUS_AUTH_COMPANY) return NETWORK_RECV_STATUS_MALFORMED_PACKET;
+	if (this->status < STATUS_ENCRYPTED || this->status >= STATUS_AUTH_COMPANY) return NETWORK_RECV_STATUS_MALFORMED_PACKET;
 	Debug(net, 9, "Client::status = AUTH_COMPANY");
 	this->status = STATUS_AUTH_COMPANY;
 
@@ -819,7 +821,7 @@ NetworkRecvStatus ClientNetworkGameSocketHandler::Receive_SERVER_NEED_COMPANY_PA
 
 NetworkRecvStatus ClientNetworkGameSocketHandler::Receive_SERVER_WELCOME(Packet &p)
 {
-	if (this->status < STATUS_AUTHENTICATED || this->status >= STATUS_AUTHORIZED) return NETWORK_RECV_STATUS_MALFORMED_PACKET;
+	if (this->status < STATUS_ENCRYPTED || this->status >= STATUS_AUTHORIZED) return NETWORK_RECV_STATUS_MALFORMED_PACKET;
 	Debug(net, 9, "Client::status = AUTHORIZED");
 	this->status = STATUS_AUTHORIZED;
 

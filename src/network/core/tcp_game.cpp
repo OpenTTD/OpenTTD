@@ -85,7 +85,7 @@ NetworkRecvStatus NetworkGameSocketHandler::HandlePacket(Packet &p)
 		case PACKET_SERVER_AUTH_REQUEST:          return this->Receive_SERVER_AUTH_REQUEST(p);
 		case PACKET_SERVER_NEED_COMPANY_PASSWORD: return this->Receive_SERVER_NEED_COMPANY_PASSWORD(p);
 		case PACKET_CLIENT_AUTH_RESPONSE:         return this->Receive_CLIENT_AUTH_RESPONSE(p);
-		case PACKET_SERVER_AUTH_COMPLETED:        return this->Receive_SERVER_AUTH_COMPLETED(p);
+		case PACKET_SERVER_ENABLE_ENCRYPTION:     return this->Receive_SERVER_ENABLE_ENCRYPTION(p);
 		case PACKET_CLIENT_COMPANY_PASSWORD:      return this->Receive_CLIENT_COMPANY_PASSWORD(p);
 		case PACKET_SERVER_WELCOME:               return this->Receive_SERVER_WELCOME(p);
 		case PACKET_CLIENT_GETMAP:                return this->Receive_CLIENT_GETMAP(p);
@@ -168,7 +168,7 @@ NetworkRecvStatus NetworkGameSocketHandler::Receive_CLIENT_IDENTIFY(Packet &) { 
 NetworkRecvStatus NetworkGameSocketHandler::Receive_SERVER_AUTH_REQUEST(Packet &) { return this->ReceiveInvalidPacket(PACKET_SERVER_AUTH_REQUEST); }
 NetworkRecvStatus NetworkGameSocketHandler::Receive_SERVER_NEED_COMPANY_PASSWORD(Packet &) { return this->ReceiveInvalidPacket(PACKET_SERVER_NEED_COMPANY_PASSWORD); }
 NetworkRecvStatus NetworkGameSocketHandler::Receive_CLIENT_AUTH_RESPONSE(Packet &) { return this->ReceiveInvalidPacket(PACKET_CLIENT_AUTH_RESPONSE); }
-NetworkRecvStatus NetworkGameSocketHandler::Receive_SERVER_AUTH_COMPLETED(Packet &) { return this->ReceiveInvalidPacket(PACKET_SERVER_AUTH_COMPLETED); }
+NetworkRecvStatus NetworkGameSocketHandler::Receive_SERVER_ENABLE_ENCRYPTION(Packet &) { return this->ReceiveInvalidPacket(PACKET_SERVER_ENABLE_ENCRYPTION); }
 NetworkRecvStatus NetworkGameSocketHandler::Receive_CLIENT_COMPANY_PASSWORD(Packet &) { return this->ReceiveInvalidPacket(PACKET_CLIENT_COMPANY_PASSWORD); }
 NetworkRecvStatus NetworkGameSocketHandler::Receive_SERVER_WELCOME(Packet &) { return this->ReceiveInvalidPacket(PACKET_SERVER_WELCOME); }
 NetworkRecvStatus NetworkGameSocketHandler::Receive_CLIENT_GETMAP(Packet &) { return this->ReceiveInvalidPacket(PACKET_CLIENT_GETMAP); }

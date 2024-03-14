@@ -47,7 +47,7 @@ protected:
 	NetworkRecvStatus SendNewGRFCheck();
 	NetworkRecvStatus SendWelcome();
 	NetworkRecvStatus SendAuthRequest();
-	NetworkRecvStatus SendAuthCompleted();
+	NetworkRecvStatus SendEnableEncryption();
 	NetworkRecvStatus SendNeedCompanyPassword();
 
 public:

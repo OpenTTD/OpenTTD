@@ -74,7 +74,7 @@ public:
 	bool HasPacketSizeData() const;
 	bool ParsePacketSize();
 	size_t Size() const;
-	void PrepareToRead();
+	[[nodiscard]] bool PrepareToRead();
 	PacketType GetPacketType() const;
 
 	bool   CanReadFromPacket(size_t bytes_to_read, bool close_connection = false);

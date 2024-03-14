@@ -457,15 +457,15 @@ NetworkRecvStatus ServerNetworkGameSocketHandler::SendAuthRequest()
 	return NETWORK_RECV_STATUS_OKAY;
 }
 
-/** Notify the client that the authentication has completed. */
-NetworkRecvStatus ServerNetworkGameSocketHandler::SendAuthCompleted()
+/** Notify the client that the authentication has completed and tell that for the remainder of this socket encryption is enabled. */
+NetworkRecvStatus ServerNetworkGameSocketHandler::SendEnableEncryption()
 {
-	Debug(net, 9, "client[{}] SendAuthCompleted()", this->client_id);
+	Debug(net, 9, "client[{}] SendEnableEncryption()", this->client_id);
 
 	/* Invalid packet when status is anything but STATUS_AUTH_GAME. */
 	if (this->status != STATUS_AUTH_GAME) return this->CloseConnection(NETWORK_RECV_STATUS_MALFORMED_PACKET);
 
-	auto p = std::make_unique<Packet>(this, PACKET_SERVER_AUTH_COMPLETED);
+	auto p = std::make_unique<Packet>(this, PACKET_SERVER_ENABLE_ENCRYPTION);
 	this->SendPacket(std::move(p));
 	return NETWORK_RECV_STATUS_OKAY;
 }
@@ -999,9 +999,11 @@ NetworkRecvStatus ServerNetworkGameSocketHandler::Receive_CLIENT_AUTH_RESPONSE(P
 			return this->SendError(GetErrorForAuthenticationMethod(authentication_method));
 	}
 
-	NetworkRecvStatus status = this->SendAuthCompleted();
+	NetworkRecvStatus status = this->SendEnableEncryption();
 	if (status != NETWORK_RECV_STATUS_OKAY) return status;
 
+	this->receive_encryption_handler = this->authentication_handler->CreateClientToServerEncryptionHandler();
+	this->send_encryption_handler = this->authentication_handler->CreateServerToClientEncryptionHandler();
 	this->authentication_handler = nullptr;
 
 	Debug(net, 9, "client[{}] status = IDENTIFY", this->client_id);
