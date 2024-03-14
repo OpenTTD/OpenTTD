@@ -120,7 +120,7 @@ void Train::ConsistChanged(ConsistChangeFlags allowed_changes)
 	this->compatible_railtypes = RAILTYPES_NONE;
 
 	bool train_can_tilt = true;
-	int min_curve_speed_mod = INT_MAX;
+	int16_t min_curve_speed_mod = INT16_MAX;
 
 	for (Train *u = this; u != nullptr; u = u->Next()) {
 		const RailVehicleInfo *rvi_u = RailVehInfo(u->engine_type);
@@ -305,7 +305,7 @@ int GetTrainStopLocation(StationID station_id, TileIndex tile, const Train *v, i
  * Computes train speed limit caused by curves
  * @return imposed speed limit
  */
-int Train::GetCurveSpeedLimit() const
+uint16_t Train::GetCurveSpeedLimit() const
 {
 	assert(this->First() == this);
 
@@ -372,7 +372,7 @@ int Train::GetCurveSpeedLimit() const
 		max_speed = Clamp(max_speed, 2, absolute_max_speed);
 	}
 
-	return max_speed;
+	return static_cast<uint16_t>(max_speed);
 }
 
 /**
