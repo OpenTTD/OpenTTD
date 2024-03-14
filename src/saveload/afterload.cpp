@@ -1708,14 +1708,15 @@ bool AfterLoadGame()
 		}
 	}
 
+	/* At version 78, industry cargo types can be changed, and are stored with the industry. For older save versions
+	 * copy the IndustrySpec's cargo types over to the Industry. */
 	if (IsSavegameVersionBefore(SLV_78)) {
-		uint j;
-		for (Industry * i : Industry::Iterate()) {
+		for (Industry *i : Industry::Iterate()) {
 			const IndustrySpec *indsp = GetIndustrySpec(i->type);
-			for (j = 0; j < lengthof(i->produced); j++) {
+			for (uint j = 0; j < std::size(i->produced); j++) {
 				i->produced[j].cargo = indsp->produced_cargo[j];
 			}
-			for (j = 0; j < lengthof(i->accepted); j++) {
+			for (uint j = 0; j < std::size(i->accepted); j++) {
 				i->accepted[j].cargo = indsp->accepts_cargo[j];
 			}
 		}
@@ -3043,21 +3044,11 @@ bool AfterLoadGame()
 	if (IsSavegameVersionBefore(SLV_EXTEND_INDUSTRY_CARGO_SLOTS)) {
 		/* Make sure added industry cargo slots are cleared */
 		for (Industry *i : Industry::Iterate()) {
-			for (auto it = std::begin(i->produced) + 2; it != std::end(i->produced); ++it) {
-				it->cargo = INVALID_CARGO;
-				it->waiting = 0;
-				it->rate = 0;
-				it->history = {};
-			}
-			for (auto it = std::begin(i->accepted) + 3; it != std::end(i->accepted); ++it) {
-				it->cargo = INVALID_CARGO;
-				it->waiting = 0;
-			}
 			/* Make sure last_cargo_accepted_at is copied to elements for every valid input cargo.
 			 * The loading routine should put the original singular value into the first array element. */
 			for (auto &a : i->accepted) {
 				if (IsValidCargoID(a.cargo)) {
-					a.last_accepted = i->accepted[0].last_accepted;
+					a.last_accepted = i->GetAccepted(0).last_accepted;
 				} else {
 					a.last_accepted = 0;
 				}
