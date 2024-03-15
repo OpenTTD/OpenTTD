@@ -379,6 +379,18 @@ enum SaveLoadVersion : uint16_t {
 	SLV_SCRIPT_RANDOMIZER,                  ///< 333  PR#12063 v14.0-RC1 Save script randomizers.
 	SLV_VEHICLE_ECONOMY_AGE,                ///< 334  PR#12141 v14.0 Add vehicle age in economy year, for profit stats minimum age
 
+	SLV_ADD_DEPOTS_TO_HANGARS,              ///< XXX  PR#10691 Add depots to airports that have a hangar.
+
+	SLV_DEPOTID_IN_HANGAR_ORDERS,           ///< 320  PR#10691 Go to hangar orders store the DepotID instead of StationID.
+
+	SLV_DEPOTID_BACKUP_ORDERS,              ///< 314  PR#XXXXX Backup orders are indexed through DepotIDs.
+
+	SLV_ALIGN_WATER_BITS,                   ///< 315  PR#XXXXX Align some water bits in the map array.
+	SLV_DEPOTS_ALIGN_RAIL_DEPOT_BITS,       ///< 316  PR#XXXXX Align one bit for rail depots.
+	SLV_ADD_MEMBERS_TO_DEPOT_STRUCT,        ///< 317  PR#XXXXX Add some members to depot struct.
+	SLV_DEPOT_SPREAD,                       ///< 318  PR#XXXXX Add a setting for max depot spread.
+	SLV_ALLOW_INCOMPATIBLE_REPLACEMENTS,    ///< 319  PR#XXXXX Allow incompatible vehicle replacements.
+
 	SL_MAX_VERSION,                         ///< Highest possible saveload version
 };
 
@@ -592,6 +604,7 @@ enum SLRefType {
 	REF_STORAGE        =  9, ///< Load/save a reference to a persistent storage.
 	REF_LINK_GRAPH     = 10, ///< Load/save a reference to a link graph.
 	REF_LINK_GRAPH_JOB = 11, ///< Load/save a reference to a link graph job.
+	REF_DEPOT          = 12, ///< Load/save a reference to a depot.
 };
 
 /**
