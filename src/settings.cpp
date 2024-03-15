@@ -137,6 +137,7 @@ private:
 		"newgrf",
 		"servers",
 		"server_bind_addresses",
+		"server_authorized_keys",
 	};
 
 public:
@@ -1285,6 +1286,7 @@ static void HandleSettingDescs(IniFile &generic_ini, IniFile &private_ini, IniFi
 		proc_list(private_ini, "server_bind_addresses", _network_bind_list);
 		proc_list(private_ini, "servers", _network_host_list);
 		proc_list(private_ini, "bans", _network_ban_list);
+		proc_list(private_ini, "server_authorized_keys", _settings_client.network.server_authorized_keys);
 	}
 }
 
