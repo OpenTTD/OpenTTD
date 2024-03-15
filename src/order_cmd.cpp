@@ -2189,9 +2189,23 @@ bool ProcessOrders(Vehicle *v)
 	}
 
 	/* If it is unchanged, keep it. */
-	if (order->Equals(v->current_order) && (v->type == VEH_AIRCRAFT || v->dest_tile != 0) &&
-			(v->type != VEH_SHIP || !order->IsType(OT_GOTO_STATION) || Station::Get(order->GetDestination())->ship_station.tile != INVALID_TILE)) {
-		return false;
+	if (order->Equals(v->current_order) && (v->type == VEH_AIRCRAFT || v->dest_tile != 0)) {
+		if (v->type != VEH_SHIP) {
+			return false;
+		} else {
+			switch (order->GetType()) {
+				case OT_GOTO_STATION:
+					if (Station::Get(order->GetDestination())->ship_station.tile != INVALID_TILE) return false;
+					break;
+
+				case OT_GOTO_WAYPOINT:
+					if (Waypoint::Get(order->GetDestination())->xy == v->dest_tile) return false;
+					break;
+
+				default:
+					return false;
+			}
+		}
 	}
 
 	/* Otherwise set it, and determine the destination tile. */
