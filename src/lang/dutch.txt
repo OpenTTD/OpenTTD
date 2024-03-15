@@ -1561,7 +1561,7 @@ STR_CONFIG_SETTING_INDUSTRY_DENSITY                             :Industriedichth
 STR_CONFIG_SETTING_INDUSTRY_DENSITY_HELPTEXT                    :Stelt in hoeveel industrieën worden gegenereerd en welk niveau tijdens het spel moet worden gehandhaafd
 
 STR_CONFIG_SETTING_OIL_REF_EDGE_DISTANCE                        :Maximumafstand van de rand voor olieraffinaderijen: {STRING}
-STR_CONFIG_SETTING_OIL_REF_EDGE_DISTANCE_HELPTEXT               :Olieraffinaderijen worden alleen gebouwd nabij de kaartgrens, dat is aan de kust van eilandkaarten
+STR_CONFIG_SETTING_OIL_REF_EDGE_DISTANCE_HELPTEXT               :Limiet voor hoe ver van de kaartgrens olieraffinaderijen en booreilanden kunnen worden gebouwd. Op eilandkaarten zorgt dit ervoor dat ze dichtbij de kust liggen. Op kaarten groter dan 256 wordt deze waarde opgeschaald.
 
 STR_CONFIG_SETTING_SNOWLINE_HEIGHT                              :Sneeuwhoogte: {STRING}
 STR_CONFIG_SETTING_SNOWLINE_HEIGHT_HELPTEXT                     :Kies op welke hoogte de sneeuw begint in subarctisch landschap. Sneeuw heeft ook invloed op het ontstaan van industrieën en op de vereisten voor stadsgroei. Kan alleen worden aangepast in de scenariobewerker of wordt berekend met behulp van 'sneeuwoppervlak'
@@ -2031,9 +2031,9 @@ STR_CONFIG_SETTING_CITY_SIZE_MULTIPLIER                         :Beginfactor voo
 STR_CONFIG_SETTING_CITY_SIZE_MULTIPLIER_HELPTEXT                :Gemiddelde grootte van steden in vergelijking tot normale steden bij het begin van het spel.
 
 STR_CONFIG_SETTING_LINKGRAPH_RECALC_INTERVAL                    :Distributiegrafiek elke {STRING} bijwerken
-STR_CONFIG_SETTING_LINKGRAPH_RECALC_INTERVAL_HELPTEXT           :De tijd tussen opeenvolgende herberekeningen van de koppeling-grafiek. Elke berekening berekent de plannen voor één component van de grafiek. Dat betekent dat een waarde X voor deze instelling niet betekent dat de hele grafiek elke X seconden wordt bijgewerkt. Dat geldt alleen voor één component. Hoe korter je deze waarde instelt, hoe meer CPU-tijd er nodig is voor de berekening. Hoe langer je deze waarde instelt, hoe langer het duurt voordat de vrachtdistributie start op nieuwe routes.
+STR_CONFIG_SETTING_LINKGRAPH_RECALC_INTERVAL_HELPTEXT           :De tijd tussen opeenvolgende herberekeningen van de koppelingsgrafiek. Elke berekening berekent de plannen voor één component van de grafiek. Dat betekent dat een waarde X voor deze instelling niet betekent dat de hele grafiek elke X seconden wordt bijgewerkt. Dat geldt alleen voor één component. Hoe korter je deze waarde instelt, hoe meer CPU-tijd er nodig is voor de berekening. Hoe langer je deze waarde instelt, hoe langer het duurt voordat de vrachtdistributie start op nieuwe routes.
 STR_CONFIG_SETTING_LINKGRAPH_RECALC_TIME                        :{STRING} per herberekening van de distributiegrafiek besteden
-STR_CONFIG_SETTING_LINKGRAPH_RECALC_TIME_HELPTEXT               :De benodigde tijd voor een herbereking van een koppeling-grafiekcomponent. Wanneer een herberekening wordt gestart, start een draad die dit aantal seconden mag lopen. Hoe korter je deze waarde maakt, hoe groter de kans dat de draad niet op tijd is afgelopen. Het spel stopt dan totdat dit alsnog gebeurt (het 'hikt'). Hoe langer je deze waarde maakt, hoe langer het duurt voor de distributie wordt bijgewerkt wanneer een route wijzigt.
+STR_CONFIG_SETTING_LINKGRAPH_RECALC_TIME_HELPTEXT               :De benodigde tijd voor een herberekening van een koppelingsgrafiekcomponent. Wanneer een herberekening wordt gestart, start een proces die dit aantal seconden mag lopen. Hoe korter je deze waarde maakt, hoe groter de kans dat het proces niet op tijd is afgelopen. Het spel stopt dan totdat dit alsnog gebeurt (het 'hikt'). Hoe langer je deze waarde maakt, hoe langer het duurt voor de distributie wordt bijgewerkt wanneer een route wijzigt.
 
 STR_CONFIG_SETTING_DISTRIBUTION_PAX                             :Distributiemodus voor passagiers: {STRING}
 STR_CONFIG_SETTING_DISTRIBUTION_PAX_HELPTEXT                    :'Symmetrisch' betekent dat ongeveer hetzelfde aantal passagiers van station A naar station B gaat als van B naar A. 'Asymmetrisch' betekent dat willekeurige aantallen passagiers reizen in beide richtingen. 'Handmatig' betekent dat er geen automatische distributie plaatsvindt voor passagiers.
@@ -2049,7 +2049,7 @@ STR_CONFIG_SETTING_DISTRIBUTION_ASYMMETRIC                      :Asymmetrisch
 STR_CONFIG_SETTING_DISTRIBUTION_SYMMETRIC                       :Symmetrisch
 
 STR_CONFIG_SETTING_LINKGRAPH_ACCURACY                           :Verdeelnauwkeurigheid: {STRING}
-STR_CONFIG_SETTING_LINKGRAPH_ACCURACY_HELPTEXT                  :Hoe hoger de instelling, des te meer CPU-tijd de berekening van de linkgrafiek zal gebruiken. Als het te lang duurt, kan dan dat lag opleveren. Als je dit echter op een lage waarde instelt, zal de verdeling onnauwkeurig zijn, en kan het zijn dat vracht niet wordt gestuurd naar de plekken waar het naartoe moet gaan.
+STR_CONFIG_SETTING_LINKGRAPH_ACCURACY_HELPTEXT                  :Hoe hoger de instelling, des te meer CPU-tijd de berekening van de linkgrafiek zal gebruiken. Als het te lang duurt, kan dat lag opleveren. Als je dit echter op een lage waarde instelt, zal de verdeling onnauwkeurig zijn en kan het zijn dat vracht niet wordt gestuurd naar de plekken waar het naartoe moet gaan.
 
 STR_CONFIG_SETTING_DEMAND_DISTANCE                              :Effect van afstand op de vraag: {STRING}
 STR_CONFIG_SETTING_DEMAND_DISTANCE_HELPTEXT                     :Als je dit op een waarde hoger dan 0 zet, dan zal de afstand tussen het station van herkomst A met enige vracht en een mogelijke bestemming B effect hebben op de hoeveelheid lading verzonden van A naar B. Hoe verder weg B is van A, des te minder lading wordt verzonden. Hoe hoger je deze instelt, hoe minder lading wordt verzonden naar verder geleden stations en meer lading zal worden verzonden naar dichtbij gelegen stations.
@@ -4026,7 +4026,7 @@ STR_GROUP_DEFAULT_AIRCRAFTS                                     :Niet-gegroepeer
 
 STR_GROUP_COUNT_WITH_SUBGROUP                                   :{TINY_FONT}{COMMA} (+{COMMA})
 
-STR_GROUPS_CLICK_ON_GROUP_FOR_TOOLTIP                           :{BLACK}Groepen - Klik op een groep voor een lijst van alle voertuigen in deze groep. Klik en sleep om hiërarchie te beheren
+STR_GROUPS_CLICK_ON_GROUP_FOR_TOOLTIP                           :{BLACK}Groepen - Klik op een groep voor een lijst van alle voertuigen in deze groep. Klik en sleep om hiërarchie te ordenen
 STR_GROUP_CREATE_TOOLTIP                                        :{BLACK}Klik om een groep te creëren
 STR_GROUP_DELETE_TOOLTIP                                        :{BLACK}Verwijder de geselecteerde groep
 STR_GROUP_RENAME_TOOLTIP                                        :{BLACK}Hiermee hernoem je de geselecteerde groep

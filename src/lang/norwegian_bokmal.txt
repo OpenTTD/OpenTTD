@@ -893,7 +893,7 @@ STR_NEWS_AIRCRAFT_IS_WAITING                                    :{WHITE}{VEHICLE
 ###next-name-looks-similar
 
 # Order review system / warnings
-STR_NEWS_VEHICLE_HAS_TOO_FEW_ORDERS                             :{WHITE}{VEHICLE} har for få ordre på ruteplanen
+STR_NEWS_VEHICLE_HAS_TOO_FEW_ORDERS                             :{WHITE}{VEHICLE} har for få ordre på ordrelisten
 STR_NEWS_VEHICLE_HAS_VOID_ORDER                                 :{WHITE}{VEHICLE} har en tom ordre
 STR_NEWS_VEHICLE_HAS_DUPLICATE_ENTRY                            :{WHITE}{VEHICLE} har doble ordre
 STR_NEWS_VEHICLE_HAS_INVALID_ENTRY                              :{WHITE}{VEHICLE} har en ugyldig stasjon i ordrelisten
@@ -3810,10 +3810,10 @@ STR_CARGO_RATING_OUTSTANDING                                    :Fremragende
 STR_STATION_VIEW_CENTER_TOOLTIP                                 :{BLACK}Sentrer hovedvisningen på stasjonslokasjon. Ctrl+klikk for å åpne et nytt tilleggsvindu på stasjonslokasjon
 STR_STATION_VIEW_RENAME_TOOLTIP                                 :{BLACK}Endre stasjonens navn
 
-STR_STATION_VIEW_SCHEDULED_TRAINS_TOOLTIP                       :{BLACK}Vis alle tog som har denne stasjonen på sin ruteplan
-STR_STATION_VIEW_SCHEDULED_ROAD_VEHICLES_TOOLTIP                :{BLACK}Vis alle kjøretøy som har denne stasjonen på sin ruteplan
-STR_STATION_VIEW_SCHEDULED_AIRCRAFT_TOOLTIP                     :{BLACK}Vis alle luftfartøy som har denne stasjonen på sin ruteplan
-STR_STATION_VIEW_SCHEDULED_SHIPS_TOOLTIP                        :{BLACK}Vis alle skip som har denne stasjonen på sin ruteplan
+STR_STATION_VIEW_SCHEDULED_TRAINS_TOOLTIP                       :{BLACK}Vis alle tog som har denne stasjonen på sin ordreliste
+STR_STATION_VIEW_SCHEDULED_ROAD_VEHICLES_TOOLTIP                :{BLACK}Vis alle kjøretøy som har denne stasjonen på sin ordreliste
+STR_STATION_VIEW_SCHEDULED_AIRCRAFT_TOOLTIP                     :{BLACK}Vis alle luftfartøy som har denne stasjonen på sin ordreliste
+STR_STATION_VIEW_SCHEDULED_SHIPS_TOOLTIP                        :{BLACK}Vis alle skip som har denne stasjonen på sin ordreliste
 
 STR_STATION_VIEW_RENAME_STATION_CAPTION                         :Endre navnet til stasjon/godsterminal
 
@@ -4619,7 +4619,7 @@ STR_ORDER_CONDITIONAL                                           :Betinget ordreh
 STR_ORDER_SHARE                                                 :Del ordre
 STR_ORDERS_GO_TO_TOOLTIP                                        :{BLACK}Sett inn en ny ordre før den merkede ordren, eller legg til i slutten av listen. Ctrl+klikk på en stasjon for 'full last av enhver vare', på et veipunkt for å invertere 'direkte' og et depot for  'dele'. Kilkk på et annet transportmiddel for å kopiere dets ordre, eller Ctrl+klikk for å dele ordre. En depotordre deaktiverer automatisk vedlikehold av transportmiddelet
 
-STR_ORDERS_VEH_WITH_SHARED_ORDERS_LIST_TOOLTIP                  :{BLACK}Vis alle kjøretøy som deler denne ruteplanen
+STR_ORDERS_VEH_WITH_SHARED_ORDERS_LIST_TOOLTIP                  :{BLACK}Vis alle kjøretøy som deler denne ordretabellen
 
 # String parts to build the order string
 STR_ORDER_GO_TO_WAYPOINT                                        :Kjør via {WAYPOINT}
