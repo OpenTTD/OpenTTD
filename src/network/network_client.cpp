@@ -882,7 +882,8 @@ NetworkRecvStatus ClientNetworkGameSocketHandler::Receive_SERVER_MAP_DONE(Packet
 	SendMapOk();
 
 	/* As we skipped switch-mode, update the time we "switched". */
-	_switch_mode_time = std::chrono::steady_clock::now();
+	_game_session_stats.start_time = std::chrono::steady_clock::now();
+	_game_session_stats.savegame_size = std::nullopt;
 
 	ShowClientList();
 

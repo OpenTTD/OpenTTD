@@ -236,6 +236,20 @@ void SurveyOpenTTD(nlohmann::json &survey)
 }
 
 /**
+ * Convert game session information to JSON.
+ *
+ * @param survey The JSON object.
+ */
+void SurveyGameSession(nlohmann::json &survey)
+{
+	survey["id"] = _game_session_stats.savegame_id;
+	survey["seconds"] = std::chrono::duration_cast<std::chrono::seconds>(std::chrono::steady_clock::now() - _game_session_stats.start_time).count();
+	if (_game_session_stats.savegame_size.has_value()) {
+		survey["savegame_size"] = _game_session_stats.savegame_size.value();
+	}
+}
+
+/**
  * Convert generic game information to JSON.
  *
  * @param survey The JSON object.
@@ -330,7 +344,6 @@ void SurveyCompanies(nlohmann::json &survey)
 void SurveyTimers(nlohmann::json &survey)
 {
 	survey["ticks"] = TimerGameTick::counter;
-	survey["seconds"] = std::chrono::duration_cast<std::chrono::seconds>(std::chrono::steady_clock::now() - _switch_mode_time).count();
 
 	TimerGameEconomy::YearMonthDay economy_ymd = TimerGameEconomy::ConvertDateToYMD(TimerGameEconomy::date);
 	survey["economy"] = fmt::format("{:04}-{:02}-{:02} ({})", economy_ymd.year, economy_ymd.month + 1, economy_ymd.day, TimerGameEconomy::date_fract);

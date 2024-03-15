@@ -2182,7 +2182,10 @@ struct FileReader : LoadFilter {
 	/** Make sure everything is cleaned up. */
 	~FileReader()
 	{
-		if (this->file != nullptr) fclose(this->file);
+		if (this->file != nullptr) {
+			_game_session_stats.savegame_size = ftell(this->file) - this->begin;
+			fclose(this->file);
+		}
 		this->file = nullptr;
 	}
 
@@ -2231,7 +2234,10 @@ struct FileWriter : SaveFilter {
 
 	void Finish() override
 	{
-		if (this->file != nullptr) fclose(this->file);
+		if (this->file != nullptr) {
+			_game_session_stats.savegame_size = ftell(this->file);
+			fclose(this->file);
+		}
 		this->file = nullptr;
 	}
 };
