@@ -91,4 +91,10 @@ static const uint NETWORK_GRF_NAME_LENGTH           =   80;           ///< Maxim
  */
 static const uint NETWORK_MAX_GRF_COUNT             =   255;
 
+/**
+ * The maximum length of the hexadecimal encoded secret keys, in bytes including '\0'.
+ * This is related to \c X25519_KEY_SIZE in the network crypto internals.
+ */
+static const uint NETWORK_SECRET_KEY_LENGTH = 32 * 2 + 1;
+
 #endif /* NETWORK_CORE_CONFIG_H */

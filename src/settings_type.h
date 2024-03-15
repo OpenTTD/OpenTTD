@@ -313,9 +313,12 @@ struct NetworkSettings {
 	std::string server_invite_code_secret;                ///< Secret to proof we got this invite code from the Game Coordinator.
 	std::string server_name;                              ///< name of the server
 	std::string server_password;                          ///< password for joining this server
+	std::vector<std::string> server_authorized_keys; ///< Public keys of clients that are authorized to connect to the game.
 	std::string rcon_password;                            ///< password for rconsole (server side)
 	std::string admin_password;                           ///< password for the admin network
 	std::string client_name;                              ///< name of the player (as client)
+	std::string client_secret_key; ///< The secret key of the client for authorized key logins.
+	std::string client_public_key; ///< The public key of the client for authorized key logins.
 	std::string default_company_pass;                     ///< default password for new companies in encrypted form
 	std::string connect_to_ip;                            ///< default for the "Add server" query
 	std::string network_id;                               ///< network ID for servers
