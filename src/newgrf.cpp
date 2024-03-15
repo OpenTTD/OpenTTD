@@ -9161,6 +9161,14 @@ static void CalculateRefitMasks()
 				ei->cargo_type = (CargoID)FindFirstBit(ei->refit_mask);
 			}
 		}
+		if (!IsValidCargoID(ei->cargo_type) && e->type == VEH_TRAIN && e->u.rail.railveh_type != RAILVEH_WAGON && e->u.rail.capacity == 0) {
+			/* For train engines which do not carry cargo it does not matter if their cargo type is invalid.
+			 * Fallback to the first available instead, if the cargo type has not been changed (as indicated by
+			 * cargo_label not being CT_INVALID). */
+			if (GetActiveCargoLabel(ei->cargo_label) != CT_INVALID) {
+				ei->cargo_type = static_cast<CargoID>(FindFirstBit(_standard_cargo_mask));
+			}
+		}
 		if (!IsValidCargoID(ei->cargo_type)) ei->climates = 0;
 
 		/* Clear refit_mask for not refittable ships */
