@@ -1022,7 +1022,7 @@ private:
 	};
 	uint num_children;        ///< the number of subentries belonging to this entry.
 	uint count;               ///< sum of counts of all children or amount of cargo for this entry.
-	CargoDataSet *children;   ///< the children of this entry.
+	std::unique_ptr<CargoDataSet> children;   ///< the children of this entry.
 };
 
 CargoDataEntry::CargoDataEntry() :
@@ -1030,7 +1030,7 @@ CargoDataEntry::CargoDataEntry() :
 	station(INVALID_STATION),
 	num_children(0),
 	count(0),
-	children(new CargoDataSet(CargoSorter(CargoSortType::CargoID)))
+	children(std::make_unique<CargoDataSet>(CargoSorter(CargoSortType::CargoID)))
 {}
 
 CargoDataEntry::CargoDataEntry(CargoID cargo, uint count, CargoDataEntry *parent) :
@@ -1038,7 +1038,7 @@ CargoDataEntry::CargoDataEntry(CargoID cargo, uint count, CargoDataEntry *parent
 	cargo(cargo),
 	num_children(0),
 	count(count),
-	children(new CargoDataSet)
+	children(std::make_unique<CargoDataSet>())
 {}
 
 CargoDataEntry::CargoDataEntry(StationID station, uint count, CargoDataEntry *parent) :
@@ -1046,7 +1046,7 @@ CargoDataEntry::CargoDataEntry(StationID station, uint count, CargoDataEntry *pa
 	station(station),
 	num_children(0),
 	count(count),
-	children(new CargoDataSet)
+	children(std::make_unique<CargoDataSet>())
 {}
 
 CargoDataEntry::CargoDataEntry(StationID station) :
@@ -1068,7 +1068,6 @@ CargoDataEntry::CargoDataEntry(CargoID cargo) :
 CargoDataEntry::~CargoDataEntry()
 {
 	this->Clear();
-	delete this->children;
 }
 
 /**
@@ -1146,9 +1145,7 @@ void CargoDataEntry::IncrementSize()
 
 void CargoDataEntry::Resort(CargoSortType type, SortOrder order)
 {
-	CargoDataSet *new_subs = new CargoDataSet(this->children->begin(), this->children->end(), CargoSorter(type, order));
-	delete this->children;
-	this->children = new_subs;
+	this->children = std::make_unique<CargoDataSet>(this->children->begin(), this->children->end(), CargoSorter(type, order));
 }
 
 CargoDataEntry *CargoDataEntry::Retrieve(CargoDataSet::iterator i) const
