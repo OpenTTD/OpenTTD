@@ -1,4 +1,4 @@
-14.0-RC2 (2024-03-09)
+14.0-RC2 (2024-03-16)
 ------------------------------------------------------------------------
 Update: Bump bundled OpenTTD TTF fonts to version v0.6 (#12276)
 Update: Developer credits (#12173, #12235)
