@@ -20,7 +20,7 @@
 /** Scope resolver for handling the tiles of an airport. */
 struct AirportTileScopeResolver : public ScopeResolver {
 	struct Station *st;  ///< %Station of the airport for which the callback is run, or \c nullptr for build gui.
-	byte airport_id;     ///< Type of airport for which the callback is run.
+	uint8_t airport_id;     ///< Type of airport for which the callback is run.
 	TileIndex tile;      ///< Tile for the callback, only valid for airporttile callbacks.
 	const AirportTileSpec *ats;
 
@@ -38,7 +38,7 @@ struct AirportTileScopeResolver : public ScopeResolver {
 	}
 
 	uint32_t GetRandomBits() const override;
-	uint32_t GetVariable(byte variable, [[maybe_unused]] uint32_t parameter, bool *available) const override;
+	uint32_t GetVariable(uint8_t variable, [[maybe_unused]] uint32_t parameter, bool *available) const override;
 };
 
 /** Resolver for tiles of an airport. */
@@ -49,7 +49,7 @@ struct AirportTileResolverObject : public ResolverObject {
 	AirportTileResolverObject(const AirportTileSpec *ats, TileIndex tile, Station *st,
 			CallbackID callback = CBID_NO_CALLBACK, uint32_t callback_param1 = 0, uint32_t callback_param2 = 0);
 
-	ScopeResolver *GetScope(VarSpriteGroupScope scope = VSG_SCOPE_SELF, byte relative = 0) override
+	ScopeResolver *GetScope(VarSpriteGroupScope scope = VSG_SCOPE_SELF, uint8_t relative = 0) override
 	{
 		switch (scope) {
 			case VSG_SCOPE_SELF: return &tiles_scope;

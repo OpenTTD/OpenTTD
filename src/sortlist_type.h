@@ -29,12 +29,12 @@ DECLARE_ENUM_AS_BIT_SET(SortListFlags)
 /** Data structure describing how to show the list (what sort direction and criteria). */
 struct Listing {
 	bool order;    ///< Ascending/descending
-	byte criteria; ///< Sorting criteria
+	uint8_t criteria; ///< Sorting criteria
 };
 /** Data structure describing what to show in the list (filter criteria). */
 struct Filtering {
 	bool state;    ///< Filter on/off
-	byte criteria; ///< Filtering criteria
+	uint8_t criteria; ///< Filtering criteria
 };
 
 /**

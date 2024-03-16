@@ -80,7 +80,7 @@ public:
 	void GRFAddList(const GRFConfig *newg);
 	void GRFRemove(uint32_t grfid);
 	void GRFAdd(const GRFConfig *newg);
-	void GRFBug(uint32_t grfid, byte bug, uint64_t data);
+	void GRFBug(uint32_t grfid, uint8_t bug, uint64_t data);
 	bool GRFBugReverse(uint32_t grfid, uint16_t internal_id);
 	void GRFCompatible(const GRFIdentifier *newg);
 	void GRFMove(uint32_t grfid, int32_t offset);
@@ -89,7 +89,7 @@ public:
 	void TestRevision();
 	void TestMode();
 
-	void Info(uint32_t *last_ottd_rev, byte *ever_modified, bool *removed_newgrfs);
+	void Info(uint32_t *last_ottd_rev, uint8_t *ever_modified, bool *removed_newgrfs);
 	const GRFIdentifier *GetOverriddenIdentifier(const GRFConfig *c);
 
 	/* Saveload handler for gamelog needs access to internal data. */

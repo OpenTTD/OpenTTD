@@ -19,7 +19,7 @@ public:
 	/** Data stored about a (single) sprite. */
 	struct SpriteData {
 		uint32_t offset[ZOOM_LVL_END]; ///< Offsets (from .data) to streams for different zoom levels.
-		byte data[];                   ///< Data, all zoomlevels.
+		uint8_t data[];                   ///< Data, all zoomlevels.
 	};
 
 	void Draw(Blitter::BlitterParams *bp, BlitterMode mode, ZoomLevel zoom) override;

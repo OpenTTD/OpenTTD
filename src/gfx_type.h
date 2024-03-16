@@ -109,7 +109,7 @@ enum WindowKeyCodes {
 struct AnimCursor {
 	static const CursorID LAST = MAX_UVALUE(CursorID);
 	CursorID sprite;   ///< Must be set to LAST_ANIM when it is the last sprite of the loop
-	byte display_time; ///< Amount of ticks this sprite will be shown
+	uint8_t display_time; ///< Amount of ticks this sprite will be shown
 };
 
 /** Collection of variables for cursor-display and -animation */
@@ -227,7 +227,7 @@ struct SubSprite {
 	int left, top, right, bottom;
 };
 
-enum Colours : byte {
+enum Colours : uint8_t {
 	COLOUR_BEGIN,
 	COLOUR_DARK_BLUE = COLOUR_BEGIN,
 	COLOUR_PALE_GREEN,
@@ -306,7 +306,7 @@ enum PaletteType {
 };
 
 /** Types of sprites that might be loaded */
-enum class SpriteType : byte {
+enum class SpriteType : uint8_t {
 	Normal   = 0,      ///< The most basic (normal) sprite
 	MapGen   = 1,      ///< Special sprite for the map generator
 	Font     = 2,      ///< A sprite used for fonts

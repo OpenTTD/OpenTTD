@@ -202,8 +202,8 @@ static void PlaceRail_Station(TileIndex tile)
 
 		RailStationGUISettings params = _railstation;
 		RailType rt = _cur_railtype;
-		byte numtracks = _settings_client.gui.station_numtracks;
-		byte platlength = _settings_client.gui.station_platlength;
+		uint8_t numtracks = _settings_client.gui.station_numtracks;
+		uint8_t platlength = _settings_client.gui.station_platlength;
 		bool adjacent = _ctrl_pressed;
 
 		auto proc = [=](bool test, StationID to_join) -> bool {

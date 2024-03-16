@@ -22,7 +22,7 @@
 /** The maximum amount of roadstops a single GRF is allowed to add */
 static const int NUM_ROADSTOPS_PER_GRF = UINT16_MAX - 1;
 
-enum RoadStopClassID : byte {
+enum RoadStopClassID : uint8_t {
 	ROADSTOP_CLASS_BEGIN = 0,    ///< The lowest valid value
 	ROADSTOP_CLASS_DFLT = 0,     ///< Default road stop class.
 	ROADSTOP_CLASS_WAYP,         ///< Waypoint class (unimplemented: this is reserved for future use with road waypoints).
@@ -43,7 +43,7 @@ enum RoadStopRandomTrigger {
  * Various different options for availability, restricting
  * the roadstop to be only for busses or for trucks.
  */
-enum RoadStopAvailabilityType : byte {
+enum RoadStopAvailabilityType : uint8_t {
 	ROADSTOPTYPE_PASSENGER,    ///< This RoadStop is for passenger (bus) stops.
 	ROADSTOPTYPE_FREIGHT,      ///< This RoadStop is for freight (truck) stops.
 	ROADSTOPTYPE_ALL,          ///< This RoadStop is for both types of station road stops.
@@ -55,7 +55,7 @@ enum RoadStopAvailabilityType : byte {
  * Different draw modes to disallow rendering of some parts of the stop
  * or road.
  */
-enum RoadStopDrawMode : byte {
+enum RoadStopDrawMode : uint8_t {
 	ROADSTOP_DRAW_MODE_NONE        = 0,
 	ROADSTOP_DRAW_MODE_ROAD        = 1 << 0, ///< Bay stops: Draw the road itself
 	ROADSTOP_DRAW_MODE_OVERLAY     = 1 << 1, ///< Drive-through stops: Draw the road overlay, e.g. pavement
@@ -89,7 +89,7 @@ struct RoadStopScopeResolver : public ScopeResolver {
 	uint32_t GetRandomBits() const override;
 	uint32_t GetTriggers() const override;
 
-	uint32_t GetVariable(byte variable, [[maybe_unused]] uint32_t parameter, bool *available) const override;
+	uint32_t GetVariable(uint8_t variable, [[maybe_unused]] uint32_t parameter, bool *available) const override;
 };
 
 /** Road stop resolver. */
@@ -100,7 +100,7 @@ struct RoadStopResolverObject : public ResolverObject {
 	RoadStopResolverObject(const RoadStopSpec *roadstopspec, BaseStation *st, TileIndex tile, RoadType roadtype, StationType type, uint8_t view, CallbackID callback = CBID_NO_CALLBACK, uint32_t param1 = 0, uint32_t param2 = 0);
 	~RoadStopResolverObject();
 
-	ScopeResolver *GetScope(VarSpriteGroupScope scope = VSG_SCOPE_SELF, byte relative = 0) override
+	ScopeResolver *GetScope(VarSpriteGroupScope scope = VSG_SCOPE_SELF, uint8_t relative = 0) override
 	{
 		switch (scope) {
 			case VSG_SCOPE_SELF: return &this->roadstop_scope;
@@ -140,8 +140,8 @@ struct RoadStopSpec {
 
 	AnimationInfo animation;
 
-	byte bridge_height[6];             ///< Minimum height for a bridge above, 0 for none
-	byte bridge_disallowed_pillars[6]; ///< Disallowed pillar flags for a bridge above
+	uint8_t bridge_height[6];             ///< Minimum height for a bridge above, 0 for none
+	uint8_t bridge_disallowed_pillars[6]; ///< Disallowed pillar flags for a bridge above
 
 	uint8_t build_cost_multiplier = 16;  ///< Build cost multiplier per tile.
 	uint8_t clear_cost_multiplier = 16;  ///< Clear cost multiplier per tile.
@@ -178,7 +178,7 @@ bool GetIfStopIsForType(const RoadStopSpec *roadstopspec, RoadStopType rs, RoadT
 
 const RoadStopSpec *GetRoadStopSpec(TileIndex t);
 int AllocateSpecToRoadStop(const RoadStopSpec *statspec, BaseStation *st, bool exec);
-void DeallocateSpecFromRoadStop(BaseStation *st, byte specindex);
+void DeallocateSpecFromRoadStop(BaseStation *st, uint8_t specindex);
 void RoadStopUpdateCachedTriggers(BaseStation *st);
 
 #endif /* NEWGRF_ROADSTATION_H */

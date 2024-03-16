@@ -50,7 +50,7 @@ const SpriteGroup *GetWagonOverrideSpriteSet(EngineID engine, CargoID cargo, Eng
 	return nullptr;
 }
 
-void SetCustomEngineSprites(EngineID engine, byte cargo, const SpriteGroup *group)
+void SetCustomEngineSprites(EngineID engine, uint8_t cargo, const SpriteGroup *group)
 {
 	Engine *e = Engine::Get(engine);
 	assert(cargo < lengthof(e->grf_prop.spritegroup));
@@ -130,7 +130,7 @@ enum TTDPAircraftMovementStates {
  * Map OTTD aircraft movement states to TTDPatch style movement states
  * (VarAction 2 Variable 0xE2)
  */
-static byte MapAircraftMovementState(const Aircraft *v)
+static uint8_t MapAircraftMovementState(const Aircraft *v)
 {
 	const Station *st = GetTargetAirportIfValid(v);
 	if (st == nullptr) return AMS_TTDP_FLIGHT_TO_TOWER;
@@ -257,7 +257,7 @@ enum TTDPAircraftMovementActions {
  * (VarAction 2 Variable 0xE6)
  * This is not fully supported yet but it's enough for Planeset.
  */
-static byte MapAircraftMovementAction(const Aircraft *v)
+static uint8_t MapAircraftMovementAction(const Aircraft *v)
 {
 	switch (v->state) {
 		case HANGAR:
@@ -315,7 +315,7 @@ static byte MapAircraftMovementAction(const Aircraft *v)
 }
 
 
-/* virtual */ ScopeResolver *VehicleResolverObject::GetScope(VarSpriteGroupScope scope, byte relative)
+/* virtual */ ScopeResolver *VehicleResolverObject::GetScope(VarSpriteGroupScope scope, uint8_t relative)
 {
 	switch (scope) {
 		case VSG_SCOPE_SELF:   return &this->self_scope;
@@ -396,8 +396,8 @@ static const Livery *LiveryHelper(EngineID engine, const Vehicle *v)
 static uint32_t PositionHelper(const Vehicle *v, bool consecutive)
 {
 	const Vehicle *u;
-	byte chain_before = 0;
-	byte chain_after  = 0;
+	uint8_t chain_before = 0;
+	uint8_t chain_after  = 0;
 
 	for (u = v->First(); u != v; u = u->Next()) {
 		chain_before++;
@@ -412,7 +412,7 @@ static uint32_t PositionHelper(const Vehicle *v, bool consecutive)
 	return chain_before | chain_after << 8 | (chain_before + chain_after + consecutive) << 16;
 }
 
-static uint32_t VehicleGetVariable(Vehicle *v, const VehicleScopeResolver *object, byte variable, uint32_t parameter, bool *available)
+static uint32_t VehicleGetVariable(Vehicle *v, const VehicleScopeResolver *object, uint8_t variable, uint32_t parameter, bool *available)
 {
 	/* Calculated vehicle parameters */
 	switch (variable) {
@@ -436,8 +436,8 @@ static uint32_t VehicleGetVariable(Vehicle *v, const VehicleScopeResolver *objec
 		case 0x42: { // Consist cargo information
 			if (!HasBit(v->grf_cache.cache_valid, NCVV_CONSIST_CARGO_INFORMATION)) {
 				std::array<uint8_t, NUM_CARGO> common_cargoes{};
-				byte cargo_classes = 0;
-				byte user_def_data = 0;
+				uint8_t cargo_classes = 0;
+				uint8_t user_def_data = 0;
 
 				for (const Vehicle *u = v; u != nullptr; u = u->Next()) {
 					if (v->type == VEH_TRAIN) user_def_data |= Train::From(u)->tcache.user_def_data;
@@ -506,7 +506,7 @@ static uint32_t VehicleGetVariable(Vehicle *v, const VehicleScopeResolver *objec
 				const Vehicle *w = v->Next();
 				assert(w != nullptr);
 				uint16_t altitude = ClampTo<uint16_t>(v->z_pos - w->z_pos); // Aircraft height - shadow height
-				byte airporttype = ATP_TTDP_LARGE;
+				uint8_t airporttype = ATP_TTDP_LARGE;
 
 				const Station *st = GetTargetAirportIfValid(Aircraft::From(v));
 
@@ -590,9 +590,9 @@ static uint32_t VehicleGetVariable(Vehicle *v, const VehicleScopeResolver *objec
 
 		case 0x4D: // Position within articulated vehicle
 			if (!HasBit(v->grf_cache.cache_valid, NCVV_POSITION_IN_VEHICLE)) {
-				byte artic_before = 0;
+				uint8_t artic_before = 0;
 				for (const Vehicle *u = v; u->IsArticulatedPart(); u = u->Previous()) artic_before++;
-				byte artic_after = 0;
+				uint8_t artic_after = 0;
 				for (const Vehicle *u = v; u->HasArticulatedPart(); u = u->Next()) artic_after++;
 				v->grf_cache.position_in_vehicle = artic_before | artic_after << 8;
 				SetBit(v->grf_cache.cache_valid, NCVV_POSITION_IN_VEHICLE);
@@ -939,7 +939,7 @@ static uint32_t VehicleGetVariable(Vehicle *v, const VehicleScopeResolver *objec
 	return UINT_MAX;
 }
 
-/* virtual */ uint32_t VehicleScopeResolver::GetVariable(byte variable, [[maybe_unused]] uint32_t parameter, bool *available) const
+/* virtual */ uint32_t VehicleScopeResolver::GetVariable(uint8_t variable, [[maybe_unused]] uint32_t parameter, bool *available) const
 {
 	if (this->v == nullptr) {
 		/* Vehicle does not exist, so we're in a purchase list */

@@ -69,7 +69,7 @@ bool MusicDriver_BeMidi::IsSongPlaying()
 	return !this->midi_synth_file->IsFinished();
 }
 
-void MusicDriver_BeMidi::SetVolume(byte vol)
+void MusicDriver_BeMidi::SetVolume(uint8_t vol)
 {
 	this->current_volume = vol / 128.0;
 	if (this->midi_synth_file != nullptr) this->midi_synth_file->SetVolume(this->current_volume);

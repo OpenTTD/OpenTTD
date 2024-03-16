@@ -32,7 +32,7 @@ enum KeyStateBits {
 	KEYS_SHIFT,
 	KEYS_CAPS
 };
-static byte _keystate = KEYS_NONE;
+static uint8_t _keystate = KEYS_NONE;
 
 struct OskWindow : public Window {
 	StringID caption;      ///< the caption for this window.

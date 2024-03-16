@@ -35,7 +35,7 @@ char *GetMusicCatEntryName(const std::string &filename, size_t entrynum)
 	if (entrynum < entry_count) {
 		file.SeekTo(entrynum * 8, SEEK_SET);
 		file.SeekTo(file.ReadDword(), SEEK_SET);
-		byte namelen = file.ReadByte();
+		uint8_t namelen = file.ReadByte();
 		char *name = MallocT<char>(namelen + 1);
 		file.ReadBlock(name, namelen);
 		name[namelen] = '\0';
@@ -52,7 +52,7 @@ char *GetMusicCatEntryName(const std::string &filename, size_t entrynum)
  * @return Pointer to buffer with data read, caller is responsible for freeind memory,
  *         nullptr if entrynum does not exist.
  */
-byte *GetMusicCatEntryData(const std::string &filename, size_t entrynum, size_t &entrylen)
+uint8_t *GetMusicCatEntryData(const std::string &filename, size_t entrynum, size_t &entrylen)
 {
 	entrylen = 0;
 	if (!FioCheckFileExists(filename, BASESET_DIR)) return nullptr;
@@ -66,7 +66,7 @@ byte *GetMusicCatEntryData(const std::string &filename, size_t entrynum, size_t 
 		entrylen = file.ReadDword();
 		file.SeekTo(entrypos, SEEK_SET);
 		file.SkipBytes(file.ReadByte());
-		byte *data = MallocT<byte>(entrylen);
+		uint8_t *data = MallocT<uint8_t>(entrylen);
 		file.ReadBlock(data, entrylen);
 		return data;
 	}

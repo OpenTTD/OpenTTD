@@ -388,7 +388,7 @@ Window *ShowTerraformToolbar(Window *link)
 	return w;
 }
 
-static byte _terraform_size = 1;
+static uint8_t _terraform_size = 1;
 
 /**
  * Raise/Lower a bigger chunk of land at the same time in the editor. When

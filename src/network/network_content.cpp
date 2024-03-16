@@ -205,7 +205,7 @@ void ClientNetworkContentSocketHandler::RequestContentList(ContentType type)
 	this->Connect();
 
 	auto p = std::make_unique<Packet>(this, PACKET_CONTENT_CLIENT_INFO_LIST);
-	p->Send_uint8 ((byte)type);
+	p->Send_uint8 ((uint8_t)type);
 	p->Send_uint32(0xffffffff);
 	p->Send_uint8 (1);
 	p->Send_string("vanilla");
@@ -238,7 +238,7 @@ void ClientNetworkContentSocketHandler::RequestContentList(uint count, const Con
 		 * A packet begins with the packet size and a byte for the type.
 		 * Then this packet adds a uint16_t for the count in this packet.
 		 * The rest of the packet can be used for the IDs. */
-		uint p_count = std::min<uint>(count, (TCP_MTU - sizeof(PacketSize) - sizeof(byte) - sizeof(uint16_t)) / sizeof(uint32_t));
+		uint p_count = std::min<uint>(count, (TCP_MTU - sizeof(PacketSize) - sizeof(uint8_t) - sizeof(uint16_t)) / sizeof(uint32_t));
 
 		auto p = std::make_unique<Packet>(this, PACKET_CONTENT_CLIENT_INFO_ID, TCP_MTU);
 		p->Send_uint16(p_count);
@@ -265,14 +265,14 @@ void ClientNetworkContentSocketHandler::RequestContentList(ContentVector *cv, bo
 	this->Connect();
 
 	assert(cv->size() < 255);
-	assert(cv->size() < (TCP_MTU - sizeof(PacketSize) - sizeof(byte) - sizeof(uint8_t)) /
+	assert(cv->size() < (TCP_MTU - sizeof(PacketSize) - sizeof(uint8_t) - sizeof(uint8_t)) /
 			(sizeof(uint8_t) + sizeof(uint32_t) + (send_md5sum ? MD5_HASH_BYTES : 0)));
 
 	auto p = std::make_unique<Packet>(this, send_md5sum ? PACKET_CONTENT_CLIENT_INFO_EXTID_MD5 : PACKET_CONTENT_CLIENT_INFO_EXTID, TCP_MTU);
 	p->Send_uint8((uint8_t)cv->size());
 
 	for (const ContentInfo *ci : *cv) {
-		p->Send_uint8((byte)ci->type);
+		p->Send_uint8((uint8_t)ci->type);
 		p->Send_uint32(ci->unique_id);
 		if (!send_md5sum) continue;
 
@@ -363,7 +363,7 @@ void ClientNetworkContentSocketHandler::DownloadSelectedContentFallback(const Co
 		 * A packet begins with the packet size and a byte for the type.
 		 * Then this packet adds a uint16_t for the count in this packet.
 		 * The rest of the packet can be used for the IDs. */
-		uint p_count = std::min<uint>(count, (TCP_MTU - sizeof(PacketSize) - sizeof(byte) - sizeof(uint16_t)) / sizeof(uint32_t));
+		uint p_count = std::min<uint>(count, (TCP_MTU - sizeof(PacketSize) - sizeof(uint8_t) - sizeof(uint16_t)) / sizeof(uint32_t));
 
 		auto p = std::make_unique<Packet>(this, PACKET_CONTENT_CLIENT_CONTENT, TCP_MTU);
 		p->Send_uint16(p_count);
@@ -420,7 +420,7 @@ static bool GunzipFile(const ContentInfo *ci)
 	if (fin == nullptr || fout == nullptr) {
 		ret = false;
 	} else {
-		byte buff[8192];
+		uint8_t buff[8192];
 		for (;;) {
 			int read = gzread(fin, buff, sizeof(buff));
 			if (read == 0) {

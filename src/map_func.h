@@ -30,13 +30,13 @@ private:
 	 * Look at docs/landscape.html for the exact meaning of the members.
 	 */
 	struct TileBase {
-		byte   type;   ///< The type (bits 4..7), bridges (2..3), rainforest/desert (0..1)
-		byte   height; ///< The height of the northern corner.
+		uint8_t   type;   ///< The type (bits 4..7), bridges (2..3), rainforest/desert (0..1)
+		uint8_t   height; ///< The height of the northern corner.
 		uint16_t m2;     ///< Primarily used for indices to towns, industries and stations
-		byte   m1;     ///< Primarily used for ownership information
-		byte   m3;     ///< General purpose
-		byte   m4;     ///< General purpose
-		byte   m5;     ///< General purpose
+		uint8_t   m1;     ///< Primarily used for ownership information
+		uint8_t   m3;     ///< General purpose
+		uint8_t   m4;     ///< General purpose
+		uint8_t   m5;     ///< General purpose
 	};
 
 	static_assert(sizeof(TileBase) == 8);
@@ -46,8 +46,8 @@ private:
 	 * Look at docs/landscape.html for the exact meaning of the members.
 	 */
 	struct TileExtended {
-		byte m6;   ///< General purpose
-		byte m7;   ///< Primarily used for newgrf support
+		uint8_t m6;   ///< General purpose
+		uint8_t m7;   ///< Primarily used for newgrf support
 		uint16_t m8; ///< General purpose
 	};
 
@@ -86,7 +86,7 @@ public:
 	 * @param tile The tile to get the data for.
 	 * @return reference to the byte holding the data.
 	 */
-	debug_inline byte &type()
+	debug_inline uint8_t &type()
 	{
 		return base_tiles[tile.base()].type;
 	}
@@ -98,7 +98,7 @@ public:
 	 * @param tile The tile to get the height for.
 	 * @return reference to the byte holding the height.
 	 */
-	debug_inline byte &height()
+	debug_inline uint8_t &height()
 	{
 		return base_tiles[tile.base()].height;
 	}
@@ -110,7 +110,7 @@ public:
 	 * @param tile The tile to get the data for.
 	 * @return reference to the byte holding the data.
 	 */
-	debug_inline byte &m1()
+	debug_inline uint8_t &m1()
 	{
 		return base_tiles[tile.base()].m1;
 	}
@@ -134,7 +134,7 @@ public:
 	 * @param tile The tile to get the data for.
 	 * @return reference to the byte holding the data.
 	 */
-	debug_inline byte &m3()
+	debug_inline uint8_t &m3()
 	{
 		return base_tiles[tile.base()].m3;
 	}
@@ -146,7 +146,7 @@ public:
 	 * @param tile The tile to get the data for.
 	 * @return reference to the byte holding the data.
 	 */
-	debug_inline byte &m4()
+	debug_inline uint8_t &m4()
 	{
 		return base_tiles[tile.base()].m4;
 	}
@@ -158,7 +158,7 @@ public:
 	 * @param tile The tile to get the data for.
 	 * @return reference to the byte holding the data.
 	 */
-	debug_inline byte &m5()
+	debug_inline uint8_t &m5()
 	{
 		return base_tiles[tile.base()].m5;
 	}
@@ -170,7 +170,7 @@ public:
 	 * @param tile The tile to get the data for.
 	 * @return reference to the byte holding the data.
 	 */
-	debug_inline byte &m6()
+	debug_inline uint8_t &m6()
 	{
 		return extended_tiles[tile.base()].m6;
 	}
@@ -182,7 +182,7 @@ public:
 	 * @param tile The tile to get the data for.
 	 * @return reference to the byte holding the data.
 	 */
-	debug_inline byte &m7()
+	debug_inline uint8_t &m7()
 	{
 		return extended_tiles[tile.base()].m7;
 	}

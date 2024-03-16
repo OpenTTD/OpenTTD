@@ -428,7 +428,7 @@ void MusicSystem::ChangePlaylistPosition(int ofs)
  */
 void MusicSystem::SaveCustomPlaylist(PlaylistChoices pl)
 {
-	byte *settings_pl;
+	uint8_t *settings_pl;
 	if (pl == PLCH_CUSTOM1) {
 		settings_pl = _settings_client.music.custom_1;
 	} else if (pl == PLCH_CUSTOM2) {
@@ -442,7 +442,7 @@ void MusicSystem::SaveCustomPlaylist(PlaylistChoices pl)
 
 	for (const auto &song : this->standard_playlists[pl]) {
 		/* Music set indices in the settings playlist are 1-based, 0 means unused slot */
-		settings_pl[num++] = (byte)song.set_index + 1;
+		settings_pl[num++] = (uint8_t)song.set_index + 1;
 	}
 }
 
@@ -825,7 +825,7 @@ struct MusicWindow : public Window {
 				break;
 
 			case WID_M_MUSIC_VOL: case WID_M_EFFECT_VOL: { // volume sliders
-				byte &vol = (widget == WID_M_MUSIC_VOL) ? _settings_client.music.music_vol : _settings_client.music.effect_vol;
+				uint8_t &vol = (widget == WID_M_MUSIC_VOL) ? _settings_client.music.music_vol : _settings_client.music.effect_vol;
 				if (ClickSliderWidget(this->GetWidget<NWidgetBase>(widget)->GetCurrentRect(), pt, 0, INT8_MAX, vol)) {
 					if (widget == WID_M_MUSIC_VOL) {
 						MusicDriver::GetInstance()->SetVolume(vol);

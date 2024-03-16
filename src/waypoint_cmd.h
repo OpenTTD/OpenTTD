@@ -13,9 +13,9 @@
 #include "command_type.h"
 #include "station_type.h"
 
-enum StationClassID : byte;
+enum StationClassID : uint8_t;
 
-CommandCost CmdBuildRailWaypoint(DoCommandFlag flags, TileIndex start_tile, Axis axis, byte width, byte height, StationClassID spec_class, uint16_t spec_index, StationID station_to_join, bool adjacent);
+CommandCost CmdBuildRailWaypoint(DoCommandFlag flags, TileIndex start_tile, Axis axis, uint8_t width, uint8_t height, StationClassID spec_class, uint16_t spec_index, StationID station_to_join, bool adjacent);
 CommandCost CmdRemoveFromRailWaypoint(DoCommandFlag flags, TileIndex start, TileIndex end, bool keep_rail);
 CommandCost CmdBuildBuoy(DoCommandFlag flags, TileIndex tile);
 CommandCost CmdRenameWaypoint(DoCommandFlag flags, StationID waypoint_id, const std::string &text);

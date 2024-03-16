@@ -33,7 +33,7 @@ template <BlitterMode mode, Blitter_32bppSSE2::ReadMode read_mode, Blitter_32bpp
 GNU_TARGET("sse4.1")
 inline void Blitter_32bppSSE4_Anim::Draw(const BlitterParams *bp, ZoomLevel zoom)
 {
-	const byte * const remap = bp->remap;
+	const uint8_t * const remap = bp->remap;
 	Colour *dst_line = (Colour *) bp->dst + bp->top * bp->pitch + bp->left;
 	uint16_t *anim_line = this->anim_buf + this->ScreenToAnimOffset((uint32_t *)bp->dst) + bp->top * this->anim_buf_pitch + bp->left;
 	int effective_width = bp->width;
@@ -42,7 +42,7 @@ inline void Blitter_32bppSSE4_Anim::Draw(const BlitterParams *bp, ZoomLevel zoom
 	const Blitter_32bppSSE_Base::SpriteData * const sd = (const Blitter_32bppSSE_Base::SpriteData *) bp->sprite;
 	const SpriteInfo * const si = &sd->infos[zoom];
 	const MapValue *src_mv_line = (const MapValue *) &sd->data[si->mv_offset] + bp->skip_top * si->sprite_width;
-	const Colour *src_rgba_line = (const Colour *) ((const byte *) &sd->data[si->sprite_offset] + bp->skip_top * si->sprite_line_size);
+	const Colour *src_rgba_line = (const Colour *) ((const uint8_t *) &sd->data[si->sprite_offset] + bp->skip_top * si->sprite_line_size);
 
 	if (read_mode != RM_WITH_MARGIN) {
 		src_rgba_line += bp->skip_left;
@@ -104,20 +104,20 @@ inline void Blitter_32bppSSE4_Anim::Draw(const BlitterParams *bp, ZoomLevel zoom
 
 					if (animated) {
 						/* Remap colours. */
-						const byte m0 = mvX2;
+						const uint8_t m0 = mvX2;
 						if (m0 >= PALETTE_ANIM_START) {
 							const Colour c0 = (this->LookupColourInPalette(m0).data & 0x00FFFFFF) | (src[0].data & 0xFF000000);
-							InsertFirstUint32(AdjustBrightneSSE(c0, (byte) (mvX2 >> 8)).data, srcABCD);
+							InsertFirstUint32(AdjustBrightneSSE(c0, (uint8_t) (mvX2 >> 8)).data, srcABCD);
 						}
-						const byte m1 = mvX2 >> 16;
+						const uint8_t m1 = mvX2 >> 16;
 						if (m1 >= PALETTE_ANIM_START) {
 							const Colour c1 = (this->LookupColourInPalette(m1).data & 0x00FFFFFF) | (src[1].data & 0xFF000000);
-							InsertSecondUint32(AdjustBrightneSSE(c1, (byte) (mvX2 >> 24)).data, srcABCD);
+							InsertSecondUint32(AdjustBrightneSSE(c1, (uint8_t) (mvX2 >> 24)).data, srcABCD);
 						}
 
 						/* Update anim buffer. */
-						const byte a0 = src[0].a;
-						const byte a1 = src[1].a;
+						const uint8_t a0 = src[0].a;
+						const uint8_t a1 = src[1].a;
 						uint32_t anim01 = 0;
 						if (a0 == 255) {
 							if (a1 == 255) {
@@ -185,9 +185,9 @@ bmno_full_transparency:
 					__m128i dstABCD = _mm_loadl_epi64((__m128i*) dst);
 
 					/* Remap colours. */
-					const uint m0 = (byte) mvX2;
+					const uint m0 = (uint8_t) mvX2;
 					const uint r0 = remap[m0];
-					const uint m1 = (byte) (mvX2 >> 16);
+					const uint m1 = (uint8_t) (mvX2 >> 16);
 					const uint r1 = remap[m1];
 					if (mvX2 & 0x00FF00FF) {
 						#define CMOV_REMAP(m_colour, m_colour_init, m_src, m_m) \
@@ -195,7 +195,7 @@ bmno_full_transparency:
 							Colour m_colour = m_colour_init; \
 							{ \
 							const Colour srcm = (Colour) (m_src); \
-							const uint m = (byte) (m_m); \
+							const uint m = (uint8_t) (m_m); \
 							const uint r = remap[m]; \
 							const Colour cmap = (this->LookupColourInPalette(r).data & 0x00FFFFFF) | (srcm.data & 0xFF000000); \
 							m_colour = r == 0 ? m_colour : cmap; \
@@ -225,8 +225,8 @@ bmno_full_transparency:
 
 					/* Update anim buffer. */
 					if (animated) {
-						const byte a0 = src[0].a;
-						const byte a1 = src[1].a;
+						const uint8_t a0 = src[0].a;
+						const uint8_t a1 = src[1].a;
 						uint32_t anim01 = mvX2 & 0xFF00FF00;
 						if (a0 == 255) {
 							anim01 |= r0;
@@ -368,7 +368,7 @@ bmcr_alpha_blend_single:
 
 next_line:
 		if (mode != BM_TRANSPARENT && mode != BM_TRANSPARENT_REMAP) src_mv_line += si->sprite_width;
-		src_rgba_line = (const Colour*) ((const byte*) src_rgba_line + si->sprite_line_size);
+		src_rgba_line = (const Colour*) ((const uint8_t*) src_rgba_line + si->sprite_line_size);
 		dst_line += bp->pitch;
 		anim_line += this->anim_buf_pitch;
 	}

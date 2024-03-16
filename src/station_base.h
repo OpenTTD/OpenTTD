@@ -214,7 +214,7 @@ struct GoodsEntry {
 	NodeID node{INVALID_NODE}; ///< ID of node in link graph referring to this goods entry.
 	LinkGraphID link_graph{INVALID_LINK_GRAPH}; ///< Link graph this station belongs to.
 
-	byte status{0}; ///< Status of this cargo, see #GoodsEntryStatus.
+	uint8_t status{0}; ///< Status of this cargo, see #GoodsEntryStatus.
 
 	/**
 	 * Number of rating-intervals (up to 255) since the last vehicle tried to load this cargo.
@@ -291,8 +291,8 @@ struct Airport : public TileArea {
 	Airport() : TileArea(INVALID_TILE, 0, 0) {}
 
 	uint64_t flags;       ///< stores which blocks on the airport are taken. was 16 bit earlier on, then 32
-	byte type;          ///< Type of this airport, @see AirportTypes
-	byte layout;        ///< Airport layout number.
+	uint8_t type;          ///< Type of this airport, @see AirportTypes
+	uint8_t layout;        ///< Airport layout number.
 	Direction rotation; ///< How this airport is rotated.
 
 	PersistentStorage *psa; ///< Persistent storage for NewGRF airports.
@@ -463,10 +463,10 @@ public:
 
 	StationHadVehicleOfType had_vehicle_of_type;
 
-	byte time_since_load;
-	byte time_since_unload;
+	uint8_t time_since_load;
+	uint8_t time_since_unload;
 
-	byte last_vehicle_type;
+	uint8_t last_vehicle_type;
 	std::list<Vehicle *> loading_vehicles;
 	GoodsEntry goods[NUM_CARGO];  ///< Goods at this station
 	CargoTypes always_accepted;       ///< Bitmask of always accepted cargo types (by houses, HQs, industry tiles when industry doesn't accept cargo)
@@ -519,7 +519,7 @@ public:
 		return IsAirportTile(tile) && GetStationIndex(tile) == this->index;
 	}
 
-	uint32_t GetNewGRFVariable(const ResolverObject &object, byte variable, byte parameter, bool *available) const override;
+	uint32_t GetNewGRFVariable(const ResolverObject &object, uint8_t variable, uint8_t parameter, bool *available) const override;
 
 	void GetTileArea(TileArea *ta, StationType type) const override;
 };

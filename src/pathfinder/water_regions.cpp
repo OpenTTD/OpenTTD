@@ -24,7 +24,7 @@ using TWaterRegionTraversabilityBits = uint16_t;
 constexpr TWaterRegionPatchLabel FIRST_REGION_LABEL = 1;
 
 static_assert(sizeof(TWaterRegionTraversabilityBits) * 8 == WATER_REGION_EDGE_LENGTH);
-static_assert(sizeof(TWaterRegionPatchLabel) == sizeof(byte)); // Important for the hash calculation.
+static_assert(sizeof(TWaterRegionPatchLabel) == sizeof(uint8_t)); // Important for the hash calculation.
 
 static inline TrackBits GetWaterTracks(TileIndex tile) { return TrackStatusToTrackBits(GetTileTrackStatus(tile, TRANSPORT_WATER, 0)); }
 static inline bool IsAqueductTile(TileIndex tile) { return IsBridgeTile(tile) && GetTunnelBridgeTransportType(tile) == TRANSPORT_WATER; }

@@ -374,12 +374,12 @@ bool VideoDriver_SDL::ClaimMousePointer()
 
 struct SDLVkMapping {
 	uint16_t vk_from;
-	byte vk_count;
-	byte map_to;
+	uint8_t vk_count;
+	uint8_t map_to;
 };
 
 #define AS(x, z) {x, 0, z}
-#define AM(x, y, z, w) {x, (byte)(y - x), z}
+#define AM(x, y, z, w) {x, (uint8_t)(y - x), z}
 
 static const SDLVkMapping _vk_mapping[] = {
 	/* Pageup stuff + up/down */

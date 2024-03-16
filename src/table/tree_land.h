@@ -10,8 +10,8 @@
 #ifndef TREE_LAND_H
 #define TREE_LAND_H
 
-static const byte _tree_base_by_landscape[4] = {0, 12, 20, 32};
-static const byte _tree_count_by_landscape[4] = {12, 8, 12, 9};
+static const uint8_t _tree_base_by_landscape[4] = {0, 12, 20, 32};
+static const uint8_t _tree_count_by_landscape[4] = {12, 8, 12, 9};
 
 struct TreePos {
 	uint8_t x;

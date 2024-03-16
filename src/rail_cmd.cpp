@@ -179,7 +179,7 @@ RailType AllocateRailType(RailTypeLabel label)
 	return INVALID_RAILTYPE;
 }
 
-static const byte _track_sloped_sprites[14] = {
+static const uint8_t _track_sloped_sprites[14] = {
 	14, 15, 22, 13,
 	 0, 21, 17, 12,
 	23,  0, 18, 20,
@@ -1049,7 +1049,7 @@ CommandCost CmdBuildTrainDepot(DoCommandFlag flags, TileIndex tile, RailType rai
  * @return the cost of this operation or an error
  * @todo p2 should be replaced by two bits for "along" and "against" the track.
  */
-CommandCost CmdBuildSingleSignal(DoCommandFlag flags, TileIndex tile, Track track, SignalType sigtype, SignalVariant sigvar, bool convert_signal, bool skip_existing_signals, bool ctrl_pressed, SignalType cycle_start, SignalType cycle_stop, uint8_t num_dir_cycle, byte signals_copy)
+CommandCost CmdBuildSingleSignal(DoCommandFlag flags, TileIndex tile, Track track, SignalType sigtype, SignalVariant sigvar, bool convert_signal, bool skip_existing_signals, bool ctrl_pressed, SignalType cycle_start, SignalType cycle_stop, uint8_t num_dir_cycle, uint8_t signals_copy)
 {
 	if (sigtype > SIGTYPE_LAST || sigvar > SIG_SEMAPHORE) return CMD_ERROR;
 	if (cycle_start > cycle_stop || cycle_stop > SIGTYPE_LAST) return CMD_ERROR;
@@ -1279,7 +1279,7 @@ static CommandCost CmdSignalTrackHelper(DoCommandFlag flags, TileIndex tile, Til
 	/* Must start on a valid track to be able to avoid loops */
 	if (!HasTrack(tile, track)) return CMD_ERROR;
 
-	byte signals;
+	uint8_t signals;
 	/* copy the signal-style of the first rail-piece if existing */
 	if (HasSignalOnTrack(tile, track)) {
 		signals = GetPresentSignals(tile) & SignalOnTrack(track);
@@ -1295,7 +1295,7 @@ static CommandCost CmdSignalTrackHelper(DoCommandFlag flags, TileIndex tile, Til
 		signals = IsPbsSignal(sigtype) ? SignalAlongTrackdir(trackdir) : SignalOnTrack(track);
 	}
 
-	byte signal_dir = 0;
+	uint8_t signal_dir = 0;
 	if (signals & SignalAlongTrackdir(trackdir))   SetBit(signal_dir, 0);
 	if (signals & SignalAgainstTrackdir(trackdir)) SetBit(signal_dir, 1);
 
@@ -1320,7 +1320,7 @@ static CommandCost CmdSignalTrackHelper(DoCommandFlag flags, TileIndex tile, Til
 	bool had_success = false;
 	auto build_signal = [&](TileIndex tile, Trackdir trackdir, bool test_only) {
 		/* Pick the correct orientation for the track direction */
-		byte signals = 0;
+		uint8_t signals = 0;
 		if (HasBit(signal_dir, 0)) signals |= SignalAlongTrackdir(trackdir);
 		if (HasBit(signal_dir, 1)) signals |= SignalAgainstTrackdir(trackdir);
 
@@ -1446,7 +1446,7 @@ static CommandCost CmdSignalTrackHelper(DoCommandFlag flags, TileIndex tile, Til
  * @return the cost of this operation or an error
  * @see CmdSignalTrackHelper
  */
-CommandCost CmdBuildSignalTrack(DoCommandFlag flags, TileIndex tile, TileIndex end_tile, Track track, SignalType sigtype, SignalVariant sigvar, bool mode, bool autofill, bool minimise_gaps, byte signal_density)
+CommandCost CmdBuildSignalTrack(DoCommandFlag flags, TileIndex tile, TileIndex end_tile, Track track, SignalType sigtype, SignalVariant sigvar, bool mode, bool autofill, bool minimise_gaps, uint8_t signal_density)
 {
 	return CmdSignalTrackHelper(flags, tile, end_tile, track, sigtype, sigvar, mode, false, autofill, minimise_gaps, signal_density);
 }
@@ -2379,7 +2379,7 @@ static void DrawTrackBits(TileInfo *ti, TrackBits track)
 		DrawGroundSprite(image, pal, &(_halftile_sub_sprite[halftile_corner]));
 
 		if (_game_mode != GM_MENU && _settings_client.gui.show_track_reservation && HasReservedTracks(ti->tile, CornerToTrackBits(halftile_corner))) {
-			static const byte _corner_to_track_sprite[] = {3, 1, 2, 0};
+			static const uint8_t _corner_to_track_sprite[] = {3, 1, 2, 0};
 			DrawGroundSprite(_corner_to_track_sprite[halftile_corner] + rti->base_sprites.single_n, PALETTE_CRASH, nullptr, 0, -(int)TILE_HEIGHT);
 		}
 	}
@@ -2387,7 +2387,7 @@ static void DrawTrackBits(TileInfo *ti, TrackBits track)
 
 static void DrawSignals(TileIndex tile, TrackBits rails, const RailTypeInfo *rti)
 {
-	auto MAYBE_DRAW_SIGNAL = [&](byte signalbit, SignalOffsets image, uint pos, Track track) {
+	auto MAYBE_DRAW_SIGNAL = [&](uint8_t signalbit, SignalOffsets image, uint pos, Track track) {
 		if (IsSignalPresent(tile, signalbit)) DrawSingleSignal(tile, rti, track, GetSingleSignalState(tile, signalbit), image, pos);
 	};
 
@@ -2667,7 +2667,7 @@ static void TileLoop_Track(TileIndex tile)
 		TrackBits rail = GetTrackBits(tile);
 
 		Owner owner = GetTileOwner(tile);
-		byte fences = 0;
+		uint8_t fences = 0;
 
 		for (DiagDirection d = DIAGDIR_BEGIN; d < DIAGDIR_END; d++) {
 			static const TrackBits dir_to_trackbits[DIAGDIR_END] = {TRACK_BIT_3WAY_NE, TRACK_BIT_3WAY_SE, TRACK_BIT_3WAY_SW, TRACK_BIT_3WAY_NW};
@@ -2736,7 +2736,7 @@ static TrackStatus GetTileTrackStatus_Track(TileIndex tile, TransportType mode, 
 
 		case RAIL_TILE_SIGNALS: {
 			trackbits = GetTrackBits(tile);
-			byte a = GetPresentSignals(tile);
+			uint8_t a = GetPresentSignals(tile);
 			uint b = GetSignalStates(tile);
 
 			b &= a;
@@ -2899,8 +2899,8 @@ static void ChangeTileOwner_Track(TileIndex tile, Owner old_owner, Owner new_own
 	}
 }
 
-static const byte _fractcoords_behind[4] = { 0x8F, 0x8, 0x80, 0xF8 };
-static const byte _fractcoords_enter[4] = { 0x8A, 0x48, 0x84, 0xA8 };
+static const uint8_t _fractcoords_behind[4] = { 0x8F, 0x8, 0x80, 0xF8 };
+static const uint8_t _fractcoords_enter[4] = { 0x8A, 0x48, 0x84, 0xA8 };
 static const int8_t _deltacoord_leaveoffset[8] = {
 	-1,  0,  1,  0, /* x */
 	 0,  1,  0, -1  /* y */
@@ -2939,7 +2939,7 @@ static VehicleEnterTileStatus VehicleEnter_Track(Vehicle *u, TileIndex tile, int
 	/* Depot direction. */
 	DiagDirection dir = GetRailDepotDirection(tile);
 
-	byte fract_coord = (x & 0xF) + ((y & 0xF) << 4);
+	uint8_t fract_coord = (x & 0xF) + ((y & 0xF) << 4);
 
 	/* Make sure a train is not entering the tile from behind. */
 	if (_fractcoords_behind[dir] == fract_coord) return VETSB_CANNOT_ENTER;
@@ -2951,7 +2951,7 @@ static VehicleEnterTileStatus VehicleEnter_Track(Vehicle *u, TileIndex tile, int
 		/* Calculate the point where the following wagon should be activated. */
 		int length = v->CalcNextVehicleOffset();
 
-		byte fract_coord_leave =
+		uint8_t fract_coord_leave =
 			((_fractcoords_enter[dir] & 0x0F) + // x
 				(length + 1) * _deltacoord_leaveoffset[dir]) +
 			(((_fractcoords_enter[dir] >> 4) +  // y

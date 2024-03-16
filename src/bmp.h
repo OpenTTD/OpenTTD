@@ -24,13 +24,13 @@ struct BmpInfo {
 
 struct BmpData {
 	Colour *palette;
-	byte   *bitmap;
+	uint8_t   *bitmap;
 };
 
 #define BMP_BUFFER_SIZE 1024
 
 struct BmpBuffer {
-	byte data[BMP_BUFFER_SIZE];
+	uint8_t data[BMP_BUFFER_SIZE];
 	int pos;
 	int read;
 	FILE *file;

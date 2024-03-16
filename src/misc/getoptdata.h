@@ -20,7 +20,7 @@ enum OptionDataFlags {
 
 /** Data of an option. */
 struct OptionData {
-	byte id;              ///< Unique identification of this option data, often the same as #shortname.
+	uint8_t id;              ///< Unique identification of this option data, often the same as #shortname.
 	char shortname;       ///< Short option letter if available, else use \c '\0'.
 	uint16_t flags;         ///< Option data flags. @see OptionDataFlags
 	const char *longname; ///< Long option name including '-'/'--' prefix, use \c nullptr if not available.

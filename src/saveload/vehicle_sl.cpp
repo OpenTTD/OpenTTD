@@ -249,7 +249,7 @@ static void CheckValidVehicles()
 	}
 }
 
-extern byte _age_cargo_skip_counter; // From misc_sl.cpp
+extern uint8_t _age_cargo_skip_counter; // From misc_sl.cpp
 
 /** Called after load to update coordinates */
 void AfterLoadVehicles(bool part_of_load)

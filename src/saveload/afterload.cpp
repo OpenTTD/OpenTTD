@@ -188,7 +188,7 @@ static void UpdateExclusiveRights()
 	 */
 }
 
-static const byte convert_currency[] = {
+static const uint8_t convert_currency[] = {
 	 0,  1, 12,  8,  3,
 	10, 14, 19,  4,  5,
 	 9, 11, 13,  6, 17,
@@ -490,12 +490,12 @@ static uint FixVehicleInclination(Vehicle *v, Direction dir)
 		case INVALID_DIR: break;
 		default: NOT_REACHED();
 	}
-	byte entry_z = GetSlopePixelZ(entry_x, entry_y, true);
+	uint8_t entry_z = GetSlopePixelZ(entry_x, entry_y, true);
 
 	/* Compute middle of the tile. */
 	int middle_x = (v->x_pos & ~TILE_UNIT_MASK) + TILE_SIZE / 2;
 	int middle_y = (v->y_pos & ~TILE_UNIT_MASK) + TILE_SIZE / 2;
-	byte middle_z = GetSlopePixelZ(middle_x, middle_y, true);
+	uint8_t middle_z = GetSlopePixelZ(middle_x, middle_y, true);
 
 	/* middle_z == entry_z, no height change. */
 	if (middle_z == entry_z) return 0;
@@ -2129,7 +2129,7 @@ bool AfterLoadGame()
 			}
 
 			/* Use old layout randomizer code */
-			byte layout = TileHash(TileX(t->xy), TileY(t->xy)) % 6;
+			uint8_t layout = TileHash(TileX(t->xy), TileY(t->xy)) % 6;
 			switch (layout) {
 				default: break;
 				case 5: layout = 1; break;
@@ -2365,8 +2365,8 @@ bool AfterLoadGame()
 	/* Airport tile animation uses animation frame instead of other graphics id */
 	if (IsSavegameVersionBefore(SLV_137)) {
 		struct AirportTileConversion {
-			byte old_start;
-			byte num_frames;
+			uint8_t old_start;
+			uint8_t num_frames;
 		};
 		static const AirportTileConversion atc[] = {
 			{31,  12}, // APT_RADAR_GRASS_FENCE_SW
@@ -2382,7 +2382,7 @@ bool AfterLoadGame()
 		for (auto t : Map::Iterate()) {
 			if (IsAirportTile(t)) {
 				StationGfx old_gfx = GetStationGfx(t);
-				byte offset = 0;
+				uint8_t offset = 0;
 				for (uint i = 0; i < lengthof(atc); i++) {
 					if (old_gfx < atc[i].old_start) {
 						SetStationGfx(t, old_gfx - offset);
@@ -2535,9 +2535,9 @@ bool AfterLoadGame()
 			const DiagDirection vdir = DirToDiagDir(v->direction);
 
 			/* Have we passed the visibility "switch" state already? */
-			byte pos = (DiagDirToAxis(vdir) == AXIS_X ? v->x_pos : v->y_pos) & TILE_UNIT_MASK;
-			byte frame = (vdir == DIAGDIR_NE || vdir == DIAGDIR_NW) ? TILE_SIZE - 1 - pos : pos;
-			extern const byte _tunnel_visibility_frame[DIAGDIR_END];
+			uint8_t pos = (DiagDirToAxis(vdir) == AXIS_X ? v->x_pos : v->y_pos) & TILE_UNIT_MASK;
+			uint8_t frame = (vdir == DIAGDIR_NE || vdir == DIAGDIR_NW) ? TILE_SIZE - 1 - pos : pos;
+			extern const uint8_t _tunnel_visibility_frame[DIAGDIR_END];
 
 			/* Should the vehicle be hidden or not? */
 			bool hidden;
@@ -2583,7 +2583,7 @@ bool AfterLoadGame()
 
 			bool loading = rv->current_order.IsType(OT_LOADING) || rv->current_order.IsType(OT_LEAVESTATION);
 			if (HasBit(rv->state, RVS_IN_ROAD_STOP)) {
-				extern const byte _road_stop_stop_frame[];
+				extern const uint8_t _road_stop_stop_frame[];
 				SB(rv->state, RVS_ENTERED_STOP, 1, loading || rv->frame > _road_stop_stop_frame[rv->state - RVSB_IN_ROAD_STOP + (_settings_game.vehicle.road_side << RVS_DRIVE_SIDE)]);
 			} else if (HasBit(rv->state, RVS_IN_DT_ROAD_STOP)) {
 				SB(rv->state, RVS_ENTERED_STOP, 1, loading || rv->frame > RVC_DRIVE_THROUGH_STOP_FRAME);

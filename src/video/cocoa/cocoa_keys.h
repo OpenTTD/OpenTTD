@@ -134,7 +134,7 @@
 
 struct CocoaVkMapping {
 	unsigned short vk_from;
-	byte map_to;
+	uint8_t map_to;
 };
 
 #define AS(x, z) {x, z}

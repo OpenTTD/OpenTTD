@@ -28,7 +28,7 @@ struct SpriteCache {
 	int16_t lru;
 	SpriteType type;     ///< In some cases a single sprite is misused by two NewGRFs. Once as real sprite and once as recolour sprite. If the recolour sprite gets into the cache it might be drawn as real sprite which causes enormous trouble.
 	bool warned;         ///< True iff the user has been warned about incorrect use of this sprite
-	byte control_flags;  ///< Control flags, see SpriteCacheCtrlFlags
+	uint8_t control_flags;  ///< Control flags, see SpriteCacheCtrlFlags
 };
 
 inline bool IsMapgenSpriteID(SpriteID sprite)

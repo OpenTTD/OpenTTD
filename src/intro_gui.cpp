@@ -48,13 +48,13 @@
  */
 struct IntroGameViewportCommand {
 	/** Horizontal alignment value. */
-	enum AlignmentH : byte {
+	enum AlignmentH : uint8_t {
 		LEFT,
 		CENTRE,
 		RIGHT,
 	};
 	/** Vertical alignment value. */
-	enum AlignmentV : byte {
+	enum AlignmentV : uint8_t {
 		TOP,
 		MIDDLE,
 		BOTTOM,

@@ -52,8 +52,8 @@ static TileIndex TrainApproachingCrossingTile(const Train *v);
 static void CheckIfTrainNeedsService(Train *v);
 static void CheckNextTrainTile(Train *v);
 
-static const byte _vehicle_initial_x_fract[4] = {10, 8, 4,  8};
-static const byte _vehicle_initial_y_fract[4] = { 8, 4, 8, 10};
+static const uint8_t _vehicle_initial_x_fract[4] = {10, 8, 4,  8};
+static const uint8_t _vehicle_initial_y_fract[4] = { 8, 4, 8, 10};
 
 template <>
 bool IsValidImageIndex<VEH_TRAIN>(uint8_t image_index)
@@ -67,7 +67,7 @@ bool IsValidImageIndex<VEH_TRAIN>(uint8_t image_index)
  * @param cargo Cargo type to get multiplier for
  * @return Cargo weight multiplier
  */
-byte FreightWagonMult(CargoID cargo)
+uint8_t FreightWagonMult(CargoID cargo)
 {
 	if (!CargoSpec::Get(cargo)->is_freight) return 1;
 	return _settings_game.vehicle.freight_trains;
@@ -2449,7 +2449,7 @@ void FreeTrainTrackReservation(const Train *v)
 	}
 }
 
-static const byte _initial_tile_subcoord[6][4][3] = {
+static const uint8_t _initial_tile_subcoord[6][4][3] = {
 {{ 15, 8, 1 }, { 0, 0, 0 }, { 0, 8, 5 }, { 0,  0, 0 }},
 {{  0, 0, 0 }, { 8, 0, 3 }, { 0, 0, 0 }, { 8, 15, 7 }},
 {{  0, 0, 0 }, { 7, 0, 2 }, { 0, 7, 6 }, { 0,  0, 0 }},
@@ -3037,10 +3037,10 @@ static inline bool CheckCompatibleRail(const Train *v, TileIndex tile)
 
 /** Data structure for storing engine speed changes of an acceleration type. */
 struct AccelerationSlowdownParams {
-	byte small_turn; ///< Speed change due to a small turn.
-	byte large_turn; ///< Speed change due to a large turn.
-	byte z_up;       ///< Fraction to remove when moving up.
-	byte z_down;     ///< Fraction to add when moving down.
+	uint8_t small_turn; ///< Speed change due to a small turn.
+	uint8_t large_turn; ///< Speed change due to a large turn.
+	uint8_t z_up;       ///< Fraction to remove when moving up.
+	uint8_t z_down;     ///< Fraction to add when moving down.
 };
 
 /** Speed update fractions for each acceleration type. */
@@ -3442,7 +3442,7 @@ bool TrainController(Train *v, Vehicle *nomove, bool reverse)
 						chosen_track == TRACK_BIT_LEFT  || chosen_track == TRACK_BIT_RIGHT);
 
 				/* Update XY to reflect the entrance to the new tile, and select the direction to use */
-				const byte *b = _initial_tile_subcoord[FindFirstBit(chosen_track)][enterdir];
+				const uint8_t *b = _initial_tile_subcoord[FindFirstBit(chosen_track)][enterdir];
 				gp.x = (gp.x & ~0xF) | b[0];
 				gp.y = (gp.y & ~0xF) | b[1];
 				Direction chosen_dir = (Direction)b[2];

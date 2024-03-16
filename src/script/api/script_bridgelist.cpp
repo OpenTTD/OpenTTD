@@ -16,14 +16,14 @@
 
 ScriptBridgeList::ScriptBridgeList()
 {
-	for (byte j = 0; j < MAX_BRIDGES; j++) {
+	for (uint8_t j = 0; j < MAX_BRIDGES; j++) {
 		if (ScriptBridge::IsValidBridge(j)) this->AddItem(j);
 	}
 }
 
 ScriptBridgeList_Length::ScriptBridgeList_Length(SQInteger length)
 {
-	for (byte j = 0; j < MAX_BRIDGES; j++) {
+	for (uint8_t j = 0; j < MAX_BRIDGES; j++) {
 		if (ScriptBridge::IsValidBridge(j)) {
 			if (length >= ScriptBridge::GetMinLength(j) && length <= ScriptBridge::GetMaxLength(j)) this->AddItem(j);
 		}

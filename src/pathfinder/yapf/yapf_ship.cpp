@@ -398,7 +398,7 @@ public:
 
 		/* Ocean/canal speed penalty. */
 		const ShipVehicleInfo *svi = ShipVehInfo(Yapf().GetVehicle()->engine_type);
-		byte speed_frac = (GetEffectiveWaterClass(n.GetTile()) == WATER_CLASS_SEA) ? svi->ocean_speed_frac : svi->canal_speed_frac;
+		uint8_t speed_frac = (GetEffectiveWaterClass(n.GetTile()) == WATER_CLASS_SEA) ? svi->ocean_speed_frac : svi->canal_speed_frac;
 		if (speed_frac > 0) c += YAPF_TILE_LENGTH * (1 + tf->m_tiles_skipped) * speed_frac / (256 - speed_frac);
 
 		/* Apply it. */

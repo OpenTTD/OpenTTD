@@ -54,7 +54,7 @@ typedef GUIList<BuildBridgeData> GUIBridgeList; ///< List of bridges, used in #B
  * @param tile_start start tile
  * @param transport_type transport type.
  */
-void CcBuildBridge(Commands, const CommandCost &result, TileIndex end_tile, TileIndex tile_start, TransportType transport_type, BridgeType, byte)
+void CcBuildBridge(Commands, const CommandCost &result, TileIndex end_tile, TileIndex tile_start, TransportType transport_type, BridgeType, uint8_t)
 {
 	if (result.Failed()) return;
 	if (_settings_client.sound.confirm) SndPlayTileFx(SND_27_CONSTRUCTION_BRIDGE, end_tile);
@@ -82,7 +82,7 @@ private:
 	TileIndex start_tile;
 	TileIndex end_tile;
 	TransportType transport_type;
-	byte road_rail_type;
+	uint8_t road_rail_type;
 	GUIBridgeList bridges;
 	int icon_width; ///< Scaled width of the the bridge icon sprite.
 	Scrollbar *vscroll;
@@ -147,7 +147,7 @@ private:
 	}
 
 public:
-	BuildBridgeWindow(WindowDesc *desc, TileIndex start, TileIndex end, TransportType transport_type, byte road_rail_type, GUIBridgeList &&bl) : Window(desc),
+	BuildBridgeWindow(WindowDesc *desc, TileIndex start, TileIndex end, TransportType transport_type, uint8_t road_rail_type, GUIBridgeList &&bl) : Window(desc),
 		start_tile(start),
 		end_tile(end),
 		transport_type(transport_type),
@@ -358,7 +358,7 @@ static WindowDesc _build_bridge_desc(
  * @param transport_type The transport type
  * @param road_rail_type The road/rail type
  */
-void ShowBuildBridgeWindow(TileIndex start, TileIndex end, TransportType transport_type, byte road_rail_type)
+void ShowBuildBridgeWindow(TileIndex start, TileIndex end, TransportType transport_type, uint8_t road_rail_type)
 {
 	CloseWindowByClass(WC_BUILD_BRIDGE);
 

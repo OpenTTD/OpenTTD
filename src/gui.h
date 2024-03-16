@@ -62,7 +62,7 @@ void ShowSubsidiesList();
 
 /* goal_gui.cpp */
 void ShowGoalsList(CompanyID company);
-void ShowGoalQuestion(uint16_t id, byte type, uint32_t button_mask, const std::string &question);
+void ShowGoalQuestion(uint16_t id, uint8_t type, uint32_t button_mask, const std::string &question);
 
 /* story_gui.cpp */
 void ShowStoryBook(CompanyID company, uint16_t page_id = INVALID_STORY_PAGE, bool centered = false);
@@ -72,7 +72,7 @@ void ShowExtraViewportWindow(TileIndex tile = INVALID_TILE);
 void ShowExtraViewportWindowForTileUnderCursor();
 
 /* bridge_gui.cpp */
-void ShowBuildBridgeWindow(TileIndex start, TileIndex end, TransportType transport_type, byte bridge_type);
+void ShowBuildBridgeWindow(TileIndex start, TileIndex end, TransportType transport_type, uint8_t bridge_type);
 
 /* music_gui.cpp */
 void ShowMusicWindow();

@@ -53,7 +53,7 @@ void VehicleLengthChanged(const Vehicle *u);
 void ResetVehicleHash();
 void ResetVehicleColourMap();
 
-byte GetBestFittingSubType(Vehicle *v_from, Vehicle *v_for, CargoID dest_cargo_type);
+uint8_t GetBestFittingSubType(Vehicle *v_from, Vehicle *v_for, CargoID dest_cargo_type);
 
 void ViewportAddVehicles(DrawPixelInfo *dpi);
 
@@ -71,7 +71,7 @@ UnitID GetFreeUnitNumber(VehicleType type);
 
 void VehicleEnterDepot(Vehicle *v);
 
-bool CanBuildVehicleInfrastructure(VehicleType type, byte subtype = 0);
+bool CanBuildVehicleInfrastructure(VehicleType type, uint8_t subtype = 0);
 
 /** Position information of a vehicle after it moved */
 struct GetNewVehiclePosResult {
@@ -112,7 +112,7 @@ inline bool IsCompanyBuildableVehicleType(const BaseVehicle *v)
 }
 
 LiveryScheme GetEngineLiveryScheme(EngineID engine_type, EngineID parent_engine_type, const Vehicle *v);
-const struct Livery *GetEngineLivery(EngineID engine_type, CompanyID company, EngineID parent_engine_type, const Vehicle *v, byte livery_setting);
+const struct Livery *GetEngineLivery(EngineID engine_type, CompanyID company, EngineID parent_engine_type, const Vehicle *v, uint8_t livery_setting);
 
 SpriteID GetEnginePalette(EngineID engine_type, CompanyID company);
 SpriteID GetVehiclePalette(const Vehicle *v);

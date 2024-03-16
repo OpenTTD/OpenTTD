@@ -96,18 +96,18 @@ enum GrfSpecFeature {
 static const uint32_t INVALID_GRFID = 0xFFFFFFFF;
 
 struct GRFLabel {
-	byte label;
+	uint8_t label;
 	uint32_t nfo_line;
 	size_t pos;
 
-	GRFLabel(byte label, uint32_t nfo_line, size_t pos) : label(label), nfo_line(nfo_line), pos(pos) {}
+	GRFLabel(uint8_t label, uint32_t nfo_line, size_t pos) : label(label), nfo_line(nfo_line), pos(pos) {}
 };
 
 /** Dynamic data of a loaded NewGRF */
 struct GRFFile : ZeroedMemoryAllocator {
 	std::string filename;
 	uint32_t grfid;
-	byte grf_version;
+	uint8_t grf_version;
 
 	uint sound_offset;
 	uint16_t num_sounds;
@@ -188,7 +188,7 @@ struct GRFLoadedFeatures {
  */
 inline bool HasGrfMiscBit(GrfMiscBit bit)
 {
-	extern byte _misc_grf_features;
+	extern uint8_t _misc_grf_features;
 	return HasBit(_misc_grf_features, bit);
 }
 
@@ -204,7 +204,7 @@ void ResetPersistentNewGRFData();
 void GrfMsgI(int severity, const std::string &msg);
 #define GrfMsg(severity, format_string, ...) GrfMsgI(severity, fmt::format(FMT_STRING(format_string), ## __VA_ARGS__))
 
-bool GetGlobalVariable(byte param, uint32_t *value, const GRFFile *grffile);
+bool GetGlobalVariable(uint8_t param, uint32_t *value, const GRFFile *grffile);
 
 StringID MapGRFStringID(uint32_t grfid, StringID str);
 void ShowNewGRFError();

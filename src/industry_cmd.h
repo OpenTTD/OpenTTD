@@ -14,13 +14,13 @@
 #include "company_type.h"
 #include "industry_type.h"
 
-enum IndustryControlFlags : byte;
+enum IndustryControlFlags : uint8_t;
 
 CommandCost CmdBuildIndustry(DoCommandFlag flags, TileIndex tile, IndustryType it, uint32_t first_layout, bool fund, uint32_t seed);
 CommandCost CmdIndustrySetFlags(DoCommandFlag flags, IndustryID ind_id, IndustryControlFlags ctlflags);
 CommandCost CmdIndustrySetExclusivity(DoCommandFlag flags, IndustryID ind_id, Owner company_id, bool consumer);
 CommandCost CmdIndustrySetText(DoCommandFlag flags, IndustryID ind_id, const std::string &text);
-CommandCost CmdIndustrySetProduction(DoCommandFlag flags, IndustryID ind_id, byte prod_level, bool show_news, const std::string &text);
+CommandCost CmdIndustrySetProduction(DoCommandFlag flags, IndustryID ind_id, uint8_t prod_level, bool show_news, const std::string &text);
 
 DEF_CMD_TRAIT(CMD_BUILD_INDUSTRY, CmdBuildIndustry, CMD_DEITY, CMDT_LANDSCAPE_CONSTRUCTION)
 DEF_CMD_TRAIT(CMD_INDUSTRY_SET_FLAGS, CmdIndustrySetFlags, CMD_DEITY, CMDT_OTHER_MANAGEMENT)

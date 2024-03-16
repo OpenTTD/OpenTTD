@@ -258,13 +258,13 @@ public:
  */
 static std::unique_ptr<NWidgetBase> MakeTreeTypeButtons()
 {
-	const byte type_base = _tree_base_by_landscape[_settings_game.game_creation.landscape];
-	const byte type_count = _tree_count_by_landscape[_settings_game.game_creation.landscape];
+	const uint8_t type_base = _tree_base_by_landscape[_settings_game.game_creation.landscape];
+	const uint8_t type_count = _tree_count_by_landscape[_settings_game.game_creation.landscape];
 
 	/* Toyland has 9 tree types, which look better in 3x3 than 4x3 */
 	const int num_columns = type_count == 9 ? 3 : 4;
 	const int num_rows = CeilDiv(type_count, num_columns);
-	byte cur_type = type_base;
+	uint8_t cur_type = type_base;
 
 	auto vstack = std::make_unique<NWidgetVertical>(NC_EQUALSIZE);
 	vstack->SetPIP(0, 1, 0);

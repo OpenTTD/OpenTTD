@@ -41,13 +41,13 @@ protected:
 	/** return reference to the array header (non-const) */
 	inline ArrayHeader &Hdr()
 	{
-		return *(ArrayHeader*)(((byte*)data) - HeaderSize);
+		return *(ArrayHeader*)(((uint8_t*)data) - HeaderSize);
 	}
 
 	/** return reference to the array header (const) */
 	inline const ArrayHeader &Hdr() const
 	{
-		return *(ArrayHeader*)(((byte*)data) - HeaderSize);
+		return *(ArrayHeader*)(((uint8_t*)data) - HeaderSize);
 	}
 
 	/** return reference to the block reference counter */
@@ -70,7 +70,7 @@ public:
 		static_assert(C < (SIZE_MAX - HeaderSize) / Tsize);
 
 		/* allocate block for header + items (don't construct items) */
-		data = (T*)((MallocT<byte>(HeaderSize + C * Tsize)) + HeaderSize);
+		data = (T*)((MallocT<uint8_t>(HeaderSize + C * Tsize)) + HeaderSize);
 		SizeRef() = 0; // initial number of items
 		RefCnt() = 1; // initial reference counter
 	}
@@ -91,7 +91,7 @@ public:
 
 		Clear();
 		/* free the memory block occupied by items */
-		free(((byte*)data) - HeaderSize);
+		free(((uint8_t*)data) - HeaderSize);
 		data = nullptr;
 	}
 

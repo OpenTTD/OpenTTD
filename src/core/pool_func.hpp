@@ -123,9 +123,9 @@ DEFINE_POOL_METHOD(inline void *)::AllocateItem(size_t size, size_t index)
 			memset((void *)item, 0, sizeof(Titem));
 		}
 	} else if (Tzero) {
-		item = (Titem *)CallocT<byte>(size);
+		item = (Titem *)CallocT<uint8_t>(size);
 	} else {
-		item = (Titem *)MallocT<byte>(size);
+		item = (Titem *)MallocT<uint8_t>(size);
 	}
 	this->data[index] = item;
 	SetBit(this->used_bitmap[index / BITMAP_SIZE], index % BITMAP_SIZE);

@@ -54,8 +54,8 @@ enum ColourShade : uint8_t {
 };
 DECLARE_POSTFIX_INCREMENT(ColourShade)
 
-byte GetColourGradient(Colours colour, ColourShade shade);
-void SetColourGradient(Colours colour, ColourShade shade, byte palette_colour);
+uint8_t GetColourGradient(Colours colour, ColourShade shade);
+void SetColourGradient(Colours colour, ColourShade shade, uint8_t palette_colour);
 
 /**
  * Return the colour for a particular greyscale level.

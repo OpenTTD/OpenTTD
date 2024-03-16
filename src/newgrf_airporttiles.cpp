@@ -107,7 +107,7 @@ StationGfx GetTranslatedAirportTileID(StationGfx gfx)
  * @param grf_version8 True, if we are dealing with a new NewGRF which uses GRF version >= 8.
  * @return a construction of bits obeying the newgrf format
  */
-static uint32_t GetNearbyAirportTileInformation(byte parameter, TileIndex tile, StationID index, bool grf_version8)
+static uint32_t GetNearbyAirportTileInformation(uint8_t parameter, TileIndex tile, StationID index, bool grf_version8)
 {
 	if (parameter != 0) tile = GetNearbyTile(parameter, tile); // only perform if it is required
 	bool is_same_airport = (IsTileType(tile, MP_STATION) && IsAirport(tile) && GetStationIndex(tile) == index);
@@ -159,7 +159,7 @@ static uint32_t GetAirportTileIDAtOffset(TileIndex tile, const Station *st, uint
 	return 0xFF << 8 | ats->grf_prop.subst_id; // so just give it the substitute
 }
 
-/* virtual */ uint32_t AirportTileScopeResolver::GetVariable(byte variable, [[maybe_unused]] uint32_t parameter, bool *available) const
+/* virtual */ uint32_t AirportTileScopeResolver::GetVariable(uint8_t variable, [[maybe_unused]] uint32_t parameter, bool *available) const
 {
 	assert(this->st != nullptr);
 
@@ -216,7 +216,7 @@ AirportTileResolverObject::AirportTileResolverObject(const AirportTileSpec *ats,
 		CallbackID callback, uint32_t callback_param1, uint32_t callback_param2)
 	: ResolverObject(ats->grf_prop.grffile, callback, callback_param1, callback_param2),
 		tiles_scope(*this, ats, tile, st),
-		airport_scope(*this, tile, st, st != nullptr ? st->airport.type : (byte)AT_DUMMY, st != nullptr ? st->airport.layout : 0)
+		airport_scope(*this, tile, st, st != nullptr ? st->airport.type : (uint8_t)AT_DUMMY, st != nullptr ? st->airport.layout : 0)
 {
 	this->root_spritegroup = ats->grf_prop.spritegroup[0];
 }
@@ -237,7 +237,7 @@ uint16_t GetAirportTileCallback(CallbackID callback, uint32_t param1, uint32_t p
 	return object.ResolveCallback();
 }
 
-static void AirportDrawTileLayout(const TileInfo *ti, const TileLayoutSpriteGroup *group, byte colour)
+static void AirportDrawTileLayout(const TileInfo *ti, const TileLayoutSpriteGroup *group, uint8_t colour)
 {
 	const DrawTileSprites *dts = group->ProcessRegisters(nullptr);
 

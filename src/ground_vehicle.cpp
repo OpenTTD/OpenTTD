@@ -41,8 +41,8 @@ void GroundVehicle<T, Type>::PowerChanged()
 		if (track_speed > 0) max_track_speed = std::min(max_track_speed, track_speed);
 	}
 
-	byte air_drag;
-	byte air_drag_value = v->GetAirDrag();
+	uint8_t air_drag;
+	uint8_t air_drag_value = v->GetAirDrag();
 
 	/* If air drag is set to zero (default), the resulting air drag coefficient is dependent on max speed. */
 	if (air_drag_value == 0) {

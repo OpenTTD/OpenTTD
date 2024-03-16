@@ -15,7 +15,7 @@
 #include "tile_type.h"
 
 /** Vehicle List type flags */
-enum VehicleListType : byte {
+enum VehicleListType : uint8_t {
 	VL_STANDARD,
 	VL_SHARED_ORDERS,
 	VL_STATION_LIST,

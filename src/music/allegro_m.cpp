@@ -80,7 +80,7 @@ bool MusicDriver_Allegro::IsSongPlaying()
 	return midi_pos >= 0;
 }
 
-void MusicDriver_Allegro::SetVolume(byte vol)
+void MusicDriver_Allegro::SetVolume(uint8_t vol)
 {
 	set_volume(-1, vol);
 }

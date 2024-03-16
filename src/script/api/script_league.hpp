@@ -42,7 +42,7 @@ public:
 	/**
 	 * The type of a link.
 	 */
-	enum LinkType : byte {
+	enum LinkType : uint8_t {
 		LINK_NONE = ::LT_NONE,             ///< No link
 		LINK_TILE = ::LT_TILE,             ///< Link a tile
 		LINK_INDUSTRY = ::LT_INDUSTRY,     ///< Link an industry

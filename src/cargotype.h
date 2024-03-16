@@ -18,7 +18,7 @@
 #include "core/bitmath_func.hpp"
 
 /** Town growth effect when delivering cargo. */
-enum TownAcceptanceEffect : byte {
+enum TownAcceptanceEffect : uint8_t {
 	TAE_BEGIN = 0,
 	TAE_NONE = TAE_BEGIN, ///< Cargo has no effect.
 	TAE_PASSENGERS, ///< Cargo behaves passenger-like.
@@ -31,7 +31,7 @@ enum TownAcceptanceEffect : byte {
 };
 
 /** Town effect when producing cargo. */
-enum TownProductionEffect : byte {
+enum TownProductionEffect : uint8_t {
 	TPE_NONE, ///< Town will not produce this cargo type.
 	TPE_PASSENGERS, ///< Cargo behaves passenger-like for production.
 	TPE_MAIL, ///< Cargo behaves mail-like for production.
@@ -60,7 +60,7 @@ enum CargoClass {
 	CC_SPECIAL      = 1 << 15, ///< Special bit used for livery refit tricks instead of normal cargoes.
 };
 
-static const byte INVALID_CARGO_BITNUM = 0xFF; ///< Constant representing invalid cargo
+static const uint8_t INVALID_CARGO_BITNUM = 0xFF; ///< Constant representing invalid cargo
 
 static const uint TOWN_PRODUCTION_DIVISOR = 256;
 

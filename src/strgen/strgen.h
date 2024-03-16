@@ -118,7 +118,7 @@ struct LanguageWriter {
 	 * @param buffer The buffer to write.
 	 * @param length The amount of byte to write.
 	 */
-	virtual void Write(const byte *buffer, size_t length) = 0;
+	virtual void Write(const uint8_t *buffer, size_t length) = 0;
 
 	/**
 	 * Finalise writing the file.

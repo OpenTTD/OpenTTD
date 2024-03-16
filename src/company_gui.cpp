@@ -610,7 +610,7 @@ private:
 		uint32_t used_colours = 0;
 		const Livery *livery, *default_livery = nullptr;
 		bool primary = widget == WID_SCL_PRI_COL_DROPDOWN;
-		byte default_col = 0;
+		uint8_t default_col = 0;
 
 		/* Disallow other company colours for the primary colour */
 		if (this->livery_class < LC_GROUP_RAIL && HasBit(this->sel, LS_DEFAULT) && primary) {
@@ -651,7 +651,7 @@ private:
 			list.push_back(std::make_unique<DropDownListColourItem<>>(i, HasBit(used_colours, i)));
 		}
 
-		byte sel;
+		uint8_t sel;
 		if (default_livery == nullptr || HasBit(livery->in_use, primary ? 0 : 1)) {
 			sel = primary ? livery->colour1 : livery->colour2;
 		} else {
@@ -2524,7 +2524,7 @@ struct CompanyWindow : Window
 			}
 
 			case WID_C_BUILD_HQ:
-				if ((byte)this->window_number != _local_company) return;
+				if ((uint8_t)this->window_number != _local_company) return;
 				if (this->IsWidgetLowered(WID_C_BUILD_HQ)) {
 					ResetObjectToPlace();
 					this->RaiseButtons();

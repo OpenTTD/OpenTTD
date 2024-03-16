@@ -1300,7 +1300,7 @@ void DecreaseVehicleValue(Vehicle *v)
 	SetWindowDirty(WC_VEHICLE_DETAILS, v->index);
 }
 
-static const byte _breakdown_chance[64] = {
+static const uint8_t _breakdown_chance[64] = {
 	  3,   3,   3,   3,   3,   3,   3,   3,
 	  4,   4,   5,   5,   6,   6,   7,   7,
 	  8,   8,   9,   9,  10,  10,  11,  11,
@@ -1905,7 +1905,7 @@ UnitID GetFreeUnitNumber(VehicleType type)
  * @return true if there is any reason why you may build
  *         the infrastructure for the given vehicle type
  */
-bool CanBuildVehicleInfrastructure(VehicleType type, byte subtype)
+bool CanBuildVehicleInfrastructure(VehicleType type, uint8_t subtype)
 {
 	assert(IsCompanyBuildableVehicleType(type));
 
@@ -2047,7 +2047,7 @@ LiveryScheme GetEngineLiveryScheme(EngineID engine_type, EngineID parent_engine_
  * @param livery_setting The livery settings to use for acquiring the livery information.
  * @return livery to use
  */
-const Livery *GetEngineLivery(EngineID engine_type, CompanyID company, EngineID parent_engine_type, const Vehicle *v, byte livery_setting)
+const Livery *GetEngineLivery(EngineID engine_type, CompanyID company, EngineID parent_engine_type, const Vehicle *v, uint8_t livery_setting)
 {
 	const Company *c = Company::Get(company);
 	LiveryScheme scheme = LS_DEFAULT;
@@ -2643,7 +2643,7 @@ void Vehicle::UpdateVisualEffect(bool allow_power_change)
 	const Engine *e = this->GetEngine();
 
 	/* Evaluate properties */
-	byte visual_effect;
+	uint8_t visual_effect;
 	switch (e->type) {
 		case VEH_TRAIN: visual_effect = e->u.rail.visual_effect; break;
 		case VEH_ROAD:  visual_effect = e->u.road.visual_effect; break;

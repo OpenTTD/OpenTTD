@@ -206,7 +206,7 @@ static std::string RemoveUnderscores(std::string name)
  * @param tokencount the number of parameters passed
  * @param *tokens are the parameters given to the original command (0 is the first param)
  */
-static void IConsoleAliasExec(const IConsoleAlias *alias, byte tokencount, char *tokens[ICON_TOKEN_COUNT], const uint recurse_count)
+static void IConsoleAliasExec(const IConsoleAlias *alias, uint8_t tokencount, char *tokens[ICON_TOKEN_COUNT], const uint recurse_count)
 {
 	std::string alias_buffer;
 

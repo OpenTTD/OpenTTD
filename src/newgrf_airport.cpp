@@ -51,13 +51,13 @@ AirportSpec AirportSpec::specs[NUM_AIRPORTS]; ///< Airport specifications.
  * @param type index of airport
  * @return A pointer to the corresponding AirportSpec
  */
-/* static */ const AirportSpec *AirportSpec::Get(byte type)
+/* static */ const AirportSpec *AirportSpec::Get(uint8_t type)
 {
 	assert(type < lengthof(AirportSpec::specs));
 	const AirportSpec *as = &AirportSpec::specs[type];
 	if (type >= NEW_AIRPORT_OFFSET && !as->enabled) {
 		if (_airport_mngr.GetGRFID(type) == 0) return as;
-		byte subst_id = _airport_mngr.GetSubstituteID(type);
+		uint8_t subst_id = _airport_mngr.GetSubstituteID(type);
 		if (subst_id == AT_INVALID) return as;
 		as = &AirportSpec::specs[subst_id];
 	}
@@ -71,7 +71,7 @@ AirportSpec AirportSpec::specs[NUM_AIRPORTS]; ///< Airport specifications.
  * @param type index of airport
  * @return A pointer to the corresponding AirportSpec
  */
-/* static */ AirportSpec *AirportSpec::GetWithoutOverride(byte type)
+/* static */ AirportSpec *AirportSpec::GetWithoutOverride(uint8_t type)
 {
 	assert(type < lengthof(AirportSpec::specs));
 	return &AirportSpec::specs[type];
@@ -92,12 +92,12 @@ bool AirportSpec::IsAvailable() const
  * @param tile Top corner of the airport.
  * @return true iff the airport would be within the map bounds at the given tile.
  */
-bool AirportSpec::IsWithinMapBounds(byte table, TileIndex tile) const
+bool AirportSpec::IsWithinMapBounds(uint8_t table, TileIndex tile) const
 {
 	if (table >= this->num_table) return false;
 
-	byte w = this->size_x;
-	byte h = this->size_y;
+	uint8_t w = this->size_x;
+	uint8_t h = this->size_y;
 	if (this->rotation[table] == DIR_E || this->rotation[table] == DIR_W) Swap(w, h);
 
 	return TileX(tile) + w < Map::SizeX() &&
@@ -131,7 +131,7 @@ void BindAirportSpecs()
 
 void AirportOverrideManager::SetEntitySpec(AirportSpec *as)
 {
-	byte airport_id = this->AddEntityID(as->grf_prop.local_id, as->grf_prop.grffile->grfid, as->grf_prop.subst_id);
+	uint8_t airport_id = this->AddEntityID(as->grf_prop.local_id, as->grf_prop.grffile->grfid, as->grf_prop.subst_id);
 
 	if (airport_id == this->invalid_id) {
 		GrfMsg(1, "Airport.SetEntitySpec: Too many airports allocated. Ignoring.");
@@ -153,7 +153,7 @@ void AirportOverrideManager::SetEntitySpec(AirportSpec *as)
 	}
 }
 
-/* virtual */ uint32_t AirportScopeResolver::GetVariable(byte variable, [[maybe_unused]] uint32_t parameter, bool *available) const
+/* virtual */ uint32_t AirportScopeResolver::GetVariable(uint8_t variable, [[maybe_unused]] uint32_t parameter, bool *available) const
 {
 	switch (variable) {
 		case 0x40: return this->layout;
@@ -241,14 +241,14 @@ TownScopeResolver *AirportResolverObject::GetTown()
  * @param param1 First parameter (var 10) of the callback.
  * @param param2 Second parameter (var 18) of the callback.
  */
-AirportResolverObject::AirportResolverObject(TileIndex tile, Station *st, byte airport_id, byte layout,
+AirportResolverObject::AirportResolverObject(TileIndex tile, Station *st, uint8_t airport_id, uint8_t layout,
 		CallbackID callback, uint32_t param1, uint32_t param2)
 	: ResolverObject(AirportSpec::Get(airport_id)->grf_prop.grffile, callback, param1, param2), airport_scope(*this, tile, st, airport_id, layout)
 {
 	this->root_spritegroup = AirportSpec::Get(airport_id)->grf_prop.spritegroup[0];
 }
 
-SpriteID GetCustomAirportSprite(const AirportSpec *as, byte layout)
+SpriteID GetCustomAirportSprite(const AirportSpec *as, uint8_t layout)
 {
 	AirportResolverObject object(INVALID_TILE, nullptr, as->GetIndex(), layout);
 	const SpriteGroup *group = object.Resolve();
@@ -270,7 +270,7 @@ uint16_t GetAirportCallback(CallbackID callback, uint32_t param1, uint32_t param
  * @param callback The callback to call.
  * @return The custom text.
  */
-StringID GetAirportTextCallback(const AirportSpec *as, byte layout, uint16_t callback)
+StringID GetAirportTextCallback(const AirportSpec *as, uint8_t layout, uint16_t callback)
 {
 	AirportResolverObject object(INVALID_TILE, nullptr, as->GetIndex(), layout, (CallbackID)callback);
 	uint16_t cb_res = object.ResolveCallback();

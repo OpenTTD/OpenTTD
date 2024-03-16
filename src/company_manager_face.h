@@ -54,9 +54,9 @@ DECLARE_POSTFIX_INCREMENT(CompanyManagerFaceVariable)
 
 /** Information about the valid values of CompanyManagerFace bitgroups as well as the sprites to draw */
 struct CompanyManagerFaceBitsInfo {
-	byte     offset;               ///< Offset in bits into the CompanyManagerFace
-	byte     length;               ///< Number of bits used in the CompanyManagerFace
-	byte     valid_values[GE_END]; ///< The number of valid values per gender/ethnicity
+	uint8_t     offset;               ///< Offset in bits into the CompanyManagerFace
+	uint8_t     length;               ///< Number of bits used in the CompanyManagerFace
+	uint8_t     valid_values[GE_END]; ///< The number of valid values per gender/ethnicity
 	SpriteID first_sprite[GE_END]; ///< The first sprite per gender/ethnicity
 };
 

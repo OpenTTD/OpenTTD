@@ -63,7 +63,7 @@ uint32_t RoadStopScopeResolver::GetTriggers() const
 	return this->st == nullptr ? 0 : this->st->waiting_triggers;
 }
 
-uint32_t RoadStopScopeResolver::GetVariable(byte variable, [[maybe_unused]] uint32_t parameter, bool *available) const
+uint32_t RoadStopScopeResolver::GetVariable(uint8_t variable, [[maybe_unused]] uint32_t parameter, bool *available) const
 {
 	auto get_road_type_variable = [&](RoadTramType rtt) -> uint32_t {
 		RoadType rt;
@@ -328,8 +328,8 @@ uint16_t GetAnimRoadStopCallback(CallbackID callback, uint32_t param1, uint32_t 
 }
 
 struct RoadStopAnimationFrameAnimationHelper {
-	static byte Get(BaseStation *st, TileIndex tile) { return st->GetRoadStopAnimationFrame(tile); }
-	static void Set(BaseStation *st, TileIndex tile, byte frame) { st->SetRoadStopAnimationFrame(tile, frame); }
+	static uint8_t Get(BaseStation *st, TileIndex tile) { return st->GetRoadStopAnimationFrame(tile); }
+	static void Set(BaseStation *st, TileIndex tile, uint8_t frame) { st->SetRoadStopAnimationFrame(tile, frame); }
 };
 
 /** Helper class for animation control. */
@@ -564,7 +564,7 @@ int AllocateSpecToRoadStop(const RoadStopSpec *statspec, BaseStation *st, bool e
 	return i;
 }
 
-void DeallocateSpecFromRoadStop(BaseStation *st, byte specindex)
+void DeallocateSpecFromRoadStop(BaseStation *st, uint8_t specindex)
 {
 	/* specindex of 0 (default) is never freeable */
 	if (specindex == 0) return;

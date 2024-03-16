@@ -307,7 +307,7 @@ static bool LoadIntList(const char *str, void *array, int nelems, VarType type)
 		case SLE_VAR_BL:
 		case SLE_VAR_I8:
 		case SLE_VAR_U8:
-			for (i = 0; i != nitems; i++) ((byte*)array)[i] = items[i];
+			for (i = 0; i != nitems; i++) ((uint8_t*)array)[i] = items[i];
 			break;
 
 		case SLE_VAR_I16:
@@ -337,7 +337,7 @@ static bool LoadIntList(const char *str, void *array, int nelems, VarType type)
  */
 std::string ListSettingDesc::FormatValue(const void *object) const
 {
-	const byte *p = static_cast<const byte *>(GetVariableAddress(object, this->save));
+	const uint8_t *p = static_cast<const uint8_t *>(GetVariableAddress(object, this->save));
 
 	std::string result;
 	for (size_t i = 0; i != this->save.length; i++) {

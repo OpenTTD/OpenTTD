@@ -22,7 +22,7 @@
 
 #include "../safeguards.h"
 
-extern const byte _palmap_w2d[];
+extern const uint8_t _palmap_w2d[];
 
 /**
  * We found a corrupted sprite. This means that the sprite itself
@@ -34,7 +34,7 @@ extern const byte _palmap_w2d[];
  */
 static bool WarnCorruptSprite(const SpriteFile &file, size_t file_pos, int line)
 {
-	static byte warning_level = 0;
+	static uint8_t warning_level = 0;
 	if (warning_level == 0) {
 		SetDParamStr(0, file.GetSimplifiedFilename());
 		ShowErrorMessage(STR_NEWGRF_ERROR_CORRUPT_SPRITE, INVALID_STRING_ID, WL_ERROR);
@@ -57,7 +57,7 @@ static bool WarnCorruptSprite(const SpriteFile &file, size_t file_pos, int line)
  * @param container_format Container format of the GRF this sprite is in.
  * @return True if the sprite was successfully loaded.
  */
-bool DecodeSingleSprite(SpriteLoader::Sprite *sprite, SpriteFile &file, size_t file_pos, SpriteType sprite_type, int64_t num, byte type, ZoomLevel zoom_lvl, byte colour_fmt, byte container_format)
+bool DecodeSingleSprite(SpriteLoader::Sprite *sprite, SpriteFile &file, size_t file_pos, SpriteType sprite_type, int64_t num, uint8_t type, ZoomLevel zoom_lvl, uint8_t colour_fmt, uint8_t container_format)
 {
 	/*
 	 * Original sprite height was max 255 pixels, with 4x extra zoom => 1020 pixels.
@@ -68,8 +68,8 @@ bool DecodeSingleSprite(SpriteLoader::Sprite *sprite, SpriteFile &file, size_t f
 	 */
 	if (num < 0 || num > 64 * 1024 * 1024) return WarnCorruptSprite(file, file_pos, __LINE__);
 
-	std::unique_ptr<byte[]> dest_orig(new byte[num]);
-	byte *dest = dest_orig.get();
+	std::unique_ptr<uint8_t[]> dest_orig(new uint8_t[num]);
+	uint8_t *dest = dest_orig.get();
 	const int64_t dest_size = num;
 
 	/* Read the file, which has some kind of compression */
@@ -165,7 +165,7 @@ bool DecodeSingleSprite(SpriteLoader::Sprite *sprite, SpriteFile &file, size_t f
 					if (colour_fmt & SCC_PAL) {
 						switch (sprite_type) {
 							case SpriteType::Normal: data->m = file.NeedsPaletteRemap() ? _palmap_w2d[*dest] : *dest; break;
-							case SpriteType::Font:   data->m = std::min<byte>(*dest, 2u); break;
+							case SpriteType::Font:   data->m = std::min<uint8_t>(*dest, 2u); break;
 							default:        data->m = *dest; break;
 						}
 						/* Magic blue. */
@@ -183,7 +183,7 @@ bool DecodeSingleSprite(SpriteLoader::Sprite *sprite, SpriteFile &file, size_t f
 		}
 
 		if (dest_size > sprite_size) {
-			static byte warning_level = 0;
+			static uint8_t warning_level = 0;
 			Debug(sprite, warning_level, "Ignoring {} unused extra bytes from the sprite from {} at position {}", dest_size - sprite_size, file.GetSimplifiedFilename(), file_pos);
 			warning_level = 6;
 		}
@@ -191,7 +191,7 @@ bool DecodeSingleSprite(SpriteLoader::Sprite *sprite, SpriteFile &file, size_t f
 		dest = dest_orig.get();
 
 		for (int i = 0; i < sprite->width * sprite->height; i++) {
-			byte *pixel = &dest[i * bpp];
+			uint8_t *pixel = &dest[i * bpp];
 
 			if (colour_fmt & SCC_RGB) {
 				sprite->data[i].r = *pixel++;
@@ -202,7 +202,7 @@ bool DecodeSingleSprite(SpriteLoader::Sprite *sprite, SpriteFile &file, size_t f
 			if (colour_fmt & SCC_PAL) {
 				switch (sprite_type) {
 					case SpriteType::Normal: sprite->data[i].m = file.NeedsPaletteRemap() ? _palmap_w2d[*pixel] : *pixel; break;
-					case SpriteType::Font:   sprite->data[i].m = std::min<byte>(*pixel, 2u); break;
+					case SpriteType::Font:   sprite->data[i].m = std::min<uint8_t>(*pixel, 2u); break;
 					default:        sprite->data[i].m = *pixel; break;
 				}
 				/* Magic blue. */
@@ -225,7 +225,7 @@ uint8_t LoadSpriteV1(SpriteLoader::SpriteCollection &sprite, SpriteFile &file, s
 
 	/* Read the size and type */
 	int num = file.ReadWord();
-	byte type = file.ReadByte();
+	uint8_t type = file.ReadByte();
 
 	/* Type 0xFF indicates either a colourmap or some other non-sprite info; we do not handle them here */
 	if (type == 0xFF) return 0;
@@ -252,7 +252,7 @@ uint8_t LoadSpriteV1(SpriteLoader::SpriteCollection &sprite, SpriteFile &file, s
 	return 0;
 }
 
-uint8_t LoadSpriteV2(SpriteLoader::SpriteCollection &sprite, SpriteFile &file, size_t file_pos, SpriteType sprite_type, bool load_32bpp, byte control_flags)
+uint8_t LoadSpriteV2(SpriteLoader::SpriteCollection &sprite, SpriteFile &file, size_t file_pos, SpriteType sprite_type, bool load_32bpp, uint8_t control_flags)
 {
 	static const ZoomLevel zoom_lvl_map[6] = {ZOOM_LVL_OUT_4X, ZOOM_LVL_NORMAL, ZOOM_LVL_OUT_2X, ZOOM_LVL_OUT_8X, ZOOM_LVL_OUT_16X, ZOOM_LVL_OUT_32X};
 
@@ -268,13 +268,13 @@ uint8_t LoadSpriteV2(SpriteLoader::SpriteCollection &sprite, SpriteFile &file, s
 	do {
 		int64_t num = file.ReadDword();
 		size_t start_pos = file.GetPos();
-		byte type = file.ReadByte();
+		uint8_t type = file.ReadByte();
 
 		/* Type 0xFF indicates either a colourmap or some other non-sprite info; we do not handle them here. */
 		if (type == 0xFF) return 0;
 
-		byte colour = type & SCC_MASK;
-		byte zoom = file.ReadByte();
+		uint8_t colour = type & SCC_MASK;
+		uint8_t zoom = file.ReadByte();
 
 		bool is_wanted_colour_depth = (colour != 0 && (load_32bpp ? colour != SCC_PAL : colour == SCC_PAL));
 		bool is_wanted_zoom_lvl;
@@ -350,7 +350,7 @@ uint8_t LoadSpriteV2(SpriteLoader::SpriteCollection &sprite, SpriteFile &file, s
 	return loaded_sprites;
 }
 
-uint8_t SpriteLoaderGrf::LoadSprite(SpriteLoader::SpriteCollection &sprite, SpriteFile &file, size_t file_pos, SpriteType sprite_type, bool load_32bpp, byte control_flags)
+uint8_t SpriteLoaderGrf::LoadSprite(SpriteLoader::SpriteCollection &sprite, SpriteFile &file, size_t file_pos, SpriteType sprite_type, bool load_32bpp, uint8_t control_flags)
 {
 	if (this->container_ver >= 2) {
 		return LoadSpriteV2(sprite, file, file_pos, sprite_type, load_32bpp, control_flags);

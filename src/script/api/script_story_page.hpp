@@ -57,7 +57,7 @@ public:
 	/**
 	 * Story page element types.
 	 */
-	enum StoryPageElementType : byte {
+	enum StoryPageElementType : uint8_t {
 		SPET_TEXT = ::SPET_TEXT,                     ///< An element that displays a block of text.
 		SPET_LOCATION = ::SPET_LOCATION,             ///< An element that displays a single line of text along with a button to view the referenced location.
 		SPET_GOAL = ::SPET_GOAL,                     ///< An element that displays a goal.
@@ -75,7 +75,7 @@ public:
 	 * Formatting and layout flags for story page buttons.
 	 * The SPBF_FLOAT_LEFT and SPBF_FLOAT_RIGHT flags can not be combined.
 	 */
-	enum StoryPageButtonFlags : byte {
+	enum StoryPageButtonFlags : uint8_t {
 		SPBF_NONE        = ::SPBF_NONE,        ///< No special formatting for button.
 		SPBF_FLOAT_LEFT  = ::SPBF_FLOAT_LEFT,  ///< Button is placed to the left of the following paragraph.
 		SPBF_FLOAT_RIGHT = ::SPBF_FLOAT_RIGHT, ///< Button is placed to the right of the following paragraph.
@@ -84,7 +84,7 @@ public:
 	/**
 	 * Mouse cursors usable by story page buttons.
 	 */
-	enum StoryPageButtonCursor : byte {
+	enum StoryPageButtonCursor : uint8_t {
 		SPBC_MOUSE          = ::SPBC_MOUSE,
 		SPBC_ZZZ            = ::SPBC_ZZZ,
 		SPBC_BUOY           = ::SPBC_BUOY,
@@ -146,7 +146,7 @@ public:
 	 * Colour codes usable for story page button elements.
 	 * Place a colour value in the lowest 8 bits of the \c reference parameter to the button.
 	 */
-	enum StoryPageButtonColour : byte {
+	enum StoryPageButtonColour : uint8_t {
 		SPBC_DARK_BLUE  = ::COLOUR_DARK_BLUE,
 		SPBC_PALE_GREEN = ::COLOUR_PALE_GREEN,
 		SPBC_PINK       = ::COLOUR_PINK,

@@ -15,8 +15,8 @@
 
 static const int MAX_FONT_SIZE = 72; ///< Maximum font size.
 
-static const byte FACE_COLOUR = 1;
-static const byte SHADOW_COLOUR = 2;
+static const uint8_t FACE_COLOUR = 1;
+static const uint8_t SHADOW_COLOUR = 2;
 
 /** Font cache for fonts that are based on a TrueType font. */
 class TrueTypeFontCache : public FontCache {
@@ -33,7 +33,7 @@ protected:
 	/** Container for information about a glyph. */
 	struct GlyphEntry {
 		Sprite *sprite; ///< The loaded sprite.
-		byte width;     ///< The width of the glyph.
+		uint8_t width;     ///< The width of the glyph.
 		bool duplicate; ///< Whether this glyph entry is a duplicate, i.e. may this be freed?
 	};
 

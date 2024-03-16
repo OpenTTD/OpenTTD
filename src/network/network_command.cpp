@@ -369,7 +369,7 @@ const char *NetworkGameSocketHandler::ReceiveCommand(Packet &p, CommandPacket &c
 	cp.err_msg = p.Recv_uint16();
 	cp.data    = _cmd_dispatch[cp.cmd].Sanitize(p.Recv_buffer());
 
-	byte callback = p.Recv_uint8();
+	uint8_t callback = p.Recv_uint8();
 	if (callback >= _callback_table.size() || _cmd_dispatch[cp.cmd].Unpack[callback] == nullptr)  return "invalid callback";
 
 	cp.callback = _callback_table[callback];

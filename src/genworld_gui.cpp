@@ -61,7 +61,7 @@ static uint GetMapHeightLimit()
  * Changes landscape type and sets genworld window dirty
  * @param landscape new landscape type
  */
-void SetNewLandscapeType(byte landscape)
+void SetNewLandscapeType(uint8_t landscape)
 {
 	_settings_newgame.game_creation.landscape = landscape;
 	InvalidateWindowClassesData(WC_SELECT_GAME);

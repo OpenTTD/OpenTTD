@@ -88,12 +88,12 @@ struct CurrencySpec {
 	 *            It is not a spec from Newgrf,
 	 *            rather a way to let users do what they want with custom currency
 	 */
-	byte symbol_pos;
+	uint8_t symbol_pos;
 	StringID name;
 
 	CurrencySpec() = default;
 
-	CurrencySpec(uint16_t rate, const char *separator, TimerGameCalendar::Year to_euro, const char *prefix, const char *suffix, const char *code, byte symbol_pos, StringID name) :
+	CurrencySpec(uint16_t rate, const char *separator, TimerGameCalendar::Year to_euro, const char *prefix, const char *suffix, const char *code, uint8_t symbol_pos, StringID name) :
 		rate(rate), separator(separator), to_euro(to_euro), prefix(prefix), suffix(suffix), code(code), symbol_pos(symbol_pos), name(name)
 	{
 	}
@@ -107,6 +107,6 @@ extern CurrencySpec _currency_specs[CURRENCY_END];
 
 uint64_t GetMaskOfAllowedCurrencies();
 void ResetCurrencies(bool preserve_custom = true);
-byte GetNewgrfCurrencyIdConverted(byte grfcurr_id);
+uint8_t GetNewgrfCurrencyIdConverted(uint8_t grfcurr_id);
 
 #endif /* CURRENCY_H */

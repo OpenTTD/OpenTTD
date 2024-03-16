@@ -515,7 +515,7 @@ static const uint MAX_REFIT_CYCLE = 256;
  * @param dest_cargo_type Destination cargo type.
  * @return the best sub type
  */
-byte GetBestFittingSubType(Vehicle *v_from, Vehicle *v_for, CargoID dest_cargo_type)
+uint8_t GetBestFittingSubType(Vehicle *v_from, Vehicle *v_for, CargoID dest_cargo_type)
 {
 	v_from = v_from->GetFirstEnginePart();
 	v_for = v_for->GetFirstEnginePart();
@@ -529,7 +529,7 @@ byte GetBestFittingSubType(Vehicle *v_from, Vehicle *v_for, CargoID dest_cargo_t
 		include(subtypes, GetCargoSubtypeText(v_from));
 	}
 
-	byte ret_refit_cyc = 0;
+	uint8_t ret_refit_cyc = 0;
 	bool success = false;
 	if (!subtypes.empty()) {
 		/* Check whether any articulated part is refittable to 'dest_cargo_type' with a subtype listed in 'subtypes' */
@@ -539,7 +539,7 @@ byte GetBestFittingSubType(Vehicle *v_from, Vehicle *v_for, CargoID dest_cargo_t
 			if (!HasBit(e->info.refit_mask, dest_cargo_type) && v->cargo_type != dest_cargo_type) continue;
 
 			CargoID old_cargo_type = v->cargo_type;
-			byte old_cargo_subtype = v->cargo_subtype;
+			uint8_t old_cargo_subtype = v->cargo_subtype;
 
 			/* Set the 'destination' cargo */
 			v->cargo_type = dest_cargo_type;
@@ -581,7 +581,7 @@ byte GetBestFittingSubType(Vehicle *v_from, Vehicle *v_for, CargoID dest_cargo_t
 /** Option to refit a vehicle chain */
 struct RefitOption {
 	CargoID cargo;    ///< Cargo to refit to
-	byte subtype;     ///< Subcargo to use
+	uint8_t subtype;     ///< Subcargo to use
 	StringID string;  ///< GRF-local String to display for the cargo
 
 	/**
@@ -709,7 +709,7 @@ struct RefitWindow : public Window {
 			if (v->type == VEH_TRAIN && std::find(vehicles_to_refit.begin(), vehicles_to_refit.end(), v->index) == vehicles_to_refit.end()) continue;
 			const Engine *e = v->GetEngine();
 			CargoTypes cmask = e->info.refit_mask;
-			byte callback_mask = e->info.callback_mask;
+			uint8_t callback_mask = e->info.callback_mask;
 
 			/* Skip this engine if it does not carry anything */
 			if (!e->CanCarryCargo()) continue;
@@ -737,7 +737,7 @@ struct RefitWindow : public Window {
 					/* Make a note of the original cargo type. It has to be
 					 * changed to test the cargo & subtype... */
 					CargoID temp_cargo = v->cargo_type;
-					byte temp_subtype  = v->cargo_subtype;
+					uint8_t temp_subtype  = v->cargo_subtype;
 
 					v->cargo_type = cid;
 

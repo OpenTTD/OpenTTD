@@ -19,7 +19,7 @@ struct Sprite {
 	uint16_t width;  ///< Width of the sprite.
 	int16_t x_offs;  ///< Number of pixels to shift the sprite to the right.
 	int16_t y_offs;  ///< Number of pixels to shift the sprite downwards.
-	byte data[];   ///< Sprite data.
+	uint8_t data[];   ///< Sprite data.
 };
 
 enum SpriteCacheCtrlFlags {
@@ -50,10 +50,10 @@ inline const Sprite *GetSprite(SpriteID sprite, SpriteType type)
 	return (Sprite*)GetRawSprite(sprite, type);
 }
 
-inline const byte *GetNonSprite(SpriteID sprite, SpriteType type)
+inline const uint8_t *GetNonSprite(SpriteID sprite, SpriteType type)
 {
 	assert(type == SpriteType::Recolour);
-	return (byte*)GetRawSprite(sprite, type);
+	return (uint8_t*)GetRawSprite(sprite, type);
 }
 
 void GfxInitSpriteMem();
@@ -66,7 +66,7 @@ SpriteFile &OpenCachedSpriteFile(const std::string &filename, Subdirectory subdi
 void ReadGRFSpriteOffsets(SpriteFile &file);
 size_t GetGRFSpriteOffset(uint32_t id);
 bool LoadNextSprite(int load_index, SpriteFile &file, uint file_sprite_id);
-bool SkipSpriteData(SpriteFile &file, byte type, uint16_t num);
+bool SkipSpriteData(SpriteFile &file, uint8_t type, uint16_t num);
 void DupSprite(SpriteID old_spr, SpriteID new_spr);
 
 #endif /* SPRITECACHE_H */

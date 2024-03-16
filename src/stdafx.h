@@ -262,8 +262,6 @@
 #define debug_inline inline
 #endif
 
-typedef uint8_t byte;
-
 /* This is already defined in unix, but not in QNX Neutrino (6.x) or Cygwin. */
 #if (!defined(UNIX) && !defined(__HAIKU__)) || defined(__QNXNTO__) || defined(__CYGWIN__)
 	typedef unsigned int uint;

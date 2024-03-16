@@ -38,8 +38,8 @@ struct LanguagePackHeader {
 	/** Decimal separator */
 	char digit_decimal_separator[8];
 	uint16_t missing;     ///< number of missing strings.
-	byte plural_form;   ///< plural form index
-	byte text_dir;      ///< default direction of the text
+	uint8_t plural_form;   ///< plural form index
+	uint8_t text_dir;      ///< default direction of the text
 	/**
 	 * Windows language ID:
 	 * Windows cannot and will not convert isocodes to something it can use to
@@ -52,7 +52,7 @@ struct LanguagePackHeader {
 	uint8_t newgrflangid; ///< newgrf language id
 	uint8_t num_genders;  ///< the number of genders of this language
 	uint8_t num_cases;    ///< the number of cases of this language
-	byte pad[3];        ///< pad header to be a multiple of 4
+	uint8_t pad[3];        ///< pad header to be a multiple of 4
 
 	char genders[MAX_NUM_GENDERS][CASE_GENDER_LEN]; ///< the genders used by this translation
 	char cases[MAX_NUM_CASES][CASE_GENDER_LEN];     ///< the cases used by this translation
@@ -108,6 +108,6 @@ extern std::unique_ptr<icu::Collator> _current_collator;
 #endif /* WITH_ICU_I18N */
 
 bool ReadLanguagePack(const LanguageMetadata *lang);
-const LanguageMetadata *GetLanguage(byte newgrflangid);
+const LanguageMetadata *GetLanguage(uint8_t newgrflangid);
 
 #endif /* LANGUAGE_H */

@@ -168,7 +168,7 @@ void BaseStation::PostDestructor(size_t)
 	InvalidateWindowData(WC_SELECT_STATION, 0, 0);
 }
 
-void BaseStation::SetRoadStopTileData(TileIndex tile, byte data, bool animation)
+void BaseStation::SetRoadStopTileData(TileIndex tile, uint8_t data, bool animation)
 {
 	for (RoadStopTileData &tile_data : this->custom_roadstop_tile_data) {
 		if (tile_data.tile == tile) {

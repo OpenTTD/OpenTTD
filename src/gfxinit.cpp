@@ -52,12 +52,12 @@ static uint LoadGrfFile(const std::string &filename, uint load_index, bool needs
 
 	Debug(sprite, 2, "Reading grf-file '{}'", filename);
 
-	byte container_ver = file.GetContainerVersion();
+	uint8_t container_ver = file.GetContainerVersion();
 	if (container_ver == 0) UserError("Base grf '{}' is corrupt", filename);
 	ReadGRFSpriteOffsets(file);
 	if (container_ver >= 2) {
 		/* Read compression. */
-		byte compression = file.ReadByte();
+		uint8_t compression = file.ReadByte();
 		if (compression != 0) UserError("Unsupported compression format");
 	}
 
@@ -89,12 +89,12 @@ static void LoadGrfFileIndexed(const std::string &filename, const SpriteID *inde
 
 	Debug(sprite, 2, "Reading indexed grf-file '{}'", filename);
 
-	byte container_ver = file.GetContainerVersion();
+	uint8_t container_ver = file.GetContainerVersion();
 	if (container_ver == 0) UserError("Base grf '{}' is corrupt", filename);
 	ReadGRFSpriteOffsets(file);
 	if (container_ver >= 2) {
 		/* Read compression. */
-		byte compression = file.ReadByte();
+		uint8_t compression = file.ReadByte();
 		if (compression != 0) UserError("Unsupported compression format");
 	}
 

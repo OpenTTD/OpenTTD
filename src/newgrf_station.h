@@ -43,7 +43,7 @@ struct StationScopeResolver : public ScopeResolver {
 	uint32_t GetRandomBits() const override;
 	uint32_t GetTriggers() const override;
 
-	uint32_t GetVariable(byte variable, [[maybe_unused]] uint32_t parameter, bool *available) const override;
+	uint32_t GetVariable(uint8_t variable, [[maybe_unused]] uint32_t parameter, bool *available) const override;
 };
 
 /** Station resolver. */
@@ -57,7 +57,7 @@ struct StationResolverObject : public ResolverObject {
 
 	TownScopeResolver *GetTown();
 
-	ScopeResolver *GetScope(VarSpriteGroupScope scope = VSG_SCOPE_SELF, byte relative = 0) override
+	ScopeResolver *GetScope(VarSpriteGroupScope scope = VSG_SCOPE_SELF, uint8_t relative = 0) override
 	{
 		switch (scope) {
 			case VSG_SCOPE_SELF:
@@ -80,7 +80,7 @@ struct StationResolverObject : public ResolverObject {
 	uint32_t GetDebugID() const override;
 };
 
-enum StationClassID : byte {
+enum StationClassID : uint8_t {
 	STAT_CLASS_BEGIN = 0,    ///< the lowest valid value
 	STAT_CLASS_DFLT = 0,     ///< Default station class.
 	STAT_CLASS_WAYP,         ///< Waypoint class.
@@ -129,12 +129,12 @@ struct StationSpec {
 	 * Bitmask of number of platforms available for the station.
 	 * 0..6 correspond to 1..7, while bit 7 corresponds to >7 platforms.
 	 */
-	byte disallowed_platforms;
+	uint8_t disallowed_platforms;
 	/**
 	 * Bitmask of platform lengths available for the station.
 	 * 0..6 correspond to 1..7, while bit 7 corresponds to >7 tiles long.
 	 */
-	byte disallowed_lengths;
+	uint8_t disallowed_lengths;
 
 	/**
 	 * Number of tile layouts.
@@ -154,13 +154,13 @@ struct StationSpec {
 
 	CargoTypes cargo_triggers; ///< Bitmask of cargo types which cause trigger re-randomizing
 
-	byte callback_mask; ///< Bitmask of station callbacks that have to be called
+	uint8_t callback_mask; ///< Bitmask of station callbacks that have to be called
 
-	byte flags; ///< Bitmask of flags, bit 0: use different sprite set; bit 1: divide cargo about by station size
+	uint8_t flags; ///< Bitmask of flags, bit 0: use different sprite set; bit 1: divide cargo about by station size
 
-	byte pylons;  ///< Bitmask of base tiles (0 - 7) which should contain elrail pylons
-	byte wires;   ///< Bitmask of base tiles (0 - 7) which should contain elrail wires
-	byte blocked; ///< Bitmask of base tiles (0 - 7) which are blocked to trains
+	uint8_t pylons;  ///< Bitmask of base tiles (0 - 7) which should contain elrail pylons
+	uint8_t wires;   ///< Bitmask of base tiles (0 - 7) which should contain elrail wires
+	uint8_t blocked; ///< Bitmask of base tiles (0 - 7) which are blocked to trains
 
 	AnimationInfo animation;
 
@@ -172,7 +172,7 @@ struct StationSpec {
 	 * These can be sparsely populated, and the upper limit is not defined but
 	 * limited to 255.
 	 */
-	std::vector<std::vector<std::vector<byte>>> layouts;
+	std::vector<std::vector<std::vector<uint8_t>>> layouts;
 };
 
 /** Struct containing information relating to station classes. */
@@ -181,18 +181,18 @@ typedef NewGRFClass<StationSpec, StationClassID, STAT_CLASS_MAX> StationClass;
 const StationSpec *GetStationSpec(TileIndex t);
 
 /* Evaluate a tile's position within a station, and return the result a bitstuffed format. */
-uint32_t GetPlatformInfo(Axis axis, byte tile, int platforms, int length, int x, int y, bool centred);
+uint32_t GetPlatformInfo(Axis axis, uint8_t tile, int platforms, int length, int x, int y, bool centred);
 
 SpriteID GetCustomStationRelocation(const StationSpec *statspec, BaseStation *st, TileIndex tile, uint32_t var10 = 0);
 SpriteID GetCustomStationFoundationRelocation(const StationSpec *statspec, BaseStation *st, TileIndex tile, uint layout, uint edge_info);
 uint16_t GetStationCallback(CallbackID callback, uint32_t param1, uint32_t param2, const StationSpec *statspec, BaseStation *st, TileIndex tile);
-CommandCost PerformStationTileSlopeCheck(TileIndex north_tile, TileIndex cur_tile, const StationSpec *statspec, Axis axis, byte plat_len, byte numtracks);
+CommandCost PerformStationTileSlopeCheck(TileIndex north_tile, TileIndex cur_tile, const StationSpec *statspec, Axis axis, uint8_t plat_len, uint8_t numtracks);
 
 /* Allocate a StationSpec to a Station. This is called once per build operation. */
 int AllocateSpecToStation(const StationSpec *statspec, BaseStation *st, bool exec);
 
 /* Deallocate a StationSpec from a Station. Called when removing a single station tile. */
-void DeallocateSpecFromStation(BaseStation *st, byte specindex);
+void DeallocateSpecFromStation(BaseStation *st, uint8_t specindex);
 
 /* Draw representation of a station tile for GUI purposes. */
 bool DrawStationTile(int x, int y, RailType railtype, Axis axis, StationClassID sclass, uint station);

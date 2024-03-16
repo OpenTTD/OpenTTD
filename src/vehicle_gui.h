@@ -22,7 +22,7 @@
 void ShowVehicleRefitWindow(const Vehicle *v, VehicleOrderID order, Window *parent, bool auto_refit = false);
 
 /** The tabs in the train details window */
-enum TrainDetailsWindowTabs : byte {
+enum TrainDetailsWindowTabs : uint8_t {
 	TDW_TAB_CARGO = 0, ///< Tab with cargo carried by the vehicles
 	TDW_TAB_INFO,      ///< Tab with name and value of the vehicles
 	TDW_TAB_CAPACITY,  ///< Tab with cargo capacity of the vehicles

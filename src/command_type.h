@@ -462,7 +462,7 @@ template <Commands Tcmd> struct CommandTraits;
 	};
 
 /** Storage buffer for serialized command data. */
-typedef std::vector<byte> CommandDataBuffer;
+typedef std::vector<uint8_t> CommandDataBuffer;
 
 /**
  * Define a callback function for the client, after the command is finished.

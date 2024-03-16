@@ -85,7 +85,7 @@ Point _cursorpos_drag_start;
 
 int _scrollbar_start_pos;
 int _scrollbar_size;
-byte _scroller_click_timeout = 0;
+uint8_t _scroller_click_timeout = 0;
 
 bool _scrolling_viewport;  ///< A viewport is being scrolled with the mouse.
 bool _mouse_hovering;      ///< The mouse is hovering over the same point.

@@ -9,10 +9,10 @@
 
 struct DefaultUnicodeMapping {
 	char32_t code; ///< Unicode value
-	byte key;   ///< Character index of sprite
+	uint8_t key;   ///< Character index of sprite
 };
 
-static const byte CLRA = 0; ///< Identifier to clear all glyphs at this codepoint
+static const uint8_t CLRA = 0; ///< Identifier to clear all glyphs at this codepoint
 
 /* Default unicode mapping table for sprite based glyphs.
  * This table allows us use unicode characters even though the glyphs don't

@@ -148,7 +148,7 @@ const NetworkServerGameInfo &GetCurrentNetworkServerGameInfo()
 	 *  - invite_code
 	 * These don't need to be updated manually here.
 	 */
-	_network_game_info.companies_on  = (byte)Company::GetNumItems();
+	_network_game_info.companies_on  = (uint8_t)Company::GetNumItems();
 	_network_game_info.spectators_on = NetworkSpectatorCount();
 	_network_game_info.calendar_date = TimerGameCalendar::date;
 	_network_game_info.ticks_playing = TimerGameTick::counter;
@@ -260,7 +260,7 @@ void SerializeNetworkGameInfo(Packet &p, const NetworkServerGameInfo &info, bool
  */
 void DeserializeNetworkGameInfo(Packet &p, NetworkGameInfo &info, const GameInfoNewGRFLookupTable *newgrf_lookup_table)
 {
-	byte game_info_version = p.Recv_uint8();
+	uint8_t game_info_version = p.Recv_uint8();
 	NewGRFSerializationType newgrf_serialisation = NST_GRFID_MD5;
 
 	/*

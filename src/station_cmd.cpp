@@ -877,7 +877,7 @@ static CommandCost CheckFlatLandAirport(AirportTileTableIterator tile_iter, DoCo
  * @param numtracks Number of platforms.
  * @return The cost in case of success, or an error code if it failed.
  */
-static CommandCost CheckFlatLandRailStation(TileArea tile_area, DoCommandFlag flags, Axis axis, StationID *station, RailType rt, std::vector<Train *> &affected_vehicles, StationClassID spec_class, uint16_t spec_index, byte plat_len, byte numtracks)
+static CommandCost CheckFlatLandRailStation(TileArea tile_area, DoCommandFlag flags, Axis axis, StationID *station, RailType rt, std::vector<Train *> &affected_vehicles, StationClassID spec_class, uint16_t spec_index, uint8_t plat_len, uint8_t numtracks)
 {
 	CommandCost cost(EXPENSES_CONSTRUCTION);
 	int allowed_z = -1;
@@ -1096,7 +1096,7 @@ CommandCost CanExpandRailStation(const BaseStation *st, TileArea &new_ta)
 	return CommandCost();
 }
 
-static inline byte *CreateSingle(byte *layout, int n)
+static inline uint8_t *CreateSingle(uint8_t *layout, int n)
 {
 	int i = n;
 	do *layout++ = 0; while (--i);
@@ -1104,7 +1104,7 @@ static inline byte *CreateSingle(byte *layout, int n)
 	return layout;
 }
 
-static inline byte *CreateMulti(byte *layout, int n, byte b)
+static inline uint8_t *CreateMulti(uint8_t *layout, int n, uint8_t b)
 {
 	int i = n;
 	do *layout++ = b; while (--i);
@@ -1122,7 +1122,7 @@ static inline byte *CreateMulti(byte *layout, int n, byte b)
  * @param plat_len  The length of the platforms.
  * @param statspec  The specification of the station to (possibly) get the layout from.
  */
-void GetStationLayout(byte *layout, uint numtracks, uint plat_len, const StationSpec *statspec)
+void GetStationLayout(uint8_t *layout, uint numtracks, uint plat_len, const StationSpec *statspec)
 {
 	if (statspec != nullptr && statspec->layouts.size() >= plat_len &&
 			statspec->layouts[plat_len - 1].size() >= numtracks &&
@@ -1260,11 +1260,11 @@ static void RestoreTrainReservation(Train *v)
  * @param numtracks Number of platforms.
  * @return The cost in case of success, or an error code if it failed.
  */
-static CommandCost CalculateRailStationCost(TileArea tile_area, DoCommandFlag flags, Axis axis, StationID *station, RailType rt, std::vector<Train *> &affected_vehicles, StationClassID spec_class, uint16_t spec_index, byte plat_len, byte numtracks)
+static CommandCost CalculateRailStationCost(TileArea tile_area, DoCommandFlag flags, Axis axis, StationID *station, RailType rt, std::vector<Train *> &affected_vehicles, StationClassID spec_class, uint16_t spec_index, uint8_t plat_len, uint8_t numtracks)
 {
 	CommandCost cost(EXPENSES_CONSTRUCTION);
 	bool length_price_ready = true;
-	byte tracknum = 0;
+	uint8_t tracknum = 0;
 	for (TileIndex cur_tile : tile_area) {
 		/* Clear the land below the station. */
 		CommandCost ret = CheckFlatLandRailStation(TileArea(cur_tile, 1, 1), flags, axis, station, rt, affected_vehicles, spec_class, spec_index, plat_len, numtracks);
@@ -1309,7 +1309,7 @@ static CommandCost CalculateRailStationCost(TileArea tile_area, DoCommandFlag fl
  * @param adjacent allow stations directly adjacent to other stations.
  * @return the cost of this operation or an error
  */
-CommandCost CmdBuildRailStation(DoCommandFlag flags, TileIndex tile_org, RailType rt, Axis axis, byte numtracks, byte plat_len, StationClassID spec_class, uint16_t spec_index, StationID station_to_join, bool adjacent)
+CommandCost CmdBuildRailStation(DoCommandFlag flags, TileIndex tile_org, RailType rt, Axis axis, uint8_t numtracks, uint8_t plat_len, StationClassID spec_class, uint16_t spec_index, StationID station_to_join, bool adjacent)
 {
 	/* Does the authority allow this? */
 	CommandCost ret = CheckIfAuthorityAllowsNewStation(tile_org, flags);
@@ -1383,7 +1383,7 @@ CommandCost CmdBuildRailStation(DoCommandFlag flags, TileIndex tile_org, RailTyp
 
 	if (flags & DC_EXEC) {
 		TileIndexDiff tile_delta;
-		byte numtracks_orig;
+		uint8_t numtracks_orig;
 		Track track;
 
 		st->train_station = new_location;
@@ -1400,7 +1400,7 @@ CommandCost CmdBuildRailStation(DoCommandFlag flags, TileIndex tile_org, RailTyp
 		tile_delta = (axis == AXIS_X ? TileDiffXY(1, 0) : TileDiffXY(0, 1));
 		track = AxisToTrack(axis);
 
-		std::vector<byte> layouts(numtracks * plat_len);
+		std::vector<uint8_t> layouts(numtracks * plat_len);
 		GetStationLayout(layouts.data(), numtracks, plat_len, statspec);
 
 		numtracks_orig = numtracks;
@@ -1412,7 +1412,7 @@ CommandCost CmdBuildRailStation(DoCommandFlag flags, TileIndex tile_org, RailTyp
 			TileIndex tile = tile_track;
 			int w = plat_len;
 			do {
-				byte layout = layouts[layout_idx++];
+				uint8_t layout = layouts[layout_idx++];
 				if (IsRailStationTile(tile) && HasStationReservation(tile)) {
 					/* Check for trains having a reservation for this tile. */
 					Train *v = GetTrainForReservation(tile, AxisToTrack(GetRailStationAxis(tile)));
@@ -1430,7 +1430,7 @@ CommandCost CmdBuildRailStation(DoCommandFlag flags, TileIndex tile_org, RailTyp
 
 				/* Remove animation if overbuilding */
 				DeleteAnimatedTile(tile);
-				byte old_specindex = HasStationTileRail(tile) ? GetCustomStationSpecIndex(tile) : 0;
+				uint8_t old_specindex = HasStationTileRail(tile) ? GetCustomStationSpecIndex(tile) : 0;
 				MakeRailStation(tile, st->owner, st->index, axis, layout & ~1, rt);
 				/* Free the spec if we overbuild something */
 				DeallocateSpecFromStation(st, old_specindex);
@@ -2384,7 +2384,7 @@ void UpdateAirportsNoise()
  * @param allow_adjacent allow airports directly adjacent to other airports.
  * @return the cost of this operation or an error
  */
-CommandCost CmdBuildAirport(DoCommandFlag flags, TileIndex tile, byte airport_type, byte layout, StationID station_to_join, bool allow_adjacent)
+CommandCost CmdBuildAirport(DoCommandFlag flags, TileIndex tile, uint8_t airport_type, uint8_t layout, StationID station_to_join, bool allow_adjacent)
 {
 	bool reuse = (station_to_join != NEW_STATION);
 	if (!reuse) station_to_join = INVALID_STATION;
@@ -2638,8 +2638,8 @@ static const TileIndexDiffC _dock_tileoffs_chkaround[] = {
 	{ 0,  0},
 	{ 0, -1}
 };
-static const byte _dock_w_chk[4] = { 2, 1, 2, 1 };
-static const byte _dock_h_chk[4] = { 1, 2, 1, 2 };
+static const uint8_t _dock_w_chk[4] = { 2, 1, 2, 1 };
+static const uint8_t _dock_h_chk[4] = { 1, 2, 1, 2 };
 
 /**
  * Build a dock/haven.
@@ -2866,7 +2866,7 @@ static CommandCost RemoveDock(TileIndex tile, DoCommandFlag flags)
 
 #include "table/station_land.h"
 
-const DrawTileSprites *GetStationTileLayout(StationType st, byte gfx)
+const DrawTileSprites *GetStationTileLayout(StationType st, uint8_t gfx)
 {
 	return &_station_display_datas[st][gfx];
 }
@@ -3597,9 +3597,9 @@ static bool StationHandleBigTick(BaseStation *st)
 	return true;
 }
 
-static inline void byte_inc_sat(byte *p)
+static inline void byte_inc_sat(uint8_t *p)
 {
-	byte b = *p + 1;
+	uint8_t b = *p + 1;
 	if (b != 0) *p = b;
 }
 
@@ -3698,7 +3698,7 @@ static void UpdateStationRating(Station *st)
 				int b = ge->last_speed - 85;
 				if (b >= 0) rating += b >> 2;
 
-				byte waittime = ge->time_since_pickup;
+				uint8_t waittime = ge->time_since_pickup;
 				if (st->last_vehicle_type == VEH_SHIP) waittime >>= 2;
 				if (waittime <= 21) rating += 25;
 				if (waittime <= 12) rating += 25;
@@ -3715,7 +3715,7 @@ static void UpdateStationRating(Station *st)
 
 			if (Company::IsValidID(st->owner) && HasBit(st->town->statues, st->owner)) rating += 26;
 
-			byte age = ge->last_age;
+			uint8_t age = ge->last_age;
 			if (age < 3) rating += 10;
 			if (age < 2) rating += 10;
 			if (age < 1) rating += 13;
@@ -3983,7 +3983,7 @@ static void StationHandleSmallTick(BaseStation *st)
 {
 	if ((st->facilities & FACIL_WAYPOINT) != 0 || !st->IsInUse()) return;
 
-	byte b = st->delete_ctr + 1;
+	uint8_t b = st->delete_ctr + 1;
 	if (b >= Ticks::STATION_RATING_TICKS) b = 0;
 	st->delete_ctr = b;
 

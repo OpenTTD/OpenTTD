@@ -43,10 +43,10 @@
 struct PacketReader : LoadFilter {
 	static const size_t CHUNK = 32 * 1024;  ///< 32 KiB chunks of memory.
 
-	std::vector<byte *> blocks;             ///< Buffer with blocks of allocated memory.
-	byte *buf;                              ///< Buffer we're going to write to/read from.
-	byte *bufe;                             ///< End of the buffer we write to/read from.
-	byte **block;                           ///< The block we're reading from/writing to.
+	std::vector<uint8_t *> blocks;             ///< Buffer with blocks of allocated memory.
+	uint8_t *buf;                              ///< Buffer we're going to write to/read from.
+	uint8_t *bufe;                             ///< End of the buffer we write to/read from.
+	uint8_t **block;                           ///< The block we're reading from/writing to.
 	size_t written_bytes;                   ///< The total number of bytes we've written.
 	size_t read_bytes;                      ///< The total number of read bytes.
 
@@ -90,18 +90,18 @@ struct PacketReader : LoadFilter {
 		if (p.RemainingBytesToTransfer() == 0) return;
 
 		/* Allocate a new chunk and add the remaining data. */
-		this->blocks.push_back(this->buf = CallocT<byte>(CHUNK));
+		this->blocks.push_back(this->buf = CallocT<uint8_t>(CHUNK));
 		this->bufe = this->buf + CHUNK;
 
 		p.TransferOutWithLimit(TransferOutMemCopy, this->bufe - this->buf, this);
 	}
 
-	size_t Read(byte *rbuf, size_t size) override
+	size_t Read(uint8_t *rbuf, size_t size) override
 	{
 		/* Limit the amount to read to whatever we still have. */
 		size_t ret_size = size = std::min(this->written_bytes - this->read_bytes, size);
 		this->read_bytes += ret_size;
-		const byte *rbufe = rbuf + ret_size;
+		const uint8_t *rbufe = rbuf + ret_size;
 
 		while (rbuf != rbufe) {
 			if (this->buf == this->bufe) {

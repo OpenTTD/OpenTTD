@@ -111,12 +111,12 @@ static uint32_t GetClosestIndustry(TileIndex tile, IndustryType type, const Indu
  * @param current Industry for which the inquiry is made
  * @return the formatted answer to the callback : rr(reserved) cc(count) dddd(manhattan distance of closest sister)
  */
-static uint32_t GetCountAndDistanceOfClosestInstance(byte param_setID, byte layout_filter, bool town_filter, const Industry *current)
+static uint32_t GetCountAndDistanceOfClosestInstance(uint8_t param_setID, uint8_t layout_filter, bool town_filter, const Industry *current)
 {
 	uint32_t GrfID = GetRegister(0x100);  ///< Get the GRFID of the definition to look for in register 100h
 	IndustryType ind_index;
 	uint32_t closest_dist = UINT32_MAX;
-	byte count = 0;
+	uint8_t count = 0;
 
 	/* Determine what will be the industry type to look for */
 	switch (GrfID) {
@@ -141,7 +141,7 @@ static uint32_t GetCountAndDistanceOfClosestInstance(byte param_setID, byte layo
 		/* If the filter is 0, it could be because none was specified as well as being really a 0.
 		 * In either case, just do the regular var67 */
 		closest_dist = GetClosestIndustry(current->location.tile, ind_index, current);
-		count = ClampTo<byte>(Industry::GetIndustryTypeCount(ind_index));
+		count = ClampTo<uint8_t>(Industry::GetIndustryTypeCount(ind_index));
 	} else {
 		/* Count only those who match the same industry type and layout filter
 		 * Unfortunately, we have to do it manually */
@@ -156,7 +156,7 @@ static uint32_t GetCountAndDistanceOfClosestInstance(byte param_setID, byte layo
 	return count << 16 | GB(closest_dist, 0, 16);
 }
 
-/* virtual */ uint32_t IndustriesScopeResolver::GetVariable(byte variable, [[maybe_unused]] uint32_t parameter, bool *available) const
+/* virtual */ uint32_t IndustriesScopeResolver::GetVariable(uint8_t variable, [[maybe_unused]] uint32_t parameter, bool *available) const
 {
 	if (this->ro.callback == CBID_INDUSTRY_LOCATION) {
 		/* Variables available during construction check. */
@@ -233,7 +233,7 @@ static uint32_t GetCountAndDistanceOfClosestInstance(byte param_setID, byte layo
 
 		/* Company info */
 		case 0x45: {
-			byte colours = 0;
+			uint8_t colours = 0;
 			bool is_ai = false;
 
 			const Company *c = Company::GetIfValid(this->industry->founder);
@@ -298,7 +298,7 @@ static uint32_t GetCountAndDistanceOfClosestInstance(byte param_setID, byte layo
 		 * 68 is the same as 67, but with a filtering on selected layout */
 		case 0x67:
 		case 0x68: {
-			byte layout_filter = 0;
+			uint8_t layout_filter = 0;
 			bool town_filter = false;
 			if (variable == 0x68) {
 				uint32_t reg = GetRegister(0x101);
@@ -545,7 +545,7 @@ CommandCost CheckIfCallBackAllowsCreation(TileIndex tile, IndustryType type, siz
 	ind.location.tile = tile;
 	ind.location.w = 0; // important to mark the industry invalid
 	ind.type = type;
-	ind.selected_layout = (byte)layout;
+	ind.selected_layout = (uint8_t)layout;
 	ind.town = ClosestTownFromTile(tile, UINT_MAX);
 	ind.random = initial_random_bits;
 	ind.founder = founder;

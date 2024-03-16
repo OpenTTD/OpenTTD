@@ -80,7 +80,7 @@ public:
 	 * @param control_flags Control flags, see SpriteCacheCtrlFlags.
 	 * @return Bit mask of the zoom levels successfully loaded or 0 if no sprite could be loaded.
 	 */
-	virtual uint8_t LoadSprite(SpriteLoader::SpriteCollection &sprite, SpriteFile &file, size_t file_pos, SpriteType sprite_type, bool load_32bpp, byte control_flags) = 0;
+	virtual uint8_t LoadSprite(SpriteLoader::SpriteCollection &sprite, SpriteFile &file, size_t file_pos, SpriteType sprite_type, bool load_32bpp, uint8_t control_flags) = 0;
 
 	virtual ~SpriteLoader() = default;
 };

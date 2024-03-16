@@ -166,7 +166,7 @@ bool GenerateTownName(Randomizer &randomizer, uint32_t *townnameparts, TownNames
  * @param seed seed
  * @return seed transformed to a number from given range
  */
-static inline uint32_t SeedChance(byte shift_by, int max, uint32_t seed)
+static inline uint32_t SeedChance(uint8_t shift_by, int max, uint32_t seed)
 {
 	return (GB(seed, shift_by, 16) * max) >> 16;
 }
@@ -179,7 +179,7 @@ static inline uint32_t SeedChance(byte shift_by, int max, uint32_t seed)
  * @param seed seed
  * @return seed transformed to a number from given range
  */
-static inline uint32_t SeedModChance(byte shift_by, int max, uint32_t seed)
+static inline uint32_t SeedModChance(uint8_t shift_by, int max, uint32_t seed)
 {
 	/* This actually gives *MUCH* more even distribution of the values
 	 * than SeedChance(), which is absolutely horrible in that. If
@@ -202,7 +202,7 @@ static inline uint32_t SeedModChance(byte shift_by, int max, uint32_t seed)
  * @param bias minimum value that can be returned
  * @return seed transformed to a number from given range
  */
-static inline int32_t SeedChanceBias(byte shift_by, int max, uint32_t seed, int bias)
+static inline int32_t SeedChanceBias(uint8_t shift_by, int max, uint32_t seed, int bias)
 {
 	return SeedChance(shift_by, max + bias, seed) - bias;
 }

@@ -43,7 +43,7 @@ struct HouseScopeResolver : public ScopeResolver {
 	}
 
 	uint32_t GetRandomBits() const override;
-	uint32_t GetVariable(byte variable, [[maybe_unused]] uint32_t parameter, bool *available) const override;
+	uint32_t GetVariable(uint8_t variable, [[maybe_unused]] uint32_t parameter, bool *available) const override;
 	uint32_t GetTriggers() const override;
 };
 
@@ -56,7 +56,7 @@ struct HouseResolverObject : public ResolverObject {
 			CallbackID callback = CBID_NO_CALLBACK, uint32_t param1 = 0, uint32_t param2 = 0,
 			bool not_yet_constructed = false, uint8_t initial_random_bits = 0, CargoTypes watched_cargo_triggers = 0);
 
-	ScopeResolver *GetScope(VarSpriteGroupScope scope = VSG_SCOPE_SELF, byte relative = 0) override
+	ScopeResolver *GetScope(VarSpriteGroupScope scope = VSG_SCOPE_SELF, uint8_t relative = 0) override
 	{
 		switch (scope) {
 			case VSG_SCOPE_SELF:   return &this->house_scope;
@@ -88,7 +88,7 @@ struct HouseClassMapping {
 };
 
 void ResetHouseClassIDs();
-HouseClassID AllocateHouseClassID(byte grf_class_id, uint32_t grfid);
+HouseClassID AllocateHouseClassID(uint8_t grf_class_id, uint32_t grfid);
 
 void InitializeBuildingCounts();
 void IncreaseBuildingCount(Town *t, HouseID house_id);

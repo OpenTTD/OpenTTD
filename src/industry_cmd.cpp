@@ -60,7 +60,7 @@ INSTANTIATE_POOL_METHODS(Industry)
 void ShowIndustryViewWindow(int industry);
 void BuildOilRig(TileIndex tile);
 
-static byte _industry_sound_ctr;
+static uint8_t _industry_sound_ctr;
 static TileIndex _industry_sound_tile;
 
 uint16_t Industry::counts[NUM_INDUSTRYTYPES];
@@ -451,7 +451,7 @@ static void AddAcceptedCargo_Industry(TileIndex tile, CargoArray &acceptance, Ca
 		}
 	}
 
-	for (byte i = 0; i < std::size(itspec->accepts_cargo); i++) {
+	for (uint8_t i = 0; i < std::size(itspec->accepts_cargo); i++) {
 		CargoID a = accepts_cargo[i];
 		if (!IsValidCargoID(a) || cargo_acceptance[i] <= 0) continue; // work only with valid cargoes
 
@@ -547,7 +547,7 @@ static bool TransportIndustryGoods(TileIndex tile)
 
 static void AnimateSugarSieve(TileIndex tile)
 {
-	byte m = GetAnimationFrame(tile) + 1;
+	uint8_t m = GetAnimationFrame(tile) + 1;
 
 	if (_settings_client.sound.ambient) {
 		switch (m & 7) {
@@ -567,7 +567,7 @@ static void AnimateSugarSieve(TileIndex tile)
 
 static void AnimateToffeeQuarry(TileIndex tile)
 {
-	byte m = GetAnimationFrame(tile);
+	uint8_t m = GetAnimationFrame(tile);
 
 	if (_industry_anim_offs_toffee[m] == 0xFF && _settings_client.sound.ambient) {
 		SndPlayTileFx(SND_30_TOFFEE_QUARRY, tile);
@@ -584,7 +584,7 @@ static void AnimateToffeeQuarry(TileIndex tile)
 
 static void AnimateBubbleCatcher(TileIndex tile)
 {
-	byte m = GetAnimationFrame(tile);
+	uint8_t m = GetAnimationFrame(tile);
 
 	if (++m >= 40) {
 		m = 0;
@@ -597,7 +597,7 @@ static void AnimateBubbleCatcher(TileIndex tile)
 
 static void AnimatePowerPlantSparks(TileIndex tile)
 {
-	byte m = GetAnimationFrame(tile);
+	uint8_t m = GetAnimationFrame(tile);
 	if (m == 6) {
 		SetAnimationFrame(tile, 0);
 		DeleteAnimatedTile(tile);
@@ -609,7 +609,7 @@ static void AnimatePowerPlantSparks(TileIndex tile)
 
 static void AnimateToyFactory(TileIndex tile)
 {
-	byte m = GetAnimationFrame(tile) + 1;
+	uint8_t m = GetAnimationFrame(tile) + 1;
 
 	switch (m) {
 		case  1: if (_settings_client.sound.ambient) SndPlayTileFx(SND_2C_TOY_FACTORY_1, tile); break;
@@ -641,7 +641,7 @@ static void AnimatePlasticFountain(TileIndex tile, IndustryGfx gfx)
 static void AnimateOilWell(TileIndex tile, IndustryGfx gfx)
 {
 	bool b = Chance16(1, 7);
-	byte m = GetAnimationFrame(tile) + 1;
+	uint8_t m = GetAnimationFrame(tile) + 1;
 	if (m == 4 && (m = 0, ++gfx) == GFX_OILWELL_ANIMATED_3 + 1 && (gfx = GFX_OILWELL_ANIMATED_1, b)) {
 		SetIndustryGfx(tile, GFX_OILWELL_NOT_ANIMATED);
 		SetIndustryConstructionStage(tile, 3);
@@ -661,7 +661,7 @@ static void AnimateMineTower(TileIndex tile)
 
 	if (state < 0x1A0) {
 		if (state < 0x20 || state >= 0x180) {
-			byte m = GetAnimationFrame(tile);
+			uint8_t m = GetAnimationFrame(tile);
 			if (!(m & 0x40)) {
 				SetAnimationFrame(tile, m | 0x40);
 				if (_settings_client.sound.ambient) SndPlayTileFx(SND_0B_MINE, tile);
@@ -670,7 +670,7 @@ static void AnimateMineTower(TileIndex tile)
 		} else {
 			if (state & 3) return;
 		}
-		byte m = (GetAnimationFrame(tile) + 1) | 0x40;
+		uint8_t m = (GetAnimationFrame(tile) + 1) | 0x40;
 		if (m > 0xC2) m = 0xC0;
 		SetAnimationFrame(tile, m);
 		MarkTileDirtyByTile(tile);
@@ -678,7 +678,7 @@ static void AnimateMineTower(TileIndex tile)
 		int i = (state < 0x220 || state >= 0x380) ? 7 : 3;
 		if (state & i) return;
 
-		byte m = (GetAnimationFrame(tile) & 0xBF) - 1;
+		uint8_t m = (GetAnimationFrame(tile) & 0xBF) - 1;
 		if (m < 0x80) m = 0x82;
 		SetAnimationFrame(tile, m);
 		MarkTileDirtyByTile(tile);
@@ -747,13 +747,13 @@ static void CreateChimneySmoke(TileIndex tile)
 
 static void MakeIndustryTileBigger(TileIndex tile)
 {
-	byte cnt = GetIndustryConstructionCounter(tile) + 1;
+	uint8_t cnt = GetIndustryConstructionCounter(tile) + 1;
 	if (cnt != 4) {
 		SetIndustryConstructionCounter(tile, cnt);
 		return;
 	}
 
-	byte stage = GetIndustryConstructionStage(tile) + 1;
+	uint8_t stage = GetIndustryConstructionStage(tile) + 1;
 	SetIndustryConstructionCounter(tile, 0);
 	SetIndustryConstructionStage(tile, stage);
 	StartStopIndustryTileAnimation(tile, IAT_CONSTRUCTION_STATE_CHANGE);
@@ -985,7 +985,7 @@ bool IsTileForestIndustry(TileIndex tile)
 	return std::any_of(std::begin(ind->produced), std::end(ind->produced), [](const auto &p) { return IsValidCargoID(p.cargo) && CargoSpec::Get(p.cargo)->label == CT_WOOD; });
 }
 
-static const byte _plantfarmfield_type[] = {1, 1, 1, 1, 1, 3, 3, 4, 4, 4, 5, 5, 5, 6, 6, 6};
+static const uint8_t _plantfarmfield_type[] = {1, 1, 1, 1, 1, 3, 3, 4, 4, 4, 5, 5, 5, 6, 6, 6};
 
 /**
  * Check whether the tile can be replaced by a farm field.
@@ -1010,7 +1010,7 @@ static bool IsSuitableForFarmField(TileIndex tile, bool allow_fields)
  * @param type type of fence to set
  * @param side the side of the tile to attempt placement
  */
-static void SetupFarmFieldFence(TileIndex tile, int size, byte type, DiagDirection side)
+static void SetupFarmFieldFence(TileIndex tile, int size, uint8_t type, DiagDirection side)
 {
 	TileIndexDiff diff = (DiagDirToAxis(side) == AXIS_Y ? TileDiffXY(1, 0) : TileDiffXY(0, 1));
 	TileIndexDiff neighbour_diff = TileOffsByDiagDir(side);
@@ -1022,7 +1022,7 @@ static void SetupFarmFieldFence(TileIndex tile, int size, byte type, DiagDirecti
 			TileIndex neighbour = tile + neighbour_diff;
 			if (!IsTileType(neighbour, MP_CLEAR) || !IsClearGround(neighbour, CLEAR_FIELDS) || GetFence(neighbour, ReverseDiagDir(side)) == 0) {
 				/* Add fence as long as neighbouring tile does not already have a fence in the same position. */
-				byte or_ = type;
+				uint8_t or_ = type;
 
 				if (or_ == 1 && Chance16(1, 7)) or_ = 2;
 
@@ -1433,7 +1433,7 @@ static CommandCost FindTownForIndustry(TileIndex tile, int type, Town **t)
 	if (_settings_game.economy.multiple_industry_per_town) return CommandCost();
 
 	for (const Industry *i : Industry::Iterate()) {
-		if (i->type == (byte)type && i->town == *t) {
+		if (i->type == (uint8_t)type && i->town == *t) {
 			*t = nullptr;
 			return_cmd_error(STR_ERROR_ONLY_ONE_ALLOWED_PER_TOWN);
 		}
@@ -1801,7 +1801,7 @@ static void DoCreateNewIndustry(Industry *i, TileIndex tile, IndustryType type, 
 	/* Randomize inital production if non-original economy is used and there are no production related callbacks. */
 	if (!indspec->UsesOriginalEconomy()) {
 		for (auto &p : i->produced) {
-			p.rate = ClampTo<byte>((RandomRange(256) + 128) * p.rate >> 8);
+			p.rate = ClampTo<uint8_t>((RandomRange(256) + 128) * p.rate >> 8);
 		}
 	}
 
@@ -1824,7 +1824,7 @@ static void DoCreateNewIndustry(Industry *i, TileIndex tile, IndustryType type, 
 	/* Adding 1 here makes it conform to specs of var44 of varaction2 for industries
 	 * 0 = created prior of newindustries
 	 * else, chosen layout + 1 */
-	i->selected_layout = (byte)(layout_index + 1);
+	i->selected_layout = (uint8_t)(layout_index + 1);
 
 	i->exclusive_supplier = INVALID_OWNER;
 	i->exclusive_consumer = INVALID_OWNER;
@@ -2157,7 +2157,7 @@ CommandCost CmdIndustrySetFlags(DoCommandFlag flags, IndustryID ind_id, Industry
  * @param custom_news Custom news message text.
  * @return Empty cost or an error.
  */
-CommandCost CmdIndustrySetProduction(DoCommandFlag flags, IndustryID ind_id, byte prod_level, bool show_news, const std::string &custom_news)
+CommandCost CmdIndustrySetProduction(DoCommandFlag flags, IndustryID ind_id, uint8_t prod_level, bool show_news, const std::string &custom_news)
 {
 	if (_current_company != OWNER_DEITY) return CMD_ERROR;
 	if (prod_level < PRODLEVEL_MINIMUM || prod_level > PRODLEVEL_MAXIMUM) return CMD_ERROR;
@@ -2313,7 +2313,7 @@ static uint32_t GetScaledIndustryGenerationProbability(IndustryType it, bool *fo
  * @param[out] min_number Minimal number of industries that should exist at the map.
  * @return Relative probability for the industry to appear.
  */
-static uint16_t GetIndustryGamePlayProbability(IndustryType it, byte *min_number)
+static uint16_t GetIndustryGamePlayProbability(IndustryType it, uint8_t *min_number)
 {
 	if (_settings_game.difficulty.industry_density == ID_FUND_ONLY) {
 		*min_number = 0;
@@ -2321,7 +2321,7 @@ static uint16_t GetIndustryGamePlayProbability(IndustryType it, byte *min_number
 	}
 
 	const IndustrySpec *ind_spc = GetIndustrySpec(it);
-	byte chance = ind_spc->appear_ingame[_settings_game.game_creation.landscape];
+	uint8_t chance = ind_spc->appear_ingame[_settings_game.game_creation.landscape];
 	if (!ind_spc->enabled || ind_spc->layouts.empty() ||
 			((ind_spc->behaviour & INDUSTRYBEH_BEFORE_1950) && TimerGameCalendar::year > 1950) ||
 			((ind_spc->behaviour & INDUSTRYBEH_AFTER_1960) && TimerGameCalendar::year < 1960) ||
@@ -2541,7 +2541,7 @@ void ClearAllIndustryCachedNames()
  */
 bool IndustryTypeBuildData::GetIndustryTypeData(IndustryType it)
 {
-	byte min_number;
+	uint8_t min_number;
 	uint32_t probability = GetIndustryGamePlayProbability(it, &min_number);
 	bool changed = min_number != this->min_number || probability != this->probability;
 	this->min_number = min_number;
@@ -2801,8 +2801,8 @@ static void ChangeIndustryProduction(Industry *i, bool monthly)
 	bool recalculate_multipliers = false; ///< reinitialize production_rate to match prod_level
 	/* use original economy for industries using production related callbacks */
 	bool original_economy = indspec->UsesOriginalEconomy();
-	byte div = 0;
-	byte mul = 0;
+	uint8_t div = 0;
+	uint8_t mul = 0;
 	int8_t increment = 0;
 
 	bool callback_enabled = HasBit(indspec->callback_mask, monthly ? CBM_IND_MONTHLYPROD_CHANGE : CBM_IND_PRODUCTION_CHANGE);

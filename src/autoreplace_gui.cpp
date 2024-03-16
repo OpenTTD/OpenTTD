@@ -85,7 +85,7 @@ class ReplaceVehicleWindow : public Window {
 	bool reset_sel_engine;        ///< Also reset #sel_engine while updating left and/or right and no valid engine selected.
 	GroupID sel_group;            ///< Group selected to replace.
 	int details_height;           ///< Minimal needed height of the details panels, in text lines (found so far).
-	byte sort_criteria;           ///< Criteria of sorting vehicles.
+	uint8_t sort_criteria;           ///< Criteria of sorting vehicles.
 	bool descending_sort_order;   ///< Order of sorting vehicles.
 	bool show_hidden_engines;     ///< Whether to show the hidden engines.
 	RailType sel_railtype;        ///< Type of rail tracks selected. #INVALID_RAILTYPE to show all.
@@ -143,7 +143,7 @@ class ReplaceVehicleWindow : public Window {
 		std::vector<EngineID> variants;
 		EngineID selected_engine = INVALID_ENGINE;
 		VehicleType type = (VehicleType)this->window_number;
-		byte side = draw_left ? 0 : 1;
+		uint8_t side = draw_left ? 0 : 1;
 
 		GUIEngineList list;
 
@@ -607,7 +607,7 @@ public:
 
 			case WID_RV_LEFT_MATRIX:
 			case WID_RV_RIGHT_MATRIX: {
-				byte click_side;
+				uint8_t click_side;
 				if (widget == WID_RV_LEFT_MATRIX) {
 					click_side = 0;
 				} else {

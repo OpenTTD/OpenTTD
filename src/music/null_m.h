@@ -25,7 +25,7 @@ public:
 
 	bool IsSongPlaying() override { return true; }
 
-	void SetVolume(byte) override { }
+	void SetVolume(uint8_t) override { }
 	const char *GetName() const override { return "null"; }
 };
 

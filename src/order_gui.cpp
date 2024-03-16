@@ -454,7 +454,7 @@ static Order GetOrderCmdFromTile(const Vehicle *v, TileIndex tile)
 			st = in->neutral_station;
 		}
 		if (st != nullptr && (st->owner == _local_company || st->owner == OWNER_NONE)) {
-			byte facil;
+			uint8_t facil;
 			switch (v->type) {
 				case VEH_SHIP:     facil = FACIL_DOCK;    break;
 				case VEH_TRAIN:    facil = FACIL_TRAIN;   break;

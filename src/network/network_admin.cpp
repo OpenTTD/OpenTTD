@@ -32,7 +32,7 @@
 AdminIndex _redirect_console_to_admin = INVALID_ADMIN_ID;
 
 /** The amount of admins connected. */
-byte _network_admins_connected = 0;
+uint8_t _network_admins_connected = 0;
 
 /** The pool with sockets/clients. */
 NetworkAdminSocketPool _networkadminsocket_pool("NetworkAdminSocket");

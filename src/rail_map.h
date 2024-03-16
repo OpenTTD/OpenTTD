@@ -194,7 +194,7 @@ inline Track GetRailDepotTrack(Tile t)
 inline TrackBits GetRailReservationTrackBits(Tile t)
 {
 	assert(IsPlainRailTile(t));
-	byte track_b = GB(t.m2(), 8, 3);
+	uint8_t track_b = GB(t.m2(), 8, 3);
 	Track track = (Track)(track_b - 1);    // map array saves Track+1
 	if (track_b == 0) return TRACK_BIT_NONE;
 	return (TrackBits)(TrackToTrackBits(track) | (HasBit(t.m2(), 11) ? TrackToTrackBits(TrackToOppositeTrack(track)) : 0));
@@ -213,7 +213,7 @@ inline void SetTrackReservation(Tile t, TrackBits b)
 	assert(!TracksOverlap(b));
 	Track track = RemoveFirstTrack(&b);
 	SB(t.m2(), 8, 3, track == INVALID_TRACK ? 0 : track + 1);
-	SB(t.m2(), 11, 1, (byte)(b != TRACK_BIT_NONE));
+	SB(t.m2(), 11, 1, (uint8_t)(b != TRACK_BIT_NONE));
 }
 
 /**
@@ -270,7 +270,7 @@ inline bool HasDepotReservation(Tile t)
 inline void SetDepotReservation(Tile t, bool b)
 {
 	assert(IsRailDepot(t));
-	SB(t.m5(), 4, 1, (byte)b);
+	SB(t.m5(), 4, 1, (uint8_t)b);
 }
 
 /**
@@ -293,14 +293,14 @@ inline bool IsPbsSignal(SignalType s)
 inline SignalType GetSignalType(Tile t, Track track)
 {
 	assert(GetRailTileType(t) == RAIL_TILE_SIGNALS);
-	byte pos = (track == TRACK_LOWER || track == TRACK_RIGHT) ? 4 : 0;
+	uint8_t pos = (track == TRACK_LOWER || track == TRACK_RIGHT) ? 4 : 0;
 	return (SignalType)GB(t.m2(), pos, 3);
 }
 
 inline void SetSignalType(Tile t, Track track, SignalType s)
 {
 	assert(GetRailTileType(t) == RAIL_TILE_SIGNALS);
-	byte pos = (track == TRACK_LOWER || track == TRACK_RIGHT) ? 4 : 0;
+	uint8_t pos = (track == TRACK_LOWER || track == TRACK_RIGHT) ? 4 : 0;
 	SB(t.m2(), pos, 3, s);
 	if (track == INVALID_TRACK) SB(t.m2(), 4, 3, s);
 }
@@ -323,8 +323,8 @@ inline bool IsOnewaySignal(Tile t, Track track)
 
 inline void CycleSignalSide(Tile t, Track track)
 {
-	byte sig;
-	byte pos = (track == TRACK_LOWER || track == TRACK_RIGHT) ? 4 : 6;
+	uint8_t sig;
+	uint8_t pos = (track == TRACK_LOWER || track == TRACK_RIGHT) ? 4 : 6;
 
 	sig = GB(t.m3(), pos, 2);
 	if (--sig == 0) sig = IsPbsSignal(GetSignalType(t, track)) ? 2 : 3;
@@ -333,13 +333,13 @@ inline void CycleSignalSide(Tile t, Track track)
 
 inline SignalVariant GetSignalVariant(Tile t, Track track)
 {
-	byte pos = (track == TRACK_LOWER || track == TRACK_RIGHT) ? 7 : 3;
+	uint8_t pos = (track == TRACK_LOWER || track == TRACK_RIGHT) ? 7 : 3;
 	return (SignalVariant)GB(t.m2(), pos, 1);
 }
 
 inline void SetSignalVariant(Tile t, Track track, SignalVariant v)
 {
-	byte pos = (track == TRACK_LOWER || track == TRACK_RIGHT) ? 7 : 3;
+	uint8_t pos = (track == TRACK_LOWER || track == TRACK_RIGHT) ? 7 : 3;
 	SB(t.m2(), pos, 1, v);
 	if (track == INVALID_TRACK) SB(t.m2(), 7, 1, v);
 }
@@ -370,7 +370,7 @@ inline uint GetSignalStates(Tile tile)
  * @param signalbit the signal
  * @return the state of the signal
  */
-inline SignalState GetSingleSignalState(Tile t, byte signalbit)
+inline SignalState GetSingleSignalState(Tile t, uint8_t signalbit)
 {
 	return (SignalState)HasBit(GetSignalStates(t), signalbit);
 }
@@ -401,7 +401,7 @@ inline uint GetPresentSignals(Tile tile)
  * @param signalbit the signal
  * @return true if and only if the signal is present
  */
-inline bool IsSignalPresent(Tile t, byte signalbit)
+inline bool IsSignalPresent(Tile t, uint8_t signalbit)
 {
 	return HasBit(GetPresentSignals(t), signalbit);
 }

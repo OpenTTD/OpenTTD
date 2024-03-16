@@ -172,7 +172,7 @@ void CheckRedrawWaypointCoverage(const Window *)
  * @param amount Cargo amount
  * @param rating ratings data for that particular cargo
  */
-static void StationsWndShowStationRating(int left, int right, int y, CargoID type, uint amount, byte rating)
+static void StationsWndShowStationRating(int left, int right, int y, CargoID type, uint amount, uint8_t rating)
 {
 	static const uint units_full  = 576; ///< number of units to show station as 'full'
 	static const uint rating_full = 224; ///< rating needed so it is shown as 'full'
@@ -220,7 +220,7 @@ protected:
 	/* Runtime saved values */
 	struct FilterState {
 		Listing last_sorting;
-		byte facilities; ///< types of stations of interest
+		uint8_t facilities; ///< types of stations of interest
 		bool include_no_rating; ///< Whether we should include stations with no cargo rating.
 		CargoTypes cargoes; ///< bitmap of cargo types to include
 	};
@@ -332,8 +332,8 @@ protected:
 	/** Sort stations by their rating */
 	static bool StationRatingMaxSorter(const Station * const &a, const Station * const &b, const CargoTypes &cargo_filter)
 	{
-		byte maxr1 = 0;
-		byte maxr2 = 0;
+		uint8_t maxr1 = 0;
+		uint8_t maxr2 = 0;
 
 		for (CargoID j : SetCargoBitIterator(cargo_filter)) {
 			if (a->goods[j].HasRating()) maxr1 = std::max(maxr1, a->goods[j].rating);
@@ -346,8 +346,8 @@ protected:
 	/** Sort stations by their rating */
 	static bool StationRatingMinSorter(const Station * const &a, const Station * const &b, const CargoTypes &cargo_filter)
 	{
-		byte minr1 = 255;
-		byte minr2 = 255;
+		uint8_t minr1 = 255;
+		uint8_t minr2 = 255;
 
 		for (CargoID j : SetCargoBitIterator(cargo_filter)) {
 			if (a->goods[j].HasRating()) minr1 = std::min(minr1, a->goods[j].rating);
@@ -849,7 +849,7 @@ enum SortOrder {
 
 class CargoDataEntry;
 
-enum class CargoSortType : byte {
+enum class CargoSortType : uint8_t {
 	AsGrouping,    ///< by the same principle the entries are being grouped
 	Count,         ///< by amount of cargo
 	StationString, ///< by station name

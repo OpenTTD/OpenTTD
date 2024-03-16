@@ -476,7 +476,7 @@ public:
 	 * Marks a widget as raised and dirty (redraw), when it is marked as lowered.
 	 * @param widget_index index of this widget in the window
 	 */
-	inline void RaiseWidgetWhenLowered(byte widget_index)
+	inline void RaiseWidgetWhenLowered(uint8_t widget_index)
 	{
 		if (this->IsWidgetLowered(widget_index)) {
 			this->RaiseWidget(widget_index);
@@ -1025,7 +1025,7 @@ extern Point _cursorpos_drag_start;
 
 extern int _scrollbar_start_pos;
 extern int _scrollbar_size;
-extern byte _scroller_click_timeout;
+extern uint8_t _scroller_click_timeout;
 
 extern bool _scrolling_viewport;
 extern bool _mouse_hovering;

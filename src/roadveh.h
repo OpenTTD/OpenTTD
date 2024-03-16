@@ -76,7 +76,7 @@ static const uint RVC_DRIVE_THROUGH_STOP_FRAME           = 11;
 static const uint RVC_DEPOT_STOP_FRAME                   = 11;
 
 /** The number of ticks a vehicle has for overtaking. */
-static const byte RV_OVERTAKE_TIMEOUT = 35;
+static const uint8_t RV_OVERTAKE_TIMEOUT = 35;
 
 void RoadVehUpdateCache(RoadVehicle *v, bool same_length = false);
 void GetRoadVehSpriteSize(EngineID engine, uint &width, uint &height, int &xoffs, int &yoffs, EngineImageType image_type);
@@ -105,13 +105,13 @@ struct RoadVehPathCache {
  */
 struct RoadVehicle final : public GroundVehicle<RoadVehicle, VEH_ROAD> {
 	RoadVehPathCache path;  ///< Cached path.
-	byte state;             ///< @see RoadVehicleStates
-	byte frame;
+	uint8_t state;             ///< @see RoadVehicleStates
+	uint8_t frame;
 	uint16_t blocked_ctr;
-	byte overtaking;        ///< Set to #RVSB_DRIVE_SIDE when overtaking, otherwise 0.
-	byte overtaking_ctr;    ///< The length of the current overtake attempt.
+	uint8_t overtaking;        ///< Set to #RVSB_DRIVE_SIDE when overtaking, otherwise 0.
+	uint8_t overtaking_ctr;    ///< The length of the current overtake attempt.
 	uint16_t crashed_ctr;     ///< Animation counter when the vehicle has crashed. @see RoadVehIsCrashed
-	byte reverse_ctr;
+	uint8_t reverse_ctr;
 
 	RoadType roadtype;              //!< Roadtype of this vehicle.
 	RoadTypes compatible_roadtypes; //!< Roadtypes this consist is powered on.
@@ -201,7 +201,7 @@ protected: // These functions should not be called outside acceleration code.
 	 * Allows to know the tractive effort value that this vehicle will use.
 	 * @return Tractive effort value from the engine.
 	 */
-	inline byte GetTractiveEffort() const
+	inline uint8_t GetTractiveEffort() const
 	{
 		/* The tractive effort coefficient is in units of 1/256.  */
 		return GetVehicleProperty(this, PROP_ROADVEH_TRACTIVE_EFFORT, RoadVehInfo(this->engine_type)->tractive_effort);
@@ -211,7 +211,7 @@ protected: // These functions should not be called outside acceleration code.
 	 * Gets the area used for calculating air drag.
 	 * @return Area of the engine in m^2.
 	 */
-	inline byte GetAirDragArea() const
+	inline uint8_t GetAirDragArea() const
 	{
 		return 6;
 	}
@@ -220,7 +220,7 @@ protected: // These functions should not be called outside acceleration code.
 	 * Gets the air drag coefficient of this vehicle.
 	 * @return Air drag value from the engine.
 	 */
-	inline byte GetAirDrag() const
+	inline uint8_t GetAirDrag() const
 	{
 		return RoadVehInfo(this->engine_type)->air_drag;
 	}

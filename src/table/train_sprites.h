@@ -22,7 +22,7 @@ static const SpriteID _engine_sprite_base[] = {
 
 /* For how many directions do we have sprites? (8 or 4; if 4, the other 4
  * directions are symmetric. */
-static const byte _engine_sprite_and[] = {
+static const uint8_t _engine_sprite_and[] = {
 7, 7, 7, 7, 3, 3, 7, 7,
 7, 7, 7, 7, 7, 7, 7, 3,
 7, 7, 3, 7, 3, 7, 7, 7,
@@ -36,7 +36,7 @@ static const byte _engine_sprite_and[] = {
 };
 
 /* Non-zero for multihead trains. */
-static const byte _engine_sprite_add[] = {
+static const uint8_t _engine_sprite_add[] = {
 0, 0, 0, 0, 0, 0, 0, 4,
 0, 4, 0, 4, 0, 0, 0, 0,
 0, 4, 0, 0, 0, 0, 4, 0,
@@ -50,7 +50,7 @@ static const byte _engine_sprite_add[] = {
 };
 
 
-static const byte _wagon_full_adder[] = {
+static const uint8_t _wagon_full_adder[] = {
 	 0,  0,  0,  0,  0,  0,  0,  0,
 	 0,  0,  0,  0,  0,  0,  0,  0,
 	 0,  0,  0,  0,  0,  0,  0,  0,

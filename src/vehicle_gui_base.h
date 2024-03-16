@@ -66,7 +66,7 @@ typedef GUIList<GUIVehicleGroup, std::nullptr_t, CargoID> GUIVehicleGroupList;
 
 struct BaseVehicleListWindow : public Window {
 
-	enum GroupBy : byte {
+	enum GroupBy : uint8_t {
 		GB_NONE,
 		GB_SHARED_ORDERS,
 
@@ -77,7 +77,7 @@ struct BaseVehicleListWindow : public Window {
 	VehicleList vehicles;                       ///< List of vehicles.  This is the buffer for `vehgroups` to point into; if this is structurally modified, `vehgroups` must be rebuilt.
 	GUIVehicleGroupList vehgroups;              ///< List of (groups of) vehicles.  This stores iterators of `vehicles`, and should be rebuilt if `vehicles` is structurally changed.
 	Listing *sorting;                           ///< Pointer to the vehicle type related sorting.
-	byte unitnumber_digits;                     ///< The number of digits of the highest unit number.
+	uint8_t unitnumber_digits;                     ///< The number of digits of the highest unit number.
 	Scrollbar *vscroll;
 	VehicleListIdentifier vli;                  ///< Identifier of the vehicle list we want to currently show.
 	VehicleID vehicle_sel;                      ///< Selected vehicle
@@ -116,7 +116,7 @@ struct BaseVehicleListWindow : public Window {
 	void UpdateVehicleGroupBy(GroupBy group_by);
 	void SortVehicleList();
 	void BuildVehicleList();
-	void SetCargoFilter(byte index);
+	void SetCargoFilter(uint8_t index);
 	void SetCargoFilterArray();
 	void FilterVehicleList();
 	StringID GetCargoFilterLabel(CargoID cid) const;

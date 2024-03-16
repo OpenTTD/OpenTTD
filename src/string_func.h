@@ -19,7 +19,7 @@
 
 char *strecpy(char *dst, const char *src, const char *last) NOACCESS(3);
 
-std::string FormatArrayAsHex(std::span<const byte> data);
+std::string FormatArrayAsHex(std::span<const uint8_t> data);
 
 void StrMakeValidInPlace(char *str, const char *last, StringValidationSettings settings = SVS_REPLACE_WITH_QUESTION_MARK) NOACCESS(2);
 [[nodiscard]] std::string StrMakeValid(std::string_view str, StringValidationSettings settings = SVS_REPLACE_WITH_QUESTION_MARK);

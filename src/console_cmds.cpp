@@ -89,7 +89,7 @@ static ConsoleFileList _console_file_list_scenario{FT_SCENARIO, false}; ///< Fil
 static ConsoleFileList _console_file_list_heightmap{FT_HEIGHTMAP, false}; ///< File storage cache for heightmaps.
 
 /* console command defines */
-#define DEF_CONSOLE_CMD(function) static bool function([[maybe_unused]] byte argc, [[maybe_unused]] char *argv[])
+#define DEF_CONSOLE_CMD(function) static bool function([[maybe_unused]] uint8_t argc, [[maybe_unused]] char *argv[])
 #define DEF_CONSOLE_HOOK(function) static ConsoleHookResult function(bool echo)
 
 
@@ -2113,7 +2113,7 @@ DEF_CONSOLE_CMD(ConFont)
 		uint size = setting->size;
 		bool aa = setting->aa;
 
-		byte arg_index = 2;
+		uint8_t arg_index = 2;
 		/* We may encounter "aa" or "noaa" but it must be the last argument. */
 		if (StrEqualsIgnoreCase(argv[arg_index], "aa") || StrEqualsIgnoreCase(argv[arg_index], "noaa")) {
 			aa = !StrStartsWithIgnoreCase(argv[arg_index++], "no");

@@ -47,7 +47,7 @@
 {
 	if (!IsAwarded(subsidy_id)) return ScriptCompany::COMPANY_INVALID;
 
-	return (ScriptCompany::CompanyID)((byte)::Subsidy::Get(subsidy_id)->awarded);
+	return (ScriptCompany::CompanyID)((uint8_t)::Subsidy::Get(subsidy_id)->awarded);
 }
 
 /* static */ ScriptDate::Date ScriptSubsidy::GetExpireDate(SubsidyID subsidy_id)
