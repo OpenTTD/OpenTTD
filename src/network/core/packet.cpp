@@ -223,7 +223,7 @@ bool Packet::CanReadFromPacket(size_t bytes_to_read, bool close_connection)
  */
 bool Packet::HasPacketSizeData() const
 {
-	return this->pos >= sizeof(PacketSize);
+	return this->pos >= EncodedLengthOfPacketSize();
 }
 
 /**
@@ -250,10 +250,10 @@ bool Packet::ParsePacketSize()
 	/* If the size of the packet is less than the bytes required for the size and type of
 	 * the packet, or more than the allowed limit, then something is wrong with the packet.
 	 * In those cases the packet can generally be regarded as containing garbage data. */
-	if (size < sizeof(PacketSize) + sizeof(PacketType) || size > this->limit) return false;
+	if (size < EncodedLengthOfPacketSize() + EncodedLengthOfPacketType() || size > this->limit) return false;
 
 	this->buffer.resize(size);
-	this->pos = sizeof(PacketSize);
+	this->pos = static_cast<PacketSize>(EncodedLengthOfPacketSize());
 	return true;
 }
 
@@ -263,7 +263,7 @@ bool Packet::ParsePacketSize()
 void Packet::PrepareToRead()
 {
 	/* Put the position on the right place */
-	this->pos = sizeof(PacketSize);
+	this->pos = static_cast<PacketSize>(EncodedLengthOfPacketSize());
 }
 
 /**
@@ -272,8 +272,8 @@ void Packet::PrepareToRead()
  */
 PacketType Packet::GetPacketType() const
 {
-	assert(this->Size() >= sizeof(PacketSize) + sizeof(PacketType));
-	return static_cast<PacketType>(buffer[sizeof(PacketSize)]);
+	assert(this->Size() >= EncodedLengthOfPacketSize() + EncodedLengthOfPacketType());
+	return static_cast<PacketType>(buffer[EncodedLengthOfPacketSize()]);
 }
 
 /**

@@ -40,6 +40,8 @@ typedef uint8_t  PacketType; ///< Identifier for the packet
  *     (year % 4 == 0) and ((year % 100 != 0) or (year % 400 == 0))
  */
 struct Packet {
+	static constexpr size_t EncodedLengthOfPacketSize() { return sizeof(PacketSize); }
+	static constexpr size_t EncodedLengthOfPacketType() { return sizeof(PacketType); }
 private:
 	/** The current read/write position in the packet */
 	PacketSize pos;
@@ -52,7 +54,7 @@ private:
 	NetworkSocketHandler *cs;
 
 public:
-	Packet(NetworkSocketHandler *cs, size_t limit, size_t initial_read_size = sizeof(PacketSize));
+	Packet(NetworkSocketHandler *cs, size_t limit, size_t initial_read_size = EncodedLengthOfPacketSize());
 	Packet(NetworkSocketHandler *cs, PacketType type, size_t limit = COMPAT_MTU);
 
 	/* Sending/writing of packets */
