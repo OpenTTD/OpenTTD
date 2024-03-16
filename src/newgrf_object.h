@@ -127,7 +127,7 @@ struct ObjectScopeResolver : public ScopeResolver {
 	}
 
 	uint32_t GetRandomBits() const override;
-	uint32_t GetVariable(byte variable, [[maybe_unused]] uint32_t parameter, bool *available) const override;
+	uint32_t GetVariable(uint8_t variable, [[maybe_unused]] uint32_t parameter, bool *available) const override;
 };
 
 /** A resolver object to be used with feature 0F spritegroups. */
@@ -139,7 +139,7 @@ struct ObjectResolverObject : public ResolverObject {
 			CallbackID callback = CBID_NO_CALLBACK, uint32_t param1 = 0, uint32_t param2 = 0);
 	~ObjectResolverObject();
 
-	ScopeResolver *GetScope(VarSpriteGroupScope scope = VSG_SCOPE_SELF, byte relative = 0) override
+	ScopeResolver *GetScope(VarSpriteGroupScope scope = VSG_SCOPE_SELF, uint8_t relative = 0) override
 	{
 		switch (scope) {
 			case VSG_SCOPE_SELF:

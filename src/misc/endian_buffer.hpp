@@ -22,7 +22,7 @@ struct StrongTypedefBase;
  * as this allows providing custom operator overloads for more complex types
  * like e.g. structs without needing to modify this class.
  */
-template <typename Tcont = typename std::vector<byte>, typename Titer = typename std::back_insert_iterator<Tcont>>
+template <typename Tcont = typename std::vector<uint8_t>, typename Titer = typename std::back_insert_iterator<Tcont>>
 class EndianBufferWriter {
 	/** Output iterator for the destination buffer. */
 	Titer buffer;
@@ -34,7 +34,7 @@ public:
 	EndianBufferWriter &operator <<(const std::string &data) { return *this << std::string_view{ data }; }
 	EndianBufferWriter &operator <<(const char *data) { return *this << std::string_view{ data }; }
 	EndianBufferWriter &operator <<(std::string_view data) { this->Write(data); return *this; }
-	EndianBufferWriter &operator <<(bool data) { return *this << static_cast<byte>(data ? 1 : 0); }
+	EndianBufferWriter &operator <<(bool data) { return *this << static_cast<uint8_t>(data ? 1 : 0); }
 
 	template <typename T>
 	EndianBufferWriter &operator <<(const OverflowSafeInt<T> &data) { return *this << static_cast<T>(data); };
@@ -59,7 +59,7 @@ public:
 		return *this;
 	}
 
-	template <typename Tvalue, typename Tbuf = std::vector<byte>>
+	template <typename Tvalue, typename Tbuf = std::vector<uint8_t>>
 	static Tbuf FromValue(const Tvalue &data)
 	{
 		Tbuf buffer;
@@ -118,17 +118,17 @@ private:
  */
 class EndianBufferReader {
 	/** Reference to storage buffer. */
-	std::span<const byte> buffer;
+	std::span<const uint8_t> buffer;
 	/** Current read position. */
 	size_t read_pos = 0;
 
 public:
-	EndianBufferReader(std::span<const byte> buffer) : buffer(buffer) {}
+	EndianBufferReader(std::span<const uint8_t> buffer) : buffer(buffer) {}
 
 	void rewind() { this->read_pos = 0; }
 
 	EndianBufferReader &operator >>(std::string &data) { data = this->ReadStr(); return *this; }
-	EndianBufferReader &operator >>(bool &data) { data = this->Read<byte>() != 0; return *this; }
+	EndianBufferReader &operator >>(bool &data) { data = this->Read<uint8_t>() != 0; return *this; }
 
 	template <typename T>
 	EndianBufferReader &operator >>(OverflowSafeInt<T> &data) { data = this->Read<T>(); return *this; };
@@ -154,7 +154,7 @@ public:
 	}
 
 	template <typename Tvalue>
-	static Tvalue ToValue(std::span<const byte> buffer)
+	static Tvalue ToValue(std::span<const uint8_t> buffer)
 	{
 		Tvalue result{};
 		EndianBufferReader reader{ buffer };

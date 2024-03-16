@@ -353,7 +353,7 @@
 	if (!IsValidVehicle(vehicle_id)) return ScriptVehicle::VS_INVALID;
 
 	const Vehicle *v = ::Vehicle::Get(vehicle_id);
-	byte vehstatus = v->vehstatus;
+	uint8_t vehstatus = v->vehstatus;
 
 	if (vehstatus & ::VS_CRASHED) return ScriptVehicle::VS_CRASHED;
 	if (v->breakdown_ctr != 0) return ScriptVehicle::VS_BROKEN;

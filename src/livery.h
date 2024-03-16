@@ -13,12 +13,12 @@
 #include "company_type.h"
 #include "gfx_type.h"
 
-static const byte LIT_NONE    = 0; ///< Don't show the liveries at all
-static const byte LIT_COMPANY = 1; ///< Show the liveries of your own company
-static const byte LIT_ALL     = 2; ///< Show the liveries of all companies
+static const uint8_t LIT_NONE    = 0; ///< Don't show the liveries at all
+static const uint8_t LIT_COMPANY = 1; ///< Show the liveries of your own company
+static const uint8_t LIT_ALL     = 2; ///< Show the liveries of all companies
 
 /** List of different livery schemes. */
-enum LiveryScheme : byte {
+enum LiveryScheme : uint8_t {
 	LS_BEGIN = 0,
 	LS_DEFAULT = 0,
 
@@ -60,7 +60,7 @@ enum LiveryScheme : byte {
 DECLARE_POSTFIX_INCREMENT(LiveryScheme)
 
 /** List of different livery classes, used only by the livery GUI. */
-enum LiveryClass : byte {
+enum LiveryClass : uint8_t {
 	LC_OTHER,
 	LC_RAIL,
 	LC_ROAD,
@@ -76,7 +76,7 @@ DECLARE_ENUM_AS_ADDABLE(LiveryClass)
 
 /** Information about a particular livery. */
 struct Livery {
-	byte in_use;  ///< Bit 0 set if this livery should override the default livery first colour, Bit 1 for the second colour.
+	uint8_t in_use;  ///< Bit 0 set if this livery should override the default livery first colour, Bit 1 for the second colour.
 	Colours colour1; ///< First colour, for all vehicles.
 	Colours colour2; ///< Second colour, for vehicles with 2CC support.
 };

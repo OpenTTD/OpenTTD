@@ -94,7 +94,7 @@ SpriteFile &OpenCachedSpriteFile(const std::string &filename, Subdirectory subdi
 
 struct MemBlock {
 	size_t size;
-	byte data[];
+	uint8_t data[];
 };
 
 static uint _sprite_lru_counter;
@@ -110,7 +110,7 @@ static void CompactSpriteCache();
  * @param num the amount of sprites to skip
  * @return true if the data could be correctly skipped.
  */
-bool SkipSpriteData(SpriteFile &file, byte type, uint16_t num)
+bool SkipSpriteData(SpriteFile &file, uint8_t type, uint16_t num)
 {
 	if (type & 2) {
 		file.SkipBytes(num);
@@ -419,10 +419,10 @@ static void *ReadRecolourSprite(SpriteFile &file, uint num)
 	 * GRFs which are the same as 257 byte recolour sprites, but with the last
 	 * 240 bytes zeroed.  */
 	static const uint RECOLOUR_SPRITE_SIZE = 257;
-	byte *dest = (byte *)AllocSprite(std::max(RECOLOUR_SPRITE_SIZE, num));
+	uint8_t *dest = (uint8_t *)AllocSprite(std::max(RECOLOUR_SPRITE_SIZE, num));
 
 	if (file.NeedsPaletteRemap()) {
-		byte *dest_tmp = new byte[std::max(RECOLOUR_SPRITE_SIZE, num)];
+		uint8_t *dest_tmp = new uint8_t[std::max(RECOLOUR_SPRITE_SIZE, num)];
 
 		/* Only a few recolour sprites are less than 257 bytes */
 		if (num < RECOLOUR_SPRITE_SIZE) memset(dest_tmp, 0, RECOLOUR_SPRITE_SIZE);
@@ -501,7 +501,7 @@ static void *ReadSprite(const SpriteCache *sc, SpriteID id, SpriteType sprite_ty
 		s->y_offs = sprite[ZOOM_LVL_NORMAL].y_offs;
 
 		SpriteLoader::CommonPixel *src = sprite[ZOOM_LVL_NORMAL].data;
-		byte *dest = s->data;
+		uint8_t *dest = s->data;
 		while (num-- > 0) {
 			*dest++ = src->m;
 			src++;
@@ -530,7 +530,7 @@ static void *ReadSprite(const SpriteCache *sc, SpriteID id, SpriteType sprite_ty
 
 struct GrfSpriteOffset {
 	size_t file_pos;
-	byte control_flags;
+	uint8_t control_flags;
 };
 
 /** Map from sprite numbers to position in the GRF file. */
@@ -574,10 +574,10 @@ void ReadGRFSpriteOffsets(SpriteFile &file)
 			prev_id = id;
 			uint length = file.ReadDword();
 			if (length > 0) {
-				byte colour = file.ReadByte() & SCC_MASK;
+				uint8_t colour = file.ReadByte() & SCC_MASK;
 				length--;
 				if (length > 0) {
-					byte zoom = file.ReadByte();
+					uint8_t zoom = file.ReadByte();
 					length--;
 					if (colour != 0 && zoom == 0) { // ZOOM_LVL_OUT_4X (normal zoom)
 						SetBit(offset.control_flags, (colour != SCC_PAL) ? SCCF_ALLOW_ZOOM_MIN_1X_32BPP : SCCF_ALLOW_ZOOM_MIN_1X_PAL);
@@ -613,11 +613,11 @@ bool LoadNextSprite(int load_index, SpriteFile &file, uint file_sprite_id)
 	/* Read sprite header. */
 	uint32_t num = file.GetContainerVersion() >= 2 ? file.ReadDword() : file.ReadWord();
 	if (num == 0) return false;
-	byte grf_type = file.ReadByte();
+	uint8_t grf_type = file.ReadByte();
 
 	SpriteType type;
 	void *data = nullptr;
-	byte control_flags = 0;
+	uint8_t control_flags = 0;
 	if (grf_type == 0xFF) {
 		/* Some NewGRF files have "empty" pseudo-sprites which are 1
 		 * byte long. Catch these so the sprites won't be displayed. */
@@ -704,7 +704,7 @@ static_assert((sizeof(size_t) & (sizeof(size_t) - 1)) == 0);
 
 static inline MemBlock *NextBlock(MemBlock *block)
 {
-	return (MemBlock*)((byte*)block + (block->size & ~S_FREE_MASK));
+	return (MemBlock*)((uint8_t*)block + (block->size & ~S_FREE_MASK));
 }
 
 static size_t GetSpriteCacheUsage()
@@ -879,7 +879,7 @@ void *AllocSprite(size_t mem_req)
  */
 void *SimpleSpriteAlloc(size_t size)
 {
-	return MallocT<byte>(size);
+	return MallocT<uint8_t>(size);
 }
 
 /**
@@ -906,9 +906,9 @@ static void *HandleInvalidSpriteRequest(SpriteID sprite, SpriteType requested, S
 		return GetRawSprite(sprite, sc->type, allocator);
 	}
 
-	byte warning_level = sc->warned ? 6 : 0;
+	uint8_t warning_level = sc->warned ? 6 : 0;
 	sc->warned = true;
-	Debug(sprite, warning_level, "Tried to load {} sprite #{} as a {} sprite. Probable cause: NewGRF interference", sprite_types[static_cast<byte>(available)], sprite, sprite_types[static_cast<byte>(requested)]);
+	Debug(sprite, warning_level, "Tried to load {} sprite #{} as a {} sprite. Probable cause: NewGRF interference", sprite_types[static_cast<uint8_t>(available)], sprite, sprite_types[static_cast<uint8_t>(requested)]);
 
 	switch (requested) {
 		case SpriteType::Normal:
@@ -979,19 +979,19 @@ static void GfxInitSpriteCache()
 	static uint last_alloc_attempt = 0;
 
 	if (_spritecache_ptr == nullptr || (_allocated_sprite_cache_size != target_size && target_size != last_alloc_attempt)) {
-		delete[] reinterpret_cast<byte *>(_spritecache_ptr);
+		delete[] reinterpret_cast<uint8_t *>(_spritecache_ptr);
 
 		last_alloc_attempt = target_size;
 		_allocated_sprite_cache_size = target_size;
 
 		do {
 			/* Try to allocate 50% more to make sure we do not allocate almost all available. */
-			_spritecache_ptr = reinterpret_cast<MemBlock *>(new(std::nothrow) byte[_allocated_sprite_cache_size + _allocated_sprite_cache_size / 2]);
+			_spritecache_ptr = reinterpret_cast<MemBlock *>(new(std::nothrow) uint8_t[_allocated_sprite_cache_size + _allocated_sprite_cache_size / 2]);
 
 			if (_spritecache_ptr != nullptr) {
 				/* Allocation succeeded, but we wanted less. */
-				delete[] reinterpret_cast<byte *>(_spritecache_ptr);
-				_spritecache_ptr = reinterpret_cast<MemBlock *>(new byte[_allocated_sprite_cache_size]);
+				delete[] reinterpret_cast<uint8_t *>(_spritecache_ptr);
+				_spritecache_ptr = reinterpret_cast<MemBlock *>(new uint8_t[_allocated_sprite_cache_size]);
 			} else if (_allocated_sprite_cache_size < 2 * 1024 * 1024) {
 				UserError("Cannot allocate spritecache");
 			} else {

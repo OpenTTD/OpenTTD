@@ -40,7 +40,7 @@ enum TileSource {
 static const uint NUM_TRACKS_AT_PCP = 6;
 
 /** Which PPPs are possible at all on a given PCP */
-static const byte AllowedPPPonPCP[DIAGDIR_END] = {
+static const uint8_t AllowedPPPonPCP[DIAGDIR_END] = {
 	1 << DIR_N | 1 << DIR_E  | 1 << DIR_SE | 1 << DIR_S | 1 << DIR_W  | 1 << DIR_NW,
 	1 << DIR_N | 1 << DIR_NE | 1 << DIR_E  | 1 << DIR_S | 1 << DIR_SW | 1 << DIR_W,
 	1 << DIR_N | 1 << DIR_E  | 1 << DIR_SE | 1 << DIR_S | 1 << DIR_W  | 1 << DIR_NW,
@@ -52,7 +52,7 @@ static const byte AllowedPPPonPCP[DIAGDIR_END] = {
  * the following system is used: if you rotate the PCP so that it is in the
  * north, the eastern PPP belongs to the tile.
  */
-static const byte OwnedPPPonPCP[DIAGDIR_END] = {
+static const uint8_t OwnedPPPonPCP[DIAGDIR_END] = {
 	1 << DIR_SE | 1 << DIR_S  | 1 << DIR_SW | 1 << DIR_W,
 	1 << DIR_N  | 1 << DIR_SW | 1 << DIR_W  | 1 << DIR_NW,
 	1 << DIR_N  | 1 << DIR_NE | 1 << DIR_E  | 1 << DIR_NW,
@@ -76,7 +76,7 @@ static const DiagDirection PCPpositions[TRACK_END][2] = {
  * which are not on either end of the track are fully preferred.
  * @see PCPpositions
  */
-static const byte PreferredPPPofTrackAtPCP[TRACK_END][DIAGDIR_END] = {
+static const uint8_t PreferredPPPofTrackAtPCP[TRACK_END][DIAGDIR_END] = {
 	{    // X
 		1 << DIR_NE | 1 << DIR_SE | 1 << DIR_NW, // NE
 		PCP_NOT_ON_TRACK,                        // SE
@@ -119,7 +119,7 @@ static const byte PreferredPPPofTrackAtPCP[TRACK_END][DIAGDIR_END] = {
  * so there are certain tiles which we ignore. A straight line is found if
  * we have exactly two PPPs.
  */
-static const byte IgnoredPCP[NUM_IGNORE_GROUPS][TLG_END][DIAGDIR_END] = {
+static const uint8_t IgnoredPCP[NUM_IGNORE_GROUPS][TLG_END][DIAGDIR_END] = {
 	{   // Ignore group 1, X and Y tracks
 		{     // X even, Y even
 			IGNORE_NONE,
@@ -194,7 +194,7 @@ static const byte IgnoredPCP[NUM_IGNORE_GROUPS][TLG_END][DIAGDIR_END] = {
 #undef NO_IGNORE
 
 /** Which pylons can definitely NOT be built */
-static const byte DisallowedPPPofTrackAtPCP[TRACK_END][DIAGDIR_END] = {
+static const uint8_t DisallowedPPPofTrackAtPCP[TRACK_END][DIAGDIR_END] = {
 	{1 << DIR_SW | 1 << DIR_NE, 0,           1 << DIR_SW | 1 << DIR_NE, 0          }, // X
 	{0,           1 << DIR_NW | 1 << DIR_SE, 0,           1 << DIR_NW | 1 << DIR_SE}, // Y
 	{1 << DIR_W | 1 << DIR_E,  0,           0,           1 << DIR_W | 1 << DIR_E }, // UPPER

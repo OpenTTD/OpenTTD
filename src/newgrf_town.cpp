@@ -15,7 +15,7 @@
 
 #include "safeguards.h"
 
-/* virtual */ uint32_t TownScopeResolver::GetVariable(byte variable, [[maybe_unused]] uint32_t parameter, bool *available) const
+/* virtual */ uint32_t TownScopeResolver::GetVariable(uint8_t variable, [[maybe_unused]] uint32_t parameter, bool *available) const
 {
 	CargoID cid;
 	switch (variable) {

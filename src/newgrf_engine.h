@@ -39,7 +39,7 @@ struct VehicleScopeResolver : public ScopeResolver {
 	void SetVehicle(const Vehicle *v) { this->v = v; }
 
 	uint32_t GetRandomBits() const override;
-	uint32_t GetVariable(byte variable, [[maybe_unused]] uint32_t parameter, bool *available) const override;
+	uint32_t GetVariable(uint8_t variable, [[maybe_unused]] uint32_t parameter, bool *available) const override;
 	uint32_t GetTriggers() const override;
 };
 
@@ -57,12 +57,12 @@ struct VehicleResolverObject : public ResolverObject {
 	VehicleScopeResolver parent_scope;   ///< Scope resolver for its parent vehicle.
 
 	VehicleScopeResolver relative_scope; ///< Scope resolver for an other vehicle in the chain.
-	byte cached_relative_count;          ///< Relative position of the other vehicle.
+	uint8_t cached_relative_count;          ///< Relative position of the other vehicle.
 
 	VehicleResolverObject(EngineID engine_type, const Vehicle *v, WagonOverride wagon_override, bool rotor_in_gui = false,
 			CallbackID callback = CBID_NO_CALLBACK, uint32_t callback_param1 = 0, uint32_t callback_param2 = 0);
 
-	ScopeResolver *GetScope(VarSpriteGroupScope scope = VSG_SCOPE_SELF, byte relative = 0) override;
+	ScopeResolver *GetScope(VarSpriteGroupScope scope = VSG_SCOPE_SELF, uint8_t relative = 0) override;
 
 	const SpriteGroup *ResolveReal(const RealSpriteGroup *group) const override;
 
@@ -78,7 +78,7 @@ struct VehicleSpriteSeq;
 
 void SetWagonOverrideSprites(EngineID engine, CargoID cargo, const struct SpriteGroup *group, EngineID *train_id, uint trains);
 const SpriteGroup *GetWagonOverrideSpriteSet(EngineID engine, CargoID cargo, EngineID overriding_engine);
-void SetCustomEngineSprites(EngineID engine, byte cargo, const struct SpriteGroup *group);
+void SetCustomEngineSprites(EngineID engine, uint8_t cargo, const struct SpriteGroup *group);
 
 void GetCustomEngineSprite(EngineID engine, const Vehicle *v, Direction direction, EngineImageType image_type, VehicleSpriteSeq *result);
 #define GetCustomVehicleSprite(v, direction, image_type, result) GetCustomEngineSprite(v->engine_type, v, direction, image_type, result)

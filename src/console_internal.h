@@ -30,7 +30,7 @@ enum ConsoleHookResult {
  * If you want to handle multiple words as one, enclose them in double-quotes
  * eg. 'say "hello everybody"'
  */
-typedef bool IConsoleCmdProc(byte argc, char *argv[]);
+typedef bool IConsoleCmdProc(uint8_t argc, char *argv[]);
 typedef ConsoleHookResult IConsoleHook(bool echo);
 struct IConsoleCmd {
 	IConsoleCmd(const std::string &name, IConsoleCmdProc *proc, IConsoleHook *hook) : name(name), proc(proc), hook(hook) {}

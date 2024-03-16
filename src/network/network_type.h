@@ -88,7 +88,7 @@ enum NetworkPasswordType {
  * Destination of our chat messages.
  * @warning The values of the enum items are part of the admin network API. Only append at the end.
  */
-enum DestType : byte {
+enum DestType : uint8_t {
 	DESTTYPE_BROADCAST, ///< Send message/notice to all clients (All)
 	DESTTYPE_TEAM,      ///< Send message/notice to everyone playing the same company (Team)
 	DESTTYPE_CLIENT,    ///< Send message/notice to only a certain client (Private)

@@ -19,7 +19,7 @@ struct MidiFile {
 	struct DataBlock {
 		uint32_t ticktime; ///< tick number since start of file this block should be triggered at
 		uint32_t realtime = 0; ///< real-time (microseconds) since start of file this block should be triggered at
-		std::vector<byte> data; ///< raw midi data contained in block
+		std::vector<uint8_t> data; ///< raw midi data contained in block
 		DataBlock(uint32_t _ticktime = 0) : ticktime(_ticktime) { }
 	};
 	struct TempoChange {
@@ -36,7 +36,7 @@ struct MidiFile {
 	~MidiFile();
 
 	bool LoadFile(const std::string &filename);
-	bool LoadMpsData(const byte *data, size_t length);
+	bool LoadMpsData(const uint8_t *data, size_t length);
 	bool LoadSong(const MusicSongInfo &song);
 	void MoveFrom(MidiFile &other);
 

@@ -147,10 +147,10 @@ Sprite *Blitter_8bppOptimized::Encode(const SpriteLoader::SpriteCollection &spri
 	/* Don't allocate memory each time, but just keep some
 	 * memory around as this function is called quite often
 	 * and the memory usage is quite low. */
-	static ReusableBuffer<byte> temp_buffer;
+	static ReusableBuffer<uint8_t> temp_buffer;
 	SpriteData *temp_dst = (SpriteData *)temp_buffer.Allocate(memory);
 	memset(temp_dst, 0, sizeof(*temp_dst));
-	byte *dst = temp_dst->data;
+	uint8_t *dst = temp_dst->data;
 
 	/* Make the sprites per zoom-level */
 	for (ZoomLevel i = zoom_min; i <= zoom_max; i++) {
@@ -166,7 +166,7 @@ Sprite *Blitter_8bppOptimized::Encode(const SpriteLoader::SpriteCollection &spri
 			uint trans = 0;
 			uint pixels = 0;
 			uint last_colour = 0;
-			byte *count_dst = nullptr;
+			uint8_t *count_dst = nullptr;
 
 			/* Store the scaled image */
 			const SpriteLoader::CommonPixel *src = &sprite[i].data[y * sprite[i].width];
@@ -213,7 +213,7 @@ Sprite *Blitter_8bppOptimized::Encode(const SpriteLoader::SpriteCollection &spri
 		}
 	}
 
-	uint size = dst - (byte *)temp_dst;
+	uint size = dst - (uint8_t *)temp_dst;
 
 	/* Safety check, to make sure we guessed the size correctly */
 	assert(size < memory);

@@ -32,7 +32,7 @@ public:
 
 	bool IsSongPlaying() override;
 
-	void SetVolume(byte vol) override;
+	void SetVolume(uint8_t vol) override;
 	const char *GetName() const override { return "extmidi"; }
 };
 

@@ -166,7 +166,7 @@ void Packet::Send_string(const std::string_view data)
  * Copy a sized byte buffer into the packet.
  * @param data The data to send.
  */
-void Packet::Send_buffer(const std::vector<byte> &data)
+void Packet::Send_buffer(const std::vector<uint8_t> &data)
 {
 	assert(this->CanWriteToPacket(sizeof(uint16_t) + data.size()));
 	this->Send_uint16((uint16_t)data.size());
@@ -180,7 +180,7 @@ void Packet::Send_buffer(const std::vector<byte> &data)
  * @param span The span describing the range of bytes to send.
  * @return The span of bytes that were not written.
  */
-std::span<const byte> Packet::Send_bytes(const std::span<const byte> span)
+std::span<const uint8_t> Packet::Send_bytes(const std::span<const uint8_t> span)
 {
 	size_t amount = std::min<size_t>(span.size(), this->limit - this->Size());
 	this->buffer.insert(this->buffer.end(), span.data(), span.data() + amount);
@@ -356,12 +356,12 @@ uint64_t Packet::Recv_uint64()
  * Extract a sized byte buffer from the packet.
  * @return The extracted buffer.
  */
-std::vector<byte> Packet::Recv_buffer()
+std::vector<uint8_t> Packet::Recv_buffer()
 {
 	uint16_t size = this->Recv_uint16();
 	if (size == 0 || !this->CanReadFromPacket(size, true)) return {};
 
-	std::vector<byte> data;
+	std::vector<uint8_t> data;
 	while (size-- > 0) {
 		data.push_back(this->buffer[this->pos++]);
 	}
@@ -374,9 +374,9 @@ std::vector<byte> Packet::Recv_buffer()
  * @param span The span to write the bytes to.
  * @return The number of bytes that were actually read.
  */
-size_t Packet::Recv_bytes(std::span<byte> span)
+size_t Packet::Recv_bytes(std::span<uint8_t> span)
 {
-	auto tranfer_to_span = [](std::span<byte> destination, const char *source, size_t amount) {
+	auto tranfer_to_span = [](std::span<uint8_t> destination, const char *source, size_t amount) {
 		size_t to_copy = std::min(amount, destination.size());
 		std::copy(source, source + to_copy, destination.data());
 		return to_copy;

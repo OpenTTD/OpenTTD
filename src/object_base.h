@@ -25,8 +25,8 @@ struct Object : ObjectPool::PoolItem<&_object_pool> {
 	Town *town;         ///< Town the object is built in
 	TileArea location;  ///< Location of the object
 	TimerGameCalendar::Date build_date; ///< Date of construction
-	byte colour;        ///< Colour of the object, for display purpose
-	byte view;          ///< The view setting for this object
+	uint8_t colour;        ///< Colour of the object, for display purpose
+	uint8_t view;          ///< The view setting for this object
 
 	/** Make sure the object isn't zeroed. */
 	Object() {}

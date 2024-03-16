@@ -245,9 +245,9 @@ static void BulldozerInit(EffectVehicle *v)
 }
 
 struct BulldozerMovement {
-	byte direction:2;
-	byte image:2;
-	byte duration:3;
+	uint8_t direction:2;
+	uint8_t image:2;
+	uint8_t duration:3;
 };
 
 static const BulldozerMovement _bulldozer_movement[] = {
@@ -320,7 +320,7 @@ struct BubbleMovement {
 	int8_t x:4;
 	int8_t y:4;
 	int8_t z:4;
-	byte image:4;
+	uint8_t image:4;
 };
 
 #define MK(x, y, z, i) { x, y, z, i }

@@ -194,8 +194,8 @@ static bool IsOpenGLExtensionSupported(const char *extension)
 	return false;
 }
 
-static byte _gl_major_ver = 0; ///< Major OpenGL version.
-static byte _gl_minor_ver = 0; ///< Minor OpenGL version.
+static uint8_t _gl_major_ver = 0; ///< Major OpenGL version.
+static uint8_t _gl_minor_ver = 0; ///< Minor OpenGL version.
 
 /**
  * Check if the current OpenGL version is equal or higher than a given one.
@@ -204,7 +204,7 @@ static byte _gl_minor_ver = 0; ///< Minor OpenGL version.
  * @pre OpenGL was initialized.
  * @return True if the OpenGL version is equal or higher than the requested one.
  */
-bool IsOpenGLVersionAtLeast(byte major, byte minor)
+bool IsOpenGLVersionAtLeast(uint8_t major, uint8_t minor)
 {
 	return (_gl_major_ver > major) || (_gl_major_ver == major && _gl_minor_ver >= minor);
 }
@@ -944,10 +944,10 @@ bool OpenGLBackend::Resize(int w, int h, bool force)
 		}
 	} else if (bpp == 8) {
 		if (_glClearBufferSubData != nullptr) {
-			byte b = 0;
+			uint8_t b = 0;
 			_glClearBufferSubData(GL_PIXEL_UNPACK_BUFFER, GL_R8, 0, line_pixel_count, GL_RED, GL_UNSIGNED_BYTE, &b);
 		} else {
-			ClearPixelBuffer<byte>(line_pixel_count, 0);
+			ClearPixelBuffer<uint8_t>(line_pixel_count, 0);
 		}
 	}
 
@@ -975,10 +975,10 @@ bool OpenGLBackend::Resize(int w, int h, bool force)
 
 		/* Initialize buffer as 0 == no remap. */
 		if (_glClearBufferSubData != nullptr) {
-			byte b = 0;
+			uint8_t b = 0;
 			_glClearBufferSubData(GL_PIXEL_UNPACK_BUFFER, GL_R8, 0, line_pixel_count, GL_RED, GL_UNSIGNED_BYTE, &b);
 		} else {
-			ClearPixelBuffer<byte>(line_pixel_count, 0);
+			ClearPixelBuffer<uint8_t>(line_pixel_count, 0);
 		}
 
 		_glBindTexture(GL_TEXTURE_2D, this->anim_texture);

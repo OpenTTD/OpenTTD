@@ -213,8 +213,8 @@ void DoPaletteAnimations()
 
 	/* Radio tower blinking */
 	{
-		byte i = (palette_animation_counter >> 1) & 0x7F;
-		byte v;
+		uint8_t i = (palette_animation_counter >> 1) & 0x7F;
+		uint8_t v;
 
 		if (i < 0x3f) {
 			v = 255;
@@ -300,7 +300,7 @@ TextColour GetContrastColour(uint8_t background, uint8_t threshold)
  */
 struct ColourGradients
 {
-	using ColourGradient = std::array<byte, SHADE_END>;
+	using ColourGradient = std::array<uint8_t, SHADE_END>;
 
 	static inline std::array<ColourGradient, COLOUR_END> gradient{};
 };
@@ -311,7 +311,7 @@ struct ColourGradients
  * @param shade Shade level from 1 to 7.
  * @returns palette index of colour.
  */
-byte GetColourGradient(Colours colour, ColourShade shade)
+uint8_t GetColourGradient(Colours colour, ColourShade shade)
 {
 	return ColourGradients::gradient[colour % COLOUR_END][shade % SHADE_END];
 }
@@ -322,7 +322,7 @@ byte GetColourGradient(Colours colour, ColourShade shade)
  * @param shade Shade level from 1 to 7.
  * @param palette_index Palette index to set.
  */
-void SetColourGradient(Colours colour, ColourShade shade, byte palette_index)
+void SetColourGradient(Colours colour, ColourShade shade, uint8_t palette_index)
 {
 	assert(colour < COLOUR_END);
 	assert(shade < SHADE_END);

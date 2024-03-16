@@ -56,9 +56,9 @@ bool VideoDriver_Win32Base::ClaimMousePointer()
 }
 
 struct Win32VkMapping {
-	byte vk_from;
-	byte vk_count;
-	byte map_to;
+	uint8_t vk_from;
+	uint8_t vk_count;
+	uint8_t map_to;
 };
 
 #define AS(x, z) {x, 0, z}

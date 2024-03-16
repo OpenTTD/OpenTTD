@@ -18,28 +18,28 @@ static const SpriteID _landscape_clear_sprites_rough[8] = {
 	SPR_FLAT_ROUGH_LAND_2,
 };
 
-static const byte _fence_mod_by_tileh_sw[32] = {
+static const uint8_t _fence_mod_by_tileh_sw[32] = {
 	0, 2, 4, 0, 0, 2, 4, 0,
 	0, 2, 4, 0, 0, 2, 4, 0,
 	0, 2, 4, 0, 0, 2, 4, 4,
 	0, 2, 4, 2, 0, 2, 4, 0,
 };
 
-static const byte _fence_mod_by_tileh_se[32] = {
+static const uint8_t _fence_mod_by_tileh_se[32] = {
 	1, 1, 5, 5, 3, 3, 1, 1,
 	1, 1, 5, 5, 3, 3, 1, 1,
 	1, 1, 5, 5, 3, 3, 1, 5,
 	1, 1, 5, 5, 3, 3, 3, 1,
 };
 
-static const byte _fence_mod_by_tileh_ne[32] = {
+static const uint8_t _fence_mod_by_tileh_ne[32] = {
 	0, 0, 0, 0, 4, 4, 4, 4,
 	2, 2, 2, 2, 0, 0, 0, 0,
 	0, 0, 0, 0, 4, 4, 4, 4,
 	2, 2, 2, 2, 0, 2, 4, 0,
 };
 
-static const byte _fence_mod_by_tileh_nw[32] = {
+static const uint8_t _fence_mod_by_tileh_nw[32] = {
 	1, 5, 1, 5, 1, 5, 1, 5,
 	3, 1, 3, 1, 3, 1, 3, 1,
 	1, 5, 1, 5, 1, 5, 1, 5,

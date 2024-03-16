@@ -41,11 +41,11 @@
 
 static AirportClassID _selected_airport_class; ///< the currently visible airport class
 static int _selected_airport_index;            ///< the index of the selected airport in the current class or -1
-static byte _selected_airport_layout;          ///< selected airport layout number.
+static uint8_t _selected_airport_layout;          ///< selected airport layout number.
 
 static void ShowBuildAirportPicker(Window *parent);
 
-SpriteID GetCustomAirportSprite(const AirportSpec *as, byte layout);
+SpriteID GetCustomAirportSprite(const AirportSpec *as, uint8_t layout);
 
 void CcBuildAirport(Commands, const CommandCost &result, TileIndex tile)
 {
@@ -63,8 +63,8 @@ static void PlaceAirport(TileIndex tile)
 {
 	if (_selected_airport_index == -1) return;
 
-	byte airport_type = AirportClass::Get(_selected_airport_class)->GetSpec(_selected_airport_index)->GetIndex();
-	byte layout = _selected_airport_layout;
+	uint8_t airport_type = AirportClass::Get(_selected_airport_class)->GetSpec(_selected_airport_index)->GetIndex();
+	uint8_t layout = _selected_airport_layout;
 	bool adjacent = _ctrl_pressed;
 
 	auto proc = [=](bool test, StationID to_join) -> bool {
@@ -347,7 +347,7 @@ public:
 				for (int i = 0; i < NUM_AIRPORTS; i++) {
 					const AirportSpec *as = AirportSpec::Get(i);
 					if (!as->enabled) continue;
-					for (byte layout = 0; layout < as->num_table; layout++) {
+					for (uint8_t layout = 0; layout < as->num_table; layout++) {
 						SpriteID sprite = GetCustomAirportSprite(as, layout);
 						if (sprite != 0) {
 							Dimension d = GetSpriteSize(sprite);
@@ -363,7 +363,7 @@ public:
 				for (int i = NEW_AIRPORT_OFFSET; i < NUM_AIRPORTS; i++) {
 					const AirportSpec *as = AirportSpec::Get(i);
 					if (!as->enabled) continue;
-					for (byte layout = 0; layout < as->num_table; layout++) {
+					for (uint8_t layout = 0; layout < as->num_table; layout++) {
 						StringID string = GetAirportTextCallback(as, layout, CBID_AIRPORT_ADDITIONAL_TEXT);
 						if (string == STR_UNDEFINED) continue;
 

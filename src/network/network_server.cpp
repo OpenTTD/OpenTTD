@@ -136,7 +136,7 @@ struct PacketWriter : SaveFilter {
 		return false;
 	}
 
-	void Write(byte *buf, size_t size) override
+	void Write(uint8_t *buf, size_t size) override
 	{
 		std::lock_guard<std::mutex> lock(this->mutex);
 
@@ -145,7 +145,7 @@ struct PacketWriter : SaveFilter {
 
 		if (this->current == nullptr) this->current = std::make_unique<Packet>(this->cs, PACKET_SERVER_MAP_DATA, TCP_MTU);
 
-		std::span<const byte> to_write(buf, size);
+		std::span<const uint8_t> to_write(buf, size);
 		while (!to_write.empty()) {
 			to_write = this->current->Send_bytes(to_write);
 
@@ -267,7 +267,7 @@ NetworkRecvStatus ServerNetworkGameSocketHandler::CloseConnection(NetworkRecvSta
 
 	/* We just lost one client :( */
 	if (this->status >= STATUS_AUTHORIZED) _network_game_info.clients_on--;
-	extern byte _network_clients_connected;
+	extern uint8_t _network_clients_connected;
 	_network_clients_connected--;
 
 	this->SendPackets(true);
@@ -285,7 +285,7 @@ NetworkRecvStatus ServerNetworkGameSocketHandler::CloseConnection(NetworkRecvSta
  */
 /* static */ bool ServerNetworkGameSocketHandler::AllowConnection()
 {
-	extern byte _network_clients_connected;
+	extern uint8_t _network_clients_connected;
 	bool accept = _network_clients_connected < MAX_CLIENTS;
 
 	/* We can't go over the MAX_CLIENTS limit here. However, the
@@ -1505,7 +1505,7 @@ void NetworkPopulateCompanyStats(NetworkCompanyStats *stats)
 	/* Go through all vehicles and count the type of vehicles */
 	for (const Vehicle *v : Vehicle::Iterate()) {
 		if (!Company::IsValidID(v->owner) || !v->IsPrimaryVehicle()) continue;
-		byte type = 0;
+		uint8_t type = 0;
 		switch (v->type) {
 			case VEH_TRAIN: type = NETWORK_VEH_TRAIN; break;
 			case VEH_ROAD: type = RoadVehicle::From(v)->IsBus() ? NETWORK_VEH_BUS : NETWORK_VEH_LORRY; break;

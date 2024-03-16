@@ -46,7 +46,7 @@ inline void MemMoveT(T *destination, const T *source, size_t num = 1)
  * @param num number of items to be set (!not number of bytes!)
  */
 template <typename T>
-inline void MemSetT(T *ptr, byte value, size_t num = 1)
+inline void MemSetT(T *ptr, uint8_t value, size_t num = 1)
 {
 	memset(ptr, value, num * sizeof(T));
 }

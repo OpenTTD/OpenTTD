@@ -22,7 +22,7 @@
  */
 uint32_t VehicleListIdentifier::Pack() const
 {
-	byte c = this->company == OWNER_NONE ? 0xF : (byte)this->company;
+	uint8_t c = this->company == OWNER_NONE ? 0xF : (uint8_t)this->company;
 	assert(c             < (1 <<  4));
 	assert(this->vtype   < (1 <<  2));
 	assert(this->index   < (1 << 20));
@@ -39,7 +39,7 @@ uint32_t VehicleListIdentifier::Pack() const
  */
 bool VehicleListIdentifier::UnpackIfValid(uint32_t data)
 {
-	byte c        = GB(data, 28, 4);
+	uint8_t c        = GB(data, 28, 4);
 	this->company = c == 0xF ? OWNER_NONE : (CompanyID)c;
 	this->type    = (VehicleListType)GB(data, 23, 3);
 	this->vtype   = (VehicleType)GB(data, 26, 2);

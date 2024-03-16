@@ -17,7 +17,7 @@ class ClientNetworkGameSocketHandler : public ZeroedMemoryAllocator, public Netw
 private:
 	std::string connection_string; ///< Address we are connected to.
 	std::shared_ptr<struct PacketReader> savegame; ///< Packet reader for reading the savegame.
-	byte token;                    ///< The token we need to send back to the server to prove we're the right client.
+	uint8_t token;                    ///< The token we need to send back to the server to prove we're the right client.
 
 	/** Status of the connection with the server. */
 	enum ServerStatus {

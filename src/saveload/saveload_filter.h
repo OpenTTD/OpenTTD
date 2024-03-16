@@ -34,7 +34,7 @@ struct LoadFilter {
 	 * @param len The number of bytes to read.
 	 * @return The number of actually read bytes.
 	 */
-	virtual size_t Read(byte *buf, size_t len) = 0;
+	virtual size_t Read(uint8_t *buf, size_t len) = 0;
 
 	/**
 	 * Reset this filter to read from the beginning of the file.
@@ -78,7 +78,7 @@ struct SaveFilter {
 	 * @param buf The bytes to write.
 	 * @param len The number of bytes to write.
 	 */
-	virtual void Write(byte *buf, size_t len) = 0;
+	virtual void Write(uint8_t *buf, size_t len) = 0;
 
 	/**
 	 * Prepare everything to finish writing the savegame.
@@ -95,7 +95,7 @@ struct SaveFilter {
  * @param compression_level The requested level of compression.
  * @tparam T                The type of save filter to create.
  */
-template <typename T> std::shared_ptr<SaveFilter> CreateSaveFilter(std::shared_ptr<SaveFilter> chain, byte compression_level)
+template <typename T> std::shared_ptr<SaveFilter> CreateSaveFilter(std::shared_ptr<SaveFilter> chain, uint8_t compression_level)
 {
 	return std::make_shared<T>(chain, compression_level);
 }

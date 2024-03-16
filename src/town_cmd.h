@@ -14,7 +14,7 @@
 #include "company_type.h"
 #include "town_type.h"
 
-enum TownAcceptanceEffect : byte;
+enum TownAcceptanceEffect : uint8_t;
 
 std::tuple<CommandCost, Money, TownID> CmdFoundTown(DoCommandFlag flags, TileIndex tile, TownSize size, bool city, TownLayout layout, bool random_location, uint32_t townnameparts, const std::string &text);
 CommandCost CmdRenameTown(DoCommandFlag flags, TownID town_id, const std::string &text);

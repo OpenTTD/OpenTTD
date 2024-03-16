@@ -178,7 +178,7 @@ bool StoryPageButtonData::ValidateColour() const
 
 bool StoryPageButtonData::ValidateFlags() const
 {
-	byte flags = GB(this->referenced_id, 24, 8);
+	uint8_t flags = GB(this->referenced_id, 24, 8);
 	/* Don't allow float left and right together */
 	if ((flags & SPBF_FLOAT_LEFT) && (flags & SPBF_FLOAT_RIGHT)) return false;
 	/* Don't allow undefined flags */
@@ -195,7 +195,7 @@ bool StoryPageButtonData::ValidateCursor() const
 /** Verity that the data stored a valid VehicleType value */
 bool StoryPageButtonData::ValidateVehicleType() const
 {
-	byte vehtype = GB(this->referenced_id, 16, 8);
+	uint8_t vehtype = GB(this->referenced_id, 16, 8);
 	return vehtype == VEH_INVALID || vehtype < VEH_COMPANY_END;
 }
 

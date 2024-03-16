@@ -13,14 +13,14 @@
 #include "core/enum_type.hpp"
 
 /** Variant of the signal, i.e. how does the signal look? */
-enum SignalVariant : byte {
+enum SignalVariant : uint8_t {
 	SIG_ELECTRIC  = 0, ///< Light signal
 	SIG_SEMAPHORE = 1, ///< Old-fashioned semaphore signal
 };
 
 
 /** Type of signal, i.e. how does the signal behave? */
-enum SignalType : byte {
+enum SignalType : uint8_t {
 	SIGTYPE_BLOCK      = 0, ///< block signal
 	SIGTYPE_ENTRY      = 1, ///< presignal block entry
 	SIGTYPE_EXIT       = 2, ///< presignal block exit

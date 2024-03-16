@@ -18,7 +18,7 @@ typedef uint32_t VehicleID;
 static const int GROUND_ACCELERATION = 9800; ///< Acceleration due to gravity, 9.8 m/s^2
 
 /** Available vehicle types. It needs to be 8bits, because we save and load it as such */
-enum VehicleType : byte {
+enum VehicleType : uint8_t {
 	VEH_BEGIN,
 
 	VEH_TRAIN = VEH_BEGIN,        ///< %Train vehicle type.
@@ -61,7 +61,7 @@ enum VehiclePathFinders {
 };
 
 /** Flags for goto depot commands. */
-enum class DepotCommand : byte {
+enum class DepotCommand : uint8_t {
 	None         = 0,         ///< No special flags.
 	Service      = (1U << 0), ///< The vehicle will leave the depot right after arrival (service only)
 	MassSend     = (1U << 1), ///< Tells that it's a mass send to depot command (type in VLW flag)

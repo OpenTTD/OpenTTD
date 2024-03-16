@@ -24,7 +24,7 @@ static const RailTypeLabel RAILTYPE_LABEL_MAGLEV   = 'MGLV';
  *
  * This enumeration defines all 4 possible railtypes.
  */
-enum RailType : byte {
+enum RailType : uint8_t {
 	RAILTYPE_BEGIN    = 0,          ///< Used for iterations
 	RAILTYPE_RAIL     = 0,          ///< Standard non-electric rails
 	RAILTYPE_ELECTRIC = 1,          ///< Electric rails

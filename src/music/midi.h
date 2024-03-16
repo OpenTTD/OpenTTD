@@ -152,6 +152,6 @@ enum class MidiSysexMessage {
 	RolandSetReverb,
 };
 
-const byte *MidiGetStandardSysexMessage(MidiSysexMessage msg, size_t &length);
+const uint8_t *MidiGetStandardSysexMessage(MidiSysexMessage msg, size_t &length);
 
 #endif /* MUSIC_MIDI_H */

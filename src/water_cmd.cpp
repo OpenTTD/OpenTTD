@@ -892,7 +892,7 @@ void DrawShoreTile(Slope tileh)
 {
 	/* Converts the enum Slope into an offset based on SPR_SHORE_BASE.
 	 * This allows to calculate the proper sprite to display for this Slope */
-	static const byte tileh_to_shoresprite[32] = {
+	static const uint8_t tileh_to_shoresprite[32] = {
 		0, 1, 2, 3, 4, 16, 6, 7, 8, 9, 17, 11, 12, 13, 14, 0,
 		0, 0, 0, 0, 0,  0, 0, 0, 0, 0,  0,  5,  0, 10, 15, 0,
 	};

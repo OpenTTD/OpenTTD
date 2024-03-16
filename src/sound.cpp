@@ -194,10 +194,10 @@ static void StartSound(SoundID sound_id, float pan, uint volume)
 }
 
 
-static const byte _vol_factor_by_zoom[] = {255, 255, 255, 190, 134, 87};
+static const uint8_t _vol_factor_by_zoom[] = {255, 255, 255, 190, 134, 87};
 static_assert(lengthof(_vol_factor_by_zoom) == ZOOM_LVL_END);
 
-static const byte _sound_base_vol[] = {
+static const uint8_t _sound_base_vol[] = {
 	128,  90, 128, 128, 128, 128, 128, 128,
 	128,  90,  90, 128, 128, 128, 128, 128,
 	128, 128, 128,  80, 128, 128, 128, 128,
@@ -210,7 +210,7 @@ static const byte _sound_base_vol[] = {
 	 90,
 };
 
-static const byte _sound_idx[] = {
+static const uint8_t _sound_idx[] = {
 	 2,  3,  4,  5,  6,  7,  8,  9,
 	10, 11, 12, 13, 14, 15, 16, 17,
 	18, 19, 20, 21, 22, 23, 24, 25,

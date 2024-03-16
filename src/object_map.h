@@ -56,7 +56,7 @@ inline ObjectID GetObjectIndex(Tile t)
  * @pre IsTileType(t, MP_OBJECT)
  * @return The random bits.
  */
-inline byte GetObjectRandomBits(Tile t)
+inline uint8_t GetObjectRandomBits(Tile t)
 {
 	assert(IsTileType(t, MP_OBJECT));
 	return t.m3();
@@ -71,7 +71,7 @@ inline byte GetObjectRandomBits(Tile t)
  * @param wc     Water class for this object.
  * @param random Random data to store on the tile
  */
-inline void MakeObject(Tile t, Owner o, ObjectID index, WaterClass wc, byte random)
+inline void MakeObject(Tile t, Owner o, ObjectID index, WaterClass wc, uint8_t random)
 {
 	SetTileType(t, MP_OBJECT);
 	SetTileOwner(t, o);

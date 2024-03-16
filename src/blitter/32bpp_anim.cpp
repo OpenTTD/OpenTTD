@@ -34,23 +34,23 @@ inline void Blitter_32bppAnim::Draw(const Blitter::BlitterParams *bp, ZoomLevel 
 	const uint16_t *src_n  = (const uint16_t *)(src->data + src->offset[zoom][1]);
 
 	for (uint i = bp->skip_top; i != 0; i--) {
-		src_px = (const Colour *)((const byte *)src_px + *(const uint32_t *)src_px);
-		src_n  = (const uint16_t *)((const byte *)src_n  + *(const uint32_t *)src_n);
+		src_px = (const Colour *)((const uint8_t *)src_px + *(const uint32_t *)src_px);
+		src_n  = (const uint16_t *)((const uint8_t *)src_n  + *(const uint32_t *)src_n);
 	}
 
 	Colour *dst = (Colour *)bp->dst + bp->top * bp->pitch + bp->left;
 	uint16_t *anim = this->anim_buf + this->ScreenToAnimOffset((uint32_t *)bp->dst) + bp->top * this->anim_buf_pitch + bp->left;
 
-	const byte *remap = bp->remap; // store so we don't have to access it via bp every time
+	const uint8_t *remap = bp->remap; // store so we don't have to access it via bp every time
 
 	for (int y = 0; y < bp->height; y++) {
 		Colour *dst_ln = dst + bp->pitch;
 		uint16_t *anim_ln = anim + this->anim_buf_pitch;
 
-		const Colour *src_px_ln = (const Colour *)((const byte *)src_px + *(const uint32_t *)src_px);
+		const Colour *src_px_ln = (const Colour *)((const uint8_t *)src_px + *(const uint32_t *)src_px);
 		src_px++;
 
-		const uint16_t *src_n_ln = (const uint16_t *)((const byte *)src_n + *(const uint32_t *)src_n);
+		const uint16_t *src_n_ln = (const uint16_t *)((const uint8_t *)src_n + *(const uint32_t *)src_n);
 		src_n += 2;
 
 		Colour *dst_end = dst + bp->skip_left;

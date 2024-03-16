@@ -154,7 +154,7 @@ public:
 	/**
 	 * Colour on mini-map
 	 */
-	byte map_colour;
+	uint8_t map_colour;
 
 	/**
 	 * Introduction date.
@@ -179,7 +179,7 @@ public:
 	/**
 	 * The sorting order of this roadtype for the toolbar dropdown.
 	 */
-	byte sorting_order;
+	uint8_t sorting_order;
 
 	/**
 	 * NewGRF providing the Action3 for the roadtype. nullptr if not available.

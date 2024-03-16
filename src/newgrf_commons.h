@@ -293,7 +293,7 @@ extern AirportTileOverrideManager _airporttile_mngr;
 extern ObjectOverrideManager _object_mngr;
 
 uint32_t GetTerrainType(TileIndex tile, TileContext context = TCX_NORMAL);
-TileIndex GetNearbyTile(byte parameter, TileIndex tile, bool signed_offsets = true, Axis axis = INVALID_AXIS);
+TileIndex GetNearbyTile(uint8_t parameter, TileIndex tile, bool signed_offsets = true, Axis axis = INVALID_AXIS);
 uint32_t GetNearbyTileInformation(TileIndex tile, bool grf_version8);
 uint32_t GetCompanyInfo(CompanyID owner, const struct Livery *l = nullptr);
 CommandCost GetErrorMessageFromLocationCallbackResult(uint16_t cb_res, const GRFFile *grffile, StringID default_error);

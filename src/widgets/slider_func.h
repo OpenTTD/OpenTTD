@@ -16,7 +16,7 @@
 void DrawSliderWidget(Rect r, int min_value, int max_value, int value, const std::map<int, StringID> &labels);
 bool ClickSliderWidget(Rect r, Point pt, int min_value, int max_value, int &value);
 
-inline bool ClickSliderWidget(Rect r, Point pt, int min_value, int max_value, byte &value)
+inline bool ClickSliderWidget(Rect r, Point pt, int min_value, int max_value, uint8_t &value)
 {
 	int tmp_value = value;
 	if (!ClickSliderWidget(r, pt, min_value, max_value, tmp_value)) return false;

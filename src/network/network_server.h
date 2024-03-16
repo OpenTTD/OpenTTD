@@ -62,8 +62,8 @@ public:
 		STATUS_END,           ///< Must ALWAYS be on the end of this list!! (period).
 	};
 
-	byte lag_test;               ///< Byte used for lag-testing the client
-	byte last_token;             ///< The last random token we did send to verify the client is listening
+	uint8_t lag_test;               ///< Byte used for lag-testing the client
+	uint8_t last_token;             ///< The last random token we did send to verify the client is listening
 	uint32_t last_token_frame;     ///< The last frame we received the right token
 	ClientStatus status;         ///< Status of this client
 	CommandQueue outgoing_queue; ///< The command-queue awaiting delivery; conceptually more a bucket to gather commands in, after which the whole bucket is sent to the client.

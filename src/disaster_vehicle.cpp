@@ -925,11 +925,11 @@ static const Disaster _disasters[] = {
 
 static void DoDisaster()
 {
-	byte buf[lengthof(_disasters)];
+	uint8_t buf[lengthof(_disasters)];
 
-	byte j = 0;
+	uint8_t j = 0;
 	for (size_t i = 0; i != lengthof(_disasters); i++) {
-		if (TimerGameCalendar::year >= _disasters[i].min_year && TimerGameCalendar::year < _disasters[i].max_year) buf[j++] = (byte)i;
+		if (TimerGameCalendar::year >= _disasters[i].min_year && TimerGameCalendar::year < _disasters[i].max_year) buf[j++] = (uint8_t)i;
 	}
 
 	if (j == 0) return;

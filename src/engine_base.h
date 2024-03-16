@@ -23,7 +23,7 @@ struct WagonOverride {
 };
 
 /** Flags used client-side in the purchase/autorenew engine list. */
-enum class EngineDisplayFlags : byte {
+enum class EngineDisplayFlags : uint8_t {
 	None        = 0,         ///< No flag set.
 	HasVariants = (1U << 0), ///< Set if engine has variants.
 	IsFolded    = (1U << 1), ///< Set if display of variants should be folded (hidden).
@@ -46,10 +46,10 @@ struct Engine : EnginePool::PoolItem<&_engine_pool> {
 	uint16_t duration_phase_1;    ///< First reliability phase in months, increasing reliability from #reliability_start to #reliability_max.
 	uint16_t duration_phase_2;    ///< Second reliability phase in months, keeping #reliability_max.
 	uint16_t duration_phase_3;    ///< Third reliability phase in months, decaying to #reliability_final.
-	byte flags;                 ///< Flags of the engine. @see EngineFlags
+	uint8_t flags;                 ///< Flags of the engine. @see EngineFlags
 	CompanyMask preview_asked;  ///< Bit for each company which has already been offered a preview.
 	CompanyID preview_company;  ///< Company which is currently being offered a preview \c INVALID_COMPANY means no company.
-	byte preview_wait;          ///< Daily countdown timer for timeout of offering the engine to the #preview_company company.
+	uint8_t preview_wait;          ///< Daily countdown timer for timeout of offering the engine to the #preview_company company.
 	CompanyMask company_avail;  ///< Bit for each company whether the engine is available for that company.
 	CompanyMask company_hidden; ///< Bit for each company whether the engine is normally hidden in the build gui for that company.
 	uint8_t original_image_index; ///< Original vehicle image index, thus the image index of the overridden vehicle

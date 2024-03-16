@@ -30,9 +30,9 @@
 
 #include "safeguards.h"
 
-byte _dirkeys;        ///< 1 = left, 2 = up, 4 = right, 8 = down
+uint8_t _dirkeys;        ///< 1 = left, 2 = up, 4 = right, 8 = down
 bool _fullscreen;
-byte _support8bpp;
+uint8_t _support8bpp;
 CursorVars _cursor;
 bool _ctrl_pressed;   ///< Is Ctrl pressed?
 bool _shift_pressed;  ///< Is Shift pressed?
@@ -49,7 +49,7 @@ SwitchMode _switch_mode;  ///< The next mainloop command.
 PauseMode _pause_mode;
 GameSessionStats _game_session_stats; ///< Statistics about the current session.
 
-static byte _stringwidth_table[FS_END][224]; ///< Cache containing width of often used characters. @see GetCharacterWidth()
+static uint8_t _stringwidth_table[FS_END][224]; ///< Cache containing width of often used characters. @see GetCharacterWidth()
 DrawPixelInfo *_cur_dpi;
 
 static void GfxMainBlitterViewport(const Sprite *sprite, int x, int y, BlitterMode mode, const SubSprite *sub = nullptr, SpriteID sprite_id = SPR_CURSOR_MOUSE);
@@ -70,14 +70,14 @@ int _gui_scale_cfg;                         ///< GUI scale in config.
  * @ingroup dirty
  */
 static Rect _invalid_rect;
-static const byte *_colour_remap_ptr;
-static byte _string_colourremap[3]; ///< Recoloursprite for stringdrawing. The grf loader ensures that #SpriteType::Font sprites only use colours 0 to 2.
+static const uint8_t *_colour_remap_ptr;
+static uint8_t _string_colourremap[3]; ///< Recoloursprite for stringdrawing. The grf loader ensures that #SpriteType::Font sprites only use colours 0 to 2.
 
 static const uint DIRTY_BLOCK_HEIGHT   = 8;
 static const uint DIRTY_BLOCK_WIDTH    = 64;
 
 static uint _dirty_bytes_per_line = 0;
-static byte *_dirty_blocks = nullptr;
+static uint8_t *_dirty_blocks = nullptr;
 extern uint _dirty_block_colour;
 
 void GfxScroll(int left, int top, int width, int height, int xo, int yo)
@@ -147,7 +147,7 @@ void GfxFillRect(int left, int top, int right, int bottom, int colour, FillRectM
 			break;
 
 		case FILLRECT_CHECKER: {
-			byte bo = (oleft - left + dpi->left + otop - top + dpi->top) & 1;
+			uint8_t bo = (oleft - left + dpi->left + otop - top + dpi->top) & 1;
 			do {
 				for (int i = (bo ^= 1); i < right; i += 2) blitter->SetPixel(dst, i, 0, (uint8_t)colour);
 				dst = blitter->MoveTo(dst, 0, 1);
@@ -431,7 +431,7 @@ void DrawBox(int x, int y, int dx1, int dy1, int dx2, int dy2, int dx3, int dy3)
 	 *            ....V.
 	 */
 
-	static const byte colour = PC_WHITE;
+	static const uint8_t colour = PC_WHITE;
 
 	GfxDrawLineUnscaled(x, y, x + dx1, y + dy1, colour);
 	GfxDrawLineUnscaled(x, y, x + dx2, y + dy2, colour);
@@ -474,7 +474,7 @@ static void SetColourRemap(TextColour colour)
 	bool raw_colour = (colour & TC_IS_PALETTE_COLOUR) != 0;
 	colour &= ~(TC_NO_SHADE | TC_IS_PALETTE_COLOUR | TC_FORCED);
 
-	_string_colourremap[1] = raw_colour ? (byte)colour : _string_colourmap[colour];
+	_string_colourremap[1] = raw_colour ? (uint8_t)colour : _string_colourmap[colour];
 	_string_colourremap[2] = no_shade ? 0 : 1;
 	_colour_remap_ptr = _string_colourremap;
 }
@@ -1185,9 +1185,9 @@ std::unique_ptr<uint32_t[]> DrawSpriteToRgbaBuffer(SpriteID spriteId, ZoomLevel 
 	dim_size = static_cast<size_t>(dim.width) * dim.height;
 
 	/* If the current blitter is a paletted blitter, we have to render to an extra buffer and resolve the palette later. */
-	std::unique_ptr<byte[]> pal_buffer{};
+	std::unique_ptr<uint8_t[]> pal_buffer{};
 	if (blitter->GetScreenDepth() == 8) {
-		pal_buffer = std::make_unique<byte[]>(dim_size);
+		pal_buffer = std::make_unique<uint8_t[]>(dim_size);
 		dpi.dst_ptr = pal_buffer.get();
 	}
 
@@ -1199,7 +1199,7 @@ std::unique_ptr<uint32_t[]> DrawSpriteToRgbaBuffer(SpriteID spriteId, ZoomLevel 
 	if (blitter->GetScreenDepth() == 8) {
 		/* Resolve palette. */
 		uint32_t *dst = result.get();
-		const byte *src = pal_buffer.get();
+		const uint8_t *src = pal_buffer.get();
 		for (size_t i = 0; i < dim_size; ++i) {
 			*dst++ = _cur_palette.palette[*src++].data;
 		}
@@ -1239,7 +1239,7 @@ void LoadStringWidthTable(bool monospace)
  * @param key   Character code glyph
  * @return Width of the character glyph
  */
-byte GetCharacterWidth(FontSize size, char32_t key)
+uint8_t GetCharacterWidth(FontSize size, char32_t key)
 {
 	/* Use _stringwidth_table cache if possible */
 	if (key >= 32 && key < 256) return _stringwidth_table[size][key - 32];
@@ -1252,9 +1252,9 @@ byte GetCharacterWidth(FontSize size, char32_t key)
  * @param size  Font of the digit
  * @return Width of the digit.
  */
-byte GetDigitWidth(FontSize size)
+uint8_t GetDigitWidth(FontSize size)
 {
-	byte width = 0;
+	uint8_t width = 0;
 	for (char c = '0'; c <= '9'; c++) {
 		width = std::max(GetCharacterWidth(size, c), width);
 	}
@@ -1283,7 +1283,7 @@ void GetBroadestDigit(uint *front, uint *next, FontSize size)
 void ScreenSizeChanged()
 {
 	_dirty_bytes_per_line = CeilDiv(_screen.width, DIRTY_BLOCK_WIDTH);
-	_dirty_blocks = ReallocT<byte>(_dirty_blocks, static_cast<size_t>(_dirty_bytes_per_line) * CeilDiv(_screen.height, DIRTY_BLOCK_HEIGHT));
+	_dirty_blocks = ReallocT<uint8_t>(_dirty_blocks, static_cast<size_t>(_dirty_bytes_per_line) * CeilDiv(_screen.height, DIRTY_BLOCK_HEIGHT));
 
 	/* check the dirty rect */
 	if (_invalid_rect.right >= _screen.width) _invalid_rect.right = _screen.width;
@@ -1411,7 +1411,7 @@ void RedrawScreenRect(int left, int top, int right, int bottom)
  */
 void DrawDirtyBlocks()
 {
-	byte *b = _dirty_blocks;
+	uint8_t *b = _dirty_blocks;
 	const int w = Align(_screen.width,  DIRTY_BLOCK_WIDTH);
 	const int h = Align(_screen.height, DIRTY_BLOCK_HEIGHT);
 	int x;
@@ -1426,7 +1426,7 @@ void DrawDirtyBlocks()
 				int top;
 				int right = x + DIRTY_BLOCK_WIDTH;
 				int bottom = y;
-				byte *p = b;
+				uint8_t *p = b;
 				int h2;
 
 				/* First try coalescing downwards */
@@ -1442,7 +1442,7 @@ void DrawDirtyBlocks()
 				p = b;
 
 				while (right != w) {
-					byte *p2 = ++p;
+					uint8_t *p2 = ++p;
 					int i = h2;
 					/* Check if a full line of dirty flags is set. */
 					do {
@@ -1500,7 +1500,7 @@ void DrawDirtyBlocks()
  */
 void AddDirtyBlock(int left, int top, int right, int bottom)
 {
-	byte *b;
+	uint8_t *b;
 	int width;
 	int height;
 

@@ -479,7 +479,7 @@ static WindowDesc _goal_question_list_desc[] = {
  * @param button_mask Buttons to display.
  * @param question Question to ask.
  */
-void ShowGoalQuestion(uint16_t id, byte type, uint32_t button_mask, const std::string &question)
+void ShowGoalQuestion(uint16_t id, uint8_t type, uint32_t button_mask, const std::string &question)
 {
 	assert(type < GQT_END);
 	new GoalQuestionWindow(&_goal_question_list_desc[type], id, type == 3 ? TC_WHITE : TC_BLACK, button_mask, question);

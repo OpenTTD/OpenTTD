@@ -1084,7 +1084,7 @@ static const RoadDriveEntry * const _road_road_drive_data[] = {
 };
 
 /** Table of road stop stop frames, when to stop at a road stop. */
-extern const byte _road_stop_stop_frame[] = {
+extern const uint8_t _road_stop_stop_frame[] = {
 	/* Duplicated left and right because of "entered stop" bit */
 	20, 20, 16, 16,  20, 20, 16, 16,
 	19, 19, 15, 15,  19, 19, 15, 15,

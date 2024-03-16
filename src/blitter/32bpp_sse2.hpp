@@ -73,7 +73,7 @@ public:
 	struct SpriteData {
 		SpriteFlags flags;
 		SpriteInfo infos[ZOOM_LVL_END];
-		byte data[]; ///< Data, all zoomlevels.
+		uint8_t data[]; ///< Data, all zoomlevels.
 	};
 
 	Sprite *Encode(const SpriteLoader::SpriteCollection &sprite, AllocatorProc *allocator);

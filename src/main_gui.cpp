@@ -335,7 +335,7 @@ struct MainWindow : Window
 			case GHK_REFRESH_SCREEN: MarkWholeScreenDirty(); break;
 
 			case GHK_CRASH: // Crash the game
-				*(volatile byte *)nullptr = 0;
+				*(volatile uint8_t *)nullptr = 0;
 				break;
 
 			case GHK_MONEY: // Gimme money
@@ -541,7 +541,7 @@ void ShowSelectGameWindow();
 void SetupColoursAndInitialWindow()
 {
 	for (Colours i = COLOUR_BEGIN; i != COLOUR_END; i++) {
-		const byte *b = GetNonSprite(GENERAL_SPRITE_COLOUR(i), SpriteType::Recolour) + 1;
+		const uint8_t *b = GetNonSprite(GENERAL_SPRITE_COLOUR(i), SpriteType::Recolour) + 1;
 		assert(b != nullptr);
 		for (ColourShade j = SHADE_BEGIN; j < SHADE_END; j++) {
 			SetColourGradient(i, j, b[0xC6 + j]);

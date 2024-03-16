@@ -87,7 +87,7 @@
 
 /* Define all types here, so we don't have to include the whole _type.h maze */
 typedef uint BridgeType;     ///< Internal name, not of any use for you.
-typedef byte CargoID;        ///< The ID of a cargo.
+typedef uint8_t CargoID;        ///< The ID of a cargo.
 class CommandCost;           ///< The cost of a command.
 typedef uint16_t EngineID;     ///< The ID of an engine.
 typedef uint16_t GoalID;       ///< The ID of a goal.

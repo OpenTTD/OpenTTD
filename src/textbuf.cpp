@@ -177,7 +177,7 @@ bool Textbuf::InsertString(const char *str, bool marked, const char *caret, cons
 	for (const char *ptr = str; (c = Utf8Consume(&ptr)) != '\0';) {
 		if (!IsValidChar(c, this->afilter)) break;
 
-		byte len = Utf8CharLen(c);
+		uint8_t len = Utf8CharLen(c);
 		if (this->bytes + bytes + len > this->max_bytes) break;
 		if (this->chars + chars + 1   > this->max_chars) break;
 

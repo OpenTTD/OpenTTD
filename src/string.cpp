@@ -85,7 +85,7 @@ char *strecpy(char *dst, const char *src, const char *last)
  * @param data Array to format
  * @return Converted string.
  */
-std::string FormatArrayAsHex(std::span<const byte> data)
+std::string FormatArrayAsHex(std::span<const uint8_t> data)
 {
 	std::string str;
 	str.reserve(data.size() * 2 + 1);

@@ -13,7 +13,7 @@
 #include "core/enum_type.hpp"
 
 /** What part of a subsidy is something? */
-enum PartOfSubsidy : byte {
+enum PartOfSubsidy : uint8_t {
 	POS_NONE =     0, ///< nothing
 	POS_SRC = 1 << 0, ///< bit 0 set -> town/industry is source of subsidised path
 	POS_DST = 1 << 1, ///< bit 1 set -> town/industry is destination of subsidised path

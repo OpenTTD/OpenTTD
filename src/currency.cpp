@@ -82,7 +82,7 @@ CurrencySpec _currency_specs[CURRENCY_END];
  * When a grf sends currencies, they are based on the order defined by TTDPatch.
  * So, we must reindex them to our own order.
  */
-const byte TTDPatch_To_OTTDIndex[] =
+const uint8_t TTDPatch_To_OTTDIndex[] =
 {
 	CURRENCY_GBP,
 	CURRENCY_USD,
@@ -113,7 +113,7 @@ const byte TTDPatch_To_OTTDIndex[] =
  * @param grfcurr_id currency id coming from newgrf
  * @return the corrected index
  */
-byte GetNewgrfCurrencyIdConverted(byte grfcurr_id)
+uint8_t GetNewgrfCurrencyIdConverted(uint8_t grfcurr_id)
 {
 	return (grfcurr_id >= lengthof(TTDPatch_To_OTTDIndex)) ? grfcurr_id : TTDPatch_To_OTTDIndex[grfcurr_id];
 }

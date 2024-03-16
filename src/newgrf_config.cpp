@@ -254,10 +254,10 @@ void UpdateNewGRFConfigPalette(int32_t)
  */
 size_t GRFGetSizeOfDataSection(FILE *f)
 {
-	extern const byte _grf_cont_v2_sig[];
+	extern const uint8_t _grf_cont_v2_sig[];
 	static const uint header_len = 14;
 
-	byte data[header_len];
+	uint8_t data[header_len];
 	if (fread(data, 1, header_len, f) == header_len) {
 		if (data[0] == 0 && data[1] == 0 && MemCmpT(data + 2, _grf_cont_v2_sig, 8) == 0) {
 			/* Valid container version 2, get data section size. */

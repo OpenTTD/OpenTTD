@@ -183,7 +183,7 @@ bool MusicDriver_FluidSynth::IsSongPlaying()
 	return fluid_player_get_status(_midi.player) == FLUID_PLAYER_PLAYING;
 }
 
-void MusicDriver_FluidSynth::SetVolume(byte vol)
+void MusicDriver_FluidSynth::SetVolume(uint8_t vol)
 {
 	std::lock_guard<std::mutex> lock{ _midi.synth_mutex };
 	if (_midi.settings == nullptr) return;

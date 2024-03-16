@@ -118,7 +118,7 @@ static Money CalculateCompanyAssetValue(const Company *c)
 	uint num = 0;
 
 	for (const Station *st : Station::Iterate()) {
-		if (st->owner == owner) num += CountBits((byte)st->facilities);
+		if (st->owner == owner) num += CountBits((uint8_t)st->facilities);
 	}
 
 	Money value = num * _price[PR_STATION_VALUE] * 25;
@@ -239,7 +239,7 @@ int UpdateCompanyRatingAndValue(Company *c, bool update)
 		uint num = 0;
 		for (const Station *st : Station::Iterate()) {
 			/* Only count stations that are actually serviced */
-			if (st->owner == owner && (st->time_since_load <= 20 || st->time_since_unload <= 20)) num += CountBits((byte)st->facilities);
+			if (st->owner == owner && (st->time_since_load <= 20 || st->time_since_unload <= 20)) num += CountBits((uint8_t)st->facilities);
 		}
 		_score_part[owner][SCORE_STATIONS] = num;
 	}

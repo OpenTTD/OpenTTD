@@ -183,9 +183,9 @@ protected:
 	static const int MIN_GRID_PIXEL_SIZE    =  20; ///< Minimum distance between graph lines.
 
 	uint64_t excluded_data; ///< bitmask of the datasets that shouldn't be displayed.
-	byte num_dataset;
-	byte num_on_x_axis;
-	byte num_vert_lines;
+	uint8_t num_dataset;
+	uint8_t num_on_x_axis;
+	uint8_t num_vert_lines;
 
 	/* The starting month and year that values are plotted against. */
 	TimerGameEconomy::Month month;
@@ -199,7 +199,7 @@ protected:
 	uint16_t x_values_increment;
 
 	StringID format_str_y_axis;
-	byte colours[GRAPH_MAX_DATASETS];
+	uint8_t colours[GRAPH_MAX_DATASETS];
 	OverflowSafeInt64 cost[GRAPH_MAX_DATASETS][GRAPH_NUM_MONTHS]; ///< Stored costs for the last #GRAPH_NUM_MONTHS months
 
 	/**
@@ -443,7 +443,7 @@ protected:
 				/* Centre the dot between the grid lines. */
 				x = r.left + (x_sep / 2);
 
-				byte colour  = this->colours[i];
+				uint8_t colour  = this->colours[i];
 				uint prev_x = INVALID_DATAPOINT_POS;
 				uint prev_y = INVALID_DATAPOINT_POS;
 
@@ -600,7 +600,7 @@ public:
 			if (!Company::IsValidID(c)) SetBit(excluded_companies, c);
 		}
 
-		byte nums = 0;
+		uint8_t nums = 0;
 		for (const Company *c : Company::Iterate()) {
 			nums = std::min(this->num_vert_lines, std::max(nums, c->num_valid_stat_ent));
 		}

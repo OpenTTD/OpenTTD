@@ -132,9 +132,9 @@ struct GRFParameterInfo {
 	uint32_t min_value;      ///< The minimal value this parameter can have
 	uint32_t max_value;      ///< The maximal value of this parameter
 	uint32_t def_value;      ///< Default value of this parameter
-	byte param_nr;         ///< GRF parameter to store content in
-	byte first_bit;        ///< First bit to use in the GRF parameter
-	byte num_bit;          ///< Number of bits to use for this parameter
+	uint8_t param_nr;         ///< GRF parameter to store content in
+	uint8_t first_bit;        ///< First bit to use in the GRF parameter
+	uint8_t num_bit;          ///< Number of bits to use for this parameter
 	std::map<uint32_t, GRFTextList> value_names; ///< Names for each value.
 	bool complete_labels;  ///< True if all values have a label.
 

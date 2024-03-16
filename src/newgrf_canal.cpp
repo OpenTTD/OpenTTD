@@ -30,7 +30,7 @@ struct CanalScopeResolver : public ScopeResolver {
 	}
 
 	uint32_t GetRandomBits() const override;
-	uint32_t GetVariable(byte variable, [[maybe_unused]] uint32_t parameter, bool *available) const override;
+	uint32_t GetVariable(uint8_t variable, [[maybe_unused]] uint32_t parameter, bool *available) const override;
 };
 
 /** Resolver object for canals. */
@@ -41,7 +41,7 @@ struct CanalResolverObject : public ResolverObject {
 	CanalResolverObject(CanalFeature feature, TileIndex tile,
 			CallbackID callback = CBID_NO_CALLBACK, uint32_t callback_param1 = 0, uint32_t callback_param2 = 0);
 
-	ScopeResolver *GetScope(VarSpriteGroupScope scope = VSG_SCOPE_SELF, byte relative = 0) override
+	ScopeResolver *GetScope(VarSpriteGroupScope scope = VSG_SCOPE_SELF, uint8_t relative = 0) override
 	{
 		switch (scope) {
 			case VSG_SCOPE_SELF: return &this->canal_scope;
@@ -59,7 +59,7 @@ struct CanalResolverObject : public ResolverObject {
 	return IsTileType(this->tile, MP_WATER) ? GetWaterTileRandomBits(this->tile) : 0;
 }
 
-/* virtual */ uint32_t CanalScopeResolver::GetVariable(byte variable, [[maybe_unused]] uint32_t parameter, bool *available) const
+/* virtual */ uint32_t CanalScopeResolver::GetVariable(uint8_t variable, [[maybe_unused]] uint32_t parameter, bool *available) const
 {
 	switch (variable) {
 		/* Height of tile */

@@ -152,12 +152,12 @@ public:
 
 	AirportFTAClass(
 		const AirportMovingData *moving_data,
-		const byte *terminals,
-		const byte num_helipads,
-		const byte *entry_points,
+		const uint8_t *terminals,
+		const uint8_t num_helipads,
+		const uint8_t *entry_points,
 		Flags flags,
 		const AirportFTAbuildup *apFA,
-		byte delta_z
+		uint8_t delta_z
 	);
 
 	~AirportFTAClass();
@@ -167,7 +167,7 @@ public:
 	 * @param position Element number to get movement data about.
 	 * @return Pointer to the movement data.
 	 */
-	const AirportMovingData *MovingData(byte position) const
+	const AirportMovingData *MovingData(uint8_t position) const
 	{
 		assert(position < nofelements);
 		return &moving_data[position];
@@ -175,12 +175,12 @@ public:
 
 	const AirportMovingData *moving_data; ///< Movement data.
 	struct AirportFTA *layout;            ///< state machine for airport
-	const byte *terminals;                ///< %Array with the number of terminal groups, followed by the number of terminals in each group.
-	const byte num_helipads;              ///< Number of helipads on this airport. When 0 helicopters will go to normal terminals.
+	const uint8_t *terminals;                ///< %Array with the number of terminal groups, followed by the number of terminals in each group.
+	const uint8_t num_helipads;              ///< Number of helipads on this airport. When 0 helicopters will go to normal terminals.
 	Flags flags;                          ///< Flags for this airport type.
-	byte nofelements;                     ///< number of positions the airport consists of
-	const byte *entry_points;             ///< when an airplane arrives at this airport, enter it at position entry_point, index depends on direction
-	byte delta_z;                         ///< Z adjustment for helicopter pads
+	uint8_t nofelements;                     ///< number of positions the airport consists of
+	const uint8_t *entry_points;             ///< when an airplane arrives at this airport, enter it at position entry_point, index depends on direction
+	uint8_t delta_z;                         ///< Z adjustment for helicopter pads
 };
 
 DECLARE_ENUM_AS_BIT_SET(AirportFTAClass::Flags)
@@ -190,12 +190,12 @@ DECLARE_ENUM_AS_BIT_SET(AirportFTAClass::Flags)
 struct AirportFTA {
 	AirportFTA *next;        ///< possible extra movement choices from this position
 	uint64_t block;            ///< 64 bit blocks (st->airport.flags), should be enough for the most complex airports
-	byte position;           ///< the position that an airplane is at
-	byte next_position;      ///< next position from this position
-	byte heading;            ///< heading (current orders), guiding an airplane to its target on an airport
+	uint8_t position;           ///< the position that an airplane is at
+	uint8_t next_position;      ///< next position from this position
+	uint8_t heading;            ///< heading (current orders), guiding an airplane to its target on an airport
 };
 
-const AirportFTAClass *GetAirport(const byte airport_type);
-byte GetVehiclePosOnBuild(TileIndex hangar_tile);
+const AirportFTAClass *GetAirport(const uint8_t airport_type);
+uint8_t GetVehiclePosOnBuild(TileIndex hangar_tile);
 
 #endif /* AIRPORT_H */

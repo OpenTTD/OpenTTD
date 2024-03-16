@@ -227,7 +227,7 @@ static void WriteSavegameInfo(const std::string &name)
 {
 	extern SaveLoadVersion _sl_version;
 	uint32_t last_ottd_rev = 0;
-	byte ever_modified = 0;
+	uint8_t ever_modified = 0;
 	bool removed_newgrfs = false;
 
 	_gamelog.Info(&last_ottd_rev, &ever_modified, &removed_newgrfs);
@@ -1362,7 +1362,7 @@ static void CheckCaches()
 
 	/* Check whether the caches are still valid */
 	for (Vehicle *v : Vehicle::Iterate()) {
-		byte buff[sizeof(VehicleCargoList)];
+		uint8_t buff[sizeof(VehicleCargoList)];
 		memcpy(buff, &v->cargo, sizeof(VehicleCargoList));
 		v->cargo.InvalidateCache();
 		assert(memcmp(&v->cargo, buff, sizeof(VehicleCargoList)) == 0);
@@ -1377,7 +1377,7 @@ static void CheckCaches()
 
 	for (Station *st : Station::Iterate()) {
 		for (GoodsEntry &ge : st->goods) {
-			byte buff[sizeof(StationCargoList)];
+			uint8_t buff[sizeof(StationCargoList)];
 			memcpy(buff, &ge.cargo, sizeof(StationCargoList));
 			ge.cargo.InvalidateCache();
 			assert(memcmp(&ge.cargo, buff, sizeof(StationCargoList)) == 0);

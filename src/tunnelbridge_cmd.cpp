@@ -258,7 +258,7 @@ static Money TunnelBridgeClearCost(TileIndex tile, Price base_price)
  * @param road_rail_type rail type or road types.
  * @return the cost of this operation or an error
  */
-CommandCost CmdBuildBridge(DoCommandFlag flags, TileIndex tile_end, TileIndex tile_start, TransportType transport_type, BridgeType bridge_type, byte road_rail_type)
+CommandCost CmdBuildBridge(DoCommandFlag flags, TileIndex tile_end, TileIndex tile_start, TransportType transport_type, BridgeType bridge_type, uint8_t road_rail_type)
 {
 	CompanyID company = _current_company;
 
@@ -620,7 +620,7 @@ CommandCost CmdBuildBridge(DoCommandFlag flags, TileIndex tile_end, TileIndex ti
  * @param road_rail_type railtype or roadtype
  * @return the cost of this operation or an error
  */
-CommandCost CmdBuildTunnel(DoCommandFlag flags, TileIndex start_tile, TransportType transport_type, byte road_rail_type)
+CommandCost CmdBuildTunnel(DoCommandFlag flags, TileIndex start_tile, TransportType transport_type, uint8_t road_rail_type)
 {
 	CompanyID company = _current_company;
 
@@ -1880,7 +1880,7 @@ static void PrepareToEnterBridge(T *gv)
  * frame on a tile, so the sound is played shortly after entering the tunnel
  * tile, while the vehicle is still visible.
  */
-static const byte TUNNEL_SOUND_FRAME = 1;
+static const uint8_t TUNNEL_SOUND_FRAME = 1;
 
 /**
  * Frame when a vehicle should be hidden in a tunnel with a certain direction.
@@ -1890,7 +1890,7 @@ static const byte TUNNEL_SOUND_FRAME = 1;
  * When leaving a tunnel, show the vehicle when it is one frame further
  * to the 'outside', i.e. at (TILE_SIZE-1) - (frame) + 1
  */
-extern const byte _tunnel_visibility_frame[DIAGDIR_END] = {12, 8, 8, 12};
+extern const uint8_t _tunnel_visibility_frame[DIAGDIR_END] = {12, 8, 8, 12};
 
 static VehicleEnterTileStatus VehicleEnter_TunnelBridge(Vehicle *v, TileIndex tile, int x, int y)
 {
@@ -1902,9 +1902,9 @@ static VehicleEnterTileStatus VehicleEnter_TunnelBridge(Vehicle *v, TileIndex ti
 	/* Direction of the vehicle */
 	const DiagDirection vdir = DirToDiagDir(v->direction);
 	/* New position of the vehicle on the tile */
-	byte pos = (DiagDirToAxis(vdir) == AXIS_X ? x : y) & TILE_UNIT_MASK;
+	uint8_t pos = (DiagDirToAxis(vdir) == AXIS_X ? x : y) & TILE_UNIT_MASK;
 	/* Number of units moved by the vehicle since entering the tile */
-	byte frame = (vdir == DIAGDIR_NE || vdir == DIAGDIR_NW) ? TILE_SIZE - 1 - pos : pos;
+	uint8_t frame = (vdir == DIAGDIR_NE || vdir == DIAGDIR_NW) ? TILE_SIZE - 1 - pos : pos;
 
 	if (IsTunnel(tile)) {
 		if (v->type == VEH_TRAIN) {

@@ -16,11 +16,11 @@
 #include "vehiclelist.h"
 #include "vehiclelist_cmd.h"
 
-enum Colours : byte;
+enum Colours : uint8_t;
 enum GroupFlags : uint8_t;
 
 /** Action for \c CmdAlterGroup. */
-enum class AlterGroupMode : byte {
+enum class AlterGroupMode : uint8_t {
 	Rename,    ///< Change group name.
 	SetParent, ///< Change group parent.
 };

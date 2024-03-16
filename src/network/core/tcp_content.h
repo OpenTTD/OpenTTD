@@ -25,7 +25,7 @@ protected:
 
 	/**
 	 * Client requesting a list of content info:
-	 *  byte    type
+	 *  uint8_t    type
 	 *  uint32_t  openttd version (or 0xFFFFFFFF if using a list)
 	 * Only if the above value is 0xFFFFFFFF:
 	 *  uint8_t   count
@@ -76,7 +76,7 @@ protected:
 
 	/**
 	 * Server sending list of content info:
-	 *  byte    type (invalid ID == does not exist)
+	 *  uint8_t    type (invalid ID == does not exist)
 	 *  uint32_t  id
 	 *  uint32_t  file_size
 	 *  string  name (max 32 characters)

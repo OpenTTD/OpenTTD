@@ -136,7 +136,7 @@ struct TranslationWriter : LanguageWriter {
 		/* We don't write the length. */
 	}
 
-	void Write(const byte *buffer, size_t length) override
+	void Write(const uint8_t *buffer, size_t length) override
 	{
 		this->strings.emplace_back((const char *)buffer, length);
 	}

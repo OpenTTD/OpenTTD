@@ -16,7 +16,7 @@ static uint const ZOOM_LVL_SHIFT = 2;
 static uint const ZOOM_LVL_BASE  = 1 << ZOOM_LVL_SHIFT;
 
 /** All zoom levels we know. */
-enum ZoomLevel : byte {
+enum ZoomLevel : uint8_t {
 	/* Our possible zoom-levels */
 	ZOOM_LVL_BEGIN  = 0, ///< Begin for iteration.
 	ZOOM_LVL_NORMAL = 0, ///< The normal zoom level.

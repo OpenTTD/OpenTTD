@@ -255,7 +255,7 @@ const Sprite *CoreTextFontCache::InternalGetGlyph(GlyphID key, bool use_aa)
 
 		/* We only need the alpha channel, as we apply our own colour constants to the sprite. */
 		int pitch = Align(bb_width, 16);
-		byte *bmp = CallocT<byte>(bb_height * pitch);
+		uint8_t *bmp = CallocT<uint8_t>(bb_height * pitch);
 		CFAutoRelease<CGContextRef> context(CGBitmapContextCreate(bmp, bb_width, bb_height, 8, pitch, nullptr, kCGImageAlphaOnly));
 		/* Set antialias according to requirements. */
 		CGContextSetAllowsAntialiasing(context.get(), use_aa);
@@ -291,7 +291,7 @@ const Sprite *CoreTextFontCache::InternalGetGlyph(GlyphID key, bool use_aa)
 
 	GlyphEntry new_glyph;
 	new_glyph.sprite = BlitterFactory::GetCurrentBlitter()->Encode(spritecollection, SimpleSpriteAlloc);
-	new_glyph.width = (byte)std::round(CTFontGetAdvancesForGlyphs(this->font.get(), kCTFontOrientationDefault, &glyph, nullptr, 1));
+	new_glyph.width = (uint8_t)std::round(CTFontGetAdvancesForGlyphs(this->font.get(), kCTFontOrientationDefault, &glyph, nullptr, 1));
 	this->SetGlyphPtr(key, &new_glyph);
 
 	return new_glyph.sprite;

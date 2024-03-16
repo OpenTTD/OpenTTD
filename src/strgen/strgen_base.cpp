@@ -175,12 +175,12 @@ static ParsedCommandStruct _cur_pcs;
 static int _cur_argidx;
 
 /** The buffer for writing a single string. */
-struct Buffer : std::vector<byte> {
+struct Buffer : std::vector<uint8_t> {
 	/**
 	 * Convenience method for adding a byte.
 	 * @param value The value to add.
 	 */
-	void AppendByte(byte value)
+	void AppendByte(uint8_t value)
 	{
 		this->push_back(value);
 	}
@@ -318,7 +318,7 @@ static int TranslateArgumentIdx(int arg, int offset = 0);
 static void EmitWordList(Buffer *buffer, const std::vector<const char *> &words, uint nw)
 {
 	buffer->AppendByte(nw);
-	for (uint i = 0; i < nw; i++) buffer->AppendByte((byte)strlen(words[i]) + 1);
+	for (uint i = 0; i < nw; i++) buffer->AppendByte((uint8_t)strlen(words[i]) + 1);
 	for (uint i = 0; i < nw; i++) {
 		for (uint j = 0; words[i][j] != '\0'; j++) buffer->AppendByte(words[i][j]);
 		buffer->AppendByte(0);
@@ -881,7 +881,7 @@ void LanguageWriter::WriteLength(uint length)
 		buffer[offs++] = (length >> 8) | 0xC0;
 	}
 	buffer[offs++] = length & 0xFF;
-	this->Write((byte*)buffer, offs);
+	this->Write((uint8_t*)buffer, offs);
 }
 
 /**
@@ -953,7 +953,7 @@ void LanguageWriter::WriteLang(const StringData &data)
 				 * <0x9E> <NUM CASES> <CASE1> <LEN1> <STRING1> <CASE2> <LEN2> <STRING2> <CASE3> <LEN3> <STRING3> <STRINGDEFAULT>
 				 * Each LEN is printed using 2 bytes in big endian order. */
 				buffer.AppendUtf8(SCC_SWITCH_CASE);
-				buffer.AppendByte((byte)ls->translated_cases.size());
+				buffer.AppendByte((uint8_t)ls->translated_cases.size());
 
 				/* Write each case */
 				for (const Case &c : ls->translated_cases) {

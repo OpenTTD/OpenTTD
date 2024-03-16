@@ -163,7 +163,7 @@ void UpdateCompanyHQ(TileIndex tile, uint score)
 {
 	if (tile == INVALID_TILE) return;
 
-	byte val = 0;
+	uint8_t val = 0;
 	if (score >= 170) val++;
 	if (score >= 350) val++;
 	if (score >= 520) val++;

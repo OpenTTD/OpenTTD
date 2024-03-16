@@ -45,7 +45,7 @@ enum Corner {
  * slopes would mean that it is not a steep slope as halftile
  * slopes only span one height level.
  */
-enum Slope : byte {
+enum Slope : uint8_t {
 	SLOPE_FLAT     = 0x00,                                  ///< a flat tile
 	SLOPE_W        = 0x01,                                  ///< the west corner of the tile is raised
 	SLOPE_S        = 0x02,                                  ///< the south corner of the tile is raised

@@ -690,11 +690,11 @@ static int DeterminePluralForm(int64_t count, int plural_form)
 static const char *ParseStringChoice(const char *b, uint form, StringBuilder &builder)
 {
 	/* <NUM> {Length of each string} {each string} */
-	uint n = (byte)*b++;
+	uint n = (uint8_t)*b++;
 	uint pos, i, mypos = 0;
 
 	for (i = pos = 0; i != n; i++) {
-		uint len = (byte)*b++;
+		uint len = (uint8_t)*b++;
 		if (i == form) mypos = pos;
 		pos += len;
 	}
@@ -847,7 +847,7 @@ static const Units _units_time_years_or_minutes[] = {
  */
 static const Units GetVelocityUnits(VehicleType type)
 {
-	byte setting = (type == VEH_SHIP || type == VEH_AIRCRAFT) ? _settings_game.locale.units_velocity_nautical : _settings_game.locale.units_velocity;
+	uint8_t setting = (type == VEH_SHIP || type == VEH_AIRCRAFT) ? _settings_game.locale.units_velocity_nautical : _settings_game.locale.units_velocity;
 
 	assert(setting < lengthof(_units_velocity_calendar));
 	assert(setting < lengthof(_units_velocity_realtime));
@@ -1064,7 +1064,7 @@ static void FormatString(StringBuilder &builder, const char *str_arg, StringPara
 
 				case SCC_GENDER_LIST: { // {G 0 Der Die Das}
 					/* First read the meta data from the language file. */
-					size_t offset = orig_offset + (byte)*str++;
+					size_t offset = orig_offset + (uint8_t)*str++;
 					int gender = 0;
 					if (!dry_run && args.GetTypeAtOffset(offset) != 0) {
 						/* Now we need to figure out what text to resolve, i.e.
@@ -1087,7 +1087,7 @@ static void FormatString(StringBuilder &builder, const char *str_arg, StringPara
 						const char *s = buffer.c_str();
 						char32_t c = Utf8Consume(&s);
 						/* Does this string have a gender, if so, set it */
-						if (c == SCC_GENDER_INDEX) gender = (byte)s[0];
+						if (c == SCC_GENDER_INDEX) gender = (uint8_t)s[0];
 					}
 					str = ParseStringChoice(str, gender, builder);
 					break;
@@ -1106,30 +1106,30 @@ static void FormatString(StringBuilder &builder, const char *str_arg, StringPara
 
 				case SCC_PLURAL_LIST: { // {P}
 					int plural_form = *str++;          // contains the plural form for this string
-					size_t offset = orig_offset + (byte)*str++;
+					size_t offset = orig_offset + (uint8_t)*str++;
 					int64_t v = args.GetParam(offset); // contains the number that determines plural
 					str = ParseStringChoice(str, DeterminePluralForm(v, plural_form), builder);
 					break;
 				}
 
 				case SCC_ARG_INDEX: { // Move argument pointer
-					args.SetOffset(orig_offset + (byte)*str++);
+					args.SetOffset(orig_offset + (uint8_t)*str++);
 					break;
 				}
 
 				case SCC_SET_CASE: { // {SET_CASE}
 					/* This is a pseudo command, it's outputted when someone does {STRING.ack}
 					 * The modifier is added to all subsequent GetStringWithArgs that accept the modifier. */
-					next_substr_case_index = (byte)*str++;
+					next_substr_case_index = (uint8_t)*str++;
 					break;
 				}
 
 				case SCC_SWITCH_CASE: { // {Used to implement case switching}
 					/* <0x9E> <NUM CASES> <CASE1> <LEN1> <STRING1> <CASE2> <LEN2> <STRING2> <CASE3> <LEN3> <STRING3> <STRINGDEFAULT>
 					 * Each LEN is printed using 2 bytes in big endian order. */
-					uint num = (byte)*str++;
+					uint num = (uint8_t)*str++;
 					while (num) {
-						if ((byte)str[0] == case_index) {
+						if ((uint8_t)str[0] == case_index) {
 							/* Found the case, adjust str pointer and continue */
 							str += 3;
 							break;
@@ -1939,17 +1939,17 @@ bool ReadLanguagePack(const LanguageMetadata *lang)
 
 	/* Fill offsets */
 	char *s = lang_pack->data;
-	len = (byte)*s++;
+	len = (uint8_t)*s++;
 	for (uint i = 0; i < count; i++) {
 		if (s + len >= end) return false;
 
 		if (len >= 0xC0) {
-			len = ((len & 0x3F) << 8) + (byte)*s++;
+			len = ((len & 0x3F) << 8) + (uint8_t)*s++;
 			if (s + len >= end) return false;
 		}
 		offs[i] = s;
 		s += len;
-		len = (byte)*s;
+		len = (uint8_t)*s;
 		*s++ = '\0'; // zero terminate the string
 	}
 
@@ -2041,7 +2041,7 @@ const char *GetCurrentLocale(const char *param);
  * @param newgrflangid NewGRF languages ID to check.
  * @return The language's metadata, or nullptr if it is not known.
  */
-const LanguageMetadata *GetLanguage(byte newgrflangid)
+const LanguageMetadata *GetLanguage(uint8_t newgrflangid)
 {
 	for (const LanguageMetadata &lang : _languages) {
 		if (newgrflangid == lang.newgrflangid) return &lang;

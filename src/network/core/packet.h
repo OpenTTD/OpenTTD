@@ -44,7 +44,7 @@ private:
 	/** The current read/write position in the packet */
 	PacketSize pos;
 	/** The buffer of this packet. */
-	std::vector<byte> buffer;
+	std::vector<uint8_t> buffer;
 	/** The limit for the packet size. */
 	size_t limit;
 
@@ -65,8 +65,8 @@ public:
 	void   Send_uint32(uint32_t data);
 	void   Send_uint64(uint64_t data);
 	void   Send_string(const std::string_view data);
-	void   Send_buffer(const std::vector<byte> &data);
-	std::span<const byte> Send_bytes(const std::span<const byte> span);
+	void   Send_buffer(const std::vector<uint8_t> &data);
+	std::span<const uint8_t> Send_bytes(const std::span<const uint8_t> span);
 
 	/* Reading/receiving of packets */
 	bool HasPacketSizeData() const;
@@ -81,8 +81,8 @@ public:
 	uint16_t Recv_uint16();
 	uint32_t Recv_uint32();
 	uint64_t Recv_uint64();
-	std::vector<byte> Recv_buffer();
-	size_t Recv_bytes(std::span<byte> span);
+	std::vector<uint8_t> Recv_buffer();
+	size_t Recv_bytes(std::span<uint8_t> span);
 	std::string Recv_string(size_t length, StringValidationSettings settings = SVS_REPLACE_WITH_QUESTION_MARK);
 
 	size_t RemainingBytesToTransfer() const;

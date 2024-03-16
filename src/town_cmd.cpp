@@ -1303,7 +1303,7 @@ static bool GrowTownWithBridge(const Town *t, const TileIndex tile, const DiagDi
 	if (slope != SLOPE_FLAT && CircularTileSearch(&search, bridge_length, 0, 0, RedundantBridgeExistsNearby, &direction_to_match)) return false;
 
 	for (uint8_t times = 0; times <= 22; times++) {
-		byte bridge_type = RandomRange(MAX_BRIDGES - 1);
+		uint8_t bridge_type = RandomRange(MAX_BRIDGES - 1);
 
 		/* Can we actually build the bridge? */
 		RoadType rt = GetTownRoadType();
@@ -2092,12 +2092,12 @@ std::tuple<CommandCost, Money, TownID> CmdFoundTown(DoCommandFlag flags, TileInd
 		if (ret.Failed()) return { ret, 0, INVALID_TOWN };
 	}
 
-	static const byte price_mult[][TSZ_RANDOM + 1] = {{ 15, 25, 40, 25 }, { 20, 35, 55, 35 }};
+	static const uint8_t price_mult[][TSZ_RANDOM + 1] = {{ 15, 25, 40, 25 }, { 20, 35, 55, 35 }};
 	/* multidimensional arrays have to have defined length of non-first dimension */
 	static_assert(lengthof(price_mult[0]) == 4);
 
 	CommandCost cost(EXPENSES_OTHER, _price[PR_BUILD_TOWN]);
-	byte mult = price_mult[city][size];
+	uint8_t mult = price_mult[city][size];
 
 	cost.MultiplyCost(mult);
 
@@ -2318,7 +2318,7 @@ static Town *CreateRandomTown(uint attempts, uint32_t townnameparts, TownSize si
 	return nullptr;
 }
 
-static const byte _num_initial_towns[4] = {5, 11, 23, 46};  // very low, low, normal, high
+static const uint8_t _num_initial_towns[4] = {5, 11, 23, 46};  // very low, low, normal, high
 
 /**
  * Generate a number of towns with a given layout.
@@ -2407,7 +2407,7 @@ HouseZonesBits GetTownRadiusGroup(const Town *t, TileIndex tile)
  * @param random_bits Random bits for newgrf houses to use.
  * @pre The house can be built here.
  */
-static inline void ClearMakeHouseTile(TileIndex tile, Town *t, byte counter, byte stage, HouseID type, byte random_bits)
+static inline void ClearMakeHouseTile(TileIndex tile, Town *t, uint8_t counter, uint8_t stage, HouseID type, uint8_t random_bits)
 {
 	[[maybe_unused]] CommandCost cc = Command<CMD_LANDSCAPE_CLEAR>::Do(DC_EXEC | DC_AUTO | DC_NO_WATER, tile);
 	assert(cc.Succeeded());
@@ -2430,7 +2430,7 @@ static inline void ClearMakeHouseTile(TileIndex tile, Town *t, byte counter, byt
  * @param random_bits Random bits for newgrf houses to use.
  * @pre The house can be built here.
  */
-static void MakeTownHouse(TileIndex tile, Town *t, byte counter, byte stage, HouseID type, byte random_bits)
+static void MakeTownHouse(TileIndex tile, Town *t, uint8_t counter, uint8_t stage, HouseID type, uint8_t random_bits)
 {
 	BuildingFlags size = HouseSpec::Get(type)->building_flags;
 
@@ -2742,7 +2742,7 @@ static bool BuildTownHouse(Town *t, TileIndex tile)
 			/* 1x1 house checks are already done */
 		}
 
-		byte random_bits = Random();
+		uint8_t random_bits = Random();
 
 		if (HasBit(hs->callback_mask, CBM_HOUSE_ALLOW_CONSTRUCTION)) {
 			uint16_t callback_res = GetHouseCallback(CBID_HOUSE_ALLOW_CONSTRUCTION, 0, 0, house, t, tile, true, random_bits);
@@ -2755,8 +2755,8 @@ static bool BuildTownHouse(Town *t, TileIndex tile)
 		/* Special houses that there can be only one of. */
 		t->flags |= oneof;
 
-		byte construction_counter = 0;
-		byte construction_stage = 0;
+		uint8_t construction_counter = 0;
+		uint8_t construction_stage = 0;
 
 		if (_generating_world || _game_mode == GM_EDITOR) {
 			uint32_t construction_random = Random();
@@ -3168,7 +3168,7 @@ CommandCost CmdDeleteTown(DoCommandFlag flags, TownID town_id)
  * Factor in the cost of each town action.
  * @see TownActions
  */
-const byte _town_action_costs[TACT_COUNT] = {
+const uint8_t _town_action_costs[TACT_COUNT] = {
 	2, 4, 9, 35, 48, 53, 117, 175
 };
 

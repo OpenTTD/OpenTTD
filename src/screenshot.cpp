@@ -99,7 +99,7 @@ static_assert(sizeof(BitmapInfoHeader) == 40);
 
 /** Format of palette data in BMP header */
 struct RgbQuad {
-	byte blue, green, red, reserved;
+	uint8_t blue, green, red, reserved;
 };
 static_assert(sizeof(RgbQuad) == 4);
 
@@ -201,7 +201,7 @@ static bool MakeBMPImage(const char *name, ScreenshotCallback *callb, void *user
 				/* Convert from 'native' 32bpp to BMP-like 24bpp.
 				 * Works for both big and little endian machines */
 				Colour *src = ((Colour *)buff) + n * w;
-				byte *dst = line;
+				uint8_t *dst = line;
 				for (uint i = 0; i < w; i++) {
 					dst[i * 3    ] = src[i].b;
 					dst[i * 3 + 1] = src[i].g;
@@ -407,21 +407,21 @@ static bool MakePNGImage(const char *name, ScreenshotCallback *callb, void *user
 
 /** Definition of a PCX file header. */
 struct PcxHeader {
-	byte manufacturer;
-	byte version;
-	byte rle;
-	byte bpp;
+	uint8_t manufacturer;
+	uint8_t version;
+	uint8_t rle;
+	uint8_t bpp;
 	uint32_t unused;
 	uint16_t xmax, ymax;
 	uint16_t hdpi, vdpi;
-	byte pal_small[16 * 3];
-	byte reserved;
-	byte planes;
+	uint8_t pal_small[16 * 3];
+	uint8_t reserved;
+	uint8_t planes;
 	uint16_t pitch;
 	uint16_t cpal;
 	uint16_t width;
 	uint16_t height;
-	byte filler[54];
+	uint8_t filler[54];
 };
 static_assert(sizeof(PcxHeader) == 128);
 
@@ -496,7 +496,7 @@ static bool MakePCXImage(const char *name, ScreenshotCallback *callb, void *user
 		/* write them to pcx */
 		for (i = 0; i != n; i++) {
 			const uint8_t *bufp = buff + i * w;
-			byte runchar = bufp[0];
+			uint8_t runchar = bufp[0];
 			uint runcount = 1;
 			uint j;
 
@@ -548,7 +548,7 @@ static bool MakePCXImage(const char *name, ScreenshotCallback *callb, void *user
 	}
 
 	/* Palette is word-aligned, copy it to a temporary byte array */
-	byte tmp[256 * 3];
+	uint8_t tmp[256 * 3];
 
 	for (uint i = 0; i < 256; i++) {
 		tmp[i * 3 + 0] = palette[i].r;
@@ -818,7 +818,7 @@ static bool MakeLargeWorldScreenshot(ScreenshotType t, uint32_t width = 0, uint3
  */
 static void HeightmapCallback(void *, void *buffer, uint y, uint, uint n)
 {
-	byte *buf = (byte *)buffer;
+	uint8_t *buf = (uint8_t *)buffer;
 	while (n > 0) {
 		TileIndex ti = TileXY(Map::MaxX(), y);
 		for (uint x = Map::MaxX(); true; x--) {
@@ -1002,7 +1002,7 @@ static void MinimapScreenCallback(void *, void *buf, uint y, uint pitch, uint n)
 		uint col = (Map::SizeX() - 1) - (i % pitch);
 
 		TileIndex tile = TileXY(col, row);
-		byte val = GetSmallMapOwnerPixels(tile, GetTileType(tile), IncludeHeightmap::Never) & 0xFF;
+		uint8_t val = GetSmallMapOwnerPixels(tile, GetTileType(tile), IncludeHeightmap::Never) & 0xFF;
 
 		uint32_t colour_buf = 0;
 		colour_buf  = (_cur_palette.palette[val].b << 0);

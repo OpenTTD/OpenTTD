@@ -60,7 +60,7 @@ static inline bool IsValidHeightmapDimension(size_t width, size_t height)
  * Convert RGB colours to Grayscale using 29.9% Red, 58.7% Green, 11.4% Blue
  *  (average luminosity formula, NTSC Colour Space)
  */
-static inline byte RGBToGrayscale(byte red, byte green, byte blue)
+static inline uint8_t RGBToGrayscale(uint8_t red, uint8_t green, uint8_t blue)
 {
 	/* To avoid doubles and stuff, multiply it with a total of 65536 (16bits), then
 	 *  divide by it to normalize the value to a byte again. */
@@ -75,10 +75,10 @@ static inline byte RGBToGrayscale(byte red, byte green, byte blue)
 /**
  * The PNG Heightmap loader.
  */
-static void ReadHeightmapPNGImageData(byte *map, png_structp png_ptr, png_infop info_ptr)
+static void ReadHeightmapPNGImageData(uint8_t *map, png_structp png_ptr, png_infop info_ptr)
 {
 	uint x, y;
-	byte gray_palette[256];
+	uint8_t gray_palette[256];
 	png_bytep *row_pointers = nullptr;
 	bool has_palette = png_get_color_type(png_ptr, info_ptr) == PNG_COLOR_TYPE_PALETTE;
 	uint channels = png_get_channels(png_ptr, info_ptr);
@@ -114,7 +114,7 @@ static void ReadHeightmapPNGImageData(byte *map, png_structp png_ptr, png_infop 
 	/* Read the raw image data and convert in 8-bit grayscale */
 	for (x = 0; x < png_get_image_width(png_ptr, info_ptr); x++) {
 		for (y = 0; y < png_get_image_height(png_ptr, info_ptr); y++) {
-			byte *pixel = &map[y * png_get_image_width(png_ptr, info_ptr) + x];
+			uint8_t *pixel = &map[y * png_get_image_width(png_ptr, info_ptr) + x];
 			uint x_offset = x * channels;
 
 			if (has_palette) {
@@ -134,7 +134,7 @@ static void ReadHeightmapPNGImageData(byte *map, png_structp png_ptr, png_infop 
  * If map == nullptr only the size of the PNG is read, otherwise a map
  * with grayscale pixels is allocated and assigned to *map.
  */
-static bool ReadHeightmapPNG(const char *filename, uint *x, uint *y, byte **map)
+static bool ReadHeightmapPNG(const char *filename, uint *x, uint *y, uint8_t **map)
 {
 	FILE *fp;
 	png_structp png_ptr = nullptr;
@@ -188,7 +188,7 @@ static bool ReadHeightmapPNG(const char *filename, uint *x, uint *y, byte **map)
 	}
 
 	if (map != nullptr) {
-		*map = MallocT<byte>(static_cast<size_t>(width) * height);
+		*map = MallocT<uint8_t>(static_cast<size_t>(width) * height);
 		ReadHeightmapPNGImageData(*map, png_ptr, info_ptr);
 	}
 
@@ -206,10 +206,10 @@ static bool ReadHeightmapPNG(const char *filename, uint *x, uint *y, byte **map)
 /**
  * The BMP Heightmap loader.
  */
-static void ReadHeightmapBMPImageData(byte *map, BmpInfo *info, BmpData *data)
+static void ReadHeightmapBMPImageData(uint8_t *map, BmpInfo *info, BmpData *data)
 {
 	uint x, y;
-	byte gray_palette[256];
+	uint8_t gray_palette[256];
 
 	if (data->palette != nullptr) {
 		uint i;
@@ -244,8 +244,8 @@ static void ReadHeightmapBMPImageData(byte *map, BmpInfo *info, BmpData *data)
 
 	/* Read the raw image data and convert in 8-bit grayscale */
 	for (y = 0; y < info->height; y++) {
-		byte *pixel = &map[y * info->width];
-		byte *bitmap = &data->bitmap[y * info->width * (info->bpp == 24 ? 3 : 1)];
+		uint8_t *pixel = &map[y * info->width];
+		uint8_t *bitmap = &data->bitmap[y * info->width * (info->bpp == 24 ? 3 : 1)];
 
 		for (x = 0; x < info->width; x++) {
 			if (info->bpp != 24) {
@@ -263,7 +263,7 @@ static void ReadHeightmapBMPImageData(byte *map, BmpInfo *info, BmpData *data)
  * If map == nullptr only the size of the BMP is read, otherwise a map
  * with grayscale pixels is allocated and assigned to *map.
  */
-static bool ReadHeightmapBMP(const char *filename, uint *x, uint *y, byte **map)
+static bool ReadHeightmapBMP(const char *filename, uint *x, uint *y, uint8_t **map)
 {
 	FILE *f;
 	BmpInfo info;
@@ -303,7 +303,7 @@ static bool ReadHeightmapBMP(const char *filename, uint *x, uint *y, byte **map)
 			return false;
 		}
 
-		*map = MallocT<byte>(static_cast<size_t>(info.width) * info.height);
+		*map = MallocT<uint8_t>(static_cast<size_t>(info.width) * info.height);
 		ReadHeightmapBMPImageData(*map, &info, &data);
 	}
 
@@ -323,7 +323,7 @@ static bool ReadHeightmapBMP(const char *filename, uint *x, uint *y, byte **map)
  * @param img_height the height of the image in pixels/tiles
  * @param map        the input map
  */
-static void GrayscaleToMapHeights(uint img_width, uint img_height, byte *map)
+static void GrayscaleToMapHeights(uint img_width, uint img_height, uint8_t *map)
 {
 	/* Defines the detail of the aspect ratio (to avoid doubles) */
 	const uint num_div = 16384;
@@ -423,7 +423,7 @@ void FixSlopes()
 {
 	uint width, height;
 	int row, col;
-	byte current_tile;
+	uint8_t current_tile;
 
 	/* Adjust height difference to maximum one horizontal/vertical change. */
 	width   = Map::SizeX();
@@ -484,7 +484,7 @@ void FixSlopes()
  * @param[in,out] map If not \c nullptr, destination to store the loaded block of image data.
  * @return Whether loading was successful.
  */
-static bool ReadHeightMap(DetailedFileType dft, const char *filename, uint *x, uint *y, byte **map)
+static bool ReadHeightMap(DetailedFileType dft, const char *filename, uint *x, uint *y, uint8_t **map)
 {
 	switch (dft) {
 		default:
@@ -523,7 +523,7 @@ bool GetHeightmapDimensions(DetailedFileType dft, const char *filename, uint *x,
 bool LoadHeightmap(DetailedFileType dft, const char *filename)
 {
 	uint x, y;
-	byte *map = nullptr;
+	uint8_t *map = nullptr;
 
 	if (!ReadHeightMap(dft, filename, &x, &y, &map)) {
 		free(map);
@@ -543,7 +543,7 @@ bool LoadHeightmap(DetailedFileType dft, const char *filename)
  * Make an empty world where all tiles are of height 'tile_height'.
  * @param tile_height of the desired new empty world
  */
-void FlatEmptyWorld(byte tile_height)
+void FlatEmptyWorld(uint8_t tile_height)
 {
 	int edge_distance = _settings_game.construction.freeform_edges ? 0 : 2;
 	for (uint row = edge_distance; row < Map::SizeY() - edge_distance; row++) {

@@ -1285,8 +1285,8 @@ static CommandCost ClearTile_Road(TileIndex tile, DoCommandFlag flags)
 
 struct DrawRoadTileStruct {
 	uint16_t image;
-	byte subcoord_x;
-	byte subcoord_y;
+	uint8_t subcoord_x;
+	uint8_t subcoord_y;
 };
 
 #include "table/road_land.h"
@@ -1320,7 +1320,7 @@ static Foundation GetRoadFoundation(Slope tileh, RoadBits bits)
 	return (bits == ROAD_X ? FOUNDATION_INCLINED_X : FOUNDATION_INCLINED_Y);
 }
 
-const byte _road_sloped_sprites[14] = {
+const uint8_t _road_sloped_sprites[14] = {
 	0,  0,  2,  0,
 	0,  1,  0,  0,
 	3,  0,  0,  0,
@@ -2232,7 +2232,7 @@ static void GetTileDesc_Road(TileIndex tile, TileDesc *td)
  * Given the direction the road depot is pointing, this is the direction the
  * vehicle should be travelling in in order to enter the depot.
  */
-static const byte _roadveh_enter_depot_dir[4] = {
+static const uint8_t _roadveh_enter_depot_dir[4] = {
 	TRACKDIR_X_SW, TRACKDIR_Y_NW, TRACKDIR_X_NE, TRACKDIR_Y_SE
 };
 

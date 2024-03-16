@@ -579,7 +579,7 @@ static void HeightMapCurves(uint level)
 	float factor = sqrt((float)_height_map.size_x / (float)_height_map.size_y);
 	uint sx = Clamp((int)(((1 << level) * factor) + 0.5), 1, 128);
 	uint sy = Clamp((int)(((1 << level) / factor) + 0.5), 1, 128);
-	std::vector<byte> c(static_cast<size_t>(sx) * sy);
+	std::vector<uint8_t> c(static_cast<size_t>(sx) * sy);
 
 	for (uint i = 0; i < sx * sy; i++) {
 		c[i] = Random() % lengthof(curve_maps);
@@ -880,7 +880,7 @@ static void HeightMapNormalize()
 
 	HeightMapAdjustWaterLevel(water_percent, h_max_new);
 
-	byte water_borders = _settings_game.construction.freeform_edges ? _settings_game.game_creation.water_borders : 0xF;
+	uint8_t water_borders = _settings_game.construction.freeform_edges ? _settings_game.game_creation.water_borders : 0xF;
 	if (water_borders == BORDERS_RANDOM) water_borders = GB(Random(), 0, 4);
 
 	HeightMapCoastLines(water_borders);

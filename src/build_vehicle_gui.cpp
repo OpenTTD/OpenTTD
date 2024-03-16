@@ -95,7 +95,7 @@ static constexpr NWidgetPart _nested_build_vehicle_widgets[] = {
 
 
 bool _engine_sort_direction; ///< \c false = descending, \c true = ascending.
-byte _engine_sort_last_criteria[]       = {0, 0, 0, 0};                 ///< Last set sort criteria, for each vehicle type.
+uint8_t _engine_sort_last_criteria[]       = {0, 0, 0, 0};                 ///< Last set sort criteria, for each vehicle type.
 bool _engine_sort_last_order[]          = {false, false, false, false}; ///< Last set direction of the sort order, for each vehicle type.
 bool _engine_sort_show_hidden_engines[] = {false, false, false, false}; ///< Last set 'show hidden engines' setting for each vehicle type.
 static CargoID _engine_sort_last_cargo_criteria[] = {CargoFilterCriteria::CF_ANY, CargoFilterCriteria::CF_ANY, CargoFilterCriteria::CF_ANY, CargoFilterCriteria::CF_ANY}; ///< Last set filter criteria, for each vehicle type.
@@ -1126,7 +1126,7 @@ struct BuildVehicleWindow : Window {
 		RoadType roadtype;   ///< Road type to show, or #INVALID_ROADTYPE.
 	} filter;                                   ///< Filter to apply.
 	bool descending_sort_order;                 ///< Sort direction, @see _engine_sort_direction
-	byte sort_criteria;                         ///< Current sort criterium.
+	uint8_t sort_criteria;                         ///< Current sort criterium.
 	bool show_hidden_engines;                   ///< State of the 'show hidden engines' button.
 	bool listview_mode;                         ///< If set, only display the available vehicles and do not show a 'build' button.
 	EngineID sel_engine;                        ///< Currently selected engine, or #INVALID_ENGINE

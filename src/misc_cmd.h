@@ -13,9 +13,9 @@
 #include "command_type.h"
 #include "economy_type.h"
 
-enum PauseMode : byte;
+enum PauseMode : uint8_t;
 
-enum class LoanCommand : byte {
+enum class LoanCommand : uint8_t {
 	Interval,
 	Max,
 	Amount,

@@ -245,13 +245,13 @@ static int32_t LookupWithBuildOnSlopes(::Slope slope, const Array<> &existing, i
 		SLOPE_W,    SLOPE_EW,  SLOPE_SW,  SLOPE_WSE,
 		SLOPE_W,    SLOPE_SW,  SLOPE_EW,  SLOPE_WSE,
 		SLOPE_SW,   SLOPE_WSE, SLOPE_WSE};
-	static const byte base_rotates[] = {0, 0, 1, 0, 2, 0, 1, 0, 3, 3, 2, 3, 2, 2, 1};
+	static const uint8_t base_rotates[] = {0, 0, 1, 0, 2, 0, 1, 0, 3, 3, 2, 3, 2, 2, 1};
 
 	if (slope >= (::Slope)lengthof(base_slopes)) {
 		/* This slope is an invalid slope, so ignore it. */
 		return -1;
 	}
-	byte base_rotate = base_rotates[slope];
+	uint8_t base_rotate = base_rotates[slope];
 	slope = base_slopes[slope];
 
 	/* Some slopes don't need rotating, so return early when we know we do

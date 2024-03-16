@@ -44,7 +44,7 @@ static CommandCost ClearTile_Clear(TileIndex tile, DoCommandFlag flags)
 	return price;
 }
 
-void DrawClearLandTile(const TileInfo *ti, byte set)
+void DrawClearLandTile(const TileInfo *ti, uint8_t set)
 {
 	DrawGroundSprite(SPR_FLAT_BARE_LAND + SlopeToSpriteOffset(ti->tileh) + set * 19, PAL_NONE);
 }

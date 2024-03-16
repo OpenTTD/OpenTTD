@@ -15,7 +15,7 @@
 /**
  * Enum for all companies/owners.
  */
-enum Owner : byte {
+enum Owner : uint8_t {
 	/* All companies below MAX_COMPANIES are playable
 	 * companies, above, they are special, computer controlled 'companies' */
 	OWNER_BEGIN     = 0x00, ///< First owner

@@ -93,14 +93,14 @@ public:
 	 * @param size the amount of bytes to allocate.
 	 * @return the given amounts of bytes zeroed.
 	 */
-	inline void *operator new(size_t size) { return CallocT<byte>(size); }
+	inline void *operator new(size_t size) { return CallocT<uint8_t>(size); }
 
 	/**
 	 * Memory allocator for an array of class instances.
 	 * @param size the amount of bytes to allocate.
 	 * @return the given amounts of bytes zeroed.
 	 */
-	inline void *operator new[](size_t size) { return CallocT<byte>(size); }
+	inline void *operator new[](size_t size) { return CallocT<uint8_t>(size); }
 
 	/**
 	 * Memory release for a single class instance.

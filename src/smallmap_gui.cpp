@@ -406,7 +406,7 @@ static const AndOr _smallmap_vehicles_andor[] = {
 };
 
 /** Mapping of tile type to importance of the tile (higher number means more interesting to show). */
-static const byte _tiletype_importance[] = {
+static const uint8_t _tiletype_importance[] = {
 	2, // MP_CLEAR
 	8, // MP_RAILWAY
 	7, // MP_ROAD
@@ -607,12 +607,12 @@ uint32_t GetSmallMapOwnerPixels(TileIndex tile, TileType t, IncludeHeightmap inc
 }
 
 /** Vehicle colours in #SMT_VEHICLES mode. Indexed by #VehicleType. */
-static const byte _vehicle_type_colours[6] = {
+static const uint8_t _vehicle_type_colours[6] = {
 	PC_RED, PC_YELLOW, PC_LIGHT_BLUE, PC_WHITE, PC_BLACK, PC_RED
 };
 
 /** Types of legends in the #WID_SM_LEGEND widget. */
-enum SmallMapType : byte {
+enum SmallMapType : uint8_t {
 	SMT_CONTOUR,
 	SMT_VEHICLES,
 	SMT_INDUSTRY,
@@ -972,7 +972,7 @@ protected:
 			}
 
 			/* Calculate pointer to pixel and the colour */
-			byte colour = (this->map_type == SMT_VEHICLES) ? _vehicle_type_colours[v->type] : PC_WHITE;
+			uint8_t colour = (this->map_type == SMT_VEHICLES) ? _vehicle_type_colours[v->type] : PC_WHITE;
 
 			/* And draw either one or two pixels depending on clipping */
 			blitter->SetPixel(dpi->dst_ptr, x, y, colour);

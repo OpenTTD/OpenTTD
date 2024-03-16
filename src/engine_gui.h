@@ -44,7 +44,7 @@ void DrawShipEngine(int left, int right, int preferred_x, int y, EngineID engine
 void DrawAircraftEngine(int left, int right, int preferred_x, int y, EngineID engine, PaletteID pal, EngineImageType image_type);
 
 extern bool _engine_sort_direction;
-extern byte _engine_sort_last_criteria[];
+extern uint8_t _engine_sort_last_criteria[];
 extern bool _engine_sort_last_order[];
 extern bool _engine_sort_show_hidden_engines[];
 extern const StringID _engine_sort_listing[][12];

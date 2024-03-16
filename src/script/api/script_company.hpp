@@ -99,7 +99,7 @@ public:
 	 * Types of expenses.
 	 * @api -ai
 	 */
-	enum ExpensesType : byte {
+	enum ExpensesType : uint8_t {
 		EXPENSES_CONSTRUCTION = ::EXPENSES_CONSTRUCTION,     ///< Construction costs.
 		EXPENSES_NEW_VEHICLES = ::EXPENSES_NEW_VEHICLES,     ///< New vehicles.
 		EXPENSES_TRAIN_RUN    = ::EXPENSES_TRAIN_RUN,        ///< Running costs trains.

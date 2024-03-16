@@ -72,7 +72,7 @@ struct GRFTextEntry {
 
 
 static std::vector<GRFTextEntry> _grf_text;
-static byte _currentLangID = GRFLX_ENGLISH;  ///< by default, english is used.
+static uint8_t _currentLangID = GRFLX_ENGLISH;  ///< by default, english is used.
 
 /**
  * Get the mapping from the NewGRF supplied ID to OpenTTD's internal ID.
@@ -120,7 +120,7 @@ struct UnmappedChoiceList {
 	int offset;             ///< The offset for the plural/gender form.
 
 	/** Mapping of NewGRF supplied ID to the different strings in the choice list. */
-	std::map<byte, std::stringstream> strings;
+	std::map<uint8_t, std::stringstream> strings;
 
 	/**
 	 * Flush this choice list into the destination string.
@@ -269,7 +269,7 @@ std::string TranslateTTDPatchCodes(uint32_t grfid, uint8_t language_id, bool all
 				continue;
 			}
 		} else {
-			c = (byte)*src++;
+			c = (uint8_t)*src++;
 		}
 
 		if (c == '\0') break;
@@ -482,7 +482,7 @@ string_end:
  * @param langid The The language of the new text.
  * @param text_to_add The text to add to the list.
  */
-static void AddGRFTextToList(GRFTextList &list, byte langid, const std::string &text_to_add)
+static void AddGRFTextToList(GRFTextList &list, uint8_t langid, const std::string &text_to_add)
 {
 	/* Loop through all languages and see if we can replace a string */
 	for (auto &text : list) {
@@ -505,7 +505,7 @@ static void AddGRFTextToList(GRFTextList &list, byte langid, const std::string &
  * @param text_to_add The text to add to the list.
  * @note All text-codes will be translated.
  */
-void AddGRFTextToList(GRFTextList &list, byte langid, uint32_t grfid, bool allow_newlines, const char *text_to_add)
+void AddGRFTextToList(GRFTextList &list, uint8_t langid, uint32_t grfid, bool allow_newlines, const char *text_to_add)
 {
 	AddGRFTextToList(list, langid, TranslateTTDPatchCodes(grfid, langid, allow_newlines, text_to_add));
 }
@@ -519,7 +519,7 @@ void AddGRFTextToList(GRFTextList &list, byte langid, uint32_t grfid, bool allow
  * @param text_to_add The text to add to the list.
  * @note All text-codes will be translated.
  */
-void AddGRFTextToList(GRFTextWrapper &list, byte langid, uint32_t grfid, bool allow_newlines, const char *text_to_add)
+void AddGRFTextToList(GRFTextWrapper &list, uint8_t langid, uint32_t grfid, bool allow_newlines, const char *text_to_add)
 {
 	if (!list) list.reset(new GRFTextList());
 	AddGRFTextToList(*list, langid, grfid, allow_newlines, text_to_add);
@@ -540,7 +540,7 @@ void AddGRFTextToList(GRFTextWrapper &list, const std::string &text_to_add)
 /**
  * Add the new read string into our structure.
  */
-StringID AddGRFString(uint32_t grfid, uint16_t stringid, byte langid_to_add, bool new_scheme, bool allow_newlines, const char *text_to_add, StringID def_string)
+StringID AddGRFString(uint32_t grfid, uint16_t stringid, uint8_t langid_to_add, bool new_scheme, bool allow_newlines, const char *text_to_add, StringID def_string)
 {
 	/* When working with the old language scheme (grf_version is less than 7) and
 	 * English or American is among the set bits, simply add it as English in
@@ -656,12 +656,12 @@ const char *GetGRFStringPtr(uint32_t stringid)
  * from strings.cpp:ReadLanguagePack
  * @param language_id iso code of current selection
  */
-void SetCurrentGrfLangID(byte language_id)
+void SetCurrentGrfLangID(uint8_t language_id)
 {
 	_currentLangID = language_id;
 }
 
-bool CheckGrfLangID(byte lang_id, byte grf_version)
+bool CheckGrfLangID(uint8_t lang_id, uint8_t grf_version)
 {
 	if (grf_version < 7) {
 		switch (_currentLangID) {
@@ -685,8 +685,8 @@ void CleanUpStrings()
 }
 
 struct TextRefStack {
-	std::array<byte, 0x30> stack;
-	byte position;
+	std::array<uint8_t, 0x30> stack;
+	uint8_t position;
 	const GRFFile *grffile;
 	bool used;
 
@@ -719,7 +719,7 @@ struct TextRefStack {
 	/** Rotate the top four words down: W1, W2, W3, W4 -> W4, W1, W2, W3 */
 	void RotateTop4Words()
 	{
-		byte tmp[2];
+		uint8_t tmp[2];
 		for (int i = 0; i  < 2; i++) tmp[i] = this->stack[this->position + i + 6];
 		for (int i = 5; i >= 0; i--) this->stack[this->position + i + 2] = this->stack[this->position + i];
 		for (int i = 0; i  < 2; i++) this->stack[this->position + i] = tmp[i];
@@ -795,7 +795,7 @@ void RestoreTextRefStackBackup(struct TextRefStack *backup)
  * @param numEntries number of entries to copy from the registers
  * @param values values to copy onto the stack; if nullptr the temporary NewGRF registers will be used instead
  */
-void StartTextRefStackUsage(const GRFFile *grffile, byte numEntries, const uint32_t *values)
+void StartTextRefStackUsage(const GRFFile *grffile, uint8_t numEntries, const uint32_t *values)
 {
 	extern TemporaryStorageArray<int32_t, 0x110> _temp_store;
 

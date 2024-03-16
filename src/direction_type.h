@@ -21,7 +21,7 @@
  * your viewport and not rotated by 45 degrees left or right to get
  * a "north" used in you games.
  */
-enum Direction : byte {
+enum Direction : uint8_t {
 	DIR_BEGIN = 0,          ///< Used to iterate
 	DIR_N   = 0,            ///< North
 	DIR_NE  = 1,            ///< Northeast
@@ -70,7 +70,7 @@ enum DirDiff {
  *
  * This enumeration is used for the 4 direction of the tile-edges.
  */
-enum DiagDirection : byte {
+enum DiagDirection : uint8_t {
 	DIAGDIR_BEGIN = 0,      ///< Used for iterations
 	DIAGDIR_NE  = 0,        ///< Northeast, upper right on your monitor
 	DIAGDIR_SE  = 1,        ///< Southeast
@@ -113,7 +113,7 @@ DECLARE_POSTFIX_INCREMENT(DiagDirDiff)
  * (and south-east edge). The Y axis must be so the one which goes
  * align the north-east edge (and south-west) edge.
  */
-enum Axis : byte {
+enum Axis : uint8_t {
 	AXIS_X = 0,          ///< The X axis
 	AXIS_Y = 1,          ///< The y axis
 	AXIS_END,            ///< Used for iterations

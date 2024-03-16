@@ -84,7 +84,7 @@ CompanyMask _network_company_passworded; ///< Bitmask of the password status of 
 static_assert((int)NETWORK_COMPANY_NAME_LENGTH == MAX_LENGTH_COMPANY_NAME_CHARS * MAX_CHAR_LENGTH);
 
 /** The amount of clients connected */
-byte _network_clients_connected = 0;
+uint8_t _network_clients_connected = 0;
 
 extern std::string GenerateUid(std::string_view subject);
 
@@ -134,9 +134,9 @@ NetworkClientInfo::~NetworkClientInfo()
 	return nullptr;
 }
 
-byte NetworkSpectatorCount()
+uint8_t NetworkSpectatorCount()
 {
-	byte count = 0;
+	uint8_t count = 0;
 
 	for (const NetworkClientInfo *ci : NetworkClientInfo::Iterate()) {
 		if (ci->client_playas == COMPANY_SPECTATOR) count++;
@@ -1130,10 +1130,10 @@ void NetworkGameLoop()
 				cp->cmd = (Commands)cmd;
 
 				/* Parse command data. */
-				std::vector<byte> args;
+				std::vector<uint8_t> args;
 				size_t arg_len = strlen(buffer);
 				for (size_t i = 0; i + 1 < arg_len; i += 2) {
-					byte e = 0;
+					uint8_t e = 0;
 					std::from_chars(buffer + i, buffer + i + 2, e, 16);
 					args.emplace_back(e);
 				}

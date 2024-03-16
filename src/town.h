@@ -59,7 +59,7 @@ struct Town : TownPool::PoolItem<&_town_pool> {
 	std::string name;                ///< Custom town name. If empty, the town was not renamed and uses the generated name.
 	mutable std::string cached_name; ///< NOSAVE: Cache of the resolved name of the town, if not using a custom town name
 
-	byte flags;                    ///< See #TownFlags.
+	uint8_t flags;                    ///< See #TownFlags.
 
 	uint16_t noise_reached;          ///< level of noise that all the airports are generating
 
@@ -78,7 +78,7 @@ struct Town : TownPool::PoolItem<&_town_pool> {
 
 	std::string text; ///< General text with additional information.
 
-	inline byte GetPercentTransported(CargoID cid) const
+	inline uint8_t GetPercentTransported(CargoID cid) const
 	{
 		if (!IsValidCargoID(cid)) return 0;
 		return this->supplied[cid].old_act * 256 / (this->supplied[cid].old_max + 1);
@@ -91,8 +91,8 @@ struct Town : TownPool::PoolItem<&_town_pool> {
 	uint16_t grow_counter;             ///< counter to count when to grow, value is smaller than or equal to growth_rate
 	uint16_t growth_rate;              ///< town growth rate
 
-	byte fund_buildings_months;      ///< fund buildings program in action?
-	byte road_build_months;          ///< fund road reconstruction in action?
+	uint8_t fund_buildings_months;      ///< fund buildings program in action?
+	uint8_t road_build_months;          ///< fund road reconstruction in action?
 
 	bool larger_town;                ///< if this is a larger town and should grow more quickly
 	TownLayout layout;               ///< town specific road layout
@@ -238,7 +238,7 @@ TownActions GetMaskOfTownActions(CompanyID cid, const Town *t);
 bool GenerateTowns(TownLayout layout);
 const CargoSpec *FindFirstCargoWithTownAcceptanceEffect(TownAcceptanceEffect effect);
 
-extern const byte _town_action_costs[TACT_COUNT];
+extern const uint8_t _town_action_costs[TACT_COUNT];
 
 /**
  * Set the default name for a depot/waypoint

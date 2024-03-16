@@ -11,13 +11,13 @@
 #include "sprite_file_type.hpp"
 
 /** Signature of a container version 2 GRF. */
-extern const byte _grf_cont_v2_sig[8] = {'G', 'R', 'F', 0x82, 0x0D, 0x0A, 0x1A, 0x0A};
+extern const uint8_t _grf_cont_v2_sig[8] = {'G', 'R', 'F', 0x82, 0x0D, 0x0A, 0x1A, 0x0A};
 
 /**
  * Get the container version of the currently opened GRF file.
  * @return Container version of the GRF file or 0 if the file is corrupt/no GRF file.
  */
-static byte GetGRFContainerVersion(SpriteFile &file)
+static uint8_t GetGRFContainerVersion(SpriteFile &file)
 {
 	size_t pos = file.GetPos();
 

@@ -135,14 +135,14 @@ struct AyStar {
 	void *user_target;
 	void *user_data;
 
-	byte loops_per_tick;   ///< How many loops are there called before Main() gives control back to the caller. 0 = until done.
+	uint8_t loops_per_tick;   ///< How many loops are there called before Main() gives control back to the caller. 0 = until done.
 	uint max_path_cost;    ///< If the g-value goes over this number, it stops searching, 0 = infinite.
 	uint max_search_nodes; ///< The maximum number of nodes that will be expanded, 0 = infinite.
 
 	/* These should be filled with the neighbours of a tile by
 	 * GetNeighbours */
 	AyStarNode neighbours[12];
-	byte num_neighbours;
+	uint8_t num_neighbours;
 
 	void Init(Hash_HashProc hash, uint num_buckets);
 

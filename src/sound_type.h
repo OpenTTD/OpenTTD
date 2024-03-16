@@ -19,7 +19,7 @@ struct SoundEntry {
 	uint8_t channels;
 	uint8_t volume;
 	uint8_t priority;
-	byte grf_container_ver; ///< NewGRF container version if the sound is from a NewGRF.
+	uint8_t grf_container_ver; ///< NewGRF container version if the sound is from a NewGRF.
 };
 
 /**

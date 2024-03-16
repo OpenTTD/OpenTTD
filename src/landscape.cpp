@@ -76,7 +76,7 @@ const TileTypeProcs * const _tile_type_procs[16] = {
 };
 
 /** landscape slope => sprite */
-extern const byte _slope_to_sprite_offset[32] = {
+extern const uint8_t _slope_to_sprite_offset[32] = {
 	0, 1, 2, 3, 4, 5, 6,  7, 8, 9, 10, 11, 12, 13, 14, 0,
 	0, 0, 0, 0, 0, 0, 0, 16, 0, 0,  0, 17,  0, 15, 18, 0,
 };
@@ -455,7 +455,7 @@ void DrawFoundation(TileInfo *ti, Foundation f)
 
 		if (IsInclinedFoundation(f)) {
 			/* inclined foundation */
-			byte inclined = highest_corner * 2 + (f == FOUNDATION_INCLINED_Y ? 1 : 0);
+			uint8_t inclined = highest_corner * 2 + (f == FOUNDATION_INCLINED_Y ? 1 : 0);
 
 			AddSortableSpriteToDraw(inclined_base + inclined, PAL_NONE, ti->x, ti->y,
 				f == FOUNDATION_INCLINED_X ? TILE_SIZE : 1,
@@ -510,7 +510,7 @@ void DrawFoundation(TileInfo *ti, Foundation f)
 			OffsetGroundSprite(0, 0);
 		} else {
 			/* inclined foundation */
-			byte inclined = GetHighestSlopeCorner(ti->tileh) * 2 + (f == FOUNDATION_INCLINED_Y ? 1 : 0);
+			uint8_t inclined = GetHighestSlopeCorner(ti->tileh) * 2 + (f == FOUNDATION_INCLINED_Y ? 1 : 0);
 
 			AddSortableSpriteToDraw(inclined_base + inclined, PAL_NONE, ti->x, ti->y,
 				f == FOUNDATION_INCLINED_X ? TILE_SIZE : 1,
@@ -582,7 +582,7 @@ bool IsSnowLineSet()
  * @param table the 12 * 32 byte table containing the snowline for each day
  * @ingroup SnowLineGroup
  */
-void SetSnowLine(byte table[SNOW_LINE_MONTHS][SNOW_LINE_DAYS])
+void SetSnowLine(uint8_t table[SNOW_LINE_MONTHS][SNOW_LINE_DAYS])
 {
 	_snow_line = CallocT<SnowLine>(1);
 	_snow_line->lowest_value = 0xFF;
@@ -601,7 +601,7 @@ void SetSnowLine(byte table[SNOW_LINE_MONTHS][SNOW_LINE_DAYS])
  * @return the snow line height.
  * @ingroup SnowLineGroup
  */
-byte GetSnowLine()
+uint8_t GetSnowLine()
 {
 	if (_snow_line == nullptr) return _settings_game.game_creation.snow_line_height;
 
@@ -614,7 +614,7 @@ byte GetSnowLine()
  * @return the highest snow line height.
  * @ingroup SnowLineGroup
  */
-byte HighestSnowLine()
+uint8_t HighestSnowLine()
 {
 	return _snow_line == nullptr ? _settings_game.game_creation.snow_line_height : _snow_line->highest_value;
 }
@@ -624,7 +624,7 @@ byte HighestSnowLine()
  * @return the lowest snow line height.
  * @ingroup SnowLineGroup
  */
-byte LowestSnowLine()
+uint8_t LowestSnowLine()
 {
 	return _snow_line == nullptr ? _settings_game.game_creation.snow_line_height : _snow_line->lowest_value;
 }
@@ -805,8 +805,8 @@ void InitializeLandscape()
 	for (uint y = 0; y < Map::SizeY(); y++) MakeVoid(TileXY(Map::MaxX(), y));
 }
 
-static const byte _genterrain_tbl_1[5] = { 10, 22, 33, 37, 4  };
-static const byte _genterrain_tbl_2[5] = {  0,  0,  0,  0, 33 };
+static const uint8_t _genterrain_tbl_1[5] = { 10, 22, 33, 37, 4  };
+static const uint8_t _genterrain_tbl_2[5] = {  0,  0,  0,  0, 33 };
 
 static void GenerateTerrain(int type, uint flag)
 {
@@ -830,7 +830,7 @@ static void GenerateTerrain(int type, uint flag)
 
 	if (DiagDirToAxis(direction) == AXIS_Y) Swap(w, h);
 
-	const byte *p = templ->data;
+	const uint8_t *p = templ->data;
 
 	if ((flag & 4) != 0) {
 		/* This is only executed in secondary/tertiary loops to generate the terrain for arctic and tropic.
@@ -1550,7 +1550,7 @@ static uint8_t CalculateDesertLine()
 	return CalculateCoverageLine(100 - _settings_game.game_creation.desert_coverage, 4);
 }
 
-bool GenerateLandscape(byte mode)
+bool GenerateLandscape(uint8_t mode)
 {
 	/** Number of steps of landscape generation */
 	enum GenLandscapeSteps {

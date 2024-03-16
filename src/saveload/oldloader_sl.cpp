@@ -41,7 +41,7 @@
 
 static bool _read_ttdpatch_flags;    ///< Have we (tried to) read TTDPatch extra flags?
 static uint16_t _old_extra_chunk_nums; ///< Number of extra TTDPatch chunks
-static byte _old_vehicle_multiplier; ///< TTDPatch vehicle multiplier
+static uint8_t _old_vehicle_multiplier; ///< TTDPatch vehicle multiplier
 
 void FixOldMapArray()
 {
@@ -111,7 +111,7 @@ static void FixTTDDepots()
 
 #define FIXNUM(x, y, z) (((((x) << 16) / (y)) + 1) << z)
 
-static uint32_t RemapOldTownName(uint32_t townnameparts, byte old_town_name_type)
+static uint32_t RemapOldTownName(uint32_t townnameparts, uint8_t old_town_name_type)
 {
 	switch (old_town_name_type) {
 		case 0: case 3: // English, American
@@ -304,7 +304,7 @@ static bool FixTTOMapArray()
 
 			case MP_TUNNELBRIDGE:
 				if (HasBit(tile.m5(), 7)) { // bridge
-					byte m5 = tile.m5();
+					uint8_t m5 = tile.m5();
 					tile.m5() = m5 & 0xE1; // copy bits 7..5, 1
 					if (GB(m5, 1, 2) == 1) tile.m5() |= 0x02; // road bridge
 					if (GB(m5, 1, 2) == 3) tile.m2() |= 0xA0; // monorail bridge -> tubular, steel bridge
@@ -1281,7 +1281,7 @@ bool LoadOldVehicle(LoadgameState *ls, int num)
 
 			switch (v->type) {
 				case VEH_TRAIN: {
-					static const byte spriteset_rail[] = {
+					static const uint8_t spriteset_rail[] = {
 						  0,   2,   4,   4,   8,  10,  12,  14,  16,  18,  20,  22,  40,  42,  44,  46,
 						 48,  52,  54,  66,  68,  70,  72,  74,  76,  78,  80,  82,  84,  86, 120, 122,
 						124, 126, 128, 130, 132, 134, 136, 138, 140
@@ -1508,7 +1508,7 @@ static bool LoadOldMapPart1(LoadgameState *ls, int)
 		}
 		auto range = Map::Iterate();
 		for (auto it = range.begin(); it != range.end(); /* nothing. */) {
-			byte b = ReadByte(ls);
+			uint8_t b = ReadByte(ls);
 			for (int i = 0; i < 8; i += 2, ++it) (*it).m6() = GB(b, i, 2);
 		}
 	}
@@ -1586,8 +1586,8 @@ static bool LoadTTDPatchExtraChunks(LoadgameState *ls, int)
 
 extern TileIndex _cur_tileloop_tile;
 extern uint16_t _disaster_delay;
-extern byte _trees_tick_ctr;
-extern byte _age_cargo_skip_counter; // From misc_sl.cpp
+extern uint8_t _trees_tick_ctr;
+extern uint8_t _age_cargo_skip_counter; // From misc_sl.cpp
 extern uint8_t _old_diff_level;
 extern uint8_t _old_units;
 static const OldChunks main_chunk[] = {
@@ -1808,7 +1808,7 @@ bool LoadTTOMain(LoadgameState *ls)
 
 	_read_ttdpatch_flags = false;
 
-	std::array<byte, 103 * sizeof(Engine)> engines; // we don't want to call Engine constructor here
+	std::array<uint8_t, 103 * sizeof(Engine)> engines; // we don't want to call Engine constructor here
 	_old_engines = (Engine *)engines.data();
 	std::array<StringID, 800> vehnames;
 	_old_vehicle_names = vehnames.data();

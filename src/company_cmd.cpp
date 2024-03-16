@@ -298,10 +298,10 @@ void SubtractMoneyFromCompany(const CommandCost &cost)
 void SubtractMoneyFromCompanyFract(CompanyID company, const CommandCost &cst)
 {
 	Company *c = Company::Get(company);
-	byte m = c->money_fraction;
+	uint8_t m = c->money_fraction;
 	Money cost = cst.GetCost();
 
-	c->money_fraction = m - (byte)cost;
+	c->money_fraction = m - (uint8_t)cost;
 	cost >>= 8;
 	if (c->money_fraction > m) cost++;
 	if (cost != 0) SubtractMoneyFromAnyCompany(c, CommandCost(cst.GetExpensesType(), cost));
@@ -447,7 +447,7 @@ bad_town_name:;
 }
 
 /** Sorting weights for the company colours. */
-static const byte _colour_sort[COLOUR_END] = {2, 2, 3, 2, 3, 2, 3, 2, 3, 2, 2, 2, 3, 1, 1, 1};
+static const uint8_t _colour_sort[COLOUR_END] = {2, 2, 3, 2, 3, 2, 3, 2, 3, 2, 2, 2, 3, 1, 1, 1};
 /** Similar colours, so we can try to prevent same coloured companies. */
 static const Colours _similar_colour[COLOUR_END][2] = {
 	{ COLOUR_BLUE,       COLOUR_LIGHT_BLUE }, // COLOUR_DARK_BLUE

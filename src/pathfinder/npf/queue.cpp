@@ -240,7 +240,7 @@ void Hash::Init(Hash_HashProc *hash, uint num_buckets)
 	this->hash = hash;
 	this->size = 0;
 	this->num_buckets = num_buckets;
-	this->buckets = (HashNode*)MallocT<byte>(num_buckets * (sizeof(*this->buckets) + sizeof(*this->buckets_in_use)));
+	this->buckets = (HashNode*)MallocT<uint8_t>(num_buckets * (sizeof(*this->buckets) + sizeof(*this->buckets_in_use)));
 	this->buckets_in_use = (bool*)(this->buckets + num_buckets);
 	for (i = 0; i < num_buckets; i++) this->buckets_in_use[i] = false;
 }

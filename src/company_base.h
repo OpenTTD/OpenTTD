@@ -78,20 +78,20 @@ struct CompanyProperties {
 	CompanyManagerFace face;         ///< Face description of the president.
 
 	Money money;                     ///< Money owned by the company.
-	byte money_fraction;             ///< Fraction of money of the company, too small to represent in #money.
+	uint8_t money_fraction;             ///< Fraction of money of the company, too small to represent in #money.
 	Money current_loan;              ///< Amount of money borrowed from the bank.
 	Money max_loan;                  ///< Max allowed amount of the loan or COMPANY_MAX_LOAN_DEFAULT.
 
 	Colours colour;                  ///< Company colour.
 
-	byte block_preview;              ///< Number of quarters that the company is not allowed to get new exclusive engine previews (see CompaniesGenStatistics).
+	uint8_t block_preview;              ///< Number of quarters that the company is not allowed to get new exclusive engine previews (see CompaniesGenStatistics).
 
 	TileIndex location_of_HQ;        ///< Northern tile of HQ; #INVALID_TILE when there is none.
 	TileIndex last_build_coordinate; ///< Coordinate of the last build thing by this company.
 
 	TimerGameEconomy::Year inaugurated_year; ///< Economy year of starting the company.
 
-	byte months_of_bankruptcy;       ///< Number of months that the company is unable to pay its debts
+	uint8_t months_of_bankruptcy;       ///< Number of months that the company is unable to pay its debts
 	CompanyMask bankrupt_asked;      ///< which companies were asked about buying it?
 	int16_t bankrupt_timeout;          ///< If bigger than \c 0, amount of time to wait for an answer on an offer to buy this company.
 	Money bankrupt_value;
@@ -110,7 +110,7 @@ struct CompanyProperties {
 	std::array<Expenses, 3> yearly_expenses{}; ///< Expenses of the company for the last three years.
 	CompanyEconomyEntry cur_economy;                       ///< Economic data of the company of this quarter.
 	CompanyEconomyEntry old_economy[MAX_HISTORY_QUARTERS]; ///< Economic data of the company of the last #MAX_HISTORY_QUARTERS quarters.
-	byte num_valid_stat_ent;                               ///< Number of valid statistical entries in #old_economy.
+	uint8_t num_valid_stat_ent;                               ///< Number of valid statistical entries in #old_economy.
 
 	Livery livery[LS_END];
 

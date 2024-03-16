@@ -33,7 +33,7 @@ struct TownNameParams {
 	 * Initializes this struct from language ID
 	 * @param town_name town name 'language' ID
 	 */
-	TownNameParams(byte town_name)
+	TownNameParams(uint8_t town_name)
 	{
 		bool grf = town_name >= BUILTIN_TOWNNAME_GENERATOR_COUNT;
 		this->grfid = grf ? GetGRFTownNameId(town_name - BUILTIN_TOWNNAME_GENERATOR_COUNT) : 0;

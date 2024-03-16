@@ -63,9 +63,9 @@ enum GroundVehicleFlags {
  * virtual uint16_t      GetPower() const = 0;
  * virtual uint16_t      GetPoweredPartPower(const T *head) const = 0;
  * virtual uint16_t      GetWeight() const = 0;
- * virtual byte        GetTractiveEffort() const = 0;
- * virtual byte        GetAirDrag() const = 0;
- * virtual byte        GetAirDragArea() const = 0;
+ * virtual uint8_t        GetTractiveEffort() const = 0;
+ * virtual uint8_t        GetAirDrag() const = 0;
+ * virtual uint8_t        GetAirDragArea() const = 0;
  * virtual AccelStatus GetAccelerationStatus() const = 0;
  * virtual uint16_t      GetCurrentSpeed() const = 0;
  * virtual uint32_t      GetRollingFriction() const = 0;
@@ -362,7 +362,7 @@ protected:
 	inline uint DoUpdateSpeed(uint accel, int min_speed, int max_speed)
 	{
 		uint spd = this->subspeed + accel;
-		this->subspeed = (byte)spd;
+		this->subspeed = (uint8_t)spd;
 
 		/* When we are going faster than the maximum speed, reduce the speed
 		 * somewhat gradually. But never lower than the maximum speed. */

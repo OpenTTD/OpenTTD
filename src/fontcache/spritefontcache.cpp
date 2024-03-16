@@ -85,7 +85,7 @@ void SpriteFontCache::InitializeUnicodeGlyphMap()
 	}
 
 	for (uint i = 0; i < lengthof(_default_unicode_map); i++) {
-		byte key = _default_unicode_map[i].key;
+		uint8_t key = _default_unicode_map[i].key;
 		if (key == CLRA) {
 			/* Clear the glyph. This happens if the glyph at this code point
 			 * is non-standard and should be accessed by an SCC_xxx enum

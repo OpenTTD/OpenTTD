@@ -31,7 +31,7 @@ struct IndustryTileScopeResolver : public ScopeResolver {
 	}
 
 	uint32_t GetRandomBits() const override;
-	uint32_t GetVariable(byte variable, [[maybe_unused]] uint32_t parameter, bool *available) const override;
+	uint32_t GetVariable(uint8_t variable, [[maybe_unused]] uint32_t parameter, bool *available) const override;
 	uint32_t GetTriggers() const override;
 };
 
@@ -44,7 +44,7 @@ struct IndustryTileResolverObject : public ResolverObject {
 	IndustryTileResolverObject(IndustryGfx gfx, TileIndex tile, Industry *indus,
 			CallbackID callback = CBID_NO_CALLBACK, uint32_t callback_param1 = 0, uint32_t callback_param2 = 0);
 
-	ScopeResolver *GetScope(VarSpriteGroupScope scope = VSG_SCOPE_SELF, byte relative = 0) override
+	ScopeResolver *GetScope(VarSpriteGroupScope scope = VSG_SCOPE_SELF, uint8_t relative = 0) override
 	{
 		switch (scope) {
 			case VSG_SCOPE_SELF: return &indtile_scope;

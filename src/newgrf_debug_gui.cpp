@@ -86,9 +86,9 @@ typedef const void *NIOffsetProc(const void *b);
 struct NIProperty {
 	const char *name;          ///< A (human readable) name for the property
 	NIOffsetProc *offset_proc; ///< Callback proc to get the actual variable address in memory
-	byte read_size;            ///< Number of bytes (i.e. byte, word, dword etc)
-	byte prop;                 ///< The number of the property
-	byte type;
+	uint8_t read_size;            ///< Number of bytes (i.e. byte, word, dword etc)
+	uint8_t prop;                 ///< The number of the property
+	uint8_t type;
 };
 
 
@@ -99,8 +99,8 @@ struct NIProperty {
 struct NICallback {
 	const char *name;          ///< The human readable name of the callback
 	NIOffsetProc *offset_proc; ///< Callback proc to get the actual variable address in memory
-	byte read_size;            ///< The number of bytes (i.e. byte, word, dword etc) to read
-	byte cb_bit;               ///< The bit that needs to be set for this callback to be enabled
+	uint8_t read_size;            ///< The number of bytes (i.e. byte, word, dword etc) to read
+	uint8_t cb_bit;               ///< The bit that needs to be set for this callback to be enabled
 	uint16_t cb_id;              ///< The number of the callback
 };
 /** Mask to show no bit needs to be enabled for the callback. */
@@ -109,7 +109,7 @@ static const int CBM_NO_BIT = UINT8_MAX;
 /** Representation on the NewGRF variables. */
 struct NIVariable {
 	const char *name;
-	byte var;
+	uint8_t var;
 };
 
 /** Helper class to wrap some functionality/queries in. */
@@ -284,7 +284,7 @@ struct NewGRFInspectWindow : Window {
 	uint chain_index;
 
 	/** The currently edited parameter, to update the right one. */
-	byte current_edit_param;
+	uint8_t current_edit_param;
 
 	Scrollbar *vscroll;
 

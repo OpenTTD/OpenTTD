@@ -128,7 +128,7 @@ static struct {
 	bool do_stop;     ///< flag for stopping playback at next opportunity
 
 	int preload_time; ///< preload time for music blocks.
-	byte new_volume;  ///< volume setting to change to
+	uint8_t new_volume;  ///< volume setting to change to
 
 	MidiFile next_file;           ///< upcoming file to play
 	PlaybackSegment next_segment; ///< segment info for upcoming file
@@ -519,12 +519,12 @@ bool DLSFile::LoadFile(const wchar_t *file)
 }
 
 
-static byte ScaleVolume(byte original, byte scale)
+static uint8_t ScaleVolume(uint8_t original, uint8_t scale)
 {
 	return original * scale / 127;
 }
 
-static void TransmitChannelMsg(IDirectMusicBuffer *buffer, REFERENCE_TIME rt, byte status, byte p1, byte p2 = 0)
+static void TransmitChannelMsg(IDirectMusicBuffer *buffer, REFERENCE_TIME rt, uint8_t status, uint8_t p1, uint8_t p2 = 0)
 {
 	if (buffer->PackStructured(rt, 0, status | (p1 << 8) | (p2 << 16)) == E_OUTOFMEMORY) {
 		/* Buffer is full, clear it and try again. */
@@ -535,10 +535,10 @@ static void TransmitChannelMsg(IDirectMusicBuffer *buffer, REFERENCE_TIME rt, by
 	}
 }
 
-static void TransmitSysex(IDirectMusicBuffer *buffer, REFERENCE_TIME rt, const byte *&msg_start, size_t &remaining)
+static void TransmitSysex(IDirectMusicBuffer *buffer, REFERENCE_TIME rt, const uint8_t *&msg_start, size_t &remaining)
 {
 	/* Find end of message. */
-	const byte *msg_end = msg_start;
+	const uint8_t *msg_end = msg_start;
 	while (*msg_end != MIDIST_ENDSYSEX) msg_end++;
 	msg_end++; // Also include SysEx end byte.
 
@@ -558,7 +558,7 @@ static void TransmitSysex(IDirectMusicBuffer *buffer, REFERENCE_TIME rt, const b
 static void TransmitStandardSysex(IDirectMusicBuffer *buffer, REFERENCE_TIME rt, MidiSysexMessage msg)
 {
 	size_t length = 0;
-	const byte *data = MidiGetStandardSysexMessage(msg, length);
+	const uint8_t *data = MidiGetStandardSysexMessage(msg, length);
 	TransmitSysex(buffer, rt, data, length);
 }
 
@@ -594,8 +594,8 @@ static void MidiThreadProc()
 	MidiFile current_file;               // file currently being played from
 	PlaybackSegment current_segment;     // segment info for current playback
 	size_t current_block = 0;            // next block index to send
-	byte current_volume = 0;             // current effective volume setting
-	byte channel_volumes[16];            // last seen volume controller values in raw data
+	uint8_t current_volume = 0;             // current effective volume setting
+	uint8_t channel_volumes[16];            // last seen volume controller values in raw data
 
 	/* Get pointer to the reference clock of our output port. */
 	IReferenceClock *clock;
@@ -650,7 +650,7 @@ static void MidiThreadProc()
 				clock->GetTime(&cur_time);
 				TransmitNotesOff(_buffer, block_time, cur_time);
 
-				MemSetT<byte>(channel_volumes, 127, lengthof(channel_volumes));
+				MemSetT<uint8_t>(channel_volumes, 127, lengthof(channel_volumes));
 				/* Invalidate current volume. */
 				current_volume = UINT8_MAX;
 				last_volume_time = 0;
@@ -735,13 +735,13 @@ static void MidiThreadProc()
 				block_time = playback_start_time + block.realtime * MIDITIME_TO_REFTIME;
 				Debug(driver, 9, "DMusic thread: Streaming block {} (cur={}, block={})", current_block, (long long)(current_time / MS_TO_REFTIME), (long long)(block_time / MS_TO_REFTIME));
 
-				const byte *data = block.data.data();
+				const uint8_t *data = block.data.data();
 				size_t remaining = block.data.size();
-				byte last_status = 0;
+				uint8_t last_status = 0;
 				while (remaining > 0) {
 					/* MidiFile ought to have converted everything out of running status,
 					 * but handle it anyway just to be safe */
-					byte status = data[0];
+					uint8_t status = data[0];
 					if (status & 0x80) {
 						last_status = status;
 						data++;
@@ -1237,7 +1237,7 @@ bool MusicDriver_DMusic::IsSongPlaying()
 }
 
 
-void MusicDriver_DMusic::SetVolume(byte vol)
+void MusicDriver_DMusic::SetVolume(uint8_t vol)
 {
 	_playback.new_volume = vol;
 }

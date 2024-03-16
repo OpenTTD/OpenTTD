@@ -338,9 +338,9 @@ TEST_CASE("StrEndsWithIgnoreCase - std::string_view")
 
 TEST_CASE("FormatArrayAsHex")
 {
-	CHECK(FormatArrayAsHex(std::array<byte, 0>{}) == "");
-	CHECK(FormatArrayAsHex(std::array<byte, 1>{0x12}) == "12");
-	CHECK(FormatArrayAsHex(std::array<byte, 4>{0x13, 0x38, 0x42, 0xAF}) == "133842AF");
+	CHECK(FormatArrayAsHex(std::array<uint8_t, 0>{}) == "");
+	CHECK(FormatArrayAsHex(std::array<uint8_t, 1>{0x12}) == "12");
+	CHECK(FormatArrayAsHex(std::array<uint8_t, 4>{0x13, 0x38, 0x42, 0xAF}) == "133842AF");
 }
 
 TEST_CASE("ConvertHexToBytes")

@@ -248,7 +248,7 @@ Templates are a very powerful C++ tool, but they can easily confuse beginners. T
 * Templates are to be documented in a very clear and verbose manner. Never assume anything in the documentation.
 * the template keyword and the template layout get a separate line. typenames are either "T" or preceded by a "T", integers get a single capital letter or a descriptive name preceded by "T".
 ```c++
-template <typename T, typename Tsomething, int N, byte Tnumber_of_something>
+template <typename T, typename Tsomething, int N, uint8_t Tnumber_of_something>
 int Func();
 ```
 

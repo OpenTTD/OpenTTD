@@ -34,7 +34,7 @@ enum VehicleRailFlags {
 };
 
 /** Modes for ignoring signals. */
-enum TrainForceProceeding : byte {
+enum TrainForceProceeding : uint8_t {
 	TFP_NONE   = 0,    ///< Normal operation.
 	TFP_STUCK  = 1,    ///< Proceed till next signal, but ignore being stuck till then. This includes force leaving depots.
 	TFP_SIGNAL = 2,    ///< Ignore next signal, after the signal ignore being stuck.
@@ -54,7 +54,7 @@ enum ConsistChangeFlags {
 };
 DECLARE_ENUM_AS_BIT_SET(ConsistChangeFlags)
 
-byte FreightWagonMult(CargoID cargo);
+uint8_t FreightWagonMult(CargoID cargo);
 
 void CheckTrainsLengths();
 
@@ -77,7 +77,7 @@ struct TrainCache {
 	bool cached_tilt;           ///< train can tilt; feature provides a bonus in curves
 	int cached_curve_speed_mod; ///< curve speed modifier of the entire train
 
-	byte user_def_data;         ///< Cached property 0x25. Can be set by Callback 0x36.
+	uint8_t user_def_data;         ///< Cached property 0x25. Can be set by Callback 0x36.
 
 	/* cached max. speed / acceleration data */
 	int cached_max_curve_speed; ///< max consist speed limited by curves
@@ -243,7 +243,7 @@ protected: // These functions should not be called outside acceleration code.
 	 * Allows to know the tractive effort value that this vehicle will use.
 	 * @return Tractive effort value from the engine.
 	 */
-	inline byte GetTractiveEffort() const
+	inline uint8_t GetTractiveEffort() const
 	{
 		return GetVehicleProperty(this, PROP_TRAIN_TRACTIVE_EFFORT, RailVehInfo(this->engine_type)->tractive_effort);
 	}
@@ -252,7 +252,7 @@ protected: // These functions should not be called outside acceleration code.
 	 * Gets the area used for calculating air drag.
 	 * @return Area of the engine in m^2.
 	 */
-	inline byte GetAirDragArea() const
+	inline uint8_t GetAirDragArea() const
 	{
 		/* Air drag is higher in tunnels due to the limited cross-section. */
 		return (this->track == TRACK_BIT_WORMHOLE && this->vehstatus & VS_HIDDEN) ? 28 : 14;
@@ -262,7 +262,7 @@ protected: // These functions should not be called outside acceleration code.
 	 * Gets the air drag coefficient of this vehicle.
 	 * @return Air drag value from the engine.
 	 */
-	inline byte GetAirDrag() const
+	inline uint8_t GetAirDrag() const
 	{
 		return RailVehInfo(this->engine_type)->air_drag;
 	}

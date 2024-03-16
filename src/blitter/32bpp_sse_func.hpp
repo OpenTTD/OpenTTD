@@ -214,7 +214,7 @@ inline void Blitter_32bppSSSE3::Draw(const Blitter::BlitterParams *bp, ZoomLevel
 inline void Blitter_32bppSSE4::Draw(const Blitter::BlitterParams *bp, ZoomLevel zoom)
 #endif
 {
-	const byte * const remap = bp->remap;
+	const uint8_t * const remap = bp->remap;
 	Colour *dst_line = (Colour *) bp->dst + bp->top * bp->pitch + bp->left;
 	int effective_width = bp->width;
 
@@ -222,7 +222,7 @@ inline void Blitter_32bppSSE4::Draw(const Blitter::BlitterParams *bp, ZoomLevel 
 	const SpriteData * const sd = (const SpriteData *) bp->sprite;
 	const SpriteInfo * const si = &sd->infos[zoom];
 	const MapValue *src_mv_line = (const MapValue *) &sd->data[si->mv_offset] + bp->skip_top * si->sprite_width;
-	const Colour *src_rgba_line = (const Colour *) ((const byte *) &sd->data[si->sprite_offset] + bp->skip_top * si->sprite_line_size);
+	const Colour *src_rgba_line = (const Colour *) ((const uint8_t *) &sd->data[si->sprite_offset] + bp->skip_top * si->sprite_line_size);
 
 	if (read_mode != RM_WITH_MARGIN) {
 		src_rgba_line += bp->skip_left;
@@ -307,7 +307,7 @@ inline void Blitter_32bppSSE4::Draw(const Blitter::BlitterParams *bp, ZoomLevel 
 							Colour m_colour = m_colour_init; \
 							{ \
 							const Colour srcm = (Colour) (m_src); \
-							const uint m = (byte) (m_m); \
+							const uint m = (uint8_t) (m_m); \
 							const uint r = remap[m]; \
 							const Colour cmap = (this->LookupColourInPalette(r).data & 0x00FFFFFF) | (srcm.data & 0xFF000000); \
 							m_colour = r == 0 ? m_colour : cmap; \
@@ -435,7 +435,7 @@ bmcr_alpha_blend_single:
 
 next_line:
 		if (mode == BM_COLOUR_REMAP || mode == BM_CRASH_REMAP) src_mv_line += si->sprite_width;
-		src_rgba_line = (const Colour*) ((const byte*) src_rgba_line + si->sprite_line_size);
+		src_rgba_line = (const Colour*) ((const uint8_t*) src_rgba_line + si->sprite_line_size);
 		dst_line += bp->pitch;
 	}
 }

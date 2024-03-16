@@ -314,7 +314,7 @@ static const uint NUM_SONGS_PLAYLIST  = 32;
 
 /* Functions to read DOS music CAT files, similar to but not quite the same as sound effect CAT files */
 char *GetMusicCatEntryName(const std::string &filename, size_t entrynum);
-byte *GetMusicCatEntryData(const std::string &filename, size_t entrynum, size_t &entrylen);
+uint8_t *GetMusicCatEntryData(const std::string &filename, size_t entrynum, size_t &entrylen);
 
 enum MusicTrackType {
 	MTT_STANDARDMIDI, ///< Standard MIDI file
@@ -324,7 +324,7 @@ enum MusicTrackType {
 /** Metadata about a music track. */
 struct MusicSongInfo {
 	std::string songname;    ///< name of song displayed in UI
-	byte tracknr;            ///< track number of song displayed in UI
+	uint8_t tracknr;            ///< track number of song displayed in UI
 	std::string filename;    ///< file on disk containing song (when used in MusicSet class)
 	MusicTrackType filetype; ///< decoder required for song file
 	int cat_index;           ///< entry index in CAT file, for filetype==MTT_MPSMIDI
@@ -338,7 +338,7 @@ struct MusicSet : BaseSet<MusicSet, NUM_SONGS_AVAILABLE, false> {
 	/** Data about individual songs in set. */
 	MusicSongInfo songinfo[NUM_SONGS_AVAILABLE];
 	/** Number of valid songs in set. */
-	byte num_available;
+	uint8_t num_available;
 
 	bool FillSetDetails(const IniFile &ini, const std::string &path, const std::string &full_filename);
 };

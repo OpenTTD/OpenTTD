@@ -77,7 +77,7 @@ void ResetHouseClassIDs()
 	_class_mapping = {};
 }
 
-HouseClassID AllocateHouseClassID(byte grf_class_id, uint32_t grfid)
+HouseClassID AllocateHouseClassID(uint8_t grf_class_id, uint32_t grfid)
 {
 	/* Start from 1 because 0 means that no class has been assigned. */
 	for (int i = 1; i != lengthof(_class_mapping); i++) {
@@ -174,7 +174,7 @@ static uint32_t GetNumHouses(HouseID house_id, const Town *town)
  * @param grf_version8 True, if we are dealing with a new NewGRF which uses GRF version >= 8.
  * @return a construction of bits obeying the newgrf format
  */
-static uint32_t GetNearbyTileInformation(byte parameter, TileIndex tile, bool grf_version8)
+static uint32_t GetNearbyTileInformation(uint8_t parameter, TileIndex tile, bool grf_version8)
 {
 	tile = GetNearbyTile(parameter, tile);
 	return GetNearbyTileInformation(tile, grf_version8);
@@ -294,7 +294,7 @@ static uint32_t GetDistanceFromNearbyHouse(uint8_t parameter, TileIndex tile, Ho
 /**
  * @note Used by the resolver to get values for feature 07 deterministic spritegroups.
  */
-/* virtual */ uint32_t HouseScopeResolver::GetVariable(byte variable, [[maybe_unused]] uint32_t parameter, bool *available) const
+/* virtual */ uint32_t HouseScopeResolver::GetVariable(uint8_t variable, [[maybe_unused]] uint32_t parameter, bool *available) const
 {
 	switch (variable) {
 		/* Construction stage. */
@@ -424,7 +424,7 @@ uint16_t GetHouseCallback(CallbackID callback, uint32_t param1, uint32_t param2,
 	return object.ResolveCallback();
 }
 
-static void DrawTileLayout(const TileInfo *ti, const TileLayoutSpriteGroup *group, byte stage, HouseID house_id)
+static void DrawTileLayout(const TileInfo *ti, const TileLayoutSpriteGroup *group, uint8_t stage, HouseID house_id)
 {
 	const DrawTileSprites *dts = group->ProcessRegisters(&stage);
 
@@ -472,7 +472,7 @@ void DrawNewHouseTile(TileInfo *ti, HouseID house_id)
 	if (group != nullptr && group->type == SGT_TILELAYOUT) {
 		/* Limit the building stage to the number of stages supplied. */
 		const TileLayoutSpriteGroup *tlgroup = (const TileLayoutSpriteGroup *)group;
-		byte stage = GetHouseBuildingStage(ti->tile);
+		uint8_t stage = GetHouseBuildingStage(ti->tile);
 		DrawTileLayout(ti, tlgroup, stage, house_id);
 	}
 }
@@ -580,7 +580,7 @@ bool NewHouseTileLoop(TileIndex tile)
 	return true;
 }
 
-static void DoTriggerHouse(TileIndex tile, HouseTrigger trigger, byte base_random, bool first)
+static void DoTriggerHouse(TileIndex tile, HouseTrigger trigger, uint8_t base_random, bool first)
 {
 	/* We can't trigger a non-existent building... */
 	assert(IsTileType(tile, MP_HOUSE));
@@ -601,8 +601,8 @@ static void DoTriggerHouse(TileIndex tile, HouseTrigger trigger, byte base_rando
 	SetHouseTriggers(tile, object.GetRemainingTriggers());
 
 	/* Rerandomise bits. Scopes other than SELF are invalid for houses. For bug-to-bug-compatibility with TTDP we ignore the scope. */
-	byte new_random_bits = Random();
-	byte random_bits = GetHouseRandomBits(tile);
+	uint8_t new_random_bits = Random();
+	uint8_t random_bits = GetHouseRandomBits(tile);
 	uint32_t reseed = object.GetReseedSum();
 	random_bits &= ~reseed;
 	random_bits |= (first ? new_random_bits : base_random) & reseed;

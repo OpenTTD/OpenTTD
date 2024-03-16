@@ -306,7 +306,7 @@ CommandCost CmdGoalQuestionAnswer(DoCommandFlag flags, uint16_t uniqueid, uint8_
 	}
 
 	if (flags & DC_EXEC) {
-		Game::NewEvent(new ScriptEventGoalQuestionAnswer(uniqueid, (ScriptCompany::CompanyID)(byte)_current_company, (ScriptGoal::QuestionButton)(1 << button)));
+		Game::NewEvent(new ScriptEventGoalQuestionAnswer(uniqueid, (ScriptCompany::CompanyID)(uint8_t)_current_company, (ScriptGoal::QuestionButton)(1 << button)));
 	}
 
 	return CommandCost();

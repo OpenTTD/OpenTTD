@@ -247,7 +247,7 @@ inline TropicZone GetTropicZone(Tile tile)
  * @pre IsTileType(t, MP_HOUSE) || IsTileType(t, MP_OBJECT) || IsTileType(t, MP_INDUSTRY) ||IsTileType(t, MP_STATION)
  * @return frame number
  */
-inline byte GetAnimationFrame(Tile t)
+inline uint8_t GetAnimationFrame(Tile t)
 {
 	assert(IsTileType(t, MP_HOUSE) || IsTileType(t, MP_OBJECT) || IsTileType(t, MP_INDUSTRY) ||IsTileType(t, MP_STATION));
 	return t.m7();
@@ -259,7 +259,7 @@ inline byte GetAnimationFrame(Tile t)
  * @param frame the new frame number
  * @pre IsTileType(t, MP_HOUSE) || IsTileType(t, MP_OBJECT) || IsTileType(t, MP_INDUSTRY) ||IsTileType(t, MP_STATION)
  */
-inline void SetAnimationFrame(Tile t, byte frame)
+inline void SetAnimationFrame(Tile t, uint8_t frame)
 {
 	assert(IsTileType(t, MP_HOUSE) || IsTileType(t, MP_OBJECT) || IsTileType(t, MP_INDUSTRY) ||IsTileType(t, MP_STATION));
 	t.m7() = frame;

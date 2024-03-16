@@ -498,7 +498,7 @@ public:
 			if (tr.top > tr.bottom) return;
 
 			/* Climate */
-			byte landscape = _load_check_data.settings.game_creation.landscape;
+			uint8_t landscape = _load_check_data.settings.game_creation.landscape;
 			if (landscape < NUM_LANDSCAPE) {
 				SetDParam(0, STR_CLIMATE_TEMPERATE_LANDSCAPE + landscape);
 				DrawString(tr, STR_NETWORK_SERVER_LIST_LANDSCAPE);

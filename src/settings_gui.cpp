@@ -820,7 +820,7 @@ struct GameOptionsWindow : Window {
 
 			case WID_GO_BASE_SFX_VOLUME:
 			case WID_GO_BASE_MUSIC_VOLUME: {
-				byte &vol = (widget == WID_GO_BASE_MUSIC_VOLUME) ? _settings_client.music.music_vol : _settings_client.music.effect_vol;
+				uint8_t &vol = (widget == WID_GO_BASE_MUSIC_VOLUME) ? _settings_client.music.music_vol : _settings_client.music.effect_vol;
 				if (ClickSliderWidget(this->GetWidget<NWidgetBase>(widget)->GetCurrentRect(), pt, 0, INT8_MAX, vol)) {
 					if (widget == WID_GO_BASE_MUSIC_VOLUME) {
 						MusicDriver::GetInstance()->SetVolume(vol);
@@ -1224,13 +1224,13 @@ struct SettingFilter {
 
 /** Data structure describing a single setting in a tab */
 struct BaseSettingEntry {
-	byte flags; ///< Flags of the setting entry. @see SettingEntryFlags
-	byte level; ///< Nesting level of this setting entry
+	uint8_t flags; ///< Flags of the setting entry. @see SettingEntryFlags
+	uint8_t level; ///< Nesting level of this setting entry
 
 	BaseSettingEntry() : flags(0), level(0) {}
 	virtual ~BaseSettingEntry() = default;
 
-	virtual void Init(byte level = 0);
+	virtual void Init(uint8_t level = 0);
 	virtual void FoldAll() {}
 	virtual void UnFoldAll() {}
 	virtual void ResetAll() = 0;
@@ -1268,13 +1268,13 @@ struct SettingEntry : BaseSettingEntry {
 
 	SettingEntry(const char *name);
 
-	void Init(byte level = 0) override;
+	void Init(uint8_t level = 0) override;
 	void ResetAll() override;
 	uint Length() const override;
 	uint GetMaxHelpHeight(int maxw) override;
 	bool UpdateFilterState(SettingFilter &filter, bool force_visible) override;
 
-	void SetButtons(byte new_val);
+	void SetButtons(uint8_t new_val);
 
 protected:
 	void DrawSetting(GameSettings *settings_ptr, int left, int right, int y, bool highlight) const override;
@@ -1295,7 +1295,7 @@ struct SettingsContainer {
 		return item;
 	}
 
-	void Init(byte level = 0);
+	void Init(uint8_t level = 0);
 	void ResetAll();
 	void FoldAll();
 	void UnFoldAll();
@@ -1318,7 +1318,7 @@ struct SettingsPage : BaseSettingEntry, SettingsContainer {
 
 	SettingsPage(StringID title);
 
-	void Init(byte level = 0) override;
+	void Init(uint8_t level = 0) override;
 	void ResetAll() override;
 	void FoldAll() override;
 	void UnFoldAll() override;
@@ -1343,7 +1343,7 @@ protected:
  * Initialization of a setting entry
  * @param level      Page nesting level of this entry
  */
-void BaseSettingEntry::Init(byte level)
+void BaseSettingEntry::Init(uint8_t level)
 {
 	this->level = level;
 }
@@ -1453,7 +1453,7 @@ SettingEntry::SettingEntry(const char *name)
  * Initialization of a setting entry
  * @param level      Page nesting level of this entry
  */
-void SettingEntry::Init(byte level)
+void SettingEntry::Init(uint8_t level)
 {
 	BaseSettingEntry::Init(level);
 	this->setting = GetSettingFromName(this->name)->AsIntSetting();
@@ -1470,7 +1470,7 @@ void SettingEntry::ResetAll()
  * @param new_val New value for the button flags
  * @see SettingEntryFlags
  */
-void SettingEntry::SetButtons(byte new_val)
+void SettingEntry::SetButtons(uint8_t new_val)
 {
 	assert((new_val & ~SEF_BUTTONS_MASK) == 0); // Should not touch any flags outside the buttons
 	this->flags = (this->flags & ~SEF_BUTTONS_MASK) | new_val;
@@ -1627,7 +1627,7 @@ void SettingEntry::DrawSetting(GameSettings *settings_ptr, int left, int right, 
  * Initialization of an entire setting page
  * @param level Nesting level of this page (internal variable, do not provide a value for it when calling)
  */
-void SettingsContainer::Init(byte level)
+void SettingsContainer::Init(uint8_t level)
 {
 	for (auto &it : this->entries) {
 		it->Init(level);
@@ -1785,7 +1785,7 @@ SettingsPage::SettingsPage(StringID title)
  * Initialization of an entire setting page
  * @param level Nesting level of this page (internal variable, do not provide a value for it when calling)
  */
-void SettingsPage::Init(byte level)
+void SettingsPage::Init(uint8_t level)
 {
 	BaseSettingEntry::Init(level);
 	SettingsContainer::Init(level + 1);
@@ -2907,7 +2907,7 @@ void ShowGameSettings()
  * @param clickable_left is the left button clickable?
  * @param clickable_right is the right button clickable?
  */
-void DrawArrowButtons(int x, int y, Colours button_colour, byte state, bool clickable_left, bool clickable_right)
+void DrawArrowButtons(int x, int y, Colours button_colour, uint8_t state, bool clickable_left, bool clickable_right)
 {
 	int colour = GetColourGradient(button_colour, SHADE_DARKER);
 	Dimension dim = NWidgetScrollbar::GetHorizontalDimension();

@@ -467,8 +467,8 @@ static uint ShipAccelerate(Vehicle *v)
 	const uint advance_speed = v->GetAdvanceSpeed(speed);
 	const uint number_of_steps = (advance_speed + v->progress) / v->GetAdvanceDistance();
 	const uint remainder = (advance_speed + v->progress) % v->GetAdvanceDistance();
-	assert(remainder <= std::numeric_limits<byte>::max());
-	v->progress = static_cast<byte>(remainder);
+	assert(remainder <= std::numeric_limits<uint8_t>::max());
+	v->progress = static_cast<uint8_t>(remainder);
 	return number_of_steps;
 }
 
@@ -559,8 +559,8 @@ static inline TrackBits GetAvailShipTracks(TileIndex tile, DiagDirection dir)
 
 /** Structure for ship sub-coordinate data for moving into a new tile via a Diagdir onto a Track. */
 struct ShipSubcoordData {
-	byte x_subcoord; ///< New X sub-coordinate on the new tile
-	byte y_subcoord; ///< New Y sub-coordinate on the new tile
+	uint8_t x_subcoord; ///< New X sub-coordinate on the new tile
+	uint8_t y_subcoord; ///< New Y sub-coordinate on the new tile
 	Direction dir;   ///< New Direction to move in on the new track
 };
 /** Ship sub-coordinate data for moving into a new tile via a Diagdir onto a Track.

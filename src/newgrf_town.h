@@ -34,7 +34,7 @@ struct TownScopeResolver : public ScopeResolver {
 	{
 	}
 
-	uint32_t GetVariable(byte variable, [[maybe_unused]] uint32_t parameter, bool *available) const override;
+	uint32_t GetVariable(uint8_t variable, [[maybe_unused]] uint32_t parameter, bool *available) const override;
 	void StorePSA(uint reg, int32_t value) override;
 };
 
@@ -44,7 +44,7 @@ struct TownResolverObject : public ResolverObject {
 
 	TownResolverObject(const struct GRFFile *grffile, Town *t, bool readonly);
 
-	ScopeResolver *GetScope(VarSpriteGroupScope scope = VSG_SCOPE_SELF, byte relative = 0) override
+	ScopeResolver *GetScope(VarSpriteGroupScope scope = VSG_SCOPE_SELF, uint8_t relative = 0) override
 	{
 		switch (scope) {
 			case VSG_SCOPE_SELF: return &town_scope;

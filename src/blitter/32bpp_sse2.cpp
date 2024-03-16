@@ -114,7 +114,7 @@ Sprite *Blitter_32bppSSE_Base::Encode(const SpriteLoader::SpriteCollection &spri
 			(*dst_rgba_line).data = nb_pix_transp;
 
 			Colour *nb_right = dst_rgba_line + 1;
-			dst_rgba_line = (Colour*) ((byte*) dst_rgba_line + sd.infos[z].sprite_line_size);
+			dst_rgba_line = (Colour*) ((uint8_t*) dst_rgba_line + sd.infos[z].sprite_line_size);
 
 			/* Count the number of transparent pixels from the right. */
 			dst_rgba = dst_rgba_line - 1;
