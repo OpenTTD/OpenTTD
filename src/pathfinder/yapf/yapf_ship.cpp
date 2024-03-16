@@ -180,7 +180,7 @@ public:
 			TrackdirBits dirs = follower.m_new_td_bits;
 			const TrackdirBits dirs_without_90_degree = dirs & ~TrackdirCrossesTrackdirs(dir);
 			if (dirs_without_90_degree != TRACKDIR_BIT_NONE) dirs = dirs_without_90_degree;
-			const int strip_amount = _random.Next(CountBits(dirs));
+			const int strip_amount = RandomRange(CountBits(dirs));
 			for (int s = 0; s < strip_amount; ++s) RemoveFirstTrackdir(&dirs);
 			return { follower.m_new_tile, FindFirstTrackdir(dirs) };
 		}
