@@ -56,10 +56,13 @@ foreach(ENUM IN LISTS ENUM_LINES)
             endif()
 
             # Check for enum match
-            if("${LINE}" MATCHES "^	*enum *${ENUM_PATTERN} *\{")
+            if("${LINE}" MATCHES "^	*enum *${ENUM_PATTERN}( *: *[^ ]*)? *\{")
                 # REGEX REPLACE does a REGEX MATCHALL and fails if an empty string is matched
                 string(REGEX MATCH "[^	]*" RESULT "${LINE}")
                 string(REPLACE "${RESULT}" "" RM_INDENT "${LINE}")
+
+                string(REGEX MATCH " *: *[^ ]*" RESULT "${LINE}")
+                string(REPLACE "${RESULT}" "" LINE "${LINE}")
 
                 set(ACTIVE 1)
                 if(ACTIVE_COMMENT GREATER 0)
