@@ -9,6 +9,10 @@ on:
       full_arch:
         required: true
         type: string
+      extra-cmake-parameters:
+        required: false
+        type: string
+        default: ""
 
 env:
   CTEST_OUTPUT_ON_FAILURE: 1
@@ -66,6 +70,7 @@ jobs:
           -DCMAKE_OSX_ARCHITECTURES=${{ inputs.full_arch }} \
           -DVCPKG_TARGET_TRIPLET=${{ inputs.arch }}-osx \
           -DCMAKE_TOOLCHAIN_FILE=${{ runner.temp }}/vcpkg/scripts/buildsystems/vcpkg.cmake \
+          ${{ inputs.extra-cmake-parameters }} \
           # EOF
         echo "::endgroup::"
 

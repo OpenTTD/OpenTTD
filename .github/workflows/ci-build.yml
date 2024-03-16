@@ -25,15 +25,10 @@ jobs:
       fail-fast: false
       matrix:
         include:
-        - name: Clang - Debug
+        - name: Clang
           compiler: clang-15
           cxxcompiler: clang++-15
           libraries: libsdl2-dev
-        - name: Clang - Release
-          compiler: clang-15
-          cxxcompiler: clang++-15
-          libraries: libsdl2-dev
-          extra-cmake-parameters: -DCMAKE_BUILD_TYPE=RelWithDebInfo -DOPTION_USE_ASSERTS=OFF
         - name: GCC - SDL2
           compiler: gcc
           cxxcompiler: g++
@@ -61,10 +56,16 @@ jobs:
       fail-fast: false
       matrix:
         include:
-        - arch: arm64
+        - name: arm64 - Debug
+          arch: arm64
           full_arch: arm64
+          extra-cmake-parameters: -DCMAKE_BUILD=Debug
+        - name: arm64 - Release
+          arch: arm64
+          full_arch: arm64
+          extra-cmake-parameters: -DCMAKE_BUILD_TYPE=RelWithDebInfo -DOPTION_USE_ASSERTS=OFF
 
-    name: Mac OS (${{ matrix.arch }})
+    name: Mac OS (${{ matrix.name }})
 
     uses: ./.github/workflows/ci-macos.yml
     secrets: inherit
@@ -72,6 +73,7 @@ jobs:
     with:
       arch: ${{ matrix.arch }}
       full_arch: ${{ matrix.full_arch }}
+      extra-cmake-parameters: ${{ matrix.extra-cmake-parameters }}
 
   windows:
     strategy:
