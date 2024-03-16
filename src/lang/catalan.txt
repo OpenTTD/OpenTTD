@@ -118,7 +118,7 @@ STR_QUANTITY_RUBBER                                             :{VOLUME_LONG} d
 STR_QUANTITY_SUGAR                                              :{WEIGHT_LONG} de sucre
 STR_QUANTITY_TOYS                                               :{COMMA}{NBSP}joguin{P a es}
 STR_QUANTITY_SWEETS                                             :{G=Femenin}{COMMA}{NBSP}boss{P a es} de dolços
-STR_QUANTITY_COLA                                               :{VOLUME_LONG} de refrescs
+STR_QUANTITY_COLA                                               :{VOLUME_LONG} de refrescos
 STR_QUANTITY_CANDYFLOSS                                         :{WEIGHT_LONG} de cotó de sucre
 STR_QUANTITY_BUBBLES                                            :{COMMA} bomboll{P a es}
 STR_QUANTITY_TOFFEE                                             :{WEIGHT_LONG} de caramel{P "" s}
@@ -650,7 +650,7 @@ STR_PERFORMANCE_DETAIL                                          :{WHITE}Detall d
 STR_PERFORMANCE_DETAIL_KEY                                      :{BLACK}Detall
 STR_PERFORMANCE_DETAIL_AMOUNT_CURRENCY                          :{BLACK}({CURRENCY_SHORT}/{CURRENCY_SHORT})
 STR_PERFORMANCE_DETAIL_AMOUNT_INT                               :{BLACK}({COMMA}/{COMMA})
-STR_PERFORMANCE_DETAIL_PERCENT                                  :{WHITE}{NUM}%
+STR_PERFORMANCE_DETAIL_PERCENT                                  :{WHITE}{NUM}{NBSP}%
 STR_PERFORMANCE_DETAIL_SELECT_COMPANY_TOOLTIP                   :{BLACK}Veure els detalls d'aquesta companyia
 
 ###length 10
@@ -772,16 +772,16 @@ STR_SMALLMAP_LEGENDA_ROAD_VEHICLES                              :{TINY_FONT}{BLA
 STR_SMALLMAP_LEGENDA_SHIPS                                      :{TINY_FONT}{BLACK}Vaixells
 STR_SMALLMAP_LEGENDA_AIRCRAFT                                   :{TINY_FONT}{BLACK}Avions
 STR_SMALLMAP_LEGENDA_TRANSPORT_ROUTES                           :{TINY_FONT}{BLACK}Rutes de transport
-STR_SMALLMAP_LEGENDA_FOREST                                     :{TINY_FONT}{BLACK}Bosc
-STR_SMALLMAP_LEGENDA_RAILROAD_STATION                           :{TINY_FONT}{BLACK}Estació de ferrocarril
-STR_SMALLMAP_LEGENDA_TRUCK_LOADING_BAY                          :{TINY_FONT}{BLACK}Estació per a camions
-STR_SMALLMAP_LEGENDA_BUS_STATION                                :{TINY_FONT}{BLACK}Parada d'autobús
+STR_SMALLMAP_LEGENDA_FOREST                                     :{TINY_FONT}{BLACK}Boscos
+STR_SMALLMAP_LEGENDA_RAILROAD_STATION                           :{TINY_FONT}{BLACK}Estacions de tren
+STR_SMALLMAP_LEGENDA_TRUCK_LOADING_BAY                          :{TINY_FONT}{BLACK}Estacions de camió
+STR_SMALLMAP_LEGENDA_BUS_STATION                                :{TINY_FONT}{BLACK}Parades d'autobús
 STR_SMALLMAP_LEGENDA_AIRPORT_HELIPORT                           :{TINY_FONT}{BLACK}Aeroport/Heliport
-STR_SMALLMAP_LEGENDA_DOCK                                       :{TINY_FONT}{BLACK}Moll
+STR_SMALLMAP_LEGENDA_DOCK                                       :{TINY_FONT}{BLACK}Molls
 STR_SMALLMAP_LEGENDA_ROUGH_LAND                                 :{TINY_FONT}{BLACK}Terreny irregular
 STR_SMALLMAP_LEGENDA_GRASS_LAND                                 :{TINY_FONT}{BLACK}Gespa
 STR_SMALLMAP_LEGENDA_BARE_LAND                                  :{TINY_FONT}{BLACK}Terreny erm
-STR_SMALLMAP_LEGENDA_RAINFOREST                                 :{TINY_FONT}{BLACK}Selva tropical
+STR_SMALLMAP_LEGENDA_RAINFOREST                                 :{TINY_FONT}{BLACK}Selves tropicals
 STR_SMALLMAP_LEGENDA_FIELDS                                     :{TINY_FONT}{BLACK}Camps de conreu
 STR_SMALLMAP_LEGENDA_TREES                                      :{TINY_FONT}{BLACK}Arbres
 STR_SMALLMAP_LEGENDA_ROCKS                                      :{TINY_FONT}{BLACK}Roques
@@ -793,7 +793,7 @@ STR_SMALLMAP_LEGENDA_DESERT                                     :{TINY_FONT}{BLA
 STR_SMALLMAP_LEGENDA_SNOW                                       :{TINY_FONT}{BLACK}Neu
 
 STR_SMALLMAP_TOOLTIP_TOGGLE_TOWN_NAMES_ON_OFF                   :{BLACK}Mostra/amaga el nom de les poblacions al mapa
-STR_SMALLMAP_CENTER                                             :{BLACK}Centra el mapa petit a la posició actual
+STR_SMALLMAP_CENTER                                             :{BLACK}Centra el minimapa a la posició actual
 STR_SMALLMAP_INDUSTRY                                           :{TINY_FONT}{STRING} ({NUM})
 STR_SMALLMAP_LINKSTATS                                          :{TINY_FONT}{STRING}
 STR_SMALLMAP_COMPANY                                            :{TINY_FONT}{COMPANY}
@@ -879,10 +879,10 @@ STR_NEWS_INDUSTRY_PRODUCTION_INCREASE_GENERAL                   :{BIG_FONT}{BLAC
 STR_NEWS_INDUSTRY_PRODUCTION_INCREASE_COAL                      :{BIG_FONT}{BLACK}Nova veta de carbó trobada a {INDUSTRY}{}Es preveu doblar la producció
 STR_NEWS_INDUSTRY_PRODUCTION_INCREASE_OIL                       :{BIG_FONT}{BLACK}Noves reserves de petroli trobades a {INDUSTRY}{}Es preveu doblar la producció
 STR_NEWS_INDUSTRY_PRODUCTION_INCREASE_FARM                      :{BIG_FONT}{BLACK}Sistemes de conreu millorats a {INDUSTRY} fan preveure que es doblarà la producció
-STR_NEWS_INDUSTRY_PRODUCTION_INCREASE_SMOOTH                    :{BIG_FONT}{BLACK}La producció de {STRING} a {INDUSTRY} creix un {COMMA}%
-STR_NEWS_INDUSTRY_PRODUCTION_DECREASE_GENERAL                   :{BIG_FONT}{BLACK}La producció de {INDUSTRY} descendeix un 50%
-STR_NEWS_INDUSTRY_PRODUCTION_DECREASE_FARM                      :{BIG_FONT}{BLACK}Una plaga d'insectes provoca el caos a {INDUSTRY}{}La producció baixa un 50%
-STR_NEWS_INDUSTRY_PRODUCTION_DECREASE_SMOOTH                    :{BIG_FONT}{BLACK}La producció de {STRING} a {INDUSTRY} es redueix un {COMMA}%
+STR_NEWS_INDUSTRY_PRODUCTION_INCREASE_SMOOTH                    :{BIG_FONT}{BLACK}La producció de {STRING} a {INDUSTRY} creix un {COMMA}{NBSP}%
+STR_NEWS_INDUSTRY_PRODUCTION_DECREASE_GENERAL                   :{BIG_FONT}{BLACK}La producció de {INDUSTRY} descendeix un 50{NBSP}%
+STR_NEWS_INDUSTRY_PRODUCTION_DECREASE_FARM                      :{BIG_FONT}{BLACK}Una plaga d'insectes provoca el caos a {INDUSTRY}{}La producció baixa un 50{NBSP}%
+STR_NEWS_INDUSTRY_PRODUCTION_DECREASE_SMOOTH                    :{BIG_FONT}{BLACK}La producció de {STRING} a {INDUSTRY} es redueix un {COMMA}{NBSP}%
 
 ###length VEHICLE_TYPES
 STR_NEWS_TRAIN_IS_WAITING                                       :{WHITE}{VEHICLE} està esperant a la cotxera
@@ -923,7 +923,7 @@ STR_NEWS_OFFER_OF_SUBSIDY_EXPIRED                               :{BIG_FONT}{BLAC
 STR_NEWS_SUBSIDY_WITHDRAWN_SERVICE                              :{BIG_FONT}{BLACK}Subvenció retirada:{}{}El transport de {STRING} des de {STRING} fins a {STRING} ja no està subvencionat
 STR_NEWS_SERVICE_SUBSIDY_OFFERED                                :{BIG_FONT}{BLACK}Oferta de subvenció per a un servei:{}{}La primera companyia que transporti {STRING} des de {STRING} fins a {STRING} rebrà una subvenció durant {UNITS_YEARS_OR_MINUTES} de l'autoritat local
 ###length 4
-STR_NEWS_SERVICE_SUBSIDY_AWARDED_HALF                           :{BIG_FONT}{BLACK}Subvenció concedida a {STRING}{}{}El transport de {STRING} des de {STRING} fins a {STRING} rebrà uns ingressos addicionals del 50% durant {UNITS_YEARS_OR_MINUTES}
+STR_NEWS_SERVICE_SUBSIDY_AWARDED_HALF                           :{BIG_FONT}{BLACK}Subvenció concedida a {STRING}{}{}El transport de {STRING} des de {STRING} fins a {STRING} rebrà uns ingressos addicionals del 50{NBSP}% durant {UNITS_YEARS_OR_MINUTES}
 STR_NEWS_SERVICE_SUBSIDY_AWARDED_DOUBLE                         :{BIG_FONT}{BLACK}Subvenció concedida a {STRING}{}{}El transport de {STRING} de {STRING} fins a {STRING} ingressarà el doble de la tarifa habitual durant {UNITS_YEARS_OR_MINUTES}!
 STR_NEWS_SERVICE_SUBSIDY_AWARDED_TRIPLE                         :{BIG_FONT}{BLACK}Subvenció concedida a {STRING}{}{}El transport de {STRING} de {STRING} fins a {STRING} ingressarà el triple de la tarifa habitual durant {UNITS_YEARS_OR_MINUTES}
 STR_NEWS_SERVICE_SUBSIDY_AWARDED_QUADRUPLE                      :{BIG_FONT}{BLACK}Subvenció concedida a {STRING}{}{}El transport de {STRING} de {STRING} fins a {STRING} ingressarà el quàdruple de la tarifa habitual durant {UNITS_YEARS_OR_MINUTES}
@@ -1026,7 +1026,7 @@ STR_GAME_OPTIONS_AUTOSAVE_DROPDOWN_EVERY_120_MINUTES            :Cada 120 minuts
 
 STR_GAME_OPTIONS_LANGUAGE                                       :{BLACK}Idioma
 STR_GAME_OPTIONS_LANGUAGE_TOOLTIP                               :{BLACK}Selecciona l'idioma de la interfície
-STR_GAME_OPTIONS_LANGUAGE_PERCENTAGE                            :{STRING} ({NUM}{NBSP}% completed)
+STR_GAME_OPTIONS_LANGUAGE_PERCENTAGE                            :{STRING} ({NUM}{NBSP}% completat)
 
 STR_GAME_OPTIONS_FULLSCREEN                                     :{BLACK}Pantalla completa
 STR_GAME_OPTIONS_FULLSCREEN_TOOLTIP                             :{BLACK}Marqueu la casella per mostrar l'OpenTTD a pantalla completa.
@@ -1166,7 +1166,7 @@ STR_SEA_LEVEL_LOW                                               :Baix
 STR_SEA_LEVEL_MEDIUM                                            :Mitjà
 STR_SEA_LEVEL_HIGH                                              :Alt
 STR_SEA_LEVEL_CUSTOM                                            :Personalitzat
-STR_SEA_LEVEL_CUSTOM_PERCENTAGE                                 :Personalitzat ({NUM}%)
+STR_SEA_LEVEL_CUSTOM_PERCENTAGE                                 :Personalitzat ({NUM}{NBSP}%)
 
 ###length 4
 STR_RIVERS_NONE                                                 :Cap
@@ -1353,7 +1353,7 @@ STR_CONFIG_SETTING_ROAD_VEHICLE_ACCELERATION_MODEL_HELPTEXT     :Seleccioneu el 
 
 STR_CONFIG_SETTING_TRAIN_SLOPE_STEEPNESS                        :Pendent de les costes per als trens: {STRING}
 STR_CONFIG_SETTING_TRAIN_SLOPE_STEEPNESS_HELPTEXT               :El pendent de les caselles amb costes per als trens. Els valors alts fan que sigui més difícil pujar els turons.
-STR_CONFIG_SETTING_PERCENTAGE                                   :{COMMA}%
+STR_CONFIG_SETTING_PERCENTAGE                                   :{COMMA}{NBSP}%
 
 STR_CONFIG_SETTING_ROAD_VEHICLE_SLOPE_STEEPNESS                 :Pendent de les costes per als vehicles de carretera: {STRING}
 STR_CONFIG_SETTING_ROAD_VEHICLE_SLOPE_STEEPNESS_HELPTEXT        :El pendent de les caselles amb costes per a vehicles de carretera. Els valors alts fan que sigui més difícil pujar els turons.
@@ -1542,7 +1542,7 @@ STR_CONFIG_SETTING_GRAPH_LINE_THICKNESS_HELPTEXT                :Gruix de la lí
 
 STR_CONFIG_SETTING_SHOW_NEWGRF_NAME                             :Mostra el nom del NewGRF a la finestra de construcció de vehicles: {STRING}
 STR_CONFIG_SETTING_SHOW_NEWGRF_NAME_HELPTEXT                    :Afegeix una línia a la finestra de construcció de vehicles que mostri de quin NewGRF és el vehicle seleccionat.
-STR_CONFIG_SETTING_SHOW_CARGO_IN_LISTS                          :Mostra les càrregues que poden portar els vehicles a les finestres de llistes {STRING}
+STR_CONFIG_SETTING_SHOW_CARGO_IN_LISTS                          :Mostra les càrregues que poden portar els vehicles a les finestres de llistes: {STRING}
 STR_CONFIG_SETTING_SHOW_CARGO_IN_LISTS_HELPTEXT                 :Si s'activa, la càrrega transportable del vehicle apareixerà al damunt de les llistes dels vehicles.
 
 STR_CONFIG_SETTING_LANDSCAPE                                    :Paisatge: {STRING}
@@ -1622,8 +1622,8 @@ STR_CONFIG_SETTING_SERVICEATHELIPAD_HELPTEXT                    :Inspecciona els
 STR_CONFIG_SETTING_LINK_TERRAFORM_TOOLBAR                       :Enllaça la barra d'eines del paisatge a les barres d'eines de vies/carreteres/aigua/aeroports: {STRING}
 STR_CONFIG_SETTING_LINK_TERRAFORM_TOOLBAR_HELPTEXT              :Quan s'obre la barra d'eines de construcció per un tipus de transport, també s'obre la barra d'eines de remodelació del paisatge
 
-STR_CONFIG_SETTING_SMALLMAP_LAND_COLOUR                         :Color del terra utilitzat al mapa petit: {STRING}
-STR_CONFIG_SETTING_SMALLMAP_LAND_COLOUR_HELPTEXT                :Color del terreny al mapa petit
+STR_CONFIG_SETTING_SMALLMAP_LAND_COLOUR                         :Color del terra utilitzat al minimapa: {STRING}
+STR_CONFIG_SETTING_SMALLMAP_LAND_COLOUR_HELPTEXT                :Color del terreny al minimapa
 ###length 3
 STR_CONFIG_SETTING_SMALLMAP_LAND_COLOUR_GREEN                   :Verd
 STR_CONFIG_SETTING_SMALLMAP_LAND_COLOUR_DARK_GREEN              :Verd fosc
@@ -1646,7 +1646,7 @@ STR_CONFIG_SETTING_SCROLLMODE_RMB                               :Mou el mapa amb
 STR_CONFIG_SETTING_SCROLLMODE_LMB                               :Mou el mapa amb el botó esquerre del ratolí
 
 STR_CONFIG_SETTING_SMOOTH_SCROLLING                             :Desplaçament suau de la vista: {STRING}
-STR_CONFIG_SETTING_SMOOTH_SCROLLING_HELPTEXT                    :Controla com la vista principal es desplaça a una posició específica quan es clica al mapa petit o quan s'envia una ordre de desplaçar-se a un objecte específic al mapa. Si està activat, la vista es desplaça suaument; si està desactivat, salta directament al punt assenyalat
+STR_CONFIG_SETTING_SMOOTH_SCROLLING_HELPTEXT                    :Controla com la vista principal es desplaça a una posició específica quan es fa clic al minimapa o quan s'envia una ordre de desplaçar-se a un objecte específic al mapa. Si està activat, la vista es desplaça suaument; si està desactivat, salta directament al punt assenyalat
 
 STR_CONFIG_SETTING_MEASURE_TOOLTIP                              :Mostra un cartell de mesura quan estiguis utilitzant vàries eines de construcció: {STRING}
 STR_CONFIG_SETTING_MEASURE_TOOLTIP_HELPTEXT                     :Mostra les distàncies-cel·la i les diferències d'alçada quan s'arrossegui durant la construcció
@@ -1832,7 +1832,7 @@ STR_CONFIG_SETTING_SERVINT_AIRCRAFT                             :Interval per de
 STR_CONFIG_SETTING_SERVINT_AIRCRAFT_HELPTEXT                    :Estableix l'interval de revisió predeterminat pels nous avions, si no hi ha un interval de revisió explícit pel vehicle
 STR_CONFIG_SETTING_SERVINT_SHIPS                                :Interval per defecte de servei per als vaixells: {STRING}
 STR_CONFIG_SETTING_SERVINT_SHIPS_HELPTEXT                       :Estableix l'interval de revisió predeterminat pels vaixells que es comprin, si no hi ha un interval de revisió explícit pel vehicle.
-STR_CONFIG_SETTING_SERVINT_VALUE                                :{COMMA}{NBSP}di{P 0 a es}/minut{P 0 "" s}%
+STR_CONFIG_SETTING_SERVINT_VALUE                                :{COMMA}{NBSP}di{P 0 a es}/minut{P 0 "" s}/%
 ###setting-zero-is-special
 STR_CONFIG_SETTING_SERVINT_DISABLED                             :Desactivat
 
@@ -2054,10 +2054,10 @@ STR_CONFIG_SETTING_LINKGRAPH_ACCURACY_HELPTEXT                  :Com més alt el
 STR_CONFIG_SETTING_DEMAND_DISTANCE                              :Efecte de la distància sobre les demandes: {STRING}
 STR_CONFIG_SETTING_DEMAND_DISTANCE_HELPTEXT                     :Si indiqueu un valor major de 0, la distància entre l'estació d'origen A d'una càrrega i la possible destinació B, tindrà efecte en la quantitat de càrrega enviada de A a B. Com més lluny és B de A menys càrrega s'hi enviarà. Com més alt el valor, menys càrrega s'enviarà a estacions llunyanes i més càrrega a estacions properes.
 STR_CONFIG_SETTING_DEMAND_SIZE                                  :Quantitat de càrrega retornada per mode simètric: {STRING}
-STR_CONFIG_SETTING_DEMAND_SIZE_HELPTEXT                         :Indicant menys del 100% la distribució simètrica es comporta més com l'asimètrica. Menys càrrega serà retornada si una certa quantitat és enviada a una estació. Si indiqueu 0% la distribució simètrica es comporta igual que l'asimètrica.
+STR_CONFIG_SETTING_DEMAND_SIZE_HELPTEXT                         :Indicant menys del 100{NBSP}% la distribució simètrica es comporta més com l'asimètrica. Menys càrrega serà retornada si una certa quantitat és enviada a una estació. Si indiqueu un 0{NBSP}%, la distribució simètrica es comporta igual que l'asimètrica.
 
 STR_CONFIG_SETTING_SHORT_PATH_SATURATION                        :Saturació de camins curts abans d'usar camins d'alta capacitat: {STRING}
-STR_CONFIG_SETTING_SHORT_PATH_SATURATION_HELPTEXT               :Sovint hi ha diversos camins entre dues estacions donades. Cargodist primer saturarà el camí més curt, després usarà el segon camí més curt fins a saturar-lo i així successivament. La saturació és determinada per una estimació de la capacitat i l'ús previst. Un cop ha saturat tots els camins, si encara hi ha demanda, sobrecarregarà tots els camins, preferint aquells de major capacitat. No obstant, molt sovint l'algoritme no farà una estimació acurada de la capacitat. Aquest paràmetre us permet especificar fins a quin percentatge un camí més curt ha de ser saturat en la primera ronda abans d'escollir el següent en longitud. Indiqueu menys del 100% per evitar la superpoblació d'estacions en cas de capacitat sobreestimada.
+STR_CONFIG_SETTING_SHORT_PATH_SATURATION_HELPTEXT               :Sovint hi ha diversos camins entre dues estacions donades. Cargodist primer saturarà el camí més curt, després usarà el segon camí més curt fins a saturar-lo i així successivament. La saturació és determinada per una estimació de la capacitat i l'ús previst. Un cop ha saturat tots els camins, si encara hi ha demanda, sobrecarregarà tots els camins, preferint aquells de major capacitat. No obstant, molt sovint l'algoritme no farà una estimació acurada de la capacitat. Aquest paràmetre us permet especificar fins a quin percentatge un camí més curt ha de ser saturat en la primera ronda abans d'escollir el següent en longitud. Indiqueu menys del 100{NBSP}% per a evitar la superpoblació d'estacions en cas de capacitat sobreestimada.
 
 STR_CONFIG_SETTING_LOCALISATION_UNITS_VELOCITY                  :Unitats de velocitat (terrestres): {STRING}
 STR_CONFIG_SETTING_LOCALISATION_UNITS_VELOCITY_NAUTICAL         :Unitats de velocitat (nàutiques): {STRING}
@@ -2981,9 +2981,9 @@ STR_TREES_RANDOM_TREES_TOOLTIP                                  :{BLACK}Planta a
 STR_TREES_MODE_NORMAL_BUTTON                                    :{BLACK}Normal
 STR_TREES_MODE_NORMAL_TOOLTIP                                   :{BLACK}Planta un arbre a cada casella arrossegant el ratolí pel paisatge.
 STR_TREES_MODE_FOREST_SM_BUTTON                                 :{BLACK}Arbreda
-STR_TREES_MODE_FOREST_SM_TOOLTIP                                :{BLACK}Planta petits boscos arrossegant el ratolí pel paisatge.
+STR_TREES_MODE_FOREST_SM_TOOLTIP                                :{BLACK}Planta boscos petits arrossegant el ratolí pel paisatge.
 STR_TREES_MODE_FOREST_LG_BUTTON                                 :{BLACK}Bosc
-STR_TREES_MODE_FOREST_LG_TOOLTIP                                :{BLACK}Planta grans boscos arrossegant el ratolí pel paisatge.
+STR_TREES_MODE_FOREST_LG_TOOLTIP                                :{BLACK}Planta boscos grans arrossegant el ratolí pel paisatge.
 
 # Land generation window (SE)
 STR_TERRAFORM_TOOLBAR_LAND_GENERATION_CAPTION                   :{WHITE}Generador de terreny
@@ -3055,12 +3055,12 @@ STR_INDUSTRY_CARGOES_CARGO_CAPTION                              :{WHITE}Cadena d
 STR_INDUSTRY_CARGOES_PRODUCERS                                  :{WHITE}Indústries productores
 STR_INDUSTRY_CARGOES_CUSTOMERS                                  :{WHITE}Indústries acceptades
 STR_INDUSTRY_CARGOES_HOUSES                                     :{WHITE}Cases
-STR_INDUSTRY_CARGOES_INDUSTRY_TOOLTIP                           :{BLACK}Clica a la indústria per veure els seus proveïdors i clients
+STR_INDUSTRY_CARGOES_INDUSTRY_TOOLTIP                           :{BLACK}Clica a la indústria per veure els seus proveïdors i clients.
 STR_INDUSTRY_CARGOES_CARGO_TOOLTIP                              :{BLACK}{STRING}{}Clica a la càrrega per veure els proveïdors i clients
 STR_INDUSTRY_DISPLAY_CHAIN                                      :{BLACK}Cadena d'indústries
 STR_INDUSTRY_DISPLAY_CHAIN_TOOLTIP                              :{BLACK}Mostra les càrregues proveïdes i les indústries acceptades
-STR_INDUSTRY_CARGOES_NOTIFY_SMALLMAP                            :{BLACK}Enllaç al mapa petit
-STR_INDUSTRY_CARGOES_NOTIFY_SMALLMAP_TOOLTIP                    :{BLACK}Selecciona les indústries mostrades també al mapa petit
+STR_INDUSTRY_CARGOES_NOTIFY_SMALLMAP                            :{BLACK}Mostra el minimapa
+STR_INDUSTRY_CARGOES_NOTIFY_SMALLMAP_TOOLTIP                    :{BLACK}Selecciona les indústries mostrades també al minimapa.
 STR_INDUSTRY_CARGOES_SELECT_CARGO                               :{BLACK}Selecciona la càrrega
 STR_INDUSTRY_CARGOES_SELECT_CARGO_TOOLTIP                       :{BLACK}Selecciona la càrrega que vols mostrar
 STR_INDUSTRY_CARGOES_SELECT_INDUSTRY                            :{BLACK}Selecciona indústria
@@ -3197,9 +3197,9 @@ STR_ABOUT_COPYRIGHT_OPENTTD                                     :{BLACK}OpenTTD 
 STR_FRAMERATE_CAPTION                                           :{WHITE}Fotogrames per segon
 STR_FRAMERATE_CAPTION_SMALL                                     :{STRING}{WHITE} (x{DECIMAL})
 STR_FRAMERATE_RATE_GAMELOOP                                     :{BLACK}Velocitat de simulació: {STRING}
-STR_FRAMERATE_RATE_GAMELOOP_TOOLTIP                             :{BLACK}Nombre de tics del joc per segon.
+STR_FRAMERATE_RATE_GAMELOOP_TOOLTIP                             :{BLACK}Nombre de tics del joc per segon
 STR_FRAMERATE_RATE_BLITTER                                      :{BLACK}Fotogrames per segon: {STRING}
-STR_FRAMERATE_RATE_BLITTER_TOOLTIP                              :{BLACK}Nombre de fotogrames renderitzats per segon.
+STR_FRAMERATE_RATE_BLITTER_TOOLTIP                              :{BLACK}Nombre de fotogrames renderitzats per segon
 STR_FRAMERATE_SPEED_FACTOR                                      :{BLACK}Factor de velocitat actual: x{DECIMAL}
 STR_FRAMERATE_SPEED_FACTOR_TOOLTIP                              :{BLACK}Quant ràpid va la partida actual, comparant-ho amb l'estimació de la velocitat normal.
 STR_FRAMERATE_CURRENT                                           :{WHITE}Actual
@@ -3387,7 +3387,7 @@ STR_GENERATION_WORLD                                            :{WHITE}Generant
 STR_GENERATION_ABORT                                            :{BLACK}Avorta
 STR_GENERATION_ABORT_CAPTION                                    :{WHITE}Avorta la generació del mapa
 STR_GENERATION_ABORT_MESSAGE                                    :{YELLOW}Realment vols avortar la generació?
-STR_GENERATION_PROGRESS                                         :{WHITE}{NUM}% complet
+STR_GENERATION_PROGRESS                                         :{WHITE}{NUM}{NBSP}% complet
 STR_GENERATION_PROGRESS_NUM                                     :{BLACK}{NUM} / {NUM}
 STR_GENERATION_WORLD_GENERATION                                 :{BLACK}Generació del món
 STR_GENERATION_RIVER_GENERATION                                 :{BLACK}Generació de rius
@@ -3589,8 +3589,8 @@ STR_NEWGRF_SCAN_STATUS                                          :{BLACK}{NUM} Ne
 STR_NEWGRF_SCAN_ARCHIVES                                        :Escanejant arxius
 
 # Sign list window
-STR_SIGN_LIST_CAPTION                                           :{WHITE}Llista de senyals - {COMMA} Senyal{P "" s}
-STR_SIGN_LIST_MATCH_CASE                                        :{BLACK}Coincideix Majúscules/Minúscules
+STR_SIGN_LIST_CAPTION                                           :{WHITE}Llista de senyals - {COMMA} senyal{P "" s}
+STR_SIGN_LIST_MATCH_CASE                                        :{BLACK}Coincideix majúscules/minúscules
 STR_SIGN_LIST_MATCH_CASE_TOOLTIP                                :{BLACK}Commuta minúscules/majúscules en comparar els noms dels senyals contra la cadena filtrant
 
 # Sign window
@@ -3769,7 +3769,7 @@ STR_STATION_VIEW_RATINGS_BUTTON                                 :{BLACK}Ratis
 STR_STATION_VIEW_RATINGS_TOOLTIP                                :{BLACK}Mostra els ratis de l'estació
 STR_STATION_VIEW_SUPPLY_RATINGS_TITLE_MONTH                     :{BLACK}Subministrament mensual i rati local:
 STR_STATION_VIEW_SUPPLY_RATINGS_TITLE_MINUTE                    :{BLACK}Subministrament per minut i rati local:
-STR_STATION_VIEW_CARGO_SUPPLY_RATING                            :{WHITE}{STRING}: {YELLOW}{COMMA} / {STRING} ({COMMA}%)
+STR_STATION_VIEW_CARGO_SUPPLY_RATING                            :{WHITE}{STRING}: {YELLOW}{COMMA} / {STRING} ({COMMA}{NBSP}%)
 
 STR_STATION_VIEW_GROUP                                          :{BLACK}Agrupa per
 STR_STATION_VIEW_WAITING_STATION                                :Estació: En espera
@@ -3954,9 +3954,9 @@ STR_INDUSTRY_DIRECTORY_FILTER_NONE                              :Cap
 STR_INDUSTRY_VIEW_CAPTION                                       :{WHITE}{INDUSTRY}
 STR_INDUSTRY_VIEW_PRODUCTION_LAST_MONTH_TITLE                   :{BLACK}Producció del darrer mes:
 STR_INDUSTRY_VIEW_PRODUCTION_LAST_MINUTE_TITLE                  :{BLACK}Producció durant l'últim minut:
-STR_INDUSTRY_VIEW_TRANSPORTED                                   :{YELLOW}{CARGO_LONG}{STRING}{BLACK} ({COMMA}% transportat)
+STR_INDUSTRY_VIEW_TRANSPORTED                                   :{YELLOW}{CARGO_LONG}{STRING}{BLACK} ({COMMA}{NBSP}% transportat)
 STR_INDUSTRY_VIEW_LOCATION_TOOLTIP                              :{BLACK}Centra la vista principal al lloc de la indústria. Amb Ctrl+clic, s'obre una vista nova centrada al lloc on és la indústria.
-STR_INDUSTRY_VIEW_PRODUCTION_LEVEL                              :{BLACK}Nivell de producció: {YELLOW}{COMMA}%
+STR_INDUSTRY_VIEW_PRODUCTION_LEVEL                              :{BLACK}Nivell de producció: {YELLOW}{COMMA}{NBSP}%
 STR_INDUSTRY_VIEW_INDUSTRY_ANNOUNCED_CLOSURE                    :{YELLOW}La indústria ha anunciat la seva clausura imminent!
 
 STR_INDUSTRY_VIEW_REQUIRES_N_CARGO                              :{BLACK}Requereix: {YELLOW}{STRING}{STRING}
@@ -3968,7 +3968,7 @@ STR_INDUSTRY_VIEW_ACCEPT_CARGO                                  :{YELLOW}{0:STRI
 STR_INDUSTRY_VIEW_ACCEPT_CARGO_AMOUNT                           :{YELLOW}{STRING}{BLACK}: {CARGO_SHORT} esperant{STRING}
 
 STR_CONFIG_GAME_PRODUCTION                                      :{WHITE}Canvia la producció (múltiple de 8, fins a 2040)
-STR_CONFIG_GAME_PRODUCTION_LEVEL                                :{WHITE}Canvia el nivell de producció (en percentatge, fins a 800%)
+STR_CONFIG_GAME_PRODUCTION_LEVEL                                :{WHITE}Canvia el nivell de producció (en percentatge, fins al 800{NBSP}%)
 
 # Vehicle lists
 ###length VEHICLE_TYPES
@@ -4045,7 +4045,7 @@ STR_GROUP_PROFIT_THIS_PERIOD                                    :Benefici durant
 STR_GROUP_PROFIT_LAST_YEAR                                      :Benefici de l'any passat:
 STR_GROUP_PROFIT_LAST_PERIOD                                    :Benefici durant l'últim període:
 STR_GROUP_OCCUPANCY                                             :Ocupació actual:
-STR_GROUP_OCCUPANCY_VALUE                                       :{NUM}%
+STR_GROUP_OCCUPANCY_VALUE                                       :{NUM}{NBSP}%
 
 # Build vehicle window
 ###length 4
@@ -4075,7 +4075,7 @@ STR_PURCHASE_INFO_RUNNINGCOST_PERIOD                            :{BLACK}Cost d'u
 STR_PURCHASE_INFO_CAPACITY                                      :{BLACK}Capacitat: {GOLD}{CARGO_LONG} {STRING}
 STR_PURCHASE_INFO_REFITTABLE                                    :(remodelable)
 STR_PURCHASE_INFO_DESIGNED_LIFE                                 :{BLACK}Dissenyat: {GOLD}{NUM}{BLACK} Vida: {GOLD}{COMMA} any{P "" s}
-STR_PURCHASE_INFO_RELIABILITY                                   :{BLACK}Fiabilitat màxima: {GOLD}{COMMA}%
+STR_PURCHASE_INFO_RELIABILITY                                   :{BLACK}Fiabilitat màxima: {GOLD}{COMMA}{NBSP}%
 STR_PURCHASE_INFO_COST                                          :{BLACK}Cost: {GOLD}{CURRENCY_LONG}
 STR_PURCHASE_INFO_COST_REFIT                                    :{BLACK}Cost: {GOLD}{CURRENCY_LONG}{BLACK} (Cost del remodelat: {GOLD}{CURRENCY_LONG}{BLACK})
 STR_PURCHASE_INFO_WEIGHT_CWEIGHT                                :{BLACK}Pes: {GOLD}{WEIGHT_SHORT} ({WEIGHT_SHORT})
@@ -4435,7 +4435,7 @@ STR_VEHICLE_INFO_PROFIT_THIS_YEAR_LAST_YEAR                     :{BLACK}Benefici
 STR_VEHICLE_INFO_PROFIT_THIS_YEAR_LAST_YEAR_MIN_PERFORMANCE     :{BLACK}Benefici aquest any: {LTBLUE}{CURRENCY_LONG} (l'any passat: {CURRENCY_LONG}) {BLACK}Rendiment mínim: {LTBLUE}{POWER_TO_WEIGHT}
 STR_VEHICLE_INFO_PROFIT_THIS_PERIOD_LAST_PERIOD                 :{BLACK}Benefici durant aquest període: {LTBLUE}{CURRENCY_LONG} (durant l'últim període: {CURRENCY_LONG})
 STR_VEHICLE_INFO_PROFIT_THIS_PERIOD_LAST_PERIOD_MIN_PERFORMANCE :{BLACK}Benefici durant aquest període: {LTBLUE}{CURRENCY_LONG} (durant l'últim període: {CURRENCY_LONG}) {BLACK}Rendiment mínim: {LTBLUE}{POWER_TO_WEIGHT}
-STR_VEHICLE_INFO_RELIABILITY_BREAKDOWNS                         :{BLACK}Fiabilitat: {LTBLUE}{COMMA}%  {BLACK}Avaries des de la darrera revisió: {LTBLUE}{COMMA}
+STR_VEHICLE_INFO_RELIABILITY_BREAKDOWNS                         :{BLACK}Fiabilitat: {LTBLUE}{COMMA}{NBSP}%  {BLACK}Avaries des de la darrera revisió: {LTBLUE}{COMMA}
 
 STR_VEHICLE_INFO_BUILT_VALUE                                    :{LTBLUE}{ENGINE} {BLACK}Fabricat: {LTBLUE}{NUM}{BLACK} Valor: {LTBLUE}{CURRENCY_LONG}
 STR_VEHICLE_INFO_NO_CAPACITY                                    :{BLACK}Capacitat: {LTBLUE}Cap{STRING}
@@ -4869,14 +4869,14 @@ STR_TEXTFILE_GAME_MANUAL_CAPTION                                :{WHITE}Document
 
 
 # Vehicle loading indicators
-STR_PERCENT_UP_SMALL                                            :{TINY_FONT}{WHITE}{NUM}%{UP_ARROW}
-STR_PERCENT_UP                                                  :{WHITE}{NUM}%{UP_ARROW}
-STR_PERCENT_DOWN_SMALL                                          :{TINY_FONT}{WHITE}{NUM}%{DOWN_ARROW}
-STR_PERCENT_DOWN                                                :{WHITE}{NUM}%{DOWN_ARROW}
-STR_PERCENT_UP_DOWN_SMALL                                       :{TINY_FONT}{WHITE}{NUM}%{UP_ARROW}{DOWN_ARROW}
-STR_PERCENT_UP_DOWN                                             :{WHITE}{NUM}%{UP_ARROW}{DOWN_ARROW}
-STR_PERCENT_NONE_SMALL                                          :{TINY_FONT}{WHITE}{NUM}%
-STR_PERCENT_NONE                                                :{WHITE}{NUM}%
+STR_PERCENT_UP_SMALL                                            :{TINY_FONT}{WHITE}{NUM}{NBSP}%{UP_ARROW}
+STR_PERCENT_UP                                                  :{WHITE}{NUM}{NBSP}%{UP_ARROW}
+STR_PERCENT_DOWN_SMALL                                          :{TINY_FONT}{WHITE}{NUM}{NBSP}%{DOWN_ARROW}
+STR_PERCENT_DOWN                                                :{WHITE}{NUM}{NBSP}%{DOWN_ARROW}
+STR_PERCENT_UP_DOWN_SMALL                                       :{TINY_FONT}{WHITE}{NUM}{NBSP}%{UP_ARROW}{DOWN_ARROW}
+STR_PERCENT_UP_DOWN                                             :{WHITE}{NUM}{NBSP}%{UP_ARROW}{DOWN_ARROW}
+STR_PERCENT_NONE_SMALL                                          :{TINY_FONT}{WHITE}{NUM}{NBSP}%
+STR_PERCENT_NONE                                                :{WHITE}{NUM}{NBSP}%
 
 # Income 'floats'
 STR_INCOME_FLOAT_COST_SMALL                                     :{TINY_FONT}{RED}Cost: {CURRENCY_LONG}
@@ -5392,43 +5392,43 @@ STR_TOWN_BUILDING_NAME_PIGGY_BANK_1                             :Banc-guardiola 
 
 ##id 0x4800
 # industry names
-STR_INDUSTRY_NAME_COAL_MINE                                     :{G=Femenin}Mina de Carbó
-STR_INDUSTRY_NAME_POWER_STATION                                 :{G=Femenin}Central Tèrmica
+STR_INDUSTRY_NAME_COAL_MINE                                     :{G=Femenin}Mina de carbó
+STR_INDUSTRY_NAME_POWER_STATION                                 :{G=Femenin}Central tèrmica
 STR_INDUSTRY_NAME_SAWMILL                                       :{G=Femenin}Serradora
 STR_INDUSTRY_NAME_FOREST                                        :{G=Masculin}Bosc
-STR_INDUSTRY_NAME_OIL_REFINERY                                  :{G=Femenin}Refineria de Petroli
-STR_INDUSTRY_NAME_OIL_RIG                                       :{G=Femenin}Plataforma Petrolífera
+STR_INDUSTRY_NAME_OIL_REFINERY                                  :{G=Femenin}Refineria de petroli
+STR_INDUSTRY_NAME_OIL_RIG                                       :{G=Femenin}Plataforma petrolífera
 STR_INDUSTRY_NAME_FACTORY                                       :{G=Femenin}Fàbrica
 STR_INDUSTRY_NAME_PRINTING_WORKS                                :{G=Femenin}Impremta
-STR_INDUSTRY_NAME_STEEL_MILL                                    :{G=Masculin}Alt Forn
+STR_INDUSTRY_NAME_STEEL_MILL                                    :{G=Masculin}Alt forn
 STR_INDUSTRY_NAME_FARM                                          :{G=Femenin}Granja
-STR_INDUSTRY_NAME_COPPER_ORE_MINE                               :{G=Femenin}Mina de Coure
-STR_INDUSTRY_NAME_OIL_WELLS                                     :{G=Masculin}Pou de Petroli
+STR_INDUSTRY_NAME_COPPER_ORE_MINE                               :{G=Femenin}Mina de coure
+STR_INDUSTRY_NAME_OIL_WELLS                                     :{G=Masculin}Pou de petroli
 STR_INDUSTRY_NAME_BANK                                          :{G=Masculin}Banc
 STR_INDUSTRY_NAME_FOOD_PROCESSING_PLANT                         :{G=Femenin}Planta de Manipulació de Queviures
-STR_INDUSTRY_NAME_PAPER_MILL                                    :{G=Femenin}Indústria Paperera
-STR_INDUSTRY_NAME_GOLD_MINE                                     :{G=Femenin}Mina d'Or
+STR_INDUSTRY_NAME_PAPER_MILL                                    :{G=Femenin}Indústria paperera
+STR_INDUSTRY_NAME_GOLD_MINE                                     :{G=Femenin}Mina d'or
 STR_INDUSTRY_NAME_BANK_TROPIC_ARCTIC                            :{G=Masculin}Banc
 STR_INDUSTRY_NAME_DIAMOND_MINE                                  :{G=Femenin}Mina de Diamants
-STR_INDUSTRY_NAME_IRON_ORE_MINE                                 :{G=Femenin}Mina de Ferro
-STR_INDUSTRY_NAME_FRUIT_PLANTATION                              :{G=Femenin}Plantació de Fruita
-STR_INDUSTRY_NAME_RUBBER_PLANTATION                             :{G=Femenin}Plantació de Cautxú
-STR_INDUSTRY_NAME_WATER_SUPPLY                                  :{G=Masculin}Sortidor d'Aigua
-STR_INDUSTRY_NAME_WATER_TOWER                                   :{G=Femenin}Torre d'Aigua
+STR_INDUSTRY_NAME_IRON_ORE_MINE                                 :{G=Femenin}Mina de ferro
+STR_INDUSTRY_NAME_FRUIT_PLANTATION                              :{G=Femenin}Plantació de fruita
+STR_INDUSTRY_NAME_RUBBER_PLANTATION                             :{G=Femenin}Plantació de cautxú
+STR_INDUSTRY_NAME_WATER_SUPPLY                                  :{G=Masculin}Sortidor d'aigua
+STR_INDUSTRY_NAME_WATER_TOWER                                   :{G=Femenin}Torre d'aigua
 STR_INDUSTRY_NAME_FACTORY_2                                     :{G=Femenin}Fàbrica
 STR_INDUSTRY_NAME_FARM_2                                        :{G=Femenin}Granja
 STR_INDUSTRY_NAME_LUMBER_MILL                                   :{G=Femenin}Serradora
-STR_INDUSTRY_NAME_COTTON_CANDY_FOREST                           :{G=Masculin}Bosc de Cotó de Sucre
-STR_INDUSTRY_NAME_CANDY_FACTORY                                 :{G=Femenin}Fàbrica de Dolços
-STR_INDUSTRY_NAME_BATTERY_FARM                                  :{G=Femenin}Granja de Piles
-STR_INDUSTRY_NAME_COLA_WELLS                                    :{G=Masculin}Pou de Refrescs
-STR_INDUSTRY_NAME_TOY_SHOP                                      :{G=Femenin}Botiga de Joguines
-STR_INDUSTRY_NAME_TOY_FACTORY                                   :{G=Femenin}Fàbrica de Joguines
-STR_INDUSTRY_NAME_PLASTIC_FOUNTAINS                             :{G=Femenin}Font de Plàstic
-STR_INDUSTRY_NAME_FIZZY_DRINK_FACTORY                           :{G=Femenin}Fàbrica de Begudes Gasoses
-STR_INDUSTRY_NAME_BUBBLE_GENERATOR                              :{G=Masculin}Generador de Bombolles
-STR_INDUSTRY_NAME_TOFFEE_QUARRY                                 :{G=Femenin}Pedrera de Caramel
-STR_INDUSTRY_NAME_SUGAR_MINE                                    :{G=Femenin}Mina de Sucre
+STR_INDUSTRY_NAME_COTTON_CANDY_FOREST                           :{G=Masculin}Bosc de cotó de sucre
+STR_INDUSTRY_NAME_CANDY_FACTORY                                 :{G=Femenin}Fàbrica de dolços
+STR_INDUSTRY_NAME_BATTERY_FARM                                  :{G=Femenin}Granja de piles
+STR_INDUSTRY_NAME_COLA_WELLS                                    :{G=Masculin}Pou de refrescos
+STR_INDUSTRY_NAME_TOY_SHOP                                      :{G=Femenin}Botiga de joguines
+STR_INDUSTRY_NAME_TOY_FACTORY                                   :{G=Femenin}Fàbrica de joguines
+STR_INDUSTRY_NAME_PLASTIC_FOUNTAINS                             :{G=Femenin}Font de plàstic
+STR_INDUSTRY_NAME_FIZZY_DRINK_FACTORY                           :{G=Femenin}Fàbrica de begudes gasoses
+STR_INDUSTRY_NAME_BUBBLE_GENERATOR                              :{G=Masculin}Generador de bombolles
+STR_INDUSTRY_NAME_TOFFEE_QUARRY                                 :{G=Femenin}Pedrera de caramel
+STR_INDUSTRY_NAME_SUGAR_MINE                                    :{G=Femenin}Mina de sucre
 
 ############ WARNING, using range 0x6000 for strings that are stored in the savegame
 ############ These strings may never get a new id, or savegames will break!
@@ -5448,7 +5448,7 @@ STR_SV_STNAME_SOUTH                                             :{STRING} Sud
 STR_SV_STNAME_EAST                                              :{STRING} Est
 STR_SV_STNAME_WEST                                              :{STRING} Oest
 STR_SV_STNAME_CENTRAL                                           :{STRING} Central
-STR_SV_STNAME_TRANSFER                                          :{STRING} Transbord
+STR_SV_STNAME_TRANSFER                                          :Transbord de {STRING}
 STR_SV_STNAME_HALT                                              :Parada de {STRING}
 STR_SV_STNAME_VALLEY                                            :Vall de {STRING}
 STR_SV_STNAME_HEIGHTS                                           :Pic de {STRING}
@@ -5524,7 +5524,7 @@ STR_VEHICLE_NAME_TRAIN_WAGON_RAIL_SUGAR_TRUCK                   :{G=Masculin}Vag
 STR_VEHICLE_NAME_TRAIN_WAGON_RAIL_COTTON_CANDY_HOPPER           :{G=Masculin}Vagó de cotó de sucre
 STR_VEHICLE_NAME_TRAIN_WAGON_RAIL_TOFFEE_HOPPER                 :{G=Masculin}Vagó de caramels
 STR_VEHICLE_NAME_TRAIN_WAGON_RAIL_BUBBLE_VAN                    :{G=Masculin}Vagó de bombolles
-STR_VEHICLE_NAME_TRAIN_WAGON_RAIL_COLA_TANKER                   :{G=Masculin}Tanc de refresc
+STR_VEHICLE_NAME_TRAIN_WAGON_RAIL_COLA_TANKER                   :{G=Masculin}Tanc de refrescos
 STR_VEHICLE_NAME_TRAIN_WAGON_RAIL_CANDY_VAN                     :{G=Masculin}Vagó de dolços
 STR_VEHICLE_NAME_TRAIN_WAGON_RAIL_TOY_VAN                       :{G=Masculin}Vagó de joguines
 STR_VEHICLE_NAME_TRAIN_WAGON_RAIL_BATTERY_TRUCK                 :{G=Masculin}Vagó de piles
@@ -5554,7 +5554,7 @@ STR_VEHICLE_NAME_TRAIN_WAGON_MONORAIL_SUGAR_TRUCK               :{G=Masculin}Vag
 STR_VEHICLE_NAME_TRAIN_WAGON_MONORAIL_COTTON_CANDY_HOPPER       :{G=Masculin}Vagó de cotó de sucre
 STR_VEHICLE_NAME_TRAIN_WAGON_MONORAIL_TOFFEE_HOPPER             :{G=Masculin}Vagó de caramels
 STR_VEHICLE_NAME_TRAIN_WAGON_MONORAIL_BUBBLE_VAN                :{G=Masculin}Vagó de bombolles
-STR_VEHICLE_NAME_TRAIN_WAGON_MONORAIL_COLA_TANKER               :{G=Masculin}Tanc de refresc
+STR_VEHICLE_NAME_TRAIN_WAGON_MONORAIL_COLA_TANKER               :{G=Masculin}Tanc de refrescos
 STR_VEHICLE_NAME_TRAIN_WAGON_MONORAIL_CANDY_VAN                 :{G=Masculin}Vagó de dolços
 STR_VEHICLE_NAME_TRAIN_WAGON_MONORAIL_TOY_VAN                   :{G=Masculin}Vagó de joguines
 STR_VEHICLE_NAME_TRAIN_WAGON_MONORAIL_BATTERY_TRUCK             :{G=Masculin}Vagó de piles
@@ -5586,7 +5586,7 @@ STR_VEHICLE_NAME_TRAIN_WAGON_MAGLEV_SUGAR_TRUCK                 :{G=Masculin}Vag
 STR_VEHICLE_NAME_TRAIN_WAGON_MAGLEV_COTTON_CANDY_HOPPER         :{G=Masculin}Vagó de cotó de sucre
 STR_VEHICLE_NAME_TRAIN_WAGON_MAGLEV_TOFFEE_HOPPER               :{G=Masculin}Vagó de caramels
 STR_VEHICLE_NAME_TRAIN_WAGON_MAGLEV_BUBBLE_VAN                  :{G=Masculin}Vagó de bombolles
-STR_VEHICLE_NAME_TRAIN_WAGON_MAGLEV_COLA_TANKER                 :{G=Masculin}Tanc de refresc
+STR_VEHICLE_NAME_TRAIN_WAGON_MAGLEV_COLA_TANKER                 :{G=Masculin}Tanc de refrescos
 STR_VEHICLE_NAME_TRAIN_WAGON_MAGLEV_CANDY_VAN                   :{G=Masculin}Vagó de dolços
 STR_VEHICLE_NAME_TRAIN_WAGON_MAGLEV_TOY_VAN                     :{G=Masculin}Vagó de joguines
 STR_VEHICLE_NAME_TRAIN_WAGON_MAGLEV_BATTERY_TRUCK               :{G=Masculin}Vagó de piles
@@ -5601,100 +5601,100 @@ STR_VEHICLE_NAME_ROAD_VEHICLE_FOSTER_MKII_SUPERBUS              :{G=Masculin}Aut
 STR_VEHICLE_NAME_ROAD_VEHICLE_PLODDYPHUT_MKI_BUS                :{G=Masculin}Autobús Ploddyphut MkI
 STR_VEHICLE_NAME_ROAD_VEHICLE_PLODDYPHUT_MKII_BUS               :{G=Masculin}Autobús Ploddyphut MkII
 STR_VEHICLE_NAME_ROAD_VEHICLE_PLODDYPHUT_MKIII_BUS              :{G=Masculin}Autobús Ploddyphut MkIII
-STR_VEHICLE_NAME_ROAD_VEHICLE_BALOGH_COAL_TRUCK                 :{G=Masculin}Camió per Carbó Balogh
-STR_VEHICLE_NAME_ROAD_VEHICLE_UHL_COAL_TRUCK                    :{G=Masculin}Camió per Carbó Uhl
-STR_VEHICLE_NAME_ROAD_VEHICLE_DW_COAL_TRUCK                     :{G=Masculin}Camió per Carbó DW
-STR_VEHICLE_NAME_ROAD_VEHICLE_MPS_MAIL_TRUCK                    :{G=Masculin}Camió per Correu MPS
-STR_VEHICLE_NAME_ROAD_VEHICLE_REYNARD_MAIL_TRUCK                :{G=Masculin}Camió per Correu Reynard
-STR_VEHICLE_NAME_ROAD_VEHICLE_PERRY_MAIL_TRUCK                  :{G=Masculin}Camió per Correu Perry
-STR_VEHICLE_NAME_ROAD_VEHICLE_MIGHTYMOVER_MAIL_TRUCK            :{G=Masculin}Camió per Correu MightyMover
-STR_VEHICLE_NAME_ROAD_VEHICLE_POWERNAUGHT_MAIL_TRUCK            :{G=Masculin}Camió per Correu Powernaught
-STR_VEHICLE_NAME_ROAD_VEHICLE_WIZZOWOW_MAIL_TRUCK               :{G=Masculin}Camió per Correu Wizzowow
-STR_VEHICLE_NAME_ROAD_VEHICLE_WITCOMBE_OIL_TANKER               :{G=Femenin}Cuba de Petroli Witcombe
-STR_VEHICLE_NAME_ROAD_VEHICLE_FOSTER_OIL_TANKER                 :{G=Femenin}Cuba de Petroli Foster
-STR_VEHICLE_NAME_ROAD_VEHICLE_PERRY_OIL_TANKER                  :{G=Femenin}Cuba de Petroli Perry
-STR_VEHICLE_NAME_ROAD_VEHICLE_TALBOTT_LIVESTOCK_VAN             :{G=Masculin}Camió de Bestiar Talbott
-STR_VEHICLE_NAME_ROAD_VEHICLE_UHL_LIVESTOCK_VAN                 :{G=Masculin}Vagó de Bestiar Uhl
-STR_VEHICLE_NAME_ROAD_VEHICLE_FOSTER_LIVESTOCK_VAN              :{G=Masculin}Camió de Bestiar Foster
-STR_VEHICLE_NAME_ROAD_VEHICLE_BALOGH_GOODS_TRUCK                :{G=Masculin}Camió de Mercaderies Balogh
-STR_VEHICLE_NAME_ROAD_VEHICLE_CRAIGHEAD_GOODS_TRUCK             :{G=Masculin}Camió de Mercaderies Craighead
-STR_VEHICLE_NAME_ROAD_VEHICLE_GOSS_GOODS_TRUCK                  :{G=Masculin}Camió de Mercaderies Goss
-STR_VEHICLE_NAME_ROAD_VEHICLE_HEREFORD_GRAIN_TRUCK              :{G=Masculin}Camió per Gra Hereford
-STR_VEHICLE_NAME_ROAD_VEHICLE_THOMAS_GRAIN_TRUCK                :{G=Masculin}Camió per Gra Thomas
-STR_VEHICLE_NAME_ROAD_VEHICLE_GOSS_GRAIN_TRUCK                  :{G=Masculin}Camió per Gra Goss
-STR_VEHICLE_NAME_ROAD_VEHICLE_WITCOMBE_WOOD_TRUCK               :{G=Masculin}Camió per Fusta Witcombe
-STR_VEHICLE_NAME_ROAD_VEHICLE_FOSTER_WOOD_TRUCK                 :{G=Masculin}Camió per Fusta Foster
-STR_VEHICLE_NAME_ROAD_VEHICLE_MORELAND_WOOD_TRUCK               :{G=Masculin}Camió per Fusta Moreland
-STR_VEHICLE_NAME_ROAD_VEHICLE_MPS_IRON_ORE_TRUCK                :{G=Masculin}Camió per Mineral de Ferro MPS
-STR_VEHICLE_NAME_ROAD_VEHICLE_UHL_IRON_ORE_TRUCK                :{G=Masculin}Camió per Mineral de Ferro Uhl
-STR_VEHICLE_NAME_ROAD_VEHICLE_CHIPPY_IRON_ORE_TRUCK             :{G=Masculin}Camió per Mineral de Ferro Chippy
-STR_VEHICLE_NAME_ROAD_VEHICLE_BALOGH_STEEL_TRUCK                :{G=Masculin}Camió per Acer Balogh
-STR_VEHICLE_NAME_ROAD_VEHICLE_UHL_STEEL_TRUCK                   :{G=Masculin}Camió per Acer Uhl
-STR_VEHICLE_NAME_ROAD_VEHICLE_KELLING_STEEL_TRUCK               :{G=Masculin}Camió per Acer Kelling
-STR_VEHICLE_NAME_ROAD_VEHICLE_BALOGH_ARMORED_TRUCK              :{G=Masculin}Furgó Blindat Balogh
-STR_VEHICLE_NAME_ROAD_VEHICLE_UHL_ARMORED_TRUCK                 :{G=Masculin}Furgó Blindat Uhl
-STR_VEHICLE_NAME_ROAD_VEHICLE_FOSTER_ARMORED_TRUCK              :{G=Masculin}Furgó Blindat Foster
-STR_VEHICLE_NAME_ROAD_VEHICLE_FOSTER_FOOD_VAN                   :{G=Masculin}Camió per Queviures Foster
-STR_VEHICLE_NAME_ROAD_VEHICLE_PERRY_FOOD_VAN                    :{G=Masculin}Camió per Queviures Perry
-STR_VEHICLE_NAME_ROAD_VEHICLE_CHIPPY_FOOD_VAN                   :{G=Masculin}Camió per Queviures Chippy
-STR_VEHICLE_NAME_ROAD_VEHICLE_UHL_PAPER_TRUCK                   :{G=Masculin}Camió per Paper Uhl
-STR_VEHICLE_NAME_ROAD_VEHICLE_BALOGH_PAPER_TRUCK                :{G=Masculin}Camió per Paper Balogh
-STR_VEHICLE_NAME_ROAD_VEHICLE_MPS_PAPER_TRUCK                   :{G=Masculin}Camió per Paper MPS
-STR_VEHICLE_NAME_ROAD_VEHICLE_MPS_COPPER_ORE_TRUCK              :{G=Masculin}Camió per Mineral de Coure MPS
-STR_VEHICLE_NAME_ROAD_VEHICLE_UHL_COPPER_ORE_TRUCK              :{G=Masculin}Camió per Mineral de Coure Uhl
-STR_VEHICLE_NAME_ROAD_VEHICLE_GOSS_COPPER_ORE_TRUCK             :{G=Masculin}Camió per Mineral de Coure Goss
-STR_VEHICLE_NAME_ROAD_VEHICLE_UHL_WATER_TANKER                  :{G=Femenin}Cuba d'Aigua Uhl
-STR_VEHICLE_NAME_ROAD_VEHICLE_BALOGH_WATER_TANKER               :{G=Femenin}Cuba d'Aigua Balogh
-STR_VEHICLE_NAME_ROAD_VEHICLE_MPS_WATER_TANKER                  :{G=Femenin}Cuba d'Aigua MPS
-STR_VEHICLE_NAME_ROAD_VEHICLE_BALOGH_FRUIT_TRUCK                :{G=Masculin}Camió per Fruita Balogh
-STR_VEHICLE_NAME_ROAD_VEHICLE_UHL_FRUIT_TRUCK                   :{G=Masculin}Camió per Fruita Uhl
-STR_VEHICLE_NAME_ROAD_VEHICLE_KELLING_FRUIT_TRUCK               :{G=Masculin}Camió per Fruita Kelling
-STR_VEHICLE_NAME_ROAD_VEHICLE_BALOGH_RUBBER_TRUCK               :{G=Masculin}Camió per Cautxú Balogh
-STR_VEHICLE_NAME_ROAD_VEHICLE_UHL_RUBBER_TRUCK                  :Camió per Cautxú Uhl
-STR_VEHICLE_NAME_ROAD_VEHICLE_RMT_RUBBER_TRUCK                  :{G=Masculin}Camió per Cautxú RMT
-STR_VEHICLE_NAME_ROAD_VEHICLE_MIGHTYMOVER_SUGAR_TRUCK           :{G=Masculin}Camió per Sucre MightyMover
-STR_VEHICLE_NAME_ROAD_VEHICLE_POWERNAUGHT_SUGAR_TRUCK           :{G=Masculin}Camió per Sucre Powernaught
-STR_VEHICLE_NAME_ROAD_VEHICLE_WIZZOWOW_SUGAR_TRUCK              :{G=Masculin}Camió per Sucre Wizzowow
-STR_VEHICLE_NAME_ROAD_VEHICLE_MIGHTYMOVER_COLA_TRUCK            :{G=Masculin}Camió per Refrescs MightyMover
-STR_VEHICLE_NAME_ROAD_VEHICLE_POWERNAUGHT_COLA_TRUCK            :{G=Masculin}Camió per Refrescs Powernaught
-STR_VEHICLE_NAME_ROAD_VEHICLE_WIZZOWOW_COLA_TRUCK               :{G=Masculin}Camió per Refrescs Wizzowow
-STR_VEHICLE_NAME_ROAD_VEHICLE_MIGHTYMOVER_COTTON_CANDY          :{G=Masculin}Camió per Cotó de Sucre MightyMover
-STR_VEHICLE_NAME_ROAD_VEHICLE_POWERNAUGHT_COTTON_CANDY          :{G=Masculin}Camió per Cotó de Sucre Powernaught
-STR_VEHICLE_NAME_ROAD_VEHICLE_WIZZOWOW_COTTON_CANDY_TRUCK       :{G=Masculin}Camió per Cotó de Sucre Wizzowow
-STR_VEHICLE_NAME_ROAD_VEHICLE_MIGHTYMOVER_TOFFEE_TRUCK          :{G=Masculin}Camió per Caramels MightyMover
-STR_VEHICLE_NAME_ROAD_VEHICLE_POWERNAUGHT_TOFFEE_TRUCK          :{G=Masculin}Camió per Caramels Powernaught
-STR_VEHICLE_NAME_ROAD_VEHICLE_WIZZOWOW_TOFFEE_TRUCK             :{G=Masculin}Camió per Caramels Wizzowow
-STR_VEHICLE_NAME_ROAD_VEHICLE_MIGHTYMOVER_TOY_VAN               :{G=Masculin}Camió per Joguines MightyMover
-STR_VEHICLE_NAME_ROAD_VEHICLE_POWERNAUGHT_TOY_VAN               :{G=Masculin}Camió per Joguines Powernaught
-STR_VEHICLE_NAME_ROAD_VEHICLE_WIZZOWOW_TOY_VAN                  :{G=Masculin}Camió per Joguines Wizzowow
-STR_VEHICLE_NAME_ROAD_VEHICLE_MIGHTYMOVER_CANDY_TRUCK           :{G=Masculin}Camió per Dolços MightyMover
-STR_VEHICLE_NAME_ROAD_VEHICLE_POWERNAUGHT_CANDY_TRUCK           :{G=Masculin}Camió per Dolços Powernaught
-STR_VEHICLE_NAME_ROAD_VEHICLE_WIZZOWOW_CANDY_TRUCK              :{G=Masculin}Camió per Dolços Wizzowow
-STR_VEHICLE_NAME_ROAD_VEHICLE_MIGHTYMOVER_BATTERY_TRUCK         :{G=Masculin}Camió per Piles MightyMover
-STR_VEHICLE_NAME_ROAD_VEHICLE_POWERNAUGHT_BATTERY_TRUCK         :{G=Masculin}Camió per Piles Powernaught
-STR_VEHICLE_NAME_ROAD_VEHICLE_WIZZOWOW_BATTERY_TRUCK            :{G=Masculin}Camió per Piles Wizzowow
-STR_VEHICLE_NAME_ROAD_VEHICLE_MIGHTYMOVER_FIZZY_DRINK           :{G=Masculin}Camió per Begudes Gasoses MightyMover
-STR_VEHICLE_NAME_ROAD_VEHICLE_POWERNAUGHT_FIZZY_DRINK           :{G=Masculin}Camió per Begudes Gasoses Powernaught
-STR_VEHICLE_NAME_ROAD_VEHICLE_WIZZOWOW_FIZZY_DRINK_TRUCK        :{G=Masculin}Camió per Begudes Gasoses Wizzowow
-STR_VEHICLE_NAME_ROAD_VEHICLE_MIGHTYMOVER_PLASTIC_TRUCK         :{G=Masculin}Camió per Plàstic MightyMover
-STR_VEHICLE_NAME_ROAD_VEHICLE_POWERNAUGHT_PLASTIC_TRUCK         :{G=Masculin}Camió per Plàstic Powernaught
-STR_VEHICLE_NAME_ROAD_VEHICLE_WIZZOWOW_PLASTIC_TRUCK            :{G=Masculin}Camió per Plàstic Wizzowow
-STR_VEHICLE_NAME_ROAD_VEHICLE_MIGHTYMOVER_BUBBLE_TRUCK          :{G=Masculin}Camió per Bombolles MightyMover
-STR_VEHICLE_NAME_ROAD_VEHICLE_POWERNAUGHT_BUBBLE_TRUCK          :{G=Masculin}Camió per Bombolles Powernaught
-STR_VEHICLE_NAME_ROAD_VEHICLE_WIZZOWOW_BUBBLE_TRUCK             :{G=Masculin}Camió per Bombolles Wizzowow
+STR_VEHICLE_NAME_ROAD_VEHICLE_BALOGH_COAL_TRUCK                 :{G=Masculin}Camió de carbó Balogh
+STR_VEHICLE_NAME_ROAD_VEHICLE_UHL_COAL_TRUCK                    :{G=Masculin}Camió de carbó Uhl
+STR_VEHICLE_NAME_ROAD_VEHICLE_DW_COAL_TRUCK                     :{G=Masculin}Camió de carbó DW
+STR_VEHICLE_NAME_ROAD_VEHICLE_MPS_MAIL_TRUCK                    :{G=Masculin}Camió de correu MPS
+STR_VEHICLE_NAME_ROAD_VEHICLE_REYNARD_MAIL_TRUCK                :{G=Masculin}Camió de correu Reynard
+STR_VEHICLE_NAME_ROAD_VEHICLE_PERRY_MAIL_TRUCK                  :{G=Masculin}Camió de correu Perry
+STR_VEHICLE_NAME_ROAD_VEHICLE_MIGHTYMOVER_MAIL_TRUCK            :{G=Masculin}Camió de correu MightyMover
+STR_VEHICLE_NAME_ROAD_VEHICLE_POWERNAUGHT_MAIL_TRUCK            :{G=Masculin}Camió de correu Powernaught
+STR_VEHICLE_NAME_ROAD_VEHICLE_WIZZOWOW_MAIL_TRUCK               :{G=Masculin}Camió de correu Wizzowow
+STR_VEHICLE_NAME_ROAD_VEHICLE_WITCOMBE_OIL_TANKER               :{G=Femenin}Cuba de petroli Witcombe
+STR_VEHICLE_NAME_ROAD_VEHICLE_FOSTER_OIL_TANKER                 :{G=Femenin}Cuba de petroli Foster
+STR_VEHICLE_NAME_ROAD_VEHICLE_PERRY_OIL_TANKER                  :{G=Femenin}Cuba de petroli Perry
+STR_VEHICLE_NAME_ROAD_VEHICLE_TALBOTT_LIVESTOCK_VAN             :{G=Masculin}Camió de bestiar Talbott
+STR_VEHICLE_NAME_ROAD_VEHICLE_UHL_LIVESTOCK_VAN                 :{G=Masculin}Vagó de bestiar Uhl
+STR_VEHICLE_NAME_ROAD_VEHICLE_FOSTER_LIVESTOCK_VAN              :{G=Masculin}Camió de bestiar Foster
+STR_VEHICLE_NAME_ROAD_VEHICLE_BALOGH_GOODS_TRUCK                :{G=Masculin}Camió de mercaderies Balogh
+STR_VEHICLE_NAME_ROAD_VEHICLE_CRAIGHEAD_GOODS_TRUCK             :{G=Masculin}Camió de mercaderies Craighead
+STR_VEHICLE_NAME_ROAD_VEHICLE_GOSS_GOODS_TRUCK                  :{G=Masculin}Camió de mercaderies Goss
+STR_VEHICLE_NAME_ROAD_VEHICLE_HEREFORD_GRAIN_TRUCK              :{G=Masculin}Camió de gra Hereford
+STR_VEHICLE_NAME_ROAD_VEHICLE_THOMAS_GRAIN_TRUCK                :{G=Masculin}Camió de gra Thomas
+STR_VEHICLE_NAME_ROAD_VEHICLE_GOSS_GRAIN_TRUCK                  :{G=Masculin}Camió de gra Goss
+STR_VEHICLE_NAME_ROAD_VEHICLE_WITCOMBE_WOOD_TRUCK               :{G=Masculin}Camió de fusta Witcombe
+STR_VEHICLE_NAME_ROAD_VEHICLE_FOSTER_WOOD_TRUCK                 :{G=Masculin}Camió de fusta Foster
+STR_VEHICLE_NAME_ROAD_VEHICLE_MORELAND_WOOD_TRUCK               :{G=Masculin}Camió de fusta Moreland
+STR_VEHICLE_NAME_ROAD_VEHICLE_MPS_IRON_ORE_TRUCK                :{G=Masculin}Camió de mineral de ferro MPS
+STR_VEHICLE_NAME_ROAD_VEHICLE_UHL_IRON_ORE_TRUCK                :{G=Masculin}Camió de mineral de ferro Uhl
+STR_VEHICLE_NAME_ROAD_VEHICLE_CHIPPY_IRON_ORE_TRUCK             :{G=Masculin}Camió de mineral de ferro Chippy
+STR_VEHICLE_NAME_ROAD_VEHICLE_BALOGH_STEEL_TRUCK                :{G=Masculin}Camió d'acer Balogh
+STR_VEHICLE_NAME_ROAD_VEHICLE_UHL_STEEL_TRUCK                   :{G=Masculin}Camió d'acer Uhl
+STR_VEHICLE_NAME_ROAD_VEHICLE_KELLING_STEEL_TRUCK               :{G=Masculin}Camió d'acer Kelling
+STR_VEHICLE_NAME_ROAD_VEHICLE_BALOGH_ARMORED_TRUCK              :{G=Masculin}Furgó blindat Balogh
+STR_VEHICLE_NAME_ROAD_VEHICLE_UHL_ARMORED_TRUCK                 :{G=Masculin}Furgó blindat Uhl
+STR_VEHICLE_NAME_ROAD_VEHICLE_FOSTER_ARMORED_TRUCK              :{G=Masculin}Furgó blindat Foster
+STR_VEHICLE_NAME_ROAD_VEHICLE_FOSTER_FOOD_VAN                   :{G=Masculin}Camió de queviures Foster
+STR_VEHICLE_NAME_ROAD_VEHICLE_PERRY_FOOD_VAN                    :{G=Masculin}Camió de queviures Perry
+STR_VEHICLE_NAME_ROAD_VEHICLE_CHIPPY_FOOD_VAN                   :{G=Masculin}Camió de queviures Chippy
+STR_VEHICLE_NAME_ROAD_VEHICLE_UHL_PAPER_TRUCK                   :{G=Masculin}Camió de paper Uhl
+STR_VEHICLE_NAME_ROAD_VEHICLE_BALOGH_PAPER_TRUCK                :{G=Masculin}Camió de paper Balogh
+STR_VEHICLE_NAME_ROAD_VEHICLE_MPS_PAPER_TRUCK                   :{G=Masculin}Camió de paper MPS
+STR_VEHICLE_NAME_ROAD_VEHICLE_MPS_COPPER_ORE_TRUCK              :{G=Masculin}Camió de mineral de coure MPS
+STR_VEHICLE_NAME_ROAD_VEHICLE_UHL_COPPER_ORE_TRUCK              :{G=Masculin}Camió de mineral de coure Uhl
+STR_VEHICLE_NAME_ROAD_VEHICLE_GOSS_COPPER_ORE_TRUCK             :{G=Masculin}Camió de mineral de coure Goss
+STR_VEHICLE_NAME_ROAD_VEHICLE_UHL_WATER_TANKER                  :{G=Femenin}Cuba d'aigua Uhl
+STR_VEHICLE_NAME_ROAD_VEHICLE_BALOGH_WATER_TANKER               :{G=Femenin}Cuba d'aigua Balogh
+STR_VEHICLE_NAME_ROAD_VEHICLE_MPS_WATER_TANKER                  :{G=Femenin}Cuba d'aigua MPS
+STR_VEHICLE_NAME_ROAD_VEHICLE_BALOGH_FRUIT_TRUCK                :{G=Masculin}Camió de fruita Balogh
+STR_VEHICLE_NAME_ROAD_VEHICLE_UHL_FRUIT_TRUCK                   :{G=Masculin}Camió de fruita Uhl
+STR_VEHICLE_NAME_ROAD_VEHICLE_KELLING_FRUIT_TRUCK               :{G=Masculin}Camió de fruita Kelling
+STR_VEHICLE_NAME_ROAD_VEHICLE_BALOGH_RUBBER_TRUCK               :{G=Masculin}Camió de cautxú Balogh
+STR_VEHICLE_NAME_ROAD_VEHICLE_UHL_RUBBER_TRUCK                  :Camió de cautxú Uhl
+STR_VEHICLE_NAME_ROAD_VEHICLE_RMT_RUBBER_TRUCK                  :{G=Masculin}Camió de cautxú RMT
+STR_VEHICLE_NAME_ROAD_VEHICLE_MIGHTYMOVER_SUGAR_TRUCK           :{G=Masculin}Camió de sucre MightyMover
+STR_VEHICLE_NAME_ROAD_VEHICLE_POWERNAUGHT_SUGAR_TRUCK           :{G=Masculin}Camió de sucre Powernaught
+STR_VEHICLE_NAME_ROAD_VEHICLE_WIZZOWOW_SUGAR_TRUCK              :{G=Masculin}Camió de sucre Wizzowow
+STR_VEHICLE_NAME_ROAD_VEHICLE_MIGHTYMOVER_COLA_TRUCK            :{G=Masculin}Camió de refrescos MightyMover
+STR_VEHICLE_NAME_ROAD_VEHICLE_POWERNAUGHT_COLA_TRUCK            :{G=Masculin}Camió de refrescos Powernaught
+STR_VEHICLE_NAME_ROAD_VEHICLE_WIZZOWOW_COLA_TRUCK               :{G=Masculin}Camió de refrescos Wizzowow
+STR_VEHICLE_NAME_ROAD_VEHICLE_MIGHTYMOVER_COTTON_CANDY          :{G=Masculin}Camió de cotó de sucre MightyMover
+STR_VEHICLE_NAME_ROAD_VEHICLE_POWERNAUGHT_COTTON_CANDY          :{G=Masculin}Camió de cotó de sucre Powernaught
+STR_VEHICLE_NAME_ROAD_VEHICLE_WIZZOWOW_COTTON_CANDY_TRUCK       :{G=Masculin}Camió de cotó de sucre Wizzowow
+STR_VEHICLE_NAME_ROAD_VEHICLE_MIGHTYMOVER_TOFFEE_TRUCK          :{G=Masculin}Camió de caramels MightyMover
+STR_VEHICLE_NAME_ROAD_VEHICLE_POWERNAUGHT_TOFFEE_TRUCK          :{G=Masculin}Camió de caramels Powernaught
+STR_VEHICLE_NAME_ROAD_VEHICLE_WIZZOWOW_TOFFEE_TRUCK             :{G=Masculin}Camió de caramels Wizzowow
+STR_VEHICLE_NAME_ROAD_VEHICLE_MIGHTYMOVER_TOY_VAN               :{G=Masculin}Camió de joguines MightyMover
+STR_VEHICLE_NAME_ROAD_VEHICLE_POWERNAUGHT_TOY_VAN               :{G=Masculin}Camió de joguines Powernaught
+STR_VEHICLE_NAME_ROAD_VEHICLE_WIZZOWOW_TOY_VAN                  :{G=Masculin}Camió de joguines Wizzowow
+STR_VEHICLE_NAME_ROAD_VEHICLE_MIGHTYMOVER_CANDY_TRUCK           :{G=Masculin}Camió de dolços MightyMover
+STR_VEHICLE_NAME_ROAD_VEHICLE_POWERNAUGHT_CANDY_TRUCK           :{G=Masculin}Camió de dolços Powernaught
+STR_VEHICLE_NAME_ROAD_VEHICLE_WIZZOWOW_CANDY_TRUCK              :{G=Masculin}Camió de dolços Wizzowow
+STR_VEHICLE_NAME_ROAD_VEHICLE_MIGHTYMOVER_BATTERY_TRUCK         :{G=Masculin}Camió de piles MightyMover
+STR_VEHICLE_NAME_ROAD_VEHICLE_POWERNAUGHT_BATTERY_TRUCK         :{G=Masculin}Camió de piles Powernaught
+STR_VEHICLE_NAME_ROAD_VEHICLE_WIZZOWOW_BATTERY_TRUCK            :{G=Masculin}Camió de piles Wizzowow
+STR_VEHICLE_NAME_ROAD_VEHICLE_MIGHTYMOVER_FIZZY_DRINK           :{G=Masculin}Camió de begudes gasoses MightyMover
+STR_VEHICLE_NAME_ROAD_VEHICLE_POWERNAUGHT_FIZZY_DRINK           :{G=Masculin}Camió de begudes gasoses Powernaught
+STR_VEHICLE_NAME_ROAD_VEHICLE_WIZZOWOW_FIZZY_DRINK_TRUCK        :{G=Masculin}Camió de begudes gasoses Wizzowow
+STR_VEHICLE_NAME_ROAD_VEHICLE_MIGHTYMOVER_PLASTIC_TRUCK         :{G=Masculin}Camió de plàstic MightyMover
+STR_VEHICLE_NAME_ROAD_VEHICLE_POWERNAUGHT_PLASTIC_TRUCK         :{G=Masculin}Camió de plàstic Powernaught
+STR_VEHICLE_NAME_ROAD_VEHICLE_WIZZOWOW_PLASTIC_TRUCK            :{G=Masculin}Camió de plàstic Wizzowow
+STR_VEHICLE_NAME_ROAD_VEHICLE_MIGHTYMOVER_BUBBLE_TRUCK          :{G=Masculin}Camió de bombolles MightyMover
+STR_VEHICLE_NAME_ROAD_VEHICLE_POWERNAUGHT_BUBBLE_TRUCK          :{G=Masculin}Camió de bombolles Powernaught
+STR_VEHICLE_NAME_ROAD_VEHICLE_WIZZOWOW_BUBBLE_TRUCK             :{G=Masculin}Camió de bombolles Wizzowow
 
 ###length 11
 STR_VEHICLE_NAME_SHIP_MPS_OIL_TANKER                            :{G=Masculin}Petroler MPS
 STR_VEHICLE_NAME_SHIP_CS_INC_OIL_TANKER                         :{G=Masculin}Petroler CS-Inc.
-STR_VEHICLE_NAME_SHIP_MPS_PASSENGER_FERRY                       :{G=Masculin}Ferry de Passatgers MPS
-STR_VEHICLE_NAME_SHIP_FFP_PASSENGER_FERRY                       :{G=Masculin}Ferry de Passatgers FFP
+STR_VEHICLE_NAME_SHIP_MPS_PASSENGER_FERRY                       :{G=Masculin}Ferry de passatgers MPS
+STR_VEHICLE_NAME_SHIP_FFP_PASSENGER_FERRY                       :{G=Masculin}Ferry de passatgers FFP
 STR_VEHICLE_NAME_SHIP_BAKEWELL_300_HOVERCRAFT                   :{G=Masculin}Hovercraft Bakewell 300
-STR_VEHICLE_NAME_SHIP_CHUGGER_CHUG_PASSENGER                    :{G=Masculin}Ferry de Passatgers Chugger-Chug
-STR_VEHICLE_NAME_SHIP_SHIVERSHAKE_PASSENGER_FERRY               :{G=Masculin}Ferry de Passatgers Shivershake
-STR_VEHICLE_NAME_SHIP_YATE_CARGO_SHIP                           :{G=Masculin}Vaixell Mercant Yate
-STR_VEHICLE_NAME_SHIP_BAKEWELL_CARGO_SHIP                       :{G=Masculin}Vaixell Mercant Bakewell
-STR_VEHICLE_NAME_SHIP_MIGHTYMOVER_CARGO_SHIP                    :{G=Masculin}Vaixell Mercant MightyMover
-STR_VEHICLE_NAME_SHIP_POWERNAUT_CARGO_SHIP                      :{G=Masculin}Vaixell Mercant Powernaut
+STR_VEHICLE_NAME_SHIP_CHUGGER_CHUG_PASSENGER                    :{G=Masculin}Ferry de passatgers Chugger-Chug
+STR_VEHICLE_NAME_SHIP_SHIVERSHAKE_PASSENGER_FERRY               :{G=Masculin}Ferry de passatgers Shivershake
+STR_VEHICLE_NAME_SHIP_YATE_CARGO_SHIP                           :{G=Masculin}Vaixell mercant Yate
+STR_VEHICLE_NAME_SHIP_BAKEWELL_CARGO_SHIP                       :{G=Masculin}Vaixell mercant Bakewell
+STR_VEHICLE_NAME_SHIP_MIGHTYMOVER_CARGO_SHIP                    :{G=Masculin}Vaixell mercant MightyMover
+STR_VEHICLE_NAME_SHIP_POWERNAUT_CARGO_SHIP                      :{G=Masculin}Vaixell mercant Powernaut
 
 ###length 41
 STR_VEHICLE_NAME_AIRCRAFT_SAMPSON_U52                           :{G=Masculin}Sampson U52
