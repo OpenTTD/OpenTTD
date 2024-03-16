@@ -293,10 +293,10 @@ STR_TOOLTIP_DEMOLISH_BUILDINGS_ETC                              :{BLACK}Demolish
 
 # Show engines button
 ###length VEHICLE_TYPES
-STR_SHOW_HIDDEN_ENGINES_VEHICLE_TRAIN                           :{BLACK}Show hidden
-STR_SHOW_HIDDEN_ENGINES_VEHICLE_ROAD_VEHICLE                    :{BLACK}Show hidden
-STR_SHOW_HIDDEN_ENGINES_VEHICLE_SHIP                            :{BLACK}Show hidden
-STR_SHOW_HIDDEN_ENGINES_VEHICLE_AIRCRAFT                        :{BLACK}Show hidden
+STR_SHOW_HIDDEN_ENGINES_VEHICLE_TRAIN                           :{BLACK}Show hidden ({NUM})
+STR_SHOW_HIDDEN_ENGINES_VEHICLE_ROAD_VEHICLE                    :{BLACK}Show hidden ({NUM})
+STR_SHOW_HIDDEN_ENGINES_VEHICLE_SHIP                            :{BLACK}Show hidden ({NUM})
+STR_SHOW_HIDDEN_ENGINES_VEHICLE_AIRCRAFT                        :{BLACK}Show hidden ({NUM})
 
 ###length VEHICLE_TYPES
 STR_SHOW_HIDDEN_ENGINES_VEHICLE_TRAIN_TOOLTIP                   :{BLACK}By enabling this button, the hidden train vehicles are also displayed
