@@ -59,7 +59,7 @@ jobs:
         - name: arm64 - Debug
           arch: arm64
           full_arch: arm64
-          extra-cmake-parameters: -DCMAKE_BUILD=Debug
+          extra-cmake-parameters: -DCMAKE_BUILD_TYPE=Debug
         - name: arm64 - Release
           arch: arm64
           full_arch: arm64
