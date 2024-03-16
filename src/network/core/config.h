@@ -48,7 +48,7 @@ static const size_t COMPAT_MTU = 1460; ///< Number of bytes we can pack in a sin
 static const byte NETWORK_GAME_ADMIN_VERSION        =    3;           ///< What version of the admin network do we use?
 static const byte NETWORK_GAME_INFO_VERSION         =    7;           ///< What version of game-info do we use?
 static const byte NETWORK_COORDINATOR_VERSION       =    6;           ///< What version of game-coordinator-protocol do we use?
-static const byte NETWORK_SURVEY_VERSION            =    1;           ///< What version of the survey do we use?
+static const byte NETWORK_SURVEY_VERSION            =    2;           ///< What version of the survey do we use?
 
 static const uint NETWORK_NAME_LENGTH               =   80;           ///< The maximum length of the server name and map name, in bytes including '\0'
 static const uint NETWORK_COMPANY_NAME_LENGTH       =  128;           ///< The maximum length of the company name, in bytes including '\0'
