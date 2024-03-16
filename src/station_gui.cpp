@@ -260,8 +260,8 @@ protected:
 		this->stations_per_cargo_type_no_rating = 0;
 
 		for (const Station *st : Station::Iterate()) {
-			if (st->owner == owner || (st->owner == OWNER_NONE && HasStationInUse(st->index, true, owner))) {
-				if (this->filter.facilities & st->facilities) { // only stations with selected facilities
+			if ((this->filter.facilities & st->facilities) != 0) { // only stations with selected facilities
+				if (st->owner == owner || (st->owner == OWNER_NONE && HasStationInUse(st->index, true, owner))) {
 					bool has_rating = false;
 					/* Add to the station/cargo counts. */
 					for (CargoID j = 0; j < NUM_CARGO; j++) {
