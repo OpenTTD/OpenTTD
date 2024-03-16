@@ -1054,9 +1054,9 @@ STR_GAME_OPTIONS_GUI_SCALE_BEVELS                               :{BLACK}Randen s
 STR_GAME_OPTIONS_GUI_SCALE_BEVELS_TOOLTIP                       :{BLACK}Vink dit vakje aan om randen te schalen op grootte van gebruikersscherm
 
 STR_GAME_OPTIONS_GUI_FONT_SPRITE                                :{BLACK}Traditioneel sprite-lettertype gebruiken
-STR_GAME_OPTIONS_GUI_FONT_SPRITE_TOOLTIP                        :{BLACK}Vink dit vakje aan als je het traditionele sprite-lettertype met vaste breedte wilt gebruiken.
+STR_GAME_OPTIONS_GUI_FONT_SPRITE_TOOLTIP                        :{BLACK}Vink dit vakje aan als je het traditionele sprite-lettertype met vaste breedte wilt gebruiken
 STR_GAME_OPTIONS_GUI_FONT_AA                                    :{BLACK}Lettertypen met anti-alias
-STR_GAME_OPTIONS_GUI_FONT_AA_TOOLTIP                            :{BLACK}Vink dit vakje aan voor in grootte aanpasbare lettertypen met anti-alias.
+STR_GAME_OPTIONS_GUI_FONT_AA_TOOLTIP                            :{BLACK}Vink dit vakje aan voor in grootte aanpasbare lettertypen met anti-alias
 
 STR_GAME_OPTIONS_GUI_SCALE_1X                                   :1x
 STR_GAME_OPTIONS_GUI_SCALE_2X                                   :2x
@@ -1275,7 +1275,7 @@ STR_CONFIG_SETTING_INFINITE_MONEY                               :Onbeperkt geld:
 STR_CONFIG_SETTING_INFINITE_MONEY_HELPTEXT                      :Je kunt onbeperkt geld uitgeven en bedrijven gaan niet failliet
 
 STR_CONFIG_SETTING_MAXIMUM_INITIAL_LOAN                         :Maximale beginlening: {STRING}
-STR_CONFIG_SETTING_MAXIMUM_INITIAL_LOAN_HELPTEXT                :Maximaal bedrag dat een bedrijf kan lenen (zonder rekening te houden met de inflatie). Als je dit instelt op 'Geen lening' kun je geen geld krijgen tenzij door middel van een spelscript of de instelling 'Onbeperkt geld'.
+STR_CONFIG_SETTING_MAXIMUM_INITIAL_LOAN_HELPTEXT                :Maximaal bedrag dat een bedrijf kan lenen (zonder rekening te houden met de inflatie). Als je dit instelt op 'Geen lening' kun je geen geld krijgen tenzij door middel van een spelscript of de instelling 'Onbeperkt geld'
 STR_CONFIG_SETTING_MAXIMUM_INITIAL_LOAN_VALUE                   :{CURRENCY_LONG}
 ###setting-zero-is-special
 STR_CONFIG_SETTING_MAXIMUM_INITIAL_LOAN_DISABLED                :Geen lening
@@ -1359,7 +1359,7 @@ STR_CONFIG_SETTING_ROAD_VEHICLE_SLOPE_STEEPNESS                 :Hellingsteilhei
 STR_CONFIG_SETTING_ROAD_VEHICLE_SLOPE_STEEPNESS_HELPTEXT        :Steilheid van een schuine tegel voor een wegvoertuig. Hogere waarden maken het moeilijker om een heuvel te beklimmen
 
 STR_CONFIG_SETTING_FORBID_90_DEG                                :Treinen en schepen mogen niet 90° draaien: {STRING}
-STR_CONFIG_SETTING_FORBID_90_DEG_HELPTEXT                       :Draaiingen met 90° treden op wanneer een horizontale baan direct gevolgd wordt door een verticaal baanstuk op de aangrenzende tegel, waardoor de trein daarna 90 graden draait wanneer de tegelrand wordt overgestoken in plaats van de gebruikelijke 45 graden voor andere spoorcombinaties.
+STR_CONFIG_SETTING_FORBID_90_DEG_HELPTEXT                       :Bochten van 90° treden op wanneer een horizontale baan direct gevolgd wordt door een verticaal baanstuk op de aangrenzende tegel, waardoor de trein daarna 90 graden draait wanneer de tegelrand wordt overgestoken in plaats van de gebruikelijke 45 graden voor andere spoorcombinaties
 
 STR_CONFIG_SETTING_DISTANT_JOIN_STATIONS                        :Samenvoegen van indirect aansluitende stations toestaan: {STRING}
 STR_CONFIG_SETTING_DISTANT_JOIN_STATIONS_HELPTEXT               :Hiermee kun je aanvullende onderdelen aan een station plaatsen zonder dat reeds bestaande onderdelen beïnvloed worden. Ctrl+klik is vereist tijdens het plaatsen van nieuwe onderdelen.
@@ -1495,22 +1495,22 @@ STR_CONFIG_SETTING_NEVER_EXPIRE_VEHICLES                        :Voertuigen verl
 STR_CONFIG_SETTING_NEVER_EXPIRE_VEHICLES_HELPTEXT               :Wanneer ingeschakeld, alle voertuig modellen blijven voor altijd beschikbaar na hun introductie
 
 STR_CONFIG_SETTING_TIMEKEEPING_UNITS                            :Tijd bijhouden: {STRING}
-STR_CONFIG_SETTING_TIMEKEEPING_UNITS_HELPTEXT                   :Selecteer de tijdbasis voor het spel. Dit kan later niet meer worden gewijzigd.{}{}Kalender is het klassieke OpenTTD, met een jaar met 12 maanden en maanden met 28-31 dagen.{}{}Bij Muurklok worden vrachtproductie en financiën gebaseerd op stappen van één minuut, ongeveer zolang als maanden van 30 dagen in Kalender-modus. Deze worden gegroepeerd in perioden van 12 minuten, equivalent aan een jaar in Kalender-modus.{}{}In beide modi heb je altijd een klassieke kalender die wordt gebruikt voor de introductiedatums van voertuigen, huizen en andere infrastructuur.
+STR_CONFIG_SETTING_TIMEKEEPING_UNITS_HELPTEXT                   :Selecteer de tijdbasis voor het spel. Dit kan later niet meer worden gewijzigd.{}{}Kalender is het klassieke OpenTTD, met een jaar met 12 maanden en maanden met 28-31 dagen.{}{}Bij Muurklok worden vrachtproductie en financiën gebaseerd op stappen van één minuut, ongeveer zolang als maanden van 30 dagen in Kalender-modus. Deze worden gegroepeerd in perioden van 12 minuten, equivalent aan een jaar in Kalender-modus.{}{}In beide modi heb je altijd een klassieke kalender die wordt gebruikt voor de introductiedatums van voertuigen, huizen en andere infrastructuur
 ###length 2
 STR_CONFIG_SETTING_TIMEKEEPING_UNITS_CALENDAR                   :Kalender
 STR_CONFIG_SETTING_TIMEKEEPING_UNITS_WALLCLOCK                  :Muurklok
 
 STR_CONFIG_SETTING_MINUTES_PER_YEAR                             :Minuten per jaar: {STRING}
-STR_CONFIG_SETTING_MINUTES_PER_YEAR_HELPTEXT                    :Kies het aantal minuten in een kalenderjaar. Standaard is 12 minuten. Bij 0 wijzigt de kalendertijd niet. Deze instelling heeft geen invloed op de economische simulatie van het spel en is alleen beschikbaar met tijdbasis Muurklok.
+STR_CONFIG_SETTING_MINUTES_PER_YEAR_HELPTEXT                    :Kies het aantal minuten in een kalenderjaar. Standaard is 12 minuten. Bij 0 wijzigt de kalendertijd niet. Deze instelling heeft geen invloed op de economische simulatie van het spel en is alleen beschikbaar met tijdbasis Muurklok
 
 STR_CONFIG_SETTING_MINUTES_PER_YEAR_VALUE                       :{NUM}
 ###setting-zero-is-special
 STR_CONFIG_SETTING_MINUTES_PER_YEAR_FROZEN                      :0 (kalendertijd bevroren)
 
 STR_CONFIG_SETTING_TOWN_CARGO_SCALE                             :Schaal vrachtproductie van stad: {STRING}
-STR_CONFIG_SETTING_TOWN_CARGO_SCALE_HELPTEXT                    :Schaal de vrachtproductie van steden met dit percentage.
+STR_CONFIG_SETTING_TOWN_CARGO_SCALE_HELPTEXT                    :Schaal de vrachtproductie van steden met dit percentage
 STR_CONFIG_SETTING_INDUSTRY_CARGO_SCALE                         :Schaal vrachtproductie van industrie: {STRING}
-STR_CONFIG_SETTING_INDUSTRY_CARGO_SCALE_HELPTEXT                :Schaal de vrachtproductie van industrieën met dit percentage.
+STR_CONFIG_SETTING_INDUSTRY_CARGO_SCALE_HELPTEXT                :Schaal de vrachtproductie van industrieën met dit percentage
 STR_CONFIG_SETTING_CARGO_SCALE_VALUE                            :{NUM}%
 
 STR_CONFIG_SETTING_AUTORENEW_VEHICLE                            :Voertuig automatisch vernieuwen wanneer dit oud wordt: {STRING}
@@ -1529,7 +1529,7 @@ STR_CONFIG_SETTING_ERRMSG_DURATION                              :Duur van foutbe
 STR_CONFIG_SETTING_ERRMSG_DURATION_HELPTEXT                     :Duur voor het weergeven van foutberichten in een rood venster. Merk op dat sommige (kritische) foutmeldingen niet automatisch worden gesloten na deze tijd, deze moeten handmatig worden gesloten
 
 STR_CONFIG_SETTING_HOVER_DELAY                                  :Knopinfo weergeven: {STRING}
-STR_CONFIG_SETTING_HOVER_DELAY_HELPTEXT                         :Vertraging voordat knopinfo worden weergegeven wanneer je de muis boven een besturingselement houdt. Wanneer de waarde 0 is, wordt knopinfo aan de rechtermuisknop gebonden.
+STR_CONFIG_SETTING_HOVER_DELAY_HELPTEXT                         :Vertraging voordat knopinfo worden weergegeven wanneer je de muis boven een besturingselement houdt. Wanneer de waarde 0 is, wordt knopinfo aan de rechtermuisknop gebonden
 STR_CONFIG_SETTING_HOVER_DELAY_VALUE                            :Muis stilhouden gedurende {COMMA} milliseconde{P 0 "" n}
 ###setting-zero-is-special
 STR_CONFIG_SETTING_HOVER_DELAY_DISABLED                         :Rechtsklik
@@ -1541,8 +1541,8 @@ STR_CONFIG_SETTING_GRAPH_LINE_THICKNESS                         :Dikte van de li
 STR_CONFIG_SETTING_GRAPH_LINE_THICKNESS_HELPTEXT                :Breedte van de lijnen in de grafiek. Een dunne lijn is preciezer leesbaar, een dikke lijn is makkelijker te zien en kleuren zijn makkelijker om te onderscheiden
 
 STR_CONFIG_SETTING_SHOW_NEWGRF_NAME                             :Naam van NewGRF weergeven in venster voor voertuigen bouwen: {STRING}
-STR_CONFIG_SETTING_SHOW_NEWGRF_NAME_HELPTEXT                    :Voeg een regel toe aan het venster voor voertuigen bouwen die aangeeft uit welke NewGRF het geselecteerde voertuig komt.
-STR_CONFIG_SETTING_SHOW_CARGO_IN_LISTS                          :Mogelijke lading van voertuigen weergeven in lijstvensters {STRING}
+STR_CONFIG_SETTING_SHOW_NEWGRF_NAME_HELPTEXT                    :Voeg een regel toe aan het venster voor voertuigen bouwen die aangeeft uit welke NewGRF het geselecteerde voertuig komt
+STR_CONFIG_SETTING_SHOW_CARGO_IN_LISTS                          :Mogelijke lading van voertuigen weergeven in lijstvensters: {STRING}
 STR_CONFIG_SETTING_SHOW_CARGO_IN_LISTS_HELPTEXT                 :Wanneer ingeschakeld, verschijnt de mogelijke lading van het voertuig erboven in voertuiglijsten
 
 STR_CONFIG_SETTING_LANDSCAPE                                    :Landschap: {STRING}
@@ -1567,7 +1567,7 @@ STR_CONFIG_SETTING_SNOWLINE_HEIGHT                              :Sneeuwhoogte: {
 STR_CONFIG_SETTING_SNOWLINE_HEIGHT_HELPTEXT                     :Kies op welke hoogte de sneeuw begint in subarctisch landschap. Sneeuw heeft ook invloed op het ontstaan van industrieën en op de vereisten voor stadsgroei. Kan alleen worden aangepast in de scenariobewerker of wordt berekend met behulp van 'sneeuwoppervlak'
 
 STR_CONFIG_SETTING_SNOW_COVERAGE                                :Sneeuwoppervlak: {STRING}
-STR_CONFIG_SETTING_SNOW_COVERAGE_HELPTEXT                       :Kies de hoeveelheid sneeuw in het subarctische landschap. Sneeuw is ook van invloed op de industrieën en de groei van steden. Wordt alleen gebruikt tijdens het maken van de kaart. Land op zeeniveau of aan de kust krijgt nooit sneeuw.
+STR_CONFIG_SETTING_SNOW_COVERAGE_HELPTEXT                       :Kies de hoeveelheid sneeuw in het subarctische landschap. Sneeuw is ook van invloed op de industrieën en de groei van steden. Wordt alleen gebruikt tijdens het maken van de kaart. Land op zeeniveau of aan de kust krijgt nooit sneeuw
 STR_CONFIG_SETTING_SNOW_COVERAGE_VALUE                          :{NUM}%
 
 STR_CONFIG_SETTING_DESERT_COVERAGE                              :Woestijnoppervlak: {STRING}
@@ -1575,7 +1575,7 @@ STR_CONFIG_SETTING_DESERT_COVERAGE_HELPTEXT                     :Kies de hoeveel
 STR_CONFIG_SETTING_DESERT_COVERAGE_VALUE                        :{NUM}%
 
 STR_CONFIG_SETTING_ROUGHNESS_OF_TERRAIN                         :Ruwheid van het terrein: {STRING}
-STR_CONFIG_SETTING_ROUGHNESS_OF_TERRAIN_HELPTEXT                :Kies vorm en aantal heuvels. Gladde landschappen hebben minder en bredere heuvels. Ruwe landschappen hebben meer, maar kleinere heuvels.
+STR_CONFIG_SETTING_ROUGHNESS_OF_TERRAIN_HELPTEXT                :Kies vorm en aantal heuvels. Gladde landschappen hebben minder en bredere heuvels. Ruwe landschappen hebben meer, maar kleinere heuvels
 ###length 4
 STR_CONFIG_SETTING_ROUGHNESS_OF_TERRAIN_VERY_SMOOTH             :Erg glad
 STR_CONFIG_SETTING_ROUGHNESS_OF_TERRAIN_SMOOTH                  :Glad
@@ -1583,7 +1583,7 @@ STR_CONFIG_SETTING_ROUGHNESS_OF_TERRAIN_ROUGH                   :Ruig
 STR_CONFIG_SETTING_ROUGHNESS_OF_TERRAIN_VERY_ROUGH              :Erg ruig
 
 STR_CONFIG_SETTING_VARIETY                                      :Variëteit distributie: {STRING}
-STR_CONFIG_SETTING_VARIETY_HELPTEXT                             :Kies of de kaart zowel bergachtige als vlakke gebieden bevat. Hoe groter de variatie, hoe meer verschillen in hoogte tussen bergachtige en vlakke gebieden.
+STR_CONFIG_SETTING_VARIETY_HELPTEXT                             :Kies of de kaart zowel bergachtige als vlakke gebieden bevat. Hoe groter de variatie, hoe meer verschillen in hoogte tussen bergachtige en vlakke gebieden
 
 STR_CONFIG_SETTING_RIVER_AMOUNT                                 :Hoeveelheid rivieren: {STRING}
 STR_CONFIG_SETTING_RIVER_AMOUNT_HELPTEXT                        :Selecteer hoeveel rivieren er gegenereerd worden
@@ -1754,7 +1754,7 @@ STR_CONFIG_SETTING_AUTO_REMOVE_SIGNALS                          :Automatisch sei
 STR_CONFIG_SETTING_AUTO_REMOVE_SIGNALS_HELPTEXT                 :Seinen automatisch verwijderen tijdens spooraanleg als deze in de weg staan. Dit kan botsingen veroorzaken.
 
 STR_CONFIG_SETTING_FAST_FORWARD_SPEED_LIMIT                     :Limiet verhoogde spelsnelheid: {STRING}
-STR_CONFIG_SETTING_FAST_FORWARD_SPEED_LIMIT_HELPTEXT            :Beperkt de snelheid van het spel wanneer de spelsnelheid is verhoogt. 0 = geen limiet (alleen beperkt door de computer zelf). Waarden onder 100% vertragen het spel. De hoogste waarde hangt af van de specifcaties van de computer en kan afhankelijk van het spel variëren.
+STR_CONFIG_SETTING_FAST_FORWARD_SPEED_LIMIT_HELPTEXT            :Beperkt de snelheid van het spel wanneer snel vooruit is ingeschakeld. 0 = geen limiet (alleen beperkt door de computer zelf). Waarden onder 100% vertragen het spel. De hoogste waarde hangt af van de specifcaties van de computer en kan afhankelijk van het spel variëren
 STR_CONFIG_SETTING_FAST_FORWARD_SPEED_LIMIT_VAL                 :{NUM}% normale spelsnelheid
 ###setting-zero-is-special
 STR_CONFIG_SETTING_FAST_FORWARD_SPEED_LIMIT_ZERO                :Geen limiet (alleen beperkt door de computer zelf)
@@ -1818,11 +1818,11 @@ STR_CONFIG_SETTING_AI_IN_MULTIPLAYER_HELPTEXT                   :Computerspelers
 STR_CONFIG_SETTING_SCRIPT_MAX_OPCODES                           :Aantal opcodes voordat scripts worden gestopt: {STRING}
 STR_CONFIG_SETTING_SCRIPT_MAX_OPCODES_HELPTEXT                  :Maximumaantal berekeningsstappen die een script kan maken in een beurt
 STR_CONFIG_SETTING_SCRIPT_MAX_MEMORY                            :Max. geheugengebruik per script: {STRING}
-STR_CONFIG_SETTING_SCRIPT_MAX_MEMORY_HELPTEXT                   :De hoeveelheid geheugen die een script mag gebruiken voordat het geforceerd wordt beëindigd. Voor grote kaarten moet deze waarde misschien verhoogd worden.
+STR_CONFIG_SETTING_SCRIPT_MAX_MEMORY_HELPTEXT                   :De hoeveelheid geheugen die een script mag gebruiken voordat het geforceerd wordt beëindigd. Voor grote kaarten moet deze waarde misschien verhoogd worden
 STR_CONFIG_SETTING_SCRIPT_MAX_MEMORY_VALUE                      :{COMMA} MiB
 
 STR_CONFIG_SETTING_SERVINT_ISPERCENT                            :Onderhoudstermijnen in procenten: {STRING}
-STR_CONFIG_SETTING_SERVINT_ISPERCENT_HELPTEXT                   :Als deze optie is ingeschakeld, proberen voertuigen in onderhoud te gaan als de betrouwbaarheid met een bepaald percentage van de maximale betrouwbaarheid is gezakt.{}{}Als bijvoorbeeld de maximale betrouwbaarheid 90% is en de onderhoudstermijn is 20%, dan probeert het voertuig in onderhoud te gaan als de betrouwbaarheid tot 72% daalt.
+STR_CONFIG_SETTING_SERVINT_ISPERCENT_HELPTEXT                   :Als deze optie is ingeschakeld, proberen voertuigen in onderhoud te gaan als de betrouwbaarheid met een bepaald percentage van de maximale betrouwbaarheid is gezakt.{}{}Als bijvoorbeeld de maximale betrouwbaarheid 90% is en de onderhoudstermijn is 20%, dan probeert het voertuig in onderhoud te gaan als de betrouwbaarheid tot 72% daalt
 
 STR_CONFIG_SETTING_SERVINT_TRAINS                               :Standaardonderhoudstermijn voor treinen: {STRING}
 STR_CONFIG_SETTING_SERVINT_TRAINS_HELPTEXT                      :Standaardonderhoudstermijn instellen voor nieuwe treinen als er geen expliciete onderhoudstermijn is ingesteld voor het voertuig
@@ -1840,7 +1840,7 @@ STR_CONFIG_SETTING_NOSERVICE                                    :Onderhoud uitsc
 STR_CONFIG_SETTING_NOSERVICE_HELPTEXT                           :Als deze optie is ingeschakeld worden voertuigen niet onderhouden als ze niet kapot kunnen gaan.
 
 STR_CONFIG_SETTING_STATION_LENGTH_LOADING_PENALTY               :Verminderde laadsnelheid voor treinen langer dan het station: {STRING}
-STR_CONFIG_SETTING_STATION_LENGTH_LOADING_PENALTY_HELPTEXT      :Indien ingeschakeld worden treinen die te lang zijn voor het station langzamer geladen dan treinen die in het station passen. Deze instelling is niet van invloed op het zoeken van de route.
+STR_CONFIG_SETTING_STATION_LENGTH_LOADING_PENALTY_HELPTEXT      :Indien ingeschakeld worden treinen die te lang zijn voor het station langzamer geladen dan treinen die in het station passen. Deze instelling is niet van invloed op het zoeken van de route
 
 STR_CONFIG_SETTING_WAGONSPEEDLIMITS                             :Snelheidslimieten voor wagons inschakelen: {STRING}
 STR_CONFIG_SETTING_WAGONSPEEDLIMITS_HELPTEXT                    :Wanneer ingeschakeld, ook gebruik maken van snelheidsbeperkingen van wagons voor het bepalen van de maximale snelheid van een trein
@@ -1905,13 +1905,13 @@ STR_CONFIG_SETTING_COLOURED_NEWS_YEAR_HELPTEXT                  :Jaar dat de kra
 STR_CONFIG_SETTING_STARTING_YEAR                                :Startjaar: {STRING}
 
 STR_CONFIG_SETTING_ENDING_YEAR                                  :Eindjaar voor score: {STRING}
-STR_CONFIG_SETTING_ENDING_YEAR_HELPTEXT                         :Jaar dat het spel eindigt ten behoeve van de score. Aan het einde van dit jaar wordt de score van het bedrijf vastgelegd en verschijnt het venster met topscores. De spelers kunnen echter doorgaan met spelen.{}Als dit voor het startjaar ligt, verschijnt het venster met topscores niet.
+STR_CONFIG_SETTING_ENDING_YEAR_HELPTEXT                         :Jaar dat het spel eindigt ten behoeve van de score. Aan het einde van dit jaar wordt de score van het bedrijf vastgelegd en verschijnt het venster met topscores. Je kunt echter doorgaan met spelen.{}Als deze waarde eerder is dan het startjaar, verschijnt het venster met topscores niet
 STR_CONFIG_SETTING_ENDING_YEAR_VALUE                            :{NUM}
 ###setting-zero-is-special
 STR_CONFIG_SETTING_ENDING_YEAR_ZERO                             :Nooit
 
 STR_CONFIG_SETTING_ECONOMY_TYPE                                 :Type economie: {STRING}
-STR_CONFIG_SETTING_ECONOMY_TYPE_HELPTEXT                        :Bij gelijkmatige economie zijn er vaker wijzigingen in productie, die in kleinere stappen verlopen. Bij vaste economie zijn er geen wijzigingen in productie en sluiten bedrijven niet. Deze instelling werkt misschien niet als de soorten industrie worden geleverd in een NewGRF.
+STR_CONFIG_SETTING_ECONOMY_TYPE_HELPTEXT                        :Bij gelijkmatige economie zijn er vaker wijzigingen in productie die in kleinere stappen verlopen. Bij vaste economie zijn er geen wijzigingen in productie en sluiten bedrijven niet. Deze instelling werkt misschien niet als de soorten industrie worden geleverd in een NewGRF
 ###length 3
 STR_CONFIG_SETTING_ECONOMY_TYPE_ORIGINAL                        :Origineel
 STR_CONFIG_SETTING_ECONOMY_TYPE_SMOOTH                          :Gelijkmatig
@@ -1966,7 +1966,7 @@ STR_CONFIG_SETTING_TOWN_FOUNDING_ALLOWED                        :Toestaan
 STR_CONFIG_SETTING_TOWN_FOUNDING_ALLOWED_CUSTOM_LAYOUT          :Toestaan, eigen wegpatroon
 
 STR_CONFIG_SETTING_TOWN_CARGOGENMODE                            :Genereren van vracht in steden: {STRING}
-STR_CONFIG_SETTING_TOWN_CARGOGENMODE_HELPTEXT                   :Hoeveel vracht wordt geproduceerd door huizen in steden, in relatie tot de totale bevolking van de stad.{}Kwadratische groei: een stad die twee keer zo groot is, genereert vier keer zo veel passagiers.{}Lineaire groei: een stad die twee keer zo groot is, genereert twee keer zo veel passagiers.
+STR_CONFIG_SETTING_TOWN_CARGOGENMODE_HELPTEXT                   :Hoeveel vracht wordt geproduceerd door huizen in steden, in relatie tot de totale bevolking van de stad.{}Kwadratische groei: een stad die twee keer zo groot is, genereert vier keer zo veel passagiers.{}Lineaire groei: een stad die twee keer zo groot is, genereert twee keer zo veel passagiers
 ###length 2
 STR_CONFIG_SETTING_TOWN_CARGOGENMODE_ORIGINAL                   :Kwadratisch (origineel)
 STR_CONFIG_SETTING_TOWN_CARGOGENMODE_BITCOUNT                   :Lineair
@@ -2007,7 +2007,7 @@ STR_CONFIG_SETTING_ZOOM_LVL_OUT_4X                              :4x
 STR_CONFIG_SETTING_ZOOM_LVL_OUT_8X                              :8x
 
 STR_CONFIG_SETTING_SPRITE_ZOOM_MIN                              :Hoogste resolutie die sprites mogen gebruiken: {STRING}
-STR_CONFIG_SETTING_SPRITE_ZOOM_MIN_HELPTEXT                     :Beperk de maximale resolutie die voor sprites wordt gebruikt. Door deze beperking worden geen grafische elementen in hoge resolutie gebruikt, ook niet als ze beschikbaar zijn. Zo kan de weergave van het spel consistent blijven wanneer je verschillende GRF-bestanden gebruikt met en zonder grafische elementen in hoge resolutie.
+STR_CONFIG_SETTING_SPRITE_ZOOM_MIN_HELPTEXT                     :Beperk de maximale resolutie die voor sprites wordt gebruikt. Door deze beperking worden geen grafische elementen in hoge resolutie gebruikt, ook niet als ze beschikbaar zijn. Zo kan de weergave van het spel consistent blijven wanneer je verschillende GRF-bestanden gebruikt met en zonder grafische elementen in hoge resolutie
 ###length 3
 STR_CONFIG_SETTING_SPRITE_ZOOM_LVL_MIN                          :4x
 STR_CONFIG_SETTING_SPRITE_ZOOM_LVL_IN_2X                        :2x
@@ -2057,7 +2057,7 @@ STR_CONFIG_SETTING_DEMAND_SIZE                                  :Hoeveelheid ter
 STR_CONFIG_SETTING_DEMAND_SIZE_HELPTEXT                         :Door dit op minder dan 100% te zetten lijkt de symmetrische verdeling meer op de asymmetrische verdeling. Minder vracht zal geforceerd worden om zich terug te sturen als er een bepaalde hoeveelheid wordt verzonden naar een station. Op 0% van de symmetrische verdeling gedraagt deze zich als de asymmetrische verdeling.
 
 STR_CONFIG_SETTING_SHORT_PATH_SATURATION                        :Verzadiging van korte routes voordat routes met hoge capaciteit worden gebruikt: {STRING}
-STR_CONFIG_SETTING_SHORT_PATH_SATURATION_HELPTEXT               :Vaak zijn er meerdere routes mogelijk tussen twee stations. De vrachtdistributie verzadigt eerst de kortste route, gebruikt dan de op één na kortste route tot die verzadigd is enzovoort. Verzadiging wordt bepaald door een schatting van de capaciteit en het geplande gebruik. Wanneer alle routes verzadigd zijn, maar er is meer vraag, raken alle wegen overbelast, die met hoge capaciteit als eerste. In veel gevallen schat het algoritme helaas de capaciteit niet nauwkeurig in. Met deze instelling kun je aangeven tot welk percentage een korter pad moet worden verzadigd voordat de eerstvolgende, langere route wordt gekozen. Stel dit in op minder dan 100% om overvolle stations in geval van overschatte capaciteit te voorkomen.
+STR_CONFIG_SETTING_SHORT_PATH_SATURATION_HELPTEXT               :Vaak zijn er meerdere routes mogelijk tussen twee stations. De vrachtdistributie verzadigt eerst de kortste route, gebruikt dan de op één na kortste route tot die verzadigd is enzovoort. Verzadiging wordt bepaald door een schatting van de capaciteit en het geplande gebruik. Wanneer alle routes verzadigd zijn, maar er is meer vraag, raken alle wegen overbelast, die met hoge capaciteit als eerste. In veel gevallen schat het algoritme helaas de capaciteit niet nauwkeurig in. Met deze instelling kun je aangeven tot welk percentage een korter pad moet worden verzadigd voordat de eerstvolgende, langere route wordt gekozen. Stel dit in op minder dan 100% om overvolle stations in geval van overschatte capaciteit te voorkomen
 
 STR_CONFIG_SETTING_LOCALISATION_UNITS_VELOCITY                  :Snelheidseenheden (land): {STRING}
 STR_CONFIG_SETTING_LOCALISATION_UNITS_VELOCITY_NAUTICAL         :Snelheidseenheden (nautisch): {STRING}
@@ -3202,7 +3202,7 @@ STR_FRAMERATE_RATE_GAMELOOP_TOOLTIP                             :{BLACK}Aantal g
 STR_FRAMERATE_RATE_BLITTER                                      :{BLACK}Grafische framesnelheid: {STRING}
 STR_FRAMERATE_RATE_BLITTER_TOOLTIP                              :{BLACK}Aantal videoframes die weergegeven worden per seconde.
 STR_FRAMERATE_SPEED_FACTOR                                      :{BLACK}Huidige spelsnelheidsfactor: {DECIMAL}x
-STR_FRAMERATE_SPEED_FACTOR_TOOLTIP                              :{BLACK}Hoe snel het spel momenteel draait, vergeleken met de verwachte snelheid bij een normale simulatiesnelheid.
+STR_FRAMERATE_SPEED_FACTOR_TOOLTIP                              :{BLACK}Hoe snel het spel momenteel verloopt, vergeleken met de verwachte snelheid bij een normale simulatiesnelheid
 STR_FRAMERATE_CURRENT                                           :{WHITE}Huidig
 STR_FRAMERATE_AVERAGE                                           :{WHITE}Gemiddeld
 STR_FRAMERATE_MEMORYUSE                                         :{WHITE}Geheugen
@@ -3731,7 +3731,7 @@ STR_STORY_BOOK_SPECTATOR_CAPTION                                :{WHITE}Algemeen
 STR_STORY_BOOK_SPECTATOR                                        :Algemeen verhaal
 STR_STORY_BOOK_TITLE                                            :{YELLOW}{STRING}
 STR_STORY_BOOK_GENERIC_PAGE_ITEM                                :Pagina {NUM}
-STR_STORY_BOOK_SEL_PAGE_TOOLTIP                                 :{BLACK}Spring naar een bepaalde pagina door deze te selecteren in deze keuzelijst.
+STR_STORY_BOOK_SEL_PAGE_TOOLTIP                                 :{BLACK}Spring naar een bepaalde pagina door deze te selecteren in deze keuzelijst
 STR_STORY_BOOK_PREV_PAGE                                        :{BLACK}Vorige
 STR_STORY_BOOK_PREV_PAGE_TOOLTIP                                :{BLACK}Ga naar de vorige pagina
 STR_STORY_BOOK_NEXT_PAGE                                        :{BLACK}Volgende
@@ -4031,7 +4031,7 @@ STR_GROUP_CREATE_TOOLTIP                                        :{BLACK}Klik om 
 STR_GROUP_DELETE_TOOLTIP                                        :{BLACK}Verwijder de geselecteerde groep
 STR_GROUP_RENAME_TOOLTIP                                        :{BLACK}Hiermee hernoem je de geselecteerde groep
 STR_GROUP_LIVERY_TOOLTIP                                        :{BLACK}Wijzig het uiterlijk van de geselecteerde groep
-STR_GROUP_REPLACE_PROTECTION_TOOLTIP                            :{BLACK}Klik om deze groep te beschermen tegen globaal automatisch vervangen. Met Ctrl+klik geldt dit ook voor subgroepen.
+STR_GROUP_REPLACE_PROTECTION_TOOLTIP                            :{BLACK}Klik om deze groep te beschermen tegen globaal automatisch vervangen. Met Ctrl+klik geldt dit ook voor subgroepen
 
 STR_QUERY_GROUP_DELETE_CAPTION                                  :{WHITE}Verwijder groep
 STR_GROUP_DELETE_QUERY_TEXT                                     :{WHITE}Weet je zeker dat je deze groep en de eventuele subgroepen wilt verwijderen?

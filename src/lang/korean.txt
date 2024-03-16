@@ -1012,6 +1012,7 @@ STR_GAME_OPTIONS_CURRENCY_INR                                   :인도 루피
 STR_GAME_OPTIONS_CURRENCY_IDR                                   :인도네시아 루피아
 STR_GAME_OPTIONS_CURRENCY_MYR                                   :말레이시아 링깃
 STR_GAME_OPTIONS_CURRENCY_LVL                                   :라트비아 라츠
+STR_GAME_OPTIONS_CURRENCY_PTE                                   :포르투갈 이스쿠두
 
 STR_GAME_OPTIONS_AUTOSAVE_FRAME                                 :{BLACK}자동 저장
 STR_GAME_OPTIONS_AUTOSAVE_DROPDOWN_TOOLTIP                      :{BLACK}게임 자동 저장 간격을 선택
@@ -1054,9 +1055,9 @@ STR_GAME_OPTIONS_GUI_SCALE_BEVELS                               :{BLACK}크기 �
 STR_GAME_OPTIONS_GUI_SCALE_BEVELS_TOOLTIP                       :{BLACK}인터페이스 크기를 슬라이더로 조절하려면 이 박스에 체크하세요
 
 STR_GAME_OPTIONS_GUI_FONT_SPRITE                                :{BLACK}원본 그래픽 글꼴 사용
-STR_GAME_OPTIONS_GUI_FONT_SPRITE_TOOLTIP                        :{BLACK}기존 영어의 고정폭 글꼴을 사용하는 것을 선호하는 경우 이 박스에 체크하세요. 한국어 사용자는 체크하면 안 됩니다.
+STR_GAME_OPTIONS_GUI_FONT_SPRITE_TOOLTIP                        :{BLACK}기존 영어의 고정폭 글꼴을 사용하는 것을 선호하는 경우 이 박스에 체크하세요. 한국어 사용자는 체크하면 안 됩니다
 STR_GAME_OPTIONS_GUI_FONT_AA                                    :{BLACK}글씨체 테두리를 부드럽게
-STR_GAME_OPTIONS_GUI_FONT_AA_TOOLTIP                            :{BLACK}크기 조절이 가능한 글씨체에 안티 에일리어싱을 적용하여 테두리를 부드럽게 표현하려면 이 박스에 체크하세요.
+STR_GAME_OPTIONS_GUI_FONT_AA_TOOLTIP                            :{BLACK}크기 조절이 가능한 글씨체에 안티 에일리어싱을 적용하여 테두리를 부드럽게 표현하려면 이 박스에 체크하세요
 
 STR_GAME_OPTIONS_GUI_SCALE_1X                                   :1x
 STR_GAME_OPTIONS_GUI_SCALE_2X                                   :2x
@@ -1275,7 +1276,7 @@ STR_CONFIG_SETTING_INFINITE_MONEY                               :돈 무제한: 
 STR_CONFIG_SETTING_INFINITE_MONEY_HELPTEXT                      :돈을 무제한으로 만들고 회사가 파산하지 않게 만듭니다
 
 STR_CONFIG_SETTING_MAXIMUM_INITIAL_LOAN                         :최대 초기 대출금: {STRING}
-STR_CONFIG_SETTING_MAXIMUM_INITIAL_LOAN_HELPTEXT                :(인플레이션 효과를 적용하지 않고) 한 회사가 최대한 빌릴 수 있는 대출금의 양을 조절할 수 있습니다. 이 설정을 "대출 불가"로 설정하면, 게임 스크립트가 돈을 지급하거나  "돈 무한 모드" 설정을 사용하지 않는 한, 돈을 사용할 수 없습니다.
+STR_CONFIG_SETTING_MAXIMUM_INITIAL_LOAN_HELPTEXT                :(인플레이션 효과를 적용하지 않고) 한 회사가 최대한 빌릴 수 있는 대출금의 양을 조절할 수 있습니다. 이 설정을 "대출 불가"로 설정하면, 게임 스크립트가 돈을 지급하거나  "돈 무한 모드" 설정을 사용하지 않는 한, 돈을 사용할 수 없습니다
 STR_CONFIG_SETTING_MAXIMUM_INITIAL_LOAN_VALUE                   :{CURRENCY_LONG}
 ###setting-zero-is-special
 STR_CONFIG_SETTING_MAXIMUM_INITIAL_LOAN_DISABLED                :대출 불가
@@ -1359,7 +1360,7 @@ STR_CONFIG_SETTING_ROAD_VEHICLE_SLOPE_STEEPNESS                 :경사도 설�
 STR_CONFIG_SETTING_ROAD_VEHICLE_SLOPE_STEEPNESS_HELPTEXT        :자동차/전차에 적용시킬 경사도를 설정합니다. 값이 높을수록 차량이 언덕을 오를 때 더 힘이 듭니다.
 
 STR_CONFIG_SETTING_FORBID_90_DEG                                :열차의 90도 회전을 금지함: {STRING}
-STR_CONFIG_SETTING_FORBID_90_DEG_HELPTEXT                       :─ 모양의 수평 선로와 │ 모양의 수직 선로가 바로 이어져 만날 때 90도 회전이 발생합니다. 이 설정을 켜면, 열차가 칸 가장자리를 통과할 때 90도로 회전할 수 있도록 허용합니다. 이 설정은 선박의 회전 반경에도 적용됩니다.
+STR_CONFIG_SETTING_FORBID_90_DEG_HELPTEXT                       :─ 모양의 수평 선로와 │ 모양의 수직 선로가 바로 이어져 만날 때 90도 회전이 발생합니다. 이 설정을 켜면, 열차가 칸 가장자리를 통과할 때 90도로 회전할 수 있도록 허용합니다. 이 설정은 선박의 회전 반경에도 적용됩니다
 
 STR_CONFIG_SETTING_DISTANT_JOIN_STATIONS                        :역이 같은 방향으로 붙어있지 않아도 같은 이름의 역 짓기 허용: {STRING}
 STR_CONFIG_SETTING_DISTANT_JOIN_STATIONS_HELPTEXT               :이미 존재하는 역을 직접 건드리지 않고도 역의 일부분을 새로 추가/확장하는 것을 허용합니다. 인접한 칸에 기존과 다른 새로운 역을 놓을 때에는 CTRL+클릭해야 합니다
@@ -1471,7 +1472,7 @@ STR_CONFIG_SETTING_COMPANY_STARTING_COLOUR                      :시작시 회�
 STR_CONFIG_SETTING_COMPANY_STARTING_COLOUR_HELPTEXT             :새 회사에서 사용할 색상을 선택합니다
 
 STR_CONFIG_SETTING_COMPANY_STARTING_COLOUR_SECONDARY            :시작시 회사 부 색상: {STRING}
-STR_CONFIG_SETTING_COMPANY_STARTING_COLOUR_SECONDARY_HELPTEXT   :부 색상을 지원하는 NewGRF를 사용할 경우, 새 회사에서 사용할 부 색상을 선택합니다.
+STR_CONFIG_SETTING_COMPANY_STARTING_COLOUR_SECONDARY_HELPTEXT   :부 색상을 지원하는 NewGRF를 사용할 경우, 새 회사에서 사용할 부 색상을 선택합니다
 
 STR_CONFIG_SETTING_NEVER_EXPIRE_AIRPORTS                        :옛날 공항을 사라지지 않고 계속 만들 수 있게 함: {STRING}
 STR_CONFIG_SETTING_NEVER_EXPIRE_AIRPORTS_HELPTEXT               :이 설정을 켜면, 소형 공항을 포함한 모든 공항 종류를 도입 이후에 계속 사용할 수 있게 됩니다.
@@ -1495,22 +1496,22 @@ STR_CONFIG_SETTING_NEVER_EXPIRE_VEHICLES                        :옛날 차량�
 STR_CONFIG_SETTING_NEVER_EXPIRE_VEHICLES_HELPTEXT               :이 설정을 켜면, 오래된 차량 모델을 포함하여 모든 차량 모델을 도입 이후에 계속 사용할 수 있게 됩니다.
 
 STR_CONFIG_SETTING_TIMEKEEPING_UNITS                            :시간 단위: {STRING}
-STR_CONFIG_SETTING_TIMEKEEPING_UNITS_HELPTEXT                   :게임에서 사용할 시간 표시 단위를 선택합니다. 나중에 변경할 수 없습니다.{}{}달력 기반은 1년 12개월, 매월 28~31일로 구성된 고전적인 OpenTTD 환경입니다.{}{}벽시계 기반은 화물 생산 및 재정이 1분 단위로 대신 계산됩니다. 1분은 달력 기반 모드에서 한 달, 즉 30일 정도 걸리는 시간으로, 12분 간격으로 묶어서 1년을 구성합니다.{}{}두 단위 모두, 시간 표시 단위와 상관없이 차량, 건물 및 기타 기반 시설 도입 날짜 등에는 기존의 달력 시스템을 별도로 사용합니다.
+STR_CONFIG_SETTING_TIMEKEEPING_UNITS_HELPTEXT                   :게임에서 사용할 시간 표시 단위를 선택합니다. 나중에 변경할 수 없습니다.{}{}달력 기반은 1년 12개월, 매월 28~31일로 구성된 고전적인 OpenTTD 환경입니다.{}{}벽시계 기반은 화물 생산 및 재정이 1분 단위로 대신 계산됩니다. 1분은 달력 기반 모드에서 한 달, 즉 30일 정도 걸리는 시간으로, 12분 간격으로 묶어서 1년을 구성합니다.{}{}두 단위 모두, 시간 표시 단위와 상관없이 차량, 건물 및 기타 기반 시설 도입 날짜 등에는 기존의 달력 시스템을 별도로 사용합니다
 ###length 2
 STR_CONFIG_SETTING_TIMEKEEPING_UNITS_CALENDAR                   :달력
 STR_CONFIG_SETTING_TIMEKEEPING_UNITS_WALLCLOCK                  :벽시계
 
 STR_CONFIG_SETTING_MINUTES_PER_YEAR                             :1년의 길이: {STRING}{ORANGE}분
-STR_CONFIG_SETTING_MINUTES_PER_YEAR_HELPTEXT                    :달력의 1년을 몇 분으로 할 지 선택합니다. 기본값은 12분입니다. 달력 시간이 변하는 것을 막으려면 0으로 설정하세요. 이 설정은 게임의 경제 시뮬레이션에는 영향을 미치지 않고, 벽시계 시간 설정을 사용할 때만 이용 가능합니다.
+STR_CONFIG_SETTING_MINUTES_PER_YEAR_HELPTEXT                    :달력의 1년을 몇 분으로 할 지 선택합니다. 기본값은 12분입니다. 달력 시간이 변하는 것을 막으려면 0으로 설정하세요. 이 설정은 게임의 경제 시뮬레이션에는 영향을 미치지 않고, 벽시계 시간 설정을 사용할 때만 이용 가능합니다
 
 STR_CONFIG_SETTING_MINUTES_PER_YEAR_VALUE                       :{NUM}
 ###setting-zero-is-special
 STR_CONFIG_SETTING_MINUTES_PER_YEAR_FROZEN                      :(달력 시간 정지됨) 0
 
 STR_CONFIG_SETTING_TOWN_CARGO_SCALE                             :도시 화물 생성 조정: {STRING}
-STR_CONFIG_SETTING_TOWN_CARGO_SCALE_HELPTEXT                    :도시의 화물 생산량을 이 백분율 값만큼 조정합니다.
+STR_CONFIG_SETTING_TOWN_CARGO_SCALE_HELPTEXT                    :도시의 화물 생산량을 이 백분율 값만큼 조정합니다
 STR_CONFIG_SETTING_INDUSTRY_CARGO_SCALE                         :산업시설 화물 생성 조정: {STRING}
-STR_CONFIG_SETTING_INDUSTRY_CARGO_SCALE_HELPTEXT                :산업시설의 생산량을 이 백분율 값만큼 조정합니다.
+STR_CONFIG_SETTING_INDUSTRY_CARGO_SCALE_HELPTEXT                :산업시설의 생산량을 이 백분율 값만큼 조정합니다
 STR_CONFIG_SETTING_CARGO_SCALE_VALUE                            :{NUM}%
 
 STR_CONFIG_SETTING_AUTORENEW_VEHICLE                            :차량이 낡으면 차량을 자동으로 교체: {STRING}
@@ -1529,7 +1530,7 @@ STR_CONFIG_SETTING_ERRMSG_DURATION                              :오류 메시�
 STR_CONFIG_SETTING_ERRMSG_DURATION_HELPTEXT                     :오류 메시지를 표시할 시간을 설정합니다. 일부 (중요한) 오류 메시지는 이 시간이 지나도 자동으로 사라지지 않고 수동으로 꺼야할 수도 있음을 알아두십시오.
 
 STR_CONFIG_SETTING_HOVER_DELAY                                  :도움말 보이기: {STRING}
-STR_CONFIG_SETTING_HOVER_DELAY_HELPTEXT                         :마우스를 올려놓았을 때 도움말이 뜨는데 걸리는 시간을 설정합니다. 마우스 오른쪽 클릭으로 바로 뜨도록 할 수도 있습니다.
+STR_CONFIG_SETTING_HOVER_DELAY_HELPTEXT                         :마우스를 올려놓았을 때 도움말이 뜨는데 걸리는 시간을 설정합니다. 마우스 오른쪽 클릭으로 바로 뜨도록 할 수도 있습니다
 STR_CONFIG_SETTING_HOVER_DELAY_VALUE                            :마우스를 {COMMA}밀리초 동안 올려놓기
 ###setting-zero-is-special
 STR_CONFIG_SETTING_HOVER_DELAY_DISABLED                         :마우스 오른쪽 클릭
@@ -1541,7 +1542,7 @@ STR_CONFIG_SETTING_GRAPH_LINE_THICKNESS                         :그래프 선�
 STR_CONFIG_SETTING_GRAPH_LINE_THICKNESS_HELPTEXT                :그래프의 선 두께를 설정합니다. 얇으면 자세히 볼 수 있고, 두꺼우면 눈에 확 들어오며 색상을 분간하기가 편해집니다.
 
 STR_CONFIG_SETTING_SHOW_NEWGRF_NAME                             :차량 구입 창에 NewGRF 이름 표시: {STRING}
-STR_CONFIG_SETTING_SHOW_NEWGRF_NAME_HELPTEXT                    :차량 구입 창 맨 아래 줄에, 이 차량이 어떤 NewGRF에서 추가되는 지 해당 NewGRF의 이름을 표시해줍니다.
+STR_CONFIG_SETTING_SHOW_NEWGRF_NAME_HELPTEXT                    :차량 구입 창 맨 아래 줄에, 이 차량이 어떤 NewGRF에서 추가되는 지 해당 NewGRF의 이름을 표시해줍니다
 STR_CONFIG_SETTING_SHOW_CARGO_IN_LISTS                          :차량 목록 창에서 차량이 실을 수 있는 화물 표시: {STRING}
 STR_CONFIG_SETTING_SHOW_CARGO_IN_LISTS_HELPTEXT                 :이 설정을 켜면, 차량 목록 상단에 차량이 실을 수 있는 화물을 표시합니다
 
@@ -1561,13 +1562,13 @@ STR_CONFIG_SETTING_INDUSTRY_DENSITY                             :산업시설 �
 STR_CONFIG_SETTING_INDUSTRY_DENSITY_HELPTEXT                    :게임을 플레이하는 동안 얼마나 많은 산업시설이 생성되고 유지되어야 할 지를 설정합니다.
 
 STR_CONFIG_SETTING_OIL_REF_EDGE_DISTANCE                        :석유 관련 산업시설의 최대 건설 범위: 지도 맨 끝에서부터 {STRING} 이내
-STR_CONFIG_SETTING_OIL_REF_EDGE_DISTANCE_HELPTEXT               :정유 공장과 유전이 맵 가장자리에서 얼마나 멀리 떨어진 곳까지 건설될 수 있는지를 나타냅니다. 섬 맵에서는 이 설정을 이용해서 해당 산업시설이 해안에 가까이 있도록 조정할 수 있습니다. 256칸보다 큰 맵의 경우에는 이 값은 더 크게 조정됩니다.
+STR_CONFIG_SETTING_OIL_REF_EDGE_DISTANCE_HELPTEXT               :정유 공장과 유전이 맵 가장자리에서 얼마나 멀리 떨어진 곳까지 건설될 수 있는지를 나타냅니다. 섬 맵에서는 이 설정을 이용해서 해당 산업시설이 해안에 가까이 있도록 조정할 수 있습니다. 256칸보다 큰 맵의 경우에는 이 값은 더 크게 조정됩니다
 
 STR_CONFIG_SETTING_SNOWLINE_HEIGHT                              :설선 고도: {STRING}
 STR_CONFIG_SETTING_SNOWLINE_HEIGHT_HELPTEXT                     :아한대 기후의 설선 고도를 선택합니다. 눈은 산업시설의 생성과 도시 성장에 영향을 미칩니다. 시나리오 에디터에서 수정할 수 있고 설정하지 않은 경우 "눈 비율" 설정을 따릅니다.
 
 STR_CONFIG_SETTING_SNOW_COVERAGE                                :눈 비율: {STRING}
-STR_CONFIG_SETTING_SNOW_COVERAGE_HELPTEXT                       :아한대 기후에서 눈 지역의 양을 대략적으로 선택합니다. 눈은 산업시설 생성과 도시 성장 요구 조건에도 영향을 미칩니다. 지도를 생성할 때에만 사용하는 설정입니다. 해수면 바로 위에 있는 땅은 무조건 눈이 없을 것입니다.
+STR_CONFIG_SETTING_SNOW_COVERAGE_HELPTEXT                       :아한대 기후에서 눈 지역의 양을 대략적으로 선택합니다. 눈은 산업시설 생성과 도시 성장 요구 조건에도 영향을 미칩니다. 지도를 생성할 때에만 사용하는 설정입니다. 해수면 바로 위에 있는 땅은 무조건 눈이 없을 것입니다
 STR_CONFIG_SETTING_SNOW_COVERAGE_VALUE                          :{NUM}%
 
 STR_CONFIG_SETTING_DESERT_COVERAGE                              :사막 비율: {STRING}
@@ -1575,7 +1576,7 @@ STR_CONFIG_SETTING_DESERT_COVERAGE_HELPTEXT                     :아열대 기�
 STR_CONFIG_SETTING_DESERT_COVERAGE_VALUE                        :{NUM}%
 
 STR_CONFIG_SETTING_ROUGHNESS_OF_TERRAIN                         :지형의 거친 정도: {STRING}
-STR_CONFIG_SETTING_ROUGHNESS_OF_TERRAIN_HELPTEXT                :언덕의 모양과 빈도 수를 선택합니다. 평탄한 지형은 개수가 적고 넓게 퍼진 언덕을 만들고, 거친 지형은 작은 언덕이 많이 만듭니다.
+STR_CONFIG_SETTING_ROUGHNESS_OF_TERRAIN_HELPTEXT                :언덕의 모양과 빈도 수를 선택합니다. 평탄한 지형은 개수가 적고 넓게 퍼진 언덕을 만들고, 거친 지형은 작은 언덕이 많이 만듭니다
 ###length 4
 STR_CONFIG_SETTING_ROUGHNESS_OF_TERRAIN_VERY_SMOOTH             :매우 부드럽게
 STR_CONFIG_SETTING_ROUGHNESS_OF_TERRAIN_SMOOTH                  :부드럽게
@@ -1583,7 +1584,7 @@ STR_CONFIG_SETTING_ROUGHNESS_OF_TERRAIN_ROUGH                   :거칠게
 STR_CONFIG_SETTING_ROUGHNESS_OF_TERRAIN_VERY_ROUGH              :매우 거칠게
 
 STR_CONFIG_SETTING_VARIETY                                      :산세 험준도: {STRING}
-STR_CONFIG_SETTING_VARIETY_HELPTEXT                             :지도가 산지와 평지를 모두 갖도록 만들 것인 지를 결정합니다. 더 높은 값을 사용할 수록, 산지와 평지 사이의 고도 차이가 더 많아집니다.
+STR_CONFIG_SETTING_VARIETY_HELPTEXT                             :지도에 산지와 평지를 모두 있도록 만들지 결정합니다. 더 높은 값을 사용할수록, 산지와 평지 사이의 고도 차이가 더 많아집니다
 
 STR_CONFIG_SETTING_RIVER_AMOUNT                                 :강의 양: {STRING}
 STR_CONFIG_SETTING_RIVER_AMOUNT_HELPTEXT                        :강을 얼마나 만들지 선택하세요
@@ -1630,7 +1631,7 @@ STR_CONFIG_SETTING_SMALLMAP_LAND_COLOUR_DARK_GREEN              :어두운 녹�
 STR_CONFIG_SETTING_SMALLMAP_LAND_COLOUR_VIOLET                  :보라색
 
 STR_CONFIG_SETTING_LINKGRAPH_COLOURS                            :화물 흐름 오버레이 색상: {STRING}
-STR_CONFIG_SETTING_LINKGRAPH_COLOURS_HELPTEXT                   :화물 흐름 오버레이에 사용할 색상을 설정합니다.
+STR_CONFIG_SETTING_LINKGRAPH_COLOURS_HELPTEXT                   :화물 흐름 오버레이에 사용할 색상을 설정합니다
 ###length 4
 STR_CONFIG_SETTING_LINKGRAPH_COLOURS_GREEN_TO_RED               :녹색 & 적색 (기본값)
 STR_CONFIG_SETTING_LINKGRAPH_COLOURS_GREEN_TO_BLUE              :녹색 & 청색
@@ -1751,10 +1752,10 @@ STR_CONFIG_SETTING_PERSISTENT_BUILDINGTOOLS                     :건설 도구�
 STR_CONFIG_SETTING_PERSISTENT_BUILDINGTOOLS_HELPTEXT            :다리, 터널 등의 건설 도구를 사용 후에도 계속 열어둔 채로 놔둡니다.
 
 STR_CONFIG_SETTING_AUTO_REMOVE_SIGNALS                          :선로 건설 중 신호기 자동 제거: {STRING}
-STR_CONFIG_SETTING_AUTO_REMOVE_SIGNALS_HELPTEXT                 :신호기가 이미 있는 선로에 선로를 추가로 설치하면 신호기를 자동으로 제거합니다. 잘못 사용하면 잠재적으로 열차가 충돌할 수 있다는 점을 명심하세요.
+STR_CONFIG_SETTING_AUTO_REMOVE_SIGNALS_HELPTEXT                 :신호기가 이미 있는 선로에 선로를 추가로 설치하면 신호기를 자동으로 제거합니다. 잘못 사용하면 잠재적으로 열차가 충돌할 수 있다는 점을 명심하세요
 
 STR_CONFIG_SETTING_FAST_FORWARD_SPEED_LIMIT                     :빨리 감기 속도 제한: {STRING}
-STR_CONFIG_SETTING_FAST_FORWARD_SPEED_LIMIT_HELPTEXT            :빨리 감기를 했을 때 게임이 진행되는 속도를 제한할 수 있습니다. 0으로 설정하면 컴퓨터가 허용하는 만큼 빠르게 돌립니다. 100% 미만의 값으로 설정하면 게임이 느리게 돌아갑니다. 빨리 감기 속도의 최댓값은 컴퓨터의 성능에 따라 결정되며 맵에 따라 다를 수 있습니다.
+STR_CONFIG_SETTING_FAST_FORWARD_SPEED_LIMIT_HELPTEXT            :빨리 감기를 했을 때 게임이 진행되는 속도를 제한할 수 있습니다. 0으로 설정하면 컴퓨터가 허용하는 만큼 빠르게 돌립니다. 100% 미만의 값으로 설정하면 게임이 느리게 돌아갑니다. 빨리 감기 속도의 최댓값은 컴퓨터의 성능에 따라 결정되며 맵에 따라 다를 수 있습니다
 STR_CONFIG_SETTING_FAST_FORWARD_SPEED_LIMIT_VAL                 :보통 게임 속도의 {NUM}%
 ###setting-zero-is-special
 STR_CONFIG_SETTING_FAST_FORWARD_SPEED_LIMIT_ZERO                :제한 없음 (컴퓨터가 허용하는 만큼 빠르게)
@@ -1818,11 +1819,11 @@ STR_CONFIG_SETTING_AI_IN_MULTIPLAYER_HELPTEXT                   :멀티 플레�
 STR_CONFIG_SETTING_SCRIPT_MAX_OPCODES                           :게임 스크립트가 중지되기 직전에 계산할 수 있는 최대 횟수: {STRING}
 STR_CONFIG_SETTING_SCRIPT_MAX_OPCODES_HELPTEXT                  :게임 스크립트가 한 단계에서 계산할 수 있는 최대 계산 횟수를 설정합니다.
 STR_CONFIG_SETTING_SCRIPT_MAX_MEMORY                            :스크립트당 최대 메모리 사용량: {STRING}
-STR_CONFIG_SETTING_SCRIPT_MAX_MEMORY_HELPTEXT                   :스크립트 하나가 강제 종료되기 전까지 사용할 수 있는 메모리의 양입니다. 크기가 큰 맵에서는 값을 크게 설정해야할 수도 있습니다.
+STR_CONFIG_SETTING_SCRIPT_MAX_MEMORY_HELPTEXT                   :스크립트 하나가 강제 종료되기 전까지 사용할 수 있는 메모리의 양입니다. 크기가 큰 맵에서는 값을 크게 설정해야할 수도 있습니다
 STR_CONFIG_SETTING_SCRIPT_MAX_MEMORY_VALUE                      :{COMMA} MiB
 
 STR_CONFIG_SETTING_SERVINT_ISPERCENT                            :신뢰도에 따른 점검 설정: {STRING}
-STR_CONFIG_SETTING_SERVINT_ISPERCENT_HELPTEXT                   :이 설정을 켜면, 차량의 신뢰도가 최대 신뢰도에 비해 일정 비율만큼 하락했을 때 점검을 하러 가려고 합니다.{}{}예를 들어, 차량의 최대 신뢰도가 90%이고 점검 주기를 20%로 설정하면, 그 차량은 신뢰도가 72%가 되었을 때 점검을 하러 가게 됩니다.
+STR_CONFIG_SETTING_SERVINT_ISPERCENT_HELPTEXT                   :이 설정을 켜면, 차량의 신뢰도가 최대 신뢰도에 비해 일정 비율만큼 하락했을 때 점검을 하러 가려고 합니다.{}{}예를 들어, 차량의 최대 신뢰도가 90%이고 점검 주기를 20%로 설정하면, 그 차량은 신뢰도가 72%가 되었을 때 점검을 하러 가게 됩니다
 
 STR_CONFIG_SETTING_SERVINT_TRAINS                               :열차에 대한 기본 점검 기준: {STRING}
 STR_CONFIG_SETTING_SERVINT_TRAINS_HELPTEXT                      :열차에 따로 점검 기간이 설정되어있지 않은 경우에 사용할 기본 점검 기간을 설정합니다.
@@ -1840,7 +1841,7 @@ STR_CONFIG_SETTING_NOSERVICE                                    :차량 고장 �
 STR_CONFIG_SETTING_NOSERVICE_HELPTEXT                           :이 설정을 켜면, 차량이 고장나지 않도록 설정되어 있는 경우 차량이 자동으로 점검을 하러 가지 않습니다
 
 STR_CONFIG_SETTING_STATION_LENGTH_LOADING_PENALTY               :역 길이보다 열차 길이가 긴 경우 적재 속도 감소: {STRING}
-STR_CONFIG_SETTING_STATION_LENGTH_LOADING_PENALTY_HELPTEXT      :이 설정을 켜면, 역 길이보다 길이가 긴 열차는 역 길이에 맞는 열차보다 적재/하차 속도가 느려지게 됩니다. 이 설정은 경로 탐색에는 영향을 미치지 않습니다.
+STR_CONFIG_SETTING_STATION_LENGTH_LOADING_PENALTY_HELPTEXT      :이 설정을 켜면, 역 길이보다 길이가 긴 열차는 역 길이에 맞는 열차보다 적재/하차 속도가 느려지게 됩니다. 이 설정은 경로 탐색에는 영향을 미치지 않습니다
 
 STR_CONFIG_SETTING_WAGONSPEEDLIMITS                             :화물차 속력 제한 적용: {STRING}
 STR_CONFIG_SETTING_WAGONSPEEDLIMITS_HELPTEXT                    :이 설정을 켜면, 화물차의 속력 제한값에 따라 열차의 최대 속력을 제한합니다.
@@ -1905,13 +1906,13 @@ STR_CONFIG_SETTING_COLOURED_NEWS_YEAR_HELPTEXT                  :신문이 컬�
 STR_CONFIG_SETTING_STARTING_YEAR                                :시작 연도: {STRING}
 
 STR_CONFIG_SETTING_ENDING_YEAR                                  :게임 종료 연도: {STRING}
-STR_CONFIG_SETTING_ENDING_YEAR_HELPTEXT                         :점수를 기록할 게임 종료 연도를 설정합니다. 이 연도가 지나면, 회사의 점수가 고득점 순위표에 기록되어 표시됩니다. 하지만 플레이어는 계속해서 게임을 진행할 수 있습니다.{}이 값이 시작 연도보다 이전으로 설정되어 있다면, 고득점 순위표는 나타나지 않습니다.
+STR_CONFIG_SETTING_ENDING_YEAR_HELPTEXT                         :점수를 기록할 게임 종료 연도를 설정합니다. 이 연도가 지나면, 회사의 점수가 고득점 순위표에 기록되어 표시됩니다. 하지만 플레이어는 계속해서 게임을 진행할 수 있습니다.{}이 값이 시작 연도보다 이전으로 설정되어 있다면, 고득점 순위표는 나타나지 않습니다
 STR_CONFIG_SETTING_ENDING_YEAR_VALUE                            :{NUM}
 ###setting-zero-is-special
 STR_CONFIG_SETTING_ENDING_YEAR_ZERO                             :안 함
 
 STR_CONFIG_SETTING_ECONOMY_TYPE                                 :경제 변화: {STRING}
-STR_CONFIG_SETTING_ECONOMY_TYPE_HELPTEXT                        :부드러운 경제에서는 생산량이 소량으로 자주 변하게 됩니다. 멈춘 경제에서는 생산량이 변하지 않고 산업시설의 폐쇄를 막습니다. 이 설정은 NewGRF로 추가한 산업시설에는 적용되지 않을 수 있습니다.
+STR_CONFIG_SETTING_ECONOMY_TYPE_HELPTEXT                        :부드러운 경제에서는 생산량이 소량으로 자주 변하게 됩니다. 멈춘 경제에서는 생산량이 변하지 않고 산업시설의 폐쇄를 막습니다. 이 설정은 NewGRF로 추가한 산업시설에는 적용되지 않을 수 있습니다
 ###length 3
 STR_CONFIG_SETTING_ECONOMY_TYPE_ORIGINAL                        :기본
 STR_CONFIG_SETTING_ECONOMY_TYPE_SMOOTH                          :부드러움
@@ -1966,7 +1967,7 @@ STR_CONFIG_SETTING_TOWN_FOUNDING_ALLOWED                        :허용
 STR_CONFIG_SETTING_TOWN_FOUNDING_ALLOWED_CUSTOM_LAYOUT          :허용, 도로 모양 선택 가능
 
 STR_CONFIG_SETTING_TOWN_CARGOGENMODE                            :도시 화물 생성: {STRING}
-STR_CONFIG_SETTING_TOWN_CARGOGENMODE_HELPTEXT                   :도시의 전반적인 인구에 따라, 도시가 얼마나 많은 화물을 생산하는 지를 설정합니다.{}제곱 성장: 도시의 규모가 2배 커지면 승객을 4배 더 생산합니다.{}선형 성장: 도시의 규모가 2배 커지면 승객을 2배 더 생산합니다.
+STR_CONFIG_SETTING_TOWN_CARGOGENMODE_HELPTEXT                   :도시의 전반적인 인구에 따라, 도시가 얼마나 많은 화물을 생산하는 지를 설정합니다.{}제곱 성장: 도시의 규모가 2배 커지면 승객을 4배 더 생산합니다.{}선형 성장: 도시의 규모가 2배 커지면 승객을 2배 더 생산합니다
 ###length 2
 STR_CONFIG_SETTING_TOWN_CARGOGENMODE_ORIGINAL                   :제곱 (기본)
 STR_CONFIG_SETTING_TOWN_CARGOGENMODE_BITCOUNT                   :선형
@@ -2007,7 +2008,7 @@ STR_CONFIG_SETTING_ZOOM_LVL_OUT_4X                              :4x
 STR_CONFIG_SETTING_ZOOM_LVL_OUT_8X                              :8x
 
 STR_CONFIG_SETTING_SPRITE_ZOOM_MIN                              :최고 해상도 그래픽 스프라이트: {STRING}
-STR_CONFIG_SETTING_SPRITE_ZOOM_MIN_HELPTEXT                     :그래픽 스프라이트에 사용할 최고 해상도를 제한할 수 있습니다. 그래픽 스프라이트 해상도를 제한하면 고해상도 그래픽을 사용할 수 있어도 이를 사용하지 않을 수 있습니다. 이 설정을 사용하면 고해상도 그래픽을 지원하지 않는 GRF 파일을 섞어서 사용할 때 게임의 모습을 일관성있게 만들 수 있습니다.
+STR_CONFIG_SETTING_SPRITE_ZOOM_MIN_HELPTEXT                     :그래픽 스프라이트에 사용할 최고 해상도를 제한할 수 있습니다. 그래픽 스프라이트 해상도를 제한하면 고해상도 그래픽을 사용할 수 있어도 이를 사용하지 않을 수 있습니다. 이 설정을 사용하면 고해상도 그래픽을 지원하지 않는 GRF 파일을 섞어서 사용할 때 게임의 모습을 일관성있게 만들 수 있습니다
 ###length 3
 STR_CONFIG_SETTING_SPRITE_ZOOM_LVL_MIN                          :4x
 STR_CONFIG_SETTING_SPRITE_ZOOM_LVL_IN_2X                        :2x
@@ -2031,33 +2032,33 @@ STR_CONFIG_SETTING_CITY_SIZE_MULTIPLIER                         :초기 대도�
 STR_CONFIG_SETTING_CITY_SIZE_MULTIPLIER_HELPTEXT                :게임을 시작했을 때 일반 도시에 대한 대도시의 평균 크기를 설정합니다
 
 STR_CONFIG_SETTING_LINKGRAPH_RECALC_INTERVAL                    :분배 그래프를 매 {STRING}마다 업데이트
-STR_CONFIG_SETTING_LINKGRAPH_RECALC_INTERVAL_HELPTEXT           :각 연결 그래프의 하위 시퀀스 재계산 사이의 시간입니다. 각 재계산은 그래프의 한 구성 요소에 대한 계획을 계산합니다. 즉, 이 설정을 X로 설정한다고 해서 전체 그래프를 X초마다 업데이트한다는 뜻은 아닙니다. 일부 구성 요소만 X초마다 업데이트됩니다. 이 값을 더 짧게 설정할 수록 계산하는데 더 많은 CPU 계산 시간이 필요합니다. 값을 더 길게 설정하면 화물 분배가 새 경로로 이뤄지기까지 더 오랜 시간이 걸리게 됩니다.
+STR_CONFIG_SETTING_LINKGRAPH_RECALC_INTERVAL_HELPTEXT           :각 연결 그래프의 하위 시퀀스 재계산 사이의 시간입니다. 각 재계산은 그래프의 한 구성 요소에 대한 계획을 계산합니다. 즉, 이 설정을 X로 설정한다고 해서 전체 그래프를 X초마다 업데이트한다는 뜻은 아닙니다. 일부 구성 요소만 X초마다 업데이트됩니다. 이 값을 더 짧게 설정할 수록 계산하는데 더 많은 CPU 계산 시간이 필요합니다. 값을 더 길게 설정하면 화물 분배가 새 경로로 이뤄지기까지 더 오랜 시간이 걸리게 됩니다
 STR_CONFIG_SETTING_LINKGRAPH_RECALC_TIME                        :분배 그래프의 재계산을 위해 {STRING} 사용
-STR_CONFIG_SETTING_LINKGRAPH_RECALC_TIME_HELPTEXT               :각 연결 그래프의 구성 요소를 재계산하는데 걸리는 시간입니다. 재계산이 시작되면, 이 시간(초) 동안 실행할 수 있는 스레드가 생성됩니다. 이 값을 더 짧게 설정할수록 스레드가 완료되어야 할 때 완료되지 못할 가능성이 높아집니다. 그러면 이를 완료하기 전까지는 게임이 멈추게 됩니다. 값을 더 길게 설정하면 경로가 변경되었을 때 분배가 업데이트되는 데 더 오래 걸립니다.
+STR_CONFIG_SETTING_LINKGRAPH_RECALC_TIME_HELPTEXT               :각 연결 그래프의 구성 요소를 재계산하는데 걸리는 시간입니다. 재계산이 시작되면, 이 시간(초) 동안 실행할 수 있는 스레드가 생성됩니다. 이 값을 더 짧게 설정할수록 스레드가 완료되어야 할 때 완료되지 못할 가능성이 높아집니다. 그러면 이를 완료하기 전까지는 게임이 멈추게 됩니다. 값을 더 길게 설정하면 경로가 변경되었을 때 분배가 업데이트되는 데 더 오래 걸립니다
 
 STR_CONFIG_SETTING_DISTRIBUTION_PAX                             :승객에 대한 분배 형식: {STRING}
-STR_CONFIG_SETTING_DISTRIBUTION_PAX_HELPTEXT                    :"대칭"은 A역에서 B역으로 가려는 승객의 수가 B에서 A로 가려는 승객의 수와 비슷하다는 뜻입니다. "비대칭"은 승객이 아무 방향이나 임의의 양만큼 가게 됨을 뜻합니다. "수동"은 자동적인 승객 분배가 일어나지 않고 기존 방식을 사용하겠음을 뜻합니다.
+STR_CONFIG_SETTING_DISTRIBUTION_PAX_HELPTEXT                    :"대칭"은 A역에서 B역으로 가려는 승객의 수가 B에서 A로 가려는 승객의 수와 비슷하다는 뜻입니다. "비대칭"은 승객이 아무 방향이나 임의의 양만큼 가게 됨을 뜻합니다. "수동"은 자동적인 승객 분배가 일어나지 않고 기존 방식을 사용하겠음을 뜻합니다
 STR_CONFIG_SETTING_DISTRIBUTION_MAIL                            :우편에 대한 분배 형식: {STRING}
-STR_CONFIG_SETTING_DISTRIBUTION_MAIL_HELPTEXT                   :"대칭"은 A역에서 B역으로 가려는 우편물의 수가 B에서 A로 가려는 우편물의 수와 비슷하다는 뜻입니다. "비대칭"은 우편물이 아무 방향이나 임의의 양만큼 가게 됨을 뜻합니다. "수동"은 자동적인 우편물 분배가 일어나지 않고 기존 방식을 사용하겠음을 뜻합니다.
+STR_CONFIG_SETTING_DISTRIBUTION_MAIL_HELPTEXT                   :"대칭"은 A역에서 B역으로 가려는 우편물의 수가 B에서 A로 가려는 우편물의 수와 비슷하다는 뜻입니다. "비대칭"은 우편물이 아무 방향이나 임의의 양만큼 가게 됨을 뜻합니다. "수동"은 자동적인 우편물 분배가 일어나지 않고 기존 방식을 사용하겠음을 뜻합니다
 STR_CONFIG_SETTING_DISTRIBUTION_ARMOURED                        :귀금속 화물에 대한 분배 형식: {STRING}
-STR_CONFIG_SETTING_DISTRIBUTION_ARMOURED_HELPTEXT               :귀금속 화물은 온대 기후의 귀금속, 아열대 기후의 다이아몬드 또는 아한대 기후의 금을 말합니다. NewGRF을 사용하면 달라질 수 있습니다. "대칭"은 A역에서 B역으로 가려는 화물의 수가 B에서 A로 가려는 화물의 수와 비슷하다는 뜻입니다. "비대칭"은 화물이 아무 방향이나 임의의 양만큼 가게 됨을 뜻합니다. "수동"은 자동적인 화물 분배가 일어나지 않고 기존 방식을 사용하겠음을 뜻합니다. 아한대나 아열대 기후에서는 대칭으로 설정하면 은행이 금을 받기만 하기 때문에 비대칭이나 수동으로 설정하는 것을 추천합니다. 온대 기후에서는 은행이 귀금속을 원래 은행으로 보내려고 하기 때문에 대칭을 선택해도 됩니다.
+STR_CONFIG_SETTING_DISTRIBUTION_ARMOURED_HELPTEXT               :귀금속 화물은 온대 기후의 귀금속, 아열대 기후의 다이아몬드 또는 아한대 기후의 금을 말합니다. NewGRF을 사용하면 달라질 수 있습니다. "대칭"은 A역에서 B역으로 가려는 화물의 수가 B에서 A로 가려는 화물의 수와 비슷하다는 뜻입니다. "비대칭"은 화물이 아무 방향이나 임의의 양만큼 가게 됨을 뜻합니다. "수동"은 자동적인 화물 분배가 일어나지 않고 기존 방식을 사용하겠음을 뜻합니다. 아한대나 아열대 기후에서는 대칭으로 설정하면 은행이 금을 받기만 하기 때문에 비대칭이나 수동으로 설정하는 것을 추천합니다. 온대 기후에서는 은행이 귀금속을 원래 은행으로 보내려고 하기 때문에 대칭을 선택해도 됩니다
 STR_CONFIG_SETTING_DISTRIBUTION_DEFAULT                         :다른 화물에 대한 분배 형식: {STRING}
-STR_CONFIG_SETTING_DISTRIBUTION_DEFAULT_HELPTEXT                :"비대칭"은 화물이 아무 방향이나 임의의 양만큼 가게 됨을 뜻합니다. "수동"은 자동적인 화물 분배가 일어나지 않고 기존 방식을 사용하겠음을 뜻합니다. 특별한 이유가 없는 한, "비대칭"이나 "수동"으로 설정하십시오.
+STR_CONFIG_SETTING_DISTRIBUTION_DEFAULT_HELPTEXT                :"비대칭"은 화물이 아무 방향이나 임의의 양만큼 가게 됨을 뜻합니다. "수동"은 자동적인 화물 분배가 일어나지 않고 기존 방식을 사용하겠음을 뜻합니다. 특별한 이유가 없는 한, "비대칭"이나 "수동"으로 설정하십시오
 ###length 3
 STR_CONFIG_SETTING_DISTRIBUTION_MANUAL                          :수동
 STR_CONFIG_SETTING_DISTRIBUTION_ASYMMETRIC                      :비대칭
 STR_CONFIG_SETTING_DISTRIBUTION_SYMMETRIC                       :대칭
 
 STR_CONFIG_SETTING_LINKGRAPH_ACCURACY                           :분배 정확도: {STRING}
-STR_CONFIG_SETTING_LINKGRAPH_ACCURACY_HELPTEXT                  :값이 높으면 높을수록 CPU가 연결 상태를 계산하는 시간이 더 오래 걸립니다. 만약 이 시간이 너무 오래 걸리면 게임이 버벅일 것입니다. 하지만, 낮은 값으로 설정하면 분배가 부정확하게 일어나서, 화물이 원하는 곳으로 분배되지 않을 수 있습니다.
+STR_CONFIG_SETTING_LINKGRAPH_ACCURACY_HELPTEXT                  :값이 높으면 높을수록 CPU가 연결 상태를 계산하는 시간이 더 오래 걸립니다. 만약 이 시간이 너무 오래 걸리면 게임이 버벅일 것입니다. 하지만, 낮은 값으로 설정하면 분배가 부정확하게 일어나서, 화물이 원하는 곳으로 분배되지 않을 수 있습니다
 
 STR_CONFIG_SETTING_DEMAND_DISTANCE                              :거리에 따른 수요 효과: {STRING}
-STR_CONFIG_SETTING_DEMAND_DISTANCE_HELPTEXT                     :이 값을 0보다 크게 설정하면, 어떤 화물이 있는 A역과 목적지가 될 수 있는 역 B 사이의 거리는 A에서 B로 가는 화물의 양에 영향을 미치게 됩니다. A역에서 B역이 더 멀리 떨어질 수록 이동하는 화물의 양은 적어질 것입니다. 값이 크면 클 수록 화물은 멀리 이동하지 않고 가까운 역으로 가게 됩니다.
+STR_CONFIG_SETTING_DEMAND_DISTANCE_HELPTEXT                     :이 값을 0보다 크게 설정하면, 어떤 화물이 있는 A역과 목적지가 될 수 있는 역 B 사이의 거리는 A에서 B로 가는 화물의 양에 영향을 미치게 됩니다. A역에서 B역이 더 멀리 떨어질 수록 이동하는 화물의 양은 적어질 것입니다. 값이 크면 클 수록 화물은 멀리 이동하지 않고 가까운 역으로 가게 됩니다
 STR_CONFIG_SETTING_DEMAND_SIZE                                  :대칭 모드에서 되돌아오는 화물의 양: {STRING}
-STR_CONFIG_SETTING_DEMAND_SIZE_HELPTEXT                         :이 값을 100%보다 작게 설정할 수록 대칭 분배는 비대칭 분배와 비슷해집니다. 특정 양의 화물을 역으로 보내면 그보다 더 적은 화물이 강제로 되돌아오게 됩니다. 이 값을 0%로 설정하면 대칭 분배는 비대칭 분배와 똑같습니다.
+STR_CONFIG_SETTING_DEMAND_SIZE_HELPTEXT                         :이 값을 100%보다 작게 설정할 수록 대칭 분배는 비대칭 분배와 비슷해집니다. 특정 양의 화물을 역으로 보내면 그보다 더 적은 화물이 강제로 되돌아오게 됩니다. 이 값을 0%로 설정하면 대칭 분배는 비대칭 분배와 똑같습니다
 
 STR_CONFIG_SETTING_SHORT_PATH_SATURATION                        :다음으로 짧은 경로를 사용하기 위한 경로의 포화도: {STRING}
-STR_CONFIG_SETTING_SHORT_PATH_SATURATION_HELPTEXT               :종종 두 역 사이에는 여러 가지 경로가 존재할 수 있습니다. 이 경우, 화물 분배 기능은 먼저 가장 짧은 경로로 화물을 보내고, 그 경로가 포화 상태에 이르면 그 다음으로 짧은 경로를 사용하는 식으로 화물을 분배합니다. 포화도는 경로의 수송 능력과 예정 사용량을 추정하여 계산됩니다. 일단 모든 경로가 포화 상태가 되었는데 아직 수요가 남아있다면, 수송 능력이 높은 경로를 사용하면서 모든 경로를 과부하 상태로 만들게 됩니다. 하지만, 이 알고리즘은 수송량을 대부분 정확히 추정하지는 않습니다. 이 설정을 이용해서, 화물 분배 기능이 짧은 경로의 포화 상태가 몇 퍼센트가 되어야 다음으로 짧은 경로에 화물을 분배할 것인지를 지정할 수 있습니다. 과대평가된 수송량의 경우 너무 붐비는 역이 생기지 않도록 하기 위해서는 이 값을 100%보다 작게 설정하십시오.
+STR_CONFIG_SETTING_SHORT_PATH_SATURATION_HELPTEXT               :종종 두 역 사이에는 여러 가지 경로가 존재할 수 있습니다. 이 경우, 화물 분배 기능은 먼저 가장 짧은 경로로 화물을 보내고, 그 경로가 포화 상태에 이르면 그 다음으로 짧은 경로를 사용하는 식으로 화물을 분배합니다. 포화도는 경로의 수송 능력과 예정 사용량을 추정하여 계산됩니다. 일단 모든 경로가 포화 상태가 되었는데 아직 수요가 남아있다면, 수송 능력이 높은 경로를 사용하면서 모든 경로를 과부하 상태로 만들게 됩니다. 하지만, 이 알고리즘은 수송량을 대부분 정확히 추정하지는 않습니다. 이 설정을 이용해서, 화물 분배 기능이 짧은 경로의 포화 상태가 몇 퍼센트가 되어야 다음으로 짧은 경로에 화물을 분배할 것인지를 지정할 수 있습니다. 과대평가된 수송량의 경우 너무 붐비는 역이 생기지 않도록 하기 위해서는 이 값을 100%보다 작게 설정하십시오
 
 STR_CONFIG_SETTING_LOCALISATION_UNITS_VELOCITY                  :속력 단위 (지상): {STRING}
 STR_CONFIG_SETTING_LOCALISATION_UNITS_VELOCITY_NAUTICAL         :속력 단위 (해상): {STRING}
@@ -2979,11 +2980,11 @@ STR_TREES_RANDOM_TYPE_TOOLTIP                                   :{BLACK}여러 �
 STR_TREES_RANDOM_TREES_BUTTON                                   :{BLACK}무작위로 나무 심기
 STR_TREES_RANDOM_TREES_TOOLTIP                                  :{BLACK}전 지역에 걸쳐 무작위로 나무를 심습니다
 STR_TREES_MODE_NORMAL_BUTTON                                    :{BLACK}일반
-STR_TREES_MODE_NORMAL_TOOLTIP                                   :{BLACK}지면을 드래그해서 나무를 하나씩 놓습니다.
+STR_TREES_MODE_NORMAL_TOOLTIP                                   :{BLACK}지면을 드래그해서 나무를 하나씩 놓습니다
 STR_TREES_MODE_FOREST_SM_BUTTON                                 :{BLACK}작은 숲
-STR_TREES_MODE_FOREST_SM_TOOLTIP                                :{BLACK}지면을 드래그해서 작은 숲을 만듭니다.
+STR_TREES_MODE_FOREST_SM_TOOLTIP                                :{BLACK}지면을 드래그해서 작은 숲을 만듭니다
 STR_TREES_MODE_FOREST_LG_BUTTON                                 :{BLACK}큰 숲
-STR_TREES_MODE_FOREST_LG_TOOLTIP                                :{BLACK}지면을 드래그해서 큰 숲을 만듭니다.
+STR_TREES_MODE_FOREST_LG_TOOLTIP                                :{BLACK}지면을 드래그해서 큰 숲을 만듭니다
 
 # Land generation window (SE)
 STR_TERRAFORM_TOOLBAR_LAND_GENERATION_CAPTION                   :{WHITE}지형 만들기
@@ -3198,11 +3199,11 @@ STR_ABOUT_COPYRIGHT_OPENTTD                                     :{BLACK}OpenTTD 
 STR_FRAMERATE_CAPTION                                           :{WHITE}프레임레이트
 STR_FRAMERATE_CAPTION_SMALL                                     :{STRING}{WHITE} ({DECIMAL}x)
 STR_FRAMERATE_RATE_GAMELOOP                                     :{BLACK}시뮬레이션 비율: {STRING}
-STR_FRAMERATE_RATE_GAMELOOP_TOOLTIP                             :{BLACK}1초에 시뮬레이션하는 게임 틱 수입니다.
+STR_FRAMERATE_RATE_GAMELOOP_TOOLTIP                             :{BLACK}1초에 시뮬레이션하는 게임 틱 수입니다
 STR_FRAMERATE_RATE_BLITTER                                      :{BLACK}그래픽 프레임레이트: {STRING}
-STR_FRAMERATE_RATE_BLITTER_TOOLTIP                              :{BLACK}1초에 표현하는 비디오 프레임 수입니다.
+STR_FRAMERATE_RATE_BLITTER_TOOLTIP                              :{BLACK}1초에 표현하는 비디오 프레임 수입니다
 STR_FRAMERATE_SPEED_FACTOR                                      :{BLACK}현재 게임 속력 계수: {DECIMAL}x
-STR_FRAMERATE_SPEED_FACTOR_TOOLTIP                              :{BLACK}현재 게임이 일반적인 시뮬레이션 비율 속도에 비해 얼마나 빠르게 구동되고 있는지를 보여줍니다.
+STR_FRAMERATE_SPEED_FACTOR_TOOLTIP                              :{BLACK}현재 게임이 일반적인 시뮬레이션 비율 속도에 비해 얼마나 빠르게 구동되고 있는지를 보여줍니다
 STR_FRAMERATE_CURRENT                                           :{WHITE}현재
 STR_FRAMERATE_AVERAGE                                           :{WHITE}평균
 STR_FRAMERATE_MEMORYUSE                                         :{WHITE}메모리
@@ -4031,7 +4032,7 @@ STR_GROUP_CREATE_TOOLTIP                                        :{BLACK}클릭�
 STR_GROUP_DELETE_TOOLTIP                                        :{BLACK}선택한 그룹을 삭제합니다
 STR_GROUP_RENAME_TOOLTIP                                        :{BLACK}선택한 그룹의 이름을 바꿉니다
 STR_GROUP_LIVERY_TOOLTIP                                        :{BLACK}선택한 그룹의 차량 색상을 변경합니다
-STR_GROUP_REPLACE_PROTECTION_TOOLTIP                            :{BLACK}클릭하면 전체 자동 교체로부터 이 그룹을 보호합니다. CTRL+클릭하면 하위 그룹도 보호합니다.
+STR_GROUP_REPLACE_PROTECTION_TOOLTIP                            :{BLACK}클릭하면 전체 자동 교체로부터 이 그룹을 보호합니다. CTRL+클릭하면 하위 그룹도 보호합니다
 
 STR_QUERY_GROUP_DELETE_CAPTION                                  :{WHITE}그룹 삭제
 STR_GROUP_DELETE_QUERY_TEXT                                     :{WHITE}이 그룹과 하위 그룹을 정말 삭제하시겠습니까?
