@@ -102,6 +102,10 @@ void CrashLog::FillCrashLog()
 		this->survey["stacktrace"] = "crashed while gathering information";
 	}
 
+	if (!this->TryExecute("session", [this]() { SurveyGameSession(this->survey["session"]); return true; })) {
+		this->survey["session"] = "crashed while gathering information";
+	}
+
 	{
 		auto &info = this->survey["info"];
 		if (!this->TryExecute("os", [&info]() { SurveyOS(info["os"]); return true; })) {
