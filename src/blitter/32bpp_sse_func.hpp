@@ -10,10 +10,16 @@
 #ifndef BLITTER_32BPP_SSE_FUNC_HPP
 #define BLITTER_32BPP_SSE_FUNC_HPP
 
+/* ATTENTION
+ * This file is compiled multiple times with different defines for SSE_VERSION and MARGIN_NORMAL_THRESHOLD.
+ * Be careful when declaring things with external linkage.
+ * Use internal linkage instead, i.e. "static".
+ */
+
 #ifdef WITH_SSE
 
 GNU_TARGET(SSE_TARGET)
-inline void InsertFirstUint32(const uint32_t value, __m128i &into)
+static inline void InsertFirstUint32(const uint32_t value, __m128i &into)
 {
 #if (SSE_VERSION >= 4)
 	into = _mm_insert_epi32(into, value, 0);
@@ -24,7 +30,7 @@ inline void InsertFirstUint32(const uint32_t value, __m128i &into)
 }
 
 GNU_TARGET(SSE_TARGET)
-inline void InsertSecondUint32(const uint32_t value, __m128i &into)
+static inline void InsertSecondUint32(const uint32_t value, __m128i &into)
 {
 #if (SSE_VERSION >= 4)
 	into = _mm_insert_epi32(into, value, 1);
@@ -35,7 +41,7 @@ inline void InsertSecondUint32(const uint32_t value, __m128i &into)
 }
 
 GNU_TARGET(SSE_TARGET)
-inline void LoadUint64(const uint64_t value, __m128i &into)
+static inline void LoadUint64(const uint64_t value, __m128i &into)
 {
 #ifdef POINTER_IS_64BIT
 	into = _mm_cvtsi64_si128(value);
@@ -50,7 +56,7 @@ inline void LoadUint64(const uint64_t value, __m128i &into)
 }
 
 GNU_TARGET(SSE_TARGET)
-inline __m128i PackUnsaturated(__m128i from, const __m128i &mask)
+static inline __m128i PackUnsaturated(__m128i from, const __m128i &mask)
 {
 #if (SSE_VERSION == 2)
 	from = _mm_and_si128(from, mask);    // PAND, wipe high bytes to keep low bytes when packing
@@ -61,7 +67,7 @@ inline __m128i PackUnsaturated(__m128i from, const __m128i &mask)
 }
 
 GNU_TARGET(SSE_TARGET)
-inline __m128i DistributeAlpha(const __m128i from, const __m128i &mask)
+static inline __m128i DistributeAlpha(const __m128i from, const __m128i &mask)
 {
 #if (SSE_VERSION == 2)
 	__m128i alphaAB = _mm_shufflelo_epi16(from, 0x3F); // PSHUFLW, put alpha1 in front of each rgb1
@@ -73,7 +79,7 @@ inline __m128i DistributeAlpha(const __m128i from, const __m128i &mask)
 }
 
 GNU_TARGET(SSE_TARGET)
-inline __m128i AlphaBlendTwoPixels(__m128i src, __m128i dst, const __m128i &distribution_mask, const __m128i &pack_mask, const __m128i &alpha_mask)
+static inline __m128i AlphaBlendTwoPixels(__m128i src, __m128i dst, const __m128i &distribution_mask, const __m128i &pack_mask, const __m128i &alpha_mask)
 {
 	__m128i srcAB = _mm_unpacklo_epi8(src, _mm_setzero_si128());   // PUNPCKLBW, expand each uint8_t into uint16
 	__m128i dstAB = _mm_unpacklo_epi8(dst, _mm_setzero_si128());
@@ -97,7 +103,7 @@ inline __m128i AlphaBlendTwoPixels(__m128i src, __m128i dst, const __m128i &dist
  * rgb = rgb * ((256/4) * 4 - (alpha/4)) / ((256/4) * 4)
  */
 GNU_TARGET(SSE_TARGET)
-inline __m128i DarkenTwoPixels(__m128i src, __m128i dst, const __m128i &distribution_mask, const __m128i &tr_nom_base)
+static inline __m128i DarkenTwoPixels(__m128i src, __m128i dst, const __m128i &distribution_mask, const __m128i &tr_nom_base)
 {
 	__m128i srcAB = _mm_unpacklo_epi8(src, _mm_setzero_si128());
 	__m128i dstAB = _mm_unpacklo_epi8(dst, _mm_setzero_si128());
@@ -145,7 +151,7 @@ IGNORE_UNINITIALIZED_WARNING_STOP
 /** ReallyAdjustBrightness() is not called that often.
  * Inlining this function implies a far jump, which has a huge latency.
  */
-inline Colour AdjustBrightneSSE(Colour colour, uint8_t brightness)
+static inline Colour AdjustBrightneSSE(Colour colour, uint8_t brightness)
 {
 	/* Shortcut for normal brightness. */
 	if (brightness == Blitter_32bppBase::DEFAULT_BRIGHTNESS) return colour;
@@ -154,7 +160,7 @@ inline Colour AdjustBrightneSSE(Colour colour, uint8_t brightness)
 }
 
 GNU_TARGET(SSE_TARGET)
-inline __m128i AdjustBrightnessOfTwoPixels([[maybe_unused]] __m128i from, [[maybe_unused]] uint32_t brightness)
+static inline __m128i AdjustBrightnessOfTwoPixels([[maybe_unused]] __m128i from, [[maybe_unused]] uint32_t brightness)
 {
 #if (SSE_VERSION < 3)
 	NOT_REACHED();
