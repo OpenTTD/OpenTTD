@@ -10,6 +10,12 @@
 #ifndef BLITTER_32BPP_SSE_TYPE_H
 #define BLITTER_32BPP_SSE_TYPE_H
 
+/* ATTENTION
+ * This file is compiled multiple times with different defines for SSE_VERSION.
+ * Be careful when declaring things with external linkage.
+ * Use internal linkage instead, i.e. "static".
+ */
+
 #ifdef WITH_SSE
 
 #include "32bpp_simple.hpp"
