@@ -165,7 +165,7 @@ protected:
 
 	/**
 	 * Try to join the server:
-	 * string   OpenTTD revision (norev000 if no revision).
+	 * string   OpenTTD revision (norev0000 if no revision).
 	 * uint32_t NewGRF version (added in 1.2).
 	 * string   Name of the client (max NETWORK_NAME_LENGTH) (removed in 15).
 	 * uint8_t  ID of the company to play as (1..MAX_COMPANIES) (removed in 15).
