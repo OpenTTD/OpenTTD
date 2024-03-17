@@ -121,6 +121,7 @@ public:
 	}
 
 	const std::string &GetClientIP();
+	std::string_view GetPeerPublicKey() const { return this->peer_public_key; }
 
 	static ServerNetworkGameSocketHandler *GetByClientID(ClientID client_id);
 };

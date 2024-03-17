@@ -2244,6 +2244,18 @@ void NetworkPrintClients()
 }
 
 /**
+ * Get the public key of the client with the given id.
+ * @param client_id The id of the client.
+ * @return View of the public key, which is empty when the client does not exist.
+ */
+std::string_view NetworkGetPublicKeyOfClient(ClientID client_id)
+{
+	auto socket = NetworkClientSocket::GetByClientID(client_id);
+	return socket == nullptr ? "" : socket->GetPeerPublicKey();
+}
+
+
+/**
  * Perform all the server specific administration of a new company.
  * @param c  The newly created company; can't be nullptr.
  * @param ci The client information of the client that made the company; can be nullptr.
