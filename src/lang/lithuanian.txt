@@ -682,6 +682,7 @@ STR_NEWS_MENU_DELETE_ALL_MESSAGES                               :Pašalinti visa
 
 # About menu
 STR_ABOUT_MENU_LAND_BLOCK_INFO                                  :Žemės ploto informacija
+STR_ABOUT_MENU_HELP                                             :Pagalba ir gidai
 STR_ABOUT_MENU_TOGGLE_CONSOLE                                   :Perjungti konsolę
 STR_ABOUT_MENU_AI_DEBUG                                         :AI / GameScript derinimas
 STR_ABOUT_MENU_SCREENSHOT                                       :Ekrano nuotrauka
@@ -1067,6 +1068,7 @@ STR_NEWS_NEW_VEHICLE_NOW_AVAILABLE_WITH_TYPE                    :{BLACK}Naujas{S
 
 STR_NEWS_SHOW_VEHICLE_GROUP_TOOLTIP                             :{BLACK}Atverti grupių langą, susijusį su šia transporto priemone
 
+STR_NEWS_STATION_NOW_ACCEPTS_CARGO_LIST                         :{WHITE}{STATION} dabar priima: {CARGO_LIST}
 
 STR_NEWS_OFFER_OF_SUBSIDY_EXPIRED                               :{BIG_FONT}{BLACK}Subsidijų pasiūlymas baigėsi:{}{}{STRING.ko} pervežimas iš {STRING.ko} į {STRING.ka} daugiau nebesubsidijuojamas.
 STR_NEWS_SUBSIDY_WITHDRAWN_SERVICE                              :{BIG_FONT}{BLACK}Subsidijų laikas baigėsi:{}{}{STRING.ko} transportavimas iš {STRING} į {STRING} daugiau nebesubsidijuojamas.
@@ -2501,6 +2503,7 @@ STR_NETWORK_CLIENT_LIST_SERVER_CONNECTION_TYPE_TURN             :{BLACK}Per rel�
 
 STR_NETWORK_CLIENT_LIST_ADMIN_CLIENT_KICK                       :Atjungti
 STR_NETWORK_CLIENT_LIST_ADMIN_CLIENT_BAN                        :Blokuoti
+STR_NETWORK_CLIENT_LIST_ADMIN_COMPANY_RESET                     :Ištrinti/Pašalinti
 
 STR_NETWORK_CLIENT_LIST_ASK_CAPTION                             :{WHITE}Administratoriaus veiksmas
 STR_NETWORK_CLIENT_LIST_ASK_COMPANY_UNLOCK                      :{YELLOW}Ar tikrai norite iš naujo nustatyti įmonės slaptažodį '{COMPANY}'?
@@ -3152,7 +3155,7 @@ STR_LAI_OBJECT_DESCRIPTION_COMPANY_OWNED_LAND                   :Kompanijos žem
 STR_ABOUT_OPENTTD                                               :{WHITE}Apie OpenTTD
 STR_ABOUT_ORIGINAL_COPYRIGHT                                    :{BLACK}Pradinės versijos teisės priklauso {COPYRIGHT} 1995 Chris Sawyer, Visos teisės saugomos
 STR_ABOUT_VERSION                                               :{BLACK}OpenTTD versija {REV}
-STR_ABOUT_COPYRIGHT_OPENTTD                                     :{BLACK}OpenTTD {COPYRIGHT}2002-{STRING} OpenTTD komanda
+STR_ABOUT_COPYRIGHT_OPENTTD                                     :{BLACK}„OpenTTD“ {COPYRIGHT}2002-{STRING} „OpenTTD“ komanda
 
 # Framerate display window
 STR_FRAMERATE_CAPTION                                           :Kadrų dažniai
@@ -3678,6 +3681,8 @@ STR_STATION_LIST_STATION                                        :{YELLOW}{STATIO
 STR_STATION_LIST_WAYPOINT                                       :{YELLOW}{WAYPOINT}
 STR_STATION_LIST_NONE                                           :{YELLOW}- Nieko -
 STR_STATION_LIST_SELECT_ALL_FACILITIES                          :{BLACK}Pažymėti visus pastatus
+STR_STATION_LIST_CARGO_FILTER_ALL_AND_NO_RATING                 :Visi kargo tipai ir jokio reitingo
+STR_STATION_LIST_CARGO_FILTER_EXPAND                            :Rodyti daugiau...
 
 # Station view window
 STR_STATION_VIEW_CAPTION                                        :{WHITE}{STATION} {STATION_FEATURES}
@@ -5188,6 +5193,7 @@ STR_ERROR_TOO_FAR_FROM_PREVIOUS_DESTINATION                     :{WHITE}... per 
 STR_ERROR_AIRCRAFT_NOT_ENOUGH_RANGE                             :{WHITE}... lėktuvui paskirties vieta yra per toli
 
 # Extra messages which go on the third line of errors, explaining why orders failed
+STR_ERROR_NO_AIRPORT                                            :{WHITE}Nėra jokio oro ar sraigtasparnio uosto
 
 # Timetable related errors
 STR_ERROR_CAN_T_TIMETABLE_VEHICLE                               :{WHITE}Neįmanoma sudaryti grafiko...

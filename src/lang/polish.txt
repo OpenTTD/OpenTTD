@@ -1851,7 +1851,7 @@ STR_CONFIG_SETTING_COMPANY_STARTING_COLOUR                      :Początkowy kol
 STR_CONFIG_SETTING_COMPANY_STARTING_COLOUR_HELPTEXT             :Wybierz początkowy kolor dla firmy
 
 STR_CONFIG_SETTING_COMPANY_STARTING_COLOUR_SECONDARY            :Początkowy kolor dodatkowy firmy: {STRING}
-STR_CONFIG_SETTING_COMPANY_STARTING_COLOUR_SECONDARY_HELPTEXT   :Wybierz początkowy kolor dodatkowy dla firmy, jeśli używany jest NewGRF, który go wykorzystuje.
+STR_CONFIG_SETTING_COMPANY_STARTING_COLOUR_SECONDARY_HELPTEXT   :Wybierz początkowy kolor dodatkowy dla firmy, jeśli używany jest NewGRF, który go wykorzystuje
 
 STR_CONFIG_SETTING_NEVER_EXPIRE_AIRPORTS                        :Pozwól budować stare lotniska: {STRING}
 STR_CONFIG_SETTING_NEVER_EXPIRE_AIRPORTS_HELPTEXT               :Włączona opcja sprawia, że każdy typ lotniska będzie dostępny na zawsze od chwili wprowadzenia
@@ -1881,16 +1881,16 @@ STR_CONFIG_SETTING_TIMEKEEPING_UNITS_CALENDAR                   :Kalendarz
 STR_CONFIG_SETTING_TIMEKEEPING_UNITS_WALLCLOCK                  :Tarcza zegara
 
 STR_CONFIG_SETTING_MINUTES_PER_YEAR                             :Minuty na rok: {STRING}
-STR_CONFIG_SETTING_MINUTES_PER_YEAR_HELPTEXT                    :Wybierz liczbę minut trwania jednego roku kalendarzowego. Domyślnie jest to 12 minut. Ustaw na 0, aby wstrzymać zmianę daty kalendarza. To ustawienie nie ma wpływu na symulację ekonomiczną gry i jest dostępne tylko w przypadku korzystania z zegarowej miary czasu.
+STR_CONFIG_SETTING_MINUTES_PER_YEAR_HELPTEXT                    :Wybierz liczbę minut trwania jednego roku kalendarzowego. Domyślnie jest to 12 minut. Ustaw na 0, aby wstrzymać zmianę daty kalendarza. To ustawienie nie ma wpływu na symulację ekonomiczną gry i jest dostępne tylko w przypadku korzystania z zegarowej miary czasu
 
 STR_CONFIG_SETTING_MINUTES_PER_YEAR_VALUE                       :{NUM}
 ###setting-zero-is-special
 STR_CONFIG_SETTING_MINUTES_PER_YEAR_FROZEN                      :0 (zamrożenie czasu kalendarza)
 
 STR_CONFIG_SETTING_TOWN_CARGO_SCALE                             :Skala produkcji w miastach: {STRING}
-STR_CONFIG_SETTING_TOWN_CARGO_SCALE_HELPTEXT                    :Skaluj produkcję ładunków w miastach w oparciu o ten procent.
+STR_CONFIG_SETTING_TOWN_CARGO_SCALE_HELPTEXT                    :Skaluj produkcję ładunków w miastach w oparciu o ten procent
 STR_CONFIG_SETTING_INDUSTRY_CARGO_SCALE                         :Skala produkcji w przedsiębiorstwach: {STRING}
-STR_CONFIG_SETTING_INDUSTRY_CARGO_SCALE_HELPTEXT                :Skaluj produkcję ładunków w przedsiębiorstwach w oparciu o ten procent.
+STR_CONFIG_SETTING_INDUSTRY_CARGO_SCALE_HELPTEXT                :Skaluj produkcję ładunków w przedsiębiorstwach w oparciu o ten procent
 STR_CONFIG_SETTING_CARGO_SCALE_VALUE                            :{NUM}%
 
 STR_CONFIG_SETTING_AUTORENEW_VEHICLE                            :Automatyczne odnawianie pojazdów, gdy stają się stare: {STRING}
@@ -1921,7 +1921,7 @@ STR_CONFIG_SETTING_GRAPH_LINE_THICKNESS                         :Grubość linii
 STR_CONFIG_SETTING_GRAPH_LINE_THICKNESS_HELPTEXT                :Grubość linii na wykresach. Cienka linia jest dokładniejsza, grubsza linia jest bardziej widoczna a kolory łatwiejsze do odróżnienia
 
 STR_CONFIG_SETTING_SHOW_NEWGRF_NAME                             :Pokaż nazwę NewGRF-a w oknie budowy pojazdu: {STRING}
-STR_CONFIG_SETTING_SHOW_NEWGRF_NAME_HELPTEXT                    :Dodaj wiersz do okna budowy pojazdów, pokazujący z którego NewGRF-a wybrany pojazd pochodzi.
+STR_CONFIG_SETTING_SHOW_NEWGRF_NAME_HELPTEXT                    :Dodaj wiersz do okna budowy pojazdów, pokazujący z którego NewGRF-a wybrany pojazd pochodzi
 STR_CONFIG_SETTING_SHOW_CARGO_IN_LISTS                          :Pokaż w oknach list jakie ładunki mogą być przewożone przez pojazdy: {STRING}
 STR_CONFIG_SETTING_SHOW_CARGO_IN_LISTS_HELPTEXT                 :Jeśli włączone, ładunek możliwy do przewiezienia przez pojazd będzie wyświetlany nad nim na listach pojazdów.
 
@@ -1955,7 +1955,7 @@ STR_CONFIG_SETTING_DESERT_COVERAGE_HELPTEXT                     :Wybierz przybli
 STR_CONFIG_SETTING_DESERT_COVERAGE_VALUE                        :{NUM}%
 
 STR_CONFIG_SETTING_ROUGHNESS_OF_TERRAIN                         :Gładkość terenu: {STRING}
-STR_CONFIG_SETTING_ROUGHNESS_OF_TERRAIN_HELPTEXT                :Wybierz kształt i ilość wzniesień. Łagodny teren ma mniejszą liczbę szerszych wzniesień, natomiast teren pofałdowany ma więcej mniejszych wzniesień.
+STR_CONFIG_SETTING_ROUGHNESS_OF_TERRAIN_HELPTEXT                :Wybierz kształt i ilość wzniesień. Łagodny teren ma mniejszą liczbę szerszych wzniesień, natomiast teren pofałdowany ma więcej mniejszych wzniesień
 ###length 4
 STR_CONFIG_SETTING_ROUGHNESS_OF_TERRAIN_VERY_SMOOTH             :Bardzo łagodny
 STR_CONFIG_SETTING_ROUGHNESS_OF_TERRAIN_SMOOTH                  :Łagodny
@@ -2010,7 +2010,7 @@ STR_CONFIG_SETTING_SMALLMAP_LAND_COLOUR_DARK_GREEN              :ciemnozielony
 STR_CONFIG_SETTING_SMALLMAP_LAND_COLOUR_VIOLET                  :fioletowy
 
 STR_CONFIG_SETTING_LINKGRAPH_COLOURS                            :Kolorystyka przepływu ładunków: {STRING}
-STR_CONFIG_SETTING_LINKGRAPH_COLOURS_HELPTEXT                   :Ustaw kolorystykę używaną do wyświetlania przepływu ładunków.
+STR_CONFIG_SETTING_LINKGRAPH_COLOURS_HELPTEXT                   :Ustaw kolorystykę używaną do wyświetlania przepływu ładunków
 ###length 4
 STR_CONFIG_SETTING_LINKGRAPH_COLOURS_GREEN_TO_RED               :Od zielonego do czerwonego (oryginalna)
 STR_CONFIG_SETTING_LINKGRAPH_COLOURS_GREEN_TO_BLUE              :Od zielonego do niebieskiego
@@ -2131,7 +2131,7 @@ STR_CONFIG_SETTING_PERSISTENT_BUILDINGTOOLS                     :Pozostaw aktywn
 STR_CONFIG_SETTING_PERSISTENT_BUILDINGTOOLS_HELPTEXT            :Zachowaj narzędzia budowy mostów, tuneli, itp. po użyciu
 
 STR_CONFIG_SETTING_AUTO_REMOVE_SIGNALS                          :Automatycznie usuwaj sygnały podczas budowy torów: {STRING}
-STR_CONFIG_SETTING_AUTO_REMOVE_SIGNALS_HELPTEXT                 :Automatycznie usuwaj sygnały, które przeszkadzają w budowie toru. Pamiętaj, że może to doprowadzić do zderzenia pociągów, w przypadku usunięcia ważnych sygnałów.
+STR_CONFIG_SETTING_AUTO_REMOVE_SIGNALS_HELPTEXT                 :Automatycznie usuwaj sygnały, które przeszkadzają w budowie toru. Pamiętaj, że może to doprowadzić do zderzenia pociągów, w przypadku usunięcia ważnych sygnałów
 
 STR_CONFIG_SETTING_FAST_FORWARD_SPEED_LIMIT                     :Ograniczenie prędkości przyspieszonego czasu w grze: {STRING}
 STR_CONFIG_SETTING_FAST_FORWARD_SPEED_LIMIT_HELPTEXT            :Ograniczenie prędkości gry, kiedy przyspieszenie czasu jest włączone. 0 = bez ograniczenia (tak szybko, jak pozwoli na to komputer). Wartości poniżej 100% spowolnią grę. Górny limit jest zależny od specyfikacji komputera i może się różnić w zależności od rozgrywki.
@@ -2220,7 +2220,7 @@ STR_CONFIG_SETTING_NOSERVICE                                    :Wyłącz serwis
 STR_CONFIG_SETTING_NOSERVICE_HELPTEXT                           :Kiedy włączone, pojazdy nie są serwisowane, jeśli nie mogą się popsuć
 
 STR_CONFIG_SETTING_STATION_LENGTH_LOADING_PENALTY               :Obniżenie prędkości załadunku pociągów dłuższych niż stacja: {STRING}
-STR_CONFIG_SETTING_STATION_LENGTH_LOADING_PENALTY_HELPTEXT      :Gdy opcja ta jest włączona, pociągi dłuższe od stacji ładują się wolniej niż pociągi, które mieszczą się na stacji. To ustawienie nie wpływa na znajdowanie tras.
+STR_CONFIG_SETTING_STATION_LENGTH_LOADING_PENALTY_HELPTEXT      :Gdy opcja ta jest włączona, pociągi dłuższe od stacji ładują się wolniej niż pociągi, które mieszczą się na stacji. To ustawienie nie wpływa na znajdowanie tras
 
 STR_CONFIG_SETTING_WAGONSPEEDLIMITS                             :Włącz limity prędkości wagonów: {STRING}
 STR_CONFIG_SETTING_WAGONSPEEDLIMITS_HELPTEXT                    :Kiedy włączone, użyj także ograniczenia prędkości dla wagonów do obliczenia maksymalnej prędkości pociągu
@@ -2346,7 +2346,7 @@ STR_CONFIG_SETTING_TOWN_FOUNDING_ALLOWED                        :Dozwolone
 STR_CONFIG_SETTING_TOWN_FOUNDING_ALLOWED_CUSTOM_LAYOUT          :Dozwolone, dowolny układ miasta
 
 STR_CONFIG_SETTING_TOWN_CARGOGENMODE                            :Generowanie ładunku przez miasta: {STRING}
-STR_CONFIG_SETTING_TOWN_CARGOGENMODE_HELPTEXT                   :Ilość ładunku produkowana przez domy w mieście względem ogólnej populacji miasta.{}Wzrost kwadratowy: miasto o podwojonej wielkości generuje czterokrotnie więcej pasażerów.{}Wzrost liniowy: miasto o podwojonej wielkości generuje dwukrotnie więcej pasażerów.
+STR_CONFIG_SETTING_TOWN_CARGOGENMODE_HELPTEXT                   :Ilość ładunku produkowana przez domy w mieście względem ogólnej populacji miasta.{}Wzrost kwadratowy: miasto o podwojonej wielkości generuje czterokrotnie więcej pasażerów.{}Wzrost liniowy: miasto o podwojonej wielkości generuje dwukrotnie więcej pasażerów
 ###length 2
 STR_CONFIG_SETTING_TOWN_CARGOGENMODE_ORIGINAL                   :Kwadratowy (originalny)
 STR_CONFIG_SETTING_TOWN_CARGOGENMODE_BITCOUNT                   :Liniowy
@@ -2387,7 +2387,7 @@ STR_CONFIG_SETTING_ZOOM_LVL_OUT_4X                              :4x
 STR_CONFIG_SETTING_ZOOM_LVL_OUT_8X                              :8x
 
 STR_CONFIG_SETTING_SPRITE_ZOOM_MIN                              :Najwyższa używana rozdzielczość sprite'ów: {STRING}
-STR_CONFIG_SETTING_SPRITE_ZOOM_MIN_HELPTEXT                     :Ogranicz maksymalną rozdzielczość dla sprite'ów. Ograniczenie rozdzielczości sprite'ów spowoduje brak użycia grafiki w wysokiej rozdzielczości, nawet, jeśli jest ona dostępna. Może to pomóc w utrzymaniu jednolitego wyglądu gry, gdy używasz mieszanki plików GRF z grafiką w wysokiej rozdzielczości i bez niej.
+STR_CONFIG_SETTING_SPRITE_ZOOM_MIN_HELPTEXT                     :Ogranicz maksymalną rozdzielczość dla sprite'ów. Ograniczenie rozdzielczości sprite'ów spowoduje brak użycia grafiki w wysokiej rozdzielczości, nawet, jeśli jest ona dostępna. Może to pomóc w utrzymaniu jednolitego wyglądu gry, gdy używasz mieszanki plików GRF z grafiką w wysokiej rozdzielczości i bez niej
 ###length 3
 STR_CONFIG_SETTING_SPRITE_ZOOM_LVL_MIN                          :4x
 STR_CONFIG_SETTING_SPRITE_ZOOM_LVL_IN_2X                        :2x
@@ -2411,9 +2411,9 @@ STR_CONFIG_SETTING_CITY_SIZE_MULTIPLIER                         :Początkowy mno
 STR_CONFIG_SETTING_CITY_SIZE_MULTIPLIER_HELPTEXT                :Średni rozmiar metropolii w porównaniu do normalnych miast na początku gry
 
 STR_CONFIG_SETTING_LINKGRAPH_RECALC_INTERVAL                    :Aktualizuj graf dystrybucji co {STRING}
-STR_CONFIG_SETTING_LINKGRAPH_RECALC_INTERVAL_HELPTEXT           :Czas pomiędzy kolejnymi przeliczeniami grafu połączeń. Każde przeliczenie oblicza plany dla jednego komponentu grafu. Wartość X dla tego ustawienia nie oznacza, że cały graf będzie aktualizowany co X sekund. Aktualizowane będą tylko niektóre komponenty. Im mniejszą wartość ustawisz, tym więcej czasu będzie potrzebował procesor, aby wykonać obliczenia. Im większą wartość ustawisz, tym więcej czasu upłynie, zanim rozpocznie się dystrybucja ładunków po nowych trasach.
+STR_CONFIG_SETTING_LINKGRAPH_RECALC_INTERVAL_HELPTEXT           :Czas pomiędzy kolejnymi przeliczeniami grafu połączeń. Każde przeliczenie oblicza plany dla jednego komponentu grafu. Wartość X dla tego ustawienia nie oznacza, że cały graf będzie aktualizowany co X sekund. Aktualizowane będą tylko niektóre komponenty. Im mniejszą wartość ustawisz, tym więcej czasu będzie potrzebował procesor, aby wykonać obliczenia. Im większą wartość ustawisz, tym więcej czasu upłynie, zanim rozpocznie się dystrybucja ładunków po nowych trasach
 STR_CONFIG_SETTING_LINKGRAPH_RECALC_TIME                        :Przeznacz {STRING} na przeliczenie grafu dystrybucji
-STR_CONFIG_SETTING_LINKGRAPH_RECALC_TIME_HELPTEXT               :Czas potrzebny na każde przeliczenie komponentu grafu połączeń. Po rozpoczęciu przeliczania, tworzony jest wątek, który może działać przez podaną liczbę sekund. Im mniejszą wartość ustawisz, tym większe prawdopodobieństwo, że wątek nie zostanie ukończony w wyznaczonym czasie. Wtedy gra zatrzymuje się do czasu jego zakończenia („lag”). Im większą wartość ustawisz, tym dłużej będzie trwała aktualizacja dystrybucji, gdy zmienią się trasy.
+STR_CONFIG_SETTING_LINKGRAPH_RECALC_TIME_HELPTEXT               :Czas potrzebny na każde przeliczenie komponentu grafu połączeń. Po rozpoczęciu przeliczania, tworzony jest wątek, który może działać przez podaną liczbę sekund. Im mniejszą wartość ustawisz, tym większe prawdopodobieństwo, że wątek nie zostanie ukończony w wyznaczonym czasie. Wtedy gra zatrzymuje się do czasu jego zakończenia („lag”). Im większą wartość ustawisz, tym dłużej będzie trwała aktualizacja dystrybucji, gdy zmienią się trasy
 
 STR_CONFIG_SETTING_DISTRIBUTION_PAX                             :Tryb dystrybucji dla pasażerów: {STRING}
 STR_CONFIG_SETTING_DISTRIBUTION_PAX_HELPTEXT                    :Tryb „symetryczny” oznacza, że mniej więcej tyle samo pasażerów będzie podróżować ze stacji A do stacji B, co z B do A. Tryb „asymetryczny” oznacza, że w obu kierunkach może podróżować różna liczba pasażerów. Tryb „ręczny” oznacza, że dla pasażerów nie będzie przeprowadzana dystrybucja automatyczna.
@@ -2429,12 +2429,12 @@ STR_CONFIG_SETTING_DISTRIBUTION_ASYMMETRIC                      :asymetryczny
 STR_CONFIG_SETTING_DISTRIBUTION_SYMMETRIC                       :symetryczny
 
 STR_CONFIG_SETTING_LINKGRAPH_ACCURACY                           :Dokładność dystrybucji: {STRING}
-STR_CONFIG_SETTING_LINKGRAPH_ACCURACY_HELPTEXT                  :Im wyższą wartość ustawisz, tym więcej czasu procesor będzie potrzebował na obliczenie grafu połączeń. Jeśli będzie to trwało zbyt długo, możesz zauważyć opóźnienia. Jeśli jednak ustawisz niską wartość, dystrybucja będzie niedokładna i możesz zauważyć, że ładunki nie są wysyłane do miejsc, gdzie się ich spodziewasz.
+STR_CONFIG_SETTING_LINKGRAPH_ACCURACY_HELPTEXT                  :Im wyższą wartość ustawisz, tym więcej czasu procesor będzie potrzebował na obliczenie grafu połączeń. Jeśli będzie to trwało zbyt długo, możesz zauważyć opóźnienia. Jeśli jednak ustawisz niską wartość, dystrybucja będzie niedokładna i możesz zauważyć, że ładunki nie są wysyłane do miejsc, gdzie się ich spodziewasz
 
 STR_CONFIG_SETTING_DEMAND_DISTANCE                              :Wpływ odległości na dystrybucję: {STRING}
 STR_CONFIG_SETTING_DEMAND_DISTANCE_HELPTEXT                     :Jeśli ładunki z jednej stacji trafiają na kilka różnych stacji, na ich dystrybucję wpływ ma odległość. Im wyższą wartość ustawisz, tym bliższe stacje będą preferowane. Zerowa wartość ustawienia sprawi, że odległość nie będzie wpływała na podział dystrybucji.
 STR_CONFIG_SETTING_DEMAND_SIZE                                  :Ilość powracającego ładunku dla trybu symetrycznego: {STRING}
-STR_CONFIG_SETTING_DEMAND_SIZE_HELPTEXT                         :Ustawienie tego na mniej niż 100% powoduje, że symetryczna dystrybucja zachowuje się podobnie do asymetrycznej. Mniej ładunku będzie zwróconego jeśli określona ilość zostanie wysłana do stacji. Jeśli ustawisz to na 0%, to symetryczna dystrybucja zachowuje się jak asymetryczna.
+STR_CONFIG_SETTING_DEMAND_SIZE_HELPTEXT                         :Ustawienie tego na mniej niż 100% powoduje, że symetryczna dystrybucja zachowuje się podobnie do asymetrycznej. Mniej ładunku będzie zwróconego jeśli określona ilość zostanie wysłana do stacji. Jeśli ustawisz to na 0%, to symetryczna dystrybucja zachowuje się jak asymetryczna
 
 STR_CONFIG_SETTING_SHORT_PATH_SATURATION                        :Nasycenie krótkich tras przed wybraniem tras o dużej przepustowości: {STRING}
 STR_CONFIG_SETTING_SHORT_PATH_SATURATION_HELPTEXT               :Często istnieje wiele możliwych tras pomiędzy dwiema danymi stacjami. Mechanizm dystrybucji ładunków najpierw nasyci najkrótszą trasę, następnie użyje drugiej najkrótszej trasy, aż do jej nasycenia itd. Nasycenie jest ustalane na podstawie szacunkowej oceny przepustowości i planowanego wykorzystania. Po nasyceniu wszystkich tras, jeśli nadal istnieje zapotrzebowanie, algorytm przeciąży wszystkie trasy, preferując te o dużej przepustowości. W większości przypadków algorytm nie oszacuje jednak dokładnie przepustowości. To ustawienie pozwala określić, do jakiej wartości procentowej krótsza trasa musi zostać nasycona w pierwszym kroku, zanim zostanie wybrana kolejna, dłuższa trasa. Ustaw wartość mniejszą niż 100%, aby uniknąć przepełnionych stacji w przypadku przeszacowania przepustowości.
@@ -3359,11 +3359,11 @@ STR_TREES_RANDOM_TYPE_TOOLTIP                                   :{BLACK}Posadź 
 STR_TREES_RANDOM_TREES_BUTTON                                   :{BLACK}Losowe drzewa
 STR_TREES_RANDOM_TREES_TOOLTIP                                  :{BLACK}Pokryj losowo krajobraz drzewami
 STR_TREES_MODE_NORMAL_BUTTON                                    :{BLACK}Normalny
-STR_TREES_MODE_NORMAL_TOOLTIP                                   :Sadź pojedyncze drzewa, przeciągając nad terenem.
+STR_TREES_MODE_NORMAL_TOOLTIP                                   :{BLACK}Sadź pojedyncze drzewa, przeciągając nad terenem
 STR_TREES_MODE_FOREST_SM_BUTTON                                 :Zagajnik
-STR_TREES_MODE_FOREST_SM_TOOLTIP                                :Sadź niewielkie lasy, przeciągając nad terenem.
+STR_TREES_MODE_FOREST_SM_TOOLTIP                                :{BLACK}Sadź niewielkie lasy, przeciągając nad terenem
 STR_TREES_MODE_FOREST_LG_BUTTON                                 :Las
-STR_TREES_MODE_FOREST_LG_TOOLTIP                                :Sadź duże lasy, przeciągając nad terenem.
+STR_TREES_MODE_FOREST_LG_TOOLTIP                                :{BLACK}Sadź duże lasy, przeciągając nad terenem
 
 # Land generation window (SE)
 STR_TERRAFORM_TOOLBAR_LAND_GENERATION_CAPTION                   :{WHITE}Tworzenie terenu
@@ -3578,9 +3578,9 @@ STR_ABOUT_COPYRIGHT_OPENTTD                                     :{BLACK}OpenTTD 
 STR_FRAMERATE_CAPTION                                           :{WHITE}Klatkaż
 STR_FRAMERATE_CAPTION_SMALL                                     :{STRING}{WHITE} ({DECIMAL}x)
 STR_FRAMERATE_RATE_GAMELOOP                                     :{BLACK}Tempo symulacji: {STRING}
-STR_FRAMERATE_RATE_GAMELOOP_TOOLTIP                             :{BLACK}Liczba ticków gry symulowanych na sekundę.
+STR_FRAMERATE_RATE_GAMELOOP_TOOLTIP                             :{BLACK}Liczba ticków gry symulowanych na sekundę
 STR_FRAMERATE_RATE_BLITTER                                      :{BLACK}Klatki na sekundę: {STRING}
-STR_FRAMERATE_RATE_BLITTER_TOOLTIP                              :{BLACK}Liczba renderowanych klatek wideo na sekundę.
+STR_FRAMERATE_RATE_BLITTER_TOOLTIP                              :{BLACK}Liczba renderowanych klatek wideo na sekundę
 STR_FRAMERATE_SPEED_FACTOR                                      :{BLACK}Obecny współczynnik szybkości gry: {DECIMAL}x
 STR_FRAMERATE_SPEED_FACTOR_TOOLTIP                              :{BLACK}Jak szybko gra obecnie działa, w porównaniu do oczekiwanej prędkości przy normalnym tempie symulacji.
 STR_FRAMERATE_CURRENT                                           :{WHITE}Obecny
@@ -4406,7 +4406,7 @@ STR_GROUP_DEFAULT_AIRCRAFTS                                     :Samoloty bez gr
 
 STR_GROUP_COUNT_WITH_SUBGROUP                                   :{TINY_FONT}{COMMA} (+{COMMA})
 
-STR_GROUPS_CLICK_ON_GROUP_FOR_TOOLTIP                           :{BLACK}Grupy - kliknij na grupę, aby wyświetlić wszystkie pojazdy z grupy. Przeciągnij i upuść grupy, aby dostosować hierarchię.
+STR_GROUPS_CLICK_ON_GROUP_FOR_TOOLTIP                           :{BLACK}Grupy - kliknij na grupę, aby wyświetlić wszystkie pojazdy z grupy. Przeciągnij i upuść grupy, aby dostosować hierarchię
 STR_GROUP_CREATE_TOOLTIP                                        :{BLACK}Kliknij aby stworzyć grupę
 STR_GROUP_DELETE_TOOLTIP                                        :{BLACK}Usuń zaznaczoną grupę
 STR_GROUP_RENAME_TOOLTIP                                        :{BLACK}Zmień nazwę zaznaczonej grupy
