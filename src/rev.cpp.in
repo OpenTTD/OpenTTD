@@ -28,7 +28,7 @@ bool IsReleasedVersion()
  * - "<tag>", like "<major>.<minor>.<build>[-RC<rc>]",
  * - "<commitdate>-g<shorthash><modified>" in "master",
  * - "<commitdate>-<branch>-g<shorthash><modified>" in other branches, or
- * - "norev000", if the version is unknown.
+ * - "norev0000", if the version is unknown.
  *
  * The major, minor and build are the numbers that describe releases of
  * OpenTTD (like 0.5.3). "-RC" is used to flag release candidates.
