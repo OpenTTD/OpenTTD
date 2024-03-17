@@ -315,6 +315,7 @@ struct NetworkSettings {
 	std::string server_password;                          ///< password for joining this server
 	std::vector<std::string> server_authorized_keys; ///< Public keys of clients that are authorized to connect to the game.
 	std::string rcon_password;                            ///< password for rconsole (server side)
+	std::vector<std::string> rcon_authorized_keys; ///< Public keys of clients that are authorized to use the rconsole (server side).
 	std::string admin_password;                           ///< password for the admin network
 	std::string client_name;                              ///< name of the player (as client)
 	std::string client_secret_key; ///< The secret key of the client for authorized key logins.

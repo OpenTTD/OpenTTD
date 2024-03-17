@@ -836,6 +836,7 @@ DEF_CONSOLE_CMD(ConRcon)
 	if (argc == 0) {
 		IConsolePrint(CC_HELP, "Remote control the server from another client. Usage: 'rcon <password> <command>'.");
 		IConsolePrint(CC_HELP, "Remember to enclose the command in quotes, otherwise only the first parameter is sent.");
+		IConsolePrint(CC_HELP, "When your client's public key is in the 'authorized keys' for 'rcon', the password is not checked and may be '*'.");
 		return true;
 	}
 
