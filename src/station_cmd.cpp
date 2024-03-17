@@ -2620,12 +2620,14 @@ CommandCost CmdOpenCloseAirport(DoCommandFlag flags, StationID station_id)
  */
 bool HasStationInUse(StationID station, bool include_company, CompanyID company)
 {
-	for (const Vehicle *v : Vehicle::Iterate()) {
-		if ((v->owner == company) == include_company) {
-			for (const Order *order : v->Orders()) {
-				if ((order->IsType(OT_GOTO_STATION) || order->IsType(OT_GOTO_WAYPOINT)) && order->GetDestination() == station) {
-					return true;
-				}
+	for (const OrderList *orderlist : OrderList::Iterate()) {
+		const Vehicle *v = orderlist->GetFirstSharedVehicle();
+		assert(v != nullptr);
+		if ((v->owner == company) != include_company) continue;
+
+		for (const Order *order = orderlist->GetFirstOrder(); order != nullptr; order = order->next) {
+			if (order->GetDestination() == station && (order->IsType(OT_GOTO_STATION) || order->IsType(OT_GOTO_WAYPOINT))) {
+				return true;
 			}
 		}
 	}
