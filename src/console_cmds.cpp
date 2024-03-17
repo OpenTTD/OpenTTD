@@ -1956,6 +1956,101 @@ DEF_CONSOLE_CMD(ConCompanyPassword)
 	return true;
 }
 
+/** All the known authorized keys with their name. */
+static std::vector<std::pair<std::string_view, std::vector<std::string> *>> _console_cmd_authorized_keys{
+	{ "rcon", &_settings_client.network.rcon_authorized_keys },
+	{ "server", &_settings_client.network.server_authorized_keys },
+};
+
+/**
+ * Simple helper to find the location of the given authorized key in the authorized keys.
+ * @param authorized_keys The keys to look through.
+ * @param authorized_key The key to look for.
+ * @return The iterator to the location of the authorized key, or \c authorized_keys.end().
+ */
+static auto FindKey(std::vector<std::string> *authorized_keys, std::string_view authorized_key)
+{
+	return std::find_if(authorized_keys->begin(), authorized_keys->end(), [authorized_key](auto &value) { return StrEqualsIgnoreCase(value, authorized_key); });
+}
+
+DEF_CONSOLE_CMD(ConNetworkAuthorizedKey)
+{
+	if (argc <= 2) {
+		IConsolePrint(CC_HELP, "List and update authorized keys. Usage: 'authorized_key list [type]|add [type] [key]|remove [type] [key]'.");
+		IConsolePrint(CC_HELP, "  list: list all the authorized keys of the given type.");
+		IConsolePrint(CC_HELP, "  add: add the given key to the authorized keys of the given type.");
+		IConsolePrint(CC_HELP, "  remove: remove the given key from the authorized keys of the given type; use 'all' to remove all authorized keys.");
+		IConsolePrint(CC_HELP, "Instead of a key, use 'client:<id>' to add/remove the key of that given client.");
+
+		std::string buffer;
+		for (auto [name, _] : _console_cmd_authorized_keys) fmt::format_to(std::back_inserter(buffer), ", {}", name);
+		IConsolePrint(CC_HELP, "The supported types are: all{}.", buffer);
+		return true;
+	}
+
+	bool valid_type = false; ///< Whether a valid type was given.
+
+	for (auto [name, authorized_keys] : _console_cmd_authorized_keys) {
+		if (!StrEqualsIgnoreCase(argv[2], name) && !StrEqualsIgnoreCase(argv[2], "all")) continue;
+
+		valid_type = true;
+
+		if (StrEqualsIgnoreCase(argv[1], "list")) {
+			IConsolePrint(CC_WHITE, "The authorized keys for {} are:", name);
+			for (auto &authorized_key : *authorized_keys) IConsolePrint(CC_INFO, "  {}", authorized_key);
+			continue;
+		}
+
+		if (argc <= 3) {
+			IConsolePrint(CC_ERROR, "You must enter the key.");
+			return false;
+		}
+
+		std::string authorized_key = argv[3];
+		if (StrStartsWithIgnoreCase(authorized_key, "client:")) {
+			std::string id_string(authorized_key.substr(7));
+			authorized_key = NetworkGetPublicKeyOfClient(static_cast<ClientID>(std::stoi(id_string)));
+			if (authorized_key.empty()) {
+				IConsolePrint(CC_ERROR, "You must enter a valid client id; see 'clients'.");
+				return false;
+			}
+		}
+
+		auto iter = FindKey(authorized_keys, authorized_key);
+
+		if (StrEqualsIgnoreCase(argv[1], "add")) {
+			if (iter == authorized_keys->end()) {
+				authorized_keys->push_back(authorized_key);
+				IConsolePrint(CC_INFO, "Added {} to {}.", authorized_key, name);
+			} else {
+				IConsolePrint(CC_WARNING, "Not added {} to {} as it already exists.", authorized_key, name);
+			}
+			continue;
+		}
+
+		if (StrEqualsIgnoreCase(argv[1], "remove")) {
+			if (iter != authorized_keys->end()) {
+				authorized_keys->erase(iter);
+				IConsolePrint(CC_INFO, "Removed {} from {}.", authorized_key, name);
+			} else {
+				IConsolePrint(CC_WARNING, "Not removed {} from {} as it does not exist.", authorized_key, name);
+			}
+			continue;
+		}
+
+		IConsolePrint(CC_WARNING, "No valid action was given.");
+		return false;
+	}
+
+	if (!valid_type) {
+		IConsolePrint(CC_WARNING, "No valid type was given.");
+		return false;
+	}
+
+	return true;
+}
+
+
 /* Content downloading only is available with ZLIB */
 #if defined(WITH_ZLIB)
 #include "network/network_content.h"
@@ -2722,6 +2817,9 @@ void IConsoleStdLibRegister()
 
 	IConsole::CmdRegister("pause",                   ConPauseGame,        ConHookServerOrNoNetwork);
 	IConsole::CmdRegister("unpause",                 ConUnpauseGame,      ConHookServerOrNoNetwork);
+
+	IConsole::CmdRegister("authorized_key", ConNetworkAuthorizedKey, ConHookServerOnly);
+	IConsole::AliasRegister("ak", "authorized_key %+");
 
 	IConsole::CmdRegister("company_pw",              ConCompanyPassword,  ConHookNeedNetwork);
 	IConsole::AliasRegister("company_password",      "company_pw %+");
