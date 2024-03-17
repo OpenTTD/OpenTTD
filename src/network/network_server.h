@@ -24,6 +24,7 @@ extern NetworkClientSocketPool _networkclientsocket_pool;
 class ServerNetworkGameSocketHandler : public NetworkClientSocketPool::PoolItem<&_networkclientsocket_pool>, public NetworkGameSocketHandler, public TCPListenHandler<ServerNetworkGameSocketHandler, PACKET_SERVER_FULL, PACKET_SERVER_BANNED> {
 protected:
 	std::unique_ptr<class NetworkAuthenticationServerHandler> authentication_handler; ///< The handler for the authentication.
+	std::string peer_public_key; ///< The public key of our client.
 
 	NetworkRecvStatus Receive_CLIENT_JOIN(Packet &p) override;
 	NetworkRecvStatus Receive_CLIENT_IDENTIFY(Packet &p) override;

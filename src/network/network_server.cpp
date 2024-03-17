@@ -60,6 +60,7 @@ template SocketList TCPListenHandler<ServerNetworkGameSocketHandler, PACKET_SERV
 
 static NetworkAuthenticationDefaultPasswordProvider _password_provider(_settings_client.network.server_password); ///< Provides the password validation for the game's password.
 static NetworkAuthenticationDefaultAuthorizedKeyHandler _authorized_key_handler(_settings_client.network.server_authorized_keys); ///< Provides the authorized key handling for the game authentication.
+static NetworkAuthenticationDefaultAuthorizedKeyHandler _rcon_authorized_key_handler(_settings_client.network.rcon_authorized_keys); ///< Provides the authorized key validation for rcon.
 
 
 /** Writing a savegame directly to a number of packets. */
@@ -1002,6 +1003,7 @@ NetworkRecvStatus ServerNetworkGameSocketHandler::Receive_CLIENT_AUTH_RESPONSE(P
 	NetworkRecvStatus status = this->SendEnableEncryption();
 	if (status != NETWORK_RECV_STATUS_OKAY) return status;
 
+	this->peer_public_key = this->authentication_handler->GetPeerPublicKey();
 	this->receive_encryption_handler = this->authentication_handler->CreateClientToServerEncryptionHandler();
 	this->send_encryption_handler = this->authentication_handler->CreateServerToClientEncryptionHandler();
 	this->authentication_handler = nullptr;
@@ -1503,14 +1505,16 @@ NetworkRecvStatus ServerNetworkGameSocketHandler::Receive_CLIENT_RCON(Packet &p)
 {
 	if (this->status != STATUS_ACTIVE) return this->SendError(NETWORK_ERROR_NOT_EXPECTED);
 
-	if (_settings_client.network.rcon_password.empty()) return NETWORK_RECV_STATUS_OKAY;
-
 	Debug(net, 9, "client[{}] Receive_CLIENT_RCON()", this->client_id);
 
 	std::string password = p.Recv_string(NETWORK_PASSWORD_LENGTH);
 	std::string command = p.Recv_string(NETWORK_RCONCOMMAND_LENGTH);
 
-	if (_settings_client.network.rcon_password.compare(password) != 0) {
+	if (_rcon_authorized_key_handler.IsAllowed(this->peer_public_key)) {
+		/* We are allowed, nothing more to validate. */
+	} else if (_settings_client.network.rcon_password.empty()) {
+		return NETWORK_RECV_STATUS_OKAY;
+	} else if (_settings_client.network.rcon_password.compare(password) != 0) {
 		Debug(net, 1, "[rcon] Wrong password from client-id {}", this->client_id);
 		return NETWORK_RECV_STATUS_OKAY;
 	}
