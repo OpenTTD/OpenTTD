@@ -21,7 +21,6 @@
 #include "town.h"
 #include "sound_func.h"
 #include "string_func.h"
-#include "dropdown_func.h"
 #include "statusbar_gui.h"
 #include "company_manager_face.h"
 #include "company_func.h"
@@ -44,25 +43,42 @@
 
 #include "safeguards.h"
 
-const NewsItem *_statusbar_news_item = nullptr;
+static const uint MIN_NEWS_AMOUNT = 30; ///< preferred minimum amount of news messages.
+static const uint MAX_NEWS_AMOUNT = 1U << 10; ///< Do not exceed this number of news messages.
 
-static uint MIN_NEWS_AMOUNT = 30;        ///< preferred minimum amount of news messages
-static uint MAX_NEWS_AMOUNT = 1 << 10;   ///< Do not exceed this number of news messages
-static uint _total_news = 0;             ///< current number of news items
-static NewsItem *_oldest_news = nullptr; ///< head of news items queue
-NewsItem *_latest_news = nullptr;        ///< tail of news items queue
+static NewsContainer _news; ///< List of news, with newest items at the start.
 
 /**
  * Forced news item.
  * Users can force an item by accessing the history or "last message".
- * If the message being shown was forced by the user, a pointer is stored
- * in _forced_news. Otherwise, \a _forced_news variable is nullptr.
+ * If the message being shown was forced by the user, an iterater is stored
+ * in _forced_news. Otherwise, \a _forced_news variable is the end of \a _news.
  */
-static const NewsItem *_forced_news = nullptr;
+static NewsIterator _forced_news = std::end(_news);
 
 /** Current news item (last item shown regularly). */
-static const NewsItem *_current_news = nullptr;
+static NewsIterator _current_news = std::end(_news);
 
+/** Current status bar news item. */
+static NewsIterator _statusbar_news = std::end(_news);
+
+/**
+ * Get pointer to the current status bar news item.
+ * @return Pointer to the current status bar news item, or nullptr if there is none.
+ */
+const NewsItem *GetStatusbarNews()
+{
+	return (_statusbar_news == std::end(_news)) ? nullptr : &*_statusbar_news;
+}
+
+/**
+ * Get read-only reference to all news items.
+ * @return Read-only reference to all news items.
+ */
+const NewsContainer &GetNews()
+{
+	return _news;
+}
 
 /**
  * Get the position a news-reference is referencing.
@@ -484,7 +500,7 @@ struct NewsWindow : Window {
 			case WID_N_CLOSEBOX:
 				NewsWindow::duration = 0;
 				this->Close();
-				_forced_news = nullptr;
+				_forced_news = std::end(_news);
 				break;
 
 			case WID_N_CAPTION:
@@ -622,29 +638,21 @@ static void ShowNewspaper(const NewsItem *ni)
 }
 
 /** Show news item in the ticker */
-static void ShowTicker(const NewsItem *ni)
+static void ShowTicker(NewsIterator ni)
 {
 	if (_settings_client.sound.news_ticker) SndPlayFx(SND_16_NEWS_TICKER);
 
-	_statusbar_news_item = ni;
+	_statusbar_news = ni;
 	InvalidateWindowData(WC_STATUS_BAR, 0, SBI_SHOW_TICKER);
 }
 
 /** Initialize the news-items data structures */
 void InitNewsItemStructs()
 {
-	for (NewsItem *ni = _oldest_news; ni != nullptr; ) {
-		NewsItem *next = ni->next;
-		delete ni;
-		ni = next;
-	}
-
-	_total_news = 0;
-	_oldest_news = nullptr;
-	_latest_news = nullptr;
-	_forced_news = nullptr;
-	_current_news = nullptr;
-	_statusbar_news_item = nullptr;
+	_news.clear();
+	_forced_news = std::end(_news);
+	_current_news = std::end(_news);
+	_statusbar_news = std::end(_news);
 	NewsWindow::duration = 0;
 }
 
@@ -654,7 +662,7 @@ void InitNewsItemStructs()
  */
 static bool ReadyForNextTickerItem()
 {
-	const NewsItem *ni = _statusbar_news_item;
+	const NewsItem *ni = GetStatusbarNews();
 	if (ni == nullptr) return true;
 
 	/* Ticker message
@@ -668,8 +676,7 @@ static bool ReadyForNextTickerItem()
  */
 static bool ReadyForNextNewsItem()
 {
-	const NewsItem *ni = _forced_news == nullptr ? _current_news : _forced_news;
-	if (ni == nullptr) return true;
+	if (_forced_news == std::end(_news) && _current_news == std::end(_news)) return true;
 
 	/* neither newsticker nor newspaper are running */
 	return (NewsWindow::duration <= 0 || FindWindowById(WC_NEWS_WINDOW, 0) == nullptr);
@@ -678,116 +685,98 @@ static bool ReadyForNextNewsItem()
 /** Move to the next ticker item */
 static void MoveToNextTickerItem()
 {
+	assert(!std::empty(_news));
+
 	/* There is no status bar, so no reason to show news;
 	 * especially important with the end game screen when
 	 * there is no status bar but possible news. */
 	if (FindWindowById(WC_STATUS_BAR, 0) == nullptr) return;
 
-	/* if we're not at the last item, then move on */
-	while (_statusbar_news_item != _latest_news) {
-		_statusbar_news_item = (_statusbar_news_item == nullptr) ? _oldest_news : _statusbar_news_item->next;
-		const NewsItem *ni = _statusbar_news_item;
-		const NewsType type = ni->type;
+	/* if we're not at the latest item, then move on */
+	while (_statusbar_news != std::begin(_news)) {
+		--_statusbar_news;
+		const NewsType type = _statusbar_news->type;
 
 		/* check the date, don't show too old items */
-		if (TimerGameEconomy::date - _news_type_data[type].age > ni->economy_date) continue;
+		if (TimerGameEconomy::date - _news_type_data[type].age > _statusbar_news->economy_date) continue;
 
 		switch (_news_type_data[type].GetDisplay()) {
 			default: NOT_REACHED();
 			case ND_OFF: // Off - show nothing only a small reminder in the status bar
 				InvalidateWindowData(WC_STATUS_BAR, 0, SBI_SHOW_REMINDER);
-				break;
+				return;
 
 			case ND_SUMMARY: // Summary - show ticker
-				ShowTicker(ni);
-				break;
+				ShowTicker(_statusbar_news);
+				return;
 
 			case ND_FULL: // Full - show newspaper, skipped here
-				continue;
+				break;;
 		}
-		return;
 	}
 }
 
 /** Move to the next news item */
 static void MoveToNextNewsItem()
 {
+	assert(!std::empty(_news));
+
 	/* There is no status bar, so no reason to show news;
 	 * especially important with the end game screen when
 	 * there is no status bar but possible news. */
 	if (FindWindowById(WC_STATUS_BAR, 0) == nullptr) return;
 
 	CloseWindowById(WC_NEWS_WINDOW, 0); // close the newspapers window if shown
-	_forced_news = nullptr;
+	_forced_news = std::end(_news);
 
-	/* if we're not at the last item, then move on */
-	while (_current_news != _latest_news) {
-		_current_news = (_current_news == nullptr) ? _oldest_news : _current_news->next;
-		const NewsItem *ni = _current_news;
-		const NewsType type = ni->type;
+	/* if we're not at the latest item, then move on */
+	while (_current_news != std::begin(_news)) {
+		--_current_news;
+		const NewsType type = _current_news->type;
 
 		/* check the date, don't show too old items */
-		if (TimerGameEconomy::date - _news_type_data[type].age > ni->economy_date) continue;
+		if (TimerGameEconomy::date - _news_type_data[type].age > _current_news->economy_date) continue;
 
 		switch (_news_type_data[type].GetDisplay()) {
 			default: NOT_REACHED();
 			case ND_OFF: // Off - show nothing only a small reminder in the status bar, skipped here
-				continue;
+				break;
 
 			case ND_SUMMARY: // Summary - show ticker, skipped here
-				continue;
+				break;;
 
 			case ND_FULL: // Full - show newspaper
-				ShowNewspaper(ni);
-				break;
+				ShowNewspaper(&*_current_news);
+				return;
 		}
-		return;
 	}
 }
 
 /** Delete a news item from the queue */
-static void DeleteNewsItem(NewsItem *ni)
+static std::list<NewsItem>::iterator DeleteNewsItem(std::list<NewsItem>::iterator ni)
 {
-	/* Delete the news from the news queue. */
-	if (ni->prev != nullptr) {
-		ni->prev->next = ni->next;
-	} else {
-		assert(_oldest_news == ni);
-		_oldest_news = ni->next;
-	}
-
-	if (ni->next != nullptr) {
-		ni->next->prev = ni->prev;
-	} else {
-		assert(_latest_news == ni);
-		_latest_news = ni->prev;
-	}
-
-	_total_news--;
-
 	if (_forced_news == ni || _current_news == ni) {
 		/* When we're the current news, go to the previous item first;
 		 * we just possibly made that the last news item. */
-		if (_current_news == ni) _current_news = ni->prev;
+		if (_current_news == ni) _current_news = (_current_news == std::begin(_news)) ? std::end(_news) : std::prev(_current_news);
 
 		/* About to remove the currently forced item (shown as newspapers) ||
 		 * about to remove the currently displayed item (newspapers) */
 		MoveToNextNewsItem();
 	}
 
-	if (_statusbar_news_item == ni) {
+	if (_statusbar_news == ni) {
 		/* When we're the current news, go to the previous item first;
 		 * we just possibly made that the last news item. */
-		_statusbar_news_item = ni->prev;
+		 if (_statusbar_news == ni) _statusbar_news = (_statusbar_news == std::begin(_news)) ? std::end(_news) : std::prev(_statusbar_news);
 
 		/* About to remove the currently displayed item (ticker, or just a reminder) */
 		InvalidateWindowData(WC_STATUS_BAR, 0, SBI_NEWS_DELETED); // invalidate the statusbar
 		MoveToNextTickerItem();
 	}
 
-	delete ni;
-
-	SetWindowDirty(WC_MESSAGE_HISTORY, 0);
+	/* Delete the news from the news queue. */
+	return _news.erase(ni);
 }
 
 /**
@@ -829,27 +818,14 @@ void AddNewsItem(StringID string, NewsType type, NewsFlag flags, NewsReferenceTy
 	if (_game_mode == GM_MENU) return;
 
 	/* Create new news item node */
-	NewsItem *ni = new NewsItem(string, type, flags, reftype1, ref1, reftype2, ref2, data);
-
-	if (_total_news++ == 0) {
-		assert(_oldest_news == nullptr);
-		_oldest_news = ni;
-		ni->prev = nullptr;
-	} else {
-		assert(_latest_news->next == nullptr);
-		_latest_news->next = ni;
-		ni->prev = _latest_news;
-	}
-
-	ni->next = nullptr;
-	_latest_news = ni;
+	_news.emplace_front(string, type, flags, reftype1, ref1, reftype2, ref2, data);
 
 	/* Keep the number of stored news items to a managable number */
-	if (_total_news > MAX_NEWS_AMOUNT) {
-		DeleteNewsItem(_oldest_news);
+	if (std::size(_news) > MAX_NEWS_AMOUNT) {
+		DeleteNewsItem(std::prev(std::end(_news)));
 	}
 
-	SetWindowDirty(WC_MESSAGE_HISTORY, 0);
+	InvalidateWindowData(WC_MESSAGE_HISTORY, 0);
 }
 
 /**
@@ -911,6 +887,29 @@ CommandCost CmdCustomNewsItem(DoCommandFlag flags, NewsType type, NewsReferenceT
 }
 
 /**
+ * Delete news items by predicate, and invalidate the message history if necessary.
+ * @tparam Tmin Stop if the number of news items remaining reaches \a min items.
+ * @tparam Tpredicate Condition for a news item to be deleted.
+ */
+template <size_t Tmin = 0, class Tpredicate>
+void DeleteNews(Tpredicate predicate)
+{
+	bool dirty = false;
+	for (auto it = std::rbegin(_news); it != std::rend(_news); /* nothing */) {
+		if constexpr (Tmin > 0) {
+			if (std::size(_news) <= Tmin) break;
+		}
+		if (predicate(*it)) {
+			it = std::make_reverse_iterator(DeleteNewsItem(std::prev(it.base())));
+			dirty = true;
+		} else {
+			++it;
+		}
+	}
+	if (dirty) InvalidateWindowData(WC_MESSAGE_HISTORY, 0);
+}
+
+/**
  * Delete a news item type about a vehicle.
  * When the news item type is INVALID_STRING_ID all news about the vehicle gets deleted.
  * @param vid  The vehicle to remove the news for.
@@ -918,16 +917,9 @@ CommandCost CmdCustomNewsItem(DoCommandFlag flags, NewsType type, NewsReferenceT
  */
 void DeleteVehicleNews(VehicleID vid, StringID news)
 {
-	NewsItem *ni = _oldest_news;
-
-	while (ni != nullptr) {
-		NewsItem *next = ni->next;
-		if (((ni->reftype1 == NR_VEHICLE && ni->ref1 == vid) || (ni->reftype2 == NR_VEHICLE && ni->ref2 == vid)) &&
-				(news == INVALID_STRING_ID || ni->string_id == news)) {
-			DeleteNewsItem(ni);
-		}
-		ni = next;
-	}
+	DeleteNews([&](const auto &ni) {
+		return ((ni.reftype1 == NR_VEHICLE && ni.ref1 == vid) || (ni.reftype2 == NR_VEHICLE && ni.ref2 == vid)) && (news == INVALID_STRING_ID || ni.string_id == news);
+	});
 }
 
 /**
@@ -937,15 +929,9 @@ void DeleteVehicleNews(VehicleID vid, StringID news)
  */
 void DeleteStationNews(StationID sid)
 {
-	NewsItem *ni = _oldest_news;
-
-	while (ni != nullptr) {
-		NewsItem *next = ni->next;
-		if ((ni->reftype1 == NR_STATION && ni->ref1 == sid) || (ni->reftype2 == NR_STATION && ni->ref2 == sid)) {
-			DeleteNewsItem(ni);
-		}
-		ni = next;
-	}
+	DeleteNews([&](const auto &ni) {
+		return (ni.reftype1 == NR_STATION && ni.ref1 == sid) || (ni.reftype2 == NR_STATION && ni.ref2 == sid);
+	});
 }
 
 /**
@@ -954,15 +940,9 @@ void DeleteStationNews(StationID sid)
  */
 void DeleteIndustryNews(IndustryID iid)
 {
-	NewsItem *ni = _oldest_news;
-
-	while (ni != nullptr) {
-		NewsItem *next = ni->next;
-		if ((ni->reftype1 == NR_INDUSTRY && ni->ref1 == iid) || (ni->reftype2 == NR_INDUSTRY && ni->ref2 == iid)) {
-			DeleteNewsItem(ni);
-		}
-		ni = next;
-	}
+	DeleteNews([&](const auto &ni) {
+		return (ni.reftype1 == NR_INDUSTRY && ni.ref1 == iid) || (ni.reftype2 == NR_INDUSTRY && ni.ref2 == iid);
+	});
 }
 
 /**
@@ -970,25 +950,17 @@ void DeleteIndustryNews(IndustryID iid)
  */
 void DeleteInvalidEngineNews()
 {
-	NewsItem *ni = _oldest_news;
-
-	while (ni != nullptr) {
-		NewsItem *next = ni->next;
-		if ((ni->reftype1 == NR_ENGINE && (!Engine::IsValidID(ni->ref1) || !Engine::Get(ni->ref1)->IsEnabled())) ||
-				(ni->reftype2 == NR_ENGINE && (!Engine::IsValidID(ni->ref2) || !Engine::Get(ni->ref2)->IsEnabled()))) {
-			DeleteNewsItem(ni);
-		}
-		ni = next;
-	}
+	DeleteNews([](const auto &ni) {
+		return (ni.reftype1 == NR_ENGINE && (!Engine::IsValidID(ni.ref1) || !Engine::Get(ni.ref1)->IsEnabled())) ||
+				(ni.reftype2 == NR_ENGINE && (!Engine::IsValidID(ni.ref2) || !Engine::Get(ni.ref2)->IsEnabled()));
+	});
 }
 
 static void RemoveOldNewsItems()
 {
-	NewsItem *next;
-	for (NewsItem *cur = _oldest_news; _total_news > MIN_NEWS_AMOUNT && cur != nullptr; cur = next) {
-		next = cur->next;
-		if (TimerGameEconomy::date - _news_type_data[cur->type].age * _settings_client.gui.news_message_timeout > cur->economy_date) DeleteNewsItem(cur);
-	}
+	DeleteNews<MIN_NEWS_AMOUNT>([](const auto &ni) {
+		return TimerGameEconomy::date - _news_type_data[ni.type].age * _settings_client.gui.news_message_timeout > ni.economy_date;
+	});
 }
 
 /**
@@ -999,17 +971,17 @@ static void RemoveOldNewsItems()
  */
 void ChangeVehicleNews(VehicleID from_index, VehicleID to_index)
 {
-	for (NewsItem *ni = _oldest_news; ni != nullptr; ni = ni->next) {
-		if (ni->reftype1 == NR_VEHICLE && ni->ref1 == from_index) ni->ref1 = to_index;
-		if (ni->reftype2 == NR_VEHICLE && ni->ref2 == from_index) ni->ref2 = to_index;
-		if (ni->flags & NF_VEHICLE_PARAM0 && ni->params[0].data == from_index) ni->params[0] = to_index;
+	for (auto &ni : _news) {
+		if (ni.reftype1 == NR_VEHICLE && ni.ref1 == from_index) ni.ref1 = to_index;
+		if (ni.reftype2 == NR_VEHICLE && ni.ref2 == from_index) ni.ref2 = to_index;
+		if (ni.flags & NF_VEHICLE_PARAM0 && ni.params[0].data == from_index) ni.params[0] = to_index;
 	}
 }
 
 void NewsLoop()
 {
 	/* no news item yet */
-	if (_total_news == 0) return;
+	if (std::empty(_news)) return;
 
 	static TimerGameEconomy::Month _last_clean_month = 0;
 
@@ -1023,9 +995,9 @@ void NewsLoop()
 }
 
 /** Do a forced show of a specific message */
-static void ShowNewsMessage(const NewsItem *ni)
+static void ShowNewsMessage(NewsIterator ni)
 {
-	assert(_total_news != 0);
+	assert(!std::empty(_news));
 
 	/* Delete the news window */
 	CloseWindowById(WC_NEWS_WINDOW, 0);
@@ -1033,9 +1005,9 @@ static void ShowNewsMessage(const NewsItem *ni)
 	/* setup forced news item */
 	_forced_news = ni;
 
-	if (_forced_news != nullptr) {
+	if (_forced_news != std::end(_news)) {
 		CloseWindowById(WC_NEWS_WINDOW, 0);
-		ShowNewspaper(ni);
+		ShowNewspaper(&*ni);
 	}
 }
 
@@ -1054,26 +1026,26 @@ bool HideActiveNewsMessage()
 /** Show previous news item */
 void ShowLastNewsMessage()
 {
-	const NewsItem *ni = nullptr;
-	if (_total_news == 0) {
-		return;
-	} else if (_forced_news == nullptr) {
+	if (std::empty(_news)) return;
+
+	NewsIterator ni;
+	if (_forced_news == std::end(_news)) {
 		/* Not forced any news yet, show the current one, unless a news window is
 		 * open (which can only be the current one), then show the previous item */
-		if (_current_news == nullptr) {
+		if (_current_news == std::end(_news)) {
 			/* No news were shown yet resp. the last shown one was already deleted.
-			 * Threat this as if _forced_news reached _oldest_news; so, wrap around and start anew with the latest. */
-			ni = _latest_news;
+			 * Treat this as if _forced_news reached the oldest news; so, wrap around and start anew with the latest. */
+			ni = std::begin(_news);
 		} else {
 			const Window *w = FindWindowById(WC_NEWS_WINDOW, 0);
-			ni = (w == nullptr || (_current_news == _oldest_news)) ? _current_news : _current_news->prev;
+			ni = (w == nullptr || (std::next(_current_news) == std::end(_news))) ? _current_news : std::next(_current_news);
 		}
-	} else if (_forced_news == _oldest_news) {
+	} else if (std::next(_forced_news) == std::end(_news)) {
 		/* We have reached the oldest news, start anew with the latest */
-		ni = _latest_news;
+		ni = std::begin(_news);
 	} else {
 		/* 'Scrolling' through news history show each one in turn */
-		ni = _forced_news->prev;
+		ni = std::next(_forced_news);
 	}
 	bool wrap = false;
 	for (;;) {
@@ -1082,11 +1054,11 @@ void ShowLastNewsMessage()
 			break;
 		}
 
-		ni = ni->prev;
-		if (ni == nullptr) {
+		++ni;
+		if (ni == std::end(_news)) {
 			if (wrap) break;
 			/* We have reached the oldest news, start anew with the latest */
-			ni = _latest_news;
+			ni = std::begin(_news);
 			wrap = true;
 		}
 	}
@@ -1143,37 +1115,23 @@ struct MessageHistoryWindow : Window {
 		}
 	}
 
-	void OnPaint() override
-	{
-		this->OnInvalidateData(0);
-		this->DrawWidgets();
-	}
-
 	void DrawWidget(const Rect &r, WidgetID widget) const override
 	{
-		if (widget != WID_MH_BACKGROUND || _total_news == 0) return;
-
-		/* Find the first news item to display. */
-		NewsItem *ni = _latest_news;
-		for (int n = this->vscroll->GetPosition(); n > 0; n--) {
-			ni = ni->prev;
-			if (ni == nullptr) return;
-		}
+		if (widget != WID_MH_BACKGROUND || std::empty(_news)) return;
 
 		/* Fill the widget with news items. */
 		bool rtl = _current_text_dir == TD_RTL;
 		Rect news = r.Shrink(WidgetDimensions::scaled.framerect).Indent(this->date_width + WidgetDimensions::scaled.hsep_wide, rtl);
 		Rect date = r.Shrink(WidgetDimensions::scaled.framerect).WithWidth(this->date_width, rtl);
 		int y = news.top;
-		for (int n = this->vscroll->GetCapacity(); n > 0; n--) {
+
+		auto [first, last] = this->vscroll->GetVisibleRangeIterators(_news);
+		for (auto ni = first; ni != last; ++ni) {
 			SetDParam(0, ni->date);
 			DrawString(date.left, date.right, y, STR_JUST_DATE_TINY, TC_WHITE);
 
-			DrawNewsString(news.left, news.right, y, TC_WHITE, ni);
+			DrawNewsString(news.left, news.right, y, TC_WHITE, &*ni);
 			y += this->line_height;
-
-			ni = ni->prev;
-			if (ni == nullptr) return;
 		}
 	}
 
@@ -1185,19 +1143,18 @@ struct MessageHistoryWindow : Window {
 	void OnInvalidateData([[maybe_unused]] int data = 0, [[maybe_unused]] bool gui_scope = true) override
 	{
 		if (!gui_scope) return;
-		this->vscroll->SetCount(_total_news);
+		this->vscroll->SetCount(std::size(_news));
 	}
 
 	void OnClick([[maybe_unused]] Point pt, WidgetID widget, [[maybe_unused]] int click_count) override
 	{
 		if (widget == WID_MH_BACKGROUND) {
-			NewsItem *ni = _latest_news;
-			if (ni == nullptr) return;
-
-			for (int n = this->vscroll->GetScrolledRowFromWidget(pt.y, this, WID_MH_BACKGROUND, WidgetDimensions::scaled.framerect.top); n > 0; n--) {
-				ni = ni->prev;
-				if (ni == nullptr) return;
-			}
+			/* Scheduled window invalidations currently occur after the input loop, which means the scrollbar count
+			 * could be invalid, so ensure it's correct now. Potentially this means that item clicked on might be
+			 * different as well. */
+			this->vscroll->SetCount(std::size(_news));
+			auto ni = this->vscroll->GetScrolledItemFromWidget(_news, pt.y, this, widget);
+			if (ni == std::end(_news)) return;
 
 			ShowNewsMessage(ni);
 		}

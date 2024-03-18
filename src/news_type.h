@@ -126,8 +126,6 @@ struct NewsAllocatedData {
 
 /** Information about a single item of news. */
 struct NewsItem {
-	NewsItem *prev;               ///< Previous news item
-	NewsItem *next;               ///< Next news item
 	StringID string_id;           ///< Message text
 	TimerGameCalendar::Date date; ///< Calendar date to show for the news
 	TimerGameEconomy::Date economy_date; ///< Economy date of the news item, never shown but used to calculate age
@@ -168,5 +166,8 @@ struct CompanyNewsInformation : NewsAllocatedData {
 
 	CompanyNewsInformation(const struct Company *c, const struct Company *other = nullptr);
 };
+
+using NewsContainer = std::list<NewsItem>; ///< Container type for storing news items.
+using NewsIterator = NewsContainer::const_iterator; ///< Iterator type for news items.
 
 #endif /* NEWS_TYPE_H */
