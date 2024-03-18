@@ -2571,7 +2571,7 @@ STR_NETWORK_ERROR_TIMEOUT_JOIN                                  :{WHITE}Per ilga
 STR_NETWORK_ERROR_CLIENT_GUI_LOST_CONNECTION_CAPTION            :{WHITE}Galimas ryšio praradimas
 STR_NETWORK_ERROR_CLIENT_GUI_LOST_CONNECTION                    :{WHITE}Paskutines {NUM} sekund{P ė ės žių} jokių duomenų iš serverio
 
-###length 21
+###length 22
 STR_NETWORK_ERROR_CLIENT_GENERAL                                :klaida
 STR_NETWORK_ERROR_CLIENT_DESYNC                                 :sinchronizacijos klaida
 STR_NETWORK_ERROR_CLIENT_SAVEGAME                               :negali užkrauti žemėlapio

@@ -2088,7 +2088,7 @@ STR_NETWORK_ERROR_TIMEOUT_JOIN                                  :{WHITE}Zure ord
 STR_NETWORK_ERROR_CLIENT_GUI_LOST_CONNECTION_CAPTION            :{WHITE}Konexio galera posiblea
 STR_NETWORK_ERROR_CLIENT_GUI_LOST_CONNECTION                    :{WHITE}Azkeneko {NUM} segunduetan ez da zerbitzaritik daturik jaso
 
-###length 21
+###length 22
 STR_NETWORK_ERROR_CLIENT_GENERAL                                :Akats orokorra
 STR_NETWORK_ERROR_CLIENT_DESYNC                                 :Sinkronizazio akatsa
 STR_NETWORK_ERROR_CLIENT_SAVEGAME                               :Ezin izan da mapa kargatu

@@ -2590,7 +2590,7 @@ STR_NETWORK_ERROR_INVALID_CLIENT_NAME                           :{WHITE}Ihr Spie
 STR_NETWORK_ERROR_CLIENT_GUI_LOST_CONNECTION_CAPTION            :{WHITE}Möglicher Verbindungsabbruch
 STR_NETWORK_ERROR_CLIENT_GUI_LOST_CONNECTION                    :{WHITE}Die letzte{P 0 "" n} {NUM} Sekunde{P "" n} wurden keine Daten vom Server empfangen
 
-###length 21
+###length 22
 STR_NETWORK_ERROR_CLIENT_GENERAL                                :Allgemeiner Fehler
 STR_NETWORK_ERROR_CLIENT_DESYNC                                 :Synchronisationsfehler
 STR_NETWORK_ERROR_CLIENT_SAVEGAME                               :Spielfeld konnte nicht geladen werden

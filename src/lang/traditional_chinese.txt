@@ -2493,7 +2493,7 @@ STR_NETWORK_ERROR_INVALID_CLIENT_NAME                           :{WHITE}你的�
 STR_NETWORK_ERROR_CLIENT_GUI_LOST_CONNECTION_CAPTION            :{WHITE}可能發生連線中斷
 STR_NETWORK_ERROR_CLIENT_GUI_LOST_CONNECTION                    :{WHITE}最後 {NUM} 秒沒有資料從伺服器過來
 
-###length 21
+###length 22
 STR_NETWORK_ERROR_CLIENT_GENERAL                                :一般錯誤
 STR_NETWORK_ERROR_CLIENT_DESYNC                                 :失去同步
 STR_NETWORK_ERROR_CLIENT_SAVEGAME                               :無法載入地圖

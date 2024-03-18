@@ -2589,7 +2589,7 @@ STR_NETWORK_ERROR_INVALID_CLIENT_NAME                           :{WHITE}您的�
 STR_NETWORK_ERROR_CLIENT_GUI_LOST_CONNECTION_CAPTION            :{WHITE}失去链接
 STR_NETWORK_ERROR_CLIENT_GUI_LOST_CONNECTION                    :{WHITE}已经有 {NUM} 秒没有从服务器收到任何数据
 
-###length 21
+###length 22
 STR_NETWORK_ERROR_CLIENT_GENERAL                                :一般错误
 STR_NETWORK_ERROR_CLIENT_DESYNC                                 :同步错误
 STR_NETWORK_ERROR_CLIENT_SAVEGAME                               :不能读取地图

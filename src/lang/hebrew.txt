@@ -2258,7 +2258,7 @@ STR_NETWORK_ERROR_TIMEOUT_JOIN                                  :{WHITE}למחש
 STR_NETWORK_ERROR_CLIENT_GUI_LOST_CONNECTION_CAPTION            :{WHITE}איבוד קשר אפשרי
 STR_NETWORK_ERROR_CLIENT_GUI_LOST_CONNECTION                    :{WHITE}ב- {NUM} שני{P "יה" "ות"} האחרוות לא התקבל מידע מהשרת
 
-###length 21
+###length 22
 STR_NETWORK_ERROR_CLIENT_GENERAL                                :שגיאה כללית
 STR_NETWORK_ERROR_CLIENT_DESYNC                                 :שגירת סינכרון
 STR_NETWORK_ERROR_CLIENT_SAVEGAME                               :טעינת מפה נכשלה

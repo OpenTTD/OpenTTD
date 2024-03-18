@@ -2217,7 +2217,7 @@ STR_NETWORK_ERROR_INVALID_CLIENT_NAME                           :{WHITE}ชื�
 STR_NETWORK_ERROR_CLIENT_GUI_LOST_CONNECTION_CAPTION            :{WHITE}การเชื่อมต่อล้มเหลว
 STR_NETWORK_ERROR_CLIENT_GUI_LOST_CONNECTION                    :{WHITE}{NUM} วินาทีสุดท้ายไม่มีข้อมูลส่งถึงเครื่องแม่ข่าย
 
-###length 21
+###length 22
 STR_NETWORK_ERROR_CLIENT_GENERAL                                :การผิดพลาดทั่วไป
 STR_NETWORK_ERROR_CLIENT_DESYNC                                 :desync ผิดพลาด
 STR_NETWORK_ERROR_CLIENT_SAVEGAME                               :ไม่สามารถโหลดแผนที่ได้

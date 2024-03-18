@@ -2733,7 +2733,7 @@ STR_NETWORK_ERROR_INVALID_CLIENT_NAME                           :{WHITE}Tvoje im
 STR_NETWORK_ERROR_CLIENT_GUI_LOST_CONNECTION_CAPTION            :{WHITE}Moguć gubitak veze
 STR_NETWORK_ERROR_CLIENT_GUI_LOST_CONNECTION                    :{WHITE}U poslednj{P 0 oj e ih} {NUM} sekund{P i e i} nije primljen nijedan podatak sa servera
 
-###length 21
+###length 22
 STR_NETWORK_ERROR_CLIENT_GENERAL                                :opšta greška
 STR_NETWORK_ERROR_CLIENT_DESYNC                                 :desinhronizacija
 STR_NETWORK_ERROR_CLIENT_SAVEGAME                               :neuspešno učitavanje terena

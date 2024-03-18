@@ -2589,7 +2589,7 @@ STR_NETWORK_ERROR_INVALID_CLIENT_NAME                           :{WHITE}Ditt spe
 STR_NETWORK_ERROR_CLIENT_GUI_LOST_CONNECTION_CAPTION            :{WHITE}Anslutningen har troligtvis försvunnit
 STR_NETWORK_ERROR_CLIENT_GUI_LOST_CONNECTION                    :{WHITE}De senaste {NUM} sekunderna har inget data mottagits från servern
 
-###length 21
+###length 22
 STR_NETWORK_ERROR_CLIENT_GENERAL                                :allmänt fel
 STR_NETWORK_ERROR_CLIENT_DESYNC                                 :synkroniseringsfel
 STR_NETWORK_ERROR_CLIENT_SAVEGAME                               :kunde inte ladda kartan

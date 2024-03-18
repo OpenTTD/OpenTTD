@@ -2593,7 +2593,7 @@ STR_NETWORK_ERROR_INVALID_CLIENT_NAME                           :{WHITE}Jūsu sp
 STR_NETWORK_ERROR_CLIENT_GUI_LOST_CONNECTION_CAPTION            :{WHITE}Iespējams savienojuma zudums
 STR_NETWORK_ERROR_CLIENT_GUI_LOST_CONNECTION                    :{WHITE}Nav datu no servera jau {NUM} sekund{P i es ""}
 
-###length 21
+###length 22
 STR_NETWORK_ERROR_CLIENT_GENERAL                                :galvenā kļūda
 STR_NETWORK_ERROR_CLIENT_DESYNC                                 :asinhronizācijas kļūda
 STR_NETWORK_ERROR_CLIENT_SAVEGAME                               :nevar ielādēt karti

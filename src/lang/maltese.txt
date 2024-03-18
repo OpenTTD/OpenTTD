@@ -821,7 +821,7 @@ STR_NETWORK_CONNECTING_DOWNLOADING_2                            :{BLACK}{BYTES} 
 # Network messages
 
 
-###length 21
+###length 22
 STR_NETWORK_ERROR_CLIENT_WRONG_REVISION                         :reviżjoni ħażina
 STR_NETWORK_ERROR_CLIENT_NAME_IN_USE                            :isem diġa qed jintuża
 STR_NETWORK_ERROR_CLIENT_WRONG_PASSWORD                         :password ħażin

@@ -2555,7 +2555,7 @@ STR_NETWORK_ERROR_INVALID_CLIENT_NAME                           :{WHITE}Via luda
 STR_NETWORK_ERROR_CLIENT_GUI_LOST_CONNECTION_CAPTION            :{WHITE}Ebla konektoperdo
 STR_NETWORK_ERROR_CLIENT_GUI_LOST_CONNECTION                    :{WHITE}Ne alvenis datumoj de la servilo dum la pasinta{P 0 "" j} {NUM} sekundo{P 0 "" j}
 
-###length 21
+###length 22
 STR_NETWORK_ERROR_CLIENT_GENERAL                                :ĝenerala eraro
 STR_NETWORK_ERROR_CLIENT_DESYNC                                 :sensinkroneca eraro
 STR_NETWORK_ERROR_CLIENT_SAVEGAME                               :ne povis ŝarĝi mapon

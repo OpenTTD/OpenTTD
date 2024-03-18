@@ -2070,7 +2070,7 @@ STR_NETWORK_ERROR_INVALID_CLIENT_NAME                           :{WHITE}اسم �
 STR_NETWORK_ERROR_CLIENT_GUI_LOST_CONNECTION_CAPTION            :{WHITE}احتمال فقد الاتصال
 STR_NETWORK_ERROR_CLIENT_GUI_LOST_CONNECTION                    :{WHITE}اخر {NUM} ثواني لم تصل بيانات من السيرفر
 
-###length 21
+###length 22
 STR_NETWORK_ERROR_CLIENT_GENERAL                                :خطاء عام
 STR_NETWORK_ERROR_CLIENT_DESYNC                                 :خطأ في DESYNC
 STR_NETWORK_ERROR_CLIENT_SAVEGAME                               :لايمكن تحميل الخريطة

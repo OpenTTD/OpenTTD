@@ -2902,7 +2902,7 @@ STR_NETWORK_ERROR_INVALID_CLIENT_NAME                           :{WHITE}Ваша
 STR_NETWORK_ERROR_CLIENT_GUI_LOST_CONNECTION_CAPTION            :{WHITE}Злучэньне згублена
 STR_NETWORK_ERROR_CLIENT_GUI_LOST_CONNECTION                    :{WHITE}На працягу {NUM} сэкунд{P ы аў аў} не атрымана ніякіх дадзеных з боку сэрвэра
 
-###length 21
+###length 22
 STR_NETWORK_ERROR_CLIENT_GENERAL                                :агульная памылка
 STR_NETWORK_ERROR_CLIENT_DESYNC                                 :памылка сынхранізацыі
 STR_NETWORK_ERROR_CLIENT_SAVEGAME                               :не ўдалося загрузіць мапу

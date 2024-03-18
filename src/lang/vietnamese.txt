@@ -2589,7 +2589,7 @@ STR_NETWORK_ERROR_INVALID_CLIENT_NAME                           :{WHITE}Tên ng�
 STR_NETWORK_ERROR_CLIENT_GUI_LOST_CONNECTION_CAPTION            :{WHITE}Kết nối có thể đã bị mất
 STR_NETWORK_ERROR_CLIENT_GUI_LOST_CONNECTION                    :{WHITE}Trong khoảng{NUM} giây gần đây, không có dữ liệu nào được nhận từ máy chủ
 
-###length 21
+###length 22
 STR_NETWORK_ERROR_CLIENT_GENERAL                                :lỗi chung
 STR_NETWORK_ERROR_CLIENT_DESYNC                                 :lỗi mất đồng bộ
 STR_NETWORK_ERROR_CLIENT_SAVEGAME                               :không nạp được bản đồ

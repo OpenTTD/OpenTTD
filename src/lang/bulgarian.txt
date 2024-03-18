@@ -2278,7 +2278,7 @@ STR_NETWORK_ERROR_TIMEOUT_JOIN                                  :{WHITE}Отне
 STR_NETWORK_ERROR_CLIENT_GUI_LOST_CONNECTION_CAPTION            :{WHITE}Възможна загуба на връзката
 STR_NETWORK_ERROR_CLIENT_GUI_LOST_CONNECTION                    :{WHITE}Последните {NUM} сек. не се е получила информация от сървъра
 
-###length 21
+###length 22
 STR_NETWORK_ERROR_CLIENT_GENERAL                                :обща грешка
 STR_NETWORK_ERROR_CLIENT_DESYNC                                 :загуба на синхронизация
 STR_NETWORK_ERROR_CLIENT_SAVEGAME                               :не може да зареди картата

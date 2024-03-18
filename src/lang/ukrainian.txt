@@ -423,7 +423,7 @@ STR_TOOLTIP_RESIZE                                              :{BLACK}Нати
 STR_TOOLTIP_TOGGLE_LARGE_SMALL_WINDOW                           :{BLACK}Розмір вікна великий/малий
 STR_TOOLTIP_VSCROLL_BAR_SCROLLS_LIST                            :{BLACK}Смуга прокрутки - прокручує список вверх/вниз
 STR_TOOLTIP_HSCROLL_BAR_SCROLLS_LIST                            :{BLACK}Смуга прокрутки - прокручує список вліво/вправо
-STR_TOOLTIP_DEMOLISH_BUILDINGS_ETC                              :{BLACK}Зруйнувати будинки, дороги і т.п. Утримуйте Ctrl для виділення клітинок по діагоналі, або Shift - для показу витрат на руйнування
+STR_TOOLTIP_DEMOLISH_BUILDINGS_ETC                              :{BLACK}Зруйнувати будинки, дороги тощо у квадраті суходолу.  Ctrl+клац+протягування для виділення клітинок по діагоналі. Утримуйте Shift для показу витрат на руйнування
 
 # Show engines button
 ###length VEHICLE_TYPES
@@ -521,12 +521,12 @@ STR_TOOLBAR_TOOLTIP_DISPLAY_MAP                                 :{BLACK}Пока
 STR_TOOLBAR_TOOLTIP_DISPLAY_TOWN_DIRECTORY                      :{BLACK}Показати міста
 STR_TOOLBAR_TOOLTIP_DISPLAY_SUBSIDIES                           :{BLACK}Показати субсидії
 STR_TOOLBAR_TOOLTIP_DISPLAY_LIST_OF_COMPANY_STATIONS            :{BLACK}Показати список станцій компанії
-STR_TOOLBAR_TOOLTIP_DISPLAY_COMPANY_FINANCES                    :{BLACK}Фінансова інформація
-STR_TOOLBAR_TOOLTIP_DISPLAY_COMPANY_GENERAL                     :{BLACK}Головна інформація
+STR_TOOLBAR_TOOLTIP_DISPLAY_COMPANY_FINANCES                    :{BLACK}Покаже фінансову інформацію про компанію
+STR_TOOLBAR_TOOLTIP_DISPLAY_COMPANY_GENERAL                     :{BLACK}Покаже загальну інформацію про компанію
 STR_TOOLBAR_TOOLTIP_DISPLAY_STORY_BOOK                          :{BLACK}Показати історію
-STR_TOOLBAR_TOOLTIP_DISPLAY_GOALS_LIST                          :{BLACK}Показати список завдань
+STR_TOOLBAR_TOOLTIP_DISPLAY_GOALS_LIST                          :{BLACK}Покаже список завдань
 STR_TOOLBAR_TOOLTIP_DISPLAY_GRAPHS                              :{BLACK}Показати графіки
-STR_TOOLBAR_TOOLTIP_DISPLAY_COMPANY_LEAGUE                      :{BLACK}Показати таблицю компаній
+STR_TOOLBAR_TOOLTIP_DISPLAY_COMPANY_LEAGUE                      :{BLACK}Покаже таблицю компаній
 STR_TOOLBAR_TOOLTIP_FUND_CONSTRUCTION_OF_NEW                    :{BLACK}Фінансувати будівництво нової промисловості
 STR_TOOLBAR_TOOLTIP_DISPLAY_LIST_OF_COMPANY_TRAINS              :{BLACK}Показати список поїздів компанії. Ctrl+клац мишою переключає відкриття звичайного/розширенного списку
 STR_TOOLBAR_TOOLTIP_DISPLAY_LIST_OF_COMPANY_ROAD_VEHICLES       :{BLACK}Показати список дорожнього транспорту компанії. Ctrl+клац мишою переключає відкриття звичайного/розширенного списку
@@ -1538,6 +1538,7 @@ STR_CONFIG_SETTING_SHOWFINANCES_PERIOD                          :Показув�
 
 ###length 2
 STR_CONFIG_SETTING_SHOWFINANCES_HELPTEXT                        :При включенні наприкінці кожного року виринає вікно фінансів для легшого огляду фінансового стану компанії.
+STR_CONFIG_SETTING_SHOWFINANCES_HELPTEXT_PERIOD                 :При включенні наприкінці кожного періоду виринає вікно фінансів для легшого огляду фінансового стану компанії.
 
 STR_CONFIG_SETTING_NONSTOP_BY_DEFAULT                           :Створювати накази з поміткою «без зупинки»: {STRING}
 STR_CONFIG_SETTING_NONSTOP_BY_DEFAULT_HELPTEXT                  :Якщо в завданні транспортного засобу не вказана помітка «без зупинки», то воно зупиняєтся на всіх станціях на своєму шляху. Включення цієї опції призводить до того, що нові завдання будуть автоматично створюватися з поміткою «без зупинки» і транспортний засіб буде зупинятися лише на заданних станціях. Звичайно, при необхідності помітку можна зняти або встановити власноруч.
@@ -2721,7 +2722,7 @@ STR_NETWORK_ERROR_INVALID_CLIENT_NAME                           :{WHITE}Непр
 STR_NETWORK_ERROR_CLIENT_GUI_LOST_CONNECTION_CAPTION            :{WHITE}Можлива втрата з'єднання
 STR_NETWORK_ERROR_CLIENT_GUI_LOST_CONNECTION                    :{WHITE}На протязі {NUM} секунд{P и "" ""} не надійшло жодної інформації від сервера
 
-###length 21
+###length 22
 STR_NETWORK_ERROR_CLIENT_GENERAL                                :фатальна помилка
 STR_NETWORK_ERROR_CLIENT_DESYNC                                 :помилка синхронізації
 STR_NETWORK_ERROR_CLIENT_SAVEGAME                               :неможливо завантажити карту
@@ -2925,7 +2926,7 @@ STR_RAIL_TOOLBAR_TOOLTIP_BUILD_TRAIN_DEPOT_FOR_BUILDING         :{BLACK}Буду
 STR_RAIL_TOOLBAR_TOOLTIP_CONVERT_RAIL_TO_WAYPOINT               :{BLACK}Перетворити колію на точку маршруту. Ctrl дозволяє об'єднання точок маршруту. Утримуйте Shift для показу очікуваних витрат
 STR_RAIL_TOOLBAR_TOOLTIP_BUILD_RAILROAD_STATION                 :{BLACK}Будувати станцію. Ctrl дозволяє об'єднання станцій. Утримуйте Shift для показу витрат на будівництво
 STR_RAIL_TOOLBAR_TOOLTIP_BUILD_RAILROAD_SIGNALS                 :{BLACK}Будувати залізничні сигнали. Ctrl переключає семафори/світлові сигнали{}Протяжка мишою будує сигнали вздовж прямої ділянки рейок. Ctrl будує сигнали до наступної розв'язки чи сигналу{}Ctrl+клац мишою вмикає показ вікна вибору сигналів. Утримуйте Shift для показу витрат на будівництво
-STR_RAIL_TOOLBAR_TOOLTIP_BUILD_RAILROAD_BRIDGE                  :{BLACK}Будувати міст. Утримуйте Shift для показу витрат на будівництво
+STR_RAIL_TOOLBAR_TOOLTIP_BUILD_RAILROAD_BRIDGE                  :{BLACK}Будувати залізничний міст. Утримуйте Shift для показу витрат на будівництво
 STR_RAIL_TOOLBAR_TOOLTIP_BUILD_RAILROAD_TUNNEL                  :{BLACK}Будувати тунель. Утримуйте Shift для показу витрат на будівництво
 STR_RAIL_TOOLBAR_TOOLTIP_TOGGLE_BUILD_REMOVE_FOR                :{BLACK}Будувати/демонтувати колію, сигнали, точки маршруту і станції. Утримання Ctrl також демонтує колію з точок маршрутів і станцій
 STR_RAIL_TOOLBAR_TOOLTIP_CONVERT_RAIL                           :{BLACK}Модернізувати колію. Утримуйте Shift для показу витрат на модернізацію
@@ -3185,8 +3186,8 @@ STR_FUND_INDUSTRY_REMOVE_ALL_INDUSTRIES_CAPTION                 :{WHITE}Приб
 STR_FUND_INDUSTRY_REMOVE_ALL_INDUSTRIES_QUERY                   :{YELLOW}Ви дійсно бажаєте видалити всі підприємства?
 
 # Industry cargoes window
-STR_INDUSTRY_CARGOES_INDUSTRY_CAPTION                           :{WHITE}Ланцюг вантажних перевезень для {STRING}
-STR_INDUSTRY_CARGOES_CARGO_CAPTION                              :{WHITE}Ланцюг вантажних перевезень для {STRING}
+STR_INDUSTRY_CARGOES_INDUSTRY_CAPTION                           :{WHITE}Ланцюг підприємств - {STRING}
+STR_INDUSTRY_CARGOES_CARGO_CAPTION                              :{WHITE}Ланцюг вантажів - {STRING}
 STR_INDUSTRY_CARGOES_PRODUCERS                                  :{WHITE}Виробники
 STR_INDUSTRY_CARGOES_CUSTOMERS                                  :{WHITE}Споживачі
 STR_INDUSTRY_CARGOES_HOUSES                                     :{WHITE}Будинки
@@ -3875,7 +3876,7 @@ STR_STORY_BOOK_INVALID_GOAL_REF                                 :{RED}Невір
 
 # Station list window
 STR_STATION_LIST_TOOLTIP                                        :{BLACK}Назви станцій - натисніть на назву, щоб показати станцію в центрі екрану. Ctrl+клац мишою відкриває нове вікно з видом на станцію
-STR_STATION_LIST_USE_CTRL_TO_SELECT_MORE                        :{BLACK}Утримуйте Ctrl для вибору декількох пунктів
+STR_STATION_LIST_USE_CTRL_TO_SELECT_MORE                        :{BLACK}Ctrl+клац для вибору кількох пунктів
 STR_STATION_LIST_CAPTION                                        :{WHITE}{COMPANY} - {COMMA} станці{P я ї й}
 STR_STATION_LIST_STATION                                        :{YELLOW}{STATION} {STATION_FEATURES}
 STR_STATION_LIST_WAYPOINT                                       :{YELLOW}{WAYPOINT}
@@ -4860,6 +4861,7 @@ STR_TIMETABLE_STATUS_START_IN_SECONDS.r                         :{BLACK}Цей �
 STR_TIMETABLE_STATUS_START_IN_SECONDS.d                         :{BLACK}Цей розклад почнеться після {COMMA} секунд
 
 STR_TIMETABLE_START                                             :{BLACK}Початок розкладу
+STR_TIMETABLE_START_TOOLTIP                                     :{BLACK}Обрати початок розкладу. Ctrl+клац для рівного розподілу початку руху транспорту зі спільним наказом. Якщо наказ із розкладом, транспорт розподілиться за відносним порядком
 
 STR_TIMETABLE_START_SECONDS_QUERY                               :Секунд до початку розкладу
 
@@ -4985,6 +4987,7 @@ STR_AI_SETTINGS_SETTING                                         :{STRING}: {ORAN
 
 # Textfile window
 STR_TEXTFILE_JUMPLIST                                           :{WHITE}Зміст
+STR_TEXTFILE_JUMPLIST_TOOLTIP                                   :{BLACK}Швидко перейти до фрагменту в переглядуваному файлі з цього списку
 STR_TEXTFILE_JUMPLIST_ITEM                                      :{WHITE}{STRING}
 STR_TEXTFILE_NAVBACK_TOOLTIP                                    :{BLACK}Крок назад в історії навігації
 STR_TEXTFILE_NAVFORWARD_TOOLTIP                                 :{BLACK}Крок вперед в історії навігації
