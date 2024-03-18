@@ -476,7 +476,7 @@ public:
 	 * Marks a widget as raised and dirty (redraw), when it is marked as lowered.
 	 * @param widget_index index of this widget in the window
 	 */
-	inline void RaiseWidgetWhenLowered(uint8_t widget_index)
+	inline void RaiseWidgetWhenLowered(WidgetID widget_index)
 	{
 		if (this->IsWidgetLowered(widget_index)) {
 			this->RaiseWidget(widget_index);
