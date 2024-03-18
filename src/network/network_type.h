@@ -150,4 +150,17 @@ enum NetworkErrorCode {
 	NETWORK_ERROR_END,
 };
 
+/**
+ * Simple helper to (more easily) manage authorized keys.
+ *
+ * The authorized keys are hexadecimal representations of their binary form.
+ * The authorized keys are case insensitive.
+ */
+class NetworkAuthorizedKeys : public std::vector<std::string> {
+public:
+	bool Contains(std::string_view key) const;
+	bool Add(std::string_view key);
+	bool Remove(std::string_view key);
+};
+
 #endif /* NETWORK_TYPE_H */
