@@ -27,6 +27,7 @@
 #include "company_gui.h"
 #include "gui.h"
 #include "group_cmd.h"
+#include "group_gui.h"
 #include "vehicle_cmd.h"
 #include "gfx_func.h"
 
@@ -35,8 +36,6 @@
 #include "table/sprites.h"
 
 #include "safeguards.h"
-
-typedef GUIList<const Group*> GUIGroupList;
 
 static constexpr NWidgetPart _nested_group_widgets[] = {
 	NWidget(NWID_HORIZONTAL), // Window header
@@ -111,6 +110,73 @@ static constexpr NWidgetPart _nested_group_widgets[] = {
 	EndContainer(),
 };
 
+/**
+ * Add children to GUI group list to build a hierarchical tree.
+ * @param dst Destination list.
+ * @param src Source list.
+ * @param fold Whether to handle group folding/hiding.
+ * @param parent Current tree parent (set by self with recursion).
+ * @param indent Current tree indentation level (set by self with recursion).
+ */
+static void GuiGroupListAddChildren(GUIGroupList &dst, const GUIGroupList &src, bool fold, GroupID parent, int indent)
+{
+	for (const auto &item : src) {
+		if (item.group->parent != parent) continue;
+
+		dst.emplace_back(item.group, indent);
+
+		if (fold && item.group->folded) {
+			/* Test if this group has children at all. If not, the folded flag should be cleared to avoid lingering unfold buttons in the list. */
+			GroupID groupid = item.group->index;
+			bool has_children = std::any_of(src.begin(), src.end(), [groupid](const auto &child) { return child.group->parent == groupid; });
+			Group::Get(item.group->index)->folded = has_children;
+		} else {
+			GuiGroupListAddChildren(dst, src, fold, item.group->index, indent + 1);
+		}
+	}
+}
+
+/**
+ * Build GUI group list, a sorted hierarchical list of groups for owner and vehicle type.
+ * @param dst Destination list, owned by the caller.
+ * @param fold Whether to handle group folding/hiding.
+ * @param owner Owner of groups.
+ * @param veh_type Vehicle type of groups.
+ */
+void BuildGuiGroupList(GUIGroupList &dst, bool fold, Owner owner, VehicleType veh_type)
+{
+	GUIGroupList list;
+
+	for (const Group *g : Group::Iterate()) {
+		if (g->owner == owner && g->vehicle_type == veh_type) {
+			list.emplace_back(g, 0);
+		}
+	}
+
+	list.ForceResort();
+
+	/* Sort the groups by their name */
+	std::array<std::pair<const Group *, std::string>, 2> last_group{};
+
+	list.Sort([&last_group](const GUIGroupListItem &a, const GUIGroupListItem &b) -> bool {
+		if (a.group != last_group[0].first) {
+			SetDParam(0, a.group->index);
+			last_group[0] = {a.group, GetString(STR_GROUP_NAME)};
+		}
+
+		if (b.group != last_group[1].first) {
+			SetDParam(0, b.group->index);
+			last_group[1] = {b.group, GetString(STR_GROUP_NAME)};
+		}
+
+		int r = StrNaturalCompare(last_group[0].second, last_group[1].second); // Sort by name (natural sorting).
+		if (r == 0) return a.group->index < b.group->index;
+		return r < 0;
+	});
+
+	GuiGroupListAddChildren(dst, list, fold, INVALID_GROUP, 0);
+}
+
 class VehicleGroupWindow : public BaseVehicleListWindow {
 private:
 	/* Columns in the group list */
@@ -133,25 +199,7 @@ private:
 	uint tiny_step_height; ///< Step height for the group list
 	Scrollbar *group_sb;
 
-	std::vector<int> indents; ///< Indentation levels
-
 	Dimension column_size[VGC_END]; ///< Size of the columns in the group list.
-
-	void AddChildren(GUIGroupList &source, GroupID parent, int indent)
-	{
-		for (const Group *g : source) {
-			if (g->parent != parent) continue;
-			this->groups.push_back(g);
-			this->indents.push_back(indent);
-			if (g->folded) {
-				/* Test if this group has children at all. If not, the folded flag should be cleared to avoid lingering unfold buttons in the list. */
-				bool has_children = std::any_of(source.begin(), source.end(), [g](const Group *child){ return child->parent == g->index; });
-				Group::Get(g->index)->folded = has_children;
-			} else {
-				AddChildren(source, g->index, indent + 1);
-			}
-		}
-	}
 
 	/**
 	 * (Re)Build the group list.
@@ -163,40 +211,8 @@ private:
 		if (!this->groups.NeedRebuild()) return;
 
 		this->groups.clear();
-		this->indents.clear();
 
-		GUIGroupList list;
-
-		for (const Group *g : Group::Iterate()) {
-			if (g->owner == owner && g->vehicle_type == this->vli.vtype) {
-				list.push_back(g);
-			}
-		}
-
-		list.ForceResort();
-
-		/* Sort the groups by their name */
-		const Group *last_group[2] = { nullptr, nullptr };
-		std::string last_name[2] = { {}, {} };
-		list.Sort([&](const Group * const &a, const Group * const &b) {
-			if (a != last_group[0]) {
-				last_group[0] = a;
-				SetDParam(0, a->index);
-				last_name[0] = GetString(STR_GROUP_NAME);
-			}
-
-			if (b != last_group[1]) {
-				last_group[1] = b;
-				SetDParam(0, b->index);
-				last_name[1] = GetString(STR_GROUP_NAME);
-			}
-
-			int r = StrNaturalCompare(last_name[0], last_name[1]); // Sort by name (natural sorting).
-			if (r == 0) return a->index < b->index;
-			return r < 0;
-		});
-
-		AddChildren(list, INVALID_GROUP, 0);
+		BuildGuiGroupList(this->groups, true, owner, this->vli.vtype);
 
 		this->groups.shrink_to_fit();
 		this->groups.RebuildDone();
@@ -602,13 +618,13 @@ public:
 
 			case WID_GL_LIST_GROUP: {
 				int y1 = r.top;
-				size_t max = std::min<size_t>(this->group_sb->GetPosition() + this->group_sb->GetCapacity(), this->groups.size());
-				for (size_t i = this->group_sb->GetPosition(); i < max; ++i) {
-					const Group *g = this->groups[i];
+				auto [first, last] = this->group_sb->GetVisibleRangeIterators(this->groups);
+				for (auto it = first; it != last; ++it) {
+					const Group *g = it->group;
 
 					assert(g->owner == this->owner);
 
-					DrawGroupInfo(y1, r.left, r.right, g->index, this->indents[i] * WidgetDimensions::scaled.hsep_indent, HasBit(g->flags, GroupFlags::GF_REPLACE_PROTECTION), g->folded || (i + 1 < this->groups.size() && indents[i + 1] > this->indents[i]));
+					DrawGroupInfo(y1, r.left, r.right, g->index, it->indent * WidgetDimensions::scaled.hsep_indent, HasBit(g->flags, GroupFlags::GF_REPLACE_PROTECTION), g->folded || (std::next(it) != std::end(this->groups) && std::next(it)->indent > it->indent));
 
 					y1 += this->tiny_step_height;
 				}
@@ -690,27 +706,26 @@ public:
 				auto it = this->group_sb->GetScrolledItemFromWidget(this->groups, pt.y, this, WID_GL_LIST_GROUP);
 				if (it == this->groups.end()) return;
 
-				size_t id_g = it - this->groups.begin();
-				if ((*it)->folded || (id_g + 1 < this->groups.size() && this->indents[id_g + 1] > this->indents[id_g])) {
+				if (it->group->folded || (std::next(it) != std::end(this->groups) && std::next(it)->indent > it->indent)) {
 					/* The group has children, check if the user clicked the fold / unfold button. */
 					NWidgetCore *group_display = this->GetWidget<NWidgetCore>(widget);
 					int x = _current_text_dir == TD_RTL ?
-							group_display->pos_x + group_display->current_x - WidgetDimensions::scaled.framerect.right - this->indents[id_g] * WidgetDimensions::scaled.hsep_indent - this->column_size[VGC_FOLD].width :
-							group_display->pos_x + WidgetDimensions::scaled.framerect.left + this->indents[id_g] * WidgetDimensions::scaled.hsep_indent;
+							group_display->pos_x + group_display->current_x - WidgetDimensions::scaled.framerect.right - it->indent * WidgetDimensions::scaled.hsep_indent - this->column_size[VGC_FOLD].width :
+							group_display->pos_x + WidgetDimensions::scaled.framerect.left + it->indent * WidgetDimensions::scaled.hsep_indent;
 					if (click_count > 1 || (pt.x >= x && pt.x < (int)(x + this->column_size[VGC_FOLD].width))) {
 
 						GroupID g = this->vli.index;
 						if (!IsAllGroupID(g) && !IsDefaultGroupID(g)) {
 							do {
 								g = Group::Get(g)->parent;
-								if (g == groups[id_g]->index) {
+								if (g == it->group->index) {
 									this->vli.index = g;
 									break;
 								}
 							} while (g != INVALID_GROUP);
 						}
 
-						Group::Get(groups[id_g]->index)->folded = !groups[id_g]->folded;
+						Group::Get(it->group->index)->folded = !it->group->folded;
 						this->groups.ForceRebuild();
 
 						this->SetDirty();
@@ -718,7 +733,7 @@ public:
 					}
 				}
 
-				this->group_sel = this->vli.index = this->groups[id_g]->index;
+				this->group_sel = this->vli.index = it->group->index;
 
 				SetObjectToPlaceWnd(SPR_CURSOR_MOUSE, PAL_NONE, HT_DRAG, this);
 
@@ -843,7 +858,7 @@ public:
 
 			case WID_GL_LIST_GROUP: { // Matrix group
 				auto it = this->group_sb->GetScrolledItemFromWidget(this->groups, pt.y, this, WID_GL_LIST_GROUP);
-				GroupID new_g = it == this->groups.end() ? INVALID_GROUP : (*it)->index;
+				GroupID new_g = it == this->groups.end() ? INVALID_GROUP : it->group->index;
 
 				if (this->group_sel != new_g && g->parent != new_g) {
 					Command<CMD_ALTER_GROUP>::Post(STR_ERROR_GROUP_CAN_T_SET_PARENT, AlterGroupMode::SetParent, this->group_sel, new_g, {});
@@ -876,7 +891,7 @@ public:
 				this->SetDirty();
 
 				auto it = this->group_sb->GetScrolledItemFromWidget(this->groups, pt.y, this, WID_GL_LIST_GROUP);
-				GroupID new_g = it == this->groups.end() ? NEW_GROUP : (*it)->index;
+				GroupID new_g = it == this->groups.end() ? NEW_GROUP : it->group->index;
 
 				Command<CMD_ADD_VEHICLE_GROUP>::Post(STR_ERROR_GROUP_CAN_T_ADD_VEHICLE, new_g == NEW_GROUP ? CcAddVehicleNewGroup : nullptr, new_g, vindex, _ctrl_pressed || this->grouping == GB_SHARED_ORDERS, VehicleListIdentifier{});
 				break;
@@ -1025,7 +1040,7 @@ public:
 
 			case WID_GL_LIST_GROUP: { // ... the list of custom groups.
 				auto it = this->group_sb->GetScrolledItemFromWidget(this->groups, pt.y, this, WID_GL_LIST_GROUP);
-				new_group_over = it == this->groups.end() ? NEW_GROUP : (*it)->index;
+				new_group_over = it == this->groups.end() ? NEW_GROUP : it->group->index;
 				break;
 			}
 		}
@@ -1080,18 +1095,19 @@ public:
 		this->vli.index = g_id;
 		if (g_id != ALL_GROUP && g_id != DEFAULT_GROUP) {
 			const Group *g = Group::Get(g_id);
-			int id_g = find_index(this->groups, g);
-			// The group's branch is maybe collapsed, so try to expand it
-			if (id_g == -1) {
+
+			auto found = std::find_if(std::begin(this->groups), std::end(this->groups), [g](const auto &item) { return item.group == g; });
+			if (found == std::end(this->groups)) {
+				/* The group's branch is maybe collapsed, so try to expand it. */
 				for (auto pg = Group::GetIfValid(g->parent); pg != nullptr; pg = Group::GetIfValid(pg->parent)) {
 					pg->folded = false;
 				}
 				this->groups.ForceRebuild();
 				this->BuildGroupList(this->owner);
 				this->group_sb->SetCount(this->groups.size());
-				id_g = find_index(this->groups, g);
+				found = std::find_if(std::begin(this->groups), std::end(this->groups), [g](const auto &item) { return item.group == g; });
 			}
-			this->group_sb->ScrollTowards(id_g);
+			if (found != std::end(this->groups)) this->group_sb->ScrollTowards(std::distance(std::begin(this->groups), found));
 		}
 		this->vehgroups.ForceRebuild();
 		this->SetDirty();
@@ -1121,7 +1137,7 @@ static WindowDesc _train_group_desc(
  * @param group The group to be selected. Defaults to INVALID_GROUP.
  * @param need_existing_window Whether the existing window is needed. Defaults to false.
  */
-void ShowCompanyGroup(CompanyID company, VehicleType vehicle_type, GroupID group = INVALID_GROUP, bool need_existing_window = false)
+void ShowCompanyGroup(CompanyID company, VehicleType vehicle_type, GroupID group, bool need_existing_window)
 {
 	if (!Company::IsValidID(company)) return;
 
