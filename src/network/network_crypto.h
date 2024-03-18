@@ -33,6 +33,8 @@
 #ifndef NETWORK_CRYPTO_H
 #define NETWORK_CRYPTO_H
 
+#include "network_type.h"
+
 /**
  * Base class for handling the encryption (or decryption) of a network connection.
  */
@@ -158,16 +160,16 @@ public:
  */
 class NetworkAuthenticationDefaultAuthorizedKeyHandler : public NetworkAuthenticationAuthorizedKeyHandler {
 private:
-	const std::vector<std::string> *authorized_keys; ///< The authorized keys to check against.
+	const NetworkAuthorizedKeys *authorized_keys; ///< The authorized keys to check against.
 public:
 	/**
 	 * Create the handler that uses the given authorized keys to check against.
 	 * @param authorized_keys The reference to the authorized keys to check against.
 	 */
-	NetworkAuthenticationDefaultAuthorizedKeyHandler(const std::vector<std::string> &authorized_keys) : authorized_keys(&authorized_keys) {}
+	NetworkAuthenticationDefaultAuthorizedKeyHandler(const NetworkAuthorizedKeys &authorized_keys) : authorized_keys(&authorized_keys) {}
 
 	bool CanBeUsed() const override { return !this->authorized_keys->empty(); }
-	bool IsAllowed(std::string_view peer_public_key) const override;
+	bool IsAllowed(std::string_view peer_public_key) const override { return authorized_keys->Contains(peer_public_key); }
 };
 
 

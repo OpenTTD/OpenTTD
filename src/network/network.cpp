@@ -134,6 +134,57 @@ NetworkClientInfo::~NetworkClientInfo()
 	return nullptr;
 }
 
+
+/**
+ * Simple helper to find the location of the given authorized key in the authorized keys.
+ * @param authorized_keys The keys to look through.
+ * @param authorized_key The key to look for.
+ * @return The iterator to the location of the authorized key, or \c authorized_keys.end().
+ */
+static auto FindKey(auto *authorized_keys, std::string_view authorized_key)
+{
+	return std::find_if(authorized_keys->begin(), authorized_keys->end(), [authorized_key](auto &value) { return StrEqualsIgnoreCase(value, authorized_key); });
+}
+
+/**
+ * Check whether the given key is contains in these authorized keys.
+ * @param key The key to look for.
+ * @return \c true when the key has been found, otherwise \c false.
+ */
+bool NetworkAuthorizedKeys::Contains(std::string_view key) const
+{
+	return FindKey(this, key) != this->end();
+}
+
+/**
+ * Add the given key to the authorized keys, when it is not already contained.
+ * @param key The key to add.
+ * @return \c true when the key was added, \c false when the key already existed.
+ */
+bool NetworkAuthorizedKeys::Add(std::string_view key)
+{
+	auto iter = FindKey(this, key);
+	if (iter != this->end()) return false;
+
+	this->emplace_back(key);
+	return true;
+}
+
+/**
+ * Remove the given key from the authorized keys, when it is exists.
+ * @param key The key to remove.
+ * @return \c true when the key was removed, \c false when the key did not exist.
+ */
+bool NetworkAuthorizedKeys::Remove(std::string_view key)
+{
+	auto iter = FindKey(this, key);
+	if (iter == this->end()) return false;
+
+	this->erase(iter);
+	return true;
+}
+
+
 uint8_t NetworkSpectatorCount()
 {
 	uint8_t count = 0;

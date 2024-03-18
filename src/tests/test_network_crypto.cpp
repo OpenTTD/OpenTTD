@@ -118,8 +118,8 @@ TEST_CASE("Authentication_PAKE")
 static void TestAuthenticationAuthorizedKey(const X25519SecretKey &client_secret_key, const X25519PublicKey &server_expected_public_key,
 		NetworkAuthenticationServerHandler::ResponseResult expected_response_result)
 {
-	std::vector<std::string> authorized_keys;
-	authorized_keys.emplace_back(FormatArrayAsHex(server_expected_public_key));
+	NetworkAuthorizedKeys authorized_keys;
+	authorized_keys.Add(FormatArrayAsHex(server_expected_public_key));
 
 	NetworkAuthenticationDefaultAuthorizedKeyHandler authorized_key_handler(authorized_keys);
 	X25519AuthorizedKeyServerHandler server(X25519SecretKey::CreateRandom(), &authorized_key_handler);
@@ -151,15 +151,15 @@ TEST_CASE("Authentication_Combined")
 	auto client_public_key = client_secret_key.CreatePublicKey();
 	std::string client_public_key_str = FormatArrayAsHex(client_public_key);
 
-	std::vector<std::string> valid_authorized_keys;
-	valid_authorized_keys.emplace_back(client_public_key_str);
+	NetworkAuthorizedKeys valid_authorized_keys;
+	valid_authorized_keys.Add(client_public_key_str);
 	NetworkAuthenticationDefaultAuthorizedKeyHandler valid_authorized_key_handler(valid_authorized_keys);
 
-	std::vector<std::string> invalid_authorized_keys;
-	invalid_authorized_keys.emplace_back("not-a-valid-authorized-key");
+	NetworkAuthorizedKeys invalid_authorized_keys;
+	invalid_authorized_keys.Add("not-a-valid-authorized-key");
 	NetworkAuthenticationDefaultAuthorizedKeyHandler invalid_authorized_key_handler(invalid_authorized_keys);
 
-	std::vector<std::string> no_authorized_keys;
+	NetworkAuthorizedKeys no_authorized_keys;
 	NetworkAuthenticationDefaultAuthorizedKeyHandler no_authorized_key_handler(no_authorized_keys);
 
 	std::string no_password = "";

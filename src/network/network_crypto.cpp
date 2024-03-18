@@ -423,14 +423,6 @@ void CombinedAuthenticationServerHandler::Add(CombinedAuthenticationServerHandle
 	this->SendResponse();
 }
 
-/* virtual */ bool NetworkAuthenticationDefaultAuthorizedKeyHandler::IsAllowed(std::string_view peer_public_key) const
-{
-	for (const auto &allowed : *this->authorized_keys) {
-		if (StrEqualsIgnoreCase(allowed, peer_public_key)) return true;
-	}
-	return false;
-}
-
 
 /**
  * Create a NetworkAuthenticationClientHandler.
