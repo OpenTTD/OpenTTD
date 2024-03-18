@@ -22,6 +22,8 @@ public:
 protected:
 	TileIndex    m_orgTile;                       ///< origin tile
 	TrackdirBits m_orgTrackdirs;                  ///< origin trackdir mask
+	TrackdirBits m_orgReverseTrackdirs;           ///< origin reverse trackdir mask
+	int          m_reverse_penalty;               ///< penalty applied to reverse directions
 
 	/** to access inherited path finder */
 	inline Tpf &Yapf()
@@ -31,21 +33,31 @@ protected:
 
 public:
 	/** Set origin tile / trackdir mask */
-	void SetOrigin(TileIndex tile, TrackdirBits trackdirs)
+	void SetOrigin(TileIndex tile, TrackdirBits trackdirs, TrackdirBits reverse_trackdirs = TRACKDIR_BIT_NONE, int reverse_penalty = 0)
 	{
+		assert((trackdirs & reverse_trackdirs) == TRACKDIR_BIT_NONE); // Can't set single trackdirs as both regular and reverse origin.
 		m_orgTile = tile;
 		m_orgTrackdirs = trackdirs;
+		m_orgReverseTrackdirs = reverse_trackdirs;
+		m_reverse_penalty = reverse_penalty;
 	}
 
 	/** Called when YAPF needs to place origin nodes into open list */
 	void PfSetStartupNodes()
 	{
-		bool is_choice = (KillFirstBit(m_orgTrackdirs) != TRACKDIR_BIT_NONE);
-		for (TrackdirBits tdb = m_orgTrackdirs; tdb != TRACKDIR_BIT_NONE; tdb = KillFirstBit(tdb)) {
-			Trackdir td = (Trackdir)FindFirstBit(tdb);
+		const bool is_choice = CountBits(m_orgTrackdirs | m_orgReverseTrackdirs) > 1;
+
+		for (Trackdir td : SetTrackdirBitIterator(m_orgTrackdirs)) {
 			Node &n1 = Yapf().CreateNewNode();
 			n1.Set(nullptr, m_orgTile, td, is_choice);
 			Yapf().AddStartupNode(n1);
+		}
+
+		for (Trackdir td : SetTrackdirBitIterator(m_orgReverseTrackdirs)) {
+			Node &n2 = Yapf().CreateNewNode();
+			n2.Set(nullptr, m_orgTile, td, is_choice);
+			n2.m_cost = m_reverse_penalty;
+			Yapf().AddStartupNode(n2);
 		}
 	}
 };

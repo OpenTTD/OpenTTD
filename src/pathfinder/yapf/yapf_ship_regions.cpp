@@ -132,11 +132,13 @@ public:
 
 protected:
 	Key m_dest;
+	Key m_reverse_dest;
 
 public:
-	void SetDestination(const WaterRegionPatchDesc &water_region_patch)
+	void SetDestination(const WaterRegionPatchDesc &water_region_patch, const WaterRegionPatchDesc &reverse_water_region_patch)
 	{
 		m_dest.Set(water_region_patch);
+		m_reverse_dest.Set(reverse_water_region_patch);
 	}
 
 protected:
@@ -145,7 +147,7 @@ protected:
 public:
 	inline bool PfDetectDestination(Node &n) const
 	{
-		return n.m_key == m_dest;
+		return n.m_key == m_dest || n.m_key == m_reverse_dest;
 	}
 
 	inline bool PfCalcEstimate(Node &n)
@@ -191,11 +193,12 @@ public:
 	static std::vector<WaterRegionPatchDesc> FindWaterRegionPath(const Ship *v, TileIndex start_tile, int max_returned_path_length)
 	{
 		const WaterRegionPatchDesc start_water_region_patch = GetWaterRegionPatchInfo(start_tile);
+		const WaterRegionPatchDesc reverse_start_water_region_patch = GetWaterRegionPatchInfo(v->tile);
 
 		/* We reserve 4 nodes (patches) per water region. The vast majority of water regions have 1 or 2 regions so this should be a pretty
 		 * safe limit. We cap the limit at 65536 which is at a region size of 16x16 is equivalent to one node per region for a 4096x4096 map. */
 		Tpf pf(std::min(static_cast<int>(Map::Size() * NODES_PER_REGION) / WATER_REGION_NUMBER_OF_TILES, MAX_NUMBER_OF_NODES));
-		pf.SetDestination(start_water_region_patch);
+		pf.SetDestination(start_water_region_patch, reverse_start_water_region_patch);
 
 		if (v->current_order.IsType(OT_GOTO_STATION)) {
 			DestinationID station_id = v->current_order.GetDestination();
@@ -212,15 +215,14 @@ public:
 			pf.AddOrigin(GetWaterRegionPatchInfo(tile));
 		}
 
-		/* If origin and destination are the same we simply return that water patch. */
-		std::vector<WaterRegionPatchDesc> path = { start_water_region_patch };
-		path.reserve(max_returned_path_length);
-		if (pf.HasOrigin(start_water_region_patch)) return path;
-
 		/* Find best path. */
 		if (!pf.FindPath(v)) return {}; // Path not found.
 
 		Node *node = pf.GetBestNode();
+		std::vector<WaterRegionPatchDesc> path;
+		path.reserve(max_returned_path_length);
+		path.push_back(node->m_key.m_water_region_patch);
+
 		for (int i = 0; i < max_returned_path_length - 1; ++i) {
 			if (node != nullptr) {
 				node = node->m_parent;
