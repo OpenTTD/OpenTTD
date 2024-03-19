@@ -2576,6 +2576,7 @@ STR_NETWORK_ERROR_BAD_PLAYER_NAME                               :{WHITE}Spillern
 STR_NETWORK_ERROR_BAD_SERVER_NAME                               :{WHITE}Du har ikke valgt tjenernavn. Navnet kan velges øverst i flerspillervinduet
 STR_NETWORK_ERROR_WRONG_REVISION                                :{WHITE}Klientversjonen er ikke den samme som tjenerversjonen
 STR_NETWORK_ERROR_WRONG_PASSWORD                                :{WHITE}Feil passord
+STR_NETWORK_ERROR_NOT_ON_ALLOW_LIST                             :{WHITE}Du står ikke på listen over tillatte klienter
 STR_NETWORK_ERROR_SERVER_FULL                                   :{WHITE}Tjeneren er full
 STR_NETWORK_ERROR_SERVER_BANNED                                 :{WHITE}Du er bannlyst fra denne tjeneren
 STR_NETWORK_ERROR_KICKED                                        :{WHITE}Du ble kastet ut av spillet
@@ -2603,6 +2604,7 @@ STR_NETWORK_ERROR_CLIENT_NOT_EXPECTED                           :mottok ugyldig 
 STR_NETWORK_ERROR_CLIENT_WRONG_REVISION                         :feil versjon
 STR_NETWORK_ERROR_CLIENT_NAME_IN_USE                            :navnet er allerede i bruk
 STR_NETWORK_ERROR_CLIENT_WRONG_PASSWORD                         :feil passord
+STR_NETWORK_ERROR_CLIENT_NOT_ON_ALLOW_LIST                      :ikke på tillattliste
 STR_NETWORK_ERROR_CLIENT_COMPANY_MISMATCH                       :feil selskap i DoCommand
 STR_NETWORK_ERROR_CLIENT_KICKED                                 :kastet ut av tjeneren
 STR_NETWORK_ERROR_CLIENT_CHEATER                                :prøvde å jukse

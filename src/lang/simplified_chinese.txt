@@ -1054,9 +1054,9 @@ STR_GAME_OPTIONS_GUI_SCALE_BEVELS                               :{BLACK}适应�
 STR_GAME_OPTIONS_GUI_SCALE_BEVELS_TOOLTIP                       :{BLACK}选中此框使边框大小随界面大小而缩放
 
 STR_GAME_OPTIONS_GUI_FONT_SPRITE                                :使用位图字体
-STR_GAME_OPTIONS_GUI_FONT_SPRITE_TOOLTIP                        :{BLACK}如果您想使用固定大小的传统位图字体，请勾选此框。
+STR_GAME_OPTIONS_GUI_FONT_SPRITE_TOOLTIP                        :{BLACK}如果您想使用固定大小的传统位图字体，请勾选此框
 STR_GAME_OPTIONS_GUI_FONT_AA                                    :字体抗锯齿
-STR_GAME_OPTIONS_GUI_FONT_AA_TOOLTIP                            :勾选此框以对游戏字体应用抗锯齿。
+STR_GAME_OPTIONS_GUI_FONT_AA_TOOLTIP                            :{BLACK}勾选此框以对游戏字体应用抗锯齿
 
 STR_GAME_OPTIONS_GUI_SCALE_1X                                   :1倍
 STR_GAME_OPTIONS_GUI_SCALE_2X                                   :2倍
@@ -1275,7 +1275,7 @@ STR_CONFIG_SETTING_INFINITE_MONEY                               :无限资金: {
 STR_CONFIG_SETTING_INFINITE_MONEY_HELPTEXT                      :允许无限制的支出并禁止公司破产
 
 STR_CONFIG_SETTING_MAXIMUM_INITIAL_LOAN                         :最大初始贷款: {STRING}
-STR_CONFIG_SETTING_MAXIMUM_INITIAL_LOAN_HELPTEXT                :公司最大贷款额（不考虑通货膨胀的影响）。如果此项被设为“无贷款”则开局时不会有任何金钱提供。此时金钱需要由沙盒选项、无限金钱或者游戏脚本提供。
+STR_CONFIG_SETTING_MAXIMUM_INITIAL_LOAN_HELPTEXT                :公司最大贷款额（不考虑通货膨胀的影响）。如果此项被设为“无贷款”则开局时不会有任何金钱提供，此时金钱需要由“无限金钱”选项或者游戏脚本提供
 STR_CONFIG_SETTING_MAXIMUM_INITIAL_LOAN_VALUE                   :{CURRENCY_LONG}
 ###setting-zero-is-special
 STR_CONFIG_SETTING_MAXIMUM_INITIAL_LOAN_DISABLED                :无贷款
@@ -1359,7 +1359,7 @@ STR_CONFIG_SETTING_ROAD_VEHICLE_SLOPE_STEEPNESS                 :汽车斜坡坡
 STR_CONFIG_SETTING_ROAD_VEHICLE_SLOPE_STEEPNESS_HELPTEXT        :设置对汽车而言，一格斜坡的坡度大小。数值越高，坡度越大，汽车越难爬上斜坡。
 
 STR_CONFIG_SETTING_FORBID_90_DEG                                :禁止列车直角转向：{STRING}
-STR_CONFIG_SETTING_FORBID_90_DEG_HELPTEXT                       :当水平方向轨道与垂直方向轨道交叉时，没有采用45度的轨道组合连接，而是采用轨道90度直接连接时，列车通过时需要90度转弯，当本设置”打开“时，将禁止火车90度转弯。
+STR_CONFIG_SETTING_FORBID_90_DEG_HELPTEXT                       :当相邻的两个方块上有一条水平轨道和一条垂直轨道相接时，就会形成一个90度的转角，火车在穿越此方块边界时将转弯90度，而不是像其他形式的轨道转弯时形成的45度转角。如果打开此选项，那么火车将无法在这样的转角转弯
 
 STR_CONFIG_SETTING_DISTANT_JOIN_STATIONS                        :允许非毗邻站台合并：{STRING}
 STR_CONFIG_SETTING_DISTANT_JOIN_STATIONS_HELPTEXT               :启用时允许玩家用 <Ctrl> 键操作以合并不相邻的站台与车站。
@@ -1471,7 +1471,7 @@ STR_CONFIG_SETTING_COMPANY_STARTING_COLOUR                      :公司初始主
 STR_CONFIG_SETTING_COMPANY_STARTING_COLOUR_HELPTEXT             :选定公司的初始配色方案
 
 STR_CONFIG_SETTING_COMPANY_STARTING_COLOUR_SECONDARY            :公司初始副色调: {STRING}
-STR_CONFIG_SETTING_COMPANY_STARTING_COLOUR_SECONDARY_HELPTEXT   :选择公司初始副色调，需要使用支持副色调的NewGRF。
+STR_CONFIG_SETTING_COMPANY_STARTING_COLOUR_SECONDARY_HELPTEXT   :选择公司初始副色调，需要使用支持副色调的NewGRF
 
 STR_CONFIG_SETTING_NEVER_EXPIRE_AIRPORTS                        :总允许建设小型机场： {STRING}
 STR_CONFIG_SETTING_NEVER_EXPIRE_AIRPORTS_HELPTEXT               :“打开”此选项，每种类型机场出现后一直是可用的
@@ -1495,22 +1495,22 @@ STR_CONFIG_SETTING_NEVER_EXPIRE_VEHICLES                        :载具永不过
 STR_CONFIG_SETTING_NEVER_EXPIRE_VEHICLES_HELPTEXT               :启用时，所有载具一经面世，就可以永远选择购买使用。
 
 STR_CONFIG_SETTING_TIMEKEEPING_UNITS                            :时间模式：{STRING}
-STR_CONFIG_SETTING_TIMEKEEPING_UNITS_HELPTEXT                   :选择游戏的计时模式。 请注意此项无法在游戏进行时更改{}{}日历模式为经典的 OpenTTD 体验，在此模式中，一年由 12 个月组成，每个月有 28-31 天。{}{}在挂钟模式中，车辆移动、货物生产和财务计算等都以分钟为单位，一分钟约等于日历模式中的一个月，即 30 天。此模式下每 12 分钟即日历模式下的一年。{}{}两种模式都包含一个用来记录载具、房屋与其他基础设施引入日期的计时器。
+STR_CONFIG_SETTING_TIMEKEEPING_UNITS_HELPTEXT                   :选择游戏的计时模式。 请注意此项无法在游戏进行时更改{}{}日历模式为经典的 OpenTTD 体验，在此模式中，一年由 12 个月组成，每个月有 28-31 天。{}{}在挂钟模式中，车辆移动、货物生产和财务计算等都以分钟为单位，一分钟约等于日历模式中的一个月，即 30 天。此模式下每 12 分钟即日历模式下的一年。{}{}两种模式都包含一个用来记录载具、房屋与其他基础设施引入日期的计时器
 ###length 2
 STR_CONFIG_SETTING_TIMEKEEPING_UNITS_CALENDAR                   :日历
 STR_CONFIG_SETTING_TIMEKEEPING_UNITS_WALLCLOCK                  :挂钟
 
 STR_CONFIG_SETTING_MINUTES_PER_YEAR                             :一年分钟数：{STRING}
-STR_CONFIG_SETTING_MINUTES_PER_YEAR_HELPTEXT                    :选择在使用挂钟模式时，一年的分钟数。默认为 12 分钟，设置为 0 可停止日历时间的变化。此设置不影响游戏的经济模拟。
+STR_CONFIG_SETTING_MINUTES_PER_YEAR_HELPTEXT                    :选择游戏内一自然年的现实时间长度，默认为12分钟。设置为0则日期不会变化。此设定不会影响游戏的经济模拟系统，而且仅在启用挂钟计时模式时生效
 
 STR_CONFIG_SETTING_MINUTES_PER_YEAR_VALUE                       :{NUM}
 ###setting-zero-is-special
 STR_CONFIG_SETTING_MINUTES_PER_YEAR_FROZEN                      :0（日期停止）
 
 STR_CONFIG_SETTING_TOWN_CARGO_SCALE                             :城镇货物产出倍数：{STRING}
-STR_CONFIG_SETTING_TOWN_CARGO_SCALE_HELPTEXT                    :按此比例扩大城镇的货物生产规模。
+STR_CONFIG_SETTING_TOWN_CARGO_SCALE_HELPTEXT                    :按此比例扩大城镇的货物生产规模
 STR_CONFIG_SETTING_INDUSTRY_CARGO_SCALE                         :工业货物产出倍数：{STRING}
-STR_CONFIG_SETTING_INDUSTRY_CARGO_SCALE_HELPTEXT                :按此比例扩大工业的货物生产规模。
+STR_CONFIG_SETTING_INDUSTRY_CARGO_SCALE_HELPTEXT                :按此比例扩大工业的货物生产规模
 STR_CONFIG_SETTING_CARGO_SCALE_VALUE                            :{NUM}%
 
 STR_CONFIG_SETTING_AUTORENEW_VEHICLE                            :当车辆报废时自动更新：{STRING}
@@ -1529,7 +1529,7 @@ STR_CONFIG_SETTING_ERRMSG_DURATION                              :错误信息持
 STR_CONFIG_SETTING_ERRMSG_DURATION_HELPTEXT                     :红色窗口显示错误信息的持续时间，在这个时间内一些紧急的错误信息不会自动关闭，必须手动关闭
 
 STR_CONFIG_SETTING_HOVER_DELAY                                  :显示提示信息：{STRING}
-STR_CONFIG_SETTING_HOVER_DELAY_HELPTEXT                         :此设置决定鼠标停留在图标、按键或功能时显示提示信息的时间。如果此设置被赋值为 0，您必须揿住鼠标右键来显示图标、按键或功能的提示信息。
+STR_CONFIG_SETTING_HOVER_DELAY_HELPTEXT                         :此设置决定鼠标停留在图标、按键或功能时显示提示信息的时间。如果此设置为 0，您就必须按鼠标右键来显示图标、按键或功能的提示信息
 STR_CONFIG_SETTING_HOVER_DELAY_VALUE                            :停留 {COMMA} 毫秒
 ###setting-zero-is-special
 STR_CONFIG_SETTING_HOVER_DELAY_DISABLED                         :右键点击
@@ -1541,8 +1541,8 @@ STR_CONFIG_SETTING_GRAPH_LINE_THICKNESS                         :图表曲线宽
 STR_CONFIG_SETTING_GRAPH_LINE_THICKNESS_HELPTEXT                :图表中曲线的宽度，细线清晰易读，粗线容易分辨颜色
 
 STR_CONFIG_SETTING_SHOW_NEWGRF_NAME                             :在购买载具窗口中显示 NewGRF 的名字：{STRING}
-STR_CONFIG_SETTING_SHOW_NEWGRF_NAME_HELPTEXT                    :在购买载具窗口中添加一行，显示选中载具的 NewGRF。
-STR_CONFIG_SETTING_SHOW_CARGO_IN_LISTS                          :在列表窗口中显示车辆可以携带的货物 {STRING}
+STR_CONFIG_SETTING_SHOW_NEWGRF_NAME_HELPTEXT                    :在购买载具窗口中添加一行，显示选中的载具来自哪个 NewGRF
+STR_CONFIG_SETTING_SHOW_CARGO_IN_LISTS                          :在列表窗口中显示车辆可以运载的货物种类 {STRING}
 STR_CONFIG_SETTING_SHOW_CARGO_IN_LISTS_HELPTEXT                 :如果启用，车辆的可运输负载将出现在车辆列表的上方
 
 STR_CONFIG_SETTING_LANDSCAPE                                    :景观: {STRING}
@@ -1561,7 +1561,7 @@ STR_CONFIG_SETTING_INDUSTRY_DENSITY                             :工业布局: {
 STR_CONFIG_SETTING_INDUSTRY_DENSITY_HELPTEXT                    :设置地图生成过程中，工业数量及一、二级工业比例。
 
 STR_CONFIG_SETTING_OIL_REF_EDGE_DISTANCE                        :石油工业距地图边缘的最大距离：{STRING}
-STR_CONFIG_SETTING_OIL_REF_EDGE_DISTANCE_HELPTEXT               :限制炼油厂和油井到地图边缘或海岛海岸的最大距离。对于大于 256 格的地图，该值将按比例放大。
+STR_CONFIG_SETTING_OIL_REF_EDGE_DISTANCE_HELPTEXT               :限制炼油厂和油井到地图边缘或海岛海岸的最大距离。对于大于 256 格的地图，该值将按比例放大
 
 STR_CONFIG_SETTING_SNOWLINE_HEIGHT                              :雪线高度：{STRING}
 STR_CONFIG_SETTING_SNOWLINE_HEIGHT_HELPTEXT                     :控制在寒带气候中雪线高度。大雪会影响工业和城镇发展需求。只能在场景编辑器中更改或由“雪地比率”计算得到。
@@ -1575,7 +1575,7 @@ STR_CONFIG_SETTING_DESERT_COVERAGE_HELPTEXT                     :控制热带气
 STR_CONFIG_SETTING_DESERT_COVERAGE_VALUE                        :{NUM}%
 
 STR_CONFIG_SETTING_ROUGHNESS_OF_TERRAIN                         :地面粗糙度：{STRING}
-STR_CONFIG_SETTING_ROUGHNESS_OF_TERRAIN_HELPTEXT                :选择在地图上的山丘密度。光滑的地形会包含较少且相互之间较分散的山丘；粗糙的地形的山丘较密集，但可能会使地图显得重复
+STR_CONFIG_SETTING_ROUGHNESS_OF_TERRAIN_HELPTEXT                :选择在地图上的山丘密度和形状。光滑的地形会包含较少且较为广阔的山丘；粗糙的地形会包含更多，但是更小一些的山丘
 ###length 4
 STR_CONFIG_SETTING_ROUGHNESS_OF_TERRAIN_VERY_SMOOTH             :非常光滑
 STR_CONFIG_SETTING_ROUGHNESS_OF_TERRAIN_SMOOTH                  :光滑
@@ -1583,7 +1583,7 @@ STR_CONFIG_SETTING_ROUGHNESS_OF_TERRAIN_ROUGH                   :粗糙
 STR_CONFIG_SETTING_ROUGHNESS_OF_TERRAIN_VERY_ROUGH              :非常粗糙
 
 STR_CONFIG_SETTING_VARIETY                                      :多样地形: {STRING}
-STR_CONFIG_SETTING_VARIETY_HELPTEXT                             :此设置控制地图是否同时包含多山及平坦的地带。由于此设置只会使地图的一部份変得较平坦，请把其他相关设置（如 "地形特点"）的值设为 "山地"
+STR_CONFIG_SETTING_VARIETY_HELPTEXT                             :此设置控制地图是否同时包含多山及平坦的地带。多样性越丰富，山地和平地之间的海拔差距就越大
 
 STR_CONFIG_SETTING_RIVER_AMOUNT                                 :河流数量: {STRING}
 STR_CONFIG_SETTING_RIVER_AMOUNT_HELPTEXT                        :选择生成河流的数量
@@ -1754,7 +1754,7 @@ STR_CONFIG_SETTING_AUTO_REMOVE_SIGNALS                          :建造铁路时
 STR_CONFIG_SETTING_AUTO_REMOVE_SIGNALS_HELPTEXT                 :建造铁路时自动移除路过的信号灯。注意，这可能导致火车事故。
 
 STR_CONFIG_SETTING_FAST_FORWARD_SPEED_LIMIT                     :快进速度上限：{STRING}
-STR_CONFIG_SETTING_FAST_FORWARD_SPEED_LIMIT_HELPTEXT            :限制快进时的最大速度。0 = 无限制（在您计算机允许的范围内）。低于 100% 的值将使游戏变慢。上限取决于您计算机的配置，并随着游戏情况浮动。
+STR_CONFIG_SETTING_FAST_FORWARD_SPEED_LIMIT_HELPTEXT            :限制快进时的最大速度。0 = 无限制（即电脑性能允许的最快速度）。低于 100% 的值将使游戏变慢。上限取决于您计算机的配置，并可能随着游戏情况浮动
 STR_CONFIG_SETTING_FAST_FORWARD_SPEED_LIMIT_VAL                 :{NUM}% 正常游戏速度
 ###setting-zero-is-special
 STR_CONFIG_SETTING_FAST_FORWARD_SPEED_LIMIT_ZERO                :无限制（在您计算机允许的范围内）
@@ -1818,7 +1818,7 @@ STR_CONFIG_SETTING_AI_IN_MULTIPLAYER_HELPTEXT                   :“打开”时
 STR_CONFIG_SETTING_SCRIPT_MAX_OPCODES                           :不令脚本停运的最大代码数量：{STRING}
 STR_CONFIG_SETTING_SCRIPT_MAX_OPCODES_HELPTEXT                  :设定在每个计算循环中，脚本（AI与游戏脚本）的每一句代码最多可进行多少个计算步骤。
 STR_CONFIG_SETTING_SCRIPT_MAX_MEMORY                            :每个脚本的内存上限: {STRING}
-STR_CONFIG_SETTING_SCRIPT_MAX_MEMORY_HELPTEXT                   :单个脚本（AI与游戏脚本）可使用的最大内存量，在游玩大型地图时可能需要增加。
+STR_CONFIG_SETTING_SCRIPT_MAX_MEMORY_HELPTEXT                   :单个脚本（AI与游戏脚本）可使用的最大内存量，在游玩大型地图时可能需要增加
 STR_CONFIG_SETTING_SCRIPT_MAX_MEMORY_VALUE                      :{COMMA} MiB
 
 STR_CONFIG_SETTING_SERVINT_ISPERCENT                            :维护间隔以百分比(%)计算： {STRING}
@@ -1840,7 +1840,7 @@ STR_CONFIG_SETTING_NOSERVICE                                    :在无故障模
 STR_CONFIG_SETTING_NOSERVICE_HELPTEXT                           :“打开”时，在无故障模式下，车辆禁用保养周期
 
 STR_CONFIG_SETTING_STATION_LENGTH_LOADING_PENALTY               :站台长度装卸惩罚：{STRING}
-STR_CONFIG_SETTING_STATION_LENGTH_LOADING_PENALTY_HELPTEXT      :启用站台长度装卸惩罚。过长的火车将会在站台中装卸得更慢。此项设置不会影响寻路。
+STR_CONFIG_SETTING_STATION_LENGTH_LOADING_PENALTY_HELPTEXT      :启用站台长度装卸惩罚。过长的火车将会在站台中装卸得更慢。此项设置不会影响寻路
 
 STR_CONFIG_SETTING_WAGONSPEEDLIMITS                             :列车车厢速度限制：{STRING}
 STR_CONFIG_SETTING_WAGONSPEEDLIMITS_HELPTEXT                    :启用时，列车的最高速度将取决于车厢的速度上限。
@@ -1905,13 +1905,13 @@ STR_CONFIG_SETTING_COLOURED_NEWS_YEAR_HELPTEXT                  :从这一年开
 STR_CONFIG_SETTING_STARTING_YEAR                                :开始年份：{STRING}
 
 STR_CONFIG_SETTING_ENDING_YEAR                                  :结束计分年份：{STRING}
-STR_CONFIG_SETTING_ENDING_YEAR_HELPTEXT                         :游戏结束计分的年份。在这一年的年底，公司的分数将被记录，并展示高分榜；在此之后玩家仍可继续游戏。{}如果该年份早于游戏开始年份，则高分榜将不会展示。
+STR_CONFIG_SETTING_ENDING_YEAR_HELPTEXT                         :游戏结束计分的年份。在这一年的年底，公司的分数将被记录，并展示高分榜；在此之后玩家仍可继续游戏。{}如果该年份早于游戏开始年份，则高分榜将不会展示
 STR_CONFIG_SETTING_ENDING_YEAR_VALUE                            :{NUM}
 ###setting-zero-is-special
 STR_CONFIG_SETTING_ENDING_YEAR_ZERO                             :从不
 
 STR_CONFIG_SETTING_ECONOMY_TYPE                                 :经济类型：{STRING}
-STR_CONFIG_SETTING_ECONOMY_TYPE_HELPTEXT                        :平滑经济产生更小幅度更频繁的产量变动。冻结经济停止产量变动和工业倒闭。该设置可能对 NewGRF 提供的工业不起作用。
+STR_CONFIG_SETTING_ECONOMY_TYPE_HELPTEXT                        :平滑经济产生更小幅度更频繁的产量变动。冻结经济停止产量变动和工业倒闭。该设置可能对 NewGRF 提供的工业不起作用
 ###length 3
 STR_CONFIG_SETTING_ECONOMY_TYPE_ORIGINAL                        :原版
 STR_CONFIG_SETTING_ECONOMY_TYPE_SMOOTH                          :平滑
@@ -1966,7 +1966,7 @@ STR_CONFIG_SETTING_TOWN_FOUNDING_ALLOWED                        :允许
 STR_CONFIG_SETTING_TOWN_FOUNDING_ALLOWED_CUSTOM_LAYOUT          :允许，自定义城镇布局
 
 STR_CONFIG_SETTING_TOWN_CARGOGENMODE                            :城镇货物生成：{STRING}
-STR_CONFIG_SETTING_TOWN_CARGOGENMODE_HELPTEXT                   :城镇客货产出与人口的关系。{}平方增长：两倍大小的城镇生产四倍的旅客。{}线性增长：两倍大小的城镇生产两倍的旅客。
+STR_CONFIG_SETTING_TOWN_CARGOGENMODE_HELPTEXT                   :城镇房屋的客货产出与人口的关系。{}平方增长：两倍大小的城镇生产四倍的旅客。{}线性增长：两倍大小的城镇生产两倍的旅客
 ###length 2
 STR_CONFIG_SETTING_TOWN_CARGOGENMODE_ORIGINAL                   :四倍（原版）
 STR_CONFIG_SETTING_TOWN_CARGOGENMODE_BITCOUNT                   :线性
@@ -2007,7 +2007,7 @@ STR_CONFIG_SETTING_ZOOM_LVL_OUT_4X                              :4 倍
 STR_CONFIG_SETTING_ZOOM_LVL_OUT_8X                              :8 倍
 
 STR_CONFIG_SETTING_SPRITE_ZOOM_MIN                              :贴图的最高分辨率：{STRING}
-STR_CONFIG_SETTING_SPRITE_ZOOM_MIN_HELPTEXT                     :限制贴图的最高分辨率。限制贴图分辨率将避免使用高分辨率贴图，即使它们可用。有助于在混用有/无高分辨率图形的 GRF 文件时保持游戏外观的统一。
+STR_CONFIG_SETTING_SPRITE_ZOOM_MIN_HELPTEXT                     :限制贴图的最高分辨率。限制贴图分辨率将避免使用高分辨率贴图，即使它们可用。有助于在混用有/无高分辨率图形的 GRF 文件时保持游戏外观的统一
 ###length 3
 STR_CONFIG_SETTING_SPRITE_ZOOM_LVL_MIN                          :4 倍
 STR_CONFIG_SETTING_SPRITE_ZOOM_LVL_IN_2X                        :2 倍
@@ -2057,7 +2057,7 @@ STR_CONFIG_SETTING_DEMAND_SIZE                                  :在对称模式
 STR_CONFIG_SETTING_DEMAND_SIZE_HELPTEXT                         :如果把此设定赋一个少于100%的值，则到达某站的货物不会全部被送回始发站。{}如果此设定被赋值为0%，則“对称”模式的表现跟“不对称”模式完全一样
 
 STR_CONFIG_SETTING_SHORT_PATH_SATURATION                        :如果最短路径的饱和度超过{STRING}，把货物改派往容量较大的路径
-STR_CONFIG_SETTING_SHORT_PATH_SATURATION_HELPTEXT               :货物分配功能在派送货物时，会优先使用最短路径，当它饱和后改用第二短的路径，如此类推。当所有路径皆饱和但仍未满足需求，系统會由容量较大的路径开始继续加载货物。{}由于路径饱和度难以准确估算，此设定容许您定义一值，使短路径达到该饱和度后，系统便开始加载容量较大的路径。{}如果此设定的值少於100%，就算系统高估路径容量，也不會使过多的货物滞留在站台上。
+STR_CONFIG_SETTING_SHORT_PATH_SATURATION_HELPTEXT               :在两个给定的站点之间常常会会有多条不同的路径。货物分配算法会优先使用最短的路径，在其饱和后再使用第二短的路径，依此类推。路径的饱和度是用运载容量和计划使用量估算的。在所有路径都饱和的时候，算法会向所有路径超额装载货物，优先使用容量较高的路径。但是在多数场合算法无法准确计算容量。此设定允许您设定在较短的路径的饱和度达到设定值之后再装载下一条路径。将此值设定为小于100%，就可避免因过量估算容量而导致的站点超载
 
 STR_CONFIG_SETTING_LOCALISATION_UNITS_VELOCITY                  :速度单位（陆地）：{STRING}
 STR_CONFIG_SETTING_LOCALISATION_UNITS_VELOCITY_NAUTICAL         :速度单位（航海）：{STRING}
@@ -2574,6 +2574,7 @@ STR_NETWORK_ERROR_BAD_PLAYER_NAME                               :{WHITE}你没�
 STR_NETWORK_ERROR_BAD_SERVER_NAME                               :{WHITE}你没有设置服务器名。玩家名可在联机游戏窗口的上面设置
 STR_NETWORK_ERROR_WRONG_REVISION                                :{WHITE}此客户端版本与服务器端不匹配
 STR_NETWORK_ERROR_WRONG_PASSWORD                                :{WHITE}密码错误
+STR_NETWORK_ERROR_NOT_ON_ALLOW_LIST                             :{WHITE}你不在白名单所允许的客户端范围内
 STR_NETWORK_ERROR_SERVER_FULL                                   :{WHITE}服务器已经满员
 STR_NETWORK_ERROR_SERVER_BANNED                                 :{WHITE}您已被该服务器封禁
 STR_NETWORK_ERROR_KICKED                                        :{WHITE}您已被踢出服务器
@@ -2601,6 +2602,7 @@ STR_NETWORK_ERROR_CLIENT_NOT_EXPECTED                           :收到异常数
 STR_NETWORK_ERROR_CLIENT_WRONG_REVISION                         :错误的版本
 STR_NETWORK_ERROR_CLIENT_NAME_IN_USE                            :已经有人用这个名字了
 STR_NETWORK_ERROR_CLIENT_WRONG_PASSWORD                         :错误的密码
+STR_NETWORK_ERROR_CLIENT_NOT_ON_ALLOW_LIST                      :不在允许列表内
 STR_NETWORK_ERROR_CLIENT_COMPANY_MISMATCH                       :错误的公司ID于DoCommand
 STR_NETWORK_ERROR_CLIENT_KICKED                                 :被服务器踢出
 STR_NETWORK_ERROR_CLIENT_CHEATER                                :正在尝试作弊
@@ -3190,7 +3192,7 @@ STR_LAI_OBJECT_DESCRIPTION_COMPANY_OWNED_LAND                   :公司所有土
 
 # About OpenTTD window
 STR_ABOUT_OPENTTD                                               :{WHITE}关于 OpenTTD
-STR_ABOUT_ORIGINAL_COPYRIGHT                                    :{BLACK}原始版权由 {COPYRIGHT} 1995 Chris Sawyer 所有，保留一切权力。
+STR_ABOUT_ORIGINAL_COPYRIGHT                                    :{BLACK}原始版权由 {COPYRIGHT} 1995 Chris Sawyer 所有，保留所有权利
 STR_ABOUT_VERSION                                               :{BLACK}OpenTTD 版本 {REV}
 STR_ABOUT_COPYRIGHT_OPENTTD                                     :{BLACK}OpenTTD {COPYRIGHT} 2002-{STRING} OpenTTD 团队
 
@@ -3198,11 +3200,11 @@ STR_ABOUT_COPYRIGHT_OPENTTD                                     :{BLACK}OpenTTD 
 STR_FRAMERATE_CAPTION                                           :{WHITE}帧率
 STR_FRAMERATE_CAPTION_SMALL                                     :{STRING}{WHITE} ({DECIMAL}x)
 STR_FRAMERATE_RATE_GAMELOOP                                     :{BLACK}模拟速率: {STRING}
-STR_FRAMERATE_RATE_GAMELOOP_TOOLTIP                             :{BLACK}每秒模拟的游戏时刻数。
+STR_FRAMERATE_RATE_GAMELOOP_TOOLTIP                             :{BLACK}每秒模拟的游戏刻数
 STR_FRAMERATE_RATE_BLITTER                                      :{BLACK}帧率：{STRING}
-STR_FRAMERATE_RATE_BLITTER_TOOLTIP                              :{BLACK}每秒渲染更新的图像帧。
+STR_FRAMERATE_RATE_BLITTER_TOOLTIP                              :{BLACK}每秒渲染更新的图像帧
 STR_FRAMERATE_SPEED_FACTOR                                      :{BLACK}当前游戏速度：{DECIMAL}x
-STR_FRAMERATE_SPEED_FACTOR_TOOLTIP                              :{BLACK}当前游戏运行速度，与正常速度之比率
+STR_FRAMERATE_SPEED_FACTOR_TOOLTIP                              :{BLACK}当前游戏运行速度与正常速度相比的比值
 STR_FRAMERATE_CURRENT                                           :{WHITE}当前
 STR_FRAMERATE_AVERAGE                                           :{WHITE}平均
 STR_FRAMERATE_MEMORYUSE                                         :{WHITE}内存
@@ -3731,7 +3733,7 @@ STR_STORY_BOOK_SPECTATOR_CAPTION                                :{WHITE}全域�
 STR_STORY_BOOK_SPECTATOR                                        :全域历史纪录
 STR_STORY_BOOK_TITLE                                            :{YELLOW}{STRING}
 STR_STORY_BOOK_GENERIC_PAGE_ITEM                                :第{NUM}页
-STR_STORY_BOOK_SEL_PAGE_TOOLTIP                                 :{BLACK}从下拉选单中选择想要查看的页面.
+STR_STORY_BOOK_SEL_PAGE_TOOLTIP                                 :{BLACK}从下拉选单中选择想要查看的页面
 STR_STORY_BOOK_PREV_PAGE                                        :{BLACK}上一个
 STR_STORY_BOOK_PREV_PAGE_TOOLTIP                                :{BLACK}转到上一页
 STR_STORY_BOOK_NEXT_PAGE                                        :{BLACK}下一个
@@ -4026,7 +4028,7 @@ STR_GROUP_DEFAULT_AIRCRAFTS                                     :未分组飞机
 
 STR_GROUP_COUNT_WITH_SUBGROUP                                   :{TINY_FONT}{COMMA} (+{COMMA})
 
-STR_GROUPS_CLICK_ON_GROUP_FOR_TOOLTIP                           :{BLACK}组 - 点击一个组别以显示所有隶属此组的车辆。拖曳组别标签以重新排列组别的次序和层级。
+STR_GROUPS_CLICK_ON_GROUP_FOR_TOOLTIP                           :{BLACK}组 - 点击一个组别以显示所有隶属此组的车辆。拖曳组别标签以重新排列组别的次序和层级
 STR_GROUP_CREATE_TOOLTIP                                        :{BLACK}创建分组
 STR_GROUP_DELETE_TOOLTIP                                        :{BLACK}删除分组
 STR_GROUP_RENAME_TOOLTIP                                        :{BLACK}重命名该分组

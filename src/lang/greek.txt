@@ -314,6 +314,7 @@ STR_UNITS_HEIGHT_SI                                             :{DECIMAL}{NBSP}
 
 # Time units used in string control characters
 
+STR_UNITS_MINUTES                                               :{NUM}{NBSP}λεπτ{P ό ά}
 
 
 # Common window strings
@@ -997,7 +998,13 @@ STR_EXTRA_VIEW_MOVE_MAIN_TO_VIEW_TT                             :{BLACK}Επικ
 STR_GAME_OPTIONS_CAPTION                                        :{WHITE}Επιλογές Παιχνιδιού
 
 STR_GAME_OPTIONS_TAB_GENERAL                                    :Γενικά
+STR_GAME_OPTIONS_TAB_GENERAL_TT                                 :{BLACK}Επιλέξτε γενικές ρυθμίσεις
+STR_GAME_OPTIONS_TAB_GRAPHICS                                   :Γραφικά
+STR_GAME_OPTIONS_TAB_GRAPHICS_TT                                :{BLACK}Επιλέξτε ρυθμίσεις γραφικών
 STR_GAME_OPTIONS_TAB_SOUND                                      :Ήχος
+STR_GAME_OPTIONS_TAB_SOUND_TT                                   :{BLACK}Επιλέξτε ρυθμίσεις ήχου και μουσικής
+STR_GAME_OPTIONS_TAB_SOCIAL                                     :Κοινωνικά
+STR_GAME_OPTIONS_TAB_SOCIAL_TT                                  :{BLACK}Επιλέξτε ρυθμίσεις κοινωνικής ενσωμάτωσης
 
 
 

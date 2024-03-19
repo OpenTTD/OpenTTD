@@ -2575,6 +2575,7 @@ STR_NETWORK_ERROR_BAD_PLAYER_NAME                               :{WHITE}Vous n'a
 STR_NETWORK_ERROR_BAD_SERVER_NAME                               :{WHITE}Le nom de serveur n'a pas été défini. Le nom peut être défini en haut de la fenêtre multijoueur
 STR_NETWORK_ERROR_WRONG_REVISION                                :{WHITE}Le numéro de version/révision de ce client ne correspond pas à celui du serveur
 STR_NETWORK_ERROR_WRONG_PASSWORD                                :{WHITE}Mot de passe incorrect
+STR_NETWORK_ERROR_NOT_ON_ALLOW_LIST                             :{WHITE}Vous n'êtes pas sur la liste des clients autorisés
 STR_NETWORK_ERROR_SERVER_FULL                                   :{WHITE}Le serveur est complet
 STR_NETWORK_ERROR_SERVER_BANNED                                 :{WHITE}Vous êtes banni de ce serveur
 STR_NETWORK_ERROR_KICKED                                        :{WHITE}Vous avez été exclu de la partie
@@ -2602,6 +2603,7 @@ STR_NETWORK_ERROR_CLIENT_NOT_EXPECTED                           :paquet invalide
 STR_NETWORK_ERROR_CLIENT_WRONG_REVISION                         :n° de version/révision incorrect
 STR_NETWORK_ERROR_CLIENT_NAME_IN_USE                            :nom déjà utilisé
 STR_NETWORK_ERROR_CLIENT_WRONG_PASSWORD                         :mot de passe de partie incorrect
+STR_NETWORK_ERROR_CLIENT_NOT_ON_ALLOW_LIST                      :pas sur la liste d'autorisation
 STR_NETWORK_ERROR_CLIENT_COMPANY_MISMATCH                       :mauvais company-id dans DoCommand
 STR_NETWORK_ERROR_CLIENT_KICKED                                 :exclu par le serveur
 STR_NETWORK_ERROR_CLIENT_CHEATER                                :a tenté de tricher

@@ -107,7 +107,7 @@ STR_QUANTITY_STEEL                                              :{WEIGHT_LONG} d
 STR_QUANTITY_VALUABLES                                          :{COMMA}{NBSP}saco{P "" s} de objetos de valor
 STR_QUANTITY_COPPER_ORE                                         :{WEIGHT_LONG} de minério de cobre
 STR_QUANTITY_MAIZE                                              :{WEIGHT_LONG} de milho
-STR_QUANTITY_FRUIT                                              :{WEIGHT_LONG} de fruta
+STR_QUANTITY_FRUIT                                              :{WEIGHT_LONG} de frutas
 STR_QUANTITY_DIAMONDS                                           :{COMMA}{NBSP}saco{P "" s} de diamantes
 STR_QUANTITY_FOOD                                               :{WEIGHT_LONG} de alimentos
 STR_QUANTITY_PAPER                                              :{WEIGHT_LONG} de papel
@@ -275,7 +275,7 @@ STR_LIST_FILTER_TOOLTIP                                         :{BLACK}Digitar 
 STR_TOOLTIP_GROUP_ORDER                                         :{BLACK}Escolher a ordem de agrupamento
 STR_TOOLTIP_SORT_ORDER                                          :{BLACK}Escolher a ordenação (descendente/ascendente)
 STR_TOOLTIP_SORT_CRITERIA                                       :{BLACK}Escolher o critério de ordenação
-STR_TOOLTIP_FILTER_CRITERIA                                     :{BLACK}Escolher o critério de procura
+STR_TOOLTIP_FILTER_CRITERIA                                     :{BLACK}Escolher o critério de pesquisa
 STR_BUTTON_SORT_BY                                              :{BLACK}Ordenar por
 STR_BUTTON_CATCHMENT                                            :{BLACK}Cobertura
 STR_TOOLTIP_CATCHMENT                                           :{BLACK}Mostrar/Ocultar a área de cobertura
@@ -446,13 +446,13 @@ STR_SETTINGS_MENU_CONFIG_SETTINGS_TREE                          :Configurações
 STR_SETTINGS_MENU_AI_SETTINGS                                   :Configurações de IA
 STR_SETTINGS_MENU_GAMESCRIPT_SETTINGS                           :Configurações de Script de Jogo
 STR_SETTINGS_MENU_NEWGRF_SETTINGS                               :Configurações de NewGRF
-STR_SETTINGS_MENU_SANDBOX_OPTIONS                               :Opções das trapaças
+STR_SETTINGS_MENU_SANDBOX_OPTIONS                               :Opções de trapaças
 STR_SETTINGS_MENU_TRANSPARENCY_OPTIONS                          :Opções de transparência
 STR_SETTINGS_MENU_TOWN_NAMES_DISPLAYED                          :Mostrar nomes de localidades
 STR_SETTINGS_MENU_STATION_NAMES_DISPLAYED                       :Mostrar nomes de estações
 STR_SETTINGS_MENU_WAYPOINTS_DISPLAYED                           :Mostrar nomes dos pontos de controle
 STR_SETTINGS_MENU_SIGNS_DISPLAYED                               :Mostrar placas
-STR_SETTINGS_MENU_SHOW_COMPETITOR_SIGNS                         :Mostrar placas e nomes dos concorrentes
+STR_SETTINGS_MENU_SHOW_COMPETITOR_SIGNS                         :Mostrar placas/nomes dos concorrentes
 STR_SETTINGS_MENU_FULL_ANIMATION                                :Animação completa
 STR_SETTINGS_MENU_FULL_DETAIL                                   :Máximo de detalhes
 STR_SETTINGS_MENU_TRANSPARENT_BUILDINGS                         :Edifícios transparentes
@@ -919,20 +919,20 @@ STR_NEWS_SHOW_VEHICLE_GROUP_TOOLTIP                             :{BLACK}Abrir a 
 STR_NEWS_STATION_NO_LONGER_ACCEPTS_CARGO_LIST                   :{WHITE}{STATION} não aceita mais: {CARGO_LIST}
 STR_NEWS_STATION_NOW_ACCEPTS_CARGO_LIST                         :{WHITE}{STATION} agora aceita: {CARGO_LIST}
 
-STR_NEWS_OFFER_OF_SUBSIDY_EXPIRED                               :{BIG_FONT}{BLACK}Oferta de subsídio expirou:{}{}{STRING} d{G e a} {STRING} para {STRING} agora não será subsidiado
-STR_NEWS_SUBSIDY_WITHDRAWN_SERVICE                              :{BIG_FONT}{BLACK}Subsídio retirado:{}{}Transportar {STRING} d{G e a} {STRING} para {STRING} não é mais subsidiado
-STR_NEWS_SERVICE_SUBSIDY_OFFERED                                :{BIG_FONT}{BLACK}Subsídio oferecido:{}{}Primeiro transporte de {STRING} d{G e a} {STRING} para {STRING} receberá {UNITS_YEARS_OR_MINUTES} de subsídio da autoridade local!
+STR_NEWS_OFFER_OF_SUBSIDY_EXPIRED                               :{BIG_FONT}{BLACK}Oferta de subsídio expirou:{}{}Transporte de {STRING} d{G e a} {STRING} para {STRING} agora não será subsidiado
+STR_NEWS_SUBSIDY_WITHDRAWN_SERVICE                              :{BIG_FONT}{BLACK}Subsídio retirado:{}{}Transporte de {STRING} d{G e a} {STRING} para {STRING} não é mais subsidiado
+STR_NEWS_SERVICE_SUBSIDY_OFFERED                                :{BIG_FONT}{BLACK}Subsídio oferecido:{}{}Primeiro transporte de {STRING} d{G e a} {STRING} para {STRING} receberá subsídio da autoridade local durante {UNITS_YEARS_OR_MINUTES}!
 ###length 4
-STR_NEWS_SERVICE_SUBSIDY_AWARDED_HALF                           :{BIG_FONT}{BLACK}Subsídio concedido a {STRING}!{}{}{STRING} d{G e a} {STRING} para {STRING} será pago a 150% durante {UNITS_YEARS_OR_MINUTES}!
-STR_NEWS_SERVICE_SUBSIDY_AWARDED_DOUBLE                         :{BIG_FONT}{BLACK}Subsídio concedido a {STRING}!{}{}{STRING} d{G e a} {STRING} para {STRING} será pago a 200% durante {UNITS_YEARS_OR_MINUTES}!
-STR_NEWS_SERVICE_SUBSIDY_AWARDED_TRIPLE                         :{BIG_FONT}{BLACK}Subsídio concedido a {STRING}!{}{}{STRING} d{G e a} {STRING} para {STRING} será pago a 300% durante {UNITS_YEARS_OR_MINUTES}!
-STR_NEWS_SERVICE_SUBSIDY_AWARDED_QUADRUPLE                      :{BIG_FONT}{BLACK}Subsídio concedido a {STRING}!{}{}{STRING} d{G e a} {STRING} para {STRING} será pago a 400% durante {UNITS_YEARS_OR_MINUTES}!
+STR_NEWS_SERVICE_SUBSIDY_AWARDED_HALF                           :{BIG_FONT}{BLACK}Subsídio concedido a {STRING}!{}{}Transporte de {STRING} d{G e a} {STRING} para {STRING} receberá um adicional de 50% durante {UNITS_YEARS_OR_MINUTES}!
+STR_NEWS_SERVICE_SUBSIDY_AWARDED_DOUBLE                         :{BIG_FONT}{BLACK}Subsídio concedido a {STRING}!{}{}Transporte de {STRING} d{G e a} {STRING} para {STRING} receberá o dobro da tarifa durante {UNITS_YEARS_OR_MINUTES}!
+STR_NEWS_SERVICE_SUBSIDY_AWARDED_TRIPLE                         :{BIG_FONT}{BLACK}Subsídio concedido a {STRING}!{}{}Transporte de {STRING} d{G e a} {STRING} para {STRING} receberá o triplo da tarifa durante {UNITS_YEARS_OR_MINUTES}!
+STR_NEWS_SERVICE_SUBSIDY_AWARDED_QUADRUPLE                      :{BIG_FONT}{BLACK}Subsídio concedido a {STRING}!{}{}Transporte de {STRING} d{G e a} {STRING} para {STRING} receberá o quádruplo da tarifa durante {UNITS_YEARS_OR_MINUTES}!
 
 STR_NEWS_ROAD_REBUILDING_MONTHS                                 :{BIG_FONT}{BLACK}Tráfego caótico em {TOWN}!{}{}Programa de reconstrução de estradas financiado por {STRING} provoca 6 meses de sofrimento aos motoristas!
 STR_NEWS_ROAD_REBUILDING_MINUTES                                :{BIG_FONT}{BLACK}Tráfego caótico em {TOWN}!{}{}Programa de reconstrução de estradas financiado por {STRING} provoca 6 minutos de sofrimento aos motoristas!
 STR_NEWS_EXCLUSIVE_RIGHTS_TITLE                                 :{BIG_FONT}{BLACK}Monopólio de transporte!
-STR_NEWS_EXCLUSIVE_RIGHTS_DESCRIPTION_MONTHS                    :{BIG_FONT}{BLACK}A autoridade local de {TOWN} assinou um contrato com {STRING} por 12 meses de direitos exclusivos de transporte!
-STR_NEWS_EXCLUSIVE_RIGHTS_DESCRIPTION_MINUTES                   :{BIG_FONT}{BLACK}A autoridade local de {TOWN} assinou um contrato com {STRING} por 12 minutos de direitos exclusivos de transporte!
+STR_NEWS_EXCLUSIVE_RIGHTS_DESCRIPTION_MONTHS                    :{BIG_FONT}{BLACK}A autoridade local de {TOWN} assinou um contrato com {STRING} concedendo 12 meses de direitos exclusivos de transporte!
+STR_NEWS_EXCLUSIVE_RIGHTS_DESCRIPTION_MINUTES                   :{BIG_FONT}{BLACK}A autoridade local de {TOWN} assinou um contrato com {STRING} concedendo 12 minutos de direitos exclusivos de transporte!
 
 # Extra view window
 STR_EXTRA_VIEWPORT_TITLE                                        :{WHITE}Janela de visualização {COMMA}
@@ -1056,8 +1056,8 @@ STR_GAME_OPTIONS_GUI_SCALE_BEVELS_TOOLTIP                       :{BLACK}Marque e
 
 STR_GAME_OPTIONS_GUI_FONT_SPRITE                                :{BLACK}Usar a fonte fixa tradicional
 STR_GAME_OPTIONS_GUI_FONT_SPRITE_TOOLTIP                        :{BLACK}Marque esta caixa se preferir usar o tipo de fonte tradicional de tamanho fixo
-STR_GAME_OPTIONS_GUI_FONT_AA                                    :{BLACK}Fontes com bordas suaves
-STR_GAME_OPTIONS_GUI_FONT_AA_TOOLTIP                            :{BLACK}Marque esta caixa para fontes redimensionáveis com contornos suaves
+STR_GAME_OPTIONS_GUI_FONT_AA                                    :{BLACK}Fontes com contornos suaves
+STR_GAME_OPTIONS_GUI_FONT_AA_TOOLTIP                            :{BLACK}Marque esta caixa para usar fontes redimensionáveis com contornos suaves
 
 STR_GAME_OPTIONS_GUI_SCALE_1X                                   :1x
 STR_GAME_OPTIONS_GUI_SCALE_2X                                   :2x
@@ -2112,7 +2112,7 @@ STR_CONFIG_SETTING_INTERFACE                                    :Interface
 STR_CONFIG_SETTING_INTERFACE_GENERAL                            :Geral
 STR_CONFIG_SETTING_INTERFACE_VIEWPORTS                          :Visualizações
 STR_CONFIG_SETTING_INTERFACE_CONSTRUCTION                       :Construção
-STR_CONFIG_SETTING_ADVISORS                                     :Notícias / Conselheiros
+STR_CONFIG_SETTING_ADVISORS                                     :Notícias / Avisos
 STR_CONFIG_SETTING_COMPANY                                      :Empresa
 STR_CONFIG_SETTING_ACCOUNTING                                   :Contabilidade
 STR_CONFIG_SETTING_VEHICLES                                     :Veículos
@@ -2575,6 +2575,7 @@ STR_NETWORK_ERROR_BAD_PLAYER_NAME                               :{WHITE}Seu nome
 STR_NETWORK_ERROR_BAD_SERVER_NAME                               :{WHITE}O nome do seu servidor não foi definido. O nome pode ser definido na parte superior da janela de Multijogador
 STR_NETWORK_ERROR_WRONG_REVISION                                :{WHITE}A versão deste cliente é incompatível com a versão do servidor
 STR_NETWORK_ERROR_WRONG_PASSWORD                                :{WHITE}Senha incorreta
+STR_NETWORK_ERROR_NOT_ON_ALLOW_LIST                             :{WHITE}Você não está na lista de clientes permitidos
 STR_NETWORK_ERROR_SERVER_FULL                                   :{WHITE}O servidor está cheio
 STR_NETWORK_ERROR_SERVER_BANNED                                 :{WHITE}Você foi banido deste servidor
 STR_NETWORK_ERROR_KICKED                                        :{WHITE}Você foi expulso do jogo
@@ -2602,6 +2603,7 @@ STR_NETWORK_ERROR_CLIENT_NOT_EXPECTED                           :um pacote invá
 STR_NETWORK_ERROR_CLIENT_WRONG_REVISION                         :versão incorreta
 STR_NETWORK_ERROR_CLIENT_NAME_IN_USE                            :nome já está em uso
 STR_NETWORK_ERROR_CLIENT_WRONG_PASSWORD                         :senha incorreta
+STR_NETWORK_ERROR_CLIENT_NOT_ON_ALLOW_LIST                      :não está na lista de permissões
 STR_NETWORK_ERROR_CLIENT_COMPANY_MISMATCH                       :empresa errada em DoCommand
 STR_NETWORK_ERROR_CLIENT_KICKED                                 :expulso pelo servidor
 STR_NETWORK_ERROR_CLIENT_CHEATER                                :estava tentando trapacear
@@ -3718,7 +3720,7 @@ STR_SUBSIDIES_CAPTION                                           :{WHITE}Subsídi
 STR_SUBSIDIES_OFFERED_TITLE                                     :{BLACK}Subsídios oferecidos para serviços de transporte:
 STR_SUBSIDIES_OFFERED_FROM_TO                                   :{ORANGE}{STRING} d{G e a} {STRING} para {STRING}{YELLOW} ({STRING})
 STR_SUBSIDIES_NONE                                              :{ORANGE}- Nenhum -
-STR_SUBSIDIES_SUBSIDISED_TITLE                                  :{BLACK}Serviços já subsidiados:
+STR_SUBSIDIES_SUBSIDISED_TITLE                                  :{BLACK}Serviços de transporte já subsidiados:
 STR_SUBSIDIES_SUBSIDISED_FROM_TO                                :{ORANGE}{STRING} d{G e a} {STRING} para {STRING}{YELLOW} ({COMPANY}{YELLOW}, {STRING})
 STR_SUBSIDIES_TOOLTIP_CLICK_ON_SERVICE_TO_CENTER                :{BLACK}Clique em um serviço para centralizar visualização principal em uma indústria/localidade. Ctrl+Clique para abrir uma nova visualização na localização da indústria/localidade
 STR_SUBSIDIES_OFFERED_EXPIRY_DATE                               :até {DATE_SHORT}
@@ -4627,8 +4629,8 @@ STR_ORDER_GO_NON_STOP_TO_WAYPOINT                               :Ir, sem parar, 
 STR_ORDER_SERVICE_AT                                            :Manutenção no
 STR_ORDER_SERVICE_NON_STOP_AT                                   :Manutenção, sem parar, no
 
-STR_ORDER_NEAREST_DEPOT                                         :o mais próximo
-STR_ORDER_NEAREST_HANGAR                                        :o hangar mais próximo
+STR_ORDER_NEAREST_DEPOT                                         :mais próximo
+STR_ORDER_NEAREST_HANGAR                                        :hangar mais próximo
 ###length 3
 STR_ORDER_TRAIN_DEPOT                                           :Depósito Ferroviário
 STR_ORDER_ROAD_VEHICLE_DEPOT                                    :Depósito Rodoviário
@@ -4704,14 +4706,14 @@ STR_TIMETABLE_NO_TRAVEL                                         :Não viajar
 STR_TIMETABLE_NOT_TIMETABLEABLE                                 :Viajar (automático; programado pela próxima ordem manual)
 STR_TIMETABLE_TRAVEL_NOT_TIMETABLED                             :Viajar (não programado)
 STR_TIMETABLE_TRAVEL_NOT_TIMETABLED_SPEED                       :Viajar (não programado) no máximo a {2:VELOCITY}
-STR_TIMETABLE_TRAVEL_FOR                                        :Viajar por {STRING}
-STR_TIMETABLE_TRAVEL_FOR_SPEED                                  :Viajar por {STRING} no máximo a {VELOCITY}
-STR_TIMETABLE_TRAVEL_FOR_ESTIMATED                              :Viajar (por {STRING}, não programado)
-STR_TIMETABLE_TRAVEL_FOR_SPEED_ESTIMATED                        :Viajar (por {STRING}, não programado) no máximo a {VELOCITY}
+STR_TIMETABLE_TRAVEL_FOR                                        :Viajar durante {STRING}
+STR_TIMETABLE_TRAVEL_FOR_SPEED                                  :Viajar durante {STRING} no máximo a {VELOCITY}
+STR_TIMETABLE_TRAVEL_FOR_ESTIMATED                              :Viajar (durante {STRING}, não programado)
+STR_TIMETABLE_TRAVEL_FOR_SPEED_ESTIMATED                        :Viajar (durante {STRING}, não programado) no máximo a {VELOCITY}
 STR_TIMETABLE_STAY_FOR_ESTIMATED                                :(ficar por {STRING}, não programado)
-STR_TIMETABLE_AND_TRAVEL_FOR_ESTIMATED                          :(viajar por {STRING}, não programado)
+STR_TIMETABLE_AND_TRAVEL_FOR_ESTIMATED                          :(viajar durante {STRING}, não programado)
 STR_TIMETABLE_STAY_FOR                                          :e ficar por {STRING}
-STR_TIMETABLE_AND_TRAVEL_FOR                                    :e viajar por {STRING}
+STR_TIMETABLE_AND_TRAVEL_FOR                                    :e viajar durante {STRING}
 
 STR_TIMETABLE_TOTAL_TIME                                        :{BLACK}Este horário levará {STRING} para ser concluído
 STR_TIMETABLE_TOTAL_TIME_INCOMPLETE                             :{BLACK}Este horário levará pelo menos {STRING} para ser concluído (nem tudo está programado)
@@ -5399,7 +5401,7 @@ STR_INDUSTRY_NAME_POWER_STATION                                 :{G=f}Usina de E
 STR_INDUSTRY_NAME_SAWMILL                                       :{G=f}Serraria
 STR_INDUSTRY_NAME_FOREST                                        :{G=f}Floresta
 STR_INDUSTRY_NAME_OIL_REFINERY                                  :{G=f}Refinaria de Petróleo
-STR_INDUSTRY_NAME_OIL_RIG                                       :{G=f}Plataforma de Petróleo
+STR_INDUSTRY_NAME_OIL_RIG                                       :{G=f}Plataforma Petrolífera
 STR_INDUSTRY_NAME_FACTORY                                       :{G=f}Fábrica
 STR_INDUSTRY_NAME_PRINTING_WORKS                                :{G=f}Gráfica
 STR_INDUSTRY_NAME_STEEL_MILL                                    :{G=f}Siderúrgica
@@ -5445,33 +5447,33 @@ STR_SV_AIRCRAFT_NAME                                            :Aeronave #{COMM
 
 ###length 27
 STR_SV_STNAME                                                   :{STRING}
-STR_SV_STNAME_NORTH                                             :{STRING}, Norte
-STR_SV_STNAME_SOUTH                                             :{STRING}, Sul
-STR_SV_STNAME_EAST                                              :{STRING}, Leste
-STR_SV_STNAME_WEST                                              :{STRING}, Oeste
-STR_SV_STNAME_CENTRAL                                           :{STRING}, Centro
-STR_SV_STNAME_TRANSFER                                          :{STRING}, Transbordo
-STR_SV_STNAME_HALT                                              :{STRING}, Parada
-STR_SV_STNAME_VALLEY                                            :Vale de {STRING}
-STR_SV_STNAME_HEIGHTS                                           :Colinas de {STRING}
-STR_SV_STNAME_WOODS                                             :Bosque de {STRING}
-STR_SV_STNAME_LAKESIDE                                          :Litoral de {STRING}
-STR_SV_STNAME_EXCHANGE                                          :{STRING}, Intercâmbio
-STR_SV_STNAME_AIRPORT                                           :Aeroporto de {STRING}
-STR_SV_STNAME_OILFIELD                                          :Petrolífera de {STRING}
-STR_SV_STNAME_MINES                                             :Minas de {STRING}
-STR_SV_STNAME_DOCKS                                             :Docas de {STRING}
+STR_SV_STNAME_NORTH                                             :{STRING} Norte
+STR_SV_STNAME_SOUTH                                             :{STRING} Sul
+STR_SV_STNAME_EAST                                              :{STRING} Leste
+STR_SV_STNAME_WEST                                              :{STRING} Oeste
+STR_SV_STNAME_CENTRAL                                           :{STRING} Centro
+STR_SV_STNAME_TRANSFER                                          :{STRING} Transbordo
+STR_SV_STNAME_HALT                                              :{STRING} Parada
+STR_SV_STNAME_VALLEY                                            :{STRING} Vale
+STR_SV_STNAME_HEIGHTS                                           :{STRING} Colinas
+STR_SV_STNAME_WOODS                                             :{STRING} Bosque
+STR_SV_STNAME_LAKESIDE                                          :{STRING} Margens
+STR_SV_STNAME_EXCHANGE                                          :{STRING} Intercâmbio
+STR_SV_STNAME_AIRPORT                                           :{STRING} Aeroporto
+STR_SV_STNAME_OILFIELD                                          :{STRING} Petrolífera
+STR_SV_STNAME_MINES                                             :{STRING} Minas
+STR_SV_STNAME_DOCKS                                             :{STRING} Docas
 STR_SV_STNAME_BUOY                                              :{STRING}
 STR_SV_STNAME_WAYPOINT                                          :{STRING}
 ##id 0x6020
-STR_SV_STNAME_ANNEXE                                            :{STRING}, Anexo
-STR_SV_STNAME_SIDINGS                                           :{STRING}, Desvios
-STR_SV_STNAME_BRANCH                                            :{STRING}, Ramal
-STR_SV_STNAME_UPPER                                             :Acima de {STRING}
-STR_SV_STNAME_LOWER                                             :Abaixo de {STRING}
-STR_SV_STNAME_HELIPORT                                          :Heliporto de {STRING}
-STR_SV_STNAME_FOREST                                            :Floresta de {STRING}
-STR_SV_STNAME_FALLBACK                                          :{STRING}, Estação #{NUM}
+STR_SV_STNAME_ANNEXE                                            :{STRING} Anexo
+STR_SV_STNAME_SIDINGS                                           :{STRING} Desvio
+STR_SV_STNAME_BRANCH                                            :{STRING} Ramal
+STR_SV_STNAME_UPPER                                             :{STRING} Superior
+STR_SV_STNAME_LOWER                                             :{STRING} Inferior
+STR_SV_STNAME_HELIPORT                                          :{STRING} Heliporto
+STR_SV_STNAME_FOREST                                            :{STRING} Floresta
+STR_SV_STNAME_FALLBACK                                          :{STRING} Estação #{NUM}
 
 ############ end of savegame specific region!
 

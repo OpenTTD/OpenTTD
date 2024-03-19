@@ -2954,6 +2954,7 @@ STR_NETWORK_ERROR_BAD_PLAYER_NAME                               :{WHITE}Twoja na
 STR_NETWORK_ERROR_BAD_SERVER_NAME                               :{WHITE}Nazwa twojego serwera nie została ustawiona. Nazwę można ustawić w górnej części okna Gra wieloosobowa
 STR_NETWORK_ERROR_WRONG_REVISION                                :{WHITE}Wersja gry nie zgadza się z wersją gry na serwerze
 STR_NETWORK_ERROR_WRONG_PASSWORD                                :{WHITE}Złe hasło
+STR_NETWORK_ERROR_NOT_ON_ALLOW_LIST                             :{WHITE}Nie ma cię na liście dopuszczonych klientów
 STR_NETWORK_ERROR_SERVER_FULL                                   :{WHITE}Serwer jest pełny
 STR_NETWORK_ERROR_SERVER_BANNED                                 :{WHITE}Masz zabroniony dostęp do tego serwera
 STR_NETWORK_ERROR_KICKED                                        :{WHITE}Zostałeś wyrzucony z serwera
@@ -2981,6 +2982,7 @@ STR_NETWORK_ERROR_CLIENT_NOT_EXPECTED                           :odebrany niezna
 STR_NETWORK_ERROR_CLIENT_WRONG_REVISION                         :zła wersja
 STR_NETWORK_ERROR_CLIENT_NAME_IN_USE                            :nazwa już w użyciu
 STR_NETWORK_ERROR_CLIENT_WRONG_PASSWORD                         :złe hasło gry
+STR_NETWORK_ERROR_CLIENT_NOT_ON_ALLOW_LIST                      :brak na liście dopuszczonych
 STR_NETWORK_ERROR_CLIENT_COMPANY_MISMATCH                       :zła nazwa firmy w DoCommand
 STR_NETWORK_ERROR_CLIENT_KICKED                                 :wyrzucony przez serwer
 STR_NETWORK_ERROR_CLIENT_CHEATER                                :próbował użyć ułatwień
