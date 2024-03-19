@@ -534,6 +534,15 @@ const char *VideoDriver_SDL_Base::Start(const StringList &param)
 	const char *error = this->Initialize();
 	if (error != nullptr) return error;
 
+#ifdef SDL_HINT_MOUSE_AUTO_CAPTURE
+	if (GetDriverParamBool(param, "no_mouse_capture")) {
+		/* By default SDL captures the mouse, while a button is pressed.
+		 * This is annoying during debugging, when OpenTTD is suspended while the button was pressed.
+		 */
+		if (!SDL_SetHint(SDL_HINT_MOUSE_AUTO_CAPTURE, "0")) return SDL_GetError();
+	}
+#endif
+
 	this->startup_display = FindStartupDisplay(GetDriverParamInt(param, "display", -1));
 
 	if (!CreateMainSurface(_cur_resolution.width, _cur_resolution.height, false)) {
