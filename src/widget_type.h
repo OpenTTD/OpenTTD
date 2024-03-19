@@ -875,15 +875,13 @@ public:
 	 * @return Iterator to the element clicked at. If clicked at a wrong position, returns as interator to the end of the container.
 	 */
 	template <typename Tcontainer>
-	typename Tcontainer::iterator GetScrolledItemFromWidget(Tcontainer &container, int clickpos, const Window * const w, WidgetID widget, int padding = 0, int line_height = -1) const
+	auto GetScrolledItemFromWidget(Tcontainer &container, int clickpos, const Window * const w, WidgetID widget, int padding = 0, int line_height = -1) const
 	{
 		assert(static_cast<size_t>(this->GetCount()) == container.size()); // Scrollbar and container size must match.
 		size_type row = this->GetScrolledRowFromWidget(clickpos, w, widget, padding, line_height);
 		if (row == Scrollbar::npos) return std::end(container);
 
-		typename Tcontainer::iterator it = std::begin(container);
-		std::advance(it, row);
-		return it;
+		return std::next(std::begin(container), row);
 	}
 
 	EventState UpdateListPositionOnKeyPress(int &list_position, uint16_t keycode) const;
