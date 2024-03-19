@@ -1259,13 +1259,17 @@ public:
 	 */
 	static size_t SlCalcLen(const void *storage, VarType conv, SaveLoadType cmd = SL_VAR)
 	{
-		assert(cmd == SL_VAR || cmd == SL_REF);
+		assert(cmd == SL_VAR || cmd == SL_REF || cmd == SL_STDSTR);
 
 		const SlStorageT *list = static_cast<const SlStorageT *>(storage);
 
-		int type_size = SlGetArrayLength(list->size());
-		int item_size = SlCalcConvFileLen(cmd == SL_VAR ? conv : (VarType)SLE_FILE_U32);
-		return list->size() * item_size + type_size;
+		size_t type_size = SlGetArrayLength(list->size());
+		if constexpr (std::is_same_v<std::vector<std::string>, SlStorageT> || std::is_same_v<std::deque<std::string>, SlStorageT>) {
+			return std::accumulate(list->begin(), list->end(), type_size, [](size_t sum, const std::string &str) { return sum + SlCalcStdStringLen(&str); });
+		} else {
+			size_t item_size = SlCalcConvFileLen(cmd == SL_VAR ? conv : (VarType)SLE_FILE_U32);
+			return list->size() * item_size + type_size;
+		}
 	}
 
 	static void SlSaveLoadMember(SaveLoadType cmd, Tvar *item, VarType conv)
@@ -1273,6 +1277,7 @@ public:
 		switch (cmd) {
 			case SL_VAR: SlSaveLoadConv(item, conv); break;
 			case SL_REF: SlSaveLoadRef(item, conv); break;
+			case SL_STDSTR: SlStdString(item, conv); break;
 			default:
 				NOT_REACHED();
 		}
@@ -1286,7 +1291,7 @@ public:
 	 */
 	static void SlSaveLoad(void *storage, VarType conv, SaveLoadType cmd = SL_VAR)
 	{
-		assert(cmd == SL_VAR || cmd == SL_REF);
+		assert(cmd == SL_VAR || cmd == SL_REF || cmd == SL_STDSTR);
 
 		SlStorageT *list = static_cast<SlStorageT *>(storage);
 
@@ -1305,6 +1310,7 @@ public:
 				switch (cmd) {
 					case SL_VAR: length = IsSavegameVersionBefore(SLV_SAVELOAD_LIST_LENGTH) ? SlReadUint32() : SlReadArrayLength(); break;
 					case SL_REF: length = IsSavegameVersionBefore(SLV_69) ? SlReadUint16() : IsSavegameVersionBefore(SLV_SAVELOAD_LIST_LENGTH) ? SlReadUint32() : SlReadArrayLength(); break;
+					case SL_STDSTR: length = SlReadArrayLength(); break;
 					default: NOT_REACHED();
 				}
 
@@ -1375,6 +1381,7 @@ static inline size_t SlCalcDequeLen(const void *deque, VarType conv)
 		case SLE_VAR_U32: return SlStorageHelper<std::deque, uint32_t>::SlCalcLen(deque, conv);
 		case SLE_VAR_I64: return SlStorageHelper<std::deque, int64_t>::SlCalcLen(deque, conv);
 		case SLE_VAR_U64: return SlStorageHelper<std::deque, uint64_t>::SlCalcLen(deque, conv);
+		case SLE_VAR_STR: return SlStorageHelper<std::deque, std::string>::SlCalcLen(deque, conv, SL_STDSTR);
 		default: NOT_REACHED();
 	}
 }
@@ -1396,6 +1403,7 @@ static void SlDeque(void *deque, VarType conv)
 		case SLE_VAR_U32: SlStorageHelper<std::deque, uint32_t>::SlSaveLoad(deque, conv); break;
 		case SLE_VAR_I64: SlStorageHelper<std::deque, int64_t>::SlSaveLoad(deque, conv); break;
 		case SLE_VAR_U64: SlStorageHelper<std::deque, uint64_t>::SlSaveLoad(deque, conv); break;
+		case SLE_VAR_STR: SlStorageHelper<std::deque, std::string>::SlSaveLoad(deque, conv, SL_STDSTR); break;
 		default: NOT_REACHED();
 	}
 }
@@ -1417,6 +1425,7 @@ static inline size_t SlCalcVectorLen(const void *vector, VarType conv)
 		case SLE_VAR_U32: return SlStorageHelper<std::vector, uint32_t>::SlCalcLen(vector, conv);
 		case SLE_VAR_I64: return SlStorageHelper<std::vector, int64_t>::SlCalcLen(vector, conv);
 		case SLE_VAR_U64: return SlStorageHelper<std::vector, uint64_t>::SlCalcLen(vector, conv);
+		case SLE_VAR_STR: return SlStorageHelper<std::vector, std::string>::SlCalcLen(vector, conv, SL_STDSTR);
 		default: NOT_REACHED();
 	}
 }
@@ -1438,6 +1447,7 @@ static void SlVector(void *vector, VarType conv)
 		case SLE_VAR_U32: SlStorageHelper<std::vector, uint32_t>::SlSaveLoad(vector, conv); break;
 		case SLE_VAR_I64: SlStorageHelper<std::vector, int64_t>::SlSaveLoad(vector, conv); break;
 		case SLE_VAR_U64: SlStorageHelper<std::vector, uint64_t>::SlSaveLoad(vector, conv); break;
+		case SLE_VAR_STR: SlStorageHelper<std::vector, std::string>::SlSaveLoad(vector, conv, SL_STDSTR); break;
 		default: NOT_REACHED();
 	}
 }

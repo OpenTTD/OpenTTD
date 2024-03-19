@@ -945,6 +945,16 @@ inline constexpr bool SlCheckVarSize(SaveLoadType cmd, VarType type, size_t leng
 #define SLE_CONDDEQUE(base, variable, type, from, to) SLE_GENERAL(SL_DEQUE, base, variable, type, 0, from, to, 0)
 
 /**
+ * Storage of a vector of #SL_VAR elements in some savegame versions.
+ * @param base     Name of the class or struct containing the list.
+ * @param variable Name of the variable in the class or struct referenced by \a base.
+ * @param type     Storage of the data in memory and in the savegame.
+ * @param from     First savegame version that has the list.
+ * @param to       Last savegame version that has the list.
+ */
+#define SLE_CONDVECTOR(base, variable, type, from, to) SLE_GENERAL(SL_VECTOR, base, variable, type, 0, from, to, 0)
+
+/**
  * Storage of a variable in every version of a savegame.
  * @param base     Name of the class or struct containing the variable.
  * @param variable Name of the variable in the class or struct referenced by \a base.
