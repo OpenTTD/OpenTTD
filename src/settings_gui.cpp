@@ -2498,7 +2498,9 @@ struct GameSettingsWindow : Window {
 					DrawString(tr, STR_CONFIG_SETTING_TYPE);
 					tr.top += GetCharacterHeight(FS_NORMAL);
 
-					sd->SetValueDParams(0, sd->def);
+					int32_t def_val = sd->def;
+					if (sd->get_def_cb != nullptr) sd->get_def_cb(def_val);
+					sd->SetValueDParams(0, def_val);
 					DrawString(tr, STR_CONFIG_SETTING_DEFAULT_VALUE);
 					tr.top += GetCharacterHeight(FS_NORMAL) + WidgetDimensions::scaled.vsep_normal;
 
