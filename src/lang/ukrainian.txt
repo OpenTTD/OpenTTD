@@ -1633,7 +1633,7 @@ STR_CONFIG_SETTING_NEVER_EXPIRE_VEHICLES_HELPTEXT               :При вклю
 STR_CONFIG_SETTING_TIMEKEEPING_UNITS                            :Дотримання розкладу: {STRING}
 ###length 2
 STR_CONFIG_SETTING_TIMEKEEPING_UNITS_CALENDAR                   :Календар
-STR_CONFIG_SETTING_TIMEKEEPING_UNITS_WALLCLOCK                  :Настінний годинник
+STR_CONFIG_SETTING_TIMEKEEPING_UNITS_WALLCLOCK                  :Годинник
 
 STR_CONFIG_SETTING_MINUTES_PER_YEAR                             :Хвилин у році: {STRING}
 STR_CONFIG_SETTING_MINUTES_PER_YEAR_HELPTEXT                    :Оберіть кількість хвилин у календарному році. Базово 12 хвилин. Щоб зупинити зміни календаря, встановіть 0. Налаштування не вплине на симуляцію економіки у грі. Налаштування доступне тільки з годинниковим розкладом
@@ -4314,7 +4314,7 @@ STR_DEPOT_VEHICLE_TOOLTIP_CHAIN                                 :{BLACK}{NUM} т
 STR_DEPOT_VEHICLE_TOOLTIP_CARGO                                 :{}{CARGO_LONG} ({CARGO_SHORT})
 
 ###length VEHICLE_TYPES
-STR_DEPOT_TRAIN_LIST_TOOLTIP                                    :{BLACK}Поїзди - перетягніть транспорт (вагон) лівою кнопкою миші, щоб додати/вилучити з поїзда. Натисніть праву кнопку миші для інформації. Утримуйте Ctrl для застосування обох функцій до всього ланцюга
+STR_DEPOT_TRAIN_LIST_TOOLTIP                                    :{BLACK}Потяги - перетягніть транспорт (вагон) лівою кнопкою миші, щоб додати/вилучити з потяга. Натисніть праву кнопку миші для інформації. Ctrl+клац для застосування обох функцій до всього ланцюга
 STR_DEPOT_ROAD_VEHICLE_LIST_TOOLTIP                             :{BLACK}Авто - натисніть на авто для інформації
 STR_DEPOT_SHIP_LIST_TOOLTIP                                     :{BLACK}Кораблі - натисніть для інформації
 STR_DEPOT_AIRCRAFT_LIST_TOOLTIP                                 :{BLACK}Літаки - натисніть на літак для інформації

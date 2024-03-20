@@ -2574,6 +2574,7 @@ STR_NETWORK_ERROR_BAD_PLAYER_NAME                               :{WHITE}Bạn ch
 STR_NETWORK_ERROR_BAD_SERVER_NAME                               :{WHITE}Bạn chưa đặt tên server. Bạn có thể đặt tên này tại phía trên của cửa sổ Chơi trên mạng
 STR_NETWORK_ERROR_WRONG_REVISION                                :{WHITE}Phiên bản của máy trạm không hợp với phiên bản máy server
 STR_NETWORK_ERROR_WRONG_PASSWORD                                :{WHITE}Sai mật khẩu
+STR_NETWORK_ERROR_NOT_ON_ALLOW_LIST                             :{WHITE}Bạn không có trong danh sách máy khách được cho phép
 STR_NETWORK_ERROR_SERVER_FULL                                   :{WHITE}Server bị đầy
 STR_NETWORK_ERROR_SERVER_BANNED                                 :{WHITE}Bạn bị từ chối ở server này
 STR_NETWORK_ERROR_KICKED                                        :{WHITE}Bạn bị đá khỏi ván chơi
@@ -2601,6 +2602,7 @@ STR_NETWORK_ERROR_CLIENT_NOT_EXPECTED                           :nhận được
 STR_NETWORK_ERROR_CLIENT_WRONG_REVISION                         :sai phiên bản
 STR_NETWORK_ERROR_CLIENT_NAME_IN_USE                            :tên đã dùng rồi
 STR_NETWORK_ERROR_CLIENT_WRONG_PASSWORD                         :sai mật khẩu
+STR_NETWORK_ERROR_CLIENT_NOT_ON_ALLOW_LIST                      :không có trong danh sách cho phép
 STR_NETWORK_ERROR_CLIENT_COMPANY_MISMATCH                       :sai công ty trong DoCommand
 STR_NETWORK_ERROR_CLIENT_KICKED                                 :bí đá bởi server
 STR_NETWORK_ERROR_CLIENT_CHEATER                                :đã cố sử dụng cheat

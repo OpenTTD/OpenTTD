@@ -935,7 +935,7 @@ STR_NEWS_EXCLUSIVE_RIGHTS_DESCRIPTION_MONTHS                    :{BIG_FONT}{BLAC
 STR_NEWS_EXCLUSIVE_RIGHTS_DESCRIPTION_MINUTES                   :{BIG_FONT}{BLACK}A autoridade local de {TOWN} assinou um contrato com {STRING} concedendo 12 minutos de direitos exclusivos de transporte!
 
 # Extra view window
-STR_EXTRA_VIEWPORT_TITLE                                        :{WHITE}Janela de visualização {COMMA}
+STR_EXTRA_VIEWPORT_TITLE                                        :{WHITE}Visualização {COMMA}
 STR_EXTRA_VIEW_MOVE_VIEW_TO_MAIN                                :{BLACK}Mudar a visualização
 STR_EXTRA_VIEW_MOVE_VIEW_TO_MAIN_TT                             :{BLACK}Copiar a localização da visualização principal para esta visualização
 STR_EXTRA_VIEW_MOVE_MAIN_TO_VIEW                                :{BLACK}Mudar a visualização principal
@@ -1838,7 +1838,7 @@ STR_CONFIG_SETTING_SERVINT_VALUE                                :{COMMA}{NBSP}Di
 STR_CONFIG_SETTING_SERVINT_DISABLED                             :Desativado
 
 STR_CONFIG_SETTING_NOSERVICE                                    :Desativar manutenção quando as quebras estão desativadas: {STRING}
-STR_CONFIG_SETTING_NOSERVICE_HELPTEXT                           :Quando ativado, veículos não recebem manutenção se não puderem quebrar
+STR_CONFIG_SETTING_NOSERVICE_HELPTEXT                           :Quando ativado, veículos não recebem manutenção se não podem quebrar
 
 STR_CONFIG_SETTING_STATION_LENGTH_LOADING_PENALTY               :Penalidade de velocidade de carregamento para trens que são mais longos que a estação: {STRING}
 STR_CONFIG_SETTING_STATION_LENGTH_LOADING_PENALTY_HELPTEXT      :Quando ativado, os trens que são muito compridos para a estação demoram mais tempo para carregar do que um trem que cabe na estação. Esta configuração não afeta a geração de rotas
@@ -1883,7 +1883,7 @@ STR_CONFIG_SETTING_NEWS_INDUSTRY_CHANGES_UNSERVED               :Mudanças na pr
 STR_CONFIG_SETTING_NEWS_INDUSTRY_CHANGES_UNSERVED_HELPTEXT      :Mostrar um jornal quando ocorre alteração no nível de produção das indústrias que não são atendidas pela empresa ou por concorrentes
 
 STR_CONFIG_SETTING_NEWS_ADVICE                                  :Avisos / informações sobre os veículos da empresa: {STRING}
-STR_CONFIG_SETTING_NEWS_ADVICE_HELPTEXT                         :Mostrar mensagens sobre veículos que requerem atenção
+STR_CONFIG_SETTING_NEWS_ADVICE_HELPTEXT                         :Mostrar mensagens sobre veículos que precisam de atenção
 
 STR_CONFIG_SETTING_NEWS_NEW_VEHICLES                            :Novos veículos: {STRING}
 STR_CONFIG_SETTING_NEWS_NEW_VEHICLES_HELPTEXT                   :Mostrar um jornal quando um novo tipo de veículo é disponibilizado
@@ -3622,9 +3622,9 @@ STR_TOWN_VIEW_CARGO_LAST_MINUTE_MAX                             :{BLACK}{CARGO_L
 STR_TOWN_VIEW_CARGO_FOR_TOWNGROWTH                              :{BLACK}Requisitos para o crescimento da localidade:
 STR_TOWN_VIEW_CARGO_FOR_TOWNGROWTH_REQUIRED_GENERAL             :{ORANGE}{STRING}{RED} necessário
 STR_TOWN_VIEW_CARGO_FOR_TOWNGROWTH_REQUIRED_WINTER              :{ORANGE}{STRING}{BLACK} necessário no inverno
-STR_TOWN_VIEW_CARGO_FOR_TOWNGROWTH_DELIVERED_GENERAL            :{ORANGE}{STRING}{GREEN} entregado
+STR_TOWN_VIEW_CARGO_FOR_TOWNGROWTH_DELIVERED_GENERAL            :{ORANGE}{STRING}{GREEN} entregue
 STR_TOWN_VIEW_CARGO_FOR_TOWNGROWTH_REQUIRED                     :{ORANGE}{CARGO_TINY} / {CARGO_LONG}{RED} (ainda necessário)
-STR_TOWN_VIEW_CARGO_FOR_TOWNGROWTH_DELIVERED                    :{ORANGE}{CARGO_TINY} / {CARGO_LONG}{GREEN} (entregado)
+STR_TOWN_VIEW_CARGO_FOR_TOWNGROWTH_DELIVERED                    :{ORANGE}{CARGO_TINY} / {CARGO_LONG}{GREEN} (entregue)
 STR_TOWN_VIEW_TOWN_GROWS_EVERY                                  :{BLACK}Localidade cresce a cada {ORANGE}{UNITS_DAYS_OR_SECONDS}
 STR_TOWN_VIEW_TOWN_GROWS_EVERY_FUNDED                           :{BLACK}Localidade cresce a cada {ORANGE}{UNITS_DAYS_OR_SECONDS} (financiada)
 STR_TOWN_VIEW_TOWN_GROW_STOPPED                                 :{BLACK}Localidade {RED}não{BLACK} está crescendo
@@ -3762,9 +3762,9 @@ STR_STATION_VIEW_CAPTION                                        :{WHITE}{STATION
 STR_STATION_VIEW_WAITING_CARGO                                  :{WHITE}{CARGO_LONG}
 STR_STATION_VIEW_RESERVED                                       :{YELLOW}({CARGO_SHORT} reservado para carregamento)
 
-STR_STATION_VIEW_ACCEPTS_BUTTON                                 :{BLACK}Aceitas
+STR_STATION_VIEW_ACCEPTS_BUTTON                                 :{BLACK}Aceita
 STR_STATION_VIEW_ACCEPTS_TOOLTIP                                :{BLACK}Mostrar lista de cargas que são aceitas
-STR_STATION_VIEW_ACCEPTS_CARGO                                  :{BLACK}Aceitas: {WHITE}{CARGO_LIST}
+STR_STATION_VIEW_ACCEPTS_CARGO                                  :{BLACK}Aceita: {WHITE}{CARGO_LIST}
 
 STR_STATION_VIEW_EXCLUSIVE_RIGHTS_SELF                          :{BLACK}Esta estação tem direitos exclusivos de transporte nesta localidade.
 STR_STATION_VIEW_EXCLUSIVE_RIGHTS_COMPANY                       :{YELLOW}{COMPANY}{BLACK} adquiriu direitos exclusivos de transporte nesta localidade.
@@ -5451,9 +5451,9 @@ STR_SV_STNAME_NORTH                                             :{STRING} Norte
 STR_SV_STNAME_SOUTH                                             :{STRING} Sul
 STR_SV_STNAME_EAST                                              :{STRING} Leste
 STR_SV_STNAME_WEST                                              :{STRING} Oeste
-STR_SV_STNAME_CENTRAL                                           :{STRING} Centro
+STR_SV_STNAME_CENTRAL                                           :{STRING} Central
 STR_SV_STNAME_TRANSFER                                          :{STRING} Transbordo
-STR_SV_STNAME_HALT                                              :{STRING} Parada
+STR_SV_STNAME_HALT                                              :{STRING} Terminal
 STR_SV_STNAME_VALLEY                                            :{STRING} Vale
 STR_SV_STNAME_HEIGHTS                                           :{STRING} Colinas
 STR_SV_STNAME_WOODS                                             :{STRING} Bosque
