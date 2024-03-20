@@ -116,6 +116,28 @@ static void SettingsValueAbsolute(const IntSettingDesc &sd, uint first_param, in
 	SetDParam(first_param + 1, abs(value));
 }
 
+/** Service Interval Settings Default Value displays the correct units or as a percentage */
+static void ServiceIntervalSettingsValueText(const IntSettingDesc &sd, uint first_param, int32_t value)
+{
+	VehicleDefaultSettings *vds;
+	if (_game_mode == GM_MENU || !Company::IsValidID(_current_company)) {
+		vds = &_settings_client.company.vehicle;
+	} else {
+		vds = &Company::Get(_current_company)->settings.vehicle;
+	}
+
+	if (value == 0) {
+		SetDParam(first_param, sd.str_val + 3);
+	} else if (vds->servint_ispercent) {
+		SetDParam(first_param, sd.str_val + 2);
+	} else if (TimerGameEconomy::UsingWallclockUnits(_game_mode == GM_MENU)) {
+		SetDParam(first_param, sd.str_val + 1);
+	} else {
+		SetDParam(first_param, sd.str_val);
+	}
+	SetDParam(first_param + 1, value);
+}
+
 /** Reposition the main toolbar as the setting changed. */
 static void v_PositionMainToolbar(int32_t)
 {
