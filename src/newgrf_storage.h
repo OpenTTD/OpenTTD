@@ -61,11 +61,13 @@ private:
  * Class for persistent storage of data.
  * On #ClearChanges that data is either reverted or saved.
  * @tparam TYPE the type of variable to store.
- * @tparam SIZE the size of the array.
  */
-template <typename TYPE, uint SIZE>
+template <typename TYPE>
 struct PersistentStorageArray : BasePersistentStorageArray {
-	using StorageType = std::array<TYPE, SIZE>;
+	using KeyType = uint16_t;
+	using ElementType = TYPE;
+	using StorageType = std::unordered_map<KeyType, ElementType>;
+	static constexpr uint MAX_SIZE = std::numeric_limits<KeyType>::max();
 
 	StorageType storage{}; ///< Memory for the storage array
 	std::unique_ptr<StorageType> prev_storage{}; ///< Temporary memory to store previous state so it can be reverted, e.g. for command tests.
@@ -77,14 +79,19 @@ struct PersistentStorageArray : BasePersistentStorageArray {
 	 * @param pos   the position to write at
 	 * @param value the value to write
 	 */
-	void StoreValue(uint pos, int32_t value)
+	void StoreValue(uint pos, ElementType value)
 	{
 		/* Out of the scope of the array */
-		if (pos >= SIZE) return;
+		if (pos > MAX_SIZE) return;
 
 		/* The value hasn't changed, so we pretend nothing happened.
 		 * Saves a few cycles and such and it's pretty easy to check. */
-		if (this->storage[pos] == value) return;
+		auto found = this->storage.find(pos);
+		if (found == std::end(this->storage)) {
+			if (value == 0) return;
+		} else {
+			if (value == found->second) return;
+		}
 
 		/* We do not have made a backup; lets do so */
 		if (AreChangesPersistent()) {
@@ -108,9 +115,12 @@ struct PersistentStorageArray : BasePersistentStorageArray {
 	TYPE GetValue(uint pos) const
 	{
 		/* Out of the scope of the array */
-		if (pos >= SIZE) return 0;
+		if (pos > MAX_SIZE) return 0;
 
-		return this->storage[pos];
+		auto found = this->storage.find(pos);
+		if (found == std::end(this->storage)) return 0;
+
+		return found->second;
 	}
 
 	void ClearChanges() override
@@ -184,8 +194,6 @@ struct TemporaryStorageArray {
 
 void AddChangedPersistentStorage(BasePersistentStorageArray *storage);
 
-typedef PersistentStorageArray<int32_t, 16> OldPersistentStorage;
-
 typedef uint32_t PersistentStorageID;
 
 struct PersistentStorage;
@@ -196,7 +204,7 @@ extern PersistentStoragePool _persistent_storage_pool;
 /**
  * Class for pooled persistent storage of data.
  */
-struct PersistentStorage : PersistentStorageArray<int32_t, 256>, PersistentStoragePool::PoolItem<&_persistent_storage_pool> {
+struct PersistentStorage : PersistentStorageArray<int32_t>, PersistentStoragePool::PoolItem<&_persistent_storage_pool> {
 	/** We don't want GCC to zero our struct! It already is zeroed and has an index! */
 	PersistentStorage(const uint32_t new_grfid, uint8_t feature, TileIndex tile)
 	{
@@ -206,6 +214,7 @@ struct PersistentStorage : PersistentStorageArray<int32_t, 256>, PersistentStora
 	}
 };
 
-static_assert(std::tuple_size_v<decltype(OldPersistentStorage::storage)> <= std::tuple_size_v<decltype(PersistentStorage::storage)>);
+/* storage_sl.cpp */
+PersistentStorage *ConvertOldPersistentStorage(std::span<const PersistentStorage::ElementType> old_storage);
 
 #endif /* NEWGRF_STORAGE_H */
