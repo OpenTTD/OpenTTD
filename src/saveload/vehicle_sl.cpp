@@ -832,6 +832,10 @@ public:
 
 class SlVehicleRoadVeh : public DefaultSaveLoadHandler<SlVehicleRoadVeh, Vehicle> {
 public:
+	/* RoadVehicle path is stored in std::pair which cannot be directly saved. */
+	static inline std::vector<Trackdir> rv_path_td;
+	static inline std::vector<TileIndex> rv_path_tile;
+
 	inline static const SaveLoad description[] = {
 		  SLEG_STRUCT("common", SlVehicleCommon),
 		      SLE_VAR(RoadVehicle, state,                SLE_UINT8),
@@ -841,22 +845,56 @@ public:
 		      SLE_VAR(RoadVehicle, overtaking_ctr,       SLE_UINT8),
 		      SLE_VAR(RoadVehicle, crashed_ctr,          SLE_UINT16),
 		      SLE_VAR(RoadVehicle, reverse_ctr,          SLE_UINT8),
-		SLE_CONDDEQUE(RoadVehicle, path.td,              SLE_UINT8,                  SLV_ROADVEH_PATH_CACHE, SL_MAX_VERSION),
-		SLE_CONDDEQUE(RoadVehicle, path.tile,            SLE_UINT32,                 SLV_ROADVEH_PATH_CACHE, SL_MAX_VERSION),
+		SLEG_CONDVECTOR("path.td", rv_path_td,          SLE_UINT8,                  SLV_ROADVEH_PATH_CACHE, SL_MAX_VERSION),
+		SLEG_CONDVECTOR("path.tile", rv_path_tile,      SLE_UINT32,                 SLV_ROADVEH_PATH_CACHE, SL_MAX_VERSION),
 		  SLE_CONDVAR(RoadVehicle, gv_flags,             SLE_UINT16,                 SLV_139, SL_MAX_VERSION),
 	};
 	inline const static SaveLoadCompatTable compat_description = _vehicle_roadveh_sl_compat;
 
+	void ClearPathCache() const
+	{
+		rv_path_td.clear();
+		rv_path_tile.clear();
+	}
+
+	void SplitPathCache(RoadVehicle *rv) const
+	{
+		for (const auto &pair : rv->path) {
+			rv_path_td.push_back(pair.dir);
+			rv_path_tile.push_back(pair.tile);
+		}
+	}
+
+	void JoinPathCache(RoadVehicle *rv) const
+	{
+		size_t n = std::min(rv_path_td.size(), rv_path_tile.size());
+		if (n == 0) return;
+
+		rv->path.reserve(n);
+		for (size_t c = 0; c < n; ++c) {
+			rv->path.emplace_back(rv_path_td[c], rv_path_tile[c]);
+		}
+
+		if (IsSavegameVersionBefore(SLV_PATH_CACHE_FORMAT)) {
+			/* Path cache is now taken from back instead of front, so needs reversing. */
+			std::reverse(std::begin(rv->path), std::end(rv->path));
+		}
+	}
+
 	void Save(Vehicle *v) const override
 	{
 		if (v->type != VEH_ROAD) return;
+		ClearPathCache();
+		SplitPathCache(static_cast<RoadVehicle *>(v));
 		SlObject(v, this->GetDescription());
 	}
 
 	void Load(Vehicle *v) const override
 	{
 		if (v->type != VEH_ROAD) return;
+		ClearPathCache();
 		SlObject(v, this->GetLoadDescription());
+		JoinPathCache(static_cast<RoadVehicle *>(v));
 	}
 
 	void FixPointers(Vehicle *v) const override
@@ -871,7 +909,7 @@ public:
 	inline static const SaveLoad description[] = {
 		  SLEG_STRUCT("common", SlVehicleCommon),
 		      SLE_VAR(Ship, state,                     SLE_UINT8),
-		SLE_CONDDEQUE(Ship, path,                      SLE_UINT8,                  SLV_SHIP_PATH_CACHE, SL_MAX_VERSION),
+		SLE_CONDVECTOR(Ship, path,                      SLE_UINT8,                  SLV_SHIP_PATH_CACHE, SL_MAX_VERSION),
 		  SLE_CONDVAR(Ship, rotation,                  SLE_UINT8,                  SLV_SHIP_ROTATION, SL_MAX_VERSION),
 	};
 	inline const static SaveLoadCompatTable compat_description = _vehicle_ship_sl_compat;
@@ -886,6 +924,12 @@ public:
 	{
 		if (v->type != VEH_SHIP) return;
 		SlObject(v, this->GetLoadDescription());
+
+		if (IsSavegameVersionBefore(SLV_PATH_CACHE_FORMAT)) {
+			/* Path cache is now taken from back instead of front, so needs reversing. */
+			Ship *s = static_cast<Ship *>(v);
+			std::reverse(std::begin(s->path), std::end(s->path));
+		}
 	}
 
 	void FixPointers(Vehicle *v) const override
