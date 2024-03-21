@@ -399,8 +399,8 @@ STR_TOOLBAR_TOOLTIP_DISPLAY_LIST_OF_COMPANY_TRAINS              :{BLACK}Abrir li
 STR_TOOLBAR_TOOLTIP_DISPLAY_LIST_OF_COMPANY_ROAD_VEHICLES       :{BLACK}Abrir lista de veículos da empresa. Ctrl+Clique para mostrar ou ocultar grupos de veículos, oposto da configuração escolhida
 STR_TOOLBAR_TOOLTIP_DISPLAY_LIST_OF_COMPANY_SHIPS               :{BLACK}Abrir lista de embarcações da empresa. Ctrl+Clique para mostrar ou ocultar grupos de veículos, oposto da configuração escolhida
 STR_TOOLBAR_TOOLTIP_DISPLAY_LIST_OF_COMPANY_AIRCRAFT            :{BLACK}Abrir lista de aeronaves da empresa. Ctrl+Clique para mostrar ou ocultar grupos de veículos, oposto da configuração escolhida
-STR_TOOLBAR_TOOLTIP_ZOOM_THE_VIEW_IN                            :{BLACK}Aproximar a visão
-STR_TOOLBAR_TOOLTIP_ZOOM_THE_VIEW_OUT                           :{BLACK}Afastar a visão
+STR_TOOLBAR_TOOLTIP_ZOOM_THE_VIEW_IN                            :{BLACK}Ampliar
+STR_TOOLBAR_TOOLTIP_ZOOM_THE_VIEW_OUT                           :{BLACK}Reduzir
 STR_TOOLBAR_TOOLTIP_BUILD_RAILROAD_TRACK                        :{BLACK}Construir infraestrutura ferroviária
 STR_TOOLBAR_TOOLTIP_BUILD_ROADS                                 :{BLACK}Construir infraestrutura rodoviária
 STR_TOOLBAR_TOOLTIP_BUILD_TRAMWAYS                              :{BLACK}Construir infraestrutura para bondes
@@ -856,7 +856,7 @@ STR_NEWS_COMPANY_MERGER_TITLE                                   :{BIG_FONT}{BLAC
 STR_NEWS_COMPANY_MERGER_DESCRIPTION                             :{BIG_FONT}{BLACK}{STRING} foi vendida para {STRING} por {CURRENCY_LONG}!
 STR_NEWS_COMPANY_BANKRUPT_TITLE                                 :{BIG_FONT}{BLACK}Falência!
 STR_NEWS_COMPANY_BANKRUPT_DESCRIPTION                           :{BIG_FONT}{BLACK}{STRING} foi fechada pelos credores e todos os seus bens foram vendidos!
-STR_NEWS_COMPANY_LAUNCH_TITLE                                   :{BIG_FONT}{BLACK}Nova empresa de transportes foi lançada!
+STR_NEWS_COMPANY_LAUNCH_TITLE                                   :{BIG_FONT}{BLACK}Nova empresa de transportes!
 STR_NEWS_COMPANY_LAUNCH_DESCRIPTION                             :{BIG_FONT}{BLACK}{STRING} inicia construção perto de {TOWN}!
 STR_NEWS_MERGER_TAKEOVER_TITLE                                  :{BIG_FONT}{BLACK}{STRING} foi comprada por {STRING} por um valor não revelado!
 STR_PRESIDENT_NAME_MANAGER                                      :{BLACK}{PRESIDENT_NAME}{}(Gerente)
@@ -880,7 +880,7 @@ STR_NEWS_INDUSTRY_PRODUCTION_INCREASE_COAL                      :{BIG_FONT}{BLAC
 STR_NEWS_INDUSTRY_PRODUCTION_INCREASE_OIL                       :{BIG_FONT}{BLACK}Novas reservas de petróleo encontradas n{G o a} {INDUSTRY}!{}A produção deverá duplicar!
 STR_NEWS_INDUSTRY_PRODUCTION_INCREASE_FARM                      :{BIG_FONT}{BLACK}Métodos agrícolas aperfeiçoados na {INDUSTRY} deverão duplicar a produção!
 STR_NEWS_INDUSTRY_PRODUCTION_INCREASE_SMOOTH                    :{BIG_FONT}{BLACK}Produção de {STRING} n{G o a} {INDUSTRY} aumenta {COMMA}%!
-STR_NEWS_INDUSTRY_PRODUCTION_DECREASE_GENERAL                   :{BIG_FONT}{BLACK}A produção de {INDUSTRY} foi reduzida em 50%
+STR_NEWS_INDUSTRY_PRODUCTION_DECREASE_GENERAL                   :{BIG_FONT}{BLACK}A produção de {INDUSTRY} diminui 50%
 STR_NEWS_INDUSTRY_PRODUCTION_DECREASE_FARM                      :{BIG_FONT}{BLACK}Infestação de insetos causa destruição n{G o a} {INDUSTRY}!{}Produção diminui 50%
 STR_NEWS_INDUSTRY_PRODUCTION_DECREASE_SMOOTH                    :{BIG_FONT}{BLACK}Produção de {STRING} n{G o a} {INDUSTRY} diminui {COMMA}%!
 
@@ -1918,8 +1918,8 @@ STR_CONFIG_SETTING_ECONOMY_TYPE_ORIGINAL                        :Original
 STR_CONFIG_SETTING_ECONOMY_TYPE_SMOOTH                          :Suave
 STR_CONFIG_SETTING_ECONOMY_TYPE_FROZEN                          :Congelada
 
-STR_CONFIG_SETTING_FEEDER_PAYMENT_SHARE                         :Porcentagem do lucro da etapa a pagar em sistemas de transbordo: {STRING}
-STR_CONFIG_SETTING_FEEDER_PAYMENT_SHARE_HELPTEXT                :Porcentagem da receita dada às etapas intermediárias em sistemas de transbordo, dando maior controle sobre a renda
+STR_CONFIG_SETTING_FEEDER_PAYMENT_SHARE                         :Porcentagem da renda da etapa a ser paga em sistemas de transbordo: {STRING}
+STR_CONFIG_SETTING_FEEDER_PAYMENT_SHARE_HELPTEXT                :Porcentagem da receita dada às etapas intermediárias em sistemas de transbordo, proporcionando maior controle sobre a receita
 
 STR_CONFIG_SETTING_DRAG_SIGNALS_DENSITY                         :Quando arrastar, colocar sinais a cada: {STRING}
 STR_CONFIG_SETTING_DRAG_SIGNALS_DENSITY_HELPTEXT                :Definir a distância na qual os sinais serão construídos em uma linha até o próximo obstáculo (sinal, junção), quando colocar sinais arrastando
@@ -1956,7 +1956,7 @@ STR_CONFIG_SETTING_ALLOW_TOWN_ROADS_HELPTEXT                    :Permitir que lo
 STR_CONFIG_SETTING_ALLOW_TOWN_LEVEL_CROSSINGS                   :Localidades podem construir passagens de nível: {STRING}
 STR_CONFIG_SETTING_ALLOW_TOWN_LEVEL_CROSSINGS_HELPTEXT          :Ativando esta configuração, as localidades poderão construir passagens de nível
 
-STR_CONFIG_SETTING_NOISE_LEVEL                                  :Limitar a localização do aeroporto em função do nível de ruído: {STRING}
+STR_CONFIG_SETTING_NOISE_LEVEL                                  :Limitar a colocação de aeroportos com base no nível de ruído: {STRING}
 STR_CONFIG_SETTING_NOISE_LEVEL_HELPTEXT                         :Permitir que as localidades impeçam a construção de aeroportos em função do nível de aceitação de ruído, que é baseado no total de habitantes da localidade e no tamanho e distância do aeroporto. Se esta configuração estiver desativada, as localidades permitirão somente dois aeroportos, a menos que a atitude da autoridade local esteja definida como "Permissiva"
 
 STR_CONFIG_SETTING_TOWN_FOUNDING                                :Fundar localidades no jogo: {STRING}
@@ -1996,9 +1996,9 @@ STR_CONFIG_SETTING_SOFT_LIMIT_VALUE                             :{COMMA}
 STR_CONFIG_SETTING_SOFT_LIMIT_DISABLED                          :desativado
 
 STR_CONFIG_SETTING_ZOOM_MIN                                     :Nível máximo de ampliação: {STRING}
-STR_CONFIG_SETTING_ZOOM_MIN_HELPTEXT                            :Nível máximo de ampliação para visualizações. Níveis de ampliação muito grandes aumentam o uso de memória
+STR_CONFIG_SETTING_ZOOM_MIN_HELPTEXT                            :Limite de ampliação para visualizações. Níveis de ampliação muito grandes aumentam o uso de memória
 STR_CONFIG_SETTING_ZOOM_MAX                                     :Nível máximo de redução: {STRING}
-STR_CONFIG_SETTING_ZOOM_MAX_HELPTEXT                            :Nível máximo de redução para visualizações. Níveis de redução muito grandes podem causar atrasos quando utilizados
+STR_CONFIG_SETTING_ZOOM_MAX_HELPTEXT                            :Limite de redução para visualizações. Níveis de redução muito grandes podem causar atrasos quando utilizados
 ###length 6
 STR_CONFIG_SETTING_ZOOM_LVL_MIN                                 :4x
 STR_CONFIG_SETTING_ZOOM_LVL_IN_2X                               :2x
@@ -2008,7 +2008,7 @@ STR_CONFIG_SETTING_ZOOM_LVL_OUT_4X                              :4x
 STR_CONFIG_SETTING_ZOOM_LVL_OUT_8X                              :8x
 
 STR_CONFIG_SETTING_SPRITE_ZOOM_MIN                              :Resolução máxima de sprites: {STRING}
-STR_CONFIG_SETTING_SPRITE_ZOOM_MIN_HELPTEXT                     :Limita a resolução máxima a ser usada para sprites. Limitar a resolução de sprites evitará o uso de gráficos de alta resolução, mesmo quando estiverem disponíveis. Isso pode ajudar a manter o jogo com uma aparência unificada quando usar uma mistura de arquivos GRF com e sem gráficos de alta resolução
+STR_CONFIG_SETTING_SPRITE_ZOOM_MIN_HELPTEXT                     :Limite de resolução máxima a ser usada para sprites. Limitar a resolução de sprites evitará o uso de gráficos de alta resolução, mesmo quando estiverem disponíveis. Isso pode ajudar a manter o jogo com uma aparência unificada quando usar uma mistura de arquivos GRF com e sem gráficos de alta resolução
 ###length 3
 STR_CONFIG_SETTING_SPRITE_ZOOM_LVL_MIN                          :4x
 STR_CONFIG_SETTING_SPRITE_ZOOM_LVL_IN_2X                        :2x
@@ -2170,7 +2170,7 @@ STR_CONFIG_ERROR_SPRITECACHE_TOO_BIG                            :{WHITE}Falha ao
 # Video initalization errors
 STR_VIDEO_DRIVER_ERROR                                          :{WHITE}Erro nas configurações de vídeo...
 STR_VIDEO_DRIVER_ERROR_NO_HARDWARE_ACCELERATION                 :{WHITE}... nenhuma GPU compatível encontrada. Aceleração por hardware desativada
-STR_VIDEO_DRIVER_ERROR_HARDWARE_ACCELERATION_CRASH              :{WHITE}... O controlador gráfico (GPU) travou o jogo. Aceleração por hardware desativada
+STR_VIDEO_DRIVER_ERROR_HARDWARE_ACCELERATION_CRASH              :{WHITE}... o controlador gráfico (GPU) travou o jogo. Aceleração por hardware desativada
 
 # Intro window
 STR_INTRO_CAPTION                                               :{WHITE}OpenTTD {REV}
@@ -2639,7 +2639,7 @@ STR_NETWORK_MESSAGE_CLIENT_COMPANY_JOIN                         :*** {0:STRING} 
 STR_NETWORK_MESSAGE_CLIENT_COMPANY_SPECTATE                     :*** {STRING} entrou como espectador
 STR_NETWORK_MESSAGE_CLIENT_COMPANY_NEW                          :*** {0:STRING} iniciou uma nova empresa (#{2:NUM})
 STR_NETWORK_MESSAGE_CLIENT_LEFT                                 :*** {0:STRING} saiu do jogo ({2:STRING})
-STR_NETWORK_MESSAGE_NAME_CHANGE                                 :*** {STRING} mudou seu nome para {STRING}
+STR_NETWORK_MESSAGE_NAME_CHANGE                                 :*** {STRING} mudou o nome para {STRING}
 STR_NETWORK_MESSAGE_GIVE_MONEY                                  :*** {0:STRING} deu {2:CURRENCY_LONG} para {1:STRING}
 STR_NETWORK_MESSAGE_SERVER_SHUTDOWN                             :{WHITE}O servidor fechou a sessão
 STR_NETWORK_MESSAGE_SERVER_REBOOT                               :{WHITE}O servidor está reiniciando...{}Aguarde...
@@ -2715,7 +2715,7 @@ STR_CONTENT_DOWNLOAD_COMPLETE                                   :{WHITE}Concluí
 STR_CONTENT_DOWNLOAD_PROGRESS_SIZE                              :{WHITE}{BYTES} de {BYTES} foram baixados ({NUM} %)
 
 # Content downloading error messages
-STR_CONTENT_ERROR_COULD_NOT_CONNECT                             :{WHITE}Não foi possível conectar ao servidor...
+STR_CONTENT_ERROR_COULD_NOT_CONNECT                             :{WHITE}Não foi possível conectar ao servidor de conteúdo...
 STR_CONTENT_ERROR_COULD_NOT_DOWNLOAD                            :{WHITE}O download falhou...
 STR_CONTENT_ERROR_COULD_NOT_DOWNLOAD_FILE_NOT_WRITABLE          :{WHITE}... arquivo não pode ser gravado
 STR_CONTENT_ERROR_COULD_NOT_EXTRACT                             :{WHITE}Falha na descompactação do arquivo
@@ -4987,7 +4987,7 @@ STR_ERROR_CAN_T_CHANGE_PRESIDENT                                :{WHITE}Não é 
 
 STR_ERROR_MAXIMUM_PERMITTED_LOAN                                :{WHITE}... o valor máximo de empréstimo permitido é {CURRENCY_LONG}
 STR_ERROR_CAN_T_BORROW_ANY_MORE_MONEY                           :{WHITE}Não é possível pedir mais dinheiro emprestado...
-STR_ERROR_LOAN_ALREADY_REPAYED                                  :{WHITE}... não há empréstimo para pagar
+STR_ERROR_LOAN_ALREADY_REPAYED                                  :{WHITE}... não existe empréstimo para pagar
 STR_ERROR_CURRENCY_REQUIRED                                     :{WHITE}... é necessário {CURRENCY_LONG}
 STR_ERROR_CAN_T_REPAY_LOAN                                      :{WHITE}Não é possível pagar empréstimo...
 STR_ERROR_INSUFFICIENT_FUNDS                                    :{WHITE}Não é possível doar dinheiro proveniente de empréstimo bancário...
@@ -4996,14 +4996,14 @@ STR_ERROR_CAN_T_BUY_COMPANY                                     :{WHITE}Não é 
 STR_ERROR_CAN_T_BUILD_COMPANY_HEADQUARTERS                      :{WHITE}Não é possível construir sede da empresa...
 
 # Town related errors
-STR_ERROR_CAN_T_GENERATE_TOWN                                   :{WHITE}Não é possível construir localidades
+STR_ERROR_CAN_T_GENERATE_TOWN                                   :{WHITE}Não é possível construir localidades...
 STR_ERROR_CAN_T_RENAME_TOWN                                     :{WHITE}Não é possível renomear a localidade...
 STR_ERROR_CAN_T_FOUND_TOWN_HERE                                 :{WHITE}Não é possível fundar uma localidade aqui...
 STR_ERROR_CAN_T_EXPAND_TOWN                                     :{WHITE}Não é possível expandir a localidade...
 STR_ERROR_TOO_CLOSE_TO_EDGE_OF_MAP_SUB                          :{WHITE}... muito perto da borda do mapa
 STR_ERROR_TOO_CLOSE_TO_ANOTHER_TOWN                             :{WHITE}... muito perto de outra localidade
 STR_ERROR_TOO_MANY_TOWNS                                        :{WHITE}... há localidades demais
-STR_ERROR_NO_SPACE_FOR_TOWN                                     :{WHITE}... não existe mais espaço no mapa
+STR_ERROR_NO_SPACE_FOR_TOWN                                     :{WHITE}... não há mais espaço no mapa
 STR_ERROR_ROAD_WORKS_IN_PROGRESS                                :{WHITE}Trabalhos sendo realizados na estrada
 STR_ERROR_TOWN_CAN_T_DELETE                                     :{WHITE}Não é possível remover esta localidade...{}Uma estação ou depósito refere-se à localidade ou não é possível remover um quadrado que pertence à mesma
 STR_ERROR_STATUE_NO_SUITABLE_PLACE                              :{WHITE}... não há local adequado para uma estátua no centro desta localidade
@@ -5064,7 +5064,7 @@ STR_ERROR_CAN_T_REMOVE_TRUCK_STATION                            :{WHITE}Não é 
 STR_ERROR_CAN_T_REMOVE_PASSENGER_TRAM_STATION                   :{WHITE}Não é possível remover estação de bondes de passageiros...
 STR_ERROR_CAN_T_REMOVE_CARGO_TRAM_STATION                       :{WHITE}Não é possível remover estação de bondes de carga...
 STR_ERROR_MUST_REMOVE_ROAD_STOP_FIRST                           :{WHITE}É necessário remover o ponto de parada rodoviária primeiro
-STR_ERROR_THERE_IS_NO_STATION                                   :{WHITE}...não há estação aqui
+STR_ERROR_THERE_IS_NO_STATION                                   :{WHITE}...não existe uma estação aqui
 
 STR_ERROR_MUST_DEMOLISH_RAILROAD                                :{WHITE}É necessário demolir a estação ferroviária primeiro
 STR_ERROR_MUST_DEMOLISH_BUS_STATION_FIRST                       :{WHITE}É necessário demolir a estação de ônibus primeiro
@@ -5140,8 +5140,8 @@ STR_ERROR_CAN_T_BUILD_RAILROAD_TRACK                            :{WHITE}Não é 
 STR_ERROR_CAN_T_REMOVE_RAILROAD_TRACK                           :{WHITE}Não é possível remover ferrovia daqui...
 STR_ERROR_CAN_T_REMOVE_SIGNALS_FROM                             :{WHITE}Não é possível remover sinais daqui...
 STR_ERROR_SIGNAL_CAN_T_CONVERT_SIGNALS_HERE                     :{WHITE}Não é possível converter os sinais daqui...
-STR_ERROR_THERE_IS_NO_RAILROAD_TRACK                            :{WHITE}...não há ferrovia
-STR_ERROR_THERE_ARE_NO_SIGNALS                                  :{WHITE}...não há sinais
+STR_ERROR_THERE_IS_NO_RAILROAD_TRACK                            :{WHITE}...não existe uma ferrovia
+STR_ERROR_THERE_ARE_NO_SIGNALS                                  :{WHITE}...não existem sinais
 
 STR_ERROR_CAN_T_CONVERT_RAIL                                    :{WHITE}Não é possível converter o tipo de trilho daqui...
 
@@ -5152,8 +5152,8 @@ STR_ERROR_CAN_T_BUILD_ROAD_HERE                                 :{WHITE}Não é 
 STR_ERROR_CAN_T_BUILD_TRAMWAY_HERE                              :{WHITE}Não é possível construir linha de bonde aqui...
 STR_ERROR_CAN_T_REMOVE_ROAD_FROM                                :{WHITE}Não é possível remover estrada daqui...
 STR_ERROR_CAN_T_REMOVE_TRAMWAY_FROM                             :{WHITE}Não é possível remover linha de bonde daqui...
-STR_ERROR_THERE_IS_NO_ROAD                                      :{WHITE}... não há estrada
-STR_ERROR_THERE_IS_NO_TRAMWAY                                   :{WHITE}... não há linha de bonde
+STR_ERROR_THERE_IS_NO_ROAD                                      :{WHITE}... não existe uma estrada
+STR_ERROR_THERE_IS_NO_TRAMWAY                                   :{WHITE}... não existe uma linha de bonde
 STR_ERROR_CAN_T_CONVERT_ROAD                                    :{WHITE}Não é possível converter o tipo de estrada daqui...
 STR_ERROR_CAN_T_CONVERT_TRAMWAY                                 :{WHITE}Não é possível converter o tipo de linha de bonde daqui...
 STR_ERROR_NO_SUITABLE_ROAD                                      :{WHITE}Estrada não adequada
@@ -5275,7 +5275,7 @@ STR_ERROR_CAN_T_SELL_AIRCRAFT                                   :{WHITE}Não é 
 STR_ERROR_TOO_MANY_VEHICLES_IN_GAME                             :{WHITE}Há veículos demais no jogo
 STR_ERROR_CAN_T_CHANGE_SERVICING                                :{WHITE}Não é possível alterar o intervalo de manutenção...
 
-STR_ERROR_VEHICLE_IS_DESTROYED                                  :{WHITE}... o veículo está destruído
+STR_ERROR_VEHICLE_IS_DESTROYED                                  :{WHITE}... veículo está destruído
 
 STR_ERROR_CAN_T_CLONE_VEHICLE_LIST                              :{WHITE}... nem todos os veículos são idênticos
 
@@ -5322,7 +5322,7 @@ STR_ERROR_NO_DOCK                                               :{WHITE}Não exi
 STR_ERROR_NO_AIRPORT                                            :{WHITE}Não existe um aeroporto/heliporto
 STR_ERROR_NO_STOP_COMPATIBLE_ROAD_TYPE                          :{WHITE}Não existem paradas com um tipo de estrada compatível
 STR_ERROR_NO_STOP_COMPATIBLE_TRAM_TYPE                          :{WHITE}Não existem paradas com um tipo de bonde compatível
-STR_ERROR_NO_STOP_ARTICULATED_VEHICLE                           :{WHITE}Não existem paradas adequadas para veículos rodoviários articulados.{}Os veículos rodoviários articulados só podem parar em estações de passagem e não em estações padrão
+STR_ERROR_NO_STOP_ARTICULATED_VEHICLE                           :{WHITE}Não existem paradas adequadas para veículos rodoviários articulados.{}Veículos rodoviários articulados só podem parar em estações de passagem, não em estações padrão
 STR_ERROR_AIRPORT_NO_PLANES                                     :{WHITE}Este avião não pode pousar neste heliporto
 STR_ERROR_AIRPORT_NO_HELICOPTERS                                :{WHITE}Este helicóptero não pode pousar neste aeroporto
 STR_ERROR_NO_RAIL_WAYPOINT                                      :{WHITE}Não existe um ponto de controle ferroviário

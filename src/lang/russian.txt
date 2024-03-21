@@ -2725,6 +2725,7 @@ STR_NETWORK_ERROR_BAD_PLAYER_NAME                               :{WHITE}Не у�
 STR_NETWORK_ERROR_BAD_SERVER_NAME                               :{WHITE}Не указано имя сервера. Его можно ввести в верхней части окна «Сетевая игра».
 STR_NETWORK_ERROR_WRONG_REVISION                                :{WHITE}Версия этого клиента не совместима с версией сервера
 STR_NETWORK_ERROR_WRONG_PASSWORD                                :{WHITE}Неверный пароль
+STR_NETWORK_ERROR_NOT_ON_ALLOW_LIST                             :{WHITE}Ваш клиент отсутствует в списке разрешённых
 STR_NETWORK_ERROR_SERVER_FULL                                   :{WHITE}Сервер переполнен
 STR_NETWORK_ERROR_SERVER_BANNED                                 :{WHITE}Вас заблокировали на этом сервере
 STR_NETWORK_ERROR_KICKED                                        :{WHITE}Вас отключили от игры
@@ -2752,6 +2753,7 @@ STR_NETWORK_ERROR_CLIENT_NOT_EXPECTED                           :получен 
 STR_NETWORK_ERROR_CLIENT_WRONG_REVISION                         :версии не совпадают
 STR_NETWORK_ERROR_CLIENT_NAME_IN_USE                            :это имя уже используется
 STR_NETWORK_ERROR_CLIENT_WRONG_PASSWORD                         :неверный пароль
+STR_NETWORK_ERROR_CLIENT_NOT_ON_ALLOW_LIST                      :нет в списке разрешённых
 STR_NETWORK_ERROR_CLIENT_COMPANY_MISMATCH                       :неправильный параметр company в DoCommand
 STR_NETWORK_ERROR_CLIENT_KICKED                                 :вас выкинул сервер
 STR_NETWORK_ERROR_CLIENT_CHEATER                                :попытался применить чит

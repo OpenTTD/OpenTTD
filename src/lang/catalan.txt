@@ -2575,6 +2575,7 @@ STR_NETWORK_ERROR_BAD_PLAYER_NAME                               :{WHITE}No s'ha 
 STR_NETWORK_ERROR_BAD_SERVER_NAME                               :{WHITE}No s'ha establit un nom per al vostre servidor. El nom s'estableix a la part superior de la finestra multijugador.
 STR_NETWORK_ERROR_WRONG_REVISION                                :{WHITE}La revisió d'aquest client no concorda amb la revisió del servidor
 STR_NETWORK_ERROR_WRONG_PASSWORD                                :{WHITE}Contrasenya incorrecta
+STR_NETWORK_ERROR_NOT_ON_ALLOW_LIST                             :{WHITE}No esteu en la llista de clients permesos
 STR_NETWORK_ERROR_SERVER_FULL                                   :{WHITE}El servidor està ple
 STR_NETWORK_ERROR_SERVER_BANNED                                 :{WHITE}Estàs exclòs d'aquest servidor
 STR_NETWORK_ERROR_KICKED                                        :{WHITE}T'han fet fora de la partida
@@ -2602,6 +2603,7 @@ STR_NETWORK_ERROR_CLIENT_NOT_EXPECTED                           :s'ha rebut un p
 STR_NETWORK_ERROR_CLIENT_WRONG_REVISION                         :revisió incorrecta
 STR_NETWORK_ERROR_CLIENT_NAME_IN_USE                            :nom ja utilitzat
 STR_NETWORK_ERROR_CLIENT_WRONG_PASSWORD                         :contrasenya incorrecta
+STR_NETWORK_ERROR_CLIENT_NOT_ON_ALLOW_LIST                      :no en la llista de permesos
 STR_NETWORK_ERROR_CLIENT_COMPANY_MISMATCH                       :id-companyia erroni en DoCommand
 STR_NETWORK_ERROR_CLIENT_KICKED                                 :tret pel servidor
 STR_NETWORK_ERROR_CLIENT_CHEATER                                :s'ha intentat utilitzar una trampa
