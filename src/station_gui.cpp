@@ -94,7 +94,7 @@ void FindStationsAroundSelection()
 
 	/* If the current tile is already a station, then it must be the nearest station. */
 	if (IsTileType(location.tile, MP_STATION) && GetTileOwner(location.tile) == _local_company) {
-		T* st = T::GetByTile(location.tile);
+		T *st = T::GetByTile(location.tile);
 		if (st != nullptr) {
 			SetViewportCatchmentSpecializedStation<T>(st, true);
 			return;

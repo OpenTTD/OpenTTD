@@ -269,7 +269,7 @@ std::string TranslateTTDPatchCodes(uint32_t grfid, uint8_t language_id, bool all
 				continue;
 			}
 		} else {
-			c = (uint8_t)*src++;
+			c = static_cast<uint8_t>(*src++);
 		}
 
 		if (c == '\0') break;
@@ -305,8 +305,8 @@ std::string TranslateTTDPatchCodes(uint32_t grfid, uint8_t language_id, bool all
 			{
 				if (src[0] == '\0' || src[1] == '\0') goto string_end;
 				StringID string;
-				string = ((uint8_t)* src++);
-				string |= ((uint8_t)* src++) << 8;
+				string = static_cast<uint8_t>(*src++);
+				string |= static_cast<uint8_t>(*src++) << 8;
 				Utf8Encode(d, SCC_NEWGRF_STRINL);
 				Utf8Encode(d, MapGRFStringID(grfid, string));
 				break;
@@ -350,8 +350,8 @@ std::string TranslateTTDPatchCodes(uint32_t grfid, uint8_t language_id, bool all
 					case 0x03:
 					{
 						if (src[0] == '\0' || src[1] == '\0') goto string_end;
-						uint16_t tmp = ((uint8_t)* src++);
-						tmp |= ((uint8_t)* src++) << 8;
+						uint16_t tmp = static_cast<uint8_t>(*src++);
+						tmp |= static_cast<uint8_t>(*src++) << 8;
 						Utf8Encode(d, SCC_NEWGRF_PUSH_WORD);
 						Utf8Encode(d, tmp);
 						break;
