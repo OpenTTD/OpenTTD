@@ -1320,4 +1320,54 @@ inline void SlSkipBytes(size_t length)
 extern std::string _savegame_format;
 extern bool _do_autosave;
 
+/**
+ * Default handler for saving/loading a vector to/from disk.
+ *
+ * This handles a few common things for handlers, meaning the actual handler
+ * needs less code.
+ *
+ * @tparam TImpl The class initializing this template.
+ * @tparam TObject The class of the object using this SaveLoadHandler.
+ * @tparam TVectorObject The class of the object contained within the vector.
+ */
+template <class TImpl, class TObject, class TVectorObject>
+class VectorSaveLoadHandler : public DefaultSaveLoadHandler<TImpl, TObject> {
+public:
+	using TVector = std::vector<TVectorObject>;
+
+	/**
+	 * Get instance of vector to load/save.
+	 * @param object Object containing vector.
+	 * @returns Vector to load/save.
+	 */
+	virtual TVector &GetVector(TObject *object) const = 0;
+
+	/**
+	 * Get number of elements to load into vector.
+	 * @returns Number of elements to load into the vector.
+	 * @note This is only overridden if the number of elements comes from a different location due to savegame changes.
+	 */
+	virtual size_t GetLength() const { return SlGetStructListLength(SIZE_MAX); }
+
+	void Save(TObject *object) const override
+	{
+		TVector &vec = this->GetVector(object);
+		SlSetStructListLength(vec.size());
+		for (TVectorObject &item : vec) {
+			SlObject(&item, this->GetDescription());
+		}
+	}
+
+	void Load(TObject *object) const override
+	{
+		TVector &vec = this->GetVector(object);
+		size_t count = this->GetLength();
+		vec.reserve(count);
+		while (count-- > 0) {
+			TVectorObject &item = vec.emplace_back();
+			SlObject(&item, this->GetLoadDescription());
+		}
+	}
+};
+
 #endif /* SAVELOAD_H */
