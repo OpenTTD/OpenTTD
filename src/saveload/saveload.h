@@ -1314,4 +1314,55 @@ inline void SlSkipBytes(size_t length)
 extern std::string _savegame_format;
 extern bool _do_autosave;
 
+/**
+ * Default handler for saving/loading a vector to/from disk.
+ *
+ * This handles a few common things for handlers, meaning the actual handler
+ * needs less code.
+ *
+ * @tparam TImpl The class initializing this template.
+ * @tparam TObject The class of the object using this SaveLoadHandler.
+ * @tparam TElementType The type of the elements contained within the vector.
+ * @tparam MAX_LENGTH maximum number of elements to load.
+ */
+template <class TImpl, class TObject, class TElementType, size_t MAX_LENGTH = UINT32_MAX>
+class VectorSaveLoadHandler : public DefaultSaveLoadHandler<TImpl, TObject> {
+public:
+	/**
+	 * Get instance of vector to load/save.
+	 * @param object Object containing vector.
+	 * @returns Vector to load/save.
+	 */
+	virtual std::vector<TElementType> &GetVector(TObject *object) const = 0;
+
+	/**
+	 * Get number of elements to load into vector.
+	 * @returns Number of elements to load into the vector.
+	 * @note This is only overridden if the number of elements comes from a different location due to savegame changes.
+	 */
+	virtual size_t GetLength() const { return SlGetStructListLength(MAX_LENGTH); }
+
+	void Save(TObject *object) const override
+	{
+		auto &vector = this->GetVector(object);
+		SlSetStructListLength(vector.size());
+
+		for (auto &item : vector) {
+			SlObject(&item, this->GetDescription());
+		}
+	}
+
+	void Load(TObject *object) const override
+	{
+		auto &vector = this->GetVector(object);
+		size_t count = this->GetLength();
+
+		vector.reserve(count);
+		while (count-- > 0) {
+			auto &item = vector.emplace_back();
+			SlObject(&item, this->GetLoadDescription());
+		}
+	}
+};
+
 #endif /* SAVELOAD_H */

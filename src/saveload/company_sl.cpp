@@ -441,7 +441,7 @@ public:
 	void LoadCheck(CompanyProperties *c) const override { this->Load(c); }
 };
 
-class SlAllowListData : public DefaultSaveLoadHandler<SlAllowListData, CompanyProperties> {
+class SlAllowListData : public VectorSaveLoadHandler<SlAllowListData, CompanyProperties, std::string> {
 public:
 	struct KeyWrapper {
 		std::string key;
@@ -452,23 +452,7 @@ public:
 	};
 	inline const static SaveLoadCompatTable compat_description = {};
 
-	void Save(CompanyProperties *cprops) const override
-	{
-		SlSetStructListLength(cprops->allow_list.size());
-		for (std::string &str : cprops->allow_list) {
-			SlObject(&str, this->GetDescription());
-		}
-	}
-
-	void Load(CompanyProperties *cprops) const override
-	{
-		size_t num_keys = SlGetStructListLength(UINT32_MAX);
-		cprops->allow_list.clear();
-		cprops->allow_list.resize(num_keys);
-		for (std::string &str : cprops->allow_list) {
-			SlObject(&str, this->GetLoadDescription());
-		}
-	}
+	std::vector<std::string> &GetVector(CompanyProperties *cprops) const override { return cprops->allow_list; }
 
 	void LoadCheck(CompanyProperties *cprops) const override { this->Load(cprops); }
 };
