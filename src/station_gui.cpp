@@ -92,6 +92,15 @@ void FindStationsAroundSelection()
 	/* Tile area for TileHighlightData */
 	TileArea location(TileVirtXY(_thd.pos.x, _thd.pos.y), _thd.size.x / TILE_SIZE - 1, _thd.size.y / TILE_SIZE - 1);
 
+	/* If the current tile is already a station, then it must be the nearest station. */
+	if (IsTileType(location.tile, MP_STATION) && GetTileOwner(location.tile) == _local_company) {
+		T* st = T::GetByTile(location.tile);
+		if (st != nullptr) {
+			SetViewportCatchmentSpecializedStation<T>(st, true);
+			return;
+		}
+	}
+
 	/* Extended area by one tile */
 	uint x = TileX(location.tile);
 	uint y = TileY(location.tile);
