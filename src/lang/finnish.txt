@@ -2574,6 +2574,7 @@ STR_NETWORK_ERROR_BAD_PLAYER_NAME                               :{WHITE}Et ole a
 STR_NETWORK_ERROR_BAD_SERVER_NAME                               :{WHITE}Et ole asettanut palvelimesi nimeä. Nimen voi asettaa moninpeli-ikkunan ylälaidassa.
 STR_NETWORK_ERROR_WRONG_REVISION                                :{WHITE}Tämän asiakkaan versio ei vastaa palvelimen versiota
 STR_NETWORK_ERROR_WRONG_PASSWORD                                :{WHITE}Väärä salasana
+STR_NETWORK_ERROR_NOT_ON_ALLOW_LIST                             :{WHITE}Et ole sallittujen asiakkaiden listalla
 STR_NETWORK_ERROR_SERVER_FULL                                   :{WHITE}Palvelin on täynnä
 STR_NETWORK_ERROR_SERVER_BANNED                                 :{WHITE}Sinut on estetty palvelimelta
 STR_NETWORK_ERROR_KICKED                                        :{WHITE}Sinut potkittiin pihalle palvelimelta
@@ -2601,6 +2602,7 @@ STR_NETWORK_ERROR_CLIENT_NOT_EXPECTED                           :vastaanotettiin
 STR_NETWORK_ERROR_CLIENT_WRONG_REVISION                         :väärä revisio
 STR_NETWORK_ERROR_CLIENT_NAME_IN_USE                            :nimi on jo käytössä
 STR_NETWORK_ERROR_CLIENT_WRONG_PASSWORD                         :väärä salasana
+STR_NETWORK_ERROR_CLIENT_NOT_ON_ALLOW_LIST                      :ei sallittujen listalla
 STR_NETWORK_ERROR_CLIENT_COMPANY_MISMATCH                       :väärä company-id DoCommandissa
 STR_NETWORK_ERROR_CLIENT_KICKED                                 :palvelin potki pihalle
 STR_NETWORK_ERROR_CLIENT_CHEATER                                :yritti käyttää huijausta
@@ -4993,7 +4995,7 @@ STR_ERROR_CAN_T_BUY_COMPANY                                     :{WHITE}Yhtiöt�
 STR_ERROR_CAN_T_BUILD_COMPANY_HEADQUARTERS                      :{WHITE}Yhtiön päärakennusta ei voi rakentaa...
 
 # Town related errors
-STR_ERROR_CAN_T_GENERATE_TOWN                                   :{WHITE}Kuntia ei voi luoda
+STR_ERROR_CAN_T_GENERATE_TOWN                                   :{WHITE}Kuntia ei voida luoda…
 STR_ERROR_CAN_T_RENAME_TOWN                                     :{WHITE}Kunnan nimeä ei voi vaihtaa...
 STR_ERROR_CAN_T_FOUND_TOWN_HERE                                 :{WHITE}Kuntaa ei voi perustaa tähän...
 STR_ERROR_CAN_T_EXPAND_TOWN                                     :{WHITE}Kuntaa ei voi laajentaa...

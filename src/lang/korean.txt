@@ -2575,6 +2575,7 @@ STR_NETWORK_ERROR_BAD_PLAYER_NAME                               :{WHITE}접속�
 STR_NETWORK_ERROR_BAD_SERVER_NAME                               :{WHITE}서버 이름을 지정하지 않았습니다. 서버 이름은 멀티플레이 창 맨 위에서 설정할 수 있습니다.
 STR_NETWORK_ERROR_WRONG_REVISION                                :{WHITE}이 접속자의 게임 버전이 서버의 버전과 일치하지 않습니다
 STR_NETWORK_ERROR_WRONG_PASSWORD                                :{WHITE}잘못된 비밀번호입니다
+STR_NETWORK_ERROR_NOT_ON_ALLOW_LIST                             :{WHITE}접속이 허용된 접속자가 아닙니다
 STR_NETWORK_ERROR_SERVER_FULL                                   :{WHITE}서버에 인원이 가득 찼습니다
 STR_NETWORK_ERROR_SERVER_BANNED                                 :{WHITE}서버 관리자에 의해 접속이 차단되었습니다
 STR_NETWORK_ERROR_KICKED                                        :{WHITE}서버에서 강제로 추방되었습니다
@@ -2602,6 +2603,7 @@ STR_NETWORK_ERROR_CLIENT_NOT_EXPECTED                           :잘못된 패�
 STR_NETWORK_ERROR_CLIENT_WRONG_REVISION                         :잘못된 버전
 STR_NETWORK_ERROR_CLIENT_NAME_IN_USE                            :이미 사용중인 이름
 STR_NETWORK_ERROR_CLIENT_WRONG_PASSWORD                         :잘못된 비밀번호
+STR_NETWORK_ERROR_CLIENT_NOT_ON_ALLOW_LIST                      :접속이 허용되지 않음
 STR_NETWORK_ERROR_CLIENT_COMPANY_MISMATCH                       :DoCommand 구문 내의 잘못된 회사
 STR_NETWORK_ERROR_CLIENT_KICKED                                 :강제추방
 STR_NETWORK_ERROR_CLIENT_CHEATER                                :치트 사용 시도
@@ -4994,7 +4996,7 @@ STR_ERROR_CAN_T_BUY_COMPANY                                     :{WHITE}회사�
 STR_ERROR_CAN_T_BUILD_COMPANY_HEADQUARTERS                      :{WHITE}본사를 건설할 수 없습니다...
 
 # Town related errors
-STR_ERROR_CAN_T_GENERATE_TOWN                                   :{WHITE}도시를 만들 수 없습니다
+STR_ERROR_CAN_T_GENERATE_TOWN                                   :{WHITE}도시를 만들 수 없습니다...
 STR_ERROR_CAN_T_RENAME_TOWN                                     :{WHITE}도시 이름을 바꿀 수 없습니다...
 STR_ERROR_CAN_T_FOUND_TOWN_HERE                                 :{WHITE}여기에 도시를 건설할 수 없습니다...
 STR_ERROR_CAN_T_EXPAND_TOWN                                     :{WHITE}도시를 확장할 수 없습니다...
