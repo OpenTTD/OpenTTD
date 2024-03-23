@@ -96,17 +96,6 @@ enum NetworkJoinStatusWidgets : WidgetID {
 	WID_NJS_CANCELOK,      ///< Cancel / OK button.
 };
 
-/** Widgets of the #NetworkCompanyPasswordWindow class. */
-enum NetworkCompanyPasswordWidgets : WidgetID {
-	WID_NCP_BACKGROUND,               ///< Background of the window.
-	WID_NCP_LABEL,                    ///< Label in front of the password field.
-	WID_NCP_PASSWORD,                 ///< Input field for the password.
-	WID_NCP_SAVE_AS_DEFAULT_PASSWORD, ///< Toggle 'button' for saving the current password as default password.
-	WID_NCP_WARNING,                  ///< Warning text about password security
-	WID_NCP_CANCEL,                   ///< Close the window without changing anything.
-	WID_NCP_OK,                       ///< Safe the password etc.
-};
-
 /** Widgets of the #NetworkAskRelayWindow class. */
 enum NetworkAskRelayWidgets : WidgetID {
 	WID_NAR_CAPTION,    ///< Caption of the window.

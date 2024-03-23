@@ -894,12 +894,6 @@ static void MakeNewGameDone()
 	InitializeRailGUI();
 	InitializeRoadGUI();
 
-	/* We are the server, we start a new company (not dedicated),
-	 * so set the default password *if* needed. */
-	if (_network_server && !_settings_client.network.default_company_pass.empty()) {
-		NetworkChangeCompanyPassword(_local_company, _settings_client.network.default_company_pass);
-	}
-
 	if (_settings_client.gui.pause_on_newgame) Command<CMD_PAUSE>::Post(PM_PAUSED_NORMAL, true);
 
 	CheckEngines();

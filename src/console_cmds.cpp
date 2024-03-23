@@ -1907,53 +1907,6 @@ DEF_CONSOLE_CMD(ConSayClient)
 	return true;
 }
 
-DEF_CONSOLE_CMD(ConCompanyPassword)
-{
-	if (argc == 0) {
-		if (_network_dedicated) {
-			IConsolePrint(CC_HELP, "Change the password of a company. Usage: 'company_pw <company-no> \"<password>\".");
-		} else if (_network_server) {
-			IConsolePrint(CC_HELP, "Change the password of your or any other company. Usage: 'company_pw [<company-no>] \"<password>\"'.");
-		} else {
-			IConsolePrint(CC_HELP, "Change the password of your company. Usage: 'company_pw \"<password>\"'.");
-		}
-
-		IConsolePrint(CC_HELP, "Use \"*\" to disable the password.");
-		return true;
-	}
-
-	CompanyID company_id;
-	std::string password;
-	const char *errormsg;
-
-	if (argc == 2) {
-		company_id = _local_company;
-		password = argv[1];
-		errormsg = "You have to own a company to make use of this command.";
-	} else if (argc == 3 && _network_server) {
-		company_id = (CompanyID)(atoi(argv[1]) - 1);
-		password = argv[2];
-		errormsg = "You have to specify the ID of a valid human controlled company.";
-	} else {
-		return false;
-	}
-
-	if (!Company::IsValidHumanID(company_id)) {
-		IConsolePrint(CC_ERROR, errormsg);
-		return false;
-	}
-
-	password = NetworkChangeCompanyPassword(company_id, password);
-
-	if (password.empty()) {
-		IConsolePrint(CC_INFO, "Company password cleared.");
-	} else {
-		IConsolePrint(CC_INFO, "Company password changed to '{}'.", password);
-	}
-
-	return true;
-}
-
 /** All the known authorized keys with their name. */
 static std::vector<std::pair<std::string_view, NetworkAuthorizedKeys *>> _console_cmd_authorized_keys{
 	{ "rcon", &_settings_client.network.rcon_authorized_keys },
@@ -2801,9 +2754,6 @@ void IConsoleStdLibRegister()
 
 	IConsole::CmdRegister("authorized_key", ConNetworkAuthorizedKey, ConHookServerOnly);
 	IConsole::AliasRegister("ak", "authorized_key %+");
-
-	IConsole::CmdRegister("company_pw",              ConCompanyPassword,  ConHookNeedNetwork);
-	IConsole::AliasRegister("company_password",      "company_pw %+");
 
 	IConsole::AliasRegister("net_frame_freq",        "setting frame_freq %+");
 	IConsole::AliasRegister("net_sync_freq",         "setting sync_freq %+");

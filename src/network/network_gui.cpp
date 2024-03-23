@@ -1311,7 +1311,6 @@ enum DropDownAdmin {
 	DD_CLIENT_ADMIN_KICK,
 	DD_CLIENT_ADMIN_BAN,
 	DD_COMPANY_ADMIN_RESET,
-	DD_COMPANY_ADMIN_UNLOCK,
 };
 
 /**
@@ -1342,15 +1341,6 @@ static void AdminCompanyResetCallback(Window *, bool confirmed)
 		if (NetworkCompanyHasClients(_admin_company_id)) return;
 		Command<CMD_COMPANY_CTRL>::Post(CCA_DELETE, _admin_company_id, CRR_MANUAL, INVALID_CLIENT_ID);
 	}
-}
-
-/**
- * Callback function for admin command to unlock company.
- * @param confirmed Iff the user pressed Yes.
- */
-static void AdminCompanyUnlockCallback(Window *, bool confirmed)
-{
-	if (confirmed) NetworkServerSetCompanyPassword(_admin_company_id, "", false);
 }
 
 /**
@@ -1509,7 +1499,6 @@ private:
 	{
 		DropDownList list;
 		list.push_back(MakeDropDownListStringItem(STR_NETWORK_CLIENT_LIST_ADMIN_COMPANY_RESET, DD_COMPANY_ADMIN_RESET, NetworkCompanyHasClients(company_id)));
-		list.push_back(MakeDropDownListStringItem(STR_NETWORK_CLIENT_LIST_ADMIN_COMPANY_UNLOCK, DD_COMPANY_ADMIN_UNLOCK, !NetworkCompanyIsPassworded(company_id)));
 
 		Rect wi_rect;
 		wi_rect.left   = pt.x;
@@ -1860,13 +1849,6 @@ public:
 						_admin_company_id = this->dd_company_id;
 						text = STR_NETWORK_CLIENT_LIST_ASK_COMPANY_RESET;
 						callback = AdminCompanyResetCallback;
-						SetDParam(0, _admin_company_id);
-						break;
-
-					case DD_COMPANY_ADMIN_UNLOCK:
-						_admin_company_id = this->dd_company_id;
-						text = STR_NETWORK_CLIENT_LIST_ASK_COMPANY_UNLOCK;
-						callback = AdminCompanyUnlockCallback;
 						SetDParam(0, _admin_company_id);
 						break;
 
@@ -2239,114 +2221,6 @@ void ShowNetworkNeedPassword(NetworkPasswordType npt, std::shared_ptr<NetworkAut
 		case NETWORK_COMPANY_PASSWORD: caption = STR_NETWORK_NEED_COMPANY_PASSWORD_CAPTION; break;
 	}
 	ShowQueryString(STR_EMPTY, caption, NETWORK_PASSWORD_LENGTH, w, CS_ALPHANUMERAL, QSF_PASSWORD);
-}
-
-struct NetworkCompanyPasswordWindow : public Window {
-	QueryString password_editbox; ///< Password editbox.
-	Dimension warning_size;       ///< How much space to use for the warning text
-
-	NetworkCompanyPasswordWindow(WindowDesc *desc, Window *parent) : Window(desc), password_editbox(NETWORK_PASSWORD_LENGTH)
-	{
-		this->InitNested(0);
-		this->UpdateWarningStringSize();
-
-		this->parent = parent;
-		this->querystrings[WID_NCP_PASSWORD] = &this->password_editbox;
-		this->password_editbox.cancel_button = WID_NCP_CANCEL;
-		this->password_editbox.ok_button = WID_NCP_OK;
-		this->SetFocusedWidget(WID_NCP_PASSWORD);
-	}
-
-	void UpdateWarningStringSize()
-	{
-		assert(this->nested_root->smallest_x > 0);
-		this->warning_size.width = this->nested_root->current_x - (WidgetDimensions::scaled.framerect.Horizontal()) * 2;
-		this->warning_size.height = GetStringHeight(STR_WARNING_PASSWORD_SECURITY, this->warning_size.width);
-		this->warning_size.height += (WidgetDimensions::scaled.framerect.Vertical()) * 2;
-
-		this->ReInit();
-	}
-
-	void UpdateWidgetSize(WidgetID widget, Dimension &size, [[maybe_unused]] const Dimension &padding, [[maybe_unused]] Dimension &fill, [[maybe_unused]] Dimension &resize) override
-	{
-		if (widget == WID_NCP_WARNING) {
-			size = this->warning_size;
-		}
-	}
-
-	void DrawWidget(const Rect &r, WidgetID widget) const override
-	{
-		if (widget != WID_NCP_WARNING) return;
-
-		DrawStringMultiLine(r.Shrink(WidgetDimensions::scaled.framerect),
-			STR_WARNING_PASSWORD_SECURITY, TC_FROMSTRING, SA_CENTER);
-	}
-
-	void OnOk()
-	{
-		if (this->IsWidgetLowered(WID_NCP_SAVE_AS_DEFAULT_PASSWORD)) {
-			_settings_client.network.default_company_pass = this->password_editbox.text.buf;
-		}
-
-		NetworkChangeCompanyPassword(_local_company, this->password_editbox.text.buf);
-	}
-
-	void OnClick([[maybe_unused]] Point pt, WidgetID widget, [[maybe_unused]] int click_count) override
-	{
-		switch (widget) {
-			case WID_NCP_OK:
-				this->OnOk();
-				[[fallthrough]];
-
-			case WID_NCP_CANCEL:
-				this->Close();
-				break;
-
-			case WID_NCP_SAVE_AS_DEFAULT_PASSWORD:
-				this->ToggleWidgetLoweredState(WID_NCP_SAVE_AS_DEFAULT_PASSWORD);
-				this->SetDirty();
-				break;
-		}
-	}
-};
-
-static constexpr NWidgetPart _nested_network_company_password_window_widgets[] = {
-	NWidget(NWID_HORIZONTAL),
-		NWidget(WWT_CLOSEBOX, COLOUR_GREY),
-		NWidget(WWT_CAPTION, COLOUR_GREY), SetDataTip(STR_COMPANY_PASSWORD_CAPTION, STR_TOOLTIP_WINDOW_TITLE_DRAG_THIS),
-	EndContainer(),
-	NWidget(WWT_PANEL, COLOUR_GREY, WID_NCP_BACKGROUND),
-		NWidget(NWID_VERTICAL), SetPIP(5, 5, 5),
-			NWidget(NWID_HORIZONTAL), SetPIP(5, 5, 5),
-				NWidget(WWT_TEXT, COLOUR_GREY, WID_NCP_LABEL), SetDataTip(STR_COMPANY_VIEW_PASSWORD, STR_NULL),
-				NWidget(WWT_EDITBOX, COLOUR_GREY, WID_NCP_PASSWORD), SetFill(1, 0), SetMinimalSize(194, 12), SetDataTip(STR_COMPANY_VIEW_SET_PASSWORD, STR_NULL),
-			EndContainer(),
-			NWidget(NWID_HORIZONTAL), SetPIP(5, 0, 5),
-				NWidget(NWID_SPACER), SetFill(1, 0),
-				NWidget(WWT_TEXTBTN, COLOUR_GREY, WID_NCP_SAVE_AS_DEFAULT_PASSWORD), SetMinimalSize(194, 12),
-											SetDataTip(STR_COMPANY_PASSWORD_MAKE_DEFAULT, STR_COMPANY_PASSWORD_MAKE_DEFAULT_TOOLTIP),
-			EndContainer(),
-		EndContainer(),
-	EndContainer(),
-	NWidget(WWT_PANEL, COLOUR_GREY, WID_NCP_WARNING), EndContainer(),
-	NWidget(NWID_HORIZONTAL, NC_EQUALSIZE),
-		NWidget(WWT_PUSHTXTBTN, COLOUR_GREY, WID_NCP_CANCEL), SetFill(1, 0), SetDataTip(STR_BUTTON_CANCEL, STR_COMPANY_PASSWORD_CANCEL),
-		NWidget(WWT_PUSHTXTBTN, COLOUR_GREY, WID_NCP_OK), SetFill(1, 0), SetDataTip(STR_BUTTON_OK, STR_COMPANY_PASSWORD_OK),
-	EndContainer(),
-};
-
-static WindowDesc _network_company_password_window_desc(
-	WDP_AUTO, nullptr, 0, 0,
-	WC_COMPANY_PASSWORD_WINDOW, WC_NONE,
-	0,
-	std::begin(_nested_network_company_password_window_widgets), std::end(_nested_network_company_password_window_widgets)
-);
-
-void ShowNetworkCompanyPasswordWindow(Window *parent)
-{
-	CloseWindowById(WC_COMPANY_PASSWORD_WINDOW, 0);
-
-	new NetworkCompanyPasswordWindow(&_network_company_password_window_desc, parent);
 }
 
 /**
