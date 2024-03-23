@@ -248,6 +248,7 @@ public:
 	 */
 	virtual bool ReceiveEnableEncryption(struct Packet &p) = 0;
 
+	static void EnsureValidSecretKeyAndUpdatePublicKey(std::string &secret_key, std::string &public_key);
 	static std::unique_ptr<NetworkAuthenticationClientHandler> Create(std::shared_ptr<NetworkAuthenticationPasswordRequestHandler> password_handler, std::string &secret_key, std::string &public_key);
 };
 

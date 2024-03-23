@@ -75,6 +75,7 @@ void NetworkServerNewCompany(const Company *company, NetworkClientInfo *ci);
 bool NetworkServerChangeClientName(ClientID client_id, const std::string &new_name);
 
 
+bool NetworkCanJoinCompany(CompanyID company_id);
 void NetworkServerDoMove(ClientID client_id, CompanyID company_id);
 void NetworkServerSendRcon(ClientID client_id, TextColour colour_code, const std::string &string);
 void NetworkServerSendChat(NetworkAction action, DestType type, int dest, const std::string &msg, ClientID from_id, int64_t data = 0, bool from_admin = false);
