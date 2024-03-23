@@ -68,10 +68,6 @@ enum PacketGameType : uint8_t {
 	PACKET_SERVER_CHECK_NEWGRFS,         ///< Server sends NewGRF IDs and MD5 checksums for the client to check.
 	PACKET_CLIENT_NEWGRFS_CHECKED,       ///< Client acknowledges that it has all required NewGRFs.
 
-	/* Checking the company passwords. */
-	PACKET_SERVER_NEED_COMPANY_PASSWORD, ///< Server requests the (hashed) company password.
-	PACKET_CLIENT_COMPANY_PASSWORD,      ///< Client sends the (hashed) company password.
-
 	/* The server welcomes the authenticated client and sends information of other clients. */
 	PACKET_SERVER_WELCOME,               ///< Server welcomes you and gives you your #ClientID.
 	PACKET_SERVER_CLIENT_INFO,           ///< Server sends you information about a client.
@@ -116,9 +112,7 @@ enum PacketGameType : uint8_t {
 	PACKET_SERVER_MOVE,                  ///< Server tells everyone that someone is moved to another company.
 
 	/* Configuration updates. */
-	PACKET_CLIENT_SET_PASSWORD,          ///< A client (re)sets its company's password.
 	PACKET_CLIENT_SET_NAME,              ///< A client changes its name.
-	PACKET_SERVER_COMPANY_UPDATE,        ///< Information (password) of a company changed.
 	PACKET_SERVER_CONFIG_UPDATE,         ///< Some network configuration important to the client changed.
 
 	/* A server quitting this game. */
@@ -227,14 +221,6 @@ protected:
 	virtual NetworkRecvStatus Receive_SERVER_AUTH_REQUEST(Packet &p);
 
 	/**
-	 * Indication to the client that the server needs a company password:
-	 * uint32_t  Generation seed.
-	 * string  Network ID of the server.
-	 * @param p The packet that was just received.
-	 */
-	virtual NetworkRecvStatus Receive_SERVER_NEED_COMPANY_PASSWORD(Packet &p);
-
-	/**
 	 * Send the response to the authentication request:
 	 * 32 * uint8_t Public key of the client.
 	 * 16 * uint8_t Message authentication code.
@@ -250,18 +236,8 @@ protected:
 	virtual NetworkRecvStatus Receive_SERVER_ENABLE_ENCRYPTION(Packet &p);
 
 	/**
-	 * Send a password to the server to authorize
-	 * uint8_t   Password type (see NetworkPasswordType).
-	 * string  The password.
-	 * @param p The packet that was just received.
-	 */
-	virtual NetworkRecvStatus Receive_CLIENT_COMPANY_PASSWORD(Packet &p);
-
-	/**
 	 * The client is joined and ready to receive their map:
 	 * uint32_t  Own client ID.
-	 * uint32_t  Generation seed.
-	 * string  Network ID of the server.
 	 * @param p The packet that was just received.
 	 */
 	virtual NetworkRecvStatus Receive_SERVER_WELCOME(Packet &p);
@@ -402,13 +378,6 @@ protected:
 	virtual NetworkRecvStatus Receive_SERVER_EXTERNAL_CHAT(Packet &p);
 
 	/**
-	 * Set the password for the clients current company:
-	 * string  The password.
-	 * @param p The packet that was just received.
-	 */
-	virtual NetworkRecvStatus Receive_CLIENT_SET_PASSWORD(Packet &p);
-
-	/**
 	 * Gives the client a new name:
 	 * string  New name of the client.
 	 * @param p The packet that was just received.
@@ -497,17 +466,9 @@ protected:
 	/**
 	 * Request the server to move this client into another company:
 	 * uint8_t   ID of the company the client wants to join.
-	 * string  Password, if the company is password protected.
 	 * @param p The packet that was just received.
 	 */
 	virtual NetworkRecvStatus Receive_CLIENT_MOVE(Packet &p);
-
-	/**
-	 * Update the clients knowledge of which company is password protected:
-	 * uint16_t  Bitwise representation of each company
-	 * @param p The packet that was just received.
-	 */
-	virtual NetworkRecvStatus Receive_SERVER_COMPANY_UPDATE(Packet &p);
 
 	/**
 	 * Update the clients knowledge of the max settings:

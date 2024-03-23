@@ -333,7 +333,7 @@ protected:
 	 * string  Name of the company.
 	 * string  Name of the companies manager.
 	 * uint8_t   Main company colour.
-	 * bool    Company is password protected.
+	 * bool    Company is protected.
 	 * uint32_t  Year the company was inaugurated.
 	 * bool    Company is an AI.
 	 * @param p The packet that was just received.
@@ -347,7 +347,7 @@ protected:
 	 * string  Name of the company.
 	 * string  Name of the companies manager.
 	 * uint8_t   Main company colour.
-	 * bool    Company is password protected.
+	 * bool    Company is protected.
 	 * uint8_t   Quarters of bankruptcy.
 	 * uint8_t   Owner of share 1.
 	 * uint8_t   Owner of share 2.
