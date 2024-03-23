@@ -30,13 +30,11 @@ protected:
 	NetworkRecvStatus Receive_CLIENT_IDENTIFY(Packet &p) override;
 	NetworkRecvStatus Receive_CLIENT_GAME_INFO(Packet &p) override;
 	NetworkRecvStatus Receive_CLIENT_AUTH_RESPONSE(Packet &p) override;
-	NetworkRecvStatus Receive_CLIENT_COMPANY_PASSWORD(Packet &p) override;
 	NetworkRecvStatus Receive_CLIENT_GETMAP(Packet &p) override;
 	NetworkRecvStatus Receive_CLIENT_MAP_OK(Packet &p) override;
 	NetworkRecvStatus Receive_CLIENT_ACK(Packet &p) override;
 	NetworkRecvStatus Receive_CLIENT_COMMAND(Packet &p) override;
 	NetworkRecvStatus Receive_CLIENT_CHAT(Packet &p) override;
-	NetworkRecvStatus Receive_CLIENT_SET_PASSWORD(Packet &p) override;
 	NetworkRecvStatus Receive_CLIENT_SET_NAME(Packet &p) override;
 	NetworkRecvStatus Receive_CLIENT_QUIT(Packet &p) override;
 	NetworkRecvStatus Receive_CLIENT_ERROR(Packet &p) override;
@@ -49,7 +47,6 @@ protected:
 	NetworkRecvStatus SendWelcome();
 	NetworkRecvStatus SendAuthRequest();
 	NetworkRecvStatus SendEnableEncryption();
-	NetworkRecvStatus SendNeedCompanyPassword();
 
 public:
 	/** Status of a client */
@@ -58,7 +55,6 @@ public:
 		STATUS_AUTH_GAME,     ///< The client is authorizing with game (server) password.
 		STATUS_IDENTIFY,      ///< The client is identifying itself.
 		STATUS_NEWGRFS_CHECK, ///< The client is checking NewGRFs.
-		STATUS_AUTH_COMPANY,  ///< The client is authorizing with company password.
 		STATUS_AUTHORIZED,    ///< The client is authorized.
 		STATUS_MAP_WAIT,      ///< The client is waiting as someone else is downloading the map.
 		STATUS_MAP,           ///< The client is downloading the map.
@@ -104,7 +100,6 @@ public:
 	NetworkRecvStatus SendFrame();
 	NetworkRecvStatus SendSync();
 	NetworkRecvStatus SendCommand(const CommandPacket &cp);
-	NetworkRecvStatus SendCompanyUpdate();
 	NetworkRecvStatus SendConfigUpdate();
 
 	static void Send();
