@@ -253,6 +253,8 @@ STR_COLOUR_RANDOM                                               :Τυχαία
 ###length 17
 STR_COLOUR_SECONDARY_DARK_BLUE                                  :Σκούρο Μπλε
 STR_COLOUR_SECONDARY_PALE_GREEN                                 :Ανοικτό Πράσινο
+STR_COLOUR_SECONDARY_SECONDARY_PINK                             :Ροζ
+STR_COLOUR_SECONDARY_YELLOW                                     :Κίτρινο
 STR_COLOUR_SECONDARY_RED                                        :Κόκκινο
 STR_COLOUR_SECONDARY_LIGHT_BLUE                                 :Γαλάζιο
 STR_COLOUR_SECONDARY_GREEN                                      :Πράσινο
@@ -264,6 +266,7 @@ STR_COLOUR_SECONDARY_PURPLE                                     :Πορφυρό 
 STR_COLOUR_SECONDARY_ORANGE                                     :Πορτοκαλί
 STR_COLOUR_SECONDARY_BROWN                                      :Καφέ
 STR_COLOUR_SECONDARY_GREY                                       :Γκρι
+STR_COLOUR_SECONDARY_WHITE                                      :Άσπρο
 STR_COLOUR_SECONDARY_SAME_AS_PRIMARY                            :Ίδιο με το πρωταρχικό
 
 
@@ -311,6 +314,7 @@ STR_UNITS_HEIGHT_SI                                             :{DECIMAL}{NBSP}
 
 # Time units used in string control characters
 
+STR_UNITS_MINUTES                                               :{NUM}{NBSP}λεπτ{P ό ά}
 
 
 # Common window strings
@@ -975,6 +979,7 @@ STR_NEWS_NEW_VEHICLE_NOW_AVAILABLE_WITH_TYPE                    :{BLACK}Ένα �
 
 STR_NEWS_SHOW_VEHICLE_GROUP_TOOLTIP                             :{BLACK}Ανοίξτε το παράθυρο ομάδων εστιασμένος στην ομάδα του οχήματος
 
+STR_NEWS_STATION_NO_LONGER_ACCEPTS_CARGO_LIST                   :{WHITE}{STATION} δεν δέχεται πλέον: {CARGO_LIST}
 
 STR_NEWS_OFFER_OF_SUBSIDY_EXPIRED                               :{BIG_FONT}{BLACK}Έληξε η προσφορά επιδότησης:{}{}{STRING} από {G τον τη το} {STRING} πρός {G τον τη το} {STRING} δεν θα επιδοτείται πλέον.
 STR_NEWS_SUBSIDY_WITHDRAWN_SERVICE                              :{BIG_FONT}{BLACK}Η επιδότηση αποσύρθηκε:{}{}Η υπηρεσια για {STRING.subs} απο το {STRING} προς το {STRING} δεν επιδοτείται πλέον.
@@ -993,7 +998,13 @@ STR_EXTRA_VIEW_MOVE_MAIN_TO_VIEW_TT                             :{BLACK}Επικ
 STR_GAME_OPTIONS_CAPTION                                        :{WHITE}Επιλογές Παιχνιδιού
 
 STR_GAME_OPTIONS_TAB_GENERAL                                    :Γενικά
+STR_GAME_OPTIONS_TAB_GENERAL_TT                                 :{BLACK}Επιλέξτε γενικές ρυθμίσεις
+STR_GAME_OPTIONS_TAB_GRAPHICS                                   :Γραφικά
+STR_GAME_OPTIONS_TAB_GRAPHICS_TT                                :{BLACK}Επιλέξτε ρυθμίσεις γραφικών
 STR_GAME_OPTIONS_TAB_SOUND                                      :Ήχος
+STR_GAME_OPTIONS_TAB_SOUND_TT                                   :{BLACK}Επιλέξτε ρυθμίσεις ήχου και μουσικής
+STR_GAME_OPTIONS_TAB_SOCIAL                                     :Κοινωνικά
+STR_GAME_OPTIONS_TAB_SOCIAL_TT                                  :{BLACK}Επιλέξτε ρυθμίσεις κοινωνικής ενσωμάτωσης
 
 
 
@@ -1123,7 +1134,10 @@ STR_GAME_OPTIONS_BASE_MUSIC                                     :{BLACK}Βασι
 STR_GAME_OPTIONS_BASE_MUSIC_TOOLTIP                             :{BLACK}Επιλέξτε το βασικό σετ μουσικής για χρήση
 STR_GAME_OPTIONS_BASE_MUSIC_DESCRIPTION_TOOLTIP                 :{BLACK}Επιπλέον πληροφορίες σχετικά με το βασικό σετ μουσικής
 
+STR_GAME_OPTIONS_SOCIAL_PLUGINS_NONE                            :{LTBLUE}(δεν έχουν εγκατασταθεί plugins για ενοποίηση με πλατφόρμες κοινωνικής δικτύωσης)
 
+STR_GAME_OPTIONS_SOCIAL_PLUGIN_PLATFORM                         :{BLACK}Πλατφόρμα:
+STR_GAME_OPTIONS_SOCIAL_PLUGIN_STATE                            :{BLACK}Plugin state:
 
 
 
@@ -1138,6 +1152,8 @@ STR_CURRENCY_DECREASE_EXCHANGE_RATE_TOOLTIP                     :{BLACK}Μείω
 STR_CURRENCY_INCREASE_EXCHANGE_RATE_TOOLTIP                     :{BLACK}Αυξήστε το ποσό της ισοτιμίας σας για μία Λίρα (£)
 STR_CURRENCY_SET_EXCHANGE_RATE_TOOLTIP                          :{BLACK}Ρυθμίστε τη συναλλαγματική ισοτιμία του νομίσματος για μια λίρα (£)
 
+STR_CURRENCY_SEPARATOR                                          :{LTBLUE}Διαχωριστής: {ORANGE}{STRING}
+STR_CURRENCY_SET_CUSTOM_CURRENCY_SEPARATOR_TOOLTIP              :{BLACK}Ορίστε το διαχωριστικό για το νόμισμά σας
 
 STR_CURRENCY_PREFIX                                             :{LTBLUE}Πρόθεμα: {ORANGE}{STRING}
 STR_CURRENCY_SET_CUSTOM_CURRENCY_PREFIX_TOOLTIP                 :{BLACK}Ορίστε το πρόθεμα για το νόμισμά σας
@@ -2710,6 +2726,8 @@ STR_LINKGRAPH_LEGEND_SATURATED                                  :{TINY_FONT}{BLA
 STR_LINKGRAPH_LEGEND_OVERLOADED                                 :{TINY_FONT}{BLACK}υπερφορτωμένο
 
 # Linkgraph tooltip
+STR_LINKGRAPH_STATS_TOOLTIP_MONTH                               :{BLACK}{CARGO_LONG} προς μεταφορά ανά μήνα από {STATION} προς {STATION} ({COMMA}% of capacity){STRING}
+STR_LINKGRAPH_STATS_TOOLTIP_MINUTE                              :{BLACK}{CARGO_LONG} προς μεταφορά ανά λεπτό από {STATION} προς {STATION} ({COMMA}% of capacity){STRING}
 STR_LINKGRAPH_STATS_TOOLTIP_RETURN_EXTENSION                    :{}{CARGO_LONG} προς μεταφορά πίσω ({COMMA}% της χωρητικότητας)
 STR_LINKGRAPH_STATS_TOOLTIP_TIME_EXTENSION                      :{}Μέσος χρόνος ταξιδιού: {UNITS_DAYS_OR_SECONDS}
 
@@ -3236,10 +3254,12 @@ STR_MAPGEN_MAPSIZE                                              :{BLACK}Διάσ
 STR_MAPGEN_MAPSIZE_TOOLTIP                                      :{BLACK}Επιλέξτε το μέγεθος του χάρτη σε τετραγωνίδια. Ο αριθμός των τετραγωνίδιων διαθέσιμα για κτίσιμο θα είναι λίγο χαμηλότερος
 STR_MAPGEN_BY                                                   :{BLACK}*
 STR_MAPGEN_NUMBER_OF_TOWNS                                      :{BLACK}Αριθμός πόλεων:
+STR_MAPGEN_NUMBER_OF_TOWNS_TOOLTIP                              :Επιλέξτε την πυκνότητα των πόλεων ή έναν προσαρμοσμένο αριθμό
 STR_MAPGEN_TOWN_NAME_LABEL                                      :{BLACK}Ονόματα πόλεων:
 STR_MAPGEN_TOWN_NAME_DROPDOWN_TOOLTIP                           :{BLACK}Επιλογή στυλ ονομάτων πόλεων
 STR_MAPGEN_DATE                                                 :{BLACK}Ημερομηνία:
 STR_MAPGEN_NUMBER_OF_INDUSTRIES                                 :{BLACK}Αριθμός βιομηχανιών:
+STR_MAPGEN_NUMBER_OF_INDUSTRIES_TOOLTIP                         :{BLACK}Επιλέξτε την πυκνότητα των βιομηχανιών ή έναν προσαρμοσμένο αριθμό
 STR_MAPGEN_HEIGHTMAP_HEIGHT                                     :{BLACK}Υψηλότερη κορυφή:
 STR_MAPGEN_HEIGHTMAP_HEIGHT_UP                                  :{BLACK}Αύξηση του μέγιστου ύψους της υψηλότερης κορυφής στον χάρτη κατά ένα
 STR_MAPGEN_HEIGHTMAP_HEIGHT_DOWN                                :{BLACK}Μειώστε το μέγιστο ύψος της υψηλότερης κορυφής στον χάρτη κατά ένα
@@ -3599,6 +3619,8 @@ STR_LOCAL_AUTHORITY_ACTION_TOOLTIP_MEDIUM_ADVERTISING           :{YELLOW}Ένα�
 STR_LOCAL_AUTHORITY_ACTION_TOOLTIP_LARGE_ADVERTISING            :{PUSH_COLOUR}{YELLOW}Έναρξη μεγάλης τοπικής διαφημιστικής καμπάνιας, για να προσελκύσετε περισσότερους επιβάτες και εμπορεύματα στις μεταφορικές σας υπηρεσίες.{}Παρέχει μία προσωρινή ώθηση στην βαθμολογία σταθμού σε μία μεγάλη ακτίνα γύρω από το κέντρο της πόλης.{}{POP_COLOUR} Κόστος: {CURRENCY_LONG}
 STR_LOCAL_AUTHORITY_ACTION_TOOLTIP_STATUE_OF_COMPANY            :{PUSH_COLOUR}{YELLOW}Χτίστε ένα άγαλμα προς τιμήν της εταιρίας σας.{}Παρέχει μία μόνιμη ώθηση στην βαθμολογία σταθμών σε αυτή την πόλη.{}{POP_COLOUR}Κόστος: {CURRENCY_LONG}
 STR_LOCAL_AUTHORITY_ACTION_TOOLTIP_NEW_BUILDINGS                :{YELLOW}Χρηματοδοτήστε την κατασκευή νέων κτιρίων στην πόλη.{}Παρέχει μία προσωρινή ώθηση στην ανάπτυξη αυτής της πόλης.{} Κόστος: {CURRENCY_LONG}
+STR_LOCAL_AUTHORITY_ACTION_TOOLTIP_EXCLUSIVE_TRANSPORT_MONTHS   :{PUSH_COLOUR}{YELLOW}Αγοράστε αποκλειστικά δικαιώματα μεταφοράς στην πόλη για 12 μήνες.{}Η δημοτική αρχή δεν θα επιτρέψει στους επιβάτες και στο φορτίο να χρησιμοποιούν τους σταθμούς των ανταγωνιστών σας. Μια επιτυχημένη δωροδοκία από έναν ανταγωνιστή θα ακυρώσει αυτό το συμβόλαιο.{}{POP_COLOUR}Κόστος: {CURRENCY_LONG}
+STR_LOCAL_AUTHORITY_ACTION_TOOLTIP_EXCLUSIVE_TRANSPORT_MINUTES  :{PUSH_COLOUR}{YELLOW}Αγοράστε αποκλειστικά δικαιώματα μεταφοράς στην πόλη για 12 λεπτά.{}Η δημοτική αρχή δεν θα επιτρέψει στους επιβάτες και στο φορτίο να χρησιμοποιούν τους σταθμούς των ανταγωνιστών σας. Μια επιτυχημένη δωροδοκία από έναν ανταγωνιστή θα ακυρώσει αυτό το συμβόλαιο.{}{POP_COLOUR}Κόστος: {CURRENCY_LONG}
 STR_LOCAL_AUTHORITY_ACTION_TOOLTIP_BRIBE                        :{YELLOW}Δωροδοκήστε τις τοπικές αρχές για να αυξήσετε τα ποσοστά αποδοχής σας, με ρίσκο ένα μεγάλο πρόστιμο εάν συλληφθείτε.{}Κόστος: {CURRENCY_LONG}
 
 # Goal window
@@ -4348,6 +4370,7 @@ STR_VEHICLE_DETAILS_SERVICING_INTERVAL_MINUTES                  :{BLACK}Διάσ
 STR_VEHICLE_DETAILS_SERVICING_INTERVAL_PERCENT                  :{BLACK}Διάστημα επισκευών: {LTBLUE}{COMMA}%{BLACK}   {STRING}
 STR_VEHICLE_DETAILS_DECREASE_SERVICING_INTERVAL_TOOLTIP_DAYS    :Μειώστε το διάστημα μεταξύ των σέρβις κατά 10 ημέρες. Ctrl+Click για να μειώσετε το διάστημα συντήρησης κατά 5 ημέρες
 STR_VEHICLE_DETAILS_DECREASE_SERVICING_INTERVAL_TOOLTIP_MINUTES :Μειώστε το διάστημα μεταξύ των σέρβις κατά 5 λεπτά. Ctrl+Click για να μειώσετε το διάστημα συντήρησης κατά 1 λεπτό
+STR_VEHICLE_DETAILS_DECREASE_SERVICING_INTERVAL_TOOLTIP_PERCENT :Μειώστε το διάστημα μεταξύ των σέρβις κατά 10 τοις εκατό. Ctrl+Click για να μειώσετε το διάστημα συντήρησης κατά 5 τοις εκατό.
 
 STR_SERVICE_INTERVAL_DROPDOWN_TOOLTIP                           :{BLACK}Αλλάξτε τον τύπο διαστήματος επισκευών
 STR_VEHICLE_DETAILS_DEFAULT                                     :Προκαθορισμένο
@@ -4889,6 +4912,7 @@ STR_ERROR_CAN_ONLY_BE_BUILT_ABOVE_SNOW_LINE                     :{WHITE}... μπ
 STR_ERROR_CAN_ONLY_BE_BUILT_BELOW_SNOW_LINE                     :{WHITE}... μπορεί να κτιστεί μόνο κάτω από τη γραμμή του χιονιού
 
 STR_ERROR_PROSPECTING_WAS_UNLUCKY                               :{WHITE}Η χρηματοδότηση απέτυχε να προσκομήσει αποτελέσματα λόγω κακής τύχης· δοκιμάστε ξάνα
+STR_ERROR_NO_SUITABLE_PLACES_FOR_PROSPECTING                    :{WHITE}Δεν υπήρχαν κατάλληλα μέρη για προοπτική για αυτόν τον κλάδο
 STR_ERROR_NO_SUITABLE_PLACES_FOR_INDUSTRIES                     :{WHITE}Δεν υπήρχαν διαθέσιμες τοποθεσίες για βιομηχανίες τύπου '{STRING}'
 STR_ERROR_NO_SUITABLE_PLACES_FOR_INDUSTRIES_EXPLANATION         :{WHITE}Αλλαγή παραμέτρων δημιουργίας χάρτη για καλύτερα αποτελέσματα
 
@@ -5657,6 +5681,10 @@ STR_TOWN_NAME                                                   :{TOWN}
 STR_VEHICLE_NAME                                                :{VEHICLE}
 STR_WAYPOINT_NAME                                               :{WAYPOINT}
 
+STR_CURRENCY_SHORT_KILO                                         :{NBSP}k
+STR_CURRENCY_SHORT_MEGA                                         :{NBSP}m
+STR_CURRENCY_SHORT_GIGA                                         :{NBSP}Δις
+STR_CURRENCY_SHORT_TERA                                         :{NBSP}tn
 
 STR_JUST_CARGO                                                  :{CARGO_LONG}
 STR_JUST_CHECKMARK                                              :{CHECKMARK}
