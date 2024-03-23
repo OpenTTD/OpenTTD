@@ -163,8 +163,8 @@ private:
 	TownScopeResolver *GetTown();
 };
 
-/** Struct containing information relating to object classes. */
-typedef NewGRFClass<ObjectSpec, ObjectClassID, OBJECT_CLASS_MAX> ObjectClass;
+/** Class containing information relating to object classes. */
+using ObjectClass = NewGRFClass<ObjectSpec, ObjectClassID, OBJECT_CLASS_MAX>;
 
 static const size_t OBJECT_SPRITE_GROUP_DEFAULT = 0;
 static const size_t OBJECT_SPRITE_GROUP_PURCHASE = 1;

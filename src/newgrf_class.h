@@ -17,7 +17,7 @@
  * Struct containing information relating to NewGRF classes for stations and airports.
  */
 template <typename Tspec, typename Tid, Tid Tmax>
-struct NewGRFClass {
+class NewGRFClass {
 private:
 	uint ui_count;             ///< Number of specs in this class potentially available to the user.
 	std::vector<Tspec *> spec; ///< List of specifications.

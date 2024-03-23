@@ -27,8 +27,8 @@
 
 #include "safeguards.h"
 
-template <typename Tspec, typename Tid, Tid Tmax>
-void NewGRFClass<Tspec, Tid, Tmax>::InsertDefaults()
+template <>
+void RoadStopClass::InsertDefaults()
 {
 	/* Set up initial data */
 	RoadStopClass::Get(RoadStopClass::Allocate('DFLT'))->name = STR_STATION_CLASS_DFLT;
@@ -37,13 +37,14 @@ void NewGRFClass<Tspec, Tid, Tmax>::InsertDefaults()
 	RoadStopClass::Get(RoadStopClass::Allocate('WAYP'))->Insert(nullptr);
 }
 
-template <typename Tspec, typename Tid, Tid Tmax>
-bool NewGRFClass<Tspec, Tid, Tmax>::IsUIAvailable(uint) const
+template <>
+bool RoadStopClass::IsUIAvailable(uint) const
 {
 	return true;
 }
 
-INSTANTIATE_NEWGRF_CLASS_METHODS(RoadStopClass, RoadStopSpec, RoadStopClassID, ROADSTOP_CLASS_MAX)
+/* Instantiate RoadStopClass. */
+template class NewGRFClass<RoadStopSpec, RoadStopClassID, ROADSTOP_CLASS_MAX>;
 
 static const uint NUM_ROADSTOPSPECS_PER_STATION = 63; ///< Maximum number of parts per station.
 
