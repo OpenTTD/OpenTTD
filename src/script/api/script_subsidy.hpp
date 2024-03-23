@@ -74,14 +74,15 @@ public:
 	static ScriptCompany::CompanyID GetAwardedTo(SubsidyID subsidy_id);
 
 	/**
-	 * Get the date this subsidy expires. In case the subsidy is already
-	 *  awarded, return the date the subsidy expires, else, return the date the
+	 * Get the economy-date this subsidy expires. In case the subsidy is already
+	 *  awarded, return the economy-date the subsidy expires, else, return the economy-date the
 	 *  offer expires.
 	 * @param subsidy_id The SubsidyID to check.
 	 * @pre IsValidSubsidy(subsidy_id).
-	 * @return The last valid date of this subsidy.
+	 * @return The last valid economy-date of this subsidy.
 	 * @note The return value of this function will change if the subsidy is
 	 *  awarded.
+	 * @see \ref ScriptEconomyTime
 	 */
 	static ScriptDate::Date GetExpireDate(SubsidyID subsidy_id);
 
