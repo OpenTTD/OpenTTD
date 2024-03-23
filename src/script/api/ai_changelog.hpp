@@ -20,7 +20,6 @@
  * \b 14.0
  *
  * API additions:
- * \li AITimeMode
  * \li AITown::ROAD_LAYOUT_RANDOM
  * \li AIVehicle::IsPrimaryVehicle
  * \li AITileList_StationCoverage

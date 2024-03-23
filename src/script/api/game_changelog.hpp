@@ -24,7 +24,6 @@
  * \li GSAsyncMode
  * \li GSCompanyMode::IsValid
  * \li GSCompanyMode::IsDeity
- * \li GSTimeMode
  * \li GSTown::ROAD_LAYOUT_RANDOM
  * \li GSVehicle::IsPrimaryVehicle
  * \li GSOrder::SetOrderJumpTo
