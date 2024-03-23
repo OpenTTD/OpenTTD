@@ -413,8 +413,8 @@ NetworkRecvStatus ServerNetworkGameSocketHandler::SendNewGRFCheck()
 	this->status = STATUS_NEWGRFS_CHECK;
 
 	if (_grfconfig == nullptr) {
-		/* There are no NewGRFs, continue with the company password. */
-		return this->SendNeedCompanyPassword();
+		/* There are no NewGRFs, so they're welcome. */
+		return this->SendWelcome();
 	}
 
 	auto p = std::make_unique<Packet>(this, PACKET_SERVER_CHECK_NEWGRFS, TCP_MTU);
@@ -473,39 +473,13 @@ NetworkRecvStatus ServerNetworkGameSocketHandler::SendEnableEncryption()
 	return NETWORK_RECV_STATUS_OKAY;
 }
 
-/** Request the company password. */
-NetworkRecvStatus ServerNetworkGameSocketHandler::SendNeedCompanyPassword()
-{
-	Debug(net, 9, "client[{}] SendNeedCompanyPassword()", this->client_id);
-
-	/* Invalid packet when status is anything but STATUS_NEWGRFS_CHECK. */
-	if (this->status != STATUS_NEWGRFS_CHECK) return this->CloseConnection(NETWORK_RECV_STATUS_MALFORMED_PACKET);
-
-	Debug(net, 9, "client[{}] status = AUTH_COMPANY", this->client_id);
-	this->status = STATUS_AUTH_COMPANY;
-
-	NetworkClientInfo *ci = this->GetInfo();
-	if (!Company::IsValidID(ci->client_playas)) {
-		return this->SendWelcome();
-	}
-
-	/* Reset 'lag' counters */
-	this->last_frame = this->last_frame_server = _frame_counter;
-
-	auto p = std::make_unique<Packet>(this, PACKET_SERVER_NEED_COMPANY_PASSWORD);
-	p->Send_uint32(_settings_game.game_creation.generation_seed);
-	p->Send_string(_settings_client.network.network_id);
-	this->SendPacket(std::move(p));
-	return NETWORK_RECV_STATUS_OKAY;
-}
-
 /** Send the client a welcome message with some basic information. */
 NetworkRecvStatus ServerNetworkGameSocketHandler::SendWelcome()
 {
 	Debug(net, 9, "client[{}] SendWelcome()", this->client_id);
 
-	/* Invalid packet when status is anything but STATUS_AUTH_COMPANY. */
-	if (this->status != STATUS_AUTH_COMPANY) return this->CloseConnection(NETWORK_RECV_STATUS_MALFORMED_PACKET);
+	/* Invalid packet when status is anything but STATUS_NEWGRFS_CHECK. */
+	if (this->status != STATUS_NEWGRFS_CHECK) return this->CloseConnection(NETWORK_RECV_STATUS_MALFORMED_PACKET);
 
 	Debug(net, 9, "client[{}] status = AUTHORIZED", this->client_id);
 	this->status = STATUS_AUTHORIZED;
@@ -517,8 +491,6 @@ NetworkRecvStatus ServerNetworkGameSocketHandler::SendWelcome()
 
 	auto p = std::make_unique<Packet>(this, PACKET_SERVER_WELCOME);
 	p->Send_uint32(this->client_id);
-	p->Send_uint32(_settings_game.game_creation.generation_seed);
-	p->Send_string(_settings_client.network.network_id);
 	this->SendPacket(std::move(p));
 
 	/* Transmit info about all the active clients */
@@ -840,18 +812,6 @@ NetworkRecvStatus ServerNetworkGameSocketHandler::SendMove(ClientID client_id, C
 	return NETWORK_RECV_STATUS_OKAY;
 }
 
-/** Send an update about the company password states. */
-NetworkRecvStatus ServerNetworkGameSocketHandler::SendCompanyUpdate()
-{
-	Debug(net, 9, "client[{}] SendCompanyUpdate()", this->client_id);
-
-	auto p = std::make_unique<Packet>(this, PACKET_SERVER_COMPANY_UPDATE);
-
-	p->Send_uint16(0);
-	this->SendPacket(std::move(p));
-	return NETWORK_RECV_STATUS_OKAY;
-}
-
 /** Send an update about the max company/spectator counts. */
 NetworkRecvStatus ServerNetworkGameSocketHandler::SendConfigUpdate()
 {
@@ -885,7 +845,7 @@ NetworkRecvStatus ServerNetworkGameSocketHandler::Receive_CLIENT_NEWGRFS_CHECKED
 
 	Debug(net, 9, "client[{}] Receive_CLIENT_NEWGRFS_CHECKED()", this->client_id);
 
-	return this->SendNeedCompanyPassword();
+	return this->SendWelcome();
 }
 
 NetworkRecvStatus ServerNetworkGameSocketHandler::Receive_CLIENT_JOIN(Packet &p)
@@ -1025,17 +985,6 @@ NetworkRecvStatus ServerNetworkGameSocketHandler::Receive_CLIENT_AUTH_RESPONSE(P
 	return NETWORK_RECV_STATUS_OKAY;
 }
 
-NetworkRecvStatus ServerNetworkGameSocketHandler::Receive_CLIENT_COMPANY_PASSWORD(Packet &)
-{
-	if (this->status != STATUS_AUTH_COMPANY) {
-		return this->SendError(NETWORK_ERROR_NOT_EXPECTED);
-	}
-
-	Debug(net, 9, "client[{}] Receive_CLIENT_COMPANY_PASSWORD()", this->client_id);
-
-	return this->SendWelcome();
-}
-
 NetworkRecvStatus ServerNetworkGameSocketHandler::Receive_CLIENT_GETMAP(Packet &)
 {
 	/* The client was never joined.. so this is impossible, right?
@@ -1096,10 +1045,7 @@ NetworkRecvStatus ServerNetworkGameSocketHandler::Receive_CLIENT_MAP_OK(Packet &
 		NetworkAdminClientInfo(this, true);
 
 		/* also update the new client with our max values */
-		this->SendConfigUpdate();
-
-		/* quickly update the syncing client with company details */
-		return this->SendCompanyUpdate();
+		return this->SendConfigUpdate();
 	}
 
 	/* Wrong status for this packet, give a warning to client, and close connection */
@@ -1461,22 +1407,6 @@ NetworkRecvStatus ServerNetworkGameSocketHandler::Receive_CLIENT_CHAT(Packet &p)
 			IConsolePrint(CC_WARNING, "Kicking client #{} (IP: {}) due to unknown chact action.", ci->client_id, this->GetClientIP());
 			return this->SendError(NETWORK_ERROR_NOT_EXPECTED);
 	}
-	return NETWORK_RECV_STATUS_OKAY;
-}
-
-NetworkRecvStatus ServerNetworkGameSocketHandler::Receive_CLIENT_SET_PASSWORD(Packet &p)
-{
-	if (this->status != STATUS_ACTIVE) {
-		/* Illegal call, return error and ignore the packet */
-		return this->SendError(NETWORK_ERROR_NOT_EXPECTED);
-	}
-
-	Debug(net, 9, "client[{}] Receive_CLIENT_SET_PASSWORD()", this->client_id);
-
-	std::string password = p.Recv_string(NETWORK_PASSWORD_LENGTH);
-	const NetworkClientInfo *ci = this->GetInfo();
-
-	NetworkServerSetCompanyPassword(ci->client_playas, password);
 	return NETWORK_RECV_STATUS_OKAY;
 }
 
@@ -1866,7 +1796,6 @@ void NetworkServer_Tick(bool send_frame)
 				break;
 
 			case NetworkClientSocket::STATUS_AUTH_GAME:
-			case NetworkClientSocket::STATUS_AUTH_COMPANY:
 				/* These don't block? */
 				if (lag > _settings_client.network.max_password_time) {
 					IConsolePrint(CC_WARNING, "Client #{} (IP: {}) is dropped because it took longer than {} ticks to enter the password.", cs->client_id, cs->GetClientIP(), _settings_client.network.max_password_time);
@@ -2012,10 +1941,9 @@ void NetworkServerShowStatusToConsole()
 {
 	static const char * const stat_str[] = {
 		"inactive",
-		"authorizing (server password)",
+		"authorizing",
 		"identifing client",
 		"checking NewGRFs",
-		"authorizing (company password)",
 		"authorized",
 		"waiting",
 		"loading map",
@@ -2065,10 +1993,6 @@ void NetworkServerUpdateCompanyPassworded(CompanyID company_id, bool passworded)
 	if (NetworkCompanyIsPassworded(company_id) == passworded) return;
 
 	SetWindowClassesDirty(WC_COMPANY);
-
-	for (NetworkClientSocket *cs : NetworkClientSocket::Iterate()) {
-		if (cs->status >= NetworkClientSocket::STATUS_PRE_ACTIVE) cs->SendCompanyUpdate();
-	}
 
 	NetworkAdminCompanyUpdate(Company::GetIfValid(company_id));
 }
