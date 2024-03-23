@@ -24,8 +24,6 @@
 #include "../company_type.h"
 #include "../string_type.h"
 
-extern NetworkCompanyState *_network_company_states;
-
 extern ClientID _network_own_client_id;
 extern ClientID _redirect_console_to_client;
 extern uint8_t _network_reconnect;

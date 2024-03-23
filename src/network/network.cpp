@@ -61,7 +61,6 @@ bool _network_server;     ///< network-server is active
 bool _network_available;  ///< is network mode available?
 bool _network_dedicated;  ///< are we a dedicated server?
 bool _is_network_server;  ///< Does this client wants to be a network-server?
-NetworkCompanyState *_network_company_states = nullptr; ///< Statistics about some companies.
 ClientID _network_own_client_id;      ///< Our client identifier.
 ClientID _redirect_console_to_client; ///< If not invalid, redirect the console output to a client.
 uint8_t _network_reconnect;             ///< Reconnect timeout
@@ -79,7 +78,6 @@ uint32_t _sync_seed_2;                  ///< Second part of the seed.
 #endif
 uint32_t _sync_frame;                   ///< The frame to perform the sync check.
 bool _network_first_time;             ///< Whether we have finished joining or not.
-CompanyMask _network_company_passworded; ///< Bitmask of the password status of all companies.
 
 static_assert((int)NETWORK_COMPANY_NAME_LENGTH == MAX_LENGTH_COMPANY_NAME_CHARS * MAX_CHAR_LENGTH);
 
@@ -281,9 +279,9 @@ std::string GenerateCompanyPasswordHash(const std::string &password, const std::
  * @param company_id id of the company we want to check the 'passworded' flag for.
  * @return true if the company requires a password.
  */
-bool NetworkCompanyIsPassworded(CompanyID company_id)
+bool NetworkCompanyIsPassworded([[maybe_unused]] CompanyID company_id)
 {
-	return HasBit(_network_company_passworded, company_id);
+	return false;
 }
 
 /* This puts a text-message to the console, or in the future, the chat-box,
@@ -681,10 +679,6 @@ void NetworkClose(bool close_admins)
 
 	NetworkFreeLocalCommandQueue();
 
-	delete[] _network_company_states;
-	_network_company_states = nullptr;
-	_network_company_passworded = 0;
-
 	InitializeNetworkPools(close_admins);
 }
 
@@ -979,7 +973,6 @@ bool NetworkServerStart()
 	Debug(net, 5, "Starting listeners for incoming server queries");
 	NetworkUDPServerListen();
 
-	_network_company_states = new NetworkCompanyState[MAX_COMPANIES];
 	_network_server = true;
 	_networking = true;
 	_frame_counter = 0;
@@ -989,7 +982,6 @@ bool NetworkServerStart()
 	_network_own_client_id = CLIENT_ID_SERVER;
 
 	_network_clients_connected = 0;
-	_network_company_passworded = 0;
 
 	NetworkInitGameInfo();
 
