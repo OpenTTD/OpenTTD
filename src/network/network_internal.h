@@ -114,7 +114,6 @@ void NetworkTextMessage(NetworkAction action, TextColour colour, bool self_send,
 uint NetworkCalculateLag(const NetworkClientSocket *cs);
 StringID GetNetworkErrorMsg(NetworkErrorCode err);
 bool NetworkMakeClientNameUnique(std::string &new_name);
-std::string GenerateCompanyPasswordHash(const std::string &password, const std::string &password_server_id, uint32_t password_game_seed);
 
 std::string_view ParseCompanyFromConnectionString(const std::string &connection_string, CompanyID *company_id);
 NetworkAddress ParseConnectionString(const std::string &connection_string, uint16_t default_port);
