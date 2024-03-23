@@ -127,6 +127,28 @@ NetworkClientInfo::~NetworkClientInfo()
 }
 
 /**
+ * Returns whether the given company can be joined by this client.
+ * @param company_id The id of the company.
+ * @return \c true when this company is allowed to join, otherwise \c false.
+ */
+bool NetworkClientInfo::CanJoinCompany(CompanyID company_id) const
+{
+	Company *c = Company::GetIfValid(company_id);
+	return c != nullptr && c->allow_list.Contains(this->public_key);
+}
+
+/**
+ * Returns whether the given company can be joined by this client.
+ * @param company_id The id of the company.
+ * @return \c true when this company is allowed to join, otherwise \c false.
+ */
+bool NetworkCanJoinCompany(CompanyID company_id)
+{
+	NetworkClientInfo *info = NetworkClientInfo::GetByClientID(_network_own_client_id);
+	return info != nullptr && info->CanJoinCompany(company_id);
+}
+
+/**
  * Return the client state given it's client-identifier
  * @param client_id the ClientID to search for
  * @return return a pointer to the corresponding NetworkClientSocket struct or nullptr when not found
@@ -889,6 +911,9 @@ static void NetworkInitGameInfo()
 	ci->client_playas = COMPANY_SPECTATOR;
 
 	ci->client_name = _settings_client.network.client_name;
+
+	NetworkAuthenticationClientHandler::EnsureValidSecretKeyAndUpdatePublicKey(_settings_client.network.client_secret_key, _settings_client.network.client_public_key);
+	ci->public_key = _settings_client.network.client_public_key;
 }
 
 /**

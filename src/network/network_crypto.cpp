@@ -443,6 +443,15 @@ void CombinedAuthenticationServerHandler::Add(CombinedAuthenticationServerHandle
 	this->SendResponse();
 }
 
+/**
+ * Ensures that the given secret key is valid, and when not overwrite it with a valid secret key. Then update the public key to be associated with the secret key.
+ * @param secret_key The location where the secret key is stored; can be overwritten when invalid.
+ * @param public_key The location where the public key is stored; can be overwritten when invalid.
+ */
+/* static */ void NetworkAuthenticationClientHandler::EnsureValidSecretKeyAndUpdatePublicKey(std::string &secret_key, std::string &public_key)
+{
+	X25519AuthorizedKeyClientHandler::GetValidSecretKeyAndUpdatePublicKey(secret_key, public_key);
+}
 
 /**
  * Create a NetworkAuthenticationClientHandler.
