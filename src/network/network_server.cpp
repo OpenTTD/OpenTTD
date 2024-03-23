@@ -485,7 +485,7 @@ NetworkRecvStatus ServerNetworkGameSocketHandler::SendNeedCompanyPassword()
 	this->status = STATUS_AUTH_COMPANY;
 
 	NetworkClientInfo *ci = this->GetInfo();
-	if (!Company::IsValidID(ci->client_playas) || _network_company_states[ci->client_playas].password.empty()) {
+	if (!Company::IsValidID(ci->client_playas)) {
 		return this->SendWelcome();
 	}
 
@@ -847,8 +847,7 @@ NetworkRecvStatus ServerNetworkGameSocketHandler::SendCompanyUpdate()
 
 	auto p = std::make_unique<Packet>(this, PACKET_SERVER_COMPANY_UPDATE);
 
-	static_assert(sizeof(_network_company_passworded) <= sizeof(uint16_t));
-	p->Send_uint16(_network_company_passworded);
+	p->Send_uint16(0);
 	this->SendPacket(std::move(p));
 	return NETWORK_RECV_STATUS_OKAY;
 }
@@ -939,6 +938,11 @@ NetworkRecvStatus ServerNetworkGameSocketHandler::Receive_CLIENT_IDENTIFY(Packet
 			if (!Company::IsValidHumanID(playas)) {
 				return this->SendError(NETWORK_ERROR_COMPANY_MISMATCH);
 			}
+
+			if (!Company::Get(playas)->allow_list.Contains(this->peer_public_key)) {
+				/* When we're not authorized, just bump us to a spectator. */
+				playas = COMPANY_SPECTATOR;
+			}
 			break;
 	}
 
@@ -1021,25 +1025,13 @@ NetworkRecvStatus ServerNetworkGameSocketHandler::Receive_CLIENT_AUTH_RESPONSE(P
 	return NETWORK_RECV_STATUS_OKAY;
 }
 
-NetworkRecvStatus ServerNetworkGameSocketHandler::Receive_CLIENT_COMPANY_PASSWORD(Packet &p)
+NetworkRecvStatus ServerNetworkGameSocketHandler::Receive_CLIENT_COMPANY_PASSWORD(Packet &)
 {
 	if (this->status != STATUS_AUTH_COMPANY) {
 		return this->SendError(NETWORK_ERROR_NOT_EXPECTED);
 	}
 
 	Debug(net, 9, "client[{}] Receive_CLIENT_COMPANY_PASSWORD()", this->client_id);
-
-	std::string password = p.Recv_string(NETWORK_PASSWORD_LENGTH);
-
-	/* Check company password. Allow joining if we cleared the password meanwhile.
-	 * Also, check the company is still valid - client could be moved to spectators
-	 * in the middle of the authorization process */
-	CompanyID playas = this->GetInfo()->client_playas;
-	if (Company::IsValidID(playas) && !_network_company_states[playas].password.empty() &&
-			_network_company_states[playas].password.compare(password) != 0) {
-		/* Password is invalid */
-		return this->SendError(NETWORK_ERROR_WRONG_PASSWORD);
-	}
 
 	return this->SendWelcome();
 }
@@ -1559,16 +1551,9 @@ NetworkRecvStatus ServerNetworkGameSocketHandler::Receive_CLIENT_MOVE(Packet &p)
 	/* Check if the company is valid, we don't allow moving to AI companies */
 	if (company_id != COMPANY_SPECTATOR && !Company::IsValidHumanID(company_id)) return NETWORK_RECV_STATUS_OKAY;
 
-	/* Check if we require a password for this company */
-	if (company_id != COMPANY_SPECTATOR && !Company::Get(company_id)->allow_list.Contains(this->peer_public_key) && !_network_company_states[company_id].password.empty()) {
-		/* we need a password from the client - should be in this packet */
-		std::string password = p.Recv_string(NETWORK_PASSWORD_LENGTH);
-
-		/* Incorrect password sent, return! */
-		if (_network_company_states[company_id].password.compare(password) != 0) {
-			Debug(net, 2, "Wrong password from client-id #{} for company #{}", this->client_id, company_id + 1);
-			return NETWORK_RECV_STATUS_OKAY;
-		}
+	if (company_id != COMPANY_SPECTATOR && !Company::Get(company_id)->allow_list.Contains(this->peer_public_key)) {
+		Debug(net, 2, "Wrong public key from client-id #{} for company #{}", this->client_id, company_id + 1);
+		return NETWORK_RECV_STATUS_OKAY;
 	}
 
 	/* if we get here we can move the client */
@@ -1758,17 +1743,8 @@ bool NetworkServerChangeClientName(ClientID client_id, const std::string &new_na
  * @param password The new password.
  * @param already_hashed Is the given password already hashed?
  */
-void NetworkServerSetCompanyPassword(CompanyID company_id, const std::string &password, bool already_hashed)
+void NetworkServerSetCompanyPassword([[maybe_unused]] CompanyID company_id, [[maybe_unused]] const std::string &password, [[maybe_unused]] bool already_hashed)
 {
-	if (!Company::IsValidHumanID(company_id)) return;
-
-	if (already_hashed) {
-		_network_company_states[company_id].password = password;
-	} else {
-		_network_company_states[company_id].password = GenerateCompanyPasswordHash(password, _settings_client.network.network_id, _settings_game.game_creation.generation_seed);
-	}
-
-	NetworkServerUpdateCompanyPassworded(company_id, !_network_company_states[company_id].password.empty());
 }
 
 /**
@@ -2088,7 +2064,6 @@ void NetworkServerUpdateCompanyPassworded(CompanyID company_id, bool passworded)
 {
 	if (NetworkCompanyIsPassworded(company_id) == passworded) return;
 
-	SB(_network_company_passworded, company_id, 1, !!passworded);
 	SetWindowClassesDirty(WC_COMPANY);
 
 	for (NetworkClientSocket *cs : NetworkClientSocket::Iterate()) {
@@ -2277,9 +2252,6 @@ void NetworkServerNewCompany(const Company *c, NetworkClientInfo *ci)
 	assert(c != nullptr);
 
 	if (!_network_server) return;
-
-	_network_company_states[c->index].password.clear();
-	NetworkServerUpdateCompanyPassworded(c->index, false);
 
 	if (ci != nullptr) {
 		/* ci is nullptr when replaying, or for AIs. In neither case there is a client. */

@@ -70,11 +70,6 @@ struct NetworkCompanyStats {
 	bool ai;                                        ///< Is this company an AI
 };
 
-/** Some state information of a company, especially for servers */
-struct NetworkCompanyState {
-	std::string password; ///< The password for the company
-};
-
 struct NetworkClientInfo;
 
 /** The type of password we're asking for. */

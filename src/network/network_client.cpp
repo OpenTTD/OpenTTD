@@ -1261,12 +1261,10 @@ NetworkRecvStatus ClientNetworkGameSocketHandler::Receive_SERVER_CONFIG_UPDATE(P
 	return NETWORK_RECV_STATUS_OKAY;
 }
 
-NetworkRecvStatus ClientNetworkGameSocketHandler::Receive_SERVER_COMPANY_UPDATE(Packet &p)
+NetworkRecvStatus ClientNetworkGameSocketHandler::Receive_SERVER_COMPANY_UPDATE(Packet &)
 {
 	if (this->status < STATUS_ACTIVE) return NETWORK_RECV_STATUS_MALFORMED_PACKET;
 
-	static_assert(sizeof(_network_company_passworded) <= sizeof(uint16_t));
-	_network_company_passworded = p.Recv_uint16();
 	SetWindowClassesDirty(WC_COMPANY);
 
 	Debug(net, 9, "Client::Receive_SERVER_COMPANY_UPDATE()");
