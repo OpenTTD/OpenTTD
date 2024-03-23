@@ -320,9 +320,7 @@ struct NetworkSettings {
 	std::string client_name;                              ///< name of the player (as client)
 	std::string client_secret_key; ///< The secret key of the client for authorized key logins.
 	std::string client_public_key; ///< The public key of the client for authorized key logins.
-	std::string default_company_pass;                     ///< default password for new companies in encrypted form
 	std::string connect_to_ip;                            ///< default for the "Add server" query
-	std::string network_id;                               ///< network ID for servers
 	bool        autoclean_companies;                      ///< automatically remove companies that are not in use
 	uint8_t       autoclean_protected; ///< Remove companies after this many months.
 	uint8_t       autoclean_novehicles;                     ///< remove companies with no vehicles after this many months
