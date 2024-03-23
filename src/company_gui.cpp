@@ -2517,9 +2517,6 @@ struct CompanyWindow : Window
 				if (_network_server) {
 					NetworkServerDoMove(CLIENT_ID_SERVER, company);
 					MarkWholeScreenDirty();
-				} else if (NetworkCompanyIsPassworded(company)) {
-					/* ask for the password */
-					ShowQueryString(STR_EMPTY, STR_NETWORK_NEED_COMPANY_PASSWORD_CAPTION, NETWORK_PASSWORD_LENGTH, this, CS_ALPHANUMERAL, QSF_PASSWORD);
 				} else {
 					/* just send the join command */
 					NetworkClientRequestMove(company);
@@ -2566,10 +2563,6 @@ struct CompanyWindow : Window
 
 			case WID_C_COMPANY_NAME:
 				Command<CMD_RENAME_COMPANY>::Post(STR_ERROR_CAN_T_CHANGE_COMPANY_NAME, str);
-				break;
-
-			case WID_C_COMPANY_JOIN:
-				NetworkClientRequestMove((CompanyID)this->window_number, str);
 				break;
 		}
 	}

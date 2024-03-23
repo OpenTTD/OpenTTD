@@ -1249,10 +1249,8 @@ void NetworkClientSendRcon(const std::string &password, const std::string &comma
 /**
  * Notify the server of this client wanting to be moved to another company.
  * @param company_id id of the company the client wishes to be moved to.
- * @param pass the password, is only checked on the server end if a password is needed.
- * @return void
  */
-void NetworkClientRequestMove(CompanyID company_id, [[maybe_unused]] const std::string &pass)
+void NetworkClientRequestMove(CompanyID company_id)
 {
 	MyClient::SendMove(company_id);
 }
