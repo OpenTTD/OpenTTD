@@ -914,7 +914,7 @@ DEF_CONSOLE_CMD(ConClientNickChange)
 DEF_CONSOLE_CMD(ConJoinCompany)
 {
 	if (argc < 2) {
-		IConsolePrint(CC_HELP, "Request joining another company. Usage: 'join <company-id> [<password>]'.");
+		IConsolePrint(CC_HELP, "Request joining another company. Usage: 'join <company-id>'.");
 		IConsolePrint(CC_HELP, "For valid company-id see company list, use 255 for spectator.");
 		return true;
 	}
@@ -943,9 +943,8 @@ DEF_CONSOLE_CMD(ConJoinCompany)
 		return true;
 	}
 
-	/* Check if the company requires a password */
-	if (NetworkCompanyIsPassworded(company_id) && argc < 3) {
-		IConsolePrint(CC_ERROR, "Company {} requires a password to join.", company_id + 1);
+	if (!info->CanJoinCompany(company_id)) {
+		IConsolePrint(CC_ERROR, "You are not allowed to join this company.");
 		return true;
 	}
 
@@ -953,7 +952,7 @@ DEF_CONSOLE_CMD(ConJoinCompany)
 	if (_network_server) {
 		NetworkServerDoMove(CLIENT_ID_SERVER, company_id);
 	} else {
-		NetworkClientRequestMove(company_id, NetworkCompanyIsPassworded(company_id) ? argv[2] : "");
+		NetworkClientRequestMove(company_id);
 	}
 
 	return true;
