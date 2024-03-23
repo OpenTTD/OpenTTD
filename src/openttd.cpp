@@ -170,7 +170,6 @@ static void ShowHelp()
 		"  -G seed             = Set random seed\n"
 		"  -n host[:port][#company]= Join network game\n"
 		"  -p password         = Password to join server\n"
-		"  -P password         = Password to join company\n"
 		"  -D [host][:port]    = Start dedicated server\n"
 #if !defined(_WIN32)
 		"  -f                  = Fork into the background (dedicated only)\n"
@@ -386,7 +385,6 @@ struct AfterNewGRFScan : NewGRFScanCallback {
 	uint16_t dedicated_port = 0;                  ///< Port for the dedicated server.
 	std::string connection_string;              ///< Information about the server to connect to
 	std::string join_server_password;           ///< The password to join the server with.
-	std::string join_company_password;          ///< The password to join the company with.
 	bool save_config = true;                    ///< The save config setting.
 
 	/**
@@ -450,7 +448,7 @@ struct AfterNewGRFScan : NewGRFScanCallback {
 			LoadIntroGame();
 			_switch_mode = SM_NONE;
 
-			NetworkClientConnectGame(connection_string, COMPANY_NEW_COMPANY, join_server_password, join_company_password);
+			NetworkClientConnectGame(connection_string, COMPANY_NEW_COMPANY, join_server_password);
 		}
 
 		/* After the scan we're not used anymore. */
@@ -490,7 +488,6 @@ static const OptionData _options[] = {
 	GETOPT_SHORT_OPTVAL('D'),
 	 GETOPT_SHORT_VALUE('n'),
 	 GETOPT_SHORT_VALUE('p'),
-	 GETOPT_SHORT_VALUE('P'),
 #if !defined(_WIN32)
 	 GETOPT_SHORT_NOVAL('f'),
 #endif
@@ -568,9 +565,6 @@ int openttd_main(int argc, char *argv[])
 			break;
 		case 'p':
 			scanner->join_server_password = mgo.opt;
-			break;
-		case 'P':
-			scanner->join_company_password = mgo.opt;
 			break;
 		case 'r': ParseResolution(&resolution, mgo.opt); break;
 		case 't': scanner->startyear = atoi(mgo.opt); break;

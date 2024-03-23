@@ -49,7 +49,7 @@ void NetworkPopulateCompanyStats(NetworkCompanyStats *stats);
 
 void NetworkUpdateClientInfo(ClientID client_id);
 void NetworkClientsToSpectators(CompanyID cid);
-bool NetworkClientConnectGame(const std::string &connection_string, CompanyID default_company, const std::string &join_server_password = "", const std::string &join_company_password = "");
+bool NetworkClientConnectGame(const std::string &connection_string, CompanyID default_company, const std::string &join_server_password = "");
 void NetworkClientJoinGame();
 void NetworkClientRequestMove(CompanyID company, const std::string &pass = "");
 void NetworkClientSendRcon(const std::string &password, const std::string &command);
