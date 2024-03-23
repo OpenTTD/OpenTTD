@@ -503,13 +503,6 @@ enum WindowClass {
 	WC_SEND_NETWORK_MSG,
 
 	/**
-	 * Company password query; %Window numbers:
-	 *   - 0 = #NetworkCompanyPasswordWidgets
-	 */
-	WC_COMPANY_PASSWORD_WINDOW,
-
-
-	/**
 	 * Industry cargoes chain; %Window numbers:
 	 *   - 0 = #IndustryCargoesWidgets
 	 */

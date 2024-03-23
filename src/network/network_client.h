@@ -104,7 +104,6 @@ public:
 typedef ClientNetworkGameSocketHandler MyClient;
 
 void NetworkClient_Connected();
-void NetworkClientSetCompanyPassword(const std::string &password);
 
 /** Information required to join a server. */
 struct NetworkJoinInfo {

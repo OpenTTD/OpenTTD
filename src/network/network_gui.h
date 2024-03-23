@@ -22,7 +22,6 @@ void ShowNetworkChatQueryWindow(DestType type, int dest);
 void ShowJoinStatusWindow();
 void ShowNetworkGameWindow();
 void ShowClientList();
-void ShowNetworkCompanyPasswordWindow(Window *parent);
 void ShowNetworkAskRelay(const std::string &server_connection_string, const std::string &relay_connection_string, const std::string &token);
 void ShowNetworkAskSurvey();
 void ShowSurveyResultTextfileWindow();
