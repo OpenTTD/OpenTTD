@@ -981,6 +981,24 @@ CommandCost CmdCompanyCtrl(DoCommandFlag flags, CompanyCtrlAction cca, CompanyID
 }
 
 /**
+ * Add the given public key to the allow list of this company.
+ * @param flags Operation to perform.
+ * @param public_key The public key of the client to add.
+ * @return The cost of this operation or an error.
+ */
+CommandCost CmdCompanyAddAllowList(DoCommandFlag flags, const std::string &public_key)
+{
+	if (flags & DC_EXEC) {
+		if (Company::Get(_current_company)->allow_list.Add(public_key)) {
+			InvalidateWindowData(WC_CLIENT_LIST, 0);
+			SetWindowDirty(WC_COMPANY, _current_company);
+		}
+	}
+
+	return CommandCost();
+}
+
+/**
  * Change the company manager's face.
  * @param flags operation to perform
  * @param cmf face bitmasked

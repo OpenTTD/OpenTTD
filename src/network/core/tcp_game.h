@@ -202,7 +202,8 @@ protected:
 	 * Send information about a client:
 	 * uint32_t  ID of the client (always unique on a server. 1 = server, 0 is invalid).
 	 * uint8_t   ID of the company the client is playing as (255 for spectators).
-	 * string  Name of the client.
+	 * string Name of the client.
+	 * string Public key of the client.
 	 * @param p The packet that was just received.
 	 */
 	virtual NetworkRecvStatus Receive_SERVER_CLIENT_INFO(Packet &p);

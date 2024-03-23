@@ -332,6 +332,7 @@ NetworkRecvStatus ServerNetworkGameSocketHandler::SendClientInfo(NetworkClientIn
 		p->Send_uint32(ci->client_id);
 		p->Send_uint8 (ci->client_playas);
 		p->Send_string(ci->client_name);
+		p->Send_string(ci->public_key);
 
 		this->SendPacket(std::move(p));
 	}
@@ -959,6 +960,7 @@ NetworkRecvStatus ServerNetworkGameSocketHandler::Receive_CLIENT_IDENTIFY(Packet
 	ci->join_date = TimerGameEconomy::date;
 	ci->client_name = client_name;
 	ci->client_playas = playas;
+	ci->public_key = this->peer_public_key;
 	Debug(desync, 1, "client: {:08x}; {:02x}; {:02x}; {:02x}", TimerGameEconomy::date, TimerGameEconomy::date_fract, (int)ci->client_playas, (int)ci->index);
 
 	/* Make sure companies to which people try to join are not autocleaned */
@@ -1175,6 +1177,23 @@ NetworkRecvStatus ServerNetworkGameSocketHandler::Receive_CLIENT_COMMAND(Packet 
 			NetworkServerSendChat(NETWORK_ACTION_SERVER_MESSAGE, DESTTYPE_CLIENT, ci->client_id, "cannot create new company, server full", CLIENT_ID_SERVER);
 			return NETWORK_RECV_STATUS_OKAY;
 		}
+	}
+
+	if (cp.cmd == CMD_COMPANY_ADD_ALLOW_LIST) {
+		/* Maybe the client just got moved before allowing? */
+		if (ci->client_id != CLIENT_ID_SERVER && ci->client_playas != cp.company) return NETWORK_RECV_STATUS_OKAY;
+
+		std::string public_key = std::get<0>(EndianBufferReader::ToValue<CommandTraits<CMD_COMPANY_ADD_ALLOW_LIST>::Args>(cp.data));
+		bool found = false;
+		for (const NetworkClientInfo *info : NetworkClientInfo::Iterate()) {
+			if (info->public_key == public_key) {
+				found = true;
+				break;
+			}
+		}
+
+		/* Maybe the client just left? */
+		if (!found) return NETWORK_RECV_STATUS_OKAY;
 	}
 
 	if (GetCommandFlags(cp.cmd) & CMD_CLIENT_ID) NetworkReplaceCommandClientId(cp, this->client_id);
@@ -1541,7 +1560,7 @@ NetworkRecvStatus ServerNetworkGameSocketHandler::Receive_CLIENT_MOVE(Packet &p)
 	if (company_id != COMPANY_SPECTATOR && !Company::IsValidHumanID(company_id)) return NETWORK_RECV_STATUS_OKAY;
 
 	/* Check if we require a password for this company */
-	if (company_id != COMPANY_SPECTATOR && !_network_company_states[company_id].password.empty()) {
+	if (company_id != COMPANY_SPECTATOR && !Company::Get(company_id)->allow_list.Contains(this->peer_public_key) && !_network_company_states[company_id].password.empty()) {
 		/* we need a password from the client - should be in this packet */
 		std::string password = p.Recv_string(NETWORK_PASSWORD_LENGTH);
 
@@ -2275,13 +2294,9 @@ void NetworkServerNewCompany(const Company *c, NetworkClientInfo *ci)
 		/* ci is nullptr when replaying, or for AIs. In neither case there is a client. */
 		ci->client_playas = c->index;
 		NetworkUpdateClientInfo(ci->client_id);
+		Command<CMD_COMPANY_ADD_ALLOW_LIST>::SendNet(STR_NULL, c->index, ci->public_key);
 		Command<CMD_RENAME_PRESIDENT>::SendNet(STR_NULL, c->index, ci->client_name);
-	}
 
-	if (ci != nullptr) {
-		/* ci is nullptr when replaying, or for AIs. In neither case there is a client.
-		   We need to send Admin port update here so that they first know about the new company
-		   and then learn about a possibly joining client (see FS#6025) */
 		NetworkServerSendChat(NETWORK_ACTION_COMPANY_NEW, DESTTYPE_BROADCAST, 0, "", ci->client_id, c->index + 1);
 	}
 }
