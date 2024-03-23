@@ -54,7 +54,6 @@ void NetworkClientRequestMove(CompanyID company);
 void NetworkClientSendRcon(const std::string &password, const std::string &command);
 void NetworkClientSendChat(NetworkAction action, DestType type, int dest, const std::string &msg, int64_t data = 0);
 bool NetworkClientPreferTeamChat(const NetworkClientInfo *cio);
-bool NetworkCompanyIsPassworded(CompanyID company_id);
 uint NetworkMaxCompaniesAllowed();
 bool NetworkMaxCompaniesReached();
 void NetworkPrintClients();

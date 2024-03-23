@@ -321,9 +321,6 @@ std::string _network_server_name;
 /** Information about the game to join to. */
 NetworkJoinInfo _network_join;
 
-/** Make sure the server ID length is the same as a md5 hash. */
-static_assert(NETWORK_SERVER_ID_LENGTH == MD5_HASH_BYTES * 2 + 1);
-
 /***********
  * Sending functions
  ************/

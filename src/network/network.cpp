@@ -227,49 +227,6 @@ uint8_t NetworkSpectatorCount()
 	return count;
 }
 
-/**
- * Hash the given password using server ID and game seed.
- * @param password Password to hash.
- * @param password_server_id Server ID.
- * @param password_game_seed Game seed.
- * @return The hashed password.
- */
-std::string GenerateCompanyPasswordHash(const std::string &password, const std::string &password_server_id, uint32_t password_game_seed)
-{
-	if (password.empty()) return password;
-
-	size_t password_length = password.size();
-	size_t password_server_id_length = password_server_id.size();
-
-	std::ostringstream salted_password;
-	/* Add the password with the server's ID and game seed as the salt. */
-	for (uint i = 0; i < NETWORK_SERVER_ID_LENGTH - 1; i++) {
-		char password_char = (i < password_length ? password[i] : 0);
-		char server_id_char = (i < password_server_id_length ? password_server_id[i] : 0);
-		char seed_char = password_game_seed >> (i % 32);
-		salted_password << (char)(password_char ^ server_id_char ^ seed_char); // Cast needed, otherwise interpreted as integer to format
-	}
-
-	Md5 checksum;
-	MD5Hash digest;
-
-	/* Generate the MD5 hash */
-	std::string salted_password_string = salted_password.str();
-	checksum.Append(salted_password_string.data(), salted_password_string.size());
-	checksum.Finish(digest);
-
-	return FormatArrayAsHex(digest);
-}
-
-/**
- * Check if the company we want to join requires a password.
- * @param company_id id of the company we want to check the 'passworded' flag for.
- * @return true if the company requires a password.
- */
-bool NetworkCompanyIsPassworded([[maybe_unused]] CompanyID company_id)
-{
-	return false;
-}
 
 /* This puts a text-message to the console, or in the future, the chat-box,
  *  (to keep it all a bit more general)
@@ -1324,11 +1281,6 @@ void NetworkGameLoop()
 	NetworkSend();
 }
 
-static void NetworkGenerateServerId()
-{
-	_settings_client.network.network_id = GenerateUid("OpenTTD Server ID");
-}
-
 /** This tries to launch the network for a given OS */
 void NetworkStartUp()
 {
@@ -1337,9 +1289,6 @@ void NetworkStartUp()
 	/* Network is available */
 	_network_available = NetworkCoreInitialize();
 	_network_dedicated = false;
-
-	/* Generate an server id when there is none yet */
-	if (_settings_client.network.network_id.empty()) NetworkGenerateServerId();
 
 	_network_game_info = {};
 
