@@ -11,7 +11,7 @@
 #define SCRIPT_DATE_HPP
 
 #include "script_object.hpp"
-#include "../../timer/timer_game_calendar.h"
+#include "../../timer/timer_game_economy.h"
 
 /**
  * Class that handles all date related (calculation) functions.
@@ -31,7 +31,7 @@ public:
 	 * compose valid date values for a known year, month and day.
 	 */
 	enum Date {
-		DATE_INVALID = ::CalendarTime::INVALID_DATE.base(), ///< A value representing an invalid date.
+		DATE_INVALID = ::EconomyTime::INVALID_DATE.base(), ///< A value representing an invalid date.
 	};
 
 	/**
