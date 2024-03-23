@@ -329,17 +329,7 @@ public:
 
 class SlStationGoods : public DefaultSaveLoadHandler<SlStationGoods, BaseStation> {
 public:
-#if defined(_MSC_VER) && (_MSC_VER == 1915 || _MSC_VER == 1916)
-	/* This table access private members of other classes; they have this
-	 * class as friend. For MSVC CL 19.15 and 19.16 this doesn't work for
-	 * "inline static const", so we are forced to wrap the table in a
-	 * function. CL 19.16 is the latest for VS2017. */
-	inline static const SaveLoad description[] = {{}};
-	SaveLoadTable GetDescription() const override {
-#else
-	inline
-#endif
-	static const SaveLoad description[] = {
+	inline static const SaveLoad description[] = {
 		SLEG_CONDVAR("waiting_acceptance", _waiting_acceptance, SLE_UINT16,        SL_MIN_VERSION, SLV_68),
 		 SLE_CONDVAR(GoodsEntry, status,               SLE_UINT8,                  SLV_68, SL_MAX_VERSION),
 		     SLE_VAR(GoodsEntry, time_since_pickup,    SLE_UINT8),
@@ -363,10 +353,7 @@ public:
 		SLEG_CONDSTRUCTLIST("flow", SlStationFlow,                                SLV_183, SL_MAX_VERSION),
 		SLEG_CONDSTRUCTLIST("cargo", SlStationCargo,                              SLV_183, SL_MAX_VERSION),
 	};
-#if defined(_MSC_VER) && (_MSC_VER == 1915 || _MSC_VER == 1916)
-		return description;
-	}
-#endif
+
 	inline const static SaveLoadCompatTable compat_description = _station_goods_sl_compat;
 
 	/**
