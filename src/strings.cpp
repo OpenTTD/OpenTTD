@@ -542,7 +542,7 @@ static void FormatGenericCurrency(StringBuilder &builder, const CurrencySpec *sp
 	}
 
 	const char *separator = _settings_game.locale.digit_group_separator_currency.c_str();
-	if (StrEmpty(separator)) separator = _currency->separator.c_str();
+	if (StrEmpty(separator)) separator = GetCurrency().separator.c_str();
 	if (StrEmpty(separator)) separator = _langpack.langpack->digit_group_separator_currency;
 	FormatNumber(builder, number, separator);
 	if (number_str != STR_NULL) {
@@ -1324,11 +1324,11 @@ static void FormatString(StringBuilder &builder, const char *str_arg, StringPara
 				}
 
 				case SCC_CURRENCY_SHORT: // {CURRENCY_SHORT}
-					FormatGenericCurrency(builder, _currency, args.GetNextParameter<int64_t>(), true);
+					FormatGenericCurrency(builder, &GetCurrency(), args.GetNextParameter<int64_t>(), true);
 					break;
 
 				case SCC_CURRENCY_LONG: // {CURRENCY_LONG}
-					FormatGenericCurrency(builder, _currency, args.GetNextParameter<int64_t>(), false);
+					FormatGenericCurrency(builder, &GetCurrency(), args.GetNextParameter<int64_t>(), false);
 					break;
 
 				case SCC_DATE_TINY: // {DATE_TINY}

@@ -1280,7 +1280,7 @@ static void HandleSettingDescs(IniFile &generic_ini, IniFile &private_ini, IniFi
 		proc(secrets_ini, table, "patches", &_settings_newgame, only_startup);
 	}
 
-	proc(generic_ini, _currency_settings, "currency", &_custom_currency, only_startup);
+	proc(generic_ini, _currency_settings, "currency", &GetCustomCurrency(), only_startup);
 	proc(generic_ini, _company_settings, "company", &_settings_client.company, only_startup);
 
 	if (!only_startup) {

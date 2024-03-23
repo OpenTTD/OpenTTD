@@ -26,7 +26,7 @@
 	 *   |   |   Euro year   |              |                 |     | name
 	 *   |   |    |          |              |                 |     |  | */
 /** The original currency specifications. */
-static const CurrencySpec origin_currency_specs[CURRENCY_END] = {
+static const std::array<CurrencySpec, CURRENCY_END> origin_currency_specs = {{
 	{    1, "", CF_NOEURO, "\u00a3",   "",             "GBP", 0, STR_GAME_OPTIONS_CURRENCY_GBP    }, ///< british pound
 	{    2, "", CF_NOEURO, "$",        "",             "USD", 0, STR_GAME_OPTIONS_CURRENCY_USD    }, ///< american dollar
 	{    2, "", CF_ISEURO, "\u20ac",   "",             "EUR", 0, STR_GAME_OPTIONS_CURRENCY_EUR    }, ///< euro
@@ -71,10 +71,10 @@ static const CurrencySpec origin_currency_specs[CURRENCY_END] = {
 	{    5, "", CF_NOEURO, "RM",       "",             "MYR", 0, STR_GAME_OPTIONS_CURRENCY_MYR    }, ///< Malaysian Ringgit
 	{    1, "", 2014,      "",         NBSP "Ls",      "LVL", 1, STR_GAME_OPTIONS_CURRENCY_LVL    }, ///< latvian lats
 	{  400, "", 2002,      "",         "$00",          "PTE", 1, STR_GAME_OPTIONS_CURRENCY_PTE    }, ///< portuguese escudo
-};
+}};
 
 /** Array of currencies used by the system */
-CurrencySpec _currency_specs[CURRENCY_END];
+std::array<CurrencySpec, CURRENCY_END> _currency_specs;
 
 /**
  * This array represent the position of OpenTTD's currencies,

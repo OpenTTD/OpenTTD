@@ -166,7 +166,7 @@ void SurveySettings(nlohmann::json &survey, bool skip_if_default)
 	for (auto &table : GenericSettingTables()) {
 		SurveySettingsTable(survey, table, &_settings_game, skip_if_default);
 	}
-	SurveySettingsTable(survey, _currency_settings, &_custom_currency, skip_if_default);
+	SurveySettingsTable(survey, _currency_settings, &GetCustomCurrency(), skip_if_default);
 	SurveySettingsTable(survey, _company_settings, &_settings_client.company, skip_if_default);
 }
 

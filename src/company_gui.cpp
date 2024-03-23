@@ -2568,7 +2568,7 @@ struct CompanyWindow : Window
 			default: NOT_REACHED();
 
 			case WID_C_GIVE_MONEY: {
-				Money money = std::strtoull(str, nullptr, 10) / _currency->rate;
+				Money money = std::strtoull(str, nullptr, 10) / GetCurrency().rate;
 				Command<CMD_GIVE_MONEY>::Post(STR_ERROR_CAN_T_GIVE_MONEY, money, (CompanyID)this->window_number);
 				break;
 			}

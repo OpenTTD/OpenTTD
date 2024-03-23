@@ -1252,7 +1252,7 @@ struct PerformanceRatingDetailWindow : Window {
 				 * least 999 999 M which roughly is equally long. Furthermore if the
 				 * exchange rate is that high, 999 999 k is usually not enough anymore
 				 * to show the different currency numbers. */
-				if (_currency->rate < 1000) max /= _currency->rate;
+				if (GetCurrency().rate < 1000) max /= GetCurrency().rate;
 				SetDParam(0, max);
 				SetDParam(1, max);
 				uint score_detail_width = GetStringBoundingBox(STR_PERFORMANCE_DETAIL_AMOUNT_CURRENCY).width;
