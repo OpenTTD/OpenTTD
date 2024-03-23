@@ -73,7 +73,6 @@ struct NetworkCompanyStats {
 /** Some state information of a company, especially for servers */
 struct NetworkCompanyState {
 	std::string password; ///< The password for the company
-	uint16_t months_empty;  ///< How many months the company is empty
 };
 
 struct NetworkClientInfo;
