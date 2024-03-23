@@ -28,8 +28,8 @@
 #include "safeguards.h"
 
 
-template <typename Tspec, typename Tid, Tid Tmax>
-/* static */ void NewGRFClass<Tspec, Tid, Tmax>::InsertDefaults()
+template <>
+/* static */ void StationClass::InsertDefaults()
 {
 	/* Set up initial data */
 	StationClass::Get(StationClass::Allocate('DFLT'))->name = STR_STATION_CLASS_DFLT;
@@ -38,13 +38,14 @@ template <typename Tspec, typename Tid, Tid Tmax>
 	StationClass::Get(StationClass::Allocate('WAYP'))->Insert(nullptr);
 }
 
-template <typename Tspec, typename Tid, Tid Tmax>
-bool NewGRFClass<Tspec, Tid, Tmax>::IsUIAvailable(uint) const
+template <>
+bool StationClass::IsUIAvailable(uint) const
 {
 	return true;
 }
 
-INSTANTIATE_NEWGRF_CLASS_METHODS(StationClass, StationSpec, StationClassID, STAT_CLASS_MAX)
+/* Instantiate StationClass. */
+template class NewGRFClass<StationSpec, StationClassID, STAT_CLASS_MAX>;
 
 static const uint NUM_STATIONSSPECS_PER_STATION = 255; ///< Maximum number of parts per station.
 

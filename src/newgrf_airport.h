@@ -141,7 +141,7 @@ private:
 };
 
 /** Information related to airport classes. */
-typedef NewGRFClass<AirportSpec, AirportClassID, APC_MAX> AirportClass;
+using AirportClass = NewGRFClass<AirportSpec, AirportClassID, APC_MAX>;
 
 void BindAirportSpecs();
 

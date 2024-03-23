@@ -175,8 +175,8 @@ struct StationSpec {
 	std::vector<std::vector<std::vector<uint8_t>>> layouts;
 };
 
-/** Struct containing information relating to station classes. */
-typedef NewGRFClass<StationSpec, StationClassID, STAT_CLASS_MAX> StationClass;
+/** Class containing information relating to station classes. */
+using StationClass = NewGRFClass<StationSpec, StationClassID, STAT_CLASS_MAX>;
 
 const StationSpec *GetStationSpec(TileIndex t);
 

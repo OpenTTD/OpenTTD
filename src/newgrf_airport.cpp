@@ -23,8 +23,8 @@
  * This includes initialising the defaults classes with an empty
  * entry, for standard airports.
  */
-template <typename Tspec, typename Tid, Tid Tmax>
-/* static */ void NewGRFClass<Tspec, Tid, Tmax>::InsertDefaults()
+template <>
+/* static */ void AirportClass::InsertDefaults()
 {
 	AirportClass::Get(AirportClass::Allocate('SMAL'))->name = STR_AIRPORT_CLASS_SMALL;
 	AirportClass::Get(AirportClass::Allocate('LARG'))->name = STR_AIRPORT_CLASS_LARGE;
@@ -32,13 +32,14 @@ template <typename Tspec, typename Tid, Tid Tmax>
 	AirportClass::Get(AirportClass::Allocate('HELI'))->name = STR_AIRPORT_CLASS_HELIPORTS;
 }
 
-template <typename Tspec, typename Tid, Tid Tmax>
-bool NewGRFClass<Tspec, Tid, Tmax>::IsUIAvailable(uint) const
+template <>
+bool AirportClass::IsUIAvailable(uint) const
 {
 	return true;
 }
 
-INSTANTIATE_NEWGRF_CLASS_METHODS(AirportClass, AirportSpec, AirportClassID, APC_MAX)
+/* Instantiate AirportClass. */
+template class NewGRFClass<AirportSpec, AirportClassID, APC_MAX>;
 
 
 AirportOverrideManager _airport_mngr(NEW_AIRPORT_OFFSET, NUM_AIRPORTS, AT_INVALID);
