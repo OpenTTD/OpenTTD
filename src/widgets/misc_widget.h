@@ -32,7 +32,6 @@ enum AboutWidgets : WidgetID {
 enum QueryStringWidgets : WidgetID {
 	WID_QS_CAPTION, ///< Caption of the window.
 	WID_QS_TEXT,    ///< Text of the query.
-	WID_QS_WARNING, ///< Warning label about password security
 	WID_QS_DEFAULT, ///< Default button.
 	WID_QS_CANCEL,  ///< Cancel button.
 	WID_QS_OK,      ///< OK button.
