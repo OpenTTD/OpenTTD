@@ -24,12 +24,9 @@ private:
 
 	/**
 	 * The actual classes.
-	 * @note We store pointers to members of this array in various places outside this class (e.g. to 'name' for GRF string resolving).
-	 *       Thus this must be a static array, and cannot be a self-resizing vector or similar.
+	 * @note This may be reallocated during initialization so pointers may be invalidated.
 	 */
-	static NewGRFClass<Tspec, Tid, Tmax> classes[Tmax];
-
-	void ResetClass();
+	static inline std::vector<NewGRFClass<Tspec, Tid, Tmax>> classes;
 
 	/** Initialise the defaults. */
 	static void InsertDefaults();
@@ -40,6 +37,7 @@ public:
 
 	void Insert(Tspec *spec);
 
+	Tid Index() const { return static_cast<Tid>(this - classes.data()); }
 	/** Get the number of allocated specs within the class. */
 	uint GetSpecCount() const { return static_cast<uint>(this->spec.size()); }
 	/** Get the number of potentially user-available specs within the class. */
