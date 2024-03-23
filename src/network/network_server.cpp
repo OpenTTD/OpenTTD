@@ -1668,16 +1668,6 @@ bool NetworkServerChangeClientName(ClientID client_id, const std::string &new_na
 }
 
 /**
- * Set/Reset a company password on the server end.
- * @param company_id ID of the company the password should be changed for.
- * @param password The new password.
- * @param already_hashed Is the given password already hashed?
- */
-void NetworkServerSetCompanyPassword([[maybe_unused]] CompanyID company_id, [[maybe_unused]] const std::string &password, [[maybe_unused]] bool already_hashed)
-{
-}
-
-/**
  * Handle the command-queue of a socket.
  * @param cs The socket to handle the queue for.
  */
@@ -1981,20 +1971,6 @@ void NetworkServerSendConfigUpdate()
 void NetworkServerUpdateGameInfo()
 {
 	if (_network_server) FillStaticNetworkServerGameInfo();
-}
-
-/**
- * Tell that a particular company is (not) passworded.
- * @param company_id The company that got/removed the password.
- * @param passworded Whether the password was received or removed.
- */
-void NetworkServerUpdateCompanyPassworded(CompanyID company_id, bool passworded)
-{
-	if (NetworkCompanyIsPassworded(company_id) == passworded) return;
-
-	SetWindowClassesDirty(WC_COMPANY);
-
-	NetworkAdminCompanyUpdate(Company::GetIfValid(company_id));
 }
 
 /**

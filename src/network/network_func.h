@@ -39,7 +39,6 @@ bool NetworkValidateServerName(std::string &server_name);
 void NetworkUpdateClientName(const std::string &client_name);
 void NetworkUpdateServerGameType();
 bool NetworkCompanyHasClients(CompanyID company);
-std::string NetworkChangeCompanyPassword(CompanyID company_id, std::string password);
 void NetworkReboot();
 void NetworkDisconnect(bool close_admins = true);
 void NetworkGameLoop();

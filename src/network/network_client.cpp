@@ -1363,14 +1363,6 @@ void NetworkClientSendChat(NetworkAction action, DestType type, int dest, const 
 }
 
 /**
- * Set/Reset company password on the client side.
- * @param password Password to be set.
- */
-void NetworkClientSetCompanyPassword([[maybe_unused]] const std::string &password)
-{
-}
-
-/**
  * Tell whether the client has team members who they can chat to.
  * @param cio client to check members of.
  * @return true if there is at least one team member.

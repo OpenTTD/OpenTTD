@@ -2147,9 +2147,6 @@ static constexpr NWidgetPart _nested_company_widgets[] = {
 
 				/* Multi player buttons. */
 				NWidget(NWID_HORIZONTAL), SetPIP(0, WidgetDimensions::unscaled.hsep_normal, 0), SetPIPRatio(1, 0, 0),
-					NWidget(NWID_VERTICAL), SetPIPRatio(1, 0, 0),
-						NWidget(WWT_EMPTY, COLOUR_GREY, WID_C_HAS_PASSWORD), SetFill(0, 0),
-					EndContainer(),
 					NWidget(NWID_VERTICAL), SetPIP(0, WidgetDimensions::unscaled.vsep_normal, 0),
 						NWidget(NWID_SELECTION, INVALID_COLOUR, WID_C_SELECT_HOSTILE_TAKEOVER),
 							NWidget(WWT_PUSHTXTBTN, COLOUR_GREY, WID_C_HOSTILE_TAKEOVER), SetDataTip(STR_COMPANY_VIEW_HOSTILE_TAKEOVER_BUTTON, STR_COMPANY_VIEW_HOSTILE_TAKEOVER_TOOLTIP),
@@ -2158,7 +2155,6 @@ static constexpr NWidgetPart _nested_company_widgets[] = {
 							NWidget(WWT_PUSHTXTBTN, COLOUR_GREY, WID_C_GIVE_MONEY), SetDataTip(STR_COMPANY_VIEW_GIVE_MONEY_BUTTON, STR_COMPANY_VIEW_GIVE_MONEY_TOOLTIP),
 						EndContainer(),
 						NWidget(NWID_SELECTION, INVALID_COLOUR, WID_C_SELECT_MULTIPLAYER),
-							NWidget(WWT_PUSHTXTBTN, COLOUR_GREY, WID_C_COMPANY_PASSWORD), SetDataTip(STR_COMPANY_VIEW_PASSWORD, STR_COMPANY_VIEW_PASSWORD_TOOLTIP),
 							NWidget(WWT_PUSHTXTBTN, COLOUR_GREY, WID_C_COMPANY_JOIN), SetDataTip(STR_COMPANY_VIEW_JOIN, STR_COMPANY_VIEW_JOIN_TOOLTIP),
 						EndContainer(),
 					EndContainer(),
@@ -2191,10 +2187,6 @@ struct CompanyWindow : Window
 
 	/** Display planes in the company window. */
 	enum CompanyWindowPlanes {
-		/* Display planes of the #WID_C_SELECT_MULTIPLAYER selection widget. */
-		CWP_MP_C_PWD = 0, ///< Display the company password button.
-		CWP_MP_C_JOIN,    ///< Display the join company button.
-
 		/* Display planes of the #WID_C_SELECT_VIEW_BUILD_HQ selection widget. */
 		CWP_VB_VIEW = 0,  ///< Display the view button
 		CWP_VB_BUILD,     ///< Display the build button
@@ -2235,7 +2227,7 @@ struct CompanyWindow : Window
 			reinit |= this->GetWidget<NWidgetStacked>(WID_C_SELECT_HOSTILE_TAKEOVER)->SetDisplayedPlane((local || _local_company == COMPANY_SPECTATOR || !c->is_ai || _networking) ? SZSP_NONE : 0);
 
 			/* Multiplayer buttons. */
-			reinit |= this->GetWidget<NWidgetStacked>(WID_C_SELECT_MULTIPLAYER)->SetDisplayedPlane((!_networking) ? (int)SZSP_NONE : (int)(local ? CWP_MP_C_PWD : CWP_MP_C_JOIN));
+			reinit |= this->GetWidget<NWidgetStacked>(WID_C_SELECT_MULTIPLAYER)->SetDisplayedPlane((!_networking || !NetworkCanJoinCompany(c->index) || _local_company == c->index) ? (int)SZSP_NONE : 0);
 
 			this->SetWidgetDisabledState(WID_C_COMPANY_JOIN, c->is_ai);
 
@@ -2293,7 +2285,6 @@ struct CompanyWindow : Window
 			case WID_C_VIEW_INFRASTRUCTURE:
 			case WID_C_GIVE_MONEY:
 			case WID_C_HOSTILE_TAKEOVER:
-			case WID_C_COMPANY_PASSWORD:
 			case WID_C_COMPANY_JOIN:
 				size.width = GetStringBoundingBox(STR_COMPANY_VIEW_VIEW_HQ_BUTTON).width;
 				size.width = std::max(size.width, GetStringBoundingBox(STR_COMPANY_VIEW_BUILD_HQ_BUTTON).width);
@@ -2301,13 +2292,8 @@ struct CompanyWindow : Window
 				size.width = std::max(size.width, GetStringBoundingBox(STR_COMPANY_VIEW_INFRASTRUCTURE_BUTTON).width);
 				size.width = std::max(size.width, GetStringBoundingBox(STR_COMPANY_VIEW_GIVE_MONEY_BUTTON).width);
 				size.width = std::max(size.width, GetStringBoundingBox(STR_COMPANY_VIEW_HOSTILE_TAKEOVER_BUTTON).width);
-				size.width = std::max(size.width, GetStringBoundingBox(STR_COMPANY_VIEW_PASSWORD).width);
 				size.width = std::max(size.width, GetStringBoundingBox(STR_COMPANY_VIEW_JOIN).width);
 				size.width += padding.width;
-				break;
-
-			case WID_C_HAS_PASSWORD:
-				if (_networking) size = maxdim(size, GetSpriteSize(SPR_LOCK));
 				break;
 		}
 	}
@@ -2402,12 +2388,6 @@ struct CompanyWindow : Window
 
 			case WID_C_DESC_INFRASTRUCTURE_COUNTS:
 				DrawInfrastructureCountsWidget(r, c);
-				break;
-
-			case WID_C_HAS_PASSWORD:
-				if (_networking && NetworkCompanyIsPassworded(c->index)) {
-					DrawSprite(SPR_LOCK, PAL_NONE, r.left, r.top);
-				}
 				break;
 		}
 	}
@@ -2505,10 +2485,6 @@ struct CompanyWindow : Window
 
 			case WID_C_HOSTILE_TAKEOVER:
 				ShowBuyCompanyDialog((CompanyID)this->window_number, true);
-				break;
-
-			case WID_C_COMPANY_PASSWORD:
-				if (this->window_number == _local_company) ShowNetworkCompanyPasswordWindow(this);
 				break;
 
 			case WID_C_COMPANY_JOIN: {

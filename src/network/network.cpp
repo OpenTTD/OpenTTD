@@ -228,25 +228,6 @@ uint8_t NetworkSpectatorCount()
 }
 
 /**
- * Change the company password of a given company.
- * @param company_id ID of the company the password should be changed for.
- * @param password The unhashed password we like to set ('*' or '' resets the password)
- * @return The password.
- */
-std::string NetworkChangeCompanyPassword(CompanyID company_id, std::string password)
-{
-	if (password.compare("*") == 0) password = "";
-
-	if (_network_server) {
-		NetworkServerSetCompanyPassword(company_id, password, false);
-	} else {
-		NetworkClientSetCompanyPassword(password);
-	}
-
-	return password;
-}
-
-/**
  * Hash the given password using server ID and game seed.
  * @param password Password to hash.
  * @param password_server_id Server ID.

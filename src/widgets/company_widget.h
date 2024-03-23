@@ -47,9 +47,7 @@ enum CompanyWidgets : WidgetID {
 	WID_C_SELECT_HOSTILE_TAKEOVER,    ///< Selection widget for the hostile takeover button.
 	WID_C_HOSTILE_TAKEOVER,           ///< Button to hostile takeover another company.
 
-	WID_C_HAS_PASSWORD,               ///< Has company password lock.
 	WID_C_SELECT_MULTIPLAYER,         ///< Multiplayer selection panel.
-	WID_C_COMPANY_PASSWORD,           ///< Button to set company password.
 	WID_C_COMPANY_JOIN,               ///< Button to join company.
 };
 

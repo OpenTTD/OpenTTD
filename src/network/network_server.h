@@ -123,7 +123,5 @@ public:
 
 void NetworkServer_Tick(bool send_frame);
 void ChangeNetworkRestartTime(bool reset);
-void NetworkServerSetCompanyPassword(CompanyID company_id, const std::string &password, bool already_hashed = true);
-void NetworkServerUpdateCompanyPassworded(CompanyID company_id, bool passworded);
 
 #endif /* NETWORK_SERVER_H */
