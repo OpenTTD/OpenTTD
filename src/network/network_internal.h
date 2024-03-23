@@ -80,8 +80,6 @@ extern std::string _network_server_name;
 
 extern uint8_t _network_reconnect;
 
-extern CompanyMask _network_company_passworded;
-
 void NetworkQueryServer(const std::string &connection_string);
 
 void GetBindAddresses(NetworkAddressList *addresses, uint16_t port);

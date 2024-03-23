@@ -1423,7 +1423,6 @@ using ClientButton = Button<ClientID>;
 struct NetworkClientListWindow : Window {
 private:
 	ClientListWidgets query_widget; ///< During a query this tracks what widget caused the query.
-	CompanyID join_company; ///< During query for company password, this stores what company we wanted to join.
 
 	ClientID dd_client_id; ///< During admin dropdown, track which client this was for.
 	CompanyID dd_company_id; ///< During admin dropdown, track which company this was for.
@@ -1459,10 +1458,6 @@ private:
 		if (_network_server) {
 			NetworkServerDoMove(CLIENT_ID_SERVER, company_id);
 			MarkWholeScreenDirty();
-		} else if (NetworkCompanyIsPassworded(company_id)) {
-			w->query_widget = WID_CL_COMPANY_JOIN;
-			w->join_company = company_id;
-			ShowQueryString(STR_EMPTY, STR_NETWORK_NEED_COMPANY_PASSWORD_CAPTION, NETWORK_PASSWORD_LENGTH, w, CS_ALPHANUMERAL, QSF_PASSWORD);
 		} else {
 			NetworkClientRequestMove(company_id);
 		}
@@ -1546,14 +1541,15 @@ private:
 	 * Part of RebuildList() to create the information for a single company.
 	 * @param company_id The company to build the list for.
 	 * @param client_playas The company the client is joined as.
+	 * @param can_join_company Whether this company can be joined by us.
 	 */
-	void RebuildListCompany(CompanyID company_id, CompanyID client_playas)
+	void RebuildListCompany(CompanyID company_id, CompanyID client_playas, bool can_join_company)
 	{
 		ButtonCommon *chat_button = new CompanyButton(SPR_CHAT, company_id == COMPANY_SPECTATOR ? STR_NETWORK_CLIENT_LIST_CHAT_SPECTATOR_TOOLTIP : STR_NETWORK_CLIENT_LIST_CHAT_COMPANY_TOOLTIP, COLOUR_ORANGE, company_id, &NetworkClientListWindow::OnClickCompanyChat);
 
 		if (_network_server) this->buttons[line_count].push_back(std::make_unique<CompanyButton>(SPR_ADMIN, STR_NETWORK_CLIENT_LIST_ADMIN_COMPANY_TOOLTIP, COLOUR_RED, company_id, &NetworkClientListWindow::OnClickCompanyAdmin, company_id == COMPANY_SPECTATOR));
 		this->buttons[line_count].emplace_back(chat_button);
-		if (client_playas != company_id) this->buttons[line_count].push_back(std::make_unique<CompanyButton>(SPR_JOIN, STR_NETWORK_CLIENT_LIST_JOIN_TOOLTIP, COLOUR_ORANGE, company_id, &NetworkClientListWindow::OnClickCompanyJoin, company_id != COMPANY_SPECTATOR && Company::Get(company_id)->is_ai));
+		if (can_join_company) this->buttons[line_count].push_back(std::make_unique<CompanyButton>(SPR_JOIN, STR_NETWORK_CLIENT_LIST_JOIN_TOOLTIP, COLOUR_ORANGE, company_id, &NetworkClientListWindow::OnClickCompanyJoin, company_id != COMPANY_SPECTATOR && Company::Get(company_id)->is_ai));
 
 		this->line_count += 1;
 
@@ -1599,18 +1595,18 @@ private:
 		}
 
 		if (client_playas != COMPANY_SPECTATOR) {
-			this->RebuildListCompany(client_playas, client_playas);
+			this->RebuildListCompany(client_playas, client_playas, false);
 		}
 
 		/* Companies */
 		for (const Company *c : Company::Iterate()) {
 			if (c->index == client_playas) continue;
 
-			this->RebuildListCompany(c->index, client_playas);
+			this->RebuildListCompany(c->index, client_playas, (own_ci != nullptr && c->allow_list.Contains(own_ci->public_key)) || _network_server);
 		}
 
 		/* Spectators */
-		this->RebuildListCompany(COMPANY_SPECTATOR, client_playas);
+		this->RebuildListCompany(COMPANY_SPECTATOR, client_playas, client_playas != COMPANY_SPECTATOR);
 
 		this->vscroll->SetCount(this->line_count);
 	}
@@ -1914,10 +1910,6 @@ public:
 				this->InvalidateData();
 				break;
 			}
-
-			case WID_CL_COMPANY_JOIN:
-				NetworkClientRequestMove(this->join_company, str);
-				break;
 		}
 	}
 
