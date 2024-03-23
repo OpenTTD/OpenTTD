@@ -1633,11 +1633,10 @@ void NetworkUpdateClientInfo(ClientID client_id)
 	NetworkAdminClientUpdate(ci);
 }
 
-/** Check if the server has autoclean_companies activated
- * Two things happen:
- *     1) If a company is not protected, it is closed after 1 year (for example)
- *     2) If a company is protected, protection is disabled after 3 years (for example)
- *          (and item 1. happens a year later)
+/**
+ * Remove companies that have not been used depending on the \c autoclean_companies setting
+ * and values for \c autoclean_protected, which removes any company, and
+ * \c autoclean_novehicles, which removes companies without vehicles.
  */
 static void NetworkAutoCleanCompanies()
 {
@@ -1672,19 +1671,11 @@ static void NetworkAutoCleanCompanies()
 			/* The company is empty for one month more */
 			if (c->months_empty != std::numeric_limits<decltype(c->months_empty)>::max()) c->months_empty++;
 
-			/* Is the company empty for autoclean_unprotected-months, and is there no protection? */
-			if (_settings_client.network.autoclean_unprotected != 0 && c->months_empty > _settings_client.network.autoclean_unprotected && _network_company_states[c->index].password.empty()) {
+			/* Is the company empty for autoclean_protected-months? */
+			if (_settings_client.network.autoclean_protected != 0 && c->months_empty > _settings_client.network.autoclean_protected) {
 				/* Shut the company down */
 				Command<CMD_COMPANY_CTRL>::Post(CCA_DELETE, c->index, CRR_AUTOCLEAN, INVALID_CLIENT_ID);
-				IConsolePrint(CC_INFO, "Auto-cleaned company #{} with no password.", c->index + 1);
-			}
-			/* Is the company empty for autoclean_protected-months, and there is a protection? */
-			if (_settings_client.network.autoclean_protected != 0 && c->months_empty > _settings_client.network.autoclean_protected && !_network_company_states[c->index].password.empty()) {
-				/* Unprotect the company */
-				_network_company_states[c->index].password.clear();
-				IConsolePrint(CC_INFO, "Auto-removed protection from company #{}.", c->index + 1);
-				c->months_empty = 0;
-				NetworkServerUpdateCompanyPassworded(c->index, false);
+				IConsolePrint(CC_INFO, "Auto-cleaned company #{}.", c->index + 1);
 			}
 			/* Is the company empty for autoclean_novehicles-months, and has no vehicles? */
 			if (_settings_client.network.autoclean_novehicles != 0 && c->months_empty > _settings_client.network.autoclean_novehicles && !HasBit(has_vehicles, c->index)) {

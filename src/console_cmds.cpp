@@ -1829,13 +1829,6 @@ DEF_CONSOLE_CMD(ConCompanies)
 		SetDParam(0, c->index);
 		std::string company_name = GetString(STR_COMPANY_NAME);
 
-		const char *password_state = "";
-		if (c->is_ai) {
-			password_state = "AI";
-		} else if (_network_server) {
-			password_state = _network_company_states[c->index].password.empty() ? "unprotected" : "protected";
-		}
-
 		std::string colour = GetString(STR_COLOUR_DARK_BLUE + _company_colours[c->index]);
 		IConsolePrint(CC_INFO, "#:{}({}) Company Name: '{}'  Year Founded: {}  Money: {}  Loan: {}  Value: {}  (T:{}, R:{}, P:{}, S:{}) {}",
 			c->index + 1, colour, company_name,
@@ -1844,7 +1837,7 @@ DEF_CONSOLE_CMD(ConCompanies)
 			c->group_all[VEH_ROAD].num_vehicle,
 			c->group_all[VEH_AIRCRAFT].num_vehicle,
 			c->group_all[VEH_SHIP].num_vehicle,
-			password_state);
+			c->is_ai ? "AI" : "");
 	}
 
 	return true;
@@ -2828,7 +2821,6 @@ void IConsoleStdLibRegister()
 	IConsole::AliasRegister("pause_on_join",         "setting pause_on_join %+");
 	IConsole::AliasRegister("autoclean_companies",   "setting autoclean_companies %+");
 	IConsole::AliasRegister("autoclean_protected",   "setting autoclean_protected %+");
-	IConsole::AliasRegister("autoclean_unprotected", "setting autoclean_unprotected %+");
 	IConsole::AliasRegister("restart_game_year",     "setting restart_game_year %+");
 	IConsole::AliasRegister("min_players",           "setting min_active_clients %+");
 	IConsole::AliasRegister("reload_cfg",            "setting reload_cfg %+");
