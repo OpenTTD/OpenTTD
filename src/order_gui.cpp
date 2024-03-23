@@ -337,8 +337,8 @@ void DrawOrderString(const Vehicle *v, const Order *order, int order_index, int 
 				SetDParam(6, CargoSpec::Get(order->GetRefitCargo())->name);
 			}
 
-			/* Do not show unbunching in the depot in the timetable window. */
-			if (!timetable && (order->GetDepotActionType() & ODATFB_UNBUNCH)) {
+			/* Show unbunching depot in both order and timetable windows. */
+			if (order->GetDepotActionType() & ODATFB_UNBUNCH) {
 				SetDParam(8, STR_ORDER_WAIT_TO_UNBUNCH);
 			}
 
