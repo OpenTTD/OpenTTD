@@ -572,18 +572,18 @@ STR_DAY_NUMBER_30TH                                             :30.
 STR_DAY_NUMBER_31ST                                             :31.
 
 ###length 12
-STR_MONTH_ABBREV_JAN                                            :Jan
-STR_MONTH_ABBREV_FEB                                            :Feb
-STR_MONTH_ABBREV_MAR                                            :Mar
-STR_MONTH_ABBREV_APR                                            :Apr
-STR_MONTH_ABBREV_MAY                                            :Mai
-STR_MONTH_ABBREV_JUN                                            :Jun
-STR_MONTH_ABBREV_JUL                                            :Jul
-STR_MONTH_ABBREV_AUG                                            :Aug
-STR_MONTH_ABBREV_SEP                                            :Sep
-STR_MONTH_ABBREV_OCT                                            :Okt
-STR_MONTH_ABBREV_NOV                                            :Nov
-STR_MONTH_ABBREV_DEC                                            :Des
+STR_MONTH_ABBREV_JAN                                            :jan
+STR_MONTH_ABBREV_FEB                                            :feb
+STR_MONTH_ABBREV_MAR                                            :mar
+STR_MONTH_ABBREV_APR                                            :apr
+STR_MONTH_ABBREV_MAY                                            :mai
+STR_MONTH_ABBREV_JUN                                            :jun
+STR_MONTH_ABBREV_JUL                                            :jul
+STR_MONTH_ABBREV_AUG                                            :aug
+STR_MONTH_ABBREV_SEP                                            :sep
+STR_MONTH_ABBREV_OCT                                            :okt
+STR_MONTH_ABBREV_NOV                                            :nov
+STR_MONTH_ABBREV_DEC                                            :des
 
 ###length 12
 STR_MONTH_JAN                                                   :januar
@@ -908,8 +908,8 @@ STR_NEWS_VEHICLE_UNPROFITABLE_YEAR                              :{WHITE}{VEHICLE
 STR_NEWS_VEHICLE_UNPROFITABLE_PERIOD                            :{WHITE}{VEHICLE}s fortjeneste forrige periode var {CURRENCY_LONG}
 STR_NEWS_AIRCRAFT_DEST_TOO_FAR                                  :{WHITE}{VEHICLE} kan ikke kjøre til neste destinasjon fordi den er utenfor rekkevidde
 
-STR_NEWS_ORDER_REFIT_FAILED                                     :{WHITE}{VEHICLE} stoppet fordi ombyggingsordre feilet
-STR_NEWS_VEHICLE_AUTORENEW_FAILED                               :{WHITE}Kunne ikke autofornye {VEHICLE}{}{STRING}
+STR_NEWS_ORDER_REFIT_FAILED                                     :{WHITE}{VEHICLE} stoppet fordi ombyggingsordre mislyktes
+STR_NEWS_VEHICLE_AUTORENEW_FAILED                               :{WHITE}Kunne ikke fornye {VEHICLE}{}{STRING} automatisk
 
 STR_NEWS_NEW_VEHICLE_NOW_AVAILABLE                              :{BIG_FONT}{BLACK}Ny{G "" "" tt} {STRING} er nå tilgjengelig!
 STR_NEWS_NEW_VEHICLE_TYPE                                       :{BIG_FONT}{BLACK}{ENGINE}
@@ -971,7 +971,7 @@ STR_GAME_OPTIONS_CURRENCY_CODE                                  :{STRING} ({STRI
 
 ###length 43
 STR_GAME_OPTIONS_CURRENCY_GBP                                   :Britiske pund
-STR_GAME_OPTIONS_CURRENCY_USD                                   :Amerikansk dollar
+STR_GAME_OPTIONS_CURRENCY_USD                                   :Amerikanske dollar
 STR_GAME_OPTIONS_CURRENCY_EUR                                   :Euro
 STR_GAME_OPTIONS_CURRENCY_JPY                                   :Japanske yen
 STR_GAME_OPTIONS_CURRENCY_ATS                                   :Østerrikske shilling
@@ -1048,7 +1048,7 @@ STR_GAME_OPTIONS_VIDEO_DRIVER_INFO                              :{BLACK}Aktiv dr
 
 STR_GAME_OPTIONS_GUI_SCALE_FRAME                                :{BLACK}Grensesnittstørrelse
 STR_GAME_OPTIONS_GUI_SCALE_TOOLTIP                              :{BLACK}Dra for å endre grensesnittstørrelse. Ctrl+dra for kontinuerlig justering
-STR_GAME_OPTIONS_GUI_SCALE_AUTO                                 :{BLACK}Autodetekter størrelse
+STR_GAME_OPTIONS_GUI_SCALE_AUTO                                 :{BLACK}Detekter størrelse automatisk
 STR_GAME_OPTIONS_GUI_SCALE_AUTO_TOOLTIP                         :{BLACK}Kryss av denne knappen for å detektere grensesnittstørrelsen automatisk
 
 STR_GAME_OPTIONS_GUI_SCALE_BEVELS                               :{BLACK}Skaler faser
@@ -1092,7 +1092,7 @@ STR_GAME_OPTIONS_BASE_MUSIC                                     :{BLACK}Musikkse
 STR_GAME_OPTIONS_BASE_MUSIC_TOOLTIP                             :{BLACK}Velg musikksett som skal brukes
 STR_GAME_OPTIONS_BASE_MUSIC_DESCRIPTION_TOOLTIP                 :{BLACK}Ytterligere informasjon om det originale musikksettet
 
-STR_GAME_OPTIONS_SOCIAL_PLUGINS_NONE                            :{LTBLUE}(ingen tillegg for integrere med sosiale plattformer er installert)
+STR_GAME_OPTIONS_SOCIAL_PLUGINS_NONE                            :{LTBLUE}(ingen moduler for integrasjon med sosiale plattformer er installert)
 
 STR_GAME_OPTIONS_SOCIAL_PLUGIN_TITLE                            :{BLACK}{STRING} ({STRING})
 STR_GAME_OPTIONS_SOCIAL_PLUGIN_PLATFORM                         :{BLACK}Plattform:
@@ -1514,10 +1514,10 @@ STR_CONFIG_SETTING_INDUSTRY_CARGO_SCALE                         :Skaler en indus
 STR_CONFIG_SETTING_INDUSTRY_CARGO_SCALE_HELPTEXT                :Skaler vareproduksjonen til industrier med denne prosenten
 STR_CONFIG_SETTING_CARGO_SCALE_VALUE                            :{NUM}%
 
-STR_CONFIG_SETTING_AUTORENEW_VEHICLE                            :Forny transportmiddel automatisk når den blir gammel: {STRING}
+STR_CONFIG_SETTING_AUTORENEW_VEHICLE                            :Forny transportmiddel automatisk når det blir gammelt: {STRING}
 STR_CONFIG_SETTING_AUTORENEW_VEHICLE_HELPTEXT                   :Når aktivert, blir et transportmiddel som nærmer seg slutten av sin levetid automatisk erstattet når betingelsene for fornyelse er oppfylt
 
-STR_CONFIG_SETTING_AUTORENEW_MONTHS                             :Forny transportmiddel automatisk når den er {STRING} høyeste alder
+STR_CONFIG_SETTING_AUTORENEW_MONTHS                             :Forny transportmiddel automatisk når det er {STRING} høyeste alder
 STR_CONFIG_SETTING_AUTORENEW_MONTHS_HELPTEXT                    :Relativ alder når et transportmiddel bør bli vurdert fornyet automatisk
 ###length 2
 STR_CONFIG_SETTING_AUTORENEW_MONTHS_VALUE_BEFORE                :{COMMA} måned{P 0 "" er} før
@@ -1722,7 +1722,7 @@ STR_CONFIG_SETTING_COMMAND_PAUSE_LEVEL_ALL_ACTIONS              :Alle handlinger
 STR_CONFIG_SETTING_ADVANCED_VEHICLE_LISTS                       :Bruk grupper i kjøretøyliste: {STRING}
 STR_CONFIG_SETTING_ADVANCED_VEHICLE_LISTS_HELPTEXT              :Aktiver bruk av avanserte kjøretøylister for guppering av kjøretøy
 
-STR_CONFIG_SETTING_LOADING_INDICATORS                           :Bruk lastingsindikatorer: {STRING}
+STR_CONFIG_SETTING_LOADING_INDICATORS                           :Bruk lasteindikatorer: {STRING}
 STR_CONFIG_SETTING_LOADING_INDICATORS_HELPTEXT                  :Velg hvorvidt lasteindikatorer vises over kjøretøy som lastes eller losses
 
 STR_CONFIG_SETTING_TIMETABLE_MODE                               :Tidsenhet for rutetabeller: {STRING}
@@ -2165,7 +2165,7 @@ STR_CONFIG_ERROR_INVALID_BASE_GRAPHICS_NOT_FOUND                :{WHITE}... igno
 STR_CONFIG_ERROR_INVALID_BASE_SOUNDS_NOT_FOUND                  :{WHITE}... ignorerer Grunn Lyd set '{STRING}': ikke funnet
 STR_CONFIG_ERROR_INVALID_BASE_MUSIC_NOT_FOUND                   :{WHITE}... ignorerer Grunn Musikk set '{STRING}': ikke funnet
 STR_CONFIG_ERROR_OUT_OF_MEMORY                                  :{WHITE}Tomt for minne
-STR_CONFIG_ERROR_SPRITECACHE_TOO_BIG                            :{WHITE}Tildeling av {BYTES} fra spritecachen feilet. Spritecachen ble redusert til {BYTES}. Dette senke ytelsen av OpenTTD. For å redusere minneforbruken kan du forsøke å slå av 32bpp grafikk og/eller zoomnivå.
+STR_CONFIG_ERROR_SPRITECACHE_TOO_BIG                            :{WHITE}Tildeling av {BYTES} fra spritecachen mislyktes. Spritecachen ble redusert til {BYTES}. Dette senke ytelsen av OpenTTD. For å redusere minneforbruken kan du forsøke å slå av 32bpp grafikk og/eller zoomnivå.
 
 # Video initalization errors
 STR_VIDEO_DRIVER_ERROR                                          :{WHITE}Feil med skjerminstillingene...
@@ -2566,7 +2566,7 @@ STR_NETWORK_CHAT_OSKTITLE                                       :{BLACK}Skriv in
 STR_NETWORK_ERROR_NOTAVAILABLE                                  :{WHITE}Ingen nettverksadapter funnet
 STR_NETWORK_ERROR_NOCONNECTION                                  :{WHITE}Tilkoblingen til tjeneren ble tidsavbrutt eller avslått
 STR_NETWORK_ERROR_NEWGRF_MISMATCH                               :{WHITE}Kunne ikke koble til pga. ulike versjoner av NewGRF
-STR_NETWORK_ERROR_DESYNC                                        :{WHITE}Synkronisering av nettverksspill feilet.
+STR_NETWORK_ERROR_DESYNC                                        :{WHITE}Synkronisering av nettverksspill mislyktes
 STR_NETWORK_ERROR_LOSTCONNECTION                                :{WHITE}Mistet tilkobling til nettverksspill
 STR_NETWORK_ERROR_SAVEGAMEERROR                                 :{WHITE}Kunne ikke laste inn lagret spill
 STR_NETWORK_ERROR_SERVER_START                                  :{WHITE}Kunne ikke starte tjeneren
@@ -2723,7 +2723,7 @@ STR_MISSING_GRAPHICS_SET_MESSAGE                                :{BLACK}OpenTTD 
 STR_MISSING_GRAPHICS_YES_DOWNLOAD                               :{BLACK}Ja, last ned grafikken
 STR_MISSING_GRAPHICS_NO_QUIT                                    :{BLACK}Nei, avslutt OpenTTD
 
-STR_MISSING_GRAPHICS_ERROR_TITLE                                :{WHITE}Nedlasting feilet
+STR_MISSING_GRAPHICS_ERROR_TITLE                                :{WHITE}Nedlasting mislyktes
 STR_MISSING_GRAPHICS_ERROR                                      :{BLACK}Kunne ikke laste ned grafikkpakken.{}Vennligst last den ned manuelt.
 STR_MISSING_GRAPHICS_ERROR_QUIT                                 :{BLACK}Avslutt OpenTTD
 
@@ -3323,27 +3323,27 @@ STR_MAPGEN_GS_SETTINGS                                          :{BLACK}Game Scr
 STR_MAPGEN_GS_SETTINGS_TOOLTIP                                  :{BLACK}Åpne Game Script-innstillinger
 
 ###length 21
-STR_MAPGEN_TOWN_NAME_ORIGINAL_ENGLISH                           :Engelsk (Original)
-STR_MAPGEN_TOWN_NAME_FRENCH                                     :Fransk
-STR_MAPGEN_TOWN_NAME_GERMAN                                     :Tysk
-STR_MAPGEN_TOWN_NAME_ADDITIONAL_ENGLISH                         :Engelsk (utvidet)
-STR_MAPGEN_TOWN_NAME_LATIN_AMERICAN                             :Latinamerikansk
+STR_MAPGEN_TOWN_NAME_ORIGINAL_ENGLISH                           :Engelske (Original)
+STR_MAPGEN_TOWN_NAME_FRENCH                                     :Franske
+STR_MAPGEN_TOWN_NAME_GERMAN                                     :Tyske
+STR_MAPGEN_TOWN_NAME_ADDITIONAL_ENGLISH                         :Engelske (Utvidet)
+STR_MAPGEN_TOWN_NAME_LATIN_AMERICAN                             :Latinamerikanske
 STR_MAPGEN_TOWN_NAME_SILLY                                      :Tåpelige
-STR_MAPGEN_TOWN_NAME_SWEDISH                                    :Svensk
-STR_MAPGEN_TOWN_NAME_DUTCH                                      :Nederlandsk
-STR_MAPGEN_TOWN_NAME_FINNISH                                    :Finsk
-STR_MAPGEN_TOWN_NAME_POLISH                                     :Polsk
-STR_MAPGEN_TOWN_NAME_SLOVAK                                     :Slovakisk
-STR_MAPGEN_TOWN_NAME_NORWEGIAN                                  :Norsk
-STR_MAPGEN_TOWN_NAME_HUNGARIAN                                  :Ungarsk
-STR_MAPGEN_TOWN_NAME_AUSTRIAN                                   :Østeriske
-STR_MAPGEN_TOWN_NAME_ROMANIAN                                   :Rumensk
-STR_MAPGEN_TOWN_NAME_CZECH                                      :Tsjekkisk
-STR_MAPGEN_TOWN_NAME_SWISS                                      :Sveitsisk
-STR_MAPGEN_TOWN_NAME_DANISH                                     :Dansk
-STR_MAPGEN_TOWN_NAME_TURKISH                                    :Tyrkisk
-STR_MAPGEN_TOWN_NAME_ITALIAN                                    :Italiensk
-STR_MAPGEN_TOWN_NAME_CATALAN                                    :Katalansk
+STR_MAPGEN_TOWN_NAME_SWEDISH                                    :Svenske
+STR_MAPGEN_TOWN_NAME_DUTCH                                      :Nederlandske
+STR_MAPGEN_TOWN_NAME_FINNISH                                    :Finske
+STR_MAPGEN_TOWN_NAME_POLISH                                     :Polske
+STR_MAPGEN_TOWN_NAME_SLOVAK                                     :Slovakiske
+STR_MAPGEN_TOWN_NAME_NORWEGIAN                                  :Norske
+STR_MAPGEN_TOWN_NAME_HUNGARIAN                                  :Ungarske
+STR_MAPGEN_TOWN_NAME_AUSTRIAN                                   :Østerrikske
+STR_MAPGEN_TOWN_NAME_ROMANIAN                                   :Rumenske
+STR_MAPGEN_TOWN_NAME_CZECH                                      :Tsjekkiske
+STR_MAPGEN_TOWN_NAME_SWISS                                      :Sveitsiske
+STR_MAPGEN_TOWN_NAME_DANISH                                     :Danske
+STR_MAPGEN_TOWN_NAME_TURKISH                                    :Tyrkiske
+STR_MAPGEN_TOWN_NAME_ITALIAN                                    :Italienske
+STR_MAPGEN_TOWN_NAME_CATALAN                                    :Katalanske
 
 # Strings for map borders at game generation
 STR_MAPGEN_BORDER_TYPE                                          :{BLACK}Kartkanter:
@@ -3355,8 +3355,8 @@ STR_MAPGEN_SOUTHWEST                                            :{BLACK}Sørvest
 STR_MAPGEN_BORDER_FREEFORM                                      :{BLACK}Frihånds
 STR_MAPGEN_BORDER_WATER                                         :{BLACK}Sjø
 STR_MAPGEN_BORDER_RANDOM                                        :{BLACK}Tilfeldig
-STR_MAPGEN_BORDER_RANDOMIZE                                     :{BLACK}Tilfeldig
-STR_MAPGEN_BORDER_MANUAL                                        :{BLACK}Manuell
+STR_MAPGEN_BORDER_RANDOMIZE                                     :{BLACK}Tilfeldige
+STR_MAPGEN_BORDER_MANUAL                                        :{BLACK}Manuelle
 
 STR_MAPGEN_HEIGHTMAP_ROTATION                                   :{BLACK}Høydekartrotering:
 STR_MAPGEN_HEIGHTMAP_NAME                                       :{BLACK}Høydekartnavn:
@@ -4135,10 +4135,10 @@ STR_BUY_VEHICLE_SHIP_RENAME_BUTTON                              :{BLACK}Endre na
 STR_BUY_VEHICLE_AIRCRAFT_RENAME_BUTTON                          :{BLACK}Endre navn
 
 ###length VEHICLE_TYPES
-STR_BUY_VEHICLE_TRAIN_RENAME_TOOLTIP                            :{BLACK}Gi nytt navn til jernbanemateriellet
-STR_BUY_VEHICLE_ROAD_VEHICLE_RENAME_TOOLTIP                     :{BLACK}Gi nytt navn til kjøretøytypen
-STR_BUY_VEHICLE_SHIP_RENAME_TOOLTIP                             :{BLACK}Gi nytt navn til skipstypen
-STR_BUY_VEHICLE_AIRCRAFT_RENAME_TOOLTIP                         :{BLACK}Gi nytt navn til luftfartøytypen
+STR_BUY_VEHICLE_TRAIN_RENAME_TOOLTIP                            :{BLACK}Endre navn på jernbanemateriell
+STR_BUY_VEHICLE_ROAD_VEHICLE_RENAME_TOOLTIP                     :{BLACK}Endre navn på kjøretøytype
+STR_BUY_VEHICLE_SHIP_RENAME_TOOLTIP                             :{BLACK}Endre navn på skipstype
+STR_BUY_VEHICLE_AIRCRAFT_RENAME_TOOLTIP                         :{BLACK}Endre navn på luftfartøytype
 
 ###length VEHICLE_TYPES
 STR_BUY_VEHICLE_TRAIN_HIDE_TOGGLE_BUTTON                        :{BLACK}Skjul
@@ -4167,7 +4167,7 @@ STR_QUERY_RENAME_AIRCRAFT_TYPE_CAPTION                          :{WHITE}Gi luftf
 # Depot window
 STR_DEPOT_CAPTION                                               :{WHITE}{DEPOT}
 
-STR_DEPOT_RENAME_TOOLTIP                                        :{BLACK}Endre navn på garasje/stall/hangar/dokk
+STR_DEPOT_RENAME_TOOLTIP                                        :{BLACK}Gi nytt navn til garasje/stall/hangar/dokk
 STR_DEPOT_RENAME_DEPOT_CAPTION                                  :Endre navn på garasje/stall/hangar/dokk
 
 STR_DEPOT_NO_ENGINE                                             :{BLACK}-
@@ -4194,10 +4194,10 @@ STR_DEPOT_SELL_ALL_BUTTON_SHIP_TOOLTIP                          :{BLACK}Selg all
 STR_DEPOT_SELL_ALL_BUTTON_AIRCRAFT_TOOLTIP                      :{BLACK}Selg alle luftfartøy i hangaren
 
 ###length VEHICLE_TYPES
-STR_DEPOT_AUTOREPLACE_TRAIN_TOOLTIP                             :{BLACK}Autoerstatt alle tog i togstallen
-STR_DEPOT_AUTOREPLACE_ROAD_VEHICLE_TOOLTIP                      :{BLACK}Autoerstatt alle kjøretøy i garasjen
-STR_DEPOT_AUTOREPLACE_SHIP_TOOLTIP                              :{BLACK}Autoerstatt alle skip i skipsdokken
-STR_DEPOT_AUTOREPLACE_AIRCRAFT_TOOLTIP                          :{BLACK}Autoerstatt alle luftfartøy i hangaren
+STR_DEPOT_AUTOREPLACE_TRAIN_TOOLTIP                             :{BLACK}Erstatt alle tog i togstallen automatisk
+STR_DEPOT_AUTOREPLACE_ROAD_VEHICLE_TOOLTIP                      :{BLACK}Erstatt alle kjøretøy i garasjen automatisk
+STR_DEPOT_AUTOREPLACE_SHIP_TOOLTIP                              :{BLACK}Erstatt alle skip i skipsdokken automatisk
+STR_DEPOT_AUTOREPLACE_AIRCRAFT_TOOLTIP                          :{BLACK}Erstatt alle luftfartøy i hangaren automatisk
 
 ###length VEHICLE_TYPES
 STR_DEPOT_TRAIN_NEW_VEHICLES_BUTTON                             :{BLACK}Nytt jernbanemateriell
@@ -4895,11 +4895,11 @@ STR_MESSAGE_ESTIMATED_INCOME                                    :{WHITE}Anslått
 
 # Saveload messages
 STR_ERROR_SAVE_STILL_IN_PROGRESS                                :{WHITE}Lagring pågår enda,{}vennligst vent til den er klar!
-STR_ERROR_AUTOSAVE_FAILED                                       :{WHITE}Autolagring feilet
+STR_ERROR_AUTOSAVE_FAILED                                       :{WHITE}Automatisk lagring mislyktes
 STR_ERROR_UNABLE_TO_READ_DRIVE                                  :{BLACK}Kan ikke lese fra disk
 STR_ERROR_GAME_SAVE_FAILED                                      :{WHITE}Lagring av spillet mislyktes{}{STRING}
 STR_ERROR_UNABLE_TO_DELETE_FILE                                 :{WHITE}Kan ikke slette fil
-STR_ERROR_GAME_LOAD_FAILED                                      :{WHITE}Feil ved lasting av spill{}{STRING}
+STR_ERROR_GAME_LOAD_FAILED                                      :{WHITE}Lasting av spill mislyktes{}{STRING}
 STR_GAME_SAVELOAD_ERROR_BROKEN_INTERNAL_ERROR                   :Intern feil: {STRING}
 STR_GAME_SAVELOAD_ERROR_BROKEN_SAVEGAME                         :Ødelagt lagret spill - {STRING}
 STR_GAME_SAVELOAD_ERROR_TOO_NEW_SAVEGAME                        :Spillet er lagret i en nyere versjon
@@ -4993,7 +4993,7 @@ STR_ERROR_CAN_T_BUY_COMPANY                                     :{WHITE}Kan ikke
 STR_ERROR_CAN_T_BUILD_COMPANY_HEADQUARTERS                      :{WHITE}Kan ikke bygge selskapets hovedkontor...
 
 # Town related errors
-STR_ERROR_CAN_T_GENERATE_TOWN                                   :{WHITE}Kan ikke grunnlegge noen byer
+STR_ERROR_CAN_T_GENERATE_TOWN                                   :{WHITE}Kan ikke grunnlegge noen byer...
 STR_ERROR_CAN_T_RENAME_TOWN                                     :{WHITE}Kan ikke endre navn på byen...
 STR_ERROR_CAN_T_FOUND_TOWN_HERE                                 :{WHITE}Kan ikke grunnlegge by her...
 STR_ERROR_CAN_T_EXPAND_TOWN                                     :{WHITE}Kan ikke utvide byen...
@@ -5119,10 +5119,10 @@ STR_ERROR_UNBUNCHING_NO_UNBUNCHING_CONDITIONAL                  :{WHITE}... kan 
 
 # Autoreplace related errors
 STR_ERROR_TRAIN_TOO_LONG_AFTER_REPLACEMENT                      :{WHITE}{VEHICLE} er for langt etter utskiftning
-STR_ERROR_AUTOREPLACE_NOTHING_TO_DO                             :{WHITE}Ingen autoerstatt/fornyelseregler satt.
+STR_ERROR_AUTOREPLACE_NOTHING_TO_DO                             :{WHITE}Ingen autoerstatning/fornyelseregler satt
 STR_ERROR_AUTOREPLACE_MONEY_LIMIT                               :(pengegrense)
 STR_ERROR_AUTOREPLACE_INCOMPATIBLE_CARGO                        :{WHITE}Nytt kjøretøy kan ikke frakte {STRING}
-STR_ERROR_AUTOREPLACE_INCOMPATIBLE_REFIT                        :{WHITE}Nytt kjøretøy kan ikke bygges på nytt {NUM}
+STR_ERROR_AUTOREPLACE_INCOMPATIBLE_REFIT                        :{WHITE}Nytt transportmiddel kan ikke bygges om i ordre {NUM}
 
 # Rail construction errors
 STR_ERROR_IMPOSSIBLE_TRACK_COMBINATION                          :{WHITE}Umulig sporkombinasjon
