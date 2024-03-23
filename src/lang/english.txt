@@ -2460,7 +2460,6 @@ STR_NETWORK_CONNECTING_SPECIAL_2                                :{BLACK}Fetching
 STR_NETWORK_CONNECTION_DISCONNECT                               :{BLACK}Disconnect
 
 STR_NETWORK_NEED_GAME_PASSWORD_CAPTION                          :{WHITE}Server is protected. Enter password
-STR_NETWORK_NEED_COMPANY_PASSWORD_CAPTION                       :{WHITE}Company is protected. Enter password
 
 # Network company list added strings
 STR_NETWORK_COMPANY_LIST_CLIENT_LIST                            :Online players
