@@ -112,7 +112,6 @@ struct NetworkJoinInfo {
 	std::string connection_string; ///< The address of the server to join.
 	CompanyID company;             ///< The company to join.
 	std::string server_password;   ///< The password of the server to join.
-	std::string company_password;  ///< The password of the company to join.
 };
 
 extern NetworkJoinInfo _network_join;

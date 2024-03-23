@@ -831,7 +831,7 @@ public:
 
 /**
  * Join a client to the server at with the given connection string.
- * The default for the passwords is \c nullptr. When the server or company needs a
+ * The default for the passwords is \c nullptr. When the server needs a
  * password and none is given, the user is asked to enter the password in the GUI.
  * This function will return false whenever some information required to join is not
  * correct such as the company number or the client's name, or when there is not
@@ -843,10 +843,9 @@ public:
  * @param connection_string     The IP address, port and company number to join as.
  * @param default_company       The company number to join as when none is given.
  * @param join_server_password  The password for the server.
- * @param join_company_password The password for the company.
  * @return Whether the join has started.
  */
-bool NetworkClientConnectGame(const std::string &connection_string, CompanyID default_company, const std::string &join_server_password, const std::string &join_company_password)
+bool NetworkClientConnectGame(const std::string &connection_string, CompanyID default_company, const std::string &join_server_password)
 {
 	Debug(net, 9, "NetworkClientConnectGame(): connection_string={}", connection_string);
 
@@ -859,7 +858,6 @@ bool NetworkClientConnectGame(const std::string &connection_string, CompanyID de
 	_network_join.connection_string = resolved_connection_string;
 	_network_join.company = join_as;
 	_network_join.server_password = join_server_password;
-	_network_join.company_password = join_company_password;
 
 	if (_game_mode == GM_MENU) {
 		/* From the menu we can immediately continue with the actual join. */
