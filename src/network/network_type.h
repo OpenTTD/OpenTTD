@@ -72,12 +72,6 @@ struct NetworkCompanyStats {
 
 struct NetworkClientInfo;
 
-/** The type of password we're asking for. */
-enum NetworkPasswordType {
-	NETWORK_GAME_PASSWORD,    ///< The password of the game.
-	NETWORK_COMPANY_PASSWORD, ///< The password of the company.
-};
-
 /**
  * Destination of our chat messages.
  * @warning The values of the enum items are part of the admin network API. Only append at the end.

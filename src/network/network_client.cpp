@@ -709,7 +709,7 @@ class ClientGamePasswordRequestHandler : public NetworkAuthenticationPasswordReq
 		if (!_network_join.server_password.empty()) {
 			request->Reply(_network_join.server_password);
 		} else {
-			ShowNetworkNeedPassword(NETWORK_GAME_PASSWORD, request);
+			ShowNetworkNeedPassword(request);
 		}
 	}
 };
