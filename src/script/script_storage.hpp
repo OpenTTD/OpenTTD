@@ -41,7 +41,6 @@ private:
 	class ScriptObject *mode_instance; ///< The instance belonging to the current build mode.
 	ScriptAsyncModeProc *async_mode;         ///< The current command async mode we are in.
 	class ScriptObject *async_mode_instance; ///< The instance belonging to the current command async mode.
-	bool time_mode;                          ///< True if we in calendar time mode, or false (default) if we are in economy time mode.
 	CompanyID root_company;          ///< The root company, the company that the script really belongs to.
 	CompanyID company;               ///< The current company.
 
@@ -71,7 +70,6 @@ public:
 		mode_instance     (nullptr),
 		async_mode        (nullptr),
 		async_mode_instance (nullptr),
-		time_mode         (false),
 		root_company      (INVALID_OWNER),
 		company           (INVALID_OWNER),
 		delay             (1),
