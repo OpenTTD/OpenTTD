@@ -324,8 +324,7 @@ struct NetworkSettings {
 	std::string connect_to_ip;                            ///< default for the "Add server" query
 	std::string network_id;                               ///< network ID for servers
 	bool        autoclean_companies;                      ///< automatically remove companies that are not in use
-	uint8_t       autoclean_unprotected;                    ///< remove passwordless companies after this many months
-	uint8_t       autoclean_protected;                      ///< remove the password from passworded companies after this many months
+	uint8_t       autoclean_protected; ///< Remove companies after this many months.
 	uint8_t       autoclean_novehicles;                     ///< remove companies with no vehicles after this many months
 	uint8_t       max_companies;                            ///< maximum amount of companies
 	uint8_t       max_clients;                              ///< maximum amount of clients
