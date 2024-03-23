@@ -2574,6 +2574,7 @@ STR_NETWORK_ERROR_BAD_PLAYER_NAME                               :{WHITE}Je spele
 STR_NETWORK_ERROR_BAD_SERVER_NAME                               :{WHITE}Je servernaam is niet ingesteld. Je kunt de naam instellen bovenin het venster Netwerkspel
 STR_NETWORK_ERROR_WRONG_REVISION                                :{WHITE}De revisie van deze client komt niet overeen met de revisie van de server
 STR_NETWORK_ERROR_WRONG_PASSWORD                                :{WHITE}Ongeldig wachtwoord
+STR_NETWORK_ERROR_NOT_ON_ALLOW_LIST                             :{WHITE}Je staat niet op de lijst met toegestane clients
 STR_NETWORK_ERROR_SERVER_FULL                                   :{WHITE}De server is vol
 STR_NETWORK_ERROR_SERVER_BANNED                                 :{WHITE}Je bent verbannen van deze server
 STR_NETWORK_ERROR_KICKED                                        :{WHITE}Je bent van de server geschopt
@@ -2601,6 +2602,7 @@ STR_NETWORK_ERROR_CLIENT_NOT_EXPECTED                           :ongeldig of onv
 STR_NETWORK_ERROR_CLIENT_WRONG_REVISION                         :foute revisie
 STR_NETWORK_ERROR_CLIENT_NAME_IN_USE                            :naam al in gebruik
 STR_NETWORK_ERROR_CLIENT_WRONG_PASSWORD                         :fout spelwachtwoord
+STR_NETWORK_ERROR_CLIENT_NOT_ON_ALLOW_LIST                      :niet op toegestane lijst
 STR_NETWORK_ERROR_CLIENT_COMPANY_MISMATCH                       :verkeerd bedrijfsnummer in verstuurd commando
 STR_NETWORK_ERROR_CLIENT_KICKED                                 :eruit geschopt door server
 STR_NETWORK_ERROR_CLIENT_CHEATER                                :probeerde vals te spelen
@@ -4993,7 +4995,7 @@ STR_ERROR_CAN_T_BUY_COMPANY                                     :{WHITE}Kan het 
 STR_ERROR_CAN_T_BUILD_COMPANY_HEADQUARTERS                      :{WHITE}Kan bedrijfshoofdkantoor niet bouwen...
 
 # Town related errors
-STR_ERROR_CAN_T_GENERATE_TOWN                                   :{WHITE}Kan geen steden bouwen
+STR_ERROR_CAN_T_GENERATE_TOWN                                   :{WHITE}Kan geen steden bouwen...
 STR_ERROR_CAN_T_RENAME_TOWN                                     :{WHITE}Kan stad niet hernoemen...
 STR_ERROR_CAN_T_FOUND_TOWN_HERE                                 :{WHITE}Kan hier geen nieuwe stad bouwen...
 STR_ERROR_CAN_T_EXPAND_TOWN                                     :{WHITE}Kan dorp niet uitbreiden...

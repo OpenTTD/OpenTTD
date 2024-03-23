@@ -433,8 +433,8 @@ STR_SCENEDIT_TOOLBAR_PLACE_OBJECT                               :{BLACK}Colocar 
 ###length 7
 STR_SCENEDIT_FILE_MENU_SAVE_SCENARIO                            :Salvar cenário
 STR_SCENEDIT_FILE_MENU_LOAD_SCENARIO                            :Abrir cenário
-STR_SCENEDIT_FILE_MENU_SAVE_HEIGHTMAP                           :Salvar mapa topográfico
-STR_SCENEDIT_FILE_MENU_LOAD_HEIGHTMAP                           :Abrir mapa topográfico
+STR_SCENEDIT_FILE_MENU_SAVE_HEIGHTMAP                           :Salvar mapa de altitudes
+STR_SCENEDIT_FILE_MENU_LOAD_HEIGHTMAP                           :Abrir mapa de altitudes
 STR_SCENEDIT_FILE_MENU_QUIT_EDITOR                              :Sair do editor de cenários
 STR_SCENEDIT_FILE_MENU_SEPARATOR                                :
 STR_SCENEDIT_FILE_MENU_QUIT                                     :Sair
@@ -800,10 +800,10 @@ STR_SMALLMAP_COMPANY                                            :{TINY_FONT}{COM
 STR_SMALLMAP_TOWN                                               :{TINY_FONT}{WHITE}{TOWN}
 STR_SMALLMAP_DISABLE_ALL                                        :{BLACK}Desabilitar tudo
 STR_SMALLMAP_ENABLE_ALL                                         :{BLACK}Habilitar tudo
-STR_SMALLMAP_SHOW_HEIGHT                                        :{BLACK}Mostrar altura
+STR_SMALLMAP_SHOW_HEIGHT                                        :{BLACK}Mostrar altitudes
 STR_SMALLMAP_TOOLTIP_DISABLE_ALL_INDUSTRIES                     :{BLACK}Não mostrar indústrias no mapa
 STR_SMALLMAP_TOOLTIP_ENABLE_ALL_INDUSTRIES                      :{BLACK}Mostrar todas as indústrias no mapa
-STR_SMALLMAP_TOOLTIP_SHOW_HEIGHT                                :{BLACK}Mostrar/Ocultar mapa topográfico
+STR_SMALLMAP_TOOLTIP_SHOW_HEIGHT                                :{BLACK}Mostrar/Ocultar mapa de altitudes
 STR_SMALLMAP_TOOLTIP_DISABLE_ALL_COMPANIES                      :{BLACK}Mostrar no mapa as propriedades que não pertencem às empresas
 STR_SMALLMAP_TOOLTIP_ENABLE_ALL_COMPANIES                       :{BLACK}Mostrar no mapa as propriedades de todas as empresas
 STR_SMALLMAP_TOOLTIP_DISABLE_ALL_CARGOS                         :{BLACK}Não mostrar as cargas no mapa
@@ -1198,8 +1198,8 @@ STR_TERRAIN_TYPE_FLAT                                           :Plano
 STR_TERRAIN_TYPE_HILLY                                          :Acidentado
 STR_TERRAIN_TYPE_MOUNTAINOUS                                    :Montanhoso
 STR_TERRAIN_TYPE_ALPINIST                                       :Alpinismo
-STR_TERRAIN_TYPE_CUSTOM                                         :Altura personalizada
-STR_TERRAIN_TYPE_CUSTOM_VALUE                                   :Altura personalizada ({NUM})
+STR_TERRAIN_TYPE_CUSTOM                                         :Altitude personalizada
+STR_TERRAIN_TYPE_CUSTOM_VALUE                                   :Altitude personalizada ({NUM})
 
 ###length 4
 STR_CITY_APPROVAL_LENIENT                                       :Leniente
@@ -1320,12 +1320,12 @@ STR_CONFIG_SETTING_DISASTERS_HELPTEXT                           :Ativar desastre
 STR_CONFIG_SETTING_CITY_APPROVAL                                :Atitude da autoridade local: {STRING}
 STR_CONFIG_SETTING_CITY_APPROVAL_HELPTEXT                       :Escolher de que modo o ruído sonoro e os danos ambientais, causados pelas empresas, afetam a classificação delas na localidade e as ações futuras de construção na localidade
 
-STR_CONFIG_SETTING_MAP_HEIGHT_LIMIT                             :Limite de altura do mapa: {STRING}
-STR_CONFIG_SETTING_MAP_HEIGHT_LIMIT_HELPTEXT                    :Definir a altura máxima do terreno do mapa. Com "(automático)" um valor adequado será escolhido após a geração do terreno
+STR_CONFIG_SETTING_MAP_HEIGHT_LIMIT                             :Limite de altitude do mapa: {STRING}
+STR_CONFIG_SETTING_MAP_HEIGHT_LIMIT_HELPTEXT                    :Definir a altitude máxima do terreno do mapa. Com "(automático)" um valor adequado será escolhido após a geração do terreno
 STR_CONFIG_SETTING_MAP_HEIGHT_LIMIT_VALUE                       :{NUM}
 ###setting-zero-is-special
 STR_CONFIG_SETTING_MAP_HEIGHT_LIMIT_AUTO                        :(automático)
-STR_CONFIG_SETTING_TOO_HIGH_MOUNTAIN                            :{WHITE}Você não pode definir o limite de altura do mapa para este valor. Pelo menos uma montanha no mapa é mais alta
+STR_CONFIG_SETTING_TOO_HIGH_MOUNTAIN                            :{WHITE}Você não pode definir o limite de altitude do mapa para este valor. Pelo menos uma montanha no mapa é mais alta
 
 STR_CONFIG_SETTING_AUTOSLOPE                                    :Permitir paisagismo sob edifícios, vias, etc.: {STRING}
 STR_CONFIG_SETTING_AUTOSLOPE_HELPTEXT                           :Permitir paisagismo sob edifícios e vias sem precisar removê-lo(a)s
@@ -1527,7 +1527,7 @@ STR_CONFIG_SETTING_AUTORENEW_MONEY                              :Quantia mínima
 STR_CONFIG_SETTING_AUTORENEW_MONEY_HELPTEXT                     :Quantia mínima de dinheiro que deve existir na conta bancária para a renovação automática de veículos ser considerada
 
 STR_CONFIG_SETTING_ERRMSG_DURATION                              :Duração da mensagem de erro: {STRING}
-STR_CONFIG_SETTING_ERRMSG_DURATION_HELPTEXT                     :Duração da visualização de mensagens de erro em uma janela vermelha. Algumas mensagens de erro (crítico) não são fechadas automaticamente após este tempo e precisam ser fechadas manualmente
+STR_CONFIG_SETTING_ERRMSG_DURATION_HELPTEXT                     :Duração da exibição de mensagens de erro em uma janela vermelha. Algumas mensagens de erro (crítico) não são fechadas automaticamente após este tempo e precisam ser fechadas manualmente
 
 STR_CONFIG_SETTING_HOVER_DELAY                                  :Mostrar textos de ajuda: {STRING}
 STR_CONFIG_SETTING_HOVER_DELAY_HELPTEXT                         :Tempo que o cursor deve ficar sobre algum elemento da interface para que os textos de ajuda sejam mostrados. Quando este valor está definido como 0, os textos de ajuda podem ser mostrados com o botão direito do mouse
@@ -1556,7 +1556,7 @@ STR_CONFIG_SETTING_LAND_GENERATOR_ORIGINAL                      :Original
 STR_CONFIG_SETTING_LAND_GENERATOR_TERRA_GENESIS                 :TerraGenesis
 
 STR_CONFIG_SETTING_TERRAIN_TYPE                                 :Tipo de terreno: {STRING}
-STR_CONFIG_SETTING_TERRAIN_TYPE_HELPTEXT                        :Escolher a altura das colinas e montanhas da paisagem
+STR_CONFIG_SETTING_TERRAIN_TYPE_HELPTEXT                        :Escolher a altitude das colinas e montanhas da paisagem
 
 STR_CONFIG_SETTING_INDUSTRY_DENSITY                             :Densidade de indústrias: {STRING}
 STR_CONFIG_SETTING_INDUSTRY_DENSITY_HELPTEXT                    :Definir quantas indústrias devem ser geradas e que nível deve ser mantido durante o jogo
@@ -1603,13 +1603,13 @@ STR_CONFIG_SETTING_ROAD_SIDE_HELPTEXT                           :Escolher o lado
 STR_CONFIG_SETTING_ROAD_SIDE_LEFT                               :Conduzir pela esquerda
 STR_CONFIG_SETTING_ROAD_SIDE_RIGHT                              :Conduzir pela direita
 
-STR_CONFIG_SETTING_HEIGHTMAP_ROTATION                           :Rotação do mapa topográfico: {STRING}
-STR_CONFIG_SETTING_HEIGHTMAP_ROTATION_TOOLTIP                   :Escolher em que sentido a imagem do mapa topográfico será girada para caber no mundo do jogo
+STR_CONFIG_SETTING_HEIGHTMAP_ROTATION                           :Rotação do mapa de altitudes: {STRING}
+STR_CONFIG_SETTING_HEIGHTMAP_ROTATION_TOOLTIP                   :Escolher em que sentido a imagem do mapa de altitudes será girada para caber no mundo do jogo
 ###length 2
 STR_CONFIG_SETTING_HEIGHTMAP_ROTATION_COUNTER_CLOCKWISE         :Sentido Anti-horário
 STR_CONFIG_SETTING_HEIGHTMAP_ROTATION_CLOCKWISE                 :Sentido Horário
 
-STR_CONFIG_SETTING_SE_FLAT_WORLD_HEIGHT                         :Altura de um mapa de cenário plano: {STRING}
+STR_CONFIG_SETTING_SE_FLAT_WORLD_HEIGHT                         :Altitude para um mapa de cenário plano: {STRING}
 ###length 2
 STR_CONFIG_SETTING_EDGES_NOT_EMPTY                              :{WHITE}Um ou mais quadrados na borda norte não estão vazios
 STR_CONFIG_SETTING_EDGES_NOT_WATER                              :{WHITE}Um ou mais quadrados em um dos cantos não é água
@@ -2178,7 +2178,7 @@ STR_INTRO_CAPTION                                               :{WHITE}OpenTTD 
 STR_INTRO_NEW_GAME                                              :{BLACK}Novo Jogo
 STR_INTRO_LOAD_GAME                                             :{BLACK}Abrir Jogo
 STR_INTRO_PLAY_SCENARIO                                         :{BLACK}Jogar em Cenário
-STR_INTRO_PLAY_HEIGHTMAP                                        :{BLACK}Jogar em Mapa Topográfico
+STR_INTRO_PLAY_HEIGHTMAP                                        :{BLACK}Jogar em Mapa de Altitudes
 STR_INTRO_SCENARIO_EDITOR                                       :{BLACK}Editor de Cenário
 STR_INTRO_MULTIPLAYER                                           :{BLACK}Multijogador
 
@@ -2194,7 +2194,7 @@ STR_INTRO_QUIT                                                  :{BLACK}Sair do 
 
 STR_INTRO_TOOLTIP_NEW_GAME                                      :{BLACK}Iniciar um novo jogo. Ctrl+Clique para saltar a configuração do mapa
 STR_INTRO_TOOLTIP_LOAD_GAME                                     :{BLACK}Abrir um jogo salvo
-STR_INTRO_TOOLTIP_PLAY_HEIGHTMAP                                :{BLACK}Iniciar um novo jogo, usando um mapa topográfico como terreno
+STR_INTRO_TOOLTIP_PLAY_HEIGHTMAP                                :{BLACK}Iniciar um novo jogo, usando um mapa de altitudes como terreno
 STR_INTRO_TOOLTIP_PLAY_SCENARIO                                 :{BLACK}Iniciar um novo jogo, usando um cenário personalizado
 STR_INTRO_TOOLTIP_SCENARIO_EDITOR                               :{BLACK}Criar um cenário de jogo personalizado
 STR_INTRO_TOOLTIP_MULTIPLAYER                                   :{BLACK}Iniciar um jogo multijogador
@@ -2248,8 +2248,8 @@ STR_CHEAT_CHANGE_COMPANY                                        :{LTBLUE}Jogando
 STR_CHEAT_EXTRA_DYNAMITE                                        :{LTBLUE}Escavadeira mágica (remove indústrias, objetos estáticos): {ORANGE}{STRING}
 STR_CHEAT_CROSSINGTUNNELS                                       :{LTBLUE}Os túneis podem se cruzar: {ORANGE}{STRING}
 STR_CHEAT_NO_JETCRASH                                           :{LTBLUE}Aeronaves a jato não irão se acidentar (frequentemente) em aeroportos pequenos: {ORANGE}{STRING}
-STR_CHEAT_EDIT_MAX_HL                                           :{LTBLUE}Editar a altura máxima do mapa: {ORANGE}{NUM}
-STR_CHEAT_EDIT_MAX_HL_QUERY_CAPT                                :{WHITE}Editar a altura máxima das montanhas no mapa
+STR_CHEAT_EDIT_MAX_HL                                           :{LTBLUE}Editar a altitude máxima do mapa: {ORANGE}{NUM}
+STR_CHEAT_EDIT_MAX_HL_QUERY_CAPT                                :{WHITE}Editar a altitude máxima das montanhas no mapa
 STR_CHEAT_CHANGE_DATE                                           :{LTBLUE}Alterar data: {ORANGE}{DATE_SHORT}
 STR_CHEAT_CHANGE_DATE_QUERY_CAPT                                :{WHITE}Alterar o ano atual
 STR_CHEAT_SETUP_PROD                                            :{LTBLUE}Permitir modificar os valores de produção: {ORANGE}{STRING}
@@ -2701,7 +2701,7 @@ STR_CONTENT_TYPE_NEWGRF                                         :NewGRF
 STR_CONTENT_TYPE_AI                                             :IA
 STR_CONTENT_TYPE_AI_LIBRARY                                     :Biblioteca de IA
 STR_CONTENT_TYPE_SCENARIO                                       :Cenário
-STR_CONTENT_TYPE_HEIGHTMAP                                      :Mapa topográfico
+STR_CONTENT_TYPE_HEIGHTMAP                                      :Mapa de altitudes
 STR_CONTENT_TYPE_BASE_SOUNDS                                    :Sons base
 STR_CONTENT_TYPE_BASE_MUSIC                                     :Músicas base
 STR_CONTENT_TYPE_GAME_SCRIPT                                    :Script de jogo
@@ -3260,8 +3260,8 @@ STR_SAVELOAD_SAVE_CAPTION                                       :{WHITE}Salvar J
 STR_SAVELOAD_LOAD_CAPTION                                       :{WHITE}Abrir Jogo
 STR_SAVELOAD_SAVE_SCENARIO                                      :{WHITE}Salvar Cenário
 STR_SAVELOAD_LOAD_SCENARIO                                      :{WHITE}Abrir Cenário
-STR_SAVELOAD_LOAD_HEIGHTMAP                                     :{WHITE}Abrir mapa topográfico
-STR_SAVELOAD_SAVE_HEIGHTMAP                                     :{WHITE}Salvar mapa topográfico
+STR_SAVELOAD_LOAD_HEIGHTMAP                                     :{WHITE}Abrir mapa de altitudes
+STR_SAVELOAD_SAVE_HEIGHTMAP                                     :{WHITE}Salvar mapa de altitudes
 STR_SAVELOAD_HOME_BUTTON                                        :{BLACK}Acessar o diretório padrão atual onde salvar/abrir jogos
 STR_SAVELOAD_BYTES_FREE                                         :{BLACK}{BYTES} livres
 STR_SAVELOAD_LIST_TOOLTIP                                       :{BLACK}Lista de unidades, diretórios e arquivos de jogos gravados
@@ -3272,7 +3272,7 @@ STR_SAVELOAD_SAVE_BUTTON                                        :{BLACK}Salvar
 STR_SAVELOAD_SAVE_TOOLTIP                                       :{BLACK}Salvar o jogo atual usando o nome escolhido
 STR_SAVELOAD_LOAD_BUTTON                                        :{BLACK}Abrir
 STR_SAVELOAD_LOAD_TOOLTIP                                       :{BLACK}Carregar o jogo selecionado
-STR_SAVELOAD_LOAD_HEIGHTMAP_TOOLTIP                             :{BLACK}Carregar o mapa topográfico selecionado
+STR_SAVELOAD_LOAD_HEIGHTMAP_TOOLTIP                             :{BLACK}Carregar o mapa de altitudes selecionado
 STR_SAVELOAD_DETAIL_CAPTION                                     :{BLACK}Detalhes do Jogo
 STR_SAVELOAD_DETAIL_NOT_AVAILABLE                               :{BLACK}Nenhuma informação disponível
 STR_SAVELOAD_DETAIL_COMPANY_INDEX                               :{SILVER}{COMMA}: {WHITE}{STRING}
@@ -3361,14 +3361,14 @@ STR_MAPGEN_BORDER_RANDOM                                        :{BLACK}Aleatór
 STR_MAPGEN_BORDER_RANDOMIZE                                     :{BLACK}Aleatório
 STR_MAPGEN_BORDER_MANUAL                                        :{BLACK}Manual
 
-STR_MAPGEN_HEIGHTMAP_ROTATION                                   :{BLACK}Rotação do mapa topográfico:
-STR_MAPGEN_HEIGHTMAP_NAME                                       :{BLACK}Nome do mapa topográfico:
-STR_MAPGEN_HEIGHTMAP_NAME_TOOLTIP                               :{BLACK}O nome do arquivo de imagem do mapa topográfico
+STR_MAPGEN_HEIGHTMAP_ROTATION                                   :{BLACK}Rotação do mapa de altitudes:
+STR_MAPGEN_HEIGHTMAP_NAME                                       :{BLACK}Nome do mapa de altitudes:
+STR_MAPGEN_HEIGHTMAP_NAME_TOOLTIP                               :{BLACK}O nome do arquivo de imagem do mapa de altitudes
 STR_MAPGEN_HEIGHTMAP_SIZE_LABEL                                 :{BLACK}Tamanho:
-STR_MAPGEN_HEIGHTMAP_SIZE_LABEL_TOOLTIP                         :{BLACK}O tamanho da imagem original do mapa topográfico. Para obter melhores resultados, cada lado deve corresponder a um comprimento de lado de mapa disponível no OpenTTD, tais como 256, 512, 1024, etc.
+STR_MAPGEN_HEIGHTMAP_SIZE_LABEL_TOOLTIP                         :{BLACK}O tamanho da imagem original do mapa de altitudes. Para obter melhores resultados, cada lado deve corresponder a um comprimento de lado de mapa disponível no OpenTTD, tais como 256, 512, 1024, etc.
 STR_MAPGEN_HEIGHTMAP_SIZE                                       :{ORANGE}{NUM} x {NUM}
 
-STR_MAPGEN_TERRAIN_TYPE_QUERY_CAPT                              :{WHITE}Altura desejada do pico
+STR_MAPGEN_TERRAIN_TYPE_QUERY_CAPT                              :{WHITE}Altitude desejada para o pico
 STR_MAPGEN_HEIGHTMAP_HEIGHT_QUERY_CAPT                          :{WHITE}Pico mais elevado
 STR_MAPGEN_SNOW_COVERAGE_QUERY_CAPT                             :{WHITE}Cobertura com neve (em %)
 STR_MAPGEN_DESERT_COVERAGE_QUERY_CAPT                           :{WHITE}Cobertura com deserto (em %)
@@ -3379,12 +3379,12 @@ STR_SE_MAPGEN_CAPTION                                           :{WHITE}Tipo de 
 STR_SE_MAPGEN_FLAT_WORLD                                        :{WHITE}Terreno plano
 STR_SE_MAPGEN_FLAT_WORLD_TOOLTIP                                :{BLACK}Gerar um terreno plano
 STR_SE_MAPGEN_RANDOM_LAND                                       :{WHITE}Terreno aleatório
-STR_SE_MAPGEN_FLAT_WORLD_HEIGHT                                 :{BLACK}Altura do terreno plano:
+STR_SE_MAPGEN_FLAT_WORLD_HEIGHT                                 :{BLACK}Altitude do terreno plano:
 STR_SE_MAPGEN_FLAT_WORLD_HEIGHT_TOOLTIP                         :{BLACK}Escolher a elevação do terreno acima do nível do mar
 STR_SE_MAPGEN_FLAT_WORLD_HEIGHT_DOWN                            :{BLACK}Mover altura do terreno plano um nível abaixo
 STR_SE_MAPGEN_FLAT_WORLD_HEIGHT_UP                              :{BLACK}Mover altura do terreno plano um nível acima
 
-STR_SE_MAPGEN_FLAT_WORLD_HEIGHT_QUERY_CAPT                      :{WHITE}Modificar a altura do terreno plano
+STR_SE_MAPGEN_FLAT_WORLD_HEIGHT_QUERY_CAPT                      :{WHITE}Modificar a altitude do terreno plano
 
 # Map generation progress
 STR_GENERATION_WORLD                                            :{WHITE}Gerando Mundo...
@@ -3617,8 +3617,8 @@ STR_TOWN_POPULATION                                             :{BLACK}Populaç
 STR_TOWN_VIEW_TOWN_CAPTION                                      :{WHITE}{TOWN}
 STR_TOWN_VIEW_CITY_CAPTION                                      :{WHITE}{TOWN} (Cidade)
 STR_TOWN_VIEW_POPULATION_HOUSES                                 :{BLACK}População: {ORANGE}{COMMA}{BLACK}  Casas: {ORANGE}{COMMA}
-STR_TOWN_VIEW_CARGO_LAST_MONTH_MAX                              :{BLACK}{CARGO_LIST} no último mês: {ORANGE}{COMMA}{BLACK}  máx: {ORANGE}{COMMA}
-STR_TOWN_VIEW_CARGO_LAST_MINUTE_MAX                             :{BLACK}{CARGO_LIST} no último minuto: {ORANGE}{COMMA}{BLACK}  máx: {ORANGE}{COMMA}
+STR_TOWN_VIEW_CARGO_LAST_MONTH_MAX                              :{BLACK}{CARGO_LIST} no último mês: {ORANGE}{COMMA}{BLACK}  máx.: {ORANGE}{COMMA}
+STR_TOWN_VIEW_CARGO_LAST_MINUTE_MAX                             :{BLACK}{CARGO_LIST} no último minuto: {ORANGE}{COMMA}{BLACK}  máx.: {ORANGE}{COMMA}
 STR_TOWN_VIEW_CARGO_FOR_TOWNGROWTH                              :{BLACK}Requisitos para o crescimento da localidade:
 STR_TOWN_VIEW_CARGO_FOR_TOWNGROWTH_REQUIRED_GENERAL             :{ORANGE}{STRING}{RED} necessário
 STR_TOWN_VIEW_CARGO_FOR_TOWNGROWTH_REQUIRED_WINTER              :{ORANGE}{STRING}{BLACK} necessário no inverno
@@ -3628,7 +3628,7 @@ STR_TOWN_VIEW_CARGO_FOR_TOWNGROWTH_DELIVERED                    :{ORANGE}{CARGO_
 STR_TOWN_VIEW_TOWN_GROWS_EVERY                                  :{BLACK}Localidade cresce a cada {ORANGE}{UNITS_DAYS_OR_SECONDS}
 STR_TOWN_VIEW_TOWN_GROWS_EVERY_FUNDED                           :{BLACK}Localidade cresce a cada {ORANGE}{UNITS_DAYS_OR_SECONDS} (financiada)
 STR_TOWN_VIEW_TOWN_GROW_STOPPED                                 :{BLACK}Localidade {RED}não{BLACK} está crescendo
-STR_TOWN_VIEW_NOISE_IN_TOWN                                     :{BLACK}Limite de ruído na localidade: {ORANGE}{COMMA}{BLACK}  máx: {ORANGE}{COMMA}
+STR_TOWN_VIEW_NOISE_IN_TOWN                                     :{BLACK}Limite de ruído na localidade: {ORANGE}{COMMA}{BLACK}  máx.: {ORANGE}{COMMA}
 STR_TOWN_VIEW_CENTER_TOOLTIP                                    :{BLACK}Centralizar visualização principal na localização da localidade. Ctrl+Clique para abrir uma nova visualização na localização da localidade
 STR_TOWN_VIEW_LOCAL_AUTHORITY_BUTTON                            :{BLACK}Autoridade Local
 STR_TOWN_VIEW_LOCAL_AUTHORITY_TOOLTIP                           :{BLACK}Mostrar informações sobre a autoridade local
@@ -4179,7 +4179,7 @@ STR_DEPOT_VEHICLE_TOOLTIP_CHAIN                                 :{BLACK}{NUM} ve
 STR_DEPOT_VEHICLE_TOOLTIP_CARGO                                 :{}{CARGO_LONG} ({CARGO_SHORT})
 
 ###length VEHICLE_TYPES
-STR_DEPOT_TRAIN_LIST_TOOLTIP                                    :{BLACK}Trens - arraste o veículo com o botão esquerdo do mouse para acrescentar/retirar do trem. Clique com o botão direito para informações. Ctrl+Clique para aplicar uma das funções à cadeia seguinte
+STR_DEPOT_TRAIN_LIST_TOOLTIP                                    :{BLACK}Trens - arraste o veículo com o botão esquerdo do mouse para acrescentar/retirar do trem, clique com o botão direito para informações. Ctrl+Clique para aplicar uma das funções à cadeia seguinte
 STR_DEPOT_ROAD_VEHICLE_LIST_TOOLTIP                             :{BLACK}Veículos - clique com o botão direito em um veículo para informações
 STR_DEPOT_SHIP_LIST_TOOLTIP                                     :{BLACK}Embarcações - clique com o botão direito em uma embarcação para informações
 STR_DEPOT_AIRCRAFT_LIST_TOOLTIP                                 :{BLACK}Aeronaves - clique com o botão direito em uma aeronave para informações
@@ -4329,7 +4329,7 @@ STR_REPLACE_ROAD_VEHICLES                                       :Veículos Rodov
 STR_REPLACE_TRAM_VEHICLES                                       :Bondes
 
 STR_REPLACE_REMOVE_WAGON                                        :{BLACK}Remoção de vagões ({STRING}): {ORANGE}{STRING}
-STR_REPLACE_REMOVE_WAGON_HELP                                   :{BLACK}Fazer a substituição automática mantendo o comprimento do trem, removendo vagões (começando pela frente), se a substituição da locomotiva aumentar o comprimento do trem
+STR_REPLACE_REMOVE_WAGON_HELP                                   :{BLACK}Fazer a substituição automática sem modificar o comprimento do trem, removendo vagões (começando pela frente), se a substituição da locomotiva aumentar o comprimento do trem
 STR_REPLACE_REMOVE_WAGON_GROUP_HELP                             :{STRING}. Ctrl+Clique para também aplicar aos subgrupos
 
 # Vehicle view
@@ -4342,10 +4342,10 @@ STR_VEHICLE_VIEW_SHIP_CENTER_TOOLTIP                            :{BLACK}Centrali
 STR_VEHICLE_VIEW_AIRCRAFT_CENTER_TOOLTIP                        :{BLACK}Centralizar visualização principal na localização da aeronave. Clique duplo para seguir a aeronave na visualização principal. Ctrl+Clique para abrir uma nova visualização na localização da aeronave
 
 ###length VEHICLE_TYPES
-STR_VEHICLE_VIEW_TRAIN_SEND_TO_DEPOT_TOOLTIP                    :{BLACK}Enviar trem para o depósito. Ctrl+Clique para fazer apenas manutenção
-STR_VEHICLE_VIEW_ROAD_VEHICLE_SEND_TO_DEPOT_TOOLTIP             :{BLACK}Enviar veículo para o depósito. Ctrl+Clique para fazer apenas manutenção
-STR_VEHICLE_VIEW_SHIP_SEND_TO_DEPOT_TOOLTIP                     :{BLACK}Enviar embarcação para o depósito. Ctrl+Clique para fazer apenas manutenção
-STR_VEHICLE_VIEW_AIRCRAFT_SEND_TO_DEPOT_TOOLTIP                 :{BLACK}Enviar aeronave para o hangar. Ctrl+Clique para fazer apenas manutenção
+STR_VEHICLE_VIEW_TRAIN_SEND_TO_DEPOT_TOOLTIP                    :{BLACK}Enviar o trem para o depósito. Ctrl+Clique para fazer apenas manutenção
+STR_VEHICLE_VIEW_ROAD_VEHICLE_SEND_TO_DEPOT_TOOLTIP             :{BLACK}Enviar o veículo para o depósito. Ctrl+Clique para fazer apenas manutenção
+STR_VEHICLE_VIEW_SHIP_SEND_TO_DEPOT_TOOLTIP                     :{BLACK}Enviar a embarcação para o depósito. Ctrl+Clique para fazer apenas manutenção
+STR_VEHICLE_VIEW_AIRCRAFT_SEND_TO_DEPOT_TOOLTIP                 :{BLACK}Enviar a aeronave para o hangar. Ctrl+Clique para fazer apenas manutenção
 
 ###length VEHICLE_TYPES
 STR_VEHICLE_VIEW_CLONE_TRAIN_INFO                               :{BLACK}Comprar uma cópia do trem, incluindo todos os vagões. Ctrl+Clique para compartilhar as ordens. Pressione também Shift para só mostrar o custo estimado
@@ -4365,10 +4365,10 @@ STR_VEHICLE_VIEW_SHIP_REFIT_TOOLTIP                             :{BLACK}Adaptar 
 STR_VEHICLE_VIEW_AIRCRAFT_REFIT_TOOLTIP                         :{BLACK}Adaptar aeronave para transportar um tipo de carga diferente
 
 ###length VEHICLE_TYPES
-STR_VEHICLE_VIEW_TRAIN_ORDERS_TOOLTIP                           :{BLACK}Mostrar ordens do trem. Ctrl+Clique para mostrar a tabela de horários do trem
-STR_VEHICLE_VIEW_ROAD_VEHICLE_ORDERS_TOOLTIP                    :{BLACK}Mostrar ordens do veículo. Ctrl+Clique para mostrar a tabela de horários do veículo
-STR_VEHICLE_VIEW_SHIP_ORDERS_TOOLTIP                            :{BLACK}Mostrar ordens da embarcação. Ctrl+Clique para mostrar a tabela de horários da embarcação
-STR_VEHICLE_VIEW_AIRCRAFT_ORDERS_TOOLTIP                        :{BLACK}Mostrar ordens da aeronave. Ctrl+Clique para mostrar a tabela de horários da aeronave
+STR_VEHICLE_VIEW_TRAIN_ORDERS_TOOLTIP                           :{BLACK}Mostrar as ordens do trem. Ctrl+Clique para mostrar a tabela de horários do trem
+STR_VEHICLE_VIEW_ROAD_VEHICLE_ORDERS_TOOLTIP                    :{BLACK}Mostrar as ordens do veículo. Ctrl+Clique para mostrar a tabela de horários do veículo
+STR_VEHICLE_VIEW_SHIP_ORDERS_TOOLTIP                            :{BLACK}Mostrar as ordens da embarcação. Ctrl+Clique para mostrar a tabela de horários da embarcação
+STR_VEHICLE_VIEW_AIRCRAFT_ORDERS_TOOLTIP                        :{BLACK}Mostrar as ordens da aeronave. Ctrl+Clique para mostrar a tabela de horários da aeronave
 
 ###length VEHICLE_TYPES
 STR_VEHICLE_VIEW_TRAIN_SHOW_DETAILS_TOOLTIP                     :{BLACK}Mostrar detalhes do trem
@@ -4432,8 +4432,8 @@ STR_VEHICLE_INFO_AGE_RUNNING_COST_PERIOD                        :{BLACK}Idade: {
 STR_VEHICLE_INFO_MAX_SPEED                                      :{BLACK}Velocidade máx.: {LTBLUE}{VELOCITY}
 STR_VEHICLE_INFO_MAX_SPEED_TYPE                                 :{BLACK}Velocidade máx.: {LTBLUE}{VELOCITY} {BLACK}Tipo de aeronave: {LTBLUE}{STRING}
 STR_VEHICLE_INFO_MAX_SPEED_TYPE_RANGE                           :{BLACK}Velocidade máx.: {LTBLUE}{VELOCITY} {BLACK}Tipo de aeronave: {LTBLUE}{STRING} {BLACK}Autonomia: {LTBLUE}{COMMA} quadrados
-STR_VEHICLE_INFO_WEIGHT_POWER_MAX_SPEED                         :{BLACK}Peso: {LTBLUE}{WEIGHT_SHORT} {BLACK}Potência: {LTBLUE}{POWER}{BLACK} Velocidade máx: {LTBLUE}{VELOCITY}
-STR_VEHICLE_INFO_WEIGHT_POWER_MAX_SPEED_MAX_TE                  :{BLACK}Peso: {LTBLUE}{WEIGHT_SHORT} {BLACK}Potência: {LTBLUE}{POWER}{BLACK} Velocidade máx: {LTBLUE}{VELOCITY} {BLACK}Força de Tração máx.: {LTBLUE}{FORCE}
+STR_VEHICLE_INFO_WEIGHT_POWER_MAX_SPEED                         :{BLACK}Peso: {LTBLUE}{WEIGHT_SHORT} {BLACK}Potência: {LTBLUE}{POWER}{BLACK} Velocidade máx.: {LTBLUE}{VELOCITY}
+STR_VEHICLE_INFO_WEIGHT_POWER_MAX_SPEED_MAX_TE                  :{BLACK}Peso: {LTBLUE}{WEIGHT_SHORT} {BLACK}Potência: {LTBLUE}{POWER}{BLACK} Velocidade máx.: {LTBLUE}{VELOCITY} {BLACK}Força de Tração máx.: {LTBLUE}{FORCE}
 
 STR_VEHICLE_INFO_PROFIT_THIS_YEAR_LAST_YEAR                     :{BLACK}Lucro neste ano: {LTBLUE}{CURRENCY_LONG} (último ano: {CURRENCY_LONG})
 STR_VEHICLE_INFO_PROFIT_THIS_YEAR_LAST_YEAR_MIN_PERFORMANCE     :{BLACK}Lucro neste ano: {LTBLUE}{CURRENCY_LONG} (último ano: {CURRENCY_LONG}) {BLACK}Desempenho mín.: {LTBLUE}{POWER_TO_WEIGHT}
@@ -4565,7 +4565,7 @@ STR_ORDER_DROP_REFIT_AUTO                                       :Carga fixa
 STR_ORDER_DROP_REFIT_AUTO_ANY                                   :Carga disponível
 
 STR_ORDER_DROP_GO_ALWAYS_DEPOT                                  :Ir sempre
-STR_ORDER_DROP_SERVICE_DEPOT                                    :Manutenção, se necessária
+STR_ORDER_DROP_SERVICE_DEPOT                                    :Manutenção, se precisar
 STR_ORDER_DROP_HALT_DEPOT                                       :Parar
 STR_ORDER_DROP_UNBUNCH                                          :Desagrupar
 
@@ -4687,7 +4687,7 @@ STR_ORDER_STOP_LOCATION_NEAR_END                                :[início]
 STR_ORDER_STOP_LOCATION_MIDDLE                                  :[meio]
 STR_ORDER_STOP_LOCATION_FAR_END                                 :[final]
 
-STR_ORDER_OUT_OF_RANGE                                          :{RED} (Próximo destino está além da autonomia)
+STR_ORDER_OUT_OF_RANGE                                          :{RED} (Próximo destino está fora de alcance)
 
 STR_ORDER_CONDITIONAL_UNCONDITIONAL                             :Saltar para a ordem {COMMA}
 STR_ORDER_CONDITIONAL_NUM                                       :Saltar para a ordem {COMMA} quando {STRING} {STRING} {COMMA}
@@ -4783,7 +4783,7 @@ STR_AI_DEBUG_MATCH_CASE                                         :{BLACK}Diferenc
 STR_AI_DEBUG_MATCH_CASE_TOOLTIP                                 :{BLACK}Ativar/Desativar correspondência de maiúsculas/minúsculas quando comparar as mensagens de registro da IA com a sequência de caracteres de parada
 STR_AI_DEBUG_CONTINUE                                           :{BLACK}Continuar
 STR_AI_DEBUG_CONTINUE_TOOLTIP                                   :{BLACK}Sair da pausa e continuar a IA
-STR_AI_DEBUG_SELECT_AI_TOOLTIP                                  :{BLACK}Mostrar saída de depuração desta IA. Ctrl+Clique para abrir em uma nova janela
+STR_AI_DEBUG_SELECT_AI_TOOLTIP                                  :{BLACK}Mostrar a saída de depuração desta IA. Ctrl+Clique para abrir em uma nova janela
 STR_AI_GAME_SCRIPT                                              :{BLACK}Script de Jogo
 STR_AI_GAME_SCRIPT_TOOLTIP                                      :{BLACK}Verificar o registro do Script de Jogo. Ctrl+Clique para abrir em uma nova janela
 
@@ -4829,7 +4829,7 @@ STR_AI_LIST_VERSION                                             :{LTBLUE}Versão
 STR_AI_LIST_URL                                                 :{LTBLUE}URL: {ORANGE}{STRING}
 
 STR_AI_LIST_ACCEPT                                              :{BLACK}Aceitar
-STR_AI_LIST_ACCEPT_TOOLTIP                                      :{BLACK}Aceitar o script selecionado
+STR_AI_LIST_ACCEPT_TOOLTIP                                      :{BLACK}Usar o script selecionado
 STR_AI_LIST_CANCEL                                              :{BLACK}Cancelar
 STR_AI_LIST_CANCEL_TOOLTIP                                      :{BLACK}Não mudar o script
 
@@ -4838,13 +4838,13 @@ STR_SCREENSHOT_SCREENSHOT                                       :{BLACK}Captura 
 STR_SCREENSHOT_ZOOMIN_SCREENSHOT                                :{BLACK}Captura de tela com ampliação máxima
 STR_SCREENSHOT_DEFAULTZOOM_SCREENSHOT                           :{BLACK}Captura de tela com ampliação padrão
 STR_SCREENSHOT_WORLD_SCREENSHOT                                 :{BLACK}Captura de tela do mapa completo
-STR_SCREENSHOT_HEIGHTMAP_SCREENSHOT                             :{BLACK}Captura de tela do mapa topográfico
+STR_SCREENSHOT_HEIGHTMAP_SCREENSHOT                             :{BLACK}Captura de tela do mapa de altitudes
 STR_SCREENSHOT_MINIMAP_SCREENSHOT                               :{BLACK}Captura de tela do minimapa
 
 # Script Parameters
-STR_AI_SETTINGS_CAPTION                                         :{WHITE}{STRING} Parâmetros
-STR_AI_SETTINGS_CAPTION_AI                                      :IA
-STR_AI_SETTINGS_CAPTION_GAMESCRIPT                              :Script de Jogo
+STR_AI_SETTINGS_CAPTION                                         :{WHITE}Parâmetros d{G o a} {STRING}
+STR_AI_SETTINGS_CAPTION_AI                                      :{G=f}IA
+STR_AI_SETTINGS_CAPTION_GAMESCRIPT                              :{G=m}Script de Jogo
 STR_AI_SETTINGS_CLOSE                                           :{BLACK}Fechar
 STR_AI_SETTINGS_RESET                                           :{BLACK}Restaurar
 STR_AI_SETTINGS_SETTING                                         :{STRING}: {ORANGE}{STRING}
@@ -4857,7 +4857,7 @@ STR_TEXTFILE_JUMPLIST_ITEM                                      :{WHITE}{STRING}
 STR_TEXTFILE_NAVBACK_TOOLTIP                                    :{BLACK}Retornar no histórico de navegação
 STR_TEXTFILE_NAVFORWARD_TOOLTIP                                 :{BLACK}Avançar no histórico de navegação
 STR_TEXTFILE_WRAP_TEXT                                          :{WHITE}Quebrar linhas do texto
-STR_TEXTFILE_WRAP_TEXT_TOOLTIP                                  :{BLACK}Ajustar o comprimento das linhas para o texto preencher a janela e não precisar rolar o conteúdo
+STR_TEXTFILE_WRAP_TEXT_TOOLTIP                                  :{BLACK}Ajustar o comprimento das linhas à largura da janela para facilitar a leitura do texto
 STR_TEXTFILE_VIEW_README                                        :{BLACK}Leia-me
 STR_TEXTFILE_VIEW_README_TOOLTIP                                :Ver o arquivo Leia-me para este conteúdo
 STR_TEXTFILE_VIEW_CHANGELOG                                     :{BLACK}Registro de modificações
@@ -4937,7 +4937,7 @@ STR_WARNING_FALLBACK_SOUNDSET                                   :{WHITE}Somente 
 STR_WARNING_SCREENSHOT_SIZE_CAPTION                             :{WHITE}Captura tela enorme
 STR_WARNING_SCREENSHOT_SIZE_MESSAGE                             :{YELLOW}A captura de tela terá uma resolução de {COMMA}x{COMMA} pixels. Essa captura pode demorar. Deseja continuar?
 
-STR_MESSAGE_HEIGHTMAP_SUCCESSFULLY                              :{WHITE}Mapa topográfico '{STRING}' gravado com sucesso. O pico mais alto tem {NUM}
+STR_MESSAGE_HEIGHTMAP_SUCCESSFULLY                              :{WHITE}Mapa de altitudes '{STRING}' gravado com sucesso. O pico mais alto tem {NUM}
 STR_MESSAGE_SCREENSHOT_SUCCESSFULLY                             :{WHITE}Captura de tela '{STRING}' gravada com sucesso
 STR_ERROR_SCREENSHOT_FAILED                                     :{WHITE}A captura de tela falhou!
 
@@ -4952,7 +4952,7 @@ STR_ERROR_NOT_ENOUGH_CASH_REQUIRES_CURRENCY                     :{WHITE}Dinheiro
 STR_ERROR_FLAT_LAND_REQUIRED                                    :{WHITE}É necessário terreno plano
 STR_ERROR_LAND_SLOPED_IN_WRONG_DIRECTION                        :{WHITE}Terreno inclinado na direção errada
 STR_ERROR_CAN_T_DO_THIS                                         :{WHITE}Não é possível fazer isto...
-STR_ERROR_BUILDING_MUST_BE_DEMOLISHED                           :{WHITE}Edifício deve ser demolido primeiro
+STR_ERROR_BUILDING_MUST_BE_DEMOLISHED                           :{WHITE}O imóvel deve ser demolido primeiro
 STR_ERROR_CAN_T_CLEAR_THIS_AREA                                 :{WHITE}Não é possível limpar esta área...
 STR_ERROR_SITE_UNSUITABLE                                       :{WHITE}... local inadequado
 STR_ERROR_ALREADY_BUILT                                         :{WHITE}... já construído
@@ -5064,7 +5064,7 @@ STR_ERROR_CAN_T_REMOVE_TRUCK_STATION                            :{WHITE}Não é 
 STR_ERROR_CAN_T_REMOVE_PASSENGER_TRAM_STATION                   :{WHITE}Não é possível remover estação de bondes de passageiros...
 STR_ERROR_CAN_T_REMOVE_CARGO_TRAM_STATION                       :{WHITE}Não é possível remover estação de bondes de carga...
 STR_ERROR_MUST_REMOVE_ROAD_STOP_FIRST                           :{WHITE}É necessário remover o ponto de parada rodoviária primeiro
-STR_ERROR_THERE_IS_NO_STATION                                   :{WHITE}...não existe uma estação aqui
+STR_ERROR_THERE_IS_NO_STATION                                   :{WHITE}... não existe uma estação aqui
 
 STR_ERROR_MUST_DEMOLISH_RAILROAD                                :{WHITE}É necessário demolir a estação ferroviária primeiro
 STR_ERROR_MUST_DEMOLISH_BUS_STATION_FIRST                       :{WHITE}É necessário demolir a estação de ônibus primeiro
@@ -5140,8 +5140,8 @@ STR_ERROR_CAN_T_BUILD_RAILROAD_TRACK                            :{WHITE}Não é 
 STR_ERROR_CAN_T_REMOVE_RAILROAD_TRACK                           :{WHITE}Não é possível remover ferrovia daqui...
 STR_ERROR_CAN_T_REMOVE_SIGNALS_FROM                             :{WHITE}Não é possível remover sinais daqui...
 STR_ERROR_SIGNAL_CAN_T_CONVERT_SIGNALS_HERE                     :{WHITE}Não é possível converter os sinais daqui...
-STR_ERROR_THERE_IS_NO_RAILROAD_TRACK                            :{WHITE}...não existe uma ferrovia
-STR_ERROR_THERE_ARE_NO_SIGNALS                                  :{WHITE}...não existem sinais
+STR_ERROR_THERE_IS_NO_RAILROAD_TRACK                            :{WHITE}... não existe uma ferrovia
+STR_ERROR_THERE_ARE_NO_SIGNALS                                  :{WHITE}... não existem sinais
 
 STR_ERROR_CAN_T_CONVERT_RAIL                                    :{WHITE}Não é possível converter o tipo de trilho daqui...
 
