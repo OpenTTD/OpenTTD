@@ -948,7 +948,6 @@ struct QueryStringWindow : public Window
 {
 	QueryString editbox;    ///< Editbox.
 	QueryStringFlags flags; ///< Flags controlling behaviour of the window.
-	Dimension warning_size; ///< How much space to use for the warning text
 
 	QueryStringWindow(StringID str, StringID caption, uint max_bytes, uint max_chars, WindowDesc *desc, Window *parent, CharSetFilter afilter, QueryStringFlags flags) :
 			Window(desc), editbox(max_bytes, max_chars)
@@ -965,25 +964,10 @@ struct QueryStringWindow : public Window
 		this->flags = flags;
 
 		this->InitNested(WN_QUERY_STRING);
-		this->UpdateWarningStringSize();
 
 		this->parent = parent;
 
 		this->SetFocusedWidget(WID_QS_TEXT);
-	}
-
-	void UpdateWarningStringSize()
-	{
-		if (this->flags & QSF_PASSWORD) {
-			assert(this->nested_root->smallest_x > 0);
-			this->warning_size.width = this->nested_root->current_x - WidgetDimensions::scaled.frametext.Horizontal() - WidgetDimensions::scaled.framerect.Horizontal();
-			this->warning_size.height = GetStringHeight(STR_WARNING_PASSWORD_SECURITY, this->warning_size.width);
-			this->warning_size.height += WidgetDimensions::scaled.frametext.Vertical() + WidgetDimensions::scaled.framerect.Vertical();
-		} else {
-			this->warning_size = Dimension{ 0, 0 };
-		}
-
-		this->ReInit();
 	}
 
 	void UpdateWidgetSize(WidgetID widget, Dimension &size, [[maybe_unused]] const Dimension &padding, [[maybe_unused]] Dimension &fill, [[maybe_unused]] Dimension &resize) override
@@ -993,20 +977,6 @@ struct QueryStringWindow : public Window
 			fill.width = 0;
 			resize.width = 0;
 			size.width = 0;
-		}
-
-		if (widget == WID_QS_WARNING) {
-			size = this->warning_size;
-		}
-	}
-
-	void DrawWidget(const Rect &r, WidgetID widget) const override
-	{
-		if (widget != WID_QS_WARNING) return;
-
-		if (this->flags & QSF_PASSWORD) {
-			DrawStringMultiLine(r.Shrink(WidgetDimensions::scaled.framerect).Shrink(WidgetDimensions::scaled.frametext),
-				STR_WARNING_PASSWORD_SECURITY, TC_FROMSTRING, SA_CENTER);
 		}
 	}
 
@@ -1061,7 +1031,6 @@ static constexpr NWidgetPart _nested_query_string_widgets[] = {
 	NWidget(WWT_PANEL, COLOUR_GREY),
 		NWidget(WWT_EDITBOX, COLOUR_GREY, WID_QS_TEXT), SetMinimalSize(256, 12), SetFill(1, 1), SetPadding(2, 2, 2, 2),
 	EndContainer(),
-	NWidget(WWT_PANEL, COLOUR_GREY, WID_QS_WARNING), EndContainer(),
 	NWidget(NWID_HORIZONTAL, NC_EQUALSIZE),
 		NWidget(WWT_TEXTBTN, COLOUR_GREY, WID_QS_DEFAULT), SetMinimalSize(87, 12), SetFill(1, 1), SetDataTip(STR_BUTTON_DEFAULT, STR_NULL),
 		NWidget(WWT_TEXTBTN, COLOUR_GREY, WID_QS_CANCEL), SetMinimalSize(86, 12), SetFill(1, 1), SetDataTip(STR_BUTTON_CANCEL, STR_NULL),
