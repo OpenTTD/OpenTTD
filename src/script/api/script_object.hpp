@@ -245,20 +245,6 @@ protected:
 	static bool GetAllowDoCommand();
 
 	/**
-	 * Set if the script is running in calendar time or economy time mode.
-	 * Calendar time is used by OpenTTD for technology like vehicle introductions and expiration, and variable snowline. It can be sped up or slowed down by the player.
-	 * Economy time always runs at the same pace and handles things like cargo production, everything related to money, etc.
-	 * @param Calendar Should we use calendar time mode? (Set to false for economy time mode.)
-	 */
-	static void SetTimeMode(bool calendar);
-
-	/**
-	 * Check if the script is operating in calendar time mode, or in economy time mode. See SetTimeMode() for more information.
-	 * @return True if we are in calendar time mode, false if we are in economy time mode.
-	 */
-	static bool IsCalendarTimeMode();
-
-	/**
 	 * Set the current company to execute commands for or request
 	 *  information about.
 	 * @param company The new company.
