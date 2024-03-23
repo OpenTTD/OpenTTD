@@ -151,7 +151,6 @@ add_files(
     script_basestation.hpp
     script_bridge.hpp
     script_bridgelist.hpp
-    script_timemode.hpp
     script_cargo.hpp
     script_cargolist.hpp
     script_cargomonitor.hpp
@@ -226,7 +225,6 @@ add_files(
     script_basestation.cpp
     script_bridge.cpp
     script_bridgelist.cpp
-    script_timemode.cpp
     script_cargo.cpp
     script_cargolist.cpp
     script_cargomonitor.cpp

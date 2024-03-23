@@ -18,7 +18,6 @@
  * This version is not yet released. The following changes are not set in stone yet.
  *
  * API additions:
- * \li AITimeMode
  * \li AITown::ROAD_LAYOUT_RANDOM
  * \li AIVehicle::IsPrimaryVehicle
  * \li AITileList_StationCoverage
