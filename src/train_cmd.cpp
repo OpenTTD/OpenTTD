@@ -2180,7 +2180,7 @@ static FindDepotData FindClosestTrainDepot(Train *v, int max_distance)
 	}
 }
 
-ClosestDepot Train::FindClosestDepot()
+ClosestDepot Train::FindClosestDepot([[maybe_unused]] bool may_reverse)
 {
 	FindDepotData tfdd = FindClosestTrainDepot(this, 0);
 	if (tfdd.best_length == UINT_MAX) return ClosestDepot();

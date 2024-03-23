@@ -555,8 +555,16 @@ static int32_t NPFFindDepot(const AyStar *as, const OpenListNode *current)
 	AyStarUserData *user = (AyStarUserData *)as->user_data;
 	/* It's not worth caching the result with NPF_FLAG_IS_TARGET here as below,
 	 * since checking the cache not that much faster than the actual check */
-	return IsDepotTypeTile(current->path.node.tile, user->type) ?
-		AYSTAR_FOUND_END_NODE : AYSTAR_DONE;
+	if (user->type != TRANSPORT_WATER) {
+		return IsDepotTypeTile(current->path.node.tile, user->type) ?
+			AYSTAR_FOUND_END_NODE : AYSTAR_DONE;
+	} else {
+		/* The tile where the ship actually "enters" the depot is the north tile.
+		 * Ship depots are also valid water tracks for ships from any company,
+		 * unlike the other depot types. */
+		return (IsShipDepotTile(current->path.node.tile) && GetShipDepotPart(current->path.node.tile) == DEPOT_PART_NORTH && IsTileOwner(current->path.node.tile, user->owner)) ?
+			AYSTAR_FOUND_END_NODE : AYSTAR_DONE;
+	}
 }
 
 /** Find any safe and free tile. */
@@ -1187,6 +1195,19 @@ Trackdir NPFRoadVehicleChooseTrack(const RoadVehicle *v, TileIndex tile, DiagDir
 }
 
 /*** Ships ***/
+
+FindDepotData NPFShipFindNearestDepot(const Ship *v, int max_penalty)
+{
+	Trackdir trackdir = v->GetVehicleTrackdir();
+	Trackdir trackdir_rev = ReverseTrackdir(trackdir);
+
+	AyStarUserData user = { v->owner, TRANSPORT_WATER, RAILTYPES_NONE, ROADTYPES_NONE, 0 };
+	NPFFoundTargetData ftd = NPFRouteToDepotBreadthFirstTwoWay(v->tile, trackdir, false, v->tile, trackdir_rev, false, nullptr, &user, 0, max_penalty);
+	if (ftd.best_bird_dist != 0) return FindDepotData();
+
+	/* Found target */
+	return FindDepotData(ftd.node.tile, ftd.best_path_dist, NPFGetFlag(&ftd.node, NPF_FLAG_REVERSE));
+}
 
 Track NPFShipChooseTrack(const Ship *v, bool &path_found)
 {
