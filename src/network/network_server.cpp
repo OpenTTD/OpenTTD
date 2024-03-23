@@ -961,7 +961,8 @@ NetworkRecvStatus ServerNetworkGameSocketHandler::Receive_CLIENT_IDENTIFY(Packet
 	Debug(desync, 1, "client: {:08x}; {:02x}; {:02x}; {:02x}", TimerGameEconomy::date, TimerGameEconomy::date_fract, (int)ci->client_playas, (int)ci->index);
 
 	/* Make sure companies to which people try to join are not autocleaned */
-	if (Company::IsValidID(playas)) _network_company_states[playas].months_empty = 0;
+	Company *c = Company::GetIfValid(playas);
+	if (c != nullptr) c->months_empty = 0;
 
 	return this->SendNewGRFCheck();
 }
@@ -1643,37 +1644,37 @@ static void NetworkAutoCleanCompanies()
 	}
 
 	/* Go through all the companies */
-	for (const Company *c : Company::Iterate()) {
+	for (Company *c : Company::Iterate()) {
 		/* Skip the non-active once */
 		if (c->is_ai) continue;
 
 		if (!HasBit(has_clients, c->index)) {
 			/* The company is empty for one month more */
-			_network_company_states[c->index].months_empty++;
+			if (c->months_empty != std::numeric_limits<decltype(c->months_empty)>::max()) c->months_empty++;
 
 			/* Is the company empty for autoclean_unprotected-months, and is there no protection? */
-			if (_settings_client.network.autoclean_unprotected != 0 && _network_company_states[c->index].months_empty > _settings_client.network.autoclean_unprotected && _network_company_states[c->index].password.empty()) {
+			if (_settings_client.network.autoclean_unprotected != 0 && c->months_empty > _settings_client.network.autoclean_unprotected && _network_company_states[c->index].password.empty()) {
 				/* Shut the company down */
 				Command<CMD_COMPANY_CTRL>::Post(CCA_DELETE, c->index, CRR_AUTOCLEAN, INVALID_CLIENT_ID);
 				IConsolePrint(CC_INFO, "Auto-cleaned company #{} with no password.", c->index + 1);
 			}
 			/* Is the company empty for autoclean_protected-months, and there is a protection? */
-			if (_settings_client.network.autoclean_protected != 0 && _network_company_states[c->index].months_empty > _settings_client.network.autoclean_protected && !_network_company_states[c->index].password.empty()) {
+			if (_settings_client.network.autoclean_protected != 0 && c->months_empty > _settings_client.network.autoclean_protected && !_network_company_states[c->index].password.empty()) {
 				/* Unprotect the company */
 				_network_company_states[c->index].password.clear();
 				IConsolePrint(CC_INFO, "Auto-removed protection from company #{}.", c->index + 1);
-				_network_company_states[c->index].months_empty = 0;
+				c->months_empty = 0;
 				NetworkServerUpdateCompanyPassworded(c->index, false);
 			}
 			/* Is the company empty for autoclean_novehicles-months, and has no vehicles? */
-			if (_settings_client.network.autoclean_novehicles != 0 && _network_company_states[c->index].months_empty > _settings_client.network.autoclean_novehicles && !HasBit(has_vehicles, c->index)) {
+			if (_settings_client.network.autoclean_novehicles != 0 && c->months_empty > _settings_client.network.autoclean_novehicles && !HasBit(has_vehicles, c->index)) {
 				/* Shut the company down */
 				Command<CMD_COMPANY_CTRL>::Post(CCA_DELETE, c->index, CRR_AUTOCLEAN, INVALID_CLIENT_ID);
 				IConsolePrint(CC_INFO, "Auto-cleaned company #{} with no vehicles.", c->index + 1);
 			}
 		} else {
 			/* It is not empty, reset the date */
-			_network_company_states[c->index].months_empty = 0;
+			c->months_empty = 0;
 		}
 	}
 }
@@ -2266,7 +2267,6 @@ void NetworkServerNewCompany(const Company *c, NetworkClientInfo *ci)
 
 	if (!_network_server) return;
 
-	_network_company_states[c->index].months_empty = 0;
 	_network_company_states[c->index].password.clear();
 	NetworkServerUpdateCompanyPassworded(c->index, false);
 
