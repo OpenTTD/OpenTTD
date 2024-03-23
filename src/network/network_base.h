@@ -36,6 +36,8 @@ struct NetworkClientInfo : NetworkClientInfoPool::PoolItem<&_networkclientinfo_p
 	~NetworkClientInfo();
 
 	static NetworkClientInfo *GetByClientID(ClientID client_id);
+
+	bool CanJoinCompany(CompanyID company_id) const;
 };
 
 #endif /* NETWORK_BASE_H */
