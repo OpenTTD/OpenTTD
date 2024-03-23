@@ -165,10 +165,12 @@ bool NetworkAuthorizedKeys::Contains(std::string_view key) const
 /**
  * Add the given key to the authorized keys, when it is not already contained.
  * @param key The key to add.
- * @return \c true when the key was added, \c false when the key already existed.
+ * @return \c true when the key was added, \c false when the key already existed or the key was empty.
  */
 bool NetworkAuthorizedKeys::Add(std::string_view key)
 {
+	if (key.empty()) return false;
+
 	auto iter = FindKey(this, key);
 	if (iter != this->end()) return false;
 

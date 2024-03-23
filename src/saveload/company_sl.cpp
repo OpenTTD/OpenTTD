@@ -450,6 +450,8 @@ static const SaveLoad _company_desc[] = {
 	    SLE_VAR(CompanyProperties, president_name_2, SLE_UINT32),
 	SLE_CONDSSTR(CompanyProperties, president_name,  SLE_STR | SLF_ALLOW_CONTROL, SLV_84, SL_MAX_VERSION),
 
+	SLE_CONDVECTOR(CompanyProperties, allow_list, SLE_STR, SLV_COMPANY_ALLOW_LIST, SL_MAX_VERSION),
+
 	    SLE_VAR(CompanyProperties, face,            SLE_UINT32),
 
 	/* money was changed to a 64 bit field in savegame version 1. */

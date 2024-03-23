@@ -18,6 +18,7 @@
 
 /* The length of the hexadecimal representation of a X25519 key must fit in the key length. */
 static_assert(NETWORK_SECRET_KEY_LENGTH >= X25519_KEY_SIZE * 2 + 1);
+static_assert(NETWORK_PUBLIC_KEY_LENGTH >= X25519_KEY_SIZE * 2 + 1);
 
 class MockNetworkSocketHandler : public NetworkSocketHandler {
 public:

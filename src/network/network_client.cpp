@@ -608,6 +608,7 @@ NetworkRecvStatus ClientNetworkGameSocketHandler::Receive_SERVER_CLIENT_INFO(Pac
 	Debug(net, 9, "Client::Receive_SERVER_CLIENT_INFO(): client_id={}, playas={}", client_id, playas);
 
 	std::string name = p.Recv_string(NETWORK_NAME_LENGTH);
+	std::string public_key = p.Recv_string(NETWORK_PUBLIC_KEY_LENGTH);
 
 	if (this->status < STATUS_AUTHORIZED) return NETWORK_RECV_STATUS_MALFORMED_PACKET;
 	if (this->HasClientQuit()) return NETWORK_RECV_STATUS_CLIENT_QUIT;
@@ -632,6 +633,7 @@ NetworkRecvStatus ClientNetworkGameSocketHandler::Receive_SERVER_CLIENT_INFO(Pac
 
 		ci->client_playas = playas;
 		ci->client_name = name;
+		ci->public_key = public_key;
 
 		InvalidateWindowData(WC_CLIENT_LIST, 0);
 
@@ -651,6 +653,7 @@ NetworkRecvStatus ClientNetworkGameSocketHandler::Receive_SERVER_CLIENT_INFO(Pac
 	if (client_id == _network_own_client_id) this->SetInfo(ci);
 
 	ci->client_name = name;
+	ci->public_key = public_key;
 
 	InvalidateWindowData(WC_CLIENT_LIST, 0);
 
