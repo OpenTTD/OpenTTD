@@ -211,14 +211,14 @@ protected:
 	/**
 	 * The client tells the server about the identity of the client:
 	 * string  Name of the client (max NETWORK_NAME_LENGTH).
-	 * uint8_t ID of the company to play as (1..MAX_COMPANIES).
+	 * uint8_t ID of the company to play as (1..MAX_COMPANIES, or COMPANY_SPECTATOR).
 	 * @param p The packet that was just received.
 	 */
 	virtual NetworkRecvStatus Receive_CLIENT_IDENTIFY(Packet &p);
 
 	/**
 	 * Indication to the client that it needs to authenticate:
-	 * bool Whether to use the password in the key exchange.
+	 * uint8_t The \c NetworkAuthenticationMethod to use.
 	 * 32 * uint8_t Public key of the server.
 	 * 24 * uint8_t Nonce for the key exchange.
 	 * @param p The packet that was just received.
@@ -236,8 +236,8 @@ protected:
 	/**
 	 * Send the response to the authentication request:
 	 * 32 * uint8_t Public key of the client.
-	 *  8 * uint8_t Random message that got encoded and signed.
 	 * 16 * uint8_t Message authentication code.
+	 *  8 * uint8_t Random message that got encoded and signed.
 	 * @param p The packet that was just received.
 	 */
 	virtual NetworkRecvStatus Receive_CLIENT_AUTH_RESPONSE(Packet &p);
@@ -267,7 +267,6 @@ protected:
 
 	/**
 	 * Request the map from the server.
-	 * uint32_t  NewGRF version (release versions of OpenTTD only).
 	 * @param p The packet that was just received.
 	 */
 	virtual NetworkRecvStatus Receive_CLIENT_GETMAP(Packet &p);
