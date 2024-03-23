@@ -1,3 +1,16 @@
+14.0-RC3 (2024-03-23)
+------------------------------------------------------------------------
+Fix #12347: Crash attempting to find catchment tiles of a station with no catchment area (#12348)
+Fix #12319: Some SSE blitters were broken due to ODR violations (#12322)
+Fix #12302: Allow empty train engines to use an invalid cargo type (#12325)
+Fix #12305: Crash with large positive sprite x offset in engine preview window (#12313)
+Fix #12166: Crash when opening tram road stop build window (#12168)
+Fix #12092: Incorrect x-axis in cargo payment graph window (#12359)
+Fix: Crash when attempting to join a company while not joined (#12353)
+Change: Show unbunching action in timetable window (#12351)
+Change: [Windows] Switch to Microsoft Azure code signing certificate (#12292)
+
+
 14.0-RC2 (2024-03-16)
 ------------------------------------------------------------------------
 Update: Bump bundled OpenTTD TTF fonts to version v0.6 (#12276)
