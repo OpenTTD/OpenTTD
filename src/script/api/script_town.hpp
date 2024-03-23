@@ -48,7 +48,8 @@ public:
 		TOWN_ACTION_ADVERTISE_LARGE  = 2,
 
 		/**
-		 * Rebuild the roads of this town for 6 months.
+		 * Rebuild the roads of this town for 6 economy-months.
+		 * @see \ref ScriptEconomyTime
 		 */
 		TOWN_ACTION_ROAD_REBUILD     = 3,
 
@@ -58,12 +59,14 @@ public:
 		TOWN_ACTION_BUILD_STATUE     = 4,
 
 		/**
-		 * Fund the creation of extra buildings for 3 months.
+		 * Fund the creation of extra buildings for 3 economy-months.
+		 * @see \ref ScriptEconomyTime
 		 */
 		TOWN_ACTION_FUND_BUILDINGS   = 5,
 
 		/**
-		 * Buy exclusive rights for this town for 12 months.
+		 * Buy exclusive rights for this town for 12 economy-months.
+		 * @see \ref ScriptEconomyTime
 		 */
 		TOWN_ACTION_BUY_RIGHTS       = 6,
 
@@ -191,92 +194,100 @@ public:
 	static TileIndex GetLocation(TownID town_id);
 
 	/**
-	 * Get the total last month's production of the given cargo at a town.
+	 * Get the total last economy-month's production of the given cargo at a town.
 	 * @param town_id The index of the town.
 	 * @param cargo_id The index of the cargo.
 	 * @pre IsValidTown(town_id).
 	 * @pre ScriptCargo::IsValidCargo(cargo_id).
-	 * @return The last month's production of the given cargo for this town.
+	 * @return The last economy-month's production of the given cargo for this town.
+	 * @see \ref ScriptEconomyTime
 	 */
 	static SQInteger GetLastMonthProduction(TownID town_id, CargoID cargo_id);
 
 	/**
-	 * Get the total amount of cargo supplied from a town last month.
+	 * Get the total amount of cargo supplied from a town last economy-month.
 	 * @param town_id The index of the town.
 	 * @param cargo_id The index of the cargo.
 	 * @pre IsValidTown(town_id).
 	 * @pre ScriptCargo::IsValidCargo(cargo_id).
-	 * @return The amount of cargo supplied for transport from this town last month.
+	 * @return The amount of cargo supplied for transport from this town last economy-month.
+	 * @see \ref ScriptEconomyTime
 	 */
 	static SQInteger GetLastMonthSupplied(TownID town_id, CargoID cargo_id);
 
 	/**
-	 * Get the percentage of transported production of the given cargo at a town.
+	 * Get the percentage of transported production of the given cargo at a town last economy-month.
 	 * @param town_id The index of the town.
 	 * @param cargo_id The index of the cargo.
 	 * @pre IsValidTown(town_id).
 	 * @pre ScriptCargo::IsValidCargo(cargo_id).
-	 * @return The percentage of given cargo transported from this town last month.
+	 * @return The percentage of given cargo transported from this town last economy-month.
+	 * @see \ref ScriptEconomyTime
 	 */
 	static SQInteger GetLastMonthTransportedPercentage(TownID town_id, CargoID cargo_id);
 
 	/**
-	 * Get the total amount of cargo effects received by a town last month.
+	 * Get the total amount of cargo effects received by a town last economy-month.
 	 * @param town_id The index of the town.
 	 * @param towneffect_id The index of the cargo.
 	 * @pre IsValidTown(town_id).
 	 * @pre ScriptCargo::IsValidTownEffect(cargo_id).
-	 * @return The amount of cargo received by this town last month for this cargo effect.
+	 * @return The amount of cargo received by this town last economy-month for this cargo effect.
+	 * @see \ref ScriptEconomyTime
 	 */
 	static SQInteger GetLastMonthReceived(TownID town_id, ScriptCargo::TownEffect towneffect_id);
 
 	/**
-	 * Set the goal of a cargo for this town.
+	 * Set the goal of a cargo per economy-month for this town.
 	 * @param town_id The index of the town.
 	 * @param towneffect_id The index of the towneffect.
-	 * @param goal The new goal.
+	 * @param goal The new goal amount for cargo delivered per economy-month.
 	 *             The value will be clamped to 0 .. MAX(uint32_t).
 	 * @pre IsValidTown(town_id).
 	 * @pre ScriptCargo::IsValidTownEffect(towneffect_id).
 	 * @pre ScriptCompanyMode::IsDeity().
 	 * @return True if the action succeeded.
+	 * @see \ref ScriptEconomyTime
 	 * @api -ai
 	 */
 	static bool SetCargoGoal(TownID town_id, ScriptCargo::TownEffect towneffect_id, SQInteger goal);
 
 	/**
-	 * Get the amount of cargo that needs to be delivered (per TownEffect) for a
+	 * Get the amount of cargo per economy-month that needs to be delivered (per TownEffect) for a
 	 *  town to grow. All goals need to be reached before a town will grow.
 	 * @param town_id The index of the town.
 	 * @param towneffect_id The index of the towneffect.
 	 * @pre IsValidTown(town_id).
 	 * @pre ScriptCargo::IsValidTownEffect(towneffect_id).
-	 * @return The goal of the cargo.
+	 * @return The goal of the cargo (amount per economy-month).
 	 * @note Goals can change over time. For example with a changing snowline, or
 	 *  with a growing town.
+	 * @see \ref ScriptEconomyTime
 	 */
 	static SQInteger GetCargoGoal(TownID town_id, ScriptCargo::TownEffect towneffect_id);
 
 	/**
-	 * Set the amount of days between town growth.
+	 * Set the amount of economy-days between town growth.
 	 * @param town_id The index of the town.
-	 * @param days_between_town_growth The amount of days between town growth, TOWN_GROWTH_NONE or TOWN_GROWTH_NORMAL.
+	 * @param days_between_town_growth The amount of economy-days between town growth, TOWN_GROWTH_NONE or TOWN_GROWTH_NORMAL.
 	 * @pre IsValidTown(town_id).
 	 * @pre days_between_town_growth <= 880 || days_between_town_growth == TOWN_GROWTH_NONE || days_between_town_growth == TOWN_GROWTH_NORMAL.
 	 * @return True if the action succeeded.
 	 * @note Even when setting a growth rate, towns only grow when the conditions for growth (SetCargoCoal) are met,
 	 *       and the game settings (economy.town_growth_rate) allow town growth at all.
 	 * @note When changing the growth rate, the relative progress is preserved and scaled to the new rate.
+	 * @see \ref ScriptEconomyTime
 	 * @api -ai
 	 */
 	static bool SetGrowthRate(TownID town_id, SQInteger days_between_town_growth);
 
 	/**
-	 * Get the amount of days between town growth.
+	 * Get the amount of economy-days between town growth.
 	 * @param town_id The index of the town.
 	 * @pre IsValidTown(town_id).
-	 * @return Amount of days between town growth, or TOWN_GROWTH_NONE.
+	 * @return Amount of economy-days between town growth, or TOWN_GROWTH_NONE.
 	 * @note This function does not indicate when it will grow next. It only tells you the time between growths.
+	 * @see \ref ScriptEconomyTime
 	 */
 	static SQInteger GetGrowthRate(TownID town_id);
 
@@ -332,8 +343,9 @@ public:
 	 * Find out how long the town is undergoing road reconstructions.
 	 * @param town_id The town to check.
 	 * @pre IsValidTown(town_id).
-	 * @return The number of months the road reworks are still going to take.
+	 * @return The number of economy-months the road reworks are still going to take.
 	 *         The value 0 means that there are currently no road reworks.
+	 * @see \ref ScriptEconomyTime
 	 */
 	static SQInteger GetRoadReworkDuration(TownID town_id);
 
@@ -341,8 +353,9 @@ public:
 	 * Find out how long new buildings are still being funded in a town.
 	 * @param town_id The town to check.
 	 * @pre IsValidTown(town_id).
-	 * @return The number of months building construction is still funded.
+	 * @return The number of economy-months building construction is still funded.
 	 *         The value 0 means that there is currently no funding.
+	 * @see \ref ScriptEconomyTime
 	 */
 	static SQInteger GetFundBuildingsDuration(TownID town_id);
 
@@ -361,9 +374,10 @@ public:
 	 * Find out how long the town is under influence of the exclusive rights.
 	 * @param town_id The town to check.
 	 * @pre IsValidTown(town_id).
-	 * @return The number of months the exclusive rights hold.
+	 * @return The number of economy-months the exclusive rights hold.
 	 *         The value 0 means that there are currently no exclusive rights
 	 *         given out to anyone.
+	 * @see \ref ScriptEconomyTime
 	 */
 	static SQInteger GetExclusiveRightsDuration(TownID town_id);
 

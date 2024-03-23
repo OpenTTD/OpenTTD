@@ -265,18 +265,20 @@ public:
 	/**
 	 * Get the page date which is displayed at the top of each page.
 	 * @param story_page_id The story page to get the date of.
-	 * @return The date
+	 * @return The calendar-date
 	 * @pre IsValidStoryPage(story_page_id).
+	 * @see \ref ScriptCalendarTime
 	 */
 	static ScriptDate::Date GetDate(StoryPageID story_page_id);
 
 	/**
 	 * Update date of a story page. The date is shown in the top left of the page
 	 * @param story_page_id The story page to set the date for.
-	 * @param date Date to display at the top of story page or ScriptDate::DATE_INVALID to disable showing date on this page. (also, @see ScriptDate)
+	 * @param date Calendar-date to display at the top of story page or ScriptDate::DATE_INVALID to disable showing date on this page. (also, @see ScriptDate)
 	 * @return True if the action succeeded.
 	 * @pre ScriptCompanyMode::IsDeity().
 	 * @pre IsValidStoryPage(story_page_id).
+	 * @see \ref ScriptCalendarTime
 	 */
 	static bool SetDate(StoryPageID story_page_id, ScriptDate::Date date);
 
