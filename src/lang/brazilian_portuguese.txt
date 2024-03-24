@@ -483,12 +483,12 @@ STR_GRAPH_MENU_INCOME_GRAPH                                     :Gráfico de ren
 STR_GRAPH_MENU_DELIVERED_CARGO_GRAPH                            :Gráfico da carga entregada
 STR_GRAPH_MENU_PERFORMANCE_HISTORY_GRAPH                        :Gráfico do histórico de desempenho
 STR_GRAPH_MENU_COMPANY_VALUE_GRAPH                              :Gráfico de valor da empresa
-STR_GRAPH_MENU_CARGO_PAYMENT_RATES                              :Receitas por carga
+STR_GRAPH_MENU_CARGO_PAYMENT_RATES                              :Tarifas por carga
 
 # Company league menu
 STR_GRAPH_MENU_COMPANY_LEAGUE_TABLE                             :Tabela de classificação das empresas
-STR_GRAPH_MENU_DETAILED_PERFORMANCE_RATING                      :Classificação detalhada de desempenho
-STR_GRAPH_MENU_HIGHSCORE                                        :Tabela de classificações
+STR_GRAPH_MENU_DETAILED_PERFORMANCE_RATING                      :Avaliação detalhada de desempenho
+STR_GRAPH_MENU_HIGHSCORE                                        :Painel de classificação
 
 # Industry menu
 STR_INDUSTRY_MENU_INDUSTRY_DIRECTORY                            :Lista de indústrias
@@ -614,7 +614,7 @@ STR_GRAPH_COMPANY_VALUES_CAPTION                                :{WHITE}Gráfico
 
 STR_GRAPH_LAST_72_MINUTES_TIME_LABEL                            :{TINY_FONT}{BLACK}Últimos 72 minutos
 
-STR_GRAPH_CARGO_PAYMENT_RATES_CAPTION                           :{WHITE}Receitas por carga
+STR_GRAPH_CARGO_PAYMENT_RATES_CAPTION                           :{WHITE}Tarifas por Carga
 STR_GRAPH_CARGO_PAYMENT_RATES_DAYS                              :{TINY_FONT}{BLACK}Dias em trânsito
 STR_GRAPH_CARGO_PAYMENT_RATES_SECONDS                           :{TINY_FONT}{BLACK}Segundos em trânsito
 STR_GRAPH_CARGO_PAYMENT_RATES_TITLE                             :{TINY_FONT}{BLACK}Pagamento por entregar 10 unidades (ou 10 mil litros) de carga em uma distância de 20 quadrados
@@ -628,7 +628,7 @@ STR_GRAPH_CARGO_PAYMENT_CARGO                                   :{TINY_FONT}{BLA
 STR_GRAPH_PERFORMANCE_DETAIL_TOOLTIP                            :{BLACK}Mostrar avaliações detalhadas de desempenho
 
 # Graph key window
-STR_GRAPH_KEY_CAPTION                                           :{WHITE}Chave para gráficos da empresa
+STR_GRAPH_KEY_CAPTION                                           :{WHITE}Chave dos gráficos da empresa
 STR_GRAPH_KEY_COMPANY_SELECTION_TOOLTIP                         :{BLACK}Clique aqui para mostrar/ocultar empresa no gráfico
 
 # Company league window
@@ -646,7 +646,7 @@ STR_COMPANY_LEAGUE_PERFORMANCE_TITLE_PRESIDENT                  :Presidente
 STR_COMPANY_LEAGUE_PERFORMANCE_TITLE_TYCOON                     :Magnata
 
 # Performance detail window
-STR_PERFORMANCE_DETAIL                                          :{WHITE}Classificação Detalhada de Desempenho
+STR_PERFORMANCE_DETAIL                                          :{WHITE}Avaliação Detalhada de Desempenho
 STR_PERFORMANCE_DETAIL_KEY                                      :{BLACK}Detalhes
 STR_PERFORMANCE_DETAIL_AMOUNT_CURRENCY                          :{BLACK}({CURRENCY_SHORT}/{CURRENCY_SHORT})
 STR_PERFORMANCE_DETAIL_AMOUNT_INT                               :{BLACK}({COMMA}/{COMMA})
@@ -798,8 +798,8 @@ STR_SMALLMAP_INDUSTRY                                           :{TINY_FONT}{STR
 STR_SMALLMAP_LINKSTATS                                          :{TINY_FONT}{STRING}
 STR_SMALLMAP_COMPANY                                            :{TINY_FONT}{COMPANY}
 STR_SMALLMAP_TOWN                                               :{TINY_FONT}{WHITE}{TOWN}
-STR_SMALLMAP_DISABLE_ALL                                        :{BLACK}Desabilitar tudo
-STR_SMALLMAP_ENABLE_ALL                                         :{BLACK}Habilitar tudo
+STR_SMALLMAP_DISABLE_ALL                                        :{BLACK}Desativar tudo
+STR_SMALLMAP_ENABLE_ALL                                         :{BLACK}Ativar tudo
 STR_SMALLMAP_SHOW_HEIGHT                                        :{BLACK}Mostrar altitudes
 STR_SMALLMAP_TOOLTIP_DISABLE_ALL_INDUSTRIES                     :{BLACK}Não mostrar indústrias no mapa
 STR_SMALLMAP_TOOLTIP_ENABLE_ALL_INDUSTRIES                      :{BLACK}Mostrar todas as indústrias no mapa
@@ -856,7 +856,7 @@ STR_NEWS_COMPANY_MERGER_TITLE                                   :{BIG_FONT}{BLAC
 STR_NEWS_COMPANY_MERGER_DESCRIPTION                             :{BIG_FONT}{BLACK}{STRING} foi vendida para {STRING} por {CURRENCY_LONG}!
 STR_NEWS_COMPANY_BANKRUPT_TITLE                                 :{BIG_FONT}{BLACK}Falência!
 STR_NEWS_COMPANY_BANKRUPT_DESCRIPTION                           :{BIG_FONT}{BLACK}{STRING} foi fechada pelos credores e todos os seus bens foram vendidos!
-STR_NEWS_COMPANY_LAUNCH_TITLE                                   :{BIG_FONT}{BLACK}Lançada nova empresa de transportes!
+STR_NEWS_COMPANY_LAUNCH_TITLE                                   :{BIG_FONT}{BLACK}Nova empresa de transportes!
 STR_NEWS_COMPANY_LAUNCH_DESCRIPTION                             :{BIG_FONT}{BLACK}{STRING} inicia construção perto de {TOWN}!
 STR_NEWS_MERGER_TAKEOVER_TITLE                                  :{BIG_FONT}{BLACK}{STRING} foi comprada por {STRING} por um valor não revelado!
 STR_PRESIDENT_NAME_MANAGER                                      :{BLACK}{PRESIDENT_NAME}{}(Gerente)
@@ -1198,8 +1198,8 @@ STR_TERRAIN_TYPE_FLAT                                           :Plano
 STR_TERRAIN_TYPE_HILLY                                          :Acidentado
 STR_TERRAIN_TYPE_MOUNTAINOUS                                    :Montanhoso
 STR_TERRAIN_TYPE_ALPINIST                                       :Alpinismo
-STR_TERRAIN_TYPE_CUSTOM                                         :Altitude personalizada
-STR_TERRAIN_TYPE_CUSTOM_VALUE                                   :Altitude personalizada ({NUM})
+STR_TERRAIN_TYPE_CUSTOM                                         :Altura personalizada
+STR_TERRAIN_TYPE_CUSTOM_VALUE                                   :Altura personalizada ({NUM})
 
 ###length 4
 STR_CITY_APPROVAL_LENIENT                                       :Leniente
@@ -1556,7 +1556,7 @@ STR_CONFIG_SETTING_LAND_GENERATOR_ORIGINAL                      :Original
 STR_CONFIG_SETTING_LAND_GENERATOR_TERRA_GENESIS                 :TerraGenesis
 
 STR_CONFIG_SETTING_TERRAIN_TYPE                                 :Tipo de terreno: {STRING}
-STR_CONFIG_SETTING_TERRAIN_TYPE_HELPTEXT                        :Escolher a altitude das colinas e montanhas da paisagem
+STR_CONFIG_SETTING_TERRAIN_TYPE_HELPTEXT                        :Escolher a altura das colinas e montanhas da paisagem
 
 STR_CONFIG_SETTING_INDUSTRY_DENSITY                             :Densidade de indústrias: {STRING}
 STR_CONFIG_SETTING_INDUSTRY_DENSITY_HELPTEXT                    :Definir quantas indústrias devem ser geradas e que nível deve ser mantido durante o jogo
@@ -2177,13 +2177,13 @@ STR_INTRO_CAPTION                                               :{WHITE}OpenTTD 
 
 STR_INTRO_NEW_GAME                                              :{BLACK}Novo Jogo
 STR_INTRO_LOAD_GAME                                             :{BLACK}Abrir Jogo
-STR_INTRO_PLAY_SCENARIO                                         :{BLACK}Jogar em Cenário
-STR_INTRO_PLAY_HEIGHTMAP                                        :{BLACK}Jogar em Mapa de Altitudes
+STR_INTRO_PLAY_SCENARIO                                         :{BLACK}Jogar Cenário
+STR_INTRO_PLAY_HEIGHTMAP                                        :{BLACK}Jogar Mapa de Altitudes
 STR_INTRO_SCENARIO_EDITOR                                       :{BLACK}Editor de Cenário
 STR_INTRO_MULTIPLAYER                                           :{BLACK}Multijogador
 
 STR_INTRO_GAME_OPTIONS                                          :{BLACK}Opções de Jogo
-STR_INTRO_HIGHSCORE                                             :{BLACK}Tabela de Classificações
+STR_INTRO_HIGHSCORE                                             :{BLACK}Painel de Classificação
 STR_INTRO_HELP                                                  :{BLACK}Ajuda & Manuais
 STR_INTRO_CONFIG_SETTINGS_TREE                                  :{BLACK}Configurações
 STR_INTRO_NEWGRF_SETTINGS                                       :{BLACK}Configurações de NewGRF
@@ -2205,7 +2205,7 @@ STR_INTRO_TOOLTIP_SUB_TROPICAL_LANDSCAPE                        :{BLACK}Selecion
 STR_INTRO_TOOLTIP_TOYLAND_LANDSCAPE                             :{BLACK}Selecionar paisagem 'Terra dos brinquedos'
 
 STR_INTRO_TOOLTIP_GAME_OPTIONS                                  :{BLACK}Abrir opções de jogo
-STR_INTRO_TOOLTIP_HIGHSCORE                                     :{BLACK}Abrir tabela de classificações
+STR_INTRO_TOOLTIP_HIGHSCORE                                     :{BLACK}Abrir tabela de classificação
 STR_INTRO_TOOLTIP_HELP                                          :{BLACK}Acessar a documentação e recursos online
 STR_INTRO_TOOLTIP_CONFIG_SETTINGS_TREE                          :{BLACK}Abrir configurações
 STR_INTRO_TOOLTIP_NEWGRF_SETTINGS                               :{BLACK}Abrir configurações de NewGRF
@@ -2249,7 +2249,7 @@ STR_CHEAT_EXTRA_DYNAMITE                                        :{LTBLUE}Escavad
 STR_CHEAT_CROSSINGTUNNELS                                       :{LTBLUE}Os túneis podem se cruzar: {ORANGE}{STRING}
 STR_CHEAT_NO_JETCRASH                                           :{LTBLUE}Aeronaves a jato não irão se acidentar (frequentemente) em aeroportos pequenos: {ORANGE}{STRING}
 STR_CHEAT_EDIT_MAX_HL                                           :{LTBLUE}Editar a altitude máxima do mapa: {ORANGE}{NUM}
-STR_CHEAT_EDIT_MAX_HL_QUERY_CAPT                                :{WHITE}Editar a altitude máxima das montanhas no mapa
+STR_CHEAT_EDIT_MAX_HL_QUERY_CAPT                                :{WHITE}Editar a altura máxima das montanhas no mapa
 STR_CHEAT_CHANGE_DATE                                           :{LTBLUE}Alterar data: {ORANGE}{DATE_SHORT}
 STR_CHEAT_CHANGE_DATE_QUERY_CAPT                                :{WHITE}Alterar o ano atual
 STR_CHEAT_SETUP_PROD                                            :{LTBLUE}Permitir modificar os valores de produção: {ORANGE}{STRING}
@@ -2755,9 +2755,9 @@ STR_LINKGRAPH_LEGEND_SATURATED                                  :{TINY_FONT}{BLA
 STR_LINKGRAPH_LEGEND_OVERLOADED                                 :{TINY_FONT}{BLACK}sobrecarregado
 
 # Linkgraph tooltip
-STR_LINKGRAPH_STATS_TOOLTIP_MONTH                               :{BLACK}{CARGO_LONG} para ser transportado por mês de {STATION} para {STATION} ({COMMA}% da capacidade){STRING}
-STR_LINKGRAPH_STATS_TOOLTIP_MINUTE                              :{BLACK}{CARGO_LONG} para ser transportado por minuto de {STATION} para {STATION} ({COMMA}% da capacidade){STRING}
-STR_LINKGRAPH_STATS_TOOLTIP_RETURN_EXTENSION                    :{}{CARGO_LONG} para ser transportado de volta ({COMMA}% da capacidade)
+STR_LINKGRAPH_STATS_TOOLTIP_MONTH                               :{BLACK}{CARGO_LONG} para se transportar, por mês, de {STATION} para {STATION} ({COMMA}% da capacidade){STRING}
+STR_LINKGRAPH_STATS_TOOLTIP_MINUTE                              :{BLACK}{CARGO_LONG} para se transportar, por minuto, de {STATION} para {STATION} ({COMMA}% da capacidade){STRING}
+STR_LINKGRAPH_STATS_TOOLTIP_RETURN_EXTENSION                    :{}{CARGO_LONG} para se transportar de volta ({COMMA}% da capacidade)
 STR_LINKGRAPH_STATS_TOOLTIP_TIME_EXTENSION                      :{}Tempo médio de viagem: {UNITS_DAYS_OR_SECONDS}
 
 # Base for station construction window(s)
@@ -3368,7 +3368,7 @@ STR_MAPGEN_HEIGHTMAP_SIZE_LABEL                                 :{BLACK}Tamanho:
 STR_MAPGEN_HEIGHTMAP_SIZE_LABEL_TOOLTIP                         :{BLACK}O tamanho da imagem original do mapa de altitudes. Para obter melhores resultados, cada lado deve corresponder a um comprimento de lado de mapa disponível no OpenTTD, tais como 256, 512, 1024, etc.
 STR_MAPGEN_HEIGHTMAP_SIZE                                       :{ORANGE}{NUM} x {NUM}
 
-STR_MAPGEN_TERRAIN_TYPE_QUERY_CAPT                              :{WHITE}Altitude desejada para o pico
+STR_MAPGEN_TERRAIN_TYPE_QUERY_CAPT                              :{WHITE}Altura do pico mais elevado
 STR_MAPGEN_HEIGHTMAP_HEIGHT_QUERY_CAPT                          :{WHITE}Pico mais elevado
 STR_MAPGEN_SNOW_COVERAGE_QUERY_CAPT                             :{WHITE}Cobertura com neve (em %)
 STR_MAPGEN_DESERT_COVERAGE_QUERY_CAPT                           :{WHITE}Cobertura com deserto (em %)
@@ -3595,7 +3595,7 @@ STR_NEWGRF_SCAN_ARCHIVES                                        :Procurando por 
 # Sign list window
 STR_SIGN_LIST_CAPTION                                           :{WHITE}Lista de Placas - {COMMA} Placa{P "" s}
 STR_SIGN_LIST_MATCH_CASE                                        :{BLACK}Diferenciar maiúsculas/minúsculas
-STR_SIGN_LIST_MATCH_CASE_TOOLTIP                                :{BLACK}Ativar/Desativar correspondência de maiúsculas/minúsculas quando comparar os nomes das placas com a sequência de caracteres fornecida
+STR_SIGN_LIST_MATCH_CASE_TOOLTIP                                :{BLACK}Ativar/Desativar correspondência de maiúsculas/minúsculas quando comparar os nomes das placas com a palavra-chave fornecida
 
 # Sign window
 STR_EDIT_SIGN_CAPTION                                           :{WHITE}Editar texto da placa
@@ -3643,7 +3643,7 @@ STR_TOWN_VIEW_RENAME_TOWN_BUTTON                                :Renomear Locali
 
 # Town local authority window
 STR_LOCAL_AUTHORITY_CAPTION                                     :{WHITE}Autoridade local de {TOWN}
-STR_LOCAL_AUTHORITY_ZONE                                        :{BLACK}Área
+STR_LOCAL_AUTHORITY_ZONE                                        :{BLACK}Região
 STR_LOCAL_AUTHORITY_ZONE_TOOLTIP                                :{BLACK}Mostrar a região dentro dos limites da autoridade local
 STR_LOCAL_AUTHORITY_COMPANY_RATINGS                             :{BLACK}Classificações das empresas de transporte:
 STR_LOCAL_AUTHORITY_COMPANY_RATING                              :{YELLOW}{COMPANY} {COMPANY_NUM}: {ORANGE}{STRING}
@@ -4450,7 +4450,7 @@ STR_VEHICLE_INFO_CAPACITY_CAPACITY                              :{BLACK}Capacida
 STR_VEHICLE_INFO_FEEDER_CARGO_VALUE                             :{BLACK}Créditos de Transferência: {LTBLUE}{CURRENCY_LONG}
 
 STR_VEHICLE_DETAILS_SERVICING_INTERVAL_DAYS                     :{BLACK}Intervalo de manutenção: {LTBLUE}{COMMA}{NBSP}dias{BLACK}   {STRING}
-STR_VEHICLE_DETAILS_SERVICING_INTERVAL_MINUTES                  :{BLACK}Intervalo de manutenção: {LTBLUE}{COMMA}{NBSP}minutos{BLACK}   {STRING}
+STR_VEHICLE_DETAILS_SERVICING_INTERVAL_MINUTES                  :{BLACK}Intervalo de manutenção: {LTBLUE}{COMMA}{NBSP}minuto{P "" s}{BLACK}   {STRING}
 STR_VEHICLE_DETAILS_SERVICING_INTERVAL_PERCENT                  :{BLACK}Intervalo de manutenção: {LTBLUE}{COMMA}%{BLACK}   {STRING}
 STR_VEHICLE_DETAILS_LAST_SERVICE_DATE                           :Última manutenção: {LTBLUE}{DATE_LONG}
 STR_VEHICLE_DETAILS_LAST_SERVICE_MINUTES_AGO                    :Última manutenção: {LTBLUE}{NUM} minuto{P "" s} atrás
@@ -4592,14 +4592,14 @@ STR_ORDER_CONDITIONAL_MAX_RELIABILITY                           :Confiabilidade 
 ###next-name-looks-similar
 
 STR_ORDER_CONDITIONAL_COMPARATOR_TOOLTIP                        :{BLACK}Como comparar os dados do veículo com o valor passado
-STR_ORDER_CONDITIONAL_COMPARATOR_EQUALS                         :é igual a
-STR_ORDER_CONDITIONAL_COMPARATOR_NOT_EQUALS                     :é diferente de
-STR_ORDER_CONDITIONAL_COMPARATOR_LESS_THAN                      :é menor que
-STR_ORDER_CONDITIONAL_COMPARATOR_LESS_EQUALS                    :é menor que ou igual a
-STR_ORDER_CONDITIONAL_COMPARATOR_MORE_THAN                      :é maior que
-STR_ORDER_CONDITIONAL_COMPARATOR_MORE_EQUALS                    :é maior que ou igual a
-STR_ORDER_CONDITIONAL_COMPARATOR_IS_TRUE                        :é verdadeiro
-STR_ORDER_CONDITIONAL_COMPARATOR_IS_FALSE                       :é falso
+STR_ORDER_CONDITIONAL_COMPARATOR_EQUALS                         :for igual a
+STR_ORDER_CONDITIONAL_COMPARATOR_NOT_EQUALS                     :for diferente de
+STR_ORDER_CONDITIONAL_COMPARATOR_LESS_THAN                      :for menor que
+STR_ORDER_CONDITIONAL_COMPARATOR_LESS_EQUALS                    :for menor que ou igual a
+STR_ORDER_CONDITIONAL_COMPARATOR_MORE_THAN                      :for maior que
+STR_ORDER_CONDITIONAL_COMPARATOR_MORE_EQUALS                    :for maior que ou igual a
+STR_ORDER_CONDITIONAL_COMPARATOR_IS_TRUE                        :for verdadeiro
+STR_ORDER_CONDITIONAL_COMPARATOR_IS_FALSE                       :for falso
 
 STR_ORDER_CONDITIONAL_VALUE_TOOLTIP                             :{BLACK}O valor para comparar com os dados do veículo
 STR_ORDER_CONDITIONAL_VALUE_CAPT                                :{WHITE}Digitar um valor para comparar
@@ -4821,7 +4821,7 @@ STR_AI_CONFIG_CONFIGURE_TOOLTIP                                 :{BLACK}Configur
 # Available AIs window
 STR_AI_LIST_CAPTION                                             :{WHITE}{STRING} Disponíveis
 STR_AI_LIST_CAPTION_AI                                          :IAs
-STR_AI_LIST_CAPTION_GAMESCRIPT                                  :Scripts de jogo
+STR_AI_LIST_CAPTION_GAMESCRIPT                                  :Scripts de Jogo
 STR_AI_LIST_TOOLTIP                                             :{BLACK}Clique para selecionar um script
 
 STR_AI_LIST_AUTHOR                                              :{LTBLUE}Autor: {ORANGE}{STRING}
@@ -4856,7 +4856,7 @@ STR_TEXTFILE_JUMPLIST_TOOLTIP                                   :{BLACK}Acesso r
 STR_TEXTFILE_JUMPLIST_ITEM                                      :{WHITE}{STRING}
 STR_TEXTFILE_NAVBACK_TOOLTIP                                    :{BLACK}Retornar no histórico de navegação
 STR_TEXTFILE_NAVFORWARD_TOOLTIP                                 :{BLACK}Avançar no histórico de navegação
-STR_TEXTFILE_WRAP_TEXT                                          :{WHITE}Quebrar linhas do texto
+STR_TEXTFILE_WRAP_TEXT                                          :{WHITE}Quebrar linhas
 STR_TEXTFILE_WRAP_TEXT_TOOLTIP                                  :{BLACK}Ajustar o comprimento das linhas à largura da janela para facilitar a leitura do texto
 STR_TEXTFILE_VIEW_README                                        :{BLACK}Leia-me
 STR_TEXTFILE_VIEW_README_TOOLTIP                                :Ver o arquivo Leia-me para este conteúdo
@@ -4865,7 +4865,7 @@ STR_TEXTFILE_VIEW_CHANGELOG_TOOLTIP                             :Ver o registro 
 STR_TEXTFILE_VIEW_LICENCE                                       :{BLACK}Licença
 STR_TEXTFILE_VIEW_LICENCE_TOOLTIP                               :Ver a licença para este conteúdo
 ###length 5
-STR_TEXTFILE_README_CAPTION                                     :{WHITE}Leia-me {STRING} de {STRING}
+STR_TEXTFILE_README_CAPTION                                     :{WHITE}Leia-me de {STRING} de {STRING}
 STR_TEXTFILE_CHANGELOG_CAPTION                                  :{WHITE}Registro de modificações em {STRING} de {STRING}
 STR_TEXTFILE_LICENCE_CAPTION                                    :{WHITE}Licença de {STRING} de {STRING}
 STR_TEXTFILE_SURVEY_RESULT_CAPTION                              :{WHITE}Pré-visualização do resultado da pesquisa

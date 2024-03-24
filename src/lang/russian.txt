@@ -4636,10 +4636,10 @@ STR_VEHICLE_INFO_CAPACITY_CAPACITY                              :{BLACK}Ёмко
 STR_VEHICLE_INFO_FEEDER_CARGO_VALUE                             :{BLACK}Выручка перевозки: {LTBLUE}{CURRENCY_LONG}
 
 STR_VEHICLE_DETAILS_SERVICING_INTERVAL_DAYS                     :{BLACK}ТО каждые {LTBLUE}{COMMA}{NBSP}дней{BLACK}. {STRING}
-STR_VEHICLE_DETAILS_SERVICING_INTERVAL_MINUTES                  :{BLACK}ТО каждые {LTBLUE}{COMMA}{NBSP}минут{BLACK}. {STRING}
+STR_VEHICLE_DETAILS_SERVICING_INTERVAL_MINUTES                  :{BLACK}ТО кажд{P 0 ую ые ые} {LTBLUE}{COMMA}{NBSP}минут{P у ы ""}{BLACK}. {STRING}
 STR_VEHICLE_DETAILS_SERVICING_INTERVAL_PERCENT                  :{BLACK}ТО при сниж. на {LTBLUE}{COMMA}%{BLACK}. {STRING}
 STR_VEHICLE_DETAILS_LAST_SERVICE_DATE                           :ТО: {LTBLUE}{DATE_LONG}
-STR_VEHICLE_DETAILS_LAST_SERVICE_MINUTES_AGO                    :ТО: {LTBLUE}{NUM}{NBSP}мин. назад
+STR_VEHICLE_DETAILS_LAST_SERVICE_MINUTES_AGO                    :ТО: {LTBLUE}{NUM} мин. назад
 STR_VEHICLE_DETAILS_INCREASE_SERVICING_INTERVAL_TOOLTIP_DAYS    :{BLACK}Увеличить интервал ТО на 10{NBSP}дней. Ctrl+щелчок{NBSP}- увеличить на 5{NBSP}дней.
 STR_VEHICLE_DETAILS_INCREASE_SERVICING_INTERVAL_TOOLTIP_MINUTES :{BLACK}Увеличить интервал ТО на 5{NBSP}минут. Ctrl+щелчок{NBSP}- увеличить на 1{NBSP}минуту.
 STR_VEHICLE_DETAILS_INCREASE_SERVICING_INTERVAL_TOOLTIP_PERCENT :{BLACK}Увеличить интервал ТО на 10%. Ctrl+щелчок{NBSP}- увеличить на 5%.
@@ -5459,7 +5459,7 @@ STR_ERROR_CAN_T_SELL_SHIP                                       :{WHITE}Нево
 STR_ERROR_CAN_T_SELL_AIRCRAFT                                   :{WHITE}Невозможно продать самолёт...
 
 STR_ERROR_TOO_MANY_VEHICLES_IN_GAME                             :{WHITE}Слишком много транспорта в игре
-STR_ERROR_CAN_T_CHANGE_SERVICING                                :{WHITE}Невозможно изменить частоту тех. обслуживания...
+STR_ERROR_CAN_T_CHANGE_SERVICING                                :{WHITE}Невозможно изменить частоту технического обслуживания...
 
 STR_ERROR_VEHICLE_IS_DESTROYED                                  :{WHITE}... транспортное средство уничтожено
 

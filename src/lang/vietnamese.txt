@@ -4449,7 +4449,7 @@ STR_VEHICLE_INFO_CAPACITY_CAPACITY                              :{BLACK}Sức ch
 STR_VEHICLE_INFO_FEEDER_CARGO_VALUE                             :{BLACK}Cước trung chuyển: {LTBLUE}{CURRENCY_LONG}
 
 STR_VEHICLE_DETAILS_SERVICING_INTERVAL_DAYS                     :{BLACK}Tần suất bảo trì: {LTBLUE}{COMMA}{NBSP}ngày{BLACK} {STRING}
-STR_VEHICLE_DETAILS_SERVICING_INTERVAL_MINUTES                  :{BLACK}Tần suất phục vụ: {LTBLUE}{COMMA}{NBSP}phút{BLACK}   {STRING}
+STR_VEHICLE_DETAILS_SERVICING_INTERVAL_MINUTES                  :{BLACK}Tần suất phục vụ: {LTBLUE}{COMMA}{NBSP}phút{BLACK} {STRING}
 STR_VEHICLE_DETAILS_SERVICING_INTERVAL_PERCENT                  :{BLACK}Tần suất bảo trì: {LTBLUE}{COMMA}%{BLACK} {STRING}
 STR_VEHICLE_DETAILS_LAST_SERVICE_DATE                           :Lần bảo trì gần nhất: {LTBLUE}{DATE_LONG}
 STR_VEHICLE_DETAILS_LAST_SERVICE_MINUTES_AGO                    :Lần bảo trì gần nhất: {LTBLUE}{NUM} phút trước

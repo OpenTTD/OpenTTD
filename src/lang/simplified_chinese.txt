@@ -1359,7 +1359,7 @@ STR_CONFIG_SETTING_ROAD_VEHICLE_SLOPE_STEEPNESS                 :汽车斜坡坡
 STR_CONFIG_SETTING_ROAD_VEHICLE_SLOPE_STEEPNESS_HELPTEXT        :设置对汽车而言，一格斜坡的坡度大小。数值越高，坡度越大，汽车越难爬上斜坡。
 
 STR_CONFIG_SETTING_FORBID_90_DEG                                :禁止列车直角转向：{STRING}
-STR_CONFIG_SETTING_FORBID_90_DEG_HELPTEXT                       :当相邻的两个方块上有一条水平轨道和一条垂直轨道相接时，就会形成一个90度的转角，火车在穿越此方块边界时将转弯90度，而不是像其他形式的轨道转弯时形成的45度转角。如果打开此选项，那么火车将无法在这样的转角转弯
+STR_CONFIG_SETTING_FORBID_90_DEG_HELPTEXT                       :常见的转角均为 45 度，而相邻的两个方块上互相垂直的两条轨道相接会形成一个 90 度弯，从而使列车在穿越两方块边界时进行 90 度转向。如启用此设定，所有列车均不会进行 90 度转向。
 
 STR_CONFIG_SETTING_DISTANT_JOIN_STATIONS                        :允许非毗邻站台合并：{STRING}
 STR_CONFIG_SETTING_DISTANT_JOIN_STATIONS_HELPTEXT               :启用时允许玩家用 <Ctrl> 键操作以合并不相邻的站台与车站。
@@ -1501,7 +1501,7 @@ STR_CONFIG_SETTING_TIMEKEEPING_UNITS_CALENDAR                   :日历
 STR_CONFIG_SETTING_TIMEKEEPING_UNITS_WALLCLOCK                  :挂钟
 
 STR_CONFIG_SETTING_MINUTES_PER_YEAR                             :一年分钟数：{STRING}
-STR_CONFIG_SETTING_MINUTES_PER_YEAR_HELPTEXT                    :选择游戏内一自然年的现实时间长度，默认为12分钟。设置为0则日期不会变化。此设定不会影响游戏的经济模拟系统，而且仅在启用挂钟计时模式时生效
+STR_CONFIG_SETTING_MINUTES_PER_YEAR_HELPTEXT                    :选择在挂钟模式下一年所对应的现实时间长度。默认为 12 分钟。设置为 0 则日期不会变化。此设定不会影响游戏的经济模拟系统，而且仅在启用挂钟计时模式时生效
 
 STR_CONFIG_SETTING_MINUTES_PER_YEAR_VALUE                       :{NUM}
 ###setting-zero-is-special
@@ -1529,7 +1529,7 @@ STR_CONFIG_SETTING_ERRMSG_DURATION                              :错误信息持
 STR_CONFIG_SETTING_ERRMSG_DURATION_HELPTEXT                     :红色窗口显示错误信息的持续时间，在这个时间内一些紧急的错误信息不会自动关闭，必须手动关闭
 
 STR_CONFIG_SETTING_HOVER_DELAY                                  :显示提示信息：{STRING}
-STR_CONFIG_SETTING_HOVER_DELAY_HELPTEXT                         :此设置决定鼠标停留在图标、按键或功能时显示提示信息的时间。如果此设置为 0，您就必须按鼠标右键来显示图标、按键或功能的提示信息
+STR_CONFIG_SETTING_HOVER_DELAY_HELPTEXT                         :设定将鼠标悬停在某些按钮上时显示工具使用提示前的延迟时间。选项设置为 0 时则必须按鼠标右键以显示工具提示
 STR_CONFIG_SETTING_HOVER_DELAY_VALUE                            :停留 {COMMA} 毫秒
 ###setting-zero-is-special
 STR_CONFIG_SETTING_HOVER_DELAY_DISABLED                         :右键点击
@@ -1575,7 +1575,7 @@ STR_CONFIG_SETTING_DESERT_COVERAGE_HELPTEXT                     :控制热带气
 STR_CONFIG_SETTING_DESERT_COVERAGE_VALUE                        :{NUM}%
 
 STR_CONFIG_SETTING_ROUGHNESS_OF_TERRAIN                         :地面粗糙度：{STRING}
-STR_CONFIG_SETTING_ROUGHNESS_OF_TERRAIN_HELPTEXT                :选择在地图上的山丘密度和形状。光滑的地形会包含较少且较为广阔的山丘；粗糙的地形会包含更多，但是更小一些的山丘
+STR_CONFIG_SETTING_ROUGHNESS_OF_TERRAIN_HELPTEXT                :选择在地图上的山丘密度和形态。光滑的地形会包含较少且较为广阔的山丘；粗糙的地形则会包含更多且更小的山丘
 ###length 4
 STR_CONFIG_SETTING_ROUGHNESS_OF_TERRAIN_VERY_SMOOTH             :非常光滑
 STR_CONFIG_SETTING_ROUGHNESS_OF_TERRAIN_SMOOTH                  :光滑
@@ -1754,7 +1754,7 @@ STR_CONFIG_SETTING_AUTO_REMOVE_SIGNALS                          :建造铁路时
 STR_CONFIG_SETTING_AUTO_REMOVE_SIGNALS_HELPTEXT                 :建造铁路时自动移除路过的信号灯。注意，这可能导致火车事故。
 
 STR_CONFIG_SETTING_FAST_FORWARD_SPEED_LIMIT                     :快进速度上限：{STRING}
-STR_CONFIG_SETTING_FAST_FORWARD_SPEED_LIMIT_HELPTEXT            :限制快进时的最大速度。0 = 无限制（即电脑性能允许的最快速度）。低于 100% 的值将使游戏变慢。上限取决于您计算机的配置，并可能随着游戏情况浮动
+STR_CONFIG_SETTING_FAST_FORWARD_SPEED_LIMIT_HELPTEXT            :限制快进时的最大速度。0 = 无限制（即电脑性能允许的最快速度）。低于 100% 的值将使游戏变慢。游戏速度上限取决于计算机的配置，并可能随游戏当前状态浮动
 STR_CONFIG_SETTING_FAST_FORWARD_SPEED_LIMIT_VAL                 :{NUM}% 正常游戏速度
 ###setting-zero-is-special
 STR_CONFIG_SETTING_FAST_FORWARD_SPEED_LIMIT_ZERO                :无限制（在您计算机允许的范围内）
@@ -1966,7 +1966,7 @@ STR_CONFIG_SETTING_TOWN_FOUNDING_ALLOWED                        :允许
 STR_CONFIG_SETTING_TOWN_FOUNDING_ALLOWED_CUSTOM_LAYOUT          :允许，自定义城镇布局
 
 STR_CONFIG_SETTING_TOWN_CARGOGENMODE                            :城镇货物生成：{STRING}
-STR_CONFIG_SETTING_TOWN_CARGOGENMODE_HELPTEXT                   :城镇房屋的客货产出与人口的关系。{}平方增长：两倍大小的城镇生产四倍的旅客。{}线性增长：两倍大小的城镇生产两倍的旅客
+STR_CONFIG_SETTING_TOWN_CARGOGENMODE_HELPTEXT                   :城镇建筑的客货产出与人口的关系。{}平方增长：两倍大小的城镇生产四倍的旅客。{}线性增长：两倍大小的城镇生产两倍的旅客
 ###length 2
 STR_CONFIG_SETTING_TOWN_CARGOGENMODE_ORIGINAL                   :四倍（原版）
 STR_CONFIG_SETTING_TOWN_CARGOGENMODE_BITCOUNT                   :线性
@@ -2574,7 +2574,7 @@ STR_NETWORK_ERROR_BAD_PLAYER_NAME                               :{WHITE}你没�
 STR_NETWORK_ERROR_BAD_SERVER_NAME                               :{WHITE}你没有设置服务器名。玩家名可在联机游戏窗口的上面设置
 STR_NETWORK_ERROR_WRONG_REVISION                                :{WHITE}此客户端版本与服务器端不匹配
 STR_NETWORK_ERROR_WRONG_PASSWORD                                :{WHITE}密码错误
-STR_NETWORK_ERROR_NOT_ON_ALLOW_LIST                             :{WHITE}你不在白名单所允许的客户端范围内
+STR_NETWORK_ERROR_NOT_ON_ALLOW_LIST                             :{WHITE}你不在白名单内
 STR_NETWORK_ERROR_SERVER_FULL                                   :{WHITE}服务器已经满员
 STR_NETWORK_ERROR_SERVER_BANNED                                 :{WHITE}您已被该服务器封禁
 STR_NETWORK_ERROR_KICKED                                        :{WHITE}您已被踢出服务器
@@ -2602,7 +2602,7 @@ STR_NETWORK_ERROR_CLIENT_NOT_EXPECTED                           :收到异常数
 STR_NETWORK_ERROR_CLIENT_WRONG_REVISION                         :错误的版本
 STR_NETWORK_ERROR_CLIENT_NAME_IN_USE                            :已经有人用这个名字了
 STR_NETWORK_ERROR_CLIENT_WRONG_PASSWORD                         :错误的密码
-STR_NETWORK_ERROR_CLIENT_NOT_ON_ALLOW_LIST                      :不在允许列表内
+STR_NETWORK_ERROR_CLIENT_NOT_ON_ALLOW_LIST                      :不在白名单内
 STR_NETWORK_ERROR_CLIENT_COMPANY_MISMATCH                       :错误的公司ID于DoCommand
 STR_NETWORK_ERROR_CLIENT_KICKED                                 :被服务器踢出
 STR_NETWORK_ERROR_CLIENT_CHEATER                                :正在尝试作弊
@@ -4449,7 +4449,7 @@ STR_VEHICLE_INFO_CAPACITY_CAPACITY                              :{BLACK}运载�
 STR_VEHICLE_INFO_FEEDER_CARGO_VALUE                             :{BLACK}联运账面收入：{LTBLUE}{CURRENCY_LONG}
 
 STR_VEHICLE_DETAILS_SERVICING_INTERVAL_DAYS                     :{BLACK}每 {LTBLUE}{COMMA}{NBSP}天进行维护{BLACK}   上次维护日期：{LTBLUE}{STRING}
-STR_VEHICLE_DETAILS_SERVICING_INTERVAL_MINUTES                  :{BLACK}维修间隔：{LTBLUE}{COMMA}{NBSP}分钟{BLACK}   {STRING}
+STR_VEHICLE_DETAILS_SERVICING_INTERVAL_MINUTES                  :{BLACK}维修间隔：{LTBLUE}{COMMA}{NBSP}分钟{BLACK} {STRING}
 STR_VEHICLE_DETAILS_SERVICING_INTERVAL_PERCENT                  :{BLACK}维护间隔：{LTBLUE}{COMMA}%{BLACK} {STRING}
 STR_VEHICLE_DETAILS_LAST_SERVICE_DATE                           :最近保养：{LTBLUE}{DATE_LONG}
 STR_VEHICLE_DETAILS_LAST_SERVICE_MINUTES_AGO                    :最近保养：{LTBLUE}{NUM}{NBSP}分钟前

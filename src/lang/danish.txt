@@ -4449,10 +4449,10 @@ STR_VEHICLE_INFO_CAPACITY_CAPACITY                              :{BLACK}Kapacite
 STR_VEHICLE_INFO_FEEDER_CARGO_VALUE                             :{BLACK}Værdi af overført fragt: {LTBLUE}{CURRENCY_LONG}
 
 STR_VEHICLE_DETAILS_SERVICING_INTERVAL_DAYS                     :{BLACK}Serviceinterval: {LTBLUE}{COMMA}{NBSP}dage{BLACK}   {STRING}
-STR_VEHICLE_DETAILS_SERVICING_INTERVAL_MINUTES                  :{BLACK}Serviceinterval: {LTBLUE}{COMMA}{NBSP}minutter{BLACK}   {STRING}
+STR_VEHICLE_DETAILS_SERVICING_INTERVAL_MINUTES                  :{BLACK}Serviceinterval: {LTBLUE}{COMMA}{NBSP}minut{P "" ter}{BLACK} {STRING}
 STR_VEHICLE_DETAILS_SERVICING_INTERVAL_PERCENT                  :{BLACK}Serviceinterval: {LTBLUE}{COMMA}%{BLACK}   {STRING}
 STR_VEHICLE_DETAILS_LAST_SERVICE_DATE                           :Sidste service: {LTBLUE}{DATE_LONG}
-STR_VEHICLE_DETAILS_LAST_SERVICE_MINUTES_AGO                    :Last service: {LTBLUE}{NUM} minutter siden
+STR_VEHICLE_DETAILS_LAST_SERVICE_MINUTES_AGO                    :sidste service: {LTBLUE}{NUM} minut{P "" ter} siden
 STR_VEHICLE_DETAILS_INCREASE_SERVICING_INTERVAL_TOOLTIP_DAYS    :{BLACK}Forøg serviceintervallet med 10 dage. Ctrl+klik for at øge serviceintervallet med 5 dage
 STR_VEHICLE_DETAILS_INCREASE_SERVICING_INTERVAL_TOOLTIP_MINUTES :{BLACK}Forøg serviceintervallet med 5 minutter. Ctrl+klik for at øge serviceintervallet med 1 minut
 STR_VEHICLE_DETAILS_INCREASE_SERVICING_INTERVAL_TOOLTIP_PERCENT :{BLACK}Forøg serviceintervallet med 10 procent. Ctrl+klik for at øge serviceintervallet med 5 procent

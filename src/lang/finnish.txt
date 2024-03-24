@@ -4449,10 +4449,10 @@ STR_VEHICLE_INFO_CAPACITY_CAPACITY                              :{BLACK}Kapasite
 STR_VEHICLE_INFO_FEEDER_CARGO_VALUE                             :{BLACK}Siirron arvo: {LTBLUE}{CURRENCY_LONG}
 
 STR_VEHICLE_DETAILS_SERVICING_INTERVAL_DAYS                     :{BLACK}Huoltoväli: {LTBLUE}{COMMA}{NBSP}vrk{BLACK} {STRING}
-STR_VEHICLE_DETAILS_SERVICING_INTERVAL_MINUTES                  :{BLACK}Huoltoväli: {LTBLUE}{COMMA}{NBSP}minuuttia{BLACK}   {STRING}
+STR_VEHICLE_DETAILS_SERVICING_INTERVAL_MINUTES                  :{BLACK}Huoltoväli: {LTBLUE}{COMMA}{NBSP}minuutti{P "" a}{BLACK}   {STRING}
 STR_VEHICLE_DETAILS_SERVICING_INTERVAL_PERCENT                  :{BLACK}Huoltoväli: {LTBLUE}{COMMA}{NBSP}%{BLACK} {STRING}
 STR_VEHICLE_DETAILS_LAST_SERVICE_DATE                           :Viimeksi huollettu: {LTBLUE}{DATE_LONG}
-STR_VEHICLE_DETAILS_LAST_SERVICE_MINUTES_AGO                    :Viimeksi huollettu: {LTBLUE}{NUM} minuuttia sitten
+STR_VEHICLE_DETAILS_LAST_SERVICE_MINUTES_AGO                    :Viimeksi huollettu: {LTBLUE}{NUM} minuutti{P "" a} sitten
 STR_VEHICLE_DETAILS_INCREASE_SERVICING_INTERVAL_TOOLTIP_DAYS    :{BLACK}Pidennä huoltoväliä 10 vuorokaudella. Ctrl+napsautus pidentää väliä 5 vuorokaudella
 STR_VEHICLE_DETAILS_INCREASE_SERVICING_INTERVAL_TOOLTIP_MINUTES :{BLACK}Pidennä huoltoväliä 5 minuutilla. Ctrl+napsautus pidentää väliä 1 minuutilla
 STR_VEHICLE_DETAILS_INCREASE_SERVICING_INTERVAL_TOOLTIP_PERCENT :{BLACK}Pidennä huoltoväliä 10 prosentilla. Ctrl+napsautus pidentää väliä 5 prosentilla
