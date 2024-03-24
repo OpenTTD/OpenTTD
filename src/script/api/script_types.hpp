@@ -7,7 +7,10 @@
 
 /**
  * @file script_types.hpp Defines all the types of the game, like IDs of various objects.
- *
+ */
+
+/**
+ * @page script_ids Identifying game object
  * IDs are used to identify certain objects. They are only unique within the object type, so for example a vehicle may have VehicleID 2009,
  * while a station has StationID 2009 at the same time. Also IDs are assigned arbitrary, you cannot assume them to be consecutive.
  * Also note that some IDs are static and never change, while others are allocated dynamically and might be
