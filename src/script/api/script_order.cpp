@@ -200,13 +200,14 @@ static int ScriptOrderPositionToRealOrderPosition(VehicleID vehicle_id, ScriptOr
 					((order_flags & OF_TRANSFER)      == 0 || (order_flags & OF_UNLOAD)    == 0) &&
 					((order_flags & OF_TRANSFER)      == 0 || (order_flags & OF_NO_UNLOAD) == 0) &&
 					((order_flags & OF_UNLOAD)        == 0 || (order_flags & OF_NO_UNLOAD) == 0) &&
-					((order_flags & OF_UNLOAD)        == 0 || (order_flags & OF_NO_UNLOAD) == 0) &&
 					((order_flags & OF_NO_UNLOAD)     == 0 || (order_flags & OF_NO_LOAD)   == 0) &&
 					((order_flags & OF_FULL_LOAD_ANY) == 0 || (order_flags & OF_NO_LOAD)   == 0);
 
 		case OT_GOTO_DEPOT:
 			return (order_flags & ~(OF_NON_STOP_FLAGS | OF_DEPOT_FLAGS)) == 0 &&
-					((order_flags & OF_SERVICE_IF_NEEDED) == 0 || (order_flags & OF_STOP_IN_DEPOT) == 0);
+					((order_flags & OF_SERVICE_IF_NEEDED)  == 0 || (order_flags & OF_STOP_IN_DEPOT)    == 0) &&
+					((order_flags & OF_SERVICE_IF_NEEDED)  == 0 || (order_flags & OF_UNBUNCH_IN_DEPOT) == 0) &&
+					((order_flags & OF_STOP_IN_DEPOT)      == 0 || (order_flags & OF_UNBUNCH_IN_DEPOT) == 0);
 
 		case OT_GOTO_WAYPOINT: return (order_flags & ~(OF_NON_STOP_FLAGS)) == 0;
 		default:               return false;
@@ -309,6 +310,7 @@ static int ScriptOrderPositionToRealOrderPosition(VehicleID vehicle_id, ScriptOr
 			if (order->GetDepotOrderType() & ODTFB_SERVICE) order_flags |= OF_SERVICE_IF_NEEDED;
 			if (order->GetDepotActionType() & ODATFB_HALT) order_flags |= OF_STOP_IN_DEPOT;
 			if (order->GetDepotActionType() & ODATFB_NEAREST_DEPOT) order_flags |= OF_GOTO_NEAREST_DEPOT;
+			if (order->GetDepotActionType() & ODATFB_UNBUNCH) order_flags |= OF_UNBUNCH_IN_DEPOT;
 			break;
 
 		case OT_GOTO_STATION:
@@ -472,7 +474,9 @@ static int ScriptOrderPositionToRealOrderPosition(VehicleID vehicle_id, ScriptOr
 
 	EnforceCompanyModeValid(false);
 	EnforcePrecondition(false, ScriptVehicle::IsPrimaryVehicle(vehicle_id));
-	EnforcePrecondition(false, order_position >= 0 && order_position <= ::Vehicle::Get(vehicle_id)->GetNumManualOrders());
+
+	const Vehicle *v = ::Vehicle::Get(vehicle_id);
+	EnforcePrecondition(false, order_position >= 0 && order_position <= v->GetNumManualOrders());
 	EnforcePrecondition(false, AreOrderFlagsValid(destination, order_flags));
 
 	Order order;
@@ -480,15 +484,16 @@ static int ScriptOrderPositionToRealOrderPosition(VehicleID vehicle_id, ScriptOr
 	switch (ot) {
 		case OT_GOTO_DEPOT: {
 			OrderDepotTypeFlags odtf = (OrderDepotTypeFlags)(ODTFB_PART_OF_ORDERS | ((order_flags & OF_SERVICE_IF_NEEDED) ? ODTFB_SERVICE : 0));
+			OrderNonStopFlags onsf = (OrderNonStopFlags)(v->IsGroundVehicle() && (order_flags & OF_NON_STOP_INTERMEDIATE) ? ONSF_NO_STOP_AT_INTERMEDIATE_STATIONS : ONSF_STOP_EVERYWHERE);
 			OrderDepotActionFlags odaf = (OrderDepotActionFlags)(ODATF_SERVICE_ONLY | ((order_flags & OF_STOP_IN_DEPOT) ? ODATFB_HALT : 0));
-			if (order_flags & OF_GOTO_NEAREST_DEPOT) odaf |= ODATFB_NEAREST_DEPOT;
-			OrderNonStopFlags onsf = (OrderNonStopFlags)((order_flags & OF_NON_STOP_INTERMEDIATE) ? ONSF_NO_STOP_AT_INTERMEDIATE_STATIONS : ONSF_STOP_EVERYWHERE);
+			if (order_flags & OF_UNBUNCH_IN_DEPOT) odaf |= ODATFB_UNBUNCH;
 			if (order_flags & OF_GOTO_NEAREST_DEPOT) {
+				odaf |= ODATFB_NEAREST_DEPOT;
 				order.MakeGoToDepot(INVALID_DEPOT, odtf, onsf, odaf);
 			} else {
 				/* Check explicitly if the order is to a station (for aircraft) or
 				 * to a depot (other vehicle types). */
-				if (::Vehicle::Get(vehicle_id)->type == VEH_AIRCRAFT) {
+				if (v->type == VEH_AIRCRAFT) {
 					if (!::IsTileType(destination, MP_STATION)) return false;
 					order.MakeGoToDepot(::GetStationIndex(destination), odtf, onsf, odaf);
 				} else {
@@ -504,17 +509,17 @@ static int ScriptOrderPositionToRealOrderPosition(VehicleID vehicle_id, ScriptOr
 			order.SetLoadType((OrderLoadFlags)GB(order_flags, 5, 3));
 			order.SetUnloadType((OrderUnloadFlags)GB(order_flags, 2, 3));
 			order.SetStopLocation(OSL_PLATFORM_FAR_END);
+			if (v->IsGroundVehicle()) order.SetNonStopType((OrderNonStopFlags)GB(order_flags, 0, 2));
 			break;
 
 		case OT_GOTO_WAYPOINT:
 			order.MakeGoToWaypoint(::GetStationIndex(destination));
+			if (v->type == VEH_TRAIN) order.SetNonStopType((OrderNonStopFlags)GB(order_flags, 0, 2));
 			break;
 
 		default:
 			return false;
 	}
-
-	order.SetNonStopType((OrderNonStopFlags)GB(order_flags, 0, 2));
 
 	int order_pos = ScriptOrderPositionToRealOrderPosition(vehicle_id, order_position);
 	return ScriptObject::Command<CMD_INSERT_ORDER>::Do(0, vehicle_id, order_pos, order);
@@ -593,23 +598,22 @@ static void _DoCommandReturnSetOrderFlags(class ScriptInstance *instance)
 	EnforcePrecondition(false, IsValidVehicleOrder(vehicle_id, order_position));
 	EnforcePrecondition(false, AreOrderFlagsValid(GetOrderDestination(vehicle_id, order_position), order_flags));
 
-	const Order *order = ::ResolveOrder(vehicle_id, order_position);
-	int order_pos = ScriptOrderPositionToRealOrderPosition(vehicle_id, order_position);
-
 	ScriptOrderFlags current = GetOrderFlags(vehicle_id, order_position);
-
 	EnforcePrecondition(false, (order_flags & OF_GOTO_NEAREST_DEPOT) == (current & OF_GOTO_NEAREST_DEPOT));
 
+	int order_pos = ScriptOrderPositionToRealOrderPosition(vehicle_id, order_position);
 	if ((current & OF_NON_STOP_FLAGS) != (order_flags & OF_NON_STOP_FLAGS)) {
 		return ScriptObject::Command<CMD_MODIFY_ORDER>::Do(&::_DoCommandReturnSetOrderFlags, vehicle_id, order_pos, MOF_NON_STOP, order_flags & OF_NON_STOP_FLAGS);
 	}
 
+	const Order *order = ::ResolveOrder(vehicle_id, order_position);
 	switch (order->GetType()) {
 		case OT_GOTO_DEPOT:
 			if ((current & OF_DEPOT_FLAGS) != (order_flags & OF_DEPOT_FLAGS)) {
 				uint data = DA_ALWAYS_GO;
 				if (order_flags & OF_SERVICE_IF_NEEDED) data = DA_SERVICE;
 				if (order_flags & OF_STOP_IN_DEPOT) data = DA_STOP;
+				if (order_flags & OF_UNBUNCH_IN_DEPOT) data = DA_UNBUNCH;
 				return ScriptObject::Command<CMD_MODIFY_ORDER>::Do(&::_DoCommandReturnSetOrderFlags, vehicle_id, order_pos, MOF_DEPOT_ACTION, data);
 			}
 			break;
