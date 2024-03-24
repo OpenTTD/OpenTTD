@@ -27,13 +27,13 @@ public:
 	/**
 	 * Send information to the AdminPort. The information can be anything
 	 *  as long as it isn't a class or instance thereof.
-	 * @param table The information to send, in a table. For example: { param = "param" }.
+	 * @param data The information to send, in a table. For example: { param = "param" }.
 	 * @return True if and only if the data was successfully converted to JSON
 	 *  and send to the AdminPort.
 	 * @note If the resulting JSON of your table is larger than 1450 bytes,
 	 *   nothing will be sent (and false will be returned).
 	 */
-	static bool Send(void *table);
+	static bool Send(table data);
 #endif /* DOXYGEN_API */
 };
 
