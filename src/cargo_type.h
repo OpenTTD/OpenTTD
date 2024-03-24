@@ -47,7 +47,7 @@ static constexpr CargoLabel CT_FOOD         = CargoLabel{'FOOD'};
 
 /* Tropic */
 static constexpr CargoLabel CT_RUBBER       = CargoLabel{'RUBR'};
-static constexpr CargoLabel CT_FRUIT        = CargoLabel{'FRUI'};
+static constexpr CargoLabel CT_FRUIT        = CargoLabel{'FRUT'};
 static constexpr CargoLabel CT_MAIZE        = CargoLabel{'MAIZ'};
 static constexpr CargoLabel CT_COPPER_ORE   = CargoLabel{'CORE'};
 static constexpr CargoLabel CT_WATER        = CargoLabel{'WATR'};
