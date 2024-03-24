@@ -20,6 +20,8 @@ class ScriptVehicle : public ScriptObject {
 public:
 	/**
 	 * All vehicle related error messages.
+	 *
+	 * @see ScriptErrorType
 	 */
 	enum ErrorMessages {
 		/** Base for vehicle related errors */

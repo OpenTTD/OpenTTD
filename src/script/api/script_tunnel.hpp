@@ -20,6 +20,8 @@ class ScriptTunnel : public ScriptObject {
 public:
 	/**
 	 * All tunnel related errors.
+	 *
+	 * @see ScriptErrorType
 	 */
 	enum ErrorMessages {
 
