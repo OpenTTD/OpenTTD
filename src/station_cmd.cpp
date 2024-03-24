@@ -865,8 +865,10 @@ static CommandCost CheckFlatLandAirport(AirportTileTableIterator tile_iter, DoCo
 }
 
 /**
- * Checks if a rail station can be built at the given area.
- * @param tile_area Area to check.
+ * Checks if a rail station can be built at the given tile.
+ * @param tile_cur Tile to check.
+ * @param north_tile North tile of the area being checked.
+ * @param allowed_z Height allowed for the tile. If allowed_z is negative, it will be set to the height of this tile.
  * @param flags Operation to perform.
  * @param axis Rail station axis.
  * @param station StationID to be queried and returned if available.
@@ -878,75 +880,72 @@ static CommandCost CheckFlatLandAirport(AirportTileTableIterator tile_iter, DoCo
  * @param numtracks Number of platforms.
  * @return The cost in case of success, or an error code if it failed.
  */
-static CommandCost CheckFlatLandRailStation(TileArea tile_area, DoCommandFlag flags, Axis axis, StationID *station, RailType rt, std::vector<Train *> &affected_vehicles, StationClassID spec_class, uint16_t spec_index, byte plat_len, byte numtracks)
+static CommandCost CheckFlatLandRailStation(TileIndex tile_cur, TileIndex north_tile, int &allowed_z, DoCommandFlag flags, Axis axis, StationID *station, RailType rt, std::vector<Train *> &affected_vehicles, StationClassID spec_class, uint16_t spec_index, byte plat_len, byte numtracks)
 {
 	CommandCost cost(EXPENSES_CONSTRUCTION);
-	int allowed_z = -1;
 	uint invalid_dirs = 5 << axis;
 
 	const StationSpec *statspec = StationClass::Get(spec_class)->GetSpec(spec_index);
 	bool slope_cb = statspec != nullptr && HasBit(statspec->callback_mask, CBM_STATION_SLOPE_CHECK);
 
-	for (TileIndex tile_cur : tile_area) {
-		CommandCost ret = CheckBuildableTile(tile_cur, invalid_dirs, allowed_z, false);
+	CommandCost ret = CheckBuildableTile(tile_cur, invalid_dirs, allowed_z, false);
+	if (ret.Failed()) return ret;
+	cost.AddCost(ret);
+
+	if (slope_cb) {
+		/* Do slope check if requested. */
+		ret = PerformStationTileSlopeCheck(north_tile, tile_cur, statspec, axis, plat_len, numtracks);
+		if (ret.Failed()) return ret;
+	}
+
+	/* if station is set, then we have special handling to allow building on top of already existing stations.
+		* so station points to INVALID_STATION if we can build on any station.
+		* Or it points to a station if we're only allowed to build on exactly that station. */
+	if (station != nullptr && IsTileType(tile_cur, MP_STATION)) {
+		if (!IsRailStation(tile_cur)) {
+			return ClearTile_Station(tile_cur, DC_AUTO); // get error message
+		} else {
+			StationID st = GetStationIndex(tile_cur);
+			if (*station == INVALID_STATION) {
+				*station = st;
+			} else if (*station != st) {
+				return_cmd_error(STR_ERROR_ADJOINS_MORE_THAN_ONE_EXISTING);
+			}
+		}
+	} else {
+		/* Rail type is only valid when building a railway station; if station to
+			* build isn't a rail station it's INVALID_RAILTYPE. */
+		if (rt != INVALID_RAILTYPE &&
+				IsPlainRailTile(tile_cur) && !HasSignals(tile_cur) &&
+				HasPowerOnRail(GetRailType(tile_cur), rt)) {
+			/* Allow overbuilding if the tile:
+				*  - has rail, but no signals
+				*  - it has exactly one track
+				*  - the track is in line with the station
+				*  - the current rail type has power on the to-be-built type (e.g. convert normal rail to el rail)
+				*/
+			TrackBits tracks = GetTrackBits(tile_cur);
+			Track track = RemoveFirstTrack(&tracks);
+			Track expected_track = HasBit(invalid_dirs, DIAGDIR_NE) ? TRACK_X : TRACK_Y;
+
+			if (tracks == TRACK_BIT_NONE && track == expected_track) {
+				/* Check for trains having a reservation for this tile. */
+				if (HasBit(GetRailReservationTrackBits(tile_cur), track)) {
+					Train *v = GetTrainForReservation(tile_cur, track);
+					if (v != nullptr) {
+						affected_vehicles.push_back(v);
+					}
+				}
+				ret = Command<CMD_REMOVE_SINGLE_RAIL>::Do(flags, tile_cur, track);
+				if (ret.Failed()) return ret;
+				cost.AddCost(ret);
+				/* With flags & ~DC_EXEC CmdLandscapeClear would fail since the rail still exists */
+				return cost;
+			}
+		}
+		ret = Command<CMD_LANDSCAPE_CLEAR>::Do(flags, tile_cur);
 		if (ret.Failed()) return ret;
 		cost.AddCost(ret);
-
-		if (slope_cb) {
-			/* Do slope check if requested. */
-			ret = PerformStationTileSlopeCheck(tile_area.tile, tile_cur, statspec, axis, plat_len, numtracks);
-			if (ret.Failed()) return ret;
-		}
-
-		/* if station is set, then we have special handling to allow building on top of already existing stations.
-		 * so station points to INVALID_STATION if we can build on any station.
-		 * Or it points to a station if we're only allowed to build on exactly that station. */
-		if (station != nullptr && IsTileType(tile_cur, MP_STATION)) {
-			if (!IsRailStation(tile_cur)) {
-				return ClearTile_Station(tile_cur, DC_AUTO); // get error message
-			} else {
-				StationID st = GetStationIndex(tile_cur);
-				if (*station == INVALID_STATION) {
-					*station = st;
-				} else if (*station != st) {
-					return_cmd_error(STR_ERROR_ADJOINS_MORE_THAN_ONE_EXISTING);
-				}
-			}
-		} else {
-			/* Rail type is only valid when building a railway station; if station to
-			 * build isn't a rail station it's INVALID_RAILTYPE. */
-			if (rt != INVALID_RAILTYPE &&
-					IsPlainRailTile(tile_cur) && !HasSignals(tile_cur) &&
-					HasPowerOnRail(GetRailType(tile_cur), rt)) {
-				/* Allow overbuilding if the tile:
-				 *  - has rail, but no signals
-				 *  - it has exactly one track
-				 *  - the track is in line with the station
-				 *  - the current rail type has power on the to-be-built type (e.g. convert normal rail to el rail)
-				 */
-				TrackBits tracks = GetTrackBits(tile_cur);
-				Track track = RemoveFirstTrack(&tracks);
-				Track expected_track = HasBit(invalid_dirs, DIAGDIR_NE) ? TRACK_X : TRACK_Y;
-
-				if (tracks == TRACK_BIT_NONE && track == expected_track) {
-					/* Check for trains having a reservation for this tile. */
-					if (HasBit(GetRailReservationTrackBits(tile_cur), track)) {
-						Train *v = GetTrainForReservation(tile_cur, track);
-						if (v != nullptr) {
-							affected_vehicles.push_back(v);
-						}
-					}
-					ret = Command<CMD_REMOVE_SINGLE_RAIL>::Do(flags, tile_cur, track);
-					if (ret.Failed()) return ret;
-					cost.AddCost(ret);
-					/* With flags & ~DC_EXEC CmdLandscapeClear would fail since the rail still exists */
-					continue;
-				}
-			}
-			ret = Command<CMD_LANDSCAPE_CLEAR>::Do(flags, tile_cur);
-			if (ret.Failed()) return ret;
-			cost.AddCost(ret);
-		}
 	}
 
 	return cost;
@@ -1266,9 +1265,10 @@ static CommandCost CalculateRailStationCost(TileArea tile_area, DoCommandFlag fl
 	CommandCost cost(EXPENSES_CONSTRUCTION);
 	bool length_price_ready = true;
 	byte tracknum = 0;
+	int allowed_z = -1;
 	for (TileIndex cur_tile : tile_area) {
 		/* Clear the land below the station. */
-		CommandCost ret = CheckFlatLandRailStation(TileArea(cur_tile, 1, 1), flags, axis, station, rt, affected_vehicles, spec_class, spec_index, plat_len, numtracks);
+		CommandCost ret = CheckFlatLandRailStation(cur_tile, tile_area.tile, allowed_z, flags, axis, station, rt, affected_vehicles, spec_class, spec_index, plat_len, numtracks);
 		if (ret.Failed()) return ret;
 
 		/* Only add _price[PR_BUILD_STATION_RAIL_LENGTH] once for each valid plat_len. */
@@ -1281,7 +1281,6 @@ static CommandCost CalculateRailStationCost(TileArea tile_area, DoCommandFlag fl
 
 		/* AddCost for new or rotated rail stations. */
 		if (!IsRailStationTile(cur_tile) || (IsRailStationTile(cur_tile) && GetRailStationAxis(cur_tile) != axis)) {
-
 			cost.AddCost(ret);
 			cost.AddCost(_price[PR_BUILD_STATION_RAIL]);
 			cost.AddCost(RailBuildCost(rt));
