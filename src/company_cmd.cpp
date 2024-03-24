@@ -19,8 +19,8 @@
 #include "network/network_func.h"
 #include "network/network_base.h"
 #include "network/network_admin.h"
-#include "ai/ai.hpp"
 #include "ai/ai_config.hpp"
+#include "script/script_trigger.hpp"
 #include "company_manager_face.h"
 #include "window_func.h"
 #include "strings_func.h"
@@ -31,7 +31,6 @@
 #include "vehicle_base.h"
 #include "vehicle_func.h"
 #include "smallmap_gui.h"
-#include "game/game.hpp"
 #include "goal_base.h"
 #include "story_base.h"
 #include "widgets/statusbar_widget.h"
@@ -628,8 +627,7 @@ Company *DoStartupNewCompany(bool is_ai, CompanyID company = INVALID_COMPANY)
 
 	if (is_ai && (!_networking || _network_server)) AI::StartNew(c->index);
 
-	AI::BroadcastNewEvent(new ScriptEventCompanyNew(c->index), c->index);
-	Game::NewEvent(new ScriptEventCompanyNew(c->index));
+	ScriptTrigger::BroadcastNewEventExceptForCompany<ScriptEventCompanyNew>(c->index, c->index);
 
 	return c;
 }
@@ -739,7 +737,7 @@ static void HandleBankruptcyTakeover(Company *c)
 
 	c->bankrupt_timeout = TAKE_OVER_TIMEOUT;
 
-	AI::NewEvent(best->index, new ScriptEventCompanyAskMerger(c->index, c->bankrupt_value));
+	ScriptTrigger::NewEvent<ScriptEventCompanyAskMerger>(best->index, best->index, c->index, c->bankrupt_value);
 	if (IsInteractiveCompany(best->index)) {
 		ShowBuyCompanyDialog(c->index, false);
 	}
@@ -958,8 +956,7 @@ CommandCost CmdCompanyCtrl(DoCommandFlag flags, CompanyCtrlAction cca, CompanyID
 
 			CompanyID c_index = c->index;
 			delete c;
-			AI::BroadcastNewEvent(new ScriptEventCompanyBankrupt(c_index));
-			Game::NewEvent(new ScriptEventCompanyBankrupt(c_index));
+			ScriptTrigger::BroadcastNewEvent<ScriptEventCompanyBankrupt>(c_index);
 			CompanyAdminRemove(c_index, (CompanyRemoveReason)reason);
 
 			if (StoryPage::GetNumItems() == 0 || Goal::GetNumItems() == 0) InvalidateWindowData(WC_MAIN_TOOLBAR, 0);

@@ -24,8 +24,7 @@
 #include "timer/timer_game_economy.h"
 #include "vehicle_func.h"
 #include "sound_func.h"
-#include "ai/ai.hpp"
-#include "game/game.hpp"
+#include "script/script_trigger.hpp"
 #include "depot_map.h"
 #include "effectvehicle_func.h"
 #include "roadstop_base.h"
@@ -551,8 +550,7 @@ static void RoadVehCrash(RoadVehicle *v)
 {
 	uint pass = v->Crash();
 
-	AI::NewEvent(v->owner, new ScriptEventVehicleCrashed(v->index, v->tile, ScriptEventVehicleCrashed::CRASH_RV_LEVEL_CROSSING));
-	Game::NewEvent(new ScriptEventVehicleCrashed(v->index, v->tile, ScriptEventVehicleCrashed::CRASH_RV_LEVEL_CROSSING));
+	ScriptTrigger::NewEvent<ScriptEventVehicleCrashed>(v->owner, v->index, v->tile, ScriptEventVehicleCrashed::CRASH_RV_LEVEL_CROSSING);
 
 	SetDParam(0, pass);
 	StringID newsitem = (pass == 1) ? STR_NEWS_ROAD_VEHICLE_CRASH_DRIVER : STR_NEWS_ROAD_VEHICLE_CRASH;
@@ -702,8 +700,7 @@ static void RoadVehArrivesAt(const RoadVehicle *v, Station *st)
 				v->index,
 				st->index
 			);
-			AI::NewEvent(v->owner, new ScriptEventStationFirstVehicle(st->index, v->index));
-			Game::NewEvent(new ScriptEventStationFirstVehicle(st->index, v->index));
+			ScriptTrigger::NewEvent<ScriptEventStationFirstVehicle>(v->owner, st->index, v->index);
 		}
 	} else {
 		/* Check if station was ever visited before */
@@ -716,8 +713,7 @@ static void RoadVehArrivesAt(const RoadVehicle *v, Station *st)
 				v->index,
 				st->index
 			);
-			AI::NewEvent(v->owner, new ScriptEventStationFirstVehicle(st->index, v->index));
-			Game::NewEvent(new ScriptEventStationFirstVehicle(st->index, v->index));
+			ScriptTrigger::NewEvent<ScriptEventStationFirstVehicle>(v->owner, st->index, v->index);
 		}
 	}
 }

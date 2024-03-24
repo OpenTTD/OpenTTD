@@ -214,16 +214,18 @@ private:
  * Event Engine Preview, indicating a manufacturer offer you to test a new engine.
  *  You can get the same information about the offered engine as a real user
  *  would see in the offer window. And you can also accept the offer.
- * @api ai
+ * @api ai game
  */
 class ScriptEventEnginePreview : public ScriptEvent {
 public:
 #ifndef DOXYGEN_API
 	/**
+	 * @param owner The company being offered the test engine.
 	 * @param engine The engine offered to test.
 	 */
-	ScriptEventEnginePreview(EngineID engine) :
+	ScriptEventEnginePreview(Owner owner, EngineID engine) :
 		ScriptEvent(ET_ENGINE_PREVIEW),
+		owner((ScriptCompany::CompanyID)owner),
 		engine(engine)
 	{}
 #endif /* DOXYGEN_API */
@@ -234,6 +236,13 @@ public:
 	 * @return The converted instance.
 	 */
 	static ScriptEventEnginePreview *Convert(ScriptEvent *instance) { return (ScriptEventEnginePreview *)instance; }
+
+	/**
+	 * Get the company being offered the test engine.
+	 * @return The company being offered to test the engine.
+	 * @api -ai
+	 */
+	ScriptCompany::CompanyID GetCompanyID() { return this->owner; }
 
 	/**
 	 * Get the name of the offered engine.
@@ -295,7 +304,8 @@ public:
 	bool AcceptPreview();
 
 private:
-	EngineID engine; ///< The engine the preview is for.
+	ScriptCompany::CompanyID owner; ///< The company the engine preview is for.
+	EngineID engine;                ///< The engine the preview is for.
 
 	/**
 	 * Check whether the engine from this preview is still valid.
@@ -373,17 +383,19 @@ private:
 
 /**
  * Event Company Ask Merger, indicating a company can be bought (cheaply) by you.
- * @api ai
+ * @api ai game
  */
 class ScriptEventCompanyAskMerger : public ScriptEvent {
 public:
 #ifndef DOXYGEN_API
 	/**
+	 * @param buyer The company that can buy.
 	 * @param owner The company that can be bought.
 	 * @param value The value/costs of buying the company.
 	 */
-	ScriptEventCompanyAskMerger(Owner owner, Money value) :
+	ScriptEventCompanyAskMerger(Owner buyer, Owner owner, Money value) :
 		ScriptEvent(ET_COMPANY_ASK_MERGER),
+		buyer((ScriptCompany::CompanyID)buyer),
 		owner((ScriptCompany::CompanyID)owner),
 		value(value)
 	{}
@@ -395,6 +407,14 @@ public:
 	 * @return The converted instance.
 	 */
 	static ScriptEventCompanyAskMerger *Convert(ScriptEvent *instance) { return (ScriptEventCompanyAskMerger *)instance; }
+
+	/**
+	 * Get the CompanyID of the company that can purchase the other.
+	 * @return The CompanyID of the company that can purchase.
+	 * @note If the company is bought this will become invalid.
+	 * @api -ai
+	 */
+	ScriptCompany::CompanyID GetBuyerID() { return this->buyer; }
 
 	/**
 	 * Get the CompanyID of the company that can be bought.
@@ -417,8 +437,9 @@ public:
 	bool AcceptMerger();
 
 private:
+	ScriptCompany::CompanyID buyer; ///< The company that is buying.
 	ScriptCompany::CompanyID owner; ///< The company that is in trouble.
-	Money value;                ///< The value of the company, i.e. the amount you would pay.
+	Money value;                    ///< The value of the company in trouble, i.e. the amount you would pay.
 };
 
 /**
@@ -502,7 +523,7 @@ private:
 
 /**
  * Event Vehicle Lost, indicating a vehicle can't find its way to its destination.
- * @api ai
+ * @api ai game
  */
 class ScriptEventVehicleLost : public ScriptEvent {
 public:
@@ -535,7 +556,7 @@ private:
 
 /**
  * Event VehicleWaitingInDepot, indicating a vehicle has arrived a depot and is now waiting there.
- * @api ai
+ * @api ai game
  */
 class ScriptEventVehicleWaitingInDepot : public ScriptEvent {
 public:
@@ -568,7 +589,7 @@ private:
 
 /**
  * Event Vehicle Unprofitable, indicating a vehicle lost money last year.
- * @api ai
+ * @api ai game
  */
 class ScriptEventVehicleUnprofitable : public ScriptEvent {
 public:
@@ -667,7 +688,7 @@ private:
 
 /**
  * Event Engine Available, indicating a new engine is available.
- * @api ai
+ * @api ai game
  */
 class ScriptEventEngineAvailable : public ScriptEvent {
 public:
@@ -742,7 +763,7 @@ private:
 
 /**
  * Event Disaster Zeppeliner Crashed, indicating a zeppeliner has crashed on an airport and is blocking the runway.
- * @api ai
+ * @api ai game
  */
 class ScriptEventDisasterZeppelinerCrashed : public ScriptEvent {
 public:
@@ -775,7 +796,7 @@ private:
 
 /**
  * Event Disaster Zeppeliner Cleared, indicating a previously crashed zeppeliner has been removed, and the airport is operating again.
- * @api ai
+ * @api ai game
  */
 class ScriptEventDisasterZeppelinerCleared : public ScriptEvent {
 public:
@@ -843,7 +864,7 @@ private:
  * Event AircraftDestTooFar, indicating the next destination of an aircraft is too far away.
  * This event can be triggered when the current order of an aircraft changes, usually either when
  * loading is done or when switched manually.
- * @api ai
+ * @api ai game
  */
 class ScriptEventAircraftDestTooFar : public ScriptEvent {
 public:
@@ -1111,7 +1132,7 @@ public:
 
 /**
  * Event VehicleAutoReplaced, indicating a vehicle has been auto replaced.
- * @api ai
+ * @api ai game
  */
 class ScriptEventVehicleAutoReplaced : public ScriptEvent {
 public:

@@ -27,8 +27,7 @@
 #include "timer/timer_game_economy.h"
 #include "vehicle_func.h"
 #include "sound_func.h"
-#include "ai/ai.hpp"
-#include "game/game.hpp"
+#include "script/script_trigger.hpp"
 #include "engine_base.h"
 #include "company_base.h"
 #include "tunnelbridge_map.h"
@@ -490,8 +489,7 @@ static void ShipArrivesAt(const Vehicle *v, Station *st)
 			v->index,
 			st->index
 		);
-		AI::NewEvent(v->owner, new ScriptEventStationFirstVehicle(st->index, v->index));
-		Game::NewEvent(new ScriptEventStationFirstVehicle(st->index, v->index));
+		ScriptTrigger::NewEvent<ScriptEventStationFirstVehicle>(v->owner, st->index, v->index);
 	}
 }
 
