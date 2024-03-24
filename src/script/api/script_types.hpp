@@ -46,6 +46,14 @@
  *                           <td> game start \ref newgrf_changes "(1)"              </td>
  *                           <td> never \ref newgrf_changes "(1)"                   </td>
  *                           <td> no                                                </td></tr>
+ * <tr><td>#ObjectType  </td><td> NewGRF object type                                </td>
+ *                           <td> game start \ref newgrf_changes "(1)"              </td>
+ *                           <td> never \ref newgrf_changes "(1)"                   </td>
+ *                           <td> no                                                </td></tr>
+ * <tr><td>#ScriptErrorType</td><td> error message                                  </td>
+ *                           <td> OpenTTD start \ref transient_id "(3)"             </td>
+ *                           <td> OpenTTD exit                                      </td>
+ *                           <td> no                                                </td></tr>
  * <tr><td>#SignID      </td><td> sign                                              </td>
  *                           <td> construction                                      </td>
  *                           <td> deletion                                          </td>
@@ -54,9 +62,21 @@
  *                           <td> construction                                      </td>
  *                           <td> expiration of 'grey' station sign after deletion  </td>
  *                           <td> yes                                               </td></tr>
+ * <tr><td>#StringID    </td><td> translatable text                                 </td>
+ *                           <td> OpenTTD start \ref transient_id "(3)"             </td>
+ *                           <td> OpenTTD exit                                      </td>
+ *                           <td> no                                                </td></tr>
  * <tr><td>#SubsidyID   </td><td> subsidy                                           </td>
  *                           <td> offer announcement                                </td>
  *                           <td> (offer) expiration                                </td>
+ *                           <td> yes                                               </td></tr>
+ * <tr><td>#StoryPageID </td><td> story page                                        </td>
+ *                           <td> creation                                          </td>
+ *                           <td> deletion                                          </td>
+ *                           <td> yes                                               </td></tr>
+ * <tr><td>#StoryPageElementID</td><td> story page element                          </td>
+ *                           <td> creation                                          </td>
+ *                           <td> deletion                                          </td>
  *                           <td> yes                                               </td></tr>
  * <tr><td>#TileIndex   </td><td> tile on map                                       </td>
  *                           <td> game start                                        </td>
@@ -75,6 +95,7 @@
  * @remarks
  *  \li \anchor newgrf_changes  (1) in-game changes of newgrfs may reassign/invalidate IDs (will also cause other trouble though).
  *  \li \anchor dynamic_engines (2) engine IDs are reassigned/invalidated on changing 'allow multiple newgrf engine sets' (only allowed as long as no vehicles are built).
+ *  \li \anchor transient_id    (3) string/error IDs are only valid during a session, and may be reassigned/invalidated when loading savegames (so you cannot store them).
  */
 
 #ifndef SCRIPT_TYPES_HPP
