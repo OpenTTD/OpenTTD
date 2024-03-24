@@ -24,7 +24,10 @@ BEGIN {
 }
 
 {
+	# replace Script with AI/GS, except for ScriptErrorType
 	gsub(/Script/, api)
+	gsub(/AIErrorType/, "ScriptErrorType")
+	gsub(/GSErrorType/, "ScriptErrorType")
 }
 
 {
@@ -245,7 +248,7 @@ BEGIN {
 }
 
 # Add a const (non-enum) value
-/^[ 	]*static const \w+ \w+ = -?\(?\w*\)?\w+;/ {
+/^[ 	]*static const \w+ \w+ = [^;]+;/ {
 	if (api_selected == "") api_selected = cls_in_api
 	if (api_selected == "false") {
 		api_selected = ""
