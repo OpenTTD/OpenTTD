@@ -17,6 +17,9 @@
  *
  * This version is not yet released. The following changes are not set in stone yet.
  *
+ * Other changes:
+ * \li GSAircraft::GetHangarOfAirport adds an optional parameter for the index of the hangar
+ *
  * \b 14.0
  *
  * API additions:
