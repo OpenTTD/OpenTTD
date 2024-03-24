@@ -1828,6 +1828,17 @@ function Regression::Vehicle()
 	print("    GetLastErrorString():  " + AIError.GetLastErrorString());
 	print("    SendVehicleToDepot():  " + AIVehicle.SendVehicleToDepot(13));
 	print("    GetLastErrorString():  " + AIError.GetLastErrorString());
+	print("    BuildVehicle():        " + AIVehicle.BuildVehicle(33417, 116));
+	print("    AppendOrder():         " + AIOrder.AppendOrder(20, 33421, AIOrder.OF_NONE));
+	print("    GetLastError():        " + AIError.GetLastError());
+	print("    GetLastErrorString():  " + AIError.GetLastErrorString());
+	print("    GetExtraLastError():   " + AIError.GetExtraLastError());
+	print("    GetExtraLastErrorString(): " + AIError.GetExtraLastErrorString());
+	print("    SellVehicle():         " + AIVehicle.SellVehicle(20));
+	print("    GetLastError():        " + AIError.GetLastError());
+	print("    GetLastErrorString():  " + AIError.GetLastErrorString());
+	print("    GetExtraLastError():   " + AIError.GetExtraLastError());
+	print("    GetExtraLastErrorString(): " + AIError.GetExtraLastErrorString());
 
 	local list = AIVehicleList();
 	local in_depot = AIVehicleList(AIVehicle.IsInDepot);
