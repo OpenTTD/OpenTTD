@@ -2089,23 +2089,17 @@ struct CargoesField {
 
 	/**
 	 * Make a piece of cargo column.
-	 * @param cargoes    Array of #CargoID (may contain #INVALID_CARGO).
-	 * @param length     Number of cargoes in \a cargoes.
+	 * @param cargoes    Span of #CargoID (may contain #INVALID_CARGO).
 	 * @param count      Number of cargoes to display (should be at least the number of valid cargoes, or \c -1 to let the method compute it).
 	 * @param top_end    This is the first cargo field of this column.
 	 * @param bottom_end This is the last cargo field of this column.
 	 * @note #supp_cargoes and #cust_cargoes should be filled in later.
 	 */
-	void MakeCargo(const CargoID *cargoes, uint length, int count = -1, bool top_end = false, bool bottom_end = false)
+	void MakeCargo(const std::span<const CargoID> cargoes, int count = -1, bool top_end = false, bool bottom_end = false)
 	{
 		this->type = CFT_CARGO;
-		auto insert = std::begin(this->u.cargo.vertical_cargoes);
-		for (uint i = 0; insert != std::end(this->u.cargo.vertical_cargoes) && i < length; i++) {
-			if (IsValidCargoID(cargoes[i])) {
-				*insert = cargoes[i];
-				++insert;
-			}
-		}
+		assert(std::size(cargoes) <= std::size(this->u.cargo.vertical_cargoes));
+		auto insert = std::copy_if(std::begin(cargoes), std::end(cargoes), std::begin(this->u.cargo.vertical_cargoes), IsValidCargoID);
 		this->u.cargo.num_cargoes = (count < 0) ? static_cast<uint8_t>(insert - std::begin(this->u.cargo.vertical_cargoes)) : count;
 		CargoIDComparator comparator;
 		std::sort(std::begin(this->u.cargo.vertical_cargoes), insert, comparator);
@@ -2118,16 +2112,15 @@ struct CargoesField {
 
 	/**
 	 * Make a field displaying cargo type names.
-	 * @param cargoes    Array of #CargoID (may contain #INVALID_CARGO).
-	 * @param length     Number of cargoes in \a cargoes.
+	 * @param cargoes    Span of #CargoID (may contain #INVALID_CARGO).
 	 * @param left_align ALign texts to the left (else to the right).
 	 */
-	void MakeCargoLabel(const CargoID *cargoes, uint length, bool left_align)
+	void MakeCargoLabel(const std::span<const CargoID> cargoes, bool left_align)
 	{
 		this->type = CFT_CARGO_LABEL;
-		uint i;
-		for (i = 0; i < MAX_CARGOES && i < length; i++) this->u.cargo_label.cargoes[i] = cargoes[i];
-		for (; i < MAX_CARGOES; i++) this->u.cargo_label.cargoes[i] = INVALID_CARGO;
+		assert(std::size(cargoes) <= std::size(this->u.cargo_label.cargoes));
+		auto insert = std::copy(std::begin(cargoes), std::end(cargoes), std::begin(this->u.cargo_label.cargoes));
+		std::fill(insert, std::end(this->u.cargo_label.cargoes), INVALID_CARGO);
 		this->u.cargo_label.left_align = left_align;
 	}
 
@@ -2197,7 +2190,7 @@ struct CargoesField {
 				}
 
 				/* Draw the other_produced/other_accepted cargoes. */
-				const CargoID *other_right, *other_left;
+				std::span<const CargoID> other_right, other_left;
 				if (_current_text_dir == TD_RTL) {
 					other_right = this->u.industry.other_accepted;
 					other_left  = this->u.industry.other_produced;
@@ -2471,7 +2464,7 @@ struct CargoesRow {
 			int col = cargo_fld->ConnectCargo(cargo_fld->u.cargo.vertical_cargoes[i], !accepting);
 			if (col >= 0) cargoes[col] = cargo_fld->u.cargo.vertical_cargoes[i];
 		}
-		label_fld->MakeCargoLabel(cargoes, lengthof(cargoes), accepting);
+		label_fld->MakeCargoLabel(cargoes, accepting);
 	}
 
 
@@ -2670,34 +2663,29 @@ struct IndustryCargoesWindow : public Window {
 
 	/**
 	 * Do the two sets of cargoes have a valid cargo in common?
-	 * @param cargoes1 Base address of the first cargo array.
-	 * @param length1  Number of cargoes in the first cargo array.
-	 * @param cargoes2 Base address of the second cargo array.
-	 * @param length2  Number of cargoes in the second cargo array.
+	 * @param cargoes1 Span of the first cargo list.
+	 * @param cargoes2 Span of the second cargo list.
 	 * @return Arrays have at least one valid cargo in common.
 	 */
-	static bool HasCommonValidCargo(const CargoID *cargoes1, uint length1, const CargoID *cargoes2, uint length2)
+	static bool HasCommonValidCargo(const std::span<const CargoID> cargoes1, const std::span<const CargoID> cargoes2)
 	{
-		while (length1 > 0) {
-			if (IsValidCargoID(*cargoes1)) {
-				for (uint i = 0; i < length2; i++) if (*cargoes1 == cargoes2[i]) return true;
+		for (const CargoID cid1 : cargoes1) {
+			if (!IsValidCargoID(cid1)) continue;
+			for (const CargoID cid2 : cargoes2) {
+				if (cid1 == cid2) return true;
 			}
-			cargoes1++;
-			length1--;
 		}
 		return false;
 	}
 
 	/**
 	 * Can houses be used to supply one of the cargoes?
-	 * @param cargoes Base address of the cargo array.
-	 * @param length  Number of cargoes in the array.
+	 * @param cargoes Span of cargo list.
 	 * @return Houses can supply at least one of the cargoes.
 	 */
-	static bool HousesCanSupply(const CargoID *cargoes, uint length)
+	static bool HousesCanSupply(const std::span<const CargoID> cargoes)
 	{
-		for (uint i = 0; i < length; i++) {
-			CargoID cid = cargoes[i];
+		for (const CargoID cid : cargoes) {
 			if (!IsValidCargoID(cid)) continue;
 			TownProductionEffect tpe = CargoSpec::Get(cid)->town_production_effect;
 			if (tpe == TPE_PASSENGERS || tpe == TPE_MAIL) return true;
@@ -2707,11 +2695,10 @@ struct IndustryCargoesWindow : public Window {
 
 	/**
 	 * Can houses be used as customers of the produced cargoes?
-	 * @param cargoes Base address of the cargo array.
-	 * @param length  Number of cargoes in the array.
+	 * @param cargoes Span of cargo list.
 	 * @return Houses can accept at least one of the cargoes.
 	 */
-	static bool HousesCanAccept(const CargoID *cargoes, uint length)
+	static bool HousesCanAccept(const std::span<const CargoID> cargoes)
 	{
 		HouseZones climate_mask;
 		switch (_settings_game.game_creation.landscape) {
@@ -2721,14 +2708,14 @@ struct IndustryCargoesWindow : public Window {
 			case LT_TOYLAND:   climate_mask = HZ_TOYLND; break;
 			default: NOT_REACHED();
 		}
-		for (uint i = 0; i < length; i++) {
-			if (!IsValidCargoID(cargoes[i])) continue;
+		for (const CargoID cid : cargoes) {
+			if (!IsValidCargoID(cid)) continue;
 
 			for (const auto &hs : HouseSpec::Specs()) {
 				if (!hs.enabled || !(hs.building_availability & climate_mask)) continue;
 
 				for (uint j = 0; j < lengthof(hs.accepts_cargo); j++) {
-					if (hs.cargo_acceptance[j] > 0 && cargoes[i] == hs.accepts_cargo[j]) return true;
+					if (hs.cargo_acceptance[j] > 0 && cid == hs.accepts_cargo[j]) return true;
 				}
 			}
 		}
@@ -2738,17 +2725,16 @@ struct IndustryCargoesWindow : public Window {
 	/**
 	 * Count how many industries have accepted cargoes in common with one of the supplied set.
 	 * @param cargoes Cargoes to search.
-	 * @param length  Number of cargoes in \a cargoes.
 	 * @return Number of industries that have an accepted cargo in common with the supplied set.
 	 */
-	static int CountMatchingAcceptingIndustries(const CargoID *cargoes, uint length)
+	static int CountMatchingAcceptingIndustries(const std::span<const CargoID> cargoes)
 	{
 		int count = 0;
 		for (IndustryType it = 0; it < NUM_INDUSTRYTYPES; it++) {
 			const IndustrySpec *indsp = GetIndustrySpec(it);
 			if (!indsp->enabled) continue;
 
-			if (HasCommonValidCargo(cargoes, length, indsp->accepts_cargo, lengthof(indsp->accepts_cargo))) count++;
+			if (HasCommonValidCargo(cargoes, indsp->accepts_cargo)) count++;
 		}
 		return count;
 	}
@@ -2756,17 +2742,16 @@ struct IndustryCargoesWindow : public Window {
 	/**
 	 * Count how many industries have produced cargoes in common with one of the supplied set.
 	 * @param cargoes Cargoes to search.
-	 * @param length  Number of cargoes in \a cargoes.
 	 * @return Number of industries that have a produced cargo in common with the supplied set.
 	 */
-	static int CountMatchingProducingIndustries(const CargoID *cargoes, uint length)
+	static int CountMatchingProducingIndustries(const std::span<const CargoID> cargoes)
 	{
 		int count = 0;
 		for (IndustryType it = 0; it < NUM_INDUSTRYTYPES; it++) {
 			const IndustrySpec *indsp = GetIndustrySpec(it);
 			if (!indsp->enabled) continue;
 
-			if (HasCommonValidCargo(cargoes, length, indsp->produced_cargo, lengthof(indsp->produced_cargo))) count++;
+			if (HasCommonValidCargo(cargoes, indsp->produced_cargo)) count++;
 		}
 		return count;
 	}
@@ -2841,18 +2826,18 @@ struct IndustryCargoesWindow : public Window {
 		first_row.columns[4].MakeHeader(STR_INDUSTRY_CARGOES_CUSTOMERS);
 
 		const IndustrySpec *central_sp = GetIndustrySpec(displayed_it);
-		bool houses_supply = HousesCanSupply(central_sp->accepts_cargo, lengthof(central_sp->accepts_cargo));
-		bool houses_accept = HousesCanAccept(central_sp->produced_cargo, lengthof(central_sp->produced_cargo));
+		bool houses_supply = HousesCanSupply(central_sp->accepts_cargo);
+		bool houses_accept = HousesCanAccept(central_sp->produced_cargo);
 		/* Make a field consisting of two cargo columns. */
-		int num_supp = CountMatchingProducingIndustries(central_sp->accepts_cargo, lengthof(central_sp->accepts_cargo)) + houses_supply;
-		int num_cust = CountMatchingAcceptingIndustries(central_sp->produced_cargo, lengthof(central_sp->produced_cargo)) + houses_accept;
+		int num_supp = CountMatchingProducingIndustries(central_sp->accepts_cargo) + houses_supply;
+		int num_cust = CountMatchingAcceptingIndustries(central_sp->produced_cargo) + houses_accept;
 		int num_indrows = std::max(3, std::max(num_supp, num_cust)); // One is needed for the 'it' industry, and 2 for the cargo labels.
 		for (int i = 0; i < num_indrows; i++) {
 			CargoesRow &row = this->fields.emplace_back();
 			row.columns[0].MakeEmpty(CFT_EMPTY);
-			row.columns[1].MakeCargo(central_sp->accepts_cargo, lengthof(central_sp->accepts_cargo));
+			row.columns[1].MakeCargo(central_sp->accepts_cargo);
 			row.columns[2].MakeEmpty(CFT_EMPTY);
-			row.columns[3].MakeCargo(central_sp->produced_cargo, lengthof(central_sp->produced_cargo));
+			row.columns[3].MakeCargo(central_sp->produced_cargo);
 			row.columns[4].MakeEmpty(CFT_EMPTY);
 		}
 		/* Add central industry. */
@@ -2872,12 +2857,12 @@ struct IndustryCargoesWindow : public Window {
 			const IndustrySpec *indsp = GetIndustrySpec(it);
 			if (!indsp->enabled) continue;
 
-			if (HasCommonValidCargo(central_sp->accepts_cargo, lengthof(central_sp->accepts_cargo), indsp->produced_cargo, lengthof(indsp->produced_cargo))) {
+			if (HasCommonValidCargo(central_sp->accepts_cargo, indsp->produced_cargo)) {
 				this->PlaceIndustry(1 + supp_count * num_indrows / num_supp, 0, it);
 				_displayed_industries.set(it);
 				supp_count++;
 			}
-			if (HasCommonValidCargo(central_sp->produced_cargo, lengthof(central_sp->produced_cargo), indsp->accepts_cargo, lengthof(indsp->accepts_cargo))) {
+			if (HasCommonValidCargo(central_sp->produced_cargo, indsp->accepts_cargo)) {
 				this->PlaceIndustry(1 + cust_count * num_indrows / num_cust, 4, it);
 				_displayed_industries.set(it);
 				cust_count++;
@@ -2917,15 +2902,16 @@ struct IndustryCargoesWindow : public Window {
 		first_row.columns[3].MakeEmpty(CFT_SMALL_EMPTY);
 		first_row.columns[4].MakeEmpty(CFT_SMALL_EMPTY);
 
-		bool houses_supply = HousesCanSupply(&cid, 1);
-		bool houses_accept = HousesCanAccept(&cid, 1);
-		int num_supp = CountMatchingProducingIndustries(&cid, 1) + houses_supply + 1; // Ensure room for the cargo label.
-		int num_cust = CountMatchingAcceptingIndustries(&cid, 1) + houses_accept;
+		auto cargoes = std::span(&cid, 1);
+		bool houses_supply = HousesCanSupply(cargoes);
+		bool houses_accept = HousesCanAccept(cargoes);
+		int num_supp = CountMatchingProducingIndustries(cargoes) + houses_supply + 1; // Ensure room for the cargo label.
+		int num_cust = CountMatchingAcceptingIndustries(cargoes) + houses_accept;
 		int num_indrows = std::max(num_supp, num_cust);
 		for (int i = 0; i < num_indrows; i++) {
 			CargoesRow &row = this->fields.emplace_back();
 			row.columns[0].MakeEmpty(CFT_EMPTY);
-			row.columns[1].MakeCargo(&cid, 1);
+			row.columns[1].MakeCargo(cargoes);
 			row.columns[2].MakeEmpty(CFT_EMPTY);
 			row.columns[3].MakeEmpty(CFT_EMPTY);
 			row.columns[4].MakeEmpty(CFT_EMPTY);
@@ -2940,12 +2926,12 @@ struct IndustryCargoesWindow : public Window {
 			const IndustrySpec *indsp = GetIndustrySpec(it);
 			if (!indsp->enabled) continue;
 
-			if (HasCommonValidCargo(&cid, 1, indsp->produced_cargo, lengthof(indsp->produced_cargo))) {
+			if (HasCommonValidCargo(cargoes, indsp->produced_cargo)) {
 				this->PlaceIndustry(1 + supp_count * num_indrows / num_supp, 0, it);
 				_displayed_industries.set(it);
 				supp_count++;
 			}
-			if (HasCommonValidCargo(&cid, 1, indsp->accepts_cargo, lengthof(indsp->accepts_cargo))) {
+			if (HasCommonValidCargo(cargoes, indsp->accepts_cargo)) {
 				this->PlaceIndustry(1 + cust_count * num_indrows / num_cust, 2, it);
 				_displayed_industries.set(it);
 				cust_count++;
