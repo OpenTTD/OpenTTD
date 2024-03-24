@@ -252,5 +252,5 @@ public:
 	 * @note This is a function provided by OpenTTD, you don't have to
 	 * include it in your Script but should just call it from GetSettings.
 	 */
-	void AddLabels(const char *setting_name, table value_names);
+	void AddLabels(string setting_name, table value_names);
 };

@@ -92,7 +92,7 @@ public:
 	 *
 	 * @return Data of the script that should be stored in the save game.
 	 */
-	SquirrelTable Save();
+	table Save();
 
 	/**
 	 * Load saved data just before calling #Start.
@@ -100,7 +100,7 @@ public:
 	 * @param version Version number of the script that created the \a data.
 	 * @param data Data that was saved (return value of #Save).
 	 */
-	void Load(int version, SquirrelTable data);
+	void Load(int version, table data);
 #endif /* DOXYGEN_API */
 
 	/**

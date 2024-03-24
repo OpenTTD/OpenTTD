@@ -136,6 +136,16 @@ BEGIN {
 	next
 }
 
+# Convert/unify type names
+{
+	gsub(/\<SQInteger\>/, "int")
+	gsub(/\<SquirrelTable\>/, "table")
+	gsub(/\<u?int[0-9]*(_t)?\>/, "int")
+	gsub(/\<HSQOBJECT\>/, "object")
+	gsub(/std::optional<std::string>/, "string")
+	gsub(/(const )?std::string *[*&]?/, "string ")
+}
+
 # Store comments
 /\/\*\*.*\*\//   { comment_buffer = $0; comment = "false"; next; }
 /\/\*.*\*\//     { comment_buffer = ""; comment = "false"; next; }

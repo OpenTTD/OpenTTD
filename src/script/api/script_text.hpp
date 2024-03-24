@@ -112,14 +112,14 @@ public:
 	 * @param parameter Which parameter to set.
 	 * @param value The value of the parameter. Has to be string, integer or an instance of the class ScriptText.
 	 */
-	void SetParam(int parameter, Object value);
+	void SetParam(int parameter, object value);
 
 	/**
 	 * Add a value as parameter (appending it).
 	 * @param value The value of the parameter. Has to be string, integer or an instance of the class ScriptText.
 	 * @return The same object as on which this is called, so you can chain.
 	 */
-	ScriptText *AddParam(Object value);
+	ScriptText *AddParam(object value);
 #endif /* DOXYGEN_API */
 
 	/**
