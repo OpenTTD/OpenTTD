@@ -21,6 +21,8 @@ class ScriptOrder : public ScriptObject {
 public:
 	/**
 	 * All order related error messages.
+	 *
+	 * @see ScriptErrorType
 	 */
 	enum ErrorMessages {
 		/** Base for all order related errors */

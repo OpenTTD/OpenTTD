@@ -135,6 +135,11 @@ typedef uint32_t TileIndex;    ///< The ID of a map location.
 typedef uint16_t TownID;       ///< The ID of a town.
 typedef uint32_t VehicleID;    ///< The ID of a vehicle.
 
-typedef uint ScriptErrorType;///< The types of errors inside the script framework.
+/**
+ * The types of errors inside the script framework.
+ *
+ * Possible value are defined inside each API class in an ErrorMessages enum.
+ */
+typedef uint ScriptErrorType;
 
 #endif /* SCRIPT_TYPES_HPP */

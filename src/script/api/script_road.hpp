@@ -22,6 +22,8 @@ class ScriptRoad : public ScriptObject {
 public:
 	/**
 	 * All road related error messages.
+	 *
+	 * @see ScriptErrorType
 	 */
 	enum ErrorMessages {
 		/** Base for road building / maintaining errors */
