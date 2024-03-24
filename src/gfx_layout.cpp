@@ -93,6 +93,8 @@ static inline void GetLayouter(Layouter::LineCacheItem &line, std::string_view s
 			state.PopColour();
 		} else if (c >= SCC_FIRST_FONT && c <= SCC_LAST_FONT) {
 			state.SetFontSize((FontSize)(c - SCC_FIRST_FONT));
+		} else if (c == 0x200B) {
+			/* Zero-width space. */
 		} else {
 			/* Filter out non printable characters */
 			if (!IsPrintable(c)) continue;
