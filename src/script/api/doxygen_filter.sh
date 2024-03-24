@@ -21,6 +21,7 @@ fi
 case $2 in
 	*ai_changelog.hpp) cat $2; exit 0;;
 	*game_changelog.hpp) cat $2; exit 0;;
+	*script_types.hpp) cat $2; exit 0;;
 esac
 
 ${AWK} -v api=$1 -f doxygen_filter.awk $2
