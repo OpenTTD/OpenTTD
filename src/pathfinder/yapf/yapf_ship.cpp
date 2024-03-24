@@ -45,8 +45,9 @@ protected:
 public:
 	void SetDestination(const Ship *v)
 	{
-		if (v->current_order.IsType(OT_GOTO_STATION)) {
+		if (v->current_order.IsType(OT_GOTO_STATION) || v->current_order.IsType(OT_LEAVESTATION)) {
 			m_destStation = v->current_order.GetDestination();
+			assert(Station::IsValidID(m_destStation));
 			m_destTile = CalcClosestStationTile(m_destStation, v->tile, STATION_DOCK);
 			m_destTrackdirs = INVALID_TRACKDIR_BIT;
 		} else {
