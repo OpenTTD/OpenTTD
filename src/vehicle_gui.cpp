@@ -454,16 +454,25 @@ DropDownList BaseVehicleListWindow::BuildActionDropdownList(bool show_autoreplac
 {
 	DropDownList list;
 
-	if (show_autoreplace) list.push_back(std::make_unique<DropDownListStringItem>(STR_VEHICLE_LIST_REPLACE_VEHICLES, ADI_REPLACE, false));
-	list.push_back(std::make_unique<DropDownListStringItem>(STR_VEHICLE_LIST_SEND_FOR_SERVICING, ADI_SERVICE, false));
-	list.push_back(std::make_unique<DropDownListStringItem>(this->vehicle_depot_name[this->vli.vtype], ADI_DEPOT, false));
+	/* Autoreplace actions. */
+	if (show_autoreplace) {
+		list.push_back(std::make_unique<DropDownListStringItem>(STR_VEHICLE_LIST_REPLACE_VEHICLES, ADI_REPLACE, false));
+		list.push_back(std::make_unique<DropDownListDividerItem>(-1, false));
+	}
 
+	/* Group actions. */
 	if (show_group) {
 		list.push_back(std::make_unique<DropDownListStringItem>(STR_GROUP_ADD_SHARED_VEHICLE, ADI_ADD_SHARED, false));
 		list.push_back(std::make_unique<DropDownListStringItem>(STR_GROUP_REMOVE_ALL_VEHICLES, ADI_REMOVE_ALL, false));
+		list.push_back(std::make_unique<DropDownListDividerItem>(-1, false));
 	} else if (show_create) {
 		list.push_back(std::make_unique<DropDownListStringItem>(STR_VEHICLE_LIST_CREATE_GROUP, ADI_CREATE_GROUP, false));
+		list.push_back(std::make_unique<DropDownListDividerItem>(-1, false));
 	}
+
+	/* Depot actions. */
+	list.push_back(std::make_unique<DropDownListStringItem>(STR_VEHICLE_LIST_SEND_FOR_SERVICING, ADI_SERVICE, false));
+	list.push_back(std::make_unique<DropDownListStringItem>(this->vehicle_depot_name[this->vli.vtype], ADI_DEPOT, false));
 
 	return list;
 }
