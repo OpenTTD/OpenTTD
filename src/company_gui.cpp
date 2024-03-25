@@ -54,6 +54,7 @@
 /** Company GUI constants. */
 static void DoSelectCompanyManagerFace(Window *parent);
 static void ShowCompanyInfrastructure(CompanyID company);
+std::vector<CompanyID> _viewport_infrastructure_window_order;
 
 /** List of revenues. */
 static const std::initializer_list<ExpensesType> _expenses_list_revenue = {
@@ -1790,6 +1791,23 @@ struct CompanyInfrastructureWindow : Window
 
 	uint total_width; ///< String width of the total cost line.
 
+	/**
+	 * Hide the window and all its child windows, and mark them for a later deletion.
+	 * Stop white highlight of company owned infrastructure
+	 */
+	void Close([[maybe_unused]] int data) override
+	{
+		auto to_remove_from_order = std::find(_viewport_infrastructure_window_order.begin(), _viewport_infrastructure_window_order.end(), (CompanyID)this->window_number);
+
+		/* Cautious error checking */
+		if (to_remove_from_order != _viewport_infrastructure_window_order.end()) {
+			_viewport_infrastructure_window_order.erase(to_remove_from_order);
+		}
+
+		MarkWholeScreenDirty();
+		this->Window::Close();
+	}
+
 	CompanyInfrastructureWindow(WindowDesc *desc, WindowNumber window_number) : Window(desc)
 	{
 		this->UpdateRailRoadTypes();
@@ -2109,12 +2127,24 @@ static WindowDesc _company_infrastructure_desc(
 
 /**
  * Open the infrastructure window of a company.
+ * Signal to the viewport to highlight company owned infrastructure
  * @param company Company to show infrastructure of.
  */
 static void ShowCompanyInfrastructure(CompanyID company)
 {
 	if (!Company::IsValidID(company)) return;
 	AllocateWindowDescFront<CompanyInfrastructureWindow>(&_company_infrastructure_desc, company);
+
+	/* Check if already open then move up in the order */
+	auto to_moveup_in_order = std::find(_viewport_infrastructure_window_order.begin(), _viewport_infrastructure_window_order.end(), company);
+
+	/* Cautious error checking */
+	if (to_moveup_in_order != _viewport_infrastructure_window_order.end()) {
+		_viewport_infrastructure_window_order.erase(to_moveup_in_order);
+	}
+
+	_viewport_infrastructure_window_order.push_back(company);
+	MarkWholeScreenDirty();
 }
 
 static constexpr NWidgetPart _nested_company_widgets[] = {
