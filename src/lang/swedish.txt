@@ -1054,7 +1054,7 @@ STR_GAME_OPTIONS_GUI_SCALE_BEVELS                               :{BLACK}Skala b�
 STR_GAME_OPTIONS_GUI_SCALE_BEVELS_TOOLTIP                       :{BLACK}Kryssa i den här rutan för att skala bården efter gränssnittets storlek
 
 STR_GAME_OPTIONS_GUI_FONT_SPRITE                                :{BLACK}Använd traditionellt sprite-typsnitt
-STR_GAME_OPTIONS_GUI_FONT_SPRITE_TOOLTIP                        :{BLACK}Kryssa i den här rutan om du föredrar att använda det traditionella sprite-typsnittet med fast storlek.
+STR_GAME_OPTIONS_GUI_FONT_SPRITE_TOOLTIP                        :{BLACK}Kryssa i den här rutan om du föredrar att använda det traditionella sprite-typsnittet med fast storlek
 STR_GAME_OPTIONS_GUI_FONT_AA                                    :{BLACK}Anti-alias-typsnitt
 STR_GAME_OPTIONS_GUI_FONT_AA_TOOLTIP                            :{BLACK}Kryssa i den här rutan för anti-aliasing av typsnitt med justerbar storlek.
 
@@ -1275,7 +1275,7 @@ STR_CONFIG_SETTING_INFINITE_MONEY                               :Obegränsat kap
 STR_CONFIG_SETTING_INFINITE_MONEY_HELPTEXT                      :Tillåt obegränsat spenderande och inaktivera konkurser av företag
 
 STR_CONFIG_SETTING_MAXIMUM_INITIAL_LOAN                         :Maximalt startlån: {STRING}
-STR_CONFIG_SETTING_MAXIMUM_INITIAL_LOAN_HELPTEXT                :Maximalt belopp ett företag kan låna (där inflationen inte tas med i beräkningen). Om inställt på "Inga lån" kommer inga pengar finnas tillgängliga såvida inte utdelat av ett spelskript eller inställningen "Obegränsat kapital".
+STR_CONFIG_SETTING_MAXIMUM_INITIAL_LOAN_HELPTEXT                :Maximalt belopp ett företag kan låna (där inflationen inte tas med i beräkningen). Om inställt på "Inga lån" kommer inga pengar finnas tillgängliga såvida inte utdelat av ett spelskript eller inställningen "Obegränsat kapital"
 STR_CONFIG_SETTING_MAXIMUM_INITIAL_LOAN_VALUE                   :{CURRENCY_LONG}
 ###setting-zero-is-special
 STR_CONFIG_SETTING_MAXIMUM_INITIAL_LOAN_DISABLED                :Inga lån
@@ -1359,7 +1359,7 @@ STR_CONFIG_SETTING_ROAD_VEHICLE_SLOPE_STEEPNESS                 :Sluttningars lu
 STR_CONFIG_SETTING_ROAD_VEHICLE_SLOPE_STEEPNESS_HELPTEXT        :Lutningsgrad för lutande rutor för vägfordon. Högre värden gör det svårare att komma upp för en backe
 
 STR_CONFIG_SETTING_FORBID_90_DEG                                :Förbjud tåg att göra 90°-svängar: {STRING}
-STR_CONFIG_SETTING_FORBID_90_DEG_HELPTEXT                       :90-graderssvängar inträffar då ett horisontellt spår följs direkt av ett vertikalt spår på angränsande ruta, vilket tvingar tåget att svänga 90 grader om det kör utefter spåret. Detta i motsats till andra kombinationer av spårbitar där tåget svänger 45 grader i taget.
+STR_CONFIG_SETTING_FORBID_90_DEG_HELPTEXT                       :90-graderssvängar inträffar då ett horisontellt spår följs direkt av ett vertikalt spår på angränsande ruta, vilket tvingar tåget att svänga 90 grader om det kör utefter spåret. Detta i motsats till andra kombinationer av spårbitar där tåget svänger 45 grader i taget
 
 STR_CONFIG_SETTING_DISTANT_JOIN_STATIONS                        :Tillåt att stationer som inte är byggda direkt brevid varandra slås ihop: {STRING}
 STR_CONFIG_SETTING_DISTANT_JOIN_STATIONS_HELPTEXT               :Tillåt tillägg av stationsdelar till en station utan direktkontakt med existerande delar genom Ctrl+Klick vid utplacering av nya delar.
@@ -1508,9 +1508,9 @@ STR_CONFIG_SETTING_MINUTES_PER_YEAR_VALUE                       :{NUM}
 STR_CONFIG_SETTING_MINUTES_PER_YEAR_FROZEN                      :0 (kalendertid frusen)
 
 STR_CONFIG_SETTING_TOWN_CARGO_SCALE                             :Skala godsproduktionen för städer: {STRING}
-STR_CONFIG_SETTING_TOWN_CARGO_SCALE_HELPTEXT                    :Skala godsproduktionen för städer med detta procentantal.
+STR_CONFIG_SETTING_TOWN_CARGO_SCALE_HELPTEXT                    :Skala godsproduktionen för städer med detta procenttal
 STR_CONFIG_SETTING_INDUSTRY_CARGO_SCALE                         :Skala godsproduktionen för industrier: {STRING}
-STR_CONFIG_SETTING_INDUSTRY_CARGO_SCALE_HELPTEXT                :Skala godsproduktionen för industrier med detta procentantal.
+STR_CONFIG_SETTING_INDUSTRY_CARGO_SCALE_HELPTEXT                :Skala godsproduktionen för industrier med detta procenttal
 STR_CONFIG_SETTING_CARGO_SCALE_VALUE                            :{NUM}%
 
 STR_CONFIG_SETTING_AUTORENEW_VEHICLE                            :Förnya fordon automatiskt när de blir gamla: {STRING}
@@ -1541,7 +1541,7 @@ STR_CONFIG_SETTING_GRAPH_LINE_THICKNESS                         :Linjetjocklek i
 STR_CONFIG_SETTING_GRAPH_LINE_THICKNESS_HELPTEXT                :Linjernas bredd i grafernas kurvor. En tunn linje är lättare att läsa av mer precist, medan en tjockare linje är lättare att se och gör det lättare att skilja mellan de olika färgerna
 
 STR_CONFIG_SETTING_SHOW_NEWGRF_NAME                             :Visa NewGRF:ens namn i fordonsbyggnadsfönstret: {STRING}
-STR_CONFIG_SETTING_SHOW_NEWGRF_NAME_HELPTEXT                    :Lägg till en rad i fordonsbyggnadsfönstret som visar vilken NewGRF det valda fordonet kommer ifrån.
+STR_CONFIG_SETTING_SHOW_NEWGRF_NAME_HELPTEXT                    :Lägg till en rad i fordonsbyggnadsfönstret som visar vilken NewGRF det valda fordonet kommer ifrån
 STR_CONFIG_SETTING_SHOW_CARGO_IN_LISTS                          :Visa godstyper som fordonen kan transportera i listorna {STRING}
 STR_CONFIG_SETTING_SHOW_CARGO_IN_LISTS_HELPTEXT                 :Om det är aktiverat kommer fordonets transportabla last att visas ovanför den i fordonslistor
 
@@ -1818,7 +1818,7 @@ STR_CONFIG_SETTING_AI_IN_MULTIPLAYER_HELPTEXT                   :Tillåt datorst
 STR_CONFIG_SETTING_SCRIPT_MAX_OPCODES                           :#opcodes innan skript sätts i viloläge: {STRING}
 STR_CONFIG_SETTING_SCRIPT_MAX_OPCODES_HELPTEXT                  :Maximalt antal beräkningssteg ett skript kan utföra i en omgång
 STR_CONFIG_SETTING_SCRIPT_MAX_MEMORY                            :Maximal minnesanvändning per skript: {STRING}
-STR_CONFIG_SETTING_SCRIPT_MAX_MEMORY_HELPTEXT                   :Hur mycket minne ett enda skript kan konsumera innan det tvingas avslutas. Det kan behöva ökas för stora kartor.
+STR_CONFIG_SETTING_SCRIPT_MAX_MEMORY_HELPTEXT                   :Hur mycket minne ett enda skript kan konsumera innan det tvingas avslutas. Det kan behöva utökas för stora kartor
 STR_CONFIG_SETTING_SCRIPT_MAX_MEMORY_VALUE                      :{COMMA} MiB
 
 STR_CONFIG_SETTING_SERVINT_ISPERCENT                            :Visa serviceintervall i procent: {STRING}
@@ -1911,7 +1911,7 @@ STR_CONFIG_SETTING_ENDING_YEAR_VALUE                            :{NUM}
 STR_CONFIG_SETTING_ENDING_YEAR_ZERO                             :Aldrig
 
 STR_CONFIG_SETTING_ECONOMY_TYPE                                 :Typ av ekonomi: {STRING}
-STR_CONFIG_SETTING_ECONOMY_TYPE_HELPTEXT                        :Jämn ekonomi gör att produktionen ändrar sig oftare i mindre steg. Frusen ekonomi förhindrar produktions ändringar och att industrier stänger. Denna inställning har ingen effekt om industrien kommer från en NewGRF.
+STR_CONFIG_SETTING_ECONOMY_TYPE_HELPTEXT                        :Jämn ekonomi gör att produktionen ändrar sig oftare och i mindre steg. Frusen ekonomi förhindrar produktionsändringar och att industrier stänger. Denna inställning kan vara verkningslös om en NewGRF bidrar med industrityper
 ###length 3
 STR_CONFIG_SETTING_ECONOMY_TYPE_ORIGINAL                        :Original
 STR_CONFIG_SETTING_ECONOMY_TYPE_SMOOTH                          :Jämn
@@ -2036,13 +2036,13 @@ STR_CONFIG_SETTING_LINKGRAPH_RECALC_TIME                        :Ta {STRING} fö
 STR_CONFIG_SETTING_LINKGRAPH_RECALC_TIME_HELPTEXT               :Tid som det tar för varje omräkning av en länkdiagramkomponent. När en omräkning startas skapas en tråd som tillåts köra i detta antal sekunder. Ju kortare du ställer in detta desto mer sannolikt är det att tråden inte är färdig när den ska. Sedan stannar spelet tills det är ("lag"). Ju längre du ställer in den desto längre tid tar det för distributionen att uppdateras när rutter ändras.
 
 STR_CONFIG_SETTING_DISTRIBUTION_PAX                             :Distributionssätt för passagerare: {STRING}
-STR_CONFIG_SETTING_DISTRIBUTION_PAX_HELPTEXT                    :"Symmetriskt" innebär att ungefär samma antal passagerare färdas från station A till station B som från B till A. "Asymmetriskt" innebär att en godtycklig mängd passagerare kan färdas i vardera riktningen. "Manuellt" innebär att ingen automatisk distribution av passagerare sker.
+STR_CONFIG_SETTING_DISTRIBUTION_PAX_HELPTEXT                    :"Symmetriskt" innebär att ungefär samma antal passagerare färdas från station A till station B som från B till A. "Asymmetriskt" innebär att en godtycklig mängd passagerare kan färdas i vardera riktningen. "Manuellt" innebär att ingen automatisk distribution av passagerare sker
 STR_CONFIG_SETTING_DISTRIBUTION_MAIL                            :Distributionssätt för post: {STRING}
-STR_CONFIG_SETTING_DISTRIBUTION_MAIL_HELPTEXT                   :"Symmetriskt" innebär att ungefär samma mängd post skickas från station A till station B som från B till A. "Asymmetriskt" innebär att en godtycklig mängd post kan skickas i vardera riktningen. "Manuellt" innebär att ingen automatisk distribution av post sker.
+STR_CONFIG_SETTING_DISTRIBUTION_MAIL_HELPTEXT                   :"Symmetriskt" innebär att ungefär samma mängd post skickas från station A till station B som från B till A. "Asymmetriskt" innebär att en godtycklig mängd post kan skickas i vardera riktningen. "Manuellt" innebär att ingen automatisk distribution av post sker
 STR_CONFIG_SETTING_DISTRIBUTION_ARMOURED                        :Distributionssätt för den BEPANSRADE godsklassen: {STRING}
-STR_CONFIG_SETTING_DISTRIBUTION_ARMOURED_HELPTEXT               :Den BEPANSRADE godsklassen innehåller värdesaker i det tempererade, diamanter i det subtropiska eller guld i det subarktiska klimatet. NewGRFer kan ändra detta. "Symmetriskt" innebär att ungefär samma mängd av detta gods skickas från station A till station B som från B till A. "Asymmetriskt" innebär att en godtycklig mängd av detta gods kan skickas i vardera riktningen. "Manuellt" innebär att ingen automatisk distribution av denna godstyp sker. Det är rekommenderat att välja "asymmetriskt" eller "manuellt" vid subarktiskt eller subtropiskt klimat, då banker endast tar emot gods i dessa klimat. Vid tempererat klimat kan även "symmetriskt" väljas, då banker kan skicka tillbaka värdesaker till den bank de kom ifrån.
+STR_CONFIG_SETTING_DISTRIBUTION_ARMOURED_HELPTEXT               :Den BEPANSRADE godsklassen innehåller värdesaker i det tempererade, diamanter i det subtropiska eller guld i det subarktiska klimatet. NewGRFer kan ändra detta. "Symmetriskt" innebär att ungefär samma mängd av detta gods skickas från station A till station B som från B till A. "Asymmetriskt" innebär att en godtycklig mängd av detta gods kan skickas i vardera riktningen. "Manuellt" innebär att ingen automatisk distribution av denna godstyp sker. Det är rekommenderat att välja "asymmetriskt" eller "manuellt" vid subarktiskt eller subtropiskt klimat, då banker endast tar emot gods i dessa klimat. Vid tempererat klimat kan även "symmetriskt" väljas, då banker kan skicka tillbaka värdesaker till den bank de kom ifrån
 STR_CONFIG_SETTING_DISTRIBUTION_DEFAULT                         :Distributionssätt för övriga godsklasser: {STRING}
-STR_CONFIG_SETTING_DISTRIBUTION_DEFAULT_HELPTEXT                :"Asymmetriskt" innebär att en godtycklig mängd gods kan skickas i vardera riktningen. "Manuellt" innebär att ingen automatisk distribution av dessa godstyper sker.
+STR_CONFIG_SETTING_DISTRIBUTION_DEFAULT_HELPTEXT                :"Asymmetriskt" innebär att en godtycklig mängd gods kan skickas i vardera riktningen. "Manuellt" innebär att ingen automatisk distribution av dessa godstyper sker
 ###length 3
 STR_CONFIG_SETTING_DISTRIBUTION_MANUAL                          :manuellt
 STR_CONFIG_SETTING_DISTRIBUTION_ASYMMETRIC                      :asymmetriskt
@@ -2574,6 +2574,7 @@ STR_NETWORK_ERROR_BAD_PLAYER_NAME                               :{WHITE}Du har i
 STR_NETWORK_ERROR_BAD_SERVER_NAME                               :{WHITE}Du har inte angivit något servernamn. Namninställning kan göras högst upp i flerspelarfönstret
 STR_NETWORK_ERROR_WRONG_REVISION                                :{WHITE}Servern har en annan version än denna klient
 STR_NETWORK_ERROR_WRONG_PASSWORD                                :{WHITE}Fel lösenord
+STR_NETWORK_ERROR_NOT_ON_ALLOW_LIST                             :{WHITE}Du finns ej med på listan över tillåtna klienter
 STR_NETWORK_ERROR_SERVER_FULL                                   :{WHITE}Servern är full
 STR_NETWORK_ERROR_SERVER_BANNED                                 :{WHITE}Du är bannlyst från den här servern
 STR_NETWORK_ERROR_KICKED                                        :{WHITE}Du blev utkastad från spelet
@@ -2601,6 +2602,7 @@ STR_NETWORK_ERROR_CLIENT_NOT_EXPECTED                           :mottog felaktig
 STR_NETWORK_ERROR_CLIENT_WRONG_REVISION                         :fel revision
 STR_NETWORK_ERROR_CLIENT_NAME_IN_USE                            :namnet används redan
 STR_NETWORK_ERROR_CLIENT_WRONG_PASSWORD                         :fel lösenord
+STR_NETWORK_ERROR_CLIENT_NOT_ON_ALLOW_LIST                      :ej på tillåt-listan
 STR_NETWORK_ERROR_CLIENT_COMPANY_MISMATCH                       :fel företags-id i DoCommand
 STR_NETWORK_ERROR_CLIENT_KICKED                                 :utkastad av servern
 STR_NETWORK_ERROR_CLIENT_CHEATER                                :försökte fuska
@@ -2981,9 +2983,9 @@ STR_TREES_RANDOM_TREES_TOOLTIP                                  :{BLACK}Plantera
 STR_TREES_MODE_NORMAL_BUTTON                                    :{BLACK}Normal
 STR_TREES_MODE_NORMAL_TOOLTIP                                   :{BLACK}Plantera träd genom att dra över landskapet.
 STR_TREES_MODE_FOREST_SM_BUTTON                                 :{BLACK}Skogsdunge
-STR_TREES_MODE_FOREST_SM_TOOLTIP                                :{BLACK}Plantera mindre skogar genom att dra över landskapet.
+STR_TREES_MODE_FOREST_SM_TOOLTIP                                :{BLACK}Plantera mindre skogar genom att dra över landskapet
 STR_TREES_MODE_FOREST_LG_BUTTON                                 :{BLACK}Skog
-STR_TREES_MODE_FOREST_LG_TOOLTIP                                :{BLACK}Plantera större skogar genom att dra över landskapet.
+STR_TREES_MODE_FOREST_LG_TOOLTIP                                :{BLACK}Plantera större skogar genom att dra över landskapet
 
 # Land generation window (SE)
 STR_TERRAFORM_TOOLBAR_LAND_GENERATION_CAPTION                   :{WHITE}Skapa mark
@@ -4031,7 +4033,7 @@ STR_GROUP_CREATE_TOOLTIP                                        :{BLACK}Klicka f
 STR_GROUP_DELETE_TOOLTIP                                        :{BLACK}Ta bort vald grupp
 STR_GROUP_RENAME_TOOLTIP                                        :{BLACK}Byt namn på vald grupp
 STR_GROUP_LIVERY_TOOLTIP                                        :{BLACK}Byt färgschema på vald grupp
-STR_GROUP_REPLACE_PROTECTION_TOOLTIP                            :{BLACK}Klicka för att skydda denna grupp mot allmän automatisk förnyelse. Ctrl+klicka för att också skydda undergrupper.
+STR_GROUP_REPLACE_PROTECTION_TOOLTIP                            :{BLACK}Klicka för att skydda denna grupp mot allmän automatisk förnyelse. Ctrl+klicka för att också skydda undergrupper
 
 STR_QUERY_GROUP_DELETE_CAPTION                                  :{WHITE}Ta bort grupp
 STR_GROUP_DELETE_QUERY_TEXT                                     :{WHITE} Är du säker på att du vill ta bort denna grupp och alla efterkommande?
@@ -4221,7 +4223,7 @@ STR_DEPOT_CLONE_AIRCRAFT                                        :{BLACK}Klona fl
 STR_DEPOT_CLONE_TRAIN_DEPOT_INFO                                :{BLACK}Köp en kopia av ett tåg inklusive alla vagnar. Klicka på denna knapp och sen på ett tåg i eller utanför depån. Ctrl+Klick för att dela ordrar. Håll även in Shift för att endast visa uppskattad kostnad
 STR_DEPOT_CLONE_ROAD_VEHICLE_DEPOT_INFO                         :{BLACK}Köp en kopia av ett vägfordon. Klicka på denna knapp och sen på ett vägfordon i eller utanför depån. Ctrl+Klick för att dela ordrar. Håll även in Shift för att endast visa uppskattad kostnad
 STR_DEPOT_CLONE_SHIP_DEPOT_INFO                                 :{BLACK}Köp en kopia av ett skepp. Klicka på denna knapp och sen på ett skepp i eller utanför depån. Ctrl+Klick för att dela ordrar. Håll även in Shift för att endast visa uppskattad kostnad
-STR_DEPOT_CLONE_AIRCRAFT_INFO_HANGAR_WINDOW                     :{BLACK}Köp en kopia av en flygfarkost. Klicka på denna knapp och sen på en flygfarkost i eller utanför hangaren. Ctrl+Klick för att dela ordrar. Håll även in Shift för att endast visa uppskattad kostnad
+STR_DEPOT_CLONE_AIRCRAFT_INFO_HANGAR_WINDOW                     :{BLACK}Köp en kopia av en flygfarkost. Klicka på denna knapp och sedan på en flygfarkost i eller utanför hangaren. Ctrl+klicka för att dela ordrar. Håll även in Shift för att endast visa uppskattad kostnad
 
 ###length VEHICLE_TYPES
 STR_DEPOT_TRAIN_LOCATION_TOOLTIP                                :{BLACK}Centrera huvudvyn ovanför depån. Ctrl+Klick för att öppna en ny fönstervy över tågdepåns läge
@@ -4993,7 +4995,7 @@ STR_ERROR_CAN_T_BUY_COMPANY                                     :{WHITE}Kan inte
 STR_ERROR_CAN_T_BUILD_COMPANY_HEADQUARTERS                      :{WHITE}Kan inte bygga huvudkontor här...
 
 # Town related errors
-STR_ERROR_CAN_T_GENERATE_TOWN                                   :{WHITE}Kan inte bygga några städer
+STR_ERROR_CAN_T_GENERATE_TOWN                                   :{WHITE}Kan inte bygga några städer...
 STR_ERROR_CAN_T_RENAME_TOWN                                     :{WHITE}Kan inte byta namn på stad...
 STR_ERROR_CAN_T_FOUND_TOWN_HERE                                 :{WHITE}Kan inte grunda stad här...
 STR_ERROR_CAN_T_EXPAND_TOWN                                     :{WHITE}Kan inte expandera stad...

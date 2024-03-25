@@ -241,7 +241,7 @@ STR_UNITS_WEIGHT_LONG_METRIC                                    :{DECIMAL}{NBSP}
 STR_UNITS_WEIGHT_LONG_SI                                        :{DECIMAL}{NBSP}kg
 
 STR_UNITS_VOLUME_SHORT_IMPERIAL                                 :{DECIMAL}{NBSP}gal
-STR_UNITS_VOLUME_SHORT_METRIC                                   :{DECIMAL}{NBSP}l
+STR_UNITS_VOLUME_SHORT_METRIC                                   :{DECIMAL}{NBSP}L
 STR_UNITS_VOLUME_SHORT_SI                                       :{DECIMAL}{NBSP}m³
 
 STR_UNITS_VOLUME_LONG_IMPERIAL                                  :{DECIMAL}{NBSP}gal{P ão ões}
@@ -609,7 +609,7 @@ STR_GRAPH_Y_LABEL_NUMBER                                        :{TINY_FONT}{COM
 STR_GRAPH_OPERATING_PROFIT_CAPTION                              :{WHITE}Gráfico do Lucro Operacional
 STR_GRAPH_INCOME_CAPTION                                        :{WHITE}Gráfico de Rendimentos
 STR_GRAPH_CARGO_DELIVERED_CAPTION                               :{WHITE}Unidades de carga entregada
-STR_GRAPH_COMPANY_PERFORMANCE_RATINGS_CAPTION                   :{WHITE}Classificações do desempenho da empresa (máximo=1000)
+STR_GRAPH_COMPANY_PERFORMANCE_RATINGS_CAPTION                   :{WHITE}Classificação do desempenho das empresas (máximo=1000)
 STR_GRAPH_COMPANY_VALUES_CAPTION                                :{WHITE}Gráfico de Valor da Empresa
 
 STR_GRAPH_LAST_72_MINUTES_TIME_LABEL                            :{TINY_FONT}{BLACK}Últimos 72 minutos
@@ -618,8 +618,8 @@ STR_GRAPH_CARGO_PAYMENT_RATES_CAPTION                           :{WHITE}Tarifas 
 STR_GRAPH_CARGO_PAYMENT_RATES_DAYS                              :{TINY_FONT}{BLACK}Dias em trânsito
 STR_GRAPH_CARGO_PAYMENT_RATES_SECONDS                           :{TINY_FONT}{BLACK}Segundos em trânsito
 STR_GRAPH_CARGO_PAYMENT_RATES_TITLE                             :{TINY_FONT}{BLACK}Pagamento por entregar 10 unidades (ou 10 mil litros) de carga em uma distância de 20 quadrados
-STR_GRAPH_CARGO_ENABLE_ALL                                      :{TINY_FONT}{BLACK}Habilitar tudo
-STR_GRAPH_CARGO_DISABLE_ALL                                     :{TINY_FONT}{BLACK}Desabilitar tudo
+STR_GRAPH_CARGO_ENABLE_ALL                                      :{TINY_FONT}{BLACK}Ativar tudo
+STR_GRAPH_CARGO_DISABLE_ALL                                     :{TINY_FONT}{BLACK}Desativar tudo
 STR_GRAPH_CARGO_TOOLTIP_ENABLE_ALL                              :{BLACK}Mostrar todas as cargas no gráfico de receitas por carga
 STR_GRAPH_CARGO_TOOLTIP_DISABLE_ALL                             :{BLACK}Não mostrar cargas no gráfico de receitas por carga
 STR_GRAPH_CARGO_PAYMENT_TOGGLE_CARGO                            :{BLACK}Mostrar/Ocultar gráfico para o tipo de carga
@@ -758,9 +758,9 @@ STR_SMALLMAP_TOOLTIP_SHOW_LINK_STATS_ON_MAP                     :{BLACK}Mostrar 
 STR_SMALLMAP_TOOLTIP_SHOW_TRANSPORT_ROUTES_ON                   :{BLACK}Mostrar rotas de transporte no mapa
 STR_SMALLMAP_TOOLTIP_SHOW_VEGETATION_ON_MAP                     :{BLACK}Mostrar vegetação no mapa
 STR_SMALLMAP_TOOLTIP_SHOW_LAND_OWNERS_ON_MAP                    :{BLACK}Mostrar proprietários dos terrenos no mapa
-STR_SMALLMAP_TOOLTIP_INDUSTRY_SELECTION                         :{BLACK}Clique em um tipo de indústria para mostrar/ocultar a indústria. Ctrl+Clique para desabilitar todos os tipos, exceto o selecionado. Ctrl+Clique novamente para habilitar todos os tipos de indústrias
-STR_SMALLMAP_TOOLTIP_COMPANY_SELECTION                          :{BLACK}Clique em uma empresa para mostrar/ocultar suas propriedades. Ctrl+Clique para desabilitar todas as empresas, exceto a selecionada. Ctrl+Clique novamente para habilitar todas as empresas
-STR_SMALLMAP_TOOLTIP_CARGO_SELECTION                            :{BLACK}Clique em uma carga para mostrar/ocultar suas propriedades. Ctrl+Clique para desabilitar todas as cargas, exceto a selecionada. Ctrl+Clique novamente para habilitar todas as cargas
+STR_SMALLMAP_TOOLTIP_INDUSTRY_SELECTION                         :{BLACK}Clique em um tipo de indústria para mostrar/ocultar a indústria. Ctrl+Clique para desativar todos os tipos, exceto o selecionado. Ctrl+Clique novamente para ativar todos os tipos de indústrias
+STR_SMALLMAP_TOOLTIP_COMPANY_SELECTION                          :{BLACK}Clique em uma empresa para mostrar/ocultar suas propriedades. Ctrl+Clique para desativar todas as empresas, exceto a selecionada. Ctrl+Clique novamente para ativar todas as empresas
+STR_SMALLMAP_TOOLTIP_CARGO_SELECTION                            :{BLACK}Clique em uma carga para mostrar/ocultar sua propriedade. Ctrl+Clique para desativar todas as cargas, exceto a selecionada. Ctrl+Clique novamente para ativar todas as cargas
 
 STR_SMALLMAP_LEGENDA_ROADS                                      :{TINY_FONT}{BLACK}Estradas
 STR_SMALLMAP_LEGENDA_RAILROADS                                  :{TINY_FONT}{BLACK}Ferrovias
@@ -880,7 +880,7 @@ STR_NEWS_INDUSTRY_PRODUCTION_INCREASE_COAL                      :{BIG_FONT}{BLAC
 STR_NEWS_INDUSTRY_PRODUCTION_INCREASE_OIL                       :{BIG_FONT}{BLACK}Novas reservas de petróleo encontradas n{G o a} {INDUSTRY}!{}A produção deverá duplicar!
 STR_NEWS_INDUSTRY_PRODUCTION_INCREASE_FARM                      :{BIG_FONT}{BLACK}Métodos agrícolas aperfeiçoados na {INDUSTRY} deverão duplicar a produção!
 STR_NEWS_INDUSTRY_PRODUCTION_INCREASE_SMOOTH                    :{BIG_FONT}{BLACK}Produção de {STRING} n{G o a} {INDUSTRY} aumenta {COMMA}%!
-STR_NEWS_INDUSTRY_PRODUCTION_DECREASE_GENERAL                   :{BIG_FONT}{BLACK}A produção de {INDUSTRY} diminui 50%
+STR_NEWS_INDUSTRY_PRODUCTION_DECREASE_GENERAL                   :{BIG_FONT}{BLACK}{INDUSTRY} diminui a produção em 50%
 STR_NEWS_INDUSTRY_PRODUCTION_DECREASE_FARM                      :{BIG_FONT}{BLACK}Infestação de insetos causa destruição n{G o a} {INDUSTRY}!{}Produção diminui 50%
 STR_NEWS_INDUSTRY_PRODUCTION_DECREASE_SMOOTH                    :{BIG_FONT}{BLACK}Produção de {STRING} n{G o a} {INDUSTRY} diminui {COMMA}%!
 
@@ -1543,7 +1543,7 @@ STR_CONFIG_SETTING_GRAPH_LINE_THICKNESS_HELPTEXT                :Espessura da li
 
 STR_CONFIG_SETTING_SHOW_NEWGRF_NAME                             :Mostrar o nome do NewGRF na janela de comprar veículos: {STRING}
 STR_CONFIG_SETTING_SHOW_NEWGRF_NAME_HELPTEXT                    :Adicionar uma linha na janela de aquisição de veículos, mostrando a qual NewGRF pertence o veículo selecionado
-STR_CONFIG_SETTING_SHOW_CARGO_IN_LISTS                          :Mostrar as cargas que os veículos podem transportar nas janelas de listagem: {STRING}
+STR_CONFIG_SETTING_SHOW_CARGO_IN_LISTS                          :Mostrar nas janelas de listagem as cargas que os veículos podem transportar: {STRING}
 STR_CONFIG_SETTING_SHOW_CARGO_IN_LISTS_HELPTEXT                 :Se ativado, a carga transportável pelo veículo aparecerá acima dele nas listas de veículos
 
 STR_CONFIG_SETTING_LANDSCAPE                                    :Clima: {STRING}
@@ -1561,7 +1561,7 @@ STR_CONFIG_SETTING_TERRAIN_TYPE_HELPTEXT                        :Escolher a altu
 STR_CONFIG_SETTING_INDUSTRY_DENSITY                             :Densidade de indústrias: {STRING}
 STR_CONFIG_SETTING_INDUSTRY_DENSITY_HELPTEXT                    :Definir quantas indústrias devem ser geradas e que nível deve ser mantido durante o jogo
 
-STR_CONFIG_SETTING_OIL_REF_EDGE_DISTANCE                        :Distância máxima entre a borda do mapa para Refinarias de Petróleo: {STRING}
+STR_CONFIG_SETTING_OIL_REF_EDGE_DISTANCE                        :Distância máxima entre Refinarias de Petróleo e a borda do mapa: {STRING}
 STR_CONFIG_SETTING_OIL_REF_EDGE_DISTANCE_HELPTEXT               :Limite de distância entre a borda do mapa e o local de construção de refinarias e plataformas de petróleo. Em mapas de ilhas isso garante que elas fiquem perto da costa. Em mapas com mais de 256 quadrados esse valor é aumentado
 
 STR_CONFIG_SETTING_SNOWLINE_HEIGHT                              :Altura da linha de neve: {STRING}
@@ -1840,8 +1840,8 @@ STR_CONFIG_SETTING_SERVINT_DISABLED                             :Desativado
 STR_CONFIG_SETTING_NOSERVICE                                    :Desativar manutenção quando as quebras estão desativadas: {STRING}
 STR_CONFIG_SETTING_NOSERVICE_HELPTEXT                           :Quando ativado, veículos não recebem manutenção se não podem quebrar
 
-STR_CONFIG_SETTING_STATION_LENGTH_LOADING_PENALTY               :Penalidade de velocidade de carregamento para trens que são mais longos que a estação: {STRING}
-STR_CONFIG_SETTING_STATION_LENGTH_LOADING_PENALTY_HELPTEXT      :Quando ativado, os trens que são muito compridos para a estação demoram mais tempo para carregar do que um trem que cabe na estação. Esta configuração não afeta a geração de rotas
+STR_CONFIG_SETTING_STATION_LENGTH_LOADING_PENALTY               :Penalizar a velocidade de carregamento para trens que são mais longos que a estação: {STRING}
+STR_CONFIG_SETTING_STATION_LENGTH_LOADING_PENALTY_HELPTEXT      :Quando ativado, os trens que são muito compridos para a estação são carregados mais lentamente do que um trem que cabe na estação. Esta configuração não afeta a geração de rotas
 
 STR_CONFIG_SETTING_WAGONSPEEDLIMITS                             :Ativar limite de velocidade para vagões: {STRING}
 STR_CONFIG_SETTING_WAGONSPEEDLIMITS_HELPTEXT                    :Quando ativado, usa o limite de velocidade dos vagões para definir a velocidade máxima de um trem
@@ -1906,7 +1906,7 @@ STR_CONFIG_SETTING_COLOURED_NEWS_YEAR_HELPTEXT                  :Ano em que os j
 STR_CONFIG_SETTING_STARTING_YEAR                                :Data de início: {STRING}
 
 STR_CONFIG_SETTING_ENDING_YEAR                                  :Pontuação no fim do ano: {STRING}
-STR_CONFIG_SETTING_ENDING_YEAR_HELPTEXT                         :Ano em que o jogo termina para fins de pontuação. No fim desse ano, a pontuação da empresa é registrada e a tela de pontuação máxima é exibida, mas os jogadores podem continuar jogando depois disso.{}Se isso for antes do ano de início, a tela de pontuação máxima nunca será exibida
+STR_CONFIG_SETTING_ENDING_YEAR_HELPTEXT                         :Ano em que o jogo termina para fins de pontuação. No fim desse ano, a pontuação da empresa é registrada e o painel de classificação é exibido, mas os jogadores podem continuar jogando depois disso.{}Se isso for antes do ano de início, o painel de classificação nunca será exibido
 STR_CONFIG_SETTING_ENDING_YEAR_VALUE                            :{NUM}
 ###setting-zero-is-special
 STR_CONFIG_SETTING_ENDING_YEAR_ZERO                             :Nunca
@@ -2205,7 +2205,7 @@ STR_INTRO_TOOLTIP_SUB_TROPICAL_LANDSCAPE                        :{BLACK}Selecion
 STR_INTRO_TOOLTIP_TOYLAND_LANDSCAPE                             :{BLACK}Selecionar paisagem 'Terra dos brinquedos'
 
 STR_INTRO_TOOLTIP_GAME_OPTIONS                                  :{BLACK}Abrir opções de jogo
-STR_INTRO_TOOLTIP_HIGHSCORE                                     :{BLACK}Abrir tabela de classificação
+STR_INTRO_TOOLTIP_HIGHSCORE                                     :{BLACK}Mostrar classificação das melhores empresas
 STR_INTRO_TOOLTIP_HELP                                          :{BLACK}Acessar a documentação e recursos online
 STR_INTRO_TOOLTIP_CONFIG_SETTINGS_TREE                          :{BLACK}Abrir configurações
 STR_INTRO_TOOLTIP_NEWGRF_SETTINGS                               :{BLACK}Abrir configurações de NewGRF
@@ -2236,7 +2236,7 @@ STR_HELP_WINDOW_README                                          :{BLACK}Leia-me
 STR_HELP_WINDOW_CHANGELOG                                       :{BLACK}Registro de modificações
 STR_HELP_WINDOW_KNOWN_BUGS                                      :{BLACK}Erros conhecidos
 STR_HELP_WINDOW_LICENSE                                         :{BLACK}Licença
-STR_HELP_WINDOW_MAIN_WEBSITE                                    :{BLACK}Site do OpenTTD
+STR_HELP_WINDOW_MAIN_WEBSITE                                    :{BLACK}OpenTTD
 STR_HELP_WINDOW_MANUAL_WIKI                                     :{BLACK}Manual / Wiki
 STR_HELP_WINDOW_BUGTRACKER                                      :{BLACK}Relatar um erro
 STR_HELP_WINDOW_COMMUNITY                                       :{BLACK}Comunidade
@@ -2253,7 +2253,7 @@ STR_CHEAT_EDIT_MAX_HL_QUERY_CAPT                                :{WHITE}Editar a
 STR_CHEAT_CHANGE_DATE                                           :{LTBLUE}Alterar data: {ORANGE}{DATE_SHORT}
 STR_CHEAT_CHANGE_DATE_QUERY_CAPT                                :{WHITE}Alterar o ano atual
 STR_CHEAT_SETUP_PROD                                            :{LTBLUE}Permitir modificar os valores de produção: {ORANGE}{STRING}
-STR_CHEAT_STATION_RATING                                        :{LTBLUE}Fixar classificações da estação em 100%: {ORANGE}{STRING}
+STR_CHEAT_STATION_RATING                                        :{LTBLUE}Fixar classificação das estações em 100%: {ORANGE}{STRING}
 
 # Livery window
 STR_LIVERY_CAPTION                                              :{WHITE}{COMPANY} - Esquema de cores
@@ -3365,7 +3365,7 @@ STR_MAPGEN_HEIGHTMAP_ROTATION                                   :{BLACK}Rotaçã
 STR_MAPGEN_HEIGHTMAP_NAME                                       :{BLACK}Nome do mapa de altitudes:
 STR_MAPGEN_HEIGHTMAP_NAME_TOOLTIP                               :{BLACK}O nome do arquivo de imagem do mapa de altitudes
 STR_MAPGEN_HEIGHTMAP_SIZE_LABEL                                 :{BLACK}Tamanho:
-STR_MAPGEN_HEIGHTMAP_SIZE_LABEL_TOOLTIP                         :{BLACK}O tamanho da imagem original do mapa de altitudes. Para obter melhores resultados, cada lado deve corresponder a um comprimento de lado de mapa disponível no OpenTTD, tais como 256, 512, 1024, etc.
+STR_MAPGEN_HEIGHTMAP_SIZE_LABEL_TOOLTIP                         :{BLACK}O tamanho da imagem original do mapa de altitudes. Para obter resultados melhores, cada lado deve corresponder a um comprimento de lado de mapa disponível no OpenTTD, tais como 256, 512, 1024, etc.
 STR_MAPGEN_HEIGHTMAP_SIZE                                       :{ORANGE}{NUM} x {NUM}
 
 STR_MAPGEN_TERRAIN_TYPE_QUERY_CAPT                              :{WHITE}Altura do pico mais elevado
@@ -3645,7 +3645,7 @@ STR_TOWN_VIEW_RENAME_TOWN_BUTTON                                :Renomear Locali
 STR_LOCAL_AUTHORITY_CAPTION                                     :{WHITE}Autoridade local de {TOWN}
 STR_LOCAL_AUTHORITY_ZONE                                        :{BLACK}Região
 STR_LOCAL_AUTHORITY_ZONE_TOOLTIP                                :{BLACK}Mostrar a região dentro dos limites da autoridade local
-STR_LOCAL_AUTHORITY_COMPANY_RATINGS                             :{BLACK}Classificações das empresas de transporte:
+STR_LOCAL_AUTHORITY_COMPANY_RATINGS                             :{BLACK}Classificação das empresas de transporte:
 STR_LOCAL_AUTHORITY_COMPANY_RATING                              :{YELLOW}{COMPANY} {COMPANY_NUM}: {ORANGE}{STRING}
 STR_LOCAL_AUTHORITY_ACTIONS_TITLE                               :{BLACK}Ações disponíveis:
 STR_LOCAL_AUTHORITY_ACTIONS_TOOLTIP                             :{BLACK}Lista de ações disponíveis nesta localidade - clique em um item para mais detalhes
@@ -4398,13 +4398,13 @@ STR_VEHICLE_STATUS_HEADING_FOR_STATION_VEL                      :{LTBLUE}{1:VELO
 STR_VEHICLE_STATUS_NO_ORDERS_VEL                                :{LTBLUE}{VELOCITY} - Sem ordens
 STR_VEHICLE_STATUS_HEADING_FOR_WAYPOINT_VEL                     :{LTBLUE}{1:VELOCITY} - Indo para {0:WAYPOINT}
 STR_VEHICLE_STATUS_HEADING_FOR_DEPOT_VEL                        :{ORANGE}{1:VELOCITY} - Indo para {0:DEPOT}
-STR_VEHICLE_STATUS_HEADING_FOR_DEPOT_SERVICE_VEL                :{LTBLUE}{1:VELOCITY} - Manutenção em {0:DEPOT}
-STR_VEHICLE_STATUS_HEADING_FOR_DEPOT_UNBUNCH_VEL                :{LTBLUE}{1:VELOCITY} - Desagrupar e manutenção em {0:DEPOT}
+STR_VEHICLE_STATUS_HEADING_FOR_DEPOT_SERVICE_VEL                :{LTBLUE}{1:VELOCITY} - Manutenção no {0:DEPOT}
+STR_VEHICLE_STATUS_HEADING_FOR_DEPOT_UNBUNCH_VEL                :{LTBLUE}{1:VELOCITY} - Desagrupar e manutenção no {0:DEPOT}
 
 STR_VEHICLE_STATUS_CANNOT_REACH_STATION_VEL                     :{LTBLUE}{1:VELOCITY} - Não é possível chegar em {0:STATION}
 STR_VEHICLE_STATUS_CANNOT_REACH_WAYPOINT_VEL                    :{LTBLUE}{1:VELOCITY} - Não é possível chegar em {0:WAYPOINT}
-STR_VEHICLE_STATUS_CANNOT_REACH_DEPOT_VEL                       :{ORANGE}{1:VELOCITY} - Não é possível chegar em {0:DEPOT}
-STR_VEHICLE_STATUS_CANNOT_REACH_DEPOT_SERVICE_VEL               :{LTBLUE}{1:VELOCITY} - Não é possível chegar em {0:DEPOT}
+STR_VEHICLE_STATUS_CANNOT_REACH_DEPOT_VEL                       :{ORANGE}{1:VELOCITY} - Não é possível chegar no {0:DEPOT}
+STR_VEHICLE_STATUS_CANNOT_REACH_DEPOT_SERVICE_VEL               :{LTBLUE}{1:VELOCITY} - Não é possível chegar no {0:DEPOT}
 
 # Vehicle stopped/started animations
 ###length 2
@@ -4851,7 +4851,7 @@ STR_AI_SETTINGS_SETTING                                         :{STRING}: {ORAN
 
 
 # Textfile window
-STR_TEXTFILE_JUMPLIST                                           :{WHITE}Tabela de Conteúdo
+STR_TEXTFILE_JUMPLIST                                           :{WHITE}Índice
 STR_TEXTFILE_JUMPLIST_TOOLTIP                                   :{BLACK}Acesso rápido a uma seção do arquivo mostrado nesta lista
 STR_TEXTFILE_JUMPLIST_ITEM                                      :{WHITE}{STRING}
 STR_TEXTFILE_NAVBACK_TOOLTIP                                    :{BLACK}Retornar no histórico de navegação

@@ -4450,10 +4450,10 @@ STR_VEHICLE_INFO_CAPACITY_CAPACITY                              :{BLACK}Capacit�
 STR_VEHICLE_INFO_FEEDER_CARGO_VALUE                             :{BLACK}Crédits de transfert{NBSP}: {LTBLUE}{CURRENCY_LONG}
 
 STR_VEHICLE_DETAILS_SERVICING_INTERVAL_DAYS                     :{BLACK}Intervalle d'entretien{NBSP}: {LTBLUE}{COMMA}{NBSP}jours{BLACK}   {STRING}
-STR_VEHICLE_DETAILS_SERVICING_INTERVAL_MINUTES                  :{BLACK}Intervalle de service{NBSP}: {LTBLUE}{COMMA}{NBSP}minutes{BLACK}   {STRING}
+STR_VEHICLE_DETAILS_SERVICING_INTERVAL_MINUTES                  :{BLACK}Intervalle de service{NBSP}: {LTBLUE}{COMMA}{NBSP}minute{P "" s}{BLACK} {STRING}
 STR_VEHICLE_DETAILS_SERVICING_INTERVAL_PERCENT                  :{BLACK}Intervalle d'entretien{NBSP}: {LTBLUE}{COMMA}{NBSP}%{BLACK}   {STRING}
 STR_VEHICLE_DETAILS_LAST_SERVICE_DATE                           :Dernier entretien{NBSP}: {LTBLUE}{DATE_LONG}
-STR_VEHICLE_DETAILS_LAST_SERVICE_MINUTES_AGO                    :Dernier entretien{NBSP}: {LTBLUE}il y a {NUM} minutes
+STR_VEHICLE_DETAILS_LAST_SERVICE_MINUTES_AGO                    :Dernier entretien{NBSP}: {LTBLUE}il y a {NUM} minute{P "" s}
 STR_VEHICLE_DETAILS_INCREASE_SERVICING_INTERVAL_TOOLTIP_DAYS    :{BLACK}Augmenter l'intervalle d'entretien de 10 jours. Ctrl-clic pour l'augmenter de 5 jours
 STR_VEHICLE_DETAILS_INCREASE_SERVICING_INTERVAL_TOOLTIP_MINUTES :{BLACK}Augmenter l'intervalle d'entretien de 5 minutes. Ctrl-clic pour l'augmenter de 1 minute
 STR_VEHICLE_DETAILS_INCREASE_SERVICING_INTERVAL_TOOLTIP_PERCENT :{BLACK}Augmenter l'intervalle d'entretien de 10%. Ctrl-clic pour l'augmenter de 5%
@@ -4996,7 +4996,7 @@ STR_ERROR_CAN_T_BUY_COMPANY                                     :{WHITE}Impossib
 STR_ERROR_CAN_T_BUILD_COMPANY_HEADQUARTERS                      :{WHITE}Impossible de construire le siège...
 
 # Town related errors
-STR_ERROR_CAN_T_GENERATE_TOWN                                   :{WHITE}Ne peut plus bâtir de villes
+STR_ERROR_CAN_T_GENERATE_TOWN                                   :{WHITE}Ne peut plus bâtir de villes...
 STR_ERROR_CAN_T_RENAME_TOWN                                     :{WHITE}Impossible de renommer la ville...
 STR_ERROR_CAN_T_FOUND_TOWN_HERE                                 :{WHITE}Impossible de construire une ville ici...
 STR_ERROR_CAN_T_EXPAND_TOWN                                     :{WHITE}Impossible d'étendre la ville...
