@@ -2655,9 +2655,7 @@ struct IndustryCargoesWindow : public Window {
 		}
 	}
 
-
-	CargoesFieldType type; ///< Type of field.
-	void SetStringParameters  (WidgetID widget) const override
+	void SetStringParameters(WidgetID widget) const override
 	{
 		if (widget != WID_IC_CAPTION) return;
 
