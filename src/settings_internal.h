@@ -164,6 +164,12 @@ struct IntSettingDesc : SettingDesc {
 	 * @param The new value for the setting.
 	 */
 	typedef void PostChangeCallback(int32_t value);
+	/**
+	 * A callback to set the correct default value, in case it can be measured in time
+	 * units or expressed as a percentage.
+	 * @param value The prospective new value for the setting.
+	 */
+	typedef void GetDefaultValueCallback(int32_t &value);
 
 	template <
 		typename Tdef,
@@ -178,11 +184,13 @@ struct IntSettingDesc : SettingDesc {
 	IntSettingDesc(const SaveLoad &save, SettingFlag flags, bool startup, Tdef def,
 			Tmin min, Tmax max, Tinterval interval, StringID str, StringID str_help, StringID str_val,
 			SettingCategory cat, PreChangeCheck pre_check, PostChangeCallback post_callback,
-			GetTitleCallback get_title_cb, GetHelpCallback get_help_cb, SetValueDParamsCallback set_value_dparams_cb) :
+			GetTitleCallback get_title_cb, GetHelpCallback get_help_cb, SetValueDParamsCallback set_value_dparams_cb,
+			GetDefaultValueCallback get_def_cb) :
 		SettingDesc(save, flags, startup),
 			str(str), str_help(str_help), str_val(str_val), cat(cat), pre_check(pre_check),
 			post_callback(post_callback),
-			get_title_cb(get_title_cb), get_help_cb(get_help_cb), set_value_dparams_cb(set_value_dparams_cb) {
+			get_title_cb(get_title_cb), get_help_cb(get_help_cb), set_value_dparams_cb(set_value_dparams_cb),
+			get_def_cb(get_def_cb) {
 		if constexpr (std::is_base_of_v<StrongTypedefBase, Tdef>) {
 			this->def = def.base();
 		} else {
@@ -221,6 +229,7 @@ struct IntSettingDesc : SettingDesc {
 	GetTitleCallback *get_title_cb;
 	GetHelpCallback *get_help_cb;
 	SetValueDParamsCallback *set_value_dparams_cb;
+	GetDefaultValueCallback *get_def_cb; ///< Callback to set the correct default value
 
 	StringID GetTitle() const;
 	StringID GetHelp() const;
@@ -254,9 +263,10 @@ struct BoolSettingDesc : IntSettingDesc {
 	BoolSettingDesc(const SaveLoad &save, SettingFlag flags, bool startup, bool def,
 			StringID str, StringID str_help, StringID str_val, SettingCategory cat,
 			PreChangeCheck pre_check, PostChangeCallback post_callback,
-			GetTitleCallback get_title_cb, GetHelpCallback get_help_cb, SetValueDParamsCallback set_value_dparams_cb) :
+			GetTitleCallback get_title_cb, GetHelpCallback get_help_cb, SetValueDParamsCallback set_value_dparams_cb,
+			GetDefaultValueCallback get_def_cb) :
 		IntSettingDesc(save, flags, startup, def ? 1 : 0, 0, 1, 0, str, str_help, str_val, cat,
-			pre_check, post_callback, get_title_cb, get_help_cb, set_value_dparams_cb) {}
+			pre_check, post_callback, get_title_cb, get_help_cb, set_value_dparams_cb, get_def_cb) {}
 
 	static std::optional<bool> ParseSingleValue(const char *str);
 
@@ -273,9 +283,9 @@ struct OneOfManySettingDesc : IntSettingDesc {
 			int32_t max, StringID str, StringID str_help, StringID str_val, SettingCategory cat,
 			PreChangeCheck pre_check, PostChangeCallback post_callback,
 			GetTitleCallback get_title_cb, GetHelpCallback get_help_cb, SetValueDParamsCallback set_value_dparams_cb,
-			std::initializer_list<const char *> many, OnConvert *many_cnvt) :
+			GetDefaultValueCallback get_def_cb, std::initializer_list<const char *> many, OnConvert *many_cnvt) :
 		IntSettingDesc(save, flags, startup, def, 0, max, 0, str, str_help, str_val, cat,
-			pre_check, post_callback, get_title_cb, get_help_cb, set_value_dparams_cb), many_cnvt(many_cnvt)
+			pre_check, post_callback, get_title_cb, get_help_cb, set_value_dparams_cb, get_def_cb), many_cnvt(many_cnvt)
 	{
 		for (auto one : many) this->many.push_back(one);
 	}
@@ -296,9 +306,9 @@ struct ManyOfManySettingDesc : OneOfManySettingDesc {
 		int32_t def, StringID str, StringID str_help, StringID str_val, SettingCategory cat,
 		PreChangeCheck pre_check, PostChangeCallback post_callback,
 		GetTitleCallback get_title_cb, GetHelpCallback get_help_cb, SetValueDParamsCallback set_value_dparams_cb,
-		std::initializer_list<const char *> many, OnConvert *many_cnvt) :
+		GetDefaultValueCallback get_def_cb, std::initializer_list<const char *> many, OnConvert *many_cnvt) :
 		OneOfManySettingDesc(save, flags, startup, def, (1 << many.size()) - 1, str, str_help,
-			str_val, cat, pre_check, post_callback, get_title_cb, get_help_cb, set_value_dparams_cb, many, many_cnvt) {}
+			str_val, cat, pre_check, post_callback, get_title_cb, get_help_cb, set_value_dparams_cb, get_def_cb, many, many_cnvt) {}
 
 	size_t ParseValue(const char *str) const override;
 	std::string FormatValue(const void *object) const override;
