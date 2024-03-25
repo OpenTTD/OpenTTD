@@ -251,7 +251,7 @@ NetworkRecvStatus ServerNetworkGameSocketHandler::CloseConnection(NetworkRecvSta
 
 		/* Inform other clients of this... strange leaving ;) */
 		for (NetworkClientSocket *new_cs : NetworkClientSocket::Iterate()) {
-			if (new_cs->status > STATUS_AUTHORIZED && this != new_cs) {
+			if (new_cs->status >= STATUS_AUTHORIZED && this != new_cs) {
 				new_cs->SendErrorQuit(this->client_id, NETWORK_ERROR_CONNECTION_LOST);
 			}
 		}
@@ -369,7 +369,7 @@ NetworkRecvStatus ServerNetworkGameSocketHandler::SendError(NetworkErrorCode err
 	StringID strid = GetNetworkErrorMsg(error);
 
 	/* Only send when the current client was in game */
-	if (this->status > STATUS_AUTHORIZED) {
+	if (this->status >= STATUS_AUTHORIZED) {
 		std::string client_name = this->GetClientName();
 
 		Debug(net, 1, "'{}' made an error and has been disconnected: {}", client_name, GetString(strid));
