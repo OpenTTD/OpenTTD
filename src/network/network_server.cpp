@@ -1252,7 +1252,7 @@ void NetworkServerSendChat(NetworkAction action, DestType desttype, int dest, co
 			} else {
 				/* Else find the client to send the message to */
 				for (NetworkClientSocket *cs : NetworkClientSocket::Iterate()) {
-					if (cs->client_id == (ClientID)dest) {
+					if (cs->client_id == (ClientID)dest && cs->status >= ServerNetworkGameSocketHandler::STATUS_AUTHORIZED) {
 						cs->SendChat(action, from_id, false, msg, data);
 						break;
 					}
@@ -1269,7 +1269,7 @@ void NetworkServerSendChat(NetworkAction action, DestType desttype, int dest, co
 					}
 				} else {
 					for (NetworkClientSocket *cs : NetworkClientSocket::Iterate()) {
-						if (cs->client_id == from_id) {
+						if (cs->client_id == from_id && cs->status >= ServerNetworkGameSocketHandler::STATUS_AUTHORIZED) {
 							cs->SendChat(action, (ClientID)dest, true, msg, data);
 							break;
 						}
@@ -1284,7 +1284,7 @@ void NetworkServerSendChat(NetworkAction action, DestType desttype, int dest, co
 			ci_to = nullptr;
 			for (NetworkClientSocket *cs : NetworkClientSocket::Iterate()) {
 				ci = cs->GetInfo();
-				if (ci != nullptr && ci->client_playas == (CompanyID)dest) {
+				if (ci != nullptr && ci->client_playas == (CompanyID)dest && cs->status >= ServerNetworkGameSocketHandler::STATUS_AUTHORIZED) {
 					cs->SendChat(action, from_id, false, msg, data);
 					if (cs->client_id == from_id) show_local = false;
 					ci_to = ci; // Remember a client that is in the company for company-name
@@ -1316,7 +1316,7 @@ void NetworkServerSendChat(NetworkAction action, DestType desttype, int dest, co
 					NetworkTextMessage(action, GetDrawStringCompanyColour(ci_own->client_playas), true, name, msg, data);
 				} else {
 					for (NetworkClientSocket *cs : NetworkClientSocket::Iterate()) {
-						if (cs->client_id == from_id) {
+						if (cs->client_id == from_id && cs->status >= ServerNetworkGameSocketHandler::STATUS_AUTHORIZED) {
 							cs->SendChat(action, ci_to->client_id, true, msg, data);
 						}
 					}
@@ -1330,7 +1330,7 @@ void NetworkServerSendChat(NetworkAction action, DestType desttype, int dest, co
 
 		case DESTTYPE_BROADCAST:
 			for (NetworkClientSocket *cs : NetworkClientSocket::Iterate()) {
-				cs->SendChat(action, from_id, false, msg, data);
+				if (cs->status >= ServerNetworkGameSocketHandler::STATUS_AUTHORIZED) cs->SendChat(action, from_id, false, msg, data);
 			}
 
 			NetworkAdminChat(action, desttype, from_id, msg, data, from_admin);
@@ -1353,7 +1353,7 @@ void NetworkServerSendChat(NetworkAction action, DestType desttype, int dest, co
 void NetworkServerSendExternalChat(const std::string &source, TextColour colour, const std::string &user, const std::string &msg)
 {
 	for (NetworkClientSocket *cs : NetworkClientSocket::Iterate()) {
-		cs->SendExternalChat(source, colour, user, msg);
+		if (cs->status >= ServerNetworkGameSocketHandler::STATUS_AUTHORIZED) cs->SendExternalChat(source, colour, user, msg);
 	}
 	NetworkTextMessage(NETWORK_ACTION_EXTERNAL_CHAT, colour, false, user, msg, 0, source);
 }
