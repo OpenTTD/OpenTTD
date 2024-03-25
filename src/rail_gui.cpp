@@ -954,6 +954,7 @@ struct BuildRailStationWindow : public PickerWindowBase {
 private:
 	uint line_height;     ///< Height of a single line in the newstation selection matrix (#WID_BRAS_NEWST_LIST widget).
 	uint coverage_height; ///< Height of the coverage texts.
+	Dimension name;       ///< Dimensions of station type name widget.
 	Scrollbar *vscroll;   ///< Vertical scrollbar of the new station list.
 	Scrollbar *vscroll2;  ///< Vertical scrollbar of the matrix with new stations.
 
@@ -1239,11 +1240,6 @@ public:
 	{
 		switch (widget) {
 			case WID_BRAS_NEWST_LIST: {
-				Dimension d = {0, 0};
-				for (auto station_class : this->station_classes) {
-					d = maxdim(d, GetStringBoundingBox(StationClass::Get(station_class)->name));
-				}
-				size->width = std::max(size->width, d.width + padding.width);
 				this->line_height = GetCharacterHeight(FS_NORMAL) + padding.height;
 				size->height = 5 * this->line_height;
 				resize->height = this->line_height;
@@ -1251,24 +1247,10 @@ public:
 			}
 
 			case WID_BRAS_SHOW_NEWST_TYPE: {
+				size->width = 0;
 				if (!_railstation.newstations) {
-					size->width = 0;
 					size->height = 0;
-					break;
 				}
-
-				/* If newstations exist, compute the non-zero minimal size. */
-				Dimension d = {0, 0};
-				StringID str = this->GetWidget<NWidgetCore>(widget)->widget_data;
-				for (auto station_class : this->station_classes) {
-					StationClass *stclass = StationClass::Get(station_class);
-					for (uint j = 0; j < stclass->GetSpecCount(); j++) {
-						const StationSpec *statspec = stclass->GetSpec(j);
-						SetDParam(0, (statspec != nullptr && statspec->name != 0) ? statspec->name : STR_STATION_CLASS_DFLT_STATION);
-						d = maxdim(d, GetStringBoundingBox(str));
-					}
-				}
-				size->width = std::max(size->width, d.width + padding.width);
 				break;
 			}
 
@@ -1288,6 +1270,16 @@ public:
 				resize->height = 1;
 				break;
 		}
+	}
+
+	/**
+	 * Get name of custom station.
+	 * @param statspec Custom station to get name of.
+	 * @returns Name of station, or default string if not a custom station.
+	 */
+	static StringID GetStationNameString(const StationSpec *statspec)
+	{
+		return (statspec != nullptr && statspec->name != STR_NULL) ? statspec->name : STR_STATION_CLASS_DFLT_STATION;
 	}
 
 	void DrawWidget(const Rect &r, WidgetID widget) const override
@@ -1338,6 +1330,10 @@ public:
 				break;
 			}
 
+			case WID_BRAS_SHOW_NEWST_TYPE:
+				DrawStringMultiLine(r, GetStationNameString(StationClass::Get(_railstation.station_class)->GetSpec(_railstation.station_type)), TC_ORANGE, SA_CENTER);
+				break;
+
 			case WID_BRAS_IMAGE: {
 				uint16_t type = this->GetWidget<NWidgetBase>(widget)->GetParentWidget<NWidgetMatrix>()->GetCurrentElement();
 				assert(type < _railstation.station_count);
@@ -1362,19 +1358,49 @@ public:
 		}
 	}
 
+	/**
+	 * Get dimensions in pixels of station type names for the given width.
+	 * @param width Width of text in pixels.
+	 * @returns Dimensions required for station type name.
+	 */
+	Dimension GetStationTypeNameDimension(int width) const
+	{
+		int y = 0;
+		for (StationClassID cls_id = STAT_CLASS_BEGIN; cls_id < StationClass::GetClassCount(); cls_id++) {
+			if (cls_id == STAT_CLASS_WAYP) continue;
+			const StationClass *stclass = StationClass::Get(cls_id);
+			for (uint j = 0; j < stclass->GetSpecCount(); j++) {
+				y = std::max(y, GetStringHeight(GetStationNameString(stclass->GetSpec(j)), width));
+			}
+		}
+		return Dimension(width, y);
+	}
+
 	void OnResize() override
 	{
 		if (this->vscroll != nullptr) { // New stations available.
 			this->vscroll->SetCapacityFromWidget(this, WID_BRAS_NEWST_LIST);
 		}
+
+		if (_railstation.newstations) {
+			/* Update height of text for station type name widget if its width has changed. */
+			auto wid = this->GetWidget<NWidgetResizeBase>(WID_BRAS_SHOW_NEWST_TYPE);
+			if (this->name.width != wid->current_x) this->name = this->GetStationTypeNameDimension(wid->current_x);
+			if (wid->UpdateVerticalSize(this->name.height)) this->ReInit(0, 0);
+		}
 	}
 
-	void SetStringParameters(WidgetID widget) const override
+	bool OnTooltip([[maybe_unused]] Point pt, WidgetID widget, TooltipCloseCondition close_cond) override
 	{
-		if (widget == WID_BRAS_SHOW_NEWST_TYPE) {
-			const StationSpec *statspec = StationClass::Get(_railstation.station_class)->GetSpec(_railstation.station_type);
-			SetDParam(0, (statspec != nullptr && statspec->name != 0) ? statspec->name : STR_STATION_CLASS_DFLT_STATION);
-		}
+		if (widget != WID_BRAS_NEWST_LIST) return false;
+
+		auto it = this->vscroll->GetScrolledItemFromWidget(this->station_classes, pt.y, this, WID_BRAS_NEWST_LIST);
+		if (it == this->station_classes.end()) return false;
+
+		StringID str = StationClass::Get(*it)->name;
+		GuiShowTooltips(this, str, close_cond, 0);
+
+		return true;
 	}
 
 	void OnClick([[maybe_unused]] Point pt, WidgetID widget, [[maybe_unused]] int click_count) override
@@ -1615,7 +1641,7 @@ static constexpr NWidgetPart _nested_station_builder_widgets[] = {
 							NWidget(WWT_PANEL, COLOUR_GREY, WID_BRAS_PLATFORM_DIR_X), SetMinimalSize(66, 60), SetFill(0, 0), SetDataTip(0x0, STR_STATION_BUILD_RAILROAD_ORIENTATION_TOOLTIP), EndContainer(),
 							NWidget(WWT_PANEL, COLOUR_GREY, WID_BRAS_PLATFORM_DIR_Y), SetMinimalSize(66, 60), SetFill(0, 0), SetDataTip(0x0, STR_STATION_BUILD_RAILROAD_ORIENTATION_TOOLTIP), EndContainer(),
 						EndContainer(),
-						NWidget(WWT_LABEL, COLOUR_DARK_GREEN, WID_BRAS_SHOW_NEWST_TYPE), SetMinimalSize(144, 11), SetDataTip(STR_JUST_STRING, STR_NULL), SetTextStyle(TC_ORANGE),
+						NWidget(WWT_EMPTY, COLOUR_DARK_GREEN, WID_BRAS_SHOW_NEWST_TYPE),
 						NWidget(WWT_LABEL, COLOUR_DARK_GREEN), SetMinimalSize(144, 11), SetDataTip(STR_STATION_BUILD_NUMBER_OF_TRACKS, STR_NULL),
 						NWidget(NWID_HORIZONTAL), SetPIPRatio(1, 0, 1),
 							NWidget(WWT_TEXTBTN, COLOUR_GREY, WID_BRAS_PLATFORM_NUM_1), SetMinimalSize(15, 12), SetDataTip(STR_BLACK_1, STR_STATION_BUILD_NUMBER_OF_TRACKS_TOOLTIP),
