@@ -24,10 +24,9 @@
  */
 enum PacketGameType : uint8_t {
 	/*
-	 * These first four pair of packets (thus eight in
-	 * total) must remain in this order for backward
-	 * and forward compatibility between clients that
-	 * are trying to join directly.
+	 * These first ten packets must remain in this order for backward and forward compatibility
+	 * between clients that are trying to join directly. These packets can be received and/or sent
+	 * by the server before the server has processed the 'join' packet from the client.
 	 */
 
 	/* Packets sent by socket accepting code without ever constructing a client socket instance. */
@@ -45,6 +44,10 @@ enum PacketGameType : uint8_t {
 	/* Packets used to get the game info. */
 	PACKET_SERVER_GAME_INFO,             ///< Information about the server.
 	PACKET_CLIENT_GAME_INFO,             ///< Request information about the server.
+
+	/* A server quitting this game. */
+	PACKET_SERVER_NEWGAME,               ///< The server is preparing to start a new game.
+	PACKET_SERVER_SHUTDOWN,              ///< The server is shutting down.
 
 	/*
 	 * Packets after here assume that the client
@@ -120,10 +123,6 @@ enum PacketGameType : uint8_t {
 	PACKET_CLIENT_SET_NAME,              ///< A client changes its name.
 	PACKET_SERVER_COMPANY_UPDATE,        ///< Information (password) of a company changed.
 	PACKET_SERVER_CONFIG_UPDATE,         ///< Some network configuration important to the client changed.
-
-	/* A server quitting this game. */
-	PACKET_SERVER_NEWGAME,               ///< The server is preparing to start a new game.
-	PACKET_SERVER_SHUTDOWN,              ///< The server is shutting down.
 
 	/* A client quitting. */
 	PACKET_CLIENT_QUIT,                  ///< A client tells the server it is going to quit.
