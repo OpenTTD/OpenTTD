@@ -2734,6 +2734,7 @@ struct GameSettingsWindow : Window {
 			value = ClampTo<int32_t>(llvalue);
 		} else {
 			value = sd->def;
+			if (sd->get_def_cb != nullptr) sd->get_def_cb(value);
 		}
 
 		SetSettingValue(this->valuewindow_entry->setting, value);
