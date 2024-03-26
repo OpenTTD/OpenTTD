@@ -386,10 +386,8 @@ void DrawOrderString(const Vehicle *v, const Order *order, int order_index, int 
  */
 static Order GetOrderCmdFromTile(const Vehicle *v, TileIndex tile)
 {
-	/* Hack-ish; unpack order 0, so everything gets initialised with either zero
-	 * or a suitable default value for the variable. Then also override the index
-	 * as it is not coming from a pool, so would be initialised. */
-	Order order(0);
+	/* Override the index as it is not coming from a pool, so would not be initialised correctly. */
+	Order order;
 	order.index = 0;
 
 	/* check depot first */
