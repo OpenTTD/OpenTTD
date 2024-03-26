@@ -41,6 +41,7 @@ protected:
 	NetworkRecvStatus SendProtocol();
 	NetworkRecvStatus SendPong(uint32_t d1);
 	NetworkRecvStatus SendAuthRequest();
+	NetworkRecvStatus SendEnableEncryption();
 public:
 	AdminUpdateFrequency update_frequency[ADMIN_UPDATE_END]; ///< Admin requested update intervals.
 	std::chrono::steady_clock::time_point connect_time;      ///< Time of connection.

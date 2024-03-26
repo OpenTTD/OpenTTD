@@ -845,6 +845,17 @@ NetworkRecvStatus ServerNetworkAdminSocketHandler::SendAuthRequest()
 	return NETWORK_RECV_STATUS_OKAY;
 }
 
+NetworkRecvStatus ServerNetworkAdminSocketHandler::SendEnableEncryption()
+{
+	if (this->status != ADMIN_STATUS_AUTHENTICATE) return this->SendError(NETWORK_ERROR_NOT_EXPECTED);
+
+	auto p = std::make_unique<Packet>(this, ADMIN_PACKET_SERVER_ENABLE_ENCRYPTION);
+	this->authentication_handler->SendEnableEncryption(*p);
+	this->SendPacket(std::move(p));
+
+	return NETWORK_RECV_STATUS_OKAY;
+}
+
 NetworkRecvStatus ServerNetworkAdminSocketHandler::Receive_ADMIN_AUTH_RESPONSE(Packet &p)
 {
 	if (this->status != ADMIN_STATUS_AUTHENTICATE) return this->SendError(NETWORK_ERROR_NOT_EXPECTED);
@@ -853,6 +864,10 @@ NetworkRecvStatus ServerNetworkAdminSocketHandler::Receive_ADMIN_AUTH_RESPONSE(P
 		case NetworkAuthenticationServerHandler::AUTHENTICATED:
 			Debug(net, 3, "[admin] '{}' ({}) authenticated", this->admin_name, this->admin_version);
 
+			this->SendEnableEncryption();
+
+			this->receive_encryption_handler = this->authentication_handler->CreateClientToServerEncryptionHandler();
+			this->send_encryption_handler = this->authentication_handler->CreateServerToClientEncryptionHandler();
 			this->authentication_handler = nullptr;
 			return this->SendProtocol();
 
