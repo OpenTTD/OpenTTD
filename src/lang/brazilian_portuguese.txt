@@ -392,7 +392,7 @@ STR_TOOLBAR_TOOLTIP_DISPLAY_COMPANY_FINANCES                    :{BLACK}Abrir in
 STR_TOOLBAR_TOOLTIP_DISPLAY_COMPANY_GENERAL                     :{BLACK}Abrir informações gerais da empresa
 STR_TOOLBAR_TOOLTIP_DISPLAY_STORY_BOOK                          :{BLACK}Abrir livro de história
 STR_TOOLBAR_TOOLTIP_DISPLAY_GOALS_LIST                          :{BLACK}Abrir lista de objetivos
-STR_TOOLBAR_TOOLTIP_DISPLAY_GRAPHS                              :{BLACK}Abrir gráficos da empresa e receitas por carga
+STR_TOOLBAR_TOOLTIP_DISPLAY_GRAPHS                              :{BLACK}Abrir gráficos da empresa e tarifas por carga
 STR_TOOLBAR_TOOLTIP_DISPLAY_COMPANY_LEAGUE                      :{BLACK}Abrir tabela de classificação das empresas
 STR_TOOLBAR_TOOLTIP_FUND_CONSTRUCTION_OF_NEW                    :{BLACK}Abrir lista de indústrias, cadeia industrial ou financiar a construção de uma nova indústria
 STR_TOOLBAR_TOOLTIP_DISPLAY_LIST_OF_COMPANY_TRAINS              :{BLACK}Abrir lista de trens da empresa. Ctrl+Clique para mostrar ou ocultar grupos de veículos, oposto da configuração escolhida
@@ -620,8 +620,8 @@ STR_GRAPH_CARGO_PAYMENT_RATES_SECONDS                           :{TINY_FONT}{BLA
 STR_GRAPH_CARGO_PAYMENT_RATES_TITLE                             :{TINY_FONT}{BLACK}Pagamento por entregar 10 unidades (ou 10 mil litros) de carga em uma distância de 20 quadrados
 STR_GRAPH_CARGO_ENABLE_ALL                                      :{TINY_FONT}{BLACK}Ativar tudo
 STR_GRAPH_CARGO_DISABLE_ALL                                     :{TINY_FONT}{BLACK}Desativar tudo
-STR_GRAPH_CARGO_TOOLTIP_ENABLE_ALL                              :{BLACK}Mostrar todas as cargas no gráfico de receitas por carga
-STR_GRAPH_CARGO_TOOLTIP_DISABLE_ALL                             :{BLACK}Não mostrar cargas no gráfico de receitas por carga
+STR_GRAPH_CARGO_TOOLTIP_ENABLE_ALL                              :{BLACK}Mostrar todas as cargas no gráfico de tarifas por carga
+STR_GRAPH_CARGO_TOOLTIP_DISABLE_ALL                             :{BLACK}Não mostrar cargas no gráfico de tarifas por carga
 STR_GRAPH_CARGO_PAYMENT_TOGGLE_CARGO                            :{BLACK}Mostrar/Ocultar gráfico para o tipo de carga
 STR_GRAPH_CARGO_PAYMENT_CARGO                                   :{TINY_FONT}{BLACK}{STRING}
 
@@ -1543,8 +1543,8 @@ STR_CONFIG_SETTING_GRAPH_LINE_THICKNESS_HELPTEXT                :Espessura da li
 
 STR_CONFIG_SETTING_SHOW_NEWGRF_NAME                             :Mostrar o nome do NewGRF na janela de comprar veículos: {STRING}
 STR_CONFIG_SETTING_SHOW_NEWGRF_NAME_HELPTEXT                    :Adicionar uma linha na janela de aquisição de veículos, mostrando a qual NewGRF pertence o veículo selecionado
-STR_CONFIG_SETTING_SHOW_CARGO_IN_LISTS                          :Mostrar nas janelas de listagem as cargas que os veículos podem transportar: {STRING}
-STR_CONFIG_SETTING_SHOW_CARGO_IN_LISTS_HELPTEXT                 :Se ativado, a carga transportável pelo veículo aparecerá acima dele nas listas de veículos
+STR_CONFIG_SETTING_SHOW_CARGO_IN_LISTS                          :Mostrar as cargas que os veículos podem transportar nas janelas de listagem: {STRING}
+STR_CONFIG_SETTING_SHOW_CARGO_IN_LISTS_HELPTEXT                 :Se ativado, a carga que o veículo pode transportar aparecerá acima dele nas listas de veículos
 
 STR_CONFIG_SETTING_LANDSCAPE                                    :Clima: {STRING}
 STR_CONFIG_SETTING_LANDSCAPE_HELPTEXT                           :Os climas definem a jogabilidade básica dos cenários, com diferentes cargas e requisitos para crescimento das localidades. NewGRFs e Scripts de Jogo permitem um controle mais preciso sobre isso
@@ -1584,7 +1584,7 @@ STR_CONFIG_SETTING_ROUGHNESS_OF_TERRAIN_ROUGH                   :Irregular
 STR_CONFIG_SETTING_ROUGHNESS_OF_TERRAIN_VERY_ROUGH              :Muito Irregular
 
 STR_CONFIG_SETTING_VARIETY                                      :Distribuição de variedade: {STRING}
-STR_CONFIG_SETTING_VARIETY_HELPTEXT                             :Escolher se o mapa conterá tanto áreas montanhosas como áreas planas. Quanto maior a variedade, maiores as diferenças de altura entre as áreas montanhosas e as planas
+STR_CONFIG_SETTING_VARIETY_HELPTEXT                             :Escolher se o mapa conterá tanto áreas montanhosas como áreas planas. Quanto maior a variedade, maiores as diferenças de altura entre as áreas montanhosas e as áreas planas
 
 STR_CONFIG_SETTING_RIVER_AMOUNT                                 :Quantidade de rios: {STRING}
 STR_CONFIG_SETTING_RIVER_AMOUNT_HELPTEXT                        :Escolher quantos rios serão gerados
@@ -1620,8 +1620,8 @@ STR_CONFIG_SETTING_STATION_SPREAD_HELPTEXT                      :Área máxima q
 STR_CONFIG_SETTING_SERVICEATHELIPAD                             :Manutenção automática de helicópteros em heliportos: {STRING}
 STR_CONFIG_SETTING_SERVICEATHELIPAD_HELPTEXT                    :Efetuar manutenção de helicópteros após cada pouso, mesmo se não existir um depósito no aeroporto
 
-STR_CONFIG_SETTING_LINK_TERRAFORM_TOOLBAR                       :Ligar ferramentas de paisagismo com ferramentas de trilhos/estradas/água/aeroportos: {STRING}
-STR_CONFIG_SETTING_LINK_TERRAFORM_TOOLBAR_HELPTEXT              :Quando abrir uma barra de ferramentas para um tipo de transporte, também abrir a barra de terraplanagem
+STR_CONFIG_SETTING_LINK_TERRAFORM_TOOLBAR                       :Ligar ferramentas de paisagismo com construção de trilhos/estradas/água/aeroportos: {STRING}
+STR_CONFIG_SETTING_LINK_TERRAFORM_TOOLBAR_HELPTEXT              :Ao abrir a barra de ferramentas de construção para um tipo de transporte, abrir também a barra de ferramentas de paisagismo
 
 STR_CONFIG_SETTING_SMALLMAP_LAND_COLOUR                         :Cor do solo usada no minimapa: {STRING}
 STR_CONFIG_SETTING_SMALLMAP_LAND_COLOUR_HELPTEXT                :Cor do terreno no minimapa
@@ -4526,7 +4526,7 @@ STR_REFIT_AIRCRAFT_REFIT_TOOLTIP                                :{BLACK}Adaptar 
 # Order view
 STR_ORDERS_CAPTION                                              :{WHITE}{VEHICLE} (Ordens)
 STR_ORDERS_TIMETABLE_VIEW                                       :{BLACK}Horários
-STR_ORDERS_TIMETABLE_VIEW_TOOLTIP                               :{BLACK}Mudar para a visualização de horários
+STR_ORDERS_TIMETABLE_VIEW_TOOLTIP                               :{BLACK}Mudar para a visuallização de horários
 
 STR_ORDERS_LIST_TOOLTIP                                         :{BLACK}Lista de ordens - clique em uma ordem para selecioná-la. Ctrl+Clique para mostrar o destino da ordem
 STR_ORDER_INDEX                                                 :{COMMA}:{NBSP}
@@ -4698,7 +4698,7 @@ STR_INVALID_ORDER                                               :{RED} (Ordem In
 # Time table window
 STR_TIMETABLE_TITLE                                             :{WHITE}{VEHICLE} (Horários)
 STR_TIMETABLE_ORDER_VIEW                                        :{BLACK}Ordens
-STR_TIMETABLE_ORDER_VIEW_TOOLTIP                                :{BLACK}Mudar para visualização de ordens
+STR_TIMETABLE_ORDER_VIEW_TOOLTIP                                :{BLACK}Mudar para a visualização de ordens
 
 STR_TIMETABLE_TOOLTIP                                           :{BLACK}Horários - clique em uma ordem para selecioná-la
 
@@ -5031,7 +5031,7 @@ STR_ERROR_CAN_ONLY_BE_BUILT_BELOW_SNOW_LINE                     :{WHITE}... só 
 STR_ERROR_PROSPECTING_WAS_UNLUCKY                               :{WHITE}O financiamento falhou em prospectar devido ao azar; tente novamente
 STR_ERROR_NO_SUITABLE_PLACES_FOR_PROSPECTING                    :{WHITE}Não havia locais adequados para prospectar por esta indústria
 STR_ERROR_NO_SUITABLE_PLACES_FOR_INDUSTRIES                     :{WHITE}Não havia locais adequados para indústrias do tipo '{STRING}'
-STR_ERROR_NO_SUITABLE_PLACES_FOR_INDUSTRIES_EXPLANATION         :{WHITE}Modificar os parâmetros de geração do mapa para obter um mapa melhor
+STR_ERROR_NO_SUITABLE_PLACES_FOR_INDUSTRIES_EXPLANATION         :{WHITE}Modifique os parâmetros de geração do mapa para obter um mapa melhor
 
 # Station construction related errors
 STR_ERROR_CAN_T_BUILD_RAILROAD_STATION                          :{WHITE}Não é possível construir estação ferroviária aqui...

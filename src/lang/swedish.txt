@@ -1471,7 +1471,7 @@ STR_CONFIG_SETTING_COMPANY_STARTING_COLOUR                      :Företagets sta
 STR_CONFIG_SETTING_COMPANY_STARTING_COLOUR_HELPTEXT             :Välj startfärg för företaget
 
 STR_CONFIG_SETTING_COMPANY_STARTING_COLOUR_SECONDARY            :Företagets andravalsstartfärg: {STRING}
-STR_CONFIG_SETTING_COMPANY_STARTING_COLOUR_SECONDARY_HELPTEXT   :Välj andravalsfärg för företaget att starta med, om du använder en NewGRF som stöder det.
+STR_CONFIG_SETTING_COMPANY_STARTING_COLOUR_SECONDARY_HELPTEXT   :Välj andravalsfärg för företaget att starta med, om du använder en NewGRF som stöder det
 
 STR_CONFIG_SETTING_NEVER_EXPIRE_AIRPORTS                        :Flygplatser blir aldrig gamla: {STRING}
 STR_CONFIG_SETTING_NEVER_EXPIRE_AIRPORTS_HELPTEXT               :Aktivering av denna inställning gör så att alla flygplatstyper finns kvar i obegränsad tid efter att de blivit tillgängliga
@@ -1542,7 +1542,7 @@ STR_CONFIG_SETTING_GRAPH_LINE_THICKNESS_HELPTEXT                :Linjernas bredd
 
 STR_CONFIG_SETTING_SHOW_NEWGRF_NAME                             :Visa NewGRF:ens namn i fordonsbyggnadsfönstret: {STRING}
 STR_CONFIG_SETTING_SHOW_NEWGRF_NAME_HELPTEXT                    :Lägg till en rad i fordonsbyggnadsfönstret som visar vilken NewGRF det valda fordonet kommer ifrån
-STR_CONFIG_SETTING_SHOW_CARGO_IN_LISTS                          :Visa godstyper som fordonen kan transportera i listorna {STRING}
+STR_CONFIG_SETTING_SHOW_CARGO_IN_LISTS                          :Visa godstyper som fordonen kan transportera i listfönstren: {STRING}
 STR_CONFIG_SETTING_SHOW_CARGO_IN_LISTS_HELPTEXT                 :Om det är aktiverat kommer fordonets transportabla last att visas ovanför den i fordonslistor
 
 STR_CONFIG_SETTING_LANDSCAPE                                    :Landskap: {STRING}
@@ -1583,7 +1583,7 @@ STR_CONFIG_SETTING_ROUGHNESS_OF_TERRAIN_ROUGH                   :Svår
 STR_CONFIG_SETTING_ROUGHNESS_OF_TERRAIN_VERY_ROUGH              :Väldigt svår
 
 STR_CONFIG_SETTING_VARIETY                                      :Varierad distribution: {STRING}
-STR_CONFIG_SETTING_VARIETY_HELPTEXT                             :Välj om kartan ska innehålla både berg och flacka områden. Ju större variation desto större höjdskillnad mellan bergiga och flacka områden.
+STR_CONFIG_SETTING_VARIETY_HELPTEXT                             :Välj om kartan ska innehålla både berg och flacka områden. Ju större variation desto större höjdskillnad mellan bergiga och flacka områden
 
 STR_CONFIG_SETTING_RIVER_AMOUNT                                 :Antal floder: {STRING}
 STR_CONFIG_SETTING_RIVER_AMOUNT_HELPTEXT                        :Välj hur många floder att generera
@@ -1630,7 +1630,7 @@ STR_CONFIG_SETTING_SMALLMAP_LAND_COLOUR_DARK_GREEN              :Mörkgrön
 STR_CONFIG_SETTING_SMALLMAP_LAND_COLOUR_VIOLET                  :Violett
 
 STR_CONFIG_SETTING_LINKGRAPH_COLOURS                            :Färger på godsflödesöverlägg: {STRING}
-STR_CONFIG_SETTING_LINKGRAPH_COLOURS_HELPTEXT                   :Ställ in det färgschema som ska användas på godsflödesöverlägget.
+STR_CONFIG_SETTING_LINKGRAPH_COLOURS_HELPTEXT                   :Ställ in det färgschema som ska användas på godsflödesöverlägget
 ###length 4
 STR_CONFIG_SETTING_LINKGRAPH_COLOURS_GREEN_TO_RED               :Grön till röd (original)
 STR_CONFIG_SETTING_LINKGRAPH_COLOURS_GREEN_TO_BLUE              :Grön till blå
@@ -1751,10 +1751,10 @@ STR_CONFIG_SETTING_PERSISTENT_BUILDINGTOOLS                     :Behåll byggnad
 STR_CONFIG_SETTING_PERSISTENT_BUILDINGTOOLS_HELPTEXT            :Håll verktygen för byggnation av broar, tunnlar, etc. öppna efter användning
 
 STR_CONFIG_SETTING_AUTO_REMOVE_SIGNALS                          :Automatiskt ta bort signaler vid byggande av järnväg: {STRING}
-STR_CONFIG_SETTING_AUTO_REMOVE_SIGNALS_HELPTEXT                 :Ta automatiskt bort signaler vid byggande av järnväg om signalerna är i vägen. Notera att detta kan leda till att tåg krockar.
+STR_CONFIG_SETTING_AUTO_REMOVE_SIGNALS_HELPTEXT                 :Ta automatiskt bort signaler vid byggande av järnväg om signalerna är i vägen. Notera att detta kan leda till att tåg krockar
 
 STR_CONFIG_SETTING_FAST_FORWARD_SPEED_LIMIT                     :Begränsning av snabbspolning: {STRING}
-STR_CONFIG_SETTING_FAST_FORWARD_SPEED_LIMIT_HELPTEXT            :Begränsa hur snabbt spelet går när snabbspolning är aktiverad. 0 = ingen begränsning (så snabbt som din dator tillåter). Värden under 100% saktar ner spelet. Den övre begränsningen beror på din dators specifikationer och kan variera beroende på spelet.
+STR_CONFIG_SETTING_FAST_FORWARD_SPEED_LIMIT_HELPTEXT            :Begränsa hur snabbt spelet går när snabbspolning är aktiverad. 0 = ingen begränsning (så snabbt som din dator tillåter). Värden under 100% saktar ner spelet. Den övre begränsningen beror på din dators specifikationer och kan variera beroende på spelet
 STR_CONFIG_SETTING_FAST_FORWARD_SPEED_LIMIT_VAL                 :{NUM}% normal spelhastighet
 ###setting-zero-is-special
 STR_CONFIG_SETTING_FAST_FORWARD_SPEED_LIMIT_ZERO                :Ingen begränsning (Så snabbt som din dator tillåter)
@@ -1822,7 +1822,7 @@ STR_CONFIG_SETTING_SCRIPT_MAX_MEMORY_HELPTEXT                   :Hur mycket minn
 STR_CONFIG_SETTING_SCRIPT_MAX_MEMORY_VALUE                      :{COMMA} MiB
 
 STR_CONFIG_SETTING_SERVINT_ISPERCENT                            :Visa serviceintervall i procent: {STRING}
-STR_CONFIG_SETTING_SERVINT_ISPERCENT_HELPTEXT                   :När det är aktiverat försöker fordon bli servade när deras tillförlitlighet har fallit med en viss procentsats av den maximala tillförlitligheten.{}{}Till exempel, om ett fordons maximala tillförlitlighet är 90% och serviceintervallet är 20% kommer fordonet söka service när tillförlitligheten är 72%.Välj om fordonsservice ska triggas av hur lång tid som har gått sedan senaste service eller av att tillförlitligheten faller med
+STR_CONFIG_SETTING_SERVINT_ISPERCENT_HELPTEXT                   :När det är aktiverat försöker fordon bli servade när deras tillförlitlighet har fallit med en viss procentsats av den maximala tillförlitligheten.{}{}Till exempel, om ett fordons maximala tillförlitlighet är 90% och serviceintervallet är 20% kommer fordonet söka service när tillförlitligheten är 72%
 
 STR_CONFIG_SETTING_SERVINT_TRAINS                               :Normalt serviceintervall för tåg: {STRING}
 STR_CONFIG_SETTING_SERVINT_TRAINS_HELPTEXT                      :Välj vilket serviceintervall som normalt sett ska användas för nya tåg, om inget annat serviceintervall uttryckligen anges
@@ -1905,7 +1905,7 @@ STR_CONFIG_SETTING_COLOURED_NEWS_YEAR_HELPTEXT                  :Årtal då tidn
 STR_CONFIG_SETTING_STARTING_YEAR                                :Startår: {STRING}
 
 STR_CONFIG_SETTING_ENDING_YEAR                                  :Slutår för poängräkning: {STRING}
-STR_CONFIG_SETTING_ENDING_YEAR_HELPTEXT                         :Årtal då spelet slutar räkna poäng. Vid slutet av detta år sparas företagets poäng och listan med de bästa spelresultaten visas, men därefter kan spelarna fortsätta att spela.{}Om årtalet är satt till innan startåret visas aldrig de bästa spelresultaten.
+STR_CONFIG_SETTING_ENDING_YEAR_HELPTEXT                         :Årtal då spelet slutar räkna poäng. Vid slutet av detta år sparas företagets poäng och listan med de bästa spelresultaten visas, men därefter kan spelarna fortsätta att spela.{}Om årtalet är satt till innan startåret visas aldrig de bästa spelresultaten
 STR_CONFIG_SETTING_ENDING_YEAR_VALUE                            :{NUM}
 ###setting-zero-is-special
 STR_CONFIG_SETTING_ENDING_YEAR_ZERO                             :Aldrig
@@ -1966,7 +1966,7 @@ STR_CONFIG_SETTING_TOWN_FOUNDING_ALLOWED                        :Tillåten
 STR_CONFIG_SETTING_TOWN_FOUNDING_ALLOWED_CUSTOM_LAYOUT          :Tillåten, vanlig stads-layout
 
 STR_CONFIG_SETTING_TOWN_CARGOGENMODE                            :Fraktgods som genereras i staden: {STRING}
-STR_CONFIG_SETTING_TOWN_CARGOGENMODE_HELPTEXT                   :Hur mycket fraktgods som produceras av hus i städer, i förhållande till den totala befolkningen i staden.{}Kvadratisk tillväxt: En dubbelt så stor stad genererar fyra gånger så många passagerare.{}Linjär tillväxt: En dubbelt så stor stad genererar dubbelt så många passagerare.
+STR_CONFIG_SETTING_TOWN_CARGOGENMODE_HELPTEXT                   :Hur mycket fraktgods som produceras av hus i städer, i förhållande till den totala befolkningen i staden.{}Kvadratisk tillväxt: En dubbelt så stor stad genererar fyra gånger så många passagerare.{}Linjär tillväxt: En dubbelt så stor stad genererar dubbelt så många passagerare
 ###length 2
 STR_CONFIG_SETTING_TOWN_CARGOGENMODE_ORIGINAL                   :Kvadratisk (original)
 STR_CONFIG_SETTING_TOWN_CARGOGENMODE_BITCOUNT                   :Linjär
@@ -2052,9 +2052,9 @@ STR_CONFIG_SETTING_LINKGRAPH_ACCURACY                           :Distributionsno
 STR_CONFIG_SETTING_LINKGRAPH_ACCURACY_HELPTEXT                  :Ju högre du sätter denna, desto längre CPU-tid kommer beräkningen av länkgrafen ta. Om det tar för lång tid kan spelet lagga. Om du däremot sätter den till ett lågt värde kommer distributionen att bli inexakt, vilket kan leda till att godset inte skickas dit du förväntar dig.
 
 STR_CONFIG_SETTING_DEMAND_DISTANCE                              :Avståndets påverkan på efterfrågan: {STRING}
-STR_CONFIG_SETTING_DEMAND_DISTANCE_HELPTEXT                     :Om du sätter denna till ett värde högre än 0 kommer avståndet mellan ursprungsstationen A för en viss last och en möjlig destination B påverka mängden last som skickas från A till B. Ju längre B är ifrån A, desto mindre last kommer att skickas. Ju högre du sätter den, desto mindre last kommer att skickas till avlägsna stationer och desto mer last kommer att skickas till närbelägna stationer.
+STR_CONFIG_SETTING_DEMAND_DISTANCE_HELPTEXT                     :Om du sätter denna till ett värde högre än 0 kommer avståndet mellan ursprungsstationen A för en viss last och en möjlig destination B påverka mängden last som skickas från A till B. Ju längre B är ifrån A, desto mindre last kommer att skickas. Ju högre du sätter den, desto mindre last kommer att skickas till avlägsna stationer och desto mer last kommer att skickas till närbelägna stationer
 STR_CONFIG_SETTING_DEMAND_SIZE                                  :Mängd återsänd last i symmetriskt läge: {STRING}
-STR_CONFIG_SETTING_DEMAND_SIZE_HELPTEXT                         :Genom att sätta denna till mindre än 100% får man den symmetriska distributionen att bete sig mer som den asymmetriska. En mindre andel än vanligt av den last som skickas till en station kommer att skickas tillbaka. Sätter du den till 0% beter sig den symmetriska distributionen precis som den asymmetriska.
+STR_CONFIG_SETTING_DEMAND_SIZE_HELPTEXT                         :Genom att sätta denna till mindre än 100% får man den symmetriska distributionen att bete sig mer som den asymmetriska. En mindre andel än vanligt av den last som skickas till en station kommer att skickas tillbaka. Sätter du den till 0% beter sig den symmetriska distributionen precis som den asymmetriska
 
 STR_CONFIG_SETTING_SHORT_PATH_SATURATION                        :Belastning av korta rutter innan rutter med hög kapacitet används: {STRING}
 STR_CONFIG_SETTING_SHORT_PATH_SATURATION_HELPTEXT               :Ofta finns det flera rutter mellan två givna stationer. Godsdistributionen kommer att fylla upp den första rutten först och därefter den näst kortaste tills den är mättad osv. Mättnadsgraden bestäms utifrån en uppskattning av kapaciteten och planerad användning. När godsdristributionen har belastat samtliga rutter, och om det finns kvarvarande behov, då kommer samtliga rutter att överbelastas med preferens för rutterna med högst kapacitet. Uppskattningen av kapaciteten kommer oftast inte ske med hög noggrannhet. Denna inställning tillåter dig att ställa in hur många procent som en kort rutt ska belastas innan algoritmen ska välja nästa längre rutt. Sätt värdet till under 100 % om du vill undvika överfulla stationer i händelse av överskattad kapacitet.
@@ -3200,11 +3200,11 @@ STR_ABOUT_COPYRIGHT_OPENTTD                                     :{BLACK}OpenTTD 
 STR_FRAMERATE_CAPTION                                           :{WHITE}Bildfrekvens
 STR_FRAMERATE_CAPTION_SMALL                                     :{STRING}{WHITE} ({DECIMAL}x)
 STR_FRAMERATE_RATE_GAMELOOP                                     :{BLACK}Simulationsfrekvens: {STRING}
-STR_FRAMERATE_RATE_GAMELOOP_TOOLTIP                             :{BLACK}Antal spel-tick som simuleras per sekund.
+STR_FRAMERATE_RATE_GAMELOOP_TOOLTIP                             :{BLACK}Antal spel-tick som simuleras per sekund
 STR_FRAMERATE_RATE_BLITTER                                      :{BLACK}Bildfrekvens för grafik: {STRING}
-STR_FRAMERATE_RATE_BLITTER_TOOLTIP                              :{BLACK}Antal bildrutor som återges per sekund.
+STR_FRAMERATE_RATE_BLITTER_TOOLTIP                              :{BLACK}Antal bildrutor som återges per sekund
 STR_FRAMERATE_SPEED_FACTOR                                      :{BLACK}Spelets nuvarande hastighetsfaktor: {DECIMAL}x
-STR_FRAMERATE_SPEED_FACTOR_TOOLTIP                              :{BLACK}Hur snabbt spelet för närvarande körs, jämfört med förväntad hastighet vid normal simulationsfrekvens.
+STR_FRAMERATE_SPEED_FACTOR_TOOLTIP                              :{BLACK}Hur snabbt spelet för närvarande körs, jämfört med förväntad hastighet vid normal simulationsfrekvens
 STR_FRAMERATE_CURRENT                                           :{WHITE}Nuvarande
 STR_FRAMERATE_AVERAGE                                           :{WHITE}Genomsnittlig
 STR_FRAMERATE_MEMORYUSE                                         :{WHITE}Minne
@@ -4028,7 +4028,7 @@ STR_GROUP_DEFAULT_AIRCRAFTS                                     :Ogrupperade fly
 
 STR_GROUP_COUNT_WITH_SUBGROUP                                   :{TINY_FONT}{COMMA} (+{COMMA})
 
-STR_GROUPS_CLICK_ON_GROUP_FOR_TOOLTIP                           :{BLACK}Grupper - klicka på en grupp för att lista alla fordon i gruppen. Dra och släpp grupper för att ordna hierarkin.
+STR_GROUPS_CLICK_ON_GROUP_FOR_TOOLTIP                           :{BLACK}Grupper - klicka på en grupp för att lista alla fordon i gruppen. Dra och släpp grupper för att ordna hierarkin
 STR_GROUP_CREATE_TOOLTIP                                        :{BLACK}Klicka för att skapa en grupp
 STR_GROUP_DELETE_TOOLTIP                                        :{BLACK}Ta bort vald grupp
 STR_GROUP_RENAME_TOOLTIP                                        :{BLACK}Byt namn på vald grupp
@@ -4220,9 +4220,9 @@ STR_DEPOT_CLONE_SHIP                                            :{BLACK}Klona sk
 STR_DEPOT_CLONE_AIRCRAFT                                        :{BLACK}Klona flygplan
 
 ###length VEHICLE_TYPES
-STR_DEPOT_CLONE_TRAIN_DEPOT_INFO                                :{BLACK}Köp en kopia av ett tåg inklusive alla vagnar. Klicka på denna knapp och sen på ett tåg i eller utanför depån. Ctrl+Klick för att dela ordrar. Håll även in Shift för att endast visa uppskattad kostnad
-STR_DEPOT_CLONE_ROAD_VEHICLE_DEPOT_INFO                         :{BLACK}Köp en kopia av ett vägfordon. Klicka på denna knapp och sen på ett vägfordon i eller utanför depån. Ctrl+Klick för att dela ordrar. Håll även in Shift för att endast visa uppskattad kostnad
-STR_DEPOT_CLONE_SHIP_DEPOT_INFO                                 :{BLACK}Köp en kopia av ett skepp. Klicka på denna knapp och sen på ett skepp i eller utanför depån. Ctrl+Klick för att dela ordrar. Håll även in Shift för att endast visa uppskattad kostnad
+STR_DEPOT_CLONE_TRAIN_DEPOT_INFO                                :{BLACK}Köp en kopia av ett tåg inklusive alla vagnar. Klicka på denna knapp och sedan på ett tåg i eller utanför depån. Ctrl+klicka för att dela ordrar. Håll även in Shift för att endast visa uppskattad kostnad
+STR_DEPOT_CLONE_ROAD_VEHICLE_DEPOT_INFO                         :{BLACK}Köp en kopia av ett vägfordon. Klicka på denna knapp och sedan på ett vägfordon i eller utanför depån. Ctrl+klicka för att dela ordrar. Håll även in Shift för att endast visa uppskattad kostnad
+STR_DEPOT_CLONE_SHIP_DEPOT_INFO                                 :{BLACK}Köp en kopia av ett skepp. Klicka på denna knapp och sedan på ett skepp i eller utanför depån. Ctrl+klicka för att dela ordrar. Håll även in Shift för att endast visa uppskattad kostnad
 STR_DEPOT_CLONE_AIRCRAFT_INFO_HANGAR_WINDOW                     :{BLACK}Köp en kopia av en flygfarkost. Klicka på denna knapp och sedan på en flygfarkost i eller utanför hangaren. Ctrl+klicka för att dela ordrar. Håll även in Shift för att endast visa uppskattad kostnad
 
 ###length VEHICLE_TYPES
@@ -4449,10 +4449,10 @@ STR_VEHICLE_INFO_CAPACITY_CAPACITY                              :{BLACK}Kapacite
 STR_VEHICLE_INFO_FEEDER_CARGO_VALUE                             :{BLACK} Överför kredit: {LTBLUE}{CURRENCY_LONG}
 
 STR_VEHICLE_DETAILS_SERVICING_INTERVAL_DAYS                     :{BLACK}Serviceintervall: {LTBLUE}{COMMA}{NBSP}dagar{BLACK}   {STRING}
-STR_VEHICLE_DETAILS_SERVICING_INTERVAL_MINUTES                  :{BLACK}Serviceintervall: {LTBLUE}{COMMA}{NBSP}minuter{BLACK}   {STRING}
+STR_VEHICLE_DETAILS_SERVICING_INTERVAL_MINUTES                  :{BLACK}Serviceintervall: {LTBLUE}{COMMA}{NBSP}minut{P "" er}{BLACK} {STRING}
 STR_VEHICLE_DETAILS_SERVICING_INTERVAL_PERCENT                  :{BLACK}Serviceintervall: {LTBLUE}{COMMA}%{BLACK}   {STRING}
 STR_VEHICLE_DETAILS_LAST_SERVICE_DATE                           :Senast servad: {LTBLUE}{DATE_LONG}
-STR_VEHICLE_DETAILS_LAST_SERVICE_MINUTES_AGO                    :Senast servad: {LTBLUE}{NUM} minuter sedan
+STR_VEHICLE_DETAILS_LAST_SERVICE_MINUTES_AGO                    :Senast servad: {LTBLUE}{NUM} minut{P "" er} sedan
 STR_VEHICLE_DETAILS_INCREASE_SERVICING_INTERVAL_TOOLTIP_DAYS    :{BLACK}Öka serviceintervall med 10 dagar. Ctrl+Klick för att öka serviceintervall med 5 dagar
 STR_VEHICLE_DETAILS_INCREASE_SERVICING_INTERVAL_TOOLTIP_MINUTES :{BLACK}Öka serviceintervall med 5 minuter. Ctrl+Klick för att öka serviceintervall med 1 minut
 STR_VEHICLE_DETAILS_INCREASE_SERVICING_INTERVAL_TOOLTIP_PERCENT :{BLACK}Öka serviceintervall med 10 procent. Ctrl+Klick för att öka serviceintervall med 5 procent

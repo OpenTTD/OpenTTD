@@ -385,6 +385,14 @@ STR_COLOUR_WHITE                                                :Balta
 STR_COLOUR_RANDOM                                               :Atsitiktinė
 
 ###length 17
+STR_COLOUR_SECONDARY_DARK_BLUE                                  :Tamsiai mėlynas/-a
+STR_COLOUR_SECONDARY_LIGHT_BLUE                                 :Šviesiai mėlynas/-a
+STR_COLOUR_SECONDARY_GREEN                                      :Žalias/-a
+STR_COLOUR_SECONDARY_DARK_GREEN                                 :Tamsiai žalias/-a
+STR_COLOUR_SECONDARY_BLUE                                       :Mėlynas/-a
+STR_COLOUR_SECONDARY_CREAM                                      :Kremas
+STR_COLOUR_SECONDARY_BROWN                                      :Rudas/-a
+STR_COLOUR_SECONDARY_GREY                                       :Pilkas/-a
 
 
 # Units used in OpenTTD
@@ -1173,7 +1181,10 @@ STR_GAME_OPTIONS_GUI_SCALE_BEVELS_TOOLTIP                       :{BLACK}Pažymė
 
 
 STR_GAME_OPTIONS_GUI_SCALE_1X                                   :1x
+STR_GAME_OPTIONS_GUI_SCALE_2X                                   :2x
+STR_GAME_OPTIONS_GUI_SCALE_3X                                   :3x
 STR_GAME_OPTIONS_GUI_SCALE_4X                                   :4x
+STR_GAME_OPTIONS_GUI_SCALE_5X                                   :5x
 
 
 STR_GAME_OPTIONS_GRAPHICS                                       :{BLACK}Grafika
@@ -1311,6 +1322,7 @@ STR_CONFIG_SETTING_TYPE_GAME_MENU                               :žaidimo (įra�
 STR_CONFIG_SETTING_TYPE_GAME_INGAME                             :žaidimo (įrašoma kiekvieną kartą išsaugant žaidimą. Galioja tik šiuo metu aktyviai kompanijai ir tik aktyviam žaidimui)
 STR_CONFIG_SETTING_TYPE_COMPANY_MENU                            :kompanijos (įrašoma pradedant naują žaidimą)
 STR_CONFIG_SETTING_TYPE_COMPANY_INGAME                          :kompanijos (įrašoma kiekvieną kartą išsaugant žaidimą. Galioja tik šiuo metu aktyviai kompanijai)
+STR_CONFIG_SETTING_RESET_ALL_CONFIRMATION_DIALOG_CAPTION        :{WHITE}Atsargiai!
 STR_CONFIG_SETTING_RESET_ALL_CONFIRMATION_DIALOG_TEXT           :{WHITE}Šis veiksmas iš naujo nustatys visus žaidimo nustatymus į numatytąsias vertes.{}Ar tikrai norite tęsti?
 
 STR_CONFIG_SETTING_RESTRICT_CATEGORY                            :{BLACK}Kategorija:
@@ -1567,8 +1579,10 @@ STR_CONFIG_SETTING_NEVER_EXPIRE_VEHICLES_HELPTEXT               :Kartą atsirad�
 
 ###length 2
 
+STR_CONFIG_SETTING_MINUTES_PER_YEAR                             :Minutės per metus: {STRING}
 
 ###setting-zero-is-special
+STR_CONFIG_SETTING_MINUTES_PER_YEAR_FROZEN                      :0 (kalendoriaus laikas užšalęs/sustabdytas)
 
 
 STR_CONFIG_SETTING_AUTORENEW_VEHICLE                            :Automatiškai atnaujinti transporto priemonę, kai ji pasensta: {STRING}
