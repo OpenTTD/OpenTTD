@@ -853,6 +853,10 @@ NetworkRecvStatus ServerNetworkAdminSocketHandler::Receive_ADMIN_AUTH_RESPONSE(P
 		case NetworkAuthenticationServerHandler::AUTHENTICATED:
 			Debug(net, 3, "[admin] '{}' ({}) authenticated", this->admin_name, this->admin_version);
 
+			this->SendPacket(std::make_unique<Packet>(this, ADMIN_PACKET_SERVER_ENABLE_ENCRYPTION));
+
+			this->receive_encryption_handler = this->authentication_handler->CreateClientToServerEncryptionHandler();
+			this->send_encryption_handler = this->authentication_handler->CreateServerToClientEncryptionHandler();
 			this->authentication_handler = nullptr;
 			return this->SendProtocol();
 
