@@ -94,6 +94,7 @@ NetworkRecvStatus NetworkAdminSocketHandler::HandlePacket(Packet &p)
 		case ADMIN_PACKET_SERVER_RCON_END:        return this->Receive_SERVER_RCON_END(p);
 		case ADMIN_PACKET_SERVER_PONG:            return this->Receive_SERVER_PONG(p);
 		case ADMIN_PACKET_SERVER_AUTH_REQUEST:    return this->Receive_SERVER_AUTH_REQUEST(p);
+		case ADMIN_PACKET_SERVER_ENABLE_ENCRYPTION: return this->Receive_SERVER_ENABLE_ENCRYPTION(p);
 
 		default:
 			Debug(net, 0, "[tcp/admin] Received invalid packet type {} from '{}' ({})", type, this->admin_name, this->admin_version);
@@ -171,3 +172,4 @@ NetworkRecvStatus NetworkAdminSocketHandler::Receive_SERVER_CMD_LOGGING(Packet &
 NetworkRecvStatus NetworkAdminSocketHandler::Receive_SERVER_RCON_END(Packet &) { return this->ReceiveInvalidPacket(ADMIN_PACKET_SERVER_RCON_END); }
 NetworkRecvStatus NetworkAdminSocketHandler::Receive_SERVER_PONG(Packet &) { return this->ReceiveInvalidPacket(ADMIN_PACKET_SERVER_PONG); }
 NetworkRecvStatus NetworkAdminSocketHandler::Receive_SERVER_AUTH_REQUEST(Packet &) { return this->ReceiveInvalidPacket(ADMIN_PACKET_SERVER_AUTH_REQUEST); }
+NetworkRecvStatus NetworkAdminSocketHandler::Receive_SERVER_ENABLE_ENCRYPTION(Packet &) { return this->ReceiveInvalidPacket(ADMIN_PACKET_SERVER_ENABLE_ENCRYPTION); }
