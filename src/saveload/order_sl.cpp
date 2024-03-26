@@ -81,7 +81,7 @@ void Order::ConvertFromOldSavegame()
  */
 static Order UnpackVersion4Order(uint16_t packed)
 {
-	return Order(GB(packed, 8, 8) << 16 | GB(packed, 4, 4) << 8 | GB(packed, 0, 4));
+	return Order(GB(packed, 0, 4), GB(packed, 4, 4), GB(packed, 8, 8));
 }
 
 /**
@@ -158,7 +158,7 @@ struct ORDRChunkHandler : ChunkHandler {
 				SlCopy(&orders[0], len, SLE_UINT32);
 
 				for (size_t i = 0; i < len; ++i) {
-					new (i) Order(orders[i]);
+					new (i) Order(GB(orders[i], 0, 8), GB(orders[i], 8, 8), GB(orders[i], 16, 16));
 				}
 			}
 
