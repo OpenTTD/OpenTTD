@@ -2402,6 +2402,15 @@ void Vehicle::ResetRefitCaps()
 }
 
 /**
+ * Release the vehicle's unit number.
+ */
+void Vehicle::ReleaseUnitNumber()
+{
+	Company::Get(this->owner)->freeunits[this->type].ReleaseID(this->unitnumber);
+	this->unitnumber = 0;
+}
+
+/**
  * Handle the loading of the vehicle; when not it skips through dummy
  * orders and does nothing in all other cases.
  * @param mode is the non-first call for this vehicle in this tick?
