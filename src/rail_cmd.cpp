@@ -989,7 +989,7 @@ CommandCost CmdBuildTrainDepot(DoCommandFlag flags, TileIndex tile, RailType rai
 		CommandCost ret = CheckTileOwnership(tile);
 		if (ret.Failed()) return ret;
 
-		if (dir == GetRailDepotDirection(tile)) return_cmd_error(STR_ERROR_ALREADY_BUILT);
+		if (dir == GetRailDepotDirection(tile)) return CommandCost();
 
 		ret = EnsureNoVehicleOnGround(tile);
 		if (ret.Failed()) return ret;

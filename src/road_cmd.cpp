@@ -1167,7 +1167,7 @@ CommandCost CmdBuildRoadDepot(DoCommandFlag flags, TileIndex tile, RoadType rt, 
 		CommandCost ret = CheckTileOwnership(tile);
 		if (ret.Failed()) return ret;
 
-		if (dir == GetRoadDepotDirection(tile)) return_cmd_error(STR_ERROR_ALREADY_BUILT);
+		if (dir == GetRoadDepotDirection(tile)) return CommandCost();
 
 		ret = EnsureNoVehicleOnGround(tile);
 		if (ret.Failed()) return ret;
