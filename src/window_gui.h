@@ -67,6 +67,14 @@ public:
 	static const WidgetDimensions unscaled; ///< Unscaled widget dimensions.
 	static WidgetDimensions scaled;         ///< Widget dimensions scaled for current zoom level.
 
+	static constexpr float ASPECT_LOCATION = 12.f / 14.f;
+	static constexpr float ASPECT_RENAME = 12.f / 14.f;
+	static constexpr float ASPECT_SETTINGS_BUTTON = 21.f / 12.f;
+	static constexpr float ASPECT_TOGGLE_SIZE = 12.f / 14.f;
+	static constexpr float ASPECT_UP_DOWN_BUTTON = 11.f / 12.f;
+	static constexpr float ASPECT_VEHICLE_ICON = 15.f / 12.f;
+	static constexpr float ASPECT_VEHICLE_FLAG = 11.f / 12.f;
+
 private:
 	/**
 	 * Distances used in drawing widgets.
