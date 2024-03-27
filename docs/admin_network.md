@@ -1,6 +1,6 @@
 # OpenTTD's admin network
 
-Last updated:    2011-01-20
+Last updated:    2024-03-26
 
 
 ## Table of contents
@@ -49,10 +49,29 @@ Last updated:    2011-01-20
   Create a TCP connection to the server on port 3977. The application is
   expected to authenticate within 10 seconds.
 
-  To authenticate send a `ADMIN_PACKET_ADMIN_JOIN` packet.
+  To authenticate send either an `ADMIN_PACKET_ADMIN_JOIN` or an
+  `ADMIN_PACKET_ADMIN_JOIN_SECURE` packet.
 
-  The server will reply with `ADMIN_PACKET_SERVER_PROTOCOL` followed directly by
-  `ADMIN_PACKET_SERVER_WELCOME`.
+  The `ADMIN_PACKET_ADMIN_JOIN` packet sends the password without any
+  encryption or safeguards over the connection, and as such has been disabled
+  by default.
+
+  The `ADMIN_PACKET_ADMIN_JOIN_SECURE` packet initiates a key exchange
+  authentication schema which tells te server which methods the client
+  supports and the server makes a choice. The server will then send an
+  `ADMIN_PACKET_SERVER_AUTH_REQUEST` packet to which the client has to respond
+  with an `ADMIN_PACKET_ADMIN_AUTH_RESPONSE` packet.
+
+  The current choices for secure authentication are authorized keys, where
+  the client has a private key and the server a list of authorized public
+  keys, and a so-called password-authenticated key exchange which allows to
+  authenticate using a password without actually sending the password.
+  The server falls back to password authentication when the client's key is
+  not in the list of authorized keys.
+
+  When authentication has succeeded for either of the `JOIN` schemas, the
+  server will reply with `ADMIN_PACKET_SERVER_PROTOCOL` followed directly
+  by `ADMIN_PACKET_SERVER_WELCOME`.
 
   `ADMIN_PACKET_SERVER_PROTOCOL` contains details about the protocol version.
   It is the job of your application to check this number and decide whether

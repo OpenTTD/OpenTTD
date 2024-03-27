@@ -316,7 +316,9 @@ struct NetworkSettings {
 	NetworkAuthorizedKeys server_authorized_keys; ///< Public keys of clients that are authorized to connect to the game.
 	std::string rcon_password;                            ///< password for rconsole (server side)
 	NetworkAuthorizedKeys rcon_authorized_keys; ///< Public keys of clients that are authorized to use the rconsole (server side).
+	bool allow_insecure_admin_login; ///< Whether to allow logging in as admin using the insecure old JOIN packet.
 	std::string admin_password;                           ///< password for the admin network
+	NetworkAuthorizedKeys admin_authorized_keys; ///< Public keys of clients that are authorized to use the admin network.
 	std::string client_name;                              ///< name of the player (as client)
 	std::string client_secret_key; ///< The secret key of the client for authorized key logins.
 	std::string client_public_key; ///< The public key of the client for authorized key logins.
@@ -336,6 +338,8 @@ struct NetworkSettings {
 	std::string last_joined;                              ///< Last joined server
 	UseRelayService use_relay_service;                    ///< Use relay service?
 	ParticipateSurvey participate_survey;                 ///< Participate in the automated survey
+
+	bool AdminAuthenticationConfigured() const { return !this->admin_password.empty() || !this->admin_authorized_keys.empty(); }
 };
 
 /** Settings related to the creation of games. */

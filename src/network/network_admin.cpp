@@ -38,6 +38,9 @@ uint8_t _network_admins_connected = 0;
 NetworkAdminSocketPool _networkadminsocket_pool("NetworkAdminSocket");
 INSTANTIATE_POOL_METHODS(NetworkAdminSocket)
 
+static NetworkAuthenticationDefaultPasswordProvider _admin_password_provider(_settings_client.network.admin_password); ///< Provides the password validation for the game's password.
+static NetworkAuthenticationDefaultAuthorizedKeyHandler _admin_authorized_key_handler(_settings_client.network.admin_authorized_keys); ///< Provides the authorized key handling for the game authentication.
+
 /** The timeout for authorisation of the client. */
 static const std::chrono::seconds ADMIN_AUTHORISATION_TIMEOUT(10);
 
@@ -90,7 +93,7 @@ ServerNetworkAdminSocketHandler::~ServerNetworkAdminSocketHandler()
  */
 /* static */ bool ServerNetworkAdminSocketHandler::AllowConnection()
 {
-	bool accept = !_settings_client.network.admin_password.empty() && _network_admins_connected < MAX_ADMINS;
+	bool accept = _settings_client.network.AdminAuthenticationConfigured() && _network_admins_connected < MAX_ADMINS;
 	/* We can't go over the MAX_ADMINS limit here. However, if we accept
 	 * the connection, there has to be space in the pool. */
 	static_assert(NetworkAdminSocketPool::MAX_SIZE == MAX_ADMINS);
@@ -102,7 +105,7 @@ ServerNetworkAdminSocketHandler::~ServerNetworkAdminSocketHandler()
 /* static */ void ServerNetworkAdminSocketHandler::Send()
 {
 	for (ServerNetworkAdminSocketHandler *as : ServerNetworkAdminSocketHandler::Iterate()) {
-		if (as->status == ADMIN_STATUS_INACTIVE && std::chrono::steady_clock::now() > as->connect_time + ADMIN_AUTHORISATION_TIMEOUT) {
+		if (as->status <= ADMIN_STATUS_AUTHENTICATE && std::chrono::steady_clock::now() > as->connect_time + ADMIN_AUTHORISATION_TIMEOUT) {
 			Debug(net, 2, "[admin] Admin did not send its authorisation within {} seconds", std::chrono::duration_cast<std::chrono::seconds>(ADMIN_AUTHORISATION_TIMEOUT).count());
 			as->CloseConnection(true);
 			continue;
@@ -134,6 +137,9 @@ ServerNetworkAdminSocketHandler::~ServerNetworkAdminSocketHandler()
  */
 NetworkRecvStatus ServerNetworkAdminSocketHandler::SendError(NetworkErrorCode error)
 {
+	/* Whatever the error might be, authentication (keys) must be released as soon as possible. */
+	this->authentication_handler = nullptr;
+
 	auto p = std::make_unique<Packet>(this, ADMIN_PACKET_SERVER_ERROR);
 
 	p->Send_uint8(error);
@@ -149,6 +155,8 @@ NetworkRecvStatus ServerNetworkAdminSocketHandler::SendError(NetworkErrorCode er
 /** Send the protocol version to the admin. */
 NetworkRecvStatus ServerNetworkAdminSocketHandler::SendProtocol()
 {
+	this->status = ADMIN_STATUS_ACTIVE;
+
 	auto p = std::make_unique<Packet>(this, ADMIN_PACKET_SERVER_PROTOCOL);
 
 	/* announce the protocol version */
@@ -491,7 +499,7 @@ NetworkRecvStatus ServerNetworkAdminSocketHandler::SendRcon(uint16_t colour, con
 
 NetworkRecvStatus ServerNetworkAdminSocketHandler::Receive_ADMIN_RCON(Packet &p)
 {
-	if (this->status == ADMIN_STATUS_INACTIVE) return this->SendError(NETWORK_ERROR_NOT_EXPECTED);
+	if (this->status <= ADMIN_STATUS_AUTHENTICATE) return this->SendError(NETWORK_ERROR_NOT_EXPECTED);
 
 	std::string command = p.Recv_string(NETWORK_RCONCOMMAND_LENGTH);
 
@@ -505,7 +513,7 @@ NetworkRecvStatus ServerNetworkAdminSocketHandler::Receive_ADMIN_RCON(Packet &p)
 
 NetworkRecvStatus ServerNetworkAdminSocketHandler::Receive_ADMIN_GAMESCRIPT(Packet &p)
 {
-	if (this->status == ADMIN_STATUS_INACTIVE) return this->SendError(NETWORK_ERROR_NOT_EXPECTED);
+	if (this->status <= ADMIN_STATUS_AUTHENTICATE) return this->SendError(NETWORK_ERROR_NOT_EXPECTED);
 
 	std::string json = p.Recv_string(NETWORK_GAMESCRIPT_JSON_LENGTH);
 
@@ -517,7 +525,7 @@ NetworkRecvStatus ServerNetworkAdminSocketHandler::Receive_ADMIN_GAMESCRIPT(Pack
 
 NetworkRecvStatus ServerNetworkAdminSocketHandler::Receive_ADMIN_PING(Packet &p)
 {
-	if (this->status == ADMIN_STATUS_INACTIVE) return this->SendError(NETWORK_ERROR_NOT_EXPECTED);
+	if (this->status <= ADMIN_STATUS_AUTHENTICATE) return this->SendError(NETWORK_ERROR_NOT_EXPECTED);
 
 	uint32_t d1 = p.Recv_uint32();
 
@@ -631,6 +639,11 @@ NetworkRecvStatus ServerNetworkAdminSocketHandler::Receive_ADMIN_JOIN(Packet &p)
 {
 	if (this->status != ADMIN_STATUS_INACTIVE) return this->SendError(NETWORK_ERROR_NOT_EXPECTED);
 
+	if (!_settings_client.network.allow_insecure_admin_login) {
+		/* You're not authorized to login using this method. */
+		return this->SendError(NETWORK_ERROR_NOT_AUTHORIZED);
+	}
+
 	std::string password = p.Recv_string(NETWORK_PASSWORD_LENGTH);
 
 	if (_settings_client.network.admin_password.empty() ||
@@ -647,8 +660,6 @@ NetworkRecvStatus ServerNetworkAdminSocketHandler::Receive_ADMIN_JOIN(Packet &p)
 		return this->SendError(NETWORK_ERROR_ILLEGAL_PACKET);
 	}
 
-	this->status = ADMIN_STATUS_ACTIVE;
-
 	Debug(net, 3, "[admin] '{}' ({}) has connected", this->admin_name, this->admin_version);
 
 	return this->SendProtocol();
@@ -662,7 +673,7 @@ NetworkRecvStatus ServerNetworkAdminSocketHandler::Receive_ADMIN_QUIT(Packet &)
 
 NetworkRecvStatus ServerNetworkAdminSocketHandler::Receive_ADMIN_UPDATE_FREQUENCY(Packet &p)
 {
-	if (this->status == ADMIN_STATUS_INACTIVE) return this->SendError(NETWORK_ERROR_NOT_EXPECTED);
+	if (this->status <= ADMIN_STATUS_AUTHENTICATE) return this->SendError(NETWORK_ERROR_NOT_EXPECTED);
 
 	AdminUpdateType type = (AdminUpdateType)p.Recv_uint16();
 	AdminUpdateFrequency freq = (AdminUpdateFrequency)p.Recv_uint16();
@@ -682,7 +693,7 @@ NetworkRecvStatus ServerNetworkAdminSocketHandler::Receive_ADMIN_UPDATE_FREQUENC
 
 NetworkRecvStatus ServerNetworkAdminSocketHandler::Receive_ADMIN_POLL(Packet &p)
 {
-	if (this->status == ADMIN_STATUS_INACTIVE) return this->SendError(NETWORK_ERROR_NOT_EXPECTED);
+	if (this->status <= ADMIN_STATUS_AUTHENTICATE) return this->SendError(NETWORK_ERROR_NOT_EXPECTED);
 
 	AdminUpdateType type = (AdminUpdateType)p.Recv_uint8();
 	uint32_t d1 = p.Recv_uint32();
@@ -748,7 +759,7 @@ NetworkRecvStatus ServerNetworkAdminSocketHandler::Receive_ADMIN_POLL(Packet &p)
 
 NetworkRecvStatus ServerNetworkAdminSocketHandler::Receive_ADMIN_CHAT(Packet &p)
 {
-	if (this->status == ADMIN_STATUS_INACTIVE) return this->SendError(NETWORK_ERROR_NOT_EXPECTED);
+	if (this->status <= ADMIN_STATUS_AUTHENTICATE) return this->SendError(NETWORK_ERROR_NOT_EXPECTED);
 
 	NetworkAction action = (NetworkAction)p.Recv_uint8();
 	DestType desttype = (DestType)p.Recv_uint8();
@@ -774,7 +785,7 @@ NetworkRecvStatus ServerNetworkAdminSocketHandler::Receive_ADMIN_CHAT(Packet &p)
 
 NetworkRecvStatus ServerNetworkAdminSocketHandler::Receive_ADMIN_EXTERNAL_CHAT(Packet &p)
 {
-	if (this->status == ADMIN_STATUS_INACTIVE) return this->SendError(NETWORK_ERROR_NOT_EXPECTED);
+	if (this->status <= ADMIN_STATUS_AUTHENTICATE) return this->SendError(NETWORK_ERROR_NOT_EXPECTED);
 
 	std::string source = p.Recv_string(NETWORK_CHAT_LENGTH);
 	TextColour colour = (TextColour)p.Recv_uint16();
@@ -789,6 +800,75 @@ NetworkRecvStatus ServerNetworkAdminSocketHandler::Receive_ADMIN_EXTERNAL_CHAT(P
 	NetworkServerSendExternalChat(source, colour, user, msg);
 
 	return NETWORK_RECV_STATUS_OKAY;
+}
+
+/*
+ * Secure authentication send and receive methods.
+ */
+
+NetworkRecvStatus ServerNetworkAdminSocketHandler::Receive_ADMIN_JOIN_SECURE(Packet &p)
+{
+	if (this->status != ADMIN_STATUS_INACTIVE) return this->SendError(NETWORK_ERROR_NOT_EXPECTED);
+
+	this->admin_name = p.Recv_string(NETWORK_CLIENT_NAME_LENGTH);
+	this->admin_version = p.Recv_string(NETWORK_REVISION_LENGTH);
+	NetworkAuthenticationMethodMask method_mask = p.Recv_uint16();
+
+	/* Always exclude key exchange only, as that provides no credential checking. */
+	ClrBit(method_mask, NETWORK_AUTH_METHOD_X25519_KEY_EXCHANGE_ONLY);
+
+	if (this->admin_name.empty() || this->admin_version.empty()) {
+		/* No name or version supplied. */
+		return this->SendError(NETWORK_ERROR_ILLEGAL_PACKET);
+	}
+
+	auto handler = NetworkAuthenticationServerHandler::Create(&_admin_password_provider, &_admin_authorized_key_handler, method_mask);
+	if (!handler->CanBeUsed()) return this->SendError(NETWORK_ERROR_NO_AUTHENTICATION_METHOD_AVAILABLE);
+
+	this->authentication_handler = std::move(handler);
+	Debug(net, 3, "[admin] '{}' ({}) has connected", this->admin_name, this->admin_version);
+
+	return this->SendAuthRequest();
+}
+
+NetworkRecvStatus ServerNetworkAdminSocketHandler::SendAuthRequest()
+{
+	this->status = ADMIN_STATUS_AUTHENTICATE;
+
+	Debug(net, 6, "[admin] '{}' ({}) authenticating using {}", this->admin_name, this->admin_version, this->authentication_handler->GetName());
+
+	auto p = std::make_unique<Packet>(this, ADMIN_PACKET_SERVER_AUTH_REQUEST);
+	this->authentication_handler->SendRequest(*p);
+
+	this->SendPacket(std::move(p));
+
+	return NETWORK_RECV_STATUS_OKAY;
+}
+
+NetworkRecvStatus ServerNetworkAdminSocketHandler::Receive_ADMIN_AUTH_RESPONSE(Packet &p)
+{
+	if (this->status != ADMIN_STATUS_AUTHENTICATE) return this->SendError(NETWORK_ERROR_NOT_EXPECTED);
+
+	switch (this->authentication_handler->ReceiveResponse(p)) {
+		case NetworkAuthenticationServerHandler::AUTHENTICATED:
+			Debug(net, 3, "[admin] '{}' ({}) authenticated", this->admin_name, this->admin_version);
+
+			this->SendPacket(std::make_unique<Packet>(this, ADMIN_PACKET_SERVER_ENABLE_ENCRYPTION));
+
+			this->receive_encryption_handler = this->authentication_handler->CreateClientToServerEncryptionHandler();
+			this->send_encryption_handler = this->authentication_handler->CreateServerToClientEncryptionHandler();
+			this->authentication_handler = nullptr;
+			return this->SendProtocol();
+
+		case NetworkAuthenticationServerHandler::RETRY_NEXT_METHOD:
+			Debug(net, 6, "[admin] '{}' ({}) authentication failed, trying next method", this->admin_name, this->admin_version);
+			return this->SendAuthRequest();
+
+		case NetworkAuthenticationServerHandler::NOT_AUTHENTICATED:
+		default:
+			Debug(net, 3, "[admin] '{}' ({}) authentication failed", this->admin_name, this->admin_version);
+			return this->SendError(NETWORK_ERROR_WRONG_PASSWORD);
+	}
 }
 
 /*
