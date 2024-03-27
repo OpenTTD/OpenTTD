@@ -6,7 +6,7 @@
  */
 
 /**
- * @file game_changelog.hpp Lists all changes / additions to the API.
+ * @page game_changelog Lists all changes / additions to the API.
  *
  * Only new / renamed / deleted api functions will be listed here. A list of
  * bug fixes can be found in the normal changelog. Note that removed API
@@ -300,4 +300,18 @@
  *
  * \b 1.2.0
  * \li First stable release with the NoGo framework.
+ */
+
+/**
+ * @mainpage
+ *
+ * What's new?
+ * \li \ref game_changelog
+ *
+ * Main classes:
+ * \li \ref GSInfo
+ * \li \ref GSController
+ *
+ * Detail topics:
+ * \li \ref script_ids
  */

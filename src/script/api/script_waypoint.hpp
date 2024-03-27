@@ -22,6 +22,8 @@ class ScriptWaypoint : public ScriptBaseStation {
 public:
 	/**
 	 * All waypoint related error messages.
+	 *
+	 * @see ScriptErrorType
 	 */
 	enum ErrorMessages {
 		/** Base for waypoint related errors */

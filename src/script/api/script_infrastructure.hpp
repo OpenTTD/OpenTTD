@@ -58,7 +58,8 @@ public:
 	 * Return the monthly maintenance costs of a specific rail type for a company.
 	 * @param company The company to get the monthly cost for.
 	 * @param railtype Rail type to get the cost of.
-	 * @return Monthly maintenance cost for the rail type.
+	 * @return Maintenance cost for the rail type per economy-month.
+	 * @see \ref ScriptEconomyTime
 	 */
 	static Money GetMonthlyRailCosts(ScriptCompany::CompanyID company, ScriptRail::RailType railtype);
 
@@ -66,7 +67,8 @@ public:
 	 * Return the monthly maintenance costs of a specific road type for a company.
 	 * @param company The company to get the monthly cost for.
 	 * @param roadtype Road type to get the cost of.
-	 * @return Monthly maintenance cost for the road type.
+	 * @return Maintenance cost for the road type per economy-month.
+	 * @see \ref ScriptEconomyTime
 	 */
 	static Money GetMonthlyRoadCosts(ScriptCompany::CompanyID company, ScriptRoad::RoadType roadtype);
 
@@ -74,8 +76,9 @@ public:
 	 * Return the monthly maintenance costs of an infrastructure category for a company.
 	 * @param company The company to get the monthly cost for.
 	 * @param infra_type Infrastructure category to get the cost of.
-	 * @return Monthly maintenance cost for the wanted category.
+	 * @return Maintenance cost for the wanted category per economy-month.
 	 * @note #INFRASTRUCTURE_RAIL and #INFRASTRUCTURE_ROAD return the total cost for all rail/road types.
+	 * @see \ref ScriptEconomyTime
 	 */
 	static Money GetMonthlyInfrastructureCosts(ScriptCompany::CompanyID company, Infrastructure infra_type);
 };

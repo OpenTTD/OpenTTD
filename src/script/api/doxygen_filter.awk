@@ -24,7 +24,10 @@ BEGIN {
 }
 
 {
+	# replace Script with AI/GS, except for ScriptErrorType
 	gsub(/Script/, api)
+	gsub(/AIErrorType/, "ScriptErrorType")
+	gsub(/GSErrorType/, "ScriptErrorType")
 }
 
 {
@@ -131,6 +134,16 @@ BEGIN {
 
 /^#/ {
 	next
+}
+
+# Convert/unify type names
+{
+	gsub(/\<SQInteger\>/, "int")
+	gsub(/\<SquirrelTable\>/, "table")
+	gsub(/\<u?int[0-9]*(_t)?\>/, "int")
+	gsub(/\<HSQOBJECT\>/, "object")
+	gsub(/std::optional<std::string>/, "string")
+	gsub(/(const )?std::string *[*&]?/, "string ")
 }
 
 # Store comments
@@ -245,7 +258,7 @@ BEGIN {
 }
 
 # Add a const (non-enum) value
-/^[ 	]*static const \w+ \w+ = -?\(?\w*\)?\w+;/ {
+/^[ 	]*static const \w+ \w+ = [^;]+;/ {
 	if (api_selected == "") api_selected = cls_in_api
 	if (api_selected == "false") {
 		api_selected = ""

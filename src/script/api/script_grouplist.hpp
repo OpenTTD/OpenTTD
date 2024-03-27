@@ -29,20 +29,22 @@ public:
 	/**
 	 * Apply a filter when building the list.
 	 * @param filter_function The function which will be doing the filtering.
-	 * @param params The params to give to the filters (minus the first param,
+	 * @param ... The params to give to the filters (minus the first param,
 	 *  which is always the index-value).
 	 * @game @pre ScriptCompanyMode::IsValid().
 	 * @note You can write your own filters and use them. Just remember that
 	 *  the first parameter should be the index-value, and it should return
 	 *  a bool.
 	 * @note Example:
+	 * @code
 	 *  function IsType(group_id, type)
 	 *  {
 	 *    return ScriptGroup.GetVehicleType(group_id) == type;
 	 *  }
-	 *  ScriptGroupList(IsType, ScriptVehicle.VT_ROAD);
+	 *  local rv_groups = ScriptGroupList(IsType, ScriptVehicle.VT_ROAD);
+	 * @endcode
 	 */
-	ScriptGroupList(void *filter_function, int params, ...);
+	ScriptGroupList(function filter_function, ...);
 #else
 	/**
 	 * The constructor wrapper from Squirrel.

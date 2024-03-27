@@ -23,6 +23,8 @@ class ScriptTile : public ScriptObject {
 public:
 	/**
 	 * Error messages related to modifying tiles.
+	 *
+	 * @see ScriptErrorType
 	 */
 	enum ErrorMessages {
 

@@ -26,20 +26,23 @@ public:
 	/**
 	 * Apply a filter when building the list.
 	 * @param filter_function The function which will be doing the filtering.
-	 * @param params The params to give to the filters (minus the first param,
+	 * @param ... The params to give to the filters (minus the first param,
 	 *  which is always the index-value).
 	 * @note You can write your own filters and use them. Just remember that
 	 *  the first parameter should be the index-value, and it should return
 	 *  a bool.
 	 * @note Example:
-	 *  ScriptVehicleList(ScriptVehicle.IsInDepot);
+	 * @code
+	 *  local vehs_in_depot = ScriptVehicleList(ScriptVehicle.IsInDepot);
+	 *
 	 *  function IsType(vehicle_id, type)
 	 *  {
 	 *    return ScriptVehicle.GetVehicleType(vehicle_id) == type;
 	 *  }
-	 *  ScriptVehicleList(IsType, ScriptVehicle.VT_ROAD);
+	 *  local road_vehs = ScriptVehicleList(IsType, ScriptVehicle.VT_ROAD);
+	 * @endcode
 	 */
-	ScriptVehicleList(void *filter_function, int params, ...);
+	ScriptVehicleList(function filter_function, ...);
 #else
 	/**
 	 * The constructor wrapper from Squirrel.

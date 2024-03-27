@@ -22,6 +22,8 @@ class ScriptStation : public ScriptBaseStation {
 public:
 	/**
 	 * All station related error messages.
+	 *
+	 * @see ScriptErrorType
 	 */
 	enum ErrorMessages {
 		/** Base for station related errors */

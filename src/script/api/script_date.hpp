@@ -23,6 +23,30 @@
  * @note Dates can be used to determine the number of days between
  *       two different moments in time because they count the number
  *       of days since the year 0.
+ *
+ * \anchor ScriptCalendarTime
+ * \b Calendar-Time
+ *
+ * Calendar time measures the technological progression in the game.
+ * \li The calendar date is shown in the status bar.
+ * \li The calendar date affects engine model introduction and expiration.
+ * \li Progression of calendar time can be slowed or even halted via game settings.
+ *
+ * Calendar time uses the Gregorian calendar with 365 or 366 days per year.
+ *
+ * \anchor ScriptEconomyTime
+ * \b Economy-Time
+ *
+ * Economy time measures the in-game time progression, while the game is not paused.
+ * \li Cargo production and consumption follows economy time.
+ * \li Recurring income and expenses follow economy time.
+ * \li Production and income statistics and balances are created per economy month/quarter/year.
+ *
+ * Depending on game settings economy time is represented differently:
+ * \li Calendar-based timekeeping: Economy- and calendar-time use the identical Gregorian calendar.
+ * \li Wallclock-based timekeeping: Economy- and calendar-time are separate.
+ *     Economy-time will use a 360 day calendar (12 months with 30 days each), which runs at a constant speed of one economy-month per realtime-minute.
+ *     Calendar-time will use a Gregorian calendar, which can be slowed to stopped via game settings.
  */
 class ScriptDate : public ScriptObject {
 public:

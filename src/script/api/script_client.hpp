@@ -56,10 +56,11 @@ public:
 	static ScriptCompany::CompanyID GetCompany(ClientID client);
 
 	/**
-	 * Get the game date when the given client has joined.
+	 * Get the economy-date when the given client has joined.
 	 * @param client The client to get joining date for.
 	 * @pre ResolveClientID(client) != CLIENT_INVALID.
-	 * @return The date when client has joined.
+	 * @return The economy-date when client has joined.
+	 * @see \ref ScriptEconomyTime
 	 */
 	static ScriptDate::Date GetJoinDate(ClientID client);
 };

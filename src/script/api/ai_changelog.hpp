@@ -6,7 +6,7 @@
  */
 
 /**
- * @file ai_changelog.hpp Lists all changes / additions to the API.
+ * @page ai_changelog Lists all changes / additions to the API.
  *
  * Only new / renamed / deleted api functions will be listed here. A list of
  * bug fixes can be found in the normal changelog. Note that removed API
@@ -456,4 +456,18 @@
  *
  * \b 0.7.0
  * \li First stable release with the NoAI framework.
+ */
+
+/**
+ * @mainpage
+ *
+ * What's new?
+ * \li \ref ai_changelog
+ *
+ * Main classes:
+ * \li \ref AIInfo
+ * \li \ref AIController
+ *
+ * Detail topics:
+ * \li \ref script_ids
  */

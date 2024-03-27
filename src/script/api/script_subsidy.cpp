@@ -54,15 +54,13 @@
 {
 	if (!IsValidSubsidy(subsidy_id)) return ScriptDate::DATE_INVALID;
 
-	int year = ScriptDate::GetYear(ScriptDate::GetCurrentDate());
-	int month = ScriptDate::GetMonth(ScriptDate::GetCurrentDate());
+	TimerGameEconomy::YearMonthDay ymd = TimerGameEconomy::ConvertDateToYMD(TimerGameEconomy::date);
+	ymd.day = 1;
+	auto m = ymd.month + ::Subsidy::Get(subsidy_id)->remaining;
+	ymd.month = (m - 1) % 12 + 1;
+	ymd.year += (m - 1) / 12;
 
-	month += ::Subsidy::Get(subsidy_id)->remaining;
-
-	year += (month - 1) / 12;
-	month = ((month - 1) % 12) + 1;
-
-	return ScriptDate::GetDate(year, month, 1);
+	return (ScriptDate::Date)TimerGameEconomy::ConvertYMDToDate(ymd.year, ymd.month, ymd.day).base();
 }
 
 /* static */ CargoID ScriptSubsidy::GetCargoType(SubsidyID subsidy_id)

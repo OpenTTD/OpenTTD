@@ -370,7 +370,7 @@ public:
 	/**
 	 * Give all items a value defined by the valuator you give.
 	 * @param valuator_function The function which will be doing the valuation.
-	 * @param params The params to give to the valuators (minus the first param,
+	 * @param ... The params to give to the valuators (minus the first param,
 	 *  which is always the index-value we are valuating).
 	 * @note You may not add, remove or change (setting the value of) items while
 	 *  valuating. You may also not (re)sort while valuating.
@@ -378,6 +378,7 @@ public:
 	 *  the first parameter should be the index-value, and it should return
 	 *  an integer.
 	 * @note Example:
+	 * @code
 	 *  list.Valuate(ScriptBridge.GetPrice, 5);
 	 *  list.Valuate(ScriptBridge.GetMaxLength);
 	 *  function MyVal(bridge_id, myparam)
@@ -385,8 +386,9 @@ public:
 	 *    return myparam * bridge_id; // This is silly
 	 *  }
 	 *  list.Valuate(MyVal, 12);
+	 * @endcode
 	 */
-	void Valuate(void *valuator_function, int params, ...);
+	void Valuate(function valuator_function, ...);
 #endif /* DOXYGEN_API */
 };
 

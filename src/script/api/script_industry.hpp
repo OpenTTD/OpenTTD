@@ -86,10 +86,11 @@ public:
 	static std::optional<std::string> GetName(IndustryID industry_id);
 
 	/**
-	 * Get the construction date of an industry.
+	 * Get the construction calendar-date of an industry.
 	 * @param industry_id The index of the industry.
 	 * @pre IsValidIndustry(industry_id).
-	 * @return Date the industry was constructed.
+	 * @return Calendar-date the industry was constructed.
+	 * @see \ref ScriptCalendarTime
 	 * @api -ai
 	 */
 	static ScriptDate::Date GetConstructionDate(IndustryID industry_id);
@@ -126,32 +127,35 @@ public:
 	static SQInteger GetStockpiledCargo(IndustryID industry_id, CargoID cargo_id);
 
 	/**
-	 * Get the total last month's production of the given cargo at an industry.
+	 * Get the total last economy-month's production of the given cargo at an industry.
 	 * @param industry_id The index of the industry.
 	 * @param cargo_id The index of the cargo.
 	 * @pre IsValidIndustry(industry_id).
 	 * @pre ScriptCargo::IsValidCargo(cargo_id).
-	 * @return The last month's production of the given cargo for this industry.
+	 * @return The last economy-month's production of the given cargo for this industry.
+	 * @see \ref ScriptEconomyTime
 	 */
 	static SQInteger GetLastMonthProduction(IndustryID industry_id, CargoID cargo_id);
 
 	/**
-	 * Get the total amount of cargo transported from an industry last month.
+	 * Get the total amount of cargo transported from an industry last economy-month.
 	 * @param industry_id The index of the industry.
 	 * @param cargo_id The index of the cargo.
 	 * @pre IsValidIndustry(industry_id).
 	 * @pre ScriptCargo::IsValidCargo(cargo_id).
-	 * @return The amount of given cargo transported from this industry last month.
+	 * @return The amount of given cargo transported from this industry last economy-month.
+	 * @see \ref ScriptEconomyTime
 	 */
 	static SQInteger GetLastMonthTransported(IndustryID industry_id, CargoID cargo_id);
 
 	/**
-	 * Get the percentage of cargo transported from an industry last month.
+	 * Get the percentage of cargo transported from an industry last economy-month.
 	 * @param industry_id The index of the industry.
 	 * @param cargo_id The index of the cargo.
 	 * @pre IsValidIndustry(industry_id).
 	 * @pre ScriptCargo::IsValidCargo(cargo_id).
-	 * @return The percentage of given cargo transported from this industry last month.
+	 * @return The percentage of given cargo transported from this industry last economy-month.
+	 * @see \ref ScriptEconomyTime
 	 */
 	static SQInteger GetLastMonthTransportedPercentage(IndustryID industry_id, CargoID cargo_id);
 
@@ -246,21 +250,23 @@ public:
 	static IndustryType GetIndustryType(IndustryID industry_id);
 
 	/**
-	 * Get the last year this industry had any production output.
+	 * Get the last economy-year this industry had any production output.
 	 * @param industry_id The index of the industry.
 	 * @pre IsValidIndustry(industry_id).
-	 * @return Year the industry last had production, 0 if error.
+	 * @return Economy-year the industry last had production, 0 if error.
+	 * @see \ref ScriptEconomyTime
 	 * @api -ai
 	 */
 	static SQInteger GetLastProductionYear(IndustryID industry_id);
 
 	/**
-	 * Get the last date this industry accepted any cargo delivery.
+	 * Get the last economy-date this industry accepted any cargo delivery.
 	 * @param industry_id The index of the industry.
 	 * @param cargo_type The cargo to query, or INVALID_CARGO to query latest of all accepted cargoes.
 	 * @pre IsValidIndustry(industry_id).
 	 * @pre IsValidCargo(cargo_type) || cargo_type == INVALID_CARGO.
-	 * @return Date the industry last received cargo from a delivery, or ScriptDate::DATE_INVALID on error.
+	 * @return Economy-date the industry last received cargo from a delivery, or ScriptDate::DATE_INVALID on error.
+	 * @see \ref ScriptEconomyTime
 	 * @api -ai
 	 */
 	static ScriptDate::Date GetCargoLastAcceptedDate(IndustryID industry_id, CargoID cargo_type);

@@ -20,6 +20,8 @@ class ScriptMarine : public ScriptObject {
 public:
 	/**
 	 * All marine related error messages.
+	 *
+	 * @see ScriptErrorType
 	 */
 	enum ErrorMessages {
 		/** Base for marine related errors */
