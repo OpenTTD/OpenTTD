@@ -2559,9 +2559,13 @@ NWidgetLeaf::NWidgetLeaf(WidgetType tp, Colours colour, WidgetID index, uint32_t
 		case WWT_MATRIX:
 		case NWID_BUTTON_DROPDOWN:
 		case NWID_PUSHBUTTON_DROPDOWN:
+			this->SetFill(0, 0);
+			break;
+
 		case WWT_ARROWBTN:
 		case WWT_PUSHARROWBTN:
 			this->SetFill(0, 0);
+			this->SetAspect(WidgetDimensions::ASPECT_LEFT_RIGHT_BUTTON);
 			break;
 
 		case WWT_EDITBOX:
