@@ -1336,8 +1336,7 @@ CommandCost CmdMoveRailVehicle(DoCommandFlag flags, VehicleID src_veh, VehicleID
 			}
 			/* Remove stuff not valid anymore for non-front engines. */
 			DeleteVehicleOrders(src);
-			Company::Get(src->owner)->freeunits[src->type].ReleaseID(src->unitnumber);
-			src->unitnumber = 0;
+			src->ReleaseUnitNumber();
 			src->name.clear();
 		}
 
