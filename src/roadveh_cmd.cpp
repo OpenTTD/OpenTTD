@@ -963,7 +963,7 @@ static Trackdir RoadFindPathToDest(RoadVehicle *v, TileIndex tile, DiagDirection
 
 	/* Only one track to choose between? */
 	if (KillFirstBit(trackdirs) == TRACKDIR_BIT_NONE) {
-		if (!v->path.empty() && v->path.tile.front() == tile) {
+		if (!v->path.empty() && v->path.front().tile == tile) {
 			/* Vehicle expected a choice here, invalidate its path. */
 			v->path.clear();
 		}
@@ -972,15 +972,14 @@ static Trackdir RoadFindPathToDest(RoadVehicle *v, TileIndex tile, DiagDirection
 
 	/* Attempt to follow cached path. */
 	if (!v->path.empty()) {
-		if (v->path.tile.front() != tile) {
+		if (v->path.front().tile != tile) {
 			/* Vehicle didn't expect a choice here, invalidate its path. */
 			v->path.clear();
 		} else {
-			Trackdir trackdir = v->path.td.front();
+			Trackdir trackdir = v->path.front().trackdir;
 
 			if (HasBit(trackdirs, trackdir)) {
-				v->path.td.pop_front();
-				v->path.tile.pop_front();
+				v->path.pop_front();
 				return_track(trackdir);
 			}
 
@@ -1291,8 +1290,7 @@ again:
 			if (u != nullptr) {
 				v->cur_speed = u->First()->cur_speed;
 				/* We might be blocked, prevent pathfinding rerun as we already know where we are heading to. */
-				v->path.tile.push_front(tile);
-				v->path.td.push_front(dir);
+				v->path.push_front({ tile, dir });
 				return false;
 			}
 		}
@@ -1407,8 +1405,7 @@ again:
 			if (u != nullptr) {
 				v->cur_speed = u->First()->cur_speed;
 				/* We might be blocked, prevent pathfinding rerun as we already know where we are heading to. */
-				v->path.tile.push_front(v->tile);
-				v->path.td.push_front(dir);
+				v->path.push_front({ v->tile, dir });
 				return false;
 			}
 		}
