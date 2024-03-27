@@ -18,6 +18,7 @@ enum ClientID : uint32_t;
 enum Colours : uint8_t;
 
 CommandCost CmdCompanyCtrl(DoCommandFlag flags, CompanyCtrlAction cca, CompanyID company_id, CompanyRemoveReason reason, ClientID client_id);
+CommandCost CmdCompanyAddAllowList(DoCommandFlag flags, const std::string &public_key);
 CommandCost CmdGiveMoney(DoCommandFlag flags, Money money, CompanyID dest_company);
 CommandCost CmdRenameCompany(DoCommandFlag flags, const std::string &text);
 CommandCost CmdRenamePresident(DoCommandFlag flags, const std::string &text);
@@ -25,6 +26,7 @@ CommandCost CmdSetCompanyManagerFace(DoCommandFlag flags, CompanyManagerFace cmf
 CommandCost CmdSetCompanyColour(DoCommandFlag flags, LiveryScheme scheme, bool primary, Colours colour);
 
 DEF_CMD_TRAIT(CMD_COMPANY_CTRL,             CmdCompanyCtrl,           CMD_SPECTATOR | CMD_CLIENT_ID | CMD_NO_EST, CMDT_SERVER_SETTING)
+DEF_CMD_TRAIT(CMD_COMPANY_ADD_ALLOW_LIST,   CmdCompanyAddAllowList,   CMD_NO_EST,                                 CMDT_SERVER_SETTING)
 DEF_CMD_TRAIT(CMD_GIVE_MONEY,               CmdGiveMoney,             0,                                          CMDT_MONEY_MANAGEMENT)
 DEF_CMD_TRAIT(CMD_RENAME_COMPANY,           CmdRenameCompany,         0,                                          CMDT_OTHER_MANAGEMENT)
 DEF_CMD_TRAIT(CMD_RENAME_PRESIDENT,         CmdRenamePresident,       0,                                          CMDT_OTHER_MANAGEMENT)

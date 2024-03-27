@@ -914,7 +914,7 @@ DEF_CONSOLE_CMD(ConClientNickChange)
 DEF_CONSOLE_CMD(ConJoinCompany)
 {
 	if (argc < 2) {
-		IConsolePrint(CC_HELP, "Request joining another company. Usage: 'join <company-id> [<password>]'.");
+		IConsolePrint(CC_HELP, "Request joining another company. Usage: 'join <company-id>'.");
 		IConsolePrint(CC_HELP, "For valid company-id see company list, use 255 for spectator.");
 		return true;
 	}
@@ -943,9 +943,8 @@ DEF_CONSOLE_CMD(ConJoinCompany)
 		return true;
 	}
 
-	/* Check if the company requires a password */
-	if (NetworkCompanyIsPassworded(company_id) && argc < 3) {
-		IConsolePrint(CC_ERROR, "Company {} requires a password to join.", company_id + 1);
+	if (!info->CanJoinCompany(company_id)) {
+		IConsolePrint(CC_ERROR, "You are not allowed to join this company.");
 		return true;
 	}
 
@@ -953,7 +952,7 @@ DEF_CONSOLE_CMD(ConJoinCompany)
 	if (_network_server) {
 		NetworkServerDoMove(CLIENT_ID_SERVER, company_id);
 	} else {
-		NetworkClientRequestMove(company_id, NetworkCompanyIsPassworded(company_id) ? argv[2] : "");
+		NetworkClientRequestMove(company_id);
 	}
 
 	return true;
@@ -1829,13 +1828,6 @@ DEF_CONSOLE_CMD(ConCompanies)
 		SetDParam(0, c->index);
 		std::string company_name = GetString(STR_COMPANY_NAME);
 
-		const char *password_state = "";
-		if (c->is_ai) {
-			password_state = "AI";
-		} else if (_network_server) {
-			password_state = _network_company_states[c->index].password.empty() ? "unprotected" : "protected";
-		}
-
 		std::string colour = GetString(STR_COLOUR_DARK_BLUE + _company_colours[c->index]);
 		IConsolePrint(CC_INFO, "#:{}({}) Company Name: '{}'  Year Founded: {}  Money: {}  Loan: {}  Value: {}  (T:{}, R:{}, P:{}, S:{}) {}",
 			c->index + 1, colour, company_name,
@@ -1844,7 +1836,7 @@ DEF_CONSOLE_CMD(ConCompanies)
 			c->group_all[VEH_ROAD].num_vehicle,
 			c->group_all[VEH_AIRCRAFT].num_vehicle,
 			c->group_all[VEH_SHIP].num_vehicle,
-			password_state);
+			c->is_ai ? "AI" : "");
 	}
 
 	return true;
@@ -1910,53 +1902,6 @@ DEF_CONSOLE_CMD(ConSayClient)
 	} else {
 		bool from_admin = (_redirect_console_to_admin < INVALID_ADMIN_ID);
 		NetworkServerSendChat(NETWORK_ACTION_CHAT_CLIENT, DESTTYPE_CLIENT, atoi(argv[1]), argv[2], CLIENT_ID_SERVER, from_admin);
-	}
-
-	return true;
-}
-
-DEF_CONSOLE_CMD(ConCompanyPassword)
-{
-	if (argc == 0) {
-		if (_network_dedicated) {
-			IConsolePrint(CC_HELP, "Change the password of a company. Usage: 'company_pw <company-no> \"<password>\".");
-		} else if (_network_server) {
-			IConsolePrint(CC_HELP, "Change the password of your or any other company. Usage: 'company_pw [<company-no>] \"<password>\"'.");
-		} else {
-			IConsolePrint(CC_HELP, "Change the password of your company. Usage: 'company_pw \"<password>\"'.");
-		}
-
-		IConsolePrint(CC_HELP, "Use \"*\" to disable the password.");
-		return true;
-	}
-
-	CompanyID company_id;
-	std::string password;
-	const char *errormsg;
-
-	if (argc == 2) {
-		company_id = _local_company;
-		password = argv[1];
-		errormsg = "You have to own a company to make use of this command.";
-	} else if (argc == 3 && _network_server) {
-		company_id = (CompanyID)(atoi(argv[1]) - 1);
-		password = argv[2];
-		errormsg = "You have to specify the ID of a valid human controlled company.";
-	} else {
-		return false;
-	}
-
-	if (!Company::IsValidHumanID(company_id)) {
-		IConsolePrint(CC_ERROR, errormsg);
-		return false;
-	}
-
-	password = NetworkChangeCompanyPassword(company_id, password);
-
-	if (password.empty()) {
-		IConsolePrint(CC_INFO, "Company password cleared.");
-	} else {
-		IConsolePrint(CC_INFO, "Company password changed to '{}'.", password);
 	}
 
 	return true;
@@ -2812,9 +2757,6 @@ void IConsoleStdLibRegister()
 	IConsole::CmdRegister("authorized_key", ConNetworkAuthorizedKey, ConHookServerOnly);
 	IConsole::AliasRegister("ak", "authorized_key %+");
 
-	IConsole::CmdRegister("company_pw",              ConCompanyPassword,  ConHookNeedNetwork);
-	IConsole::AliasRegister("company_password",      "company_pw %+");
-
 	IConsole::AliasRegister("net_frame_freq",        "setting frame_freq %+");
 	IConsole::AliasRegister("net_sync_freq",         "setting sync_freq %+");
 	IConsole::AliasRegister("server_pw",             "setting server_password %+");
@@ -2830,7 +2772,6 @@ void IConsoleStdLibRegister()
 	IConsole::AliasRegister("pause_on_join",         "setting pause_on_join %+");
 	IConsole::AliasRegister("autoclean_companies",   "setting autoclean_companies %+");
 	IConsole::AliasRegister("autoclean_protected",   "setting autoclean_protected %+");
-	IConsole::AliasRegister("autoclean_unprotected", "setting autoclean_unprotected %+");
 	IConsole::AliasRegister("restart_game_year",     "setting restart_game_year %+");
 	IConsole::AliasRegister("min_players",           "setting min_active_clients %+");
 	IConsole::AliasRegister("reload_cfg",            "setting reload_cfg %+");

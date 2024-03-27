@@ -61,7 +61,6 @@ bool _network_server;     ///< network-server is active
 bool _network_available;  ///< is network mode available?
 bool _network_dedicated;  ///< are we a dedicated server?
 bool _is_network_server;  ///< Does this client wants to be a network-server?
-NetworkCompanyState *_network_company_states = nullptr; ///< Statistics about some companies.
 ClientID _network_own_client_id;      ///< Our client identifier.
 ClientID _redirect_console_to_client; ///< If not invalid, redirect the console output to a client.
 uint8_t _network_reconnect;             ///< Reconnect timeout
@@ -79,7 +78,6 @@ uint32_t _sync_seed_2;                  ///< Second part of the seed.
 #endif
 uint32_t _sync_frame;                   ///< The frame to perform the sync check.
 bool _network_first_time;             ///< Whether we have finished joining or not.
-CompanyMask _network_company_passworded; ///< Bitmask of the password status of all companies.
 
 static_assert((int)NETWORK_COMPANY_NAME_LENGTH == MAX_LENGTH_COMPANY_NAME_CHARS * MAX_CHAR_LENGTH);
 
@@ -121,6 +119,28 @@ NetworkClientInfo::~NetworkClientInfo()
 }
 
 /**
+ * Returns whether the given company can be joined by this client.
+ * @param company_id The id of the company.
+ * @return \c true when this company is allowed to join, otherwise \c false.
+ */
+bool NetworkClientInfo::CanJoinCompany(CompanyID company_id) const
+{
+	Company *c = Company::GetIfValid(company_id);
+	return c != nullptr && c->allow_list.Contains(this->public_key);
+}
+
+/**
+ * Returns whether the given company can be joined by this client.
+ * @param company_id The id of the company.
+ * @return \c true when this company is allowed to join, otherwise \c false.
+ */
+bool NetworkCanJoinCompany(CompanyID company_id)
+{
+	NetworkClientInfo *info = NetworkClientInfo::GetByClientID(_network_own_client_id);
+	return info != nullptr && info->CanJoinCompany(company_id);
+}
+
+/**
  * Return the client state given it's client-identifier
  * @param client_id the ClientID to search for
  * @return return a pointer to the corresponding NetworkClientSocket struct or nullptr when not found
@@ -159,10 +179,12 @@ bool NetworkAuthorizedKeys::Contains(std::string_view key) const
 /**
  * Add the given key to the authorized keys, when it is not already contained.
  * @param key The key to add.
- * @return \c true when the key was added, \c false when the key already existed.
+ * @return \c true when the key was added, \c false when the key already existed or the key was empty.
  */
 bool NetworkAuthorizedKeys::Add(std::string_view key)
 {
+	if (key.empty()) return false;
+
 	auto iter = FindKey(this, key);
 	if (iter != this->end()) return false;
 
@@ -199,68 +221,6 @@ uint8_t NetworkSpectatorCount()
 	return count;
 }
 
-/**
- * Change the company password of a given company.
- * @param company_id ID of the company the password should be changed for.
- * @param password The unhashed password we like to set ('*' or '' resets the password)
- * @return The password.
- */
-std::string NetworkChangeCompanyPassword(CompanyID company_id, std::string password)
-{
-	if (password.compare("*") == 0) password = "";
-
-	if (_network_server) {
-		NetworkServerSetCompanyPassword(company_id, password, false);
-	} else {
-		NetworkClientSetCompanyPassword(password);
-	}
-
-	return password;
-}
-
-/**
- * Hash the given password using server ID and game seed.
- * @param password Password to hash.
- * @param password_server_id Server ID.
- * @param password_game_seed Game seed.
- * @return The hashed password.
- */
-std::string GenerateCompanyPasswordHash(const std::string &password, const std::string &password_server_id, uint32_t password_game_seed)
-{
-	if (password.empty()) return password;
-
-	size_t password_length = password.size();
-	size_t password_server_id_length = password_server_id.size();
-
-	std::ostringstream salted_password;
-	/* Add the password with the server's ID and game seed as the salt. */
-	for (uint i = 0; i < NETWORK_SERVER_ID_LENGTH - 1; i++) {
-		char password_char = (i < password_length ? password[i] : 0);
-		char server_id_char = (i < password_server_id_length ? password_server_id[i] : 0);
-		char seed_char = password_game_seed >> (i % 32);
-		salted_password << (char)(password_char ^ server_id_char ^ seed_char); // Cast needed, otherwise interpreted as integer to format
-	}
-
-	Md5 checksum;
-	MD5Hash digest;
-
-	/* Generate the MD5 hash */
-	std::string salted_password_string = salted_password.str();
-	checksum.Append(salted_password_string.data(), salted_password_string.size());
-	checksum.Finish(digest);
-
-	return FormatArrayAsHex(digest);
-}
-
-/**
- * Check if the company we want to join requires a password.
- * @param company_id id of the company we want to check the 'passworded' flag for.
- * @return true if the company requires a password.
- */
-bool NetworkCompanyIsPassworded(CompanyID company_id)
-{
-	return HasBit(_network_company_passworded, company_id);
-}
 
 /* This puts a text-message to the console, or in the future, the chat-box,
  *  (to keep it all a bit more general)
@@ -657,10 +617,6 @@ void NetworkClose(bool close_admins)
 
 	NetworkFreeLocalCommandQueue();
 
-	delete[] _network_company_states;
-	_network_company_states = nullptr;
-	_network_company_passworded = 0;
-
 	InitializeNetworkPools(close_admins);
 }
 
@@ -807,7 +763,7 @@ public:
 
 /**
  * Join a client to the server at with the given connection string.
- * The default for the passwords is \c nullptr. When the server or company needs a
+ * The default for the passwords is \c nullptr. When the server needs a
  * password and none is given, the user is asked to enter the password in the GUI.
  * This function will return false whenever some information required to join is not
  * correct such as the company number or the client's name, or when there is not
@@ -819,10 +775,9 @@ public:
  * @param connection_string     The IP address, port and company number to join as.
  * @param default_company       The company number to join as when none is given.
  * @param join_server_password  The password for the server.
- * @param join_company_password The password for the company.
  * @return Whether the join has started.
  */
-bool NetworkClientConnectGame(const std::string &connection_string, CompanyID default_company, const std::string &join_server_password, const std::string &join_company_password)
+bool NetworkClientConnectGame(const std::string &connection_string, CompanyID default_company, const std::string &join_server_password)
 {
 	Debug(net, 9, "NetworkClientConnectGame(): connection_string={}", connection_string);
 
@@ -835,7 +790,6 @@ bool NetworkClientConnectGame(const std::string &connection_string, CompanyID de
 	_network_join.connection_string = resolved_connection_string;
 	_network_join.company = join_as;
 	_network_join.server_password = join_server_password;
-	_network_join.company_password = join_company_password;
 
 	if (_game_mode == GM_MENU) {
 		/* From the menu we can immediately continue with the actual join. */
@@ -881,6 +835,9 @@ static void NetworkInitGameInfo()
 	ci->client_playas = _network_dedicated ? COMPANY_SPECTATOR : COMPANY_FIRST;
 
 	ci->client_name = _settings_client.network.client_name;
+
+	NetworkAuthenticationClientHandler::EnsureValidSecretKeyAndUpdatePublicKey(_settings_client.network.client_secret_key, _settings_client.network.client_public_key);
+	ci->public_key = _settings_client.network.client_public_key;
 }
 
 /**
@@ -952,7 +909,6 @@ bool NetworkServerStart()
 	Debug(net, 5, "Starting listeners for incoming server queries");
 	NetworkUDPServerListen();
 
-	_network_company_states = new NetworkCompanyState[MAX_COMPANIES];
 	_network_server = true;
 	_networking = true;
 	_frame_counter = 0;
@@ -962,7 +918,6 @@ bool NetworkServerStart()
 	_network_own_client_id = CLIENT_ID_SERVER;
 
 	_network_clients_connected = 0;
-	_network_company_passworded = 0;
 
 	NetworkInitGameInfo();
 
@@ -1279,11 +1234,6 @@ void NetworkGameLoop()
 	NetworkSend();
 }
 
-static void NetworkGenerateServerId()
-{
-	_settings_client.network.network_id = GenerateUid("OpenTTD Server ID");
-}
-
 /** This tries to launch the network for a given OS */
 void NetworkStartUp()
 {
@@ -1292,9 +1242,6 @@ void NetworkStartUp()
 	/* Network is available */
 	_network_available = NetworkCoreInitialize();
 	_network_dedicated = false;
-
-	/* Generate an server id when there is none yet */
-	if (_settings_client.network.network_id.empty()) NetworkGenerateServerId();
 
 	_network_game_info = {};
 

@@ -75,6 +75,8 @@ struct CompanyProperties {
 	uint32_t president_name_2;         ///< Parameter of #president_name_1
 	std::string president_name;      ///< Name of the president if the user changed it.
 
+	NetworkAuthorizedKeys allow_list; ///< Public keys of clients that are allowed to join this company.
+
 	CompanyManagerFace face;         ///< Face description of the president.
 
 	Money money;                     ///< Money owned by the company.

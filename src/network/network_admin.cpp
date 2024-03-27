@@ -328,7 +328,7 @@ NetworkRecvStatus ServerNetworkAdminSocketHandler::SendCompanyInfo(const Company
 	SetDParam(0, c->index);
 	p->Send_string(GetString(STR_PRESIDENT_NAME));
 	p->Send_uint8 (c->colour);
-	p->Send_bool  (NetworkCompanyIsPassworded(c->index));
+	p->Send_bool  (true);
 	p->Send_uint32(c->inaugurated_year.base());
 	p->Send_bool  (c->is_ai);
 	p->Send_uint8 (CeilDiv(c->months_of_bankruptcy, 3)); // send as quarters_of_bankruptcy
@@ -353,7 +353,7 @@ NetworkRecvStatus ServerNetworkAdminSocketHandler::SendCompanyUpdate(const Compa
 	SetDParam(0, c->index);
 	p->Send_string(GetString(STR_PRESIDENT_NAME));
 	p->Send_uint8 (c->colour);
-	p->Send_bool  (NetworkCompanyIsPassworded(c->index));
+	p->Send_bool  (true);
 	p->Send_uint8 (CeilDiv(c->months_of_bankruptcy, 3)); // send as quarters_of_bankruptcy
 
 	this->SendPacket(std::move(p));

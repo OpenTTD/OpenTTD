@@ -86,7 +86,6 @@ enum ClientListWidgets : WidgetID {
 	WID_CL_CLIENT_NAME_EDIT,           ///< Edit button for client name.
 	WID_CL_MATRIX,                     ///< Company/client list.
 	WID_CL_SCROLLBAR,                  ///< Scrollbar for company/client list.
-	WID_CL_COMPANY_JOIN,               ///< Used for QueryWindow when a company has a password.
 	WID_CL_CLIENT_COMPANY_COUNT,       ///< Count of clients and companies.
 };
 
@@ -95,17 +94,6 @@ enum NetworkJoinStatusWidgets : WidgetID {
 	WID_NJS_PROGRESS_BAR,  ///< Simple progress bar.
 	WID_NJS_PROGRESS_TEXT, ///< Text explaining what is happening.
 	WID_NJS_CANCELOK,      ///< Cancel / OK button.
-};
-
-/** Widgets of the #NetworkCompanyPasswordWindow class. */
-enum NetworkCompanyPasswordWidgets : WidgetID {
-	WID_NCP_BACKGROUND,               ///< Background of the window.
-	WID_NCP_LABEL,                    ///< Label in front of the password field.
-	WID_NCP_PASSWORD,                 ///< Input field for the password.
-	WID_NCP_SAVE_AS_DEFAULT_PASSWORD, ///< Toggle 'button' for saving the current password as default password.
-	WID_NCP_WARNING,                  ///< Warning text about password security
-	WID_NCP_CANCEL,                   ///< Close the window without changing anything.
-	WID_NCP_OK,                       ///< Safe the password etc.
 };
 
 /** Widgets of the #NetworkAskRelayWindow class. */

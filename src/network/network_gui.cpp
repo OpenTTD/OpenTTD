@@ -1316,7 +1316,6 @@ enum DropDownAdmin {
 	DD_CLIENT_ADMIN_KICK,
 	DD_CLIENT_ADMIN_BAN,
 	DD_COMPANY_ADMIN_RESET,
-	DD_COMPANY_ADMIN_UNLOCK,
 };
 
 /**
@@ -1347,15 +1346,6 @@ static void AdminCompanyResetCallback(Window *, bool confirmed)
 		if (NetworkCompanyHasClients(_admin_company_id)) return;
 		Command<CMD_COMPANY_CTRL>::Post(CCA_DELETE, _admin_company_id, CRR_MANUAL, INVALID_CLIENT_ID);
 	}
-}
-
-/**
- * Callback function for admin command to unlock company.
- * @param confirmed Iff the user pressed Yes.
- */
-static void AdminCompanyUnlockCallback(Window *, bool confirmed)
-{
-	if (confirmed) NetworkServerSetCompanyPassword(_admin_company_id, "", false);
 }
 
 /**
@@ -1428,7 +1418,6 @@ using ClientButton = Button<ClientID>;
 struct NetworkClientListWindow : Window {
 private:
 	ClientListWidgets query_widget; ///< During a query this tracks what widget caused the query.
-	CompanyID join_company; ///< During query for company password, this stores what company we wanted to join.
 
 	ClientID dd_client_id; ///< During admin dropdown, track which client this was for.
 	CompanyID dd_company_id; ///< During admin dropdown, track which company this was for.
@@ -1464,10 +1453,6 @@ private:
 		if (_network_server) {
 			NetworkServerDoMove(CLIENT_ID_SERVER, company_id);
 			MarkWholeScreenDirty();
-		} else if (NetworkCompanyIsPassworded(company_id)) {
-			w->query_widget = WID_CL_COMPANY_JOIN;
-			w->join_company = company_id;
-			ShowQueryString(STR_EMPTY, STR_NETWORK_NEED_COMPANY_PASSWORD_CAPTION, NETWORK_PASSWORD_LENGTH, w, CS_ALPHANUMERAL, QSF_PASSWORD);
 		} else {
 			NetworkClientRequestMove(company_id);
 		}
@@ -1519,7 +1504,6 @@ private:
 	{
 		DropDownList list;
 		list.push_back(std::make_unique<DropDownListStringItem>(STR_NETWORK_CLIENT_LIST_ADMIN_COMPANY_RESET, DD_COMPANY_ADMIN_RESET, NetworkCompanyHasClients(company_id)));
-		list.push_back(std::make_unique<DropDownListStringItem>(STR_NETWORK_CLIENT_LIST_ADMIN_COMPANY_UNLOCK, DD_COMPANY_ADMIN_UNLOCK, !NetworkCompanyIsPassworded(company_id)));
 
 		Rect wi_rect;
 		wi_rect.left   = pt.x;
@@ -1541,18 +1525,25 @@ private:
 		ShowNetworkChatQueryWindow(DESTTYPE_CLIENT, client_id);
 	}
 
+	static void OnClickClientAuthorize([[maybe_unused]] NetworkClientListWindow *w, [[maybe_unused]] Point pt, ClientID client_id)
+	{
+		AutoRestoreBackup<CompanyID> cur_company(_current_company, NetworkClientInfo::GetByClientID(_network_own_client_id)->client_playas);
+		Command<CMD_COMPANY_ADD_ALLOW_LIST>::Post(NetworkClientInfo::GetByClientID(client_id)->public_key);
+	}
+
 	/**
 	 * Part of RebuildList() to create the information for a single company.
 	 * @param company_id The company to build the list for.
 	 * @param client_playas The company the client is joined as.
+	 * @param can_join_company Whether this company can be joined by us.
 	 */
-	void RebuildListCompany(CompanyID company_id, CompanyID client_playas)
+	void RebuildListCompany(CompanyID company_id, CompanyID client_playas, bool can_join_company)
 	{
 		ButtonCommon *chat_button = new CompanyButton(SPR_CHAT, company_id == COMPANY_SPECTATOR ? STR_NETWORK_CLIENT_LIST_CHAT_SPECTATOR_TOOLTIP : STR_NETWORK_CLIENT_LIST_CHAT_COMPANY_TOOLTIP, COLOUR_ORANGE, company_id, &NetworkClientListWindow::OnClickCompanyChat);
 
 		if (_network_server) this->buttons[line_count].push_back(std::make_unique<CompanyButton>(SPR_ADMIN, STR_NETWORK_CLIENT_LIST_ADMIN_COMPANY_TOOLTIP, COLOUR_RED, company_id, &NetworkClientListWindow::OnClickCompanyAdmin, company_id == COMPANY_SPECTATOR));
 		this->buttons[line_count].emplace_back(chat_button);
-		if (client_playas != company_id) this->buttons[line_count].push_back(std::make_unique<CompanyButton>(SPR_JOIN, STR_NETWORK_CLIENT_LIST_JOIN_TOOLTIP, COLOUR_ORANGE, company_id, &NetworkClientListWindow::OnClickCompanyJoin, company_id != COMPANY_SPECTATOR && Company::Get(company_id)->is_ai));
+		if (can_join_company) this->buttons[line_count].push_back(std::make_unique<CompanyButton>(SPR_JOIN, STR_NETWORK_CLIENT_LIST_JOIN_TOOLTIP, COLOUR_ORANGE, company_id, &NetworkClientListWindow::OnClickCompanyJoin, company_id != COMPANY_SPECTATOR && Company::Get(company_id)->is_ai));
 
 		this->line_count += 1;
 
@@ -1563,6 +1554,7 @@ private:
 
 			if (_network_server) this->buttons[line_count].push_back(std::make_unique<ClientButton>(SPR_ADMIN, STR_NETWORK_CLIENT_LIST_ADMIN_CLIENT_TOOLTIP, COLOUR_RED, ci->client_id, &NetworkClientListWindow::OnClickClientAdmin, _network_own_client_id == ci->client_id));
 			if (_network_own_client_id != ci->client_id) this->buttons[line_count].push_back(std::make_unique<ClientButton>(SPR_CHAT, STR_NETWORK_CLIENT_LIST_CHAT_CLIENT_TOOLTIP, COLOUR_ORANGE, ci->client_id, &NetworkClientListWindow::OnClickClientChat));
+			if (_network_own_client_id != ci->client_id && client_playas != COMPANY_SPECTATOR && !ci->CanJoinCompany(client_playas)) this->buttons[line_count].push_back(std::make_unique<ClientButton>(SPR_JOIN, STR_NETWORK_CLIENT_LIST_COMPANY_AUTHORIZE_TOOLTIP, COLOUR_GREEN, ci->client_id, &NetworkClientListWindow::OnClickClientAuthorize));
 
 			if (ci->client_id == _network_own_client_id) {
 				this->player_self_index = this->line_count;
@@ -1597,18 +1589,18 @@ private:
 		}
 
 		if (client_playas != COMPANY_SPECTATOR) {
-			this->RebuildListCompany(client_playas, client_playas);
+			this->RebuildListCompany(client_playas, client_playas, false);
 		}
 
 		/* Companies */
 		for (const Company *c : Company::Iterate()) {
 			if (c->index == client_playas) continue;
 
-			this->RebuildListCompany(c->index, client_playas);
+			this->RebuildListCompany(c->index, client_playas, own_ci != nullptr && c->allow_list.Contains(own_ci->public_key));
 		}
 
 		/* Spectators */
-		this->RebuildListCompany(COMPANY_SPECTATOR, client_playas);
+		this->RebuildListCompany(COMPANY_SPECTATOR, client_playas, client_playas != COMPANY_SPECTATOR);
 
 		this->vscroll->SetCount(this->line_count);
 	}
@@ -1865,13 +1857,6 @@ public:
 						SetDParam(0, _admin_company_id);
 						break;
 
-					case DD_COMPANY_ADMIN_UNLOCK:
-						_admin_company_id = this->dd_company_id;
-						text = STR_NETWORK_CLIENT_LIST_ASK_COMPANY_UNLOCK;
-						callback = AdminCompanyUnlockCallback;
-						SetDParam(0, _admin_company_id);
-						break;
-
 					default:
 						NOT_REACHED();
 				}
@@ -1912,10 +1897,6 @@ public:
 				this->InvalidateData();
 				break;
 			}
-
-			case WID_CL_COMPANY_JOIN:
-				NetworkClientRequestMove(this->join_company, str);
-				break;
 		}
 	}
 
@@ -2232,127 +2213,13 @@ void ShowJoinStatusWindow()
 	new NetworkJoinStatusWindow(&_network_join_status_window_desc);
 }
 
-void ShowNetworkNeedPassword(NetworkPasswordType npt, std::shared_ptr<NetworkAuthenticationPasswordRequest> request)
+void ShowNetworkNeedPassword(std::shared_ptr<NetworkAuthenticationPasswordRequest> request)
 {
 	NetworkJoinStatusWindow *w = (NetworkJoinStatusWindow *)FindWindowById(WC_NETWORK_STATUS_WINDOW, WN_NETWORK_STATUS_WINDOW_JOIN);
 	if (w == nullptr) return;
 	w->request = request;
 
-	StringID caption;
-	switch (npt) {
-		default: NOT_REACHED();
-		case NETWORK_GAME_PASSWORD:    caption = STR_NETWORK_NEED_GAME_PASSWORD_CAPTION; break;
-		case NETWORK_COMPANY_PASSWORD: caption = STR_NETWORK_NEED_COMPANY_PASSWORD_CAPTION; break;
-	}
-	ShowQueryString(STR_EMPTY, caption, NETWORK_PASSWORD_LENGTH, w, CS_ALPHANUMERAL, QSF_PASSWORD);
-}
-
-struct NetworkCompanyPasswordWindow : public Window {
-	QueryString password_editbox; ///< Password editbox.
-	Dimension warning_size;       ///< How much space to use for the warning text
-
-	NetworkCompanyPasswordWindow(WindowDesc *desc, Window *parent) : Window(desc), password_editbox(lengthof(_settings_client.network.default_company_pass))
-	{
-		this->InitNested(0);
-		this->UpdateWarningStringSize();
-
-		this->parent = parent;
-		this->querystrings[WID_NCP_PASSWORD] = &this->password_editbox;
-		this->password_editbox.cancel_button = WID_NCP_CANCEL;
-		this->password_editbox.ok_button = WID_NCP_OK;
-		this->SetFocusedWidget(WID_NCP_PASSWORD);
-	}
-
-	void UpdateWarningStringSize()
-	{
-		assert(this->nested_root->smallest_x > 0);
-		this->warning_size.width = this->nested_root->current_x - (WidgetDimensions::scaled.framerect.Horizontal()) * 2;
-		this->warning_size.height = GetStringHeight(STR_WARNING_PASSWORD_SECURITY, this->warning_size.width);
-		this->warning_size.height += (WidgetDimensions::scaled.framerect.Vertical()) * 2;
-
-		this->ReInit();
-	}
-
-	void UpdateWidgetSize(WidgetID widget, Dimension *size, [[maybe_unused]] const Dimension &padding, [[maybe_unused]] Dimension *fill, [[maybe_unused]] Dimension *resize) override
-	{
-		if (widget == WID_NCP_WARNING) {
-			*size = this->warning_size;
-		}
-	}
-
-	void DrawWidget(const Rect &r, WidgetID widget) const override
-	{
-		if (widget != WID_NCP_WARNING) return;
-
-		DrawStringMultiLine(r.Shrink(WidgetDimensions::scaled.framerect),
-			STR_WARNING_PASSWORD_SECURITY, TC_FROMSTRING, SA_CENTER);
-	}
-
-	void OnOk()
-	{
-		if (this->IsWidgetLowered(WID_NCP_SAVE_AS_DEFAULT_PASSWORD)) {
-			_settings_client.network.default_company_pass = this->password_editbox.text.buf;
-		}
-
-		NetworkChangeCompanyPassword(_local_company, this->password_editbox.text.buf);
-	}
-
-	void OnClick([[maybe_unused]] Point pt, WidgetID widget, [[maybe_unused]] int click_count) override
-	{
-		switch (widget) {
-			case WID_NCP_OK:
-				this->OnOk();
-				[[fallthrough]];
-
-			case WID_NCP_CANCEL:
-				this->Close();
-				break;
-
-			case WID_NCP_SAVE_AS_DEFAULT_PASSWORD:
-				this->ToggleWidgetLoweredState(WID_NCP_SAVE_AS_DEFAULT_PASSWORD);
-				this->SetDirty();
-				break;
-		}
-	}
-};
-
-static constexpr NWidgetPart _nested_network_company_password_window_widgets[] = {
-	NWidget(NWID_HORIZONTAL),
-		NWidget(WWT_CLOSEBOX, COLOUR_GREY),
-		NWidget(WWT_CAPTION, COLOUR_GREY), SetDataTip(STR_COMPANY_PASSWORD_CAPTION, STR_TOOLTIP_WINDOW_TITLE_DRAG_THIS),
-	EndContainer(),
-	NWidget(WWT_PANEL, COLOUR_GREY, WID_NCP_BACKGROUND),
-		NWidget(NWID_VERTICAL), SetPIP(5, 5, 5),
-			NWidget(NWID_HORIZONTAL), SetPIP(5, 5, 5),
-				NWidget(WWT_TEXT, COLOUR_GREY, WID_NCP_LABEL), SetDataTip(STR_COMPANY_VIEW_PASSWORD, STR_NULL),
-				NWidget(WWT_EDITBOX, COLOUR_GREY, WID_NCP_PASSWORD), SetFill(1, 0), SetMinimalSize(194, 12), SetDataTip(STR_COMPANY_VIEW_SET_PASSWORD, STR_NULL),
-			EndContainer(),
-			NWidget(NWID_HORIZONTAL), SetPIP(5, 0, 5),
-				NWidget(NWID_SPACER), SetFill(1, 0),
-				NWidget(WWT_TEXTBTN, COLOUR_GREY, WID_NCP_SAVE_AS_DEFAULT_PASSWORD), SetMinimalSize(194, 12),
-											SetDataTip(STR_COMPANY_PASSWORD_MAKE_DEFAULT, STR_COMPANY_PASSWORD_MAKE_DEFAULT_TOOLTIP),
-			EndContainer(),
-		EndContainer(),
-	EndContainer(),
-	NWidget(WWT_PANEL, COLOUR_GREY, WID_NCP_WARNING), EndContainer(),
-	NWidget(NWID_HORIZONTAL, NC_EQUALSIZE),
-		NWidget(WWT_PUSHTXTBTN, COLOUR_GREY, WID_NCP_CANCEL), SetFill(1, 0), SetDataTip(STR_BUTTON_CANCEL, STR_COMPANY_PASSWORD_CANCEL),
-		NWidget(WWT_PUSHTXTBTN, COLOUR_GREY, WID_NCP_OK), SetFill(1, 0), SetDataTip(STR_BUTTON_OK, STR_COMPANY_PASSWORD_OK),
-	EndContainer(),
-};
-
-static WindowDesc _network_company_password_window_desc(
-	WDP_AUTO, nullptr, 0, 0,
-	WC_COMPANY_PASSWORD_WINDOW, WC_NONE,
-	0,
-	std::begin(_nested_network_company_password_window_widgets), std::end(_nested_network_company_password_window_widgets)
-);
-
-void ShowNetworkCompanyPasswordWindow(Window *parent)
-{
-	CloseWindowById(WC_COMPANY_PASSWORD_WINDOW, 0);
-
-	new NetworkCompanyPasswordWindow(&_network_company_password_window_desc, parent);
+	ShowQueryString(STR_EMPTY, STR_NETWORK_NEED_GAME_PASSWORD_CAPTION, NETWORK_PASSWORD_LENGTH, w, CS_ALPHANUMERAL, QSF_NONE);
 }
 
 /**

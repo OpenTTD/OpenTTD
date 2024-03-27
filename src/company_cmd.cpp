@@ -888,8 +888,6 @@ CommandCost CmdCompanyCtrl(DoCommandFlag flags, CompanyCtrlAction cca, CompanyID
 				break;
 			}
 
-			/* Send new companies, before potentially setting the password. Otherwise,
-			 * the password update could be sent when the company is not yet known. */
 			NetworkAdminCompanyNew(c);
 			NetworkServerNewCompany(c, ci);
 
@@ -897,9 +895,6 @@ CommandCost CmdCompanyCtrl(DoCommandFlag flags, CompanyCtrlAction cca, CompanyID
 			if (client_id == _network_own_client_id) {
 				assert(_local_company == COMPANY_SPECTATOR);
 				SetLocalCompany(c->index);
-				if (!_settings_client.network.default_company_pass.empty()) {
-					NetworkChangeCompanyPassword(_local_company, _settings_client.network.default_company_pass);
-				}
 
 				/* In network games, we need to try setting the company manager face here to sync it to all clients.
 				 * If a favorite company manager face is selected, choose it. Otherwise, use a random face. */
@@ -974,6 +969,24 @@ CommandCost CmdCompanyCtrl(DoCommandFlag flags, CompanyCtrlAction cca, CompanyID
 	InvalidateWindowClassesData(WC_GAME_OPTIONS);
 	InvalidateWindowClassesData(WC_SCRIPT_SETTINGS);
 	InvalidateWindowClassesData(WC_SCRIPT_LIST);
+
+	return CommandCost();
+}
+
+/**
+ * Add the given public key to the allow list of this company.
+ * @param flags Operation to perform.
+ * @param public_key The public key of the client to add.
+ * @return The cost of this operation or an error.
+ */
+CommandCost CmdCompanyAddAllowList(DoCommandFlag flags, const std::string &public_key)
+{
+	if (flags & DC_EXEC) {
+		if (Company::Get(_current_company)->allow_list.Add(public_key)) {
+			InvalidateWindowData(WC_CLIENT_LIST, 0);
+			SetWindowDirty(WC_COMPANY, _current_company);
+		}
+	}
 
 	return CommandCost();
 }
