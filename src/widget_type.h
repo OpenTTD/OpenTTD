@@ -100,6 +100,7 @@ enum WidgetType {
 	WPT_ENDCONTAINER, ///< Widget part to denote end of a container.
 	WPT_FUNCTION,     ///< Widget part for calling a user function.
 	WPT_SCROLLBAR,    ///< Widget part for attaching a scrollbar.
+	WPT_ASPECT,       ///< Widget part for sepcifying aspect ratio.
 
 	/* Pushable window widget types. */
 	WWT_MASK = 0x7F,
@@ -119,6 +120,13 @@ enum SizingType {
 	ST_RESIZE,   ///< Resize the nested widget tree.
 };
 
+enum class AspectFlags : uint8_t {
+	ResizeX = 1U << 0,
+	ResizeY = 1U << 1,
+	ResizeXY = ResizeX | ResizeY,
+};
+DECLARE_ENUM_AS_BIT_SET(AspectFlags)
+
 /* Forward declarations. */
 class NWidgetCore;
 class Scrollbar;
@@ -136,6 +144,7 @@ class NWidgetBase : public ZeroedMemoryAllocator {
 public:
 	NWidgetBase(WidgetType tp);
 
+	void ApplyAspectRatio();
 	virtual void AdjustPaddingForZoom();
 	virtual void SetupSmallestSize(Window *w) = 0;
 	virtual void AssignSizePosition(SizingType sizing, int x, int y, uint given_width, uint given_height, bool rtl) = 0;
@@ -232,6 +241,8 @@ public:
 	/* Current widget size (that is, after resizing). */
 	uint current_x;       ///< Current horizontal size (after resizing).
 	uint current_y;       ///< Current vertical size (after resizing).
+	float aspect_ratio = 0; ///< Desired aspect ratio of widget.
+	AspectFlags aspect_flags = AspectFlags::ResizeX; ///< Which dimensions can be resized.
 
 	int pos_x;            ///< Horizontal position of top-left corner of the widget in the window.
 	int pos_y;            ///< Vertical position of top-left corner of the widget in the window.
@@ -298,6 +309,8 @@ public:
 	void SetMinimalTextLines(uint8_t min_lines, uint8_t spacing, FontSize size);
 	void SetFill(uint fill_x, uint fill_y);
 	void SetResize(uint resize_x, uint resize_y);
+	void SetAspect(float ratio, AspectFlags flags = AspectFlags::ResizeX);
+	void SetAspect(int x_ratio, int y_ratio, AspectFlags flags = AspectFlags::ResizeX);
 
 	bool UpdateMultilineWidgetSize(const std::string &str, int max_lines);
 	bool UpdateSize(uint min_x, uint min_y);
@@ -1045,6 +1058,11 @@ struct NWidgetPartAlignment {
 	StringAlignment align; ///< Alignment of text/image.
 };
 
+struct NWidgetPartAspect {
+	float ratio;
+	AspectFlags flags;
+};
+
 /**
  * Pointer to function returning a nested widget.
  * @return Nested widget (tree).
@@ -1068,6 +1086,7 @@ struct NWidgetPart {
 		NWidgetPartAlignment align;      ///< Part with internal alignment.
 		NWidgetFunctionType *func_ptr;   ///< Part with a function call.
 		NWidContainerFlags cont_flags;   ///< Part with container flags.
+		NWidgetPartAspect aspect; ///< Part to set aspect ratio.
 
 		/* Constructors for each NWidgetPartUnion data type. */
 		constexpr NWidgetPartUnion() : xy() {}
@@ -1081,6 +1100,7 @@ struct NWidgetPart {
 		constexpr NWidgetPartUnion(NWidgetPartAlignment align) : align(align) {}
 		constexpr NWidgetPartUnion(NWidgetFunctionType *func_ptr) : func_ptr(func_ptr) {}
 		constexpr NWidgetPartUnion(NWidContainerFlags cont_flags) : cont_flags(cont_flags) {}
+		constexpr NWidgetPartUnion(NWidgetPartAspect aspect) : aspect(aspect) {}
 	} u;
 
 	/* Constructors for each NWidgetPart data type. */
@@ -1095,6 +1115,7 @@ struct NWidgetPart {
 	constexpr NWidgetPart(WidgetType type, NWidgetPartAlignment align) : type(type), u(align) {}
 	constexpr NWidgetPart(WidgetType type, NWidgetFunctionType *func_ptr) : type(type), u(func_ptr) {}
 	constexpr NWidgetPart(WidgetType type, NWidContainerFlags cont_flags) : type(type), u(cont_flags) {}
+	constexpr NWidgetPart(WidgetType type, NWidgetPartAspect aspect) : type(type), u(aspect) {}
 };
 
 /**
@@ -1264,6 +1285,17 @@ constexpr NWidgetPart SetPIPRatio(uint8_t ratio_pre, uint8_t ratio_inter, uint8_
 constexpr NWidgetPart SetScrollbar(WidgetID index)
 {
 	return NWidgetPart{WPT_SCROLLBAR, NWidgetPartWidget{INVALID_COLOUR, index}};
+}
+
+/**
+ * Widget part function for setting the aspect ratio.
+ * @param ratio Desired aspect ratio, or 0 for none.
+ * @param flags Dimensions which should be resized.
+ * @ingroup NestedWidgetParts
+ */
+constexpr NWidgetPart SetAspect(float ratio, AspectFlags flags = AspectFlags::ResizeX)
+{
+	return NWidgetPart{WPT_ASPECT, NWidgetPartAspect{ratio, flags}};
 }
 
 /**
