@@ -146,7 +146,8 @@ const Sprite *TrueTypeFontCache::GetGlyph(GlyphID key)
 				builtin_questionmark_data
 			} }};
 
-			Sprite *spr = BlitterFactory::GetCurrentBlitter()->Encode(builtin_questionmark, SimpleSpriteAlloc);
+			SimpleSpriteAllocator allocator;
+			Sprite *spr = BlitterFactory::GetCurrentBlitter()->Encode(builtin_questionmark, allocator);
 			assert(spr != nullptr);
 			GlyphEntry new_glyph;
 			new_glyph.sprite = spr;

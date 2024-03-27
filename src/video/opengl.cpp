@@ -1112,7 +1112,8 @@ void OpenGLBackend::PopulateCursorCache()
 		SpriteID sprite = _cursor.sprite_seq[i].sprite;
 
 		if (!this->cursor_cache.Contains(sprite)) {
-			Sprite *old = this->cursor_cache.Insert(sprite, (Sprite *)GetRawSprite(sprite, SpriteType::Normal, &SimpleSpriteAlloc, this));
+			SimpleSpriteAllocator allocator;
+			Sprite *old = this->cursor_cache.Insert(sprite, (Sprite *)GetRawSprite(sprite, SpriteType::Normal, &allocator, this));
 			if (old != nullptr) {
 				OpenGLSprite *gl_sprite = (OpenGLSprite *)old->data;
 				gl_sprite->~OpenGLSprite();
@@ -1264,10 +1265,10 @@ void OpenGLBackend::ReleaseAnimBuffer(const Rect &update_rect)
 	}
 }
 
-/* virtual */ Sprite *OpenGLBackend::Encode(const SpriteLoader::SpriteCollection &sprite, AllocatorProc *allocator)
+/* virtual */ Sprite *OpenGLBackend::Encode(const SpriteLoader::SpriteCollection &sprite, SpriteAllocator &allocator)
 {
 	/* Allocate and construct sprite data. */
-	Sprite *dest_sprite = (Sprite *)allocator(sizeof(*dest_sprite) + sizeof(OpenGLSprite));
+	Sprite *dest_sprite = (Sprite *)allocator.Allocate(sizeof(*dest_sprite) + sizeof(OpenGLSprite));
 
 	OpenGLSprite *gl_sprite = (OpenGLSprite *)dest_sprite->data;
 	new (gl_sprite) OpenGLSprite(sprite[ZOOM_LVL_NORMAL].width, sprite[ZOOM_LVL_NORMAL].height, sprite[ZOOM_LVL_NORMAL].type == SpriteType::Font ? 1 : ZOOM_LVL_END, sprite[ZOOM_LVL_NORMAL].colours);
