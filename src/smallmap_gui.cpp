@@ -1869,6 +1869,7 @@ public:
 		this->fill_y = (display->fill_y == 0 && bar->fill_y == 0) ? 0 : std::min(display->fill_y, bar->fill_y);
 		this->resize_x = std::max(display->resize_x, bar->resize_x);
 		this->resize_y = std::min(display->resize_y, bar->resize_y);
+		this->ApplyAspectRatio();
 	}
 
 	void AssignSizePosition(SizingType sizing, int x, int y, uint given_width, uint given_height, bool rtl) override

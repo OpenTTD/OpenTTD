@@ -127,6 +127,7 @@ public:
 		}
 
 		this->smallest_x = this->children.front()->smallest_x + this->children.back()->smallest_x; // First and last are always shown, rest not
+		this->ApplyAspectRatio();
 	}
 
 	void AssignSizePosition(SizingType sizing, int x, int y, uint given_width, uint given_height, bool rtl) override
