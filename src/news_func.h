@@ -55,7 +55,7 @@ inline void AddIndustryNewsItem(StringID string, NewsType type, IndustryID indus
 void NewsLoop();
 void InitNewsItemStructs();
 
-extern const NewsItem *_statusbar_news_item;
+const NewsItem *GetStatusbarNews();
 
 void DeleteInvalidEngineNews();
 void DeleteVehicleNews(VehicleID vid, StringID news);

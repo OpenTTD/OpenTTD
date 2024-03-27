@@ -16,6 +16,6 @@ void ShowLastNewsMessage();
 void ShowMessageHistory();
 bool HideActiveNewsMessage();
 
-extern NewsItem *_latest_news;
+std::pair<NewsIterator, NewsIterator> GetRecentNews(size_t count);
 
 #endif /* NEWS_GUI_H */
