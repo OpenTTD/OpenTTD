@@ -4229,6 +4229,12 @@ STR_ENGINE_PREVIEW_SHIP.ka                                      :laivą
 STR_ENGINE_PREVIEW_SHIP.kuo                                     :laivu
 STR_ENGINE_PREVIEW_SHIP.kur                                     :laive
 
+STR_ENGINE_PREVIEW_COST_WEIGHT                                  :Kaina: {CURRENCY_LONG}  Svoris: {WEIGHT_SHORT}
+STR_ENGINE_PREVIEW_COST_MAX_SPEED                               :Kaina: {CURRENCY_LONG}  Maksimalus greitis: {VELOCITY}
+STR_ENGINE_PREVIEW_SPEED_POWER                                  :Greitis: {VELOCITY}  Galia: {POWER}
+STR_ENGINE_PREVIEW_SPEED_POWER_MAX_TE                           :Greitis: {VELOCITY}  Galia: {POWER}  Maks. „T.E“.: {FORCE}
+STR_ENGINE_PREVIEW_CAPACITY                                     :Talpa: {CARGO_LONG}
+STR_ENGINE_PREVIEW_CAPACITY_2                                   :Talpa: {CARGO_LONG}, {CARGO_LONG}
 
 # Autoreplace window
 STR_REPLACE_VEHICLES_WHITE                                      :{WHITE}Keisti tr. priemones {STRING} - {STRING}

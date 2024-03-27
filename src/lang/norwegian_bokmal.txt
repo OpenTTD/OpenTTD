@@ -4645,7 +4645,7 @@ STR_ORDER_REFIT_ORDER                                           :(Bygg om til {S
 STR_ORDER_REFIT_STOP_ORDER                                      :(Bygg om til {STRING} og stopp)
 STR_ORDER_STOP_ORDER                                            :(Stopp)
 
-STR_ORDER_WAIT_TO_UNBUNCH                                       :(vent for å fjerne klumping)
+STR_ORDER_WAIT_TO_UNBUNCH                                       :(Vent for å fjerne klumping)
 
 STR_ORDER_GO_TO_STATION                                         :{STRING} {STATION} {STRING}
 STR_ORDER_GO_TO_STATION_CAN_T_USE_STATION                       :{PUSH_COLOUR}{RED}(Kan ikke bruke stasjon){POP_COLOUR} {STRING} {STATION} {STRING}

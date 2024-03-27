@@ -4643,7 +4643,7 @@ STR_ORDER_REFIT_ORDER                                           :(Refit to {STRI
 STR_ORDER_REFIT_STOP_ORDER                                      :(Refit to {STRING} and stop)
 STR_ORDER_STOP_ORDER                                            :(Stop)
 
-STR_ORDER_WAIT_TO_UNBUNCH                                       :(wait to unbunch)
+STR_ORDER_WAIT_TO_UNBUNCH                                       :(Wait to unbunch)
 
 STR_ORDER_GO_TO_STATION                                         :{STRING} {STATION} {STRING}
 STR_ORDER_GO_TO_STATION_CAN_T_USE_STATION                       :{PUSH_COLOUR}{RED}(Can't use station){POP_COLOUR} {STRING} {STATION} {STRING}
