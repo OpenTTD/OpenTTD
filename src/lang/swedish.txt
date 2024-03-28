@@ -1056,7 +1056,7 @@ STR_GAME_OPTIONS_GUI_SCALE_BEVELS_TOOLTIP                       :{BLACK}Kryssa i
 STR_GAME_OPTIONS_GUI_FONT_SPRITE                                :{BLACK}Använd traditionellt sprite-typsnitt
 STR_GAME_OPTIONS_GUI_FONT_SPRITE_TOOLTIP                        :{BLACK}Kryssa i den här rutan om du föredrar att använda det traditionella sprite-typsnittet med fast storlek
 STR_GAME_OPTIONS_GUI_FONT_AA                                    :{BLACK}Anti-alias-typsnitt
-STR_GAME_OPTIONS_GUI_FONT_AA_TOOLTIP                            :{BLACK}Kryssa i den här rutan för anti-aliasing av typsnitt med justerbar storlek.
+STR_GAME_OPTIONS_GUI_FONT_AA_TOOLTIP                            :{BLACK}Kryssa i den här rutan för anti-aliasing av typsnitt med justerbar storlek
 
 STR_GAME_OPTIONS_GUI_SCALE_1X                                   :1x
 STR_GAME_OPTIONS_GUI_SCALE_2X                                   :2x
@@ -1495,13 +1495,13 @@ STR_CONFIG_SETTING_NEVER_EXPIRE_VEHICLES                        :Fordon blir ald
 STR_CONFIG_SETTING_NEVER_EXPIRE_VEHICLES_HELPTEXT               :Om det är aktiverat förblir alla fordonstyper tillgängliga i obegränsad tid efter att de introducerats
 
 STR_CONFIG_SETTING_TIMEKEEPING_UNITS                            :Tidhållning: {STRING}
-STR_CONFIG_SETTING_TIMEKEEPING_UNITS_HELPTEXT                   :Välj enheter för spelets tidhållning. Detta kan inte ändras senare.{}{}Kalenderbaserat spelläge är den klassiska OpenTTD-upplevelsen, där ett år består av 12 månader och varje månad har 28-31 dagar.{}{}I Väggklockbaserat spelläge är godsproduktion och finanser istället baserade på enminutssteg, vilket är ungefär så länge som en 30-dagarsmånad tar i Kalenderbaserat spelläge. Dessa är grupperade i 12-minutersperioder motsvarande ett år i Kalenderbaserat spelläge.{}{}Oavsett spelläge finns det alltid en klassisk kalender som används för introduktionsdatum av fordon, byggnader, och annan infrastruktur.
+STR_CONFIG_SETTING_TIMEKEEPING_UNITS_HELPTEXT                   :Välj enheter för spelets tidhållning. Detta kan inte ändras senare.{}{}Kalenderbaserat spelläge är den klassiska OpenTTD-upplevelsen, där ett år består av 12 månader och varje månad har 28-31 dagar.{}{}I Väggklockbaserat spelläge är godsproduktion och finanser istället baserade på enminutssteg, vilket är ungefär så länge som en 30-dagarsmånad tar i Kalenderbaserat spelläge. Dessa är grupperade i 12-minutersperioder motsvarande ett år i Kalenderbaserat spelläge.{}{}Oavsett spelläge finns det alltid en klassisk kalender som används för introduktionsdatum av fordon, byggnader, och annan infrastruktur
 ###length 2
 STR_CONFIG_SETTING_TIMEKEEPING_UNITS_CALENDAR                   :Kalender
 STR_CONFIG_SETTING_TIMEKEEPING_UNITS_WALLCLOCK                  :Väggklocka
 
 STR_CONFIG_SETTING_MINUTES_PER_YEAR                             :Minuter per år: {STRING}
-STR_CONFIG_SETTING_MINUTES_PER_YEAR_HELPTEXT                    :Välj antalet minuter som går i ett kalenderår. Standard är 12 minuter. Sätt till 0 för att stoppa kalendertiden från att ändras. Denna inställning påverkar inte spelets ekonomiska simulering, och är endast tillgänglig för tidhållning medelst väggklocka.
+STR_CONFIG_SETTING_MINUTES_PER_YEAR_HELPTEXT                    :Välj antalet minuter som går i ett kalenderår. Standard är 12 minuter. Sätt till 0 för att stoppa kalendertiden från att ändras. Denna inställning påverkar inte spelets ekonomiska simulering, och är endast tillgänglig för tidhållning medelst väggklocka
 
 STR_CONFIG_SETTING_MINUTES_PER_YEAR_VALUE                       :{NUM}
 ###setting-zero-is-special
@@ -1529,7 +1529,7 @@ STR_CONFIG_SETTING_ERRMSG_DURATION                              :Visningstid fö
 STR_CONFIG_SETTING_ERRMSG_DURATION_HELPTEXT                     :Tid som felmeddelanden i ett rött fönster ska visas. Notera att vissa (kritiska) felmeddelanden inte stängs automatiskt efter denna tid, utan måste stängas manuellt
 
 STR_CONFIG_SETTING_HOVER_DELAY                                  :Visa tooltips: {STRING}
-STR_CONFIG_SETTING_HOVER_DELAY_HELPTEXT                         :Fördröjning innan tooltips visas när muspekaren hålls över ett gränssnittselement. Alternativt kan tooltips bindas till den högra musknappen när detta värde är satt till 0.
+STR_CONFIG_SETTING_HOVER_DELAY_HELPTEXT                         :Fördröjning innan tooltips visas när muspekaren hålls över ett gränssnittselement. Alternativt kan tooltips bindas till den högra musknappen när detta värde är satt till 0
 STR_CONFIG_SETTING_HOVER_DELAY_VALUE                            :Håll muspekaren i {COMMA} millisekund{P 0 "" er}
 ###setting-zero-is-special
 STR_CONFIG_SETTING_HOVER_DELAY_DISABLED                         :Högerklick
@@ -1561,7 +1561,7 @@ STR_CONFIG_SETTING_INDUSTRY_DENSITY                             :Industritäthet
 STR_CONFIG_SETTING_INDUSTRY_DENSITY_HELPTEXT                    :Ange hur många industrier som ska genereras och vilken nivå som ska bibehållas under spelet
 
 STR_CONFIG_SETTING_OIL_REF_EDGE_DISTANCE                        :Maximalt avstånd mellan oljeindustrier och kartans kant: {STRING}
-STR_CONFIG_SETTING_OIL_REF_EDGE_DISTANCE_HELPTEXT               :Begränsar hur långt från kartans kant oljeraffinaderier och oljeplattformar kan byggas. På ö-kartor säkerställer detta att de är nära kusten. På kartor större än 256 rutor skalas detta värde upp.
+STR_CONFIG_SETTING_OIL_REF_EDGE_DISTANCE_HELPTEXT               :Begränsar hur långt från kartans kant oljeraffinaderier och oljeplattformar kan byggas. På ö-kartor säkerställer detta att de är nära kusten. På kartor större än 256 rutor skalas detta värde upp
 
 STR_CONFIG_SETTING_SNOWLINE_HEIGHT                              :Snögränsens höjd: {STRING}
 STR_CONFIG_SETTING_SNOWLINE_HEIGHT_HELPTEXT                     :Välj på vilken höjd snötäcket börjar i det subarktiska landskapet. Snö påverkar även industrigeneration och städers tillväxtkrav. Kan endast modifieras via Scenarioredigeraren eller beräknas via "snötäckning"
@@ -1575,7 +1575,7 @@ STR_CONFIG_SETTING_DESERT_COVERAGE_HELPTEXT                     :Välj den ungef
 STR_CONFIG_SETTING_DESERT_COVERAGE_VALUE                        :{NUM}%
 
 STR_CONFIG_SETTING_ROUGHNESS_OF_TERRAIN                         :Terrängens svårhetsgrad: {STRING}
-STR_CONFIG_SETTING_ROUGHNESS_OF_TERRAIN_HELPTEXT                :Välj form och frekvens av kullar. Böljande landskap har färre, mer utbredda kullar, medan landskap med tuff terräng har fler, mer låga kullar.
+STR_CONFIG_SETTING_ROUGHNESS_OF_TERRAIN_HELPTEXT                :Välj form och frekvens av kullar. Böljande landskap har färre, mer utbredda kullar, medan landskap med tuff terräng har fler, mer låga kullar
 ###length 4
 STR_CONFIG_SETTING_ROUGHNESS_OF_TERRAIN_VERY_SMOOTH             :Väldigt lätt
 STR_CONFIG_SETTING_ROUGHNESS_OF_TERRAIN_SMOOTH                  :Lätt
@@ -1840,7 +1840,7 @@ STR_CONFIG_SETTING_NOSERVICE                                    :Inaktivera serv
 STR_CONFIG_SETTING_NOSERVICE_HELPTEXT                           :När det är aktiverat servas inte fordon om de inte kan få motorstopp
 
 STR_CONFIG_SETTING_STATION_LENGTH_LOADING_PENALTY               :Straff i lastningshastighet för tåg som är längre än stationen: {STRING}
-STR_CONFIG_SETTING_STATION_LENGTH_LOADING_PENALTY_HELPTEXT      :Om aktiverad, kommer tåg som är för långa för en station att lastas långsammare än tåg som får plats på stationen. Denna inställning påverkar inte vägfinnare.
+STR_CONFIG_SETTING_STATION_LENGTH_LOADING_PENALTY_HELPTEXT      :Om aktiverad, kommer tåg som är för långa för en station att lastas långsammare än tåg som får plats på stationen. Denna inställning påverkar inte vägfinnare
 
 STR_CONFIG_SETTING_WAGONSPEEDLIMITS                             :Använd hastighetsbegränsningar för tågvagnar: {STRING}
 STR_CONFIG_SETTING_WAGONSPEEDLIMITS_HELPTEXT                    :När det är aktiverat tas även hänsyn till vagnarnas hastighetsbegränsningar när ett tågs maxhastighet beräknas
@@ -2007,7 +2007,7 @@ STR_CONFIG_SETTING_ZOOM_LVL_OUT_4X                              :4x
 STR_CONFIG_SETTING_ZOOM_LVL_OUT_8X                              :8x
 
 STR_CONFIG_SETTING_SPRITE_ZOOM_MIN                              :Högsta upplösning som sprites ska använda: {STRING}
-STR_CONFIG_SETTING_SPRITE_ZOOM_MIN_HELPTEXT                     :Begränsa den maximala upplösningen för sprites. Begränsning av spritens upplösning hindrar användandet av högre upplösningar även om det finns tillgängligt. Detta kan hjälpa att hålla spelets utseende mer enhetlig vid användandet av flera olika GRF filer med högre och lägre upplösning.
+STR_CONFIG_SETTING_SPRITE_ZOOM_MIN_HELPTEXT                     :Begränsa den maximala upplösningen för sprites. Begränsning av spritens upplösning hindrar användandet av högre upplösningar även om det finns tillgängligt. Detta kan hjälpa att hålla spelets utseende mer enhetlig vid användandet av flera olika GRF filer med högre och lägre upplösning
 ###length 3
 STR_CONFIG_SETTING_SPRITE_ZOOM_LVL_MIN                          :4x
 STR_CONFIG_SETTING_SPRITE_ZOOM_LVL_IN_2X                        :2x
@@ -2031,9 +2031,9 @@ STR_CONFIG_SETTING_CITY_SIZE_MULTIPLIER                         :Initial stadsst
 STR_CONFIG_SETTING_CITY_SIZE_MULTIPLIER_HELPTEXT                :Storstäders genomsnittliga storlek i relation till vanliga städers vid spelets början
 
 STR_CONFIG_SETTING_LINKGRAPH_RECALC_INTERVAL                    :Uppdatera distributionsdiagram var {STRING}
-STR_CONFIG_SETTING_LINKGRAPH_RECALC_INTERVAL_HELPTEXT           :Tid mellan efterföljande omräkningar av länkgrafen. Varje omräkning beräknar planerna för en komponent i grafen. Det betyder att ett värde X för den här inställningen inte betyder att hela grafen kommer att uppdateras var X:e sekund. Bara viss komponent kommer att göra det. Ju kortare du ställer in den desto mer CPU-tid kommer att behövas för att beräkna den. Ju längre du ställer in den desto längre tid tar det tills lastdistributionen startar på nya rutter.
+STR_CONFIG_SETTING_LINKGRAPH_RECALC_INTERVAL_HELPTEXT           :Tid mellan efterföljande omräkningar av länkgrafen. Varje omräkning beräknar planerna för en komponent i grafen. Det betyder att ett värde X för den här inställningen inte betyder att hela grafen kommer att uppdateras var X:e sekund. Bara viss komponent kommer att göra det. Ju kortare du ställer in den desto mer CPU-tid kommer att behövas för att beräkna den. Ju längre du ställer in den desto längre tid tar det tills lastdistributionen startar på nya rutter
 STR_CONFIG_SETTING_LINKGRAPH_RECALC_TIME                        :Ta {STRING} för omräkning av distributionsdiagrammet
-STR_CONFIG_SETTING_LINKGRAPH_RECALC_TIME_HELPTEXT               :Tid som det tar för varje omräkning av en länkdiagramkomponent. När en omräkning startas skapas en tråd som tillåts köra i detta antal sekunder. Ju kortare du ställer in detta desto mer sannolikt är det att tråden inte är färdig när den ska. Sedan stannar spelet tills det är ("lag"). Ju längre du ställer in den desto längre tid tar det för distributionen att uppdateras när rutter ändras.
+STR_CONFIG_SETTING_LINKGRAPH_RECALC_TIME_HELPTEXT               :Tid som det tar för varje omräkning av en länkdiagramkomponent. När en omräkning startas skapas en tråd som tillåts köra i detta antal sekunder. Ju kortare du ställer in detta desto mer sannolikt är det att tråden inte är färdig när den ska. Sedan stannar spelet tills det är ("lag"). Ju längre du ställer in den desto längre tid tar det för distributionen att uppdateras när rutter ändras
 
 STR_CONFIG_SETTING_DISTRIBUTION_PAX                             :Distributionssätt för passagerare: {STRING}
 STR_CONFIG_SETTING_DISTRIBUTION_PAX_HELPTEXT                    :"Symmetriskt" innebär att ungefär samma antal passagerare färdas från station A till station B som från B till A. "Asymmetriskt" innebär att en godtycklig mängd passagerare kan färdas i vardera riktningen. "Manuellt" innebär att ingen automatisk distribution av passagerare sker
@@ -2049,7 +2049,7 @@ STR_CONFIG_SETTING_DISTRIBUTION_ASYMMETRIC                      :asymmetriskt
 STR_CONFIG_SETTING_DISTRIBUTION_SYMMETRIC                       :symmetriskt
 
 STR_CONFIG_SETTING_LINKGRAPH_ACCURACY                           :Distributionsnoggrannhet: {STRING}
-STR_CONFIG_SETTING_LINKGRAPH_ACCURACY_HELPTEXT                  :Ju högre du sätter denna, desto längre CPU-tid kommer beräkningen av länkgrafen ta. Om det tar för lång tid kan spelet lagga. Om du däremot sätter den till ett lågt värde kommer distributionen att bli inexakt, vilket kan leda till att godset inte skickas dit du förväntar dig.
+STR_CONFIG_SETTING_LINKGRAPH_ACCURACY_HELPTEXT                  :Ju högre du sätter denna, desto längre CPU-tid kommer beräkningen av länkgrafen ta. Om det tar för lång tid kan spelet lagga. Om du däremot sätter den till ett lågt värde kommer distributionen att bli inexakt, vilket kan leda till att godset inte skickas dit du förväntar dig
 
 STR_CONFIG_SETTING_DEMAND_DISTANCE                              :Avståndets påverkan på efterfrågan: {STRING}
 STR_CONFIG_SETTING_DEMAND_DISTANCE_HELPTEXT                     :Om du sätter denna till ett värde högre än 0 kommer avståndet mellan ursprungsstationen A för en viss last och en möjlig destination B påverka mängden last som skickas från A till B. Ju längre B är ifrån A, desto mindre last kommer att skickas. Ju högre du sätter den, desto mindre last kommer att skickas till avlägsna stationer och desto mer last kommer att skickas till närbelägna stationer
@@ -2057,7 +2057,7 @@ STR_CONFIG_SETTING_DEMAND_SIZE                                  :Mängd återsä
 STR_CONFIG_SETTING_DEMAND_SIZE_HELPTEXT                         :Genom att sätta denna till mindre än 100% får man den symmetriska distributionen att bete sig mer som den asymmetriska. En mindre andel än vanligt av den last som skickas till en station kommer att skickas tillbaka. Sätter du den till 0% beter sig den symmetriska distributionen precis som den asymmetriska
 
 STR_CONFIG_SETTING_SHORT_PATH_SATURATION                        :Belastning av korta rutter innan rutter med hög kapacitet används: {STRING}
-STR_CONFIG_SETTING_SHORT_PATH_SATURATION_HELPTEXT               :Ofta finns det flera rutter mellan två givna stationer. Godsdistributionen kommer att fylla upp den första rutten först och därefter den näst kortaste tills den är mättad osv. Mättnadsgraden bestäms utifrån en uppskattning av kapaciteten och planerad användning. När godsdristributionen har belastat samtliga rutter, och om det finns kvarvarande behov, då kommer samtliga rutter att överbelastas med preferens för rutterna med högst kapacitet. Uppskattningen av kapaciteten kommer oftast inte ske med hög noggrannhet. Denna inställning tillåter dig att ställa in hur många procent som en kort rutt ska belastas innan algoritmen ska välja nästa längre rutt. Sätt värdet till under 100 % om du vill undvika överfulla stationer i händelse av överskattad kapacitet.
+STR_CONFIG_SETTING_SHORT_PATH_SATURATION_HELPTEXT               :Ofta finns det flera rutter mellan två givna stationer. Godsdistributionen kommer att fylla upp den första rutten först och därefter den näst kortaste tills den är mättad osv. Mättnadsgraden bestäms utifrån en uppskattning av kapaciteten och planerad användning. När godsdristributionen har belastat samtliga rutter, och om det finns kvarvarande behov, då kommer samtliga rutter att överbelastas med preferens för rutterna med högst kapacitet. Uppskattningen av kapaciteten kommer oftast inte ske med hög noggrannhet. Denna inställning tillåter dig att ställa in hur många procent som en kort rutt ska belastas innan algoritmen ska välja nästa längre rutt. Sätt värdet till under 100 % om du vill undvika överfulla stationer i händelse av överskattad kapacitet
 
 STR_CONFIG_SETTING_LOCALISATION_UNITS_VELOCITY                  :Hastighetsenhet (land)t: {STRING}
 STR_CONFIG_SETTING_LOCALISATION_UNITS_VELOCITY_NAUTICAL         :Hastighetsenheter (nautical): {STRING}
@@ -2981,7 +2981,7 @@ STR_TREES_RANDOM_TYPE_TOOLTIP                                   :{BLACK}Placera 
 STR_TREES_RANDOM_TREES_BUTTON                                   :{BLACK}Slumpmässigt träd
 STR_TREES_RANDOM_TREES_TOOLTIP                                  :{BLACK}Plantera träd slumpmässigt över landskapet
 STR_TREES_MODE_NORMAL_BUTTON                                    :{BLACK}Normal
-STR_TREES_MODE_NORMAL_TOOLTIP                                   :{BLACK}Plantera träd genom att dra över landskapet.
+STR_TREES_MODE_NORMAL_TOOLTIP                                   :{BLACK}Plantera träd genom att dra över landskapet
 STR_TREES_MODE_FOREST_SM_BUTTON                                 :{BLACK}Skogsdunge
 STR_TREES_MODE_FOREST_SM_TOOLTIP                                :{BLACK}Plantera mindre skogar genom att dra över landskapet
 STR_TREES_MODE_FOREST_LG_BUTTON                                 :{BLACK}Skog
@@ -4643,7 +4643,7 @@ STR_ORDER_REFIT_ORDER                                           :(Anpassa för {
 STR_ORDER_REFIT_STOP_ORDER                                      :(Anpassa för {STRING} och stanna)
 STR_ORDER_STOP_ORDER                                            :(Stanna)
 
-STR_ORDER_WAIT_TO_UNBUNCH                                       :(invänta utglesning)
+STR_ORDER_WAIT_TO_UNBUNCH                                       :(Invänta utglesning)
 
 STR_ORDER_GO_TO_STATION                                         :{STRING} {STATION} {STRING}
 STR_ORDER_GO_TO_STATION_CAN_T_USE_STATION                       :{PUSH_COLOUR}{RED}(Kan ej använda stationen){POP_COLOUR} {STRING} {STATION} {STRING}

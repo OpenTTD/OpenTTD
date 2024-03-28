@@ -1832,7 +1832,7 @@ STR_CONFIG_SETTING_SERVINT_AIRCRAFT                             :Lentokoneiden o
 STR_CONFIG_SETTING_SERVINT_AIRCRAFT_HELPTEXT                    :Määritä oletushuoltoväli uusille lentokoneille, mikäli kulkuneuvolle ei ole määritelty erillistä huoltoväliä
 STR_CONFIG_SETTING_SERVINT_SHIPS                                :Laivojen oletushuoltoväli: {STRING}
 STR_CONFIG_SETTING_SERVINT_SHIPS_HELPTEXT                       :Määritä oletushuoltoväli uusille laivoille, mikäli kulkuneuvolle ei ole määritelty erillistä huoltoväliä
-STR_CONFIG_SETTING_SERVINT_VALUE                                :{COMMA}{NBSP}Päivä{P 0 "" s}/Minuutti{P 0 "" s}/%
+STR_CONFIG_SETTING_SERVINT_VALUE                                :{COMMA}{NBSP}päivä{P 0 "" ä}/minuutti{P 0 "" a}/%
 ###setting-zero-is-special
 STR_CONFIG_SETTING_SERVINT_DISABLED                             :Pois käytöstä
 
@@ -4643,7 +4643,7 @@ STR_ORDER_REFIT_ORDER                                           :(Sovita {STRING
 STR_ORDER_REFIT_STOP_ORDER                                      :(Sovita rahtityypille {STRING} ja pysähdy)
 STR_ORDER_STOP_ORDER                                            :(Pysähdy)
 
-STR_ORDER_WAIT_TO_UNBUNCH                                       :(odota suman purkamiseksi)
+STR_ORDER_WAIT_TO_UNBUNCH                                       :(Odota suman purkamiseksi)
 
 STR_ORDER_GO_TO_STATION                                         :{STRING} {STATION} {STRING}
 STR_ORDER_GO_TO_STATION_CAN_T_USE_STATION                       :{PUSH_COLOUR}{RED}(Asema ei käytettävissä){POP_COLOUR} {STRING} {STATION} {STRING}

@@ -227,7 +227,7 @@ STR_UNITS_POWER_IMPERIAL_TO_WEIGHT_METRIC                       :{DECIMAL}{NBSP}
 STR_UNITS_POWER_IMPERIAL_TO_WEIGHT_SI                           :{DECIMAL}{NBSP}hp/t
 STR_UNITS_POWER_METRIC_TO_WEIGHT_IMPERIAL                       :{DECIMAL}{NBSP}hp/t
 STR_UNITS_POWER_METRIC_TO_WEIGHT_METRIC                         :{DECIMAL}{NBSP}hp/t
-STR_UNITS_POWER_METRIC_TO_WEIGHT_SI                             :{DECIMAL}{NBSP}hp/kg
+STR_UNITS_POWER_METRIC_TO_WEIGHT_SI                             :{DECIMAL}{NBSP}hp/t
 STR_UNITS_POWER_SI_TO_WEIGHT_IMPERIAL                           :{DECIMAL}{NBSP}kW/t
 STR_UNITS_POWER_SI_TO_WEIGHT_METRIC                             :{DECIMAL}{NBSP}kW/t
 STR_UNITS_POWER_SI_TO_WEIGHT_SI                                 :{DECIMAL}{NBSP}W/kg
@@ -252,7 +252,7 @@ STR_UNITS_FORCE_IMPERIAL                                        :{DECIMAL}{NBSP}
 STR_UNITS_FORCE_METRIC                                          :{DECIMAL}{NBSP}kgf
 STR_UNITS_FORCE_SI                                              :{DECIMAL}{NBSP}kN
 
-STR_UNITS_HEIGHT_IMPERIAL                                       :{DECIMAL}{NBSP}pé{P "" s}
+STR_UNITS_HEIGHT_IMPERIAL                                       :{DECIMAL}{NBSP}ft
 STR_UNITS_HEIGHT_METRIC                                         :{DECIMAL}{NBSP}m
 STR_UNITS_HEIGHT_SI                                             :{DECIMAL}{NBSP}m
 
@@ -269,8 +269,8 @@ STR_UNITS_PERIODS                                               :{NUM}{NBSP}per�
 
 # Common window strings
 STR_LIST_FILTER_TITLE                                           :{BLACK}Filtro:
-STR_LIST_FILTER_OSKTITLE                                        :{BLACK}Digitar uma ou mais palavras-chave para procurar na lista
-STR_LIST_FILTER_TOOLTIP                                         :{BLACK}Digitar uma ou mais palavras-chave para procurar na lista
+STR_LIST_FILTER_OSKTITLE                                        :{BLACK}Inserir uma ou mais palavras-chave para filtrar a lista
+STR_LIST_FILTER_TOOLTIP                                         :{BLACK}Digite uma ou mais palavras-chave para procurar na lista
 
 STR_TOOLTIP_GROUP_ORDER                                         :{BLACK}Escolher a ordem de agrupamento
 STR_TOOLTIP_SORT_ORDER                                          :{BLACK}Escolher a ordenação (descendente/ascendente)
@@ -282,7 +282,7 @@ STR_TOOLTIP_CATCHMENT                                           :{BLACK}Mostrar/
 
 STR_TOOLTIP_CLOSE_WINDOW                                        :{BLACK}Fechar janela
 STR_TOOLTIP_WINDOW_TITLE_DRAG_THIS                              :{BLACK}Título da janela - arraste isto para mover a janela
-STR_TOOLTIP_SHADE                                               :{BLACK}Encolher janela - manter visível apenas a barra de título
+STR_TOOLTIP_SHADE                                               :{BLACK}Encolher janela - mostrar apenas a barra de título
 STR_TOOLTIP_DEBUG                                               :{BLACK}Mostrar informação de depuração de NewGRF
 STR_TOOLTIP_DEFSIZE                                             :{BLACK}Redimensionar a janela para o tamanho padrão. Ctrl+Clique para salvar o tamanho atual como padrão
 STR_TOOLTIP_STICKY                                              :{BLACK}Fixar esta janela para ela não ser fechada pela tecla 'Fechar Todas as Janelas'. Ctrl+Clique para salvar o estado como padrão
@@ -383,7 +383,7 @@ STR_GOTO_ORDER_VIEW_TOOLTIP                                     :{BLACK}Abrir a 
 STR_TOOLBAR_TOOLTIP_PAUSE_GAME                                  :{BLACK}Pausar o jogo
 STR_TOOLBAR_TOOLTIP_FORWARD                                     :{BLACK}Avanço rápido do jogo
 STR_TOOLBAR_TOOLTIP_OPTIONS                                     :{BLACK}Opções e configurações
-STR_TOOLBAR_TOOLTIP_SAVE_GAME_ABANDON_GAME                      :{BLACK}Salvar, abrir ou abandonar jogo, sair do programa
+STR_TOOLBAR_TOOLTIP_SAVE_GAME_ABANDON_GAME                      :{BLACK}Salvar, abrir ou abandonar o jogo, sair do programa
 STR_TOOLBAR_TOOLTIP_DISPLAY_MAP                                 :{BLACK}Abrir mapa, visualização extra, fluxo de cargas ou lista de placas
 STR_TOOLBAR_TOOLTIP_DISPLAY_TOWN_DIRECTORY                      :{BLACK}Abrir lista de localidades ou encontrar localidade
 STR_TOOLBAR_TOOLTIP_DISPLAY_SUBSIDIES                           :{BLACK}Abrir lista de subsídios
@@ -703,12 +703,12 @@ STR_MUSIC_TOOLTIP_SKIP_TO_NEXT_TRACK_IN_SELECTION               :{BLACK}Passar p
 STR_MUSIC_TOOLTIP_STOP_PLAYING_MUSIC                            :{BLACK}Parar a reprodução de música
 STR_MUSIC_TOOLTIP_START_PLAYING_MUSIC                           :{BLACK}Iniciar a reprodução de música
 STR_MUSIC_TOOLTIP_DRAG_SLIDERS_TO_SET_MUSIC                     :{BLACK}Arraste os controles deslizantes para definir o volume de músicas e efeitos sonoros
-STR_MUSIC_TOOLTIP_SELECT_ALL_TRACKS_PROGRAM                     :{BLACK}Selecionar programa 'Todas as faixas'
-STR_MUSIC_TOOLTIP_SELECT_OLD_STYLE_MUSIC                        :{BLACK}Selecionar músicas 'Estilo Antigo'
-STR_MUSIC_TOOLTIP_SELECT_NEW_STYLE_MUSIC                        :{BLACK}Selecionar músicas 'Estilo Moderno'
-STR_MUSIC_TOOLTIP_SELECT_EZY_STREET_STYLE                       :{BLACK}Selecionar músicas 'Estilo Ezy Street'
-STR_MUSIC_TOOLTIP_SELECT_CUSTOM_1_USER_DEFINED                  :{BLACK}Selecionar músicas 'Personalizado 1' (definido pelo usuário)
-STR_MUSIC_TOOLTIP_SELECT_CUSTOM_2_USER_DEFINED                  :{BLACK}Selecionar músicas 'Personalizado 2' (definido pelo usuário)
+STR_MUSIC_TOOLTIP_SELECT_ALL_TRACKS_PROGRAM                     :{BLACK}Selecionar programa 'todas as faixas'
+STR_MUSIC_TOOLTIP_SELECT_OLD_STYLE_MUSIC                        :{BLACK}Selecionar programa com músicas 'estilo antigo'
+STR_MUSIC_TOOLTIP_SELECT_NEW_STYLE_MUSIC                        :{BLACK}Selecionar programa com músicas 'estilo moderno'
+STR_MUSIC_TOOLTIP_SELECT_EZY_STREET_STYLE                       :{BLACK}Selecionar programa com músicas 'estilo Ezy Street'
+STR_MUSIC_TOOLTIP_SELECT_CUSTOM_1_USER_DEFINED                  :{BLACK}Selecionar programa 'Personalizado 1' (definido pelo usuário)
+STR_MUSIC_TOOLTIP_SELECT_CUSTOM_2_USER_DEFINED                  :{BLACK}Selecionar programa 'Personalizado 2' (definido pelo usuário)
 STR_MUSIC_TOOLTIP_TOGGLE_PROGRAM_SHUFFLE                        :{BLACK}Ligar/Desligar reprodução aleatória
 STR_MUSIC_TOOLTIP_SHOW_MUSIC_TRACK_SELECTION                    :{BLACK}Mostrar janela de seleção de faixas de música
 
@@ -758,7 +758,7 @@ STR_SMALLMAP_TOOLTIP_SHOW_LINK_STATS_ON_MAP                     :{BLACK}Mostrar 
 STR_SMALLMAP_TOOLTIP_SHOW_TRANSPORT_ROUTES_ON                   :{BLACK}Mostrar rotas de transporte no mapa
 STR_SMALLMAP_TOOLTIP_SHOW_VEGETATION_ON_MAP                     :{BLACK}Mostrar vegetação no mapa
 STR_SMALLMAP_TOOLTIP_SHOW_LAND_OWNERS_ON_MAP                    :{BLACK}Mostrar proprietários dos terrenos no mapa
-STR_SMALLMAP_TOOLTIP_INDUSTRY_SELECTION                         :{BLACK}Clique em um tipo de indústria para mostrar/ocultar a indústria. Ctrl+Clique para desativar todos os tipos, exceto o selecionado. Ctrl+Clique novamente para ativar todos os tipos de indústrias
+STR_SMALLMAP_TOOLTIP_INDUSTRY_SELECTION                         :{BLACK}Clique em um tipo de indústria para mostrar/ocultar a indústria. Ctrl+Clique para desativar todos os tipos, exceto o selecionado. Ctrl+Clique novamente para ativar todos os tipos de indústria
 STR_SMALLMAP_TOOLTIP_COMPANY_SELECTION                          :{BLACK}Clique em uma empresa para mostrar/ocultar suas propriedades. Ctrl+Clique para desativar todas as empresas, exceto a selecionada. Ctrl+Clique novamente para ativar todas as empresas
 STR_SMALLMAP_TOOLTIP_CARGO_SELECTION                            :{BLACK}Clique em uma carga para mostrar/ocultar sua propriedade. Ctrl+Clique para desativar todas as cargas, exceto a selecionada. Ctrl+Clique novamente para ativar todas as cargas
 
