@@ -45,23 +45,22 @@ private:
 	friend EndianBufferWriter<Tcont, Titer> &operator <<(EndianBufferWriter<Tcont, Titer> &buffer, const Order &data);
 	friend class EndianBufferReader &operator >>(class EndianBufferReader &buffer, Order &order);
 
-	uint8_t type;           ///< The type of order + non-stop flags
-	uint8_t flags;          ///< Load/unload types, depot order/action types.
-	DestinationID dest;   ///< The destination of the order.
+	uint8_t type = 0; ///< The type of order + non-stop flags
+	uint8_t flags = 0; ///< Load/unload types, depot order/action types.
+	DestinationID dest = 0; ///< The destination of the order.
 
-	CargoID refit_cargo;  ///< Refit CargoID
+	CargoID refit_cargo = CARGO_NO_REFIT; ///< Refit CargoID
 
-	uint16_t wait_time;    ///< How long in ticks to wait at the destination.
-	uint16_t travel_time;  ///< How long in ticks the journey to this destination should take.
-	uint16_t max_speed;    ///< How fast the vehicle may go on the way to the destination.
+	uint16_t wait_time = 0; ///< How long in ticks to wait at the destination.
+	uint16_t travel_time = 0; ///< How long in ticks the journey to this destination should take.
+	uint16_t max_speed = UINT16_MAX; ///< How fast the vehicle may go on the way to the destination.
 
 public:
-	Order *next;          ///< Pointer to next order. If nullptr, end of list
+	Order *next = nullptr; ///< Pointer to next order. If nullptr, end of list
 
-	Order() : flags(0), refit_cargo(CARGO_NO_REFIT), wait_time(0), travel_time(0), max_speed(UINT16_MAX) {}
+	Order() {}
+	Order(uint8_t type, uint8_t flags, DestinationID dest) : type(type), flags(flags), dest(dest) {}
 	~Order();
-
-	Order(uint32_t packed);
 
 	/**
 	 * Check whether this order is of the given type.
