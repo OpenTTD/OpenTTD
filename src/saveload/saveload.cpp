@@ -2760,22 +2760,23 @@ void SetSaveLoadError(StringID str)
 	_sl.error_str = str;
 }
 
-/** Get the string representation of the error message */
-const char *GetSaveLoadErrorString()
+/** Return the appropriate initial string for an error depending on whether we are saving or loading. */
+StringID GetSaveLoadErrorType()
 {
-	SetDParam(0, _sl.error_str);
-	SetDParamStr(1, _sl.extra_msg);
+	return _sl.action == SLA_SAVE ? STR_ERROR_GAME_SAVE_FAILED : STR_ERROR_GAME_LOAD_FAILED;
+}
 
-	static std::string err_str;
-	err_str = GetString(_sl.action == SLA_SAVE ? STR_ERROR_GAME_SAVE_FAILED : STR_ERROR_GAME_LOAD_FAILED);
-	return err_str.c_str();
+/** Return the description of the error. **/
+StringID GetSaveLoadErrorMessage()
+{
+	SetDParamStr(0, _sl.extra_msg);
+	return _sl.error_str;
 }
 
 /** Show a gui message when saving has failed */
 static void SaveFileError()
 {
-	SetDParamStr(0, GetSaveLoadErrorString());
-	ShowErrorMessage(STR_JUST_RAW_STRING, INVALID_STRING_ID, WL_ERROR);
+	ShowErrorMessage(GetSaveLoadErrorType(), GetSaveLoadErrorMessage(), WL_ERROR);
 	SaveFileDone();
 }
 
@@ -2810,7 +2811,7 @@ static SaveOrLoadResult SaveFileToDisk(bool threaded)
 		 * cancelled due to a client disconnecting. */
 		if (_sl.error_str != STR_NETWORK_ERROR_LOSTCONNECTION) {
 			/* Skip the "colour" character */
-			Debug(sl, 0, "{}", GetSaveLoadErrorString() + 3);
+			Debug(sl, 0, "{}", GetString(GetSaveLoadErrorType()).substr(3) + GetString(GetSaveLoadErrorMessage()));
 			asfp = SaveFileError;
 		}
 
@@ -3128,7 +3129,7 @@ SaveOrLoadResult SaveOrLoad(const std::string &filename, SaveLoadOperation fop, 
 		ClearSaveLoadState();
 
 		/* Skip the "colour" character */
-		if (fop != SLO_CHECK) Debug(sl, 0, "{}", GetSaveLoadErrorString() + 3);
+		if (fop != SLO_CHECK) Debug(sl, 0, "{}", GetString(GetSaveLoadErrorType()).substr(3) + GetString(GetSaveLoadErrorMessage()));
 
 		/* A saver/loader exception!! reinitialize all variables to prevent crash! */
 		return (fop == SLO_LOAD) ? SL_REINIT : SL_ERROR;
