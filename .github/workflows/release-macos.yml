@@ -17,6 +17,11 @@ jobs:
       MACOSX_DEPLOYMENT_TARGET: 10.13
 
     steps:
+    - name: Setup Xcode version
+      uses: maxim-lobanov/setup-xcode@v1
+      with:
+        xcode-version: latest-stable
+
     - name: Download source
       uses: actions/download-artifact@v4
       with:
