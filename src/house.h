@@ -22,20 +22,14 @@
  */
 static const uint8_t TOWN_HOUSE_COMPLETED = 3;
 
-static const HouseID NUM_HOUSES_PER_GRF = 255;    ///< Number of supported houses per NewGRF; limited to 255 to allow extending Action3 with an extended byte later on.
-
 static const uint HOUSE_NO_CLASS      = 0;
-static const HouseID NEW_HOUSE_OFFSET = 110;    ///< Offset for new houses.
-static const HouseID NUM_HOUSES       = 512;    ///< Total number of houses.
+static const HouseID NEW_HOUSE_OFFSET = 110; ///< Offset for new houses.
+static const HouseID NUM_HOUSES       = 4096; ///< Total number of houses.
 static const HouseID INVALID_HOUSE_ID = 0xFFFF;
 
-static const uint HOUSE_NUM_ACCEPTS = 16; ///< Max number of cargoes accepted by a tile
+static const HouseID NUM_HOUSES_PER_GRF = NUM_HOUSES; ///< Number of supported houses per NewGRF.
 
-/**
- * There can only be as many classes as there are new houses, plus one for
- * NO_CLASS, as the original houses don't have classes.
- */
-static const uint HOUSE_CLASS_MAX  = NUM_HOUSES - NEW_HOUSE_OFFSET + 1;
+static const uint HOUSE_NUM_ACCEPTS = 16; ///< Max number of cargoes accepted by a tile
 
 enum BuildingFlags {
 	TILE_NO_FLAG         =       0,
@@ -123,14 +117,11 @@ struct HouseSpec {
 	uint8_t minimum_life;                        ///< The minimum number of years this house will survive before the town rebuilds it
 	CargoTypes watched_cargoes;               ///< Cargo types watched for acceptance.
 
+	HouseID Index() const;
 	Money GetRemovalCost() const;
 
-	static inline HouseSpec *Get(size_t house_id)
-	{
-		assert(house_id < NUM_HOUSES);
-		extern HouseSpec _house_specs[];
-		return &_house_specs[house_id];
-	}
+	static std::vector<HouseSpec> &Specs();
+	static HouseSpec *Get(size_t house_id);
 };
 
 /**
