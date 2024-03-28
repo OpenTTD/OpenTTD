@@ -2179,10 +2179,14 @@ DEF_CONSOLE_CMD(ConFont)
 		IConsolePrint(CC_HELP, "Manage the fonts configuration.");
 		IConsolePrint(CC_HELP, "Usage 'font'.");
 		IConsolePrint(CC_HELP, "  Print out the fonts configuration.");
+		IConsolePrint(CC_HELP, "  The \"Currently active\" configuration is the one actually in effect (after interface scaling and replacing unavailable fonts).");
+		IConsolePrint(CC_HELP, "  The \"Requested\" configuration is the one requested via console command or config file.");
 		IConsolePrint(CC_HELP, "Usage 'font [medium|small|large|mono] [<name>] [<size>] [aa|noaa]'.");
 		IConsolePrint(CC_HELP, "  Change the configuration for a font.");
 		IConsolePrint(CC_HELP, "  Omitting an argument will keep the current value.");
-		IConsolePrint(CC_HELP, "  Set <name> to \"\" for the sprite font (size and aa have no effect on sprite font).");
+		IConsolePrint(CC_HELP, "  Set <name> to \"\" for the default font, or \"sprite\" for the sprite font.");
+		IConsolePrint(CC_HELP, "  The <size> is automatically multiplied by the current interface scaling.");
+		IConsolePrint(CC_HELP, "  Note that <size> and aa/noaa have no effect if the default font is in use. In that case fixed default sizes are used.");
 		return true;
 	}
 
@@ -2240,7 +2244,9 @@ DEF_CONSOLE_CMD(ConFont)
 			InitFontCache(fs == FS_MONO);
 			fc = FontCache::Get(fs);
 		}
-		IConsolePrint(CC_DEFAULT, "{}: \"{}\" {} {} [\"{}\" {} {}]", FontSizeToName(fs), fc->GetFontName(), fc->GetFontSize(), GetFontAAState(fs) ? "aa" : "noaa", setting->font, setting->size, setting->aa ? "aa" : "noaa");
+		IConsolePrint(CC_DEFAULT, "{} font:", FontSizeToName(fs));
+		IConsolePrint(CC_DEFAULT, "Currently active: \"{}\", size {}, {}", fc->GetFontName(), fc->GetFontSize(), GetFontAAState(fs) ? "aa" : "noaa");
+		IConsolePrint(CC_DEFAULT, "Requested: \"{}\", size {}, {}", setting->font, setting->size, setting->aa ? "aa" : "noaa");
 	}
 
 	return true;
