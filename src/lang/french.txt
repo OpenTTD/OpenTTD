@@ -4644,7 +4644,7 @@ STR_ORDER_REFIT_ORDER                                           :(Réaménager p
 STR_ORDER_REFIT_STOP_ORDER                                      :(Réaménager pour {STRING} et arrêt)
 STR_ORDER_STOP_ORDER                                            :(Arrêt)
 
-STR_ORDER_WAIT_TO_UNBUNCH                                       :(attendre la répartition)
+STR_ORDER_WAIT_TO_UNBUNCH                                       :(Attendre la répartition)
 
 STR_ORDER_GO_TO_STATION                                         :{STRING} {STATION} {STRING}
 STR_ORDER_GO_TO_STATION_CAN_T_USE_STATION                       :{PUSH_COLOUR}{RED}(Station inutilisable){POP_COLOUR} {STRING} {STATION} {STRING}
