@@ -110,9 +110,6 @@ builds.
 - `-DOPTION_USE_ASSERTS=OFF`: disable asserts. Use with care, as assert
    statements capture early signs of trouble. Release builds have them
    disabled by default.
-- `-DOPTION_USE_THREADS=OFF`: disable the use of threads. This will block
-   the interface in many places, and in general gives a worse experience of
-   the game. Use with care.
 - `-DOPTION_TOOLS_ONLY=ON`: only build tools like `strgen`. Does not build
    the game itself. Useful for cross-compiling.
 
