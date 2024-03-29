@@ -397,7 +397,7 @@ struct GameOptionsWindow : Window {
 
 				/* Add non-custom currencies; sorted naturally */
 				for (const CurrencySpec &currency : _currency_specs) {
-					int i = &currency - _currency_specs;
+					int i = &currency - _currency_specs.data();
 					if (i == CURRENCY_CUSTOM) continue;
 					if (currency.code.empty()) {
 						list.push_back(std::make_unique<DropDownListStringItem>(currency.name, i, HasBit(disabled, i)));
@@ -2689,7 +2689,7 @@ struct GameSettingsWindow : Window {
 			if (this->last_clicked == pe && !sd->IsBoolSetting() && !(sd->flags & SF_GUI_DROPDOWN)) {
 				int64_t value64 = value;
 				/* Show the correct currency-translated value */
-				if (sd->flags & SF_GUI_CURRENCY) value64 *= _currency->rate;
+				if (sd->flags & SF_GUI_CURRENCY) value64 *= GetCurrency().rate;
 
 				CharSetFilter charset_filter = CS_NUMERAL; //default, only numeric input allowed
 				if (sd->min < 0) charset_filter = CS_NUMERAL_SIGNED; // special case, also allow '-' sign for negative input
@@ -2725,7 +2725,7 @@ struct GameSettingsWindow : Window {
 			long long llvalue = atoll(str);
 
 			/* Save the correct currency-translated value */
-			if (sd->flags & SF_GUI_CURRENCY) llvalue /= _currency->rate;
+			if (sd->flags & SF_GUI_CURRENCY) llvalue /= GetCurrency().rate;
 
 			value = ClampTo<int32_t>(llvalue);
 		} else {
@@ -2979,22 +2979,22 @@ struct CustomCurrencyWindow : Window {
 
 	void SetButtonState()
 	{
-		this->SetWidgetDisabledState(WID_CC_RATE_DOWN, _custom_currency.rate == 1);
-		this->SetWidgetDisabledState(WID_CC_RATE_UP, _custom_currency.rate == UINT16_MAX);
-		this->SetWidgetDisabledState(WID_CC_YEAR_DOWN, _custom_currency.to_euro == CF_NOEURO);
-		this->SetWidgetDisabledState(WID_CC_YEAR_UP, _custom_currency.to_euro == CalendarTime::MAX_YEAR);
+		this->SetWidgetDisabledState(WID_CC_RATE_DOWN, GetCustomCurrency().rate == 1);
+		this->SetWidgetDisabledState(WID_CC_RATE_UP, GetCustomCurrency().rate == UINT16_MAX);
+		this->SetWidgetDisabledState(WID_CC_YEAR_DOWN, GetCustomCurrency().to_euro == CF_NOEURO);
+		this->SetWidgetDisabledState(WID_CC_YEAR_UP, GetCustomCurrency().to_euro == CalendarTime::MAX_YEAR);
 	}
 
 	void SetStringParameters(WidgetID widget) const override
 	{
 		switch (widget) {
 			case WID_CC_RATE:      SetDParam(0, 1); SetDParam(1, 1);            break;
-			case WID_CC_SEPARATOR: SetDParamStr(0, _custom_currency.separator); break;
-			case WID_CC_PREFIX:    SetDParamStr(0, _custom_currency.prefix);    break;
-			case WID_CC_SUFFIX:    SetDParamStr(0, _custom_currency.suffix);    break;
+			case WID_CC_SEPARATOR: SetDParamStr(0, GetCustomCurrency().separator); break;
+			case WID_CC_PREFIX:    SetDParamStr(0, GetCustomCurrency().prefix);    break;
+			case WID_CC_SUFFIX:    SetDParamStr(0, GetCustomCurrency().suffix);    break;
 			case WID_CC_YEAR:
-				SetDParam(0, (_custom_currency.to_euro != CF_NOEURO) ? STR_CURRENCY_SWITCH_TO_EURO : STR_CURRENCY_SWITCH_TO_EURO_NEVER);
-				SetDParam(1, _custom_currency.to_euro);
+				SetDParam(0, (GetCustomCurrency().to_euro != CF_NOEURO) ? STR_CURRENCY_SWITCH_TO_EURO : STR_CURRENCY_SWITCH_TO_EURO_NEVER);
+				SetDParam(1, GetCustomCurrency().to_euro);
 				break;
 
 			case WID_CC_PREVIEW:
@@ -3039,19 +3039,19 @@ struct CustomCurrencyWindow : Window {
 
 		switch (widget) {
 			case WID_CC_RATE_DOWN:
-				if (_custom_currency.rate > 1) _custom_currency.rate--;
-				if (_custom_currency.rate == 1) this->DisableWidget(WID_CC_RATE_DOWN);
+				if (GetCustomCurrency().rate > 1) GetCustomCurrency().rate--;
+				if (GetCustomCurrency().rate == 1) this->DisableWidget(WID_CC_RATE_DOWN);
 				this->EnableWidget(WID_CC_RATE_UP);
 				break;
 
 			case WID_CC_RATE_UP:
-				if (_custom_currency.rate < UINT16_MAX) _custom_currency.rate++;
-				if (_custom_currency.rate == UINT16_MAX) this->DisableWidget(WID_CC_RATE_UP);
+				if (GetCustomCurrency().rate < UINT16_MAX) GetCustomCurrency().rate++;
+				if (GetCustomCurrency().rate == UINT16_MAX) this->DisableWidget(WID_CC_RATE_UP);
 				this->EnableWidget(WID_CC_RATE_DOWN);
 				break;
 
 			case WID_CC_RATE:
-				SetDParam(0, _custom_currency.rate);
+				SetDParam(0, GetCustomCurrency().rate);
 				str = STR_JUST_INT;
 				len = 5;
 				line = WID_CC_RATE;
@@ -3060,7 +3060,7 @@ struct CustomCurrencyWindow : Window {
 
 			case WID_CC_SEPARATOR_EDIT:
 			case WID_CC_SEPARATOR:
-				SetDParamStr(0, _custom_currency.separator);
+				SetDParamStr(0, GetCustomCurrency().separator);
 				str = STR_JUST_RAW_STRING;
 				len = 7;
 				line = WID_CC_SEPARATOR;
@@ -3068,7 +3068,7 @@ struct CustomCurrencyWindow : Window {
 
 			case WID_CC_PREFIX_EDIT:
 			case WID_CC_PREFIX:
-				SetDParamStr(0, _custom_currency.prefix);
+				SetDParamStr(0, GetCustomCurrency().prefix);
 				str = STR_JUST_RAW_STRING;
 				len = 15;
 				line = WID_CC_PREFIX;
@@ -3076,26 +3076,26 @@ struct CustomCurrencyWindow : Window {
 
 			case WID_CC_SUFFIX_EDIT:
 			case WID_CC_SUFFIX:
-				SetDParamStr(0, _custom_currency.suffix);
+				SetDParamStr(0, GetCustomCurrency().suffix);
 				str = STR_JUST_RAW_STRING;
 				len = 15;
 				line = WID_CC_SUFFIX;
 				break;
 
 			case WID_CC_YEAR_DOWN:
-				_custom_currency.to_euro = (_custom_currency.to_euro <= MIN_EURO_YEAR) ? CF_NOEURO : _custom_currency.to_euro - 1;
-				if (_custom_currency.to_euro == CF_NOEURO) this->DisableWidget(WID_CC_YEAR_DOWN);
+				GetCustomCurrency().to_euro = (GetCustomCurrency().to_euro <= MIN_EURO_YEAR) ? CF_NOEURO : GetCustomCurrency().to_euro - 1;
+				if (GetCustomCurrency().to_euro == CF_NOEURO) this->DisableWidget(WID_CC_YEAR_DOWN);
 				this->EnableWidget(WID_CC_YEAR_UP);
 				break;
 
 			case WID_CC_YEAR_UP:
-				_custom_currency.to_euro = Clamp(_custom_currency.to_euro + 1, MIN_EURO_YEAR, CalendarTime::MAX_YEAR);
-				if (_custom_currency.to_euro == CalendarTime::MAX_YEAR) this->DisableWidget(WID_CC_YEAR_UP);
+				GetCustomCurrency().to_euro = Clamp(GetCustomCurrency().to_euro + 1, MIN_EURO_YEAR, CalendarTime::MAX_YEAR);
+				if (GetCustomCurrency().to_euro == CalendarTime::MAX_YEAR) this->DisableWidget(WID_CC_YEAR_UP);
 				this->EnableWidget(WID_CC_YEAR_DOWN);
 				break;
 
 			case WID_CC_YEAR:
-				SetDParam(0, _custom_currency.to_euro);
+				SetDParam(0, GetCustomCurrency().to_euro);
 				str = STR_JUST_INT;
 				len = 7;
 				line = WID_CC_YEAR;
@@ -3118,25 +3118,25 @@ struct CustomCurrencyWindow : Window {
 
 		switch (this->query_widget) {
 			case WID_CC_RATE:
-				_custom_currency.rate = Clamp(atoi(str), 1, UINT16_MAX);
+				GetCustomCurrency().rate = Clamp(atoi(str), 1, UINT16_MAX);
 				break;
 
 			case WID_CC_SEPARATOR: // Thousands separator
-				_custom_currency.separator = str;
+				GetCustomCurrency().separator = str;
 				break;
 
 			case WID_CC_PREFIX:
-				_custom_currency.prefix = str;
+				GetCustomCurrency().prefix = str;
 				break;
 
 			case WID_CC_SUFFIX:
-				_custom_currency.suffix = str;
+				GetCustomCurrency().suffix = str;
 				break;
 
 			case WID_CC_YEAR: { // Year to switch to euro
 				TimerGameCalendar::Year val = atoi(str);
 
-				_custom_currency.to_euro = (val < MIN_EURO_YEAR ? CF_NOEURO : std::min(val, CalendarTime::MAX_YEAR));
+				GetCustomCurrency().to_euro = (val < MIN_EURO_YEAR ? CF_NOEURO : std::min(val, CalendarTime::MAX_YEAR));
 				break;
 			}
 		}
