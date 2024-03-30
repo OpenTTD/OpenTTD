@@ -349,13 +349,13 @@ STR_SORT_BY_WAITING_TOTAL                                       :Carga total agu
 STR_SORT_BY_WAITING_AVAILABLE                                   :Carga disponível aguardando
 STR_SORT_BY_RATING_MAX                                          :Maior classificação de carga
 STR_SORT_BY_RATING_MIN                                          :Menor classificação de carga
-STR_SORT_BY_ENGINE_ID                                           :Locomotiva ID(ordem clássica)
+STR_SORT_BY_ENGINE_ID                                           :Motor ID(ordem clássica)
 STR_SORT_BY_COST                                                :Custo
 STR_SORT_BY_POWER                                               :Potência
 STR_SORT_BY_TRACTIVE_EFFORT                                     :Força de tração
 STR_SORT_BY_INTRO_DATE                                          :Data de introdução
-STR_SORT_BY_RUNNING_COST                                        :Custo de operação
-STR_SORT_BY_POWER_VS_RUNNING_COST                               :Potência/Custo de operação
+STR_SORT_BY_RUNNING_COST                                        :Custo operacional
+STR_SORT_BY_POWER_VS_RUNNING_COST                               :Potência/Custo operacional
 STR_SORT_BY_CARGO_CAPACITY                                      :Capacidade de carga
 STR_SORT_BY_RANGE                                               :Autonomia
 STR_SORT_BY_POPULATION                                          :População
@@ -1098,10 +1098,10 @@ STR_GAME_OPTIONS_SOCIAL_PLUGIN_TITLE                            :{BLACK}{STRING}
 STR_GAME_OPTIONS_SOCIAL_PLUGIN_PLATFORM                         :{BLACK}Plataforma:
 STR_GAME_OPTIONS_SOCIAL_PLUGIN_STATE                            :{BLACK}Estado do plugin:
 
-STR_GAME_OPTIONS_SOCIAL_PLUGIN_STATE_RUNNING                    :{GREEN}Executando
+STR_GAME_OPTIONS_SOCIAL_PLUGIN_STATE_RUNNING                    :{GREEN}Executando (ativo)
 STR_GAME_OPTIONS_SOCIAL_PLUGIN_STATE_FAILED                     :{RED}Falha ao inicializar
-STR_GAME_OPTIONS_SOCIAL_PLUGIN_STATE_PLATFORM_NOT_RUNNING       :{ORANGE}{STRING} não executando
-STR_GAME_OPTIONS_SOCIAL_PLUGIN_STATE_UNLOADED                   :{RED}Descarregado
+STR_GAME_OPTIONS_SOCIAL_PLUGIN_STATE_PLATFORM_NOT_RUNNING       :{ORANGE}{STRING} está parado (inativo)
+STR_GAME_OPTIONS_SOCIAL_PLUGIN_STATE_UNLOADED                   :{RED}Não carregado
 STR_GAME_OPTIONS_SOCIAL_PLUGIN_STATE_DUPLICATE                  :{RED}Plugin duplicado
 STR_GAME_OPTIONS_SOCIAL_PLUGIN_STATE_UNSUPPORTED_API            :{RED}Versão não suportada
 STR_GAME_OPTIONS_SOCIAL_PLUGIN_STATE_INVALID_SIGNATURE          :{RED}Assinatura inválida
@@ -1281,10 +1281,10 @@ STR_CONFIG_SETTING_MAXIMUM_INITIAL_LOAN_VALUE                   :{CURRENCY_LONG}
 ###setting-zero-is-special
 STR_CONFIG_SETTING_MAXIMUM_INITIAL_LOAN_DISABLED                :Sem empréstimo
 
-STR_CONFIG_SETTING_INTEREST_RATE                                :Taxa de Juros: {STRING}
+STR_CONFIG_SETTING_INTEREST_RATE                                :Taxa de juros: {STRING}
 STR_CONFIG_SETTING_INTEREST_RATE_HELPTEXT                       :Taxa de juros do empréstimo; também controla a inflação, se ativado
 
-STR_CONFIG_SETTING_RUNNING_COSTS                                :Custos de Operação: {STRING}
+STR_CONFIG_SETTING_RUNNING_COSTS                                :Custos operacionais: {STRING}
 STR_CONFIG_SETTING_RUNNING_COSTS_HELPTEXT                       :Configurar nível de manutenção e custos operacionais de veículos e infraestrutura
 
 STR_CONFIG_SETTING_CONSTRUCTION_SPEED                           :Velocidade de construção: {STRING}
@@ -1311,7 +1311,7 @@ STR_CONFIG_SETTING_CONSTRUCTION_COSTS_HELPTEXT                  :Definir o níve
 STR_CONFIG_SETTING_RECESSIONS                                   :Recessões: {STRING}
 STR_CONFIG_SETTING_RECESSIONS_HELPTEXT                          :Se ativado, recessões podem ocorrer periodicamente. Durante uma recessão, toda a produção é significativamente menor (ela retorna ao nível anterior quando a recessão termina)
 
-STR_CONFIG_SETTING_TRAIN_REVERSING                              :Não permitir a reversão de trens nas estações: {STRING}
+STR_CONFIG_SETTING_TRAIN_REVERSING                              :Desativar a reversão de trens nas estações: {STRING}
 STR_CONFIG_SETTING_TRAIN_REVERSING_HELPTEXT                     :Se ativado, os trens não podem inverter a direção em estações não-terminais, mesmo se existir um caminho mais curto para o próximo destino com a inversão
 
 STR_CONFIG_SETTING_DISASTERS                                    :Desastres: {STRING}
@@ -1530,7 +1530,7 @@ STR_CONFIG_SETTING_ERRMSG_DURATION                              :Duração da me
 STR_CONFIG_SETTING_ERRMSG_DURATION_HELPTEXT                     :Tempo de exibição de mensagens de erro em uma janela vermelha. Algumas mensagens de erro (crítico) não são fechadas automaticamente após este tempo e precisam ser fechadas manualmente
 
 STR_CONFIG_SETTING_HOVER_DELAY                                  :Mostrar textos de ajuda: {STRING}
-STR_CONFIG_SETTING_HOVER_DELAY_HELPTEXT                         :Tempo que o cursor deve ficar sobre algum elemento da interface para que os textos de ajuda sejam mostrados. Quando este valor é igual a 0 (zero), os textos de ajuda podem ser mostrados com o botão direito do mouse
+STR_CONFIG_SETTING_HOVER_DELAY_HELPTEXT                         :Tempo que o cursor deve ficar sobre algum elemento da interface para que os textos de ajuda sejam mostrados. Outro modo de exibir os textos de ajuda é com o botão direito do mouse quando este valor é fixado em 0.
 STR_CONFIG_SETTING_HOVER_DELAY_VALUE                            :Manter o cursor por {COMMA} milissegundo{P 0 "" s}
 ###setting-zero-is-special
 STR_CONFIG_SETTING_HOVER_DELAY_DISABLED                         :Botão direito
@@ -1547,7 +1547,7 @@ STR_CONFIG_SETTING_SHOW_CARGO_IN_LISTS                          :Mostrar as carg
 STR_CONFIG_SETTING_SHOW_CARGO_IN_LISTS_HELPTEXT                 :Se ativado, a carga que o veículo pode transportar aparecerá acima dele nas listas de veículos
 
 STR_CONFIG_SETTING_LANDSCAPE                                    :Paisagem: {STRING}
-STR_CONFIG_SETTING_LANDSCAPE_HELPTEXT                           :Os climas definem cenários básicos de jogo, com diferentes cargas e requisitos de crescimento das localidades. NewGRFs e Scripts de Jogo permitem um controle mais preciso sobre isso
+STR_CONFIG_SETTING_LANDSCAPE_HELPTEXT                           :Os climas definem os cenários básicos de jogo, com diferentes cargas e requisitos de crescimento das localidades. NewGRFs e Scripts de Jogo permitem um controle mais preciso sobre isso
 
 STR_CONFIG_SETTING_LAND_GENERATOR                               :Gerador de Terreno: {STRING}
 STR_CONFIG_SETTING_LAND_GENERATOR_HELPTEXT                      :O gerador 'Original' depende do conjunto de gráficos básicos e produz formas de terreno pré-definidas. 'TerraGenesis' é um gerador baseado no algoritmo de ruído de Perlin, que permite configurações mais refinadas
@@ -2032,9 +2032,9 @@ STR_CONFIG_SETTING_CITY_SIZE_MULTIPLIER                         :Multiplicador d
 STR_CONFIG_SETTING_CITY_SIZE_MULTIPLIER_HELPTEXT                :Tamanho médio das cidades em relação às localidades normais no início do jogo
 
 STR_CONFIG_SETTING_LINKGRAPH_RECALC_INTERVAL                    :Atualizar a distribuição a cada {STRING}
-STR_CONFIG_SETTING_LINKGRAPH_RECALC_INTERVAL_HELPTEXT           :Tempo entre recálculos subsequentes da rede de conexões. Cada recálculo atualiza os planos para um componente da rede. Isso significa que um valor X para esta configuração não significa que toda a rede será atualizada a cada X segundos. Apenas algum componente será atualizado. Quanto menor este valor, mais tempo de CPU será necessário para calcular as atualizações. Quanto maior este valor, mais tempo será necessário até que a distribuição de carga inicie nas novas rotas
+STR_CONFIG_SETTING_LINKGRAPH_RECALC_INTERVAL_HELPTEXT           :Tempo entre recálculos subsequentes da rede de conexões. Cada recálculo atualiza os planos para um componente da rede. Isso significa que um valor X para esta configuração não significa que toda a rede será atualizada a cada X segundos. Apenas algum componente será atualizado. Quanto menor este valor, mais tempo de CPU será necessário para calcular as atualizações. Quanto maior este valor, mais tempo será necessário até que a distribuição de carga inicie nas rotas novas
 STR_CONFIG_SETTING_LINKGRAPH_RECALC_TIME                        :Usar {STRING} para recalcular a distribuição
-STR_CONFIG_SETTING_LINKGRAPH_RECALC_TIME_HELPTEXT               :Tempo gasto em cada recálculo de um componente da rede de conexões. Quando um recálculo é iniciado, uma tarefa é gerada e pode ser executada por esse número de segundos. Quanto menor este valor, maior a chance de que a tarefa não seja concluída quando deveria. Então o jogo para até que ela seja completada, causando um atraso. Quanto maior este valor, mais tempo será necessário para a distribuição ser atualizada quando as rotas mudam
+STR_CONFIG_SETTING_LINKGRAPH_RECALC_TIME_HELPTEXT               :Tempo gasto em cada recálculo de um componente da rede de conexões. Quando um recálculo é iniciado, uma tarefa é gerada e pode ser executada durante esse número de segundos. Quanto menor este valor, maior a chance de que a tarefa não seja concluída quando deveria. Neste caso,  o jogo para até que ela seja completada, causando um atraso. Quanto maior este valor, mais tempo será necessário para a distribuição ser atualizada quando as rotas mudam
 
 STR_CONFIG_SETTING_DISTRIBUTION_PAX                             :Modo de distribuição para passageiros: {STRING}
 STR_CONFIG_SETTING_DISTRIBUTION_PAX_HELPTEXT                    :"Simétrico" significa que aproximadamente o mesmo número de passageiros irá de uma estação A para uma estação B, assim como de B para A. "Assimétrico" significa que um número arbitrário de passageiros pode ir em qualquer direção. "Manual" significa que não haverá distribuição automática dos passageiros
@@ -2669,7 +2669,7 @@ STR_CONTENT_SEARCH_EXTERNAL_DISCLAIMER_CAPTION                  :{WHITE}Você es
 STR_CONTENT_SEARCH_EXTERNAL_DISCLAIMER                          :{WHITE}Os termos e condições para download de conteúdo de fontes externas pode variar.{}Você deverá consultar as fontes para obter instruções de como instalar o conteúdo no OpenTTD.{}Você deseja continuar?
 STR_CONTENT_FILTER_TITLE                                        :{BLACK}Filtrar por etiqueta/nome:
 STR_CONTENT_OPEN_URL                                            :{BLACK}Página da internet
-STR_CONTENT_OPEN_URL_TOOLTIP                                    :{BLACK}Visitar o site desse conteúdo
+STR_CONTENT_OPEN_URL_TOOLTIP                                    :{BLACK}Visitar a página web deste conteúdo
 STR_CONTENT_DOWNLOAD_CAPTION                                    :{BLACK}Fazer download
 STR_CONTENT_DOWNLOAD_CAPTION_TOOLTIP                            :{BLACK}Iniciar o download do conteúdo selecionado
 STR_CONTENT_TOTAL_DOWNLOAD_SIZE                                 :{SILVER}Tamanho total do download: {WHITE}{BYTES}
@@ -3663,9 +3663,9 @@ STR_LOCAL_AUTHORITY_ACTION_EXCLUSIVE_TRANSPORT                  :Comprar direito
 STR_LOCAL_AUTHORITY_ACTION_BRIBE                                :Subornar a autoridade local
 ###next-name-looks-similar
 
-STR_LOCAL_AUTHORITY_ACTION_TOOLTIP_SMALL_ADVERTISING            :{PUSH_COLOUR}{YELLOW}Iniciar uma pequena campanha publicitária local, para atrair mais passageiros e cargas para seus serviços de transporte.{}Produz um aumento temporário na classificação da estação num raio pequeno em torno do centro da localidade.{}{POP_COLOUR}Custo: {CURRENCY_LONG}
-STR_LOCAL_AUTHORITY_ACTION_TOOLTIP_MEDIUM_ADVERTISING           :{PUSH_COLOUR}{YELLOW}Iniciar uma média campanha publicitária local, para atrair mais passageiros e cargas para seus serviços de transporte.{}Produz um aumento temporário na classificação da estação num raio médio em torno do centro da cidade.{}{POP_COLOUR}Custo: {CURRENCY_LONG}
-STR_LOCAL_AUTHORITY_ACTION_TOOLTIP_LARGE_ADVERTISING            :{PUSH_COLOUR}{YELLOW}Iniciar uma grande campanha publicitária local, para atrair mais passageiros e cargas para seus serviços de transporte.{}Produz um aumento temporário na classificação da estação num raio grande em torno do centro da localidade.{}{POP_COLOUR}Custo: {CURRENCY_LONG}
+STR_LOCAL_AUTHORITY_ACTION_TOOLTIP_SMALL_ADVERTISING            :{PUSH_COLOUR}{YELLOW}Iniciar uma pequena campanha publicitária local, para atrair mais passageiros e cargas para seus serviços de transporte.{}Produz um aumento temporário na classificação da estação numa distância pequena em torno do centro da localidade.{}{POP_COLOUR}Custo: {CURRENCY_LONG}
+STR_LOCAL_AUTHORITY_ACTION_TOOLTIP_MEDIUM_ADVERTISING           :{PUSH_COLOUR}{YELLOW}Iniciar uma média campanha publicitária local, para atrair mais passageiros e cargas para seus serviços de transporte.{}Produz um aumento temporário na classificação da estação numa distância média em torno do centro da cidade.{}{POP_COLOUR}Custo: {CURRENCY_LONG}
+STR_LOCAL_AUTHORITY_ACTION_TOOLTIP_LARGE_ADVERTISING            :{PUSH_COLOUR}{YELLOW}Iniciar uma grande campanha publicitária local, para atrair mais passageiros e cargas para seus serviços de transporte.{}Produz um aumento temporário na classificação da estação numa distância grande em torno do centro da localidade.{}{POP_COLOUR}Custo: {CURRENCY_LONG}
 STR_LOCAL_AUTHORITY_ACTION_TOOLTIP_ROAD_RECONSTRUCTION_MONTHS   :{PUSH_COLOUR}{YELLOW}Financiar a reconstrução da rede urbana de estradas.{}Provoca uma perturbação considerável no tráfego por até 6 meses.{}{POP_COLOUR}Custo: {CURRENCY_LONG}
 STR_LOCAL_AUTHORITY_ACTION_TOOLTIP_ROAD_RECONSTRUCTION_MINUTES  :{PUSH_COLOUR}{YELLOW}Financiar a reconstrução da rede urbana de estradas.{}Provoca uma perturbação considerável no tráfego por até 6 minutos.{}{POP_COLOUR}Custo: {CURRENCY_LONG}
 STR_LOCAL_AUTHORITY_ACTION_TOOLTIP_STATUE_OF_COMPANY            :{PUSH_COLOUR}{YELLOW}Construir uma estátua em homenagem à sua empresa.{}Produz um aumento permanente na classificação da estação nesta localidade.{}{POP_COLOUR}Custo: {CURRENCY_LONG}
@@ -4074,8 +4074,8 @@ STR_PURCHASE_INFO_SPEED_POWER                                   :{BLACK}Velocida
 STR_PURCHASE_INFO_SPEED                                         :{BLACK}Velocidade: {GOLD}{VELOCITY}
 STR_PURCHASE_INFO_SPEED_OCEAN                                   :{BLACK}Velocidade no oceano: {GOLD}{VELOCITY}
 STR_PURCHASE_INFO_SPEED_CANAL                                   :{BLACK}Velocidade em canais/rios: {GOLD}{VELOCITY}
-STR_PURCHASE_INFO_RUNNINGCOST_YEAR                              :{BLACK}Custo de Operação: {GOLD}{CURRENCY_LONG}/ano
-STR_PURCHASE_INFO_RUNNINGCOST_PERIOD                            :{BLACK}Custo de Operação: {GOLD}{CURRENCY_LONG}/período
+STR_PURCHASE_INFO_RUNNINGCOST_YEAR                              :{BLACK}Custo Operacional: {GOLD}{CURRENCY_LONG}/ano
+STR_PURCHASE_INFO_RUNNINGCOST_PERIOD                            :{BLACK}Custo Operacional: {GOLD}{CURRENCY_LONG}/período
 STR_PURCHASE_INFO_CAPACITY                                      :{BLACK}Capacidade: {GOLD}{CARGO_LONG} {STRING}
 STR_PURCHASE_INFO_REFITTABLE                                    :(adaptável)
 STR_PURCHASE_INFO_DESIGNED_LIFE                                 :{BLACK}Desenvolvido: {GOLD}{NUM}{BLACK} Vida útil: {GOLD}{COMMA} ano{P "" s}
@@ -4276,8 +4276,8 @@ STR_ENGINE_PREVIEW_SPEED_POWER                                  :Velocidade: {VE
 STR_ENGINE_PREVIEW_SPEED_POWER_MAX_TE                           :Velocidade: {VELOCITY}  Potência: {POWER}  Tração máx.: {FORCE}
 STR_ENGINE_PREVIEW_TYPE                                         :Tipo de aeronave: {STRING}
 STR_ENGINE_PREVIEW_TYPE_RANGE                                   :Tipo de aeronave: {STRING}   Autonomia: {COMMA} quadrados
-STR_ENGINE_PREVIEW_RUNCOST_YEAR                                 :Custo de Operação: {CURRENCY_LONG}/ano
-STR_ENGINE_PREVIEW_RUNCOST_PERIOD                               :Custo de Operação: {CURRENCY_LONG}/período
+STR_ENGINE_PREVIEW_RUNCOST_YEAR                                 :Custo Operacional: {CURRENCY_LONG}/ano
+STR_ENGINE_PREVIEW_RUNCOST_PERIOD                               :Custo Operacional: {CURRENCY_LONG}/período
 STR_ENGINE_PREVIEW_CAPACITY                                     :Capacidade: {CARGO_LONG}
 STR_ENGINE_PREVIEW_CAPACITY_2                                   :Capacidade: {CARGO_LONG}, {CARGO_LONG}
 
@@ -4426,8 +4426,8 @@ STR_VEHICLE_DETAILS_AIRCRAFT_RENAME                             :{BLACK}Renomear
 
 STR_VEHICLE_INFO_AGE                                            :{COMMA} ano{P "" s} ({COMMA})
 STR_VEHICLE_INFO_AGE_RED                                        :{RED}{COMMA} ano{P "" s} ({COMMA})
-STR_VEHICLE_INFO_AGE_RUNNING_COST_YR                            :{BLACK}Idade: {LTBLUE}{STRING}{BLACK}   Custo de Operação: {LTBLUE}{CURRENCY_LONG}/ano
-STR_VEHICLE_INFO_AGE_RUNNING_COST_PERIOD                        :{BLACK}Idade: {LTBLUE}{STRING}{BLACK}   Custo de Operação: {LTBLUE}{CURRENCY_LONG}/período
+STR_VEHICLE_INFO_AGE_RUNNING_COST_YR                            :{BLACK}Idade: {LTBLUE}{STRING}{BLACK}   Custo Operacional: {LTBLUE}{CURRENCY_LONG}/ano
+STR_VEHICLE_INFO_AGE_RUNNING_COST_PERIOD                        :{BLACK}Idade: {LTBLUE}{STRING}{BLACK}   Custo Operacional: {LTBLUE}{CURRENCY_LONG}/período
 
 STR_VEHICLE_INFO_MAX_SPEED                                      :{BLACK}Velocidade máx.: {LTBLUE}{VELOCITY}
 STR_VEHICLE_INFO_MAX_SPEED_TYPE                                 :{BLACK}Velocidade máx.: {LTBLUE}{VELOCITY} {BLACK}Tipo de aeronave: {LTBLUE}{STRING}
@@ -4861,7 +4861,7 @@ STR_TEXTFILE_WRAP_TEXT_TOOLTIP                                  :{BLACK}Ajustar 
 STR_TEXTFILE_VIEW_README                                        :{BLACK}Leia-me
 STR_TEXTFILE_VIEW_README_TOOLTIP                                :Ver o arquivo Leia-me para este conteúdo
 STR_TEXTFILE_VIEW_CHANGELOG                                     :{BLACK}Registro de modificações
-STR_TEXTFILE_VIEW_CHANGELOG_TOOLTIP                             :Ver o registro de modificações para este conteúdo
+STR_TEXTFILE_VIEW_CHANGELOG_TOOLTIP                             :Ver o registro de modificações deste conteúdo
 STR_TEXTFILE_VIEW_LICENCE                                       :{BLACK}Licença
 STR_TEXTFILE_VIEW_LICENCE_TOOLTIP                               :Ver a licença para este conteúdo
 ###length 5
@@ -5029,7 +5029,7 @@ STR_ERROR_CAN_ONLY_BE_BUILT_ABOVE_SNOW_LINE                     :{WHITE}... só 
 STR_ERROR_CAN_ONLY_BE_BUILT_BELOW_SNOW_LINE                     :{WHITE}... só pode ser construído abaixo da linha de neve
 
 STR_ERROR_PROSPECTING_WAS_UNLUCKY                               :{WHITE}O financiamento falhou em prospectar devido ao azar; tente novamente
-STR_ERROR_NO_SUITABLE_PLACES_FOR_PROSPECTING                    :{WHITE}Não havia locais adequados para prospectar por esta indústria
+STR_ERROR_NO_SUITABLE_PLACES_FOR_PROSPECTING                    :{WHITE}Não havia locais adequados para prospectar esta indústria
 STR_ERROR_NO_SUITABLE_PLACES_FOR_INDUSTRIES                     :{WHITE}Não havia locais adequados para indústrias do tipo '{STRING}'
 STR_ERROR_NO_SUITABLE_PLACES_FOR_INDUSTRIES_EXPLANATION         :{WHITE}Modifique os parâmetros de geração do mapa para obter um mapa melhor
 
@@ -5106,10 +5106,10 @@ STR_ERROR_CAN_T_REVERSE_DIRECTION_RAIL_VEHICLE                  :{WHITE}Não é 
 STR_ERROR_CAN_T_REVERSE_DIRECTION_RAIL_VEHICLE_MULTIPLE_UNITS   :{WHITE}... composto por várias unidades
 STR_ERROR_INCOMPATIBLE_RAIL_TYPES                               :Tipos de trilhos incompatíveis
 
-STR_ERROR_CAN_T_MOVE_VEHICLE                                    :{WHITE}Não é possível mover veículo...
+STR_ERROR_CAN_T_MOVE_VEHICLE                                    :{WHITE}Não é possível mover o veículo...
 STR_ERROR_REAR_ENGINE_FOLLOW_FRONT                              :{WHITE}A locomotiva traseira sempre seguirá a sua equivalente dianteira
-STR_ERROR_UNABLE_TO_FIND_ROUTE_TO                               :{WHITE}Não é possível encontrar uma rota para depósito local
-STR_ERROR_UNABLE_TO_FIND_LOCAL_DEPOT                            :{WHITE}Não é possível encontrar depósito local
+STR_ERROR_UNABLE_TO_FIND_ROUTE_TO                               :{WHITE}Incapaz de encontrar uma rota para depósito local
+STR_ERROR_UNABLE_TO_FIND_LOCAL_DEPOT                            :{WHITE}Incapaz de encontrar um depósito local
 
 STR_ERROR_DEPOT_WRONG_DEPOT_TYPE                                :Tipo de depósito errado
 
@@ -5174,15 +5174,15 @@ STR_ERROR_CAN_T_BUILD_AQUEDUCT_HERE                             :{WHITE}Não é 
 # Tree related errors
 STR_ERROR_TREE_ALREADY_HERE                                     :{WHITE}... árvore já plantada aqui
 STR_ERROR_TREE_WRONG_TERRAIN_FOR_TREE_TYPE                      :{WHITE}... terreno errado para esse tipo de árvore
-STR_ERROR_CAN_T_PLANT_TREE_HERE                                 :{WHITE}Não é possível plantar árvores aqui...
+STR_ERROR_CAN_T_PLANT_TREE_HERE                                 :{WHITE}Não é possível plantar árvore aqui...
 
 # Bridge related errors
 STR_ERROR_CAN_T_BUILD_BRIDGE_HERE                               :{WHITE}Não é possível construir ponte aqui...
 STR_ERROR_MUST_DEMOLISH_BRIDGE_FIRST                            :{WHITE}É necessário demolir a ponte primeiro
 STR_ERROR_CAN_T_START_AND_END_ON                                :{WHITE}Não é possível iniciar e terminar no mesmo ponto
 STR_ERROR_BRIDGEHEADS_NOT_SAME_HEIGHT                           :{WHITE}As extremidades da ponte não estão no mesmo nível
-STR_ERROR_BRIDGE_TOO_LOW_FOR_TERRAIN                            :{WHITE}A ponte é muito baixa para este terreno
-STR_ERROR_BRIDGE_TOO_HIGH_FOR_TERRAIN                           :{WHITE}A ponte é muito alta para este terreno
+STR_ERROR_BRIDGE_TOO_LOW_FOR_TERRAIN                            :{WHITE}A ponte é muito baixa para o terreno.
+STR_ERROR_BRIDGE_TOO_HIGH_FOR_TERRAIN                           :{WHITE}A ponte é muito alta para este terreno.
 STR_ERROR_START_AND_END_MUST_BE_IN                              :{WHITE}Início e final devem estar alinhados
 STR_ERROR_ENDS_OF_BRIDGE_MUST_BOTH                              :{WHITE}... os extremos da ponte devem estar sobre a terra
 STR_ERROR_BRIDGE_TOO_LONG                                       :{WHITE}... ponte muito longa
@@ -5294,7 +5294,7 @@ STR_ERROR_CAN_T_MAKE_ROAD_VEHICLE_TURN                          :{WHITE}Não é 
 STR_ERROR_AIRCRAFT_IS_IN_FLIGHT                                 :{WHITE}Aeronave está em voo
 
 # Order related errors
-STR_ERROR_NO_MORE_SPACE_FOR_ORDERS                              :{WHITE}Não há espaço para mais ordens
+STR_ERROR_NO_MORE_SPACE_FOR_ORDERS                              :{WHITE}Não há mais espaço para ordens
 STR_ERROR_TOO_MANY_ORDERS                                       :{WHITE}Há ordens demais
 STR_ERROR_CAN_T_INSERT_NEW_ORDER                                :{WHITE}Não é possível inserir nova ordem...
 STR_ERROR_CAN_T_DELETE_THIS_ORDER                               :{WHITE}Não é possível remover esta ordem...
@@ -5332,8 +5332,8 @@ STR_ERROR_NO_BUOY                                               :{WHITE}Não exi
 STR_ERROR_CAN_T_TIMETABLE_VEHICLE                               :{WHITE}Não é possível programar o veículo...
 STR_ERROR_TIMETABLE_ONLY_WAIT_AT_STATIONS                       :{WHITE}Veículos só podem aguardar em estações
 STR_ERROR_TIMETABLE_NOT_STOPPING_HERE                           :{WHITE}Este veículo não para nesta estação
-STR_ERROR_TIMETABLE_INCOMPLETE                                  :{WHITE}... horário incompleto
-STR_ERROR_TIMETABLE_NOT_STARTED                                 :{WHITE}... o horário ainda não começou
+STR_ERROR_TIMETABLE_INCOMPLETE                                  :{WHITE}... horário está incompleto
+STR_ERROR_TIMETABLE_NOT_STARTED                                 :{WHITE}... horário ainda não começou
 
 # Sign related errors
 STR_ERROR_TOO_MANY_SIGNS                                        :{WHITE}... há placas demais
