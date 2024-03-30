@@ -73,7 +73,6 @@ public:
 	 * @param version The version of the Script to load, or -1 of latest.
 	 * @param force_exact_match If true try to find the exact same version
 	 *   as specified. If false any compatible version is ok.
-	 * @param is_random Is the Script chosen randomly?
 	 */
 	void Change(std::optional<const std::string> name, int version = -1, bool force_exact_match = false);
 
