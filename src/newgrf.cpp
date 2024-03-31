@@ -9407,11 +9407,16 @@ static void FinaliseHouseArray()
 			hs->building_flags = TILE_NO_FLAG;
 		}
 
+		if (!hs->enabled) continue;
+
 		/* Apply default cargo translation map for unset cargo slots */
-		for (uint i = 0; i < lengthof(hs->accepts_cargo); ++i) {
-			if (!IsValidCargoID(hs->accepts_cargo[i])) hs->accepts_cargo[i] = GetCargoIDByLabel(hs->accepts_cargo_label[i]);
+		for (auto it = std::begin(hs->accepts_cargo); it != std::end(hs->accepts_cargo); ++it) {
+			auto slot = std::distance(std::begin(hs->accepts_cargo), it);
+			if (!IsValidCargoID(*it)) *it = GetCargoIDByLabel(hs->accepts_cargo_label[slot]);
+			/* If cargo is accepted already, disable this slot. */
+			if (IsValidCargoID(*it) && std::find(std::begin(hs->accepts_cargo), it, *it) != it) *it = INVALID_CARGO;
 			/* Disable acceptance if cargo type is invalid. */
-			if (!IsValidCargoID(hs->accepts_cargo[i])) hs->cargo_acceptance[i] = 0;
+			if (!IsValidCargoID(*it)) hs->cargo_acceptance[slot] = 0;
 		}
 	}
 
@@ -9486,21 +9491,30 @@ static void FinaliseIndustriesArray()
 		}
 		if (!indsp.enabled) {
 			indsp.name = STR_NEWGRF_INVALID_INDUSTRYTYPE;
+			continue;
 		}
 
 		/* Apply default cargo translation map for unset cargo slots */
-		for (uint i = 0; i < lengthof(indsp.produced_cargo); ++i) {
-			if (!IsValidCargoID(indsp.produced_cargo[i])) indsp.produced_cargo[i] = GetCargoIDByLabel(GetActiveCargoLabel(indsp.produced_cargo_label[i]));
+		for (auto it = std::begin(indsp.produced_cargo); it != std::end(indsp.produced_cargo); ++it) {
+			if (!IsValidCargoID(*it)) *it = GetCargoIDByLabel(GetActiveCargoLabel(indsp.produced_cargo_label[std::distance(std::begin(indsp.produced_cargo), it)]));
+			/* If cargo is produced already, disable this slot. */
+			if (IsValidCargoID(*it) && std::find(std::begin(indsp.produced_cargo), it, *it) != it) *it = INVALID_CARGO;
 		}
-		for (uint i = 0; i < lengthof(indsp.accepts_cargo); ++i) {
-			if (!IsValidCargoID(indsp.accepts_cargo[i])) indsp.accepts_cargo[i] = GetCargoIDByLabel(GetActiveCargoLabel(indsp.accepts_cargo_label[i]));
+		for (auto it = std::begin(indsp.accepts_cargo); it != std::end(indsp.accepts_cargo); ++it) {
+			if (!IsValidCargoID(*it)) *it = GetCargoIDByLabel(GetActiveCargoLabel(indsp.accepts_cargo_label[std::distance(std::begin(indsp.accepts_cargo), it)]));
+			/* If cargo is accepted already, disable this slot. */
+			if (IsValidCargoID(*it) && std::find(std::begin(indsp.accepts_cargo), it, *it) != it) *it = INVALID_CARGO;
 		}
 	}
 
 	for (auto &indtsp : _industry_tile_specs) {
+		if (!indtsp.enabled) continue;
+
 		/* Apply default cargo translation map for unset cargo slots */
-		for (uint i = 0; i < lengthof(indtsp.accepts_cargo); ++i) {
-			if (!IsValidCargoID(indtsp.accepts_cargo[i])) indtsp.accepts_cargo[i] = GetCargoIDByLabel(GetActiveCargoLabel(indtsp.accepts_cargo_label[i]));
+		for (auto it = std::begin(indtsp.accepts_cargo); it != std::end(indtsp.accepts_cargo); ++it) {
+			if (!IsValidCargoID(*it)) *it = GetCargoIDByLabel(GetActiveCargoLabel(indtsp.accepts_cargo_label[std::distance(std::begin(indtsp.accepts_cargo), it)]));
+			/* If cargo is accepted already, disable this slot. */
+			if (IsValidCargoID(*it) && std::find(std::begin(indtsp.accepts_cargo), it, *it) != it) *it = INVALID_CARGO;
 		}
 	}
 }
