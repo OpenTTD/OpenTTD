@@ -21,6 +21,7 @@
 #include "string_func.h"
 #include "dropdown_type.h"
 #include "dropdown_func.h"
+#include "dropdown_common_type.h"
 #include "slider_func.h"
 #include "highscore.h"
 #include "base_media_base.h"
