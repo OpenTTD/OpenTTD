@@ -467,6 +467,7 @@ NetworkRecvStatus ServerNetworkGameSocketHandler::SendEnableEncryption()
 	if (this->status != STATUS_AUTH_GAME) return this->CloseConnection(NETWORK_RECV_STATUS_MALFORMED_PACKET);
 
 	auto p = std::make_unique<Packet>(this, PACKET_SERVER_ENABLE_ENCRYPTION);
+	this->authentication_handler->SendEnableEncryption(*p);
 	this->SendPacket(std::move(p));
 	return NETWORK_RECV_STATUS_OKAY;
 }

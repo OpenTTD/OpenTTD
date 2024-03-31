@@ -249,6 +249,14 @@ TEST_CASE("Encryption handling")
 
 	TestAuthentication(server, client, NetworkAuthenticationServerHandler::AUTHENTICATED, NetworkAuthenticationClientHandler::READY_FOR_RESPONSE);
 
+	Packet packet(&mock_socket_handler, PacketType{});
+	server.SendEnableEncryption(packet);
+
+	bool valid;
+	std::tie(packet, valid) = CreatePacketForReading(packet, &mock_socket_handler);
+	CHECK(valid);
+	CHECK(client.ReceiveEnableEncryption(packet));
+
 	MockNetworkSocketHandler server_socket_handler(server.CreateClientToServerEncryptionHandler(), server.CreateServerToClientEncryptionHandler());
 	MockNetworkSocketHandler client_socket_handler(client.CreateServerToClientEncryptionHandler(), client.CreateClientToServerEncryptionHandler());
 

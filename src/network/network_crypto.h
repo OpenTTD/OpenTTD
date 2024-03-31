@@ -242,6 +242,12 @@ public:
 	 */
 	virtual bool SendResponse(struct Packet &p) = 0;
 
+	/**
+	 * Read the request to enable encryption from the server.
+	 * @param p The request from the server.
+	 */
+	virtual bool ReceiveEnableEncryption(struct Packet &p) = 0;
+
 	static std::unique_ptr<NetworkAuthenticationClientHandler> Create(std::shared_ptr<NetworkAuthenticationPasswordRequestHandler> password_handler, std::string &secret_key, std::string &public_key);
 };
 
@@ -269,6 +275,12 @@ public:
 	 * @return The \c ResponseResult describing the result.
 	 */
 	virtual ResponseResult ReceiveResponse(struct Packet &p) = 0;
+
+	/**
+	 * Create the request to enable encryption to the client.
+	 * @param p The packet to write the enable encryption request to.
+	 */
+	virtual void SendEnableEncryption(struct Packet &p) = 0;
 
 	/**
 	 * Checks whether this handler can be used with the current configuration.
