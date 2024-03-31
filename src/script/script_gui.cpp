@@ -17,7 +17,7 @@
 #include "../company_gui.h"
 #include "../window_func.h"
 #include "../network/network.h"
-#include "../widgets/dropdown_func.h"
+#include "../dropdown_func.h"
 #include "../hotkeys.h"
 #include "../company_cmd.h"
 #include "../misc_cmd.h"

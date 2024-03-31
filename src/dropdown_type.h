@@ -7,17 +7,17 @@
 
 /** @file dropdown_type.h Types related to the drop down widget. */
 
-#ifndef WIDGETS_DROPDOWN_TYPE_H
-#define WIDGETS_DROPDOWN_TYPE_H
+#ifndef DROPDOWN_TYPE_H
+#define DROPDOWN_TYPE_H
 
-#include "../window_type.h"
-#include "../gfx_func.h"
-#include "../gfx_type.h"
-#include "../palette_func.h"
-#include "../string_func.h"
-#include "../strings_func.h"
-#include "../table/strings.h"
-#include "../window_gui.h"
+#include "window_type.h"
+#include "gfx_func.h"
+#include "gfx_type.h"
+#include "palette_func.h"
+#include "string_func.h"
+#include "strings_func.h"
+#include "table/strings.h"
+#include "window_gui.h"
 
 /**
  * Base list item class from which others are derived.
@@ -217,4 +217,4 @@ Dimension GetDropDownListDimension(const DropDownList &list);
 
 void ReplaceDropDownList(Window *parent, DropDownList &&list);
 
-#endif /* WIDGETS_DROPDOWN_TYPE_H */
+#endif /* DROPDOWN_TYPE_H */

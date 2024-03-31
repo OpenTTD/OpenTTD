@@ -15,8 +15,8 @@
 #include "table/control_codes.h"
 #include "string_func.h"
 #include "openttd.h"
-
 #include "help_gui.h"
+
 #include "widgets/help_widget.h"
 #include "widgets/misc_widget.h"
 

@@ -21,7 +21,7 @@
 #include "town.h"
 #include "sound_func.h"
 #include "string_func.h"
-#include "widgets/dropdown_func.h"
+#include "dropdown_func.h"
 #include "statusbar_gui.h"
 #include "company_manager_face.h"
 #include "company_func.h"

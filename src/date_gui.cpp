@@ -14,8 +14,8 @@
 #include "window_gui.h"
 #include "date_gui.h"
 #include "core/geometry_func.hpp"
+#include "dropdown_type.h"
 
-#include "widgets/dropdown_type.h"
 #include "widgets/date_widget.h"
 
 #include "safeguards.h"

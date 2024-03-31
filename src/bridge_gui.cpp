@@ -18,7 +18,7 @@
 #include "gfx_func.h"
 #include "tunnelbridge.h"
 #include "sortlist_type.h"
-#include "widgets/dropdown_func.h"
+#include "dropdown_func.h"
 #include "core/geometry_func.hpp"
 #include "tunnelbridge_map.h"
 #include "road_gui.h"

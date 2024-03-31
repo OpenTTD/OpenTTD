@@ -9,7 +9,6 @@
 
 #include "stdafx.h"
 #include "league_gui.h"
-
 #include "company_base.h"
 #include "company_gui.h"
 #include "gui.h"
@@ -22,7 +21,9 @@
 #include "town.h"
 #include "viewport_func.h"
 #include "window_gui.h"
+
 #include "widgets/league_widget.h"
+
 #include "table/strings.h"
 #include "table/sprites.h"
 

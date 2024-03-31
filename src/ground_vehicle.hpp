@@ -14,6 +14,7 @@
 #include "vehicle_gui.h"
 #include "landscape.h"
 #include "window_func.h"
+
 #include "widgets/vehicle_widget.h"
 
 /** What is the status of our acceleration? */

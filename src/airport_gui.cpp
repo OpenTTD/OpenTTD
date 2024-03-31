@@ -22,7 +22,7 @@
 #include "station_type.h"
 #include "newgrf_airport.h"
 #include "newgrf_callbacks.h"
-#include "widgets/dropdown_type.h"
+#include "dropdown_type.h"
 #include "core/geometry_func.hpp"
 #include "hotkeys.h"
 #include "vehicle_func.h"

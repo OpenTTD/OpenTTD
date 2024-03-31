@@ -15,7 +15,7 @@
 #include "gfx_func.h"
 #include "string_func.h"
 #include "textfile_gui.h"
-#include "widgets/dropdown_type.h"
+#include "dropdown_type.h"
 #include "gfx_layout.h"
 #include "debug.h"
 #include "openttd.h"
