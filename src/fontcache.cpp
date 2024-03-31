@@ -99,42 +99,16 @@ bool GetFontAAState()
 	return _fcsettings.global_aa;
 }
 
-void SetFont(FontSize fontsize, const std::string &font, uint size)
+void DebugPrintFontSettings(const std::string& desc)
 {
-	FontCacheSubSetting *setting = GetFontCacheSubSetting(fontsize);
-	bool changed = false;
+	Debug(fontcache, 3, "{}", desc);
 
-	if (setting->font != font) {
-		setting->font = font;
-		changed = true;
+	for (FontSize fs = FS_BEGIN; fs < FS_END; fs++) {
+		FontCache* loadedFont = FontCache::Get(fs);
+		FontCacheSubSetting* setting = GetFontCacheSubSetting(fs);
+
+		Debug(fontcache, 3, "  {}: Actual Font={} Setting={}", FontSizeToName(fs), (loadedFont == NULL) ? "NULL" : loadedFont->GetFontName(), setting->font);
 	}
-
-	if (setting->size != size) {
-		setting->size = size;
-		changed = true;
-	}
-
-	if (!changed) return;
-
-	if (fontsize != FS_MONO) {
-		/* Try to reload only the modified font. */
-		FontCacheSettings backup = _fcsettings;
-		for (FontSize fs = FS_BEGIN; fs < FS_END; fs++) {
-			if (fs == fontsize) continue;
-			FontCache *fc = FontCache::Get(fs);
-			GetFontCacheSubSetting(fs)->font = fc->HasParent() ? fc->GetFontName() : "";
-		}
-		CheckForMissingGlyphs();
-		_fcsettings = backup;
-	} else {
-		InitFontCache(true);
-	}
-
-	LoadStringWidthTable();
-	UpdateAllVirtCoords();
-	ReInitAllWindows(true);
-
-	if (_save_config) SaveToConfig();
 }
 
 #ifdef WITH_FREETYPE
@@ -149,7 +123,81 @@ extern void LoadCoreTextFont(FontSize fs);
 extern void LoadCoreTextFont(FontSize fs, const std::string &file_name, uint size);
 #endif
 
-static void TryLoadDefaultTrueTypeFont([[maybe_unused]] FontSize fs)
+static void TryLoadDefaultTrueTypeFont([[maybe_unused]] FontSize fs, [[maybe_unused]] uint size);
+
+[[maybe_unused]] static void LoadFontHelper([[maybe_unused]]FontSize fs)
+{
+#ifdef WITH_FREETYPE
+		LoadFreeTypeFont(fs);
+#elif defined(_WIN32)
+		LoadWin32Font(fs);
+#elif defined(WITH_COCOA)
+		LoadCoreTextFont(fs);
+#endif
+}
+
+[[maybe_unused]] static void LoadFontHelper([[maybe_unused]] FontSize fs, [[maybe_unused]] const std::string &file_name, [[maybe_unused]] uint size)
+{
+#ifdef WITH_FREETYPE
+		LoadFreeTypeFont(fs, file_name, size);
+#elif defined(_WIN32)
+		LoadWin32Font(fs, file_name, size);
+#elif defined(WITH_COCOA)
+		LoadCoreTextFont(fs, file_name, size);
+#endif
+}
+
+void ResizeFont(FontSize font_size, uint size)
+{
+	FontCacheSubSetting *setting = GetFontCacheSubSetting(font_size);
+
+	if (setting->size == size) {
+		return;
+	}
+
+	setting->size = size;
+
+	// Default fonts are empty here. We will allow the user to resize the default font:
+	if (setting->font.empty()){
+		TryLoadDefaultTrueTypeFont(font_size, size);
+	} else {
+		LoadFontHelper(font_size);
+	}
+
+	LoadStringWidthTable();
+	UpdateAllVirtCoords();
+	ReInitAllWindows(true);
+
+	if (_save_config) SaveToConfig();
+}
+
+void SetFont(FontSize font_size, const std::string &font, uint size)
+{
+	FontCacheSubSetting *setting = GetFontCacheSubSetting(font_size);
+	bool changed = false;
+
+	if (setting->font != font) {
+		setting->font = font;
+		changed = true;
+	}
+
+	if (setting->size != size) {
+		setting->size = size;
+		changed = true;
+	}
+
+	if (!changed) return;
+
+	CheckForMissingGlyphs();
+
+	LoadStringWidthTable();
+	UpdateAllVirtCoords();
+	ReInitAllWindows(true);
+
+	if (_save_config) SaveToConfig();
+}
+
+static void TryLoadDefaultTrueTypeFont([[maybe_unused]] FontSize fs, [[maybe_unused]] uint size = 0)
 {
 #if defined(WITH_FREETYPE) || defined(_WIN32) || defined(WITH_COCOA)
 	std::string font_name{};
@@ -173,14 +221,11 @@ static void TryLoadDefaultTrueTypeFont([[maybe_unused]] FontSize fs)
 	/* Find font file. */
 	std::string full_font = FioFindFullPath(BASESET_DIR, font_name);
 	if (!full_font.empty()) {
-		int size = FontCache::GetDefaultFontHeight(fs);
-#ifdef WITH_FREETYPE
-		LoadFreeTypeFont(fs, full_font, size);
-#elif defined(_WIN32)
-		LoadWin32Font(fs, full_font, size);
-#elif defined(WITH_COCOA)
-		LoadCoreTextFont(fs, full_font, size);
-#endif
+		if (size == 0) {
+			size = FontCache::GetDefaultFontHeight(fs);
+		}
+
+		LoadFontHelper(fs, full_font, size);
 	}
 #endif /* defined(WITH_FREETYPE) || defined(_WIN32) || defined(WITH_COCOA) */
 }
@@ -189,28 +234,34 @@ static void TryLoadDefaultTrueTypeFont([[maybe_unused]] FontSize fs)
  * (Re)initialize the font cache related things, i.e. load the non-sprite fonts.
  * @param monospace Whether to initialise the monospace or regular fonts.
  */
-void InitFontCache(bool monospace)
+void InitFontCache()
 {
 	FontCache::InitializeFontCaches();
 
 	for (FontSize fs = FS_BEGIN; fs < FS_END; fs++) {
-		if (monospace != (fs == FS_MONO)) continue;
 
 		FontCache *fc = FontCache::Get(fs);
-		if (fc->HasParent()) delete fc;
+		if (fc->HasParent()) {
+			delete fc;
+		}
 
-		if (!_fcsettings.prefer_sprite && GetFontCacheSubSetting(fs)->font.empty()) {
-			TryLoadDefaultTrueTypeFont(fs);
+		FontCacheSubSetting *setting = GetFontCacheSubSetting(fs);
+
+		if (_fcsettings.prefer_sprite){
+			std::string backup = setting->font;
+			setting->font = "";
+			LoadFontHelper(fs);
+			setting->font = backup;
 		} else {
-#ifdef WITH_FREETYPE
-			LoadFreeTypeFont(fs);
-#elif defined(_WIN32)
-			LoadWin32Font(fs);
-#elif defined(WITH_COCOA)
-			LoadCoreTextFont(fs);
-#endif
+			if (setting->font.empty()) {
+				TryLoadDefaultTrueTypeFont(fs, setting->size);
+			} else {
+				LoadFontHelper(fs);
+			}
 		}
 	}
+
+	DebugPrintFontSettings("End of initFontCache()");
 }
 
 /**

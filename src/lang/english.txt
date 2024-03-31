@@ -947,6 +947,8 @@ STR_GAME_OPTIONS_TAB_GENERAL                                    :General
 STR_GAME_OPTIONS_TAB_GENERAL_TT                                 :{BLACK}Choose general settings
 STR_GAME_OPTIONS_TAB_GRAPHICS                                   :Graphics
 STR_GAME_OPTIONS_TAB_GRAPHICS_TT                                :{BLACK}Choose graphics settings
+STR_GAME_OPTIONS_TAB_FONTS                                      :Fonts
+STR_GAME_OPTIONS_TAB_FONTS_TT                                   :{BLACK}Choose font settings
 STR_GAME_OPTIONS_TAB_SOUND                                      :Sound
 STR_GAME_OPTIONS_TAB_SOUND_TT                                   :{BLACK}Choose sound and music settings
 STR_GAME_OPTIONS_TAB_SOCIAL                                     :Social
@@ -1049,6 +1051,19 @@ STR_GAME_OPTIONS_GUI_SCALE_AUTO_TOOLTIP                         :{BLACK}Check th
 STR_GAME_OPTIONS_GUI_SCALE_BEVELS                               :{BLACK}Scale bevels
 STR_GAME_OPTIONS_GUI_SCALE_BEVELS_TOOLTIP                       :{BLACK}Check this box to scale bevels by interface size
 
+STR_GAME_OPTIONS_SMALL_FONT_FRAME                               :{BLACK}Small font
+STR_GAME_OPTIONS_LOAD_SMALL_FONT_TOOLTIP                        :{BLACK}Choose small font. Used in map legends and on graphs.
+STR_GAME_OPTIONS_SMALL_FONT_SIZE_SLIDER_TOOLTIP                 :{BLACK}Drag to change the small size
+STR_GAME_OPTIONS_MEDIUM_FONT_FRAME                              :{BLACK}Medium font
+STR_GAME_OPTIONS_LOAD_MEDIUM_FONT_TOOLTIP                       :{BLACK}Choose medium font. Most text is displayed using this font.
+STR_GAME_OPTIONS_MEDIUM_FONT_SIZE_SLIDER_TOOLTIP                :{BLACK}Drag to change the medium font size
+STR_GAME_OPTIONS_LARGE_FONT_FRAME                               :{BLACK}Large font
+STR_GAME_OPTIONS_LOAD_LARGE_FONT_TOOLTIP                        :{BLACK}Choose large font. Used to display News headlines.
+STR_GAME_OPTIONS_LARGE_FONT_SIZE_SLIDER_TOOLTIP                 :{BLACK}Drag to change the large font size
+STR_GAME_OPTIONS_MONOSPACED_FONT_FRAME                          :{BLACK}Monospaced font
+STR_GAME_OPTIONS_LOAD_MONOSPACED_FONT_TOOLTIP                   :{BLACK}Choose monospaced font.  Used to display the Readme and other documents.
+STR_GAME_OPTIONS_MONOSPACED_FONT_SIZE_SLIDER_TOOLTIP            :{BLACK}Drag to change the monospaced font size
+STR_GAME_OPTIONS_FONT_SIZE                                      :{BLACK}Size:
 STR_GAME_OPTIONS_GUI_FONT_SPRITE                                :{BLACK}Use traditional sprite font
 STR_GAME_OPTIONS_GUI_FONT_SPRITE_TOOLTIP                        :{BLACK}Check this box if you prefer to use the traditional fixed-size sprite font
 STR_GAME_OPTIONS_GUI_FONT_AA                                    :{BLACK}Anti-alias fonts
@@ -3257,6 +3272,10 @@ STR_SAVELOAD_SAVE_SCENARIO                                      :{WHITE}Save Sce
 STR_SAVELOAD_LOAD_SCENARIO                                      :{WHITE}Load Scenario
 STR_SAVELOAD_LOAD_HEIGHTMAP                                     :{WHITE}Load Heightmap
 STR_SAVELOAD_SAVE_HEIGHTMAP                                     :{WHITE}Save Heightmap
+STR_SAVELOAD_LOAD_SMALL_FONT_CAPTION                            :{WHITE}Load Small Font
+STR_SAVELOAD_LOAD_MEDIUM_FONT_CAPTION                           :{WHITE}Load Medium Font
+STR_SAVELOAD_LOAD_LARGE_FONT_CAPTION                            :{WHITE}Load Large Font
+STR_SAVELOAD_LOAD_MONOSPACED_FONT_CAPTION                       :{WHITE}Load Monospaced Font
 STR_SAVELOAD_HOME_BUTTON                                        :{BLACK}Click here to jump to the current default save/load directory
 STR_SAVELOAD_BYTES_FREE                                         :{BLACK}{BYTES} free
 STR_SAVELOAD_LIST_TOOLTIP                                       :{BLACK}List of drives, directories and saved-game files
@@ -3268,6 +3287,9 @@ STR_SAVELOAD_SAVE_TOOLTIP                                       :{BLACK}Save the
 STR_SAVELOAD_LOAD_BUTTON                                        :{BLACK}Load
 STR_SAVELOAD_LOAD_TOOLTIP                                       :{BLACK}Load the selected game
 STR_SAVELOAD_LOAD_HEIGHTMAP_TOOLTIP                             :{BLACK}Load the selected heightmap
+STR_SAVELOAD_LOAD_FONT_TOOLTIP                                  :{BLACK}Load the selected font
+STR_SAVELOAD_USE_DEFAULT_FONT                                   :{BLACK}Use Default Font
+STR_SAVELOAD_USE_DEFAULT_FONT_TOOLTIP                           :{BLACK}Use the default TTF font provided with OpenTTD.
 STR_SAVELOAD_DETAIL_CAPTION                                     :{BLACK}Game Details
 STR_SAVELOAD_DETAIL_NOT_AVAILABLE                               :{BLACK}No information available
 STR_SAVELOAD_DETAIL_COMPANY_INDEX                               :{SILVER}{COMMA}: {WHITE}{STRING1}

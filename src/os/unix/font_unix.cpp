@@ -169,7 +169,7 @@ bool SetFallbackFont(FontCacheSettings *settings, const std::string &language_is
 		if (best_font != nullptr) {
 			ret = true;
 			callback->SetFontNames(settings, best_font, &best_index);
-			InitFontCache(callback->Monospace());
+			InitFontCache();
 		}
 
 		/* Clean up the list of filenames. */

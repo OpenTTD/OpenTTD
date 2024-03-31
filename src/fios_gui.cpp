@@ -5,7 +5,7 @@
  * See the GNU General Public License for more details. You should have received a copy of the GNU General Public License along with OpenTTD. If not, see <http://www.gnu.org/licenses/>.
  */
 
-/** @file fios_gui.cpp GUIs for loading/saving games, scenarios, heightmaps, ... */
+/** @file fios_gui.cpp GUIs for loading/saving games, scenarios, heightmaps, fonts, ... */
 
 #include "stdafx.h"
 #include "saveload/saveload.h"
@@ -18,6 +18,7 @@
 #include "strings_func.h"
 #include "fileio_func.h"
 #include "fios.h"
+#include "fontcache.h"
 #include "window_func.h"
 #include "tilehighlight_func.h"
 #include "querystring_gui.h"
@@ -60,6 +61,22 @@ void LoadCheckData::Clear()
 	this->gamelog.Reset();
 
 	ClearGRFConfigList(&this->grfconfig);
+}
+
+static FontSize GetFontSizeFromOperation(SaveLoadOperation operation)
+{
+	switch(operation) {
+		case SLO_LOAD_SMALL_FONT:
+			return FS_SMALL;
+		case SLO_LOAD_MEDIUM_FONT:
+			return FS_NORMAL;
+		case SLO_LOAD_LARGE_FONT:
+			return FS_LARGE;
+		case SLO_LOAD_MONOSPACED_FONT:
+			return FS_MONO;
+		default:
+			NOT_REACHED();
+	}
 }
 
 /** Load game/scenario with optional content download */
@@ -227,12 +244,69 @@ static constexpr NWidgetPart _nested_save_dialog_widgets[] = {
 	EndContainer(),
 };
 
+/** Load font */
+static constexpr NWidgetPart _nested_load_font_dialog_widgets[] = {
+	NWidget(NWID_HORIZONTAL),
+		NWidget(WWT_CLOSEBOX, COLOUR_GREY),
+		NWidget(WWT_CAPTION, COLOUR_GREY, WID_SL_CAPTION),
+		NWidget(WWT_DEFSIZEBOX, COLOUR_GREY),
+	EndContainer(),
+
+	/* Current directory and free space */
+	NWidget(WWT_PANEL, COLOUR_GREY, WID_SL_BACKGROUND), SetFill(1, 0), SetResize(1, 0),
+	EndContainer(),
+
+	NWidget(NWID_HORIZONTAL, NC_EQUALSIZE),
+		/* Left side : filter box and available files */
+		NWidget(NWID_VERTICAL),
+
+			/* Filter box with label */
+			NWidget(WWT_PANEL, COLOUR_GREY), SetFill(1, 1), SetResize(1, 1),
+				NWidget(NWID_HORIZONTAL), SetPadding(WidgetDimensions::unscaled.framerect.top, 0, WidgetDimensions::unscaled.framerect.bottom, 0), SetPIP(WidgetDimensions::unscaled.frametext.left, WidgetDimensions::unscaled.frametext.right, 0),
+					NWidget(WWT_TEXT, COLOUR_GREY), SetFill(0, 1), SetDataTip(STR_SAVELOAD_FILTER_TITLE , STR_NULL),
+					NWidget(WWT_EDITBOX, COLOUR_GREY, WID_SL_FILTER), SetFill(1, 0), SetMinimalSize(50, 12), SetResize(1, 0), SetDataTip(STR_LIST_FILTER_OSKTITLE, STR_LIST_FILTER_TOOLTIP),
+				EndContainer(),
+			EndContainer(),
+
+			/* Sort buttons */
+			NWidget(NWID_HORIZONTAL),
+				NWidget(NWID_HORIZONTAL, NC_EQUALSIZE),
+					NWidget(WWT_PUSHTXTBTN, COLOUR_GREY, WID_SL_SORT_BYNAME), SetDataTip(STR_SORT_BY_CAPTION_NAME, STR_TOOLTIP_SORT_ORDER), SetFill(1, 0), SetResize(1, 0),
+					NWidget(WWT_PUSHTXTBTN, COLOUR_GREY, WID_SL_SORT_BYDATE), SetDataTip(STR_SORT_BY_CAPTION_DATE, STR_TOOLTIP_SORT_ORDER), SetFill(1, 0), SetResize(1, 0),
+				EndContainer(),
+				NWidget(WWT_PUSHIMGBTN, COLOUR_GREY, WID_SL_HOME_BUTTON), SetMinimalSize(12, 12), SetDataTip(SPR_HOUSE_ICON, STR_SAVELOAD_HOME_BUTTON),
+			EndContainer(),
+
+			/* Files */
+			NWidget(NWID_HORIZONTAL),
+				NWidget(WWT_PANEL, COLOUR_GREY, WID_SL_FILE_BACKGROUND),
+					NWidget(WWT_INSET, COLOUR_GREY, WID_SL_DRIVES_DIRECTORIES_LIST), SetPadding(2, 2, 2, 2), SetDataTip(0x0, STR_SAVELOAD_LIST_TOOLTIP), SetResize(1, 10), SetScrollbar(WID_SL_SCROLLBAR), EndContainer(),
+				EndContainer(),
+				NWidget(NWID_VSCROLLBAR, COLOUR_GREY, WID_SL_SCROLLBAR),
+			EndContainer(),
+			NWidget(WWT_PANEL, COLOUR_GREY),
+				NWidget(WWT_EDITBOX, COLOUR_GREY, WID_SL_SAVE_OSK_TITLE), SetPadding(2, 2, 2, 2), SetFill(1, 0), SetResize(1, 0), SetDataTip(STR_SAVELOAD_OSKTITLE, STR_SAVELOAD_EDITBOX_TOOLTIP),
+			EndContainer(),
+			NWidget(NWID_HORIZONTAL, NC_EQUALSIZE),
+				NWidget(WWT_PUSHTXTBTN, COLOUR_GREY, WID_SL_USE_DEFAULT_FONT), SetDataTip(STR_SAVELOAD_USE_DEFAULT_FONT, STR_SAVELOAD_USE_DEFAULT_FONT_TOOLTIP), SetFill(1, 0), SetResize(1, 0),
+				NWidget(WWT_PUSHTXTBTN, COLOUR_GREY, WID_SL_LOAD_BUTTON), SetDataTip(STR_SAVELOAD_LOAD_BUTTON, STR_SAVELOAD_LOAD_FONT_TOOLTIP), SetFill(1, 0), SetResize(1, 0),
+			EndContainer(),
+			NWidget(NWID_HORIZONTAL),
+				NWidget(WWT_PANEL, COLOUR_GREY), SetResize(1, 0), SetFill(1, 1),
+				EndContainer(),
+				NWidget(WWT_RESIZEBOX, COLOUR_GREY),
+			EndContainer(),
+		EndContainer(),
+	EndContainer(),
+};
+
 /** Text colours of #DetailedFileType fios entries in the window. */
 static const TextColour _fios_colours[] = {
 	TC_LIGHT_BROWN,  // DFT_OLD_GAME_FILE
 	TC_ORANGE,       // DFT_GAME_FILE
 	TC_YELLOW,       // DFT_HEIGHTMAP_BMP
 	TC_ORANGE,       // DFT_HEIGHTMAP_PNG
+	TC_GOLD,         // DFT_FONT_FILE
 	TC_LIGHT_BLUE,   // DFT_FIOS_DRIVE
 	TC_DARK_GREEN,   // DFT_FIOS_PARENT
 	TC_DARK_GREEN,   // DFT_FIOS_DIR
@@ -306,7 +380,7 @@ public:
 	SaveLoadWindow(WindowDesc *desc, AbstractFileType abstract_filetype, SaveLoadOperation fop)
 			: Window(desc), filename_editbox(64), abstract_filetype(abstract_filetype), fop(fop), filter_editbox(EDITBOX_MAX_SIZE)
 	{
-		assert(this->fop == SLO_SAVE || this->fop == SLO_LOAD);
+		assert(this->fop == SLO_SAVE || this->fop == SLO_LOAD || this->fop == SLO_LOAD_SMALL_FONT || this->fop == SLO_LOAD_MEDIUM_FONT || this->fop == SLO_LOAD_LARGE_FONT || this->fop == SLO_LOAD_MONOSPACED_FONT);
 
 		/* For saving, construct an initial file name. */
 		if (this->fop == SLO_SAVE) {
@@ -347,6 +421,25 @@ public:
 				caption_string = (this->fop == SLO_SAVE) ? STR_SAVELOAD_SAVE_HEIGHTMAP : STR_SAVELOAD_LOAD_HEIGHTMAP;
 				break;
 
+			case FT_FONT:
+				switch (this->fop) {
+					case SLO_LOAD_SMALL_FONT:
+						caption_string = STR_SAVELOAD_LOAD_SMALL_FONT_CAPTION;
+						break;
+					case SLO_LOAD_MEDIUM_FONT:
+						caption_string = STR_SAVELOAD_LOAD_MEDIUM_FONT_CAPTION;
+						break;
+					case SLO_LOAD_LARGE_FONT:
+						caption_string = STR_SAVELOAD_LOAD_LARGE_FONT_CAPTION;
+						break;
+					case SLO_LOAD_MONOSPACED_FONT:
+						caption_string = STR_SAVELOAD_LOAD_MONOSPACED_FONT_CAPTION;
+						break;
+					default:
+						NOT_REACHED();
+				}
+				break;
+
 			default:
 				NOT_REACHED();
 		}
@@ -383,6 +476,10 @@ public:
 
 			case FT_HEIGHTMAP:
 				o_dir.name = FioFindDirectory(HEIGHTMAP_DIR);
+				break;
+
+			case FT_FONT:
+				o_dir.name = FioFindDirectory(FONT_DIR);
 				break;
 
 			default:
@@ -620,16 +717,48 @@ public:
 			case WID_SL_LOAD_BUTTON: {
 				if (this->selected == nullptr || _load_check_data.HasErrors()) break;
 
-				_file_to_saveload.Set(*this->selected);
+				switch(this->abstract_filetype) {
 
-				if (this->abstract_filetype == FT_HEIGHTMAP) {
-					this->Close();
-					ShowHeightmapLoad();
-				} else if (!_load_check_data.HasNewGrfs() || _load_check_data.grf_compatibility != GLC_NOT_FOUND || _settings_client.gui.UserIsAllowedToChangeNewGRFs()) {
-					_switch_mode = (_game_mode == GM_EDITOR) ? SM_LOAD_SCENARIO : SM_LOAD_GAME;
-					ClearErrorMessages();
-					this->Close();
+					case FT_HEIGHTMAP:
+					case FT_SAVEGAME:
+					case FT_SCENARIO:
+						_file_to_saveload.Set(*this->selected);
+
+						if (this->abstract_filetype == FT_HEIGHTMAP) {
+							this->Close();
+							ShowHeightmapLoad();
+						} else if (!_load_check_data.HasNewGrfs() || _load_check_data.grf_compatibility != GLC_NOT_FOUND || _settings_client.gui.UserIsAllowedToChangeNewGRFs()) {
+							_switch_mode = (_game_mode == GM_EDITOR) ? SM_LOAD_SCENARIO : SM_LOAD_GAME;
+							ClearErrorMessages();
+							this->Close();
+						}
+						break;
+
+					case FT_FONT: {
+						// Font that we need to change is coded in the fop:
+						FontSize font_size = GetFontSizeFromOperation(this->fop);
+						FontCacheSubSetting *current_font_config = GetFontCacheSubSetting(font_size);
+
+						SetFont(font_size, this->selected->name, current_font_config->size);
+						this->Close();
+						break;
+					}
+
+					default:
+						NOT_REACHED();
 				}
+
+				break;
+			}
+
+			case WID_SL_USE_DEFAULT_FONT: {
+				// Font that we need to change is coded in the fop:
+				FontSize font_size = GetFontSizeFromOperation(this->fop);
+				FontCacheSubSetting *current_font_config = GetFontCacheSubSetting(font_size);
+
+				// Using empty string for the font name will trigger a load of the deafult font.
+				SetFont(font_size, "", current_font_config->size);
+				this->Close();
 				break;
 			}
 
@@ -863,6 +992,10 @@ public:
 						break;
 					}
 
+					case FT_FONT: {
+						break;
+					}
+
 					default:
 						NOT_REACHED();
 				}
@@ -907,6 +1040,13 @@ static WindowDesc _save_dialog_desc(
 	std::begin(_nested_save_dialog_widgets), std::end(_nested_save_dialog_widgets)
 );
 
+static WindowDesc _load_font_dialog_desc(
+	WDP_CENTER, "load_font", 500, 294,
+	WC_SAVELOAD, WC_NONE,
+	0,
+	std::begin(_nested_load_font_dialog_widgets), std::end(_nested_load_font_dialog_widgets)
+);
+
 /**
  * Launch save/load dialog in the given mode.
  * @param abstract_filetype Kind of file to handle.
@@ -920,8 +1060,20 @@ void ShowSaveLoadDialog(AbstractFileType abstract_filetype, SaveLoadOperation fo
 	if (fop == SLO_SAVE) {
 		sld = &_save_dialog_desc;
 	} else {
-		/* Dialogue for loading a file. */
-		sld = (abstract_filetype == FT_HEIGHTMAP) ? &_load_heightmap_dialog_desc : &_load_dialog_desc;
+		/* Dialog for loading a file. Custom ones for loading heightmaps and fonts. Everything else uses the generic load dialog. */
+		switch (abstract_filetype) {
+			case FT_HEIGHTMAP:
+				sld = &_load_heightmap_dialog_desc;
+				break;
+
+			case FT_FONT:
+				sld = &_load_font_dialog_desc;
+				break;
+
+			default:
+				sld = &_load_dialog_desc;
+				break;
+		}
 	}
 
 	new SaveLoadWindow(sld, abstract_filetype, fop);

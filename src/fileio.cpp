@@ -54,6 +54,7 @@ static const char * const _subdirs[] = {
 	"game" PATHSEP "library" PATHSEP,       ///< GAME_LIBRARY_DIR
 	"screenshot" PATHSEP,                   ///< SCREENSHOT_DIR
 	"social_integration" PATHSEP,           ///< SOCIAL_INTEGRATION_DIR
+	"baseset" PATHSEP,                      ///< FONT_DIR
 };
 // This should line up with the "Subdirectory" enum defined in fileio_type.h
 static_assert(lengthof(_subdirs) == NUM_SUBDIRS);

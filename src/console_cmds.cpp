@@ -2233,7 +2233,7 @@ DEF_CONSOLE_CMD(ConFont)
 		FontCacheSubSetting *setting = GetFontCacheSubSetting(fs);
 		/* Make sure all non sprite fonts are loaded. */
 		if (!setting->font.empty() && !fc->HasParent()) {
-			InitFontCache(fs == FS_MONO);
+			InitFontCache();
 			fc = FontCache::Get(fs);
 		}
 		IConsolePrint(CC_DEFAULT, "{} font:", FontSizeToName(fs));

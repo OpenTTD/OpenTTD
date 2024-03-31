@@ -18,6 +18,7 @@ enum AbstractFileType {
 	FT_SAVEGAME,  ///< old or new savegame
 	FT_SCENARIO,  ///< old or new scenario
 	FT_HEIGHTMAP, ///< heightmap file
+	FT_FONT,      ///< font file
 
 	FT_INVALID = 7, ///< Invalid or unknown file type.
 	FT_NUMBITS = 3, ///< Number of bits required for storing a #AbstractFileType value.
@@ -34,6 +35,9 @@ enum DetailedFileType {
 	DFT_HEIGHTMAP_BMP, ///< BMP file.
 	DFT_HEIGHTMAP_PNG, ///< PNG file.
 
+	/* UI Resource files: */
+	DFT_FONT_FILE, ///< A font file
+
 	/* fios 'files' */
 	DFT_FIOS_DRIVE,  ///< A drive (letter) entry.
 	DFT_FIOS_PARENT, ///< A parent directory entry.
@@ -48,9 +52,13 @@ enum DetailedFileType {
 
 /** Operation performed on the file. */
 enum SaveLoadOperation {
-	SLO_CHECK,   ///< Load file for checking and/or preview.
-	SLO_LOAD,    ///< File is being loaded.
-	SLO_SAVE,    ///< File is being saved.
+	SLO_CHECK,                ///< Load file for checking and/or preview.
+	SLO_LOAD,                 ///< File is being loaded.
+	SLO_SAVE,                 ///< File is being saved.
+	SLO_LOAD_SMALL_FONT,      ///< Load small font
+	SLO_LOAD_MEDIUM_FONT,     ///< Load medium font
+	SLO_LOAD_LARGE_FONT,      ///< Load large font
+	SLO_LOAD_MONOSPACED_FONT, ///< Load monospaced font
 
 	SLO_INVALID, ///< Unknown file operation.
 };
@@ -79,6 +87,7 @@ enum FiosType {
 	FIOS_TYPE_OLD_SCENARIO = MAKE_FIOS_TYPE(FT_SCENARIO, DFT_OLD_GAME_FILE),
 	FIOS_TYPE_PNG          = MAKE_FIOS_TYPE(FT_HEIGHTMAP, DFT_HEIGHTMAP_PNG),
 	FIOS_TYPE_BMP          = MAKE_FIOS_TYPE(FT_HEIGHTMAP, DFT_HEIGHTMAP_BMP),
+	FIOS_TYPE_FONT         = MAKE_FIOS_TYPE(FT_FONT, DFT_FONT_FILE),
 
 	FIOS_TYPE_INVALID = MAKE_FIOS_TYPE(FT_INVALID, DFT_INVALID),
 };
@@ -125,6 +134,7 @@ enum Subdirectory {
 	GAME_LIBRARY_DIR,       ///< Subdirectory for all GS libraries
 	SCREENSHOT_DIR,         ///< Subdirectory for all screenshots
 	SOCIAL_INTEGRATION_DIR, ///< Subdirectory for all social integration plugins
+	FONT_DIR,               ///< Subdirectory for all of OpenTTD's fonts.
 	NUM_SUBDIRS,            ///< Number of subdirectories
 	NO_DIRECTORY,           ///< A path without any base directory
 };
@@ -146,6 +156,7 @@ enum Searchpath : unsigned {
 	SP_AUTODOWNLOAD_DIR,              ///< Search within the autodownload directory
 	SP_AUTODOWNLOAD_PERSONAL_DIR,     ///< Search within the autodownload directory located in the personal directory
 	SP_AUTODOWNLOAD_PERSONAL_DIR_XDG, ///< Search within the autodownload directory located in the personal directory (XDG variant)
+	SP_SYSTEM_FONT_PATH,              ///< Search within the system font directory
 	NUM_SEARCHPATHS
 };
 

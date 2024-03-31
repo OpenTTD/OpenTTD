@@ -67,7 +67,7 @@ void FileList::BuildFileList(AbstractFileType abstract_filetype, SaveLoadOperati
 {
 	this->clear();
 
-	assert(fop == SLO_LOAD || fop == SLO_SAVE);
+	assert(fop == SLO_LOAD || fop == SLO_SAVE || fop == SLO_LOAD_SMALL_FONT || fop == SLO_LOAD_MEDIUM_FONT || fop == SLO_LOAD_LARGE_FONT || fop == SLO_LOAD_MONOSPACED_FONT);
 	switch (abstract_filetype) {
 		case FT_NONE:
 			break;
@@ -82,6 +82,10 @@ void FileList::BuildFileList(AbstractFileType abstract_filetype, SaveLoadOperati
 
 		case FT_HEIGHTMAP:
 			FiosGetHeightmapList(fop, show_dirs, *this);
+			break;
+
+		case FT_FONT:
+			FiosGetFontList(fop, show_dirs, *this);
 			break;
 
 		default:
@@ -180,6 +184,7 @@ bool FiosBrowseTo(const FiosItem *item)
 		case FIOS_TYPE_OLD_SCENARIO:
 		case FIOS_TYPE_PNG:
 		case FIOS_TYPE_BMP:
+		case FIOS_TYPE_FONT:
 			return false;
 	}
 
@@ -443,6 +448,41 @@ void FiosGetSavegameList(SaveLoadOperation fop, bool show_dirs, FileList &file_l
 	_fios_path = &(*fios_save_path);
 
 	FiosGetFileList(fop, show_dirs, &FiosGetSavegameListCallback, NO_DIRECTORY, file_list);
+}
+
+/**
+ * Callback for FiosGetFontList. It tells if a file is a font or not.
+ * @param fop Should be one of the SLO_LOAD_*_FONT types.)
+ * @param file Name of the file to check.
+ * @param ext A pointer to the extension identifier inside file
+ * @return a FIOS_TYPE_* type of the found file, FIOS_TYPE_INVALID if not a font, and the title of the file (if any).
+ * @see FiosGetFontList
+ */
+std::tuple<FiosType, std::string> FiosGetFontListCallback([[maybe_unused]] SaveLoadOperation fop, const std::string &file, const std::string_view ext)
+{
+	if(StrEqualsIgnoreCase(ext, ".ttf")) {
+		return { FIOS_TYPE_FONT, GetFileTitle(file, FONT_DIR) };
+	}
+
+	return { FIOS_TYPE_INVALID, {} };
+}
+
+/**
+ * Get a list of fonts.
+ * @param fop inteneded file operation. Should be one of the SLO_LOAD_*_FONT types.
+ * @param show_dirs Whether to show directories.
+ * @param file_list Destination of the found files.
+ * @see FiosGetFileList
+ */
+void FiosGetFontList(SaveLoadOperation fop, bool show_dirs, FileList &file_list)
+{
+	static std::optional<std::string> fios_font_path;
+
+	if (!fios_font_path) fios_font_path = FioFindDirectory(FONT_DIR);
+
+	_fios_path = &(*fios_font_path);
+
+	FiosGetFileList(fop, show_dirs, &FiosGetFontListCallback, NO_DIRECTORY, file_list);
 }
 
 /**

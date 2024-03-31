@@ -12,52 +12,63 @@
 
 /** Widgets of the #GameOptionsWindow class. */
 enum GameOptionsWidgets : WidgetID {
-	WID_GO_TAB_GENERAL,            ///< General tab.
-	WID_GO_TAB_GRAPHICS,           ///< Graphics tab.
-	WID_GO_TAB_SOUND,              ///< Sound tab.
-	WID_GO_TAB_SOCIAL,             ///< Social tab.
-	WID_GO_TAB_SELECTION,          ///< Background of the tab selection.
-	WID_GO_CURRENCY_DROPDOWN,      ///< Currency dropdown.
-	WID_GO_DISTANCE_DROPDOWN,      ///< Measuring unit dropdown.
-	WID_GO_AUTOSAVE_DROPDOWN,      ///< Dropdown to say how often to autosave.
-	WID_GO_LANG_DROPDOWN,          ///< Language dropdown.
-	WID_GO_RESOLUTION_DROPDOWN,    ///< Dropdown for the resolution.
-	WID_GO_FULLSCREEN_BUTTON,      ///< Toggle fullscreen.
-	WID_GO_GUI_SCALE,              ///< GUI Scale slider.
-	WID_GO_GUI_SCALE_AUTO,         ///< Autodetect GUI scale button.
-	WID_GO_GUI_SCALE_BEVEL_BUTTON, ///< Toggle for chunky bevels.
-	WID_GO_GUI_FONT_SPRITE,        ///< Toggle whether to prefer the sprite font over TTF fonts.
-	WID_GO_GUI_FONT_AA,            ///< Toggle whether to anti-alias fonts.
-	WID_GO_BASE_GRF_DROPDOWN,      ///< Use to select a base GRF.
-	WID_GO_BASE_GRF_PARAMETERS,    ///< Base GRF parameters.
-	WID_GO_BASE_GRF_OPEN_URL,      ///< Open base GRF URL.
-	WID_GO_BASE_GRF_TEXTFILE,      ///< Open base GRF readme, changelog (+1) or license (+2).
+	WID_GO_TAB_GENERAL,                      ///< General tab.
+	WID_GO_TAB_GRAPHICS,                     ///< Graphics tab.
+	WID_GO_TAB_FONTS,                        ///< Fonts tab.
+	WID_GO_TAB_SOUND,                        ///< Sound tab.
+	WID_GO_TAB_SOCIAL,                       ///< Social tab.
+	WID_GO_TAB_SELECTION,                    ///< Background of the tab selection.
+	WID_GO_CURRENCY_DROPDOWN,                ///< Currency dropdown.
+	WID_GO_DISTANCE_DROPDOWN,                ///< Measuring unit dropdown.
+	WID_GO_AUTOSAVE_DROPDOWN,                ///< Dropdown to say how often to autosave.
+	WID_GO_LANG_DROPDOWN,                    ///< Language dropdown.
+	WID_GO_RESOLUTION_DROPDOWN,              ///< Dropdown for the resolution.
+	WID_GO_FULLSCREEN_BUTTON,                ///< Toggle fullscreen.
+	WID_GO_GUI_SCALE,                        ///< GUI Scale slider.
+	WID_GO_GUI_SCALE_AUTO,                   ///< Autodetect GUI scale button.
+	WID_GO_GUI_SCALE_BEVEL_BUTTON,           ///< Toggle for chunky bevels.
+	WID_GO_FONT_SPRITE,                      ///< Toggle whether to prefer the sprite font over TTF fonts.
+	WID_GO_FONT_AA,                          ///< Toggle whether to anti-alias fonts.
+	WID_GO_TEXT_FONT,                        ///< Font label
+	WID_GO_TEXT_FONT_SIZE,                   ///< Font size label.
+	WID_GO_FONT_LOAD_MEDIUM_FONT,            ///< Load medium font button.
+	WID_GO_FONT_MEDIUM_FONT_SIZE_SLIDER,     ///< Medium font size slider.
+	WID_GO_FONT_LOAD_SMALL_FONT,             ///< Load small font button.
+	WID_GO_FONT_SMALL_FONT_SIZE_SLIDER,      ///< Small font size slider.
+	WID_GO_FONT_LOAD_LARGE_FONT,             ///< Load large font button.
+	WID_GO_FONT_LARGE_FONT_SIZE_SLIDER,      ///< Large font size slider.
+	WID_GO_FONT_LOAD_MONOSPACED_FONT,        ///< Load monospaced font button.
+	WID_GO_FONT_MONOSPACED_FONT_SIZE_SLIDER, ///< Monospaced font size slider.
+	WID_GO_BASE_GRF_DROPDOWN,                ///< Use to select a base GRF.
+	WID_GO_BASE_GRF_PARAMETERS,              ///< Base GRF parameters.
+	WID_GO_BASE_GRF_OPEN_URL,                ///< Open base GRF URL.
+	WID_GO_BASE_GRF_TEXTFILE,                ///< Open base GRF readme, changelog (+1) or license (+2).
 	WID_GO_BASE_GRF_DESCRIPTION = WID_GO_BASE_GRF_TEXTFILE + TFT_CONTENT_END,     ///< Description of selected base GRF.
-	WID_GO_BASE_SFX_DROPDOWN,      ///< Use to select a base SFX.
-	WID_GO_TEXT_SFX_VOLUME,        ///< Sound effects volume label.
-	WID_GO_BASE_SFX_VOLUME,        ///< Change sound effects volume.
-	WID_GO_BASE_SFX_OPEN_URL,      ///< Open base SFX URL.
-	WID_GO_BASE_SFX_TEXTFILE,      ///< Open base SFX readme, changelog (+1) or license (+2).
+	WID_GO_BASE_SFX_DROPDOWN,                ///< Use to select a base SFX.
+	WID_GO_TEXT_SFX_VOLUME,                  ///< Sound effects volume label.
+	WID_GO_BASE_SFX_VOLUME,                  ///< Change sound effects volume.
+	WID_GO_BASE_SFX_OPEN_URL,                ///< Open base SFX URL.
+	WID_GO_BASE_SFX_TEXTFILE,                ///< Open base SFX readme, changelog (+1) or license (+2).
 	WID_GO_BASE_SFX_DESCRIPTION = WID_GO_BASE_SFX_TEXTFILE + TFT_CONTENT_END,     ///< Description of selected base SFX.
-	WID_GO_BASE_MUSIC_DROPDOWN,    ///< Use to select a base music set.
-	WID_GO_TEXT_MUSIC_VOLUME,      ///< Music volume label.
-	WID_GO_BASE_MUSIC_VOLUME,      ///< Change music volume.
-	WID_GO_BASE_MUSIC_JUKEBOX,     ///< Open the jukebox.
-	WID_GO_BASE_MUSIC_OPEN_URL,    ///< Open base music URL.
-	WID_GO_BASE_MUSIC_TEXTFILE,    ///< Open base music readme, changelog (+1) or license (+2).
+	WID_GO_BASE_MUSIC_DROPDOWN,              ///< Use to select a base music set.
+	WID_GO_TEXT_MUSIC_VOLUME,                ///< Music volume label.
+	WID_GO_BASE_MUSIC_VOLUME,                ///< Change music volume.
+	WID_GO_BASE_MUSIC_JUKEBOX,               ///< Open the jukebox.
+	WID_GO_BASE_MUSIC_OPEN_URL,              ///< Open base music URL.
+	WID_GO_BASE_MUSIC_TEXTFILE,              ///< Open base music readme, changelog (+1) or license (+2).
 	WID_GO_BASE_MUSIC_DESCRIPTION = WID_GO_BASE_MUSIC_TEXTFILE + TFT_CONTENT_END, ///< Description of selected base music set.
-	WID_GO_VIDEO_ACCEL_BUTTON,     ///< Toggle for video acceleration.
-	WID_GO_VIDEO_VSYNC_BUTTON,     ///< Toggle for video vsync.
-	WID_GO_REFRESH_RATE_DROPDOWN,  ///< Dropdown for all available refresh rates.
-	WID_GO_VIDEO_DRIVER_INFO,      ///< Label showing details about the current video driver.
-	WID_GO_SURVEY_SEL,             ///< Selection to hide survey if no JSON library is compiled in.
-	WID_GO_SURVEY_PARTICIPATE_BUTTON, ///< Toggle for participating in the automated survey.
-	WID_GO_SURVEY_LINK_BUTTON,     ///< Button to open browser to go to the survey website.
-	WID_GO_SURVEY_PREVIEW_BUTTON,  ///< Button to open a preview window with the survey results
-	WID_GO_SOCIAL_PLUGINS,         ///< Main widget handling the social plugins.
-	WID_GO_SOCIAL_PLUGIN_TITLE,    ///< Title of the frame of the social plugin.
-	WID_GO_SOCIAL_PLUGIN_PLATFORM, ///< Platform of the social plugin.
-	WID_GO_SOCIAL_PLUGIN_STATE,    ///< State of the social plugin.
+	WID_GO_VIDEO_ACCEL_BUTTON,               ///< Toggle for video acceleration.
+	WID_GO_VIDEO_VSYNC_BUTTON,               ///< Toggle for video vsync.
+	WID_GO_REFRESH_RATE_DROPDOWN,            ///< Dropdown for all available refresh rates.
+	WID_GO_VIDEO_DRIVER_INFO,                ///< Label showing details about the current video driver.
+	WID_GO_SURVEY_SEL,                       ///< Selection to hide survey if no JSON library is compiled in.
+	WID_GO_SURVEY_PARTICIPATE_BUTTON,        ///< Toggle for participating in the automated survey.
+	WID_GO_SURVEY_LINK_BUTTON,               ///< Button to open browser to go to the survey website.
+	WID_GO_SURVEY_PREVIEW_BUTTON,            ///< Button to open a preview window with the survey results
+	WID_GO_SOCIAL_PLUGINS,                   ///< Main widget handling the social plugins.
+	WID_GO_SOCIAL_PLUGIN_TITLE,              ///< Title of the frame of the social plugin.
+	WID_GO_SOCIAL_PLUGIN_PLATFORM,           ///< Platform of the social plugin.
+	WID_GO_SOCIAL_PLUGIN_STATE,              ///< State of the social plugin.
 };
 
 /** Widgets of the #GameSettingsWindow class. */

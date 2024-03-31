@@ -239,10 +239,13 @@ inline FontCacheSubSetting *GetFontCacheSubSetting(FontSize fs)
 	}
 }
 
-void InitFontCache(bool monospace);
+void DebugPrintFontSettings(const std::string& desc);
+
+void InitFontCache();
 void UninitFontCache();
 
 bool GetFontAAState();
 void SetFont(FontSize fontsize, const std::string &font, uint size);
+void ResizeFont(FontSize fontsize, uint size);
 
 #endif /* FONTCACHE_H */

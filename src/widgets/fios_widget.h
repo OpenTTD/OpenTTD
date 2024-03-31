@@ -22,6 +22,7 @@ enum SaveLoadWidgets : WidgetID {
 	WID_SL_DRIVES_DIRECTORIES_LIST, ///< Drives list.
 	WID_SL_SCROLLBAR,               ///< Scrollbar of the file list.
 	WID_SL_CONTENT_DOWNLOAD,        ///< Content download button, only available for play scenario/heightmap.
+	WID_SL_USE_DEFAULT_FONT,        ///< Click to use the default TTF OpenTTD provided font for a given font size.
 	WID_SL_SAVE_OSK_TITLE,          ///< Title textbox, only available for save operations.
 	WID_SL_DELETE_SELECTION,        ///< Delete button, only available for save operations.
 	WID_SL_SAVE_GAME,               ///< Save button, only available for save operations.
