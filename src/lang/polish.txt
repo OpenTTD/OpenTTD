@@ -4831,7 +4831,7 @@ STR_VEHICLE_INFO_CAPACITY_CAPACITY                              :{BLACK}Ładowno
 STR_VEHICLE_INFO_FEEDER_CARGO_VALUE                             :{BLACK}Wartość ładunku: {LTBLUE}{CURRENCY_LONG}
 
 STR_VEHICLE_DETAILS_SERVICING_INTERVAL_DAYS                     :{BLACK}Okres między serwisami: {LTBLUE}{COMMA}{NBSP}dni{BLACK} {STRING}
-STR_VEHICLE_DETAILS_SERVICING_INTERVAL_MINUTES                  :{BLACK}Interwał serwisowania: {LTBLUE}{COMMA}{NBSP}minut{P a y ""}{BLACK}   {STRING}
+STR_VEHICLE_DETAILS_SERVICING_INTERVAL_MINUTES                  :{BLACK}Interwał serwisowania: {LTBLUE}{COMMA}{NBSP}minut{P a y ""}{BLACK} {STRING}
 STR_VEHICLE_DETAILS_SERVICING_INTERVAL_PERCENT                  :{BLACK}Okres między serwisami: {LTBLUE}{COMMA}%{BLACK} {STRING}
 STR_VEHICLE_DETAILS_LAST_SERVICE_DATE                           :Ostatni serwis: {LTBLUE}{DATE_LONG}
 STR_VEHICLE_DETAILS_LAST_SERVICE_MINUTES_AGO                    :Ostatni serwis: {LTBLUE}{NUM} minut{P a y ""} temu

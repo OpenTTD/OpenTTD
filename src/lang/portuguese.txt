@@ -4446,10 +4446,10 @@ STR_VEHICLE_INFO_CAPACITY_CAPACITY                              :{BLACK}Capacida
 STR_VEHICLE_INFO_FEEDER_CARGO_VALUE                             :{BLACK}Créditos de Transferência: {LTBLUE}{CURRENCY_LONG}
 
 STR_VEHICLE_DETAILS_SERVICING_INTERVAL_DAYS                     :{BLACK}Intervalo de manutenção: {LTBLUE}{COMMA}{NBSP}dias{BLACK} {STRING}
-STR_VEHICLE_DETAILS_SERVICING_INTERVAL_MINUTES                  :{BLACK}Intervalo de manutenção: {LTBLUE}{COMMA}{NBSP}minutos{BLACK} {STRING}
+STR_VEHICLE_DETAILS_SERVICING_INTERVAL_MINUTES                  :{BLACK}Intervalo de manutenção: {LTBLUE}{COMMA}{NBSP}minuto{P "" s}{BLACK} {STRING}
 STR_VEHICLE_DETAILS_SERVICING_INTERVAL_PERCENT                  :{BLACK}Intervalo de manutenção: {LTBLUE}{COMMA}%{BLACK} {STRING}
 STR_VEHICLE_DETAILS_LAST_SERVICE_DATE                           :Última manutenção: {LTBLUE}{DATE_LONG}
-STR_VEHICLE_DETAILS_LAST_SERVICE_MINUTES_AGO                    :Última manutenção: {LTBLUE}{NUM} minutos atrás
+STR_VEHICLE_DETAILS_LAST_SERVICE_MINUTES_AGO                    :Última manutenção: {LTBLUE}{NUM} minuto{P "" s} atrás
 STR_VEHICLE_DETAILS_INCREASE_SERVICING_INTERVAL_TOOLTIP_DAYS    :{BLACK}Aumentar o intervalo de manutenção em 10 dias. Ctrl+Clique para aumentar o intervalo de manutenção em 5 dias
 STR_VEHICLE_DETAILS_INCREASE_SERVICING_INTERVAL_TOOLTIP_MINUTES :{BLACK}Aumentar o intervalo de manutenção em 5 minutos. Ctrl+Clique para aumentar o intervalo de manutenção em 1 minuto
 STR_VEHICLE_DETAILS_INCREASE_SERVICING_INTERVAL_TOOLTIP_PERCENT :{BLACK}Aumentar o intervalo de manutenção em 10%. Ctrl+Clique para aumentar o intervalo de manutenção em 5%
@@ -4640,7 +4640,7 @@ STR_ORDER_REFIT_ORDER                                           :(Adaptar para {
 STR_ORDER_REFIT_STOP_ORDER                                      :(Adaptar para {STRING} e parar)
 STR_ORDER_STOP_ORDER                                            :(Parar)
 
-STR_ORDER_WAIT_TO_UNBUNCH                                       :(esperar por desagrupar)
+STR_ORDER_WAIT_TO_UNBUNCH                                       :(Esperar por desagrupar)
 
 STR_ORDER_GO_TO_STATION                                         :{STRING} {STATION} {STRING}
 STR_ORDER_GO_TO_STATION_CAN_T_USE_STATION                       :{PUSH_COLOUR}{RED}(Não pode usar a estação){POP_COLOUR} {STRING} {STATION} {STRING}
@@ -4992,7 +4992,7 @@ STR_ERROR_CAN_T_BUY_COMPANY                                     :{WHITE}Não é 
 STR_ERROR_CAN_T_BUILD_COMPANY_HEADQUARTERS                      :{WHITE}Não é possível construir sede da empresa...
 
 # Town related errors
-STR_ERROR_CAN_T_GENERATE_TOWN                                   :{WHITE}Não é possível construir localidades
+STR_ERROR_CAN_T_GENERATE_TOWN                                   :{WHITE}Não é possível construir localidades...
 STR_ERROR_CAN_T_RENAME_TOWN                                     :{WHITE}Não é possível renomear localidade...
 STR_ERROR_CAN_T_FOUND_TOWN_HERE                                 :{WHITE}Não é possível construir uma localidade aqui...
 STR_ERROR_CAN_T_EXPAND_TOWN                                     :{WHITE}Não é possível expandir localidade...

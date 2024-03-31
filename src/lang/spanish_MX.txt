@@ -937,6 +937,7 @@ STR_GAME_OPTIONS_TAB_SOCIAL_TT                                  :{BLACK}Seleccio
 STR_GAME_OPTIONS_CURRENCY_UNITS_FRAME                           :{BLACK}Divisa
 STR_GAME_OPTIONS_CURRENCY_UNITS_DROPDOWN_TOOLTIP                :{BLACK}Elegir divisa
 
+STR_GAME_OPTIONS_CURRENCY_CODE                                  :{STRING} ({STRING})
 
 ###length 43
 STR_GAME_OPTIONS_CURRENCY_GBP                                   :Libra británica
@@ -981,6 +982,7 @@ STR_GAME_OPTIONS_CURRENCY_HKD                                   :Dólar hongkon�
 STR_GAME_OPTIONS_CURRENCY_INR                                   :Rupia india
 STR_GAME_OPTIONS_CURRENCY_IDR                                   :Rupia indonesia
 STR_GAME_OPTIONS_CURRENCY_MYR                                   :Ringgit malasio
+STR_GAME_OPTIONS_CURRENCY_LVL                                   :Lats letón
 
 STR_GAME_OPTIONS_AUTOSAVE_FRAME                                 :{BLACK}Guardado automático
 STR_GAME_OPTIONS_AUTOSAVE_DROPDOWN_TOOLTIP                      :{BLACK}Elegir el intervalo de guardados automáticos
@@ -1086,6 +1088,8 @@ STR_CURRENCY_DECREASE_EXCHANGE_RATE_TOOLTIP                     :{BLACK}Reducir 
 STR_CURRENCY_INCREASE_EXCHANGE_RATE_TOOLTIP                     :{BLACK}Incrementar el valor de la moneda por una libra (£)
 STR_CURRENCY_SET_EXCHANGE_RATE_TOOLTIP                          :{BLACK}Ajustar el valor de cambio de la moneda por una Libra (£)
 
+STR_CURRENCY_SEPARATOR                                          :{LTBLUE}Separador: {ORANGE}{STRING}
+STR_CURRENCY_SET_CUSTOM_CURRENCY_SEPARATOR_TOOLTIP              :{BLACK}Establece el separador para la moneda
 
 STR_CURRENCY_PREFIX                                             :{LTBLUE}Prefijo: {ORANGE}{STRING}
 STR_CURRENCY_SET_CUSTOM_CURRENCY_PREFIX_TOOLTIP                 :{BLACK}Establecer el prefijo de la moneda
@@ -1262,7 +1266,9 @@ STR_CONFIG_SETTING_SUBSIDY_MULTIPLIER_HELPTEXT                  :Establecer cuá
 STR_CONFIG_SETTING_SUBSIDY_DURATION                             :Duración de subsidio: {STRING}
 ###length 2
 STR_CONFIG_SETTING_SUBSIDY_DURATION_HELPTEXT                    :Años que durará un subsidio otorgado
+STR_CONFIG_SETTING_SUBSIDY_DURATION_HELPTEXT_PERIODS            :Establezca el número de periodos para los que se concederá un subsidio
 
+STR_CONFIG_SETTING_SUBSIDY_DURATION_VALUE                       :{UNITS_YEARS_OR_PERIODS}
 ###setting-zero-is-special
 STR_CONFIG_SETTING_SUBSIDY_DURATION_DISABLED                    :Sin subsidios
 
@@ -1415,6 +1421,8 @@ STR_CONFIG_SETTING_PLANE_CRASHES_NONE                           :Ninguno*
 STR_CONFIG_SETTING_PLANE_CRASHES_REDUCED                        :Reducida
 STR_CONFIG_SETTING_PLANE_CRASHES_NORMAL                         :Normal
 
+STR_CONFIG_SETTING_CROSSING_WITH_COMPETITOR                     :Permitir pasos a nivel con carreteras o ferrocarriles propiedad de otras empresas: {STRING}
+STR_CONFIG_SETTING_CROSSING_WITH_COMPETITOR_HELPTEXT            :Permite construir pasos a nivel en carreteras o ferrocarriles que sean propiedad de otras empresas
 
 STR_CONFIG_SETTING_STOP_ON_TOWN_ROAD                            :Permitir construcción de paradas de paso en localidades: {STRING}
 STR_CONFIG_SETTING_STOP_ON_TOWN_ROAD_HELPTEXT                   :Se podrán construir paradas de paso en las carreteras que sean propiedad de las localidades
@@ -1451,7 +1459,11 @@ STR_CONFIG_SETTING_WARN_INCOME_LESS_HELPTEXT                    :Mostrar un mens
 STR_CONFIG_SETTING_NEVER_EXPIRE_VEHICLES                        :Vehículos siempre disponibles: {STRING}
 STR_CONFIG_SETTING_NEVER_EXPIRE_VEHICLES_HELPTEXT               :Todos los modelos de vehículos estarán disponibles para siempre tras haber sido introducidos
 
+STR_CONFIG_SETTING_TIMEKEEPING_UNITS                            :Cronómetro: {STRING}
+STR_CONFIG_SETTING_TIMEKEEPING_UNITS_HELPTEXT                   :Seleccione las unidades de tiempo del juego. Esto no puede cambiarse más tarde.{}{}El modo basado en el calendario es la experiencia clásica de OpenTTD, con un año que consta de 12 meses, y cada mes tiene de 28 a 31 días.{}{}En cambio, en el modo Reloj de pared, la producción de carga y las finanzas se basan en incrementos de un minuto, que es más o menos lo que dura un mes de 30 días en el modo basado en el calendario.{}{}En cualquiera de los dos modos siempre hay un calendario clásico, que se utiliza para las fechas de introducción de vehículos, casas y otras infraestructuras.
 ###length 2
+STR_CONFIG_SETTING_TIMEKEEPING_UNITS_CALENDAR                   :Calendario
+STR_CONFIG_SETTING_TIMEKEEPING_UNITS_WALLCLOCK                  :Reloj
 
 STR_CONFIG_SETTING_MINUTES_PER_YEAR                             :Minutos por año: {STRING}
 STR_CONFIG_SETTING_MINUTES_PER_YEAR_HELPTEXT                    :Selecciona el número de minutos de un año de calendario. Por defecto es 12 minutos. Introduce 0 para evitar que cambie el tiempo del calendario. Este ajuste no afecta a la simulación de la economía del juego y sólo está disponible cuando se usa el modo "Reloj" .
@@ -1974,6 +1986,10 @@ STR_CONFIG_SETTING_LARGER_TOWNS_DISABLED                        :Ninguno
 STR_CONFIG_SETTING_CITY_SIZE_MULTIPLIER                         :Multiplicador inicial de tamaño de ciudad: {STRING}
 STR_CONFIG_SETTING_CITY_SIZE_MULTIPLIER_HELPTEXT                :Tamaño medio de las ciudades relativo a las localidades al inicio del juego
 
+STR_CONFIG_SETTING_LINKGRAPH_RECALC_INTERVAL                    :Actualizar gráfico de distribución cada {STRING}
+STR_CONFIG_SETTING_LINKGRAPH_RECALC_INTERVAL_HELPTEXT           :Tiempo entre los recálculos posteriores del gráfico de enlaces. Cada recálculo calcula los planes de un componente del gráfico. Esto significa que un valor X para este ajuste no significa que todo el gráfico se actualizará cada X segundos. Sólo algunos componentes lo harán. Cuanto más corto sea el valor, más tiempo de CPU será necesario para calcularlo. Cuanto más largo sea el valor, más tardará la distribución de la carga en las nuevas rutas.
+STR_CONFIG_SETTING_LINKGRAPH_RECALC_TIME                        :Utilizar {STRING} para recalcular el gráfico de distribución
+STR_CONFIG_SETTING_LINKGRAPH_RECALC_TIME_HELPTEXT               :Tiempo que tarda cada recálculo de un componente del gráfico de enlaces. Cuando un recálculo se inicia, un proceso es creado y se le permite ejecutarse durante este número de segundos. Cuanto más corto sea este valor, más probable es que el proceso no termine cuando se supone que deba hacerlo. Entonces el juego se detiene hasta que lo haga ("lag"). Cuanto más largo lo establezcas más tardará en actualizarse la distribución cuando cambien las rutas
 
 STR_CONFIG_SETTING_DISTRIBUTION_PAX                             :Modo de distribución para pasajeros: {STRING}
 STR_CONFIG_SETTING_DISTRIBUTION_PAX_HELPTEXT                    :En una distribución "Simétrica", se envía la misma cantidad de pasajeros de la estación A a la B que de la B a la A. En una distribución "Asimétrica" se pueden enviar cantidades arbitrarias de pasajeros en cualquier direccion. "Manual" significa que no se realiza una distribución automática para los pasajeros.
@@ -2662,6 +2678,7 @@ STR_TRANSPARENT_BUILDINGS_TOOLTIP                               :{BLACK}Transpar
 STR_TRANSPARENT_BRIDGES_TOOLTIP                                 :{BLACK}Transparencia de puentes. Ctrl+Clic para bloquear
 STR_TRANSPARENT_STRUCTURES_TOOLTIP                              :{BLACK}Transparencia de estructuras como faros o antenas. Ctrl+Clic para bloquear
 STR_TRANSPARENT_CATENARY_TOOLTIP                                :{BLACK}Transparencia de catenaria. Ctrl+Clic para bloquear
+STR_TRANSPARENT_TEXT_TOOLTIP                                    :{BLACK}Ajustar transparencia para el texto que indica la carga, el coste y los ingresos. Ctrl+clic para bloquear
 STR_TRANSPARENT_INVISIBLE_TOOLTIP                               :{BLACK}Ocultar objetos totalmente
 
 # Linkgraph legend window
@@ -2677,7 +2694,10 @@ STR_LINKGRAPH_LEGEND_SATURATED                                  :{TINY_FONT}{BLA
 STR_LINKGRAPH_LEGEND_OVERLOADED                                 :{TINY_FONT}{BLACK}sobrecargado
 
 # Linkgraph tooltip
+STR_LINKGRAPH_STATS_TOOLTIP_MONTH                               :{BLACK}{CARGO_LONG} serán transportad{G 0 o a}s cada mes desde {STATION} a {STATION} ({COMMA}% de capacidad){STRING}
+STR_LINKGRAPH_STATS_TOOLTIP_MINUTE                              :{BLACK}{CARGO_LONG} serán transportad{G 0 o a}s cada minuto desde {STATION} a {STATION} ({COMMA}% de capacidad){STRING}
 STR_LINKGRAPH_STATS_TOOLTIP_RETURN_EXTENSION                    :{}{CARGO_LONG} a ser transportad{G 0 o a}{P 0 "" s}) de vuelta ({COMMA}% de la capacidad)
+STR_LINKGRAPH_STATS_TOOLTIP_TIME_EXTENSION                      :{}Tiempo de viaje promedio: {UNITS_DAYS_OR_SECONDS}
 
 # Base for station construction window(s)
 STR_STATION_BUILD_COVERAGE_AREA_TITLE                           :{BLACK}Mostrar área de recolección
@@ -4509,6 +4529,7 @@ STR_ORDER_REFIT_ORDER                                           :(Reformar a {ST
 STR_ORDER_REFIT_STOP_ORDER                                      :(Reformar a {STRING} y detenerse)
 STR_ORDER_STOP_ORDER                                            :(Detenerse)
 
+STR_ORDER_WAIT_TO_UNBUNCH                                       :(Esperar para desenganchar)
 
 STR_ORDER_GO_TO_STATION                                         :{STRING} {STATION} {STRING}
 STR_ORDER_GO_TO_STATION_CAN_T_USE_STATION                       :{PUSH_COLOUR}{RED}(No se puede usar la estación){POP_COLOUR} {STRING} {STATION} {STRING}
@@ -4611,7 +4632,10 @@ STR_TIMETABLE_EXPECTED                                          :{BLACK}Esperado
 STR_TIMETABLE_SCHEDULED                                         :{BLACK}Programado
 STR_TIMETABLE_EXPECTED_TOOLTIP                                  :{BLACK}Cambiar entre esperado y programado
 
+STR_TIMETABLE_ARRIVAL_DATE                                      :L: {COLOUR}{DATE_TINY}
+STR_TIMETABLE_DEPARTURE_DATE                                    :S: {COLOUR}{DATE_TINY}
 STR_TIMETABLE_ARRIVAL_SECONDS_IN_FUTURE                         :L: {COLOUR}{COMMA} s
+STR_TIMETABLE_DEPARTURE_SECONDS_IN_FUTURE                       :S: {COLOUR}{COMMA} s
 
 
 # Date window (for timetable)
@@ -4699,7 +4723,8 @@ STR_SCREENSHOT_MINIMAP_SCREENSHOT                               :{BLACK}Captura 
 
 # Script Parameters
 STR_AI_SETTINGS_CAPTION                                         :{WHITE}{STRING} Parámetros
-STR_AI_SETTINGS_CAPTION_AI                                      :{WHITE}Parámetros de IA
+STR_AI_SETTINGS_CAPTION_AI                                      :Parámetros de IA
+STR_AI_SETTINGS_CAPTION_GAMESCRIPT                              :Script de juego
 STR_AI_SETTINGS_CLOSE                                           :{BLACK}Cerrar
 STR_AI_SETTINGS_RESET                                           :{BLACK}Reiniciar
 STR_AI_SETTINGS_SETTING                                         :{STRING}: {ORANGE}{STRING}
@@ -5652,6 +5677,10 @@ STR_TOWN_NAME                                                   :{TOWN}
 STR_VEHICLE_NAME                                                :{VEHICLE}
 STR_WAYPOINT_NAME                                               :{WAYPOINT}
 
+STR_CURRENCY_SHORT_KILO                                         :{NBSP}k
+STR_CURRENCY_SHORT_MEGA                                         :{NBSP}M
+STR_CURRENCY_SHORT_GIGA                                         :{NBSP}kM
+STR_CURRENCY_SHORT_TERA                                         :{NBSP}MM
 
 STR_JUST_CARGO                                                  :{CARGO_LONG}
 STR_JUST_CHECKMARK                                              :{CHECKMARK}
