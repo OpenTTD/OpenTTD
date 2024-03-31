@@ -775,11 +775,13 @@ NetworkRecvStatus ClientNetworkGameSocketHandler::Receive_SERVER_AUTH_REQUEST(Pa
 	}
 }
 
-NetworkRecvStatus ClientNetworkGameSocketHandler::Receive_SERVER_ENABLE_ENCRYPTION(Packet &)
+NetworkRecvStatus ClientNetworkGameSocketHandler::Receive_SERVER_ENABLE_ENCRYPTION(Packet &p)
 {
 	if (this->status != STATUS_AUTH_GAME || this->authentication_handler == nullptr) return NETWORK_RECV_STATUS_MALFORMED_PACKET;
 
 	Debug(net, 9, "Client::Receive_SERVER_ENABLE_ENCRYPTION()");
+
+	if (!this->authentication_handler->ReceiveEnableEncryption(p)) return NETWORK_RECV_STATUS_MALFORMED_PACKET;
 
 	this->receive_encryption_handler = this->authentication_handler->CreateServerToClientEncryptionHandler();
 	this->send_encryption_handler = this->authentication_handler->CreateClientToServerEncryptionHandler();

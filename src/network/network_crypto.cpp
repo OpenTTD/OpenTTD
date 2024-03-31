@@ -182,14 +182,15 @@ X25519Nonce::~X25519Nonce()
  * @param secret_key The secret key to use for this handler. Defaults to secure random data.
  */
 X25519AuthenticationHandler::X25519AuthenticationHandler(const X25519SecretKey &secret_key) :
-	our_secret_key(secret_key), our_public_key(secret_key.CreatePublicKey()), nonce(X25519Nonce::CreateRandom())
+	our_secret_key(secret_key), our_public_key(secret_key.CreatePublicKey()),
+	key_exchange_nonce(X25519Nonce::CreateRandom()), encryption_nonce(X25519Nonce::CreateRandom())
 {
 }
 
 /* virtual */ void X25519AuthenticationHandler::SendRequest(Packet &p)
 {
 	p.Send_bytes(this->our_public_key);
-	p.Send_bytes(this->nonce);
+	p.Send_bytes(this->key_exchange_nonce);
 }
 
 /**
@@ -205,7 +206,7 @@ bool X25519AuthenticationHandler::ReceiveRequest(Packet &p)
 	}
 
 	p.Recv_bytes(this->peer_public_key);
-	p.Recv_bytes(this->nonce);
+	p.Recv_bytes(this->key_exchange_nonce);
 	return true;
 }
 
@@ -227,7 +228,7 @@ bool X25519AuthenticationHandler::SendResponse(Packet &p, std::string_view deriv
 	RandomBytesWithFallback(message);
 	X25519Mac mac;
 
-	crypto_aead_lock(message.data(), mac.data(), this->derived_keys.ClientToServer().data(), nonce.data(),
+	crypto_aead_lock(message.data(), mac.data(), this->derived_keys.ClientToServer().data(), this->key_exchange_nonce.data(),
 			this->our_public_key.data(), this->our_public_key.size(), message.data(), message.size());
 
 	p.Send_bytes(this->our_public_key);
@@ -245,14 +246,33 @@ std::string X25519AuthenticationHandler::GetPeerPublicKey() const
 	return FormatArrayAsHex(this->peer_public_key);
 }
 
+/**
+ * Send the initial nonce for the encrypted connection.
+ * @param p The packet to send the data in.
+ */
+void X25519AuthenticationHandler::SendEnableEncryption(struct Packet &p) const
+{
+	p.Send_bytes(this->encryption_nonce);
+}
+
+/**
+ * Receive the initial nonce for the encrypted connection.
+ * @param p The packet to read the data from.
+ * @return \c true when enough bytes could be read for the nonce, otherwise \c false.
+ */
+bool X25519AuthenticationHandler::ReceiveEnableEncryption(struct Packet &p)
+{
+	return p.Recv_bytes(this->encryption_nonce) == this->encryption_nonce.size();
+}
+
 std::unique_ptr<NetworkEncryptionHandler> X25519AuthenticationHandler::CreateClientToServerEncryptionHandler() const
 {
-	return std::make_unique<X25519EncryptionHandler>(this->derived_keys.ClientToServer(), this->nonce);
+	return std::make_unique<X25519EncryptionHandler>(this->derived_keys.ClientToServer(), this->encryption_nonce);
 }
 
 std::unique_ptr<NetworkEncryptionHandler> X25519AuthenticationHandler::CreateServerToClientEncryptionHandler() const
 {
-	return std::make_unique<X25519EncryptionHandler>(this->derived_keys.ServerToClient(), this->nonce);
+	return std::make_unique<X25519EncryptionHandler>(this->derived_keys.ServerToClient(), this->encryption_nonce);
 }
 
 /**
@@ -282,7 +302,7 @@ NetworkAuthenticationServerHandler::ResponseResult X25519AuthenticationHandler::
 		return NetworkAuthenticationServerHandler::NOT_AUTHENTICATED;
 	}
 
-	if (crypto_aead_unlock(message.data(), mac.data(), this->derived_keys.ClientToServer().data(), nonce.data(),
+	if (crypto_aead_unlock(message.data(), mac.data(), this->derived_keys.ClientToServer().data(), this->key_exchange_nonce.data(),
 			this->peer_public_key.data(), this->peer_public_key.size(), message.data(), message.size()) != 0) {
 		/*
 		 * The ciphertext and the message authentication code do not match with the encryption key.

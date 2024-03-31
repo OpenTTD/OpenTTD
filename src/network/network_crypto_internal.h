@@ -105,9 +105,11 @@ class X25519AuthenticationHandler {
 private:
 	X25519SecretKey our_secret_key; ///< The secret key used by us.
 	X25519PublicKey our_public_key; ///< The public key used by us.
-	X25519Nonce nonce; ///< The nonce to prevent replay attacks.
+	X25519Nonce key_exchange_nonce; ///< The nonce to prevent replay attacks of the key exchange.
 	X25519DerivedKeys derived_keys; ///< Keys derived from the authentication process.
 	X25519PublicKey peer_public_key; ///< The public key used by our peer.
+
+	X25519Nonce encryption_nonce; ///< The nonce to prevent replay attacks the encrypted connection.
 
 protected:
 	X25519AuthenticationHandler(const X25519SecretKey &secret_key);
@@ -119,6 +121,8 @@ protected:
 
 	std::string GetPeerPublicKey() const;
 
+	void SendEnableEncryption(struct Packet &p) const;
+	bool ReceiveEnableEncryption(struct Packet &p);
 	std::unique_ptr<NetworkEncryptionHandler> CreateClientToServerEncryptionHandler() const;
 	std::unique_ptr<NetworkEncryptionHandler> CreateServerToClientEncryptionHandler() const;
 };
@@ -142,6 +146,7 @@ public:
 	virtual std::string_view GetName() const override { return "X25519-KeyExchangeOnly-client"; }
 	virtual NetworkAuthenticationMethod GetAuthenticationMethod() const override { return NETWORK_AUTH_METHOD_X25519_KEY_EXCHANGE_ONLY; }
 
+	virtual bool ReceiveEnableEncryption(struct Packet &p) override { return this->X25519AuthenticationHandler::ReceiveEnableEncryption(p); }
 	virtual std::unique_ptr<NetworkEncryptionHandler> CreateClientToServerEncryptionHandler() const override { return this->X25519AuthenticationHandler::CreateClientToServerEncryptionHandler(); }
 	virtual std::unique_ptr<NetworkEncryptionHandler> CreateServerToClientEncryptionHandler() const override { return this->X25519AuthenticationHandler::CreateServerToClientEncryptionHandler(); }
 };
@@ -167,6 +172,7 @@ public:
 	virtual bool CanBeUsed() const override { return true; }
 
 	virtual std::string GetPeerPublicKey() const override { return this->X25519AuthenticationHandler::GetPeerPublicKey(); }
+	virtual void SendEnableEncryption(struct Packet &p) override { this->X25519AuthenticationHandler::SendEnableEncryption(p); }
 	virtual std::unique_ptr<NetworkEncryptionHandler> CreateClientToServerEncryptionHandler() const override { return this->X25519AuthenticationHandler::CreateClientToServerEncryptionHandler(); }
 	virtual std::unique_ptr<NetworkEncryptionHandler> CreateServerToClientEncryptionHandler() const override { return this->X25519AuthenticationHandler::CreateServerToClientEncryptionHandler(); }
 };
@@ -194,6 +200,7 @@ public:
 	virtual std::string_view GetName() const override { return "X25519-PAKE-client"; }
 	virtual NetworkAuthenticationMethod GetAuthenticationMethod() const override { return NETWORK_AUTH_METHOD_X25519_PAKE; }
 
+	virtual bool ReceiveEnableEncryption(struct Packet &p) override { return this->X25519AuthenticationHandler::ReceiveEnableEncryption(p); }
 	virtual std::unique_ptr<NetworkEncryptionHandler> CreateClientToServerEncryptionHandler() const override { return this->X25519AuthenticationHandler::CreateClientToServerEncryptionHandler(); }
 	virtual std::unique_ptr<NetworkEncryptionHandler> CreateServerToClientEncryptionHandler() const override { return this->X25519AuthenticationHandler::CreateServerToClientEncryptionHandler(); }
 };
@@ -222,6 +229,7 @@ public:
 	virtual bool CanBeUsed() const override { return !this->password_provider->GetPassword().empty(); }
 
 	virtual std::string GetPeerPublicKey() const override { return this->X25519AuthenticationHandler::GetPeerPublicKey(); }
+	virtual void SendEnableEncryption(struct Packet &p) override { this->X25519AuthenticationHandler::SendEnableEncryption(p); }
 	virtual std::unique_ptr<NetworkEncryptionHandler> CreateClientToServerEncryptionHandler() const override { return this->X25519AuthenticationHandler::CreateClientToServerEncryptionHandler(); }
 	virtual std::unique_ptr<NetworkEncryptionHandler> CreateServerToClientEncryptionHandler() const override { return this->X25519AuthenticationHandler::CreateServerToClientEncryptionHandler(); }
 };
@@ -247,6 +255,7 @@ public:
 	virtual std::string_view GetName() const override { return "X25519-AuthorizedKey-client"; }
 	virtual NetworkAuthenticationMethod GetAuthenticationMethod() const override { return NETWORK_AUTH_METHOD_X25519_AUTHORIZED_KEY; }
 
+	virtual bool ReceiveEnableEncryption(struct Packet &p) override { return this->X25519AuthenticationHandler::ReceiveEnableEncryption(p); }
 	virtual std::unique_ptr<NetworkEncryptionHandler> CreateClientToServerEncryptionHandler() const override { return this->X25519AuthenticationHandler::CreateClientToServerEncryptionHandler(); }
 	virtual std::unique_ptr<NetworkEncryptionHandler> CreateServerToClientEncryptionHandler() const override { return this->X25519AuthenticationHandler::CreateServerToClientEncryptionHandler(); }
 
@@ -278,6 +287,7 @@ public:
 	virtual bool CanBeUsed() const override { return this->authorized_key_handler->CanBeUsed(); }
 
 	virtual std::string GetPeerPublicKey() const override { return this->X25519AuthenticationHandler::GetPeerPublicKey(); }
+	virtual void SendEnableEncryption(struct Packet &p) override { this->X25519AuthenticationHandler::SendEnableEncryption(p); }
 	virtual std::unique_ptr<NetworkEncryptionHandler> CreateClientToServerEncryptionHandler() const override { return this->X25519AuthenticationHandler::CreateClientToServerEncryptionHandler(); }
 	virtual std::unique_ptr<NetworkEncryptionHandler> CreateServerToClientEncryptionHandler() const override { return this->X25519AuthenticationHandler::CreateServerToClientEncryptionHandler(); }
 };
@@ -308,6 +318,7 @@ public:
 	virtual std::string_view GetName() const override;
 	virtual NetworkAuthenticationMethod GetAuthenticationMethod() const override;
 
+	virtual bool ReceiveEnableEncryption(struct Packet &p) override { return this->current_handler->ReceiveEnableEncryption(p); }
 	virtual std::unique_ptr<NetworkEncryptionHandler> CreateClientToServerEncryptionHandler() const override { return this->current_handler->CreateClientToServerEncryptionHandler(); }
 	virtual std::unique_ptr<NetworkEncryptionHandler> CreateServerToClientEncryptionHandler() const override { return this->current_handler->CreateServerToClientEncryptionHandler(); }
 };
@@ -334,6 +345,7 @@ public:
 	virtual bool CanBeUsed() const override;
 
 	virtual std::string GetPeerPublicKey() const override { return this->handlers.back()->GetPeerPublicKey(); }
+	virtual void SendEnableEncryption(struct Packet &p) override { this->handlers.back()->SendEnableEncryption(p); }
 	virtual std::unique_ptr<NetworkEncryptionHandler> CreateClientToServerEncryptionHandler() const override { return this->handlers.back()->CreateClientToServerEncryptionHandler(); }
 	virtual std::unique_ptr<NetworkEncryptionHandler> CreateServerToClientEncryptionHandler() const override { return this->handlers.back()->CreateServerToClientEncryptionHandler(); }
 };
