@@ -7,12 +7,12 @@
 
 /** @file dropdown_func.h Functions related to the drop down widget. */
 
-#ifndef WIDGETS_DROPDOWN_FUNC_H
-#define WIDGETS_DROPDOWN_FUNC_H
+#ifndef DROPDOWN_FUNC_H
+#define DROPDOWN_FUNC_H
 
-#include "../window_gui.h"
+#include "window_gui.h"
 
 /* Show drop down menu containing a fixed list of strings */
 void ShowDropDownMenu(Window *w, const StringID *strings, int selected, WidgetID button, uint32_t disabled_mask, uint32_t hidden_mask, uint width = 0);
 
-#endif /* WIDGETS_DROPDOWN_FUNC_H */
+#endif /* DROPDOWN_FUNC_H */

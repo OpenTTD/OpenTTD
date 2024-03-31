@@ -18,7 +18,7 @@
 #include "vehicle_func.h"
 #include "autoreplace_gui.h"
 #include "company_func.h"
-#include "widgets/dropdown_func.h"
+#include "dropdown_func.h"
 #include "tilehighlight_func.h"
 #include "vehicle_gui_base.h"
 #include "core/geometry_func.hpp"

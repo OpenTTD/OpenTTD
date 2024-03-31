@@ -24,7 +24,7 @@
 #include "core/geometry_func.hpp"
 #include "rail_gui.h"
 #include "road_gui.h"
-#include "widgets/dropdown_func.h"
+#include "dropdown_func.h"
 #include "autoreplace_cmd.h"
 #include "group_cmd.h"
 #include "settings_cmd.h"

@@ -24,9 +24,9 @@
 #include "string_func.h"
 #include "settings_type.h"
 #include "settings_gui.h"
-#include "widgets/dropdown_func.h"
-#include "widgets/dropdown_type.h"
-#include "widgets/slider_func.h"
+#include "dropdown_func.h"
+#include "dropdown_type.h"
+#include "slider_func.h"
 #include "mixer.h"
 
 #include "widgets/music_widget.h"

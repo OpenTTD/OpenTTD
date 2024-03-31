@@ -7,15 +7,15 @@
 
 /** @file slider.cpp Implementation of the horizontal slider widget. */
 
-#include "../stdafx.h"
-#include "../palette_func.h"
-#include "../window_gui.h"
-#include "../window_func.h"
-#include "../strings_func.h"
-#include "../zoom_func.h"
+#include "stdafx.h"
+#include "gfx_func.h"
+#include "palette_func.h"
 #include "slider_func.h"
+#include "strings_func.h"
+#include "window_gui.h"
+#include "zoom_func.h"
 
-#include "../safeguards.h"
+#include "safeguards.h"
 
 static const int SLIDER_WIDTH = 3;
 

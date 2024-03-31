@@ -28,15 +28,14 @@
 #include "tilehighlight_func.h"
 #include "string_func.h"
 #include "sortlist_type.h"
-#include "widgets/dropdown_func.h"
+#include "dropdown_func.h"
 #include "company_base.h"
 #include "core/geometry_func.hpp"
 #include "core/random_func.hpp"
 #include "core/backup_type.hpp"
 #include "genworld.h"
 #include "smallmap_gui.h"
-#include "widgets/dropdown_type.h"
-#include "widgets/industry_widget.h"
+#include "dropdown_type.h"
 #include "clear_map.h"
 #include "zoom_func.h"
 #include "industry_cmd.h"
@@ -45,6 +44,8 @@
 #include "timer/timer.h"
 #include "timer/timer_window.h"
 #include "hotkeys.h"
+
+#include "widgets/industry_widget.h"
 
 #include "table/strings.h"
 

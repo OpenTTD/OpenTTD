@@ -7,19 +7,18 @@
 
 /** @file dropdown.cpp Implementation of the dropdown widget. */
 
-#include "../stdafx.h"
-#include "../window_gui.h"
-#include "../string_func.h"
-#include "../strings_func.h"
-#include "../window_func.h"
-#include "../zoom_func.h"
-#include "../timer/timer.h"
-#include "../timer/timer_window.h"
+#include "stdafx.h"
 #include "dropdown_type.h"
+#include "strings_func.h"
+#include "timer/timer.h"
+#include "timer/timer_window.h"
+#include "window_gui.h"
+#include "window_func.h"
+#include "zoom_func.h"
 
-#include "dropdown_widget.h"
+#include "widgets/dropdown_widget.h"
 
-#include "../safeguards.h"
+#include "safeguards.h"
 
 
 static constexpr NWidgetPart _nested_dropdown_menu_widgets[] = {

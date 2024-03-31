@@ -11,7 +11,7 @@
 #define SETTING_GUI_H
 
 #include "gfx_type.h"
-#include "widgets/dropdown_type.h"
+#include "dropdown_type.h"
 
 /** Width of setting buttons */
 #define SETTING_BUTTON_WIDTH  ((int)NWidgetScrollbar::GetHorizontalDimension().width * 2)

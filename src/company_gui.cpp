@@ -23,7 +23,7 @@
 #include "company_manager_face.h"
 #include "strings_func.h"
 #include "timer/timer_game_economy.h"
-#include "widgets/dropdown_type.h"
+#include "dropdown_type.h"
 #include "tilehighlight_func.h"
 #include "company_base.h"
 #include "core/geometry_func.hpp"

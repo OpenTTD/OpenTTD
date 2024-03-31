@@ -34,11 +34,12 @@
 #include "game/game.hpp"
 #include "goal_base.h"
 #include "story_base.h"
-#include "widgets/statusbar_widget.h"
 #include "company_cmd.h"
 #include "timer/timer.h"
 #include "timer/timer_game_economy.h"
 #include "timer/timer_game_tick.h"
+
+#include "widgets/statusbar_widget.h"
 
 #include "table/strings.h"
 
