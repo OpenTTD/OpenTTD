@@ -26,6 +26,7 @@
 #include "vehicle_func.h"
 #include "autoreplace_gui.h"
 #include "string_func.h"
+#include "dropdown_type.h"
 #include "dropdown_func.h"
 #include "timetable.h"
 #include "articulated_vehicles.h"
@@ -427,17 +428,17 @@ DropDownList BaseVehicleListWindow::BuildCargoDropDownList(bool full) const
 	DropDownList list;
 
 	/* Add item for disabling filtering. */
-	list.push_back(std::make_unique<DropDownListStringItem>(this->GetCargoFilterLabel(CargoFilterCriteria::CF_ANY), CargoFilterCriteria::CF_ANY, false));
+	list.push_back(MakeDropDownListStringItem(this->GetCargoFilterLabel(CargoFilterCriteria::CF_ANY), CargoFilterCriteria::CF_ANY));
 	/* Add item for freight (i.e. vehicles with cargo capacity and with no passenger capacity). */
-	list.push_back(std::make_unique<DropDownListStringItem>(this->GetCargoFilterLabel(CargoFilterCriteria::CF_FREIGHT), CargoFilterCriteria::CF_FREIGHT, false));
+	list.push_back(MakeDropDownListStringItem(this->GetCargoFilterLabel(CargoFilterCriteria::CF_FREIGHT), CargoFilterCriteria::CF_FREIGHT));
 	/* Add item for vehicles not carrying anything, e.g. train engines. */
-	list.push_back(std::make_unique<DropDownListStringItem>(this->GetCargoFilterLabel(CargoFilterCriteria::CF_NONE), CargoFilterCriteria::CF_NONE, false));
+	list.push_back(MakeDropDownListStringItem(this->GetCargoFilterLabel(CargoFilterCriteria::CF_NONE), CargoFilterCriteria::CF_NONE));
 
 	/* Add cargos */
 	Dimension d = GetLargestCargoIconSize();
 	for (const CargoSpec *cs : _sorted_cargo_specs) {
 		if (!full && !HasBit(this->used_cargoes, cs->Index())) continue;
-		list.push_back(std::make_unique<DropDownListIconItem>(d, cs->GetCargoIcon(), PAL_NONE, cs->name, cs->Index(), false, !HasBit(this->used_cargoes, cs->Index())));
+		list.push_back(MakeDropDownListIconItem(d, cs->GetCargoIcon(), PAL_NONE, cs->name, cs->Index(), false, !HasBit(this->used_cargoes, cs->Index())));
 	}
 
 	return list;
@@ -456,23 +457,23 @@ DropDownList BaseVehicleListWindow::BuildActionDropdownList(bool show_autoreplac
 
 	/* Autoreplace actions. */
 	if (show_autoreplace) {
-		list.push_back(std::make_unique<DropDownListStringItem>(STR_VEHICLE_LIST_REPLACE_VEHICLES, ADI_REPLACE, false));
-		list.push_back(std::make_unique<DropDownListDividerItem>(-1, false));
+		list.push_back(MakeDropDownListStringItem(STR_VEHICLE_LIST_REPLACE_VEHICLES, ADI_REPLACE));
+		list.push_back(MakeDropDownListDividerItem());
 	}
 
 	/* Group actions. */
 	if (show_group) {
-		list.push_back(std::make_unique<DropDownListStringItem>(STR_GROUP_ADD_SHARED_VEHICLE, ADI_ADD_SHARED, false));
-		list.push_back(std::make_unique<DropDownListStringItem>(STR_GROUP_REMOVE_ALL_VEHICLES, ADI_REMOVE_ALL, false));
-		list.push_back(std::make_unique<DropDownListDividerItem>(-1, false));
+		list.push_back(MakeDropDownListStringItem(STR_GROUP_ADD_SHARED_VEHICLE, ADI_ADD_SHARED));
+		list.push_back(MakeDropDownListStringItem(STR_GROUP_REMOVE_ALL_VEHICLES, ADI_REMOVE_ALL));
+		list.push_back(MakeDropDownListDividerItem());
 	} else if (show_create) {
-		list.push_back(std::make_unique<DropDownListStringItem>(STR_VEHICLE_LIST_CREATE_GROUP, ADI_CREATE_GROUP, false));
-		list.push_back(std::make_unique<DropDownListDividerItem>(-1, false));
+		list.push_back(MakeDropDownListStringItem(STR_VEHICLE_LIST_CREATE_GROUP, ADI_CREATE_GROUP));
+		list.push_back(MakeDropDownListDividerItem());
 	}
 
 	/* Depot actions. */
-	list.push_back(std::make_unique<DropDownListStringItem>(STR_VEHICLE_LIST_SEND_FOR_SERVICING, ADI_SERVICE, false));
-	list.push_back(std::make_unique<DropDownListStringItem>(this->vehicle_depot_name[this->vli.vtype], ADI_DEPOT, false));
+	list.push_back(MakeDropDownListStringItem(STR_VEHICLE_LIST_SEND_FOR_SERVICING, ADI_SERVICE));
+	list.push_back(MakeDropDownListStringItem(this->vehicle_depot_name[this->vli.vtype], ADI_DEPOT));
 
 	return list;
 }

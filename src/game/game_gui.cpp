@@ -14,6 +14,7 @@
 #include "../window_func.h"
 #include "../network/network.h"
 #include "../network/network_content.h"
+#include "../dropdown_type.h"
 #include "../dropdown_func.h"
 #include "../timer/timer.h"
 #include "../timer/timer_window.h"
@@ -317,7 +318,7 @@ struct GSConfigWindow : public Window {
 
 							DropDownList list;
 							for (int i = config_item.min_value; i <= config_item.max_value; i++) {
-								list.push_back(std::make_unique<DropDownListStringItem>(config_item.labels.find(i)->second, i, false));
+								list.push_back(MakeDropDownListStringItem(config_item.labels.find(i)->second, i));
 							}
 
 							ShowDropDownListAt(this, std::move(list), old_val, WID_GSC_SETTING_DROPDOWN, wi_rect, COLOUR_ORANGE);

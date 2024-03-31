@@ -15,9 +15,10 @@
 #include "../stringfilter_type.h"
 #include "../company_base.h"
 #include "../company_gui.h"
+#include "../dropdown_type.h"
+#include "../dropdown_func.h"
 #include "../window_func.h"
 #include "../network/network.h"
-#include "../dropdown_func.h"
 #include "../hotkeys.h"
 #include "../company_cmd.h"
 #include "../misc_cmd.h"
@@ -467,7 +468,7 @@ struct ScriptSettingsWindow : public Window {
 
 							DropDownList list;
 							for (int i = config_item.min_value; i <= config_item.max_value; i++) {
-								list.push_back(std::make_unique<DropDownListStringItem>(config_item.labels.find(i)->second, i, false));
+								list.push_back(MakeDropDownListStringItem(config_item.labels.find(i)->second, i));
 							}
 
 							ShowDropDownListAt(this, std::move(list), old_val, WID_SCRS_SETTING_DROPDOWN, wi_rect, COLOUR_ORANGE);
