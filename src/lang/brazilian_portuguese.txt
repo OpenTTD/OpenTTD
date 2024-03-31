@@ -736,8 +736,8 @@ STR_HIGHSCORE_PERFORMANCE_TITLE_MOGUL                           :Mandachuva
 STR_HIGHSCORE_PERFORMANCE_TITLE_TYCOON_OF_THE_CENTURY           :Magnata do Século
 STR_HIGHSCORE_NAME                                              :{PRESIDENT_NAME}, {COMPANY}
 STR_HIGHSCORE_STATS                                             :{BIG_FONT}'{STRING}'   ({COMMA})
-STR_HIGHSCORE_COMPANY_ACHIEVES_STATUS                           :{BIG_FONT}{BLACK}{COMPANY} conquista o status de '{STRING}'!!
-STR_HIGHSCORE_PRESIDENT_OF_COMPANY_ACHIEVES_STATUS              :{BIG_FONT}{WHITE}{PRESIDENT_NAME} de {COMPANY} conquista o status de '{STRING}'!!
+STR_HIGHSCORE_COMPANY_ACHIEVES_STATUS                           :{BIG_FONT}{BLACK}{COMPANY} conquista o status de '{STRING}'!
+STR_HIGHSCORE_PRESIDENT_OF_COMPANY_ACHIEVES_STATUS              :{BIG_FONT}{WHITE}{PRESIDENT_NAME} de {COMPANY} conquista o status de '{STRING}'!
 
 # Smallmap window
 STR_SMALLMAP_CAPTION                                            :{WHITE}Mapa - {STRING}
@@ -856,7 +856,7 @@ STR_NEWS_COMPANY_MERGER_TITLE                                   :{BIG_FONT}{BLAC
 STR_NEWS_COMPANY_MERGER_DESCRIPTION                             :{BIG_FONT}{BLACK}{STRING} foi vendida para {STRING} por {CURRENCY_LONG}!
 STR_NEWS_COMPANY_BANKRUPT_TITLE                                 :{BIG_FONT}{BLACK}Falência!
 STR_NEWS_COMPANY_BANKRUPT_DESCRIPTION                           :{BIG_FONT}{BLACK}{STRING} foi fechada pelos credores e todos os seus bens foram vendidos!
-STR_NEWS_COMPANY_LAUNCH_TITLE                                   :{BIG_FONT}{BLACK}Nova empresa de transportes!!
+STR_NEWS_COMPANY_LAUNCH_TITLE                                   :{BIG_FONT}{BLACK}Nova empresa de transportes!
 STR_NEWS_COMPANY_LAUNCH_DESCRIPTION                             :{BIG_FONT}{BLACK}{STRING} inicia construção perto de {TOWN}!
 STR_NEWS_MERGER_TAKEOVER_TITLE                                  :{BIG_FONT}{BLACK}{STRING} foi comprada por {STRING} por um valor não revelado!
 STR_PRESIDENT_NAME_MANAGER                                      :{BLACK}{PRESIDENT_NAME}{}(Gerente)
@@ -910,7 +910,7 @@ STR_NEWS_AIRCRAFT_DEST_TOO_FAR                                  :{WHITE}{VEHICLE
 STR_NEWS_ORDER_REFIT_FAILED                                     :{WHITE}{VEHICLE} parou porque uma ordem de adaptação falhou
 STR_NEWS_VEHICLE_AUTORENEW_FAILED                               :{WHITE}Renovação automática falhou para {VEHICLE}{}{STRING}
 
-STR_NEWS_NEW_VEHICLE_NOW_AVAILABLE                              :{BIG_FONT}{BLACK}Nov{G o a} {STRING} disponível!!
+STR_NEWS_NEW_VEHICLE_NOW_AVAILABLE                              :{BIG_FONT}{BLACK}Nov{G o a} {STRING} disponível!
 STR_NEWS_NEW_VEHICLE_TYPE                                       :{BIG_FONT}{BLACK}{ENGINE}
 STR_NEWS_NEW_VEHICLE_NOW_AVAILABLE_WITH_TYPE                    :{BLACK}Nov{G o a} {STRING} disponível! - {ENGINE}
 
@@ -3262,7 +3262,7 @@ STR_SAVELOAD_SAVE_SCENARIO                                      :{WHITE}Salvar C
 STR_SAVELOAD_LOAD_SCENARIO                                      :{WHITE}Abrir Cenário
 STR_SAVELOAD_LOAD_HEIGHTMAP                                     :{WHITE}Abrir mapa de altitudes
 STR_SAVELOAD_SAVE_HEIGHTMAP                                     :{WHITE}Salvar mapa de altitudes
-STR_SAVELOAD_HOME_BUTTON                                        :{BLACK}Acessar o diretório padrão atual onde salvar/abrir jogos
+STR_SAVELOAD_HOME_BUTTON                                        :{BLACK}Clique aqui para acessar o diretório padrão para salvar/abrir um jogo
 STR_SAVELOAD_BYTES_FREE                                         :{BLACK}{BYTES} livres
 STR_SAVELOAD_LIST_TOOLTIP                                       :{BLACK}Lista de unidades, diretórios e arquivos de jogos salvos
 STR_SAVELOAD_EDITBOX_TOOLTIP                                    :{BLACK}Nome selecionado para salvar o jogo
@@ -3369,7 +3369,7 @@ STR_MAPGEN_HEIGHTMAP_SIZE_LABEL_TOOLTIP                         :{BLACK}O tamanh
 STR_MAPGEN_HEIGHTMAP_SIZE                                       :{ORANGE}{NUM} x {NUM}
 
 STR_MAPGEN_TERRAIN_TYPE_QUERY_CAPT                              :{WHITE}Altura do pico mais elevado
-STR_MAPGEN_HEIGHTMAP_HEIGHT_QUERY_CAPT                          :{WHITE}Pico mais elevado
+STR_MAPGEN_HEIGHTMAP_HEIGHT_QUERY_CAPT                          :{WHITE}Pico mais alto
 STR_MAPGEN_SNOW_COVERAGE_QUERY_CAPT                             :{WHITE}Cobertura de neve (em %)
 STR_MAPGEN_DESERT_COVERAGE_QUERY_CAPT                           :{WHITE}Cobertura de deserto (em %)
 STR_MAPGEN_START_DATE_QUERY_CAPT                                :{WHITE}Alterar o ano de início
@@ -3379,12 +3379,12 @@ STR_SE_MAPGEN_CAPTION                                           :{WHITE}Tipo de 
 STR_SE_MAPGEN_FLAT_WORLD                                        :{WHITE}Terreno plano
 STR_SE_MAPGEN_FLAT_WORLD_TOOLTIP                                :{BLACK}Gerar um terreno plano
 STR_SE_MAPGEN_RANDOM_LAND                                       :{WHITE}Terreno aleatório
-STR_SE_MAPGEN_FLAT_WORLD_HEIGHT                                 :{BLACK}Altitude do terreno plano:
+STR_SE_MAPGEN_FLAT_WORLD_HEIGHT                                 :{BLACK}Altura do terreno plano:
 STR_SE_MAPGEN_FLAT_WORLD_HEIGHT_TOOLTIP                         :{BLACK}Escolher a elevação do terreno acima do nível do mar
 STR_SE_MAPGEN_FLAT_WORLD_HEIGHT_DOWN                            :{BLACK}Mover altura do terreno plano um nível abaixo
 STR_SE_MAPGEN_FLAT_WORLD_HEIGHT_UP                              :{BLACK}Mover altura do terreno plano um nível acima
 
-STR_SE_MAPGEN_FLAT_WORLD_HEIGHT_QUERY_CAPT                      :{WHITE}Modificar a altitude do terreno plano
+STR_SE_MAPGEN_FLAT_WORLD_HEIGHT_QUERY_CAPT                      :{WHITE}Modificar a altura do terreno plano
 
 # Map generation progress
 STR_GENERATION_WORLD                                            :{WHITE}Gerando Mundo...
@@ -4526,7 +4526,7 @@ STR_REFIT_AIRCRAFT_REFIT_TOOLTIP                                :{BLACK}Adaptar 
 # Order view
 STR_ORDERS_CAPTION                                              :{WHITE}{VEHICLE} (Ordens)
 STR_ORDERS_TIMETABLE_VIEW                                       :{BLACK}Horários
-STR_ORDERS_TIMETABLE_VIEW_TOOLTIP                               :{BLACK}Mudar para a visuallização de horários
+STR_ORDERS_TIMETABLE_VIEW_TOOLTIP                               :{BLACK}Mudar para a visualização de horários
 
 STR_ORDERS_LIST_TOOLTIP                                         :{BLACK}Lista de ordens - clique em uma ordem para selecioná-la. Ctrl+Clique para mostrar o destino da ordem
 STR_ORDER_INDEX                                                 :{COMMA}:{NBSP}
