@@ -72,9 +72,9 @@ static DropDownList BuildVisibilityDropDownList()
 {
 	DropDownList list;
 
-	list.push_back(std::make_unique<DropDownListStringItem>(STR_NETWORK_SERVER_VISIBILITY_LOCAL, SERVER_GAME_TYPE_LOCAL, false));
-	list.push_back(std::make_unique<DropDownListStringItem>(STR_NETWORK_SERVER_VISIBILITY_INVITE_ONLY, SERVER_GAME_TYPE_INVITE_ONLY, false));
-	list.push_back(std::make_unique<DropDownListStringItem>(STR_NETWORK_SERVER_VISIBILITY_PUBLIC, SERVER_GAME_TYPE_PUBLIC, false));
+	list.push_back(MakeDropDownListStringItem(STR_NETWORK_SERVER_VISIBILITY_LOCAL, SERVER_GAME_TYPE_LOCAL));
+	list.push_back(MakeDropDownListStringItem(STR_NETWORK_SERVER_VISIBILITY_INVITE_ONLY, SERVER_GAME_TYPE_INVITE_ONLY));
+	list.push_back(MakeDropDownListStringItem(STR_NETWORK_SERVER_VISIBILITY_PUBLIC, SERVER_GAME_TYPE_PUBLIC));
 
 	return list;
 }
@@ -1496,8 +1496,8 @@ private:
 	static void OnClickClientAdmin([[maybe_unused]] NetworkClientListWindow *w, [[maybe_unused]] Point pt, ClientID client_id)
 	{
 		DropDownList list;
-		list.push_back(std::make_unique<DropDownListStringItem>(STR_NETWORK_CLIENT_LIST_ADMIN_CLIENT_KICK, DD_CLIENT_ADMIN_KICK, false));
-		list.push_back(std::make_unique<DropDownListStringItem>(STR_NETWORK_CLIENT_LIST_ADMIN_CLIENT_BAN, DD_CLIENT_ADMIN_BAN, false));
+		list.push_back(MakeDropDownListStringItem(STR_NETWORK_CLIENT_LIST_ADMIN_CLIENT_KICK, DD_CLIENT_ADMIN_KICK));
+		list.push_back(MakeDropDownListStringItem(STR_NETWORK_CLIENT_LIST_ADMIN_CLIENT_BAN, DD_CLIENT_ADMIN_BAN));
 
 		Rect wi_rect;
 		wi_rect.left   = pt.x;
@@ -1518,8 +1518,8 @@ private:
 	static void OnClickCompanyAdmin([[maybe_unused]] NetworkClientListWindow *w, [[maybe_unused]] Point pt, CompanyID company_id)
 	{
 		DropDownList list;
-		list.push_back(std::make_unique<DropDownListStringItem>(STR_NETWORK_CLIENT_LIST_ADMIN_COMPANY_RESET, DD_COMPANY_ADMIN_RESET, NetworkCompanyHasClients(company_id)));
-		list.push_back(std::make_unique<DropDownListStringItem>(STR_NETWORK_CLIENT_LIST_ADMIN_COMPANY_UNLOCK, DD_COMPANY_ADMIN_UNLOCK, !NetworkCompanyIsPassworded(company_id)));
+		list.push_back(MakeDropDownListStringItem(STR_NETWORK_CLIENT_LIST_ADMIN_COMPANY_RESET, DD_COMPANY_ADMIN_RESET, NetworkCompanyHasClients(company_id)));
+		list.push_back(MakeDropDownListStringItem(STR_NETWORK_CLIENT_LIST_ADMIN_COMPANY_UNLOCK, DD_COMPANY_ADMIN_UNLOCK, !NetworkCompanyIsPassworded(company_id)));
 
 		Rect wi_rect;
 		wi_rect.left   = pt.x;

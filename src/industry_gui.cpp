@@ -1759,14 +1759,14 @@ public:
 		DropDownList list;
 
 		/* Add item for disabling filtering. */
-		list.push_back(std::make_unique<DropDownListStringItem>(this->GetCargoFilterLabel(CargoFilterCriteria::CF_ANY), CargoFilterCriteria::CF_ANY, false));
+		list.push_back(MakeDropDownListStringItem(this->GetCargoFilterLabel(CargoFilterCriteria::CF_ANY), CargoFilterCriteria::CF_ANY));
 		/* Add item for industries not producing anything, e.g. power plants */
-		list.push_back(std::make_unique<DropDownListStringItem>(this->GetCargoFilterLabel(CargoFilterCriteria::CF_NONE), CargoFilterCriteria::CF_NONE, false));
+		list.push_back(MakeDropDownListStringItem(this->GetCargoFilterLabel(CargoFilterCriteria::CF_NONE), CargoFilterCriteria::CF_NONE));
 
 		/* Add cargos */
 		Dimension d = GetLargestCargoIconSize();
 		for (const CargoSpec *cs : _sorted_standard_cargo_specs) {
-			list.push_back(std::make_unique<DropDownListIconItem>(d, cs->GetCargoIcon(), PAL_NONE, cs->name, cs->Index(), false));
+			list.push_back(MakeDropDownListIconItem(d, cs->GetCargoIcon(), PAL_NONE, cs->name, cs->Index()));
 		}
 
 		return list;
@@ -3101,7 +3101,7 @@ struct IndustryCargoesWindow : public Window {
 				DropDownList lst;
 				Dimension d = GetLargestCargoIconSize();
 				for (const CargoSpec *cs : _sorted_standard_cargo_specs) {
-					lst.push_back(std::make_unique<DropDownListIconItem>(d, cs->GetCargoIcon(), PAL_NONE, cs->name, cs->Index(), false));
+					lst.push_back(MakeDropDownListIconItem(d, cs->GetCargoIcon(), PAL_NONE, cs->name, cs->Index()));
 				}
 				if (!lst.empty()) {
 					int selected = (this->ind_cargo >= NUM_INDUSTRYTYPES) ? (int)(this->ind_cargo - NUM_INDUSTRYTYPES) : -1;
@@ -3115,7 +3115,7 @@ struct IndustryCargoesWindow : public Window {
 				for (IndustryType ind : _sorted_industry_types) {
 					const IndustrySpec *indsp = GetIndustrySpec(ind);
 					if (!indsp->enabled) continue;
-					lst.push_back(std::make_unique<DropDownListStringItem>(indsp->name, ind, false));
+					lst.push_back(MakeDropDownListStringItem(indsp->name, ind));
 				}
 				if (!lst.empty()) {
 					int selected = (this->ind_cargo < NUM_INDUSTRYTYPES) ? (int)this->ind_cargo : -1;

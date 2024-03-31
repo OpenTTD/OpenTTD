@@ -23,17 +23,7 @@ void DrawDropDownButton(int x, int y, Colours button_colour, bool state, bool cl
 void DrawBoolButton(int x, int y, bool state, bool clickable);
 
 template <class T>
-DropDownList BuildSetDropDownList(int *selected_index)
-{
-	int n = T::GetNumSets();
-	*selected_index = T::GetIndexOfUsedSet();
-	DropDownList list;
-	for (int i = 0; i < n; i++) {
-		list.push_back(std::make_unique<DropDownListStringItem>(T::GetSet(i)->GetListLabel(), i, false));
-	}
-	return list;
-}
-
+DropDownList BuildSetDropDownList(int *selected_index);
 
 /* Actually implemented in music_gui.cpp */
 void ChangeMusicSet(int index);

@@ -16,6 +16,7 @@
 #include "string_func.h"
 #include "textfile_gui.h"
 #include "dropdown_type.h"
+#include "dropdown_func.h"
 #include "gfx_layout.h"
 #include "debug.h"
 #include "openttd.h"
@@ -534,7 +535,7 @@ void TextfileWindow::AfterLoadMarkdown()
 			DropDownList list;
 			for (size_t line : this->jumplist) {
 				SetDParamStr(0, this->lines[line].text);
-				list.push_back(std::make_unique<DropDownListStringItem>(STR_TEXTFILE_JUMPLIST_ITEM, (int)line, false));
+				list.push_back(MakeDropDownListStringItem(STR_TEXTFILE_JUMPLIST_ITEM, (int)line));
 			}
 			ShowDropDownList(this, std::move(list), -1, widget);
 			break;

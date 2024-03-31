@@ -20,6 +20,7 @@
 #include "string_func.h"
 #include "window_func.h"
 #include "viewport_func.h"
+#include "dropdown_type.h"
 #include "dropdown_func.h"
 #include "station_base.h"
 #include "waypoint_base.h"
@@ -542,8 +543,8 @@ public:
 		using DropDownListCargoItem = DropDownCheck<DropDownString<DropDownListIconItem, FS_SMALL, true>>;
 
 		DropDownList list;
-		list.push_back(std::make_unique<DropDownListStringItem>(STR_STATION_LIST_CARGO_FILTER_SELECT_ALL, CargoFilterCriteria::CF_SELECT_ALL));
-		list.push_back(std::make_unique<DropDownListDividerItem>(-1));
+		list.push_back(MakeDropDownListStringItem(STR_STATION_LIST_CARGO_FILTER_SELECT_ALL, CargoFilterCriteria::CF_SELECT_ALL));
+		list.push_back(MakeDropDownListDividerItem());
 
 		bool any_hidden = false;
 
@@ -565,8 +566,8 @@ public:
 		}
 
 		if (!expanded && any_hidden) {
-			if (list.size() > 2) list.push_back(std::make_unique<DropDownListDividerItem>(-1));
-			list.push_back(std::make_unique<DropDownListStringItem>(STR_STATION_LIST_CARGO_FILTER_EXPAND, CargoFilterCriteria::CF_EXPAND_LIST));
+			if (list.size() > 2) list.push_back(MakeDropDownListDividerItem());
+			list.push_back(MakeDropDownListStringItem(STR_STATION_LIST_CARGO_FILTER_EXPAND, CargoFilterCriteria::CF_EXPAND_LIST));
 		}
 
 		return list;
