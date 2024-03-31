@@ -32,6 +32,7 @@
 #include "command_func.h"
 #include "console_func.h"
 #include "genworld.h"
+#include "string_func.h"
 #include "window_func.h"
 #include "company_func.h"
 #include "rev.h"

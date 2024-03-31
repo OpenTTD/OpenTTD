@@ -15,6 +15,7 @@
 #include "command_func.h"
 #include "dropdown_type.h"
 #include "dropdown_func.h"
+#include "dropdown_common_type.h"
 #include "vehicle_gui.h"
 #include "rail_gui.h"
 #include "road.h"

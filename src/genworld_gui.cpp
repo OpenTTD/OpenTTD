@@ -19,6 +19,7 @@
 #include "fios.h"
 #include "string_func.h"
 #include "dropdown_type.h"
+#include "dropdown_common_type.h"
 #include "dropdown_func.h"
 #include "querystring_gui.h"
 #include "town.h"

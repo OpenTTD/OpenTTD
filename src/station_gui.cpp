@@ -21,6 +21,7 @@
 #include "window_func.h"
 #include "viewport_func.h"
 #include "dropdown_type.h"
+#include "dropdown_common_type.h"
 #include "dropdown_func.h"
 #include "station_base.h"
 #include "waypoint_base.h"

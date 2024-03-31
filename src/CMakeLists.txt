@@ -139,6 +139,7 @@ add_files(
     driver.cpp
     driver.h
     dropdown.cpp
+    dropdown_common_type.h
     dropdown_func.h
     dropdown_type.h
     economy.cpp
