@@ -21,14 +21,24 @@
 /* These declarations are internal to spritecache but need to be exposed for unit-tests. */
 
 struct SpriteCache {
-	void *ptr;
-	size_t file_pos;
-	SpriteFile *file;    ///< The file the sprite in this entry can be found in.
-	uint32_t id;
-	int16_t lru;
-	SpriteType type;     ///< In some cases a single sprite is misused by two NewGRFs. Once as real sprite and once as recolour sprite. If the recolour sprite gets into the cache it might be drawn as real sprite which causes enormous trouble.
-	bool warned;         ///< True iff the user has been warned about incorrect use of this sprite
-	uint8_t control_flags;  ///< Control flags, see SpriteCacheCtrlFlags
+	std::vector<uint8_t> data;
+	size_t file_pos = 0;
+	SpriteFile *file = nullptr; ///< The file the sprite in this entry can be found in.
+	uint32_t id = 0;
+	uint32_t lru = 0;
+	SpriteType type = SpriteType::Invalid; ///< In some cases a single sprite is misused by two NewGRFs. Once as real sprite and once as recolour sprite. If the recolour sprite gets into the cache it might be drawn as real sprite which causes enormous trouble.
+	bool warned = false; ///< True iff the user has been warned about incorrect use of this sprite
+	uint8_t control_flags = 0; ///< Control flags, see SpriteCacheCtrlFlags
+
+	void ClearSpriteData();
+};
+
+class CacheSpriteAllocator : public SpriteAllocator {
+public:
+	CacheSpriteAllocator(std::vector<uint8_t> &data) : data(data) { }
+	void *Allocate(size_t size) override;
+private:
+	std::vector<uint8_t> &data;
 };
 
 inline bool IsMapgenSpriteID(SpriteID sprite)
@@ -36,7 +46,6 @@ inline bool IsMapgenSpriteID(SpriteID sprite)
 	return IsInsideMM(sprite, SPR_MAPGEN_BEGIN, SPR_MAPGEN_END);
 }
 
-void *AllocSprite(size_t mem_req);
-SpriteCache *AllocateSpriteCache(uint index);
+SpriteCache *AllocateSpriteCache(size_t index);
 
 #endif /* SPRITECACHE_INTERNAL_H */

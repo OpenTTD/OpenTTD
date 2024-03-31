@@ -31,10 +31,12 @@ enum SpriteCacheCtrlFlags {
 
 extern uint _sprite_cache_size;
 
-typedef void *AllocatorProc(size_t size);
+class SimpleSpriteAllocator : public SpriteAllocator {
+public:
+	void *Allocate(size_t size) override;
+};
 
-void *SimpleSpriteAlloc(size_t size);
-void *GetRawSprite(SpriteID sprite, SpriteType type, AllocatorProc *allocator = nullptr, SpriteEncoder *encoder = nullptr);
+void *GetRawSprite(SpriteID sprite, SpriteType type, SpriteAllocator *allocator = nullptr, SpriteEncoder *encoder = nullptr);
 bool SpriteExists(SpriteID sprite);
 
 SpriteType GetSpriteType(SpriteID sprite);
@@ -59,13 +61,14 @@ inline const uint8_t *GetNonSprite(SpriteID sprite, SpriteType type)
 void GfxInitSpriteMem();
 void GfxClearSpriteCache();
 void GfxClearFontSpriteCache();
+void GfxShrinkToFitSpriteCacheIndex();
 void IncreaseSpriteLRU();
 
 SpriteFile &OpenCachedSpriteFile(const std::string &filename, Subdirectory subdir, bool palette_remap);
 
 void ReadGRFSpriteOffsets(SpriteFile &file);
 size_t GetGRFSpriteOffset(uint32_t id);
-bool LoadNextSprite(int load_index, SpriteFile &file, uint file_sprite_id);
+bool LoadNextSprite(uint load_index, SpriteFile &file, uint file_sprite_id);
 bool SkipSpriteData(SpriteFile &file, uint8_t type, uint16_t num);
 void DupSprite(SpriteID old_spr, SpriteID new_spr);
 
