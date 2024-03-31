@@ -1511,7 +1511,7 @@ STR_CONFIG_SETTING_MINUTES_PER_YEAR_FROZEN                      :0 (kalendāra l
 STR_CONFIG_SETTING_TOWN_CARGO_SCALE                             :Mērogot pilsētas kravu ražošana: {STRING}
 STR_CONFIG_SETTING_TOWN_CARGO_SCALE_HELPTEXT                    :Mērogojiet pilsētu kravu ražošanu par šo procentu.
 STR_CONFIG_SETTING_INDUSTRY_CARGO_SCALE                         :Merogot industrijas kravu ražošanu: {STRING}
-STR_CONFIG_SETTING_INDUSTRY_CARGO_SCALE_HELPTEXT                :Mērogojiet nozaru kravu ražošanu par šo procentu.
+STR_CONFIG_SETTING_INDUSTRY_CARGO_SCALE_HELPTEXT                :Mērogojiet nozaru kravu ražošanu par šo procentu
 STR_CONFIG_SETTING_CARGO_SCALE_VALUE                            :{NUM}%
 
 STR_CONFIG_SETTING_AUTORENEW_VEHICLE                            :Automātiski atjaunot transportlīdzekļus, kad tie ir kļuvuši veci: {STRING}
@@ -1543,7 +1543,7 @@ STR_CONFIG_SETTING_GRAPH_LINE_THICKNESS_HELPTEXT                :Diagrammu līni
 
 STR_CONFIG_SETTING_SHOW_NEWGRF_NAME                             :Rādīt jauno NewGRF paplašinājumu nosaukumus uzbūvēto transportlīdzekļu logā: {STRING}
 STR_CONFIG_SETTING_SHOW_NEWGRF_NAME_HELPTEXT                    :Uzbūvēto transportlīdzekļu loga pievienot rindu, kurā būtu redzams, no kura NewGRF nāk izvēlētais transportlīdzeklis.
-STR_CONFIG_SETTING_SHOW_CARGO_IN_LISTS                          :Rādīt kravas, ko transportlīdzekļi var pārvadāt saraksta logos {STRING}
+STR_CONFIG_SETTING_SHOW_CARGO_IN_LISTS                          :Rādīt kravas, ko transportlīdzekļi var pārvadāt saraksta logos: {STRING}
 STR_CONFIG_SETTING_SHOW_CARGO_IN_LISTS_HELPTEXT                 :Ja ieslēgts, transportlīdzekļa transportējamā krava parādīsies virs tās transportlīdzekļu sarakstos
 
 STR_CONFIG_SETTING_LANDSCAPE                                    :Ainava: {STRING}
@@ -2041,7 +2041,7 @@ STR_CONFIG_SETTING_DISTRIBUTION_PAX_HELPTEXT                    :"Simetrisks" no
 STR_CONFIG_SETTING_DISTRIBUTION_MAIL                            :Pasta izplatīšanas režīms: {STRING}
 STR_CONFIG_SETTING_DISTRIBUTION_MAIL_HELPTEXT                   :"Simetrisks" nozīmē, ka no stacijas A uz staciju B tiks nosūtīts aptuveni tāds pats pasta daudzums kā no B uz A. "Asimetrisks" nozīmē, ka jebkurā virzienā var nosūtīt patvaļīgu pasta daudzumu. "Manuāli" nozīmē, ka pasta automātiska izplatīšana netiks veikta.
 STR_CONFIG_SETTING_DISTRIBUTION_ARMOURED                        :Izplatīšanas režīms APSARGĀJAMAI preču klasei: {STRING}
-STR_CONFIG_SETTING_DISTRIBUTION_ARMOURED_HELPTEXT               :APSARGĀJAMĀ kravu klasē ir vērtslietas mērenā klimatā, dimanti subtropu klimatā vai zelts subarktiskajā klimatā. NewGRF to var mainīt. "Simetrisks" nozīmē, ka no stacijas A uz staciju B tiks nosūtīts aptuveni tāds pats šīs kravas daudzums kā no B uz A. "Asimetrisks" nozīmē, ka šīs kravas var nosūtīt jebkurā virzienā patvaļīgi. "Manuāli" nozīmē, ka šai kravai automātiskā sadale nenotiks. Spēlējot subarktisko vai subtropu, ieteicams to iestatīt uz asimetrisku vai manuālu, jo bankas saņem kravas tikai šādos klimatiskajos apstākļos. Mērenam klimatam varat izvēlēties arī simetrisko, jo bankas nosūtīs vērtslietas atpakaļ uz izcelsmes banku.
+STR_CONFIG_SETTING_DISTRIBUTION_ARMOURED_HELPTEXT               :APSARGĀJAMĀ kravu klasē ir vērtslietas mērenā klimatā, dimanti subtropu klimatā vai zelts subarktiskajā klimatā. NewGRF to var mainīt. "Simetrisks" nozīmē, ka no stacijas A uz staciju B tiks nosūtīts aptuveni tāds pats šīs kravas daudzums kā no B uz A. "Asimetrisks" nozīmē, ka šīs kravas var nosūtīt jebkurā virzienā patvaļīgi. "Manuāli" nozīmē, ka šai kravai automātiskā sadale nenotiks. Spēlējot subarktisko vai subtropu, ieteicams to iestatīt uz asimetrisku vai manuālu, jo bankas saņem kravas tikai šādos klimatiskajos apstākļos. Mērenam klimatam varat izvēlēties arī simetrisko, jo bankas nosūtīs vērtslietas atpakaļ uz izcelsmes banku
 STR_CONFIG_SETTING_DISTRIBUTION_DEFAULT                         :Izplatīšanas modelis citām kravu klasēm: {STRING}
 STR_CONFIG_SETTING_DISTRIBUTION_DEFAULT_HELPTEXT                :"Asimetrisks" nozīmē, ka jebkurā virzienā var nosūtīt patvaļīgu daudzumu kravas. "Manuāli" nozīmē, ka šīm kravām automātiska sadale nenotiks
 ###length 3
@@ -2053,7 +2053,7 @@ STR_CONFIG_SETTING_LINKGRAPH_ACCURACY                           :Sadales precizi
 STR_CONFIG_SETTING_LINKGRAPH_ACCURACY_HELPTEXT                  :Jo lielāku vērtību iestatīsiet, jo vairāk CPU laika aizies saišu grafa aprēķināšanai. Ja tas aizņem pārāk daudz laika, jūs varētu pamanīt spēles iebremzēšanos. Ja iestatīsiet pārāk mazu, izplatīšana būs neprecīza un jūs varētu pamanīt, ka krava tiek nosūtīta uz negaidītām vietām.
 
 STR_CONFIG_SETTING_DEMAND_DISTANCE                              :Attāluma ietekme uz pieprasījumu: {STRING}
-STR_CONFIG_SETTING_DEMAND_DISTANCE_HELPTEXT                     :Ja iestatīsiet šo vērtību lielāku kā 0, attālums starp kravas izcelsmes staciju A un iespējamo galastaciju B ietekmēs sūtāmās kravas apjomu. Jo tālāk no stacijas A ir stacija B, jo mazāk kravas tiks nosūtīts. Jo augstāka vērtība, jo mazāk kravas tiks nosūtīts uz tālo staciju un vairāk kravu uz tuvo staciju.
+STR_CONFIG_SETTING_DEMAND_DISTANCE_HELPTEXT                     :Ja iestatīsiet šo vērtību lielāku kā 0, attālums starp kravas izcelsmes staciju A un iespējamo galastaciju B ietekmēs sūtāmās kravas apjomu. Jo tālāk no stacijas A ir stacija B, jo mazāk kravas tiks nosūtīts. Jo augstāka vērtība, jo mazāk kravas tiks nosūtīts uz tālo staciju un vairāk kravu uz tuvāku staciju.
 STR_CONFIG_SETTING_DEMAND_SIZE                                  :Atpakaļceļa kravas daudzums simetriskajā režīmā: {STRING}
 STR_CONFIG_SETTING_DEMAND_SIZE_HELPTEXT                         :Uzstādod šo mazāk par 100% liks simetriskajai sadalei izturēties vairāk kā asimetriskajai. Mazāk kravas ar varu tiks sūtīts atpakaļ ja noteikts daudzums tiks sūtīts uz piestātni. Ja jūs uzstādīsiet to uz 0% simetriskā sadale izturēsies tā pat kā asimetriskā.
 

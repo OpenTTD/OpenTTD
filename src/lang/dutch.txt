@@ -4445,10 +4445,10 @@ STR_VEHICLE_INFO_CAPACITY_CAPACITY                              :{BLACK}Capacite
 STR_VEHICLE_INFO_FEEDER_CARGO_VALUE                             :{BLACK}Geldoverdracht: {LTBLUE}{CURRENCY_LONG}
 
 STR_VEHICLE_DETAILS_SERVICING_INTERVAL_DAYS                     :{BLACK}Onderhoudstermijn: {LTBLUE}{COMMA}{NBSP}dagen{BLACK} {STRING}
-STR_VEHICLE_DETAILS_SERVICING_INTERVAL_MINUTES                  :{BLACK}Onderhoudstermijn: {LTBLUE}{COMMA}{NBSP}minuten{BLACK}   {STRING}
+STR_VEHICLE_DETAILS_SERVICING_INTERVAL_MINUTES                  :{BLACK}Onderhoudstermijn: {LTBLUE}{COMMA}{NBSP}minu{P ut ten}{BLACK} {STRING}
 STR_VEHICLE_DETAILS_SERVICING_INTERVAL_PERCENT                  :{BLACK}Onderhoudstermijn: {LTBLUE}{COMMA}%{BLACK} {STRING}
 STR_VEHICLE_DETAILS_LAST_SERVICE_DATE                           :Laatste onderhoud: {LTBLUE}{DATE_LONG}
-STR_VEHICLE_DETAILS_LAST_SERVICE_MINUTES_AGO                    :Laatste onderhoud: {LTBLUE}{NUM} minuten geleden
+STR_VEHICLE_DETAILS_LAST_SERVICE_MINUTES_AGO                    :Laatste onderhoud: {LTBLUE}{NUM} minu{P ut ten} geleden
 STR_VEHICLE_DETAILS_INCREASE_SERVICING_INTERVAL_TOOLTIP_DAYS    :{BLACK}Vergroot de onderhoudstermijn met 10 dagen. Ctrl+klik voor een verhoging met 5 dagen
 STR_VEHICLE_DETAILS_INCREASE_SERVICING_INTERVAL_TOOLTIP_MINUTES :{BLACK}Vergroot de onderhoudstermijng met 5 minuten. Ctrl+klik voor een verhoging met 1 minuut
 STR_VEHICLE_DETAILS_INCREASE_SERVICING_INTERVAL_TOOLTIP_PERCENT :{BLACK}Vergroot de onderhoudstermijn met 10 procent. Ctrl+klik voor een verhoging met 5 procent
@@ -4639,7 +4639,7 @@ STR_ORDER_REFIT_ORDER                                           :(Ombouwen naar 
 STR_ORDER_REFIT_STOP_ORDER                                      :(Ombouwen naar {STRING} en stop)
 STR_ORDER_STOP_ORDER                                            :(Stop)
 
-STR_ORDER_WAIT_TO_UNBUNCH                                       :(wacht op ontkreukelen)
+STR_ORDER_WAIT_TO_UNBUNCH                                       :(Wacht op ontkreukelen)
 
 STR_ORDER_GO_TO_STATION                                         :{STRING} {STATION} {STRING}
 STR_ORDER_GO_TO_STATION_CAN_T_USE_STATION                       :{PUSH_COLOUR}{RED}(Kan station niet gebruiken){POP_COLOUR} {STRING} {STATION} {STRING}

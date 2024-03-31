@@ -4445,10 +4445,10 @@ STR_VEHICLE_INFO_CAPACITY_CAPACITY                              :{BLACK}Kapacite
 STR_VEHICLE_INFO_FEEDER_CARGO_VALUE                             :{BLACK}Værdi af overført fragt: {LTBLUE}{CURRENCY_LONG}
 
 STR_VEHICLE_DETAILS_SERVICING_INTERVAL_DAYS                     :{BLACK}Serviceinterval: {LTBLUE}{COMMA}{NBSP}dage{BLACK}   {STRING}
-STR_VEHICLE_DETAILS_SERVICING_INTERVAL_MINUTES                  :{BLACK}Serviceinterval: {LTBLUE}{COMMA}{NBSP}minutter{BLACK}   {STRING}
+STR_VEHICLE_DETAILS_SERVICING_INTERVAL_MINUTES                  :{BLACK}Serviceinterval: {LTBLUE}{COMMA}{NBSP}minut{P "" ter}{BLACK} {STRING}
 STR_VEHICLE_DETAILS_SERVICING_INTERVAL_PERCENT                  :{BLACK}Serviceinterval: {LTBLUE}{COMMA}%{BLACK}   {STRING}
 STR_VEHICLE_DETAILS_LAST_SERVICE_DATE                           :Sidste service: {LTBLUE}{DATE_LONG}
-STR_VEHICLE_DETAILS_LAST_SERVICE_MINUTES_AGO                    :Last service: {LTBLUE}{NUM} minutter siden
+STR_VEHICLE_DETAILS_LAST_SERVICE_MINUTES_AGO                    :sidste service: {LTBLUE}{NUM} minut{P "" ter} siden
 STR_VEHICLE_DETAILS_INCREASE_SERVICING_INTERVAL_TOOLTIP_DAYS    :{BLACK}Forøg serviceintervallet med 10 dage. Ctrl+klik for at øge serviceintervallet med 5 dage
 STR_VEHICLE_DETAILS_INCREASE_SERVICING_INTERVAL_TOOLTIP_MINUTES :{BLACK}Forøg serviceintervallet med 5 minutter. Ctrl+klik for at øge serviceintervallet med 1 minut
 STR_VEHICLE_DETAILS_INCREASE_SERVICING_INTERVAL_TOOLTIP_PERCENT :{BLACK}Forøg serviceintervallet med 10 procent. Ctrl+klik for at øge serviceintervallet med 5 procent
@@ -4639,7 +4639,7 @@ STR_ORDER_REFIT_ORDER                                           :(Tilpas til {ST
 STR_ORDER_REFIT_STOP_ORDER                                      :(Tilpas til {STRING} og stop)
 STR_ORDER_STOP_ORDER                                            :(Stop)
 
-STR_ORDER_WAIT_TO_UNBUNCH                                       :(vent med at pakke ud)
+STR_ORDER_WAIT_TO_UNBUNCH                                       :(vent med at afkoble)
 
 STR_ORDER_GO_TO_STATION                                         :{STRING} {STATION} {STRING}
 STR_ORDER_GO_TO_STATION_CAN_T_USE_STATION                       :{PUSH_COLOUR}{RED}(Kan ikke bruge station){POP_COLOUR} {STRING} {STATION} {STRING}

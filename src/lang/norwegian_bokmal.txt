@@ -4447,10 +4447,10 @@ STR_VEHICLE_INFO_CAPACITY_CAPACITY                              :{BLACK}Kapasite
 STR_VEHICLE_INFO_FEEDER_CARGO_VALUE                             :{BLACK}Overføringskreditt: {LTBLUE}{CURRENCY_LONG}
 
 STR_VEHICLE_DETAILS_SERVICING_INTERVAL_DAYS                     :{BLACK}Vedlikeholdsintervall: {LTBLUE}{COMMA}{NBSP}dager{BLACK} {STRING}
-STR_VEHICLE_DETAILS_SERVICING_INTERVAL_MINUTES                  :{BLACK}Vedlikeholdsintervall: {LTBLUE}{COMMA}{NBSP}minutter{BLACK} {STRING}
+STR_VEHICLE_DETAILS_SERVICING_INTERVAL_MINUTES                  :{BLACK}Vedlikeholdsintervall: {LTBLUE}{COMMA}{NBSP}minutt{P "" er}{BLACK} {STRING}
 STR_VEHICLE_DETAILS_SERVICING_INTERVAL_PERCENT                  :{BLACK}Vedlikeholdsintervall: {LTBLUE}{COMMA}{NBSP}%{BLACK} {STRING}
 STR_VEHICLE_DETAILS_LAST_SERVICE_DATE                           :Forrige vedlikehold: {LTBLUE}{DATE_LONG}
-STR_VEHICLE_DETAILS_LAST_SERVICE_MINUTES_AGO                    :Forrige vedlikehold: {LTBLUE}{NUM} minutter siden
+STR_VEHICLE_DETAILS_LAST_SERVICE_MINUTES_AGO                    :Forrige vedlikehold: {LTBLUE}{NUM} minutt{P "" er} siden
 STR_VEHICLE_DETAILS_INCREASE_SERVICING_INTERVAL_TOOLTIP_DAYS    :{BLACK}Øk vedlikeholdsintervall med 10 dager. Ctrl+klikk for å øke vedlikeholdsintervall med 5 dager
 STR_VEHICLE_DETAILS_INCREASE_SERVICING_INTERVAL_TOOLTIP_MINUTES :{BLACK}Reduser vedlikeholdsintervall med 5 minutter. Ctrl+klikk for å øke vedlikeholdsintervall med 1 minutt
 STR_VEHICLE_DETAILS_INCREASE_SERVICING_INTERVAL_TOOLTIP_PERCENT :{BLACK}Øk vedlikeholdsintervall med 10 prosent. Ctrl+klikk for å øke vedlikeholdsintervall med 5 prosent
@@ -4641,7 +4641,7 @@ STR_ORDER_REFIT_ORDER                                           :(Bygg om til {S
 STR_ORDER_REFIT_STOP_ORDER                                      :(Bygg om til {STRING} og stopp)
 STR_ORDER_STOP_ORDER                                            :(Stopp)
 
-STR_ORDER_WAIT_TO_UNBUNCH                                       :(vent for å fjerne klumping)
+STR_ORDER_WAIT_TO_UNBUNCH                                       :(Vent for å fjerne klumping)
 
 STR_ORDER_GO_TO_STATION                                         :{STRING} {STATION} {STRING}
 STR_ORDER_GO_TO_STATION_CAN_T_USE_STATION                       :{PUSH_COLOUR}{RED}(Kan ikke bruke stasjon){POP_COLOUR} {STRING} {STATION} {STRING}
