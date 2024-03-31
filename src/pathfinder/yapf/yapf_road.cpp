@@ -11,6 +11,7 @@
 #include "yapf.hpp"
 #include "yapf_node_road.hpp"
 #include "../../roadstop_base.h"
+#include "../../vehicle_func.h"
 
 #include "../../safeguards.h"
 
@@ -54,6 +55,41 @@ protected:
 		return 0;
 	}
 
+	struct TileDataHelper
+	{
+		TileIndex tile;    ///< The tile that yapf is calculating the cost for.
+		DiagDirection dir; ///< The direction the vehicle is travelling.
+	};
+
+	/* Find if the tile entry direction is blocked, preventing an RV from stopping. */
+	static Vehicle *FindBlockingVehiclesInTile(Vehicle *v, void *data)
+	{
+		TileDataHelper *tdh = (TileDataHelper*)data;
+
+		/* Exclude if not a RV, not travelling in the right direction or moving */
+		if (v->type != VEH_ROAD || DirToDiagDir(v->direction) != tdh->dir || !v->IsPrimaryVehicle() || v->cur_speed > 0) return nullptr;
+
+		RoadVehicle *rv = RoadVehicle::From(v);
+		/* Ignore RV not in a road stop */
+		if (rv->state < RVSB_IN_ROAD_STOP) return nullptr;
+
+		uint veh_pos = DiagDirToAxis(tdh->dir) == AXIS_X ? rv->x_pos : rv->y_pos;
+		uint tile_pos = DiagDirToAxis(tdh->dir) == AXIS_X ? (TileX(tdh->tile) * TILE_SIZE) : (TileY(tdh->tile) * TILE_SIZE);
+
+		switch (tdh->dir) {
+			case DIAGDIR_NE:
+			case DIAGDIR_NW:
+				return ((veh_pos + rv->gcache.cached_total_length) >= (tile_pos + TILE_SIZE)) ? v : nullptr;
+			case DIAGDIR_SE:
+			case DIAGDIR_SW:
+				return ((veh_pos - rv->gcache.cached_total_length) <= tile_pos) ? v : nullptr;
+			default:
+				return nullptr;
+		}
+
+		return nullptr;
+	}
+
 	/** return one tile cost */
 	inline int OneTileCost(TileIndex tile, Trackdir trackdir)
 	{
@@ -80,6 +116,16 @@ protected:
 							 * cost based on the fill percentage of the whole queue. */
 							const RoadStop::Entry *entry = rs->GetEntry(dir);
 							cost += entry->GetOccupied() * Yapf().PfGetSettings().road_stop_occupied_penalty / entry->GetLength();
+
+							if (Yapf().PfDetectDestinationTile(tile, trackdir)) {
+								/* If it is the vehicle's destination road stop. */
+								TileDataHelper tdh;
+								tdh.tile = tile;
+								tdh.dir = dir;
+								/* Add cost if entrance is blocked the RV would be forced to wait. */
+								const bool entrance_blocked = HasVehicleOnPos(tile, &tdh, &FindBlockingVehiclesInTile);
+								cost += entrance_blocked * Yapf().PfGetSettings().road_stop_occupied_penalty;
+							}
 						}
 					} else {
 						/* Increase cost for filled road stops */
