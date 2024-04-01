@@ -2574,6 +2574,7 @@ STR_NETWORK_ERROR_BAD_PLAYER_NAME                               :{WHITE}Nid yw e
 STR_NETWORK_ERROR_BAD_SERVER_NAME                               :{WHITE}Nid yw eich enw gweinyd wedi ei osod. Gall yr enw gael ei osod ar frig y ffenestr Amlchwaraewr
 STR_NETWORK_ERROR_WRONG_REVISION                                :{WHITE}Nid y fersiwn y gwestai yn cyfateb i fersiwn y gweinydd
 STR_NETWORK_ERROR_WRONG_PASSWORD                                :{WHITE}Cyfrinair anghywir
+STR_NETWORK_ERROR_NOT_ON_ALLOW_LIST                             :{WHITE}Nid ydych ar y rhestr o westai sydd wedi'u caniatáu
 STR_NETWORK_ERROR_SERVER_FULL                                   :{WHITE}Mae'r gweinydd yn llawn
 STR_NETWORK_ERROR_SERVER_BANNED                                 :{WHITE}Rydych chi wedi'ch gwahardd o'r gweinydd hwn
 STR_NETWORK_ERROR_KICKED                                        :{WHITE}Cafoch chi eich cicio o'r gêm
@@ -2601,6 +2602,7 @@ STR_NETWORK_ERROR_CLIENT_NOT_EXPECTED                           :wedi derbyn pac
 STR_NETWORK_ERROR_CLIENT_WRONG_REVISION                         :fersiwn anghywir
 STR_NETWORK_ERROR_CLIENT_NAME_IN_USE                            :enw eisoes mewn defnydd
 STR_NETWORK_ERROR_CLIENT_WRONG_PASSWORD                         :cyfrinair anghywir
+STR_NETWORK_ERROR_CLIENT_NOT_ON_ALLOW_LIST                      :ddim ar restr caniatáu
 STR_NETWORK_ERROR_CLIENT_COMPANY_MISMATCH                       :id-cwmni anghywir yn DoCommand
 STR_NETWORK_ERROR_CLIENT_KICKED                                 :wedi cael cic gan y gweinydd
 STR_NETWORK_ERROR_CLIENT_CHEATER                                :yn ceisio twyllo
@@ -4447,10 +4449,10 @@ STR_VEHICLE_INFO_CAPACITY_CAPACITY                              :{BLACK}Cynhwyse
 STR_VEHICLE_INFO_FEEDER_CARGO_VALUE                             :{BLACK}Credydau Trosglwyddo: {LTBLUE}{CURRENCY_LONG}
 
 STR_VEHICLE_DETAILS_SERVICING_INTERVAL_DAYS                     :{BLACK}Bwlch rhwng gwasanaeth: {LTBLUE}{COMMA}{NBSP}diwrnod{BLACK} {STRING}
-STR_VEHICLE_DETAILS_SERVICING_INTERVAL_MINUTES                  :{BLACK}Ysbaid gwasanaethu: {LTBLUE}{COMMA}{NBSP}munud{BLACK}   {STRING}
+STR_VEHICLE_DETAILS_SERVICING_INTERVAL_MINUTES                  :{BLACK}Ysbaid gwasanaethu: {LTBLUE}{COMMA}{NBSP}munud(P "" ""){BLACK}   {STRING}
 STR_VEHICLE_DETAILS_SERVICING_INTERVAL_PERCENT                  :{BLACK}Bwlch rhwng gwasanaethu: {LTBLUE}{COMMA}%{BLACK} {STRING}
 STR_VEHICLE_DETAILS_LAST_SERVICE_DATE                           :Gwasanaeth diwethaf: {LTBLUE}{DATE_LONG}
-STR_VEHICLE_DETAILS_LAST_SERVICE_MINUTES_AGO                    :Gwasanaeth diwethaf: {LTBLUE}{NUM} munud yn ôl
+STR_VEHICLE_DETAILS_LAST_SERVICE_MINUTES_AGO                    :Gwasanaeth diwethaf: {LTBLUE}{NUM} munud{P "" ""} yn ôl
 STR_VEHICLE_DETAILS_INCREASE_SERVICING_INTERVAL_TOOLTIP_DAYS    :{BLACK}Cynyddu'r ysbaid gwasanaeth o 10 diwrnod. Mae Ctrl+Clic yn cynyddu'r ysbaid o 5 diwrnod
 STR_VEHICLE_DETAILS_INCREASE_SERVICING_INTERVAL_TOOLTIP_MINUTES :{BLACK}Cynyddu'r ysbaid gwasanaeth o 5 munud. Mae Ctrl+Clic yn cynyddu'r ysbaid o 1 funud
 STR_VEHICLE_DETAILS_INCREASE_SERVICING_INTERVAL_TOOLTIP_PERCENT :{BLACK}Cynyddu'r ysbaid gwasanaeth o 10 y cant. Mae Ctrl+Clic yn cynyddu'r ysbaid o 5 y cant
@@ -4993,7 +4995,7 @@ STR_ERROR_CAN_T_BUY_COMPANY                                     :{WHITE}Methu pr
 STR_ERROR_CAN_T_BUILD_COMPANY_HEADQUARTERS                      :{WHITE}Methu adeiladu pencadlys cwmni...
 
 # Town related errors
-STR_ERROR_CAN_T_GENERATE_TOWN                                   :{WHITE}Methu adeiladu unrhyw drefi
+STR_ERROR_CAN_T_GENERATE_TOWN                                   :{WHITE}Methu adeiladu unrhyw drefi...
 STR_ERROR_CAN_T_RENAME_TOWN                                     :{WHITE}Methu ailenwi tref...
 STR_ERROR_CAN_T_FOUND_TOWN_HERE                                 :{WHITE}Methu adeiladu tref yma...
 STR_ERROR_CAN_T_EXPAND_TOWN                                     :{WHITE}Methu ehangu'r dref...

@@ -4644,7 +4644,7 @@ STR_ORDER_REFIT_ORDER                                           :(Remodela a {ST
 STR_ORDER_REFIT_STOP_ORDER                                      :(Remodela a {STRING} i para)
 STR_ORDER_STOP_ORDER                                            :(Para)
 
-STR_ORDER_WAIT_TO_UNBUNCH                                       :(espera per a deixar espai entre vehicles)
+STR_ORDER_WAIT_TO_UNBUNCH                                       :(Espera per a deixar espai entre vehicles)
 
 STR_ORDER_GO_TO_STATION                                         :{STRING} {STATION} {STRING}
 STR_ORDER_GO_TO_STATION_CAN_T_USE_STATION                       :{PUSH_COLOUR}{RED}(No pot usar l'estació){POP_COLOUR} {STRING} {STATION} {STRING}
