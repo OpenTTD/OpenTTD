@@ -115,10 +115,6 @@ bool SetFallbackFont(FontCacheSettings *settings, const std::string &, int winla
 }
 
 
-#ifndef ANTIALIASED_QUALITY
-#define ANTIALIASED_QUALITY     4
-#endif
-
 /**
  * Create a new Win32FontCache.
  * @param fs      The font size that is going to be cached.
@@ -171,7 +167,8 @@ void Win32FontCache::SetFontSize(int pixels)
 	/* Create GDI font handle. */
 	this->logfont.lfHeight = -pixels;
 	this->logfont.lfWidth = 0;
-	this->logfont.lfOutPrecision = ANTIALIASED_QUALITY;
+	this->logfont.lfOutPrecision = OUT_TT_ONLY_PRECIS;
+	this->logfont.lfQuality = ANTIALIASED_QUALITY;
 
 	if (this->font != nullptr) {
 		SelectObject(dc, this->old_font);
