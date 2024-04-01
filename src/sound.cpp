@@ -234,6 +234,34 @@ void SndCopyToPool()
 }
 
 /**
+ * Change the configured sound set and reset sounds.
+ * @param index Index of sound set to switch to.
+ */
+void ChangeSoundSet(int index)
+{
+	if (BaseSounds::GetIndexOfUsedSet() == index) return;
+
+	auto set = BaseSounds::GetSet(index);
+	BaseSounds::ini_set = set->name;
+	BaseSounds::SetSet(set);
+
+	MxCloseAllChannels();
+	InitializeSound();
+
+	/* Replace baseset sounds in the pool with the updated original sounds. This is safe to do as
+	 * any sound still playing owns its sample data. */
+	for (uint i = 0; i < ORIGINAL_SAMPLE_COUNT; i++) {
+		SoundEntry *sound = GetSound(i);
+		/* GRF Container 0 means the sound comes from the baseset, and isn't overridden by NewGRF. */
+		if (sound == nullptr || sound->grf_container_ver != 0) continue;
+
+		*sound = _original_sounds[_sound_idx[i]];
+		sound->volume = _sound_base_vol[i];
+		sound->priority = 0;
+	}
+}
+
+/**
  * Decide 'where' (between left and right speaker) to play the sound effect.
  * Note: Callers must determine if sound effects are enabled. This plays a sound regardless of the setting.
  * @param sound Sound effect to play
