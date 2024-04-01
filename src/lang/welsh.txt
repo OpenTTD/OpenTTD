@@ -4445,10 +4445,10 @@ STR_VEHICLE_INFO_CAPACITY_CAPACITY                              :{BLACK}Cynhwyse
 STR_VEHICLE_INFO_FEEDER_CARGO_VALUE                             :{BLACK}Credydau Trosglwyddo: {LTBLUE}{CURRENCY_LONG}
 
 STR_VEHICLE_DETAILS_SERVICING_INTERVAL_DAYS                     :{BLACK}Bwlch rhwng gwasanaeth: {LTBLUE}{COMMA}{NBSP}diwrnod{BLACK} {STRING}
-STR_VEHICLE_DETAILS_SERVICING_INTERVAL_MINUTES                  :{BLACK}Ysbaid gwasanaethu: {LTBLUE}{COMMA}{NBSP}munud{BLACK}   {STRING}
+STR_VEHICLE_DETAILS_SERVICING_INTERVAL_MINUTES                  :{BLACK}Ysbaid gwasanaethu: {LTBLUE}{COMMA}{NBSP}munud(P "" ""){BLACK}   {STRING}
 STR_VEHICLE_DETAILS_SERVICING_INTERVAL_PERCENT                  :{BLACK}Bwlch rhwng gwasanaethu: {LTBLUE}{COMMA}%{BLACK} {STRING}
 STR_VEHICLE_DETAILS_LAST_SERVICE_DATE                           :Gwasanaeth diwethaf: {LTBLUE}{DATE_LONG}
-STR_VEHICLE_DETAILS_LAST_SERVICE_MINUTES_AGO                    :Gwasanaeth diwethaf: {LTBLUE}{NUM} munud yn ôl
+STR_VEHICLE_DETAILS_LAST_SERVICE_MINUTES_AGO                    :Gwasanaeth diwethaf: {LTBLUE}{NUM} munud{P "" ""} yn ôl
 STR_VEHICLE_DETAILS_INCREASE_SERVICING_INTERVAL_TOOLTIP_DAYS    :{BLACK}Cynyddu'r ysbaid gwasanaeth o 10 diwrnod. Mae Ctrl+Clic yn cynyddu'r ysbaid o 5 diwrnod
 STR_VEHICLE_DETAILS_INCREASE_SERVICING_INTERVAL_TOOLTIP_MINUTES :{BLACK}Cynyddu'r ysbaid gwasanaeth o 5 munud. Mae Ctrl+Clic yn cynyddu'r ysbaid o 1 funud
 STR_VEHICLE_DETAILS_INCREASE_SERVICING_INTERVAL_TOOLTIP_PERCENT :{BLACK}Cynyddu'r ysbaid gwasanaeth o 10 y cant. Mae Ctrl+Clic yn cynyddu'r ysbaid o 5 y cant
@@ -4991,7 +4991,7 @@ STR_ERROR_CAN_T_BUY_COMPANY                                     :{WHITE}Methu pr
 STR_ERROR_CAN_T_BUILD_COMPANY_HEADQUARTERS                      :{WHITE}Methu adeiladu pencadlys cwmni...
 
 # Town related errors
-STR_ERROR_CAN_T_GENERATE_TOWN                                   :{WHITE}Methu adeiladu unrhyw drefi
+STR_ERROR_CAN_T_GENERATE_TOWN                                   :{WHITE}Methu adeiladu unrhyw drefi...
 STR_ERROR_CAN_T_RENAME_TOWN                                     :{WHITE}Methu ailenwi tref...
 STR_ERROR_CAN_T_FOUND_TOWN_HERE                                 :{WHITE}Methu adeiladu tref yma...
 STR_ERROR_CAN_T_EXPAND_TOWN                                     :{WHITE}Methu ehangu'r dref...
