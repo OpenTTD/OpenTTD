@@ -57,7 +57,7 @@ public:
 	typedef typename Node::Key Key;               ///< key to hash tables
 	typedef typename Node::CachedData CachedData;
 	typedef typename CachedData::Key CacheKey;
-	typedef SmallArray<CachedData> LocalCache;
+	using LocalCache = std::deque<CachedData>;
 
 protected:
 	LocalCache      m_local_cache;
@@ -76,7 +76,7 @@ public:
 	inline bool PfNodeCacheFetch(Node &n)
 	{
 		CacheKey key(n.GetKey());
-		Yapf().ConnectNodeToCachedData(n, *new (m_local_cache.Append()) CachedData(key));
+		Yapf().ConnectNodeToCachedData(n, m_local_cache.emplace_back(key));
 		return false;
 	}
 
@@ -123,7 +123,7 @@ struct CSegmentCostCacheT : public CSegmentCostCacheBase {
 	static const int C_HASH_BITS = 14;
 
 	typedef CHashTableT<Tsegment, C_HASH_BITS> HashTable;
-	typedef SmallArray<Tsegment> Heap;
+	using Heap = std::deque<Tsegment>;
 	typedef typename Tsegment::Key Key;    ///< key to hash table
 
 	HashTable    m_map;
@@ -135,7 +135,7 @@ struct CSegmentCostCacheT : public CSegmentCostCacheBase {
 	inline void Flush()
 	{
 		m_map.Clear();
-		m_heap.Clear();
+		m_heap.clear();
 	}
 
 	inline Tsegment &Get(Key &key, bool *found)
@@ -143,7 +143,7 @@ struct CSegmentCostCacheT : public CSegmentCostCacheBase {
 		Tsegment *item = m_map.Find(key);
 		if (item == nullptr) {
 			*found = false;
-			item = new (m_heap.Append()) Tsegment(key);
+			item = &m_heap.emplace_back(key);
 			m_map.Push(*item);
 		} else {
 			*found = true;

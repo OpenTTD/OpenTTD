@@ -165,6 +165,34 @@ struct DumpTarget {
 			EndStruct();
 		}
 	}
+
+	/** Dump nested object (or only its name if this instance is already known). */
+	template <typename S> void WriteStructT(const std::string &name, const std::deque<S> *s)
+	{
+		static size_t type_id = ++LastTypeId();
+
+		if (s == nullptr) {
+			/* No need to dump nullptr struct. */
+			WriteValue(name, "<null>");
+			return;
+		}
+		std::string known_as;
+		if (FindKnownName(type_id, s, known_as)) {
+			/* We already know this one, no need to dump it. */
+			std::string known_as_str = std::string("known_as.") + name;
+			WriteValue(name, known_as_str);
+		} else {
+			/* Still unknown, dump it */
+			BeginStruct(type_id, name, s);
+			size_t num_items = s->size();
+			this->WriteValue("num_items", std::to_string(num_items));
+			for (size_t i = 0; i < num_items; i++) {
+				const auto &item = (*s)[i];
+				this->WriteStructT(fmt::format("item[{}]", i), &item);
+			}
+			EndStruct();
+		}
+	}
 };
 
 #endif /* DBG_HELPERS_H */
