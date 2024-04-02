@@ -24,6 +24,7 @@
 #include "engine_gui.h"
 #include "engine_func.h"
 #include "engine_base.h"
+#include "engine_type.h"
 #include "company_base.h"
 #include "vehicle_func.h"
 #include "articulated_vehicles.h"
@@ -605,6 +606,32 @@ static void ClearLastVariant(EngineID engine_id, VehicleType type)
 }
 
 /**
+ * Is a given engine allowed to expire?
+ * @note This does not age or retire the engine, just check if expiry is allowed.
+ * @param e The engine in question.
+ * @return True iff the engine can be checked for retirement.
+ */
+static bool AllowEngineExpiry(Engine *e)
+{
+	/* The vehicle is set to never expire. */
+	if (e->info.base_life == 0xFF) return false;
+
+	/* The player will not allow any vehicle to expire. */
+	if (_settings_game.vehicle.engine_expiry == EngineExpiryMode::Never) return false;
+
+	/* The player wants to keep buying vehicles someone already owns. */
+	if (_settings_game.vehicle.engine_expiry == EngineExpiryMode::Owned) {
+		for (const Company *c : Company::Iterate()) {
+			if (c == nullptr) continue;
+			if (GetGroupNumEngines(c->index, ALL_GROUP, e->index) > 0) return false;
+		}
+	}
+
+	/* Vehicles expire normally. */
+	return true;
+}
+
+/**
  * Update #Engine::reliability and (if needed) update the engine GUIs.
  * @param e %Engine to update.
  */
@@ -620,7 +647,7 @@ void CalcEngineReliability(Engine *e, bool new_month)
 	if (new_month && re->index > e->index && age != INT32_MAX) age++; /* parent variant's age has not yet updated. */
 
 	/* Check for early retirement */
-	if (e->company_avail != 0 && !_settings_game.vehicle.never_expire_vehicles && e->info.base_life != 0xFF) {
+	if (e->company_avail != 0 && AllowEngineExpiry(e)) {
 		int retire_early = e->info.retire_early;
 		uint retire_early_max_age = std::max(0, e->duration_phase_1 + e->duration_phase_2 - retire_early * 12);
 		if (retire_early != 0 && age >= retire_early_max_age) {
@@ -634,7 +661,7 @@ void CalcEngineReliability(Engine *e, bool new_month)
 	if (age < e->duration_phase_1) {
 		uint start = e->reliability_start;
 		e->reliability = age * (e->reliability_max - start) / e->duration_phase_1 + start;
-	} else if ((age -= e->duration_phase_1) < e->duration_phase_2 || _settings_game.vehicle.never_expire_vehicles || e->info.base_life == 0xFF) {
+	} else if ((age -= e->duration_phase_1) < e->duration_phase_2 || !AllowEngineExpiry(e)) {
 		/* We are at the peak of this engines life. It will have max reliability.
 		 * This is also true if the engines never expire. They will not go bad over time */
 		e->reliability = e->reliability_max;

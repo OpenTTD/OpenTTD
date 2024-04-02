@@ -14,6 +14,7 @@
 #include "economy_type.h"
 #include "town_type.h"
 #include "transport_type.h"
+#include "engine_type.h"
 #include "network/network_type.h"
 #include "company_type.h"
 #include "cargotype.h"
@@ -516,6 +517,8 @@ struct OrderSettings {
 
 /** Settings related to vehicles. */
 struct VehicleSettings {
+	bool never_expire_vehicles;              ///< Unused value, used to load old savegames.
+
 	uint8_t  max_train_length;                 ///< maximum length for trains
 	uint8_t  smoke_amount;                     ///< amount of smoke/sparks locomotives produce
 	uint8_t  train_acceleration_model;         ///< realistic acceleration for trains
@@ -531,7 +534,7 @@ struct VehicleSettings {
 	uint8_t  plane_speed;                      ///< divisor for speed of aircraft
 	uint8_t  freight_trains;                   ///< value to multiply the weight of cargo by
 	bool   dynamic_engines;                  ///< enable dynamic allocation of engine data
-	bool   never_expire_vehicles;            ///< never expire vehicles
+	EngineExpiryMode engine_expiry;           ///< engine expiry
 	uint8_t extend_vehicle_life;              ///< extend vehicle life by this many years
 	uint8_t road_side;                        ///< the side of the road vehicles drive on
 	uint8_t  plane_crashes;                    ///< number of plane crashes, 0 = none, 1 = reduced, 2 = normal

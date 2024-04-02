@@ -379,6 +379,8 @@ enum SaveLoadVersion : uint16_t {
 	SLV_SCRIPT_RANDOMIZER,                  ///< 333  PR#12063 v14.0-RC1 Save script randomizers.
 	SLV_VEHICLE_ECONOMY_AGE,                ///< 334  PR#12141 v14.0 Add vehicle age in economy year, for profit stats minimum age
 
+	SLV_ENGINE_EXPIRY_OWNED,                ///< 335  PR#12598 Add engine expiry mode to keep owned engines available for purchase.
+
 	SL_MAX_VERSION,                         ///< Highest possible saveload version
 };
 
