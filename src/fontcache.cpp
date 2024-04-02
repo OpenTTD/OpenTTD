@@ -91,15 +91,15 @@ int GetCharacterHeight(FontSize size)
 }
 
 /* Check if a glyph should be rendered with anti-aliasing. */
-bool GetFontAAState(FontSize size, bool check_blitter)
+bool GetFontAAState()
 {
 	/* AA is only supported for 32 bpp */
-	if (check_blitter && BlitterFactory::GetCurrentBlitter()->GetScreenDepth() != 32) return false;
+	if (BlitterFactory::GetCurrentBlitter()->GetScreenDepth() != 32) return false;
 
-	return _fcsettings.global_aa || GetFontCacheSubSetting(size)->aa;
+	return _fcsettings.global_aa;
 }
 
-void SetFont(FontSize fontsize, const std::string &font, uint size, bool aa)
+void SetFont(FontSize fontsize, const std::string &font, uint size)
 {
 	FontCacheSubSetting *setting = GetFontCacheSubSetting(fontsize);
 	bool changed = false;
@@ -111,11 +111,6 @@ void SetFont(FontSize fontsize, const std::string &font, uint size, bool aa)
 
 	if (setting->size != size) {
 		setting->size = size;
-		changed = true;
-	}
-
-	if (setting->aa != aa) {
-		setting->aa = aa;
 		changed = true;
 	}
 
@@ -231,19 +226,6 @@ void UninitFontCache()
 #ifdef WITH_FREETYPE
 	UninitFreeType();
 #endif /* WITH_FREETYPE */
-}
-
-/**
- * Should any of the active fonts be anti-aliased?
- * @return True if any of the loaded fonts want anti-aliased drawing.
- */
-bool HasAntialiasedFonts()
-{
-	for (FontSize fs = FS_BEGIN; fs < FS_END; fs++) {
-		if (!FontCache::Get(fs)->IsBuiltInFont() && GetFontAAState(fs, false)) return true;
-	}
-
-	return false;
 }
 
 #if !defined(_WIN32) && !defined(__APPLE__) && !defined(WITH_FONTCONFIG) && !defined(WITH_COCOA)

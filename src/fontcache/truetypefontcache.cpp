@@ -91,7 +91,7 @@ void TrueTypeFontCache::SetGlyphPtr(GlyphID key, const GlyphEntry *glyph, bool d
 
 bool TrueTypeFontCache::GetDrawGlyphShadow()
 {
-	return this->fs == FS_NORMAL && GetFontAAState(FS_NORMAL);
+	return this->fs == FS_NORMAL && GetFontAAState();
 }
 
 uint TrueTypeFontCache::GetGlyphWidth(GlyphID key)
@@ -162,7 +162,7 @@ const Sprite *TrueTypeFontCache::GetGlyph(GlyphID key)
 		}
 	}
 
-	return this->InternalGetGlyph(key, GetFontAAState(this->fs));
+	return this->InternalGetGlyph(key, GetFontAAState());
 }
 
 const void *TrueTypeFontCache::GetFontTable(uint32_t tag, size_t &length)

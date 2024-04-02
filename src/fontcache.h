@@ -207,7 +207,6 @@ inline bool GetDrawGlyphShadow(FontSize size)
 struct FontCacheSubSetting {
 	std::string font; ///< The name of the font, or path to the font.
 	uint size;        ///< The (requested) size of the font.
-	bool aa;          ///< Whether to do anti aliasing or not.
 
 	const void *os_handle = nullptr; ///< Optional native OS font info. Only valid during font search.
 };
@@ -242,9 +241,8 @@ inline FontCacheSubSetting *GetFontCacheSubSetting(FontSize fs)
 
 void InitFontCache(bool monospace);
 void UninitFontCache();
-bool HasAntialiasedFonts();
 
-bool GetFontAAState(FontSize size, bool check_blitter = true);
-void SetFont(FontSize fontsize, const std::string &font, uint size, bool aa);
+bool GetFontAAState();
+void SetFont(FontSize fontsize, const std::string &font, uint size);
 
 #endif /* FONTCACHE_H */

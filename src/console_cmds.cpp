@@ -2181,10 +2181,10 @@ DEF_CONSOLE_CMD(ConFont)
 		IConsolePrint(CC_HELP, "  Print out the fonts configuration.");
 		IConsolePrint(CC_HELP, "  The \"Currently active\" configuration is the one actually in effect (after interface scaling and replacing unavailable fonts).");
 		IConsolePrint(CC_HELP, "  The \"Requested\" configuration is the one requested via console command or config file.");
-		IConsolePrint(CC_HELP, "Usage 'font [medium|small|large|mono] [<font name>] [<size>] [aa|noaa]'.");
+		IConsolePrint(CC_HELP, "Usage 'font [medium|small|large|mono] [<font name>] [<size>]'.");
 		IConsolePrint(CC_HELP, "  Change the configuration for a font.");
 		IConsolePrint(CC_HELP, "  Omitting an argument will keep the current value.");
-		IConsolePrint(CC_HELP, "  Set <font name> to \"\" for the default font. Note that <size> and aa/noaa have no effect if the default font is in use, and fixed defaults are used instead.");
+		IConsolePrint(CC_HELP, "  Set <font name> to \"\" for the default font. Note that <size> has no effect if the default font is in use, and fixed defaults are used instead.");
 		IConsolePrint(CC_HELP, "  If the sprite font is enabled in Game Options, it is used instead of the default font.");
 		IConsolePrint(CC_HELP, "  The <size> is automatically multiplied by the current interface scaling.");
 		return true;
@@ -2202,38 +2202,23 @@ DEF_CONSOLE_CMD(ConFont)
 		FontCacheSubSetting *setting = GetFontCacheSubSetting(argfs);
 		std::string font = setting->font;
 		uint size = setting->size;
-		bool aa = setting->aa;
-
+		uint v;
 		uint8_t arg_index = 2;
-		/* We may encounter "aa" or "noaa" but it must be the last argument. */
-		if (StrEqualsIgnoreCase(argv[arg_index], "aa") || StrEqualsIgnoreCase(argv[arg_index], "noaa")) {
-			aa = !StrStartsWithIgnoreCase(argv[arg_index++], "no");
-			if (argc > arg_index) return false;
-		} else {
-			/* For <name> we want a string. */
-			uint v;
-			if (!GetArgumentInteger(&v, argv[arg_index])) {
-				font = argv[arg_index++];
-			}
+		/* For <name> we want a string. */
+
+		if (!GetArgumentInteger(&v, argv[arg_index])) {
+			font = argv[arg_index++];
 		}
 
 		if (argc > arg_index) {
 			/* For <size> we want a number. */
-			uint v;
 			if (GetArgumentInteger(&v, argv[arg_index])) {
 				size = v;
 				arg_index++;
 			}
 		}
 
-		if (argc > arg_index) {
-			/* Last argument must be "aa" or "noaa". */
-			if (!StrEqualsIgnoreCase(argv[arg_index], "aa") && !StrEqualsIgnoreCase(argv[arg_index], "noaa")) return false;
-			aa = !StrStartsWithIgnoreCase(argv[arg_index++], "no");
-			if (argc > arg_index) return false;
-		}
-
-		SetFont(argfs, font, size, aa);
+		SetFont(argfs, font, size);
 	}
 
 	for (FontSize fs = FS_BEGIN; fs < FS_END; fs++) {
@@ -2245,8 +2230,8 @@ DEF_CONSOLE_CMD(ConFont)
 			fc = FontCache::Get(fs);
 		}
 		IConsolePrint(CC_DEFAULT, "{} font:", FontSizeToName(fs));
-		IConsolePrint(CC_DEFAULT, "Currently active: \"{}\", size {}, {}", fc->GetFontName(), fc->GetFontSize(), GetFontAAState(fs) ? "aa" : "noaa");
-		IConsolePrint(CC_DEFAULT, "Requested: \"{}\", size {}, {}", setting->font, setting->size, setting->aa ? "aa" : "noaa");
+		IConsolePrint(CC_DEFAULT, "Currently active: \"{}\", size {}", fc->GetFontName(), fc->GetFontSize());
+		IConsolePrint(CC_DEFAULT, "Requested: \"{}\", size {}", setting->font, setting->size);
 	}
 
 	return true;

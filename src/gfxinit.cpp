@@ -266,7 +266,7 @@ static bool SwitchNewGRFBlitter()
 		if (c->palette & GRFP_BLT_32BPP) depth_wanted_by_grf = 32;
 	}
 	/* We need a 32bpp blitter for font anti-alias. */
-	if (HasAntialiasedFonts()) depth_wanted_by_grf = 32;
+	if (GetFontAAState()) depth_wanted_by_grf = 32;
 
 	/* Search the best blitter. */
 	static const struct {
