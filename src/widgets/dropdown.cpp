@@ -162,7 +162,12 @@ struct DropdownWindow : Window {
 			this->position.y = button_rect.bottom + 1;
 		}
 
-		this->position.x = (_current_text_dir == TD_RTL) ? button_rect.right + 1 - (int)widget_dim.width : button_rect.left;
+		if (_current_text_dir == TD_RTL) {
+			/* In case the list is wider than the parent button, the list should be right aligned to the button and overflow to the left. */
+			this->position.x = button_rect.right + 1 - (int)(widget_dim.width + (list_dim.height > widget_dim.height ? NWidgetScrollbar::GetVerticalDimension().width : 0));
+		} else {
+			this->position.x = button_rect.left;
+		}
 
 		this->items_dim = widget_dim;
 		this->GetWidget<NWidgetStacked>(WID_DM_SHOW_SCROLL)->SetDisplayedPlane(list_dim.height > widget_dim.height ? 0 : SZSP_NONE);
