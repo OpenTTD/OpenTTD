@@ -4772,9 +4772,7 @@ STR_MESSAGE_ESTIMATED_INCOME                                    :{WHITE}Atendata
 STR_ERROR_SAVE_STILL_IN_PROGRESS                                :{WHITE}Ankoraŭ konservas,{}bv atendi ĝis finiĝo!
 STR_ERROR_AUTOSAVE_FAILED                                       :{WHITE}Fiaskis aŭtomate konservi
 STR_ERROR_UNABLE_TO_READ_DRIVE                                  :{BLACK}Ne eblas legi diskon
-STR_ERROR_GAME_SAVE_FAILED                                      :{WHITE}Ludkonservado Fiaskis{}{STRING}
 STR_ERROR_UNABLE_TO_DELETE_FILE                                 :{WHITE}Ne eblas forviŝi dosieron
-STR_ERROR_GAME_LOAD_FAILED                                      :{WHITE}Ludŝarĝado Fiaskis{}{STRING}
 STR_GAME_SAVELOAD_ERROR_BROKEN_INTERNAL_ERROR                   :Interna eraro: {STRING}
 STR_GAME_SAVELOAD_ERROR_BROKEN_SAVEGAME                         :Rompa konservludo - {STRING}
 STR_GAME_SAVELOAD_ERROR_TOO_NEW_SAVEGAME                        :Tiu ĉi ludo estis konservita per pli nova versio

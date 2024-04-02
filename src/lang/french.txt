@@ -4900,9 +4900,7 @@ STR_MESSAGE_ESTIMATED_INCOME                                    :{WHITE}Revenu e
 STR_ERROR_SAVE_STILL_IN_PROGRESS                                :{WHITE}Sauvegarde en cours...{}Veuillez attendre la fin du processus{NBSP}!
 STR_ERROR_AUTOSAVE_FAILED                                       :{WHITE}Échec de l'enregistrement automatique
 STR_ERROR_UNABLE_TO_READ_DRIVE                                  :{BLACK}Impossible d'accéder au disque
-STR_ERROR_GAME_SAVE_FAILED                                      :{WHITE}La sauvegarde a échoué{}{STRING}
 STR_ERROR_UNABLE_TO_DELETE_FILE                                 :{WHITE}Impossible de supprimer le fichier
-STR_ERROR_GAME_LOAD_FAILED                                      :{WHITE}Le chargement a échoué{}{STRING}
 STR_GAME_SAVELOAD_ERROR_BROKEN_INTERNAL_ERROR                   :Erreur interne{NBSP}: {STRING}
 STR_GAME_SAVELOAD_ERROR_BROKEN_SAVEGAME                         :Sauvegarde corrompue − {STRING}
 STR_GAME_SAVELOAD_ERROR_TOO_NEW_SAVEGAME                        :Sauvegarde modifiée avec une version plus récente

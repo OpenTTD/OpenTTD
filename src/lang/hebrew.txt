@@ -4320,9 +4320,7 @@ STR_MESSAGE_ESTIMATED_INCOME                                    :{WHITE}{CURRENC
 STR_ERROR_SAVE_STILL_IN_PROGRESS                                :{WHITE}!שמירה מתבצעת,{} אנא המתן עד לסיום השמירה
 STR_ERROR_AUTOSAVE_FAILED                                       :{WHITE}שמירה אוטומטית נכשלה
 STR_ERROR_UNABLE_TO_READ_DRIVE                                  :{BLACK}לא ניתן לקרוא מהדיסק
-STR_ERROR_GAME_SAVE_FAILED                                      :{WHITE}שמירת המשחק נכשלה{}{STRING}
 STR_ERROR_UNABLE_TO_DELETE_FILE                                 :{WHITE}לא ניתן למחוק את הקובץ
-STR_ERROR_GAME_LOAD_FAILED                                      :{WHITE}טעינת המשחק נכשלה{}{STRING}
 STR_GAME_SAVELOAD_ERROR_BROKEN_INTERNAL_ERROR                   :שגיאה פנימית: {STRING}
 STR_GAME_SAVELOAD_ERROR_BROKEN_SAVEGAME                         :קובץ השמיקה פגום - {STRING}
 STR_GAME_SAVELOAD_ERROR_TOO_NEW_SAVEGAME                        :קובץ השמירה נשמר עם גירסא חדישה יותר של המשחק

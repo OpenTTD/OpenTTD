@@ -4612,9 +4612,7 @@ STR_MESSAGE_ESTIMATED_INCOME                                    :{WHITE}収益(�
 STR_ERROR_SAVE_STILL_IN_PROGRESS                                :{WHITE}ゲームを保存しています{}完了までしばらくお待ちください!
 STR_ERROR_AUTOSAVE_FAILED                                       :{WHITE}自動保存に失敗しました
 STR_ERROR_UNABLE_TO_READ_DRIVE                                  :{BLACK}ドライブを読み込めません
-STR_ERROR_GAME_SAVE_FAILED                                      :{WHITE}ゲームの保存に失敗しました{}{STRING}
 STR_ERROR_UNABLE_TO_DELETE_FILE                                 :{WHITE}ファイルを削除できません
-STR_ERROR_GAME_LOAD_FAILED                                      :{WHITE}ゲームの読み込みに失敗しました{}{STRING}
 STR_GAME_SAVELOAD_ERROR_BROKEN_INTERNAL_ERROR                   :内部エラー: {STRING}
 STR_GAME_SAVELOAD_ERROR_BROKEN_SAVEGAME                         :破損したセーブゲーム: {STRING}
 STR_GAME_SAVELOAD_ERROR_TOO_NEW_SAVEGAME                        :このファイルは上位のバージョンによって保存されたものです

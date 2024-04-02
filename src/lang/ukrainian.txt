@@ -1871,7 +1871,7 @@ STR_CONFIG_SETTING_TIMETABLE_MODE_TICKS                         :Цоків
 STR_CONFIG_SETTING_TIMETABLE_SHOW_ARRIVAL_DEPARTURE             :Показувати час прибуття та відправлення у розкладах: {STRING}
 STR_CONFIG_SETTING_TIMETABLE_SHOW_ARRIVAL_DEPARTURE_HELPTEXT    :Відображати очікуваний час прибуття та відправлення у розкладі
 
-STR_CONFIG_SETTING_QUICKGOTO                                    :Прискорене створення наказів транспорту: {STRING}
+STR_CONFIG_SETTING_QUICKGOTO                                    :Прискорене створення завдань для транспорту: {STRING}
 STR_CONFIG_SETTING_QUICKGOTO_HELPTEXT                           :При відображенні списка завдань транспортного засобу автоматично натискається кнопка створення нових завдань
 
 STR_CONFIG_SETTING_DEFAULT_RAIL_TYPE                            :Тип колії на початку нової/завантаженної гри: {STRING}
@@ -2227,8 +2227,8 @@ STR_CONFIG_SETTING_LOCALISATION_UNITS_VOLUME_IMPERIAL           :Імперсь�
 STR_CONFIG_SETTING_LOCALISATION_UNITS_VOLUME_METRIC             :Метричні (л)
 STR_CONFIG_SETTING_LOCALISATION_UNITS_VOLUME_SI                 :СІ (м³)
 
-STR_CONFIG_SETTING_LOCALISATION_UNITS_FORCE                     :Одиниці тяглової сили: {STRING}
-STR_CONFIG_SETTING_LOCALISATION_UNITS_FORCE_HELPTEXT            :Якщо тяглова сила відображається на інтерфейсі: показувати її в обраній одиниці виміру
+STR_CONFIG_SETTING_LOCALISATION_UNITS_FORCE                     :Одиниці тягового зусилля: {STRING}
+STR_CONFIG_SETTING_LOCALISATION_UNITS_FORCE_HELPTEXT            :Якщо тягове зусилля відображається на інтерфейсі: показувати її в обраній одиниці виміру
 ###length 3
 STR_CONFIG_SETTING_LOCALISATION_UNITS_FORCE_IMPERIAL            :Імперські (фунт-сили)
 STR_CONFIG_SETTING_LOCALISATION_UNITS_FORCE_METRIC              :Метричні (кгс)
@@ -2413,17 +2413,17 @@ STR_LIVERY_AIRCRAFT_GROUP_EMPTY                                 :Не налаш
 
 ###length 23
 STR_LIVERY_DEFAULT                                              :Базовий колір
-STR_LIVERY_STEAM                                                :Паровоз
-STR_LIVERY_DIESEL                                               :Тепловоз
-STR_LIVERY_ELECTRIC                                             :Електровоз
+STR_LIVERY_STEAM                                                :Паротяг
+STR_LIVERY_DIESEL                                               :Теплотяг
+STR_LIVERY_ELECTRIC                                             :Електротяг
 STR_LIVERY_MONORAIL                                             :Монорейковий локомотив
 STR_LIVERY_MAGLEV                                               :Магнітний локомотив
-STR_LIVERY_DMU                                                  :Багатосекційний тепловоз
-STR_LIVERY_EMU                                                  :Багатосекційний електровоз
-STR_LIVERY_PASSENGER_WAGON_STEAM                                :Пасажирський вагон (паровоз)
-STR_LIVERY_PASSENGER_WAGON_DIESEL                               :Пасажирський вагон (тепловоз)
-STR_LIVERY_PASSENGER_WAGON_ELECTRIC                             :Пасажирський вагон (електровоз)
-STR_LIVERY_PASSENGER_WAGON_MONORAIL                             :Пасажирський вагон (монорейка)
+STR_LIVERY_DMU                                                  :Багатосекційний теплотяг
+STR_LIVERY_EMU                                                  :Багатосекційний електротяг
+STR_LIVERY_PASSENGER_WAGON_STEAM                                :Пасажирський вагон (паротяговий)
+STR_LIVERY_PASSENGER_WAGON_DIESEL                               :Пасажирський вагон (теплотяговий)
+STR_LIVERY_PASSENGER_WAGON_ELECTRIC                             :Пасажирський вагон (електротяговий)
+STR_LIVERY_PASSENGER_WAGON_MONORAIL                             :Пасажирський вагон (монорейковий)
 STR_LIVERY_PASSENGER_WAGON_MAGLEV                               :Пасажирський вагон (маглев)
 STR_LIVERY_FREIGHT_WAGON                                        :Вантажний вагон
 STR_LIVERY_BUS                                                  :Автобус
@@ -2907,8 +2907,8 @@ STR_STATION_BUILD_COVERAGE_AREA_OFF_TOOLTIP                     :{BLACK}Не п�
 STR_STATION_BUILD_COVERAGE_AREA_ON_TOOLTIP                      :{BLACK}Підсвічувати зону покриття станції
 STR_STATION_BUILD_ACCEPTS_CARGO                                 :{BLACK}Приймає: {GOLD}{CARGO_LIST}
 STR_STATION_BUILD_SUPPLIES_CARGO                                :{BLACK}Постачає: {GOLD}{CARGO_LIST}
-STR_STATION_BUILD_INFRASTRUCTURE_COST_YEAR                      :{BLACK} Вартість експлуатації: {GOLD}{CURRENCY_SHORT}/рік
-STR_STATION_BUILD_INFRASTRUCTURE_COST_PERIOD                    :{BLACK} Вартість експлуатації: {GOLD}{CURRENCY_SHORT}/період
+STR_STATION_BUILD_INFRASTRUCTURE_COST_YEAR                      :{BLACK}Вартість експлуатації: {GOLD}{CURRENCY_SHORT}/рік
+STR_STATION_BUILD_INFRASTRUCTURE_COST_PERIOD                    :{BLACK}Вартість експлуатації: {GOLD}{CURRENCY_SHORT}/період
 
 # Join station window
 STR_JOIN_STATION_CAPTION                                        :{WHITE}Об'єднати станцію
@@ -4213,8 +4213,8 @@ STR_PURCHASE_INFO_SPEED_POWER                                   :{BLACK}Швид
 STR_PURCHASE_INFO_SPEED                                         :{BLACK}Швидкість: {GOLD}{VELOCITY}
 STR_PURCHASE_INFO_SPEED_OCEAN                                   :{BLACK}Швидкість в океані: {GOLD}{VELOCITY}
 STR_PURCHASE_INFO_SPEED_CANAL                                   :{BLACK}Швидкість в каналі/річці: {GOLD}{VELOCITY}
-STR_PURCHASE_INFO_RUNNINGCOST_YEAR                              :{BLACK} Вартість експлуатації: {GOLD}{CURRENCY_LONG}/рік
-STR_PURCHASE_INFO_RUNNINGCOST_PERIOD                            :{BLACK} Вартість експлуатації: {GOLD}{CURRENCY_LONG}/період
+STR_PURCHASE_INFO_RUNNINGCOST_YEAR                              :{BLACK}Вартість експлуатації: {GOLD}{CURRENCY_LONG}/рік
+STR_PURCHASE_INFO_RUNNINGCOST_PERIOD                            :{BLACK}Вартість експлуатації: {GOLD}{CURRENCY_LONG}/період
 STR_PURCHASE_INFO_CAPACITY                                      :{BLACK}Місткість: {GOLD}{CARGO_LONG} {STRING}
 STR_PURCHASE_INFO_REFITTABLE                                    :(змінюється)
 STR_PURCHASE_INFO_DESIGNED_LIFE                                 :{BLACK}Рік випуску: {GOLD}{NUM}{BLACK} Вік: {GOLD}{COMMA} р{P ік оки оків}
@@ -4231,7 +4231,7 @@ STR_PURCHASE_INFO_ALL_TYPES                                     :Всі типи
 STR_PURCHASE_INFO_NONE                                          :Нема
 STR_PURCHASE_INFO_ENGINES_ONLY                                  :Тільки локомотиви
 STR_PURCHASE_INFO_ALL_BUT                                       :Всі, крім {CARGO_LIST}
-STR_PURCHASE_INFO_MAX_TE                                        :{BLACK}Максимальна тягова сила: {GOLD}{FORCE}
+STR_PURCHASE_INFO_MAX_TE                                        :{BLACK}Максимальне тягове зусилля: {GOLD}{FORCE}
 STR_PURCHASE_INFO_AIRCRAFT_RANGE                                :{BLACK}Дальність: {GOLD}{COMMA} клітинок
 STR_PURCHASE_INFO_AIRCRAFT_TYPE                                 :{BLACK}Тип літака: {GOLD}{STRING}
 
@@ -4534,7 +4534,7 @@ STR_VEHICLE_STATUS_TRAIN_STUCK                                  :{ORANGE}Очі�
 STR_VEHICLE_STATUS_AIRCRAFT_TOO_FAR                             :{ORANGE}Занадто далеко до наступного місця призначення
 
 STR_VEHICLE_STATUS_HEADING_FOR_STATION_VEL                      :{LTBLUE}{1:VELOCITY} - Прямує до {0:STATION}
-STR_VEHICLE_STATUS_NO_ORDERS_VEL                                :{LTBLUE}{VELOCITY} - Без наказів
+STR_VEHICLE_STATUS_NO_ORDERS_VEL                                :{LTBLUE}{VELOCITY} - Без завдань
 STR_VEHICLE_STATUS_HEADING_FOR_WAYPOINT_VEL                     :{LTBLUE}{1:VELOCITY} - Прямує до {0:WAYPOINT}
 STR_VEHICLE_STATUS_HEADING_FOR_DEPOT_VEL                        :{ORANGE}{1:VELOCITY} - Прямує до  {0:DEPOT}
 STR_VEHICLE_STATUS_HEADING_FOR_DEPOT_SERVICE_VEL                :{LTBLUE}{1:VELOCITY} - Техогляд у {0:DEPOT}
@@ -4565,8 +4565,8 @@ STR_VEHICLE_DETAILS_AIRCRAFT_RENAME                             :{BLACK}Назв
 
 STR_VEHICLE_INFO_AGE                                            :{COMMA} р{P ік оки оків} ({COMMA})
 STR_VEHICLE_INFO_AGE_RED                                        :{RED}{COMMA} р{P ік оки оків} ({COMMA})
-STR_VEHICLE_INFO_AGE_RUNNING_COST_YR                            :{BLACK}Вік: {LTBLUE}{STRING}{BLACK}   Вартість експлуатації: {LTBLUE}{CURRENCY_LONG}/рік
-STR_VEHICLE_INFO_AGE_RUNNING_COST_PERIOD                        :{BLACK}Вік: {LTBLUE}{STRING}{BLACK} Вартість експлуатації: {LTBLUE}{CURRENCY_LONG}/період
+STR_VEHICLE_INFO_AGE_RUNNING_COST_YR                            :{BLACK}Вік: {LTBLUE}{STRING}{BLACK}Вартість експлуатації: {LTBLUE}{CURRENCY_LONG}/рік
+STR_VEHICLE_INFO_AGE_RUNNING_COST_PERIOD                        :{BLACK}Вік: {LTBLUE}{STRING}{BLACK}Вартість експлуатації: {LTBLUE}{CURRENCY_LONG}/період
 
 STR_VEHICLE_INFO_MAX_SPEED                                      :{BLACK}Макс. швидкість: {LTBLUE}{VELOCITY}
 STR_VEHICLE_INFO_MAX_SPEED_TYPE                                 :{BLACK}Макс. швидкість: {LTBLUE}{VELOCITY} {BLACK}Тип: {LTBLUE}{STRING}
@@ -4671,8 +4671,8 @@ STR_ORDERS_LIST_TOOLTIP                                         :{BLACK}Марш
 STR_ORDER_INDEX                                                 :{COMMA}:{NBSP}
 STR_ORDER_TEXT                                                  :{STRING} {STRING} {STRING} {STRING}
 
-STR_ORDERS_END_OF_ORDERS                                        :- - Кінець наказів - -
-STR_ORDERS_END_OF_SHARED_ORDERS                                 :- - Кінець спільних наказів - -
+STR_ORDERS_END_OF_ORDERS                                        :- - Кінець завдань - -
+STR_ORDERS_END_OF_SHARED_ORDERS                                 :- - Кінець спільних завдань - -
 
 # Order bottom buttons
 STR_ORDER_NON_STOP                                              :{BLACK}Без зупинки
@@ -5041,9 +5041,7 @@ STR_MESSAGE_ESTIMATED_INCOME                                    :{WHITE}Приб
 STR_ERROR_SAVE_STILL_IN_PROGRESS                                :{WHITE}Збереження...{}зачекайте, доки завершиться!
 STR_ERROR_AUTOSAVE_FAILED                                       :{WHITE}Помилка автозбереження
 STR_ERROR_UNABLE_TO_READ_DRIVE                                  :{BLACK}Неможливо прочитати пристрій
-STR_ERROR_GAME_SAVE_FAILED                                      :{WHITE}Помилка запису гри{}{STRING}
 STR_ERROR_UNABLE_TO_DELETE_FILE                                 :{WHITE}Неможливо стерти файл
-STR_ERROR_GAME_LOAD_FAILED                                      :{WHITE}Помилка завантаження гри{}{STRING}
 STR_GAME_SAVELOAD_ERROR_BROKEN_INTERNAL_ERROR                   :Внутрішня помилка: {STRING}
 STR_GAME_SAVELOAD_ERROR_BROKEN_SAVEGAME                         :Файл збереженої гри пошкоджений - {STRING}
 STR_GAME_SAVELOAD_ERROR_TOO_NEW_SAVEGAME                        :Файл збереженої гри зроблений більш новою версією
@@ -5435,8 +5433,8 @@ STR_ERROR_CAN_T_MAKE_ROAD_VEHICLE_TURN                          :{WHITE}Немо
 STR_ERROR_AIRCRAFT_IS_IN_FLIGHT                                 :{WHITE}Літак у польоті
 
 # Order related errors
-STR_ERROR_NO_MORE_SPACE_FOR_ORDERS                              :{WHITE}Немає місця для наказів
-STR_ERROR_TOO_MANY_ORDERS                                       :{WHITE}Дуже багато наказів
+STR_ERROR_NO_MORE_SPACE_FOR_ORDERS                              :{WHITE}Немає місця для нових завдань
+STR_ERROR_TOO_MANY_ORDERS                                       :{WHITE}Занадто багато завдань
 STR_ERROR_CAN_T_INSERT_NEW_ORDER                                :{WHITE}Неможливо додати наказ...
 STR_ERROR_CAN_T_DELETE_THIS_ORDER                               :{WHITE}Неможливо видалити наказ...
 STR_ERROR_CAN_T_MODIFY_THIS_ORDER                               :{WHITE}Неможливо змінити наказ...
@@ -5658,33 +5656,33 @@ STR_SV_STNAME_FALLBACK                                          :{STRING}, ст�
 ##id 0x8000
 ###length 116
 # Vehicle names
-STR_VEHICLE_NAME_TRAIN_ENGINE_RAIL_KIRBY_PAUL_TANK_STEAM        :Kirby Paul Tank (паровоз)
-STR_VEHICLE_NAME_TRAIN_ENGINE_RAIL_MJS_250_DIESEL               :MJS 250 (тепловоз)
+STR_VEHICLE_NAME_TRAIN_ENGINE_RAIL_KIRBY_PAUL_TANK_STEAM        :Kirby Paul Tank (паротяг)
+STR_VEHICLE_NAME_TRAIN_ENGINE_RAIL_MJS_250_DIESEL               :MJS 250 (теплотяг)
 STR_VEHICLE_NAME_TRAIN_ENGINE_RAIL_PLODDYPHUT_CHOO_CHOO         :Ploddyphut Choo-Choo
 STR_VEHICLE_NAME_TRAIN_ENGINE_RAIL_POWERNAUT_CHOO_CHOO          :Powernaut Choo-Choo
 STR_VEHICLE_NAME_TRAIN_ENGINE_RAIL_MIGHTYMOVER_CHOO_CHOO        :MightyMover Choo-Choo
-STR_VEHICLE_NAME_TRAIN_ENGINE_RAIL_PLODDYPHUT_DIESEL            :Ploddyphut (тепловоз)
-STR_VEHICLE_NAME_TRAIN_ENGINE_RAIL_POWERNAUT_DIESEL             :Powernaut (тепловоз)
-STR_VEHICLE_NAME_TRAIN_ENGINE_RAIL_WILLS_2_8_0_STEAM            :Wills 2-8-0 (паровоз)
-STR_VEHICLE_NAME_TRAIN_ENGINE_RAIL_CHANEY_JUBILEE_STEAM         :Chaney 'Jubilee' (паровоз)
-STR_VEHICLE_NAME_TRAIN_ENGINE_RAIL_GINZU_A4_STEAM               :Ginzu 'A4' (паровоз)
-STR_VEHICLE_NAME_TRAIN_ENGINE_RAIL_SH_8P_STEAM                  :SH '8P' (паровоз)
-STR_VEHICLE_NAME_TRAIN_ENGINE_RAIL_MANLEY_MOREL_DMU_DIESEL      :Manley-Morel DMU (тепловоз)
-STR_VEHICLE_NAME_TRAIN_ENGINE_RAIL_DASH_DIESEL                  :'Dash' (тепловоз)
-STR_VEHICLE_NAME_TRAIN_ENGINE_RAIL_SH_HENDRY_25_DIESEL          :SH/Hendry '25' (тепловоз)
-STR_VEHICLE_NAME_TRAIN_ENGINE_RAIL_UU_37_DIESEL                 :UU '37' (тепловоз)
-STR_VEHICLE_NAME_TRAIN_ENGINE_RAIL_FLOSS_47_DIESEL              :Floss '47' (тепловоз)
-STR_VEHICLE_NAME_TRAIN_ENGINE_RAIL_CS_4000_DIESEL               :CS 4000 (тепловоз)
-STR_VEHICLE_NAME_TRAIN_ENGINE_RAIL_CS_2400_DIESEL               :CS 2400 (тепловоз)
-STR_VEHICLE_NAME_TRAIN_ENGINE_RAIL_CENTENNIAL_DIESEL            :Centennial (тепловоз)
-STR_VEHICLE_NAME_TRAIN_ENGINE_RAIL_KELLING_3100_DIESEL          :Kelling 3100 (тепловоз)
-STR_VEHICLE_NAME_TRAIN_ENGINE_RAIL_TURNER_TURBO_DIESEL          :Turner Turbo (тепловоз)
-STR_VEHICLE_NAME_TRAIN_ENGINE_RAIL_MJS_1000_DIESEL              :MJS 1000 (тепловоз)
-STR_VEHICLE_NAME_TRAIN_ENGINE_RAIL_SH_125_DIESEL                :SH '125' (тепловоз)
-STR_VEHICLE_NAME_TRAIN_ENGINE_RAIL_SH_30_ELECTRIC               :SH '30' (електровоз)
-STR_VEHICLE_NAME_TRAIN_ENGINE_RAIL_SH_40_ELECTRIC               :SH '40' (електровоз)
-STR_VEHICLE_NAME_TRAIN_ENGINE_RAIL_T_I_M_ELECTRIC               :'T.I.M.' (електровоз)
-STR_VEHICLE_NAME_TRAIN_ENGINE_RAIL_ASIASTAR_ELECTRIC            :'AsiaStar' (електровоз)
+STR_VEHICLE_NAME_TRAIN_ENGINE_RAIL_PLODDYPHUT_DIESEL            :Ploddyphut (теплотяг)
+STR_VEHICLE_NAME_TRAIN_ENGINE_RAIL_POWERNAUT_DIESEL             :Powernaut (теплотяг)
+STR_VEHICLE_NAME_TRAIN_ENGINE_RAIL_WILLS_2_8_0_STEAM            :Wills 2-8-0 (паротяг)
+STR_VEHICLE_NAME_TRAIN_ENGINE_RAIL_CHANEY_JUBILEE_STEAM         :Chaney 'Jubilee' (паротяг)
+STR_VEHICLE_NAME_TRAIN_ENGINE_RAIL_GINZU_A4_STEAM               :Ginzu 'A4' (паротяг)
+STR_VEHICLE_NAME_TRAIN_ENGINE_RAIL_SH_8P_STEAM                  :SH '8P' (паротяг)
+STR_VEHICLE_NAME_TRAIN_ENGINE_RAIL_MANLEY_MOREL_DMU_DIESEL      :Manley-Morel DMU (теплотяг)
+STR_VEHICLE_NAME_TRAIN_ENGINE_RAIL_DASH_DIESEL                  :'Dash' (теплотяг)
+STR_VEHICLE_NAME_TRAIN_ENGINE_RAIL_SH_HENDRY_25_DIESEL          :SH/Hendry '25' (теплотяг)
+STR_VEHICLE_NAME_TRAIN_ENGINE_RAIL_UU_37_DIESEL                 :UU '37' (теплотяг)
+STR_VEHICLE_NAME_TRAIN_ENGINE_RAIL_FLOSS_47_DIESEL              :Floss '47' (теплотяг)
+STR_VEHICLE_NAME_TRAIN_ENGINE_RAIL_CS_4000_DIESEL               :CS 4000 (теплотяг)
+STR_VEHICLE_NAME_TRAIN_ENGINE_RAIL_CS_2400_DIESEL               :CS 2400 (теплотяг)
+STR_VEHICLE_NAME_TRAIN_ENGINE_RAIL_CENTENNIAL_DIESEL            :Centennial (теплотяг)
+STR_VEHICLE_NAME_TRAIN_ENGINE_RAIL_KELLING_3100_DIESEL          :Kelling 3100 (теплотяг)
+STR_VEHICLE_NAME_TRAIN_ENGINE_RAIL_TURNER_TURBO_DIESEL          :Turner Turbo (теплотяг)
+STR_VEHICLE_NAME_TRAIN_ENGINE_RAIL_MJS_1000_DIESEL              :MJS 1000 (теплотяг)
+STR_VEHICLE_NAME_TRAIN_ENGINE_RAIL_SH_125_DIESEL                :SH '125' (теплотяг)
+STR_VEHICLE_NAME_TRAIN_ENGINE_RAIL_SH_30_ELECTRIC               :SH '30' (електротяг)
+STR_VEHICLE_NAME_TRAIN_ENGINE_RAIL_SH_40_ELECTRIC               :SH '40' (електротяг)
+STR_VEHICLE_NAME_TRAIN_ENGINE_RAIL_T_I_M_ELECTRIC               :'T.I.M.' (електротяг)
+STR_VEHICLE_NAME_TRAIN_ENGINE_RAIL_ASIASTAR_ELECTRIC            :'AsiaStar' (електротяг)
 STR_VEHICLE_NAME_TRAIN_WAGON_RAIL_PASSENGER_CAR                 :Пасажирський вагон
 STR_VEHICLE_NAME_TRAIN_WAGON_RAIL_MAIL_VAN                      :Поштовий вагон
 STR_VEHICLE_NAME_TRAIN_WAGON_RAIL_COAL_CAR                      :Вагон для вугілля
@@ -5712,8 +5710,8 @@ STR_VEHICLE_NAME_TRAIN_WAGON_RAIL_TOY_VAN                       :Вагон дл
 STR_VEHICLE_NAME_TRAIN_WAGON_RAIL_BATTERY_TRUCK                 :Вагон для батарейок
 STR_VEHICLE_NAME_TRAIN_WAGON_RAIL_FIZZY_DRINK_TRUCK             :Вагон для газованої води
 STR_VEHICLE_NAME_TRAIN_WAGON_RAIL_PLASTIC_TRUCK                 :Вагон для пластиліну
-STR_VEHICLE_NAME_TRAIN_ENGINE_MONORAIL_X2001_ELECTRIC           :'X2001' (електровоз)
-STR_VEHICLE_NAME_TRAIN_ENGINE_MONORAIL_MILLENNIUM_Z1_ELECTRIC   :'Millennium Z1' (електровоз)
+STR_VEHICLE_NAME_TRAIN_ENGINE_MONORAIL_X2001_ELECTRIC           :'X2001' (електротяг)
+STR_VEHICLE_NAME_TRAIN_ENGINE_MONORAIL_MILLENNIUM_Z1_ELECTRIC   :'Millennium Z1' (електротяг)
 STR_VEHICLE_NAME_TRAIN_ENGINE_MONORAIL_WIZZOWOW_Z99             :Wizzowow Z99
 STR_VEHICLE_NAME_TRAIN_WAGON_MONORAIL_PASSENGER_CAR             :Пасажирський вагон
 STR_VEHICLE_NAME_TRAIN_WAGON_MONORAIL_MAIL_VAN                  :Поштовий вагон
@@ -5742,10 +5740,10 @@ STR_VEHICLE_NAME_TRAIN_WAGON_MONORAIL_TOY_VAN                   :Вагон дл
 STR_VEHICLE_NAME_TRAIN_WAGON_MONORAIL_BATTERY_TRUCK             :Вагон для батарейок
 STR_VEHICLE_NAME_TRAIN_WAGON_MONORAIL_FIZZY_DRINK_TRUCK         :Вагон для газованої води
 STR_VEHICLE_NAME_TRAIN_WAGON_MONORAIL_PLASTIC_TRUCK             :Вагон для пластиліну
-STR_VEHICLE_NAME_TRAIN_ENGINE_MAGLEV_LEV1_LEVIATHAN_ELECTRIC    :Lev1 'Leviathan' (електровоз)
-STR_VEHICLE_NAME_TRAIN_ENGINE_MAGLEV_LEV2_CYCLOPS_ELECTRIC      :Lev2 'Cyclops' (електровоз)
-STR_VEHICLE_NAME_TRAIN_ENGINE_MAGLEV_LEV3_PEGASUS_ELECTRIC      :Lev3 'Pegasus' (електровоз)
-STR_VEHICLE_NAME_TRAIN_ENGINE_MAGLEV_LEV4_CHIMAERA_ELECTRIC     :Lev4 'Chimaera' (електровоз)
+STR_VEHICLE_NAME_TRAIN_ENGINE_MAGLEV_LEV1_LEVIATHAN_ELECTRIC    :Lev1 'Leviathan' (електротяг)
+STR_VEHICLE_NAME_TRAIN_ENGINE_MAGLEV_LEV2_CYCLOPS_ELECTRIC      :Lev2 'Cyclops' (електротяг)
+STR_VEHICLE_NAME_TRAIN_ENGINE_MAGLEV_LEV3_PEGASUS_ELECTRIC      :Lev3 'Pegasus' (електротяг)
+STR_VEHICLE_NAME_TRAIN_ENGINE_MAGLEV_LEV4_CHIMAERA_ELECTRIC     :Lev4 'Chimaera' (електротяг)
 STR_VEHICLE_NAME_TRAIN_ENGINE_MAGLEV_WIZZOWOW_ROCKETEER         :Wizzowow Rocketeer
 STR_VEHICLE_NAME_TRAIN_WAGON_MAGLEV_PASSENGER_CAR               :Пасажирський вагон
 STR_VEHICLE_NAME_TRAIN_WAGON_MAGLEV_MAIL_VAN                    :Поштовий вагон

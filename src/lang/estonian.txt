@@ -4953,9 +4953,7 @@ STR_MESSAGE_ESTIMATED_INCOME                                    :{WHITE}Eeldatav
 STR_ERROR_SAVE_STILL_IN_PROGRESS                                :{WHITE}Ikka salvestamisel,{}palun oota salvestuse lõpuni!
 STR_ERROR_AUTOSAVE_FAILED                                       :{WHITE}Välpsalvestus ebaõnnestus
 STR_ERROR_UNABLE_TO_READ_DRIVE                                  :{BLACK}Ei suuda kettalt lugeda
-STR_ERROR_GAME_SAVE_FAILED                                      :{WHITE}Mängu salvestamine nurjus{}{STRING}
 STR_ERROR_UNABLE_TO_DELETE_FILE                                 :{WHITE}Faili ei saa kustutada
-STR_ERROR_GAME_LOAD_FAILED                                      :{WHITE}Mängu laadimine nurjus{}{STRING}
 STR_GAME_SAVELOAD_ERROR_BROKEN_INTERNAL_ERROR                   :Süsteemi viga: {STRING}
 STR_GAME_SAVELOAD_ERROR_BROKEN_SAVEGAME                         :Katkine salvestus - {STRING}
 STR_GAME_SAVELOAD_ERROR_TOO_NEW_SAVEGAME                        :Salvestus on tehtud uuemas osas

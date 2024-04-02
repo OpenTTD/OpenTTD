@@ -4726,9 +4726,7 @@ STR_MESSAGE_ESTIMATED_INCOME                                    :{WHITE}預估�
 STR_ERROR_SAVE_STILL_IN_PROGRESS                                :{WHITE}遊戲還在儲存中，{}請稍候！
 STR_ERROR_AUTOSAVE_FAILED                                       :{WHITE}自動儲存失敗
 STR_ERROR_UNABLE_TO_READ_DRIVE                                  :{BLACK}無法讀取磁碟
-STR_ERROR_GAME_SAVE_FAILED                                      :{WHITE}遊戲儲存失敗{}{STRING}
 STR_ERROR_UNABLE_TO_DELETE_FILE                                 :{WHITE}無法刪除檔案
-STR_ERROR_GAME_LOAD_FAILED                                      :{WHITE}遊戲載入失敗{}{STRING}
 STR_GAME_SAVELOAD_ERROR_BROKEN_INTERNAL_ERROR                   :內部錯誤：{STRING}
 STR_GAME_SAVELOAD_ERROR_BROKEN_SAVEGAME                         :損壞的存檔 - {STRING}
 STR_GAME_SAVELOAD_ERROR_TOO_NEW_SAVEGAME                        :該存檔是由較新版本的遊戲所產生

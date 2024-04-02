@@ -668,7 +668,7 @@ STR_PERFORMANCE_DETAIL_TOTAL                                    :{BLACK}Total:
 
 STR_PERFORMANCE_DETAIL_VEHICLES_TOOLTIP_YEARS                   :{BLACK}Número de veículos que geraram lucro no último ano. Isso inclui veículos rodoviários, trens, embarcações e aeronaves
 STR_PERFORMANCE_DETAIL_VEHICLES_TOOLTIP_PERIODS                 :{BLACK}Número de veículos que geraram lucro no último período. Isso inclui veículos rodoviários, trens, embarcações e aeronaves
-STR_PERFORMANCE_DETAIL_STATIONS_TOOLTIP                         :{BLACK}Número de estações atendidas recentemente. Estações de trem, paradas de ônibus, aeroportos, etc. são contados separadamente, mesmo que pertençam à mesma estação
+STR_PERFORMANCE_DETAIL_STATIONS_TOOLTIP                         :{BLACK}Número de estações atendidas recentemente. Estações de trem, paradas de ônibus, aeroportos, etc., são contados separadamente, mesmo que pertençam à mesma estação
 STR_PERFORMANCE_DETAIL_MIN_PROFIT_TOOLTIP_YEARS                 :{BLACK}Lucro do veículo com o menor rendimento (apenas veículos com mais de dois anos são considerados)
 STR_PERFORMANCE_DETAIL_MIN_PROFIT_TOOLTIP_PERIODS               :{BLACK}Lucro do veículo com o menor rendimento (apenas veículos com mais de dois períodos são considerados)
 STR_PERFORMANCE_DETAIL_MIN_INCOME_TOOLTIP                       :{BLACK}Quantia de dinheiro obtida no trimestre com o menor lucro dos últimos 12 trimestres
@@ -1749,7 +1749,7 @@ STR_CONFIG_SETTING_SHOW_TRACK_RESERVATION                       :Mostrar caminho
 STR_CONFIG_SETTING_SHOW_TRACK_RESERVATION_HELPTEXT              :Usar uma cor diferente nos trajetos reservados para auxiliar na solução de problemas com trens que se recusam a entrar em seções controlados por sinais de caminho
 
 STR_CONFIG_SETTING_PERSISTENT_BUILDINGTOOLS                     :Manter as ferramentas de construção ativas após o uso: {STRING}
-STR_CONFIG_SETTING_PERSISTENT_BUILDINGTOOLS_HELPTEXT            :Manter as ferramentas de construção de pontes, túneis, etc. abertas após o uso
+STR_CONFIG_SETTING_PERSISTENT_BUILDINGTOOLS_HELPTEXT            :Manter as ferramentas de construção de pontes, túneis, etc., abertas após o uso
 
 STR_CONFIG_SETTING_AUTO_REMOVE_SIGNALS                          :Remover automaticamente os sinais durante a construção de ferrovias: {STRING}
 STR_CONFIG_SETTING_AUTO_REMOVE_SIGNALS_HELPTEXT                 :Remover automaticamente os sinais durante a construção de ferrovias se os sinais estiverem no caminho. Isso pode, potencialmente, causar acidentes de trens
@@ -4900,9 +4900,7 @@ STR_MESSAGE_ESTIMATED_INCOME                                    :{WHITE}Receita 
 STR_ERROR_SAVE_STILL_IN_PROGRESS                                :{WHITE}Gravação ainda sendo executada,{}por favor aguarde até terminar!
 STR_ERROR_AUTOSAVE_FAILED                                       :{WHITE}Salvamento automático falhou
 STR_ERROR_UNABLE_TO_READ_DRIVE                                  :{BLACK}Não é possível ler a unidade
-STR_ERROR_GAME_SAVE_FAILED                                      :{WHITE}Salvar Jogo Falhou{}{STRING}
 STR_ERROR_UNABLE_TO_DELETE_FILE                                 :{WHITE}Não é possível apagar o arquivo
-STR_ERROR_GAME_LOAD_FAILED                                      :{WHITE}Abrir Jogo Falhou{}{STRING}
 STR_GAME_SAVELOAD_ERROR_BROKEN_INTERNAL_ERROR                   :Erro interno: {STRING}
 STR_GAME_SAVELOAD_ERROR_BROKEN_SAVEGAME                         :Jogo salvo está corrompido - {STRING}
 STR_GAME_SAVELOAD_ERROR_TOO_NEW_SAVEGAME                        :Jogo salvo foi feito com uma versão mais recente

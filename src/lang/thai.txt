@@ -4242,9 +4242,7 @@ STR_MESSAGE_ESTIMATED_INCOME                                    :{WHITE}รา�
 STR_ERROR_SAVE_STILL_IN_PROGRESS                                :{WHITE}ขณะนี้กำลังบันทึก,{}โปรดรอจนกว่าจะเสร็จ!
 STR_ERROR_AUTOSAVE_FAILED                                       :{WHITE}บันทึกอัตโนมัติล้มเหลว!!!
 STR_ERROR_UNABLE_TO_READ_DRIVE                                  :{BLACK}ไม่สามารถอ่านข้อมูลได้
-STR_ERROR_GAME_SAVE_FAILED                                      :{WHITE}บันทึกเกมล้มเหลว!!!{}{STRING}
 STR_ERROR_UNABLE_TO_DELETE_FILE                                 :{WHITE}ไม่สามารถทำการลบไฟล์
-STR_ERROR_GAME_LOAD_FAILED                                      :{WHITE}โหลดเกมล้มเหลว{}{STRING}
 STR_GAME_SAVELOAD_ERROR_BROKEN_INTERNAL_ERROR                   :ข้อผิดพลาดจากภายใน: {STRING}
 STR_GAME_SAVELOAD_ERROR_BROKEN_SAVEGAME                         :เกมที่บันทึกไว้ เสีย - {STRING}
 STR_GAME_SAVELOAD_ERROR_TOO_NEW_SAVEGAME                        :เกมที่บันทึกไว้ สำหรับเวอร์ชันใหม่

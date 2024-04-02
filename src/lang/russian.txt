@@ -5086,9 +5086,7 @@ STR_MESSAGE_ESTIMATED_INCOME                                    :{WHITE}Пред
 STR_ERROR_SAVE_STILL_IN_PROGRESS                                :{WHITE}Идёт сохранение;{}пожалуйста, дождитесь завершения!
 STR_ERROR_AUTOSAVE_FAILED                                       :{WHITE}Ошибка автосохранения
 STR_ERROR_UNABLE_TO_READ_DRIVE                                  :{BLACK}Не удалось прочитать диск
-STR_ERROR_GAME_SAVE_FAILED                                      :{WHITE}Невозможно сохранить игру{}{STRING}
 STR_ERROR_UNABLE_TO_DELETE_FILE                                 :{WHITE}Невозможно удалить файл
-STR_ERROR_GAME_LOAD_FAILED                                      :{WHITE}Невозможно загрузить игру{}{STRING}
 STR_GAME_SAVELOAD_ERROR_BROKEN_INTERNAL_ERROR                   :Внутренняя ошибка: {STRING}
 STR_GAME_SAVELOAD_ERROR_BROKEN_SAVEGAME                         :Файл повреждён - {STRING}
 STR_GAME_SAVELOAD_ERROR_TOO_NEW_SAVEGAME                        :Сохранение сделано в более новой версии

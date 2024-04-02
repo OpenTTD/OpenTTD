@@ -4392,9 +4392,7 @@ STR_MESSAGE_ESTIMATED_INCOME                                    :{WHITE}Reditus 
 STR_ERROR_SAVE_STILL_IN_PROGRESS                                :{WHITE}Adhuc in servando,{}maneas usque ad terminum!
 STR_ERROR_AUTOSAVE_FAILED                                       :{WHITE}Autoservare defecit
 STR_ERROR_UNABLE_TO_READ_DRIVE                                  :{BLACK}Non poterat discum legere
-STR_ERROR_GAME_SAVE_FAILED                                      :{WHITE}Servare Ludum Defecit{}{STRING}
 STR_ERROR_UNABLE_TO_DELETE_FILE                                 :{WHITE}Non poterat fasciculum delere
-STR_ERROR_GAME_LOAD_FAILED                                      :{WHITE}Legere Ludum Defecit{}{STRING}
 STR_GAME_SAVELOAD_ERROR_BROKEN_INTERNAL_ERROR                   :Mendum internum: {STRING}
 STR_GAME_SAVELOAD_ERROR_BROKEN_SAVEGAME                         :Ludus corruptus - {STRING}
 STR_GAME_SAVELOAD_ERROR_TOO_NEW_SAVEGAME                        :Ludus servatus est in editione noviore

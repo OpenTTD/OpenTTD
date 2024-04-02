@@ -3902,9 +3902,7 @@ STR_MESSAGE_ESTIMATED_INCOME                                    :{WHITE}Áætla�
 STR_ERROR_SAVE_STILL_IN_PROGRESS                                :{WHITE}Vistun er enn í gangi,{}vinsamlegast bíddu á meðan hún klárst!
 STR_ERROR_AUTOSAVE_FAILED                                       :{WHITE}Sjálfvirk vistun mistókst
 STR_ERROR_UNABLE_TO_READ_DRIVE                                  :{BLACK}Get ekki lesið af drifi
-STR_ERROR_GAME_SAVE_FAILED                                      :{WHITE}Vistun leiks mistókst{}{STRING}
 STR_ERROR_UNABLE_TO_DELETE_FILE                                 :{WHITE}Get ekki eytt skrá
-STR_ERROR_GAME_LOAD_FAILED                                      :{WHITE}Mistókst að opna leik{}{STRING}
 STR_GAME_SAVELOAD_ERROR_BROKEN_INTERNAL_ERROR                   :Innri villa: {STRING}
 STR_GAME_SAVELOAD_ERROR_BROKEN_SAVEGAME                         :Bilun í vistuðum leik - {STRING}
 STR_GAME_SAVELOAD_ERROR_TOO_NEW_SAVEGAME                        :Leikur er vistaður í nýrri útgáfu

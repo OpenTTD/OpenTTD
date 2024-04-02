@@ -4494,9 +4494,7 @@ STR_MESSAGE_ESTIMATED_INCOME                                    :{WHITE}Ioncam M
 STR_ERROR_SAVE_STILL_IN_PROGRESS                                :{WHITE}Fós ag sábháil,{}fan go mbeidh sé críochnaithe!
 STR_ERROR_AUTOSAVE_FAILED                                       :{WHITE}Theip ar uathshábháil
 STR_ERROR_UNABLE_TO_READ_DRIVE                                  :{BLACK}Ní féidir an tiomántán a léamh
-STR_ERROR_GAME_SAVE_FAILED                                      :{WHITE}Theip ar Shábháil Cluiche{}{STRING}
 STR_ERROR_UNABLE_TO_DELETE_FILE                                 :{WHITE}Ní féidir comhad a scriosadh
-STR_ERROR_GAME_LOAD_FAILED                                      :{WHITE}Theip ar Lódáil Cluiche{}{STRING}
 STR_GAME_SAVELOAD_ERROR_BROKEN_INTERNAL_ERROR                   :Earráid inmheánach: {STRING}
 STR_GAME_SAVELOAD_ERROR_BROKEN_SAVEGAME                         :Cluiche sábháilte briste - {STRING}
 STR_GAME_SAVELOAD_ERROR_TOO_NEW_SAVEGAME                        :Rinneadh an cluiche sábháilte le leagan níos nuaí

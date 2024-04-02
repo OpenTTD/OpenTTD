@@ -4899,9 +4899,7 @@ STR_MESSAGE_ESTIMATED_INCOME                                    :{WHITE}Amcangyf
 STR_ERROR_SAVE_STILL_IN_PROGRESS                                :{WHITE}Mae'r gêm wrthi'n cael ei chadw,{}Arhoswch nes y bydd y broses wedi'i chwblhau!
 STR_ERROR_AUTOSAVE_FAILED                                       :{WHITE}Methodd yr Awtogadw
 STR_ERROR_UNABLE_TO_READ_DRIVE                                  :{BLACK}Methu darllen y gyriant
-STR_ERROR_GAME_SAVE_FAILED                                      :{WHITE}Methwyd â Chadw Gêm{}{STRING}
 STR_ERROR_UNABLE_TO_DELETE_FILE                                 :{WHITE}Methu Dileu Ffeil
-STR_ERROR_GAME_LOAD_FAILED                                      :{WHITE}Methwyd â Llwytho Gêm{}{STRING}
 STR_GAME_SAVELOAD_ERROR_BROKEN_INTERNAL_ERROR                   :Gwall mewnol: {STRING}
 STR_GAME_SAVELOAD_ERROR_BROKEN_SAVEGAME                         :Mae'r gêm a gadwyd wedi torri - {STRING}
 STR_GAME_SAVELOAD_ERROR_TOO_NEW_SAVEGAME                        :Mae'r gêm a gadwyd wedi ei chadw mewn fersiwn ddiweddarach

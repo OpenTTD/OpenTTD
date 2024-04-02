@@ -4285,9 +4285,7 @@ STR_MESSAGE_ESTIMATED_INCOME                                    :{WHITE}Predvide
 STR_ERROR_SAVE_STILL_IN_PROGRESS                                :{WHITE}Shranjevanje poteka,{}Prosim počakaj, da se zaključi!
 STR_ERROR_AUTOSAVE_FAILED                                       :{WHITE}Samodejno shranjevanje spodletelo
 STR_ERROR_UNABLE_TO_READ_DRIVE                                  :{BLACK}Pogona ni mogoče prebrati
-STR_ERROR_GAME_SAVE_FAILED                                      :{WHITE}Shranjevanje igre ni uspelo{}{STRING}
 STR_ERROR_UNABLE_TO_DELETE_FILE                                 :{WHITE}Datoteke ni mogoče zbrisati
-STR_ERROR_GAME_LOAD_FAILED                                      :{WHITE}Nalaganje igre ni uspelo{}{STRING}
 STR_GAME_SAVELOAD_ERROR_BROKEN_INTERNAL_ERROR                   :Interna napaka: {STRING}
 STR_GAME_SAVELOAD_ERROR_BROKEN_SAVEGAME                         :Napaka v shranjeni igri - {STRING}
 STR_GAME_SAVELOAD_ERROR_TOO_NEW_SAVEGAME                        :Igra je bila shranjena z novejso razlicico

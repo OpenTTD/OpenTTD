@@ -4036,9 +4036,7 @@ STR_MESSAGE_ESTIMATED_INCOME                                    :{WHITE}Berekna 
 STR_ERROR_SAVE_STILL_IN_PROGRESS                                :{WHITE}Lagring foregår framleis,{}ver venleg å vente til det er ferdig!
 STR_ERROR_AUTOSAVE_FAILED                                       :{WHITE}Autolagring gjekk gale
 STR_ERROR_UNABLE_TO_READ_DRIVE                                  :{BLACK}Kan ikkje lese frå disk
-STR_ERROR_GAME_SAVE_FAILED                                      :{WHITE}Lagring av spelet mislukkast{}{STRING}
 STR_ERROR_UNABLE_TO_DELETE_FILE                                 :{WHITE}Kan ikkje slette fil
-STR_ERROR_GAME_LOAD_FAILED                                      :{WHITE}Feil ved henting av spel{}{STRING}
 STR_GAME_SAVELOAD_ERROR_BROKEN_INTERNAL_ERROR                   :Intern feil: {STRING}
 STR_GAME_SAVELOAD_ERROR_BROKEN_SAVEGAME                         :Øydelagd lagra spel - {STRING}
 STR_GAME_SAVELOAD_ERROR_TOO_NEW_SAVEGAME                        :Spelet er lagra i ein nyare versjon

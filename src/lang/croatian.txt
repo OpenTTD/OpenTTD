@@ -4444,9 +4444,7 @@ STR_MESSAGE_ESTIMATED_INCOME                                    :{WHITE}Predviđ
 STR_ERROR_SAVE_STILL_IN_PROGRESS                                :{WHITE}Spremanje još u tijeku,{}molimo pričekajte dok se ne završi!
 STR_ERROR_AUTOSAVE_FAILED                                       :{WHITE}Automatsko spremanje neuspješno
 STR_ERROR_UNABLE_TO_READ_DRIVE                                  :{BLACK}Ne mogu pročitati disk
-STR_ERROR_GAME_SAVE_FAILED                                      :{WHITE}Spremanje igre nije uspjelo{}{STRING}
 STR_ERROR_UNABLE_TO_DELETE_FILE                                 :{WHITE}Ne mogu obrisati datoteku
-STR_ERROR_GAME_LOAD_FAILED                                      :{WHITE}Učitavanje igre nije uspjelo{}{STRING}
 STR_GAME_SAVELOAD_ERROR_BROKEN_INTERNAL_ERROR                   :Interna greška: {STRING}
 STR_GAME_SAVELOAD_ERROR_BROKEN_SAVEGAME                         :Pokvarena spremljena igra - {STRING}
 STR_GAME_SAVELOAD_ERROR_TOO_NEW_SAVEGAME                        :Spremljena igra je stvorena s novijom verzijom

@@ -4781,9 +4781,7 @@ STR_MESSAGE_ESTIMATED_INCOME                                    :{WHITE}Ingreso 
 STR_ERROR_SAVE_STILL_IN_PROGRESS                                :{WHITE}Se sigue guardando la partida,{}¡por favor espera hasta que termine!
 STR_ERROR_AUTOSAVE_FAILED                                       :{WHITE}Error en guardado automático
 STR_ERROR_UNABLE_TO_READ_DRIVE                                  :{BLACK}No es posible leer la unidad de disco
-STR_ERROR_GAME_SAVE_FAILED                                      :{WHITE}Error guardando partida{}{STRING}
 STR_ERROR_UNABLE_TO_DELETE_FILE                                 :{WHITE}No es posible eliminar el archivo
-STR_ERROR_GAME_LOAD_FAILED                                      :{WHITE}Error al cargar partida{}{STRING}
 STR_GAME_SAVELOAD_ERROR_BROKEN_INTERNAL_ERROR                   :Error interno: {STRING}
 STR_GAME_SAVELOAD_ERROR_BROKEN_SAVEGAME                         :Archivo con errores - {STRING}
 STR_GAME_SAVELOAD_ERROR_TOO_NEW_SAVEGAME                        :La partida guardada es de una versión más reciente del juego

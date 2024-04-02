@@ -4898,9 +4898,7 @@ STR_MESSAGE_ESTIMATED_INCOME                                    :{WHITE}Ingreso 
 STR_ERROR_SAVE_STILL_IN_PROGRESS                                :{WHITE}Gravación en progreso,{}por favor agarda ata que remate!
 STR_ERROR_AUTOSAVE_FAILED                                       :{WHITE}Autogravado fallido
 STR_ERROR_UNABLE_TO_READ_DRIVE                                  :{BLACK}No se pode lee-la unidade
-STR_ERROR_GAME_SAVE_FAILED                                      :{WHITE}Gravación da partida fallida{}{STRING}
 STR_ERROR_UNABLE_TO_DELETE_FILE                                 :{WHITE}Non se pode borra-lo arquivo
-STR_ERROR_GAME_LOAD_FAILED                                      :{WHITE}Carga da partida fallida{}{STRING}
 STR_GAME_SAVELOAD_ERROR_BROKEN_INTERNAL_ERROR                   :Erro interno: {STRING}
 STR_GAME_SAVELOAD_ERROR_BROKEN_SAVEGAME                         :Partida gravada corrupta - {STRING}
 STR_GAME_SAVELOAD_ERROR_TOO_NEW_SAVEGAME                        :A partida gravouse cunha versión máis nova do xogo

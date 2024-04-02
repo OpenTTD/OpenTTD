@@ -4450,10 +4450,10 @@ STR_VEHICLE_INFO_CAPACITY_CAPACITY                              :{BLACK}Capacida
 STR_VEHICLE_INFO_FEEDER_CARGO_VALUE                             :{BLACK}Créditos de Transferencia: {LTBLUE}{CURRENCY_LONG}
 
 STR_VEHICLE_DETAILS_SERVICING_INTERVAL_DAYS                     :{BLACK}Intervalo de mantenimiento: {LTBLUE}{COMMA}{NBSP}días{BLACK} {STRING}
-STR_VEHICLE_DETAILS_SERVICING_INTERVAL_MINUTES                  :{BLACK}Intervalo de mantenimiento: {LTBLUE}{COMMA}{NBSP}minutos{BLACK}   {STRING}
+STR_VEHICLE_DETAILS_SERVICING_INTERVAL_MINUTES                  :{BLACK}Intervalo de mantenimiento: {LTBLUE}{COMMA}{NBSP}minuto{P "" s}{BLACK}   {STRING}
 STR_VEHICLE_DETAILS_SERVICING_INTERVAL_PERCENT                  :{BLACK}Intervalo de mantenimiento: {LTBLUE}{COMMA}%{BLACK} {STRING}
 STR_VEHICLE_DETAILS_LAST_SERVICE_DATE                           :Último mantenimiento: {LTBLUE}{DATE_LONG}
-STR_VEHICLE_DETAILS_LAST_SERVICE_MINUTES_AGO                    :Último mantenimiento: {LTBLUE}hace {NUM} minutos
+STR_VEHICLE_DETAILS_LAST_SERVICE_MINUTES_AGO                    :Último mantenimiento: {LTBLUE}hace {NUM} minuto{P "" s}
 STR_VEHICLE_DETAILS_INCREASE_SERVICING_INTERVAL_TOOLTIP_DAYS    :{BLACK}Incrementar el intervalo de mantenimiento en 10 días. Ctrl+clic para incrementar el período en 5 días
 STR_VEHICLE_DETAILS_INCREASE_SERVICING_INTERVAL_TOOLTIP_MINUTES :{BLACK}Incrementar el intervalo de mantenimiento en 5 minutos. Ctrl+clic para incrementar el período en un minuto
 STR_VEHICLE_DETAILS_INCREASE_SERVICING_INTERVAL_TOOLTIP_PERCENT :{BLACK}Incrementar el intervalo de mantenimiento en un 10%. Ctrl+clic para incrementar el período en un 5%
@@ -4644,7 +4644,7 @@ STR_ORDER_REFIT_ORDER                                           :(Reformar a {ST
 STR_ORDER_REFIT_STOP_ORDER                                      :(Reformar a {STRING} y detenerse)
 STR_ORDER_STOP_ORDER                                            :(Detenerse)
 
-STR_ORDER_WAIT_TO_UNBUNCH                                       :(esperar para distanciarse)
+STR_ORDER_WAIT_TO_UNBUNCH                                       :(Esperar para distanciarse)
 
 STR_ORDER_GO_TO_STATION                                         :{STRING} {STATION} {STRING}
 STR_ORDER_GO_TO_STATION_CAN_T_USE_STATION                       :{PUSH_COLOUR}{RED}(No puede usar la estación){POP_COLOUR} {STRING} {STATION} {STRING}
@@ -4900,9 +4900,7 @@ STR_MESSAGE_ESTIMATED_INCOME                                    :{WHITE}Ingreso 
 STR_ERROR_SAVE_STILL_IN_PROGRESS                                :{WHITE}El guardado está en progreso,{}¡por favor espera hasta que termine!
 STR_ERROR_AUTOSAVE_FAILED                                       :{WHITE}Error al autoguardar
 STR_ERROR_UNABLE_TO_READ_DRIVE                                  :{BLACK}No es posible leer la unidad
-STR_ERROR_GAME_SAVE_FAILED                                      :{WHITE}Error guardando partida{}{STRING}
 STR_ERROR_UNABLE_TO_DELETE_FILE                                 :{WHITE}No es posible borrar el archivo
-STR_ERROR_GAME_LOAD_FAILED                                      :{WHITE}Carga de Partida Errónea{}{STRING}
 STR_GAME_SAVELOAD_ERROR_BROKEN_INTERNAL_ERROR                   :Error interno: {STRING}
 STR_GAME_SAVELOAD_ERROR_BROKEN_SAVEGAME                         :Partida guardada corrupta - {STRING}
 STR_GAME_SAVELOAD_ERROR_TOO_NEW_SAVEGAME                        :La partida guardada ha sido realizada con una versión más nueva
@@ -4996,7 +4994,7 @@ STR_ERROR_CAN_T_BUY_COMPANY                                     :{WHITE}No se pu
 STR_ERROR_CAN_T_BUILD_COMPANY_HEADQUARTERS                      :{WHITE}No puede construirse la sede de la empresa...
 
 # Town related errors
-STR_ERROR_CAN_T_GENERATE_TOWN                                   :{WHITE}No se puede construir ningún municipio
+STR_ERROR_CAN_T_GENERATE_TOWN                                   :{WHITE}No se puede generar ningún municipio...
 STR_ERROR_CAN_T_RENAME_TOWN                                     :{WHITE}No se puede renombrar el municipio...
 STR_ERROR_CAN_T_FOUND_TOWN_HERE                                 :{WHITE}No se puede construir un municipio aquí...
 STR_ERROR_CAN_T_EXPAND_TOWN                                     :{WHITE}No se puede expandir este municipio...

@@ -4817,9 +4817,7 @@ STR_MESSAGE_ESTIMATED_INCOME                                    :{WHITE}Numatomo
 STR_ERROR_SAVE_STILL_IN_PROGRESS                                :{WHITE}Vyksta išsaugojimas,{}palaukite kol baigsis!
 STR_ERROR_AUTOSAVE_FAILED                                       :{WHITE}Automatinis išsaugojimas nepavyko
 STR_ERROR_UNABLE_TO_READ_DRIVE                                  :{BLACK}Negali pasiekti disko
-STR_ERROR_GAME_SAVE_FAILED                                      :{WHITE}Žaidimo išsaugoti nepavyko{}{STRING}
 STR_ERROR_UNABLE_TO_DELETE_FILE                                 :{WHITE}Failo ištrinti nepavyko
-STR_ERROR_GAME_LOAD_FAILED                                      :{WHITE}Žaidimo atverti nepavyko{}{STRING}
 STR_GAME_SAVELOAD_ERROR_BROKEN_INTERNAL_ERROR                   :Vidinė klaida: {STRING}
 STR_GAME_SAVELOAD_ERROR_BROKEN_SAVEGAME                         :Sugadintas išsaugotas žaidimas - {STRING}
 STR_GAME_SAVELOAD_ERROR_TOO_NEW_SAVEGAME                        :Išsaugotas žaidimas iš naujesnės versijos

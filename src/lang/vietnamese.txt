@@ -4643,7 +4643,7 @@ STR_ORDER_REFIT_ORDER                                           :(Cải biến t
 STR_ORDER_REFIT_STOP_ORDER                                      :(Cải biến thành {STRING} và dừng)
 STR_ORDER_STOP_ORDER                                            :(Dừng)
 
-STR_ORDER_WAIT_TO_UNBUNCH                                       :(chờ để gỡ gộp)
+STR_ORDER_WAIT_TO_UNBUNCH                                       :(Chờ để gỡ gộp)
 
 STR_ORDER_GO_TO_STATION                                         :{STRING} {STATION} {STRING}
 STR_ORDER_GO_TO_STATION_CAN_T_USE_STATION                       :{PUSH_COLOUR}{RED}(Không thể sử dụng trạm){POP_COLOUR} {STRING} {STATION} {STRING}
@@ -4899,9 +4899,7 @@ STR_MESSAGE_ESTIMATED_INCOME                                    :{WHITE}Thu nh�
 STR_ERROR_SAVE_STILL_IN_PROGRESS                                :{WHITE}Đang lưu vào đĩa,{}hãy chờ cho đến khi hoàn thành!
 STR_ERROR_AUTOSAVE_FAILED                                       :{WHITE}Tự lưu gặp lỗi
 STR_ERROR_UNABLE_TO_READ_DRIVE                                  :{BLACK}Không đọc được đĩa
-STR_ERROR_GAME_SAVE_FAILED                                      :{WHITE}Lưu ván chơi có lỗi{}{STRING}
 STR_ERROR_UNABLE_TO_DELETE_FILE                                 :{WHITE}Không thể xoá file
-STR_ERROR_GAME_LOAD_FAILED                                      :{WHITE}Nạp ván chơi thất bại{}{STRING}
 STR_GAME_SAVELOAD_ERROR_BROKEN_INTERNAL_ERROR                   :Lỗi kỹ thuật: {STRING}
 STR_GAME_SAVELOAD_ERROR_BROKEN_SAVEGAME                         :Bản lưu ván chơi bị hỏng - {STRING}
 STR_GAME_SAVELOAD_ERROR_TOO_NEW_SAVEGAME                        :Bản lưu ván chơi dành cho phiên bản mới hơn

@@ -4899,9 +4899,7 @@ STR_MESSAGE_ESTIMATED_INCOME                                    :{WHITE}预计�
 STR_ERROR_SAVE_STILL_IN_PROGRESS                                :{WHITE}保存仍在继续{}请耐心等待……
 STR_ERROR_AUTOSAVE_FAILED                                       :{WHITE}自动保存失败
 STR_ERROR_UNABLE_TO_READ_DRIVE                                  :{BLACK}不能读取驱动器
-STR_ERROR_GAME_SAVE_FAILED                                      :{WHITE}保存游戏失败{}{STRING}
 STR_ERROR_UNABLE_TO_DELETE_FILE                                 :{WHITE}不能删除文件
-STR_ERROR_GAME_LOAD_FAILED                                      :{WHITE}游戏存档读取失败{}{STRING}
 STR_GAME_SAVELOAD_ERROR_BROKEN_INTERNAL_ERROR                   :内部错误: {STRING}
 STR_GAME_SAVELOAD_ERROR_BROKEN_SAVEGAME                         :无法识别的存档 - {STRING}
 STR_GAME_SAVELOAD_ERROR_TOO_NEW_SAVEGAME                        :该存档是新版本的。当前版本无法读取。

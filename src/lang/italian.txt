@@ -4938,9 +4938,7 @@ STR_MESSAGE_ESTIMATED_INCOME                                    :{WHITE}Ricavo s
 STR_ERROR_SAVE_STILL_IN_PROGRESS                                :{WHITE}Salvataggio in corso,{}prego attenderne la fine!
 STR_ERROR_AUTOSAVE_FAILED                                       :{WHITE}Salvataggio automatico non riuscito
 STR_ERROR_UNABLE_TO_READ_DRIVE                                  :{BLACK}Impossibile leggere dall'unità
-STR_ERROR_GAME_SAVE_FAILED                                      :{WHITE}Salvataggio non riuscito{}{STRING}
 STR_ERROR_UNABLE_TO_DELETE_FILE                                 :{WHITE}Impossibile eliminare il file
-STR_ERROR_GAME_LOAD_FAILED                                      :{WHITE}Caricamento non riuscito{}{STRING}
 STR_GAME_SAVELOAD_ERROR_BROKEN_INTERNAL_ERROR                   :Errore interno: {STRING}
 STR_GAME_SAVELOAD_ERROR_BROKEN_SAVEGAME                         :Salvataggio danneggiato - {STRING}
 STR_GAME_SAVELOAD_ERROR_TOO_NEW_SAVEGAME                        :Salvataggio creato con una versione più recente

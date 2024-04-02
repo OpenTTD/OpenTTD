@@ -4960,9 +4960,7 @@ STR_MESSAGE_ESTIMATED_INCOME                                    :{WHITE}Becsült
 STR_ERROR_SAVE_STILL_IN_PROGRESS                                :{WHITE}A mentés még tart,{}kérlek várd meg a végét!
 STR_ERROR_AUTOSAVE_FAILED                                       :{WHITE}Automatikus mentés sikertelen
 STR_ERROR_UNABLE_TO_READ_DRIVE                                  :{BLACK}Nem olvasható a meghajtó
-STR_ERROR_GAME_SAVE_FAILED                                      :{WHITE}A mentés nem sikerült{}{STRING}
 STR_ERROR_UNABLE_TO_DELETE_FILE                                 :{WHITE}Nem sikerült törölni a fájlt
-STR_ERROR_GAME_LOAD_FAILED                                      :{WHITE}A betöltés nem sikerült{}{STRING}
 STR_GAME_SAVELOAD_ERROR_BROKEN_INTERNAL_ERROR                   :Belső hiba: {STRING}
 STR_GAME_SAVELOAD_ERROR_BROKEN_SAVEGAME                         :Hibás játékállás-mentés - {STRING}
 STR_GAME_SAVELOAD_ERROR_TOO_NEW_SAVEGAME                        :A játékállást újabb verzió mentette el

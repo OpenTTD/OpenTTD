@@ -4892,9 +4892,7 @@ STR_MESSAGE_ESTIMATED_INCOME                                    :{WHITE}Venit es
 STR_ERROR_SAVE_STILL_IN_PROGRESS                                :{WHITE}Salvarea se efectueaza încã,{}vã rugãm asteptati pânã se încheie!
 STR_ERROR_AUTOSAVE_FAILED                                       :{WHITE}Auto-salvarea a esuat
 STR_ERROR_UNABLE_TO_READ_DRIVE                                  :{BLACK}Discul nu a putut fi citit
-STR_ERROR_GAME_SAVE_FAILED                                      :{WHITE}Salvarea jocului eșuată{}{STRING}
 STR_ERROR_UNABLE_TO_DELETE_FILE                                 :{WHITE}Ștergerea fișierului a eșuat
-STR_ERROR_GAME_LOAD_FAILED                                      :{WHITE}Încărcarea jocului eșuată{}{STRING}
 STR_GAME_SAVELOAD_ERROR_BROKEN_INTERNAL_ERROR                   :Eroare internă: {STRING}
 STR_GAME_SAVELOAD_ERROR_BROKEN_SAVEGAME                         :Salvare eronată - {STRING}
 STR_GAME_SAVELOAD_ERROR_TOO_NEW_SAVEGAME                        :Salvarea a fost făcută cu o versiune mai nouă

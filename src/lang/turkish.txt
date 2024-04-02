@@ -4898,9 +4898,7 @@ STR_MESSAGE_ESTIMATED_INCOME                                    :{WHITE}Tahmini 
 STR_ERROR_SAVE_STILL_IN_PROGRESS                                :{WHITE}Kayıt işlemi sürüyor,{}lütfen bitene kadar bekleyin!
 STR_ERROR_AUTOSAVE_FAILED                                       :{WHITE}Otomatik kayıt başarısız
 STR_ERROR_UNABLE_TO_READ_DRIVE                                  :{BLACK}Sürücü okunamıyor
-STR_ERROR_GAME_SAVE_FAILED                                      :{WHITE}Oyun kaydedilemedi{}{STRING}
 STR_ERROR_UNABLE_TO_DELETE_FILE                                 :{WHITE}Dosya silinemedi
-STR_ERROR_GAME_LOAD_FAILED                                      :{WHITE}Dosya yüklenemedi{}{STRING}
 STR_GAME_SAVELOAD_ERROR_BROKEN_INTERNAL_ERROR                   :İç hata: {STRING}
 STR_GAME_SAVELOAD_ERROR_BROKEN_SAVEGAME                         :Bozuk kayıtlı oyun - {STRING}
 STR_GAME_SAVELOAD_ERROR_TOO_NEW_SAVEGAME                        :Oyun yeni bir sürümle kaydedilmiş.

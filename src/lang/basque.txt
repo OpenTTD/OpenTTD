@@ -4014,9 +4014,7 @@ STR_MESSAGE_ESTIMATED_INCOME                                    :{WHITE}Gutxi go
 STR_ERROR_SAVE_STILL_IN_PROGRESS                                :{WHITE}Oraindik artxiboa gordetzen,{}mesedez itxaron amaitu arte!
 STR_ERROR_AUTOSAVE_FAILED                                       :{WHITE}Gordetze automatikoak huts egin du
 STR_ERROR_UNABLE_TO_READ_DRIVE                                  :{BLACK}Ezin izan da driverra irakurri
-STR_ERROR_GAME_SAVE_FAILED                                      :{WHITE}Jokoa gordetzeak huts egin du{}{STRING}
 STR_ERROR_UNABLE_TO_DELETE_FILE                                 :{WHITE}Ezin izan da artxiboa ezabatu
-STR_ERROR_GAME_LOAD_FAILED                                      :{WHITE}Jokoa kargatzeak huts egin du{}{STRING}
 STR_GAME_SAVELOAD_ERROR_BROKEN_INTERNAL_ERROR                   :Barne akatsa: {STRING}
 STR_GAME_SAVELOAD_ERROR_BROKEN_SAVEGAME                         :Gordetako jokoa hautsia dago - {STRING}
 STR_GAME_SAVELOAD_ERROR_TOO_NEW_SAVEGAME                        :Gordetako jokoa bertsio berriago batekin egin da

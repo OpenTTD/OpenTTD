@@ -5250,9 +5250,7 @@ STR_MESSAGE_ESTIMATED_INCOME                                    :{WHITE}Мерк
 STR_ERROR_SAVE_STILL_IN_PROGRESS                                :{WHITE}Ідзе захаваньне,{}калі ласка, дачакайцеся завяршэньня!
 STR_ERROR_AUTOSAVE_FAILED                                       :{WHITE}Памылка аўтазахаваньня
 STR_ERROR_UNABLE_TO_READ_DRIVE                                  :{BLACK}Не атрымалася прачытаць дыск
-STR_ERROR_GAME_SAVE_FAILED                                      :{WHITE}Немагчыма захаваць гульню{}{STRING}
 STR_ERROR_UNABLE_TO_DELETE_FILE                                 :{WHITE}Немагчыма выдаліць файл
-STR_ERROR_GAME_LOAD_FAILED                                      :{WHITE}Немагчыма загрузіць гульню{}{STRING}
 STR_GAME_SAVELOAD_ERROR_BROKEN_INTERNAL_ERROR                   :Унутраная памылка: {STRING}
 STR_GAME_SAVELOAD_ERROR_BROKEN_SAVEGAME                         :Файл пашкоджаны — {STRING}
 STR_GAME_SAVELOAD_ERROR_TOO_NEW_SAVEGAME                        :Захаваньне зроблена ў больш новай вэрсіі

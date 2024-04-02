@@ -4450,10 +4450,10 @@ STR_VEHICLE_INFO_CAPACITY_CAPACITY                              :{BLACK}Kapazit�
 STR_VEHICLE_INFO_FEEDER_CARGO_VALUE                             :{BLACK}Transfer-Einnahmen: {LTBLUE}{CURRENCY_LONG}
 
 STR_VEHICLE_DETAILS_SERVICING_INTERVAL_DAYS                     :{BLACK}Wartungsintervall: {LTBLUE}{COMMA}{NBSP}Tag{P "" e} {BLACK} {STRING}
-STR_VEHICLE_DETAILS_SERVICING_INTERVAL_MINUTES                  :{BLACK}Wartungsintervall: {LTBLUE}{COMMA}{NBSP}Minute{P "" n}{BLACK} {STRING}
+STR_VEHICLE_DETAILS_SERVICING_INTERVAL_MINUTES                  :{BLACK}Wartungsintervall: {LTBLUE}{COMMA}{NBSP}Minuten{BLACK} {STRING}
 STR_VEHICLE_DETAILS_SERVICING_INTERVAL_PERCENT                  :{BLACK}Wartungsintervall: {LTBLUE}{COMMA}%{BLACK} {STRING}
 STR_VEHICLE_DETAILS_LAST_SERVICE_DATE                           :Zuletzt gewartet: {LTBLUE}{DATE_LONG}
-STR_VEHICLE_DETAILS_LAST_SERVICE_MINUTES_AGO                    :Zuletzt gewartet: vor {LTBLUE}{NUM} Minuten
+STR_VEHICLE_DETAILS_LAST_SERVICE_MINUTES_AGO                    :Zuletzt gewartet: vor {LTBLUE}{NUM} Minute{P "" n}
 STR_VEHICLE_DETAILS_INCREASE_SERVICING_INTERVAL_TOOLTIP_DAYS    :{BLACK}Erhöhe Serviceintervall um 10 Tage. Strg+Klick um das Serviceintervall um 5 Tage zu erhöhen
 STR_VEHICLE_DETAILS_INCREASE_SERVICING_INTERVAL_TOOLTIP_MINUTES :{BLACK}Erhöhe Serviceintervall um 5 Minuten. Strg+Klick um das Serviceintervall um 1 Minute zu erhöhen
 STR_VEHICLE_DETAILS_INCREASE_SERVICING_INTERVAL_TOOLTIP_PERCENT :{BLACK}Erhöhe Serviceintervall um 10 Prozent. Strg+Klick um das Serviceintervall um 5 Prozent zu erhöhen
@@ -4644,7 +4644,7 @@ STR_ORDER_REFIT_ORDER                                           :(auf {STRING} u
 STR_ORDER_REFIT_STOP_ORDER                                      :(auf {STRING} umrüsten und stoppen)
 STR_ORDER_STOP_ORDER                                            :(Stopp)
 
-STR_ORDER_WAIT_TO_UNBUNCH                                       :(warte auf Entpulkung)
+STR_ORDER_WAIT_TO_UNBUNCH                                       :(Warte auf Entpulkung)
 
 STR_ORDER_GO_TO_STATION                                         :{STRING} {STATION} {STRING}
 STR_ORDER_GO_TO_STATION_CAN_T_USE_STATION                       :{PUSH_COLOUR}{RED}(Station unbenutzbar){POP_COLOUR} {STRING} {STATION} {STRING}
@@ -4900,9 +4900,7 @@ STR_MESSAGE_ESTIMATED_INCOME                                    :{WHITE}Geschät
 STR_ERROR_SAVE_STILL_IN_PROGRESS                                :{WHITE}Speichern läuft,{}bitte warten, bis es beendet ist!
 STR_ERROR_AUTOSAVE_FAILED                                       :{WHITE}Autosicherung fehlgeschlagen
 STR_ERROR_UNABLE_TO_READ_DRIVE                                  :{BLACK}Laufwerk nicht betriebsbereit
-STR_ERROR_GAME_SAVE_FAILED                                      :{WHITE}Spielspeicherung fehlgeschlagen{}{STRING}
 STR_ERROR_UNABLE_TO_DELETE_FILE                                 :{WHITE}Datei kann nicht gelöscht werden
-STR_ERROR_GAME_LOAD_FAILED                                      :{WHITE}Laden des Spieles fehlgeschlagen{}{STRING}
 STR_GAME_SAVELOAD_ERROR_BROKEN_INTERNAL_ERROR                   :Interner Fehler: {STRING}
 STR_GAME_SAVELOAD_ERROR_BROKEN_SAVEGAME                         :Spielstandsdatei defekt – {STRING}
 STR_GAME_SAVELOAD_ERROR_TOO_NEW_SAVEGAME                        :Spielstand wurde mit einer neueren Spielversion erstellt

@@ -3861,9 +3861,7 @@ STR_MESSAGE_ESTIMATED_INCOME                                    :{WHITE}Dit gjit
 STR_ERROR_SAVE_STILL_IN_PROGRESS                                :{WHITE}Spul noch an it bewarjen,{}graach nog efkes geduld!
 STR_ERROR_AUTOSAVE_FAILED                                       :{WHITE}Automatysk opslaan net slagge
 STR_ERROR_UNABLE_TO_READ_DRIVE                                  :{BLACK}Koe net fan 'e skiif lêze
-STR_ERROR_GAME_SAVE_FAILED                                      :{WHITE}Opslaan Mislearre{}{STRING}
 STR_ERROR_UNABLE_TO_DELETE_FILE                                 :{WHITE}Kin bestân net fuortsmite
-STR_ERROR_GAME_LOAD_FAILED                                      :{WHITE}Laden Mislearre{}{STRING}
 STR_GAME_SAVELOAD_ERROR_BROKEN_INTERNAL_ERROR                   :Interne flater: {STRING}
 STR_GAME_SAVELOAD_ERROR_BROKEN_SAVEGAME                         :Stikkene savegame - {STRING}
 STR_GAME_SAVELOAD_ERROR_TOO_NEW_SAVEGAME                        :Spul is makke mei in neiere fersje

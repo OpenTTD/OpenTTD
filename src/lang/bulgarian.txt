@@ -4290,9 +4290,7 @@ STR_MESSAGE_ESTIMATED_INCOME                                    :{WHITE}Приб
 STR_ERROR_SAVE_STILL_IN_PROGRESS                                :{WHITE}Записването продължава,{}моля изчакайте да сръши!
 STR_ERROR_AUTOSAVE_FAILED                                       :{WHITE}Автозапазването е неуспешно
 STR_ERROR_UNABLE_TO_READ_DRIVE                                  :{BLACK}Не може да прочете диска
-STR_ERROR_GAME_SAVE_FAILED                                      :{WHITE}Запазването на играта е неуспешно{}{STRING}
 STR_ERROR_UNABLE_TO_DELETE_FILE                                 :{WHITE}Изтриването на файла е неуспешно
-STR_ERROR_GAME_LOAD_FAILED                                      :{WHITE}Отварянето на играта е неуспешно{}{STRING}
 STR_GAME_SAVELOAD_ERROR_BROKEN_INTERNAL_ERROR                   :Вътрешна грешка: {STRING}
 STR_GAME_SAVELOAD_ERROR_BROKEN_SAVEGAME                         :Запазената игра е повредена - {STRING}
 STR_GAME_SAVELOAD_ERROR_TOO_NEW_SAVEGAME                        :Запазената игра е направена от по-нова версия

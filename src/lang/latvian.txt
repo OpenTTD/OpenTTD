@@ -4908,9 +4908,7 @@ STR_MESSAGE_ESTIMATED_INCOME                                    :{WHITE}Plānoti
 STR_ERROR_SAVE_STILL_IN_PROGRESS                                :{WHITE}Notiek saglabāšana,{}lLūdzu uzgaidiet!
 STR_ERROR_AUTOSAVE_FAILED                                       :{WHITE}Automātiskā saglabāšana neizdevās
 STR_ERROR_UNABLE_TO_READ_DRIVE                                  :{BLACK}Nevar lasīt disku
-STR_ERROR_GAME_SAVE_FAILED                                      :{WHITE}Spēles saglabāšana neizdevās{}{STRING}
 STR_ERROR_UNABLE_TO_DELETE_FILE                                 :{WHITE}Nevar dzēst failu
-STR_ERROR_GAME_LOAD_FAILED                                      :{WHITE}Spēles ielādēšana neizdevās{}{STRING}
 STR_GAME_SAVELOAD_ERROR_BROKEN_INTERNAL_ERROR                   :Iekšēja kļūda: {STRING}
 STR_GAME_SAVELOAD_ERROR_BROKEN_SAVEGAME                         :Bojāts saglabātās spēles fails - {STRING}
 STR_GAME_SAVELOAD_ERROR_TOO_NEW_SAVEGAME                        :Spēle ir saglabāta ar jaunāku versiju
