@@ -4900,7 +4900,9 @@ STR_MESSAGE_ESTIMATED_INCOME                                    :{WHITE}Ingresso
 STR_ERROR_SAVE_STILL_IN_PROGRESS                                :{WHITE}Es desa la partida.{}Espera que acabi l'operació!
 STR_ERROR_AUTOSAVE_FAILED                                       :{WHITE}Ha fallat el desat automàtic
 STR_ERROR_UNABLE_TO_READ_DRIVE                                  :{BLACK}Impossible llegir la unitat de disc
+STR_ERROR_GAME_SAVE_FAILED                                      :{WHITE}La partida no s'ha pogut desar...
 STR_ERROR_UNABLE_TO_DELETE_FILE                                 :{WHITE}Impossible esborrar l'arxiu
+STR_ERROR_GAME_LOAD_FAILED                                      :{WHITE}La partida no s'ha pogut carregar...
 STR_GAME_SAVELOAD_ERROR_BROKEN_INTERNAL_ERROR                   :Error Intern: {STRING}
 STR_GAME_SAVELOAD_ERROR_BROKEN_SAVEGAME                         :L'arxiu de la partida està corromput - {STRING}
 STR_GAME_SAVELOAD_ERROR_TOO_NEW_SAVEGAME                        :La partida està desada amb una versió més moderna

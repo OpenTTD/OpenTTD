@@ -4899,7 +4899,9 @@ STR_MESSAGE_ESTIMATED_INCOME                                    :{WHITE}Uppskatt
 STR_ERROR_SAVE_STILL_IN_PROGRESS                                :{WHITE}Sparar fortfarande,{}vänta tills det är slutfört!
 STR_ERROR_AUTOSAVE_FAILED                                       :{WHITE}Autosparning misslyckades
 STR_ERROR_UNABLE_TO_READ_DRIVE                                  :{BLACK}Kan inte läsa från disk
+STR_ERROR_GAME_SAVE_FAILED                                      :{WHITE}Sparandet av spelet misslyckades...
 STR_ERROR_UNABLE_TO_DELETE_FILE                                 :{WHITE}Kan inte ta bort filen
+STR_ERROR_GAME_LOAD_FAILED                                      :{WHITE}Inläsningen av spelet misslyckades...
 STR_GAME_SAVELOAD_ERROR_BROKEN_INTERNAL_ERROR                   :Internt fel: {STRING}
 STR_GAME_SAVELOAD_ERROR_BROKEN_SAVEGAME                         :Trasig sparfil - {STRING}
 STR_GAME_SAVELOAD_ERROR_TOO_NEW_SAVEGAME                        :Sparfilen är gjord med en nyare version
