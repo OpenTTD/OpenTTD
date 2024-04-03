@@ -149,13 +149,6 @@
 #		endif
 #	endif
 
-	/* liblzma from vcpkg (before 5.2.4-2) used to patch lzma.h to define LZMA_API_STATIC for static builds */
-#	if defined(WITH_LIBLZMA)
-#		if !defined(LZMA_API_STATIC)
-#			define LZMA_API_STATIC
-#		endif
-#	endif
-
 	/* MSVC doesn't have these :( */
 #	define S_ISDIR(mode) (mode & S_IFDIR)
 #	define S_ISREG(mode) (mode & S_IFREG)

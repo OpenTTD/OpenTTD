@@ -47,12 +47,12 @@ jobs:
 
         echo "::group::Install dependencies"
         sudo apt-get install -y --no-install-recommends \
+          libarchive-dev \
           liballegro4-dev \
           libcurl4-openssl-dev \
           libfontconfig-dev \
           libharfbuzz-dev \
           libicu-dev \
-          liblzma-dev \
           liblzo2-dev \
           libsdl2-dev \
           zlib1g-dev \

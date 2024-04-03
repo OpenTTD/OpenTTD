@@ -141,7 +141,7 @@ struct PacketWriter : SaveFilter {
 		return false;
 	}
 
-	void Write(uint8_t *buf, size_t size) override
+	void Write(const uint8_t *buf, size_t size) override
 	{
 		std::lock_guard<std::mutex> lock(this->mutex);
 

@@ -57,8 +57,8 @@
 #ifdef WITH_ICU_I18N
 #	include <unicode/uversion.h>
 #endif /* WITH_ICU_I18N */
-#ifdef WITH_LIBLZMA
-#	include <lzma.h>
+#ifdef WITH_LIBARCHIVE
+#	include <archive.h>
 #endif
 #ifdef WITH_LZO
 #include <lzo/lzo1x.h>
@@ -429,8 +429,8 @@ void SurveyLibraries(nlohmann::json &survey)
 	survey["icu_i18n"] = buf;
 #endif /* WITH_ICU_I18N */
 
-#ifdef WITH_LIBLZMA
-	survey["lzma"] = lzma_version_string();
+#ifdef WITH_LIBARCHIVE
+	survey["archive"] = archive_version_string();
 #endif
 
 #ifdef WITH_LZO

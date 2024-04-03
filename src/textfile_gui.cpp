@@ -29,10 +29,6 @@
 #include <zlib.h>
 #endif
 
-#if defined(WITH_LIBLZMA)
-#include <lzma.h>
-#endif
-
 #include <regex>
 
 #include "safeguards.h"
@@ -704,61 +700,6 @@ static void Gunzip(uint8_t **bufp, size_t *sizep)
 }
 #endif
 
-#if defined(WITH_LIBLZMA)
-
-/**
- * Do an in-memory xunzip operation. This works on a .xz or (legacy)
- * .lzma file.
- * @param bufp  A pointer to a buffer containing the input data. This
- *              buffer will be freed and replaced by a buffer containing
- *              the uncompressed data.
- * @param sizep A pointer to the buffer size. Before the call, the value
- *              pointed to should contain the size of the input buffer.
- *              After the call, it contains the size of the uncompressed
- *              data.
- *
- * When decompressing fails, *bufp is set to nullptr and *sizep to 0. The
- * compressed buffer passed in is still freed in this case.
- */
-static void Xunzip(uint8_t **bufp, size_t *sizep)
-{
-	static const int BLOCKSIZE  = 8192;
-	uint8_t             *buf       = nullptr;
-	size_t           alloc_size = 0;
-	lzma_stream      z = LZMA_STREAM_INIT;
-	int              res;
-
-	z.next_in = *bufp;
-	z.avail_in = *sizep;
-
-	res = lzma_auto_decoder(&z, UINT64_MAX, LZMA_CONCATENATED);
-	/* Z_BUF_ERROR just means we need more space */
-	while (res == LZMA_OK || (res == LZMA_BUF_ERROR && z.avail_out == 0)) {
-		/* When we get here, we're either just starting, or
-		 * inflate is out of output space - allocate more */
-		alloc_size += BLOCKSIZE;
-		z.avail_out += BLOCKSIZE;
-		buf = ReallocT(buf, alloc_size);
-		z.next_out = buf + alloc_size - z.avail_out;
-		res = lzma_code(&z, LZMA_FINISH);
-	}
-
-	free(*bufp);
-	lzma_end(&z);
-
-	if (res == LZMA_STREAM_END) {
-		*bufp = buf;
-		*sizep = alloc_size - z.avail_out;
-	} else {
-		/* Something went wrong */
-		*bufp = nullptr;
-		*sizep = 0;
-		free(buf);
-	}
-}
-#endif
-
-
 /**
  * Loads the textfile text from file and setup #lines.
  */
@@ -791,12 +732,6 @@ static void Xunzip(uint8_t **bufp, size_t *sizep)
 	/* In-place gunzip */
 	if (textfile.ends_with(".gz")) Gunzip((uint8_t**)&buf, &filesize);
 #endif
-
-#if defined(WITH_LIBLZMA)
-	/* In-place xunzip */
-	if (textfile.ends_with(".xz")) Xunzip((uint8_t**)&buf, &filesize);
-#endif
-
 	if (buf == nullptr) return;
 
 	std::string_view sv_buf(buf, filesize);
@@ -889,10 +824,6 @@ std::optional<std::string> GetTextfile(TextfileType type, Subdirectory dir, cons
 #if defined(WITH_ZLIB)
 		"txt.gz",
 		"md.gz",
-#endif
-#if defined(WITH_LIBLZMA)
-		"txt.xz",
-		"md.xz",
 #endif
 	};
 

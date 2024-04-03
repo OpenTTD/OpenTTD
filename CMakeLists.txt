@@ -121,9 +121,9 @@ set(CMAKE_THREAD_PREFER_PTHREAD YES)
 find_package(Threads REQUIRED)
 
 find_package(ZLIB)
-find_package(LibLZMA)
 find_package(LZO)
 find_package(PNG)
+find_package(LibArchive)
 
 if(WIN32 OR EMSCRIPTEN)
     # Windows uses WinHttp for HTTP requests.
@@ -310,7 +310,7 @@ process_compile_flags()
 include(LinkPackage)
 link_package(PNG TARGET PNG::PNG ENCOURAGED)
 link_package(ZLIB TARGET ZLIB::ZLIB ENCOURAGED)
-link_package(LIBLZMA TARGET LibLZMA::LibLZMA ENCOURAGED)
+link_package(LibArchive TARGET LibArchive::LibArchive ENCOURAGED)
 link_package(LZO)
 
 if(NOT WIN32 AND NOT EMSCRIPTEN)

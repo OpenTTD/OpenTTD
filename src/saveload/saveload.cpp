@@ -2224,7 +2224,7 @@ struct FileWriter : SaveFilter {
 		this->Finish();
 	}
 
-	void Write(uint8_t *buf, size_t size) override
+	void Write(const uint8_t *buf, size_t size) override
 	{
 		/* We're in the process of shutting down, i.e. in "failure" mode. */
 		if (this->file == nullptr) return;
@@ -2310,7 +2310,7 @@ struct LZOSaveFilter : SaveFilter {
 		if (lzo_init() != LZO_E_OK) SlError(STR_GAME_SAVELOAD_ERROR_BROKEN_INTERNAL_ERROR, "cannot initialize compressor");
 	}
 
-	void Write(uint8_t *buf, size_t size) override
+	void Write(const uint8_t *buf, size_t size) override
 	{
 		const lzo_bytep in = buf;
 		/* Buffer size is from the LZO docs plus the chunk header size. */
@@ -2365,7 +2365,7 @@ struct NoCompSaveFilter : SaveFilter {
 	{
 	}
 
-	void Write(uint8_t *buf, size_t size) override
+	void Write(const uint8_t *buf, size_t size) override
 	{
 		this->chain->Write(buf, size);
 	}
@@ -2450,10 +2450,10 @@ struct ZlibSaveFilter : SaveFilter {
 	 * @param len  Amount of bytes to write.
 	 * @param mode Mode for deflate.
 	 */
-	void WriteLoop(uint8_t *p, size_t len, int mode)
+	void WriteLoop(const uint8_t *p, size_t len, int mode)
 	{
 		uint n;
-		this->z.next_in = p;
+		this->z.next_in = const_cast<uint8_t *>(p);
 		this->z.avail_in = (uInt)len;
 		do {
 			this->z.next_out = this->fwrite_buf;
@@ -2478,7 +2478,7 @@ struct ZlibSaveFilter : SaveFilter {
 		} while (this->z.avail_in || !this->z.avail_out);
 	}
 
-	void Write(uint8_t *buf, size_t size) override
+	void Write(const uint8_t *buf, size_t size) override
 	{
 		this->WriteLoop(buf, size, 0);
 	}
@@ -2496,63 +2496,61 @@ struct ZlibSaveFilter : SaveFilter {
  ********** START OF LZMA CODE **************
  ********************************************/
 
-#if defined(WITH_LIBLZMA)
-#include <lzma.h>
-
-/**
- * Have a copy of an initialised LZMA stream. We need this as it's
- * impossible to "re"-assign LZMA_STREAM_INIT to a variable in some
- * compilers, i.e. LZMA_STREAM_INIT can't be used to set something.
- * This var has to be used instead.
- */
-static const lzma_stream _lzma_init = LZMA_STREAM_INIT;
+#if defined(WITH_LIBARCHIVE)
+#include <archive.h>
+#include <archive_entry.h>
 
 /** Filter without any compression. */
 struct LZMALoadFilter : LoadFilter {
-	lzma_stream lzma;                  ///< Stream state that we are reading from.
+	struct archive *archive; ///< Archive state.
 	uint8_t fread_buf[MEMORY_CHUNK_SIZE]; ///< Buffer for reading from the file.
 
 	/**
 	 * Initialise this filter.
 	 * @param chain The next filter in this chain.
 	 */
-	LZMALoadFilter(std::shared_ptr<LoadFilter> chain) : LoadFilter(chain), lzma(_lzma_init)
+	LZMALoadFilter(std::shared_ptr<LoadFilter> chain) : LoadFilter(chain), archive(archive_read_new())
 	{
-		/* Allow saves up to 256 MB uncompressed */
-		if (lzma_auto_decoder(&this->lzma, 1 << 28, 0) != LZMA_OK) SlError(STR_GAME_SAVELOAD_ERROR_BROKEN_INTERNAL_ERROR, "cannot initialize decompressor");
+		archive_read_support_filter_xz(this->archive);
+		archive_read_support_format_raw(this->archive);
+
+		archive_read_set_read_callback(this->archive, [](struct archive *, void *client_data, const void **buffer) -> ssize_t {
+			LZMALoadFilter *this_ = static_cast<LZMALoadFilter *>(client_data);
+
+			*buffer = this_->fread_buf;
+
+			ssize_t res = this_->chain->Read(this_->fread_buf, sizeof(this_->fread_buf));
+			return res;
+		});
+
+		archive_read_append_callback_data(this->archive, this);
+		int res = archive_read_open1(this->archive);
+		if (res != ARCHIVE_OK) SlError(STR_GAME_SAVELOAD_ERROR_BROKEN_INTERNAL_ERROR, "cannot initialize decompressor");
+
+		/* Read the next "header". As the format is set to raw(), this just runs
+		 * the format auto-detection so archive knows this is a lzma file. */
+		struct archive_entry *entry;
+		res = archive_read_next_header(this->archive, &entry);
+		if (res != ARCHIVE_OK) SlError(STR_GAME_SAVELOAD_ERROR_BROKEN_INTERNAL_ERROR, "cannot initialize decompressor");
 	}
 
 	/** Clean everything up. */
 	~LZMALoadFilter()
 	{
-		lzma_end(&this->lzma);
+		archive_read_free(this->archive);
 	}
 
 	size_t Read(uint8_t *buf, size_t size) override
 	{
-		this->lzma.next_out  = buf;
-		this->lzma.avail_out = size;
-
-		do {
-			/* read more bytes from the file? */
-			if (this->lzma.avail_in == 0) {
-				this->lzma.next_in  = this->fread_buf;
-				this->lzma.avail_in = this->chain->Read(this->fread_buf, sizeof(this->fread_buf));
-			}
-
-			/* inflate the data */
-			lzma_ret r = lzma_code(&this->lzma, LZMA_RUN);
-			if (r == LZMA_STREAM_END) break;
-			if (r != LZMA_OK) SlError(STR_GAME_SAVELOAD_ERROR_BROKEN_INTERNAL_ERROR, "liblzma returned error code");
-		} while (this->lzma.avail_out != 0);
-
-		return size - this->lzma.avail_out;
+		int res = archive_read_data(this->archive, buf, size);
+		if (res < 0) SlError(STR_GAME_SAVELOAD_ERROR_FILE_NOT_READABLE, "archive_read_data returned error code");
+		return res;
 	}
 };
 
 /** Filter using LZMA compression. */
 struct LZMASaveFilter : SaveFilter {
-	lzma_stream lzma; ///< Stream state that we are writing to.
+	struct archive *archive; ///< Archive state.
 	uint8_t fwrite_buf[MEMORY_CHUNK_SIZE]; ///< Buffer for writing to the file.
 
 	/**
@@ -2560,56 +2558,53 @@ struct LZMASaveFilter : SaveFilter {
 	 * @param chain             The next filter in this chain.
 	 * @param compression_level The requested level of compression.
 	 */
-	LZMASaveFilter(std::shared_ptr<SaveFilter> chain, uint8_t compression_level) : SaveFilter(chain), lzma(_lzma_init)
+	LZMASaveFilter(std::shared_ptr<SaveFilter> chain, uint8_t compression_level) : SaveFilter(chain), archive(archive_write_new())
 	{
-		if (lzma_easy_encoder(&this->lzma, compression_level, LZMA_CHECK_CRC32) != LZMA_OK) SlError(STR_GAME_SAVELOAD_ERROR_BROKEN_INTERNAL_ERROR, "cannot initialize compressor");
+		archive_write_add_filter_xz(this->archive);
+		archive_write_set_format_raw(this->archive);
+		archive_write_set_filter_option(this->archive, nullptr, "compression-level", std::to_string(compression_level).c_str());
+
+		int res = archive_write_open2(this->archive, this, nullptr, [](struct archive *, void *client_data, const void *buffer, size_t length) -> ssize_t {
+			LZMASaveFilter *this_ = static_cast<LZMASaveFilter *>(client_data);
+
+			this_->chain->Write(reinterpret_cast<const uint8_t *>(buffer), length);
+			return length;
+		}, nullptr, nullptr);
+		if (res != ARCHIVE_OK) SlError(STR_GAME_SAVELOAD_ERROR_BROKEN_INTERNAL_ERROR, "cannot initialize compressor");
+
+		/* Write a "header". As the format is set to raw(), this doesn't do
+		 * anything, but archive needs it before you can write data. */
+		struct archive_entry *entry = archive_entry_new();
+		archive_entry_set_pathname(entry, "");
+		archive_entry_set_size(entry, 1);
+		archive_entry_set_filetype(entry, AE_IFREG);
+		archive_entry_set_perm(entry, 0644);
+
+		res = archive_write_header(this->archive, entry);
+		if (res != ARCHIVE_OK) SlError(STR_GAME_SAVELOAD_ERROR_BROKEN_INTERNAL_ERROR, "cannot initialize compressor");
+
+		archive_entry_free(entry);
 	}
 
 	/** Clean up what we allocated. */
 	~LZMASaveFilter()
 	{
-		lzma_end(&this->lzma);
+		archive_write_free(this->archive);
 	}
 
-	/**
-	 * Helper loop for writing the data.
-	 * @param p      The bytes to write.
-	 * @param len    Amount of bytes to write.
-	 * @param action Action for lzma_code.
-	 */
-	void WriteLoop(uint8_t *p, size_t len, lzma_action action)
+	void Write(const uint8_t *buf, size_t size) override
 	{
-		size_t n;
-		this->lzma.next_in = p;
-		this->lzma.avail_in = len;
-		do {
-			this->lzma.next_out = this->fwrite_buf;
-			this->lzma.avail_out = sizeof(this->fwrite_buf);
-
-			lzma_ret r = lzma_code(&this->lzma, action);
-
-			/* bytes were emitted? */
-			if ((n = sizeof(this->fwrite_buf) - this->lzma.avail_out) != 0) {
-				this->chain->Write(this->fwrite_buf, n);
-			}
-			if (r == LZMA_STREAM_END) break;
-			if (r != LZMA_OK) SlError(STR_GAME_SAVELOAD_ERROR_BROKEN_INTERNAL_ERROR, "liblzma returned error code");
-		} while (this->lzma.avail_in || !this->lzma.avail_out);
-	}
-
-	void Write(uint8_t *buf, size_t size) override
-	{
-		this->WriteLoop(buf, size, LZMA_RUN);
+		int res = archive_write_data(this->archive, buf, size);
+		if (res < 0) SlError(STR_GAME_SAVELOAD_ERROR_BROKEN_INTERNAL_ERROR, "archive_write_data returned error code");
 	}
 
 	void Finish() override
 	{
-		this->WriteLoop(nullptr, 0, LZMA_FINISH);
-		this->chain->Finish();
+		archive_write_close(this->archive);
 	}
 };
 
-#endif /* WITH_LIBLZMA */
+#endif /* WITH_LIBARCHIVE */
 
 /*******************************************
  ************* END OF CODE *****************
@@ -2646,7 +2641,7 @@ static const SaveLoadFormat _saveload_formats[] = {
 #else
 	{"zlib",   TO_BE32X('OTTZ'), nullptr,                            nullptr,                            0, 0, 0},
 #endif
-#if defined(WITH_LIBLZMA)
+#if defined(WITH_LIBARCHIVE)
 	/* Level 2 compression is speed wise as fast as zlib level 6 compression (old default), but results in ~10% smaller saves.
 	 * Higher compression levels are possible, and might improve savegame size by up to 25%, but are also up to 10 times slower.
 	 * The next significant reduction in file size is at level 4, but that is already 4 times slower. Level 3 is primarily 50%

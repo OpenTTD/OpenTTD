@@ -34,7 +34,11 @@
       "platform": "linux"
     },
     {
-      "name": "liblzma"
+      "name": "libarchive",
+      "default-features": false,
+      "features": [
+        "lzma"
+      ]
     },
     {
       "name": "libpng"
