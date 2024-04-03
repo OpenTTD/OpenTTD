@@ -184,6 +184,7 @@ enum CompanyInfrastructureWidgets : WidgetID {
 	WID_CI_STATION_COUNT, ///< Count of station.
 	WID_CI_TOTAL_DESC,    ///< Description of total.
 	WID_CI_TOTAL,         ///< Count of total.
+	WID_CI_HIGHLIGHT_INFRASTRUCTURE,
 };
 
 /** Widgets of the #BuyCompanyWindow class. */

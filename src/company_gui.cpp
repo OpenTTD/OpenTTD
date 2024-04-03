@@ -53,7 +53,7 @@
 /** Company GUI constants. */
 static void DoSelectCompanyManagerFace(Window *parent);
 static void ShowCompanyInfrastructure(CompanyID company);
-std::vector<CompanyID> _viewport_infrastructure_window_order;
+CompanyID _viewport_company_to_highlight_infrastructure = INVALID_OWNER;
 
 /** List of revenues. */
 static const std::initializer_list<ExpensesType> _expenses_list_revenue = {
@@ -1818,6 +1818,7 @@ static constexpr NWidgetPart _nested_company_infrastructure_widgets[] = {
 				NWidget(WWT_EMPTY, COLOUR_GREY, WID_CI_TOTAL_DESC), SetFill(1, 0),
 				NWidget(WWT_EMPTY, COLOUR_GREY, WID_CI_TOTAL), SetFill(0, 1),
 			EndContainer(),
+			NWidget(WWT_PUSHTXTBTN, COLOUR_GREY, WID_CI_HIGHLIGHT_INFRASTRUCTURE), SetFill(1, 0), SetDataTip(STR_COMPANY_INFRASTRUCTURE_VIEW_HIGHLIGHT_INFRASTRUCTURE, STR_COMPANY_INFRASTRUCTURE_VIEW_HIGHLIGHT_INFRASTRUCTURE_TOOLTIP),
 		EndContainer(),
 	EndContainer(),
 };
@@ -1838,14 +1839,11 @@ struct CompanyInfrastructureWindow : Window
 	 */
 	void Close([[maybe_unused]] int data) override
 	{
-		auto to_remove_from_order = std::find(_viewport_infrastructure_window_order.begin(), _viewport_infrastructure_window_order.end(), (CompanyID)this->window_number);
 
-		/* Cautious error checking */
-		if (to_remove_from_order != _viewport_infrastructure_window_order.end()) {
-			_viewport_infrastructure_window_order.erase(to_remove_from_order);
+		if(_viewport_company_to_highlight_infrastructure == (CompanyID)this->window_number){
+			_viewport_company_to_highlight_infrastructure = INVALID_OWNER;
+			MarkWholeScreenDirty();
 		}
-
-		MarkWholeScreenDirty();
 		this->Window::Close();
 	}
 
@@ -2045,7 +2043,11 @@ struct CompanyInfrastructureWindow : Window
 				TC_FROMSTRING, SA_RIGHT);
 		}
 	}
-
+	void OnPaint() override
+	{
+		this->SetWidgetLoweredState(WID_CI_HIGHLIGHT_INFRASTRUCTURE, _viewport_company_to_highlight_infrastructure == (CompanyID)this->window_number);
+		this->DrawWidgets();
+	}
 	void DrawWidget(const Rect &r, WidgetID widget) const override
 	{
 		const Company *c = Company::Get((CompanyID)this->window_number);
@@ -2144,6 +2146,22 @@ struct CompanyInfrastructureWindow : Window
 				break;
 		}
 	}
+	void OnClick([[maybe_unused]] Point pt, WidgetID widget, [[maybe_unused]] int click_count) override
+	{
+		switch (widget) {
+			case WID_CI_HIGHLIGHT_INFRASTRUCTURE:
+				CompanyID window_company_id = (CompanyID)this->window_number;
+				if(_viewport_company_to_highlight_infrastructure != window_company_id) {
+					_viewport_company_to_highlight_infrastructure = window_company_id;
+					MarkWholeScreenDirty();
+				}
+				else {
+					_viewport_company_to_highlight_infrastructure = INVALID_OWNER;
+					MarkWholeScreenDirty();
+				}
+				break;
+		}
+	}
 
 	/**
 	 * Some data on this window has become invalid.
@@ -2176,15 +2194,6 @@ static void ShowCompanyInfrastructure(CompanyID company)
 	if (!Company::IsValidID(company)) return;
 	AllocateWindowDescFront<CompanyInfrastructureWindow>(&_company_infrastructure_desc, company);
 
-	/* Check if already open then move up in the order */
-	auto to_moveup_in_order = std::find(_viewport_infrastructure_window_order.begin(), _viewport_infrastructure_window_order.end(), company);
-
-	/* Cautious error checking */
-	if (to_moveup_in_order != _viewport_infrastructure_window_order.end()) {
-		_viewport_infrastructure_window_order.erase(to_moveup_in_order);
-	}
-
-	_viewport_infrastructure_window_order.push_back(company);
 	MarkWholeScreenDirty();
 }
 

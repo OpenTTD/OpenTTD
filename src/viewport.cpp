@@ -1039,19 +1039,19 @@ static TileHighlightType GetTileHighlightType(TileIndex t)
 	}
 
 	/* Highlight infrastructure owned by the company with the most recently currently opened infrastructure window */
-	if (!_viewport_infrastructure_window_order.empty()) {
+	if (_viewport_company_to_highlight_infrastructure != INVALID_OWNER) {
 		switch (GetTileType(t)) {
 			case MP_ROAD:
 				/* Edge case of company owned tramway on non-company owned road/rail tile */
 				if (!IsRoadDepot(t) && HasTileRoadType(t, RTT_TRAM)) {
-					if (IsRoadOwner(t, RTT_TRAM, _viewport_infrastructure_window_order.back())) {
+					if (IsRoadOwner(t, RTT_TRAM, _viewport_company_to_highlight_infrastructure)) {
 						return THT_WHITE;
 					}
 				}
 
 				/* Edge case of company owned road on non-company owned rail tile */
 				if (!IsRoadDepot(t) && HasTileRoadType(t, RTT_ROAD)) {
-					if (IsRoadOwner(t, RTT_ROAD, _viewport_infrastructure_window_order.back())) {
+					if (IsRoadOwner(t, RTT_ROAD, _viewport_company_to_highlight_infrastructure)){
 						return THT_WHITE;
 					}
 				}
@@ -1059,7 +1059,7 @@ static TileHighlightType GetTileHighlightType(TileIndex t)
 			case MP_RAILWAY:
 			case MP_TUNNELBRIDGE:
 			case MP_WATER:
-				if (GetTileOwner(t) == _viewport_infrastructure_window_order.back()) {
+				if (GetTileOwner(t) == _viewport_company_to_highlight_infrastructure) {
 					return THT_WHITE;
 				}
 				break;

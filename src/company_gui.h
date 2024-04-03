@@ -26,6 +26,6 @@ void InvalidateCompanyWindows(const Company *c);
 void CloseCompanyWindows(CompanyID company);
 void DirtyCompanyInfrastructureWindows(CompanyID company);
 
-extern std::vector<CompanyID> _viewport_infrastructure_window_order;
+ extern CompanyID _viewport_company_to_highlight_infrastructure;
 
 #endif /* COMPANY_GUI_H */
