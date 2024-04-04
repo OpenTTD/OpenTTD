@@ -4899,7 +4899,9 @@ STR_MESSAGE_ESTIMATED_INCOME                                    :{WHITE}Arvioitu
 STR_ERROR_SAVE_STILL_IN_PROGRESS                                :{WHITE}Tallentaminen käynnissä,{}odota, kunnes se päättyy!
 STR_ERROR_AUTOSAVE_FAILED                                       :{WHITE}Automaattitallennus epäonnistui.
 STR_ERROR_UNABLE_TO_READ_DRIVE                                  :{BLACK}Asemaa ei voi lukea.
+STR_ERROR_GAME_SAVE_FAILED                                      :{WHITE}Pelin tallennus epäonnistui…
 STR_ERROR_UNABLE_TO_DELETE_FILE                                 :{WHITE}Tiedostoa ei voi poistaa.
+STR_ERROR_GAME_LOAD_FAILED                                      :{WHITE}Pelin lataus epäonnistui…
 STR_GAME_SAVELOAD_ERROR_BROKEN_INTERNAL_ERROR                   :Sisäinen virhe: {STRING}
 STR_GAME_SAVELOAD_ERROR_BROKEN_SAVEGAME                         :Viallinen tallennus – {STRING}
 STR_GAME_SAVELOAD_ERROR_TOO_NEW_SAVEGAME                        :Tallennus on tehty uudemmalla versiolla

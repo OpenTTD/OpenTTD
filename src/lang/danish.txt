@@ -4899,7 +4899,9 @@ STR_MESSAGE_ESTIMATED_INCOME                                    :{WHITE}Anslået
 STR_ERROR_SAVE_STILL_IN_PROGRESS                                :{WHITE}Gemmer stadig,{}vent venligst!
 STR_ERROR_AUTOSAVE_FAILED                                       :{WHITE}Fejl under autogem
 STR_ERROR_UNABLE_TO_READ_DRIVE                                  :{BLACK}Kan ikke læse drevet
+STR_ERROR_GAME_SAVE_FAILED                                      :{WHITE}Fejl under lagring af spil...
 STR_ERROR_UNABLE_TO_DELETE_FILE                                 :{WHITE}Kan ikke slette fil
+STR_ERROR_GAME_LOAD_FAILED                                      :{WHITE}Fejl under indlæsning af spil...
 STR_GAME_SAVELOAD_ERROR_BROKEN_INTERNAL_ERROR                   :Intern fejl: {STRING}
 STR_GAME_SAVELOAD_ERROR_BROKEN_SAVEGAME                         :Ødelagt gemt spil - {STRING}
 STR_GAME_SAVELOAD_ERROR_TOO_NEW_SAVEGAME                        :Spillet er gemt med en nyere version

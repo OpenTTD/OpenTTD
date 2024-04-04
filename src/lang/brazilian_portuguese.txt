@@ -270,7 +270,7 @@ STR_UNITS_PERIODS                                               :{NUM}{NBSP}per�
 # Common window strings
 STR_LIST_FILTER_TITLE                                           :{BLACK}Filtro:
 STR_LIST_FILTER_OSKTITLE                                        :{BLACK}Inserir uma ou mais palavras-chave para filtrar a lista
-STR_LIST_FILTER_TOOLTIP                                         :{BLACK}Digite uma ou mais palavras-chave para procurar na lista
+STR_LIST_FILTER_TOOLTIP                                         :{BLACK}Introduza uma ou mais palavras-chave para procurar na lista
 
 STR_TOOLTIP_GROUP_ORDER                                         :{BLACK}Escolher a ordem de agrupamento
 STR_TOOLTIP_SORT_ORDER                                          :{BLACK}Escolher a ordenação (descendente/ascendente)
@@ -418,7 +418,7 @@ STR_SCENEDIT_TOOLBAR_OPENTTD                                    :{YELLOW}OpenTTD
 STR_SCENEDIT_TOOLBAR_SCENARIO_EDITOR                            :{YELLOW}Editor de Cenário
 STR_SCENEDIT_TOOLBAR_TOOLTIP_MOVE_THE_STARTING_DATE_BACKWARD    :{BLACK}Mover a data inicial 1 ano para trás
 STR_SCENEDIT_TOOLBAR_TOOLTIP_MOVE_THE_STARTING_DATE_FORWARD     :{BLACK}Mover a data inicial 1 ano para frente
-STR_SCENEDIT_TOOLBAR_TOOLTIP_SET_DATE                           :{BLACK}Clique para digitar o ano de início
+STR_SCENEDIT_TOOLBAR_TOOLTIP_SET_DATE                           :{BLACK}Clique para alterar o ano de início
 STR_SCENEDIT_TOOLBAR_TOOLTIP_DISPLAY_MAP_TOWN_DIRECTORY         :{BLACK}Abrir mapa, visualização extra, lista de placas, de localidades ou de indústrias
 STR_SCENEDIT_TOOLBAR_LANDSCAPE_GENERATION                       :{BLACK}Abrir menu de paisagismo ou gerar um novo mundo
 STR_SCENEDIT_TOOLBAR_TOWN_GENERATION                            :{BLACK}Construir ou gerar localidades
@@ -2420,8 +2420,8 @@ STR_NETWORK_SERVER_LIST_ADD_SERVER_TOOLTIP                      :{BLACK}Adiciona
 STR_NETWORK_SERVER_LIST_START_SERVER                            :{BLACK}Iniciar servidor
 STR_NETWORK_SERVER_LIST_START_SERVER_TOOLTIP                    :{BLACK}Iniciar um servidor próprio
 
-STR_NETWORK_SERVER_LIST_PLAYER_NAME_OSKTITLE                    :{BLACK}Digitar o seu nome
-STR_NETWORK_SERVER_LIST_ENTER_SERVER_ADDRESS                    :{BLACK}Digitar o endereço de servidor ou código de convite
+STR_NETWORK_SERVER_LIST_PLAYER_NAME_OSKTITLE                    :{BLACK}Introduza o seu nome
+STR_NETWORK_SERVER_LIST_ENTER_SERVER_ADDRESS                    :{BLACK}Introduza o endereço de servidor ou código de convite
 
 # Start new multiplayer server
 STR_NETWORK_START_SERVER_CAPTION                                :{WHITE}Iniciar novo jogo multijogador
@@ -2440,7 +2440,7 @@ STR_NETWORK_START_SERVER_COMPANIES_SELECT                       :{BLACK}{NUM} em
 STR_NETWORK_START_SERVER_NUMBER_OF_COMPANIES                    :{BLACK}Número máximo de empresas:
 STR_NETWORK_START_SERVER_NUMBER_OF_COMPANIES_TOOLTIP            :{BLACK}Limitar o servidor a um certo número de empresas
 
-STR_NETWORK_START_SERVER_NEW_GAME_NAME_OSKTITLE                 :{BLACK}Coloque o nome para o jogo em rede
+STR_NETWORK_START_SERVER_NEW_GAME_NAME_OSKTITLE                 :{BLACK}Introduza um nome para o jogo em rede
 
 # Network connecting window
 STR_NETWORK_CONNECTING_CAPTION                                  :{WHITE}Conectando...
@@ -2461,8 +2461,8 @@ STR_NETWORK_CONNECTING_SPECIAL_2                                :{BLACK}Obtendo 
 
 STR_NETWORK_CONNECTION_DISCONNECT                               :{BLACK}Desconectar
 
-STR_NETWORK_NEED_GAME_PASSWORD_CAPTION                          :{WHITE}Servidor protegido. Digite a senha
-STR_NETWORK_NEED_COMPANY_PASSWORD_CAPTION                       :{WHITE}Empresa protegida. Digite a senha
+STR_NETWORK_NEED_GAME_PASSWORD_CAPTION                          :{WHITE}Servidor protegido. Introduza a senha
+STR_NETWORK_NEED_COMPANY_PASSWORD_CAPTION                       :{WHITE}Empresa protegida. Introduza a senha
 
 # Network company list added strings
 STR_NETWORK_COMPANY_LIST_CLIENT_LIST                            :Jogadores conectados
@@ -2560,7 +2560,7 @@ STR_NETWORK_CHAT_CLIENT                                         :[Privado] {STRI
 STR_NETWORK_CHAT_TO_CLIENT                                      :[Privado] Para {STRING}: {WHITE}{STRING}
 STR_NETWORK_CHAT_ALL                                            :[Todos] {STRING}: {WHITE}{STRING}
 STR_NETWORK_CHAT_EXTERNAL                                       :[{3:STRING}] {0:STRING}: {WHITE}{1:STRING}
-STR_NETWORK_CHAT_OSKTITLE                                       :{BLACK}Digitar a mensagem para conversar na rede
+STR_NETWORK_CHAT_OSKTITLE                                       :{BLACK}Introduza a mensagem para conversar na rede
 
 # Network messages
 STR_NETWORK_ERROR_NOTAVAILABLE                                  :{WHITE}Não foram encontradas interfaces de rede ou o jogo foi compilado sem ENABLE_NETWORK
@@ -2646,14 +2646,14 @@ STR_NETWORK_MESSAGE_SERVER_REBOOT                               :{WHITE}O servid
 STR_NETWORK_MESSAGE_KICKED                                      :*** {STRING} foi expulso. Motivo: ({STRING})
 
 STR_NETWORK_ERROR_COORDINATOR_REGISTRATION_FAILED               :{WHITE}Falha ao registrar o servidor
-STR_NETWORK_ERROR_COORDINATOR_REUSE_OF_INVITE_CODE              :{WHITE}Outro servidor com o mesmo código de convite foi registrado. Mudando para o tipo de jogo "local".
+STR_NETWORK_ERROR_COORDINATOR_REUSE_OF_INVITE_CODE              :{WHITE}Outro servidor com o mesmo código de convite foi registrado. Mudando o jogo para o tipo "local".
 STR_NETWORK_ERROR_COORDINATOR_ISOLATED                          :{WHITE}O seu servidor não permite conexões remotas
 STR_NETWORK_ERROR_COORDINATOR_ISOLATED_DETAIL                   :{WHITE}Outros jogadores não poderão se conectar ao seu servidor
 
 # Content downloading window
 STR_CONTENT_TITLE                                               :{WHITE}Download de conteúdo
 STR_CONTENT_TYPE_CAPTION                                        :{BLACK}Tipo
-STR_CONTENT_TYPE_CAPTION_TOOLTIP                                :{BLACK}Tipo do conteúdo
+STR_CONTENT_TYPE_CAPTION_TOOLTIP                                :{BLACK}Tipo de conteúdo
 STR_CONTENT_NAME_CAPTION                                        :{BLACK}Nome
 STR_CONTENT_NAME_CAPTION_TOOLTIP                                :{BLACK}Nome do conteúdo
 STR_CONTENT_MATRIX_TOOLTIP                                      :{BLACK}Clique numa linha para ver os detalhes{}Clique na caixa de seleção para marcar e fazer o download
@@ -3014,8 +3014,8 @@ STR_FOUND_TOWN_EXPAND_ALL_TOWNS                                 :{BLACK}Expandir
 STR_FOUND_TOWN_EXPAND_ALL_TOWNS_TOOLTIP                         :{BLACK}Fazer com que todas as localidades cresçam ligeiramente
 
 STR_FOUND_TOWN_NAME_TITLE                                       :{YELLOW}Nome da localidade:
-STR_FOUND_TOWN_NAME_EDITOR_TITLE                                :{BLACK}Digitar o nome da localidade
-STR_FOUND_TOWN_NAME_EDITOR_HELP                                 :{BLACK}Clique para digitar o nome da localidade
+STR_FOUND_TOWN_NAME_EDITOR_TITLE                                :{BLACK}Introduza o nome da localidade
+STR_FOUND_TOWN_NAME_EDITOR_HELP                                 :{BLACK}Clique para editar o nome da localidade
 STR_FOUND_TOWN_NAME_RANDOM_BUTTON                               :{BLACK}Nome aleatório
 STR_FOUND_TOWN_NAME_RANDOM_TOOLTIP                              :{BLACK}Gerar novo nome aleatório
 
@@ -3283,7 +3283,7 @@ STR_SAVELOAD_OVERWRITE_WARNING                                  :{YELLOW}Você q
 STR_SAVELOAD_DIRECTORY                                          :{STRING} (Diretório)
 STR_SAVELOAD_PARENT_DIRECTORY                                   :{STRING} (Diretório raiz)
 
-STR_SAVELOAD_OSKTITLE                                           :{BLACK}Digitar um nome para o jogo que será gravado
+STR_SAVELOAD_OSKTITLE                                           :{BLACK}Introduza um nome para o jogo que será gravado
 
 # World generation
 STR_MAPGEN_WORLD_GENERATION_CAPTION                             :{WHITE}Geração de Mapas
@@ -3459,7 +3459,7 @@ STR_NEWGRF_SETTINGS_INCOMPATIBLE                                :{RED}Incompatí
 # NewGRF save preset window
 STR_SAVE_PRESET_CAPTION                                         :{WHITE}Salvar predefinição
 STR_SAVE_PRESET_LIST_TOOLTIP                                    :{BLACK}Lista de predefinições disponíveis, selecione uma para copiar o nome e usar na gravação abaixo
-STR_SAVE_PRESET_TITLE                                           :{BLACK}Digitar um nome para a predefinição
+STR_SAVE_PRESET_TITLE                                           :{BLACK}Introduza um nome para a predefinição
 STR_SAVE_PRESET_EDITBOX_TOOLTIP                                 :{BLACK}Nome que está selecionado para salvar a predefinição
 STR_SAVE_PRESET_CANCEL                                          :{BLACK}Cancelar
 STR_SAVE_PRESET_CANCEL_TOOLTIP                                  :{BLACK}Não alterar a predefinição
@@ -3603,7 +3603,7 @@ STR_EDIT_SIGN_LOCATION_TOOLTIP                                  :{BLACK}Centrali
 STR_EDIT_SIGN_NEXT_SIGN_TOOLTIP                                 :{BLACK}Ir para a próxima placa
 STR_EDIT_SIGN_PREVIOUS_SIGN_TOOLTIP                             :{BLACK}Ir para a placa anterior
 
-STR_EDIT_SIGN_SIGN_OSKTITLE                                     :{BLACK}Digitar um nome para a placa
+STR_EDIT_SIGN_SIGN_OSKTITLE                                     :{BLACK}Introduza um nome para a placa
 
 # Town directory window
 STR_TOWN_DIRECTORY_CAPTION                                      :{WHITE}Localidades
@@ -3920,7 +3920,7 @@ STR_COMPANY_VIEW_PRESIDENT_NAME_TOOLTIP                         :{BLACK}Alterar 
 
 STR_COMPANY_VIEW_COMPANY_NAME_QUERY_CAPTION                     :Nome da Empresa
 STR_COMPANY_VIEW_PRESIDENT_S_NAME_QUERY_CAPTION                 :Nome do Presidente
-STR_COMPANY_VIEW_GIVE_MONEY_QUERY_CAPTION                       :Digitar a quantia de dinheiro que você quer dar
+STR_COMPANY_VIEW_GIVE_MONEY_QUERY_CAPTION                       :Introduza o valor que você quer dar
 
 STR_BUY_COMPANY_MESSAGE                                         :{WHITE}Estamos procurando uma empresa de transportes para comprar a nossa empresa.{}{}Você deseja comprar {COMPANY} por {CURRENCY_LONG}?
 STR_BUY_COMPANY_HOSTILE_TAKEOVER                                :{WHITE}Na aquisição hostil de {COMPANY} você irá adquirir todos os ativos, liquidar todos os empréstimos e pagar dois anos de lucros.{}{}O total estimado é de {CURRENCY_LONG}.{}{}Você deseja continuar esta aquisição hostil?
@@ -4271,9 +4271,9 @@ STR_ENGINE_PREVIEW_SHIP                                         :{G=f}embarcaç�
 STR_ENGINE_PREVIEW_TEXT3                                        :{BLACK}{STRING}{}{5:STRING}{}{STRING}
 STR_ENGINE_PREVIEW_TEXT4                                        :{BLACK}{STRING}{}{STRING}{}{STRING}{}{STRING}
 STR_ENGINE_PREVIEW_COST_WEIGHT                                  :Custo: {CURRENCY_LONG}  Peso: {WEIGHT_SHORT}
-STR_ENGINE_PREVIEW_COST_MAX_SPEED                               :Custo: {CURRENCY_LONG}  Velocidade máx.: {VELOCITY}
+STR_ENGINE_PREVIEW_COST_MAX_SPEED                               :Custo: {CURRENCY_LONG}  Veloc. máx.: {VELOCITY}
 STR_ENGINE_PREVIEW_SPEED_POWER                                  :Velocidade: {VELOCITY}  Potência: {POWER}
-STR_ENGINE_PREVIEW_SPEED_POWER_MAX_TE                           :Velocidade: {VELOCITY}  Potência: {POWER}  Tração máx.: {FORCE}
+STR_ENGINE_PREVIEW_SPEED_POWER_MAX_TE                           :Veloc.: {VELOCITY}  Potência: {POWER}  Tração máx.: {FORCE}
 STR_ENGINE_PREVIEW_TYPE                                         :Tipo de aeronave: {STRING}
 STR_ENGINE_PREVIEW_TYPE_RANGE                                   :Tipo de aeronave: {STRING}   Autonomia: {COMMA} quadrados
 STR_ENGINE_PREVIEW_RUNCOST_YEAR                                 :Custo Operacional: {CURRENCY_LONG}/ano
@@ -4431,9 +4431,9 @@ STR_VEHICLE_INFO_AGE_RUNNING_COST_PERIOD                        :{BLACK}Idade: {
 
 STR_VEHICLE_INFO_MAX_SPEED                                      :{BLACK}Velocidade máx.: {LTBLUE}{VELOCITY}
 STR_VEHICLE_INFO_MAX_SPEED_TYPE                                 :{BLACK}Velocidade máx.: {LTBLUE}{VELOCITY} {BLACK}Tipo de aeronave: {LTBLUE}{STRING}
-STR_VEHICLE_INFO_MAX_SPEED_TYPE_RANGE                           :{BLACK}Velocidade máx.: {LTBLUE}{VELOCITY} {BLACK}Tipo de aeronave: {LTBLUE}{STRING} {BLACK}Autonomia: {LTBLUE}{COMMA} quadrados
-STR_VEHICLE_INFO_WEIGHT_POWER_MAX_SPEED                         :{BLACK}Peso: {LTBLUE}{WEIGHT_SHORT} {BLACK}Potência: {LTBLUE}{POWER}{BLACK} Velocidade máx.: {LTBLUE}{VELOCITY}
-STR_VEHICLE_INFO_WEIGHT_POWER_MAX_SPEED_MAX_TE                  :{BLACK}Peso: {LTBLUE}{WEIGHT_SHORT} {BLACK}Potência: {LTBLUE}{POWER}{BLACK} Velocidade máx.: {LTBLUE}{VELOCITY} {BLACK}Força de Tração máx.: {LTBLUE}{FORCE}
+STR_VEHICLE_INFO_MAX_SPEED_TYPE_RANGE                           :{BLACK}Veloc. máx.: {LTBLUE}{VELOCITY} {BLACK}Tipo de aeronave: {LTBLUE}{STRING} {BLACK}Autonomia: {LTBLUE}{COMMA} quadrados
+STR_VEHICLE_INFO_WEIGHT_POWER_MAX_SPEED                         :{BLACK}Peso: {LTBLUE}{WEIGHT_SHORT} {BLACK}Potência: {LTBLUE}{POWER}{BLACK} Veloc. máx.: {LTBLUE}{VELOCITY}
+STR_VEHICLE_INFO_WEIGHT_POWER_MAX_SPEED_MAX_TE                  :{BLACK}Peso: {LTBLUE}{WEIGHT_SHORT} {BLACK}Potência: {LTBLUE}{POWER}{BLACK} Veloc. máx.: {LTBLUE}{VELOCITY} {BLACK}Tração máx.: {LTBLUE}{FORCE}
 
 STR_VEHICLE_INFO_PROFIT_THIS_YEAR_LAST_YEAR                     :{BLACK}Lucro neste ano: {LTBLUE}{CURRENCY_LONG} (último ano: {CURRENCY_LONG})
 STR_VEHICLE_INFO_PROFIT_THIS_YEAR_LAST_YEAR_MIN_PERFORMANCE     :{BLACK}Lucro neste ano: {LTBLUE}{CURRENCY_LONG} (último ano: {CURRENCY_LONG}) {BLACK}Desempenho mín.: {LTBLUE}{POWER_TO_WEIGHT}
@@ -4602,7 +4602,7 @@ STR_ORDER_CONDITIONAL_COMPARATOR_IS_TRUE                        :for verdadeiro
 STR_ORDER_CONDITIONAL_COMPARATOR_IS_FALSE                       :for falso
 
 STR_ORDER_CONDITIONAL_VALUE_TOOLTIP                             :{BLACK}O valor para comparar com os dados do veículo
-STR_ORDER_CONDITIONAL_VALUE_CAPT                                :{WHITE}Digitar um valor para comparar
+STR_ORDER_CONDITIONAL_VALUE_CAPT                                :{WHITE}Introduza um valor para comparar
 
 STR_ORDERS_SKIP_BUTTON                                          :{BLACK}Saltar
 STR_ORDERS_SKIP_TOOLTIP                                         :{BLACK}Saltar a ordem atual e iniciar a próxima. Ctrl+Clique para saltar até a ordem selecionada

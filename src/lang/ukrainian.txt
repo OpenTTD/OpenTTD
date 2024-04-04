@@ -5041,7 +5041,9 @@ STR_MESSAGE_ESTIMATED_INCOME                                    :{WHITE}Приб
 STR_ERROR_SAVE_STILL_IN_PROGRESS                                :{WHITE}Збереження...{}зачекайте, доки завершиться!
 STR_ERROR_AUTOSAVE_FAILED                                       :{WHITE}Помилка автозбереження
 STR_ERROR_UNABLE_TO_READ_DRIVE                                  :{BLACK}Неможливо прочитати пристрій
+STR_ERROR_GAME_SAVE_FAILED                                      :
 STR_ERROR_UNABLE_TO_DELETE_FILE                                 :{WHITE}Неможливо стерти файл
+STR_ERROR_GAME_LOAD_FAILED                                      :
 STR_GAME_SAVELOAD_ERROR_BROKEN_INTERNAL_ERROR                   :Внутрішня помилка: {STRING}
 STR_GAME_SAVELOAD_ERROR_BROKEN_SAVEGAME                         :Файл збереженої гри пошкоджений - {STRING}
 STR_GAME_SAVELOAD_ERROR_TOO_NEW_SAVEGAME                        :Файл збереженої гри зроблений більш новою версією
