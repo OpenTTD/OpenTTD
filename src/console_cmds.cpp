@@ -1913,6 +1913,52 @@ static std::vector<std::pair<std::string_view, NetworkAuthorizedKeys *>> _consol
 	{ "server", &_settings_client.network.server_authorized_keys },
 };
 
+enum ConNetworkAuthorizedKeyAction {
+	CNAKA_LIST,
+	CNAKA_ADD,
+	CNAKA_REMOVE,
+};
+
+static void PerformNetworkAuthorizedKeyAction(std::string_view name, NetworkAuthorizedKeys *authorized_keys, ConNetworkAuthorizedKeyAction action, const std::string &authorized_key, CompanyID company = INVALID_COMPANY)
+{
+	switch (action) {
+		case CNAKA_LIST:
+			IConsolePrint(CC_WHITE, "The authorized keys for {} are:", name);
+			for (auto &ak : *authorized_keys) IConsolePrint(CC_INFO, "  {}", ak);
+			return;
+
+		case CNAKA_ADD:
+			if (authorized_keys->Contains(authorized_key)) {
+				IConsolePrint(CC_WARNING, "Not added {} to {} as it already exists.", authorized_key, name);
+				return;
+			}
+
+			if (company == INVALID_COMPANY) {
+				authorized_keys->Add(authorized_key);
+			} else {
+				AutoRestoreBackup backup(_current_company, company);
+				Command<CMD_COMPANY_ALLOW_LIST_CTRL>::Post(CALCA_ADD, authorized_key);
+			}
+			IConsolePrint(CC_INFO, "Added {} to {}.", authorized_key, name);
+			return;
+
+		case CNAKA_REMOVE:
+			if (!authorized_keys->Contains(authorized_key)) {
+				IConsolePrint(CC_WARNING, "Not removed {} from {} as it does not exist.", authorized_key, name);
+				return;
+			}
+
+			if (company == INVALID_COMPANY) {
+				authorized_keys->Remove(authorized_key);
+			} else {
+				AutoRestoreBackup backup(_current_company, company);
+				Command<CMD_COMPANY_ALLOW_LIST_CTRL>::Post(CALCA_REMOVE, authorized_key);
+			}
+			IConsolePrint(CC_INFO, "Removed {} from {}.", authorized_key, name);
+			return;
+	}
+}
+
 DEF_CONSOLE_CMD(ConNetworkAuthorizedKey)
 {
 	if (argc <= 2) {
@@ -1924,29 +1970,31 @@ DEF_CONSOLE_CMD(ConNetworkAuthorizedKey)
 
 		std::string buffer;
 		for (auto [name, _] : _console_cmd_authorized_keys) fmt::format_to(std::back_inserter(buffer), ", {}", name);
-		IConsolePrint(CC_HELP, "The supported types are: all{}.", buffer);
+		IConsolePrint(CC_HELP, "The supported types are: all{} and company:<id>.", buffer);
 		return true;
 	}
 
-	bool valid_type = false; ///< Whether a valid type was given.
+	ConNetworkAuthorizedKeyAction action;
+	std::string_view action_string = argv[1];
+	if (StrEqualsIgnoreCase(action_string, "list")) {
+		action = CNAKA_LIST;
+	} else if (StrEqualsIgnoreCase(action_string, "add")) {
+		action = CNAKA_ADD;
+	} else if (StrEqualsIgnoreCase(action_string, "remove") || StrEqualsIgnoreCase(action_string, "delete")) {
+		action = CNAKA_REMOVE;
+	} else {
+		IConsolePrint(CC_WARNING, "No valid action was given.");
+		return false;
+	}
 
-	for (auto [name, authorized_keys] : _console_cmd_authorized_keys) {
-		if (!StrEqualsIgnoreCase(argv[2], name) && !StrEqualsIgnoreCase(argv[2], "all")) continue;
-
-		valid_type = true;
-
-		if (StrEqualsIgnoreCase(argv[1], "list")) {
-			IConsolePrint(CC_WHITE, "The authorized keys for {} are:", name);
-			for (auto &authorized_key : *authorized_keys) IConsolePrint(CC_INFO, "  {}", authorized_key);
-			continue;
-		}
-
+	std::string authorized_key;
+	if (action != CNAKA_LIST) {
 		if (argc <= 3) {
 			IConsolePrint(CC_ERROR, "You must enter the key.");
 			return false;
 		}
 
-		std::string authorized_key = argv[3];
+		authorized_key = argv[3];
 		if (StrStartsWithIgnoreCase(authorized_key, "client:")) {
 			std::string id_string(authorized_key.substr(7));
 			authorized_key = NetworkGetPublicKeyOfClient(static_cast<ClientID>(std::stoi(id_string)));
@@ -1956,34 +2004,40 @@ DEF_CONSOLE_CMD(ConNetworkAuthorizedKey)
 			}
 		}
 
-		if (StrEqualsIgnoreCase(argv[1], "add")) {
-			if (authorized_keys->Add(authorized_key)) {
-				IConsolePrint(CC_INFO, "Added {} to {}.", authorized_key, name);
-			} else {
-				IConsolePrint(CC_WARNING, "Not added {} to {} as it already exists.", authorized_key, name);
-			}
-			continue;
+		if (authorized_key.size() != NETWORK_PUBLIC_KEY_LENGTH - 1) {
+			IConsolePrint(CC_ERROR, "You must enter a valid authorized key.");
+			return false;
 		}
-
-		if (StrEqualsIgnoreCase(argv[1], "remove")) {
-			if (authorized_keys->Remove(authorized_key)) {
-				IConsolePrint(CC_INFO, "Removed {} from {}.", authorized_key, name);
-			} else {
-				IConsolePrint(CC_WARNING, "Not removed {} from {} as it does not exist.", authorized_key, name);
-			}
-			continue;
-		}
-
-		IConsolePrint(CC_WARNING, "No valid action was given.");
-		return false;
 	}
 
-	if (!valid_type) {
-		IConsolePrint(CC_WARNING, "No valid type was given.");
-		return false;
+	std::string_view type = argv[2];
+	if (StrEqualsIgnoreCase(type, "all")) {
+		for (auto [name, authorized_keys] : _console_cmd_authorized_keys) PerformNetworkAuthorizedKeyAction(name, authorized_keys, action, authorized_key);
+		for (Company *c : Company::Iterate()) PerformNetworkAuthorizedKeyAction(fmt::format("company:{}", c->index + 1), &c->allow_list, action, authorized_key, c->index);
+		return true;
 	}
 
-	return true;
+	if (StrStartsWithIgnoreCase(type, "company:")) {
+		std::string id_string(type.substr(8));
+		Company *c = Company::GetIfValid(std::stoi(id_string) - 1);
+		if (c == nullptr) {
+			IConsolePrint(CC_ERROR, "You must enter a valid company id; see 'companies'.");
+			return false;
+		}
+
+		PerformNetworkAuthorizedKeyAction(type, &c->allow_list, action, authorized_key, c->index);
+		return true;
+	}
+
+	for (auto [name, authorized_keys] : _console_cmd_authorized_keys) {
+		if (StrEqualsIgnoreCase(type, name)) continue;
+
+		PerformNetworkAuthorizedKeyAction(name, authorized_keys, action, authorized_key);
+		return true;
+	}
+
+	IConsolePrint(CC_WARNING, "No valid type was given.");
+	return false;
 }
 
 
