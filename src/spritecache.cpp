@@ -401,8 +401,8 @@ static bool ResizeSprites(SpriteLoader::SpriteCollection &sprite, uint8_t sprite
 
 	/* Upscale to desired sprite_min_zoom if provided sprite only had zoomed in versions. */
 	if (first_avail < _settings_client.gui.sprite_zoom_min) {
-		if (_settings_client.gui.sprite_zoom_min >= ZOOM_LVL_OUT_4X) ResizeSpriteIn(sprite, ZOOM_LVL_OUT_4X, ZOOM_LVL_OUT_2X);
-		if (_settings_client.gui.sprite_zoom_min >= ZOOM_LVL_OUT_2X) ResizeSpriteIn(sprite, ZOOM_LVL_OUT_2X, ZOOM_LVL_NORMAL);
+		if (_settings_client.gui.sprite_zoom_min >= ZOOM_LVL_NORMAL) ResizeSpriteIn(sprite, ZOOM_LVL_NORMAL, ZOOM_LVL_IN_2X);
+		if (_settings_client.gui.sprite_zoom_min >= ZOOM_LVL_IN_2X) ResizeSpriteIn(sprite, ZOOM_LVL_IN_2X, ZOOM_LVL_IN_4X);
 	}
 
 	return  true;
@@ -581,11 +581,11 @@ void ReadGRFSpriteOffsets(SpriteFile &file)
 				if (length > 0) {
 					uint8_t zoom = file.ReadByte();
 					length--;
-					if (colour != 0 && zoom == 0) { // ZOOM_LVL_OUT_4X (normal zoom)
+					if (colour != 0 && zoom == 0) { // ZOOM_LVL_NORMAL (normal zoom)
 						SetBit(offset.control_flags, (colour != SCC_PAL) ? SCCF_ALLOW_ZOOM_MIN_1X_32BPP : SCCF_ALLOW_ZOOM_MIN_1X_PAL);
 						SetBit(offset.control_flags, (colour != SCC_PAL) ? SCCF_ALLOW_ZOOM_MIN_2X_32BPP : SCCF_ALLOW_ZOOM_MIN_2X_PAL);
 					}
-					if (colour != 0 && zoom == 2) { // ZOOM_LVL_OUT_2X (2x zoomed in)
+					if (colour != 0 && zoom == 2) { // ZOOM_LVL_IN_2X (2x zoomed in)
 						SetBit(offset.control_flags, (colour != SCC_PAL) ? SCCF_ALLOW_ZOOM_MIN_2X_32BPP : SCCF_ALLOW_ZOOM_MIN_2X_PAL);
 					}
 				}

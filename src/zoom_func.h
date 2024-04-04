@@ -86,7 +86,7 @@ inline int UnScaleGUI(int value)
  */
 inline ZoomLevel ScaleZoomGUI(ZoomLevel value)
 {
-	return std::clamp(ZoomLevel(value + (ZOOM_LVL_GUI - ZOOM_LVL_OUT_4X)), ZOOM_LVL_MIN, ZOOM_LVL_MAX);
+	return std::clamp(ZoomLevel(value + (ZOOM_LVL_GUI - ZOOM_LVL_NORMAL)), ZOOM_LVL_MIN, ZOOM_LVL_MAX);
 }
 
 /**
@@ -96,7 +96,7 @@ inline ZoomLevel ScaleZoomGUI(ZoomLevel value)
  */
 inline ZoomLevel UnScaleZoomGUI(ZoomLevel value)
 {
-	return std::clamp(ZoomLevel(value - (ZOOM_LVL_GUI - ZOOM_LVL_OUT_4X)), ZOOM_LVL_MIN, ZOOM_LVL_MAX);
+	return std::clamp(ZoomLevel(value - (ZOOM_LVL_GUI - ZOOM_LVL_NORMAL)), ZOOM_LVL_MIN, ZOOM_LVL_MAX);
 }
 
 /**
