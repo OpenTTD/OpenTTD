@@ -979,16 +979,46 @@ CommandCost CmdCompanyCtrl(DoCommandFlag flags, CompanyCtrlAction cca, CompanyID
 	return CommandCost();
 }
 
+static bool ExecuteAllowListCtrlAction(CompanyAllowListCtrlAction action, Company *c, const std::string &public_key)
+{
+	switch (action) {
+		case CALCA_ADD:
+			return c->allow_list.Add(public_key);
+
+		case CALCA_REMOVE:
+			return c->allow_list.Remove(public_key);
+
+		default:
+			NOT_REACHED();
+	}
+}
+
 /**
- * Add the given public key to the allow list of this company.
+ * Add or remove the given public key to the allow list of this company.
  * @param flags Operation to perform.
- * @param public_key The public key of the client to add.
+ * @param action The action to perform.
+ * @param public_key The public key of the client to add or remove.
  * @return The cost of this operation or an error.
  */
-CommandCost CmdCompanyAddAllowList(DoCommandFlag flags, const std::string &public_key)
+CommandCost CmdCompanyAllowListCtrl(DoCommandFlag flags, CompanyAllowListCtrlAction action, const std::string &public_key)
 {
+	Company *c = Company::GetIfValid(_current_company);
+	if (c == nullptr) return CMD_ERROR;
+
+	/* The public key length includes the '\0'. */
+	if (public_key.size() != NETWORK_PUBLIC_KEY_LENGTH - 1) return CMD_ERROR;
+
+	switch (action) {
+		case CALCA_ADD:
+		case CALCA_REMOVE:
+			break;
+
+		default:
+			return CMD_ERROR;
+	}
+
 	if (flags & DC_EXEC) {
-		if (Company::Get(_current_company)->allow_list.Add(public_key)) {
+		if (ExecuteAllowListCtrlAction(action, c, public_key)) {
 			InvalidateWindowData(WC_CLIENT_LIST, 0);
 			SetWindowDirty(WC_COMPANY, _current_company);
 		}

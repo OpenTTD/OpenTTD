@@ -295,7 +295,7 @@ enum Commands : uint16_t {
 
 	CMD_CREATE_SUBSIDY,               ///< create a new subsidy
 	CMD_COMPANY_CTRL,                 ///< used in multiplayer to create a new companies etc.
-	CMD_COMPANY_ADD_ALLOW_LIST, ///< Used in multiplayer to add a client's public key to the company's allow list.
+	CMD_COMPANY_ALLOW_LIST_CTRL, ///< Used in multiplayer to add/remove a client's public key to/from the company's allow list.
 	CMD_CUSTOM_NEWS_ITEM,             ///< create a custom news message
 	CMD_CREATE_GOAL,                  ///< create a new goal
 	CMD_REMOVE_GOAL,                  ///< remove a goal

@@ -1117,11 +1117,12 @@ NetworkRecvStatus ServerNetworkGameSocketHandler::Receive_CLIENT_COMMAND(Packet 
 		}
 	}
 
-	if (cp.cmd == CMD_COMPANY_ADD_ALLOW_LIST) {
+	if (cp.cmd == CMD_COMPANY_ALLOW_LIST_CTRL) {
 		/* Maybe the client just got moved before allowing? */
 		if (ci->client_id != CLIENT_ID_SERVER && ci->client_playas != cp.company) return NETWORK_RECV_STATUS_OKAY;
 
-		std::string public_key = std::get<0>(EndianBufferReader::ToValue<CommandTraits<CMD_COMPANY_ADD_ALLOW_LIST>::Args>(cp.data));
+		/* Only allow clients to add/remove currently joined clients. The server owner does not go via this method, so is allowed to do more. */
+		std::string public_key = std::get<1>(EndianBufferReader::ToValue<CommandTraits<CMD_COMPANY_ALLOW_LIST_CTRL>::Args>(cp.data));
 		bool found = false;
 		for (const NetworkClientInfo *info : NetworkClientInfo::Iterate()) {
 			if (info->public_key == public_key) {
@@ -2164,7 +2165,7 @@ void NetworkServerNewCompany(const Company *c, NetworkClientInfo *ci)
 		 * different state/president/company name in the different clients, we need to
 		 * circumvent the normal ::Post logic and go directly to sending the command.
 		 */
-		Command<CMD_COMPANY_ADD_ALLOW_LIST>::SendNet(STR_NULL, c->index, ci->public_key);
+		Command<CMD_COMPANY_ALLOW_LIST_CTRL>::SendNet(STR_NULL, c->index, CALCA_ADD, ci->public_key);
 		Command<CMD_RENAME_PRESIDENT>::SendNet(STR_NULL, c->index, ci->client_name);
 
 		NetworkServerSendChat(NETWORK_ACTION_COMPANY_NEW, DESTTYPE_BROADCAST, 0, "", ci->client_id, c->index + 1);
