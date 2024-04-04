@@ -628,7 +628,8 @@ int openttd_main(int argc, char *argv[])
 				return ret;
 			}
 
-			auto [_, title] = FiosGetSavegameListCallback(SLO_LOAD, mgo.opt, strrchr(mgo.opt, '.'));
+			std::string extension = std::filesystem::path(_file_to_saveload.name).extension().string();
+			auto [_, title] = FiosGetSavegameListCallback(SLO_LOAD, mgo.opt, extension);
 
 			_load_check_data.Clear();
 			SaveOrLoadResult res = SaveOrLoad(mgo.opt, SLO_CHECK, DFT_GAME_FILE, SAVE_DIR, false);
