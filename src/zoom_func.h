@@ -13,7 +13,7 @@
 #include "zoom_type.h"
 
 /**
- * Scale by zoom level, usually shift left (when zoom > ZOOM_LVL_NORMAL)
+ * Scale by zoom level, usually shift left (when zoom > ZOOM_LVL_MIN)
  * When shifting right, value is rounded up
  * @param value value to shift
  * @param zoom  zoom level to shift to
@@ -25,7 +25,7 @@ inline int ScaleByZoom(int value, ZoomLevel zoom)
 }
 
 /**
- * Scale by zoom level, usually shift right (when zoom > ZOOM_LVL_NORMAL)
+ * Scale by zoom level, usually shift right (when zoom > ZOOM_LVL_MIN)
  * When shifting right, value is rounded up
  * @param value value to shift
  * @param zoom  zoom level to shift to
@@ -48,7 +48,7 @@ inline int AdjustByZoom(int value, int zoom)
 }
 
 /**
- * Scale by zoom level, usually shift left (when zoom > ZOOM_LVL_NORMAL)
+ * Scale by zoom level, usually shift left (when zoom > ZOOM_LVL_MIN)
  * @param value value to shift
  * @param zoom  zoom level to shift to
  * @return shifted value
@@ -59,7 +59,7 @@ inline int ScaleByZoomLower(int value, ZoomLevel zoom)
 }
 
 /**
- * Scale by zoom level, usually shift right (when zoom > ZOOM_LVL_NORMAL)
+ * Scale by zoom level, usually shift right (when zoom > ZOOM_LVL_MIN)
  * @param value value to shift
  * @param zoom  zoom level to shift to
  * @return shifted value
@@ -71,7 +71,7 @@ inline int UnScaleByZoomLower(int value, ZoomLevel zoom)
 
 /**
  * Short-hand to apply GUI zoom level.
- * @param value Pixel amount at #ZOOM_LVL_BEGIN (full zoom in).
+ * @param value Pixel amount at #ZOOM_LVL_MIN (full zoom in).
  * @return Pixel amount at #ZOOM_LVL_GUI (current interface size).
  */
 inline int UnScaleGUI(int value)

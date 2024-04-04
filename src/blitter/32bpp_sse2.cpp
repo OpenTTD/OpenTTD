@@ -26,9 +26,9 @@ Sprite *Blitter_32bppSSE_Base::Encode(const SpriteLoader::SpriteCollection &spri
 	 * Second uint32_t of a line = the number of transparent pixels from the right.
 	 * Then all RGBA then all MV.
 	 */
-	ZoomLevel zoom_min = ZOOM_LVL_NORMAL;
-	ZoomLevel zoom_max = ZOOM_LVL_NORMAL;
-	if (sprite[ZOOM_LVL_NORMAL].type != SpriteType::Font) {
+	ZoomLevel zoom_min = ZOOM_LVL_MIN;
+	ZoomLevel zoom_max = ZOOM_LVL_MIN;
+	if (sprite[ZOOM_LVL_MIN].type != SpriteType::Font) {
 		zoom_min = _settings_client.gui.zoom_min;
 		zoom_max = _settings_client.gui.zoom_max;
 		if (zoom_max == zoom_min) zoom_max = ZOOM_LVL_MAX;
@@ -52,10 +52,10 @@ Sprite *Blitter_32bppSSE_Base::Encode(const SpriteLoader::SpriteCollection &spri
 	}
 
 	Sprite *dst_sprite = (Sprite *) allocator(sizeof(Sprite) + sizeof(SpriteData) + all_sprites_size);
-	dst_sprite->height = sprite[ZOOM_LVL_NORMAL].height;
-	dst_sprite->width  = sprite[ZOOM_LVL_NORMAL].width;
-	dst_sprite->x_offs = sprite[ZOOM_LVL_NORMAL].x_offs;
-	dst_sprite->y_offs = sprite[ZOOM_LVL_NORMAL].y_offs;
+	dst_sprite->height = sprite[ZOOM_LVL_MIN].height;
+	dst_sprite->width  = sprite[ZOOM_LVL_MIN].width;
+	dst_sprite->x_offs = sprite[ZOOM_LVL_MIN].x_offs;
+	dst_sprite->y_offs = sprite[ZOOM_LVL_MIN].y_offs;
 	memcpy(dst_sprite->data, &sd, sizeof(SpriteData));
 
 	/* Copy colours and determine flags. */

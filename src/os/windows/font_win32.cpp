@@ -229,8 +229,8 @@ void Win32FontCache::ClearFontCache()
 
 	/* GDI has rendered the glyph, now we allocate a sprite and copy the image into it. */
 	SpriteLoader::SpriteCollection spritecollection;
-	SpriteLoader::Sprite &sprite = spritecollection[ZOOM_LVL_NORMAL];
-	sprite.AllocateData(ZOOM_LVL_NORMAL, width * height);
+	SpriteLoader::Sprite &sprite = spritecollection[ZOOM_LVL_MIN];
+	sprite.AllocateData(ZOOM_LVL_MIN, width * height);
 	sprite.type = SpriteType::Font;
 	sprite.colours = (aa ? SCC_PAL | SCC_ALPHA : SCC_PAL);
 	sprite.width = width;
