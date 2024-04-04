@@ -79,8 +79,8 @@ inline std::tuple<Slope, int> GetFoundationPixelSlope(TileIndex tile)
 inline Point RemapCoords(int x, int y, int z)
 {
 	Point pt;
-	pt.x = (y - x) * 2 * ZOOM_LVL_BASE;
-	pt.y = (y + x - z) * ZOOM_LVL_BASE;
+	pt.x = (y - x) * 2 * ZOOM_BASE;
+	pt.y = (y + x - z) * ZOOM_BASE;
 	return pt;
 }
 
@@ -108,7 +108,7 @@ inline Point RemapCoords2(int x, int y)
  */
 inline Point InverseRemapCoords(int x, int y)
 {
-	Point pt = {(y * 2 - x) >> (2 + ZOOM_LVL_SHIFT), (y * 2 + x) >> (2 + ZOOM_LVL_SHIFT)};
+	Point pt = {(y * 2 - x) >> (2 + ZOOM_BASE_SHIFT), (y * 2 + x) >> (2 + ZOOM_BASE_SHIFT)};
 	return pt;
 }
 

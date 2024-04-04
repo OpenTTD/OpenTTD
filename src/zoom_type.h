@@ -12,9 +12,6 @@
 
 #include "core/enum_type.hpp"
 
-static uint const ZOOM_LVL_SHIFT = 2;
-static uint const ZOOM_LVL_BASE  = 1 << ZOOM_LVL_SHIFT;
-
 /** All zoom levels we know. */
 enum ZoomLevel : uint8_t {
 	/* Our possible zoom-levels */
@@ -43,10 +40,12 @@ enum ZoomLevel : uint8_t {
 
 	ZOOM_LVL_MIN      = ZOOM_LVL_NORMAL, ///< Minimum zoom level.
 	ZOOM_LVL_MAX      = ZOOM_LVL_OUT_32X, ///< Maximum zoom level.
-
 };
 DECLARE_POSTFIX_INCREMENT(ZoomLevel)
 DECLARE_ENUM_AS_ADDABLE(ZoomLevel)
+
+static uint const ZOOM_BASE_SHIFT = static_cast<uint>(ZOOM_LVL_OUT_4X);
+static uint const ZOOM_BASE = 1U << ZOOM_BASE_SHIFT;
 
 extern int _gui_scale;
 extern int _gui_scale_cfg;

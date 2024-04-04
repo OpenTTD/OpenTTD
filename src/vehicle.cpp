@@ -74,13 +74,13 @@ static const uint GEN_HASHX_BUCKET_BITS = 7;
 static const uint GEN_HASHY_BUCKET_BITS = 6;
 
 /* Compute hash for vehicle coord */
-#define GEN_HASHX(x)    GB((x), GEN_HASHX_BUCKET_BITS + ZOOM_LVL_SHIFT, GEN_HASHX_BITS)
-#define GEN_HASHY(y)   (GB((y), GEN_HASHY_BUCKET_BITS + ZOOM_LVL_SHIFT, GEN_HASHY_BITS) << GEN_HASHX_BITS)
+#define GEN_HASHX(x)    GB((x), GEN_HASHX_BUCKET_BITS + ZOOM_BASE_SHIFT, GEN_HASHX_BITS)
+#define GEN_HASHY(y)   (GB((y), GEN_HASHY_BUCKET_BITS + ZOOM_BASE_SHIFT, GEN_HASHY_BITS) << GEN_HASHX_BITS)
 #define GEN_HASH(x, y) (GEN_HASHY(y) + GEN_HASHX(x))
 
 /* Maximum size until hash repeats */
-static const int GEN_HASHX_SIZE = 1 << (GEN_HASHX_BUCKET_BITS + GEN_HASHX_BITS + ZOOM_LVL_SHIFT);
-static const int GEN_HASHY_SIZE = 1 << (GEN_HASHY_BUCKET_BITS + GEN_HASHY_BITS + ZOOM_LVL_SHIFT);
+static const int GEN_HASHX_SIZE = 1 << (GEN_HASHX_BUCKET_BITS + GEN_HASHX_BITS + ZOOM_BASE_SHIFT);
+static const int GEN_HASHY_SIZE = 1 << (GEN_HASHY_BUCKET_BITS + GEN_HASHY_BITS + ZOOM_BASE_SHIFT);
 
 /* Increments to reach next bucket in hash table */
 static const int GEN_HASHX_INC = 1;
@@ -1158,8 +1158,8 @@ void ViewportAddVehicles(DrawPixelInfo *dpi)
 	const int b = dpi->top + dpi->height;
 
 	/* Border size of MAX_VEHICLE_PIXEL_xy */
-	const int xb = MAX_VEHICLE_PIXEL_X * ZOOM_LVL_BASE;
-	const int yb = MAX_VEHICLE_PIXEL_Y * ZOOM_LVL_BASE;
+	const int xb = MAX_VEHICLE_PIXEL_X * ZOOM_BASE;
+	const int yb = MAX_VEHICLE_PIXEL_Y * ZOOM_BASE;
 
 	/* The hash area to scan */
 	int xl, xu, yl, yu;
@@ -1254,8 +1254,8 @@ Vehicle *CheckClickOnVehicle(const Viewport *vp, int x, int y)
 	y = ScaleByZoom(y, vp->zoom) + vp->virtual_top;
 
 	/* Border size of MAX_VEHICLE_PIXEL_xy */
-	const int xb = MAX_VEHICLE_PIXEL_X * ZOOM_LVL_BASE;
-	const int yb = MAX_VEHICLE_PIXEL_Y * ZOOM_LVL_BASE;
+	const int xb = MAX_VEHICLE_PIXEL_X * ZOOM_BASE;
+	const int yb = MAX_VEHICLE_PIXEL_Y * ZOOM_BASE;
 
 	/* The hash area to scan */
 	int xl = GEN_HASHX(x - xb);
@@ -1695,8 +1695,8 @@ void Vehicle::UpdateBoundingBoxCoordinates(bool update_cache) const
 	Point pt = RemapCoords(this->x_pos + this->x_offs, this->y_pos + this->y_offs, this->z_pos);
 	new_coord.left   += pt.x;
 	new_coord.top    += pt.y;
-	new_coord.right  += pt.x + 2 * ZOOM_LVL_BASE;
-	new_coord.bottom += pt.y + 2 * ZOOM_LVL_BASE;
+	new_coord.right  += pt.x + 2 * ZOOM_BASE;
+	new_coord.bottom += pt.y + 2 * ZOOM_BASE;
 
 	if (update_cache) {
 		/*

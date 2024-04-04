@@ -104,7 +104,7 @@ IntervalTimer<TimerWindow> move_all_text_effects_interval = {std::chrono::millis
 
 		te.MarkDirty(ZOOM_LVL_TEXT_EFFECT);
 		te.duration -= count;
-		te.top -= count * ZOOM_LVL_BASE;
+		te.top -= count * ZOOM_BASE;
 		te.MarkDirty(ZOOM_LVL_TEXT_EFFECT);
 	}
 }};

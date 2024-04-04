@@ -843,7 +843,7 @@ protected:
 	void SetNewScroll(int sx, int sy, int sub)
 	{
 		const NWidgetBase *wi = this->GetWidget<NWidgetBase>(WID_SM_MAP);
-		Point hv = InverseRemapCoords(wi->current_x * ZOOM_LVL_BASE * TILE_SIZE / 2, wi->current_y * ZOOM_LVL_BASE * TILE_SIZE / 2);
+		Point hv = InverseRemapCoords(wi->current_x * ZOOM_BASE * TILE_SIZE / 2, wi->current_y * ZOOM_BASE * TILE_SIZE / 2);
 		hv.x *= this->zoom;
 		hv.y *= this->zoom;
 
