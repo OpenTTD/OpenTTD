@@ -38,7 +38,8 @@ enum ZoomLevel : uint8_t {
 	ZOOM_LVL_ROADVEH  = ZOOM_LVL_OUT_4X, ///< Default zoom level for the road vehicle view.
 	ZOOM_LVL_WORLD_SCREENSHOT = ZOOM_LVL_OUT_4X, ///< Default zoom level for the world screen shot.
 
-	ZOOM_LVL_DETAIL   = ZOOM_LVL_OUT_8X, ///< All zoomlevels below or equal to this, will result in details on the screen, like road-work, ...
+	ZOOM_LVL_DETAIL = ZOOM_LVL_OUT_8X, ///< All zoom levels below or equal to this will result in details on the screen, like road-work, ...
+	ZOOM_LVL_TEXT_EFFECT = ZOOM_LVL_OUT_8X, ///< All zoom levels above this will not show text effects.
 
 	ZOOM_LVL_MIN      = ZOOM_LVL_NORMAL, ///< Minimum zoom level.
 	ZOOM_LVL_MAX      = ZOOM_LVL_OUT_32X, ///< Maximum zoom level.
