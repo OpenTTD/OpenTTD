@@ -23,12 +23,12 @@ static const int ASCII_LETTERSTART = 32; ///< First printable ASCII letter.
 
 /**
  * Scale traditional pixel dimensions to font zoom level, for drawing sprite fonts.
- * @param value Pixel amount at #ZOOM_LVL_BASE (traditional "normal" interface size).
+ * @param value Pixel amount at #ZOOM_BASE (traditional "normal" interface size).
  * @return Pixel amount at _font_zoom (current interface size).
  */
 static int ScaleFontTrad(int value)
 {
-	return UnScaleByZoom(value * ZOOM_LVL_BASE, _font_zoom);
+	return UnScaleByZoom(value * ZOOM_BASE, _font_zoom);
 }
 
 /**
