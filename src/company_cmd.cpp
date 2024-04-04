@@ -1182,6 +1182,7 @@ CommandCost CmdRenamePresident(DoCommandFlag flags, const std::string &text)
 			}
 		}
 
+		InvalidateWindowClassesData(WC_COMPANY, 1);
 		MarkWholeScreenDirty();
 		CompanyAdminUpdate(c);
 	}

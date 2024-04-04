@@ -2452,6 +2452,14 @@ struct CompanyWindow : Window
 		}
 	}
 
+	void OnResize() override
+	{
+		NWidgetResizeBase *wid = this->GetWidget<NWidgetResizeBase>(WID_C_FACE_TITLE);
+		SetDParam(0, this->owner);
+		int y = GetStringHeight(STR_COMPANY_VIEW_PRESIDENT_MANAGER_TITLE, wid->current_x);
+		if (wid->UpdateVerticalSize(y)) this->ReInit(0, 0);
+	}
+
 	void OnClick([[maybe_unused]] Point pt, WidgetID widget, [[maybe_unused]] int click_count) override
 	{
 		switch (widget) {
@@ -2585,6 +2593,14 @@ struct CompanyWindow : Window
 			case WID_C_COMPANY_JOIN:
 				NetworkClientRequestMove((CompanyID)this->window_number, str);
 				break;
+		}
+	}
+
+	void OnInvalidateData([[maybe_unused]] int data = 0, [[maybe_unused]] bool gui_scope = true) override
+	{
+		if (gui_scope && data == 1) {
+			/* Manually call OnResize to adjust minimum height of president name widget. */
+			OnResize();
 		}
 	}
 };
