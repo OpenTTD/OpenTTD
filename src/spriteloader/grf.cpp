@@ -230,7 +230,7 @@ uint8_t LoadSpriteV1(SpriteLoader::SpriteCollection &sprite, SpriteFile &file, s
 	/* Type 0xFF indicates either a colourmap or some other non-sprite info; we do not handle them here */
 	if (type == 0xFF) return 0;
 
-	ZoomLevel zoom_lvl = (sprite_type != SpriteType::MapGen) ? ZOOM_LVL_OUT_4X : ZOOM_LVL_MIN;
+	ZoomLevel zoom_lvl = (sprite_type != SpriteType::MapGen) ? ZOOM_LVL_NORMAL : ZOOM_LVL_MIN;
 
 	sprite[zoom_lvl].height = file.ReadByte();
 	sprite[zoom_lvl].width  = file.ReadWord();
@@ -254,7 +254,7 @@ uint8_t LoadSpriteV1(SpriteLoader::SpriteCollection &sprite, SpriteFile &file, s
 
 uint8_t LoadSpriteV2(SpriteLoader::SpriteCollection &sprite, SpriteFile &file, size_t file_pos, SpriteType sprite_type, bool load_32bpp, uint8_t control_flags)
 {
-	static const ZoomLevel zoom_lvl_map[6] = {ZOOM_LVL_OUT_4X, ZOOM_LVL_NORMAL, ZOOM_LVL_OUT_2X, ZOOM_LVL_OUT_8X, ZOOM_LVL_OUT_16X, ZOOM_LVL_OUT_32X};
+	static const ZoomLevel zoom_lvl_map[6] = {ZOOM_LVL_NORMAL, ZOOM_LVL_IN_4X, ZOOM_LVL_IN_2X, ZOOM_LVL_OUT_2X, ZOOM_LVL_OUT_4X, ZOOM_LVL_OUT_8X};
 
 	/* Is the sprite not present/stripped in the GRF? */
 	if (file_pos == SIZE_MAX) return 0;
@@ -282,13 +282,13 @@ uint8_t LoadSpriteV2(SpriteLoader::SpriteCollection &sprite, SpriteFile &file, s
 		if (sprite_type != SpriteType::MapGen) {
 			if (zoom < lengthof(zoom_lvl_map)) {
 				is_wanted_zoom_lvl = true;
-				ZoomLevel zoom_min = sprite_type == SpriteType::Font ? ZOOM_LVL_NORMAL : _settings_client.gui.sprite_zoom_min;
-				if (zoom_min >= ZOOM_LVL_OUT_2X &&
-						HasBit(control_flags, load_32bpp ? SCCF_ALLOW_ZOOM_MIN_2X_32BPP : SCCF_ALLOW_ZOOM_MIN_2X_PAL) && zoom_lvl_map[zoom] < ZOOM_LVL_OUT_2X) {
+				ZoomLevel zoom_min = sprite_type == SpriteType::Font ? ZOOM_LVL_MIN : _settings_client.gui.sprite_zoom_min;
+				if (zoom_min >= ZOOM_LVL_IN_2X &&
+						HasBit(control_flags, load_32bpp ? SCCF_ALLOW_ZOOM_MIN_2X_32BPP : SCCF_ALLOW_ZOOM_MIN_2X_PAL) && zoom_lvl_map[zoom] < ZOOM_LVL_IN_2X) {
 					is_wanted_zoom_lvl = false;
 				}
-				if (zoom_min >= ZOOM_LVL_OUT_4X &&
-						HasBit(control_flags, load_32bpp ? SCCF_ALLOW_ZOOM_MIN_1X_32BPP : SCCF_ALLOW_ZOOM_MIN_1X_PAL) && zoom_lvl_map[zoom] < ZOOM_LVL_OUT_4X) {
+				if (zoom_min >= ZOOM_LVL_NORMAL &&
+						HasBit(control_flags, load_32bpp ? SCCF_ALLOW_ZOOM_MIN_1X_32BPP : SCCF_ALLOW_ZOOM_MIN_1X_PAL) && zoom_lvl_map[zoom] < ZOOM_LVL_NORMAL) {
 					is_wanted_zoom_lvl = false;
 				}
 			} else {

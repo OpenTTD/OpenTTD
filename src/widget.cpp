@@ -54,7 +54,7 @@ static inline Dimension ScaleGUITrad(const Dimension &dim)
 Dimension GetScaledSpriteSize(SpriteID sprid)
 {
 	Point offset;
-	Dimension d = GetSpriteSize(sprid, &offset, ZOOM_LVL_OUT_4X);
+	Dimension d = GetSpriteSize(sprid, &offset, ZOOM_LVL_NORMAL);
 	d.width  -= offset.x;
 	d.height -= offset.y;
 	return ScaleGUITrad(d);
@@ -3207,7 +3207,7 @@ std::unique_ptr<NWidgetBase> MakeCompanyButtonRows(WidgetID widget_first, Widget
 	std::unique_ptr<NWidgetHorizontal> hor = nullptr; // Storage for buttons in one row.
 	int hor_length = 0;
 
-	Dimension sprite_size = GetSpriteSize(SPR_COMPANY_ICON, nullptr, ZOOM_LVL_OUT_4X);
+	Dimension sprite_size = GetSpriteSize(SPR_COMPANY_ICON, nullptr, ZOOM_LVL_NORMAL);
 	sprite_size.width  += WidgetDimensions::unscaled.matrix.Horizontal();
 	sprite_size.height += WidgetDimensions::unscaled.matrix.Vertical();
 

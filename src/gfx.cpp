@@ -57,7 +57,7 @@ static void GfxMainBlitter(const Sprite *sprite, int x, int y, BlitterMode mode,
 
 static ReusableBuffer<uint8_t> _cursor_backup;
 
-ZoomLevel _gui_zoom  = ZOOM_LVL_OUT_4X;     ///< GUI Zoom level
+ZoomLevel _gui_zoom  = ZOOM_LVL_NORMAL;     ///< GUI Zoom level
 ZoomLevel _font_zoom = _gui_zoom;           ///< Sprite font Zoom level (not clamped)
 int _gui_scale       = MIN_INTERFACE_SCALE; ///< GUI scale, 100 is 100%.
 int _gui_scale_cfg;                         ///< GUI scale in config.
@@ -1789,7 +1789,7 @@ void UpdateGUIZoom()
 		_gui_scale = Clamp(_gui_scale_cfg, MIN_INTERFACE_SCALE, MAX_INTERFACE_SCALE);
 	}
 
-	int8_t new_zoom = ScaleGUITrad(1) <= 1 ? ZOOM_LVL_OUT_4X : ScaleGUITrad(1) >= 4 ? ZOOM_LVL_NORMAL : ZOOM_LVL_OUT_2X;
+	int8_t new_zoom = ScaleGUITrad(1) <= 1 ? ZOOM_LVL_NORMAL : ScaleGUITrad(1) >= 4 ? ZOOM_LVL_IN_4X : ZOOM_LVL_IN_2X;
 	/* Font glyphs should not be clamped to min/max zoom. */
 	_font_zoom = static_cast<ZoomLevel>(new_zoom);
 	/* Ensure the gui_zoom is clamped between min/max. */

@@ -1420,7 +1420,7 @@ static void ViewportAddKdtreeSigns(DrawPixelInfo *dpi)
 	for (const auto *t : towns) {
 		SetDParam(0, t->index);
 		SetDParam(1, t->cache.population);
-		ViewportAddString(dpi, ZOOM_LVL_OUT_16X, &t->cache.sign,
+		ViewportAddString(dpi, ZOOM_LVL_OUT_4X, &t->cache.sign,
 			_settings_client.gui.population_in_label ? STR_VIEWPORT_TOWN_POP : STR_VIEWPORT_TOWN,
 			STR_VIEWPORT_TOWN_TINY_WHITE, STR_VIEWPORT_TOWN_TINY_BLACK);
 	}
@@ -1430,7 +1430,7 @@ static void ViewportAddKdtreeSigns(DrawPixelInfo *dpi)
 
 	for (const auto *si : signs) {
 		SetDParam(0, si->index);
-		ViewportAddString(dpi, ZOOM_LVL_OUT_16X, &si->sign,
+		ViewportAddString(dpi, ZOOM_LVL_OUT_4X, &si->sign,
 			STR_WHITE_SIGN,
 			(IsTransparencySet(TO_SIGNS) || si->owner == OWNER_DEITY) ? STR_VIEWPORT_SIGN_SMALL_WHITE : STR_VIEWPORT_SIGN_SMALL_BLACK, STR_NULL,
 			(si->owner == OWNER_NONE) ? COLOUR_GREY : (si->owner == OWNER_DEITY ? INVALID_COLOUR : _company_colours[si->owner]));
@@ -1441,12 +1441,12 @@ static void ViewportAddKdtreeSigns(DrawPixelInfo *dpi)
 		SetDParam(1, st->facilities);
 		if (Station::IsExpected(st)) {
 			/* Station */
-			ViewportAddString(dpi, ZOOM_LVL_OUT_16X, &st->sign,
+			ViewportAddString(dpi, ZOOM_LVL_OUT_4X, &st->sign,
 				STR_VIEWPORT_STATION, STR_VIEWPORT_STATION_TINY, STR_NULL,
 				(st->owner == OWNER_NONE || !st->IsInUse()) ? COLOUR_GREY : _company_colours[st->owner]);
 		} else {
 			/* Waypoint */
-			ViewportAddString(dpi, ZOOM_LVL_OUT_16X, &st->sign,
+			ViewportAddString(dpi, ZOOM_LVL_OUT_4X, &st->sign,
 				STR_VIEWPORT_WAYPOINT, STR_VIEWPORT_WAYPOINT_TINY, STR_NULL,
 				(st->owner == OWNER_NONE || !st->IsInUse()) ? COLOUR_GREY : _company_colours[st->owner]);
 		}
@@ -2192,7 +2192,7 @@ void SetSelectionRed(bool b)
  */
 static bool CheckClickOnViewportSign(const Viewport *vp, int x, int y, const ViewportSign *sign)
 {
-	bool small = (vp->zoom >= ZOOM_LVL_OUT_16X);
+	bool small = (vp->zoom >= ZOOM_LVL_OUT_4X);
 	int sign_half_width = ScaleByZoom((small ? sign->width_small : sign->width_normal) / 2, vp->zoom);
 	int sign_height = ScaleByZoom(WidgetDimensions::scaled.fullbevel.top + (small ? GetCharacterHeight(FS_SMALL) : GetCharacterHeight(FS_NORMAL)) + WidgetDimensions::scaled.fullbevel.bottom, vp->zoom);
 

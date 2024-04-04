@@ -100,8 +100,8 @@ public:
 		this->Add(std::make_unique<NWidgetLeaf>(WWT_PUSHTXTBTN, COLOUR_WHITE, WID_NG_YEARS, STR_NETWORK_SERVER_LIST_PLAY_TIME_CAPTION, STR_NETWORK_SERVER_LIST_PLAY_TIME_CAPTION_TOOLTIP));
 
 		leaf = std::make_unique<NWidgetLeaf>(WWT_PUSHTXTBTN, COLOUR_WHITE, WID_NG_INFO, STR_EMPTY, STR_NETWORK_SERVER_LIST_INFO_ICONS_TOOLTIP);
-		leaf->SetMinimalSize(14 + GetSpriteSize(SPR_LOCK, nullptr, ZOOM_LVL_OUT_4X).width
-		                        + GetSpriteSize(SPR_BLOT, nullptr, ZOOM_LVL_OUT_4X).width, 12);
+		leaf->SetMinimalSize(14 + GetSpriteSize(SPR_LOCK, nullptr, ZOOM_LVL_NORMAL).width
+		                        + GetSpriteSize(SPR_BLOT, nullptr, ZOOM_LVL_NORMAL).width, 12);
 		leaf->SetFill(0, 1);
 		this->Add(std::move(leaf));
 	}
