@@ -72,4 +72,12 @@ enum CompanyCtrlAction : uint8_t {
 	CCA_END,    ///< Sentinel for end.
 };
 
+/** The action to do with CMD_COMPANY_ALLOW_LIST_CTRL. */
+enum CompanyAllowListCtrlAction : uint8_t {
+	CALCA_ADD, ///< Create a public key.
+	CALCA_REMOVE, ///< Remove a public key.
+
+	CALCA_END,    ///< Sentinel for end.
+};
+
 #endif /* COMPANY_TYPE_H */

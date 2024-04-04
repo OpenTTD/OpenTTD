@@ -1519,7 +1519,7 @@ private:
 	static void OnClickClientAuthorize([[maybe_unused]] NetworkClientListWindow *w, [[maybe_unused]] Point pt, ClientID client_id)
 	{
 		AutoRestoreBackup<CompanyID> cur_company(_current_company, NetworkClientInfo::GetByClientID(_network_own_client_id)->client_playas);
-		Command<CMD_COMPANY_ADD_ALLOW_LIST>::Post(NetworkClientInfo::GetByClientID(client_id)->public_key);
+		Command<CMD_COMPANY_ALLOW_LIST_CTRL>::Post(CALCA_ADD, NetworkClientInfo::GetByClientID(client_id)->public_key);
 	}
 
 	/**
