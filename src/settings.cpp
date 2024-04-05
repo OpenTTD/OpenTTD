@@ -1028,7 +1028,7 @@ static void GraphicsSetLoadConfig(IniFile &ini)
 
 		if (const IniItem *item = group->GetItem("extra_params"); item != nullptr && item->value) {
 			auto &extra_params = BaseGraphics::ini_data.extra_params;
-			extra_params.resize(lengthof(GRFConfig::param));
+			extra_params.resize(0x80); // TODO: make ParseIntList work nicely with C++ containers
 			int count = ParseIntList(item->value->c_str(), &extra_params.front(), extra_params.size());
 			if (count < 0) {
 				SetDParamStr(0, BaseGraphics::ini_data.name);
