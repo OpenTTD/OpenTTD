@@ -273,6 +273,9 @@ static_assert(SIZE_MAX >= UINT32_MAX);
 #define M_PI   3.14159265358979323846
 #endif /* M_PI_2 */
 
+template <typename T, size_t N>
+char (&ArraySizeHelper(T (&array)[N]))[N];
+
 /**
  * Return the length of an fixed size array.
  * Unlike sizeof this function returns the number of elements
@@ -281,7 +284,7 @@ static_assert(SIZE_MAX >= UINT32_MAX);
  * @param x The pointer to the first element of the array
  * @return The number of elements
  */
-#define lengthof(x) (sizeof(x) / sizeof(x[0]))
+#define lengthof(array) (sizeof(ArraySizeHelper(array)))
 
 /**
  * Get the end element of an fixed size array.
