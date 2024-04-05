@@ -1186,6 +1186,7 @@ static bool HandleCrashedAircraft(Aircraft *v)
 			v->crashed_counter = 500;
 			v->z_pos++;
 		}
+		SetAircraftPosition(v, v->x_pos, v->y_pos, v->z_pos);
 	}
 
 	if (v->crashed_counter < 650) {
