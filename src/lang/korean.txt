@@ -4900,7 +4900,9 @@ STR_MESSAGE_ESTIMATED_INCOME                                    :{WHITE}예상 �
 STR_ERROR_SAVE_STILL_IN_PROGRESS                                :{WHITE}저장 중입니다.{}끝날 때까지 기다려주세요!
 STR_ERROR_AUTOSAVE_FAILED                                       :{WHITE}자동 저장 실패
 STR_ERROR_UNABLE_TO_READ_DRIVE                                  :{BLACK}드라이브를 읽을 수 없습니다
+STR_ERROR_GAME_SAVE_FAILED                                      :{WHITE}게임을 저장하지 못 했습니다...
 STR_ERROR_UNABLE_TO_DELETE_FILE                                 :{WHITE}파일을 삭제할 수 없습니다
+STR_ERROR_GAME_LOAD_FAILED                                      :{WHITE}게임을 불러오지 못 했습니다...
 STR_GAME_SAVELOAD_ERROR_BROKEN_INTERNAL_ERROR                   :내부 오류: {STRING}
 STR_GAME_SAVELOAD_ERROR_BROKEN_SAVEGAME                         :손상된 게임 저장 파일 - {STRING}
 STR_GAME_SAVELOAD_ERROR_TOO_NEW_SAVEGAME                        :상위 버전의 게임 저장 파일입니다

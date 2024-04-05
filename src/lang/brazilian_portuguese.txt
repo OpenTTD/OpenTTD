@@ -2421,7 +2421,7 @@ STR_NETWORK_SERVER_LIST_START_SERVER                            :{BLACK}Iniciar 
 STR_NETWORK_SERVER_LIST_START_SERVER_TOOLTIP                    :{BLACK}Iniciar um servidor próprio
 
 STR_NETWORK_SERVER_LIST_PLAYER_NAME_OSKTITLE                    :{BLACK}Introduza o seu nome
-STR_NETWORK_SERVER_LIST_ENTER_SERVER_ADDRESS                    :{BLACK}Introduza o endereço de servidor ou código de convite
+STR_NETWORK_SERVER_LIST_ENTER_SERVER_ADDRESS                    :{BLACK}Endereço do servidor ou código de convite
 
 # Start new multiplayer server
 STR_NETWORK_START_SERVER_CAPTION                                :{WHITE}Iniciar novo jogo multijogador
