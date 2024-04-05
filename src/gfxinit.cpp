@@ -219,10 +219,10 @@ static void LoadSpriteTables()
 }
 
 
-static void RealChangeBlitter(const char *repl_blitter)
+static void RealChangeBlitter(const std::string_view repl_blitter)
 {
-	const char *cur_blitter = BlitterFactory::GetCurrentBlitter()->GetName();
-	if (strcmp(cur_blitter, repl_blitter) == 0) return;
+	const std::string_view cur_blitter = BlitterFactory::GetCurrentBlitter()->GetName();
+	if (cur_blitter == repl_blitter) return;
 
 	Debug(driver, 1, "Switching blitter from '{}' to '{}'... ", cur_blitter, repl_blitter);
 	Blitter *new_blitter = BlitterFactory::SelectBlitter(repl_blitter);
@@ -270,7 +270,7 @@ static bool SwitchNewGRFBlitter()
 
 	/* Search the best blitter. */
 	static const struct {
-		const char *name;
+		const std::string_view name;
 		uint animation; ///< 0: no support, 1: do support, 2: both
 		uint min_base_depth, max_base_depth, min_grf_depth, max_grf_depth;
 	} replacement_blitters[] = {
@@ -290,7 +290,7 @@ static bool SwitchNewGRFBlitter()
 	};
 
 	const bool animation_wanted = HasBit(_display_opt, DO_FULL_ANIMATION);
-	const char *cur_blitter = BlitterFactory::GetCurrentBlitter()->GetName();
+	const std::string_view cur_blitter = BlitterFactory::GetCurrentBlitter()->GetName();
 
 	for (const auto &replacement_blitter : replacement_blitters) {
 		if (animation_wanted && (replacement_blitter.animation == 0)) continue;
@@ -298,15 +298,14 @@ static bool SwitchNewGRFBlitter()
 
 		if (!IsInsideMM(depth_wanted_by_base, replacement_blitter.min_base_depth, replacement_blitter.max_base_depth + 1)) continue;
 		if (!IsInsideMM(depth_wanted_by_grf, replacement_blitter.min_grf_depth, replacement_blitter.max_grf_depth + 1)) continue;
-		const char *repl_blitter = replacement_blitter.name;
 
-		if (strcmp(repl_blitter, cur_blitter) == 0) {
+		if (replacement_blitter.name == cur_blitter) {
 			return false;
 		}
-		if (BlitterFactory::GetBlitterFactory(repl_blitter) == nullptr) continue;
+		if (BlitterFactory::GetBlitterFactory(replacement_blitter.name) == nullptr) continue;
 
 		/* Inform the video driver we want to switch blitter as soon as possible. */
-		VideoDriver::GetInstance()->QueueOnMainThread(std::bind(&RealChangeBlitter, repl_blitter));
+		VideoDriver::GetInstance()->QueueOnMainThread(std::bind(&RealChangeBlitter, replacement_blitter.name));
 		break;
 	}
 
