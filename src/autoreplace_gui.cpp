@@ -34,8 +34,6 @@
 
 #include "safeguards.h"
 
-void DrawEngineList(VehicleType type, const Rect &r, const GUIEngineList &eng_list, const Scrollbar &sb, EngineID selected_id, bool show_count, GroupID selected_group);
-
 static bool EngineNumberSorter(const GUIEngineListItem &a, const GUIEngineListItem &b)
 {
 	return Engine::Get(a.engine_id)->list_position < Engine::Get(b.engine_id)->list_position;
@@ -114,27 +112,6 @@ class ReplaceVehicleWindow : public Window {
 		return true;
 	}
 
-	void AddChildren(const GUIEngineList &source, GUIEngineList &target, EngineID parent, int indent, int side)
-	{
-		for (const auto &item : source) {
-			if (item.variant_id != parent || item.engine_id == parent) continue;
-
-			const Engine *e = Engine::Get(item.engine_id);
-			EngineDisplayFlags flags = item.flags;
-			if (e->display_last_variant != INVALID_ENGINE) flags &= ~EngineDisplayFlags::Shaded;
-			target.emplace_back(e->display_last_variant == INVALID_ENGINE ? item.engine_id : e->display_last_variant, item.engine_id, flags, indent);
-
-			/* Add variants if not folded */
-			if ((item.flags & (EngineDisplayFlags::HasVariants | EngineDisplayFlags::IsFolded)) == EngineDisplayFlags::HasVariants) {
-				/* Add this engine again as a child */
-				if ((item.flags & EngineDisplayFlags::Shaded) == EngineDisplayFlags::None) {
-					target.emplace_back(item.engine_id, item.engine_id, EngineDisplayFlags::None, indent + 1);
-				}
-				AddChildren(source, target, item.engine_id, indent + 1, side);
-			}
-		}
-	}
-
 	/**
 	 * Generate an engines list
 	 * @param draw_left true if generating the left list, otherwise false
@@ -208,7 +185,7 @@ class ReplaceVehicleWindow : public Window {
 
 		this->engines[side].clear();
 		if (side == 1) {
-			AddChildren(list, this->engines[side], INVALID_ENGINE, 0, side);
+			GUIEngineListAddChildren(this->engines[side], list);
 		} else {
 			this->engines[side].swap(list);
 		}
