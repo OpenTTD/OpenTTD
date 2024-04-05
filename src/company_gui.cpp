@@ -551,26 +551,6 @@ void ShowCompanyFinances(CompanyID company)
 	new CompanyFinancesWindow(&_company_finances_desc, company);
 }
 
-/* List of colours for the livery window */
-static const StringID _colour_dropdown[] = {
-	STR_COLOUR_DARK_BLUE,
-	STR_COLOUR_PALE_GREEN,
-	STR_COLOUR_PINK,
-	STR_COLOUR_YELLOW,
-	STR_COLOUR_RED,
-	STR_COLOUR_LIGHT_BLUE,
-	STR_COLOUR_GREEN,
-	STR_COLOUR_DARK_GREEN,
-	STR_COLOUR_BLUE,
-	STR_COLOUR_CREAM,
-	STR_COLOUR_MAUVE,
-	STR_COLOUR_PURPLE,
-	STR_COLOUR_ORANGE,
-	STR_COLOUR_BROWN,
-	STR_COLOUR_GREY,
-	STR_COLOUR_WHITE,
-};
-
 /* Association of liveries to livery classes */
 static const LiveryClass _livery_class[LS_END] = {
 	LC_OTHER,
@@ -588,7 +568,7 @@ static const LiveryClass _livery_class[LS_END] = {
 template <SpriteID TSprite = SPR_SQUARE>
 class DropDownListColourItem : public DropDownIcon<DropDownString<DropDownListItem>> {
 public:
-	DropDownListColourItem(int colour, bool masked) : DropDownIcon<DropDownString<DropDownListItem>>(TSprite, GENERAL_SPRITE_COLOUR(colour % COLOUR_END), colour < COLOUR_END ? _colour_dropdown[colour] : STR_COLOUR_DEFAULT, colour, masked)
+	DropDownListColourItem(int colour, bool masked) : DropDownIcon<DropDownString<DropDownListItem>>(TSprite, GENERAL_SPRITE_COLOUR(colour % COLOUR_END), colour < COLOUR_END ? (STR_COLOUR_DARK_BLUE + colour) : STR_COLOUR_DEFAULT, colour, masked)
 	{
 	}
 };
@@ -646,8 +626,8 @@ private:
 			default_col = (primary ? default_livery->colour1 : default_livery->colour2) + COLOUR_END;
 			list.push_back(std::make_unique<DropDownListColourItem<>>(default_col, false));
 		}
-		for (uint i = 0; i < lengthof(_colour_dropdown); i++) {
-			list.push_back(std::make_unique<DropDownListColourItem<>>(i, HasBit(used_colours, i)));
+		for (Colours colour = COLOUR_BEGIN; colour != COLOUR_END; colour++) {
+			list.push_back(std::make_unique<DropDownListColourItem<>>(colour, HasBit(used_colours, colour)));
 		}
 
 		uint8_t sel;
@@ -781,8 +761,8 @@ public:
 			case WID_SCL_PRI_COL_DROPDOWN: {
 				this->square = GetSpriteSize(SPR_SQUARE);
 				int string_padding = this->square.width + WidgetDimensions::scaled.hsep_normal + padding.width;
-				for (const StringID *id = _colour_dropdown; id != endof(_colour_dropdown); id++) {
-					size->width = std::max(size->width, GetStringBoundingBox(*id).width + string_padding);
+				for (Colours colour = COLOUR_BEGIN; colour != COLOUR_END; colour++) {
+					size->width = std::max(size->width, GetStringBoundingBox(STR_COLOUR_DARK_BLUE + colour).width + string_padding);
 				}
 				size->width = std::max(size->width, GetStringBoundingBox(STR_COLOUR_DEFAULT).width + string_padding);
 				break;
