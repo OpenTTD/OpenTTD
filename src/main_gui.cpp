@@ -256,18 +256,18 @@ struct MainWindow : Window
 	{
 		this->DrawWidgets();
 		if (_game_mode == GM_MENU) {
-			static const SpriteID title_sprites[] = {SPR_OTTD_O, SPR_OTTD_P, SPR_OTTD_E, SPR_OTTD_N, SPR_OTTD_T, SPR_OTTD_T, SPR_OTTD_D};
+			static const std::initializer_list<SpriteID> title_sprites = {SPR_OTTD_O, SPR_OTTD_P, SPR_OTTD_E, SPR_OTTD_N, SPR_OTTD_T, SPR_OTTD_T, SPR_OTTD_D};
 			uint letter_spacing = ScaleGUITrad(10);
-			int name_width = (lengthof(title_sprites) - 1) * letter_spacing;
+			int name_width = static_cast<int>(std::size(title_sprites) - 1) * letter_spacing;
 
-			for (uint i = 0; i < lengthof(title_sprites); i++) {
-				name_width += GetSpriteSize(title_sprites[i]).width;
+			for (const SpriteID &sprite : title_sprites) {
+				name_width += GetSpriteSize(sprite).width;
 			}
 			int off_x = (this->width - name_width) / 2;
 
-			for (uint i = 0; i < lengthof(title_sprites); i++) {
-				DrawSprite(title_sprites[i], PAL_NONE, off_x, ScaleGUITrad(50));
-				off_x += GetSpriteSize(title_sprites[i]).width + letter_spacing;
+			for (const SpriteID &sprite : title_sprites) {
+				DrawSprite(sprite, PAL_NONE, off_x, ScaleGUITrad(50));
+				off_x += GetSpriteSize(sprite).width + letter_spacing;
 			}
 		}
 	}
