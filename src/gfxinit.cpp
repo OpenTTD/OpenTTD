@@ -292,13 +292,13 @@ static bool SwitchNewGRFBlitter()
 	const bool animation_wanted = HasBit(_display_opt, DO_FULL_ANIMATION);
 	const char *cur_blitter = BlitterFactory::GetCurrentBlitter()->GetName();
 
-	for (uint i = 0; i < lengthof(replacement_blitters); i++) {
-		if (animation_wanted && (replacement_blitters[i].animation == 0)) continue;
-		if (!animation_wanted && (replacement_blitters[i].animation == 1)) continue;
+	for (const auto &replacement_blitter : replacement_blitters) {
+		if (animation_wanted && (replacement_blitter.animation == 0)) continue;
+		if (!animation_wanted && (replacement_blitter.animation == 1)) continue;
 
-		if (!IsInsideMM(depth_wanted_by_base, replacement_blitters[i].min_base_depth, replacement_blitters[i].max_base_depth + 1)) continue;
-		if (!IsInsideMM(depth_wanted_by_grf, replacement_blitters[i].min_grf_depth, replacement_blitters[i].max_grf_depth + 1)) continue;
-		const char *repl_blitter = replacement_blitters[i].name;
+		if (!IsInsideMM(depth_wanted_by_base, replacement_blitter.min_base_depth, replacement_blitter.max_base_depth + 1)) continue;
+		if (!IsInsideMM(depth_wanted_by_grf, replacement_blitter.min_grf_depth, replacement_blitter.max_grf_depth + 1)) continue;
+		const char *repl_blitter = replacement_blitter.name;
 
 		if (strcmp(repl_blitter, cur_blitter) == 0) {
 			return false;
