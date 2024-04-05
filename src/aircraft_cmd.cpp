@@ -1182,9 +1182,11 @@ static bool HandleCrashedAircraft(Aircraft *v)
 	if (v->crashed_counter < 500 && st == nullptr && ((v->crashed_counter % 3) == 0) ) {
 		int z = GetSlopePixelZ(Clamp(v->x_pos, 0, Map::MaxX() * TILE_SIZE), Clamp(v->y_pos, 0, Map::MaxY() * TILE_SIZE));
 		v->z_pos -= 1;
-		if (v->z_pos == z) {
+		if (v->z_pos <= z) {
 			v->crashed_counter = 500;
-			v->z_pos++;
+			v->z_pos = z + 1;
+		} else {
+			v->crashed_counter = 0;
 		}
 		SetAircraftPosition(v, v->x_pos, v->y_pos, v->z_pos);
 	}
