@@ -2256,7 +2256,7 @@ struct NetworkCompanyPasswordWindow : public Window {
 	QueryString password_editbox; ///< Password editbox.
 	Dimension warning_size;       ///< How much space to use for the warning text
 
-	NetworkCompanyPasswordWindow(WindowDesc *desc, Window *parent) : Window(desc), password_editbox(lengthof(_settings_client.network.default_company_pass))
+	NetworkCompanyPasswordWindow(WindowDesc *desc, Window *parent) : Window(desc), password_editbox(NETWORK_PASSWORD_LENGTH)
 	{
 		this->InitNested(0);
 		this->UpdateWarningStringSize();

@@ -9501,7 +9501,7 @@ static void FinaliseIndustriesArray()
 
 	for (auto &indtsp : _industry_tile_specs) {
 		/* Apply default cargo translation map for unset cargo slots */
-		for (uint i = 0; i < lengthof(indtsp.accepts_cargo); ++i) {
+		for (size_t i = 0; i < indtsp.accepts_cargo.size(); ++i) {
 			if (!IsValidCargoID(indtsp.accepts_cargo[i])) indtsp.accepts_cargo[i] = GetCargoIDByLabel(GetActiveCargoLabel(indtsp.accepts_cargo_label[i]));
 		}
 	}
