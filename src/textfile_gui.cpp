@@ -870,7 +870,7 @@ std::optional<std::string> GetTextfile(TextfileType type, Subdirectory dir, cons
 		"changelog",
 		"license",
 	};
-	static_assert(lengthof(prefixes) == TFT_CONTENT_END);
+	static_assert(std::size(prefixes) == TFT_CONTENT_END);
 
 	/* Only the generic text file types allowed for this function */
 	if (type >= TFT_CONTENT_END) return std::nullopt;

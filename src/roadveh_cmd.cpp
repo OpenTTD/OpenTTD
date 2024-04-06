@@ -64,12 +64,12 @@ static const uint16_t _roadveh_full_adder[] = {
 	 0,  16,  16,   0,   8,   8,   8,   8,
 	 0,   0,   0,   8,   8,   8,   8
 };
-static_assert(lengthof(_roadveh_images) == lengthof(_roadveh_full_adder));
+static_assert(std::size(_roadveh_images) == std::size(_roadveh_full_adder));
 
 template <>
 bool IsValidImageIndex<VEH_ROAD>(uint8_t image_index)
 {
-	return image_index < lengthof(_roadveh_images);
+	return image_index < std::size(_roadveh_images);
 }
 
 static const Trackdir _road_reverse_table[DIAGDIR_END] = {

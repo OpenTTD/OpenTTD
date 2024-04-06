@@ -683,14 +683,14 @@ NetworkRecvStatus ClientNetworkGameSocketHandler::Receive_SERVER_ERROR(Packet &p
 		STR_NETWORK_ERROR_INVALID_CLIENT_NAME, // NETWORK_ERROR_INVALID_CLIENT_NAME
 		STR_NETWORK_ERROR_NOT_ON_ALLOW_LIST,   // NETWORK_ERROR_NOT_ON_ALLOW_LIST
 	};
-	static_assert(lengthof(network_error_strings) == NETWORK_ERROR_END);
+	static_assert(std::size(network_error_strings) == NETWORK_ERROR_END);
 
 	NetworkErrorCode error = (NetworkErrorCode)p.Recv_uint8();
 
 	Debug(net, 9, "Client::Receive_SERVER_ERROR(): error={}", error);
 
 	StringID err = STR_NETWORK_ERROR_LOSTCONNECTION;
-	if (error < (ptrdiff_t)lengthof(network_error_strings)) err = network_error_strings[error];
+	if (error < (ptrdiff_t)std::size(network_error_strings)) err = network_error_strings[error];
 	/* In case of kicking a client, we assume there is a kick message in the packet if we can read one byte */
 	if (error == NETWORK_ERROR_KICKED && p.CanReadFromPacket(1)) {
 		SetDParamStr(0, p.Recv_string(NETWORK_CHAT_LENGTH));

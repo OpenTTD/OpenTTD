@@ -164,7 +164,7 @@ static LegendAndColour _legend_land_owners[NUM_NO_COMPANY_ENTRIES + MAX_COMPANIE
 #undef MKEND
 
 /** Legend entries for the link stats view. */
-static LegendAndColour _legend_linkstats[NUM_CARGO + lengthof(_linkstat_colours_in_legenda) + 1];
+static LegendAndColour _legend_linkstats[NUM_CARGO + std::size(_linkstat_colours_in_legenda) + 1];
 /**
  * Allow room for all industries, plus a terminator entry
  * This is required in order to have the industry slots all filled up
@@ -232,7 +232,7 @@ void BuildLinkStatsLegend()
 	_legend_linkstats[i].col_break = true;
 	_smallmap_cargo_count = i;
 
-	for (; i < _smallmap_cargo_count + lengthof(_linkstat_colours_in_legenda); ++i) {
+	for (; i < _smallmap_cargo_count + std::size(_linkstat_colours_in_legenda); ++i) {
 		_legend_linkstats[i].legend = STR_EMPTY;
 		_legend_linkstats[i].colour = LinkGraphOverlay::LINK_COLOURS[_settings_client.gui.linkgraph_colours][_linkstat_colours_in_legenda[i - _smallmap_cargo_count]];
 		_legend_linkstats[i].show_on_map = true;
@@ -282,9 +282,9 @@ struct SmallMapColourScheme {
 
 /** Available colour schemes for height maps. */
 static SmallMapColourScheme _heightmap_schemes[] = {
-	{nullptr, _green_map_heights,      lengthof(_green_map_heights),      MKCOLOUR_XXXX(0x54)}, ///< Green colour scheme.
-	{nullptr, _dark_green_map_heights, lengthof(_dark_green_map_heights), MKCOLOUR_XXXX(0x62)}, ///< Dark green colour scheme.
-	{nullptr, _violet_map_heights,     lengthof(_violet_map_heights),     MKCOLOUR_XXXX(0x81)}, ///< Violet colour scheme.
+	{nullptr, _green_map_heights,      std::size(_green_map_heights),      MKCOLOUR_XXXX(0x54)}, ///< Green colour scheme.
+	{nullptr, _dark_green_map_heights, std::size(_dark_green_map_heights), MKCOLOUR_XXXX(0x62)}, ///< Dark green colour scheme.
+	{nullptr, _violet_map_heights,     std::size(_violet_map_heights),     MKCOLOUR_XXXX(0x81)}, ///< Violet colour scheme.
 };
 
 /**
@@ -326,7 +326,7 @@ void BuildLandLegend()
 	int rows = CeilDiv(total_entries, 2);
 	int j = 0;
 
-	for (i = 0; i < lengthof(_legend_land_contours) - 1 && j < total_entries; i++) {
+	for (i = 0; i < std::size(_legend_land_contours) - 1 && j < total_entries; i++) {
 		if (_legend_land_contours[i].legend != STR_TINY_BLACK_HEIGHT) continue;
 
 		_legend_land_contours[i].col_break = j % rows == 0;
@@ -1475,7 +1475,7 @@ public:
 		uint min_width = 0;
 		this->min_number_of_columns = INDUSTRY_MIN_NUMBER_OF_COLUMNS;
 		this->min_number_of_fixed_rows = lengthof(_linkstat_colours_in_legenda);
-		for (uint i = 0; i < lengthof(_legend_table); i++) {
+		for (uint i = 0; i < std::size(_legend_table); i++) {
 			uint height = 0;
 			uint num_columns = 1;
 			for (const LegendAndColour *tbl = _legend_table[i]; !tbl->end; ++tbl) {

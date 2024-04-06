@@ -138,7 +138,7 @@ void AyStar::CheckTile(AyStarNode *current, OpenListNode *parent)
 		check->g = new_g;
 		check->path.parent = closedlist_parent;
 		/* Copy user data, will probably have changed */
-		for (i = 0; i < lengthof(current->user_data); i++) {
+		for (i = 0; i < std::size(current->user_data); i++) {
 			check->path.node.user_data[i] = current->user_data[i];
 		}
 		/* Re-add it in the openlist_queue. */

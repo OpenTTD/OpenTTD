@@ -317,7 +317,7 @@ void IConsoleCmdExec(const std::string &command_string, const uint recurse_count
 	 * enclosed in "" are taken as one token. We can only go as far as the amount
 	 * of characters in our stream or the max amount of tokens we can handle */
 	for (cmdptr = command_string.c_str(), t_index = 0, tstream_i = 0; *cmdptr != '\0'; cmdptr++) {
-		if (tstream_i >= lengthof(tokenstream)) {
+		if (tstream_i >= std::size(tokenstream)) {
 			IConsolePrint(CC_ERROR, "Command line too long.");
 			return;
 		}
@@ -338,7 +338,7 @@ void IConsoleCmdExec(const std::string &command_string, const uint recurse_count
 		case '"': // Tokens enclosed in "" are one token
 			longtoken = !longtoken;
 			if (!foundtoken) {
-				if (t_index >= lengthof(tokens)) {
+				if (t_index >= std::size(tokens)) {
 					IConsolePrint(CC_ERROR, "Command line too long.");
 					return;
 				}
@@ -347,7 +347,7 @@ void IConsoleCmdExec(const std::string &command_string, const uint recurse_count
 			}
 			break;
 		case '\\': // Escape character for ""
-			if (cmdptr[1] == '"' && tstream_i + 1 < lengthof(tokenstream)) {
+			if (cmdptr[1] == '"' && tstream_i + 1 < std::size(tokenstream)) {
 				tokenstream[tstream_i++] = *++cmdptr;
 				break;
 			}
@@ -356,7 +356,7 @@ void IConsoleCmdExec(const std::string &command_string, const uint recurse_count
 			tokenstream[tstream_i++] = *cmdptr;
 
 			if (!foundtoken) {
-				if (t_index >= lengthof(tokens)) {
+				if (t_index >= std::size(tokens)) {
 					IConsolePrint(CC_ERROR, "Command line too long.");
 					return;
 				}
@@ -367,7 +367,7 @@ void IConsoleCmdExec(const std::string &command_string, const uint recurse_count
 		}
 	}
 
-	for (uint i = 0; i < lengthof(tokens) && tokens[i] != nullptr; i++) {
+	for (uint i = 0; i < std::size(tokens) && tokens[i] != nullptr; i++) {
 		Debug(console, 8, "Token {} is: '{}'", i, tokens[i]);
 	}
 

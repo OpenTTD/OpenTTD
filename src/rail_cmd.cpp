@@ -64,7 +64,7 @@ enum SignalOffsets {
  */
 void ResetRailTypes()
 {
-	static_assert(lengthof(_original_railtypes) <= lengthof(_railtypes));
+	static_assert(std::size(_original_railtypes) <= std::size(_railtypes));
 
 	auto insert = std::copy(std::begin(_original_railtypes), std::end(_original_railtypes), std::begin(_railtypes));
 	std::fill(insert, std::end(_railtypes), RailTypeInfo{});

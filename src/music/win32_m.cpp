@@ -164,7 +164,7 @@ void CALLBACK TimerCallback(UINT uTimerID, UINT, DWORD_PTR, DWORD_PTR, DWORD_PTR
 			_midi.do_start = 0;
 			_midi.current_block = 0;
 
-			MemSetT<uint8_t>(_midi.channel_volumes, 127, lengthof(_midi.channel_volumes));
+			MemSetT<uint8_t>(_midi.channel_volumes, 127, std::size(_midi.channel_volumes));
 			/* Invalidate current volume. */
 			_midi.current_volume = UINT8_MAX;
 			volume_throttle = 0;
@@ -383,11 +383,11 @@ std::optional<std::string_view> MusicDriver_Win32::Start(const StringList &parm)
 			MIDIOUTCAPS moc{};
 			if (midiOutGetDevCaps(tryport, &moc, sizeof(moc)) == MMSYSERR_NOERROR) {
 				char tryportname[128];
-				convert_from_fs(moc.szPname, tryportname, lengthof(tryportname));
+				convert_from_fs(moc.szPname, tryportname, std::size(tryportname));
 
 				/* Compare requested and detected port name.
 				 * If multiple ports have the same name, this will select the last matching port, and the debug output will be confusing. */
-				if (portname != nullptr && strncmp(tryportname, portname, lengthof(tryportname)) == 0) port = tryport;
+				if (portname != nullptr && strncmp(tryportname, portname, std::size(tryportname)) == 0) port = tryport;
 
 				Debug(driver, 1, "MIDI port {:2d}: {}{}", tryport, tryportname, (tryport == port) ? " [selected]" : "");
 			}

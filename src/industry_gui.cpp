@@ -159,7 +159,7 @@ static inline void GetAllCargoSuffixes(CargoSuffixInOut use_input, CargoSuffixTy
 
 	if (indspec->behaviour & INDUSTRYBEH_CARGOTYPES_UNLIMITED) {
 		/* Reworked behaviour with new many-in-many-out scheme */
-		for (uint j = 0; j < lengthof(suffixes); j++) {
+		for (uint j = 0; j < std::size(suffixes); j++) {
 			if (IsValidCargoID(cargoes[j])) {
 				uint8_t local_id = indspec->grf_prop.grffile->cargo_map[cargoes[j]]; // should we check the value for valid?
 				uint cargotype = local_id << 16 | use_input;
@@ -171,7 +171,7 @@ static inline void GetAllCargoSuffixes(CargoSuffixInOut use_input, CargoSuffixTy
 		}
 	} else {
 		/* Compatible behaviour with old 3-in-2-out scheme */
-		for (uint j = 0; j < lengthof(suffixes); j++) {
+		for (uint j = 0; j < std::size(suffixes); j++) {
 			suffixes[j].text.clear();
 			suffixes[j].display = CSD_CARGO;
 		}
@@ -2497,7 +2497,7 @@ struct CargoesRow {
 				for (const auto &hs : HouseSpec::Specs()) {
 					if (!hs.enabled) continue;
 
-					for (uint j = 0; j < lengthof(hs.accepts_cargo); j++) {
+					for (uint j = 0; j < std::size(hs.accepts_cargo); j++) {
 						if (hs.cargo_acceptance[j] > 0 && cargo_fld->u.cargo.vertical_cargoes[i] == hs.accepts_cargo[j]) {
 							cargo_fld->ConnectCargo(cargo_fld->u.cargo.vertical_cargoes[i], false);
 							goto next_cargo;
@@ -2710,7 +2710,7 @@ struct IndustryCargoesWindow : public Window {
 			for (const auto &hs : HouseSpec::Specs()) {
 				if (!hs.enabled || !(hs.building_availability & climate_mask)) continue;
 
-				for (uint j = 0; j < lengthof(hs.accepts_cargo); j++) {
+				for (uint j = 0; j < std::size(hs.accepts_cargo); j++) {
 					if (hs.cargo_acceptance[j] > 0 && cid == hs.accepts_cargo[j]) return true;
 				}
 			}

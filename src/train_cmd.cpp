@@ -58,7 +58,7 @@ static const uint8_t _vehicle_initial_y_fract[4] = { 8, 4, 8, 10};
 template <>
 bool IsValidImageIndex<VEH_TRAIN>(uint8_t image_index)
 {
-	return image_index < lengthof(_engine_sprite_base);
+	return image_index < std::size(_engine_sprite_base);
 }
 
 

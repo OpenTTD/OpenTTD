@@ -164,10 +164,10 @@ struct ENGSChunkHandler : ChunkHandler {
 		 * was always 256 entries. */
 		StringID names[256];
 
-		SlCopy(names, lengthof(names), SLE_STRINGID);
+		SlCopy(names, std::size(names), SLE_STRINGID);
 
 		/* Copy each string into the temporary engine array. */
-		for (EngineID engine = 0; engine < lengthof(names); engine++) {
+		for (EngineID engine = 0; engine < std::size(names); engine++) {
 			Engine *e = GetTempDataEngine(engine);
 			e->name = CopyFromOldName(names[engine]);
 		}

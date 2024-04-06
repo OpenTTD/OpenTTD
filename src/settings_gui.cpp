@@ -2284,7 +2284,7 @@ static const StringID _game_settings_restrict_dropdown[] = {
 	STR_CONFIG_SETTING_RESTRICT_CHANGED_AGAINST_DEFAULT,          // RM_CHANGED_AGAINST_DEFAULT
 	STR_CONFIG_SETTING_RESTRICT_CHANGED_AGAINST_NEW,              // RM_CHANGED_AGAINST_NEW
 };
-static_assert(lengthof(_game_settings_restrict_dropdown) == RM_END);
+static_assert(std::size(_game_settings_restrict_dropdown) == RM_END);
 
 /** Warnings about hidden search results. */
 enum WarnHiddenResult {

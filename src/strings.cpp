@@ -469,7 +469,7 @@ static void FormatBytes(StringBuilder &builder, int64_t number)
 		fmt::format_to(builder, "{}", number / 1024);
 	}
 
-	assert(id < lengthof(iec_prefixes));
+	assert(id < std::size(iec_prefixes));
 	fmt::format_to(builder, NBSP "{}B", iec_prefixes[id]);
 }
 
@@ -848,8 +848,8 @@ static const Units GetVelocityUnits(VehicleType type)
 {
 	uint8_t setting = (type == VEH_SHIP || type == VEH_AIRCRAFT) ? _settings_game.locale.units_velocity_nautical : _settings_game.locale.units_velocity;
 
-	assert(setting < lengthof(_units_velocity_calendar));
-	assert(setting < lengthof(_units_velocity_realtime));
+	assert(setting < std::size(_units_velocity_calendar));
+	assert(setting < std::size(_units_velocity_realtime));
 
 	if (TimerGameEconomy::UsingWallclockUnits()) return _units_velocity_realtime[setting];
 
@@ -1263,7 +1263,7 @@ static void FormatString(StringBuilder &builder, const char *str_arg, StringPara
 					StringID cargo_str = CargoSpec::Get(cargo)->units_volume;
 					switch (cargo_str) {
 						case STR_TONS: {
-							assert(_settings_game.locale.units_weight < lengthof(_units_weight));
+							assert(_settings_game.locale.units_weight < std::size(_units_weight));
 							const auto &x = _units_weight[_settings_game.locale.units_weight];
 							auto tmp_params = MakeParameters(x.c.ToDisplay(args.GetNextParameter<int64_t>()), x.decimal_places);
 							FormatString(builder, GetStringPtr(x.l), tmp_params);
@@ -1271,7 +1271,7 @@ static void FormatString(StringBuilder &builder, const char *str_arg, StringPara
 						}
 
 						case STR_LITERS: {
-							assert(_settings_game.locale.units_volume < lengthof(_units_volume));
+							assert(_settings_game.locale.units_volume < std::size(_units_volume));
 							const auto &x = _units_volume[_settings_game.locale.units_volume];
 							auto tmp_params = MakeParameters(x.c.ToDisplay(args.GetNextParameter<int64_t>()), x.decimal_places);
 							FormatString(builder, GetStringPtr(x.l), tmp_params);
@@ -1349,7 +1349,7 @@ static void FormatString(StringBuilder &builder, const char *str_arg, StringPara
 					break;
 
 				case SCC_FORCE: { // {FORCE}
-					assert(_settings_game.locale.units_force < lengthof(_units_force));
+					assert(_settings_game.locale.units_force < std::size(_units_force));
 					const auto &x = _units_force[_settings_game.locale.units_force];
 					auto tmp_params = MakeParameters(x.c.ToDisplay(args.GetNextParameter<int64_t>()), x.decimal_places);
 					FormatString(builder, GetStringPtr(x.s), tmp_params);
@@ -1357,7 +1357,7 @@ static void FormatString(StringBuilder &builder, const char *str_arg, StringPara
 				}
 
 				case SCC_HEIGHT: { // {HEIGHT}
-					assert(_settings_game.locale.units_height < lengthof(_units_height));
+					assert(_settings_game.locale.units_height < std::size(_units_height));
 					const auto &x = _units_height[_settings_game.locale.units_height];
 					auto tmp_params = MakeParameters(x.c.ToDisplay(args.GetNextParameter<int64_t>()), x.decimal_places);
 					FormatString(builder, GetStringPtr(x.s), tmp_params);
@@ -1365,7 +1365,7 @@ static void FormatString(StringBuilder &builder, const char *str_arg, StringPara
 				}
 
 				case SCC_POWER: { // {POWER}
-					assert(_settings_game.locale.units_power < lengthof(_units_power));
+					assert(_settings_game.locale.units_power < std::size(_units_power));
 					const auto &x = _units_power[_settings_game.locale.units_power];
 					auto tmp_params = MakeParameters(x.c.ToDisplay(args.GetNextParameter<int64_t>()), x.decimal_places);
 					FormatString(builder, GetStringPtr(x.s), tmp_params);
@@ -1374,7 +1374,7 @@ static void FormatString(StringBuilder &builder, const char *str_arg, StringPara
 
 				case SCC_POWER_TO_WEIGHT: { // {POWER_TO_WEIGHT}
 					auto setting = _settings_game.locale.units_power * 3u + _settings_game.locale.units_weight;
-					assert(setting < lengthof(_units_power_to_weight));
+					assert(setting < std::size(_units_power_to_weight));
 					const auto &x = _units_power_to_weight[setting];
 					auto tmp_params = MakeParameters(x.c.ToDisplay(args.GetNextParameter<int64_t>()), x.decimal_places);
 					FormatString(builder, GetStringPtr(x.s), tmp_params);
@@ -1392,7 +1392,7 @@ static void FormatString(StringBuilder &builder, const char *str_arg, StringPara
 				}
 
 				case SCC_VOLUME_SHORT: { // {VOLUME_SHORT}
-					assert(_settings_game.locale.units_volume < lengthof(_units_volume));
+					assert(_settings_game.locale.units_volume < std::size(_units_volume));
 					const auto &x = _units_volume[_settings_game.locale.units_volume];
 					auto tmp_params = MakeParameters(x.c.ToDisplay(args.GetNextParameter<int64_t>()), x.decimal_places);
 					FormatString(builder, GetStringPtr(x.s), tmp_params);
@@ -1400,7 +1400,7 @@ static void FormatString(StringBuilder &builder, const char *str_arg, StringPara
 				}
 
 				case SCC_VOLUME_LONG: { // {VOLUME_LONG}
-					assert(_settings_game.locale.units_volume < lengthof(_units_volume));
+					assert(_settings_game.locale.units_volume < std::size(_units_volume));
 					const auto &x = _units_volume[_settings_game.locale.units_volume];
 					auto tmp_params = MakeParameters(x.c.ToDisplay(args.GetNextParameter<int64_t>()), x.decimal_places);
 					FormatString(builder, GetStringPtr(x.l), tmp_params);
@@ -1408,7 +1408,7 @@ static void FormatString(StringBuilder &builder, const char *str_arg, StringPara
 				}
 
 				case SCC_WEIGHT_SHORT: { // {WEIGHT_SHORT}
-					assert(_settings_game.locale.units_weight < lengthof(_units_weight));
+					assert(_settings_game.locale.units_weight < std::size(_units_weight));
 					const auto &x = _units_weight[_settings_game.locale.units_weight];
 					auto tmp_params = MakeParameters(x.c.ToDisplay(args.GetNextParameter<int64_t>()), x.decimal_places);
 					FormatString(builder, GetStringPtr(x.s), tmp_params);
@@ -1416,7 +1416,7 @@ static void FormatString(StringBuilder &builder, const char *str_arg, StringPara
 				}
 
 				case SCC_WEIGHT_LONG: { // {WEIGHT_LONG}
-					assert(_settings_game.locale.units_weight < lengthof(_units_weight));
+					assert(_settings_game.locale.units_weight < std::size(_units_weight));
 					const auto &x = _units_weight[_settings_game.locale.units_weight];
 					auto tmp_params = MakeParameters(x.c.ToDisplay(args.GetNextParameter<int64_t>()), x.decimal_places);
 					FormatString(builder, GetStringPtr(x.l), tmp_params);

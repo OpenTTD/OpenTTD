@@ -197,7 +197,7 @@ static uint32_t GetRailContinuationInfo(TileIndex tile)
 	uint32_t res = 0;
 	uint i;
 
-	for (i = 0; i < lengthof(x_dir); i++, dir++, diagdir++) {
+	for (i = 0; i < std::size(x_dir); i++, dir++, diagdir++) {
 		TileIndex neighbour_tile = tile + TileOffsByDir(*dir);
 		TrackBits trackbits = TrackStatusToTrackBits(GetTileTrackStatus(neighbour_tile, TRANSPORT_RAIL, 0));
 		if (trackbits != TRACK_BIT_NONE) {

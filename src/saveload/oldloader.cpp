@@ -37,7 +37,7 @@ static inline uint8_t CalcOldVarLen(OldChunkType type)
 {
 	static const uint8_t type_mem_size[] = {0, 1, 1, 2, 2, 4, 4, 8};
 	uint8_t length = GB(type, 8, 8);
-	assert(length != 0 && length < lengthof(type_mem_size));
+	assert(length != 0 && length < std::size(type_mem_size));
 	return type_mem_size[length];
 }
 
@@ -227,7 +227,7 @@ static std::tuple<SavegameType, std::string> DetermineOldSavegameTypeAndName(FIL
 {
 	long pos = ftell(f);
 	char buffer[std::max(TTO_HEADER_SIZE, TTD_HEADER_SIZE)];
-	if (pos < 0 || fread(buffer, 1, lengthof(buffer), f) != lengthof(buffer)) {
+	if (pos < 0 || fread(buffer, 1, std::size(buffer), f) != std::size(buffer)) {
 		return { SGT_INVALID, "(broken) Unable to read file" };
 	}
 

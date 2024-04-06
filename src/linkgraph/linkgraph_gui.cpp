@@ -297,7 +297,7 @@ void LinkGraphOverlay::DrawLinks(const DrawPixelInfo *dpi) const
 void LinkGraphOverlay::DrawContent(Point pta, Point ptb, const LinkProperties &cargo) const
 {
 	uint usage_or_plan = std::min(cargo.capacity * 2 + 1, cargo.Usage());
-	int colour = LinkGraphOverlay::LINK_COLOURS[_settings_client.gui.linkgraph_colours][usage_or_plan * lengthof(LinkGraphOverlay::LINK_COLOURS[0]) / (cargo.capacity * 2 + 2)];
+	int colour = LinkGraphOverlay::LINK_COLOURS[_settings_client.gui.linkgraph_colours][usage_or_plan * std::size(LinkGraphOverlay::LINK_COLOURS[0]) / (cargo.capacity * 2 + 2)];
 	int width = ScaleGUITrad(this->scale);
 	int dash = cargo.shared ? width * 4 : 0;
 
@@ -459,7 +459,7 @@ std::unique_ptr<NWidgetBase> MakeCompanyButtonRowsLinkGraphGUI()
 std::unique_ptr<NWidgetBase> MakeSaturationLegendLinkGraphGUI()
 {
 	auto panel = std::make_unique<NWidgetVertical>(NC_EQUALSIZE);
-	for (uint i = 0; i < lengthof(LinkGraphOverlay::LINK_COLOURS[0]); ++i) {
+	for (uint i = 0; i < std::size(LinkGraphOverlay::LINK_COLOURS[0]); ++i) {
 		auto wid = std::make_unique<NWidgetBackground>(WWT_PANEL, COLOUR_DARK_GREEN, i + WID_LGL_SATURATION_FIRST);
 		wid->SetMinimalSize(50, 0);
 		wid->SetMinimalTextLines(1, 0, FS_SMALL);
@@ -534,7 +534,7 @@ static constexpr NWidgetPart _nested_linkgraph_legend_widgets[] = {
 };
 
 static_assert(WID_LGL_SATURATION_LAST - WID_LGL_SATURATION_FIRST ==
-		lengthof(LinkGraphOverlay::LINK_COLOURS[0]) - 1);
+		std::size(LinkGraphOverlay::LINK_COLOURS[0]) - 1);
 
 static WindowDesc _linkgraph_legend_desc(
 	WDP_AUTO, "toolbar_linkgraph", 0, 0,

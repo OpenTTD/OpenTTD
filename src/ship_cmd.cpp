@@ -71,7 +71,7 @@ static const uint16_t _ship_sprites[] = {0x0E5D, 0x0E55, 0x0E65, 0x0E6D};
 template <>
 bool IsValidImageIndex<VEH_SHIP>(uint8_t image_index)
 {
-	return image_index < lengthof(_ship_sprites);
+	return image_index < std::size(_ship_sprites);
 }
 
 static inline TrackBits GetTileShipTrackStatus(TileIndex tile)

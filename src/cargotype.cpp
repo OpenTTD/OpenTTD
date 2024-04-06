@@ -47,7 +47,7 @@ static std::vector<CargoLabel> _default_cargo_labels;
  */
 void SetupCargoForClimate(LandscapeID l)
 {
-	assert(l < lengthof(_default_climate_cargo));
+	assert(l < std::size(_default_climate_cargo));
 
 	_cargo_mask = 0;
 	_default_cargo_labels.clear();

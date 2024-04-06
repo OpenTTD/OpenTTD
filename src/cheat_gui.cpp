@@ -210,7 +210,7 @@ static const CheatEntry _cheats_ui[] = {
 	{SLE_INT32, STR_CHEAT_CHANGE_DATE,     &TimerGameCalendar::year,                      &_cheats.change_date.been_used,      &ClickChangeDateCheat    },
 };
 
-static_assert(CHT_NUM_CHEATS == lengthof(_cheats_ui));
+static_assert(CHT_NUM_CHEATS == std::size(_cheats_ui));
 
 /** Widget definitions of the cheat GUI. */
 static constexpr NWidgetPart _nested_cheat_widgets[] = {
@@ -256,7 +256,7 @@ struct CheatWindow : Window {
 		int button_y_offset = (this->line_height - SETTING_BUTTON_HEIGHT) / 2;
 		int icon_y_offset = (this->line_height - this->icon.height) / 2;
 
-		for (int i = 0; i != lengthof(_cheats_ui); i++) {
+		for (int i = 0; i != std::size(_cheats_ui); i++) {
 			const CheatEntry *ce = &_cheats_ui[i];
 
 			switch (ce->type) {
@@ -352,7 +352,7 @@ struct CheatWindow : Window {
 		bool rtl = _current_text_dir == TD_RTL;
 		if (rtl) x = r.Width() - 1 - x;
 
-		if (btn >= lengthof(_cheats_ui)) return;
+		if (btn >= std::size(_cheats_ui)) return;
 
 		const CheatEntry *ce = &_cheats_ui[btn];
 		int value = (int32_t)ReadValue(ce->variable, ce->type);

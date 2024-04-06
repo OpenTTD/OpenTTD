@@ -566,14 +566,14 @@ static void HeightMapCurves(uint level)
 		const ControlPoint *list; ///< The actual curve map.
 	};
 	static const ControlPointList curve_maps[] = {
-		{ lengthof(curve_map_1), curve_map_1 },
-		{ lengthof(curve_map_2), curve_map_2 },
-		{ lengthof(curve_map_3), curve_map_3 },
-		{ lengthof(curve_map_4), curve_map_4 },
+		{ std::size(curve_map_1), curve_map_1 },
+		{ std::size(curve_map_2), curve_map_2 },
+		{ std::size(curve_map_3), curve_map_3 },
+		{ std::size(curve_map_4), curve_map_4 },
 	};
 
-	Height ht[lengthof(curve_maps)];
-	MemSetT(ht, 0, lengthof(ht));
+	Height ht[std::size(curve_maps)];
+	MemSetT(ht, 0, std::size(ht));
 
 	/* Set up a grid to choose curve maps based on location; attempt to get a somewhat square grid */
 	float factor = sqrt((float)_height_map.size_x / (float)_height_map.size_y);
@@ -642,7 +642,7 @@ static void HeightMapCurves(uint level)
 			*h -= I2H(1);
 
 			/* Apply all curve maps that are used on this tile. */
-			for (uint t = 0; t < lengthof(curve_maps); t++) {
+			for (uint t = 0; t < std::size(curve_maps); t++) {
 				if (!HasBit(corner_bits, t)) continue;
 
 				[[maybe_unused]] bool found = false;

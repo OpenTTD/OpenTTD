@@ -324,7 +324,7 @@ struct NetworkChatWindow : public Window {
 			STR_NETWORK_CHAT_COMPANY_CAPTION,
 			STR_NETWORK_CHAT_CLIENT_CAPTION
 		};
-		assert((uint)this->dtype < lengthof(chat_captions));
+		assert((uint)this->dtype < std::size(chat_captions));
 
 		this->CreateNestedTree();
 		this->GetWidget<NWidgetCore>(WID_NC_DESTINATION)->widget_data = chat_captions[this->dtype];

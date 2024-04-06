@@ -380,9 +380,9 @@ StringID GetNetworkErrorMsg(NetworkErrorCode err)
 		STR_NETWORK_ERROR_CLIENT_INVALID_CLIENT_NAME,
 		STR_NETWORK_ERROR_CLIENT_NOT_ON_ALLOW_LIST,
 	};
-	static_assert(lengthof(network_error_strings) == NETWORK_ERROR_END);
+	static_assert(std::size(network_error_strings) == NETWORK_ERROR_END);
 
-	if (err >= (ptrdiff_t)lengthof(network_error_strings)) err = NETWORK_ERROR_GENERAL;
+	if (err >= (ptrdiff_t)std::size(network_error_strings)) err = NETWORK_ERROR_GENERAL;
 
 	return network_error_strings[err];
 }
@@ -1170,7 +1170,7 @@ void NetworkGameLoop()
 			if (cp != nullptr || check_sync_state) break;
 
 			char buff[4096];
-			if (fgets(buff, lengthof(buff), f) == nullptr) break;
+			if (fgets(buff, std::size(buff), f) == nullptr) break;
 
 			char *p = buff;
 			/* Ignore the "[date time] " part of the message */

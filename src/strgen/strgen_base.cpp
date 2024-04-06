@@ -430,7 +430,7 @@ static uint ResolveCaseName(const char *str, size_t len)
 {
 	/* First get a clean copy of only the case name, then resolve it. */
 	char case_str[CASE_GENDER_LEN];
-	len = std::min(lengthof(case_str) - 1, len);
+	len = std::min(std::size(case_str) - 1, len);
 	memcpy(case_str, str, len);
 	case_str[len] = '\0';
 
@@ -730,7 +730,7 @@ void StringReader::HandlePragma(char *str)
 {
 	if (!memcmp(str, "plural ", 7)) {
 		_lang.plural_form = atoi(str + 7);
-		if (_lang.plural_form >= lengthof(_plural_forms)) {
+		if (_lang.plural_form >= std::size(_plural_forms)) {
 			StrgenFatal("Invalid pluralform {}", _lang.plural_form);
 		}
 	} else {

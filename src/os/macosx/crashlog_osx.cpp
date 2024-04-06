@@ -58,7 +58,7 @@ class CrashLogOSX : public CrashLog {
 	void SurveyStacktrace(nlohmann::json &survey) const override
 	{
 		void *trace[64];
-		int trace_size = backtrace(trace, lengthof(trace));
+		int trace_size = backtrace(trace, std::size(trace));
 
 		survey = nlohmann::json::array();
 

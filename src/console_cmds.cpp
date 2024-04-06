@@ -2050,7 +2050,7 @@ DEF_CONSOLE_CMD(ConNetworkAuthorizedKey)
 static ContentType StringToContentType(const char *str)
 {
 	static const char * const inv_lookup[] = { "", "base", "newgrf", "ai", "ailib", "scenario", "heightmap" };
-	for (uint i = 1 /* there is no type 0 */; i < lengthof(inv_lookup); i++) {
+	for (uint i = 1 /* there is no type 0 */; i < std::size(inv_lookup); i++) {
 		if (StrEqualsIgnoreCase(str, inv_lookup[i])) return (ContentType)i;
 	}
 	return CONTENT_TYPE_END;
@@ -2081,7 +2081,7 @@ struct ConsoleContentCallback : public ContentCallback {
 static void OutputContentState(const ContentInfo *const ci)
 {
 	static const char * const types[] = { "Base graphics", "NewGRF", "AI", "AI library", "Scenario", "Heightmap", "Base sound", "Base music", "Game script", "GS library" };
-	static_assert(lengthof(types) == CONTENT_TYPE_END - CONTENT_TYPE_BEGIN);
+	static_assert(std::size(types) == CONTENT_TYPE_END - CONTENT_TYPE_BEGIN);
 	static const char * const states[] = { "Not selected", "Selected", "Dep Selected", "Installed", "Unknown" };
 	static const TextColour state_to_colour[] = { CC_COMMAND, CC_INFO, CC_INFO, CC_WHITE, CC_ERROR };
 

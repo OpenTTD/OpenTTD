@@ -39,16 +39,16 @@ const uint8_t *MidiGetStandardSysexMessage(MidiSysexMessage msg, size_t &length)
 
 	switch (msg) {
 		case MidiSysexMessage::ResetGM:
-			length = lengthof(reset_gm_sysex);
+			length = std::size(reset_gm_sysex);
 			return reset_gm_sysex;
 		case MidiSysexMessage::ResetGS:
-			length = lengthof(reset_gs_sysex);
+			length = std::size(reset_gs_sysex);
 			return reset_gs_sysex;
 		case MidiSysexMessage::ResetXG:
-			length = lengthof(reset_xg_sysex);
+			length = std::size(reset_xg_sysex);
 			return reset_xg_sysex;
 		case MidiSysexMessage::RolandSetReverb:
-			length = lengthof(roland_reverb_sysex);
+			length = std::size(roland_reverb_sysex);
 			return roland_reverb_sysex;
 		default:
 			NOT_REACHED();

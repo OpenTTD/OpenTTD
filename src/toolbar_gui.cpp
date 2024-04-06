@@ -1804,7 +1804,7 @@ class NWidgetScenarioToolbarContainer : public NWidgetToolbarContainer {
 		for (const auto &child_wid : this->children) {
 			if (child_wid->type == NWID_SPACER || this->IsButton(child_wid->type)) continue;
 
-			assert(i < lengthof(this->panel_widths));
+			assert(i < std::size(this->panel_widths));
 			this->panel_widths[i++] = child_wid->current_x;
 			_toolbar_width += child_wid->current_x;
 		}

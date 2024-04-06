@@ -743,4 +743,4 @@ static const NIFeature * const _nifeatures[] = {
 	&_nif_roadstop,     // GSF_ROADSTOPS
 	&_nif_town,         // GSF_FAKE_TOWNS
 };
-static_assert(lengthof(_nifeatures) == GSF_FAKE_END);
+static_assert(std::size(_nifeatures) == GSF_FAKE_END);

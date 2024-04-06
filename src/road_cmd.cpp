@@ -66,7 +66,7 @@ RoadTypes _roadtypes_type;
  */
 void ResetRoadTypes()
 {
-	static_assert(lengthof(_original_roadtypes) <= lengthof(_roadtypes));
+	static_assert(std::size(_original_roadtypes) <= std::size(_roadtypes));
 
 	auto insert = std::copy(std::begin(_original_roadtypes), std::end(_original_roadtypes), std::begin(_roadtypes));
 	std::fill(insert, std::end(_roadtypes), RoadTypeInfo{});
@@ -1948,7 +1948,7 @@ static const Roadside _town_road_types[][2] = {
 	{ ROADSIDE_STREET_LIGHTS, ROADSIDE_PAVED }
 };
 
-static_assert(lengthof(_town_road_types) == HZB_END);
+static_assert(std::size(_town_road_types) == HZB_END);
 
 static const Roadside _town_road_types_2[][2] = {
 	{ ROADSIDE_GRASS,         ROADSIDE_GRASS },
@@ -1958,7 +1958,7 @@ static const Roadside _town_road_types_2[][2] = {
 	{ ROADSIDE_STREET_LIGHTS, ROADSIDE_PAVED }
 };
 
-static_assert(lengthof(_town_road_types_2) == HZB_END);
+static_assert(std::size(_town_road_types_2) == HZB_END);
 
 
 static void TileLoop_Road(TileIndex tile)

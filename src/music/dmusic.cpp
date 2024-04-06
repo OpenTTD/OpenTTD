@@ -650,7 +650,7 @@ static void MidiThreadProc()
 				clock->GetTime(&cur_time);
 				TransmitNotesOff(_buffer, block_time, cur_time);
 
-				MemSetT<uint8_t>(channel_volumes, 127, lengthof(channel_volumes));
+				MemSetT<uint8_t>(channel_volumes, 127, std::size(channel_volumes));
 				/* Invalidate current volume. */
 				current_volume = UINT8_MAX;
 				last_volume_time = 0;
@@ -1107,7 +1107,7 @@ std::optional<std::string_view> MusicDriver_DMusic::Start(const StringList &parm
 		Debug(driver, 1, "Detected DirectMusic ports:");
 		for (int i = 0; _music->EnumPort(i, &caps) == S_OK; i++) {
 			if (caps.dwClass == DMUS_PC_OUTPUTCLASS) {
-				Debug(driver, 1, " {}: {}{}", i, convert_from_fs(caps.wszDescription, desc, lengthof(desc)), i == pIdx ? " (selected)" : "");
+				Debug(driver, 1, " {}: {}{}", i, convert_from_fs(caps.wszDescription, desc, std::size(desc)), i == pIdx ? " (selected)" : "");
 			}
 		}
 	}

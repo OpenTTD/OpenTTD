@@ -1428,7 +1428,7 @@ static std::unique_ptr<NWidgetBase> MakePerformanceDetailPanels()
 		STR_PERFORMANCE_DETAIL_TOTAL_TOOLTIP,
 	};
 
-	static_assert(lengthof(performance_tips) == SCORE_END - SCORE_BEGIN);
+	static_assert(std::size(performance_tips) == SCORE_END - SCORE_BEGIN);
 
 	auto vert = std::make_unique<NWidgetVertical>(NC_EQUALSIZE);
 	for (WidgetID widnum = WID_PRD_SCORE_FIRST; widnum <= WID_PRD_SCORE_LAST; widnum++) {

@@ -68,7 +68,7 @@ public:
 		SlObject(lc, this->GetLoadDescription());
 
 		if (IsSavegameVersionBefore(SLV_STRING_GAMELOG)) {
-			static_cast<LoggedChangeRevision *>(lc)->text = StrMakeValid(std::string_view(SlGamelogRevision::revision_text, lengthof(SlGamelogRevision::revision_text)));
+			static_cast<LoggedChangeRevision *>(lc)->text = StrMakeValid(std::string_view(SlGamelogRevision::revision_text, std::size(SlGamelogRevision::revision_text)));
 		}
 	}
 

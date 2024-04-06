@@ -88,7 +88,7 @@ static StringID SettingHelpWallclock(const IntSettingDesc &sd);
 	NSD(Bool, SLE_GENERAL(SL_VAR, base, var, SLE_BOOL, 1, from, to, extra), flags, startup, def, str, strhelp, strval, cat, pre_check, post_callback, get_title_hook, get_help_hook, set_value_dparams_hook)
 
 #define SDT_LIST(base, var, type, flags, def, from, to, cat, extra, startup)\
-	NSD(List, SLE_GENERAL(SL_ARR, base, var, type, lengthof(((base*)8)->var), from, to, extra), flags, startup, def)
+	NSD(List, SLE_GENERAL(SL_ARR, base, var, type, std::size(((base*)8)->var), from, to, extra), flags, startup, def)
 
 #define SDT_SSTR(base, var, type, flags, def, pre_check, post_callback, from, to, cat, extra, startup)\
 	NSD(String, SLE_GENERAL(SL_STDSTR, base, var, type, sizeof(((base*)8)->var), from, to, extra), flags, startup, def, 0, pre_check, post_callback)

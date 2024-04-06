@@ -295,7 +295,7 @@ void Hash::PrintStatistics() const
 			for (node = &this->buckets[i]; node != nullptr; node = node->next) collision++;
 			if (collision > max_collision) max_collision = collision;
 		}
-		if (collision >= lengthof(usage)) collision = lengthof(usage) - 1;
+		if (collision >= std::size(usage)) collision = std::size(usage) - 1;
 		usage[collision]++;
 		if (collision > 0 && usage[collision] >= max_usage) {
 			max_usage = usage[collision];

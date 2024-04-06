@@ -335,11 +335,11 @@ static void AppendFile(const char *fname, FILE *out_fp)
 	char buffer[4096];
 	size_t length;
 	do {
-		length = fread(buffer, 1, lengthof(buffer), in_fp);
+		length = fread(buffer, 1, std::size(buffer), in_fp);
 		if (fwrite(buffer, 1, length, out_fp) != length) {
 			FatalError("Cannot copy file");
 		}
-	} while (length == lengthof(buffer));
+	} while (length == std::size(buffer));
 
 	fclose(in_fp);
 }

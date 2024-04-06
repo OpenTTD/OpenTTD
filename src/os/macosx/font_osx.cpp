@@ -45,7 +45,7 @@ bool SetFallbackFont(FontCacheSettings *settings, const std::string &language_is
 	CFStringRef lang_codes[2];
 	lang_codes[0] = CFStringCreateWithCString(kCFAllocatorDefault, lang.c_str(), kCFStringEncodingUTF8);
 	lang_codes[1] = CFSTR("en");
-	CFArrayRef lang_arr = CFArrayCreate(kCFAllocatorDefault, (const void **)lang_codes, lengthof(lang_codes), &kCFTypeArrayCallBacks);
+	CFArrayRef lang_arr = CFArrayCreate(kCFAllocatorDefault, (const void **)lang_codes, std::size(lang_codes), &kCFTypeArrayCallBacks);
 	CFAutoRelease<CFDictionaryRef> lang_attribs(CFDictionaryCreate(kCFAllocatorDefault, const_cast<const void **>(reinterpret_cast<const void *const *>(&kCTFontLanguagesAttribute)), (const void **)&lang_arr, 1, &kCFTypeDictionaryKeyCallBacks, &kCFTypeDictionaryValueCallBacks));
 	CFAutoRelease<CTFontDescriptorRef> lang_desc(CTFontDescriptorCreateWithAttributes(lang_attribs.get()));
 	CFRelease(lang_arr);
@@ -75,7 +75,7 @@ bool SetFallbackFont(FontCacheSettings *settings, const std::string &language_is
 			/* Get font name. */
 			char name[128];
 			CFAutoRelease<CFStringRef> font_name((CFStringRef)CTFontDescriptorCopyAttribute(font, kCTFontDisplayNameAttribute));
-			CFStringGetCString(font_name.get(), name, lengthof(name), kCFStringEncodingUTF8);
+			CFStringGetCString(font_name.get(), name, std::size(name), kCFStringEncodingUTF8);
 
 			/* Serif fonts usually look worse on-screen with only small
 			 * font sizes. As such, we try for a sans-serif font first.
@@ -174,7 +174,7 @@ void CoreTextFontCache::SetFontSize(int pixels)
 	/* Get real font name. */
 	char name[128];
 	CFAutoRelease<CFStringRef> font_name((CFStringRef)CTFontCopyAttribute(this->font.get(), kCTFontDisplayNameAttribute));
-	CFStringGetCString(font_name.get(), name, lengthof(name), kCFStringEncodingUTF8);
+	CFStringGetCString(font_name.get(), name, std::size(name), kCFStringEncodingUTF8);
 	this->font_name = name;
 
 	Debug(fontcache, 2, "Loaded font '{}' with size {}", this->font_name, pixels);

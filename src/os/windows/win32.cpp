@@ -182,7 +182,7 @@ static INT_PTR CALLBACK HelpDialogFunc(HWND wnd, UINT msg, WPARAM wParam, LPARAM
 			/* We need to put the text in a separate buffer because the default
 			 * buffer in OTTD2FS might not be large enough (512 chars). */
 			wchar_t help_msg_buf[8192];
-			SetDlgItemText(wnd, 11, convert_to_fs(help_msg, help_msg_buf, lengthof(help_msg_buf)));
+			SetDlgItemText(wnd, 11, convert_to_fs(help_msg, help_msg_buf, std::size(help_msg_buf)));
 			SendDlgItemMessage(wnd, 11, WM_SETFONT, (WPARAM)GetStockObject(ANSI_FIXED_FONT), FALSE);
 		} return TRUE;
 
@@ -216,7 +216,7 @@ void ShowInfoI(const std::string &str)
 			/* We need to put the text in a separate buffer because the default
 			 * buffer in OTTD2FS might not be large enough (512 chars). */
 			wchar_t help_msg_buf[8192];
-			MessageBox(GetActiveWindow(), convert_to_fs(str, help_msg_buf, lengthof(help_msg_buf)), L"OpenTTD", MB_ICONINFORMATION | MB_OK);
+			MessageBox(GetActiveWindow(), convert_to_fs(str, help_msg_buf, std::size(help_msg_buf)), L"OpenTTD", MB_ICONINFORMATION | MB_OK);
 		}
 		MyShowCursor(old);
 	}
@@ -268,14 +268,14 @@ void DetermineBasePaths(const char *exe)
 
 	if (_config_file.empty()) {
 		char cwd[MAX_PATH];
-		getcwd(cwd, lengthof(cwd));
+		getcwd(cwd, std::size(cwd));
 		std::string cwd_s(cwd);
 		AppendPathSeparator(cwd_s);
 		_searchpaths[SP_WORKING_DIR] = cwd_s;
 	} else {
 		/* Use the folder of the config file as working directory. */
 		wchar_t config_dir[MAX_PATH];
-		wcsncpy(path, convert_to_fs(_config_file, path, lengthof(path)), lengthof(path));
+		wcsncpy(path, convert_to_fs(_config_file, path, std::size(path)), std::size(path));
 		if (!GetFullPathName(path, static_cast<DWORD>(std::size(config_dir)), config_dir, nullptr)) {
 			Debug(misc, 0, "GetFullPathName failed ({})", GetLastError());
 			_searchpaths[SP_WORKING_DIR].clear();
@@ -473,8 +473,8 @@ int OTTDStringCompare(std::string_view s1, std::string_view s2)
 	}
 
 	wchar_t s1_buf[512], s2_buf[512];
-	convert_to_fs(s1, s1_buf, lengthof(s1_buf));
-	convert_to_fs(s2, s2_buf, lengthof(s2_buf));
+	convert_to_fs(s1, s1_buf, std::size(s1_buf));
+	convert_to_fs(s2, s2_buf, std::size(s2_buf));
 
 	return CompareString(MAKELCID(_current_language->winlangid, SORT_DEFAULT), NORM_IGNORECASE, s1_buf, -1, s2_buf, -1);
 }

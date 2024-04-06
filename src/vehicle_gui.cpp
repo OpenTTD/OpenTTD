@@ -3557,7 +3557,7 @@ void SetMouseCursorVehicle(const Vehicle *v, EngineImageType image_type)
 			v->GetImage(rtl ? DIR_E : DIR_W, image_type, &seq);
 		}
 
-		if (_cursor.sprite_count + seq.count > lengthof(_cursor.sprite_seq)) break;
+		if (_cursor.sprite_count + seq.count > std::size(_cursor.sprite_seq)) break;
 
 		int x_offs = 0;
 		if (v->type == VEH_TRAIN) x_offs = Train::From(v)->GetCursorImageOffset();

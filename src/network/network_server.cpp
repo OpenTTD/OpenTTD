@@ -2037,7 +2037,7 @@ void NetworkServerShowStatusToConsole()
 		"ready",
 		"active"
 	};
-	static_assert(lengthof(stat_str) == NetworkClientSocket::STATUS_END);
+	static_assert(std::size(stat_str) == NetworkClientSocket::STATUS_END);
 
 	for (NetworkClientSocket *cs : NetworkClientSocket::Iterate()) {
 		NetworkClientInfo *ci = cs->GetInfo();
@@ -2045,7 +2045,7 @@ void NetworkServerShowStatusToConsole()
 		uint lag = NetworkCalculateLag(cs);
 		const char *status;
 
-		status = (cs->status < (ptrdiff_t)lengthof(stat_str) ? stat_str[cs->status] : "unknown");
+		status = (cs->status < (ptrdiff_t)std::size(stat_str) ? stat_str[cs->status] : "unknown");
 		IConsolePrint(CC_INFO, "Client #{}  name: '{}'  status: '{}'  frame-lag: {}  company: {}  IP: {}",
 			cs->client_id, ci->client_name, status, lag,
 			ci->client_playas + (Company::IsValidID(ci->client_playas) ? 1 : 0),

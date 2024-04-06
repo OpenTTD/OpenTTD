@@ -257,7 +257,7 @@ public:
 				}
 
 				/* Determine the pixel heights. */
-				for (size_t i = 0; i < lengthof(height); i++) {
+				for (size_t i = 0; i < std::size(height); i++) {
 					height[i] *= ScaleGUITrad(TILE_HEIGHT);
 					height[i] += ScaleGUITrad(TILE_PIXELS) + 2 * this->object_margin;
 				}

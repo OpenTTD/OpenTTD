@@ -366,7 +366,7 @@ public:
 		if (!IsSavegameVersionBefore(SLV_SAVELOAD_LIST_LENGTH)) {
 			c->num_valid_stat_ent = (uint8_t)SlGetStructListLength(UINT8_MAX);
 		}
-		if (c->num_valid_stat_ent > lengthof(c->old_economy)) SlErrorCorrupt("Too many old economy entries");
+		if (c->num_valid_stat_ent > std::size(c->old_economy)) SlErrorCorrupt("Too many old economy entries");
 
 		for (int i = 0; i < c->num_valid_stat_ent; i++) {
 			SlObject(&c->old_economy[i], this->GetLoadDescription());

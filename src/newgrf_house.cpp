@@ -343,7 +343,7 @@ static uint32_t GetDistanceFromNearbyHouse(uint8_t parameter, TileIndex tile, Ho
 	TileIndex found_tile = tile;
 	uint8_t searchtype = GB(parameter, 6, 2);
 	uint8_t searchradius = GB(parameter, 0, 6);
-	if (searchtype >= lengthof(search_procs)) return 0;  // do not run on ill-defined code
+	if (searchtype >= std::size(search_procs)) return 0;  // do not run on ill-defined code
 	if (searchradius < 1) return 0; // do not use a too low radius
 
 	SearchNearbyHouseData nbhd;

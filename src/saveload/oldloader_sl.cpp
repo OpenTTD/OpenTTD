@@ -374,17 +374,17 @@ static bool FixTTOEngines()
 	};
 
 	for (Vehicle *v : Vehicle::Iterate()) {
-		if (v->engine_type >= lengthof(tto_to_ttd)) return false;
+		if (v->engine_type >= std::size(tto_to_ttd)) return false;
 		v->engine_type = tto_to_ttd[v->engine_type];
 	}
 
 	/* Load the default engine set. Many of them will be overridden later */
 	{
 		uint j = 0;
-		for (uint i = 0; i < lengthof(_orig_rail_vehicle_info); i++, j++) new (GetTempDataEngine(j)) Engine(VEH_TRAIN, i);
-		for (uint i = 0; i < lengthof(_orig_road_vehicle_info); i++, j++) new (GetTempDataEngine(j)) Engine(VEH_ROAD, i);
-		for (uint i = 0; i < lengthof(_orig_ship_vehicle_info); i++, j++) new (GetTempDataEngine(j)) Engine(VEH_SHIP, i);
-		for (uint i = 0; i < lengthof(_orig_aircraft_vehicle_info); i++, j++) new (GetTempDataEngine(j)) Engine(VEH_AIRCRAFT, i);
+		for (uint i = 0; i < std::size(_orig_rail_vehicle_info); i++, j++) new (GetTempDataEngine(j)) Engine(VEH_TRAIN, i);
+		for (uint i = 0; i < std::size(_orig_road_vehicle_info); i++, j++) new (GetTempDataEngine(j)) Engine(VEH_ROAD, i);
+		for (uint i = 0; i < std::size(_orig_ship_vehicle_info); i++, j++) new (GetTempDataEngine(j)) Engine(VEH_SHIP, i);
+		for (uint i = 0; i < std::size(_orig_aircraft_vehicle_info); i++, j++) new (GetTempDataEngine(j)) Engine(VEH_AIRCRAFT, i);
 	}
 
 	TimerGameCalendar::Date aging_date = std::min(TimerGameCalendar::date + CalendarTime::DAYS_TILL_ORIGINAL_BASE_YEAR, TimerGameCalendar::ConvertYMDToDate(2050, 0, 1));
@@ -428,7 +428,7 @@ static bool FixTTOEngines()
 
 			/* One or more engines were remapped to this one. Make this engine available
 			 * if at least one of them was available. */
-			for (uint j = 0; j < lengthof(tto_to_ttd); j++) {
+			for (uint j = 0; j < std::size(tto_to_ttd); j++) {
 				if (tto_to_ttd[j] == i && _old_engines[j].company_avail != 0) {
 					e->company_avail = MAX_UVALUE(CompanyMask);
 					e->flags |= ENGINE_AVAILABLE;

@@ -138,7 +138,7 @@ static const char * const la_text[] = {
 	"emergency savegame",
 };
 
-static_assert(lengthof(la_text) == GLAT_END);
+static_assert(std::size(la_text) == GLAT_END);
 
 /**
  * Prints active gamelog

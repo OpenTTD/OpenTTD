@@ -54,7 +54,7 @@ AirportSpec AirportSpec::specs[NUM_AIRPORTS]; ///< Airport specifications.
  */
 /* static */ const AirportSpec *AirportSpec::Get(uint8_t type)
 {
-	assert(type < lengthof(AirportSpec::specs));
+	assert(type < std::size(AirportSpec::specs));
 	const AirportSpec *as = &AirportSpec::specs[type];
 	if (type >= NEW_AIRPORT_OFFSET && !as->enabled) {
 		if (_airport_mngr.GetGRFID(type) == 0) return as;
@@ -74,7 +74,7 @@ AirportSpec AirportSpec::specs[NUM_AIRPORTS]; ///< Airport specifications.
  */
 /* static */ AirportSpec *AirportSpec::GetWithoutOverride(uint8_t type)
 {
-	assert(type < lengthof(AirportSpec::specs));
+	assert(type < std::size(AirportSpec::specs));
 	return &AirportSpec::specs[type];
 }
 

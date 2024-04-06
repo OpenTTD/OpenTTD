@@ -250,7 +250,7 @@ struct HeaderFileWriter : HeaderWriter, FileWriter {
 	{
 		/* Find the plural form with the most amount of cases. */
 		int max_plural_forms = 0;
-		for (uint i = 0; i < lengthof(_plural_forms); i++) {
+		for (uint i = 0; i < std::size(_plural_forms); i++) {
 			max_plural_forms = std::max(max_plural_forms, _plural_forms[i].plural_count);
 		}
 
@@ -261,7 +261,7 @@ struct HeaderFileWriter : HeaderWriter, FileWriter {
 			"static const uint LANGUAGE_MAX_PLURAL_FORMS = {};\n"
 			"static const uint LANGUAGE_TOTAL_STRINGS    = {};\n"
 			"\n",
-			data.Version(), lengthof(_plural_forms), max_plural_forms, total_strings
+			data.Version(), std::size(_plural_forms), max_plural_forms, total_strings
 		);
 
 		this->output_stream << "#endif /* TABLE_STRINGS_H */\n";

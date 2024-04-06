@@ -552,7 +552,7 @@ static int DrawLayoutLine(const ParagraphLayouter::Line &line, int y, int left, 
 
 	/* right is the right most position to draw on. In this case we want to do
 	 * calculations with the width of the string. In comparison right can be
-	 * seen as lastof(todraw) and width as lengthof(todraw). They differ by 1.
+	 * seen as lastof(todraw) and width as std::size(todraw). They differ by 1.
 	 * So most +1/-1 additions are to move from lengthof to 'indices'.
 	 */
 	switch (align & SA_HOR_MASK) {
@@ -1615,8 +1615,8 @@ void UpdateCursorSize()
 	/* Ignore setting any cursor before the sprites are loaded. */
 	if (GetMaxSpriteID() == 0) return;
 
-	static_assert(lengthof(_cursor.sprite_seq) == lengthof(_cursor.sprite_pos));
-	assert(_cursor.sprite_count <= lengthof(_cursor.sprite_seq));
+	static_assert(std::size(_cursor.sprite_seq) == std::size(_cursor.sprite_pos));
+	assert(_cursor.sprite_count <= std::size(_cursor.sprite_seq));
 	for (uint i = 0; i < _cursor.sprite_count; ++i) {
 		const Sprite *p = GetSprite(GB(_cursor.sprite_seq[i].sprite, 0, SPRITE_WIDTH), SpriteType::Normal);
 		Point offs, size;

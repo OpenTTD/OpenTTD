@@ -155,7 +155,7 @@ bool IsCommandAllowedWhilePaused(Commands cmd)
 		CMDPL_NO_ACTIONS,      ///< CMDT_SERVER_SETTING
 		CMDPL_NO_ACTIONS,      ///< CMDT_CHEAT
 	};
-	static_assert(lengthof(command_type_lookup) == CMDT_END);
+	static_assert(std::size(command_type_lookup) == CMDT_END);
 
 	assert(IsValidCommand(cmd));
 	return _game_mode == GM_EDITOR || command_type_lookup[_command_proc_table[cmd].type] <= _settings_game.construction.command_pause_level;
@@ -423,7 +423,7 @@ void CommandCost::UseTextRefStack(const GRFFile *grffile, uint num_registers)
 {
 	extern TemporaryStorageArray<int32_t, 0x110> _temp_store;
 
-	assert(num_registers < lengthof(textref_stack));
+	assert(num_registers < std::size(textref_stack));
 	this->textref_stack_grffile = grffile;
 	this->textref_stack_size = num_registers;
 	for (uint i = 0; i < num_registers; i++) {

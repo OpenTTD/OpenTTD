@@ -2597,7 +2597,7 @@ static ChangeInfoResult TownHouseChangeInfo(uint hid, int numinfo, int prop, Byt
 
 			case 0x23: { // variable length cargo types accepted
 				uint count = buf->ReadByte();
-				if (count > lengthof(housespec->accepts_cargo)) {
+				if (count > std::size(housespec->accepts_cargo)) {
 					GRFError *error = DisableGrf(STR_NEWGRF_ERROR_LIST_PROPERTY_TOO_LONG);
 					error->param_value[1] = prop;
 					return CIR_DISABLED;
@@ -2605,7 +2605,7 @@ static ChangeInfoResult TownHouseChangeInfo(uint hid, int numinfo, int prop, Byt
 				/* Always write the full accepts_cargo array, and check each index for being inside the
 				 * provided data. This ensures all values are properly initialized, and also avoids
 				 * any risks of array overrun. */
-				for (uint i = 0; i < lengthof(housespec->accepts_cargo); i++) {
+				for (uint i = 0; i < std::size(housespec->accepts_cargo); i++) {
 					if (i < count) {
 						housespec->accepts_cargo[i] = GetCargoTranslation(buf->ReadByte(), _cur.grffile);
 						housespec->cargo_acceptance[i] = buf->ReadByte();
@@ -3588,7 +3588,7 @@ static ChangeInfoResult IndustriesChangeInfo(uint indid, int numinfo, int prop, 
 							uint8_t laynbr = buf->ReadByte();
 							bytes_read += 2;
 
-							if (type >= lengthof(_origin_industry_specs)) {
+							if (type >= std::size(_origin_industry_specs)) {
 								GrfMsg(1, "IndustriesChangeInfo: Invalid original industry number for layout import, industry {}", indid);
 								DisableGrf(STR_NEWGRF_ERROR_INVALID_ID);
 								return CIR_DISABLED;
@@ -3825,12 +3825,12 @@ static ChangeInfoResult IndustriesChangeInfo(uint indid, int numinfo, int prop, 
 
 			case 0x27: { // variable length production rates
 				uint8_t num_cargoes = buf->ReadByte();
-				if (num_cargoes > lengthof(indsp->production_rate)) {
+				if (num_cargoes > std::size(indsp->production_rate)) {
 					GRFError *error = DisableGrf(STR_NEWGRF_ERROR_LIST_PROPERTY_TOO_LONG);
 					error->param_value[1] = prop;
 					return CIR_DISABLED;
 				}
-				for (uint i = 0; i < lengthof(indsp->production_rate); i++) {
+				for (uint i = 0; i < std::size(indsp->production_rate); i++) {
 					if (i < num_cargoes) {
 						indsp->production_rate[i] = buf->ReadByte();
 					} else {
@@ -4969,7 +4969,7 @@ static void FeatureChangeInfo(ByteReader *buf)
 		/* GSF_TRAMTYPES */     TramTypeChangeInfo,
 		/* GSF_ROADSTOPS */     RoadStopChangeInfo,
 	};
-	static_assert(GSF_END == lengthof(handler));
+	static_assert(GSF_END == std::size(handler));
 
 	uint8_t feature  = buf->ReadByte();
 	uint8_t numprops = buf->ReadByte();
@@ -5493,7 +5493,7 @@ static void NewSpriteGroup(ByteReader *buf)
 						group->again = buf->ReadByte();
 					} else if (type == 2) {
 						group->num_input = buf->ReadByte();
-						if (group->num_input > lengthof(group->subtract_input)) {
+						if (group->num_input > std::size(group->subtract_input)) {
 							GRFError *error = DisableGrf(STR_NEWGRF_ERROR_INDPROD_CALLBACK);
 							error->data = "too many inputs (max 16)";
 							return;
@@ -5515,7 +5515,7 @@ static void NewSpriteGroup(ByteReader *buf)
 							group->subtract_input[i] = buf->ReadByte();
 						}
 						group->num_output = buf->ReadByte();
-						if (group->num_output > lengthof(group->add_output)) {
+						if (group->num_output > std::size(group->add_output)) {
 							GRFError *error = DisableGrf(STR_NEWGRF_ERROR_INDPROD_CALLBACK);
 							error->data = "too many outputs (max 16)";
 							return;
@@ -6702,7 +6702,7 @@ static uint32_t GetParamVal(uint8_t param, uint32_t *cond_val)
 				return 0;
 			} else {
 				uint32_t index = *cond_val / 0x20;
-				uint32_t param_val = index < lengthof(_ttdpatch_flags) ? _ttdpatch_flags[index] : 0;
+				uint32_t param_val = index < std::size(_ttdpatch_flags) ? _ttdpatch_flags[index] : 0;
 				*cond_val %= 0x20;
 				return param_val;
 			}
@@ -7199,7 +7199,7 @@ static void GRFLoadError(ByteReader *buf)
 	}
 	ClrBit(severity, 7);
 
-	if (severity >= lengthof(sevstr)) {
+	if (severity >= std::size(sevstr)) {
 		GrfMsg(7, "GRFLoadError: Invalid severity id {}. Setting to 2 (non-fatal error).", severity);
 		severity = 2;
 	} else if (severity == 3) {
@@ -7211,7 +7211,7 @@ static void GRFLoadError(ByteReader *buf)
 		_cur.grfconfig->error.reset();
 	}
 
-	if (message_id >= lengthof(msgstr) && message_id != 0xFF) {
+	if (message_id >= std::size(msgstr) && message_id != 0xFF) {
 		GrfMsg(7, "GRFLoadError: Invalid message id.");
 		return;
 	}
@@ -9435,7 +9435,7 @@ static void FinaliseHouseArray()
 		}
 
 		/* Apply default cargo translation map for unset cargo slots */
-		for (uint i = 0; i < lengthof(hs->accepts_cargo); ++i) {
+		for (uint i = 0; i < std::size(hs->accepts_cargo); ++i) {
 			if (!IsValidCargoID(hs->accepts_cargo[i])) hs->accepts_cargo[i] = GetCargoIDByLabel(hs->accepts_cargo_label[i]);
 			/* Disable acceptance if cargo type is invalid. */
 			if (!IsValidCargoID(hs->accepts_cargo[i])) hs->cargo_acceptance[i] = 0;
@@ -9642,7 +9642,7 @@ static void DecodeSpecialSprite(uint8_t *buf, uint num, GrfLoadingStage stage)
 			GrfMsg(2, "DecodeSpecialSprite: Unexpected data block, skipping");
 		} else if (action == 0xFE) {
 			GrfMsg(2, "DecodeSpecialSprite: Unexpected import block, skipping");
-		} else if (action >= lengthof(handlers)) {
+		} else if (action >= std::size(handlers)) {
 			GrfMsg(7, "DecodeSpecialSprite: Skipping unknown action 0x{:02X}", action);
 		} else if (handlers[action][stage] == nullptr) {
 			GrfMsg(7, "DecodeSpecialSprite: Skipping action 0x{:02X} in stage {}", action, stage);
@@ -10136,7 +10136,7 @@ void LoadNewGRF(uint load_index, uint num_baseset)
 				{ 0x6D620402, 0x6D620401 }, // DBSetXL ECS extension modifies DBSetXL
 				{ 0x4D656f20, 0x4D656F17 }, // LV4cut modifies LV4
 			};
-			for (size_t i = 0; i < lengthof(overrides); i++) {
+			for (size_t i = 0; i < std::size(overrides); i++) {
 				SetNewGRFOverride(BSWAP32(overrides[i][0]), BSWAP32(overrides[i][1]));
 			}
 		}

@@ -780,7 +780,7 @@ static void AddAcceptedCargo_Town(TileIndex tile, CargoArray &acceptance, CargoT
 	CargoID accepts[lengthof(hs->accepts_cargo)];
 
 	/* Set the initial accepted cargo types */
-	for (uint8_t i = 0; i < lengthof(accepts); i++) {
+	for (uint8_t i = 0; i < std::size(accepts); i++) {
 		accepts[i] = hs->accepts_cargo[i];
 	}
 
@@ -812,7 +812,7 @@ static void AddAcceptedCargo_Town(TileIndex tile, CargoArray &acceptance, CargoT
 	}
 
 	/* No custom acceptance, so fill in with the default values */
-	for (uint8_t i = 0; i < lengthof(accepts); i++) {
+	for (uint8_t i = 0; i < std::size(accepts); i++) {
 		AddAcceptedCargoSetMask(accepts[i], hs->cargo_acceptance[i], acceptance, always_accepted);
 	}
 }
@@ -2133,7 +2133,7 @@ std::tuple<CommandCost, Money, TownID> CmdFoundTown(DoCommandFlag flags, TileInd
 
 	static const uint8_t price_mult[][TSZ_RANDOM + 1] = {{ 15, 25, 40, 25 }, { 20, 35, 55, 35 }};
 	/* multidimensional arrays have to have defined length of non-first dimension */
-	static_assert(lengthof(price_mult[0]) == 4);
+	static_assert(std::size(price_mult[0]) == 4);
 
 	CommandCost cost(EXPENSES_OTHER, _price[PR_BUILD_TOWN]);
 	uint8_t mult = price_mult[city][size];
@@ -3506,7 +3506,7 @@ TownActions GetMaskOfTownActions(CompanyID cid, const Town *t)
 
 		/* Check the action bits for validity and
 		 * if they are valid add them */
-		for (uint i = 0; i != lengthof(_town_action_costs); i++) {
+		for (uint i = 0; i != std::size(_town_action_costs); i++) {
 			const TownActions cur = (TownActions)(1 << i);
 
 			/* Is the company not able to bribe ? */
@@ -3545,7 +3545,7 @@ TownActions GetMaskOfTownActions(CompanyID cid, const Town *t)
 CommandCost CmdDoTownAction(DoCommandFlag flags, TownID town_id, uint8_t action)
 {
 	Town *t = Town::GetIfValid(town_id);
-	if (t == nullptr || action >= lengthof(_town_action_proc)) return CMD_ERROR;
+	if (t == nullptr || action >= std::size(_town_action_proc)) return CMD_ERROR;
 
 	if (!HasBit(GetMaskOfTownActions(_current_company, t), action)) return CMD_ERROR;
 

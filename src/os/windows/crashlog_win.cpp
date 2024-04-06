@@ -473,7 +473,7 @@ static INT_PTR CALLBACK CrashDialogFunc(HWND wnd, UINT msg, WPARAM wParam, LPARA
 
 			const size_t filename_count = 4;
 			const size_t filename_buf_length = MAX_PATH + 1;
-			const size_t crash_desc_buf_length = lengthof(_crash_desc) + filename_buf_length * filename_count + 1;
+			const size_t crash_desc_buf_length = std::size(_crash_desc) + filename_buf_length * filename_count + 1;
 
 			/* We need to put the crash-log in a separate buffer because the default
 			 * buffer in MB_TO_WIDE is not large enough (512 chars).

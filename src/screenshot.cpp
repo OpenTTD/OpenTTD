@@ -585,7 +585,7 @@ const char *GetCurrentScreenshotExtension()
 void InitializeScreenshotFormats()
 {
 	uint j = 0;
-	for (uint i = 0; i < lengthof(_screenshot_formats); i++) {
+	for (uint i = 0; i < std::size(_screenshot_formats); i++) {
 		if (_screenshot_format_name.compare(_screenshot_formats[i].extension) == 0) {
 			j = i;
 			break;
@@ -839,7 +839,7 @@ static void HeightmapCallback(void *, void *buffer, uint y, uint, uint n)
 bool MakeHeightmapScreenshot(const char *filename)
 {
 	Colour palette[256];
-	for (uint i = 0; i < lengthof(palette); i++) {
+	for (uint i = 0; i < std::size(palette); i++) {
 		palette[i].a = 0xff;
 		palette[i].r = i;
 		palette[i].g = i;

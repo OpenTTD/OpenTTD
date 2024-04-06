@@ -537,7 +537,7 @@ static void DrawTile_Trees(TileInfo *ti)
 		index += 164 - (TREE_SUB_ARCTIC << 2);
 	}
 
-	assert(index < lengthof(_tree_layout_sprite));
+	assert(index < std::size(_tree_layout_sprite));
 
 	const PalSpriteID *s = _tree_layout_sprite[index];
 	const TreePos *d = _tree_layout_xy[GB(tmp, 2, 2)];

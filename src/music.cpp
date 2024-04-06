@@ -83,7 +83,7 @@ static const char * const _music_file_names[] = {
 	"ezy_0", "ezy_1", "ezy_2", "ezy_3", "ezy_4", "ezy_5", "ezy_6", "ezy_7", "ezy_8", "ezy_9",
 };
 /** Make sure we aren't messing things up. */
-static_assert(lengthof(_music_file_names) == NUM_SONGS_AVAILABLE);
+static_assert(std::size(_music_file_names) == NUM_SONGS_AVAILABLE);
 
 template <class T, size_t Tnum_files, bool Tsearch_in_tars>
 /* static */ const char * const *BaseSet<T, Tnum_files, Tsearch_in_tars>::file_names = _music_file_names;
@@ -125,7 +125,7 @@ bool MusicSet::FillSetDetails(const IniFile &ini, const std::string &path, const
 		const IniGroup *catindex = ini.GetGroup("catindex");
 		const IniGroup *timingtrim = ini.GetGroup("timingtrim");
 		uint tracknr = 1;
-		for (uint i = 0; i < lengthof(this->songinfo); i++) {
+		for (uint i = 0; i < std::size(this->songinfo); i++) {
 			const std::string &filename = this->files[i].filename;
 			if (filename.empty() || this->files[i].check_result == MD5File::CR_NO_FILE) {
 				continue;

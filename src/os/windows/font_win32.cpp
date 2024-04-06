@@ -82,7 +82,7 @@ static int CALLBACK EnumFontCallback(const ENUMLOGFONTEX *logfont, const NEWTEXT
 	}
 
 	char font_name[MAX_PATH];
-	convert_from_fs((const wchar_t *)logfont->elfFullName, font_name, lengthof(font_name));
+	convert_from_fs((const wchar_t *)logfont->elfFullName, font_name, std::size(font_name));
 
 	info->callback->SetFontNames(info->settings, font_name, &logfont->elfLogFont);
 	if (info->callback->FindMissingGlyphs()) return 1;
@@ -320,12 +320,12 @@ static bool TryLoadFontFromFile(const std::string &font_name, LOGFONT &logfont)
 
 	/* See if this is an absolute path. */
 	if (FileExists(font_name)) {
-		convert_to_fs(font_name, fontPath, lengthof(fontPath));
+		convert_to_fs(font_name, fontPath, std::size(fontPath));
 	} else {
 		/* Scan the search-paths to see if it can be found. */
 		std::string full_font = FioFindFullPath(BASE_DIR, font_name);
 		if (!full_font.empty()) {
-			convert_to_fs(font_name, fontPath, lengthof(fontPath));
+			convert_to_fs(font_name, fontPath, std::size(fontPath));
 		}
 	}
 
@@ -354,7 +354,7 @@ static bool TryLoadFontFromFile(const std::string &font_name, LOGFONT &logfont)
 				wchar_t fname[_MAX_FNAME];
 				_wsplitpath(fontPath, nullptr, nullptr, fname, nullptr);
 
-				wcsncpy_s(logfont.lfFaceName, lengthof(logfont.lfFaceName), fname, _TRUNCATE);
+				wcsncpy_s(logfont.lfFaceName, std::size(logfont.lfFaceName), fname, _TRUNCATE);
 				logfont.lfWeight = strcasestr(font_name.c_str(), " bold") != nullptr || strcasestr(font_name.c_str(), "-bold") != nullptr ? FW_BOLD : FW_NORMAL; // Poor man's way to allow selecting bold fonts.
 			}
 		}
@@ -405,7 +405,7 @@ void LoadWin32Font(FontSize fs)
 
 	if (logfont.lfFaceName[0] == 0) {
 		logfont.lfWeight = strcasestr(font_name, " bold") != nullptr ? FW_BOLD : FW_NORMAL; // Poor man's way to allow selecting bold fonts.
-		convert_to_fs(font_name, logfont.lfFaceName, lengthof(logfont.lfFaceName));
+		convert_to_fs(font_name, logfont.lfFaceName, std::size(logfont.lfFaceName));
 	}
 
 	LoadWin32Font(fs, logfont, settings->size, font_name);

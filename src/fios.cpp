@@ -391,10 +391,10 @@ static std::string GetFileTitle(const std::string &file, Subdirectory subdir)
 	if (f == nullptr) return {};
 
 	char title[80];
-	size_t read = fread(title, 1, lengthof(title), f);
+	size_t read = fread(title, 1, std::size(title), f);
 	FioFCloseFile(f);
 
-	assert(read <= lengthof(title));
+	assert(read <= std::size(title));
 	return StrMakeValid({title, read});
 }
 

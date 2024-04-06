@@ -56,7 +56,7 @@ static const AdminUpdateFrequency _admin_update_type_frequencies[] = {
 	                       ADMIN_FREQUENCY_AUTOMATIC,                                                                                                      ///< ADMIN_UPDATE_GAMESCRIPT
 };
 /** Sanity check. */
-static_assert(lengthof(_admin_update_type_frequencies) == ADMIN_UPDATE_END);
+static_assert(std::size(_admin_update_type_frequencies) == ADMIN_UPDATE_END);
 
 /**
  * Create a new socket for the server side of the admin network.

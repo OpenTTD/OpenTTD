@@ -63,6 +63,6 @@ static const uint8_t _wagon_full_adder[] = {
 	32, 32
 };
 
-static_assert(lengthof(_engine_sprite_base) == lengthof(_engine_sprite_and));
-static_assert(lengthof(_engine_sprite_base) == lengthof(_engine_sprite_add));
-static_assert(lengthof(_engine_sprite_base) == lengthof(_wagon_full_adder));
+static_assert(std::size(_engine_sprite_base) == std::size(_engine_sprite_and));
+static_assert(std::size(_engine_sprite_base) == std::size(_engine_sprite_add));
+static_assert(std::size(_engine_sprite_base) == std::size(_wagon_full_adder));

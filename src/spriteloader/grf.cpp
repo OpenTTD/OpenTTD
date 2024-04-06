@@ -280,7 +280,7 @@ uint8_t LoadSpriteV2(SpriteLoader::SpriteCollection &sprite, SpriteFile &file, s
 		bool is_wanted_zoom_lvl;
 
 		if (sprite_type != SpriteType::MapGen) {
-			if (zoom < lengthof(zoom_lvl_map)) {
+			if (zoom < std::size(zoom_lvl_map)) {
 				is_wanted_zoom_lvl = true;
 				ZoomLevel zoom_min = sprite_type == SpriteType::Font ? ZOOM_LVL_MIN : _settings_client.gui.sprite_zoom_min;
 				if (zoom_min >= ZOOM_LVL_IN_2X &&

@@ -2315,7 +2315,7 @@ struct CompanyWindow : Window
 
 	void DrawVehicleCountsWidget(const Rect &r, const Company *c) const
 	{
-		static_assert(VEH_COMPANY_END == lengthof(_company_view_vehicle_count_strings));
+		static_assert(VEH_COMPANY_END == std::size(_company_view_vehicle_count_strings));
 
 		int y = r.top;
 		for (VehicleType type = VEH_BEGIN; type < VEH_COMPANY_END; type++) {

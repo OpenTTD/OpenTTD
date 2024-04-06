@@ -1218,7 +1218,7 @@ static void DrawBridgeRoadBits(TileIndex head_tile, int x, int y, int z, int off
 
 	/* The sprites under the vehicles are drawn as SpriteCombine. StartSpriteCombine() has already been called
 	 * The bounding boxes here are the same as for bridge front/roof */
-	for (uint i = 0; i < lengthof(seq_back); ++i) {
+	for (uint i = 0; i < std::size(seq_back); ++i) {
 		if (seq_back[i] != 0) {
 			AddSortableSpriteToDraw(seq_back[i], PAL_NONE,
 				x, y, size_x[offset], size_y[offset], 0x28, z,
@@ -1230,7 +1230,7 @@ static void DrawBridgeRoadBits(TileIndex head_tile, int x, int y, int z, int off
 	EndSpriteCombine();
 	StartSpriteCombine();
 
-	for (uint i = 0; i < lengthof(seq_front); ++i) {
+	for (uint i = 0; i < std::size(seq_front); ++i) {
 		if (seq_front[i] != 0) {
 			AddSortableSpriteToDraw(seq_front[i], PAL_NONE,
 				x, y, size_x[offset] + front_bb_offset_x[offset], size_y[offset] + front_bb_offset_y[offset], 0x28, z,

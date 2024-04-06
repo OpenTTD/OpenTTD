@@ -103,7 +103,7 @@ static const SpriteID _aircraft_sprite[] = {
 template <>
 bool IsValidImageIndex<VEH_AIRCRAFT>(uint8_t image_index)
 {
-	return image_index < lengthof(_aircraft_sprite);
+	return image_index < std::size(_aircraft_sprite);
 }
 
 /** Helicopter rotor animation states */
@@ -1955,7 +1955,7 @@ static const MovementTerminalMapping _airport_terminal_mapping[] = {
  */
 static bool FreeTerminal(Aircraft *v, uint8_t i, uint8_t last_terminal)
 {
-	assert(last_terminal <= lengthof(_airport_terminal_mapping));
+	assert(last_terminal <= std::size(_airport_terminal_mapping));
 	Station *st = Station::Get(v->targetairport);
 	for (; i < last_terminal; i++) {
 		if ((st->airport.flags & _airport_terminal_mapping[i].airport_flag) == 0) {

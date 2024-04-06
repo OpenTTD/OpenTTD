@@ -102,7 +102,7 @@ struct ReadBuffer {
 	inline uint8_t ReadByte()
 	{
 		if (this->bufp == this->bufe) {
-			size_t len = this->reader->Read(this->buf, lengthof(this->buf));
+			size_t len = this->reader->Read(this->buf, std::size(this->buf));
 			if (len == 0) SlErrorCorrupt("Unexpected end of chunk");
 
 			this->read += len;
@@ -608,7 +608,7 @@ static inline uint SlCalcConvMemLen(VarType conv)
 
 		default:
 			uint8_t type = GetVarMemType(conv) >> 4;
-			assert(type < lengthof(conv_mem_size));
+			assert(type < std::size(conv_mem_size));
 			return conv_mem_size[type];
 	}
 }
@@ -629,8 +629,8 @@ static inline uint8_t SlCalcConvFileLen(VarType conv)
 
 		default:
 			uint8_t type = GetVarFileType(conv);
-			if (type >= lengthof(conv_file_size)) fmt::println("{}", type);
-			assert(type < lengthof(conv_file_size));
+			if (type >= std::size(conv_file_size)) fmt::println("{}", type);
+			assert(type < std::size(conv_file_size));
 			return conv_file_size[type];
 	}
 }

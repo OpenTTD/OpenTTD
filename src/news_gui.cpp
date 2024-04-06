@@ -237,7 +237,7 @@ static WindowDesc *_news_window_layout[] = {
 WindowDesc *GetNewsWindowLayout(NewsFlag flags)
 {
 	uint layout = GB(flags, NFB_WINDOW_LAYOUT, NFB_WINDOW_LAYOUT_COUNT);
-	assert(layout < lengthof(_news_window_layout));
+	assert(layout < std::size(_news_window_layout));
 	return _news_window_layout[layout];
 }
 
@@ -264,7 +264,7 @@ static NewsTypeData _news_type_data[] = {
 	NewsTypeData("news_display.general",           60, SND_BEGIN       ),  ///< NT_GENERAL
 };
 
-static_assert(lengthof(_news_type_data) == NT_END);
+static_assert(std::size(_news_type_data) == NT_END);
 
 /**
  * Return the news display option.

@@ -115,7 +115,7 @@ const uint8_t TTDPatch_To_OTTDIndex[] =
  */
 uint8_t GetNewgrfCurrencyIdConverted(uint8_t grfcurr_id)
 {
-	return (grfcurr_id >= lengthof(TTDPatch_To_OTTDIndex)) ? grfcurr_id : TTDPatch_To_OTTDIndex[grfcurr_id];
+	return (grfcurr_id >= std::size(TTDPatch_To_OTTDIndex)) ? grfcurr_id : TTDPatch_To_OTTDIndex[grfcurr_id];
 }
 
 /**

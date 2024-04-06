@@ -142,7 +142,7 @@ public:
 
 		uint widest_width = 0;
 		uint widest_title = 0;
-		for (uint i = 0; i < lengthof(_performance_titles); i++) {
+		for (uint i = 0; i < std::size(_performance_titles); i++) {
 			uint width = GetStringBoundingBox(_performance_titles[i]).width;
 			if (width > widest_width) {
 				widest_title = i;

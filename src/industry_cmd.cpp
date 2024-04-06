@@ -82,7 +82,7 @@ void ResetIndustries()
 	auto industry_insert = std::copy(std::begin(_origin_industry_specs), std::end(_origin_industry_specs), std::begin(_industry_specs));
 	std::fill(industry_insert, std::end(_industry_specs), IndustrySpec{});
 
-	for (IndustryType i = 0; i < lengthof(_origin_industry_specs); i++) {
+	for (IndustryType i = 0; i < std::size(_origin_industry_specs); i++) {
 		/* Enable only the current climate industries */
 		_industry_specs[i].enabled = HasBit(_industry_specs[i].climate_availability, _settings_game.game_creation.landscape);
 	}
@@ -2367,7 +2367,7 @@ static uint GetNumberOfIndustries()
 		0,    // custom
 	};
 
-	assert(lengthof(numof_industry_table) == ID_END);
+	assert(std::size(numof_industry_table) == ID_END);
 	uint difficulty = (_game_mode != GM_EDITOR) ? _settings_game.difficulty.industry_density : (uint)ID_VERY_LOW;
 
 	if (difficulty == ID_CUSTOM) return std::min<uint>(IndustryPool::MAX_SIZE, _settings_game.game_creation.custom_industry_number);

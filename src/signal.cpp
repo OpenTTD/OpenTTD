@@ -96,7 +96,7 @@ public:
 	 */
 	bool IsFull()
 	{
-		return this->n == lengthof(data);
+		return this->n == std::size(data);
 	}
 
 	/**

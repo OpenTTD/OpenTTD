@@ -124,9 +124,9 @@ void ResetObjects()
 	_object_specs.clear();
 
 	/* And add our originals. */
-	_object_specs.reserve(lengthof(_original_objects));
+	_object_specs.reserve(std::size(_original_objects));
 
-	for (uint16_t i = 0; i < lengthof(_original_objects); i++) {
+	for (uint16_t i = 0; i < std::size(_original_objects); i++) {
 		ObjectSpec &spec = _object_specs.emplace_back(_original_objects[i]);
 		spec.grf_prop.local_id = i;
 	}

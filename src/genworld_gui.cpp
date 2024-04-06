@@ -382,7 +382,7 @@ static const StringID _num_towns[]   = {STR_NUM_VERY_LOW, STR_NUM_LOW, STR_NUM_N
 static const StringID _num_inds[]    = {STR_FUNDING_ONLY, STR_MINIMAL, STR_NUM_VERY_LOW, STR_NUM_LOW, STR_NUM_NORMAL, STR_NUM_HIGH, STR_NUM_CUSTOM, INVALID_STRING_ID};
 static const StringID _variety[]     = {STR_VARIETY_NONE, STR_VARIETY_VERY_LOW, STR_VARIETY_LOW, STR_VARIETY_MEDIUM, STR_VARIETY_HIGH, STR_VARIETY_VERY_HIGH, INVALID_STRING_ID};
 
-static_assert(lengthof(_num_inds) == ID_END + 1);
+static_assert(std::size(_num_inds) == ID_END + 1);
 
 struct GenerateLandscapeWindow : public Window {
 	WidgetID widget_id;
@@ -1371,7 +1371,7 @@ static const StringID _generation_class_table[]  = {
 	STR_GENERATION_PREPARING_SCRIPT,
 	STR_GENERATION_PREPARING_GAME
 };
-static_assert(lengthof(_generation_class_table) == GWP_CLASS_COUNT);
+static_assert(std::size(_generation_class_table) == GWP_CLASS_COUNT);
 
 
 static void AbortGeneratingWorldCallback(Window *, bool confirmed)
@@ -1475,7 +1475,7 @@ void ShowGenerateWorldProgress()
 static void _SetGeneratingWorldProgress(GenWorldProgress cls, uint progress, uint total)
 {
 	static const int percent_table[] = {0, 5, 14, 17, 20, 40, 60, 65, 80, 85, 95, 99, 100 };
-	static_assert(lengthof(percent_table) == GWP_CLASS_COUNT + 1);
+	static_assert(std::size(percent_table) == GWP_CLASS_COUNT + 1);
 	assert(cls < GWP_CLASS_COUNT);
 
 	/* Check if we really are generating the world.

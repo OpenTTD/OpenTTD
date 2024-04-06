@@ -247,7 +247,7 @@ static int32_t LookupWithBuildOnSlopes(::Slope slope, const Array<> &existing, i
 		SLOPE_SW,   SLOPE_WSE, SLOPE_WSE};
 	static const uint8_t base_rotates[] = {0, 0, 1, 0, 2, 0, 1, 0, 3, 3, 2, 3, 2, 2, 1};
 
-	if (slope >= (::Slope)lengthof(base_slopes)) {
+	if (slope >= (::Slope)std::size(base_slopes)) {
 		/* This slope is an invalid slope, so ignore it. */
 		return -1;
 	}
@@ -416,7 +416,7 @@ static bool NormaliseTileOffset(int32_t *tile)
 	}
 
 	Array<> existing;
-	for (uint i = 0; i < lengthof(neighbours); i++) {
+	for (uint i = 0; i < std::size(neighbours); i++) {
 		if (HasBit(rb, i)) existing.emplace_back(neighbours[i]);
 	}
 

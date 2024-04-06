@@ -104,7 +104,7 @@ static const AirportTileSpec _origin_airporttile_specs[] = {
 	AT(3, 1), // APT_GRASS_FENCE_NE_FLAG_2
 };
 
-static_assert(NEW_AIRPORTTILE_OFFSET == lengthof(_origin_airporttile_specs));
+static_assert(NEW_AIRPORTTILE_OFFSET == std::size(_origin_airporttile_specs));
 
 #undef AT_NOANIM
 #undef AT

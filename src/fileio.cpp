@@ -54,7 +54,7 @@ static const char * const _subdirs[] = {
 	"screenshot" PATHSEP,
 	"social_integration" PATHSEP,
 };
-static_assert(lengthof(_subdirs) == NUM_SUBDIRS);
+static_assert(std::size(_subdirs) == NUM_SUBDIRS);
 
 /**
  * The search paths OpenTTD could search through.
@@ -561,15 +561,15 @@ bool TarScanner::AddFile(const std::string &filename, size_t, [[maybe_unused]] c
 
 		/* The prefix contains the directory-name */
 		if (th.prefix[0] != '\0') {
-			name = ExtractString(th.prefix, lengthof(th.prefix));
+			name = ExtractString(th.prefix, std::size(th.prefix));
 			name += PATHSEP;
 		}
 
 		/* Copy the name of the file in a safe way at the end of 'name' */
-		name += ExtractString(th.name, lengthof(th.name));
+		name += ExtractString(th.name, std::size(th.name));
 
 		/* The size of the file, for some strange reason, this is stored as a string in octals. */
-		std::string size = ExtractString(th.size, lengthof(th.size));
+		std::string size = ExtractString(th.size, std::size(th.size));
 		size_t skip = size.empty() ? 0 : std::stoul(size, nullptr, 8);
 
 		switch (th.typeflag) {
@@ -595,7 +595,7 @@ bool TarScanner::AddFile(const std::string &filename, size_t, [[maybe_unused]] c
 			case '1': // hard links
 			case '2': { // symbolic links
 				/* Copy the destination of the link in a safe way at the end of 'linkname' */
-				std::string link = ExtractString(th.linkname, lengthof(th.linkname));
+				std::string link = ExtractString(th.linkname, std::size(th.linkname));
 
 				if (name.empty() || link.empty()) break;
 
@@ -726,7 +726,7 @@ bool ExtractTar(const std::string &tar_filename, Subdirectory subdir)
 		char buffer[4096];
 		size_t read;
 		for (; to_copy != 0; to_copy -= read) {
-			read = fread(buffer, 1, std::min(to_copy, lengthof(buffer)), in.get());
+			read = fread(buffer, 1, std::min(to_copy, std::size(buffer)), in.get());
 			if (read <= 0 || fwrite(buffer, 1, read, out.get()) != read) break;
 		}
 
@@ -919,7 +919,7 @@ void DetermineBasePaths(const char *exe)
 	/* Change the working directory to that one of the executable */
 	if (ChangeWorkingDirectoryToExecutable(exe)) {
 		char buf[MAX_PATH];
-		if (getcwd(buf, lengthof(buf)) == nullptr) {
+		if (getcwd(buf, std::size(buf)) == nullptr) {
 			tmp.clear();
 		} else {
 			tmp = buf;

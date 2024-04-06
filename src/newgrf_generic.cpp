@@ -107,7 +107,7 @@ void ResetGenericCallbacks()
  */
 void AddGenericCallback(uint8_t feature, const GRFFile *file, const SpriteGroup *group)
 {
-	if (feature >= lengthof(_gcl)) {
+	if (feature >= std::size(_gcl)) {
 		GrfMsg(5, "AddGenericCallback: Unsupported feature 0x{:02X}", feature);
 		return;
 	}
@@ -166,7 +166,7 @@ GenericResolverObject::GenericResolverObject(bool ai_callback, CallbackID callba
  */
 static uint16_t GetGenericCallbackResult(uint8_t feature, ResolverObject &object, uint32_t param1_grfv7, uint32_t param1_grfv8, const GRFFile **file)
 {
-	assert(feature < lengthof(_gcl));
+	assert(feature < std::size(_gcl));
 
 	/* Test each feature callback sprite group. */
 	for (const auto &it : _gcl[feature]) {
