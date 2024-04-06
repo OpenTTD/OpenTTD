@@ -404,7 +404,7 @@ static WindowDesc _about_desc(
 	std::begin(_nested_about_widgets), std::end(_nested_about_widgets)
 );
 
-static const char * const _credits[] = {
+static const std::initializer_list<const std::string_view> _credits = {
 	"Original design by Chris Sawyer",
 	"Original graphics by Simon Foster",
 	"",
@@ -499,8 +499,8 @@ struct AboutWindow : public Window {
 		d.height = this->line_height * num_visible_lines;
 
 		d.width = 0;
-		for (uint i = 0; i < lengthof(_credits); i++) {
-			d.width = std::max(d.width, GetStringBoundingBox(_credits[i]).width);
+		for (const auto &str : _credits) {
+			d.width = std::max(d.width, GetStringBoundingBox(str).width);
 		}
 		*size = maxdim(*size, d);
 	}
@@ -512,9 +512,9 @@ struct AboutWindow : public Window {
 		int y = this->text_position;
 
 		/* Show all scrolling _credits */
-		for (uint i = 0; i < lengthof(_credits); i++) {
+		for (const auto &str : _credits) {
 			if (y >= r.top + 7 && y < r.bottom - this->line_height) {
-				DrawString(r.left, r.right, y, _credits[i], TC_BLACK, SA_LEFT | SA_FORCE);
+				DrawString(r.left, r.right, y, str, TC_BLACK, SA_LEFT | SA_FORCE);
 			}
 			y += this->line_height;
 		}
@@ -528,7 +528,7 @@ struct AboutWindow : public Window {
 	IntervalTimer<TimerWindow> scroll_interval = {std::chrono::milliseconds(2100) / GetCharacterHeight(FS_NORMAL), [this](uint count) {
 		this->text_position -= count;
 		/* If the last text has scrolled start a new from the start */
-		if (this->text_position < (int)(this->GetWidget<NWidgetBase>(WID_A_SCROLLING_TEXT)->pos_y - lengthof(_credits) * this->line_height)) {
+		if (this->text_position < (int)(this->GetWidget<NWidgetBase>(WID_A_SCROLLING_TEXT)->pos_y - std::size(_credits) * this->line_height)) {
 			this->text_position = this->GetWidget<NWidgetBase>(WID_A_SCROLLING_TEXT)->pos_y + this->GetWidget<NWidgetBase>(WID_A_SCROLLING_TEXT)->current_y;
 		}
 		this->SetWidgetDirty(WID_A_SCROLLING_TEXT);
