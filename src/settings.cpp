@@ -239,24 +239,20 @@ static size_t LookupManyOfMany(const std::vector<std::string> &many, const char 
 }
 
 /**
- * Parse an integerlist string and set each found value
- * @param p the string to be parsed. Each element in the list is separated by a
- * comma or a space character
- * @param items pointer to the integerlist-array that will be filled with values
- * @param maxitems the maximum number of elements the integerlist-array has
- * @return returns the number of items found, or -1 on an error
+ * Parse a string into a vector of uint32s.
+ * @param p the string to be parsed. Each element in the list is separated by a comma or a space character
+ * @return std::optional with a vector of parsed integers. The optional is empty upon an error.
  */
-template<typename T>
-static int ParseIntList(const char *p, T *items, size_t maxitems)
+static std::optional<std::vector<uint32_t>> ParseIntList(const char *p)
 {
-	size_t n = 0; // number of items read so far
 	bool comma = false; // do we accept comma?
+	std::vector<uint32_t> result;
 
 	while (*p != '\0') {
 		switch (*p) {
 			case ',':
 				/* Do not accept multiple commas between numbers */
-				if (!comma) return -1;
+				if (!comma) return std::nullopt;
 				comma = false;
 				[[fallthrough]];
 
@@ -265,12 +261,11 @@ static int ParseIntList(const char *p, T *items, size_t maxitems)
 				break;
 
 			default: {
-				if (n == maxitems) return -1; // we don't accept that many numbers
 				char *end;
 				unsigned long v = std::strtoul(p, &end, 0);
-				if (p == end) return -1; // invalid character (not a number)
-				if (sizeof(T) < sizeof(v)) v = Clamp<unsigned long>(v, std::numeric_limits<T>::min(), std::numeric_limits<T>::max());
-				items[n++] = v;
+				if (p == end) return std::nullopt; // invalid character (not a number)
+
+				result.push_back(ClampTo<uint32_t>(v));
 				p = end; // first non-number
 				comma = true; // we accept comma now
 				break;
@@ -280,52 +275,35 @@ static int ParseIntList(const char *p, T *items, size_t maxitems)
 
 	/* If we have read comma but no number after it, fail.
 	 * We have read comma when (n != 0) and comma is not allowed */
-	if (n != 0 && !comma) return -1;
+	if (!result.empty() && !comma) return std::nullopt;
 
-	return ClampTo<int>(n);
+	return result;
 }
 
 /**
  * Load parsed string-values into an integer-array (intlist)
  * @param str the string that contains the values (and will be parsed)
  * @param array pointer to the integer-arrays that will be filled
- * @param nelems the number of elements the array holds. Maximum is 64 elements
+ * @param nelems the number of elements the array holds.
  * @param type the type of elements the array holds (eg INT8, UINT16, etc.)
  * @return return true on success and false on error
  */
 static bool LoadIntList(const char *str, void *array, int nelems, VarType type)
 {
-	unsigned long items[64];
-	int i, nitems;
-
+	size_t elem_size = SlVarSize(type);
 	if (str == nullptr) {
-		memset(items, 0, sizeof(items));
-		nitems = nelems;
-	} else {
-		nitems = ParseIntList(str, items, lengthof(items));
-		if (nitems != nelems) return false;
+		memset(array, 0, nelems * elem_size);
+		return true;
 	}
 
-	switch (type) {
-		case SLE_VAR_BL:
-		case SLE_VAR_I8:
-		case SLE_VAR_U8:
-			for (i = 0; i != nitems; i++) ((uint8_t*)array)[i] = items[i];
-			break;
+	auto opt_items = ParseIntList(str);
+	if (!opt_items.has_value() || opt_items->size() != (size_t)nelems) return false;
 
-		case SLE_VAR_I16:
-		case SLE_VAR_U16:
-			for (i = 0; i != nitems; i++) ((uint16_t*)array)[i] = items[i];
-			break;
-
-		case SLE_VAR_I32:
-		case SLE_VAR_U32:
-			for (i = 0; i != nitems; i++) ((uint32_t*)array)[i] = items[i];
-			break;
-
-		default: NOT_REACHED();
+	char *p = static_cast<char *>(array);
+	for (auto item : *opt_items) {
+		WriteValue(p, type, item);
+		p += elem_size;
 	}
-
 	return true;
 }
 
@@ -1030,15 +1008,13 @@ static void GraphicsSetLoadConfig(IniFile &ini)
 		if (const IniItem *item = group->GetItem("extra_version"); item != nullptr && item->value) BaseGraphics::ini_data.extra_version = std::strtoul(item->value->c_str(), nullptr, 10);
 
 		if (const IniItem *item = group->GetItem("extra_params"); item != nullptr && item->value) {
-			auto &extra_params = BaseGraphics::ini_data.extra_params;
-			extra_params.resize(0x80); // TODO: make ParseIntList work nicely with C++ containers
-			int count = ParseIntList(item->value->c_str(), &extra_params.front(), extra_params.size());
-			if (count < 0) {
+			auto params = ParseIntList(item->value->c_str());
+			if (params.has_value()) {
+				BaseGraphics::ini_data.extra_params = params.value();
+			} else {
 				SetDParamStr(0, BaseGraphics::ini_data.name);
 				ShowErrorMessage(STR_CONFIG_ERROR, STR_CONFIG_ERROR_ARRAY, WL_CRITICAL);
-				count = 0;
 			}
-			extra_params.resize(count);
 		}
 	}
 }
@@ -1099,13 +1075,13 @@ static GRFConfig *GRFLoadConfig(const IniFile &ini, const char *grpname, bool is
 
 		/* Parse parameters */
 		if (item.value.has_value() && !item.value->empty()) {
-			int count = ParseIntList(item.value->c_str(), c->param.data(), c->param.size());
-			if (count < 0) {
+			auto params = ParseIntList(item.value->c_str());
+			if (params.has_value()) {
+				c->SetParams(params.value());
+			} else {
 				SetDParamStr(0, filename);
 				ShowErrorMessage(STR_CONFIG_ERROR, STR_CONFIG_ERROR_ARRAY, WL_CRITICAL);
-				count = 0;
 			}
-			c->num_params = count;
 		}
 
 		/* Check if item is valid */
