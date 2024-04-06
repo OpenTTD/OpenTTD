@@ -347,8 +347,8 @@ static void MakeAustrianTownName(StringBuilder &builder, uint32_t seed)
 	} else if (i >= 2 - j) {
 		/* am Dachstein (mountains) */
 		builder += _name_austrian_b1[SeedChance(4, lengthof(_name_austrian_b1), seed)];
-		builder += _name_austrian_b2[SeedChance(5, lengthof(_name_austrian_b2), seed)];
-	}
+                builder += _name_austrian_b2[SeedChance(5, lengthof(_name_austrian_b2), seed)];
+        }
 }
 
 
@@ -359,10 +359,10 @@ static void MakeAustrianTownName(StringBuilder &builder, uint32_t seed)
  */
 static void MakeGermanTownName(StringBuilder &builder, uint32_t seed)
 {
-	uint seed_derivative = SeedChance(7, 28, seed);
+	uint seed_derivative = SeedChance(7, 56, seed);
 
 	/* optional prefix */
-	if (seed_derivative == 12 || seed_derivative == 19) {
+	if (seed_derivative == 12 || seed_derivative == 19 || seed_derivative == 26) {
 		uint i = SeedChance(2, lengthof(_name_german_pre), seed);
 		builder += _name_german_pre[i];
 	}
