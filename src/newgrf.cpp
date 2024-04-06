@@ -27,6 +27,7 @@
 #include "newgrf_station.h"
 #include "industrytype.h"
 #include "industry_map.h"
+#include "newgrf_act5.h"
 #include "newgrf_canal.h"
 #include "newgrf_townname.h"
 #include "newgrf_industries.h"
@@ -6369,7 +6370,7 @@ static void FeatureNewName(ByteReader *buf)
  * @param name        Used for error warnings.
  * @return The number of sprites that is going to be skipped.
  */
-static uint16_t SanitizeSpriteOffset(uint16_t &num, uint16_t offset, int max_sprites, const char *name)
+static uint16_t SanitizeSpriteOffset(uint16_t &num, uint16_t offset, int max_sprites, const std::string_view name)
 {
 
 	if (offset >= max_sprites) {
@@ -6390,23 +6391,8 @@ static uint16_t SanitizeSpriteOffset(uint16_t &num, uint16_t offset, int max_spr
 }
 
 
-/** The type of action 5 type. */
-enum Action5BlockType {
-	A5BLOCK_FIXED,                ///< Only allow replacing a whole block of sprites. (TTDP compatible)
-	A5BLOCK_ALLOW_OFFSET,         ///< Allow replacing any subset by specifiing an offset.
-	A5BLOCK_INVALID,              ///< unknown/not-implemented type
-};
-/** Information about a single action 5 type. */
-struct Action5Type {
-	Action5BlockType block_type;  ///< How is this Action5 type processed?
-	SpriteID sprite_base;         ///< Load the sprites starting from this sprite.
-	uint16_t min_sprites;           ///< If the Action5 contains less sprites, the whole block will be ignored.
-	uint16_t max_sprites;           ///< If the Action5 contains more sprites, only the first max_sprites sprites will be used.
-	const char *name;             ///< Name for error messages.
-};
-
 /** The information about action 5 types. */
-static const Action5Type _action5_types[] = {
+static constexpr auto _action5_types = std::to_array<Action5Type>({
 	/* Note: min_sprites should not be changed. Therefore these constants are directly here and not in sprites.h */
 	/* 0x00 */ { A5BLOCK_INVALID,      0,                            0, 0,                                           "Type 0x00"                },
 	/* 0x01 */ { A5BLOCK_INVALID,      0,                            0, 0,                                           "Type 0x01"                },
@@ -6433,7 +6419,16 @@ static const Action5Type _action5_types[] = {
 	/* 0x16 */ { A5BLOCK_ALLOW_OFFSET, SPR_AIRPORT_PREVIEW_BASE,     1, SPR_AIRPORT_PREVIEW_COUNT,                   "Airport preview graphics" },
 	/* 0x17 */ { A5BLOCK_ALLOW_OFFSET, SPR_RAILTYPE_TUNNEL_BASE,     1, RAILTYPE_TUNNEL_BASE_COUNT,                  "Railtype tunnel base"     },
 	/* 0x18 */ { A5BLOCK_ALLOW_OFFSET, SPR_PALETTE_BASE,             1, PALETTE_SPRITE_COUNT,                        "Palette"                  },
-};
+});
+
+/**
+ * Get list of all action 5 types
+ * @return Read-only span of action 5 type information.
+ */
+std::span<const Action5Type> GetAction5Types()
+{
+	return _action5_types;
+}
 
 /* Action 0x05 */
 static void GraphicsNew(ByteReader *buf)
@@ -6468,7 +6463,7 @@ static void GraphicsNew(ByteReader *buf)
 	}
 
 	/* Supported type? */
-	if ((type >= lengthof(_action5_types)) || (_action5_types[type].block_type == A5BLOCK_INVALID)) {
+	if ((type >= std::size(_action5_types)) || (_action5_types[type].block_type == A5BLOCK_INVALID)) {
 		GrfMsg(2, "GraphicsNew: Custom graphics (type 0x{:02X}) sprite block of length {} (unimplemented, ignoring)", type, num);
 		_cur.skip_sprites = num;
 		return;

@@ -9,6 +9,7 @@
 
 #include "stdafx.h"
 #include "core/backup_type.hpp"
+#include "core/geometry_func.hpp"
 #include "window_gui.h"
 #include "window_func.h"
 #include "random_access_file_type.h"
@@ -28,6 +29,7 @@
 #include "train.h"
 #include "roadveh.h"
 
+#include "newgrf_act5.h"
 #include "newgrf_airport.h"
 #include "newgrf_airporttiles.h"
 #include "newgrf_debug.h"
@@ -808,7 +810,6 @@ GrfSpecFeature GetGrfSpecFeature(VehicleType type)
 }
 
 
-
 /**** Sprite Aligner ****/
 
 /** Window used for aligning sprites. */
@@ -822,12 +823,17 @@ struct SpriteAlignerWindow : Window {
 	static inline ZoomLevel zoom = ZOOM_LVL_END;
 	static bool centre;
 	static bool crosshair;
+	const Action5Type *act5_type = nullptr; ///< Sprite Area of current selected sprite.
 
 	SpriteAlignerWindow(WindowDesc *desc, WindowNumber wno) : Window(desc)
 	{
 		/* On first opening, set initial zoom to current zoom level. */
 		if (SpriteAlignerWindow::zoom == ZOOM_LVL_END) SpriteAlignerWindow::zoom = _gui_zoom;
 		SpriteAlignerWindow::zoom = Clamp(SpriteAlignerWindow::zoom, _settings_client.gui.zoom_min, _settings_client.gui.zoom_max);
+
+		/* Oh yes, we assume there is at least one normal sprite! */
+		while (GetSpriteType(this->current_sprite) != SpriteType::Normal) this->current_sprite++;
+		this->SelectAction5Type();
 
 		this->CreateNestedTree();
 		this->vscroll = this->GetScrollbar(WID_SA_SCROLLBAR);
@@ -837,9 +843,6 @@ struct SpriteAlignerWindow : Window {
 		this->SetWidgetLoweredState(WID_SA_CENTRE, SpriteAlignerWindow::centre);
 		this->SetWidgetLoweredState(WID_SA_CROSSHAIR, SpriteAlignerWindow::crosshair);
 
-		/* Oh yes, we assume there is at least one normal sprite! */
-		while (GetSpriteType(this->current_sprite) != SpriteType::Normal) this->current_sprite++;
-
 		this->InvalidateData(0, true);
 	}
 
@@ -848,8 +851,22 @@ struct SpriteAlignerWindow : Window {
 		const Sprite *spr = GetSprite(this->current_sprite, SpriteType::Normal);
 		switch (widget) {
 			case WID_SA_CAPTION:
-				SetDParam(0, this->current_sprite);
-				SetDParamStr(1, GetOriginFile(this->current_sprite)->GetSimplifiedFilename());
+				if (this->act5_type != nullptr) {
+					SetDParam(0, STR_SPRITE_ALIGNER_CAPTION_ACTION5);
+					SetDParam(1, this->act5_type - GetAction5Types().data());
+					SetDParam(2, this->current_sprite - this->act5_type->sprite_base);
+					SetDParamStr(3, GetOriginFile(this->current_sprite)->GetSimplifiedFilename());
+					SetDParam(4, GetSpriteLocalID(this->current_sprite));
+				} else if (this->current_sprite < SPR_OPENTTD_BASE) {
+					SetDParam(0, STR_SPRITE_ALIGNER_CAPTION_ACTIONA);
+					SetDParam(1, this->current_sprite);
+					SetDParamStr(2, GetOriginFile(this->current_sprite)->GetSimplifiedFilename());
+					SetDParam(3, GetSpriteLocalID(this->current_sprite));
+				} else {
+					SetDParam(0, STR_SPRITE_ALIGNER_CAPTION_NO_ACTION);
+					SetDParamStr(1, GetOriginFile(this->current_sprite)->GetSimplifiedFilename());
+					SetDParam(2, GetSpriteLocalID(this->current_sprite));
+				}
 				break;
 
 			case WID_SA_OFFSETS_ABS:
@@ -883,13 +900,21 @@ struct SpriteAlignerWindow : Window {
 			case WID_SA_SPRITE:
 				size->height = ScaleGUITrad(200);
 				break;
-			case WID_SA_LIST:
-				SetDParamMaxDigits(0, 6);
-				size->width = GetStringBoundingBox(STR_JUST_COMMA).width + padding.width;
+
+			case WID_SA_LIST: {
+				Dimension d = {};
+				for (const auto &spritefile : GetCachedSpriteFiles()) {
+					SetDParamStr(0, spritefile->GetSimplifiedFilename());
+					SetDParamMaxDigits(1, 6);
+					d = maxdim(d, GetStringBoundingBox(STR_SPRITE_ALIGNER_SPRITE));
+				}
+				size->width = d.width + padding.width;
 				resize->height = GetCharacterHeight(FS_NORMAL) + padding.height;
-				resize->width  = 1;
+				resize->width = 1;
 				fill->height = resize->height;
 				break;
+			}
+
 			default:
 				break;
 		}
@@ -941,8 +966,15 @@ struct SpriteAlignerWindow : Window {
 				Rect ir = r.Shrink(WidgetDimensions::scaled.matrix);
 				auto [first, last] = this->vscroll->GetVisibleRangeIterators(list);
 				for (auto it = first; it != last; ++it) {
-					SetDParam(0, *it);
-					DrawString(ir, STR_JUST_COMMA, *it == this->current_sprite ? TC_WHITE : TC_BLACK, SA_RIGHT | SA_FORCE);
+					const SpriteFile *file = GetOriginFile(*it);
+					if (file == nullptr) {
+						SetDParam(0, *it);
+						DrawString(ir, STR_JUST_COMMA, *it == this->current_sprite ? TC_WHITE : (TC_GREY | TC_NO_SHADE), SA_RIGHT | SA_FORCE);
+					} else {
+						SetDParamStr(0, file->GetSimplifiedFilename());
+						SetDParam(1, GetSpriteLocalID(*it));
+						DrawString(ir, STR_SPRITE_ALIGNER_SPRITE, *it == this->current_sprite ? TC_WHITE : TC_BLACK);
+					}
 					ir.top += step_size;
 				}
 				break;
@@ -957,6 +989,7 @@ struct SpriteAlignerWindow : Window {
 				do {
 					this->current_sprite = (this->current_sprite == 0 ? GetMaxSpriteID() :  this->current_sprite) - 1;
 				} while (GetSpriteType(this->current_sprite) != SpriteType::Normal);
+				this->SelectAction5Type();
 				this->SetDirty();
 				break;
 
@@ -968,6 +1001,7 @@ struct SpriteAlignerWindow : Window {
 				do {
 					this->current_sprite = (this->current_sprite + 1) % GetMaxSpriteID();
 				} while (GetSpriteType(this->current_sprite) != SpriteType::Normal);
+				this->SelectAction5Type();
 				this->SetDirty();
 				break;
 
@@ -983,6 +1017,7 @@ struct SpriteAlignerWindow : Window {
 					SpriteID spr = *it;
 					if (GetSpriteType(spr) == SpriteType::Normal) this->current_sprite = spr;
 				}
+				this->SelectAction5Type();
 				this->SetDirty();
 				break;
 			}
@@ -1060,6 +1095,7 @@ struct SpriteAlignerWindow : Window {
 		while (GetSpriteType(this->current_sprite) != SpriteType::Normal) {
 			this->current_sprite = (this->current_sprite + 1) % GetMaxSpriteID();
 		}
+		this->SelectAction5Type();
 		this->SetDirty();
 	}
 
@@ -1088,6 +1124,19 @@ struct SpriteAlignerWindow : Window {
 	{
 		this->vscroll->SetCapacityFromWidget(this, WID_SA_LIST);
 	}
+
+private:
+	void SelectAction5Type()
+	{
+		const auto act5types = GetAction5Types();
+		for (auto it = std::begin(act5types); it != std::end(act5types); ++it) {
+			if (it->sprite_base <= this->current_sprite && this->current_sprite < it->sprite_base + it->max_sprites) {
+				this->act5_type = &*it;
+				return;
+			}
+		}
+		this->act5_type = nullptr;
+	}
 };
 
 bool SpriteAlignerWindow::centre = true;
@@ -1096,7 +1145,7 @@ bool SpriteAlignerWindow::crosshair = true;
 static constexpr NWidgetPart _nested_sprite_aligner_widgets[] = {
 	NWidget(NWID_HORIZONTAL),
 		NWidget(WWT_CLOSEBOX, COLOUR_GREY),
-		NWidget(WWT_CAPTION, COLOUR_GREY, WID_SA_CAPTION), SetDataTip(STR_SPRITE_ALIGNER_CAPTION, STR_TOOLTIP_WINDOW_TITLE_DRAG_THIS),
+		NWidget(WWT_CAPTION, COLOUR_GREY, WID_SA_CAPTION), SetDataTip(STR_JUST_STRING4, STR_TOOLTIP_WINDOW_TITLE_DRAG_THIS),
 		NWidget(WWT_SHADEBOX, COLOUR_GREY),
 		NWidget(WWT_STICKYBOX, COLOUR_GREY),
 	EndContainer(),
