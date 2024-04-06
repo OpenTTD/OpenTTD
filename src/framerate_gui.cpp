@@ -810,34 +810,34 @@ struct FrametimeGraphWindow : Window {
 		/* Determine horizontal scale based on period covered by 60 points
 		 * (slightly less than 2 seconds at full game speed) */
 		struct ScaleDef { TimingMeasurement range; int scale; };
-		static const ScaleDef hscales[] = {
-			{ TIMESTAMP_PRECISION * 120, 60 },
-			{ TIMESTAMP_PRECISION *  10, 20 },
-			{ TIMESTAMP_PRECISION *   5, 10 },
-			{ TIMESTAMP_PRECISION *   3,  4 },
-			{ TIMESTAMP_PRECISION *   1,  2 },
+		static const std::array hscales{
+			ScaleDef{ TIMESTAMP_PRECISION * 120, 60 },
+			ScaleDef{ TIMESTAMP_PRECISION *  10, 20 },
+			ScaleDef{ TIMESTAMP_PRECISION *   5, 10 },
+			ScaleDef{ TIMESTAMP_PRECISION *   3,  4 },
+			ScaleDef{ TIMESTAMP_PRECISION *   1,  2 },
 		};
-		for (const ScaleDef *sc = hscales; sc < hscales + lengthof(hscales); sc++) {
-			if (range < sc->range) this->horizontal_scale = sc->scale;
+		for (auto sc : hscales) {
+			if (range < sc.range) this->horizontal_scale = sc.scale;
 		}
 	}
 
 	void SelectVerticalScale(TimingMeasurement range)
 	{
 		/* Determine vertical scale based on peak value (within the horizontal scale + a bit) */
-		static const TimingMeasurement vscales[] = {
-			TIMESTAMP_PRECISION * 100,
-			TIMESTAMP_PRECISION * 10,
-			TIMESTAMP_PRECISION * 5,
-			TIMESTAMP_PRECISION,
-			TIMESTAMP_PRECISION / 2,
-			TIMESTAMP_PRECISION / 5,
-			TIMESTAMP_PRECISION / 10,
-			TIMESTAMP_PRECISION / 50,
-			TIMESTAMP_PRECISION / 200,
+		static const std::array vscales = {
+			TimingMeasurement{ TIMESTAMP_PRECISION * 100 },
+			TimingMeasurement{ TIMESTAMP_PRECISION * 10 },
+			TimingMeasurement{ TIMESTAMP_PRECISION * 5 },
+			TimingMeasurement{ TIMESTAMP_PRECISION },
+			TimingMeasurement{ TIMESTAMP_PRECISION / 2 },
+			TimingMeasurement{ TIMESTAMP_PRECISION / 5 },
+			TimingMeasurement{ TIMESTAMP_PRECISION / 10 },
+			TimingMeasurement{ TIMESTAMP_PRECISION / 50 },
+			TimingMeasurement{ TIMESTAMP_PRECISION / 200 },
 		};
-		for (const TimingMeasurement *sc = vscales; sc < vscales + lengthof(vscales); sc++) {
-			if (range < *sc) this->vertical_scale = (int)*sc;
+		for (auto sc : vscales) {
+			if (range < sc) this->vertical_scale = static_cast<int>(sc);
 		}
 	}
 
@@ -1066,15 +1066,15 @@ void ConPrintFramerate()
 	};
 	std::string ai_name_buf;
 
-	static const PerformanceElement rate_elements[] = { PFE_GAMELOOP, PFE_DRAWING, PFE_VIDEO };
+	static const std::array rate_elements = { PFE_GAMELOOP, PFE_DRAWING, PFE_VIDEO };
 
 	bool printed_anything = false;
 
-	for (const PerformanceElement *e = rate_elements; e < rate_elements + lengthof(rate_elements); e++) {
-		auto &pf = _pf_data[*e];
+	for (auto rate_element : rate_elements) {
+		auto &pf = _pf_data[rate_element];
 		if (pf.num_valid == 0) continue;
 		IConsolePrint(TC_GREEN, "{} rate: {:.2f}fps  (expected: {:.2f}fps)",
-			MEASUREMENT_NAMES[*e],
+			MEASUREMENT_NAMES[rate_element],
 			pf.GetRate(),
 			pf.expected_rate);
 		printed_anything = true;
