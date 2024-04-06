@@ -187,7 +187,7 @@ static const std::map<int, StringID> _volume_labels = {
 	{  127, STR_GAME_OPTIONS_VOLUME_100 },
 };
 
-static const NWidgetPart _nested_social_plugins_widgets[] = {
+static constexpr NWidgetPart _nested_social_plugins_widgets[] = {
 	NWidget(NWID_HORIZONTAL),
 		NWidget(WWT_FRAME, COLOUR_GREY, WID_GO_SOCIAL_PLUGIN_TITLE), SetDataTip(STR_JUST_STRING2, STR_NULL),
 			NWidget(NWID_HORIZONTAL), SetPIP(0, WidgetDimensions::unscaled.hsep_normal, 0),
@@ -202,7 +202,7 @@ static const NWidgetPart _nested_social_plugins_widgets[] = {
 	EndContainer(),
 };
 
-static const NWidgetPart _nested_social_plugins_none_widgets[] = {
+static constexpr NWidgetPart _nested_social_plugins_none_widgets[] = {
 	NWidget(NWID_HORIZONTAL),
 		NWidget(WWT_TEXT, COLOUR_GREY), SetMinimalSize(0, 12), SetFill(1, 0), SetDataTip(STR_GAME_OPTIONS_SOCIAL_PLUGINS_NONE, STR_NULL),
 	EndContainer(),
