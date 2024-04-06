@@ -254,6 +254,7 @@ add_files(
     music_gui.cpp
     newgrf.cpp
     newgrf.h
+    newgrf_act5.h
     newgrf_airport.cpp
     newgrf_airport.h
     newgrf_airporttiles.cpp

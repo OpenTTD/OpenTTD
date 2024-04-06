@@ -62,6 +62,7 @@ void GfxClearFontSpriteCache();
 void IncreaseSpriteLRU();
 
 SpriteFile &OpenCachedSpriteFile(const std::string &filename, Subdirectory subdir, bool palette_remap);
+std::span<const std::unique_ptr<SpriteFile>> GetCachedSpriteFiles();
 
 void ReadGRFSpriteOffsets(SpriteFile &file);
 size_t GetGRFSpriteOffset(uint32_t id);

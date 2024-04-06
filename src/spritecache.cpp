@@ -75,6 +75,15 @@ static SpriteFile *GetCachedSpriteFileByName(const std::string &filename)
 }
 
 /**
+ * Get the list of cached SpriteFiles.
+ * @return Read-only list of cache SpriteFiles.
+ */
+std::span<const std::unique_ptr<SpriteFile>> GetCachedSpriteFiles()
+{
+	return _sprite_files;
+}
+
+/**
  * Open/get the SpriteFile that is cached for use in the sprite cache.
  * @param filename      Name of the file at the disk.
  * @param subdir        The sub directory to search this file in.
