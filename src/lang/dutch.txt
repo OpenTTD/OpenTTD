@@ -4899,7 +4899,9 @@ STR_MESSAGE_ESTIMATED_INCOME                                    :{WHITE}Verwacht
 STR_ERROR_SAVE_STILL_IN_PROGRESS                                :{WHITE}Opslaan van spel is nog bezig,{}Wacht tot dit voltooid is!
 STR_ERROR_AUTOSAVE_FAILED                                       :{WHITE}Automatisch opslaan mislukt
 STR_ERROR_UNABLE_TO_READ_DRIVE                                  :{BLACK}Kan niet lezen van schijf
+STR_ERROR_GAME_SAVE_FAILED                                      :{WHITE}Spel opslaan mislukt...
 STR_ERROR_UNABLE_TO_DELETE_FILE                                 :{WHITE}Kan bestand niet verwijderen
+STR_ERROR_GAME_LOAD_FAILED                                      :{WHITE}Spel laden spel mislukt...
 STR_GAME_SAVELOAD_ERROR_BROKEN_INTERNAL_ERROR                   :Interne fout: {STRING}
 STR_GAME_SAVELOAD_ERROR_BROKEN_SAVEGAME                         :Opgeslagen spel beschadigd - {STRING}
 STR_GAME_SAVELOAD_ERROR_TOO_NEW_SAVEGAME                        :Opgeslagen spel hoort bij een nieuwere versie
