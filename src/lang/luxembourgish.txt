@@ -3485,7 +3485,6 @@ STR_NEWGRF_INSPECT_CAPTION_OBJECT_AT_ROAD_TYPE                  :Stroossentyp
 STR_NEWGRF_INSPECT_QUERY_CAPTION                                :{WHITE}NewGRF Variabel 60+x Parameter (hexadezimal)
 
 # Sprite aligner window
-STR_SPRITE_ALIGNER_CAPTION                                      :{WHITE}Alignéiren d'Sprite {COMMA} ({STRING})
 STR_SPRITE_ALIGNER_NEXT_BUTTON                                  :{BLACK}Nächst Sprite
 STR_SPRITE_ALIGNER_NEXT_TOOLTIP                                 :{BLACK}Géi weider op déi nächst normal Sprite, iwwersprang all pseudo/recolour/font Sprite an sprang un den Ufank no der leschter.
 STR_SPRITE_ALIGNER_GOTO_BUTTON                                  :{BLACK}Géi op Sprite

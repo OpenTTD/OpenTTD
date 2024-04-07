@@ -3487,7 +3487,6 @@ STR_NEWGRF_INSPECT_CAPTION_OBJECT_AT_ROAD_TYPE                  :Yol türü:
 STR_NEWGRF_INSPECT_QUERY_CAPTION                                :{WHITE}NewGRF değişkeni 60+x parametresi (onaltılı)
 
 # Sprite aligner window
-STR_SPRITE_ALIGNER_CAPTION                                      :{WHITE}Nesne hizalanıyor {COMMA} ({STRING})
 STR_SPRITE_ALIGNER_NEXT_BUTTON                                  :{BLACK}Sonraki nesne
 STR_SPRITE_ALIGNER_NEXT_TOOLTIP                                 :{BLACK}Tüm sahte/yeniden renklendirme/yazı tipi nesnelerini ve sondaki nesneden atlayarak bir sonraki normal nesneye geç
 STR_SPRITE_ALIGNER_GOTO_BUTTON                                  :{BLACK}Nesneye git

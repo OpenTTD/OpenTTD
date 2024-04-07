@@ -3489,7 +3489,6 @@ STR_NEWGRF_INSPECT_CAPTION_OBJECT_AT_ROAD_TYPE                  :Tipo de estrada
 STR_NEWGRF_INSPECT_QUERY_CAPTION                                :{WHITE}Parâmetro da variável 60+x do NewGRF (hexadecimal)
 
 # Sprite aligner window
-STR_SPRITE_ALIGNER_CAPTION                                      :{WHITE}A alinhar gráfico {COMMA} ({STRING})
 STR_SPRITE_ALIGNER_NEXT_BUTTON                                  :{BLACK}Gráfico seguinte
 STR_SPRITE_ALIGNER_NEXT_TOOLTIP                                 :{BLACK}Proceder ao gráfico normal seguinte, ignorando quaisquer gráficos pseudo/recolorir/tipo-de-letra e dando a volta no fim
 STR_SPRITE_ALIGNER_GOTO_BUTTON                                  :{BLACK}Ir para o gráfico

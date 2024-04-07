@@ -3460,7 +3460,6 @@ STR_NEWGRF_INSPECT_CAPTION_OBJECT_AT_RAIL_TYPE                  :Bėgio tipas
 STR_NEWGRF_INSPECT_QUERY_CAPTION                                :{WHITE}Plėtinio kintamojo 60+x parametras (šešioliktainėje sistemoje)
 
 # Sprite aligner window
-STR_SPRITE_ALIGNER_CAPTION                                      :{WHITE}Lygiuojamas spruklys {COMMA} ({STRING})
 STR_SPRITE_ALIGNER_NEXT_BUTTON                                  :{BLACK}Tolesnis spruklys
 STR_SPRITE_ALIGNER_NEXT_TOOLTIP                                 :{BLACK}Įkelti tolesnį spruklį
 STR_SPRITE_ALIGNER_GOTO_BUTTON                                  :{BLACK}Nurodyti spruklį

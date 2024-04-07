@@ -2264,7 +2264,6 @@ STR_NEWGRF_INSPECT_CAPTION_OBJECT_AT_RAIL_TYPE                  :طرزِ ریل
 
 
 # Sprite aligner window
-STR_SPRITE_ALIGNER_CAPTION                                      :{WHITE} صف بندھی کے sprite {COMMA} ({STRING})
 STR_SPRITE_ALIGNER_NEXT_BUTTON                                  :{BLACK} اگلی sprite
 STR_SPRITE_ALIGNER_GOTO_BUTTON                                  :{BLACK} جایئے sprite تک
 STR_SPRITE_ALIGNER_GOTO_TOOLTIP                                 :{BLACK} جایئے sprite کی طرف۔ اگر sprite اصلی نھیں تو اگلی sprite کی طرف جائیے

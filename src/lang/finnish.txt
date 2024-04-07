@@ -3488,7 +3488,6 @@ STR_NEWGRF_INSPECT_CAPTION_OBJECT_AT_ROAD_TYPE                  :Tien tyyppi
 STR_NEWGRF_INSPECT_QUERY_CAPTION                                :{WHITE}NewGRF muuttujan 60+x parametri (heksadesimaali)
 
 # Sprite aligner window
-STR_SPRITE_ALIGNER_CAPTION                                      :{WHITE}Kohdistetaan spriteä {COMMA} ({STRING})
 STR_SPRITE_ALIGNER_NEXT_BUTTON                                  :{BLACK}Seuraava sprite
 STR_SPRITE_ALIGNER_NEXT_TOOLTIP                                 :{BLACK}Siirry seuraavaan tavalliseen spriteen; mahdolliset pseudo-, uudelleenväritys- ja fonttispritet ohitetaan; viimeisen spriten jälkeen siirrytään ensimmäiseen
 STR_SPRITE_ALIGNER_GOTO_BUTTON                                  :{BLACK}Mene spriteen

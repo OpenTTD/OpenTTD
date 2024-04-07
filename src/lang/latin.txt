@@ -3157,7 +3157,6 @@ STR_NEWGRF_INSPECT_CAPTION_OBJECT_AT_RAIL_TYPE                  :Typus ferriviae
 STR_NEWGRF_INSPECT_QUERY_CAPTION                                :{WHITE}NewGRF var 60+x parametrum (sedecimale)
 
 # Sprite aligner window
-STR_SPRITE_ALIGNER_CAPTION                                      :{WHITE}Dirigens spiritum {COMMA} ({STRING})
 STR_SPRITE_ALIGNER_NEXT_BUTTON                                  :{BLACK}Spiritum secundum
 STR_SPRITE_ALIGNER_NEXT_TOOLTIP                                 :{BLACK}Procedere ad spiritum naturalem secundum et, termino contacto, ad primum revertere
 STR_SPRITE_ALIGNER_GOTO_BUTTON                                  :{BLACK}Ire ad spiritum

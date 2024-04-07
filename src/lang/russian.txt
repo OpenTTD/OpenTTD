@@ -3663,7 +3663,6 @@ STR_NEWGRF_INSPECT_CAPTION_OBJECT_AT_ROAD_TYPE                  :Тип доро
 STR_NEWGRF_INSPECT_QUERY_CAPTION                                :{WHITE}Параметр переменной NewGRF 60+x (шестнадцатеричный)
 
 # Sprite aligner window
-STR_SPRITE_ALIGNER_CAPTION                                      :{WHITE}Выравнивание спрайта {COMMA} ({STRING})
 STR_SPRITE_ALIGNER_NEXT_BUTTON                                  :{BLACK}Следующий спрайт
 STR_SPRITE_ALIGNER_NEXT_TOOLTIP                                 :{BLACK}Перейти к следующему нормальному спрайту, пропуская изменяющие цвет, шрифтовые, псевдоспрайты. Переход из конца списка к первому спрайту.
 STR_SPRITE_ALIGNER_GOTO_BUTTON                                  :{BLACK}Перейти к спрайту

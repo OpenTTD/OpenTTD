@@ -3580,7 +3580,6 @@ STR_NEWGRF_INSPECT_CAPTION_OBJECT_AT_ROAD_TYPE                  :Τύπος δρ
 STR_NEWGRF_INSPECT_QUERY_CAPTION                                :{WHITE}Μεταβλητή NewGRF 60+x παράμετρος (δεκαεξαδικό)
 
 # Sprite aligner window
-STR_SPRITE_ALIGNER_CAPTION                                      :{WHITE}Ευθυγράμμιση sprite {COMMA} ({STRING})
 STR_SPRITE_ALIGNER_NEXT_BUTTON                                  :{BLACK}Επόμενο στοιχείο
 STR_SPRITE_ALIGNER_NEXT_TOOLTIP                                 :{BLACK}Συνέχισε στο επόμενο κανονικό sprite, προσπερνώντας οποιοδήποτε ψευδό/επαναναχρωματιζόμενο/γραμματοσειράς sprite και κάνε τις τελικές διαδικασίες στο τέλος
 STR_SPRITE_ALIGNER_GOTO_BUTTON                                  :{BLACK}Μετακίνηση στο στοιχείο

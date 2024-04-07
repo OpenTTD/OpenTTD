@@ -3817,7 +3817,6 @@ STR_NEWGRF_INSPECT_CAPTION_OBJECT_AT_ROAD_TYPE                  :Тып даро
 STR_NEWGRF_INSPECT_QUERY_CAPTION                                :{WHITE}Парамэтр зьменнай NewGRF 60+x (шаснаццаткавы)
 
 # Sprite aligner window
-STR_SPRITE_ALIGNER_CAPTION                                      :{WHITE}Выраўноўваньне спрайта {COMMA} ({STRING})
 STR_SPRITE_ALIGNER_NEXT_BUTTON                                  :{BLACK}Наступны спрайт
 STR_SPRITE_ALIGNER_NEXT_TOOLTIP                                 :{BLACK}Перайсьці да наступнага звычайнага спрайта, прапускаючы змяняючыя колер, шрыфтавыя, псэўдаспрайты. Пераход з канца сьпісу да першага спрайта.
 STR_SPRITE_ALIGNER_GOTO_BUTTON                                  :{BLACK}Перайсьці да спрайта

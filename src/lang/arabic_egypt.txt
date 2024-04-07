@@ -2859,7 +2859,6 @@ STR_NEWGRF_INSPECT_CAPTION_OBJECT_AT_RAIL_TYPE                  :نوع سكة �
 STR_NEWGRF_INSPECT_QUERY_CAPTION                                :{WHITE}متغير الاضافات الجديدة +60 * نمط (hexadecimal)
 
 # Sprite aligner window
-STR_SPRITE_ALIGNER_CAPTION                                      :{WHITE}موائمة صورة العفريتة {COMMA} ({STRING})
 STR_SPRITE_ALIGNER_NEXT_BUTTON                                  :{BLACK}العفريتة التالية
 STR_SPRITE_ALIGNER_NEXT_TOOLTIP                                 :{BLACK}نابع للعفريتة الطبيعية التالية، تجاوز اي عفريتة موقوفة/ مصبوغة/مخطوطة و انهي المتاعة في النهاية.
 STR_SPRITE_ALIGNER_GOTO_BUTTON                                  :{BLACK}اذهب الى العفريتة

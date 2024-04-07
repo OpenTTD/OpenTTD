@@ -3574,7 +3574,6 @@ STR_NEWGRF_INSPECT_CAPTION_OBJECT_AT_ROAD_TYPE                  :Typ silnice
 STR_NEWGRF_INSPECT_QUERY_CAPTION                                :{WHITE}Hodnota NewGRF proměnné 60+x (šestnáctkově)
 
 # Sprite aligner window
-STR_SPRITE_ALIGNER_CAPTION                                      :{WHITE}Zarovávání spritu {COMMA} ({STRING})
 STR_SPRITE_ALIGNER_NEXT_BUTTON                                  :{BLACK}Další sprite
 STR_SPRITE_ALIGNER_NEXT_TOOLTIP                                 :{BLACK}Jít na další normální sprite (s grafikou), přičemž se přeskakují pseudo-/barvící/znakové sprity a při dosažení konce se jde zase na začátek
 STR_SPRITE_ALIGNER_GOTO_BUTTON                                  :{BLACK}Jít na sprite

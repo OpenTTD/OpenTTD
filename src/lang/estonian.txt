@@ -3541,7 +3541,6 @@ STR_NEWGRF_INSPECT_CAPTION_OBJECT_AT_ROAD_TYPE                  :Tee tüüp
 STR_NEWGRF_INSPECT_QUERY_CAPTION                                :{WHITE}NewGRF muutuf 60+x parameeter (kuueteistkümnendsüsteemis)
 
 # Sprite aligner window
-STR_SPRITE_ALIGNER_CAPTION                                      :{WHITE}Aligning sprite {COMMA} ({STRING})
 STR_SPRITE_ALIGNER_NEXT_BUTTON                                  :{BLACK}Järgmine sprait
 STR_SPRITE_ALIGNER_NEXT_TOOLTIP                                 :{BLACK}Jätka järgmise normaalse spraidini, Jättes vahele iga pseudo/taasvärvitud/fondi spraidid ja pakkides lõpu ümber
 STR_SPRITE_ALIGNER_GOTO_BUTTON                                  :{BLACK}Mine spraidini

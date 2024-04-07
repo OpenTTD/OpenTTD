@@ -3002,7 +3002,6 @@ STR_NEWGRF_INSPECT_CAPTION_OBJECT_AT_RAIL_TYPE                  :Spoor tipe
 STR_NEWGRF_INSPECT_QUERY_CAPTION                                :{WHITE}NewGRF veranderlike 60+x parameter (heksadesimaal)
 
 # Sprite aligner window
-STR_SPRITE_ALIGNER_CAPTION                                      :{WHITE}Belyn sprite {COMMA} ({STRING})
 STR_SPRITE_ALIGNER_NEXT_BUTTON                                  :{BLACK}Volgende sprite
 STR_SPRITE_ALIGNER_NEXT_TOOLTIP                                 :{BLACK}Gaan na die volgende "sprite", Ignoreer enige pseudo/her-kleur/font "sprites" en spring terug na die begin
 STR_SPRITE_ALIGNER_GOTO_BUTTON                                  :{BLACK}Gaan na sprite

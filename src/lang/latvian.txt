@@ -3491,7 +3491,6 @@ STR_NEWGRF_INSPECT_CAPTION_OBJECT_AT_ROAD_TYPE                  :Ceļa tips
 STR_NEWGRF_INSPECT_QUERY_CAPTION                                :{WHITE}NewGRF mainīgā 60+x parametrs (heksadecimāls)
 
 # Sprite aligner window
-STR_SPRITE_ALIGNER_CAPTION                                      :{WHITE}Gariņa līdzināšana {COMMA} ({STRING})
 STR_SPRITE_ALIGNER_NEXT_BUTTON                                  :{BLACK}Nākamais gariņš
 STR_SPRITE_ALIGNER_NEXT_TOOLTIP                                 :{BLACK}Pāriet uz nākamo parasto gariņu, izlaižot visus pseido/pārkrāsotos/fonta gariņus
 STR_SPRITE_ALIGNER_GOTO_BUTTON                                  :{BLACK}Iet pie gariņa

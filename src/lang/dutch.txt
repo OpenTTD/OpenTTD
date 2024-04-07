@@ -3488,7 +3488,6 @@ STR_NEWGRF_INSPECT_CAPTION_OBJECT_AT_ROAD_TYPE                  :Wegtype
 STR_NEWGRF_INSPECT_QUERY_CAPTION                                :{WHITE}Parameter 60+x voor NewGRF-variabele (hexadecimaal)
 
 # Sprite aligner window
-STR_SPRITE_ALIGNER_CAPTION                                      :{WHITE}Sprite uitlijnen {COMMA} ({STRING})
 STR_SPRITE_ALIGNER_NEXT_BUTTON                                  :{BLACK}Volgende sprite
 STR_SPRITE_ALIGNER_NEXT_TOOLTIP                                 :{BLACK}Doorgaan met volgende normale sprite, alle pseudo-/herkleur-/lettertype-sprites overslaan; bij het einde terug naar het begin
 STR_SPRITE_ALIGNER_GOTO_BUTTON                                  :{BLACK}Ga naar sprite

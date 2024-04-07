@@ -2669,7 +2669,6 @@ STR_NEWGRF_INSPECT_CAPTION_OBJECT_AT_RAIL_TYPE                  :Jenis landasan
 STR_NEWGRF_INSPECT_QUERY_CAPTION                                :{WHITE}Pemboleh ubah NewGRF, parameter 60+x (hexadecimal)
 
 # Sprite aligner window
-STR_SPRITE_ALIGNER_CAPTION                                      :{WHITE}Megalih peperi {COMMA} ({STRING})
 STR_SPRITE_ALIGNER_NEXT_BUTTON                                  :{BLACK}Peperi seterusnya
 STR_SPRITE_ALIGNER_NEXT_TOOLTIP                                 :{BLACK}Teruskan ke peperi seterusan yang biasa, melangkau sebarang peperi pseudo/warna kembali/fon dan memusing balik semula
 STR_SPRITE_ALIGNER_GOTO_BUTTON                                  :{BLACK}Pergi ke peperi

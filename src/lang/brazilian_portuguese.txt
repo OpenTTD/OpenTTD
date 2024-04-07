@@ -3489,7 +3489,6 @@ STR_NEWGRF_INSPECT_CAPTION_OBJECT_AT_ROAD_TYPE                  :Tipo de estrada
 STR_NEWGRF_INSPECT_QUERY_CAPTION                                :{WHITE}Parâmetro da variável 60+x do NewGRF (hexadecimal)
 
 # Sprite aligner window
-STR_SPRITE_ALIGNER_CAPTION                                      :{WHITE}Alinhando sprite {COMMA} ({STRING})
 STR_SPRITE_ALIGNER_NEXT_BUTTON                                  :{BLACK}Próximo sprite
 STR_SPRITE_ALIGNER_NEXT_TOOLTIP                                 :{BLACK}Ir para o próximo sprite normal, pulando quaisquer sprites falsos/recoloridos/tipo de letra, retornando do último sprite para o primeiro
 STR_SPRITE_ALIGNER_GOTO_BUTTON                                  :{BLACK}Ir para o sprite

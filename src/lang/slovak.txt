@@ -3556,7 +3556,6 @@ STR_NEWGRF_INSPECT_CAPTION_OBJECT_AT_ROAD_TYPE                  :Typ cesty
 STR_NEWGRF_INSPECT_QUERY_CAPTION                                :{WHITE}NewGRF variabilný 60+x parameter (hexadecimálne)
 
 # Sprite aligner window
-STR_SPRITE_ALIGNER_CAPTION                                      :{WHITE}Zarovnanie sprite {COMMA} ({STRING})
 STR_SPRITE_ALIGNER_NEXT_BUTTON                                  :{BLACK}Ďalší sprite
 STR_SPRITE_ALIGNER_NEXT_TOOLTIP                                 :{BLACK}Prejsť na najbližší normálny sprite, vynechajúc akékoľvek falošné/prefarbené sprites a sprites fontu použité na konci
 STR_SPRITE_ALIGNER_GOTO_BUTTON                                  :{BLACK}Prejsť na sprite

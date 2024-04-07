@@ -2768,7 +2768,6 @@ STR_NEWGRF_INSPECT_CAPTION_OBJECT_AT_RAIL_TYPE                  :Tegund spora
 STR_NEWGRF_INSPECT_QUERY_CAPTION                                :{WHITE}NewGRF breyta 60+x stilling (hexadecimal)
 
 # Sprite aligner window
-STR_SPRITE_ALIGNER_CAPTION                                      :{WHITE}Samræmi hreyfimynd{COMMA} ({STRING})
 STR_SPRITE_ALIGNER_NEXT_BUTTON                                  :{BLACK}Næsta hreyfimynd
 STR_SPRITE_ALIGNER_NEXT_TOOLTIP                                 :{BLACK}Halda áfram á næstu venjulegu hreyfimynd, sleppir gervi/endurlitun/letur hreyfimyndum og fer aftur á byrjun í lokin.
 STR_SPRITE_ALIGNER_GOTO_BUTTON                                  :{BLACK}Velja hreyfimynd

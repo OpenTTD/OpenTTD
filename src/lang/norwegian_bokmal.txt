@@ -3490,7 +3490,6 @@ STR_NEWGRF_INSPECT_CAPTION_OBJECT_AT_ROAD_TYPE                  :Veitype
 STR_NEWGRF_INSPECT_QUERY_CAPTION                                :{WHITE}NewGRF-variabel 60+x parameter (heksadesimal)
 
 # Sprite aligner window
-STR_SPRITE_ALIGNER_CAPTION                                      :{WHITE}Forskyver sprite {COMMA} ({STRING})
 STR_SPRITE_ALIGNER_NEXT_BUTTON                                  :{BLACK}Neste sprite
 STR_SPRITE_ALIGNER_NEXT_TOOLTIP                                 :{BLACK}Fortsett til neste normale sprite og hopp over enhver pseudo-/omfargings-/skrifttype- sprite, samt start om ved begynnelsen
 STR_SPRITE_ALIGNER_GOTO_BUTTON                                  :{BLACK}Gå til sprite

@@ -3488,7 +3488,6 @@ STR_NEWGRF_INSPECT_CAPTION_OBJECT_AT_ROAD_TYPE                  :Vägtyp
 STR_NEWGRF_INSPECT_QUERY_CAPTION                                :{WHITE}NewGRF variabel 60+x parameter (hexadecimal)
 
 # Sprite aligner window
-STR_SPRITE_ALIGNER_CAPTION                                      :{WHITE}Justera spriteobjekt {COMMA} ({STRING})
 STR_SPRITE_ALIGNER_NEXT_BUTTON                                  :{BLACK}Nästa spriteobjekt
 STR_SPRITE_ALIGNER_NEXT_TOOLTIP                                 :{BLACK}Fortsätt till nästa nomala spriteobjekt, ignorera eventuella pseudo/recolour/font spriteobjekt och börja om efter sista spriteobjektet
 STR_SPRITE_ALIGNER_GOTO_BUTTON                                  :{BLACK}Gå till spriteobjekt

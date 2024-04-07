@@ -3208,7 +3208,6 @@ STR_NEWGRF_INSPECT_CAPTION_OBJECT_AT_RAIL_TYPE                  :Cineál iarnró
 STR_NEWGRF_INSPECT_QUERY_CAPTION                                :{WHITE}Athróg NewGRF paraiméadar 60+x (heicsidheachúil)
 
 # Sprite aligner window
-STR_SPRITE_ALIGNER_CAPTION                                      :{WHITE}Ag ailíniú sprite {COMMA} ({STRING})
 STR_SPRITE_ALIGNER_NEXT_BUTTON                                  :{BLACK}An chéad sprite eile
 STR_SPRITE_ALIGNER_NEXT_TOOLTIP                                 :{BLACK}Téigh chuig an chéad gnáth-sprite eile, ag scipeáil thar aon bhréag-sprite nó sprite athdhathaithe/clófhoirne agus ag timfhilleadh ag an deireadh
 STR_SPRITE_ALIGNER_GOTO_BUTTON                                  :{BLACK}Téigh chuig sprite

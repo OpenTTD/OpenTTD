@@ -3549,7 +3549,6 @@ STR_NEWGRF_INSPECT_CAPTION_OBJECT_AT_ROAD_TYPE                  :Út típus
 STR_NEWGRF_INSPECT_QUERY_CAPTION                                :{WHITE}NewGRF változó 60+x paraméter (hexadecimális)
 
 # Sprite aligner window
-STR_SPRITE_ALIGNER_CAPTION                                      :{WHITE}Elhelyezési sprite {COMMA} ({STRING})
 STR_SPRITE_ALIGNER_NEXT_BUTTON                                  :{BLACK}Következő sprite
 STR_SPRITE_ALIGNER_NEXT_TOOLTIP                                 :{BLACK}Továbbhaladás a következő normál spritera, kihagyva bármilyen ál/átszínező/betű spriteokat, a végén folytatva az elsővel
 STR_SPRITE_ALIGNER_GOTO_BUTTON                                  :{BLACK}Ugrás a spritehoz

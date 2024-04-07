@@ -3014,7 +3014,6 @@ STR_NEWGRF_INSPECT_CAPTION_OBJECT_AT_RAIL_TYPE                  :ประเภ
 STR_NEWGRF_INSPECT_QUERY_CAPTION                                :{WHITE}NewGRF ตัวแปร 60+x parameter (hexadecimal)
 
 # Sprite aligner window
-STR_SPRITE_ALIGNER_CAPTION                                      :{WHITE}Aligning sprite {COMMA} ({STRING})
 STR_SPRITE_ALIGNER_NEXT_BUTTON                                  :{BLACK}sprite ถัดไป
 STR_SPRITE_ALIGNER_NEXT_TOOLTIP                                 :{BLACK}เคลื่อนไปยัง sprite ปกติอันถัดไป โดยข้าม pseudo/recolour/font และวกกลับเมื่อถึงจุดสิ้นสุด
 STR_SPRITE_ALIGNER_GOTO_BUTTON                                  :{BLACK}ไปยัง sprite

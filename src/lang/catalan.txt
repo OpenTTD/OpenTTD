@@ -3489,7 +3489,6 @@ STR_NEWGRF_INSPECT_CAPTION_OBJECT_AT_ROAD_TYPE                  :Tipus de carret
 STR_NEWGRF_INSPECT_QUERY_CAPTION                                :{WHITE}Paràmetre NewGRF variable 60+x (hexadecimal)
 
 # Sprite aligner window
-STR_SPRITE_ALIGNER_CAPTION                                      :{WHITE}Alineant sprite {COMMA} ({STRING})
 STR_SPRITE_ALIGNER_NEXT_BUTTON                                  :{BLACK}Sprite següent
 STR_SPRITE_ALIGNER_NEXT_TOOLTIP                                 :{BLACK}Procedeix cap al següent sprite normal, saltant qualsevol sprite pseudo/recolor/font i passant de l'últim sprite al primer
 STR_SPRITE_ALIGNER_GOTO_BUTTON                                  :{BLACK}Vés a l'sprite

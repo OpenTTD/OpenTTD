@@ -3489,7 +3489,6 @@ STR_NEWGRF_INSPECT_CAPTION_OBJECT_AT_ROAD_TYPE                  :Straßentyp
 STR_NEWGRF_INSPECT_QUERY_CAPTION                                :{WHITE}NewGRF-Variable 60+x Parameter (hexadecimal)
 
 # Sprite aligner window
-STR_SPRITE_ALIGNER_CAPTION                                      :{WHITE}Ausrichtung von Sprite {COMMA} ({STRING})
 STR_SPRITE_ALIGNER_NEXT_BUTTON                                  :{BLACK}Nächstes Sprite
 STR_SPRITE_ALIGNER_NEXT_TOOLTIP                                 :{BLACK}Gehe zum nächsten normalen Sprite und überspringe alle Pseudo-, Recolour- und Schriftsprites (springt ggf. vom ersten bis zum letzten Sprite)
 STR_SPRITE_ALIGNER_GOTO_BUTTON                                  :{BLACK}Gehe zu Sprite

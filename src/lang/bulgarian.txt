@@ -3053,7 +3053,6 @@ STR_NEWGRF_INSPECT_CAPTION_OBJECT_AT_RAIL_TYPE                  :Вид желе
 STR_NEWGRF_INSPECT_QUERY_CAPTION                                :{WHITE}Параметър на променливата 60+x на NewGRF (hexadecimal)
 
 # Sprite aligner window
-STR_SPRITE_ALIGNER_CAPTION                                      :{WHITE}Aligning sprite {COMMA} ({STRING})
 STR_SPRITE_ALIGNER_NEXT_BUTTON                                  :{BLACK}Следващ sprite
 STR_SPRITE_ALIGNER_NEXT_TOOLTIP                                 :{BLACK}Продължи към следващия нормален sprite, Пропускайки всички псевдо/прерисувани/текстови sprite и ги облечи в края
 STR_SPRITE_ALIGNER_GOTO_BUTTON                                  :{BLACK}Иди на sprite

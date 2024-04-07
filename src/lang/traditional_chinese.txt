@@ -3373,7 +3373,6 @@ STR_NEWGRF_INSPECT_CAPTION_OBJECT_AT_ROAD_TYPE                  :道路類型
 STR_NEWGRF_INSPECT_QUERY_CAPTION                                :{WHITE}NewGRF variable 60+x 參數（16 進位）
 
 # Sprite aligner window
-STR_SPRITE_ALIGNER_CAPTION                                      :{WHITE}定位 Sprite {COMMA} ({STRING})
 STR_SPRITE_ALIGNER_NEXT_BUTTON                                  :{BLACK}下一個子畫面
 STR_SPRITE_ALIGNER_NEXT_TOOLTIP                                 :{BLACK}繼續處理下個正常的子畫面，略過任何虛位／重新著色／文字字型相關的子畫面，並在到達最後的子畫面後，返回第一個子畫面繼續進行處理。
 STR_SPRITE_ALIGNER_GOTO_BUTTON                                  :{BLACK}前往子畫面

@@ -3488,7 +3488,6 @@ STR_NEWGRF_INSPECT_CAPTION_OBJECT_AT_ROAD_TYPE                  :Math ffordd
 STR_NEWGRF_INSPECT_QUERY_CAPTION                                :{WHITE}Paramedr newidyn NewGRF 60+x (hecsaddigidol)
 
 # Sprite aligner window
-STR_SPRITE_ALIGNER_CAPTION                                      :{WHITE}Alinio corlun {COMMA} ({STRING})
 STR_SPRITE_ALIGNER_NEXT_BUTTON                                  :{BLACK}Corlun nesaf
 STR_SPRITE_ALIGNER_NEXT_TOOLTIP                                 :{BLACK}Mynd i'r corlun cyffredin nesaf, gan hepgor unrhyw gorluniau ailliwio/ffont/llidgorluniau, ac amlapio o'r corlun olaf i'r gyntaf
 STR_SPRITE_ALIGNER_GOTO_BUTTON                                  :{BLACK}Mynd i gorlun

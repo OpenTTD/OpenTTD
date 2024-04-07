@@ -2806,7 +2806,6 @@ STR_NEWGRF_INSPECT_CAPTION_OBJECT_AT_RAIL_TYPE                  :spoar soart
 STR_NEWGRF_INSPECT_QUERY_CAPTION                                :{WHITE}NewGRF fariabele 60+x parameter (heksadesimaal)
 
 # Sprite aligner window
-STR_SPRITE_ALIGNER_CAPTION                                      :{WHITE}Rjochted ôfbylding {COMMA} ({STRING})
 STR_SPRITE_ALIGNER_NEXT_BUTTON                                  :{BLACK}Folgend flak
 STR_SPRITE_ALIGNER_NEXT_TOOLTIP                                 :{BLACK}Gean fierder nei de folgjende ôfbylding, sla pseudo/werkleure/lettertype ôfbyldings oer en begjin wer oernei at it ein berikke is
 STR_SPRITE_ALIGNER_GOTO_BUTTON                                  :{BLACK}Gean nei ôfbylding

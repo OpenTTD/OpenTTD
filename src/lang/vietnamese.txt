@@ -3488,7 +3488,6 @@ STR_NEWGRF_INSPECT_CAPTION_OBJECT_AT_ROAD_TYPE                  :Loại đườn
 STR_NEWGRF_INSPECT_QUERY_CAPTION                                :{WHITE}Biến số NewGRF là 60+x (dạng hexa)
 
 # Sprite aligner window
-STR_SPRITE_ALIGNER_CAPTION                                      :{WHITE}Điều chỉnh sprite {COMMA} ({STRING})
 STR_SPRITE_ALIGNER_NEXT_BUTTON                                  :{BLACK}Sprite tiếp
 STR_SPRITE_ALIGNER_NEXT_TOOLTIP                                 :{BLACK}Chuyển tới sprite bình thường kế tiếp, bỏ qua các loại sprite và căn theo điểm kết thúc
 STR_SPRITE_ALIGNER_GOTO_BUTTON                                  :{BLACK}Đi tới sprite

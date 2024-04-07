@@ -3424,7 +3424,6 @@ STR_NEWGRF_INSPECT_CAPTION_OBJECT_AT_ROAD_TYPE                  :Tipe jalan
 STR_NEWGRF_INSPECT_QUERY_CAPTION                                :{WHITE}Variabel NewGRF harus 60+x (hexadecimal)
 
 # Sprite aligner window
-STR_SPRITE_ALIGNER_CAPTION                                      :{WHITE}Menjajarkan sprite {COMMA} ({STRING})
 STR_SPRITE_ALIGNER_NEXT_BUTTON                                  :{BLACK}Sprite berikutnya
 STR_SPRITE_ALIGNER_NEXT_TOOLTIP                                 :{BLACK}Pergi ke sprite normal berikutnya, lewati sprite bayangan/warna ulang/huruf dan pembungkus saat mulai
 STR_SPRITE_ALIGNER_GOTO_BUTTON                                  :{BLACK}Pergi ke sprite

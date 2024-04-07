@@ -3188,7 +3188,6 @@ STR_NEWGRF_INSPECT_CAPTION_OBJECT_AT_RAIL_TYPE                  :Seòrsa an rèi
 STR_NEWGRF_INSPECT_QUERY_CAPTION                                :{WHITE}Paramadair 60+x (sia-dheicheach) caochladair NewGRF
 
 # Sprite aligner window
-STR_SPRITE_ALIGNER_CAPTION                                      :{WHITE}A' co-thaobhachadh sprite {COMMA} ({STRING})
 STR_SPRITE_ALIGNER_NEXT_BUTTON                                  :{BLACK}An t-ath sprite
 STR_SPRITE_ALIGNER_NEXT_TOOLTIP                                 :{BLACK}Lean air adhart dhan ath sprite àbhaisteach, a' gearradh leum thairis air sprites mas fhìor/ath-dhathaidh/crutha-chlò is a' pasgadh aig an deireadh gun chiad sprite
 STR_SPRITE_ALIGNER_GOTO_BUTTON                                  :{BLACK}Rach dhan sprite

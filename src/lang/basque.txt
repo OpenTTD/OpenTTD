@@ -2830,7 +2830,6 @@ STR_NEWGRF_INSPECT_CAPTION_OBJECT_AT_RAIL_TYPE                  :Trenbide mota
 STR_NEWGRF_INSPECT_QUERY_CAPTION                                :{WHITE}NewGRF aldagaia 60+x parametroetan (hexadecimala)
 
 # Sprite aligner window
-STR_SPRITE_ALIGNER_CAPTION                                      :{WHITE}"Sprit"-a lerrokatu {COMMA} ({STRING})
 STR_SPRITE_ALIGNER_NEXT_BUTTON                                  :{BLACK}Urrengo "sprit"-a
 STR_SPRITE_ALIGNER_NEXT_TOOLTIP                                 :{BLACK}Hurrengo grafiko arrunta erabili, pseudo/birkoloretu/grafiko tipoak desgaituz
 STR_SPRITE_ALIGNER_GOTO_BUTTON                                  :{BLACK}Joan "sprit"-era

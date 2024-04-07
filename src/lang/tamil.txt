@@ -3192,7 +3192,6 @@ STR_NEWGRF_INSPECT_CAPTION_OBJECT_AT_RAIL_TYPE                  :இரயில
 
 
 # Sprite aligner window
-STR_SPRITE_ALIGNER_CAPTION                                      :{WHITE}ஸ்பிரிட் ஒழுங்காக்கப்படுகிறது {COMMA} ({STRING})
 STR_SPRITE_ALIGNER_NEXT_BUTTON                                  :{BLACK}அடுத்த ஸ்பிரைட்டு
 STR_SPRITE_ALIGNER_GOTO_BUTTON                                  :{BLACK}ஸ்பிரைட்டுயிற்கு செல்லவும்
 STR_SPRITE_ALIGNER_PREVIOUS_BUTTON                              :{BLACK}முந்தைய ஸ்பிரைட்டு

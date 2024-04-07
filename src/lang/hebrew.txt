@@ -3069,7 +3069,6 @@ STR_NEWGRF_INSPECT_CAPTION_OBJECT_AT_RAIL_TYPE                  :סוג מסיל
 STR_NEWGRF_INSPECT_QUERY_CAPTION                                :{WHITE}משתנה NewGRF פרמטר 60+x (הקסה-דצימלי)
 
 # Sprite aligner window
-STR_SPRITE_ALIGNER_CAPTION                                      :{WHITE}מיישר ספרייט {COMMA} ({STRING})
 STR_SPRITE_ALIGNER_NEXT_BUTTON                                  :{BLACK}הספרייט הבא
 STR_SPRITE_ALIGNER_NEXT_TOOLTIP                                 :{BLACK}עבור לספרייט הבא, כאשר נדלג על כל הספרייטים המיוחדים ולבסוף נחזור לתחילת הרשימה
 STR_SPRITE_ALIGNER_GOTO_BUTTON                                  :{BLACK}דלג לספרייט

@@ -3082,7 +3082,6 @@ STR_NEWGRF_INSPECT_CAPTION_OBJECT_AT_RAIL_TYPE                  :Tip železnice
 STR_NEWGRF_INSPECT_QUERY_CAPTION                                :{WHITE}NewGRF spremenljivka 60+x parameter (hexadecimal)
 
 # Sprite aligner window
-STR_SPRITE_ALIGNER_CAPTION                                      :{WHITE}Uravnavam sličico {COMMA} ({STRING})
 STR_SPRITE_ALIGNER_NEXT_BUTTON                                  :{BLACK}Naslednja sličica
 STR_SPRITE_ALIGNER_NEXT_TOOLTIP                                 :{BLACK}Nadaljuj k naslednji navadni sličici, zanemari vse navidezne/pobarvane/besedilne sličice in okvir na koncu
 STR_SPRITE_ALIGNER_GOTO_BUTTON                                  :{BLACK}Pojdi na sličico

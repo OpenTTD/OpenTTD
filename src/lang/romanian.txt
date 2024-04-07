@@ -3481,7 +3481,6 @@ STR_NEWGRF_INSPECT_CAPTION_OBJECT_AT_ROAD_TYPE                  :Tip de drum
 STR_NEWGRF_INSPECT_QUERY_CAPTION                                :{WHITE}Parametru variabilă 60+x NewGRF (hexadecimal)
 
 # Sprite aligner window
-STR_SPRITE_ALIGNER_CAPTION                                      :{WHITE}Aliniere imagine {COMMA} ({STRING})
 STR_SPRITE_ALIGNER_NEXT_BUTTON                                  :{BLACK}Imaginea următoare
 STR_SPRITE_ALIGNER_NEXT_TOOLTIP                                 :{BLACK}Mergi la următoarea imagine normală, sărind peste pseudo-imagini, recolorări sau fonturi și repornește când s-a ajuns la sfârșit
 STR_SPRITE_ALIGNER_GOTO_BUTTON                                  :{BLACK}Mergi la imagine
