@@ -246,10 +246,10 @@ struct SDLVkMapping {
 	bool unprintable;
 };
 
-#define AS(x, z) {x, 0, z, false}
-#define AM(x, y, z, w) {x, (uint8_t)(y - x), z, false}
-#define AS_UP(x, z) {x, 0, z, true}
-#define AM_UP(x, y, z, w) {x, (uint8_t)(y - x), z, true}
+#define AS(x, z) {x, 1, z, false}
+#define AM(x, y, z, w) {x, (uint8_t)(y - x + 1), z, false}
+#define AS_UP(x, z) {x, 1, z, true}
+#define AM_UP(x, y, z, w) {x, (uint8_t)(y - x + 1), z, true}
 
 static const SDLVkMapping _vk_mapping[] = {
 	/* Pageup stuff + up/down */
@@ -306,14 +306,13 @@ static const SDLVkMapping _vk_mapping[] = {
 
 static uint ConvertSdlKeyIntoMy(SDL_Keysym *sym, char32_t *character)
 {
-	const SDLVkMapping *map;
 	uint key = 0;
 	bool unprintable = false;
 
-	for (map = _vk_mapping; map != endof(_vk_mapping); ++map) {
-		if ((uint)(sym->sym - map->vk_from) <= map->vk_count) {
-			key = sym->sym - map->vk_from + map->map_to;
-			unprintable = map->unprintable;
+	for (const auto &map : _vk_mapping) {
+		if (IsInsideBS(sym, map.vk_from, map.vk_count)) {
+			key = sym->sym - map.vk_from + map.map_to;
+			unprintable = map.unprintable;
 			break;
 		}
 	}
@@ -346,12 +345,11 @@ static uint ConvertSdlKeyIntoMy(SDL_Keysym *sym, char32_t *character)
  */
 static uint ConvertSdlKeycodeIntoMy(SDL_Keycode kc)
 {
-	const SDLVkMapping *map;
 	uint key = 0;
 
-	for (map = _vk_mapping; map != endof(_vk_mapping); ++map) {
-		if ((uint)(kc - map->vk_from) <= map->vk_count) {
-			key = kc - map->vk_from + map->map_to;
+	for (const auto &map : _vk_mapping) {
+		if (IsInsideBS(kc, map.vk_from, map.vk_count)) {
+			key = kc - map.vk_from + map.map_to;
 			break;
 		}
 	}
