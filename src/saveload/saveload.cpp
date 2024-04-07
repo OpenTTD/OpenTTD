@@ -2678,23 +2678,23 @@ static const SaveLoadFormat *GetSavegameFormat(const std::string &full_name, uin
 		bool has_comp_level = separator != std::string::npos;
 		const std::string name(full_name, 0, has_comp_level ? separator : full_name.size());
 
-		for (const SaveLoadFormat *slf = &_saveload_formats[0]; slf != endof(_saveload_formats); slf++) {
-			if (slf->init_write != nullptr && name.compare(slf->name) == 0) {
-				*compression_level = slf->default_compression;
+		for (const auto &slf : _saveload_formats) {
+			if (slf.init_write != nullptr && name.compare(slf.name) == 0) {
+				*compression_level = slf.default_compression;
 				if (has_comp_level) {
 					const std::string complevel(full_name, separator + 1);
 
 					/* Get the level and determine whether all went fine. */
 					size_t processed;
 					long level = std::stol(complevel, &processed, 10);
-					if (processed == 0 || level != Clamp(level, slf->min_compression, slf->max_compression)) {
+					if (processed == 0 || level != Clamp(level, slf.min_compression, slf.max_compression)) {
 						SetDParamStr(0, complevel);
 						ShowErrorMessage(STR_CONFIG_ERROR, STR_CONFIG_ERROR_INVALID_SAVEGAME_COMPRESSION_LEVEL, WL_CRITICAL);
 					} else {
 						*compression_level = level;
 					}
 				}
-				return slf;
+				return &slf;
 			}
 		}
 
