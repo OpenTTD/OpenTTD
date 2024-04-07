@@ -60,7 +60,7 @@ struct DebugLevel {
 };
 
 #define DEBUG_LEVEL(x) { #x, &_debug_##x##_level }
-	static const DebugLevel debug_level[] = {
+static const DebugLevel _debug_levels[] = {
 	DEBUG_LEVEL(driver),
 	DEBUG_LEVEL(grf),
 	DEBUG_LEVEL(map),
@@ -79,7 +79,7 @@ struct DebugLevel {
 #ifdef RANDOM_DEBUG
 	DEBUG_LEVEL(random),
 #endif
-	};
+};
 #undef DEBUG_LEVEL
 
 /**
@@ -89,13 +89,13 @@ struct DebugLevel {
 void DumpDebugFacilityNames(std::back_insert_iterator<std::string> &output_iterator)
 {
 	bool written = false;
-	for (const DebugLevel *i = debug_level; i != endof(debug_level); ++i) {
+	for (const auto &debug_level : _debug_levels) {
 		if (!written) {
 			fmt::format_to(output_iterator, "List of debug facility names:\n");
 		} else {
 			fmt::format_to(output_iterator, ", ");
 		}
-		fmt::format_to(output_iterator, "{}", i->name);
+		fmt::format_to(output_iterator, "{}", debug_level.name);
 		written = true;
 	}
 	if (written) {
@@ -153,13 +153,11 @@ void SetDebugString(const char *s, void (*error_func)(const std::string &))
 
 	/* Global debugging level? */
 	if (*s >= '0' && *s <= '9') {
-		const DebugLevel *i;
-
 		v = std::strtoul(s, &end, 0);
 		s = end;
 
-		for (i = debug_level; i != endof(debug_level); ++i) {
-			new_levels[i->name] = v;
+		for (const auto &debug_level : _debug_levels) {
+			new_levels[debug_level.name] = v;
 		}
 	}
 
@@ -174,9 +172,9 @@ void SetDebugString(const char *s, void (*error_func)(const std::string &))
 
 		/* check debugging levels */
 		const DebugLevel *found = nullptr;
-		for (const DebugLevel *i = debug_level; i != endof(debug_level); ++i) {
-			if (s == t + strlen(i->name) && strncmp(t, i->name, s - t) == 0) {
-				found = i;
+		for (const auto &debug_level : _debug_levels) {
+			if (s == t + strlen(debug_level.name) && strncmp(t, debug_level.name, s - t) == 0) {
+				found = &debug_level;
 				break;
 			}
 		}
@@ -194,10 +192,10 @@ void SetDebugString(const char *s, void (*error_func)(const std::string &))
 	}
 
 	/* Apply the changes after parse is successful */
-	for (const DebugLevel *i = debug_level; i != endof(debug_level); ++i) {
-		const auto &nl = new_levels.find(i->name);
+	for (const auto &debug_level : _debug_levels) {
+		const auto &nl = new_levels.find(debug_level.name);
 		if (nl != new_levels.end()) {
-			*i->level = nl->second;
+			*debug_level.level = nl->second;
 		}
 	}
 }
@@ -210,9 +208,9 @@ void SetDebugString(const char *s, void (*error_func)(const std::string &))
 std::string GetDebugString()
 {
 	std::string result;
-	for (const DebugLevel *i = debug_level; i != endof(debug_level); ++i) {
+	for (const auto &debug_level : _debug_levels) {
 		if (!result.empty()) result += ", ";
-		fmt::format_to(std::back_inserter(result), "{}={}", i->name, *i->level);
+		fmt::format_to(std::back_inserter(result), "{}={}", debug_level.name, *debug_level.level);
 	}
 	return result;
 }
