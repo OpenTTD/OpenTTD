@@ -378,13 +378,11 @@ class NIHIndustry : public NIHelper {
 		return ro.GetScope(VSG_SCOPE_SELF)->GetVariable(var, param, avail);
 	}
 
-	uint GetPSASize(uint, uint32_t) const override { return cpp_lengthof(PersistentStorage, storage); }
-
-	const int32_t *GetPSAFirstPosition(uint index, uint32_t) const override
+	const std::span<int32_t> GetPSA(uint index, uint32_t) const override
 	{
 		const Industry *i = (const Industry *)this->GetInstance(index);
-		if (i->psa == nullptr) return nullptr;
-		return (int32_t *)(&i->psa->storage);
+		if (i->psa == nullptr) return {};
+		return i->psa->storage;
 	}
 };
 
@@ -554,13 +552,11 @@ class NIHAirport : public NIHelper {
 		return ro.GetScope(VSG_SCOPE_SELF)->GetVariable(var, param, avail);
 	}
 
-	uint GetPSASize(uint, uint32_t) const override { return cpp_lengthof(PersistentStorage, storage); }
-
-	const int32_t *GetPSAFirstPosition(uint index, uint32_t) const override
+	const std::span<int32_t> GetPSA(uint index, uint32_t) const override
 	{
 		const Station *st = (const Station *)this->GetInstance(index);
-		if (st->airport.psa == nullptr) return nullptr;
-		return (int32_t *)(&st->airport.psa->storage);
+		if (st->airport.psa == nullptr) return {};
+		return st->airport.psa->storage;
 	}
 };
 
@@ -595,7 +591,6 @@ class NIHTown : public NIHelper {
 	void SetStringParameters(uint index) const override  { this->SetSimpleStringParameters(STR_TOWN_NAME, index); }
 	uint32_t GetGRFID(uint) const override               { return 0; }
 	bool PSAWithParameter() const override               { return true; }
-	uint GetPSASize(uint, uint32_t) const override       { return cpp_lengthof(PersistentStorage, storage); }
 
 	uint Resolve(uint index, uint var, uint param, bool *avail) const override
 	{
@@ -603,15 +598,15 @@ class NIHTown : public NIHelper {
 		return ro.GetScope(VSG_SCOPE_SELF)->GetVariable(var, param, avail);
 	}
 
-	const int32_t *GetPSAFirstPosition(uint index, uint32_t grfid) const override
+	const std::span<int32_t> GetPSA(uint index, uint32_t grfid) const override
 	{
 		Town *t = Town::Get(index);
 
 		for (const auto &it : t->psa_list) {
-			if (it->grfid == grfid) return &it->storage[0];
+			if (it->grfid == grfid) return it->storage;
 		}
 
-		return nullptr;
+		return {};
 	}
 };
 
