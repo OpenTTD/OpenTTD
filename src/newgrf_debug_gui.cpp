@@ -181,25 +181,14 @@ public:
 	}
 
 	/**
-	 * Allows to know the size of the persistent storage.
+	 * Gets the span containing the persistent storage.
 	 * @param index Index of the item.
 	 * @param grfid Parameter for the PSA. Only required for items with parameters.
-	 * @return Size of the persistent storage in indices.
+	 * @return Span of the storage array or an empty span when not present.
 	 */
-	virtual uint GetPSASize([[maybe_unused]] uint index, [[maybe_unused]] uint32_t grfid) const
+	virtual const std::span<int32_t> GetPSA([[maybe_unused]] uint index, [[maybe_unused]] uint32_t grfid) const
 	{
-		return 0;
-	}
-
-	/**
-	 * Gets the first position of the array containing the persistent storage.
-	 * @param index Index of the item.
-	 * @param grfid Parameter for the PSA. Only required for items with parameters.
-	 * @return Pointer to the first position of the storage array or nullptr if not present.
-	 */
-	virtual const int32_t *GetPSAFirstPosition([[maybe_unused]] uint index, [[maybe_unused]] uint32_t grfid) const
-	{
-		return nullptr;
+		return {};
 	}
 
 protected:
@@ -472,17 +461,16 @@ struct NewGRFInspectWindow : Window {
 			}
 		}
 
-		uint psa_size = nih->GetPSASize(index, this->caller_grfid);
-		const int32_t *psa = nih->GetPSAFirstPosition(index, this->caller_grfid);
-		if (psa_size != 0 && psa != nullptr) {
+		auto psa = nih->GetPSA(index, this->caller_grfid);
+		if (!psa.empty()) {
 			if (nih->PSAWithParameter()) {
 				this->DrawString(r, i++, fmt::format("Persistent storage [{:08X}]:", BSWAP32(this->caller_grfid)));
 			} else {
 				this->DrawString(r, i++, "Persistent storage:");
 			}
-			assert(psa_size % 4 == 0);
-			for (uint j = 0; j < psa_size; j += 4, psa += 4) {
-				this->DrawString(r, i++, fmt::format("  {}: {} {} {} {}", j, psa[0], psa[1], psa[2], psa[3]));
+			assert(psa.size() % 4 == 0);
+			for (size_t j = 0; j < psa.size(); j += 4) {
+				this->DrawString(r, i++, fmt::format("  {}: {} {} {} {}", j, psa[j], psa[j + 1], psa[j + 2], psa[j + 3]));
 			}
 		}
 
