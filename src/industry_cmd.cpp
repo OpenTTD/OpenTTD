@@ -1895,7 +1895,7 @@ static void DoCreateNewIndustry(Industry *i, TileIndex tile, IndustryType type, 
 				continue;
 			}
 			/* Verify valid cargo */
-			if (std::find(indspec->accepts_cargo, endof(indspec->accepts_cargo), cargo) == endof(indspec->accepts_cargo)) {
+			if (std::find(std::begin(indspec->accepts_cargo), std::end(indspec->accepts_cargo), cargo) == std::end(indspec->accepts_cargo)) {
 				/* Cargo not in spec, error in NewGRF */
 				ErrorUnknownCallbackResult(indspec->grf_prop.grffile->grfid, CBID_INDUSTRY_INPUT_CARGO_TYPES, res);
 				break;
@@ -1931,7 +1931,7 @@ static void DoCreateNewIndustry(Industry *i, TileIndex tile, IndustryType type, 
 				continue;
 			}
 			/* Verify valid cargo */
-			if (std::find(indspec->produced_cargo, endof(indspec->produced_cargo), cargo) == endof(indspec->produced_cargo)) {
+			if (std::find(std::begin(indspec->produced_cargo), std::end(indspec->produced_cargo), cargo) == std::end(indspec->produced_cargo)) {
 				/* Cargo not in spec, error in NewGRF */
 				ErrorUnknownCallbackResult(indspec->grf_prop.grffile->grfid, CBID_INDUSTRY_OUTPUT_CARGO_TYPES, res);
 				break;
