@@ -206,6 +206,6 @@ struct PersistentStorage : PersistentStorageArray<int32_t, 256>, PersistentStora
 	}
 };
 
-static_assert(cpp_lengthof(OldPersistentStorage, storage) <= cpp_lengthof(PersistentStorage, storage));
+static_assert(std::tuple_size_v<decltype(OldPersistentStorage::storage)> <= std::tuple_size_v<decltype(PersistentStorage::storage)>);
 
 #endif /* NEWGRF_STORAGE_H */
