@@ -2234,7 +2234,7 @@ void ShowJoinStatusWindow()
 
 void ShowNetworkNeedPassword(NetworkPasswordType npt, std::shared_ptr<NetworkAuthenticationPasswordRequest> request)
 {
-	NetworkJoinStatusWindow *w = (NetworkJoinStatusWindow *)FindWindowById(WC_NETWORK_STATUS_WINDOW, WN_NETWORK_STATUS_WINDOW_JOIN);
+	NetworkJoinStatusWindow *w = dynamic_cast<NetworkJoinStatusWindow *>(FindWindowById(WC_NETWORK_STATUS_WINDOW, WN_NETWORK_STATUS_WINDOW_JOIN));
 	if (w == nullptr) return;
 	w->request = request;
 

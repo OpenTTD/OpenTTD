@@ -1169,7 +1169,7 @@ void ShowCompanyGroupForVehicle(const Vehicle *v)
  */
 static inline VehicleGroupWindow *FindVehicleGroupWindow(VehicleType vt, Owner owner)
 {
-	return (VehicleGroupWindow *)FindWindowById(GetWindowClassForVehicleType(vt), VehicleListIdentifier(VL_GROUP_LIST, vt, owner).Pack());
+	return dynamic_cast<VehicleGroupWindow *>(FindWindowById(GetWindowClassForVehicleType(vt), VehicleListIdentifier(VL_GROUP_LIST, vt, owner).Pack()));
 }
 
 /**

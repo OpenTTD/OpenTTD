@@ -1017,7 +1017,7 @@ static void ShowNewsMessage(NewsIterator ni)
  */
 bool HideActiveNewsMessage()
 {
-	NewsWindow *w = (NewsWindow*)FindWindowById(WC_NEWS_WINDOW, 0);
+	NewsWindow *w = dynamic_cast<NewsWindow *>(FindWindowById(WC_NEWS_WINDOW, 0));
 	if (w == nullptr) return false;
 	w->Close();
 	return true;
