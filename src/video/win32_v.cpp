@@ -61,8 +61,8 @@ struct Win32VkMapping {
 	uint8_t map_to;
 };
 
-#define AS(x, z) {x, 0, z}
-#define AM(x, y, z, w) {x, y - x, z}
+#define AS(x, z) {x, 1, z}
+#define AM(x, y, z, w) {x, y - x + 1, z}
 
 static const Win32VkMapping _vk_mapping[] = {
 	/* Pageup stuff + up/down */
@@ -107,12 +107,11 @@ static const Win32VkMapping _vk_mapping[] = {
 
 static uint MapWindowsKey(uint sym)
 {
-	const Win32VkMapping *map;
 	uint key = 0;
 
-	for (map = _vk_mapping; map != endof(_vk_mapping); ++map) {
-		if ((uint)(sym - map->vk_from) <= map->vk_count) {
-			key = sym - map->vk_from + map->map_to;
+	for (const auto &map : _vk_mapping) {
+		if (IsInsideBS(sym, map.vk_from, map.vk_count)) {
+			key = sym - map.vk_from + map.map_to;
 			break;
 		}
 	}

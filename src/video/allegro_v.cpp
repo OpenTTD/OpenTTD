@@ -251,8 +251,8 @@ struct AllegroVkMapping {
 	uint8_t map_to;
 };
 
-#define AS(x, z) {x, 0, z}
-#define AM(x, y, z, w) {x, y - x, z}
+#define AS(x, z) {x, 1, z}
+#define AM(x, y, z, w) {x, y - x + 1, z}
 
 static const AllegroVkMapping _vk_mapping[] = {
 	/* Pageup stuff + up/down */
@@ -312,12 +312,11 @@ static uint32_t ConvertAllegroKeyIntoMy(char32_t *character)
 	int scancode;
 	int unicode = ureadkey(&scancode);
 
-	const AllegroVkMapping *map;
 	uint key = 0;
 
-	for (map = _vk_mapping; map != endof(_vk_mapping); ++map) {
-		if ((uint)(scancode - map->vk_from) <= map->vk_count) {
-			key = scancode - map->vk_from + map->map_to;
+	for (const auto &map : _vk_mapping) {
+		if (IsInsideBS(scancode, map.vk_from, map.vk_count)) {
+			key = scancode - map.vk_from + map.map_to;
 			break;
 		}
 	}
