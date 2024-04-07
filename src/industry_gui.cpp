@@ -2380,8 +2380,8 @@ private:
 	}
 };
 
-static_assert(MAX_CARGOES >= cpp_lengthof(IndustrySpec, produced_cargo));
-static_assert(MAX_CARGOES >= cpp_lengthof(IndustrySpec, accepts_cargo));
+static_assert(MAX_CARGOES >= std::tuple_size_v<decltype(IndustrySpec::produced_cargo)>);
+static_assert(MAX_CARGOES >= std::tuple_size_v<decltype(IndustrySpec::accepts_cargo)>);
 
 Dimension CargoesField::legend;       ///< Dimension of the legend blob.
 Dimension CargoesField::cargo_border; ///< Dimensions of border between cargo lines and industry boxes.

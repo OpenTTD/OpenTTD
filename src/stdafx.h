@@ -301,14 +301,6 @@ char (&ArraySizeHelper(T (&array)[N]))[N];
  */
 #define cpp_sizeof(base, variable) (sizeof(std::declval<base>().variable))
 
-/**
- * Gets the length of an array variable within a class.
- * @param base     The class the variable is in.
- * @param variable The array variable to get the size of.
- * @return the length of the array
- */
-#define cpp_lengthof(base, variable) (cpp_sizeof(base, variable) / cpp_sizeof(base, variable[0]))
-
 
 /* take care of some name clashes on MacOS */
 #if defined(__APPLE__)
