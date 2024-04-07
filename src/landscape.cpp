@@ -933,19 +933,17 @@ static void GenerateTerrain(int type, uint flag)
 static void CreateDesertOrRainForest(uint desert_tropic_line)
 {
 	uint update_freq = Map::Size() / 4;
-	const TileIndexDiffC *data;
 
 	for (TileIndex tile = 0; tile != Map::Size(); ++tile) {
 		if ((tile.base() % update_freq) == 0) IncreaseGeneratingWorldProgress(GWP_LANDSCAPE);
 
 		if (!IsValidTile(tile)) continue;
 
-		for (data = _make_desert_or_rainforest_data;
-				data != endof(_make_desert_or_rainforest_data); ++data) {
-			TileIndex t = AddTileIndexDiffCWrap(tile, *data);
-			if (t != INVALID_TILE && (TileHeight(t) >= desert_tropic_line || IsTileType(t, MP_WATER))) break;
-		}
-		if (data == endof(_make_desert_or_rainforest_data)) {
+		auto allows_desert = [tile, desert_tropic_line](auto &offset) {
+			TileIndex t = AddTileIndexDiffCWrap(tile, offset);
+			return t == INVALID_TILE || (TileHeight(t) < desert_tropic_line && !IsTileType(t, MP_WATER));
+		};
+		if (std::all_of(std::begin(_make_desert_or_rainforest_data), std::end(_make_desert_or_rainforest_data), allows_desert)) {
 			SetTropicZone(tile, TROPICZONE_DESERT);
 		}
 	}
@@ -961,12 +959,11 @@ static void CreateDesertOrRainForest(uint desert_tropic_line)
 
 		if (!IsValidTile(tile)) continue;
 
-		for (data = _make_desert_or_rainforest_data;
-				data != endof(_make_desert_or_rainforest_data); ++data) {
-			TileIndex t = AddTileIndexDiffCWrap(tile, *data);
-			if (t != INVALID_TILE && IsTileType(t, MP_CLEAR) && IsClearGround(t, CLEAR_DESERT)) break;
-		}
-		if (data == endof(_make_desert_or_rainforest_data)) {
+		auto allows_rainforest = [tile](auto &offset) {
+			TileIndex t = AddTileIndexDiffCWrap(tile, offset);
+			return t == INVALID_TILE || !IsTileType(t, MP_CLEAR) || !IsClearGround(t, CLEAR_DESERT);
+		};
+		if (std::all_of(std::begin(_make_desert_or_rainforest_data), std::end(_make_desert_or_rainforest_data), allows_rainforest)) {
 			SetTropicZone(tile, TROPICZONE_RAINFOREST);
 		}
 	}
