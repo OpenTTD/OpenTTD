@@ -45,10 +45,10 @@ static DWORD WINAPI SoundThread(LPVOID)
 	SetCurrentThreadName("ottd:win-sound");
 
 	do {
-		for (WAVEHDR *hdr = _wave_hdr; hdr != endof(_wave_hdr); hdr++) {
-			if ((hdr->dwFlags & WHDR_INQUEUE) != 0) continue;
-			MxMixSamples(hdr->lpData, hdr->dwBufferLength / 4);
-			if (waveOutWrite(_waveout, hdr, sizeof(WAVEHDR)) != MMSYSERR_NOERROR) {
+		for (auto &hdr : _wave_hdr) {
+			if ((hdr.dwFlags & WHDR_INQUEUE) != 0) continue;
+			MxMixSamples(hdr.lpData, hdr.dwBufferLength / 4);
+			if (waveOutWrite(_waveout, &hdr, sizeof(WAVEHDR)) != MMSYSERR_NOERROR) {
 				MessageBox(nullptr, L"Sounds are disabled until restart.", L"waveOutWrite failed", MB_ICONINFORMATION);
 				return 0;
 			}

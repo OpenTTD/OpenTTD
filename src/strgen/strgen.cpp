@@ -337,25 +337,25 @@ int CDECL main(int argc, char *argv[])
 		switch (i) {
 			case 'C':
 				fmt::print("args\tflags\tcommand\treplacement\n");
-				for (const CmdStruct *cs = _cmd_structs; cs < endof(_cmd_structs); cs++) {
+				for (const auto &cs : _cmd_structs) {
 					char flags;
-					if (cs->proc == EmitGender) {
+					if (cs.proc == EmitGender) {
 						flags = 'g'; // Command needs number of parameters defined by number of genders
-					} else if (cs->proc == EmitPlural) {
+					} else if (cs.proc == EmitPlural) {
 						flags = 'p'; // Command needs number of parameters defined by plural value
-					} else if (cs->flags & C_DONTCOUNT) {
+					} else if (cs.flags & C_DONTCOUNT) {
 						flags = 'i'; // Command may be in the translation when it is not in base
 					} else {
 						flags = '0'; // Command needs no parameters
 					}
-					fmt::print("{}\t{:c}\t\"{}\"\t\"{}\"\n", cs->consumes, flags, cs->cmd, strstr(cs->cmd, "STRING") ? "STRING" : cs->cmd);
+					fmt::print("{}\t{:c}\t\"{}\"\t\"{}\"\n", cs.consumes, flags, cs.cmd, strstr(cs.cmd, "STRING") ? "STRING" : cs.cmd);
 				}
 				return 0;
 
 			case 'L':
 				fmt::print("count\tdescription\tnames\n");
-				for (const PluralForm *pf = _plural_forms; pf < endof(_plural_forms); pf++) {
-					fmt::print("{}\t\"{}\"\t{}\n", pf->plural_count, pf->description, pf->names);
+				for (const auto &pf : _plural_forms) {
+					fmt::print("{}\t\"{}\"\t{}\n", pf.plural_count, pf.description, pf.names);
 				}
 				return 0;
 

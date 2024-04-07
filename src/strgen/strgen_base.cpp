@@ -420,8 +420,8 @@ void EmitGender(Buffer *buffer, char *buf, int)
 
 static const CmdStruct *FindCmd(const char *s, int len)
 {
-	for (const CmdStruct *cs = _cmd_structs; cs != endof(_cmd_structs); cs++) {
-		if (strncmp(cs->cmd, s, len) == 0 && cs->cmd[len] == '\0') return cs;
+	for (const auto &cs : _cmd_structs) {
+		if (strncmp(cs.cmd, s, len) == 0 && cs.cmd[len] == '\0') return &cs;
 	}
 	return nullptr;
 }
