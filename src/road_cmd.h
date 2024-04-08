@@ -13,6 +13,7 @@
 #include "direction_type.h"
 #include "road_type.h"
 #include "command_type.h"
+#include "depot_type.h"
 
 enum RoadStopClassID : uint16_t;
 
@@ -22,7 +23,7 @@ void UpdateNearestTownForRoadTiles(bool invalidate);
 CommandCost CmdBuildLongRoad(DoCommandFlag flags, TileIndex end_tile, TileIndex start_tile, RoadType rt, Axis axis, DisallowedRoadDirections drd, bool start_half, bool end_half, bool is_ai);
 std::tuple<CommandCost, Money> CmdRemoveLongRoad(DoCommandFlag flags, TileIndex end_tile, TileIndex start_tile, RoadType rt, Axis axis, bool start_half, bool end_half);
 CommandCost CmdBuildRoad(DoCommandFlag flags, TileIndex tile, RoadBits pieces, RoadType rt, DisallowedRoadDirections toggle_drd, TownID town_id);
-CommandCost CmdBuildRoadDepot(DoCommandFlag flags, TileIndex tile, RoadType rt, DiagDirection dir);
+CommandCost CmdBuildRoadDepot(DoCommandFlag flags, TileIndex tile, RoadType rt, DiagDirection dir, bool adjacent, DepotID join_to, TileIndex end_tile);
 CommandCost CmdConvertRoad(DoCommandFlag flags, TileIndex tile, TileIndex area_start, RoadType to_type);
 
 DEF_CMD_TRAIT(CMD_BUILD_LONG_ROAD,  CmdBuildLongRoad,  CMD_AUTO | CMD_NO_WATER | CMD_DEITY, CMDT_LANDSCAPE_CONSTRUCTION)
@@ -33,7 +34,7 @@ DEF_CMD_TRAIT(CMD_CONVERT_ROAD,     CmdConvertRoad,    0,                       
 
 CommandCallback CcPlaySound_CONSTRUCTION_OTHER;
 CommandCallback CcBuildRoadTunnel;
-void CcRoadDepot(Commands cmd, const CommandCost &result, TileIndex tile, RoadType rt, DiagDirection dir);
+void CcRoadDepot(Commands cmd, const CommandCost &result, TileIndex start_tile, RoadType rt, DiagDirection dir, bool adjacent, DepotID join_to, TileIndex end_tile);
 void CcRoadStop(Commands cmd, const CommandCost &result, TileIndex tile, uint8_t width, uint8_t length, RoadStopType, bool is_drive_through, DiagDirection dir, RoadType, RoadStopClassID spec_class, uint16_t spec_index, StationID, bool);
 
 #endif /* ROAD_CMD_H */
