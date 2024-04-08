@@ -155,7 +155,7 @@ enum CargoSuffixInOut {
 template <typename TC, typename TS>
 static inline void GetAllCargoSuffixes(CargoSuffixInOut use_input, CargoSuffixType cst, const Industry *ind, IndustryType ind_type, const IndustrySpec *indspec, const TC &cargoes, TS &suffixes)
 {
-	static_assert(lengthof(cargoes) <= lengthof(suffixes));
+	static_assert(std::tuple_size_v<std::remove_reference_t<decltype(cargoes)>> <= lengthof(suffixes));
 
 	if (indspec->behaviour & INDUSTRYBEH_CARGOTYPES_UNLIMITED) {
 		/* Reworked behaviour with new many-in-many-out scheme */
@@ -450,7 +450,7 @@ public:
 				Dimension d = {0, 0};
 				for (const auto &indtype : this->list) {
 					const IndustrySpec *indsp = GetIndustrySpec(indtype);
-					CargoSuffix cargo_suffix[lengthof(indsp->accepts_cargo)];
+					CargoSuffix cargo_suffix[std::tuple_size_v<decltype(indsp->accepts_cargo)>];
 
 					/* Measure the accepted cargoes, if any. */
 					GetAllCargoSuffixes(CARGOSUFFIX_IN, CST_FUND, nullptr, indtype, indsp, indsp->accepts_cargo, cargo_suffix);
@@ -566,7 +566,7 @@ public:
 					ir.top += GetCharacterHeight(FS_NORMAL);
 				}
 
-				CargoSuffix cargo_suffix[lengthof(indsp->accepts_cargo)];
+				CargoSuffix cargo_suffix[std::tuple_size_v<decltype(indsp->accepts_cargo)>];
 
 				/* Draw the accepted cargoes, if any. Otherwise, will print "Nothing". */
 				GetAllCargoSuffixes(CARGOSUFFIX_IN, CST_FUND, nullptr, this->selected_type, indsp, indsp->accepts_cargo, cargo_suffix);
@@ -2420,7 +2420,7 @@ struct CargoesRow {
 			int other_count = 0;
 
 			const IndustrySpec *indsp = GetIndustrySpec(ind_fld->u.industry.ind_type);
-			assert(CargoesField::max_cargoes <= lengthof(indsp->produced_cargo));
+			assert(CargoesField::max_cargoes <= std::size(indsp->produced_cargo));
 			for (uint i = 0; i < CargoesField::max_cargoes; i++) {
 				int col = cargo_fld->ConnectCargo(indsp->produced_cargo[i], true);
 				if (col < 0) others[other_count++] = indsp->produced_cargo[i];
@@ -2479,7 +2479,7 @@ struct CargoesRow {
 			int other_count = 0;
 
 			const IndustrySpec *indsp = GetIndustrySpec(ind_fld->u.industry.ind_type);
-			assert(CargoesField::max_cargoes <= lengthof(indsp->accepts_cargo));
+			assert(CargoesField::max_cargoes <= std::size(indsp->accepts_cargo));
 			for (uint i = 0; i < CargoesField::max_cargoes; i++) {
 				int col = cargo_fld->ConnectCargo(indsp->accepts_cargo[i], false);
 				if (col < 0) others[other_count++] = indsp->accepts_cargo[i];

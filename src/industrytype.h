@@ -109,7 +109,7 @@ struct IndustrySpec {
 	uint32_t prospecting_chance;                  ///< Chance prospecting succeeds
 	IndustryType conflicting[3];                ///< Industries this industry cannot be close to
 	uint8_t check_proc;                            ///< Index to a procedure to check for conflicting circumstances
-	CargoID produced_cargo[INDUSTRY_NUM_OUTPUTS];
+	std::array<CargoID, INDUSTRY_NUM_OUTPUTS> produced_cargo;
 	std::variant<CargoLabel, MixedCargoType> produced_cargo_label[INDUSTRY_NUM_OUTPUTS];
 	uint8_t production_rate[INDUSTRY_NUM_OUTPUTS];
 	/**
@@ -117,7 +117,7 @@ struct IndustrySpec {
 	 * If the waiting cargo is less than this number, no cargo is moved to it.
 	 */
 	uint8_t minimal_cargo;
-	CargoID accepts_cargo[INDUSTRY_NUM_INPUTS]; ///< 16 accepted cargoes.
+	std::array<CargoID, INDUSTRY_NUM_INPUTS> accepts_cargo; ///< 16 accepted cargoes.
 	std::variant<CargoLabel, MixedCargoType> accepts_cargo_label[INDUSTRY_NUM_INPUTS];
 	uint16_t input_cargo_multiplier[INDUSTRY_NUM_INPUTS][INDUSTRY_NUM_OUTPUTS]; ///< Input cargo multipliers (multiply amount of incoming cargo for the produced cargoes)
 	IndustryLifeType life_type;                 ///< This is also known as Industry production flag, in newgrf specs
