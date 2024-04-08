@@ -235,13 +235,26 @@ inline const RoadTypeInfo *GetRoadTypeInfo(RoadType roadtype)
  * Checks if an engine of the given RoadType got power on a tile with a given
  * RoadType. This would normally just be an equality check, but for electrified
  * roads (which also support non-electric vehicles).
- * @return Whether the engine got power on this tile.
  * @param  enginetype The RoadType of the engine we are considering.
  * @param  tiletype   The RoadType of the tile we are considering.
+ * @return Whether the engine got power on this tile.
  */
 inline bool HasPowerOnRoad(RoadType enginetype, RoadType tiletype)
 {
 	return HasBit(GetRoadTypeInfo(enginetype)->powered_roadtypes, tiletype);
+}
+
+/**
+ * Checks if an engine with a given \a enginetype is powered on \a road_types.
+ * This would normally just be an equality check,
+ * but for electrified roads (which also support non-electric vehicles).
+ * @param  enginetype The RoadType of the engine we are considering.
+ * @param  rail_types The RoadTypes we are considering.
+ * @return Whether the engine got power on this tile.
+ */
+static inline bool HasPowerOnRoads(RoadType enginetype, RoadTypes road_types)
+{
+	return (GetRoadTypeInfo(enginetype)->powered_roadtypes & road_types) != 0;
 }
 
 /**

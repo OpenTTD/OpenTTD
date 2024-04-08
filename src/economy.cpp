@@ -55,6 +55,7 @@
 #include "timer/timer.h"
 #include "timer/timer_game_calendar.h"
 #include "timer/timer_game_economy.h"
+#include "depot_base.h"
 
 #include "table/strings.h"
 #include "table/pricebase.h"
@@ -373,6 +374,12 @@ void ChangeOwnershipOfCompanyItems(Owner old_owner, Owner new_owner)
 		}
 	}
 	if (new_owner == INVALID_OWNER) RebuildSubsidisedSourceAndDestinationCache();
+
+	for (Depot *dep : Depot::Iterate()) {
+		if (dep->owner == old_owner && new_owner != INVALID_OWNER) {
+			dep->owner = new_owner;
+		}
+	}
 
 	/* Take care of rating and transport rights in towns */
 	for (Town *t : Town::Iterate()) {

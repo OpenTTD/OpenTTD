@@ -1188,7 +1188,7 @@ CommandCost CmdBuildRoadDepot(DoCommandFlag flags, TileIndex tile, RoadType rt, 
 		if (rotate_existing_depot) {
 			SetRoadDepotExitDirection(tile, dir);
 		} else {
-			Depot *dep = new Depot(tile);
+			Depot *dep = new Depot(tile, VEH_ROAD, _current_company);
 			dep->build_date = TimerGameCalendar::date;
 			MakeRoadDepot(tile, _current_company, dep->index, dir, rt);
 			MakeDefaultName(dep);
