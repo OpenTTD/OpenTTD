@@ -286,14 +286,6 @@ char (&ArraySizeHelper(T (&array)[N]))[N];
 #define lengthof(array) (sizeof(ArraySizeHelper(array)))
 
 /**
- * Get the end element of an fixed size array.
- *
- * @param x The pointer to the first element of the array
- * @return The pointer past to the last element of the array
- */
-#define endof(x) (&x[lengthof(x)])
-
-/**
  * Get the last element of an fixed size array.
  *
  * @param x The pointer to the first element of the array
