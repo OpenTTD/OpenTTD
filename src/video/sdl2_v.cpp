@@ -310,7 +310,7 @@ static uint ConvertSdlKeyIntoMy(SDL_Keysym *sym, char32_t *character)
 	bool unprintable = false;
 
 	for (const auto &map : _vk_mapping) {
-		if (IsInsideBS(sym, map.vk_from, map.vk_count)) {
+		if (IsInsideBS(sym->sym, map.vk_from, map.vk_count)) {
 			key = sym->sym - map.vk_from + map.map_to;
 			unprintable = map.unprintable;
 			break;
