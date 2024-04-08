@@ -348,7 +348,7 @@ void ShowFirstError()
  */
 void UnshowCriticalError()
 {
-	ErrmsgWindow *w = (ErrmsgWindow*)FindWindowById(WC_ERRMSG, 0);
+	ErrmsgWindow *w = dynamic_cast<ErrmsgWindow *>(FindWindowById(WC_ERRMSG, 0));
 	if (_window_system_initialized && w != nullptr) {
 		if (w->IsCritical()) _error_list.push_front(*w);
 		_window_system_initialized = false;
@@ -414,7 +414,7 @@ void ShowErrorMessage(StringID summary_msg, StringID detailed_msg, WarningLevel 
 	ErrorMessageData data(summary_msg, detailed_msg, is_critical, x, y, textref_stack_grffile, textref_stack_size, textref_stack, extra_msg);
 	data.CopyOutDParams();
 
-	ErrmsgWindow *w = (ErrmsgWindow*)FindWindowById(WC_ERRMSG, 0);
+	ErrmsgWindow *w = dynamic_cast<ErrmsgWindow *>(FindWindowById(WC_ERRMSG, 0));
 	if (w != nullptr) {
 		if (w->IsCritical()) {
 			/* A critical error is currently shown. */
@@ -438,7 +438,7 @@ void ShowErrorMessage(StringID summary_msg, StringID detailed_msg, WarningLevel 
  */
 bool HideActiveErrorMessage()
 {
-	ErrmsgWindow *w = (ErrmsgWindow*)FindWindowById(WC_ERRMSG, 0);
+	ErrmsgWindow *w = dynamic_cast<ErrmsgWindow *>(FindWindowById(WC_ERRMSG, 0));
 	if (w == nullptr) return false;
 	w->Close();
 	return true;
