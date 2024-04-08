@@ -315,9 +315,9 @@ inline const RailTypeInfo *GetRailTypeInfo(RailType railtype)
  * Checks if an engine of the given RailType can drive on a tile with a given
  * RailType. This would normally just be an equality check, but for electric
  * rails (which also support non-electric engines).
- * @return Whether the engine can drive on this tile.
  * @param  enginetype The RailType of the engine we are considering.
  * @param  tiletype   The RailType of the tile we are considering.
+ * @return Whether the engine can drive on this tile.
  */
 inline bool IsCompatibleRail(RailType enginetype, RailType tiletype)
 {
@@ -328,9 +328,9 @@ inline bool IsCompatibleRail(RailType enginetype, RailType tiletype)
  * Checks if an engine of the given RailType got power on a tile with a given
  * RailType. This would normally just be an equality check, but for electric
  * rails (which also support non-electric engines).
- * @return Whether the engine got power on this tile.
  * @param  enginetype The RailType of the engine we are considering.
  * @param  tiletype   The RailType of the tile we are considering.
+ * @return Whether the engine got power on this tile.
  */
 inline bool HasPowerOnRail(RailType enginetype, RailType tiletype)
 {
