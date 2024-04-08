@@ -13,7 +13,7 @@
 #include "command_type.h"
 #include "water_map.h"
 
-CommandCost CmdBuildShipDepot(DoCommandFlag flags, TileIndex tile, Axis axis);
+CommandCost CmdBuildShipDepot(DoCommandFlag flags, TileIndex tile, Axis axis, bool adjacent, DepotID depot_id, TileIndex end_tile);
 CommandCost CmdBuildCanal(DoCommandFlag flags, TileIndex tile, TileIndex start_tile, WaterClass wc, bool diagonal);
 CommandCost CmdBuildLock(DoCommandFlag flags, TileIndex tile);
 

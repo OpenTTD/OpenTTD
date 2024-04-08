@@ -122,6 +122,7 @@ enum ViewportDragDropSelectionProcess {
 	DDSP_PLANT_TREES,          ///< Plant trees
 	DDSP_BUILD_BRIDGE,         ///< Bridge placement
 	DDSP_BUILD_OBJECT,         ///< Build an object
+	DDSP_BUILD_DEPOT,          ///< Depot placement
 
 	/* Rail specific actions */
 	DDSP_PLACE_RAIL,           ///< Rail placement
