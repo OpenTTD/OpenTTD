@@ -836,11 +836,11 @@ STR_NEWS_FIRST_CARGO_TRAM_ARRIVAL                               :{BIG_FONT}{BLAC
 STR_NEWS_FIRST_SHIP_ARRIVAL                                     :{BIG_FONT}{BLACK}Cidadãos celebram . . .{}Primeira embarcação chega em {STATION}!
 STR_NEWS_FIRST_AIRCRAFT_ARRIVAL                                 :{BIG_FONT}{BLACK}Cidadãos celebram . . .{}Primeira aeronave chega em {STATION}!
 
-STR_NEWS_TRAIN_CRASH                                            :{BIG_FONT}{BLACK}Acidente de Trem!{}{COMMA} morrem na explosão após a colisão
+STR_NEWS_TRAIN_CRASH                                            :{BIG_FONT}{BLACK}Acidente de Trem!{}{COMMA} morre{P "" m} na explosão após a colisão
 STR_NEWS_ROAD_VEHICLE_CRASH_DRIVER                              :{BIG_FONT}{BLACK}Acidente Rodoviário!{}Condutor morre na explosão após a colisão com um trem
-STR_NEWS_ROAD_VEHICLE_CRASH                                     :{BIG_FONT}{BLACK}Acidente Rodoviário!{}{COMMA} morrem na explosão após a colisão com um trem
-STR_NEWS_AIRCRAFT_CRASH                                         :{BIG_FONT}{BLACK}Acidente Aéreo!{}{COMMA} morrem na explosão em {STATION}
-STR_NEWS_PLANE_CRASH_OUT_OF_FUEL                                :{BIG_FONT}{BLACK}Acidente Aéreo!{}Aeronave ficou sem combustível, {COMMA} morrem na explosão
+STR_NEWS_ROAD_VEHICLE_CRASH                                     :{BIG_FONT}{BLACK}Acidente Rodoviário!{}{COMMA} morre{P "" m} na explosão após a colisão com um trem
+STR_NEWS_AIRCRAFT_CRASH                                         :{BIG_FONT}{BLACK}Acidente Aéreo!{}{COMMA} morre{P "" m} na explosão em {STATION}
+STR_NEWS_PLANE_CRASH_OUT_OF_FUEL                                :{BIG_FONT}{BLACK}Acidente Aéreo!{}Aeronave ficou sem combustível, {COMMA} morre{P "" m} na explosão
 
 STR_NEWS_DISASTER_ZEPPELIN                                      :{BIG_FONT}{BLACK}Desastre de Zepelim em {STATION}!
 STR_NEWS_DISASTER_SMALL_UFO                                     :{BIG_FONT}{BLACK}Veículo rodoviário destruído em colisão com OVNI!
@@ -3088,7 +3088,7 @@ STR_LAND_AREA_INFORMATION_BUILD_DATE                            :{BLACK}Constru�
 STR_LAND_AREA_INFORMATION_STATION_CLASS                         :{BLACK}Classe da estação: {LTBLUE}{STRING}
 STR_LAND_AREA_INFORMATION_STATION_TYPE                          :{BLACK}Tipo de estação: {LTBLUE}{STRING}
 STR_LAND_AREA_INFORMATION_AIRPORT_CLASS                         :{BLACK}Classe do aeroporto: {LTBLUE}{STRING}
-STR_LAND_AREA_INFORMATION_AIRPORT_NAME                          :{BLACK}Nome do aeroporto: {LTBLUE}{STRING}
+STR_LAND_AREA_INFORMATION_AIRPORT_NAME                          :{BLACK}Tipo de aeroporto: {LTBLUE}{STRING}
 STR_LAND_AREA_INFORMATION_AIRPORTTILE_NAME                      :{BLACK}Nome do quadrado do aeroporto: {LTBLUE}{STRING}
 STR_LAND_AREA_INFORMATION_NEWGRF_NAME                           :{BLACK}NewGRF: {LTBLUE}{STRING}
 STR_LAND_AREA_INFORMATION_CARGO_ACCEPTED                        :{BLACK}Carga aceita: {LTBLUE}
@@ -3489,6 +3489,9 @@ STR_NEWGRF_INSPECT_CAPTION_OBJECT_AT_ROAD_TYPE                  :Tipo de estrada
 STR_NEWGRF_INSPECT_QUERY_CAPTION                                :{WHITE}Parâmetro da variável 60+x do NewGRF (hexadecimal)
 
 # Sprite aligner window
+STR_SPRITE_ALIGNER_CAPTION_NO_ACTION                            :{WHITE}Alinhando sprite: ({STRING}:{NUM})
+STR_SPRITE_ALIGNER_CAPTION_ACTIONA                              :{WHITE}Alinhando sprite: Ação 0xA, {COMMA} ({STRING}:{NUM})
+STR_SPRITE_ALIGNER_CAPTION_ACTION5                              :{WHITE}Alinhando sprite: Ação 0x5, tipe {HEX}, {COMMA} ({STRING}:{NUM})
 STR_SPRITE_ALIGNER_NEXT_BUTTON                                  :{BLACK}Próximo sprite
 STR_SPRITE_ALIGNER_NEXT_TOOLTIP                                 :{BLACK}Ir para o próximo sprite normal, pulando quaisquer sprites falsos/recoloridos/tipo de letra, retornando do último sprite para o primeiro
 STR_SPRITE_ALIGNER_GOTO_BUTTON                                  :{BLACK}Ir para o sprite
@@ -3497,6 +3500,7 @@ STR_SPRITE_ALIGNER_PREVIOUS_BUTTON                              :{BLACK}Sprite a
 STR_SPRITE_ALIGNER_PREVIOUS_TOOLTIP                             :{BLACK}Ir para o sprite normal anterior, pulando quaisquer sprites falsos/recoloridos/tipo de letra, retornando do primeiro sprite para o último
 STR_SPRITE_ALIGNER_SPRITE_TOOLTIP                               :{BLACK}Representação do sprite atualmente selecionado. O alinhamento é ignorado ao desenhar este sprite
 STR_SPRITE_ALIGNER_MOVE_TOOLTIP                                 :{BLACK}Mover o sprite, alterando os deslocamentos X e Y. Ctrl+Clique para mover o sprite 8 unidades por vez
+STR_SPRITE_ALIGNER_SPRITE                                       :{STRING}:{NUM}
 
 ###length 2
 STR_SPRITE_ALIGNER_CENTRE_OFFSET                                :{BLACK}Deslocamento centralizado
@@ -5833,6 +5837,7 @@ STR_JUST_DATE_ISO                                               :{DATE_ISO}
 STR_JUST_STRING                                                 :{STRING}
 STR_JUST_STRING1                                                :{STRING}
 STR_JUST_STRING2                                                :{STRING}
+STR_JUST_STRING4                                                :{STRING}
 STR_JUST_STRING_STRING                                          :{STRING}{STRING}
 STR_JUST_RAW_STRING                                             :{STRING}
 STR_JUST_BIG_RAW_STRING                                         :{BIG_FONT}{STRING}

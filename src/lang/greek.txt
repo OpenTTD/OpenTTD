@@ -3580,6 +3580,9 @@ STR_NEWGRF_INSPECT_CAPTION_OBJECT_AT_ROAD_TYPE                  :Τύπος δρ
 STR_NEWGRF_INSPECT_QUERY_CAPTION                                :{WHITE}Μεταβλητή NewGRF 60+x παράμετρος (δεκαεξαδικό)
 
 # Sprite aligner window
+STR_SPRITE_ALIGNER_CAPTION_NO_ACTION                            :{WHITE}Στοίχηση sprite: ({STRING}:{NUM})
+STR_SPRITE_ALIGNER_CAPTION_ACTIONA                              :{WHITE}Στοίχηση sprite: Ενέργεια 0xA, {COMMA} ({STRING}:{NUM})
+STR_SPRITE_ALIGNER_CAPTION_ACTION5                              :{WHITE}Στοίχηση sprite: Ενέργεια 0x5, τύπος {HEX}, {COMMA} ({STRING}:{NUM})
 STR_SPRITE_ALIGNER_NEXT_BUTTON                                  :{BLACK}Επόμενο στοιχείο
 STR_SPRITE_ALIGNER_NEXT_TOOLTIP                                 :{BLACK}Συνέχισε στο επόμενο κανονικό sprite, προσπερνώντας οποιοδήποτε ψευδό/επαναναχρωματιζόμενο/γραμματοσειράς sprite και κάνε τις τελικές διαδικασίες στο τέλος
 STR_SPRITE_ALIGNER_GOTO_BUTTON                                  :{BLACK}Μετακίνηση στο στοιχείο
@@ -3588,6 +3591,7 @@ STR_SPRITE_ALIGNER_PREVIOUS_BUTTON                              :{BLACK}Προη
 STR_SPRITE_ALIGNER_PREVIOUS_TOOLTIP                             :{BLACK}Προχώρησε στο προηγούμενο κανονικό sprite, προσπερνώντας οποιαδήποτε ψευδό/επαναχρωματιζόμενα/γραμματοσειράς sprites και ξαναεκτέλεσε τη διαδικασία από το πρώτο sprite ως το τελεταίο
 STR_SPRITE_ALIGNER_SPRITE_TOOLTIP                               :{BLACK}Επανεμφάνιση του επιλεγμένου sprite. Η ευθυγράμμιση αγνοείται όταν γίνεται η σχεδίαση του sprite
 STR_SPRITE_ALIGNER_MOVE_TOOLTIP                                 :{BLACK}Μετακίνηση του sprite τριγύρω, αλλάζοντας τα στίγματα Χ και Υ. Ctrl+Κλικ για να μετακινήσετε το sprite μονάδες τη φορά.
+STR_SPRITE_ALIGNER_SPRITE                                       :{STRING}:{NUM}
 
 ###length 2
 STR_SPRITE_ALIGNER_CENTRE_OFFSET                                :{BLACK}Μετατόπιση κέντρου
@@ -5936,6 +5940,7 @@ STR_JUST_DATE_ISO                                               :{DATE_ISO}
 STR_JUST_STRING                                                 :{STRING}
 STR_JUST_STRING1                                                :{STRING}
 STR_JUST_STRING2                                                :{STRING}
+STR_JUST_STRING4                                                :{STRING}
 STR_JUST_STRING_STRING                                          :{STRING}{STRING}
 STR_JUST_RAW_STRING                                             :{STRING}
 STR_JUST_BIG_RAW_STRING                                         :{BIG_FONT}{STRING}

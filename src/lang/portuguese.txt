@@ -1714,10 +1714,10 @@ STR_CONFIG_SETTING_PAUSE_ON_NEW_GAME_HELPTEXT                   :Quando ativo, o
 STR_CONFIG_SETTING_COMMAND_PAUSE_LEVEL                          :Durante pausa permitir: {STRING}
 STR_CONFIG_SETTING_COMMAND_PAUSE_LEVEL_HELPTEXT                 :Seleccionar que acções podem ser feitas enquanto o jogo está em pausa
 ###length 4
-STR_CONFIG_SETTING_COMMAND_PAUSE_LEVEL_NO_ACTIONS               :Nenhuma acção
+STR_CONFIG_SETTING_COMMAND_PAUSE_LEVEL_NO_ACTIONS               :Nenhuma ação
 STR_CONFIG_SETTING_COMMAND_PAUSE_LEVEL_ALL_NON_CONSTRUCTION     :Todas as acções sem construção
 STR_CONFIG_SETTING_COMMAND_PAUSE_LEVEL_ALL_NON_LANDSCAPING      :Todas expecto acções que modificam o terreno
-STR_CONFIG_SETTING_COMMAND_PAUSE_LEVEL_ALL_ACTIONS              :Todas as acções
+STR_CONFIG_SETTING_COMMAND_PAUSE_LEVEL_ALL_ACTIONS              :Todas as ações
 
 STR_CONFIG_SETTING_ADVANCED_VEHICLE_LISTS                       :Usar a lista avançada de veículos: {STRING}
 STR_CONFIG_SETTING_ADVANCED_VEHICLE_LISTS_HELPTEXT              :Ativar a utilização de listas avançadas de veículos para o agrupamento de veículos
@@ -2091,8 +2091,8 @@ STR_CONFIG_SETTING_LOCALISATION_UNITS_VOLUME_IMPERIAL           :Imperial (gal)
 STR_CONFIG_SETTING_LOCALISATION_UNITS_VOLUME_METRIC             :Métrico (l)
 STR_CONFIG_SETTING_LOCALISATION_UNITS_VOLUME_SI                 :SI (m³)
 
-STR_CONFIG_SETTING_LOCALISATION_UNITS_FORCE                     :Unidades de esforço de tracção: {STRING}
-STR_CONFIG_SETTING_LOCALISATION_UNITS_FORCE_HELPTEXT            :Quando a força de tracção é mostrada no interface de utilizador, mostrar na unidade seleccionada
+STR_CONFIG_SETTING_LOCALISATION_UNITS_FORCE                     :Unidades de esforço de tração: {STRING}
+STR_CONFIG_SETTING_LOCALISATION_UNITS_FORCE_HELPTEXT            :Sempre que o esforço de tração (ou força de tração) for exibido na interface do utilizador, será mostrado nessas unidades
 ###length 3
 STR_CONFIG_SETTING_LOCALISATION_UNITS_FORCE_IMPERIAL            :Imperial (lbf)
 STR_CONFIG_SETTING_LOCALISATION_UNITS_FORCE_METRIC              :Métrico (kgf)
@@ -3489,6 +3489,9 @@ STR_NEWGRF_INSPECT_CAPTION_OBJECT_AT_ROAD_TYPE                  :Tipo de estrada
 STR_NEWGRF_INSPECT_QUERY_CAPTION                                :{WHITE}Parâmetro da variável 60+x do NewGRF (hexadecimal)
 
 # Sprite aligner window
+STR_SPRITE_ALIGNER_CAPTION_NO_ACTION                            :{WHITE}Alinhando sprite: ({STRING}:{NUM})
+STR_SPRITE_ALIGNER_CAPTION_ACTIONA                              :{WHITE}Alinhando sprite: Ação 0xA, {COMMA} ({STRING}:{NUM})
+STR_SPRITE_ALIGNER_CAPTION_ACTION5                              :{WHITE}Alinhando sprite: Ação 0x5, tipo {HEX}, {COMMA} ({STRING}:{NUM})
 STR_SPRITE_ALIGNER_NEXT_BUTTON                                  :{BLACK}Gráfico seguinte
 STR_SPRITE_ALIGNER_NEXT_TOOLTIP                                 :{BLACK}Proceder ao gráfico normal seguinte, ignorando quaisquer gráficos pseudo/recolorir/tipo-de-letra e dando a volta no fim
 STR_SPRITE_ALIGNER_GOTO_BUTTON                                  :{BLACK}Ir para o gráfico
@@ -3497,6 +3500,7 @@ STR_SPRITE_ALIGNER_PREVIOUS_BUTTON                              :{BLACK}Gráfico
 STR_SPRITE_ALIGNER_PREVIOUS_TOOLTIP                             :{BLACK}Proceder ao gráfico normal anterior, ignorando quaisquer gráficos pseudo/recolorir/tipo-de-letra e dando a volta no início
 STR_SPRITE_ALIGNER_SPRITE_TOOLTIP                               :{BLACK}Representação do gráfico seleccionado actualmente. O alinhamento é ignorado a desenhar este gráfico
 STR_SPRITE_ALIGNER_MOVE_TOOLTIP                                 :{BLACK}Desloca o gráfico, alterando os intervalos  X e Y. Ctrl+Clique desloca o gráfico 8 unidades de uma só vez
+STR_SPRITE_ALIGNER_SPRITE                                       :{STRING}:{NUM}
 
 ###length 2
 STR_SPRITE_ALIGNER_CENTRE_OFFSET                                :{BLACK}Deslocamento centrado
@@ -3534,7 +3538,7 @@ STR_NEWGRF_ERROR_UNEXPECTED_SPRITE                              :Gráfico invál
 STR_NEWGRF_ERROR_UNKNOWN_PROPERTY                               :Propriedade de Ação 0 desconhecida {4:HEX} (sprite {3:NUM})
 STR_NEWGRF_ERROR_INVALID_ID                                     :Tentativa de uso de ID Inválido (sprite {3:NUM})
 STR_NEWGRF_ERROR_CORRUPT_SPRITE                                 :{YELLOW}{STRING} contém um objecto gráfico corrompido. Todos os objectos gráficos corrompidos serão apresentados como um ponto de interrogação (?) vermelho.
-STR_NEWGRF_ERROR_MULTIPLE_ACTION_8                              :Contém múltiplas entradas Action 8 - (sprite {3:NUM})
+STR_NEWGRF_ERROR_MULTIPLE_ACTION_8                              :Contém múltiplas entradas Ação 8 - (sprite {3:NUM})
 STR_NEWGRF_ERROR_READ_BOUNDS                                    :Leitura além dos limites do pseudo-sprite (sprite {3:NUM})
 STR_NEWGRF_ERROR_GRM_FAILED                                     :Recursos GRF pedidos não disponíveis (sprite {3:NUM})
 STR_NEWGRF_ERROR_FORCEFULLY_DISABLED                            :{1:STRING} foi desativado por {STRING}
@@ -3646,10 +3650,10 @@ STR_LOCAL_AUTHORITY_ZONE                                        :{BLACK}Zona
 STR_LOCAL_AUTHORITY_ZONE_TOOLTIP                                :{BLACK}Mostrar a zona dentro dos limites da autoridade local
 STR_LOCAL_AUTHORITY_COMPANY_RATINGS                             :{BLACK}Classificações de empresas de transporte:
 STR_LOCAL_AUTHORITY_COMPANY_RATING                              :{YELLOW}{COMPANY} {COMPANY_NUM}: {ORANGE}{STRING}
-STR_LOCAL_AUTHORITY_ACTIONS_TITLE                               :{BLACK}Acções disponíveis:
-STR_LOCAL_AUTHORITY_ACTIONS_TOOLTIP                             :{BLACK}Lista de acções disponíveis nesta localidade - fazer clique no item para mais detalhes
+STR_LOCAL_AUTHORITY_ACTIONS_TITLE                               :{BLACK}Ações disponíveis:
+STR_LOCAL_AUTHORITY_ACTIONS_TOOLTIP                             :{BLACK}Lista de ações disponíveis nesta localidade - clique no item para mais detalhes
 STR_LOCAL_AUTHORITY_DO_IT_BUTTON                                :{BLACK}Aplicar
-STR_LOCAL_AUTHORITY_DO_IT_TOOLTIP                               :{BLACK}Realizar a acção destacada na lista acima
+STR_LOCAL_AUTHORITY_DO_IT_TOOLTIP                               :{BLACK}Realizar a ação destacada na lista acima
 
 ###length 8
 STR_LOCAL_AUTHORITY_ACTION_SMALL_ADVERTISING_CAMPAIGN           :Pequena campanha publicitária
@@ -4091,7 +4095,7 @@ STR_PURCHASE_INFO_ALL_TYPES                                     :Todos os tipos 
 STR_PURCHASE_INFO_NONE                                          :Nenhum
 STR_PURCHASE_INFO_ENGINES_ONLY                                  :Apenas locomotivas
 STR_PURCHASE_INFO_ALL_BUT                                       :Todas menos {CARGO_LIST}
-STR_PURCHASE_INFO_MAX_TE                                        :{BLACK}Máx. Força de Tracção: {GOLD}{FORCE}
+STR_PURCHASE_INFO_MAX_TE                                        :{BLACK}Esforço de Tração Máx: {GOLD}{FORCE}
 STR_PURCHASE_INFO_AIRCRAFT_RANGE                                :{BLACK}Alcance: {GOLD}{COMMA} mosaicos
 STR_PURCHASE_INFO_AIRCRAFT_TYPE                                 :{BLACK}Tipo de aeronave: {GOLD}{STRING}
 
@@ -5833,6 +5837,7 @@ STR_JUST_DATE_ISO                                               :{DATE_ISO}
 STR_JUST_STRING                                                 :{STRING}
 STR_JUST_STRING1                                                :{STRING}
 STR_JUST_STRING2                                                :{STRING}
+STR_JUST_STRING4                                                :{STRING}
 STR_JUST_STRING_STRING                                          :{STRING}{STRING}
 STR_JUST_RAW_STRING                                             :{STRING}
 STR_JUST_BIG_RAW_STRING                                         :{BIG_FONT}{STRING}
