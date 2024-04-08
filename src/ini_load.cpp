@@ -202,7 +202,7 @@ void IniLoadFile::LoadFromDisk(const std::string &filename, Subdirectory subdir)
 	end += ftell(in);
 
 	/* for each line in the file */
-	while ((size_t)ftell(in) < end && fgets(buffer, sizeof(buffer), in)) {
+	while (static_cast<size_t>(ftell(in)) < end && fgets(buffer, sizeof(buffer), in)) {
 		char c, *s;
 		/* trim whitespace from the left side */
 		for (s = buffer; *s == ' ' || *s == '\t'; s++) {}

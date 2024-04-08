@@ -371,7 +371,7 @@ inline void free(const void *ptr)
  * The largest value that can be entered in a variable
  * @param type the type of the variable
  */
-#define MAX_UVALUE(type) ((type)~(type)0)
+#define MAX_UVALUE(type) (static_cast<type>(~static_cast<type>(0)))
 
 #if defined(_MSC_VER) && !defined(_DEBUG)
 #	define IGNORE_UNINITIALIZED_WARNING_START __pragma(warning(push)) __pragma(warning(disable:4700))

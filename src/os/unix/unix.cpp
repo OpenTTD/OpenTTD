@@ -142,7 +142,7 @@ static std::string convert_tofrom_fs(iconv_t convd, const std::string &name)
 	size_t outlen = buf.size();
 	char *outbuf = buf.data();
 	iconv(convd, nullptr, nullptr, nullptr, nullptr);
-	if (iconv(convd, &inbuf, &inlen, &outbuf, &outlen) == (size_t)(-1)) {
+	if (iconv(convd, &inbuf, &inlen, &outbuf, &outlen) == static_cast<size_t>(-1)) {
 		Debug(misc, 0, "[iconv] error converting '{}'. Errno {}", name, errno);
 		return name;
 	}

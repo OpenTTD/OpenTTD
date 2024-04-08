@@ -190,7 +190,7 @@ size_t OneOfManySettingDesc::ParseSingleValue(const char *str, size_t len, const
 		idx++;
 	}
 
-	return (size_t)-1;
+	return static_cast<size_t>(-1);
 }
 
 /**
@@ -229,7 +229,7 @@ static size_t LookupManyOfMany(const std::vector<std::string> &many, const char 
 		while (*s != 0 && *s != ' ' && *s != '\t' && *s != '|') s++;
 
 		r = OneOfManySettingDesc::ParseSingleValue(str, s - str, many);
-		if (r == (size_t)-1) return r;
+		if (r == static_cast<size_t>(-1)) return r;
 
 		SetBit(res, (uint8_t)r); // value found, set it
 		if (*s == 0) break;
@@ -419,8 +419,8 @@ size_t OneOfManySettingDesc::ParseValue(const char *str) const
 	size_t r = OneOfManySettingDesc::ParseSingleValue(str, strlen(str), this->many);
 	/* if the first attempt of conversion from string to the appropriate value fails,
 	 * look if we have defined a converter from old value to new value. */
-	if (r == (size_t)-1 && this->many_cnvt != nullptr) r = this->many_cnvt(str);
-	if (r != (size_t)-1) return r; // and here goes converted value
+	if (r == static_cast<size_t>(-1) && this->many_cnvt != nullptr) r = this->many_cnvt(str);
+	if (r != static_cast<size_t>(-1)) return r; // and here goes converted value
 
 	ErrorMessageData msg(STR_CONFIG_ERROR, STR_CONFIG_ERROR_INVALID_VALUE);
 	msg.SetDParamStr(0, str);
@@ -432,7 +432,7 @@ size_t OneOfManySettingDesc::ParseValue(const char *str) const
 size_t ManyOfManySettingDesc::ParseValue(const char *str) const
 {
 	size_t r = LookupManyOfMany(this->many, str);
-	if (r != (size_t)-1) return r;
+	if (r != static_cast<size_t>(-1)) return r;
 	ErrorMessageData msg(STR_CONFIG_ERROR, STR_CONFIG_ERROR_INVALID_VALUE);
 	msg.SetDParamStr(0, str);
 	msg.SetDParamStr(1, this->GetName());

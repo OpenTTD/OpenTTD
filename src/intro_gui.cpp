@@ -184,7 +184,7 @@ struct SelectGameWindow : public Window {
 
 		this->ReadIntroGameViewportCommands();
 
-		this->cur_viewport_command_index = (size_t)-1;
+		this->cur_viewport_command_index = static_cast<size_t>(-1);
 		this->cur_viewport_command_time = 0;
 		this->mouse_idle_time = 0;
 		this->mouse_idle_pos = _cursor.pos;

@@ -340,7 +340,7 @@ void TextfileWindow::CheckHyperlinkClick(Point pt)
 	/* Found character index in line, check if any links are at that position. */
 	for (const auto &link : found_links) {
 		Debug(misc, 4, "Checking link from char {} to {}", link.begin, link.end);
-		if ((size_t)char_index >= link.begin && (size_t)char_index < link.end) {
+		if (static_cast<size_t>(char_index) >= link.begin && static_cast<size_t>(char_index) < link.end) {
 			Debug(misc, 4, "Activating link with destination: {}", link.destination);
 			this->OnHyperlinkClick(link);
 			return;
