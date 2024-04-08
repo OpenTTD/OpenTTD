@@ -1788,7 +1788,7 @@ static void DoCreateNewIndustry(Industry *i, TileIndex tile, IndustryType type, 
 	i->type = type;
 	Industry::IncIndustryTypeCount(type);
 
-	for (size_t index = 0; index < lengthof(indspec->produced_cargo); ++index) {
+	for (size_t index = 0; index < std::size(indspec->produced_cargo); ++index) {
 		if (!IsValidCargoID(indspec->produced_cargo[index])) break;
 
 		Industry::ProducedCargo &p = i->produced.emplace_back();
@@ -1796,7 +1796,7 @@ static void DoCreateNewIndustry(Industry *i, TileIndex tile, IndustryType type, 
 		p.rate = indspec->production_rate[index];
 	}
 
-	for (size_t index = 0; index < lengthof(indspec->accepts_cargo); ++index) {
+	for (size_t index = 0; index < std::size(indspec->accepts_cargo); ++index) {
 		if (!IsValidCargoID(indspec->accepts_cargo[index])) break;
 
 		Industry::AcceptedCargo &a = i->accepted.emplace_back();
