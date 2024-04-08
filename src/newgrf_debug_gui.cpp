@@ -357,21 +357,21 @@ struct NewGRFInspectWindow : Window {
 		GetFeatureHelper(this->window_number)->SetStringParameters(this->GetFeatureIndex());
 	}
 
-	void UpdateWidgetSize(WidgetID widget, Dimension *size, [[maybe_unused]] const Dimension &padding, [[maybe_unused]] Dimension *fill, [[maybe_unused]] Dimension *resize) override
+	void UpdateWidgetSize(WidgetID widget, Dimension &size, [[maybe_unused]] const Dimension &padding, [[maybe_unused]] Dimension &fill, [[maybe_unused]] Dimension &resize) override
 	{
 		switch (widget) {
 			case WID_NGRFI_VEH_CHAIN: {
 				assert(this->HasChainIndex());
 				GrfSpecFeature f = GetFeatureNum(this->window_number);
-				size->height = std::max(size->height, GetVehicleImageCellSize((VehicleType)(VEH_TRAIN + (f - GSF_TRAINS)), EIT_IN_DEPOT).height + 2 + WidgetDimensions::scaled.bevel.Vertical());
+				size.height = std::max(size.height, GetVehicleImageCellSize((VehicleType)(VEH_TRAIN + (f - GSF_TRAINS)), EIT_IN_DEPOT).height + 2 + WidgetDimensions::scaled.bevel.Vertical());
 				break;
 			}
 
 			case WID_NGRFI_MAINPANEL:
-				resize->height = std::max(11, GetCharacterHeight(FS_NORMAL) + WidgetDimensions::scaled.vsep_normal);
-				resize->width  = 1;
+				resize.height = std::max(11, GetCharacterHeight(FS_NORMAL) + WidgetDimensions::scaled.vsep_normal);
+				resize.width  = 1;
 
-				size->height = 5 * resize->height + WidgetDimensions::scaled.frametext.Vertical();
+				size.height = 5 * resize.height + WidgetDimensions::scaled.frametext.Vertical();
 				break;
 		}
 	}
@@ -882,11 +882,11 @@ struct SpriteAlignerWindow : Window {
 		}
 	}
 
-	void UpdateWidgetSize(WidgetID widget, Dimension *size, [[maybe_unused]] const Dimension &padding, [[maybe_unused]] Dimension *fill, [[maybe_unused]] Dimension *resize) override
+	void UpdateWidgetSize(WidgetID widget, Dimension &size, [[maybe_unused]] const Dimension &padding, [[maybe_unused]] Dimension &fill, [[maybe_unused]] Dimension &resize) override
 	{
 		switch (widget) {
 			case WID_SA_SPRITE:
-				size->height = ScaleGUITrad(200);
+				size.height = ScaleGUITrad(200);
 				break;
 
 			case WID_SA_LIST: {
@@ -896,10 +896,10 @@ struct SpriteAlignerWindow : Window {
 					SetDParamMaxDigits(1, 6);
 					d = maxdim(d, GetStringBoundingBox(STR_SPRITE_ALIGNER_SPRITE));
 				}
-				size->width = d.width + padding.width;
-				resize->height = GetCharacterHeight(FS_NORMAL) + padding.height;
-				resize->width = 1;
-				fill->height = resize->height;
+				size.width = d.width + padding.width;
+				resize.height = GetCharacterHeight(FS_NORMAL) + padding.height;
+				resize.width = 1;
+				fill.height = resize.height;
 				break;
 			}
 

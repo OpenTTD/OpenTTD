@@ -103,15 +103,15 @@ struct ScriptListWindow : public Window {
 		SetDParam(0, (this->slot == OWNER_DEITY) ? STR_AI_LIST_CAPTION_GAMESCRIPT : STR_AI_LIST_CAPTION_AI);
 	}
 
-	void UpdateWidgetSize(WidgetID widget, Dimension *size, [[maybe_unused]] const Dimension &padding, [[maybe_unused]] Dimension *fill, [[maybe_unused]] Dimension *resize) override
+	void UpdateWidgetSize(WidgetID widget, Dimension &size, [[maybe_unused]] const Dimension &padding, [[maybe_unused]] Dimension &fill, [[maybe_unused]] Dimension &resize) override
 	{
 		if (widget != WID_SCRL_LIST) return;
 
 		this->line_height = GetCharacterHeight(FS_NORMAL) + padding.height;
 
-		resize->width = 1;
-		resize->height = this->line_height;
-		size->height = 5 * this->line_height;
+		resize.width = 1;
+		resize.height = this->line_height;
+		size.height = 5 * this->line_height;
 	}
 
 	void DrawWidget(const Rect &r, WidgetID widget) const override
@@ -341,15 +341,15 @@ struct ScriptSettingsWindow : public Window {
 		SetDParam(0, (this->slot == OWNER_DEITY) ? STR_AI_SETTINGS_CAPTION_GAMESCRIPT : STR_AI_SETTINGS_CAPTION_AI);
 	}
 
-	void UpdateWidgetSize(WidgetID widget, Dimension *size, [[maybe_unused]] const Dimension &padding, [[maybe_unused]] Dimension *fill, [[maybe_unused]] Dimension *resize) override
+	void UpdateWidgetSize(WidgetID widget, Dimension &size, [[maybe_unused]] const Dimension &padding, [[maybe_unused]] Dimension &fill, [[maybe_unused]] Dimension &resize) override
 	{
 		if (widget != WID_SCRS_BACKGROUND) return;
 
 		this->line_height = std::max(SETTING_BUTTON_HEIGHT, GetCharacterHeight(FS_NORMAL)) + padding.height;
 
-		resize->width = 1;
-		resize->height = this->line_height;
-		size->height = 5 * this->line_height;
+		resize.width = 1;
+		resize.height = this->line_height;
+		size.height = 5 * this->line_height;
 	}
 
 	void DrawWidget(const Rect &r, WidgetID widget) const override
@@ -823,11 +823,11 @@ struct ScriptDebugWindow : public Window {
 		ScriptDebugWindow::initial_state = this->filter;
 	}
 
-	void UpdateWidgetSize(WidgetID widget, Dimension *size, [[maybe_unused]] const Dimension &padding, [[maybe_unused]] Dimension *fill, [[maybe_unused]] Dimension *resize) override
+	void UpdateWidgetSize(WidgetID widget, Dimension &size, [[maybe_unused]] const Dimension &padding, [[maybe_unused]] Dimension &fill, [[maybe_unused]] Dimension &resize) override
 	{
 		if (widget == WID_SCRD_LOG_PANEL) {
-			resize->height = GetCharacterHeight(FS_NORMAL) + WidgetDimensions::scaled.vsep_normal;
-			size->height = 14 * resize->height + WidgetDimensions::scaled.framerect.Vertical();
+			resize.height = GetCharacterHeight(FS_NORMAL) + WidgetDimensions::scaled.vsep_normal;
+			size.height = 14 * resize.height + WidgetDimensions::scaled.framerect.Vertical();
 		}
 	}
 

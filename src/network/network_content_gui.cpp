@@ -116,21 +116,21 @@ void BaseNetworkContentDownloadStatusWindow::Close([[maybe_unused]] int data)
 	this->Window::Close();
 }
 
-void BaseNetworkContentDownloadStatusWindow::UpdateWidgetSize(WidgetID widget, Dimension *size, [[maybe_unused]] const Dimension &padding, [[maybe_unused]] Dimension *fill, [[maybe_unused]] Dimension *resize)
+void BaseNetworkContentDownloadStatusWindow::UpdateWidgetSize(WidgetID widget, Dimension &size, [[maybe_unused]] const Dimension &padding, [[maybe_unused]] Dimension &fill, [[maybe_unused]] Dimension &resize)
 {
 	switch (widget) {
 		case WID_NCDS_PROGRESS_BAR:
 			SetDParamMaxDigits(0, 8);
 			SetDParamMaxDigits(1, 8);
 			SetDParamMaxDigits(2, 8);
-			*size = GetStringBoundingBox(STR_CONTENT_DOWNLOAD_PROGRESS_SIZE);
+			size = GetStringBoundingBox(STR_CONTENT_DOWNLOAD_PROGRESS_SIZE);
 			/* We need some spacing for the 'border' */
-			size->height += WidgetDimensions::scaled.frametext.Horizontal();
-			size->width  += WidgetDimensions::scaled.frametext.Vertical();
+			size.height += WidgetDimensions::scaled.frametext.Horizontal();
+			size.width  += WidgetDimensions::scaled.frametext.Vertical();
 			break;
 
 		case WID_NCDS_PROGRESS_TEXT:
-			size->height = GetCharacterHeight(FS_NORMAL) * 2 + WidgetDimensions::scaled.vsep_normal;
+			size.height = GetCharacterHeight(FS_NORMAL) * 2 + WidgetDimensions::scaled.vsep_normal;
 			break;
 	}
 }
@@ -585,25 +585,25 @@ public:
 		this->checkbox_size = maxdim(maxdim(GetSpriteSize(SPR_BOX_EMPTY), GetSpriteSize(SPR_BOX_CHECKED)), GetSpriteSize(SPR_BLOT));
 	}
 
-	void UpdateWidgetSize(WidgetID widget, Dimension *size, [[maybe_unused]] const Dimension &padding, [[maybe_unused]] Dimension *fill, [[maybe_unused]] Dimension *resize) override
+	void UpdateWidgetSize(WidgetID widget, Dimension &size, [[maybe_unused]] const Dimension &padding, [[maybe_unused]] Dimension &fill, [[maybe_unused]] Dimension &resize) override
 	{
 		switch (widget) {
 			case WID_NCL_CHECKBOX:
-				size->width = this->checkbox_size.width + padding.width;
+				size.width = this->checkbox_size.width + padding.width;
 				break;
 
 			case WID_NCL_TYPE: {
-				Dimension d = *size;
+				Dimension d = size;
 				for (int i = CONTENT_TYPE_BEGIN; i < CONTENT_TYPE_END; i++) {
 					d = maxdim(d, GetStringBoundingBox(STR_CONTENT_TYPE_BASE_GRAPHICS + i - CONTENT_TYPE_BASE_GRAPHICS));
 				}
-				size->width = d.width + padding.width;
+				size.width = d.width + padding.width;
 				break;
 			}
 
 			case WID_NCL_MATRIX:
-				resize->height = std::max(this->checkbox_size.height, (uint)GetCharacterHeight(FS_NORMAL)) + padding.height;
-				size->height = 10 * resize->height;
+				resize.height = std::max(this->checkbox_size.height, (uint)GetCharacterHeight(FS_NORMAL)) + padding.height;
+				size.height = 10 * resize.height;
 				break;
 		}
 	}

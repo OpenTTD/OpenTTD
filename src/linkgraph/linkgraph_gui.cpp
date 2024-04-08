@@ -579,7 +579,7 @@ void LinkGraphLegendWindow::SetOverlay(std::shared_ptr<LinkGraphOverlay> overlay
 	}
 }
 
-void LinkGraphLegendWindow::UpdateWidgetSize(WidgetID widget, Dimension *size, [[maybe_unused]] const Dimension &padding, [[maybe_unused]] Dimension *fill, [[maybe_unused]] Dimension *resize)
+void LinkGraphLegendWindow::UpdateWidgetSize(WidgetID widget, Dimension &size, [[maybe_unused]] const Dimension &padding, [[maybe_unused]] Dimension &fill, [[maybe_unused]] Dimension &resize)
 {
 	if (IsInsideMM(widget, WID_LGL_SATURATION_FIRST, WID_LGL_SATURATION_LAST + 1)) {
 		StringID str = STR_NULL;
@@ -594,7 +594,7 @@ void LinkGraphLegendWindow::UpdateWidgetSize(WidgetID widget, Dimension *size, [
 			Dimension dim = GetStringBoundingBox(str, FS_SMALL);
 			dim.width += padding.width;
 			dim.height += padding.height;
-			*size = maxdim(*size, dim);
+			size = maxdim(size, dim);
 		}
 	}
 	if (IsInsideMM(widget, WID_LGL_CARGO_FIRST, WID_LGL_CARGO_LAST + 1)) {
@@ -602,7 +602,7 @@ void LinkGraphLegendWindow::UpdateWidgetSize(WidgetID widget, Dimension *size, [
 		Dimension dim = GetStringBoundingBox(cargo->abbrev, FS_SMALL);
 		dim.width += padding.width;
 		dim.height += padding.height;
-		*size = maxdim(*size, dim);
+		size = maxdim(size, dim);
 	}
 }
 

@@ -136,19 +136,19 @@ struct GSConfigWindow : public Window {
 		this->vscroll->SetCount(this->visible_settings.size());
 	}
 
-	void UpdateWidgetSize(WidgetID widget, Dimension *size, [[maybe_unused]] const Dimension &padding, [[maybe_unused]] Dimension *fill, [[maybe_unused]] Dimension *resize) override
+	void UpdateWidgetSize(WidgetID widget, Dimension &size, [[maybe_unused]] const Dimension &padding, [[maybe_unused]] Dimension &fill, [[maybe_unused]] Dimension &resize) override
 	{
 		switch (widget) {
 			case WID_GSC_SETTINGS:
 				this->line_height = std::max(SETTING_BUTTON_HEIGHT, GetCharacterHeight(FS_NORMAL)) + padding.height;
-				resize->width = 1;
-				resize->height = this->line_height;
-				size->height = 5 * this->line_height;
+				resize.width = 1;
+				resize.height = this->line_height;
+				size.height = 5 * this->line_height;
 				break;
 
 			case WID_GSC_GSLIST:
 				this->line_height = GetCharacterHeight(FS_NORMAL) + padding.height;
-				size->height = 1 * this->line_height;
+				size.height = 1 * this->line_height;
 				break;
 		}
 	}

@@ -653,7 +653,7 @@ struct DepotWindow : Window {
 		this->flag_size = maxdim(GetScaledSpriteSize(SPR_FLAG_VEH_STOPPED), GetScaledSpriteSize(SPR_FLAG_VEH_RUNNING));
 	}
 
-	void UpdateWidgetSize(WidgetID widget, Dimension *size, [[maybe_unused]] const Dimension &padding, [[maybe_unused]] Dimension *fill, [[maybe_unused]] Dimension *resize) override
+	void UpdateWidgetSize(WidgetID widget, Dimension &size, [[maybe_unused]] const Dimension &padding, [[maybe_unused]] Dimension &fill, [[maybe_unused]] Dimension &resize) override
 	{
 		switch (widget) {
 			case WID_D_MATRIX: {
@@ -679,18 +679,18 @@ struct DepotWindow : Window {
 				}
 				int base_width = this->count_width + this->header_width + padding.width;
 
-				resize->height = std::max<uint>(this->cell_size.height, min_height + padding.height);
+				resize.height = std::max<uint>(this->cell_size.height, min_height + padding.height);
 				if (this->type == VEH_TRAIN) {
-					resize->width = 1;
-					size->width = base_width + 2 * ScaleSpriteTrad(29); // about 2 parts
-					size->height = resize->height * 6;
+					resize.width = 1;
+					size.width = base_width + 2 * ScaleSpriteTrad(29); // about 2 parts
+					size.height = resize.height * 6;
 				} else {
-					resize->width = base_width + this->cell_size.extend_left + this->cell_size.extend_right;
-					size->width = resize->width * (this->type == VEH_ROAD ? 5 : 3);
-					size->height = resize->height * (this->type == VEH_ROAD ? 5 : 3);
+					resize.width = base_width + this->cell_size.extend_left + this->cell_size.extend_right;
+					size.width = resize.width * (this->type == VEH_ROAD ? 5 : 3);
+					size.height = resize.height * (this->type == VEH_ROAD ? 5 : 3);
 				}
-				fill->width = resize->width;
-				fill->height = resize->height;
+				fill.width = resize.width;
+				fill.height = resize.height;
 				break;
 			}
 		}

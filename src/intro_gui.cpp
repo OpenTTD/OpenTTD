@@ -297,13 +297,13 @@ struct SelectGameWindow : public Window {
 		}
 	}
 
-	void UpdateWidgetSize(WidgetID widget, Dimension *size, [[maybe_unused]] const Dimension &padding, [[maybe_unused]] Dimension *fill, [[maybe_unused]] Dimension *resize) override
+	void UpdateWidgetSize(WidgetID widget, Dimension &size, [[maybe_unused]] const Dimension &padding, [[maybe_unused]] Dimension &fill, [[maybe_unused]] Dimension &resize) override
 	{
 		switch (widget) {
 			case WID_SGI_TEMPERATE_LANDSCAPE: case WID_SGI_ARCTIC_LANDSCAPE:
 			case WID_SGI_TROPIC_LANDSCAPE: case WID_SGI_TOYLAND_LANDSCAPE:
-				size->width += WidgetDimensions::scaled.fullbevel.Horizontal();
-				size->height += WidgetDimensions::scaled.fullbevel.Vertical();
+				size.width += WidgetDimensions::scaled.fullbevel.Horizontal();
+				size.height += WidgetDimensions::scaled.fullbevel.Vertical();
 				break;
 		}
 	}

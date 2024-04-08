@@ -128,20 +128,20 @@ struct AIConfigWindow : public Window {
 		}
 	}
 
-	void UpdateWidgetSize(WidgetID widget, Dimension *size, [[maybe_unused]] const Dimension &padding, [[maybe_unused]] Dimension *fill, [[maybe_unused]] Dimension *resize) override
+	void UpdateWidgetSize(WidgetID widget, Dimension &size, [[maybe_unused]] const Dimension &padding, [[maybe_unused]] Dimension &fill, [[maybe_unused]] Dimension &resize) override
 	{
 		switch (widget) {
 			case WID_AIC_DECREASE_NUMBER:
 			case WID_AIC_INCREASE_NUMBER:
 			case WID_AIC_DECREASE_INTERVAL:
 			case WID_AIC_INCREASE_INTERVAL:
-				*size = maxdim(*size, NWidgetScrollbar::GetHorizontalDimension());
+				size = maxdim(size, NWidgetScrollbar::GetHorizontalDimension());
 				break;
 
 			case WID_AIC_LIST:
 				this->line_height = GetCharacterHeight(FS_NORMAL) + padding.height;
-				resize->height = this->line_height;
-				size->height = 8 * this->line_height;
+				resize.height = this->line_height;
+				size.height = 8 * this->line_height;
 				break;
 		}
 	}

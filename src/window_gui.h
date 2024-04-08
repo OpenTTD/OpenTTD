@@ -611,12 +611,12 @@ public:
 	 * and \a resize is taken to contain the resize steps. For the convenience of the callee, \a padding contains the amount of
 	 * padding between the content and the edge of the widget. This should be added to the returned size.
 	 * @param widget  Widget number.
-	 * @param size    Size of the widget.
+	 * @param[in,out] size Size of the widget.
 	 * @param padding Recommended amount of space between the widget content and the widget edge.
-	 * @param fill    Fill step of the widget.
-	 * @param resize  Resize step of the widget.
+	 * @param[in,out] fill Fill step of the widget.
+	 * @param[in,out] resize Resize step of the widget.
 	 */
-	virtual void UpdateWidgetSize([[maybe_unused]] WidgetID widget, [[maybe_unused]] Dimension *size, [[maybe_unused]] const Dimension &padding, [[maybe_unused]] Dimension *fill, [[maybe_unused]] Dimension *resize) {}
+	virtual void UpdateWidgetSize([[maybe_unused]] WidgetID widget, [[maybe_unused]] Dimension &size, [[maybe_unused]] const Dimension &padding, [[maybe_unused]] Dimension &fill, [[maybe_unused]] Dimension &resize) {}
 
 	/**
 	 * Initialize string parameters for a widget.
