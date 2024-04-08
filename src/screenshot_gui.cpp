@@ -83,7 +83,7 @@ void ShowScreenshotWindow()
  */
 void SetScreenshotWindowVisibility(bool hide)
 {
-	ScreenshotWindow *scw = (ScreenshotWindow *)FindWindowById(WC_SCREENSHOT, 0);
+	ScreenshotWindow *scw = dynamic_cast<ScreenshotWindow *>(FindWindowById(WC_SCREENSHOT, 0));
 
 	if (scw == nullptr) return;
 
