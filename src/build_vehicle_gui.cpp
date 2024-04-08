@@ -1168,8 +1168,8 @@ enum BuildVehicleHotkeys {
 struct BuildVehicleWindow : Window {
 	VehicleType vehicle_type;                   ///< Type of vehicles shown in the window.
 	union {
-		RailType railtype;   ///< Rail type to show, or #INVALID_RAILTYPE.
-		RoadType roadtype;   ///< Road type to show, or #INVALID_ROADTYPE.
+		RailTypes railtypes; ///< Rail types to show, or #INVALID_RAILTYPES.
+		RoadTypes roadtypes; ///< Road types to show, or #INVALID_ROADTYPES.
 	} filter;                                   ///< Filter to apply.
 	bool descending_sort_order;                 ///< Sort direction, @see _engine_sort_direction
 	uint8_t sort_criteria;                         ///< Current sort criterium.
@@ -1248,7 +1248,7 @@ struct BuildVehicleWindow : Window {
 		this->vehicle_editbox.cancel_button = QueryString::ACTION_CLEAR;
 
 		Depot *depot = Depot::GetIfValid(depot_id);
-		this->owner = (depot != nullptr) ? GetTileOwner(depot->xy) : _local_company;
+		this->owner = depot != nullptr ? depot->owner : _local_company;
 
 		this->eng_list.ForceRebuild();
 		this->GenerateBuildList(); // generate the list, since we need it in the next line
@@ -1263,28 +1263,16 @@ struct BuildVehicleWindow : Window {
 	/** Set the filter type according to the depot type */
 	void UpdateFilterByTile()
 	{
-		TileIndex tile = INVALID_TILE;
-		if (!this->listview_mode) tile = Depot::Get(this->window_number)->xy;
+		Depot *depot = this->listview_mode ? nullptr : Depot::Get(this->window_number);
 
 		switch (this->vehicle_type) {
 			default: NOT_REACHED();
 			case VEH_TRAIN:
-				if (this->listview_mode) {
-					this->filter.railtype = INVALID_RAILTYPE;
-				} else {
-					this->filter.railtype = GetRailType(tile);
-				}
+				this->filter.railtypes = this->listview_mode ? INVALID_RAILTYPES : depot->r_types.rail_types;
 				break;
 
 			case VEH_ROAD:
-				if (this->listview_mode) {
-					this->filter.roadtype = INVALID_ROADTYPE;
-				} else {
-					this->filter.roadtype = GetRoadTypeRoad(tile);
-					if (this->filter.roadtype == INVALID_ROADTYPE) {
-						this->filter.roadtype = GetRoadTypeTram(tile);
-					}
-				}
+				this->filter.roadtypes = this->listview_mode ? INVALID_ROADTYPES : depot->r_types.road_types;
 				break;
 
 			case VEH_SHIP:
@@ -1403,7 +1391,7 @@ struct BuildVehicleWindow : Window {
 			EngineID eid = e->index;
 			const RailVehicleInfo *rvi = &e->u.rail;
 
-			if (this->filter.railtype != INVALID_RAILTYPE && !HasPowerOnRail(rvi->railtype, this->filter.railtype)) continue;
+			if (!this->listview_mode && !HasPowerOnRails(rvi->railtype, this->filter.railtypes)) continue;
 			if (!IsEngineBuildable(eid, VEH_TRAIN, _local_company)) continue;
 
 			/* Filter now! So num_engines and num_wagons is valid */
@@ -1463,7 +1451,7 @@ struct BuildVehicleWindow : Window {
 			if (!this->show_hidden_engines && e->IsVariantHidden(_local_company)) continue;
 			EngineID eid = e->index;
 			if (!IsEngineBuildable(eid, VEH_ROAD, _local_company)) continue;
-			if (this->filter.roadtype != INVALID_ROADTYPE && !HasPowerOnRoad(e->u.road.roadtype, this->filter.roadtype)) continue;
+			if (!this->listview_mode && !HasPowerOnRoads(e->u.road.roadtype, this->filter.roadtypes)) continue;
 
 			/* Filter by name or NewGRF extra text */
 			if (!FilterByText(e)) continue;
@@ -1503,7 +1491,7 @@ struct BuildVehicleWindow : Window {
 
 		this->eng_list.clear();
 
-		const Station *st = this->listview_mode ? nullptr : Station::GetByTile(this->window_number);
+		const Station *st = this->listview_mode ? nullptr : Depot::Get(this->window_number)->station;
 
 		/* Make list of all available planes.
 		 * Also check to see if the previously selected plane is still available,
@@ -1743,11 +1731,21 @@ struct BuildVehicleWindow : Window {
 		switch (widget) {
 			case WID_BV_CAPTION:
 				if (this->vehicle_type == VEH_TRAIN && !this->listview_mode) {
-					const RailTypeInfo *rti = GetRailTypeInfo(this->filter.railtype);
-					SetDParam(0, rti->strings.build_caption);
+					uint num_railtypes = CountBits(this->filter.railtypes);
+					if (num_railtypes != 1) {
+						SetDParam(0, STR_BUY_VEHICLE_TRAIN_ALL_CAPTION);
+					} else {
+						const RailTypeInfo *rti = GetRailTypeInfo((RailType)FindFirstBit(this->filter.railtypes));
+						SetDParam(0, rti->strings.build_caption);
+					}
 				} else if (this->vehicle_type == VEH_ROAD && !this->listview_mode) {
-					const RoadTypeInfo *rti = GetRoadTypeInfo(this->filter.roadtype);
-					SetDParam(0, rti->strings.build_caption);
+					uint num_roadtypes = CountBits(this->filter.roadtypes);
+					if (num_roadtypes != 1) {
+						SetDParam(0, STR_BUY_VEHICLE_ROAD_VEHICLE_CAPTION);
+					} else {
+						const RoadTypeInfo *rti = GetRoadTypeInfo((RoadType)FindFirstBit(this->filter.roadtypes));
+						SetDParam(0, rti->strings.build_caption);
+					}
 				} else {
 					SetDParam(0, (this->listview_mode ? STR_VEHICLE_LIST_AVAILABLE_TRAINS : STR_BUY_VEHICLE_TRAIN_ALL_CAPTION) + this->vehicle_type);
 				}

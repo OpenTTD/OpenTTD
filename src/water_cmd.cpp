@@ -134,7 +134,7 @@ CommandCost CmdBuildShipDepot(DoCommandFlag flags, TileIndex tile, Axis axis)
 	}
 
 	if (flags & DC_EXEC) {
-		Depot *depot = new Depot(tile);
+		Depot *depot = new Depot(tile, VEH_SHIP, _current_company);
 		depot->build_date = TimerGameCalendar::date;
 
 		uint new_water_infra = 2 * LOCK_DEPOT_TILE_FACTOR;

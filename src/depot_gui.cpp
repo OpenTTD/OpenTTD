@@ -29,6 +29,7 @@
 #include "zoom_func.h"
 #include "error.h"
 #include "depot_cmd.h"
+#include "station_base.h"
 #include "train_cmd.h"
 #include "vehicle_cmd.h"
 #include "core/geometry_func.hpp"
@@ -270,13 +271,13 @@ struct DepotWindow : Window {
 	{
 		assert(Depot::IsValidID(depot_id));
 		Depot *depot = Depot::Get(depot_id);
-		assert(IsCompanyBuildableVehicleType(GetDepotVehicleType(depot->xy)));
+		assert(IsCompanyBuildableVehicleType(depot->veh_type));
 
 		this->sel = INVALID_VEHICLE;
 		this->vehicle_over = INVALID_VEHICLE;
 		this->generate_list = true;
 		this->hovered_widget = -1;
-		this->type = GetDepotVehicleType(depot->xy);
+		this->type = depot->veh_type;
 		this->num_columns = 1; // for non-trains this gets set in FinishInitNested()
 		this->unitnumber_digits = 2;
 
@@ -292,7 +293,7 @@ struct DepotWindow : Window {
 		this->SetupWidgetData(this->type);
 		this->FinishInitNested(depot_id);
 
-		this->owner = GetTileOwner(depot->xy);
+		this->owner = depot->owner;
 		OrderBackup::Reset();
 	}
 
@@ -428,7 +429,7 @@ struct DepotWindow : Window {
 		if (widget != WID_D_CAPTION) return;
 
 		SetDParam(0, this->type);
-		SetDParam(1, (this->type == VEH_AIRCRAFT) ? GetStationIndex(Depot::Get(this->window_number)->xy) : this->window_number);
+		SetDParam(1, (this->type == VEH_AIRCRAFT) ? Depot::Get(this->window_number)->station->index : this->window_number);
 	}
 
 	struct GetDepotVehiclePtData {
@@ -1121,7 +1122,7 @@ static void DepotSellAllConfirmationCallback(Window *win, bool confirmed)
 	if (confirmed) {
 		assert(Depot::IsValidID(win->window_number));
 		Depot *d = Depot::Get(win->window_number);
-		Command<CMD_DEPOT_SELL_ALL_VEHICLES>::Post(d->xy, GetDepotVehicleType(d->xy));
+		Command<CMD_DEPOT_SELL_ALL_VEHICLES>::Post(d->xy, d->veh_type);
 	}
 }
 
@@ -1135,7 +1136,7 @@ void ShowDepotWindow(DepotID depot_id)
 	if (BringWindowToFrontById(WC_VEHICLE_DEPOT, depot_id) != nullptr) return;
 
 	Depot *d = Depot::Get(depot_id);
-	switch (GetDepotVehicleType(d->xy)) {
+	switch (d->veh_type) {
 		default: NOT_REACHED();
 		case VEH_TRAIN:    new DepotWindow(_train_depot_desc, depot_id);    break;
 		case VEH_ROAD:     new DepotWindow(_road_depot_desc, depot_id);     break;
