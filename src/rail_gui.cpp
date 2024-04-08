@@ -117,7 +117,7 @@ static void GenericPlaceRail(TileIndex tile, Track track)
  */
 static void PlaceExtraDepotRail(TileIndex tile, DiagDirection dir, Track track)
 {
-	if (GetRailTileType(tile) == RAIL_TILE_DEPOT) return;
+	if (IsRailDepot(tile)) return;
 	if (GetRailTileType(tile) == RAIL_TILE_SIGNALS && !_settings_client.gui.auto_remove_signals) return;
 	if ((GetTrackBits(tile) & DiagdirReachesTracks(dir)) == 0) return;
 
@@ -138,24 +138,26 @@ static const DiagDirection _place_depot_extra_dir[12] = {
 	DIAGDIR_NW, DIAGDIR_NE, DIAGDIR_NW, DIAGDIR_NE,
 };
 
-void CcRailDepot(Commands, const CommandCost &result, TileIndex tile, RailType, DiagDirection dir)
+void CcRailDepot(Commands, const CommandCost &result, TileIndex start_tile, RailType, DiagDirection dir, bool, DepotID, TileIndex end_tile)
 {
 	if (result.Failed()) return;
 
-	if (_settings_client.sound.confirm) SndPlayTileFx(SND_20_CONSTRUCTION_RAIL, tile);
+	if (_settings_client.sound.confirm) SndPlayTileFx(SND_20_CONSTRUCTION_RAIL, start_tile);
 	if (!_settings_client.gui.persistent_buildingtools) ResetObjectToPlace();
 
-	tile += TileOffsByDiagDir(dir);
+	TileArea ta(start_tile, end_tile);
+	for (TileIndex t : ta) {
+		TileIndex tile = t + TileOffsByDiagDir(dir);
 
-	if (IsTileType(tile, MP_RAILWAY)) {
-		PlaceExtraDepotRail(tile, _place_depot_extra_dir[dir], _place_depot_extra_track[dir]);
+		if (IsTileType(tile, MP_RAILWAY)) {
+			PlaceExtraDepotRail(tile, _place_depot_extra_dir[dir], _place_depot_extra_track[dir]);
 
-		/* Don't place the rail straight out of the depot of there is another depot across from it. */
-		Tile double_depot_tile = tile + TileOffsByDiagDir(dir);
-		bool is_double_depot = IsValidTile(double_depot_tile) && IsRailDepotTile(double_depot_tile);
-		if (!is_double_depot) PlaceExtraDepotRail(tile, _place_depot_extra_dir[dir + 4], _place_depot_extra_track[dir + 4]);
+			Tile double_depot_tile = tile + TileOffsByDiagDir(dir);
+			bool is_double_depot = IsValidTile(double_depot_tile) && IsRailDepotTile(double_depot_tile);
+			if (!is_double_depot) PlaceExtraDepotRail(tile, _place_depot_extra_dir[dir + 4], _place_depot_extra_track[dir + 4]);
 
-		PlaceExtraDepotRail(tile, _place_depot_extra_dir[dir + 8], _place_depot_extra_track[dir + 8]);
+			PlaceExtraDepotRail(tile, _place_depot_extra_dir[dir + 8], _place_depot_extra_track[dir + 8]);
+		}
 	}
 }
 
@@ -690,9 +692,14 @@ struct BuildRailToolbarWindow : Window {
 				PlaceProc_DemolishArea(tile);
 				break;
 
-			case WID_RAT_BUILD_DEPOT:
-				Command<CMD_BUILD_TRAIN_DEPOT>::Post(STR_ERROR_CAN_T_BUILD_TRAIN_DEPOT, CcRailDepot, tile, _cur_railtype, _build_depot_direction);
+			case WID_RAT_BUILD_DEPOT: {
+				CloseWindowById(WC_SELECT_DEPOT, VEH_TRAIN);
+
+				ViewportPlaceMethod vpm = (DiagDirToAxis(_build_depot_direction) == 0) ? VPM_X_LIMITED : VPM_Y_LIMITED;
+				VpStartPlaceSizing(tile, vpm, DDSP_BUILD_DEPOT);
+				VpSetPlaceSizingLimit(_settings_game.depot.depot_spread);
 				break;
+			}
 
 			case WID_RAT_BUILD_WAYPOINT:
 				PlaceRail_Waypoint(tile);
@@ -788,6 +795,17 @@ struct BuildRailToolbarWindow : Window {
 						}
 					}
 					break;
+
+				case DDSP_BUILD_DEPOT: {
+					bool adjacent = _ctrl_pressed;
+
+					auto proc = [=](DepotID join_to) -> bool {
+						return Command<CMD_BUILD_TRAIN_DEPOT>::Post(STR_ERROR_CAN_T_BUILD_TRAIN_DEPOT, CcRailDepot, start_tile, _cur_railtype, _build_depot_direction, adjacent, join_to, end_tile);
+					};
+
+					ShowSelectDepotIfNeeded(TileArea(start_tile, end_tile), proc, VEH_TRAIN);
+					break;
+				}
 			}
 		}
 	}

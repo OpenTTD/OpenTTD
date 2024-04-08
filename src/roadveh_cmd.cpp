@@ -37,6 +37,7 @@
 #include "framerate_type.h"
 #include "roadveh_cmd.h"
 #include "road_cmd.h"
+#include "depot_base.h"
 
 #include "table/strings.h"
 
@@ -251,6 +252,41 @@ void RoadVehUpdateCache(RoadVehicle *v, bool same_length)
 }
 
 /**
+ * Find an adequate tile for placing an engine.
+ * @param[in,out] tile A tile of the depot.
+ * @param e Engine to be built.
+ * @param flags Flags of the command.
+ * @return CommandCost() or an error message if the depot is not appropriate.
+ */
+CommandCost FindDepotTileForPlacingEngine(TileIndex &tile, const Engine *e, DoCommandFlag flags)
+{
+	assert(IsRoadDepotTile(tile));
+
+	Depot *dep = Depot:: GetByTile(tile);
+
+	/* Check that the vehicle can drive on some tile of the depot */
+	RoadType rt = e->u.road.roadtype;
+	const RoadTypeInfo *rti = GetRoadTypeInfo(rt);
+	if ((dep->r_types.road_types & rti->powered_roadtypes) == 0) return_cmd_error(STR_ERROR_DEPOT_WRONG_DEPOT_TYPE);
+
+	/* Use same tile if possible when replacing. */
+	if (flags & DC_AUTOREPLACE) {
+		/* Use same tile if possible when replacing. */
+		if (HasTileAnyRoadType(tile, rti->powered_roadtypes)) return CommandCost();
+	}
+
+	tile = INVALID_TILE;
+	for (auto &depot_tile : dep->depot_tiles) {
+		if (!HasTileAnyRoadType(depot_tile, rti->powered_roadtypes)) continue;
+		tile = depot_tile;
+		break;
+	}
+
+	assert(tile != INVALID_TILE);
+	return CommandCost();
+}
+
+/**
  * Build a road vehicle.
  * @param flags    type of operation.
  * @param tile     tile of the depot where road vehicle is built.
@@ -260,10 +296,12 @@ void RoadVehUpdateCache(RoadVehicle *v, bool same_length)
  */
 CommandCost CmdBuildRoadVehicle(DoCommandFlag flags, TileIndex tile, const Engine *e, Vehicle **ret)
 {
-	/* Check that the vehicle can drive on the road in question */
+	assert(IsRoadDepotTile(tile));
 	RoadType rt = e->u.road.roadtype;
 	const RoadTypeInfo *rti = GetRoadTypeInfo(rt);
-	if (!HasTileAnyRoadType(tile, rti->powered_roadtypes)) return_cmd_error(STR_ERROR_DEPOT_WRONG_DEPOT_TYPE);
+
+	CommandCost check = FindDepotTileForPlacingEngine(tile, e, flags);
+	if (check.Failed()) return check;
 
 	if (flags & DC_EXEC) {
 		const RoadVehicleInfo *rvi = &e->u.road;

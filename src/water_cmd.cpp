@@ -94,66 +94,75 @@ static void MarkCanalsAndRiversAroundDirty(TileIndex tile)
 /**
  * Build a ship depot.
  * @param flags type of operation
- * @param tile tile where ship depot is built
+ * @param tile first tile where ship depot is built
  * @param axis depot orientation (Axis)
+ * @param adjacent allow adjacent depots
+ * @param join_to depot to join to
+ * @param end_tile end tile of area to be built
  * @return the cost of this operation or an error
  */
-CommandCost CmdBuildShipDepot(DoCommandFlag flags, TileIndex tile, Axis axis)
+CommandCost CmdBuildShipDepot(DoCommandFlag flags, TileIndex tile, Axis axis, bool adjacent, DepotID join_to, TileIndex end_tile)
 {
 	if (!IsValidAxis(axis)) return CMD_ERROR;
 	TileIndex tile2 = tile + (axis == AXIS_X ? TileDiffXY(1, 0) : TileDiffXY(0, 1));
 
-	if (!HasTileWaterGround(tile) || !HasTileWaterGround(tile2)) {
-		return_cmd_error(STR_ERROR_MUST_BE_BUILT_ON_WATER);
-	}
+	TileArea complete_area(tile, end_tile);
+	complete_area.Add(tile2);
+	assert(complete_area.w == 2 || complete_area.h == 2);
 
-	if (IsBridgeAbove(tile) || IsBridgeAbove(tile2)) return_cmd_error(STR_ERROR_MUST_DEMOLISH_BRIDGE_FIRST);
+	TileArea northern_tiles(complete_area.tile);
+	northern_tiles.Add(complete_area.tile + (axis == AXIS_X ? TileDiffXY(0, complete_area.h - 1) : TileDiffXY(complete_area.w - 1, 0)));
 
-	if (!IsTileFlat(tile) || !IsTileFlat(tile2)) {
-		/* Prevent depots on rapids */
-		return_cmd_error(STR_ERROR_SITE_UNSUITABLE);
-	}
-
-	if (!Depot::CanAllocateItem()) return CMD_ERROR;
-
-	WaterClass wc1 = GetWaterClass(tile);
-	WaterClass wc2 = GetWaterClass(tile2);
-	CommandCost cost = CommandCost(EXPENSES_CONSTRUCTION, _price[PR_BUILD_DEPOT_SHIP]);
-
-	bool add_cost = !IsWaterTile(tile);
-	CommandCost ret = Command<CMD_LANDSCAPE_CLEAR>::Do(flags | DC_AUTO, tile);
+	/* Create a new depot or find a depot to join to. */
+	Depot *depot = nullptr;
+	CommandCost ret = FindJoiningDepot(complete_area, VEH_SHIP, join_to, depot, adjacent, flags);
 	if (ret.Failed()) return ret;
-	if (add_cost) {
-		cost.AddCost(ret);
-	}
-	add_cost = !IsWaterTile(tile2);
-	ret = Command<CMD_LANDSCAPE_CLEAR>::Do(flags | DC_AUTO, tile2);
-	if (ret.Failed()) return ret;
-	if (add_cost) {
-		cost.AddCost(ret);
+
+	/* Get the cost of building all the ship depots. */
+	CommandCost cost = CommandCost(EXPENSES_CONSTRUCTION, _price[PR_BUILD_DEPOT_SHIP] * northern_tiles.w * northern_tiles.h);
+
+	/* Update infrastructure counts after the tile clears earlier.
+	 * Clearing object tiles may result in water tiles which are already accounted for in the water infrastructure total.
+	 * See: MakeWaterKeepingClass() */
+	uint new_water_infra = 0;
+
+	for (TileIndex t : complete_area) {
+		/* Build water depots in water valid tiles... */
+		if (!IsValidTile(t) || !HasTileWaterGround(t)) return_cmd_error(STR_ERROR_MUST_BE_BUILT_ON_WATER);
+
+		/* ... with no bridges above... */
+		if (IsBridgeAbove(t)) return_cmd_error(STR_ERROR_MUST_DEMOLISH_BRIDGE_FIRST);
+
+		/* ... and preventing depots on rapids. */
+		if (!IsTileFlat(t)) return_cmd_error(STR_ERROR_SITE_UNSUITABLE);
+
+		/* Keep original water class before clearing tile. */
+		WaterClass wc = GetWaterClass(t);
+
+		/* Clear the tile. */
+		bool add_cost = !IsWaterTile(t);
+		CommandCost ret = Command<CMD_LANDSCAPE_CLEAR>::Do(flags | DC_AUTO, t);
+		if (ret.Failed()) return ret;
+		if (add_cost) cost.AddCost(ret);
+
+		if (wc == WATER_CLASS_CANAL && !(HasTileWaterClass(t) && GetWaterClass(t) == WATER_CLASS_CANAL && IsTileOwner(t, _current_company))) new_water_infra++;
+
+		if (flags & DC_EXEC) {
+			DepotPart dp = northern_tiles.Contains(t) ? DEPOT_PART_NORTH : DEPOT_PART_SOUTH;
+			MakeShipDepot(t,  _current_company, depot->index, dp, axis, wc);
+			CheckForDockingTile(t);
+			MarkTileDirtyByTile(t);
+		}
 	}
 
 	if (flags & DC_EXEC) {
-		Depot *depot = new Depot(tile, VEH_SHIP, _current_company);
-		depot->build_date = TimerGameCalendar::date;
-
-		uint new_water_infra = 2 * LOCK_DEPOT_TILE_FACTOR;
-		/* Update infrastructure counts after the tile clears earlier.
-		 * Clearing object tiles may result in water tiles which are already accounted for in the water infrastructure total.
-		 * See: MakeWaterKeepingClass() */
-		if (wc1 == WATER_CLASS_CANAL && !(HasTileWaterClass(tile) && GetWaterClass(tile) == WATER_CLASS_CANAL && IsTileOwner(tile, _current_company))) new_water_infra++;
-		if (wc2 == WATER_CLASS_CANAL && !(HasTileWaterClass(tile2) && GetWaterClass(tile2) == WATER_CLASS_CANAL && IsTileOwner(tile2, _current_company))) new_water_infra++;
-
-		Company::Get(_current_company)->infrastructure.water += new_water_infra;
+		Company::Get(_current_company)->infrastructure.water += new_water_infra +
+				complete_area.w * complete_area.h * LOCK_DEPOT_TILE_FACTOR;
 		DirtyCompanyInfrastructureWindows(_current_company);
 
-		MakeShipDepot(tile,  _current_company, depot->index, DEPOT_PART_NORTH, axis, wc1);
-		MakeShipDepot(tile2, _current_company, depot->index, DEPOT_PART_SOUTH, axis, wc2);
-		CheckForDockingTile(tile);
-		CheckForDockingTile(tile2);
-		MarkTileDirtyByTile(tile);
-		MarkTileDirtyByTile(tile2);
 		MakeDefaultName(depot);
+		depot->AfterAddRemove(complete_area, true);
+		if (join_to == NEW_DEPOT) MakeDefaultName(depot);
 	}
 
 	return cost;
@@ -275,9 +284,8 @@ static CommandCost RemoveShipDepot(TileIndex tile, DoCommandFlag flags)
 	bool do_clear = (flags & DC_FORCE_CLEAR_TILE) != 0;
 
 	if (flags & DC_EXEC) {
-		delete Depot::GetByTile(tile);
-
-		Company *c = Company::GetIfValid(GetTileOwner(tile));
+		Depot *depot = Depot::GetByTile(tile);
+		Company *c = Company::GetIfValid(depot->owner);
 		if (c != nullptr) {
 			c->infrastructure.water -= 2 * LOCK_DEPOT_TILE_FACTOR;
 			if (do_clear && GetWaterClass(tile) == WATER_CLASS_CANAL) c->infrastructure.water--;
@@ -286,6 +294,8 @@ static CommandCost RemoveShipDepot(TileIndex tile, DoCommandFlag flags)
 
 		if (!do_clear) MakeWaterKeepingClass(tile,  GetTileOwner(tile));
 		MakeWaterKeepingClass(tile2, GetTileOwner(tile2));
+
+		depot->AfterAddRemove(TileArea(tile, tile2), false);
 	}
 
 	return CommandCost(EXPENSES_CONSTRUCTION, _price[PR_CLEAR_DEPOT_SHIP]);
