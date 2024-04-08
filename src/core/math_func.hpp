@@ -54,8 +54,8 @@ constexpr T Align(const T x, uint n)
 template <typename T>
 constexpr T *AlignPtr(T *x, uint n)
 {
-	static_assert(sizeof(size_t) == sizeof(void *));
-	return reinterpret_cast<T *>(Align((size_t)x, n));
+	static_assert(sizeof(uintptr_t) == sizeof(void *));
+	return reinterpret_cast<T *>(Align(reinterpret_cast<uintptr_t>(x), n));
 }
 
 /**
