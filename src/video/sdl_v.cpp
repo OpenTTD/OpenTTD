@@ -438,7 +438,7 @@ static uint ConvertSdlKeyIntoMy(SDL_keysym *sym, char32_t *character)
 	uint key = 0;
 
 	for (const auto &map : _vk_mapping) {
-		if (IsInsideBS(sym, map.vk_from, map.vk_count)) {
+		if (IsInsideBS(sym->sym, map.vk_from, map.vk_count)) {
 			key = sym->sym - map.vk_from + map.map_to;
 			break;
 		}
