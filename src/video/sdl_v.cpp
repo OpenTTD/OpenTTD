@@ -182,9 +182,9 @@ static void GetVideoModes()
 
 	_all_modes = (SDL_ListModes(nullptr, SDL_SWSURFACE | (_fullscreen ? SDL_FULLSCREEN : 0)) == (void*)-1);
 	if (modes == (void*)-1) {
-		for (uint i = 0; i < lengthof(_default_resolutions); i++) {
-			if (SDL_VideoModeOK(_default_resolutions[i].width, _default_resolutions[i].height, 8, SDL_FULLSCREEN) != 0) {
-				_resolutions.push_back(_default_resolutions[i]);
+		for (const auto &default_resolution : _default_resolutions) {
+			if (SDL_VideoModeOK(default_resolution.width, default_resolution.height, 8, SDL_FULLSCREEN) != 0) {
+				_resolutions.push_back(default_resolution);
 			}
 		}
 	} else {

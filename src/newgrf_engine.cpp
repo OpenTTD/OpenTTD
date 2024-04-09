@@ -1394,11 +1394,11 @@ void FillNewGRFVehicleCache(const Vehicle *v)
 	static_assert(NCVV_END == lengthof(cache_entries));
 
 	/* Resolve all the variables, so their caches are set. */
-	for (size_t i = 0; i < lengthof(cache_entries); i++) {
+	for (const auto &cache_entry : cache_entries) {
 		/* Only resolve when the cache isn't valid. */
-		if (HasBit(v->grf_cache.cache_valid, cache_entries[i][1])) continue;
+		if (HasBit(v->grf_cache.cache_valid, cache_entry[1])) continue;
 		bool stub;
-		ro.GetScope(VSG_SCOPE_SELF)->GetVariable(cache_entries[i][0], 0, &stub);
+		ro.GetScope(VSG_SCOPE_SELF)->GetVariable(cache_entry[0], 0, &stub);
 	}
 
 	/* Make sure really all bits are set. */

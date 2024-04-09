@@ -303,33 +303,32 @@ struct CheatWindow : Window {
 		if (widget != WID_C_PANEL) return;
 
 		uint width = 0;
-		for (int i = 0; i != lengthof(_cheats_ui); i++) {
-			const CheatEntry *ce = &_cheats_ui[i];
-			switch (ce->type) {
+		for (const auto &ce : _cheats_ui) {
+			switch (ce.type) {
 				case SLE_BOOL:
 					SetDParam(0, STR_CONFIG_SETTING_ON);
-					width = std::max(width, GetStringBoundingBox(ce->str).width);
+					width = std::max(width, GetStringBoundingBox(ce.str).width);
 					SetDParam(0, STR_CONFIG_SETTING_OFF);
-					width = std::max(width, GetStringBoundingBox(ce->str).width);
+					width = std::max(width, GetStringBoundingBox(ce.str).width);
 					break;
 
 				default:
-					switch (ce->str) {
+					switch (ce.str) {
 						/* Display date for change date cheat */
 						case STR_CHEAT_CHANGE_DATE:
 							SetDParam(0, TimerGameCalendar::ConvertYMDToDate(CalendarTime::MAX_YEAR, 11, 31));
-							width = std::max(width, GetStringBoundingBox(ce->str).width);
+							width = std::max(width, GetStringBoundingBox(ce.str).width);
 							break;
 
 						/* Draw coloured flag for change company cheat */
 						case STR_CHEAT_CHANGE_COMPANY:
 							SetDParamMaxValue(0, MAX_COMPANIES);
-							width = std::max(width, GetStringBoundingBox(ce->str).width + WidgetDimensions::scaled.hsep_wide);
+							width = std::max(width, GetStringBoundingBox(ce.str).width + WidgetDimensions::scaled.hsep_wide);
 							break;
 
 						default:
 							SetDParam(0, INT64_MAX);
-							width = std::max(width, GetStringBoundingBox(ce->str).width);
+							width = std::max(width, GetStringBoundingBox(ce.str).width);
 							break;
 					}
 					break;

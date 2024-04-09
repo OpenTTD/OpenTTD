@@ -361,9 +361,9 @@ int CDECL main(int argc, char *argv[])
 
 			case 'P':
 				fmt::print("name\tflags\tdefault\tdescription\n");
-				for (size_t j = 0; j < lengthof(_pragmas); j++) {
+				for (const auto &pragma : _pragmas) {
 					fmt::print("\"{}\"\t{}\t\"{}\"\t\"{}\"\n",
-							_pragmas[j][0], _pragmas[j][1], _pragmas[j][2], _pragmas[j][3]);
+							pragma[0], pragma[1], pragma[2], pragma[3]);
 				}
 				return 0;
 

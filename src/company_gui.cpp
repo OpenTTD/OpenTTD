@@ -2272,8 +2272,8 @@ struct CompanyWindow : Window
 
 			case WID_C_DESC_VEHICLE_COUNTS:
 				SetDParamMaxValue(0, 5000); // Maximum number of vehicles
-				for (uint i = 0; i < lengthof(_company_view_vehicle_count_strings); i++) {
-					size.width = std::max(size.width, GetStringBoundingBox(_company_view_vehicle_count_strings[i]).width + padding.width);
+				for (const auto &count_string : _company_view_vehicle_count_strings) {
+					size.width = std::max(size.width, GetStringBoundingBox(count_string).width + padding.width);
 				}
 				break;
 

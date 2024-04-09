@@ -106,7 +106,7 @@ void MusicSystem::BuildPlaylists()
 	const MusicSet *set = BaseMusic::GetUsedSet();
 
 	/* Clear current playlists */
-	for (size_t i = 0; i < lengthof(this->standard_playlists); ++i) this->standard_playlists[i].clear();
+	for (auto &playlist : this->standard_playlists) playlist.clear();
 	this->music_set.clear();
 
 	/* Build standard playlists, and a list of available music */

@@ -1008,9 +1008,9 @@ void DeterminePaths(const char *exe, bool only_local_path)
 				};
 
 			config_dir.clear();
-			for (uint i = 0; i < lengthof(new_openttd_cfg_order); i++) {
-				if (IsValidSearchPath(new_openttd_cfg_order[i])) {
-					config_dir = _searchpaths[new_openttd_cfg_order[i]];
+			for (const auto &searchpath : new_openttd_cfg_order) {
+				if (IsValidSearchPath(searchpath)) {
+					config_dir = _searchpaths[searchpath];
 					break;
 				}
 			}
@@ -1061,8 +1061,8 @@ void DeterminePaths(const char *exe, bool only_local_path)
 		SAVE_DIR, AUTOSAVE_DIR, SCENARIO_DIR, HEIGHTMAP_DIR, BASESET_DIR, NEWGRF_DIR, AI_DIR, AI_LIBRARY_DIR, GAME_DIR, GAME_LIBRARY_DIR, SCREENSHOT_DIR, SOCIAL_INTEGRATION_DIR
 	};
 
-	for (uint i = 0; i < lengthof(default_subdirs); i++) {
-		FioCreateDirectory(_personal_dir + _subdirs[default_subdirs[i]]);
+	for (const auto &default_subdir : default_subdirs) {
+		FioCreateDirectory(_personal_dir + _subdirs[default_subdir]);
 	}
 
 	/* If we have network we make a directory for the autodownloading of content */
@@ -1072,9 +1072,9 @@ void DeterminePaths(const char *exe, bool only_local_path)
 	FillValidSearchPaths(only_local_path);
 
 	/* Create the directory for each of the types of content */
-	const Subdirectory dirs[] = { SCENARIO_DIR, HEIGHTMAP_DIR, BASESET_DIR, NEWGRF_DIR, AI_DIR, AI_LIBRARY_DIR, GAME_DIR, GAME_LIBRARY_DIR, SOCIAL_INTEGRATION_DIR };
-	for (uint i = 0; i < lengthof(dirs); i++) {
-		FioCreateDirectory(FioGetDirectory(SP_AUTODOWNLOAD_DIR, dirs[i]));
+	const Subdirectory subdirs[] = { SCENARIO_DIR, HEIGHTMAP_DIR, BASESET_DIR, NEWGRF_DIR, AI_DIR, AI_LIBRARY_DIR, GAME_DIR, GAME_LIBRARY_DIR, SOCIAL_INTEGRATION_DIR };
+	for (const auto &subdir : subdirs) {
+		FioCreateDirectory(FioGetDirectory(SP_AUTODOWNLOAD_DIR, subdir));
 	}
 
 	extern std::string _log_file;
