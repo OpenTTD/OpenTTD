@@ -269,22 +269,14 @@ public:
 		}
 	}
 
-	const char *ReadString()
+	std::string_view ReadString()
 	{
 		char *string = reinterpret_cast<char *>(data);
 		size_t string_length = ttd_strnlen(string, Remaining());
 
-		if (string_length == Remaining()) {
-			/* String was not NUL terminated, so make sure it is now. */
-			string[string_length - 1] = '\0';
-			GrfMsg(7, "String was not terminated with a zero byte.");
-		} else {
-			/* Increase the string length to include the NUL byte. */
-			string_length++;
-		}
 		Skip(string_length);
 
-		return string;
+		return std::string_view(string, string_length);
 	}
 
 	inline size_t Remaining() const
@@ -2859,27 +2851,27 @@ static ChangeInfoResult GlobalVarChangeInfo(uint gvid, int numinfo, int prop, By
 
 				uint8_t newgrf_id = buf->ReadByte(); // The NewGRF (custom) identifier.
 				while (newgrf_id != 0) {
-					const char *name = buf->ReadString(); // The name for the OpenTTD identifier.
+					std::string_view name = buf->ReadString(); // The name for the OpenTTD identifier.
 
 					/* We'll just ignore the UTF8 identifier character. This is (fairly)
 					 * safe as OpenTTD's strings gender/cases are usually in ASCII which
 					 * is just a subset of UTF8, or they need the bigger UTF8 characters
 					 * such as Cyrillic. Thus we will simply assume they're all UTF8. */
 					char32_t c;
-					size_t len = Utf8Decode(&c, name);
-					if (c == NFO_UTF8_IDENTIFIER) name += len;
+					size_t len = Utf8Decode(&c, name.data());
+					if (c == NFO_UTF8_IDENTIFIER) name = name.substr(len);
 
 					LanguageMap::Mapping map;
 					map.newgrf_id = newgrf_id;
 					if (prop == 0x13) {
-						map.openttd_id = lang->GetGenderIndex(name);
+						map.openttd_id = lang->GetGenderIndex(name.data());
 						if (map.openttd_id >= MAX_NUM_GENDERS) {
 							GrfMsg(1, "GlobalVarChangeInfo: Gender name {} is not known, ignoring", name);
 						} else {
 							_cur.grffile->language_map[curidx].gender_map.push_back(map);
 						}
 					} else {
-						map.openttd_id = lang->GetCaseIndex(name);
+						map.openttd_id = lang->GetCaseIndex(name.data());
 						if (map.openttd_id >= MAX_NUM_CASES) {
 							GrfMsg(1, "GlobalVarChangeInfo: Case name {} is not known, ignoring", name);
 						} else {
@@ -6295,7 +6287,7 @@ static void FeatureNewName(ByteReader *buf)
 	               id, endid, feature, lang);
 
 	for (; id < endid && buf->HasData(); id++) {
-		const char *name = buf->ReadString();
+		const std::string_view name = buf->ReadString();
 		GrfMsg(8, "FeatureNewName: 0x{:04X} <- {}", id, name);
 
 		switch (feature) {
@@ -7013,7 +7005,7 @@ static void ScanInfo(ByteReader *buf)
 {
 	uint8_t grf_version = buf->ReadByte();
 	uint32_t grfid      = buf->ReadDWord();
-	const char *name  = buf->ReadString();
+	std::string_view name = buf->ReadString();
 
 	_cur.grfconfig->ident.grfid = grfid;
 
@@ -7028,7 +7020,7 @@ static void ScanInfo(ByteReader *buf)
 	AddGRFTextToList(_cur.grfconfig->name, 0x7F, grfid, false, name);
 
 	if (buf->HasData()) {
-		const char *info = buf->ReadString();
+		std::string_view info = buf->ReadString();
 		AddGRFTextToList(_cur.grfconfig->info, 0x7F, grfid, true, info);
 	}
 
@@ -7048,7 +7040,7 @@ static void GRFInfo(ByteReader *buf)
 
 	uint8_t version    = buf->ReadByte();
 	uint32_t grfid     = buf->ReadDWord();
-	const char *name = buf->ReadString();
+	std::string_view name = buf->ReadString();
 
 	if (_cur.stage < GLS_RESERVE && _cur.grfconfig->status != GCS_UNKNOWN) {
 		DisableGrf(STR_NEWGRF_ERROR_MULTIPLE_ACTION_8);
@@ -7198,7 +7190,7 @@ static void GRFLoadError(ByteReader *buf)
 	if (message_id == 0xFF) {
 		/* This is a custom error message. */
 		if (buf->HasData()) {
-			const char *message = buf->ReadString();
+			std::string_view message = buf->ReadString();
 
 			error->custom_message = TranslateTTDPatchCodes(_cur.grffile->grfid, lang, true, message, SCC_RAW_STRING_POINTER);
 		} else {
@@ -7210,7 +7202,7 @@ static void GRFLoadError(ByteReader *buf)
 	}
 
 	if (buf->HasData()) {
-		const char *data = buf->ReadString();
+		std::string_view data = buf->ReadString();
 
 		error->data = TranslateTTDPatchCodes(_cur.grffile->grfid, lang, true, data);
 	} else {
@@ -7234,7 +7226,7 @@ static void GRFComment(ByteReader *buf)
 
 	if (!buf->HasData()) return;
 
-	const char *text = buf->ReadString();
+	std::string_view text = buf->ReadString();
 	GrfMsg(2, "GRFComment: {}", text);
 }
 
@@ -7761,7 +7753,7 @@ static void FeatureTownName(ByteReader *buf)
 		do {
 			ClrBit(lang, 7);
 
-			const char *name = buf->ReadString();
+			std::string_view name = buf->ReadString();
 
 			std::string lang_name = TranslateTTDPatchCodes(grfid, lang, false, name);
 			GrfMsg(6, "FeatureTownName: lang 0x{:X} -> '{}'", lang, lang_name);
@@ -7801,7 +7793,7 @@ static void FeatureTownName(ByteReader *buf)
 				part.id = ref_id;
 				GrfMsg(6, "FeatureTownName: part {}, text {}, uses intermediate definition 0x{:02X} (with probability {})", partnum, textnum, ref_id, part.prob & 0x7F);
 			} else {
-				const char *text = buf->ReadString();
+				std::string_view text = buf->ReadString();
 				part.text = TranslateTTDPatchCodes(grfid, 0, false, text);
 				GrfMsg(6, "FeatureTownName: part {}, text {}, '{}' (with probability {})", partnum, textnum, part.text, part.prob);
 			}
@@ -8079,9 +8071,9 @@ static void TranslateGRFStrings(ByteReader *buf)
 	}
 
 	for (uint i = 0; i < num_strings && buf->HasData(); i++) {
-		const char *string = buf->ReadString();
+		std::string_view string = buf->ReadString();
 
-		if (StrEmpty(string)) {
+		if (string.empty()) {
 			GrfMsg(7, "TranslateGRFString: Ignoring empty string.");
 			continue;
 		}
@@ -8091,21 +8083,21 @@ static void TranslateGRFStrings(ByteReader *buf)
 }
 
 /** Callback function for 'INFO'->'NAME' to add a translation to the newgrf name. */
-static bool ChangeGRFName(uint8_t langid, const char *str)
+static bool ChangeGRFName(uint8_t langid, std::string_view str)
 {
 	AddGRFTextToList(_cur.grfconfig->name, langid, _cur.grfconfig->ident.grfid, false, str);
 	return true;
 }
 
 /** Callback function for 'INFO'->'DESC' to add a translation to the newgrf description. */
-static bool ChangeGRFDescription(uint8_t langid, const char *str)
+static bool ChangeGRFDescription(uint8_t langid, std::string_view str)
 {
 	AddGRFTextToList(_cur.grfconfig->info, langid, _cur.grfconfig->ident.grfid, true, str);
 	return true;
 }
 
 /** Callback function for 'INFO'->'URL_' to set the newgrf url. */
-static bool ChangeGRFURL(uint8_t langid, const char *str)
+static bool ChangeGRFURL(uint8_t langid, std::string_view str)
 {
 	AddGRFTextToList(_cur.grfconfig->url, langid, _cur.grfconfig->ident.grfid, false, str);
 	return true;
@@ -8207,14 +8199,14 @@ static bool ChangeGRFMinVersion(size_t len, ByteReader *buf)
 static GRFParameterInfo *_cur_parameter; ///< The parameter which info is currently changed by the newgrf.
 
 /** Callback function for 'INFO'->'PARAM'->param_num->'NAME' to set the name of a parameter. */
-static bool ChangeGRFParamName(uint8_t langid, const char *str)
+static bool ChangeGRFParamName(uint8_t langid, std::string_view str)
 {
 	AddGRFTextToList(_cur_parameter->name, langid, _cur.grfconfig->ident.grfid, false, str);
 	return true;
 }
 
 /** Callback function for 'INFO'->'PARAM'->param_num->'DESC' to set the description of a parameter. */
-static bool ChangeGRFParamDescription(uint8_t langid, const char *str)
+static bool ChangeGRFParamDescription(uint8_t langid, std::string_view str)
 {
 	AddGRFTextToList(_cur_parameter->desc, langid, _cur.grfconfig->ident.grfid, true, str);
 	return true;
@@ -8294,7 +8286,7 @@ static bool ChangeGRFParamDefault(size_t len, ByteReader *buf)
 }
 
 typedef bool (*DataHandler)(size_t, ByteReader *);  ///< Type of callback function for binary nodes
-typedef bool (*TextHandler)(uint8_t, const char *str); ///< Type of callback function for text nodes
+typedef bool (*TextHandler)(uint8_t, std::string_view str); ///< Type of callback function for text nodes
 typedef bool (*BranchHandler)(ByteReader *);        ///< Type of callback function for branch nodes
 
 /**
@@ -8398,7 +8390,7 @@ static bool ChangeGRFParamValueNames(ByteReader *buf)
 		}
 
 		uint8_t langid = buf->ReadByte();
-		const char *name_string = buf->ReadString();
+		std::string_view name_string = buf->ReadString();
 
 		auto val_name = _cur_parameter->value_names.find(id);
 		if (val_name != _cur_parameter->value_names.end()) {
