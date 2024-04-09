@@ -458,6 +458,8 @@ struct StringIDMapping {
 
 	StringIDMapping(uint32_t grfid, StringID source, std::function<void(StringID)> &&func) : grfid(grfid), source(source), func(std::move(func)) { }
 };
+
+/** Strings to be mapped during load. */
 static std::vector<StringIDMapping> _string_to_grf_mapping;
 
 /**
