@@ -2855,14 +2855,14 @@ STR_SELECT_BRIDGE_INFO_NAME                                     :{GOLD}{STRING}
 STR_SELECT_BRIDGE_INFO_NAME_MAX_SPEED                           :{GOLD}{STRING},{} {VELOCITY}
 STR_SELECT_BRIDGE_INFO_NAME_COST                                :{GOLD}{0:STRING},{} {WHITE}{2:CURRENCY_LONG}
 STR_SELECT_BRIDGE_INFO_NAME_MAX_SPEED_COST                      :{GOLD}{STRING},{} {VELOCITY} {WHITE}{CURRENCY_LONG}
-STR_BRIDGE_NAME_SUSPENSION_STEEL                                :Hängbro, Stål
-STR_BRIDGE_NAME_GIRDER_STEEL                                    :Balkbro, Stål
-STR_BRIDGE_NAME_CANTILEVER_STEEL                                :Konsolbro, Stål
-STR_BRIDGE_NAME_SUSPENSION_CONCRETE                             :Hängbro, Betong
+STR_BRIDGE_NAME_SUSPENSION_STEEL                                :Hängbro, stål
+STR_BRIDGE_NAME_GIRDER_STEEL                                    :Balkbro, stål
+STR_BRIDGE_NAME_CANTILEVER_STEEL                                :Konsolbro, stål
+STR_BRIDGE_NAME_SUSPENSION_CONCRETE                             :Hängbro, betong
 STR_BRIDGE_NAME_WOODEN                                          :Träbro
 STR_BRIDGE_NAME_CONCRETE                                        :Betongbro
-STR_BRIDGE_NAME_TUBULAR_STEEL                                   :Rörbro, Stål
-STR_BRIDGE_TUBULAR_SILICON                                      :Rörbro, Kisel
+STR_BRIDGE_NAME_TUBULAR_STEEL                                   :Rörbro, stål
+STR_BRIDGE_TUBULAR_SILICON                                      :Rörbro, kisel
 
 
 # Road construction toolbar

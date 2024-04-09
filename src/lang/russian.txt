@@ -2819,7 +2819,7 @@ STR_CONTENT_OPEN_URL                                            :{BLACK}Веб-�
 STR_CONTENT_OPEN_URL_TOOLTIP                                    :{BLACK}Посетить веб-сайт с информацией об этом модуле
 STR_CONTENT_DOWNLOAD_CAPTION                                    :{BLACK}Скачать
 STR_CONTENT_DOWNLOAD_CAPTION_TOOLTIP                            :{BLACK}Начать загрузку выбранного контента
-STR_CONTENT_TOTAL_DOWNLOAD_SIZE                                 :{SILVER}Всего для загруки: {WHITE}{BYTES}
+STR_CONTENT_TOTAL_DOWNLOAD_SIZE                                 :{SILVER}Всего для загрузки: {WHITE}{BYTES}
 STR_CONTENT_DETAIL_TITLE                                        :{SILVER}ИНФОРМАЦИЯ О КОНТЕНТЕ
 
 ###length 5

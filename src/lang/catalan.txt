@@ -525,7 +525,7 @@ STR_NEWS_MENU_MESSAGE_HISTORY_MENU                              :Historial de mi
 STR_NEWS_MENU_DELETE_ALL_MESSAGES                               :Esborra tots els missatges
 
 # About menu
-STR_ABOUT_MENU_LAND_BLOCK_INFO                                  :Informació de la casella
+STR_ABOUT_MENU_LAND_BLOCK_INFO                                  :Detalls de les caselles
 STR_ABOUT_MENU_HELP                                             :Ajuda i manuals
 STR_ABOUT_MENU_TOGGLE_CONSOLE                                   :Commuta la consola
 STR_ABOUT_MENU_AI_DEBUG                                         :Depuració de les IA i l'script de partida
@@ -3067,7 +3067,7 @@ STR_INDUSTRY_CARGOES_SELECT_INDUSTRY                            :{BLACK}Seleccio
 STR_INDUSTRY_CARGOES_SELECT_INDUSTRY_TOOLTIP                    :{BLACK}Selecciona la indústria que vols mostrar
 
 # Land area window
-STR_LAND_AREA_INFORMATION_CAPTION                               :{WHITE}Informació del terreny
+STR_LAND_AREA_INFORMATION_CAPTION                               :{WHITE}Detalls de la casella
 STR_LAND_AREA_INFORMATION_LOCATION_TOOLTIP                      :{BLACK}Centra la vista principal al lloc on està la casella. Amb Ctrl+clic, s'obre una vista nova on hi ha la casella.
 STR_LAND_AREA_INFORMATION_COST_TO_CLEAR_N_A                     :{BLACK}Cost de neteja: {LTBLUE}N/A
 STR_LAND_AREA_INFORMATION_COST_TO_CLEAR                         :{BLACK}Cost de neteja: {RED}{CURRENCY_LONG}

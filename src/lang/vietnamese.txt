@@ -4639,7 +4639,7 @@ STR_ORDER_REFIT_ORDER                                           :(Cải biến t
 STR_ORDER_REFIT_STOP_ORDER                                      :(Cải biến thành {STRING} và dừng)
 STR_ORDER_STOP_ORDER                                            :(Dừng)
 
-STR_ORDER_WAIT_TO_UNBUNCH                                       :(chờ để gỡ gộp)
+STR_ORDER_WAIT_TO_UNBUNCH                                       :(Chờ để gỡ gộp)
 
 STR_ORDER_GO_TO_STATION                                         :{STRING} {STATION} {STRING}
 STR_ORDER_GO_TO_STATION_CAN_T_USE_STATION                       :{PUSH_COLOUR}{RED}(Không thể sử dụng trạm){POP_COLOUR} {STRING} {STATION} {STRING}

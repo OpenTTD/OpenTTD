@@ -3527,10 +3527,10 @@ STR_NEWGRF_ERROR_AFTER_TRANSLATED_FILE                          :GRF-tiedosto, j
 STR_NEWGRF_ERROR_TOO_MANY_NEWGRFS_LOADED                        :Liian monta NewGRF:ää on ladattu
 STR_NEWGRF_ERROR_STATIC_GRF_CAUSES_DESYNC                       :Lisäosan {1:STRING} lataaminen staattisena NewGRF:nä lisäosan {2:STRING} kanssa voi johtaa tahdistusvirheisiin
 STR_NEWGRF_ERROR_UNEXPECTED_SPRITE                              :Odottamaton sprite (sprite {3:NUM})
-STR_NEWGRF_ERROR_UNKNOWN_PROPERTY                               :Tuntematon Action 0-ominaisuus {4:HEX} (sprite {3:NUM})
+STR_NEWGRF_ERROR_UNKNOWN_PROPERTY                               :Tuntematon toimenpiteen 0 ominaisuus {4:HEX} (sprite {3:NUM})
 STR_NEWGRF_ERROR_INVALID_ID                                     :Yritys käyttää virheellistä ID:tä (sprite {3:NUM})
 STR_NEWGRF_ERROR_CORRUPT_SPRITE                                 :{YELLOW}{STRING} sisältää korruptoituneen spriten. Kaikki korruptoituneet spritet näkyvät punaisina kysymysmerkkeinä (?)
-STR_NEWGRF_ERROR_MULTIPLE_ACTION_8                              :Sisältää useita Action 8-merkintöjä (sprite {3:NUM})
+STR_NEWGRF_ERROR_MULTIPLE_ACTION_8                              :Toimenpide 8 esiintyy moneen kertaan (sprite {3:NUM})
 STR_NEWGRF_ERROR_READ_BOUNDS                                    :Luku pseudo-spriten ohi (sprite {3:NUM})
 STR_NEWGRF_ERROR_GRM_FAILED                                     :Pyydetyt GRF-resurssit eivät ole saatavilla (sprite {3:NUM})
 STR_NEWGRF_ERROR_FORCEFULLY_DISABLED                            :{2:STRING} poisti käytöstä NewGRF:n {1:STRING}
