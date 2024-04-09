@@ -38,6 +38,18 @@ public:
 	/* Public constructor as emplace_back needs access. */
 	NewGRFClass(uint32_t global_id, StringID name) : global_id(global_id), name(name) { }
 
+	/**
+	 * Get read-only span of specs of this class.
+	 * @return Read-only span of specs.
+	 */
+	std::span<Tspec * const> Specs() const { return this->spec; }
+
+	/**
+	 * Get read-only span of all classes of this type.
+	 * @return Read-only span of classes.
+	 */
+	static std::span<NewGRFClass<Tspec, Tid, Tmax> const> Classes() { return NewGRFClass::classes; }
+
 	void Insert(Tspec *spec);
 
 	Tid Index() const { return static_cast<Tid>(std::distance(&*std::cbegin(NewGRFClass::classes), this)); }
