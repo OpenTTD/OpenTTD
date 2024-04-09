@@ -284,11 +284,9 @@ void Hash::PrintStatistics() const
 	uint used_buckets = 0;
 	uint max_collision = 0;
 	uint max_usage = 0;
-	uint usage[200];
-	uint i;
+	uint usage[200] = {};
 
-	for (i = 0; i < lengthof(usage); i++) usage[i] = 0;
-	for (i = 0; i < this->num_buckets; i++) {
+	for (uint i = 0; i < this->num_buckets; i++) {
 		uint collision = 0;
 		if (this->buckets_in_use[i]) {
 			const HashNode *node;
@@ -308,7 +306,7 @@ void Hash::PrintStatistics() const
 	);
 	std::string line;
 	line += "{ ";
-	for (i = 0; i <= max_collision; i++) {
+	for (uint i = 0; i <= max_collision; i++) {
 		if (usage[i] > 0) {
 			fmt::format_to(std::back_inserter(line), "{}:{} ", i, usage[i]);
 #if 0
