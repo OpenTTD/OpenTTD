@@ -274,7 +274,8 @@ public:
 		char *string = reinterpret_cast<char *>(data);
 		size_t string_length = ttd_strnlen(string, Remaining());
 
-		Skip(string_length);
+		/* Skip past the terminating NUL byte if it is present, but not more than remaining. */
+		Skip(std::min(string_length + 1, Remaining()));
 
 		return std::string_view(string, string_length);
 	}
