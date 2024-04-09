@@ -546,7 +546,7 @@ public:
 		if (change_class) {
 			/* If that fails, select the first available airport
 			 * from the first class where airports are available. */
-			for (AirportClassID j = APC_BEGIN; j < APC_MAX; j++) {
+			for (AirportClassID j = APC_BEGIN; j < AirportClass::GetClassCount(); j++) {
 				AirportClass *apclass = AirportClass::Get(j);
 				for (uint i = 0; i < apclass->GetSpecCount(); i++) {
 					const AirportSpec *as = apclass->GetSpec(i);

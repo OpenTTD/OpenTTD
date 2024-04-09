@@ -11,35 +11,19 @@
 
 #include "table/strings.h"
 
-/** Instantiate the array. */
-template <typename Tspec, typename Tid, Tid Tmax>
-NewGRFClass<Tspec, Tid, Tmax> NewGRFClass<Tspec, Tid, Tmax>::classes[Tmax];
-
-/** Reset the class, i.e. clear everything. */
-template <typename Tspec, typename Tid, Tid Tmax>
-void NewGRFClass<Tspec, Tid, Tmax>::ResetClass()
-{
-	this->global_id = 0;
-	this->name      = STR_EMPTY;
-	this->ui_count  = 0;
-
-	this->spec.clear();
-}
-
 /** Reset the classes, i.e. clear everything. */
 template <typename Tspec, typename Tid, Tid Tmax>
 void NewGRFClass<Tspec, Tid, Tmax>::Reset()
 {
-	for (Tid i = (Tid)0; i < Tmax; i++) {
-		classes[i].ResetClass();
-	}
+	NewGRFClass::classes.clear();
+	NewGRFClass::classes.shrink_to_fit();
 
-	InsertDefaults();
+	NewGRFClass::InsertDefaults();
 }
 
 /**
  * Allocate a class with a given global class ID.
- * @param cls_id The global class id, such as 'DFLT'.
+ * @param global_id The global class id, such as 'DFLT'.
  * @return The (non global!) class ID for the class.
  * @note Upon allocating the same global class ID for a
  *       second time, this first allocation will be given.
@@ -47,19 +31,19 @@ void NewGRFClass<Tspec, Tid, Tmax>::Reset()
 template <typename Tspec, typename Tid, Tid Tmax>
 Tid NewGRFClass<Tspec, Tid, Tmax>::Allocate(uint32_t global_id)
 {
-	for (Tid i = (Tid)0; i < Tmax; i++) {
-		if (classes[i].global_id == global_id) {
-			/* ClassID is already allocated, so reuse it. */
-			return i;
-		} else if (classes[i].global_id == 0) {
-			/* This class is empty, so allocate it to the global id. */
-			classes[i].global_id = global_id;
-			return i;
-		}
+	auto found = std::find_if(std::begin(NewGRFClass::classes), std::end(NewGRFClass::classes), [global_id](const auto &cls) { return cls.global_id == global_id; });
+
+	/* Id is already allocated, so reuse it. */
+	if (found != std::end(NewGRFClass::classes)) return found->Index();
+
+	/* More slots available, allocate a slot to the global id. */
+	if (NewGRFClass::classes.size() < Tmax) {
+		auto &cls = NewGRFClass::classes.emplace_back(global_id, STR_EMPTY);
+		return cls.Index();
 	}
 
 	GrfMsg(2, "ClassAllocate: already allocated {} classes, using default", Tmax);
-	return (Tid)0;
+	return static_cast<Tid>(0);
 }
 
 /**
@@ -82,7 +66,7 @@ void NewGRFClass<Tspec, Tid, Tmax>::Insert(Tspec *spec)
 template <typename Tspec, typename Tid, Tid Tmax>
 void NewGRFClass<Tspec, Tid, Tmax>::Assign(Tspec *spec)
 {
-	assert(spec->cls_id < Tmax);
+	assert(static_cast<size_t>(spec->cls_id) < NewGRFClass::classes.size());
 	Get(spec->cls_id)->Insert(spec);
 }
 
@@ -94,8 +78,8 @@ void NewGRFClass<Tspec, Tid, Tmax>::Assign(Tspec *spec)
 template <typename Tspec, typename Tid, Tid Tmax>
 NewGRFClass<Tspec, Tid, Tmax> *NewGRFClass<Tspec, Tid, Tmax>::Get(Tid cls_id)
 {
-	assert(cls_id < Tmax);
-	return classes + cls_id;
+	assert(static_cast<size_t>(cls_id) < NewGRFClass::classes.size());
+	return &NewGRFClass::classes[cls_id];
 }
 
 /**
@@ -105,9 +89,7 @@ NewGRFClass<Tspec, Tid, Tmax> *NewGRFClass<Tspec, Tid, Tmax>::Get(Tid cls_id)
 template <typename Tspec, typename Tid, Tid Tmax>
 uint NewGRFClass<Tspec, Tid, Tmax>::GetClassCount()
 {
-	uint i;
-	for (i = 0; i < Tmax && classes[i].global_id != 0; i++) {}
-	return i;
+	return static_cast<uint>(NewGRFClass::classes.size());
 }
 
 /**
@@ -117,11 +99,7 @@ uint NewGRFClass<Tspec, Tid, Tmax>::GetClassCount()
 template <typename Tspec, typename Tid, Tid Tmax>
 uint NewGRFClass<Tspec, Tid, Tmax>::GetUIClassCount()
 {
-	uint cnt = 0;
-	for (uint i = 0; i < Tmax && classes[i].global_id != 0; i++) {
-		if (classes[i].GetUISpecCount() > 0) cnt++;
-	}
-	return cnt;
+	return std::count_if(std::begin(NewGRFClass::classes), std::end(NewGRFClass::classes), [](const auto &cls) { return cls.GetUISpecCount() > 0; });
 }
 
 /**
@@ -132,9 +110,9 @@ uint NewGRFClass<Tspec, Tid, Tmax>::GetUIClassCount()
 template <typename Tspec, typename Tid, Tid Tmax>
 Tid NewGRFClass<Tspec, Tid, Tmax>::GetUIClass(uint index)
 {
-	for (uint i = 0; i < Tmax && classes[i].global_id != 0; i++) {
-		if (classes[i].GetUISpecCount() == 0) continue;
-		if (index-- == 0) return (Tid)i;
+	for (const auto &cls : NewGRFClass::classes) {
+		if (cls.GetUISpecCount() == 0) continue;
+		if (index-- == 0) return cls.Index();
 	}
 	NOT_REACHED();
 }
@@ -193,15 +171,11 @@ int NewGRFClass<Tspec, Tid, Tmax>::GetUIFromIndex(int index) const
 template <typename Tspec, typename Tid, Tid Tmax>
 const Tspec *NewGRFClass<Tspec, Tid, Tmax>::GetByGrf(uint32_t grfid, uint16_t local_id, int *index)
 {
-	uint j;
-
-	for (Tid i = (Tid)0; i < Tmax; i++) {
-		uint count = static_cast<uint>(classes[i].spec.size());
-		for (j = 0; j < count; j++) {
-			const Tspec *spec = classes[i].spec[j];
+	for (const auto &cls : NewGRFClass::classes) {
+		for (const auto &spec : cls.spec) {
 			if (spec == nullptr) continue;
 			if (spec->grf_prop.grffile->grfid == grfid && spec->grf_prop.local_id == local_id) {
-				if (index != nullptr) *index = j;
+				if (index != nullptr) *index = static_cast<int>(std::distance(cls.spec.data(), &spec));
 				return spec;
 			}
 		}
