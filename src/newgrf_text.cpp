@@ -233,12 +233,12 @@ struct UnmappedChoiceList {
  * @param byte80         The control code to use as replacement for the 0x80-value.
  * @return The translated string.
  */
-std::string TranslateTTDPatchCodes(uint32_t grfid, uint8_t language_id, bool allow_newlines, const std::string &str, StringControlCode byte80)
+std::string TranslateTTDPatchCodes(uint32_t grfid, uint8_t language_id, bool allow_newlines, std::string_view str, StringControlCode byte80)
 {
 	/* Empty input string? Nothing to do here. */
-	if (str.empty()) return str;
+	if (str.empty()) return {};
 
-	std::string::const_iterator src = str.cbegin();
+	std::string_view::const_iterator src = str.cbegin();
 
 	/* Is this an unicode string? */
 	bool unicode = false;
@@ -482,7 +482,7 @@ string_end:
  * @param langid The The language of the new text.
  * @param text_to_add The text to add to the list.
  */
-static void AddGRFTextToList(GRFTextList &list, uint8_t langid, const std::string &text_to_add)
+static void AddGRFTextToList(GRFTextList &list, uint8_t langid, std::string_view text_to_add)
 {
 	/* Loop through all languages and see if we can replace a string */
 	for (auto &text : list) {
@@ -493,7 +493,7 @@ static void AddGRFTextToList(GRFTextList &list, uint8_t langid, const std::strin
 	}
 
 	/* If a string wasn't replaced, then we must append the new string */
-	list.push_back(GRFText{ langid, text_to_add });
+	list.push_back(GRFText{ langid, std::string(text_to_add) });
 }
 
 /**
@@ -505,7 +505,7 @@ static void AddGRFTextToList(GRFTextList &list, uint8_t langid, const std::strin
  * @param text_to_add The text to add to the list.
  * @note All text-codes will be translated.
  */
-void AddGRFTextToList(GRFTextList &list, uint8_t langid, uint32_t grfid, bool allow_newlines, const char *text_to_add)
+void AddGRFTextToList(GRFTextList &list, uint8_t langid, uint32_t grfid, bool allow_newlines, std::string_view text_to_add)
 {
 	AddGRFTextToList(list, langid, TranslateTTDPatchCodes(grfid, langid, allow_newlines, text_to_add));
 }
@@ -519,7 +519,7 @@ void AddGRFTextToList(GRFTextList &list, uint8_t langid, uint32_t grfid, bool al
  * @param text_to_add The text to add to the list.
  * @note All text-codes will be translated.
  */
-void AddGRFTextToList(GRFTextWrapper &list, uint8_t langid, uint32_t grfid, bool allow_newlines, const char *text_to_add)
+void AddGRFTextToList(GRFTextWrapper &list, uint8_t langid, uint32_t grfid, bool allow_newlines, std::string_view text_to_add)
 {
 	if (!list) list.reset(new GRFTextList());
 	AddGRFTextToList(*list, langid, grfid, allow_newlines, text_to_add);
@@ -531,7 +531,7 @@ void AddGRFTextToList(GRFTextWrapper &list, uint8_t langid, uint32_t grfid, bool
  * @param list The list where the text should be added to.
  * @param text_to_add The text to add to the list.
  */
-void AddGRFTextToList(GRFTextWrapper &list, const std::string &text_to_add)
+void AddGRFTextToList(GRFTextWrapper &list, std::string_view text_to_add)
 {
 	if (!list) list.reset(new GRFTextList());
 	AddGRFTextToList(*list, GRFLX_UNSPECIFIED, text_to_add);
@@ -540,7 +540,7 @@ void AddGRFTextToList(GRFTextWrapper &list, const std::string &text_to_add)
 /**
  * Add the new read string into our structure.
  */
-StringID AddGRFString(uint32_t grfid, uint16_t stringid, uint8_t langid_to_add, bool new_scheme, bool allow_newlines, const char *text_to_add, StringID def_string)
+StringID AddGRFString(uint32_t grfid, uint16_t stringid, uint8_t langid_to_add, bool new_scheme, bool allow_newlines, std::string_view text_to_add, StringID def_string)
 {
 	/* When working with the old language scheme (grf_version is less than 7) and
 	 * English or American is among the set bits, simply add it as English in

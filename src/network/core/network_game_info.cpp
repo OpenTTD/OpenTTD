@@ -163,7 +163,7 @@ const NetworkServerGameInfo &GetCurrentNetworkServerGameInfo()
  * @param config The GRF to handle.
  * @param name The name of the NewGRF, empty when unknown.
  */
-static void HandleIncomingNetworkGameInfoGRFConfig(GRFConfig *config, std::string name)
+static void HandleIncomingNetworkGameInfoGRFConfig(GRFConfig *config, std::string_view name)
 {
 	/* Find the matching GRF file */
 	const GRFConfig *f = FindGRFConfig(config->ident.grfid, FGCM_EXACT, &config->ident.md5sum);
