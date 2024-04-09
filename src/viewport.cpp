@@ -3517,9 +3517,9 @@ static ViewportSSCSS _vp_sprite_sorters[] = {
 /** Choose the "best" sprite sorter and set _vp_sprite_sorter. */
 void InitializeSpriteSorter()
 {
-	for (uint i = 0; i < lengthof(_vp_sprite_sorters); i++) {
-		if (_vp_sprite_sorters[i].fct_checker()) {
-			_vp_sprite_sorter = _vp_sprite_sorters[i].fct_sorter;
+	for (const auto &sprite_sorter : _vp_sprite_sorters) {
+		if (sprite_sorter.fct_checker()) {
+			_vp_sprite_sorter = sprite_sorter.fct_sorter;
 			break;
 		}
 	}

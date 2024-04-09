@@ -240,8 +240,8 @@ private:
 		this->column_size[VGC_PROFIT].width = 0;
 		this->column_size[VGC_PROFIT].height = 0;
 		static const SpriteID profit_sprites[] = {SPR_PROFIT_NA, SPR_PROFIT_NEGATIVE, SPR_PROFIT_SOME, SPR_PROFIT_LOT};
-		for (uint i = 0; i < lengthof(profit_sprites); i++) {
-			Dimension d = GetSpriteSize(profit_sprites[i]);
+		for (const auto &profit_sprite : profit_sprites) {
+			Dimension d = GetSpriteSize(profit_sprite);
 			this->column_size[VGC_PROFIT] = maxdim(this->column_size[VGC_PROFIT], d);
 		}
 		this->tiny_step_height = std::max(this->tiny_step_height, this->column_size[VGC_PROFIT].height);

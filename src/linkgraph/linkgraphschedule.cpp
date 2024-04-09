@@ -86,9 +86,9 @@ void LinkGraphSchedule::JoinNext()
  */
 /* static */ void LinkGraphSchedule::Run(LinkGraphJob *job)
 {
-	for (uint i = 0; i < lengthof(instance.handlers); ++i) {
+	for (const auto &handler : instance.handlers) {
 		if (job->IsJobAborted()) return;
-		instance.handlers[i]->Run(*job);
+		handler->Run(*job);
 	}
 
 	/*
@@ -157,8 +157,8 @@ LinkGraphSchedule::LinkGraphSchedule()
 LinkGraphSchedule::~LinkGraphSchedule()
 {
 	this->Clear();
-	for (uint i = 0; i < lengthof(this->handlers); ++i) {
-		delete this->handlers[i];
+	for (const auto &handler : this->handlers) {
+		delete handler;
 	}
 }
 

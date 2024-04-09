@@ -47,8 +47,8 @@ bool ScriptInfo::CheckMethod(const char *name) const
 		"GetDate",
 		"CreateInstance",
 	};
-	for (size_t i = 0; i < lengthof(required_functions); i++) {
-		if (!info->CheckMethod(required_functions[i])) return SQ_ERROR;
+	for (const auto &required_function : required_functions) {
+		if (!info->CheckMethod(required_function)) return SQ_ERROR;
 	}
 
 	/* Get location information of the scanner */

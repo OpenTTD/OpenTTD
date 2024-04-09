@@ -2380,8 +2380,8 @@ struct GameSettingsWindow : Window {
 					STR_CONFIG_SETTING_TYPE_COMPANY_MENU, STR_CONFIG_SETTING_TYPE_COMPANY_INGAME,
 					STR_CONFIG_SETTING_TYPE_GAME_MENU, STR_CONFIG_SETTING_TYPE_GAME_INGAME,
 				};
-				for (uint i = 0; i < lengthof(setting_types); i++) {
-					SetDParam(0, setting_types[i]);
+				for (const auto &setting_type : setting_types) {
+					SetDParam(0, setting_type);
 					size.width = std::max(size.width, GetStringBoundingBox(STR_CONFIG_SETTING_TYPE).width + padding.width);
 				}
 				size.height = 2 * GetCharacterHeight(FS_NORMAL) + WidgetDimensions::scaled.vsep_normal +

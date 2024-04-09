@@ -84,16 +84,16 @@ void SpriteFontCache::InitializeUnicodeGlyphMap()
 		this->SetUnicodeGlyph(i + SCC_SPRITE_START, sprite);
 	}
 
-	for (uint i = 0; i < lengthof(_default_unicode_map); i++) {
-		uint8_t key = _default_unicode_map[i].key;
+	for (const auto &unicode_map : _default_unicode_map) {
+		uint8_t key = unicode_map.key;
 		if (key == CLRA) {
 			/* Clear the glyph. This happens if the glyph at this code point
 			 * is non-standard and should be accessed by an SCC_xxx enum
 			 * entry only. */
-			this->SetUnicodeGlyph(_default_unicode_map[i].code, 0);
+			this->SetUnicodeGlyph(unicode_map.code, 0);
 		} else {
 			SpriteID sprite = base + key - ASCII_LETTERSTART;
-			this->SetUnicodeGlyph(_default_unicode_map[i].code, sprite);
+			this->SetUnicodeGlyph(unicode_map.code, sprite);
 		}
 	}
 }

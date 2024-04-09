@@ -2440,8 +2440,8 @@ struct VehicleDetailsWindow : Window {
 					STR_VEHICLE_INFO_PROFIT_THIS_PERIOD_LAST_PERIOD_MIN_PERFORMANCE,
 					STR_VEHICLE_INFO_RELIABILITY_BREAKDOWNS
 				};
-				for (uint i = 0; i < lengthof(info_strings); i++) {
-					dim = maxdim(dim, GetStringBoundingBox(info_strings[i]));
+				for (const auto &info_string : info_strings) {
+					dim = maxdim(dim, GetStringBoundingBox(info_string));
 				}
 				SetDParam(0, STR_VEHICLE_INFO_AGE);
 				dim = maxdim(dim, GetStringBoundingBox(TimerGameEconomy::UsingWallclockUnits() ? STR_VEHICLE_INFO_AGE_RUNNING_COST_PERIOD : STR_VEHICLE_INFO_AGE_RUNNING_COST_YR));

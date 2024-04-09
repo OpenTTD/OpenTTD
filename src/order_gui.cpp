@@ -846,8 +846,8 @@ public:
 
 			case WID_O_COND_VARIABLE: {
 				Dimension d = {0, 0};
-				for (uint i = 0; i < lengthof(_order_conditional_variable); i++) {
-					d = maxdim(d, GetStringBoundingBox(STR_ORDER_CONDITIONAL_LOAD_PERCENTAGE + _order_conditional_variable[i]));
+				for (const auto &ocv : _order_conditional_variable) {
+					d = maxdim(d, GetStringBoundingBox(STR_ORDER_CONDITIONAL_LOAD_PERCENTAGE + ocv));
 				}
 				d.width += padding.width;
 				d.height += padding.height;
@@ -1349,8 +1349,8 @@ public:
 
 			case WID_O_COND_VARIABLE: {
 				DropDownList list;
-				for (uint i = 0; i < lengthof(_order_conditional_variable); i++) {
-					list.push_back(MakeDropDownListStringItem(STR_ORDER_CONDITIONAL_LOAD_PERCENTAGE + _order_conditional_variable[i], _order_conditional_variable[i]));
+				for (const auto &ocv : _order_conditional_variable) {
+					list.push_back(MakeDropDownListStringItem(STR_ORDER_CONDITIONAL_LOAD_PERCENTAGE + ocv, ocv));
 				}
 				ShowDropDownList(this, std::move(list), this->vehicle->GetOrder(this->OrderGetSel())->GetConditionVariable(), WID_O_COND_VARIABLE);
 				break;
