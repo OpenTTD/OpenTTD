@@ -685,12 +685,13 @@ static bool ReadyForNextNewsItem()
 /** Move to the next ticker item */
 static void MoveToNextTickerItem()
 {
-	assert(!std::empty(_news));
-
 	/* There is no status bar, so no reason to show news;
 	 * especially important with the end game screen when
 	 * there is no status bar but possible news. */
 	if (FindWindowById(WC_STATUS_BAR, 0) == nullptr) return;
+
+	/* No news to move to. */
+	if (std::empty(_news)) return;
 
 	/* if we're not at the latest item, then move on */
 	while (_statusbar_news != std::begin(_news)) {
@@ -719,8 +720,6 @@ static void MoveToNextTickerItem()
 /** Move to the next news item */
 static void MoveToNextNewsItem()
 {
-	assert(!std::empty(_news));
-
 	/* There is no status bar, so no reason to show news;
 	 * especially important with the end game screen when
 	 * there is no status bar but possible news. */
@@ -728,6 +727,9 @@ static void MoveToNextNewsItem()
 
 	CloseWindowById(WC_NEWS_WINDOW, 0); // close the newspapers window if shown
 	_forced_news = std::end(_news);
+
+	/* No news to move to. */
+	if (std::empty(_news)) return;
 
 	/* if we're not at the latest item, then move on */
 	while (_current_news != std::begin(_news)) {
@@ -755,28 +757,38 @@ static void MoveToNextNewsItem()
 /** Delete a news item from the queue */
 static std::list<NewsItem>::iterator DeleteNewsItem(std::list<NewsItem>::iterator ni)
 {
-	if (_forced_news == ni || _current_news == ni) {
-		/* When we're the current news, go to the previous item first;
-		 * we just possibly made that the last news item. */
-		if (_current_news == ni) _current_news = (_current_news == std::begin(_news)) ? std::end(_news) : std::prev(_current_news);
+	bool updateCurrentNews = (_forced_news == ni || _current_news == ni);
+	bool updateStatusbarNews = (_statusbar_news == ni);
 
+	if (updateCurrentNews) {
+		/* When we're the current news, go to the next older item first;
+		 * we just possibly made that the last news item. */
+		if (_current_news == ni) ++_current_news;
+		if (_forced_news == ni) _forced_news = std::end(_news);
+	}
+
+	if (updateStatusbarNews) {
+		/* When we're the current news, go to the next older item first;
+		 * we just possibly made that the last news item. */
+		++_statusbar_news;
+	}
+
+	/* Delete the news from the news queue. */
+	ni = _news.erase(ni);
+
+	if (updateCurrentNews) {
 		/* About to remove the currently forced item (shown as newspapers) ||
 		 * about to remove the currently displayed item (newspapers) */
 		MoveToNextNewsItem();
 	}
 
-	if (_statusbar_news == ni) {
-		/* When we're the current news, go to the previous item first;
-		 * we just possibly made that the last news item. */
-		 if (_statusbar_news == ni) _statusbar_news = (_statusbar_news == std::begin(_news)) ? std::end(_news) : std::prev(_statusbar_news);
-
+	if (updateStatusbarNews) {
 		/* About to remove the currently displayed item (ticker, or just a reminder) */
 		InvalidateWindowData(WC_STATUS_BAR, 0, SBI_NEWS_DELETED); // invalidate the statusbar
 		MoveToNextTickerItem();
 	}
 
-	/* Delete the news from the news queue. */
-	return _news.erase(ni);
+	return ni;
 }
 
 /**
