@@ -197,7 +197,7 @@ public:
 	/**
 	 * Get the name of the blitter, the same as the Factory-instance returns.
 	 */
-	virtual const char *GetName() = 0;
+	virtual std::string_view GetName() = 0;
 
 	/**
 	 * Post resize event

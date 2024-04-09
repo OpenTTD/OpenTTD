@@ -159,7 +159,7 @@ public:
 	/**
 	 * Get the long, human readable, name for the Blitter-class.
 	 */
-	const std::string &GetName() const
+	std::string_view GetName() const
 	{
 		return this->name;
 	}
@@ -167,7 +167,7 @@ public:
 	/**
 	 * Get a nice description of the blitter-class.
 	 */
-	const std::string &GetDescription() const
+	std::string_view GetDescription() const
 	{
 		return this->description;
 	}

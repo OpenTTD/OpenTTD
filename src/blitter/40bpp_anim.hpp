@@ -32,7 +32,7 @@ public:
 	Blitter::PaletteAnimation UsePaletteAnimation() override;
 	bool NeedsAnimationBuffer() override;
 
-	const char *GetName()  override { return "40bpp-anim"; }
+	std::string_view GetName()  override { return "40bpp-anim"; }
 
 	template <BlitterMode mode> void Draw(const Blitter::BlitterParams *bp, ZoomLevel zoom);
 
