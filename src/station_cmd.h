@@ -13,8 +13,8 @@
 #include "command_type.h"
 #include "station_type.h"
 
-enum StationClassID : uint8_t;
-enum RoadStopClassID : uint8_t;
+enum StationClassID : uint16_t;
+enum RoadStopClassID : uint16_t;
 
 extern Town *AirportGetNearestTown(const struct AirportSpec *as, Direction rotation, TileIndex tile, TileIterator &&it, uint &mindist);
 extern uint8_t GetAirportNoiseLevelForDistance(const struct AirportSpec *as, uint distance);

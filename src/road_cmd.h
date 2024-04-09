@@ -14,7 +14,7 @@
 #include "road_type.h"
 #include "command_type.h"
 
-enum RoadStopClassID : uint8_t;
+enum RoadStopClassID : uint16_t;
 
 void DrawRoadDepotSprite(int x, int y, DiagDirection dir, RoadType rt);
 void UpdateNearestTownForRoadTiles(bool invalidate);

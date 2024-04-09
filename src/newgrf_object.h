@@ -45,10 +45,10 @@ static const uint8_t OBJECT_SIZE_1X1 = 0x11; ///< The value of a NewGRF's size p
 void ResetObjects();
 
 /** Class IDs for objects. */
-enum ObjectClassID : uint8_t {
-	OBJECT_CLASS_BEGIN   =    0, ///< The lowest valid value
-	OBJECT_CLASS_MAX     = 0xFF, ///< Maximum number of classes.
-	INVALID_OBJECT_CLASS = 0xFF, ///< Class for the less fortunate.
+enum ObjectClassID : uint16_t {
+	OBJECT_CLASS_BEGIN = 0, ///< The lowest valid value
+	OBJECT_CLASS_MAX = UINT16_MAX, ///< Maximum number of classes.
+	INVALID_OBJECT_CLASS = UINT16_MAX, ///< Class for the less fortunate.
 };
 /** Allow incrementing of ObjectClassID variables */
 DECLARE_POSTFIX_INCREMENT(ObjectClassID)

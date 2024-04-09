@@ -80,11 +80,11 @@ struct StationResolverObject : public ResolverObject {
 	uint32_t GetDebugID() const override;
 };
 
-enum StationClassID : uint8_t {
-	STAT_CLASS_BEGIN = 0,    ///< the lowest valid value
-	STAT_CLASS_DFLT = 0,     ///< Default station class.
-	STAT_CLASS_WAYP,         ///< Waypoint class.
-	STAT_CLASS_MAX = 255,    ///< Maximum number of classes.
+enum StationClassID : uint16_t {
+	STAT_CLASS_BEGIN = 0, ///< the lowest valid value
+	STAT_CLASS_DFLT = 0, ///< Default station class.
+	STAT_CLASS_WAYP, ///< Waypoint class.
+	STAT_CLASS_MAX = UINT16_MAX, ///< Maximum number of classes.
 };
 
 /** Allow incrementing of StationClassID variables */
