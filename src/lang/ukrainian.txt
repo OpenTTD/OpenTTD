@@ -485,10 +485,10 @@ STR_SORT_BY_RATING_MIN                                          :за найни
 STR_SORT_BY_ENGINE_ID                                           :за ID (класичний порядок)
 STR_SORT_BY_COST                                                :за ціною
 STR_SORT_BY_POWER                                               :за потужністю
-STR_SORT_BY_TRACTIVE_EFFORT                                     :за силою тяги
+STR_SORT_BY_TRACTIVE_EFFORT                                     :за тяговим зусиллям
 STR_SORT_BY_INTRO_DATE                                          :за датою випуску
 STR_SORT_BY_RUNNING_COST                                        :за вартістю експлуатації
-STR_SORT_BY_POWER_VS_RUNNING_COST                               :за потужністю/вартістю експ.
+STR_SORT_BY_POWER_VS_RUNNING_COST                               :за співвідношенням потужність/вартість експлуатації
 STR_SORT_BY_CARGO_CAPACITY                                      :за місткістю
 STR_SORT_BY_RANGE                                               :за дальністю
 STR_SORT_BY_POPULATION                                          :за населенням
@@ -505,10 +505,10 @@ STR_SORT_BY_AVERAGE_PROFIT_THIS_PERIOD                          :Середні�
 
 # Group by options for vehicle list
 STR_GROUP_BY_NONE                                               :Нема
-STR_GROUP_BY_SHARED_ORDERS                                      :Спільні накази
+STR_GROUP_BY_SHARED_ORDERS                                      :Спільні завдання
 
 # Order button in shared orders vehicle list
-STR_GOTO_ORDER_VIEW                                             :{BLACK}Накази
+STR_GOTO_ORDER_VIEW                                             :{BLACK}Завдання
 STR_GOTO_ORDER_VIEW_TOOLTIP                                     :{BLACK}Відкрити вікно завдань
 
 # Tooltips for the main toolbar
@@ -1150,7 +1150,7 @@ STR_GAME_OPTIONS_CURRENCY_MYR                                   :Малайзі�
 STR_GAME_OPTIONS_CURRENCY_LVL                                   :Латвійські лати
 
 STR_GAME_OPTIONS_AUTOSAVE_FRAME                                 :{BLACK}Автозбереження
-STR_GAME_OPTIONS_AUTOSAVE_DROPDOWN_TOOLTIP                      :{BLACK}Виберіть період автозбереження гри
+STR_GAME_OPTIONS_AUTOSAVE_DROPDOWN_TOOLTIP                      :{BLACK}Виберіть інтервал автозбереження
 
 # Autosave dropdown
 ###length 5
@@ -1164,27 +1164,27 @@ STR_GAME_OPTIONS_LANGUAGE                                       :{BLACK}Мова
 STR_GAME_OPTIONS_LANGUAGE_TOOLTIP                               :{BLACK}Виберіть мову інтерфейса користувача
 STR_GAME_OPTIONS_LANGUAGE_PERCENTAGE                            :{STRING} ({NUM}% виконано)
 
-STR_GAME_OPTIONS_FULLSCREEN                                     :{BLACK}На весь екран
-STR_GAME_OPTIONS_FULLSCREEN_TOOLTIP                             :{BLACK}Натисніть цю кнопку щоб грати на весь екран
+STR_GAME_OPTIONS_FULLSCREEN                                     :{BLACK}Повноекранний режим
+STR_GAME_OPTIONS_FULLSCREEN_TOOLTIP                             :{BLACK}Натисніть цю кнопку, щоби грати в OpenTTD у повноекранному режимі
 
-STR_GAME_OPTIONS_RESOLUTION                                     :{BLACK}Роздільна здатність
-STR_GAME_OPTIONS_RESOLUTION_TOOLTIP                             :{BLACK}Виберіть роздільну здатність екрану
+STR_GAME_OPTIONS_RESOLUTION                                     :{BLACK}Роздільна здатність екрана
+STR_GAME_OPTIONS_RESOLUTION_TOOLTIP                             :{BLACK}Виберіть, яку роздільну здатність екрана використовувати
 STR_GAME_OPTIONS_RESOLUTION_OTHER                               :інша
 STR_GAME_OPTIONS_RESOLUTION_ITEM                                :{NUM}x{NUM}
 
-STR_GAME_OPTIONS_VIDEO_ACCELERATION                             :{BLACK}Прискорення апаратного забезпечення
+STR_GAME_OPTIONS_VIDEO_ACCELERATION                             :{BLACK}Апаратне прискорення
 STR_GAME_OPTIONS_VIDEO_ACCELERATION_TOOLTIP                     :{BLACK}Увімкнутий прапорець дозволить використання грою прискорення апаратного забезпечення. Налаштування запрацює тільки після перезапуску гри
 STR_GAME_OPTIONS_VIDEO_ACCELERATION_RESTART                     :{WHITE}Налаштування запрацює тільки після перезапуску гри
 
-STR_GAME_OPTIONS_VIDEO_VSYNC                                    :Вертикальна синхронізація
-STR_GAME_OPTIONS_VIDEO_VSYNC_TOOLTIP                            :{BLACK}Увімкнутий прапорець дозволить вертикальну синхронізацію екрану. Налаштування запрацює тільки після перезапуску гри. Працює тільки за увімкнутого прискорення апаратного забезпечення.
+STR_GAME_OPTIONS_VIDEO_VSYNC                                    :{BLACK}Вертикальна синхронізація
+STR_GAME_OPTIONS_VIDEO_VSYNC_TOOLTIP                            :{BLACK}Позначте цей прапорець для використання вертикальної синхронізації. Зміни застосуються тільки після перезапуску гри. Працює лише за увімкненого апаратного прискорення
 
-STR_GAME_OPTIONS_VIDEO_DRIVER_INFO                              :{BLACK}Поточний драйвер: {STRING}
+STR_GAME_OPTIONS_VIDEO_DRIVER_INFO                              :{BLACK}Використовуваний драйвер: {STRING}
 
 STR_GAME_OPTIONS_GUI_SCALE_FRAME                                :{BLACK}Розмір інтерфейсу
 STR_GAME_OPTIONS_GUI_SCALE_TOOLTIP                              :{BLACK}Перетягніть повзунок для встановлення розміру інтерфейсу. Ctrl+протягування для точнішого перетягування
-STR_GAME_OPTIONS_GUI_SCALE_AUTO                                 :{BLACK}Автоматично визначений розмір
-STR_GAME_OPTIONS_GUI_SCALE_AUTO_TOOLTIP                         :{BLACK}Увімкнутий прапорець дозволить автоматично визначити розмір інтерфейсу
+STR_GAME_OPTIONS_GUI_SCALE_AUTO                                 :{BLACK}Визначати розмір автоматично
+STR_GAME_OPTIONS_GUI_SCALE_AUTO_TOOLTIP                         :{BLACK}Позначте цей прапорець для того, щоби визначати розмір інтерфейсу автоматично
 
 STR_GAME_OPTIONS_GUI_SCALE_BEVELS                               :{BLACK}Межі шкали
 STR_GAME_OPTIONS_GUI_SCALE_BEVELS_TOOLTIP                       :BLACK}Увімкнутий прапорець дозволить змінити розмір інтерфейсу
@@ -1210,10 +1210,10 @@ STR_GAME_OPTIONS_PARTICIPATE_SURVEY_PREVIEW_TOOLTIP             :{BLACK}Пере
 
 STR_GAME_OPTIONS_GRAPHICS                                       :{BLACK}Графіка
 
-STR_GAME_OPTIONS_REFRESH_RATE                                   :{BLACK}Показати швидкість оновлення
-STR_GAME_OPTIONS_REFRESH_RATE_TOOLTIP                           :{BLACK}Обрати швидкість оновлення екрану
+STR_GAME_OPTIONS_REFRESH_RATE                                   :{BLACK}Частота оновлення екрана
+STR_GAME_OPTIONS_REFRESH_RATE_TOOLTIP                           :{BLACK}Оберіть, яку частоту оновлення екрана використовувати
 STR_GAME_OPTIONS_REFRESH_RATE_ITEM                              :{NUM}Гц
-STR_GAME_OPTIONS_REFRESH_RATE_WARNING                           :{WHITE}Оновлення з частотою понад 60ГГц може зашкодити роботі гри.
+STR_GAME_OPTIONS_REFRESH_RATE_WARNING                           :{WHITE}Частота оновлення екрана вища за 75 Гц може вплинути на швидкодію
 
 STR_GAME_OPTIONS_BASE_GRF                                       :{BLACK}Базовий набір графіки
 STR_GAME_OPTIONS_BASE_GRF_TOOLTIP                               :{BLACK}Оберіть, яку основну графіку використовувати (неможливо змінити у грі, тільки з головного меню)
@@ -1419,8 +1419,8 @@ STR_CONFIG_SETTING_MAXIMUM_INITIAL_LOAN_DISABLED                :Ніяких п
 STR_CONFIG_SETTING_INTEREST_RATE                                :Процентна ставка: {STRING}
 STR_CONFIG_SETTING_INTEREST_RATE_HELPTEXT                       :Процентна ставка за позиками; також контролює інфляцію, якщо вона увімкнена
 
-STR_CONFIG_SETTING_RUNNING_COSTS                                :Експлуатаційні витрати: {STRING}
-STR_CONFIG_SETTING_RUNNING_COSTS_HELPTEXT                       :Встановіть вартість обслуговування та експлуатаційні витрати на транспорт та інфраструктуру
+STR_CONFIG_SETTING_RUNNING_COSTS                                :Вартість експлуатації: {STRING}
+STR_CONFIG_SETTING_RUNNING_COSTS_HELPTEXT                       :Встановіть вартість обслуговування та вартість експлуатації на транспорт та інфраструктуру
 
 STR_CONFIG_SETTING_CONSTRUCTION_SPEED                           :Швидкість будівництва: {STRING}
 STR_CONFIG_SETTING_CONSTRUCTION_SPEED_HELPTEXT                  :Обмеження кількості будівельних дій для ШІ
@@ -1540,11 +1540,11 @@ STR_CONFIG_SETTING_SHOWFINANCES_PERIOD                          :Показув�
 STR_CONFIG_SETTING_SHOWFINANCES_HELPTEXT                        :При включенні наприкінці кожного року виринає вікно фінансів для легшого огляду фінансового стану компанії.
 STR_CONFIG_SETTING_SHOWFINANCES_HELPTEXT_PERIOD                 :При включенні наприкінці кожного періоду виринає вікно фінансів для легшого огляду фінансового стану компанії.
 
-STR_CONFIG_SETTING_NONSTOP_BY_DEFAULT                           :Створювати накази з поміткою «без зупинки»: {STRING}
+STR_CONFIG_SETTING_NONSTOP_BY_DEFAULT                           :Створювати завдання з поміткою «без зупинки»: {STRING}
 STR_CONFIG_SETTING_NONSTOP_BY_DEFAULT_HELPTEXT                  :Якщо в завданні транспортного засобу не вказана помітка «без зупинки», то він зупиняєтся на всіх станціях на своєму шляху. Якщо увімкнути це налаштування, то нові завдання будуть автоматично створюватися з поміткою «без зупинки» і транспортний засіб буде зупинятися лише на вказаних станціях. При необхідності помітку можна зняти або встановити власноруч.
 
-STR_CONFIG_SETTING_STOP_LOCATION                                :Створювати накази для поїздів з зупинкою {STRING} платформи
-STR_CONFIG_SETTING_STOP_LOCATION_HELPTEXT                       :Оберіть кінець платформи для зупинки потягів у нових наказах. "на початку": початок платформи в напрямку руху; "посередині": середина платформи; "наприкінці": кінець платформи в напрямку руху. Окремі накази для зупинки можна встановити клацнувши на текст наказу
+STR_CONFIG_SETTING_STOP_LOCATION                                :Створювати завдання для поїздів з зупинкою {STRING} платформи
+STR_CONFIG_SETTING_STOP_LOCATION_HELPTEXT                       :Оберіть кінець платформи для зупинки потягів у нових завданнях. Опція "на початку" – початок платформи в напрямку руху; "посередині" – середина платформи; "наприкінці" – кінець платформи в напрямку руху. Окремі завдання для зупинки можна встановити клацнувши на текст завдання
 ###length 3
 STR_CONFIG_SETTING_STOP_LOCATION_NEAR_END                       :на початку
 STR_CONFIG_SETTING_STOP_LOCATION_MIDDLE                         :посередині
@@ -1870,7 +1870,7 @@ STR_CONFIG_SETTING_TIMETABLE_MODE_TICKS                         :Цоків
 STR_CONFIG_SETTING_TIMETABLE_SHOW_ARRIVAL_DEPARTURE             :Показувати час прибуття та відправлення у розкладах: {STRING}
 STR_CONFIG_SETTING_TIMETABLE_SHOW_ARRIVAL_DEPARTURE_HELPTEXT    :Відображати очікуваний час прибуття та відправлення у розкладі
 
-STR_CONFIG_SETTING_QUICKGOTO                                    :Прискорене створення наказів транспорту: {STRING}
+STR_CONFIG_SETTING_QUICKGOTO                                    :Прискорене створення завдань для транспорту: {STRING}
 STR_CONFIG_SETTING_QUICKGOTO_HELPTEXT                           :При відображенні списка завдань транспортного засобу автоматично натискається кнопка створення нових завдань
 
 STR_CONFIG_SETTING_DEFAULT_RAIL_TYPE                            :Тип колії на початку нової/завантаженної гри: {STRING}
@@ -2226,8 +2226,8 @@ STR_CONFIG_SETTING_LOCALISATION_UNITS_VOLUME_IMPERIAL           :Імперсь�
 STR_CONFIG_SETTING_LOCALISATION_UNITS_VOLUME_METRIC             :Метричні (л)
 STR_CONFIG_SETTING_LOCALISATION_UNITS_VOLUME_SI                 :СІ (м³)
 
-STR_CONFIG_SETTING_LOCALISATION_UNITS_FORCE                     :Одиниці тяглової сили: {STRING}
-STR_CONFIG_SETTING_LOCALISATION_UNITS_FORCE_HELPTEXT            :Якщо тяглова сила відображається на інтерфейсі: показувати її в обраній одиниці виміру
+STR_CONFIG_SETTING_LOCALISATION_UNITS_FORCE                     :Одиниці тягового зусилля: {STRING}
+STR_CONFIG_SETTING_LOCALISATION_UNITS_FORCE_HELPTEXT            :Якщо тягове зусилля відображається на інтерфейсі: показувати її в обраній одиниці виміру
 ###length 3
 STR_CONFIG_SETTING_LOCALISATION_UNITS_FORCE_IMPERIAL            :Імперські (фунт-сили)
 STR_CONFIG_SETTING_LOCALISATION_UNITS_FORCE_METRIC              :Метричні (кгс)
@@ -2253,7 +2253,7 @@ STR_CONFIG_SETTING_ACCOUNTING                                   :Облік
 STR_CONFIG_SETTING_VEHICLES                                     :Транспорт
 STR_CONFIG_SETTING_VEHICLES_PHYSICS                             :Фізика
 STR_CONFIG_SETTING_VEHICLES_ROUTING                             :Маршрути
-STR_CONFIG_SETTING_VEHICLES_ORDERS                              :Накази
+STR_CONFIG_SETTING_VEHICLES_ORDERS                              :Завдання
 STR_CONFIG_SETTING_LIMITATIONS                                  :Обмеження
 STR_CONFIG_SETTING_ACCIDENTS                                    :Катастрофи
 STR_CONFIG_SETTING_GENWORLD                                     :Створення світу
@@ -2412,17 +2412,17 @@ STR_LIVERY_AIRCRAFT_GROUP_EMPTY                                 :Не налаш
 
 ###length 23
 STR_LIVERY_DEFAULT                                              :Базовий колір
-STR_LIVERY_STEAM                                                :Паровоз
-STR_LIVERY_DIESEL                                               :Тепловоз
-STR_LIVERY_ELECTRIC                                             :Електровоз
+STR_LIVERY_STEAM                                                :Паротяг
+STR_LIVERY_DIESEL                                               :Теплотяг
+STR_LIVERY_ELECTRIC                                             :Електротяг
 STR_LIVERY_MONORAIL                                             :Монорейковий локомотив
 STR_LIVERY_MAGLEV                                               :Магнітний локомотив
-STR_LIVERY_DMU                                                  :Багатосекційний тепловоз
-STR_LIVERY_EMU                                                  :Багатосекційний електровоз
-STR_LIVERY_PASSENGER_WAGON_STEAM                                :Пасажирський вагон (паровоз)
-STR_LIVERY_PASSENGER_WAGON_DIESEL                               :Пасажирський вагон (тепловоз)
-STR_LIVERY_PASSENGER_WAGON_ELECTRIC                             :Пасажирський вагон (електровоз)
-STR_LIVERY_PASSENGER_WAGON_MONORAIL                             :Пасажирський вагон (монорейка)
+STR_LIVERY_DMU                                                  :Багатосекційний теплотяг
+STR_LIVERY_EMU                                                  :Багатосекційний електротяг
+STR_LIVERY_PASSENGER_WAGON_STEAM                                :Пасажирський вагон (паротяговий)
+STR_LIVERY_PASSENGER_WAGON_DIESEL                               :Пасажирський вагон (теплотяговий)
+STR_LIVERY_PASSENGER_WAGON_ELECTRIC                             :Пасажирський вагон (електротяговий)
+STR_LIVERY_PASSENGER_WAGON_MONORAIL                             :Пасажирський вагон (монорейковий)
 STR_LIVERY_PASSENGER_WAGON_MAGLEV                               :Пасажирський вагон (маглев)
 STR_LIVERY_FREIGHT_WAGON                                        :Вантажний вагон
 STR_LIVERY_BUS                                                  :Автобус
@@ -2904,8 +2904,8 @@ STR_STATION_BUILD_COVERAGE_AREA_OFF_TOOLTIP                     :{BLACK}Не п�
 STR_STATION_BUILD_COVERAGE_AREA_ON_TOOLTIP                      :{BLACK}Підсвічувати зону покриття станції
 STR_STATION_BUILD_ACCEPTS_CARGO                                 :{BLACK}Приймає: {GOLD}{CARGO_LIST}
 STR_STATION_BUILD_SUPPLIES_CARGO                                :{BLACK}Постачає: {GOLD}{CARGO_LIST}
-STR_STATION_BUILD_INFRASTRUCTURE_COST_YEAR                      :{BLACK} Вартість експлуатації: {GOLD}{CURRENCY_SHORT}/рік
-STR_STATION_BUILD_INFRASTRUCTURE_COST_PERIOD                    :{BLACK} Вартість експлуатації: {GOLD}{CURRENCY_SHORT}/період
+STR_STATION_BUILD_INFRASTRUCTURE_COST_YEAR                      :{BLACK}Вартість експлуатації: {GOLD}{CURRENCY_SHORT}/рік
+STR_STATION_BUILD_INFRASTRUCTURE_COST_PERIOD                    :{BLACK}Вартість експлуатації: {GOLD}{CURRENCY_SHORT}/період
 
 # Join station window
 STR_JOIN_STATION_CAPTION                                        :{WHITE}Об'єднати станцію
@@ -3907,7 +3907,7 @@ STR_STATION_VIEW_EXCLUSIVE_RIGHTS_COMPANY                       :{YELLOW}{COMPAN
 STR_STATION_VIEW_RATINGS_BUTTON                                 :{BLACK}Рейтинг
 STR_STATION_VIEW_RATINGS_TOOLTIP                                :{BLACK}Показати рейтинг станції
 STR_STATION_VIEW_SUPPLY_RATINGS_TITLE_MONTH                     :{BLACK}Постачання впродовж місяця і місцевий рейтинг:
-STR_STATION_VIEW_SUPPLY_RATINGS_TITLE_MINUTE                    :BLACK}Постачання впродовж хвилини і місцевий рейтинг:
+STR_STATION_VIEW_SUPPLY_RATINGS_TITLE_MINUTE                    :{BLACK}Постачання впродовж хвилини і місцевий рейтинг:
 STR_STATION_VIEW_CARGO_SUPPLY_RATING                            :{WHITE}{STRING}: {YELLOW}{COMMA} / {STRING} ({COMMA}%)
 
 STR_STATION_VIEW_GROUP                                          :{BLACK}Групувати по
@@ -4209,8 +4209,8 @@ STR_PURCHASE_INFO_SPEED_POWER                                   :{BLACK}Швид
 STR_PURCHASE_INFO_SPEED                                         :{BLACK}Швидкість: {GOLD}{VELOCITY}
 STR_PURCHASE_INFO_SPEED_OCEAN                                   :{BLACK}Швидкість в океані: {GOLD}{VELOCITY}
 STR_PURCHASE_INFO_SPEED_CANAL                                   :{BLACK}Швидкість в каналі/річці: {GOLD}{VELOCITY}
-STR_PURCHASE_INFO_RUNNINGCOST_YEAR                              :{BLACK} Вартість експлуатації: {GOLD}{CURRENCY_LONG}/рік
-STR_PURCHASE_INFO_RUNNINGCOST_PERIOD                            :{BLACK} Вартість експлуатації: {GOLD}{CURRENCY_LONG}/період
+STR_PURCHASE_INFO_RUNNINGCOST_YEAR                              :{BLACK}Вартість експлуатації: {GOLD}{CURRENCY_LONG}/рік
+STR_PURCHASE_INFO_RUNNINGCOST_PERIOD                            :{BLACK}Вартість експлуатації: {GOLD}{CURRENCY_LONG}/період
 STR_PURCHASE_INFO_CAPACITY                                      :{BLACK}Місткість: {GOLD}{CARGO_LONG} {STRING}
 STR_PURCHASE_INFO_REFITTABLE                                    :(змінюється)
 STR_PURCHASE_INFO_DESIGNED_LIFE                                 :{BLACK}Рік випуску: {GOLD}{NUM}{BLACK} Вік: {GOLD}{COMMA} р{P ік оки оків}
@@ -4227,7 +4227,7 @@ STR_PURCHASE_INFO_ALL_TYPES                                     :Всі типи
 STR_PURCHASE_INFO_NONE                                          :Нема
 STR_PURCHASE_INFO_ENGINES_ONLY                                  :Тільки локомотиви
 STR_PURCHASE_INFO_ALL_BUT                                       :Всі, крім {CARGO_LIST}
-STR_PURCHASE_INFO_MAX_TE                                        :{BLACK}Максимальна тягова сила: {GOLD}{FORCE}
+STR_PURCHASE_INFO_MAX_TE                                        :{BLACK}Максимальне тягове зусилля: {GOLD}{FORCE}
 STR_PURCHASE_INFO_AIRCRAFT_RANGE                                :{BLACK}Дальність: {GOLD}{COMMA} клітинок
 STR_PURCHASE_INFO_AIRCRAFT_TYPE                                 :{BLACK}Тип літака: {GOLD}{STRING}
 
@@ -4408,7 +4408,7 @@ STR_ENGINE_PREVIEW_TEXT4                                        :{BLACK}{STRING}
 STR_ENGINE_PREVIEW_COST_WEIGHT                                  :Ціна: {CURRENCY_LONG}  Маса: {WEIGHT_SHORT}
 STR_ENGINE_PREVIEW_COST_MAX_SPEED                               :Ціна: {CURRENCY_LONG}  Швидкість: {VELOCITY}
 STR_ENGINE_PREVIEW_SPEED_POWER                                  :Швидкість: {VELOCITY}  Потужність: {POWER}
-STR_ENGINE_PREVIEW_SPEED_POWER_MAX_TE                           :Швидкість: {VELOCITY} Потужність: {POWER} Макс. тяга: {FORCE}
+STR_ENGINE_PREVIEW_SPEED_POWER_MAX_TE                           :Швидкість: {VELOCITY} Потужність: {POWER} Максимальне тягове зусилля: {FORCE}
 STR_ENGINE_PREVIEW_TYPE                                         :Тип літального апарата: {STRING}
 STR_ENGINE_PREVIEW_TYPE_RANGE                                   :Тип літального апарата: {STRING} Дальність: {COMMA} клітин{P ка ки ок }
 STR_ENGINE_PREVIEW_RUNCOST_YEAR                                 :Вартість експлуатації: {CURRENCY_LONG}/рік
@@ -4436,8 +4436,8 @@ STR_REPLACE_HELP_RIGHT_ARRAY                                    :{BLACK}Вибе
 STR_REPLACE_VEHICLES_START                                      :{BLACK}Почати оновлення
 STR_REPLACE_VEHICLES_NOW                                        :Замінити усі ТС зараз
 STR_REPLACE_VEHICLES_WHEN_OLD                                   :Замінювати лише застарілі ТС
-STR_REPLACE_HELP_START_BUTTON                                   :{BLACK}Натисніть для запуску оновлення потягів, що вибрані праворуч, на потяги, що вибрані праворуч
-STR_REPLACE_NOT_REPLACING                                       :{BLACK}Не можна оновити
+STR_REPLACE_HELP_START_BUTTON                                   :{BLACK}Натисніть для запуску оновлення потягів, що вибрані ліворуч, на потяги, що вибрані праворуч
+STR_REPLACE_NOT_REPLACING                                       :{BLACK}Поки що не оновлюється
 STR_REPLACE_NOT_REPLACING_VEHICLE_SELECTED                      :{BLACK}Не вибрано транспортного засобу
 STR_REPLACE_REPLACING_WHEN_OLD                                  :{ENGINE} коли застаріє
 STR_REPLACE_VEHICLES_STOP                                       :{BLACK}Зупинити оновлення
@@ -4446,11 +4446,11 @@ STR_REPLACE_HELP_STOP_BUTTON                                    :{BLACK}Нати
 STR_REPLACE_ENGINE_WAGON_SELECT_HELP                            :{BLACK}Переключення між вікнами заміни потягів та вагонів.
 STR_REPLACE_ENGINES                                             :Локомотиви
 STR_REPLACE_WAGONS                                              :Вагони
-STR_REPLACE_ALL_RAILTYPE                                        :Весь з/д транспорт
+STR_REPLACE_ALL_RAILTYPE                                        :Весь залізничний транспорт
 STR_REPLACE_ALL_ROADTYPE                                        :Всі автомобілі
 
 ###length 2
-STR_REPLACE_HELP_RAILTYPE                                       :{BLACK}Виберіть тип колії, для якого ви збираєтесь оновити потяги
+STR_REPLACE_HELP_RAILTYPE                                       :{BLACK}Виберіть тип колії, для якої ви збираєтесь оновити потяги
 STR_REPLACE_HELP_ROADTYPE                                       :{BLACK}Виберіть тип дороги, на який хочете замінити двигуни
 ###next-name-looks-similar
 
@@ -4501,9 +4501,9 @@ STR_VEHICLE_VIEW_AIRCRAFT_REFIT_TOOLTIP                         :{BLACK}Пере
 
 ###length VEHICLE_TYPES
 STR_VEHICLE_VIEW_TRAIN_ORDERS_TOOLTIP                           :{BLACK}Показати маршрут поїзда. Ctrl+клац показує розклад поїзда
-STR_VEHICLE_VIEW_ROAD_VEHICLE_ORDERS_TOOLTIP                    :{BLACK}Показати накази авто. Ctrl+клац показує розклад авто
-STR_VEHICLE_VIEW_SHIP_ORDERS_TOOLTIP                            :{BLACK}Показати накази корабля. Ctrl+клац показує розклад корабля
-STR_VEHICLE_VIEW_AIRCRAFT_ORDERS_TOOLTIP                        :{BLACK}Показати накази літака. Ctrl+клац показує розклад літака
+STR_VEHICLE_VIEW_ROAD_VEHICLE_ORDERS_TOOLTIP                    :{BLACK}Показати завдання транспортного засобу. Ctrl+клац показує розклад ТЗ
+STR_VEHICLE_VIEW_SHIP_ORDERS_TOOLTIP                            :{BLACK}Показати завдання корабля. Ctrl+клац показує розклад корабля
+STR_VEHICLE_VIEW_AIRCRAFT_ORDERS_TOOLTIP                        :{BLACK}Показати завдання літака. Ctrl+клац показує розклад літака
 
 ###length VEHICLE_TYPES
 STR_VEHICLE_VIEW_TRAIN_SHOW_DETAILS_TOOLTIP                     :{BLACK}Показати детальну інформацію
@@ -4520,7 +4520,7 @@ STR_VEHICLE_VIEW_AIRCRAFT_STATUS_START_STOP_TOOLTIP             :{BLACK}Пото
 # Messages in the start stop button in the vehicle view
 STR_VEHICLE_STATUS_LOADING_UNLOADING                            :{LTBLUE}Вантаження
 STR_VEHICLE_STATUS_LEAVING                                      :{LTBLUE}Відходить
-STR_VEHICLE_STATUS_WAITING_UNBUNCHING                           :{LTBLUE}Чекає на звільнення
+STR_VEHICLE_STATUS_WAITING_UNBUNCHING                           :{LTBLUE}Чекає на розподілення за інтервалом
 STR_VEHICLE_STATUS_CRASHED                                      :{RED}Аварія!
 STR_VEHICLE_STATUS_BROKEN_DOWN                                  :{RED}Зламався
 STR_VEHICLE_STATUS_STOPPED                                      :{RED}Зупинено
@@ -4530,11 +4530,11 @@ STR_VEHICLE_STATUS_TRAIN_STUCK                                  :{ORANGE}Очі�
 STR_VEHICLE_STATUS_AIRCRAFT_TOO_FAR                             :{ORANGE}Занадто далеко до наступного місця призначення
 
 STR_VEHICLE_STATUS_HEADING_FOR_STATION_VEL                      :{LTBLUE}{1:VELOCITY} - Прямує до {0:STATION}
-STR_VEHICLE_STATUS_NO_ORDERS_VEL                                :{LTBLUE}{VELOCITY} - Без наказів
+STR_VEHICLE_STATUS_NO_ORDERS_VEL                                :{LTBLUE}{VELOCITY} - Без завдань
 STR_VEHICLE_STATUS_HEADING_FOR_WAYPOINT_VEL                     :{LTBLUE}{1:VELOCITY} - Прямує до {0:WAYPOINT}
 STR_VEHICLE_STATUS_HEADING_FOR_DEPOT_VEL                        :{ORANGE}{1:VELOCITY} - Прямує до  {0:DEPOT}
 STR_VEHICLE_STATUS_HEADING_FOR_DEPOT_SERVICE_VEL                :{LTBLUE}{1:VELOCITY} - Техогляд у {0:DEPOT}
-STR_VEHICLE_STATUS_HEADING_FOR_DEPOT_UNBUNCH_VEL                :{LTBLUE}{1:VELOCITY} - Звільнити і обслужити в {0:DEPOT}
+STR_VEHICLE_STATUS_HEADING_FOR_DEPOT_UNBUNCH_VEL                :{LTBLUE}{1:VELOCITY} - Обслуговується та чекає на розподілення в {0:DEPOT}
 
 STR_VEHICLE_STATUS_CANNOT_REACH_STATION_VEL                     :{LTBLUE}{1:VELOCITY} - Неможливо досягти {0:STATION}
 STR_VEHICLE_STATUS_CANNOT_REACH_WAYPOINT_VEL                    :{LTBLUE}{1:VELOCITY} - Неможливо досягти {0:WAYPOINT}
@@ -4561,14 +4561,14 @@ STR_VEHICLE_DETAILS_AIRCRAFT_RENAME                             :{BLACK}Назв
 
 STR_VEHICLE_INFO_AGE                                            :{COMMA} р{P ік оки оків} ({COMMA})
 STR_VEHICLE_INFO_AGE_RED                                        :{RED}{COMMA} р{P ік оки оків} ({COMMA})
-STR_VEHICLE_INFO_AGE_RUNNING_COST_YR                            :{BLACK}Вік: {LTBLUE}{STRING}{BLACK}   Вартість експлуатації: {LTBLUE}{CURRENCY_LONG}/рік
-STR_VEHICLE_INFO_AGE_RUNNING_COST_PERIOD                        :{BLACK}Вік: {LTBLUE}{STRING}{BLACK} Вартість експлуатації: {LTBLUE}{CURRENCY_LONG}/період
+STR_VEHICLE_INFO_AGE_RUNNING_COST_YR                            :{BLACK}Вік: {LTBLUE}{STRING}{BLACK}Вартість експлуатації: {LTBLUE}{CURRENCY_LONG}/рік
+STR_VEHICLE_INFO_AGE_RUNNING_COST_PERIOD                        :{BLACK}Вік: {LTBLUE}{STRING}{BLACK}Вартість експлуатації: {LTBLUE}{CURRENCY_LONG}/період
 
 STR_VEHICLE_INFO_MAX_SPEED                                      :{BLACK}Макс. швидкість: {LTBLUE}{VELOCITY}
 STR_VEHICLE_INFO_MAX_SPEED_TYPE                                 :{BLACK}Макс. швидкість: {LTBLUE}{VELOCITY} {BLACK}Тип: {LTBLUE}{STRING}
 STR_VEHICLE_INFO_MAX_SPEED_TYPE_RANGE                           :{BLACK}Макс. швидкість: {LTBLUE}{VELOCITY} {BLACK}Тип: {LTBLUE}{STRING} {BLACK}Дальність: {LTBLUE}{COMMA} клітин{P ка ки ок }
 STR_VEHICLE_INFO_WEIGHT_POWER_MAX_SPEED                         :{BLACK}Вага: {LTBLUE}{WEIGHT_SHORT} {BLACK}Потужність: {LTBLUE}{POWER}{BLACK} Макс. швидкість: {LTBLUE}{VELOCITY}
-STR_VEHICLE_INFO_WEIGHT_POWER_MAX_SPEED_MAX_TE                  :{BLACK}Вага: {LTBLUE}{WEIGHT_SHORT} {BLACK}Потужність: {LTBLUE}{POWER}{BLACK} Макс. швидкість: {LTBLUE}{VELOCITY} {BLACK}Макс. тяга: {LTBLUE}{FORCE}
+STR_VEHICLE_INFO_WEIGHT_POWER_MAX_SPEED_MAX_TE                  :{BLACK}Вага: {LTBLUE}{WEIGHT_SHORT} {BLACK}Потужність: {LTBLUE}{POWER}{BLACK} Максимальна швидкість: {LTBLUE}{VELOCITY} {BLACK}Максимальне тягове зусилля: {LTBLUE}{FORCE}
 
 STR_VEHICLE_INFO_PROFIT_THIS_YEAR_LAST_YEAR                     :{BLACK}Дохід цього року: {LTBLUE}{CURRENCY_LONG} (торік: {CURRENCY_LONG})
 STR_VEHICLE_INFO_PROFIT_THIS_YEAR_LAST_YEAR_MIN_PERFORMANCE     :{BLACK}Дохід цього року: {LTBLUE}{CURRENCY_LONG} (минулого року: {CURRENCY_LONG}) {BLACK}Найгірше: {LTBLUE}{POWER_TO_WEIGHT}
@@ -4659,7 +4659,7 @@ STR_REFIT_SHIP_REFIT_TOOLTIP                                    :{BLACK}Пере
 STR_REFIT_AIRCRAFT_REFIT_TOOLTIP                                :{BLACK}Переобладнати літак для перевезення вибраного виду вантажу
 
 # Order view
-STR_ORDERS_CAPTION                                              :{WHITE}{VEHICLE} (Накази)
+STR_ORDERS_CAPTION                                              :{WHITE}{VEHICLE} (Завдання)
 STR_ORDERS_TIMETABLE_VIEW                                       :{BLACK}Розклад
 STR_ORDERS_TIMETABLE_VIEW_TOOLTIP                               :{BLACK}Переключитись на розклад
 
@@ -4667,8 +4667,8 @@ STR_ORDERS_LIST_TOOLTIP                                         :{BLACK}Марш
 STR_ORDER_INDEX                                                 :{COMMA}:{NBSP}
 STR_ORDER_TEXT                                                  :{STRING} {STRING} {STRING} {STRING}
 
-STR_ORDERS_END_OF_ORDERS                                        :- - Кінець наказів - -
-STR_ORDERS_END_OF_SHARED_ORDERS                                 :- - Кінець спільних наказів - -
+STR_ORDERS_END_OF_ORDERS                                        :- - Кінець завдань - -
+STR_ORDERS_END_OF_SHARED_ORDERS                                 :- - Кінець спільних завдань - -
 
 # Order bottom buttons
 STR_ORDER_NON_STOP                                              :{BLACK}Без зупинки
@@ -4702,7 +4702,7 @@ STR_ORDER_DROP_REFIT_AUTO_ANY                                   :Доступн�
 STR_ORDER_DROP_GO_ALWAYS_DEPOT                                  :Завжди прямувати
 STR_ORDER_DROP_SERVICE_DEPOT                                    :Прямувати при потребі в техогляді
 STR_ORDER_DROP_HALT_DEPOT                                       :Прямувати і зупинитись
-STR_ORDER_DROP_UNBUNCH                                          :Звільнити
+STR_ORDER_DROP_UNBUNCH                                          :Розподілити по інтервалу
 
 # Depot action tooltips, one per vehicle type
 ###length VEHICLE_TYPES
@@ -4712,7 +4712,7 @@ STR_ORDER_SHIP_DEPOT_ACTION_TOOLTIP                             :{BLACK}Вибе
 STR_ORDER_HANGAR_ACTION_TOOLTIP                                 :{BLACK}Виберіть дію до виконання в цьому ангарі
 ###next-name-looks-similar
 
-STR_ORDER_CONDITIONAL_VARIABLE_TOOLTIP                          :{BLACK}Дані транспорту для базування наказу
+STR_ORDER_CONDITIONAL_VARIABLE_TOOLTIP                          :{BLACK}Дані транспорту для базування завдання
 
 # Conditional order variables, must follow order of OrderConditionVariable enum
 ###length 8
@@ -4740,20 +4740,20 @@ STR_ORDER_CONDITIONAL_VALUE_TOOLTIP                             :{BLACK}Знач
 STR_ORDER_CONDITIONAL_VALUE_CAPT                                :{WHITE}Введіть значення для порівняння
 
 STR_ORDERS_SKIP_BUTTON                                          :{BLACK}Пропуск
-STR_ORDERS_SKIP_TOOLTIP                                         :{BLACK}Пропустити поточний наказ, і виконувати наступний. Ctrl+клац для переходу до обраного наказу
+STR_ORDERS_SKIP_TOOLTIP                                         :{BLACK}Пропустити поточне завдання, і виконати наступне. Ctrl+клац для переходу до обраного завдання
 
 STR_ORDERS_DELETE_BUTTON                                        :{BLACK}Видалити
 STR_ORDERS_DELETE_TOOLTIP                                       :{BLACK}Видалити виділене завдання
-STR_ORDERS_DELETE_ALL_TOOLTIP                                   :{BLACK}Видалити всі накази
-STR_ORDERS_STOP_SHARING_BUTTON                                  :{BLACK}Скасувати спільні накази
-STR_ORDERS_STOP_SHARING_TOOLTIP                                 :{BLACK}Припинити використовути спільні накази. Ctrl+клац видаляє всі накази для цього транспорту
+STR_ORDERS_DELETE_ALL_TOOLTIP                                   :{BLACK}Видалити всі завдання
+STR_ORDERS_STOP_SHARING_BUTTON                                  :{BLACK}Скасувати спільні завдання
+STR_ORDERS_STOP_SHARING_TOOLTIP                                 :{BLACK}Припинити використання спільних завдань. Ctrl+клац видаляє всі завдання для цього транспорту
 
 STR_ORDERS_GO_TO_BUTTON                                         :{BLACK}Прямувати
 STR_ORDER_GO_TO_NEAREST_DEPOT                                   :Прямувати до найближчого депо
 STR_ORDER_GO_TO_NEAREST_HANGAR                                  :Прямувати в найближчий ангар
-STR_ORDER_CONDITIONAL                                           :Зміна наказу з умовою
-STR_ORDER_SHARE                                                 :Спільні накази
-STR_ORDERS_GO_TO_TOOLTIP                                        :{BLACK}Вставити новий наказ перед обраним або додати в кінець списку. Ctrl+клац на станції аби наказати "повне завантаження будь-якого вантажу". Ctrl+клац на точці маршруту аби змінити налаштування "без зупинок" на протилежне. Ctrl+клаці на гаражі для "звільнення". Клац мишею на авто копіює його накази. Ctrl+клац на авто сворює спільні накази. Наказ із гаражем вимикає автоматичний техогляд авто
+STR_ORDER_CONDITIONAL                                           :Змінити завдання, за умови
+STR_ORDER_SHARE                                                 :Спільні завдання
+STR_ORDERS_GO_TO_TOOLTIP                                        :{BLACK}Вставити нове завдання перед обраним або додати в кінець списку. Ctrl+клац на станції для завдання "повне завантаження будь-якого вантажу". Ctrl+клац на точці маршруту аби змінити налаштування "без зупинок" на протилежне. Ctrl+клац на гаражі для "автоматичного розподілення". Клац мишею на авто копіює його завдання. Ctrl+клац на авто створює спільні завдання. Завдання з гаражем вимикає автоматичний техогляд транспортного засобу
 
 STR_ORDERS_VEH_WITH_SHARED_ORDERS_LIST_TOOLTIP                  :{BLACK}Показати транспорт з таким самим маршрутом
 
@@ -4779,7 +4779,7 @@ STR_ORDER_REFIT_ORDER                                           :(Переобл
 STR_ORDER_REFIT_STOP_ORDER                                      :(Переобладнати на {STRING} і зупинити)
 STR_ORDER_STOP_ORDER                                            :(зупинити)
 
-STR_ORDER_WAIT_TO_UNBUNCH                                       :(чекає звільнення)
+STR_ORDER_WAIT_TO_UNBUNCH                                       :(чекати на розподілення за інтервалом)
 
 STR_ORDER_GO_TO_STATION                                         :{STRING} {STATION} {STRING}
 STR_ORDER_GO_TO_STATION_CAN_T_USE_STATION                       :{PUSH_COLOUR}{RED}(Неможливо використати станцію){POP_COLOUR} {STRING} {STATION} {STRING}
@@ -4824,21 +4824,21 @@ STR_ORDER_STOP_LOCATION_FAR_END                                 :[кінець]
 
 STR_ORDER_OUT_OF_RANGE                                          :{RED} (Наступний пункт призначення поза межею досяжності)
 
-STR_ORDER_CONDITIONAL_UNCONDITIONAL                             :Перейти до наказу {COMMA}
-STR_ORDER_CONDITIONAL_NUM                                       :Перейти до наказу {COMMA}, якщо {STRING} {STRING} {COMMA}
-STR_ORDER_CONDITIONAL_TRUE_FALSE                                :Перейти до наказу {COMMA}, якщо {STRING} {STRING}
+STR_ORDER_CONDITIONAL_UNCONDITIONAL                             :Перейти до завдання {COMMA}
+STR_ORDER_CONDITIONAL_NUM                                       :Перейти до завдання {COMMA}, якщо {STRING} {STRING} {COMMA}
+STR_ORDER_CONDITIONAL_TRUE_FALSE                                :Перейти до завдання {COMMA}, якщо {STRING} {STRING}
 
-STR_INVALID_ORDER                                               :{RED} (Невірний наказ)
+STR_INVALID_ORDER                                               :{RED} (Неправильне завдання)
 
 # Time table window
 STR_TIMETABLE_TITLE                                             :{WHITE}{VEHICLE} (розклад)
 STR_TIMETABLE_ORDER_VIEW                                        :{BLACK}Завдання
 STR_TIMETABLE_ORDER_VIEW_TOOLTIP                                :{BLACK}Переключитись до вікна завдань
 
-STR_TIMETABLE_TOOLTIP                                           :{BLACK}Розклад - клацніть мишою на наказ, щоб виділити його
+STR_TIMETABLE_TOOLTIP                                           :{BLACK}Розклад - клацніть мишею на завдання, щоб виділити його
 
 STR_TIMETABLE_NO_TRAVEL                                         :Не прямувати
-STR_TIMETABLE_NOT_TIMETABLEABLE                                 :В дорозі (час руху враховано в наступному не автоматичному наказі)
+STR_TIMETABLE_NOT_TIMETABLEABLE                                 :В дорозі (час руху враховано в наступному не автоматичному завданні)
 STR_TIMETABLE_TRAVEL_NOT_TIMETABLED                             :В дорозі (час не вказано)
 STR_TIMETABLE_TRAVEL_NOT_TIMETABLED_SPEED                       :Прямувати (без розкладу) зі швидкістю, що не перевищує {2:VELOCITY} (час не вказано)
 STR_TIMETABLE_TRAVEL_FOR                                        :В дорозі {STRING}
@@ -4863,21 +4863,21 @@ STR_TIMETABLE_STATUS_START_IN_SECONDS.r                         :{BLACK}Цей �
 STR_TIMETABLE_STATUS_START_IN_SECONDS.d                         :{BLACK}Цей розклад почнеться після {COMMA} секунд
 
 STR_TIMETABLE_START                                             :{BLACK}Початок розкладу
-STR_TIMETABLE_START_TOOLTIP                                     :{BLACK}Обрати початок розкладу. Ctrl+клац для рівного розподілу початку руху транспорту зі спільним наказом. Якщо наказ із розкладом, транспорт розподілиться за відносним порядком
+STR_TIMETABLE_START_TOOLTIP                                     :{BLACK}Обрати початок розкладу. Ctrl+клац для рівного розподілу початку руху транспорту зі спільними завданнями. Якщо завдання включає в себе розклад, транспорт розподілиться по маршруту з його урахуванням
 
 STR_TIMETABLE_START_SECONDS_QUERY                               :Секунд до початку розкладу
 
 STR_TIMETABLE_CHANGE_TIME                                       :{BLACK}Змінити час
-STR_TIMETABLE_WAIT_TIME_TOOLTIP                                 :{BLACK}Змінити час, впродовж якого має виконуватись наказ. Ctrl+клац змінить час в усіх наказах
+STR_TIMETABLE_WAIT_TIME_TOOLTIP                                 :{BLACK}Змінити час, впродовж якого має виконуватись завдання. Ctrl+клац змінить час в усіх завданнях
 
 STR_TIMETABLE_CLEAR_TIME                                        :{BLACK}Скасувати час
-STR_TIMETABLE_CLEAR_TIME_TOOLTIP                                :{BLACK}Скасувати час виконання виділеного наказу. Ctrl+клац скасує обмеження часу в усіх наказах
+STR_TIMETABLE_CLEAR_TIME_TOOLTIP                                :{BLACK}Скасувати час виконання виділеного завдання. Ctrl+клац скасує обмеження часу в усіх завданнях
 
 STR_TIMETABLE_CHANGE_SPEED                                      :{BLACK}Змінити обмеж. швидкості
 STR_TIMETABLE_CHANGE_SPEED_TOOLTIP                              :{BLACK}Змінити обмеження швидкості для виділеного пункту. Ctrl+клац змінить швидкість в усіх завданнях
 
 STR_TIMETABLE_CLEAR_SPEED                                       :{BLACK}Скасувати обмеж. швидкості
-STR_TIMETABLE_CLEAR_SPEED_TOOLTIP                               :{BLACK}Скасувати обмеження швидкості для виділеного пункту. Ctrl+клац скасує обмеження швидкості в усіх наказах
+STR_TIMETABLE_CLEAR_SPEED_TOOLTIP                               :{BLACK}Скасувати обмеження швидкості для виділеного завдання. Ctrl+клац скасує обмеження швидкості в усіх завданнях
 
 STR_TIMETABLE_RESET_LATENESS                                    :{BLACK}Скасувати відхилення
 STR_TIMETABLE_RESET_LATENESS_TOOLTIP                            :{BLACK}Скасувати лічильник відхилення від графіка, щоб транспорт встигав. Ctrl+клац, щоб скасувати лічильник для всієї групи транспорту. При цьому останній транспорт йтиме за графіком, а інші випереджатимуть графік.
@@ -5251,18 +5251,18 @@ STR_ERROR_UNABLE_TO_FIND_LOCAL_DEPOT                            :{WHITE}Немо
 STR_ERROR_DEPOT_WRONG_DEPOT_TYPE                                :Неправильний тип депо
 
 # Depot unbunching related errors
-STR_ERROR_UNBUNCHING_ONLY_ONE_ALLOWED                           :{WHITE}... можливий тільки один звільнений наказ
-STR_ERROR_UNBUNCHING_NO_FULL_LOAD                               :{WHITE}... неможливо використати наказ "повне завантаження", якщо транспорт звільнено
-STR_ERROR_UNBUNCHING_NO_UNBUNCHING_FULL_LOAD                    :{WHITE}... неможливо звільнити транспорт з наказом "повне завантаження"
-STR_ERROR_UNBUNCHING_NO_CONDITIONAL                             :{WHITE}... неможливо використати стандартні накази, якщо транспорт звільнено
-STR_ERROR_UNBUNCHING_NO_UNBUNCHING_CONDITIONAL                  :{WHITE}... неможливо звільнити транспорт зі стандартним наказом
+STR_ERROR_UNBUNCHING_ONLY_ONE_ALLOWED                           :{WHITE}... дозволяється не більше одного завдання на розподілення по інтервалу
+STR_ERROR_UNBUNCHING_NO_FULL_LOAD                               :{WHITE}... неможливо використати завдання "повне завантаження",  якщо транспорт має завдання на розподілення
+STR_ERROR_UNBUNCHING_NO_UNBUNCHING_FULL_LOAD                    :{WHITE}... неможливо задати завдання на розподілення, якщо транспорт має завдання з умовою на "повне завантаження"
+STR_ERROR_UNBUNCHING_NO_CONDITIONAL                             :{WHITE}... неможливо використати стандартні завдання, якщо транспорт має завдання на розподілення
+STR_ERROR_UNBUNCHING_NO_UNBUNCHING_CONDITIONAL                  :{WHITE}... неможливо задати завдання на розподілення, якщо транспорт має завдання з додатковими умовами
 
 # Autoreplace related errors
 STR_ERROR_TRAIN_TOO_LONG_AFTER_REPLACEMENT                      :{WHITE}{VEHICLE} дуже довгий після оновлення
 STR_ERROR_AUTOREPLACE_NOTHING_TO_DO                             :{WHITE}Правила автозаміни/оновлення не застосовувалися
 STR_ERROR_AUTOREPLACE_MONEY_LIMIT                               :(бракує коштів)
 STR_ERROR_AUTOREPLACE_INCOMPATIBLE_CARGO                        :{WHITE}Новий транспорт не може перевозити {STRING}
-STR_ERROR_AUTOREPLACE_INCOMPATIBLE_REFIT                        :{WHITE}Нове авто не може змінити наказ {NUM}
+STR_ERROR_AUTOREPLACE_INCOMPATIBLE_REFIT                        :{WHITE}Новий транспорт не може переобладнатися згідно з завданням {NUM}
 
 # Rail construction errors
 STR_ERROR_IMPOSSIBLE_TRACK_COMBINATION                          :{WHITE}Неможливе з'єднання колії
@@ -5431,14 +5431,14 @@ STR_ERROR_CAN_T_MAKE_ROAD_VEHICLE_TURN                          :{WHITE}Немо
 STR_ERROR_AIRCRAFT_IS_IN_FLIGHT                                 :{WHITE}Літак у польоті
 
 # Order related errors
-STR_ERROR_NO_MORE_SPACE_FOR_ORDERS                              :{WHITE}Немає місця для наказів
-STR_ERROR_TOO_MANY_ORDERS                                       :{WHITE}Дуже багато наказів
-STR_ERROR_CAN_T_INSERT_NEW_ORDER                                :{WHITE}Неможливо додати наказ...
-STR_ERROR_CAN_T_DELETE_THIS_ORDER                               :{WHITE}Неможливо видалити наказ...
-STR_ERROR_CAN_T_MODIFY_THIS_ORDER                               :{WHITE}Неможливо змінити наказ...
-STR_ERROR_CAN_T_MOVE_THIS_ORDER                                 :{WHITE}Не можна перемістити цей наказ...
-STR_ERROR_CAN_T_SKIP_ORDER                                      :{WHITE}Не можна пропустити цей наказ...
-STR_ERROR_CAN_T_SKIP_TO_ORDER                                   :{WHITE}Не можна перейти до цього наказу...
+STR_ERROR_NO_MORE_SPACE_FOR_ORDERS                              :{WHITE}Немає місця для нових завдань
+STR_ERROR_TOO_MANY_ORDERS                                       :{WHITE}Занадто багато завдань
+STR_ERROR_CAN_T_INSERT_NEW_ORDER                                :{WHITE}Неможливо додати завдання...
+STR_ERROR_CAN_T_DELETE_THIS_ORDER                               :{WHITE}Неможливо видалити завдання...
+STR_ERROR_CAN_T_MODIFY_THIS_ORDER                               :{WHITE}Неможливо змінити завдання...
+STR_ERROR_CAN_T_MOVE_THIS_ORDER                                 :{WHITE}Неможливо перемістити це завдання...
+STR_ERROR_CAN_T_SKIP_ORDER                                      :{WHITE}Не можна пропустити це завдання...
+STR_ERROR_CAN_T_SKIP_TO_ORDER                                   :{WHITE}Неможливо перейти до цього завдання...
 STR_ERROR_CAN_T_COPY_SHARE_ORDER                                :{WHITE}... транспорт не може йти на всі станції
 STR_ERROR_CAN_T_ADD_ORDER                                       :{WHITE}... транспорт не може йти на цю станцію
 STR_ERROR_CAN_T_ADD_ORDER_SHARED                                :{WHITE}... транспорт, що має спільний з цим розклад, не може йти на цю станцію
@@ -5446,7 +5446,7 @@ STR_ERROR_CAN_T_COPY_ORDER_VEHICLE_LIST                         :{WHITE}... не
 STR_ERROR_CAN_T_SHARE_ORDER_VEHICLE_LIST                        :WHITE}... не увесь транспорт має спільні завдання
 
 STR_ERROR_CAN_T_SHARE_ORDER_LIST                                :{WHITE}Неможливо розділити список завдань...
-STR_ERROR_CAN_T_STOP_SHARING_ORDER_LIST                         :{WHITE}Неможливо скасувати спільні накази...
+STR_ERROR_CAN_T_STOP_SHARING_ORDER_LIST                         :{WHITE}Неможливо скасувати спільні завдання...
 STR_ERROR_CAN_T_COPY_ORDER_LIST                                 :{WHITE}Неможливо скопіювати список завдань...
 STR_ERROR_TOO_FAR_FROM_PREVIOUS_DESTINATION                     :{WHITE}... занадто далеко від попереднього пункту призначення
 STR_ERROR_AIRCRAFT_NOT_ENOUGH_RANGE                             :{WHITE}... літак не може летіти так далеко
@@ -5654,33 +5654,33 @@ STR_SV_STNAME_FALLBACK                                          :{STRING}, ст�
 ##id 0x8000
 ###length 116
 # Vehicle names
-STR_VEHICLE_NAME_TRAIN_ENGINE_RAIL_KIRBY_PAUL_TANK_STEAM        :Kirby Paul Tank (паровоз)
-STR_VEHICLE_NAME_TRAIN_ENGINE_RAIL_MJS_250_DIESEL               :MJS 250 (тепловоз)
+STR_VEHICLE_NAME_TRAIN_ENGINE_RAIL_KIRBY_PAUL_TANK_STEAM        :Kirby Paul Tank (паротяг)
+STR_VEHICLE_NAME_TRAIN_ENGINE_RAIL_MJS_250_DIESEL               :MJS 250 (теплотяг)
 STR_VEHICLE_NAME_TRAIN_ENGINE_RAIL_PLODDYPHUT_CHOO_CHOO         :Ploddyphut Choo-Choo
 STR_VEHICLE_NAME_TRAIN_ENGINE_RAIL_POWERNAUT_CHOO_CHOO          :Powernaut Choo-Choo
 STR_VEHICLE_NAME_TRAIN_ENGINE_RAIL_MIGHTYMOVER_CHOO_CHOO        :MightyMover Choo-Choo
-STR_VEHICLE_NAME_TRAIN_ENGINE_RAIL_PLODDYPHUT_DIESEL            :Ploddyphut (тепловоз)
-STR_VEHICLE_NAME_TRAIN_ENGINE_RAIL_POWERNAUT_DIESEL             :Powernaut (тепловоз)
-STR_VEHICLE_NAME_TRAIN_ENGINE_RAIL_WILLS_2_8_0_STEAM            :Wills 2-8-0 (паровоз)
-STR_VEHICLE_NAME_TRAIN_ENGINE_RAIL_CHANEY_JUBILEE_STEAM         :Chaney 'Jubilee' (паровоз)
-STR_VEHICLE_NAME_TRAIN_ENGINE_RAIL_GINZU_A4_STEAM               :Ginzu 'A4' (паровоз)
-STR_VEHICLE_NAME_TRAIN_ENGINE_RAIL_SH_8P_STEAM                  :SH '8P' (паровоз)
-STR_VEHICLE_NAME_TRAIN_ENGINE_RAIL_MANLEY_MOREL_DMU_DIESEL      :Manley-Morel DMU (тепловоз)
-STR_VEHICLE_NAME_TRAIN_ENGINE_RAIL_DASH_DIESEL                  :'Dash' (тепловоз)
-STR_VEHICLE_NAME_TRAIN_ENGINE_RAIL_SH_HENDRY_25_DIESEL          :SH/Hendry '25' (тепловоз)
-STR_VEHICLE_NAME_TRAIN_ENGINE_RAIL_UU_37_DIESEL                 :UU '37' (тепловоз)
-STR_VEHICLE_NAME_TRAIN_ENGINE_RAIL_FLOSS_47_DIESEL              :Floss '47' (тепловоз)
-STR_VEHICLE_NAME_TRAIN_ENGINE_RAIL_CS_4000_DIESEL               :CS 4000 (тепловоз)
-STR_VEHICLE_NAME_TRAIN_ENGINE_RAIL_CS_2400_DIESEL               :CS 2400 (тепловоз)
-STR_VEHICLE_NAME_TRAIN_ENGINE_RAIL_CENTENNIAL_DIESEL            :Centennial (тепловоз)
-STR_VEHICLE_NAME_TRAIN_ENGINE_RAIL_KELLING_3100_DIESEL          :Kelling 3100 (тепловоз)
-STR_VEHICLE_NAME_TRAIN_ENGINE_RAIL_TURNER_TURBO_DIESEL          :Turner Turbo (тепловоз)
-STR_VEHICLE_NAME_TRAIN_ENGINE_RAIL_MJS_1000_DIESEL              :MJS 1000 (тепловоз)
-STR_VEHICLE_NAME_TRAIN_ENGINE_RAIL_SH_125_DIESEL                :SH '125' (тепловоз)
-STR_VEHICLE_NAME_TRAIN_ENGINE_RAIL_SH_30_ELECTRIC               :SH '30' (електровоз)
-STR_VEHICLE_NAME_TRAIN_ENGINE_RAIL_SH_40_ELECTRIC               :SH '40' (електровоз)
-STR_VEHICLE_NAME_TRAIN_ENGINE_RAIL_T_I_M_ELECTRIC               :'T.I.M.' (електровоз)
-STR_VEHICLE_NAME_TRAIN_ENGINE_RAIL_ASIASTAR_ELECTRIC            :'AsiaStar' (електровоз)
+STR_VEHICLE_NAME_TRAIN_ENGINE_RAIL_PLODDYPHUT_DIESEL            :Ploddyphut (теплотяг)
+STR_VEHICLE_NAME_TRAIN_ENGINE_RAIL_POWERNAUT_DIESEL             :Powernaut (теплотяг)
+STR_VEHICLE_NAME_TRAIN_ENGINE_RAIL_WILLS_2_8_0_STEAM            :Wills 2-8-0 (паротяг)
+STR_VEHICLE_NAME_TRAIN_ENGINE_RAIL_CHANEY_JUBILEE_STEAM         :Chaney 'Jubilee' (паротяг)
+STR_VEHICLE_NAME_TRAIN_ENGINE_RAIL_GINZU_A4_STEAM               :Ginzu 'A4' (паротяг)
+STR_VEHICLE_NAME_TRAIN_ENGINE_RAIL_SH_8P_STEAM                  :SH '8P' (паротяг)
+STR_VEHICLE_NAME_TRAIN_ENGINE_RAIL_MANLEY_MOREL_DMU_DIESEL      :Manley-Morel DMU (теплотяг)
+STR_VEHICLE_NAME_TRAIN_ENGINE_RAIL_DASH_DIESEL                  :'Dash' (теплотяг)
+STR_VEHICLE_NAME_TRAIN_ENGINE_RAIL_SH_HENDRY_25_DIESEL          :SH/Hendry '25' (теплотяг)
+STR_VEHICLE_NAME_TRAIN_ENGINE_RAIL_UU_37_DIESEL                 :UU '37' (теплотяг)
+STR_VEHICLE_NAME_TRAIN_ENGINE_RAIL_FLOSS_47_DIESEL              :Floss '47' (теплотяг)
+STR_VEHICLE_NAME_TRAIN_ENGINE_RAIL_CS_4000_DIESEL               :CS 4000 (теплотяг)
+STR_VEHICLE_NAME_TRAIN_ENGINE_RAIL_CS_2400_DIESEL               :CS 2400 (теплотяг)
+STR_VEHICLE_NAME_TRAIN_ENGINE_RAIL_CENTENNIAL_DIESEL            :Centennial (теплотяг)
+STR_VEHICLE_NAME_TRAIN_ENGINE_RAIL_KELLING_3100_DIESEL          :Kelling 3100 (теплотяг)
+STR_VEHICLE_NAME_TRAIN_ENGINE_RAIL_TURNER_TURBO_DIESEL          :Turner Turbo (теплотяг)
+STR_VEHICLE_NAME_TRAIN_ENGINE_RAIL_MJS_1000_DIESEL              :MJS 1000 (теплотяг)
+STR_VEHICLE_NAME_TRAIN_ENGINE_RAIL_SH_125_DIESEL                :SH '125' (теплотяг)
+STR_VEHICLE_NAME_TRAIN_ENGINE_RAIL_SH_30_ELECTRIC               :SH '30' (електротяг)
+STR_VEHICLE_NAME_TRAIN_ENGINE_RAIL_SH_40_ELECTRIC               :SH '40' (електротяг)
+STR_VEHICLE_NAME_TRAIN_ENGINE_RAIL_T_I_M_ELECTRIC               :'T.I.M.' (електротяг)
+STR_VEHICLE_NAME_TRAIN_ENGINE_RAIL_ASIASTAR_ELECTRIC            :'AsiaStar' (електротяг)
 STR_VEHICLE_NAME_TRAIN_WAGON_RAIL_PASSENGER_CAR                 :Пасажирський вагон
 STR_VEHICLE_NAME_TRAIN_WAGON_RAIL_MAIL_VAN                      :Поштовий вагон
 STR_VEHICLE_NAME_TRAIN_WAGON_RAIL_COAL_CAR                      :Вагон для вугілля
@@ -5708,8 +5708,8 @@ STR_VEHICLE_NAME_TRAIN_WAGON_RAIL_TOY_VAN                       :Вагон дл
 STR_VEHICLE_NAME_TRAIN_WAGON_RAIL_BATTERY_TRUCK                 :Вагон для батарейок
 STR_VEHICLE_NAME_TRAIN_WAGON_RAIL_FIZZY_DRINK_TRUCK             :Вагон для газованої води
 STR_VEHICLE_NAME_TRAIN_WAGON_RAIL_PLASTIC_TRUCK                 :Вагон для пластиліну
-STR_VEHICLE_NAME_TRAIN_ENGINE_MONORAIL_X2001_ELECTRIC           :'X2001' (електровоз)
-STR_VEHICLE_NAME_TRAIN_ENGINE_MONORAIL_MILLENNIUM_Z1_ELECTRIC   :'Millennium Z1' (електровоз)
+STR_VEHICLE_NAME_TRAIN_ENGINE_MONORAIL_X2001_ELECTRIC           :'X2001' (електротяг)
+STR_VEHICLE_NAME_TRAIN_ENGINE_MONORAIL_MILLENNIUM_Z1_ELECTRIC   :'Millennium Z1' (електротяг)
 STR_VEHICLE_NAME_TRAIN_ENGINE_MONORAIL_WIZZOWOW_Z99             :Wizzowow Z99
 STR_VEHICLE_NAME_TRAIN_WAGON_MONORAIL_PASSENGER_CAR             :Пасажирський вагон
 STR_VEHICLE_NAME_TRAIN_WAGON_MONORAIL_MAIL_VAN                  :Поштовий вагон
@@ -5738,10 +5738,10 @@ STR_VEHICLE_NAME_TRAIN_WAGON_MONORAIL_TOY_VAN                   :Вагон дл
 STR_VEHICLE_NAME_TRAIN_WAGON_MONORAIL_BATTERY_TRUCK             :Вагон для батарейок
 STR_VEHICLE_NAME_TRAIN_WAGON_MONORAIL_FIZZY_DRINK_TRUCK         :Вагон для газованої води
 STR_VEHICLE_NAME_TRAIN_WAGON_MONORAIL_PLASTIC_TRUCK             :Вагон для пластиліну
-STR_VEHICLE_NAME_TRAIN_ENGINE_MAGLEV_LEV1_LEVIATHAN_ELECTRIC    :Lev1 'Leviathan' (електровоз)
-STR_VEHICLE_NAME_TRAIN_ENGINE_MAGLEV_LEV2_CYCLOPS_ELECTRIC      :Lev2 'Cyclops' (електровоз)
-STR_VEHICLE_NAME_TRAIN_ENGINE_MAGLEV_LEV3_PEGASUS_ELECTRIC      :Lev3 'Pegasus' (електровоз)
-STR_VEHICLE_NAME_TRAIN_ENGINE_MAGLEV_LEV4_CHIMAERA_ELECTRIC     :Lev4 'Chimaera' (електровоз)
+STR_VEHICLE_NAME_TRAIN_ENGINE_MAGLEV_LEV1_LEVIATHAN_ELECTRIC    :Lev1 'Leviathan' (електротяг)
+STR_VEHICLE_NAME_TRAIN_ENGINE_MAGLEV_LEV2_CYCLOPS_ELECTRIC      :Lev2 'Cyclops' (електротяг)
+STR_VEHICLE_NAME_TRAIN_ENGINE_MAGLEV_LEV3_PEGASUS_ELECTRIC      :Lev3 'Pegasus' (електротяг)
+STR_VEHICLE_NAME_TRAIN_ENGINE_MAGLEV_LEV4_CHIMAERA_ELECTRIC     :Lev4 'Chimaera' (електротяг)
 STR_VEHICLE_NAME_TRAIN_ENGINE_MAGLEV_WIZZOWOW_ROCKETEER         :Wizzowow Rocketeer
 STR_VEHICLE_NAME_TRAIN_WAGON_MAGLEV_PASSENGER_CAR               :Пасажирський вагон
 STR_VEHICLE_NAME_TRAIN_WAGON_MAGLEV_MAIL_VAN                    :Поштовий вагон

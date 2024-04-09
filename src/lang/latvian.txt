@@ -1496,7 +1496,7 @@ STR_CONFIG_SETTING_NEVER_EXPIRE_VEHICLES                        :Transportlīdze
 STR_CONFIG_SETTING_NEVER_EXPIRE_VEHICLES_HELPTEXT               :Kad ieslēgts, visi transportlīdzekļu modeļi pēc to ieviešanas vienmēr ir pieejami
 
 STR_CONFIG_SETTING_TIMEKEEPING_UNITS                            :Laika uzskaite: {STRING}
-STR_CONFIG_SETTING_TIMEKEEPING_UNITS_HELPTEXT                   :Izvēlieties spēles laika mērīšanas vienības. Vēlāk to nevar mainīt.{}{}Kalendāra pamatā ir klasiskā OpenTTD pieredze, kurā gads sastāv no 12 mēnešiem un katru mēnesi ir 28–31 diena.{}{}{}Uz sienas pulksteni balstītā laikā, kravu ražošanā un finansēs tā vietā tiek balstītas uz vienas minūtes soli, kas ir aptuveni tikpat ilgs, cik 30 dienu mēnesis aizņem kalendāra režīmā. Tie ir sagrupēti 12 minūšu periodos, kas ir līdzvērtīgi gadam kalendāra režīmā.{}{}{}Abos režīmos vienmēr ir klasisks kalendārs, kas tiek izmantots transportlīdzekļu, māju un citas infrastruktūras parādīšanās spēlē.
+STR_CONFIG_SETTING_TIMEKEEPING_UNITS_HELPTEXT                   :Izvēlieties spēles laika mērīšanas vienības. Vēlāk to nevar mainīt.{}{}Kalendāra pamatā ir klasiskā OpenTTD pieredze, kurā gads sastāv no 12 mēnešiem un katrā mēnesī ir 28–31 diena.{}{}{}Uz sienas pulksteni balstītā laikā, kravu ražošanā un finanses tiek balstītas uz vienas minūtes soli, kas ir aptuveni tikpat ilgs laiks, cik 30 dienu mēnesis aizņem kalendāra režīmā. Tie ir sagrupēti 12 minūšu periodos, kas ir līdzvērtīgi gadam kalendāra režīmā.{}{}{}Abos no šiem režīmiem vienmēr ir klasisks kalendārs, kas tiek izmantots transportlīdzekļu, māju un citas infrastruktūras datu ievadīšanai.
 ###length 2
 STR_CONFIG_SETTING_TIMEKEEPING_UNITS_CALENDAR                   :Kalendārs
 STR_CONFIG_SETTING_TIMEKEEPING_UNITS_WALLCLOCK                  :Sienas pulkstenis
@@ -1568,7 +1568,7 @@ STR_CONFIG_SETTING_SNOWLINE_HEIGHT                              :Sniega līnijas
 STR_CONFIG_SETTING_SNOWLINE_HEIGHT_HELPTEXT                     :Izvēlieties, kādā augstumā sākas sniegs subarktiskajā ainavā. Sniegs ietekmē arī nozares ražošanas un pilsētu izaugsmi. Var mainīt tikai, izmantojot scenāriju redaktoru, vai citādi aprēķināt, izmantojot "sniega segumu"
 
 STR_CONFIG_SETTING_SNOW_COVERAGE                                :Sniega pārklājums: {STRING}
-STR_CONFIG_SETTING_SNOW_COVERAGE_HELPTEXT                       :Izvēlieties aptuveno sniega daudzumu subarktiskajā ainavā. Sniegs ietekmē arī nozares ražošanas un pilsētu izaugsmei. Izmanto tikai kartes ģenerēšanas laikā. Uz jūras līmeņa un piekrastes abpagaliem nekad nav sniega.
+STR_CONFIG_SETTING_SNOW_COVERAGE_HELPTEXT                       :Izvēlieties aptuveno sniega daudzumu subarktiskajā ainavā. Sniegs ietekmē nozares ražošanas un pilsētu izaugsmes prasības. Izmanto tikai kartes ģenerēšanas laikā. Uz jūras līmeņa un piekrastes lauciņiem nekad nav sniega
 STR_CONFIG_SETTING_SNOW_COVERAGE_VALUE                          :{NUM}%
 
 STR_CONFIG_SETTING_DESERT_COVERAGE                              :Tuksneša pārklājums: {STRING}
@@ -1631,7 +1631,7 @@ STR_CONFIG_SETTING_SMALLMAP_LAND_COLOUR_DARK_GREEN              :{G=f}tumši za�
 STR_CONFIG_SETTING_SMALLMAP_LAND_COLOUR_VIOLET                  :{G=f}violeta
 
 STR_CONFIG_SETTING_LINKGRAPH_COLOURS                            :Kravas plūsmu pārklājuma krāsas: {STRING}
-STR_CONFIG_SETTING_LINKGRAPH_COLOURS_HELPTEXT                   :Iestatiet kravas plūsmu pārklājumam izmantoto krāsu shēmu.
+STR_CONFIG_SETTING_LINKGRAPH_COLOURS_HELPTEXT                   :Iestatiet kravas plūsmas pārklājumam izmantoto krāsu shēmu
 ###length 4
 STR_CONFIG_SETTING_LINKGRAPH_COLOURS_GREEN_TO_RED               :Zaļš uz sarkanu (orģināli)
 STR_CONFIG_SETTING_LINKGRAPH_COLOURS_GREEN_TO_BLUE              :Zaļš uz zilu
@@ -2058,7 +2058,7 @@ STR_CONFIG_SETTING_DEMAND_SIZE                                  :Atpakaļceļa k
 STR_CONFIG_SETTING_DEMAND_SIZE_HELPTEXT                         :Uzstādod šo mazāk par 100% liks simetriskajai sadalei izturēties vairāk kā asimetriskajai. Mazāk kravas ar varu tiks sūtīts atpakaļ ja noteikts daudzums tiks sūtīts uz piestātni. Ja jūs uzstādīsiet to uz 0% simetriskā sadale izturēsies tā pat kā asimetriskā.
 
 STR_CONFIG_SETTING_SHORT_PATH_SATURATION                        :Īso ceļu piesātinājums pirms sākt izmantot augstas ietilpības ceļus: {STRING}
-STR_CONFIG_SETTING_SHORT_PATH_SATURATION_HELPTEXT               :Nereti starp divām stacijām ir vairāki ceļi. Kravu sadale vispirms piesātinās īsāko maršrutu, pēc tam izmantos nākamo īsāko maršrutu līdz tas būs piesātināts, un tā tālāk. Piesātinājumu nosaka novērtējot ietilpību un plānoto izmantojumu. Kad visi ceļi ir piesātināti un vēl ir palicis pieprasījumus, tas pārslogos visus ceļus, dodot priekšroku ceļiem ar lielāko ietilpību. Algoritms visbiežāk nepareizi novērtēs ietilpību. Šis iestatījums jums atļaus norādīt, līdz cik procentiem īsākais ceļš ir jāpiesātina pirmajā piegājienā pirms izvēlēties garāku ceļu. Iestatiet to uz mazāk kā 100%, lai izvairītos no pārpildītām stacijām, ja kapacitāte ir pārvērtēta.
+STR_CONFIG_SETTING_SHORT_PATH_SATURATION_HELPTEXT               :Bieži starp divām noteiktām stacijām ir vairāki ceļi. Cargodist vispirms piesātinās īsāko ceļu, pēc tam izmantos otro īsāko ceļu, līdz tas ir piesātināts un tā tālāk. Piesātinājumu nosaka jaudas un plānotā lietojuma novērtējums. Kad tas būs piesātināts ar visiem ceļiem, ja joprojām būs pieprasījums, tas pārslogos visus ceļus, dodot priekšroku tiem, kuriem ir liela ietilpība. Tomēr lielāko daļu laika algoritms precīzi nenovērtēs jaudu. Šis iestatījums ļauj norādīt, cik procentus īsākam ceļam jābūt piesātinātam pirmajā piegājienā, pirms tiek izvēlēts nākamais garākais ceļš. Iestatiet to uz mazāku par 100%, lai izvairītos no pārpildītām stacijām pārmērīgas jaudas gadījumā
 
 STR_CONFIG_SETTING_LOCALISATION_UNITS_VELOCITY                  :Ātruma vienības (sauszemes): {STRING}
 STR_CONFIG_SETTING_LOCALISATION_UNITS_VELOCITY_NAUTICAL         :Ātruma vienības (jūras): {STRING}
@@ -2984,9 +2984,9 @@ STR_TREES_RANDOM_TREES_TOOLTIP                                  :{BLACK}Stādīt
 STR_TREES_MODE_NORMAL_BUTTON                                    :{BLACK}Normāls
 STR_TREES_MODE_NORMAL_TOOLTIP                                   :{BLACK}Stādiet atsevišķus kokus, velkot pāri ainavai.
 STR_TREES_MODE_FOREST_SM_BUTTON                                 :{BLACK}Birze
-STR_TREES_MODE_FOREST_SM_TOOLTIP                                :{BLACK}Stādiet mazus mežus, velkot pāri ainavai.
+STR_TREES_MODE_FOREST_SM_TOOLTIP                                :{BLACK}Stādiet nelielus mežus, velkot pāri ainavai.
 STR_TREES_MODE_FOREST_LG_BUTTON                                 :{BLACK}Mežs
-STR_TREES_MODE_FOREST_LG_TOOLTIP                                :{BLACK}Stādiet lielos mežus, velkot pāri ainavai.
+STR_TREES_MODE_FOREST_LG_TOOLTIP                                :{BLACK}Stādiet lielus mežus, velkot pāri ainavai
 
 # Land generation window (SE)
 STR_TERRAFORM_TOOLBAR_LAND_GENERATION_CAPTION                   :{WHITE}Zemes radīšana
@@ -4456,7 +4456,7 @@ STR_VEHICLE_INFO_CAPACITY_CAPACITY                              :{BLACK}Ietilpī
 STR_VEHICLE_INFO_FEEDER_CARGO_VALUE                             :{BLACK}Pārvadājumu ieņēmumi: {LTBLUE}{CURRENCY_LONG}
 
 STR_VEHICLE_DETAILS_SERVICING_INTERVAL_DAYS                     :{BLACK}Apkopes intervāls: {LTBLUE}{COMMA}{NBSP}dienas{BLACK} {STRING}
-STR_VEHICLE_DETAILS_SERVICING_INTERVAL_MINUTES                  :{BLACK}Apkopes intervāls: {LTBLUE}{COMMA}{NBSP}minūtes{BLACK} {STRING}
+STR_VEHICLE_DETAILS_SERVICING_INTERVAL_MINUTES                  :{BLACK}Apkopes intervāls: {LTBLUE}{COMMA}{NBSP}minūte{P s es ""}{BLACK} {STRING}
 STR_VEHICLE_DETAILS_SERVICING_INTERVAL_PERCENT                  :{BLACK}Apkopes intervāls: {LTBLUE}{COMMA}%{BLACK} {STRING}
 STR_VEHICLE_DETAILS_LAST_SERVICE_DATE                           :Pēdējā apkalpošana: {LTBLUE}{DATE_LONG}
 STR_VEHICLE_DETAILS_LAST_SERVICE_MINUTES_AGO                    :Pēdējā apkope: pirms {LTBLUE}{NUM} minūtēm

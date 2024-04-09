@@ -344,7 +344,7 @@ STR_TOOLTIP_CLOSE_WINDOW                                        :{BLACK}Κλεί
 STR_TOOLTIP_WINDOW_TITLE_DRAG_THIS                              :{BLACK}Τίτλος παραθύρου - σύρετε το για να το μετακινήσετε
 STR_TOOLTIP_SHADE                                               :{BLACK}Σκίαση παραθύρου - Εμφάνιση μόνο της μπάρας τιτλου
 STR_TOOLTIP_DEBUG                                               :{BLACK}Εμφάνιση πληροφοριών αποσφαλμάτωσης για NewGRF
-STR_TOOLTIP_DEFSIZE                                             :{BLACK}Κλιμακώνει το παράθυρο στο προκαθορισμένο μέγεθος. Με Ctrl+Click αποθηκεύεται το τρέχον μέγεθος ως προκαθορισμένο
+STR_TOOLTIP_DEFSIZE                                             :{BLACK}Κλιμακώνει το παράθυρο στο προκαθορισμένο μέγεθος. Με Ctrl+Κλικ αποθηκεύεται το τρέχον μέγεθος ως προκαθορισμένο
 STR_TOOLTIP_STICKY                                              :{BLACK}Σημειώστε αυτό το παραθύρο ωστέ να μην κλείνει από το πλήκτρο «Κλείσιμο Όλων των Παραθύρων». Πατήστε Ctrl+Κλικ για να αποθηκεύσετε την κατάσταση απο επιλογή
 STR_TOOLTIP_RESIZE                                              :{BLACK}Κάντε κλίκ και σύρετε για να αλλάξετε το μέγεθος του παραθύρου
 STR_TOOLTIP_TOGGLE_LARGE_SMALL_WINDOW                           :{BLACK}Εναλλαγή μεγάλου/μικρού παραθύρου
@@ -972,7 +972,7 @@ STR_NEWS_INDUSTRY_PRODUCTION_INCREASE_OIL                       :{BIG_FONT}{BLAC
 STR_NEWS_INDUSTRY_PRODUCTION_INCREASE_FARM                      :{BIG_FONT}{BLACK}Βελτιωμένες μέθοδοι καλλιέργειας στην {INDUSTRY} αναμένονται να διπλασιάσουν την παραγωγή!
 STR_NEWS_INDUSTRY_PRODUCTION_INCREASE_SMOOTH                    :{BIG_FONT}{BLACK} Η παραγωγή {STRING.geniki} στ{G o η ο} {INDUSTRY} αυξήθηκε κατά {COMMA}%!
 STR_NEWS_INDUSTRY_PRODUCTION_DECREASE_GENERAL                   :{BIG_FONT}{BLACK}Η παραγωγή στ{G o η ο} {INDUSTRY} μειώθηκε κατά 50%
-STR_NEWS_INDUSTRY_PRODUCTION_DECREASE_FARM                      :{BIG_FONT}{BLACK}Μόλυνση από έντομα προκαλεί καταστροφή στη {INDUSTRY}!{}Η παραγωγή μειώθηκε κατά 50%
+STR_NEWS_INDUSTRY_PRODUCTION_DECREASE_FARM                      :{BIG_FONT}{BLACK}Προσβολή από έντομα προκαλεί καταστροφή στη {INDUSTRY}!{}Η παραγωγή μειώθηκε κατά 50%
 STR_NEWS_INDUSTRY_PRODUCTION_DECREASE_SMOOTH                    :{BIG_FONT}{BLACK} Η παραγωγή {STRING.geniki} στ{G o η ο} {INDUSTRY} μειώθηκε κατά {COMMA}%!
 
 ###length VEHICLE_TYPES
@@ -1459,13 +1459,13 @@ STR_CONFIG_SETTING_INFLATION                                    :Πληθωρι�
 STR_CONFIG_SETTING_INFLATION_HELPTEXT                           :Ενεργοποίηση του πληθωρισμού στην οικονομία, όπου τα κόστη αυξάνονται ελάχιστα ταχύτερα από τις πληρωμές
 
 STR_CONFIG_SETTING_MAX_BRIDGE_LENGTH                            :Μέγιστο μήκος γέφυρας: {STRING}
-STR_CONFIG_SETTING_MAX_BRIDGE_LENGTH_HELPTEXT                   :Μέγιστο μήκος για κτίσιμο γεφυρών
+STR_CONFIG_SETTING_MAX_BRIDGE_LENGTH_HELPTEXT                   :Μέγιστο μήκος για κατασκευή γεφυρών
 
 STR_CONFIG_SETTING_MAX_BRIDGE_HEIGHT                            :Μέγιστο ύψος γέφυρας: {STRING}
-STR_CONFIG_SETTING_MAX_BRIDGE_HEIGHT_HELPTEXT                   :Μέγιστο ύψος για το χτίσιμο γεφυρών
+STR_CONFIG_SETTING_MAX_BRIDGE_HEIGHT_HELPTEXT                   :Μέγιστο ύψος για την κατασκευή γεφυρών
 
 STR_CONFIG_SETTING_MAX_TUNNEL_LENGTH                            :Μέγιστο μήκος σήραγγας: {STRING}
-STR_CONFIG_SETTING_MAX_TUNNEL_LENGTH_HELPTEXT                   :Μέγιστο μήκος για κτίσιμο συράγγων
+STR_CONFIG_SETTING_MAX_TUNNEL_LENGTH_HELPTEXT                   :Μέγιστο μήκος για κατασκευή σηράγγων
 
 STR_CONFIG_SETTING_RAW_INDUSTRY_CONSTRUCTION_METHOD             :Χειροκίνητη μέθοδος κατασκευής βιομηχανιών πρώτων υλών: {STRING}
 STR_CONFIG_SETTING_RAW_INDUSTRY_CONSTRUCTION_METHOD_HELPTEXT    :Μέθοδος χρηματοδότησης πρωτογενούς βιομηχανίας. «Καμία» σημαίνει ότι δεν γίνεται να χρηματοδοτηθεί καμία βιομηχανία, «Αναζήτηση» σημαίνει ότι η χρηματοδότηση είναι εφικτή, αλλά η κατασκευή πραγματοποιείται σε τυχαίο σημείο του χάρτη και είναι πιθανό να αποτύχει, «Όπως οι άλλες βιομηχανίες» σημαίνει πως οι πρωτογενείς βιομηχανίες είναι εφικτό να κατασκευαστούν από εταιρείες όπως οι δευτερογενείς βιομηχανίες σε οποιαδήποτε θέση θέλουν
@@ -1475,7 +1475,7 @@ STR_CONFIG_SETTING_RAW_INDUSTRY_CONSTRUCTION_METHOD_NORMAL      :Όπως οι �
 STR_CONFIG_SETTING_RAW_INDUSTRY_CONSTRUCTION_METHOD_PROSPECTING :Διερεύνηση προοπτικών
 
 STR_CONFIG_SETTING_INDUSTRY_PLATFORM                            :Επίπεδη περιοχή γύρω από βιομηχανίες: {STRING}
-STR_CONFIG_SETTING_INDUSTRY_PLATFORM_HELPTEXT                   :Επίπεδος χώρος γύρω από μια βιομηχανία. Αυτό εξασφαλίζει ότι θα παραμείνει διαθέσιμος κενός χώρος γύρω από μια βιομηχανία για να κτισθούν γραμμές, κλπ
+STR_CONFIG_SETTING_INDUSTRY_PLATFORM_HELPTEXT                   :Επίπεδος χώρος γύρω από μια βιομηχανία. Αυτό εξασφαλίζει ότι θα παραμείνει διαθέσιμος κενός χώρος γύρω από μια βιομηχανία για να κατασκευαστούν γραμμές, κλπ
 
 STR_CONFIG_SETTING_MULTIPINDTOWN                                :Επιτρέπονται πολλαπλές όμοιες βιομηχανίες ανά πόλη: {STRING}
 STR_CONFIG_SETTING_MULTIPINDTOWN_HELPTEXT                       :Συνήθως, μια πόλη δεν επιθυμεί περισσότερες από μία βιομηχανία κάθε είδους. Αυτή η ρύθμιση επιτρέπει περισσότερες βιομηχανίες του ίδιου είδους στην ίδια πόλη.
@@ -2017,7 +2017,7 @@ STR_CONFIG_SETTING_DRAG_SIGNALS_DENSITY_VALUE                   :{COMMA} τετ�
 STR_CONFIG_SETTING_DRAG_SIGNALS_FIXED_DISTANCE                  :Όταν σύρετε, διατηρείται σταθερή απόσταση μεταξύ των σημάτων: {STRING}
 STR_CONFIG_SETTING_DRAG_SIGNALS_FIXED_DISTANCE_HELPTEXT         :Επιλέξτε τη συμπεριφορά της τοποθέτησης σημάτων όταν πατάτε Ctrl και σύρετε. Όταν είναι απενεργοποιημένο, τα σήματα τοποθετούνται γύρω από σήραγγες και γέφυρες για να αποφεύγονται μεγάλα τμήματα χωρίς σήματα. Όταν είναι ενεργοποιημένο, τα σήματα τοποθετούνται κάθε n τετραγωνίδια, κάνοντας ευκολότερη την ευθυγράμμιση των σημάτων σε παράλληλες γραμμές
 
-STR_CONFIG_SETTING_SEMAPHORE_BUILD_BEFORE_DATE                  :Αυτόματο κτίσιμο σηματοφόρων πριν από το: {STRING}
+STR_CONFIG_SETTING_SEMAPHORE_BUILD_BEFORE_DATE                  :Αυτόματη κατασκευή σηματοφόρων πριν από το: {STRING}
 STR_CONFIG_SETTING_SEMAPHORE_BUILD_BEFORE_DATE_HELPTEXT         :Ορίζεται το έτος κατά το οποίο θα χρησιμοποιούνται τα ηλεκτρικά σήματα στις σιδηροτροχιές. Πριν από αυτό, θα χρησιμοποιούνται μηχανικά σήματα (που έχουν ακριβώς την ίδια λειτουργία, αλλά έχουν διαφορετική μορφή)
 
 STR_CONFIG_SETTING_CYCLE_SIGNAL_TYPES                           :Περιήγηση στους τύπους σηματοδότησης: {STRING}
@@ -2041,9 +2041,9 @@ STR_CONFIG_SETTING_TOWN_LAYOUT_2X2_GRID                         :πλέγμα 2x
 STR_CONFIG_SETTING_TOWN_LAYOUT_3X3_GRID                         :πλέγμα 3x3
 STR_CONFIG_SETTING_TOWN_LAYOUT_RANDOM                           :Τυχαίο
 
-STR_CONFIG_SETTING_ALLOW_TOWN_ROADS                             :Οι πόλεις επιτρέπεται να χτίσουν δρόμους: {STRING}
+STR_CONFIG_SETTING_ALLOW_TOWN_ROADS                             :Οι πόλεις επιτρέπεται να κατασκευάζουν δρόμους: {STRING}
 STR_CONFIG_SETTING_ALLOW_TOWN_ROADS_HELPTEXT                    :Επιτρέπεται στις πόλεις να κατασκευάζουν δρόμους για ανάπτυξη. Απενεργοποιήστε για να αποτρέπονται οι τοπικές αρχές από την αυτόνομη κατασκευή δρόμων
-STR_CONFIG_SETTING_ALLOW_TOWN_LEVEL_CROSSINGS                   :Οι πόλεις επιτρέπουν το κτίσιμο ισόπεδων διασταυρώσεων: {STRING}
+STR_CONFIG_SETTING_ALLOW_TOWN_LEVEL_CROSSINGS                   :Οι πόλεις επιτρέπουν την κατασκευή ισόπεδων διασταυρώσεων: {STRING}
 STR_CONFIG_SETTING_ALLOW_TOWN_LEVEL_CROSSINGS_HELPTEXT          :Ενεργοποιώντας αυτήν τη ρύθμιση επιτρέπει στις πόλεις να κατασκευάζουν επίπεδες διαβάσεις
 
 STR_CONFIG_SETTING_NOISE_LEVEL                                  :Περιορισμός τοποθέτησης αεροδρομίων ανάλογα με το επίπεδο θορύβου: {STRING}
@@ -2752,7 +2752,7 @@ STR_CONTENT_SELECT_UPDATES_CAPTION_TOOLTIP                      :{BLACK}Μαρκ
 STR_CONTENT_UNSELECT_ALL_CAPTION                                :{BLACK}Αποεπιλογή όλων
 STR_CONTENT_UNSELECT_ALL_CAPTION_TOOLTIP                        :{BLACK}Σημείωση όλων των περιεχομένων να μην κατέβουν
 STR_CONTENT_SEARCH_EXTERNAL                                     :{BLACK}Αναζήτηση εξωτερικών ιστοσελίδων
-STR_CONTENT_SEARCH_EXTERNAL_TOOLTIP                             :{BLACK}Ψάξτε για περιεχόμενο που δεν είναι διαθέσιμο μέσω την υπηρεσία λήψης περιεχομένου του OpenTTD σε ιστοσελίδες που δεν είναι συνδεδεμένες με το OpenTTD
+STR_CONTENT_SEARCH_EXTERNAL_TOOLTIP                             :{BLACK}Αναζήτηση για περιεχόμενο που δεν είναι διαθέσιμο μέσω την υπηρεσία λήψης περιεχομένου του OpenTTD σε ιστοσελίδες που δεν σχετίζονται με το OpenTTD
 STR_CONTENT_SEARCH_EXTERNAL_DISCLAIMER_CAPTION                  :{WHITE}Φεύγετε από το OpenTTD!
 STR_CONTENT_SEARCH_EXTERNAL_DISCLAIMER                          :{WHITE}Οι όροι και προϋποθέσεις για τη λήψη περιεχομένου από εξωτερικές ιστοσελίδες διαφέρουν.{}Θα πρέπει να αναφερθείτε στις εξωτερικές ιστοσελίδες για οδηγίες περί της εγκατάστασης του περιεχομένου στο OpenTTD.{}Θέλετε να συνεχίσετε;
 STR_CONTENT_FILTER_TITLE                                        :{BLACK}Ετικέτα/όνομα φίλτρου:
@@ -2770,7 +2770,7 @@ STR_CONTENT_DETAIL_SUBTITLE_AUTOSELECTED                        :{SILVER}Αυτ�
 STR_CONTENT_DETAIL_SUBTITLE_ALREADY_HERE                        :{SILVER}Το έχετε ήδη αυτό
 STR_CONTENT_DETAIL_SUBTITLE_DOES_NOT_EXIST                      :{SILVER}Αυτό το περιεχόμενο είναι άγνωστο και δεν γίνεται να κατέβει από το OpenTTD
 
-STR_CONTENT_DETAIL_UPDATE                                       :{SILVER}Αυτό είναι αντικατάσταση ενός υπάρχοντος {STRING}
+STR_CONTENT_DETAIL_UPDATE                                       :{SILVER}Αυτό αντικαθιστά ένα υπάρχον {STRING}
 STR_CONTENT_DETAIL_NAME                                         :{SILVER}Όνομα: {WHITE}{STRING}
 STR_CONTENT_DETAIL_VERSION                                      :{SILVER}Έκδοση: {WHITE}{STRING}
 STR_CONTENT_DETAIL_DESCRIPTION                                  :{SILVER}Περιγραφή: {WHITE}{STRING}
@@ -2827,7 +2827,7 @@ STR_TRANSPARENT_BUILDINGS_TOOLTIP                               :{BLACK}Εναλ
 STR_TRANSPARENT_BRIDGES_TOOLTIP                                 :{BLACK}Εναλλαγή διαφάνειας για γέφυρες. Ctrl+Κλικ για να την κλειδώσετε
 STR_TRANSPARENT_STRUCTURES_TOOLTIP                              :{BLACK}Εναλλαγή διαφάνειας για κτίρια όπως φάρους και κεραίες. Ctrl+Κλικ για να την κλειδώσετε
 STR_TRANSPARENT_CATENARY_TOOLTIP                                :{BLACK}Εναλλαγή διαφάνειας για τις συνδέσεις. Ctrl+Κλικ για να την κλειδώσετε
-STR_TRANSPARENT_TEXT_TOOLTIP                                    :{BLACK}Εναλλαγή διαφάνειας για φόρτωση και κείμενο κόστους/εσόδων. Ctrl+Click για να την κλειδώσετε
+STR_TRANSPARENT_TEXT_TOOLTIP                                    :{BLACK}Εναλλαγή διαφάνειας για φόρτωση και κείμενο κόστους/εσόδων. Ctrl+Κλικ για να την κλειδώσετε
 STR_TRANSPARENT_INVISIBLE_TOOLTIP                               :{BLACK}Επιλέξτε τα αντικείμενα που θα είναι αόρατα αντί για διάφανα
 
 # Linkgraph legend window
@@ -2861,10 +2861,10 @@ STR_STATION_BUILD_INFRASTRUCTURE_COST_PERIOD                    :{BLACK}Κόστ
 
 # Join station window
 STR_JOIN_STATION_CAPTION                                        :{WHITE}Συνένωση σταθμού
-STR_JOIN_STATION_CREATE_SPLITTED_STATION                        :{YELLOW}Χτίστε ένα ξεχωριστό σταθμό
+STR_JOIN_STATION_CREATE_SPLITTED_STATION                        :{YELLOW}Κατασκευάστε ένα ξεχωριστό σταθμό
 
 STR_JOIN_WAYPOINT_CAPTION                                       :{WHITE}Συνένωση σημείου καθοδήγησης
-STR_JOIN_WAYPOINT_CREATE_SPLITTED_WAYPOINT                      :{YELLOW}Κτίσιμο ενός ξεχωριστού σημείου καθοδήγησης
+STR_JOIN_WAYPOINT_CREATE_SPLITTED_WAYPOINT                      :{YELLOW}κατασκευή ενός ξεχωριστού σημείου καθοδήγησης
 
 # Generic toolbar
 STR_TOOLBAR_DISABLED_NO_VEHICLE_AVAILABLE                       :{BLACK}Απενεργοποιημένο διότι δεν υπάρχουν διαθέσιμα οχήματα για αυτή την υποδομή
@@ -2911,7 +2911,7 @@ STR_STATION_BUILD_DRAG_DROP                                     :{BLACK}Σύρε
 STR_STATION_BUILD_DRAG_DROP_TOOLTIP                             :{BLACK}Φτιάξε ένα σταθμό χρησιμοποιώντας σύρσιμο και ελευθέρωση
 
 STR_STATION_BUILD_STATION_CLASS_TOOLTIP                         :{BLACK}Επιλογή τύπου σταθμών για εμφάνιση
-STR_STATION_BUILD_STATION_TYPE_TOOLTIP                          :{BLACK}Επιλέξτε τον τύπο του σταθμού προς κτίσιμο
+STR_STATION_BUILD_STATION_TYPE_TOOLTIP                          :{BLACK}Επιλέξτε τον τύπο του σταθμού προς κατασκευή
 
 STR_STATION_CLASS_DFLT                                          :Προεπιλεγμένος
 STR_STATION_CLASS_DFLT_STATION                                  :Προεπιλεγμένος σταθμός
@@ -2925,16 +2925,16 @@ STR_BUILD_SIGNAL_TOGGLE_ADVANCED_SIGNAL_TOOLTIP                 :{BLACK}Εναλ
 STR_BUILD_SIGNAL_SEMAPHORE_NORM_TOOLTIP                         :{BLACK}Σηματοδότες Τμήματος (σηματοφόρος){}Αυτός είναι ο πιο βασικός τύπος σηματοδότη, επιτρέποντας μόνο ένα τρένο να βρίσκεται σε κάθε τμήμα κάθε φορά
 STR_BUILD_SIGNAL_SEMAPHORE_ENTRY_TOOLTIP                        :{BLACK}Σηματοδότης-Εισόδου (σηματοφόρος){}Πράσινο όσο υπάρχει ένας ή περισσότεροι πράσινοι σηματοδότες-εξόδου στο επόμενο τμήμα γράμμης. Διαφορετικά δείχνει κόκκινο
 STR_BUILD_SIGNAL_SEMAPHORE_EXIT_TOOLTIP                         :{BLACK}Σηματοδότης-Εξόδου (σηματοφόρος){}Συμπεριφέρεται με τον ίδιο τρόπο οπως οι σηματοδότες τμήματος αλλά είναι απαραίτητο να τεθεί το σωστό χρώμα στους προ-σηματοδότες είσοδου και συνδυαστικούς
-STR_BUILD_SIGNAL_SEMAPHORE_COMBO_TOOLTIP                        :{BLACK}Συνδυαστικός Σηματοδότης (σηματοφόρος){}Ο συνδυαστικός σηματοδότης απλά λειτουργεί ταυτόχρονα ως σηματοδότης εισόδου και εξόδου. Αυτό επιτρέπει το κτίσιμο μεγάλυτερων «δέντρων» με προ-σηματοδότες
+STR_BUILD_SIGNAL_SEMAPHORE_COMBO_TOOLTIP                        :{BLACK}Συνδυαστικός Σηματοδότης (σηματοφόρος){}Ο συνδυαστικός σηματοδότης απλά λειτουργεί ταυτόχρονα ως σηματοδότης εισόδου και εξόδου. Αυτό επιτρέπει την κατασκευή μεγάλυτερων «δέντρων» με προ-σηματοδότες
 STR_BUILD_SIGNAL_SEMAPHORE_PBS_TOOLTIP                          :{BLACK}Σηματοδότης Τροχιάς (σηματοφόρος){}Ένας σηματοδότης τροχιάς επιτρέπει σε περισσότερα από ένα τρένο να είναι σε ένα κομμάτι ελέγχου την ίδια στιγμή, εάν το τρένο μπορεί να δεσμεύσει τροχιά σε ασφαλές σημείο στάσης. Κανονικοί σηματοδότες τροχιάς μπορούν να περαστούν από την πίσω πλευρά
 STR_BUILD_SIGNAL_SEMAPHORE_PBS_OWAY_TOOLTIP                     :{BLACK}Μονόδρομος Σηματοδότης Τροχιάς (σηματοφόρος){}Ένας σηματοδότης τροχιάς επιτρέπει σε περισσότερα από ένα τρένο να είναι σε ένα κομμάτι ελέγχου την ίδια στιγμή, εάν το τρένο μπορεί να δεσμεύσει τροχιά σε ασφαλές σημείο στάσης. Μονόδρομοι σηματοδότες τροχιάς δεν μπορούν να περαστούν από την πίσω πλευρά.
 STR_BUILD_SIGNAL_ELECTRIC_NORM_TOOLTIP                          :{BLACK}Σηματοδότης Τμήματος (ηλεκτρικός){}Αυτός είναι ο πιο βασικός τύπος σηματοδότη, επιτρέποντας μόνο ένα τρένο να είναι στο ίδιο τμήμα την ίδια στιγμή.
 STR_BUILD_SIGNAL_ELECTRIC_ENTRY_TOOLTIP                         :{BLACK}Σηματοδότης Εισόδου (ηλεκτρικός){}Πράσινο όσο υπάρχει ένας ή περισσότεροι πράσινοι σηματοδότες εξόδου στο επόμενο τμήμα γραμμής. Διαφορετικά είναι κόκκινο
 STR_BUILD_SIGNAL_ELECTRIC_EXIT_TOOLTIP                          :{BLACK}Σηματοδότης Εξόδου (ηλεκτρικός){}Συμπεριφέρεται με τον ίδιο τρόπο όπως οι σηματοδότες τμήματος αλλά είναι απαραίτητο να θέσει το σωστό χρώμα στους προ-σηματοδότες εισόδου και συνδυαστικούς
-STR_BUILD_SIGNAL_ELECTRIC_COMBO_TOOLTIP                         :{BLACK}Συνδυαστικός Σηματοδότης (ηλεκτρικός){}Ο συνδυαστικός σηματοδότης δουλεύει απλά ως σηματοδότης εισόδου και εξόδου ταυτόχρονα. Αυτό σας επιτρέπει το κτίσιμο μεγάλων «δέντρων» με προ-σηματοδότες
+STR_BUILD_SIGNAL_ELECTRIC_COMBO_TOOLTIP                         :{BLACK}Συνδυαστικός Σηματοδότης (ηλεκτρικός){}Ο συνδυαστικός σηματοδότης δουλεύει απλά ως σηματοδότης εισόδου και εξόδου ταυτόχρονα. Αυτό σας επιτρέπει την κατασκευή μεγάλων «δέντρων» με προ-σηματοδότες
 STR_BUILD_SIGNAL_ELECTRIC_PBS_TOOLTIP                           :{BLACK}Σηματοδότης Τροχιάς (ηλεκτρικός){}Ένας σηματοδότης τροχιάς επιτρέπει σε περισσότερα από ένα τρένο να είναι σε ένα κομμάτι ελέγχου την ίδια στιγμή, εάν το τρένο μπορεί να δεσμεύσει τροχιά σε ασφαλές σημείο στάσης. Κανονικοί σηματοδότες τροχιάς μπορούν να περαστούν από την πίσω πλευρά
 STR_BUILD_SIGNAL_ELECTRIC_PBS_OWAY_TOOLTIP                      :{BLACK}Μονόδρομος Σηματοδότης Τροχιάς (ηλεκτρικός){}Ένας σηματοδότης τροχιάς επιτρέπει σε περισσότερα από ένα τρένο να είναι σε ένα κομμάτι ελέγχου την ίδια στιγμή, εάν το τρένο μπορεί να δεσμεύσει τροχιά σε ασφαλές σημείο στάσης. Μονόδρομοι σηματοδότες τροχιάς δεν μπορούν να περαστούν από την πίσω πλευρά
-STR_BUILD_SIGNAL_CONVERT_TOOLTIP                                :{BLACK}Μετατροπή σήματος{}Κάντε κλικ σε ένα υπάρχον σήμα για να το μετατρέψετε στον επιλεγμένο τύπο και παραλλαγή. Ctrl+Click για εναλλαγή της υπάρχουσας παραλλαγής. Το Shift+Click εμφανίζει το εκτιμώμενο κόστος μετατροπής
+STR_BUILD_SIGNAL_CONVERT_TOOLTIP                                :{BLACK}Μετατροπή σήματος{}Κάντε κλικ σε ένα υπάρχον σήμα για να το μετατρέψετε στον επιλεγμένο τύπο και παραλλαγή. Ctrl+Κλικ για εναλλαγή της υπάρχουσας παραλλαγής. Το Shift+Κλικ εμφανίζει το εκτιμώμενο κόστος μετατροπής
 STR_BUILD_SIGNAL_DRAG_SIGNALS_DENSITY_TOOLTIP                   :{BLACK}Απόσταση μεταξύ σηματοδοτών με σύρσιμο
 STR_BUILD_SIGNAL_DRAG_SIGNALS_DENSITY_DECREASE_TOOLTIP          :{BLACK}Μείωση απόστασης μεταξύ σηματοδοτών με σύρσιμο
 STR_BUILD_SIGNAL_DRAG_SIGNALS_DENSITY_INCREASE_TOOLTIP          :{BLACK}Αύξηση απόστασης μεταξύ σηματοδοτών με σύρσιμο
@@ -2976,7 +2976,7 @@ STR_ROAD_TOOLBAR_TOOLTIP_BUILD_TRAMWAY_BRIDGE                   :{BLACK}Κατα
 STR_ROAD_TOOLBAR_TOOLTIP_BUILD_ROAD_TUNNEL                      :{BLACK}Κατασκευή τούνελ δρόμου. Επιπρόσθετα, με Shift εμφανίζεται εκτίμηση κόστους μόνο
 STR_ROAD_TOOLBAR_TOOLTIP_BUILD_TRAMWAY_TUNNEL                   :{BLACK}Κατασκευή τούνελ τροχιοδρόμου. Επιπρόσθετα πατήστε το Shift για εμφάνιση εκτίμησης κόστους μόνο
 STR_ROAD_TOOLBAR_TOOLTIP_TOGGLE_BUILD_REMOVE_FOR_ROAD           :{BLACK}Εναλλαγή κατασκευής/αφαίρεσης για αυτοκινητόδρομους
-STR_ROAD_TOOLBAR_TOOLTIP_TOGGLE_BUILD_REMOVE_FOR_TRAMWAYS       :{BLACK}Εναλλαγή κτισίματος/αφαίρεσης της κατασκευής τροχιόδρομου
+STR_ROAD_TOOLBAR_TOOLTIP_TOGGLE_BUILD_REMOVE_FOR_TRAMWAYS       :{BLACK}Εναλλαγή προσθήκης/αφαίρεσης για την κατασκευή τροχιόδρομου
 STR_ROAD_TOOLBAR_TOOLTIP_CONVERT_ROAD                           :{BLACK}Μετατρέψτε/Αναβαθμίστε τον τύπο του δρόμου. Επιπρόσθετα, με Shift εμφανίζεται εκτίμηση κόστους μόνο
 STR_ROAD_TOOLBAR_TOOLTIP_CONVERT_TRAM                           :{BLACK}Μετατρέψτε/Αναβαθμίστε τον τύπο του τραμ. Επιπρόσθετα, με Shift εμφανίζεται εκτίμηση κόστους μόνο
 
@@ -3055,7 +3055,7 @@ STR_LANDSCAPING_TOOLTIP_PURCHASE_LAND                           :{BLACK}Αγορ
 # Object construction window
 STR_OBJECT_BUILD_CAPTION                                        :{WHITE}Επιλογή Αντικείμενου
 STR_OBJECT_BUILD_TOOLTIP                                        :{BLACK}Επιλογή αντικείμενου για κατασκευή. Ctrl+Κλικ+Σύρσιμο για διαγώνια επιλογή. Επιπρόσθετα, με Shift εμφανίζεται εκτίμηση κόστους μόνο
-STR_OBJECT_BUILD_CLASS_TOOLTIP                                  :{BLACK}Επιλογή της κατηγορίας του αντικείμενου για κτίσιμο
+STR_OBJECT_BUILD_CLASS_TOOLTIP                                  :{BLACK}Επιλογή της κατηγορίας του αντικείμενου για κατασκευή
 STR_OBJECT_BUILD_PREVIEW_TOOLTIP                                :{BLACK}Προεπισκόπηση του αντικείμενου
 STR_OBJECT_BUILD_SIZE                                           :{BLACK}Μέγεθος: {GOLD}{NUM} x {NUM} τετράγωνα
 
@@ -3132,7 +3132,7 @@ STR_FUND_INDUSTRY_MANY_RANDOM_INDUSTRIES_TOOLTIP                :{BLACK}Γέμι
 STR_FUND_INDUSTRY_MANY_RANDOM_INDUSTRIES_CAPTION                :{WHITE}Δημιουργία τυχαίων βιομηχανιών
 STR_FUND_INDUSTRY_MANY_RANDOM_INDUSTRIES_QUERY                  :{YELLOW}Σίγουρα θέλετε να δημιουργήσετε πολλές τυχαίες βιομηχανίες;
 STR_FUND_INDUSTRY_INDUSTRY_BUILD_COST                           :{BLACK}Κόστος: {YELLOW}{CURRENCY_LONG}
-STR_FUND_INDUSTRY_PROSPECT_NEW_INDUSTRY                         :{BLACK}Διερεύνηση
+STR_FUND_INDUSTRY_PROSPECT_NEW_INDUSTRY                         :{BLACK}Προοπτική
 STR_FUND_INDUSTRY_BUILD_NEW_INDUSTRY                            :{BLACK}Κατασκευή
 STR_FUND_INDUSTRY_FUND_NEW_INDUSTRY                             :{BLACK}Χρηματοδότηση
 STR_FUND_INDUSTRY_REMOVE_ALL_INDUSTRIES                         :{BLACK}Αφαίρεση όλων των βιομηχανιών
@@ -3375,7 +3375,7 @@ STR_SAVELOAD_OSKTITLE                                           :{BLACK}Δώστ
 # World generation
 STR_MAPGEN_WORLD_GENERATION_CAPTION                             :{WHITE}Δημιουργία Κόσμου
 STR_MAPGEN_MAPSIZE                                              :{BLACK}Διάσταση χάρτη:
-STR_MAPGEN_MAPSIZE_TOOLTIP                                      :{BLACK}Επιλέξτε το μέγεθος του χάρτη σε τετραγωνίδια. Ο αριθμός των τετραγωνίδιων διαθέσιμα για κτίσιμο θα είναι λίγο χαμηλότερος
+STR_MAPGEN_MAPSIZE_TOOLTIP                                      :{BLACK}Επιλέξτε το μέγεθος του χάρτη σε τετραγωνίδια. Ο αριθμός των τετραγωνίδιων διαθέσιμα για κατασκευή θα είναι λίγο χαμηλότερος
 STR_MAPGEN_BY                                                   :{BLACK}*
 STR_MAPGEN_NUMBER_OF_TOWNS                                      :{BLACK}Αριθμός πόλεων:
 STR_MAPGEN_NUMBER_OF_TOWNS_TOOLTIP                              :Επιλέξτε την πυκνότητα των πόλεων ή έναν προσαρμοσμένο αριθμό
@@ -3744,7 +3744,7 @@ STR_LOCAL_AUTHORITY_ACTION_SMALL_ADVERTISING_CAMPAIGN           :Μικρή δι
 STR_LOCAL_AUTHORITY_ACTION_MEDIUM_ADVERTISING_CAMPAIGN          :Μεσαία διαφημιστική καμπάνια
 STR_LOCAL_AUTHORITY_ACTION_LARGE_ADVERTISING_CAMPAIGN           :Μεγάλη διαφημιστική καμπάνια
 STR_LOCAL_AUTHORITY_ACTION_ROAD_RECONSTRUCTION                  :Επιχορήγηση ανακατασκευής τοπικού οδικού δικτύου
-STR_LOCAL_AUTHORITY_ACTION_STATUE_OF_COMPANY                    :Κτίσιμο αγάλματος του ιδιοκτήτη της εταιρίας
+STR_LOCAL_AUTHORITY_ACTION_STATUE_OF_COMPANY                    :Κατασκευή αγάλματος του ιδιοκτήτη της εταιρίας
 STR_LOCAL_AUTHORITY_ACTION_NEW_BUILDINGS                        :Επιχορήγηση νέων κτιρίων
 STR_LOCAL_AUTHORITY_ACTION_EXCLUSIVE_TRANSPORT                  :Αγορά αποκλειστικών δικαιωμάτων μεταφοράς
 STR_LOCAL_AUTHORITY_ACTION_BRIBE                                :Δωροδοκήστε την τοπική αρχή
@@ -3755,7 +3755,7 @@ STR_LOCAL_AUTHORITY_ACTION_TOOLTIP_MEDIUM_ADVERTISING           :{PUSH_COLOUR}{Y
 STR_LOCAL_AUTHORITY_ACTION_TOOLTIP_LARGE_ADVERTISING            :{PUSH_COLOUR}{YELLOW}Έναρξη μεγάλης τοπικής διαφημιστικής καμπάνιας, για να προσελκύσετε περισσότερους επιβάτες και εμπορεύματα στις μεταφορικές σας υπηρεσίες.{}Παρέχει μία προσωρινή ώθηση στην βαθμολογία σταθμού σε μία μεγάλη ακτίνα γύρω από το κέντρο της πόλης.{}{POP_COLOUR} Κόστος: {CURRENCY_LONG}
 STR_LOCAL_AUTHORITY_ACTION_TOOLTIP_ROAD_RECONSTRUCTION_MONTHS   :{PUSH_COLOUR}{YELLOW}Χρηματοδοτήστε την ανακατασκευή του αστικού οδικού δικτύου.{}Προκαλεί σημαντική αναστάτωση της οδικής κυκλοφορίας για έως και 6 μήνες.{}{POP_COLOUR}Κόστος: {CURRENCY_LONG}
 STR_LOCAL_AUTHORITY_ACTION_TOOLTIP_ROAD_RECONSTRUCTION_MINUTES  :{PUSH_COLOUR}{YELLOW}Χρηματοδοτήστε την ανακατασκευή του αστικού οδικού δικτύου.{}Προκαλεί σημαντική αναστάτωση της οδικής κυκλοφορίας για έως και 6 λεπτά.{}{POP_COLOUR}Κόστος: {CURRENCY_LONG}
-STR_LOCAL_AUTHORITY_ACTION_TOOLTIP_STATUE_OF_COMPANY            :{PUSH_COLOUR}{YELLOW}Χτίστε ένα άγαλμα προς τιμήν της εταιρίας σας.{}Παρέχει μία μόνιμη ώθηση στην βαθμολογία σταθμών σε αυτή την πόλη.{}{POP_COLOUR}Κόστος: {CURRENCY_LONG}
+STR_LOCAL_AUTHORITY_ACTION_TOOLTIP_STATUE_OF_COMPANY            :{PUSH_COLOUR}{YELLOW}Κατασκευάστε ένα άγαλμα προς τιμήν της εταιρίας σας.{}Παρέχει μία μόνιμη ώθηση στην βαθμολογία σταθμών σε αυτή την πόλη.{}{POP_COLOUR}Κόστος: {CURRENCY_LONG}
 STR_LOCAL_AUTHORITY_ACTION_TOOLTIP_NEW_BUILDINGS                :{PUSH_COLOUR}{YELLOW}Χρηματοδοτήστε την κατασκευή νέων κτιρίων στην πόλη.{}Παρέχει μια προσωρινή ώθηση στην ανάπτυξη αυτής της πόλης.{}{POP_COLOUR}Κόστος: {CURRENCY_LONG}
 STR_LOCAL_AUTHORITY_ACTION_TOOLTIP_EXCLUSIVE_TRANSPORT_MONTHS   :{PUSH_COLOUR}{YELLOW}Αγοράστε αποκλειστικά δικαιώματα μεταφοράς στην πόλη για 12 μήνες.{}Η δημοτική αρχή δεν θα επιτρέψει στους επιβάτες και στο φορτίο να χρησιμοποιούν τους σταθμούς των ανταγωνιστών σας. Μια επιτυχημένη δωροδοκία από έναν ανταγωνιστή θα ακυρώσει αυτό το συμβόλαιο.{}{POP_COLOUR}Κόστος: {CURRENCY_LONG}
 STR_LOCAL_AUTHORITY_ACTION_TOOLTIP_EXCLUSIVE_TRANSPORT_MINUTES  :{PUSH_COLOUR}{YELLOW}Αγοράστε αποκλειστικά δικαιώματα μεταφοράς στην πόλη για 12 λεπτά.{}Η δημοτική αρχή δεν θα επιτρέψει στους επιβάτες και στο φορτίο να χρησιμοποιούν τους σταθμούς των ανταγωνιστών σας. Μια επιτυχημένη δωροδοκία από έναν ανταγωνιστή θα ακυρώσει αυτό το συμβόλαιο.{}{POP_COLOUR}Κόστος: {CURRENCY_LONG}
@@ -3984,8 +3984,8 @@ STR_COMPANY_VIEW_INFRASTRUCTURE_STATION                         :{WHITE}{COMMA} 
 STR_COMPANY_VIEW_INFRASTRUCTURE_AIRPORT                         :{WHITE}{COMMA} αεροδρόμι{P ο α}
 STR_COMPANY_VIEW_INFRASTRUCTURE_NONE                            :{WHITE}Τίποτα
 
-STR_COMPANY_VIEW_BUILD_HQ_BUTTON                                :{BLACK}Κτίσιμο Αρχηγείου
-STR_COMPANY_VIEW_BUILD_HQ_TOOLTIP                               :{BLACK}Κτίσιμο αρχηγείου εταιρίας
+STR_COMPANY_VIEW_BUILD_HQ_BUTTON                                :{BLACK}Κατασκευή Αρχηγείου
+STR_COMPANY_VIEW_BUILD_HQ_TOOLTIP                               :{BLACK}Κατασκευή αρχηγείου εταιρίας
 STR_COMPANY_VIEW_VIEW_HQ_BUTTON                                 :{BLACK}Προβολή Αρχηγείου
 STR_COMPANY_VIEW_VIEW_HQ_TOOLTIP                                :{BLACK}Προβολή αρχηγείου εταιρίας
 STR_COMPANY_VIEW_RELOCATE_HQ                                    :{BLACK}Ανοικοδόμηση Αρχηγείου
@@ -4010,7 +4010,7 @@ STR_COMPANY_VIEW_COMPANY_NAME_QUERY_CAPTION                     :Όνομα Ετ
 STR_COMPANY_VIEW_PRESIDENT_S_NAME_QUERY_CAPTION                 :Όνομα Διευθυντή
 STR_COMPANY_VIEW_GIVE_MONEY_QUERY_CAPTION                       :Εισάγετε το χρηματικό ποσό που θέλετε να δώσετε
 
-STR_BUY_COMPANY_MESSAGE                                         :{WHITE}Ψάχνουμε μία εταιρία μεταφορών για να εξαγοράσει την εταιρία μας.{}{}Θέλετε να εξαγοράσετε την {COMPANY} για {CURRENCY_LONG};
+STR_BUY_COMPANY_MESSAGE                                         :{WHITE}Αναζητούμε μια εταιρία μεταφορών για να εξαγοράσει την εταιρία μας.{}{}Θέλετε να εξαγοράσετε την {COMPANY} για {CURRENCY_LONG};
 STR_BUY_COMPANY_HOSTILE_TAKEOVER                                :{WHITE}Σε μια εχθρική εξαγορά της {COMPANY} θα αγοράσετε όλα τα περιουσιακά στοιχεία, θα εξοφλήσετε όλα τα δάνεια και θα πληρώσετε κέρδη δύο ετών.{}{}Το σύνολο εκτιμάται ότι είναι {CURRENCY_LONG}.{}{}Θέλετε να προχωρήσετε με αυτήν την εχθρική εξαγορά;
 
 # Company infrastructure window
@@ -4425,7 +4425,7 @@ STR_REPLACE_TRAM_VEHICLES                                       :Οχήματα 
 
 STR_REPLACE_REMOVE_WAGON                                        :{BLACK}Αφαίρεση βαγονιού: ({STRING}): {ORANGE}{STRING}
 STR_REPLACE_REMOVE_WAGON_HELP                                   :{BLACK}Υποχρεώνει την αυτόματη αντικατάσταση να διατηρεί σταθερό το μήκος του τρένου αφαιρώντας βαγόνια (ξεκινώντας από μπροστά), όταν η αντικατάσταση της μηχανής κάνει το τρένο μεγαλύτερο
-STR_REPLACE_REMOVE_WAGON_GROUP_HELP                             :{STRING}. Πατήστε Ctrl+Click για εφαρμογή επίσης στην υπό-ομάδα
+STR_REPLACE_REMOVE_WAGON_GROUP_HELP                             :{STRING}. Πατήστε Ctrl+Κλικ για εφαρμογή επίσης στην υπό-ομάδα
 
 # Vehicle view
 STR_VEHICLE_VIEW_CAPTION                                        :{WHITE}{VEHICLE}
@@ -4549,12 +4549,12 @@ STR_VEHICLE_DETAILS_SERVICING_INTERVAL_MINUTES                  :{BLACK}Διάσ
 STR_VEHICLE_DETAILS_SERVICING_INTERVAL_PERCENT                  :{BLACK}Διάστημα επισκευών: {LTBLUE}{COMMA}%{BLACK}   {STRING}
 STR_VEHICLE_DETAILS_LAST_SERVICE_DATE                           :Τελευταίο service: {LTBLUE}{DATE_LONG}
 STR_VEHICLE_DETAILS_LAST_SERVICE_MINUTES_AGO                    :Τελευταίο service: {LTBLUE}{NUM} λεπτ{P 0 ό ά} πριν
-STR_VEHICLE_DETAILS_INCREASE_SERVICING_INTERVAL_TOOLTIP_DAYS    :{BLACK}Αύξηση του διαστήματος συντήρησης κατά 10 ημέρες. Ctrl+Click για αύξηση του διαστήματος συντήρησης κατά 5 ημέρες
-STR_VEHICLE_DETAILS_INCREASE_SERVICING_INTERVAL_TOOLTIP_MINUTES :{BLACK}Αύξηση του διαστήματος συντήρησης κατά 5 λεπτά. Ctrl+Click για αύξηση του διαστήματος συντήρησης κατά 1 λεπτό
-STR_VEHICLE_DETAILS_INCREASE_SERVICING_INTERVAL_TOOLTIP_PERCENT :{BLACK}Αύξηση του διαστήματος εξυπηρέτησης κατά 10 τοις εκατό. Ctrl+Click για αύξηση του διαστήματος εξυπηρέτησης κατά 5 τοις εκατό
-STR_VEHICLE_DETAILS_DECREASE_SERVICING_INTERVAL_TOOLTIP_DAYS    :Μειώστε το διάστημα μεταξύ των σέρβις κατά 10 ημέρες. Ctrl+Click για να μειώσετε το διάστημα συντήρησης κατά 5 ημέρες
-STR_VEHICLE_DETAILS_DECREASE_SERVICING_INTERVAL_TOOLTIP_MINUTES :Μειώστε το διάστημα μεταξύ των σέρβις κατά 5 λεπτά. Ctrl+Click για να μειώσετε το διάστημα συντήρησης κατά 1 λεπτό
-STR_VEHICLE_DETAILS_DECREASE_SERVICING_INTERVAL_TOOLTIP_PERCENT :Μειώστε το διάστημα μεταξύ των σέρβις κατά 10 τοις εκατό. Ctrl+Click για να μειώσετε το διάστημα συντήρησης κατά 5 τοις εκατό.
+STR_VEHICLE_DETAILS_INCREASE_SERVICING_INTERVAL_TOOLTIP_DAYS    :{BLACK}Αύξηση του διαστήματος συντήρησης κατά 10 ημέρες. Ctrl+Κλικ για αύξηση του διαστήματος συντήρησης κατά 5 ημέρες
+STR_VEHICLE_DETAILS_INCREASE_SERVICING_INTERVAL_TOOLTIP_MINUTES :{BLACK}Αύξηση του διαστήματος συντήρησης κατά 5 λεπτά. Ctrl+Κλικ για αύξηση του διαστήματος συντήρησης κατά 1 λεπτό
+STR_VEHICLE_DETAILS_INCREASE_SERVICING_INTERVAL_TOOLTIP_PERCENT :{BLACK}Αύξηση του διαστήματος εξυπηρέτησης κατά 10 τοις εκατό. Ctrl+Κλικ για αύξηση του διαστήματος εξυπηρέτησης κατά 5 τοις εκατό
+STR_VEHICLE_DETAILS_DECREASE_SERVICING_INTERVAL_TOOLTIP_DAYS    :{BLACK}Μειώστε το διάστημα μεταξύ των σέρβις κατά 10 ημέρες. Ctrl+Κλικ για να μειώσετε το διάστημα συντήρησης κατά 5 ημέρες
+STR_VEHICLE_DETAILS_DECREASE_SERVICING_INTERVAL_TOOLTIP_MINUTES :{BLACK}Μειώστε το διάστημα μεταξύ των σέρβις κατά 5 λεπτά. Ctrl+Κλικ για να μειώσετε το διάστημα συντήρησης κατά 1 λεπτό
+STR_VEHICLE_DETAILS_DECREASE_SERVICING_INTERVAL_TOOLTIP_PERCENT :{BLACK}Μειώστε το διάστημα μεταξύ των σέρβις κατά 10 τοις εκατό. Ctrl+Κλικ για να μειώσετε το διάστημα συντήρησης κατά 5 τοις εκατό.
 
 STR_SERVICE_INTERVAL_DROPDOWN_TOOLTIP                           :{BLACK}Αλλάξτε τον τύπο διαστήματος επισκευών
 STR_VEHICLE_DETAILS_DEFAULT                                     :Προκαθορισμένο
@@ -4628,7 +4628,7 @@ STR_ORDER_INDEX                                                 :{COMMA}:{NBSP}
 STR_ORDER_TEXT                                                  :{STRING} {STRING} {STRING} {STRING}
 
 STR_ORDERS_END_OF_ORDERS                                        :- - Τέλος Εντολών - -
-STR_ORDERS_END_OF_SHARED_ORDERS                                 :- - Τέλος Μοιρασμένων Οδηγιών - -
+STR_ORDERS_END_OF_SHARED_ORDERS                                 :- - Τέλος Διαμοιρασμένων Εντολών - -
 
 # Order bottom buttons
 STR_ORDER_NON_STOP                                              :{BLACK}Χωρίς στάση
@@ -4713,7 +4713,7 @@ STR_ORDER_GO_TO_NEAREST_DEPOT                                   :Πήγαινε 
 STR_ORDER_GO_TO_NEAREST_HANGAR                                  :Πήγαινε στο κοντινότερο υπόστεγο
 STR_ORDER_CONDITIONAL                                           :Εκτέλεση εντόλης υπο προυπόθεση
 STR_ORDER_SHARE                                                 :Μοίρασμα εντολών
-STR_ORDERS_GO_TO_TOOLTIP                                        :{BLACK}Εισάγετε μια νέα εντολή πριν την επιλεγμένη ή προσθέστε στο τέλος της λίστας. Ctrl+Κλικ σε έναν σταθμό για ορισμό εντολής σε "πλήρης φόρτωση οποιουδήποτε εμπορεύματος", σε σημείο διαδρομής για αντιστροφή εντολής "χωρίς στάση εξ ορισμού" ή σε αμαξοστάσιο για "αποσύνδεση". Κάντε κλικ σε άλλο όχημα για να αντιγράψετε τις εντολές του ή Ctrl+Click για διαμοιρασμό εντολών. Μια εντολή αμαξοστασίου απενεργοποιεί την αυτόματη συντήρηση του οχήματος
+STR_ORDERS_GO_TO_TOOLTIP                                        :{BLACK}Εισάγετε μια νέα εντολή πριν την επιλεγμένη ή προσθέστε στο τέλος της λίστας. Ctrl+Κλικ σε έναν σταθμό για ορισμό εντολής σε "πλήρης φόρτωση οποιουδήποτε εμπορεύματος", σε σημείο διαδρομής για αντιστροφή εντολής "χωρίς στάση εξ ορισμού" ή σε αμαξοστάσιο για "αποσύνδεση". Κάντε κλικ σε άλλο όχημα για να αντιγράψετε τις εντολές του ή Ctrl+Κλικ για διαμοιρασμό εντολών. Μια εντολή αμαξοστασίου απενεργοποιεί την αυτόματη συντήρηση του οχήματος
 
 STR_ORDERS_VEH_WITH_SHARED_ORDERS_LIST_TOOLTIP                  :{BLACK}Εμφάνιση όλων των οχημάτων που μοιράζονται αυτό το δρομολόγιο
 
@@ -4821,7 +4821,7 @@ STR_TIMETABLE_STATUS_START_AT_DATE                              :{BLACK}Αυτό
 STR_TIMETABLE_STATUS_START_IN_SECONDS                           :{BLACK}Αυτό το δρομολόγιο θα ξεκινήσει σε {COMMA} δευτερόλεπτα
 
 STR_TIMETABLE_START                                             :{BLACK}Εκκίνηση δρομολογίου
-STR_TIMETABLE_START_TOOLTIP                                     :{BLACK}Επιλέξτε πότε ξεκινά αυτό το δρομολόγιο. Ctrl+Click για ομοιόμορφη κατανομή της εκκίνησης όλων των οχημάτων που μοιράζονται αυτήν την εντολή με βάση τη σχετική τους εντολή, εάν η εντολή είναι πλήρως προγραμματισμένη
+STR_TIMETABLE_START_TOOLTIP                                     :{BLACK}Επιλέξτε πότε ξεκινά αυτό το δρομολόγιο. Ctrl+Κλικ για ομοιόμορφη κατανομή της εκκίνησης όλων των οχημάτων που μοιράζονται αυτήν την εντολή με βάση τη σχετική τους εντολή, εάν η εντολή είναι πλήρως προγραμματισμένη
 
 STR_TIMETABLE_START_SECONDS_QUERY                               :Δευτερόλεπτα μέχρι την έναρξη του δρομολογίου
 
@@ -4909,7 +4909,7 @@ STR_AI_CONFIG_AI                                                :{SILVER}AI
 
 STR_AI_CONFIG_CHANGE_AI                                         :{BLACK}Διάλεξε ΤΝ
 STR_AI_CONFIG_CHANGE_GAMESCRIPT                                 :{BLACK}Δέσμη Ενεργειών
-STR_AI_CONFIG_CHANGE_TOOLTIP                                    :{BLACK}Φόρτωση άλλης δέσμης ενεργειών. Ctrl+Click για εμφάνιση όλων των διαθέσιμων εκδόσεων
+STR_AI_CONFIG_CHANGE_TOOLTIP                                    :{BLACK}Φόρτωση άλλης δέσμης ενεργειών. Ctrl+Κλικ για εμφάνιση όλων των διαθέσιμων εκδόσεων
 STR_AI_CONFIG_CONFIGURE                                         :{BLACK}Ρυθμίσεις
 STR_AI_CONFIG_CONFIGURE_TOOLTIP                                 :{BLACK}Ρύθμιση των παραμέτρων της Δέσμης Ενεργειών
 
@@ -5050,7 +5050,7 @@ STR_ERROR_CAN_T_DO_THIS                                         :{WHITE}Αυτό
 STR_ERROR_BUILDING_MUST_BE_DEMOLISHED                           :{WHITE}Το κτίριο πρέπει πρώτα να κατεδαφιστεί
 STR_ERROR_CAN_T_CLEAR_THIS_AREA                                 :{WHITE}Είναι αδύνατο να καθαριστεί αυτή η περιοχή...
 STR_ERROR_SITE_UNSUITABLE                                       :{WHITE}... ακατάλληλη περιοχή
-STR_ERROR_ALREADY_BUILT                                         :{WHITE}... ήδη κτισμένο
+STR_ERROR_ALREADY_BUILT                                         :{WHITE}... ήδη κατασκευασμένο
 STR_ERROR_OWNED_BY                                              :{WHITE}... ιδιοκτησία του {STRING}
 STR_ERROR_AREA_IS_OWNED_BY_ANOTHER                              :{WHITE}... η περιοχή είναι ιδιοκτησία άλλης εταιρίας
 STR_ERROR_TERRAFORM_LIMIT_REACHED                               :{WHITE}... υπερβαίνει το όριο διαμόρφωσης του εδάφους
@@ -5088,12 +5088,12 @@ STR_ERROR_CAN_T_REPAY_LOAN                                      :{WHITE}Αδύν
 STR_ERROR_INSUFFICIENT_FUNDS                                    :{WHITE}Δεν είναι δυνατό να δοθούν χρήματα που είναι δανεισμένα από τη τράπεζα...
 STR_ERROR_CAN_T_GIVE_MONEY                                      :{WHITE}Δεν μπορείτε να δώσετε χρήματα σε αυτή την εταιρία...
 STR_ERROR_CAN_T_BUY_COMPANY                                     :{WHITE}Αδύνατη η εξαγορά της εταιρίας...
-STR_ERROR_CAN_T_BUILD_COMPANY_HEADQUARTERS                      :{WHITE}Δεν μπορεί να κτιστεί αρχηγείο εταιρίας...
+STR_ERROR_CAN_T_BUILD_COMPANY_HEADQUARTERS                      :{WHITE}Δεν μπορεί να κατασκευαστεί αρχηγείο εταιρίας...
 
 # Town related errors
 STR_ERROR_CAN_T_GENERATE_TOWN                                   :{WHITE}Αδύνατο να κατασκευαστούν πόλεις...
 STR_ERROR_CAN_T_RENAME_TOWN                                     :{WHITE}Δεν μπορεί να μετονομαστεί η πόλη...
-STR_ERROR_CAN_T_FOUND_TOWN_HERE                                 :{WHITE}Αδύνατο να κτιστεί πόλη εδώ...
+STR_ERROR_CAN_T_FOUND_TOWN_HERE                                 :{WHITE}Αδύνατο να ιδρυθεί πόλη εδώ...
 STR_ERROR_CAN_T_EXPAND_TOWN                                     :{WHITE}Δεν μπορεί να γίνει επέκταση της πόλης...
 STR_ERROR_TOO_CLOSE_TO_EDGE_OF_MAP_SUB                          :{WHITE}... πολύ κοντά στην άκρη του χάρτη
 STR_ERROR_TOO_CLOSE_TO_ANOTHER_TOWN                             :{WHITE}... πολύ κοντά σε άλλη πόλη
@@ -5106,22 +5106,22 @@ STR_ERROR_STATUE_NO_SUITABLE_PLACE                              :{WHITE}... δε
 # Industry related errors
 STR_ERROR_TOO_MANY_INDUSTRIES                                   :{WHITE}... πάρα πολλές βιομηχανίες
 STR_ERROR_CAN_T_GENERATE_INDUSTRIES                             :{WHITE}Δε γίνεται να δημιουργηθούν βιομηχανίες...
-STR_ERROR_CAN_T_BUILD_HERE                                      :{WHITE}Δεν μπορεί να κτιστεί {G ο η το} {STRING} εδώ...
-STR_ERROR_CAN_T_CONSTRUCT_THIS_INDUSTRY                         :{WHITE}Δεν είναι δυνατό να κτιστεί αυτός ο τύπος βιομηχανίας εδώ...
+STR_ERROR_CAN_T_BUILD_HERE                                      :{WHITE}Δεν μπορεί να κατασκευαστεί {G ο η το} {STRING} εδώ...
+STR_ERROR_CAN_T_CONSTRUCT_THIS_INDUSTRY                         :{WHITE}Δεν είναι δυνατό να κατασκευαστεί αυτός ο τύπος βιομηχανίας εδώ...
 STR_ERROR_CAN_T_PROSPECT_INDUSTRY                               :{WHITE}Δεν βρέθηκαν ευκαιρίες για τη βιομηχανία...
 STR_ERROR_INDUSTRY_TOO_CLOSE                                    :{WHITE}... πολύ κοντά σε άλλη βιομηχανία
-STR_ERROR_MUST_FOUND_TOWN_FIRST                                 :{WHITE}... πρέπει να κτιστεί πόλη πρώτα
+STR_ERROR_MUST_FOUND_TOWN_FIRST                                 :{WHITE}... πρέπει να ιδρυθεί πόλη πρώτα
 STR_ERROR_ONLY_ONE_ALLOWED_PER_TOWN                             :{WHITE}... επιτρέπεται μόνο μία ανά πόλη
-STR_ERROR_CAN_ONLY_BE_BUILT_IN_TOWNS_WITH_POPULATION_OF_1200    :{WHITE}... μπορεί να κτιστεί μόνο σε πόλεις με πληθυσμό άνω των 1200
-STR_ERROR_CAN_ONLY_BE_BUILT_IN_RAINFOREST                       :{WHITE}... μπορεί να κτιστεί μόνο σε δασώδεις περιοχές
-STR_ERROR_CAN_ONLY_BE_BUILT_IN_DESERT                           :{WHITE}... μπορεί να κτιστεί μόνο σε ερημικές περιοχές
-STR_ERROR_CAN_ONLY_BE_BUILT_IN_TOWNS                            :{WHITE}... μπορεί να κτιστεί μόνο σε πόλεις (αντικαθιστώντας σπίτια)
-STR_ERROR_CAN_ONLY_BE_BUILT_NEAR_TOWN_CENTER                    :{WHITE}... μπορεί να κτιστεί μόνο κοντά σε κέντρα πόλεων
-STR_ERROR_CAN_ONLY_BE_BUILT_IN_LOW_AREAS                        :{WHITE}... μπορεί να κτιστεί μόνο σε χαμηλές περιοχές
+STR_ERROR_CAN_ONLY_BE_BUILT_IN_TOWNS_WITH_POPULATION_OF_1200    :{WHITE}... μπορεί να κατασκευαστεί μόνο σε πόλεις με πληθυσμό άνω των 1200
+STR_ERROR_CAN_ONLY_BE_BUILT_IN_RAINFOREST                       :{WHITE}... μπορεί να κατασκευαστεί μόνο σε δασώδεις περιοχές
+STR_ERROR_CAN_ONLY_BE_BUILT_IN_DESERT                           :{WHITE}... μπορεί να κατασκευαστεί μόνο σε ερημικές περιοχές
+STR_ERROR_CAN_ONLY_BE_BUILT_IN_TOWNS                            :{WHITE}... μπορεί να κατασκευαστεί μόνο σε πόλεις (αντικαθιστώντας σπίτια)
+STR_ERROR_CAN_ONLY_BE_BUILT_NEAR_TOWN_CENTER                    :{WHITE}... μπορεί να κατασκευαστεί μόνο κοντά σε κέντρα πόλεων
+STR_ERROR_CAN_ONLY_BE_BUILT_IN_LOW_AREAS                        :{WHITE}... μπορεί να κατασκευαστεί μόνο σε χαμηλές περιοχές
 STR_ERROR_CAN_ONLY_BE_POSITIONED                                :{WHITE}... μπορούν να τοποθετηθούν μόνο στις άκρες του χάρτη
 STR_ERROR_FOREST_CAN_ONLY_BE_PLANTED                            :{WHITE}... δάση μπορούν να φυτευτούν μόνο πάνω από τη γραμμή του χιονιού
-STR_ERROR_CAN_ONLY_BE_BUILT_ABOVE_SNOW_LINE                     :{WHITE}... μπορεί να κτιστεί μόνο πάνω από τη γραμμή του χιονιού
-STR_ERROR_CAN_ONLY_BE_BUILT_BELOW_SNOW_LINE                     :{WHITE}... μπορεί να κτιστεί μόνο κάτω από τη γραμμή του χιονιού
+STR_ERROR_CAN_ONLY_BE_BUILT_ABOVE_SNOW_LINE                     :{WHITE}... μπορεί να κατασκευαστεί μόνο πάνω από τη γραμμή του χιονιού
+STR_ERROR_CAN_ONLY_BE_BUILT_BELOW_SNOW_LINE                     :{WHITE}... μπορεί να κατασκευαστεί μόνο κάτω από τη γραμμή του χιονιού
 
 STR_ERROR_PROSPECTING_WAS_UNLUCKY                               :{WHITE}Η χρηματοδότηση απέτυχε να προσκομήσει αποτελέσματα λόγω κακής τύχης· δοκιμάστε ξάνα
 STR_ERROR_NO_SUITABLE_PLACES_FOR_PROSPECTING                    :{WHITE}Δεν υπήρχαν κατάλληλα μέρη για προοπτική για αυτόν τον κλάδο
@@ -5129,13 +5129,13 @@ STR_ERROR_NO_SUITABLE_PLACES_FOR_INDUSTRIES                     :{WHITE}Δεν �
 STR_ERROR_NO_SUITABLE_PLACES_FOR_INDUSTRIES_EXPLANATION         :{WHITE}Αλλαγή παραμέτρων δημιουργίας χάρτη για καλύτερα αποτελέσματα
 
 # Station construction related errors
-STR_ERROR_CAN_T_BUILD_RAILROAD_STATION                          :{WHITE}Δεν μπορεί να κτιστεί σταθμός τρένων εδώ...
-STR_ERROR_CAN_T_BUILD_BUS_STATION                               :{WHITE}Δεν μπορεί να κτιστεί στάση λεωφορείων...
-STR_ERROR_CAN_T_BUILD_TRUCK_STATION                             :{WHITE}Δεν μπορεί να κτιστεί σταθμός φορτηγών...
-STR_ERROR_CAN_T_BUILD_PASSENGER_TRAM_STATION                    :{WHITE}Δεν μπορεί να κτιστεί επιβατικός σταθμός τραμ...
-STR_ERROR_CAN_T_BUILD_CARGO_TRAM_STATION                        :{WHITE}Δεν μπορεί να κτιστεί σταθμός τραμ...
-STR_ERROR_CAN_T_BUILD_DOCK_HERE                                 :{WHITE}Δεν μπορεί να κτιστεί λιμένας εδώ...
-STR_ERROR_CAN_T_BUILD_AIRPORT_HERE                              :{WHITE}Δεν μπορεί να κτιστεί αεροδρόμιο εδώ...
+STR_ERROR_CAN_T_BUILD_RAILROAD_STATION                          :{WHITE}Δεν μπορεί να κατασκευαστεί σταθμός τρένων εδώ...
+STR_ERROR_CAN_T_BUILD_BUS_STATION                               :{WHITE}Δεν μπορεί να κατασκευαστεί στάση λεωφορείων...
+STR_ERROR_CAN_T_BUILD_TRUCK_STATION                             :{WHITE}Δεν μπορεί να κατασκευαστεί σταθμός φορτηγών...
+STR_ERROR_CAN_T_BUILD_PASSENGER_TRAM_STATION                    :{WHITE}Δεν μπορεί να κατασκευαστεί επιβατικός σταθμός τραμ...
+STR_ERROR_CAN_T_BUILD_CARGO_TRAM_STATION                        :{WHITE}Δεν μπορεί να κατασκευαστεί σταθμός τραμ...
+STR_ERROR_CAN_T_BUILD_DOCK_HERE                                 :{WHITE}Δεν μπορεί να κατασκευαστεί λιμένας εδώ...
+STR_ERROR_CAN_T_BUILD_AIRPORT_HERE                              :{WHITE}Δεν μπορεί να κατασκευαστεί αεροδρόμιο εδώ...
 
 STR_ERROR_ADJOINS_MORE_THAN_ONE_EXISTING                        :{WHITE}Γειτονεύει με περισσότερες από μια υπάρχουσες περιοχές σταθμών/φόρτωσης
 STR_ERROR_STATION_TOO_SPREAD_OUT                                :{WHITE}... ο σταθμός είναι υπερβολικά απλωμένος
@@ -5173,7 +5173,7 @@ STR_ERROR_MUST_DEMOLISH_AIRPORT_FIRST                           :{WHITE}Πρέπ
 STR_ERROR_WAYPOINT_ADJOINS_MORE_THAN_ONE_EXISTING               :{WHITE}Προστίθεται σε περισσότερο από ένα υπάρχον σημείο καθοδήγησης
 STR_ERROR_TOO_CLOSE_TO_ANOTHER_WAYPOINT                         :{WHITE}Πολύ κοντά σε άλλο σημείο καθοδήγησης
 
-STR_ERROR_CAN_T_BUILD_TRAIN_WAYPOINT                            :{WHITE}Δεν μπορεί να χτιστεί σημείο καθοδήγησης τρένου εδώ...
+STR_ERROR_CAN_T_BUILD_TRAIN_WAYPOINT                            :{WHITE}Δεν μπορεί να κατασκευαστεί σημείο καθοδήγησης τρένου εδώ...
 STR_ERROR_CAN_T_POSITION_BUOY_HERE                              :{WHITE}Δεν μπορεί να τοποθετηθεί σημαδούρα εδώ...
 STR_ERROR_CAN_T_CHANGE_WAYPOINT_NAME                            :{WHITE}Αδύνατο να αλλαχτεί το όνομα του σημείου καθοδήγησης...
 
@@ -5183,10 +5183,10 @@ STR_ERROR_BUOY_IN_THE_WAY                                       :{WHITE}... ση
 STR_ERROR_BUOY_IS_IN_USE                                        :{WHITE}... σημαδούρα σε χρήση από άλλη εταιρία!
 
 # Depot related errors
-STR_ERROR_CAN_T_BUILD_TRAIN_DEPOT                               :{WHITE}Δεν μπορεί να κτιστεί αμαξοστάσιο εδώ...
-STR_ERROR_CAN_T_BUILD_ROAD_DEPOT                                :{WHITE}Δεν μπορεί να κτιστεί σταθμός οχημάτων εδώ...
-STR_ERROR_CAN_T_BUILD_TRAM_DEPOT                                :{WHITE}Δεν μπορεί να κτιστεί σταθμαρχείο τραμ εδώ...
-STR_ERROR_CAN_T_BUILD_SHIP_DEPOT                                :{WHITE}Δεν μπορεί να κτιστεί ναυπηγείο πλοίων εδώ...
+STR_ERROR_CAN_T_BUILD_TRAIN_DEPOT                               :{WHITE}Δεν μπορεί να κατασκευαστεί αμαξοστάσιο εδώ...
+STR_ERROR_CAN_T_BUILD_ROAD_DEPOT                                :{WHITE}Δεν μπορεί να κατασκευαστεί σταθμός οχημάτων εδώ...
+STR_ERROR_CAN_T_BUILD_TRAM_DEPOT                                :{WHITE}Δεν μπορεί να κατασκευαστεί σταθμαρχείο τραμ εδώ...
+STR_ERROR_CAN_T_BUILD_SHIP_DEPOT                                :{WHITE}Δεν μπορεί να κατασκευαστεί ναυπηγείο πλοίων εδώ...
 
 STR_ERROR_CAN_T_RENAME_DEPOT                                    :{WHITE}Δεν μπορεί να μετονομαστεί το αμαξοστάσιο/ναυπηγείο...
 
@@ -5231,7 +5231,7 @@ STR_ERROR_CROSSING_ON_ONEWAY_ROAD                               :{WHITE}Η δρ�
 STR_ERROR_CROSSING_DISALLOWED_RAIL                              :{WHITE}Δεν επιτρέπονται ισόπεδες διασταυρώσεις για αυτόν τον τύπο σιδηροδρόμου
 STR_ERROR_CROSSING_DISALLOWED_ROAD                              :{WHITE}Οι ισόπεδες διαβάσεις δεν επιτρέπονται για αυτό τον τύπο δρόμου
 STR_ERROR_CAN_T_BUILD_SIGNALS_HERE                              :{WHITE}Δεν μπορούν να τοποθετοηθούν σηματοδότες εδώ...
-STR_ERROR_CAN_T_BUILD_RAILROAD_TRACK                            :{WHITE}Δεν μπορεί να κτιστεί σιδηρόδρομος εδώ...
+STR_ERROR_CAN_T_BUILD_RAILROAD_TRACK                            :{WHITE}Δεν μπορεί να κατασκευαστεί σιδηρόδρομος εδώ...
 STR_ERROR_CAN_T_REMOVE_RAILROAD_TRACK                           :{WHITE}Δεν μπορεί να αφαιρεθεί σιδηρόδρομος από εδώ...
 STR_ERROR_CAN_T_REMOVE_SIGNALS_FROM                             :{WHITE}Αδύνατο να αφαιρεθούν σηματοδότες από εδώ...
 STR_ERROR_SIGNAL_CAN_T_CONVERT_SIGNALS_HERE                     :{WHITE}Δεν μπορούν να μετατραπούν οι σηματοδότες εδώ...
@@ -5243,8 +5243,8 @@ STR_ERROR_CAN_T_CONVERT_RAIL                                    :{WHITE}Δε γ�
 # Road construction errors
 STR_ERROR_MUST_REMOVE_ROAD_FIRST                                :{WHITE}Πρέπει πρώτα να αφαιρεθεί ο δρόμος
 STR_ERROR_ONEWAY_ROADS_CAN_T_HAVE_JUNCTION                      :{WHITE}... οι μονόδρομοι δεν μπορούν να έχουν διασταυρώσεις
-STR_ERROR_CAN_T_BUILD_ROAD_HERE                                 :{WHITE}Δεν μπορεί να κτιστεί δρόμος εδώ...
-STR_ERROR_CAN_T_BUILD_TRAMWAY_HERE                              :{WHITE}Δεν μπορεί να κτιστεί τροχιοδρόμος εδώ...
+STR_ERROR_CAN_T_BUILD_ROAD_HERE                                 :{WHITE}Δεν μπορεί να κατασκευαστεί δρόμος εδώ...
+STR_ERROR_CAN_T_BUILD_TRAMWAY_HERE                              :{WHITE}Δεν μπορεί να κατασκευαστεί τροχιοδρόμος εδώ...
 STR_ERROR_CAN_T_REMOVE_ROAD_FROM                                :{WHITE}Αδύνατο να αφαιρεθεί δρόμος από εδώ...
 STR_ERROR_CAN_T_REMOVE_TRAMWAY_FROM                             :{WHITE}Δεν μπορεί να αφαιρεθεί τροχιόδρομος από εδώ...
 STR_ERROR_THERE_IS_NO_ROAD                                      :{WHITE}... δεν υπάρχει δρόμος
@@ -5255,16 +5255,16 @@ STR_ERROR_NO_SUITABLE_ROAD                                      :{WHITE}Δεν �
 STR_ERROR_NO_SUITABLE_TRAMWAY                                   :{WHITE}Καμία κατάλληλη γραμμή του τραμ
 
 # Waterway construction errors
-STR_ERROR_CAN_T_BUILD_CANALS                                    :{WHITE}Δεν μπορεί να κτιστεί κανάλι εδώ
-STR_ERROR_CAN_T_BUILD_LOCKS                                     :{WHITE}Δεν μπορεί να κτιστεί υδατοφράκτης εδώ...
+STR_ERROR_CAN_T_BUILD_CANALS                                    :{WHITE}Δεν μπορεί να κατασκευαστεί κανάλι εδώ
+STR_ERROR_CAN_T_BUILD_LOCKS                                     :{WHITE}Δεν μπορεί να κατασκευαστεί υδατοφράκτης εδώ...
 STR_ERROR_CAN_T_PLACE_RIVERS                                    :{WHITE}Δεν μπορούν να τοποθετηθούν ποτάμια εδώ...
-STR_ERROR_MUST_BE_BUILT_ON_WATER                                :{WHITE}... πρέπει να κτιστεί στο νερό
-STR_ERROR_CAN_T_BUILD_ON_WATER                                  :{WHITE}... αδύνατο να κτιστεί στο νερό
-STR_ERROR_CAN_T_BUILD_ON_SEA                                    :{WHITE}... αδύνατο να κτιστεί στην ανοικτή θάλασσα
-STR_ERROR_CAN_T_BUILD_ON_CANAL                                  :{WHITE}... αδύνατο να κτιστεί σε κανάλι
-STR_ERROR_CAN_T_BUILD_ON_RIVER                                  :{WHITE}... αδύνατο να κτιστεί σε ποτάμι
+STR_ERROR_MUST_BE_BUILT_ON_WATER                                :{WHITE}... πρέπει να κατασκευαστεί στο νερό
+STR_ERROR_CAN_T_BUILD_ON_WATER                                  :{WHITE}... αδύνατο να κατασκευαστεί στο νερό
+STR_ERROR_CAN_T_BUILD_ON_SEA                                    :{WHITE}... αδύνατο να κατασκευαστεί στην ανοικτή θάλασσα
+STR_ERROR_CAN_T_BUILD_ON_CANAL                                  :{WHITE}... αδύνατο να κατασκευαστεί σε κανάλι
+STR_ERROR_CAN_T_BUILD_ON_RIVER                                  :{WHITE}... αδύνατο να κατασκευαστεί σε ποτάμι
 STR_ERROR_MUST_DEMOLISH_CANAL_FIRST                             :{WHITE}Πρέπει να κατεδαφιστεί το κανάλι πρώτα
-STR_ERROR_CAN_T_BUILD_AQUEDUCT_HERE                             :{WHITE}Δεν μπορεί να κτιστεί κανάλι εδώ...
+STR_ERROR_CAN_T_BUILD_AQUEDUCT_HERE                             :{WHITE}Δεν μπορεί να κατασκευαστεί κανάλι εδώ...
 
 # Tree related errors
 STR_ERROR_TREE_ALREADY_HERE                                     :{WHITE}... υπάρχει ήδη δέντρο εδώ
@@ -5272,7 +5272,7 @@ STR_ERROR_TREE_WRONG_TERRAIN_FOR_TREE_TYPE                      :{WHITE}... λά
 STR_ERROR_CAN_T_PLANT_TREE_HERE                                 :{WHITE}Δεν γίνεται να φυτευτεί δέντρο εδώ...
 
 # Bridge related errors
-STR_ERROR_CAN_T_BUILD_BRIDGE_HERE                               :{WHITE}Δεν μπορεί να κτιστεί γέφυρα εδώ...
+STR_ERROR_CAN_T_BUILD_BRIDGE_HERE                               :{WHITE}Δεν μπορεί να κατασκευαστεί γέφυρα εδώ...
 STR_ERROR_MUST_DEMOLISH_BRIDGE_FIRST                            :{WHITE}Πρέπει πρώτα να καταστραφεί η γέφυρα
 STR_ERROR_CAN_T_START_AND_END_ON                                :{WHITE}Δεν γίνεται να ξεκινάει και να τελειώνει στο ίδιο σημείο
 STR_ERROR_BRIDGEHEADS_NOT_SAME_HEIGHT                           :{WHITE}Η γέφυρα δεν καταλήγει στο ίδιο επίπεδο
@@ -5284,7 +5284,7 @@ STR_ERROR_BRIDGE_TOO_LONG                                       :{WHITE}... η �
 STR_ERROR_BRIDGE_THROUGH_MAP_BORDER                             :{WHITE}Η γέφυρα θα καταλήξει εκτός χάρτη
 
 # Tunnel related errors
-STR_ERROR_CAN_T_BUILD_TUNNEL_HERE                               :{WHITE}Δεν μπορεί να κτιστεί τούνελ εδώ...
+STR_ERROR_CAN_T_BUILD_TUNNEL_HERE                               :{WHITE}Δεν μπορεί να κατασκευαστεί τούνελ εδώ...
 STR_ERROR_SITE_UNSUITABLE_FOR_TUNNEL                            :{WHITE}Ακατάλληλη τοποθεσία για είσοδο τούνελ
 STR_ERROR_MUST_DEMOLISH_TUNNEL_FIRST                            :{WHITE}Πρέπει πρώτα να καταστραφεί το τούνελ
 STR_ERROR_ANOTHER_TUNNEL_IN_THE_WAY                             :{WHITE}Υπάρχει άλλο τούνελ στη μέση
@@ -5294,10 +5294,10 @@ STR_ERROR_TUNNEL_TOO_LONG                                       :{WHITE}... το
 
 # Object related errors
 STR_ERROR_TOO_MANY_OBJECTS                                      :{WHITE}... πάρα πολλά αντικείμενα
-STR_ERROR_CAN_T_BUILD_OBJECT                                    :{WHITE}Δεν μπορεί να κτιστεί το αντικείμενο...
+STR_ERROR_CAN_T_BUILD_OBJECT                                    :{WHITE}Δεν μπορεί να κατασκευαστεί το αντικείμενο...
 STR_ERROR_OBJECT_IN_THE_WAY                                     :{WHITE}Αντικείμενο στη μέση
 STR_ERROR_COMPANY_HEADQUARTERS_IN                               :{WHITE}... κεντρικά γραφεία εταιρίας στη μέση
-STR_ERROR_CAN_T_PURCHASE_THIS_LAND                              :{WHITE}Αδύνατο να αγοραστεί το έδαφος...
+STR_ERROR_CAN_T_PURCHASE_THIS_LAND                              :{WHITE}Αδύνατο να γίνει αγορά αυτής της περιοχής εδάφους...
 STR_ERROR_YOU_ALREADY_OWN_IT                                    :{WHITE}... είστε ήδη ιδιοκτήτης!
 STR_ERROR_BUILD_OBJECT_LIMIT_REACHED                            :{WHITE}... έχετε φτάσει το όριο οικοδομήσεων
 
@@ -5350,10 +5350,10 @@ STR_ERROR_CAN_T_SEND_SHIP_TO_DEPOT                              :{WHITE}Δεν �
 STR_ERROR_CAN_T_SEND_AIRCRAFT_TO_HANGAR                         :{WHITE}Δεν μπορεί να σταλθεί το αεροσκάφος στο υπόστεγο...
 
 ###length VEHICLE_TYPES
-STR_ERROR_CAN_T_BUY_TRAIN                                       :{WHITE}Δεν μπορεί να αγοραστεί όχημα σιδηρόδρομου...
-STR_ERROR_CAN_T_BUY_ROAD_VEHICLE                                :{WHITE}Δεν μπορεί να αγοραστεί όχημα δρόμου...
-STR_ERROR_CAN_T_BUY_SHIP                                        :{WHITE}Δεν μπορεί να αγοραστεί πλοίο...
-STR_ERROR_CAN_T_BUY_AIRCRAFT                                    :{WHITE}Δεν μπορεί να αγοραστεί αεροσκάφος...
+STR_ERROR_CAN_T_BUY_TRAIN                                       :{WHITE}Δεν μπορεί να γίνει αγορά οχήματος σιδηροδρόμου...
+STR_ERROR_CAN_T_BUY_ROAD_VEHICLE                                :{WHITE}Δεν μπορεί να γίνει αγορά οχήματος δρόμου...
+STR_ERROR_CAN_T_BUY_SHIP                                        :{WHITE}Δεν μπορεί να γίνει αγορά πλοίου...
+STR_ERROR_CAN_T_BUY_AIRCRAFT                                    :{WHITE}Δεν μπορεί να γίνει αγορά αεροσκάφους...
 
 ###length VEHICLE_TYPES
 STR_ERROR_CAN_T_RENAME_TRAIN_TYPE                               :{WHITE}Δεν μπορεί να μετονομαστεί ο τύπος τρένου...
