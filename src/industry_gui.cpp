@@ -775,13 +775,7 @@ static void UpdateIndustryProduction(Industry *i);
 static inline bool IsProductionAlterable(const Industry *i)
 {
 	const IndustrySpec *is = GetIndustrySpec(i->type);
-	bool has_prod = false;
-	for (size_t j = 0; j < lengthof(is->production_rate); j++) {
-		if (is->production_rate[j] != 0) {
-			has_prod = true;
-			break;
-		}
-	}
+	bool has_prod = std::any_of(std::begin(is->production_rate), std::end(is->production_rate), [](auto rate) { return rate != 0; });
 	return ((_game_mode == GM_EDITOR || _cheats.setup_prod.value) &&
 			(has_prod || is->IsRawIndustry()) &&
 			!_networking);
