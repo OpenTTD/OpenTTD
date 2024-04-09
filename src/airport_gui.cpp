@@ -241,8 +241,8 @@ class BuildAirportWindow : public PickerWindowBase {
 	{
 		DropDownList list;
 
-		for (uint i = 0; i < AirportClass::GetClassCount(); i++) {
-			list.push_back(MakeDropDownListStringItem(AirportClass::Get((AirportClassID)i)->name, i));
+		for (const auto &cls : AirportClass::Classes()) {
+			list.push_back(MakeDropDownListStringItem(cls.name, cls.Index()));
 		}
 
 		return list;
@@ -322,8 +322,8 @@ public:
 		switch (widget) {
 			case WID_AP_CLASS_DROPDOWN: {
 				Dimension d = {0, 0};
-				for (uint i = 0; i < AirportClass::GetClassCount(); i++) {
-					d = maxdim(d, GetStringBoundingBox(AirportClass::Get((AirportClassID)i)->name));
+				for (const auto &cls : AirportClass::Classes()) {
+					d = maxdim(d, GetStringBoundingBox(cls.name));
 				}
 				d.width += padding.width;
 				d.height += padding.height;
@@ -546,14 +546,12 @@ public:
 		if (change_class) {
 			/* If that fails, select the first available airport
 			 * from the first class where airports are available. */
-			for (AirportClassID j = APC_BEGIN; j < AirportClass::GetClassCount(); j++) {
-				AirportClass *apclass = AirportClass::Get(j);
-				for (uint i = 0; i < apclass->GetSpecCount(); i++) {
-					const AirportSpec *as = apclass->GetSpec(i);
+			for (const auto &cls : AirportClass::Classes()) {
+				for (const auto &as : cls.Specs()) {
 					if (as->IsAvailable()) {
-						_selected_airport_class = j;
-						this->vscroll->SetCount(apclass->GetSpecCount());
-						this->SelectOtherAirport(i);
+						_selected_airport_class = cls.Index();
+						this->vscroll->SetCount(cls.GetSpecCount());
+						this->SelectOtherAirport(as->GetIndex());
 						return;
 					}
 				}

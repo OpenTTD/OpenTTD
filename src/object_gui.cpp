@@ -145,10 +145,9 @@ public:
 
 		this->object_classes.clear();
 
-		for (uint i = 0; i < ObjectClass::GetClassCount(); i++) {
-			ObjectClass *objclass = ObjectClass::Get((ObjectClassID)i);
-			if (objclass->GetUISpecCount() == 0) continue; // Is this needed here?
-			object_classes.push_back((ObjectClassID)i);
+		for (const auto &cls : ObjectClass::Classes()) {
+			if (cls.GetUISpecCount() == 0) continue; // Is this needed here?
+			object_classes.push_back(cls.Index());
 		}
 
 		this->object_classes.Filter(this->string_filter);

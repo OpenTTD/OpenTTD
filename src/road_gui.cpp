@@ -1201,7 +1201,7 @@ public:
 		this->FinishInitNested(TRANSPORT_ROAD);
 
 		this->window_class = (rs == ROADSTOP_BUS) ? WC_BUS_STATION : WC_TRUCK_STATION;
-		if (!newstops || _roadstop_gui_settings.roadstop_class >= (int)RoadStopClass::GetClassCount()) {
+		if (!newstops || _roadstop_gui_settings.roadstop_class >= RoadStopClass::GetClassCount()) {
 			/* There's no new stops available or the list has reduced in size.
 			 * Now, set the default road stops as selected. */
 			_roadstop_gui_settings.roadstop_class = ROADSTOP_CLASS_DFLT;
@@ -1264,14 +1264,10 @@ public:
 
 		this->roadstop_classes.clear();
 
-		for (uint i = 0; i < RoadStopClass::GetClassCount(); i++) {
-			RoadStopClassID rs_id = (RoadStopClassID)i;
-			if (rs_id == ROADSTOP_CLASS_WAYP) {
-				// Skip waypoints.
-				continue;
-			}
-			RoadStopClass *rs_class = RoadStopClass::Get(rs_id);
-			if (GetIfClassHasNewStopsByType(rs_class, this->roadStopType, _cur_roadtype)) this->roadstop_classes.push_back(rs_id);
+		for (const auto &cls : RoadStopClass::Classes()) {
+			/* Skip waypoints. */
+			if (cls.Index() == ROADSTOP_CLASS_WAYP) continue;
+			if (GetIfClassHasNewStopsByType(&cls, this->roadStopType, _cur_roadtype)) this->roadstop_classes.push_back(cls.Index());
 		}
 
 		if (this->ShowNewStops()) {
