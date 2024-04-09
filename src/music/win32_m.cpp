@@ -367,7 +367,7 @@ void MusicDriver_Win32::SetVolume(uint8_t vol)
 	_midi.new_volume = vol;
 }
 
-const char *MusicDriver_Win32::Start(const StringList &parm)
+std::optional<std::string_view> MusicDriver_Win32::Start(const StringList &parm)
 {
 	Debug(driver, 2, "Win32-MIDI: Start: initializing");
 
@@ -416,7 +416,7 @@ const char *MusicDriver_Win32::Start(const StringList &parm)
 		if (timeBeginPeriod(_midi.time_period) == MMSYSERR_NOERROR) {
 			/* success */
 			Debug(driver, 2, "Win32-MIDI: Start: timer resolution is {}", _midi.time_period);
-			return nullptr;
+			return std::nullopt;
 		}
 	}
 	midiOutClose(_midi.midi_out);

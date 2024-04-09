@@ -15,10 +15,10 @@
 /** Implementation of the XAudio2 sound driver. */
 class SoundDriver_XAudio2 : public SoundDriver {
 public:
-	const char *Start(const StringList &param) override;
+	std::optional<std::string_view> Start(const StringList &param) override;
 
 	void Stop() override;
-	const char *GetName() const override { return "xaudio2"; }
+	std::string_view GetName() const override { return "xaudio2"; }
 };
 
 /** Factory for the XAudio2 sound driver. */

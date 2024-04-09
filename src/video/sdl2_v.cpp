@@ -503,34 +503,34 @@ bool VideoDriver_SDL_Base::PollEvent()
 	return true;
 }
 
-static const char *InitializeSDL()
+static std::optional<std::string_view> InitializeSDL()
 {
 	/* Check if the video-driver is already initialized. */
-	if (SDL_WasInit(SDL_INIT_VIDEO) != 0) return nullptr;
+	if (SDL_WasInit(SDL_INIT_VIDEO) != 0) return std::nullopt;
 
 	if (SDL_InitSubSystem(SDL_INIT_VIDEO) < 0) return SDL_GetError();
-	return nullptr;
+	return std::nullopt;
 }
 
-const char *VideoDriver_SDL_Base::Initialize()
+std::optional<std::string_view> VideoDriver_SDL_Base::Initialize()
 {
 	this->UpdateAutoResolution();
 
-	const char *error = InitializeSDL();
-	if (error != nullptr) return error;
+	auto error = InitializeSDL();
+	if (error) return error;
 
 	FindResolutions();
 	Debug(driver, 2, "Resolution for display: {}x{}", _cur_resolution.width, _cur_resolution.height);
 
-	return nullptr;
+	return std::nullopt;
 }
 
-const char *VideoDriver_SDL_Base::Start(const StringList &param)
+std::optional<std::string_view> VideoDriver_SDL_Base::Start(const StringList &param)
 {
 	if (BlitterFactory::GetCurrentBlitter()->GetScreenDepth() == 0) return "Only real blitters supported";
 
-	const char *error = this->Initialize();
-	if (error != nullptr) return error;
+	auto error = this->Initialize();
+	if (error) return error;
 
 #ifdef SDL_HINT_MOUSE_AUTO_CAPTURE
 	if (GetDriverParamBool(param, "no_mouse_capture")) {
@@ -566,7 +566,7 @@ const char *VideoDriver_SDL_Base::Start(const StringList &param)
 	this->is_game_threaded = !GetDriverParamBool(param, "no_threads") && !GetDriverParamBool(param, "no_thread");
 #endif
 
-	return nullptr;
+	return std::nullopt;
 }
 
 void VideoDriver_SDL_Base::Stop()

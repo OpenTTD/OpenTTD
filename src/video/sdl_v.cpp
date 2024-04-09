@@ -576,7 +576,7 @@ bool VideoDriver_SDL::PollEvent()
 	return true;
 }
 
-const char *VideoDriver_SDL::Start(const StringList &param)
+std::optional<std::string_view> VideoDriver_SDL::Start(const StringList &param)
 {
 	char buf[30];
 	_use_hwpalette = GetDriverParamInt(param, "hw_palette", 2);
@@ -607,7 +607,7 @@ const char *VideoDriver_SDL::Start(const StringList &param)
 
 	this->is_game_threaded = !GetDriverParamBool(param, "no_threads") && !GetDriverParamBool(param, "no_thread");
 
-	return nullptr;
+	return std::nullopt;
 }
 
 void VideoDriver_SDL::SetupKeyboard()

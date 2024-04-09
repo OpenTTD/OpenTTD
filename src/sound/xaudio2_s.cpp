@@ -135,10 +135,10 @@ static HRESULT CreateXAudio(API_XAudio2Create xAudio2Create)
  * Initialises the XAudio2 driver.
  *
  * @param parm Driver parameters.
- * @return An error message if unsuccessful, or nullptr otherwise.
+ * @return An error message if unsuccessful, or std::nullopt otherwise.
  *
  */
-const char *SoundDriver_XAudio2::Start(const StringList &parm)
+std::optional<std::string_view> SoundDriver_XAudio2::Start(const StringList &parm)
 {
 	HRESULT hr = CoInitializeEx(nullptr, COINIT_MULTITHREADED);
 
@@ -257,7 +257,7 @@ const char *SoundDriver_XAudio2::Start(const StringList &parm)
 		return "Failed to submit the first audio buffer";
 	}
 
-	return nullptr;
+	return std::nullopt;
 }
 
 /**

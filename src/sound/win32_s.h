@@ -15,10 +15,10 @@
 /** Implementation of the sound driver for Windows. */
 class SoundDriver_Win32 : public SoundDriver {
 public:
-	const char *Start(const StringList &param) override;
+	std::optional<std::string_view> Start(const StringList &param) override;
 
 	void Stop() override;
-	const char *GetName() const override { return "win32"; }
+	std::string_view GetName() const override { return "win32"; }
 };
 
 /** Factory for the sound driver for Windows. */

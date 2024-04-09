@@ -15,12 +15,12 @@
 /** Implementation of the allegro sound driver. */
 class SoundDriver_Allegro : public SoundDriver {
 public:
-	const char *Start(const StringList &param) override;
+	std::optional<std::string_view> Start(const StringList &param) override;
 
 	void Stop() override;
 
 	void MainLoop() override;
-	const char *GetName() const override { return "allegro"; }
+	std::string_view GetName() const override { return "allegro"; }
 };
 
 /** Factory for the allegro sound driver. */

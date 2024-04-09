@@ -579,7 +579,7 @@ struct GameOptionsWindow : Window {
 				break;
 
 			case WID_GO_VIDEO_DRIVER_INFO:
-				SetDParamStr(0, VideoDriver::GetInstance()->GetInfoString());
+				SetDParamStr(0, std::string{VideoDriver::GetInstance()->GetInfoString()});
 				DrawStringMultiLine(r, STR_GAME_OPTIONS_VIDEO_DRIVER_INFO);
 				break;
 
@@ -641,7 +641,7 @@ struct GameOptionsWindow : Window {
 		changed |= wid->UpdateVerticalSize(y);
 
 		wid = this->GetWidget<NWidgetResizeBase>(WID_GO_VIDEO_DRIVER_INFO);
-		SetDParamStr(0, VideoDriver::GetInstance()->GetInfoString());
+		SetDParamStr(0, std::string{VideoDriver::GetInstance()->GetInfoString()});
 		y = GetStringHeight(STR_GAME_OPTIONS_VIDEO_DRIVER_INFO, wid->current_x);
 		changed |= wid->UpdateVerticalSize(y);
 

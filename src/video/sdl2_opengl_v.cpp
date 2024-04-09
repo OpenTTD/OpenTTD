@@ -53,13 +53,13 @@ bool VideoDriver_SDL_OpenGL::CreateMainWindow(uint w, uint h, uint flags)
 	return this->VideoDriver_SDL_Base::CreateMainWindow(w, h, flags | SDL_WINDOW_OPENGL);
 }
 
-const char *VideoDriver_SDL_OpenGL::Start(const StringList &param)
+std::optional<std::string_view> VideoDriver_SDL_OpenGL::Start(const StringList &param)
 {
-	const char *error = VideoDriver_SDL_Base::Start(param);
-	if (error != nullptr) return error;
+	auto error = VideoDriver_SDL_Base::Start(param);
+	if (error) return error;
 
 	error = this->AllocateContext();
-	if (error != nullptr) {
+	if (error) {
 		this->Stop();
 		return error;
 	}
@@ -81,7 +81,7 @@ const char *VideoDriver_SDL_OpenGL::Start(const StringList &param)
 	/* Main loop expects to start with the buffer unmapped. */
 	this->ReleaseVideoPointer();
 
-	return nullptr;
+	return std::nullopt;
 }
 
 void VideoDriver_SDL_OpenGL::Stop()
@@ -105,7 +105,7 @@ void VideoDriver_SDL_OpenGL::ToggleVsync(bool vsync)
 	SDL_GL_SetSwapInterval(vsync);
 }
 
-const char *VideoDriver_SDL_OpenGL::AllocateContext()
+std::optional<std::string_view> VideoDriver_SDL_OpenGL::AllocateContext()
 {
 	SDL_GL_SetAttribute(SDL_GL_RED_SIZE, 8);
 	SDL_GL_SetAttribute(SDL_GL_GREEN_SIZE, 8);

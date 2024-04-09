@@ -103,7 +103,7 @@ extern bool SafeLoad(const std::string &filename, SaveLoadOperation fop, Detaile
 static FVideoDriver_Dedicated iFVideoDriver_Dedicated;
 
 
-const char *VideoDriver_Dedicated::Start(const StringList &)
+std::optional<std::string_view> VideoDriver_Dedicated::Start(const StringList &)
 {
 	this->UpdateAutoResolution();
 
@@ -131,7 +131,7 @@ const char *VideoDriver_Dedicated::Start(const StringList &)
 #endif
 
 	Debug(driver, 1, "Loading dedicated server");
-	return nullptr;
+	return std::nullopt;
 }
 
 void VideoDriver_Dedicated::Stop()

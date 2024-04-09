@@ -17,7 +17,7 @@ class MusicDriver_DMusic : public MusicDriver {
 public:
 	virtual ~MusicDriver_DMusic();
 
-	const char *Start(const StringList &param) override;
+	std::optional<std::string_view> Start(const StringList &param) override;
 
 	void Stop() override;
 
@@ -28,7 +28,7 @@ public:
 	bool IsSongPlaying() override;
 
 	void SetVolume(uint8_t vol) override;
-	const char *GetName() const override { return "dmusic"; }
+	std::string_view GetName() const override { return "dmusic"; }
 };
 
 /** Factory for the DirectX music player. */

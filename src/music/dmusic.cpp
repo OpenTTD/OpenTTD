@@ -1072,7 +1072,7 @@ static const char *LoadDefaultDLSFile(const char *user_dls)
 }
 
 
-const char *MusicDriver_DMusic::Start(const StringList &parm)
+std::optional<std::string_view> MusicDriver_DMusic::Start(const StringList &parm)
 {
 	/* Initialize COM */
 	if (FAILED(CoInitializeEx(nullptr, COINIT_MULTITHREADED))) return "COM initialization failed";
@@ -1153,7 +1153,7 @@ const char *MusicDriver_DMusic::Start(const StringList &parm)
 
 	if (!StartNewThread(&_dmusic_thread, "ottd:dmusic", &MidiThreadProc)) return "Can't create MIDI output thread";
 
-	return nullptr;
+	return std::nullopt;
 }
 
 
