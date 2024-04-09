@@ -28,7 +28,7 @@ public:
 	void DrawColourMappingRect(void *dst, int width, int height, PaletteID pal) override;
 	Sprite *Encode(const SpriteLoader::SpriteCollection &sprite, AllocatorProc *allocator) override;
 
-	const char *GetName() override { return "32bpp-simple"; }
+	std::string_view GetName() override { return "32bpp-simple"; }
 };
 
 /** Factory for the simple 32 bpp blitter. */
