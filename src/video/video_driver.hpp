@@ -174,7 +174,7 @@ public:
 		return Clamp(dpi_scale * 100, MIN_INTERFACE_SCALE, MAX_INTERFACE_SCALE);
 	}
 
-	virtual const char *GetInfoString() const
+	virtual std::string_view GetInfoString() const
 	{
 		return this->GetName();
 	}

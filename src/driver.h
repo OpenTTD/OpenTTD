@@ -23,9 +23,9 @@ public:
 	/**
 	 * Start this driver.
 	 * @param parm Parameters passed to the driver.
-	 * @return nullptr if everything went okay, otherwise an error message.
+	 * @return std::nullopt if everything went okay, otherwise an error message.
 	 */
-	virtual const char *Start(const StringList &parm) = 0;
+	virtual std::optional<std::string_view> Start(const StringList &parm) = 0;
 
 	/**
 	 * Stop this driver.
@@ -47,7 +47,7 @@ public:
 	 * Get the name of this driver.
 	 * @return The name of the driver.
 	 */
-	virtual const char *GetName() const = 0;
+	virtual std::string_view GetName() const = 0;
 };
 
 DECLARE_POSTFIX_INCREMENT(Driver::Type)
@@ -62,8 +62,8 @@ private:
 
 	Driver::Type type;       ///< The type of driver.
 	int priority;            ///< The priority of this factory.
-	const char *name;        ///< The name of the drivers of this factory.
-	const char *description; ///< The description of this driver.
+	std::string_view name;        ///< The name of the drivers of this factory.
+	std::string_view description; ///< The description of this driver.
 
 	typedef std::map<std::string, DriverFactoryBase *> Drivers; ///< Type for a map of drivers.
 
@@ -92,9 +92,9 @@ private:
 	 * @param type The type of driver to get the name of.
 	 * @return The name of the type.
 	 */
-	static const char *GetDriverTypeName(Driver::Type type)
+	static std::string_view GetDriverTypeName(Driver::Type type)
 	{
-		static const char * const driver_type_name[] = { "music", "sound", "video" };
+		static const std::string_view driver_type_name[] = { "music", "sound", "video" };
 		return driver_type_name[type];
 	}
 
@@ -135,7 +135,7 @@ public:
 	 * Get a nice description of the driver-class.
 	 * @return The description.
 	 */
-	const char *GetDescription() const
+	std::string_view GetDescription() const
 	{
 		return this->description;
 	}

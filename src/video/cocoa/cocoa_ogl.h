@@ -20,12 +20,12 @@ class VideoDriver_CocoaOpenGL : public VideoDriver_Cocoa {
 	uint8_t *anim_buffer; ///< Animation buffer from OpenGL back-end.
 	std::string driver_info; ///< Information string about selected driver.
 
-	const char *AllocateContext(bool allow_software);
+	std::optional<std::string_view> AllocateContext(bool allow_software);
 
 public:
 	VideoDriver_CocoaOpenGL() : VideoDriver_Cocoa(true), gl_context(nullptr), anim_buffer(nullptr), driver_info(this->GetName()) {}
 
-	const char *Start(const StringList &param) override;
+	std::optional<std::string_view> Start(const StringList &param) override;
 	void Stop() override;
 
 	bool HasEfficient8Bpp() const override { return true; }
@@ -40,9 +40,9 @@ public:
 	uint8_t *GetAnimBuffer() override { return this->anim_buffer; }
 
 	/** Return driver name */
-	const char *GetName() const override { return "cocoa-opengl"; }
+	std::string_view GetName() const override { return "cocoa-opengl"; }
 
-	const char *GetInfoString() const override { return this->driver_info.c_str(); }
+	std::string_view GetInfoString() const override { return this->driver_info; }
 
 	void AllocateBackingStore(bool force = false) override;
 

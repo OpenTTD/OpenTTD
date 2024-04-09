@@ -18,7 +18,7 @@ private:
 	uint ticks; ///< Amount of ticks to run.
 
 public:
-	const char *Start(const StringList &param) override;
+	std::optional<std::string_view> Start(const StringList &param) override;
 
 	void Stop() override;
 
@@ -29,7 +29,7 @@ public:
 	bool ChangeResolution(int w, int h) override;
 
 	bool ToggleFullscreen(bool fullscreen) override;
-	const char *GetName() const override { return "null"; }
+	std::string_view GetName() const override { return "null"; }
 	bool HasGUI() const override { return false; }
 };
 

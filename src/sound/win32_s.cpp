@@ -59,7 +59,7 @@ static DWORD WINAPI SoundThread(LPVOID)
 	return 0;
 }
 
-const char *SoundDriver_Win32::Start(const StringList &parm)
+std::optional<std::string_view> SoundDriver_Win32::Start(const StringList &parm)
 {
 	WAVEFORMATEX wfex;
 	wfex.wFormatTag = WAVE_FORMAT_PCM;
@@ -89,7 +89,7 @@ const char *SoundDriver_Win32::Start(const StringList &parm)
 		return error;
 	}
 
-	return nullptr;
+	return std::nullopt;
 }
 
 void SoundDriver_Win32::Stop()

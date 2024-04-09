@@ -19,7 +19,7 @@ class VideoDriver_SDL_Base : public VideoDriver {
 public:
 	VideoDriver_SDL_Base(bool uses_hardware_acceleration = false) : VideoDriver(uses_hardware_acceleration), sdl_window(nullptr), buffer_locked(false) {}
 
-	const char *Start(const StringList &param) override;
+	std::optional<std::string_view> Start(const StringList &param) override;
 
 	void Stop() override;
 
@@ -41,7 +41,7 @@ public:
 
 	std::vector<int> GetListOfMonitorRefreshRates() override;
 
-	const char *GetInfoString() const override { return this->driver_info.c_str(); }
+	std::string_view GetInfoString() const override { return this->driver_info; }
 
 protected:
 	struct SDL_Window *sdl_window; ///< Main SDL window.
@@ -73,7 +73,7 @@ private:
 	void LoopOnce();
 	void MainLoopCleanup();
 	bool CreateMainSurface(uint w, uint h, bool resize);
-	const char *Initialize();
+	std::optional<std::string_view> Initialize();
 
 #ifdef __EMSCRIPTEN__
 	/* Convert a constant pointer back to a non-constant pointer to a member function. */

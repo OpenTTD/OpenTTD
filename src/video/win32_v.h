@@ -79,13 +79,13 @@ class VideoDriver_Win32GDI : public VideoDriver_Win32Base {
 public:
 	VideoDriver_Win32GDI() : dib_sect(nullptr), gdi_palette(nullptr), buffer_bits(nullptr) {}
 
-	const char *Start(const StringList &param) override;
+	std::optional<std::string_view> Start(const StringList &param) override;
 
 	void Stop() override;
 
 	bool AfterBlitterChange() override;
 
-	const char *GetName() const override { return "win32"; }
+	std::string_view GetName() const override { return "win32"; }
 
 protected:
 	HBITMAP  dib_sect;      ///< System bitmap object referencing our rendering buffer.
@@ -120,7 +120,7 @@ class VideoDriver_Win32OpenGL : public VideoDriver_Win32Base {
 public:
 	VideoDriver_Win32OpenGL() : VideoDriver_Win32Base(true), dc(nullptr), gl_rc(nullptr), anim_buffer(nullptr), driver_info(this->GetName()) {}
 
-	const char *Start(const StringList &param) override;
+	std::optional<std::string_view> Start(const StringList &param) override;
 
 	void Stop() override;
 
@@ -141,9 +141,9 @@ public:
 
 	void ToggleVsync(bool vsync) override;
 
-	const char *GetName() const override { return "win32-opengl"; }
+	std::string_view GetName() const override { return "win32-opengl"; }
 
-	const char *GetInfoString() const override { return this->driver_info.c_str(); }
+	std::string_view GetInfoString() const override { return this->driver_info; }
 
 protected:
 	HDC    dc;          ///< Window device context.
@@ -160,7 +160,7 @@ protected:
 	void ReleaseVideoPointer() override;
 	void PaletteChanged(HWND) override {}
 
-	const char *AllocateContext();
+	std::optional<std::string_view> AllocateContext();
 	void DestroyContext();
 };
 
