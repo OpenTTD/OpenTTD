@@ -525,7 +525,7 @@ STR_NEWS_MENU_MESSAGE_HISTORY_MENU                              :Historial de mi
 STR_NEWS_MENU_DELETE_ALL_MESSAGES                               :Esborra tots els missatges
 
 # About menu
-STR_ABOUT_MENU_LAND_BLOCK_INFO                                  :Informació de la casella
+STR_ABOUT_MENU_LAND_BLOCK_INFO                                  :Detalls de les caselles
 STR_ABOUT_MENU_HELP                                             :Ajuda i manuals
 STR_ABOUT_MENU_TOGGLE_CONSOLE                                   :Commuta la consola
 STR_ABOUT_MENU_AI_DEBUG                                         :Depuració de les IA i l'script de partida
@@ -3070,7 +3070,7 @@ STR_INDUSTRY_CARGOES_SELECT_INDUSTRY                            :{BLACK}Seleccio
 STR_INDUSTRY_CARGOES_SELECT_INDUSTRY_TOOLTIP                    :{BLACK}Selecciona la indústria que vols mostrar
 
 # Land area window
-STR_LAND_AREA_INFORMATION_CAPTION                               :{WHITE}Informació del terreny
+STR_LAND_AREA_INFORMATION_CAPTION                               :{WHITE}Detalls de la casella
 STR_LAND_AREA_INFORMATION_LOCATION_TOOLTIP                      :{BLACK}Centra la vista principal al lloc on està la casella. Amb Ctrl+clic, s'obre una vista nova on hi ha la casella.
 STR_LAND_AREA_INFORMATION_COST_TO_CLEAR_N_A                     :{BLACK}Cost de neteja: {LTBLUE}N/A
 STR_LAND_AREA_INFORMATION_COST_TO_CLEAR                         :{BLACK}Cost de neteja: {RED}{CURRENCY_LONG}
@@ -3489,6 +3489,9 @@ STR_NEWGRF_INSPECT_CAPTION_OBJECT_AT_ROAD_TYPE                  :Tipus de carret
 STR_NEWGRF_INSPECT_QUERY_CAPTION                                :{WHITE}Paràmetre NewGRF variable 60+x (hexadecimal)
 
 # Sprite aligner window
+STR_SPRITE_ALIGNER_CAPTION_NO_ACTION                            :{WHITE}Alineació de l'sprite: ({STRING}:{NUM})
+STR_SPRITE_ALIGNER_CAPTION_ACTIONA                              :{WHITE}Alineació de l'sprite: Acció 0xA, {COMMA} ({STRING}:{NUM})
+STR_SPRITE_ALIGNER_CAPTION_ACTION5                              :{WHITE}Alineació de l'sprite: Acció 0x5, tipus {HEX}, {COMMA} ({STRING}:{NUM})
 STR_SPRITE_ALIGNER_NEXT_BUTTON                                  :{BLACK}Sprite següent
 STR_SPRITE_ALIGNER_NEXT_TOOLTIP                                 :{BLACK}Procedeix cap al següent sprite normal, saltant qualsevol sprite pseudo/recolor/font i passant de l'últim sprite al primer
 STR_SPRITE_ALIGNER_GOTO_BUTTON                                  :{BLACK}Vés a l'sprite
@@ -3497,6 +3500,7 @@ STR_SPRITE_ALIGNER_PREVIOUS_BUTTON                              :{BLACK}Sprite a
 STR_SPRITE_ALIGNER_PREVIOUS_TOOLTIP                             :{BLACK}Procedeix cap a l'sprite normal anterior, saltant qualsevol sprite pseudo/recolor/font i passant del primer sprite a l'últim
 STR_SPRITE_ALIGNER_SPRITE_TOOLTIP                               :{BLACK}Representació de l'sprite seleccionat actualment. L'alineació s'ignora quan es dibuixa aquest sprite
 STR_SPRITE_ALIGNER_MOVE_TOOLTIP                                 :{BLACK}Desplaça l'sprite un píxel en el sentit indicat. Amb Ctrl+Clic el desplaça 8 píxels.
+STR_SPRITE_ALIGNER_SPRITE                                       :{STRING}:{NUM}
 
 ###length 2
 STR_SPRITE_ALIGNER_CENTRE_OFFSET                                :{BLACK}Modificador centrat
@@ -5833,6 +5837,7 @@ STR_JUST_DATE_ISO                                               :{DATE_ISO}
 STR_JUST_STRING                                                 :{STRING}
 STR_JUST_STRING1                                                :{STRING}
 STR_JUST_STRING2                                                :{STRING}
+STR_JUST_STRING4                                                :{STRING}
 STR_JUST_STRING_STRING                                          :{STRING}{STRING}
 STR_JUST_RAW_STRING                                             :{STRING}
 STR_JUST_BIG_RAW_STRING                                         :{BIG_FONT}{STRING}

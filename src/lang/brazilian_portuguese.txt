@@ -269,8 +269,8 @@ STR_UNITS_PERIODS                                               :{NUM}{NBSP}per�
 
 # Common window strings
 STR_LIST_FILTER_TITLE                                           :{BLACK}Filtro:
-STR_LIST_FILTER_OSKTITLE                                        :{BLACK}Inserir uma ou mais palavras-chave para filtrar a lista
-STR_LIST_FILTER_TOOLTIP                                         :{BLACK}Introduza uma ou mais palavras-chave para procurar na lista
+STR_LIST_FILTER_OSKTITLE                                        :{BLACK}Introduza uma palavra-chave para filtrar a lista
+STR_LIST_FILTER_TOOLTIP                                         :{BLACK}Introduzir uma ou mais palavras-chave para procurar na lista
 
 STR_TOOLTIP_GROUP_ORDER                                         :{BLACK}Escolher a ordem de agrupamento
 STR_TOOLTIP_SORT_ORDER                                          :{BLACK}Escolher a ordenação (descendente/ascendente)
@@ -384,7 +384,7 @@ STR_TOOLBAR_TOOLTIP_PAUSE_GAME                                  :{BLACK}Pausar o
 STR_TOOLBAR_TOOLTIP_FORWARD                                     :{BLACK}Avanço rápido do jogo
 STR_TOOLBAR_TOOLTIP_OPTIONS                                     :{BLACK}Opções e configurações
 STR_TOOLBAR_TOOLTIP_SAVE_GAME_ABANDON_GAME                      :{BLACK}Salvar, abrir ou abandonar o jogo, sair do programa
-STR_TOOLBAR_TOOLTIP_DISPLAY_MAP                                 :{BLACK}Abrir mapa, visualização extra, fluxo de cargas ou lista de placas
+STR_TOOLBAR_TOOLTIP_DISPLAY_MAP                                 :{BLACK}Abrir mapa, visualização extra, fluxo de carga ou lista de placas
 STR_TOOLBAR_TOOLTIP_DISPLAY_TOWN_DIRECTORY                      :{BLACK}Abrir lista de localidades ou encontrar localidade
 STR_TOOLBAR_TOOLTIP_DISPLAY_SUBSIDIES                           :{BLACK}Abrir lista de subsídios
 STR_TOOLBAR_TOOLTIP_DISPLAY_LIST_OF_COMPANY_STATIONS            :{BLACK}Abrir lista de estações da empresa
@@ -410,7 +410,7 @@ STR_TOOLBAR_TOOLTIP_LANDSCAPING                                 :{BLACK}Abrir me
 STR_TOOLBAR_TOOLTIP_SHOW_SOUND_MUSIC_WINDOW                     :{BLACK}Abrir janela de som/música
 STR_TOOLBAR_TOOLTIP_SHOW_LAST_MESSAGE_NEWS                      :{BLACK}Abrir última mensagem/notícia, histórico de mensagens ou apagar todas as mensagens
 STR_TOOLBAR_TOOLTIP_LAND_BLOCK_INFORMATION                      :{BLACK}Abrir informações do terreno, menu de captura de tela, créditos do OpenTTD ou ferramentas de desenvolvedor
-STR_TOOLBAR_TOOLTIP_SWITCH_TOOLBAR                              :{BLACK}Trocar barras de ferramentas
+STR_TOOLBAR_TOOLTIP_SWITCH_TOOLBAR                              :{BLACK}Trocar barra de ferramentas
 
 # Extra tooltips for the scenario editor toolbar
 STR_SCENEDIT_TOOLBAR_TOOLTIP_SAVE_SCENARIO_LOAD_SCENARIO        :{BLACK}Salvar cenário, abrir cenário, abandonar editor de cenário, sair
@@ -499,7 +499,7 @@ STR_INDUSTRY_MENU_FUND_NEW_INDUSTRY                             :Fundar nova ind
 STR_RAIL_MENU_RAILROAD_CONSTRUCTION                             :Construção de ferrovia
 STR_RAIL_MENU_ELRAIL_CONSTRUCTION                               :Construção de ferrovia eletrificada
 STR_RAIL_MENU_MONORAIL_CONSTRUCTION                             :Construção de monotrilho
-STR_RAIL_MENU_MAGLEV_CONSTRUCTION                               :Construção de MagLev
+STR_RAIL_MENU_MAGLEV_CONSTRUCTION                               :Construção de Maglev
 
 # Road construction menu
 STR_ROAD_MENU_ROAD_CONSTRUCTION                                 :Construção de estrada
@@ -732,7 +732,7 @@ STR_HIGHSCORE_PERFORMANCE_TITLE_ENTREPRENEUR                    :Empreendedor
 STR_HIGHSCORE_PERFORMANCE_TITLE_INDUSTRIALIST                   :Industrial
 STR_HIGHSCORE_PERFORMANCE_TITLE_CAPITALIST                      :Capitalista
 STR_HIGHSCORE_PERFORMANCE_TITLE_MAGNATE                         :Magnata
-STR_HIGHSCORE_PERFORMANCE_TITLE_MOGUL                           :Mandachuva
+STR_HIGHSCORE_PERFORMANCE_TITLE_MOGUL                           :Grande magnata
 STR_HIGHSCORE_PERFORMANCE_TITLE_TYCOON_OF_THE_CENTURY           :Magnata do Século
 STR_HIGHSCORE_NAME                                              :{PRESIDENT_NAME}, {COMPANY}
 STR_HIGHSCORE_STATS                                             :{BIG_FONT}'{STRING}'   ({COMMA})
@@ -988,7 +988,7 @@ STR_GAME_OPTIONS_CURRENCY_ISK                                   :Coroa Islandesa
 STR_GAME_OPTIONS_CURRENCY_ITL                                   :Lira Italiana
 STR_GAME_OPTIONS_CURRENCY_NLG                                   :Florim Holandês
 STR_GAME_OPTIONS_CURRENCY_NOK                                   :Coroa Norueguesa
-STR_GAME_OPTIONS_CURRENCY_PLN                                   :Złoty Polonês
+STR_GAME_OPTIONS_CURRENCY_PLN                                   :Zloty Polonês
 STR_GAME_OPTIONS_CURRENCY_RON                                   :Leu Romeno
 STR_GAME_OPTIONS_CURRENCY_RUR                                   :Rublo Russo
 STR_GAME_OPTIONS_CURRENCY_SIT                                   :Tolar Esloveno
@@ -1188,7 +1188,7 @@ STR_SUBSIDY_X4                                                  :x4
 
 ###length 4
 STR_CLIMATE_TEMPERATE_LANDSCAPE                                 :Clima temperado
-STR_CLIMATE_SUB_ARCTIC_LANDSCAPE                                :Clima subárctico
+STR_CLIMATE_SUB_ARCTIC_LANDSCAPE                                :Clima subártico
 STR_CLIMATE_SUB_TROPICAL_LANDSCAPE                              :Clima subtropical
 STR_CLIMATE_TOYLAND_LANDSCAPE                                   :Terra dos Brinquedos
 
@@ -1523,8 +1523,8 @@ STR_CONFIG_SETTING_AUTORENEW_MONTHS_HELPTEXT                    :Idade relativa 
 STR_CONFIG_SETTING_AUTORENEW_MONTHS_VALUE_BEFORE                :{COMMA} m{P 0 ês eses} antes
 STR_CONFIG_SETTING_AUTORENEW_MONTHS_VALUE_AFTER                 :{COMMA} m{P 0 ês eses} depois
 
-STR_CONFIG_SETTING_AUTORENEW_MONEY                              :Quantia mínima de dinheiro necessária para fazer renovação automática: {STRING}
-STR_CONFIG_SETTING_AUTORENEW_MONEY_HELPTEXT                     :Quantia mínima de dinheiro que deve existir na conta bancária para a renovação automática de veículos ser considerada
+STR_CONFIG_SETTING_AUTORENEW_MONEY                              :Dinheiro mínimo necessário para fazer renovação automática: {STRING}
+STR_CONFIG_SETTING_AUTORENEW_MONEY_HELPTEXT                     :Quantia mínima de dinheiro que deve permanecer no banco antes de considerar a renovação automática de veículos
 
 STR_CONFIG_SETTING_ERRMSG_DURATION                              :Duração da mensagem de erro: {STRING}
 STR_CONFIG_SETTING_ERRMSG_DURATION_HELPTEXT                     :Tempo de exibição de mensagens de erro numa janela vermelha. Algumas mensagens de erro (crítico) não são fechadas automaticamente após este tempo e precisam ser fechadas manualmente
@@ -2461,8 +2461,8 @@ STR_NETWORK_CONNECTING_SPECIAL_2                                :{BLACK}Obtendo 
 
 STR_NETWORK_CONNECTION_DISCONNECT                               :{BLACK}Desconectar
 
-STR_NETWORK_NEED_GAME_PASSWORD_CAPTION                          :{WHITE}Servidor protegido. Introduza a senha
-STR_NETWORK_NEED_COMPANY_PASSWORD_CAPTION                       :{WHITE}Empresa protegida. Introduza a senha
+STR_NETWORK_NEED_GAME_PASSWORD_CAPTION                          :{WHITE}Servidor protegido. Digite a senha
+STR_NETWORK_NEED_COMPANY_PASSWORD_CAPTION                       :{WHITE}Empresa protegida. Digite a senha
 
 # Network company list added strings
 STR_NETWORK_COMPANY_LIST_CLIENT_LIST                            :Jogadores conectados
@@ -3390,7 +3390,7 @@ STR_SE_MAPGEN_FLAT_WORLD_HEIGHT_QUERY_CAPT                      :{WHITE}Modifica
 STR_GENERATION_WORLD                                            :{WHITE}Gerando Mundo...
 STR_GENERATION_ABORT                                            :{BLACK}Cancelar
 STR_GENERATION_ABORT_CAPTION                                    :{WHITE}Cancelar Geração de Mundo
-STR_GENERATION_ABORT_MESSAGE                                    :{YELLOW}Você realmente deseja cancelar a geração?
+STR_GENERATION_ABORT_MESSAGE                                    :{YELLOW}Você quer mesmo cancelar a geração?
 STR_GENERATION_PROGRESS                                         :{WHITE}{NUM}% completo
 STR_GENERATION_PROGRESS_NUM                                     :{BLACK}{NUM} / {NUM}
 STR_GENERATION_WORLD_GENERATION                                 :{BLACK}Geração de mundo
@@ -3591,7 +3591,7 @@ STR_INVALID_VEHICLE                                             :<veículo invá
 
 # NewGRF scanning window
 STR_NEWGRF_SCAN_CAPTION                                         :{WHITE}Procurando NewGRFs
-STR_NEWGRF_SCAN_MESSAGE                                         :{BLACK}Procurando NewGRFs. Dependendo da quantidade isto pode demorar...
+STR_NEWGRF_SCAN_MESSAGE                                         :{BLACK}Procurando NewGRFs. Dependendo da quantidade, isso pode demorar...
 STR_NEWGRF_SCAN_STATUS                                          :{BLACK}{NUM} NewGRF{P "" s} procurado{P "" s} de {NUM} NewGRF{P "" s} estimado{P "" s}
 STR_NEWGRF_SCAN_ARCHIVES                                        :Procurando por arquivos
 
@@ -4594,7 +4594,7 @@ STR_ORDER_CONDITIONAL_REMAINING_LIFETIME                        :Tempo de vida r
 STR_ORDER_CONDITIONAL_MAX_RELIABILITY                           :Confiabilidade máxima
 ###next-name-looks-similar
 
-STR_ORDER_CONDITIONAL_COMPARATOR_TOOLTIP                        :{BLACK}Como comparar os dados do veículo com o valor passado
+STR_ORDER_CONDITIONAL_COMPARATOR_TOOLTIP                        :{BLACK}Como comparar os dados do veículo com o valor que foi passado
 STR_ORDER_CONDITIONAL_COMPARATOR_EQUALS                         :for igual a
 STR_ORDER_CONDITIONAL_COMPARATOR_NOT_EQUALS                     :for diferente de
 STR_ORDER_CONDITIONAL_COMPARATOR_LESS_THAN                      :for menor que
@@ -4925,7 +4925,7 @@ STR_ERROR_PNGMAP_FILE_NOT_FOUND                                 :{WHITE}... arqu
 STR_ERROR_PNGMAP_IMAGE_TYPE                                     :{WHITE}... não foi possível converter o tipo de imagem. A imagem deve ser PNG de 8 ou 24-bit
 STR_ERROR_PNGMAP_MISC                                           :{WHITE}... alguma coisa deu errado (provavelmente arquivo corrompido)
 
-STR_ERROR_BMPMAP                                                :{WHITE}Não é possível carregar paisagem de BMP...
+STR_ERROR_BMPMAP                                                :{WHITE}Não foi possível carregar paisagem de BMP...
 STR_ERROR_BMPMAP_IMAGE_TYPE                                     :{WHITE}... não foi possível converter o tipo de imagem
 
 STR_ERROR_HEIGHTMAP_TOO_LARGE                                   :{WHITE}... imagem é muito grande
@@ -4938,7 +4938,7 @@ STR_WARNING_FALLBACK_SOUNDSET                                   :{WHITE}Somente 
 
 # Screenshot related messages
 STR_WARNING_SCREENSHOT_SIZE_CAPTION                             :{WHITE}Captura tela enorme
-STR_WARNING_SCREENSHOT_SIZE_MESSAGE                             :{YELLOW}A captura de tela terá uma resolução de {COMMA}x{COMMA} pixels. Essa captura pode demorar. Deseja continuar?
+STR_WARNING_SCREENSHOT_SIZE_MESSAGE                             :{YELLOW}A captura de tela terá uma resolução de {COMMA}x{COMMA} pixels. Fazer essa captura pode demorar. Você deseja continuar?
 
 STR_MESSAGE_HEIGHTMAP_SUCCESSFULLY                              :{WHITE}Mapa de altitudes '{STRING}' gravado com sucesso. O pico mais alto tem {NUM}
 STR_MESSAGE_SCREENSHOT_SUCCESSFULLY                             :{WHITE}Captura de tela '{STRING}' gravada com sucesso
@@ -5106,7 +5106,7 @@ STR_ERROR_AIRCRAFT_MUST_BE_STOPPED_INSIDE_HANGAR                :{WHITE}... deve
 STR_ERROR_TRAINS_CAN_ONLY_BE_ALTERED_INSIDE_A_DEPOT             :{WHITE}Trens só podem ser modificados quando estão parados num depósito
 STR_ERROR_TRAIN_TOO_LONG                                        :{WHITE}Trem é muito longo
 STR_ERROR_CAN_T_REVERSE_DIRECTION_RAIL_VEHICLE                  :{WHITE}Não é possível inverter a direção do veículo...
-STR_ERROR_CAN_T_REVERSE_DIRECTION_RAIL_VEHICLE_MULTIPLE_UNITS   :{WHITE}... composto por várias unidades
+STR_ERROR_CAN_T_REVERSE_DIRECTION_RAIL_VEHICLE_MULTIPLE_UNITS   :{WHITE}... é composto por várias unidades
 STR_ERROR_INCOMPATIBLE_RAIL_TYPES                               :Tipos de trilhos incompatíveis
 
 STR_ERROR_CAN_T_MOVE_VEHICLE                                    :{WHITE}Não é possível mover o veículo...
@@ -5125,7 +5125,7 @@ STR_ERROR_UNBUNCHING_NO_UNBUNCHING_CONDITIONAL                  :{WHITE}... não
 
 # Autoreplace related errors
 STR_ERROR_TRAIN_TOO_LONG_AFTER_REPLACEMENT                      :{WHITE}{VEHICLE} fica muito longo depois da substituição
-STR_ERROR_AUTOREPLACE_NOTHING_TO_DO                             :{WHITE}Regras de substituição automática/renovação não foram aplicadas
+STR_ERROR_AUTOREPLACE_NOTHING_TO_DO                             :{WHITE}Nenhuma regra de substituição automática/renovação aplicada
 STR_ERROR_AUTOREPLACE_MONEY_LIMIT                               :(limite de dinheiro)
 STR_ERROR_AUTOREPLACE_INCOMPATIBLE_CARGO                        :{WHITE}O novo veículo não pode transportar {STRING}
 STR_ERROR_AUTOREPLACE_INCOMPATIBLE_REFIT                        :{WHITE}O novo veículo não pode ser adaptado na ordem {NUM}
@@ -5350,15 +5350,15 @@ STR_DESKTOP_SHORTCUT_COMMENT                                    :Um jogo de simu
 
 # Translatable descriptions in media/baseset/*.ob* files
 ###external 10
-STR_BASEGRAPHICS_DOS_DESCRIPTION                                :Gráficos Originais do Transport Tycoon Deluxe, edição DOS.
-STR_BASEGRAPHICS_DOS_DE_DESCRIPTION                             :Gráficos Originais do Transport Tycoon Deluxe, edição DOS (alemã).
-STR_BASEGRAPHICS_WIN_DESCRIPTION                                :Gráficos Originais do Transport Tycoon, edição Windows.
-STR_BASESOUNDS_DOS_DESCRIPTION                                  :Sons Originais do Transport Tycoon Deluxe, edição DOS.
-STR_BASESOUNDS_WIN_DESCRIPTION                                  :Sons Originais do Transport Tycoon Deluxe, edição Windows.
+STR_BASEGRAPHICS_DOS_DESCRIPTION                                :Gráficos originais do Transport Tycoon Deluxe, edição DOS.
+STR_BASEGRAPHICS_DOS_DE_DESCRIPTION                             :Gráficos originais do Transport Tycoon Deluxe, edição DOS (alemã).
+STR_BASEGRAPHICS_WIN_DESCRIPTION                                :Gráficos originais do Transport Tycoon Deluxe, edição Windows.
+STR_BASESOUNDS_DOS_DESCRIPTION                                  :Sons originais do Transport Tycoon Deluxe, edição DOS.
+STR_BASESOUNDS_WIN_DESCRIPTION                                  :Sons originais do Transport Tycoon Deluxe, edição Windows.
 STR_BASESOUNDS_NONE_DESCRIPTION                                 :Um conjunto de sons vazio.
-STR_BASEMUSIC_WIN_DESCRIPTION                                   :Música Original do Transport Tycoon Deluxe, edição Windows.
-STR_BASEMUSIC_DOS_DESCRIPTION                                   :Música Original do Transport Tycoon Deluxe, edição DOS.
-STR_BASEMUSIC_TTO_DESCRIPTION                                   :Música Original do Transport Tycoon, edição DOS (Original/Editor Mundial).
+STR_BASEMUSIC_WIN_DESCRIPTION                                   :Música original do Transport Tycoon Deluxe, edição Windows.
+STR_BASEMUSIC_DOS_DESCRIPTION                                   :Música original do Transport Tycoon Deluxe, edição DOS.
+STR_BASEMUSIC_TTO_DESCRIPTION                                   :Música original do Transport Tycoon, edição DOS (Original/Editor Mundial).
 STR_BASEMUSIC_NONE_DESCRIPTION                                  :Um conjunto de músicas vazio.
 
 ##id 0x2000
