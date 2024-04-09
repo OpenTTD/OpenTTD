@@ -400,56 +400,56 @@ public:
 		*this->sorting = this->vehgroups.GetListing();
 	}
 
-	void UpdateWidgetSize(WidgetID widget, Dimension *size, [[maybe_unused]] const Dimension &padding, [[maybe_unused]] Dimension *fill, [[maybe_unused]] Dimension *resize) override
+	void UpdateWidgetSize(WidgetID widget, Dimension &size, [[maybe_unused]] const Dimension &padding, [[maybe_unused]] Dimension &fill, [[maybe_unused]] Dimension &resize) override
 	{
 		switch (widget) {
 			case WID_GL_LIST_GROUP:
-				size->width = this->ComputeGroupInfoSize();
-				resize->height = this->tiny_step_height;
-				fill->height = this->tiny_step_height;
+				size.width = this->ComputeGroupInfoSize();
+				resize.height = this->tiny_step_height;
+				fill.height = this->tiny_step_height;
 				break;
 
 			case WID_GL_ALL_VEHICLES:
 			case WID_GL_DEFAULT_VEHICLES:
-				size->width = this->ComputeGroupInfoSize();
-				size->height = this->tiny_step_height;
+				size.width = this->ComputeGroupInfoSize();
+				size.height = this->tiny_step_height;
 				break;
 
 			case WID_GL_SORT_BY_ORDER: {
 				Dimension d = GetStringBoundingBox(this->GetWidget<NWidgetCore>(widget)->widget_data);
 				d.width += padding.width + Window::SortButtonWidth() * 2; // Doubled since the string is centred and it also looks better.
 				d.height += padding.height;
-				*size = maxdim(*size, d);
+				size = maxdim(size, d);
 				break;
 			}
 
 			case WID_GL_LIST_VEHICLE:
 				this->ComputeGroupInfoSize();
-				resize->height = GetVehicleListHeight(this->vli.vtype, this->tiny_step_height);
-				size->height = 4 * resize->height;
+				resize.height = GetVehicleListHeight(this->vli.vtype, this->tiny_step_height);
+				size.height = 4 * resize.height;
 				break;
 
 			case WID_GL_GROUP_BY_DROPDOWN:
-				size->width = GetStringListWidth(this->vehicle_group_by_names) + padding.width;
+				size.width = GetStringListWidth(this->vehicle_group_by_names) + padding.width;
 				break;
 
 			case WID_GL_SORT_BY_DROPDOWN:
-				size->width = GetStringListWidth(this->vehicle_group_none_sorter_names_calendar);
-				size->width = std::max(size->width, GetStringListWidth(this->vehicle_group_none_sorter_names_wallclock));
-				size->width = std::max(size->width, GetStringListWidth(this->vehicle_group_shared_orders_sorter_names_calendar));
-				size->width = std::max(size->width, GetStringListWidth(this->vehicle_group_shared_orders_sorter_names_wallclock));
-				size->width += padding.width;
+				size.width = GetStringListWidth(this->vehicle_group_none_sorter_names_calendar);
+				size.width = std::max(size.width, GetStringListWidth(this->vehicle_group_none_sorter_names_wallclock));
+				size.width = std::max(size.width, GetStringListWidth(this->vehicle_group_shared_orders_sorter_names_calendar));
+				size.width = std::max(size.width, GetStringListWidth(this->vehicle_group_shared_orders_sorter_names_wallclock));
+				size.width += padding.width;
 				break;
 
 			case WID_GL_FILTER_BY_CARGO:
-				size->width = std::max(size->width, GetDropDownListDimension(this->BuildCargoDropDownList(true)).width + padding.width);
+				size.width = std::max(size.width, GetDropDownListDimension(this->BuildCargoDropDownList(true)).width + padding.width);
 				break;
 
 			case WID_GL_MANAGE_VEHICLES_DROPDOWN: {
 				Dimension d = this->GetActionDropdownSize(true, true, true);
 				d.height += padding.height;
 				d.width  += padding.width;
-				*size = maxdim(*size, d);
+				size = maxdim(size, d);
 				break;
 			}
 		}

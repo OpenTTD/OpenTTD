@@ -83,7 +83,7 @@ struct StatusBarWindow : Window {
 		Window::FindWindowPlacementAndResize(_toolbar_width, def_height);
 	}
 
-	void UpdateWidgetSize(WidgetID widget, Dimension *size, [[maybe_unused]] const Dimension &padding, [[maybe_unused]] Dimension *fill, [[maybe_unused]] Dimension *resize) override
+	void UpdateWidgetSize(WidgetID widget, Dimension &size, [[maybe_unused]] const Dimension &padding, [[maybe_unused]] Dimension &fill, [[maybe_unused]] Dimension &resize) override
 	{
 		Dimension d;
 		switch (widget) {
@@ -106,7 +106,7 @@ struct StatusBarWindow : Window {
 
 		d.width += padding.width;
 		d.height += padding.height;
-		*size = maxdim(d, *size);
+		size = maxdim(d, size);
 	}
 
 	void DrawWidget(const Rect &r, WidgetID widget) const override

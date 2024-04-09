@@ -1216,7 +1216,7 @@ void NWidgetStacked::SetupSmallestSize(Window *w)
 		Dimension fill    = {(this->shown_plane == SZSP_HORIZONTAL), (this->shown_plane == SZSP_VERTICAL)};
 		Dimension resize  = {(this->shown_plane == SZSP_HORIZONTAL), (this->shown_plane == SZSP_VERTICAL)};
 		/* Here we're primarily interested in the value of resize */
-		if (this->index >= 0) w->UpdateWidgetSize(this->index, &size, padding, &fill, &resize);
+		if (this->index >= 0) w->UpdateWidgetSize(this->index, size, padding, fill, resize);
 
 		this->smallest_x = size.width;
 		this->smallest_y = size.height;
@@ -1833,7 +1833,7 @@ void NWidgetMatrix::SetupSmallestSize(Window *w)
 	Dimension fill    = {0, 0};
 	Dimension resize  = {this->pip_inter + this->children.front()->smallest_x, this->pip_inter + this->children.front()->smallest_y};
 
-	if (this->index >= 0) w->UpdateWidgetSize(this->index, &size, padding, &fill, &resize);
+	if (this->index >= 0) w->UpdateWidgetSize(this->index, size, padding, fill, resize);
 
 	this->smallest_x = size.width;
 	this->smallest_y = size.height;
@@ -2108,7 +2108,7 @@ void NWidgetBackground::SetupSmallestSize(Window *w)
 					case WWT_FRAME: padding = {WidgetDimensions::scaled.frametext.Horizontal(), WidgetDimensions::scaled.frametext.Vertical()}; break;
 					case WWT_INSET: padding = {WidgetDimensions::scaled.inset.Horizontal(),     WidgetDimensions::scaled.inset.Vertical()};     break;
 				}
-				w->UpdateWidgetSize(this->index, &d, padding, &fill, &resize);
+				w->UpdateWidgetSize(this->index, d, padding, fill, resize);
 			}
 		}
 		this->smallest_x = d.width;
@@ -2730,7 +2730,7 @@ void NWidgetLeaf::SetupSmallestSize(Window *w)
 			NOT_REACHED();
 	}
 
-	if (this->index >= 0) w->UpdateWidgetSize(this->index, &size, padding, &fill, &resize);
+	if (this->index >= 0) w->UpdateWidgetSize(this->index, size, padding, fill, resize);
 
 	this->smallest_x = size.width;
 	this->smallest_y = size.height;

@@ -212,25 +212,25 @@ public:
 		this->object_margin = ScaleGUITrad(4);
 	}
 
-	void UpdateWidgetSize(WidgetID widget, Dimension *size, [[maybe_unused]] const Dimension &padding, [[maybe_unused]] Dimension *fill, [[maybe_unused]] Dimension *resize) override
+	void UpdateWidgetSize(WidgetID widget, Dimension &size, [[maybe_unused]] const Dimension &padding, [[maybe_unused]] Dimension &fill, [[maybe_unused]] Dimension &resize) override
 	{
 		switch (widget) {
 			case WID_BO_CLASS_LIST: {
 				for (auto object_class_id : this->object_classes) {
 					ObjectClass *objclass = ObjectClass::Get(object_class_id);
 					if (objclass->GetUISpecCount() == 0) continue;
-					size->width = std::max(size->width, GetStringBoundingBox(objclass->name).width + padding.width);
+					size.width = std::max(size.width, GetStringBoundingBox(objclass->name).width + padding.width);
 				}
 				this->line_height = GetCharacterHeight(FS_NORMAL) + padding.height;
-				resize->height = this->line_height;
-				size->height = 5 * this->line_height;
+				resize.height = this->line_height;
+				size.height = 5 * this->line_height;
 				break;
 			}
 
 			case WID_BO_OBJECT_NAME:
 			case WID_BO_OBJECT_SIZE:
 				/* We do not want the window to resize when selecting objects; better clip texts */
-				size->width = 0;
+				size.width = 0;
 				break;
 
 			case WID_BO_OBJECT_MATRIX: {
@@ -238,11 +238,11 @@ public:
 				ObjectClass *objclass = ObjectClass::Get(_selected_object_class);
 				const ObjectSpec *spec = objclass->GetSpec(_selected_object_index);
 				if (spec != nullptr) {
-					if (spec->views >= 2) size->width  += resize->width;
-					if (spec->views >= 4) size->height += resize->height;
+					if (spec->views >= 2) size.width  += resize.width;
+					if (spec->views >= 4) size.height += resize.height;
 				}
-				resize->width = 0;
-				resize->height = 0;
+				resize.width = 0;
+				resize.height = 0;
 				break;
 			}
 
@@ -267,37 +267,37 @@ public:
 				 * we want these columns to be slightly less wide. When there are two rows, then
 				 * determine the size of the widgets based on the maximum size for a single row
 				 * of widgets, or just the twice the widget height of the two row ones. */
-				size->height = std::max(height[0], height[1] * 2);
+				size.height = std::max(height[0], height[1] * 2);
 				if (two_wide) {
-					size->width  = (3 * ScaleGUITrad(TILE_PIXELS) + 2 * this->object_margin) * 2;
+					size.width  = (3 * ScaleGUITrad(TILE_PIXELS) + 2 * this->object_margin) * 2;
 				} else {
-					size->width  = 4 * ScaleGUITrad(TILE_PIXELS) + 2 * this->object_margin;
+					size.width  = 4 * ScaleGUITrad(TILE_PIXELS) + 2 * this->object_margin;
 				}
 
 				/* Get the right size for the single widget based on the current spec. */
 				ObjectClass *objclass = ObjectClass::Get(_selected_object_class);
 				const ObjectSpec *spec = objclass->GetSpec(_selected_object_index);
 				if (spec != nullptr) {
-					if (spec->views <= 1) size->width  += WidgetDimensions::scaled.hsep_normal;
-					if (spec->views <= 2) size->height += WidgetDimensions::scaled.vsep_normal;
-					if (spec->views >= 2) size->width  /= 2;
-					if (spec->views >= 4) size->height /= 2;
+					if (spec->views <= 1) size.width  += WidgetDimensions::scaled.hsep_normal;
+					if (spec->views <= 2) size.height += WidgetDimensions::scaled.vsep_normal;
+					if (spec->views >= 2) size.width  /= 2;
+					if (spec->views >= 4) size.height /= 2;
 				}
 				break;
 			}
 
 			case WID_BO_INFO:
-				size->height = this->info_height;
+				size.height = this->info_height;
 				break;
 
 			case WID_BO_SELECT_MATRIX:
-				fill->height = 1;
-				resize->height = 1;
+				fill.height = 1;
+				resize.height = 1;
 				break;
 
 			case WID_BO_SELECT_IMAGE:
-				size->width  = ScaleGUITrad(64) + WidgetDimensions::scaled.fullbevel.Horizontal();
-				size->height = ScaleGUITrad(58) + WidgetDimensions::scaled.fullbevel.Vertical();
+				size.width  = ScaleGUITrad(64) + WidgetDimensions::scaled.fullbevel.Horizontal();
+				size.height = ScaleGUITrad(58) + WidgetDimensions::scaled.fullbevel.Vertical();
 				break;
 
 			default: break;
