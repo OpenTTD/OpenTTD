@@ -22,11 +22,11 @@
 /** The maximum amount of roadstops a single GRF is allowed to add */
 static const int NUM_ROADSTOPS_PER_GRF = UINT16_MAX - 1;
 
-enum RoadStopClassID : uint8_t {
-	ROADSTOP_CLASS_BEGIN = 0,    ///< The lowest valid value
-	ROADSTOP_CLASS_DFLT = 0,     ///< Default road stop class.
-	ROADSTOP_CLASS_WAYP,         ///< Waypoint class (unimplemented: this is reserved for future use with road waypoints).
-	ROADSTOP_CLASS_MAX = 255,    ///< Maximum number of classes.
+enum RoadStopClassID : uint16_t {
+	ROADSTOP_CLASS_BEGIN = 0, ///< The lowest valid value
+	ROADSTOP_CLASS_DFLT = 0, ///< Default road stop class.
+	ROADSTOP_CLASS_WAYP, ///< Waypoint class (unimplemented: this is reserved for future use with road waypoints).
+	ROADSTOP_CLASS_MAX = UINT16_MAX, ///< Maximum number of classes.
 };
 DECLARE_POSTFIX_INCREMENT(RoadStopClassID)
 
