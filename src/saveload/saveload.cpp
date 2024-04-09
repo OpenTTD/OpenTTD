@@ -2628,23 +2628,28 @@ struct SaveLoadFormat {
 	uint8_t max_compression;                 ///< the maximum compression level of this format
 };
 
+static const uint32_t SAVEGAME_TAG_LZO = TO_BE32X('OTTD');
+static const uint32_t SAVEGAME_TAG_NONE = TO_BE32X('OTTN');
+static const uint32_t SAVEGAME_TAG_ZLIB = TO_BE32X('OTTZ');
+static const uint32_t SAVEGAME_TAG_LZMA = TO_BE32X('OTTX');
+
 /** The different saveload formats known/understood by OpenTTD. */
 static const SaveLoadFormat _saveload_formats[] = {
 #if defined(WITH_LZO)
 	/* Roughly 75% larger than zlib level 6 at only ~7% of the CPU usage. */
-	{"lzo",    TO_BE32X('OTTD'), CreateLoadFilter<LZOLoadFilter>,    CreateSaveFilter<LZOSaveFilter>,    0, 0, 0},
+	{"lzo",  SAVEGAME_TAG_LZO,  CreateLoadFilter<LZOLoadFilter>,    CreateSaveFilter<LZOSaveFilter>,    0, 0, 0},
 #else
-	{"lzo",    TO_BE32X('OTTD'), nullptr,                            nullptr,                            0, 0, 0},
+	{"lzo",  SAVEGAME_TAG_LZO,  nullptr,                            nullptr,                            0, 0, 0},
 #endif
 	/* Roughly 5 times larger at only 1% of the CPU usage over zlib level 6. */
-	{"none",   TO_BE32X('OTTN'), CreateLoadFilter<NoCompLoadFilter>, CreateSaveFilter<NoCompSaveFilter>, 0, 0, 0},
+	{"none", SAVEGAME_TAG_NONE, CreateLoadFilter<NoCompLoadFilter>, CreateSaveFilter<NoCompSaveFilter>, 0, 0, 0},
 #if defined(WITH_ZLIB)
 	/* After level 6 the speed reduction is significant (1.5x to 2.5x slower per level), but the reduction in filesize is
 	 * fairly insignificant (~1% for each step). Lower levels become ~5-10% bigger by each level than level 6 while level
 	 * 1 is "only" 3 times as fast. Level 0 results in uncompressed savegames at about 8 times the cost of "none". */
-	{"zlib",   TO_BE32X('OTTZ'), CreateLoadFilter<ZlibLoadFilter>,   CreateSaveFilter<ZlibSaveFilter>,   0, 6, 9},
+	{"zlib", SAVEGAME_TAG_ZLIB, CreateLoadFilter<ZlibLoadFilter>,   CreateSaveFilter<ZlibSaveFilter>,   0, 6, 9},
 #else
-	{"zlib",   TO_BE32X('OTTZ'), nullptr,                            nullptr,                            0, 0, 0},
+	{"zlib", SAVEGAME_TAG_ZLIB, nullptr,                            nullptr,                            0, 0, 0},
 #endif
 #if defined(WITH_LIBLZMA)
 	/* Level 2 compression is speed wise as fast as zlib level 6 compression (old default), but results in ~10% smaller saves.
@@ -2652,9 +2657,9 @@ static const SaveLoadFormat _saveload_formats[] = {
 	 * The next significant reduction in file size is at level 4, but that is already 4 times slower. Level 3 is primarily 50%
 	 * slower while not improving the filesize, while level 0 and 1 are faster, but don't reduce savegame size much.
 	 * It's OTTX and not e.g. OTTL because liblzma is part of xz-utils and .tar.xz is preferred over .tar.lzma. */
-	{"lzma",   TO_BE32X('OTTX'), CreateLoadFilter<LZMALoadFilter>,   CreateSaveFilter<LZMASaveFilter>,   0, 2, 9},
+	{"lzma", SAVEGAME_TAG_LZMA, CreateLoadFilter<LZMALoadFilter>,   CreateSaveFilter<LZMASaveFilter>,   0, 2, 9},
 #else
-	{"lzma",   TO_BE32X('OTTX'), nullptr,                            nullptr,                            0, 0, 0},
+	{"lzma", SAVEGAME_TAG_LZMA, nullptr,                            nullptr,                            0, 0, 0},
 #endif
 };
 
@@ -2886,6 +2891,49 @@ SaveOrLoadResult SaveWithFilter(std::shared_ptr<SaveFilter> writer, bool threade
 }
 
 /**
+ * Determines the SaveLoadFormat that is connected to the given tag.
+ * When the given tag is known, that format is chosen and a check on the validity of the version is performed.
+ * Otherwise a fallback to an ancient buggy format using LZO is chosen.
+ * @param tag The tag from the header describing the savegame compression/format.
+ * @param raw_version The raw version from the savegame header.
+ * @return The SaveLoadFormat to use for attempting to open the savegame.
+ */
+static const SaveLoadFormat *DetermineSaveLoadFormat(uint32_t tag, uint32_t raw_version)
+{
+	auto fmt = std::find_if(std::begin(_saveload_formats), std::end(_saveload_formats), [tag](const auto &fmt) { return fmt.tag == tag; });
+	if (fmt != std::end(_saveload_formats)) {
+		/* Check version number */
+		_sl_version = (SaveLoadVersion)(TO_BE32(raw_version) >> 16);
+		/* Minor is not used anymore from version 18.0, but it is still needed
+		 * in versions before that (4 cases) which can't be removed easy.
+		 * Therefore it is loaded, but never saved (or, it saves a 0 in any scenario). */
+		_sl_minor_version = (TO_BE32(raw_version) >> 8) & 0xFF;
+
+		Debug(sl, 1, "Loading savegame version {}", _sl_version);
+
+		/* Is the version higher than the current? */
+		if (_sl_version > SAVEGAME_VERSION) SlError(STR_GAME_SAVELOAD_ERROR_TOO_NEW_SAVEGAME);
+		if (_sl_version >= SLV_START_PATCHPACKS && _sl_version <= SLV_END_PATCHPACKS) SlError(STR_GAME_SAVELOAD_ERROR_PATCHPACK);
+		return fmt;
+	}
+
+	Debug(sl, 0, "Unknown savegame type, trying to load it as the buggy format");
+	_sl.lf->Reset();
+	_sl_version = SL_MIN_VERSION;
+	_sl_minor_version = 0;
+
+	/* Try to find the LZO savegame format; it uses 'OTTD' as tag. */
+	fmt = std::find_if(std::begin(_saveload_formats), std::end(_saveload_formats), [](const auto &fmt) { return fmt.tag == SAVEGAME_TAG_LZO; });
+	if (fmt == std::end(_saveload_formats)) {
+		/* Who removed the LZO savegame format definition? When built without LZO support,
+		 * the formats must still list it just without a method to read the file.
+		 * The caller of this function has to check for the existence of load function. */
+		NOT_REACHED();
+	}
+	return fmt;
+}
+
+/**
  * Actually perform the loading of a "non-old" savegame.
  * @param reader     The filter to read the savegame from.
  * @param load_check Whether to perform the checking ("preview") or actually load the game.
@@ -2906,46 +2954,7 @@ static SaveOrLoadResult DoLoad(std::shared_ptr<LoadFilter> reader, bool load_che
 	if (_sl.lf->Read((uint8_t*)hdr, sizeof(hdr)) != sizeof(hdr)) SlError(STR_GAME_SAVELOAD_ERROR_FILE_NOT_READABLE);
 
 	/* see if we have any loader for this type. */
-	const SaveLoadFormat *fmt = _saveload_formats;
-	for (;;) {
-		/* No loader found, treat as version 0 and use LZO format */
-		if (fmt == endof(_saveload_formats)) {
-			Debug(sl, 0, "Unknown savegame type, trying to load it as the buggy format");
-			_sl.lf->Reset();
-			_sl_version = SL_MIN_VERSION;
-			_sl_minor_version = 0;
-
-			/* Try to find the LZO savegame format; it uses 'OTTD' as tag. */
-			fmt = _saveload_formats;
-			for (;;) {
-				if (fmt == endof(_saveload_formats)) {
-					/* Who removed LZO support? */
-					NOT_REACHED();
-				}
-				if (fmt->tag == TO_BE32X('OTTD')) break;
-				fmt++;
-			}
-			break;
-		}
-
-		if (fmt->tag == hdr[0]) {
-			/* check version number */
-			_sl_version = (SaveLoadVersion)(TO_BE32(hdr[1]) >> 16);
-			/* Minor is not used anymore from version 18.0, but it is still needed
-			 * in versions before that (4 cases) which can't be removed easy.
-			 * Therefore it is loaded, but never saved (or, it saves a 0 in any scenario). */
-			_sl_minor_version = (TO_BE32(hdr[1]) >> 8) & 0xFF;
-
-			Debug(sl, 1, "Loading savegame version {}", _sl_version);
-
-			/* Is the version higher than the current? */
-			if (_sl_version > SAVEGAME_VERSION) SlError(STR_GAME_SAVELOAD_ERROR_TOO_NEW_SAVEGAME);
-			if (_sl_version >= SLV_START_PATCHPACKS && _sl_version <= SLV_END_PATCHPACKS) SlError(STR_GAME_SAVELOAD_ERROR_PATCHPACK);
-			break;
-		}
-
-		fmt++;
-	}
+	const SaveLoadFormat *fmt = DetermineSaveLoadFormat(hdr[0], hdr[1]);
 
 	/* loader for this savegame type is not implemented? */
 	if (fmt->init_load == nullptr) {
