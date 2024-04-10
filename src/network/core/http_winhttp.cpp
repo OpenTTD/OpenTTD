@@ -78,7 +78,7 @@ static std::string GetLastErrorAsString()
 	DWORD error_code = GetLastError();
 
 	if (FormatMessage(FORMAT_MESSAGE_FROM_SYSTEM | FORMAT_MESSAGE_FROM_HMODULE | FORMAT_MESSAGE_IGNORE_INSERTS, GetModuleHandle(L"winhttp.dll"), error_code,
-		MAKELANGID(LANG_NEUTRAL, SUBLANG_DEFAULT), buffer, lengthof(buffer), nullptr) == 0) {
+		MAKELANGID(LANG_NEUTRAL, SUBLANG_DEFAULT), buffer, static_cast<DWORD>(std::size(buffer)), nullptr) == 0) {
 		return fmt::format("unknown error {}", error_code);
 	}
 
@@ -222,11 +222,11 @@ void NetworkHTTPRequest::Connect()
 	/* Convert the URL to its components. */
 	url_components.dwStructSize = sizeof(url_components);
 	url_components.lpszScheme = scheme;
-	url_components.dwSchemeLength = lengthof(scheme);
+	url_components.dwSchemeLength = static_cast<DWORD>(std::size(scheme));
 	url_components.lpszHostName = hostname;
-	url_components.dwHostNameLength = lengthof(hostname);
+	url_components.dwHostNameLength = static_cast<DWORD>(std::size(hostname));
 	url_components.lpszUrlPath = url_path;
-	url_components.dwUrlPathLength = lengthof(url_path);
+	url_components.dwUrlPathLength = static_cast<DWORD>(std::size(url_path));
 	WinHttpCrackUrl(this->uri.c_str(), 0, 0, &url_components);
 
 	/* Create the HTTP connection. */
