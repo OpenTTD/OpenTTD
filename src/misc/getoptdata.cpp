@@ -21,7 +21,7 @@
  */
 int GetOptData::GetOpt()
 {
-	const OptionData *odata;
+	OptionSpan::iterator odata;
 
 	char *s = this->cont;
 	if (s == nullptr) {
@@ -34,7 +34,7 @@ int GetOptData::GetOpt()
 		this->numleft--;
 
 		/* Is it a long option? */
-		for (odata = this->options; odata->flags != ODF_END; odata++) {
+		for (odata = std::begin(this->options); odata != std::end(this->options); odata++) {
 			if (odata->longname != nullptr && !strcmp(odata->longname, s)) { // Long options always use the entire argument.
 				this->cont = nullptr;
 				goto set_optval;
@@ -45,13 +45,13 @@ int GetOptData::GetOpt()
 	}
 
 	/* Is it a short option? */
-	for (odata = this->options; odata->flags != ODF_END; odata++) {
+	for (odata = std::begin(this->options); odata != std::end(this->options); odata++) {
 		if (odata->shortname != '\0' && *s == odata->shortname) {
 			this->cont = (s[1] != '\0') ? s + 1 : nullptr;
 
 set_optval: // Handle option value of *odata .
 			this->opt = nullptr;
-			switch (odata->flags) {
+			switch (odata->type) {
 				case ODF_NO_VALUE:
 					return odata->id;
 
@@ -63,10 +63,10 @@ set_optval: // Handle option value of *odata .
 						return odata->id;
 					}
 					/* No more arguments, either return an error or a value-less option. */
-					if (this->numleft == 0) return (odata->flags == ODF_HAS_VALUE) ? -2 : odata->id;
+					if (this->numleft == 0) return (odata->type == ODF_HAS_VALUE) ? -2 : odata->id;
 
 					/* Next argument looks like another option, let's not return it as option value. */
-					if (odata->flags == ODF_OPTIONAL_VALUE && this->argv[0][0] == '-') return odata->id;
+					if (odata->type == ODF_OPTIONAL_VALUE && this->argv[0][0] == '-') return odata->id;
 
 					this->opt = this->argv[0]; // Next argument is the option value.
 					this->argv++;

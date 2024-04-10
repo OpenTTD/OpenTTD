@@ -312,16 +312,15 @@ struct LanguageFileWriter : LanguageWriter, FileWriter {
 
 /** Options of strgen. */
 static const OptionData _opts[] = {
-	GETOPT_GENERAL('C', '\0', "-export-commands", ODF_NO_VALUE),
-	GETOPT_GENERAL('L', '\0', "-export-plurals",  ODF_NO_VALUE),
-	GETOPT_GENERAL('P', '\0', "-export-pragmas",  ODF_NO_VALUE),
-	  GETOPT_NOVAL(     't',  "--todo"),
-	  GETOPT_NOVAL(     'w',  "--warning"),
-	  GETOPT_NOVAL(     'h',  "--help"),
-	GETOPT_GENERAL('h', '?',  nullptr,            ODF_NO_VALUE),
-	  GETOPT_VALUE(     's',  "--source_dir"),
-	  GETOPT_VALUE(     'd',  "--dest_dir"),
-	GETOPT_END(),
+	{ .type = ODF_NO_VALUE, .id = 'C', .longname = "-export-commands" },
+	{ .type = ODF_NO_VALUE, .id = 'L', .longname = "-export-plurals" },
+	{ .type = ODF_NO_VALUE, .id = 'P', .longname = "-export-pragmas" },
+	{ .type = ODF_NO_VALUE, .id = 't', .shortname = 't', .longname = "--todo" },
+	{ .type = ODF_NO_VALUE, .id = 'w', .shortname = 'w', .longname = "--warning" },
+	{ .type = ODF_NO_VALUE, .id = 'h', .shortname = 'h', .longname = "--help" },
+	{ .type = ODF_NO_VALUE, .id = 'h', .shortname = '?' },
+	{ .type = ODF_HAS_VALUE, .id = 's', .shortname = 's', .longname = "--source_dir" },
+	{ .type = ODF_HAS_VALUE, .id = 'd', .shortname = 'd', .longname = "--dest_dir" },
 };
 
 int CDECL main(int argc, char *argv[])
