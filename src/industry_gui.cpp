@@ -1559,21 +1559,22 @@ protected:
 		/* Industry name */
 		SetDParam(p++, i->index);
 
-		static CargoSuffix cargo_suffix[INDUSTRY_NUM_OUTPUTS];
-
 		/* Get industry productions (CargoID, production, suffix, transported) */
 		struct CargoInfo {
-			CargoID cargo_id;
-			uint16_t production;
-			const char *suffix;
-			uint transported;
+			CargoID cargo_id; ///< Cargo ID.
+			uint16_t production; ///< Production last month.
+			uint transported; ///< Percent transported last month.
+			std::string suffix; ///< Cargo suffix.
+
+			CargoInfo(CargoID cargo_id, uint16_t production, uint transported, std::string &&suffix) : cargo_id(cargo_id), production(production), transported(transported), suffix(std::move(suffix)) {}
 		};
 		std::vector<CargoInfo> cargos;
 
 		for (auto itp = std::begin(i->produced); itp != std::end(i->produced); ++itp) {
 			if (!IsValidCargoID(itp->cargo)) continue;
-			GetCargoSuffix(CARGOSUFFIX_OUT, CST_DIR, i, i->type, indsp, itp->cargo, itp - std::begin(i->produced), cargo_suffix[itp - std::begin(i->produced)]);
-			cargos.push_back({ itp->cargo, itp->history[LAST_MONTH].production, cargo_suffix[itp - std::begin(i->produced)].text.c_str(), ToPercent8(itp->history[LAST_MONTH].PctTransported()) });
+			CargoSuffix cargo_suffix;
+			GetCargoSuffix(CARGOSUFFIX_OUT, CST_DIR, i, i->type, indsp, itp->cargo, itp - std::begin(i->produced), cargo_suffix);
+			cargos.emplace_back(itp->cargo, itp->history[LAST_MONTH].production, ToPercent8(itp->history[LAST_MONTH].PctTransported()), std::move(cargo_suffix.text));
 		}
 
 		switch (static_cast<IndustryDirectoryWindow::SorterType>(this->industries.SortType())) {
@@ -1610,11 +1611,11 @@ protected:
 
 		/* Display first 3 cargos */
 		for (size_t j = 0; j < std::min<size_t>(3, cargos.size()); j++) {
-			CargoInfo ci = cargos[j];
+			CargoInfo &ci = cargos[j];
 			SetDParam(p++, STR_INDUSTRY_DIRECTORY_ITEM_INFO);
 			SetDParam(p++, ci.cargo_id);
 			SetDParam(p++, ci.production);
-			SetDParamStr(p++, ci.suffix);
+			SetDParamStr(p++, std::move(ci.suffix));
 			SetDParam(p++, ci.transported);
 		}
 
