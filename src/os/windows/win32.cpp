@@ -180,7 +180,7 @@ void FiosGetDrives(FileList &file_list)
 	wchar_t drives[256];
 	const wchar_t *s;
 
-	GetLogicalDriveStrings(lengthof(drives), drives);
+	GetLogicalDriveStrings(static_cast<DWORD>(std::size(drives)), drives);
 	for (s = drives; *s != '\0';) {
 		FiosItem *fios = &file_list.emplace_back();
 		fios->type = FIOS_TYPE_DRIVE;
@@ -400,7 +400,7 @@ void DetermineBasePaths(const char *exe)
 		/* Use the folder of the config file as working directory. */
 		wchar_t config_dir[MAX_PATH];
 		wcsncpy(path, convert_to_fs(_config_file, path, lengthof(path)), lengthof(path));
-		if (!GetFullPathName(path, lengthof(config_dir), config_dir, nullptr)) {
+		if (!GetFullPathName(path, static_cast<DWORD>(std::size(config_dir)), config_dir, nullptr)) {
 			Debug(misc, 0, "GetFullPathName failed ({})", GetLastError());
 			_searchpaths[SP_WORKING_DIR].clear();
 		} else {
@@ -412,13 +412,13 @@ void DetermineBasePaths(const char *exe)
 		}
 	}
 
-	if (!GetModuleFileName(nullptr, path, lengthof(path))) {
+	if (!GetModuleFileName(nullptr, path, static_cast<DWORD>(std::size(path)))) {
 		Debug(misc, 0, "GetModuleFileName failed ({})", GetLastError());
 		_searchpaths[SP_BINARY_DIR].clear();
 	} else {
 		wchar_t exec_dir[MAX_PATH];
-		wcsncpy(path, convert_to_fs(exe, path, lengthof(path)), lengthof(path));
-		if (!GetFullPathName(path, lengthof(exec_dir), exec_dir, nullptr)) {
+		wcsncpy(path, convert_to_fs(exe, path, std::size(path)), std::size(path));
+		if (!GetFullPathName(path, static_cast<DWORD>(std::size(exec_dir)), exec_dir, nullptr)) {
 			Debug(misc, 0, "GetFullPathName failed ({})", GetLastError());
 			_searchpaths[SP_BINARY_DIR].clear();
 		} else {
@@ -530,8 +530,8 @@ const char *GetCurrentLocale(const char *)
 	const LCID userUiLocale = MAKELCID(userUiLang, SORT_DEFAULT);
 
 	char lang[9], country[9];
-	if (GetLocaleInfoA(userUiLocale, LOCALE_SISO639LANGNAME, lang, lengthof(lang)) == 0 ||
-	    GetLocaleInfoA(userUiLocale, LOCALE_SISO3166CTRYNAME, country, lengthof(country)) == 0) {
+	if (GetLocaleInfoA(userUiLocale, LOCALE_SISO639LANGNAME, lang, static_cast<int>(std::size(lang))) == 0 ||
+	    GetLocaleInfoA(userUiLocale, LOCALE_SISO3166CTRYNAME, country, static_cast<int>(std::size(country))) == 0) {
 		/* Unable to retrieve the locale. */
 		return nullptr;
 	}
@@ -557,7 +557,7 @@ void Win32SetCurrentLocaleName(std::string iso_code)
 		}
 	}
 
-	MultiByteToWideChar(CP_UTF8, 0, iso_code.c_str(), -1, _cur_iso_locale, lengthof(_cur_iso_locale));
+	MultiByteToWideChar(CP_UTF8, 0, iso_code.c_str(), -1, _cur_iso_locale, static_cast<int>(std::size(_cur_iso_locale)));
 }
 
 int OTTDStringCompare(std::string_view s1, std::string_view s2)

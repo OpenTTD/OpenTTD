@@ -203,7 +203,7 @@ static FILE *FioFOpenFileSp(const std::string &filename, const char *mode, Searc
 	 * a string, but a variable, it 'renames' the variable,
 	 * so make that variable to makes it compile happily */
 	wchar_t Lmode[5];
-	MultiByteToWideChar(CP_ACP, 0, mode, -1, Lmode, lengthof(Lmode));
+	MultiByteToWideChar(CP_ACP, 0, mode, -1, Lmode, static_cast<int>(std::size(Lmode)));
 #endif
 	FILE *f = nullptr;
 	std::string buf;

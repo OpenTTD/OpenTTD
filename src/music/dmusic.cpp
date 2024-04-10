@@ -870,7 +870,7 @@ static const char *LoadDefaultDLSFile(const char *user_dls)
 				DWORD buf_size = sizeof(dls_path); // Buffer size as to be given in bytes!
 				if (SUCCEEDED(RegQueryValueEx(hkDM, L"GMFilePath", nullptr, nullptr, (LPBYTE)dls_path, &buf_size))) {
 					wchar_t expand_path[MAX_PATH * 2];
-					ExpandEnvironmentStrings(dls_path, expand_path, lengthof(expand_path));
+					ExpandEnvironmentStrings(dls_path, expand_path, static_cast<DWORD>(std::size(expand_path)));
 					if (!dls_file.LoadFile(expand_path)) Debug(driver, 1, "Failed to load default GM DLS file from registry");
 				}
 				RegCloseKey(hkDM);
@@ -880,7 +880,7 @@ static const char *LoadDefaultDLSFile(const char *user_dls)
 			if (dls_file.instruments.empty()) {
 				static const wchar_t *DLS_GM_FILE = L"%windir%\\System32\\drivers\\gm.dls";
 				wchar_t path[MAX_PATH];
-				ExpandEnvironmentStrings(DLS_GM_FILE, path, lengthof(path));
+				ExpandEnvironmentStrings(DLS_GM_FILE, path, static_cast<DWORD>(std::size(path)));
 
 				if (!dls_file.LoadFile(path)) return "Can't load GM DLS collection";
 			}
