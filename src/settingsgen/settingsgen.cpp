@@ -385,12 +385,11 @@ static bool CompareFiles(const char *n1, const char *n2)
 
 /** Options of settingsgen. */
 static const OptionData _opts[] = {
-	  GETOPT_NOVAL(     'h', "--help"),
-	GETOPT_GENERAL('h', '?', nullptr, ODF_NO_VALUE),
-	  GETOPT_VALUE(     'o', "--output"),
-	  GETOPT_VALUE(     'b', "--before"),
-	  GETOPT_VALUE(     'a', "--after"),
-	GETOPT_END(),
+	{ .type = ODF_NO_VALUE, .id = 'h', .shortname = 'h', .longname = "--help" },
+	{ .type = ODF_NO_VALUE, .id = 'h', .shortname = '?' },
+	{ .type = ODF_HAS_VALUE, .id = 'o', .shortname = 'o', .longname = "--output" },
+	{ .type = ODF_HAS_VALUE, .id = 'b', .shortname = 'b', .longname = "--before" },
+	{ .type = ODF_HAS_VALUE, .id = 'a', .shortname = 'a', .longname = "--after" },
 };
 
 /**
