@@ -49,7 +49,8 @@ if(GIT_FOUND AND EXISTS "${CMAKE_SOURCE_DIR}/.git")
     string(SUBSTRING "${FULLHASH}" 0 10 SHORTHASH)
 
     # Get the last commit date
-    execute_process(COMMAND ${GIT_EXECUTABLE} show -s --pretty=format:%ci HEAD
+    set(ENV{TZ} "UTC0")
+    execute_process(COMMAND ${GIT_EXECUTABLE} show -s --date=iso-local --pretty=format:%cd HEAD
                     OUTPUT_VARIABLE COMMITDATE
                     OUTPUT_STRIP_TRAILING_WHITESPACE
                     WORKING_DIRECTORY ${CMAKE_SOURCE_DIR}
