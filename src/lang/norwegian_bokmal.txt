@@ -3490,6 +3490,9 @@ STR_NEWGRF_INSPECT_CAPTION_OBJECT_AT_ROAD_TYPE                  :Veitype
 STR_NEWGRF_INSPECT_QUERY_CAPTION                                :{WHITE}NewGRF-variabel 60+x parameter (heksadesimal)
 
 # Sprite aligner window
+STR_SPRITE_ALIGNER_CAPTION_NO_ACTION                            :{WHITE}Forskyver sprite: ({STRING}:{NUM})
+STR_SPRITE_ALIGNER_CAPTION_ACTIONA                              :{WHITE}Forskyver sprite: Handling 0xA, {COMMA} ({STRING}:{NUM})
+STR_SPRITE_ALIGNER_CAPTION_ACTION5                              :{WHITE}Forskyver sprite: Handling 0x5, type {HEX}, {COMMA} ({STRING}:{NUM})
 STR_SPRITE_ALIGNER_NEXT_BUTTON                                  :{BLACK}Neste sprite
 STR_SPRITE_ALIGNER_NEXT_TOOLTIP                                 :{BLACK}Fortsett til neste normale sprite og hopp over enhver pseudo-/omfargings-/skrifttype- sprite, samt start om ved begynnelsen
 STR_SPRITE_ALIGNER_GOTO_BUTTON                                  :{BLACK}Gå til sprite
@@ -3498,6 +3501,7 @@ STR_SPRITE_ALIGNER_PREVIOUS_BUTTON                              :{BLACK}Forrige 
 STR_SPRITE_ALIGNER_PREVIOUS_TOOLTIP                             :{BLACK}Fortsett til forrige normale sprite og hopp over enhver pseudo-/omfargings-/skrifttype- sprite, samt start om ved begynnelsen
 STR_SPRITE_ALIGNER_SPRITE_TOOLTIP                               :{BLACK}Forhåndsvisning av valgt sprite. Innrettingen ignoreres når spriten tegnes
 STR_SPRITE_ALIGNER_MOVE_TOOLTIP                                 :{BLACK}Flytt på ikonet for å endre X- og Y-forskyvningene. Ctrl+klikk for å flytte ikonet åtte enheter om gangen
+STR_SPRITE_ALIGNER_SPRITE                                       :{STRING}:{NUM}
 
 ###length 2
 STR_SPRITE_ALIGNER_CENTRE_OFFSET                                :{BLACK}Offset sentrert
@@ -3531,15 +3535,15 @@ STR_NEWGRF_ERROR_OTTD_VERSION_NUMBER                            :{1:STRING} krev
 STR_NEWGRF_ERROR_AFTER_TRANSLATED_FILE                          :GRF-filen den var laget for å oversette
 STR_NEWGRF_ERROR_TOO_MANY_NEWGRFS_LOADED                        :For mange NewGRF-er er innlastet
 STR_NEWGRF_ERROR_STATIC_GRF_CAUSES_DESYNC                       :Å laste inn {1:STRING} som statisk NewGRF med {2:STRING} kan forårsake synkroniseringsfeil
-STR_NEWGRF_ERROR_UNEXPECTED_SPRITE                              :Uventet sprite (figur {3:NUM})
-STR_NEWGRF_ERROR_UNKNOWN_PROPERTY                               :Ukjent Handling 0 egenskap {4:HEX} (figur {3:NUM})
+STR_NEWGRF_ERROR_UNEXPECTED_SPRITE                              :Uventet sprite (sprite {3:NUM})
+STR_NEWGRF_ERROR_UNKNOWN_PROPERTY                               :Ukjent Handling 0 egenskap {4:HEX} (sprite {3:NUM})
 STR_NEWGRF_ERROR_INVALID_ID                                     :Forsøk på å bruke ugyldig ID (sprite {3:NUM})
 STR_NEWGRF_ERROR_CORRUPT_SPRITE                                 :{YELLOW}{STRING} inneholder en ødelagt sprite. Alle ødelagte spriter blir vist som røde spørsmålstegn (?).
-STR_NEWGRF_ERROR_MULTIPLE_ACTION_8                              :Inneholder flere Handling 8-oppføringer (figur {3:NUM})
-STR_NEWGRF_ERROR_READ_BOUNDS                                    :Leste forbi slutten av pseudo-sprite (figur {3:NUM})
-STR_NEWGRF_ERROR_GRM_FAILED                                     :Etterspurte GRF-ressurser ikke tilgjengelig (figur {3:NUM})
+STR_NEWGRF_ERROR_MULTIPLE_ACTION_8                              :Inneholder flere Handling 8-oppføringer (sprite {3:NUM})
+STR_NEWGRF_ERROR_READ_BOUNDS                                    :Leste forbi slutten av pseudo-sprite (sprite {3:NUM})
+STR_NEWGRF_ERROR_GRM_FAILED                                     :Etterspurte GRF-ressurser ikke tilgjengelig (sprite {3:NUM})
 STR_NEWGRF_ERROR_FORCEFULLY_DISABLED                            :{1:STRING} ble deaktivert av {STRING}
-STR_NEWGRF_ERROR_INVALID_SPRITE_LAYOUT                          :Ugyldig/ukjent sprite layoutformat (figur {3:NUM})
+STR_NEWGRF_ERROR_INVALID_SPRITE_LAYOUT                          :Ugyldig/ukjent sprite layoutformat (sprite {3:NUM})
 STR_NEWGRF_ERROR_LIST_PROPERTY_TOO_LONG                         :For mange elementer i fortegnelse over eiendomsverdier (sprite {3:NUM}, property {4:HEX})
 STR_NEWGRF_ERROR_INDPROD_CALLBACK                               :Ugyldig industriprodukjson callback (sprite {3:NUM}, "{2:STRING}")
 
@@ -5834,6 +5838,7 @@ STR_JUST_DATE_ISO                                               :{DATE_ISO}
 STR_JUST_STRING                                                 :{STRING}
 STR_JUST_STRING1                                                :{STRING}
 STR_JUST_STRING2                                                :{STRING}
+STR_JUST_STRING4                                                :{STRING}
 STR_JUST_STRING_STRING                                          :{STRING}{STRING}
 STR_JUST_RAW_STRING                                             :{STRING}
 STR_JUST_BIG_RAW_STRING                                         :{BIG_FONT}{STRING}

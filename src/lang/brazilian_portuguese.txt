@@ -1620,7 +1620,7 @@ STR_CONFIG_SETTING_STATION_SPREAD_HELPTEXT                      :Área máxima q
 STR_CONFIG_SETTING_SERVICEATHELIPAD                             :Manutenção automática de helicópteros em heliportos: {STRING}
 STR_CONFIG_SETTING_SERVICEATHELIPAD_HELPTEXT                    :Efetuar manutenção de helicópteros após cada pouso, mesmo se não existir um depósito no aeroporto
 
-STR_CONFIG_SETTING_LINK_TERRAFORM_TOOLBAR                       :Ligar ferramentas de paisagismo com construção de trilhos/estradas/água/aeroportos: {STRING}
+STR_CONFIG_SETTING_LINK_TERRAFORM_TOOLBAR                       :Ligar ferramentas de paisagismo com construção de trilhos/estrada/aeroporto: {STRING}
 STR_CONFIG_SETTING_LINK_TERRAFORM_TOOLBAR_HELPTEXT              :Ao abrir a barra de ferramentas de construção para um tipo de transporte, abrir também a barra de ferramentas de paisagismo
 
 STR_CONFIG_SETTING_SMALLMAP_LAND_COLOUR                         :Cor do solo usada no minimapa: {STRING}
@@ -1642,9 +1642,9 @@ STR_CONFIG_SETTING_SCROLLMODE                                   :Comportamento d
 STR_CONFIG_SETTING_SCROLLMODE_HELPTEXT                          :Comportamento de movimentação do mapa. A opção "posição do mouse travada" não funciona em todos os sistemas, tais como versões baseadas na web, telas sensíveis ao toque, Linux com Wayland e outros
 ###length 4
 STR_CONFIG_SETTING_SCROLLMODE_DEFAULT                           :Mover visualização com o Botão Direito, posição do mouse travada
-STR_CONFIG_SETTING_SCROLLMODE_RMB_LOCKED                        :Mover mapa com o Botão Direito, posição do mouse travada
-STR_CONFIG_SETTING_SCROLLMODE_RMB                               :Mover mapa com o Botão Direito do Mouse
-STR_CONFIG_SETTING_SCROLLMODE_LMB                               :Mover mapa com o Botão Esquerdo do Mouse
+STR_CONFIG_SETTING_SCROLLMODE_RMB_LOCKED                        :Mover mapa com Botão Direito, posição do mouse travada
+STR_CONFIG_SETTING_SCROLLMODE_RMB                               :Mover mapa com Botão Direito do Mouse
+STR_CONFIG_SETTING_SCROLLMODE_LMB                               :Mover mapa com Botão Esquerdo do Mouse
 
 STR_CONFIG_SETTING_SMOOTH_SCROLLING                             :Suavizar deslocamento da visualização: {STRING}
 STR_CONFIG_SETTING_SMOOTH_SCROLLING_HELPTEXT                    :Controlar como a visualização principal se move para uma localização específica ao clicar no minimapa ou quando é dado um comando para ir até um objeto específico no mapa. Se ativado, a visualização se move suavemente. Se desativado, a visualização salta diretamente para o destino escolhido
@@ -1840,7 +1840,7 @@ STR_CONFIG_SETTING_SERVINT_DISABLED                             :Desativado
 STR_CONFIG_SETTING_NOSERVICE                                    :Desativar manutenção quando as quebras estão desativadas: {STRING}
 STR_CONFIG_SETTING_NOSERVICE_HELPTEXT                           :Quando ativado, veículos não recebem manutenção se não podem quebrar
 
-STR_CONFIG_SETTING_STATION_LENGTH_LOADING_PENALTY               :Penalizar a velocidade de carregamento para trens que são mais longos que a estação: {STRING}
+STR_CONFIG_SETTING_STATION_LENGTH_LOADING_PENALTY               :Penalizar velocidade de carregamento para trens mais longos que a estação: {STRING}
 STR_CONFIG_SETTING_STATION_LENGTH_LOADING_PENALTY_HELPTEXT      :Quando ativado, os trens que são muito compridos para a estação são carregados mais lentamente do que um trem que cabe na estação. Esta configuração não afeta a geração de rotas
 
 STR_CONFIG_SETTING_WAGONSPEEDLIMITS                             :Ativar limite de velocidade para vagões: {STRING}
@@ -4781,7 +4781,7 @@ STR_AI_DEBUG_RELOAD_TOOLTIP                                     :{BLACK}Interrom
 STR_AI_DEBUG_BREAK_STR_ON_OFF_TOOLTIP                           :{BLACK}Ativar/Desativar interrupção quando uma mensagem de registro da IA for igual a esta sequência de caracteres
 STR_AI_DEBUG_BREAK_ON_LABEL                                     :{BLACK}Parar em:
 STR_AI_DEBUG_BREAK_STR_OSKTITLE                                 :{BLACK}Parar em
-STR_AI_DEBUG_BREAK_STR_TOOLTIP                                  :{BLACK}Quando uma mensagem de registro da IA for igual a esta sequência de caracteres, o jogo é pausado
+STR_AI_DEBUG_BREAK_STR_TOOLTIP                                  :{BLACK}O jogo é pausado quando uma mensagem de registro da IA for igual a esta sequência de caracteres
 STR_AI_DEBUG_MATCH_CASE                                         :{BLACK}Diferenciar maiúsculas/minúsculas
 STR_AI_DEBUG_MATCH_CASE_TOOLTIP                                 :{BLACK}Ativar/Desativar correspondência de maiúsculas/minúsculas quando comparar as mensagens de registro da IA com a sequência de caracteres de parada
 STR_AI_DEBUG_CONTINUE                                           :{BLACK}Continuar
@@ -5125,7 +5125,7 @@ STR_ERROR_UNBUNCHING_NO_UNBUNCHING_CONDITIONAL                  :{WHITE}... não
 
 # Autoreplace related errors
 STR_ERROR_TRAIN_TOO_LONG_AFTER_REPLACEMENT                      :{WHITE}{VEHICLE} fica muito longo depois da substituição
-STR_ERROR_AUTOREPLACE_NOTHING_TO_DO                             :{WHITE}Nenhuma regra de substituição automática/renovação aplicada
+STR_ERROR_AUTOREPLACE_NOTHING_TO_DO                             :{WHITE}Nenhuma regra de substituição/renovação automática aplicada
 STR_ERROR_AUTOREPLACE_MONEY_LIMIT                               :(limite de dinheiro)
 STR_ERROR_AUTOREPLACE_INCOMPATIBLE_CARGO                        :{WHITE}O novo veículo não pode transportar {STRING}
 STR_ERROR_AUTOREPLACE_INCOMPATIBLE_REFIT                        :{WHITE}O novo veículo não pode ser adaptado na ordem {NUM}
