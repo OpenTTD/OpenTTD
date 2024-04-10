@@ -50,6 +50,7 @@ struct GetOptData {
 	}
 
 	int GetOpt();
+	int GetOpt(const OptionData &option);
 };
 
 #endif /* GETOPTDATA_H */
