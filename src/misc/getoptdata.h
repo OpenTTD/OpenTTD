@@ -28,26 +28,19 @@ struct OptionData {
 /** Data storage for parsing command line options. */
 struct GetOptData {
 	using OptionSpan = std::span<const OptionData>;
-	char *opt;                 ///< Option value, if available (else \c nullptr).
-	int numleft;               ///< Number of arguments left in #argv.
-	char **argv;               ///< Remaining command line arguments.
-	OptionSpan options; ///< Command line option descriptions.
-	char *cont;                ///< Next call to #GetOpt should start here (in the middle of an argument).
+	using ArgumentSpan = std::span<char * const>;
+
+	ArgumentSpan arguments; ///< Remaining command line arguments.
+	const OptionSpan options; ///< Command line option descriptions.
+	const char *opt = nullptr; ///< Option value, if available (else \c nullptr).
+	const char *cont = nullptr; ///< Next call to #GetOpt should start here (in the middle of an argument).
 
 	/**
 	 * Constructor of the data store.
-	 * @param argc Number of command line arguments, excluding the program name.
-	 * @param argv Command line arguments, excluding the program name.
+	 * @param argument The command line arguments, excluding the program name.
 	 * @param options Command line option descriptions.
 	 */
-	GetOptData(int argc, char **argv, OptionSpan options) :
-			opt(nullptr),
-			numleft(argc),
-			argv(argv),
-			options(options),
-			cont(nullptr)
-	{
-	}
+	GetOptData(ArgumentSpan arguments, OptionSpan options) : arguments(arguments), options(options) {}
 
 	int GetOpt();
 	int GetOpt(const OptionData &option);
