@@ -429,12 +429,14 @@ public:
 	{
 		switch (widget) {
 			case WID_DPI_MATRIX_WIDGET: {
-				Dimension d = GetStringBoundingBox(STR_FUND_INDUSTRY_MANY_RANDOM_INDUSTRIES);
+				SetDParamMaxDigits(0, 4);
+				Dimension count = GetStringBoundingBox(STR_JUST_COMMA, FS_SMALL);
+				Dimension d{};
 				for (const auto &indtype : this->list) {
 					d = maxdim(d, GetStringBoundingBox(GetIndustrySpec(indtype)->name));
 				}
-				resize.height = std::max<uint>(this->legend.height, GetCharacterHeight(FS_NORMAL)) + padding.height;
-				d.width += this->legend.width + WidgetDimensions::scaled.hsep_wide + padding.width;
+				resize.height = std::max<uint>({this->legend.height, d.height, count.height}) + padding.height;
+				d.width += this->legend.width + WidgetDimensions::scaled.hsep_wide + WidgetDimensions::scaled.hsep_normal + count.width + padding.width;
 				d.height = 5 * resize.height;
 				size = maxdim(size, d);
 				break;
