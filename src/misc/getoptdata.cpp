@@ -21,15 +21,14 @@
  */
 int GetOptData::GetOpt()
 {
-	char *s = this->cont;
+	const char *s = this->cont;
 	if (s == nullptr) {
-		if (this->numleft == 0) return -1; // No arguments left -> finished.
+		if (this->arguments.empty()) return -1; // No arguments left -> finished.
 
-		s = this->argv[0];
+		s = this->arguments[0];
 		if (*s != '-') return -1; // No leading '-' -> not an option -> finished.
 
-		this->argv++;
-		this->numleft--;
+		this->arguments = this->arguments.subspan(1);
 
 		/* Is it a long option? */
 		for (auto &option : this->options) {
@@ -68,14 +67,13 @@ int GetOptData::GetOpt(const OptionData &option)
 				return option.id;
 			}
 			/* No more arguments, either return an error or a value-less option. */
-			if (this->numleft == 0) return (option.type == ODF_HAS_VALUE) ? -2 : option.id;
+			if (this->arguments.empty()) return (option.type == ODF_HAS_VALUE) ? -2 : option.id;
 
 			/* Next argument looks like another option, let's not return it as option value. */
-			if (option.type == ODF_OPTIONAL_VALUE && this->argv[0][0] == '-') return option.id;
+			if (option.type == ODF_OPTIONAL_VALUE && this->arguments[0][0] == '-') return option.id;
 
-			this->opt = this->argv[0]; // Next argument is the option value.
-			this->argv++;
-			this->numleft--;
+			this->opt = this->arguments[0]; // Next argument is the option value.
+			this->arguments = this->arguments.subspan(1);
 			return option.id;
 
 		default: NOT_REACHED();

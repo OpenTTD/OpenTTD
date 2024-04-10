@@ -435,7 +435,7 @@ int CDECL main(int argc, char *argv[])
 	const char *before_file = nullptr;
 	const char *after_file = nullptr;
 
-	GetOptData mgo(argc - 1, argv + 1, _opts);
+	GetOptData mgo(std::span(argv + 1, argc - 1), _opts);
 	for (;;) {
 		int i = mgo.GetOpt();
 		if (i == -1) break;
@@ -472,7 +472,7 @@ int CDECL main(int argc, char *argv[])
 	_stored_output.Clear();
 	_post_amble_output.Clear();
 
-	for (int i = 0; i < mgo.numleft; i++) ProcessIniFile(mgo.argv[i]);
+	for (auto &argument : mgo.arguments) ProcessIniFile(argument);
 
 	/* Write output. */
 	if (output_file == nullptr) {

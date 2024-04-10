@@ -328,7 +328,7 @@ int CDECL main(int argc, char *argv[])
 	std::filesystem::path src_dir(".");
 	std::filesystem::path dest_dir;
 
-	GetOptData mgo(argc - 1, argv + 1, _opts);
+	GetOptData mgo(std::span(argv + 1, argc - 1), _opts);
 	for (;;) {
 		int i = mgo.GetOpt();
 		if (i == -1) break;
@@ -412,7 +412,7 @@ int CDECL main(int argc, char *argv[])
 		 * strgen generates strings.h to the destination directory. If it is supplied
 		 * with a (free) parameter the program will translate that language to destination
 		 * directory. As input english.txt is parsed from the source directory */
-		if (mgo.numleft == 0) {
+		if (mgo.arguments.empty()) {
 			std::filesystem::path input_path = src_dir;
 			input_path /= "english.txt";
 
@@ -431,7 +431,7 @@ int CDECL main(int argc, char *argv[])
 			writer.WriteHeader(data);
 			writer.Finalise(data);
 			if (_errors != 0) return 1;
-		} else if (mgo.numleft >= 1) {
+		} else {
 			std::filesystem::path input_path = src_dir;
 			input_path /= "english.txt";
 
@@ -440,10 +440,10 @@ int CDECL main(int argc, char *argv[])
 			FileStringReader master_reader(data, input_path, true, false);
 			master_reader.ParseFile();
 
-			for (int i = 0; i < mgo.numleft; i++) {
+			for (auto &argument: mgo.arguments) {
 				data.FreeTranslation();
 
-				std::filesystem::path lang_file = mgo.argv[i];
+				std::filesystem::path lang_file = argument;
 				FileStringReader translation_reader(data, lang_file, false, lang_file.filename() != "english.txt");
 				translation_reader.ParseFile(); // target file
 				if (_errors != 0) return 1;

@@ -530,7 +530,7 @@ int openttd_main(int argc, char *argv[])
 	_switch_mode = SM_MENU;
 
 	auto options = CreateOptions();
-	GetOptData mgo(argc - 1, argv + 1, options);
+	GetOptData mgo(std::span(argv + 1, argc - 1), options);
 	int ret = 0;
 
 	int i;
@@ -654,7 +654,7 @@ int openttd_main(int argc, char *argv[])
 		if (i == -2) break;
 	}
 
-	if (i == -2 || mgo.numleft > 0) {
+	if (i == -2 || !mgo.arguments.empty()) {
 		/* Either the user typed '-h', they made an error, or they added unrecognized command line arguments.
 		 * In all cases, print the help, and exit.
 		 *
