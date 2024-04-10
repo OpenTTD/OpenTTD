@@ -164,14 +164,14 @@ static inline void GetAllCargoSuffixes(CargoSuffixInOut use_input, CargoSuffixTy
 				uint cargotype = local_id << 16 | use_input;
 				GetCargoSuffix(cargotype, cst, ind, ind_type, indspec, suffixes[j]);
 			} else {
-				suffixes[j].text[0] = '\0';
+				suffixes[j].text.clear();
 				suffixes[j].display = CSD_CARGO;
 			}
 		}
 	} else {
 		/* Compatible behaviour with old 3-in-2-out scheme */
 		for (uint j = 0; j < lengthof(suffixes); j++) {
-			suffixes[j].text[0] = '\0';
+			suffixes[j].text.clear();
 			suffixes[j].display = CSD_CARGO;
 		}
 		switch (use_input) {
@@ -203,7 +203,7 @@ static inline void GetAllCargoSuffixes(CargoSuffixInOut use_input, CargoSuffixTy
  */
 void GetCargoSuffix(CargoSuffixInOut use_input, CargoSuffixType cst, const Industry *ind, IndustryType ind_type, const IndustrySpec *indspec, CargoID cargo, uint8_t slot, CargoSuffix &suffix)
 {
-	suffix.text[0] = '\0';
+	suffix.text.clear();
 	suffix.display = CSD_CARGO;
 	if (!IsValidCargoID(cargo)) return;
 	if (indspec->behaviour & INDUSTRYBEH_CARGOTYPES_UNLIMITED) {
