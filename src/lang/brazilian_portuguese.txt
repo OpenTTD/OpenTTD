@@ -188,7 +188,7 @@ STR_COLOUR_ORANGE                                               :Laranja
 STR_COLOUR_BROWN                                                :Marrom
 STR_COLOUR_GREY                                                 :Cinza
 STR_COLOUR_WHITE                                                :Branco
-STR_COLOUR_RANDOM                                               :Aleatório
+STR_COLOUR_RANDOM                                               :Aleatória
 
 ###length 17
 STR_COLOUR_SECONDARY_DARK_BLUE                                  :Azul Escuro
