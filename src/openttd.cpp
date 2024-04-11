@@ -502,11 +502,10 @@ static std::vector<OptionData> CreateOptions()
 
 /**
  * Main entry point for this lovely game.
- * @param argc The number of arguments passed to this game.
- * @param argv The values of the arguments.
+ * @param arguments The command line arguments passed to the application.
  * @return 0 when there is no error.
  */
-int openttd_main(int argc, char *argv[])
+int openttd_main(std::span<char * const> arguments)
 {
 	_game_session_stats.start_time = std::chrono::steady_clock::now();
 	_game_session_stats.savegame_size = std::nullopt;
@@ -530,7 +529,7 @@ int openttd_main(int argc, char *argv[])
 	_switch_mode = SM_MENU;
 
 	auto options = CreateOptions();
-	GetOptData mgo(std::span(argv + 1, argc - 1), options);
+	GetOptData mgo(arguments.subspan(1), options);
 	int ret = 0;
 
 	int i;
@@ -614,7 +613,7 @@ int openttd_main(int argc, char *argv[])
 			}
 			break;
 		case 'q': {
-			DeterminePaths(argv[0], only_local_path);
+			DeterminePaths(arguments[0], only_local_path);
 			if (StrEmpty(mgo.opt)) {
 				ret = 1;
 				return ret;
@@ -660,7 +659,7 @@ int openttd_main(int argc, char *argv[])
 		 *
 		 * The next two functions are needed to list the graphics sets. We can't do them earlier
 		 * because then we cannot show it on the debug console as that hasn't been configured yet. */
-		DeterminePaths(argv[0], only_local_path);
+		DeterminePaths(arguments[0], only_local_path);
 		TarScanner::DoScan(TarScanner::BASESET);
 		BaseGraphics::FindSets();
 		BaseSounds::FindSets();
@@ -669,7 +668,7 @@ int openttd_main(int argc, char *argv[])
 		return ret;
 	}
 
-	DeterminePaths(argv[0], only_local_path);
+	DeterminePaths(arguments[0], only_local_path);
 	TarScanner::DoScan(TarScanner::BASESET);
 
 	if (dedicated) Debug(net, 3, "Starting dedicated server, version {}", _openttd_revision);
