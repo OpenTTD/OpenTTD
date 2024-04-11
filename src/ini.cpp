@@ -22,11 +22,7 @@
 # include <fcntl.h>
 #endif
 
-#ifdef _WIN32
-# include <windows.h>
-# include <shellapi.h>
-# include "core/mem_func.hpp"
-#endif
+#include <filesystem>
 
 #include "safeguards.h"
 
@@ -91,30 +87,11 @@ bool IniFile::SaveToDisk(const std::string &filename)
 	if (ret != 0) return false;
 #endif
 
-#if defined(_WIN32)
-	/* Allocate space for one more \0 character. */
-	wchar_t tfilename[MAX_PATH + 1], tfile_new[MAX_PATH + 1];
-	wcsncpy(tfilename, OTTD2FS(filename).c_str(), MAX_PATH);
-	wcsncpy(tfile_new, OTTD2FS(file_new).c_str(), MAX_PATH);
-	/* SHFileOperation wants a double '\0' terminated string. */
-	tfilename[MAX_PATH - 1] = '\0';
-	tfile_new[MAX_PATH - 1] = '\0';
-	tfilename[wcslen(tfilename) + 1] = '\0';
-	tfile_new[wcslen(tfile_new) + 1] = '\0';
-
-	/* Rename file without any user confirmation. */
-	SHFILEOPSTRUCT shfopt;
-	MemSetT(&shfopt, 0);
-	shfopt.wFunc  = FO_MOVE;
-	shfopt.fFlags = FOF_NOCONFIRMATION | FOF_NOCONFIRMMKDIR | FOF_NOERRORUI | FOF_SILENT;
-	shfopt.pFrom  = tfile_new;
-	shfopt.pTo    = tfilename;
-	SHFileOperation(&shfopt);
-#else
-	if (rename(file_new.c_str(), filename.c_str()) < 0) {
-		Debug(misc, 0, "Renaming {} to {} failed; configuration not saved", file_new, filename);
+	std::error_code ec;
+	std::filesystem::rename(OTTD2FS(file_new), OTTD2FS(filename), ec);
+	if (ec) {
+		Debug(misc, 0, "Renaming {} to {} failed; configuration not saved: {}", file_new, filename, ec.message());
 	}
-#endif
 
 #ifdef __EMSCRIPTEN__
 	EM_ASM(if (window["openttd_syncfs"]) openttd_syncfs());
