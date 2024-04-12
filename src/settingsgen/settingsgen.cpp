@@ -15,10 +15,7 @@
 #include "../core/mem_func.hpp"
 #include "../error_func.h"
 
-#if !defined(_WIN32) || defined(__CYGWIN__)
-#include <unistd.h>
-#include <sys/stat.h>
-#endif
+#include <filesystem>
 
 #include "../safeguards.h"
 
@@ -493,15 +490,14 @@ int CDECL main(int argc, char *argv[])
 		AppendFile(after_file, fp);
 		fclose(fp);
 
+		std::error_code error_code;
 		if (CompareFiles(tmp_output, output_file)) {
 			/* Files are equal. tmp2.xxx is not needed. */
-			unlink(tmp_output);
+			std::filesystem::remove(tmp_output, error_code);
 		} else {
 			/* Rename tmp2.xxx to output file. */
-#if defined(_WIN32)
-			unlink(output_file);
-#endif
-			if (rename(tmp_output, output_file) == -1) FatalError("rename() failed");
+			std::filesystem::rename(tmp_output, output_file, error_code);
+			if (error_code) FatalError("rename({}, {}) failed: {}", tmp_output, output_file, error_code.message());
 		}
 	}
 	return 0;
