@@ -3914,7 +3914,7 @@ STR_NEWGRF_ERROR_MULTIPLE_ACTION_8                              :Zawiera wiele w
 STR_NEWGRF_ERROR_READ_BOUNDS                                    :Odczyt poza obszar pseudo-sprite'u (sprite {3:NUM})
 STR_NEWGRF_ERROR_GRM_FAILED                                     :Potrzebne źródło GRF nie jest dostępne (sprite {3:NUM})
 STR_NEWGRF_ERROR_FORCEFULLY_DISABLED                            :{1:STRING} został wyłączony przez {STRING}
-STR_NEWGRF_ERROR_INVALID_SPRITE_LAYOUT                          :Niepoprawny/nieznany format układu sprite'u (sprite {3:NUM})
+STR_NEWGRF_ERROR_INVALID_SPRITE_LAYOUT                          :Nieprawidłowy/nieznany format układu sprite'a (sprite {3:NUM})
 STR_NEWGRF_ERROR_LIST_PROPERTY_TOO_LONG                         :Zbyt wiele elementów na liście wartości właściwości (sprite {3:NUM}, właściwość {4:HEX})
 STR_NEWGRF_ERROR_INDPROD_CALLBACK                               :Nieprawidłowe wywołanie zwrotne produkcji przedsiębiorstwa (sprite {3:NUM}, „{2:STRING}”)
 
