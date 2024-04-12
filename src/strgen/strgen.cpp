@@ -274,9 +274,6 @@ struct HeaderFileWriter : HeaderWriter, FileWriter {
 			std::filesystem::remove(this->path, error_code); // Just ignore the error
 		} else {
 			/* else rename tmp.xxx into filename */
-#	if defined(_WIN32)
-			std::filesystem::remove(this->real_path, error_code); // Just ignore the error, file probably doesn't exist
-#	endif
 			std::filesystem::rename(this->path, this->real_path, error_code);
 			if (error_code) FatalError("rename({}, {}) failed: {}", this->path, this->real_path, error_code.message());
 		}
