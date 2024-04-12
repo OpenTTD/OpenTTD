@@ -278,7 +278,7 @@ STR_TOOLTIP_SORT_CRITERIA                                       :{BLACK}Escolher
 STR_TOOLTIP_FILTER_CRITERIA                                     :{BLACK}Escolher o critério de seleção
 STR_BUTTON_SORT_BY                                              :{BLACK}Ordenar por
 STR_BUTTON_CATCHMENT                                            :{BLACK}Cobertura
-STR_TOOLTIP_CATCHMENT                                           :{BLACK}Mostrar/Ocultar a área de cobertura
+STR_TOOLTIP_CATCHMENT                                           :{BLACK}Mostrar/Ocultar área de cobertura
 
 STR_TOOLTIP_CLOSE_WINDOW                                        :{BLACK}Fechar janela
 STR_TOOLTIP_WINDOW_TITLE_DRAG_THIS                              :{BLACK}Título da janela - arraste isto para mover a janela
@@ -533,8 +533,8 @@ STR_ABOUT_MENU_SCREENSHOT                                       :Captura de tela
 STR_ABOUT_MENU_SHOW_FRAMERATE                                   :Mostrar taxa de quadros
 STR_ABOUT_MENU_ABOUT_OPENTTD                                    :Sobre o 'OpenTTD'
 STR_ABOUT_MENU_SPRITE_ALIGNER                                   :Alinhador de sprites
-STR_ABOUT_MENU_TOGGLE_BOUNDING_BOXES                            :Mostrar/Ocultar as caixas delimitadoras
-STR_ABOUT_MENU_TOGGLE_DIRTY_BLOCKS                              :Ativar/Desativar coloração dos blocos sujos
+STR_ABOUT_MENU_TOGGLE_BOUNDING_BOXES                            :Mostrar/Ocultar caixas delimitadoras
+STR_ABOUT_MENU_TOGGLE_DIRTY_BLOCKS                              :Ativar coloração dos blocos sujos
 STR_ABOUT_MENU_TOGGLE_WIDGET_OUTLINES                           :Mostrar/Ocultar contornos dos widgets
 
 ###length 31
@@ -3431,8 +3431,8 @@ STR_NEWGRF_SETTINGS_FILE_TOOLTIP                                :{BLACK}Uma list
 
 STR_NEWGRF_SETTINGS_SET_PARAMETERS                              :{BLACK}Definir parâmetros
 STR_NEWGRF_SETTINGS_SHOW_PARAMETERS                             :{BLACK}Mostrar parâmetros
-STR_NEWGRF_SETTINGS_TOGGLE_PALETTE                              :{BLACK}Ativar/Desativar paleta
-STR_NEWGRF_SETTINGS_TOGGLE_PALETTE_TOOLTIP                      :{BLACK}Ativar/Desativar a paleta do NewGRF selecionado.{}Faça isso quando os gráficos deste NewGRF ficarem cor de rosa no jogo
+STR_NEWGRF_SETTINGS_TOGGLE_PALETTE                              :{BLACK}Comutar paleta
+STR_NEWGRF_SETTINGS_TOGGLE_PALETTE_TOOLTIP                      :{BLACK}Comutar a paleta do NewGRF selecionado.{}Faça isso quando os gráficos deste NewGRF parecerem cor-de-rosa no jogo
 STR_NEWGRF_SETTINGS_APPLY_CHANGES                               :{BLACK}Aplicar modificações
 
 STR_NEWGRF_SETTINGS_FIND_MISSING_CONTENT_BUTTON                 :{BLACK}Procurar conteúdo em falta online
@@ -3598,7 +3598,7 @@ STR_NEWGRF_SCAN_ARCHIVES                                        :Procurando por 
 # Sign list window
 STR_SIGN_LIST_CAPTION                                           :{WHITE}Lista de Placas - {COMMA} Placa{P "" s}
 STR_SIGN_LIST_MATCH_CASE                                        :{BLACK}Diferenciar maiúsculas/minúsculas
-STR_SIGN_LIST_MATCH_CASE_TOOLTIP                                :{BLACK}Ativar/Desativar correspondência de maiúsculas/minúsculas quando comparar os nomes das placas com a palavra-chave fornecida
+STR_SIGN_LIST_MATCH_CASE_TOOLTIP                                :{BLACK}Considerar correspondência de maiúsculas e minúsculas quando comparar os nomes das placas com a palavra-chave fornecida
 
 # Sign window
 STR_EDIT_SIGN_CAPTION                                           :{WHITE}Editar texto da placa
@@ -4013,7 +4013,7 @@ STR_VEHICLE_LIST_SEND_AIRCRAFT_TO_HANGAR                        :Enviar para um 
 
 STR_VEHICLE_LIST_MASS_STOP_LIST_TOOLTIP                         :{BLACK}Clique para parar todos os veículos desta lista
 STR_VEHICLE_LIST_MASS_START_LIST_TOOLTIP                        :{BLACK}Clique para iniciar todos os veículos desta lista
-STR_VEHICLE_LIST_AVAILABLE_ENGINES_TOOLTIP                      :{BLACK}Ver lista de modelos de locomotivas disponíveis para este tipo de veículo
+STR_VEHICLE_LIST_AVAILABLE_ENGINES_TOOLTIP                      :{BLACK}Ver a lista de modelos disponíveis para esta classe de veículo
 
 STR_VEHICLE_LIST_SHARED_ORDERS_LIST_CAPTION                     :{WHITE}Ordens compartilhadas de {COMMA} Veículo{P "" s}
 
@@ -4274,7 +4274,7 @@ STR_ENGINE_PREVIEW_SHIP                                         :{G=f}embarcaç�
 STR_ENGINE_PREVIEW_TEXT3                                        :{BLACK}{STRING}{}{5:STRING}{}{STRING}
 STR_ENGINE_PREVIEW_TEXT4                                        :{BLACK}{STRING}{}{STRING}{}{STRING}{}{STRING}
 STR_ENGINE_PREVIEW_COST_WEIGHT                                  :Custo: {CURRENCY_LONG}  Peso: {WEIGHT_SHORT}
-STR_ENGINE_PREVIEW_COST_MAX_SPEED                               :Custo: {CURRENCY_LONG}  Veloc. máx.: {VELOCITY}
+STR_ENGINE_PREVIEW_COST_MAX_SPEED                               :Custo: {CURRENCY_LONG}  Velocidade máx.: {VELOCITY}
 STR_ENGINE_PREVIEW_SPEED_POWER                                  :Velocidade: {VELOCITY}  Potência: {POWER}
 STR_ENGINE_PREVIEW_SPEED_POWER_MAX_TE                           :Veloc.: {VELOCITY}  Potência: {POWER}  Tração máx.: {FORCE}
 STR_ENGINE_PREVIEW_TYPE                                         :Tipo de aeronave: {STRING}
@@ -4783,7 +4783,7 @@ STR_AI_DEBUG_BREAK_ON_LABEL                                     :{BLACK}Parar em
 STR_AI_DEBUG_BREAK_STR_OSKTITLE                                 :{BLACK}Parar em
 STR_AI_DEBUG_BREAK_STR_TOOLTIP                                  :{BLACK}O jogo é pausado quando uma mensagem de registro da IA for igual a esta sequência de caracteres
 STR_AI_DEBUG_MATCH_CASE                                         :{BLACK}Diferenciar maiúsculas/minúsculas
-STR_AI_DEBUG_MATCH_CASE_TOOLTIP                                 :{BLACK}Ativar/Desativar correspondência de maiúsculas/minúsculas quando comparar as mensagens de registro da IA com a sequência de caracteres de parada
+STR_AI_DEBUG_MATCH_CASE_TOOLTIP                                 :{BLACK}Considerar correspondência de maiúsculas e minúsculas quando comparar as mensagens de registro da IA com a sequência de caracteres de parada
 STR_AI_DEBUG_CONTINUE                                           :{BLACK}Continuar
 STR_AI_DEBUG_CONTINUE_TOOLTIP                                   :{BLACK}Sair da pausa e continuar a IA
 STR_AI_DEBUG_SELECT_AI_TOOLTIP                                  :{BLACK}Mostrar a saída de depuração desta IA. Ctrl+Clique para abrir em uma nova janela
@@ -4900,7 +4900,7 @@ STR_MESSAGE_ESTIMATED_COST                                      :{WHITE}Custo Es
 STR_MESSAGE_ESTIMATED_INCOME                                    :{WHITE}Receita Estimada: {CURRENCY_LONG}
 
 # Saveload messages
-STR_ERROR_SAVE_STILL_IN_PROGRESS                                :{WHITE}Gravação ainda sendo executada,{}por favor aguarde até terminar!
+STR_ERROR_SAVE_STILL_IN_PROGRESS                                :{WHITE}Gravação ainda sendo executada,{}por favor, aguarde até terminar!
 STR_ERROR_AUTOSAVE_FAILED                                       :{WHITE}Salvamento automático falhou
 STR_ERROR_UNABLE_TO_READ_DRIVE                                  :{BLACK}Não é possível ler a unidade
 STR_ERROR_GAME_SAVE_FAILED                                      :{WHITE}Falha ao salvar jogo...
@@ -4966,7 +4966,7 @@ STR_ERROR_CLEARING_LIMIT_REACHED                                :{WHITE}... limi
 STR_ERROR_TREE_PLANT_LIMIT_REACHED                              :{WHITE}... limite de plantação de árvores atingido
 STR_ERROR_NAME_MUST_BE_UNIQUE                                   :{WHITE}Nome deve ser único
 STR_ERROR_GENERIC_OBJECT_IN_THE_WAY                             :{WHITE}{1:STRING} no caminho
-STR_ERROR_NOT_ALLOWED_WHILE_PAUSED                              :{WHITE}Não é permitido enquanto pausado
+STR_ERROR_NOT_ALLOWED_WHILE_PAUSED                              :{WHITE}Não é permitido com o jogo pausado
 
 # Local authority errors
 STR_ERROR_LOCAL_AUTHORITY_REFUSES_TO_ALLOW_THIS                 :{WHITE}A autoridade local de {TOWN} recusa-se a permitir isso
