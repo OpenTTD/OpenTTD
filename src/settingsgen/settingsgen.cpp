@@ -322,11 +322,11 @@ static void DumpSections(const IniLoadFile &ifile)
 }
 
 /**
- * Copy a file to the output.
- * @param fname Filename of file to copy.
+ * Append a file to the output stream.
+ * @param fname Filename of file to append.
  * @param out_fp Output stream to write to.
  */
-static void CopyFile(const char *fname, FILE *out_fp)
+static void AppendFile(const char *fname, FILE *out_fp)
 {
 	if (fname == nullptr) return;
 
@@ -476,10 +476,10 @@ int CDECL main(int argc, char *argv[])
 
 	/* Write output. */
 	if (output_file == nullptr) {
-		CopyFile(before_file, stdout);
+		AppendFile(before_file, stdout);
 		_stored_output.Write(stdout);
 		_post_amble_output.Write(stdout);
-		CopyFile(after_file, stdout);
+		AppendFile(after_file, stdout);
 	} else {
 		static const char * const tmp_output = "tmp2.xxx";
 
@@ -487,10 +487,10 @@ int CDECL main(int argc, char *argv[])
 		if (fp == nullptr) {
 			FatalError("Cannot open file {}", tmp_output);
 		}
-		CopyFile(before_file, fp);
+		AppendFile(before_file, fp);
 		_stored_output.Write(fp);
 		_post_amble_output.Write(fp);
-		CopyFile(after_file, fp);
+		AppendFile(after_file, fp);
 		fclose(fp);
 
 		if (CompareFiles(tmp_output, output_file)) {
