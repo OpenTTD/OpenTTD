@@ -21,10 +21,7 @@
 #include "tar_type.h"
 #include <sys/stat.h>
 #include <charconv>
-
-#ifndef _WIN32
-# include <unistd.h>
-#endif /* _WIN32 */
+#include <filesystem>
 
 #include "table/strings.h"
 
@@ -53,7 +50,7 @@ bool FiosItem::operator< (const FiosItem &other) const
 	int r = false;
 
 	if ((_savegame_sort_order & SORT_BY_NAME) == 0 && (*this).mtime != other.mtime) {
-		r = this->mtime - other.mtime;
+		r = ClampTo<int32_t>(this->mtime - other.mtime);
 	} else {
 		r = StrNaturalCompare((*this).title, other.title);
 	}
@@ -291,32 +288,13 @@ bool FiosFileScanner::AddFile(const std::string &filename, size_t, const std::st
 	}
 
 	FiosItem *fios = &file_list.emplace_back();
-#ifdef _WIN32
-	// Retrieve the file modified date using GetFileTime rather than stat to work around an obscure MSVC bug that affects Windows XP
-	HANDLE fh = CreateFile(OTTD2FS(filename).c_str(), GENERIC_READ, FILE_SHARE_READ | FILE_SHARE_WRITE, nullptr, OPEN_EXISTING, 0, nullptr);
 
-	if (fh != INVALID_HANDLE_VALUE) {
-		FILETIME ft;
-		ULARGE_INTEGER ft_int64;
-
-		if (GetFileTime(fh, nullptr, nullptr, &ft) != 0) {
-			ft_int64.HighPart = ft.dwHighDateTime;
-			ft_int64.LowPart = ft.dwLowDateTime;
-
-			// Convert from hectonanoseconds since 01/01/1601 to seconds since 01/01/1970
-			fios->mtime = ft_int64.QuadPart / 10000000ULL - 11644473600ULL;
-		} else {
-			fios->mtime = 0;
-		}
-
-		CloseHandle(fh);
-#else
-	struct stat sb;
-	if (stat(filename.c_str(), &sb) == 0) {
-		fios->mtime = sb.st_mtime;
-#endif
-	} else {
+	std::error_code error_code;
+	auto write_time = std::filesystem::last_write_time(OTTD2FS(filename), error_code);
+	if (error_code) {
 		fios->mtime = 0;
+	} else {
+		fios->mtime = std::chrono::duration_cast<std::chrono::milliseconds>(write_time.time_since_epoch()).count();
 	}
 
 	fios->type = type;

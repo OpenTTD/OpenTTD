@@ -78,7 +78,7 @@ extern LoadCheckData _load_check_data;
 /** Deals with finding savegames */
 struct FiosItem {
 	FiosType type;
-	uint64_t mtime;
+	int64_t mtime;
 	std::string title;
 	std::string name;
 	bool operator< (const FiosItem &other) const;
