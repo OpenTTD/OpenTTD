@@ -2498,8 +2498,7 @@ struct GameSettingsWindow : Window {
 					DrawString(tr, STR_CONFIG_SETTING_TYPE);
 					tr.top += GetCharacterHeight(FS_NORMAL);
 
-					int32_t def_val = sd->def;
-					if (sd->get_def_cb != nullptr) sd->get_def_cb(def_val);
+					int32_t def_val = sd->get_def_cb != nullptr ? sd->get_def_cb() : sd->def;
 					sd->SetValueDParams(0, def_val);
 					DrawString(tr, STR_CONFIG_SETTING_DEFAULT_VALUE);
 					tr.top += GetCharacterHeight(FS_NORMAL) + WidgetDimensions::scaled.vsep_normal;
@@ -2734,9 +2733,10 @@ struct GameSettingsWindow : Window {
 			if (sd->flags & SF_GUI_CURRENCY) llvalue /= GetCurrency().rate;
 
 			value = ClampTo<int32_t>(llvalue);
+		} else if (sd->get_def_cb != nullptr) {
+			value = sd->get_def_cb();
 		} else {
 			value = sd->def;
-			if (sd->get_def_cb != nullptr) sd->get_def_cb(value);
 		}
 
 		SetSettingValue(this->valuewindow_entry->setting, value);
