@@ -369,6 +369,23 @@ void FioCreateDirectory(const std::string &name)
 }
 
 /**
+ * Remove a file.
+ * @param filename Filename to remove.
+ * @return true iff the file was removed.
+ */
+bool FioRemove(const std::string &filename)
+{
+	std::filesystem::path path = OTTD2FS(filename);
+	std::error_code error_code;
+	std::filesystem::remove(path, error_code);
+	if (error_code) {
+		Debug(misc, 0, "Removing {} failed: {}", filename, error_code.message());
+		return false;
+	}
+	return true;
+}
+
+/**
  * Appends, if necessary, the path separator character to the end of the string.
  * It does not add the path separator to zero-sized strings.
  * @param buf  string to append the separator to

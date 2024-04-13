@@ -20,6 +20,7 @@ std::string FioFindFullPath(Subdirectory subdir, const std::string &filename);
 std::string FioGetDirectory(Searchpath sp, Subdirectory subdir);
 std::string FioFindDirectory(Subdirectory subdir);
 void FioCreateDirectory(const std::string &name);
+bool FioRemove(const std::string &filename);
 
 const char *FiosGetScreenshotDir();
 

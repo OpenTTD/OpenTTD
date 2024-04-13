@@ -13,6 +13,7 @@
 #include "../game/game.hpp"
 #include "../window_func.h"
 #include "../error.h"
+#include "../fileio_func.h"
 #include "../base_media_base.h"
 #include "../settings_type.h"
 #include "network_content.h"
@@ -550,7 +551,7 @@ void ClientNetworkContentSocketHandler::AfterDownload()
 	this->curFile = nullptr;
 
 	if (GunzipFile(this->curInfo)) {
-		unlink(GetFullFilename(this->curInfo, true).c_str());
+		FioRemove(GetFullFilename(this->curInfo, true));
 
 		Subdirectory sd = GetContentInfoSubDir(this->curInfo->type);
 		if (sd == NO_DIRECTORY) NOT_REACHED();
@@ -562,7 +563,7 @@ void ClientNetworkContentSocketHandler::AfterDownload()
 		if (this->curInfo->type == CONTENT_TYPE_BASE_MUSIC) {
 			/* Music can't be in a tar. So extract the tar! */
 			ExtractTar(fname, BASESET_DIR);
-			unlink(fname.c_str());
+			FioRemove(fname);
 		}
 
 #ifdef __EMSCRIPTEN__
