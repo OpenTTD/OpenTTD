@@ -1,3 +1,25 @@
+14.0 (2024-04-13)
+------------------------------------------------------------------------
+Update: New title game for 14.0
+Fix #12477: Crash when launching OpenTTD from within a Dropbox folder (#12478)
+Fix #12233: Mini order list overlaps vehicle group name (#12423)
+Fix #12114: Viewport coords of crashed aircraft not updated when falling (#12424)
+Fix #12395: Ensure president name widget is tall enough (#12419)
+Fix #12415: Incorrect payment for aircraft secondary cargo (#12416)
+Fix #12387: [NewGRF] Wrong tile offset passed to rail station CB 149 (slope check)
+Fix #12388: Autoreplacing train heads slowly made the unit number grow (#12389)
+Fix #12368: Incorrect offset for click position within industry chain window (#12370)
+Fix: Aircraft can float above the ground when crashed (#12425)
+Fix: Segfault when using -q without providing a . character (#12418)
+Fix: Wrong scrolling dropdown list position with RTL (#12412)
+Fix: [Win32] Force font mapper to only use TrueType fonts (#12406)
+Fix: "-q" displays NewGRF IDs in the wrong byte-order (#12397)
+Fix: Do not send chat to clients that have not authorized yet (#12377)
+Fix: [NewGRF] Label for fruit incorrectly changed to `FRUI` from `FRUT` (#12367)
+Fix: [Script] ScriptSubsidy::GetExpireDate should return an economy-date (#12372)
+Revert #11603: [Script] AI/GSTimeMode was not the best solution for economy/calendar support (#12362)
+
+
 14.0-RC3 (2024-03-23)
 ------------------------------------------------------------------------
 Fix #12347: Crash attempting to find catchment tiles of a station with no catchment area (#12348)
