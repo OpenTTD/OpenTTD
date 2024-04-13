@@ -169,7 +169,7 @@ struct IntSettingDesc : SettingDesc {
 	 * units or expressed as a percentage.
 	 * @param value The prospective new value for the setting.
 	 */
-	typedef void GetDefaultValueCallback(int32_t &value);
+	typedef int32_t GetDefaultValueCallback();
 
 	template <
 		typename Tdef,

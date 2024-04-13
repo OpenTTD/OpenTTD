@@ -266,7 +266,7 @@ static void UpdateServiceInterval(VehicleType type, int32_t new_value)
  * Checks if the service intervals in the settings are specified as percentages and corrects the default value accordingly.
  * @param new_value Contains the service interval's default value in days, or 50 (default in percentage).
  */
-static void GetDefaultServiceInterval(VehicleType type, int32_t &new_value)
+static int32_t GetDefaultServiceInterval(VehicleType type)
 {
 	VehicleDefaultSettings *vds;
 	if (_game_mode == GM_MENU || !Company::IsValidID(_current_company)) {
@@ -275,6 +275,7 @@ static void GetDefaultServiceInterval(VehicleType type, int32_t &new_value)
 		vds = &Company::Get(_current_company)->settings.vehicle;
 	}
 
+	int32_t new_value;
 	if (vds->servint_ispercent) {
 		new_value = DEF_SERVINT_PERCENT;
 	} else if (TimerGameEconomy::UsingWallclockUnits(_game_mode == GM_MENU)) {
@@ -285,7 +286,17 @@ static void GetDefaultServiceInterval(VehicleType type, int32_t &new_value)
 			case VEH_SHIP:     new_value = DEF_SERVINT_MINUTES_SHIPS; break;
 			default: NOT_REACHED();
 		}
+	} else {
+		switch (type) {
+			case VEH_TRAIN:    new_value = DEF_SERVINT_DAYS_TRAINS; break;
+			case VEH_ROAD:     new_value = DEF_SERVINT_DAYS_ROADVEH; break;
+			case VEH_AIRCRAFT: new_value = DEF_SERVINT_DAYS_AIRCRAFT; break;
+			case VEH_SHIP:     new_value = DEF_SERVINT_DAYS_SHIPS; break;
+			default: NOT_REACHED();
+		}
 	}
+
+	return new_value;
 }
 
 static void TrainAccelerationModelChanged(int32_t)
