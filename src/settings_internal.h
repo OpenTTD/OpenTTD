@@ -165,9 +165,9 @@ struct IntSettingDesc : SettingDesc {
 	 */
 	typedef void PostChangeCallback(int32_t value);
 	/**
-	 * A callback to set the correct default value, in case it can be measured in time
+	 * A callback to get the correct default value. For example a default that can be measured in time
 	 * units or expressed as a percentage.
-	 * @param value The prospective new value for the setting.
+	 * @return The correct default value for the setting.
 	 */
 	typedef int32_t GetDefaultValueCallback();
 
