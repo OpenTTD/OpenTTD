@@ -2170,7 +2170,7 @@ STR_CONFIG_ERROR_SPRITECACHE_TOO_BIG                            :{WHITE}Falha ao
 # Video initalization errors
 STR_VIDEO_DRIVER_ERROR                                          :{WHITE}Erro nas configurações de vídeo...
 STR_VIDEO_DRIVER_ERROR_NO_HARDWARE_ACCELERATION                 :{WHITE}... nenhuma GPU compatível encontrada. Aceleração por hardware desativada
-STR_VIDEO_DRIVER_ERROR_HARDWARE_ACCELERATION_CRASH              :{WHITE}... controlador gráfico (GPU) travou o jogo. Aceleração por hardware desativada
+STR_VIDEO_DRIVER_ERROR_HARDWARE_ACCELERATION_CRASH              :{WHITE}... controlador gráfico travou o jogo. Aceleração por hardware desativada
 
 # Intro window
 STR_INTRO_CAPTION                                               :{WHITE}OpenTTD {REV}
@@ -3661,7 +3661,7 @@ STR_LOCAL_AUTHORITY_ACTION_MEDIUM_ADVERTISING_CAMPAIGN          :Campanha public
 STR_LOCAL_AUTHORITY_ACTION_LARGE_ADVERTISING_CAMPAIGN           :Campanha publicitária grande
 STR_LOCAL_AUTHORITY_ACTION_ROAD_RECONSTRUCTION                  :Financiar a reconstrução das estradas locais
 STR_LOCAL_AUTHORITY_ACTION_STATUE_OF_COMPANY                    :Construir estátua do proprietário da empresa
-STR_LOCAL_AUTHORITY_ACTION_NEW_BUILDINGS                        :Financiar novos edifícios
+STR_LOCAL_AUTHORITY_ACTION_NEW_BUILDINGS                        :Financiar novas construções
 STR_LOCAL_AUTHORITY_ACTION_EXCLUSIVE_TRANSPORT                  :Comprar direitos exclusivos de transporte
 STR_LOCAL_AUTHORITY_ACTION_BRIBE                                :Subornar a autoridade local
 ###next-name-looks-similar
@@ -4013,7 +4013,7 @@ STR_VEHICLE_LIST_SEND_AIRCRAFT_TO_HANGAR                        :Enviar para um 
 
 STR_VEHICLE_LIST_MASS_STOP_LIST_TOOLTIP                         :{BLACK}Clique para parar todos os veículos desta lista
 STR_VEHICLE_LIST_MASS_START_LIST_TOOLTIP                        :{BLACK}Clique para iniciar todos os veículos desta lista
-STR_VEHICLE_LIST_AVAILABLE_ENGINES_TOOLTIP                      :{BLACK}Ver a lista de modelos disponíveis para esta classe de veículo
+STR_VEHICLE_LIST_AVAILABLE_ENGINES_TOOLTIP                      :{BLACK}Ver lista de modelos disponíveis para esta classe de veículo
 
 STR_VEHICLE_LIST_SHARED_ORDERS_LIST_CAPTION                     :{WHITE}Ordens compartilhadas de {COMMA} Veículo{P "" s}
 
@@ -4261,11 +4261,11 @@ STR_ENGINE_PREVIEW_CAPTION                                      :{WHITE}Mensagem
 STR_ENGINE_PREVIEW_MESSAGE                                      :{GOLD}Desenvolvemos um novo modelo de {STRING} - você gostaria de ter um ano de uso exclusivo deste veículo, para que possamos avaliar o desempenho dele antes de ser globalmente disponibilizado?
 
 STR_ENGINE_PREVIEW_RAILROAD_LOCOMOTIVE                          :{G=f}locomotiva ferroviária
-STR_ENGINE_PREVIEW_ELRAIL_LOCOMOTIVE                            :{G=f}locomotiva ferroviária elétrica
+STR_ENGINE_PREVIEW_ELRAIL_LOCOMOTIVE                            :{G=f}locomotiva elétrica
 STR_ENGINE_PREVIEW_MONORAIL_LOCOMOTIVE                          :{G=f}locomotiva monotrilho
 STR_ENGINE_PREVIEW_MAGLEV_LOCOMOTIVE                            :{G=f}locomotiva maglev
 
-STR_ENGINE_PREVIEW_ROAD_VEHICLE                                 :{G=m}veículo rodoviário
+STR_ENGINE_PREVIEW_ROAD_VEHICLE                                 :{G=m}veículo
 STR_ENGINE_PREVIEW_TRAM_VEHICLE                                 :{G=m}bonde
 
 STR_ENGINE_PREVIEW_AIRCRAFT                                     :{G=f}aeronave
@@ -4746,7 +4746,7 @@ STR_TIMETABLE_CLEAR_SPEED                                       :{BLACK}Remover 
 STR_TIMETABLE_CLEAR_SPEED_TOOLTIP                               :{BLACK}Apagar a velocidade máxima de viagem da ordem selecionada. Ctrl+Clique para apagar a velocidade de todas as ordens
 
 STR_TIMETABLE_RESET_LATENESS                                    :{BLACK}Reiniciar Contador de Atrasos
-STR_TIMETABLE_RESET_LATENESS_TOOLTIP                            :{BLACK}Reiniciar o contador de atrasos para o veículo ficar pontual. Ctrl+Clique para reiniciar todo o grupo e, com isso, fazer o veículo mais atrasado ficar no horário e todos os outros ficarem adiantados
+STR_TIMETABLE_RESET_LATENESS_TOOLTIP                            :{BLACK}Reiniciar o contador de atrasos para o veículo ficar pontual. Ctrl+Clique para reiniciar todo o grupo e, com isso, fazer o veículo mais atrasado ficar pontual e todos os outros ficarem adiantados
 
 STR_TIMETABLE_AUTOFILL                                          :{BLACK}Preencher automaticamente
 STR_TIMETABLE_AUTOFILL_TOOLTIP                                  :{BLACK}Preencher o horário automaticamente com os valores da próxima viagem. Ctrl+Clique para tentar manter os tempos de espera
@@ -4921,7 +4921,7 @@ STR_ERROR_COULD_NOT_CREATE_TOWN                                 :{WHITE}Geraçã
 STR_ERROR_NO_TOWN_IN_SCENARIO                                   :{WHITE}... não existem localidades neste cenário
 
 STR_ERROR_PNGMAP                                                :{WHITE}Não foi possível carregar paisagem de PNG...
-STR_ERROR_PNGMAP_FILE_NOT_FOUND                                 :{WHITE}... arquivo não encontrado
+STR_ERROR_PNGMAP_FILE_NOT_FOUND                                 :{WHITE}... arquivo não foi encontrado
 STR_ERROR_PNGMAP_IMAGE_TYPE                                     :{WHITE}... não foi possível converter o tipo de imagem. A imagem deve ser PNG de 8 ou 24-bit
 STR_ERROR_PNGMAP_MISC                                           :{WHITE}... alguma coisa deu errado (provavelmente arquivo corrompido)
 
