@@ -118,6 +118,7 @@ protected:
 	TileIndex    m_destTile;
 	TrackdirBits m_destTrackdirs;
 	StationID    m_dest_station_id;
+	DepotID      m_dest_depot_id;
 	bool         m_any_depot;
 
 	/** to access inherited path finder */
@@ -149,14 +150,25 @@ public:
 				break;
 
 			case OT_GOTO_DEPOT:
+				m_dest_station_id = INVALID_STATION;
+
 				if (v->current_order.GetDepotActionType() & ODATFB_NEAREST_DEPOT) {
 					m_any_depot = true;
+					m_dest_depot_id = INVALID_DEPOT;
+					m_destTile = v->dest_tile;
+					m_destTrackdirs = TrackStatusToTrackdirBits(GetTileTrackStatus(v->dest_tile, TRANSPORT_RAIL, 0));
+				} else {
+					m_dest_depot_id = v->current_order.GetDestination();
+					assert(Depot::IsValidID(m_dest_depot_id));
+					m_destTile = CalcClosestDepotTile(m_dest_depot_id, v->tile);
+					m_destTrackdirs = INVALID_TRACKDIR_BIT;
 				}
-				[[fallthrough]];
+				break;
 
 			default:
 				m_destTile = v->dest_tile;
 				m_dest_station_id = INVALID_STATION;
+				m_dest_depot_id = INVALID_DEPOT;
 				m_destTrackdirs = TrackStatusToTrackdirBits(GetTileTrackStatus(v->dest_tile, TRANSPORT_RAIL, 0));
 				break;
 		}
@@ -176,6 +188,10 @@ public:
 			return HasStationTileRail(tile)
 				&& (GetStationIndex(tile) == m_dest_station_id)
 				&& (GetRailStationTrack(tile) == TrackdirToTrack(td));
+		} else if (m_dest_depot_id != INVALID_DEPOT) {
+			return IsRailDepotTile(tile)
+				&& (GetDepotIndex(tile) == m_dest_depot_id)
+				&& (GetRailDepotTrack(tile) == TrackdirToTrack(td));
 		}
 
 		if (m_any_depot) {

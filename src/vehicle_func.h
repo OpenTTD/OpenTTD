@@ -40,6 +40,7 @@ bool IsValidImageIndex(uint8_t image_index);
 typedef Vehicle *VehicleFromPosProc(Vehicle *v, void *data);
 
 void VehicleServiceInDepot(Vehicle *v);
+void VehicleServiceInExtendedDepot(Vehicle *v);
 uint CountVehiclesInChain(const Vehicle *v);
 void FindVehicleOnPos(TileIndex tile, void *data, VehicleFromPosProc *proc);
 void FindVehicleOnPosXY(int x, int y, void *data, VehicleFromPosProc *proc);
@@ -164,6 +165,7 @@ inline StringID GetCmdSendToDepotMsg(const BaseVehicle *v)
 }
 
 CommandCost EnsureNoVehicleOnGround(TileIndex tile);
+CommandCost EnsureNoVisibleVehicleOnGround(TileIndex tile);
 CommandCost EnsureNoTrainOnTrackBits(TileIndex tile, TrackBits track_bits);
 
 bool CanVehicleUseStation(EngineID engine_type, const struct Station *st);

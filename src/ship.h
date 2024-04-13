@@ -31,7 +31,7 @@ struct Ship final : public SpecializedVehicle<Ship, VEH_SHIP> {
 	/** We don't want GCC to zero our struct! It already is zeroed and has an index! */
 	Ship() : SpecializedVehicleBase() {}
 	/** We want to 'destruct' the right class. */
-	virtual ~Ship() { this->PreDestructor(); }
+	virtual ~Ship();
 
 	void MarkDirty() override;
 	void UpdateDeltaXY() override;
@@ -43,7 +43,7 @@ struct Ship final : public SpecializedVehicle<Ship, VEH_SHIP> {
 	int GetDisplayMaxSpeed() const override { return this->vcache.cached_max_speed / 2; }
 	int GetCurrentMaxSpeed() const override { return std::min<int>(this->vcache.cached_max_speed, this->current_order.GetMaxSpeed() * 2); }
 	Money GetRunningCost() const override;
-	bool IsInDepot() const override { return this->state == TRACK_BIT_DEPOT; }
+	bool IsInDepot() const override { return HasBit((uint8_t)this->state, TRACK_DEPOT); }
 	bool Tick() override;
 	void OnNewCalendarDay() override;
 	void OnNewEconomyDay() override;
