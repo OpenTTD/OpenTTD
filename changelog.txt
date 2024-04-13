@@ -5,7 +5,7 @@ Fix #12477: Use std::filesystem::rename instead of Windows Shell API call (#1247
 Fix #12233: Mini order list overlaps vehicle group name (#12423)
 Fix #12114: Viewport coords of crashed aircraft not updated when falling (#12424)
 Fix #12395: Ensure president name widget is tall enough (#12419)
-Fix #12415: Aircraft::tile is valid only for front vehicle (#12416)
+Fix #12415: Incorrect payment for aircraft secondary cargo (#12416)
 Fix #12387: [NewGRF] Wrong tile offset passed to rail station CB 149 (slope check)
 Fix #12388: Vehicle::CopyVehicleConfigAndStatistics not releasing unit number (#12389)
 Fix #12268: Capitalize "Wait to unbunch" order string (#12375)
