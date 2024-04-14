@@ -692,7 +692,7 @@ STR_NEWS_MENU_DELETE_ALL_MESSAGES                               :Pašalinti visa
 STR_ABOUT_MENU_LAND_BLOCK_INFO                                  :Žemės ploto informacija
 STR_ABOUT_MENU_HELP                                             :Pagalba ir gidai
 STR_ABOUT_MENU_TOGGLE_CONSOLE                                   :Perjungti konsolę
-STR_ABOUT_MENU_AI_DEBUG                                         :AI / GameScript derinimas
+STR_ABOUT_MENU_AI_DEBUG                                         :DI / „GameScript“ derinimas
 STR_ABOUT_MENU_SCREENSHOT                                       :Ekrano nuotrauka
 STR_ABOUT_MENU_SHOW_FRAMERATE                                   :Kadrų dažniai
 STR_ABOUT_MENU_ABOUT_OPENTTD                                    :Apie „OpenTTD“
@@ -1095,7 +1095,13 @@ STR_EXTRA_VIEW_MOVE_MAIN_TO_VIEW_TT                             :{BLACK}Įkelti 
 STR_GAME_OPTIONS_CAPTION                                        :{WHITE}Pagrindinės nuostatos
 
 
+STR_GAME_OPTIONS_VOLUME                                         :Tūris
 
+STR_GAME_OPTIONS_VOLUME_0                                       :0%
+STR_GAME_OPTIONS_VOLUME_25                                      :25%
+STR_GAME_OPTIONS_VOLUME_50                                      :50%
+STR_GAME_OPTIONS_VOLUME_75                                      :75%
+STR_GAME_OPTIONS_VOLUME_100                                     :100%
 
 STR_GAME_OPTIONS_CURRENCY_UNITS_FRAME                           :{BLACK}Valiuta
 STR_GAME_OPTIONS_CURRENCY_UNITS_DROPDOWN_TOOLTIP                :{BLACK}Valiutos pasirinkimas
@@ -1151,6 +1157,10 @@ STR_GAME_OPTIONS_AUTOSAVE_DROPDOWN_TOOLTIP                      :{BLACK}Pasirink
 # Autosave dropdown
 ###length 5
 STR_GAME_OPTIONS_AUTOSAVE_DROPDOWN_OFF                          :Išjungta
+STR_GAME_OPTIONS_AUTOSAVE_DROPDOWN_EVERY_10_MINUTES             :Kas 10min.
+STR_GAME_OPTIONS_AUTOSAVE_DROPDOWN_EVERY_30_MINUTES             :Kas 30min.
+STR_GAME_OPTIONS_AUTOSAVE_DROPDOWN_EVERY_60_MINUTES             :Kas 60min.
+STR_GAME_OPTIONS_AUTOSAVE_DROPDOWN_EVERY_120_MINUTES            :Kas 120min.
 
 STR_GAME_OPTIONS_LANGUAGE                                       :{BLACK}Kalba
 STR_GAME_OPTIONS_LANGUAGE_TOOLTIP                               :{BLACK}Pasirinkite aplinkos kalbą
@@ -1789,6 +1799,7 @@ STR_CONFIG_SETTING_LOADING_INDICATORS                           :Rodyti krovos i
 STR_CONFIG_SETTING_LOADING_INDICATORS_HELPTEXT                  :Krovos indikatoriai rodomi virš pakraunamų bei iškraunamų tansporto priemonių
 
 ###length 3
+STR_CONFIG_SETTING_TIMETABLE_MODE_DAYS                          :Dienos
 
 STR_CONFIG_SETTING_TIMETABLE_SHOW_ARRIVAL_DEPARTURE             :Rodyti arvykimą ir išvykimą tvarkaraščiuose: {STRING}
 STR_CONFIG_SETTING_TIMETABLE_SHOW_ARRIVAL_DEPARTURE_HELPTEXT    :Tvarkaraščiuose rodyti numatomas atvykimo ir išvykimo datas
@@ -2302,10 +2313,12 @@ STR_LIVERY_ROAD_VEHICLE_TOOLTIP                                 :{BLACK}Rodyti a
 STR_LIVERY_SHIP_TOOLTIP                                         :{BLACK}Rodyti laivų spalvas
 STR_LIVERY_AIRCRAFT_TOOLTIP                                     :{BLACK}Rodyti lėktuvų spalvas
 STR_LIVERY_TRAIN_GROUP_TOOLTIP                                  :{BLACK}Rodyti traukinių grupių spalvas
+STR_LIVERY_SHIP_GROUP_TOOLTIP                                   :{BLACK}Rodyti laivų grupių spalvas
 STR_LIVERY_PRIMARY_TOOLTIP                                      :{BLACK}Pasirinkite pirminę spalvą pasirinktai schemai. Spustelėjus laikant nuspaustą Ctrl klavišą, pasirinkta spava bus nustatyta visoms schemoms.
 STR_LIVERY_SECONDARY_TOOLTIP                                    :{BLACK}Pasirinkite antrinę spalvą pasirinktai schemai. Spustelėjus laikant nuspaustą Ctrl klavišą, pasirinkta spava bus nustatyta visoms schemoms.
 STR_LIVERY_PANEL_TOOLTIP                                        :{BLACK}Pasirinkite objektą, kurio spalvas norite pakeisti. Spragsint laikant nuspaustą Ctrl klavišą, galėsite pasirinkti iškart kelis objektus.
 STR_LIVERY_TRAIN_GROUP_EMPTY                                    :Nėra nustatytų traukinių grupių
+STR_LIVERY_SHIP_GROUP_EMPTY                                     :Nėra nustatytų laivų grupių
 
 ###length 23
 STR_LIVERY_DEFAULT                                              :Numatytosios spalvos
@@ -3290,6 +3303,7 @@ STR_MAPGEN_DESERT_COVERAGE_DOWN                                 :{BLACK}Sumažin
 STR_MAPGEN_DESERT_COVERAGE_TEXT                                 :{BLACK}{NUM}%
 STR_MAPGEN_TERRAIN_TYPE                                         :{BLACK}Vietovės tipas:
 STR_MAPGEN_SEA_LEVEL                                            :{BLACK}Jūros lygis:
+STR_MAPGEN_SEA_LEVEL_TOOLTIP                                    :{BLACK}Pasirinkti jūros lygį
 STR_MAPGEN_QUANTITY_OF_RIVERS                                   :{BLACK}Upių kiekis:
 STR_MAPGEN_SMOOTHNESS                                           :{BLACK}Jautrumas:
 STR_MAPGEN_VARIETY                                              :{BLACK}Įvairovės paskirstymas:
@@ -4700,7 +4714,7 @@ STR_DATE_YEAR_TOOLTIP                                           :{BLACK}Pasirink
 
 
 # AI debug window
-STR_AI_DEBUG                                                    :{WHITE}DI / GameScript derinimas
+STR_AI_DEBUG                                                    :{WHITE}DI / „GameScript“ derinimas
 STR_AI_DEBUG_NAME_AND_VERSION                                   :{BLACK}{STRING} (v{NUM})
 STR_AI_DEBUG_NAME_TOOLTIP                                       :{BLACK}Skripto pavadinimas
 STR_AI_DEBUG_SETTINGS                                           :{BLACK}Nustatymai
@@ -4721,9 +4735,10 @@ STR_AI_GAME_SCRIPT_TOOLTIP                                      :{BLACK}Patikrin
 
 STR_ERROR_AI_NO_AI_FOUND                                        :Nerasta jokio tinkamo DI.{}Šis DI yra netikras ir nieko nedarys.{}Galite parsisiųsti keletą DI per 'Turinio internete' sistemą.
 STR_ERROR_AI_PLEASE_REPORT_CRASH                                :{WHITE}Vienas iš paleistų skriptų išsijungė. Praneškite apie tai šio skripto autoriui su skripto debug lango vaizdu
-STR_ERROR_AI_DEBUG_SERVER_ONLY                                  :{YELLOW}DI / GameScript derinimo langas yra pasiekiamas tik iš serverio
+STR_ERROR_AI_DEBUG_SERVER_ONLY                                  :{YELLOW}DI / „GameScript“ derinimo langas yra pasiekiamas tik iš serverio
 
 # AI configuration window
+STR_AI_CONFIG_CAPTION_AI                                        :{WHITE}DI nustatymai
 STR_AI_CONFIG_GAMELIST_TOOLTIP                                  :{BLACK}Žaidimo skriptas bus įkeltas sekančiame žaidime
 STR_AI_CONFIG_AILIST_TOOLTIP                                    :{BLACK}DI'ai bus įkelti sekančiame žaidime
 STR_AI_CONFIG_HUMAN_PLAYER                                      :Žaidėjas Žmogus
@@ -4770,6 +4785,7 @@ STR_SCREENSHOT_HEIGHTMAP_SCREENSHOT                             :{BLACK}Teminio 
 STR_SCREENSHOT_MINIMAP_SCREENSHOT                               :{BLACK}Mini žemėlapio kopija
 
 # Script Parameters
+STR_AI_SETTINGS_CAPTION                                         :{WHITE}{STRING} Parametrai
 STR_AI_SETTINGS_CAPTION_AI                                      :DI
 STR_AI_SETTINGS_CLOSE                                           :{BLACK}Uždaryti
 STR_AI_SETTINGS_RESET                                           :{BLACK}Atstatyti

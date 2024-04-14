@@ -1126,7 +1126,7 @@ STR_GAME_OPTIONS_CURRENCY_NLG                                   :Нідерла�
 STR_GAME_OPTIONS_CURRENCY_NOK                                   :Норвезька крона
 STR_GAME_OPTIONS_CURRENCY_PLN                                   :Польський злотий
 STR_GAME_OPTIONS_CURRENCY_RON                                   :Румунський лей
-STR_GAME_OPTIONS_CURRENCY_RUR                                   :Російський рубель
+STR_GAME_OPTIONS_CURRENCY_RUR                                   :Російський рубль
 STR_GAME_OPTIONS_CURRENCY_SIT                                   :Словенський талер
 STR_GAME_OPTIONS_CURRENCY_SEK                                   :Шведська крона
 STR_GAME_OPTIONS_CURRENCY_TRY                                   :Турецька ліра
@@ -1139,7 +1139,7 @@ STR_GAME_OPTIONS_CURRENCY_ZAR                                   :Південн�
 STR_GAME_OPTIONS_CURRENCY_CUSTOM                                :Власна...
 STR_GAME_OPTIONS_CURRENCY_GEL                                   :Грузинські ларі
 STR_GAME_OPTIONS_CURRENCY_IRR                                   :Іранський ріал
-STR_GAME_OPTIONS_CURRENCY_RUB                                   :Російський новий рубель
+STR_GAME_OPTIONS_CURRENCY_RUB                                   :Російський новий рубль
 STR_GAME_OPTIONS_CURRENCY_MXN                                   :Мексиканське песо
 STR_GAME_OPTIONS_CURRENCY_NTD                                   :Новий тайваньський долар
 STR_GAME_OPTIONS_CURRENCY_CNY                                   :Китайські ренміні
@@ -1155,7 +1155,7 @@ STR_GAME_OPTIONS_AUTOSAVE_DROPDOWN_TOOLTIP                      :{BLACK}Вибе
 
 # Autosave dropdown
 ###length 5
-STR_GAME_OPTIONS_AUTOSAVE_DROPDOWN_OFF                          :вимкнено
+STR_GAME_OPTIONS_AUTOSAVE_DROPDOWN_OFF                          :Вимкнено
 STR_GAME_OPTIONS_AUTOSAVE_DROPDOWN_EVERY_10_MINUTES             :Кожні 10 хвилин
 STR_GAME_OPTIONS_AUTOSAVE_DROPDOWN_EVERY_30_MINUTES             :Кожні 30 хвилин
 STR_GAME_OPTIONS_AUTOSAVE_DROPDOWN_EVERY_60_MINUTES             :Кожні 60 хвилин
@@ -1166,7 +1166,7 @@ STR_GAME_OPTIONS_LANGUAGE_TOOLTIP                               :{BLACK}Вибе
 STR_GAME_OPTIONS_LANGUAGE_PERCENTAGE                            :{STRING} ({NUM}% виконано)
 
 STR_GAME_OPTIONS_FULLSCREEN                                     :{BLACK}Повноекранний режим
-STR_GAME_OPTIONS_FULLSCREEN_TOOLTIP                             :{BLACK}Натисніть цю кнопку, щоби грати в OpenTTD у повноекранному режимі
+STR_GAME_OPTIONS_FULLSCREEN_TOOLTIP                             :{BLACK}Позначте цей прапорець для використання повноекранного режиму
 
 STR_GAME_OPTIONS_RESOLUTION                                     :{BLACK}Роздільна здатність екрана
 STR_GAME_OPTIONS_RESOLUTION_TOOLTIP                             :{BLACK}Виберіть, яку роздільну здатність екрана використовувати
@@ -1174,7 +1174,7 @@ STR_GAME_OPTIONS_RESOLUTION_OTHER                               :інша
 STR_GAME_OPTIONS_RESOLUTION_ITEM                                :{NUM}x{NUM}
 
 STR_GAME_OPTIONS_VIDEO_ACCELERATION                             :{BLACK}Апаратне прискорення
-STR_GAME_OPTIONS_VIDEO_ACCELERATION_TOOLTIP                     :{BLACK}Увімкнутий прапорець дозволить використання грою прискорення апаратного забезпечення. Налаштування запрацює тільки після перезапуску гри
+STR_GAME_OPTIONS_VIDEO_ACCELERATION_TOOLTIP                     :{BLACK}Позначте цей прапорець для використання апаратного прискорення. Зміни застосуються тільки після перезапуску гри
 STR_GAME_OPTIONS_VIDEO_ACCELERATION_RESTART                     :{WHITE}Налаштування запрацює тільки після перезапуску гри
 
 STR_GAME_OPTIONS_VIDEO_VSYNC                                    :{BLACK}Вертикальна синхронізація
@@ -1183,17 +1183,17 @@ STR_GAME_OPTIONS_VIDEO_VSYNC_TOOLTIP                            :{BLACK}Позн
 STR_GAME_OPTIONS_VIDEO_DRIVER_INFO                              :{BLACK}Використовуваний драйвер: {STRING}
 
 STR_GAME_OPTIONS_GUI_SCALE_FRAME                                :{BLACK}Розмір інтерфейсу
-STR_GAME_OPTIONS_GUI_SCALE_TOOLTIP                              :{BLACK}Перетягніть повзунок для встановлення розміру інтерфейсу. Ctrl+протягування для точнішого перетягування
+STR_GAME_OPTIONS_GUI_SCALE_TOOLTIP                              :{BLACK}Потягніть повзунок для зміни розміру інтерфейсу. Ctrl+протягування для точнішого коригування
 STR_GAME_OPTIONS_GUI_SCALE_AUTO                                 :{BLACK}Визначати розмір автоматично
 STR_GAME_OPTIONS_GUI_SCALE_AUTO_TOOLTIP                         :{BLACK}Позначте цей прапорець для того, щоби визначати розмір інтерфейсу автоматично
 
-STR_GAME_OPTIONS_GUI_SCALE_BEVELS                               :{BLACK}Межі шкали
-STR_GAME_OPTIONS_GUI_SCALE_BEVELS_TOOLTIP                       :BLACK}Увімкнутий прапорець дозволить змінити розмір інтерфейсу
+STR_GAME_OPTIONS_GUI_SCALE_BEVELS                               :{BLACK}Масштабування рельєфних елементів
+STR_GAME_OPTIONS_GUI_SCALE_BEVELS_TOOLTIP                       :{BLACK}Позначте цей прапорець для того, щоби масштабувати рельєфні елементи інтерфейсу
 
-STR_GAME_OPTIONS_GUI_FONT_SPRITE                                :{BLACK}Використовувати шрифт звичайної роздільності
-STR_GAME_OPTIONS_GUI_FONT_SPRITE_TOOLTIP                        :{BLACK}Увімкніть прапорець для використання шрифтів незмінних розмірів
+STR_GAME_OPTIONS_GUI_FONT_SPRITE                                :{BLACK}Використовувати стандартний растровий шрифт
+STR_GAME_OPTIONS_GUI_FONT_SPRITE_TOOLTIP                        :{BLACK}Позначте цей прапорець для використання стандартних растрових шрифтів фіксованого розміру
 STR_GAME_OPTIONS_GUI_FONT_AA                                    :{BLACK}Згладжування шрифтів
-STR_GAME_OPTIONS_GUI_FONT_AA_TOOLTIP                            :{BLACK}Увімкніть прапорець для згладження шрифтів змінних розмірів
+STR_GAME_OPTIONS_GUI_FONT_AA_TOOLTIP                            :{BLACK}Позначте цей прапорець для того, щоби згладжувати шрифти змінних розмірів
 
 STR_GAME_OPTIONS_GUI_SCALE_1X                                   :1x
 STR_GAME_OPTIONS_GUI_SCALE_2X                                   :2x
@@ -1202,7 +1202,7 @@ STR_GAME_OPTIONS_GUI_SCALE_4X                                   :4x
 STR_GAME_OPTIONS_GUI_SCALE_5X                                   :5x
 
 STR_GAME_OPTIONS_PARTICIPATE_SURVEY_FRAME                       :{BLACK}Автоматизований збір даних
-STR_GAME_OPTIONS_PARTICIPATE_SURVEY                             :{BLACK}Участь в автоматизованому зборі даних
+STR_GAME_OPTIONS_PARTICIPATE_SURVEY                             :{BLACK}Брати участь в автоматизованому зборі даних
 STR_GAME_OPTIONS_PARTICIPATE_SURVEY_TOOLTIP                     :{BLACK}Якщо увімкнено, OpenTTD передаватиме зібрані дані при виході з гри
 STR_GAME_OPTIONS_PARTICIPATE_SURVEY_LINK                        :{BLACK}Про збір даних і приватність
 STR_GAME_OPTIONS_PARTICIPATE_SURVEY_LINK_TOOLTIP                :{BLACK}Відкриє переглядач з детальнішою інформацією про автоматичний збір даних
@@ -2662,7 +2662,7 @@ STR_NETWORK_ASK_RELAY_YES_ONCE                                  :{BLACK}Так, 
 STR_NETWORK_ASK_RELAY_YES_ALWAYS                                :{BLACK}Так, більше не питати
 
 STR_NETWORK_ASK_SURVEY_CAPTION                                  :Дозволити автоматизований збір даних?
-STR_NETWORK_ASK_SURVEY_TEXT                                     :Бажаєте долучитись до автоматичного збору даних?{}OpenTTD передаватиме дані при виході з гри.{}Це можна будь-коли змінити в "Налаштуваннях гри".
+STR_NETWORK_ASK_SURVEY_TEXT                                     :Бажаєте долучитися до автоматичного збору даних?{}OpenTTD передаватиме деякі дані при виході з гри.{}Це можна змінити в розділі "Налаштування гри" будь-коли.
 STR_NETWORK_ASK_SURVEY_PREVIEW                                  :Попередній перегляд збору даних
 STR_NETWORK_ASK_SURVEY_LINK                                     :Про збір даних і приватність
 STR_NETWORK_ASK_SURVEY_NO                                       :Ні
