@@ -537,7 +537,7 @@ static uint32_t VehicleGetVariable(Vehicle *v, const VehicleScopeResolver *objec
 		}
 
 		case 0x46: // Motion counter
-			return v->motion_counter;
+			return v->First()->motion_counter;
 
 		case 0x47: { // Vehicle cargo info
 			/* Format: ccccwwtt
