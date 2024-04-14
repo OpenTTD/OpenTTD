@@ -2050,9 +2050,9 @@ const LanguageMetadata *GetLanguage(uint8_t newgrflangid)
  * @param hdr  the place to write the header information to
  * @return true if and only if the language file is of a compatible version
  */
-static bool GetLanguageFileHeader(const char *file, LanguagePackHeader *hdr)
+static bool GetLanguageFileHeader(const std::string &file, LanguagePackHeader *hdr)
 {
-	FILE *f = fopen(file, "rb");
+	FILE *f = fopen(file.c_str(), "rb");
 	if (f == nullptr) return false;
 
 	size_t read = fread(hdr, sizeof(*hdr), 1, f);
@@ -2074,29 +2074,25 @@ static bool GetLanguageFileHeader(const char *file, LanguagePackHeader *hdr)
  */
 static void FillLanguageList(const std::string &path)
 {
-	DIR *dir = ttd_opendir(path.c_str());
-	if (dir != nullptr) {
-		struct dirent *dirent;
-		while ((dirent = readdir(dir)) != nullptr) {
-			std::string d_name = FS2OTTD(dirent->d_name);
-			const char *extension = strrchr(d_name.c_str(), '.');
+	std::error_code error_code;
+	for (const auto &dir_entry : std::filesystem::directory_iterator(OTTD2FS(path), error_code)) {
+		if (!dir_entry.is_regular_file()) continue;
+		if (dir_entry.path().extension() != ".lng") continue;
 
-			/* Not a language file */
-			if (extension == nullptr || strcmp(extension, ".lng") != 0) continue;
+		LanguageMetadata lmd;
+		lmd.file = FS2OTTD(dir_entry.path());
 
-			LanguageMetadata lmd;
-			lmd.file = path + d_name;
-
-			/* Check whether the file is of the correct version */
-			if (!GetLanguageFileHeader(lmd.file.string().c_str(), &lmd)) {
-				Debug(misc, 3, "{} is not a valid language file", lmd.file);
-			} else if (GetLanguage(lmd.newgrflangid) != nullptr) {
-				Debug(misc, 3, "{}'s language ID is already known", lmd.file);
-			} else {
-				_languages.push_back(lmd);
-			}
+		/* Check whether the file is of the correct version */
+		if (!GetLanguageFileHeader(lmd.file.string(), &lmd)) {
+			Debug(misc, 3, "{} is not a valid language file", lmd.file);
+		} else if (GetLanguage(lmd.newgrflangid) != nullptr) {
+			Debug(misc, 3, "{}'s language ID is already known", lmd.file);
+		} else {
+			_languages.push_back(lmd);
 		}
-		closedir(dir);
+	}
+	if (error_code) {
+		Debug(misc, 9, "Unable to open directory {}: {}", path, error_code.message());
 	}
 }
 
