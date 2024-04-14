@@ -523,7 +523,7 @@ DEF_CONSOLE_CMD(ConRemove)
 	_console_file_list_savegame.ValidateFileList();
 	const FiosItem *item = _console_file_list_savegame.FindItem(file);
 	if (item != nullptr) {
-		if (unlink(item->name.c_str()) != 0) {
+		if (!FioRemove(item->name)) {
 			IConsolePrint(CC_ERROR, "Failed to delete '{}'.", item->name);
 		}
 	} else {
