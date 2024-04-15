@@ -210,20 +210,20 @@ struct GoodsEntry {
 	StationCargoList cargo{}; ///< The cargo packets of cargo waiting in this station
 	FlowStatMap flows{}; ///< Planned flows through this station.
 
-	uint max_waiting_cargo{0}; ///< Max cargo from this station waiting at any station.
-	NodeID node{INVALID_NODE}; ///< ID of node in link graph referring to this goods entry.
-	LinkGraphID link_graph{INVALID_LINK_GRAPH}; ///< Link graph this station belongs to.
+	uint max_waiting_cargo = 0; ///< Max cargo from this station waiting at any station.
+	NodeID node = INVALID_NODE; ///< ID of node in link graph referring to this goods entry.
+	LinkGraphID link_graph = INVALID_LINK_GRAPH; ///< Link graph this station belongs to.
 
-	uint8_t status{0}; ///< Status of this cargo, see #GoodsEntryStatus.
+	uint8_t status = 0; ///< Status of this cargo, see #GoodsEntryStatus.
 
 	/**
 	 * Number of rating-intervals (up to 255) since the last vehicle tried to load this cargo.
 	 * The unit used is STATION_RATING_TICKS.
 	 * This does not imply there was any cargo to load.
 	 */
-	uint8_t time_since_pickup{255};
+	uint8_t time_since_pickup = 255;
 
-	uint8_t rating{INITIAL_STATION_RATING}; ///< %Station rating for this cargo.
+	uint8_t rating = INITIAL_STATION_RATING; ///< %Station rating for this cargo.
 
 	/**
 	 * Maximum speed (up to 255) of the last vehicle that tried to load this cargo.
@@ -234,15 +234,15 @@ struct GoodsEntry {
 	 *  - Ships: 0.5 * km-ish/h
 	 *  - Aircraft: 8 * mph
 	 */
-	uint8_t last_speed{0};
+	uint8_t last_speed = 0;
 
 	/**
 	 * Age in years (up to 255) of the last vehicle that tried to load this cargo.
 	 * This does not imply there was any cargo to load.
 	 */
-	uint8_t last_age{255};
+	uint8_t last_age = 255;
 
-	uint8_t amount_fract{0}; ///< Fractional part of the amount in the cargo list
+	uint8_t amount_fract = 0; ///< Fractional part of the amount in the cargo list
 
 	/**
 	 * Reports whether a vehicle has ever tried to load the cargo at this station.

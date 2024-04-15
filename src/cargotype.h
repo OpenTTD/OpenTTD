@@ -67,19 +67,19 @@ static const uint TOWN_PRODUCTION_DIVISOR = 256;
 /** Specification of a cargo type. */
 struct CargoSpec {
 	CargoLabel label;                ///< Unique label of the cargo type.
-	uint8_t bitnum{INVALID_CARGO_BITNUM}; ///< Cargo bit number, is #INVALID_CARGO_BITNUM for a non-used spec.
+	uint8_t bitnum = INVALID_CARGO_BITNUM; ///< Cargo bit number, is #INVALID_CARGO_BITNUM for a non-used spec.
 	uint8_t legend_colour;
 	uint8_t rating_colour;
 	uint8_t weight;                    ///< Weight of a single unit of this cargo type in 1/16 ton (62.5 kg).
-	uint16_t multiplier{0x100}; ///< Capacity multiplier for vehicles. (8 fractional bits)
+	uint16_t multiplier = 0x100; ///< Capacity multiplier for vehicles. (8 fractional bits)
 	uint16_t classes;                  ///< Classes of this cargo type. @see CargoClass
 	int32_t initial_payment;           ///< Initial payment rate before inflation is applied.
 	uint8_t transit_periods[2];
 
 	bool is_freight;                 ///< Cargo type is considered to be freight (affects train freight multiplier).
 	TownAcceptanceEffect town_acceptance_effect; ///< The effect that delivering this cargo type has on towns. Also affects destination of subsidies.
-	TownProductionEffect town_production_effect{INVALID_TPE}; ///< The effect on town cargo production.
-	uint16_t town_production_multiplier{TOWN_PRODUCTION_DIVISOR}; ///< Town production multipler, if commanded by TownProductionEffect.
+	TownProductionEffect town_production_effect = INVALID_TPE; ///< The effect on town cargo production.
+	uint16_t town_production_multiplier = TOWN_PRODUCTION_DIVISOR; ///< Town production multipler, if commanded by TownProductionEffect.
 	uint8_t callback_mask;             ///< Bitmask of cargo callbacks that have to be called
 
 	StringID name;                   ///< Name of this type of cargo.
