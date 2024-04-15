@@ -1293,7 +1293,7 @@ STR_TERRAIN_TYPE_CUSTOM                                         :Προσαρμ�
 STR_TERRAIN_TYPE_CUSTOM_VALUE                                   :Προσαρμοσμένο ύψος ({NUM})
 
 ###length 4
-STR_CITY_APPROVAL_LENIENT                                       :Ήπειο
+STR_CITY_APPROVAL_LENIENT                                       :Ήπια
 STR_CITY_APPROVAL_TOLERANT                                      :Υπομονετική
 STR_CITY_APPROVAL_HOSTILE                                       :Εχθρική
 STR_CITY_APPROVAL_PERMISSIVE                                    :Ανεκτική (χωρίς επίδραση σε ενέργειες της εταιρίας)
@@ -1381,8 +1381,8 @@ STR_CONFIG_SETTING_RUNNING_COSTS_HELPTEXT                       :Θέτει το
 STR_CONFIG_SETTING_CONSTRUCTION_SPEED                           :Ταχύτητα οικοδόμησης: {STRING}
 STR_CONFIG_SETTING_CONSTRUCTION_SPEED_HELPTEXT                  :Περιορίζει το ποσοστό των οικοδομήμσεων από τα ΑΙ
 
-STR_CONFIG_SETTING_VEHICLE_BREAKDOWNS                           :Καταρρεύσεις οχημάτων: {STRING}
-STR_CONFIG_SETTING_VEHICLE_BREAKDOWNS_HELPTEXT                  :Ελέγχει πόσο συχνά καταρρέουν τα ανεπαρκώς συντηρημένα οχήματα
+STR_CONFIG_SETTING_VEHICLE_BREAKDOWNS                           :Βλάβες οχημάτων: {STRING}
+STR_CONFIG_SETTING_VEHICLE_BREAKDOWNS_HELPTEXT                  :Ελέγχει πόσο συχνά τα ανεπαρκώς συντηρημένα οχήματα παθαίνουν βλάβες
 
 STR_CONFIG_SETTING_SUBSIDY_MULTIPLIER                           :Πολλαπλασιαστής επιδότησης: {STRING}
 STR_CONFIG_SETTING_SUBSIDY_MULTIPLIER_HELPTEXT                  :Θέστε πόσο ξεπληρώνεται για επιδοτημένες συνδέσεις
@@ -1540,7 +1540,7 @@ STR_CONFIG_SETTING_PLANE_SPEED                                  :Παράγον�
 STR_CONFIG_SETTING_PLANE_SPEED_HELPTEXT                         :Ορίζεται η σχετική ταχύτητα των αεροπλάνων συγκριτικά με τους άλλους τύπους οχημάτων, ώστε να μειώνεται το ποσό του εισοδήματος από μεταφορές με αεροσκάφη
 STR_CONFIG_SETTING_PLANE_SPEED_VALUE                            :1 / {COMMA}
 
-STR_CONFIG_SETTING_PLANE_CRASHES                                :Αριθμός των αεροπορικών ατυχημάτων: {STRING}
+STR_CONFIG_SETTING_PLANE_CRASHES                                :Αριθμός αεροπορικών ατυχημάτων: {STRING}
 STR_CONFIG_SETTING_PLANE_CRASHES_HELPTEXT                       :Ορίστε την πιθανότητα συντριβής ενός τυχαίου αεροσκάφους.{}* Μεγάλα αεροσκάφη πάντα έχουν ένα ρίσκο συντριβής όταν προσγειώνονται σε μικρά αεροδρόμια.
 ###length 3
 STR_CONFIG_SETTING_PLANE_CRASHES_NONE                           :Κανένα*
@@ -1669,10 +1669,10 @@ STR_CONFIG_SETTING_DESERT_COVERAGE_VALUE                        :{NUM}%
 STR_CONFIG_SETTING_ROUGHNESS_OF_TERRAIN                         :Ανωμαλία επιφάνειας (μόνο με TerraGenesis) : {STRING}
 STR_CONFIG_SETTING_ROUGHNESS_OF_TERRAIN_HELPTEXT                :Επιλογή του σχήματος και του αριθμού των λόφων: Τα λεία τοπία έχουν λιγότερους, πιο πλατείς λόφους, ενώ τα τραχιά τοπία έχουν πολλούς και μικρούς λόφους
 ###length 4
-STR_CONFIG_SETTING_ROUGHNESS_OF_TERRAIN_VERY_SMOOTH             :Πολύ Απαλή
-STR_CONFIG_SETTING_ROUGHNESS_OF_TERRAIN_SMOOTH                  :Απαλή
-STR_CONFIG_SETTING_ROUGHNESS_OF_TERRAIN_ROUGH                   :Ανώμαλη
-STR_CONFIG_SETTING_ROUGHNESS_OF_TERRAIN_VERY_ROUGH              :Πολύ Ανώμαλη
+STR_CONFIG_SETTING_ROUGHNESS_OF_TERRAIN_VERY_SMOOTH             :Πολύ Λεία
+STR_CONFIG_SETTING_ROUGHNESS_OF_TERRAIN_SMOOTH                  :Λεία
+STR_CONFIG_SETTING_ROUGHNESS_OF_TERRAIN_ROUGH                   :Τραχιά
+STR_CONFIG_SETTING_ROUGHNESS_OF_TERRAIN_VERY_ROUGH              :Πολύ Τραχιά
 
 STR_CONFIG_SETTING_VARIETY                                      :Διανομή ποικιλομορφίας: {STRING}
 STR_CONFIG_SETTING_VARIETY_HELPTEXT                             :Επιλέξτε αν ο χάρτης περιέχει και βουνά και επίπεδες περιοχές. Όσο μεγαλύτερη είναι η ποικιλία, τόσο περισσότερες οι υψομετρικές διαφορές μεταξύ ορεινών και επίπεδων περιοχών
@@ -1928,7 +1928,7 @@ STR_CONFIG_SETTING_SERVINT_VALUE                                :{COMMA}{NBSP}Η
 ###setting-zero-is-special
 STR_CONFIG_SETTING_SERVINT_DISABLED                             :Απενεργοποιημένο
 
-STR_CONFIG_SETTING_NOSERVICE                                    :Απενεργοποίηση επισκευών όταν οι καταρρεύσεις είναι απενεργοποιημένες: {STRING}
+STR_CONFIG_SETTING_NOSERVICE                                    :Απενεργοποίηση επισκευών όταν οι βλάβες είναι απενεργοποιημένες: {STRING}
 STR_CONFIG_SETTING_NOSERVICE_HELPTEXT                           :Όταν είναι ενεργοποιημένη, τα οχήματα δεν συντηρούνται όταν δεν είναι δυνατό να χαλάσουν
 
 STR_CONFIG_SETTING_STATION_LENGTH_LOADING_PENALTY               :Ποινή ταχύτητας φόρτωσης για τρένα που είναι μεγαλύτερα από τον σταθμό: {STRING}
@@ -4541,7 +4541,7 @@ STR_VEHICLE_INFO_PROFIT_THIS_YEAR_LAST_YEAR                     :{BLACK}Κέρδ
 STR_VEHICLE_INFO_PROFIT_THIS_YEAR_LAST_YEAR_MIN_PERFORMANCE     :{BLACK}Φετινό κέρδος: {LTBLUE}{CURRENCY_LONG} (Περσινό: {CURRENCY_LONG}) {BLACK}Ελάχιστη απόδοση: {LTBLUE}{POWER_TO_WEIGHT}
 STR_VEHICLE_INFO_PROFIT_THIS_PERIOD_LAST_PERIOD                 :{BLACK}Κέρδος αυτή την περίοδο: {LTBLUE}{CURRENCY_LONG} (τελευταία περίοδο: {CURRENCY_LONG})
 STR_VEHICLE_INFO_PROFIT_THIS_PERIOD_LAST_PERIOD_MIN_PERFORMANCE :{BLACK}Κέρδος αυτή την περίοδο: {LTBLUE}{CURRENCY_LONG} (τελευταία περίοδο: {CURRENCY_LONG}) {BLACK}Ελάχ. απόδοση: {LTBLUE}{POWER_TO_WEIGHT}
-STR_VEHICLE_INFO_RELIABILITY_BREAKDOWNS                         :{BLACK}Αξιοπιστία: {LTBLUE}{COMMA}%  {BLACK}Καταρρεύσεις μετά από την τελευταία επισκευή: {LTBLUE}{COMMA}
+STR_VEHICLE_INFO_RELIABILITY_BREAKDOWNS                         :{BLACK}Αξιοπιστία: {LTBLUE}{COMMA}%  {BLACK}Βλάβες μετά από την τελευταία επισκευή: {LTBLUE}{COMMA}
 
 STR_VEHICLE_INFO_BUILT_VALUE                                    :{LTBLUE}{ENGINE} {BLACK}Κατασκευή: {LTBLUE}{NUM}{BLACK} Αξία: {LTBLUE}{CURRENCY_LONG}
 STR_VEHICLE_INFO_NO_CAPACITY                                    :{BLACK}Χωρητικότητα: {LTBLUE}Τίποτα{STRING}
