@@ -388,7 +388,6 @@ static const char *GetDecimalSeparator()
  * Format a number into a string.
  * @param builder   the string builder to write to
  * @param number    the number to write down
- * @param last      the last element in the buffer
  * @param separator the thousands-separator to use
  */
 static void FormatNumber(StringBuilder &builder, int64_t number, const char *separator)
