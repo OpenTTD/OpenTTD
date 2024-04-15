@@ -619,10 +619,10 @@ struct NewGRFWindow : public Window, NewGRFScanCallback {
 
 	StringList grf_presets;     ///< List of known NewGRF presets.
 
-	GRFConfig *actives;         ///< Temporary active grf list to which changes are made.
+	GRFConfigList actives;         ///< Temporary active grf list to which changes are made.
 	GRFConfig *active_sel;      ///< Selected active grf item.
 
-	GRFConfig **orig_list;      ///< List active grfs in the game. Used as initial value, may be updated by the window.
+	GRFConfigList *orig_list;      ///< List active grfs in the game. Used as initial value, may be updated by the window.
 	bool editable;              ///< Is the window editable?
 	bool show_params;           ///< Are the grf-parameters shown in the info-panel?
 	bool execute;               ///< On pressing 'apply changes' are grf changes applied immediately, or only list is updated.
@@ -633,7 +633,7 @@ struct NewGRFWindow : public Window, NewGRFScanCallback {
 	Scrollbar *vscroll;
 	Scrollbar *vscroll2;
 
-	NewGRFWindow(WindowDesc &desc, bool editable, bool show_params, bool execute, GRFConfig **orig_list) : Window(desc), filter_editbox(EDITBOX_MAX_SIZE)
+	NewGRFWindow(WindowDesc &desc, bool editable, bool show_params, bool execute, GRFConfigList *orig_list) : Window(desc), filter_editbox(EDITBOX_MAX_SIZE)
 	{
 		this->avail_sel   = nullptr;
 		this->avail_pos   = -1;
@@ -646,7 +646,7 @@ struct NewGRFWindow : public Window, NewGRFScanCallback {
 		this->preset      = -1;
 		this->active_over = -1;
 
-		CopyGRFConfigList(&this->actives, *orig_list, false);
+		CopyGRFConfigList(this->actives, *orig_list, false);
 		this->grf_presets = GetGRFPresetList();
 
 		this->CreateNestedTree();
@@ -681,7 +681,7 @@ struct NewGRFWindow : public Window, NewGRFScanCallback {
 		CloseWindowByClass(WC_SAVE_PRESET);
 
 		if (this->editable && this->modified && !this->execute && !_exit_game) {
-			CopyGRFConfigList(this->orig_list, this->actives, true);
+			CopyGRFConfigList(*this->orig_list, this->actives, true);
 			ResetGRFConfig(false);
 			ReloadNewGRFData();
 		}
@@ -692,7 +692,7 @@ struct NewGRFWindow : public Window, NewGRFScanCallback {
 	~NewGRFWindow()
 	{
 		/* Remove the temporary copy of grf-list used in window */
-		ClearGRFConfigList(&this->actives);
+		ClearGRFConfigList(this->actives);
 	}
 
 	/**
@@ -1122,7 +1122,7 @@ struct NewGRFWindow : public Window, NewGRFScanCallback {
 						NewGRFConfirmationCallback
 					);
 				} else {
-					CopyGRFConfigList(this->orig_list, this->actives, true);
+					CopyGRFConfigList(*this->orig_list, this->actives, true);
 					ResetGRFConfig(false);
 					ReloadNewGRFData();
 					this->InvalidateData(GOID_NEWGRF_CHANGES_APPLIED);
@@ -1179,7 +1179,7 @@ struct NewGRFWindow : public Window, NewGRFScanCallback {
 		if (widget != WID_NS_PRESET_LIST) return;
 		if (!this->editable) return;
 
-		ClearGRFConfigList(&this->actives);
+		ClearGRFConfigList(this->actives);
 		this->preset = index;
 
 		if (index != -1) {
@@ -1563,7 +1563,7 @@ private:
  * Show the content list window with all missing grfs from the given list.
  * @param list The list of grfs to check for missing / not exactly matching ones.
  */
-void ShowMissingContentWindow(const GRFConfig *list)
+void ShowMissingContentWindow(const GRFConfigList &list)
 {
 	/* Only show the things in the current list, or everything when nothing's selected */
 	ContentVector cv;
@@ -1985,7 +1985,7 @@ static void NewGRFConfirmationCallback(Window *w, bool confirmed)
 
 		_gamelog.StartAction(GLAT_GRF);
 		_gamelog.GRFUpdate(_grfconfig, nw->actives); // log GRF changes
-		CopyGRFConfigList(nw->orig_list, nw->actives, false);
+		CopyGRFConfigList(*nw->orig_list, nw->actives, false);
 		ReloadNewGRFData();
 		_gamelog.StopAction();
 
@@ -1993,7 +1993,7 @@ static void NewGRFConfirmationCallback(Window *w, bool confirmed)
 		GRFConfig *c;
 		int i = 0;
 		for (c = nw->actives; c != nullptr && c != nw->active_sel; c = c->next, i++) {}
-		CopyGRFConfigList(&nw->actives, *nw->orig_list, false);
+		CopyGRFConfigList(nw->actives, *nw->orig_list, false);
 		for (c = nw->actives; c != nullptr && i > 0; c = c->next, i--) {}
 		nw->active_sel = c;
 		nw->avails.ForceRebuild();
@@ -2014,12 +2014,12 @@ static void NewGRFConfirmationCallback(Window *w, bool confirmed)
  * @param show_params show information about what parameters are set for the grf files
  * @param exec_changes if changes are made to the list (editable is true), apply these
  *        changes immediately or only update the list
- * @param config pointer to a linked-list of grfconfig's that will be shown
+ * @param config The GRFConfigList that will be shown.
  */
-void ShowNewGRFSettings(bool editable, bool show_params, bool exec_changes, GRFConfig **config)
+void ShowNewGRFSettings(bool editable, bool show_params, bool exec_changes, GRFConfigList &config)
 {
 	CloseWindowByClass(WC_GAME_OPTIONS);
-	new NewGRFWindow(_newgrf_desc, editable, show_params, exec_changes, config);
+	new NewGRFWindow(_newgrf_desc, editable, show_params, exec_changes, &config);
 }
 
 /** Widget parts of the save preset window. */

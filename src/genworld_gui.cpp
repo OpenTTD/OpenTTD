@@ -862,7 +862,7 @@ struct GenerateLandscapeWindow : public Window {
 				break;
 
 			case WID_GL_NEWGRF_BUTTON: ///< NewGRF Settings
-				ShowNewGRFSettings(true, true, false, &_grfconfig_newgame);
+				ShowNewGRFSettings(true, true, false, _grfconfig_newgame);
 				break;
 		}
 	}

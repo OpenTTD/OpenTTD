@@ -696,7 +696,7 @@ NetworkGameList *NetworkAddServer(const std::string &connection_string, bool man
 	/* Ensure the item already exists in the list */
 	NetworkGameList *item = NetworkGameListAddItem(connection_string);
 	if (item->info.server_name.empty()) {
-		ClearGRFConfigList(&item->info.grfconfig);
+		ClearGRFConfigList(item->info.grfconfig);
 		item->info.server_name = connection_string;
 
 		UpdateNetworkGameWindow();
