@@ -177,7 +177,7 @@ const uint16_t INIFILE_VERSION = (IniFileVersion)(IFV_MAX_VERSION - 1); ///< Cur
  * @param str the current value of the setting for which a value needs found
  * @param len length of the string
  * @param many full domain of values the ONEofMANY setting can have
- * @return the integer index of the full-list, or -1 if not found
+ * @return the integer index of the full-list, or SIZE_MAX if not found
  */
 size_t OneOfManySettingDesc::ParseSingleValue(const char *str, size_t len, const std::vector<std::string> &many)
 {
@@ -190,7 +190,7 @@ size_t OneOfManySettingDesc::ParseSingleValue(const char *str, size_t len, const
 		idx++;
 	}
 
-	return static_cast<size_t>(-1);
+	return SIZE_MAX;
 }
 
 /**
@@ -212,7 +212,7 @@ std::optional<bool> BoolSettingDesc::ParseSingleValue(const char *str)
  * @param many full domain of values the MANYofMANY setting can have
  * @param str the current string value of the setting, each individual
  * of separated by a whitespace,tab or | character
- * @return the 'fully' set integer, or -1 if a set is not found
+ * @return the 'fully' set integer, or SIZE_MAX if a set is not found
  */
 static size_t LookupManyOfMany(const std::vector<std::string> &many, const char *str)
 {
@@ -229,7 +229,7 @@ static size_t LookupManyOfMany(const std::vector<std::string> &many, const char 
 		while (*s != 0 && *s != ' ' && *s != '\t' && *s != '|') s++;
 
 		r = OneOfManySettingDesc::ParseSingleValue(str, s - str, many);
-		if (r == static_cast<size_t>(-1)) return r;
+		if (r == SIZE_MAX) return r;
 
 		SetBit(res, (uint8_t)r); // value found, set it
 		if (*s == 0) break;
@@ -419,8 +419,8 @@ size_t OneOfManySettingDesc::ParseValue(const char *str) const
 	size_t r = OneOfManySettingDesc::ParseSingleValue(str, strlen(str), this->many);
 	/* if the first attempt of conversion from string to the appropriate value fails,
 	 * look if we have defined a converter from old value to new value. */
-	if (r == static_cast<size_t>(-1) && this->many_cnvt != nullptr) r = this->many_cnvt(str);
-	if (r != static_cast<size_t>(-1)) return r; // and here goes converted value
+	if (r == SIZE_MAX && this->many_cnvt != nullptr) r = this->many_cnvt(str);
+	if (r != SIZE_MAX) return r; // and here goes converted value
 
 	ErrorMessageData msg(STR_CONFIG_ERROR, STR_CONFIG_ERROR_INVALID_VALUE);
 	msg.SetDParamStr(0, str);
@@ -432,7 +432,7 @@ size_t OneOfManySettingDesc::ParseValue(const char *str) const
 size_t ManyOfManySettingDesc::ParseValue(const char *str) const
 {
 	size_t r = LookupManyOfMany(this->many, str);
-	if (r != static_cast<size_t>(-1)) return r;
+	if (r != SIZE_MAX) return r;
 	ErrorMessageData msg(STR_CONFIG_ERROR, STR_CONFIG_ERROR_INVALID_VALUE);
 	msg.SetDParamStr(0, str);
 	msg.SetDParamStr(1, this->GetName());
