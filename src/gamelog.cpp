@@ -573,22 +573,22 @@ void Gamelog::GRFParameters(uint32_t grfid)
 /**
  * Logs adding of list of GRFs.
  * Useful when old savegame is loaded or when new game is started
- * @param newg head of GRF linked list
+ * @param newg the GRFConfigList.
  */
-void Gamelog::GRFAddList(const GRFConfig *newg)
+void Gamelog::GRFAddList(const GRFConfigList &newg)
 {
 	assert(this->action_type == GLAT_START || this->action_type == GLAT_LOAD);
 
-	for (; newg != nullptr; newg = newg->next) {
-		this->GRFAdd(newg);
+	for (GRFConfig *gc = newg; gc != nullptr; gc = gc->next) {
+		this->GRFAdd(gc);
 	}
 }
 
 /**
  * Generates GRFList
- * @param grfc head of GRF linked list
+ * @param grfc the GRFConfigList.
  */
-static std::vector<const GRFConfig *> GenerateGRFList(const GRFConfig *grfc)
+static std::vector<const GRFConfig *> GenerateGRFList(const GRFConfigList &grfc)
 {
 	std::vector<const GRFConfig *> list;
 	for (const GRFConfig *g = grfc; g != nullptr; g = g->next) {
@@ -603,7 +603,7 @@ static std::vector<const GRFConfig *> GenerateGRFList(const GRFConfig *grfc)
  * @param oldc original GRF list
  * @param newc new GRF list
  */
-void Gamelog::GRFUpdate(const GRFConfig *oldc, const GRFConfig *newc)
+void Gamelog::GRFUpdate(const GRFConfigList &oldc, const GRFConfigList &newc)
 {
 	std::vector<const GRFConfig *> ol = GenerateGRFList(oldc);
 	std::vector<const GRFConfig *> nl = GenerateGRFList(newc);

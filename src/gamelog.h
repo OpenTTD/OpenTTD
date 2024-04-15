@@ -76,8 +76,8 @@ public:
 	void Oldver();
 	void Setting(const std::string &name, int32_t oldval, int32_t newval);
 
-	void GRFUpdate(const GRFConfig *oldg, const GRFConfig *newg);
-	void GRFAddList(const GRFConfig *newg);
+	void GRFUpdate(const GRFConfigList &oldg, const GRFConfigList &newg);
+	void GRFAddList(const GRFConfigList &newg);
 	void GRFRemove(uint32_t grfid);
 	void GRFAdd(const GRFConfig *newg);
 	void GRFBug(uint32_t grfid, uint8_t bug, uint64_t data);

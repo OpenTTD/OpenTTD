@@ -251,7 +251,7 @@ bool ClientNetworkCoordinatorSocketHandler::Receive_GC_LISTING(Packet &p)
 		NetworkGameList *item = NetworkGameListAddItem(connection_string);
 
 		/* Clear any existing GRFConfig chain. */
-		ClearGRFConfigList(&item->info.grfconfig);
+		ClearGRFConfigList(item->info.grfconfig);
 		/* Copy the new NetworkGameInfo info. */
 		item->info = ngi;
 		/* Check for compatability with the client. */

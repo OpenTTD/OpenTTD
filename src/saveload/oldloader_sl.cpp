@@ -1554,7 +1554,7 @@ static bool LoadTTDPatchExtraChunks(LoadgameState *ls, int)
 				/* Skip the first element: TTDP hack for the Action D special variables (FFFF0000 01) */
 				ReadUint32(ls); ReadByte(ls); len -= 5;
 
-				ClearGRFConfigList(&_grfconfig);
+				ClearGRFConfigList(_grfconfig);
 				while (len != 0) {
 					uint32_t grfid = ReadUint32(ls);
 
@@ -1562,14 +1562,14 @@ static bool LoadTTDPatchExtraChunks(LoadgameState *ls, int)
 						GRFConfig *c = new GRFConfig("TTDP game, no information");
 						c->ident.grfid = grfid;
 
-						AppendToGRFConfigList(&_grfconfig, c);
+						AppendToGRFConfigList(_grfconfig, c);
 						Debug(oldloader, 3, "TTDPatch game using GRF file with GRFID {:08X}", BSWAP32(c->ident.grfid));
 					}
 					len -= 5;
 				}
 
 				/* Append static NewGRF configuration */
-				AppendStaticGRFConfigs(&_grfconfig);
+				AppendStaticGRFConfigs(_grfconfig);
 				break;
 			}
 

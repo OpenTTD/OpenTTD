@@ -59,7 +59,7 @@ void LoadCheckData::Clear()
 
 	this->gamelog.Reset();
 
-	ClearGRFConfigList(&this->grfconfig);
+	ClearGRFConfigList(this->grfconfig);
 }
 
 /** Load game/scenario with optional content download */
@@ -634,7 +634,7 @@ public:
 
 			case WID_SL_NEWGRF_INFO:
 				if (_load_check_data.HasNewGrfs()) {
-					ShowNewGRFSettings(false, false, false, &_load_check_data.grfconfig);
+					ShowNewGRFSettings(false, false, false, _load_check_data.grfconfig);
 				}
 				break;
 

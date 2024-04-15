@@ -73,7 +73,7 @@ void NetworkGameListRemoveItem(NetworkGameList *remove)
 			}
 
 			/* Remove GRFConfig information */
-			ClearGRFConfigList(&remove->info.grfconfig);
+			ClearGRFConfigList(remove->info.grfconfig);
 			delete remove;
 
 			NetworkRebuildHostList();
@@ -100,7 +100,7 @@ void NetworkGameListRemoveExpired()
 			*prev_item = item;
 
 			/* Remove GRFConfig information */
-			ClearGRFConfigList(&remove->info.grfconfig);
+			ClearGRFConfigList(remove->info.grfconfig);
 			delete remove;
 		} else {
 			prev_item = &item->next;
