@@ -44,10 +44,10 @@ protected:
 	void ConstructWindow();
 
 	struct Line {
-		int top{0};                  ///< Top scroll position in visual lines.
-		int bottom{0};               ///< Bottom scroll position in visual lines.
-		std::string text{};          ///< Contents of the line.
-		TextColour colour{TC_WHITE}; ///< Colour to render text line in.
+		int top = 0;                  ///< Top scroll position in visual lines.
+		int bottom = 0;               ///< Bottom scroll position in visual lines.
+		std::string text{};           ///< Contents of the line.
+		TextColour colour = TC_WHITE; ///< Colour to render text line in.
 
 		Line(int top, std::string_view text) : top(top), bottom(top + 1), text(text) {}
 		Line() {}
@@ -73,8 +73,8 @@ protected:
 	std::vector<Hyperlink> links;        ///< Clickable links in lines.
 	std::vector<Hyperlink> link_anchors; ///< Anchor names of headings that can be linked to.
 	std::vector<HistoryEntry> history;   ///< Browsing history in this window.
-	size_t history_pos{0};               ///< Position in browsing history (for forward movement).
-	bool trusted{false};                 ///< Whether the content is trusted (read: not from content like NewGRFs, etc).
+	size_t history_pos = 0;              ///< Position in browsing history (for forward movement).
+	bool trusted = false;                ///< Whether the content is trusted (read: not from content like NewGRFs, etc).
 
 	void LoadText(std::string_view buf);
 	void FindHyperlinksInMarkdown(Line &line, size_t line_index);
@@ -97,8 +97,8 @@ protected:
 	void NavigateHistory(int delta);
 
 private:
-	uint search_iterator{0};     ///< Iterator for the font check search.
-	uint max_length{0};          ///< Maximum length of unwrapped text line.
+	uint search_iterator = 0;     ///< Iterator for the font check search.
+	uint max_length = 0;          ///< Maximum length of unwrapped text line.
 
 	uint ReflowContent();
 	uint GetContentHeight();

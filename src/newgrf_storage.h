@@ -136,7 +136,7 @@ struct TemporaryStorageArray {
 
 	StorageType storage{}; ///< Memory for the storage array
 	StorageInitType init{}; ///< Storage has been assigned, if this equals 'init_key'.
-	uint16_t init_key{1}; ///< Magic key to 'init'.
+	uint16_t init_key = 1; ///< Magic key to 'init'.
 
 	/**
 	 * Stores some value at a given position.

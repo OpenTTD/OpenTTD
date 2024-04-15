@@ -291,10 +291,10 @@ public:
 #	include "video/video_driver.hpp"
 
 class BootstrapEmscripten : public ContentCallback {
-	bool downloading{false};
-	uint total_files{0};
-	uint total_bytes{0};
-	uint downloaded_bytes{0};
+	bool downloading = false;
+	uint total_files = 0;
+	uint total_bytes = 0;
+	uint downloaded_bytes = 0;
 
 public:
 	BootstrapEmscripten()
