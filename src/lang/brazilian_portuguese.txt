@@ -446,7 +446,7 @@ STR_SETTINGS_MENU_CONFIG_SETTINGS_TREE                          :Configurações
 STR_SETTINGS_MENU_AI_SETTINGS                                   :Configurações de IA
 STR_SETTINGS_MENU_GAMESCRIPT_SETTINGS                           :Configurações de Script de Jogo
 STR_SETTINGS_MENU_NEWGRF_SETTINGS                               :Configurações de NewGRF
-STR_SETTINGS_MENU_SANDBOX_OPTIONS                               :Opções de trapaças
+STR_SETTINGS_MENU_SANDBOX_OPTIONS                               :Opções da sandbox
 STR_SETTINGS_MENU_TRANSPARENCY_OPTIONS                          :Opções de transparência
 STR_SETTINGS_MENU_TOWN_NAMES_DISPLAYED                          :Mostrar nomes de localidades
 STR_SETTINGS_MENU_STATION_NAMES_DISPLAYED                       :Mostrar nomes de estações
@@ -2242,7 +2242,7 @@ STR_HELP_WINDOW_BUGTRACKER                                      :{BLACK}Relatar 
 STR_HELP_WINDOW_COMMUNITY                                       :{BLACK}Comunidade
 
 # Cheat window
-STR_CHEATS                                                      :{WHITE}Trapaças
+STR_CHEATS                                                      :{WHITE}Opções da Sandbox
 STR_CHEAT_MONEY                                                 :{LTBLUE}Aumentar dinheiro em {CURRENCY_LONG}
 STR_CHEAT_CHANGE_COMPANY                                        :{LTBLUE}Jogando como empresa: {ORANGE}{COMMA}
 STR_CHEAT_EXTRA_DYNAMITE                                        :{LTBLUE}Escavadeira mágica (remove indústrias, objetos estáticos): {ORANGE}{STRING}
