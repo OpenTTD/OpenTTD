@@ -41,6 +41,8 @@ struct ViewportSign {
 	uint16_t width_normal; ///< The width when not zoomed out (normal font)
 	uint16_t width_small;  ///< The width when zoomed out (small font)
 
+	auto operator<=>(const ViewportSign &) const = default;
+
 	void UpdatePosition(int center, int top, StringID str, StringID str_small = STR_NULL);
 	void MarkDirty(ZoomLevel maxzoom = ZOOM_LVL_MAX) const;
 };
@@ -48,6 +50,8 @@ struct ViewportSign {
 /** Specialised ViewportSign that tracks whether it is valid for entering into a Kdtree */
 struct TrackedViewportSign : ViewportSign {
 	bool kdtree_valid; ///< Are the sign data valid for use with the _viewport_sign_kdtree?
+
+	auto operator<=>(const TrackedViewportSign &) const = default;
 
 	/**
 	 * Update the position of the viewport sign.

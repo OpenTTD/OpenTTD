@@ -50,7 +50,7 @@ void CheckCaches()
 
 	uint i = 0;
 	for (Town *t : Town::Iterate()) {
-		if (MemCmpT(old_town_caches.data() + i, &t->cache) != 0) {
+		if (old_town_caches[i] != t->cache) {
 			Debug(desync, 2, "warning: town cache mismatch: town {}", t->index);
 		}
 		i++;
@@ -64,7 +64,7 @@ void CheckCaches()
 
 	i = 0;
 	for (const Company *c : Company::Iterate()) {
-		if (MemCmpT(old_infrastructure.data() + i, &c->infrastructure) != 0) {
+		if (old_infrastructure[i] != c->infrastructure) {
 			Debug(desync, 2, "warning: infrastructure cache mismatch: company {}", c->index);
 		}
 		i++;
@@ -120,23 +120,23 @@ void CheckCaches()
 		length = 0;
 		for (const Vehicle *u = v; u != nullptr; u = u->Next()) {
 			FillNewGRFVehicleCache(u);
-			if (memcmp(&grf_cache[length], &u->grf_cache, sizeof(NewGRFCache)) != 0) {
+			if (grf_cache[length] != u->grf_cache) {
 				Debug(desync, 2, "warning: newgrf cache mismatch: type {}, vehicle {}, company {}, unit number {}, wagon {}", v->type, v->index, v->owner, v->unitnumber, length);
 			}
-			if (memcmp(&veh_cache[length], &u->vcache, sizeof(VehicleCache)) != 0) {
+			if (veh_cache[length] != u->vcache) {
 				Debug(desync, 2, "warning: vehicle cache mismatch: type {}, vehicle {}, company {}, unit number {}, wagon {}", v->type, v->index, v->owner, v->unitnumber, length);
 			}
 			switch (u->type) {
 				case VEH_TRAIN:
-					if (memcmp(&gro_cache[length], &Train::From(u)->gcache, sizeof(GroundVehicleCache)) != 0) {
+					if (gro_cache[length] != Train::From(u)->gcache) {
 						Debug(desync, 2, "warning: train ground vehicle cache mismatch: vehicle {}, company {}, unit number {}, wagon {}", v->index, v->owner, v->unitnumber, length);
 					}
-					if (memcmp(&tra_cache[length], &Train::From(u)->tcache, sizeof(TrainCache)) != 0) {
+					if (tra_cache[length] != Train::From(u)->tcache) {
 						Debug(desync, 2, "warning: train cache mismatch: vehicle {}, company {}, unit number {}, wagon {}", v->index, v->owner, v->unitnumber, length);
 					}
 					break;
 				case VEH_ROAD:
-					if (memcmp(&gro_cache[length], &RoadVehicle::From(u)->gcache, sizeof(GroundVehicleCache)) != 0) {
+					if (gro_cache[length] != RoadVehicle::From(u)->gcache) {
 						Debug(desync, 2, "warning: road vehicle ground vehicle cache mismatch: vehicle {}, company {}, unit number {}, wagon {}", v->index, v->owner, v->unitnumber, length);
 					}
 					break;
@@ -154,10 +154,13 @@ void CheckCaches()
 
 	/* Check whether the caches are still valid */
 	for (Vehicle *v : Vehicle::Iterate()) {
-		uint8_t buff[sizeof(VehicleCargoList)];
-		memcpy(buff, &v->cargo, sizeof(VehicleCargoList));
+		[[maybe_unused]] const auto a = v->cargo.PeriodsInTransit();
+		[[maybe_unused]] const auto b = v->cargo.TotalCount();
+		[[maybe_unused]] const auto c = v->cargo.GetFeederShare();
 		v->cargo.InvalidateCache();
-		assert(memcmp(&v->cargo, buff, sizeof(VehicleCargoList)) == 0);
+		assert(a == v->cargo.PeriodsInTransit());
+		assert(b == v->cargo.TotalCount());
+		assert(c == v->cargo.GetFeederShare());
 	}
 
 	/* Backup stations_near */
@@ -172,10 +175,11 @@ void CheckCaches()
 
 	for (Station *st : Station::Iterate()) {
 		for (GoodsEntry &ge : st->goods) {
-			uint8_t buff[sizeof(StationCargoList)];
-			memcpy(buff, &ge.cargo, sizeof(StationCargoList));
+			[[maybe_unused]] const auto a = ge.cargo.PeriodsInTransit();
+			[[maybe_unused]] const auto b = ge.cargo.TotalCount();
 			ge.cargo.InvalidateCache();
-			assert(memcmp(&ge.cargo, buff, sizeof(StationCargoList)) == 0);
+			assert(a == ge.cargo.PeriodsInTransit());
+			assert(b == ge.cargo.TotalCount());
 		}
 
 		/* Check docking tiles */

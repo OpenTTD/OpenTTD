@@ -96,7 +96,7 @@ CompanyManagerFace ConvertFromOldCompanyManagerFace(uint32_t face)
 void AfterLoadCompanyStats()
 {
 	/* Reset infrastructure statistics to zero. */
-	for (Company *c : Company::Iterate()) MemSetT(&c->infrastructure, 0);
+	for (Company *c : Company::Iterate()) c->infrastructure = {};
 
 	/* Collect airport count. */
 	for (const Station *st : Station::Iterate()) {

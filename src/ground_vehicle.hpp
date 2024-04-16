@@ -46,6 +46,8 @@ struct GroundVehicleCache {
 
 	/* Cached UI information. */
 	uint16_t last_speed;              ///< The last speed we did display, so we only have to redraw when this changes.
+
+	auto operator<=>(const GroundVehicleCache &) const = default;
 };
 
 /** Ground vehicle flags. */

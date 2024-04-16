@@ -37,6 +37,8 @@ struct CompanyInfrastructure {
 	uint32_t station;            ///< Count of company owned station tiles.
 	uint32_t airport;            ///< Count of company owned airports.
 
+	auto operator<=>(const CompanyInfrastructure &) const = default;
+
 	/** Get total sum of all owned track bits. */
 	uint32_t GetRailTotal() const
 	{
