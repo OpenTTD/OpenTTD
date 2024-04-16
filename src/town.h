@@ -42,7 +42,7 @@ struct TownCache {
 	uint32_t population;                        ///< Current population of people
 	TrackedViewportSign sign;                 ///< Location of name sign, UpdateVirtCoord updates this
 	PartOfSubsidy part_of_subsidy;            ///< Is this town a source/destination of a subsidy?
-	uint32_t squared_town_zone_radius[HZB_END]; ///< UpdateTownRadius updates this given the house count
+	std::array<uint32_t, HZB_END> squared_town_zone_radius; ///< UpdateTownRadius updates this given the house count
 	BuildingCounts<uint16_t> building_counts;   ///< The number of each type of building in the town
 };
 
