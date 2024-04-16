@@ -27,7 +27,7 @@ static std::vector<StringID> _grf_townname_names;
 
 GRFTownName *GetGRFTownName(uint32_t grfid)
 {
-	auto found = std::find_if(std::begin(_grf_townnames), std::end(_grf_townnames), [&grfid](const GRFTownName &t){ return t.grfid == grfid; });
+	auto found = std::find_if(std::begin(_grf_townnames), std::end(_grf_townnames), [&grfid](const GRFTownName &t) { return t.grfid == grfid; });
 	if (found != std::end(_grf_townnames)) return &*found;
 	return nullptr;
 }
@@ -44,7 +44,7 @@ GRFTownName *AddGRFTownName(uint32_t grfid)
 
 void DelGRFTownName(uint32_t grfid)
 {
-	_grf_townnames.erase(std::find_if(std::begin(_grf_townnames), std::end(_grf_townnames), [&grfid](const GRFTownName &t){ return t.grfid == grfid; }));
+	_grf_townnames.erase(std::find_if(std::begin(_grf_townnames), std::end(_grf_townnames), [&grfid](const GRFTownName &t) { return t.grfid == grfid; }));
 }
 
 static void RandomPart(StringBuilder &builder, const GRFTownName *t, uint32_t seed, uint8_t id)
