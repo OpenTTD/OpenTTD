@@ -941,6 +941,45 @@ RoadType GetTownRoadType()
 }
 
 /**
+ * Get the calendar date of the earliest town-buildable road type.
+ * @return introduction date of earliest road type, or INT32_MAX if none available.
+ */
+static TimerGameCalendar::Date GetTownRoadTypeFirstIntroductionDate()
+{
+	const RoadTypeInfo *best = nullptr;
+	for (RoadType rt = ROADTYPE_BEGIN; rt != ROADTYPE_END; rt++) {
+		if (RoadTypeIsTram(rt)) continue;
+		const RoadTypeInfo *rti = GetRoadTypeInfo(rt);
+		if (rti->label == 0) continue; // Unused road type.
+		if (!HasBit(rti->flags, ROTF_TOWN_BUILD)) continue; // Town can't build this road type.
+
+		if (best != nullptr && rti->introduction_date >= best->introduction_date) continue;
+		best = rti;
+	}
+
+	if (best == nullptr) return INT32_MAX;
+	return best->introduction_date;
+}
+
+/**
+ * Check if towns are able to build road.
+ * @return true iff the towns are currently able to build road.
+ */
+bool CheckTownRoadTypes()
+{
+	auto min_date = GetTownRoadTypeFirstIntroductionDate();
+	if (min_date <= TimerGameCalendar::date) return true;
+
+	if (min_date < INT32_MAX) {
+		SetDParam(0, min_date);
+		ShowErrorMessage(STR_ERROR_NO_TOWN_ROADTYPES_AVAILABLE_YET, STR_ERROR_NO_TOWN_ROADTYPES_AVAILABLE_YET_EXPLANATION, WL_CRITICAL);
+	} else {
+		ShowErrorMessage(STR_ERROR_NO_TOWN_ROADTYPES_AVAILABLE_AT_ALL, STR_ERROR_NO_TOWN_ROADTYPES_AVAILABLE_AT_ALL_EXPLANATION, WL_CRITICAL);
+	}
+	return false;
+}
+
+/**
  * Check for parallel road inside a given distance.
  *   Assuming a road from (tile - TileOffsByDiagDir(dir)) to tile,
  *   is there a parallel road left or right of it within distance dist_multi?
