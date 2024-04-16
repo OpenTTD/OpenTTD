@@ -103,6 +103,10 @@ static void _GenerateWorld()
 		IncreaseGeneratingWorldProgress(GWP_MAP_INIT);
 		/* Must start economy early because of the costs. */
 		StartupEconomy();
+		if (!CheckTownRoadTypes()) {
+			HandleGeneratingWorldAbortion();
+			return;
+		}
 
 		bool landscape_generated = false;
 
