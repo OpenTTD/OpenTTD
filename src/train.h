@@ -79,6 +79,8 @@ struct TrainCache {
 
 	int16_t cached_curve_speed_mod; ///< curve speed modifier of the entire train
 	uint16_t cached_max_curve_speed; ///< max consist speed limited by curves
+
+	auto operator<=>(const TrainCache &) const = default;
 };
 
 /**

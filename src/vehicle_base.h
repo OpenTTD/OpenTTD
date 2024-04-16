@@ -73,6 +73,8 @@ struct NewGRFCache {
 	uint32_t company_information;       ///< Cache for NewGRF var 43.
 	uint32_t position_in_vehicle;       ///< Cache for NewGRF var 4D.
 	uint8_t  cache_valid;               ///< Bitset that indicates which cache values are valid.
+
+	auto operator<=>(const NewGRFCache &) const = default;
 };
 
 /** Meaning of the various bits of the visual effect. */
@@ -125,6 +127,8 @@ struct VehicleCache {
 	uint16_t cached_cargo_age_period; ///< Number of ticks before carried cargo is aged.
 
 	uint8_t cached_vis_effect;  ///< Visual effect to show (see #VisualEffect)
+
+	auto operator<=>(const VehicleCache &) const = default;
 };
 
 /** Sprite sequence for a vehicle part. */
