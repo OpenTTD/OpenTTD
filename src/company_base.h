@@ -30,9 +30,9 @@ struct CompanyEconomyEntry {
 };
 
 struct CompanyInfrastructure {
-	uint32_t road[ROADTYPE_END]; ///< Count of company owned track bits for each road type.
+	std::array<uint32_t, RAILTYPE_END> rail{}; ///< Count of company owned track bits for each rail type.
+	std::array<uint32_t, ROADTYPE_END> road{}; ///< Count of company owned track bits for each road type.
 	uint32_t signal;             ///< Count of company owned signals.
-	uint32_t rail[RAILTYPE_END]; ///< Count of company owned track bits for each rail type.
 	uint32_t water;              ///< Count of company owned track bits for canals.
 	uint32_t station;            ///< Count of company owned station tiles.
 	uint32_t airport;            ///< Count of company owned airports.
