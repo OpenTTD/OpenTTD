@@ -444,7 +444,7 @@ static int *HeightMapMakeHistogram(Height h_min, [[maybe_unused]] Height h_max, 
 	int *hist = hist_buf - h_min;
 
 	/* Count the heights and fill the histogram */
-	for (const Height &h : _height_map.h){
+	for (const Height &h : _height_map.h) {
 		assert(h >= h_min);
 		assert(h <= h_max);
 		hist[h]++;
