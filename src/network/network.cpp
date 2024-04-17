@@ -51,7 +51,7 @@
  * Used to load the desync debug logs, i.e. for reproducing a desync.
  * There's basically no need to ever enable this, unless you really know what
  * you are doing, i.e. debugging a desync.
- * See docs/desync.txt for details. */
+ * See docs/desync.md for details. */
 bool _ddc_fastforward = true;
 #endif /* DEBUG_DUMP_COMMANDS */
 
