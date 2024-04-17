@@ -2512,7 +2512,7 @@ void Vehicle::LeaveUnbunchingDepot()
 	SetWindowDirty(WC_VEHICLE_TIMETABLE, this->index);
 
 	/* Find the average travel time of vehicles that we share orders with. */
-	uint num_vehicles = 0;
+	int num_vehicles = 0;
 	TimerGameTick::Ticks total_travel_time = 0;
 
 	Vehicle *u = this->FirstShared();
@@ -2525,10 +2525,10 @@ void Vehicle::LeaveUnbunchingDepot()
 	}
 
 	/* Make sure we cannot divide by 0. */
-	num_vehicles = std::max(num_vehicles, 1u);
+	num_vehicles = std::max(num_vehicles, 1);
 
 	/* Calculate the separation by finding the average travel time, then calculating equal separation (minimum 1 tick) between vehicles. */
-	TimerGameTick::Ticks separation = std::max((total_travel_time / num_vehicles / num_vehicles), 1u);
+	TimerGameTick::Ticks separation = std::max((total_travel_time / num_vehicles / num_vehicles), 1);
 	TimerGameTick::TickCounter next_departure = TimerGameTick::counter + separation;
 
 	/* Set the departure time of all vehicles that we share orders with. */
