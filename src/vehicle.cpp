@@ -691,7 +691,7 @@ void ResetVehicleColourMap()
  * List of vehicles that should check for autoreplace this tick.
  * Mapping of vehicle -> leave depot immediately after autoreplace.
  */
-using AutoreplaceMap = std::map<Vehicle *, bool>;
+using AutoreplaceMap = std::map<VehicleID, bool>;
 static AutoreplaceMap _vehicles_to_autoreplace;
 
 void InitializeVehicles()
@@ -919,7 +919,7 @@ Vehicle::~Vehicle()
 void VehicleEnteredDepotThisTick(Vehicle *v)
 {
 	/* Vehicle should stop in the depot if it was in 'stopping' state */
-	_vehicles_to_autoreplace[v] = !(v->vehstatus & VS_STOPPED);
+	_vehicles_to_autoreplace[v->index] = !(v->vehstatus & VS_STOPPED);
 
 	/* We ALWAYS set the stopped state. Even when the vehicle does not plan on
 	 * stopping in the depot, so we stop it to ensure that it will not reserve
@@ -1067,7 +1067,7 @@ void CallVehicleTicks()
 
 	Backup<CompanyID> cur_company(_current_company, FILE_LINE);
 	for (auto &it : _vehicles_to_autoreplace) {
-		Vehicle *v = it.first;
+		Vehicle *v = Vehicle::Get(it.first);
 		/* Autoreplace needs the current company set as the vehicle owner */
 		cur_company.Change(v->owner);
 
@@ -1623,7 +1623,7 @@ void VehicleEnterDepot(Vehicle *v)
 			cur_company.Restore();
 
 			if (cost.Failed()) {
-				_vehicles_to_autoreplace[v] = false;
+				_vehicles_to_autoreplace[v->index] = false;
 				if (v->owner == _local_company) {
 					/* Notify the user that we stopped the vehicle */
 					SetDParam(0, v->index);
@@ -1645,7 +1645,7 @@ void VehicleEnterDepot(Vehicle *v)
 		}
 		if (v->current_order.GetDepotActionType() & ODATFB_HALT) {
 			/* Vehicles are always stopped on entering depots. Do not restart this one. */
-			_vehicles_to_autoreplace[v] = false;
+			_vehicles_to_autoreplace[v->index] = false;
 			/* Invalidate last_loading_station. As the link from the station
 			 * before the stop to the station after the stop can't be predicted
 			 * we shouldn't construct it when the vehicle visits the next stop. */
