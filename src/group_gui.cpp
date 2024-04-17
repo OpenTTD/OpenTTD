@@ -118,7 +118,7 @@ static constexpr NWidgetPart _nested_group_widgets[] = {
  * @param parent Current tree parent (set by self with recursion).
  * @param indent Current tree indentation level (set by self with recursion).
  */
-static void GuiGroupListAddChildren(GUIGroupList &dst, const GUIGroupList &src, bool fold, GroupID parent, int indent)
+static void GuiGroupListAddChildren(GUIGroupList &dst, const GUIGroupList &src, bool fold, GroupID parent = INVALID_GROUP, uint8_t indent = 0)
 {
 	for (const auto &item : src) {
 		if (item.group->parent != parent) continue;
@@ -133,6 +133,16 @@ static void GuiGroupListAddChildren(GUIGroupList &dst, const GUIGroupList &src, 
 		} else {
 			GuiGroupListAddChildren(dst, src, fold, item.group->index, indent + 1);
 		}
+	}
+
+	if (indent > 0 || dst.empty()) return;
+
+	/* Hierarchy is complete, traverse in reverse to find where indentation levels continue. */
+	uint16_t level_mask = 0;
+	for (auto it = std::rbegin(dst); std::next(it) != std::rend(dst); ++it) {
+		auto next_it = std::next(it);
+		SB(level_mask, it->indent, 1, it->indent <= next_it->indent);
+		next_it->level_mask = level_mask;
 	}
 }
 
@@ -274,7 +284,7 @@ private:
 	 * @param protection Whether autoreplace protection is set.
 	 * @param has_children Whether the group has children and should have a fold / unfold button.
 	 */
-	void DrawGroupInfo(int y, int left, int right, GroupID g_id, int indent = 0, bool protection = false, bool has_children = false) const
+	void DrawGroupInfo(int y, int left, int right, GroupID g_id, uint16_t level_mask = 0, uint8_t indent = 0, bool protection = false, bool has_children = false) const
 	{
 		/* Highlight the group if a vehicle is dragged over it */
 		if (g_id == this->group_over) {
@@ -288,10 +298,27 @@ private:
 		const GroupStatistics &stats = GroupStatistics::Get(this->vli.company, g_id, this->vli.vtype);
 		bool rtl = _current_text_dir == TD_RTL;
 
+		const int offset = (rtl ? -(int)this->column_size[VGC_FOLD].width : (int)this->column_size[VGC_FOLD].width) / 2;
+		const int level_width = rtl ? -WidgetDimensions::scaled.hsep_indent : WidgetDimensions::scaled.hsep_indent;
+		const int linecolour = GetColourGradient(COLOUR_ORANGE, SHADE_NORMAL);
+
+		if (indent > 0) {
+			/* Draw tree continuation lines. */
+			int tx = (rtl ? right - WidgetDimensions::scaled.framerect.right : left + WidgetDimensions::scaled.framerect.left) + offset;
+			for (uint lvl = 1; lvl <= indent; ++lvl) {
+				if (HasBit(level_mask, lvl)) GfxDrawLine(tx, y, tx, y + this->tiny_step_height - 1, linecolour, WidgetDimensions::scaled.fullbevel.top);
+				if (lvl < indent) tx += level_width;
+			}
+			/* Draw our node in the tree. */
+			int ycentre = y + this->tiny_step_height / 2 - 1;
+			if (!HasBit(level_mask, indent)) GfxDrawLine(tx, y, tx, ycentre, linecolour, WidgetDimensions::scaled.fullbevel.top);
+			GfxDrawLine(tx, ycentre, tx + offset - (rtl ? -1 : 1), ycentre, linecolour, WidgetDimensions::scaled.fullbevel.top);
+		}
+
 		/* draw fold / unfold button */
 		int x = rtl ? right - WidgetDimensions::scaled.framerect.right - this->column_size[VGC_FOLD].width + 1 : left + WidgetDimensions::scaled.framerect.left;
 		if (has_children) {
-			DrawSprite(Group::Get(g_id)->folded ? SPR_CIRCLE_FOLDED : SPR_CIRCLE_UNFOLDED, PAL_NONE, rtl ? x - indent : x + indent, y + (this->tiny_step_height - this->column_size[VGC_FOLD].height) / 2);
+			DrawSprite(Group::Get(g_id)->folded ? SPR_CIRCLE_FOLDED : SPR_CIRCLE_UNFOLDED, PAL_NONE, x + indent * level_width, y + (this->tiny_step_height - this->column_size[VGC_FOLD].height) / 2);
 		}
 
 		/* draw group name */
@@ -305,7 +332,7 @@ private:
 			str = STR_GROUP_NAME;
 		}
 		x = rtl ? x - WidgetDimensions::scaled.hsep_normal - this->column_size[VGC_NAME].width : x + WidgetDimensions::scaled.hsep_normal + this->column_size[VGC_FOLD].width;
-		DrawString(x + (rtl ? 0 : indent), x + this->column_size[VGC_NAME].width - 1 - (rtl ? indent : 0), y + (this->tiny_step_height - this->column_size[VGC_NAME].height) / 2, str, colour);
+		DrawString(x + (rtl ? 0 : indent * WidgetDimensions::scaled.hsep_indent), x + this->column_size[VGC_NAME].width - 1 - (rtl ? indent * WidgetDimensions::scaled.hsep_indent : 0), y + (this->tiny_step_height - this->column_size[VGC_NAME].height) / 2, str, colour);
 
 		/* draw autoreplace protection */
 		x = rtl ? x - WidgetDimensions::scaled.hsep_wide - this->column_size[VGC_PROTECT].width : x + WidgetDimensions::scaled.hsep_wide + this->column_size[VGC_NAME].width;
@@ -624,7 +651,7 @@ public:
 
 					assert(g->owner == this->owner);
 
-					DrawGroupInfo(y1, r.left, r.right, g->index, it->indent * WidgetDimensions::scaled.hsep_indent, HasBit(g->flags, GroupFlags::GF_REPLACE_PROTECTION), g->folded || (std::next(it) != std::end(this->groups) && std::next(it)->indent > it->indent));
+					DrawGroupInfo(y1, r.left, r.right, g->index, it->level_mask, it->indent, HasBit(g->flags, GroupFlags::GF_REPLACE_PROTECTION), g->folded || (std::next(it) != std::end(this->groups) && std::next(it)->indent > it->indent));
 
 					y1 += this->tiny_step_height;
 				}
