@@ -2538,6 +2538,7 @@ void Vehicle::LeaveUnbunchingDepot()
 		if (u->vehstatus & (VS_STOPPED | VS_CRASHED)) continue;
 
 		u->depot_unbunching_next_departure = next_departure;
+		SetWindowDirty(WC_VEHICLE_VIEW, u->index);
 	}
 }
 
