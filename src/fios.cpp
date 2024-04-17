@@ -33,8 +33,7 @@ SortingBits _savegame_sort_order = SORT_BY_DATE | SORT_DESCENDING;
 
 /* OS-specific functions are taken from their respective files (win32/unix .c) */
 extern bool FiosIsRoot(const std::string &path);
-extern bool FiosIsValidFile(const std::string &path, const struct dirent *ent, struct stat *sb);
-extern bool FiosIsHiddenFile(const struct dirent *ent);
+extern bool FiosIsHiddenFile(const std::filesystem::path &path);
 extern void FiosGetDrives(FileList &file_list);
 
 /* get the name of an oldstyle savegame */
@@ -322,48 +321,38 @@ bool FiosFileScanner::AddFile(const std::string &filename, size_t, const std::st
  */
 static void FiosGetFileList(SaveLoadOperation fop, bool show_dirs, FiosGetTypeAndNameProc *callback_proc, Subdirectory subdir, FileList &file_list)
 {
-	struct stat sb;
-	struct dirent *dirent;
-	DIR *dir;
-	FiosItem *fios;
 	size_t sort_start;
 
 	file_list.clear();
 
 	assert(_fios_path != nullptr);
 
-	/* A parent directory link exists if we are not in the root directory */
-	if (show_dirs && !FiosIsRoot(*_fios_path)) {
-		fios = &file_list.emplace_back();
-		fios->type = FIOS_TYPE_PARENT;
-		fios->mtime = 0;
-		fios->name = "..";
-		SetDParamStr(0, "..");
-		fios->title = GetString(STR_SAVELOAD_PARENT_DIRECTORY);
-	}
-
-	/* Show subdirectories */
-	if (show_dirs && (dir = ttd_opendir(_fios_path->c_str())) != nullptr) {
-		while ((dirent = readdir(dir)) != nullptr) {
-			std::string d_name = FS2OTTD(dirent->d_name);
-
-			/* found file must be directory, but not '.' or '..' */
-			if (FiosIsValidFile(*_fios_path, dirent, &sb) && S_ISDIR(sb.st_mode) &&
-					(!FiosIsHiddenFile(dirent) || StrStartsWithIgnoreCase(PERSONAL_DIR, d_name)) &&
-					d_name != "." && d_name != "..") {
-				fios = &file_list.emplace_back();
-				fios->type = FIOS_TYPE_DIR;
-				fios->mtime = 0;
-				fios->name = d_name;
-				SetDParamStr(0, fios->name + PATHSEP);
-				fios->title = GetString(STR_SAVELOAD_DIRECTORY);
-			}
-		}
-		closedir(dir);
-	}
-
-	/* Sort the subdirs always by name, ascending, remember user-sorting order */
 	if (show_dirs) {
+		/* A parent directory link exists if we are not in the root directory */
+		if (!FiosIsRoot(*_fios_path)) {
+			FiosItem &fios = file_list.emplace_back();
+			fios.type = FIOS_TYPE_PARENT;
+			fios.mtime = 0;
+			fios.name = "..";
+			SetDParamStr(0, "..");
+			fios.title = GetString(STR_SAVELOAD_PARENT_DIRECTORY);
+		}
+
+		/* Show subdirectories */
+		std::error_code error_code;
+		for (const auto &dir_entry : std::filesystem::directory_iterator(OTTD2FS(*_fios_path), error_code)) {
+			if (!dir_entry.is_directory()) continue;
+			if (FiosIsHiddenFile(dir_entry) && dir_entry.path().filename() != PERSONAL_DIR) continue;
+
+			FiosItem &fios = file_list.emplace_back();
+			fios.type = FIOS_TYPE_DIR;
+			fios.mtime = 0;
+			fios.name = FS2OTTD(dir_entry.path().filename());
+			SetDParamStr(0, fios.name + PATHSEP);
+			fios.title = GetString(STR_SAVELOAD_DIRECTORY);
+		}
+
+		/* Sort the subdirs always by name, ascending, remember user-sorting order */
 		SortingBits order = _savegame_sort_order;
 		_savegame_sort_order = SORT_BY_NAME | SORT_ASCENDING;
 		std::sort(file_list.begin(), file_list.end());
