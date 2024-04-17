@@ -110,7 +110,7 @@ void DumpDebugFacilityNames(std::back_insert_iterator<std::string> &output_itera
  */
 void DebugPrint(const char *category, int level, const std::string &message)
 {
-	if (strcmp(category, "desync") == 0) {
+	if (strcmp(category, "desync") == 0 && level != 0) {
 		static FILE *f = FioFOpenFile("commands-out.log", "wb", AUTOSAVE_DIR);
 		if (f == nullptr) return;
 
