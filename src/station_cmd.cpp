@@ -4329,6 +4329,19 @@ void BuildOilRig(TileIndex tile)
 	st->rect.BeforeAddTile(tile, StationRect::ADD_FORCE);
 
 	st->UpdateVirtCoord();
+
+	/* An industry tile has now been replaced with a station tile, this may change the overlap between station catchments and industry tiles.
+	 * Recalculate the station catchment for all stations currently in the industry's nearby list.
+	 * Clear the industry's station nearby list first because Station::RecomputeCatchment cannot remove nearby industries in this case. */
+	if (_settings_game.station.serve_neutral_industries) {
+		StationList nearby = std::move(st->industry->stations_near);
+		st->industry->stations_near.clear();
+		for (Station *near : nearby) {
+			near->RecomputeCatchment(true);
+			UpdateStationAcceptance(near, true);
+		}
+	}
+
 	st->RecomputeCatchment();
 	UpdateStationAcceptance(st, false);
 }
