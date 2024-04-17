@@ -42,8 +42,8 @@ public:
 	/** Destruct the proper one... */
 	virtual ~FileScanner() = default;
 
-	uint Scan(const char *extension, Subdirectory sd, bool tars = true, bool recursive = true);
-	uint Scan(const char *extension, const std::string &directory, bool recursive = true);
+	uint Scan(std::string_view extension, Subdirectory sd, bool tars = true, bool recursive = true);
+	uint Scan(std::string_view extension, const std::string &directory, bool recursive = true);
 
 	/**
 	 * Add a file with the given filename.
