@@ -1666,7 +1666,14 @@ void VehicleEnterDepot(Vehicle *v)
 
 		/* If we've entered our unbunching depot, record the round trip duration. */
 		if (v->current_order.GetDepotActionType() & ODATFB_UNBUNCH && v->depot_unbunching_last_departure > 0) {
-			v->round_trip_time = (TimerGameTick::counter - v->depot_unbunching_last_departure);
+			TimerGameTick::Ticks measured_round_trip = TimerGameTick::counter - v->depot_unbunching_last_departure;
+			if (v->round_trip_time == 0) {
+				/* This might be our first round trip. */
+				v->round_trip_time = measured_round_trip;
+			} else {
+				/* If we have a previous trip, smooth the effects of outlier trip calculations caused by jams or other interference. */
+				v->round_trip_time = Clamp(measured_round_trip, (v->round_trip_time / 2), ClampTo<TimerGameTick::Ticks>(v->round_trip_time * 2));
+			}
 		}
 
 		v->current_order.MakeDummy();
