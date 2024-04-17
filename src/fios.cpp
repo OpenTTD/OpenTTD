@@ -365,9 +365,9 @@ static void FiosGetFileList(SaveLoadOperation fop, bool show_dirs, FiosGetTypeAn
 	/* Show files */
 	FiosFileScanner scanner(fop, callback_proc, file_list);
 	if (subdir == NO_DIRECTORY) {
-		scanner.Scan(nullptr, *_fios_path, false);
+		scanner.Scan({}, *_fios_path, false);
 	} else {
-		scanner.Scan(nullptr, subdir, true, true);
+		scanner.Scan({}, subdir, true, true);
 	}
 
 	std::sort(file_list.begin() + sort_start, file_list.end());

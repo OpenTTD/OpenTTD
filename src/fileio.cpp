@@ -1134,12 +1134,13 @@ std::unique_ptr<char[]> ReadFileToMem(const std::string &filename, size_t &lenp,
  * @param filename  The filename to look in for the extension.
  * @return True iff the extension is nullptr, or the filename ends with it.
  */
-static bool MatchesExtension(const char *extension, const char *filename)
+static bool MatchesExtension(std::string_view extension, const std::string &filename)
 {
-	if (extension == nullptr) return true;
+	if (extension.empty()) return true;
+	if (filename.length() < extension.length()) return false;
 
-	const char *ext = strrchr(filename, extension[0]);
-	return ext != nullptr && StrEqualsIgnoreCase(ext, extension);
+	std::string_view filename_sv = filename; // String view to avoid making another copy of the substring.
+	return StrCompareIgnoreCase(extension, filename_sv.substr(filename_sv.length() - extension.length())) == 0;
 }
 
 /**
@@ -1151,36 +1152,24 @@ static bool MatchesExtension(const char *extension, const char *filename)
  * @param basepath_length from where in the path are we 'based' on the search path
  * @param recursive       whether to recursively search the sub directories
  */
-static uint ScanPath(FileScanner *fs, const char *extension, const char *path, size_t basepath_length, bool recursive)
+static uint ScanPath(FileScanner *fs, std::string_view extension, const std::filesystem::path &path, size_t basepath_length, bool recursive)
 {
 	uint num = 0;
-	struct stat sb;
-	struct dirent *dirent;
-	DIR *dir;
 
-	if (path == nullptr || (dir = ttd_opendir(path)) == nullptr) return 0;
-
-	while ((dirent = readdir(dir)) != nullptr) {
-		std::string d_name = FS2OTTD(dirent->d_name);
-
-		if (!FiosIsValidFile(path, dirent, &sb)) continue;
-
-		std::string filename(path);
-		filename += d_name;
-
-		if (S_ISDIR(sb.st_mode)) {
-			/* Directory */
+	std::error_code error_code;
+	for (const auto &dir_entry : std::filesystem::directory_iterator(path, error_code)) {
+		if (dir_entry.is_directory()) {
 			if (!recursive) continue;
-			if (d_name == "." || d_name == "..") continue;
-			AppendPathSeparator(filename);
-			num += ScanPath(fs, extension, filename.c_str(), basepath_length, recursive);
-		} else if (S_ISREG(sb.st_mode)) {
-			/* File */
-			if (MatchesExtension(extension, filename.c_str()) && fs->AddFile(filename, basepath_length, {})) num++;
+			num += ScanPath(fs, extension, dir_entry.path(), basepath_length, recursive);
+		} else if (dir_entry.is_regular_file()) {
+			std::string file = FS2OTTD(dir_entry.path());
+			if (!MatchesExtension(extension, file)) continue;
+			if (fs->AddFile(file, basepath_length, {})) num++;
 		}
 	}
-
-	closedir(dir);
+	if (error_code) {
+		Debug(misc, 9, "Unable to read directory {}: {}", path.string(), error_code.message());
+	}
 
 	return num;
 }
@@ -1191,12 +1180,11 @@ static uint ScanPath(FileScanner *fs, const char *extension, const char *path, s
  * @param extension the extension of files to search for.
  * @param tar       the tar to search in.
  */
-static uint ScanTar(FileScanner *fs, const char *extension, const TarFileList::value_type &tar)
+static uint ScanTar(FileScanner *fs, std::string_view extension, const TarFileList::value_type &tar)
 {
 	uint num = 0;
-	const auto &filename = tar.first;
 
-	if (MatchesExtension(extension, filename.c_str()) && fs->AddFile(filename, 0, tar.second.tar_filename)) num++;
+	if (MatchesExtension(extension, tar.first) && fs->AddFile(tar.first, 0, tar.second.tar_filename)) num++;
 
 	return num;
 }
@@ -1210,7 +1198,7 @@ static uint ScanTar(FileScanner *fs, const char *extension, const TarFileList::v
  * @return the number of found files, i.e. the number of times that
  *         AddFile returned true.
  */
-uint FileScanner::Scan(const char *extension, Subdirectory sd, bool tars, bool recursive)
+uint FileScanner::Scan(std::string_view extension, Subdirectory sd, bool tars, bool recursive)
 {
 	this->subdir = sd;
 
@@ -1221,7 +1209,7 @@ uint FileScanner::Scan(const char *extension, Subdirectory sd, bool tars, bool r
 		if (sp == SP_WORKING_DIR && !_do_scan_working_directory) continue;
 
 		std::string path = FioGetDirectory(sp, sd);
-		num += ScanPath(this, extension, path.c_str(), path.size(), recursive);
+		num += ScanPath(this, extension, OTTD2FS(path), path.size(), recursive);
 	}
 
 	if (tars && sd != NO_DIRECTORY) {
@@ -1252,9 +1240,9 @@ uint FileScanner::Scan(const char *extension, Subdirectory sd, bool tars, bool r
  * @return the number of found files, i.e. the number of times that
  *         AddFile returned true.
  */
-uint FileScanner::Scan(const char *extension, const std::string &directory, bool recursive)
+uint FileScanner::Scan(const std::string_view extension, const std::string &directory, bool recursive)
 {
 	std::string path(directory);
 	AppendPathSeparator(path);
-	return ScanPath(this, extension, path.c_str(), path.size(), recursive);
+	return ScanPath(this, extension, OTTD2FS(path), path.size(), recursive);
 }
