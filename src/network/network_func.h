@@ -12,7 +12,7 @@
 
 /**
  * Uncomment the following define to enable command replaying.
- * See docs/desync.txt for details.
+ * See docs/desync.md for details.
  */
 // #define DEBUG_DUMP_COMMANDS
 // #define DEBUG_FAILED_DUMP_COMMANDS
