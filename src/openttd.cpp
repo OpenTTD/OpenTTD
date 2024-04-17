@@ -1248,7 +1248,7 @@ static void CheckCaches()
 	uint i = 0;
 	for (Town *t : Town::Iterate()) {
 		if (MemCmpT(old_town_caches.data() + i, &t->cache) != 0) {
-			Debug(desync, 2, "town cache mismatch: town {}", t->index);
+			Debug(desync, 2, "warning: town cache mismatch: town {}", t->index);
 		}
 		i++;
 	}
@@ -1262,7 +1262,7 @@ static void CheckCaches()
 	i = 0;
 	for (const Company *c : Company::Iterate()) {
 		if (MemCmpT(old_infrastructure.data() + i, &c->infrastructure) != 0) {
-			Debug(desync, 2, "infrastructure cache mismatch: company {}", c->index);
+			Debug(desync, 2, "warning: infrastructure cache mismatch: company {}", c->index);
 		}
 		i++;
 	}
@@ -1318,23 +1318,23 @@ static void CheckCaches()
 		for (const Vehicle *u = v; u != nullptr; u = u->Next()) {
 			FillNewGRFVehicleCache(u);
 			if (memcmp(&grf_cache[length], &u->grf_cache, sizeof(NewGRFCache)) != 0) {
-				Debug(desync, 2, "newgrf cache mismatch: type {}, vehicle {}, company {}, unit number {}, wagon {}", v->type, v->index, v->owner, v->unitnumber, length);
+				Debug(desync, 2, "warning: newgrf cache mismatch: type {}, vehicle {}, company {}, unit number {}, wagon {}", v->type, v->index, v->owner, v->unitnumber, length);
 			}
 			if (memcmp(&veh_cache[length], &u->vcache, sizeof(VehicleCache)) != 0) {
-				Debug(desync, 2, "vehicle cache mismatch: type {}, vehicle {}, company {}, unit number {}, wagon {}", v->type, v->index, v->owner, v->unitnumber, length);
+				Debug(desync, 2, "warning: vehicle cache mismatch: type {}, vehicle {}, company {}, unit number {}, wagon {}", v->type, v->index, v->owner, v->unitnumber, length);
 			}
 			switch (u->type) {
 				case VEH_TRAIN:
 					if (memcmp(&gro_cache[length], &Train::From(u)->gcache, sizeof(GroundVehicleCache)) != 0) {
-						Debug(desync, 2, "train ground vehicle cache mismatch: vehicle {}, company {}, unit number {}, wagon {}", v->index, v->owner, v->unitnumber, length);
+						Debug(desync, 2, "warning: train ground vehicle cache mismatch: vehicle {}, company {}, unit number {}, wagon {}", v->index, v->owner, v->unitnumber, length);
 					}
 					if (memcmp(&tra_cache[length], &Train::From(u)->tcache, sizeof(TrainCache)) != 0) {
-						Debug(desync, 2, "train cache mismatch: vehicle {}, company {}, unit number {}, wagon {}", v->index, v->owner, v->unitnumber, length);
+						Debug(desync, 2, "warning: train cache mismatch: vehicle {}, company {}, unit number {}, wagon {}", v->index, v->owner, v->unitnumber, length);
 					}
 					break;
 				case VEH_ROAD:
 					if (memcmp(&gro_cache[length], &RoadVehicle::From(u)->gcache, sizeof(GroundVehicleCache)) != 0) {
-						Debug(desync, 2, "road vehicle ground vehicle cache mismatch: vehicle {}, company {}, unit number {}, wagon {}", v->index, v->owner, v->unitnumber, length);
+						Debug(desync, 2, "warning: road vehicle ground vehicle cache mismatch: vehicle {}, company {}, unit number {}, wagon {}", v->index, v->owner, v->unitnumber, length);
 					}
 					break;
 				default:
@@ -1384,11 +1384,11 @@ static void CheckCaches()
 		}
 		UpdateStationDockingTiles(st);
 		if (ta.tile != st->docking_station.tile || ta.w != st->docking_station.w || ta.h != st->docking_station.h) {
-			Debug(desync, 2, "station docking mismatch: station {}, company {}", st->index, st->owner);
+			Debug(desync, 2, "warning: station docking mismatch: station {}, company {}", st->index, st->owner);
 		}
 		for (TileIndex tile : ta) {
 			if (docking_tiles[tile] != IsDockingTile(tile)) {
-				Debug(desync, 2, "docking tile mismatch: tile {}", tile);
+				Debug(desync, 2, "warning: docking tile mismatch: tile {}", tile);
 			}
 		}
 	}
@@ -1399,7 +1399,7 @@ static void CheckCaches()
 	i = 0;
 	for (Station *st : Station::Iterate()) {
 		if (st->industries_near != old_station_industries_near[i]) {
-			Debug(desync, 2, "station industries near mismatch: station {}", st->index);
+			Debug(desync, 2, "warning: station industries near mismatch: station {}", st->index);
 		}
 		i++;
 	}
@@ -1408,14 +1408,14 @@ static void CheckCaches()
 	i = 0;
 	for (Town *t : Town::Iterate()) {
 		if (t->stations_near != old_town_stations_near[i]) {
-			Debug(desync, 2, "town stations near mismatch: town {}", t->index);
+			Debug(desync, 2, "warning: town stations near mismatch: town {}", t->index);
 		}
 		i++;
 	}
 	i = 0;
 	for (Industry *ind : Industry::Iterate()) {
 		if (ind->stations_near != old_industry_stations_near[i]) {
-			Debug(desync, 2, "industry stations near mismatch: industry {}", ind->index);
+			Debug(desync, 2, "warning: industry stations near mismatch: industry {}", ind->index);
 		}
 		i++;
 	}
