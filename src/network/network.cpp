@@ -1158,7 +1158,8 @@ void NetworkGameLoop()
 				assert(ret == 4);
 				check_sync_state = true;
 			} else if (strncmp(p, "msg: ", 5) == 0 || strncmp(p, "client: ", 8) == 0 ||
-						strncmp(p, "load: ", 6) == 0 || strncmp(p, "save: ", 6) == 0) {
+						strncmp(p, "load: ", 6) == 0 || strncmp(p, "save: ", 6) == 0 ||
+						strncmp(p, "warning: ", 9) == 0) {
 				/* A message that is not very important to the log playback, but part of the log. */
 #ifndef DEBUG_FAILED_DUMP_COMMANDS
 			} else if (strncmp(p, "cmdf: ", 6) == 0) {
