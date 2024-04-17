@@ -91,7 +91,7 @@ void AddChangedPersistentStorage(BasePersistentStorageArray *storage)
 
 	/* Discard all temporary changes */
 	for (auto &it : *_changed_storage_arrays) {
-		Debug(desync, 1, "Discarding persistent storage changes: Feature {}, GrfID {:08X}, Tile {}", it->feature, BSWAP32(it->grfid), it->tile);
+		Debug(desync, 2, "warning: discarding persistent storage changes: Feature {}, GrfID {:08X}, Tile {}", it->feature, BSWAP32(it->grfid), it->tile);
 		it->ClearChanges();
 	}
 	_changed_storage_arrays->clear();
