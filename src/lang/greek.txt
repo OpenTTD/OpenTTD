@@ -5386,6 +5386,7 @@ STR_ERROR_NO_VEHICLES_AVAILABLE_AT_ALL_EXPLANATION              :{WHITE}Αλλά
 STR_ERROR_NO_VEHICLES_AVAILABLE_YET                             :{WHITE}Κανένα όχημα δεν είναι διαθέσιμο ακόμη
 STR_ERROR_NO_VEHICLES_AVAILABLE_YET_EXPLANATION                 :{WHITE}Ξεκινήστε ένα νέο παιχνίδι αργότερα από {DATE_SHORT} η χρησιμοποιήστε ένα NewGRF το οποίο προσφέρει νωρίτερα οχήματα
 
+
 # Specific vehicle errors
 STR_ERROR_CAN_T_MAKE_TRAIN_PASS_SIGNAL                          :{WHITE}Δεν μπορεί το τρένο να περάσει σήμα με κίνδυνο...
 STR_ERROR_CAN_T_REVERSE_DIRECTION_TRAIN                         :{WHITE}Δεν αντιστρέφεται η κατεύθυνση του τρένου...

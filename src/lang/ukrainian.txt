@@ -5424,6 +5424,7 @@ STR_ERROR_NO_VEHICLES_AVAILABLE_AT_ALL_EXPLANATION              :{WHITE}Змін
 STR_ERROR_NO_VEHICLES_AVAILABLE_YET                             :{WHITE}Жоден вид транспорту ще не став доступним
 STR_ERROR_NO_VEHICLES_AVAILABLE_YET_EXPLANATION                 :{WHITE}Починайте нову гру після {DATE_SHORT} або використовуйте NewGRF, в якому транспорт з’являється раніше
 
+
 # Specific vehicle errors
 STR_ERROR_CAN_T_MAKE_TRAIN_PASS_SIGNAL                          :{WHITE}Неможливо проїхати сигнал - небезпечно...
 STR_ERROR_CAN_T_REVERSE_DIRECTION_TRAIN                         :{WHITE}Неможливо розвернути поїзд...

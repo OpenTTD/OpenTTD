@@ -4654,6 +4654,7 @@ STR_ERROR_NO_VEHICLES_AVAILABLE_AT_ALL_EXPLANATION              :{WHITE}Пром
 STR_ERROR_NO_VEHICLES_AVAILABLE_YET                             :{WHITE}Няма налични превозни средства все още
 STR_ERROR_NO_VEHICLES_AVAILABLE_YET_EXPLANATION                 :{WHITE}Започни нова игра след {DATE_SHORT} или използвай NewGRF , който показва ранни превозни средства
 
+
 # Specific vehicle errors
 STR_ERROR_CAN_T_MAKE_TRAIN_PASS_SIGNAL                          :{WHITE}Влака не може да пропусне сигнала при опасност...
 STR_ERROR_CAN_T_REVERSE_DIRECTION_TRAIN                         :{WHITE}Не може да обърне посоката на влак...

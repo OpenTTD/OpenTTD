@@ -1468,6 +1468,7 @@ STR_ERROR_TOO_MANY_VEHICLES_IN_GAME                             :{WHITE}Hemm wis
 
 
 
+
 # Specific vehicle errors
 STR_ERROR_CAN_T_REVERSE_DIRECTION_TRAIN                         :{WHITE}Ma tistax tbiddel id-direzzjoni tal-ferrovija...
 

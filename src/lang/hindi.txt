@@ -1574,6 +1574,7 @@ STR_ERROR_CAN_T_SELL_TRAIN                                      :{WHITE}रे�
 
 
 
+
 # Specific vehicle errors
 STR_ERROR_CAN_T_REVERSE_DIRECTION_TRAIN                         :{WHITE}ट्रेन की दिशा उलट नहीं सकते...
 

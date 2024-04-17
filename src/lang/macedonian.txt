@@ -2117,6 +2117,7 @@ STR_ERROR_VEHICLE_IS_DESTROYED                                  :{WHITE}... во
 
 
 
+
 # Specific vehicle errors
 
 
