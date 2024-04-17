@@ -1362,7 +1362,10 @@ static void CheckCaches()
 	for (Town *t : Town::Iterate()) old_town_stations_near.push_back(t->stations_near);
 
 	std::vector<StationList> old_industry_stations_near;
-	for (Industry *ind : Industry::Iterate())  old_industry_stations_near.push_back(ind->stations_near);
+	for (Industry *ind : Industry::Iterate()) old_industry_stations_near.push_back(ind->stations_near);
+
+	std::vector<IndustryList> old_station_industries_near;
+	for (Station *st : Station::Iterate()) old_station_industries_near.push_back(st->industries_near);
 
 	for (Station *st : Station::Iterate()) {
 		for (GoodsEntry &ge : st->goods) {
@@ -1388,13 +1391,17 @@ static void CheckCaches()
 				Debug(desync, 2, "docking tile mismatch: tile {}", tile);
 			}
 		}
+	}
 
-		/* Check industries_near */
-		IndustryList industries_near = st->industries_near;
-		st->RecomputeCatchment();
-		if (st->industries_near != industries_near) {
+	Station::RecomputeCatchmentForAll();
+
+	/* Check industries_near */
+	i = 0;
+	for (Station *st : Station::Iterate()) {
+		if (st->industries_near != old_station_industries_near[i]) {
 			Debug(desync, 2, "station industries near mismatch: station {}", st->index);
 		}
+		i++;
 	}
 
 	/* Check stations_near */
