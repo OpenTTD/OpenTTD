@@ -241,7 +241,7 @@ public:
 			pf2.DisableCache(true);
 			FindDepotData result2 = pf2.FindNearestDepotTwoWay(v, t1, td1, t2, td2, max_penalty, reverse_penalty);
 			if (result1.tile != result2.tile || (result1.reverse != result2.reverse)) {
-				Debug(desync, 2, "CACHE ERROR: FindNearestDepotTwoWay() = [{}, {}]",
+				Debug(desync, 2, "warning: FindNearestDepotTwoWay cache mismatch: {} vs {}",
 						result1.tile != INVALID_TILE ? "T" : "F",
 						result2.tile != INVALID_TILE ? "T" : "F");
 				DumpState(pf1, pf2);
@@ -325,7 +325,7 @@ public:
 			pf2.DisableCache(true);
 			result1 = pf2.FindNearestSafeTile(v, t1, td, override_railtype, false);
 			if (result1 != result2) {
-				Debug(desync, 2, "CACHE ERROR: FindSafeTile() = [{}, {}]", result2 ? "T" : "F", result1 ? "T" : "F");
+				Debug(desync, 2, "warning: FindSafeTile cache mismatch: {} vs {}", result2 ? "T" : "F", result1 ? "T" : "F");
 				DumpState(pf1, pf2);
 			}
 		}
@@ -409,7 +409,7 @@ public:
 			pf2.DisableCache(true);
 			Trackdir result2 = pf2.ChooseRailTrack(v, tile, enterdir, tracks, path_found, reserve_track, target, dest);
 			if (result1 != result2) {
-				Debug(desync, 2, "CACHE ERROR: ChooseRailTrack() = [{}, {}]", result1, result2);
+				Debug(desync, 2, "warning: ChooseRailTrack cache mismatch: {} vs {}", result1, result2);
 				DumpState(pf1, pf2);
 			}
 		}
@@ -476,7 +476,7 @@ public:
 			pf2.DisableCache(true);
 			bool result2 = pf2.CheckReverseTrain(v, t1, td1, t2, td2, reverse_penalty);
 			if (result1 != result2) {
-				Debug(desync, 2, "CACHE ERROR: CheckReverseTrain() = [{}, {}]", result1 ? "T" : "F", result2 ? "T" : "F");
+				Debug(desync, 2, "warning: CheckReverseTrain cache mismatch: {} vs {}", result1 ? "T" : "F", result2 ? "T" : "F");
 				DumpState(pf1, pf2);
 			}
 		}
