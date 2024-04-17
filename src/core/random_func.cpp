@@ -113,7 +113,7 @@ void RandomBytesWithFallback(std::span<uint8_t> buf)
 #if defined(_WIN32)
 	auto res = BCryptGenRandom(nullptr, static_cast<PUCHAR>(buf.data()), static_cast<ULONG>(buf.size()), BCRYPT_USE_SYSTEM_PREFERRED_RNG);
 	if (res >= 0) return;
-#elif defined(__APPLE__) || defined(__NetBSD__) || defined(__FreeBSD__)
+#elif defined(__APPLE__) || defined(__NetBSD__) || defined(__FreeBSD__) || defined(__OpenBSD__)
 	arc4random_buf(buf.data(), buf.size());
 	return;
 #elif defined(__GLIBC__) && ((__GLIBC__ > 2) || ((__GLIBC__ == 2) && (__GLIBC_MINOR__ >= 25)))
