@@ -1157,6 +1157,16 @@ void NetworkGameLoop()
 				}
 			}
 
+			/* Skip all entries in the command-log till we caught up with the current game again. */
+			if (TimerGameEconomy::date > next_date || (TimerGameEconomy::date == next_date && TimerGameEconomy::date_fract > next_date_fract)) {
+				Debug(desync, 0, "Skipping to next command at {:08x}:{:02x}", next_date, next_date_fract);
+				if (cp != nullptr) {
+					delete cp;
+					cp = nullptr;
+				}
+				check_sync_state = false;
+			}
+
 			if (cp != nullptr || check_sync_state) break;
 
 			char buff[4096];
