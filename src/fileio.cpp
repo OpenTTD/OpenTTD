@@ -348,24 +348,9 @@ FILE *FioFOpenFile(const std::string &filename, const char *mode, Subdirectory s
  */
 void FioCreateDirectory(const std::string &name)
 {
-	auto p = name.find_last_of(PATHSEPCHAR);
-	if (p != std::string::npos) {
-		std::string dirname = name.substr(0, p);
-		DIR *dir = ttd_opendir(dirname.c_str());
-		if (dir == nullptr) {
-			FioCreateDirectory(dirname); // Try creating the parent directory, if we couldn't open it
-		} else {
-			closedir(dir);
-		}
-	}
-
-	/* Ignore directory creation errors; they'll surface later on, and most
-	 * of the time they are 'directory already exists' errors anyhow. */
-#if defined(_WIN32)
-	CreateDirectory(OTTD2FS(name).c_str(), nullptr);
-#else
-	mkdir(OTTD2FS(name).c_str(), 0755);
-#endif
+	/* Ignore directory creation errors; they'll surface later on. */
+	std::error_code error_code;
+	std::filesystem::create_directories(OTTD2FS(name), error_code);
 }
 
 /**
