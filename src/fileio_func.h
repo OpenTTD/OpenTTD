@@ -81,40 +81,6 @@ public:
 
 DECLARE_ENUM_AS_BIT_SET(TarScanner::Mode)
 
-/* Implementation of opendir/readdir/closedir for Windows */
-#if defined(_WIN32)
-struct DIR;
-
-struct dirent { // XXX - only d_name implemented
-	wchar_t *d_name; // name of found file
-	/* little hack which will point to parent DIR struct which will
-	 * save us a call to GetFileAttributes if we want information
-	 * about the file (for example in function fio_bla) */
-	DIR *dir;
-};
-
-DIR *opendir(const wchar_t *path);
-struct dirent *readdir(DIR *d);
-int closedir(DIR *d);
-#else
-/* Use system-supplied opendir/readdir/closedir functions */
-# include <sys/types.h>
-# include <dirent.h>
-#endif /* defined(_WIN32) */
-
-/**
- * A wrapper around opendir() which will convert the string from
- * OPENTTD encoding to that of the filesystem. For all purposes this
- * function behaves the same as the original opendir function
- * @param path string to open directory of
- * @return DIR pointer
- */
-inline DIR *ttd_opendir(const char *path)
-{
-	return opendir(OTTD2FS(path).c_str());
-}
-
-
 /** Auto-close a file upon scope exit. */
 class FileCloser {
 	FILE *f;
