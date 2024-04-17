@@ -78,18 +78,9 @@ std::optional<uint64_t> FiosGetDiskFreeSpace(const std::string &path)
 	return std::nullopt;
 }
 
-bool FiosIsValidFile(const std::string &path, const struct dirent *ent, struct stat *sb)
+bool FiosIsHiddenFile(const std::filesystem::path &path)
 {
-	assert(path.back() == PATHSEPCHAR);
-	if (path.size() > 2) assert(path[path.size() - 2] != PATHSEPCHAR);
-	std::string filename = fmt::format("{}{}", path, ent->d_name);
-
-	return stat(filename.c_str(), sb) == 0;
-}
-
-bool FiosIsHiddenFile(const struct dirent *ent)
-{
-	return ent->d_name[0] == '.';
+	return path.filename().string().starts_with(".");
 }
 
 #ifdef WITH_ICONV

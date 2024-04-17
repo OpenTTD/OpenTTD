@@ -70,8 +70,6 @@ TarFileList _tar_filelist[NUM_SUBDIRS];
 typedef std::map<std::string, std::string> TarLinkList;
 static TarLinkList _tar_linklist[NUM_SUBDIRS]; ///< List of directory links
 
-extern bool FiosIsValidFile(const std::string &path, const struct dirent *ent, struct stat *sb);
-
 /**
  * Checks whether the given search path is a valid search path
  * @param sp the search path to check
