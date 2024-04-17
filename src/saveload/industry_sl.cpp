@@ -266,7 +266,6 @@ struct INDYChunkHandler : ChunkHandler {
 				LoadMoveAcceptsProduced(i, INDUSTRY_NUM_INPUTS, INDUSTRY_NUM_OUTPUTS);
 			}
 			Industry::IncIndustryTypeCount(i->type);
-			TrimIndustryAcceptedProduced(i);
 		}
 	}
 
