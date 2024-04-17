@@ -195,10 +195,11 @@ Last updated: 2014-02-23
      'src/network/network_func.h'.
      (DEBUG_FAILED_DUMP_COMMANDS is explained later)
    - Put the 'commands-out.log' into the root save folder, and rename
-      it to 'commands.log'.
-   - Run 'openttd -D -d desync=3 -g startsavegame.sav'.
-     This replays the server log and creates new 'commands-out.log'
-     and 'dmp_cmds_*.sav' in your autosave folder.
+      it to 'commands.log'. Strip everything and including the "newgame"
+      entry from the log.
+   - Run 'openttd -D -d desync=0 -g startsavegame.sav'.
+     This replays the server log. Use "-d desync=3" to also create a
+     new 'commands-out.log' and 'dmp_cmds_*.sav' in your autosave folder.
 
 ## 3.2) Evaluation of the replay
 
@@ -226,7 +227,7 @@ Last updated: 2014-02-23
   savegames with your own ones from the replay. You can also comment/disable
   the 'NOT_REACHED' mentioned above, to get another 'dmp_cmds_*.sav' from
   the replay after the mismatch has already been detected.
-  See Section 3.2 on how to compare savegames.
+  See Section 3.3 on how to compare savegames.
   If the saves differ you have located the Desync between the last dmp_cmds
   that match and the first one that does not. The difference of the saves
   may point you in the direction of what causes it.
@@ -252,16 +253,14 @@ Last updated: 2014-02-23
      are replayed. Their internal state will thus not change in the
      replay and will differ.
 
-  To compare savegame more semantically, there exist some ugly hackish
-  tools at:
-     http://devs.openttd.org/~frosch/texts/zpipe.c
-     http://devs.openttd.org/~frosch/texts/printhunk.c
+  To compare savegame more semantically, easiest is to first export them
+  to a JSON format with for example:
 
-  The first one decompresses OpenTTD savegames. The second one creates
-  a textual representation of an uncompressed savegame, by parsing hunks
-  and arrays and such. With both tools you need to be a bit careful
-  since they work on stdin and stdout, which may not deal well with
-  binary data.
+  https://github.com/TrueBrain/OpenTTD-savegame-reader
 
-  If you have the textual representation of the savegames, you can
-  compare them with regular diff tools.
+  By running:
+
+  python -m savegame_reader --export-json dmp_cmds_NNN.sav | jq . > NNN.json
+
+  Now you can use any (JSON) diff tool to compare the two savegames in a
+  somewhat human readable way.
