@@ -3008,9 +3008,17 @@ static CommandCost RemoveDock(TileIndex tile, DoCommandFlag flags)
 
 #include "table/station_land.h"
 
+/**
+ * Get station tile layout for a station type and its station gfx.
+ * @param st Station type to draw.
+ * @param gfx StationGfx of tile to draw.
+ * @return Tile layout to draw.
+ */
 const DrawTileSprites *GetStationTileLayout(StationType st, uint8_t gfx)
 {
-	return &_station_display_datas[st][gfx];
+	const auto &layouts = _station_display_datas[st];
+	if (gfx >= layouts.size()) gfx &= 1;
+	return layouts.data() + gfx;
 }
 
 /**
