@@ -196,7 +196,7 @@ struct IConsoleWindow : Window
 		const int right = this->width - WidgetDimensions::scaled.frametext.right;
 
 		GfxFillRect(0, 0, this->width - 1, this->height - 1, PC_BLACK);
-		int ypos = this->height - this->line_height;
+		int ypos = this->height - this->line_height - WidgetDimensions::scaled.hsep_normal;
 		for (size_t line_index = IConsoleWindow::scroll; line_index < _iconsole_buffer.size(); line_index++) {
 			const IConsoleLine &print = _iconsole_buffer[line_index];
 			SetDParamStr(0, print.buffer);
