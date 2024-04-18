@@ -38,7 +38,7 @@ enum CallbackID {
 	/** Determine whether a newstation should be made available to build. */
 	CBID_STATION_AVAILABILITY            = 0x13, // 8 bit callback
 
-	/** Choose a tile layout to draw, instead of the standard 0-7 range. */
+	/** Choose a tile layout to draw, instead of the standard range. */
 	CBID_STATION_DRAW_TILE_LAYOUT        = 0x14,
 
 	/**

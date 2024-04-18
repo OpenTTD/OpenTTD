@@ -2048,11 +2048,11 @@ static ChangeInfoResult StationChangeInfo(uint stid, int numinfo, int prop, Byte
 					const uint8_t *layout = buf.ReadBytes(length * number);
 					statspec->layouts[length - 1][number - 1].assign(layout, layout + length * number);
 
-					/* Validate tile values are only the permitted 00, 02, 04 and 06. */
+					/* Ensure the first bit, axis, is zero. The rest of the value is validated during rendering, as we don't know the range yet. */
 					for (auto &tile : statspec->layouts[length - 1][number - 1]) {
-						if ((tile & 6) != tile) {
+						if ((tile & ~1U) != tile) {
 							GrfMsg(1, "StationChangeInfo: Invalid tile {} in layout {}x{}", tile, length, number);
-							tile &= 6;
+							tile &= ~1U;
 						}
 					}
 				}
