@@ -210,10 +210,7 @@ const SpriteGroup *RoadStopResolverObject::ResolveReal(const RealSpriteGroup *gr
 RoadStopResolverObject::RoadStopResolverObject(const RoadStopSpec *roadstopspec, BaseStation *st, TileIndex tile, RoadType roadtype, StationType type, uint8_t view,
 		CallbackID callback, uint32_t param1, uint32_t param2)
 	: ResolverObject(roadstopspec->grf_prop.grffile, callback, param1, param2), roadstop_scope(*this, st, roadstopspec, tile, roadtype, type, view)
-	{
-
-	this->town_scope = nullptr;
-
+{
 	CargoID ctype = SpriteGroupCargo::SG_DEFAULT_NA;
 
 	if (st == nullptr) {
@@ -240,14 +237,9 @@ RoadStopResolverObject::RoadStopResolverObject(const RoadStopSpec *roadstopspec,
 	this->root_spritegroup = roadstopspec->grf_prop.spritegroup[ctype];
 }
 
-RoadStopResolverObject::~RoadStopResolverObject()
-{
-	delete this->town_scope;
-}
-
 TownScopeResolver *RoadStopResolverObject::GetTown()
 {
-	if (this->town_scope == nullptr) {
+	if (!this->town_scope.has_value()) {
 		Town *t;
 		if (this->roadstop_scope.st != nullptr) {
 			t = this->roadstop_scope.st->town;
@@ -255,9 +247,9 @@ TownScopeResolver *RoadStopResolverObject::GetTown()
 			t = ClosestTownFromTile(this->roadstop_scope.tile, UINT_MAX);
 		}
 		if (t == nullptr) return nullptr;
-		this->town_scope = new TownScopeResolver(*this, t, this->roadstop_scope.st == nullptr);
+		this->town_scope.emplace(*this, t, this->roadstop_scope.st == nullptr);
 	}
-	return this->town_scope;
+	return &*this->town_scope;
 }
 
 uint16_t GetRoadStopCallback(CallbackID callback, uint32_t param1, uint32_t param2, const RoadStopSpec *roadstopspec, BaseStation *st, TileIndex tile, RoadType roadtype, StationType type, uint8_t view)

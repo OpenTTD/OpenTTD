@@ -49,11 +49,10 @@ struct StationScopeResolver : public ScopeResolver {
 /** Station resolver. */
 struct StationResolverObject : public ResolverObject {
 	StationScopeResolver station_scope; ///< The station scope resolver.
-	TownScopeResolver *town_scope;      ///< The town scope resolver (created on the first call).
+	std::optional<TownScopeResolver> town_scope = std::nullopt; ///< The town scope resolver (created on the first call).
 
 	StationResolverObject(const StationSpec *statspec, BaseStation *st, TileIndex tile,
 			CallbackID callback = CBID_NO_CALLBACK, uint32_t callback_param1 = 0, uint32_t callback_param2 = 0);
-	~StationResolverObject();
 
 	TownScopeResolver *GetTown();
 

@@ -219,7 +219,7 @@ uint32_t AirportResolverObject::GetDebugID() const
  */
 TownScopeResolver *AirportResolverObject::GetTown()
 {
-	if (!this->town_scope) {
+	if (!this->town_scope.has_value()) {
 		Town *t = nullptr;
 		if (this->airport_scope.st != nullptr) {
 			t = this->airport_scope.st->town;
@@ -227,9 +227,9 @@ TownScopeResolver *AirportResolverObject::GetTown()
 			t = ClosestTownFromTile(this->airport_scope.tile, UINT_MAX);
 		}
 		if (t == nullptr) return nullptr;
-		this->town_scope.reset(new TownScopeResolver(*this, t, this->airport_scope.st == nullptr));
+		this->town_scope.emplace(*this, t, this->airport_scope.st == nullptr);
 	}
-	return this->town_scope.get();
+	return &*this->town_scope;
 }
 
 /**

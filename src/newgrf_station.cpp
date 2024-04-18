@@ -254,7 +254,7 @@ static struct {
  */
 TownScopeResolver *StationResolverObject::GetTown()
 {
-	if (this->town_scope == nullptr) {
+	if (!this->town_scope.has_value()) {
 		Town *t = nullptr;
 		if (this->station_scope.st != nullptr) {
 			t = this->station_scope.st->town;
@@ -262,9 +262,9 @@ TownScopeResolver *StationResolverObject::GetTown()
 			t = ClosestTownFromTile(this->station_scope.tile, UINT_MAX);
 		}
 		if (t == nullptr) return nullptr;
-		this->town_scope = new TownScopeResolver(*this, t, this->station_scope.st == nullptr);
+		this->town_scope.emplace(*this, t, this->station_scope.st == nullptr);
 	}
-	return this->town_scope;
+	return &*this->town_scope;
 }
 
 /* virtual */ uint32_t StationScopeResolver::GetVariable(uint8_t variable, [[maybe_unused]] uint32_t parameter, bool *available) const
@@ -569,7 +569,7 @@ uint32_t StationResolverObject::GetDebugID() const
 StationResolverObject::StationResolverObject(const StationSpec *statspec, BaseStation *base_station, TileIndex tile,
 		CallbackID callback, uint32_t callback_param1, uint32_t callback_param2)
 	: ResolverObject(statspec->grf_prop.grffile, callback, callback_param1, callback_param2),
-	station_scope(*this, statspec, base_station, tile), town_scope(nullptr)
+	station_scope(*this, statspec, base_station, tile)
 {
 	/* Invalidate all cached vars */
 	_svc.valid = 0;
@@ -598,11 +598,6 @@ StationResolverObject::StationResolverObject(const StationSpec *statspec, BaseSt
 	/* Remember the cargo type we've picked */
 	this->station_scope.cargo_type = ctype;
 	this->root_spritegroup = this->station_scope.statspec->grf_prop.spritegroup[this->station_scope.cargo_type];
-}
-
-StationResolverObject::~StationResolverObject()
-{
-	delete this->town_scope;
 }
 
 /**
