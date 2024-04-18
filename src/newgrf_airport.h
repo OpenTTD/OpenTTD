@@ -174,7 +174,7 @@ struct AirportScopeResolver : public ScopeResolver {
 /** Resolver object for airports. */
 struct AirportResolverObject : public ResolverObject {
 	AirportScopeResolver airport_scope;
-	std::unique_ptr<TownScopeResolver> town_scope; ///< The town scope resolver (created on the first call).
+	std::optional<TownScopeResolver> town_scope = std::nullopt; ///< The town scope resolver (created on the first call).
 
 	AirportResolverObject(TileIndex tile, Station *st, uint8_t airport_id, uint8_t layout,
 			CallbackID callback = CBID_NO_CALLBACK, uint32_t callback_param1 = 0, uint32_t callback_param2 = 0);

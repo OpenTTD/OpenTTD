@@ -133,11 +133,10 @@ struct ObjectScopeResolver : public ScopeResolver {
 /** A resolver object to be used with feature 0F spritegroups. */
 struct ObjectResolverObject : public ResolverObject {
 	ObjectScopeResolver object_scope; ///< The object scope resolver.
-	TownScopeResolver *town_scope;    ///< The town scope resolver (created on the first call).
+	std::optional<TownScopeResolver> town_scope = std::nullopt; ///< The town scope resolver (created on the first call).
 
 	ObjectResolverObject(const ObjectSpec *spec, Object *o, TileIndex tile, uint8_t view = 0,
 			CallbackID callback = CBID_NO_CALLBACK, uint32_t param1 = 0, uint32_t param2 = 0);
-	~ObjectResolverObject();
 
 	ScopeResolver *GetScope(VarSpriteGroupScope scope = VSG_SCOPE_SELF, uint8_t relative = 0) override
 	{
