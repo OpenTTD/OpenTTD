@@ -180,7 +180,7 @@ public:
 	/**
 	 * Scan.
 	 */
-	void Scan(const char *directory)
+	void Scan(const std::string &directory)
 	{
 		this->FileScanner::Scan(".txt", directory, false);
 	}
@@ -241,7 +241,7 @@ GameStrings *LoadTranslations()
 			}
 		} else {
 			/* Scan filesystem */
-			scanner.Scan(ldir.c_str());
+			scanner.Scan(ldir);
 		}
 
 		gs->Compile();
