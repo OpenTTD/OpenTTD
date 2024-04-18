@@ -2885,7 +2885,9 @@ static CommandCost RemoveDock(TileIndex tile, DoCommandFlag flags)
 
 const DrawTileSprites *GetStationTileLayout(StationType st, uint8_t gfx)
 {
-	return &_station_display_datas[st][gfx];
+	const auto layouts = _station_display_datas[st];
+	if (gfx < layouts.size()) return layouts.data() + gfx;
+	return layouts.data();
 }
 
 /**
