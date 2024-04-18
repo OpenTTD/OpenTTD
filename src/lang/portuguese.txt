@@ -5287,6 +5287,10 @@ STR_ERROR_NO_VEHICLES_AVAILABLE_AT_ALL_EXPLANATION              :{WHITE}Mudar a 
 STR_ERROR_NO_VEHICLES_AVAILABLE_YET                             :{WHITE}Nenhum veículo ainda disponível
 STR_ERROR_NO_VEHICLES_AVAILABLE_YET_EXPLANATION                 :{WHITE}Começar um novo jogo depois de {DATE_SHORT} ou utilizar um NewGRF que forneça veículos iniciais
 
+STR_ERROR_NO_TOWN_ROADTYPES_AVAILABLE_AT_ALL                    :{WHITE}Não está disponível nenhum tipo de estrada edificável para localidades
+STR_ERROR_NO_TOWN_ROADTYPES_AVAILABLE_AT_ALL_EXPLANATION        :{WHITE}Mudar a sua configuração NewGRF
+STR_ERROR_NO_TOWN_ROADTYPES_AVAILABLE_YET                       :{WHITE}Ainda não estão disponíveis tipos de estradas edificáveis para localidades
+STR_ERROR_NO_TOWN_ROADTYPES_AVAILABLE_YET_EXPLANATION           :{WHITE}Começar um novo jogo depois de {DATE_SHORT} ou usar um NewGRF que forneça antecipadamente tipos de estradas edificáveis em localidades
 
 # Specific vehicle errors
 STR_ERROR_CAN_T_MAKE_TRAIN_PASS_SIGNAL                          :{WHITE}Não é possível fazer o comboio passar o sinal com perigo...
