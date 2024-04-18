@@ -707,7 +707,7 @@ FiosNumberedSaveName::FiosNumberedSaveName(const std::string &prefix) : prefix(p
 	/* Get the save list. */
 	FileList list;
 	FiosFileScanner scanner(SLO_SAVE, proc, list);
-	scanner.Scan(".sav", _autosave_path->c_str(), false);
+	scanner.Scan(".sav", *_autosave_path, false);
 
 	/* Find the number for the most recent save, if any. */
 	if (list.begin() != list.end()) {
