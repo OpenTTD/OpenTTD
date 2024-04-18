@@ -1013,7 +1013,7 @@ static const DrawTileSprites _station_display_datas_waypoint[] = {
  * As these are drawn/build like stations, they may use the same number of layouts. */
 static_assert(lengthof(_station_display_datas_rail) == lengthof(_station_display_datas_waypoint));
 
-static const DrawTileSprites * const _station_display_datas[] = {
+static const std::array<std::span<const DrawTileSprites>, STATION_END> _station_display_datas = {{
 	_station_display_datas_rail,
 	_station_display_datas_airport,
 	_station_display_datas_truck,
@@ -1023,4 +1023,4 @@ static const DrawTileSprites * const _station_display_datas[] = {
 	_station_display_datas_buoy,
 	_station_display_datas_waypoint,
 	_station_display_datas_road_waypoint,
-};
+}};
