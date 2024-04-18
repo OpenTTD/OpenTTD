@@ -21,7 +21,7 @@ jobs:
     runs-on: ubuntu-latest
     container:
       # If you change this version, change the number in the cache step too.
-      image: emscripten/emsdk:3.1.42
+      image: emscripten/emsdk:3.1.57
 
     steps:
     - name: Checkout
@@ -38,12 +38,11 @@ jobs:
       uses: actions/cache@v4
       with:
         path: /emsdk/upstream/emscripten/cache
-        key: 3.1.42-${{ runner.os }}
+        key: 3.1.57-${{ runner.os }}
 
-    - name: Patch Emscripten to support LZMA
+    - name: Add liblzma support
       run: |
-        cd /emsdk/upstream/emscripten
-        patch -p1 < ${GITHUB_WORKSPACE}/os/emscripten/emsdk-liblzma.patch
+        cp ${GITHUB_WORKSPACE}/os/emscripten/ports/liblzma.py /emsdk/upstream/emscripten/tools/ports/contrib/
 
     - name: Build (host tools)
       run: |
