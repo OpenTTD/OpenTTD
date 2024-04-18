@@ -32,6 +32,7 @@
 #include "waypoint_cmd.h"
 #include "timer/timer.h"
 #include "timer/timer_game_calendar.h"
+#include "depot_func.h"
 
 #include "widgets/dock_widget.h"
 
@@ -112,6 +113,8 @@ struct BuildDocksToolbarWindow : Window {
 	{
 		if (_game_mode == GM_NORMAL && this->IsWidgetLowered(WID_DT_STATION)) SetViewportCatchmentStation(nullptr, true);
 		if (_settings_client.gui.link_terraform_toolbar) CloseWindowById(WC_SCEN_LAND_GEN, 0, false);
+		if (_game_mode == GM_NORMAL && this->IsWidgetLowered(WID_DT_DEPOT)) SetViewportHighlightDepot(INVALID_DEPOT, true);
+
 		this->Window::Close();
 	}
 
@@ -164,7 +167,9 @@ struct BuildDocksToolbarWindow : Window {
 				break;
 
 			case WID_DT_DEPOT: // Build depot button
-				if (HandlePlacePushButton(this, WID_DT_DEPOT, SPR_CURSOR_SHIP_DEPOT, HT_RECT)) ShowBuildDocksDepotPicker(this);
+				if (HandlePlacePushButton(this, widget, SPR_CURSOR_SHIP_DEPOT, HT_RECT)) {
+					ShowBuildDocksDepotPicker(this);
+				}
 				break;
 
 			case WID_DT_STATION: // Build station button
@@ -204,9 +209,16 @@ struct BuildDocksToolbarWindow : Window {
 				PlaceProc_DemolishArea(tile);
 				break;
 
-			case WID_DT_DEPOT: // Build depot button
-				Command<CMD_BUILD_SHIP_DEPOT>::Post(STR_ERROR_CAN_T_BUILD_SHIP_DEPOT, CcBuildDocks, tile, _ship_depot_direction);
+			case WID_DT_DEPOT: { // Build depot button
+				CloseWindowById(WC_SELECT_DEPOT, VEH_SHIP);
+
+				ViewportPlaceMethod vpm = _ship_depot_direction != AXIS_X ? VPM_LIMITED_X_FIXED_Y : VPM_LIMITED_Y_FIXED_X;
+				VpSetPlaceSizingLimit(_settings_game.depot.depot_spread);
+				VpStartPlaceSizing(tile, vpm, DDSP_BUILD_DEPOT);
+				/* Select tiles now to prevent selection from flickering. */
+				VpSelectTilesWithMethod(pt.x, pt.y, vpm);
 				break;
+			}
 
 			case WID_DT_STATION: { // Build station button
 				/* Determine the watery part of the dock. */
@@ -260,6 +272,15 @@ struct BuildDocksToolbarWindow : Window {
 				case DDSP_CREATE_RIVER:
 					Command<CMD_BUILD_CANAL>::Post(STR_ERROR_CAN_T_PLACE_RIVERS, CcPlaySound_CONSTRUCTION_WATER, end_tile, start_tile, WATER_CLASS_RIVER, _ctrl_pressed);
 					break;
+				case DDSP_BUILD_DEPOT: {
+					bool adjacent = _ctrl_pressed;
+					auto proc = [=](DepotID join_to) -> bool {
+						return Command<CMD_BUILD_SHIP_DEPOT>::Post(STR_ERROR_CAN_T_BUILD_SHIP_DEPOT, CcBuildDocks, start_tile, _ship_depot_direction, adjacent, join_to, end_tile);
+					};
+
+					ShowSelectDepotIfNeeded(TileArea(start_tile, end_tile), proc, VEH_SHIP);
+					break;
+				}
 
 				default: break;
 			}
@@ -270,11 +291,14 @@ struct BuildDocksToolbarWindow : Window {
 	{
 		if (_game_mode != GM_EDITOR && this->IsWidgetLowered(WID_DT_STATION)) SetViewportCatchmentStation(nullptr, true);
 
+		if (_game_mode != GM_EDITOR && this->IsWidgetLowered(WID_DT_DEPOT)) SetViewportHighlightDepot(INVALID_DEPOT, true);
+
 		this->RaiseButtons();
 
 		CloseWindowById(WC_BUILD_STATION, TRANSPORT_WATER);
 		CloseWindowById(WC_BUILD_DEPOT, TRANSPORT_WATER);
 		CloseWindowById(WC_SELECT_STATION, 0);
+		CloseWindowById(WC_SELECT_DEPOT, VEH_SHIP);
 		CloseWindowByClass(WC_BUILD_BRIDGE);
 	}
 
@@ -514,10 +538,13 @@ struct BuildDocksDepotWindow : public PickerWindowBase {
 private:
 	static void UpdateDocksDirection()
 	{
+		VpSetPlaceFixedSize(2);
 		if (_ship_depot_direction != AXIS_X) {
 			SetTileSelectSize(1, 2);
+			_thd.select_method = VPM_LIMITED_X_FIXED_Y;
 		} else {
 			SetTileSelectSize(2, 1);
+			_thd.select_method = VPM_LIMITED_Y_FIXED_X;
 		}
 	}
 
@@ -527,6 +554,13 @@ public:
 		this->InitNested(TRANSPORT_WATER);
 		this->LowerWidget(WID_BDD_X + _ship_depot_direction);
 		UpdateDocksDirection();
+	}
+
+	void Close([[maybe_unused]] int data = 0) override
+	{
+		CloseWindowById(WC_SELECT_DEPOT, VEH_SHIP);
+		VpResetFixedSize();
+		this->PickerWindowBase::Close();
 	}
 
 	void UpdateWidgetSize(WidgetID widget, Dimension &size, [[maybe_unused]] const Dimension &padding, [[maybe_unused]] Dimension &fill, [[maybe_unused]] Dimension &resize) override
@@ -569,6 +603,7 @@ public:
 		switch (widget) {
 			case WID_BDD_X:
 			case WID_BDD_Y:
+				CloseWindowById(WC_SELECT_DEPOT, VEH_SHIP);
 				this->RaiseWidget(WID_BDD_X + _ship_depot_direction);
 				_ship_depot_direction = (widget == WID_BDD_X ? AXIS_X : AXIS_Y);
 				this->LowerWidget(WID_BDD_X + _ship_depot_direction);
@@ -577,6 +612,11 @@ public:
 				this->SetDirty();
 				break;
 		}
+	}
+
+	void OnRealtimeTick([[maybe_unused]] uint delta_ms) override
+	{
+		CheckRedrawDepotHighlight(this, VEH_SHIP);
 	}
 };
 
