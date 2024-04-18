@@ -29,7 +29,7 @@ This guide is for OpenTTD developers/maintainers, to release a new version of Op
 
 1. Go to https://github.com/OpenTTD/website/new/main/_posts and write a new announcement post. See a [previous example](https://github.com/OpenTTD/website/pull/238) for a template.
 2. Create a new branch for this post and open a PR for it.
-3. Write announcement text for socials like tt-forums / Discord / Twitter / Reddit / Fosstodon / ..., and include it in the PR.
+3. Write announcement text for the store pages and socials like TT-Forums / Discord / Twitter / Reddit / Fosstodon / etc., and include it in the PR.
 4. Create a Steam news image for that post and include it in the PR.
 5. Check the website post ("View Deployment" link) and make corrections. We usually just use the GitHub web interface for this and squash the result later.
 6. Get this PR approved, but do not merge yet.
@@ -38,16 +38,16 @@ This guide is for OpenTTD developers/maintainers, to release a new version of Op
 
 1. Go to https://github.com/OpenTTD/OpenTTD/releases/new and create a new tag matching the release number. For the body of the release, copy in the changelog. "Set as a pre-release" for a beta or RC.
 2. Wait for the OpenTTD release workflow to be complete.
-3. Merge website PR.
+3. Merge the website PR. This will publish the release post.
 4. If this is a full release:
    * for `Steam`: under Steamworks -> SteamPipe -> Builds, set the "testing" branch live on the "default" branch. This will request 2FA validation.
    * for `GOG`: under Builds, "Publish" the freshly uploaded builds to `Master`, `GOG-use only` and `Testing`.
    * for `Microsoft Store`: ask orudge to publish the new release.
 
 Access to `Steam`, `GOG` and/or `Microsoft Store` requires a developer account on that platform.
-For how to create such an account, you need access to the shared keystore.
+You will need access to the shared keystore in order to create such an account.
 For help and/or access to either or both, please contact TrueBrain.
 
 ## Step 4: Tell the world
 
-1. Make announcements on social media. You may need to coordinate with other developers who can make posts on tt-forums, Twitter, Reddit, Fosstodon, Discord, Steam, GOG, Microsoft Store, ...
+1. Make announcements on social media and store pages. You may need to coordinate with other developers who can make posts on TT-Forums, Twitter, Reddit, Fosstodon, Discord, Steam, GOG, Microsoft Store, etc.
