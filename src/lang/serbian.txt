@@ -5384,6 +5384,7 @@ STR_ERROR_NO_VEHICLES_AVAILABLE_AT_ALL_EXPLANATION              :{WHITE}Promeni 
 STR_ERROR_NO_VEHICLES_AVAILABLE_YET                             :{WHITE}Nijedno vozilo još uvek nije dostupno
 STR_ERROR_NO_VEHICLES_AVAILABLE_YET_EXPLANATION                 :{WHITE}Pokreni novu igru koja počinje posle {DATE_SHORT} ili koristi NewGRF koji omogućava ranija vozila
 
+
 # Specific vehicle errors
 STR_ERROR_CAN_T_MAKE_TRAIN_PASS_SIGNAL                          :{WHITE}Nemoguć je prolaz voza na signal opasnosti...
 STR_ERROR_CAN_T_REVERSE_DIRECTION_TRAIN                         :{WHITE}... vozilo je uništeno

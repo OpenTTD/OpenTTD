@@ -5145,6 +5145,7 @@ STR_ERROR_NO_VEHICLES_AVAILABLE_AT_ALL_EXPLANATION              :{WHITE}Ŝanĝu 
 STR_ERROR_NO_VEHICLES_AVAILABLE_YET                             :{WHITE}Neniuj veturiloj dume haveblas
 STR_ERROR_NO_VEHICLES_AVAILABLE_YET_EXPLANATION                 :{WHITE}Komencu novan ludon post {DATE_SHORT} aŭ uzu NewGRF-on kiu havebligas frutempajn veturilojn
 
+
 # Specific vehicle errors
 STR_ERROR_CAN_T_MAKE_TRAIN_PASS_SIGNAL                          :{WHITE}Ne povas igi vagonaron transiri signalon je danĝero...
 STR_ERROR_CAN_T_REVERSE_DIRECTION_TRAIN                         :{WHITE}Ne povas inversigi direkton de vagonaro...

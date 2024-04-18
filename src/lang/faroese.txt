@@ -4028,6 +4028,7 @@ STR_ERROR_VEHICLE_IS_DESTROYED                                  :{WHITE}... akfa
 
 
 
+
 # Specific vehicle errors
 STR_ERROR_CAN_T_MAKE_TRAIN_PASS_SIGNAL                          :{WHITE}Kann ikki fáa tok at fara framvið jarnbreytatekin tá vandi er...
 STR_ERROR_CAN_T_REVERSE_DIRECTION_TRAIN                         :{WHITE}Kann ikki venda toki vi...
