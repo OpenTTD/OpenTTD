@@ -4208,6 +4208,7 @@ STR_ERROR_NO_VEHICLES_AVAILABLE_AT_ALL_EXPLANATION              :{WHITE}Feroarje
 STR_ERROR_NO_VEHICLES_AVAILABLE_YET                             :{WHITE}Der binne noch gjin fiertugen beskikber
 STR_ERROR_NO_VEHICLES_AVAILABLE_YET_EXPLANATION                 :{WHITE}Begjin in nij spul nei {DATE_SHORT} of brûk in NewGRF dy't earder fiertugen beskikber stelt
 
+
 # Specific vehicle errors
 STR_ERROR_CAN_T_MAKE_TRAIN_PASS_SIGNAL                          :{WHITE}Kin trein gjin sein foarby ride litte at dizze gefaar oanjout...
 STR_ERROR_CAN_T_REVERSE_DIRECTION_TRAIN                         :{WHITE}Kin rydrjochting fan de trein net oanpasse

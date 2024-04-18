@@ -4756,6 +4756,7 @@ STR_ERROR_NO_VEHICLES_AVAILABLE_AT_ALL_EXPLANATION              :{WHITE}Muta con
 STR_ERROR_NO_VEHICLES_AVAILABLE_YET                             :{WHITE}Nulla vehicula adhuc parabilia sunt
 STR_ERROR_NO_VEHICLES_AVAILABLE_YET_EXPLANATION                 :{WHITE}Incipe ludum post {DATE_SHORT} sive eligere idoneum NewGRF quod vehicula antiqua parat
 
+
 # Specific vehicle errors
 STR_ERROR_CAN_T_MAKE_TRAIN_PASS_SIGNAL                          :{WHITE}Non licet tramen impellere post signale...
 STR_ERROR_CAN_T_REVERSE_DIRECTION_TRAIN                         :{WHITE}Non licet tramini cursum reflectere...

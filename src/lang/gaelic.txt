@@ -4765,6 +4765,7 @@ STR_ERROR_NO_VEHICLES_AVAILABLE_AT_ALL_EXPLANATION              :{WHITE}Atharrai
 STR_ERROR_NO_VEHICLES_AVAILABLE_YET                             :{WHITE}Chan eil carbad ri fhaighinn fhathast
 STR_ERROR_NO_VEHICLES_AVAILABLE_YET_EXPLANATION                 :{WHITE}Tòisich geama ùr às dèidh {DATE_SHORT} no chleachd NewGRF a bheir carbadan tràtha dhut
 
+
 # Specific vehicle errors
 STR_ERROR_CAN_T_MAKE_TRAIN_PASS_SIGNAL                          :{WHITE}Chan urrainn dhut toirt air trèanaichean dol seachad air comharra fo chunnart...
 STR_ERROR_CAN_T_REVERSE_DIRECTION_TRAIN                         :{WHITE}Chan urrainn dhan trèana tilleadh...

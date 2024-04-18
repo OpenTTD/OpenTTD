@@ -5159,6 +5159,7 @@ STR_ERROR_NO_VEHICLES_AVAILABLE_AT_ALL_EXPLANATION              :{WHITE}Se debe 
 STR_ERROR_NO_VEHICLES_AVAILABLE_YET                             :{WHITE}Todavía no hay vehículos disponibles
 STR_ERROR_NO_VEHICLES_AVAILABLE_YET_EXPLANATION                 :{WHITE}Se debe empezar una nueva partida después de {DATE_SHORT} o usar un NewGRF que proporcione vehículos más antiguos
 
+
 # Specific vehicle errors
 STR_ERROR_CAN_T_MAKE_TRAIN_PASS_SIGNAL                          :{WHITE}El tren no puede rebasar la señal si está en peligro...
 STR_ERROR_CAN_T_REVERSE_DIRECTION_TRAIN                         :{WHITE}No se puede cambiar la dirección del tren...

@@ -4816,6 +4816,7 @@ STR_ERROR_NO_VEHICLES_AVAILABLE_AT_ALL_EXPLANATION              :{WHITE}Promijen
 STR_ERROR_NO_VEHICLES_AVAILABLE_YET                             :{WHITE}Još nema dostupnih vozila
 STR_ERROR_NO_VEHICLES_AVAILABLE_YET_EXPLANATION                 :{WHITE}Pokreni novu igru nakon {DATE_SHORT} ili upotrijebi NewGRF koji daje vrlo rana vozila
 
+
 # Specific vehicle errors
 STR_ERROR_CAN_T_MAKE_TRAIN_PASS_SIGNAL                          :{WHITE}Nije moguće natjerati vlak da ignorira signale dok traje opasnost...
 STR_ERROR_CAN_T_REVERSE_DIRECTION_TRAIN                         :{WHITE}Nije moguće promijeniti smjer vlaka...

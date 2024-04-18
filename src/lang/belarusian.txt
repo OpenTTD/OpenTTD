@@ -5635,6 +5635,7 @@ STR_ERROR_NO_VEHICLES_AVAILABLE_AT_ALL_EXPLANATION              :{WHITE}Зьмя
 STR_ERROR_NO_VEHICLES_AVAILABLE_YET                             :{WHITE}Няма даступных транспартных сродкаў
 STR_ERROR_NO_VEHICLES_AVAILABLE_YET_EXPLANATION                 :{WHITE}Пачніце гульню пасьля {DATE_SHORT} або падключыце NewGRF з транспартам адпаведных часоў.
 
+
 # Specific vehicle errors
 STR_ERROR_CAN_T_MAKE_TRAIN_PASS_SIGNAL                          :{WHITE}Немагчыма іґнараваць сыґнал. Небясьпечна...
 STR_ERROR_CAN_T_REVERSE_DIRECTION_TRAIN                         :{WHITE}Не атрымалася завярнуць цягнік...

@@ -5280,6 +5280,7 @@ STR_ERROR_NO_VEHICLES_AVAILABLE_AT_ALL_EXPLANATION              :{WHITE}Canvia l
 STR_ERROR_NO_VEHICLES_AVAILABLE_YET                             :{WHITE}Encara no hi ha vehicles disponibles
 STR_ERROR_NO_VEHICLES_AVAILABLE_YET_EXPLANATION                 :{WHITE}Inicieu una partida nova després de {DATE_SHORT} o useu un NewGRF que proporcioni vehicles primerencs.
 
+
 # Specific vehicle errors
 STR_ERROR_CAN_T_MAKE_TRAIN_PASS_SIGNAL                          :{WHITE}No pots fer que un tren passi d'una senyal amb perill...
 STR_ERROR_CAN_T_REVERSE_DIRECTION_TRAIN                         :{WHITE}No es pot invertir la direcció del tren...

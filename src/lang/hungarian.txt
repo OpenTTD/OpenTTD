@@ -5343,6 +5343,7 @@ STR_ERROR_NO_VEHICLES_AVAILABLE_AT_ALL_EXPLANATION              :{WHITE}Változt
 STR_ERROR_NO_VEHICLES_AVAILABLE_YET                             :{WHITE}Még nincsenek elérhető járművek
 STR_ERROR_NO_VEHICLES_AVAILABLE_YET_EXPLANATION                 :{WHITE}Indíts új játékot {DATE_SHORT} után, vagy használj olyan NewGRF-et, ami tartalmaz megfelelően korai járműveket!
 
+
 # Specific vehicle errors
 STR_ERROR_CAN_T_MAKE_TRAIN_PASS_SIGNAL                          :{WHITE}Nem haladhatja meg a vonat a megállj jelzést...
 STR_ERROR_CAN_T_REVERSE_DIRECTION_TRAIN                         :{WHITE}Nem fordíthatod meg a vonatot...

@@ -4259,6 +4259,7 @@ STR_ERROR_VEHICLE_IS_DESTROYED                                  :{WHITE}... öku
 STR_ERROR_NO_VEHICLES_AVAILABLE_AT_ALL                          :{WHITE}Engin farartæki verða í boði
 STR_ERROR_NO_VEHICLES_AVAILABLE_AT_ALL_EXPLANATION              :{WHITE}Breyta NewGRF stillingunum þínum
 
+
 # Specific vehicle errors
 STR_ERROR_CAN_T_MAKE_TRAIN_PASS_SIGNAL                          :{WHITE}Get ekki látið lest fara framhjá hættumerki...
 STR_ERROR_CAN_T_REVERSE_DIRECTION_TRAIN                         :{WHITE}Get ekki snúið lest við...

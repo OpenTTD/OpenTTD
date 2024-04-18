@@ -5280,6 +5280,7 @@ STR_ERROR_NO_VEHICLES_AVAILABLE_AT_ALL_EXPLANATION              :{WHITE}NewGRF �
 STR_ERROR_NO_VEHICLES_AVAILABLE_YET                             :{WHITE}사용할 수 있는 차량이 하나도 없습니다
 STR_ERROR_NO_VEHICLES_AVAILABLE_YET_EXPLANATION                 :{WHITE}{DATE_SHORT}년 이후에 새로운 게임을 시작하거나 차량이 더 빨리 개발되는 NewGRF을 사용하십시오.
 
+
 # Specific vehicle errors
 STR_ERROR_CAN_T_MAKE_TRAIN_PASS_SIGNAL                          :{WHITE}너무 위험해서 신호를 무시할 수 없습니다...
 STR_ERROR_CAN_T_REVERSE_DIRECTION_TRAIN                         :{WHITE}열차를 회차시킬 수 없습니다...
