@@ -250,7 +250,7 @@ public:
 	template <typename Tcallback>
 	static Tret Unsafe(StringID err_message, Tcallback *callback, bool my_cmd, bool estimate_only, TileIndex location, std::tuple<Targs...> args)
 	{
-		return Execute(err_message, reinterpret_cast<CommandCallback *>(callback), my_cmd, estimate_only, false, location, std::move(args));
+		return Execute(err_message, reinterpret_cast<CommandCallback *>(reinterpret_cast<void(*)()>(callback)), my_cmd, estimate_only, false, location, std::move(args));
 	}
 
 protected:
@@ -301,7 +301,7 @@ protected:
 		/* Only set client IDs when the command does not come from the network. */
 		if (!network_command && GetCommandFlags<Tcmd>() & CMD_CLIENT_ID) SetClientIds(args, std::index_sequence_for<Targs...>{});
 
-		Tret res = Execute(err_message, reinterpret_cast<CommandCallback *>(callback), my_cmd, estimate_only, network_command, tile, args);
+		Tret res = Execute(err_message, reinterpret_cast<CommandCallback *>(reinterpret_cast<void(*)()>(callback)), my_cmd, estimate_only, network_command, tile, args);
 		InternalPostResult(ExtractCommandCost(res), tile, estimate_only, only_sending, err_message, my_cmd);
 
 		if (!estimate_only && !only_sending && callback != nullptr) {
