@@ -2878,19 +2878,7 @@ bool AfterLoadGame()
 		/* Station blocked, wires and pylon flags need to be stored in the map. This is effectively cached data, so no
 		 * version check is necessary. This is done here as the SLV_182 check below needs the blocked status. */
 		for (auto t : Map::Iterate()) {
-			if (HasStationTileRail(t)) {
-				StationGfx gfx = GetStationGfx(t);
-				const StationSpec *statspec = GetStationSpec(t);
-
-				bool blocked = statspec != nullptr && HasBit(statspec->blocked, gfx);
-				/* Default stations do not draw pylons under roofs (gfx >= 4) */
-				bool pylons = statspec != nullptr ? HasBit(statspec->pylons, gfx) : gfx < 4;
-				bool wires = statspec == nullptr || !HasBit(statspec->wires, gfx);
-
-				SetStationTileBlocked(t, blocked);
-				SetStationTileHavePylons(t, pylons);
-				SetStationTileHaveWires(t, wires);
-			}
+			if (HasStationTileRail(t)) SetRailStationTileFlags(t, GetStationSpec(t));
 		}
 	}
 

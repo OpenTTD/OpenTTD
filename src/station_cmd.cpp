@@ -1295,6 +1295,24 @@ static CommandCost CalculateRailStationCost(TileArea tile_area, DoCommandFlag fl
 }
 
 /**
+ * Set rail station tile flags for the given tile.
+ * @param tile Tile to set flags on.
+ * @param statspec Statspec of the tile.
+ */
+void SetRailStationTileFlags(TileIndex tile, const StationSpec *statspec)
+{
+	const StationGfx gfx = GetStationGfx(tile);
+	bool blocked = statspec != nullptr && HasBit(statspec->blocked, gfx);
+	/* Default stations do not draw pylons under roofs (gfx >= 4) */
+	bool pylons = statspec != nullptr ? HasBit(statspec->pylons, gfx) : gfx < 4;
+	bool wires = statspec == nullptr || !HasBit(statspec->wires, gfx);
+
+	SetStationTileBlocked(tile, blocked);
+	SetStationTileHavePylons(tile, pylons);
+	SetStationTileHaveWires(tile, wires);
+}
+
+/**
  * Build rail station
  * @param flags operation to perform
  * @param tile_org northern most position of station dragging/placement
@@ -1456,18 +1474,9 @@ CommandCost CmdBuildRailStation(DoCommandFlag flags, TileIndex tile_org, RailTyp
 					TriggerStationAnimation(st, tile, SAT_BUILT);
 				}
 
-				/* Should be the same as layout but axis component could be wrong... */
-				StationGfx gfx = GetStationGfx(tile);
-				bool blocked = statspec != nullptr && HasBit(statspec->blocked, gfx);
-				/* Default stations do not draw pylons under roofs (gfx >= 4) */
-				bool pylons = statspec != nullptr ? HasBit(statspec->pylons, gfx) : gfx < 4;
-				bool wires = statspec == nullptr || !HasBit(statspec->wires, gfx);
+				SetRailStationTileFlags(tile, statspec);
 
-				SetStationTileBlocked(tile, blocked);
-				SetStationTileHavePylons(tile, pylons);
-				SetStationTileHaveWires(tile, wires);
-
-				if (!blocked) c->infrastructure.rail[rt]++;
+				if (!IsStationTileBlocked(tile)) c->infrastructure.rail[rt]++;
 				c->infrastructure.station++;
 
 				tile += tile_delta;
