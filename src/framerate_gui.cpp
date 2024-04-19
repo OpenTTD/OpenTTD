@@ -810,7 +810,7 @@ struct FrametimeGraphWindow : Window {
 		/* Determine horizontal scale based on period covered by 60 points
 		 * (slightly less than 2 seconds at full game speed) */
 		struct ScaleDef { TimingMeasurement range; int scale; };
-		static const ScaleDef hscales[] = {
+		static const std::initializer_list<ScaleDef> hscales = {
 			{ TIMESTAMP_PRECISION * 120, 60 },
 			{ TIMESTAMP_PRECISION *  10, 20 },
 			{ TIMESTAMP_PRECISION *   5, 10 },
@@ -825,7 +825,7 @@ struct FrametimeGraphWindow : Window {
 	void SelectVerticalScale(TimingMeasurement range)
 	{
 		/* Determine vertical scale based on peak value (within the horizontal scale + a bit) */
-		static const TimingMeasurement vscales[] = {
+		static const std::initializer_list<TimingMeasurement> vscales = {
 			TIMESTAMP_PRECISION * 100,
 			TIMESTAMP_PRECISION * 10,
 			TIMESTAMP_PRECISION * 5,
@@ -1048,7 +1048,7 @@ void ConPrintFramerate()
 
 	IConsolePrint(TC_SILVER, "Based on num. data points: {} {} {}", count1, count2, count3);
 
-	static const char *MEASUREMENT_NAMES[PFE_MAX] = {
+	static const std::array<std::string_view, PFE_MAX> MEASUREMENT_NAMES = {
 		"Game loop",
 		"  GL station ticks",
 		"  GL train ticks",
@@ -1066,11 +1066,9 @@ void ConPrintFramerate()
 	};
 	std::string ai_name_buf;
 
-	static const PerformanceElement rate_elements[] = { PFE_GAMELOOP, PFE_DRAWING, PFE_VIDEO };
-
 	bool printed_anything = false;
 
-	for (const auto &e : rate_elements) {
+	for (const auto &e : { PFE_GAMELOOP, PFE_DRAWING, PFE_VIDEO }) {
 		auto &pf = _pf_data[e];
 		if (pf.num_valid == 0) continue;
 		IConsolePrint(TC_GREEN, "{} rate: {:.2f}fps  (expected: {:.2f}fps)",
