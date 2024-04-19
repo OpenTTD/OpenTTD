@@ -20,7 +20,7 @@
  * @param parent the group we belong to
  * @param name   the name of the item
  */
-IniItem::IniItem(const std::string &name)
+IniItem::IniItem(std::string_view name)
 {
 	this->name = StrMakeValid(name);
 }
@@ -29,7 +29,7 @@ IniItem::IniItem(const std::string &name)
  * Replace the current value with another value.
  * @param value the value to replace with.
  */
-void IniItem::SetValue(const std::string_view value)
+void IniItem::SetValue(std::string_view value)
 {
 	this->value.emplace(value);
 }
@@ -39,7 +39,7 @@ void IniItem::SetValue(const std::string_view value)
  * @param parent the file we belong to
  * @param name   the name of the group
  */
-IniGroup::IniGroup(const std::string &name, IniGroupType type) : type(type), comment("\n")
+IniGroup::IniGroup(std::string_view name, IniGroupType type) : type(type), comment("\n")
 {
 	this->name = StrMakeValid(name);
 }
@@ -49,7 +49,7 @@ IniGroup::IniGroup(const std::string &name, IniGroupType type) : type(type), com
  * @param name   name of the item to find.
  * @return the requested item or nullptr if not found.
  */
-const IniItem *IniGroup::GetItem(const std::string &name) const
+const IniItem *IniGroup::GetItem(std::string_view name) const
 {
 	for (const IniItem &item : this->items) {
 		if (item.name == name) return &item;
@@ -63,7 +63,7 @@ const IniItem *IniGroup::GetItem(const std::string &name) const
  * @param name   name of the item to find.
  * @return the requested item.
  */
-IniItem &IniGroup::GetOrCreateItem(const std::string &name)
+IniItem &IniGroup::GetOrCreateItem(std::string_view name)
 {
 	for (IniItem &item : this->items) {
 		if (item.name == name) return item;
@@ -78,7 +78,7 @@ IniItem &IniGroup::GetOrCreateItem(const std::string &name)
  * @param name name of the item to create.
  * @return the created item.
  */
-IniItem &IniGroup::CreateItem(const std::string &name)
+IniItem &IniGroup::CreateItem(std::string_view name)
 {
 	return this->items.emplace_back(name);
 }
@@ -87,7 +87,7 @@ IniItem &IniGroup::CreateItem(const std::string &name)
  * Remove the item with the given name.
  * @param name Name of the item to remove.
  */
-void IniGroup::RemoveItem(const std::string &name)
+void IniGroup::RemoveItem(std::string_view name)
 {
 	this->items.remove_if([&name](const IniItem &item) { return item.name == name; });
 }
@@ -116,7 +116,7 @@ IniLoadFile::IniLoadFile(const IniGroupNameList &list_group_names, const IniGrou
  * @param name name of the group to find.
  * @return The requested group or \c nullptr if not found.
  */
-const IniGroup *IniLoadFile::GetGroup(const std::string &name) const
+const IniGroup *IniLoadFile::GetGroup(std::string_view name) const
 {
 	for (const IniGroup &group : this->groups) {
 		if (group.name == name) return &group;
@@ -130,7 +130,7 @@ const IniGroup *IniLoadFile::GetGroup(const std::string &name) const
  * @param name name of the group to find.
  * @return The requested group or \c nullptr if not found.
  */
-IniGroup *IniLoadFile::GetGroup(const std::string &name)
+IniGroup *IniLoadFile::GetGroup(std::string_view name)
 {
 	for (IniGroup &group : this->groups) {
 		if (group.name == name) return &group;
@@ -144,7 +144,7 @@ IniGroup *IniLoadFile::GetGroup(const std::string &name)
  * @param name name of the group to find.
  * @return the requested group.
  */
-IniGroup &IniLoadFile::GetOrCreateGroup(const std::string &name)
+IniGroup &IniLoadFile::GetOrCreateGroup(std::string_view name)
 {
 	for (IniGroup &group : this->groups) {
 		if (group.name == name) return group;
@@ -159,7 +159,7 @@ IniGroup &IniLoadFile::GetOrCreateGroup(const std::string &name)
  * @param name name of the group to create.
  * @return the created group.
  */
-IniGroup &IniLoadFile::CreateGroup(const std::string &name)
+IniGroup &IniLoadFile::CreateGroup(std::string_view name)
 {
 	IniGroupType type = IGT_VARIABLES;
 	if (std::find(this->list_group_names.begin(), this->list_group_names.end(), name) != this->list_group_names.end()) type = IGT_LIST;
@@ -172,7 +172,7 @@ IniGroup &IniLoadFile::CreateGroup(const std::string &name)
  * Remove the group with the given name.
  * @param name name of the group to remove.
  */
-void IniLoadFile::RemoveGroup(const std::string &name)
+void IniLoadFile::RemoveGroup(std::string_view name)
 {
 	size_t len = name.length();
 	this->groups.remove_if([&name, &len](const IniGroup &group) { return group.name.compare(0, len, name) == 0; });
@@ -237,7 +237,7 @@ void IniLoadFile::LoadFromDisk(const std::string &filename, Subdirectory subdir)
 				e--;
 			}
 			s++; // skip [
-			group = &this->CreateGroup(std::string(s, e - s));
+			group = &this->CreateGroup(std::string_view(s, e - s));
 			if (comment_size != 0) {
 				group->comment.assign(comment, comment_size);
 				comment_size = 0;
@@ -245,7 +245,7 @@ void IniLoadFile::LoadFromDisk(const std::string &filename, Subdirectory subdir)
 		} else if (group != nullptr) {
 			if (group->type == IGT_SEQUENCE) {
 				/* A sequence group, use the line as item name without further interpretation. */
-				IniItem &item = group->CreateItem(std::string(buffer, e - buffer));
+				IniItem &item = group->CreateItem(std::string_view(buffer, e - buffer));
 				if (comment_size) {
 					item.comment.assign(comment, comment_size);
 					comment_size = 0;
@@ -263,7 +263,7 @@ void IniLoadFile::LoadFromDisk(const std::string &filename, Subdirectory subdir)
 			}
 
 			/* it's an item in an existing group */
-			IniItem &item = group->CreateItem(std::string(s, t - s));
+			IniItem &item = group->CreateItem(std::string_view(s, t - s));
 			if (comment_size != 0) {
 				item.comment.assign(comment, comment_size);
 				comment_size = 0;
