@@ -92,24 +92,21 @@ static uint GetCurrentResolutionIndex()
 static void ShowCustCurrency();
 
 /** Window for displaying the textfile of a BaseSet. */
-template <class TBaseSet>
 struct BaseSetTextfileWindow : public TextfileWindow {
-	const TBaseSet *baseset; ///< View the textfile of this BaseSet.
-	StringID content_type;   ///< STR_CONTENT_TYPE_xxx for title.
+	const std::string name; ///< Name of the content.
+	const StringID content_type; ///< STR_CONTENT_TYPE_xxx for title.
 
-	BaseSetTextfileWindow(TextfileType file_type, const TBaseSet *baseset, StringID content_type) : TextfileWindow(file_type), baseset(baseset), content_type(content_type)
+	BaseSetTextfileWindow(TextfileType file_type, const std::string &name, const std::string &textfile, StringID content_type) : TextfileWindow(file_type), name(name), content_type(content_type)
 	{
 		this->ConstructWindow();
-
-		auto textfile = this->baseset->GetTextfile(file_type);
-		this->LoadTextfile(textfile.value(), BASESET_DIR);
+		this->LoadTextfile(textfile, BASESET_DIR);
 	}
 
 	void SetStringParameters(WidgetID widget) const override
 	{
 		if (widget == WID_TF_CAPTION) {
 			SetDParam(0, content_type);
-			SetDParamStr(1, this->baseset->name);
+			SetDParamStr(1, this->name);
 		}
 	}
 };
@@ -124,7 +121,7 @@ template <class TBaseSet>
 void ShowBaseSetTextfileWindow(TextfileType file_type, const TBaseSet *baseset, StringID content_type)
 {
 	CloseWindowById(WC_TEXTFILE, file_type);
-	new BaseSetTextfileWindow<TBaseSet>(file_type, baseset, content_type);
+	new BaseSetTextfileWindow(file_type, baseset->name, *baseset->GetTextfile(file_type), content_type);
 }
 
 template <class T>
