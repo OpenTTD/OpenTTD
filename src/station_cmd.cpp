@@ -66,6 +66,7 @@
 #include "timer/timer_game_economy.h"
 #include "timer/timer_game_tick.h"
 #include "cheat_type.h"
+#include "depot_base.h"
 
 #include "widgets/station_widget.h"
 
@@ -2414,6 +2415,8 @@ CommandCost CmdBuildAirport(DoCommandFlag flags, TileIndex tile, uint8_t airport
 
 	/* Check if a valid, buildable airport was chosen for construction */
 	const AirportSpec *as = AirportSpec::Get(airport_type);
+
+	if (as->nof_depots > 0 && !Depot::CanAllocateItem()) return CMD_ERROR;
 	if (!as->IsAvailable() || layout >= as->num_table) return CMD_ERROR;
 	if (!as->IsWithinMapBounds(layout, tile)) return CMD_ERROR;
 
@@ -2507,6 +2510,8 @@ CommandCost CmdBuildAirport(DoCommandFlag flags, TileIndex tile, uint8_t airport
 			AirportTileAnimationTrigger(st, iter, AAT_BUILT);
 		}
 
+		if (as->nof_depots > 0) st->airport.AddHangar();
+
 		UpdateAirplanesOnNewStation(st);
 
 		Company::Get(st->owner)->infrastructure.airport++;
@@ -2554,6 +2559,7 @@ static CommandCost RemoveAirport(TileIndex tile, DoCommandFlag flags)
 			OrderBackup::Reset(tile_cur, false);
 			CloseWindowById(WC_VEHICLE_DEPOT, tile_cur);
 		}
+		st->airport.RemoveHangar();
 
 		/* The noise level is the noise from the airport and reduce it to account for the distance to the town center.
 		 * And as for construction, always remove it, even if the setting is not set, in order to avoid the
