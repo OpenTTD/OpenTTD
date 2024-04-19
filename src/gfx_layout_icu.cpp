@@ -489,7 +489,7 @@ std::unique_ptr<const ICUParagraphLayout::Line> ICUParagraphLayout::NextLine(int
 	ubidi_reorderVisual(bidi_level.data(), bidi_level.size(), vis_to_log.data());
 
 	/* Create line. */
-	std::unique_ptr<ICULine> line(new ICULine());
+	std::unique_ptr<ICULine> line = std::make_unique<ICULine>();
 
 	int cur_pos = 0;
 	for (auto &i : vis_to_log) {

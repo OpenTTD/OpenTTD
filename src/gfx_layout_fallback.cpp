@@ -218,7 +218,7 @@ std::unique_ptr<const ParagraphLayouter::Line> FallbackParagraphLayout::NextLine
 	 */
 	if (this->buffer == nullptr) return nullptr;
 
-	std::unique_ptr<FallbackLine> l(new FallbackLine());
+	std::unique_ptr<FallbackLine> l = std::make_unique<FallbackLine>();
 
 	if (*this->buffer == '\0') {
 		/* Only a newline. */
