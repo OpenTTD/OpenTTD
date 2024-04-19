@@ -1127,14 +1127,14 @@ static void NPFFillWithOrderData(NPFFindStationOrTileData *fstd, const Vehicle *
 	 * dest_tile, not just any stop of that station.
 	 * So only for train orders to stations we fill fstd->station_index, for all
 	 * others only dest_coords */
-	if (v->current_order.IsType(OT_GOTO_STATION) || v->current_order.IsType(OT_GOTO_WAYPOINT)) {
+	if (v->current_order.IsType(OT_GOTO_STATION) || (v->current_order.IsType(OT_LEAVESTATION) && v->type == VEH_SHIP) || v->current_order.IsType(OT_GOTO_WAYPOINT)) {
 		fstd->station_index = v->current_order.GetDestination();
 		if (v->type == VEH_TRAIN) {
 			fstd->station_type = v->current_order.IsType(OT_GOTO_STATION) ? STATION_RAIL : STATION_WAYPOINT;
 		} else if (v->type == VEH_ROAD) {
 			fstd->station_type = RoadVehicle::From(v)->IsBus() ? STATION_BUS : STATION_TRUCK;
 		} else if (v->type == VEH_SHIP) {
-			fstd->station_type = v->current_order.IsType(OT_GOTO_STATION) ? STATION_DOCK : STATION_BUOY;
+			fstd->station_type = (v->current_order.IsType(OT_GOTO_STATION) || v->current_order.IsType(OT_LEAVESTATION)) ? STATION_DOCK : STATION_BUOY;
 		}
 
 		fstd->not_articulated = v->type == VEH_ROAD && !RoadVehicle::From(v)->HasArticulatedPart();
