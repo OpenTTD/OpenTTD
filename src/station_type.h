@@ -73,7 +73,7 @@ DECLARE_ENUM_AS_BIT_SET(StationHadVehicleOfType)
 
 /** The different catchment areas used */
 enum CatchmentArea {
-	CA_NONE            =  0, ///< Catchment when the station has no facilities
+	CA_NONE            =  0, ///< Catchment when the station has no facilities or with "serve neutral industries" enabled
 	CA_BUS             =  3, ///< Catchment for bus stops with "modified catchment" enabled
 	CA_TRUCK           =  3, ///< Catchment for truck stops with "modified catchment" enabled
 	CA_TRAIN           =  4, ///< Catchment for train stations with "modified catchment" enabled
