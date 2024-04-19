@@ -22,8 +22,7 @@
 #include "viewport_func.h"
 #include "vehicle_func.h"
 #include "sound_func.h"
-#include "ai/ai.hpp"
-#include "game/game.hpp"
+#include "script/script_trigger.hpp"
 #include "newgrf_station.h"
 #include "effectvehicle_func.h"
 #include "network/network.h"
@@ -3014,8 +3013,7 @@ static void TrainEnterStation(Train *v, StationID station)
 			v->index,
 			st->index
 		);
-		AI::NewEvent(v->owner, new ScriptEventStationFirstVehicle(st->index, v->index));
-		Game::NewEvent(new ScriptEventStationFirstVehicle(st->index, v->index));
+		ScriptTrigger::NewEvent<ScriptEventStationFirstVehicle>(v->owner, st->index, v->index);
 	}
 
 	v->force_proceed = TFP_NONE;
@@ -3152,8 +3150,7 @@ static uint TrainCrashed(Train *v)
 	/* do not crash train twice */
 	if (!(v->vehstatus & VS_CRASHED)) {
 		num = v->Crash();
-		AI::NewEvent(v->owner, new ScriptEventVehicleCrashed(v->index, v->tile, ScriptEventVehicleCrashed::CRASH_TRAIN));
-		Game::NewEvent(new ScriptEventVehicleCrashed(v->index, v->tile, ScriptEventVehicleCrashed::CRASH_TRAIN));
+		ScriptTrigger::NewEvent<ScriptEventVehicleCrashed>(v->owner, v->index, v->tile, ScriptEventVehicleCrashed::CRASH_TRAIN);
 	}
 
 	/* Try to re-reserve track under already crashed train too.

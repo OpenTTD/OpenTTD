@@ -17,6 +17,19 @@
  *
  * This version is not yet released. The following changes are not set in stone yet.
  *
+ * API additions:
+ * \li GSGroup::GetOwner
+ * \li GSEventVehicleLost
+ * \li GSEventVehicleWaitingInDepot
+ * \li GSEventVehicleUnprofitable
+ * \li GSEventEngineAvailable
+ * \li GSEventDisasterZeppelinerCrashed
+ * \li GSEventDisasterZeppelinerCleared
+ * \li GSEventAircraftDestTooFar
+ * \li GSEventVehicleAutoReplaced
+ * \li GSEventCompanyAskMerger
+ * \li GSEventEnginePreview
+ *
  * \b 14.0
  *
  * API additions:

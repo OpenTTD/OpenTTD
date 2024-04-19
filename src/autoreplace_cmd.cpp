@@ -20,7 +20,7 @@
 #include "core/random_func.hpp"
 #include "vehiclelist.h"
 #include "road.h"
-#include "ai/ai.hpp"
+#include "script/script_trigger.hpp"
 #include "news_func.h"
 #include "strings_func.h"
 #include "autoreplace_cmd.h"
@@ -477,7 +477,7 @@ static CommandCost ReplaceFreeUnit(Vehicle **single_unit, DoCommandFlag flags, b
 
 			*single_unit = new_v;
 
-			AI::NewEvent(old_v->owner, new ScriptEventVehicleAutoReplaced(old_v->index, new_v->index));
+			ScriptTrigger::NewEvent<ScriptEventVehicleAutoReplaced>(old_v->owner, old_v->index, new_v->index);
 		}
 
 		/* Sell the old vehicle */
@@ -636,7 +636,7 @@ static CommandCost ReplaceChain(Vehicle **chain, DoCommandFlag flags, bool wagon
 				/* Success ! */
 				if ((flags & DC_EXEC) != 0 && new_head != old_head) {
 					*chain = new_head;
-					AI::NewEvent(old_head->owner, new ScriptEventVehicleAutoReplaced(old_head->index, new_head->index));
+					ScriptTrigger::NewEvent<ScriptEventVehicleAutoReplaced>(old_head->owner, old_head->index, new_head->index);
 				}
 
 				/* Transfer cargo of old vehicles and sell them */
@@ -705,7 +705,7 @@ static CommandCost ReplaceChain(Vehicle **chain, DoCommandFlag flags, bool wagon
 					TransferCargo(old_head, new_head, true);
 					*chain = new_head;
 
-					AI::NewEvent(old_head->owner, new ScriptEventVehicleAutoReplaced(old_head->index, new_head->index));
+					ScriptTrigger::NewEvent<ScriptEventVehicleAutoReplaced>(old_head->owner, old_head->index, new_head->index);
 				}
 
 				/* Sell the old vehicle */
