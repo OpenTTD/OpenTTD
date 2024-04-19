@@ -180,11 +180,11 @@ struct IConsoleWindow : Window
 	void Scroll(int amount)
 	{
 		if (amount < 0) {
-			size_t namount = (size_t) -amount;
+			size_t namount = static_cast<size_t>(-amount);
 			IConsoleWindow::scroll = (namount > IConsoleWindow::scroll) ? 0 : IConsoleWindow::scroll - namount;
 		} else {
 			assert(this->height >= 0 && this->line_height > 0);
-			size_t visible_lines = (size_t)(this->height / this->line_height);
+			size_t visible_lines = static_cast<size_t>(this->height / this->line_height);
 			size_t max_scroll = (visible_lines > _iconsole_buffer.size()) ? 0 : _iconsole_buffer.size() + 1 - visible_lines;
 			IConsoleWindow::scroll = std::min<size_t>(IConsoleWindow::scroll + amount, max_scroll);
 		}
@@ -223,7 +223,7 @@ struct IConsoleWindow : Window
 	/** Check on a regular interval if the console buffer needs truncating. */
 	IntervalTimer<TimerWindow> truncate_interval = {std::chrono::seconds(3), [this](auto) {
 		assert(this->height >= 0 && this->line_height > 0);
-		size_t visible_lines = (size_t)(this->height / this->line_height);
+		size_t visible_lines = static_cast<size_t>(this->height / this->line_height);
 
 		if (TruncateBuffer() && IConsoleWindow::scroll + visible_lines > _iconsole_buffer.size()) {
 			size_t max_scroll = (visible_lines > _iconsole_buffer.size()) ? 0 : _iconsole_buffer.size() + 1 - visible_lines;

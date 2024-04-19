@@ -465,7 +465,7 @@ static inline Colours RemapTTOColour(Colours tto)
 		COLOUR_WHITE,      COLOUR_LIGHT_BLUE, COLOUR_MAUVE,      COLOUR_PINK
 	};
 
-	if ((size_t)tto >= lengthof(tto_colour_remap)) return COLOUR_GREY; // this shouldn't happen
+	if (static_cast<size_t>(tto) >= std::size(tto_colour_remap)) return COLOUR_GREY; // this shouldn't happen
 
 	return tto_colour_remap[tto];
 }

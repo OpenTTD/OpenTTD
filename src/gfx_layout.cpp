@@ -260,17 +260,17 @@ Point Layouter::GetCharPosition(std::string_view::const_iterator ch) const
 		const auto &charmap = run.GetGlyphToCharMap();
 
 		/* Run starts after our character, use the last found position. */
-		if ((size_t)charmap.front() > index) return *position;
+		if (static_cast<size_t>(charmap.front()) > index) return *position;
 
 		position = positions.begin();
 		for (auto it = charmap.begin(); it != charmap.end(); /* nothing */) {
 			/* Plain honest-to-$deity match. */
-			if ((size_t)*it == index) return *position;
+			if (static_cast<size_t>(*it) == index) return *position;
 			++it;
 			if (it == charmap.end()) break;
 
 			/* We just passed our character, it's probably a ligature, use the last found position. */
-			if ((size_t)*it > index) return *position;
+			if (static_cast<size_t>(*it) > index) return *position;
 			++position;
 		}
 	}

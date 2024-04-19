@@ -258,8 +258,8 @@ size_t Packet::Size() const
  */
 bool Packet::ParsePacketSize()
 {
-	size_t size = (size_t)this->buffer[0];
-	size       += (size_t)this->buffer[1] << 8;
+	size_t size = static_cast<size_t>(this->buffer[0]);
+	size       += static_cast<size_t>(this->buffer[1]) << 8;
 
 	/* If the size of the packet is less than the bytes required for the size and type of
 	 * the packet, or more than the allowed limit, then something is wrong with the packet.

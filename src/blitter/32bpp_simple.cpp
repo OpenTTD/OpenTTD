@@ -118,7 +118,7 @@ void Blitter_32bppSimple::DrawColourMappingRect(void *dst, int width, int height
 Sprite *Blitter_32bppSimple::Encode(const SpriteLoader::SpriteCollection &sprite, AllocatorProc *allocator)
 {
 	Blitter_32bppSimple::Pixel *dst;
-	Sprite *dest_sprite = (Sprite *)allocator(sizeof(*dest_sprite) + (size_t)sprite[ZOOM_LVL_MIN].height * (size_t)sprite[ZOOM_LVL_MIN].width * sizeof(*dst));
+	Sprite *dest_sprite = static_cast<Sprite *>(allocator(sizeof(*dest_sprite) + static_cast<size_t>(sprite[ZOOM_LVL_MIN].height) * static_cast<size_t>(sprite[ZOOM_LVL_MIN].width) * sizeof(*dst)));
 
 	dest_sprite->height = sprite[ZOOM_LVL_MIN].height;
 	dest_sprite->width  = sprite[ZOOM_LVL_MIN].width;

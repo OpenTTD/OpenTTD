@@ -174,7 +174,7 @@ public:
 
 	void Load(Town *t) const override
 	{
-		size_t length = IsSavegameVersionBefore(SLV_SAVELOAD_LIST_LENGTH) ? (size_t)TAE_END : SlGetStructListLength(TAE_END);
+		size_t length = IsSavegameVersionBefore(SLV_SAVELOAD_LIST_LENGTH) ? static_cast<size_t>(TAE_END) : SlGetStructListLength(TAE_END);
 		for (size_t i = 0; i < length; i++) {
 			SlObject(&t->received[i], this->GetLoadDescription());
 		}

@@ -261,7 +261,7 @@ size_t GRFGetSizeOfDataSection(FILE *f)
 	if (fread(data, 1, header_len, f) == header_len) {
 		if (data[0] == 0 && data[1] == 0 && MemCmpT(data + 2, _grf_cont_v2_sig, 8) == 0) {
 			/* Valid container version 2, get data section size. */
-			size_t offset = ((size_t)data[13] << 24) | ((size_t)data[12] << 16) | ((size_t)data[11] << 8) | (size_t)data[10];
+			size_t offset = (static_cast<size_t>(data[13]) << 24) | (static_cast<size_t>(data[12]) << 16) | (static_cast<size_t>(data[11]) << 8) | static_cast<size_t>(data[10]);
 			if (offset >= 1 * 1024 * 1024 * 1024) {
 				Debug(grf, 0, "Unexpectedly large offset for NewGRF");
 				/* Having more than 1 GiB of data is very implausible. Mostly because then

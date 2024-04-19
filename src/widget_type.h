@@ -845,7 +845,7 @@ public:
 	template <typename Tcontainer>
 	auto GetVisibleRangeIterators(Tcontainer &container) const
 	{
-		assert((size_t)this->GetCount() == container.size()); // Scrollbar and container size must match.
+		assert(static_cast<size_t>(this->GetCount()) == container.size()); // Scrollbar and container size must match.
 		auto first = std::next(std::begin(container), this->GetPosition());
 		auto last = std::next(first, std::min<size_t>(this->GetCapacity(), this->GetCount() - this->GetPosition()));
 		return std::make_pair(first, last);
@@ -864,7 +864,7 @@ public:
 	template <typename Tcontainer>
 	typename Tcontainer::iterator GetScrolledItemFromWidget(Tcontainer &container, int clickpos, const Window * const w, WidgetID widget, int padding = 0, int line_height = -1) const
 	{
-		assert((size_t)this->GetCount() == container.size()); // Scrollbar and container size must match.
+		assert(static_cast<size_t>(this->GetCount()) == container.size()); // Scrollbar and container size must match.
 		size_type row = this->GetScrolledRowFromWidget(clickpos, w, widget, padding, line_height);
 		if (row == Scrollbar::npos) return std::end(container);
 

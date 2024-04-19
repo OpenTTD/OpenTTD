@@ -442,7 +442,7 @@ static bool GunzipFile(const ContentInfo *ci)
 				if (errnum != 0 && errnum != Z_STREAM_END) ret = false;
 				break;
 			}
-			if (read < 0 || (size_t)read != fwrite(buff, 1, read, fout)) {
+			if (read < 0 || static_cast<size_t>(read) != fwrite(buff, 1, read, fout)) {
 				/* If gzread() returns -1, there was an error in archive */
 				ret = false;
 				break;
@@ -496,7 +496,7 @@ bool ClientNetworkContentSocketHandler::Receive_SERVER_CONTENT(Packet &p)
 	} else {
 		/* We have a file opened, thus are downloading internal content */
 		size_t toRead = p.RemainingBytesToTransfer();
-		if (toRead != 0 && (size_t)p.TransferOut(TransferOutFWrite, this->curFile) != toRead) {
+		if (toRead != 0 && static_cast<size_t>(p.TransferOut(TransferOutFWrite, this->curFile)) != toRead) {
 			CloseWindowById(WC_NETWORK_STATUS_WINDOW, WN_NETWORK_STATUS_WINDOW_CONTENT_DOWNLOAD);
 			ShowErrorMessage(STR_CONTENT_ERROR_COULD_NOT_DOWNLOAD, STR_CONTENT_ERROR_COULD_NOT_DOWNLOAD_FILE_NOT_WRITABLE, WL_ERROR);
 			this->CloseConnection();

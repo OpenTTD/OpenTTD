@@ -37,7 +37,7 @@ RandomAccessFile::RandomAccessFile(const std::string &filename, Subdirectory sub
 	this->simplified_filename = name_without_path.substr(0, name_without_path.rfind('.'));
 	strtolower(this->simplified_filename);
 
-	this->SeekTo((size_t)pos, SEEK_SET);
+	this->SeekTo(static_cast<size_t>(pos), SEEK_SET);
 }
 
 /**
