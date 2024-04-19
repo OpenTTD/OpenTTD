@@ -53,12 +53,6 @@ struct GRPSChunkHandler : ChunkHandler {
 			SlObject(g, slt);
 
 			if (IsSavegameVersionBefore(SLV_189)) g->parent = INVALID_GROUP;
-
-			if (IsSavegameVersionBefore(SLV_GROUP_LIVERIES)) {
-				const Company *c = Company::Get(g->owner);
-				g->livery.colour1 = c->livery[LS_DEFAULT].colour1;
-				g->livery.colour2 = c->livery[LS_DEFAULT].colour2;
-			}
 		}
 	}
 };
