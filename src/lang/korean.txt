@@ -3489,6 +3489,9 @@ STR_NEWGRF_INSPECT_CAPTION_OBJECT_AT_ROAD_TYPE                  :도로 종류
 STR_NEWGRF_INSPECT_QUERY_CAPTION                                :{WHITE}NewGRF 변수 60+x 매개 변수 (16진법)
 
 # Sprite aligner window
+STR_SPRITE_ALIGNER_CAPTION_NO_ACTION                            :{WHITE}스프라이트 정렬: ({STRING}:{NUM})
+STR_SPRITE_ALIGNER_CAPTION_ACTIONA                              :{WHITE}스프라이트 정렬: 액션 0xA, {COMMA} ({STRING}:{NUM})
+STR_SPRITE_ALIGNER_CAPTION_ACTION5                              :{WHITE}스프라이트 정렬: 액션 0x5, 타입 {HEX}, {COMMA} ({STRING}:{NUM})
 STR_SPRITE_ALIGNER_NEXT_BUTTON                                  :{BLACK}다음 스프라이트
 STR_SPRITE_ALIGNER_NEXT_TOOLTIP                                 :{BLACK}(유사/재색상/글씨 스프라이트를 제외한) 다음 보통 스프라이트로 이동하고, 마지막 스프라이트에 다다르면 다시 처음으로 돌아갑니다.
 STR_SPRITE_ALIGNER_GOTO_BUTTON                                  :{BLACK}스프라이트 번호 입력
@@ -3497,6 +3500,7 @@ STR_SPRITE_ALIGNER_PREVIOUS_BUTTON                              :{BLACK}이전 �
 STR_SPRITE_ALIGNER_PREVIOUS_TOOLTIP                             :{BLACK}(유사/재색상/글씨 스프라이트를 제외한) 이전 보통 스프라이트로 이동하고, 첫 번째 스프라이트에 다다르면 마지막으로 돌아갑니다.
 STR_SPRITE_ALIGNER_SPRITE_TOOLTIP                               :{BLACK}현재 선택된 스프라이트를 표현합니다. 이 스프라이트를 표현할 때, 정렬 상태는 무시하고 표현합니다.
 STR_SPRITE_ALIGNER_MOVE_TOOLTIP                                 :{BLACK}X축이나 Y축 방향으로 스프라이트를 이동시킵니다. CTRL+클릭하면 한 번에 8씩 이동시킬 수 있습니다
+STR_SPRITE_ALIGNER_SPRITE                                       :{STRING}:{NUM}
 
 ###length 2
 STR_SPRITE_ALIGNER_CENTRE_OFFSET                                :{BLACK}오프셋 가운데 정렬
@@ -5279,10 +5283,14 @@ STR_ERROR_VEHICLE_IS_DESTROYED                                  :{WHITE}... 차�
 STR_ERROR_CAN_T_CLONE_VEHICLE_LIST                              :{WHITE}... 동일한 구성이 아닌 차량이 있습니다
 
 STR_ERROR_NO_VEHICLES_AVAILABLE_AT_ALL                          :{WHITE}사용할 수 있는 차량이 모두 없어질 것입니다
-STR_ERROR_NO_VEHICLES_AVAILABLE_AT_ALL_EXPLANATION              :{WHITE}NewGRF 설정을 변경하십시오
+STR_ERROR_NO_VEHICLES_AVAILABLE_AT_ALL_EXPLANATION              :{WHITE}NewGRF 설정을 변경하세요
 STR_ERROR_NO_VEHICLES_AVAILABLE_YET                             :{WHITE}사용할 수 있는 차량이 하나도 없습니다
-STR_ERROR_NO_VEHICLES_AVAILABLE_YET_EXPLANATION                 :{WHITE}{DATE_SHORT}년 이후에 새로운 게임을 시작하거나 차량이 더 빨리 개발되는 NewGRF을 사용하십시오.
+STR_ERROR_NO_VEHICLES_AVAILABLE_YET_EXPLANATION                 :{WHITE}{DATE_SHORT}년 이후에 새로운 게임을 시작하거나 차량이 더 빨리 개발되는 NewGRF을 사용하세요
 
+STR_ERROR_NO_TOWN_ROADTYPES_AVAILABLE_AT_ALL                    :{WHITE}도시가 만들 수 있는 도로 종류가 없습니다
+STR_ERROR_NO_TOWN_ROADTYPES_AVAILABLE_AT_ALL_EXPLANATION        :{WHITE}NewGRF 설정을 변경하세요
+STR_ERROR_NO_TOWN_ROADTYPES_AVAILABLE_YET                       :{WHITE}아직 도시가 만들 수 있는 도로 종류가 없습니다
+STR_ERROR_NO_TOWN_ROADTYPES_AVAILABLE_YET_EXPLANATION           :{WHITE}{DATE_SHORT}년 이후에 새로운 게임을 시작하거나 도시가 더 빨리 사용할 수 있는 도로 종류를 추가하는 NewGRF를 사용하세요
 
 # Specific vehicle errors
 STR_ERROR_CAN_T_MAKE_TRAIN_PASS_SIGNAL                          :{WHITE}너무 위험해서 신호를 무시할 수 없습니다...
@@ -5834,6 +5842,7 @@ STR_JUST_DATE_ISO                                               :{DATE_ISO}
 STR_JUST_STRING                                                 :{STRING}
 STR_JUST_STRING1                                                :{STRING}
 STR_JUST_STRING2                                                :{STRING}
+STR_JUST_STRING4                                                :{STRING}
 STR_JUST_STRING_STRING                                          :{STRING}{STRING}
 STR_JUST_RAW_STRING                                             :{STRING}
 STR_JUST_BIG_RAW_STRING                                         :{BIG_FONT}{STRING}
