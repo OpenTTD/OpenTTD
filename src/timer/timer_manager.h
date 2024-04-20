@@ -56,6 +56,20 @@ public:
 		GetTimers().erase(&timer);
 	}
 
+	/**
+	 * Change the period of a registered timer.
+	 *
+	 * @param timer The timer to change the period of.
+	 * @param new_period The new period value.
+	 */
+	static void ChangeRegisteredTimerPeriod(BaseTimer<TTimerType> &timer, TPeriod new_period)
+	{
+		/* Unregistration and re-registration is necessary because the period is used as the sort key in base_timer_sorter */
+		UnregisterTimer(timer);
+		timer.period = new_period;
+		RegisterTimer(timer);
+	}
+
 #ifdef WITH_ASSERT
 	/**
 	 * Validate that a new period is actually valid.
