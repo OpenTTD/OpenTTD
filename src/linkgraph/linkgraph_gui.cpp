@@ -113,7 +113,7 @@ void LinkGraphOverlay::RebuildCache()
 			}
 		}
 		if (this->IsPointVisible(pta, &dpi)) {
-			this->cached_stations.push_back(std::make_pair(from, supply));
+			this->cached_stations.emplace_back(from, supply);
 		}
 	}
 }

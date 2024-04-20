@@ -4225,9 +4225,9 @@ uint MoveGoodsToStation(CargoID type, uint amount, SourceType source_type, Sourc
 		}
 		if (used_stations.empty()) {
 			used_stations.reserve(2);
-			used_stations.emplace_back(std::make_pair(first_station, 0));
+			used_stations.emplace_back(first_station, 0);
 		}
-		used_stations.emplace_back(std::make_pair(st, 0));
+		used_stations.emplace_back(st, 0);
 	}
 
 	/* no stations around at all? */

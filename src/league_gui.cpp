@@ -293,7 +293,7 @@ private:
 		for (uint i = 0; i != elements.size(); i++) {
 			auto *lte = elements[i];
 			if (i > 0 && elements[i - 1]->rating != lte->rating) rank = i;
-			this->rows.emplace_back(std::make_pair(rank, lte));
+			this->rows.emplace_back(rank, lte);
 		}
 	}
 

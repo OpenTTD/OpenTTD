@@ -1545,7 +1545,7 @@ static void ViewportSortParentSprites(ParentSpriteToSortVector *psdv)
 
 	/* Initialize sprite list and order. */
 	for (auto p = psdv->rbegin(); p != psdv->rend(); p++) {
-		sprite_list.push_front(std::make_pair((*p)->xmin + (*p)->ymin, *p));
+		sprite_list.emplace_front((*p)->xmin + (*p)->ymin, *p);
 		sprite_order.push(*p);
 		(*p)->order = next_order++;
 	}

@@ -71,7 +71,7 @@ public:
 			}
 
 			/* Insert new item. */
-			this->data.push_front(std::make_pair(key, item));
+			this->data.emplace_front(key, item);
 			this->lookup.emplace(key, this->data.begin());
 		}
 
