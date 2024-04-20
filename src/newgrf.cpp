@@ -370,7 +370,7 @@ struct GRFLocation {
 	}
 };
 
-static std::map<GRFLocation, SpriteID> _grm_sprites;
+static std::map<GRFLocation, std::pair<SpriteID, uint16_t>> _grm_sprites;
 typedef std::map<GRFLocation, std::vector<uint8_t>> GRFLineToSpriteOverride;
 static GRFLineToSpriteOverride _grf_line_to_action6_sprite_override;
 
@@ -7072,6 +7072,21 @@ static void GRFInfo(ByteReader *buf)
 	Debug(grf, 1, "GRFInfo: Loaded GRFv{} set {:08X} - {} (palette: {}, version: {})", version, BSWAP32(grfid), name, (_cur.grfconfig->palette & GRFP_USE_MASK) ? "Windows" : "DOS", _cur.grfconfig->version);
 }
 
+/**
+ * Check if a sprite ID range is within the GRM reversed range for the currently loading NewGRF.
+ * @param first_sprite First sprite of range.
+ * @param num_sprites Number of sprites in the range.
+ * @return True iff the NewGRF has reserved a range equal to or greater than the provided range.
+ */
+static bool IsGRMReservedSprite(SpriteID first_sprite, uint16_t num_sprites)
+{
+	for (const auto &grm_sprite : _grm_sprites) {
+		if (grm_sprite.first.grfid != _cur.grffile->grfid) continue;
+		if (grm_sprite.second.first <= first_sprite && grm_sprite.second.first + grm_sprite.second.second >= first_sprite + num_sprites) return true;
+	}
+	return false;
+}
+
 /* Action 0x0A */
 static void SpriteReplace(ByteReader *buf)
 {
@@ -7092,6 +7107,18 @@ static void SpriteReplace(ByteReader *buf)
 		GrfMsg(2, "SpriteReplace: [Set {}] Changing {} sprites, beginning with {}",
 			i, num_sprites, first_sprite
 		);
+
+		if (first_sprite + num_sprites >= SPR_OPENTTD_BASE) {
+			/* Outside allowed range, check for GRM sprite reservations. */
+			if (!IsGRMReservedSprite(first_sprite, num_sprites)) {
+				GrfMsg(0, "SpriteReplace: [Set {}] Changing {} sprites, beginning with {}, above limit of {} and not within reserved range, ignoring.",
+					i, num_sprites, first_sprite, SPR_OPENTTD_BASE);
+
+				/* Load the sprites at the current location so they will do nothing instead of appearing to work. */
+				first_sprite = _cur.spriteid;
+				_cur.spriteid += num_sprites;
+			}
+		}
 
 		for (uint j = 0; j < num_sprites; j++) {
 			int load_index = first_sprite + j;
@@ -7460,7 +7487,7 @@ static void ParamSet(ByteReader *buf)
 
 							/* Reserve space at the current sprite ID */
 							GrfMsg(4, "ParamSet: GRM: Allocated {} sprites at {}", count, _cur.spriteid);
-							_grm_sprites[GRFLocation(_cur.grffile->grfid, _cur.nfo_line)] = _cur.spriteid;
+							_grm_sprites[GRFLocation(_cur.grffile->grfid, _cur.nfo_line)] = std::make_pair(_cur.spriteid, count);
 							_cur.spriteid += count;
 						}
 					}
@@ -7494,7 +7521,7 @@ static void ParamSet(ByteReader *buf)
 							switch (op) {
 								case 0:
 									/* Return space reserved during reservation stage */
-									src1 = _grm_sprites[GRFLocation(_cur.grffile->grfid, _cur.nfo_line)];
+									src1 = _grm_sprites[GRFLocation(_cur.grffile->grfid, _cur.nfo_line)].first;
 									GrfMsg(4, "ParamSet: GRM: Using pre-allocated sprites at {}", src1);
 									break;
 
