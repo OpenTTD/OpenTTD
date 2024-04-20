@@ -875,7 +875,6 @@ static bool LoadOldIndustry(LoadgameState *ls, int num)
 		}
 
 		Industry::IncIndustryTypeCount(i->type);
-		TrimIndustryAcceptedProduced(i);
 	} else {
 		delete i;
 	}

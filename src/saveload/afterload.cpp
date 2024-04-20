@@ -1722,6 +1722,14 @@ bool AfterLoadGame()
 		}
 	}
 
+	/* Industry cargo slots were fixed size before (and including) SLV_VEHICLE_ECONOMY_AGE (either 2/3 or 16/16),
+	 * after this they are dynamic. Trim excess slots. */
+	if (IsSavegameVersionBeforeOrAt(SLV_VEHICLE_ECONOMY_AGE)) {
+		for (Industry *i : Industry::Iterate()) {
+			TrimIndustryAcceptedProduced(i);
+		}
+	}
+
 	/* Before version 81, the density of grass was always stored as zero, and
 	 * grassy trees were always drawn fully grassy. Furthermore, trees on rough
 	 * land used to have zero density, now they have full density. Therefore,
