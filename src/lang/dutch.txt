@@ -5286,6 +5286,10 @@ STR_ERROR_NO_VEHICLES_AVAILABLE_AT_ALL_EXPLANATION              :{WHITE}Pas je N
 STR_ERROR_NO_VEHICLES_AVAILABLE_YET                             :{WHITE}Nog geen voertuigen beschikbaar
 STR_ERROR_NO_VEHICLES_AVAILABLE_YET_EXPLANATION                 :{WHITE} Start een nieuw spel na {DATE_SHORT} of gebruik een NewGRF dat in vroege voertuigen voorziet
 
+STR_ERROR_NO_TOWN_ROADTYPES_AVAILABLE_AT_ALL                    :{WHITE}Geen wegtypen beschikbaar voor in de stad
+STR_ERROR_NO_TOWN_ROADTYPES_AVAILABLE_AT_ALL_EXPLANATION        :{WHITE}Wijzig je NewGRF-configuratie
+STR_ERROR_NO_TOWN_ROADTYPES_AVAILABLE_YET                       :{WHITE}Er zijn nog geen wegtypen beschikbaar voor steden
+STR_ERROR_NO_TOWN_ROADTYPES_AVAILABLE_YET_EXPLANATION           :{WHITE}Start een nieuw spel na {DATE_SHORT} of gebruik een NewGRF met wegtypen die al vroeg in steden gebruikt kunnen worden
 
 # Specific vehicle errors
 STR_ERROR_CAN_T_MAKE_TRAIN_PASS_SIGNAL                          :{WHITE}Kan trein niet het sein laten passeren bij gevaar...
