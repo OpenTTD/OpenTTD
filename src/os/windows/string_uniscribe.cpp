@@ -405,7 +405,7 @@ static std::vector<SCRIPT_ITEM> UniscribeItemizeString(UniscribeParagraphLayoutF
 	if (FAILED(ScriptLayout((int)bidi_level.size(), &bidi_level[0], &vis_to_log[0], nullptr))) return nullptr;
 
 	/* Create line. */
-	std::unique_ptr<UniscribeLine> line(new UniscribeLine());
+	std::unique_ptr<UniscribeLine> line = std::make_unique<UniscribeLine>();
 
 	int cur_pos = 0;
 	for (std::vector<INT>::iterator l = vis_to_log.begin(); l != vis_to_log.end(); l++) {

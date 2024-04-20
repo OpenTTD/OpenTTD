@@ -68,7 +68,7 @@ bool DecodeSingleSprite(SpriteLoader::Sprite *sprite, SpriteFile &file, size_t f
 	 */
 	if (num < 0 || num > 64 * 1024 * 1024) return WarnCorruptSprite(file, file_pos, __LINE__);
 
-	std::unique_ptr<uint8_t[]> dest_orig(new uint8_t[num]);
+	std::unique_ptr<uint8_t[]> dest_orig = std::make_unique<uint8_t[]>(num);
 	uint8_t *dest = dest_orig.get();
 	const int64_t dest_size = num;
 

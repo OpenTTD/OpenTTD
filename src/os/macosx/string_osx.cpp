@@ -224,7 +224,8 @@ static CTRunDelegateCallbacks _sprite_font_callback = {
 	CFAutoRelease<CTLineRef> line(CTTypesetterCreateLine(this->typesetter.get(), CFRangeMake(this->cur_offset, len)));
 	this->cur_offset += len;
 
-	return std::unique_ptr<const Line>(line ? new CoreTextLine(std::move(line), this->font_map, this->text_buffer) : nullptr);
+	if (!line) return nullptr;
+	return std::make_unique<CoreTextLine>(std::move(line), this->font_map, this->text_buffer);
 }
 
 CoreTextParagraphLayout::CoreTextVisualRun::CoreTextVisualRun(CTRunRef run, Font *font, const CoreTextParagraphLayoutFactory::CharType *buff) : font(font)
