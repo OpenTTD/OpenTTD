@@ -32,8 +32,6 @@ bool MakeScreenshot(ScreenshotType t, std::string name, uint32_t width = 0, uint
 bool MakeMinimapWorldScreenshot();
 
 extern std::string _screenshot_format_name;
-extern uint _num_screenshot_formats;
-extern uint _cur_screenshot_format;
 extern std::string _full_screenshot_path;
 
 #endif /* SCREENSHOT_H */
