@@ -805,8 +805,8 @@ static bool LoadOldStation(LoadgameState *ls, int num)
 }
 
 /* Old save games always have 3 input and 2 output slots per industry. */
-static std::array<Industry::AcceptedCargo, 3> _old_accepted{};
-static std::array<Industry::ProducedCargo, 2> _old_produced{};
+static std::array<Industry::AcceptedCargo, INDUSTRY_ORIGINAL_NUM_INPUTS> _old_accepted{};
+static std::array<Industry::ProducedCargo, INDUSTRY_ORIGINAL_NUM_OUTPUTS> _old_produced{};
 
 static const OldChunks industry_chunk[] = {
 	OCL_SVAR(   OC_TILE, Industry, location.tile ),
