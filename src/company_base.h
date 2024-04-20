@@ -134,7 +134,7 @@ struct Company : CompanyProperties, CompanyPool::PoolItem<&_company_pool> {
 	RailTypes avail_railtypes;         ///< Rail types available to this company.
 	RoadTypes avail_roadtypes;         ///< Road types available to this company.
 
-	class AIInstance *ai_instance;
+	std::unique_ptr<class AIInstance> ai_instance;
 	class AIInfo *ai_info;
 	std::unique_ptr<class AIConfig> ai_config;
 
