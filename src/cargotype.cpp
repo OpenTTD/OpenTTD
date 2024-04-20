@@ -99,7 +99,7 @@ void BuildCargoLabelMap()
 		/* Label already exists, don't addd again. */
 		if (CargoSpec::label_map.count(cs.label) != 0) continue;
 
-		CargoSpec::label_map.insert(std::make_pair(cs.label, cs.Index()));
+		CargoSpec::label_map.emplace(cs.label, cs.Index());
 	}
 }
 

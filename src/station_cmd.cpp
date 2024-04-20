@@ -4810,7 +4810,7 @@ void FlowStatMap::AddFlow(StationID origin, StationID via, uint flow)
 {
 	FlowStatMap::iterator origin_it = this->find(origin);
 	if (origin_it == this->end()) {
-		this->insert(std::make_pair(origin, FlowStat(via, flow)));
+		this->emplace(origin, FlowStat(via, flow));
 	} else {
 		origin_it->second.ChangeShare(via, flow);
 		assert(!origin_it->second.GetShares()->empty());
@@ -4831,7 +4831,7 @@ void FlowStatMap::PassOnFlow(StationID origin, StationID via, uint flow)
 	if (prev_it == this->end()) {
 		FlowStat fs(via, flow);
 		fs.AppendShare(INVALID_STATION, flow);
-		this->insert(std::make_pair(origin, fs));
+		this->emplace(origin, fs);
 	} else {
 		prev_it->second.ChangeShare(via, flow);
 		prev_it->second.ChangeShare(INVALID_STATION, flow);

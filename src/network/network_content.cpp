@@ -72,7 +72,7 @@ bool ClientNetworkContentSocketHandler::Receive_SERVER_INFO(Packet &p)
 	for (uint i = 0; i < dependency_count; i++) {
 		ContentID dependency_cid = (ContentID)p.Recv_uint32();
 		ci->dependencies.push_back(dependency_cid);
-		this->reverse_dependency_map.insert({ dependency_cid, ci->id });
+		this->reverse_dependency_map.emplace(dependency_cid, ci->id);
 	}
 
 	uint tag_count = p.Recv_uint8();

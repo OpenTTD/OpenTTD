@@ -71,8 +71,7 @@ static int32_t GetAmount(CargoMonitorMap &monitor_map, CargoMonitorID monitor, b
 	CargoMonitorMap::iterator iter = monitor_map.find(monitor);
 	if (iter == monitor_map.end()) {
 		if (keep_monitoring) {
-			std::pair<CargoMonitorID, uint32_t> p(monitor, 0);
-			monitor_map.insert(p);
+			monitor_map.emplace(monitor, 0);
 		}
 		return 0;
 	} else {

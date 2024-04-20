@@ -591,8 +591,7 @@ typedef std::map<uint32_t, const GRFConfig *> GrfIdMap; ///< Map of grfid to the
 static void FillGrfidMap(const GRFConfig *c, GrfIdMap *grfid_map)
 {
 	while (c != nullptr) {
-		std::pair<uint32_t, const GRFConfig *> p(c->ident.grfid, c);
-		grfid_map->insert(p);
+		grfid_map->emplace(c->ident.grfid, c);
 		c = c->next;
 	}
 }

@@ -318,7 +318,7 @@ public:
 		for (uint32_t j = 0; j < num_flows; ++j) {
 			SlObject(&flow, this->GetLoadDescription());
 			if (fs == nullptr || prev_source != flow.source) {
-				fs = &(ge->flows.insert(std::make_pair(flow.source, FlowStat(flow.via, flow.share, flow.restricted))).first->second);
+				fs = &(ge->flows.emplace(flow.source, FlowStat(flow.via, flow.share, flow.restricted))).first->second;
 			} else {
 				fs->AppendShare(flow.via, flow.share, flow.restricted);
 			}
