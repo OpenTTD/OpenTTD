@@ -81,8 +81,7 @@ struct CMDLChunkHandler : ChunkHandler {
 
 			if (fix) storage.number = FixupCargoMonitor(storage.number);
 
-			std::pair<CargoMonitorID, uint32_t> p(storage.number, storage.amount);
-			_cargo_deliveries.insert(p);
+			_cargo_deliveries.emplace(storage.number, storage.amount);
 		}
 	}
 };
@@ -125,8 +124,7 @@ struct CMPUChunkHandler : ChunkHandler {
 
 			if (fix) storage.number = FixupCargoMonitor(storage.number);
 
-			std::pair<CargoMonitorID, uint32_t> p(storage.number, storage.amount);
-			_cargo_pickups.insert(p);
+			_cargo_pickups.emplace(storage.number, storage.amount);
 		}
 	}
 };
