@@ -177,10 +177,12 @@ static inline void GetAllCargoSuffixes(CargoSuffixInOut use_input, CargoSuffixTy
 		}
 		switch (use_input) {
 			case CARGOSUFFIX_OUT:
+				// Handle INDUSTRY_ORIGINAL_NUM_OUTPUTS cargoes
 				if (IsValidCargoID(cargoes[0])) GetCargoSuffix(3, cst, ind, ind_type, indspec, suffixes[0]);
 				if (IsValidCargoID(cargoes[1])) GetCargoSuffix(4, cst, ind, ind_type, indspec, suffixes[1]);
 				break;
 			case CARGOSUFFIX_IN:
+				// Handle INDUSTRY_ORIGINAL_NUM_INPUTS cargoes
 				if (IsValidCargoID(cargoes[0])) GetCargoSuffix(0, cst, ind, ind_type, indspec, suffixes[0]);
 				if (IsValidCargoID(cargoes[1])) GetCargoSuffix(1, cst, ind, ind_type, indspec, suffixes[1]);
 				if (IsValidCargoID(cargoes[2])) GetCargoSuffix(2, cst, ind, ind_type, indspec, suffixes[2]);
@@ -212,9 +214,9 @@ void GetCargoSuffix(CargoSuffixInOut use_input, CargoSuffixType cst, const Indus
 		uint cargotype = local_id << 16 | use_input;
 		GetCargoSuffix(cargotype, cst, ind, ind_type, indspec, suffix);
 	} else if (use_input == CARGOSUFFIX_IN) {
-		if (slot < 3) GetCargoSuffix(slot, cst, ind, ind_type, indspec, suffix);
+		if (slot < INDUSTRY_ORIGINAL_NUM_INPUTS) GetCargoSuffix(slot, cst, ind, ind_type, indspec, suffix);
 	} else if (use_input == CARGOSUFFIX_OUT) {
-		if (slot < 2) GetCargoSuffix(slot + 3, cst, ind, ind_type, indspec, suffix);
+		if (slot < INDUSTRY_ORIGINAL_NUM_OUTPUTS) GetCargoSuffix(slot + INDUSTRY_ORIGINAL_NUM_INPUTS, cst, ind, ind_type, indspec, suffix);
 	}
 }
 

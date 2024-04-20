@@ -30,6 +30,7 @@ static const HouseID NUM_HOUSES       = 512;    ///< Total number of houses.
 static const HouseID INVALID_HOUSE_ID = 0xFFFF;
 
 static const uint HOUSE_NUM_ACCEPTS = 16; ///< Max number of cargoes accepted by a tile
+static const uint HOUSE_ORIGINAL_NUM_ACCEPTS = 3; ///< Original number of accepted cargo types.
 
 enum BuildingFlags {
 	TILE_NO_FLAG         =       0,
