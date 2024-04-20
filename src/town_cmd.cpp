@@ -2717,7 +2717,7 @@ static bool BuildTownHouse(Town *t, TileIndex tile)
 
 		uint cur_prob = hs.probability;
 		probability_max += cur_prob;
-		probs.emplace_back(std::make_pair(hs.Index(), cur_prob));
+		probs.emplace_back(hs.Index(), cur_prob);
 	}
 
 	TileIndex baseTile = tile;
