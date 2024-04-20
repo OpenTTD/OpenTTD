@@ -1701,7 +1701,7 @@ static const OldChunks main_chunk[] = {
 
 	OCL_ASSERT( OC_TTO, 0x496CE ),
 
-	OCL_VAR ( OC_FILE_U16 | OC_VAR_U32,   1, &_new_competitor_timeout.period ),
+	OCL_VAR ( OC_FILE_U16 | OC_VAR_U32,   1, &_new_competitor_timeout.period.value ),
 
 	OCL_CNULL( OC_TTO, 2 ),  ///< available monorail bitmask
 
