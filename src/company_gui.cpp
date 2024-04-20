@@ -2337,16 +2337,15 @@ struct CompanyWindow : Window
 	{
 		int y = r.top;
 
-		uint rail_pieces = c->infrastructure.signal;
-		for (uint i = 0; i < std::size(c->infrastructure.rail); i++) rail_pieces += c->infrastructure.rail[i];
+		uint rail_pieces = c->infrastructure.signal + c->infrastructure.GetRailTotal();
 		if (rail_pieces != 0) {
 			SetDParam(0, rail_pieces);
 			DrawString(r.left, r.right, y, STR_COMPANY_VIEW_INFRASTRUCTURE_RAIL);
 			y += GetCharacterHeight(FS_NORMAL);
 		}
 
-		uint road_pieces = 0;
-		for (uint i = 0; i < std::size(c->infrastructure.road); i++) road_pieces += c->infrastructure.road[i];
+		/* GetRoadTotal() skips tram pieces, but we actually want road and tram here. */
+		uint road_pieces = std::accumulate(std::begin(c->infrastructure.road), std::end(c->infrastructure.road), 0U);
 		if (road_pieces != 0) {
 			SetDParam(0, road_pieces);
 			DrawString(r.left, r.right, y, STR_COMPANY_VIEW_INFRASTRUCTURE_ROAD);
