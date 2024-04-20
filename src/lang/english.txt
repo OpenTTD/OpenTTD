@@ -3393,10 +3393,13 @@ STR_GENERATION_ABORT_MESSAGE                                    :{YELLOW}Do you 
 STR_GENERATION_PROGRESS                                         :{WHITE}{NUM}% complete
 STR_GENERATION_PROGRESS_NUM                                     :{BLACK}{NUM} / {NUM}
 STR_GENERATION_WORLD_GENERATION                                 :{BLACK}World generation
+STR_GENERATION_LANDSCAPE_GENERATION                             :{BLACK}Landscape generation
 STR_GENERATION_RIVER_GENERATION                                 :{BLACK}River generation
-STR_GENERATION_TREE_GENERATION                                  :{BLACK}Tree generation
-STR_GENERATION_OBJECT_GENERATION                                :{BLACK}Object generation
 STR_GENERATION_CLEARING_TILES                                   :{BLACK}Rough and rocky area generation
+STR_GENERATION_TOWN_GENERATION                                  :{BLACK}Town generation
+STR_GENERATION_INDUSTRY_GENERATION                              :{BLACK}Industry generation
+STR_GENERATION_OBJECT_GENERATION                                :{BLACK}Object generation
+STR_GENERATION_TREE_GENERATION                                  :{BLACK}Tree generation
 STR_GENERATION_SETTINGUP_GAME                                   :{BLACK}Setting up game
 STR_GENERATION_PREPARING_TILELOOP                               :{BLACK}Running tile-loop
 STR_GENERATION_PREPARING_SCRIPT                                 :{BLACK}Running script
