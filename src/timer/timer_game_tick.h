@@ -24,7 +24,34 @@ public:
 	using Ticks = int32_t; ///< The type to store ticks in
 	using TickCounter = uint64_t; ///< The type that the tick counter is stored in
 
-	using TPeriod = uint;
+	enum Priority {
+		NONE, ///< These timers can be executed in any order; the order is not relevant.
+
+		/* For all other priorities, the order is important.
+		 * For safety, you can only setup a single timer on a single priority. */
+		COMPETITOR_TIMEOUT,
+	};
+
+	struct TPeriod {
+		Priority priority;
+		uint value;
+
+		TPeriod(Priority priority, uint value) : priority(priority), value(value)
+		{}
+
+		bool operator < (const TPeriod &other) const
+		{
+			/* Sort by priority before value, such that changes in value for priorities other than NONE do not change the container order */
+			if (this->priority != other.priority) return this->priority < other.priority;
+			return this->value < other.value;
+		}
+
+		bool operator == (const TPeriod &other) const
+		{
+			return this->priority == other.priority && this->value == other.value;
+		}
+	};
+
 	using TElapsed = uint;
 	struct TStorage {
 		uint elapsed;
