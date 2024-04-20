@@ -799,7 +799,7 @@ struct TimetableWindow : Window {
 	/**
 	 * In real-time mode, the timetable GUI shows relative times and needs to be redrawn every second.
 	 */
-	IntervalTimer<TimerGameTick> redraw_interval = {Ticks::TICKS_PER_SECOND, [this](auto) {
+	IntervalTimer<TimerGameTick> redraw_interval = { { TimerGameTick::Priority::NONE, Ticks::TICKS_PER_SECOND }, [this](auto) {
 		if (_settings_client.gui.timetable_mode == TimetableMode::Seconds) {
 			this->SetDirty();
 		}

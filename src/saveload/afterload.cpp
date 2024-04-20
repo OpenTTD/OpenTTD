@@ -3255,7 +3255,7 @@ bool AfterLoadGame()
 		/* We did load the "period" of the timer, but not the fired/elapsed. We can deduce that here. */
 		extern TimeoutTimer<TimerGameTick> _new_competitor_timeout;
 		_new_competitor_timeout.storage.elapsed = 0;
-		_new_competitor_timeout.fired = _new_competitor_timeout.period == 0;
+		_new_competitor_timeout.fired = _new_competitor_timeout.period.value == 0;
 	}
 
 	if (IsSavegameVersionBefore(SLV_NEWGRF_LAST_SERVICE)) {
