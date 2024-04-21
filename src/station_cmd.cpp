@@ -2192,7 +2192,7 @@ static CommandCost RemoveRoadStop(TileIndex tile, DoCommandFlag flags, int repla
 			[](const Vehicle *v) { return v->type == VEH_ROAD; },
 			[station_id](const Order *order) { return order->IsType(OT_GOTO_STATION) && order->GetDestination() == station_id; },
 			[station_id, tile](Vehicle *v) {
-				if (v->dest_tile == tile) {
+				if (v->current_order.IsType(OT_GOTO_STATION) && v->dest_tile == tile) {
 					v->SetDestTile(v->GetOrderStationLocation(station_id));
 				}
 			}
