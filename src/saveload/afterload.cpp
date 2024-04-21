@@ -907,6 +907,15 @@ bool AfterLoadGame()
 		}
 	}
 
+	if (IsSavegameVersionBefore(SLV_INCREASE_STATION_TYPE_FIELD_SIZE)) {
+		/* Expansion of station type field in m6 */
+		for (auto t : Map::Iterate()) {
+			if (IsTileType(t, MP_STATION)) {
+				ClrBit(t.m6(), 6);
+			}
+		}
+	}
+
 	for (auto t : Map::Iterate()) {
 		switch (GetTileType(t)) {
 			case MP_STATION: {
